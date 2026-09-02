@@ -1,0 +1,2565 @@
+{
+ "v": "dep-092540",
+ "kurimas": 200,
+ "sid": 4460,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1593-R3",
+  "feed_items": 2659,
+  "zb_qty_vs_feed": {
+   "sutampa": 205,
+   "skiriasi": 851,
+   "nera_feede": 35
+  },
+  "skiriasi_pvz": [
+   {
+    "0": "12469",
+    "1": "01A6A01110",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "IAMS Kitten (vištiena) 10kg",
+    "db": 5,
+    "feed": 3
+   },
+   {
+    "0": "12472",
+    "1": "01A6B03110",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "IAMS Adult Cat (žuvimi) 10kg",
+    "db": 14,
+    "feed": 7
+   },
+   {
+    "0": "13067",
+    "1": "0TR121_23650",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Trixie Išmatų semtuvas su grėbliu, ",
+    "db": 7,
+    "feed": 6
+   },
+   {
+    "0": "13143",
+    "1": "0TR1381_13231",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Trixie Automobilio sėdynės užtiesal",
+    "db": 6,
+    "feed": 5
+   },
+   {
+    "0": "13149",
+    "1": "0TR1383_13233",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Trixie Automobilio sėdynės užtiesal",
+    "db": 11,
+    "feed": 8
+   },
+   {
+    "0": "13566",
+    "1": "0TR101_200826",
+    "2": "draft",
+    "3": "2026-09-02 09:02",
+    "4": "Trixie Premium pritaikomas pavadys,",
+    "db": 9,
+    "feed": 8
+   },
+   {
+    "0": "13568",
+    "1": "0TR101_200902",
+    "2": "draft",
+    "3": "2026-09-02 09:02",
+    "4": "Trixie Premium pritaikomas pavadys,",
+    "db": 10,
+    "feed": 9
+   },
+   {
+    "0": "13572",
+    "1": "0TR101_200913",
+    "2": "draft",
+    "3": "2026-09-02 09:02",
+    "4": "Trixie Premium pritaikomas pavadys,",
+    "db": 11,
+    "feed": 12
+   },
+   {
+    "0": "13574",
+    "1": "0TR101_200926",
+    "2": "draft",
+    "3": "2026-09-02 09:02",
+    "4": "Trixie Premium pritaikomas pavadys,",
+    "db": 11,
+    "feed": 10
+   },
+   {
+    "0": "13612",
+    "1": "0TR1020_203911",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Trixie Premium touring petnešos, M ",
+    "db": 1,
+    "feed": 0
+   },
+   {
+    "0": "13616",
+    "1": "0TR1020_204101",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Trixie Premium touring petnešos, L ",
+    "db": 8,
+    "feed": 5
+   },
+   {
+    "0": "13619",
+    "1": "0TR1020_204111",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Trixie Premium touring petnešos, L ",
+    "db": 4,
+    "feed": 3
+   },
+   {
+    "0": "13629",
+    "1": "0TR1021_204213",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Trixie Premium touring petnešos, L-",
+    "db": 1,
+    "feed": 0
+   },
+   {
+    "0": "13892",
+    "1": "0TR3643_43467",
+    "2": "publish",
+    "3": "2026-09-02 10:02",
+    "4": "Trixie Filippo draskyklė, 114 cm, j",
+    "db": 4,
+    "feed": 3
+   },
+   {
+    "0": "13902",
+    "1": "0TR359_43207",
+    "2": "publish",
+    "3": "2026-09-02 10:02",
+    "4": "Trixie Guolis prie radiatoriaus kat",
+    "db": 5,
+    "feed": 1
+   },
+   {
+    "0": "13958",
+    "1": "0TR165_24821",
+    "2": "publish",
+    "3": "2026-09-02 10:02",
+    "4": "Trixie keramikinis dubenėlis",
+    "db": 3,
+    "feed": 0
+   },
+   {
+    "0": "13978",
+    "1": "0TR234_19536",
+    "2": "publish",
+    "3": "2026-09-02 10:02",
+    "4": "Trixie Apsauginis bodis, M-L: 50 cm",
+    "db": 5,
+    "feed": 4
+   },
+   {
+    "0": "27955",
+    "1": "01MVKD402",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge VetSolution Dog Wet HYPO MONO",
+    "db": 194,
+    "feed": 355
+   },
+   {
+    "0": "27957",
+    "1": "01MVKD412",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge VetSolution Dog Wet HYPO MONO",
+    "db": 66,
+    "feed": 96
+   },
+   {
+    "0": "27959",
+    "1": "01MVKD422",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge VetSolution Dog Wet HYPO MONO",
+    "db": 229,
+    "feed": 0
+   },
+   {
+    "0": "27961",
+    "1": "01MVKD432",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge VetSolution Dog Wet HYPO MONO",
+    "db": 259,
+    "feed": 237
+   },
+   {
+    "0": "32463",
+    "1": "01M220801",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge SUPREME - Cat Wet Pouches Tun",
+    "db": 745,
+    "feed": 32
+   },
+   {
+    "0": "32465",
+    "1": "01M220811",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge SUPREME - Cat Wet Pouches Tun",
+    "db": 184,
+    "feed": 197
+   },
+   {
+    "0": "32467",
+    "1": "01M220812",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge SUPREME - Cat Wet Pouches Tun",
+    "db": 321,
+    "feed": 117
+   },
+   {
+    "0": "32469",
+    "1": "01M220813",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge SUPREME - Cat Wet Pouches Tun",
+    "db": 231,
+    "feed": 52
+   }
+  ],
+  "monge_skiriasi": [
+   {
+    "0": "27955",
+    "1": "01MVKD402",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge VetSolution Dog Wet HYPO MONO",
+    "db": 194,
+    "feed": 355
+   },
+   {
+    "0": "27957",
+    "1": "01MVKD412",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge VetSolution Dog Wet HYPO MONO",
+    "db": 66,
+    "feed": 96
+   },
+   {
+    "0": "27959",
+    "1": "01MVKD422",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge VetSolution Dog Wet HYPO MONO",
+    "db": 229,
+    "feed": 0
+   },
+   {
+    "0": "27961",
+    "1": "01MVKD432",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge VetSolution Dog Wet HYPO MONO",
+    "db": 259,
+    "feed": 237
+   },
+   {
+    "0": "32463",
+    "1": "01M220801",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge SUPREME - Cat Wet Pouches Tun",
+    "db": 745,
+    "feed": 32
+   },
+   {
+    "0": "32465",
+    "1": "01M220811",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge SUPREME - Cat Wet Pouches Tun",
+    "db": 184,
+    "feed": 197
+   },
+   {
+    "0": "32467",
+    "1": "01M220812",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge SUPREME - Cat Wet Pouches Tun",
+    "db": 321,
+    "feed": 117
+   },
+   {
+    "0": "32469",
+    "1": "01M220813",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge SUPREME - Cat Wet Pouches Tun",
+    "db": 231,
+    "feed": 52
+   },
+   {
+    "0": "32471",
+    "1": "01M220814",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge SUPREME - Cat Wet Pouches Tun",
+    "db": 608,
+    "feed": 170
+   },
+   {
+    "0": "32473",
+    "1": "01M220821",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge SUPREME - Cat Wet Pouches Tun",
+    "db": 2,
+    "feed": 120
+   },
+   {
+    "0": "32475",
+    "1": "01M220822",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge SUPREME - Cat Wet Pouches Tun",
+    "db": 190,
+    "feed": 199
+   },
+   {
+    "0": "32477",
+    "1": "01M220823",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge SUPREME - Cat Wet Pouches Tun",
+    "db": 126,
+    "feed": 186
+   },
+   {
+    "0": "32479",
+    "1": "01M220824",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge SUPREME - Cat Wet Pouches Tun",
+    "db": 265,
+    "feed": 203
+   },
+   {
+    "0": "32481",
+    "1": "01M220612",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge Monoprotein - Cat Flakes tik ",
+    "db": 671,
+    "feed": 455
+   },
+   {
+    "0": "32483",
+    "1": "01M220613",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge Monoprotein - Cat Flakes tik ",
+    "db": 448,
+    "feed": 296
+   },
+   {
+    "0": "32574",
+    "1": "01M210206",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge Monoproteico \"Solo\" - Wet Dog",
+    "db": 410,
+    "feed": 75
+   },
+   {
+    "0": "33203",
+    "1": "01M220614",
+    "2": "draft",
+    "3": "2026-09-02 10:03",
+    "4": "Monge MONOPROTEIN - Cat Flakes Only",
+    "db": 104,
+    "feed": 294
+   },
+   {
+    "0": "33205",
+    "1": "01M220615",
+    "2": "draft",
+    "3": "2026-09-02 10:03",
+    "4": "Monge MONOPROTEIN - Cat Flakes Only",
+    "db": 359,
+    "feed": 161
+   },
+   {
+    "0": "33528",
+    "1": "01M201102",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild Cat Adult visavertis pa",
+    "db": 0,
+    "feed": 54
+   },
+   {
+    "0": "33530",
+    "1": "01M210101",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoprotein konservai šunims ",
+    "db": 169,
+    "feed": 189
+   },
+   {
+    "0": "33532",
+    "1": "01M210102",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoprotein konservai šunims ",
+    "db": 649,
+    "feed": 650
+   },
+   {
+    "0": "33534",
+    "1": "01M210103",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoprotein konservai šunims ",
+    "db": 1808,
+    "feed": 1890
+   },
+   {
+    "0": "33536",
+    "1": "01M210104",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoprotein konservai šunims ",
+    "db": 150,
+    "feed": 498
+   },
+   {
+    "0": "33538",
+    "1": "01M210105",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoprotein konservai šunims ",
+    "db": 1700,
+    "feed": 770
+   },
+   {
+    "0": "33540",
+    "1": "01M210106",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoprotein konservai šunims ",
+    "db": 768,
+    "feed": 2552
+   },
+   {
+    "0": "33542",
+    "1": "01M210107",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoproteico \"Solo\" - Wet Dog",
+    "db": 646,
+    "feed": 781
+   },
+   {
+    "0": "33546",
+    "1": "01M210109",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoproteico \"Solo\" - Wet Dog",
+    "db": 1212,
+    "feed": 621
+   },
+   {
+    "0": "33548",
+    "1": "01M210201",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoprotein konservai (vištie",
+    "db": 140,
+    "feed": 0
+   },
+   {
+    "0": "33550",
+    "1": "01M210202",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoproteico \"Solo\" - Wet Dog",
+    "db": 247,
+    "feed": 480
+   },
+   {
+    "0": "33552",
+    "1": "01M210203",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoproteico konservai šunims",
+    "db": 356,
+    "feed": 1270
+   },
+   {
+    "0": "33554",
+    "1": "01M210205",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoprotein konservai (antien",
+    "db": 296,
+    "feed": 1460
+   },
+   {
+    "0": "33556",
+    "1": "01M210601",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Fresh paštetas šunims su tuno",
+    "db": 866,
+    "feed": 494
+   },
+   {
+    "0": "33558",
+    "1": "01M210602",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Fresh paštetas šunims su kala",
+    "db": 945,
+    "feed": 1385
+   },
+   {
+    "0": "33560",
+    "1": "01M210603",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Fresh paštetas šunims su višt",
+    "db": 556,
+    "feed": 1007
+   },
+   {
+    "0": "33562",
+    "1": "01M210604",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Fresh paštetas šunims su anti",
+    "db": 104,
+    "feed": 1701
+   },
+   {
+    "0": "33564",
+    "1": "01M210605",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Fresh paštetas šunims su ėrie",
+    "db": 1741,
+    "feed": 1971
+   },
+   {
+    "0": "33566",
+    "1": "01M210607",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Fresh paštetas šunims su jaut",
+    "db": 554,
+    "feed": 1478
+   },
+   {
+    "0": "33568",
+    "1": "01M210608",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Fresh paštetas šunims su laši",
+    "db": 1101,
+    "feed": 3006
+   },
+   {
+    "0": "33570",
+    "1": "01M210609",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Fresh paštetas šunims su kiau",
+    "db": 1046,
+    "feed": 1588
+   },
+   {
+    "0": "33572",
+    "1": "01M210610",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Fresh paštetas šunims su menk",
+    "db": 597,
+    "feed": 701
+   },
+   {
+    "0": "33574",
+    "1": "01M210630",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Fresh adult konservuotas paša",
+    "db": 357,
+    "feed": 496
+   },
+   {
+    "0": "33576",
+    "1": "01M210801",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Grill konservuotas pašaras šu",
+    "db": 467,
+    "feed": 161
+   },
+   {
+    "0": "33578",
+    "1": "01M210803",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Grill konservuotas pašaras šu",
+    "db": 889,
+    "feed": 519
+   },
+   {
+    "0": "33580",
+    "1": "01M210804",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Grill konservuotas pašaras šu",
+    "db": 500,
+    "feed": 183
+   },
+   {
+    "0": "33582",
+    "1": "01M210805",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Grill konservuotas pašaras šu",
+    "db": 515,
+    "feed": 187
+   },
+   {
+    "0": "33584",
+    "1": "01M210806",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Grill konservuotas pašaras šu",
+    "db": 581,
+    "feed": 676
+   },
+   {
+    "0": "33586",
+    "1": "01M220101",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Jelly - Wet kons. pašaras sua",
+    "db": 25,
+    "feed": 473
+   },
+   {
+    "0": "33588",
+    "1": "01M220105",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Jelly Senior kons. pašaras se",
+    "db": 279,
+    "feed": 0
+   },
+   {
+    "0": "33590",
+    "1": "01M220106",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Jelly - Wet Cat Yellowfin tun",
+    "db": 230,
+    "feed": 19
+   },
+   {
+    "0": "33592",
+    "1": "01M220107",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Kitten kons. pašaras kačiukam",
+    "db": 472,
+    "feed": 196
+   },
+   {
+    "0": "33594",
+    "1": "01M220201",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Natural kons. pašaras suaugus",
+    "db": 124,
+    "feed": 456
+   },
+   {
+    "0": "33596",
+    "1": "01M220202",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Natural kons. pašaras suaugus",
+    "db": 0,
+    "feed": 471
+   },
+   {
+    "0": "33600",
+    "1": "01M220204",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Natural kons. pašaras suaugus",
+    "db": 0,
+    "feed": 313
+   },
+   {
+    "0": "33602",
+    "1": "01M220205",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Natural kons. pašaras suaugus",
+    "db": 403,
+    "feed": 676
+   },
+   {
+    "0": "33604",
+    "1": "01M220206",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Natural konservuotas pašaras ",
+    "db": 80,
+    "feed": 365
+   },
+   {
+    "0": "33606",
+    "1": "01M220207",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Natural kons. pašaras suaugus",
+    "db": 418,
+    "feed": 416
+   },
+   {
+    "0": "33608",
+    "1": "01M220208",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Natural kons. pašaras suaugus",
+    "db": 600,
+    "feed": 295
+   },
+   {
+    "0": "33610",
+    "1": "01M220301",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge kons. pašaras katėms su tuno ",
+    "db": 403,
+    "feed": 0
+   },
+   {
+    "0": "33612",
+    "1": "01M220302",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge kons. pašaras katėms su tuno ",
+    "db": 248,
+    "feed": 42
+   },
+   {
+    "0": "33614",
+    "1": "01M220303",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge kons.pašaras katėms su Atlant",
+    "db": 380,
+    "feed": 0
+   },
+   {
+    "0": "33616",
+    "1": "01M220304",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge kons. pašaras katėms su gardž",
+    "db": 595,
+    "feed": 468
+   },
+   {
+    "0": "33618",
+    "1": "01M220305",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge kons.pašaras katėms su tuno, ",
+    "db": 31,
+    "feed": 250
+   },
+   {
+    "0": "33620",
+    "1": "01M220306",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge kons.pašaras katėms su tuno, ",
+    "db": 183,
+    "feed": 143
+   },
+   {
+    "0": "33622",
+    "1": "01M220405",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Delicate - Wet Cat Chicken wi",
+    "db": 144,
+    "feed": 24
+   },
+   {
+    "0": "33660",
+    "1": "01MB211101",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoprotein Rabbit super prem",
+    "db": 0,
+    "feed": 16
+   },
+   {
+    "0": "33668",
+    "1": "01MVKC001",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Cat Wet Dermatosi",
+    "db": 616,
+    "feed": 416
+   },
+   {
+    "0": "33670",
+    "1": "01MVKC101",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Cat Wet Gastroint",
+    "db": 3158,
+    "feed": 1912
+   },
+   {
+    "0": "33672",
+    "1": "01MVKC301",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Cat Wet Renal/Oxa",
+    "db": 592,
+    "feed": 847
+   },
+   {
+    "0": "33674",
+    "1": "01MVKC801",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Cat Wet Urinary S",
+    "db": 462,
+    "feed": 719
+   },
+   {
+    "0": "33676",
+    "1": "01MVKC991",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Cat Wet Recovery ",
+    "db": 841,
+    "feed": 282
+   },
+   {
+    "0": "33678",
+    "1": "01MVKD001",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Wet Dermatosi",
+    "db": 425,
+    "feed": 164
+   },
+   {
+    "0": "33680",
+    "1": "01MVKD101",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Wet Gastroint",
+    "db": 3058,
+    "feed": 1977
+   },
+   {
+    "0": "33682",
+    "1": "01MVKD301",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Wet Renal/Oxa",
+    "db": 326,
+    "feed": 798
+   },
+   {
+    "0": "33684",
+    "1": "01MVKD991",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Wet Recovery ",
+    "db": 146,
+    "feed": 484
+   },
+   {
+    "0": "33704",
+    "1": "01M230101",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Bwild adult konservuotas paša",
+    "db": 137,
+    "feed": 309
+   },
+   {
+    "0": "33706",
+    "1": "01M230102",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild puppy konservuotas paša",
+    "db": 77,
+    "feed": 206
+   },
+   {
+    "0": "33708",
+    "1": "01M230103",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Bwild mini adult konservuotas",
+    "db": 624,
+    "feed": 390
+   },
+   {
+    "0": "33710",
+    "1": "01M230104",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Bwild adult konservuotas paša",
+    "db": 133,
+    "feed": 217
+   },
+   {
+    "0": "33712",
+    "1": "01M230201",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild Large Breed keptas pašt",
+    "db": 721,
+    "feed": 155
+   },
+   {
+    "0": "33714",
+    "1": "01M230202",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild Adult paštetas katėms s",
+    "db": 291,
+    "feed": 0
+   },
+   {
+    "0": "33716",
+    "1": "01M230301",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild adult paštetas katėms s",
+    "db": 705,
+    "feed": 557
+   },
+   {
+    "0": "33718",
+    "1": "01M230302",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild adult paštetas katėms s",
+    "db": 541,
+    "feed": 35
+   },
+   {
+    "0": "33720",
+    "1": "01M230303",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild adult paštetas steriliz",
+    "db": 481,
+    "feed": 411
+   },
+   {
+    "0": "33722",
+    "1": "01M230304",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild adult paštetas steriliz",
+    "db": 419,
+    "feed": 316
+   },
+   {
+    "0": "33724",
+    "1": "01M210808",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Grill konservuotas pašaras šu",
+    "db": 148,
+    "feed": 0
+   },
+   {
+    "0": "33764",
+    "1": "01M230401",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild kons. pašaras didėlių v",
+    "db": 76,
+    "feed": 299
+   },
+   {
+    "0": "33766",
+    "1": "01M230402",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild kons. pašaras su menke,",
+    "db": 568,
+    "feed": 928
+   },
+   {
+    "0": "33768",
+    "1": "01M230403",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild kons. pašaras katėms su",
+    "db": 582,
+    "feed": 505
+   },
+   {
+    "0": "33770",
+    "1": "01M230404",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild kons.pašaras sterilizuo",
+    "db": 307,
+    "feed": 1264
+   },
+   {
+    "0": "33772",
+    "1": "01M230405",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild kons. pašaras sterilizu",
+    "db": 1736,
+    "feed": 753
+   },
+   {
+    "0": "33774",
+    "1": "01M230406",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild kons. pašaras sterelizu",
+    "db": 0,
+    "feed": 932
+   },
+   {
+    "0": "33776",
+    "1": "01M220601",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoprotein Adult begrūdis ko",
+    "db": 910,
+    "feed": 647
+   },
+   {
+    "0": "33778",
+    "1": "01M220602",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoprotein Adult begrūdis ko",
+    "db": 851,
+    "feed": 600
+   },
+   {
+    "0": "33780",
+    "1": "01M220603",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoprotein Kitten begrūdis k",
+    "db": 266,
+    "feed": 202
+   },
+   {
+    "0": "33782",
+    "1": "01M220604",
+    "2": "draft",
+    "3": "2026-09-02 08:03",
+    "4": "Monge Monoprotein Adult begrūdis ko",
+    "db": 618,
+    "feed": 347
+   },
+   {
+    "0": "33784",
+    "1": "01M220605",
+    "2": "draft",
+    "3": "2026-09-02 08:03",
+    "4": "Monge Monoprotein Sterilised begrūd",
+    "db": 1006,
+    "feed": 491
+   },
+   {
+    "0": "33786",
+    "1": "01M220701",
+    "2": "draft",
+    "3": "2026-09-02 08:03",
+    "4": "Monge GRILL Kitten konservuotas paš",
+    "db": 296,
+    "feed": 709
+   },
+   {
+    "0": "33788",
+    "1": "01M220702",
+    "2": "draft",
+    "3": "2026-09-02 08:03",
+    "4": "Monge GRILL Adult konservuotas paša",
+    "db": 0,
+    "feed": 714
+   },
+   {
+    "0": "33790",
+    "1": "01M220703",
+    "2": "draft",
+    "3": "2026-09-02 08:03",
+    "4": "Monge GRILL Adult konservuotas paša",
+    "db": 83,
+    "feed": 1078
+   },
+   {
+    "0": "33792",
+    "1": "01M220704",
+    "2": "draft",
+    "3": "2026-09-02 08:03",
+    "4": "Monge Grill Sterilised konservuotas",
+    "db": 691,
+    "feed": 517
+   },
+   {
+    "0": "33794",
+    "1": "01M220705",
+    "2": "draft",
+    "3": "2026-09-02 08:03",
+    "4": "Monge Grill Sterilised konservuotas",
+    "db": 224,
+    "feed": 987
+   },
+   {
+    "0": "33796",
+    "1": "01M220706",
+    "2": "draft",
+    "3": "2026-09-02 08:03",
+    "4": "Monge Grill Sterilised konservuotas",
+    "db": 543,
+    "feed": 86
+   },
+   {
+    "0": "33798",
+    "1": "01M220707",
+    "2": "draft",
+    "3": "2026-09-02 08:03",
+    "4": "Monge Grill Senior konservuotas paš",
+    "db": 484,
+    "feed": 349
+   },
+   {
+    "0": "33818",
+    "1": "01M230105",
+    "2": "draft",
+    "3": "2026-09-02 09:02",
+    "4": "Monge Bwild adult konservuotas paša",
+    "db": 90,
+    "feed": 233
+   },
+   {
+    "0": "33828",
+    "1": "01M220712",
+    "2": "draft",
+    "3": "2026-09-02 09:02",
+    "4": "Monge Grill konservuotas pašaras st",
+    "db": 107,
+    "feed": 50
+   },
+   {
+    "0": "33830",
+    "1": "01M220711",
+    "2": "draft",
+    "3": "2026-09-02 09:02",
+    "4": "Monge Grill konservuotas pašaras st",
+    "db": 114,
+    "feed": 47
+   },
+   {
+    "0": "33832",
+    "1": "01M211001",
+    "2": "draft",
+    "3": "2026-09-02 09:02",
+    "4": "Monge GRILL MIX Dog Adult salmon/po",
+    "db": 148,
+    "feed": 91
+   },
+   {
+    "0": "33834",
+    "1": "01M211002",
+    "2": "draft",
+    "3": "2026-09-02 09:02",
+    "4": "Monge GRILL MIX Dog Adult beef/cod/",
+    "db": 41,
+    "feed": 36
+   },
+   {
+    "0": "33860",
+    "1": "01M210807",
+    "2": "draft",
+    "3": "2026-09-02 09:02",
+    "4": "Monge Grill konservuotas pašaras ja",
+    "db": 474,
+    "feed": 325
+   },
+   {
+    "0": "33864",
+    "1": "01M210629",
+    "2": "draft",
+    "3": "2026-09-02 09:02",
+    "4": "Monge Fresh Puppy konservuotas paša",
+    "db": 276,
+    "feed": 250
+   },
+   {
+    "0": "33866",
+    "1": "01M210631",
+    "2": "draft",
+    "3": "2026-09-02 09:02",
+    "4": "Monge Fresh adult konservuotas paša",
+    "db": 201,
+    "feed": 407
+   },
+   {
+    "0": "33868",
+    "1": "01M210632",
+    "2": "draft",
+    "3": "2026-09-02 09:02",
+    "4": "Monge Fresh adult konservuotas paša",
+    "db": 320,
+    "feed": 185
+   },
+   {
+    "0": "33870",
+    "1": "01M210633",
+    "2": "draft",
+    "3": "2026-09-02 09:02",
+    "4": "Monge Fresh Senior konservuotas paš",
+    "db": 284,
+    "feed": 320
+   },
+   {
+    "0": "33972",
+    "1": "01M220611",
+    "2": "draft",
+    "3": "2026-09-02 09:03",
+    "4": "Monge Monoprotein - Cat Flakes su k",
+    "db": 178,
+    "feed": 565
+   },
+   {
+    "0": "33982",
+    "1": "01MVKD202",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge VetSolution Dog Wet Diabetic/",
+    "db": 82,
+    "feed": 90
+   },
+   {
+    "0": "33984",
+    "1": "01MVKD102",
+    "2": "draft",
+    "3": "2026-09-02 10:02",
+    "4": "Monge VetSolution Dog Wet Gastroint",
+    "db": 0,
+    "feed": 77
+   },
+   {
+    "0": "34048",
+    "1": "01M220616",
+    "2": "draft",
+    "3": "2026-09-02 11:03",
+    "4": "Monge MONOPROTEIN - Cat Flakes Only",
+    "db": 15,
+    "feed": 244
+   },
+   {
+    "0": "12700",
+    "1": "01MVD302",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Renal 12kg",
+    "db": 10,
+    "feed": 6
+   },
+   {
+    "0": "34648",
+    "1": "01M210110",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M14741 Monge Monoproteico Solo - We",
+    "db": 0,
+    "feed": 1
+   },
+   {
+    "0": "34649",
+    "1": "01M210111",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M14758 Monge Monoproteico Solo - We",
+    "db": 0,
+    "feed": 21
+   },
+   {
+    "0": "34650",
+    "1": "01M210151",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M14703 Monge Monoproteico Solo - We",
+    "db": 0,
+    "feed": 190
+   },
+   {
+    "0": "34651",
+    "1": "01M210152",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M14710 Monge Monoproteico Solo - We",
+    "db": 0,
+    "feed": 1
+   },
+   {
+    "0": "34652",
+    "1": "01M210153",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M14734 Monge Monoproteico Solo - We",
+    "db": 0,
+    "feed": 86
+   },
+   {
+    "0": "34654",
+    "1": "01M210208",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M14584 Monge Monoproteico Solo - We",
+    "db": 0,
+    "feed": 187
+   },
+   {
+    "0": "34655",
+    "1": "01M210209",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M14591 Monge Monoproteico Solo - We",
+    "db": 0,
+    "feed": 219
+   },
+   {
+    "0": "34656",
+    "1": "01M210210",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M14669 Monge Monoproteico Solo - We",
+    "db": 0,
+    "feed": 64
+   },
+   {
+    "0": "34657",
+    "1": "01M210211",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M14676 Monge Monoproteico Solo - We",
+    "db": 0,
+    "feed": 392
+   },
+   {
+    "0": "34658",
+    "1": "01M210251",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M14546 Monge Monoproteico Solo - We",
+    "db": 0,
+    "feed": 437
+   },
+   {
+    "0": "34659",
+    "1": "01M210252",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M14553 Monge Monoproteico Solo - We",
+    "db": 0,
+    "feed": 183
+   },
+   {
+    "0": "34660",
+    "1": "01M210253",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M14690 Monge Monoproteico Solo - We",
+    "db": 0,
+    "feed": 257
+   },
+   {
+    "0": "34661",
+    "1": "01M210634",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M14499 Monge Fresh - Pouches Dog Ad",
+    "db": 0,
+    "feed": 263
+   },
+   {
+    "0": "34662",
+    "1": "01M210650",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M01114 Monge Fresh - Pouches Dog Pu",
+    "db": 0,
+    "feed": 1009
+   },
+   {
+    "0": "34663",
+    "1": "01M210660",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M01121 Monge Fresh - Pouches Dog Ad",
+    "db": 0,
+    "feed": 715
+   },
+   {
+    "0": "34664",
+    "1": "01M210661",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M01138 Monge Fresh - Pouches Dog Ad",
+    "db": 0,
+    "feed": 706
+   },
+   {
+    "0": "34665",
+    "1": "01M210662",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M01145 Monge Fresh - Pouches Dog Ad",
+    "db": 0,
+    "feed": 1077
+   },
+   {
+    "0": "34666",
+    "1": "01M210663",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M01152 Monge Fresh - Pouches Dog Ad",
+    "db": 0,
+    "feed": 993
+   },
+   {
+    "0": "34667",
+    "1": "01M220901",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M01053 Monge Fresh - Pouches Cat Ki",
+    "db": 0,
+    "feed": 644
+   },
+   {
+    "0": "34668",
+    "1": "01M220911",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M01060 Monge Fresh - Pouches Cat Ad",
+    "db": 0,
+    "feed": 707
+   },
+   {
+    "0": "34669",
+    "1": "01M220921",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M01077 Monge Fresh - Pouches Cat St",
+    "db": 0,
+    "feed": 749
+   },
+   {
+    "0": "34670",
+    "1": "01M220922",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M01084 Monge Fresh - Pouches Cat St",
+    "db": 0,
+    "feed": 684
+   },
+   {
+    "0": "34671",
+    "1": "01M220923",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M01091 Monge Fresh - Pouches Cat St",
+    "db": 0,
+    "feed": 738
+   },
+   {
+    "0": "34672",
+    "1": "01M220924",
+    "2": "draft",
+    "3": "2026-09-02 12:02",
+    "4": "M01107 Monge Fresh - Pouches Cat St",
+    "db": 0,
+    "feed": 673
+   },
+   {
+    "0": "34677",
+    "1": "01M210204",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "M14243 Monge Monoproteico \"Solo\" - ",
+    "db": 0,
+    "feed": 265
+   },
+   {
+    "0": "34678",
+    "1": "01M210606",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "M13062 Monge Fresh - Wet Dog Alu Pa",
+    "db": 0,
+    "feed": 320
+   },
+   {
+    "0": "34694",
+    "1": "01M210701",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "M13208 Monge Fruit - Wet Dog PATE &",
+    "db": 0,
+    "feed": 54
+   },
+   {
+    "0": "34697",
+    "1": "01M220108",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "M07108 Monge Jelly - Wet Cat Tuna i",
+    "db": 0,
+    "feed": 24
+   },
+   {
+    "0": "34698",
+    "1": "01M220307",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "M07238 Monge Natural - Wet Cat Cans",
+    "db": 24,
+    "feed": 0
+   },
+   {
+    "0": "12829",
+    "1": "01MB231101",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild Large Breed (buivoliena",
+    "db": 6,
+    "feed": 3
+   },
+   {
+    "0": "12525",
+    "1": "01M010104",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge mini puppy sausas pašaras maž",
+    "db": 18,
+    "feed": 17
+   },
+   {
+    "0": "12522",
+    "1": "01M002002",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge visavertis sausas pašaras sua",
+    "db": 9,
+    "feed": 5
+   },
+   {
+    "0": "12687",
+    "1": "01MVC602",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Cat Obesity 1,5kg",
+    "db": 9,
+    "feed": 3
+   },
+   {
+    "0": "13051",
+    "1": "01M04003000",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Monge spec.line monoprotein mini Pu",
+    "db": 26,
+    "feed": 0
+   },
+   {
+    "0": "12528",
+    "1": "01M011103",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge mini adult sausas pašaras (vi",
+    "db": 14,
+    "feed": 9
+   },
+   {
+    "0": "12531",
+    "1": "01M020130",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge medium puppy sausas pašaras (",
+    "db": 1,
+    "feed": 5
+   },
+   {
+    "0": "12532",
+    "1": "01M0211020",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge medium adult visavertis sausa",
+    "db": 0,
+    "feed": 24
+   },
+   {
+    "0": "12533",
+    "1": "01M0301020",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge maxi puppy visavertis sausas ",
+    "db": 22,
+    "feed": 5
+   },
+   {
+    "0": "12538",
+    "1": "01M0400102",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge mini puppy sausas pašaras (ėr",
+    "db": 95,
+    "feed": 13
+   },
+   {
+    "0": "12547",
+    "1": "01M0401103",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge puppy sausas pašaras (ėriena ",
+    "db": 0,
+    "feed": 52
+   },
+   {
+    "0": "12549",
+    "1": "01M0401202",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Dry Dog Spec. Line - All Bree",
+    "db": 33,
+    "feed": 0
+   },
+   {
+    "0": "12550",
+    "1": "01M0401203",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge puppy sausas pašaras (lašiša ",
+    "db": 35,
+    "feed": 20
+   },
+   {
+    "0": "12555",
+    "1": "01M041301",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge spec. line monoprotein adult ",
+    "db": 12,
+    "feed": 7
+   },
+   {
+    "0": "12556",
+    "1": "01M0413020",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge adult sausas pašaras (vištien",
+    "db": 18,
+    "feed": 15
+   },
+   {
+    "0": "12566",
+    "1": "01M041802",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Dry Dog Spec. Line suaugusiem",
+    "db": 55,
+    "feed": 50
+   },
+   {
+    "0": "12569",
+    "1": "01M050101",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Dry Dog Puppy&Junior GRAIN FR",
+    "db": 12,
+    "feed": 7
+   },
+   {
+    "0": "12570",
+    "1": "01M051201",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Grain Free mini adult sausas ",
+    "db": 15,
+    "feed": 0
+   },
+   {
+    "0": "12571",
+    "1": "01M060101",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild puppy sausas pašaras (e",
+    "db": 33,
+    "feed": 19
+   },
+   {
+    "0": "12573",
+    "1": "01M061201",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild adult sausas pašaras (š",
+    "db": 40,
+    "feed": 26
+   },
+   {
+    "0": "12574",
+    "1": "01M061301",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild adult sausas pašaras (ž",
+    "db": 12,
+    "feed": 23
+   },
+   {
+    "0": "12586",
+    "1": "01M201202",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Dry Cat BWILD - Adult Anchovi",
+    "db": 7,
+    "feed": 6
+   },
+   {
+    "0": "34791",
+    "1": "01M220406",
+    "2": "draft",
+    "3": "2026-09-02 08:02",
+    "4": "M07283 Monge Delicate - Wet Cat Chi",
+    "db": 24,
+    "feed": 0
+   },
+   {
+    "0": "12663",
+    "1": "01MB191101",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild Adult (kiškiena) 10kg",
+    "db": 32,
+    "feed": 18
+   },
+   {
+    "0": "12664",
+    "1": "01MB201101",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BFB BWILD - Adult pašaras kat",
+    "db": 8,
+    "feed": 6
+   },
+   {
+    "0": "12683",
+    "1": "01MVC302",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Cat Renal 1,5kg",
+    "db": 42,
+    "feed": 29
+   },
+   {
+    "0": "12685",
+    "1": "01MVC402",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Cat Hepatic 1,5kg",
+    "db": 33,
+    "feed": 27
+   },
+   {
+    "0": "12693",
+    "1": "01MVC902",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Cat Urinary Oxala",
+    "db": 35,
+    "feed": 22
+   },
+   {
+    "0": "12695",
+    "1": "01MVD002",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Dermatosis 12",
+    "db": 15,
+    "feed": 3
+   },
+   {
+    "0": "12703",
+    "1": "01MVD501",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Cardiac 2kg",
+    "db": 6,
+    "feed": 1
+   },
+   {
+    "0": "12706",
+    "1": "01MVD602",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Obesity 12kg",
+    "db": 6,
+    "feed": 3
+   },
+   {
+    "0": "12830",
+    "1": "01M061302",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild adult sausas pašaras su",
+    "db": 4,
+    "feed": 5
+   },
+   {
+    "0": "13050",
+    "1": "01M0415001",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Monge spec. line monoprotein puppy ",
+    "db": 3,
+    "feed": 5
+   },
+   {
+    "0": "13052",
+    "1": "01M04003001",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Monge spec.line monoprotein mini Pu",
+    "db": 4,
+    "feed": 7
+   },
+   {
+    "0": "13054",
+    "1": "01M0414001",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Monge spec. line monoprotein puppy ",
+    "db": 1,
+    "feed": 5
+   },
+   {
+    "0": "13055",
+    "1": "01M041910",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Monge spec. line monoprotein adult ",
+    "db": 26,
+    "feed": 3
+   },
+   {
+    "0": "13056",
+    "1": "01M041911",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Monge spec. line monoprotein adult ",
+    "db": 7,
+    "feed": 3
+   },
+   {
+    "0": "13871",
+    "1": "01M201602",
+    "2": "publish",
+    "3": "2026-09-02 10:02",
+    "4": "Monge GF Large Breeds sausas pašara",
+    "db": 12,
+    "feed": 15
+   },
+   {
+    "0": "12527",
+    "1": "01M011102",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Dry Dog Mini Adult 3 kg sausa",
+    "db": 12,
+    "feed": 7
+   },
+   {
+    "0": "12534",
+    "1": "01M0311020",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge maxi adult visavertis sausas ",
+    "db": 16,
+    "feed": 25
+   },
+   {
+    "0": "12536",
+    "1": "01M0400022",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge extra small adult sausas paša",
+    "db": 53,
+    "feed": 16
+   },
+   {
+    "0": "12540",
+    "1": "01M0400202",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge spec. line monoprotein mini a",
+    "db": 153,
+    "feed": 52
+   },
+   {
+    "0": "12541",
+    "1": "01M0400203",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge spec. line monoprotein mini a",
+    "db": 71,
+    "feed": 57
+   },
+   {
+    "0": "12543",
+    "1": "01M0400302",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge mini adult sausas pašaras (la",
+    "db": 76,
+    "feed": 13
+   },
+   {
+    "0": "12544",
+    "1": "01M0400303",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge mini adult sausas pašaras maž",
+    "db": 17,
+    "feed": 14
+   },
+   {
+    "0": "12546",
+    "1": "01M0401102",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge puppy sausas pašaras (ėriena ",
+    "db": 144,
+    "feed": 28
+   },
+   {
+    "0": "12551",
+    "1": "01M041101",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge adult sausas pašaras (ėriena,",
+    "db": 116,
+    "feed": 34
+   },
+   {
+    "0": "12552",
+    "1": "01M0411020",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge adult sausas pašaras (ėriena,",
+    "db": 145,
+    "feed": 57
+   },
+   {
+    "0": "12553",
+    "1": "01M041201",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge adult sausas pašaras (lašiša ",
+    "db": 93,
+    "feed": 0
+   },
+   {
+    "0": "12554",
+    "1": "01M0412020",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge adult sausas pašaras (lašiša ",
+    "db": 65,
+    "feed": 8
+   },
+   {
+    "0": "12557",
+    "1": "01M041401",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge spec. line adult sausas pašar",
+    "db": 32,
+    "feed": 112
+   },
+   {
+    "0": "12558",
+    "1": "01M041402",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge spec. line adult sausas pašar",
+    "db": 38,
+    "feed": 18
+   },
+   {
+    "0": "12559",
+    "1": "01M041501",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge adult sausas pašaras (antiena",
+    "db": 51,
+    "feed": 6
+   },
+   {
+    "0": "12560",
+    "1": "01M041502",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge adult sausas pašaras (antiena",
+    "db": 40,
+    "feed": 29
+   },
+   {
+    "0": "12561",
+    "1": "01M041601",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge adult sausas pašaras (triušie",
+    "db": 128,
+    "feed": 0
+   },
+   {
+    "0": "12562",
+    "1": "01M041602",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Dry Dog Spec. Line suaugusiem",
+    "db": 61,
+    "feed": 90
+   },
+   {
+    "0": "12563",
+    "1": "01M041701",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Hypoallergenic adult sausas p",
+    "db": 97,
+    "feed": 22
+   },
+   {
+    "0": "12564",
+    "1": "01M041702",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Hypoallergenic adult sausas p",
+    "db": 97,
+    "feed": 37
+   },
+   {
+    "0": "12565",
+    "1": "01M041801",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoprotein adult sausas paša",
+    "db": 18,
+    "feed": 10
+   },
+   {
+    "0": "12567",
+    "1": "01M042001",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Light adult sausas pašaras (l",
+    "db": 37,
+    "feed": 10
+   },
+   {
+    "0": "12568",
+    "1": "01M042002",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Light adult sausas pašaras su",
+    "db": 24,
+    "feed": 12
+   },
+   {
+    "0": "12572",
+    "1": "01M061001",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild adult sausas pašaras (e",
+    "db": 33,
+    "feed": 6
+   },
+   {
+    "0": "12576",
+    "1": "01M110102",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Kitten (vištiena) 1,5kg",
+    "db": 169,
+    "feed": 114
+   },
+   {
+    "0": "12580",
+    "1": "01M131102",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Daily Line Hairball super pre",
+    "db": 13,
+    "feed": 128
+   },
+   {
+    "0": "12581",
+    "1": "01M171102",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Urinary Adult Urinary super p",
+    "db": 67,
+    "feed": 47
+   },
+   {
+    "0": "12582",
+    "1": "01M181102",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Sterilised Adult (vištiena) 1",
+    "db": 200,
+    "feed": 61
+   },
+   {
+    "0": "12583",
+    "1": "01M182102",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Sterilised Adult (antiena) 1,",
+    "db": 175,
+    "feed": 78
+   },
+   {
+    "0": "12584",
+    "1": "01M191111",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Monoprotein Rabbit super prem",
+    "db": 239,
+    "feed": 110
+   },
+   {
+    "0": "12659",
+    "1": "01MB131101",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Daily Line Hairball super pre",
+    "db": 74,
+    "feed": 38
+   },
+   {
+    "0": "12661",
+    "1": "01MB151101",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Daily Line Sensitive sausas p",
+    "db": 26,
+    "feed": 6
+   },
+   {
+    "0": "12662",
+    "1": "01MB181101",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge Natural Urinary super premium",
+    "db": 24,
+    "feed": 9
+   },
+   {
+    "0": "12679",
+    "1": "01MVC002",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Cat Dermatosis 1,",
+    "db": 38,
+    "feed": 52
+   },
+   {
+    "0": "12681",
+    "1": "01MVC102",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Cat Gastrointesti",
+    "db": 111,
+    "feed": 89
+   },
+   {
+    "0": "12689",
+    "1": "01MVC702",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Cat Diabetic 1,5k",
+    "db": 28,
+    "feed": 27
+   },
+   {
+    "0": "12691",
+    "1": "01MVC802",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Cat Urinary Struv",
+    "db": 55,
+    "feed": 46
+   },
+   {
+    "0": "12694",
+    "1": "01MVD001",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Dermatosis 2k",
+    "db": 38,
+    "feed": 45
+   },
+   {
+    "0": "12696",
+    "1": "01MVD101",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Gastrointesti",
+    "db": 128,
+    "feed": 83
+   },
+   {
+    "0": "12697",
+    "1": "01MVD102",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Gastrointesti",
+    "db": 49,
+    "feed": 34
+   },
+   {
+    "0": "12698",
+    "1": "01MVD202",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Gastrointesti",
+    "db": 6,
+    "feed": 4
+   },
+   {
+    "0": "12699",
+    "1": "01MVD301",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Renal 2kg",
+    "db": 24,
+    "feed": 8
+   },
+   {
+    "0": "12701",
+    "1": "01MVD401",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Hepatic 2kg",
+    "db": 20,
+    "feed": 21
+   },
+   {
+    "0": "12707",
+    "1": "01MVD701",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Diabetic 2kg",
+    "db": 26,
+    "feed": 20
+   },
+   {
+    "0": "12708",
+    "1": "01MVD702",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge VetSolution Dog Diabetic 12kg",
+    "db": 2,
+    "feed": 4
+   },
+   {
+    "0": "12837",
+    "1": "01M201502",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild Kitten visavertis pašar",
+    "db": 7,
+    "feed": 30
+   },
+   {
+    "0": "12842",
+    "1": "01M061203",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWild adult sausas pašaras su",
+    "db": 46,
+    "feed": 37
+   },
+   {
+    "0": "12859",
+    "1": "01M061002",
+    "2": "publish",
+    "3": "2026-09-02 08:02",
+    "4": "Monge BWILD All Breeds Adult susas ",
+    "db": 23,
+    "feed": 11
+   },
+   {
+    "0": "12916",
+    "1": "01M041901",
+    "2": "publish",
+    "3": "2026-09-02 08:03",
+    "4": "Monge Dry Dog All Br. Adult Monopro",
+    "db": 15,
+    "feed": 0
+   },
+   {
+    "0": "12985",
+    "1": "01MVD2011",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Monge VetSolution Dog Gastrointesti",
+    "db": 52,
+    "feed": 42
+   },
+   {
+    "0": "12993",
+    "1": "01M183102",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Monge Dry Cat Adult Sterilized Beef",
+    "db": 39,
+    "feed": 26
+   },
+   {
+    "0": "13037",
+    "1": "01M060102",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Monge BWILD All Breeds Puppy&Junior",
+    "db": 10,
+    "feed": 5
+   },
+   {
+    "0": "13049",
+    "1": "01M0415000",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Monge spec. line monoprotein puppy ",
+    "db": 46,
+    "feed": 19
+   },
+   {
+    "0": "13053",
+    "1": "01M0414000",
+    "2": "publish",
+    "3": "2026-09-02 09:02",
+    "4": "Monge spec. line monoprotein puppy ",
+    "db": 13,
+    "feed": 18
+   },
+   {
+    "0": "13869",
+    "1": "01M0400103",
+    "2": "publish",
+    "3": "2026-09-02 10:02",
+    "4": "Monge mini puppy sausas pašaras (ėr",
+    "db": 22,
+    "feed": 24
+   },
+   {
+    "0": "13990",
+    "1": "01M110110",
+    "2": "publish",
+    "3": "2026-09-02 10:02",
+    "4": "Monge Dry Cat Kitten su vištiena 10",
+    "db": 9,
+    "feed": 0
+   },
+   {
+    "0": "13991",
+    "1": "01M181110",
+    "2": "publish",
+    "3": "2026-09-02 10:02",
+    "4": "Monge Dry Cat Adult Sterilized 10kg",
+    "db": 53,
+    "feed": 20
+   },
+   {
+    "0": "13992",
+    "1": "01M182110",
+    "2": "publish",
+    "3": "2026-09-02 10:02",
+    "4": "Monge Dry Cat Adult Monoprotein ste",
+    "db": 40,
+    "feed": 32
+   },
+   {
+    "0": "14072",
+    "1": "01M121110",
+    "2": "publish",
+    "3": "2026-09-02 10:02",
+    "4": "Monge Dry Cat Adult 10kg",
+    "db": 17,
+    "feed": 11
+   },
+   {
+    "0": "14240",
+    "1": "01M041902",
+    "2": "publish",
+    "3": "2026-09-02 10:02",
+    "4": "Monge Dry Dog All Br. Adult Monopro",
+    "db": 15,
+    "feed": 8
+   },
+   {
+    "0": "14367",
+    "1": "01M051502",
+    "2": "publish",
+    "3": "2026-09-02 10:02",
+    "4": "Monge Dry Dog BWILD Grain Free - Al",
+    "db": 6,
+    "feed": 4
+   },
+   {
+    "0": "14804",
+    "1": "01MVD901",
+    "2": "publish",
+    "3": "2026-09-02 11:03",
+    "4": "MONGE VetSolution Dog Struvite 2 kg",
+    "db": 37,
+    "feed": 30
+   },
+   {
+    "0": "14805",
+    "1": "01MVD902",
+    "2": "publish",
+    "3": "2026-09-02 11:03",
+    "4": "MONGE VetSolution Dog Struvite 12 k",
+    "db": 9,
+    "feed": 6
+   }
+  ],
+  "monge_modified": [
+   [
+    "2026-09-02",
+    "draft",
+    "157"
+   ],
+   [
+    "2026-09-02",
+    "publish",
+    "104"
+   ],
+   [
+    "2026-08-22",
+    "publish",
+    "4"
+   ],
+   [
+    "2026-08-20",
+    "publish",
+    "6"
+   ],
+   [
+    "2026-08-13",
+    "publish",
+    "1"
+   ],
+   [
+    "2026-07-14",
+    "draft",
+    "1"
+   ],
+   [
+    "2026-07-02",
+    "draft",
+    "2"
+   ],
+   [
+    "2026-06-29",
+    "publish",
+    "3"
+   ]
+  ],
+  "monge_0629": [
+   [
+    "16225",
+    "publish",
+    "Sausas maistas sterilizuotoms katėms su "
+   ],
+   [
+    "16228",
+    "publish",
+    "Sausas maistas sterilizuotoms katėms su "
+   ],
+   [
+    "16248",
+    "publish",
+    "Sausas maistas katėms nuo plaukų gumuliu"
+   ]
+  ],
+  "av_kates": {
+   "16217": {
+    "ean": "",
+    "stock": "1",
+    "zb_feed": null,
+    "modified": "2026-08-13"
+   },
+   "16225": {
+    "ean": "",
+    "stock": "3",
+    "zb_feed": null,
+    "modified": "2026-06-29"
+   },
+   "16228": {
+    "ean": "",
+    "stock": "3",
+    "zb_feed": null,
+    "modified": "2026-06-29"
+   },
+   "16248": {
+    "ean": "",
+    "stock": "1",
+    "zb_feed": null,
+    "modified": "2026-06-29"
+   }
+  },
+  "pmxi3_posts": "5623"
+ }
+}
