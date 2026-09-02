@@ -1,0 +1,32 @@
+{
+ "v": "dep-135802",
+ "kurimas": 200,
+ "sid": 4507,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1601-R3",
+  "failai": [
+   "/plugins/petshop-xml/petshop-xml.php"
+  ],
+  "head": [
+   "<?php",
+   "/**",
+   " * Petshop Rinkiniai v1.43 (S1554) — prekes puslapiams NEBEsiunciamas nocache_headers() (v1.40 be_keso):",
+   " * jis blokavo puslapiu cache (Cache-Control: no-store visose prekese, S1552 recon). Metodas be_keso()",
+   " * paliktas, bet nebekabinamas. Narsykles keso problema (H298) sprendziama cache sluoksnio header'iais.",
+   " *"
+  ],
+  "ver": [
+   "3:* Petshop Rinkiniai v1.43 (S1554) — prekes puslapiams NEBEsiunciamas nocache_headers() (v1.40 be_keso):",
+   "168:const VERSIJA = '1.31';   /* v1.31: siuksline — ketvirta busena toje pacioje lenteleje */",
+   "201:/* v1.43 (S1554): send_headers/be_keso NUIMTA — nocache_headers() prekėse blokavo puslapių cache (WP Super Cache); naršyklės keso valdymas dabar per cache sluoksnį. */"
+  ],
+  "issaugoti_dp_meta": [
+   "918:$prod->update_meta_data( '_ps_svoris_ranka', $r );"
+  ],
+  "md5": "b8aa4437e85f90b115bb4f8f84f60896"
+ }
+}
