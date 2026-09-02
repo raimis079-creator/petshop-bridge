@@ -1,0 +1,986 @@
+{
+ "v": "dep-144028",
+ "kurimas": 200,
+ "sid": 4515,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "C": {
+  "av_kand": [
+   "19756",
+   "19708",
+   "19692"
+  ],
+  "stock_pries": {
+   "19708": 43,
+   "19756": 19,
+   "35074": 1
+  },
+  "T": {
+   "1": {
+    "id": 35414,
+    "pav": "AV paštomatas 1 dėžė",
+    "status": "processing",
+    "total": "21.64"
+   },
+   "2": {
+    "id": 35415,
+    "pav": "AV kurjeris 3 dėžės",
+    "status": "processing",
+    "total": "69.79"
+   },
+   "3": {
+    "id": 35416,
+    "pav": "AV LP terminalas (NEREGISTRUOTI)",
+    "status": "processing",
+    "total": "5.61"
+   },
+   "4": {
+    "id": 35417,
+    "pav": "VF dropship paštomatas",
+    "status": "processing",
+    "total": "9.92"
+   },
+   "5": {
+    "id": 35418,
+    "pav": "ZB dropship kurjeris",
+    "status": "processing",
+    "total": "34.52"
+   },
+   "6": {
+    "id": 35419,
+    "pav": "MIŠRUS AV+VF paštomatas",
+    "status": "processing",
+    "total": "21.62"
+   },
+   "7": {
+    "id": 35420,
+    "pav": "MIŠRUS VF+ZB kurjeris",
+    "status": "processing",
+    "total": "37.11"
+   },
+   "8": {
+    "id": 35421,
+    "pav": "MIŠRUS AV+Quattro+Prins",
+    "status": "processing",
+    "total": "54.03"
+   },
+   "9": {
+    "id": 35422,
+    "pav": "NEAPMOKĖTAS bacs",
+    "status": "on-hold",
+    "total": "16.44"
+   },
+   "10": {
+    "id": 35423,
+    "pav": "KLAUSIMAS trūksta AV (stock 1, perka 3)",
+    "status": "processing",
+    "total": "19.13"
+   },
+   "11": {
+    "id": 35424,
+    "pav": "ATŠAUKIMUI AV",
+    "status": "processing",
+    "total": "16.44"
+   },
+   "12": {
+    "id": 35425,
+    "pav": "Paštomatas 2 dėžės AV",
+    "status": "processing",
+    "total": "35.93"
+   },
+   "13": {
+    "id": 35426,
+    "pav": "Ambrosia+Belacor dropship kurjeris",
+    "status": "processing",
+    "total": "23.31"
+   }
+  },
+  "stock_po": {
+   "19708": 34,
+   "19756": 9,
+   "35074": 0
+  }
+ },
+ "Q": {
+  "Q": {
+   "T1 #35414": {
+    "status": "processing",
+    "eile": "misrus",
+    "klausimas": "",
+    "vykdymas": [
+     "MIŠRUS",
+     2
+    ],
+    "saltiniai": [
+     "ambrosia",
+     "av"
+    ],
+    "vezejas": "venipak_pastomatas",
+    "reikia_pak": true,
+    "pak": 1,
+    "siunta": [
+     "",
+     0
+    ],
+    "type": "MIXED",
+    "ships": "2",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":2}}",
+    "misrus_spr": "",
+    "ds_sent": "",
+    "siuntos": "",
+    "av_reduced": "2026-09-02 17:41:36",
+    "notes": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Email \"Naujas užsakymas\" sent.",
+     "Faktai irasyti: 2 eilutes · pajamos 16,11 EUR (be PVM, po nuolaidu) · PVM 3,75 EUR · marza 4,94 EUR · kontribucija (be pristatymo) 5,87 EUR · TESTINIS",
+     "Partijos nurašytos: #19708 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #19708: Partijose trūksta 2 vnt. — likutis ir partijos nesutampa",
+     "AV nurašymas: #19708 grynai AV 43 -> 41",
+     "Likutis sumažintas: AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg (19&rarr;18), Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g (43&rarr;43)",
+     "Vykdymas: MIXED — AMBROSIA 1 vnt · AV 2 vnt (2 siunta(-os))",
+     "Payment via Mokėjimas internetu (AUDIT-1)."
+    ],
+    "neperduota": [
+     "ambrosia"
+    ],
+    "items": [
+     [
+      19756,
+      1,
+      "ambrosia",
+      "1",
+      "1",
+      ""
+     ],
+     [
+      19708,
+      2,
+      "av",
+      "2",
+      "0",
+      ""
+     ]
+    ]
+   },
+   "T2 #35415": {
+    "status": "processing",
+    "eile": "misrus",
+    "klausimas": "",
+    "vykdymas": [
+     "MIŠRUS",
+     2
+    ],
+    "saltiniai": [
+     "ambrosia",
+     "av"
+    ],
+    "vezejas": "venipak_kurjeris",
+    "reikia_pak": true,
+    "pak": 3,
+    "siunta": [
+     "",
+     0
+    ],
+    "type": "MIXED",
+    "ships": "2",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":4},\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":3}}",
+    "misrus_spr": "",
+    "ds_sent": "",
+    "siuntos": "",
+    "av_reduced": "2026-09-02 17:41:38",
+    "notes": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Email \"Naujas užsakymas\" sent.",
+     "Faktai irasyti: 2 eilutes · pajamos 53,69 EUR (be PVM, po nuolaidu) · PVM 12,11 EUR · marza 17,51 EUR · kontribucija (be pristatymo) 20,65 EUR · TESTINIS",
+     "Partijos nurašytos: #19708 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #19708: Partijose trūksta 3 vnt. — likutis ir partijos nesutampa",
+     "AV nurašymas: #19708 grynai AV 41 -> 38",
+     "Likutis sumažintas: AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg (18&rarr;14), Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g (41&rarr;41)",
+     "Vykdymas: MIXED — AMBROSIA 4 vnt · AV 3 vnt (2 siunta(-os))",
+     "Payment via Mokėjimas internetu (AUDIT-2)."
+    ],
+    "neperduota": [
+     "ambrosia"
+    ],
+    "items": [
+     [
+      19756,
+      4,
+      "ambrosia",
+      "4",
+      "4",
+      ""
+     ],
+     [
+      19708,
+      3,
+      "av",
+      "3",
+      "0",
+      ""
+     ]
+    ]
+   },
+   "T3 #35416": {
+    "status": "processing",
+    "eile": "nauji",
+    "klausimas": "",
+    "vykdymas": [
+     "SAVA",
+     1
+    ],
+    "saltiniai": [
+     "av"
+    ],
+    "vezejas": "lp",
+    "reikia_pak": false,
+    "pak": 1,
+    "siunta": [
+     "",
+     0
+    ],
+    "type": "MAIN",
+    "ships": "1",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
+    "misrus_spr": "",
+    "ds_sent": "",
+    "siuntos": "",
+    "av_reduced": "2026-09-02 17:41:39",
+    "notes": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Email \"Naujas užsakymas\" sent.",
+     "Faktai irasyti: 1 eilutes · pajamos 2,15 EUR (be PVM, po nuolaidu) · PVM 0,97 EUR · marza 0,45 EUR · kontribucija (be pristatymo) 2,49 EUR · TESTINIS",
+     "Partijos nurašytos: #19708 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #19708: Partijose trūksta 1 vnt. — likutis ir partijos nesutampa",
+     "AV nurašymas: #19708 grynai AV 38 -> 37",
+     "Likutis sumažintas: Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g (38&rarr;38)",
+     "Vykdymas: MAIN — AV 1 vnt (1 siunta(-os))",
+     "Payment via Mokėjimas internetu (AUDIT-3)."
+    ],
+    "neperduota": [],
+    "items": [
+     [
+      19708,
+      1,
+      "av",
+      "1",
+      "0",
+      ""
+     ]
+    ]
+   },
+   "T4 #35417": {
+    "status": "processing",
+    "eile": "nauji",
+    "klausimas": "",
+    "vykdymas": [
+     "DROPSHIP",
+     1
+    ],
+    "saltiniai": [
+     "vf"
+    ],
+    "vezejas": "venipak_pastomatas",
+    "reikia_pak": true,
+    "pak": 1,
+    "siunta": [
+     "",
+     0
+    ],
+    "type": "DS",
+    "ships": "1",
+    "groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":3}}",
+    "misrus_spr": "",
+    "ds_sent": "",
+    "siuntos": "",
+    "av_reduced": "",
+    "notes": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Email \"Naujas užsakymas\" sent.",
+     "Faktai irasyti: 1 eilutes · pajamos 6,42 EUR (be PVM, po nuolaidu) · PVM 1,72 EUR · marza 1,62 EUR · kontribucija (be pristatymo) 2,95 EUR · TESTINIS",
+     "Likutis sumažintas: Churu Popn Serve skanėstas katėms  su tunu,35g (118&rarr;115)",
+     "Vykdymas: DS — VF 3 vnt (1 siunta(-os))",
+     "Payment via Mokėjimas internetu (AUDIT-4)."
+    ],
+    "neperduota": [
+     "vf"
+    ],
+    "items": [
+     [
+      34828,
+      3,
+      "vf",
+      "3",
+      "3",
+      ""
+     ]
+    ]
+   },
+   "T5 #35418": {
+    "status": "processing",
+    "eile": "nauji",
+    "klausimas": "",
+    "vykdymas": [
+     "DROPSHIP",
+     1
+    ],
+    "saltiniai": [
+     "zb"
+    ],
+    "vezejas": "venipak_kurjeris",
+    "reikia_pak": true,
+    "pak": 1,
+    "siunta": [
+     "",
+     0
+    ],
+    "type": "DS",
+    "ships": "1",
+    "groups": "{\"zb\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "misrus_spr": "",
+    "ds_sent": "",
+    "siuntos": "",
+    "av_reduced": "",
+    "notes": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Email \"Naujas užsakymas\" sent.",
+     "Faktai irasyti: 1 eilutes · pajamos 24,54 EUR (be PVM, po nuolaidu) · PVM 5,99 EUR · marza 7,66 EUR · kontribucija (be pristatymo) 11,20 EUR · TESTINIS",
+     "Likutis sumažintas: Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas, 2x2.8 l, ø 24 cm (1&rarr;0)",
+     "Vykdymas: DS — ZB 1 vnt (1 siunta(-os))",
+     "Payment via Mokėjimas internetu (AUDIT-5)."
+    ],
+    "neperduota": [
+     "zb"
+    ],
+    "items": [
+     [
+      33904,
+      1,
+      "zb",
+      "1",
+      "1",
+      ""
+     ]
+    ]
+   },
+   "T6 #35419": {
+    "status": "processing",
+    "eile": "misrus",
+    "klausimas": "",
+    "vykdymas": [
+     "MIŠRUS",
+     2
+    ],
+    "saltiniai": [
+     "ambrosia",
+     "vf"
+    ],
+    "vezejas": "venipak_pastomatas",
+    "reikia_pak": true,
+    "pak": 1,
+    "siunta": [
+     "",
+     0
+    ],
+    "type": "MIXED",
+    "ships": "2",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":2}}",
+    "misrus_spr": "",
+    "ds_sent": "",
+    "siuntos": "",
+    "av_reduced": "",
+    "notes": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Email \"Naujas užsakymas\" sent.",
+     "Faktai irasyti: 2 eilutes · pajamos 16,09 EUR (be PVM, po nuolaidu) · PVM 3,75 EUR · marza 5,12 EUR · kontribucija (be pristatymo) 6,05 EUR · TESTINIS",
+     "Likutis sumažintas: AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg (14&rarr;13), Churu Popn Serve skanėstas katėms  su tunu,35g (115&rarr;113)",
+     "Vykdymas: MIXED — AMBROSIA 1 vnt · VF 2 vnt (2 siunta(-os))",
+     "Payment via Mokėjimas internetu (AUDIT-6)."
+    ],
+    "neperduota": [
+     "ambrosia",
+     "vf"
+    ],
+    "items": [
+     [
+      19756,
+      1,
+      "ambrosia",
+      "1",
+      "1",
+      ""
+     ],
+     [
+      34828,
+      2,
+      "vf",
+      "2",
+      "2",
+      ""
+     ]
+    ]
+   },
+   "T7 #35420": {
+    "status": "processing",
+    "eile": "misrus",
+    "klausimas": "",
+    "vykdymas": [
+     "MIŠRUS",
+     2
+    ],
+    "saltiniai": [
+     "vf",
+     "zb"
+    ],
+    "vezejas": "venipak_kurjeris",
+    "reikia_pak": true,
+    "pak": 1,
+    "siunta": [
+     "",
+     0
+    ],
+    "type": "MIXED",
+    "ships": "2",
+    "groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"zb\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "misrus_spr": "",
+    "ds_sent": "",
+    "siuntos": "",
+    "av_reduced": "",
+    "notes": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Email \"Naujas užsakymas\" sent.",
+     "Faktai irasyti: 2 eilutes · pajamos 26,68 EUR (be PVM, po nuolaidu) · PVM 6,44 EUR · marza 8,20 EUR · kontribucija (be pristatymo) 11,34 EUR · TESTINIS",
+     "Likutis sumažintas: Churu Popn Serve skanėstas katėms  su tunu,35g (113&rarr;112), Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas, 2x2.8 l, ø 24 cm (0&rarr;-1)",
+     "Vykdymas: MIXED — VF 1 vnt · ZB 1 vnt (2 siunta(-os))",
+     "Payment via Mokėjimas internetu (AUDIT-7)."
+    ],
+    "neperduota": [
+     "vf",
+     "zb"
+    ],
+    "items": [
+     [
+      34828,
+      1,
+      "vf",
+      "1",
+      "1",
+      ""
+     ],
+     [
+      33904,
+      1,
+      "zb",
+      "1",
+      "1",
+      ""
+     ]
+    ]
+   },
+   "T8 #35421": {
+    "status": "processing",
+    "eile": "misrus",
+    "klausimas": "",
+    "vykdymas": [
+     "MIŠRUS",
+     3
+    ],
+    "saltiniai": [
+     "av",
+     "quattro",
+     "prins"
+    ],
+    "vezejas": "venipak_kurjeris",
+    "reikia_pak": true,
+    "pak": 1,
+    "siunta": [
+     "",
+     0
+    ],
+    "type": "MIXED",
+    "ships": "3",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"quattro\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"prins\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "misrus_spr": "",
+    "ds_sent": "",
+    "siuntos": "",
+    "av_reduced": "2026-09-02 17:41:47",
+    "notes": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Email \"Naujas užsakymas\" sent.",
+     "Faktai irasyti: 3 eilutes · pajamos 40,66 EUR (be PVM, po nuolaidu) · PVM 9,38 EUR · marza 12,59 EUR · kontribucija (be pristatymo) 15,33 EUR · TESTINIS",
+     "Partijos nurašytos: #19708 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #19708: Partijose trūksta 1 vnt. — likutis ir partijos nesutampa",
+     "AV nurašymas: #19708 grynai AV 37 -> 36",
+     "Likutis sumažintas: Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g (37&rarr;37), QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu, (8&rarr;7), Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg (20&rarr;19)",
+     "Vykdymas: MIXED — AV 1 vnt · QUATTRO 1 vnt · PRINS 1 vnt (3 siunta(-os))",
+     "Payment via Mokėjimas internetu (AUDIT-8)."
+    ],
+    "neperduota": [
+     "quattro",
+     "prins"
+    ],
+    "items": [
+     [
+      19708,
+      1,
+      "av",
+      "1",
+      "0",
+      ""
+     ],
+     [
+      16727,
+      1,
+      "quattro",
+      "1",
+      "1",
+      ""
+     ],
+     [
+      16889,
+      1,
+      "prins",
+      "1",
+      "1",
+      ""
+     ]
+    ]
+   },
+   "T9 #35422": {
+    "status": "on-hold",
+    "eile": "neapmoketi",
+    "klausimas": "",
+    "vykdymas": [
+     "DROPSHIP",
+     1
+    ],
+    "saltiniai": [
+     "ambrosia"
+    ],
+    "vezejas": "venipak_pastomatas",
+    "reikia_pak": true,
+    "pak": 1,
+    "siunta": [
+     "",
+     0
+    ],
+    "type": "DS",
+    "ships": "1",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "misrus_spr": "",
+    "ds_sent": "",
+    "siuntos": "",
+    "av_reduced": "",
+    "notes": [
+     "Email \"Naujas užsakymas\" sent.",
+     "AUDITAS bacs Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
+     "Likutis sumažintas: AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg (13&rarr;12)",
+     "Vykdymas: DS — AMBROSIA 1 vnt (1 siunta(-os))"
+    ],
+    "neperduota": [
+     "ambrosia"
+    ],
+    "items": [
+     [
+      19756,
+      1,
+      "ambrosia",
+      "1",
+      "1",
+      ""
+     ]
+    ]
+   },
+   "T10 #35423": {
+    "status": "processing",
+    "eile": "nauji",
+    "klausimas": "Trūksta sandėlyje",
+    "vykdymas": [
+     "SAVA",
+     1
+    ],
+    "saltiniai": [
+     "av"
+    ],
+    "vezejas": "venipak_pastomatas",
+    "reikia_pak": true,
+    "pak": 1,
+    "siunta": [
+     "",
+     0
+    ],
+    "type": "MAIN",
+    "ships": "1",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":3}}",
+    "misrus_spr": "",
+    "ds_sent": "",
+    "siuntos": "",
+    "av_reduced": "2026-09-02 17:41:50",
+    "notes": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Email \"Naujas užsakymas\" sent.",
+     "Faktai irasyti: 1 eilutes · pajamos 14,03 EUR (be PVM, po nuolaidu) · PVM 3,32 EUR · marza 14,03 EUR · kontribucija (be pristatymo) 15,36 EUR · TESTINIS",
+     "AV nurašymas: #35074 grynai AV 1 -> 0",
+     "Likutis sumažintas: Žaislas šuniui – Medžiaginis kaktusas Fernando, 17 x 15 cm (1&rarr;1)",
+     "Vykdymas: MAIN — AV 3 vnt (1 siunta(-os))",
+     "Payment via Mokėjimas internetu (AUDIT-10)."
+    ],
+    "neperduota": [],
+    "items": [
+     [
+      35074,
+      3,
+      "av",
+      "3",
+      "0",
+      ""
+     ]
+    ]
+   },
+   "T11 #35424": {
+    "status": "processing",
+    "eile": "nauji",
+    "klausimas": "",
+    "vykdymas": [
+     "DROPSHIP",
+     1
+    ],
+    "saltiniai": [
+     "ambrosia"
+    ],
+    "vezejas": "venipak_pastomatas",
+    "reikia_pak": true,
+    "pak": 1,
+    "siunta": [
+     "",
+     0
+    ],
+    "type": "DS",
+    "ships": "1",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "misrus_spr": "",
+    "ds_sent": "",
+    "siuntos": "",
+    "av_reduced": "",
+    "notes": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Email \"Naujas užsakymas\" sent.",
+     "Faktai irasyti: 1 eilutes · pajamos 11,81 EUR (be PVM, po nuolaidu) · PVM 2,85 EUR · marza 4,04 EUR · kontribucija (be pristatymo) 5,37 EUR · TESTINIS",
+     "Likutis sumažintas: AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg (12&rarr;11)",
+     "Vykdymas: DS — AMBROSIA 1 vnt (1 siunta(-os))",
+     "Payment via Mokėjimas internetu (AUDIT-11)."
+    ],
+    "neperduota": [
+     "ambrosia"
+    ],
+    "items": [
+     [
+      19756,
+      1,
+      "ambrosia",
+      "1",
+      "1",
+      ""
+     ]
+    ]
+   },
+   "T12 #35425": {
+    "status": "processing",
+    "eile": "misrus",
+    "klausimas": "",
+    "vykdymas": [
+     "MIŠRUS",
+     2
+    ],
+    "saltiniai": [
+     "ambrosia",
+     "av"
+    ],
+    "vezejas": "venipak_pastomatas",
+    "reikia_pak": true,
+    "pak": 2,
+    "siunta": [
+     "",
+     0
+    ],
+    "type": "MIXED",
+    "ships": "2",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":2},\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":2}}",
+    "misrus_spr": "",
+    "ds_sent": "",
+    "siuntos": "",
+    "av_reduced": "2026-09-02 17:41:53",
+    "notes": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Email \"Naujas užsakymas\" sent.",
+     "Faktai irasyti: 2 eilutes · pajamos 27,92 EUR (be PVM, po nuolaidu) · PVM 6,23 EUR · marza 8,98 EUR · kontribucija (be pristatymo) 9,91 EUR · TESTINIS",
+     "Partijos nurašytos: #19708 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #19708: Partijose trūksta 2 vnt. — likutis ir partijos nesutampa",
+     "AV nurašymas: #19708 grynai AV 36 -> 34",
+     "Likutis sumažintas: AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg (11&rarr;9), Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g (36&rarr;36)",
+     "Vykdymas: MIXED — AMBROSIA 2 vnt · AV 2 vnt (2 siunta(-os))",
+     "Payment via Mokėjimas internetu (AUDIT-12)."
+    ],
+    "neperduota": [
+     "ambrosia"
+    ],
+    "items": [
+     [
+      19756,
+      2,
+      "ambrosia",
+      "2",
+      "2",
+      ""
+     ],
+     [
+      19708,
+      2,
+      "av",
+      "2",
+      "0",
+      ""
+     ]
+    ]
+   },
+   "T13 #35426": {
+    "status": "processing",
+    "eile": "misrus",
+    "klausimas": "",
+    "vykdymas": [
+     "MIŠRUS",
+     2
+    ],
+    "saltiniai": [
+     "ambrosia",
+     "belcor_tofu"
+    ],
+    "vezejas": "venipak_kurjeris",
+    "reikia_pak": true,
+    "pak": 1,
+    "siunta": [
+     "",
+     0
+    ],
+    "type": "MIXED",
+    "ships": "2",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"belcor_tofu\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "misrus_spr": "",
+    "ds_sent": "",
+    "siuntos": "",
+    "av_reduced": "",
+    "notes": [
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Email \"Naujas užsakymas\" sent.",
+     "Faktai irasyti: 2 eilutes · pajamos 15,27 EUR (be PVM, po nuolaidu) · PVM 4,05 EUR · marza 5,60 EUR · kontribucija (be pristatymo) 8,74 EUR · TESTINIS",
+     "Likutis sumažintas: AMBROSIA Junior begrūdis su šviežia vištiena ir lašiša sausas maistas didelių veislių jauniems šuniukams, Fresh Chicken & Salmon 2 kg (9&rarr;8), Kraikas katėms Purrfect Bamboo  aktyvintos anglies kvapo, 6 l (2,5 kg), nedulkantis (2&rarr;1)",
+     "Vykdymas: MIXED — AMBROSIA 1 vnt · BELCOR_TOFU 1 vnt (2 siunta(-os))",
+     "Payment via Mokėjimas internetu (AUDIT-13)."
+    ],
+    "neperduota": [
+     "ambrosia",
+     "belcor_tofu"
+    ],
+    "items": [
+     [
+      19780,
+      1,
+      "ambrosia",
+      "1",
+      "1",
+      ""
+     ],
+     [
+      17719,
+      1,
+      "belcor_tofu",
+      "1",
+      "1",
+      ""
+     ]
+    ]
+   }
+  },
+  "mail": [
+   [
+    "17:41:37",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35414 — 2026-09-02"
+   ],
+   [
+    "17:41:37",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35414 — apmokėjimas gautas"
+   ],
+   [
+    "17:41:38",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35415 — 2026-09-02"
+   ],
+   [
+    "17:41:39",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35415 — apmokėjimas gautas"
+   ],
+   [
+    "17:41:40",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35416 — 2026-09-02"
+   ],
+   [
+    "17:41:40",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35416 — apmokėjimas gautas"
+   ],
+   [
+    "17:41:42",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35417 — 2026-09-02"
+   ],
+   [
+    "17:41:42",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35417 — apmokėjimas gautas"
+   ],
+   [
+    "17:41:42",
+    "terra@petshop.lt",
+    "[Petshop.lt] Produkto neturime"
+   ],
+   [
+    "17:41:43",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35418 — 2026-09-02"
+   ],
+   [
+    "17:41:43",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35418 — apmokėjimas gautas"
+   ],
+   [
+    "17:41:45",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35419 — 2026-09-02"
+   ],
+   [
+    "17:41:45",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35419 — apmokėjimas gautas"
+   ],
+   [
+    "17:41:46",
+    "terra@petshop.lt",
+    "[Petshop.lt] Produkto neturime"
+   ],
+   [
+    "17:41:46",
+    "terra@petshop.lt",
+    "[Petshop.lt] Produkto išankstinis užsakymas"
+   ],
+   [
+    "17:41:46",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35420 — 2026-09-02"
+   ],
+   [
+    "17:41:47",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35420 — apmokėjimas gautas"
+   ],
+   [
+    "17:41:48",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35421 — 2026-09-02"
+   ],
+   [
+    "17:41:49",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35421 — apmokėjimas gautas"
+   ],
+   [
+    "17:41:50",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35422 — 2026-09-02"
+   ],
+   [
+    "17:41:50",
+    "terra@petshop.lt",
+    "[Petshop.lt] Liko nedidelis kiekis"
+   ],
+   [
+    "17:41:51",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35423 — 2026-09-02"
+   ],
+   [
+    "17:41:51",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35423 — apmokėjimas gautas"
+   ],
+   [
+    "17:41:52",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35424 — 2026-09-02"
+   ],
+   [
+    "17:41:52",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35424 — apmokėjimas gautas"
+   ],
+   [
+    "17:41:53",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35425 — 2026-09-02"
+   ],
+   [
+    "17:41:54",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35425 — apmokėjimas gautas"
+   ],
+   [
+    "17:41:54",
+    "terra@petshop.lt",
+    "[Petshop.lt] Liko nedidelis kiekis"
+   ],
+   [
+    "17:41:55",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35426 — 2026-09-02"
+   ],
+   [
+    "17:41:55",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35426 — apmokėjimas gautas"
+   ]
+  ],
+  "html": {
+   "ps-desk": {
+    "code": 200,
+    "len": 289758,
+    "title": "Petshop užsakymai &lsaquo; Petshop.lt &#8212; WordPress",
+    "txt": "Petshop · užsakymai / ▶ Rytinė eiga WooCommerce sąrašas Prekių katalogas ribos šiandien praėjo · nauji keliaus rytoj AV sandėlis 22 UžsakymaiNauji5Mišrūs7Neapmokėti1Laukia prekių0Paruošta siųsti0Klausimai2Išsiųsti1Atšaukti1Visi užsakymai17ĮrankiaiTiekimasLaiškai tiekėjams4Perdavimas tiekėjams4Siūlymai Tuščia. Čia rinksis automatiniai siūlymai — kiekvieną tvirtinsi arba atmesi tu.Laukia sprendimo 7›Nepaleisti planai 0›Neperduota tiekėjams 4›Partijose 0›Laukia prekių 0›Paruošta siųsti 0›Išsiųsta šiandien 0Naujiapmokėti, laukia surinkimo ar perdavimoVykdymas: visiSava (AV)DropshipMišrūs— Vetfarmas— Žalioji Banga— Kauno grūdai / Quattro— Faunas / Prins— Ambrosia— BelacorPristatymas: visiVenipak kurjerisVenipak paštomatasLP ExpressData: visosŠiandienVakarŠią savaitęŠį mėnesįPraėjusį mėnesįIntervalas…Būsena: visosNaujiParuošta siųstiKelyjeĮvykdytiAtšauktiMokėjimas: visiApmokėtaNeapmokėtaPayseraPavedimasLaukiantys: visiLaukia 2+ d.Laukia 3+ d.Laukia 5+ d.Filtruoti5 užsakymaiŽymėti visus UžsakymasKlientasKą pirkoVykdymas SumaPristatymasBūsena#35424šiandien 17:41AUDITAS Testas 11VilniusAMB1× AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg✎ AUDITAS T11: ATŠAUKIMUI AVDROPSHIPAMB ⏳AMB 10:00 · praėjo, keliaus rytoj16,44 €apmokėtaVenipak paštomatasVykdomasPerduoti⋯#35418šiandien 17:41AUDITAS Testas 5VilniusZB1× Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas, 2x2.8 l, ø 24 cm✎ AUDITAS T5: ZB dropship kurjerisDROPSHIPZB ⏳ZB 09:00 · praėjo, keliaus rytoj34,52 €apmokėtaVenipak kurjerisVykdomasPerduoti⋯#35417šiandien 17:41AUDITAS Testas 4VilniusVF3× Churu Popn Serve skanėstas katėms su tunu,35g✎ AUDITAS T4: VF dropship paštomatasDROPSHIPVF ⏳VF 13:00 · praėjo, keliaus rytoj9,92 €apmokėtaVenipak paštomatasVykdomasPerduoti⋯#35416šiandien 17:41AUDITAS Testas 3VilniusAV1× Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g✎ AUDITAS T3: AV LP terminalas (NEREGISTRUOTI)SAVAAV 11:00 · praėjo, keliaus rytoj5,61 €apmokėtaLP ExpressVykdomasSurinkti⋯#3509008-26 01:53Sart tr—AMB1× AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 12 kgVF1× 691756 FURminator deShedding šampūnas šunims, 473 mlAV1× Hikari Cichlid Excel Mini, 250 gMIŠRUS3 siuntosplanas: AMB→klientui · VF→klientuiAMB ⏳VF ⏳74,78 € 19,79 €apmokėtaVenipak paštomatasVykdomaslaukia 7 d.Surinkti⋯ ✕ WooCommerce Atsisakyti Patvirtinti Pažymėta 0 Surinkimo lapai Perduoti tiekėjams Venipak registruoti Venipak lipdukai LP lipdukai LP kurjeris + manifestas Sąskaitos Atžymėti Ačiū, kad kuriate su WordPress. Versija 6.9.4 Uždaryti Sesija pasibaigė Prisijunkite iš naujo Prisijungimo puslapis bus atidarytas naujame lange. Po prisijungimo galėsite jį uždaryti ir grįžti į šį puslapį."
+   },
+   "ps-desk&eile=misrus": {
+    "code": 200,
+    "len": 277270,
+    "title": "Petshop užsakymai &lsaquo; Petshop.lt &#8212; WordPress",
+    "txt": "Petshop · užsakymai / ▶ Rytinė eiga WooCommerce sąrašas Prekių katalogas ribos šiandien praėjo · nauji keliaus rytoj AV sandėlis 22 UžsakymaiNauji5Mišrūs7Neapmokėti1Laukia prekių0Paruošta siųsti0Klausimai2Išsiųsti1Atšaukti1Visi užsakymai17ĮrankiaiTiekimasLaiškai tiekėjams4Perdavimas tiekėjams4Siūlymai Tuščia. Čia rinksis automatiniai siūlymai — kiekvieną tvirtinsi arba atmesi tu.Laukia sprendimo 7›Nepaleisti planai 0›Neperduota tiekėjams 4›Partijose 0›Laukia prekių 0›Paruošta siųsti 0›Išsiųsta šiandien 0Mišrūskelių sandėlių užsakymai — reikia sprendimoVykdymas: visiSava (AV)DropshipMišrūs— Vetfarmas— Žalioji Banga— Kauno grūdai / Quattro— Faunas / Prins— Ambrosia— BelacorPristatymas: visiVenipak kurjerisVenipak paštomatasLP ExpressData: visosŠiandienVakarŠią savaitęŠį mėnesįPraėjusį mėnesįIntervalas…Būsena: visosNaujiParuošta siųstiKelyjeĮvykdytiAtšauktiMokėjimas: visiApmokėtaNeapmokėtaPayseraPavedimasLaukiantys: visiLaukia 2+ d.Laukia 3+ d.Laukia 5+ d.Filtruoti7 užsakymaiŽymėti visusReikia sprendimo (7)#35426AUDITAS Testas 13apmokėta23,31 €Venipak kurjerisAMBAMB1× AMBROSIA Junior begrūdis su šviežia vištiena ir lašiša sausas maistas didelių veislių jauniems šuniukams, Fresh Chicken & Salmon 2 kg2 kg10:00 · praėjo, keliaus rytoj tiesiai klientui į AV BELBEL1× Kraikas katėms Purrfect Bamboo aktyvintos anglies kvapo, 6 l (2,5 kg), nedulkantis2,5 kg09:00 · praėjo, keliaus rytoj tiesiai klientui į AV klientas už pristatymą sumokėjo 4,83 €Patvirtinti planą#35425AUDITAS Testas 12apmokėta35,93 €Venipak paštomatasAMBAMB2× AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg4 kg10:00 · praėjo, keliaus rytoj tiesiai klientui į AV AVAV2× Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g1 kg11:00 · praėjo, keliaus rytojsavas sandėlisklientas už pristatymą sumokėjo 2,15 €Patvirtinti planą#35421AUDITAS Testas 8apmokėta54,03 €Venipak kurjerisAVAV1× Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g0,5 kg11:00 · praėjo, keliaus rytojsavas sandėlisQUAQUA1× QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu,1,5 kg09:00 · praėjo, keliaus rytoj tiesiai klientui į AV PRIPRI1× Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg1,5 kg09:00 · praėjo, keliaus rytoj tiesiai klientui į AV klientas už pristatymą sumokėjo 4,83 €Patvirtinti planą#35420AUDITAS Testas 7apmokėta37,11 €Venipak kurjerisVFVF1× Churu Popn Serve skanėstas katėms su tunu,35g0 kg13:00 · praėjo, keliaus rytoj tiesiai klientui į AV ZBZB1× Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas, 2x2.8 l, ø 24 cm0,4 kg09:00 · praėjo, keliaus rytoj tiesiai klientui į AV klientas už pristatymą sumokėjo 4,83 €Patvirtinti planą#35419AUDITAS Testas 6apmokėta21,62 €Venipak paštomatasAMBAMB1× AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg2 kg10:00 · praėjo, keliaus rytoj tiesiai klientui į AV VFVF2× Churu Popn Serve skanėstas katėms su tunu,35g0,1 kg13:00 · praėjo, keliaus rytoj tiesiai klientui į AV klientas už pristatymą sumokėjo 2,15 €Patvirtinti planą#35415AUDITAS Testas 2apmokėta69,79 €Venipak kurjerisAMBAMB4× AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg8 kg10:00 · praėjo, keliaus rytoj ties"
+   },
+   "ps-desk&eile=klausimai": {
+    "code": 200,
+    "len": 264051,
+    "title": "Petshop užsakymai &lsaquo; Petshop.lt &#8212; WordPress",
+    "txt": "Petshop · užsakymai / ▶ Rytinė eiga WooCommerce sąrašas Prekių katalogas ribos šiandien praėjo · nauji keliaus rytoj AV sandėlis 22 UžsakymaiNauji5Mišrūs7Neapmokėti1Laukia prekių0Paruošta siųsti0Klausimai2Išsiųsti1Atšaukti1Visi užsakymai17ĮrankiaiTiekimasLaiškai tiekėjams4Perdavimas tiekėjams4Siūlymai Tuščia. Čia rinksis automatiniai siūlymai — kiekvieną tvirtinsi arba atmesi tu.Laukia sprendimo 7›Nepaleisti planai 0›Neperduota tiekėjams 4›Partijose 0›Laukia prekių 0›Paruošta siųsti 0›Išsiųsta šiandien 0Klausimaireikia tavo sprendimoVykdymas: visiSava (AV)DropshipMišrūs— Vetfarmas— Žalioji Banga— Kauno grūdai / Quattro— Faunas / Prins— Ambrosia— BelacorPristatymas: visiVenipak kurjerisVenipak paštomatasLP ExpressData: visosŠiandienVakarŠią savaitęŠį mėnesįPraėjusį mėnesįIntervalas…Būsena: visosNaujiParuošta siųstiKelyjeĮvykdytiAtšauktiMokėjimas: visiApmokėtaNeapmokėtaPayseraPavedimasLaukiantys: visiLaukia 2+ d.Laukia 3+ d.Laukia 5+ d.Filtruoti2 užsakymaiŽymėti visus#35423AUDITAS Testas 10 · 19,13 €apmokėta▲ Trūksta sandėlyjeŽaislas šuniui – Medžiaginis kaktusas Fernando, 17 x 15 cmreikia 3 · AV likutis 0tiekėjo, turinčio šią prekę, nėraLauktiAtšaukti užsakymąWooCommerce#35100Aru ZX · 47,66 €apmokėta▲ Trūksta sandėlyje20 vnt. rudų kiaulės knysliųreikia 1 · AV likutis 0tiekėjo, turinčio šią prekę, nėraLauktiAtšaukti užsakymąWooCommerceKiekvienas mygtukas atlieka visą grandinę: pakeičia šaltinį, įrašo į istoriją ir grąžina užsakymą į darbo eilę. „Laukti“ nieko neprimena — pažymi ir tiek. ✕ WooCommerce Atsisakyti Patvirtinti Pažymėta 0 Surinkimo lapai Perduoti tiekėjams Venipak registruoti Venipak lipdukai LP lipdukai LP kurjeris + manifestas Sąskaitos Atžymėti Ačiū, kad kuriate su WordPress. Versija 6.9.4 Uždaryti Sesija pasibaigė Prisijunkite iš naujo Prisijungimo puslapis bus atidarytas naujame lange. Po prisijungimo galėsite jį uždaryti ir grįžti į šį puslapį."
+   },
+   "ps-desk&eile=neapmoketi": {
+    "code": 200,
+    "len": 267076,
+    "title": "Petshop užsakymai &lsaquo; Petshop.lt &#8212; WordPress",
+    "txt": "Petshop · užsakymai / ▶ Rytinė eiga WooCommerce sąrašas Prekių katalogas ribos šiandien praėjo · nauji keliaus rytoj AV sandėlis 22 UžsakymaiNauji5Mišrūs7Neapmokėti1Laukia prekių0Paruošta siųsti0Klausimai2Išsiųsti1Atšaukti1Visi užsakymai17ĮrankiaiTiekimasLaiškai tiekėjams4Perdavimas tiekėjams4Siūlymai Tuščia. Čia rinksis automatiniai siūlymai — kiekvieną tvirtinsi arba atmesi tu.Laukia sprendimo 7›Nepaleisti planai 0›Neperduota tiekėjams 4›Partijose 0›Laukia prekių 0›Paruošta siųsti 0›Išsiųsta šiandien 0Neapmokėtilaukia kliento pinigų — tik stebėtiVykdymas: visiSava (AV)DropshipMišrūs— Vetfarmas— Žalioji Banga— Kauno grūdai / Quattro— Faunas / Prins— Ambrosia— BelacorPristatymas: visiVenipak kurjerisVenipak paštomatasLP ExpressData: visosŠiandienVakarŠią savaitęŠį mėnesįPraėjusį mėnesįIntervalas…Būsena: visosNaujiParuošta siųstiKelyjeĮvykdytiAtšauktiMokėjimas: visiApmokėtaNeapmokėtaPayseraPavedimasLaukiantys: visiLaukia 2+ d.Laukia 3+ d.Laukia 5+ d.Filtruoti1 užsakymasŽymėti visus UžsakymasKlientasKą pirkoVykdymas SumaPristatymasBūsena#35422šiandien 17:41AUDITAS Testas 9VilniusAMB1× AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg✎ AUDITAS T9: NEAPMOKĖTAS bacsDROPSHIP16,44 €neapmokėtaVenipak paštomatasSustabdytasPažymėti apmokėtu⋯ ✕ WooCommerce Atsisakyti Patvirtinti Pažymėta 0 Surinkimo lapai Perduoti tiekėjams Venipak registruoti Venipak lipdukai LP lipdukai LP kurjeris + manifestas Sąskaitos Atžymėti Ačiū, kad kuriate su WordPress. Versija 6.9.4 Uždaryti Sesija pasibaigė Prisijunkite iš naujo Prisijungimo puslapis bus atidarytas naujame lange. Po prisijungimo galėsite jį uždaryti ir grįžti į šį puslapį."
+   },
+   "ps-desk&view=rytas": {
+    "code": 200,
+    "len": 242469,
+    "title": "Petshop užsakymai &lsaquo; Petshop.lt &#8212; WordPress",
+    "txt": "Petshop · rytinė eiga 1Peržiūra › 2Surinkimo lapai › 3Venipak › 4LP Express › 5Tiekėjams › 6Baigta ✕ Išeiti Į rytinę partiją patenka2iš sandėlio (AV)4 Venipak · 1 LP4tiekėjamsAMB 2 · ZB 1 · VF 22klausimaiį partiją NEPATENKANr.KlientasKeliasPristatymasTiekėjai#35424AUDITAS Testas 11DROPSHIPVenipak paštomatasAMB#35418AUDITAS Testas 5DROPSHIPVenipak kurjerisZB#35417AUDITAS Testas 4DROPSHIPVenipak paštomatasVF#35416AUDITAS Testas 3SAVALP Express—#35090Sart trMIŠRUSVenipak paštomatasAMBVFPartija sudaryta 17:42. Perskaičiuoti iš naujoPartija užrakinama — vėliau atėję užsakymai jos nepakeis.Pradėti Ačiū, kad kuriate su WordPress. Versija 6.9.4 Uždaryti Sesija pasibaigė Prisijunkite iš naujo Prisijungimo puslapis bus atidarytas naujame lange. Po prisijungimo galėsite jį uždaryti ir grįžti į šį puslapį."
+   }
+  }
+ }
+}
