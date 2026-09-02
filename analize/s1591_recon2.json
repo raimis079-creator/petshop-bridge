@@ -1,0 +1,812 @@
+{
+ "v": "dep-075704",
+ "kurimas": 200,
+ "sid": 4439,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "VERSIJA": "S1591-R2",
+  "eil": 1328,
+  "map": [
+   "283:function petshop_xml_is_legacy_product( int $post_id ): bool {",
+   "292:function petshop_xml_text_is_konservas( string $category, string $name ): bool {",
+   "307:function petshop_xml_is_konservas( int $post_id ): bool {",
+   "329:add_filter( 'wp_all_import_is_post_to_create', 'petshop_xml_block_zb_create', 10, 3 );",
+   "331:function petshop_xml_block_zb_create( $continue_import, $data, $import_id ) {",
+   "448:add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_zb_cheap_update', 11, 4 );",
+   "450:function petshop_xml_block_zb_cheap_update( $continue_import, $post_id, $data, $import_id ) {",
+   "498:add_filter( 'wp_all_import_is_post_to_create', 'petshop_xml_block_vf_create', 10, 3 );",
+   "500:function petshop_xml_block_vf_create( $continue_import, $data, $import_id ) {",
+   "595:add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_legacy_update', 9, 4 );",
+   "597:function petshop_xml_block_legacy_update( $continue_import, $post_id, $data, $import_id ) {",
+   "625:add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_junk_update', 10, 4 );",
+   "627:function petshop_xml_block_junk_update( $continue_import, $post_id, $data, $import_id ) {",
+   "663:add_action( 'pmxi_saved_post', 'petshop_xml_after_import', 10, 3 );",
+   "666:function petshop_xml_after_import( $post_id, $data, $is_update ) {",
+   "721:function petshop_xml_safe_trash( int $post_id, bool $is_update, string $reason, array $context = [], bool $all",
+   "771:function petshop_xml_zb_to_draft( int $post_id, string $reason, bool $set_konservas_price = false ): void {",
+   "803:function petshop_xml_get_current_import_id( int $post_id ): ?int {",
+   "828:function petshop_xml_is_existing_zb_junk( int $post_id ): bool {",
+   "853:function petshop_xml_sync_only( int $post_id, string $import_type ): void {",
+   "886:function petshop_xml_initial_import( int $post_id, bool $is_update ): void {",
+   "1247:function petshop_xml_get_brand_slug( int $post_id ): string {",
+   "1253:function petshop_xml_get_cat_slugs( int $post_id ): array {",
+   "1262:function petshop_xml_log( string $msg ): void {",
+   "1272:function petshop_xml_log_structured( array $data ): void {",
+   "1281:add_action( 'admin_post_petshop_download_log', function() {",
+   "1294:add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_vf_trash_update', 10, 4 );",
+   "1296:function petshop_xml_block_vf_trash_update( $continue_import, $post_id, $data, $import_id ) {"
+  ],
+  "block_vf_create": [
+   "function petshop_xml_block_vf_create( $continue_import, $data, $import_id ) {",
+   "",
+   "    if ( ! in_array( (int) $import_id, PETSHOP_XML_VF_IMPORT_IDS, true ) ) {",
+   "        return $continue_import;",
+   "    }",
+   "    if ( ! is_array( $data ) ) {",
+   "        return $continue_import;",
+   "    }",
+   "    if ( ! class_exists( 'Petshop_Import_Rules_VF' ) ) {",
+   "        return $continue_import;",
+   "    }",
+   "",
+   "    $sku         = (string) ( $data['sku_id'] ?? '' );",
+   "    $brand       = (string) ( $data['brand'] ?? '' );",
+   "    $category    = (string) ( $data['category'] ?? '' );",
+   "    $name        = (string) ( $data['product_name'] ?? '' );",
+   "    $description = (string) ( $data['description'] ?? '' );",
+   "    $base_price  = (float)  ( $data['base_price'] ?? 0 );",
+   "    $personal    = (float)  ( $data['personal_price'] ?? 0 );",
+   "",
+   "    if ( $sku === '' && $brand === '' && $category === '' ) {",
+   "        return $continue_import;",
+   "    }",
+   "",
+   "    // v1.5.16: VF DUBLIKATU PREVENCIJA — jei VF sku_id JAU egzistuoja kaip",
+   "    // kazkurios NE-trash prekes _vf_supplier_sku (Legacy originalas suporuotas),",
+   "    // NEKURTI dublikato. VF Scenarijus A atnaujins esama preke per update",
+   "    // (qty+savikaina). Be sios patikros VF \"Create new\" rezimas kure dublikata",
+   "    // kas importa -> atpazindavo (vf_duplicate_of_existing) -> trash -> ciklas.",
+   "    //",
+   "    // Tik gryna indeksuota meta uzklausa (greita). Fail-safe: jei sku tuscias",
+   "    // arba uzklausa nieko negrazina -> testi normalia logika.",
+   "    if ( $sku !== '' ) {",
+   "        global $wpdb;",
+   "        $existing_id = $wpdb->get_var( $wpdb->prepare(",
+   "            \"SELECT m.post_id FROM {$wpdb->postmeta} m",
+   "             INNER JOIN {$wpdb->posts} p ON p.ID = m.post_id",
+   "             WHERE m.meta_key = '_vf_supplier_sku' AND m.meta_value = %s",
+   "               AND p.post_type = 'product' AND p.post_status != 'trash'",
+   "             LIMIT 1\",",
+   "            $sku",
+   "        ) );",
+   "        if ( $existing_id ) {",
+   "            petshop_xml_log_structured( [",
+   "                'action'      => 'VF-BLOCK-CREATE',",
+   "                'sku'         => $sku,",
+   "                'brand'       => $brand,",
+   "                'existing_id' => (int) $existing_id,",
+   "                'reason'      => 'vf_sku_already_exists',",
+   "                'import_id'   => $import_id,",
+   "                'note'        => 'VF create prevented (SKU already paired with existing product) (v1.5.16)',",
+   "            ] );",
+   "            return false; // BLOKUOTI kurima — esama preke suporuos per update",
+   "        }",
+   "    }",
+   "",
+   "    $price = $personal > 0 ? $personal : $base_price;",
+   "",
+   "    $rules = new Petshop_Import_Rules_VF();",
+   "",
+   "    $decision = $rules->vf_should_import( $brand, $sku, $category, $description, $name, $price );",
+   "",
+   "    if ( empty( $decision['import'] ) ) {",
+   "        petshop_xml_log_structured( [",
+   "            'action'    => 'VF-BLOCK-CREATE',",
+   "            'sku'       => $sku,",
+   "            'brand'     => $brand,",
+   "            'category'  => $category,",
+   "            'reason'    => (string) ( $decision['reason'] ?? 'unknown' ),",
+   "            'import_id' => $import_id,",
+   "            'note'      => 'VF create prevented (filter) before image download (v1.5.12)',",
+   "        ] );",
+   "        return false;",
+   "    }",
+   "",
+   "    $slug = $rules->get_wc_category_slug( $category );",
+   "    if ( ! $slug ) {",
+   "        petshop_xml_log_structured( [",
+   "            'action'    => 'VF-BLOCK-CREATE',",
+   "            'sku'       => $sku,",
+   "            'brand'     => $brand,",
+   "            'category'  => $category,",
+   "            'reason'    => 'no_category_mapping',",
+   "            'import_id' => $import_id,",
+   "            'note'      => 'VF create prevented (no mapping) before image download (v1.5.12)',",
+   "        ] );",
+   "        return false;",
+   "    }",
+   "",
+   "    return $continue_import;",
+   "}",
+   "",
+   "/**",
+   " * v1.5.11: PREVENTYVUS LEGACY GUARD — ZB importai (#2, #3) neliecia Legacy prekiu.",
+   " */",
+   "add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_legacy_update', 9, 4 );",
+   "",
+   "function petshop_xml_block_legacy_update( $continue_import, $post_id, $data, $import_id ) {",
+   "",
+   "    if ( get_post_type( $post_id ) !== 'product' ) {",
+   "        return $continue_import;",
+   "    }",
+   "",
+   "    if ( ! in_array( (int) $import_id, PETSHOP_XML_ZB_ALL_IMPORT_IDS, true ) ) {",
+   "        return $continue_import;",
+   "    }",
+   "",
+   "    if ( petshop_xml_is_legacy_product( $post_id ) ) {",
+   "        petshop_xml_log_structured( [",
+   "            'action'    => 'LEGACY-BLOCK-UPDATE',",
+   "            'post_id'   => $post_id,",
+   "            'sku'       => (string) get_post_meta( $post_id, '_sku', true ),",
+   "            'legacy'    => (string) get_post_meta( $post_id, '_legacy_manufacturer', true ),",
+   "            'import_id' => $import_id,",
+   "            'note'      => 'ZB import update prevented for Legacy product (v1.5.11 guard)',",
+   "        ] );",
+   "        return false;",
+   "    }",
+   "",
+   "    return $continue_import;",
+   "}",
+   "",
+   "/**",
+   " * v1.3.3-test8: PREVENTYVUS SAUGIKLIS pries WP All Import perrasymus",
+   " */",
+   "add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_junk_update', 10, 4 );",
+   "",
+   "function petshop_xml_block_junk_update( $continue_import, $post_id, $data, $import_id ) {",
+   "",
+   "    if ( get_post_type( $post_id ) !== 'product' ) {"
+  ],
+  "vf_ref": [
+   "49:*   VF sku_id <-> Legacy _vf_supplier_sku.",
+   "52:*   kai Legacy originalas suporuotas (turi _vf_supplier_sku + _vf_qty). Dublikatas",
+   "59:*   kazkurios NE-trash prekes _vf_supplier_sku -> NEKURTI. VF Scenarijus A",
+   "78:*   APIMTIS: tik ZB/VF dropship prekes. Legacy (_legacy_manufacturer) NELIECIA",
+   "217:*   ZB importai (#2,#3) NIEKADA neliecia prekes su _legacy_manufacturer.",
+   "284:$legacy_manuf = (string) get_post_meta( $post_id, '_legacy_manufacturer', true );",
+   "445:* Pastaba: sis filtras eina PO block_legacy_update (prioritetas 9 vs 10),",
+   "461:// Legacy prekes — jau blokuotos block_legacy_update (prioritetas 9). Saugiklis.",
+   "525:// kazkurios NE-trash prekes _vf_supplier_sku (Legacy originalas suporuotas),",
+   "537:WHERE m.meta_key = '_vf_supplier_sku' AND m.meta_value = %s",
+   "595:add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_legacy_update', 9, 4 );",
+   "597:function petshop_xml_block_legacy_update( $continue_import, $post_id, $data, $import_id ) {",
+   "612:'legacy'    => (string) get_post_meta( $post_id, '_legacy_manufacturer', true ),",
+   "686:'legacy'    => (string) get_post_meta( $post_id, '_legacy_manufacturer', true ),",
+   "1044:$existing_id = $ean_db->find_by_ean( $zb_ean, $post_id );"
+  ],
+  "inc": {
+   "class-admin-ui.php": 22109,
+   "class-ean-lookup.php": 5730,
+   "class-fulfillment-source.php": 6711,
+   "class-fulfillment.php": 3849,
+   "class-import-rules-vf.php": 16132,
+   "class-import-rules.php": 4404,
+   "class-pricing-vf.php": 20752,
+   "class-pricing-vf.v1.5.5.bak.php": 19099,
+   "class-pricing.php": 13712,
+   "class-product-cost-metabox.php": 26504,
+   "class-product-cost-resolver.php": 11986,
+   "class-vf-import.php": 32622
+  },
+  "inc_ref": {
+   "class-ean-lookup.php": [
+    "*     \"nėra barkodo\" placeholder'į. find_by_ean() šitą match'ino kaip realią",
+    "*     find_by_ean() grąžina null invalid reikšmėms. Apsauga centralizuota —",
+    "* v1.5.0 (2026-06-05): pridėti _global_unique_id ir _vf_barcode į find_by_ean SQL",
+    "public function find_by_ean( string $ean, int $skip_id = 0 ): ?int {",
+    "* v1.5.1: nauja privati helper'is. Naudojama find_by_ean() viduje, bet"
+   ],
+   "class-fulfillment-source.php": [
+    "|| get_post_meta( $pid, '_vf_supplier_sku', true ) !== '';"
+   ],
+   "class-fulfillment.php": [
+    "public function update_vf_qty( int $post_id, int $qty ): void {"
+   ],
+   "class-product-cost-metabox.php": [
+    "*     _zb_cost > 0, _vf_cost > 0, _zb_supplier_sku, _vf_supplier_sku) —",
+    "|| (string) get_post_meta( $post_id, '_vf_supplier_sku', true ) !== '';"
+   ],
+   "class-product-cost-resolver.php": [
+    "|| get_post_meta( $product_id, '_vf_supplier_sku', true ) !== '';",
+    "$data['supplier_sku']      = ( (string) get_post_meta( $product_id, '_vf_supplier_sku', true ) ) ?: null;"
+   ],
+   "class-vf-import.php": [
+    "*   Petshop_EAN_Lookup::find_by_ean() uzklausoje — pakeitus sugriutu VF prekiu",
+    "*   _vf_supplier_sku               VF sku_id (raw)",
+    "$vf_sku         = (string) get_post_meta( $post_id, '_vf_supplier_sku', true );",
+    "$matched_id = $ean_db->find_by_ean( $vf_barcode, $post_id );",
+    "update_post_meta( $matched_id, '_vf_supplier_sku', $vf_sku );",
+    "update_post_meta( $post_id, '_vf_supplier_sku', $vf_sku );",
+    "* Iesko per _sku ir _vf_supplier_sku.",
+    "// 1. _vf_supplier_sku match",
+    "WHERE meta_key = '_vf_supplier_sku'"
+   ]
+  },
+  "pmxi5": {
+   "unique_key": "{sku_id[1]}",
+   "is_update_missing_cf": "0",
+   "update_all_data": "no",
+   "is_keep_former_posts": "no",
+   "is_update_status": "0",
+   "is_update_title": "0",
+   "is_update_content": "0",
+   "is_update_images": "0",
+   "is_update_custom_fields": "1",
+   "custom_fields_list": [
+    "_vf_supplier_sku _vf_barcode _vf_brand_raw _vf_category_raw _vf_cost_xml _vf_personal_xml _vf_qty _vf_description_base64"
+   ],
+   "is_update_attributes": "0",
+   "custom_name": [
+    "_vf_supplier_sku",
+    "_vf_barcode",
+    "_vf_brand_raw",
+    "_vf_category_raw",
+    "_vf_cost_xml",
+    "_vf_personal_xml",
+    "_vf_qty",
+    "_vf_description_base64"
+   ],
+   "is_selective_hashing": "1",
+   "update_custom_fields_logic": "only",
+   "set_missing_to_draft": "0",
+   "create_new_records": "1",
+   "is_delete_missing": "0",
+   "is_update_menu_order": "0",
+   "custom_value": [
+    "{sku_id[1]}",
+    "{barcode[1]}",
+    "{brand[1]}",
+    "{category[1]}",
+    "{base_price[1]}",
+    "{personal_price[1]}",
+    "{qty[1]}",
+    "{description[1]}"
+   ]
+  },
+  "pmxi7": {
+   "unique_key": "- {id[1]} - {sku_id[1]}",
+   "is_update_missing_cf": "0",
+   "update_all_data": "no",
+   "is_keep_former_posts": "no",
+   "is_update_status": "0",
+   "is_update_title": "0",
+   "is_update_content": "0",
+   "is_update_images": "0",
+   "is_update_custom_fields": "1",
+   "custom_fields_list": [
+    "_vf_qty"
+   ],
+   "is_update_attributes": "0",
+   "custom_name": [
+    "_vf_qty"
+   ],
+   "is_selective_hashing": "1",
+   "update_custom_fields_logic": "only",
+   "set_missing_to_draft": "0",
+   "create_new_records": "0",
+   "is_delete_missing": "0",
+   "is_update_menu_order": "0",
+   "custom_value": [
+    "{qty[1]}"
+   ]
+  },
+  "meta18512": [
+   [
+    "_global_unique_id",
+    "8011259003522"
+   ],
+   [
+    "_legacy_manufacturer",
+    "EXCLUSION"
+   ],
+   [
+    "_legacy_product_id",
+    "48649"
+   ],
+   [
+    "_legacy_related_ids",
+    "46900, 47072, 48527, 48625, 48628, 48652, 48665"
+   ],
+   [
+    "_legacy_seo_title",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šun"
+   ],
+   [
+    "_legacy_source",
+    "excel_v2_20260604"
+   ],
+   [
+    "_legacy_weight_raw",
+    "0.46"
+   ],
+   [
+    "_manage_stock",
+    "yes"
+   ],
+   [
+    "_price",
+    "2.49"
+   ],
+   [
+    "_ps_last_sale",
+    ""
+   ],
+   [
+    "_ps_margin_365d",
+    "0"
+   ],
+   [
+    "_ps_orders_365d",
+    "0"
+   ],
+   [
+    "_ps_pilnumas",
+    "75"
+   ],
+   [
+    "_ps_pilnumas_kodai",
+    "|serimo_lentele|serimo_instr|"
+   ],
+   [
+    "_ps_pilnumas_truksta",
+    "šėrimo lentelė, šėrimo instrukcija"
+   ],
+   [
+    "_ps_pilnumas_updated",
+    "2026-09-02 08:01:11"
+   ],
+   [
+    "_ps_publikuota",
+    "2026-06-04 21:23:52"
+   ],
+   [
+    "_ps_revenue_365d",
+    "0"
+   ],
+   [
+    "_ps_sales_30d",
+    "0"
+   ],
+   [
+    "_ps_sales_365d",
+    "0"
+   ],
+   [
+    "_ps_sales_90d",
+    "0"
+   ],
+   [
+    "_ps_sales_updated",
+    "2026-09-02 07:50:23"
+   ],
+   [
+    "_ps_sandelis",
+    "vf"
+   ],
+   [
+    "_regular_price",
+    "2.49"
+   ],
+   [
+    "_sku",
+    "NGALA40"
+   ],
+   [
+    "_stock",
+    "654.000000"
+   ],
+   [
+    "_stock_status",
+    "instock"
+   ],
+   [
+    "_vf_attached_to_existing",
+    "yes"
+   ],
+   [
+    "_vf_barcode",
+    "801125900352"
+   ],
+   [
+    "_vf_brand_normalized",
+    "Exclusion"
+   ],
+   [
+    "_vf_brand_raw",
+    "EXCL MEDITER"
+   ],
+   [
+    "_vf_cost",
+    "1.683"
+   ],
+   [
+    "_vf_cost_xml",
+    "1.98"
+   ],
+   [
+    "_vf_enabled",
+    "yes"
+   ],
+   [
+    "_vf_has_supplier",
+    "yes"
+   ],
+   [
+    "_vf_last_matched_import_post_id",
+    "32896"
+   ],
+   [
+    "_vf_last_sync",
+    "2026-09-02 10:00:07"
+   ],
+   [
+    "_vf_match_type",
+    "ean"
+   ],
+   [
+    "_vf_personal_cost",
+    "1.683"
+   ],
+   [
+    "_vf_personal_xml",
+    "1.98"
+   ],
+   [
+    "_vf_price_rule_used",
+    "BRAND:Exclusion +DISC:15%"
+   ],
+   [
+    "_vf_qty",
+    "654"
+   ],
+   [
+    "_vf_reprice_by_snippet_at",
+    "2026-07-04 19:12:57"
+   ],
+   [
+    "_vf_supplier_discount",
+    "0.15"
+   ],
+   [
+    "_vf_supplier_sku",
+    "NGALA40"
+   ]
+  ],
+  "meta18593": [
+   [
+    "_global_unique_id",
+    "8011259011374"
+   ],
+   [
+    "_legacy_manufacturer",
+    "EXCLUSION"
+   ],
+   [
+    "_legacy_product_id",
+    "48656"
+   ],
+   [
+    "_legacy_related_ids",
+    "46899, 47849, 48623, 48624, 48626"
+   ],
+   [
+    "_legacy_seo_title",
+    "Exclusion Hypoallergenic konservai šunims su triušiena ir bu"
+   ],
+   [
+    "_legacy_source",
+    "excel_v2_20260604"
+   ],
+   [
+    "_legacy_weight_raw",
+    "0.26"
+   ],
+   [
+    "_manage_stock",
+    "yes"
+   ],
+   [
+    "_price",
+    "2.95"
+   ],
+   [
+    "_ps_last_sale",
+    ""
+   ],
+   [
+    "_ps_margin_365d",
+    "0"
+   ],
+   [
+    "_ps_orders_365d",
+    "0"
+   ],
+   [
+    "_ps_pilnumas",
+    "85"
+   ],
+   [
+    "_ps_pilnumas_kodai",
+    "|serimo_lentele|"
+   ],
+   [
+    "_ps_pilnumas_truksta",
+    "šėrimo lentelė"
+   ],
+   [
+    "_ps_pilnumas_updated",
+    "2026-09-02 08:01:12"
+   ],
+   [
+    "_ps_publikuota",
+    "2026-06-04 21:24:19"
+   ],
+   [
+    "_ps_revenue_365d",
+    "0"
+   ],
+   [
+    "_ps_sales_30d",
+    "0"
+   ],
+   [
+    "_ps_sales_365d",
+    "0"
+   ],
+   [
+    "_ps_sales_90d",
+    "0"
+   ],
+   [
+    "_ps_sales_updated",
+    "2026-09-02 07:50:23"
+   ],
+   [
+    "_ps_sandelis",
+    "av"
+   ],
+   [
+    "_regular_price",
+    "2.95"
+   ],
+   [
+    "_sku",
+    "AM20"
+   ],
+   [
+    "_stock",
+    "22"
+   ],
+   [
+    "_stock_status",
+    "instock"
+   ]
+  ],
+  "meta20517": [
+   [
+    "_global_unique_id",
+    "8011259004000"
+   ],
+   [
+    "_manage_stock",
+    "yes"
+   ],
+   [
+    "_price",
+    "1.39"
+   ],
+   [
+    "_ps_last_sale",
+    ""
+   ],
+   [
+    "_ps_margin_365d",
+    "0"
+   ],
+   [
+    "_ps_orders_365d",
+    "0"
+   ],
+   [
+    "_ps_pilnumas",
+    "85"
+   ],
+   [
+    "_ps_pilnumas_kodai",
+    "|serimo_lentele|"
+   ],
+   [
+    "_ps_pilnumas_truksta",
+    "šėrimo lentelė"
+   ],
+   [
+    "_ps_pilnumas_updated",
+    "2026-09-02 08:01:16"
+   ],
+   [
+    "_ps_publikuota",
+    "2026-06-06 16:56:44"
+   ],
+   [
+    "_ps_revenue_365d",
+    "0"
+   ],
+   [
+    "_ps_sales_30d",
+    "0"
+   ],
+   [
+    "_ps_sales_365d",
+    "0"
+   ],
+   [
+    "_ps_sales_90d",
+    "0"
+   ],
+   [
+    "_ps_sales_updated",
+    "2026-09-02 07:50:27"
+   ],
+   [
+    "_ps_sandelis",
+    "vf"
+   ],
+   [
+    "_regular_price",
+    "1.39"
+   ],
+   [
+    "_sku",
+    "NGCKCW85"
+   ],
+   [
+    "_stock",
+    "5.000000"
+   ],
+   [
+    "_stock_status",
+    "instock"
+   ],
+   [
+    "_vf_barcode",
+    "801125900400"
+   ],
+   [
+    "_vf_brand_normalized",
+    "Exclusion"
+   ],
+   [
+    "_vf_brand_raw",
+    "EXCL MEDITER"
+   ],
+   [
+    "_vf_category_raw",
+    "Reg. konservuotas kačiukų maistas"
+   ],
+   [
+    "_vf_cost",
+    "0.935"
+   ],
+   [
+    "_vf_cost_xml",
+    "1.1"
+   ],
+   [
+    "_vf_description_base64",
+    "PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5"
+   ],
+   [
+    "_vf_enabled",
+    "yes"
+   ],
+   [
+    "_vf_last_sync",
+    "2026-09-02 10:00:11"
+   ],
+   [
+    "_vf_personal_cost",
+    "0.935"
+   ],
+   [
+    "_vf_personal_xml",
+    "1.1"
+   ],
+   [
+    "_vf_price_initialized",
+    "yes"
+   ],
+   [
+    "_vf_price_initialized_at",
+    "2026-06-06 16:59:30"
+   ],
+   [
+    "_vf_price_rule_used",
+    "BRAND:Exclusion +DISC:15%"
+   ],
+   [
+    "_vf_qty",
+    "5"
+   ],
+   [
+    "_vf_supplier_discount",
+    "0.15"
+   ],
+   [
+    "_vf_supplier_sku",
+    "NGCKCW85"
+   ],
+   [
+    "_vf_wc_sku",
+    "NGCKCW85"
+   ]
+  ],
+  "ps_sources_18593": [
+   {
+    "id": "2396",
+    "product_id": "18512",
+    "source": "vf",
+    "supplier_sku": "NGALA40",
+    "ean": "801125900352",
+    "stock_qty": "654",
+    "cost_net": "1.6830",
+    "synced_at": "2026-08-07 13:00:05",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-09-02 07:20:13"
+   },
+   {
+    "id": "2423",
+    "product_id": "18593",
+    "source": "av",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "22",
+    "cost_net": "2.0000",
+    "synced_at": null,
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "1",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-09-02 07:20:13"
+   }
+  ],
+  "ps_sources_cols": [
+   "id",
+   "product_id",
+   "source",
+   "supplier_sku",
+   "ean",
+   "stock_qty",
+   "cost_net",
+   "synced_at",
+   "is_active",
+   "is_sellable",
+   "priority",
+   "created_at",
+   "updated_at"
+  ],
+  "fetcher_exists": true,
+  "fetcher_head": "<?php\n/**\n * Petshop VF API Fetcher v1.0\n *\n * Standalone PHP wrapper — fetch'ina VF API su Basic Auth ir grąžina XML.\n *\n * Naudojimas WP All Import:\n *   URL: https://dev.avesa.lt/wp-content/petshop-xml-vf-fetcher.php?key=KEY_HERE\n *\n * Saugumas:\n *   - Tik su teisingu ?key=... grąžina XML\n *   - Be key — 403 Forbidden\n *   - Credentials saugomi viename faile (ne DB, ne WP All Import nustatymuose)\n *   - Cache'inamas 5 min (jei API down — grąžina paskutinį sėkmingą XML)\n *\n * Diegimas:\n *   1. Pakeisti VF_USERNAME, VF_PASSWORD, FETCHER_SECRET_KEY žemiau\n *   2. Įkelti į /wp-content/ aplanką\n *   3. WP All Import: pakeisti URL į fetcher URL su ?key=...\n *\n * Cache:\n *   - Sėkmingas XML cache'inamas /wp-content/uploads/petshop-vf-cache.xml\n *   - Galiojimas: 5 minutės\n *   - Jei VF API neprieinama — grąžina paskutinį sėkmingą cache (iki 24h senumo)\n */\n\ndeclare( strict_types = 1 );\n\n// =============================================================================\n// KONFIGŪRACIJA (KEISTI VIETOJE)\n// =============================================================================\n\nconst VF_USERNAME = 'terra@petshop.lt';\nconst VF_PASSWORD = 'Slapt*Vet*B2B*';  // ← Įvesti savo VF password\n\nconst VF_API_URL  = 'https://admin.b2b.vetfarmas.lt/api/products/xml/get/auth';\n\n// Slaptas key — kad tik mes galėtume gauti XML. Sugeneruok atsitiktinį ilgą string'ą.\nconst FETCHER_SECRET_KEY = 'dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz';\n\n// Cache failo lokacija (relatyv",
+  "feed_prod": {
+   "code": 404,
+   "bytes": 153,
+   "head": "<html>\r\n<head><title>404 Not Found</title></head>\r\n<body>\r\n<center><h1>404 Not Found</h1></center>\r\n<hr><center>nginx/1.22.1</center>\r\n</body>\r\n</html>\r\n"
+  }
+ }
+}
