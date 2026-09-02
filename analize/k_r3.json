@@ -1,0 +1,16 @@
+{
+ "v": "dep-171405",
+ "kurimas": 200,
+ "sid": 4530,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php": [
+   "ersion The current version of this plugin. */ private $version; /** * * * @since 1.0.0 */ private $settings; /** * * * @since 1.0.0 */ private $venipak_username; /** * * * @since 1.0.0 */ private $venipak_password; /** * * * @since 1.0.0 */ private $venipak_userid; /** * * * @since 1.15.0 */ private $venipak_manifest; private $venipak_return_service; /** * * * @since 1.0.0 */ private $venipak_sender_name; /** * * * @since 1.0.0 */ private $venipak_sender_company_code; /** * * * @since 1.0.0 */ private $venipak_sender_country; /** * * * @since 1.0.0 */ private $venipak_sender_city; /** * * * @since 1.0.0 */ private $venipak_sender_address; /** * * * @since 1.0.0 */ private $venipak_sender_post_code; /** * * * @since 1.0.0 */ private $venipak_sender_contact_person; /** * * * @since ",
+   "gs; $this->venipak_userid = $settings->get_option_by_key('shopup_venipak_shipping_field_userid'); $this->venipak_username = $settings->get_option_by_key('shopup_venipak_shipping_field_username'); $this->venipak_password = $settings->get_option_by_key('shopup_venipak_shipping_field_password'); $this->venipak_manifest = $settings->get_option_by_key('shopup_venipak_shipping_field_manifest') ?: '001'; $this->venipak_return_service = intval($settings->get_option_by_key('shopup_venipak_shipping_field_return_service')); $this->venipak_sender_name = $settings->get_option_by_key('shopup_venipak_shipping_field_sendername'); $this->venipak_sender_company_code = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercompanycode'); $this->venipak_sender_country = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercountry'); $this->venipak_sender_city = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercity'); $this->venipak_sender_address = $settings->get_option_by_key('shopup_venipak_shipping_field_senderaddress'); $this->venipak_sender_post_code = $settings->get_option_by_key(",
+   "k_shipping_min_age'); if ($product_min_age && $product_min_age > $min_age) { $min_age = $product_min_age; } $product_quantity = $product_item->get_quantity(); for ($i = 0; $i < $product_quantity; $i++) { $order_products[] = $product; } } $shipment = $document->createElement( 'shipment' ); $manifest->appendChild($shipment); $sender = $document->createElement( 'sender' ); $shipment->appendChild($sender); $sender_name = $document->createElement( 'name', $this->venipak_sender_name ); $sender_company_code = $document->createElement( 'company_code', $this->venipak_sender_company_code ); $sender_country = $document->createElement( 'country', $this->venipak_sender_country ); $sender_city = $document->createElement( 'city', $this->venipak_sender_city ); $sender_address = $document->createElement( 'address', $this->venipak_sender_address ); $sender_post_code = $document->createElement( 'post_code', preg_replace('/\\D/', '', $this->venipak_sender_post_co"
+  ]
+ }
+}
