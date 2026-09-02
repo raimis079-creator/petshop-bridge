@@ -1,0 +1,242 @@
+{
+ "v": "dep-145212",
+ "kurimas": 200,
+ "sid": 4518,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "F": {
+  "F0_pack_nr_db": "1000040",
+  "F1_35419": {
+   "st": "processing",
+   "eile": "paruosta",
+   "kl": "",
+   "siunta": [
+    "V07267E1000040",
+    1
+   ],
+   "pak": 1,
+   "ds_sent": "{\"vf\":\"2026-09-02 17:50:00\",\"ambrosia\":\"2026-09-02 17:50:06\"}",
+   "siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260902002\",\"numeriai\":[\"V07267E1000039\"],\"data\":\"2026-09-02 17:49:57\"},\"ambrosia\":{\"sandelis\":\"ambrosia\",\"kodas\":\"006\",\"manifest\":\"07267260902006\",\"numeriai\":[\"V07267E1000040\"],\"data\":\"2026-09-02 17:50:04\"}}",
+   "vpd": "{\"manifest\":\"07267260902006\",\"pack_numbers\":[\"V07267E1000040\"],\"weight\":2.0700000000000003,\"products_count\":3,\"status\":\"sent\",\"error_message\":\"\"}",
+   "notes": [
+    "Perduota tiekėjui Ambrosia — laiškas: terra@petshop.lt",
+    "Siuntos numeriai išsaugoti (AMBROSIA): V07267E1000040",
+    "Venipak registracija darbalaukyje (AMBROSIA, manifestas 006): sėkminga",
+    "Darbalaukis: siunta perregistruojama su 1 dėž. (sena siunta V07267E1000039 — nebenaudojama).",
+    "Perduota tiekėjui Vetfarmas — laiškas: terra@petshop.lt"
+   ]
+  },
+  "F1_35418": {
+   "st": "processing",
+   "eile": "paruosta",
+   "kl": "",
+   "siunta": [
+    "V07267E1000037",
+    1
+   ],
+   "pak": 1,
+   "ds_sent": "{\"zb\":\"2026-09-02 17:50:10\"}",
+   "siuntos": "{\"zb\":{\"sandelis\":\"zb\",\"kodas\":\"003\",\"manifest\":\"07267260902003\",\"numeriai\":[\"V07267E1000037\"],\"data\":\"2026-09-02 17:49:44\"}}",
+   "vpd": "{\"manifest\":\"07267260902003\",\"pack_numbers\":[\"V07267E1000037\"],\"weight\":0.4,\"products_count\":1,\"status\":\"sent\",\"error_message\":\"\"}",
+   "notes": [
+    "Perduota ZB — suvesta į jų sistemą ranka, lipdukas prikabintas (darbalaukio žymė).",
+    "Siuntos numeriai išsaugoti (ZB): V07267E1000037",
+    "Venipak registracija darbalaukyje (ZB, manifestas 003): sėkminga",
+    "Email \"Užsakymas vykdomas\" sent.",
+    "Email \"Naujas užsakymas\" sent."
+   ]
+  },
+  "F1_35417": {
+   "st": "completed",
+   "eile": "ivykdyti",
+   "kl": "",
+   "siunta": [
+    "V07267E1000036",
+    1
+   ],
+   "pak": 1,
+   "ds_sent": "{\"vf\":\"2026-09-02 17:49:54\"}",
+   "siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260902002\",\"numeriai\":[\"V07267E1000036\"],\"data\":\"2026-09-02 17:49:41\"}}",
+   "vpd": "{\"manifest\":\"07267260902002\",\"pack_numbers\":[\"V07267E1000036\"],\"weight\":0.10500000000000001,\"products_count\":3,\"status\":\"sent\",\"error_message\":\"\",\"event\":[\"Shipment created\"],\"date\":[\"2026-09-02 17:49:41\"],\"pack_status_text\":[\"At sender\"]}",
+   "notes": [
+    "Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+    "Pažymėta išsiųsta darbalaukyje. Vartotojas: Testuotojas. WC laiškas klientui: NESIŲSTAS.",
+    "Perduota tiekėjui Vetfarmas — laiškas: terra@petshop.lt",
+    "Siuntos numeriai išsaugoti (VF): V07267E1000036",
+    "Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga"
+   ]
+  },
+  "F2_naujai": "Petshop · rytinė eiga 1Peržiūra › 2Surinkimo lapai › 3Venipak › 4LP Express › 5Tiekėjams › 6Baigta ✕ Išeiti Į rytinę partiją patenka3iš sandėlio (AV)3 Venipak · 1 LP2tiekėjamsAMB 2 · VF 12klausimaiį partiją NEPATENKANr.KlientasKeliasPristatymasTiekėjai#35430AUDITAS Testas 17SAVAVenipak paštomatas—#35422AUDITAS Testas 9DROPSHIPVenipak paštomatasAMB#35416AUDITAS Testas 3SAVALP Express—#35090Sart trM",
+  "F2_atsaukti_T17": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "atsaukta",
+    "pd_nr": "35430"
+   },
+   "txt": ""
+  },
+  "F2_z3_txt": "Petshop · rytinė eiga ✓Peržiūra › ✓Surinkimo lapai › 3Venipak › 4LP Express › 5Tiekėjams › 6Baigta ✕ Išeiti VenipakKiekvienas sandėlis registruojamas atskirai — taip gaunamas savas manifestas tam kurjerio paėmimui. Siuntėjas visose siuntose lieka UAB Avesa.Savas sandėlismanifestas 0726726090200111:00 · praėjo, keliaus rytoj1 siunta · viso 0,5 kgregistruota 0 iš 1Registruoti 1 siuntąLipdukai 10×15#35430AUDITAS Testas 17Venipak paštomatas dėžių — nėraAmbrosiamanifestas 0726726090200610:00 · praėjo, keliaus rytoj1 siunta · viso 2 kgregistruota 1 iš 1✓ visos registruotos Lipdukai 10×15Manifestas PDF#35422AUDITAS Testas 9Venipak paštomatas✓ V07267E1000038Mišrūs užsakymai registruojami rankomis Šie užsakymai turi prekių iš kelių sandėlių, tad fiziškai iškeliauja dviem siuntomis iš skirtingų vietų. Venipak pluginas vienam užsakymui moka sukurti tik VIENĄ siuntą, todėl automatiškai jų neregistru",
+  "F2_av_ids": "35430",
+  "F2_reg_av": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "vp_ok",
+    "pd_nr": "1 · AV"
+   },
+   "txt": ""
+  },
+  "F2_T17_po": {
+   "st": "cancelled",
+   "eile": "atsaukti",
+   "kl": "",
+   "siunta": [
+    "V07267E1000041",
+    1
+   ],
+   "pak": 1,
+   "ds_sent": "",
+   "siuntos": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260902001\",\"numeriai\":[\"V07267E1000041\"],\"data\":\"2026-09-02 17:53:27\"}}",
+   "vpd": "{\"manifest\":\"07267260902001\",\"pack_numbers\":[\"V07267E1000041\"],\"weight\":0.5,\"products_count\":1,\"status\":\"sent\",\"error_message\":\"\"}",
+   "notes": [
+    "Siuntos numeriai išsaugoti (AV): V07267E1000041",
+    "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+    "Užsakymo statusas pakeistas iš Vykdomas į Atšauktas.",
+    "AV grąžinimas: #19708 grynai AV +1",
+    "Atšaukta darbalaukyje. Vartotojas: Testuotojas. Laiškas klientui: NESIŲSTAS."
+   ]
+  },
+  "F3_dublis": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "vp_nieko",
+    "pd_nr": "#35427 jau registruotas, #35428 jau registruotas, #35429 jau registruotas"
+   },
+   "txt": ""
+  },
+  "F4_issiusta_35419": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "issiusta",
+    "pd_nr": "35419"
+   },
+   "txt": ""
+  },
+  "F4_35419_po": {
+   "st": "completed",
+   "eile": "ivykdyti",
+   "kl": "",
+   "siunta": [
+    "V07267E1000040",
+    1
+   ],
+   "pak": 1,
+   "ds_sent": "{\"vf\":\"2026-09-02 17:50:00\",\"ambrosia\":\"2026-09-02 17:50:06\"}",
+   "siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260902002\",\"numeriai\":[\"V07267E1000039\"],\"data\":\"2026-09-02 17:49:57\"},\"ambrosia\":{\"sandelis\":\"ambrosia\",\"kodas\":\"006\",\"manifest\":\"07267260902006\",\"numeriai\":[\"V07267E1000040\"],\"data\":\"2026-09-02 17:50:04\"}}",
+   "vpd": "{\"manifest\":\"07267260902006\",\"pack_numbers\":[\"V07267E1000040\"],\"weight\":2.0700000000000003,\"products_count\":3,\"status\":\"sent\",\"error_message\":\"\"}",
+   "notes": [
+    "Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+    "Pažymėta išsiųsta darbalaukyje. Vartotojas: Testuotojas. WC laiškas klientui: NESIŲSTAS.",
+    "Perduota tiekėjui Ambrosia — laiškas: terra@petshop.lt",
+    "Siuntos numeriai išsaugoti (AMBROSIA): V07267E1000040",
+    "Venipak registracija darbalaukyje (AMBROSIA, manifestas 006): sėkminga"
+   ]
+  },
+  "F5_visi": "nuorodos nera (transientas tuscias?)",
+  "F5_35420": {
+   "st": "processing",
+   "eile": "misrus",
+   "kl": "",
+   "siunta": [
+    "",
+    0
+   ],
+   "pak": 1,
+   "ds_sent": "",
+   "siuntos": "",
+   "vpd": "",
+   "notes": [
+    "Email \"Užsakymas vykdomas\" sent.",
+    "Email \"Naujas užsakymas\" sent.",
+    "Faktai irasyti: 2 eilutes · pajamos 26,68 EUR (be PVM, po nuolaidu) · PVM 6,44 EUR · marza 8,20 EUR · kontribucija (be pristatymo) 11,34 EUR · TESTINI",
+    "Likutis sumažintas: Churu Popn Serve skanėstas katėms  su tunu,35g (113&rarr;112), Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas,",
+    "Vykdymas: MIXED — VF 1 vnt · ZB 1 vnt (2 siunta(-os))"
+   ]
+  },
+  "F6_laiskai": "Laiškai tiekėjams← Petshop užsakymaiLaukia išsiuntimo (5)Išsiųsti (10)Siunčiama iš terra@petshop.lt. AV prekės į laiškus nepatenka. Vienas laiškas — visi tiekėjo užsakymai. Ambrosia 7 užsak. · 11 vnt. · 1 lipdukų 1 · Siunta Venipak6 be siuntos — registruok žemiau (kitaip laiške nebus lipdukų)2 · Laiškas„Peržiūrėti laišką\" — tiksliai tas tekstas; prierašas nebūtinas3 · KamTIK man (tiekėjui NEIŠEIS — persiųsi pats)4 · Siųstivienas laiškas visiems šio tiekėjo užsakymams → jie pereis į „Paruošta siųsti\"; kai tiekėjas išsiųs — ten spausk „Išsiųsta\" Nr.KlientasPrekėKiek. 35426 AUDITAS Testas 13 AMBR",
+  "F7_tiekimas_txt": "Tiekimas← Petshop užsakymaiKaupiamaUžsakyta · laukiamLaukia prekių (1)Gautos partijos Quattro / Kauno grūdai partija #10 · atidaryta 09-02 17:46 užsakyti iki 09:00 PrekėSKUKiekisKam QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu, 2.011761 #35421 trinti Pridėti prekę: Pridėti Kaip prekės atkeliaus į AV Venipak paštomatas (Nemenčinė) Venipak kurjeris į AV Tiekėjas atveža pats Bendras svoris kg Dėžių / lipdukų Nepasirinkta. Laiške tiekėjui bus parašyta tik tai, ką pasirinksi čia. Kam siųsti laišką užsakant: Siųsti laišką tiekėjui Siųsti man (terra@petshop.lt) Pasirinkimas įsimenamas. Nuėmus abi — laiškas neišeis niekam. Išsaugoti kiekius Užsakyti iš tiekėjo → Ačiū, kad kuriate su WordPress. Versija 6.9.4 Uždaryti Sesija pasibaigė Prisijunkite iš naujo Prisijungimo puslapis bus atidarytas naujame lange. Po prisijungimo galėsite jį uždaryti ir grįžti į šį puslapį.",
+  "F7_forms": [
+   "<form method=\"post\" action=\"https://dev.avesa.lt/wp-admin/admin-post.php\"> <input type=\"hidden\" name=\"action\" value=\"ps_tiekimas\"> <input type=\"hidden\" name=\"partija\" value=\"10\"> <input type=\"hidden\" id=\"_wpnonce\" name=\"_wpnonce\" value=\"fe40884f91\" /><input type=\"hidden\" name=\"_wp_http_referer\" value=\"/wp-admin/admin.php?page=ps-tiekimas\" /> <table class=\"widefat striped ps-tk-t\"> <thead><tr><th>Prekė</th><th>SKU</th><th class=\"r\">Kiekis</th><th>Kam</th><th></th></tr></thead> <tbody> <tr> <td><b>QUATTRO 1,5 kg Adult Salmon &amp; Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu,</b></td> <td class=\"mono\">2.011761</td> <td class=\"r\"><input type=\"number\" min=\"0\" name=\"qty[17]\" value=\"1\" class=\"ps-tk-q\"></td> <td><a href=\"https://dev.avesa.lt/wp-admin/admin.php?page=wc-orders&#038;action=edit&#038;id=35421\">#35421</a></td> <td><label class=\"ps-tk-del\"><input type=\"checkbox\" name=\"trinti[]\" value=\"17\"> trinti</label></td> </tr> </tbody> </table> <div class=\"ps-tk-pridek\"> <label>Pridėti prekę:</label> <input type=\"text\" name=\"nauja_sku\" placeholder=\"SKU arba prekės ID\" class=\"ps-tk-sku\"> <input type=\"number\" name=\"nauja_qty\" placeholder=\"kiekis\" min=\"1\" v"
+  ],
+  "F7_links": [],
+  "F8_paruosta": "Petshop · užsakymai / ▶ Rytinė eiga WooCommerce sąrašas Prekių katalogas ribos šiandien praėjo · nauji keliaus rytoj AV sandėlis 22 UžsakymaiNauji3Mišrūs5Neapmokėti0Laukia prekių1Paruošta siųsti3Klausimai2Išsiųsti4Atšaukti3Visi užsakymai21ĮrankiaiTiekimas1Laiškai tiekėjams2Perdavimas tiekėjams2Siūlymai Tuščia. Čia rinksis automatiniai siūlymai — kiekvieną tvirtinsi arba atmesi tu.Laukia sprendimo 5›Nepaleisti planai 0›Neperduota tiekėjams 2›Partijose 1›Laukia prekių 1›Paruošta siųsti 3›Išsiųsta šiandien 3Paruošta siųstisupakuota su lipduku, laukia kurjerioVykdymas: visiSava (AV)DropshipMišrūs—",
+  "F8_issiusti": "Petshop · užsakymai / ▶ Rytinė eiga WooCommerce sąrašas Prekių katalogas ribos šiandien praėjo · nauji keliaus rytoj AV sandėlis 22 UžsakymaiNauji3Mišrūs5Neapmokėti0Laukia prekių1Paruošta siųsti3Klausimai2Išsiųsti4Atšaukti3Visi užsakymai21ĮrankiaiTiekimas1Laiškai tiekėjams2Perdavimas tiekėjams2Siūlymai Tuščia. Čia rinksis automatiniai siūlymai — kiekvieną tvirtinsi arba atmesi tu.Laukia sprendimo 5›Nepaleisti planai 0›Neperduota tiekėjams 2›Partijose 1›Laukia prekių 1›Paruošta siųsti 3›Išsiųsta šiandien 3Išsiųstikelyje ir įvykdyti užsakymaiVykdymas: visiSava (AV)DropshipMišrūs— Vetfarmas— Žali",
+  "F8_laukia": "Petshop · užsakymai / ▶ Rytinė eiga WooCommerce sąrašas Prekių katalogas ribos šiandien praėjo · nauji keliaus rytoj AV sandėlis 22 UžsakymaiNauji3Mišrūs5Neapmokėti0Laukia prekių1Paruošta siųsti3Klausimai2Išsiųsti4Atšaukti3Visi užsakymai21ĮrankiaiTiekimas1Laiškai tiekėjams2Perdavimas tiekėjams2Siūlymai Tuščia. Čia rinksis automatiniai siūlymai — kiekvieną tvirtinsi arba atmesi tu.Laukia sprendimo 5›Nepaleisti planai 0›Neperduota tiekėjams 2›Partijose 1›Laukia prekių 1›Paruošta siųsti 3›Išsiųsta šiandien 3Laukia prekiųtiekėjo prekės dar neatvyko į AVVykdymas: visiSava (AV)DropshipMišrūs— Vetfar",
+  "mail": [
+   [
+    "17:46:10",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35422 — apmokėjimas gautas",
+    "web"
+   ],
+   [
+    "17:49:54",
+    "terra@petshop.lt",
+    "[PERSIŲSTI Vetfarmas] užsakymas 2026-09-02",
+    2,
+    [
+     "35417 AUDITAS Testas 4.pdf:102394",
+     "manifestas-07267260902002.pdf:66479"
+    ],
+    "web"
+   ],
+   [
+    "17:50:00",
+    "terra@petshop.lt",
+    "[PERSIŲSTI Vetfarmas] užsakymas 2026-09-02",
+    2,
+    [
+     "35419 AUDITAS Testas 6.pdf:102531",
+     "manifestas-07267260902002.pdf:66737"
+    ],
+    "web"
+   ],
+   [
+    "17:50:06",
+    "terra@petshop.lt",
+    "[PERSIŲSTI Ambrosia] užsakymas 2026-09-02",
+    2,
+    [
+     "35419 AUDITAS Testas 6.pdf:102429",
+     "manifestas-07267260902006.pdf:66730"
+    ],
+    "web"
+   ],
+   [
+    "17:53:22",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35430 — 2026-09-02",
+    0,
+    [],
+    "run"
+   ],
+   [
+    "17:53:22",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35430 — apmokėjimas gautas",
+    0,
+    [],
+    "run"
+   ]
+  ]
+ }
+}
