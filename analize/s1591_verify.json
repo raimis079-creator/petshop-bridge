@@ -1,0 +1,575 @@
+{
+ "v": "dep-083321",
+ "kurimas": 200,
+ "sid": 4451,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "VERSIJA": "S1591-V1",
+  "pmxi5": {
+   "processing": "1",
+   "executing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "1",
+   "imported": "0",
+   "created": "0",
+   "updated": "0",
+   "skipped": "0",
+   "count": "2391",
+   "last_activity": "2026-09-02 08:30:37"
+  },
+  "hist5": [
+   {
+    "type": "processing",
+    "time_run": null,
+    "date": "2026-09-02 08:30:45",
+    "summary": "cron processing"
+   },
+   {
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-09-02 08:30:37",
+    "summary": "triggered by cron"
+   }
+  ],
+  "av8": {
+   "18593": {
+    "sku": "AM20",
+    "own": "22",
+    "vf": "76",
+    "_stock": "76.000000",
+    "klientas_mato": 98,
+    "status": "instock",
+    "kaina": "2.95",
+    "sandelis": "av",
+    "src": "vf_dropship",
+    "match": "ean",
+    "vf_cost": "1.649"
+   },
+   "18596": {
+    "sku": "QM37",
+    "own": "4",
+    "vf": "140",
+    "_stock": "140.000000",
+    "klientas_mato": 144,
+    "status": "instock",
+    "kaina": "3.98",
+    "sandelis": "av",
+    "src": "vf_dropship",
+    "match": "sku",
+    "vf_cost": "2.601"
+   },
+   "18599": {
+    "sku": "PM37",
+    "own": "32",
+    "vf": "1411",
+    "_stock": "1411.000000",
+    "klientas_mato": 1443,
+    "status": "instock",
+    "kaina": "3.98",
+    "sandelis": "av",
+    "src": "vf_dropship",
+    "match": "sku",
+    "vf_cost": "2.601"
+   },
+   "18602": {
+    "sku": "PM20",
+    "own": "20",
+    "vf": "88",
+    "_stock": "88.000000",
+    "klientas_mato": 108,
+    "status": "instock",
+    "kaina": "2.95",
+    "sandelis": "av",
+    "src": "vf_dropship",
+    "match": "ean",
+    "vf_cost": "1.649"
+   },
+   "18605": {
+    "sku": "VM37",
+    "own": "17",
+    "vf": "169",
+    "_stock": "169.000000",
+    "klientas_mato": 186,
+    "status": "instock",
+    "kaina": "3.98",
+    "sandelis": "av",
+    "src": "vf_dropship",
+    "match": "sku",
+    "vf_cost": "2.601"
+   },
+   "18608": {
+    "sku": "HM37",
+    "own": "0",
+    "vf": "81",
+    "_stock": "81.000000",
+    "klientas_mato": 81,
+    "status": "instock",
+    "kaina": "3.98",
+    "sandelis": "av",
+    "src": "vf_dropship",
+    "match": "sku",
+    "vf_cost": "2.601"
+   },
+   "18611": {
+    "sku": "DM37",
+    "own": "19",
+    "vf": "107",
+    "_stock": "107.000000",
+    "klientas_mato": 126,
+    "status": "instock",
+    "kaina": "3.98",
+    "sandelis": "av",
+    "src": "vf_dropship",
+    "match": "sku",
+    "vf_cost": "2.601"
+   },
+   "18614": {
+    "sku": "DM20",
+    "own": "22",
+    "vf": "40",
+    "_stock": "40.000000",
+    "klientas_mato": 62,
+    "status": "instock",
+    "kaina": "2.84",
+    "sandelis": "av",
+    "src": "vf_dropship",
+    "match": "ean",
+    "vf_cost": "1.5725"
+   }
+  },
+  "ps_sources": [
+   [
+    "18593",
+    "av",
+    "",
+    "22",
+    "2.0000",
+    null
+   ],
+   [
+    "18596",
+    "av",
+    "",
+    "4",
+    "2.3800",
+    null
+   ],
+   [
+    "18599",
+    "av",
+    "",
+    "32",
+    "2.3800",
+    null
+   ],
+   [
+    "18602",
+    "av",
+    "",
+    "20",
+    "2.0000",
+    null
+   ],
+   [
+    "18605",
+    "av",
+    "",
+    "17",
+    "2.3800",
+    null
+   ],
+   [
+    "18608",
+    "av",
+    "",
+    "0",
+    "2.3800",
+    null
+   ],
+   [
+    "18611",
+    "av",
+    "",
+    "19",
+    "2.3800",
+    null
+   ],
+   [
+    "18614",
+    "av",
+    "",
+    "22",
+    "1.9000",
+    null
+   ]
+  ],
+  "nauji": {
+   "35312": {
+    "0": "publish",
+    "1": "Exclusion Hypo konservuotas pašaras šunims su triušiena ir b",
+    "sku": "AM37",
+    "kaina": "3.79",
+    "reg": "3.79",
+    "stock": 24,
+    "img": 1,
+    "kat": "konservai-sunims",
+    "brand": "Exclusion",
+    "ean": "8011259163752",
+    "review": "",
+    "sandelis": "",
+    "rule": "BRAND:Exclusion +DISC:15%",
+    "desc_len": 5065
+   },
+   "35314": {
+    "0": "draft",
+    "1": "Exclusion diet hypo konservai šuniukams, su kiauliena ir žir",
+    "sku": "PA20",
+    "kaina": "2.39",
+    "reg": "2.39",
+    "stock": 0,
+    "img": 1,
+    "kat": "konservai-sunims",
+    "brand": "Exclusion",
+    "ean": "8011259002839",
+    "review": "qty_zero",
+    "sandelis": "",
+    "rule": "BRAND:Exclusion +DISC:15%",
+    "desc_len": 3190
+   },
+   "35316": {
+    "0": "publish",
+    "1": "Exclusion diet hypo konservai šuniukams, su kiauliena ir žir",
+    "sku": "PA37",
+    "kaina": "3.79",
+    "reg": "3.79",
+    "stock": 304,
+    "img": 1,
+    "kat": "konservai-sunims",
+    "brand": "Exclusion",
+    "ean": "8011259002822",
+    "review": "",
+    "sandelis": "",
+    "rule": "BRAND:Exclusion +DISC:15%",
+    "desc_len": 3190
+   },
+   "35322": {
+    "0": "publish",
+    "1": "Exclusion Hypo konservai šunims su putpelėmis ir žirniais, 2",
+    "sku": "QM20",
+    "kaina": "2.39",
+    "reg": "2.39",
+    "stock": 136,
+    "img": 1,
+    "kat": "konservai-sunims",
+    "brand": "Exclusion",
+    "ean": "8011259011404",
+    "review": "",
+    "sandelis": "",
+    "rule": "BRAND:Exclusion +DISC:15%",
+    "desc_len": 5070
+   },
+   "35326": {
+    "0": "publish",
+    "1": "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir bulv",
+    "sku": "FM20",
+    "kaina": "2.29",
+    "reg": "2.29",
+    "stock": 68,
+    "img": 1,
+    "kat": "konservai-sunims",
+    "brand": "Exclusion",
+    "ean": "8011259011398",
+    "review": "",
+    "sandelis": "",
+    "rule": "BRAND:Exclusion +DISC:15%",
+    "desc_len": 4904
+   },
+   "35328": {
+    "0": "publish",
+    "1": "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir bulv",
+    "sku": "FM37",
+    "kaina": "3.79",
+    "reg": "3.79",
+    "stock": 1,
+    "img": 1,
+    "kat": "konservai-sunims",
+    "brand": "Exclusion",
+    "ean": "8011259183750",
+    "review": "",
+    "sandelis": "",
+    "rule": "BRAND:Exclusion +DISC:15%",
+    "desc_len": 4903
+   },
+   "35330": {
+    "0": "publish",
+    "1": "Exclusion Hypo konservuotas pašaras šunims su arkliena ir bu",
+    "sku": "HM20",
+    "kaina": "2.99",
+    "reg": "2.99",
+    "stock": 54,
+    "img": 1,
+    "kat": "konservai-sunims",
+    "brand": "Exclusion",
+    "ean": "8011259011343",
+    "review": "",
+    "sandelis": "",
+    "rule": "BRAND:Exclusion +DISC:15%",
+    "desc_len": 5054
+   },
+   "35334": {
+    "0": "publish",
+    "1": "Exclusion Hypo konservuotas pašaras šunims su elniena ir bul",
+    "sku": "VM20",
+    "kaina": "2.39",
+    "reg": "2.39",
+    "stock": 36,
+    "img": 1,
+    "kat": "konservai-sunims",
+    "brand": "Exclusion",
+    "ean": "8011259011367",
+    "review": "",
+    "sandelis": "",
+    "rule": "BRAND:Exclusion +DISC:15%",
+    "desc_len": 5060
+   },
+   "35338": {
+    "0": "publish",
+    "1": "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bu",
+    "sku": "BM20",
+    "kaina": "2.39",
+    "reg": "2.39",
+    "stock": 173,
+    "img": 1,
+    "kat": "konservai-sunims",
+    "brand": "Exclusion",
+    "ean": "8011259011411",
+    "review": "",
+    "sandelis": "",
+    "rule": "BRAND:Exclusion +DISC:15%",
+    "desc_len": 5060
+   },
+   "35340": {
+    "0": "publish",
+    "1": "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bu",
+    "sku": "BM37",
+    "kaina": "3.79",
+    "reg": "3.79",
+    "stock": 52,
+    "img": 1,
+    "kat": "konservai-sunims",
+    "brand": "Exclusion",
+    "ean": "8011259223753",
+    "review": "",
+    "sandelis": "",
+    "rule": "BRAND:Exclusion +DISC:15%",
+    "desc_len": 5046
+   },
+   "35342": {
+    "0": "publish",
+    "1": "Exclusion Hypoalergenic dietinis konservuotas pašaras katėms",
+    "sku": "CHYP85",
+    "kaina": "1.51",
+    "reg": "1.51",
+    "stock": 81,
+    "img": 1,
+    "kat": "konservai-katems",
+    "brand": "Exclusion",
+    "ean": "8011259004345",
+    "review": "",
+    "sandelis": "",
+    "rule": "BRAND:Exclusion +DISC:15%",
+    "desc_len": 3646
+   }
+  },
+  "trash_seseliai": "8",
+  "trash_seseliai_meta": [
+   [
+    "35310",
+    "18593"
+   ],
+   [
+    "35318",
+    "18602"
+   ],
+   [
+    "35320",
+    "18599"
+   ],
+   [
+    "35324",
+    "18596"
+   ],
+   [
+    "35332",
+    "18608"
+   ],
+   [
+    "35336",
+    "18605"
+   ],
+   [
+    "35344",
+    "18614"
+   ],
+   [
+    "35346",
+    "18611"
+   ]
+  ],
+  "dubliai_sku": [],
+  "t7": "{\"status\":200,\"message\":\"#7 Cron job triggered.\"}"
+ },
+ "P7": {
+  "VERSIJA": "S1591-V1",
+  "p7": [
+   "{\"status\":200,\"message\":\"Records Processed 1281. Records imported 444 of 2391.\"}",
+   62.1
+  ],
+  "pmxi7": {
+   "processing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "1281",
+   "imported": "444",
+   "updated": "444",
+   "skipped": "836",
+   "count": "2391",
+   "last_activity": "2026-09-02 08:36:52"
+  },
+  "hist7": [
+   {
+    "type": "processing",
+    "time_run": "133",
+    "date": "2026-09-02 08:34:39",
+    "summary": "0 Produktai created 444 updated 836 skipped"
+   },
+   {
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-09-02 08:34:31",
+    "summary": "triggered by cron"
+   }
+  ],
+  "url": "https://dev.avesa.lt/product/exclusion-hypoallergenic-konservai-sunims-su-triusiena-ir-bulvemis-200-g/",
+  "front": {
+   "code": 200,
+   "instock": true,
+   "atc": true,
+   "title": "Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200 g - Petshop.lt"
+  },
+  "temp_snips": [
+   [
+    "4430",
+    "TEMP PS dep-174234",
+    "0"
+   ],
+   [
+    "4431",
+    "TEMP PS dep-182716",
+    "0"
+   ],
+   [
+    "4432",
+    "TEMP PS dep-183518",
+    "0"
+   ],
+   [
+    "4433",
+    "TEMP PS dep-184125",
+    "0"
+   ],
+   [
+    "4434",
+    "TEMP PS dep-184326",
+    "0"
+   ],
+   [
+    "4435",
+    "TEMP PS dep-193147",
+    "0"
+   ],
+   [
+    "4436",
+    "TEMP PS dep-204646",
+    "0"
+   ],
+   [
+    "4437",
+    "TEMP PS dep-204845",
+    "0"
+   ],
+   [
+    "4438",
+    "TEMP PS dep-075433",
+    "0"
+   ],
+   [
+    "4439",
+    "TEMP PS dep-075704",
+    "0"
+   ],
+   [
+    "4440",
+    "TEMP PS dep-075920",
+    "0"
+   ],
+   [
+    "4441",
+    "TEMP PS dep-080106",
+    "0"
+   ],
+   [
+    "4442",
+    "TEMP PS dep-080315",
+    "0"
+   ],
+   [
+    "4443",
+    "TEMP PS dep-081250",
+    "0"
+   ],
+   [
+    "4444",
+    "TEMP PS dep-081436",
+    "0"
+   ],
+   [
+    "4445",
+    "TEMP PS dep-081714",
+    "0"
+   ],
+   [
+    "4446",
+    "TEMP PS dep-081936",
+    "0"
+   ],
+   [
+    "4447",
+    "TEMP PS dep-082157",
+    "0"
+   ],
+   [
+    "4448",
+    "TEMP PS dep-082400",
+    "0"
+   ],
+   [
+    "4449",
+    "TEMP PS dep-082610",
+    "0"
+   ],
+   [
+    "4450",
+    "TEMP PS dep-082912",
+    "0"
+   ],
+   [
+    "4451",
+    "TEMP PS dep-083321",
+    "1"
+   ]
+  ]
+ }
+}
