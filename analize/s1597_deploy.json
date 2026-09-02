@@ -1,0 +1,225 @@
+{
+ "v": "dep-122154",
+ "kurimas": 200,
+ "sid": 4491,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "VERSIJA": "S1597-D1",
+  "tokens": 1241,
+  "write": 4427,
+  "md5": "d35fdeb48f54f2a63ddb1accec24801e",
+  "preset": "sukurta 35391",
+  "preset_filters": {
+   "1": "Gyvūno rūšis|pa_gyvuno_rusis",
+   "2": "Prekės ženklas|product_brand"
+  },
+  "preset_meta_keys": [
+   "_enabled",
+   "_layout",
+   "_filters"
+  ],
+  "old_md5": "0e49469a893e8ab4ed2ebfcf17c8532c",
+  "tokens332": 1334,
+  "v20": 4,
+  "upd332": 1
+ },
+ "B": {
+  "VERSIJA": "S1597-D1",
+  "klase": true,
+  "backfill": {
+   "34932": "irasyta",
+   "34933": "irasyta",
+   "34934": "irasyta",
+   "34935": "irasyta",
+   "34936": "irasyta",
+   "34937": "irasyta",
+   "34938": "irasyta",
+   "34942": "irasyta",
+   "34943": "irasyta",
+   "34944": "irasyta",
+   "34945": "irasyta",
+   "34946": "irasyta",
+   "34947": "irasyta",
+   "35070": "irasyta",
+   "35076": "jau_yra",
+   "35079": "jau_yra",
+   "35081": "jau_yra",
+   "35085": "irasyta",
+   "35094": "irasyta",
+   "35291": "irasyta",
+   "35309": "irasyta",
+   "35390": "irasyta"
+  },
+  "po": {
+   "34932": [
+    "Skanėstų dėžė šuniui — be vištienos",
+    "draft",
+    [
+     "Šunims"
+    ]
+   ],
+   "34933": [
+    "Kramtalų dėžė šuniui — hipoalerginė",
+    "draft",
+    [
+     "Šunims"
+    ]
+   ],
+   "34934": [
+    "Kramtalų dėžė šuniui — jautriam vir",
+    "draft",
+    [
+     "Šunims"
+    ]
+   ],
+   "34935": [
+    "Skanėstų dėžė šuniui — monoproteina",
+    "draft",
+    [
+     "Šunims"
+    ]
+   ],
+   "34936": [
+    "Skanėstų dėžutė katei",
+    "draft",
+    [
+     "Katėms"
+    ]
+   ],
+   "34937": [
+    "Skanėstų dėžė šuniui",
+    "draft",
+    [
+     "Šunims"
+    ]
+   ],
+   "34938": [
+    "Skanėstų dėžutė katei",
+    "publish",
+    [
+     "Katėms"
+    ]
+   ],
+   "34942": [
+    "TEST Konservu deze 800 Be vistienos",
+    "publish",
+    [
+     "Šunims"
+    ]
+   ],
+   "34943": [
+    "TEST Konservu deze 800 Visi skoniai",
+    "publish",
+    [
+     "Šunims"
+    ]
+   ],
+   "34944": [
+    "Konservu deze 400 Be vistienos",
+    "publish",
+    [
+     "Šunims"
+    ]
+   ],
+   "34945": [
+    "TEST Konservu deze 400 Monoproteina",
+    "publish",
+    [
+     "Šunims"
+    ]
+   ],
+   "34946": [
+    "TEST Konservu deze 400 Visi skoniai",
+    "publish",
+    [
+     "Šunims"
+    ]
+   ],
+   "34947": [
+    "Konservų rinkinys katėms",
+    "publish",
+    [
+     "Katėms"
+    ]
+   ],
+   "35070": [
+    "Stirnos ir avies kojų rinkinys šuni",
+    "publish",
+    [
+     "Šunims"
+    ]
+   ],
+   "35076": [
+    "Rinkinys Gurmanams &#8211; skanėsta",
+    "publish",
+    [
+     "Šunims"
+    ]
+   ],
+   "35079": [
+    "Animonda GranCarno Adult konservų r",
+    "publish",
+    [
+     "Šunims"
+    ]
+   ],
+   "35081": [
+    "Animonda GranCarno Adult konservų r",
+    "publish",
+    [
+     "Šunims"
+    ]
+   ],
+   "35085": [
+    "Galvijų ir kiaulės ausų rinkinys",
+    "publish",
+    [
+     "Šunims"
+    ]
+   ],
+   "35094": [
+    "Rinkinys katėms mėsos ir salyklo (m",
+    "publish",
+    [
+     "Katėms"
+    ]
+   ],
+   "35291": [
+    "Skanėstų kačių dantims rinkinys",
+    "publish",
+    [
+     "Katėms"
+    ]
+   ],
+   "35309": [
+    "Konservų rinkinys katėms",
+    "publish",
+    [
+     "Katėms"
+    ]
+   ],
+   "35390": [
+    "Konservų rinkinys katėms",
+    "publish",
+    [
+     "Katėms"
+    ]
+   ]
+  },
+  "sn332": "Petshop Filtru Kontekstas v20 [VISADA AKTYVUS]",
+  "front": {
+   "len": 218862,
+   "gyvuno_rusis": true,
+   "data_tax": [
+    "filter_gyvuno_rusis",
+    "product_brand",
+    "filter_be_grudu"
+   ],
+   "sunims": 1,
+   "katems": 1
+  }
+ }
+}
