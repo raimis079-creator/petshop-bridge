@@ -1,10 +1,1585 @@
 {
- "v": "dep-130426",
+ "v": "dep-130618",
  "kurimas": 200,
- "sid": 4496,
+ "sid": 4497,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "zalias_R": "<br />\n<b>Fatal error</b>:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-meta-query.php</b> on line <b>544</b><br />\n"
+ "R": {
+  "VERSIJA": "S1599-C1",
+  "rinkiniai": [
+   [
+    "35070",
+    "Stirnos ir avies kojų rinkinys šunims · 12 vnt.",
+    "16.09",
+    "",
+    [
+     "Balta avies koja, 1 vnt.×1",
+     "Balta stirnos koja, 1 vnt.×1",
+     "Ruda avies koja, 1 vnt.×1",
+     "Ruda stirnos koja, 1 vnt.×1"
+    ]
+   ],
+   [
+    "35076",
+    "Rinkinys Gurmanams &#8211; skanėstai šunims",
+    "14.98",
+    "",
+    [
+     "Jaučio penis pjaustytas, 12,5 ×1",
+     "Ruda kiaulės ausis, 1 vnt.×1",
+     "Ruda kiaulės knyslė, 1 vnt.×1",
+     "Žarnų pagaliukai, 80 g×1"
+    ]
+   ],
+   [
+    "35079",
+    "Animonda GranCarno Adult konservų rinkinys 6 x 800",
+    "20.2",
+    "",
+    [
+     "Animonda GranCarno Adult Beef ×1",
+     "Animonda GranCarno Adult Beef ×1",
+     "Animonda GranCarno Adult Beef:×1",
+     "Animonda GranCarno Adult: kons×1",
+     "Animonda GranCarno Adult: kons×1",
+     "Animonda GranCarno Adult: kons×1"
+    ]
+   ],
+   [
+    "35081",
+    "Animonda GranCarno Adult konservų rinkinys 6 x 800",
+    "20.4",
+    "",
+    [
+     "Animonda GranCarno Adult Beef ×1",
+     "Animonda GranCarno Adult Duck:×1",
+     "Animonda GranCarno Adult Rumen×1",
+     "Animonda GranCarno Adult: kons×1",
+     "Animonda GranCarno Adult: kons×1",
+     "Animonda GranCarno Adult Poult×1"
+    ]
+   ],
+   [
+    "35085",
+    "Galvijų ir kiaulės ausų rinkinys",
+    "14.99",
+    "",
+    [
+     "Balta jaučio ausis, 1 vnt.×1",
+     "Ruda jaučio ausis, 1 vnt.×1",
+     "Ruda kiaulės ausis, 1 vnt.×1"
+    ]
+   ],
+   [
+    "35094",
+    "Rinkinys katėms mėsos ir salyklo (malt) pastos",
+    "12.48",
+    "",
+    [
+     "Pasta katėms su antiena &#8211×1",
+     "Pasta katėms su ėriena – Ontar×1",
+     "Pasta katėms su lašiša &#8211;×1",
+     "Pasta katėms su vištiena &#821×1",
+     "Miamor skanėstai katėms &#8211×1",
+     "GimCat maisto papildas katėms ×1",
+     "Ontario skanėstai katėms su vi×1"
+    ]
+   ],
+   [
+    "35291",
+    "Skanėstų kačių dantims rinkinys",
+    "5.99",
+    "",
+    [
+     "Ontario skanėstai kačių dantų ×1",
+     "GimCat skanėstai katėms &#8211×1",
+     "Animonda skanėstai katėms dant×1"
+    ]
+   ]
+  ],
+  "agg": {
+   "zb|sausas-maistas-sunims": {
+    "n": 228,
+    "vid_ant": 30
+   },
+   "av|zaislai-sunims": {
+    "n": 164,
+    "vid_ant": 49
+   },
+   "vf|skanestai-sunims": {
+    "n": 127,
+    "vid_ant": 36
+   },
+   "vf|sausas-maistas-sunims": {
+    "n": 103,
+    "vid_ant": 22
+   },
+   "vf|antkakliai-pavadeliai-sunims": {
+    "n": 92,
+    "vid_ant": 45
+   },
+   "zb|sausas-maistas-katems": {
+    "n": 91,
+    "vid_ant": 30
+   },
+   "av|skanestai-sunims": {
+    "n": 76,
+    "vid_ant": 77
+   },
+   "av|konservai-katems": {
+    "n": 75,
+    "vid_ant": 58
+   },
+   "vf|konservai-katems": {
+    "n": 63,
+    "vid_ant": 25
+   },
+   "av|zaislai-katems": {
+    "n": 54,
+    "vid_ant": 52
+   },
+   "vf|sausas-maistas-katems": {
+    "n": 53,
+    "vid_ant": 21
+   },
+   "vf|skanestai-katems": {
+    "n": 52,
+    "vid_ant": 31
+   },
+   "vf|vitaminai-ir-papildai-sunims": {
+    "n": 48,
+    "vid_ant": 35
+   },
+   "zb|antkakliai-pavadeliai-sunims": {
+    "n": 44,
+    "vid_ant": 50
+   },
+   "zb|apranga-sunims": {
+    "n": 38,
+    "vid_ant": 40
+   },
+   "av|dubeneliai-sunims": {
+    "n": 34,
+    "vid_ant": null
+   },
+   "av|animonda-konservai-sunims": {
+    "n": 34,
+    "vid_ant": 44
+   },
+   "vf|konservai-sunims": {
+    "n": 33,
+    "vid_ant": 23
+   },
+   "av|konservai-sunims": {
+    "n": 33,
+    "vid_ant": 54
+   },
+   "av|tualetai-kraikai-semtuveliai": {
+    "n": 30,
+    "vid_ant": 215
+   },
+   "av|akvariumo-zuvyciu-maistas": {
+    "n": 28,
+    "vid_ant": 78
+   },
+   "vf|kraikai-kaciu-tualetams": {
+    "n": 28,
+    "vid_ant": 31
+   },
+   "quattro|sausas-maistas-sunims": {
+    "n": 27,
+    "vid_ant": 78
+   },
+   "av|dubeneliai-katems": {
+    "n": 27,
+    "vid_ant": 83
+   },
+   "vf|sampunai-sunims": {
+    "n": 26,
+    "vid_ant": 36
+   },
+   "av|sausas-maistas-katems": {
+    "n": 25,
+    "vid_ant": 25
+   },
+   "vf|draskykles-katems": {
+    "n": 25,
+    "vid_ant": 45
+   },
+   "zb|skanestai-sunims": {
+    "n": 23,
+    "vid_ant": 40
+   },
+   "av|sausas-maistas-sunims": {
+    "n": 23,
+    "vid_ant": 48
+   },
+   "vf|tualetai-kraikai-semtuveliai": {
+    "n": 21,
+    "vid_ant": 40
+   },
+   "vf|sukos-sepeciai-zirkles-katems": {
+    "n": 21,
+    "vid_ant": 36
+   },
+   "vf|zaislai-sunims": {
+    "n": 20,
+    "vid_ant": 45
+   },
+   "prins|sausas-maistas-sunims": {
+    "n": 20,
+    "vid_ant": 31
+   },
+   "quattro|hipoalerginis-maistas-sunims": {
+    "n": 19,
+    "vid_ant": 66
+   },
+   "belcor_tofu|kraikai-kaciu-tualetams": {
+    "n": 19,
+    "vid_ant": 71
+   },
+   "av|skanestai-katems": {
+    "n": 17,
+    "vid_ant": 60
+   },
+   "vf|skanestai-grauzikams": {
+    "n": 17,
+    "vid_ant": 47
+   },
+   "quattro|sausas-maistas-katems": {
+    "n": 16,
+    "vid_ant": 70
+   },
+   "vf|guoliai-boksai-sunims": {
+    "n": 16,
+    "vid_ant": 45
+   },
+   "vf|sukos-sepeciai-zirkles-sunims": {
+    "n": 15,
+    "vid_ant": 35
+   },
+   "ambrosia|sausas-maistas-sunims": {
+    "n": 15,
+    "vid_ant": 46
+   },
+   "vf|higienos-priemones-sunims": {
+    "n": 14,
+    "vid_ant": 36
+   },
+   "av|sukos-sepeciai-zirkles-katems": {
+    "n": 14,
+    "vid_ant": 30
+   },
+   "av|vitaminai-ir-papildai-katems": {
+    "n": 14,
+    "vid_ant": 39
+   },
+   "zb|kelioniu-iranga": {
+    "n": 13,
+    "vid_ant": 50
+   },
+   "av|antkakliai-pavadeliai-sunims": {
+    "n": 13,
+    "vid_ant": null
+   },
+   "vf|transportavimo-dezes-katems": {
+    "n": 13,
+    "vid_ant": 45
+   },
+   "av|pasaras-grauzikams": {
+    "n": 12,
+    "vid_ant": null
+   },
+   "vf|dubeneliai-sunims": {
+    "n": 10,
+    "vid_ant": 45
+   },
+   "zb|transportavimo-dezes-katems": {
+    "n": 10,
+    "vid_ant": 40
+   },
+   "zb|higienos-priemones-sunims": {
+    "n": 9,
+    "vid_ant": 42
+   },
+   "av|higienos-priemones-sunims": {
+    "n": 9,
+    "vid_ant": 145
+   },
+   "av|antkakliai-ir-petnesos-katems": {
+    "n": 9,
+    "vid_ant": null
+   },
+   "zb|draskykles-katems": {
+    "n": 8,
+    "vid_ant": 40
+   },
+   "zb|vitaminai-ir-papildai-sunims": {
+    "n": 8,
+    "vid_ant": 35
+   },
+   "av|sampunai-sunims": {
+    "n": 8,
+    "vid_ant": 78
+   },
+   "av|hipoalerginis-maistas-sunims": {
+    "n": 8,
+    "vid_ant": 32
+   },
+   "vf|narvai-grauzikams": {
+    "n": 6,
+    "vid_ant": 45
+   },
+   "zb|guoliai-katems": {
+    "n": 6,
+    "vid_ant": 40
+   },
+   "av|prieziuros-priemones-katems": {
+    "n": 6,
+    "vid_ant": null
+   }
+  },
+  "top_marza": [
+   [
+    "av",
+    "tualetai-kraikai-semtuveliai",
+    13.49,
+    221,
+    15,
+    "Tualetas katėms aukštu rėmeliu, Georplast Sonic Big"
+   ],
+   [
+    "av",
+    "tualetai-kraikai-semtuveliai",
+    15.9,
+    209,
+    31,
+    "Tualetas katėms labai aukštu rėmeliu (30 cm), Georplast"
+   ],
+   [
+    "av",
+    "transportavimo-dezes-katems",
+    16.2,
+    185,
+    9,
+    "Transportavimo dėžė / boksas gyvūnams Rocket Classic, G"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    3.19,
+    149,
+    55,
+    "Veršiuko koja, 1 vnt."
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    4.83,
+    139,
+    13,
+    "Kietas Himalajų sūrio skanėstas šunims, 4Dogs, S dydis"
+   ],
+   [
+    "av",
+    "antiparazitines-priemones-katems",
+    3.1,
+    137,
+    134,
+    "PESS biologinis antkaklis nuo parazitų katėms, 35 cm"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    2.95,
+    130,
+    27,
+    "Jaučių sėklidės, džiovintos, pjaustytos, 100 g"
+   ],
+   [
+    "av",
+    "dubeneliai-katems",
+    12.8,
+    128,
+    18,
+    "Filtrai automatinei vandens gertuvei fontanui katėms, C"
+   ],
+   [
+    "av",
+    "zaislai-katems",
+    8.73,
+    121,
+    11,
+    "Žaislas katei skanėstų dozatorius Gaidžiukas, Catit Pix"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    3.49,
+    115,
+    17,
+    "Džiovintos galvijų stemplės, 100 g"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    2.99,
+    110,
+    14,
+    "Džiovinta jaučio uodega, 1 vnt."
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    3.65,
+    108,
+    5,
+    "Hikari Cichlid Gold Mini, 57 g"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    8.44,
+    103,
+    4,
+    "Kietas Himalajų sūrio skanėstas šunims, 4Dogs, M dydis"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    2.8,
+    103,
+    4,
+    "Hikari Cichlid Staple Mini, 57 g"
+   ],
+   [
+    "belcor_tofu",
+    "kraikai-kaciu-tualetams",
+    8.5,
+    101,
+    10,
+    "Natūralus bentonitinis sušokantis kraikas katėms Wonder"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    3.3,
+    100,
+    24,
+    "Galvijų širdys, džiovintos, pjaustytos, 100 g"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    2.59,
+    96,
+    12,
+    "Džiovinti galvijų skrandžiai"
+   ],
+   [
+    "belcor_tofu",
+    "kraikai-kaciu-tualetams",
+    8.5,
+    95,
+    19,
+    "Natūralus bentonitinis sušokantis kraikas katėms Wonder"
+   ],
+   [
+    "belcor_tofu",
+    "kraikai-kaciu-tualetams",
+    8.5,
+    95,
+    5,
+    "Natūralus bentonitinis sušokantis kraikas katėms Wonder"
+   ],
+   [
+    "belcor_tofu",
+    "kraikai-kaciu-tualetams",
+    8.5,
+    95,
+    20,
+    "Natūralus bentonitinis sušokantis kraikas katėms Wonder"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    12.7,
+    95,
+    8,
+    "Hikari  Cichlid Excel Medium, 250 g"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    12.68,
+    93,
+    4,
+    "Kietas Himalajų sūrio skanėstas šunims, 4Dogs, L dydis"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    7.3,
+    93,
+    19,
+    "Hikari Tropical Micro Pellets, 45 g"
+   ],
+   [
+    "av",
+    "zaislai-katems",
+    3.28,
+    92,
+    4,
+    "Žaislas katei - Pliušinė žvaigždė su kaspinais ir varpe"
+   ],
+   [
+    "av",
+    "skanestai-katems",
+    2.49,
+    92,
+    14,
+    "GimCat skanėstai katėms - dantų priežiūrai - Nutri Pock"
+   ],
+   [
+    "av",
+    "skanestai-katems",
+    2.49,
+    92,
+    10,
+    "GimCat skanėstai katėms - Nutri Pockets Catnip su multi"
+   ],
+   [
+    "av",
+    "konservai-katems",
+    2.05,
+    88,
+    34,
+    "Miamor Feine Filets konservai katėms, vištienos ir tuno"
+   ],
+   [
+    "av",
+    "konservai-katems",
+    2.05,
+    88,
+    60,
+    "Miamor Feine Filets konservai katėms, vištienos ir tuno"
+   ],
+   [
+    "av",
+    "konservai-katems",
+    2.05,
+    88,
+    33,
+    "Miamor Feine Filets konservai katėms, vištiena paukštie"
+   ],
+   [
+    "av",
+    "konservai-katems",
+    2.05,
+    88,
+    26,
+    "Miamor Feine Filets konservai katėms, tunas su krabais "
+   ],
+   [
+    "av",
+    "konservai-katems",
+    2.05,
+    88,
+    38,
+    "Miamor Feine Filets konservai katėms, tunas su kalmarai"
+   ],
+   [
+    "av",
+    "konservai-katems",
+    2.05,
+    88,
+    44,
+    "Miamor Feine Filets konservai katėms, tunas su daržovėm"
+   ],
+   [
+    "av",
+    "konservai-katems",
+    2.05,
+    88,
+    22,
+    "Miamor Feine Filets konservai katėms, tunas lašišos dre"
+   ],
+   [
+    "av",
+    "konservai-katems",
+    2.05,
+    88,
+    34,
+    "Miamor Feine Filets konservai katėms, tunas krabų drebu"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    5.85,
+    88,
+    15,
+    "Hikari Cichlid Staple Medium, 250 g"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    8.58,
+    88,
+    14,
+    "Galvijų trachėjos, pjaustytos, 500 g"
+   ],
+   [
+    "av",
+    "antiparazitines-priemones-sunims",
+    6.49,
+    86,
+    1,
+    "Vetocanis atbaidantis biologinis antkaklis šunims virš "
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    3.49,
+    86,
+    4,
+    "Hikari Goldfish wheat-Germ, 100 g"
+   ],
+   [
+    "av",
+    "sampunai-sunims",
+    15.49,
+    85,
+    2,
+    "Šampūnas Jorkšyro terjerų šuniukams, CHAMP RICHER JUNIO"
+   ],
+   [
+    "av",
+    "antiparazitines-priemones-katems",
+    4.99,
+    84,
+    3,
+    "Vetocanis atbaidantis biologinis antkaklis kačiukams nu"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    5.19,
+    84,
+    2,
+    "Kietas Himalajų sūrio skanėstas su ciberžole šunims, 4D"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    10.6,
+    84,
+    2,
+    "Hikari Cichlid Gold Sinking Mini, 342 g"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    13.4,
+    84,
+    12,
+    "Hikari  Cichlid Bio - Gold Plus Medium, 250 g"
+   ],
+   [
+    "av",
+    "sampunai-sunims",
+    4.92,
+    83,
+    2,
+    "Šampūnas jauniems Jorkšyro terjerams, One Wish, 250 ml"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-katems",
+    10,
+    82,
+    38,
+    "QUATTRO Sterilised su paukštiena sausas sterilizuotų ka"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-sunims",
+    12,
+    82,
+    50,
+    "QUATTRO Sport su paukštiena sausas aktyvių šunų pašaras"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-sunims",
+    11,
+    82,
+    50,
+    "QUATTRO Mini Salmon su lašiša sausas mažų veislių šunų "
+   ],
+   [
+    "quattro",
+    "sausas-maistas-sunims",
+    7.5,
+    82,
+    40,
+    "QUATTRO Mini Poultry su paukštiena sausas mažų veislių "
+   ],
+   [
+    "quattro",
+    "sausas-maistas-sunims",
+    10,
+    82,
+    49,
+    "QUATTRO Mini Lamb su ėriena sausas mažų veislių šunų pa"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-sunims",
+    11,
+    82,
+    47,
+    "QUATTRO Maxi Poultry su paukštiena sausas didelių veisl"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-katems",
+    10,
+    82,
+    32,
+    "QUATTRO Kitten sausas kačiukų pašaras su daug paukštien"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-sunims",
+    7.5,
+    82,
+    50,
+    "QUATTRO Junior su paukštiena sausas jaunų šunų pašaras,"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-sunims",
+    16,
+    82,
+    38,
+    "QUATTRO Extra Salmon su lašiša sausas šunų pašaras, 3kg"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-sunims",
+    11,
+    82,
+    33,
+    "QUATTRO Extra Poultry su paukštiena sausas šunų pašaras"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-sunims",
+    15,
+    82,
+    18,
+    "QUATTRO Extra Lamb su ėriena sausas šunų pašaras, 3kg"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    8.7,
+    82,
+    7,
+    "Hikari Cichlid Gold Mini, 250 g"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    15.7,
+    82,
+    12,
+    "Hikari Cichlid Excel Mini Sinking, 342 g"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    4.3,
+    81,
+    3,
+    "Hikari Vibra Bites, 35 g"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    11.8,
+    81,
+    5,
+    "Hikari  Cichlid Excel Mini, 250 g"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    4.8,
+    80,
+    4,
+    "Hikari Tropical Fancy Guppy, 22 g"
+   ],
+   [
+    "belcor_tofu",
+    "kraikai-kaciu-tualetams",
+    4.99,
+    79,
+    2,
+    "Kraikas katėms Purrfect Bamboo  aktyvintos anglies kvap"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    19.78,
+    79,
+    2,
+    "Kietas Himalajų sūrio skanėstas šunims, 4Dogs, XXL dydi"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    10.7,
+    78,
+    10,
+    "Hikari Cichlid Gold Sinking Medium, 342 g"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    2.15,
+    78,
+    15,
+    "Natūralių skanėstų šunims rinkinukas, 100 g, ĮVAIRUS MI"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    15.89,
+    77,
+    7,
+    "Hikari Tropical Algae Wafers, 250 g"
+   ],
+   [
+    "belcor_tofu",
+    "kraikai-kaciu-tualetams",
+    4.9,
+    76,
+    7,
+    "Kraikas katėms TOFU BeloCat, obuolių su cinamonu kvapo,"
+   ],
+   [
+    "belcor_tofu",
+    "kraikai-kaciu-tualetams",
+    4.9,
+    76,
+    11,
+    "Kraikas katėms TOFU BeloCat, arbūzų kvapo, 6 l (2,5 kg)"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    9.8,
+    76,
+    2,
+    "Hikari Cichlid Gold Baby, 250 g"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    4.99,
+    76,
+    34,
+    "Hikari  Tropical Micro Wafers, 45 g, pašaras tropinėms "
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    2.15,
+    76,
+    2,
+    "Džiovinti galvijų plaučiai"
+   ],
+   [
+    "av",
+    "konservai-sunims",
+    2.95,
+    75,
+    10,
+    "Ontario Monoproteino konservai šunims su ėriena ir ruda"
+   ],
+   [
+    "av",
+    "konservai-sunims",
+    2.95,
+    75,
+    22,
+    "Ontario Monoproteino konservai šunims su kalakutiena ir"
+   ],
+   [
+    "av",
+    "konservai-sunims",
+    2.95,
+    75,
+    23,
+    "Ontario Monoproteino konservai šunims su antiena ir mol"
+   ],
+   [
+    "av",
+    "konservai-sunims",
+    2.2,
+    74,
+    259,
+    "Monge Fresh Puppy Pate and chunkies Veal with Vegetable"
+   ],
+   [
+    "av",
+    "konservai-sunims",
+    2.2,
+    74,
+    510,
+    "Monge Fresh Pate and chunkies Veal - konservai šunims s"
+   ],
+   [
+    "av",
+    "konservai-sunims",
+    2.2,
+    74,
+    199,
+    "Monge Fresh Pate and chunkies Chicken - konservai šunim"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    3.89,
+    73,
+    3,
+    "Hikari Goldfish Staple, baby pellet, 100 g"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    8.65,
+    73,
+    11,
+    "Hikari Cichlid Gold Medium, 250 g"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    5.58,
+    73,
+    12,
+    "Bosch sausainiai šuniukams, kauliuko formos, Mono Bones"
+   ],
+   [
+    "av",
+    "zaislai-katems",
+    3.18,
+    72,
+    3,
+    "Žaislas katei - Prisukama pelytė, 7 cm"
+   ],
+   [
+    "av",
+    "sampunai-sunims",
+    4.58,
+    71,
+    5,
+    "Šampūnas alergiškiems šunims, One Wish, 250 ml"
+   ],
+   [
+    "av",
+    "sampunai-sunims",
+    4.58,
+    71,
+    3,
+    "Šampūnas Jorkšyro terjerams, One Wish, 250 ml"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    3.9,
+    71,
+    9,
+    "Natūralios triušio ausys su kailiuku, 100 g"
+   ],
+   [
+    "av",
+    "animonda-konservai-sunims",
+    2.69,
+    71,
+    1,
+    "Animonda GranCarno Adult Sensitive Turkey + Potato: kon"
+   ],
+   [
+    "av",
+    "animonda-konservai-sunims",
+    2.69,
+    71,
+    31,
+    "Animonda GranCarno Adult Sensitive Beef + Potato: konse"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    6.4,
+    70,
+    6,
+    "Hikari Tropical Algae Wafers, 82 g"
+   ],
+   [
+    "av",
+    "vitaminai-ir-papildai-katems",
+    9.09,
+    70,
+    7,
+    "GimCat maisto papildas katėms - Malt-Soft Extra Anti-Ha"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    5.49,
+    69,
+    3,
+    "Hikari Oranda Gold mini pellet, 100 g"
+   ],
+   [
+    "av",
+    "skanestai-katems",
+    3.89,
+    69,
+    5,
+    "GimCat skanėstai katėms - Nutri Pockets Malt&Multivitam"
+   ],
+   [
+    "av",
+    "skanestai-katems",
+    3.89,
+    69,
+    3,
+    "GimCat skanėstai katėms - Nutri Pockets Country Mix, 15"
+   ],
+   [
+    "av",
+    "skanestai-katems",
+    2.89,
+    68,
+    4,
+    "GimCat skanėstai katėms - vitaminizuoti sūrio rutuliuka"
+   ],
+   [
+    "quattro",
+    "hipoalerginis-maistas-sunims",
+    12,
+    67,
+    27,
+    "Quattro SB su ėriena sausas suaugusių mažų veislių šunų"
+   ],
+   [
+    "quattro",
+    "hipoalerginis-maistas-sunims",
+    13,
+    67,
+    35,
+    "Quattro SB su lašiša ir kriliu sausas suaugusių mažų ve"
+   ],
+   [
+    "quattro",
+    "hipoalerginis-maistas-sunims",
+    12,
+    67,
+    44,
+    "Quattro SB su balta žuvimi ir kriliu sausas seniems/die"
+   ],
+   [
+    "quattro",
+    "hipoalerginis-maistas-sunims",
+    12,
+    67,
+    29,
+    "Quattro SB su antiena sausas suaugusių mažų veislių šun"
+   ],
+   [
+    "quattro",
+    "hipoalerginis-maistas-sunims",
+    13,
+    67,
+    43,
+    "Quattro SB su antiena sausas pašaras mažų veislių šuniu"
+   ],
+   [
+    "quattro",
+    "hipoalerginis-maistas-sunims",
+    13,
+    67,
+    43,
+    "Quattro SB su antiena sausas jaunų mažų veislių šunų pa"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-sunims",
+    22,
+    67,
+    50,
+    "QUATTRO begrūdis visų veislių suaugusių šunų pašaras WE"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-sunims",
+    22,
+    67,
+    49,
+    "QUATTRO begrūdis visų veislių senjorų/dietinis šunų paš"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-sunims",
+    23,
+    67,
+    39,
+    "QUATTRO begrūdis su ėriena visų veislių suaugusių šunų "
+   ],
+   [
+    "quattro",
+    "sausas-maistas-sunims",
+    22,
+    67,
+    48,
+    "QUATTRO begrūdis su antiena visų veislių suaugusių šunų"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-sunims",
+    22,
+    67,
+    44,
+    "QUATTRO begrūdis su antiena visų veislių jaunų šunų paš"
+   ],
+   [
+    "quattro",
+    "hipoalerginis-maistas-sunims",
+    22,
+    67,
+    49,
+    "QUATTRO begrūdis su antiena didelių veislių suaugusių š"
+   ],
+   [
+    "quattro",
+    "hipoalerginis-maistas-sunims",
+    22,
+    67,
+    49,
+    "QUATTRO begrūdis su antiena didelių veislių jaunų šunų "
+   ],
+   [
+    "quattro",
+    "hipoalerginis-maistas-sunims",
+    23,
+    67,
+    44,
+    "QUATTRO begrūdis  lašiša ir kriliu visų veislių suaugus"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-katems",
+    17,
+    67,
+    13,
+    "QUATTRO 1,5 kg Senior White Fish & Krill visavertis sau"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-katems",
+    17,
+    67,
+    10,
+    "QUATTRO 1,5 kg Salmon for Sterilised Adult visavertis s"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-katems",
+    16,
+    67,
+    6,
+    "QUATTRO 1,5 kg Duck for Adult Indoor Cats visavertis sa"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-katems",
+    15,
+    67,
+    10,
+    "QUATTRO 1,5 kg Chicken for Sterilised Adult Cats visave"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-katems",
+    15,
+    67,
+    9,
+    "QUATTRO 1,5 kg Chicken for Kittens (up to 12 months) vi"
+   ],
+   [
+    "quattro",
+    "sausas-maistas-katems",
+    17,
+    67,
+    8,
+    "QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas p"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    3.8,
+    66,
+    9,
+    "Rudos (natūralios) triušio ausys 100g."
+   ],
+   [
+    "av",
+    "zaislai-sunims",
+    8.42,
+    66,
+    2,
+    "\"DuvoPlius\" žaislas šuniui - pliušinis mėlynasis bangin"
+   ],
+   [
+    "belcor_tofu",
+    "kraikai-kaciu-tualetams",
+    4.99,
+    65,
+    32,
+    "Natūralus bentonitinis sušokantis kraikas katėms Wonder"
+   ],
+   [
+    "av",
+    "akvariumo-zuvyciu-maistas",
+    4.8,
+    64,
+    12,
+    "Hikari  Cichlid Staple Large, 250 g"
+   ],
+   [
+    "av",
+    "skanestai-sunims",
+    4.65,
+    64,
+    8,
+    "Baltos triušio ausys, 100 g"
+   ],
+   [
+    "belcor_tofu",
+    "kraikai-kaciu-tualetams",
+    4.9,
+    62,
+    20,
+    "Kraikas katėms TOFU BeloCat, kokoso kvapo, 6 l (2,5 kg)"
+   ],
+   [
+    "av",
+    "zaislai-sunims",
+    4.18,
+    61,
+    1,
+    "Žaislas šuniui - D&D virvė (XS) 22 cm*10 mm, juoda"
+   ],
+   [
+    "av",
+    "kraikai-kaciu-tualetams",
+    3.7,
+    61,
+    108,
+    "Silikoninis kačių kraikas SILICA GEL 3,8 l / 1,5 kg"
+   ],
+   [
+    "av",
+    "konservai-sunims",
+    2.95,
+    61,
+    20,
+    "Ontario Monoproteino konservai šunims su jautiena ir mo"
+   ]
+  ],
+  "brand_vf_sausas": [
+   [
+    "Ambrosia",
+    "15"
+   ],
+   [
+    "Georplast",
+    "75"
+   ],
+   [
+    "Duvo+",
+    "66"
+   ],
+   [
+    "Animonda",
+    "59"
+   ],
+   [
+    "Ontario",
+    "56"
+   ],
+   [
+    "Trixie",
+    "52"
+   ],
+   [
+    "Hikari",
+    "40"
+   ],
+   [
+    "Sum-Plast",
+    "36"
+   ],
+   [
+    "GimCat",
+    "34"
+   ],
+   [
+    "Miamor",
+    "27"
+   ],
+   [
+    "Hau&Miau",
+    "25"
+   ],
+   [
+    "Royal Canin",
+    "25"
+   ],
+   [
+    "Coockoo",
+    "25"
+   ],
+   [
+    "Dingo",
+    "25"
+   ],
+   [
+    "Gnatek",
+    "24"
+   ],
+   [
+    "Romar",
+    "24"
+   ],
+   [
+    "Pet Nova",
+    "23"
+   ],
+   [
+    "Zolux",
+    "22"
+   ],
+   [
+    "Deli Nature",
+    "16"
+   ],
+   [
+    "Super Benek",
+    "15"
+   ],
+   [
+    "Monge",
+    "14"
+   ],
+   [
+    "Exclusion",
+    "14"
+   ],
+   [
+    "Ebi",
+    "13"
+   ],
+   [
+    "Ad Bi",
+    "12"
+   ],
+   [
+    "Rasco",
+    "11"
+   ],
+   [
+    "4Dogs",
+    "11"
+   ],
+   [
+    "SEECURITY",
+    "10"
+   ],
+   [
+    "Frendi",
+    "8"
+   ],
+   [
+    "Catit",
+    "8"
+   ],
+   [
+    "BeloCat",
+    "41"
+   ],
+   [
+    "Prins",
+    "23"
+   ],
+   [
+    "Quattro",
+    "64"
+   ],
+   [
+    "Josera",
+    "213"
+   ],
+   [
+    "Nobby",
+    "76"
+   ],
+   [
+    "FLEXI",
+    "76"
+   ],
+   [
+    "Exclusion",
+    "72"
+   ],
+   [
+    "Churu",
+    "72"
+   ],
+   [
+    "NOBLEZA",
+    "67"
+   ],
+   [
+    "Happet",
+    "49"
+   ],
+   [
+    "COMFY",
+    "43"
+   ],
+   [
+    "FURMINATOR",
+    "29"
+   ],
+   [
+    "LITTLE ONE",
+    "24"
+   ],
+   [
+    "ANTOS",
+    "21"
+   ],
+   [
+    "8in1",
+    "21"
+   ],
+   [
+    "LAND FLEISCH",
+    "20"
+   ],
+   [
+    "WANPY",
+    "18"
+   ],
+   [
+    "HAP",
+    "16"
+   ],
+   [
+    "CANDIOLI",
+    "16"
+   ],
+   [
+    "TRULY",
+    "15"
+   ],
+   [
+    "GIGI",
+    "14"
+   ],
+   [
+    "ECOMFY",
+    "13"
+   ],
+   [
+    "SMART BONES",
+    "13"
+   ],
+   [
+    "CIAO",
+    "12"
+   ],
+   [
+    "CAT'S_BEST",
+    "11"
+   ],
+   [
+    "MERVUE",
+    "11"
+   ],
+   [
+    "NATURE'S MIR",
+    "10"
+   ],
+   [
+    "VETOQUINOL",
+    "10"
+   ],
+   [
+    "Green Petfood",
+    "9"
+   ],
+   [
+    "BOGAR",
+    "8"
+   ],
+   [
+    "GENIA",
+    "8"
+   ],
+   [
+    "Trixie",
+    "159"
+   ],
+   [
+    "Farmina",
+    "154"
+   ],
+   [
+    "Monge",
+    "105"
+   ],
+   [
+    "Eukanuba",
+    "36"
+   ],
+   [
+    "Real Dog",
+    "21"
+   ],
+   [
+    "Chewllagen",
+    "21"
+   ],
+   [
+    "Dogoteka",
+    "19"
+   ],
+   [
+    "Gemon",
+    "17"
+   ],
+   [
+    "K-9",
+    "10"
+   ]
+  ]
+ }
 }
