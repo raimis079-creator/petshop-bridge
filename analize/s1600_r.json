@@ -1,10 +1,1814 @@
 {
- "v": "dep-132702",
+ "v": "dep-132844",
  "kurimas": 200,
- "sid": 4498,
+ "sid": 4499,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "zalias_R": "<br />\n<b>Fatal error</b>:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-object-cache.php</b> on line <b>406</b><br />\n<br />\n<b>Fatal error</b>:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 65536 bytes) in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php</b> on line <b>341</b><br />\n"
+ "R": {
+  "VERSIJA": "S1600-R1",
+  "excl_mini": [
+   [
+    18584,
+    "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauli",
+    9.89,
+    6.77,
+    27,
+    "vf",
+    0.8
+   ],
+   [
+    18587,
+    "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauli",
+    54.49,
+    37.49,
+    253,
+    "vf",
+    7
+   ],
+   [
+    18590,
+    "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauli",
+    20.89,
+    14.36,
+    265,
+    "vf",
+    2
+   ]
+  ],
+  "excl_kons": [
+   [
+    18593,
+    "Exclusion Hypoallergenic konservai šunims su triušiena ir bu",
+    2.95,
+    2,
+    98,
+    "av",
+    0.2
+   ],
+   [
+    18596,
+    "Exclusion Hypoallergenic konservai šunims su putpelėmis ir ž",
+    3.98,
+    2.38,
+    144,
+    "av",
+    0.4
+   ],
+   [
+    18599,
+    "Exclusion Hypoallergenic konservai šunims su kiauliena ir ži",
+    3.98,
+    2.38,
+    1442,
+    "av",
+    0.4
+   ],
+   [
+    18602,
+    "Exclusion Hypoallergenic konservai šunims su kiauliena ir ži",
+    2.95,
+    2,
+    102,
+    "av",
+    0.2
+   ],
+   [
+    18605,
+    "Exclusion Hypoallergenic konservai šunims su elniena ir bulv",
+    3.98,
+    2.38,
+    186,
+    "av",
+    0.4
+   ],
+   [
+    18608,
+    "Exclusion Hypoallergenic konservai šunims su arkliena ir bul",
+    3.98,
+    2.38,
+    81,
+    "av",
+    0.4
+   ],
+   [
+    18611,
+    "Exclusion Hypoallergenic konservai šunims su antiena ir bulv",
+    3.98,
+    2.38,
+    126,
+    "av",
+    0.4
+   ],
+   [
+    18614,
+    "Exclusion Hypoallergenic konservai šunims su antiena ir bulv",
+    2.84,
+    1.9,
+    62,
+    "av",
+    0.2
+   ]
+  ],
+  "pess": [
+   [
+    16976,
+    "PESS biologinis apsauginis purškiklis nuo erkių katėms bei š",
+    4.45,
+    0,
+    194,
+    "av",
+    0.25
+   ],
+   [
+    16979,
+    "PESS biologinis antkaklis su pelargonijų ir kedrų aliejais n",
+    2.7,
+    0,
+    30,
+    "av",
+    0
+   ],
+   [
+    16984,
+    "PESS biologinis antkaklis su eteriniais aliejais nuo parazit",
+    2.85,
+    0,
+    26,
+    "av",
+    0
+   ],
+   [
+    16987,
+    "PESS biologinis antkaklis nuo parazitų katėms, 35 cm",
+    3.1,
+    1.08,
+    134,
+    "av",
+    0
+   ],
+   [
+    16996,
+    "PESS biologiniai lašiukai nuo parazitų šunims, sveriantiems ",
+    4.84,
+    0,
+    50,
+    "av",
+    20
+   ],
+   [
+    16999,
+    "PESS biologiniai lašiukai nuo parazitų katėms ir šunims, sve",
+    4.46,
+    0,
+    56,
+    "av",
+    10
+   ]
+  ],
+  "vetocanis": [
+   [
+    15848,
+    "Vetocanis atbaidantis biologinis antkaklis šunims virš 20 kg",
+    6.49,
+    2.88,
+    1,
+    "av",
+    20
+   ],
+   [
+    15856,
+    "Vetocanis atbaidantis biologinis antkaklis kačiukams nuo 3 i",
+    4.99,
+    2.24,
+    3,
+    "av",
+    0
+   ]
+  ],
+  "kepenys": [
+   [
+    17484,
+    "Miamor skanėstai katėms - kepenų pašteto kremas, 6*15 g, Mia",
+    2.85,
+    1.5,
+    54,
+    "av",
+    0.015
+   ],
+   [
+    19042,
+    "CATIT CUISINE vištienos paštetas su kepenėlėmis, 95 g",
+    1.29,
+    0,
+    7,
+    "av",
+    0.095
+   ],
+   [
+    19048,
+    "CATIT CUISINE kalakutienos paštetas su vištienos kepenėlėmis",
+    1.29,
+    0,
+    7,
+    "av",
+    0.095
+   ],
+   [
+    19228,
+    "Apollo Happie Duo kramtomos juostelės su jautiena ir kepenėl",
+    1.55,
+    0.71,
+    22,
+    "av",
+    0.2
+   ],
+   [
+    19440,
+    "Animonda Vom Feinsten Adult with Chicken Liver – konservai k",
+    1.05,
+    0.63,
+    94,
+    "av",
+    0.1
+   ]
+  ],
+  "georplast_tualet": [
+   [
+    15870,
+    "Uždaras tualetas katėms, Vicky, Georplast",
+    19.9,
+    0,
+    24,
+    "av",
+    0
+   ],
+   [
+    15874,
+    "Uždaras tualetas katėms, Roto-Toilet, Georplast",
+    19.6,
+    0,
+    5,
+    "av",
+    0
+   ],
+   [
+    15878,
+    "Uždaras tualetas katėms, Galaxy Jumbo, Georplast",
+    19.39,
+    0,
+    8,
+    "av",
+    0
+   ],
+   [
+    15882,
+    "Uždaras tualetas katėms, Galaxy Deluxe, Georplast",
+    12.2,
+    0,
+    3,
+    "av",
+    0
+   ],
+   [
+    15889,
+    "Uždaras kampinis tualetas katėms CORNER",
+    28.3,
+    0,
+    1,
+    "av",
+    0
+   ],
+   [
+    15914,
+    "Tualetas katėms su rėmeliu vidutinis, Lettiera max (43,5x34x",
+    5.79,
+    0,
+    16,
+    "av",
+    0
+   ],
+   [
+    15917,
+    "Tualetas katėms su rėmeliu didelis, Lettiera Big (50x40x14,5",
+    8.89,
+    0,
+    9,
+    "av",
+    0
+   ],
+   [
+    15920,
+    "Tualetas katėms labai aukštu rėmeliu (30 cm), Georplast Colo",
+    15.9,
+    4.26,
+    31,
+    "av",
+    0
+   ],
+   [
+    15924,
+    "Tualetas katėms aukštu rėmeliu, Georplast Sonic Medium",
+    9.9,
+    0,
+    20,
+    "av",
+    0
+   ],
+   [
+    15928,
+    "Tualetas katėms aukštu rėmeliu, Georplast Sonic Big",
+    13.49,
+    3.48,
+    15,
+    "av",
+    0
+   ],
+   [
+    15935,
+    "Tualetas katėms Shuttle, 57 cm",
+    10.69,
+    0,
+    9,
+    "av",
+    0
+   ],
+   [
+    15938,
+    "Tualetas katėms Shuttle, 45 cm",
+    6.68,
+    0,
+    11,
+    "av",
+    0
+   ],
+   [
+    15942,
+    "Tualetas katėms BETA su rėmeliu mažas",
+    5.49,
+    0,
+    7,
+    "av",
+    0
+   ],
+   [
+    17916,
+    "Kampinis tualetas katėms Shuttle Big",
+    12.99,
+    0,
+    8,
+    "av",
+    0
+   ],
+   [
+    17920,
+    "Kampinis tualetas katėms Shuttle",
+    7.45,
+    0,
+    3,
+    "av",
+    0
+   ],
+   [
+    17924,
+    "Kampinis tualetas katėms CORNER",
+    11.99,
+    0,
+    6,
+    "av",
+    0
+   ]
+  ],
+  "silica": [
+   [
+    16132,
+    "Silikoninis kačių kraikas SILICA GEL 3,8 l / 1,5 kg",
+    3.7,
+    1.9,
+    108,
+    "av",
+    1.5
+   ]
+  ],
+  "semtuv": [
+   [
+    13067,
+    "Trixie Išmatų semtuvas su grėbliu, 57-102 cm, pilka-mėlyna",
+    16.29,
+    8.96,
+    6,
+    "zb",
+    0.3
+   ],
+   [
+    16168,
+    "Semtuvėlis sausam ėdalui semti",
+    1.99,
+    0,
+    20,
+    "av",
+    0
+   ],
+   [
+    16172,
+    "Semtuvėlis kačių kraikui, mažas, Georplast Simple",
+    0.79,
+    0,
+    30,
+    "av",
+    0
+   ],
+   [
+    16175,
+    "Semtuvėlis kačių kraikui, didelis, Georplast Benna",
+    1.59,
+    0,
+    36,
+    "av",
+    0
+   ],
+   [
+    16178,
+    "Semtuvėlis kačių kraikui, Georplast Sonar",
+    0.99,
+    0,
+    34,
+    "av",
+    0
+   ],
+   [
+    16185,
+    "Semtuvėlis kačių kraikui, Georplast Diapason",
+    1.24,
+    0,
+    55,
+    "av",
+    0
+   ],
+   [
+    16189,
+    "Semtuvėlis ekskrementams Pick up su 5 maišeliais",
+    3.99,
+    0,
+    15,
+    "av",
+    0
+   ]
+  ],
+  "fontan": [
+   [
+    18508,
+    "Filtrai automatinei vandens gertuvei fontanui katėms, Catit ",
+    12.8,
+    4.63,
+    18,
+    "av",
+    0
+   ],
+   [
+    19140,
+    "Automatinė vandens gertuvė fontanas katėms ir kitiems gyvūna",
+    43.95,
+    22.65,
+    8,
+    "av",
+    2.5
+   ],
+   [
+    19145,
+    "Automatinė vandens gertuvė fontanas gyvūnams, Trevi, 2 l",
+    36.99,
+    10.26,
+    6,
+    "av",
+    2
+   ]
+  ],
+  "filtrai": [
+   [
+    18508,
+    "Filtrai automatinei vandens gertuvei fontanui katėms, Catit ",
+    12.8,
+    4.63,
+    18,
+    "av",
+    0
+   ]
+  ],
+  "gimcat_pockets": [
+   [
+    18399,
+    "GimCat skanėstai katėms - dantų priežiūrai - Nutri Pockets D",
+    2.49,
+    1.07,
+    14,
+    "av",
+    0.06
+   ],
+   [
+    18411,
+    "GimCat skanėstai katėms - Nutri Pockets Malt&Multivitamin mi",
+    3.89,
+    1.9,
+    5,
+    "av",
+    0.15
+   ],
+   [
+    18417,
+    "GimCat skanėstai katėms - Nutri Pockets Country Mix, 150 g",
+    3.89,
+    1.9,
+    3,
+    "av",
+    0.15
+   ],
+   [
+    18420,
+    "GimCat skanėstai katėms - Nutri Pockets Catnip su multivitam",
+    2.49,
+    1.07,
+    10,
+    "av",
+    0.06
+   ]
+  ],
+  "vf_skan": [
+   [
+    22978,
+    "8IN1 flavours trigubo skonio skanėstas šunims Mega Ribs, 140",
+    4.79,
+    2.9,
+    37,
+    94,
+    "8in1",
+    0.14
+   ],
+   [
+    22972,
+    "8IN1 flavours trigubo skonio skanėstas šunims Mega Skewers, ",
+    4.79,
+    2.9,
+    37,
+    10,
+    "8in1",
+    0.16
+   ],
+   [
+    22966,
+    "8IN1 flavours trigubo skonio skanėstas šunims Mega TwSticks,",
+    4.79,
+    2.9,
+    37,
+    50,
+    "8in1",
+    0.14
+   ],
+   [
+    22377,
+    "8in1 Delights Pro Dental XS kaulas mažų veislių šunims, 7 vn",
+    4.69,
+    2.85,
+    36,
+    87,
+    "8in1",
+    0
+   ],
+   [
+    22935,
+    "8in1 Delights spiralės skanėstai šunims, su antiena, 6 vnt, ",
+    4.09,
+    2.45,
+    38,
+    137,
+    "8in1",
+    0.113
+   ],
+   [
+    22943,
+    "8in1 FLAVOURS trigubo skonio skanėsta šuniui M/L, žiedai, 12",
+    5.29,
+    3.2,
+    37,
+    55,
+    "8in1",
+    0.12
+   ],
+   [
+    22938,
+    "8in1 FLAVOURS trigubo skonio skanėstas šuniui XS/S, žiedai, ",
+    4.49,
+    2.7,
+    37,
+    65,
+    "8in1",
+    0.08
+   ],
+   [
+    22948,
+    "8in1 FLAVOURS trigubo skonio skanėstas šuniui, virvelės, 65g",
+    4.49,
+    2.7,
+    37,
+    58,
+    "8in1",
+    0.065
+   ],
+   [
+    24377,
+    "8in1 Flavours L trigubo skonio kaulas didelių veislių šunims",
+    4.09,
+    2.5,
+    35,
+    395,
+    "8in1",
+    0
+   ],
+   [
+    24374,
+    "8in1 Flavours M trigubo skonio kaulas vidutinių veislių šuni",
+    3.59,
+    2.14,
+    39,
+    553,
+    "8in1",
+    0
+   ],
+   [
+    22424,
+    "8in1 Flavours Trigubo skonio apsuktos lazdelės šunims, 113 g",
+    3.69,
+    2.25,
+    36,
+    258,
+    "8in1",
+    0.113
+   ],
+   [
+    22412,
+    "8in1 Flavours Trigubo skonio iešmeliai šunims, 6 vnt.",
+    3.69,
+    2.25,
+    36,
+    64,
+    "8in1",
+    0
+   ],
+   [
+    22415,
+    "8in1 Flavours Trigubo skonio iešmeliai šunims, 6 vnt.",
+    3.69,
+    2.25,
+    36,
+    604,
+    "8in1",
+    0
+   ],
+   [
+    22418,
+    "8in1 Flavours Trigubo skonio šonkauliukai šunims, 6 vnt.",
+    3.69,
+    2.25,
+    36,
+    387,
+    "8in1",
+    0
+   ],
+   [
+    22409,
+    "8in1 Flavours XS trigubo skonio kauliukai mažų veislių šunim",
+    10.49,
+    6.4,
+    35,
+    137,
+    "8in1",
+    0
+   ],
+   [
+    24368,
+    "8in1 Flavours XS trigubo skonio kauliukai mažų veislių šunim",
+    4.09,
+    2.5,
+    35,
+    820,
+    "8in1",
+    0
+   ],
+   [
+    24380,
+    "8in1 Flavours trigubo skonio sparneliai šunims, 6 vnt",
+    3.69,
+    2.25,
+    36,
+    421,
+    "8in1",
+    0
+   ],
+   [
+    22421,
+    "8in1 Meaty Treats šaltyje džiovintos antienos skanėstai šuni",
+    3.59,
+    2.14,
+    39,
+    141,
+    "8in1",
+    0.05
+   ],
+   [
+    24407,
+    "Antos WILD šaltyje džiovinti skanėstai šunims, antiena, 85g",
+    8.69,
+    5.3,
+    36,
+    29,
+    "ANTOS",
+    0.085
+   ],
+   [
+    24421,
+    "Antos WILD šaltyje džiovinti skanėstai šunims, jaučio plauči",
+    8.69,
+    5.3,
+    36,
+    22,
+    "ANTOS",
+    0.08
+   ],
+   [
+    24428,
+    "Antos WILD šaltyje džiovinti skanėstai šunims, triušiena, 90",
+    8.69,
+    5.3,
+    36,
+    14,
+    "ANTOS",
+    0.09
+   ],
+   [
+    19949,
+    "Antos didelis arklienos kaulas šunims 2,5kg",
+    10.79,
+    6.58,
+    36,
+    12,
+    "ANTOS",
+    2.5
+   ],
+   [
+    19943,
+    "Antos didelis kaulas šunims 2,56kg",
+    9.49,
+    5.78,
+    36,
+    39,
+    "ANTOS",
+    2.56
+   ],
+   [
+    20045,
+    "Antos skanėstai šunims  su vištiena D'light Bacon 400g",
+    12.19,
+    7.43,
+    36,
+    16,
+    "ANTOS",
+    0.4
+   ],
+   [
+    20039,
+    "Antos skanėstai šunims  su vištiena D'light Calcium 400g",
+    12.19,
+    7.43,
+    36,
+    18,
+    "ANTOS",
+    0.4
+   ],
+   [
+    20003,
+    "Antos skanėstai šunims  su vištiena D'light Drumsticks 400g",
+    10.79,
+    6.58,
+    36,
+    31,
+    "ANTOS",
+    0.4
+   ],
+   [
+    20009,
+    "Antos skanėstai šunims  su vištiena D'light Flags 300g",
+    12.19,
+    7.43,
+    36,
+    6,
+    "ANTOS",
+    0.3
+   ],
+   [
+    20015,
+    "Antos skanėstai šunims  su vištiena D'light Lollies 400g",
+    12.19,
+    7.43,
+    36,
+    230,
+    "ANTOS",
+    0.4
+   ],
+   [
+    20027,
+    "Antos skanėstai šunims  su vištiena D'light antienos 400g",
+    12.19,
+    7.43,
+    36,
+    117,
+    "ANTOS",
+    0.4
+   ],
+   [
+    20021,
+    "Antos skanėstai šunims  su vištiena D`light lazdelės 400g",
+    12.19,
+    7.43,
+    36,
+    22,
+    "ANTOS",
+    0.4
+   ],
+   [
+    20033,
+    "Antos skanėstai šunims Skanėstai  su vištiena  D'light Munch",
+    10.79,
+    6.58,
+    36,
+    21,
+    "ANTOS",
+    0.4
+   ],
+   [
+    19997,
+    "Antos skanėstai šunims antienos D'light Lollies 100g",
+    4.09,
+    2.46,
+    37,
+    36,
+    "ANTOS",
+    0.1
+   ],
+   [
+    19991,
+    "Antos skanėstai šunims antienos D'light mazgeliai 100g",
+    3.49,
+    2.13,
+    35,
+    122,
+    "ANTOS",
+    0.1
+   ],
+   [
+    20603,
+    "Antos skanėstai šunims su vištiena  D'light Bacon 1Kg",
+    26.99,
+    16.48,
+    35,
+    2,
+    "ANTOS",
+    1
+   ],
+   [
+    24614,
+    "Antos skanėstai šunims su vištiena D`light mazgeliai 100g",
+    3.49,
+    2.13,
+    35,
+    139,
+    "ANTOS",
+    0.1
+   ],
+   [
+    19955,
+    "Antos skanėstas šunims Capelin žuvis 90g",
+    5.39,
+    3.28,
+    36,
+    1,
+    "ANTOS",
+    0.09
+   ],
+   [
+    19937,
+    "Antos skanėstas šunims džiovintos triušių ausys 100g",
+    6.99,
+    4.27,
+    35,
+    71,
+    "ANTOS",
+    0.1
+   ],
+   [
+    19925,
+    "Antos skanėstas šunims jaučių trachėjos 5 kg",
+    134.69,
+    82.42,
+    35,
+    2,
+    "ANTOS",
+    5
+   ],
+   [
+    35017,
+    "BOGADENT DENTAL ENZYME STRIPES kramtomasis užkandis mažiems ",
+    5.29,
+    3.21,
+    36,
+    12,
+    "BOGAR",
+    0
+   ],
+   [
+    35015,
+    "BOGADENT PLAQUE-STOP kramtomasis užkandis vidutinio dydžio š",
+    5.29,
+    3.21,
+    36,
+    20,
+    "BOGAR",
+    0
+   ],
+   [
+    35021,
+    "Bogadent dental fibre flexies skanėstas mažiems šunims, nuo ",
+    3.59,
+    2.2,
+    35,
+    1,
+    "BOGAR",
+    0
+   ],
+   [
+    25311,
+    "Cazo Himalayan sūris su braškėmis L 13-16cm",
+    9.69,
+    5.9,
+    36,
+    60,
+    "CAZO",
+    0
+   ],
+   [
+    25315,
+    "Cazo Himalayan sūris su braškėmis M 9-14cm",
+    6.49,
+    3.96,
+    35,
+    57,
+    "CAZO",
+    0
+   ],
+   [
+    25303,
+    "Cazo Himalayan sūris su linų sėmenimis L 13-16cm",
+    9.69,
+    5.9,
+    36,
+    85,
+    "CAZO",
+    0
+   ],
+   [
+    25307,
+    "Cazo Himalayan sūris su linų sėmenimis M 9-14cm",
+    6.49,
+    3.96,
+    35,
+    50,
+    "CAZO",
+    0
+   ],
+   [
+    20327,
+    "Comfy appetit skanėstas šunims, jaut. prieskrandžiai, 100g",
+    3.59,
+    2.15,
+    38,
+    36,
+    "COMFY",
+    0.1
+   ],
+   [
+    21655,
+    "Churu Bites skanėstas šunims su vištiena ir lašiša, suktinuk",
+    5.69,
+    3.59,
+    31,
+    200,
+    "Churu",
+    0
+   ],
+   [
+    21657,
+    "Churu Bites skanėstas šunims su vištiena ir sūriu, suktinuka",
+    5.69,
+    3.59,
+    31,
+    245,
+    "Churu",
+    0
+   ],
+   [
+    21653,
+    "Churu Bites skanėstas šunims su vištiena ir tunu, suktinukai",
+    5.69,
+    3.59,
+    31,
+    236,
+    "Churu",
+    0
+   ],
+   [
+    24090,
+    "Churu Fun Bites skanėstas šunims su vištiena ir moliūgu sukt",
+    6.59,
+    4.13,
+    32,
+    178,
+    "Churu",
+    0.096
+   ],
+   [
+    24092,
+    "Churu Fun Bites skanėstas šunims su vištiena ir saldžia bulv",
+    6.59,
+    4.13,
+    32,
+    164,
+    "Churu",
+    0.096
+   ],
+   [
+    20915,
+    "Churu Meal topper skanėstas šunims maistui gardinti su višti",
+    2.49,
+    1.56,
+    32,
+    20,
+    "Churu",
+    0
+   ],
+   [
+    20918,
+    "Churu Meal topper skanėstas šunims maistui gardinti su višti",
+    2.49,
+    1.56,
+    32,
+    19,
+    "Churu",
+    0
+   ],
+   [
+    20911,
+    "Churu Rolls skanėstas šunims su vištiena, lazdelės, 8 vnt.",
+    5.69,
+    3.59,
+    31,
+    254,
+    "Churu",
+    0
+   ],
+   [
+    34809,
+    "Churu Terrine skanėstas didelių veislių šunims su lašiša ir ",
+    6.09,
+    3.84,
+    31,
+    342,
+    "Churu",
+    0
+   ],
+   [
+    34806,
+    "Churu Terrine skanėstas didelių veislių šunims su lašiša, N4",
+    6.09,
+    3.84,
+    31,
+    336,
+    "Churu",
+    0
+   ],
+   [
+    34797,
+    "Churu Terrine skanėstas mažų veislių šunims su lašiša ir tun",
+    2.79,
+    1.77,
+    30,
+    132,
+    "Churu",
+    0
+   ],
+   [
+    34794,
+    "Churu Terrine skanėstas mažų veislių šunims su lašiša, N4",
+    2.79,
+    1.77,
+    30,
+    142,
+    "Churu",
+    0
+   ],
+   [
+    34803,
+    "Churu Terrine skanėstas vidutinių veislių šunims su lašiša i",
+    4.69,
+    2.95,
+    31,
+    158,
+    "Churu",
+    0
+   ],
+   [
+    34800,
+    "Churu Terrine skanėstas vidutinių veislių šunims su lašiša, ",
+    4.69,
+    2.95,
+    31,
+    339,
+    "Churu",
+    0
+   ],
+   [
+    26093,
+    "Churu kreminis skanėstas šunims su lašiša N4",
+    2.49,
+    1.56,
+    32,
+    49,
+    "Churu",
+    0
+   ],
+   [
+    26095,
+    "Churu kreminis skanėstas šunims su lašiša ir krevetėmis N4",
+    2.49,
+    1.56,
+    32,
+    42,
+    "Churu",
+    0
+   ],
+   [
+    26097,
+    "Churu kreminis skanėstas šunims su tunu ir lašiša N4",
+    2.49,
+    1.56,
+    32,
+    48,
+    "Churu",
+    0
+   ],
+   [
+    21650,
+    "Churu kreminis skanėstas šunims su vištiena ir daržovėmis, 4",
+    2.49,
+    1.56,
+    32,
+    51,
+    "Churu",
+    0
+   ],
+   [
+    21647,
+    "Churu kreminis skanėstas šunims su vištiena ir sūriu, 4 vnt.",
+    2.49,
+    1.56,
+    32,
+    68,
+    "Churu",
+    0
+   ],
+   [
+    21211,
+    "HAP skanėstas šunims, antiena su žuvimi, 500 g",
+    10.69,
+    6.49,
+    36,
+    14,
+    "HAP",
+    0.5
+   ],
+   [
+    21217,
+    "HAP skanėstas šunims, antienos krūtinėlė, 500 g",
+    13.09,
+    8,
+    35,
+    67,
+    "HAP",
+    0.5
+   ],
+   [
+    21256,
+    "HAP skanėstas šunims, antienos sausainiai, 500 g",
+    10.69,
+    6.49,
+    36,
+    23,
+    "HAP",
+    0.5
+   ],
+   [
+    21226,
+    "HAP skanėstas šunims, jautienos lazdelės, 500 g",
+    10.69,
+    6.49,
+    36,
+    18,
+    "HAP",
+    0.5
+   ],
+   [
+    21223,
+    "HAP skanėstas šunims, triušių kojos su ryžiais, 500 g",
+    10.69,
+    6.49,
+    36,
+    43,
+    "HAP",
+    0.5
+   ],
+   [
+    21220,
+    "HAP skanėstas šunims, triušių mėsa ir ausys, 500 g",
+    10.69,
+    6.49,
+    36,
+    67,
+    "HAP",
+    0.5
+   ],
+   [
+    21214,
+    "HAP skanėstas šunims, vištienos krūtinėlė, 500 g",
+    13.09,
+    8,
+    35,
+    32,
+    "HAP",
+    0.5
+   ],
+   [
+    21262,
+    "HAP skanėstas šunims, ėrienos juostelės, 500 g",
+    10.69,
+    6.49,
+    36,
+    43,
+    "HAP",
+    0.5
+   ],
+   [
+    21259,
+    "HAP skanėstas šunims, ėrienos sausainiai, 500 g",
+    10.69,
+    6.49,
+    36,
+    30,
+    "HAP",
+    0.5
+   ],
+   [
+    26260,
+    "Happet silikoninis skanėstų dėklas šunims 11x13x5 cm",
+    4.49,
+    2.75,
+    35,
+    10,
+    "Happet",
+    0
+   ],
+   [
+    25345,
+    "Happet skanėstas šunims L, Himalajų sūris, 96-105g",
+    10.49,
+    6.39,
+    36,
+    12,
+    "Happet",
+    0.105
+   ],
+   [
+    25340,
+    "Happet skanėstas šunims M, Himalajų sūris, 66-74g",
+    7.69,
+    4.65,
+    37,
+    35,
+    "Happet",
+    0.074
+   ],
+   [
+    25335,
+    "Happet skanėstas šunims S, Himalajų sūris, 38-45g",
+    5.09,
+    3.1,
+    36,
+    43,
+    "Happet",
+    0.045
+   ],
+   [
+    25374,
+    "Happet skanėstas šunims XL, Himalajų sūris, 116-130g",
+    12.59,
+    7.67,
+    36,
+    32,
+    "Happet",
+    0.13
+   ],
+   [
+    26032,
+    "Karoo Wild skanėstai šunims su antilope ir raudonėliais, 113",
+    4.69,
+    2.85,
+    36,
+    91,
+    "KAROO WILD",
+    0.113
+   ],
+   [
+    26034,
+    "Karoo Wild skanėstai šunims su antilope ir rozmarinais, 113g",
+    4.69,
+    2.85,
+    36,
+    92,
+    "KAROO WILD",
+    0.113
+   ],
+   [
+    26036,
+    "Karoo Wild skanėstai šunims su antilope ir čiobreliais, 113g",
+    4.69,
+    2.85,
+    36,
+    85,
+    "KAROO WILD",
+    0.113
+   ],
+   [
+    25772,
+    "Nobleza skanėstų dėklas pilkas, 16x8x6 cm",
+    8.69,
+    5.27,
+    36,
+    9,
+    "NOBLEZA",
+    0
+   ],
+   [
+    24159,
+    "Nobby dėklas skanėstams \"Mini\", 6,5 - 7 cm",
+    4.09,
+    2.48,
+    36,
+    128,
+    "Nobby",
+    0
+   ],
+   [
+    27181,
+    "Nobby silikoninis skanėstų dėklas, pilkas, 12,5x 4x10,5 cm",
+    4.99,
+    3.02,
+    37,
+    19,
+    "Nobby",
+    0
+   ],
+   [
+    27436,
+    "Nobby skanėstų dėklas gyvūnui M, žalia",
+    12.09,
+    7.38,
+    35,
+    2,
+    "Nobby",
+    0
+   ],
+   [
+    21908,
+    "SmartBones Beef Bones skanėstai su jautiena mažų veislių šun",
+    4.49,
+    2.7,
+    37,
+    135,
+    "SMART BONES",
+    0
+   ],
+   [
+    21911,
+    "SmartBones Chicken Bones kaulai su jautiena vidutinio dydžio",
+    5.39,
+    3.25,
+    37,
+    139,
+    "SMART BONES",
+    0
+   ],
+   [
+    21878,
+    "SmartBones Chicken Bones kaulai su vištiena vidutinio dydžio",
+    5.39,
+    3.25,
+    37,
+    101,
+    "SMART BONES",
+    0
+   ],
+   [
+    21881,
+    "SmartBones Chicken Bones kaulas su vištiena didelių veislių ",
+    3.59,
+    2.2,
+    35,
+    5,
+    "SMART BONES",
+    0
+   ],
+   [
+    21884,
+    "SmartBones Chicken Sticks vištienos lazdelių skanėstai šunim",
+    4.49,
+    2.7,
+    37,
+    85,
+    "SMART BONES",
+    0
+   ],
+   [
+    21890,
+    "SmartBones Peanut Butter Bones skanėstai su riešutų sviestu ",
+    4.49,
+    2.7,
+    37,
+    52,
+    "SMART BONES",
+    0
+   ],
+   [
+    21893,
+    "SmartBones Peanut Butter Bones skanėstai su riešutų sviestu ",
+    5.39,
+    3.25,
+    37,
+    130,
+    "SMART BONES",
+    0
+   ],
+   [
+    21899,
+    "SmartBones Sweet Potato Bones skanėstai su batatais mažų vei",
+    4.49,
+    2.7,
+    37,
+    88,
+    "SMART BONES",
+    0
+   ],
+   [
+    21905,
+    "SmartBones vištiena apvyniotos lazdelės vidutinių veislių šu",
+    5.39,
+    3.25,
+    37,
+    24,
+    "SMART BONES",
+    0
+   ],
+   [
+    24492,
+    "Truly skanėstas vyresniems šunims, juostelės, 100g",
+    3.49,
+    2.09,
+    38,
+    13,
+    "TRULY",
+    0.1
+   ],
+   [
+    23796,
+    "Truly skanėstas šunims jautienos dantų šepetėliai, 90 g",
+    3.49,
+    2.09,
+    38,
+    173,
+    "TRULY",
+    0.09
+   ],
+   [
+    23801,
+    "Truly skanėstas šunims vištienos filė, 90 g",
+    3.49,
+    2.09,
+    38,
+    83,
+    "TRULY",
+    0.09
+   ],
+   [
+    23846,
+    "Truly skanėstas šunims, \"Širdelės\", vištiena, 85 g",
+    3.49,
+    2.09,
+    38,
+    93,
+    "TRULY",
+    0.085
+   ],
+   [
+    23813,
+    "Truly skanėstas šunims, antialerginis, su špinatais ir salie",
+    3.49,
+    2.09,
+    38,
+    95,
+    "TRULY",
+    0.09
+   ],
+   [
+    23849,
+    "Truly skanėstas šunims, antienos gabalėliai, 90 g",
+    3.49,
+    2.09,
+    38,
+    118,
+    "TRULY",
+    0.09
+   ],
+   [
+    23825,
+    "Truly skanėstas šunims, antienos juostelės, 90 g",
+    3.49,
+    2.09,
+    38,
+    29,
+    "TRULY",
+    0.09
+   ],
+   [
+    23855,
+    "Truly skanėstas šunims, batatai apsukti žuvies oda, 90 g",
+    3.49,
+    2.09,
+    38,
+    109,
+    "TRULY",
+    0.09
+   ],
+   [
+    23834,
+    "Truly skanėstas šunims, elnienos juostelės, 85 g",
+    3.49,
+    2.09,
+    38,
+    91,
+    "TRULY",
+    0.085
+   ],
+   [
+    23807,
+    "Truly skanėstas šunims, kalcio kauliukai apvynioti vištiena,",
+    3.49,
+    2.09,
+    38,
+    179,
+    "TRULY",
+    0.09
+   ],
+   [
+    23831,
+    "Truly skanėstas šunims, kauliukai su vištiena, 85 g",
+    3.49,
+    2.09,
+    38,
+    55,
+    "TRULY",
+    0.085
+   ],
+   [
+    23810,
+    "Truly skanėstas šunims, virvelės dantims, 95 g",
+    3.49,
+    2.09,
+    38,
+    92,
+    "TRULY",
+    0.095
+   ],
+   [
+    23828,
+    "Truly skanėstas šunims, vištiena ir sūris, 90 g",
+    3.49,
+    2.09,
+    38,
+    64,
+    "TRULY",
+    0.09
+   ],
+   [
+    23837,
+    "Truly skanėstas šunims, vištienos gabalėliai, 85 g",
+    3.49,
+    2.09,
+    38,
+    89,
+    "TRULY",
+    0.085
+   ],
+   [
+    23852,
+    "Truly skanėstas šunims, ėrienos gabalėliai, 90 g",
+    3.49,
+    2.09,
+    38,
+    15,
+    "TRULY",
+    0.09
+   ],
+   [
+    22362,
+    "Wanpy skanėstai šunims Assorted Multi Treats xmas, 300g",
+    7.39,
+    4.5,
+    36,
+    699,
+    "WANPY",
+    0.3
+   ],
+   [
+    26461,
+    "Wanpy skanėstai šunims, liofilizuotos jautienos kepenėlės,40",
+    3.59,
+    2.15,
+    38,
+    85,
+    "WANPY",
+    0.04
+   ],
+   [
+    22306,
+    "Wanpy skanėstai šunims, mazgeliai su antiena, 100g",
+    3.99,
+    2.4,
+    37,
+    103,
+    "WANPY",
+    0.1
+   ],
+   [
+    23858,
+    "Wanpy skanėstai šunims, vištienos juostelės, 100g",
+    3.69,
+    2.25,
+    36,
+    56,
+    "WANPY",
+    0.1
+   ],
+   [
+    22318,
+    "Wanpy skanėstas šunims vištienos dantų šepetėliai, 90 g",
+    3.59,
+    2.16,
+    37,
+    49,
+    "WANPY",
+    0.09
+   ],
+   [
+    22308,
+    "Wanpy skanėstas šunims, jautienos kepti kepsniukai, 100g",
+    4.19,
+    2.54,
+    36,
+    44,
+    "WANPY",
+    0.1
+   ],
+   [
+    22297,
+    "Wanpy skanėstas šunims, kalcio kauliukai su vištiena, 100g",
+    3.49,
+    2.1,
+    37,
+    79,
+    "WANPY",
+    0.1
+   ],
+   [
+    24632,
+    "Wanpy skanėstas šunims, marmuriniai jautienos kąsneliai, 100",
+    3.99,
+    2.4,
+    37,
+    27,
+    "WANPY",
+    0.1
+   ],
+   [
+    22302,
+    "Wanpy skanėstas šunims, vytinta antiena, 100 g",
+    3.59,
+    2.14,
+    39,
+    121,
+    "WANPY",
+    0.1
+   ],
+   [
+    22299,
+    "Wanpy skanėstas šunims, vytinta elniena, 100g",
+    3.99,
+    2.43,
+    36,
+    210,
+    "WANPY",
+    0.1
+   ],
+   [
+    24626,
+    "Wanpy skanėstas šunims, vytinta vištiena, 100 g",
+    3.69,
+    2.25,
+    36,
+    116,
+    "WANPY",
+    0.1
+   ],
+   [
+    22304,
+    "Wanpy skanėstas šunims, vytintos antienos dešrelės, 100g",
+    3.49,
+    2.08,
+    39,
+    85,
+    "WANPY",
+    0.1
+   ],
+   [
+    24629,
+    "Wanpy skanėstas šunims, vytintos jautienos juostelės, 100 g",
+    4.19,
+    2.54,
+    36,
+    97,
+    "WANPY",
+    0.1
+   ],
+   [
+    25267,
+    "Wanpy skanėstas šunims, vytintos vištienos suktinukas, 100 g",
+    3.99,
+    2.4,
+    37,
+    91,
+    "WANPY",
+    0.1
+   ],
+   [
+    22311,
+    "Wanpy skanėstas šunims, vytintos ėrienos dešrelės,100g",
+    3.39,
+    2.07,
+    35,
+    77,
+    "WANPY",
+    0.1
+   ],
+   [
+    22313,
+    "Wanpy skanėstas šunims, vytintos ėrienos juostelės, minkštos",
+    4.19,
+    2.54,
+    36,
+    165,
+    "WANPY",
+    0.1
+   ],
+   [
+    22316,
+    "Wanpy skanėstas šunims, žuvies formos kąsneliai su lašiša, 1",
+    4.09,
+    2.47,
+    37,
+    60,
+    "WANPY",
+    0.1
+   ]
+  ],
+  "fn": [
+   "3192:public static function ajax_issaugoti() {",
+   "3364:private static function issaugoti_dp( $id, $pav, $sku, $kaina, $apr, $publ, $kat, $kiekiai, $svoris_iv = null, $kat_off = array() ) {"
+  ]
+ }
 }
