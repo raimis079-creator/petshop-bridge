@@ -1,0 +1,45 @@
+{
+ "v": "dep-093716",
+ "kurimas": 200,
+ "sid": 4465,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "P": {
+  "VERSIJA": "S1593-F1",
+  "proc": [
+   "{\"status\":200,\"message\":\"Records Processed 2401. Records imported 984 of 2659.\"}",
+   62.4
+  ],
+  "pmxi3": {
+   "processing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "2401",
+   "imported": "984",
+   "updated": "984",
+   "skipped": "1416",
+   "count": "2659"
+  },
+  "po": {
+   "12469": "3",
+   "27959": "0",
+   "32463": "32",
+   "12469_stock": "3.000000"
+  },
+  "hist3": [
+   {
+    "type": "processing",
+    "time_run": "357",
+    "date": "2026-09-02 09:34:37",
+    "summary": "0 Produktai created 984 updated 1416 skipped"
+   },
+   {
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-09-02 09:34:30",
+    "summary": "triggered by cron"
+   }
+  ]
+ }
+}
