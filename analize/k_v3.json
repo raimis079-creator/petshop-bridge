@@ -1,0 +1,113 @@
+{
+ "v": "dep-171902",
+ "kurimas": 200,
+ "sid": 4533,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "V0": {
+   "eid": 18,
+   "md5": "018548dc"
+  },
+  "V1_uzsakyti_pastomatas": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-tiekimas",
+    "b": "uzsakyta"
+   },
+   "txt": ""
+  },
+  "V1_klaida": false,
+  "V1_partija_po": {
+   "id": "11",
+   "busena": "uzsakyta",
+   "pristatymas": "pastomatas",
+   "venipak_pack": "V07267E1000045",
+   "venipak_manifest": "07267260902005"
+  },
+  "V2_priimti": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-tiekimas",
+    "b": "gauta"
+   },
+   "txt": ""
+  },
+  "V2_own_stock": {
+   "pries": "",
+   "po": "0"
+  },
+  "V2_partija": {
+   "id": "11",
+   "busena": "gauta",
+   "gauta": "2026-09-02 20:20:10"
+  },
+  "V2_po": {
+   "eile": "nauji",
+   "vykdymas": [
+    "SAVA",
+    1
+   ],
+   "type": "MAIN",
+   "ships": "1",
+   "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":2,\"vienetai\":2}}",
+   "items": [
+    [
+     19708,
+     "av",
+     "grynai AV prekė (be tiekėjo)",
+     "",
+     ""
+    ],
+    [
+     16889,
+     "av",
+     "parsivežta iš PRINS, partija #11",
+     "1",
+     "2026-09-02 20:20:10"
+    ]
+   ],
+   "notes": [
+    "Tiekimas: visos prekės gautos (partija #11). Užsakymas paruoštas surinkimui iš AV. Į AV perkeltos eilutės: Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg.",
+    "Tiekimas: prekės užsakytos iš Prins / Faunas (partija #11). Kelias į AV: Venipak paštomatas (Nemenčinė). Laukiam.",
+    "Tiekimas: „Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg“ (1 vnt) įtraukta į Prins / Faunas partiją #11 — parsivežam į AV."
+   ]
+  },
+  "V2_lapai": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-lapai"
+   },
+   "txt": ""
+  },
+  "V2_lapai_txt": "lipdukų krūvele. VENIPAK 2026-09-02 20:20 · 1 užsakymas · 2 vnt. #35434 AUDITAS Testas 21 VENIPAK Kurjeris 1 Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g 83722 1 Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg 73007 Ačiū, kad kuriate su WordPress. Versija 6.9.4 Uždaryti Sesija pasibaigė Prisijunkite iš naujo Prisijungimo puslapis bus atidarytas naujame lange. Po prisijungimo galėsite jį uždaryti ir grįžti į šį puslapį.",
+  "V2_neperduotos": [],
+  "V2_row": "#35434šiandien 20:11AUDITAS Testas 21VilniusAV1× Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 gAV1× Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg✎ AUDITAS T21: K2/K3: AV+Prins → PRI į AV paštomatuSAVAplanas: PRI→AVAV 11:00 · praėjo, keliaus rytoj37,03 €apmokėtaVenipak kurjerisVykdomasSurinkti⋯",
+  "V2_z3": "Petshop · rytinė eiga ✓Peržiūra › ✓Surinkimo lapai › 3Venipak › 4LP Express › 5Tiekėjams › 6Baigta ✕ Išeiti VenipakKiekvienas sandėlis registruojamas atskirai — taip gaunamas savas manifestas tam kurjerio paėmimui. Siuntėjas visose siuntose lieka UAB Avesa.Savas sandėlismanifestas 0726726090200111:00 · praėjo, keliaus rytoj2 siuntos · viso 4 kgregistruota 0 iš 2Registruoti 2 siuntasLipdukai 10×15#35434AUDITAS Testas 21Venipak kurjeris dėžių — nėra#35431AUDITAS Testas 18Venipak kurjeris dėžių — n",
+  "mail": [
+   [
+    "20:11:56",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35434 — apmokėjimas gautas",
+    0,
+    [],
+    "run"
+   ],
+   [
+    "20:20:09",
+    "terra@petshop.lt",
+    "[PERSIŲSTI Prins / Faunas] UAB Avesa · prekių užsakymas 2026-09-02",
+    1,
+    [
+     "lipdukas-V07267E1000045.pdf:102411"
+    ],
+    "web"
+   ]
+  ]
+ }
+}
