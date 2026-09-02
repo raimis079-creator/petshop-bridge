@@ -1,0 +1,459 @@
+{
+ "v": "dep-143722",
+ "kurimas": 200,
+ "sid": 4514,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "G": {
+  "g": {
+   "mu-plugins/petshop-av-admin.php:72": "$tipas = $order->get_meta( '_ps_order_type' );",
+   "mu-plugins/petshop-av-admin.php:123": "$mq[] = [ 'key' => '_ps_order_type', 'value' => strtoupper( $t ), 'compare' => '=' ];",
+   "mu-plugins/petshop-av-order.php:40": "add_action( 'woocommerce_payment_complete', [ __CLASS__, 'fiksuoti' ], 5, 1 );",
+   "mu-plugins/petshop-av-order.php:41": "add_action( 'woocommerce_order_status_processing', [ __CLASS__, 'fiksuoti' ], 5, 1 );",
+   "mu-plugins/petshop-av-order.php:48": "return ( $order && $order->get_meta( '_ps_order_type' ) );",
+   "mu-plugins/petshop-av-order.php:70": "$item->update_meta_data( '_ps_source',        $x['source'] );",
+   "mu-plugins/petshop-av-order.php:86": "$order->update_meta_data( '_ps_order_type', $tipas );",
+   "mu-plugins/petshop-av-order.php:88": "$order->update_meta_data( '_ps_shipments',  count( $grupes ) );",
+   "mu-plugins/petshop-av-order.php:104": "$tipas = $order->get_meta( '_ps_order_type' );",
+   "mu-plugins/petshop-av-reduce.php:36": "add_action( 'woocommerce_payment_complete', [ __CLASS__, 'mazinti' ], 15, 1 );",
+   "mu-plugins/petshop-av-reduce.php:37": "add_action( 'woocommerce_order_status_processing', [ __CLASS__, 'mazinti' ], 15, 1 );",
+   "mu-plugins/petshop-av-sheets.php:111": "'tipas'     => $o->get_meta( '_ps_order_type' ),",
+   "mu-plugins/petshop-av-source.php:48": "public static function resolve( $product_id, $qty = 1 ) {",
+   "mu-plugins/petshop-desk.php:808": "$item->update_meta_data( '_ps_source', $src );",
+   "mu-plugins/petshop-faktai.php:86": "add_action( 'woocommerce_payment_complete',           array( __CLASS__, 'rasyti' ), 35, 1 );",
+   "mu-plugins/petshop-faktai.php:89": "add_action( 'woocommerce_order_status_processing',    array( __CLASS__, 'rasyti' ), 35, 1 );",
+   "mu-plugins/petshop-partijos.php:581": "add_action( 'woocommerce_payment_complete', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 );",
+   "mu-plugins/petshop-partijos.php:582": "add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 );",
+   "mu-plugins/petshop-prenumerata-katalogas.php:39": "add_action('woocommerce_payment_complete', array(__CLASS__, 'is_uzsakymo'), 30, 1);",
+   "mu-plugins/petshop-prenumerata-katalogas.php:40": "add_action('woocommerce_order_status_processing', array(__CLASS__, 'is_uzsakymo'), 30, 1);",
+   "mu-plugins/petshop-prenumerata.php:51": "add_action('woocommerce_payment_complete', array(__CLASS__, 'apmoketa'), 10, 1);",
+   "mu-plugins/petshop-rec-log.php:48": "add_action( 'woocommerce_checkout_order_processed', array( __CLASS__, 'pirkta' ), 20, 3 );",
+   "mu-plugins/petshop-refill-ivykiai.php:50": "add_action( 'woocommerce_checkout_order_processed', array( __CLASS__, 'pirkta' ), 30, 3 );",
+   "mu-plugins/petshop-siuntu-laiskai.php:349": "if ( 'MIXED' !== $order->get_meta( '_ps_order_type' ) ) { return; }",
+   "includes/class-cart-abandonment.php:406": "add_action( 'woocommerce_checkout_order_processed',            array( __CLASS__, 'on_order_created' ), 10, 1 );",
+   "includes/class-event-emitters.php:30": "add_action( 'woocommerce_payment_complete', array( __CLASS__, 'on_payment_complete' ), 20, 1 );",
+   "includes/class-event-emitters.php:35": "add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'on_order_paid_status' ), 20, 1 );",
+   "includes/class-feeding-package-resolver.php:11": "public static function resolve( $raw ) {",
+   "includes/class-plan-attribution.php:40": "add_action( 'woocommerce_checkout_order_processed', array( __CLASS__, 'link_order' ), 20, 1 );",
+   "includes/class-plan-attribution.php:111": "$item->add_meta_data( '_ps_source', $values['ps_source'], true );",
+   "includes/class-refill-engine.php:101": "add_action( 'woocommerce_payment_complete', array( __CLASS__, 'on_order_paid' ), 30, 1 );",
+   "includes/class-refill-engine.php:102": "add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'on_order_paid' ), 30, 1 );",
+   "includes/class-refill-engine.php:162": "add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'on_order_paid' ), 30, 1 );"
+  },
+  "role_caps": [
+   "read",
+   "upload_files",
+   "manage_woocommerce",
+   "view_woocommerce_reports",
+   "edit_products",
+   "edit_others_products",
+   "edit_published_products",
+   "publish_products",
+   "read_private_products",
+   "manage_product_terms",
+   "edit_product_terms",
+   "assign_product_terms",
+   "edit_shop_orders",
+   "edit_others_shop_orders",
+   "edit_published_shop_orders",
+   "read_private_shop_orders",
+   "read_private_shop_coupons",
+   "delete_products",
+   "delete_published_products",
+   "delete_others_products",
+   "ps_akcijas_taikyti"
+  ],
+  "emp": 75,
+  "emp_pages": {
+   "ps-desk": [
+    200,
+    10249,
+    "Prisijungti &lsaquo; Petshop.lt &#8212; WordPress",
+    ""
+   ],
+   "ps-desk&view=rytas": [
+    200,
+    10275,
+    "Prisijungti &lsaquo; Petshop.lt &#8212; WordPress",
+    ""
+   ],
+   "ps-lapai": [
+    200,
+    10251,
+    "Prisijungti &lsaquo; Petshop.lt &#8212; WordPress",
+    ""
+   ],
+   "ps-dropship": [
+    200,
+    10257,
+    "Prisijungti &lsaquo; Petshop.lt &#8212; WordPress",
+    ""
+   ],
+   "ps-tiekimas": [
+    200,
+    10257,
+    "Prisijungti &lsaquo; Petshop.lt &#8212; WordPress",
+    ""
+   ],
+   "ps-laiskai": [
+    200,
+    10255,
+    "Prisijungti &lsaquo; Petshop.lt &#8212; WordPress",
+    ""
+   ],
+   "ps-katalogas": [
+    "err",
+    38,
+    "",
+    ""
+   ],
+   "wc-orders": [
+    "err",
+    38,
+    "",
+    ""
+   ]
+  },
+  "admin_bar": [],
+  "admin_desk": [
+   "",
+   0
+  ],
+  "ship_lines": [
+   {
+    "order_id": "35100",
+    "order_item_name": "VENIPAK paštomatai/atsiėmimo punktai",
+    "mid": "shopup_venipak_shipping_pickup_method",
+    "iid": "3"
+   },
+   {
+    "order_id": "35093",
+    "order_item_name": "VENIPAK paštomatai/atsiėmimo punktai",
+    "mid": "shopup_venipak_shipping_pickup_method",
+    "iid": "3"
+   },
+   {
+    "order_id": "35090",
+    "order_item_name": "VENIPAK paštomatai/atsiėmimo punktai",
+    "mid": "shopup_venipak_shipping_pickup_method",
+    "iid": "3"
+   },
+   {
+    "order_id": "35088",
+    "order_item_name": "VENIPAK paštomatai/atsiėmimo punktai",
+    "mid": "shopup_venipak_shipping_pickup_method",
+    "iid": "3"
+   },
+   {
+    "order_id": "35087",
+    "order_item_name": "VENIPAK paštomatai/atsiėmimo punktai",
+    "mid": "shopup_venipak_shipping_pickup_method",
+    "iid": "3"
+   }
+  ],
+  "order_meta_35090": [
+   {
+    "meta_key": "is_vat_exempt",
+    "v": "no"
+   },
+   {
+    "meta_key": "_guest_access_token",
+    "v": "3c909a4802fe33b3cb4258a3c1b347a4"
+   },
+   {
+    "meta_key": "_billing_address_index",
+    "v": "Sart tr       LT terra@gyvunai.lt +37060000000"
+   },
+   {
+    "meta_key": "_shipping_address_index",
+    "v": "Sart tr       LT +37060000000"
+   },
+   {
+    "meta_key": "_ps_irenginys",
+    "v": "desktop"
+   },
+   {
+    "meta_key": "_ps_stat_sesija",
+    "v": "30b8ce494a62f42321a7c5fb3270244a"
+   },
+   {
+    "meta_key": "_ps_kanalai",
+    "v": "{\"pirmas\":{\"utm_source\":\"test\",\"utm_medium\":\"cpc\",\"utm_campa"
+   },
+   {
+    "meta_key": "venipak_pickup_point",
+    "v": "2884"
+   },
+   {
+    "meta_key": "venipak_pickup_point_data",
+    "v": "{\"id\":2884,\"code\":\"300906055\",\"name\":\"Venipak locker, ANC\\u0"
+   },
+   {
+    "meta_key": "_wc_order_attribution_source_type",
+    "v": "utm"
+   },
+   {
+    "meta_key": "_wc_order_attribution_utm_campaign",
+    "v": "e1a"
+   },
+   {
+    "meta_key": "_wc_order_attribution_utm_source",
+    "v": "test"
+   },
+   {
+    "meta_key": "_wc_order_attribution_utm_medium",
+    "v": "cpc"
+   },
+   {
+    "meta_key": "_wc_order_attribution_session_entry",
+    "v": "https://dev.avesa.lt/?utm_source=test&utm_medium=cpc&utm_cam"
+   },
+   {
+    "meta_key": "_wc_order_attribution_session_start_time",
+    "v": "2026-08-25 22:24:10"
+   },
+   {
+    "meta_key": "_wc_order_attribution_session_pages",
+    "v": "18"
+   },
+   {
+    "meta_key": "_wc_order_attribution_session_count",
+    "v": "1"
+   },
+   {
+    "meta_key": "_wc_order_attribution_user_agent",
+    "v": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36"
+   },
+   {
+    "meta_key": "_wc_order_attribution_device_type",
+    "v": "Desktop"
+   },
+   {
+    "meta_key": "_petshop_invoice_document_type",
+    "v": "invoice"
+   },
+   {
+    "meta_key": "_petshop_avpn_number",
+    "v": "AVPN000274"
+   },
+   {
+    "meta_key": "_petshop_iapv_number",
+    "v": "IAPV000157"
+   },
+   {
+    "meta_key": "_petshop_order_pdf",
+    "v": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/upl"
+   },
+   {
+    "meta_key": "_ps_order_type",
+    "v": "MIXED"
+   },
+   {
+    "meta_key": "_ps_groups",
+    "v": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\""
+   },
+   {
+    "meta_key": "_ps_shipments",
+    "v": "3"
+   },
+   {
+    "meta_key": "_ps_decided_at",
+    "v": "2026-08-26 01:53:54"
+   },
+   {
+    "meta_key": "_dp_stock_reduced",
+    "v": "yes"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number_counter",
+    "v": "300"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number",
+    "v": "AVPN35090"
+   },
+   {
+    "meta_key": "_wcdn_invoice_date",
+    "v": "1787698434"
+   },
+   {
+    "meta_key": "_petshop_dl_purchase_sent",
+    "v": "yes"
+   },
+   {
+    "meta_key": "_wc_push_notification_sent",
+    "v": "1787698496"
+   },
+   {
+    "meta_key": "_ps_av_reduced",
+    "v": "2026-08-26 01:55:57"
+   },
+   {
+    "meta_key": "_ps_partijos_nurasyta",
+    "v": "2026-08-26 01:55:57"
+   },
+   {
+    "meta_key": "_ps_faktas_irasytas",
+    "v": "2026-08-25 22:55:57"
+   },
+   {
+    "meta_key": "_wcdn_invoice_pdf_token",
+    "v": "4592e80ac4acc228cdc67bad"
+   },
+   {
+    "meta_key": "_wcdn_invoice_pdf",
+    "v": "Invoice -35090-4592e80ac4acc228cdc67bad.pdf"
+   },
+   {
+    "meta_key": "_wcdn_creditnote_date",
+    "v": "1787734027"
+   },
+   {
+    "meta_key": "_wcdn_creditnote_pdf_token",
+    "v": "0f1cebddfc7fe69898fda6d0"
+   },
+   {
+    "meta_key": "_wcdn_creditnote_pdf",
+    "v": "credit-note-35090-0f1cebddfc7fe69898fda6d0.pdf"
+   },
+   {
+    "meta_key": "_ps_misrus_sprendimas",
+    "v": "{\"ambrosia\":\"tiesiai\",\"vf\":\"tiesiai\"}"
+   },
+   {
+    "meta_key": "_ps_misrus_sprestas",
+    "v": "2026-08-26 16:50:32 | Rai"
+   }
+  ],
+  "item_meta_35090": [
+   {
+    "order_item_id": "734",
+    "meta_key": "_ps_savikaina_vnt",
+    "v": "34.3600"
+   },
+   {
+    "order_item_id": "734",
+    "meta_key": "_ps_savikaina_saltinis",
+    "v": "pardavimai"
+   },
+   {
+    "order_item_id": "734",
+    "meta_key": "_ps_kaina_atskirai_vnt",
+    "v": "59.9900"
+   },
+   {
+    "order_item_id": "734",
+    "meta_key": "_ps_source",
+    "v": "ambrosia"
+   },
+   {
+    "order_item_id": "734",
+    "meta_key": "_ps_carrier",
+    "v": "venipak"
+   },
+   {
+    "order_item_id": "734",
+    "meta_key": "_ps_source_qty",
+    "v": "1"
+   },
+   {
+    "order_item_id": "734",
+    "meta_key": "_ps_source_at",
+    "v": "2026-08-26 01:53:54"
+   },
+   {
+    "order_item_id": "734",
+    "meta_key": "_ps_source_reason",
+    "v": "AV šios prekės neturi"
+   },
+   {
+    "order_item_id": "735",
+    "meta_key": "_ps_savikaina_vnt",
+    "v": "6.9000"
+   },
+   {
+    "order_item_id": "735",
+    "meta_key": "_ps_savikaina_saltinis",
+    "v": "pardavimai"
+   },
+   {
+    "order_item_id": "735",
+    "meta_key": "_ps_kaina_atskirai_vnt",
+    "v": "11.3000"
+   },
+   {
+    "order_item_id": "735",
+    "meta_key": "_ps_source",
+    "v": "vf"
+   },
+   {
+    "order_item_id": "735",
+    "meta_key": "_ps_carrier",
+    "v": "venipak"
+   },
+   {
+    "order_item_id": "735",
+    "meta_key": "_ps_source_qty",
+    "v": "1"
+   },
+   {
+    "order_item_id": "735",
+    "meta_key": "_ps_source_at",
+    "v": "2026-08-26 01:53:54"
+   },
+   {
+    "order_item_id": "735",
+    "meta_key": "_ps_source_reason",
+    "v": "AV šios prekės neturi"
+   },
+   {
+    "order_item_id": "736",
+    "meta_key": "_ps_savikaina_vnt",
+    "v": "5.3873"
+   },
+   {
+    "order_item_id": "736",
+    "meta_key": "_ps_savikaina_saltinis",
+    "v": "pardavimai"
+   },
+   {
+    "order_item_id": "736",
+    "meta_key": "_ps_kaina_atskirai_vnt",
+    "v": "11.8000"
+   },
+   {
+    "order_item_id": "736",
+    "meta_key": "_ps_source",
+    "v": "av"
+   },
+   {
+    "order_item_id": "736",
+    "meta_key": "_ps_carrier",
+    "v": "any"
+   },
+   {
+    "order_item_id": "736",
+    "meta_key": "_ps_source_qty",
+    "v": "1"
+   },
+   {
+    "order_item_id": "736",
+    "meta_key": "_ps_source_at",
+    "v": "2026-08-26 01:53:54"
+   },
+   {
+    "order_item_id": "736",
+    "meta_key": "_ps_source_reason",
+    "v": "grynai AV prekė (be tiekėjo)"
+   },
+   {
+    "order_item_id": "736",
+    "meta_key": "_ps_av_reduced_qty",
+    "v": "1"
+   }
+  ],
+  "lp_terminal_sample": null
+ }
+}
