@@ -1,0 +1,188 @@
+{
+ "v": "dep-215419",
+ "kurimas": 200,
+ "sid": 4540,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "create": "CREATE TABLE `gaj6_ps_ivykiai` (\n  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,\n  `product_id` bigint(20) unsigned NOT NULL,\n  `laikas` datetime NOT NULL,\n  `tipas` varchar(24) NOT NULL,\n  `laukas` varchar(64) NOT NULL DEFAULT '',\n  `sena` varchar(255) NOT NULL DEFAULT '',\n  `nauja` varchar(255) NOT NULL DEFAULT '',\n  `saltinis` varchar(24) NOT NULL DEFAULT '',\n  `kas` varchar(96) NOT NULL DEFAULT '',\n  `op_nr` varchar(24) NOT NULL DEFAULT '',\n  `pastaba` varchar(255) NOT NULL DEFAULT '',\n  PRIMARY KEY (`id`),\n  KEY `preke_laikas` (`product_id`,`laikas`),\n  KEY `tipas` (`tipas`),\n  KEY `op_nr` (`op_nr`),\n  KEY `laikas` (`laikas`)\n) ENGINE=InnoDB AUTO_INCREMENT=5451 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_520_ci ROW_FORMAT=DYNAMIC",
+  "n": 5450,
+  "pavyzdziai": [
+   {
+    "id": "5450",
+    "product_id": "16889",
+    "laikas": "2026-09-02 20:20:10",
+    "tipas": "likutis",
+    "laukas": "_own_stock_qty",
+    "sena": "1",
+    "nauja": "0",
+    "saltinis": "zmogus",
+    "kas": "Testuotojas",
+    "op_nr": "",
+    "pastaba": "AV likutis"
+   },
+   {
+    "id": "5449",
+    "product_id": "16889",
+    "laikas": "2026-09-02 20:20:10",
+    "tipas": "likutis",
+    "laukas": "_own_stock_qty",
+    "sena": "",
+    "nauja": "1",
+    "saltinis": "zmogus",
+    "kas": "Testuotojas",
+    "op_nr": "",
+    "pastaba": "AV likutis"
+   },
+   {
+    "id": "5448",
+    "product_id": "19708",
+    "laikas": "2026-09-02 20:11:55",
+    "tipas": "likutis",
+    "laukas": "_stock",
+    "sena": "25",
+    "nauja": "24",
+    "saltinis": "zmogus",
+    "kas": "Testuotojas",
+    "op_nr": "",
+    "pastaba": "Likutis"
+   },
+   {
+    "id": "5447",
+    "product_id": "19708",
+    "laikas": "2026-09-02 20:10:12",
+    "tipas": "likutis",
+    "laukas": "_stock",
+    "sena": "24",
+    "nauja": "25",
+    "saltinis": "zmogus",
+    "kas": "Testuotojas",
+    "op_nr": "",
+    "pastaba": "Likutis"
+   },
+   {
+    "id": "5446",
+    "product_id": "19708",
+    "laikas": "2026-09-02 20:10:08",
+    "tipas": "likutis",
+    "laukas": "_stock",
+    "sena": "25",
+    "nauja": "24",
+    "saltinis": "zmogus",
+    "kas": "Testuotojas",
+    "op_nr": "",
+    "pastaba": "Likutis"
+   }
+  ],
+  "visos_ivykiu": [
+   "gaj6_ps_ivykiai",
+   "gaj6_ps_laukai_ivykiai",
+   "gaj6_ps_web_ivykiai"
+  ],
+  "kas_naudoja": {
+   "petshop-ivykiai.php": [
+    " * SPRENDIMAS: viena lentele `ps_ivykiai`, i kuria rasoma is VISU keliu:",
+    "\tconst SCHEMOS_RAKTAS = 'ps_ivykiai_schema';",
+    "\t\treturn $wpdb->prefix . 'ps_ivykiai';",
+    "\t\tif ( ! $dry && get_option( 'ps_ivykiai_av_perkelta' ) ) {"
+   ],
+   "petshop-statistika.php": [
+    " *    NEMAISYTI su `ps_ivykiai` (ten prekiu auditas: kas keite kaina/likuti)."
+   ]
+  },
+  "snippet_naudoja": [
+   {
+    "id": "4539",
+    "name": "TEMP PS dep-215158",
+    "active": "0"
+   },
+   {
+    "id": "4540",
+    "name": "TEMP PS dep-215419",
+    "active": "1"
+   }
+  ],
+  "desk_riba": [
+   "sandelis"
+  ],
+  "desk_ribos_zyme": [
+   "sandelis"
+  ],
+  "desk_eile": [
+   "order"
+  ],
+  "desk_klausimas": [
+   "order"
+  ],
+  "desk_skaiciai": [],
+  "desk_gauti": [
+   "eile",
+   "f"
+  ],
+  "desk_const": [
+   "SLUG",
+   "SPALVOS",
+   "SALTINIAI",
+   "MANIFESTAI",
+   "RIBOS",
+   "EILES",
+   "STATUSAI",
+   "LAISKAI",
+   "META_PAK",
+   "RYTO_ZINGSNIAI"
+  ],
+  "RIBOS": {
+   "av": "11:00",
+   "lp": "13:00",
+   "vf": "13:00",
+   "zb": "09:00",
+   "prins": "09:00",
+   "ambrosia": "10:00",
+   "belcor_tofu": "09:00",
+   "quattro": "09:00"
+  },
+  "SALTINIAI": {
+   "av": [
+    "#2D5F3F",
+    "AV",
+    "Savas sandėlis"
+   ],
+   "vf": [
+    "#2B5C8A",
+    "VF",
+    "Vetfarmas"
+   ],
+   "zb": [
+    "#5B3B92",
+    "ZB",
+    "Žalioji Banga"
+   ],
+   "quattro": [
+    "#96660C",
+    "QUA",
+    "Kauno grūdai / Quattro"
+   ],
+   "prins": [
+    "#96660C",
+    "PRI",
+    "Faunas / Prins"
+   ],
+   "ambrosia": [
+    "#96660C",
+    "AMB",
+    "Ambrosia"
+   ],
+   "belcor_tofu": [
+    "#96660C",
+    "BEL",
+    "Belacor"
+   ]
+  },
+  "darbuotojai": [
+   "testuotojas"
+  ],
+  "tiek_meniu": "0"
+ }
+}
