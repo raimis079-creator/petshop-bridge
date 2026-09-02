@@ -40,6 +40,14 @@ try{
     const t=await d.text();
     try{ out[f]=JSON.parse(t); }catch(e){ out['zalias_'+f]=t.slice(0,3000); }
   }
+  // EKRANO NUOTRAUKOS (browser=1): fazė grąžina shots:[{n,u,w}], cookies:[{name,value}]
+  const SH=(()=>{ for(const f of PHASES){ if(out[f]&&out[f].shots) return out[f]; } return null; })();
+  if(SH){ try{ const {chromium}=await import('playwright'); const br=await chromium.launch(); const ctx=await br.newContext({viewport:{width:1440,height:900},ignoreHTTPSErrors:true});
+      if(SH.cookies){ await ctx.addCookies(SH.cookies.map(c=>({name:c.name,value:c.value,domain:new URL(WP).hostname,path:'/',secure:true}))); }
+      out.shots={};
+      for(const s of SH.shots){ try{ const pg=await ctx.newPage(); if(s.w) await pg.setViewportSize({width:s.w,height:s.h||900}); await pg.goto(s.u,{waitUntil:'networkidle',timeout:60000}); await pg.waitForTimeout(800);
+          const buf=await pg.screenshot({fullPage:!!s.full}); const st=await put('screenshots/'+s.n+'.png',buf,VER+' '+s.n); out.shots[s.n]={status:st,url:pg.url(),title:await pg.title()}; await pg.close(); }catch(e){ out.shots[s.n]=String(e).slice(0,200); } }
+      await br.close(); }catch(e){ out.shots_klaida=String(e).slice(0,300); } }
 }catch(e){ out.klaida=String(e).slice(0,500); }
 try{ if(sid) await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(e){}
 await put(OUT, Buffer.from(JSON.stringify(out,null,1)), VER);
