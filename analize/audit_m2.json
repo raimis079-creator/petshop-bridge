@@ -1,0 +1,528 @@
+{
+ "v": "dep-155327",
+ "kurimas": 200,
+ "sid": 4524,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "M": {
+  "menu": [
+   [
+    "petshop-akcijos.php",
+    "submenu",
+    "'ps-katalogas', 'Akcijos', 'Akcijos', 'manage_woocommerce', 'ps-akcijos', array( __CLASS__, 'puslapis' ) )"
+   ],
+   [
+    "petshop-anketos-ataskaita.php",
+    "submenu",
+    "self::PARENT, 'Augintinio anketa', 'Augintinio anketa', self::CAP, self::SLUG, array( __CLASS__, 'render' ) )"
+   ],
+   [
+    "petshop-ataskaita-atsargos.php",
+    "submenu",
+    "self::TEVAS, 'Atsargos ir pirkimas', 'Atsargos ir pirkimas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )"
+   ],
+   [
+    "petshop-ataskaita-klientai.php",
+    "submenu",
+    "self::TEVAS, 'Klientų analizė', 'Klientų analizė', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )"
+   ],
+   [
+    "petshop-ataskaita-menuo.php",
+    "submenu",
+    "self::TEVAS, 'Mėnesio uždarymas', 'Mėnesio uždarymas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )"
+   ],
+   [
+    "petshop-ataskaita-pardavimai.php",
+    "submenu",
+    "self::TEVAS, 'Pardavimai ir pelnas', 'Pardavimai ir pelnas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )"
+   ],
+   [
+    "petshop-ataskaita-prekes.php",
+    "submenu",
+    "self::TEVAS, 'Prekių analizė', 'Prekių analizė', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )"
+   ],
+   [
+    "petshop-atributai.php",
+    "submenu",
+    "'ps-katalogas', 'Atributai', 'Atributai', 'manage_woocommerce', 'ps-atributai', array( __CLASS__, 'langas' ) )"
+   ],
+   [
+    "petshop-av-dropship.php",
+    "submenu",
+    "null, 'Perduoti tiekėjams', 'Perduoti tiekėjams', 'edit_shop_orders', 'ps-dropship', [ __CLASS__, 'puslapis' ] )"
+   ],
+   [
+    "petshop-av-dropship.php",
+    "submenu",
+    "'ps-desk', 'Laiškai', 'Laiškai', 'edit_shop_orders', 'ps-laiskai', [ __CLASS__, 'archyvo_puslapis' ] )"
+   ],
+   [
+    "petshop-av-dropship.php",
+    "submenu",
+    "'woocommerce', 'Tiekėjų el. paštai', 'Tiekėjų el. paštai', 'manage_woocommerce', 'ps-dropship-nustatymai', [ __CLASS__, 'nustatymai' ] )"
+   ],
+   [
+    "petshop-av-sheets.php",
+    "submenu",
+    "null, 'Surinkimo lapai', 'Surinkimo lapai', 'edit_shop_orders', 'ps-lapai', [ __CLASS__, 'puslapis' ] )"
+   ],
+   [
+    "petshop-av-tiekimas.php",
+    "submenu",
+    "'ps-desk', 'Tiekimas', 'Tiekimas', 'edit_shop_orders', self::SLUG, array( __CLASS__, 'puslapis' ) )"
+   ],
+   [
+    "petshop-desk.php",
+    "menu",
+    "'Petshop užsakymai', 'Petshop užsakymai', 'edit_shop_orders', self::SLUG, array( __CLASS__, 'puslapis' ), 'dashicons-clipboard', 2 )"
+   ],
+   [
+    "petshop-fakt-siuntos.php",
+    "submenu",
+    "self::TEVAS, 'Pristatymo tarifai', 'Pristatymo tarifai', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )"
+   ],
+   [
+    "petshop-ga4-serveris.php",
+    "submenu",
+    "$parent, 'Kontrolė', 'Kontrolė', 'manage_options', self::PUSLAPIS, array( __CLASS__, 'langas' ) )"
+   ],
+   [
+    "petshop-gavimas.php",
+    "submenu",
+    "'ps-katalogas', 'Prekių gavimas', 'Gavimas', 'manage_woocommerce', 'ps-gavimas', array( __CLASS__, 'puslapis' ) )"
+   ],
+   [
+    "petshop-islaidos.php",
+    "submenu",
+    "self::TEVAS, 'Išlaidos ir nustatymai', 'Išlaidos ir nustatymai', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )"
+   ],
+   [
+    "petshop-katalogas.php",
+    "menu",
+    "'Petshop prekės', 'Petshop prekės', 'manage_woocommerce', 'ps-katalogas', array( __CLASS__, 'puslapis' ), 'dashicons-products', 3 )"
+   ],
+   [
+    "petshop-klientai.php",
+    "menu",
+    "'Petshop klientai', 'Petshop klientai', self::CAP, self::PSL, array( __CLASS__, 'ekranas' ), 'dashicons-groups', 56 )"
+   ],
+   [
+    "petshop-klientai.php",
+    "submenu",
+    "self::PSL, 'Klientai', 'Klientai', self::CAP, self::PSL, array( __CLASS__, 'ekranas' ) )"
+   ],
+   [
+    "petshop-langai-admin.php",
+    "menu",
+    "'Petshop langai', 'Petshop langai', self::CAP, self::TEVAS, array( __CLASS__, 'ekranas_apzvalga' ), 'dashicons-screenoptions', 56 )"
+   ],
+   [
+    "petshop-langai-admin.php",
+    "submenu",
+    "self::TEVAS, 'Apžvalga', 'Apžvalga', self::CAP, self::TEVAS, array( __CLASS__, 'ekranas_apzvalga' ) )"
+   ],
+   [
+    "petshop-langai-admin.php",
+    "submenu",
+    "self::TEVAS, 'Laiškų šablonai', 'Laiškų šablonai', self::CAP, self::PSL_LAISKAI, array( __CLASS__, 'ekranas_laiskai' ) )"
+   ],
+   [
+    "petshop-laukai.php",
+    "submenu",
+    "'ps-katalogas', 'Surenkami rinkiniai', 'Surenkami rinkiniai', 'manage_woocommerce', 'ps-laukai', array( __CLASS__, 'puslapis' ) )"
+   ],
+   [
+    "petshop-naujienlaiskiai-admin.php",
+    "submenu",
+    "'petshop-langai', 'Naujienlaiškiai', 'Naujienlaiškiai', self::TEISE, 'petshop-naujienlaiskiai', array(__CLASS__, 'puslapis'))"
+   ],
+   [
+    "petshop-paruostu-ataskaita.php",
+    "submenu",
+    "self::PARENT, 'Rinkiniai', 'Rinkiniai', self::CAP, self::SLUG, array( __CLASS__, 'render' ) )"
+   ],
+   [
+    "petshop-pet-kontraktas.php",
+    "submenu",
+    "'petshop-reports', 'Brand zodynas', 'Brand zodynas', 'manage_woocommerce', self::ADMIN_SLUG, array( __CLASS__, 'admin_render' ) )"
+   ],
+   [
+    "petshop-prenumeratos-langas.php",
+    "submenu",
+    "self::tevas(), 'Prenumeratos', 'Prenumeratos', self::CAP, self::PSL, array(__CLASS__, 'ekranas'))"
+   ],
+   [
+    "petshop-prenumeratu-prognoze.php",
+    "submenu",
+    "$parent, 'Prenumeratu prognoze', 'Prognozes', 'manage_woocommerce', 'ps-prognoze', array(__CLASS__, 'puslapis'))"
+   ],
+   [
+    "petshop-rezultatai.php",
+    "submenu",
+    "'petshop-langai', 'Laiškų rezultatai', 'Laiškų rezultatai', 'manage_woocommerce', 'petshop-rezultatai', array(__CLASS__, 'puslapis') )"
+   ],
+   [
+    "petshop-rinkiniai.php",
+    "submenu",
+    "'ps-katalogas', 'Rinkiniai', 'Rinkiniai', 'manage_woocommerce', self::SLUG, array( __CLASS__, 'puslapis' ) )"
+   ],
+   [
+    "petshop-rinkiniu-ataskaita.php",
+    "submenu",
+    "self::PARENT, 'Surenkami rinkiniai', 'Surenkami rinkiniai', self::CAP, self::SLUG, array( __CLASS__, 'render' ) )"
+   ],
+   [
+    "petshop-seo.php",
+    "submenu",
+    "self::TEVAS, 'SEO', 'SEO', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )"
+   ],
+   [
+    "petshop-siuntu-laiskai.php",
+    "submenu",
+    "'', 'Sekimo laiškas', 'Sekimo laiškas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )"
+   ],
+   [
+    "petshop-fbt.php",
+    "submenu",
+    "'ps-katalogas', 'Perkame kartu', 'Perkame kartu', 'manage_woocommerce', 'petshop-fbt', [ $this, 'settings_html' ] )"
+   ],
+   [
+    "petshop-pragma.php",
+    "submenu",
+    "'woocommerce', 'Pragma eksportas', 'Pragma eksportas', 'manage_woocommerce', 'petshop-pragma', 'petshop_pragma_admin_page' )"
+   ],
+   [
+    "petshop-promotions.php",
+    "submenu",
+    "'woocommerce', 'Masines akcijos', '🏷️ Masines akcijos', 'manage_woocommerce', 'petshop-promotions', [ $this, 'render' ] )"
+   ],
+   [
+    "class-admin-reports.php",
+    "submenu",
+    "self::PARENT, ... ), kad viskas butu * vienoje vietoje, o ne issibarste po WP meniu. */ public static function menu() { add_menu_page( 'Petshop ataskaitos', 'Petshop ataskaitos', self::CAP, self::PARE"
+   ],
+   [
+    "class-admin-reports.php",
+    "submenu",
+    "self::PARENT, 'Ataskaitos', 'Visos ataskaitos', self::CAP, self::PARENT, array( __CLASS__, 'render' ) )"
+   ],
+   [
+    "class-admin-ui.php",
+    "submenu",
+    "'woocommerce', 'Petshop XML', 'Petshop XML', 'manage_woocommerce', 'petshop-xml', [ $this, 'render_main_page' ] )"
+   ]
+  ],
+  "links_out": {
+   "petshop-akcijos.php": {
+    "ps-katalogas": 1,
+    "ps-akcijos": 6
+   },
+   "petshop-ataskaita-klientai.php": {
+    "wc-orders": 1
+   },
+   "petshop-ataskaita-pardavimai.php": {
+    "wc-orders": 2
+   },
+   "petshop-atributai.php": {
+    "ps-atributai": 1
+   },
+   "petshop-atsisakymas.php": {
+    "ps-desk": 1
+   },
+   "petshop-av-dropship.php": {
+    "ps-desk": 3,
+    "ps-laiskai": 7,
+    "ps-tiekimas": 3,
+    "ps-dropship": 2,
+    "ps-dropship-nustatymai": 2
+   },
+   "petshop-av-sheets.php": {
+    "ps-desk": 2
+   },
+   "petshop-av-tiekimas.php": {
+    "ps-desk": 3,
+    "ps-laiskai": 1
+   },
+   "petshop-desk.php": {
+    "ps-tiekimas": 5,
+    "ps-siuntos-laiskas": 1,
+    "ps-lapai": 1,
+    "ps-dropship": 1,
+    "wc-orders": 3,
+    "ps-katalogas": 1,
+    "ps-laiskai": 1
+   },
+   "petshop-gavimas.php": {
+    "ps-katalogas": 1
+   },
+   "petshop-katalogas.php": {
+    "ps-gavimas": 1,
+    "ps-katalogas": 3,
+    "ps-akcijos": 1
+   },
+   "petshop-laukai.php": {
+    "ps-rinkiniai": 1
+   },
+   "petshop-prenumeratu-prognoze.php": {
+    "ps-prognoze": 1
+   },
+   "petshop-rinkiniai.php": {
+    "ps-laukai": 2
+   },
+   "petshop-rinkiniu-ataskaita.php": {
+    "wc-orders": 1
+   },
+   "petshop-rysiai.php": {
+    "ps-katalogas": 1
+   },
+   "petshop-siuntu-laiskai.php": {
+    "ps-desk": 1
+   },
+   "petshop-teises.php": {
+    "ps-katalogas": 4,
+    "ps-akcijos": 1,
+    "ps-gavimas": 1,
+    "ps-desk": 1
+   }
+  },
+  "link_forms": {
+   "petshop-akcijos.php": [
+    "admin.php?page=ps-katalogas",
+    "admin.php?page=ps-akcijos&nauja=1",
+    "admin.php?page=ps-akcijos&akcija=",
+    "admin.php?page=ps-akcijos"
+   ],
+   "petshop-atributai.php": [
+    "admin.php?page=ps-atributai&tax="
+   ],
+   "petshop-atsisakymas.php": [
+    "admin.php?page=ps-desk&eile=klausimai"
+   ],
+   "petshop-av-dropship.php": [
+    "admin.php?page=ps-desk",
+    "admin.php?page=ps-laiskai&b=laukia",
+    "admin.php?page=ps-laiskai&b=issiusti",
+    "admin.php?page=ps-laiskai",
+    "admin.php?page=ps-laiskai&z=",
+    "admin.php?page=ps-tiekimas&b=kaupiama",
+    "admin.php?page=ps-dropship",
+    "admin.php?page=ps-dropship-nustatymai",
+    "admin.php?page=ps-tiekimas",
+    "admin.php?page=ps-dropship-nustatymai&ps_ok=1",
+    "admin.php?page=ps-laiskai&b=laukia&psl_sent=2&psl_src="
+   ],
+   "petshop-av-sheets.php": [
+    "admin.php?page=ps-desk"
+   ],
+   "petshop-av-tiekimas.php": [
+    "admin.php?page=ps-desk",
+    "admin.php?page=ps-laiskai&b=laukia"
+   ],
+   "petshop-desk.php": [
+    "admin.php?page=ps-tiekimas&b=laukia",
+    "admin.php?page=ps-siuntos-laiskas&id=",
+    "admin.php?page=ps-lapai&ps_ready=1",
+    "admin.php?page=ps-dropship",
+    "admin.php?page=ps-tiekimas",
+    "admin.php?page=ps-katalogas",
+    "admin.php?page=ps-laiskai&b=laukia"
+   ],
+   "petshop-gavimas.php": [
+    "admin.php?page=ps-katalogas"
+   ],
+   "petshop-katalogas.php": [
+    "admin.php?page=ps-gavimas&kopija=",
+    "admin.php?page=ps-katalogas&kortele=",
+    "admin.php?page=ps-akcijos&akcija=",
+    "admin.php?page=ps-katalogas"
+   ],
+   "petshop-laukai.php": [
+    "admin.php?page=ps-rinkiniai"
+   ],
+   "petshop-prenumeratu-prognoze.php": [
+    "admin.php?page=ps-prognoze"
+   ],
+   "petshop-rinkiniai.php": [
+    "admin.php?page=ps-laukai"
+   ],
+   "petshop-rysiai.php": [
+    "admin.php?page=ps-katalogas&atv="
+   ],
+   "petshop-siuntu-laiskai.php": [
+    "admin.php?page=ps-desk"
+   ],
+   "petshop-teises.php": [
+    "admin.php?page=ps-katalogas",
+    "admin.php?page=ps-akcijos",
+    "admin.php?page=ps-gavimas",
+    "admin.php?page=ps-desk"
+   ]
+  },
+  "wc_edit": {
+   "petshop-akcijos.php": {
+    "target=\"_blank\"": 1,
+    "post.php?post=": 1
+   },
+   "petshop-ataskaita-klientai.php": {
+    "action=edit&id=": 1
+   },
+   "petshop-ataskaita-pardavimai.php": {
+    "action=edit&id=": 2
+   },
+   "petshop-av-tiekimas.php": {
+    "get_edit_order_url": 2,
+    "target=\"_blank\"": 1
+   },
+   "petshop-desk.php": {
+    "get_edit_order_url": 5,
+    "target=\"_blank\"": 4
+   },
+   "petshop-katalogas.php": {
+    "target=\"_blank\"": 3,
+    "post.php?post=": 1
+   },
+   "petshop-langai-admin.php": {
+    "target=\"_blank\"": 2
+   },
+   "petshop-laukai.php": {
+    "target=\"_blank\"": 1
+   },
+   "petshop-pren-sutikimas.php": {
+    "target=\"_blank\"": 1
+   },
+   "petshop-prenumeratos-langas.php": {
+    "post.php?post=": 2
+   },
+   "petshop-rinkiniai.php": {
+    "target=\"_blank\"": 2
+   },
+   "petshop-rytas.php": {
+    "post.php?post=": 1
+   },
+   "petshop-seo.php": {
+    "target=\"_blank\"": 1
+   },
+   "petshop-promotions.php": {
+    "target=\"_blank\"": 1
+   },
+   "class-admin-ui.php": {
+    "target=\"_blank\"": 1
+   }
+  },
+  "atgal": {
+   "petshop-akcijos.php": [
+    "← Į sąrašą"
+   ],
+   "petshop-ataskaita-klientai.php": [
+    "← Klientų analizė"
+   ],
+   "petshop-av-dropship.php": [
+    "← Petshop užsakymai",
+    "← Visi laiškai",
+    "Atgal į darbalaukį"
+   ],
+   "petshop-av-sheets.php": [
+    "Atgal į darbalaukį"
+   ],
+   "petshop-av-tiekimas.php": [
+    "← Petshop užsakymai"
+   ],
+   "petshop-desk.php": [
+    "Atgal"
+   ],
+   "petshop-katalogas.php": [
+    "← → keisti tvarką, alt tekstas r",
+    "← → keičia tvarką",
+    "← Ankstesnis"
+   ],
+   "petshop-klientai.php": [
+    "← Klientai"
+   ],
+   "petshop-langai-admin.php": [
+    "← Visi laiškai"
+   ],
+   "petshop-laukai.php": [
+    "Atgal",
+    "← Surenkami rinkiniai",
+    "← riboja"
+   ],
+   "petshop-pet-kontraktas.php": [
+    "← Grįžti į darbo eilę"
+   ],
+   "petshop-prenumeratos-langas.php": [
+    "← Į sąrašą"
+   ],
+   "petshop-rinkiniai.php": [
+    "← Šeimos",
+    "← Į sąrašą"
+   ],
+   "petshop-siuntu-laiskai.php": [
+    "Atgal į darbalaukį"
+   ],
+   "petshop-teises.php": [
+    "← Grįžti į katalogą"
+   ],
+   "petshop-vartai.php": [
+    "Atgal modulis niekada nekelia.\n * J"
+   ]
+  },
+  "menu_live_n": 0,
+  "katalogas_out": {
+   "ps-katalogas": 45,
+   "ps-akcijos": 1,
+   "ps-gavimas": 1,
+   "ps-tiekimas": 1,
+   "ps-rinkiniai": 1,
+   "ps-desk": 1
+  },
+  "katalogas_out_txt": [
+   "Katalogas",
+   "Akcijos",
+   "Gavimas",
+   "Tiekimas",
+   "Rinkiniai",
+   "Užsakymai",
+   "atnaujinti",
+   "Prekyboje2663",
+   "Juodraščiai1182",
+   "Visos3845",
+   "Visos2663",
+   "Žemiau maržos ribos7",
+   "Be savikainos383",
+   "Reikia užsakyti438",
+   "AV pasibaigę164",
+   "Baigiasi greičiau nei tiekiama0",
+   "Neparduodama ≥ 60 d.0",
+   "Pasibaigę0",
+   "Geriausia iki ≤ 30 d.0",
+   "30–90 d.0"
+  ],
+  "out": {
+   "ps-tiekimas": {
+    "ps-desk": 1,
+    "ps-tiekimas": 4
+   },
+   "ps-laiskai&b=laukia": {
+    "ps-desk": 1,
+    "ps-laiskai": 6
+   },
+   "ps-rinkiniai": {
+    "ps-katalogas": 1,
+    "ps-akcijos": 1,
+    "ps-gavimas": 1,
+    "ps-tiekimas": 1,
+    "ps-rinkiniai": 3,
+    "ps-desk": 1,
+    "ps-laukai": 1
+   },
+   "ps-ataskaitos": "nera wpbody (2495)"
+  },
+  "h1": {
+   "ps-tiekimas": "Tiekimas",
+   "ps-laiskai&b=laukia": "Laiškai tiekėjams",
+   "ps-rinkiniai": "Rinkiniai"
+  }
+ }
+}
