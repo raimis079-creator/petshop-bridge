@@ -55,9 +55,9 @@
 
 **Rekomendacija Raimiui (hosting cron):** Import #3 processing dabar `2 *` (1 kvietimas/val → pilnas praėjimas ~4–5 h). Pakeisti į `*/2 *` kaip #5/#7 — ciklas ~10 min. Trigger `0 *` palikti.
 
-#### S1594 — `petshop-import-tempas.php` v1.0 (Import #3 processing kas 2 min iš WP pusės)
+#### S1594 — `petshop-import-tempas.php` v1.2 (Import #3 processing kas 2 min iš WP pusės)
 
-Raimio nurodymas „pakeisk serveryje": hosting cron panelio bridge neturi (shell_exec išjungtas), todėl dažnumas keliamas WP-cron'u. Mu-plugin (3 616 B, md5 `6858c0522ad10d54c7a7c727eaa186e0`): intervalas `petshop_2min` (120 s), hook `petshop_import_tempas`; jei pmxi #3 `triggered=1 ∧ processing=0 ∧ executing=0` → nebloguojantis GET `<hostas>/wp-load.php?import_key=<secure>&import_id=3&action=processing` (tas pats kelias, kaip hosting cron; pmxi užraktai saugo nuo dubliavimo). Trigger'io nekviečia (jį duoda hosting `0 *`). Hostas — option `ps_import_tempas_host`=`https://dev.avesa.lt` (petshop.lt DNS dar eShoprent); **T-0 #27: ištrinti option → home_url()**. WP-cron pažadinamas kiekvienu hosting cron `wp-load.php` kvietimu (12/val) + lankytojais. Būsena `ps_import_tempas_paskutinis`; `?ps_import_tempas=status&k=<secure>`. Hosting cron eilutė `2 *` lieka kaip yra (nekenkia). Rekomendacija #26 lieka galioti kaip švaresnis variantas, bet nebe būtina.
+Raimio nurodymas „pakeisk serveryje": hosting cron panelio bridge neturi (shell_exec išjungtas), todėl dažnumas keliamas WP-cron'u. Mu-plugin (4 080 B, md5 `5461ff5abfaa53a559fcf0f9c3b0b982`): intervalas `petshop_2min` (120 s), hook `petshop_import_tempas`; jei pmxi #3 `triggered=1 ∧ processing=0 ∧ executing=0` → **blokuojantis** GET `<hostas>/wp-load.php?import_key=<cron_job_key>&import_id=3&action=processing` (timeout 75 s, transient užraktas 90 s) — tas pats kelias, kaip hosting cron. Du klaidingi bandymai pakeliui: v1.0 nebloguojantis GET iš WP-cron konteksto pmxi nepasiekė (chunk nesijudėjo 14:03→14:19); v1.1 raktas imtas iš PMXI `secure` — tai bool „1", pmxi su blogu raktu grąžina **tuščią 200**, ne klaidą; tikras raktas `cron_job_key`. v1.2 patikrinta: `vykdyti()` → „Import #3 complete" 27 s, WP-cron savarankiškai šauna (14:07/14:11/14:18 fiksuota `ps_import_tempas_paskutinis`). Trigger'io nekviečia (jį duoda hosting `0 *`). Hostas — option `ps_import_tempas_host`=`https://dev.avesa.lt` (petshop.lt DNS dar eShoprent); **T-0 #27: ištrinti option → home_url()**. WP-cron pažadinamas kiekvienu hosting cron `wp-load.php` kvietimu (12/val) + lankytojais. Būsena `ps_import_tempas_paskutinis`; `?ps_import_tempas=status&k=<secure>`. Hosting cron eilutė `2 *` lieka kaip yra (nekenkia). Rekomendacija #26 lieka galioti kaip švaresnis variantas, bet nebe būtina.
 
 #### Pamokos
 63. **„0 vėluojančių cron" ≠ importai veikia.** pmxi grąžina HTTP 200 su `{"status":500}` — sargas turi tikrinti `pmxi_history` `time_run`/summary ir cache mtime, ne cron URL kodą. → kandidatas į sargą (`petshop-sargas`): pmxi #2/#3/#5/#7 paskutinis sėkmingas <36 h, `ps_vf_feed_paskutinis.ok`.
@@ -66,6 +66,7 @@ Raimio nurodymas „pakeisk serveryje": hosting cron panelio bridge neturi (shel
 66. Importo šaltinis = lokalus failas, kurį pildo WP cron — vienintelis kelias, nepriklausantis nuo domeno/DNS/router'io.
 67. **Registras, kurį pildo viena meta reikšmė, negali aprašyti dviejų sandėlių** — rankiniai batch'ai užmaskavo dizaino spragą 4 savaites. Po kiekvieno modelio pakeitimo `naktinis()` matuoti „prieš/po“ skaičiais.
 68. **`_*_last_sync` be duomenų mapping'o = melas dviguba prasme.** Du importai (#5/#7 VF, #3 ZB) tą pačią dieną: žymė šviežia, duomenys seni. Sargas (T-0 #25) turi lyginti `_zb_qty`/`_vf_qty` su feed'o imtimi (20 atsitiktinių kodų), ne žymes.
+69. **pmxi cron su blogu `import_key` grąžina tuščią 200** — ne 403. Raktas = `PMXI_Plugin_Options['cron_job_key']`, o `secure` yra bool jungiklis. Nebloguojantis loopback iš WP-cron proceso pmxi nepasiekia — naudoti blokuojantį su užraktu.
 
 #### T-0 papildymai
 - **#24 ATŠAUKTAS** (pmxi #5/#7 kelias jau be hosto).
@@ -77,7 +78,7 @@ Raimio nurodymas „pakeisk serveryje": hosting cron panelio bridge neturi (shel
 ```
 plugins/petshop-xml/includes/class-import-rules-vf.php  v1.1  191637c6d58e661f8e7ed0d352c2556a
 mu-plugins/petshop-vf-feed.php                          v1.0  1ee413b1dd1000dcf77e395a7b270486  (NAUJAS)
-mu-plugins/petshop-import-tempas.php                    v1.0  6858c0522ad10d54c7a7c727eaa186e0  (NAUJAS, S1594)
+mu-plugins/petshop-import-tempas.php                    v1.2  5461ff5abfaa53a559fcf0f9c3b0b982  (NAUJAS, S1594)
 analize/s1591_recon*.json · s1591_a.json · s1591_deploy*.json · s1591_verify.json · s1591_finish.json · s1592_recon.json · s1592_apply.json · s1592_dump.json · s1592_deploy.json · s1593_recon.json · s1593_r2..r6.json · s1593_fix.json · s1593_fix2.json · s1593_v.json
 moduliai/petshop-sources-snippet2515.php  v2.3  681bef7ec50a143ffdcf7035dfa0e524
 ps-backups (serveris): class-import-rules-vf-v10-BACKUP-2026-09-02.php · exclusion-hypo-kons-BACKUP-2026-09-02.json · sources-v22-snippet2515-BACKUP-2026-09-02.php
