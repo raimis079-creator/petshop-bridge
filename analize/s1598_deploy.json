@@ -1,5 +1,40 @@
 {
- "v": "dep-123354",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "v": "dep-123845",
+ "kurimas": 200,
+ "sid": 4492,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "VERSIJA": "S1598-D1",
+  "md5": "201ceffcf3b8ab16c08eb1237112b107",
+  "tokens": 29684,
+  "write": 188853,
+  "disk_md5": "201ceffcf3b8ab16c08eb1237112b107"
+ },
+ "V": {
+  "VERSIJA": "S1598-D1",
+  "versija": "1.46",
+  "front": {
+   "/kategorija/rinkiniai/": {
+    "rezultatai": "Rodomi visi rezultatai: 7\t",
+    "n": 0,
+    "dezes": [],
+    "pvz": []
+   },
+   "/kategorija/rinkiniai/konservu-rinkiniai/": {
+    "rezultatai": "Rodomi visi rezultatai: 3\t",
+    "n": 0,
+    "dezes": [],
+    "pvz": []
+   },
+   "/kategorija/sunims/konservai-sunims/": {
+    "rezultatai": "Rodoma 1&ndash;24 iš 130\t",
+    "n": 0,
+    "dezes": [],
+    "pvz": []
+   }
+  }
+ }
 }
