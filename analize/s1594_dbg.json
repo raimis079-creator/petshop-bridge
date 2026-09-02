@@ -1,0 +1,31 @@
+{
+ "v": "dep-111246",
+ "kurimas": 200,
+ "sid": 4472,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "NB": {
+  "VERSIJA": "S1594-DBG",
+  "nb": "sent",
+  "pmxi3": {
+   "processing": "1",
+   "queue_chunk_number": "1501",
+   "last_activity": "2026-09-02 11:14:14"
+  }
+ },
+ "B": {
+  "VERSIJA": "S1594-DBG",
+  "b": [
+   200,
+   "{\"status\":403,\"message\":\"Import #3 already processing. Request skipped.\"}",
+   1.1
+  ],
+  "pmxi3": {
+   "processing": "1",
+   "queue_chunk_number": "1601",
+   "last_activity": "2026-09-02 11:14:21"
+  }
+ }
+}
