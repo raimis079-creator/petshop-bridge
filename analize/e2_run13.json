@@ -1,0 +1,122 @@
+{
+ "v": "dep-101531",
+ "kurimas": 200,
+ "sid": 4569,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "run13",
+  "temp_istrinta": 2,
+  "uzs": {
+   "35439": {
+    "st": "processing",
+    "paid": true,
+    "sukurta": "12:30:27",
+    "paid_at": "12:30:27",
+    "klientas": "AUDITAS Testas 26",
+    "mok": "paysera",
+    "pristatymas": "VENIPAK Kurjeris",
+    "created_via": "",
+    "items": [
+     "1× Animonda Carny Adult Beef + Ch src=av kel=av",
+     "1× Prins Diet Skin & Intestinal H src=av kel=i_av"
+    ],
+    "rus": "2026-09-03 12:30:32 | Testuotojas",
+    "naujas": true,
+    "kl": "",
+    "eiles": "surinkti",
+    "btn": "Surinkti",
+    "tk": "✓surūšiuota › ✓užsakyta Prins › ✓gauta į Avesą › ▶surinkti › ·lipdukas › ·išsiųsta",
+    "zurnalas": [
+     "09-03 12:39 · Testuotojas — Nesurinkta · surinkimas atšauktas",
+     "09-03 12:39 · Testuotojas — Surinkti (surinkimo lapas)",
+     "09-03 12:30 · Testuotojas — Surinkti (surinkimo lapas)",
+     "09-03 12:30 · Testuotojas — Gauta (partija priimta): tipas MIXED → MAIN · #868 kelias prins → av",
+     "09-03 12:30 · Testuotojas — Užsakyta iš tiekėjo (partija): laiškai: terra@petshop.lt „[PERSIŲSTI Prins / Faunas] UAB Avesa · prekių užsakymas 2026-09-03“"
+    ]
+   },
+   "35440": {
+    "st": "processing",
+    "paid": true,
+    "sukurta": "12:30:38",
+    "paid_at": "12:30:38",
+    "klientas": "AUDITAS Testas 27",
+    "mok": "paysera",
+    "pristatymas": "VENIPAK Kurjeris",
+    "created_via": "",
+    "items": [
+     "3× Animonda Carny Adult Beef + Ch src=av kel=av"
+    ],
+    "rus": "auto",
+    "naujas": true,
+    "kl": "",
+    "eiles": "paruosta",
+    "btn": "Kurjeris paėmė",
+    "tk": "✓surūšiuota auto › ✓surinkta › ✓lipdukas › ▶išsiųsta",
+    "zurnalas": [
+     "09-03 12:30 · Testuotojas — Lipdukas (Venipak registracija) (praleista): vp_nieko #35440 jau registruotas",
+     "09-03 12:30 · Testuotojas — Lipdukas (Venipak registracija): siuntos +{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260903001\",\"numeriai\":[\"V07267E1000049\",\"V07267E1000050\",\"V07267E1000051\"],\"data\":\"2026-09-03 12:30:41\"}} · vp_ok 1 · AV",
+     "09-03 12:30 · auto — Apmokėta · keliai: #871 av · MAIN",
+     "09-03 12:30 · Testuotojas — Būsena pending → processing · mokėjimas / svetainė",
+     "09-03 12:30 · auto — Rusiuoti · auto: visos prekės vienu keliu"
+    ]
+   },
+   "35441": {
+    "st": "processing",
+    "paid": true,
+    "sukurta": "13:10:02",
+    "paid_at": "13:12:09",
+    "klientas": "Rai B",
+    "mok": "bacs",
+    "pristatymas": "VENIPAK Kurjeris",
+    "created_via": "checkout",
+    "items": [
+     "1× Happet uždaras tualetas katei, src=vf kel=tiesiai"
+    ],
+    "rus": "auto",
+    "naujas": true,
+    "kl": "",
+    "eiles": "laiskai",
+    "btn": "Laiškas Vetfarmas",
+    "tk": "✓surūšiuota auto › ·lipdukas Vetfarmas › ▶laiškas Vetfarmas › ·Vetfarmas išsiuntė",
+    "zurnalas": [
+     "09-03 13:12 · Rai — Pažymėta apmokėtu: būsena on-hold → processing · apmoketa_tyliai 35441",
+     "09-03 13:12 · Rai — Apmokėta · keliai: #874 vf · DS",
+     "09-03 13:12 · Rai — Būsena on-hold → processing · per: Pažymėta apmokėtu",
+     "09-03 13:12 · auto — Rusiuoti · auto: visos prekės vienu keliu",
+     "09-03 13:10 · Rai — Būsena pending → on-hold · mokėjimas / svetainė"
+    ]
+   },
+   "35442": {
+    "st": "processing",
+    "paid": true,
+    "sukurta": "13:11:27",
+    "paid_at": "13:12:51",
+    "klientas": "Rai B",
+    "mok": "bacs",
+    "pristatymas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "created_via": "checkout",
+    "items": [
+     "1× Exclusion Mediterraneo Monopro src=vf kel=",
+     "1× Animonda GranCarno Adult Beef  src=av kel=",
+     "3× Animonda GranCarno Adult Beef: src=av kel=",
+     "1× Animonda GranCarno Adult Beef: src=av kel="
+    ],
+    "rus": "",
+    "naujas": true,
+    "kl": "",
+    "eiles": "nauji",
+    "btn": "Rūšiuoti",
+    "tk": "▶surūšiuota › ·surinkti › ·lipdukas › ·išsiųsta › ·lipdukas Vetfarmas › ·laiškas Vetfarmas › ·Vetfarmas išsiuntė",
+    "zurnalas": [
+     "09-03 13:12 · Rai — Pažymėta apmokėtu: būsena on-hold → processing · laiškai: terra@gyvunai.lt „Jūsų užsakymas Nr. 35442 — apmokėjimas gautas“ · apmoketa 35442",
+     "09-03 13:12 · Rai — Apmokėta · keliai: #877 vf, #878 av, #879 av, #880 av · MIXED",
+     "09-03 13:12 · Rai — Būsena on-hold → processing · per: Pažymėta apmokėtu",
+     "09-03 13:11 · Rai — Būsena pending → on-hold · mokėjimas / svetainė"
+    ]
+   }
+  }
+ }
+}
