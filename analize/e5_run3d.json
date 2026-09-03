@@ -1,0 +1,323 @@
+{
+ "v": "dep-182811",
+ "kurimas": 200,
+ "sid": 4640,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run e5d",
+  "temp_istrinta": 1,
+  "parts": [
+   80000,
+   80000,
+   76612
+  ],
+  "bytes": 177459,
+  "md5": "78277b7260456a86ac0af69bd61c9bf3",
+  "token": "ok",
+  "buvo": "4a798693625447d91bcbcf2fcb5f2dee",
+  "buvo_bytes": 169497,
+  "buvo_v": "3.9",
+  "backup": true,
+  "rasyta": 177459,
+  "po": "78277b7260456a86ac0af69bd61c9bf3",
+  "eile": {
+   "35414": {
+    "st": "processing",
+    "eiles": [
+     "surinkti",
+     "laiskai"
+    ],
+    "vez": "venipak_pastomatas",
+    "dalys": {
+     "av": {
+      "nr": [],
+      "iss": false,
+      "siunta": false,
+      "perduota": null
+     },
+     "ambrosia": {
+      "nr": [],
+      "iss": false,
+      "siunta": null,
+      "perduota": false
+     }
+    },
+    "eil": 2,
+    "email": "terra@petshop.lt"
+   },
+   "35415": {
+    "st": "processing",
+    "eiles": [
+     "surinkti",
+     "laiskai"
+    ],
+    "vez": "venipak_kurjeris",
+    "dalys": {
+     "av": {
+      "nr": [],
+      "iss": false,
+      "siunta": false,
+      "perduota": null
+     },
+     "ambrosia": {
+      "nr": [],
+      "iss": false,
+      "siunta": null,
+      "perduota": false
+     }
+    },
+    "eil": 2,
+    "email": "terra@petshop.lt"
+   },
+   "35416": {
+    "st": "processing",
+    "eiles": [
+     "surinkti"
+    ],
+    "vez": "lp",
+    "dalys": {
+     "av": {
+      "nr": [],
+      "iss": false,
+      "siunta": false,
+      "perduota": null
+     }
+    },
+    "eil": 1,
+    "email": "terra@petshop.lt"
+   },
+   "35418": {
+    "st": "processing",
+    "eiles": [
+     "klausimai",
+     "paruosta"
+    ],
+    "vez": "venipak_kurjeris",
+    "dalys": {
+     "zb": {
+      "nr": [
+       "V07267E1000037"
+      ],
+      "iss": false,
+      "siunta": null,
+      "perduota": true
+     }
+    },
+    "eil": 1,
+    "email": "terra@petshop.lt"
+   },
+   "35421": {
+    "st": "processing",
+    "eiles": [
+     "surinkti",
+     "paruosta"
+    ],
+    "vez": "venipak_kurjeris",
+    "dalys": {
+     "av": {
+      "nr": [],
+      "iss": false,
+      "siunta": false,
+      "perduota": null
+     },
+     "prins": {
+      "nr": [
+       "V07267E1000046"
+      ],
+      "iss": false,
+      "siunta": null,
+      "perduota": true
+     }
+    },
+    "eil": 3,
+    "email": "terra@petshop.lt"
+   },
+   "35425": {
+    "st": "processing",
+    "eiles": [
+     "surinkti",
+     "laiskai"
+    ],
+    "vez": "venipak_pastomatas",
+    "dalys": {
+     "av": {
+      "nr": [],
+      "iss": false,
+      "siunta": false,
+      "perduota": null
+     },
+     "ambrosia": {
+      "nr": [],
+      "iss": false,
+      "siunta": null,
+      "perduota": false
+     }
+    },
+    "eil": 2,
+    "email": "terra@petshop.lt"
+   },
+   "35429": {
+    "st": "processing",
+    "eiles": [
+     "paruosta"
+    ],
+    "vez": "venipak_pastomatas",
+    "dalys": {
+     "av": {
+      "nr": [
+       "V07267E1000031",
+       "V07267E1000032"
+      ],
+      "iss": false,
+      "siunta": true,
+      "perduota": null
+     }
+    },
+    "eil": 1,
+    "email": "terra@petshop.lt"
+   },
+   "35431": {
+    "st": "processing",
+    "eiles": [
+     "surinkti"
+    ],
+    "vez": "venipak_kurjeris",
+    "dalys": {
+     "av": {
+      "nr": [],
+      "iss": false,
+      "siunta": false,
+      "perduota": null
+     }
+    },
+    "eil": 2,
+    "email": "terra@petshop.lt"
+   },
+   "35434": {
+    "st": "processing",
+    "eiles": [
+     "surinkti"
+    ],
+    "vez": "venipak_kurjeris",
+    "dalys": {
+     "av": {
+      "nr": [],
+      "iss": false,
+      "siunta": false,
+      "perduota": null
+     }
+    },
+    "eil": 2,
+    "email": "terra@petshop.lt"
+   },
+   "35436": {
+    "st": "processing",
+    "eiles": [
+     "surinkti",
+     "laiskai"
+    ],
+    "vez": "venipak_kurjeris",
+    "dalys": {
+     "av": {
+      "nr": [],
+      "iss": false,
+      "siunta": false,
+      "perduota": null
+     },
+     "quattro": {
+      "nr": [],
+      "iss": false,
+      "siunta": null,
+      "perduota": false
+     }
+    },
+    "eil": 2,
+    "email": "terra@petshop.lt"
+   },
+   "35439": {
+    "st": "processing",
+    "eiles": [
+     "surinkti"
+    ],
+    "vez": "venipak_kurjeris",
+    "dalys": {
+     "av": {
+      "nr": [],
+      "iss": false,
+      "siunta": false,
+      "perduota": null
+     }
+    },
+    "eil": 2,
+    "email": "terra@petshop.lt"
+   },
+   "35440": {
+    "st": "processing",
+    "eiles": [
+     "paruosta"
+    ],
+    "vez": "venipak_kurjeris",
+    "dalys": {
+     "av": {
+      "nr": [
+       "V07267E1000049",
+       "V07267E1000050",
+       "V07267E1000051"
+      ],
+      "iss": false,
+      "siunta": true,
+      "perduota": null
+     }
+    },
+    "eil": 1,
+    "email": "terra@petshop.lt"
+   },
+   "35442": {
+    "st": "processing",
+    "eiles": [
+     "surinkti",
+     "laiskai"
+    ],
+    "vez": "venipak_pastomatas",
+    "dalys": {
+     "av": {
+      "nr": [],
+      "iss": false,
+      "siunta": false,
+      "perduota": null
+     },
+     "vf": {
+      "nr": [
+       "V07267E1000056"
+      ],
+      "iss": false,
+      "siunta": null,
+      "perduota": false
+     }
+    },
+    "eil": 4,
+    "email": "terra@gyvunai.lt"
+   },
+   "35450": {
+    "st": "processing",
+    "eiles": [
+     "surinkti"
+    ],
+    "vez": "venipak_kurjeris",
+    "dalys": {
+     "av": {
+      "nr": [],
+      "iss": false,
+      "siunta": false,
+      "perduota": null
+     }
+    },
+    "eil": 3,
+    "email": "terra@petshop.lt"
+   }
+  }
+ }
+}
