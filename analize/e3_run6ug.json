@@ -1,0 +1,182 @@
+{
+ "v": "dep-155154",
+ "kurimas": 200,
+ "sid": 4605,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "U": {
+  "v": "run e3s",
+  "f": "U",
+  "temp_istrinta": 1,
+  "oid": 35450,
+  "lauk_txt_pries": "Gauti 7Neišrūšiuoti 1Laukiam iš tiekėjų 2Surinkti AV 10Dropshipping 12Paruošta siųsti 4Klausimai 3Neapmokėti 0Visi 36Filtrai ▾Iš kur: visiTik iš AVTik iš tiekėjųAV + tiekėjasPagal tiekėją: VFPagal tiekėją: ZBPagal tiekėją: QuattroPagal tiekėją: PrinsPagal tiekėją: AmbrosiaPagal tiekėją: BelacorPristatymas: visiVenipak kurjerisVenipak paštomatasLP ExpressData: visosŠiandienVakarŠi savaitėŠis mėnuoPraeitas mėnuoRikiuoti:skubiausi pirminaujausi pirmisumatiekėjasklientasZB · 1 užs. · po 09:00 — rytojUžsakyti iš ZB į AV#35450 NAUDITAS Testas 311× Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas, 2x1.8 l, ø 21 cm 0TR163_24921 · neužsakytaKaip atkeliaus į AV: Venipak paštomatas (Nemenčinė) Venipak kurjeris į AV Tiekėjas atveža patssvoris kgdėžių Užsakyti iš ZB į AV (1 prek.)VF · 2 užs. · po 13:00 — rytojUžsakyti iš VF į AV#35450 NAUDITAS Testas 311× HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm AQ280316 · neužsakyta#35090Sart tr1× 691756 FURminator deShedding šampūnas šunims, 473 ml 404842215351 · neužsakytaKaip atkeliaus į AV: Venipak paštomatas (Nemenčinė) Venipak kurjeris į AV Tiekėjas atveža patssvoris kg (1 be svorio kataloge)dėžių Užsakyti iš VF į AV (2 prek.) Peržiūrėti laišką Kartu su Dropshipping (5 užs.) siųsti tiekėjui (ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt) kopija manLaba diena,prašome paruošti šias prekes.UAB Avesa, ",
+  "uzsakyti_vf": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "eile": "laukiam",
+    "pd_ok": "dl_uzsak_av",
+    "pd_nr": "#35450|užsakyta iš VF į AV — užsakymas tiekėjui #14; laiškas išėjo tik man (terra@petshop.lt) — persiųsk tiekėjui"
+   }
+  },
+  "partijos": [
+   {
+    "id": "12",
+    "tiekejas": "quattro",
+    "busena": "kaupiama",
+    "pristatymas": "pastomatas",
+    "dezes": "1",
+    "venipak_pack": null,
+    "eil": null
+   },
+   {
+    "id": "13",
+    "tiekejas": "prins",
+    "busena": "gauta",
+    "pristatymas": "tiekejas",
+    "dezes": "1",
+    "venipak_pack": null,
+    "eil": "20:16889x1/1#35439"
+   },
+   {
+    "id": "14",
+    "tiekejas": "vf",
+    "busena": "uzsakyta",
+    "pristatymas": "tiekejas",
+    "dezes": "1",
+    "venipak_pack": null,
+    "eil": "21:35357x1/-#35450"
+   }
+  ],
+  "po": {
+   "st": "processing",
+   "rus": "2026-09-03 18:51:18 | Testuotojas",
+   "eiles": [
+    "laukiam"
+   ],
+   "btn": "Užsakyti iš ZB į AV",
+   "eil": [
+    "1x Animonda Carny Adult B [av/av]  lock=",
+    "1x Trixie Stovas su duben [i_av/zb] neužsakyta lock=",
+    "1x HAP žaislas šunims, pl [i_av/vf] užsakyta · užsakymas tiekėjui #14 lock=jau užsakyta iš VF (užsakymas tiekėjui #14)"
+   ],
+   "av": {
+    "siunta": false,
+    "nr": [],
+    "lapas": false,
+    "vietoje": false,
+    "issiusta": false
+   },
+   "takelis": "surūšiuota:done | užsakyti iš ZB į AV:now | laukiam iš ZB:todo | užsakyta iš VF į AV:done | laukiam iš VF:wait | surinkti:todo | lipdukas:todo | kurjeris paėmė:todo",
+   "shipments": "3",
+   "type": "MIXED",
+   "notes": [
+    "Tiekimas: prekės užsakytos iš Vetfarmas (partija #14). Kelias į AV: Tiekėjas atveža pats. Laukiam.",
+    "Tiekimas: „HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm“ (1 vnt) įtraukta į Vetfarmas partiją #14 — parsivežam į AV.",
+    "Surūšiuota (Testuotojas): Animonda Carny Adult Beef + Chicken + Du — Iš AV; Trixie Stovas su dubenėliais, reg. aukšt — ZB veža į AV; HAP žai",
+    "Darbalaukis: „HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm“ kelias VF siunčia klientui → VF veža į AV (Testuotojas)."
+   ]
+  },
+  "mail": [
+   [
+    "18:51:06",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35450 — 2026-09-03",
+    0,
+    "Petshop.lt\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\tPetshop.lt\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t"
+   ],
+   [
+    "18:51:06",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35450 — apmokėjimas gautas",
+    0,
+    "Petshop.lt\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t"
+   ],
+   [
+    "18:53:04",
+    "terra@petshop.lt",
+    "[PERSIŲSTI Vetfarmas] UAB Avesa · prekių užsakymas 2026-09-03",
+    0,
+    "Laba diena,prašome paruošti šias prekes.UAB Avesa, Liucionių g. 46HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm AQ2803161 vnt.Šias prekes atsiimsime "
+   ]
+  ],
+  "lauk_txt_po": "Gauti 7Neišrūšiuoti 1Laukiam iš tiekėjų 2Surinkti AV 10Dropshipping 12Paruošta siųsti 4Klausimai 3Neapmokėti 0Visi 36Filtrai ▾Iš kur: visiTik iš AVTik iš tiekėjųAV + tiekėjasPagal tiekėją: VFPagal tiekėją: ZBPagal tiekėją: QuattroPagal tiekėją: PrinsPagal tiekėją: AmbrosiaPagal tiekėją: BelacorPristatymas: visiVenipak kurjerisVenipak paštomatasLP ExpressData: visosŠiandienVakarŠi savaitėŠis mėnuoPraeitas mėnuoRikiuoti:skubiausi pirminaujausi pirmisumatiekėjasklientasZB · 1 užs. · po 09:00 — rytojUžsakyti iš ZB į AV#35450 NAUDITAS Testas 311× Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas, 2x1.8 l, ø 21 cm 0TR163_24921 · neužsakytaKaip atkeliaus į AV: Venipak paštomatas (Nemenčinė) Venipak kurjeris į AV Tiekėjas atveža patssvoris kgdėžių Užsakyti iš ZB į AV (1 prek.)VF · 2 užs. · po 13:00 — rytojUžsakyta 09-03 18:53 · užsakymas tiekėjui #14 · Tiekėjas atveža pats#35450 NAUDITAS Testas 311× HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm AQ280316Gauta galioja iki GautaUžsakyti iš VF į AV#35090Sart tr1× 691756 FURminator deShedding šampūnas šunims, 473 ml 404842215351 · neužsakytaKaip atkeliaus į AV: Venipak paštomatas (Nemenčinė) Venipak kurjeris į AV Tiekėjas atveža patssvoris kgdėžių Užsakyti iš VF į AV (1 prek.) Peržiūrėti laišką Kartu su Dropshipping (5 užs.) siųsti tiekėjui (ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt) kopija"
+ },
+ "G": {
+  "v": "run e3s",
+  "f": "G",
+  "temp_istrinta": 0,
+  "oid": 35450,
+  "vf_partija": "14",
+  "gauta_vf": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "eile": "laukiam",
+    "pd_ok": "dl_gauta",
+    "pd_nr": "#35450|gauta į AV iš VF (užsakymas tiekėjui #14) — likučiai papildyti"
+   }
+  },
+  "po": {
+   "st": "processing",
+   "rus": "2026-09-03 18:51:18 | Testuotojas",
+   "eiles": [
+    "laukiam"
+   ],
+   "btn": "Užsakyti iš ZB į AV",
+   "eil": [
+    "1x Animonda Carny Adult B [av/av]  lock=",
+    "1x Trixie Stovas su duben [i_av/zb] neužsakyta lock=",
+    "1x HAP žaislas šunims, pl [av/av]  gauta<vf lock="
+   ],
+   "av": {
+    "siunta": false,
+    "nr": [],
+    "lapas": false,
+    "vietoje": false,
+    "issiusta": false
+   },
+   "takelis": "surūšiuota:done | užsakyta iš VF:done | gauta į AV:done | užsakyti iš ZB į AV:now | laukiam iš ZB:todo | surinkti:todo | lipdukas:todo | kurjeris paėmė:todo",
+   "shipments": "2",
+   "type": "MIXED",
+   "notes": [
+    "Tiekimas: visos prekės gautos (partija #14). Užsakymas paruoštas surinkimui iš AV. Į AV perkeltos eilutės: HAP žaislas šunims, pliušinė varl",
+    "Tiekimas: prekės užsakytos iš Vetfarmas (partija #14). Kelias į AV: Tiekėjas atveža pats. Laukiam.",
+    "Tiekimas: „HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm“ (1 vnt) įtraukta į Vetfarmas partiją #14 — parsivežam į AV.",
+    "Surūšiuota (Testuotojas): Animonda Carny Adult Beef + Chicken + Du — Iš AV; Trixie Stovas su dubenėliais, reg. aukšt — ZB veža į AV; HAP žai"
+   ]
+  },
+  "partijos": [
+   {
+    "id": "12",
+    "tiekejas": "quattro",
+    "busena": "kaupiama",
+    "pristatymas": "pastomatas",
+    "dezes": "1",
+    "venipak_pack": null,
+    "eil": null
+   },
+   {
+    "id": "13",
+    "tiekejas": "prins",
+    "busena": "gauta",
+    "pristatymas": "tiekejas",
+    "dezes": "1",
+    "venipak_pack": null,
+    "eil": "20:16889x1/1#35439"
+   },
+   {
+    "id": "14",
+    "tiekejas": "vf",
+    "busena": "gauta",
+    "pristatymas": "tiekejas",
+    "dezes": "1",
+    "venipak_pack": null,
+    "eil": "21:35357x1/1#35450"
+   }
+  ],
+  "lauk_txt": "Gauti 7Neišrūšiuoti 1Laukiam iš tiekėjų 2Surinkti AV 10Dropshipping 12Paruošta siųsti 4Klausimai 3Neapmokėti 0Visi 36Filtrai ▾Iš kur: visiTik iš AVTik iš tiekėjųAV + tiekėjasPagal tiekėją: VFPagal tiekėją: ZBPagal tiekėją: QuattroPagal tiekėją: PrinsPagal tiekėją: AmbrosiaPagal tiekėją: BelacorPristatymas: visiVenipak kurjerisVenipak paštomatasLP ExpressData: visosŠiandienVakarŠi savaitėŠis mėnuoPraeitas mėnuoRikiuoti:skubiausi pirminaujausi pirmisumatiekėjasklientasZB · 1 užs. · po 09:00 — rytojUžsakyti iš ZB į AV#35450 NAUDITAS Testas 311× Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas, 2x1.8 l, ø 21 cm 0TR163_24921 · neužsakytaKaip atkeliaus į AV: Venipak paštomatas (Nemenčinė) Venipak kurjeris į AV Tiekėjas atveža patssvoris kgdėžių Užsakyti iš ZB į AV (1 prek.)VF · 1 užs. · po 13:00 — rytojUžsakyti iš VF į AV#35090Sart tr1× 691756 FURminator deShedding šampūnas šunims, 473 ml 404842215351 · neužsakytaKaip atkeliaus į AV: Venipak paštomatas (Nemenčinė) Venipak kurjeris į AV Tiekėjas atveža patssvoris kgdėžių Užsakyti iš VF į AV (1 prek.) Peržiūrėti laišką Kartu su Dropshipping (5 užs.) siųsti tiekėjui (ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt) kopija manLaba diena,prašome paruošti šias prekes.UAB Avesa, Liucionių g. 46691756 FURminator deShedding šampūnas šunims, 473 ml 4048422153511 vnt.1 dėžė — lipdukai bus priede.Ačiū,UAB Avesa"
+ }
+}
