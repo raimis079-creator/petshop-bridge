@@ -1,0 +1,55 @@
+{
+ "v": "dep-135529",
+ "kurimas": 200,
+ "sid": 4594,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run26b",
+  "f": "D",
+  "buvo": "97932d7d6d54d1e2135604c36cdb1adf",
+  "deploy": {
+   "bytes": 140530,
+   "md5": "f0e791d886aa8a44e5660531f8618069"
+  }
+ },
+ "T": {
+  "v": "run26b",
+  "f": "T",
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788447436|1OmUp2EakTYCNwFaJdb43stElINR7BH5msq7VHXx9cr|b740bc5708ba1ef135a5ffda9ccaf2aaca7546a6c6727c133f8bcaa41a09656f"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788447436|1OmUp2EakTYCNwFaJdb43stElINR7BH5msq7VHXx9cr|f00bc336b8774789e6201e3b3380ceafeb538bb24834c4a062c441284cc063a8"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788447436|1OmUp2EakTYCNwFaJdb43stElINR7BH5msq7VHXx9cr|dab8285f6ae5273f9b9950827fb439be9649a718eb6aaf752781b1ee56fceece"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e2q_drop",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+    "full": true,
+    "eval": "({vf:(document.querySelector('.dl-tk h2') ? [...document.querySelectorAll('.dl-tk')].map(function(k){return k.querySelector('h2').innerText.split('\\n')[0]+': '+[...k.querySelectorAll('td.d')].map(function(t){return t.innerText.replace(/\\s+/g,' ')}).join(' | ')+' || '+(k.querySelector('.dl-laisko-nust .pilkas')||{}).textContent}).join(' ## ').slice(0,900):'')})"
+   }
+  ]
+ },
+ "shots": {
+  "e2q_drop": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "vf": "Užsakyti iš ZB: be lipduko Lipdukas Kopijuoti | be lipduko Lipdukas Kopijuoti || undefined ## Užsakyti iš Belacor: ✓ lipdukas V07267E1000053 Lipdukas || + į AV: atviro užsakymo iš Belacor į AV nėra — sudėk prekes Tiekime, ir jos keliaus tame pačiame užsakyme ## Užsakyti iš Quattro: be lipduko Lipdukas || + į AV: atviro užsakymo iš Quattro į AV nėra — sudėk prekes Tiekime, ir jos keliaus tame pačiame užsakyme ## Užsakyti iš Ambrosia: be lipduko Lipdukas | be lipduko Lipdukas | be lipduko Lipdukas | be lipduko Lipdukas | be lipduko Lipdukas | ✓ lipdukas V07267E1000038 Lipdukas || + į AV: atviro užsakymo iš Ambrosia į AV nėra — sudėk prekes Tiekime, ir jos keliaus tame pačiame užsakyme ## Užsakyti iš VF: ✓ lipdukas V07267E1000054 Lipdukas | ✓ lipdukas V07267E1000055 Lipdukas | ✓ lipdukas V07267E1000056 Lipdukas | be lipduko Lipdukas | ✓ lipdukas V07267E1000057 Lipdukas || + į AV: atviro užs"
+   }
+  }
+ }
+}
