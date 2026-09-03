@@ -1,0 +1,52 @@
+{
+ "v": "dep-140617",
+ "kurimas": 200,
+ "sid": 4595,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "temp_istrinta": 2,
+  "zonos": {
+   "Neringos savivaldybe": [
+    "shopup_venipak_shipping_pickup_method:9:VENIPAK paštomatai/atsiėmimo punktai:on",
+    "shopup_venipak_shipping_courier_method:10:VENIPAK Kurjeris:on",
+    "woo_lithuaniapost_lpexpress_terminal:13:LP Express:on"
+   ],
+   "Lietuva": [
+    "free_shipping:1:Nemokamas pristatymas:off",
+    "shopup_venipak_shipping_courier_method:2:VENIPAK Kurjeris:on",
+    "shopup_venipak_shipping_pickup_method:3:VENIPAK paštomatai/atsiėmimo punktai:on",
+    "shopup_venipak_shipping_courier_method:6:VENIPAK Kurjeris:on",
+    "shopup_venipak_shipping_courier_method:7:VENIPAK Kurjeris:on",
+    "shopup_venipak_shipping_courier_method:8:VENIPAK Kurjeris:on",
+    "woo_lithuaniapost_lpexpress_terminal:12:LP Express:on",
+    "woo_lithuaniapost_lpexpress_terminal:15:LP Express kurjeris:on"
+   ],
+   "Baltijos šalys, be LIetuvos": [
+    "shopup_venipak_shipping_pickup_method:5:VENIPAK paštomatai/atsiėmimo punktai:on"
+   ]
+  },
+  "mokejimai": [
+   "paysera:Mokėjimas internetu",
+   "bacs:Bankinis pavedimas"
+  ],
+  "desk_vezejas_src": "protected static function vezejas( $order ) {\n\t\t$m = mb_strtoupper( (string) $order->get_shipping_method() );\n\t\t$lp = ( false !== mb_strpos( $m, 'UNISEND' ) || false !== mb_strpos( $m, 'LP ' ) || false !== mb_strpos( $m, 'LIETUVOS PAŠT' ) );\n\t\t$pastomatas = ( false !== mb_strpos( $m, 'PAŠTOMAT' ) || false !== mb_strpos( $m, 'ATSIĖMIM' ) || false !== mb_strpos( $m, 'PICKUP' ) );\n\t\tif ( $lp ) { return 'lp'; }\n\t\tif ( false !== mb_strpos( $m, 'VENIPAK' ) ) { return $pastomatas ? 'venipak_pastomatas' : 'venipak_kurjeris'; }\n\t\treturn 'kita';\n\t}",
+  "fixed": [
+   ".psj{position:sticky;top:32px;z-index:9990;background:#1f2a24;color:#e8efe9;font:13px/1.3 -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,sans-serif;box-shadow:0 1px 0 rgba(0,0,0,.25)}",
+   ".pskat-kort{width:430px;flex:none;background:#fff;border-left:1px solid #d3d8d2;\n\t\t\tposition:sticky;top:0;align-self:flex-start;max-height:100vh;overflow-y:auto}",
+   ".kort-juosta{display:flex;align-items:center;gap:6px;padding:8px 12px;border-bottom:1px solid #e8ebe6;\n\t\t\tposition:sticky;top:0;background:#fff;z-index:5}",
+   ".kort-tabs{display:flex;gap:2px;padding:0 12px;border-bottom:1px solid #e8ebe6;\n\t\t\tposition:sticky;top:41px;background:#fff;z-index:4}",
+   ".pskat-saugoti{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;\n\t\t\tbackground:#1d2422;color:#e8ebe6;padding:10px 14px;display:flex;align-items:center;gap:12px;\n\t\t\tz-index:80;border-radius:11px;box-shadow:0 6px 22px rgba(20,30,25,.3);max-width:calc(100vw - 60px)}",
+   ".pskat-masine{position:fixed;left:50%;transform:translateX(-50%);bottom:18px;background:#1d2422;\n\t\t\tcolor:#e8ebe6;padding:9px 14px;display:flex;align-items:center;gap:10px;z-index:78;\n\t\t\tborder-radius:11px;box-shadow:0 6px 22px rgba(20,30,25,.3)}",
+   ".pskat-langas{position:fixed;inset:0;background:rgba(20,30,25,.5);z-index:130;\n\t\t\tdisplay:flex;align-items:center;justify-content:center;padding:28px}",
+   ".pskat-pranes{position:fixed;right:20px;bottom:20px;z-index:120;background:#1d2422;color:#e8ebe6;\n\t\t\tpadding:12px 16px;border-radius:9px;box-shadow:0 6px 20px rgba(0,0,0,.28);max-width:460px;\n\t\t\tdisplay:flex;flex-wrap:wrap;align-items:center;gap:10px;font-size:13px}",
+   ".pskat-rail{position:sticky;top:var(--ps-virsus,118px);align-self:flex-start;\n\t\t\tmax-height:calc(100vh - var(--ps-virsus,118px));overflow-y:auto;overflow-x:hidden;\n\t\t\tscrollbar-width:thin;scrollbar-color:#c3cbc5 transparent}",
+   ".kort-saugoti{position:sticky;bottom:0;z-index:8;display:flex;align-items:center;gap:12px;\n\t\t\tbackground:#1d2422;color:#e8ebe6;padding:10px 16px;margin:0 -18px -24px;\n\t\t\tbox-shadow:0 -4px 16px rgba(20,30,25,.18)}",
+   ".ps-klausimas{position:fixed;inset:0;background:rgba(20,30,25,.5);z-index:200;\n\t\t\tdisplay:flex;align-items:center;justify-content:center;padding:24px}"
+  ],
+  "psj_vars": [],
+  "psj_css": "\n\t\t.psj{position:sticky;top:32px;z-index:9990;background:#1f2a24;color:#e8efe9;font:13px/1.3 -apple-system,BlinkMacSystemFont,\"Segoe UI\",Roboto,sans-serif;box-shadow:0 1px 0 rgba(0,0,0,.25)}\n\t\t@media screen and (max-width:782px){.psj{top:46px}}\n\t\t.psj-1{display:flex;align-items:center;gap:6px;height:44px;padding:0 10px 0 6px}\n\t\t.psj-home{color:#e8efe9;text-decoration:none;font-size:18px;line-height:1;padding:6px 8px;border-radius:6px;opacity:.85}.psj-home:hover{background:rgba(255,255,255,.12);color:#fff;opacity:1}\n\t\t.psj-nav{display:flex;align-items:center;gap:2px;flex-wrap:nowrap;flex-shrink"
+ }
+}
