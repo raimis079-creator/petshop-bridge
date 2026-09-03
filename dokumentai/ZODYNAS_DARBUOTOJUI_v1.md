@@ -1,4 +1,6 @@
-# ŽODYNAS DARBUOTOJUI — užsakymų langas (v1, 2026-09-03, Raimio peržiūrai)
+# ŽODYNAS DARBUOTOJUI — užsakymų langas (v1.1, 2026-09-03 — PATVIRTINTA su Raimio pataisomis)
+
+> **Raimio pataisos (galioja):** „Nematyti“ → **Gauti**; „Paskirstyti“ → **Neišrūšiuoti** (mygtukai lieka Rūšiuoti / Surūšiuota / Auto); „Užsakyti iš tiekėjų“ → **Dropshipping**; kitos eilės — kaip siūlyta. Jokių svorio/sumos ribų. Įgyvendinta darbalaukyje v3.1–v3.5.
 
 > Principas: mygtukas sako, ką darbuotojas **daro**; eilė sako, ką **reikia daryti**; sistemos žodžių (registruoti, perduoti, manifestas, dropship, AV/source) ekrane nėra. Viena sąvoka = vienas žodis visur: sąraše, kortelėse, skydelyje, dialoguose, pranešimuose, žurnale, rytinėje eigoje.
 > Stulpelis „Siūlau“ — mano siūlymas; taisyk tiesiai lentelėje. Tuščia „Siūlau“ = paliekam kaip yra.
@@ -21,11 +23,11 @@ Prekių pavadinimai sąraše — trumpinami iki ~40 ženklų (pilnas — skydely
 
 | Dabar | Siūlau | Kas ten guli |
 |---|---|---|
-| Šiandien atėjo | **Nematyti** | užsakymai, kurių darbuotojas dar neatidarė — nesvarbu, kelių dienų |
-| Nauji — rūšiuoti | **Paskirstyti** | AV + tiekėjas arba trūkumas — reikia parinkti, iš kur važiuos prekė |
+| Šiandien atėjo | **Gauti** | užsakymai, kurių darbuotojas dar neatidarė — nesvarbu, kelių dienų |
+| Nauji — rūšiuoti | **Neišrūšiuoti** | 2+ sandėliai arba trūkumas — reikia parinkti, iš kur važiuos prekė; „Auto“ = kaip siūlo sistema |
 | Laukiam iš tiekėjų | Laukiam iš tiekėjų | prekės, kurias užsakėm į AV, dar neatvažiavo |
 | Surinkti Avesoje | **Surinkti AV** | visos AV siuntos prekės vietoje |
-| Laiškai tiekėjams | **Užsakyti iš tiekėjų** | tiekėjas siunčia klientui — reikia lipdukų ir užsakymo tiekėjui |
+| Laiškai tiekėjams | **Dropshipping** | tiekėjas siunčia tiesiai klientui — reikia lipdukų ir užsakymo tiekėjui |
 | Paruošta siųsti | Paruošta siųsti | supakuota, laukia kurjerio / tiekėjas dar neišsiuntė |
 | Klausimai | Klausimai | reikia sprendimo |
 | Neapmokėti | Neapmokėti | laukia pinigų |
