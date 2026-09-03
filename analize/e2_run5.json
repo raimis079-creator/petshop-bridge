@@ -1,0 +1,76 @@
+{
+ "v": "dep-075433",
+ "kurimas": 200,
+ "sid": 4556,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1607-run5",
+  "f": "D",
+  "temp_istrinta": 1,
+  "buvo": "4f10b43186bd862652bdf4218cd4df33",
+  "deploy": {
+   "bytes": 83882,
+   "md5": "92913d050f58206a26bb20f7095d0f71"
+  }
+ },
+ "T": {
+  "v": "S1607-run5",
+  "f": "T",
+  "versija": "1.2",
+  "t1_35421_sargas": {
+   "code": 302,
+   "loc": {
+    "pd_ok": "dl_klaida",
+    "pd_nr": "35421|dar neišsiųsta: Avesa, Prins"
+   }
+  },
+  "t1_st": "processing",
+  "t2_35428_issiusta_sekimo": {
+   "code": 302,
+   "loc": {
+    "pd_ok": "dl_issiusta",
+    "pd_nr": "35428|sekimo laiškas išsiųstas terra@petshop.lt"
+   }
+  },
+  "t2_po": {
+   "st": "completed",
+   "sekimo": "2026-09-03 10:55:53"
+  },
+  "t3_35428_dar_karta": {
+   "code": 302,
+   "loc": {
+    "pd_ok": "dl_info",
+    "pd_nr": "35428|jau išsiųstas"
+   }
+  },
+  "mail": [
+   [
+    "10:55:53",
+    "terra@petshop.lt",
+    "Jūsų užsakymo Nr. 35428 siuntų sekimo numeriai",
+    "Petshop.lt\n\t\n\t\n\t\t\n\t\t\t\n\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t\n\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\t\t\t\t\t\t\n\t\t",
+    "run5"
+   ]
+  ],
+  "zurnalas_35428": [
+   "09-03 10:55 · Testuotojas — Išsiųsta",
+   "09-03 10:55 · Testuotojas — Būsena processing → completed · WooCommerce",
+   "09-03 10:12 · auto — Rusiuoti · auto: visos prekės vienu keliu"
+  ],
+  "langas": {
+   "code": 200,
+   "senas_link": false,
+   "etapas": 0,
+   "rows": 2
+  },
+  "klaus": {
+   "code": 200,
+   "senas_link": false,
+   "etapas": 0,
+   "rows": 2
+  }
+ }
+}
