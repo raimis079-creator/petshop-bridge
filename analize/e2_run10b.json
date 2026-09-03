@@ -1,0 +1,57 @@
+{
+ "v": "dep-093315",
+ "kurimas": 200,
+ "sid": 4564,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run10b",
+  "f": "D",
+  "buvo": "fc51af230457e8b33f01f36b2f499e62",
+  "deploy": {
+   "bytes": 116579,
+   "md5": "d2e7689e7327ebdb7bd37852695e5474"
+  }
+ },
+ "T": {
+  "v": "run10b",
+  "f": "T",
+  "versija": "2.1.1",
+  "T4_a_lipdukas_av": {
+   "code": 302,
+   "loc": {
+    "pd_ok": "vp_ok",
+    "pd_nr": "1 · AV"
+   },
+   "loc_url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&pd_ok=vp_ok&pd_nr=1%20%C2%B7%20AV",
+   "pirmas_loc": {
+    "perreg": "1",
+    "n": "1"
+   }
+  },
+  "T4_b_siuntos": "{\"prins\":{\"sandelis\":\"prins\",\"kodas\":\"005\",\"manifest\":\"07267260903005\",\"numeriai\":[\"V07267E1000047\"],\"data\":\"2026-09-03 11:23:31\"},\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260903001\",\"numeriai\":[\"V07267E1000052\"],\"data\":\"2026-09-03 12:34:34\"}}",
+  "T4_c_kurjeris_paeme": {
+   "code": 302,
+   "loc": {
+    "pd_ok": "dl_issiusta",
+    "pd_nr": "35438|sekimo laiškas išsiųstas terra@petshop.lt"
+   },
+   "loc_url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&pd_ok=dl_issiusta&pd_nr=35438%7Csekimo%20lai%C5%A1kas%20i%C5%A1si%C5%B3stas%20terra%40petshop.lt"
+  },
+  "T4_d_po": {
+   "st": "completed",
+   "dalys": "{\"prins\":{\"laikas\":\"2026-09-03 12:30:47\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"},\"av\":{\"laikas\":\"2026-09-03 12:34:35\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"}}",
+   "sekimo": "2026-09-03 12:34:35"
+  },
+  "mail": [
+   [
+    "12:34:35",
+    "terra@petshop.lt",
+    "Jūsų užsakymo Nr. 35438 siuntų sekimo numeriai",
+    "run10"
+   ]
+  ]
+ }
+}
