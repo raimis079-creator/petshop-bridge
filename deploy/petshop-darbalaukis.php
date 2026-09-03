@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v2.2 (S1607, 2 etapas, Run 11 — auditas 09-03: V1, V5, K2) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v2.3 (S1607, 2 etapas, Run 12 — Rytinė eiga be užrakto, viena sistema) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -26,6 +26,10 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v2.3 (Raimis: senoje Rytinėje eigoje „Mišrūs → Atidaryti“ vedė į WC): `view=rytas` dabar NAUJAS vedimas per eiles be
+ *   užrakto (D1/D2): 1 Surūšiuoti · 2 Lipdukai ir laiškai tiekėjams · 3 Užsakyti iš tiekėjų · 4 Surinkti Avesoje · 5 Lipdukai
+ *   Avesai · 6 Išsiųsta · 7 Gavimai · 8 Klausimai — gyvi skaičiai iš tų pačių faktų, žingsnis veda į eilę. Senas vaizdas tik su
+ *   `senas=1` (LP Express lipdukams iki T-0 — J1). Iš darbuotojo lango į WC kelių nebėra.
  * v2.2: V1 — prekė be sandėlio → Klausimas „Prekė be sandėlio“, skydelyje leidžiama „Avesa sandėlis“ rankiniu būdu (be likučio,
  *   žurnale „rankinis“). V5 — `_ps_surinkta` (laikas|kas) rašoma per `admin_post_ps_desk_veiksmas` (lapai) + „Atšaukti surinkimą“
  *   skydelyje. K2 — atviri tik processing/on-hold/LP (riba 1000 + įspėjimas „rodomi ne visi“), Neapmokėti atskira užklausa
@@ -59,7 +63,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '2.2';
+	const VERSIJA = '2.3';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -133,7 +137,8 @@ class Petshop_Darbalaukis {
 	}
 
 	protected static function musu() { return is_admin() && isset( $_GET['page'] ) && self::SLUG === $_GET['page']; }
-	protected static function senas() { return ! empty( $_GET['senas'] ) || ( isset( $_GET['view'] ) && 'rytas' === $_GET['view'] ); }
+	protected static function senas() { return ! empty( $_GET['senas'] ); }
+	protected static function rytas_langas() { return isset( $_GET['view'] ) && 'rytas' === $_GET['view'] && ! self::senas(); }
 
 	public static function chrome() {
 		if ( ! self::musu() ) { return; }
@@ -810,6 +815,7 @@ class Petshop_Darbalaukis {
 		foreach ( array_merge( $atviri, $neapm ) as $r ) { foreach ( $r['eiles'] as $e ) { $c[ $e ]++; } }
 		$atviri = array_merge( $atviri, $neapm );
 		global $wpdb; $c['visi'] = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}wc_orders WHERE type='shop_order' AND status<>'wc-checkout-draft'" );
+		if ( self::rytas_langas() ) { self::stilius(); echo '<div class="dl" id="dl" data-eile="rytas" data-atid="0">'; self::pranesimas(); self::rytas( $atviri, $c ); self::skydelio_html(); self::dialogas(); self::skriptas(); echo '</div>'; return; }
 		$rows = 'visi' === $eile ? self::visi( $f ) : array_values( array_filter( $atviri, function ( $r ) use ( $eile ) { return in_array( $eile, $r['eiles'], true ); } ) );
 		$rows = self::rikiuoti( self::filtruoti( $rows, $f ), 'visi' === $eile && ! $f['r'] ? 'laikas' : $f['r'] );
 		$atid = isset( $_GET['atidaryti'] ) ? absint( $_GET['atidaryti'] ) : 0;
@@ -1108,6 +1114,36 @@ class Petshop_Darbalaukis {
 		<?php
 	}
 
+	/** RYTINĖ EIGA be užrakto (D1/D2, spec §7): žingsniai pagal ribas, gyvi skaičiai, kiekvienas veda į eilę. */
+	protected static function rytas( $atviri, $c ) {
+		global $wpdb;
+		$lip_av = 0; foreach ( $atviri as $r ) { if ( in_array( 'surinkti', $r['eiles'], true ) && ! empty( $r['dalys']['av']['lapas'] ) ) { $lip_av++; } }
+		$gav = class_exists( 'Petshop_AV_Tiekimas' ) ? (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}ps_tiekimas WHERE busena='uzsakyta'" ) : 0;
+		$tiek = array(); foreach ( $atviri as $r ) { if ( in_array( 'laiskai', $r['eiles'], true ) ) { foreach ( $r['tiesiai'] as $s ) { if ( empty( $r['dalys'][ $s ]['perduota'] ) ) { $tiek[ $s ] = ( $tiek[ $s ] ?? 0 ) + 1; } } } }
+		uksort( $tiek, function ( $a, $b ) { $ra = self::riba( $a ); $rb = self::riba( $b ); return ( $ra ? $ra[2] : PHP_INT_MAX ) <=> ( $rb ? $rb[2] : PHP_INT_MAX ); } );
+		$tiek_t = array(); foreach ( $tiek as $s => $n ) { list( , $rt ) = self::riba_tekstas( $s ); $tiek_t[] = self::vardas( $s ) . ' ' . $n . ( $rt ? ' (' . $rt . ')' : '' ); }
+		list( , $r_av ) = self::riba_tekstas( 'av' ); list( , $r_lp ) = self::riba_tekstas( 'lp' );
+		$Z = array(
+			array( 'Surūšiuoti naujus', $c['nauji'], 'Avesa + tiekėjas arba trūkumas — kelias kiekvienai prekei; aiškius sistema surūšiavo pati.', 'nauji', 'Rūšiuoti' ),
+			array( 'Lipdukai ir laiškai tiekėjams', $c['laiskai'], $tiek_t ? implode( ' · ', $tiek_t ) : 'kortelė per tiekėją: 1 Lipdukai → 2 Laiškas', 'laiskai', 'Atidaryti' ),
+			array( 'Užsakyti iš tiekėjų į Avesą', $c['laukiam'], 'kas neužsakyta — „Užsakyti iš [T]“ (partija, toliau Tiekimo lange); kas užsakyta — laukiam', 'laukiam', 'Atidaryti' ),
+			array( 'Surinkti Avesoje', $c['surinkti'], 'visos Avesos siuntos prekės vietoje — lapai (galima visus vienu lapu)', 'surinkti', 'Surinkti' ),
+			array( 'Lipdukai Avesai', $lip_av, 'surinkta, be lipduko · Venipak ' . $r_av . ' · LP Express ' . $r_lp . ' (LP lipdukas — dar per seną eigą, formavimas iškviečia kurjerį)', 'surinkti', 'Lipdukai' ),
+			array( 'Išsiųsta', $c['paruosta'], 'kurjeris paėmė Avesos siuntas · tiekėjai išsiuntė savo — klientams sekimo numeriai', 'paruosta', 'Atidaryti' ),
+			array( 'Gavimai', $gav, 'užsakytos partijos, kurios atvažiavo — priimti Tiekimo lange', '', 'Atidaryti Tiekimą' ),
+			array( 'Klausimai', $c['klausimai'], 'reikia tavo sprendimo', 'klausimai', 'Atidaryti' ),
+		);
+		echo '<main class="dl-main"><h1 class="dl-h1">Rytinė eiga <small>' . esc_html( wp_date( 'l · H:i' ) ) . ' · eik per žingsnius iš viršaus žemyn — sąrašas gyvas, nauji užsakymai atsiranda patys, užrakto nėra</small></h1><div class="dl-zs">';
+		foreach ( $Z as $i => $z ) {
+			$url = 'Gavimai' === $z[0] ? admin_url( 'admin.php?page=ps-tiekimas&b=laukia' ) : self::url( array( 'eile' => $z[3], 'view' => null, 'q' => null, 'b' => null ) );
+			$n = (int) $z[1];
+			printf( '<div class="dl-z%s"><div class="zn">%d</div><div class="zt"><b>%s</b><span class="pilkas">%s</span></div>%s</div>', $n ? '' : ' tuscias', $i + 1, esc_html( $z[0] ), esc_html( $n ? $n . ' užs. — ' . $z[2] : '✓ tuščia' ), $n ? '<a class="v p" href="' . esc_url( $url ) . '">' . esc_html( $z[4] ) . '</a>' : '' );
+		}
+		echo '</div><p class="dl-paaisk">Tvarka pagal sandėlių laikus: tiekėjai anksti (Žalioji Banga, Prins, Belacor, Quattro iki 09:00; Ambrosia 10:00), Avesa iki 11:00, Vetfarmas ir LP iki 13:00. Ryte pradedi nuo viršaus; dieną grįžti į tą žingsnį, kur atsirado skaičius.</p>';
+		if ( current_user_can( 'manage_woocommerce' ) ) { echo '<p class="dl-paaisk"><a href="' . esc_url( admin_url( 'admin.php?page=' . self::SLUG . '&senas=1&view=rytas' ) ) . '">Senoji eiga (LP Express lipdukai)</a> — tik iki T-0 LP testo.</p>'; }
+		echo '</main>';
+	}
+
 	protected static function dialogas() {
 		?>
 		<div class="dl-shade" id="dlShade"></div>
@@ -1149,6 +1185,7 @@ class Petshop_Darbalaukis {
 .dl-tbl-k{border:0;border-radius:0;margin:6px 0 10px}.dl-tbl-k td{padding:8px 6px}.dl-zingsniai-k{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.dl-zingsniai-k .zn{width:22px;height:22px;border-radius:50%;background:var(--zalia-s);color:var(--zalia);display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:12px;flex:none}
 .dl-inl{display:contents}.dl-laisko-nust{flex-basis:100%;display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--pilka);margin-top:4px}.dl-laisko-nust input[type=text]{font:inherit;border:1px solid var(--linija);border-radius:5px;padding:3px 8px;min-width:280px}
 .dl-perz-t{flex-basis:100%;background:var(--fonas);border-radius:8px;padding:10px 14px;margin-top:8px;font-size:13px;overflow:auto;max-height:420px}.dl .takelis small{font-size:10px;opacity:.7}
+.dl-zs{display:flex;flex-direction:column;gap:8px;max-width:860px}.dl-z{display:flex;gap:14px;align-items:center;background:var(--popierius);border:1px solid var(--linija);border-radius:8px;padding:12px 14px}.dl-z.tuscias{opacity:.55}.dl-z .zn{width:26px;height:26px;border-radius:50%;background:var(--zalia-s);color:var(--zalia);display:flex;align-items:center;justify-content:center;font-weight:600;flex:none}.dl-z.tuscias .zn{background:var(--fonas);color:var(--pilka)}.dl-z .zt{flex:1}.dl-z .zt b{display:block}
 .dl-tuscia{background:var(--popierius);border:1px dashed var(--linija);border-radius:8px;padding:28px;text-align:center;color:var(--pilka)}.dl-paaisk{color:var(--pilka);font-size:13px;margin-top:10px}
 .dl-kortele{background:var(--popierius);border:1px solid var(--linija);border-radius:8px;padding:16px 18px;margin-bottom:14px}.dl-kortele h2{margin:0 0 6px;font-size:16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.dl-kortele p{margin:6px 0}.dl-kortele .pastaba{color:var(--pilka);font-size:13px}.dl-veiksmai{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .pd-msg{display:flex;align-items:center;gap:10px;padding:10px 24px;font-size:13.5px;border-bottom:1px solid var(--linija);background:#fff}.pd-msg-ok{background:var(--zalia-s);color:var(--zalia)}.pd-msg-info{background:#F1F1EE;color:var(--pilka)}.pd-msg-klaida{background:var(--raudona-s);color:var(--raudona)}.pd-msg-x{margin-left:auto;border:0;background:none;cursor:pointer;color:inherit;opacity:.6}
