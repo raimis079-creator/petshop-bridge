@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Kliento siuntos v1.0 (S1610, 2026-09-04; 3 etapas #5b — Raimio sprendimai 2026-09-03 naktis).
+ * Petshop Kliento siuntos v1.1 (S1610, 2026-09-04; 3 etapas #5b — Raimio sprendimai 2026-09-03 naktis) + kliento pusės sargai.
  *
  * KODĖL: paskyros užsakymo puslapyje siuntų nebuvo (S1609 `e8_uzsakymas_35421.png`) — Venipak/LP pluginai kliento pusėje nieko
  * nekabina, klientas po laiško „Išsiųsta 1 iš 2 siuntų“ paskyroje nematė nei siuntų, nei numerių.
@@ -15,15 +15,44 @@
  * (vienas tiesos šaltinis; 4 etapo Venipak cron rašys ten pat). Atskiro meniu skirtuko „Siuntos“ NĖRA (Raimis 09-03 naktį).
  * TIK REGISTRUOTIEMS: `customer_id` > 0 ir tai prisijungęs vartotojas; tik `view-order` endpoint'e (ne „ačiū“ puslapyje).
  * Svečiams — laiške „Sekti siuntą“; puslapis be prisijungimo — 5 etapas („Kaip mato klientas“).
+ *
+ * v1.1 — KLIENTO PUSĖS SARGAI (Raimis 2026-09-04):
+ *  - (b) WC 11 „Confirm your email address to check for past orders and link them to your account.“ raginimas paskyros užsakymų
+ *    sąraše IŠJUNGTAS (`VerificationController::render_prompt` nuimamas nuo `woocommerce_before_account_orders`; svečio užsakymų
+ *    susiejimo funkcija nenaudojama). Rezultato pranešimas (`print_result_notice`, prior. 5) ir pats patvirtinimo apdorojimas lieka —
+ *    nieko nerodo, kol raginimo nėra.
+ *  - LP Express plugino SAVO sekimo laiškas klientui (`woo_lithuaniapost_send_tracking_email` → `send_tracking_email`) IŠJUNGTAS —
+ *    viena sistema: laišką „Išsiųsta n iš N“ / „Užsakymas išsiųstas“ siunčia darbalaukis (`Petshop_Darbalaukis::siuntos_laiskas()`),
+ *    LP numeris ten patenka per `_woo_lithuaniapost_barcode` (darbalaukis v3.10.4). Kartu plugino nustatymai
+ *    `lpsettings_event_to_send_tracking_email` ir `lpsettings_event_to_change_status_to_completed` = „Never“ (S1610 e12), kad pluginas
+ *    nei laiško nesiųstų, nei pats užbaigtų užsakymo aplenkdamas „Kurjeris paėmė“. Šis `remove_action` — saugiklis, jei nustatymas grįžtų.
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Kliento_Siuntos {
 
-	const VERSIJA = '1.0';
+	const VERSIJA = '1.1';
 
 	public static function init() {
 		add_action( 'woocommerce_order_details_before_order_table', array( __CLASS__, 'blokas' ), 5, 1 );
+		add_action( 'init', array( __CLASS__, 'sargai' ), 20 );
+	}
+
+	/** v1.1: nuima WC el. pašto patvirtinimo raginimą (b) ir LP plugino sekimo laišką (viena sistema). Grąžina, ką nuėmė (patikrai). */
+	public static function sargai() {
+		global $wp_filter; $nuimta = array();
+		if ( ! empty( $wp_filter['woocommerce_before_account_orders'] ) ) {
+			foreach ( $wp_filter['woocommerce_before_account_orders']->callbacks as $pr => $cbs ) {
+				foreach ( $cbs as $cb ) {
+					$fn = $cb['function'];
+					if ( is_array( $fn ) && is_object( $fn[0] ) && 'render_prompt' === $fn[1] && false !== strpos( get_class( $fn[0] ), 'CustomerEmailVerification' ) ) {
+						remove_action( 'woocommerce_before_account_orders', $fn, $pr ); $nuimta[] = 'wc_render_prompt@' . $pr;
+					}
+				}
+			}
+		}
+		if ( has_action( 'woo_lithuaniapost_send_tracking_email' ) ) { remove_all_actions( 'woo_lithuaniapost_send_tracking_email' ); $nuimta[] = 'lp_send_tracking_email'; }
+		return $nuimta;
 	}
 
 	/** Rodyti tik savininkui, tik paskyros užsakymo puslapyje, tik kai variklis (darbalaukis v3.10.3+) yra. */
