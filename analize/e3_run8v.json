@@ -1,0 +1,70 @@
+{
+ "v": "dep-155706",
+ "kurimas": 200,
+ "sid": 4607,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "v": "run e3v",
+  "temp_istrinta": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788452921|fM5XUzzdTDt6pnZLdUsPnvBkuCqYkSqMBX5Mh3Z3p8d|02002562adde83835d6f771850438ff19b3ea7f851b2a56a90aaefa52150c412"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788452921|fM5XUzzdTDt6pnZLdUsPnvBkuCqYkSqMBX5Mh3Z3p8d|d12b460d5bdebb481ad1f2d8c322c1371f5bfd48e5de23adf0a81dfe3f74af60"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788452921|fM5XUzzdTDt6pnZLdUsPnvBkuCqYkSqMBX5Mh3Z3p8d|331994010524f9b7cc12e384798d77d86725cc651dbf67089e3a8ce450e89549"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e3_t2_surinkti",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti&atidaryti=35450",
+    "eval": "new Promise(function(r){setTimeout(function(){r({kur:(document.querySelector('.dl-kur')||{}).textContent,zing:[...document.querySelectorAll('#skEil .zingsneliai')].map(x=>x.innerText.replace(/\\s+/g,' ')),kodel:[...document.querySelectorAll('#skEil .kodel')].map(x=>x.innerText.replace(/\\s+/g,' '))})},1500)})"
+   },
+   {
+    "n": "e3_t2_lapas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-lapai&ids=35450",
+    "full": true,
+    "eval": "({t:document.body.innerText.replace(/\\s+/g,' ').slice(0,500)})"
+   }
+  ]
+ },
+ "shots": {
+  "e3_t2_surinkti": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "kur": "Dabar: Surinkti AV · toliau: Lipdukas",
+    "zing": [
+     "✓ Surinkti Lipdukas Kurjeris paėmė",
+     "✓ Užsakyta iš ZB ✓ Gauta į AV ✓ Surinkti Lipdukas Kurjeris paėmė",
+     "✓ Užsakyta iš VF ✓ Gauta į AV ✓ Surinkti Lipdukas Kurjeris paėmė"
+    ],
+    "kodel": [
+     "AV yra 15 — siunčiam iš AV. Rezervuota.",
+     "AV nėra, ZB turi — ZB siunčia klientui. Jei nori vienos siuntos — „ZB veža į AV“. Rezervuota. · parsivežta iš ZB, partija #15",
+     "AV nėra, VF turi — VF siunčia klientui. Jei nori vienos siuntos — „VF veža į AV“. Rezervuota. · parsivežta iš VF, partija #14"
+    ]
+   }
+  },
+  "e3_t2_lapas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-lapai",
+   "title": "‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "t": "Petshop.lt Sveiki, Testuotojas ⌂ Užsakymai 24 Rytinė eiga Prekės 454 Gavimas Tiekimas 1 Rinkiniai Akcijos Laiškai 18 ribos šiandien praėjo Žurnalas Testuotojas ⏻ ← Atgal Surinkimo ir pakavimo lapai Surinkimo ir pakavimo lapai Spausdinti (A4) Atgal į darbalaukį Į lapus įtrauktos tik AV sandėlio prekės. Dropship eilutės praleistos. Kiekvienas vežėjas — atskiras lapas, kad lapas eitų kartu su savo lipdukų krūvele. VENIPAK 2026-09-03 18:58 · 1 užsakymas · 3 vnt. #35450 AUDITAS Testas 31 VENIPAK Kurj"
+   }
+  }
+ }
+}
