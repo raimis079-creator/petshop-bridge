@@ -1,0 +1,270 @@
+{
+ "v": "dep-154653",
+ "kurimas": 200,
+ "sid": 4603,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "P": {
+  "v": "run e3p",
+  "f": "P",
+  "temp_istrinta": 1,
+  "resolve_sig": [
+   "product_id",
+   "qty"
+  ],
+  "sablonas": {
+   "35441": {
+    "st": "processing",
+    "pay": "bacs",
+    "bill": "Rai B terra@gyvunai.lt +37065082900 Miško g. 1 Agurkiškė 12222",
+    "ship": [
+     {
+      "method_id": "shopup_venipak_shipping_courier_method",
+      "instance": "2",
+      "title": "VENIPAK Kurjeris",
+      "total": "3.30",
+      "meta": [
+       "Prekės=Happet uždaras tualetas katei, kreminis, 60x55x42 cm &times;"
+      ]
+     }
+    ],
+    "meta": {
+     "_ps_decided_at": "2026-09-03 13:10:02",
+     "_ps_faktas_irasytas": "2026-09-03 10:12:09",
+     "_ps_ga_sutikimas": "SM",
+     "_ps_ga4_mp_kodas": "dev-nesiusta",
+     "_ps_groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+     "_ps_irenginys": "desktop",
+     "_ps_kanalai": "{\"sutikimas_statistika\":1,\"fiksuota_at\":\"2026-09-03 10:10:02\",\"modulis\":\"kanalai",
+     "_ps_matyta": "2026-09-03 15:40:14 | Rai",
+     "_ps_misrus_sprendimas": "{\"vf\":\"tiesiai\"}",
+     "_ps_misrus_sprestas": "2026-09-03 13:12:09 | auto",
+     "_ps_order_shipped_emitted": "yes",
+     "_ps_order_type": "DS",
+     "_ps_partijos_nurasyta": "2026-09-03 13:12:09",
+     "_ps_rusiuota": "auto",
+     "_ps_shipments": "1",
+     "_ps_siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260903002\",\"numeriai\":[\"V0",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260903002\",\"pack_numbers\":[\"V07267E1000057\"],\"weight\":0.1,\"pro"
+    },
+    "items": [
+     "26166 1x Happet uždaras tualetas katei, src=vf k=tiesiai"
+    ]
+   },
+   "35443": {
+    "st": "processing",
+    "pay": "paysera",
+    "bill": "AUDITAS Testas 29 terra@petshop.lt +37060000000 Testų g. 29 Vilnius 01100",
+    "ship": [
+     {
+      "method_id": "shopup_venipak_shipping_courier_method",
+      "instance": "2",
+      "title": "VENIPAK Kurjeris",
+      "total": "3.49",
+      "meta": []
+     }
+    ],
+    "meta": {
+     "_ps_decided_at": "2026-09-03 15:19:59",
+     "_ps_faktas_irasytas": "2026-09-03 12:20:00",
+     "_ps_ga4_mp_kodas": "dev-nesiusta",
+     "_ps_groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"zb\":{\"carrier\":\"venipak\",\"",
+     "_ps_matyta": "2026-09-03 15:40:11 | Rai",
+     "_ps_misrus_sprendimas": "{\"vf\":\"tiesiai\",\"zb\":\"tiesiai\"}",
+     "_ps_misrus_sprestas": "2026-09-03 15:24:08 | Testuotojas",
+     "_ps_order_shipped_emitted": "yes",
+     "_ps_order_type": "MIXED",
+     "_ps_partijos_nurasyta": "2026-09-03 15:20:00",
+     "_ps_rusiuota": "2026-09-03 15:24:08 | Testuotojas",
+     "_ps_shipments": "2",
+     "_ps_siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260903002\",\"numeriai\":[\"V0",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260903002\",\"pack_numbers\":[\"V07267E1000055\"],\"weight\":0.435000"
+    },
+    "items": [
+     "34828 1x Churu Popn Serve skanėstas kat src=vf k=tiesiai",
+     "33904 1x Trixie Stovas su dubenėliais,  src=zb k=tiesiai"
+    ]
+   },
+   "35444": {
+    "st": "processing",
+    "pay": "paysera",
+    "bill": "AUDITAS Testas 30 terra@petshop.lt +37060000000 Testų g. 30 Vilnius 01100",
+    "ship": [
+     {
+      "method_id": "shopup_venipak_shipping_courier_method",
+      "instance": "2",
+      "title": "VENIPAK Kurjeris",
+      "total": "3.49",
+      "meta": []
+     }
+    ],
+    "meta": {
+     "_ps_av_reduced": "2026-09-03 15:20:01",
+     "_ps_decided_at": "2026-09-03 15:20:01",
+     "_ps_faktas_irasytas": "2026-09-03 12:20:01",
+     "_ps_ga4_mp_kodas": "dev-nesiusta",
+     "_ps_groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"quattro\":{\"carrier\":\"venipak\",",
+     "_ps_matyta": "2026-09-03 15:31:09 | Rai",
+     "_ps_order_type": "MIXED",
+     "_ps_partijos_nurasyta": "2026-09-03 15:20:01",
+     "_ps_shipments": "2"
+    },
+    "items": [
+     "19708 1x Animonda Carny Adult Beef + Ch src=av k=",
+     "16727 1x QUATTRO 1,5 kg Adult Salmon &  src=quattro k="
+    ]
+   }
+  },
+  "kand": {
+   "zb": [
+    {
+     "pid": 33990,
+     "n": "Trixie Baza draskyklė, 2 stulpai su guol",
+     "sku": "0TR362_44541",
+     "av_qty": null,
+     "w": "1.5000",
+     "zb": "8",
+     "stock": 8,
+     "own": "",
+     "kodel": "AV šios prekės neturi"
+    },
+    {
+     "pid": 33966,
+     "n": "Trixie Bagis, 47x100x80cm, 4.6 kg, juoda",
+     "sku": "0TR132_28958",
+     "av_qty": null,
+     "w": "4.6000",
+     "zb": "2",
+     "stock": 2,
+     "own": "",
+     "kodel": "AV šios prekės neturi"
+    },
+    {
+     "pid": 33904,
+     "n": "Trixie Stovas su dubenėliais, reg. aukšt",
+     "sku": "0TR163_24922",
+     "av_qty": null,
+     "w": "0.4000",
+     "zb": "1",
+     "stock": 1,
+     "own": "",
+     "kodel": "AV šios prekės neturi"
+    },
+    {
+     "pid": 33902,
+     "n": "Trixie Stovas su dubenėliais, reg. aukšt",
+     "sku": "0TR163_24921",
+     "av_qty": null,
+     "w": "0.4000",
+     "zb": "27",
+     "stock": 27,
+     "own": "",
+     "kodel": "AV šios prekės neturi"
+    }
+   ],
+   "vf": [
+    {
+     "pid": 35382,
+     "n": "Comfy narvas graužikams, Astro4 Fun 57x3",
+     "sku": "AQ109627",
+     "av_qty": null,
+     "w": "",
+     "zb": "",
+     "stock": 1,
+     "own": "",
+     "kodel": "AV šios prekės neturi"
+    },
+    {
+     "pid": 35375,
+     "n": "Comfy narvas graužikams, Astro3 Fun 65x4",
+     "sku": "AQ109626",
+     "av_qty": null,
+     "w": "",
+     "zb": "",
+     "stock": 1,
+     "own": "",
+     "kodel": "AV šios prekės neturi"
+    },
+    {
+     "pid": 35357,
+     "n": "HAP žaislas šunims, pliušinė varlė su iš",
+     "sku": "AQ280316",
+     "av_qty": null,
+     "w": "",
+     "zb": "",
+     "stock": 6,
+     "own": "",
+     "kodel": "AV šios prekės neturi"
+    },
+    {
+     "pid": 35354,
+     "n": "HAP žaislas šunims, pliušinis kiškis, pi",
+     "sku": "AQ280274",
+     "av_qty": null,
+     "w": "",
+     "zb": "",
+     "stock": 1,
+     "own": "",
+     "kodel": "AV šios prekės neturi"
+    }
+   ],
+   "av": [
+    {
+     "pid": 35306,
+     "n": "20 vnt. baltų kiaulės knyslių",
+     "sku": "Rink-baltos-knyslės-20",
+     "av_qty": 0,
+     "w": "0.6",
+     "zb": "",
+     "stock": null,
+     "own": "",
+     "kodel": "grynai AV prekė (be tiekėjo)"
+    },
+    {
+     "pid": 35099,
+     "n": "20 vnt. baltų jaučio ausų",
+     "sku": "Rink-baltos-jaučio-ausys-20",
+     "av_qty": 0,
+     "w": "2",
+     "zb": "",
+     "stock": null,
+     "own": "",
+     "kodel": "grynai AV prekė (be tiekėjo)"
+    },
+    {
+     "pid": 35098,
+     "n": "20 vnt. rudų jaučio ausų",
+     "sku": "Rink-rudos-jaučio-ausys-20",
+     "av_qty": 0,
+     "w": "1.9",
+     "zb": "",
+     "stock": null,
+     "own": "",
+     "kodel": "grynai AV prekė (be tiekėjo)"
+    },
+    {
+     "pid": 35096,
+     "n": "20 vnt. rudų kiaulės knyslių",
+     "sku": "Rink-rudos-knysles-20",
+     "av_qty": 0,
+     "w": "0.6",
+     "zb": "",
+     "stock": null,
+     "own": "",
+     "kodel": "grynai AV prekė (be tiekėjo)"
+    }
+   ]
+  },
+  "pvz_resolve_19708": {
+   "source": "av",
+   "carrier": "any",
+   "courier_only": false,
+   "av_qty": 16,
+   "av_uztenka": true,
+   "tiekejas": "av",
+   "reason": "grynai AV prekė (be tiekėjo)"
+  }
+ }
+}
