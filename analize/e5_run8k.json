@@ -1,0 +1,191 @@
+{
+ "v": "dep-191844",
+ "kurimas": 200,
+ "sid": 4651,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "K": {
+  "v": "run e8k",
+  "temp_istrinta": 1,
+  "uid": 5787,
+  "pries_customer": {
+   "35421": 0,
+   "35440": 0
+  },
+  "my_account": "https://dev.avesa.lt/paskyra/",
+  "view_order_url": "https://dev.avesa.lt/paskyra/uzsakymas/35421/",
+  "orders_url": "https://dev.avesa.lt/paskyra/uzsakymai/",
+  "hooks": {
+   "venipak": [],
+   "lp": [],
+   "mu": [
+    "petshop-atsisakymas.php: woocommerce_order_details_after_order_table, woocommerce_order_details_before_order_table"
+   ],
+   "core": [
+    "class-feeding-ui.php: woocommerce_account_augintinis_endpoint",
+    "class-account-dashboard.php: woocommerce_my_account_my_orders_actions"
+   ]
+  },
+  "gyvi_hookai": {
+   "woocommerce_order_details_after_order_table": [
+    "10: woocommerce_order_again_button",
+    "20: Petshop_Atsisakymas::mygtukas"
+   ],
+   "woocommerce_view_order": [
+    "10: woocommerce_order_details_table"
+   ],
+   "woocommerce_order_details_before_order_table": [
+    "10: closure"
+   ]
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788465033|XQQO4rHbpf92ykvlRafyWDr7dZ78aVxpKse9CYWfSRv|1ecc0a62460dac3b9735d43a6c2291761ddec5b295908bdea226008bed3d7cb3"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788465033|XQQO4rHbpf92ykvlRafyWDr7dZ78aVxpKse9CYWfSRv|1e00938ceca915c9989c87e10b1a8070773c94f21cc7deea505e289251a52e10"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788465033|XQQO4rHbpf92ykvlRafyWDr7dZ78aVxpKse9CYWfSRv|b2e3e61792060d1518c9f3ccfa0b3fcc2cb21924100557f1025ce2dd4d308ef3"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e8_paskyra",
+    "u": "https://dev.avesa.lt/paskyra/",
+    "full": true,
+    "eval": "({tekstas:(document.querySelector('.woocommerce-MyAccount-content')||document.querySelector('.woocommerce')||document.body).innerText.replace(/\\s+/g,' ').slice(0,1500),venipak:(document.body.innerText.match(/V07267E\\d+/g)||[]),nuorodos:[...document.querySelectorAll('.woocommerce-MyAccount-content a')].map(a=>a.innerText.trim()+' → '+a.getAttribute('href')).slice(0,25)})"
+   },
+   {
+    "n": "e8_uzsakymai",
+    "u": "https://dev.avesa.lt/paskyra/uzsakymai/",
+    "full": true,
+    "eval": "({tekstas:(document.querySelector('.woocommerce-MyAccount-content')||document.querySelector('.woocommerce')||document.body).innerText.replace(/\\s+/g,' ').slice(0,1500),venipak:(document.body.innerText.match(/V07267E\\d+/g)||[]),nuorodos:[...document.querySelectorAll('.woocommerce-MyAccount-content a')].map(a=>a.innerText.trim()+' → '+a.getAttribute('href')).slice(0,25)})"
+   },
+   {
+    "n": "e8_uzsakymas_35421",
+    "u": "https://dev.avesa.lt/paskyra/uzsakymas/35421/",
+    "full": true,
+    "eval": "({tekstas:(document.querySelector('.woocommerce-MyAccount-content')||document.querySelector('.woocommerce')||document.body).innerText.replace(/\\s+/g,' ').slice(0,1500),venipak:(document.body.innerText.match(/V07267E\\d+/g)||[]),nuorodos:[...document.querySelectorAll('.woocommerce-MyAccount-content a')].map(a=>a.innerText.trim()+' → '+a.getAttribute('href')).slice(0,25)})"
+   },
+   {
+    "n": "e8_uzsakymas_35440",
+    "u": "https://dev.avesa.lt/paskyra/uzsakymas/35440/",
+    "full": true,
+    "eval": "({tekstas:(document.querySelector('.woocommerce-MyAccount-content')||document.querySelector('.woocommerce')||document.body).innerText.replace(/\\s+/g,' ').slice(0,1500),venipak:(document.body.innerText.match(/V07267E\\d+/g)||[]),nuorodos:[...document.querySelectorAll('.woocommerce-MyAccount-content a')].map(a=>a.innerText.trim()+' → '+a.getAttribute('href')).slice(0,25)})"
+   },
+   {
+    "n": "e8_uzsakymas_35421_mob",
+    "u": "https://dev.avesa.lt/paskyra/uzsakymas/35421/",
+    "w": 390,
+    "h": 900,
+    "full": true
+   }
+  ],
+  "mail": [
+   [
+    "22:20:33",
+    "s1609.klientas@avesa.lt",
+    ""
+   ]
+  ]
+ },
+ "shots": {
+  "e8_paskyra": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/paskyra/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "tekstas": "Sveiki, Testas! Čia rasite savo augintinio profilį, užsakymus ir paskyros informaciją. Mano augintinis Sužinokite, kiek užteks pakuotės ir kiek kainuoja diena. Priminimai, užrašai ir pagal profilį atrinktos prekės. Sukurti augintinio profilį Užsakymai Peržiūrėkite užsakymų būseną ir ankstesnius pirkimus. Adresai Tvarkykite pristatymo ir sąskaitos adresus. Paskyros duomenys Keiskite vardą, el. paštą ir slaptažodį.",
+    "venipak": [],
+    "nuorodos": [
+     "Mano augintinis\nSužinokite, kiek užteks pakuotės ir kiek kainuoja diena. Priminimai, užrašai ir pagal profilį atrinktos prekės.\nSukurti augintinio profilį → https://dev.avesa.lt/paskyra/augintinis/",
+     "Užsakymai\nPeržiūrėkite užsakymų būseną ir ankstesnius pirkimus. → https://dev.avesa.lt/paskyra/uzsakymai/",
+     "Adresai\nTvarkykite pristatymo ir sąskaitos adresus. → https://dev.avesa.lt/paskyra/adresai/",
+     "Paskyros duomenys\nKeiskite vardą, el. paštą ir slaptažodį. → https://dev.avesa.lt/paskyra/paskyros-duomenys/"
+    ]
+   }
+  },
+  "e8_uzsakymai": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/paskyra/uzsakymai/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "tekstas": "Confirm your email address to check for past orders and link them to your account. UŽSAKYMAS DATA STATUSAS VISO VEIKSMAI #35440 2026-09-03 Įvykdytas 12,02 € už 3 prekes UŽSAKYTI DAR KARTĄPERŽIŪRĖTISPAUSDINTI SĄSKAITĄSPAUSDINTI KVITĄSPAUSDINTI VAŽTARAŠTĮ #35421 2026-09-02 Vykdomas 54,03 € už 3 prekes PERŽIŪRĖTISPAUSDINTI SĄSKAITĄSPAUSDINTI KVITĄSPAUSDINTI VAŽTARAŠTĮSPAUSDINTI VAŽTARAŠTĮ",
+    "venipak": [],
+    "nuorodos": [
+     "Confirm email address → https://dev.avesa.lt/paskyra/uzsakymai/?wc_send_verification=1&_wpnonce=e09fa45dc0",
+     "#35440 → https://dev.avesa.lt/paskyra/uzsakymas/35440/",
+     "UŽSAKYTI DAR KARTĄ → https://dev.avesa.lt/krepselis/?order_again=35440&_wpnonce=12dec52d42",
+     "PERŽIŪRĖTI → https://dev.avesa.lt/paskyra/uzsakymas/35440/",
+     "SPAUSDINTI SĄSKAITĄ → https://dev.avesa.lt/paskyra/print-order/35440/?print-order-type=invoice",
+     "SPAUSDINTI KVITĄ → https://dev.avesa.lt/paskyra/print-order/35440/?print-order-type=receipt",
+     "SPAUSDINTI VAŽTARAŠTĮ → https://dev.avesa.lt/paskyra/print-order/35440/?print-order-type=deliverynote",
+     "#35421 → https://dev.avesa.lt/paskyra/uzsakymas/35421/",
+     "PERŽIŪRĖTI → https://dev.avesa.lt/paskyra/uzsakymas/35421/",
+     "SPAUSDINTI SĄSKAITĄ → https://dev.avesa.lt/paskyra/print-order/35421/?print-order-type=invoice",
+     "SPAUSDINTI KVITĄ → https://dev.avesa.lt/paskyra/print-order/35421/?print-order-type=receipt",
+     "SPAUSDINTI VAŽTARAŠTĮ → https://dev.avesa.lt/paskyra/print-order/35421/?print-order-type=packingslip",
+     "SPAUSDINTI VAŽTARAŠTĮ → https://dev.avesa.lt/paskyra/print-order/35421/?print-order-type=deliverynote"
+    ]
+   }
+  },
+  "e8_uzsakymas_35421": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/paskyra/uzsakymas/35421/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "tekstas": "Užsakymas #35421 buvo atliktas 2026-09-02 ir šiuo metu yra Vykdomas. Užsakymo informacija PRODUKTAS VISO Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g × 1 2,60 € QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu, × 1 17,00 € Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg × 1 29,60 € Suma: 49,20 € Pristatymas: 4,83 € per VENIPAK Kurjeris Viso: 54,03 € (įskaičiuota 9,38 € PVM) Mokėjimo būdas: Mokėjimas internetu Pastaba: AUDITAS T8: MIŠRUS AV+Quattro+Prins Veiksmai: SPAUSDINTI SĄSKAITĄSPAUSDINTI KVITĄSPAUSDINTI VAŽTARAŠTĮSPAUSDINTI VAŽTARAŠTĮ Atsisakyti sutarties (ES 14 d. teisė) Pirkėjo adresas AUDITAS Testas 8 Testų g. 8 Vilnius 01100 +37060000000 terra@petshop.lt Pristatymo adresas AUDITAS Testas 8 Testų g. 8 Vilnius 01100 +37060000000 SPAUSDINTI SĄSKAITĄ SPAUSDINTI KVITĄ SPAUSDINTI VAŽTARAŠTĮ SPAUSDINTI VAŽTARAŠTĮ",
+    "venipak": [],
+    "nuorodos": [
+     "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g → https://dev.avesa.lt/product/animonda-carny-adult-beef-chicken-duck-heart-konservai-katems-su-sviezia-jautiena-vistiena-ir-anciu-sirdelemis-400-g/",
+     "QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu, → https://dev.avesa.lt/product/quattro-15-kg-adult-salmon-krill-visavertis-sausas-pasaras-suaugusioms-jautrioms-katems-su-lasisa-ir-kriliu/",
+     "Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg → https://dev.avesa.lt/product/prins-diet-skin-intestinal-hypoallergic-sausas-maistas-katems-15-kg/",
+     "SPAUSDINTI SĄSKAITĄ → https://dev.avesa.lt/paskyra/print-order/35421/?print-order-type=invoice",
+     "SPAUSDINTI KVITĄ → https://dev.avesa.lt/paskyra/print-order/35421/?print-order-type=receipt",
+     "SPAUSDINTI VAŽTARAŠTĮ → https://dev.avesa.lt/paskyra/print-order/35421/?print-order-type=packingslip",
+     "SPAUSDINTI VAŽTARAŠTĮ → https://dev.avesa.lt/paskyra/print-order/35421/?print-order-type=deliverynote",
+     "SPAUSDINTI SĄSKAITĄ → https://dev.avesa.lt/paskyra/print-order/35421/?print-order-type=invoice",
+     "SPAUSDINTI KVITĄ → https://dev.avesa.lt/paskyra/print-order/35421/?print-order-type=receipt",
+     "SPAUSDINTI VAŽTARAŠTĮ → https://dev.avesa.lt/paskyra/print-order/35421/?print-order-type=packingslip",
+     "SPAUSDINTI VAŽTARAŠTĮ → https://dev.avesa.lt/paskyra/print-order/35421/?print-order-type=deliverynote"
+    ]
+   }
+  },
+  "e8_uzsakymas_35440": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/paskyra/uzsakymas/35440/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "tekstas": "Užsakymas #35440 buvo atliktas 2026-09-03 ir šiuo metu yra Įvykdytas. Užsakymo informacija PRODUKTAS VISO Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g × 3 7,80 € Suma: 7,80 € Pristatymas: 4,22 € per VENIPAK Kurjeris Viso: 12,02 € (įskaičiuota 2,08 € PVM) Mokėjimo būdas: Mokėjimas internetu Pastaba: AUDITAS T27 (T6): AV kurjeris 3 dėžės per dialogą Veiksmai: UŽSAKYTI DAR KARTĄSPAUSDINTI SĄSKAITĄSPAUSDINTI KVITĄSPAUSDINTI VAŽTARAŠTĮ UŽSAKYTI DAR KARTĄ Atsisakyti sutarties (ES 14 d. teisė) Pirkėjo adresas AUDITAS Testas 27 Testų g. 27 Vilnius 01100 +37060000000 terra@petshop.lt Pristatymo adresas AUDITAS Testas 27 Testų g. 27 Vilnius 01100 SPAUSDINTI SĄSKAITĄ SPAUSDINTI KVITĄ SPAUSDINTI VAŽTARAŠTĮ",
+    "venipak": [],
+    "nuorodos": [
+     "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g → https://dev.avesa.lt/product/animonda-carny-adult-beef-chicken-duck-heart-konservai-katems-su-sviezia-jautiena-vistiena-ir-anciu-sirdelemis-400-g/",
+     "UŽSAKYTI DAR KARTĄ → https://dev.avesa.lt/krepselis/?order_again=35440&_wpnonce=12dec52d42",
+     "SPAUSDINTI SĄSKAITĄ → https://dev.avesa.lt/paskyra/print-order/35440/?print-order-type=invoice",
+     "SPAUSDINTI KVITĄ → https://dev.avesa.lt/paskyra/print-order/35440/?print-order-type=receipt",
+     "SPAUSDINTI VAŽTARAŠTĮ → https://dev.avesa.lt/paskyra/print-order/35440/?print-order-type=deliverynote",
+     "UŽSAKYTI DAR KARTĄ → https://dev.avesa.lt/krepselis/?order_again=35440&_wpnonce=12dec52d42",
+     "SPAUSDINTI SĄSKAITĄ → https://dev.avesa.lt/paskyra/print-order/35440/?print-order-type=invoice",
+     "SPAUSDINTI KVITĄ → https://dev.avesa.lt/paskyra/print-order/35440/?print-order-type=receipt",
+     "SPAUSDINTI VAŽTARAŠTĮ → https://dev.avesa.lt/paskyra/print-order/35440/?print-order-type=deliverynote"
+    ]
+   }
+  },
+  "e8_uzsakymas_35421_mob": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/paskyra/uzsakymas/35421/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": []
+  }
+ }
+}
