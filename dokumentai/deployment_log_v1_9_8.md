@@ -45,6 +45,8 @@
 
 **Raimio sprendimai 09-03 (antra pusė):** Gauti = neatidaryti (ne „šiandien“); 2+ sandėliai → Neišrūšiuoti + „Auto“; jokių svorio/sumos ribų; tiekėjų atvežimo dienos — vėliau; „Dropshipping“; spalvos tik „Visi“; kliento pastaba geltona; nuotraukos sąraše. Atsiėmimo pristatymo būdo ir telefoninio užsakymo kūrimo — **5 etape** (kartu su Redaguoti / Sąskaita / „Naujas užsakymas“), iki paleidimo. Trijų sandėlių „į AV“ logika (AV siunta renkama tik kai visos prekės vietoje) — paaiškinta, su dviem tiekėjais dar netestuota (T1 tik su vienu).
 
+**Sekimo laiškai — Raimio sprendimas (vakaras):** laiškas klientui **po kiekvienos siuntos** („Išsiųsta 1 iš 2 …“), ne vienas kai visos; 4 etape automatinis iš Venipak „Picked up“; sekimo juostelė laiške + kliento puslapis (5 et.); kasoje sakinys „gali atvykti atskiromis siuntomis“ (5–6 et., kasos prieš paleidimą neliesti). Įrašyta spec v1.2 §12. **Perdavimas kitam langui:** `dokumentai/STARTAS_2026-09-04_3_etapas.md`.
+
 **Kiti etapai:** 3 — Laukiam iš tiekėjų kortelės su „Užsakyti iš [T]“ = partija + laiškas (G4) čia pat, Rytinė eiga be užrakto; 4 — sekimas ant `_ps_dalys_issiusta`; 5 — Redaguoti, Sąskaita, „Kaip mato klientas“; 6 — E2E ir testinių valymas.
 
 ---
