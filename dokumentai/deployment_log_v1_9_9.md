@@ -13,7 +13,7 @@
 
 > Pridėti po S1607. Tema: užsakymų sistemos 3 etapas, punktas #1 (STARTAS_2026-09-04_3_etapas) — „Laukiam iš tiekėjų“ kortelės su užsakymu tiekėjui ir priėmimu čia pat; punktas #2 — trijų sandėlių testas darbuotojo paskyra. Variklis (registras A–J) nekeistas.
 
-#### S1608 — ETAPAS 3 #1–#3: `mu-plugins/petshop-darbalaukis.php` v3.8.1 (168 534 B, md5 `35e35c6210a1273ccab013d5911ba834`; repo `deploy/petshop-darbalaukis.php` + `.b64`; kopijos v35/v36/v361/v37/v38 `ps-backups/`)
+#### S1608 — ETAPAS 3 #1–#4: `mu-plugins/petshop-darbalaukis.php` v3.9 (169 497 B, md5 `4a798693625447d91bcbcf2fcb5f2dee`; repo `deploy/petshop-darbalaukis.php` + `.b64`; kopijos v35/v36/v361/v37/v38/v381 `ps-backups/`)
 
 **Prieš darbą:** perskaityta STARTAS → log S1607 → spec v1.2 §12 → ZODYNAS v1.1 → AUDITAS 09-03 → registras (G4, H1–H4, I). Kopijos: `uploads/ps-backups/petshop-darbalaukis-v35-BACKUP-2026-09-03.php` (140 530 B, md5 `f0e791d8…`), `…-v36-BACKUP-2026-09-03.php` (160 537 B, md5 `8f93c441…`).
 
@@ -56,9 +56,15 @@
 - **V12** — `Petshop_AV_Order::fiksuoti($order_id,$priverstinai)` perskaičiuoja grupes, bet **iš naujo `resolve()` kiekvienai eilutei** ir perrašo `_ps_source` — darbuotojo parinktus kelius sunaikintų, todėl netinka. `perskaiciuoti_grupes()` lieka darbalaukyje; tikras sprendimas — viešas variklio metodas „grupės iš esamų `_ps_source`“ (R13 išimtis) — **Raimio sprendimas**. `_ps_sekimo_siusta` dublis — neliesta.
 - **S2/S3** — jau uždaryti v3.0/v3.5 (legendos nėra; „Kurjeris paėmė viską“ rodomas visada). **T10** (du vartotojai) ir **V1 testas** (prekė be sandėlio) — netestuoti: T10 iš dalies dengia T2 užraktas; V1 — dev'e prekės be šaltinio nėra.
 
-**Audito likučiai po S1608:** V12 (Raimio sprendimas), T10, V1 testas. #4 žodyno likučiai: skydelio pilki „Tiekėjas siunčia klientui / veža į AV“ be tiekėjo — liko; variklio pranešimų trumpiniai — liko.
+**Raimio sprendimas (T3 radinys) + #4 žodyno likučiai → v3.9** (`e3_run19a/19b/19d`, patikra `e3_run20q.json`):
+- **Neapmokėtas užsakymas — Gauti + Neapmokėti, ne Klausimai** (Raimis): `faktai()` — `klausimai` eilė tik apmokėtiems; variklio klausimas „Mokėjimas nepavyko“ lieka tekstu skydelyje. Patikra: pending → `eiles=[neapmoketi]`, `naujas=true`; failed → `kl="Mokėjimas nepavyko"`, `eiles=[neapmoketi]`.
+- **Keliai be tiekėjo**: skydelyje prekei be tiekėjo rodomas tik „Iš AV“ (buvo pilki „Tiekėjas siunčia klientui / veža į AV“); su tiekėju — trys keliai kaip buvo. Patikra #35450: Animonda → „Iš AV*“; Trixie → „Iš AV* | ZB siunčia klientui | ZB veža į AV“.
+- **Variklio pranešimai → žodynas**: `pd_nr` trumpiniai „1 · AV“ → „1 — AV“ (ne „Avesa“); variklio `pranesimas()` HTML verčiamas (Avesa/Avesoje/Avesos → AV, Vetfarmas → VF, Žalioji Banga → ZB, „partija #n“ → „užsakymas tiekėjui #n“, „WooCommerce“ išimamas); `kons_ok` tekstas veda į „Laukiam iš tiekėjų“. Patikra: „Lipdukas: siunta užregistruota (1 — AV).“, „#35450: 2 prekė(-s) į užsakymą tiekėjui — užsakyk ir priimk „Laukiam iš tiekėjų“ eilėje. → dabar: Surinkti AV · toliau: Lipdukas“.
+- Testinis #35773 (pending/failed) sukurtas ir ištrintas tame pačiame run'e.
 
-**Lieka (3 etapas):** #4 žodyno likučiai · #5 sekimo laiškai po kiekvienos siuntos (`issiusta()` dalies laiškas, spec §12) · #6 LP per Rytinę eigą. Raimio klausimai 1–4 atsakyti (žr. aukščiau, v3.7).
+**Audito likučiai po S1608:** V12 (Raimio sprendimas — žr. pokalbį: variklio viešas metodas grupėms iš esamų `_ps_source`), T10, V1 testas. #4 — uždaryta.
+
+**Lieka (3 etapas):** #5 sekimo laiškai po kiekvienos siuntos · #6 LP. (Buvo: #4 žodyno likučiai — padaryta v3.9.) · #5 sekimo laiškai po kiekvienos siuntos (`issiusta()` dalies laiškas, spec §12) · #6 LP per Rytinę eigą. Raimio klausimai 1–4 atsakyti (žr. aukščiau, v3.7).
 
 ---
 
