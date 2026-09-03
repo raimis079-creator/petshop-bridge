@@ -1,0 +1,131 @@
+{
+ "v": "dep-165248",
+ "kurimas": 200,
+ "sid": 4619,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "X": {
+  "v": "run e3x",
+  "f": "X",
+  "temp_istrinta": 1,
+  "versija": "3.8",
+  "av_order": [
+   "+s init()",
+   "+s nuspresta($order)",
+   "+s fiksuoti($order_id,$priverstinai)",
+   "+s skaityti($order)"
+  ],
+  "t2_kand": null,
+  "visi_pries": {
+   "code": 200,
+   "bytes": 308899,
+   "ms": 1394,
+   "eiles": "class=\"dl-eiles\">Gauti 6Neišrūšiuoti 1Laukiam iš tiekėjų 1Surinkti AV 11Dropshipping 12Paruošta siųsti 4Klausimai 3Neapmokėti 0Visi 36",
+   "data_json": 0,
+   "data_sk": 36
+  },
+  "visi_psl2": {
+   "code": 200,
+   "bytes": 254934,
+   "ms": 1065,
+   "eiles": "class=\"dl-eiles\">Gauti 6Neišrūšiuoti 1Laukiam iš tiekėjų 1Surinkti AV 11Dropshipping 12Paruošta siųsti 4Klausimai 3Neapmokėti 0Visi 36",
+   "data_json": 0,
+   "data_sk": 0
+  },
+  "siandien": {
+   "code": 200,
+   "bytes": 258669,
+   "ms": 1077,
+   "eiles": "class=\"dl-eiles\">Gauti 6Neišrūšiuoti 1Laukiam iš tiekėjų 1Surinkti AV 11Dropshipping 12Paruošta siųsti 4Klausimai 3Neapmokėti 0Visi 36",
+   "data_json": 0,
+   "data_sk": 3
+  },
+  "t3_sukurta": 320,
+  "neapmoketi_po": {
+   "code": 200,
+   "bytes": 560872,
+   "ms": 4694,
+   "eiles": "class=\"dl-eiles\">Gauti 306Neišrūšiuoti 1Laukiam iš tiekėjų 1Surinkti AV 11Dropshipping 12Paruošta siųsti 4Klausimai 303Neapmokėti 300Visi 356",
+   "data_json": 0,
+   "data_sk": 300
+  },
+  "nauji_po": {
+   "code": 200,
+   "bytes": 256149,
+   "ms": 1779,
+   "eiles": "class=\"dl-eiles\">Gauti 306Neišrūšiuoti 1Laukiam iš tiekėjų 1Surinkti AV 11Dropshipping 12Paruošta siųsti 4Klausimai 303Neapmokėti 300Visi 356",
+   "data_json": 0,
+   "data_sk": 1
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788456285|XptMbgW3qnmxbbte5TEUj6NHY3s4sot6DfoGbDvIeTH|3badcef6cfb12cfe19fa4dbc52acb4fb280cb99a102af3c4701369c56e6aa957"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788456285|XptMbgW3qnmxbbte5TEUj6NHY3s4sot6DfoGbDvIeTH|b3cbf6b923bd1a3c1a936c57a5afb845dcb80363fac1120707d876463d26be35"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788456285|XptMbgW3qnmxbbte5TEUj6NHY3s4sot6DfoGbDvIeTH|b35bb6dd50299f1914f95f9fe0675ec7d5cba6ed1f24076c42bcc6abdd25288d"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e3_v38_visi",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+    "h": 1000,
+    "click": "tr.eil",
+    "eval": "new Promise(function(r){setTimeout(function(){r({nr:(document.getElementById('skNr')||{}).textContent,kur:(document.querySelector('.dl-kur')||{}).textContent,psl:(document.querySelector('.dl-psl')||{}).innerText,eiles:(document.querySelector('.dl-eiles')||{}).innerText.replace(/\\s+/g,' ')})},1500)})"
+   },
+   {
+    "n": "e3_v38_neapmoketi",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=neapmoketi",
+    "eval": "({isp:(document.querySelector('.pd-msg-klaida')||{}).innerText,rows:document.querySelectorAll('tr.eil').length})"
+   },
+   {
+    "n": "e3_v38_refresh",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+    "eval": "new Promise(function(r){ window.scrollTo(0,300); var rows=document.querySelectorAll('tr.eil'); var m=document.querySelector('.dl-main'); m.setAttribute('data-x','1'); var t=document.createElement('div'); t.className='zyme-test'; m.appendChild(t); var iv=setInterval(function(){},1000); setTimeout(function(){ r({pastaba:'tylus atnaujinimas per 60 s netestuotas tiesiogiai (per ilga), tikrinam funkcija egzistuoja', fn:typeof window.atnaujinti, rows:rows.length}); },500); })"
+   }
+  ]
+ },
+ "shots": {
+  "e3_v38_visi": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "tr.eil",
+   "eval": {
+    "nr": "#35770",
+    "kur": "Dabar: Neapmokėti + Klausimai · toliau: Spręsti",
+    "psl": "1–50 iš 356\nkiti ›",
+    "eiles": "Gauti 306 Neišrūšiuoti 1 Laukiam iš tiekėjų 1 Surinkti AV 11 Dropshipping 12 Paruošta siųsti 4 Klausimai 303 Neapmokėti 300 Visi 356"
+   }
+  },
+  "e3_v38_neapmoketi": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=neapmoketi",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "rows": 300
+   }
+  },
+  "e3_v38_refresh": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "pastaba": "tylus atnaujinimas per 60 s netestuotas tiesiogiai (per ilga), tikrinam funkcija egzistuoja",
+    "fn": "undefined",
+    "rows": 11
+   }
+  }
+ }
+}
