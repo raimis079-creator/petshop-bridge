@@ -1,0 +1,50 @@
+{
+ "v": "dep-063825",
+ "kurimas": 200,
+ "sid": 4549,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1607-run1c",
+  "f": "D",
+  "temp_istrinta": 1,
+  "deploy": {
+   "bytes": 48339,
+   "md5": "8dc4c49708664e0103d4a67672e15948"
+  }
+ },
+ "T": {
+  "v": "S1607-run1c",
+  "f": "T",
+  "versija": "0.3",
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788421210|65zGfK5tNH57d9YHs6XeekxTvGtOZ3EKmrbj8SJZr8H|2ed5f9ceb96848b35d0990e681bcbcdf75401aee8befcf50f217f09dd154f74f"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788421210|65zGfK5tNH57d9YHs6XeekxTvGtOZ3EKmrbj8SJZr8H|e97b5d39e01f23a57142d38992944c8aa190402dfca16a03b1f015890c87c092"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788421210|65zGfK5tNH57d9YHs6XeekxTvGtOZ3EKmrbj8SJZr8H|0b426cb1800dd585716fb206540f791c56511f862d6c8623f6381bc6923b0315"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e2c_surinkti",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti"
+   }
+  ]
+ },
+ "shots": {
+  "e2c_surinkti": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  }
+ }
+}
