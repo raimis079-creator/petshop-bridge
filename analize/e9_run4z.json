@@ -1,0 +1,145 @@
+{
+ "v": "dep-201230",
+ "kurimas": 200,
+ "sid": 4657,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Z": {
+  "v": "run e9t",
+  "f": "Z",
+  "temp_istrinta": 1,
+  "versija": "3.10.3",
+  "md5": "30faf7f378a932d0bbf98cea74d04ed3",
+  "A_prins": {
+   "page": "ps-desk",
+   "eile": "paruosta",
+   "pd_ok": "dl_issiusta",
+   "pd_nr": "35776|klientui išėjo „Išsiųsta 2 iš 2 siuntų“ be sekimo numerio"
+  },
+  "A_po": {
+   "st": "completed",
+   "cust": 5787,
+   "eiles": [],
+   "btn": "Atidaryti",
+   "eil": [
+    "1x HAP žaislas šunims, pl [tiesiai/vf]",
+    "1x Prins Diet Skin & Inte [tiesiai/prins]"
+   ],
+   "kliento_siuntos": [
+    "1/2 vf issiusta  [1 prek.]",
+    "2/2 prins issiusta  [1 prek.]"
+   ],
+   "dalys_issiusta": "{\"vf\":{\"laikas\":\"2026-09-03 23:10:46\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 23:10:46\"},\"prins\":{\"laikas\":\"2026-09-03 23:14:23\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 23:14:24\"}}",
+   "notes": [
+    "Klientui išsiųsta „Išsiųsta 2 iš 2 siuntų“ (s1609.klientas@avesa.lt) — be sekimo numerio",
+    "Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+    "Pažymėta išsiųsta darbalaukyje (Testuotojas, web). WC laiškas klientui: NESIŲSTAS."
+   ]
+  },
+  "A_mail": {
+   "viso": 12,
+   "pask": [
+    {
+     "kam": "s1609.klientas@avesa.lt",
+     "tema": "Užsakymas Nr. 35776 — išsiųsta 2 iš 2 siuntų",
+     "txt": "Petshop.lt Išsiųsta 2 iš 2 siuntų Sveiki, Testas, Išsiųsta 2 iš 2 Jūsų užsakymo Nr. 35776 siuntų — visas užsakymas išsiųstas. Siunta perduota vežėjui Venipak. Visą užsakymo eigą matysite paskyroje → Užsakymas Nr. 35776. Šioje siuntoje: 1 × Prins Diet Skin &amp; Intestinal Hypoallergic sausas maistas katėms 1,5 kg Gražios dienos,petshop.lt Petshop.ltLiucionių g. 46, Liucionių k., 15166, Lietuva",
+     "juosta": false,
+     "paskyra": 1,
+     "sekti": false
+    }
+   ]
+  },
+  "A_dublis": {
+   "page": "ps-desk",
+   "eile": "paruosta",
+   "pd_ok": "dl_info",
+   "pd_nr": "35776|jau išsiųstas"
+  },
+  "mail_viso_po_dublio": 12,
+  "mail_temos": [
+   "uzsakymai@petshop.lt | Naujas užsakymas Nr. 35776 — 2026-09-03",
+   "s1609.klientas@avesa.lt | Jūsų užsakymas Nr. 35776 — apmokėjimas gautas",
+   "uzsakymai@petshop.lt | Naujas užsakymas Nr. 35777 — 2026-09-03",
+   "terra@petshop.lt | Jūsų užsakymas Nr. 35777 — apmokėjimas gautas",
+   "terra@petshop.lt | [PERSIŲSTI Vetfarmas] užsakymas 2026-09-03",
+   "terra@petshop.lt | [PERSIŲSTI Prins Petfoods] užsakymas 2026-09-03",
+   "terra@petshop.lt | [PERSIŲSTI Vetfarmas] užsakymas 2026-09-03",
+   "terra@petshop.lt | [PERSIŲSTI Prins Petfoods] užsakymas 2026-09-03",
+   "s1609.klientas@avesa.lt | Užsakymas Nr. 35776 — išsiųsta 1 iš 2 siuntų",
+   "terra@petshop.lt | Užsakymas Nr. 35777 — išsiųsta 1 iš 2 siuntų",
+   "terra@petshop.lt | Užsakymas Nr. 35777 — išsiųsta 2 iš 2 siuntų",
+   "s1609.klientas@avesa.lt | Užsakymas Nr. 35776 — išsiųsta 2 iš 2 siuntų"
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788468265|4vSHpcGXQIB4pguKxd1KYsytOrUw3EA16vJoQgQZrrK|aabf105a7a287215d25f6b4dccc2d98c678e9afa78e9d943a167aa2ef701fd75"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788468265|4vSHpcGXQIB4pguKxd1KYsytOrUw3EA16vJoQgQZrrK|b7229c9d6faece79eec0b4ffae0010806e7c51f69a02fc9b96ab77c84f82a551"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788468265|4vSHpcGXQIB4pguKxd1KYsytOrUw3EA16vJoQgQZrrK|5c20ca825639079c93cb95681282bea05889c1ef3d96f5314633cba5ac3ab728"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e9_laiskas_A_2is2",
+    "u": "https://dev.avesa.lt/?ps_e9t=H&i=11",
+    "w": 760,
+    "h": 1000,
+    "full": true
+   },
+   {
+    "n": "e9_paskyra_A_ivykdytas",
+    "u": "https://dev.avesa.lt/paskyra/uzsakymas/35776/",
+    "full": true,
+    "eval": "({siuntos:[...document.querySelectorAll('.ps-siunta')].map(x=>x.innerText.replace(/\\s+/g,' ').trim())})"
+   },
+   {
+    "n": "e9_paskyra_A_ivykdytas_mob",
+    "u": "https://dev.avesa.lt/paskyra/uzsakymas/35776/",
+    "w": 390,
+    "h": 900,
+    "full": true,
+    "eval": "({siuntos:[...document.querySelectorAll('.ps-siunta')].map(x=>x.innerText.replace(/\\s+/g,' ').trim())})"
+   }
+  ]
+ },
+ "shots": {
+  "e9_laiskas_A_2is2": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/?ps_e9t=H&i=11",
+   "title": "Petshop.lt",
+   "errors": []
+  },
+  "e9_paskyra_A_ivykdytas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/paskyra/uzsakymas/35776/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "siuntos": [
+     "Siunta 1 iš 2 Išsiųsta 1 × HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm",
+     "Siunta 2 iš 2 Išsiųsta 1 × Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg"
+    ]
+   }
+  },
+  "e9_paskyra_A_ivykdytas_mob": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/paskyra/uzsakymas/35776/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "siuntos": [
+     "Siunta 1 iš 2 Išsiųsta 1 × HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm",
+     "Siunta 2 iš 2 Išsiųsta 1 × Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg"
+    ]
+   }
+  }
+ }
+}
