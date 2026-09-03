@@ -1,0 +1,94 @@
+{
+ "v": "dep-162838",
+ "kurimas": 200,
+ "sid": 4615,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "W": {
+  "v": "run e3w",
+  "temp_istrinta": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788454810|Rv8ejkUthY0XUOrEBhVDNi0rucJmk08FRNAwZ9yPtMe|1bd27bec1e3e9f344c1e352975a6a4e87469836d7e03c62ccec44c0b04a24bc4"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788454810|Rv8ejkUthY0XUOrEBhVDNi0rucJmk08FRNAwZ9yPtMe|de7f9a968497ebb0390e4d47023052b27e6ef2700e35b5a36a2cebd7274f3e7c"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788454810|Rv8ejkUthY0XUOrEBhVDNi0rucJmk08FRNAwZ9yPtMe|0f5e4d7c20d82aff26830d2acf05f1e66bc0fb25a03fb5ef89be847543dafcb7"
+   }
+  ],
+  "versija": "3.7",
+  "shots": [
+   {
+    "n": "e3_v37_laukiam",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+    "eval": "({btn:[...document.querySelectorAll('.dl-zingsniai-k button')].map(b=>b.innerText+(b.disabled?' [off]':'')),cb:document.querySelectorAll('.dl-uzs-cb').length,perz:!!document.querySelector('.dl-perz'),pastaba:(document.querySelector('.dl-zingsniai-k .pilkas.maz')||{}).innerText,gal:(document.querySelector('.dl-tk-gauta')||{}).innerText})"
+   },
+   {
+    "n": "e3_v37_dropship",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+    "h": 1200,
+    "eval": "({cb:document.querySelectorAll('.dl-uzs-cb').length,forms:[...document.querySelectorAll('form.dl-laiskas-f')].map(f=>f.id+':'+(f.querySelector('.dl-uzs-ids')||{}).value+' → '+(f.querySelector('button[data-tpl]')||{}).innerText)})"
+   },
+   {
+    "n": "e3_v37_dropship_off",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+    "h": 1200,
+    "click": ".dl-uzs-cb",
+    "eval": "({forms:[...document.querySelectorAll('form.dl-laiskas-f')].map(f=>f.id+':'+(f.querySelector('.dl-uzs-ids')||{}).value+' → '+(f.querySelector('button[data-tpl]')||{}).innerText+((f.querySelector('button[data-tpl]')||{}).disabled?' [off]':''))})"
+   }
+  ]
+ },
+ "shots": {
+  "e3_v37_laukiam": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "btn": [
+     "Kartu su Dropshipping iš VF (1 prek.)"
+    ],
+    "cb": 1,
+    "perz": false,
+    "pastaba": "Kaip atkeliaus į AV:"
+   }
+  },
+  "e3_v37_dropship": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "cb": 15,
+    "forms": [
+     "dlf_belcor_tofu:35426 → Užsakyti iš Belacor (1 užs.)",
+     "dlf_quattro:35436 → Užsakyti iš Quattro (1 užs.)",
+     "dlf_ambrosia:35426,35090,35414,35415,35425,35422 → Užsakyti iš Ambrosia (6 užs.)",
+     "dlf_vf:35420,35443,35442,35435,35441 → Užsakyti iš VF (5 užs.)"
+    ]
+   }
+  },
+  "e3_v37_dropship_off": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": ".dl-uzs-cb",
+   "eval": {
+    "forms": [
+     "dlf_belcor_tofu: → Užsakyti iš Belacor (0 užs.) [off]",
+     "dlf_quattro:35436 → Užsakyti iš Quattro (1 užs.) [off]",
+     "dlf_ambrosia:35426,35090,35414,35415,35425,35422 → Užsakyti iš Ambrosia (6 užs.) [off]",
+     "dlf_vf:35420,35443,35442,35435,35441 → Užsakyti iš VF (5 užs.) [off]"
+    ]
+   }
+  }
+ }
+}
