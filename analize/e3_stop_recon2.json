@@ -1,0 +1,34 @@
+{
+ "v": "dep-180141",
+ "kurimas": 200,
+ "sid": 4633,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "f": "R",
+  "temp_istrinta": 1,
+  "lenteles": [
+   "gaj6_wpmailsmtp_debug_events",
+   "gaj6_wpmailsmtp_tasks_meta"
+  ],
+  "n": {
+   "gaj6_wpmailsmtp_debug_events": 5,
+   "gaj6_wpmailsmtp_tasks_meta": 0
+  },
+  "cols": {
+   "gaj6_wpmailsmtp_debug_events": "id,content,initiator,event_type,created_at",
+   "gaj6_wpmailsmtp_tasks_meta": "id,action,data,date"
+  },
+  "smtp_mailer": "smtp",
+  "queue_opt": null,
+  "pending_uzs": 0,
+  "t3_liko": 0,
+  "cron_mail": [
+   "ps_esp_cron_process_pending @18:02",
+   "ps_email_dispatch_cron @18:03",
+   "wpforms_email_summaries_cron @21:00"
+  ]
+ }
+}
