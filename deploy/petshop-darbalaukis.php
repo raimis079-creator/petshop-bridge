@@ -26,6 +26,8 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v3.9 (Raimis 09-03 / 3 etapas #4): neapmokėtas užsakymas — Gauti + Neapmokėti, ne Klausimai; skydelyje prekei be tiekėjo tiekėjo keliai
+ *   nerodomi (buvo pilki „Tiekėjas siunčia klientui / veža į AV“); variklio pranešimai verčiami į žodyną (AV/VF/ZB, „užsakymas tiekėjui #n“).
  * v3.8.1: T3 — Neapmokėtų riba 300 su įspėjimu juostoje; `window.psDlAtnaujinti` (V11 patikrai).
  * v3.8 (3 etapas #3 — audito likučiai): K2 antra pusė — skydelis per `wp_ajax_ps_dl_skydelis` (eilutėse tik `data-sk`, ne JSON), kešuojama
  *   eilutėje; V11 — tylus atnaujinimas kas 60 s (fetch → keičiamas tik `.dl-main`, slinktis ir pažymėta eilutė lieka; praleidžiama, kai pelė
@@ -102,7 +104,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.8.1';
+	const VERSIJA = '3.9';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -479,7 +481,7 @@ class Petshop_Darbalaukis {
 		$T = array(); $eiles = array();
 		if ( $atsauk ) { $T[] = array( 'atsaukta', 'atšauktas', 'bad', '', null ); }
 		elseif ( $neapm ) { $T[] = array( 'apmoketa', 'neapmokėtas', 'now', '', 'apmoketa' ); $eiles['neapmoketi'] = 1; }
-		if ( $f['kl'] ) { $eiles['klausimai'] = 1; }
+		if ( $f['kl'] && ! $neapm ) { $eiles['klausimai'] = 1; } // Raimis 09-03: neapmokėtas — tik Gauti + Neapmokėti, ne Klausimai
 		if ( ! $atsauk && ! $neapm ) {
 			$T[] = array( 'rus', 'auto' === $rus ? 'surūšiuota pati' : 'surūšiuota', $rus ? 'done' : 'now', '', $rus ? null : 'rusiuoti' );
 			if ( ! $rus && ! $f['kl'] && ! $baigta ) { $eiles['nauji'] = 1; }
@@ -577,6 +579,7 @@ class Petshop_Darbalaukis {
 		foreach ( $f['eil'] as $e ) {
 			$keliai = array();
 			foreach ( array( 'av', 'tiesiai', 'i_av' ) as $k ) {
+				if ( 'av' !== $k && ! $e['tiek'] && $k !== $e['k'] ) { continue; } // #4: tiekėjo nėra — jo kelių nerodom
 				$gal = ! empty( $e['galimi'][ $k ] ) && ! $e['lock'] && $f['paid'];
 				$keliai[] = array( 'k' => $k, 't' => self::kelio_vardas( $k, $e['tiek'] ), 'on' => $k === $e['k'], 'gal' => $gal,
 					'u' => $gal && $k !== $e['k'] ? self::dl_url( 'kelias', $id, array( 'iid' => $e['iid'], 'k' => $k ) ) : '',
@@ -1055,8 +1058,8 @@ class Petshop_Darbalaukis {
 		if ( $oid && ( $oo = wc_get_order( $oid ) ) ) { $fx = self::faktai( $oo, self::zurnalas( array( $oid ) ) ); $kur = ' → dabar: ' . self::kur_dabar( $fx ); }
 		$GLOBALS['ps_dl_kur'] = $kur;
 		$var = array( 'vp_ok' => array( 'ok', 'Lipdukas: siunta užregistruota (%s).' ), 'vp_klaida' => array( 'klaida', 'Venipak nepriėmė: %s' ), 'vp_nieko' => array( 'info', '%s.' ), 'kons_ok' => array( 'ok', '#%s: %s prekė(-s) į užsakymą tiekėjui — užsakyk ir priimk „Laukiam iš tiekėjų“ eilėje.' ), 'kons_nieko' => array( 'info', '#%s: nėra ko užsakyti į AV.' ), 'apmoketa' => array( 'ok', '#%s apmokėtas. Prekės rezervuotos, klientui išsiųstas patvirtinimas.' ), 'apmoketa_tyliai' => array( 'ok', '#%s apmokėtas. Laiškas klientui nesiųstas.' ), 'atsaukta' => array( 'ok', '#%s atšauktas. Prekės grąžintos į likutį. Klientui nepranešta.' ), 'atsaukta_laiskas' => array( 'ok', '#%s atšauktas. Klientui išsiųstas pranešimas.' ), 'pakuotes' => array( 'ok', 'Dėžių: %s.' ), 'kl_laukti' => array( 'info', '#%s — laukiam; priminimo nebus.' ) );
-		if ( isset( $var[ $k ] ) ) { $t0 = str_replace( array( ' · AV', ' · PRINS', ' · VF', ' · ZB', ' · QUATTRO', ' · AMBROSIA', ' · BELCOR_TOFU' ), array( ' — Avesa', ' — Prins', ' — Vetfarmas', ' — Žalioji Banga', ' — Quattro', ' — Ambrosia', ' — Belacor' ), $nr ); $d0 = explode( '|', $t0, 2 ); printf( '<div class="pd-msg pd-msg-%s">%s%s<button class="pd-msg-x" onclick="this.parentNode.remove()">✕</button></div>', esc_attr( $var[ $k ][0] ), esc_html( sprintf( $var[ $k ][1], $d0[0], $d0[1] ?? '' ) ), esc_html( $kur ) ); return; }
-		if ( 0 !== strpos( $k, 'dl_' ) ) { ob_start(); self::d( 'pranesimas' ); $h = ob_get_clean(); echo $kur ? str_replace( '<button class="pd-msg-x"', esc_html( $kur ) . '<button class="pd-msg-x"', $h ) : $h; return; }
+		if ( isset( $var[ $k ] ) ) { $t0 = str_replace( array( ' · AV', ' · PRINS', ' · VF', ' · ZB', ' · QUATTRO', ' · AMBROSIA', ' · BELCOR_TOFU' ), array( ' — AV', ' — Prins', ' — VF', ' — ZB', ' — Quattro', ' — Ambrosia', ' — Belacor' ), $nr ); $d0 = explode( '|', $t0, 2 ); printf( '<div class="pd-msg pd-msg-%s">%s%s<button class="pd-msg-x" onclick="this.parentNode.remove()">✕</button></div>', esc_attr( $var[ $k ][0] ), esc_html( sprintf( $var[ $k ][1], $d0[0], $d0[1] ?? '' ) ), esc_html( $kur ) ); return; }
+		if ( 0 !== strpos( $k, 'dl_' ) ) { ob_start(); self::d( 'pranesimas' ); $h = ob_get_clean(); $h = str_replace( array( 'Avesos sandėlį', 'Avesos sandėlyje', 'Avesoje', 'Avesos', 'Avesa', 'Vetfarmas', 'Žalioji Banga', 'Žaliosios Bangos', 'Belacor (belcor_tofu)', 'partiją #', 'partija #', 'partijoje #', 'partijos #', ' WooCommerce' ), array( 'AV', 'AV', 'AV', 'AV', 'AV', 'VF', 'ZB', 'ZB', 'Belacor', 'užsakymą tiekėjui #', 'užsakymas tiekėjui #', 'užsakyme tiekėjui #', 'užsakymo tiekėjui #', '' ), $h ); /* #4: variklio žodžiai → darbuotojo žodynas */ echo $kur ? str_replace( '<button class="pd-msg-x"', esc_html( $kur ) . '<button class="pd-msg-x"', $h ) : $h; return; }
 		$t = array( 'dl_kelias' => array( 'ok', '#%s — pakeista: %s' ), 'dl_issiusta' => array( 'ok', '#%s išsiųstas — įvykdytas; %s.' ), 'dl_dalis' => array( 'ok', '#%s: %s.' ), 'dl_issiusta_visi' => array( 'ok', 'Kurjeris paėmė — %2$s.' ), 'dl_laiskas' => array( 'ok', 'Užsakyta iš %s — %s → Paruošta siųsti.' ), 'dl_zb' => array( 'ok', '%s — suvesta %s užs. → Paruošta siųsti.' ), 'dl_rusiuota' => array( 'ok', '#%s surūšiuotas. %s' ), 'dl_uzsak_av' => array( 'ok', '%s: %s.' ), 'dl_gauta' => array( 'ok', '%s: %s.' ), 'dl_info' => array( 'info', '#%s: %s' ), 'dl_klaida' => array( 'klaida', '#%s: %s' ) );
 		if ( ! isset( $t[ $k ] ) ) { return; }
 		printf( '<div class="pd-msg pd-msg-%s">%s%s<button class="pd-msg-x" onclick="this.parentNode.remove()">✕</button></div>', esc_attr( $t[ $k ][0] ), esc_html( sprintf( $t[ $k ][1], $d[0], $d[1] ?? '' ) ), esc_html( $kur ) );
