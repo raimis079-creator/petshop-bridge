@@ -13,7 +13,7 @@
 
 > Pridėti po S1607. Tema: užsakymų sistemos 3 etapas, punktas #1 (STARTAS_2026-09-04_3_etapas) — „Laukiam iš tiekėjų“ kortelės su užsakymu tiekėjui ir priėmimu čia pat; punktas #2 — trijų sandėlių testas darbuotojo paskyra. Variklis (registras A–J) nekeistas.
 
-#### S1608 — ETAPAS 3 #1–#2: `mu-plugins/petshop-darbalaukis.php` v3.6.1 (160 988 B, md5 `3de47f791633496fa1ee4b01edea5fdf`; repo `deploy/petshop-darbalaukis.php` + `.b64`)
+#### S1608 — ETAPAS 3 #1–#2: `mu-plugins/petshop-darbalaukis.php` v3.7 (163 617 B, md5 `80b57378452992e1077370ed4ec7af62`; repo `deploy/petshop-darbalaukis.php` + `.b64`; kopijos v35/v36/v361 `ps-backups/`)
 
 **Prieš darbą:** perskaityta STARTAS → log S1607 → spec v1.2 §12 → ZODYNAS v1.1 → AUDITAS 09-03 → registras (G4, H1–H4, I). Kopijos: `uploads/ps-backups/petshop-darbalaukis-v35-BACKUP-2026-09-03.php` (140 530 B, md5 `f0e791d8…`), `…-v36-BACKUP-2026-09-03.php` (160 537 B, md5 `8f93c441…`).
 
@@ -41,9 +41,15 @@
 
 **Testiniai duomenys:** #35450 (processing, Surinkti AV, `_ps_surinkta` per lapą); užsakymai tiekėjams #14 (VF, gauta) ir #15 (ZB, gauta); likučiai: 35357 (HAP) ir 33902 (Trixie) `+1` per `Petshop_AV_Stock::increase`, tada rezervuota eilutėms (`_ps_av_reduced`); 19708 −1 (16→15). Opcija `ps_e3_oid=35450`, `ps_audit_mail` — trinti su testiniais. Venipak nekviestas. TEMP snippet'ai trinami kiekvieno run'o pradžioje (liko paskutinis 4611, deaktyvuotas).
 
+**Raimio sprendimai po T2 (09-03 vakaras) → v3.7 (`e3_run11a/11b/11d.json`, patikra `e3_run12w.json`, nuotraukos `e3_v37_*.png`):**
+1. **Tiekėjui — TIK vienas laiškas.** Kai to tiekėjo laukia Dropshipping užsakymų, „Laukiam“ kortelėje vienintelis mygtukas **„Kartu su Dropshipping iš VF (n prek.)“** (sudeda prekes į užsakymą tiekėjui, laiškas išeina Dropshipping kortelėje su varnele „+ į AV“); atskiras „Užsakyti iš [T] į AV“ su savo laišku — tik kai Dropshipping užsakymų iš to tiekėjo nėra. Užsakymų į AV atsargoms sudarymas — ne dabar (Raimis: vėliau).
+2. **Galiojimas** prie „Gauta“ lieka, neprivalomas — „(jei lieka sandėlyje)“; sprendžia darbuotojas.
+3. **Juosta** („Gavimas“, „Tiekimas“) — neliečiama, kol yra Laiškų langas.
+4. **Varnelė prie kiekvieno užsakymo** Dropshipping ir Laukiam kortelėse (`.dl-uzs-cb` → hidden `uzsakymai`/`ids`, mygtuko skaičius persiskaičiuoja, 0 → mygtukas išjungtas). Patikrinta: Belacor 1 užs. nuimta → „Užsakyti iš Belacor (0 užs.)“ išjungtas; Laukiam VF → „Kartu su Dropshipping iš VF (1 prek.)“, be „Peržiūrėti laišką“ ir adresatų. JS/HTTP klaidų 0.
+
 **Audito likučiai po S1608:** V9, V11, V12, K2 antra pusė, S2/S3, T2/T3/T10 — nekeista (3 etapo #3). #4 žodyno likučiai: skydelio pilki „Tiekėjas siunčia klientui / veža į AV“ be tiekėjo — liko; variklio pranešimų trumpiniai — liko.
 
-**Lieka (3 etapas):** #3 audito likučiai · #4 žodyno likučiai · #5 sekimo laiškai po kiekvienos siuntos (`issiusta()` dalies laiškas, spec §12) · #6 LP per Rytinę eigą. Klausimai Raimiui: „Kartu su Dropshipping“ mygtukas ir „galioja iki“ laukas — palikti?; juostoje „Gavimas/Tiekimas“ darbuotojui — slėpti (`petshop-juosta.php` v1.6, pagal rolę)?
+**Lieka (3 etapas):** #3 audito likučiai · #4 žodyno likučiai · #5 sekimo laiškai po kiekvienos siuntos (`issiusta()` dalies laiškas, spec §12) · #6 LP per Rytinę eigą. Raimio klausimai 1–4 atsakyti (žr. aukščiau, v3.7).
 
 ---
 
