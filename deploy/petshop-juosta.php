@@ -1,5 +1,8 @@
 <?php
 /**
+ * Petshop Juosta v1.5 (S1607) — Prekių kortelė (`.pskat-kort`, sticky top:0) lįsdavo po juosta (44+26 px + admin bar 32):
+ * top:102px, max-height pagal tai. Raimio pastaba 2026-09-03 17:02.
+ *
  * Petshop Juosta v1.4 (S1606) — patikra parodė, kad katalogo kešas `ps_kat_duomenys` NĖRA saugomas
  * (masyvas > 4 MB, surinkti() skaičiuoja kas kartą). Todėl „reikia užsakyti“ skaičiuojamas cron'u
  * kas valandą (`ps_juosta_reikia_cron` → Petshop_Katalogas::surinkti() + eiles()) į opciją
@@ -226,6 +229,7 @@ class Petshop_Juosta {
 		.psj-kelias{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.psj-kelias a{color:#4b5a51;text-decoration:none}.psj-kelias a:hover{text-decoration:underline}.psj-kelias b{color:#1f2a24;font-weight:600}.psj-kelias i{font-style:normal;opacity:.5;margin:0 5px}
 		/* Senos juostos — tik navigacinės dalys (R4: langai lieka) */
 		.pskat-bar .pskat-logo,.pskat-bar .pskat-nav,.psgav-bar>a,.psgav-bar>.logo,.pd .pd-top{display:none!important}
+		.pskat-kort{top:102px!important;max-height:calc(100vh - 102px)!important}
 		.wrap>p:has(>a.button[href*="page=ps-desk"]:only-child){display:none!important}
 		#wpbody-content>.wrap>p>a.button[href$="page=ps-desk"]{display:none!important}
 		/* Vienas meniu — juosta (R3): WP kairysis meniu slepiamas, kaip desk/katalogas jau darė */
