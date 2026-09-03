@@ -1,0 +1,47 @@
+{
+ "v": "dep-202710",
+ "kurimas": 200,
+ "sid": 4662,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "v": "run e11v",
+  "temp_istrinta": 1,
+  "oids": {
+   "A": 35776,
+   "B": 35777
+  },
+  "mail_buvo": 12,
+  "del_mail": true,
+  "del_oids": true,
+  "temp_like": [
+   {
+    "id": "4662",
+    "name": "TEMP PS dep-202710",
+    "active": "1"
+   }
+  ],
+  "dl": {
+   "v": "3.10.4",
+   "md5": "9f15a7e00baeb885377c9b1c8c681b1f",
+   "bytes": 183281
+  },
+  "ks": {
+   "v": "1.0",
+   "md5": "dd636b5c7e69a6af62876810303a91ec"
+  },
+  "uzs": {
+   "35776": [
+    "completed",
+    5787
+   ],
+   "35777": [
+    "completed",
+    0
+   ]
+  },
+  "dev_pastas": 1
+ }
+}
