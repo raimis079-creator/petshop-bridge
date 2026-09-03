@@ -1,0 +1,73 @@
+{
+ "v": "dep-093832",
+ "kurimas": 200,
+ "sid": 4566,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run11b",
+  "f": "D",
+  "buvo": "d2e7689e7327ebdb7bd37852695e5474",
+  "deploy": {
+   "bytes": 121898,
+   "md5": "6fa0a4c890c40581a2fd87b647f24feb"
+  }
+ },
+ "T": {
+  "v": "run11b",
+  "f": "T",
+  "versija": "2.2",
+  "T5_preke": 0,
+  "V5_a": {
+   "code": 302,
+   "len": 0,
+   "loc": {
+    "page": "ps-lapai"
+   }
+  },
+  "V5_b_po": {
+   "st": "processing",
+   "kl": "",
+   "eiles": "surinkti",
+   "btn": "Lipdukas",
+   "eil": {
+    "867": "19708 av/av galimi:av",
+    "868": "16889 av/av galimi:av,tiesiai,i_av"
+   },
+   "surinkta": "2026-09-03 12:39:52 | Testuotojas"
+  },
+  "V5_c_nesurinkta": {
+   "code": 302,
+   "len": 0,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "dl_info",
+    "pd_nr": "35439|surinkimas atšauktas — grįžo į „Surinkti“"
+   }
+  },
+  "V5_d_po": {
+   "st": "processing",
+   "kl": "",
+   "eiles": "surinkti",
+   "btn": "Surinkti",
+   "eil": {
+    "867": "19708 av/av galimi:av",
+    "868": "16889 av/av galimi:av,tiesiai,i_av"
+   },
+   "surinkta": ""
+  },
+  "K2_visi_len": 446015,
+  "K2_nauji_len": 247814,
+  "K2_ajax": {
+   "code": 200,
+   "len": 2465,
+   "raw": "{\"success\":true,\"data\":\"<div class=\\\"psuz-zurnalas\\\"><ol><li class=\\\"psuz-ok psuz-k-web\\\">09-03 12:34 \\u00b7 Testuotojas \\u2014 I\\u0161si\\u0173sta<\\/li><li class=\\\"psuz-ok psuz-k-web\\\">09-03 12:34 \\u0"
+  },
+  "K2_neapm": {
+   "code": 200,
+   "eil": 0
+  }
+ }
+}
