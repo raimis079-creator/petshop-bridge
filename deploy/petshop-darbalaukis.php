@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.1 (S1607, 2 etapas, Run 17 — ŽODYNAS DARBUOTOJUI, Gauti, būsenos Visuose) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.2 (S1607, 2 etapas, Run 18 — 2+ sandėliai → Neišrūšiuoti, „Auto“) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -26,6 +26,9 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v3.2 (Raimis): taisyklė — pati išrūšiuoja TIK vieno sandėlio užsakymus; 2+ sandėliai (su AV ar be) → Neišrūšiuoti su
+ *   sistemos pasiūlymu; eilutėje „Auto“ = surūšiuoti kaip siūlo, neatidarant (nerodomas, kai yra kliento pastaba ar trūkumas);
+ *   pasiūlymas „veža į AV“, kai to tiekėjo užsakymas į AV jau atviras (kaupiama/užsakyta) — prekė atvažiuos ir taip.
  * v3.1 (Raimis, `dokumentai/ZODYNAS_DARBUOTOJUI_v1.md`): sandėliai trumpai (AV/VF/ZB/Prins/Belacor/Quattro/Ambrosia); eilės Gauti ·
  *   Neišrūšiuoti · Laukiam iš tiekėjų · Surinkti AV · Užsakyti iš tiekėjų · Paruošta siųsti · Klausimai · Neapmokėti · Visi;
  *   keliai „Iš AV · VF siunčia klientui · VF veža į AV“; mygtukai „Užsakyti iš VF (n užs.)“ (laiškas — tik peržiūra),
@@ -77,7 +80,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.1';
+	const VERSIJA = '3.2';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -268,6 +271,16 @@ class Petshop_Darbalaukis {
 		return $v[ $s ] ?? mb_strtoupper( (string) $s );
 	}
 
+	/** Ar tiekėjo užsakymas į AV jau atviras (kaupiama/užsakyta) — tada siūlom „veža į AV“ (prekė atvažiuos ir taip). */
+	protected static $partijos_cache = array();
+	protected static function atvira_partija( $src ) {
+		if ( ! isset( self::$partijos_cache[ $src ] ) ) {
+			global $wpdb; $t = $wpdb->prefix . 'ps_tiekimas';
+			self::$partijos_cache[ $src ] = (int) $wpdb->get_var( $wpdb->prepare( "SELECT id FROM {$t} WHERE tiekejas=%s AND busena IN ('kaupiama','uzsakyta') ORDER BY id DESC LIMIT 1", $src ) );
+		}
+		return self::$partijos_cache[ $src ];
+	}
+
 	/** Kelio pavadinimas pilnu vardu: „Avesa sandėlis“ / „Prins → klientui“ / „Prins → Avesa sandėlį“. */
 	protected static function kelio_vardas( $k, $tiek ) {
 		if ( 'av' === $k ) { return 'Iš AV'; }
@@ -308,7 +321,7 @@ class Petshop_Darbalaukis {
 		if ( class_exists( 'Petshop_AV_Tiekimas' ) && $src && 'av' !== $src ) { $b = Petshop_AV_Tiekimas::eilutes_bukle( $o->get_id(), (int) $iid ); }
 		if ( ! isset( self::KELIAI[ $k ] ) ) {
 			if ( 'av' === $src ) { $k = 'av'; }
-			elseif ( $src ) { $k = ( $it->get_meta( '_ps_konsolidacija' ) || 'av' === ( $spr[ $src ] ?? '' ) || $b ) ? 'i_av' : 'tiesiai'; }
+			elseif ( $src ) { $k = ( $it->get_meta( '_ps_konsolidacija' ) || 'av' === ( $spr[ $src ] ?? '' ) || $b || ( ! $o->get_meta( '_ps_rusiuota' ) && self::atvira_partija( $src ) ) ) ? 'i_av' : 'tiesiai'; }
 			else { $k = ''; }
 		}
 		// K1 (auditas 09-03): rodomas kelias = f(_ps_source, partija). „→ Avesa sandėlį“ galioja tik kol prekė dar ne Avesoje;
@@ -554,6 +567,7 @@ class Petshop_Darbalaukis {
 		$t = $e['tiek'] ? self::vardas( $e['tiek'] ) : '';
 		if ( '' === $e['k'] ) { return 'AV nėra, tiekėjo nėra. Jei prekė yra AV — pažymėk „Iš AV“ (likutis nenurašomas); jei ne — parašyk klientui arba atšauk.'; }
 		if ( null !== $e['av_qty'] && $e['av_qty'] >= $e['q'] ) { $s = 'AV yra ' . (int) $e['av_qty'] . ' — siunčiam iš AV.'; }
+		elseif ( $t && 'i_av' === $e['k'] && ! $e['b'] && ( $pid = self::atvira_partija( $e['tiek'] ) ) ) { $s = 'AV ' . ( $e['av_qty'] ? 'tik ' . (int) $e['av_qty'] : 'nėra' ) . ', ' . $t . ' turi. Užsakymas į AV iš ' . $t . ' jau atviras (#' . $pid . ') — siūlom vežti į AV ir siųsti viena siunta. Jei skubu — „' . $t . ' siunčia klientui“.'; }
 		elseif ( $t ) { $s = 'AV ' . ( $e['av_qty'] ? 'tik ' . (int) $e['av_qty'] : 'nėra' ) . ', ' . $t . ' turi — ' . $t . ' siunčia klientui. Jei nori vienos siuntos — „' . $t . ' veža į AV“.'; }
 		else { $s = 'AV ' . ( $e['av_qty'] ? 'tik ' . (int) $e['av_qty'] : 'nėra' ) . ', reikia ' . $e['q'] . ', tiekėjo nėra. Užsakyk pats ir pažymėk „Iš AV“, kai turėsi; arba parašyk klientui / atšauk.'; }
 		if ( $e['reduced'] && 'av' === $e['k'] ) { $s .= ' Rezervuota.'; }
@@ -785,8 +799,8 @@ class Petshop_Darbalaukis {
 		if ( self::d( 'klausimas', $o ) ) { return false; }
 		$src = array();
 		foreach ( $o->get_items() as $it ) { $s = (string) $it->get_meta( '_ps_source' ); if ( ! $s ) { return false; } $src[ $s ] = 1; }
-		// Aišku: viskas iš Avesos ARBA viskas iš tiekėjų (vienas ar keli — kiekvienas siunčia savo). Avesa + tiekėjas → žmogus renkasi.
-		if ( count( $src ) > 1 && isset( $src['av'] ) ) { return false; }
+		// Raimis 09-03: pati išrūšiuoja TIK vieno sandėlio užsakymus. 2+ sandėliai → Neišrūšiuoti (siųsti atskirai ar sudėti į AV — žmogaus sprendimas, „Auto“ eilutėje).
+		if ( count( $src ) > 1 ) { return false; }
 		$r = self::rusiuoti( $o, wp_get_current_user(), true );
 		return 'dl_rusiuota' === $r[0];
 	}
@@ -1018,6 +1032,12 @@ class Petshop_Darbalaukis {
 			if ( 'siandien' === $eile || 'visi' === $eile ) { echo '<td><span class="maz">' . esc_html( self::kur_dabar( $r ) ) . '</span></td>'; }
 			$b = self::mygtukas_eilei( $r, $eile );
 			echo '<td class="d">' . self::btn_html( $b );
+			if ( 'nauji' === $eile && $r['paid'] && ! $r['rus'] && ! $r['kl'] ) {
+				$siulo = array(); $gal = ! $o->get_customer_note(); foreach ( $r['eil'] as $e ) { if ( '' === $e['k'] || false === $e['av_ok'] ) { $gal = false; } $siulo[ self::kelio_vardas( $e['k'], $e['tiek'] ) ] = 1; }
+				$siunt = 0; $tk = array(); foreach ( $r['eil'] as $e ) { if ( 'av' === $e['k'] || 'i_av' === $e['k'] ) { $tk['av'] = 1; } elseif ( 'tiesiai' === $e['k'] ) { $tk[ $e['tiek'] ] = 1; } } $siunt = count( $tk );
+				if ( $gal ) { echo ' <a class="v" href="' . esc_url( self::dl_url( 'rusiuoti', $id ) ) . '" title="Surūšiuoti taip, kaip siūlo sistema, neatidarant">Auto</a>'; }
+				echo '<br><span class="pilkas maz">siūlo: ' . esc_html( implode( ' · ', array_keys( $siulo ) ) ) . ' — ' . $siunt . ( 1 === $siunt ? ' siunta' : ' siuntos' ) . ( $gal ? '' : ' · ' . ( $o->get_customer_note() ? 'yra kliento pastaba — atidaryk' : 'trūksta — atidaryk' ) ) . '</span>';
+			}
 			$bs = ''; foreach ( $r['takelis'] as $t ) { if ( $b && $t[4] && self::mygtukas( $t, $r )[0] === $b[0] ) { $bs = $t[3] ? $t[3] : $r['riba_s']; break; } }
 			if ( $bs && ! $r['uzdarytas'] && empty( $b[4] ) ) { list( $rk, $rt ) = self::riba_tekstas( $bs ); if ( $rt ) { echo '<br><span class="dl-riba dl-riba-' . esc_attr( $rk ) . ' maz">' . esc_html( $rt ) . '</span>'; } }
 			echo '</td></tr>';
