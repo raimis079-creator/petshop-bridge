@@ -1,0 +1,97 @@
+{
+ "v": "dep-170917",
+ "kurimas": 200,
+ "sid": 4625,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Z": {
+  "v": "run e3zz",
+  "temp_istrinta": 1,
+  "oid": 35772,
+  "pries": {
+   "stock": "70",
+   "own": "20"
+  },
+  "dvigubas_tiesiai": [
+   [
+    302,
+    "35772|veiksmas jau vykdomas — palauk sekundę",
+    "dl_info",
+    ""
+   ],
+   [
+    302,
+    "35772|Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200 g → VF siunčia klientui · likutis AV +1 → 21",
+    "dl_kelias",
+    ""
+   ]
+  ],
+  "po_tiesiai": {
+   "stock": "70",
+   "own": "21"
+  },
+  "eil_po_tiesiai": {
+   "kelias": "tiesiai",
+   "src": "vf",
+   "reduced": ""
+  },
+  "dvigubas_av": [
+   [
+    302,
+    "35772|kelias nepakeistas — jau Iš AV",
+    "dl_info",
+    ""
+   ],
+   [
+    302,
+    "35772|Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200 g → Iš AV · likutis AV −1 → 20",
+    "dl_kelias",
+    ""
+   ]
+  ],
+  "po_av": {
+   "stock": "70",
+   "own": "20"
+  },
+  "eil_po_av": {
+   "kelias": "av",
+   "src": "av",
+   "reduced": "1"
+  },
+  "zurnalas": [
+   {
+    "veiksmas": "rusiuoti",
+    "rezultatas": "ok",
+    "pastaba": "auto: visos prekės vienu keliu"
+   },
+   {
+    "veiksmas": "busena",
+    "rezultatas": "ok",
+    "pastaba": "mokėjimas / svetainė"
+   },
+   {
+    "veiksmas": "apmokejimas",
+    "rezultatas": "ok",
+    "pastaba": "keliai: #1539 av · MAIN"
+   },
+   {
+    "veiksmas": "kelias",
+    "rezultatas": "ok",
+    "pastaba": "Exclusion Hypoallergenic konservai šunims su triušiena ir bu: Iš AV → VF siunčia klientui"
+   },
+   {
+    "veiksmas": "kelias",
+    "rezultatas": "ok",
+    "pastaba": "Exclusion Hypoallergenic konservai šunims su triušiena ir bu: VF siunčia klientui → Iš AV"
+   }
+  ],
+  "atsaukta": "35772 [atsaukta]",
+  "galas": {
+   "stock": "70",
+   "own": "21"
+  },
+  "busena": "cancelled"
+ }
+}
