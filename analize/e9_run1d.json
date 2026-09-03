@@ -1,0 +1,213 @@
+{
+ "v": "dep-200333",
+ "kurimas": 200,
+ "sid": 4654,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run e9d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": [
+   80000,
+   80000,
+   83052
+  ],
+  "bytes": 182288,
+  "md5": "30faf7f378a932d0bbf98cea74d04ed3",
+  "token": "ok",
+  "buvo": "03330ef26ff82f4022dea45f16771d0a",
+  "buvo_bytes": 179272,
+  "buvo_v": "3.10.2",
+  "ks_bytes": 5260,
+  "ks_md5": "dd636b5c7e69a6af62876810303a91ec",
+  "ks_token": "ok",
+  "ks_buvo": null,
+  "backup": true,
+  "rasyta": 182288,
+  "po": "30faf7f378a932d0bbf98cea74d04ed3",
+  "po_bytes": 182288,
+  "ks_rasyta": 5260,
+  "ks_po": "dd636b5c7e69a6af62876810303a91ec",
+  "backups": [
+   "petshop-darbalaukis-v03-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v12-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v20-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v24-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v301-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v310-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v3101-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v3102-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v35-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v36-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v361-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v37-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v38-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v381-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v39-BACKUP-2026-09-03.php"
+  ]
+ },
+ "R": {
+  "v": "run e9d",
+  "f": "R",
+  "temp_istrinta": 0,
+  "versija": "3.10.3",
+  "md5": "30faf7f378a932d0bbf98cea74d04ed3",
+  "ks": "1.0",
+  "metodas": true,
+  "hookai": [
+   "5: Petshop_Kliento_Siuntos::blokas",
+   "10: closure"
+  ],
+  "ks_35421": {
+   "st": "processing",
+   "cust": 5787,
+   "siuntos": [
+    {
+     "dalis": "prins",
+     "busena": "issiusta",
+     "laikas": "2026-09-03 21:33:34",
+     "vez": "venipak",
+     "numeriai": [
+      "V07267E1000046"
+     ],
+     "url": "https://venipak.com/lt/tracking/track/V07267E1000046",
+     "prekes": [
+      "1x Prins Diet Skin & Intesti"
+     ],
+     "n": 1,
+     "viso": 2
+    },
+    {
+     "dalis": "av",
+     "busena": "ruosiama",
+     "laikas": "",
+     "vez": "venipak",
+     "numeriai": [],
+     "url": "",
+     "prekes": [
+      "1x Animonda Carny Adult Beef",
+      "1x QUATTRO 1,5 kg Adult Salm"
+     ],
+     "n": 2,
+     "viso": 2
+    }
+   ]
+  },
+  "ks_35440": {
+   "st": "completed",
+   "cust": 5787,
+   "siuntos": [
+    {
+     "dalis": "av",
+     "busena": "issiusta",
+     "laikas": "2026-09-03 21:33:43",
+     "vez": "venipak",
+     "numeriai": [
+      "V07267E1000049",
+      "V07267E1000050",
+      "V07267E1000051"
+     ],
+     "url": "https://venipak.com/lt/tracking/track/V07267E1000049",
+     "prekes": [
+      "3x Animonda Carny Adult Beef"
+     ],
+     "n": 1,
+     "viso": 1
+    }
+   ]
+  },
+  "ks_35450": {
+   "st": "processing",
+   "cust": 0,
+   "siuntos": [
+    {
+     "dalis": "av",
+     "busena": "ruosiama",
+     "laikas": "",
+     "vez": "venipak",
+     "numeriai": [],
+     "url": "",
+     "prekes": [
+      "1x Animonda Carny Adult Beef",
+      "1x Trixie Stovas su dubenėli",
+      "1x HAP žaislas šunims, pliuš"
+     ],
+     "n": 1,
+     "viso": 1
+    }
+   ]
+  },
+  "ks_35775": {
+   "st": "completed",
+   "cust": 0,
+   "siuntos": [
+    {
+     "dalis": "vf",
+     "busena": "issiusta",
+     "laikas": "2026-09-03 21:48:34",
+     "vez": "venipak",
+     "numeriai": [],
+     "url": "",
+     "prekes": [
+      "1x HAP žaislas šunims, pliuš"
+     ],
+     "n": 1,
+     "viso": 2
+    },
+    {
+     "dalis": "prins",
+     "busena": "issiusta",
+     "laikas": "2026-09-03 21:48:35",
+     "vez": "venipak",
+     "numeriai": [],
+     "url": "",
+     "prekes": [
+      "1x Prins Diet Skin & Intesti"
+     ],
+     "n": 2,
+     "viso": 2
+    }
+   ]
+  },
+  "ks_35418": {
+   "st": "processing",
+   "cust": 0,
+   "siuntos": [
+    {
+     "dalis": "zb",
+     "busena": "ruosiama",
+     "laikas": "",
+     "vez": "venipak",
+     "numeriai": [
+      "V07267E1000037"
+     ],
+     "url": "https://venipak.com/lt/tracking/track/V07267E1000037",
+     "prekes": [
+      "1x Trixie Stovas su dubenėli"
+     ],
+     "n": 1,
+     "viso": 1
+    }
+   ]
+  },
+  "html_35421": "<section class=\"ps-siuntos\" data-n=\"2\"><h2 class=\"woocommerce-order-details__title\">Siuntos</h2><div class=\"ps-siunta ps-siunta--issiusta\"><div class=\"ps-siunta__antr\"><b>Siunta 1 iš 2</b><span class=\"ps-siunta__busena\">Išsiųsta</span></div><ul class=\"ps-siunta__prekes\"><li>1 × Prins Diet Skin &amp; Intestinal Hypoallergic sausas maistas katėms 1,5 kg</li></ul><div class=\"ps-siunta__nr\"><span>Siuntos numeris (Venipak): <b>V07267E1000046</b></span><a class=\"button ps-siunta__sekti\" href=\"https://venipak.com/lt/tracking/track/V07267E1000046\" target=\"_blank\" rel=\"noopener\">Sekti siuntą</a></div></div><div class=\"ps-siunta ps-siunta--ruosiama\"><div class=\"ps-siunta__antr\"><b>Siunta 2 iš 2</b><span class=\"ps-siunta__busena\">Ruošiama</span></div><ul class=\"ps-siunta__prekes\"><li>1 × Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g</li><li>1 × QUATTRO 1,5 kg Adult Salmon &amp; Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu,</li></ul></div></section><style>.ps-siuntos{margin:0 0 30px}.ps-siunta{border:1px solid #e2e2e2;border-radius:6px;padding:14px 16px;margin:0 0 12px}.ps-siunta__antr{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:1.05em}.ps-siunta__busena{font-size:.8em;font-weight:700;letter-spacing:.3px;padding:2px 10px;border-radius:12px;background:#ececec;color:#555}.ps-siunta--issiusta .ps-siunta__busena{background:#2d6a35;color:#fff}.ps-siunta__prekes{margin:8px 0 6px;padding-left:20px;font-size:.95em}.ps-siunta__prekes li{margin:0 0 3px}.ps-siunta__nr{display:flex;align-items:center;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;margin-top:8px;font-size:.95em}.ps-siunta__nr b{letter-spacing:.4px}.ps-siunta__sekti.button{margin:0;background:#2d6a35;color:#fff}</style>",
+  "pask_35421": {
+   "code": 200,
+   "url": "https://dev.avesa.lt/paskyra/uzsakymas/35421/",
+   "blokas": true,
+   "tekstas": "SiuntosSiunta 1 iš 2Išsiųsta1 × Prins Diet Skin &amp; Intestinal Hypoallergic sausas maistas katėms 1,5 kgSiuntos numeris (Venipak): V07267E1000046Sekti siuntąSiunta 2 iš 2Ruošiama1 × Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g1 × QUATTRO 1,5 kg Adult Salmon &amp; Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu,",
+   "pries_lentele": "SiuntosSiunta 1 iš 2Išsiųsta1 × Prins Diet Skin &amp; Intestinal Hypoallergic sausas maistas katėms 1,5 kg"
+  },
+  "pask_35440": {
+   "code": 200,
+   "url": "https://dev.avesa.lt/paskyra/uzsakymas/35440/",
+   "blokas": true,
+   "tekstas": "SiuntosSiuntaIšsiųsta3 × Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 gSiuntų numeriai (Venipak): V07267E1000049, V07267E1000050, V07267E1000051Sekti siuntą",
+   "pries_lentele": null
+  },
+  "rodyti_35775_svecias": false
+ }
+}
