@@ -1,0 +1,88 @@
+{
+ "v": "dep-185900",
+ "kurimas": 200,
+ "sid": 4650,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "v": "run e7w",
+  "temp_istrinta": 1,
+  "versija": "3.10.2",
+  "md5": "03330ef26ff82f4022dea45f16771d0a",
+  "bytes": 179272,
+  "amzius_35775": "prieš 13 min",
+  "sukurtas": "2026-09-03 21:48:12 GMT",
+  "dabar": "2026-09-03 22:01:21",
+  "temp_liko": [
+   {
+    "id": "4650",
+    "name": "TEMP PS dep-185900",
+    "active": "1"
+   }
+  ],
+  "backups": [
+   "petshop-darbalaukis-v301-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v310-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v3101-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v35-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v36-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v361-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v37-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v38-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v381-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v39-BACKUP-2026-09-03.php"
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788463881|1fvPXSnAy1TZ7HVLqjHPoGK3lQGn5WgPnlDVQWokkQR|9210d9b2bbd5a40b16604cbe706b6c5b4b79168321c079cf2847a601af8d0448"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788463881|1fvPXSnAy1TZ7HVLqjHPoGK3lQGn5WgPnlDVQWokkQR|8d82c674544eaf86e3ded239e8ebf42463c3b24e993d0f268e0320bcb9260c3c"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788463881|1fvPXSnAy1TZ7HVLqjHPoGK3lQGn5WgPnlDVQWokkQR|cf55ac20f9f4cbeaebbe9fdebdc3576edf2fa451cc92dc41a42fc6ef24833f5b"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e7_dialogas_av",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+    "click": "tr.eil[data-id=\"35429\"] td.d a.v.p",
+    "eval": "({dlg:(document.querySelector('.dl-dlg.on')||{}).innerText,opt:(document.querySelector('#dlDlgOpt')||{}).checked,href:((document.querySelector('.dl-dlg.on a.v.p')||{}).href||'').replace(/_wpnonce=\\w+/,'')})"
+   },
+   {
+    "n": "e7_dialogas_viska",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+    "click": "a.v.p[data-d*=\"viską\"]",
+    "eval": "({dlg:(document.querySelector('.dl-dlg.on')||{}).innerText})"
+   }
+  ]
+ },
+ "shots": {
+  "e7_dialogas_av": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "tr.eil[data-id=\"35429\"] td.d a.v.p",
+   "eval": {
+    "dlg": "Užsakymas #35429 · 7,35 €\n\nKurjeris paėmė AV siuntą V07267E1000031, V07267E1000032? Užsakymas įvykdytas. Klientui išeina laiškas „Užsakymas išsiųstas“ su sekimo numeriu.\n\nPranešti klientui\nAtšaukti\nKurjeris paėmė",
+    "opt": true,
+    "href": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=issiusta&id=35429&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26eile%3Dparuosta%26atidaryti%3D35429&dalis=av&&sekimo=1"
+   }
+  },
+  "e7_dialogas_viska": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('a.v.p[data-d*=\"viską\"]')\n",
+   "eval": {}
+  }
+ }
+}
