@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v2.3 (S1607, 2 etapas, Run 12 — Rytinė eiga be užrakto, viena sistema) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.0 (S1607, 2 etapas, Run 15 — PAPRASTAS LANGAS) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -26,6 +26,14 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v3.0 (Raimis: „su 10 užsakymų — košmaras, noriu lengviau ir paprasčiau“): nuimti sluoksniai — juostos kelias paslėptas,
+ *   nėra legendos, datos, filtrų (už „Filtrai ▾“), paaiškinimo apačioje, takelio sąraše (jis skydelyje); „Šiandien atėjo“ — ne
+ *   siena, o pirma eilė „Šiandien (n)“ su stulpeliu „Kur dabar“; eilutė = 3 stulpeliai: Užsakymas (nr, laikas, klientas,
+ *   pastaba) · Prekės pagal kelią („Avesa sandėlis · 3 prek. — Animonda…, +2“) · Kitas žingsnis. Viskas kita — skydelyje.
+ * v2.4 (Raimis: „nekas neaišku, kad užsakymas įkrito, kur jis dingo — atsekamumas 0“): juosta „Šiandien atėjo (n)“ virš eilių
+ *   ir rytinėje eigoje — kiekvienas šiandienos užsakymas su laiku, klientu, KUR DABAR (eilė) ir kitu žingsniu, atidaro skydelį;
+ *   po kiekvieno veiksmo pranešimas sako, kur užsakymas nukeliavo („→ dabar: Laiškai tiekėjams · Laiškas Vetfarmas“);
+ *   skydelio antraštėje „Dabar: …“.
  * v2.3 (Raimis: senoje Rytinėje eigoje „Mišrūs → Atidaryti“ vedė į WC): `view=rytas` dabar NAUJAS vedimas per eiles be
  *   užrakto (D1/D2): 1 Surūšiuoti · 2 Lipdukai ir laiškai tiekėjams · 3 Užsakyti iš tiekėjų · 4 Surinkti Avesoje · 5 Lipdukai
  *   Avesai · 6 Išsiųsta · 7 Gavimai · 8 Klausimai — gyvi skaičiai iš tų pačių faktų, žingsnis veda į eilę. Senas vaizdas tik su
@@ -63,11 +71,12 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '2.3';
+	const VERSIJA = '3.0.1';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
 	const EILES = array(
+		'siandien'   => array( 'Šiandien atėjo',     'Visi šiandienos užsakymai — kur kiekvienas dabar ir kas toliau.', 'z' ),
 		'nauji'      => array( 'Nauji — rūšiuoti',   'Čia tik tie, kur reikia tavo sprendimo: dalis prekių Avesoje, dalis pas tiekėją — siųsti atskirai ar parsivežti? Aiškius užsakymus sistema surūšiuoja pati.', 'r' ),
 		'laukiam'    => array( 'Laukiam iš tiekėjų', 'Kažkas dar turi atvažiuoti į Avesą: neužsakyta arba užsakyta ir laukiam. Avesos siunta nerenkama, kol visos jos prekės neatvyko.', 'g' ),
 		'surinkti'   => array( 'Surinkti Avesoje',   'Visos Avesos siuntos prekės vietoje — Surinkti → Lipdukas → Išsiųsta. Prekės, kurias tiekėjas siunčia pats, čia nerodomos.', 'z' ),
@@ -145,7 +154,7 @@ class Petshop_Darbalaukis {
 		if ( class_exists( 'Petshop_Desk' ) ) { Petshop_Desk::slepti_wc(); }
 		if ( self::senas() ) { if ( class_exists( 'Petshop_Desk' ) ) { Petshop_Desk::chrome(); } return; }
 		echo '<style>#wpfooter,#screen-meta,#screen-meta-links,.update-nag,.notice,#wpbody-content>.wrap>h1{display:none!important}
-#wpcontent{padding-left:0!important}#wpbody-content{padding-bottom:0!important}html.wp-toolbar{padding-top:32px!important}body{background:#EEF1EF}</style>';
+#wpcontent{padding-left:0!important}#wpbody-content{padding-bottom:0!important}html.wp-toolbar{padding-top:32px!important}body{background:#EEF1EF}.psj-2{display:none!important}</style>';
 	}
 
 	/* ============================ VARIKLIS ============================ */
@@ -178,6 +187,27 @@ class Petshop_Darbalaukis {
 		$l = Petshop_Desk::RIBOS[ $s ];
 		if ( 'praejo' === $r[0] ) { return array( 'praejo', 'po ' . $l . ' — keliaus rytoj' ); }
 		return array( $r[0], 'iki ' . $l . ( 'skuba' === $r[0] ? ' — liko ' . preg_replace( '/^.*liko /', '', $r[1] ) : '' ) );
+	}
+
+	/** „Kur dabar“ — eilės ir kitas žingsnis žmogaus kalba (atsekamumui). */
+	protected static function kur_dabar( $f ) {
+		if ( $f['uzdarytas'] ) { return in_array( $f['st'], Petshop_Desk::STATUSAI['atsaukti'], true ) ? 'atšauktas' : 'įvykdytas'; }
+		if ( ! $f['eiles'] ) { return 'laukia (be veiksmo)'; }
+		$e = array(); foreach ( $f['eiles'] as $k ) { $x = self::EILES[ $k ][0]; if ( 'laiskai' === $k && $f['tiesiai'] ) { $t = array(); foreach ( $f['tiesiai'] as $s ) { if ( empty( $f['dalys'][ $s ]['perduota'] ) ) { $t[] = self::vardas( $s ); } } if ( $t ) { $x .= ' (' . implode( ', ', $t ) . ')'; } } $e[] = $x; }
+		return implode( ' + ', $e ) . ( $f['btn'] && ! empty( $f['btn'][0] ) ? ' · kitas žingsnis: ' . $f['btn'][0] : '' );
+	}
+
+	/** Juosta „Šiandien atėjo“ — kiekvienas šiandienos užsakymas: kada, kas, kur dabar, kitas žingsnis. */
+	protected static function siandien_juosta( $atviri ) {
+		$n = array(); foreach ( $atviri as $r ) { if ( ! empty( $r['naujas'] ) ) { $n[] = $r; } }
+		if ( ! $n ) { return; }
+		usort( $n, function ( $a, $b ) { $da = $a['o']->get_date_created(); $db = $b['o']->get_date_created(); return ( $db ? $db->getTimestamp() : 0 ) <=> ( $da ? $da->getTimestamp() : 0 ); } );
+		echo '<div class="dl-siand"><b>Šiandien atėjo ' . count( $n ) . '</b>';
+		foreach ( $n as $r ) { $o = $r['o']; $eile = $r['eiles'] ? $r['eiles'][0] : 'visi';
+			printf( '<a class="dl-siand-u" href="%s"><span class="nr">#%s</span> <span class="pilkas">%s · %s · %d prek.</span> <span class="kel %s"><i></i>%s</span></a>',
+				esc_url( self::url( array( 'eile' => $eile, 'view' => null, 'q' => null, 'b' => null, 'atidaryti' => $r['id'] ) ) ), esc_html( $o->get_order_number() ), esc_html( wp_date( 'H:i', $o->get_date_created()->getTimestamp() ) ), esc_html( trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ) ), count( $r['eil'] ),
+				$r['kl'] ? 'klaus' : ( 'nauji' === $eile ? 'ts' : 'sandelis' ), esc_html( self::kur_dabar( $r ) ) ); }
+		echo '</div>';
 	}
 
 	/** Mygtukas KONKREČIAI EILEI (eilė = veiksmas): Surinkti → surinkti/lipdukas, Laukiam → užsakyti/laukiam, Paruošta → išsiųsta… */
@@ -465,7 +495,7 @@ class Petshop_Darbalaukis {
 		if ( $b && ! empty( $b[2] ) && empty( $b[2]['opt'] ) ) { unset( $b[2]['opt'] ); }
 		foreach ( $f['eil'] as $e ) { if ( ! $e['k'] ) { $rus_gal = false; } }
 		return array(
-			'id' => $id, 'nr' => $o->get_order_number(), 'st' => wc_get_order_statuses()[ 'wc-' . $f['st'] ] ?? $f['st'], 'uzdarytas' => $f['uzdarytas'],
+			'id' => $id, 'nr' => $o->get_order_number(), 'st' => wc_get_order_statuses()[ 'wc-' . $f['st'] ] ?? $f['st'], 'uzdarytas' => $f['uzdarytas'], 'kur' => self::kur_dabar( $f ),
 			'kl' => trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ), 'suma' => wp_strip_all_tags( $o->get_formatted_order_total() ), 'apmok' => ( $f['paid'] ? 'apmokėta · ' : 'neapmokėta · ' ) . $o->get_payment_method_title(),
 			'tel' => $o->get_billing_phone(), 'mail' => $o->get_billing_email(), 'adresas' => wp_strip_all_tags( str_replace( '<br/>', ', ', $adr ) ),
 			'vezejas' => self::d( 'vezejo_vardas', $o ), 'vieta' => (string) $o->get_meta( 'venipak_pickup_point' ), 'pastaba_kl' => $o->get_customer_note(),
@@ -812,12 +842,12 @@ class Petshop_Darbalaukis {
 		if ( '' !== $f['q'] ) { $eile = 'visi'; }
 		$atviri = self::atviri(); $neapm = self::neapmoketi();
 		$c = array_fill_keys( array_keys( self::EILES ), 0 );
-		foreach ( array_merge( $atviri, $neapm ) as $r ) { foreach ( $r['eiles'] as $e ) { $c[ $e ]++; } }
+		foreach ( array_merge( $atviri, $neapm ) as $r ) { foreach ( $r['eiles'] as $e ) { $c[ $e ]++; } if ( ! empty( $r['naujas'] ) ) { $c['siandien']++; } }
 		$atviri = array_merge( $atviri, $neapm );
 		global $wpdb; $c['visi'] = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$wpdb->prefix}wc_orders WHERE type='shop_order' AND status<>'wc-checkout-draft'" );
 		if ( self::rytas_langas() ) { self::stilius(); echo '<div class="dl" id="dl" data-eile="rytas" data-atid="0">'; self::pranesimas(); self::rytas( $atviri, $c ); self::skydelio_html(); self::dialogas(); self::skriptas(); echo '</div>'; return; }
-		$rows = 'visi' === $eile ? self::visi( $f ) : array_values( array_filter( $atviri, function ( $r ) use ( $eile ) { return in_array( $eile, $r['eiles'], true ); } ) );
-		$rows = self::rikiuoti( self::filtruoti( $rows, $f ), 'visi' === $eile && ! $f['r'] ? 'laikas' : $f['r'] );
+		$rows = 'visi' === $eile ? self::visi( $f ) : array_values( array_filter( $atviri, function ( $r ) use ( $eile ) { return 'siandien' === $eile ? ! empty( $r['naujas'] ) : in_array( $eile, $r['eiles'], true ); } ) );
+		$rows = self::rikiuoti( self::filtruoti( $rows, $f ), in_array( $eile, array( 'visi', 'siandien' ), true ) && ! $f['r'] ? 'laikas' : $f['r'] );
 		$atid = isset( $_GET['atidaryti'] ) ? absint( $_GET['atidaryti'] ) : 0;
 		if ( $atid && ! array_filter( $rows, function ( $r ) use ( $atid ) { return $r['id'] === $atid; } ) ) {
 			$oa = wc_get_order( $atid ); if ( $oa ) { $x = self::faktai( $oa, self::zurnalas( array( $atid ) ) ); $x['svetimas'] = 1; $rows[] = $x; }
@@ -828,17 +858,13 @@ class Petshop_Darbalaukis {
 		self::pranesimas();
 		if ( self::$ne_visi ) { echo '<div class="pd-msg pd-msg-klaida">Atvirų užsakymų daugiau nei ' . self::RIBA . ' — rodomi ne visi. Naudok paiešką arba filtrus.</div>'; }
 		echo '<main class="dl-main">';
-		$nauju = 0; foreach ( $atviri as $r ) { if ( ! empty( $r['naujas'] ) ) { $nauju++; } }
-		echo '<h1 class="dl-h1">' . esc_html( self::EILES[ $eile ][0] ) . ' <small>' . ( '' !== $f['q'] ? 'paieška: „' . esc_html( $f['q'] ) . '“ <a href="' . esc_url( self::url( array( 'q' => null ) ) ) . '">✕</a>' : esc_html( wp_date( 'l · H:i' ) ) . ( $nauju ? ' · šiandien atėjo ' . $nauju : '' ) ) . '</small></h1>';
-		$tiek = array(); foreach ( $rows as $r ) { foreach ( $r['eil'] as $e ) { if ( $e['tiek'] ) { $tiek[ $e['tiek'] ] = 1; } } }
-		if ( $tiek ) { $pv = self::vardas( array_key_first( $tiek ) ); echo '<div class="dl-legenda">Kelias: <span class="kel sandelis"><i></i>Avesa sandėlis</span> <span class="kel tk"><i></i>' . esc_html( $pv ) . ' → klientui</span> <span class="kel ts"><i></i>' . esc_html( $pv ) . ' → Avesa sandėlį</span> <span class="pilkas">· kiekviena prekė savo keliu; viskas, kas išeina iš Avesos, renkama ir siunčiama kartu</span></div>'; }
+		if ( '' !== $f['q'] ) { echo '<h1 class="dl-h1">Paieška: „' . esc_html( $f['q'] ) . '“ <small><a href="' . esc_url( self::url( array( 'q' => null ) ) ) . '">✕ išvalyti</a></small></h1>'; }
 		self::eiles( $eile, $c );
 		self::filtru_juosta( $eile, $f );
 		if ( 'klausimai' === $eile && $rows ) { self::klausimu_korteles( $rows ); }
 		elseif ( 'laiskai' === $eile && $rows ) { self::laisku_korteles( $rows ); }
 		elseif ( 'paruosta' === $eile && $rows ) { self::paruostos_korteles( $rows ); }
 		else { self::lentele( $rows, $eile ); }
-		echo '<p class="dl-paaisk">' . esc_html( self::EILES[ $eile ][1] ) . '</p>';
 		echo '</main>';
 		self::skydelio_html();
 		self::dialogas();
@@ -850,12 +876,16 @@ class Petshop_Darbalaukis {
 		if ( empty( $_GET['pd_ok'] ) ) { return; }
 		$k = sanitize_key( wp_unslash( $_GET['pd_ok'] ) );
 		$nr = isset( $_GET['pd_nr'] ) ? sanitize_text_field( wp_unslash( $_GET['pd_nr'] ) ) : ''; $d = explode( '|', $nr, 2 );
+		// Atsekamumas: po veiksmo — kur užsakymas dabar.
+		$kur = ''; $oid = isset( $_GET['atidaryti'] ) ? absint( $_GET['atidaryti'] ) : ( preg_match( '/^#?(\d{4,})/', $d[0] ?? '', $mm ) ? (int) $mm[1] : 0 );
+		if ( $oid && ( $oo = wc_get_order( $oid ) ) ) { $fx = self::faktai( $oo, self::zurnalas( array( $oid ) ) ); $kur = ' → dabar: ' . self::kur_dabar( $fx ); }
+		$GLOBALS['ps_dl_kur'] = $kur;
 		$var = array( 'vp_ok' => array( 'ok', 'Lipdukas: siunta registruota Venipak (%s).' ), 'vp_klaida' => array( 'klaida', 'Venipak nepriėmė: %s' ), 'vp_nieko' => array( 'info', 'Registruoti nėra ko: %s.' ), 'kons_ok' => array( 'ok', 'Užsakymas #%s: %s prekė(-s) įdėta(-os) į tiekimo partiją — užsakyk iš tiekėjo Tiekimo lange.' ), 'kons_nieko' => array( 'info', 'Užsakyme #%s nėra ko dėti į partiją.' ), 'apmoketa' => array( 'ok', 'Užsakymas #%s pažymėtas apmokėtu. Prekės rezervuotos, klientui išsiųstas patvirtinimas.' ), 'apmoketa_tyliai' => array( 'ok', 'Užsakymas #%s pažymėtas apmokėtu. Laiškas klientui nesiųstas.' ), 'atsaukta' => array( 'ok', 'Užsakymas #%s atšauktas. Prekės grąžintos į likutį. Klientui nepranešta.' ), 'atsaukta_laiskas' => array( 'ok', 'Užsakymas #%s atšauktas. Klientui išsiųstas pranešimas.' ), 'pakuotes' => array( 'ok', 'Dėžių skaičius: %s.' ), 'kl_laukti' => array( 'info', 'Užsakymas #%s pažymėtas laukti — priminimo nebus.' ) );
-		if ( isset( $var[ $k ] ) ) { $t0 = str_replace( array( ' · AV', ' · PRINS', ' · VF', ' · ZB', ' · QUATTRO', ' · AMBROSIA', ' · BELCOR_TOFU' ), array( ' — Avesa', ' — Prins', ' — Vetfarmas', ' — Žalioji Banga', ' — Quattro', ' — Ambrosia', ' — Belacor' ), $nr ); $d0 = explode( '|', $t0, 2 ); printf( '<div class="pd-msg pd-msg-%s">%s<button class="pd-msg-x" onclick="this.parentNode.remove()">✕</button></div>', esc_attr( $var[ $k ][0] ), esc_html( sprintf( $var[ $k ][1], $d0[0], $d0[1] ?? '' ) ) ); return; }
-		if ( 0 !== strpos( $k, 'dl_' ) ) { self::d( 'pranesimas' ); return; }
+		if ( isset( $var[ $k ] ) ) { $t0 = str_replace( array( ' · AV', ' · PRINS', ' · VF', ' · ZB', ' · QUATTRO', ' · AMBROSIA', ' · BELCOR_TOFU' ), array( ' — Avesa', ' — Prins', ' — Vetfarmas', ' — Žalioji Banga', ' — Quattro', ' — Ambrosia', ' — Belacor' ), $nr ); $d0 = explode( '|', $t0, 2 ); printf( '<div class="pd-msg pd-msg-%s">%s%s<button class="pd-msg-x" onclick="this.parentNode.remove()">✕</button></div>', esc_attr( $var[ $k ][0] ), esc_html( sprintf( $var[ $k ][1], $d0[0], $d0[1] ?? '' ) ), esc_html( $kur ) ); return; }
+		if ( 0 !== strpos( $k, 'dl_' ) ) { ob_start(); self::d( 'pranesimas' ); $h = ob_get_clean(); echo $kur ? str_replace( '<button class="pd-msg-x"', esc_html( $kur ) . '<button class="pd-msg-x"', $h ) : $h; return; }
 		$t = array( 'dl_kelias' => array( 'ok', 'Užsakymas #%s — kelias pakeistas: %s' ), 'dl_issiusta' => array( 'ok', 'Užsakymas #%s išsiųstas — įvykdytas; %s.' ), 'dl_dalis' => array( 'ok', 'Užsakymas #%s: %s.' ), 'dl_issiusta_visi' => array( 'ok', 'Kurjeris paėmė — %2$s.' ), 'dl_laiskas' => array( 'ok', 'Laiškas %s išsiųstas — %s. Užsakymai perėjo į „Paruošta siųsti“.' ), 'dl_zb' => array( 'ok', '%s — perduota: %s užs. Perėjo į „Paruošta siųsti“.' ), 'dl_rusiuota' => array( 'ok', 'Užsakymas #%s surūšiuotas — į darbą. %s' ), 'dl_info' => array( 'info', 'Užsakymas #%s: %s' ), 'dl_klaida' => array( 'klaida', 'Užsakymas #%s: %s' ) );
 		if ( ! isset( $t[ $k ] ) ) { return; }
-		printf( '<div class="pd-msg pd-msg-%s">%s<button class="pd-msg-x" onclick="this.parentNode.remove()">✕</button></div>', esc_attr( $t[ $k ][0] ), esc_html( sprintf( $t[ $k ][1], $d[0], $d[1] ?? '' ) ) );
+		printf( '<div class="pd-msg pd-msg-%s">%s%s<button class="pd-msg-x" onclick="this.parentNode.remove()">✕</button></div>', esc_attr( $t[ $k ][0] ), esc_html( sprintf( $t[ $k ][1], $d[0], $d[1] ?? '' ) ), esc_html( $kur ) );
 	}
 
 	protected static function eiles( $eile, $c ) {
@@ -874,7 +904,8 @@ class Petshop_Darbalaukis {
 	}
 
 	protected static function filtru_juosta( $eile, $f ) {
-		echo '<div class="dl-f-row">';
+		$akt = $f['vykdymas'] || $f['vezejas'] || $f['data'] || $f['r'];
+		echo '<div class="dl-f-row"><a href="#" class="dl-f-tog' . ( $akt ? ' on' : '' ) . '">Filtrai ▾' . ( $akt ? ' (įjungti)' : '' ) . '</a><div class="dl-f-wrap"' . ( $akt ? '' : ' style="display:none"' ) . '>';
 		if ( 'visi' === $eile ) {
 			echo '<div class="dl-chips">';
 			foreach ( array( '' => 'Visi', 'kelyje' => 'Kelyje', 'ivykdyti' => 'Įvykdyti', 'atsaukti' => 'Atšaukti', 'siandien' => 'Išsiųsta šiandien' ) as $k => $t ) { printf( '<a class="dl-chip%s" href="%s">%s</a>', $f['b'] === $k ? ' on' : '', esc_url( self::url( array( 'b' => $k ?: null ) ) ), esc_html( $t ) ); }
@@ -888,8 +919,8 @@ class Petshop_Darbalaukis {
 		echo self::select( 'vezejas', array( '' => 'Pristatymas: visi', 'venipak_kurjeris' => 'Venipak kurjeris', 'venipak_pastomatas' => 'Venipak paštomatas', 'lp' => 'LP Express' ), $f['vezejas'] );
 		echo self::select( 'data', array( '' => 'Data: visos', 'siandien' => 'Šiandien', 'vakar' => 'Vakar', 'savaite' => 'Ši savaitė', 'menuo' => 'Šis mėnuo', 'praeitas' => 'Praeitas mėnuo' ), $f['data'] );
 		echo '<span class="pilkas maz">Rikiuoti:</span>' . self::select( 'r', array( '' => 'skubiausi pirmi', 'laikas' => 'naujausi pirmi', 'suma' => 'suma', 'tiekejas' => 'tiekėjas', 'klientas' => 'klientas' ), $f['r'] );
-		if ( $f['vykdymas'] || $f['vezejas'] || $f['data'] || $f['r'] ) { echo '<a class="dl-x" href="' . esc_url( self::url( array( 'vykdymas' => null, 'vezejas' => null, 'data' => null, 'r' => null ) ) ) . '">išvalyti</a>'; }
-		echo '</form></div>';
+		if ( $akt ) { echo '<a class="dl-x" href="' . esc_url( self::url( array( 'vykdymas' => null, 'vezejas' => null, 'data' => null, 'r' => null ) ) ) . '">išvalyti</a>'; }
+		echo '</form></div></div>';
 	}
 
 	/** Kelio žymė sąraše (maketo kelZyme): pilnas vardas. */
@@ -922,7 +953,7 @@ class Petshop_Darbalaukis {
 
 	protected static function lentele( $rows, $eile ) {
 		if ( ! $rows ) { echo '<div class="dl-tuscia">Čia tuščia — nieko daryti nereikia.</div>'; return; }
-		echo '<table class="dl-tbl"><thead><tr><th>Užsakymas</th><th>Klientas</th><th>Prekės ir keliai</th><th>Pristatymas</th><th class="d">Suma</th><th class="d">Kitas žingsnis</th></tr></thead><tbody>';
+		echo '<table class="dl-tbl dl-paprasta"><thead><tr><th>Užsakymas</th><th>Prekės — iš kur</th>' . ( 'siandien' === $eile || 'visi' === $eile ? '<th>Kur dabar</th>' : '' ) . '<th class="d">Kitas žingsnis</th></tr></thead><tbody>';
 		foreach ( $rows as $r ) {
 			$o = $r['o']; $id = $r['id'];
 			$sp = Petshop_Desk::SPALVOS[ $r['st'] ] ?? array( '#F1F1EE', '#6B7269' );
@@ -930,22 +961,21 @@ class Petshop_Darbalaukis {
 			$vardas = trim( $o->get_shipping_first_name() . ' ' . $o->get_shipping_last_name() ); if ( ! $vardas ) { $vardas = trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ); }
 			$miestas = $o->get_shipping_city() ? $o->get_shipping_city() : $o->get_billing_city();
 			printf( '<tr class="eil%s" data-id="%d" tabindex="0" data-json="%s">', empty( $r['svetimas'] ) ? '' : ' dl-svetimas', $id, esc_attr( wp_json_encode( self::skydelis( $r ), JSON_UNESCAPED_UNICODE ) ) );
-			echo '<td><span class="nr">#' . esc_html( $o->get_order_number() ) . '</span>' . ( ! empty( $r['naujas'] ) ? ' <span class="kel sandelis dl-naujas">naujas</span>' : '' ) . '<br><span class="' . ( ! empty( $r['naujas'] ) ? 'maz dl-siandien' : 'pilkas maz' ) . '">' . esc_html( self::d( 'laikas', $laikas ) ) . '</span>';
-			if ( $o->get_meta( '_ps_klaus_laukti' ) ) { echo '<br><span class="dl-pill dl-pill-e">laukia nuo ' . esc_html( wp_date( 'm-d H:i', strtotime( $o->get_meta( '_ps_klaus_laukti' ) ) ) ) . '</span>'; }
-			if ( 'processing' !== $r['st'] ) { echo '<br><span class="dl-pill" style="background:' . esc_attr( $sp[0] ) . ';color:' . esc_attr( $sp[1] ) . '">' . esc_html( wc_get_order_statuses()[ 'wc-' . $r['st'] ] ?? $r['st'] ) . '</span>'; }
-			if ( 'visi' === $eile && $r['eiles'] ) { echo '<br><span class="dl-pill dl-pill-e">' . esc_html( implode( ' · ', array_map( function ( $e ) { return self::EILES[ $e ][0]; }, $r['eiles'] ) ) ) . '</span>'; }
+			// 1 stulpelis: nr · laikas · klientas · pristatymas · pastaba
+			echo '<td><span class="nr">#' . esc_html( $o->get_order_number() ) . '</span>' . ( ! empty( $r['naujas'] ) ? ' <span class="kel sandelis dl-naujas">naujas</span>' : '' ) . ' <span class="' . ( ! empty( $r['naujas'] ) ? 'maz dl-siandien' : 'pilkas maz' ) . '">' . esc_html( self::d( 'laikas', $laikas ) ) . '</span>';
+			if ( 'processing' !== $r['st'] ) { echo ' <span class="dl-pill" style="background:' . esc_attr( $sp[0] ) . ';color:' . esc_attr( $sp[1] ) . '">' . esc_html( wc_get_order_statuses()[ 'wc-' . $r['st'] ] ?? $r['st'] ) . '</span>'; }
+			echo '<br>' . esc_html( $vardas ?: '—' ) . ' <span class="pilkas maz">· ' . esc_html( self::d( 'vezejo_vardas', $o ) ) . ( $miestas ? ', ' . esc_html( $miestas ) : '' ) . ' · ' . esc_html( wp_strip_all_tags( $o->get_formatted_order_total() ) ) . ( $r['paid'] ? '' : ' · <b class="raud">neapmokėta</b>' ) . '</span>';
+			if ( $o->get_meta( '_ps_klaus_laukti' ) ) { echo ' <span class="dl-pill dl-pill-e">laukia nuo ' . esc_html( wp_date( 'm-d H:i', strtotime( $o->get_meta( '_ps_klaus_laukti' ) ) ) ) . '</span>'; }
+			if ( $o->get_customer_note() ) { echo '<div class="dl-note">' . esc_html( $o->get_customer_note() ) . '</div>'; }
 			echo '</td>';
-			echo '<td>' . esc_html( $vardas ?: '—' ) . '<br><span class="pilkas maz">' . esc_html( trim( $miestas . ( $o->get_billing_phone() ? ' · ' . $o->get_billing_phone() : '' ) ) ) . '</span>' . ( $o->get_customer_note() ? '<div class="dl-note">' . esc_html( $o->get_customer_note() ) . '</div>' : '' ) . '</td>';
+			// 2 stulpelis: prekės pagal kelią — viena eilutė kiekvienam keliui
+			$gr = array(); foreach ( $r['eil'] as $e ) { $k = 'av' === $e['k'] ? 'av' : ( ( $e['k'] ?: 'kur' ) . '|' . $e['tiek'] ); $gr[ $k ][] = $e; }
 			echo '<td>';
-			foreach ( $r['eil'] as $e ) {
-				$pad = array(); foreach ( $e['zing'] as $zg ) { if ( 'ok' === $zg[1] ) { $pad[] = mb_strtolower( $zg[0] ); } }
-				$inf = false === $e['av_ok'] ? '<span class="raud maz">Avesoje ' . (int) $e['av_qty'] . '</span>' : ( $e['bukle'] ? '<span class="pilkas maz">' . esc_html( $e['bukle'] ) . '</span>' : ( $pad ? '<span class="pilkas maz">✓ ' . esc_html( implode( ', ', $pad ) ) . '</span>' : '' ) );
-				echo '<div class="dl-it">' . self::zyme( $e ) . ' ' . (int) $e['q'] . '× ' . esc_html( $e['n'] ) . ' ' . $inf . '</div>';
-			}
-			echo self::takelis_html( $r ) . '</td>';
-			$vp = $o->get_meta( 'venipak_pickup_point' );
-			echo '<td>' . esc_html( self::d( 'vezejo_vardas', $o ) ) . '<br><span class="pilkas maz">' . esc_html( $vp ? mb_substr( (string) $vp, 0, 40 ) : $miestas ) . '</span></td>';
-			echo '<td class="d"><b>' . esc_html( wp_strip_all_tags( $o->get_formatted_order_total() ) ) . '</b><br><span class="pilkas maz">' . ( $r['paid'] ? 'apmokėta' : 'neapmokėta' ) . '</span></td>';
+			foreach ( $gr as $k => $es ) { $e0 = $es[0]; $n = 0; foreach ( $es as $e ) { $n += $e['q']; } $bad = array(); foreach ( $es as $e ) { if ( false === $e['av_ok'] ) { $bad[] = 'Avesoje ' . (int) $e['av_qty'] . ', reikia ' . $e['q']; } }
+				$pav = mb_substr( $e0['n'], 0, 42 ) . ( mb_strlen( $e0['n'] ) > 42 ? '…' : '' );
+				echo '<div class="dl-it">' . self::zyme( $e0 ) . ' <b>' . $n . ' vnt.</b> <span class="pilkas">' . esc_html( $pav ) . ( count( $es ) > 1 ? ' +' . ( count( $es ) - 1 ) : '' ) . '</span>' . ( $e0['bukle'] ? ' <span class="pilkas maz">' . esc_html( $e0['bukle'] ) . '</span>' : '' ) . ( $bad ? ' <span class="raud maz">' . esc_html( implode( '; ', $bad ) ) . '</span>' : '' ) . '</div>'; }
+			echo '</td>';
+			if ( 'siandien' === $eile || 'visi' === $eile ) { echo '<td><span class="maz">' . esc_html( self::kur_dabar( $r ) ) . '</span></td>'; }
 			$b = self::mygtukas_eilei( $r, $eile );
 			echo '<td class="d">' . self::btn_html( $b );
 			$bs = ''; foreach ( $r['takelis'] as $t ) { if ( $b && $t[4] && self::mygtukas( $t, $r )[0] === $b[0] ) { $bs = $t[3] ? $t[3] : $r['riba_s']; break; } }
@@ -1186,6 +1216,8 @@ class Petshop_Darbalaukis {
 .dl-inl{display:contents}.dl-laisko-nust{flex-basis:100%;display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--pilka);margin-top:4px}.dl-laisko-nust input[type=text]{font:inherit;border:1px solid var(--linija);border-radius:5px;padding:3px 8px;min-width:280px}
 .dl-perz-t{flex-basis:100%;background:var(--fonas);border-radius:8px;padding:10px 14px;margin-top:8px;font-size:13px;overflow:auto;max-height:420px}.dl .takelis small{font-size:10px;opacity:.7}
 .dl-zs{display:flex;flex-direction:column;gap:8px;max-width:860px}.dl-z{display:flex;gap:14px;align-items:center;background:var(--popierius);border:1px solid var(--linija);border-radius:8px;padding:12px 14px}.dl-z.tuscias{opacity:.55}.dl-z .zn{width:26px;height:26px;border-radius:50%;background:var(--zalia-s);color:var(--zalia);display:flex;align-items:center;justify-content:center;font-weight:600;flex:none}.dl-z.tuscias .zn{background:var(--fonas);color:var(--pilka)}.dl-z .zt{flex:1}.dl-z .zt b{display:block}
+.dl-siand{margin:0 24px;padding:8px 12px;background:var(--zalia-s);border:1px solid #c9e2d3;border-radius:8px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:13px}.dl-siand>b{color:var(--zalia)}.dl-siand-u{display:inline-flex;gap:6px;align-items:center;color:var(--rasalas);padding:3px 8px;border-radius:6px;background:#fff;border:1px solid var(--linija)}.dl-siand-u:hover{text-decoration:none;border-color:var(--zalia)}.dl-kur{color:var(--zalia)}
+.dl-paprasta th:first-child{width:34%}.dl-paprasta td{padding:11px 12px}.dl-f-tog{font-size:12px;color:var(--pilka)}.dl-f-tog.on{color:var(--zalia);font-weight:600}.dl-f-wrap{margin-top:6px}
 .dl-tuscia{background:var(--popierius);border:1px dashed var(--linija);border-radius:8px;padding:28px;text-align:center;color:var(--pilka)}.dl-paaisk{color:var(--pilka);font-size:13px;margin-top:10px}
 .dl-kortele{background:var(--popierius);border:1px solid var(--linija);border-radius:8px;padding:16px 18px;margin-bottom:14px}.dl-kortele h2{margin:0 0 6px;font-size:16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.dl-kortele p{margin:6px 0}.dl-kortele .pastaba{color:var(--pilka);font-size:13px}.dl-veiksmai{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .pd-msg{display:flex;align-items:center;gap:10px;padding:10px 24px;font-size:13.5px;border-bottom:1px solid var(--linija);background:#fff}.pd-msg-ok{background:var(--zalia-s);color:var(--zalia)}.pd-msg-info{background:#F1F1EE;color:var(--pilka)}.pd-msg-klaida{background:var(--raudona-s);color:var(--raudona)}.pd-msg-x{margin-left:auto;border:0;background:none;cursor:pointer;color:inherit;opacity:.6}
@@ -1235,7 +1267,7 @@ class Petshop_Darbalaukis {
 	var KC={av:'sandelis',tiesiai:'tk',i_av:'ts'};
 	function atidaryti(i){ var r=rows[i]; if(!r) return; var o; try{ o=JSON.parse(r.getAttribute('data-json')); }catch(e){ return; } mark(i);
 		$('skNr').textContent='#'+o.nr+(o.uzdarytas?' · '+o.st:''); $('skKl').textContent=o.kl+' · '+o.suma+' · '+o.apmok;
-		$('skPastaba').textContent=o.pastaba; var K=$('skKlaus'); if(o.klausimas){ K.style.display='block'; K.textContent='Klausimas: '+o.klausimas; } else K.style.display='none';
+		$('skPastaba').innerHTML='<b class="dl-kur">Dabar: '+esc(o.kur)+'</b><br>'+esc(o.pastaba); var K=$('skKlaus'); if(o.klausimas){ K.style.display='block'; K.textContent='Klausimas: '+o.klausimas; } else K.style.display='none';
 		$('skEil').innerHTML=o.eil.map(function(l){ return '<div class="eilute"><div class="virsus"><div class="k">'+l.q+'×</div><div class="p">'+esc(l.n)+(l.sku?' <span class="pilkas maz">'+esc(l.sku)+'</span>':'')+'</div></div>'
 			+'<div class="keliai">'+l.keliai.map(function(k){ var c=KC[k.k]+(k.on?' on':'')+(k.gal||k.on?'':' ne'); var t='<i></i>'+esc(k.t); if(k.u) return '<a class="'+c+'" href="'+esc(k.u)+'" title="Keisti kelią">'+t+'</a>'; return '<span class="kb '+c+'"'+(k.kodel_ne&&!k.on?' title="'+esc(k.kodel_ne)+'"':'')+'>'+t+'</span>'; }).join('')+'</div>'
 			+'<div class="kodel">'+esc(l.kodel)+(l.tiek_url?' <a href="'+esc(l.tiek_url)+'">Tiekimas →</a>':'')+'</div>'+(l.lock?'<div class="lock">Kelias užrakintas: '+esc(l.lock)+'</div>':'')
@@ -1271,6 +1303,7 @@ class Petshop_Darbalaukis {
 	document.addEventListener('click',function(e){ var k=e.target.closest('.dl-kopijuoti'); if(k){ e.stopPropagation(); var t=k.getAttribute('data-tsv'); (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(function(){ k.textContent='Nukopijuota'; setTimeout(function(){k.textContent='Kopijuoti';},1500); }).catch(function(){ window.prompt('Nukopijuok:',t); }); return; }
 		var p=e.target.closest('.dl-perz'); if(p){ e.stopPropagation(); var f=p.closest('form'); var d=f&&f.querySelector('.dl-perz-t'); if(d){ d.style.display=d.style.display==='none'?'block':'none'; } return; }
 		var b=e.target.closest('a[data-blank]'); if(b){ setTimeout(function(){ location.reload(); },1500); } },true);
+	var ft=document.querySelector('.dl-f-tog'); if(ft){ ft.addEventListener('click',function(e){ e.preventDefault(); var w=document.querySelector('.dl-f-wrap'); if(w){ w.style.display=w.style.display==='none'?'block':'none'; } }); }
 	try{ var u=new URL(location.href); if(u.searchParams.has('pd_ok')||u.searchParams.has('atidaryti')){ ['pd_ok','pd_nr','atidaryti'].forEach(function(k){u.searchParams.delete(k);}); history.replaceState(null,'',u.toString()); } }catch(e){}
 	var at=parseInt(document.getElementById('dl').getAttribute('data-atid'),10)||0;
 	if(at){ var i=rows.findIndex(function(r){ return parseInt(r.getAttribute('data-id'),10)===at; }); if(i>=0) atidaryti(i); }
