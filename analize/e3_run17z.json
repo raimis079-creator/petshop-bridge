@@ -1,0 +1,67 @@
+{
+ "v": "dep-170737",
+ "kurimas": 200,
+ "sid": 4624,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Z": {
+  "v": "run e3z",
+  "temp_istrinta": 1,
+  "oid": 35771,
+  "pries": {
+   "stock": "70",
+   "own": "20"
+  },
+  "dvigubas_tiesiai": [
+   "klaida: 60 SSL certificate problem: unable to get local issuer certificate",
+   "klaida: 60 SSL certificate problem: unable to get local issuer certificate"
+  ],
+  "po_tiesiai": {
+   "stock": "70",
+   "own": "20"
+  },
+  "eil_po_tiesiai": {
+   "kelias": "av",
+   "src": "av",
+   "reduced": "1"
+  },
+  "dvigubas_av": [
+   "klaida: 60 SSL certificate problem: unable to get local issuer certificate",
+   "klaida: 60 SSL certificate problem: unable to get local issuer certificate"
+  ],
+  "po_av": {
+   "stock": "70",
+   "own": "20"
+  },
+  "eil_po_av": {
+   "kelias": "av",
+   "src": "av",
+   "reduced": "1"
+  },
+  "zurnalas": [
+   {
+    "veiksmas": "rusiuoti",
+    "rezultatas": "ok",
+    "pastaba": "auto: visos prekės vienu keliu"
+   },
+   {
+    "veiksmas": "busena",
+    "rezultatas": "ok",
+    "pastaba": "mokėjimas / svetainė"
+   },
+   {
+    "veiksmas": "apmokejimas",
+    "rezultatas": "ok",
+    "pastaba": "keliai: #1536 av · MAIN"
+   }
+  ],
+  "atsaukta": "35771 [atsaukta]",
+  "galas": {
+   "stock": "70",
+   "own": "21"
+  },
+  "busena": "cancelled"
+ }
+}
