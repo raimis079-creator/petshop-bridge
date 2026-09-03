@@ -1,0 +1,134 @@
+{
+ "v": "dep-175948",
+ "kurimas": 200,
+ "sid": 4632,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "f": "R",
+  "temp_istrinta": 1,
+  "pending_hooks": [
+   {
+    "hook": "fetch_patterns",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "woocommerce_cleanup_logs",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "wpforms_admin_builder_templates_cache_update",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "woocommerce_cleanup_sessions",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "woocommerce_cleanup_personal_data",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "woocommerce_geoip_updater",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "woocommerce_refresh_order_count_cache",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "wpforms_process_purge_spam",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "action_scheduler_run_recurring_actions_schedule_hook",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "wpforms_analytics_aggregate",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "woocommerce_cleanup_rate_limits_wrapper",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "wp_mail_smtp_summary_report_email",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "woocommerce_cancel_unpaid_orders",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "wp_mail_smtp_admin_notifications_update",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "woocommerce_tracker_send_event_wrapper",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "wc-admin_process_pending_orders_batch",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "woocommerce_scheduled_sales",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "wpforms_admin_addons_cache_update",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "action_scheduler_run_actions_cleanup_hook",
+    "status": "pending",
+    "n": "1"
+   },
+   {
+    "hook": "wc_admin_daily_wrapper",
+    "status": "pending",
+    "n": "1"
+   }
+  ],
+  "email_pvz": [
+   {
+    "action_id": "140832",
+    "hook": "wp_mail_smtp_summary_report_email",
+    "status": "pending",
+    "scheduled_date_gmt": "2026-09-07 11:20:52",
+    "args": "[null]"
+   },
+   {
+    "action_id": "143544",
+    "hook": "wpforms_email_summaries_fetch_info_blocks",
+    "status": "pending",
+    "scheduled_date_gmt": "2026-09-10 09:27:06",
+    "args": "{\"tasks_meta_id\":null}"
+   }
+  ],
+  "email_pending": 2,
+  "dev_zurnalas_n": 1,
+  "defer": false
+ }
+}
