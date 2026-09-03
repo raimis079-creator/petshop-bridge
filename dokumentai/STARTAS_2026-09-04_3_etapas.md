@@ -7,10 +7,12 @@
 - **Viena sistema** — darbuotojas iš naujo lango neišeina; WC darbuotojui niekur; senas desk tik variklis (`senas=1` — tik Raimiui, LP lipdukams).
 - **Darbuotojo dienoraštis** prieš „padaryta“: 2 nauji užsakymai nuo atėjimo iki „Kurjeris paėmė“, tekstas kaip mato darbuotojas, ne kodas. Raimis: „pratestuok kaip paprastas darbuotojas, kuris nežino sistemos“.
 - **Mažiau, ne daugiau**: kiekvienas naujas ekrano elementas — klausti, ką jis nuima. Spalvos tik „Visi“. Žodynas — tik iš ZODYNAS v1.1.
+- **Laiškai testuose:** kiekvienas payload'as su užsakymais — su `pre_wp_mail` gaudykle (S1608 incidentas: 320 WC laiškų į spam). Dev'e laiškus blokuoja `petshop-dev-pastas.php` v1.0 (pagal hostą; žurnalas `ps_dev_pastas_zurnalas`, langas `page=ps-dev-pastas`); testų turinį tikrinti ten arba gaudyklę kelti į prior. 4.
 - Nepridėti fantazijos: sprendimai — Raimio, tik sąraše spec §1 ir §12; jei nėra — klausti, ne spėti.
 
 ## Kas gyva dev'e (2026-09-03 vakaras)
 - `mu-plugins/petshop-darbalaukis.php` **v3.9** (169 497 B, md5 `4a798693625447d91bcbcf2fcb5f2dee`) = repo `deploy/petshop-darbalaukis.php` (+ `.b64`). Kopijos `uploads/ps-backups/petshop-darbalaukis-v03/v12/v20/v24/v301/v35/v36/v361/v37/v38/v381-BACKUP-2026-09-03.php`.
+- `mu-plugins/petshop-dev-pastas.php` **v1.0** (md5 `744c69c92bb8f362ca7e3ccc1b80ddc5`) — dev laiškų saugiklis.
 - `mu-plugins/petshop-juosta.php` **v1.5** (md5 `13c9a2c81bd4a036389c07d386e67a09`) = repo `deploy/petshop-juosta.php`.
 - Variklis nekeistas: desk v3.48 (`33c9b1fe`), dropship v1.19 (`609d2b1e`), tiekimas v1.9.3 (`018548dc`), siuntu-laiskai v1.2 gyvas `753f8c6c` (repo kopija pasenusi — neliesti), ivykiai v1.1 (`1bd24c70`).
 - Deploy: b64 trimis dalimis (`uploads/ps-backups/dl-vXX.part1` + `.part2` po 80 000 ženklų atskirais run'ais, trečia dalis deploy payload'e; vienas payload >110 KB neveikia, media upload 500). Šablonas — S1608 `e3a/e3b/e3d.php` (log). Jei run'as grąžina pradinį puslapį vietoj JSON — pakartoti su nauju GET raktu (S1608 `e3_run2b`).
