@@ -1,0 +1,103 @@
+{
+ "v": "dep-121813",
+ "kurimas": 200,
+ "sid": 4579,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run18b",
+  "f": "D",
+  "buvo": "de490a9959a10d1e738fbee3376c6337",
+  "deploy": {
+   "bytes": 136821,
+   "md5": "32ced5ada10168bf26e37598ba604faf"
+  }
+ },
+ "T": {
+  "v": "run18b",
+  "f": "T",
+  "versija": "3.2",
+  "partijos": [
+   {
+    "id": "12",
+    "tiekejas": "quattro",
+    "busena": "kaupiama"
+   }
+  ],
+  "nauji": {
+   "VF+ZB be pastabos": 35443,
+   "AV+Quattro (atvira partija?)": 35444
+  },
+  "faktai": {
+   "35443": {
+    "rus": "",
+    "eiles": "nauji",
+    "eil": [
+     "vf/tiesiai",
+     "zb/tiesiai"
+    ],
+    "btn": "Rūšiuoti"
+   },
+   "35444": {
+    "rus": "",
+    "eiles": "nauji",
+    "eil": [
+     "av/av",
+     "quattro/i_av"
+    ],
+    "btn": "Rūšiuoti"
+   }
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788441602|fgFpkFVTOUs7P75TbEnzVKs8zm1wadkpI0bBTh2b8Db|7b65ec550303ace719466e453501b18669052ea83ebac53fcf728bb24ef4493f"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788441602|fgFpkFVTOUs7P75TbEnzVKs8zm1wadkpI0bBTh2b8Db|3b0ad75365187292482173ff927a84349b69ea8c5f82c74f7efc5e7f09048f2d"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788441602|fgFpkFVTOUs7P75TbEnzVKs8zm1wadkpI0bBTh2b8Db|cd06282f575eafac1a654b899cedb3158d496c8d8d0e626ba6c58da9c856a5c0"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e2n_nauji",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+    "h": 700,
+    "eval": "({rows:[...document.querySelectorAll('tr.eil')].map(function(r){return r.querySelector('.nr').textContent+' → '+[...r.querySelectorAll('td.d a.v')].map(function(a){return a.textContent}).join('/')+' · '+(r.querySelector('td.d .pilkas')||{}).textContent}).join(' || ')})"
+   },
+   {
+    "n": "e2n_auto",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+    "click": "tr[data-id=\\\"35443\\\"] td.d a.v:not(.p)",
+    "eval": "({url:location.href.slice(0,160),msg:(document.querySelector('.pd-msg')||{}).textContent})"
+   }
+  ]
+ },
+ "shots": {
+  "e2n_nauji": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "rows": "#35443 → Auto · siūlo: VF siunčia klientui · ZB siunčia klientui — 2 siuntos || #35444 → Auto · siūlo: Iš AV · Quattro veža į AV — 1 siunta || #35442 → Auto · siūlo: VF siunčia klientui · Iš AV — 2 siuntos"
+   }
+  },
+  "e2n_auto": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('tr[data-id=\\\\\"35443\\\\\"] td.d a.v:not(.p)')\n",
+   "eval": {
+    "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji"
+   }
+  }
+ }
+}
