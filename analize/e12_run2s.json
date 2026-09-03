@@ -1,0 +1,194 @@
+{
+ "v": "dep-203840",
+ "kurimas": 200,
+ "sid": 4664,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "run e12s",
+  "temp_istrinta": 1,
+  "vc_hooks": [
+   "add_action( 'template_redirect', array( $this, 'maybe_process_request' ) );",
+   "add_action( 'woocommerce_before_account_orders', array( $this, 'print_result_notice' ), 5 );",
+   "add_action( 'woocommerce_before_account_orders', array( $this, 'render_prompt' ) );"
+  ],
+  "should_show": "$user_id = get_current_user_id(); if ( ! $user_id ) { return false; } if ( $this->service->is_verified( $user_id ) ) { return false; } // A temporary-password account already has a set-password link (which also verifies on use), // surfaced by the temporary-password notice — don't show a second prompt alongside it. if ( get_user_option( 'default_password_nag', $user_id ) ) { return false; } return true; } /** * Render the verification prompt notice on the My Account \"Orders\" panel. * * Within the rate-limit window a link was sent recently, so the prompt points the customer to their * inbox and offers no immediate resend; otherwise it carries the \"confirm email\" call to action. * * @internal * @since 11.0.0 */ public function render_prompt(): void { if ( ! $this->should_show_prompt() ) { return; } $user_id = get_current_user_id(); $seconds_since = $this->service->seconds_since_last_key( $user_id ); if ( null !== $seconds_since && $seconds_since <= self::SEND_RATE_LIMIT ) { // A just-sent/throttled result notice (from the redirect) already points to the inbox this // page load, so don't print a second",
+  "vc_const": {
+   "SEND_NONCE_ACTION": "'woocommerce-send-verification-email'",
+   "SEND_PARAM": "'wc_send_verification'",
+   "KEY_PARAM": "'wc_verify_email_key'",
+   "USER_PARAM": "'wc_verify_email_user'",
+   "NOTICE_PARAM": "'wc_verify_notice'",
+   "SEND_RATE_LIMIT": "60"
+  },
+  "gyvi": {
+   "woocommerce_before_account_orders": [
+    "5: Automattic\\WooCommerce\\Internal\\CustomerEmailVerification\\VerificationController::print_result_notice",
+    "10: closure",
+    "10: Automattic\\WooCommerce\\Internal\\CustomerEmailVerification\\VerificationController::render_prompt"
+   ],
+   "woocommerce_account_orders_endpoint": [
+    "10: woocommerce_account_orders"
+   ],
+   "woocommerce_before_account_orders_pagination": []
+  },
+  "lpsettings": [
+   {
+    "option_name": "lpsettings_woo_lithuaniapost_updated_version",
+    "option_value": "4.0.32"
+   },
+   {
+    "option_name": "lpsettings_api_username",
+    "option_value": "terra@petshop.lt"
+   },
+   {
+    "option_name": "lpsettings_api_password",
+    "option_value": "AvesaPetshop1"
+   },
+   {
+    "option_name": "lpsettings_sender_name",
+    "option_value": "UAB Avesa"
+   },
+   {
+    "option_name": "lpsettings_sender_company_name",
+    "option_value": "UAB Avesa"
+   },
+   {
+    "option_name": "lpsettings_sender_phone",
+    "option_value": "+37068187787"
+   },
+   {
+    "option_name": "lpsettings_sender_email",
+    "option_value": "terra@petshop.lt"
+   },
+   {
+    "option_name": "lpsettings_sender_country",
+    "option_value": "LT"
+   },
+   {
+    "option_name": "lpsettings_sender_city",
+    "option_value": "Liucionys"
+   },
+   {
+    "option_name": "lpsettings_sender_street",
+    "option_value": "Liucionių g."
+   },
+   {
+    "option_name": "lpsettings_sender_building",
+    "option_value": "46"
+   },
+   {
+    "option_name": "lpsettings_sender_apartment",
+    "option_value": ""
+   },
+   {
+    "option_name": "lpsettings_sender_postcode",
+    "option_value": "15166"
+   },
+   {
+    "option_name": "lpsettings_use_pickup_address",
+    "option_value": "yes"
+   },
+   {
+    "option_name": "lpsettings_pickup_name",
+    "option_value": "UAB Avesa"
+   },
+   {
+    "option_name": "lpsettings_pickup_company_name",
+    "option_value": "UAB Avesa"
+   },
+   {
+    "option_name": "lpsettings_pickup_phone",
+    "option_value": "+37068187787"
+   },
+   {
+    "option_name": "lpsettings_pickup_email",
+    "option_value": "terra@petshop.lt"
+   },
+   {
+    "option_name": "lpsettings_pickup_country",
+    "option_value": "LT"
+   },
+   {
+    "option_name": "lpsettings_pickup_city",
+    "option_value": "Liucionys"
+   },
+   {
+    "option_name": "lpsettings_pickup_street",
+    "option_value": "Liucionių g."
+   },
+   {
+    "option_name": "lpsettings_pickup_building",
+    "option_value": "46"
+   },
+   {
+    "option_name": "lpsettings_pickup_apartment",
+    "option_value": ""
+   },
+   {
+    "option_name": "lpsettings_pickup_postcode",
+    "option_value": "15166"
+   },
+   {
+    "option_name": "lpsettings_dimension_height",
+    "option_value": "15"
+   },
+   {
+    "option_name": "lpsettings_dimension_width",
+    "option_value": "20"
+   },
+   {
+    "option_name": "lpsettings_dimension_length",
+    "option_value": "30"
+   },
+   {
+    "option_name": "lpsettings_validate_shipping_before_checkout",
+    "option_value": "yes"
+   },
+   {
+    "option_name": "lpsettings_event_to_change_status_to_completed",
+    "option_value": "wc-lp-on-the-way"
+   },
+   {
+    "option_name": "lpsettings_event_to_send_tracking_email",
+    "option_value": "wc-lp-on-the-way"
+   },
+   {
+    "option_name": "lpsettings_other_label_format",
+    "option_value": "LAYOUT_10x15"
+   },
+   {
+    "option_name": "lpsettings_other_label_orientation",
+    "option_value": "LANDSCAPE"
+   },
+   {
+    "option_name": "lpsettings_woo_lithuaniapost_address_pickup_id",
+    "option_value": "32742454"
+   },
+   {
+    "option_name": "woocommerce_woo_lithuaniapost_lpexpress_terminal_12_settings",
+    "option_value": "a:20:{s:5:\"title\";s:10:\"LP Express\";s:4:\"plan\";s:8:\"TERMINAL\";s:11:\"parcel_type\";s:3:\"H2T\";s:13:\"delivery_time\";s:0:\"\";s:4:\"cost\";s:4:\"flat\";s:10:\"fixed_cost\";s:4:\"1,78\";s:11:\"weight_cost\";s:0:\"\";s:9:\"size_cost\";s:0:\"\";s:18:\"free_shipping_cost\";s:2:\"30\";s:35:\"apply_free_shipping_before_discount\";s:2:\"no\";s:20:\"order_return_service\";s:2:\"no\";s:10:\"tax_status\";s:7:\"taxable\";s:11:\"class_costs\";s:0:\"\";s:14:\"class_cost_237\";s:0:\"\";s:14:\"class_cost_235\";s:0:\"\";s:14:\"class_cost_236\";s:0:\"\";s:14:\"class_cost_234\";s:0:\"\";s:13:\"no_class_cost\";s:0:\"\";s:4:\"type\";s:5:\"class\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";}"
+   },
+   {
+    "option_name": "woocommerce_woo_lithuaniapost_lpexpress_terminal_13_settings",
+    "option_value": "a:20:{s:5:\"title\";s:10:\"LP Express\";s:4:\"plan\";s:8:\"TERMINAL\";s:11:\"parcel_type\";s:3:\"H2T\";s:13:\"delivery_time\";s:0:\"\";s:4:\"cost\";s:4:\"flat\";s:10:\"fixed_cost\";s:4:\"1,78\";s:11:\"weight_cost\";s:0:\"\";s:9:\"size_cost\";s:0:\"\";s:18:\"free_shipping_cost\";s:2:\"30\";s:35:\"apply_free_shipping_before_discount\";s:2:\"no\";s:20:\"order_return_service\";s:2:\"no\";s:10:\"tax_status\";s:7:\"taxable\";s:11:\"class_costs\";s:0:\"\";s:14:\"class_cost_237\";s:0:\"\";s:14:\"class_cost_235\";s:0:\"\";s:14:\"class_cost_236\";s:0:\"\";s:14:\"class_cost_234\";s:0:\"\";s:13:\"no_class_cost\";s:0:\"\";s:4:\"type\";s:5:\"class\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";}"
+   },
+   {
+    "option_name": "woocommerce_woo_lithuaniapost_lpexpress_terminal_15_settings",
+    "option_value": "a:28:{s:5:\"title\";s:19:\"LP Express kurjeris\";s:4:\"plan\";s:5:\"HANDS\";s:11:\"parcel_type\";s:3:\"H2H\";s:13:\"delivery_time\";s:0:\"\";s:4:\"cost\";s:6:\"weight\";s:10:\"fixed_cost\";s:0:\"\";s:11:\"weight_cost\";s:0:\"\";s:9:\"size_cost\";s:0:\"\";s:18:\"free_shipping_cost\";s:0:\"\";s:35:\"apply_free_shipping_before_discount\";s:2:\"no\";s:20:\"order_return_service\";s:2:\"no\";s:10:\"tax_status\";s:7:\"taxable\";s:11:\"class_costs\";s:0:\"\";s:14:\"class_cost_237\";s:0:\"\";s:14:\"class_cost_235\";s:0:\"\";s:14:\"class_cost_236\";s:0:\"\";s:14:\"class_cost_234\";s:0:\"\";s:13:\"no_class_cost\";s:0:\"\";s:4:\"type\";s:5:\"class\";s:9:\"weights_0\";s:5:\"50000\";s:9:\"weights_1\";s:5:\"70000\";s:9:\"weights_2\";s:6:\"100000\";s:9:\"weights_3\";s:6:\"200000\";s:15:\"weights_costs_0\";s:4:\"3,30\";s:15:\"weights_costs_1\";s:4:\"6,60\";s:15:\"weights_costs_2\";s:4:\"9,90\";s:15:\"weights_costs_3\";s:5:\"20,65\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";}"
+   }
+  ],
+  "lp_get_option": {
+   "event_to_send_tracking_email": "wc-lp-on-the-way",
+   "event_to_change_status_to_completed": "wc-lp-on-the-way",
+   "tracking_data_sync_completed": false
+  },
+  "lp_get_option_src": "public static function get_option ( $option, $prefix = 'lpsettings_' ) { return get_option ( $prefix . $option ); }",
+  "lp_settings_ctx": [
+   "], 'id' => 'lpsettings_event_to_change_status_to_completed', 'default' => 'yes' ], [ 'name' => __(\"Sent email with order tracking link when\", 'woo-lithuaniapost'), 'type' => 'select', 'options' => [ '' => __('Never', 'woo-lithuaniapost'), LpOrderStatus::$SHI",
+   "], 'id' => 'lpsettings_event_to_send_tracking_email', 'default' => LpOrderStatus::$ON_THE_WAY->to_order_status(), 'desc' => __( 'To include tracking link into already existing WooCommerce email templates add {unisend_tracking_number} text into template content.', 'woo-lithuaniapost' ) ], [ 'name' => __( 'Label Format', 'woo-lithuani"
+  ]
+ }
+}
