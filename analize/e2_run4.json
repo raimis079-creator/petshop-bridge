@@ -1,0 +1,148 @@
+{
+ "v": "dep-072324",
+ "kurimas": 200,
+ "sid": 4553,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "S1607-run4",
+  "f": "T",
+  "temp_istrinta": 1,
+  "darbalaukis": {
+   "md5": "f7d7b494c0a465f674654ff3a21f8a20",
+   "v": "1.0",
+   "desk_meniu": false,
+   "dl_meniu": 10,
+   "dl_post": true
+  },
+  "wp_debug": {
+   "WP_DEBUG": false,
+   "LOG": false,
+   "DISPLAY": false
+  },
+  "admins": [
+   "1:bdz487"
+  ],
+  "admin": {
+   "nauji": {
+    "code": 200,
+    "len": 386822,
+    "rows": 5,
+    "json": 5,
+    "sk": true,
+    "js": true,
+    "css": true,
+    "psj": true,
+    "php": [
+     "Notice\":[\"Prane\\u0161imas\"],\"Error notice\":[\"Prane\\u0161imas apie klaid\\u0105\"],\"Information notice\":[\"Informacinis prane\\u0161imas\"],\"Warning notice\":[\"\\u012esp\\u0117jamasis prane\\u0161imas\"],\"Focal point top position\":[\"Fokusas vir\\u0161uje\"],\"Focal point left position\":[\"Fokusas kair\\u0117je\"],\"Scrolla"
+    ],
+    "js_end": ""
+   },
+   "surinkti": {
+    "code": 200,
+    "len": 405477,
+    "rows": 7,
+    "json": 7,
+    "sk": true,
+    "js": true,
+    "css": true,
+    "psj": true,
+    "php": [
+     "Notice\":[\"Prane\\u0161imas\"],\"Error notice\":[\"Prane\\u0161imas apie klaid\\u0105\"],\"Information notice\":[\"Informacinis prane\\u0161imas\"],\"Warning notice\":[\"\\u012esp\\u0117jamasis prane\\u0161imas\"],\"Focal point top position\":[\"Fokusas vir\\u0161uje\"],\"Focal point left position\":[\"Fokusas kair\\u0117je\"],\"Scrolla"
+    ],
+    "js_end": ""
+   },
+   "klaus": {
+    "code": 200,
+    "len": 369543,
+    "rows": 0,
+    "json": 2,
+    "sk": true,
+    "js": true,
+    "css": true,
+    "psj": true,
+    "php": [
+     "Notice\":[\"Prane\\u0161imas\"],\"Error notice\":[\"Prane\\u0161imas apie klaid\\u0105\"],\"Information notice\":[\"Informacinis prane\\u0161imas\"],\"Warning notice\":[\"\\u012esp\\u0117jamasis prane\\u0161imas\"],\"Focal point top position\":[\"Fokusas vir\\u0161uje\"],\"Focal point left position\":[\"Fokusas kair\\u0117je\"],\"Scrolla"
+    ],
+    "js_end": ""
+   }
+  },
+  "admin_body_end": "_name\":\"terrab259bcbf85\",\"text_direction\":\"ltr\",\"site_count\":1,\"jetpack_connect\":\"\",\"color_scheme\":\"modern\",\"sidebar_collapsed\":false,\"user_locale\":\"lt\",\"user_currency\":\"EUR\",\"avatar\":\"https://secure.gravatar.com/avatar/56c73d907cbb97befe91aef2e739f0085a420792fdc319945de9ce716e0bfc35?s=64\\u0026d=mm\\u0026r=g\"},\"gravatar\":\"https://secure.gravatar.com/avatar/e51456ed19f52c0a6e2068122a20d5071c0f572a2e",
+  "json_pradzia": "{&quot;id&quot;:35415,&quot;nr&quot;:&quot;35415&quot;,&quot;st&quot;:&quot;Vykdomas&quot;,&quot;uzdarytas&quot;:false,&quot;kl&quot;:&quot;AUDITAS Testas 2&quot;,&quot;suma&quot;:&quot;69,79&nbsp;&euro;&quot;,&quot;apmok&quot;:&quot;apmokėta · Mokėjimas internetu&quot;,&quot;tel&quot;:&quot;+370",
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788423901|WzLLaGRJ1P0y9phw4uJK5hL5q8vLM8pBe6Eb09z8aB1|9e92b43fa77c91ea0965c4449d06a681da8a36a00e18ec24fe11d8235deb9f56"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788423901|WzLLaGRJ1P0y9phw4uJK5hL5q8vLM8pBe6Eb09z8aB1|a4abc1f59025455bd8599a2052c33156f43c9e63201fbf3b5e4d037c68abf985"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788423901|WzLLaGRJ1P0y9phw4uJK5hL5q8vLM8pBe6Eb09z8aB1|3814f4c5c59b827f29aeebe0d863037f2ee03b9f664b860ac917f800a9849227"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e2f_admin_nauji",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk",
+    "eval": "({rows:document.querySelectorAll('.eil[data-json]').length, sk:!!document.getElementById('dlSk'), js:!!document.getElementById('dl-js'), css:!!document.getElementById('dl-css'), jsonOk:(function(){try{JSON.parse(document.querySelector('.eil[data-json]').getAttribute('data-json'));return 1;}catch(e){return String(e);}})(), h:document.body.scrollHeight})"
+   },
+   {
+    "n": "e2f_admin_click",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk",
+    "click": "tr.eil[data-json] td:nth-child(2)",
+    "eval": "({on:document.getElementById('dlSk').classList.contains('on'), tr:getComputedStyle(document.getElementById('dlSk')).transform, nr:document.getElementById('skNr').textContent, keliai:document.querySelectorAll('#skEil .keliai a, #skEil .keliai span').length})"
+   },
+   {
+    "n": "e2f_admin_btn",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+    "click": "tr.eil[data-json] td.d a.v.p",
+    "eval": "({url:location.href.slice(0,160), title:document.title})"
+   }
+  ]
+ },
+ "shots": {
+  "e2f_admin_nauji": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "rows": 5,
+    "sk": true,
+    "js": true,
+    "css": true,
+    "jsonOk": 1,
+    "h": 1206
+   }
+  },
+  "e2f_admin_click": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "tr.eil[data-json] td:nth-child(2)",
+   "eval": {
+    "on": false,
+    "tr": "matrix(1, 0, 0, 1, 600, 0)",
+    "nr": "",
+    "keliai": 0
+   }
+  },
+  "e2f_admin_btn": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "tr.eil[data-json] td.d a.v.p",
+   "eval": {
+    "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+    "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+   }
+  }
+ }
+}
