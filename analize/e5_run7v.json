@@ -1,0 +1,104 @@
+{
+ "v": "dep-185535",
+ "kurimas": 200,
+ "sid": 4649,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "v": "run e7v",
+  "temp_istrinta": 1,
+  "versija": "3.10.2",
+  "md5": "03330ef26ff82f4022dea45f16771d0a",
+  "bytes": 179272,
+  "amzius_35775": "prieš 9 min",
+  "sukurtas": "2026-09-03 21:48:12 GMT",
+  "dabar": "2026-09-03 21:57:34",
+  "istrinta_ps_e5_mail": true,
+  "istrinta_ps_e5_oid": true,
+  "temp_liko": [
+   {
+    "id": "4649",
+    "name": "TEMP PS dep-185535",
+    "active": "1"
+   }
+  ],
+  "backups": [
+   "petshop-darbalaukis-v301-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v310-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v3101-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v35-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v36-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v361-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v37-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v38-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v381-BACKUP-2026-09-03.php",
+   "petshop-darbalaukis-v39-BACKUP-2026-09-03.php"
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788463654|5rZ6biipkCBXT6WuYsHd77P6aVKMAPGAXCv98vsepGI|4ebbe12cca3ee61deafc391b6d7e1099427278dafe16eaff7bab81f5caa713ac"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788463654|5rZ6biipkCBXT6WuYsHd77P6aVKMAPGAXCv98vsepGI|b036fc1d8d7b41409b3af0e79c60ff58067fbd79eb3dbc606719c0383f363bd2"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788463654|5rZ6biipkCBXT6WuYsHd77P6aVKMAPGAXCv98vsepGI|af72790712fcbedcf72ac864d6dc41e0bf7b7730b4544dbfc54c6e7d70802934"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e7_visi",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+    "eval": "({eil:[...document.querySelectorAll('tr.eil')].slice(0,3).map(x=>x.innerText.replace(/\\s+/g,' ').slice(0,90))})"
+   },
+   {
+    "n": "e7_dialogas_av",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+    "click": "tr.eil[data-id=\\\"35429\\\"] td.d a.v.p",
+    "eval": "({dlg:(document.querySelector('.dl-dlg.on')||{}).innerText,opt:(document.querySelector('#dlDlgOpt')||{}).checked})"
+   },
+   {
+    "n": "e7_paruosta_mob",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+    "w": 420,
+    "h": 900
+   }
+  ]
+ },
+ "shots": {
+  "e7_visi": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "eil": [
+     "#35775 prieš 9 min Įvykdytas AUDITAS Testas 33 · Venipak kurjeris, Vilnius · 44,91 € VF si",
+     "#35774 prieš 23 min Įvykdytas AUDITAS Testas 32 · Venipak kurjeris, Vilnius · 44,91 € VF s",
+     "#35772 prieš 1 val. Atšauktas AUDITAS Testas 33 · Venipak kurjeris, Vilnius · 6,61 € · nea"
+    ]
+   }
+  },
+  "e7_dialogas_av": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('tr.eil[data-id=\\\\\"35429\\\\\"] td.d a.v.p')\n",
+   "eval": {
+    "opt": false
+   }
+  },
+  "e7_paruosta_mob": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": []
+  }
+ }
+}
