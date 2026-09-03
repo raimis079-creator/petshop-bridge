@@ -1,4 +1,4 @@
-# UŽSAKYMŲ DARBALAUKIS — SPECIFIKACIJA v1.1 (2026-09-03)
+# UŽSAKYMŲ DARBALAUKIS — SPECIFIKACIJA v1.2 (2026-09-03, po 2 etapo — Raimio sprendimai iš S1607)
 
 > Sujungia: auditą 2026-09-02 (17 testinių užsakymų, K1–K3 pataisyti), logikos registrą v1 (52 taisyklės iš desk/dropship/tiekimo/siuntų laiškų kodo ir TŽ §35), langų žemėlapį, maketus v1–v5 ir visus Raimio sprendimus 2026-09-02/03. Tiesos šaltiniai kodui: `dokumentai/UZSAKYMU_LOGIKOS_REGISTRAS_v1.md` (taisyklės), `AUDITAS_UZSAKYMAI_2026-09-02.md` (defektai), šis failas (sprendimai ir apimtis).
 > Atsarginė kopija prieš pradedant: `ps-backups/SNAPSHOT-2026-09-02-pries-juosta.zip` (14,1 MB, md5 `a6a51695…`, 1 436 failai + 870 snippet'ų) ir git žymė `pries-juosta-2026-09-02`. Grįžimas — 5 min.
@@ -197,3 +197,29 @@ Po paleidimo: grąžinimai, skenavimas, tylus spausdinimas, SLA ataskaita, AI si
 3. Skirtumo apmokėjimas redaguojant (didėja suma): nuoroda apmokėti ar „sumokės kurjeriui"?
 4. Dovanėlės kortelės tekstas ir kada dedama (visiems / tik su augintinio vardu / tik virš X €).
 5. LP Express — 1 realus testas prieš pirmą darbo dieną (kas atveža siuntą kurjeriui).
+
+---
+
+## 12. Raimio sprendimai S1607 (2026-09-03, 2 etapas — GALIOJA, keičia ankstesnius punktus)
+
+**Žodynas** (pilnai — `ZODYNAS_DARBUOTOJUI_v1.md` v1.1): sandėliai trumpai AV · VF · ZB · Prins · Belacor · Quattro · Ambrosia. Eilės: **Gauti · Neišrūšiuoti · Laukiam iš tiekėjų · Surinkti AV · Dropshipping · Paruošta siųsti · Klausimai · Neapmokėti · Visi**. Keliai prie prekės: „Iš AV · VF siunčia klientui · VF veža į AV“. Mygtukai: Rūšiuoti / Surūšiuota / **Auto** · Lipdukai (n) · **Užsakyti iš VF (n užs.)** (laiškas — tik „Peržiūrėti laišką“) · Užsakyti be lipdukų · **Užsakyti iš Prins į AV** · Suvesti į ZB / Suvesta · Surinkti / Surinkti visus · Lipdukas · Kurjeris paėmė (viską) · [T] išsiuntė · Kurjerio sąrašas · Sekimo numeriai klientui · Lipdukas iš naujo · Istorija (skydelyje). Sistemos žodžių (registruoti, perduoti, manifestas, AV source, WooCommerce) darbuotojas nemato. „Dropshipping“ — Raimio pasirinkimas (sistemos žodis, bet aiškus: iš tiekėjo tiesiai klientui).
+
+**Gauti** = užsakymai, kurių darbuotojas dar neatidarė (skydelio), nesvarbu, kelių dienų — kalendorinė „šiandien“ logika atmesta (savaitgaliai, šventės). Eilutėje paryškintas nr + „N“; atidarius — dingsta (`_ps_matyta`). Vien „Auto“ iš sąrašo žymės neįrašo. Laikas sąraše — amžius („prieš 40 min / vakar 17:41 / prieš 3 d.“). Gauti nieko daryti nereikia — užsakymas darbo eilėje yra nuo pirmos sekundės.
+
+**Rūšiavimo taisyklė** (keičia 6a „auto rūšiavimas“): sistema išrūšiuoja pati **tik vieno sandėlio** užsakymus (viskas iš AV arba viskas iš vieno tiekėjo). **2 ir daugiau sandėlių** (su AV ar be) → Neišrūšiuoti su pasiūlymu; eilutėje **„Auto“** = surūšiuoti kaip siūlo, neatidarant; „Auto“ nerodomas, kai yra kliento pastaba arba trūkumas („atidaryk“). Pasiūlymas „veža į AV“, kai to tiekėjo užsakymas į AV jau atviras (kaupiama/užsakyta) — prekė atvažiuos ir taip. **Jokių svorio/sumos ribų** (Raimis). Tiekėjų atvežimo dienos — vėliau, jei Raimis pateiks.
+
+**Trijų ir daugiau sandėlių „viską į AV“**: AV siunta renkama tik kai visos jos prekės vietoje — užsakymas sėdi „Laukiam iš tiekėjų“, kol priimtas **paskutinis** tiekėjas; tik tada sistema pati perkelia į „Surinkti AV“ (patikrinta su vienu tiekėju — T1; su dviem — testuoti 3 etape).
+
+**Ekranas**: kuo mažiau sluoksnių — juostos kelias paslėptas, be legendos/datos/filtrų (už „Filtrai ▾“)/paaiškinimų/takelio sąraše; eilutė = 3 stulpeliai (Užsakymas · Prekės pagal kelią su miniatiūromis · Toliau). Kliento pastaba — geltona dėžė „Klientas: …“ (kad nepamirštų). **Spalvos tik „Visi“** — visa eilutė pagal būseną (Neapmokėtas · Neišrūšiuotas · Ruošiamas · Paruoštas · Išsiųsta dalis · Išsiųstas · Įvykdytas · Atšauktas · Klausimas); darbo eilėse — jokių spalvų, tik žalias mygtukas / raudona (klausimas, vėluoja) / gintarinė (laukiam).
+
+**Dropshipping kortelė**: kiekvienam užsakymui savas „Lipdukas“ su dėžių skaičiumi (dialogas); „+ į AV“ — tik kai atviras tiekėjo užsakymas į AV Tiekime, kitaip nuoroda „sudėk prekes Tiekime“.
+
+**Sekimo laiškai klientui (keičia 6a „vienas laiškas kai visos“)** — Raimio sprendimas 2026-09-03 vakaras:
+1. **Laiškas po kiekvienos siuntos**, ne vienas kai visos: „Išsiųsta 1 iš 2 siuntų: V… (VF). Antroji keliaus atskirai.“ → „Išsiųsta 2 iš 2: V… (ZB).“ Kaip Amazon / Chewy. Vienos siuntos užsakymui — vienas laiškas.
+2. **Automatinis** (4 etapas): Venipak sekimas kas 30 min; „Picked up“ → dalis pažymima išsiųsta ir laiškas išeina pats, be darbuotojo; „[T] išsiuntė“ mygtukas lieka atsarginis. „Delivered“ → pristatyta; po 3 d. „kaip patiko“ (Sender). Blogos būsenos → Klausimas.
+3. **Sekimo juostelė laiške** (Užsakymas gautas · Apmokėta · Ruošiama · Išsiųsta · Pas kurjerį · Pristatyta) su dabartiniu žingsniu ir nuoroda „Sekti siuntą“; pilna eilutė su kiekviena siunta — kliento užsakymo puslapyje be prisijungimo („Kaip mato klientas“, 5 etapas).
+4. **Kasoje ir patvirtinimo laiške** (5–6 etapas, ne prieš paleidimą liesti kasą): vienas pilkas sakinys „Prekės iš skirtingų sandėlių gali atvykti atskiromis siuntomis — apie kiekvieną pranešime atskirai“, rodomas tik kai krepšelyje ne vien AV prekės. Be siuntų skaičiaus, be datų (pristatymo pažado nedarom).
+
+**5 etapas (iki paleidimo)** papildomas: „Naujas užsakymas“ darbalaukyje (telefoninis: klientas, prekės, pristatymas / atsiėmimas, apmokėjimas atsiimant ar pavedimu) ir pristatymo būdas „Atsiėmimas AV“ (`local_pickup`) su taisykle: atsiėmimas → visos prekės į AV, lipduko žingsnio nėra, vietoj „Kurjeris paėmė“ — „Klientas atsiėmė“. Iki tol telefoninį užsakymą kuria Raimis WooCommerce.
+
+**Paskyros**: `testuotojas` — tik testinė; paleidimui — tikra darbuotojo paskyra su tikru vardu (rolė `ps_darbuotojas`).
