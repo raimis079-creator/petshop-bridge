@@ -1,0 +1,332 @@
+{
+ "v": "dep-063447",
+ "kurimas": 200,
+ "sid": 4548,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1607-run1b",
+  "f": "D",
+  "temp_istrinta": 1,
+  "temp_liko": [
+   {
+    "id": "4548",
+    "name": "TEMP PS dep-063447",
+    "active": "1"
+   }
+  ],
+  "deploy": {
+   "bytes": 48152,
+   "md5": "3f14ddd783b69fe0070aba533f31cc9a"
+  },
+  "siuntu_laiskai_antraste": "<?php\n/**\n * Petshop Siuntu Laiskai v1.2 (H240) — ASMENINIS PRIERAŠAS + pilnumo vartai.\n *\n * KODĖL (Raimis H237, H239): „klientas gauna vieną laišką su sekimo nuorodomis...\n * kitą kartą reikia kažką asmeniškai klientui prirašyti“. Laiške atsirado laisvo\n * teksto laukas — tas pats principas kaip tiekėjo laiške (dropship v1.5).\n *\n * PILNUMO VARTAI: mišriam užsakymui pagrindinis mygtukas neaktyvus, kol\n * registruotos ne visos siuntos — kad klientas gautų VIENĄ laišką su VISAIS\n * numeriais, o ne kelis gabalais. Šalia lieka „Siųsti vis tiek“ išimtims\n * (kai viena dalis stringa ir geriau pran"
+ },
+ "T": {
+  "v": "S1607-run1b",
+  "f": "T",
+  "versija": "0.2",
+  "uzs": {
+   "35414": {
+    "st": "processing",
+    "rus": "",
+    "eiles": "nauji",
+    "btn": "Rūšiuoti",
+    "riba": "ambrosia",
+    "skuba": 1409,
+    "eil": "ambrosia/tiesiai | av/av",
+    "tk": "▶surūšiuota › ·surinkti › ·lipdukas › ·išsiųsta › ·lipdukas AMB › ·laiškas Ambrosia › ·Ambrosia išsiuntė",
+    "zurn": []
+   },
+   "35415": {
+    "st": "processing",
+    "rus": "",
+    "eiles": "nauji",
+    "btn": "Rūšiuoti",
+    "riba": "ambrosia",
+    "skuba": 1409,
+    "eil": "ambrosia/tiesiai | av/av",
+    "tk": "▶surūšiuota › ·surinkti › ·lipdukas › ·išsiųsta › ·lipdukas AMB › ·laiškas Ambrosia › ·Ambrosia išsiuntė",
+    "zurn": []
+   },
+   "35416": {
+    "st": "processing",
+    "rus": "auto",
+    "eiles": "surinkti",
+    "btn": "Surinkti",
+    "riba": "av",
+    "skuba": 5009,
+    "eil": "av/av",
+    "tk": "✓surūšiuota › ▶surinkti › ·lipdukas LP › ·išsiųsta",
+    "zurn": []
+   },
+   "35417": {
+    "st": "completed",
+    "rus": "auto",
+    "eiles": "",
+    "btn": "Atidaryti",
+    "riba": "vf",
+    "skuba": 9223372036854776000,
+    "eil": "vf/tiesiai",
+    "tk": "✓surūšiuota › ✓lipdukas VF › ✓laiškas Vetfarmas › ✓Vetfarmas išsiuntė › ✓įvykdytas",
+    "zurn": []
+   },
+   "35418": {
+    "st": "processing",
+    "rus": "auto",
+    "eiles": "paruosta",
+    "btn": "Žalioji Banga išsiuntė",
+    "riba": "zb",
+    "skuba": 84209,
+    "eil": "zb/tiesiai",
+    "tk": "✓surūšiuota › ✓lipdukas ZB › ✓suvesta į ZB › ⏳Žalioji Banga išsiuntė",
+    "zurn": []
+   },
+   "35419": {
+    "st": "completed",
+    "rus": "2026-09-02 17:46:06 | Testuotojas",
+    "eiles": "",
+    "btn": "Atidaryti",
+    "riba": "ambrosia",
+    "skuba": 9223372036854776000,
+    "eil": "ambrosia/tiesiai | vf/tiesiai",
+    "tk": "✓surūšiuota › ✓lipdukas AMB › ✓laiškas Ambrosia › ✓Ambrosia išsiuntė › ✓lipdukas VF › ✓laiškas Vetfarmas › ✓Vetfarmas išsiuntė › ✓įvykdytas",
+    "zurn": []
+   },
+   "35420": {
+    "st": "processing",
+    "rus": "",
+    "eiles": "nauji",
+    "btn": "Rūšiuoti",
+    "riba": "vf",
+    "skuba": 12209,
+    "eil": "vf/tiesiai | zb/tiesiai",
+    "tk": "▶surūšiuota › ·lipdukas VF › ·laiškas Vetfarmas › ·Vetfarmas išsiuntė › ·lipdukas ZB › ·suvesta į ZB › ·Žalioji Banga išsiuntė",
+    "zurn": []
+   },
+   "35421": {
+    "st": "processing",
+    "rus": "2026-09-02 17:46:07 | Testuotojas",
+    "eiles": "surinkti,laiskai",
+    "btn": "Surinkti",
+    "riba": "av",
+    "skuba": 5009,
+    "eil": "av/av | quattro/i_av(gauta · partija #10) | prins/tiesiai",
+    "tk": "✓surūšiuota › ✓užsakyta Kauno grūdai / Quattro › ✓gauta › ▶surinkti › ·lipdukas › ·išsiųsta › ·lipdukas PRI › ▶laiškas Faunas / Prins › ·Faunas / Prins išsiuntė",
+    "zurn": []
+   },
+   "35422": {
+    "st": "processing",
+    "rus": "auto",
+    "eiles": "laiskai",
+    "btn": "Laiškas Ambrosia",
+    "riba": "ambrosia",
+    "skuba": 1409,
+    "eil": "ambrosia/tiesiai",
+    "tk": "✓surūšiuota › ✓lipdukas AMB › ▶laiškas Ambrosia › ·Ambrosia išsiuntė",
+    "zurn": []
+   },
+   "35423": {
+    "st": "processing",
+    "rus": "",
+    "eiles": "klausimai",
+    "btn": "Spręsti",
+    "riba": "av",
+    "skuba": 5009,
+    "eil": "av/av",
+    "tk": "·surūšiuota › ·surinkti › ·lipdukas › ·išsiųsta › ✗Trūksta sandėlyje",
+    "zurn": []
+   },
+   "35424": {
+    "st": "cancelled",
+    "rus": "auto",
+    "eiles": "",
+    "btn": "Atidaryti",
+    "riba": "ambrosia",
+    "skuba": 9223372036854776000,
+    "eil": "ambrosia/tiesiai",
+    "tk": "✗atšauktas",
+    "zurn": []
+   },
+   "35425": {
+    "st": "processing",
+    "rus": "",
+    "eiles": "nauji",
+    "btn": "Rūšiuoti",
+    "riba": "ambrosia",
+    "skuba": 1409,
+    "eil": "ambrosia/tiesiai | av/av",
+    "tk": "▶surūšiuota › ·surinkti › ·lipdukas › ·išsiųsta › ·lipdukas AMB › ·laiškas Ambrosia › ·Ambrosia išsiuntė",
+    "zurn": []
+   },
+   "35426": {
+    "st": "processing",
+    "rus": "",
+    "eiles": "nauji",
+    "btn": "Rūšiuoti",
+    "riba": "ambrosia",
+    "skuba": 1409,
+    "eil": "ambrosia/tiesiai | belcor_tofu/tiesiai",
+    "tk": "▶surūšiuota › ·lipdukas AMB › ·laiškas Ambrosia › ·Ambrosia išsiuntė › ·lipdukas BEL › ·laiškas Belacor › ·Belacor išsiuntė",
+    "zurn": []
+   },
+   "35427": {
+    "st": "completed",
+    "rus": "auto",
+    "eiles": "",
+    "btn": "Atidaryti",
+    "riba": "av",
+    "skuba": 9223372036854776000,
+    "eil": "av/av",
+    "tk": "✓surūšiuota › ✓surinkti › ✓lipdukas › ✓išsiųsta › ✓įvykdytas",
+    "zurn": []
+   },
+   "35428": {
+    "st": "processing",
+    "rus": "auto",
+    "eiles": "paruosta",
+    "btn": "Išsiųsta",
+    "riba": "av",
+    "skuba": 5009,
+    "eil": "av/av",
+    "tk": "✓surūšiuota › ✓surinkti › ✓lipdukas › ▶išsiųsta",
+    "zurn": []
+   },
+   "35429": {
+    "st": "processing",
+    "rus": "auto",
+    "eiles": "paruosta",
+    "btn": "Išsiųsta",
+    "riba": "av",
+    "skuba": 5009,
+    "eil": "av/av",
+    "tk": "✓surūšiuota › ✓surinkti › ✓lipdukas › ▶išsiųsta",
+    "zurn": []
+   },
+   "35430": {
+    "st": "cancelled",
+    "rus": "auto",
+    "eiles": "",
+    "btn": "Atidaryti",
+    "riba": "av",
+    "skuba": 9223372036854776000,
+    "eil": "av/av",
+    "tk": "✗atšauktas",
+    "zurn": []
+   },
+   "35431": {
+    "st": "processing",
+    "rus": "auto",
+    "eiles": "surinkti",
+    "btn": "Surinkti",
+    "riba": "av",
+    "skuba": 5009,
+    "eil": "av/av | av/av",
+    "tk": "✓surūšiuota › ▶surinkti › ·lipdukas › ·išsiųsta",
+    "zurn": []
+   },
+   "35432": {
+    "st": "cancelled",
+    "rus": "auto",
+    "eiles": "",
+    "btn": "Atidaryti",
+    "riba": "av",
+    "skuba": 9223372036854776000,
+    "eil": "av/av",
+    "tk": "✗atšauktas",
+    "zurn": []
+   },
+   "35433": {
+    "st": "cancelled",
+    "rus": "auto",
+    "eiles": "",
+    "btn": "Atidaryti",
+    "riba": "av",
+    "skuba": 9223372036854776000,
+    "eil": "av/av",
+    "tk": "✗atšauktas",
+    "zurn": []
+   },
+   "35434": {
+    "st": "processing",
+    "rus": "2026-09-02 20:11:58 | Testuotojas",
+    "eiles": "surinkti",
+    "btn": "Surinkti",
+    "riba": "av",
+    "skuba": 5009,
+    "eil": "av/av | av/av",
+    "tk": "✓surūšiuota › ▶surinkti › ·lipdukas › ·išsiųsta",
+    "zurn": []
+   }
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788420991|VBkkKkchhHGXhvP82RUVuxpkAHbOdTSxGFcSvt67avg|1d6531ed8dfff30a447178e85024e8b6109247abd2120b3a1b3438b7b873f0d1"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788420991|VBkkKkchhHGXhvP82RUVuxpkAHbOdTSxGFcSvt67avg|4acec4c99c1f134053aba76e9b1457ac7aa7adb7b51bdde0522140040e3a57ad"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788420991|VBkkKkchhHGXhvP82RUVuxpkAHbOdTSxGFcSvt67avg|87f072b9fedda2eb74081a47ac60a04ce7971ee8fca48dbc4a28b75a4a6ddaa3"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e2b_nauji",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+    "full": true
+   },
+   {
+    "n": "e2b_surinkti",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+    "full": true
+   },
+   {
+    "n": "e2b_paruosta",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta"
+   },
+   {
+    "n": "e2b_visi",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi"
+   },
+   {
+    "n": "e2b_nauji_mob",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+    "w": 420,
+    "h": 900,
+    "full": true
+   }
+  ]
+ },
+ "shots": {
+  "e2b_nauji": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2b_surinkti": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2b_paruosta": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2b_visi": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2b_nauji_mob": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  }
+ }
+}
