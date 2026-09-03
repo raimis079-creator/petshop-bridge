@@ -1,0 +1,74 @@
+{
+ "v": "dep-103053",
+ "kurimas": 200,
+ "sid": 4573,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run15b",
+  "f": "D",
+  "buvo": "868aff393b6e49711f78482222802f37",
+  "deploy": {
+   "bytes": 131315,
+   "md5": "eef03285abd3544906ffda0504b4324c"
+  }
+ },
+ "T": {
+  "v": "run15b",
+  "f": "T",
+  "versija": "3.0",
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788435157|ItsoTKIZgnMZBl34JWy8xLEAJFaIqhAgI9TtElzLMpR|ae58f7eb99988aeb481359024aa8455f94c6928cf9f8176cf9c4f25b38e15298"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788435157|ItsoTKIZgnMZBl34JWy8xLEAJFaIqhAgI9TtElzLMpR|e6369037357645546ab1efd650dca9d3d7c48f99f6dd915364471d46bfed02c9"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788435157|ItsoTKIZgnMZBl34JWy8xLEAJFaIqhAgI9TtElzLMpR|87e5020f6a2e906c7be3ef2dbdebeb435ef151cf8f754d0c99893c73a462aad6"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e2l_nauji",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+    "h": 700
+   },
+   {
+    "n": "e2l_siandien",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=siandien",
+    "h": 800
+   },
+   {
+    "n": "e2l_surinkti",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+    "h": 900
+   }
+  ]
+ },
+ "shots": {
+  "e2l_nauji": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": []
+  },
+  "e2l_siandien": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=siandien",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": []
+  },
+  "e2l_surinkti": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": []
+  }
+ }
+}
