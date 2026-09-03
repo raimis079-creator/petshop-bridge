@@ -1,0 +1,73 @@
+{
+ "v": "dep-100326",
+ "kurimas": 200,
+ "sid": 4568,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run12b",
+  "f": "D",
+  "buvo": "6fa0a4c890c40581a2fd87b647f24feb",
+  "deploy": {
+   "bytes": 127066,
+   "md5": "61c3ce3479f523544d598644bdd4759a"
+  }
+ },
+ "T": {
+  "v": "run12b",
+  "f": "T",
+  "versija": "2.3",
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788433557|C6nB5LxYK1FixuyFmRJalJ5rBkvNI4FplWJNlqHO5rD|a6d97f895547e2a0c573a2e3b74bb552296f988e40eb7990b4144d2151055855"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788433557|C6nB5LxYK1FixuyFmRJalJ5rBkvNI4FplWJNlqHO5rD|501624286de3f3fcdc0cb3466aeb196dce483d1e8cc56cf264b97156715bd2cc"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788433557|C6nB5LxYK1FixuyFmRJalJ5rBkvNI4FplWJNlqHO5rD|b065672025edb6838927e775afed9231d7dacf3f1a3c7cdc8ea5e30bbf75713c"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e2j_rytas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas",
+    "eval": "({z:document.querySelectorAll('.dl-z').length, wc:document.querySelectorAll('a[href*=\"wc-orders\"], a[href*=\"post.php?post=\"]').length, txt:document.querySelector('.dl-zs')?document.querySelector('.dl-zs').innerText.slice(0,600):''})"
+   },
+   {
+    "n": "e2j_rytas_klik",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas",
+    "click": ".dl-z a.v.p",
+    "eval": "({url:location.href.slice(0,120)})"
+   }
+  ]
+ },
+ "shots": {
+  "e2j_rytas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "z": 8,
+    "wc": 1,
+    "txt": "1\nSurūšiuoti naujus\n✓ tuščia\n2\nLipdukai ir laiškai tiekėjams\n8 užs. — Quattro 1 (po 09:00 — keliaus rytoj) · Belacor 1 (po 09:00 — keliaus rytoj) · Žalioji Banga 1 (po 09:00 — keliaus rytoj) · Ambrosia 6 (po 10:00 — keliaus rytoj) · Vetfarmas 1 (po 13:00 — keliaus rytoj)\nAtidaryti\n3\nUžsakyti iš tiekėjų į Avesą\n1 užs. — kas neužsakyta — „Užsakyti iš [T]“ (partija, toliau Tiekimo lange); kas užsakyta — laukiam\nAtidaryti\n4\nSurinkti Avesoje\n10 užs. — visos Avesos siuntos prekės vietoje — lapai (galima visus vienu lapu)\nSurinkti\n5\nLipdukai Avesai\n✓ tuščia\n6\nIšsiųsta\n4 užs. — kurjeris paėmė Avesos s"
+   }
+  },
+  "e2j_rytas_klik": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": ".dl-z a.v.p",
+   "eval": {
+    "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai"
+   }
+  }
+ }
+}
