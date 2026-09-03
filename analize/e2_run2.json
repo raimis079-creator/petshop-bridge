@@ -1,0 +1,27 @@
+{
+ "v": "dep-070641",
+ "kurimas": 200,
+ "sid": 4550,
+ "data": {
+  "petshop-darbalaukis.php.b64": {
+   "status": 500
+  }
+ },
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1607-run2",
+  "f": "D",
+  "temp_istrinta": 1,
+  "mid": 0,
+  "FATAL": "media failo nėra @/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:11"
+ },
+ "T": {
+  "v": "S1607-run2",
+  "f": "T",
+  "versija": "0.3",
+  "FATAL": "Call to undefined method Petshop_Darbalaukis::auto_rusiuoti() @/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:24"
+ }
+}
