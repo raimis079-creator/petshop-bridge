@@ -1,0 +1,121 @@
+{
+ "v": "dep-170416",
+ "kurimas": 200,
+ "sid": 4623,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Y": {
+  "v": "run e3y",
+  "f": "Y",
+  "temp_istrinta": 1,
+  "versija": "3.8.1",
+  "t3_ispejimas": {
+   "code": 200,
+   "bytes": 561029,
+   "ispejimas": "Neapmokėtų (14 d.) daugiau nei 300 — rodomi ne visi; skaitliukai Gauti/Klausimai/Neapmokėti nepilni. Naudok paiešką arba filtrus.",
+   "eiles": "class=\"dl-eiles\">Gauti 305Neišrūšiuoti 1Laukiam iš tiekėjų 1Surinkti AV 11Dropshipping 12Paruošta siųsti 4Klausimai 303Neapmokėti 300Visi 356"
+  },
+  "t3_istrinta": 320,
+  "po_valymo": {
+   "code": 200,
+   "bytes": 254305,
+   "eiles": "class=\"dl-eiles\">Gauti 6Neišrūšiuoti 1Laukiam iš tiekėjų 1Surinkti AV 11Dropshipping 12Paruošta siųsti 4Klausimai 3Neapmokėti 0Visi 36"
+  },
+  "av_order_bytes": 4923,
+  "fiksuoti": "public static function fiksuoti( $order_id, $priverstinai = false ) {\n\t\t$order = is_numeric( $order_id ) ? wc_get_order( $order_id ) : $order_id;\n\t\tif ( ! $order ) { return; }\n\t\tif ( ! $priverstinai && self::nuspresta( $order ) ) { return; }\n\t\tif ( ! class_exists( 'Petshop_AV_Source' ) ) { return; }\n\n\t\t$grupes = [];\n\t\tforeach ( $order->get_items() as $item_id => $item ) {\n\t\t\t$pid = (int) $item->get_product_id();\n\t\t\tif ( ! $pid ) { continue; }\n\t\t\t$qty = max( 1, (int) $item->get_quantity() );\n\n\t\t\t$x = Petshop_AV_Source::resolve( $pid, $qty );\n\n\t\t\t$item->update_meta_data( '_ps_source',        $x['source'] );\n\t\t\t$item->update_meta_data( '_ps_carrier',       $x['carrier'] );\n\t\t\t$item->update_meta_data( '_ps_source_qty',    $qty );\n\t\t\t$item->update_meta_data( '_ps_source_at',     current_time( 'mysql' ) );\n\t\t\t$item->update_meta_data( '_ps_source_reason', $x['reason'] );\n\t\t\t$item->save();\n\n\t\t\t$s = $x['source'];\n\t\t\tif ( ! isset( $grupes[ $s ] ) ) {\n\t\t\t\t$grupes[ $s ] = [ 'carrier' => $x['carrier'], 'eilutes' => 0, 'vienetai' => 0 ];\n\t\t\t}\n\t\t\t$grupes[ $s ]['eilutes']++;\n\t\t\t$grupes[ $s ]['vienetai'] += $qty;\n\t\t}\n\n\t\t$tipas = Petshop_AV_Source::order_type( $grupes );\n\t\t$order->update_meta_data( '_ps_order_type', $tipas );\n\t\t$order->update_meta_data( '_ps_groups',     wp_json_encode( $grupes ) );\n\t\t$order->update_meta_data( '_ps_shipments',  count( $grupes ) );\n\t\t$order->update_meta_data( '_ps_decided_at', current_time( 'mysql' ) );\n\t\t$order->save();\n\n\t\t$sant = [];\n\t\tforeach ( $grupes as $s => $g ) { $sant[] = strtoupper( $s ) . ' ' . $g['vienetai'] . ' vnt'; }\n\t\t$order->add_order_note( 'Vykdymas: ' . $tipas . ' — ' . implode( ' · ', $sant )\n\t\t\t. ' (' . count( $grupes ) . ' siunta(-os))' );\n\n\t\treturn [ 'tipas' => $tipas, 'grupes' => $grupes ];\n\t}\n",
+  "nuspresta": "public static function nuspresta( $order ) {\n\t\t$order = is_numeric( $order ) ? wc_get_order( $order ) : $order;\n\t\treturn ( $order && $order->get_meta( '_ps_order_type' ) );\n\t}\n",
+  "t2_resolve": {
+   "source": "av",
+   "carrier": "any",
+   "courier_only": false,
+   "av_qty": 21,
+   "av_uztenka": true,
+   "tiekejas": "vf",
+   "reason": "AV turi 21, reikia 1"
+  },
+  "t2_oid": 35771,
+  "t2_eil_pries": {
+   "src": "av",
+   "kelias": "av",
+   "reduced": "1",
+   "rus": "auto"
+  },
+  "t2_pries": {
+   "stock": "70",
+   "own": "20"
+  },
+  "t2_atsakymai": [
+   "klaida: WpOrg\\Requests\\Exception\\Transport\\Curl 60 SSL certificate problem: unable to get local issuer certificate",
+   "klaida: WpOrg\\Requests\\Exception\\Transport\\Curl 60 SSL certificate problem: unable to get local issuer certificate"
+  ],
+  "t2_po": {
+   "stock": "70",
+   "own": "20"
+  },
+  "t2_eil_po": {
+   "src": "av",
+   "kelias": "av",
+   "reduced": "1"
+  },
+  "t2_zurnalas": [],
+  "t2_atgal": "35771|kelias nepakeistas — jau Iš AV [dl_info]",
+  "t2_galas": {
+   "stock": "70",
+   "own": "20"
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788456954|Hb1n2MqKYaXPQ8giZ8ixax8YvML0VYq2n40BALYuUuN|d1ca8f6ae3580b3f08dd1cfa229ea2d62ae1549b031dfa5dd1402ed557e3021e"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788456954|Hb1n2MqKYaXPQ8giZ8ixax8YvML0VYq2n40BALYuUuN|3bfaa062ed423340e24234f02ad653f133582974fd9a936414691603e0fc6447"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788456954|Hb1n2MqKYaXPQ8giZ8ixax8YvML0VYq2n40BALYuUuN|bf3b94dfb9b702d0bdbef29b6818360122a5d60cd07f784610e99b5866e8e7ed"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e3_v38_refresh",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+    "eval": "new Promise(function(r){ window.scrollTo(0,250); var rows=document.querySelectorAll('tr.eil'); rows[1].classList.add('on'); var m=document.querySelector('.dl-main'); var f=document.createElement('div'); f.id='fake'; m.appendChild(f); var y0=window.scrollY; window.psDlAtnaujinti(); setTimeout(function(){ r({y0:y0,y1:window.scrollY,fake_liko:!!document.getElementById('fake'),rows:document.querySelectorAll('tr.eil').length,on:(document.querySelector('tr.eil.on')||{}).getAttribute?document.querySelector('tr.eil.on').getAttribute('data-id'):null, on_buvo: rows[1].getAttribute('data-id')}); },4000); })"
+   },
+   {
+    "n": "e3_v38_visi2",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&psl=2",
+    "h": 1000,
+    "eval": "({psl:(document.querySelector('.dl-psl')||{}).innerText,rows:document.querySelectorAll('tr.eil').length})"
+   }
+  ]
+ },
+ "shots": {
+  "e3_v38_refresh": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "y0": 250,
+    "y1": 250,
+    "fake_liko": false,
+    "rows": 12,
+    "on": "35421",
+    "on_buvo": "35436"
+   }
+  },
+  "e3_v38_visi2": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&psl=2",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "rows": 0
+   }
+  }
+ }
+}
