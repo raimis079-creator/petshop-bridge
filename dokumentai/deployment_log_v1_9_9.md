@@ -13,7 +13,7 @@
 
 > Pridėti po S1607. Tema: užsakymų sistemos 3 etapas, punktas #1 (STARTAS_2026-09-04_3_etapas) — „Laukiam iš tiekėjų“ kortelės su užsakymu tiekėjui ir priėmimu čia pat; punktas #2 — trijų sandėlių testas darbuotojo paskyra. Variklis (registras A–J) nekeistas.
 
-#### S1608 — ETAPAS 3 #1–#2: `mu-plugins/petshop-darbalaukis.php` v3.7 (163 617 B, md5 `80b57378452992e1077370ed4ec7af62`; repo `deploy/petshop-darbalaukis.php` + `.b64`; kopijos v35/v36/v361 `ps-backups/`)
+#### S1608 — ETAPAS 3 #1–#3: `mu-plugins/petshop-darbalaukis.php` v3.8.1 (168 534 B, md5 `35e35c6210a1273ccab013d5911ba834`; repo `deploy/petshop-darbalaukis.php` + `.b64`; kopijos v35/v36/v361/v37/v38 `ps-backups/`)
 
 **Prieš darbą:** perskaityta STARTAS → log S1607 → spec v1.2 §12 → ZODYNAS v1.1 → AUDITAS 09-03 → registras (G4, H1–H4, I). Kopijos: `uploads/ps-backups/petshop-darbalaukis-v35-BACKUP-2026-09-03.php` (140 530 B, md5 `f0e791d8…`), `…-v36-BACKUP-2026-09-03.php` (160 537 B, md5 `8f93c441…`).
 
@@ -39,7 +39,7 @@
 
 **Darbuotojo dienoraštis (#35450, kaip mato darbuotojas):** „Atėjo užsakymas su trimis prekėmis — Neišrūšiuoti. Atidariau: viena prekė iš AV, dvi pas tiekėjus; klientui norėjau vienos siuntos, paspaudžiau ‚ZB veža į AV‘ ir ‚VF veža į AV‘, ‚Surūšiuota‘. Užsakymas nukrito į ‚Laukiam iš tiekėjų‘. Ten dvi kortelės: ZB ir VF. VF kortelėje pasirinkau ‚Tiekėjas atveža pats‘, pažiūrėjau laišką, spaudžiau ‚Užsakyti iš VF į AV‘ — pranešė, kad laiškas išėjo man persiųsti. Kai prekė atvažiavo — toje pačioje kortelėje ‚Gauta‘. Užsakymas dar liko ‚Laukiam‘, nes ZB dar neatvežė. ZB kortelėje ‚Užsakyti iš ZB į AV‘ — laiško nėra, atsirado ‚Kopijuoti‘ suvesti į ZB. Atvežė — ‚Gauta‘. Užsakymas atsirado ‚Surinkti AV‘ su visomis trimis prekėmis, lape trys vienetai.“ Sunkumai: 1) VF kortelėje kartu rodomas ir senas #35090 — „Užsakyti iš VF į AV (2 prek.)“ užsakytų abu (testas siuntė tik #35450 `ids`); 2) juostoje darbuotojas mato „Gavimas“ ir „Tiekimas 1“ — Raimio langai, klaidina (juosta v1.5, neliesta); 3) „galioja iki“ laukelis prie „Gauta“ — ar reikia darbuotojui (Raimiui).
 
-**Testiniai duomenys:** #35450 (processing, Surinkti AV, `_ps_surinkta` per lapą); užsakymai tiekėjams #14 (VF, gauta) ir #15 (ZB, gauta); likučiai: 35357 (HAP) ir 33902 (Trixie) `+1` per `Petshop_AV_Stock::increase`, tada rezervuota eilutėms (`_ps_av_reduced`); 19708 −1 (16→15). Opcija `ps_e3_oid=35450`, `ps_audit_mail` — trinti su testiniais. Venipak nekviestas. TEMP snippet'ai trinami kiekvieno run'o pradžioje (liko paskutinis 4611, deaktyvuotas).
+**Testiniai duomenys:** #35450 (processing, Surinkti AV, `_ps_surinkta` per lapą); #35771, #35772 (T2, cancelled); 320 T3 `failed` ištrinti; opcija `ps_e3_oid2`; užsakymai tiekėjams #14 (VF, gauta) ir #15 (ZB, gauta); likučiai: 35357 (HAP) ir 33902 (Trixie) `+1` per `Petshop_AV_Stock::increase`, tada rezervuota eilutėms (`_ps_av_reduced`); 19708 −1 (16→15). Opcija `ps_e3_oid=35450`, `ps_audit_mail` — trinti su testiniais. Venipak nekviestas. TEMP snippet'ai trinami kiekvieno run'o pradžioje (liko paskutinis 4611, deaktyvuotas).
 
 **Raimio sprendimai po T2 (09-03 vakaras) → v3.7 (`e3_run11a/11b/11d.json`, patikra `e3_run12w.json`, nuotraukos `e3_v37_*.png`):**
 1. **Tiekėjui — TIK vienas laiškas.** Kai to tiekėjo laukia Dropshipping užsakymų, „Laukiam“ kortelėje vienintelis mygtukas **„Kartu su Dropshipping iš VF (n prek.)“** (sudeda prekes į užsakymą tiekėjui, laiškas išeina Dropshipping kortelėje su varnele „+ į AV“); atskiras „Užsakyti iš [T] į AV“ su savo laišku — tik kai Dropshipping užsakymų iš to tiekėjo nėra. Užsakymų į AV atsargoms sudarymas — ne dabar (Raimis: vėliau).
@@ -47,9 +47,18 @@
 3. **Juosta** („Gavimas“, „Tiekimas“) — neliečiama, kol yra Laiškų langas.
 4. **Varnelė prie kiekvieno užsakymo** Dropshipping ir Laukiam kortelėse (`.dl-uzs-cb` → hidden `uzsakymai`/`ids`, mygtuko skaičius persiskaičiuoja, 0 → mygtukas išjungtas). Patikrinta: Belacor 1 užs. nuimta → „Užsakyti iš Belacor (0 užs.)“ išjungtas; Laukiam VF → „Kartu su Dropshipping iš VF (1 prek.)“, be „Peržiūrėti laišką“ ir adresatų. JS/HTTP klaidų 0.
 
-**Audito likučiai po S1608:** V9, V11, V12, K2 antra pusė, S2/S3, T2/T3/T10 — nekeista (3 etapo #3). #4 žodyno likučiai: skydelio pilki „Tiekėjas siunčia klientui / veža į AV“ be tiekėjo — liko; variklio pranešimų trumpiniai — liko.
+**#3 Audito likučiai → v3.8 / v3.8.1** (`e3_run13a/13b/13d`, `e3_run15a/15b/15d`; testai `e3_run14x.json`, `e3_run16y.json`, `e3_run18z.json`):
+- **K2 antra pusė** — skydelis per `wp_ajax_ps_dl_skydelis` (nonce `ps_dl_zurnalas` ant `#dl[data-n]`); eilutėse tik `data-sk="1"`, JSON kraunamas atidarant ir kešuojamas eilutėje (`r._o`), skydelis atsidaro iš karto su „kraunama…“. „Visi“ 36 užs.: 446 KB → 309 KB (bazė be eilučių ≈ 254 KB — admin chrome/juosta/CSS/JS; 300 eilučių — 561 KB, 4,7 s).
+- **V11** — tylus atnaujinimas kas 60 s: `fetch` to paties URL → keičiamas tik `.dl-main` (jei skiriasi), slinktis ir pažymėta eilutė (`cur`) lieka; praleidžiama, kai skydelis/dialogas atviri, laukas fokuse, pelė virš sąrašo. Lapo atidarymas naujame skirtuke → tas pats atnaujinimas vietoj `reload`. Patikra Playwright (`e3_v38_refresh`): scroll 250→250, pridėtas svetimas elementas dingo (sąrašas pakeistas), pažymėta eilutė ta pati. `window.psDlAtnaujinti` — patikrai.
+- **V9** — „Visi“ po 50 (`psl`), juostelė „‹ ankstesni · 1–50 iš N · kiti ›“ (`wc_get_orders paginate`); „Išsiųsta šiandien“ = `_ps_dalys_issiusta` su šios dienos laiku (meta LIKE) ∪ `date_completed` šiandien, ne `date_modified`. Patikra: T3 metu „1–50 iš 356 · kiti ›“.
+- **T3** — 320 `failed` „AUDITAS T3-n“: Neapmokėti 300 (riba) → v3.8.1 įspėjimas juostoje „Neapmokėtų (14 d.) daugiau nei 300 — rodomi ne visi; skaitliukai Gauti/Klausimai/Neapmokėti nepilni“; puslapis 561 KB. Ištrinta 320, skaitliukai grįžo (Gauti 6 · Klausimai 3 · Neapmokėti 0). **Radinys Raimiui:** neapmokėti (pending/failed) užsakymai skaitomi ir į **Gauti** (306) ir į **Klausimai** (303, variklio klausimas „nesėkmingas mokėjimas“) — ar Gauti turi rodyti ir neapmokėtus?
+- **T2** — dvigubas kelio keitimas lygiagrečiai (`curl_multi`, #35772 su 18593 AV+VF): pirma užklausa „veiksmas jau vykdomas — palauk sekundę“ (`ps_dl_lock_{id}`), antra pakeitė kelią, likutis pajudėjo lygiai vieną kartą (20→21→20), žurnale 2 įrašai. V2 uždaryta. Testinis #35772 (ir #35771) atšauktas, likutis 21.
+- **V12** — `Petshop_AV_Order::fiksuoti($order_id,$priverstinai)` perskaičiuoja grupes, bet **iš naujo `resolve()` kiekvienai eilutei** ir perrašo `_ps_source` — darbuotojo parinktus kelius sunaikintų, todėl netinka. `perskaiciuoti_grupes()` lieka darbalaukyje; tikras sprendimas — viešas variklio metodas „grupės iš esamų `_ps_source`“ (R13 išimtis) — **Raimio sprendimas**. `_ps_sekimo_siusta` dublis — neliesta.
+- **S2/S3** — jau uždaryti v3.0/v3.5 (legendos nėra; „Kurjeris paėmė viską“ rodomas visada). **T10** (du vartotojai) ir **V1 testas** (prekė be sandėlio) — netestuoti: T10 iš dalies dengia T2 užraktas; V1 — dev'e prekės be šaltinio nėra.
 
-**Lieka (3 etapas):** #3 audito likučiai · #4 žodyno likučiai · #5 sekimo laiškai po kiekvienos siuntos (`issiusta()` dalies laiškas, spec §12) · #6 LP per Rytinę eigą. Raimio klausimai 1–4 atsakyti (žr. aukščiau, v3.7).
+**Audito likučiai po S1608:** V12 (Raimio sprendimas), T10, V1 testas. #4 žodyno likučiai: skydelio pilki „Tiekėjas siunčia klientui / veža į AV“ be tiekėjo — liko; variklio pranešimų trumpiniai — liko.
+
+**Lieka (3 etapas):** #4 žodyno likučiai · #5 sekimo laiškai po kiekvienos siuntos (`issiusta()` dalies laiškas, spec §12) · #6 LP per Rytinę eigą. Raimio klausimai 1–4 atsakyti (žr. aukščiau, v3.7).
 
 ---
 
