@@ -1,0 +1,861 @@
+{
+ "v": "dep-183155",
+ "kurimas": 200,
+ "sid": 4641,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "P": {
+  "v": "run e5t",
+  "f": "P",
+  "temp_istrinta": 1,
+  "versija": "3.10",
+  "md5": "78277b7260456a86ac0af69bd61c9bf3",
+  "pries": {
+   "st": "processing",
+   "eiles": [
+    "surinkti",
+    "paruosta"
+   ],
+   "btn": "Prins išsiuntė",
+   "eil": [
+    "1x Animonda Carny Adult B [av/av]",
+    "1x QUATTRO 1,5 kg Adult S [i_av/quattro]",
+    "1x Prins Diet Skin & Inte [tiesiai/prins]"
+   ],
+   "dalys": {
+    "av": {
+     "nr": [],
+     "iss": false
+    },
+    "prins": {
+     "nr": [
+      "V07267E1000046"
+     ],
+     "iss": false
+    }
+   },
+   "dalys_issiusta": "",
+   "sekimo_siusta": "",
+   "notes": [
+    "Perduota tiekėjui Prins Petfoods — laiškas: terra@petshop.lt",
+    "Siuntos numeriai išsaugoti (PRINS): V07267E1000046",
+    "Venipak registracija darbalaukyje (PRINS, manifestas 005): sėkminga"
+   ],
+   "ivykiai": [
+    {
+     "laikas": "2026-09-03 08:23:34",
+     "veiksmas": "laiskas",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": "grupė: 2 užs."
+    },
+    {
+     "laikas": "2026-09-03 08:23:31",
+     "veiksmas": "vp_reg",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": "grupė: 2 užs."
+    }
+   ]
+  },
+  "par_txt_pries": "Gauti 6Neišrūšiuoti 1Laukiam iš tiekėjų 1Surinkti AV 11Dropshipping 12Paruošta siųsti 4Klausimai 3Neapmokėti 0Visi 38Filtrai ▾Iš kur: visiTik iš AVTik iš tiekėjųAV + tiekėjasPagal tiekėją: VFPagal tiekėją: ZBPagal tiekėją: QuattroPagal tiekėją: PrinsPagal tiekėją: AmbrosiaPagal tiekėją: BelacorPristatymas: visiVenipak kurjerisVenipak paštomatasLP ExpressData: visosŠiandienVakarŠi savaitėŠis mėnuoPraeitas mėnuoRikiuoti:skubiausi pirminaujausi pirmisumatiekėjasklientasAV — supakuota, laukia kurjerio · 2 siunt.#35429 NAUDITAS Testas 16Venipak paštomatasV07267E1000031, V07267E1000032 · 2 dėž.Lipdukas Kurjeris paėmė#35440AUDITAS Testas 27Venipak kurjerisV07267E1000049, V07267E1000050, V07267E1000051 · 3 dėž.Lipdukas Kurjeris paėmėKurjeris paėmė viskąKurjerio sąrašasKurjerio sąrašasPo kiekvienos siuntos klientui išeina laiškas su sekimo numeriu; kai išsiųstos visos — užsakymas įvykdytas.ZB — užsakyta, laukiam, kol išsiųs · 1 užs.#35418AUDITAS Testas 5užsakyta 09-02 20:50 · V07267E1000037ZB išsiuntėKai tiekėjas praneša, kad išsiuntė — pažymi; klientui išeina laiškas su sekimo numeriu.Prins — užsakyta, laukiam, kol išsiųs · 1 užs.#35421AUDITAS Testas 8užsakyta 09-03 14:23 · V07267E1000046 · kita dalis: AVPrins išsiuntėKai tiekėjas praneša, kad išsiuntė — pažymi; klientui išeina laiškas su sekimo numeriu.",
+  "prins_issiunte": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "eile": "paruosta",
+    "pd_ok": "dl_dalis",
+    "pd_nr": "35421|Prins išsiuntė — klientui išėjo „Išsiųsta 1 iš 2 siuntų“ · dar laukiam: AV"
+   }
+  },
+  "po": {
+   "st": "processing",
+   "eiles": [
+    "surinkti"
+   ],
+   "btn": "Surinkti",
+   "eil": [
+    "1x Animonda Carny Adult B [av/av]",
+    "1x QUATTRO 1,5 kg Adult S [i_av/quattro]",
+    "1x Prins Diet Skin & Inte [tiesiai/prins]"
+   ],
+   "dalys": {
+    "av": {
+     "nr": [],
+     "iss": false
+    },
+    "prins": {
+     "nr": [
+      "V07267E1000046"
+     ],
+     "iss": true
+    }
+   },
+   "dalys_issiusta": "{\"prins\":{\"laikas\":\"2026-09-03 21:33:34\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:34\"}}",
+   "sekimo_siusta": "2026-09-03 21:33:34",
+   "notes": [
+    "Darbalaukis: Prins išsiųsta (Testuotojas, web). Dar laukiam: AV. klientui išėjo „Išsiųsta 1 iš 2 siuntų“",
+    "Klientui išsiųsta „Išsiųsta 1 iš 2 siuntų“ (terra@petshop.lt): V07267E1000046",
+    "Perduota tiekėjui Prins Petfoods — laiškas: terra@petshop.lt"
+   ],
+   "ivykiai": [
+    {
+     "laikas": "2026-09-03 18:33:34",
+     "veiksmas": "issiusta_dalis",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": null
+    },
+    {
+     "laikas": "2026-09-03 08:23:34",
+     "veiksmas": "laiskas",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": "grupė: 2 užs."
+    },
+    {
+     "laikas": "2026-09-03 08:23:31",
+     "veiksmas": "vp_reg",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": "grupė: 2 užs."
+    }
+   ]
+  },
+  "mail": {
+   "viso": 1,
+   "pask": [
+    {
+     "kam": "terra@petshop.lt",
+     "tema": "Užsakymas Nr. 35421 — išsiųsta 1 iš 2 siuntų",
+     "txt": "Petshop.lt Išsiųsta 1 iš 2 siuntų Sveiki, AUDITAS, Išsiųsta 1 iš 2 Jūsų užsakymo Nr. 35421 siuntų. Antroji siunta keliaus atskirai — pranešime, kai išsiųsime. Užsakymas gautas Apmokėta Ruošiama Išsiųsta Pas kurjerį Pristatyta Siuntos numeris (Venipak) V07267E1000046 Sekti siuntą Šioje siuntoje: 1 × Prins Diet Skin &amp; Intestinal Hypoallergic sausas maistas katėms 1,5 kg Dar keliaus atskira siunta: 1 × Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g 1 × QUATTRO 1,5 kg Adult Salmon &amp; Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu, Gražios dienos,petshop.lt Petshop.ltLiucionių g. 46, Liucionių k., 15166, Lietuva"
+    }
+   ]
+  },
+  "dublis": {
+   "page": "ps-desk",
+   "eile": "paruosta",
+   "pd_ok": "dl_info",
+   "pd_nr": "35421|Prins jau pažymėta išsiųsta"
+  },
+  "mail_po_dublio": 1,
+  "oid": 0
+ },
+ "V": {
+  "v": "run e5t",
+  "f": "V",
+  "temp_istrinta": 0,
+  "versija": "3.10",
+  "md5": "78277b7260456a86ac0af69bd61c9bf3",
+  "pries": {
+   "st": "processing",
+   "eiles": [
+    "paruosta"
+   ],
+   "btn": "Kurjeris paėmė",
+   "eil": [
+    "3x Animonda Carny Adult B [av/av]"
+   ],
+   "dalys": {
+    "av": {
+     "nr": [
+      "V07267E1000049",
+      "V07267E1000050",
+      "V07267E1000051"
+     ],
+     "iss": false
+    }
+   },
+   "dalys_issiusta": "",
+   "sekimo_siusta": "",
+   "notes": [
+    "Siuntos numeriai išsaugoti (AV): V07267E1000049, V07267E1000050, V07267E1000051",
+    "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+    "Darbalaukis: dėžių skaičius — 3."
+   ],
+   "ivykiai": [
+    {
+     "laikas": "2026-09-03 09:30:43",
+     "veiksmas": "vp_reg",
+     "rezultatas": "praleista",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": null
+    },
+    {
+     "laikas": "2026-09-03 09:30:41",
+     "veiksmas": "vp_reg",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": null
+    },
+    {
+     "laikas": "2026-09-03 09:30:39",
+     "veiksmas": "apmokejimas",
+     "rezultatas": "ok",
+     "kanalas": "auto",
+     "kas_vardas": "Testuotojas",
+     "pastaba": "keliai: #871 av · MAIN"
+    }
+   ]
+  },
+  "kurjeris_paeme": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "eile": "paruosta",
+    "pd_ok": "dl_issiusta",
+    "pd_nr": "35440|klientui išėjo „Užsakymas išsiųstas“"
+   }
+  },
+  "po": {
+   "st": "completed",
+   "eiles": [],
+   "btn": "Atidaryti",
+   "eil": [
+    "3x Animonda Carny Adult B [av/av]"
+   ],
+   "dalys": {
+    "av": {
+     "nr": [
+      "V07267E1000049",
+      "V07267E1000050",
+      "V07267E1000051"
+     ],
+     "iss": true
+    }
+   },
+   "dalys_issiusta": "{\"av\":{\"laikas\":\"2026-09-03 21:33:43\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:43\"}}",
+   "sekimo_siusta": "2026-09-03 21:33:43",
+   "notes": [
+    "Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+    "Pažymėta išsiųsta darbalaukyje (Testuotojas, web). WC laiškas klientui: NESIŲSTAS. klientui išėjo „Užsakymas išsiųstas“",
+    "Klientui išsiųsta „Užsakymas išsiųstas“ (terra@petshop.lt): V07267E1000049, V07267E1000050, V07267E1000051"
+   ],
+   "ivykiai": [
+    {
+     "laikas": "2026-09-03 18:33:44",
+     "veiksmas": "issiusta",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": null
+    },
+    {
+     "laikas": "2026-09-03 18:33:44",
+     "veiksmas": "busena",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": "WooCommerce"
+    },
+    {
+     "laikas": "2026-09-03 09:30:43",
+     "veiksmas": "vp_reg",
+     "rezultatas": "praleista",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": null
+    }
+   ]
+  },
+  "mail": {
+   "viso": 2,
+   "pask": [
+    {
+     "kam": "terra@petshop.lt",
+     "tema": "Jūsų užsakymas Nr. 35440 išsiųstas",
+     "txt": "Petshop.lt Užsakymas išsiųstas Sveiki, AUDITAS, Jūsų užsakymas Nr. 35440 išsiųstas. Užsakymas gautas Apmokėta Ruošiama Išsiųsta Pas kurjerį Pristatyta Siuntų numeriai (Venipak) V07267E1000049, V07267E1000050, V07267E1000051 Sekti siuntą Prekės: 3 × Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g Gražios dienos,petshop.lt Petshop.ltLiucionių g. 46, Liucionių k., 15166, Lietuva"
+    }
+   ]
+  },
+  "oid": 0
+ },
+ "N": {
+  "v": "run e5t",
+  "f": "N",
+  "temp_istrinta": 0,
+  "versija": "3.10",
+  "md5": "78277b7260456a86ac0af69bd61c9bf3",
+  "prins_pid": 16889,
+  "oid": 35774,
+  "po_apmok": {
+   "st": "processing",
+   "eiles": [
+    "nauji"
+   ],
+   "btn": "Rūšiuoti",
+   "eil": [
+    "1x HAP žaislas šunims, pl [tiesiai/vf]",
+    "1x Prins Diet Skin & Inte [tiesiai/prins]"
+   ],
+   "dalys": {
+    "vf": {
+     "nr": [],
+     "iss": false
+    },
+    "prins": {
+     "nr": [],
+     "iss": false
+    }
+   },
+   "dalys_issiusta": "",
+   "sekimo_siusta": "",
+   "notes": [
+    "Email \"Užsakymas vykdomas\" sent.",
+    "Email \"Naujas užsakymas\" sent.",
+    "Faktai irasyti: 2 eilutes · pajamos 33,63 EUR (be PVM, po nuolaidu) · PVM 7,79 EUR · marza 9,41 EUR · kontribucija (be pristatymo) 12,10 EUR · TESTINIS"
+   ],
+   "ivykiai": [
+    {
+     "laikas": "2026-09-03 18:33:53",
+     "veiksmas": "apmokejimas",
+     "rezultatas": "ok",
+     "kanalas": "auto",
+     "kas_vardas": "Testuotojas",
+     "pastaba": "keliai: #1544 vf, #1545 prins · MIXED"
+    },
+    {
+     "laikas": "2026-09-03 18:33:53",
+     "veiksmas": "busena",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": "mokėjimas / svetainė"
+    }
+   ]
+  },
+  "kelias_vf": {
+   "page": "ps-desk",
+   "eile": "paruosta",
+   "pd_ok": "dl_info",
+   "pd_nr": "35774|kelias nepakeistas — jau VF siunčia klientui"
+  },
+  "kelias_prins": {
+   "page": "ps-desk",
+   "eile": "paruosta",
+   "pd_ok": "dl_info",
+   "pd_nr": "35774|kelias nepakeistas — jau Prins siunčia klientui"
+  },
+  "rusiuoti": {
+   "page": "ps-desk",
+   "eile": "paruosta",
+   "pd_ok": "dl_rusiuota",
+   "pd_nr": "35774|HAP žaislas šunims, pliušinė varlė su iš — VF siunčia klientui; Prins Diet Skin & Intestinal Hypoallergi — Prins siunčia klientui"
+  },
+  "po_rus": {
+   "st": "processing",
+   "eiles": [
+    "laiskai"
+   ],
+   "btn": "Užsakyti iš Prins",
+   "eil": [
+    "1x HAP žaislas šunims, pl [tiesiai/vf]",
+    "1x Prins Diet Skin & Inte [tiesiai/prins]"
+   ],
+   "dalys": {
+    "vf": {
+     "nr": [],
+     "iss": false
+    },
+    "prins": {
+     "nr": [],
+     "iss": false
+    }
+   },
+   "dalys_issiusta": "",
+   "sekimo_siusta": "",
+   "notes": [
+    "Surūšiuota (Testuotojas): HAP žaislas šunims, pliušinė varlė su iš — VF siunčia klientui; Prins Diet Skin & Intestinal Hypoallergi — Prins siunčia klientui",
+    "Email \"Užsakymas vykdomas\" sent.",
+    "Email \"Naujas užsakymas\" sent."
+   ],
+   "ivykiai": [
+    {
+     "laikas": "2026-09-03 18:33:56",
+     "veiksmas": "rusiuoti",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": null
+    },
+    {
+     "laikas": "2026-09-03 18:33:53",
+     "veiksmas": "apmokejimas",
+     "rezultatas": "ok",
+     "kanalas": "auto",
+     "kas_vardas": "Testuotojas",
+     "pastaba": "keliai: #1544 vf, #1545 prins · MIXED"
+    },
+    {
+     "laikas": "2026-09-03 18:33:53",
+     "veiksmas": "busena",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": "mokėjimas / svetainė"
+    }
+   ]
+  }
+ },
+ "U": {
+  "v": "run e5t",
+  "f": "U",
+  "temp_istrinta": 0,
+  "versija": "3.10",
+  "md5": "78277b7260456a86ac0af69bd61c9bf3",
+  "oid": 35774,
+  "uzs_vf": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "eile": "paruosta",
+    "pd_ok": "dl_laiskas",
+    "pd_nr": "VF|1 užs. → terra@petshop.lt"
+   }
+  },
+  "uzs_prins": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "eile": "paruosta",
+    "pd_ok": "dl_laiskas",
+    "pd_nr": "Prins|1 užs. → terra@petshop.lt"
+   }
+  },
+  "po": {
+   "st": "processing",
+   "eiles": [
+    "paruosta"
+   ],
+   "btn": "Prins išsiuntė",
+   "eil": [
+    "1x HAP žaislas šunims, pl [tiesiai/vf]",
+    "1x Prins Diet Skin & Inte [tiesiai/prins]"
+   ],
+   "dalys": {
+    "vf": {
+     "nr": [],
+     "iss": false
+    },
+    "prins": {
+     "nr": [],
+     "iss": false
+    }
+   },
+   "dalys_issiusta": "",
+   "sekimo_siusta": "",
+   "notes": [
+    "Perduota tiekėjui Prins Petfoods — laiškas: terra@petshop.lt",
+    "Perduota tiekėjui Vetfarmas — laiškas: terra@petshop.lt",
+    "Surūšiuota (Testuotojas): HAP žaislas šunims, pliušinė varlė su iš — VF siunčia klientui; Prins Diet Skin & Intestinal Hypoallergi — Prins siunčia klientui"
+   ],
+   "ivykiai": [
+    {
+     "laikas": "2026-09-03 18:34:05",
+     "veiksmas": "laiskas",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": null
+    },
+    {
+     "laikas": "2026-09-03 18:34:04",
+     "veiksmas": "laiskas",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": null
+    },
+    {
+     "laikas": "2026-09-03 18:33:56",
+     "veiksmas": "rusiuoti",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": null
+    }
+   ]
+  },
+  "mail": {
+   "viso": 6,
+   "pask": [
+    {
+     "kam": "terra@petshop.lt",
+     "tema": "[PERSIŲSTI Vetfarmas] užsakymas 2026-09-03",
+     "txt": "Laba diena,šiandienai35774AUDITAS Testas 32HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm AQ2803161 vnt.Linkėjimai,UAB Avesaterra@petshop.lt"
+    },
+    {
+     "kam": "terra@petshop.lt",
+     "tema": "[PERSIŲSTI Prins Petfoods] užsakymas 2026-09-03",
+     "txt": "Laba diena,šiandienai35774AUDITAS Testas 32Prins Diet Skin &amp; Intestinal Hypoallergic sausas maistas katėms 1,5 kg 730071 vnt.Linkėjimai,UAB Avesaterra@petshop.lt"
+    }
+   ]
+  },
+  "par_txt": "Gauti 7Neišrūšiuoti 1Laukiam iš tiekėjų 1Surinkti AV 11Dropshipping 12Paruošta siųsti 3Klausimai 3Neapmokėti 0Visi 39Filtrai ▾Iš kur: visiTik iš AVTik iš tiekėjųAV + tiekėjasPagal tiekėją: VFPagal tiekėją: ZBPagal tiekėją: QuattroPagal tiekėją: PrinsPagal tiekėją: AmbrosiaPagal tiekėją: BelacorPristatymas: visiVenipak kurjerisVenipak paštomatasLP ExpressData: visosŠiandienVakarŠi savaitėŠis mėnuoPraeitas mėnuoRikiuoti:skubiausi pirminaujausi pirmisumatiekėjasklientasAV — supakuota, laukia kurjerio · 1 siunt.#35429 NAUDITAS Testas 16Venipak paštomatasV07267E1000031, V07267E1000032 · 2 dėž.Lipdukas Kurjeris paėmėKurjeris paėmė viskąKurjerio sąrašasPo kiekvienos siuntos klientui išeina laiškas su sekimo numeriu; kai išsiųstos visos — užsakymas įvykdytas.ZB — užsakyta, laukiam, kol išsiųs · 1 užs.#35418AUDITAS Testas 5užsakyta 09-02 20:50 · V07267E1000037ZB išsiuntėKai tiekėjas praneša, kad išsiuntė — pažymi; klientui išeina laiškas su sekimo numeriu.VF — užsakyta, laukiam, kol išsiųs · 1 užs.#35774AUDITAS Testas 32užsakyta 09-04 00:34 · kita dalis: PrinsVF išsiuntėKai tiekėjas praneša, kad išsiuntė — pažymi; klientui išeina laiškas su sekimo numeriu.Prins — užsakyta, laukiam, kol išsiųs · 1 užs.#35774AUDITAS Testas 32užsakyta 09-04 00:34 · kita dalis: VFPrins išsiuntėKai tiekėjas praneša, kad išsiuntė — pažymi; klientui išeina laiškas su sekimo numeriu."
+ },
+ "I": {
+  "v": "run e5t",
+  "f": "I",
+  "temp_istrinta": 0,
+  "versija": "3.10",
+  "md5": "78277b7260456a86ac0af69bd61c9bf3",
+  "oid": 35774,
+  "vf_issiunte": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "eile": "paruosta",
+    "pd_ok": "dl_dalis",
+    "pd_nr": "35774|VF išsiuntė — klientui išėjo „Išsiųsta 1 iš 2 siuntų“ be sekimo numerio · dar laukiam: Prins"
+   }
+  },
+  "po_vf": {
+   "st": "processing",
+   "eiles": [
+    "paruosta"
+   ],
+   "btn": "Prins išsiuntė",
+   "eil": [
+    "1x HAP žaislas šunims, pl [tiesiai/vf]",
+    "1x Prins Diet Skin & Inte [tiesiai/prins]"
+   ],
+   "dalys": {
+    "vf": {
+     "nr": [],
+     "iss": true
+    },
+    "prins": {
+     "nr": [],
+     "iss": false
+    }
+   },
+   "dalys_issiusta": "{\"vf\":{\"laikas\":\"2026-09-03 21:34:14\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:34:14\"}}",
+   "sekimo_siusta": "2026-09-03 21:34:14",
+   "notes": [
+    "Darbalaukis: VF išsiųsta (Testuotojas, web). Dar laukiam: Prins. klientui išėjo „Išsiųsta 1 iš 2 siuntų“ be sekimo numerio",
+    "Klientui išsiųsta „Išsiųsta 1 iš 2 siuntų“ (terra@petshop.lt) — be sekimo numerio",
+    "Perduota tiekėjui Prins Petfoods — laiškas: terra@petshop.lt"
+   ],
+   "ivykiai": [
+    {
+     "laikas": "2026-09-03 18:34:14",
+     "veiksmas": "issiusta_dalis",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": null
+    },
+    {
+     "laikas": "2026-09-03 18:34:05",
+     "veiksmas": "laiskas",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": null
+    },
+    {
+     "laikas": "2026-09-03 18:34:04",
+     "veiksmas": "laiskas",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": null
+    }
+   ]
+  },
+  "mail_vf": {
+   "viso": 7,
+   "pask": [
+    {
+     "kam": "terra@petshop.lt",
+     "tema": "Užsakymas Nr. 35774 — išsiųsta 1 iš 2 siuntų",
+     "txt": "Petshop.lt Išsiųsta 1 iš 2 siuntų Sveiki, AUDITAS, Išsiųsta 1 iš 2 Jūsų užsakymo Nr. 35774 siuntų. Antroji siunta keliaus atskirai — pranešime, kai išsiųsime. Užsakymas gautas Apmokėta Ruošiama Išsiųsta Pas kurjerį Pristatyta Siunta perduota vežėjui Venipak. Šioje siuntoje: 1 × HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm Dar keliaus atskira siunta: 1 × Prins Diet Skin &amp; Intestinal Hypoallergic sausas maistas katėms 1,5 kg Gražios dienos,petshop.lt Petshop.ltLiucionių g. 46, Liucionių k., 15166, Lietuva"
+    }
+   ]
+  },
+  "prins_issiunte": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "eile": "paruosta",
+    "pd_ok": "dl_klaida",
+    "pd_nr": "35774|užbaigti neleido sargas — registruotos 0 iš 2 siuntų; klientui išėjo „Išsiųsta 2 iš 2 siuntų“ be sekimo numerio"
+   }
+  },
+  "po_prins": {
+   "st": "processing",
+   "eiles": [],
+   "btn": "Atidaryti",
+   "eil": [
+    "1x HAP žaislas šunims, pl [tiesiai/vf]",
+    "1x Prins Diet Skin & Inte [tiesiai/prins]"
+   ],
+   "dalys": {
+    "vf": {
+     "nr": [],
+     "iss": true
+    },
+    "prins": {
+     "nr": [],
+     "iss": true
+    }
+   },
+   "dalys_issiusta": "{\"vf\":{\"laikas\":\"2026-09-03 21:34:14\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:34:14\"},\"prins\":{\"laikas\":\"2026-09-03 21:34:15\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:34:15\"}}",
+   "sekimo_siusta": "2026-09-03 21:34:15",
+   "notes": [
+    "Užsakymo statusas pakeistas iš Vykdomas į Vykdomas.",
+    "Užbaigimas sustabdytas: registruotos 0 iš 2 siuntų. Užbaigti galima, kai visos siuntos registruotos (apėjimas ypatingam atvejui: meta _ps_uzbaigti_be_siuntu = 1).",
+    "Pažymėta išsiųsta darbalaukyje (Testuotojas, web). WC laiškas klientui: NESIŲSTAS. klientui išėjo „Išsiųsta 2 iš 2 siuntų“ be sekimo numerio"
+   ],
+   "ivykiai": [
+    {
+     "laikas": "2026-09-03 18:34:15",
+     "veiksmas": "busena",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": "WooCommerce"
+    },
+    {
+     "laikas": "2026-09-03 18:34:14",
+     "veiksmas": "issiusta_dalis",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": null
+    },
+    {
+     "laikas": "2026-09-03 18:34:05",
+     "veiksmas": "laiskas",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "pastaba": null
+    }
+   ]
+  },
+  "mail_prins": {
+   "viso": 8,
+   "pask": [
+    {
+     "kam": "terra@petshop.lt",
+     "tema": "Užsakymas Nr. 35774 — išsiųsta 2 iš 2 siuntų",
+     "txt": "Petshop.lt Išsiųsta 2 iš 2 siuntų Sveiki, AUDITAS, Išsiųsta 2 iš 2 Jūsų užsakymo Nr. 35774 siuntų — visas užsakymas išsiųstas. Užsakymas gautas Apmokėta Ruošiama Išsiųsta Pas kurjerį Pristatyta Siunta perduota vežėjui Venipak. Šioje siuntoje: 1 × Prins Diet Skin &amp; Intestinal Hypoallergic sausas maistas katėms 1,5 kg Gražios dienos,petshop.lt Petshop.ltLiucionių g. 46, Liucionių k., 15166, Lietuva"
+    }
+   ]
+  },
+  "par_txt": "Gauti 7Neišrūšiuoti 1Laukiam iš tiekėjų 1Surinkti AV 11Dropshipping 12Paruošta siųsti 2Klausimai 3Neapmokėti 0Visi 39Filtrai ▾Iš kur: visiTik iš AVTik iš tiekėjųAV + tiekėjasPagal tiekėją: VFPagal tiekėją: ZBPagal tiekėją: QuattroPagal tiekėją: PrinsPagal tiekėją: AmbrosiaPagal tiekėją: BelacorPristatymas: visiVenipak kurjerisVenipak paštomatasLP ExpressData: visosŠiandienVakarŠi savaitėŠis mėnuoPraeitas mėnuoRikiuoti:skubiausi pirminaujausi pirmisumatiekėjasklientasAV — supakuota, laukia kurjerio · 1 siunt.#35429 NAUDITAS Testas 16Venipak paštomatasV07267E1000031, V07267E1000032 · 2 dėž.Lipdukas Kurjeris paėmėKurjeris paėmė viskąKurjerio sąrašasPo kiekvienos siuntos klientui išeina laiškas su sekimo numeriu; kai išsiųstos visos — užsakymas įvykdytas.ZB — užsakyta, laukiam, kol išsiųs · 1 užs.#35418AUDITAS Testas 5užsakyta 09-02 20:50 · V07267E1000037ZB išsiuntėKai tiekėjas praneša, kad išsiuntė — pažymi; klientui išeina laiškas su sekimo numeriu.",
+  "dev_pastas": 1,
+  "mail_viso": 8,
+  "mail_temos": [
+   "Užsakymas Nr. 35421 — išsiųsta 1 iš 2 siuntų",
+   "Jūsų užsakymas Nr. 35440 išsiųstas",
+   "Naujas užsakymas Nr. 35774 — 2026-09-03",
+   "Jūsų užsakymas Nr. 35774 — apmokėjimas gautas",
+   "[PERSIŲSTI Vetfarmas] užsakymas 2026-09-03",
+   "[PERSIŲSTI Prins Petfoods] užsakymas 2026-09-03",
+   "Užsakymas Nr. 35774 — išsiųsta 1 iš 2 siuntų",
+   "Užsakymas Nr. 35774 — išsiųsta 2 iš 2 siuntų"
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788462253|ywkInTiPIT0nNPvW5HeKVgqZSCJhFt83ESMW5Q5RCXp|b0886e57224853bd769d923eb386e6d8fc7cf2313a42fa19a4e1ed7c15d75591"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788462253|ywkInTiPIT0nNPvW5HeKVgqZSCJhFt83ESMW5Q5RCXp|290c3a8f848e2d262bfed8920d86832d76334e8c825379e5471a9a96d8b58917"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788462253|ywkInTiPIT0nNPvW5HeKVgqZSCJhFt83ESMW5Q5RCXp|d16cfe3d6a1fafcc748522d57706cb4f91270c0bde1feebae459e23f7e890827"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e5_laiskas_0",
+    "u": "https://dev.avesa.lt/?ps_e5t=H&i=0",
+    "w": 760,
+    "h": 1000,
+    "full": true
+   },
+   {
+    "n": "e5_laiskas_1",
+    "u": "https://dev.avesa.lt/?ps_e5t=H&i=1",
+    "w": 760,
+    "h": 1000,
+    "full": true
+   },
+   {
+    "n": "e5_laiskas_2",
+    "u": "https://dev.avesa.lt/?ps_e5t=H&i=2",
+    "w": 760,
+    "h": 1000,
+    "full": true
+   },
+   {
+    "n": "e5_laiskas_3",
+    "u": "https://dev.avesa.lt/?ps_e5t=H&i=3",
+    "w": 760,
+    "h": 1000,
+    "full": true
+   },
+   {
+    "n": "e5_laiskas_4",
+    "u": "https://dev.avesa.lt/?ps_e5t=H&i=4",
+    "w": 760,
+    "h": 1000,
+    "full": true
+   },
+   {
+    "n": "e5_laiskas_5",
+    "u": "https://dev.avesa.lt/?ps_e5t=H&i=5",
+    "w": 760,
+    "h": 1000,
+    "full": true
+   },
+   {
+    "n": "e5_laiskas_6",
+    "u": "https://dev.avesa.lt/?ps_e5t=H&i=6",
+    "w": 760,
+    "h": 1000,
+    "full": true
+   },
+   {
+    "n": "e5_laiskas_7",
+    "u": "https://dev.avesa.lt/?ps_e5t=H&i=7",
+    "w": 760,
+    "h": 1000,
+    "full": true
+   },
+   {
+    "n": "e5_paruosta",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+    "full": true,
+    "eval": "({pastaba:[...document.querySelectorAll('.pastaba')].map(x=>x.innerText),btn:[...document.querySelectorAll('td.d a.v')].map(x=>x.innerText.trim()).filter(Boolean)})"
+   },
+   {
+    "n": "e5_dialogas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+    "click": "tr.eil[data-id=\"35418\"] td.d a.v.p",
+    "eval": "({dlg:(document.querySelector('.dl-dlg.on')||{}).innerText,opt:(document.querySelector('#dlDlgOpt')||{}).checked,href:(document.querySelector('.dl-dlg.on a.v.p')||{}).href})"
+   },
+   {
+    "n": "e5_visi",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+    "eval": "({eil:[...document.querySelectorAll('tr.eil')].slice(0,6).map(x=>x.innerText.replace(/\\s+/g,' ').slice(0,160))})"
+   },
+   {
+    "n": "e5_istorija",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&atidaryti=35774",
+    "eval": "new Promise(function(r){setTimeout(function(){r({kur:(document.querySelector('.dl-kur')||{}).textContent,zing:[...document.querySelectorAll('#skEil .zingsneliai')].map(x=>x.innerText.replace(/\\s+/g,' '))})},1500)})"
+   }
+  ]
+ },
+ "shots": {
+  "e5_laiskas_0": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/?ps_e5t=H&i=0",
+   "title": "Petshop.lt",
+   "errors": []
+  },
+  "e5_laiskas_1": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/?ps_e5t=H&i=1",
+   "title": "Petshop.lt",
+   "errors": []
+  },
+  "e5_laiskas_2": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/?ps_e5t=H&i=2",
+   "title": "Petshop.lt",
+   "errors": []
+  },
+  "e5_laiskas_3": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/?ps_e5t=H&i=3",
+   "title": "Petshop.lt",
+   "errors": []
+  },
+  "e5_laiskas_4": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/?ps_e5t=H&i=4",
+   "title": "",
+   "errors": []
+  },
+  "e5_laiskas_5": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/?ps_e5t=H&i=5",
+   "title": "",
+   "errors": []
+  },
+  "e5_laiskas_6": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/?ps_e5t=H&i=6",
+   "title": "Petshop.lt",
+   "errors": []
+  },
+  "e5_laiskas_7": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/?ps_e5t=H&i=7",
+   "title": "Petshop.lt",
+   "errors": []
+  },
+  "e5_paruosta": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "pastaba": [
+     "Po kiekvienos siuntos klientui išeina laiškas su sekimo numeriu; kai išsiųstos visos — užsakymas įvykdytas.",
+     "Kai tiekėjas praneša, kad išsiuntė — pažymi; klientui išeina laiškas su sekimo numeriu.",
+     ""
+    ],
+    "btn": [
+     "Lipdukas",
+     "Kurjeris paėmė",
+     "ZB išsiuntė"
+    ]
+   }
+  },
+  "e5_dialogas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "tr.eil[data-id=\"35418\"] td.d a.v.p",
+   "eval": {
+    "dlg": "Užsakymas #35418 · 34,52 €\n\nZB išsiuntė savo dalį V07267E1000037? Užsakymas įvykdytas. Klientui išeina laiškas „Užsakymas išsiųstas“ su sekimo numeriu.\n\nPranešti klientui\nAtšaukti\nZB išsiuntė",
+    "opt": true,
+    "href": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=issiusta&id=35418&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26eile%3Dparuosta%26atidaryti%3D35418&dalis=zb&_wpnonce=b55e9d0173&sekimo=1"
+   }
+  },
+  "e5_visi": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "eil": [
+     "#35774 N prieš 3 val. AUDITAS Testas 32 · Venipak kurjeris, Vilnius · 44,91 € VF siunčia klientui 1 vnt. HAP žaislas šunims, pliušinė varlė su išim… Prins siunč",
+     "#35772 prieš 4 val. Atšauktas AUDITAS Testas 33 · Venipak kurjeris, Vilnius · 6,61 € · neapmokėta Iš AV 1 vnt. Exclusion Hypoallergenic konservai šunims … Atšau",
+     "#35771 prieš 4 val. Atšauktas AUDITAS Testas 32 · Venipak kurjeris, Vilnius · 6,61 € · neapmokėta Iš AV 1 vnt. Exclusion Hypoallergenic konservai šunims … Atšau",
+     "#35450 prieš 5 val. AUDITAS Testas 31 · Venipak kurjeris, Vilnius · 41,60 € Iš AV 3 vnt. Animonda Carny Adult Beef + Chicken + Duck… +2 Ruošiamas Surinkti AV · ",
+     "#35444 prieš 9 val. AUDITAS Testas 30 · Venipak kurjeris, Vilnius · 23,82 € Iš AV 1 vnt. Animonda Carny Adult Beef + Chicken + Duck… Quattro veža į AV 1 vnt. QU",
+     "#35443 prieš 9 val. AUDITAS Testas 29 · Venipak kurjeris, Vilnius · 36,50 € VF siunčia klientui 1 vnt. Churu Popn Serve skanėstas katėms su tunu… ZB siunčia kli"
+    ]
+   }
+  },
+  "e5_istorija": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&atidaryti=35774\", waiting until \"networkidle\"\n"
+ }
+}
