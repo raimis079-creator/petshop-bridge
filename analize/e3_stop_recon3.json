@@ -1,0 +1,235 @@
+{
+ "v": "dep-180337",
+ "kurimas": 200,
+ "sid": 4634,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "f": "R",
+  "temp_istrinta": 1,
+  "kand": {
+   "gaj6_ps_email_content": {
+    "cols": "id,flow,version,status,subject,preheader,reason,blocks_json,notes,author_id,created_at,published_at",
+    "status": [
+     {
+      "s": "draft",
+      "n": "15"
+     }
+    ]
+   },
+   "gaj6_ps_email_jobs": {
+    "cols": "id,job_key,flow,flow_class,recipient_email,recipient_user_id,subject,payload,status,block_reason,provider,provider_message_id,attempts,last_error,scheduled_at,sent_at,created_at,updated_at,skip_reason,error_message,decision_at,next_attempt_at,context_json,delivered_at,opened_at,clicked_at",
+    "status": [
+     {
+      "s": "pending",
+      "n": "41"
+     },
+     {
+      "s": "sent",
+      "n": "297"
+     },
+     {
+      "s": "skipped",
+      "n": "7"
+     }
+    ]
+   },
+   "gaj6_ps_event_log": {
+    "cols": "id,event_id,event_name,email,payload_json,emitted_at,status,adapter_name,attempts,next_retry_at,last_error,esp_response",
+    "status": [
+     {
+      "s": "dead",
+      "n": "6"
+     },
+     {
+      "s": "sent",
+      "n": "840"
+     }
+    ]
+   },
+   "gaj6_ps_naujienlaiskiai": {
+    "cols": "id,pavadinimas,subject,preheader,blocks_json,status,author_id,created_at,updated_at,sent_at",
+    "status": []
+   },
+   "gaj6_ps_uzsakymu_ivykiai": {
+    "cols": "id,laikas,diena,uzsakymas,eilute,sritis,veiksmas,rezultatas,busena,kanalas,kas,kas_vardas,pries,po,pastaba",
+    "status": [
+     {
+      "s": "",
+      "n": "457"
+     }
+    ]
+   }
+  },
+  "pvz": {
+   "gaj6_ps_email_content": [
+    {
+     "id": "63",
+     "flow": "back_in_stock",
+     "version": "1",
+     "status": "draft",
+     "subject": "Prekė vėl prekyboje: {product_name}",
+     "preheader": "Dabar ją vėl galite užsisakyti.",
+     "reason": "Gavote šį laišką, nes prekės puslapyje paprašėte pranešti, kai ji vėl bus prekyboje. Tai vienkartinis pranešimas.",
+     "blocks_json": "[{\"t\":\"p\",\"text\":\"Prek\\u0117[jei price][jei product_url][jei product_name] \\u201e{product_name}\\u201c[\\/jei][kitaip] \\u201e{product_name}\\u201c[\\/jei], apie kuri\\u0105 pra\\u0161\\u0117te prane\\u0161ti, v\\u0117l yra prekyboje. Kaina \\u2014 {price}[kitaip] \\u201e{product_name}\\u201c, apie kuri\\u0105 pra\\u0161\\u0117te prane\\u0161ti, v\\u0117l yra prekyboje[\\/jei].\"},{\"t\":\"button\",\"url\":\"http:\\/\\/{product_url}\",\"label\":\"Per\\u017ei\\u016br\\u0117ti prek\\u0119\"}]",
+     "notes": "Perkelta is back-in-stock.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip atrodo be: product_name, product_url, price",
+     "author_id": "0",
+     "created_at": "2026-08-29 18:30:23",
+     "published_at": null
+    },
+    {
+     "id": "62",
+     "flow": "legacy_reactivation_l1",
+     "version": "1",
+     "status": "draft",
+     "subject": "Petshop.lt atsinaujino",
+     "preheader": "Patogesnė paieška, alergenų filtrai ir kaina eurais per dieną.",
+     "reason": "Gavote šį laišką, nes esate ankstesnis petshop.lt klientas ir sutikote gauti mūsų naujienas.",
+     "blocks_json": "[{\"t\":\"p\",\"text\":\"Sveiki! Petshop.lt atsinaujino.\"},{\"t\":\"p\",\"text\":\"Dabar prekes lengviau atsirinkti pagal augintinio poreikius ir alergenus, o maist\\u0105 galima palyginti ir pagal kain\\u0105 eurais per dien\\u0105.\"},{\"t\":\"p\",\"text\":\"Prisijungimui slapta\\u017eod\\u017eio nereikia \\u2014 \\u012fveskite el. pa\\u0161t\\u0105 ir gausite prisijungimo nuorod\\u0105.\"},{\"t\":\"button\",\"url\":\"https:\\/\\/dev.avesa.lt\\/paskyra\\/\",\"label\":\"Prisijungti prie paskyros\"},{\"t\":\"secondary\",\"items\":[{\"label\":\"U\\u017epildyti augintinio anket\\u0105\",\"url\":\"https:\\/\\/dev.avesa.lt\\/augintinis\\/\"}]}]",
+     "notes": "Perkelta is legacy-l1.php · pilna saka patikrinta byte-tiksliai",
+     "author_id": "0",
+     "created_at": "2026-08-29 18:30:23",
+     "published_at": null
+    }
+   ],
+   "gaj6_ps_email_jobs": [
+    {
+     "id": "435",
+     "job_key": "pf_35773",
+     "flow": "payment_failed",
+     "flow_class": "transactional",
+     "recipient_email": "terra@petshop.lt",
+     "recipient_user_id": null,
+     "subject": null,
+     "payload": "{\"order_id\":35773,\"order_number\":\"35773\",\"total\":\"2,60\\u00a0\\u20ac\",\"name\":\"AUDITAS\",\"pay_url\":\"https:\\/\\/dev.avesa.lt\\/kasa\\/order-pay\\/35773\\/?pay_for_order=true&key=wc_order_jDOXCQ32F77tG\",\"order_url\":\"https:\\/\\/dev.avesa.lt\\/paskyra\\/uzsakymas\\/35773\\/\",\"method\":\"\",\"expires_at\":\"2026-09-06\"}",
+     "status": "pending",
+     "block_reason": null,
+     "provider": null,
+     "provider_message_id": null,
+     "attempts": "0",
+     "last_error": null,
+     "scheduled_at": "2026-09-03 17:23:51",
+     "sent_at": null,
+     "created_at": "2026-09-03 17:23:51",
+     "updated_at": "2026-09-03 17:23:51",
+     "skip_reason": null,
+     "error_message": null,
+     "decision_at": null,
+     "next_attempt_at": null,
+     "context_json": null,
+     "delivered_at": null,
+     "opened_at": null,
+     "clicked_at": null
+    },
+    {
+     "id": "434",
+     "job_key": "pf_35770",
+     "flow": "payment_failed",
+     "flow_class": "transactional",
+     "recipient_email": "terra@petshop.lt",
+     "recipient_user_id": null,
+     "subject": null,
+     "payload": "{\"order_id\":35770,\"order_number\":\"35770\",\"total\":\"2,60\\u00a0\\u20ac\",\"name\":\"AUDITAS\",\"pay_url\":\"https:\\/\\/dev.avesa.lt\\/kasa\\/order-pay\\/35770\\/?pay_for_order=true&key=wc_order_4oD3aHeDP1q71\",\"order_url\":\"https:\\/\\/dev.avesa.lt\\/paskyra\\/uzsakymas\\/35770\\/\",\"method\":\"\",\"expires_at\":\"2026-09-06\"}",
+     "status": "pending",
+     "block_reason": null,
+     "provider": null,
+     "provider_message_id": null,
+     "attempts": "0",
+     "last_error": null,
+     "scheduled_at": "2026-09-03 16:56:53",
+     "sent_at": null,
+     "created_at": "2026-09-03 16:56:53",
+     "updated_at": "2026-09-03 16:56:53",
+     "skip_reason": null,
+     "error_message": null,
+     "decision_at": null,
+     "next_attempt_at": null,
+     "context_json": null,
+     "delivered_at": null,
+     "opened_at": null,
+     "clicked_at": null
+    }
+   ],
+   "gaj6_ps_event_log": [
+    {
+     "id": "1037",
+     "event_id": "payment_failed_1788456231_5c97f008",
+     "event_name": "payment_failed",
+     "email": "terra@petshop.lt",
+     "payload_json": "{\"order_id\":35773,\"order_number\":\"35773\",\"total\":\"2,60 €\",\"name\":\"AUDITAS\",\"pay_url\":\"https://dev.avesa.lt/kasa/order-pay/35773/?pay_for_order=true&key=wc_order_jDOXCQ32F77tG\",\"order_url\":\"https://dev.avesa.lt/paskyra/uzsakymas/35773/\",\"method\":\"\",\"expires_at\":\"2026-09-06\"}",
+     "emitted_at": "2026-09-03 17:23:51",
+     "status": "sent",
+     "adapter_name": "sender",
+     "attempts": "0",
+     "next_retry_at": null,
+     "last_error": null,
+     "esp_response": "{\"message\":\"Event created\",\"success\":true}"
+    },
+    {
+     "id": "1035",
+     "event_id": "order_paid_35772",
+     "event_name": "order_paid",
+     "email": "terra@petshop.lt",
+     "payload_json": "{\"order_id\":35772,\"order_number\":\"35772\",\"order_total\":6.61,\"order_currency\":\"EUR\",\"order_items\":[{\"product_id\":18593,\"sku\":\"AM20\",\"name\":\"Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200 g\",\"quantity\":1,\"line_total\":1.975207,\"fulfillment_source\":\"vf\"}],\"payment_method\":\"bacs\",\"shipping_method\":\"VENIPAK Kurjeris\",\"customer_note\":null,\"is_first_order\":false,\"order_count_at_time\":0}",
+     "emitted_at": "2026-09-03 17:10:31",
+     "status": "sent",
+     "adapter_name": "sender",
+     "attempts": "0",
+     "next_retry_at": null,
+     "last_error": null,
+     "esp_response": "{\"message\":\"Event created\",\"success\":true}"
+    }
+   ],
+   "gaj6_ps_naujienlaiskiai": [],
+   "gaj6_ps_uzsakymu_ivykiai": [
+    {
+     "id": "457",
+     "laikas": "2026-09-03 17:23:52",
+     "diena": "2026-09-03",
+     "uzsakymas": "35773",
+     "eilute": "0",
+     "sritis": "wc",
+     "veiksmas": "busena",
+     "rezultatas": "ok",
+     "busena": "",
+     "kanalas": "web",
+     "kas": "75",
+     "kas_vardas": "Testuotojas",
+     "pries": "{\"status\":\"pending\"}",
+     "po": "{\"status\":\"failed\"}",
+     "pastaba": "mokėjimas / svetainė"
+    },
+    {
+     "id": "456",
+     "laikas": "2026-09-03 17:10:37",
+     "diena": "2026-09-03",
+     "uzsakymas": "35772",
+     "eilute": "0",
+     "sritis": "desk",
+     "veiksmas": "atsaukti",
+     "rezultatas": "ok",
+     "busena": "",
+     "kanalas": "web",
+     "kas": "75",
+     "kas_vardas": "Testuotojas",
+     "pries": "{\"status\":\"processing\",\"tipas\":\"MAIN\",\"pak\":0,\"siuntos\":[],\"vp\":\"\",\"misrus\":null,\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"2026-09-03 20:10:31\",\"eil\":{\"1539\":{\"pid\":18593,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"1\",\"av_q\":\"20\",\"stock\":\"70\"}}}",
+     "po": "{\"status\":\"cancelled\",\"tipas\":\"MAIN\",\"pak\":0,\"siuntos\":[],\"vp\":\"\",\"misrus\":null,\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"2026-09-03 20:10:31\",\"eil\":{\"1539\":{\"pid\":18593,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"1\",\"av_q\":\"21\",\"stock\":\"70\"}},\"param\":[],\"trukme_ms\":373,\"redirect\":{\"pd_ok\":\"atsaukta\",\"pd_nr\":\"35772\",\"page\":\"ps-desk\"},\"zinute\":\"atsaukta 35772\"}",
+     "pastaba": null
+    }
+   ]
+  },
+  "t3_eil": {
+   "gaj6_ps_uzsakymu_ivykiai": 320
+  },
+  "t3_pending": {
+   "gaj6_ps_uzsakymu_ivykiai": [
+    {
+     "s": "",
+     "n": "320"
+    }
+   ]
+  }
+ }
+}
