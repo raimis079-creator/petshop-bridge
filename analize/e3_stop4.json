@@ -1,0 +1,160 @@
+{
+ "v": "dep-180533",
+ "kurimas": 200,
+ "sid": 4635,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "STOP": {
+  "f": "STOP",
+  "temp_istrinta": 1,
+  "jobs_3h": [
+   {
+    "flow": "payment_failed",
+    "status": "pending",
+    "n": "41"
+   },
+   {
+    "flow": "payment_failed",
+    "status": "sent",
+    "n": "280"
+   }
+  ],
+  "jobs_sent_per_min": [
+   {
+    "m": "16:59",
+    "n": "20"
+   },
+   {
+    "m": "17:03",
+    "n": "10"
+   },
+   {
+    "m": "17:04",
+    "n": "10"
+   },
+   {
+    "m": "17:10",
+    "n": "20"
+   },
+   {
+    "m": "17:14",
+    "n": "20"
+   },
+   {
+    "m": "17:19",
+    "n": "20"
+   },
+   {
+    "m": "17:23",
+    "n": "12"
+   },
+   {
+    "m": "17:24",
+    "n": "8"
+   },
+   {
+    "m": "17:28",
+    "n": "20"
+   },
+   {
+    "m": "17:34",
+    "n": "20"
+   },
+   {
+    "m": "17:39",
+    "n": "20"
+   },
+   {
+    "m": "17:44",
+    "n": "20"
+   },
+   {
+    "m": "17:50",
+    "n": "20"
+   },
+   {
+    "m": "17:54",
+    "n": "20"
+   },
+   {
+    "m": "17:58",
+    "n": "7"
+   },
+   {
+    "m": "17:59",
+    "n": "13"
+   },
+   {
+    "m": "18:04",
+    "n": "20"
+   }
+  ],
+  "events_3h": [
+   {
+    "event_name": "order_paid",
+    "status": "sent",
+    "adapter_name": "sender",
+    "n": "3"
+   },
+   {
+    "event_name": "payment_failed",
+    "status": "sent",
+    "adapter_name": "sender",
+    "n": "321"
+   }
+  ],
+  "pending_pvz": [
+   {
+    "id": "435",
+    "job_key": "pf_35773",
+    "flow": "payment_failed",
+    "status": "pending",
+    "scheduled_at": "2026-09-03 17:23:51",
+    "next_attempt_at": null,
+    "attempts": "0"
+   },
+   {
+    "id": "434",
+    "job_key": "pf_35770",
+    "flow": "payment_failed",
+    "status": "pending",
+    "scheduled_at": "2026-09-03 16:56:53",
+    "next_attempt_at": null,
+    "attempts": "0"
+   },
+   {
+    "id": "433",
+    "job_key": "pf_35769",
+    "flow": "payment_failed",
+    "status": "pending",
+    "scheduled_at": "2026-09-03 16:56:53",
+    "next_attempt_at": null,
+    "attempts": "0"
+   },
+   {
+    "id": "432",
+    "job_key": "pf_35768",
+    "flow": "payment_failed",
+    "status": "pending",
+    "scheduled_at": "2026-09-03 16:56:52",
+    "next_attempt_at": null,
+    "attempts": "0"
+   },
+   {
+    "id": "431",
+    "job_key": "pf_35767",
+    "flow": "payment_failed",
+    "status": "pending",
+    "scheduled_at": "2026-09-03 16:56:52",
+    "next_attempt_at": null,
+    "attempts": "0"
+   }
+  ],
+  "pending_t3": 41,
+  "atsaukta": 41,
+  "pending_po": 0,
+  "cron_paleistas": 1788458919
+ }
+}
