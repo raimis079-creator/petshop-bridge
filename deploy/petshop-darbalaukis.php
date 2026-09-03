@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.5 (S1607, 2 etapas, Run 26 — Dropshipping: dėžės kiekvienam užsakymui, „+ į AV“ nuoroda, ne-Venipak įspėjimas) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.6 (S1608, 3 etapas — „Laukiam iš tiekėjų“ kortelės: „Užsakyti iš [T] į AV“ ir „Gauta“ čia pat) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -26,6 +26,14 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v3.6.1: skydelio „kodėl“ gautai prekei — „Gauta į AV iš ZB (užsakymas tiekėjui #15) — siunčiam iš AV“ (buvo tiekėjo pasiūlymo tekstas).
+ * v3.6 (3 etapas #1, STARTAS 2026-09-04): eilė „Laukiam iš tiekėjų“ = kortelės per tiekėją. A) užsakyti užsakymai tiekėjui (H1–H3) —
+ *   prekių sąrašas su „Gauta“ kiekiais/galiojimu ir mygtukas „Gauta“ (variklio `priimti()`); ZB — „Kopijuoti“. B) „Užsakyti iš [T] į AV“ —
+ *   kaupiama partija + dar nesudėtos „veža į AV“ eilutės, pristatymas/svoris/dėžės, adresatai, „Peržiūrėti laišką“; „Kartu su
+ *   Dropshipping (n užs.)“ (G4) — sudeda į partiją ir veda į Dropshipping kortelę su varnele „+ į AV“. Savas `admin_post_ps_dl_tiekimas`
+ *   sudeda eilutes (kaip variklio `kons`) ir paleidžia `admin_post_ps_tiekimas` — variklis ir žurnalas nekeisti; grįžimas per `grizti_cia()`.
+ *   Tiekimo langas darbuotojui nebereikalingas (Raimiui lieka): `kons`/`tiekimas` mygtukai, skydelio nuoroda ir Rytinės eigos „Gavimai“
+ *   veda į šią eilę. Žodynas: „partija“ → „užsakymas tiekėjui #n“ visur darbuotojui.
  * v3.5 (Raimis): Dropshipping kortelėje kiekvienoje eilutėje „Lipdukas“ su dialogu (dėžių skaičius tam klientui, adresas,
  *   svoris) — savas `lipdukas` veiksmas su sandelis=tiekėjas; jei pristatymas ne Venipak (pvz. flat_rate) — įspėjimas vietoj
  *   mygtuko; „+ į AV“: kai atviro užsakymo tiekėjui nėra — nuoroda į Tiekimą sukurti. Eilė pervadinta „Dropshipping“.
@@ -85,14 +93,14 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.5';
+	const VERSIJA = '3.6.1';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
 	const EILES = array(
 		'siandien'   => array( 'Gauti',              'Užsakymai, kurių dar neatidarei — nesvarbu, kelių dienų. Atidarei — lieka tik savo darbo eilėje.', 'z' ),
 		'nauji'      => array( 'Neišrūšiuoti',       'Reikia tavo sprendimo: dalis prekių AV, dalis pas tiekėją — siųsti atskirai ar vežti į AV? Aiškius sistema išrūšiuoja pati.', 'r' ),
-		'laukiam'    => array( 'Laukiam iš tiekėjų', 'Prekės, kurias užsakėm į AV, dar neatvažiavo. AV siunta nerenkama, kol visos jos prekės neatvyko.', 'g' ),
+		'laukiam'    => array( 'Laukiam iš tiekėjų', 'Prekės į AV: užsakyk iš tiekėjo čia pat („Užsakyti iš … į AV“), atvažiavus — „Gauta“. AV siunta nerenkama, kol visos jos prekės neatvyko.', 'g' ),
 		'surinkti'   => array( 'Surinkti AV',        'Visos AV siuntos prekės vietoje — Surinkti → Lipdukas → Kurjeris paėmė.', 'z' ),
 		'laiskai'    => array( 'Dropshipping',       'Tiekėjas siunčia tiesiai klientui: pirma lipdukai visiems jo užsakymams, tada užsakymas tiekėjui (laišką gali peržiūrėti).', 'm' ),
 		'paruosta'   => array( 'Paruošta siųsti',    'AV siuntos laukia kurjerio — kai paėmė, spausk „Kurjeris paėmė“. Tiekėjų siuntos — kai tiekėjas praneša, kad išsiuntė.', 'z' ),
@@ -114,6 +122,7 @@ class Petshop_Darbalaukis {
 		add_action( 'admin_post_ps_desk_veiksmas', array( __CLASS__, 'surinkta_zyme' ), 0 );
 		add_action( 'wp_ajax_ps_dl_zurnalas', array( __CLASS__, 'ajax_zurnalas' ) );
 		add_action( 'wp_ajax_ps_dl_matyta', array( __CLASS__, 'ajax_matyta' ) );
+		add_action( 'admin_post_ps_dl_tiekimas', array( __CLASS__, 'tiekimas_vykdyti' ) );
 	}
 
 	/** V5: „Surinkti“ (lapai) — aiški užsakymo žymė `_ps_surinkta` (laikas|kas), ne tik žurnalo įrašas. */
@@ -151,6 +160,29 @@ class Petshop_Darbalaukis {
 			return add_query_arg( array( 'pd_ok' => 'dl_klaida', 'pd_nr' => rawurlencode( self::vardas( $src ) . '|laiškas neišsiųstas: ' . rawurldecode( (string) ( $q['psl_err'] ?? '' ) ) ) ), $g );
 		}
 		if ( isset( $q['ps_zb'] ) ) { return add_query_arg( array( 'pd_ok' => 'dl_zb', 'pd_nr' => rawurlencode( 'Žalioji Banga|' . (int) $q['ps_zb'] ) ), $g ); }
+		// 3 etapas: Tiekimo variklis (`ps_tiekimas`) paleistas iš „Laukiam iš tiekėjų“ kortelės — grįžtam čia darbuotojo žodžiais.
+		if ( isset( $q['tk'] ) && isset( $q['page'] ) && 'ps-tiekimas' === $q['page'] ) {
+			$tk = sanitize_key( $q['tk'] ); $pid = (int) ( $q['p'] ?? 0 ); $v = self::vardas( sanitize_key( $_POST['tiekejas'] ?? '' ) );
+			$nr = ! empty( $_POST['ps_dl_pirmas'] ) ? '#' . absint( $_POST['ps_dl_pirmas'] ) : $v;
+			$ln = class_exists( 'Petshop_AV_Tiekimas' ) ? Petshop_AV_Tiekimas::laisko_nust() : array( 'tiekejui' => false, 'man' => true );
+			$pastai = (array) get_option( 'ps_tiekeju_pastai', array() ); $kam = trim( ( ! empty( $ln['tiekejui'] ) && ! empty( $pastai[ sanitize_key( $_POST['tiekejas'] ?? '' ) ] ) ? $pastai[ sanitize_key( $_POST['tiekejas'] ?? '' ) ] . ', ' : '' ) . ( ! empty( $ln['man'] ) ? 'terra@petshop.lt' : '' ), ', ' );
+			$m = array(
+				'uzsakyta'          => array( 'dl_uzsak_av', 'užsakyta iš ' . $v . ' į AV — užsakymas tiekėjui #' . $pid . ' (laiškas: ' . $kam . ')' ),
+				'uzsakyta_vp'       => array( 'dl_uzsak_av', 'užsakyta iš ' . $v . ' į AV — užsakymas tiekėjui #' . $pid . ', siunta užregistruota, lipdukas laiške (' . $kam . ')' ),
+				'uzsakyta_man'      => array( 'dl_uzsak_av', 'užsakyta iš ' . $v . ' į AV — užsakymas tiekėjui #' . $pid . '; laiškas išėjo tik man (terra@petshop.lt) — persiųsk tiekėjui' ),
+				'uzsakyta_rankinis' => array( 'dl_uzsak_av', 'užsakymas tiekėjui #' . $pid . ' uždarytas — laiško nėra, sąrašą suvesk į ' . $v . ' sistemą („Kopijuoti“ kortelėje)' ),
+				'uzsakyta_be_laisko'=> array( 'dl_info', 'užsakymas tiekėjui #' . $pid . ' uždarytas, bet laiškas niekam neišėjo (abi varnelės nuimtos) — parašyk tiekėjui pats' ),
+				'laiskas_nepavyko'  => array( 'dl_klaida', 'laiškas ' . $v . ' NEIŠSIŲSTAS (pašto klaida) — užsakymas tiekėjui #' . $pid . ' vis tiek uždarytas; parašyk tiekėjui pats' ),
+				'vp_klaida'         => array( 'dl_klaida', 'Venipak nepriėmė: ' . (string) get_transient( 'ps_tiek_vp_klaida_' . $pid ) . ' — užsakymas tiekėjui neišsiųstas, pataisyk pristatymą/svorį ir spausk dar kartą' ),
+				'priimta'           => array( 'dl_gauta', 'gauta į AV iš ' . $v . ' (užsakymas tiekėjui #' . $pid . ') — likučiai papildyti' ),
+				'issaugota'         => array( 'dl_info', 'prekės į AV sudėtos į užsakymą tiekėjui #' . $pid . ' — jis išeis kartu su Dropshipping užsakymais iš ' . $v . ' (varnelė „+ į AV“ kortelėje)' ),
+				'tuscia'            => array( 'dl_info', 'nėra ko užsakyti iš ' . $v . ' į AV' ),
+				'klaida'            => array( 'dl_klaida', 'užsakymo tiekėjui #' . $pid . ' būsena netinka šiam veiksmui — atnaujink langą' ),
+			);
+			$r = $m[ $tk ] ?? array( 'dl_info', $tk );
+			if ( ! empty( $_POST['ps_dl_kartu'] ) && 'issaugota' === $tk ) { $g = add_query_arg( array( 'eile' => 'laiskai' ), remove_query_arg( array( 'atidaryti', 'view', 'q', 'b' ), $g ) ); }
+			return add_query_arg( array( 'pd_ok' => $r[0], 'pd_nr' => rawurlencode( $nr . '|' . $r[1] ) ), $g );
+		}
 		return $location;
 	}
 
@@ -374,9 +406,9 @@ class Petshop_Darbalaukis {
 			if ( 'i_av' === $k ) {
 				if ( $src ) { $i_av_src[ $src ] = 1; }
 				if ( ! $b ) { $bukle = 'neužsakyta'; $i_av_neuzs[ $src ] = 1; $i_av_laukia[ $src ] = 1; }
-				elseif ( 'gauta' === $b->busena ) { $bukle = 'gauta · partija #' . (int) $b->partija_id; }
-				elseif ( 'uzsakyta' === $b->busena ) { $bukle = 'užsakyta · partija #' . (int) $b->partija_id; $i_av_laukia[ $src ] = 1; }
-				else { $bukle = 'partijoje #' . (int) $b->partija_id . ' · neužsakyta'; $i_av_neuzs[ $src ] = 1; $i_av_laukia[ $src ] = 1; }
+				elseif ( 'gauta' === $b->busena ) { $bukle = 'gauta · užsakymas tiekėjui #' . (int) $b->partija_id; }
+				elseif ( 'uzsakyta' === $b->busena ) { $bukle = 'užsakyta · užsakymas tiekėjui #' . (int) $b->partija_id; $i_av_laukia[ $src ] = 1; }
+				else { $bukle = 'užsakymas tiekėjui #' . (int) $b->partija_id . ' — dar neišsiųstas'; $i_av_neuzs[ $src ] = 1; $i_av_laukia[ $src ] = 1; }
 			}
 			if ( $src ) { $sandeliai[ $src ] = 1; }
 			$p = $it->get_product();
@@ -494,8 +526,8 @@ class Petshop_Darbalaukis {
 			case 'kons':
 				$vis = array(); foreach ( $f['takelis'] as $t2 ) { if ( 'kons' === $t2[4] && $t2[3] ) { $vis[ $t2[3] ] = 1; } } if ( ! $vis ) { $vis[ $s ] = 1; }
 				$v = array_map( array( __CLASS__, 'vardas' ), array_keys( $vis ) );
-				return array( 'Užsakyti iš ' . ( count( $v ) > 1 ? implode( ' ir ', $v ) : $v[0] ) . ' į AV', self::veiksmo_url( 'kons', $id ), null, 'p', 0 );
-			case 'tiekimas': return array( 'Laukiam iš ' . self::vardas( $s ), admin_url( 'admin.php?page=ps-tiekimas&b=laukia' ), null, 'ts', 1 );
+				return array( 'Užsakyti iš ' . ( count( $v ) > 1 ? implode( ' ir ', $v ) : $v[0] ) . ' į AV', self::url( array( 'eile' => 'laukiam', 'view' => null, 'q' => null, 'b' => null ) ), null, 'p', 0 );
+			case 'tiekimas': return array( 'Laukiam iš ' . self::vardas( $s ), self::url( array( 'eile' => 'laukiam', 'view' => null, 'q' => null, 'b' => null ) ), null, 'ts', 1 );
 			case 'lapai':    return array( 'Surinkti', self::veiksmo_url( 'lapai', $id ), null, 'p', 0 );
 			case 'lipdukas':
 				if ( 'lp' === $f['vez'] ) { return array( 'Lipdukas LP — per Rytinę eigą', admin_url( 'admin.php?page=' . self::SLUG . '&view=rytas' ), null, 'ts', 1 ); }
@@ -533,7 +565,7 @@ class Petshop_Darbalaukis {
 					'u' => $gal && $k !== $e['k'] ? self::dl_url( 'kelias', $id, array( 'iid' => $e['iid'], 'k' => $k ) ) : '',
 					'kodel_ne' => empty( $e['galimi'][ $k ] ) ? ( 'av' === $k ? 'AV tik ' . (int) $e['av_qty'] . ', reikia ' . $e['q'] : ( 'tiesiai' === $k && 'lp' === $f['vez'] ? 'LP Express — tik iš AV' : 'tiekėjo nėra' ) ) : $e['lock'] );
 			}
-			$tiek_url = ( 'i_av' === $e['k'] && $e['b'] && 'gauta' !== $e['b']['busena'] ) ? admin_url( 'admin.php?page=ps-tiekimas&b=' . ( 'uzsakyta' === $e['b']['busena'] ? 'laukia' : 'kaupiama' ) ) : '';
+			$tiek_url = ( 'i_av' === $e['k'] && $e['b'] && 'gauta' !== $e['b']['busena'] ) ? self::url( array( 'eile' => 'laukiam', 'view' => null, 'q' => null, 'b' => null, 'atidaryti' => null ) ) : '';
 			$eil[] = array( 'q' => $e['q'], 'n' => $e['n'], 'sku' => $e['sku'], 'img' => $e['img'], 'k' => $e['k'], 'keliai' => $keliai, 'kodel' => self::kodel( $e ), 'zing' => $e['zing'], 'lock' => $e['lock'], 'tiek_url' => $tiek_url, 'bukle' => $e['bukle'] );
 		}
 		$adr = $o->get_formatted_shipping_address(); if ( ! $adr ) { $adr = $o->get_formatted_billing_address(); }
@@ -571,9 +603,10 @@ class Petshop_Darbalaukis {
 	/** „Kodėl“ po keliais (maketo kodel()). */
 	protected static function kodel( $e ) {
 		$t = $e['tiek'] ? self::vardas( $e['tiek'] ) : '';
+		if ( $e['gauta'] && 'av' === $e['k'] ) { $s = 'Gauta į AV iš ' . self::vardas( $e['gauta'] ) . ( preg_match( '/partija #(\d+)/', (string) $e['kodel'], $m ) ? ' (užsakymas tiekėjui #' . $m[1] . ')' : '' ) . ' — siunčiam iš AV.'; return $e['reduced'] ? $s . ' Rezervuota.' : $s; }
 		if ( '' === $e['k'] ) { return 'AV nėra, tiekėjo nėra. Jei prekė yra AV — pažymėk „Iš AV“ (likutis nenurašomas); jei ne — parašyk klientui arba atšauk.'; }
 		if ( null !== $e['av_qty'] && $e['av_qty'] >= $e['q'] ) { $s = 'AV yra ' . (int) $e['av_qty'] . ' — siunčiam iš AV.'; }
-		elseif ( $t && 'i_av' === $e['k'] && ! $e['b'] && ( $pid = self::atvira_partija( $e['tiek'] ) ) ) { $s = 'AV ' . ( $e['av_qty'] ? 'tik ' . (int) $e['av_qty'] : 'nėra' ) . ', ' . $t . ' turi. Užsakymas į AV iš ' . $t . ' jau atviras (#' . $pid . ') — siūlom vežti į AV ir siųsti viena siunta. Jei skubu — „' . $t . ' siunčia klientui“.'; }
+		elseif ( $t && 'i_av' === $e['k'] && ! $e['b'] && ( $pid = self::atvira_partija( $e['tiek'] ) ) ) { $s = 'AV ' . ( $e['av_qty'] ? 'tik ' . (int) $e['av_qty'] : 'nėra' ) . ', ' . $t . ' turi. Užsakymas tiekėjui #' . $pid . ' (' . $t . ' į AV) jau atviras — siūlom vežti į AV ir siųsti viena siunta. Jei skubu — „' . $t . ' siunčia klientui“.'; }
 		elseif ( $t ) { $s = 'AV ' . ( $e['av_qty'] ? 'tik ' . (int) $e['av_qty'] : 'nėra' ) . ', ' . $t . ' turi — ' . $t . ' siunčia klientui. Jei nori vienos siuntos — „' . $t . ' veža į AV“.'; }
 		else { $s = 'AV ' . ( $e['av_qty'] ? 'tik ' . (int) $e['av_qty'] : 'nėra' ) . ', reikia ' . $e['q'] . ', tiekėjo nėra. Užsakyk pats ir pažymėk „Iš AV“, kai turėsi; arba parašyk klientui / atšauk.'; }
 		if ( $e['reduced'] && 'av' === $e['k'] ) { $s .= ' Rezervuota.'; }
@@ -625,6 +658,52 @@ class Petshop_Darbalaukis {
 		} catch ( Throwable $e ) { $rez = array( 'dl_klaida', 'klaida: ' . $e->getMessage() ); }
 		if ( $id ) { delete_transient( $lock ); }
 		wp_safe_redirect( add_query_arg( array( 'pd_ok' => $rez[0], 'pd_nr' => rawurlencode( ( $o ? $o->get_order_number() : '' ) . '|' . $rez[1] ) ), $atgal ) );
+		exit;
+	}
+
+	/**
+	 * 3 etapas: „Laukiam iš tiekėjų“ kortelė — užsakymas tiekėjui į AV ir priėmimas čia pat.
+	 * Variklis (`Petshop_AV_Tiekimas::veiksmas()`, registras H1–H3) neliestas: sudedam neužsakytas „veža į AV“ eilutes
+	 * į kaupiamą partiją (kaip variklio `kons`, tik šiam tiekėjui) ir paleidžiam `admin_post_ps_tiekimas` su savo pačių
+	 * patvirtintu nonce — žurnalas (`petshop-uzsakymu-ivykiai`) ir grįžimas (`grizti_cia`) veikia kaip Tiekimo lange.
+	 */
+	public static function tiekimas_vykdyti() {
+		if ( ! current_user_can( 'edit_shop_orders' ) ) { wp_die( 'Nepakanka teisių' ); }
+		$src = sanitize_key( wp_unslash( $_POST['tiekejas'] ?? '' ) ); $pid = absint( $_POST['partija'] ?? 0 ); $ka = sanitize_key( wp_unslash( $_POST['ka'] ?? '' ) );
+		check_admin_referer( 'ps_dl_tiek_' . $src . '_' . $pid );
+		$atgal = wp_validate_redirect( wp_unslash( $_POST['ps_dl_g'] ?? '' ), admin_url( 'admin.php?page=' . self::SLUG . '&eile=laukiam' ) );
+		$klaida = function ( $t ) use ( $atgal, $src ) { wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_klaida', 'pd_nr' => rawurlencode( self::vardas( $src ) . '|' . $t ) ), $atgal ) ); exit; };
+		if ( ! $src || ! class_exists( 'Petshop_AV_Tiekimas' ) || ! in_array( $ka, array( 'uzsakyti', 'kartu', 'priimti' ), true ) ) { $klaida( 'nežinomas veiksmas' ); }
+		$u = wp_get_current_user(); $pirmas = 0;
+		if ( 'priimti' !== $ka ) {
+			$pid = Petshop_AV_Tiekimas::atvira_partija( $src ); // kaupiama arba nauja
+			$ids = isset( $_POST['ids'] ) ? array_filter( array_map( 'absint', explode( ',', sanitize_text_field( wp_unslash( $_POST['ids'] ) ) ) ) ) : array();
+			$n = 0;
+			foreach ( $ids as $oid ) {
+				$o = wc_get_order( $oid ); if ( ! $o || ! $o->is_paid() ) { continue; }
+				$spr = self::d( 'misrus_sprendimas', $o );
+				foreach ( $o->get_items() as $iid => $it ) {
+					list( $k, $s ) = self::eilutes_kelias( $o, $iid, $it, $spr );
+					if ( 'i_av' !== $k || $s !== $src || Petshop_AV_Tiekimas::eilutes_bukle( $oid, (int) $iid ) ) { continue; }
+					if ( Petshop_AV_Tiekimas::ideti_eilute( $o, (int) $iid, $src ) ) {
+						$it->update_meta_data( '_ps_konsolidacija', 1 ); $it->save(); $n++; if ( ! $pirmas ) { $pirmas = $oid; }
+						if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $oid, 'eilute' => (int) $iid, 'sritis' => 'desk', 'veiksmas' => 'kons', 'rezultatas' => 'ok', 'kanalas' => 'web', 'po' => array( 'partija' => $pid, 'tiekejas' => $src ), 'pastaba' => mb_substr( $it->get_name(), 0, 60 ) . ' → užsakymas tiekėjui #' . $pid ) ); }
+					}
+				}
+			}
+			if ( ! $pirmas ) { foreach ( Petshop_AV_Tiekimas::partijos_eilutes( $pid ) as $e ) { if ( $e->order_id ) { $pirmas = (int) $e->order_id; break; } } }
+			if ( ! Petshop_AV_Tiekimas::partijos_eilutes( $pid ) ) { $klaida( 'nėra ko užsakyti į AV — prekių sąrašas tuščias' ); }
+			$_POST['ka'] = 'kartu' === $ka ? 'issaugoti' : 'uzsakyti';
+			if ( 'kartu' === $ka ) { $_POST['ps_dl_kartu'] = $pid; }
+		} else {
+			if ( ! $pid ) { $klaida( 'užsakymo tiekėjui nėra' ); }
+			foreach ( Petshop_AV_Tiekimas::partijos_eilutes( $pid ) as $e ) { if ( $e->order_id ) { $pirmas = (int) $e->order_id; break; } }
+		}
+		$_POST['partija'] = $pid; $_POST['ps_dl_pirmas'] = $pirmas;
+		$_POST['_wpnonce'] = wp_create_nonce( 'ps_tiekimas_' . $pid ); $_REQUEST['_wpnonce'] = $_POST['_wpnonce'];
+		unset( $_POST['ids'] );
+		do_action( 'ps_juosta_isvalyti' );
+		do_action( 'admin_post_ps_tiekimas' ); // variklis + žurnalas; grįžimas per `grizti_cia()`
 		exit;
 	}
 
@@ -923,6 +1002,7 @@ class Petshop_Darbalaukis {
 		if ( 'klausimai' === $eile && $rows ) { self::klausimu_korteles( $rows ); }
 		elseif ( 'laiskai' === $eile && $rows ) { self::laisku_korteles( $rows ); }
 		elseif ( 'paruosta' === $eile && $rows ) { self::paruostos_korteles( $rows ); }
+		elseif ( 'laukiam' === $eile && '' === $f['q'] ) { $ds = array(); foreach ( $atviri as $r ) { if ( in_array( 'laiskai', $r['eiles'], true ) ) { foreach ( $r['tiesiai'] as $s ) { if ( empty( $r['dalys'][ $s ]['perduota'] ) ) { $ds[ $s ] = ( $ds[ $s ] ?? 0 ) + 1; } } } } self::laukiam_korteles( $rows, $ds ); }
 		else { self::lentele( $rows, $eile ); }
 		echo '</main>';
 		self::skydelio_html();
@@ -939,10 +1019,10 @@ class Petshop_Darbalaukis {
 		$kur = ''; $oid = isset( $_GET['atidaryti'] ) ? absint( $_GET['atidaryti'] ) : ( preg_match( '/^#?(\d{4,})/', $d[0] ?? '', $mm ) ? (int) $mm[1] : 0 );
 		if ( $oid && ( $oo = wc_get_order( $oid ) ) ) { $fx = self::faktai( $oo, self::zurnalas( array( $oid ) ) ); $kur = ' → dabar: ' . self::kur_dabar( $fx ); }
 		$GLOBALS['ps_dl_kur'] = $kur;
-		$var = array( 'vp_ok' => array( 'ok', 'Lipdukas: siunta užregistruota (%s).' ), 'vp_klaida' => array( 'klaida', 'Venipak nepriėmė: %s' ), 'vp_nieko' => array( 'info', '%s.' ), 'kons_ok' => array( 'ok', '#%s: %s prekė(-s) — užsakymas tiekėjui į AV; pats užsakymas ir gavimas — Tiekimo lange.' ), 'kons_nieko' => array( 'info', '#%s: nėra ko užsakyti į AV.' ), 'apmoketa' => array( 'ok', '#%s apmokėtas. Prekės rezervuotos, klientui išsiųstas patvirtinimas.' ), 'apmoketa_tyliai' => array( 'ok', '#%s apmokėtas. Laiškas klientui nesiųstas.' ), 'atsaukta' => array( 'ok', '#%s atšauktas. Prekės grąžintos į likutį. Klientui nepranešta.' ), 'atsaukta_laiskas' => array( 'ok', '#%s atšauktas. Klientui išsiųstas pranešimas.' ), 'pakuotes' => array( 'ok', 'Dėžių: %s.' ), 'kl_laukti' => array( 'info', '#%s — laukiam; priminimo nebus.' ) );
+		$var = array( 'vp_ok' => array( 'ok', 'Lipdukas: siunta užregistruota (%s).' ), 'vp_klaida' => array( 'klaida', 'Venipak nepriėmė: %s' ), 'vp_nieko' => array( 'info', '%s.' ), 'kons_ok' => array( 'ok', '#%s: %s prekė(-s) į užsakymą tiekėjui — užsakyk ir priimk „Laukiam iš tiekėjų“ eilėje.' ), 'kons_nieko' => array( 'info', '#%s: nėra ko užsakyti į AV.' ), 'apmoketa' => array( 'ok', '#%s apmokėtas. Prekės rezervuotos, klientui išsiųstas patvirtinimas.' ), 'apmoketa_tyliai' => array( 'ok', '#%s apmokėtas. Laiškas klientui nesiųstas.' ), 'atsaukta' => array( 'ok', '#%s atšauktas. Prekės grąžintos į likutį. Klientui nepranešta.' ), 'atsaukta_laiskas' => array( 'ok', '#%s atšauktas. Klientui išsiųstas pranešimas.' ), 'pakuotes' => array( 'ok', 'Dėžių: %s.' ), 'kl_laukti' => array( 'info', '#%s — laukiam; priminimo nebus.' ) );
 		if ( isset( $var[ $k ] ) ) { $t0 = str_replace( array( ' · AV', ' · PRINS', ' · VF', ' · ZB', ' · QUATTRO', ' · AMBROSIA', ' · BELCOR_TOFU' ), array( ' — Avesa', ' — Prins', ' — Vetfarmas', ' — Žalioji Banga', ' — Quattro', ' — Ambrosia', ' — Belacor' ), $nr ); $d0 = explode( '|', $t0, 2 ); printf( '<div class="pd-msg pd-msg-%s">%s%s<button class="pd-msg-x" onclick="this.parentNode.remove()">✕</button></div>', esc_attr( $var[ $k ][0] ), esc_html( sprintf( $var[ $k ][1], $d0[0], $d0[1] ?? '' ) ), esc_html( $kur ) ); return; }
 		if ( 0 !== strpos( $k, 'dl_' ) ) { ob_start(); self::d( 'pranesimas' ); $h = ob_get_clean(); echo $kur ? str_replace( '<button class="pd-msg-x"', esc_html( $kur ) . '<button class="pd-msg-x"', $h ) : $h; return; }
-		$t = array( 'dl_kelias' => array( 'ok', '#%s — pakeista: %s' ), 'dl_issiusta' => array( 'ok', '#%s išsiųstas — įvykdytas; %s.' ), 'dl_dalis' => array( 'ok', '#%s: %s.' ), 'dl_issiusta_visi' => array( 'ok', 'Kurjeris paėmė — %2$s.' ), 'dl_laiskas' => array( 'ok', 'Užsakyta iš %s — %s → Paruošta siųsti.' ), 'dl_zb' => array( 'ok', '%s — suvesta %s užs. → Paruošta siųsti.' ), 'dl_rusiuota' => array( 'ok', '#%s surūšiuotas. %s' ), 'dl_info' => array( 'info', '#%s: %s' ), 'dl_klaida' => array( 'klaida', '#%s: %s' ) );
+		$t = array( 'dl_kelias' => array( 'ok', '#%s — pakeista: %s' ), 'dl_issiusta' => array( 'ok', '#%s išsiųstas — įvykdytas; %s.' ), 'dl_dalis' => array( 'ok', '#%s: %s.' ), 'dl_issiusta_visi' => array( 'ok', 'Kurjeris paėmė — %2$s.' ), 'dl_laiskas' => array( 'ok', 'Užsakyta iš %s — %s → Paruošta siųsti.' ), 'dl_zb' => array( 'ok', '%s — suvesta %s užs. → Paruošta siųsti.' ), 'dl_rusiuota' => array( 'ok', '#%s surūšiuotas. %s' ), 'dl_uzsak_av' => array( 'ok', '%s: %s.' ), 'dl_gauta' => array( 'ok', '%s: %s.' ), 'dl_info' => array( 'info', '#%s: %s' ), 'dl_klaida' => array( 'klaida', '#%s: %s' ) );
 		if ( ! isset( $t[ $k ] ) ) { return; }
 		printf( '<div class="pd-msg pd-msg-%s">%s%s<button class="pd-msg-x" onclick="this.parentNode.remove()">✕</button></div>', esc_attr( $t[ $k ][0] ), esc_html( sprintf( $t[ $k ][1], $d[0], $d[1] ?? '' ) ), esc_html( $kur ) );
 	}
@@ -1125,11 +1205,86 @@ class Petshop_Darbalaukis {
 				echo '<label><input type="checkbox" name="su_lipdukais" value="1" checked> lipdukai</label><label><input type="checkbox" name="su_manifestu" value="1" checked> kurjerio sąrašas</label>';
 				echo '<label><input type="checkbox" name="laisk_tiekejui" value="1"' . checked( ! empty( $ln['tiekejui'] ), true, false ) . '> siųsti tiekėjui' . ( ! empty( $pastai[ $src ] ) ? ' (' . esc_html( $pastai[ $src ] ) . ')' : ' <span class="raud">— el. pašto nėra</span>' ) . '</label><label><input type="checkbox" name="laisk_man" value="1"' . checked( ! empty( $ln['man'] ), true, false ) . '> kopija man</label>';
 				if ( $pp ) { echo '<label><input type="checkbox" name="su_partija" value="' . (int) $pp['part']->id . '" checked> + į AV (užsakymas tiekėjui #' . (int) $pp['part']->id . ', ' . count( $pp['eilutes'] ) . ' prek.) tame pačiame užsakyme</label>'; }
-				else { echo '<span class="pilkas">+ į AV: atviro užsakymo iš ' . esc_html( $vardas ) . ' į AV nėra — <a href="' . esc_url( admin_url( 'admin.php?page=ps-tiekimas' ) ) . '">sudėk prekes Tiekime</a>, ir jos keliaus tame pačiame užsakyme</span>'; }
+				else { echo '<span class="pilkas">+ į AV: iš ' . esc_html( $vardas ) . ' į AV šiuo metu nieko neužsakom (jei „Laukiam iš tiekėjų“ yra ' . esc_html( $vardas ) . ' prekių — ten „Kartu su Dropshipping“)</span>'; }
 				echo '</div><div class="dl-perz-t" style="display:none">' . $perz . '</div></form>';
 			}
 			echo '</div>';
 			if ( $be ) { echo '<p class="pastaba">Pirma lipdukai visiems šio tiekėjo užsakymams, tada vienas užsakymas tiekėjui su lipdukais.</p>'; }
+			echo '</div>';
+		}
+	}
+
+	/** LAUKIAM IŠ TIEKĖJŲ — kortelė per tiekėją: „Gauta“ užsakytiems užsakymams tiekėjui (H3) ir „Užsakyti iš [T] į AV“ (H1/H2, G4) čia pat. */
+	protected static function laukiam_korteles( $rows, $ds = array() ) {
+		global $wpdb; $tk = class_exists( 'Petshop_AV_Tiekimas' );
+		$g = array(); $faktai = array();
+		foreach ( $rows as $r ) { $faktai[ $r['id'] ] = $r; foreach ( $r['eil'] as $e ) { if ( 'i_av' === $e['k'] && $e['src'] ) { $g[ $e['src'] ]['uzs'][ $r['id'] ][] = $e; } } }
+		$uzsak = $tk ? $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}ps_tiekimas WHERE busena='uzsakyta' ORDER BY id" ) : array();
+		foreach ( (array) $uzsak as $p ) { $g[ $p->tiekejas ]['part'][] = $p; }
+		if ( ! $g ) { echo '<div class="dl-tuscia">Nieko nelaukiam iš tiekėjų — viskas AV.</div>'; return; }
+		uksort( $g, function ( $a, $b ) { $ra = self::riba( $a ); $rb = self::riba( $b ); return ( $ra ? $ra[2] : PHP_INT_MAX ) <=> ( $rb ? $rb[2] : PHP_INT_MAX ); } );
+		$cia = self::url(); $prist = $tk ? Petshop_AV_Tiekimas::PRISTATYMAI : array();
+		$ln = $tk ? Petshop_AV_Tiekimas::laisko_nust() : array( 'tiekejui' => false, 'man' => true ); $pastai = (array) get_option( 'ps_tiekeju_pastai', array() );
+		$eil_td = function ( $oid, $fx ) { $o = $fx ? $fx['o'] : wc_get_order( $oid ); return '<td><span class="nr">#' . esc_html( $o ? $o->get_order_number() : $oid ) . '</span>' . ( $fx && ! empty( $fx['naujas'] ) ? ' <b class="dl-nz" title="dar neatidarytas">N</b>' : '' ) . '<br><span class="pilkas maz">' . esc_html( $o ? trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ) : '' ) . '</span></td>'; };
+		$tr_open = function ( $oid, $fx ) { return '<tr class="eil" data-id="' . (int) $oid . '"' . ( $fx ? ' data-json="' . esc_attr( wp_json_encode( self::skydelis( $fx ), JSON_UNESCAPED_UNICODE ) ) . '"' : '' ) . '>'; };
+		foreach ( $g as $src => $x ) {
+			$vardas = self::vardas( $src ); $rank = $tk && Petshop_AV_Tiekimas::rankinis( $src ); list( $rk, $rt ) = self::riba_tekstas( $src );
+			$n_uzs = count( $x['uzs'] ?? array() );
+			echo '<div class="dl-kortele dl-tk"><h2>' . esc_html( $vardas ) . ' <span class="pilkas">· ' . $n_uzs . ' užs.' . ( $rt ? ' · <span class="dl-riba-' . esc_attr( $rk ) . '">' . esc_html( $rt ) . '</span>' : '' ) . '</span></h2>';
+
+			/* ---- A. Užsakyta — laukiam → „Gauta“ ---- */
+			foreach ( $x['part'] ?? array() as $p ) {
+				$eil = Petshop_AV_Tiekimas::partijos_eilutes( (int) $p->id ); if ( ! $eil ) { continue; }
+				$tsv = ''; $lip = ! empty( $p->venipak_pack ) ? admin_url( 'admin-post.php?action=ps_tiekimas_lipdukas&partija=' . (int) $p->id . '&_wpnonce=' . wp_create_nonce( 'ps_tiek_lip_' . $p->id ) ) : '';
+				echo '<div class="dl-tk-blk"><h3>Užsakyta ' . esc_html( mysql2date( 'm-d H:i', $p->uzsakyta ) ) . ' <span class="pilkas">· užsakymas tiekėjui #' . (int) $p->id . ( isset( $prist[ $p->pristatymas ] ) ? ' · ' . esc_html( $prist[ $p->pristatymas ] ) : '' ) . ( $p->venipak_pack ? ' · siunta ' . esc_html( str_replace( ',', ', ', $p->venipak_pack ) ) . ' <a class="v t" href="' . esc_url( $lip ) . '" target="_blank">Lipdukas</a>' : '' ) . '</span></h3>';
+				echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" class="dl-tk-f" onsubmit="return confirm(\'Gauta iš ' . esc_js( $vardas ) . '? Įvesti kiekiai pridedami į AV likutį. Užsakymai, kuriems viskas atvyko, eina į „Surinkti AV“; jei kiekis mažesnis — trūkumas lieka laukti naujame užsakyme tiekėjui.\')">' . wp_nonce_field( 'ps_dl_tiek_' . $src . '_' . (int) $p->id, '_wpnonce', true, false ) . '<input type="hidden" name="action" value="ps_dl_tiekimas"><input type="hidden" name="ka" value="priimti"><input type="hidden" name="tiekejas" value="' . esc_attr( $src ) . '"><input type="hidden" name="partija" value="' . (int) $p->id . '"><input type="hidden" name="ps_dl_g" value="' . esc_url( $cia ) . '">';
+				echo '<table class="dl-tbl dl-tbl-k"><tbody>';
+				foreach ( $eil as $e ) {
+					$pr = wc_get_product( $e->product_id ); $pav = $pr ? $pr->get_name() : '#' . $e->product_id; $sku = $pr ? $pr->get_sku() : ''; $tsv .= $sku . "\t" . (int) $e->qty . "\t" . $pav . "\n";
+					$oid = (int) $e->order_id; $fx = $oid ? ( $faktai[ $oid ] ?? null ) : null;
+					echo $oid ? $tr_open( $oid, $fx ) . $eil_td( $oid, $fx ) : '<tr><td><span class="pilkas">į atsargas</span></td>';
+					echo '<td><div>' . (int) $e->qty . '× ' . esc_html( $pav ) . ( $sku ? ' <span class="pilkas maz">' . esc_html( $sku ) . '</span>' : '' ) . '</div></td>';
+					echo '<td class="d dl-tk-gauta"><label>Gauta <input type="number" min="0" name="gauta[' . (int) $e->id . ']" value="' . (int) $e->qty . '"></label> <label class="pilkas maz">galioja iki <input type="text" name="galioja[' . (int) $e->id . ']" placeholder="YYYY-MM" pattern="\d{4}-\d{2}"></label></td></tr>';
+				}
+				echo '</tbody></table><div class="dl-zingsniai-k">';
+				if ( $rank ) { echo '<button type="button" class="v t dl-kopijuoti" data-tsv="' . esc_attr( $tsv ) . '">Kopijuoti</button><span class="pilkas maz">sąrašas suvedimui į ' . esc_html( $vardas ) . ' sistemą</span>'; }
+				echo '<button class="v p" type="submit">Gauta</button></div></form></div>';
+			}
+
+			/* ---- B. Užsakyti iš [T] į AV: kaupiama partija + dar nesudėtos „veža į AV“ eilutės ---- */
+			$kaup = $tk ? Petshop_AV_Tiekimas::atvira_su_eilutemis( $src ) : null; $part = $kaup ? $kaup['part'] : null;
+			$neuzs = array(); $sudeta = array();
+			foreach ( $x['uzs'] ?? array() as $oid => $es ) { foreach ( $es as $e ) { if ( ! $e['b'] ) { $neuzs[ $oid ][] = $e; } elseif ( 'kaupiama' === $e['b']['busena'] ) { $sudeta[ $oid ][] = $e; } } }
+			if ( $kaup || $neuzs ) {
+				$ids = array_unique( array_merge( array_keys( $neuzs ), array_keys( $sudeta ) ) ); $n_prek = 0; $prev_eil = array(); $kg = 0.0; $be_svorio = 0;
+				echo '<div class="dl-tk-blk"><h3>Užsakyti iš ' . esc_html( $vardas ) . ' į AV' . ( $part ? ' <span class="pilkas">· užsakymas tiekėjui #' . (int) $part->id . '</span>' : '' ) . '</h3>';
+				echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" class="dl-inl dl-laiskas-f dl-tk-f">' . wp_nonce_field( 'ps_dl_tiek_' . $src . '_' . ( $part ? (int) $part->id : 0 ), '_wpnonce', true, false ) . '<input type="hidden" name="action" value="ps_dl_tiekimas"><input type="hidden" name="tiekejas" value="' . esc_attr( $src ) . '"><input type="hidden" name="partija" value="' . ( $part ? (int) $part->id : 0 ) . '"><input type="hidden" name="ids" value="' . esc_attr( implode( ',', $ids ) ) . '"><input type="hidden" name="ps_dl_g" value="' . esc_url( $cia ) . '"><input type="hidden" name="laisk_zyme" value="1">';
+				echo '<table class="dl-tbl dl-tbl-k"><tbody>';
+				foreach ( $ids as $oid ) {
+					$fx = $faktai[ $oid ] ?? null; echo $tr_open( $oid, $fx ) . $eil_td( $oid, $fx ) . '<td>';
+					foreach ( array_merge( $neuzs[ $oid ] ?? array(), $sudeta[ $oid ] ?? array() ) as $e ) { $n_prek++; $pr = wc_get_product( $e['pid'] ); $w = $pr ? (float) $pr->get_weight() : 0; if ( $w > 0 ) { $kg += $w * $e['q']; } else { $be_svorio++; } $prev_eil[] = (object) array( 'product_id' => $e['pid'], 'qty' => $e['q'] );
+						echo '<div>' . (int) $e['q'] . '× ' . esc_html( $e['n'] ) . ( $e['sku'] ? ' <span class="pilkas maz">' . esc_html( $e['sku'] ) . '</span>' : '' ) . ' <span class="pilkas maz">· ' . esc_html( $e['b'] ? 'sudėta' : 'neužsakyta' ) . '</span></div>'; }
+					echo '</td><td class="d"></td></tr>';
+				}
+				if ( $kaup ) { foreach ( $kaup['eilutes'] as $e ) { if ( $e->order_id ) { continue; } $n_prek++; $pr = wc_get_product( $e->product_id ); $w = $pr ? (float) $pr->get_weight() : 0; if ( $w > 0 ) { $kg += $w * $e->qty; } else { $be_svorio++; } $prev_eil[] = $e;
+					echo '<tr><td><span class="pilkas">į atsargas</span></td><td><div>' . (int) $e->qty . '× ' . esc_html( $pr ? $pr->get_name() : '#' . $e->product_id ) . ( $pr && $pr->get_sku() ? ' <span class="pilkas maz">' . esc_html( $pr->get_sku() ) . '</span>' : '' ) . '</div></td><td class="d"></td></tr>'; } }
+				echo '</tbody></table><div class="dl-zingsniai-k">';
+				$bud = $part ? (string) $part->pristatymas : '';
+				echo '<div class="dl-tk-prist"><span class="pilkas maz">Kaip atkeliaus į AV:</span>';
+				foreach ( $prist as $k => $v ) { echo '<label><input type="radio" name="pristatymas" value="' . esc_attr( $k ) . '"' . checked( $bud, $k, false ) . ' required> ' . esc_html( $v ) . '</label>'; }
+				echo '<label class="pilkas maz">svoris <input type="number" step="0.1" min="0" name="svoris" value="' . esc_attr( $part && $part->svoris > 0 ? $part->svoris : '' ) . '" placeholder="' . esc_attr( $kg > 0 ? round( $kg, 1 ) : '' ) . '"> kg' . ( $be_svorio ? ' <span class="raud">(' . (int) $be_svorio . ' be svorio kataloge)</span>' : '' ) . '</label>';
+				echo '<label class="pilkas maz">dėžių <input type="number" min="1" max="20" name="dezes" value="' . (int) max( 1, (int) ( $part->dezes ?? 1 ) ) . '"></label></div>';
+				$patv = $rank ? 'Užsakyti iš ' . $vardas . ' į AV (' . $n_prek . ' prek.)? Laiško nebus — sąrašą suvesi į ' . $vardas . ' sistemą („Kopijuoti“ atsiras čia, kol prekės atvažiuos).' : 'Užsakyti iš ' . $vardas . ' į AV (' . $n_prek . ' prek.)? Laiškas išeina iš karto' . ( in_array( $bud, array( 'kurjeris', 'pastomatas' ), true ) ? ', siunta registruojama Venipak ir kainuoja' : '' ) . '. Prekės liks „Laukiam“, kol spausi „Gauta“.';
+				echo '<button class="v p" type="submit" name="ka" value="uzsakyti" onclick="return confirm(' . esc_attr( wp_json_encode( $patv ) ) . ')">Užsakyti iš ' . esc_html( $vardas ) . ' į AV (' . $n_prek . ' prek.)</button>';
+				if ( ! $rank ) {
+					echo ' <button type="button" class="v t dl-perz">Peržiūrėti laišką</button>';
+					if ( ! empty( $ds[ $src ] ) ) { echo ' <button class="v t" type="submit" name="ka" value="kartu" title="Prekės į AV keliauja tame pačiame užsakyme tiekėjui su Dropshipping užsakymais — vienas laiškas">Kartu su Dropshipping (' . (int) $ds[ $src ] . ' užs.)</button>'; }
+					echo '<div class="dl-laisko-nust"><label><input type="checkbox" name="laisk_tiekejui" value="1"' . checked( ! empty( $ln['tiekejui'] ), true, false ) . '> siųsti tiekėjui' . ( ! empty( $pastai[ $src ] ) ? ' (' . esc_html( $pastai[ $src ] ) . ')' : ' <span class="raud">— el. pašto nėra</span>' ) . '</label><label><input type="checkbox" name="laisk_man" value="1"' . checked( ! empty( $ln['man'] ), true, false ) . '> kopija man</label></div>';
+					$prev_part = (object) array( 'pristatymas' => $bud, 'dezes' => (int) max( 1, (int) ( $part->dezes ?? 1 ) ) );
+					echo '<div class="dl-perz-t" style="display:none"><p>Laba diena,</p><p>prašome paruošti šias prekes.</p>' . Petshop_AV_Tiekimas::laisko_dalis( $prev_part, $prev_eil, '' ) . '<p>Ačiū,<br>UAB Avesa · petshop.lt<br>terra@petshop.lt</p></div>';
+				}
+				echo '</div></form></div>';
+			}
 			echo '</div>';
 		}
 	}
@@ -1233,16 +1388,16 @@ class Petshop_Darbalaukis {
 		$Z = array(
 			array( 'Išrūšiuoti naujus', $c['nauji'], 'AV + tiekėjas arba trūkumas — iš kur važiuos kiekviena prekė; aiškius sistema išrūšiavo pati.', 'nauji', 'Rūšiuoti' ),
 			array( 'Dropshipping — lipdukai ir užsakymai tiekėjams', $c['laiskai'], $tiek_t ? implode( ' · ', $tiek_t ) : 'kortelė per tiekėją: 1 Lipdukai → 2 Užsakyti', 'laiskai', 'Atidaryti' ),
-			array( 'Užsakyti iš tiekėjų į AV', $c['laukiam'], 'kas neužsakyta — „Užsakyti iš … į AV“ (toliau Tiekimo lange); kas užsakyta — laukiam', 'laukiam', 'Atidaryti' ),
+			array( 'Užsakyti iš tiekėjų į AV', $c['laukiam'], 'kas neužsakyta — „Užsakyti iš … į AV“ čia pat; kas užsakyta — laukiam', 'laukiam', 'Atidaryti' ),
 			array( 'Surinkti AV', $c['surinkti'], 'visos AV siuntos prekės vietoje — lapai (galima visus vienu lapu)', 'surinkti', 'Surinkti' ),
 			array( 'Lipdukai AV siuntoms', $lip_av, 'surinkta, be lipduko · Venipak ' . $r_av . ' · LP Express ' . $r_lp . ' (LP lipdukas — dar per seną eigą, formavimas iškviečia kurjerį)', 'surinkti', 'Lipdukai' ),
 			array( 'Kurjeris paėmė / tiekėjai išsiuntė', $c['paruosta'], 'klientams išeina sekimo numeriai', 'paruosta', 'Atidaryti' ),
-			array( 'Gavimai', $gav, 'užsakymai tiekėjams, kurie atvažiavo — priimti Tiekimo lange', '', 'Atidaryti Tiekimą' ),
+			array( 'Gavimai', $gav, 'užsakymai tiekėjams, kurie atvažiavo — „Gauta“ eilėje „Laukiam iš tiekėjų“', 'laukiam', 'Atidaryti' ),
 			array( 'Klausimai', $c['klausimai'], 'reikia tavo sprendimo', 'klausimai', 'Atidaryti' ),
 		);
 		echo '<main class="dl-main"><h1 class="dl-h1">Rytinė eiga <small>' . esc_html( wp_date( 'l · H:i' ) ) . ' · eik per žingsnius iš viršaus žemyn — sąrašas gyvas, nauji užsakymai atsiranda patys, užrakto nėra</small></h1><div class="dl-zs">';
 		foreach ( $Z as $i => $z ) {
-			$url = 'Gavimai' === $z[0] ? admin_url( 'admin.php?page=ps-tiekimas&b=laukia' ) : self::url( array( 'eile' => $z[3], 'view' => null, 'q' => null, 'b' => null ) );
+			$url = self::url( array( 'eile' => $z[3], 'view' => null, 'q' => null, 'b' => null ) );
 			$n = (int) $z[1];
 			printf( '<div class="dl-z%s"><div class="zn">%d</div><div class="zt"><b>%s</b><span class="pilkas">%s</span></div>%s</div>', $n ? '' : ' tuscias', $i + 1, esc_html( $z[0] ), esc_html( $n ? $n . ' užs. — ' . $z[2] : '✓ tuščia' ), $n ? '<a class="v p" href="' . esc_url( $url ) . '">' . esc_html( $z[4] ) . '</a>' : '' );
 		}
@@ -1290,7 +1445,10 @@ class Petshop_Darbalaukis {
 .dl .takelis{margin-top:6px;font-size:12px;display:flex;flex-wrap:wrap;align-items:center;gap:4px}.dl .takelis span{padding:1px 7px;border-radius:9px;background:var(--fonas);color:var(--pilka)}.dl .takelis span.done{background:var(--zalia-s);color:var(--zalia)}.dl .takelis span.now{background:var(--rasalas);color:#fff;font-weight:600}.dl .takelis span.wait{background:var(--gintaras-s);color:var(--gintaras)}.dl .takelis span.bad{background:var(--raudona-s);color:var(--raudona);font-weight:600}.dl .takelis i{color:var(--linija);font-style:normal}
 .dl-naujas{font-size:10.5px;padding:1px 6px;vertical-align:middle}.dl-siandien{color:var(--zalia);font-weight:600}
 .dl-tbl-k{border:0;border-radius:0;margin:6px 0 10px}.dl-tbl-k td{padding:8px 6px}.dl-zingsniai-k{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.dl-zingsniai-k .zn{width:22px;height:22px;border-radius:50%;background:var(--zalia-s);color:var(--zalia);display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:12px;flex:none}
-.dl-inl{display:contents}.dl-laisko-nust{flex-basis:100%;display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--pilka);margin-top:4px}.dl-laisko-nust input[type=text]{font:inherit;border:1px solid var(--linija);border-radius:5px;padding:3px 8px;min-width:280px}
+.dl-inl{display:contents}.dl-laisko-nust{flex-basis:100%;display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--pilka);margin-top:4px}.dl-tk-blk{border-top:1px solid var(--linija);padding-top:10px;margin-top:10px}.dl-tk-blk h3{margin:0 0 6px;font-size:14px;font-weight:600;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.dl-tk-blk .dl-tbl-k{margin-bottom:8px}
+.dl-tk-prist{flex-basis:100%;display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-size:12.5px;margin-bottom:4px}.dl-tk-prist input[type=number]{width:64px;font:inherit;border:1px solid var(--linija);border-radius:5px;padding:2px 6px}
+.dl-tk-gauta input[type=number]{width:60px;font:inherit;border:1px solid var(--linija);border-radius:5px;padding:2px 6px}.dl-tk-gauta input[type=text]{width:86px;font:inherit;border:1px solid var(--linija);border-radius:5px;padding:2px 6px}
+.dl-laisko-nust input[type=text]{font:inherit;border:1px solid var(--linija);border-radius:5px;padding:3px 8px;min-width:280px}
 .dl-perz-t{flex-basis:100%;background:var(--fonas);border-radius:8px;padding:10px 14px;margin-top:8px;font-size:13px;overflow:auto;max-height:420px}.dl .takelis small{font-size:10px;opacity:.7}
 .dl-zs{display:flex;flex-direction:column;gap:8px;max-width:860px}.dl-z{display:flex;gap:14px;align-items:center;background:var(--popierius);border:1px solid var(--linija);border-radius:8px;padding:12px 14px}.dl-z.tuscias{opacity:.55}.dl-z .zn{width:26px;height:26px;border-radius:50%;background:var(--zalia-s);color:var(--zalia);display:flex;align-items:center;justify-content:center;font-weight:600;flex:none}.dl-z.tuscias .zn{background:var(--fonas);color:var(--pilka)}.dl-z .zt{flex:1}.dl-z .zt b{display:block}
 .dl-siand{margin:0 24px;padding:8px 12px;background:var(--zalia-s);border:1px solid #c9e2d3;border-radius:8px;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font-size:13px}.dl-siand>b{color:var(--zalia)}.dl-siand-u{display:inline-flex;gap:6px;align-items:center;color:var(--rasalas);padding:3px 8px;border-radius:6px;background:#fff;border:1px solid var(--linija)}.dl-siand-u:hover{text-decoration:none;border-color:var(--zalia)}.dl-kur{color:var(--zalia)}
@@ -1353,7 +1511,7 @@ class Petshop_Darbalaukis {
 		if(o.matyti){ fetch(ajaxurl+'?action=ps_dl_matyta&id='+o.id+'&n='+encodeURIComponent(o.zn),{credentials:'same-origin'}).catch(function(){}); r.classList.remove('dl-n'); var nb=r.querySelector('.dl-nz'); if(nb) nb.remove(); } var K=$('skKlaus'); if(o.klausimas){ K.style.display='block'; K.textContent='Klausimas: '+o.klausimas; } else K.style.display='none';
 		$('skEil').innerHTML=o.eil.map(function(l){ return '<div class="eilute"><div class="virsus">'+(l.img?'<img class="dl-img" src="'+esc(l.img)+'" alt="">':'<span class="dl-img dl-img-n"></span>')+'<div class="k">'+l.q+'×</div><div class="p">'+esc(l.n)+(l.sku?' <span class="pilkas maz">'+esc(l.sku)+'</span>':'')+'</div></div>'
 			+'<div class="keliai">'+l.keliai.map(function(k){ var c=KC[k.k]+(k.on?' on':'')+(k.gal||k.on?'':' ne'); var t='<i></i>'+esc(k.t); if(k.u) return '<a class="'+c+'" href="'+esc(k.u)+'" title="Keisti kelią">'+t+'</a>'; return '<span class="kb '+c+'"'+(k.kodel_ne&&!k.on?' title="'+esc(k.kodel_ne)+'"':'')+'>'+t+'</span>'; }).join('')+'</div>'
-			+'<div class="kodel">'+esc(l.kodel)+(l.tiek_url?' <a href="'+esc(l.tiek_url)+'">Tiekimas →</a>':'')+'</div>'+(l.lock?'<div class="lock">Nebekeičiama: '+esc(l.lock)+'</div>':'')
+			+'<div class="kodel">'+esc(l.kodel)+(l.tiek_url?' <a href="'+esc(l.tiek_url)+'">Laukiam iš tiekėjų →</a>':'')+'</div>'+(l.lock?'<div class="lock">Nebekeičiama: '+esc(l.lock)+'</div>':'')
 			+(l.zing.length?'<div class="zingsneliai">'+l.zing.map(function(z){ return '<span class="'+z[1]+'">'+(z[1]==='ok'?'✓ ':'')+esc(z[0])+'</span>'; }).join('')+'</div>':'')+'</div>'; }).join('');
 		$('skPr').innerHTML=esc(o.vezejas)+(o.vieta?' · '+esc(o.vieta):'')+'<br><span class="pilkas maz">'+esc(o.adresas)+(o.tel?' · '+esc(o.tel):'')+(o.mail?' · '+esc(o.mail):'')+'</span>';
 		var S=$('skSiunta'); if(o.pak||o.nr_siuntos.length||o.perreg){ S.style.display='block'; $('skSiuntaT').innerHTML=(o.nr_siuntos.length?'<div>'+o.nr_siuntos.map(esc).join('<br>')+'</div>':'<div class="pilkas maz">siunta dar neregistruota</div>')
