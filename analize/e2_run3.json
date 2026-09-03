@@ -1,0 +1,345 @@
+{
+ "v": "dep-071553",
+ "kurimas": 200,
+ "sid": 4552,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "S1607-run3",
+  "f": "T",
+  "temp_istrinta": 1,
+  "diag": {
+   "35431": {
+    "st": "processing",
+    "paid": true,
+    "rus": "",
+    "spr_raw": "[]",
+    "sprestas": "2026-09-02 20:09:58 | Testuotojas",
+    "kl": "",
+    "it": {
+     "839": "19708 src=av kel= red=1/ kons=",
+     "840": "16727 src=av kel= red=1/ kons="
+    }
+   },
+   "35434": {
+    "st": "processing",
+    "paid": true,
+    "rus": "",
+    "spr_raw": "{\"prins\":\"av\"}",
+    "sprestas": "2026-09-02 20:11:58 | Testuotojas",
+    "kl": "",
+    "it": {
+     "849": "19708 src=av kel= red=1/ kons=",
+     "850": "16889 src=av kel= red=/F kons=1"
+    }
+   }
+  },
+  "own18593_pries": "22",
+  "own16727_pries": "0",
+  "A": 35435,
+  "A_po_apmokejimo": {
+   "st": "processing",
+   "rus": "auto",
+   "kl": "",
+   "eiles": "surinkti",
+   "btn": "Surinkti",
+   "eil": {
+    "853": "18593 av/av avq=21 red=1 lock="
+   },
+   "spr": "",
+   "tipas": "MAIN/1",
+   "own18593": "21",
+   "own16727": "0",
+   "ord_reduced": "2026-09-03 10:17:39"
+  },
+  "B": 35436,
+  "B_po_apmokejimo": {
+   "st": "processing",
+   "rus": "",
+   "kl": "",
+   "eiles": "nauji",
+   "btn": "Rūšiuoti",
+   "eil": {
+    "856": "18593 av/av avq=21 red=1 lock=",
+    "857": "16727 quattro/tiesiai avq=0 red=0 lock="
+   },
+   "spr": "",
+   "tipas": "MIXED/2",
+   "own18593": "20",
+   "own16727": "0",
+   "ord_reduced": "2026-09-03 10:17:41"
+  },
+  "A1_av_to_tiesiai": {
+   "code": 302,
+   "loc": {
+    "pd_ok": "dl_kelias",
+    "pd_nr": "35435|Exclusion Hypoallergenic konservai šunims su triuš: Vetfarmas → klientui · likutis Avesa +1 → 21"
+   }
+  },
+  "A1_po": {
+   "st": "processing",
+   "rus": "auto",
+   "kl": "",
+   "eiles": "laiskai",
+   "btn": "Laiškas Vetfarmas",
+   "eil": {
+    "853": "18593 vf/tiesiai avq=21 red=0 lock="
+   },
+   "spr": "{\"vf\":\"tiesiai\"}",
+   "tipas": "DS/1",
+   "own18593": "21",
+   "own16727": "0",
+   "ord_reduced": "2026-09-03 10:17:39"
+  },
+  "A2_tiesiai_to_av": {
+   "code": 302,
+   "loc": {
+    "pd_ok": "dl_kelias",
+    "pd_nr": "35435|Exclusion Hypoallergenic konservai šunims su triuš: Avesa sandėlis · likutis Avesa −1 → 20"
+   }
+  },
+  "A2_po": {
+   "st": "processing",
+   "rus": "auto",
+   "kl": "",
+   "eiles": "surinkti",
+   "btn": "Surinkti",
+   "eil": {
+    "853": "18593 av/av avq=21 red=1 lock="
+   },
+   "spr": "",
+   "tipas": "MAIN/1",
+   "own18593": "20",
+   "own16727": "0",
+   "ord_reduced": "2026-09-03 10:17:39"
+  },
+  "A3_av_to_i_av": {
+   "code": 302,
+   "loc": {
+    "pd_ok": "dl_kelias",
+    "pd_nr": "35435|Exclusion Hypoallergenic konservai šunims su triuš: Vetfarmas → Avesa sandėlį · likutis Avesa +1 → 21"
+   }
+  },
+  "A3_po": {
+   "st": "processing",
+   "rus": "auto",
+   "kl": "",
+   "eiles": "laukiam",
+   "btn": "Užsakyti iš Vetfarmas",
+   "eil": {
+    "853": "18593 vf/i_av avq=21 red=0 lock="
+   },
+   "spr": "{\"vf\":\"av\"}",
+   "tipas": "DS/1",
+   "own18593": "21",
+   "own16727": "0",
+   "ord_reduced": "2026-09-03 10:17:39"
+  },
+  "A4_i_av_to_tiesiai": {
+   "code": 302,
+   "loc": {
+    "pd_ok": "dl_kelias",
+    "pd_nr": "35435|Exclusion Hypoallergenic konservai šunims su triuš: Vetfarmas → klientui"
+   }
+  },
+  "A4_po": {
+   "st": "processing",
+   "rus": "auto",
+   "kl": "",
+   "eiles": "laiskai",
+   "btn": "Laiškas Vetfarmas",
+   "eil": {
+    "853": "18593 vf/tiesiai avq=21 red=0 lock="
+   },
+   "spr": "{\"vf\":\"tiesiai\"}",
+   "tipas": "DS/1",
+   "own18593": "21",
+   "own16727": "0",
+   "ord_reduced": "2026-09-03 10:17:39"
+  },
+  "A5_tiesiai_to_av": {
+   "code": 302,
+   "loc": {
+    "pd_ok": "dl_kelias",
+    "pd_nr": "35435|Exclusion Hypoallergenic konservai šunims su triuš: Avesa sandėlis · likutis Avesa −1 → 20"
+   }
+  },
+  "A5_po": {
+   "st": "processing",
+   "rus": "auto",
+   "kl": "",
+   "eiles": "surinkti",
+   "btn": "Surinkti",
+   "eil": {
+    "853": "18593 av/av avq=21 red=1 lock="
+   },
+   "spr": "",
+   "tipas": "MAIN/1",
+   "own18593": "20",
+   "own16727": "0",
+   "ord_reduced": "2026-09-03 10:17:39"
+  },
+  "B1_qua_tiesiai_to_av_neleidzia": {
+   "code": 302,
+   "loc": {
+    "pd_ok": "dl_klaida",
+    "pd_nr": "35436|kelias negalimas: Avesoje tik 0"
+   }
+  },
+  "B2_qua_to_i_av": {
+   "code": 302,
+   "loc": {
+    "pd_ok": "dl_kelias",
+    "pd_nr": "35436|QUATTRO 1,5 kg Adult Salmon & Krill visavertis sau: Quattro → Avesa sandėlį"
+   }
+  },
+  "B2_po": {
+   "st": "processing",
+   "rus": "planas",
+   "kl": "",
+   "eiles": "laukiam",
+   "btn": "Užsakyti iš Quattro",
+   "eil": {
+    "856": "18593 av/av avq=21 red=1 lock=",
+    "857": "16727 quattro/i_av avq=0 red=0 lock="
+   },
+   "spr": "{\"quattro\":\"av\"}",
+   "tipas": "MIXED/2",
+   "own18593": "20",
+   "own16727": "0",
+   "ord_reduced": "2026-09-03 10:17:41"
+  },
+  "B3_rusiuoti": {
+   "code": 302,
+   "loc": {
+    "pd_ok": "dl_rusiuota",
+    "pd_nr": "35436|Exclusion Hypoallergenic konservai šunim — Avesa sandėlis; QUATTRO 1,5 kg Adult Salmon & Krill visa — Quattro → Avesa sandėlį"
+   }
+  },
+  "B3_po": {
+   "st": "processing",
+   "rus": "2026-09-03 10:17:56 | Testuotojas",
+   "kl": "",
+   "eiles": "laukiam",
+   "btn": "Užsakyti iš Quattro",
+   "eil": {
+    "856": "18593 av/av avq=21 red=1 lock=",
+    "857": "16727 quattro/i_av avq=0 red=0 lock="
+   },
+   "spr": "{\"quattro\":\"av\"}",
+   "tipas": "MIXED/2",
+   "own18593": "20",
+   "own16727": "0",
+   "ord_reduced": "2026-09-03 10:17:41"
+  },
+  "B4_kons": {
+   "code": 403
+  },
+  "B4_po": {
+   "st": "processing",
+   "rus": "2026-09-03 10:17:56 | Testuotojas",
+   "kl": "",
+   "eiles": "laukiam",
+   "btn": "Užsakyti iš Quattro",
+   "eil": {
+    "856": "18593 av/av avq=21 red=1 lock=",
+    "857": "16727 quattro/i_av avq=0 red=0 lock="
+   },
+   "spr": "{\"quattro\":\"av\"}",
+   "tipas": "MIXED/2",
+   "own18593": "20",
+   "own16727": "0",
+   "ord_reduced": "2026-09-03 10:17:41"
+  },
+  "B5_qua_locked": {
+   "code": 302,
+   "loc": {
+    "pd_ok": "dl_kelias",
+    "pd_nr": "35436|QUATTRO 1,5 kg Adult Salmon & Krill visavertis sau: Quattro → klientui"
+   }
+  },
+  "zurnalas_A": [
+   "09-03 10:17 · Testuotojas — Kelias: likutis: Avesa −1 → 20 · Exclusion Hypoallergenic konservai šunims su triušiena ir bu: Vetfarmas → klientui → Avesa sandėlis",
+   "09-03 10:17 · Testuotojas — Kelias: likutis nejudėjo · Exclusion Hypoallergenic konservai šunims su triušiena ir bu: Vetfarmas → Avesa sandėlį → Vetfarmas → klientui",
+   "09-03 10:17 · Testuotojas — Kelias: likutis: Avesa +1 → 21 · Exclusion Hypoallergenic konservai šunims su triušiena ir bu: Avesa sandėlis → Vetfarmas → Avesa sandėlį",
+   "09-03 10:17 · Testuotojas — Kelias: likutis: Avesa −1 → 20 · Exclusion Hypoallergenic konservai šunims su triušiena ir bu: Vetfarmas → klientui → Avesa sandėlis",
+   "09-03 10:17 · Testuotojas — Kelias: likutis: Avesa +1 → 21 · Exclusion Hypoallergenic konservai šunims su triušiena ir bu: Avesa sandėlis → Vetfarmas → klientui",
+   "09-03 10:17 · auto — Apmokėta · keliai: #853 av · MAIN",
+   "09-03 10:17 · Testuotojas — Būsena pending → processing · mokėjimas / svetainė",
+   "09-03 10:17 · auto — Rusiuoti · auto: visos prekės vienu keliu"
+  ],
+  "zurnalas_B": [
+   "09-03 10:18 · Testuotojas — Kelias: likutis nejudėjo · QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašara: Quattro → Avesa sandėlį → Quattro → klientui",
+   "09-03 10:17 · Testuotojas — Rusiuoti",
+   "09-03 10:17 · Testuotojas — Kelias: likutis nejudėjo · QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašara: Quattro → klientui → Quattro → Avesa sandėlį",
+   "09-03 10:17 · auto — Apmokėta · keliai: #856 av, #857 quattro · MIXED",
+   "09-03 10:17 · Testuotojas — Būsena pending → processing · mokėjimas / svetainė"
+  ],
+  "stock_log_18593": [
+   {
+    "meta_value": "a:6:{i:0;a:5:{s:4:\"kada\";s:19:\"2026-09-03 10:17:39\";s:4:\"buvo\";i:22;s:4:\"tapo\";i:21;s:3:\"kas\";s:11:\"testuotojas\";s:10:\"priezastis\";s:17:\"užsakymas #35435\";}i:1;a:5:{s:4:\"kada\";s:19:\"2026-09-03 10:17:41\";s:4:\"buvo\";i:21;s:4:\"tapo\";i:20;s:3:\"kas\";s:11:\"testuotojas\";s:10:\"priezastis\";s:17:\"užsakymas #35436\";}i:2;a:5:{s:4:\"kada\";s:19:\"2026-09-03 10:17:42\";s:4:\"buvo\";i:20;s:4:\"tapo\";i:21;s:3:\"kas\";s:11:\"testuotojas\";s:10:\"priezastis\";s:52:\"kelias → Vetfarmas → klientui, užsakymas #35435\";}i:3;a:5:{s:4:\"kada\";s:19:\"2026-09-03 10:17:45\";s:4:\"buvo\";i:21;s:4:\"tapo\";i:20;s:3:\"kas\";s:11:\"testuotojas\";s:10:\"priezastis\";s:45:\"kelias → Avesa sandėlis, užsakymas #35435\";}i:4;a:5:{s:4:\"kada\";s:19:\"2026-09-03 10:17:47\";s:4:\"buvo\";i:20;s:4:\"tapo\";i:21;s:3:\"kas\";s:11:\"testuotojas\";s:10:\"priezastis\";s:59:\"kelias → Vetfarmas → Avesa sandėlį, užsakymas #35435\";}i:5;a:5:{s:4:\"kada\";s:19:\"2026-09-03 10:17:50\";s:4:\"buvo\";i:21;s:4:\"tapo\";i:20;s:3:\"kas\";s:11:\"testuotojas\";s:10:\"priezastis\";s:45:\"kelias → Avesa sandėlis, užsakymas #35435\";}}"
+   }
+  ],
+  "own18593_po": "20",
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788423459|9Tby8fgy4YvEKQbEc00uRND0cA3DUjmNhtuua4yCkKq|bf7384a8982acc72c3986e86d4666cf557970ac504bf5b1962a666a107e4ab3b"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788423459|9Tby8fgy4YvEKQbEc00uRND0cA3DUjmNhtuua4yCkKq|5a547454748be86bcc5b9746ef778e2b255355c95429441a481dd2e3e7ab471c"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788423459|9Tby8fgy4YvEKQbEc00uRND0cA3DUjmNhtuua4yCkKq|a8f01366df57bc0239a71595fe66566771efefb926eef348dfc380d1cb99d9e0"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e2e_nauji_sk",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji&atidaryti=35436",
+    "h": 1000
+   },
+   {
+    "n": "e2e_laukiam",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam"
+   },
+   {
+    "n": "e2e_klausimai_sk",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai&atidaryti=35423",
+    "h": 1000
+   },
+   {
+    "n": "e2e_mob_sk",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti&atidaryti=35435",
+    "w": 420,
+    "h": 1300
+   }
+  ]
+ },
+ "shots": {
+  "e2e_nauji_sk": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji&atidaryti=35436",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2e_laukiam": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2e_klausimai_sk": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai&atidaryti=35423",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2e_mob_sk": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti&atidaryti=35435",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  }
+ }
+}
