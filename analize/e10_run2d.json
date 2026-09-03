@@ -1,0 +1,139 @@
+{
+ "v": "dep-202151",
+ "kurimas": 200,
+ "sid": 4661,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run e10d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": [
+   80000,
+   80000,
+   84376
+  ],
+  "bytes": 183281,
+  "md5": "9f15a7e00baeb885377c9b1c8c681b1f",
+  "token": "ok",
+  "buvo": "30faf7f378a932d0bbf98cea74d04ed3",
+  "buvo_bytes": 182288,
+  "buvo_v": "3.10.3",
+  "backup": true,
+  "rasyta": 183281,
+  "po": "9f15a7e00baeb885377c9b1c8c681b1f",
+  "po_bytes": 183281
+ },
+ "R": {
+  "v": "run e10d",
+  "f": "R",
+  "temp_istrinta": 0,
+  "versija": "3.10.4",
+  "md5": "9f15a7e00baeb885377c9b1c8c681b1f",
+  "lp_class-woo-lithuaniapost-admin-order-tracking.php": {
+   "hooks": [],
+   "funkcijos": [
+    "__construct",
+    "schedule_tracking_info",
+    "schedule_tracking_data_sync",
+    "update_tracking_status",
+    "register_url_api_endpoint",
+    "url_api_endpoint_callback",
+    "find_with_greatest_date",
+    "get_tracking_events",
+    "load_tracking_email_template",
+    "send_tracking_email",
+    "sync_tracking_data",
+    "get_next_sync_tracking_data_time"
+   ],
+   "ctx": "$order = wc_get_order($status->order_id); if ($order) { if ($event_to_complete_order && $lp_order_status->to_order_status() === $event_to_complete_order) { $order->update_status('completed'); } $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', $lp_order_status->value); $order->save(); if ((!$event_to_send_tracking_email === false && $lp_order_status == LpOrderStatus::$ON_THE_WAY) || ($event_to_send_tracking_email && $lp_order_status->to_order_status() == $event_to_send_tracking_email)) { if (!$order->get_meta('_woo_lithuaniapost_tracking_mail_send') && $order->get_meta('_woo_lithuaniapost_barcode')) { $order->update_meta_data('_woo_lithuaniapost_tracking_mail_send', true); $order->save(); do_action('woo_lithuaniapost_send_tracking_email', $order); } } } } } }",
+   "siuntimai": 1
+  },
+  "lp_class-woo-lithuaniapost-admin-order-service.php": {
+   "hooks": [],
+   "funkcijos": [
+    "__construct",
+    "to_order_status",
+    "is_shipping_initiated",
+    "is_ready_to_initiated",
+    "find_by_value",
+    "find_by_name",
+    "find_by",
+    "__construct",
+    "get_lp_order_statuses",
+    "handle_order_query_args",
+    "handle_generate_stickers",
+    "download_labels",
+    "handle_generate_manifests",
+    "handle_call_courier",
+    "handle_cancel_labels",
+    "remove_order_meta_data",
+    "is_shipping_method",
+    "is_shipping_method_supported",
+    "is_lpexpress_method",
+    "handle_initiate_shipping",
+    "handle_create_parcel",
+    "handle_generate_return_stickers",
+    "handle_return_orders",
+    "create_cn_request",
+    "create_parcel_content_request",
+    "on_status_changed",
+    "get_available_order_actions_by_id",
+    "get_available_order_actions",
+    "get_parcel_type_translation",
+    "get_plan_translation",
+    "get_lp_shipping_method",
+    "create_parcel_create_request",
+    "to_parcel_request",
+    "is_terminal_required",
+    "handle_parcel_save",
+    "create_parcel",
+    "on_parcel_save",
+    "get_order_weight",
+    "get_corrected_foreign_address",
+    "get_orders",
+    "on_initiate_success",
+    "save_shipping_request",
+    "process_shipping_status",
+    "handle_failed_parcel_create_response",
+    "create_parcel_update_request",
+    "remove_empty_values",
+    "save_order_meta_info"
+   ],
+   "ctx": "} else if ($shipping_item_status->status == ShippingItemStatus::COURIER_CALLED) { $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$COURIER_CALLED->value); } else { $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$SHIPPING_INITIATED->value); } if ($event_to_complete_order && $event_to_complete_order === LpOrderStatus::$SHIPPING_INITIATED->to_order_status()) { $order->update_status('completed'); } if ($event_to_send_tracking_email && $event_to_send_tracking_email === LpOrderStatus::$SHIPPING_INITIATED->to_order_status()) { if (!$order->get_meta('_woo_lithuaniapost_tracking_mail_send') && $order->get_meta('_woo_lithuaniapost_barcode')) { $order->update_meta_data('_woo_lithuaniapost_tracking_mail_send', true); do_action('woo_lithuaniapost_send_tracking_email', $order); } } $order->save(); $wpdb->insert($wpdb->woo_lithuaniapost_tracking_status, [ 'order_id' => $order->get_id(), 'barcode' => $shipping_item_status->barcode,"
+  },
+  "status_ctx": {
+   "class-woo-lithuaniapost-admin-order-service.php": [
+    "$order->update_status('completed');"
+   ],
+   "class-woo-lithuaniapost-admin-order-tracking.php": [
+    "$order->update_status('completed');"
+   ]
+  },
+  "status_value_ctx": {
+   "class-woo-lithuaniapost-admin-order-service.php": [
+    "$order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$COURIER_CALLED->value);",
+    "$order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$PARCEL_CANCELED->value);",
+    "$order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$PARCEL_PENDING->value);",
+    "$shipping_status_value = $order->get_meta('_woo_lithuaniapost_shipping_status_value');",
+    "$lp_order_status = $shipping_status_value ? LpOrderStatus::find_by_value($shipping_status_value) : LpOrderStatus::find_by_value($order->get_s",
+    "$order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$PARCEL_CREATED->value);"
+   ],
+   "class-woo-lithuaniapost-admin-courier-schedule.php": [
+    "$order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$COURIER_CALLED->value);"
+   ],
+   "class-woo-lithuaniapost-admin-order-settings.php": [
+    "\"order_status\" => $item->get_meta('_woo_lithuaniapost_shipping_status_value') ?: $item->get_status(),",
+    "query = $this->apply_meta_query($query, '_woo_lithuaniapost_shipping_status_value', $status);",
+    "$query['_woo_lithuaniapost_shipping_status_value'] = $status;",
+    "$status_value = $query_vars['_woo_lithuaniapost_shipping_status_value'] ?? null;",
+    "'key' => '_woo_lithuaniapost_shipping_status_value',"
+   ],
+   "class-woo-lithuaniapost-admin-order-tracking.php": [
+    "$order->update_meta_data('_woo_lithuaniapost_shipping_status_value', $lp_order_status->value);"
+   ]
+  }
+ }
+}
