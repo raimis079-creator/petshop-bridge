@@ -1,0 +1,429 @@
+{
+ "v": "dep-071050",
+ "kurimas": 200,
+ "sid": 4551,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1607-run2b",
+  "f": "D",
+  "temp_istrinta": 1,
+  "b64_md5": "f7d7b494c0a465f674654ff3a21f8a20",
+  "buvo": "8dc4c49708664e0103d4a67672e15948",
+  "deploy": {
+   "bytes": 80304,
+   "md5": "f7d7b494c0a465f674654ff3a21f8a20"
+  }
+ },
+ "T": {
+  "v": "S1607-run2b",
+  "f": "T",
+  "versija": "1.0",
+  "backfill": {
+   "auto": 5,
+   "ne": [
+    35434,
+    35431,
+    35426,
+    35425,
+    35423,
+    35421,
+    35420,
+    35415,
+    35414,
+    35100,
+    35090
+   ]
+  },
+  "t_35414_pries": {
+   "rus": "",
+   "eiles": "nauji",
+   "btn": "Rūšiuoti",
+   "eil": {
+    "780": "ambrosia/tiesiai avq=0 red=0 lock=",
+    "781": "av/av avq=24 red=2 lock="
+   },
+   "spr": "",
+   "tipas": "MIXED/2",
+   "own16727": "0",
+   "stock19708": "24"
+  },
+  "iids_35414": {
+   "780": "19756 AMBROSIA begrūdis su ėrie",
+   "781": "19708 Animonda Carny Adult Beef"
+  },
+  "t1_35414_amb_i_av": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "dl_kelias",
+    "pd_nr": "35414|AMBROSIA begrūdis su ėriena ir šviežia elniena sau: Ambrosia → Avesa sandėlį"
+   }
+  },
+  "t1_po": {
+   "rus": "planas",
+   "eiles": "laukiam",
+   "btn": "Užsakyti iš Ambrosia",
+   "eil": {
+    "780": "ambrosia/i_av avq=0 red=0 lock=",
+    "781": "av/av avq=24 red=2 lock="
+   },
+   "spr": "{\"ambrosia\":\"av\"}",
+   "tipas": "MIXED/2",
+   "own16727": "0",
+   "stock19708": "24"
+  },
+  "t2_35414_rusiuoti": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "dl_rusiuota",
+    "pd_nr": "35414|AMBROSIA begrūdis su ėriena ir šviežia e — Ambrosia → Avesa sandėlį; Animonda Carny Adult Beef + Chicken + Du — Avesa sandėlis"
+   }
+  },
+  "t2_po": {
+   "rus": "2026-09-03 10:12:35 | Testuotojas",
+   "eiles": "laukiam",
+   "btn": "Užsakyti iš Ambrosia",
+   "eil": {
+    "780": "ambrosia/i_av avq=0 red=0 lock=",
+    "781": "av/av avq=24 red=2 lock="
+   },
+   "spr": "{\"ambrosia\":\"av\"}",
+   "tipas": "MIXED/2",
+   "own16727": "0",
+   "stock19708": "24"
+  },
+  "t3_35414_amb_tiesiai": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "dl_kelias",
+    "pd_nr": "35414|AMBROSIA begrūdis su ėriena ir šviežia elniena sau: Ambrosia → klientui"
+   }
+  },
+  "t3_po": {
+   "rus": "2026-09-03 10:12:35 | Testuotojas",
+   "eiles": "surinkti,laiskai",
+   "btn": "Surinkti",
+   "eil": {
+    "780": "ambrosia/tiesiai avq=0 red=0 lock=",
+    "781": "av/av avq=24 red=2 lock="
+   },
+   "spr": "{\"ambrosia\":\"tiesiai\"}",
+   "tipas": "MIXED/2",
+   "own16727": "0",
+   "stock19708": "24"
+  },
+  "t4_35414_av_i_av_neleidzia": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "dl_klaida",
+    "pd_nr": "35414|kelias negalimas: tiekėjo nėra"
+   }
+  },
+  "iids_35421": {
+   "805": "19708 Animonda Carny Adult Beef",
+   "806": "16727 QUATTRO 1,5 kg Adult Salm",
+   "807": "16889 Prins Diet Skin & Intesti"
+  },
+  "t_35421_pries": {
+   "rus": "2026-09-02 17:46:07 | Testuotojas",
+   "eiles": "surinkti,laiskai",
+   "btn": "Surinkti",
+   "eil": {
+    "805": "av/av avq=24 red=1 lock=",
+    "806": "quattro/i_av avq=0 red=0 lock=jau užsakyta iš tiekėjo (partija #10)",
+    "807": "prins/tiesiai avq=0 red=0 lock="
+   },
+   "spr": "{\"quattro\":\"av\",\"prins\":\"tiesiai\"}",
+   "tipas": "MIXED/3",
+   "own16727": "0",
+   "stock19708": "24"
+  },
+  "t5_35421_qua_av_to_tiesiai": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "dl_klaida",
+    "pd_nr": "35421|kelio keisti negalima — jau užsakyta iš tiekėjo (partija #10)"
+   }
+  },
+  "t5_po": {
+   "rus": "2026-09-02 17:46:07 | Testuotojas",
+   "eiles": "surinkti,laiskai",
+   "btn": "Surinkti",
+   "eil": {
+    "805": "av/av avq=24 red=1 lock=",
+    "806": "quattro/i_av avq=0 red=0 lock=jau užsakyta iš tiekėjo (partija #10)",
+    "807": "prins/tiesiai avq=0 red=0 lock="
+   },
+   "spr": "{\"quattro\":\"av\",\"prins\":\"tiesiai\"}",
+   "tipas": "MIXED/3",
+   "own16727": "0",
+   "stock19708": "24"
+  },
+  "t6_35421_qua_tiesiai_to_av": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "dl_klaida",
+    "pd_nr": "35421|kelio keisti negalima — jau užsakyta iš tiekėjo (partija #10)"
+   }
+  },
+  "t6_po": {
+   "rus": "2026-09-02 17:46:07 | Testuotojas",
+   "eiles": "surinkti,laiskai",
+   "btn": "Surinkti",
+   "eil": {
+    "805": "av/av avq=24 red=1 lock=",
+    "806": "quattro/i_av avq=0 red=0 lock=jau užsakyta iš tiekėjo (partija #10)",
+    "807": "prins/tiesiai avq=0 red=0 lock="
+   },
+   "spr": "{\"quattro\":\"av\",\"prins\":\"tiesiai\"}",
+   "tipas": "MIXED/3",
+   "own16727": "0",
+   "stock19708": "24"
+  },
+  "iids_35423": {
+   "813": "35074 Žaislas šuniui – Medžiagi"
+  },
+  "t7_35423_be_tiekejo": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "dl_klaida",
+    "pd_nr": "35423|kelias negalimas: tiekėjo nėra"
+   }
+  },
+  "t8_35428_uzrakinta": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "dl_klaida",
+    "pd_nr": "35428|kelio keisti negalima — siunta jau registruota — perregistruoti?"
+   }
+  },
+  "t9_blogas_nonce": {
+   "code": 403,
+   "rows": 0,
+   "json": 0,
+   "sk": false
+  },
+  "zurnalas_35414": [
+   "09-03 10:12 · Testuotojas — Kelias: likutis nejudėjo · AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maista: Ambrosia → Avesa sandėlį → Ambrosia → klientui",
+   "09-03 10:12 · Testuotojas — Rusiuoti",
+   "09-03 10:12 · Testuotojas — Kelias: likutis nejudėjo · AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maista: Ambrosia → klientui → Ambrosia → Avesa sandėlį"
+  ],
+  "zurnalas_35421": [],
+  "eile": {
+   "nauji": {
+    "code": 200,
+    "rows": 6,
+    "json": 5,
+    "sk": true,
+    "h1": "Nauji — rūšiuoti",
+    "eiles": {
+     "Nauji — rūšiuoti": "5",
+     "Laukiam iš tiekėjų": "0",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "4",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "0",
+     "Visi užsakymai": "25"
+    }
+   },
+   "laukiam": {
+    "code": 200,
+    "rows": 1,
+    "json": 0,
+    "sk": true,
+    "h1": "Laukiam iš tiekėjų",
+    "eiles": {
+     "Nauji — rūšiuoti": "5",
+     "Laukiam iš tiekėjų": "0",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "4",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "0",
+     "Visi užsakymai": "25"
+    }
+   },
+   "surinkti": {
+    "code": 200,
+    "rows": 6,
+    "json": 5,
+    "sk": true,
+    "h1": "Surinkti Avesoje",
+    "eiles": {
+     "Nauji — rūšiuoti": "5",
+     "Laukiam iš tiekėjų": "0",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "4",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "0",
+     "Visi užsakymai": "25"
+    }
+   },
+   "laiskai": {
+    "code": 200,
+    "rows": 5,
+    "json": 4,
+    "sk": true,
+    "h1": "Laiškai tiekėjams",
+    "eiles": {
+     "Nauji — rūšiuoti": "5",
+     "Laukiam iš tiekėjų": "0",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "4",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "0",
+     "Visi užsakymai": "25"
+    }
+   },
+   "paruosta": {
+    "code": 200,
+    "rows": 4,
+    "json": 3,
+    "sk": true,
+    "h1": "Paruošta siųsti",
+    "eiles": {
+     "Nauji — rūšiuoti": "5",
+     "Laukiam iš tiekėjų": "0",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "4",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "0",
+     "Visi užsakymai": "25"
+    }
+   },
+   "klausimai": {
+    "code": 200,
+    "rows": 1,
+    "json": 2,
+    "sk": true,
+    "h1": "Klausimai",
+    "eiles": {
+     "Nauji — rūšiuoti": "5",
+     "Laukiam iš tiekėjų": "0",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "4",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "0",
+     "Visi užsakymai": "25"
+    }
+   },
+   "neapmoketi": {
+    "code": 200,
+    "rows": 1,
+    "json": 0,
+    "sk": true,
+    "h1": "Neapmokėti",
+    "eiles": {
+     "Nauji — rūšiuoti": "5",
+     "Laukiam iš tiekėjų": "0",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "4",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "0",
+     "Visi užsakymai": "25"
+    }
+   },
+   "visi": {
+    "code": 200,
+    "rows": 26,
+    "json": 25,
+    "sk": true,
+    "h1": "Visi užsakymai",
+    "eiles": {
+     "Nauji — rūšiuoti": "5",
+     "Laukiam iš tiekėjų": "0",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "4",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "0",
+     "Visi užsakymai": "25"
+    }
+   }
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788423150|BxTc9UbjJ4rl4A6TqAbGXWUL3xcPc5qvOA47U7RklUn|e362e840480b7d43b70a528e34f90a6798a5ffb8180f9145fa877fd14af64d5a"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788423150|BxTc9UbjJ4rl4A6TqAbGXWUL3xcPc5qvOA47U7RklUn|26188876d1808a7e3acbd111069e0690bd0fce1988a6fc764eed788f17596b19"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788423150|BxTc9UbjJ4rl4A6TqAbGXWUL3xcPc5qvOA47U7RklUn|487a33771ce3370eb190b61677c3e1ae79a24d98dcac1bd9caec161b4b9175fd"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e2d_nauji",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+    "full": true
+   },
+   {
+    "n": "e2d_surinkti_sk",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti&atidaryti=35421",
+    "h": 1000
+   },
+   {
+    "n": "e2d_klausimai",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai"
+   },
+   {
+    "n": "e2d_klausimai_sk",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai&atidaryti=35423",
+    "h": 1000
+   },
+   {
+    "n": "e2d_nauji_mob_sk",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji&atidaryti=35415",
+    "w": 420,
+    "h": 1400
+   }
+  ]
+ },
+ "shots": {
+  "e2d_nauji": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2d_surinkti_sk": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti&atidaryti=35421",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2d_klausimai": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2d_klausimai_sk": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai&atidaryti=35423",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2d_nauji_mob_sk": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji&atidaryti=35415",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  }
+ }
+}
