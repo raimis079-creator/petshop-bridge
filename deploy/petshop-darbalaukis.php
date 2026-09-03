@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.10 (S1609, 3 etapas #5 — sekimo laiškas klientui po kiekvienos siuntos) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.10.4 (S1610, 3 etapas #5b + #6 papildymas — siuntos klientui iš vieno šaltinio; LP numeris siuntų sąraše) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -26,6 +26,14 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v3.10.4 (S1610, #6 papildymas — Raimis 09-03 naktis): LP Express siuntos numeris (LP plugino meta `_woo_lithuaniapost_barcode` — patikrinta
+ *   plugino kode, recon e10_run1r) patenka į `siuntos()` AV dalį, kai `_ps_siuntos` registre AV numerių nėra → laiškas ir paskyra rodo
+ *   „Siuntos numeris (LP Express)“ + „Sekti siuntą“ (post.lt) kaip Venipak. Registras `_ps_siuntos` NErašomas (variklis neliestas).
+ * v3.10.3 (S1610, #5b — Raimio sprendimai 09-03 naktis): `kliento_siuntos($o)` VIEŠA — siuntų sąrašas klientui (dalys kaip `faktai()`: AV + kiekvienas
+ *   „tiesiai“ tiekėjas; būsena tik Ruošiama/Išsiųsta, be datos; tiekėjų vardų NĖRA; išsiųstos pirma pagal laiką — kaip laiško „Išsiųsta n iš N“) —
+ *   vienas tiesos šaltinis laiškui, paskyros blokui (`petshop-kliento-siuntos.php` tik piešia) ir 4 etapo cron'ui. Laiške: statinė juostelė
+ *   IŠIMTA (klaidina); po „Sekti siuntą“ — „Siuntos kelią sekite paspaudę „Sekti siuntą““, registruotam klientui — nuoroda į paskyros
+ *   užsakymą (`paskyra/uzsakymas/N/`). Neapmokėtam/atšauktam užsakymui `kliento_siuntos()` — tuščia (mano prielaida: „Ruošiama“ ten klaidintų).
  * v3.10.2: `amzius()` — „prieš 3 val.“ ką tik atėjusiam užsakymui (radinys e6_visi): `current_time('timestamp')` yra Vilniaus „vietinis“ epoch,
  *   o `WC_DateTime::getTimestamp()` — tikras UTC → skirtumas +3 val. Dabar lyginama su `time()`.
  * v3.10.1 (testas #35774, VF+Prins „be lipdukų“): paskutinės dalies laiškas išeina PO `completed` (ne prieš — jei sargas sustabdo, klientas
@@ -117,7 +125,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.10.2';
+	const VERSIJA = '3.10.4';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -378,6 +386,13 @@ class Petshop_Darbalaukis {
 			if ( '' === $k ) { $k = ( 1 === count( $sandeliai ) ) ? reset( $sandeliai ) : ( in_array( 'av', $sandeliai, true ) ? 'av' : '' ); }
 			if ( '' === $k ) { continue; }
 			$out[ $k ] = array_merge( $out[ $k ] ?? array(), (array) ( $s['numeriai'] ?? array() ) );
+		}
+		// v3.10.4 (#6): LP Express — lipduką kuria LP pluginas (Rytinė eiga, J1), registre `_ps_siuntos` jo nėra; numeris — plugino meta
+		// `_woo_lithuaniapost_barcode` (patikrinta plugino kode: `update_meta_data('_woo_lithuaniapost_barcode', $shipping_item_status->barcode)`).
+		if ( empty( $out['av'] ) && 'lp' === self::d( 'vezejas', $o ) ) {
+			$bc = $o->get_meta( '_woo_lithuaniapost_barcode' );
+			$bc = array_values( array_filter( array_map( 'trim', is_array( $bc ) ? $bc : array( (string) $bc ) ) ) );
+			if ( $bc ) { $out['av'] = $bc; }
 		}
 		return $out;
 	}
@@ -905,9 +920,33 @@ class Petshop_Darbalaukis {
 		return (string) apply_filters( 'ps_sekimo_url', $u, $vez, $nr );
 	}
 
+	/** #5b (Raimis 09-03 naktis): SIUNTOS KLIENTUI — vienas tiesos šaltinis laiškui, paskyros blokui („Siuntos“, `petshop-kliento-siuntos.php`)
+	 *  ir 4 etapo Venipak cron'ui. Dalys kaip `faktai()` (AV + kiekvienas „tiesiai“ tiekėjas); išsiųstos pirma pagal laiką (kaip laiško „Išsiųsta
+	 *  n iš N“), neišsiųstos po jų. Kiekviena: [n, viso, dalis, busena ruosiama|issiusta, laikas, vez venipak|lp, numeriai[], url, prekes[[q,n]]].
+	 *  Tiekėjų vardų klientui NĖRA (tik `dalis` raktas vidiniam naudojimui). Neapmokėtam / atšauktam — tuščia (blokas nerodomas). */
+	public static function kliento_siuntos( $o ) {
+		if ( ! $o instanceof WC_Order || ! class_exists( 'Petshop_Desk' ) ) { return array(); }
+		if ( in_array( $o->get_status(), array_merge( Petshop_Desk::STATUSAI['neapmoketi'], Petshop_Desk::STATUSAI['atsaukti'], array( 'checkout-draft', 'draft' ) ), true ) ) { return array(); }
+		$f = self::faktai( $o ); $iss = $f['dalys_issiusta']; $out = array();
+		foreach ( $f['dalys'] as $k => $p ) {
+			if ( ! $p ) { continue; }
+			$prekes = array();
+			foreach ( $f['eil'] as $e ) { $ed = ( 'tiesiai' === $e['k'] && $e['src'] ) ? $e['src'] : 'av'; if ( $ed === $k ) { $prekes[] = array( 'q' => (int) $e['q'], 'n' => (string) $e['n'] ); } }
+			$vez = ( 'av' === $k && 'lp' === $f['vez'] ) ? 'lp' : 'venipak';
+			$nrs = array_values( array_unique( array_filter( array_map( 'trim', (array) ( $p['nr'] ?? array() ) ) ) ) );
+			$issiusta = ! empty( $p['issiusta'] );
+			$out[] = array( 'dalis' => $k, 'busena' => $issiusta ? 'issiusta' : 'ruosiama', 'laikas' => $issiusta ? (string) ( $iss[ $k ]['laikas'] ?? '' ) : '', 'vez' => $vez, 'numeriai' => $nrs, 'url' => $nrs ? self::sekimo_url( $vez, $nrs[0] ) : '', 'prekes' => $prekes );
+		}
+		usort( $out, function ( $a, $b ) { $ia = 'issiusta' === $a['busena']; $ib = 'issiusta' === $b['busena']; if ( $ia !== $ib ) { return $ia ? -1 : 1; } return strcmp( $a['laikas'], $b['laikas'] ); } );
+		$viso = count( $out );
+		foreach ( $out as $i => $s ) { $out[ $i ]['n'] = $i + 1; $out[ $i ]['viso'] = $viso; }
+		return $out;
+	}
+
 	/** #5 (spec §12, Raimis 09-03 vakaras): laiškas klientui PO KIEKVIENOS siuntos — „Išsiųsta 1 iš 2 siuntų“ / „2 iš 2“, vienai — „Užsakymas
 	 *  išsiųstas“. Ta pati funkcija 4 etapo cron'ui (Venipak „Picked up“). $f — `faktai()`, $iss — jau atnaujintas `_ps_dalys_issiusta`
-	 *  (ši dalis įskaityta). Rašo `_ps_dalys_issiusta[dalis].laiskas` (dublio sargas) ir `_ps_sekimo_siusta`. Grąžina [ok, tekstas darbuotojui]. */
+	 *  (ši dalis įskaityta). Rašo `_ps_dalys_issiusta[dalis].laiskas` (dublio sargas) ir `_ps_sekimo_siusta`. Grąžina [ok, tekstas darbuotojui].
+	 *  v3.10.3 (#5b): juostelės NĖRA (statinė klaidina — Raimis); po „Sekti siuntą“ — sakinys apie sekimą, registruotam klientui — nuoroda į paskyros užsakymą. */
 	public static function siuntos_laiskas( $o, $f, $dalis, $iss ) {
 		$el = $o->get_billing_email();
 		if ( ! $el ) { return array( false, 'klientui nepranešta — el. pašto nėra' ); }
@@ -931,12 +970,7 @@ class Petshop_Darbalaukis {
 		if ( $viso <= 1 || ! $dalis ) { $h .= '<p>' . sprintf( esc_html( 'Jūsų užsakymas Nr. %s išsiųstas.' ), esc_html( $nr_uzs ) ) . '</p>'; }
 		elseif ( $n < $viso ) { $h .= '<p>' . sprintf( esc_html( 'Išsiųsta %d iš %d Jūsų užsakymo Nr. %s siuntų. %s keliaus atskirai — pranešime, kai išsiųsime.' ), $n, $viso, esc_html( $nr_uzs ), 2 === $viso ? 'Antroji siunta' : 'Kitos siuntos' ) . '</p>'; }
 		else { $h .= '<p>' . sprintf( esc_html( 'Išsiųsta %d iš %d Jūsų užsakymo Nr. %s siuntų — visas užsakymas išsiųstas.' ), $n, $viso, esc_html( $nr_uzs ) ) . '</p>'; }
-		// Sekimo juostelė (spec §12.3): dabartinis žingsnis — Išsiųsta.
-		$zingsniai = array( 'Užsakymas gautas', 'Apmokėta', 'Ruošiama', 'Išsiųsta', 'Pas kurjerį', 'Pristatyta' ); $dabar_i = 3;
-		$h .= '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:16px 0 20px;border-collapse:separate;border-spacing:3px 0"><tr>';
-		foreach ( $zingsniai as $i => $z ) { $st = $i < $dabar_i ? 'done' : ( $i === $dabar_i ? 'now' : 'todo' ); $bg = 'todo' === $st ? '#e2e2e2' : $bazine; $op = 'done' === $st ? ';opacity:.55' : '';
-			$h .= '<td valign="top" style="width:16.6%;padding:0;font-size:11px;line-height:14px;text-align:center;color:' . ( 'todo' === $st ? '#9a9a9a' : ( 'now' === $st ? esc_attr( $bazine ) : '#555' ) ) . ( 'now' === $st ? ';font-weight:700' : '' ) . '"><div style="height:6px;border-radius:3px;background:' . esc_attr( $bg ) . $op . ';margin-bottom:6px"></div>' . esc_html( $z ) . '</td>'; }
-		$h .= '</tr></table>';
+		// v3.10.3: sekimo juostelės laiške NĖRA (Raimis 09-03 naktis: statinė — klaidina); eiga — paskyroje (blokas „Siuntos“).
 		// Siunta: numeris + „Sekti siuntą“.
 		$vez_v = 'lp' === $vez ? 'LP Express' : 'Venipak';
 		$h .= '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 18px;border:1px solid #e2e2e2;border-radius:6px"><tr><td style="padding:14px 16px">';
@@ -947,6 +981,12 @@ class Petshop_Darbalaukis {
 			if ( $u ) { $h .= '<a href="' . esc_url( $u ) . '" style="display:inline-block;background:' . esc_attr( $bazine ) . ';color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:10px 18px;border-radius:5px">' . esc_html( 'Sekti siuntą' ) . '</a>'; }
 		} else { $h .= '<p style="margin:0;font-size:14px">' . esc_html( 'Siunta perduota vežėjui ' . $vez_v . '.' ) . '</p>'; }
 		$h .= '</td></tr></table>';
+		// #5b: kaip sekti + registruotam klientui — paskyros užsakymas (`paskyra/uzsakymas/N/`); svečiui — tik „Sekti siuntą“.
+		$pask = (int) $o->get_customer_id() > 0 ? wc_get_endpoint_url( 'view-order', $o->get_id(), wc_get_page_permalink( 'myaccount' ) ) : '';
+		$sek  = array();
+		if ( $nrs ) { $sek[] = esc_html( 'Siuntos kelią sekite paspaudę „Sekti siuntą“.' ); }
+		if ( $pask ) { $sek[] = esc_html( 'Visą užsakymo eigą matysite ' ) . '<a href="' . esc_url( $pask ) . '" style="color:' . esc_attr( $bazine ) . ';font-weight:700">' . esc_html( 'paskyroje → Užsakymas Nr. ' . $nr_uzs ) . '</a>.'; }
+		if ( $sek ) { $h .= '<p style="margin:-6px 0 18px;font-size:13px;color:#555">' . implode( ' ', $sek ) . '</p>'; }
 		$sar = function( $eil ) { $l = '<ul style="margin:6px 0 14px;padding-left:20px">'; foreach ( $eil as $e ) { $l .= '<li style="margin:0 0 4px">' . esc_html( $e['q'] . ' × ' . $e['n'] ) . '</li>'; } return $l . '</ul>'; };
 		if ( $sios ) { $h .= '<p style="margin:0"><b>' . esc_html( $viso > 1 && $dalis ? 'Šioje siuntoje:' : 'Prekės:' ) . '</b></p>' . $sar( $sios ); }
 		if ( $kitos ) { $h .= '<p style="margin:0"><b>' . esc_html( 'Dar keliaus atskira siunta:' ) . '</b></p>' . $sar( $kitos ); }
