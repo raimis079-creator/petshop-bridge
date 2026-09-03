@@ -1,0 +1,90 @@
+{
+ "v": "dep-204149",
+ "kurimas": 200,
+ "sid": 4665,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run e13d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "bytes": 7459,
+  "md5": "b13362f1077cd746f9d9e760c29f2942",
+  "token": "ok",
+  "buvo": "dd636b5c7e69a6af62876810303a91ec",
+  "backup": true,
+  "rasyta": 7459,
+  "po": "b13362f1077cd746f9d9e760c29f2942",
+  "lp_buvo": {
+   "lpsettings_event_to_send_tracking_email": "wc-lp-on-the-way",
+   "lpsettings_event_to_change_status_to_completed": "wc-lp-on-the-way"
+  },
+  "lp_po": {
+   "lpsettings_event_to_send_tracking_email": "",
+   "lpsettings_event_to_change_status_to_completed": ""
+  }
+ },
+ "R": {
+  "v": "run e13d",
+  "f": "R",
+  "temp_istrinta": 0,
+  "ks": "1.1",
+  "md5": "b13362f1077cd746f9d9e760c29f2942",
+  "lp_hook_liko": false,
+  "orders_hookai": [
+   "5: Automattic\\WooCommerce\\Internal\\CustomerEmailVerification\\VerificationController::print_result_notice",
+   "10: closure"
+  ],
+  "lp": {
+   "lpsettings_event_to_send_tracking_email": "",
+   "lpsettings_event_to_change_status_to_completed": ""
+  },
+  "lp_get": [
+   "",
+   ""
+  ],
+  "uzsakymai": {
+   "code": 200,
+   "confirm_yra": false,
+   "wc_send_verification": false,
+   "eiluciu": 6,
+   "pradzia": "Užsakymas Data Statusas"
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788470013|SODf1gUdrq6yWG7nHzSpdA5bwgHew69KdnonDmhtUgU|ea4a9cd56f290891ee2031184e6ba02ba2bea91565a27f2edd1f1e673985af94"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788470013|SODf1gUdrq6yWG7nHzSpdA5bwgHew69KdnonDmhtUgU|f469c4c158e4d4f5456c6dd25e8db130162929b39b8c1b94ac5b2aadded3bd80"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788470013|SODf1gUdrq6yWG7nHzSpdA5bwgHew69KdnonDmhtUgU|3ff7d505c1e4da37169ad25f4126c4a20e8529b200a93f21aa10025d2e3f458c"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e13_uzsakymai",
+    "u": "https://dev.avesa.lt/paskyra/uzsakymai/",
+    "full": true,
+    "eval": "({tekstas:(document.querySelector('.woocommerce-MyAccount-content')||document.body).innerText.replace(/\\s+/g,' ').slice(0,400),notices:[...document.querySelectorAll('.woocommerce-info,.woocommerce-message,.woocommerce-notice')].map(x=>x.innerText.trim())})"
+   }
+  ]
+ },
+ "shots": {
+  "e13_uzsakymai": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/paskyra/uzsakymai/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "tekstas": "UŽSAKYMAS DATA STATUSAS VISO VEIKSMAI #35776 2026-09-03 Įvykdytas 44,91 € už 2 prekes UŽSAKYTI DAR KARTĄPERŽIŪRĖTISPAUSDINTI SĄSKAITĄSPAUSDINTI KVITĄSPAUSDINTI VAŽTARAŠTĮ #35440 2026-09-03 Įvykdytas 12,02 € už 3 prekes UŽSAKYTI DAR KARTĄPERŽIŪRĖTISPAUSDINTI SĄSKAITĄSPAUSDINTI KVITĄSPAUSDINTI VAŽTARAŠTĮ #35421 2026-09-02 Vykdomas 54,03 € už 3 prekes PERŽIŪRĖTISPAUSDINTI SĄSKAITĄSPAUSDINTI KVITĄSPAU",
+    "notices": []
+   }
+  }
+ }
+}
