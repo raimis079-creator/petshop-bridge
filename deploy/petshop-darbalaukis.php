@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.6 (S1608, 3 etapas — „Laukiam iš tiekėjų“ kortelės: „Užsakyti iš [T] į AV“ ir „Gauta“ čia pat) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.10 (S1609, 3 etapas #5 — sekimo laiškas klientui po kiekvienos siuntos) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -26,6 +26,19 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v3.10.2: `amzius()` — „prieš 3 val.“ ką tik atėjusiam užsakymui (radinys e6_visi): `current_time('timestamp')` yra Vilniaus „vietinis“ epoch,
+ *   o `WC_DateTime::getTimestamp()` — tikras UTC → skirtumas +3 val. Dabar lyginama su `time()`.
+ * v3.10.1 (testas #35774, VF+Prins „be lipdukų“): paskutinės dalies laiškas išeina PO `completed` (ne prieš — jei sargas sustabdo, klientas
+ *   negauna „visas užsakymas išsiųstas“); §18.3 sargo apėjimas `_ps_uzbaigti_be_siuntu=1` rašomas tik kai darbuotojas pažymėjo VISAS dalis
+ *   išsiųstomis, o registruotų siuntų mažiau nei `_ps_shipments` (dropship „be lipdukų“ — siunta pas mus neregistruojama niekada); pakartotinis
+ *   „[T] išsiuntė“, kai visos dalys jau pažymėtos, bet užsakymas ne completed — bando užbaigti iš naujo (buvo aklavietė „jau pažymėta“, eilių 0).
+ * v3.10 (3 etapas #5, spec §12 „Sekimo laiškai klientui“, Raimis 09-03 vakaras): laiškas klientui PO KIEKVIENOS siuntos, ne vienas kai
+ *   visos — „Išsiųsta 1 iš 2 siuntų“ (kita keliaus atskirai) → „Išsiųsta 2 iš 2“; vienos siuntos užsakymui — „Užsakymas išsiųstas“.
+ *   Laiške: sekimo juostelė (Užsakymas gautas · Apmokėta · Ruošiama · Išsiųsta · Pas kurjerį · Pristatyta, dabartinis — Išsiųsta),
+ *   siuntos numeris + „Sekti siuntą“ (Venipak `venipak.com/lt/tracking/track/{nr}`, LP `post.lt/siuntu-sekimas?parcels={nr}`), šios siuntos
+ *   prekės, „dar keliaus“ prekės. Viena funkcija `siuntos_laiskas()` — ją kvies ir 4 etapo Venipak cron („Picked up“); `issiusta()` vieša su
+ *   `$kanalas`. Žymė `_ps_dalys_issiusta[dalis].laiskas` (dublio sargas), `_ps_sekimo_siusta` — paskutinio laiško laikas. Dialoge varnelė
+ *   „Pranešti klientui“ prie kiekvienos siuntos (buvo tik paskutinei). Senas vieno laiško langas `ps-siuntos-laiskas` lieka Raimiui.
  * v3.9 (Raimis 09-03 / 3 etapas #4): neapmokėtas užsakymas — Gauti + Neapmokėti, ne Klausimai; skydelyje prekei be tiekėjo tiekėjo keliai
  *   nerodomi (buvo pilki „Tiekėjas siunčia klientui / veža į AV“); variklio pranešimai verčiami į žodyną (AV/VF/ZB, „užsakymas tiekėjui #n“).
  * v3.8.1: T3 — Neapmokėtų riba 300 su įspėjimu juostoje; `window.psDlAtnaujinti` (V11 patikrai).
@@ -104,7 +117,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.9';
+	const VERSIJA = '3.10.2';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -287,11 +300,11 @@ class Petshop_Darbalaukis {
 	/** Amžius darbuotojo kalba: „prieš 40 min“, „prieš 3 val.“, „vakar 17:41“, „prieš 3 d.“. */
 	protected static function amzius( $d ) {
 		if ( ! $d ) { return '—'; }
-		$s = (int) current_time( 'timestamp' ) - $d->getTimestamp();
+		$s = time() - $d->getTimestamp();
 		if ( $s < 3600 ) { return 'prieš ' . max( 1, (int) floor( $s / 60 ) ) . ' min'; }
 		$td = wp_date( 'Y-m-d' ); $dd = wp_date( 'Y-m-d', $d->getTimestamp() );
 		if ( $dd === $td ) { return 'prieš ' . (int) floor( $s / 3600 ) . ' val.'; }
-		if ( $dd === wp_date( 'Y-m-d', (int) current_time( 'timestamp' ) - DAY_IN_SECONDS ) ) { return 'vakar ' . wp_date( 'H:i', $d->getTimestamp() ); }
+		if ( $dd === wp_date( 'Y-m-d', time() - DAY_IN_SECONDS ) ) { return 'vakar ' . wp_date( 'H:i', $d->getTimestamp() ); }
 		$dienu = (int) floor( $s / DAY_IN_SECONDS );
 		return $dienu < 14 ? 'prieš ' . $dienu . ' d.' : wp_date( 'm-d', $d->getTimestamp() );
 	}
@@ -555,9 +568,10 @@ class Petshop_Darbalaukis {
 			case 'laiskas':  return array( 'zb' === $s ? 'Suvesti į ZB' : 'Užsakyti iš ' . self::vardas( $s ), self::url( array( 'eile' => 'laiskai', 'view' => null, 'q' => null, 'b' => null ) ), null, 'p', 0 );
 			case 'issiusta':
 				$dalis = $s ? $s : 'av'; $tekstas = 'av' === $dalis ? 'Kurjeris paėmė' : self::vardas( $dalis ) . ' išsiuntė';
-				$kitos = array(); $nrs = array(); foreach ( $f['dalys'] as $k => $p ) { if ( ! $p ) { continue; } if ( $k !== $dalis && empty( $p['issiusta'] ) ) { $kitos[] = self::vardas( $k ); } if ( ! empty( $p['nr'] ) ) { $nrs = array_merge( $nrs, $p['nr'] ); } }
-				$paskutine = ! $kitos;
-				return array( $tekstas, self::dl_url( 'issiusta', $id, array( 'dalis' => $dalis ) ), array( 'antraste' => $antraste, 'tekstas' => ( 'av' === $dalis ? 'Kurjeris paėmė AV siuntą' . ( ! empty( $f['dalys']['av']['nr'] ) ? ' ' . implode( ', ', $f['dalys']['av']['nr'] ) : '' ) : self::vardas( $dalis ) . ' išsiuntė savo dalį' ) . '?' . ( $paskutine ? ' Tai paskutinė dalis — užsakymas įvykdytas, klientui išeina sekimo numeriai: ' . ( $nrs ? implode( ', ', $nrs ) : 'nėra' ) . '.' : ' Dar laukiam: ' . implode( ', ', $kitos ) . ' — užsakymas lieka atviras, sekimo numeriai klientui išeis, kai išsiųstos visos dalys.' ), 'ok' => $tekstas, 'opt' => $paskutine && $nrs ? array( 'vardas' => 'sekimo', 'tekstas' => 'Siųsti klientui sekimo numerius', 'def' => 1 ) : null ), 'p', 0 );
+				$kitos = array(); $viso = 0; $jau = 0; foreach ( $f['dalys'] as $k => $p ) { if ( ! $p ) { continue; } $viso++; if ( $k !== $dalis && empty( $p['issiusta'] ) ) { $kitos[] = self::vardas( $k ); } if ( $k !== $dalis && ! empty( $p['issiusta'] ) ) { $jau++; } }
+				$paskutine = ! $kitos; $nr = ! empty( $f['dalys'][ $dalis ]['nr'] ) ? implode( ', ', $f['dalys'][ $dalis ]['nr'] ) : '';
+				$laisko_vardas = $viso > 1 ? 'Išsiųsta ' . ( $jau + 1 ) . ' iš ' . $viso . ' siuntų' : 'Užsakymas išsiųstas';
+				return array( $tekstas, self::dl_url( 'issiusta', $id, array( 'dalis' => $dalis ) ), array( 'antraste' => $antraste, 'tekstas' => ( 'av' === $dalis ? 'Kurjeris paėmė AV siuntą' . ( $nr ? ' ' . $nr : '' ) : self::vardas( $dalis ) . ' išsiuntė savo dalį' . ( $nr ? ' ' . $nr : '' ) ) . '?' . ( $paskutine ? ( $viso > 1 ? ' Tai paskutinė siunta — užsakymas įvykdytas.' : ' Užsakymas įvykdytas.' ) : ' Dar laukiam: ' . implode( ', ', $kitos ) . ' — užsakymas lieka atviras.' ) . ' Klientui išeina laiškas „' . $laisko_vardas . '“' . ( $nr ? ' su sekimo numeriu' : ' (sekimo numerio nėra)' ) . '.', 'ok' => $tekstas, 'opt' => array( 'vardas' => 'sekimo', 'tekstas' => 'Pranešti klientui', 'def' => 1 ) ), 'p', 0 );
 		}
 		return array( 'Atidaryti', '#skydelis', null, 's', 0 );
 	}
@@ -830,47 +844,122 @@ class Petshop_Darbalaukis {
 		return array( 'dl_kelias', $it->get_name() . ' → ' . self::kelio_vardas( $k, $tiek ) . ( $judesiai ? ' · likutis ' . implode( ', ', $judesiai ) : '' ) );
 	}
 
-	/** „Išsiųsta“ (I1, V3): completed be WC laiško; §18.3 sargas žmogaus kalba; sekimo laiškas klientui su visais numeriais, kai pažymėta. */
-	protected static function issiusta( $o, $u, $sekimo, $dalis = '' ) {
+	/** „Išsiųsta“ (I1, V3, K4): dalies žymė `_ps_dalys_issiusta`; completed be WC laiško, kai visos dalys; §18.3 sargas žmogaus kalba.
+	 *  #5 (spec §12): laiškas klientui PO KIEKVIENOS siuntos per `siuntos_laiskas()`, kai `$sekimo`. Vieša — 4 etapo Venipak cron kvies su
+	 *  `$u = null`, `$kanalas = 'venipak'`. Grąžina [raktas, tekstas] `pranesimas()` žodynui. */
+	public static function issiusta( $o, $u, $sekimo, $dalis = '', $kanalas = 'web' ) {
 		if ( in_array( $o->get_status(), array( 'completed', 'lp-delivered', 'lp-on-the-way' ), true ) ) { return array( 'dl_info', 'jau išsiųstas' ); }
+		$kas = $u && ! empty( $u->display_name ) ? $u->display_name : ( 'venipak' === $kanalas ? 'Venipak' : 'sistema' );
 		$f = self::faktai( $o, self::zurnalas( array( $o->get_id() ) ) );
 		if ( $dalis && empty( $f['dalys'][ $dalis ] ) ) { return array( 'dl_klaida', 'tokios dalies nėra' ); }
-		if ( $dalis && ! empty( $f['dalys'][ $dalis ]['issiusta'] ) ) { return array( 'dl_info', ( 'av' === $dalis ? 'AV dalis' : self::vardas( $dalis ) ) . ' jau pažymėta išsiųsta' ); }
-		if ( $dalis && ( 'av' === $dalis ? ! $f['dalys']['av']['siunta'] : empty( $f['dalys'][ $dalis ]['perduota'] ) ) ) { return array( 'dl_klaida', ( 'av' === $dalis ? 'AV siunta dar be lipduko' : 'dar neužsakyta iš ' . self::vardas( $dalis ) ) ); }
-		// K4: dalies būsena — pažymim šią dalį; kitos dalys — kaip yra.
 		$iss = $f['dalys_issiusta']; $dabar = current_time( 'mysql' );
-		$zym = array( $dalis ? $dalis : null ); if ( ! $dalis ) { $zym = array(); foreach ( $f['dalys'] as $k => $p ) { if ( $p ) { $zym[] = $k; } } }
-		foreach ( $zym as $k ) { if ( $k ) { $iss[ $k ] = array( 'laikas' => $dabar, 'kas' => $u->display_name, 'kanalas' => 'web' ); } }
-		$o->update_meta_data( '_ps_dalys_issiusta', wp_json_encode( $iss ) ); $o->save();
+		$jau = $dalis && ! empty( $f['dalys'][ $dalis ]['issiusta'] );
+		$visos = true; foreach ( $f['dalys'] as $k => $p ) { if ( $p && empty( $iss[ $k ] ) ) { $visos = false; } }
+		if ( $jau && ! $visos ) { return array( 'dl_info', ( 'av' === $dalis ? 'AV dalis' : self::vardas( $dalis ) ) . ' jau pažymėta išsiųsta' ); }
+		if ( ! $jau && $dalis && ( 'av' === $dalis ? ! $f['dalys']['av']['siunta'] : empty( $f['dalys'][ $dalis ]['perduota'] ) ) ) { return array( 'dl_klaida', ( 'av' === $dalis ? 'AV siunta dar be lipduko' : 'dar neužsakyta iš ' . self::vardas( $dalis ) ) ); }
+		// K4: dalies būsena — pažymim šią dalį; kitos dalys — kaip yra. Jei visos jau pažymėtos, o užsakymas ne completed — kartojam užbaigimą (v3.10.1).
+		if ( ! $jau ) {
+			$zym = array( $dalis ? $dalis : null ); if ( ! $dalis ) { $zym = array(); foreach ( $f['dalys'] as $k => $p ) { if ( $p ) { $zym[] = $k; } } }
+			foreach ( $zym as $k ) { if ( $k ) { $iss[ $k ] = array( 'laikas' => $dabar, 'kas' => $kas, 'kanalas' => $kanalas ); } }
+			$o->update_meta_data( '_ps_dalys_issiusta', wp_json_encode( $iss ) ); $o->save();
+		}
 		$truksta = array(); foreach ( $f['dalys'] as $k => $p ) { if ( $p && empty( $iss[ $k ] ) ) { $truksta[] = self::vardas( $k ); } }
+		$kam = 'av' === $dalis ? 'AV siunta' : ( $dalis ? self::vardas( $dalis ) : 'visos dalys' );
+		$laiskas = $sekimo ? '' : 'klientui nepranešta (varnelė nuimta)';
 		if ( $truksta ) {
-			$o->add_order_note( sprintf( 'Darbalaukis: %s išsiųsta (%s). Dar laukiam: %s.', 'av' === $dalis ? 'AV siunta' : self::vardas( $dalis ), $u->display_name, implode( ', ', $truksta ) ), false, true ); $o->save();
-			if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_id(), 'sritis' => 'desk', 'veiksmas' => 'issiusta_dalis', 'rezultatas' => 'ok', 'kanalas' => 'web', 'po' => array( 'dalis' => $dalis, 'zinute' => 'laukiam: ' . implode( ', ', $truksta ) ) ) ); }
+			// #5: laiškas klientui apie ŠIĄ (dalinę) siuntą.
+			if ( $sekimo ) { list( , $laiskas ) = self::siuntos_laiskas( $o, $f, $dalis, $iss ); }
+			$o->add_order_note( sprintf( 'Darbalaukis: %s išsiųsta (%s, %s). Dar laukiam: %s. %s', $kam, $kas, $kanalas, implode( ', ', $truksta ), $laiskas ), false, true ); $o->save();
+			if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_id(), 'sritis' => 'desk', 'veiksmas' => 'issiusta_dalis', 'rezultatas' => 'ok', 'kanalas' => $kanalas, 'po' => array( 'dalis' => $dalis, 'zinute' => 'laukiam: ' . implode( ', ', $truksta ) . ' · ' . $laiskas ) ) ); }
 			do_action( 'ps_juosta_isvalyti' );
-			return array( 'dl_dalis', ( 'av' === $dalis ? 'kurjeris paėmė AV siuntą' : self::vardas( $dalis ) . ' išsiuntė' ) . ' — dar laukiam: ' . implode( ', ', $truksta ) );
+			return array( 'dl_dalis', ( 'av' === $dalis ? 'kurjeris paėmė AV siuntą' : self::vardas( $dalis ) . ' išsiuntė' ) . ' — ' . $laiskas . ' · dar laukiam: ' . implode( ', ', $truksta ) );
+		}
+		// Paskutinė dalis → completed. §18.3 sargas: jei registruota mažiau siuntų nei `_ps_shipments` (dropship „be lipdukų“), o darbuotojas
+		// pažymėjo VISAS dalis išsiųstomis — variklio apėjimas `_ps_uzbaigti_be_siuntu=1` (v3.10.1).
+		$ship = (int) $o->get_meta( '_ps_shipments' ); $reg = class_exists( 'Petshop_Siuntos' ) ? Petshop_Siuntos::registruota_grupiu( $o ) : $ship;
+		if ( $ship > 1 && $reg < $ship && ! $o->get_meta( '_ps_uzbaigti_be_siuntu' ) ) {
+			$o->update_meta_data( '_ps_uzbaigti_be_siuntu', 1 );
+			$o->add_order_note( sprintf( 'Užbaigiama be registruotų siuntų (%d iš %d): visos dalys pažymėtos išsiųstomis darbalaukyje (%s).', $reg, $ship, implode( ', ', array_map( array( __CLASS__, 'vardas' ), array_keys( $iss ) ) ) ), false, true ); $o->save();
 		}
 		self::d( 'laiskai_off' );
-		$o->add_order_note( sprintf( 'Pažymėta išsiųsta darbalaukyje. Vartotojas: %s. WC laiškas klientui: NESIŲSTAS.', $u->display_name ), false, true );
+		$o->add_order_note( sprintf( 'Pažymėta išsiųsta darbalaukyje (%s, %s). WC laiškas klientui: NESIŲSTAS.', $kas, $kanalas ), false, true );
 		$o->update_status( 'completed', '' );
 		self::d( 'laiskai_on' );
 		$o = wc_get_order( $o->get_id() );
 		if ( 'completed' !== $o->get_status() ) {
-			$reg = class_exists( 'Petshop_Siuntos' ) ? Petshop_Siuntos::registruota_grupiu( $o ) : 0;
-			return array( 'dl_klaida', 'užbaigti neleido sargas — registruotos ' . (int) $reg . ' iš ' . (int) $o->get_meta( '_ps_shipments' ) . ' siuntų' );
+			return array( 'dl_klaida', 'užbaigti neleido sargas — registruotos ' . (int) $reg . ' iš ' . $ship . ' siuntų; klientui laiškas nesiųstas — pakartok, kai sutvarkyta' );
 		}
-		$laiskas = '';
-		if ( $sekimo && class_exists( 'Petshop_Siuntos' ) && Petshop_Siuntos::turi( $o->get_id() ) && $o->get_billing_email() ) {
-			$mailer = WC()->mailer();
-			$tema = sprintf( 'Jūsų užsakymo Nr. %s siuntų sekimo numeriai', $o->get_order_number() );
-			$ok = $mailer->send( $o->get_billing_email(), $tema, $mailer->wrap_message( 'Siuntų sekimo numeriai', Petshop_Siuntos::laisko_turinys( $o ) ) );
-			if ( $ok ) { $o->update_meta_data( '_ps_sekimo_siusta', current_time( 'mysql' ) ); $o->add_order_note( 'Sekimo numerių laiškas išsiųstas klientui: ' . $o->get_billing_email(), false, true ); $o->save(); $laiskas = 'klientui išsiųsti sekimo numeriai (' . $o->get_billing_email() . ')'; }
-			else { $laiskas = 'sekimo numerių išsiųsti nepavyko'; }
-		} elseif ( $sekimo ) { $laiskas = 'sekimo numeriai nesiųsti — jų nėra'; }
+		// #5: paskutinės siuntos laiškas — PO completed (v3.10.1).
+		if ( $sekimo ) { list( , $laiskas ) = self::siuntos_laiskas( $o, $f, $dalis, $iss ); }
 		if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) {
-			Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_id(), 'sritis' => 'desk', 'veiksmas' => 'issiusta', 'rezultatas' => 'ok', 'kanalas' => 'web', 'po' => array( 'status' => 'completed', 'zinute' => $laiskas ?: 'be sekimo laiško' ) ) );
+			Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_id(), 'sritis' => 'desk', 'veiksmas' => 'issiusta', 'rezultatas' => 'ok', 'kanalas' => $kanalas, 'po' => array( 'status' => 'completed', 'dalis' => $dalis, 'zinute' => $laiskas ) ) );
 		}
 		do_action( 'ps_juosta_isvalyti' );
-		return array( 'dl_issiusta', $laiskas ?: 'be sekimo numerių' );
+		return array( 'dl_issiusta', $laiskas );
+	}
+
+	/** Vežėjo sekimo nuoroda klientui. Venipak — `venipak.com/lt/tracking/track/{nr}` (formos JS, 2026-09-03), LP — `post.lt/siuntu-sekimas?parcels={nr}`. */
+	public static function sekimo_url( $vez, $nr ) {
+		$nr = trim( (string) $nr ); if ( '' === $nr ) { return ''; }
+		$u = 'lp' === $vez ? 'https://www.post.lt/siuntu-sekimas?parcels=' . rawurlencode( $nr ) : 'https://venipak.com/lt/tracking/track/' . rawurlencode( $nr );
+		return (string) apply_filters( 'ps_sekimo_url', $u, $vez, $nr );
+	}
+
+	/** #5 (spec §12, Raimis 09-03 vakaras): laiškas klientui PO KIEKVIENOS siuntos — „Išsiųsta 1 iš 2 siuntų“ / „2 iš 2“, vienai — „Užsakymas
+	 *  išsiųstas“. Ta pati funkcija 4 etapo cron'ui (Venipak „Picked up“). $f — `faktai()`, $iss — jau atnaujintas `_ps_dalys_issiusta`
+	 *  (ši dalis įskaityta). Rašo `_ps_dalys_issiusta[dalis].laiskas` (dublio sargas) ir `_ps_sekimo_siusta`. Grąžina [ok, tekstas darbuotojui]. */
+	public static function siuntos_laiskas( $o, $f, $dalis, $iss ) {
+		$el = $o->get_billing_email();
+		if ( ! $el ) { return array( false, 'klientui nepranešta — el. pašto nėra' ); }
+		if ( $dalis && ! empty( $iss[ $dalis ]['laiskas'] ) ) { return array( false, 'klientui jau pranešta apie šią siuntą (' . $iss[ $dalis ]['laiskas'] . ')' ); }
+		$dalys = array(); foreach ( $f['dalys'] as $k => $p ) { if ( $p ) { $dalys[ $k ] = $p; } }
+		$viso = count( $dalys ); $n = 0; foreach ( $dalys as $k => $p ) { if ( ! empty( $iss[ $k ] ) ) { $n++; } }
+		if ( ! $dalis ) { $n = $viso; }
+		$vardas_l = $viso > 1 ? sprintf( 'Išsiųsta %d iš %d siuntų', $n, $viso ) : 'Užsakymas išsiųstas';
+		$nr_uzs = $o->get_order_number(); $bazine = get_option( 'woocommerce_email_base_color', '#2d6a35' );
+		// Šios siuntos prekės / dar keliaus.
+		$sios = array(); $kitos = array(); $nrs = array(); $vez = 'venipak';
+		foreach ( $f['eil'] as $e ) {
+			$e_dalis = ( 'tiesiai' === $e['k'] && $e['src'] ) ? $e['src'] : 'av';
+			if ( ! $dalis || $e_dalis === $dalis ) { $sios[] = $e; } elseif ( empty( $iss[ $e_dalis ] ) ) { $kitos[] = $e; }
+		}
+		if ( $dalis ) { $nrs = (array) ( $dalys[ $dalis ]['nr'] ?? array() ); if ( 'av' === $dalis && 'lp' === $f['vez'] ) { $vez = 'lp'; } }
+		else { foreach ( $dalys as $p ) { $nrs = array_merge( $nrs, (array) ( $p['nr'] ?? array() ) ); } if ( 'lp' === $f['vez'] ) { $vez = 'lp'; } }
+		$nrs = array_values( array_unique( array_filter( array_map( 'trim', $nrs ) ) ) );
+		$vardas = trim( (string) $o->get_billing_first_name() );
+		$h  = '<p>' . esc_html( $vardas ? "Sveiki, {$vardas}," : 'Sveiki,' ) . '</p>';
+		if ( $viso <= 1 || ! $dalis ) { $h .= '<p>' . sprintf( esc_html( 'Jūsų užsakymas Nr. %s išsiųstas.' ), esc_html( $nr_uzs ) ) . '</p>'; }
+		elseif ( $n < $viso ) { $h .= '<p>' . sprintf( esc_html( 'Išsiųsta %d iš %d Jūsų užsakymo Nr. %s siuntų. %s keliaus atskirai — pranešime, kai išsiųsime.' ), $n, $viso, esc_html( $nr_uzs ), 2 === $viso ? 'Antroji siunta' : 'Kitos siuntos' ) . '</p>'; }
+		else { $h .= '<p>' . sprintf( esc_html( 'Išsiųsta %d iš %d Jūsų užsakymo Nr. %s siuntų — visas užsakymas išsiųstas.' ), $n, $viso, esc_html( $nr_uzs ) ) . '</p>'; }
+		// Sekimo juostelė (spec §12.3): dabartinis žingsnis — Išsiųsta.
+		$zingsniai = array( 'Užsakymas gautas', 'Apmokėta', 'Ruošiama', 'Išsiųsta', 'Pas kurjerį', 'Pristatyta' ); $dabar_i = 3;
+		$h .= '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:16px 0 20px;border-collapse:separate;border-spacing:3px 0"><tr>';
+		foreach ( $zingsniai as $i => $z ) { $st = $i < $dabar_i ? 'done' : ( $i === $dabar_i ? 'now' : 'todo' ); $bg = 'todo' === $st ? '#e2e2e2' : $bazine; $op = 'done' === $st ? ';opacity:.55' : '';
+			$h .= '<td valign="top" style="width:16.6%;padding:0;font-size:11px;line-height:14px;text-align:center;color:' . ( 'todo' === $st ? '#9a9a9a' : ( 'now' === $st ? esc_attr( $bazine ) : '#555' ) ) . ( 'now' === $st ? ';font-weight:700' : '' ) . '"><div style="height:6px;border-radius:3px;background:' . esc_attr( $bg ) . $op . ';margin-bottom:6px"></div>' . esc_html( $z ) . '</td>'; }
+		$h .= '</tr></table>';
+		// Siunta: numeris + „Sekti siuntą“.
+		$vez_v = 'lp' === $vez ? 'LP Express' : 'Venipak';
+		$h .= '<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="margin:0 0 18px;border:1px solid #e2e2e2;border-radius:6px"><tr><td style="padding:14px 16px">';
+		if ( $nrs ) {
+			$h .= '<p style="margin:0 0 4px;font-size:13px;color:#666">' . esc_html( count( $nrs ) > 1 ? 'Siuntų numeriai (' . $vez_v . ')' : 'Siuntos numeris (' . $vez_v . ')' ) . '</p>';
+			$h .= '<p style="margin:0 0 12px;font-size:17px;font-weight:700;letter-spacing:.5px">' . esc_html( implode( ', ', $nrs ) ) . '</p>';
+			$u = self::sekimo_url( $vez, $nrs[0] );
+			if ( $u ) { $h .= '<a href="' . esc_url( $u ) . '" style="display:inline-block;background:' . esc_attr( $bazine ) . ';color:#fff;text-decoration:none;font-weight:700;font-size:14px;padding:10px 18px;border-radius:5px">' . esc_html( 'Sekti siuntą' ) . '</a>'; }
+		} else { $h .= '<p style="margin:0;font-size:14px">' . esc_html( 'Siunta perduota vežėjui ' . $vez_v . '.' ) . '</p>'; }
+		$h .= '</td></tr></table>';
+		$sar = function( $eil ) { $l = '<ul style="margin:6px 0 14px;padding-left:20px">'; foreach ( $eil as $e ) { $l .= '<li style="margin:0 0 4px">' . esc_html( $e['q'] . ' × ' . $e['n'] ) . '</li>'; } return $l . '</ul>'; };
+		if ( $sios ) { $h .= '<p style="margin:0"><b>' . esc_html( $viso > 1 && $dalis ? 'Šioje siuntoje:' : 'Prekės:' ) . '</b></p>' . $sar( $sios ); }
+		if ( $kitos ) { $h .= '<p style="margin:0"><b>' . esc_html( 'Dar keliaus atskira siunta:' ) . '</b></p>' . $sar( $kitos ); }
+		$h .= '<p>' . esc_html( 'Gražios dienos,' ) . '<br>' . esc_html( 'petshop.lt' ) . '</p>';
+		$tema = $viso > 1 && $dalis ? sprintf( 'Užsakymas Nr. %s — išsiųsta %d iš %d siuntų', $nr_uzs, $n, $viso ) : sprintf( 'Jūsų užsakymas Nr. %s išsiųstas', $nr_uzs );
+		$mailer = WC()->mailer();
+		$ok = $mailer->send( $el, $tema, $mailer->wrap_message( $vardas_l, $h ) );
+		if ( ! $ok ) { return array( false, 'laiško klientui išsiųsti nepavyko' ); }
+		$dabar = current_time( 'mysql' );
+		if ( $dalis ) { $iss[ $dalis ]['laiskas'] = $dabar; } else { foreach ( $iss as $k => $x ) { $iss[ $k ]['laiskas'] = $dabar; } }
+		$o->update_meta_data( '_ps_dalys_issiusta', wp_json_encode( $iss ) ); $o->update_meta_data( '_ps_sekimo_siusta', $dabar );
+		$o->add_order_note( 'Klientui išsiųsta „' . $vardas_l . '“ (' . $el . ')' . ( $nrs ? ': ' . implode( ', ', $nrs ) : ' — be sekimo numerio' ), false, true ); $o->save();
+		return array( true, 'klientui išėjo „' . $vardas_l . '“' . ( $nrs ? '' : ' be sekimo numerio' ) );
 	}
 
 	/** „Surūšiuota — į darbą“: keliai įrašomi, `_ps_rusiuota`; į partiją NEDEDA (A7). */
@@ -1345,15 +1434,15 @@ class Petshop_Darbalaukis {
 			foreach ( $av as $r ) { $o = $r['o']; $visi[] = $r['id']; $kitos = array(); foreach ( $r['tiesiai'] as $s ) { if ( empty( $r['dalys'][ $s ]['issiusta'] ) ) { $kitos[] = self::vardas( $s ); } }
 				echo '<tr class="eil" data-id="' . (int) $r['id'] . '" data-sk="1"><td><span class="nr">#' . esc_html( $o->get_order_number() ) . '</span>' . ( ! empty( $r['naujas'] ) ? ' <b class="dl-nz" title="dar neatidarytas">N</b>' : '' ) . '<br><span class="pilkas maz">' . esc_html( trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ) ) . '</span></td><td>' . esc_html( self::d( 'vezejo_vardas', $o ) ) . '<br><span class="pilkas maz">' . esc_html( implode( ', ', $r['dalys']['av']['nr'] ) ) . ( Petshop_Desk::pakuociu( $o ) > 1 ? ' · ' . Petshop_Desk::pakuociu( $o ) . ' dėž.' : '' ) . ( $kitos ? ' · kita dalis: ' . esc_html( implode( ', ', $kitos ) ) : '' ) . '</span></td><td class="d">' . ( 'lp' !== $r['vez'] ? '<a class="v t" href="' . esc_url( self::lipduko_url( $r['id'] ) ) . '">Lipdukas</a> ' : '' ) . self::btn_html( self::mygtukas( array( 'issiusta', '', 'now', 'av', 'issiusta' ), $r ) ) . '</td></tr>'; }
 			echo '</tbody></table><div class="dl-zingsniai-k">';
-			echo '<a class="v p" href="' . esc_url( self::dl_url( 'issiusta', 0, array( 'ids' => implode( ',', $visi ), 'dalis' => 'av', 'sekimo' => 1 ) ) ) . '" data-d="' . esc_attr( wp_json_encode( array( 'antraste' => 'Kurjeris paėmė viską', 'tekstas' => 'Kurjeris paėmė visas ' . count( $visi ) . ' AV siuntas? Užsakymai, kurių visos dalys išsiųstos, taps įvykdyti ir klientams išeis sekimo numeriai; kiti lauks tiekėjų.', 'ok' => 'Kurjeris paėmė viską' ) ) ) . '">Kurjeris paėmė viską</a>';
+			echo '<a class="v p" href="' . esc_url( self::dl_url( 'issiusta', 0, array( 'ids' => implode( ',', $visi ), 'dalis' => 'av', 'sekimo' => 1 ) ) ) . '" data-d="' . esc_attr( wp_json_encode( array( 'antraste' => 'Kurjeris paėmė viską', 'tekstas' => 'Kurjeris paėmė visas ' . count( $visi ) . ' AV siuntas? Klientams išeina laiškai su sekimo numeriais; užsakymai, kurių visos siuntos išsiųstos, taps įvykdyti, kiti lauks tiekėjų.', 'ok' => 'Kurjeris paėmė viską' ) ) ) . '">Kurjeris paėmė viską</a>';
 			foreach ( array_keys( $man ) as $m ) { echo '<a class="v t" href="' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=ps_desk_veiksmas&v=vp_manifestas&id=0&kodas=' . rawurlencode( $m ) ), 'ps_desk_vp_manifestas_0' ) ) . '" target="_blank">Kurjerio sąrašas</a>'; }
-			echo '</div><p class="pastaba">Kai išsiųstos visos užsakymo dalys — užsakymas įvykdytas ir klientui išeina sekimo numeriai.</p></div>';
+			echo '</div><p class="pastaba">Po kiekvienos siuntos klientui išeina laiškas su sekimo numeriu; kai išsiųstos visos — užsakymas įvykdytas.</p></div>';
 		}
 		foreach ( $tk as $s => $rs ) {
 			echo '<div class="dl-kortele"><h2>' . esc_html( self::vardas( $s ) ) . ' — užsakyta, laukiam, kol išsiųs <span class="pilkas">· ' . count( $rs ) . ' užs.</span></h2><table class="dl-tbl dl-tbl-k"><tbody>';
 			foreach ( $rs as $r ) { $o = $r['o']; $kitos = array(); foreach ( $r['dalys'] as $k2 => $p2 ) { if ( $p2 && $k2 !== $s && empty( $p2['issiusta'] ) ) { $kitos[] = self::vardas( $k2 ); } }
 				echo '<tr class="eil" data-id="' . (int) $r['id'] . '" data-sk="1"><td><span class="nr">#' . esc_html( $o->get_order_number() ) . '</span><br><span class="pilkas maz">' . esc_html( trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ) ) . '</span></td><td><span class="pilkas maz">užsakyta ' . esc_html( wp_date( 'm-d H:i', strtotime( $r['dalys'][ $s ]['kada'] ) ) ) . ( ! empty( $r['dalys'][ $s ]['nr'] ) ? ' · ' . esc_html( implode( ', ', $r['dalys'][ $s ]['nr'] ) ) : '' ) . ( $kitos ? ' · kita dalis: ' . esc_html( implode( ', ', $kitos ) ) : '' ) . '</span></td><td class="d">' . self::btn_html( self::mygtukas( array( 'issiusta', '', 'now', $s, 'issiusta' ), $r ) ) . '</td></tr>'; }
-			echo '</tbody></table><p class="pastaba">Kai tiekėjas praneša, kad išsiuntė — pažymi; klientui išeina sekimo numeris.</p></div>';
+			echo '</tbody></table><p class="pastaba">Kai tiekėjas praneša, kad išsiuntė — pažymi; klientui išeina laiškas su sekimo numeriu.</p></div>';
 		}
 		if ( ! $av && ! $tk ) { echo '<div class="dl-tuscia">Čia tuščia.</div>'; }
 	}
@@ -1435,7 +1524,7 @@ class Petshop_Darbalaukis {
 			array( 'Užsakyti iš tiekėjų į AV', $c['laukiam'], 'kas neužsakyta — „Užsakyti iš … į AV“ čia pat; kas užsakyta — laukiam', 'laukiam', 'Atidaryti' ),
 			array( 'Surinkti AV', $c['surinkti'], 'visos AV siuntos prekės vietoje — lapai (galima visus vienu lapu)', 'surinkti', 'Surinkti' ),
 			array( 'Lipdukai AV siuntoms', $lip_av, 'surinkta, be lipduko · Venipak ' . $r_av . ' · LP Express ' . $r_lp . ' (LP lipdukas — dar per seną eigą, formavimas iškviečia kurjerį)', 'surinkti', 'Lipdukai' ),
-			array( 'Kurjeris paėmė / tiekėjai išsiuntė', $c['paruosta'], 'klientams išeina sekimo numeriai', 'paruosta', 'Atidaryti' ),
+			array( 'Kurjeris paėmė / tiekėjai išsiuntė', $c['paruosta'], 'po kiekvienos siuntos klientui išeina laiškas', 'paruosta', 'Atidaryti' ),
 			array( 'Gavimai', $gav, 'užsakymai tiekėjams, kurie atvažiavo — „Gauta“ eilėje „Laukiam iš tiekėjų“', 'laukiam', 'Atidaryti' ),
 			array( 'Klausimai', $c['klausimai'], 'reikia tavo sprendimo', 'klausimai', 'Atidaryti' ),
 		);
