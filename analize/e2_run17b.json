@@ -1,0 +1,138 @@
+{
+ "v": "dep-115504",
+ "kurimas": 200,
+ "sid": 4577,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run17b",
+  "f": "D",
+  "buvo": "d8d4f1bed6c18f59b200b5734798b8d6",
+  "deploy": {
+   "bytes": 134429,
+   "md5": "de490a9959a10d1e738fbee3376c6337"
+  }
+ },
+ "T": {
+  "v": "run17b",
+  "f": "T",
+  "versija": "3.1",
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788440207|yNKZDzuNKF6zKNngUJiAKFZdcYw7yBbzxTiLpPlF579|dde1250a2f33d46c940b098cb286442212401004d299f0d74fdbe079ae66798a"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788440207|yNKZDzuNKF6zKNngUJiAKFZdcYw7yBbzxTiLpPlF579|eb4af8140b89c7ad380571b50b0a084b6909e9322eb6ff57cd39eec2c9308d01"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788440207|yNKZDzuNKF6zKNngUJiAKFZdcYw7yBbzxTiLpPlF579|6a92a2d0075522fe88292585132e8374654572224804bc3789dc5bc2f286823b"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e2m_gauti",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=siandien",
+    "h": 800,
+    "eval": "({eiles:[...document.querySelectorAll('.dl-eiles a, .dl-eiles button')].map(function(x){return x.innerText.replace(/\\s+/g,' ')}).join(' | ').slice(0,300), n:document.querySelectorAll('.dl-nz').length, head:[...document.querySelectorAll('th')].map(function(t){return t.innerText}).join(' | ')})"
+   },
+   {
+    "n": "e2m_gauti_klik",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=siandien",
+    "click": "tr.eil",
+    "eval": "new Promise(function(r){setTimeout(function(){r({kur:(document.querySelector('.dl-kur')||{}).textContent, n_po:document.querySelectorAll('.dl-nz').length, ist:(document.getElementById('skZur')||{}).innerText.slice(0,80)})},1500)})"
+   },
+   {
+    "n": "e2m_gauti_po",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=siandien",
+    "eval": "({n:document.querySelectorAll('.dl-nz').length, rows:document.querySelectorAll('tr.eil').length})"
+   },
+   {
+    "n": "e2m_visi",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+    "h": 900,
+    "eval": "({bus:[...document.querySelectorAll('.dl-b')].map(function(b){return b.textContent}).join(',').slice(0,200)})"
+   },
+   {
+    "n": "e2m_laiskai",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+    "h": 700,
+    "eval": "({h2:[...document.querySelectorAll('h2')].map(function(h){return h.innerText}).join(' | ').slice(0,200), btn:[...document.querySelectorAll('.dl-zingsniai-k button.v, .dl-zingsniai-k a.v')].map(function(b){return b.innerText}).join(' | ').slice(0,300)})"
+   },
+   {
+    "n": "e2m_surinkti",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+    "h": 700,
+    "eval": "({kel:[...document.querySelectorAll('.dl-it .kel')].map(function(b){return b.innerText}).slice(0,6).join(' | '), amz:[...document.querySelectorAll('td .pilkas.maz')].slice(0,3).map(function(x){return x.innerText}).join(' | ')})"
+   }
+  ]
+ },
+ "shots": {
+  "e2m_gauti": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=siandien",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "eiles": "Gauti 21 | Neišrūšiuoti 1 | Laukiam iš tiekėjų 1 | Surinkti AV 10 | Užsakyti iš tiekėjų 9 | Paruošta siųsti 4 | Klausimai 2 | Neapmokėti 0 | Visi 33",
+    "n": 21,
+    "head": "Užsakymas | Prekės | Kur dabar | Toliau"
+   }
+  },
+  "e2m_gauti_klik": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=siandien",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "tr.eil",
+   "eval": {
+    "kur": "Dabar: Neišrūšiuoti · toliau: Rūšiuoti",
+    "n_po": 20,
+    "ist": "09-03 13:12 · Rai — Pažymėta apmokėtu: būsena on-hold → processing · laiškai: te"
+   }
+  },
+  "e2m_gauti_po": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=siandien",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "n": 20,
+    "rows": 20
+   }
+  },
+  "e2m_visi": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "bus": "Neišrūšiuotas,Ruošiamas,Paruoštas,Ruošiamas,Įvykdytas,Įvykdytas,Ruošiamas,Ruošiamas,Ruošiamas,Atšauktas,Atšauktas,Ruošiamas,Atšauktas,Ruošiamas,Paruoštas,Įvykdytas,Įvykdytas,Ruošiamas,Ruošiamas,Atšauk"
+   }
+  },
+  "e2m_laiskai": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "h2": "Užsakyti iš ZB\n· 1 užs. · po 09:00 — rytoj | Užsakyti iš Belacor\n· 1 užs. · po 09:00 — rytoj | Užsakyti iš Quattro\n· 1 užs. · po 09:00 — rytoj | Užsakyti iš Ambrosia\n· 6 užs. · po 10:00 — rytoj | Užsa",
+    "btn": "Lipdukai (1) | Suvesta (1) | Lipdukai (1) | Užsakyti iš Belacor (1 užs.) | Peržiūrėti laišką | Užsakyti be lipdukų | Lipdukai (1) | Užsakyti iš Quattro (1 užs.) | Peržiūrėti laišką | Užsakyti be lipdukų | Lipdukai (5) | Užsakyti iš Ambrosia (6 užs.) | Peržiūrėti laišką | Užsakyti be lipdukų | Lipduk"
+   }
+  },
+  "e2m_surinkti": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "kel": "Iš AV | Quattro veža į AV | Prins siunčia klientui | Iš AV | Quattro siunčia klientui | Ambrosia siunčia klientui",
+    "amz": "vakar 17:41 | · Venipak kurjeris, Vilnius · 54,03 € | gauta · partija #10"
+   }
+  }
+ }
+}
