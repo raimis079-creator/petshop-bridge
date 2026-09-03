@@ -1,0 +1,85 @@
+{
+ "v": "dep-082513",
+ "kurimas": 200,
+ "sid": 4560,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "run8",
+  "temp_istrinta": 2,
+  "1_surinkti_btn": [
+   [
+    "Lipdukas",
+    "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_desk_veiksmas&v=vp_reg&id=35437&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26eile%3Dsurinkti&_wpnonce=e6e056160c&ids=35437&sandelis=av"
+   ]
+  ],
+  "2_lipdukas": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-desk",
+    "eile": "surinkti",
+    "pd_ok": "vp_ok",
+    "pd_nr": "1 · AV"
+   }
+  },
+  "2_po": {
+   "st": "processing",
+   "siuntos": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260903001\",\"numeriai\":[\"V07267E1000048\"],\"data\":\"2026-09-03 11:26:39\"}}"
+  },
+  "3_surinkti_dar": "eilutės nėra",
+  "3_paruosta_btn": [
+   [
+    "Lipdukas PDF",
+    "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dropship_lipdukas&id=35437&_wpnonce=d32e48de54"
+   ],
+   [
+    "Išsiųsta",
+    "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=issiusta&id=35437&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26eile%3Dparuosta%26atidaryti%3D35437&_wpnonce=ca2f557289"
+   ]
+  ],
+  "4_pdf": [
+   200,
+   "application/pdf",
+   102102,
+   "%PDF-"
+  ],
+  "5_issiusta": {
+   "code": 302,
+   "ct": "text/html",
+   "loc": {
+    "page": "ps-desk",
+    "eile": "paruosta",
+    "pd_ok": "dl_issiusta",
+    "pd_nr": "35437|sekimo laiškas išsiųstas terra@petshop.lt"
+   }
+  },
+  "5_po": {
+   "st": "completed",
+   "sekimo": "2026-09-03 11:26:45"
+  },
+  "6_visi_siandien": {
+   "code": 200,
+   "ct": "text/html; charset=UTF-8",
+   "len": 256834
+  },
+  "mail": [
+   [
+    "11:26:45",
+    "terra@petshop.lt",
+    "Jūsų užsakymo Nr. 35437 siuntų sekimo numeriai",
+    "run8"
+   ]
+  ],
+  "zurnalas": [
+   "09-03 11:26 · Testuotojas — Išsiųsta",
+   "09-03 11:26 · Testuotojas — Būsena processing → completed · WooCommerce",
+   "09-03 11:26 · Testuotojas — Lipdukas atsisiųstas: PDF",
+   "09-03 11:26 · Testuotojas — Lipdukas (Venipak registracija): siuntos +{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260903001\",\"numeriai\":[\"V07267E1000048\"],\"data\":\"2026-09-03 11:26:39\"}} · vp_ok 1 · AV",
+   "09-03 11:08 · Testuotojas — Surinkti (surinkimo lapas)",
+   "09-03 11:07 · auto — Apmokėta · keliai: #860 av · MAIN"
+  ]
+ }
+}
