@@ -1,0 +1,288 @@
+{
+ "v": "dep-155340",
+ "kurimas": 200,
+ "sid": 4606,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Z": {
+  "v": "run e3s",
+  "f": "Z",
+  "temp_istrinta": 1,
+  "oid": 35450,
+  "uzsakyti_zb": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "eile": "laukiam",
+    "pd_ok": "dl_uzsak_av",
+    "pd_nr": "#35450|užsakymas tiekėjui #15 uždarytas — laiško nėra, sąrašą suvesk į ZB sistemą („Kopijuoti“ kortelėje)"
+   }
+  },
+  "po_uzs": {
+   "st": "processing",
+   "rus": "2026-09-03 18:51:18 | Testuotojas",
+   "eiles": [
+    "laukiam"
+   ],
+   "btn": "Laukiam iš ZB",
+   "eil": [
+    "1x Animonda Carny Adult B [av/av]  lock=",
+    "1x Trixie Stovas su duben [i_av/zb] užsakyta · užsakymas tiekėjui #15 lock=jau užsakyta iš ZB (užsakymas tiekėjui #15)",
+    "1x HAP žaislas šunims, pl [av/av]  gauta<vf lock="
+   ],
+   "av": {
+    "siunta": false,
+    "nr": [],
+    "lapas": false,
+    "vietoje": false,
+    "issiusta": false
+   },
+   "takelis": "surūšiuota:done | užsakyta iš VF:done | gauta į AV:done | užsakyta iš ZB į AV:done | laukiam iš ZB:wait | surinkti:todo | lipdukas:todo | kurjeris paėmė:todo",
+   "shipments": "2",
+   "type": "MIXED",
+   "notes": [
+    "Tiekimas: partija #15 uždaryta — užsakymas suvedamas rankiniu būdu į Žalioji Banga sistemą. Kelias į AV: Tiekėjas atveža pats. Laukiam.",
+    "Tiekimas: „Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas, 2x1.8 l, ø 21 cm“ (1 vnt) įtraukta į Žalioji Banga partiją #1",
+    "Tiekimas: visos prekės gautos (partija #14). Užsakymas paruoštas surinkimui iš AV. Į AV perkeltos eilutės: HAP žaislas šunims, pliušinė varl",
+    "Tiekimas: prekės užsakytos iš Vetfarmas (partija #14). Kelias į AV: Tiekėjas atveža pats. Laukiam."
+   ]
+  },
+  "lauk_txt_po_uzs": "Gauti 7Neišrūšiuoti 1Laukiam iš tiekėjų 2Surinkti AV 10Dropshipping 12Paruošta siųsti 4Klausimai 3Neapmokėti 0Visi 36Filtrai ▾Iš kur: visiTik iš AVTik iš tiekėjųAV + tiekėjasPagal tiekėją: VFPagal tiekėją: ZBPagal tiekėją: QuattroPagal tiekėją: PrinsPagal tiekėją: AmbrosiaPagal tiekėją: BelacorPristatymas: visiVenipak kurjerisVenipak paštomatasLP ExpressData: visosŠiandienVakarŠi savaitėŠis mėnuoPraeitas mėnuoRikiuoti:skubiausi pirminaujausi pirmisumatiekėjasklientasZB · 1 užs. · po 09:00 — rytojUžsakyta 09-03 18:55 · užsakymas tiekėjui #15 · Tiekėjas atveža pats#35450 NAUDITAS Testas 311× Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas, 2x1.8 l, ø 21 cm 0TR163_24921Gauta galioja iki Kopijuotisąrašas suvedimui į ZB sistemąGautaVF · 1 užs. · po 13:00 — rytojUžsakyti iš VF į AV#35090Sart tr1× 691756 FURminator deShedding šampūnas šunims, 473 ml 404842215351 · neužsakytaKaip atkeliaus į AV: Venipak paštomatas (Nemenčinė) Venipak kurjeris į AV Tiekėjas atveža patssvoris kgdėžių Užsakyti iš VF į AV (1 prek.) Peržiūrėti laišką Kartu su Dropshipping (5 užs.) siųsti tiekėjui (ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt) kopija manLaba diena,prašome paruošti šias prekes.UAB Avesa, Liucionių g. 46691756 FURminator deShedding šampūnas šunims, 473 ml 4048422153511 vnt.1 dėžė — lipdukai bus priede.Ačiū,UAB Avesa · petshop.ltterra@petshop.lt",
+  "zb_partija": "15",
+  "gauta_zb": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "eile": "laukiam",
+    "pd_ok": "dl_gauta",
+    "pd_nr": "#35450|gauta į AV iš ZB (užsakymas tiekėjui #15) — likučiai papildyti"
+   }
+  },
+  "po": {
+   "st": "processing",
+   "rus": "2026-09-03 18:51:18 | Testuotojas",
+   "eiles": [
+    "surinkti"
+   ],
+   "btn": "Surinkti",
+   "eil": [
+    "1x Animonda Carny Adult B [av/av]  lock=",
+    "1x Trixie Stovas su duben [av/av]  gauta<zb lock=",
+    "1x HAP žaislas šunims, pl [av/av]  gauta<vf lock="
+   ],
+   "av": {
+    "siunta": false,
+    "nr": [],
+    "lapas": false,
+    "vietoje": true,
+    "issiusta": false
+   },
+   "takelis": "surūšiuota:done | užsakyta iš ZB:done | gauta į AV:done | užsakyta iš VF:done | gauta į AV:done | surinkti:now | lipdukas:todo | kurjeris paėmė:todo",
+   "shipments": "1",
+   "type": "MAIN",
+   "notes": [
+    "Tiekimas: visos prekės gautos (partija #15). Užsakymas paruoštas surinkimui iš AV. Į AV perkeltos eilutės: Trixie Stovas su dubenėliais, reg",
+    "Tiekimas: partija #15 uždaryta — užsakymas suvedamas rankiniu būdu į Žalioji Banga sistemą. Kelias į AV: Tiekėjas atveža pats. Laukiam.",
+    "Tiekimas: „Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas, 2x1.8 l, ø 21 cm“ (1 vnt) įtraukta į Žalioji Banga partiją #1",
+    "Tiekimas: visos prekės gautos (partija #14). Užsakymas paruoštas surinkimui iš AV. Į AV perkeltos eilutės: HAP žaislas šunims, pliušinė varl"
+   ]
+  },
+  "partijos": [
+   {
+    "id": "12",
+    "tiekejas": "quattro",
+    "busena": "kaupiama",
+    "pristatymas": "pastomatas",
+    "dezes": "1",
+    "venipak_pack": null,
+    "eil": null
+   },
+   {
+    "id": "13",
+    "tiekejas": "prins",
+    "busena": "gauta",
+    "pristatymas": "tiekejas",
+    "dezes": "1",
+    "venipak_pack": null,
+    "eil": "20:16889x1/1#35439"
+   },
+   {
+    "id": "14",
+    "tiekejas": "vf",
+    "busena": "gauta",
+    "pristatymas": "tiekejas",
+    "dezes": "1",
+    "venipak_pack": null,
+    "eil": "21:35357x1/1#35450"
+   },
+   {
+    "id": "15",
+    "tiekejas": "zb",
+    "busena": "gauta",
+    "pristatymas": "tiekejas",
+    "dezes": "1",
+    "venipak_pack": null,
+    "eil": "22:33902x1/1#35450"
+   }
+  ],
+  "lauk_txt": "Gauti 7Neišrūšiuoti 1Laukiam iš tiekėjų 1Surinkti AV 11Dropshipping 12Paruošta siųsti 4Klausimai 3Neapmokėti 0Visi 36Filtrai ▾Iš kur: visiTik iš AVTik iš tiekėjųAV + tiekėjasPagal tiekėją: VFPagal tiekėją: ZBPagal tiekėją: QuattroPagal tiekėją: PrinsPagal tiekėją: AmbrosiaPagal tiekėją: BelacorPristatymas: visiVenipak kurjerisVenipak paštomatasLP ExpressData: visosŠiandienVakarŠi savaitėŠis mėnuoPraeitas mėnuoRikiuoti:skubiausi pirminaujausi pirmisumatiekėjasklientasVF · 1 užs. · po 13:00 — rytojUžsakyti iš VF į AV#35090Sart tr1× 691756 FURminator deShedding šampūnas šunims, 473 ml 404842215351 · neužsakytaKaip atkeliaus į AV: Venipak paštomatas (Nemenčinė) Venipak kurjeris į AV Tiekėjas atveža patssvoris kgdėžių Užsakyti iš VF į AV (1 prek.) Peržiūrėti laišką Kartu su Dropshipping (5 užs.) siųsti tiekėjui (ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt) kopija manLaba diena,prašome paruošti šias prekes.UAB Avesa, Liucionių g. 46691756 FURminator deShedding šampūnas šunims, 473 ml 4048422153511 vnt.1 dėžė — lipdukai bus priede.Ačiū,UAB Avesa · petshop.ltterra@petshop.lt",
+  "lapas_txt": {
+   "code": 302,
+   "loc": {
+    "page": "ps-lapai"
+   }
+  },
+  "zurnalas": [
+   {
+    "laikas": "2026-09-03 15:51:06",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": "mokėjimas / svetainė"
+   },
+   {
+    "laikas": "2026-09-03 15:51:06",
+    "sritis": "wc",
+    "veiksmas": "apmokejimas",
+    "rezultatas": "ok",
+    "kanalas": "auto",
+    "kas_vardas": "Testuotojas",
+    "pastaba": "keliai: #891 av, #892 zb, #893 vf · MIXED"
+   },
+   {
+    "laikas": "2026-09-03 15:51:16",
+    "sritis": "desk",
+    "veiksmas": "kelias",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": "Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-m: ZB siunčia klientui → ZB veža į AV"
+   },
+   {
+    "laikas": "2026-09-03 15:51:17",
+    "sritis": "desk",
+    "veiksmas": "kelias",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": "HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm: VF siunčia klientui → VF veža į AV"
+   },
+   {
+    "laikas": "2026-09-03 15:51:18",
+    "sritis": "desk",
+    "veiksmas": "rusiuoti",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": null
+   },
+   {
+    "laikas": "2026-09-03 15:53:04",
+    "sritis": "desk",
+    "veiksmas": "kons",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": "HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm → užsakymas tiekėjui #14"
+   },
+   {
+    "laikas": "2026-09-03 15:53:04",
+    "sritis": "tiekimas",
+    "veiksmas": "uzsakyti",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": null
+   },
+   {
+    "laikas": "2026-09-03 15:53:13",
+    "sritis": "tiekimas",
+    "veiksmas": "priimti",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": null
+   },
+   {
+    "laikas": "2026-09-03 15:55:22",
+    "sritis": "desk",
+    "veiksmas": "kons",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": "Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-m → užsakymas tiekėjui #15"
+   },
+   {
+    "laikas": "2026-09-03 15:55:22",
+    "sritis": "tiekimas",
+    "veiksmas": "uzsakyti",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": null
+   },
+   {
+    "laikas": "2026-09-03 15:55:25",
+    "sritis": "tiekimas",
+    "veiksmas": "priimti",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": null
+   },
+   {
+    "laikas": "2026-09-03 15:55:27",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": null
+   }
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788452721|QVJ8ry6ELA24q3XbPlhHtXInm7lWOBZzXowQZId0bM3|1df1b30c3f6510f18021d0d360c6e0b5a55a86d2a10fabe2a3bc88f79364de55"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788452721|QVJ8ry6ELA24q3XbPlhHtXInm7lWOBZzXowQZId0bM3|d278925587d4a8552436a98dda85801bef55163edbffe54d0385c481cc6c1176"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788452721|QVJ8ry6ELA24q3XbPlhHtXInm7lWOBZzXowQZId0bM3|6c3eeb1e3028b996647dda0879c0cfff29ea0b4b969cc14afa68203680df2849"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e3_t2_surinkti",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti&atidaryti=35450",
+    "eval": "new Promise(function(r){setTimeout(function(){r({kur:(document.querySelector('.dl-kur')||{}).textContent,zing:[...document.querySelectorAll('#skEil .zingsneliai')].map(x=>x.innerText.replace(/\\s+/g,' ')),eil:[...document.querySelectorAll('tr.eil[data-id=\"35450\"] td')].map(x=>x.innerText.replace(/\\s+/g,' ')).join(' || ')})},1200)})"
+   },
+   {
+    "n": "e3_t2_laukiam_po",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+    "eval": "({tuscia:(document.querySelector('.dl-tuscia')||{}).innerText,h2:[...document.querySelectorAll('.dl-kortele h2')].map(x=>x.innerText)})"
+   }
+  ]
+ },
+ "shots": {
+  "e3_t2_surinkti": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti&atidaryti=35450\", waiting until \"networkidle\"\n",
+  "e3_t2_laukiam_po": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "h2": [
+     "VF\n· 1 užs. · po 13:00 — rytoj"
+    ]
+   }
+  }
+ }
+}
