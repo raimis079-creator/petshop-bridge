@@ -1,0 +1,71 @@
+{
+ "v": "dep-131403",
+ "kurimas": 200,
+ "sid": 4587,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run23b",
+  "f": "D",
+  "buvo": "5cf59191bed55686ed6dbeb0646e915f",
+  "deploy": {
+   "bytes": 138592,
+   "md5": "6ddf36b89089bf87281d58d47ce4f8fe"
+  }
+ },
+ "T": {
+  "v": "run23b",
+  "f": "T",
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788444951|eKmHju27xfzjvm5FbUe0SVJfGOtlJsZpwSFVnggDY5d|def2663d50108555a3c1a208dd0b5d95ee27f6f5224bdf3590b516de2d27e5a1"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788444951|eKmHju27xfzjvm5FbUe0SVJfGOtlJsZpwSFVnggDY5d|0704b321d0eb6eddf6c8a77be1ec8f874dbe8e4c843db07ba556be7f8847ca72"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788444951|eKmHju27xfzjvm5FbUe0SVJfGOtlJsZpwSFVnggDY5d|df6ff9142dc783626491e6aad0356249b4850599f2a2c5cf1a630218b7d6d48c"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e2p_surinkti",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+    "h": 700,
+    "eval": "({imgs:document.querySelectorAll('.dl-img-s').length})"
+   },
+   {
+    "n": "e2p_skydelis",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+    "click": "tr.eil",
+    "eval": "new Promise(function(r){setTimeout(function(){r({imgs:document.querySelectorAll('#skEil .dl-img').length})},800)})"
+   }
+  ]
+ },
+ "shots": {
+  "e2p_surinkti": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "imgs": 22
+   }
+  },
+  "e2p_skydelis": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "tr.eil",
+   "eval": {
+    "imgs": 3
+   }
+  }
+ }
+}
