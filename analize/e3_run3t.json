@@ -1,0 +1,177 @@
+{
+ "v": "dep-154150",
+ "kurimas": 200,
+ "sid": 4602,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "run e3t",
+  "f": "R",
+  "temp_istrinta": 1,
+  "versija": "3.6",
+  "md5": "8f93c441606a23ab67314c4f755a15aa",
+  "partijos": [
+   {
+    "id": "12",
+    "tiekejas": "quattro",
+    "busena": "kaupiama",
+    "pristatymas": "pastomatas",
+    "svoris": null,
+    "dezes": "1",
+    "venipak_pack": null,
+    "n": "0",
+    "uzs": null
+   }
+  ],
+  "laukiam": {
+   "35090": {
+    "st": "processing",
+    "rus": "2026-08-26 16:50:32 | Rai",
+    "eiles": [
+     "laukiam",
+     "laiskai"
+    ],
+    "eil": [
+     "1x AMBROSIA begrūdis su ėrie [tiesiai/ambrosia] ",
+     "1x 691756 FURminator deShedd [i_av/vf] neužsakyta",
+     "1x Hikari  Cichlid Excel Min [av/av] "
+    ]
+   }
+  },
+  "eiles_sk": {
+   "nauji": 1,
+   "laiskai": 12,
+   "surinkti": 10,
+   "paruosta": 4,
+   "klausimai": 3,
+   "laukiam": 1
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788452046|hlSuDJzpoQriUkOxwqNXhHlhFWm3LWYfNjOyKXYxnPB|985e1c20176ef16103ea10410de6d0015538a1abc22c647892bf60c4808472d1"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788452046|hlSuDJzpoQriUkOxwqNXhHlhFWm3LWYfNjOyKXYxnPB|8561578f1e2a570f6052857144f0d2b4630ba1a608bddbe1a730bf38e6145ba3"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788452046|hlSuDJzpoQriUkOxwqNXhHlhFWm3LWYfNjOyKXYxnPB|a049f6cac6712bf0d0123fd07109807e5beb3f9b1a3cf09d1ceb711368d61367"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e3_laukiam",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+    "full": true,
+    "eval": "({h2:[...document.querySelectorAll('.dl-kortele h2')].map(x=>x.innerText.replace(/\\s+/g,' ')),h3:[...document.querySelectorAll('.dl-tk-blk h3')].map(x=>x.innerText.replace(/\\s+/g,' ')),btn:[...document.querySelectorAll('.dl-zingsniai-k button,.dl-zingsniai-k a')].map(x=>x.innerText.trim()).filter(Boolean),msg:(document.querySelector('.pd-msg')||{}).innerText,eiles:(document.querySelector('.dl-eiles')||{}).innerText})"
+   },
+   {
+    "n": "e3_laukiam_perz",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+    "click": ".dl-perz",
+    "eval": "({perz:(document.querySelector('.dl-perz-t')||{}).innerText})"
+   },
+   {
+    "n": "e3_laukiam_sk",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+    "click": "tr.eil",
+    "eval": "new Promise(function(r){setTimeout(function(){r({kur:(document.querySelector('.dl-kur')||{}).textContent,zing:[...document.querySelectorAll('#skEil .zingsneliai')].map(x=>x.innerText.replace(/\\s+/g,' ')),tiek:[...document.querySelectorAll('#skEil .kodel a')].map(a=>a.innerText+' '+a.getAttribute('href'))})},1200)})"
+   },
+   {
+    "n": "e3_rytas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas",
+    "eval": "({z:[...document.querySelectorAll('.dl-z')].map(x=>x.innerText.replace(/\\s+/g,' ')),urls:[...document.querySelectorAll('.dl-z a')].map(a=>a.getAttribute('href'))})"
+   },
+   {
+    "n": "e3_laukiam_mob",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+    "w": 420,
+    "h": 900
+   }
+  ]
+ },
+ "shots": {
+  "e3_laukiam": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "h2": [
+     "VF · 1 užs. · po 13:00 — rytoj"
+    ],
+    "h3": [
+     "Užsakyti iš VF į AV"
+    ],
+    "btn": [
+     "Užsakyti iš VF į AV (1 prek.)",
+     "Peržiūrėti laišką",
+     "Kartu su Dropshipping (5 užs.)"
+    ],
+    "eiles": "Gauti\n6\nNeišrūšiuoti\n1\nLaukiam iš tiekėjų\n1\nSurinkti AV\n10\nDropshipping\n12\nParuošta siųsti\n4\nKlausimai\n3\nNeapmokėti\n0\nVisi\n35"
+   }
+  },
+  "e3_laukiam_perz": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": ".dl-perz",
+   "eval": {
+    "perz": "Laba diena,\n\nprašome paruošti šias prekes.\n\nUAB Avesa, Liucionių g. 46\n\n691756 FURminator deShedding šampūnas šunims, 473 ml 404842215351\t1 vnt.\n\n1 dėžė — lipdukai bus priede.\n\nAčiū,\nUAB Avesa · petshop.lt\nterra@petshop.lt"
+   }
+  },
+  "e3_laukiam_sk": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "tr.eil",
+   "eval": {
+    "kur": "Dabar: Laukiam iš tiekėjų + Dropshipping (Ambrosia) · toliau: Užsakyti iš Ambrosia",
+    "zing": [
+     "Lipdukas Ambrosia Užsakyti iš Ambrosia Ambrosia išsiuntė",
+     "Užsakyti iš VF į AV Gauta į AV ✓ Surinkti Lipdukas Kurjeris paėmė",
+     "✓ Surinkti Lipdukas Kurjeris paėmė"
+    ],
+    "tiek": []
+   }
+  },
+  "e3_rytas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=rytas",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "z": [
+     "1 Išrūšiuoti naujus 1 užs. — AV + tiekėjas arba trūkumas — iš kur važiuos kiekviena prekė; aiškius sistema išrūšiavo pati. Rūšiuoti",
+     "2 Dropshipping — lipdukai ir užsakymai tiekėjams 12 užs. — ZB 2 (po 09:00 — rytoj) · Quattro 1 (po 09:00 — rytoj) · Belacor 1 (po 09:00 — rytoj) · Ambrosia 6 (po 10:00 — rytoj) · VF 5 (po 13:00 — rytoj) Atidaryti",
+     "3 Užsakyti iš tiekėjų į AV 1 užs. — kas neužsakyta — „Užsakyti iš … į AV“ čia pat; kas užsakyta — laukiam Atidaryti",
+     "4 Surinkti AV 10 užs. — visos AV siuntos prekės vietoje — lapai (galima visus vienu lapu) Surinkti",
+     "5 Lipdukai AV siuntoms ✓ tuščia",
+     "6 Kurjeris paėmė / tiekėjai išsiuntė 4 užs. — klientams išeina sekimo numeriai Atidaryti",
+     "7 Gavimai ✓ tuščia",
+     "8 Klausimai 3 užs. — reikia tavo sprendimo Atidaryti"
+    ],
+    "urls": [
+     "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+     "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+     "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+     "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+     "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+     "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai"
+    ]
+   }
+  },
+  "e3_laukiam_mob": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": []
+  }
+ }
+}
