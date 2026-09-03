@@ -1,0 +1,509 @@
+{
+ "v": "dep-062841",
+ "kurimas": 200,
+ "sid": 4547,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1607-run1",
+  "f": "D",
+  "t4546": "ištrinta: TEMP PS dep-222151",
+  "temp_liko": [
+   {
+    "id": "4547",
+    "name": "TEMP PS dep-062841",
+    "active": "1"
+   }
+  ],
+  "md5": {
+   "petshop-desk.php": "33c9b1fea242f87a8ed189e2dfd9290e OK",
+   "petshop-av-dropship.php": "609d2b1e3056c744ad8fb93222a9b542 OK",
+   "petshop-av-tiekimas.php": "018548dccb63b9e59c317f07c3a89a08 OK",
+   "petshop-siuntu-laiskai.php": "753f8c6c7f75ba1480ba21c752e48ed9 SKIRIASI",
+   "petshop-uzsakymu-ivykiai.php": "1bd24c7002d1c614a6ac2a59fed2ddc5 OK",
+   "petshop-juosta.php": "95552f961b3031eb63aea07184a8d5f8 OK"
+  },
+  "av_failai": {
+   "petshop-av-admin.php": [
+    7510,
+    "2dfffb3fa7502c275817e524faae5467"
+   ],
+   "petshop-av-dropship.php": [
+    60432,
+    "609d2b1e3056c744ad8fb93222a9b542"
+   ],
+   "petshop-av-expiry.php": [
+    8633,
+    "a9a2b80dbde8b04bbfe5e6c55e7204d0"
+   ],
+   "petshop-av-limit.php": [
+    3720,
+    "e2860d11df21d968382497ed54557ee7"
+   ],
+   "petshop-av-order.php": [
+    4923,
+    "97f8ddd65d43baed9f6c44ef8dc3e649"
+   ],
+   "petshop-av-reduce.php": [
+    5742,
+    "becc48441f03a1094795a47b2d546d73"
+   ],
+   "petshop-av-sheets.php": [
+    10335,
+    "13c793bd57974337373d332db160f3d7"
+   ],
+   "petshop-av-source.php": [
+    5762,
+    "11750e14be57cd7ebc93457141233a79"
+   ],
+   "petshop-av-stock.php": [
+    12575,
+    "3a1585edd740eeae4ee429779be21c2f"
+   ],
+   "petshop-av-tiekimas.php": [
+    75499,
+    "018548dccb63b9e59c317f07c3a89a08"
+   ]
+  },
+  "kl": {
+   "Petshop_AV_Stock": {
+    "failas": "petshop-av-stock.php",
+    "metodai": [
+     "public static init() @38",
+     "public static sortable($cols) @53",
+     "public static sort_query($q) @58",
+     "public static filter_dropdown() @66",
+     "public static filter_query($q) @78",
+     "public static qty($product_id) @96",
+     "public static has($product_id, $need=1) @103",
+     "public static decrease($product_id, $by, $priezastis=\"\") @109",
+     "public static increase($product_id, $by, $priezastis=\"\") @122",
+     "protected static apsaugotas_rasymas($product_id, $reiksme) @141",
+     "protected static log($product_id, $buvo, $tapo, $priezastis) @160",
+     "public static field() @177",
+     "public static save($post_id) @204",
+     "public static column($cols) @222",
+     "public static column_value($col, $post_id) @232",
+     "public static quick_edit($col, $post_type) @243",
+     "public static quick_edit_js() @260",
+     "public static quick_edit_save($post_id, $post) @297"
+    ]
+   },
+   "Petshop_AV_Source": {
+    "failas": "petshop-av-source.php",
+    "metodai": [
+     "public static resolve($product_id, $qty=1) @48",
+     "public static is_av($product_id, $qty=1) @104",
+     "public static group($eilutes) @115",
+     "public static order_type($grupes) @138",
+     "public static group_order($order) @146"
+    ]
+   },
+   "Petshop_AV_Order": {
+    "failas": "petshop-av-order.php",
+    "metodai": [
+     "public static init() @36",
+     "public static nuspresta($order) @46",
+     "public static fiksuoti($order_id, $priverstinai=false) @56",
+     "public static skaityti($order) @101"
+    ]
+   },
+   "Petshop_AV_Reduce": {
+    "failas": "petshop-av-reduce.php",
+    "metodai": [
+     "public static init() @32",
+     "public static wc_kiekis($qty, $order, $item) @44",
+     "public static mazinti($order_id) @53",
+     "public static grazinti($order_id) @106"
+    ]
+   },
+   "Petshop_AV_Expiry": {
+    "failas": "petshop-av-expiry.php",
+    "metodai": [
+     "public static init() @35",
+     "public static data($product_id) @48",
+     "public static pastaba($product_id) @54",
+     "public static dienu($product_id) @60",
+     "public static skubu($product_id) @69",
+     "public static laukai() @76",
+     "public static saugoti($post_id) @100",
+     "public static stulpelis($cols) @119",
+     "public static reiksme($col, $post_id) @129",
+     "public static rikiavimas($cols) @148",
+     "public static rikiavimo_query($q) @150",
+     "public static filtras() @157",
+     "public static filtro_query($q) @170",
+     "public static stilius() @190"
+    ]
+   }
+  },
+  "av_klases": [
+   "Petshop_AV_Admin",
+   "Petshop_AV_Dropship",
+   "Petshop_AV_Expiry",
+   "Petshop_AV_Limit",
+   "Petshop_AV_Order",
+   "Petshop_AV_Reduce",
+   "Petshop_AV_Sheets",
+   "Petshop_AV_Source",
+   "Petshop_AV_Stock",
+   "Petshop_AV_Tiekimas"
+  ],
+  "src": {
+   "petshop-av-reduce.php": "<?php\n/**\n * Petshop AV Reduce v1.1 (S482) — AV likučio nurašymas.\n *\n * PENKTAS SLUOKSNIS (REGISTRAS §17.7, §19.6).\n *\n * PROBLEMA (rasta s479): WooCommerce jau mažina `_stock` per\n * `wc_maybe_reduce_stock_levels` (payment_complete / processing).\n * Jei papildomai mažintume `_own_stock_qty`, AV prekei nusirašytų DU kartus.\n *\n * SPRENDIMAS — nurašymas pagal EILUTĖS šaltinį:\n *   _ps_source = av   → mažinam `_own_stock_qty`, WC mažinimą PRALEIDŽIAM\n *   kiti šaltiniai    → paliekam WC elgtis kaip įprasta\n *\n * KAIP SUSTABDOM WC eilutei: `woocommerce_order_item_quantity` filtras grąžina 0\n * toms eilutėms, kurių šaltinis AV. WC tada nusirašo 0 vienetų iš `_stock`.\n * Tai švariau nei `can_reduce_order_stock`, kuris veikia VISAM užsakymui.\n *\n * KADA MAŽINAM AV: tuo pačiu momentu kaip WC — payment_complete / processing.\n * Idempotentiška per `_ps_av_reduced` žymę užsakyme.\n *\n * GRĄŽINIMAS: `woocommerce_order_status_cancelled` ir `..._refunded` — AV likutis\n * grąžinamas atgal.\n *\n * PRIKLAUSO nuo 4 sluoksnio: eilutė turi turėti `_ps_source`. Jei jo nėra\n * (senas užsakymas) — nieko nedarom, WC elgiasi kaip anksčiau.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_AV_Reduce {\n\n\tpublic static function init() {\n\t\t// 1) sustabdom WC mažinimą AV eilutėms\n\t\tadd_filter( 'woocommerce_order_item_quantity', [ __CLASS__, 'wc_kiekis' ], 20, 3 );\n\t\t// 2) mažinam AV — PO WC (prioritetas 15, wc_maybe_reduce_stock_levels yra 10)\n\t\tadd_action( 'woocommerce_payment_complete', [ __CLASS__, 'mazinti' ], 15, 1 );\n\t\tadd_action( 'woocommerce_order_status_processing', [ __CLASS__, 'mazinti' ], 15, 1 );\n\t\t// 3) grąžinam\n\t\tadd_action( 'woocommerce_order_status_cancelled', [ __CLASS__, 'grazinti' ], 15, 1 );\n\t\tadd_action( 'woocommerce_order_status_refunded', [ __CLASS__, 'grazinti' ], 15, 1 );\n\t}\n\n\t/** WC nurašymui: AV eilutėms grąžinam 0, kitoms — tikrą kiekį. */\n\tpublic static function wc_kiekis( $qty, $order, $item ) {\n\t\tif ( ! is_a( $item, 'WC_Order_Item_Product' ) ) { return $qty; }\n\t\t$src = $item->get_meta( '_ps_source' );\n\t\tif ( 'av' !== $src ) { return $qty; }\n\t\t// AV eilutė — WC `_stock` neliečiam\n\t\treturn 0;\n\t}\n\n\t/** Sumažina AV likutį toms eilutėms, kurių šaltinis AV. */\n\tpublic static function mazinti( $order_id ) {\n\t\t$order = is_numeric( $order_id ) ? wc_get_order( $order_id ) : $order_id;\n\t\tif ( ! $order ) { return; }\n\t\tif ( $order->get_meta( '_ps_av_reduced' ) ) { return; }          // idempotencija\n\t\tif ( ! class_exists( 'Petshop_AV_Stock' ) ) { return; }\n\n\t\t$padaryta = []; $klaidos = [];\n\t\tforeach ( $order->get_items() as $item_id => $item ) {\n\t\t\tif ( 'av' !== $item->get_meta( '_ps_source' ) ) { continue; }\n\t\t\t$pid = (int) $item->get_product_id();\n\t\t\t$qty = max( 1, (int) $item->get_quantity() );\n\n\t\t\t// GRYNAI AV prekės likutis gyvena `_stock`, ne `_own_stock_qty` —\n\t\t\t// joms WC nurašymo NESTABDOM... bet mes jį jau sustabdėm filtru.\n\t\t\t// Todėl čia nurašom pagal tai, kur likutis realiai yra.\n\t\t\t$av = Petshop_AV_Stock::qty( $pid );\n\t\t\tif ( null === $av ) {\n\t\t\t\t// grynai AV: mažinam WooCommerce `_stock` rankomis\n\t\t\t\t$p = wc_get_product( $pid );\n\t\t\t\tif ( $p && $p->managing_stock() ) {\n\t\t\t\t\t$dabar = (int) get_post_meta( $pid, '_stock', true );\n\t\t\t\t\t$naujas = max( 0, $dabar - $qty );\n\t\t\t\t\t$p->set_stock_quantity( $naujas );\n\t\t\t\t\tif ( 0 === $naujas ) { $p->set_stock_status( 'outofstock' ); }\n\t\t\t\t\t$p->save();\n\t\t\t\t\twc_delete_product_transients( $pid );\n\t\t\t\t\t$padaryta[] = \"#{$pid} grynai AV {$dabar} -> {$naujas}\";\n\t\t\t\t\t$item->update_meta_data( '_ps_av_reduced_qty', $qty );\n\t\t\t\t\t$item->save();\n\t\t\t\t}\n\t\t\t\tcontinue;\n\t\t\t}\n\n\t\t\t$rez = Petshop_AV_Stock::decrease( $pid, $qty, 'užsakymas #' . $order->get_order_number() );\n\t\t\tif ( is_wp_error( $rez ) ) {\n\t\t\t\t$klaidos[] = \"#{$pid}: \" . $rez->get_error_message();\n\t\t\t} else {\n\t\t\t\t$padaryta[] = \"#{$pid} AV {$av} -> {$rez}\";\n\t\t\t\t$item->update_meta_data( '_ps_av_reduced_qty', $qty );\n\t\t\t\t$item->save();\n\t\t\t}\n\t\t}\n\n\t\tif ( $padaryta || $klaidos ) {\n\t\t\t$order->update_meta_data( '_ps_av_reduced', current_time( 'mysql' ) );\n\t\t\t$order->save();\n\t\t\t$tekstas = 'AV nurašymas: ' . ( $padaryta ? implode( ' · ', $padaryta ) : 'nieko' );\n\t\t\tif ( $klaidos ) { $tekstas .= ' | KLAIDOS: ' . implode( ' · ', $klaidos ); }\n\t\t\t$order->add_order_note( $tekstas );\n\t\t}\n\t}\n\n\t/** Grąžina AV likutį atšaukus arba grąžinus pinigus. */\n\tpublic static function grazinti( $order_id ) {\n\t\t$order = is_numeric( $order_id ) ? wc_get_order( $order_id ) : $order_id;\n\t\tif ( ! $order ) { return; }\n\t\tif ( ! $order->get_meta( '_ps_av_reduced' ) ) { return; }\n\t\tif ( $order->get_meta( '_ps_av_restored' ) ) { return; }\n\t\tif ( ! class_exists( 'Petshop_AV_Stock' ) ) { return; }\n\n\t\t$padaryta = [];\n\t\tforeach ( $order->get_items() as $item_id => $item ) {\n\t\t\t$qty = (int) $item->get_meta( '_ps_av_reduced_qty' );\n\t\t\tif ( $qty <= 0 ) { continue; }\n\t\t\t$pid = (int) $item->get_product_id();\n\n\t\t\tif ( null === Petshop_AV_Stock::qty( $pid ) ) {\n\t\t\t\t$p = wc_get_product( $pid );\n\t\t\t\tif ( $p ) {\n\t\t\t\t\t$dabar = (int) get_post_meta( $pid, '_stock', true );\n\t\t\t\t\t$p->set_stock_quantity( $dabar + $qty );\n\t\t\t\t\t$p->set_stock_status( 'instock' );\n\t\t\t\t\t$p->save();\n\t\t\t\t\twc_delete_product_transients( $pid );\n\t\t\t\t\t$padaryta[] = \"#{$pid} grynai AV +{$qty}\";\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\t$rez = Petshop_AV_Stock::increase( $pid, $qty, 'grąžinta #' . $order->get_order_number() );\n\t\t\t\tif ( ! is_wp_error( $rez ) ) { $padaryta[] = \"#{$pid} AV +{$qty} -> {$rez}\"; }\n\t\t\t}\n\t\t}\n\t\tif ( $padaryta ) {\n\t\t\t$order->update_meta_data( '_ps_av_restored', current_time( 'mysql' ) );\n\t\t\t$order->save();\n\t\t\t$order->add_order_note( 'AV grąžinimas: ' . implode( ' · ', $padaryta ) );\n\t\t}\n\t}\n}\nPetshop_AV_Reduce::init();\n",
+   "petshop-av-source.php": "<?php\n/**\n * Petshop AV Source v1.1 (S473) — AV kaip realus tiekimo šaltinis.\n *\n * ANTRAS SLUOKSNIS (REGISTRAS §17.7, §19).\n *\n * TAISYKLĖ (Raimis, §17.2):\n *   „VF, ZB prekės važiuoja dropshipingu. Bet jei pasitaiko mix užsakymas ir prekė\n *    yra iš AV sandėlio, tada pirmenybė AV; jei tik VF ar ZB, tada tik iš ten.\"\n *\n * EILUTEI:  AV turi VISĄ kiekį → AV;  kitaip → dropship tiekėjas.\n *\n * KODĖL NELIEČIU class-fulfillment-source.php:\n *   Tas failas (6 711 B) yra VIENINTELĖ sandėlio tiesos vieta, ir juo remiasi TRYS\n *   veikiantys dalykai: S77 cart cross-sell, S77 pristatymo ribojimas, S74 FBT.\n *   Vietoj perrašymo — ATSKIRA klasė, kuri resolve() rezultatą PAPILDO.\n *\n * VEŽĖJAS (Raimio pataisa §18.1):\n *   AV  → venipak ARBA lp_express   (carrier = 'any')\n *   visi dropship → tik venipak\n *\n * DVI AV RŪŠYS (išmatuota s472):\n *   1. GRYNAI AV — 959 publish, _legacy_source=excel_v2_20260604, likutis `_stock`.\n *      Resolveris grąžina `legacy`; mes verčiam į `av`. `_own_stock_qty` NEREIKIA.\n *   2. AV + TIEKĖJAS — Josera tipo. Prekė yra ir pas VF/ZB, ir pas Raimį.\n *      Likutis `_own_stock_qty`; `_stock` perrašo sync.\n *\n * SVARBU: šis sluoksnis NIEKO NERAŠO ir NEMAŽINA. Tik ATSAKO, iš kur siųsti.\n * Fiksavimas užsakymo eilutėje — 4 sluoksnis. Mažinimas — 5.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_AV_Source {\n\n\t/**\n\t * Iš kur siųsti šią prekę šiuo kiekiu.\n\t *\n\t * @return array{\n\t *   source: string,        av|zb|vf|quattro|ambrosia|belcor_tofu|prins|legacy\n\t *   carrier: string,       any|venipak\n\t *   courier_only: bool,\n\t *   av_qty: int|null,      AV likutis (null = AV neturi)\n\t *   av_uztenka: bool,      ar AV užtenka prašomam kiekiui\n\t *   tiekejas: string,      koks tiekėjas BŪTŲ be AV\n\t *   reason: string\n\t * }\n\t */\n\tpublic static function resolve( $product_id, $qty = 1 ) {\n\t\t$product_id = (int) $product_id;\n\t\t$qty        = max( 1, (int) $qty );\n\n\t\t$baze = class_exists( 'Petshop_Fulfillment_Source' )\n\t\t\t? Petshop_Fulfillment_Source::resolve( $product_id )\n\t\t\t: [ 'source' => 'legacy', 'carrier' => 'any', 'courier_only' => false, 'reason' => 'resolverio nėra' ];\n\n\t\t// `legacy` = AV sandėlis (resolverio komentaras: „tikras savas sandelis\").\n\t\t// 959 publish prekės iš _legacy_source=excel_v2_20260604 su REALIAIS likučiais\n\t\t// WooCommerce `_stock` lauke (niekas jų neperrašo — sinchronizacijos nėra).\n\t\t// Joms `_own_stock_qty` NEREIKIA — jos ir taip AV.\n\t\tif ( 'legacy' === $baze['source'] ) {\n\t\t\treturn [\n\t\t\t\t'source'       => 'av',\n\t\t\t\t'carrier'      => 'any',\n\t\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t\t'av_qty'       => (int) get_post_meta( $product_id, '_stock', true ),\n\t\t\t\t'av_uztenka'   => true,\n\t\t\t\t'tiekejas'     => 'av',\n\t\t\t\t'reason'       => 'grynai AV prekė (be tiekėjo)',\n\t\t\t];\n\t\t}\n\n\t\t$av        = class_exists( 'Petshop_AV_Stock' ) ? Petshop_AV_Stock::qty( $product_id ) : null;\n\t\t$uztenka   = ( null !== $av && $av >= $qty );\n\t\t$tiekejas  = $baze['source'];\n\n\t\tif ( $uztenka ) {\n\t\t\treturn [\n\t\t\t\t'source'       => 'av',\n\t\t\t\t'carrier'      => 'any',          // AV gali ir Venipak, ir LP\n\t\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t\t'av_qty'       => $av,\n\t\t\t\t'av_uztenka'   => true,\n\t\t\t\t'tiekejas'     => $tiekejas,\n\t\t\t\t'reason'       => \"AV turi $av, reikia $qty\",\n\t\t\t];\n\t\t}\n\n\t\t// SAUGIKLIS: LP Express galimas TIK iš AV (Raimis §18.1).\n\t\t// Bet kuris dropship šaltinis → venipak, nesvarbu ką grąžino bazinis resolveris.\n\t\treturn [\n\t\t\t'source'       => $tiekejas,\n\t\t\t'carrier'      => 'venipak',\n\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t'av_qty'       => $av,\n\t\t\t'av_uztenka'   => false,\n\t\t\t'tiekejas'     => $tiekejas,\n\t\t\t'reason'       => ( null === $av )\n\t\t\t\t? 'AV šios prekės neturi'\n\t\t\t\t: \"AV turi $av, reikia $qty — neužtenka\",\n\t\t];\n\t}\n\n\t/** Ar prekė šiuo kiekiu eitų iš AV. */\n\tpublic static function is_av( $product_id, $qty = 1 ) {\n\t\t$x = self::resolve( $product_id, $qty );\n\t\treturn 'av' === $x['source'];\n\t}\n\n\t/**\n\t * Krepšelio arba užsakymo eilučių sugrupavimas pagal šaltinį.\n\t *\n\t * @param array $eilutes [ ['product_id'=>int, 'qty'=>int, 'raktas'=>mixed], ... ]\n\t * @return array [ 'av' => ['eilutes'=>[...], 'carrier'=>'any'], 'vf' => [...], ... ]\n\t */\n\tpublic static function group( array $eilutes ) {\n\t\t$grupes = [];\n\t\tforeach ( $eilutes as $e ) {\n\t\t\t$pid = (int) ( $e['product_id'] ?? 0 );\n\t\t\tif ( ! $pid ) { continue; }\n\t\t\t$qty = max( 1, (int) ( $e['qty'] ?? 1 ) );\n\t\t\t$x   = self::resolve( $pid, $qty );\n\t\t\t$s   = $x['source'];\n\t\t\tif ( ! isset( $grupes[ $s ] ) ) {\n\t\t\t\t$grupes[ $s ] = [ 'eilutes' => [], 'carrier' => $x['carrier'], 'courier_only' => false ];\n\t\t\t}\n\t\t\t$grupes[ $s ]['eilutes'][] = [\n\t\t\t\t'product_id' => $pid,\n\t\t\t\t'qty'        => $qty,\n\t\t\t\t'raktas'     => $e['raktas'] ?? null,\n\t\t\t\t'reason'     => $x['reason'],\n\t\t\t];\n\t\t\tif ( $x['courier_only'] ) { $grupes[ $s ]['courier_only'] = true; }\n\t\t}\n\t\treturn $grupes;\n\t}\n\n\t/** Užsakymo tipas pagal grupes: MAIN / DS / MIXED. */\n\tpublic static function order_type( array $grupes ) {\n\t\t$n = count( $grupes );\n\t\tif ( 0 === $n ) { return 'REVIEW'; }\n\t\tif ( 1 === $n ) { return isset( $grupes['av'] ) ? 'MAIN' : 'DS'; }\n\t\treturn 'MIXED';\n\t}\n\n\t/** Patogumui: sugrupuoja WooCommerce užsakymą. */\n\tpublic static function group_order( $order ) {\n\t\t$order = is_numeric( $order ) ? wc_get_order( $order ) : $order;\n\t\tif ( ! $order ) { return []; }\n\t\t$eil = [];\n\t\tforeach ( $order->get_items() as $item_id => $item ) {\n\t\t\t$pid = $item->get_variation_id() ? $item->get_product_id() : $item->get_product_id();\n\t\t\t$eil[] = [ 'product_id' => $pid, 'qty' => $item->get_quantity(), 'raktas' => $item_id ];\n\t\t}\n\t\treturn self::group( $eil );\n\t}\n}\n",
+   "petshop-av-order.php": "<?php\n/**\n * Petshop AV Order v1.1 (S481) — šaltinio FIKSAVIMAS užsakymo eilutėje.\n *\n * KETVIRTAS SLUOKSNIS (REGISTRAS §17.7, §18.2).\n *\n * KONSULTANTO PUNKTAS 3 (priimtas): `resolve()` NEGALI būti perskaičiuojamas\n * vėliau pagal DABARTINIUS likučius. Šiandien prekė priskirta AV, rytoj po\n * likučio pasikeitimo sistema nuspręstų VF. Pakuotojas mato viena, sistema kita.\n *\n * TODĖL: sprendimas priimamas VIENĄ kartą — kai užsakymas apmokamas — ir\n * ĮRAŠOMAS į eilutę. Vėliau tik SKAITOMAS.\n *\n * KIEKVIENOJE EILUTĖJE:\n *   _ps_source        av|vf|zb|quattro|ambrosia|belcor_tofu|prins\n *   _ps_carrier       any|venipak\n *   _ps_source_qty    kiek vienetų iš to šaltinio\n *   _ps_source_at     kada nuspręsta\n *   _ps_source_reason kodėl (diagnostikai)\n *\n * UŽSAKYME:\n *   _ps_order_type    MAIN|DS|MIXED|REVIEW\n *   _ps_groups        šaltinių sąrašas\n *   _ps_shipments     kiek siuntų išeis\n *\n * KADA: `woocommerce_payment_complete` + `woocommerce_order_status_processing`,\n * PRIORITETAS 5 — PRIEŠ likučių mažinimą (žr. init()).\n * Idempotentiška — jei jau nuspręsta, antrą kartą neperskaičiuoja.\n *\n * NEMAŽINA likučio — tai 5 sluoksnis.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_AV_Order {\n\n\tpublic static function init() {\n\t\t// PRIORITETAS 5 — BŪTINA. `wc_maybe_reduce_stock_levels` yra 10, o\n\t\t// Petshop_AV_Reduce — 15. Jei fiksuotume vėliau, `_ps_source` eilutėse dar\n\t\t// neegzistuotų ir NEI WC stabdymas, NEI AV nurašymas nesuveiktų (S480 klaida).\n\t\tadd_action( 'woocommerce_payment_complete', [ __CLASS__, 'fiksuoti' ], 5, 1 );\n\t\tadd_action( 'woocommerce_order_status_processing', [ __CLASS__, 'fiksuoti' ], 5, 1 );\n\t\tadd_action( 'woocommerce_order_status_on-hold', [ __CLASS__, 'fiksuoti' ], 5, 1 );\n\t}\n\n\t/** Ar užsakymui jau nuspręsta. */\n\tpublic static function nuspresta( $order ) {\n\t\t$order = is_numeric( $order ) ? wc_get_order( $order ) : $order;\n\t\treturn ( $order && $order->get_meta( '_ps_order_type' ) );\n\t}\n\n\t/**\n\t * Priima sprendimą ir ĮRAŠO. Idempotentiška.\n\t *\n\t * @param bool $priverstinai perskaičiuoti net jei jau nuspręsta\n\t */\n\tpublic static function fiksuoti( $order_id, $priverstinai = false ) {\n\t\t$order = is_numeric( $order_id ) ? wc_get_order( $order_id ) : $order_id;\n\t\tif ( ! $order ) { return; }\n\t\tif ( ! $priverstinai && self::nuspresta( $order ) ) { return; }\n\t\tif ( ! class_exists( 'Petshop_AV_Source' ) ) { return; }\n\n\t\t$grupes = [];\n\t\tforeach ( $order->get_items() as $item_id => $item ) {\n\t\t\t$pid = (int) $item->get_product_id();\n\t\t\tif ( ! $pid ) { continue; }\n\t\t\t$qty = max( 1, (int) $item->get_quantity() );\n\n\t\t\t$x = Petshop_AV_Source::resolve( $pid, $qty );\n\n\t\t\t$item->update_meta_data( '_ps_source',        $x['source'] );\n\t\t\t$item->update_meta_data( '_ps_carrier',       $x['carrier'] );\n\t\t\t$item->update_meta_data( '_ps_source_qty',    $qty );\n\t\t\t$item->update_meta_data( '_ps_source_at',     current_time( 'mysql' ) );\n\t\t\t$item->update_meta_data( '_ps_source_reason', $x['reason'] );\n\t\t\t$item->save();\n\n\t\t\t$s = $x['source'];\n\t\t\tif ( ! isset( $grupes[ $s ] ) ) {\n\t\t\t\t$grupes[ $s ] = [ 'carrier' => $x['carrier'], 'eilutes' => 0, 'vienetai' => 0 ];\n\t\t\t}\n\t\t\t$grupes[ $s ]['eilutes']++;\n\t\t\t$grupes[ $s ]['vienetai'] += $qty;\n\t\t}\n\n\t\t$tipas = Petshop_AV_Source::order_type( $grupes );\n\t\t$order->update_meta_data( '_ps_order_type', $tipas );\n\t\t$order->update_meta_data( '_ps_groups',     wp_json_encode( $grupes ) );\n\t\t$order->update_meta_data( '_ps_shipments',  count( $grupes ) );\n\t\t$order->update_meta_data( '_ps_decided_at', current_time( 'mysql' ) );\n\t\t$order->save();\n\n\t\t$sant = [];\n\t\tforeach ( $grupes as $s => $g ) { $sant[] = strtoupper( $s ) . ' ' . $g['vienetai'] . ' vnt'; }\n\t\t$order->add_order_note( 'Vykdymas: ' . $tipas . ' — ' . implode( ' · ', $sant )\n\t\t\t. ' (' . count( $grupes ) . ' siunta(-os))' );\n\n\t\treturn [ 'tipas' => $tipas, 'grupes' => $grupes ];\n\t}\n\n\t/** Perskaito ĮRAŠYTĄ sprendimą. NEPERSKAIČIUOJA. */\n\tpublic static function skaityti( $order ) {\n\t\t$order = is_numeric( $order ) ? wc_get_order( $order ) : $order;\n\t\tif ( ! $order ) { return null; }\n\t\t$tipas = $order->get_meta( '_ps_order_type' );\n\t\tif ( ! $tipas ) { return null; }\n\n\t\t$eilutes = [];\n\t\tforeach ( $order->get_items() as $item_id => $item ) {\n\t\t\t$eilutes[] = [\n\t\t\t\t'item_id' => $item_id,\n\t\t\t\t'pavadinimas' => $item->get_name(),\n\t\t\t\t'qty'     => (int) $item->get_quantity(),\n\t\t\t\t'source'  => $item->get_meta( '_ps_source' ) ?: '?',\n\t\t\t\t'carrier' => $item->get_meta( '_ps_carrier' ) ?: '?',\n\t\t\t\t'reason'  => $item->get_meta( '_ps_source_reason' ) ?: '',\n\t\t\t];\n\t\t}\n\t\treturn [\n\t\t\t'tipas'      => $tipas,\n\t\t\t'grupes'     => json_decode( (string) $order->get_meta( '_ps_groups' ), true ) ?: [],\n\t\t\t'siuntos'    => (int) $order->get_meta( '_ps_shipments' ),\n\t\t\t'nusprasta'  => $order->get_meta( '_ps_decided_at' ),\n\t\t\t'eilutes'    => $eilutes,\n\t\t];\n\t}\n}\nPetshop_AV_Order::init();\n",
+   "petshop-av-stock.php": "<?php\n/**\n * Petshop AV Stock v1.2 (S477) — AV (Avesa) sandėlio likutis.\n *\n * PIRMAS SLUOKSNIS iš septynių (REGISTRAS §17.7, §18.9).\n *\n * KODĖL ATSKIRAS LAUKAS, o ne WooCommerce `_stock`:\n *   VF/ZB sinchronizacija `_stock` PERRAŠO kas valandą (Import #6, VF cron).\n *   `_own_stock_qty` su sync nesikerta.\n *\n * KODĖL ATSKIRAS mu-plugin, o ne class-product-cost-metabox.php papildymas:\n *   tas failas 26 504 B, veikiantis, su savikainos/maržos/lock logika.\n *   Likutis priklauso Atsargų kortelei, ne kainodaros blokui.\n *\n * KĄ DARO:\n *   - laukas „AV sandėlio likutis\" WooCommerce → Prekė → Atsargos\n *   - stulpelis prekių sąraše (tik kai reikšmė > 0)\n *   - greitas redagavimas (Quick Edit) sąraše + reikšmė atsinaujina be perkrovimo\n *   - rikiavimas pagal AV\n *   - filtras: AV turi / AV pasibaigė / AV neturi\n *   - API kitiems sluoksniams: Petshop_AV_Stock::qty() / has() / decrease()\n *\n * KO DAR NEDARO (kiti sluoksniai):\n *   - NEKEIČIA resolve() — AV šaltinio parinkimas bus 2 sluoksnyje\n *   - NEMAŽINA likučio automatiškai — bus 5 sluoksnyje\n *   - NELIEČIA pardavimo ribos — bus 3 sluoksnyje\n *\n * SVARBU: tuščias laukas ≠ 0. Tuščias = „AV šios prekės neturi\".\n * Resolverio `legacy` reiškia „neatpažinta tiekėjui\", NE „guli AV sandėlyje\" —\n * AV priklausymą lemia TIK ši reikšmė.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_AV_Stock {\n\n\tconst META = '_own_stock_qty';\n\n\tpublic static function init() {\n\t\tadd_action( 'woocommerce_product_options_inventory_product_data', [ __CLASS__, 'field' ] );\n\t\tadd_action( 'woocommerce_process_product_meta', [ __CLASS__, 'save' ] );\n\t\tadd_filter( 'manage_edit-product_columns', [ __CLASS__, 'column' ], 20 );\n\t\tadd_action( 'manage_product_posts_custom_column', [ __CLASS__, 'column_value' ], 20, 2 );\n\t\tadd_action( 'quick_edit_custom_box', [ __CLASS__, 'quick_edit' ], 10, 2 );\n\t\tadd_action( 'admin_footer-edit.php', [ __CLASS__, 'quick_edit_js' ] );\n\t\tadd_action( 'save_post_product', [ __CLASS__, 'quick_edit_save' ], 20, 2 );\n\t\tadd_filter( 'manage_edit-product_sortable_columns', [ __CLASS__, 'sortable' ] );\n\t\tadd_action( 'pre_get_posts', [ __CLASS__, 'sort_query' ] );\n\t\tadd_action( 'restrict_manage_posts', [ __CLASS__, 'filter_dropdown' ] );\n\t\tadd_filter( 'parse_query', [ __CLASS__, 'filter_query' ] );\n\t}\n\n\t/** Rikiavimas pagal AV stulpelį. */\n\tpublic static function sortable( $cols ) {\n\t\t$cols['ps_av'] = 'ps_av';\n\t\treturn $cols;\n\t}\n\n\tpublic static function sort_query( $q ) {\n\t\tif ( ! is_admin() || ! $q->is_main_query() ) { return; }\n\t\tif ( 'ps_av' !== $q->get( 'orderby' ) ) { return; }\n\t\t$q->set( 'meta_key', self::META );\n\t\t$q->set( 'orderby', 'meta_value_num' );\n\t}\n\n\t/** Filtras „tik AV prekės\" prekių sąraše. */\n\tpublic static function filter_dropdown() {\n\t\t$s = get_current_screen();\n\t\tif ( ! $s || 'edit-product' !== $s->id ) { return; }\n\t\t$dabar = isset( $_GET['ps_av_filter'] ) ? sanitize_key( $_GET['ps_av_filter'] ) : '';\n\t\techo '<select name=\"ps_av_filter\">';\n\t\techo '<option value=\"\">AV sandėlis — visos</option>';\n\t\techo '<option value=\"turi\"' . selected( $dabar, 'turi', false ) . '>AV turi (&gt;0)</option>';\n\t\techo '<option value=\"nulis\"' . selected( $dabar, 'nulis', false ) . '>AV pasibaigė (0)</option>';\n\t\techo '<option value=\"nera\"' . selected( $dabar, 'nera', false ) . '>AV neturi (tuščia)</option>';\n\t\techo '</select>';\n\t}\n\n\tpublic static function filter_query( $q ) {\n\t\tglobal $pagenow;\n\t\tif ( ! is_admin() || 'edit.php' !== $pagenow ) { return; }\n\t\tif ( ( $q->get( 'post_type' ) ?: '' ) !== 'product' ) { return; }\n\t\t$f = isset( $_GET['ps_av_filter'] ) ? sanitize_key( $_GET['ps_av_filter'] ) : '';\n\t\tif ( '' === $f ) { return; }\n\t\t$mq = (array) $q->get( 'meta_query' );\n\t\tif ( 'turi' === $f ) {\n\t\t\t$mq[] = [ 'key' => self::META, 'value' => 0, 'compare' => '>', 'type' => 'NUMERIC' ];\n\t\t} elseif ( 'nulis' === $f ) {\n\t\t\t$mq[] = [ 'key' => self::META, 'value' => 0, 'compare' => '=', 'type' => 'NUMERIC' ];\n\t\t} elseif ( 'nera' === $f ) {\n\t\t\t$mq[] = [ 'key' => self::META, 'compare' => 'NOT EXISTS' ];\n\t\t}\n\t\t$q->set( 'meta_query', $mq );\n\t}\n\n\t/** AV likutis. NULL = AV šios prekės neturi (laukas tuščias). */\n\tpublic static function qty( $product_id ) {\n\t\t$v = get_post_meta( (int) $product_id, self::META, true );\n\t\tif ( '' === $v || null === $v ) { return null; }\n\t\treturn max( 0, (int) $v );\n\t}\n\n\t/** Ar AV turi bent nurodytą kiekį. */\n\tpublic static function has( $product_id, $need = 1 ) {\n\t\t$q = self::qty( $product_id );\n\t\treturn ( null !== $q && $q >= (int) $need );\n\t}\n\n\t/** Sumažina AV likutį. Grąžina naują reikšmę arba WP_Error. */\n\tpublic static function decrease( $product_id, $by, $priezastis = '' ) {\n\t\t$by = (int) $by;\n\t\tif ( $by <= 0 ) { return new WP_Error( 'blogas_kiekis', 'Kiekis turi būti teigiamas' ); }\n\t\t$q = self::qty( $product_id );\n\t\tif ( null === $q ) { return new WP_Error( 'nera_av', 'Prekė neturi AV likučio' ); }\n\t\tif ( $q < $by ) { return new WP_Error( 'nepakanka', \"AV turi $q, prašoma $by\" ); }\n\t\t$naujas = $q - $by;\n\t\tself::apsaugotas_rasymas( $product_id, $naujas );\n\t\tself::log( $product_id, $q, $naujas, $priezastis );\n\t\treturn $naujas;\n\t}\n\n\t/** Padidina AV likutį (papildymas). */\n\tpublic static function increase( $product_id, $by, $priezastis = '' ) {\n\t\t$by = (int) $by;\n\t\tif ( $by <= 0 ) { return new WP_Error( 'blogas_kiekis', 'Kiekis turi būti teigiamas' ); }\n\t\t$q = self::qty( $product_id );\n\t\t$naujas = ( null === $q ? 0 : $q ) + $by;\n\t\tself::apsaugotas_rasymas( $product_id, $naujas );\n\t\tself::log( $product_id, $q, $naujas, $priezastis );\n\t\treturn $naujas;\n\t}\n\n\t/**\n\t * SAUGIKLIS (S477): `_own_stock_qty` rašymas NEGALI paliesti `_stock`.\n\t *\n\t * PRIEŽASTIS: S468 testo metu Josera `_stock` iš 653 tapo 2 — lygiai tiek, kiek\n\t * buvo įrašyta į AV. WooCommerce kabliukai gali sureaguoti į meta pakeitimą ir\n\t * perrašyti `_stock`. Tikroji reikšmė ateina iš VF sync (`_vf_qty`).\n\t *\n\t * Prieš rašydami įsimenam `_stock`; po rašymo — jei pasikeitė, grąžinam.\n\t */\n\tprotected static function apsaugotas_rasymas( $product_id, $reiksme ) {\n\t\t$product_id = (int) $product_id;\n\t\t$stock_pries = get_post_meta( $product_id, '_stock', true );\n\n\t\tif ( null === $reiksme ) { delete_post_meta( $product_id, self::META ); }\n\t\telse { update_post_meta( $product_id, self::META, (int) $reiksme ); }\n\n\t\t$stock_po = get_post_meta( $product_id, '_stock', true );\n\t\tif ( (string) $stock_pries !== (string) $stock_po ) {\n\t\t\tupdate_post_meta( $product_id, '_stock', $stock_pries );\n\t\t\tif ( function_exists( 'wc_update_product_stock_status' ) ) {\n\t\t\t\twc_delete_product_transients( $product_id );\n\t\t\t}\n\t\t\terror_log( \"[Petshop_AV_Stock] SAUGIKLIS: _stock $product_id buvo pakeistas \"\n\t\t\t         . \"$stock_pries → $stock_po, grąžinta\" );\n\t\t}\n\t}\n\n\t/** Pokyčių žurnalas — kad būtų matyti, kas ir kada keitė. */\n\tprotected static function log( $product_id, $buvo, $tapo, $priezastis ) {\n\t\t$log = get_post_meta( (int) $product_id, '_own_stock_log', true );\n\t\tif ( ! is_array( $log ) ) { $log = []; }\n\t\t$u = wp_get_current_user();\n\t\t$log[] = [\n\t\t\t'kada'      => current_time( 'mysql' ),\n\t\t\t'buvo'      => $buvo,\n\t\t\t'tapo'      => $tapo,\n\t\t\t'kas'       => ( $u && $u->ID ) ? $u->user_login : 'sistema',\n\t\t\t'priezastis'=> substr( (string) $priezastis, 0, 120 ),\n\t\t];\n\t\tif ( count( $log ) > 50 ) { $log = array_slice( $log, -50 ); }\n\t\tupdate_post_meta( (int) $product_id, '_own_stock_log', $log );\n\t}\n\n\t// ─────────────── PREKĖS LANGAS ───────────────\n\n\tpublic static function field() {\n\t\tglobal $post;\n\t\t$v = get_post_meta( $post->ID, self::META, true );\n\t\techo '<div class=\"options_group\">';\n\t\twoocommerce_wp_text_input( [\n\t\t\t'id'          => 'ps_own_stock_qty',\n\t\t\t'value'       => $v,\n\t\t\t'label'       => 'AV sandėlio likutis',\n\t\t\t'placeholder' => 'tuščia = AV neturi',\n\t\t\t'desc_tip'    => true,\n\t\t\t'description' => 'Kiek vienetų šios prekės realiai guli AV (Avesa) sandėlyje. '\n\t\t\t               . 'Tuščias laukas reiškia, kad AV šios prekės neturi. '\n\t\t\t               . 'Nemaišyti su tiekėjo likučiu — tas atkeliauja automatiškai.',\n\t\t\t'type'        => 'number',\n\t\t\t'custom_attributes' => [ 'step' => '1', 'min' => '0' ],\n\t\t] );\n\t\tif ( '' !== $v ) {\n\t\t\t$src = class_exists( 'Petshop_Fulfillment_Source' )\n\t\t\t\t? Petshop_Fulfillment_Source::resolve( $post->ID ) : null;\n\t\t\techo '<p class=\"form-field\" style=\"color:#4A554C;font-size:12px;\">'\n\t\t\t   . 'Tiekėjo šaltinis: <strong>' . esc_html( $src['source'] ?? '—' ) . '</strong>'\n\t\t\t   . ' · WooCommerce likutis: <strong>' . esc_html( (string) get_post_meta( $post->ID, '_stock', true ) ) . '</strong>'\n\t\t\t   . '</p>';\n\t\t}\n\t\techo '</div>';\n\t}\n\n\tpublic static function save( $post_id ) {\n\t\tif ( ! isset( $_POST['ps_own_stock_qty'] ) ) { return; }\n\t\t$raw = trim( (string) wp_unslash( $_POST['ps_own_stock_qty'] ) );\n\t\t$buvo = get_post_meta( $post_id, self::META, true );\n\t\tif ( '' === $raw ) {\n\t\t\tself::apsaugotas_rasymas( $post_id, null );\n\t\t\tif ( '' !== $buvo ) { self::log( $post_id, $buvo, null, 'laukas ištuštintas' ); }\n\t\t\treturn;\n\t\t}\n\t\t$naujas = max( 0, (int) $raw );\n\t\tif ( (string) $buvo !== (string) $naujas ) {\n\t\t\tself::apsaugotas_rasymas( $post_id, $naujas );\n\t\t\tself::log( $post_id, ( '' === $buvo ? null : (int) $buvo ), $naujas, 'rankinis' );\n\t\t}\n\t}\n\n\t// ─────────────── PREKIŲ SĄRAŠAS ───────────────\n\n\tpublic static function column( $cols ) {\n\t\t$nauji = [];\n\t\tforeach ( $cols as $k => $v ) {\n\t\t\t$nauji[ $k ] = $v;\n\t\t\tif ( 'is_in_stock' === $k ) { $nauji['ps_av'] = 'AV'; }\n\t\t}\n\t\tif ( ! isset( $nauji['ps_av'] ) ) { $nauji['ps_av'] = 'AV'; }\n\t\treturn $nauji;\n\t}\n\n\tpublic static function column_value( $col, $post_id ) {\n\t\tif ( 'ps_av' !== $col ) { return; }\n\t\t$q = self::qty( $post_id );\n\t\tif ( null === $q ) { echo '<span style=\"color:#c9c9c9;\">—</span>'; return; }\n\t\t$spalva = $q > 0 ? '#2d6a35' : '#c33';\n\t\techo '<span id=\"ps_av_' . (int) $post_id . '\" style=\"font-weight:600;color:' . $spalva . ';\">'\n\t\t   . (int) $q . '</span>';\n\t}\n\n\t// ─────────────── GREITAS REDAGAVIMAS ───────────────\n\n\tpublic static function quick_edit( $col, $post_type ) {\n\t\tif ( 'ps_av' !== $col || 'product' !== $post_type ) { return; }\n\t\t?>\n\t\t<fieldset class=\"inline-edit-col-right\">\n\t\t\t<div class=\"inline-edit-col\">\n\t\t\t\t<label class=\"alignleft\">\n\t\t\t\t\t<span class=\"title\">AV likutis</span>\n\t\t\t\t\t<span class=\"input-text-wrap\">\n\t\t\t\t\t\t<input type=\"number\" name=\"ps_own_stock_qty\" class=\"ps-av-qty\"\n\t\t\t\t\t\t       min=\"0\" step=\"1\" placeholder=\"tuščia = neturi\">\n\t\t\t\t\t</span>\n\t\t\t\t</label>\n\t\t\t</div>\n\t\t</fieldset>\n\t\t<?php\n\t}\n\n\tpublic static function quick_edit_js() {\n\t\t$s = get_current_screen();\n\t\tif ( ! $s || 'edit-product' !== $s->id ) { return; }\n\t\t?>\n\t\t<style>\n\t\t\t.wp-list-table th.column-ps_av,\n\t\t\t.wp-list-table td.column-ps_av { width: 62px; text-align: center; white-space: nowrap; }\n\t\t</style>\n\t\t<script>\n\t\t(function($){\n\t\t\tif (typeof inlineEditPost === 'undefined') { return; }\n\t\t\tvar senas = inlineEditPost.edit;\n\t\t\tinlineEditPost.edit = function(id){\n\t\t\t\tsenas.apply(this, arguments);\n\t\t\t\tvar pid = (typeof id === 'object') ? parseInt(this.getId(id), 10) : id;\n\t\t\t\tif (!pid) { return; }\n\t\t\t\tvar t = $('#ps_av_' + pid).text().trim();\n\t\t\t\t$('#edit-' + pid).find('input.ps-av-qty').val(t === '—' ? '' : t);\n\t\t\t};\n\t\t\t// Po AJAX issaugojimo WP perpiesia eilute, bet MUSU stulpelio reiksme\n\t\t\t// lieka sena — atnaujinam is to, ka vartotojas ivede.\n\t\t\t$(document).on('ajaxSuccess', function(e, xhr, opts){\n\t\t\t\tif (!opts || !opts.data || opts.data.indexOf('action=inline-save') === -1) { return; }\n\t\t\t\tvar p = new URLSearchParams(opts.data);\n\t\t\t\tvar pid = parseInt(p.get('post_ID'), 10);\n\t\t\t\tif (!pid) { return; }\n\t\t\t\tvar v = (p.get('ps_own_stock_qty') || '').trim();\n\t\t\t\tvar el = $('#ps_av_' + pid);\n\t\t\t\tif (!el.length) { return; }\n\t\t\t\tif (v === '') { el.text('—').css({color:'#c9c9c9','font-weight':'400'}); }\n\t\t\t\telse { el.text(v).css({color: (parseInt(v,10) > 0 ? '#2d6a35' : '#c33'), 'font-weight':'600'}); }\n\t\t\t});\n\t\t})(jQuery);\n\t\t</script>\n\t\t<?php\n\t}\n\n\tpublic static function quick_edit_save( $post_id, $post ) {\n\t\tif ( ! isset( $_POST['ps_own_stock_qty'] ) ) { return; }\n\t\tif ( ! current_user_can( 'edit_product', $post_id ) ) { return; }\n\t\tif ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) { return; }\n\t\tif ( ! isset( $_POST['_inline_edit'] ) ) { return; }   // TIK quick edit\n\t\tself::save( $post_id );\n\t}\n}\nPetshop_AV_Stock::init();\n"
+  },
+  "pdf_grep": [],
+  "pdf_snippets": [
+   {
+    "id": "652",
+    "name": "Petshop R608 Recon v1",
+    "active": "0"
+   },
+   {
+    "id": "4547",
+    "name": "TEMP PS dep-062841",
+    "active": "1"
+   }
+  ],
+  "deploy": {
+   "bytes": 47181,
+   "md5": "09cf43381f9492d5893701d37e59fae7"
+  }
+ },
+ "T": {
+  "v": "S1607-run1",
+  "f": "T",
+  "uid": 75,
+  "darbalaukis_ikeltas": "0.1",
+  "desk_meniu_kablys": false,
+  "eile": {
+   "nauji": {
+    "code": 200,
+    "dl": 5,
+    "pd": false,
+    "psj": true,
+    "dlcss": true,
+    "h1": "Nauji 5",
+    "eiles": {
+     "Nauji": "5",
+     "Laukiam iš tiekėjų": "",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "3",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "",
+     "Visi užsakymai": "25"
+    },
+    "pirma": "#35414vakar 17:41AUDITAS Testas 1Vilnius · +37060000000AUDITAS T1: AV paštomatas 1 dėžėAMB→1×AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kgAV2×Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 gVenipak paštomatas288421,64 €apmokėta · mokėjimas internetusurūšiuota›surinkti›lipdukas›išsiųsta›lipdukas AMB›laiškas Ambrosia›Ambrosia išsiuntėRūšiuoti11:00"
+   },
+   "laukiam": {
+    "code": 200,
+    "dl": 0,
+    "pd": false,
+    "psj": true,
+    "dlcss": true,
+    "h1": "Laukiam iš tiekėjų 0",
+    "eiles": {
+     "Nauji": "5",
+     "Laukiam iš tiekėjų": "",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "3",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "",
+     "Visi užsakymai": "25"
+    }
+   },
+   "surinkti": {
+    "code": 200,
+    "dl": 5,
+    "pd": false,
+    "psj": true,
+    "dlcss": true,
+    "h1": "Surinkti Avesoje 5",
+    "eiles": {
+     "Nauji": "5",
+     "Laukiam iš tiekėjų": "",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "3",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "",
+     "Visi užsakymai": "25"
+    },
+    "pirma": "#3509008-26 01:55Sart tr· +37060000000AMB→1×AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 12 kgVF→1×691756 FURminator deShedding šampūnas šunims, 473 mlAV1×Hikari Cichlid Excel Mini, 250 gVenipak paštomatas288474,78 € 19,79 €apmokėta · bankinis pavedimas✓ surūšiuota›surinkti›lipdukas›išsiųsta›lipdukas AMB›laiškas Ambrosia›Ambrosia išsiuntė›lipdukas VF›laiškas Vetfarmas›Vetfarmas išsiuntėLaiškas Ambrosia11:00"
+   },
+   "laiskai": {
+    "code": 200,
+    "dl": 3,
+    "pd": false,
+    "psj": true,
+    "dlcss": true,
+    "h1": "Laiškai tiekėjams 3",
+    "eiles": {
+     "Nauji": "5",
+     "Laukiam iš tiekėjų": "",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "3",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "",
+     "Visi užsakymai": "25"
+    },
+    "pirma": "#3509008-26 01:55Sart tr· +37060000000AMB→1×AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 12 kgVF→1×691756 FURminator deShedding šampūnas šunims, 473 mlAV1×Hikari Cichlid Excel Mini, 250 gVenipak paštomatas288474,78 € 19,79 €apmokėta · bankinis pavedimas✓ surūšiuota›surinkti›lipdukas›išsiųsta›lipdukas AMB›laiškas Ambrosia›Ambrosia išsiuntė›lipdukas VF›laiškas Vetfarmas›Vetfarmas išsiuntėLaiškas Ambrosia11:00"
+   },
+   "paruosta": {
+    "code": 200,
+    "dl": 3,
+    "pd": false,
+    "psj": true,
+    "dlcss": true,
+    "h1": "Paruošta siųsti 3",
+    "eiles": {
+     "Nauji": "5",
+     "Laukiam iš tiekėjų": "",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "3",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "",
+     "Visi užsakymai": "25"
+    },
+    "pirma": "#35428vakar 17:46AUDITAS Testas 15Vilnius · +37060000000AUDITAS T15: AV kurjeris 3 dėžės (grynas AV)AV3×Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 gVenipak kurjerisVilnius12,63 €apmokėta · mokėjimas internetu✓ surūšiuota›✓ surinkti›✓ lipdukas›išsiųstaIšsiųsta11:00"
+   },
+   "klausimai": {
+    "code": 200,
+    "dl": 2,
+    "pd": false,
+    "psj": true,
+    "dlcss": true,
+    "h1": "Klausimai 2",
+    "eiles": {
+     "Nauji": "5",
+     "Laukiam iš tiekėjų": "",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "3",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "",
+     "Visi užsakymai": "25"
+    },
+    "pirma": "#3510008-26 16:21Aru ZX· +37065000000VF→1×8in1 Flavours L trigubo skonio kaulas didelių veislių šunims, 1 vnt.VF→1×Exclusion Mediterraneo Monoprotein sausas pašaras katėms su jautiena, 1,5 kgAMB→1×AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kgAV1×20 vnt. rudų kiaulės knysliųAvesoje 0Venipak paštomatas270747,66 €apmokėta · bankinis pavedimassurūšiuota›surinkti›lipdukas›išsiųsta›lipdukas VF›laiškas Vetfarmas›Vetfarmas išsiuntė›lipdukas AMB›laiškas Ambrosia›Ambrosia išsiuntė›Trūksta sandėlyjeSpręsti11:00"
+   },
+   "neapmoketi": {
+    "code": 200,
+    "dl": 0,
+    "pd": false,
+    "psj": true,
+    "dlcss": true,
+    "h1": "Neapmokėti 0",
+    "eiles": {
+     "Nauji": "5",
+     "Laukiam iš tiekėjų": "",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "3",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "",
+     "Visi užsakymai": "25"
+    }
+   },
+   "visi": {
+    "code": 200,
+    "dl": 25,
+    "pd": false,
+    "psj": true,
+    "dlcss": true,
+    "h1": "Visi užsakymai 25",
+    "eiles": {
+     "Nauji": "5",
+     "Laukiam iš tiekėjų": "",
+     "Surinkti Avesoje": "5",
+     "Laiškai tiekėjams": "3",
+     "Paruošta siųsti": "3",
+     "Klausimai": "2",
+     "Neapmokėti": "",
+     "Visi užsakymai": "25"
+    },
+    "pirma": "#35434vakar 20:11Surinkti AvesojeAUDITAS Testas 21Vilnius · +37060000000AUDITAS T21: K2/K3: AV+Prins → PRI į AV paštomatuAV1×Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 gAV1×Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kgVenipak kurjerisVilnius37,03 €apmokėta · mokėjimas internetu✓ surūšiuota›surinkti›lipdukas›išsiųstaSurinkti11:00"
+   }
+  },
+  "visi_siandien": {
+   "code": 200,
+   "dl": 0,
+   "pd": false,
+   "psj": true,
+   "dlcss": true,
+   "h1": "Visi užsakymai 0",
+   "eiles": {
+    "Nauji": "5",
+    "Laukiam iš tiekėjų": "",
+    "Surinkti Avesoje": "5",
+    "Laiškai tiekėjams": "3",
+    "Paruošta siųsti": "3",
+    "Klausimai": "2",
+    "Neapmokėti": "",
+    "Visi užsakymai": "25"
+   }
+  },
+  "paieska": {
+   "code": 200,
+   "dl": 1,
+   "pd": false,
+   "psj": true,
+   "dlcss": true,
+   "h1": "Visi užsakymai 1",
+   "eiles": {
+    "Nauji": "5",
+    "Laukiam iš tiekėjų": "",
+    "Surinkti Avesoje": "5",
+    "Laiškai tiekėjams": "3",
+    "Paruošta siųsti": "3",
+    "Klausimai": "2",
+    "Neapmokėti": "",
+    "Visi užsakymai": "25"
+   },
+   "pirma": "#35419vakar 17:41ĮvykdytasAUDITAS Testas 6Vilnius · +37060000000AUDITAS T6: MIŠRUS AV+VF paštomatasAMB→1×AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kgVF→2×Churu Popn Serve skanėstas katėms su tunu,35gVenipak paštomatas288421,62 €apmokėta · mokėjimas internetu✓ surūšiuota›✓ lipdukas AMB›✓ laiškas Ambrosia›✓ Ambrosia išsiuntė›✓ lipdukas VF›✓ laiškas Vetfarmas›✓ Vetfarmas išsiuntė›✓ įvykdytasAtidaryti"
+  },
+  "senas": {
+   "code": 200,
+   "dl": 0,
+   "pd": true,
+   "psj": true,
+   "dlcss": false,
+   "pirma": "#35434vakar 20:11AUDITAS Testas 21VilniusAV1× Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 gAV1× Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg✎ AUDITAS T21: K2/K3: AV+Prins → PRI į AV paštomatuSAVAplanas: PRI→AV37,03 €apmokėtaVenipak kurjerisVykdomasSurinkti⋯"
+  },
+  "rytas": {
+   "code": 200,
+   "dl": 0,
+   "pd": false,
+   "psj": true,
+   "dlcss": false,
+   "pirma": "#35434AUDITAS Testas 21SAVAVenipak kurjeris—"
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788420622|XTSuQra0SCJbzq8rBs8fZGWQrcFkC2jAHpIiGmmDMSw|8ebaceaae2800e63f90f62daea6996b6b948630b4b77ef16d812523b0ff46234"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788420622|XTSuQra0SCJbzq8rBs8fZGWQrcFkC2jAHpIiGmmDMSw|193acca8d1af95b484a16099dd43a0e22898c1cf95bca820ea27cbb762ddec94"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788420622|XTSuQra0SCJbzq8rBs8fZGWQrcFkC2jAHpIiGmmDMSw|efdd2a5e09c419669f59afbea098e5ffc4db56a397e0ff964774543cc9a2cc15"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e2_nauji",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+    "full": true
+   },
+   {
+    "n": "e2_laukiam",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+    "full": true
+   },
+   {
+    "n": "e2_surinkti",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+    "full": true
+   },
+   {
+    "n": "e2_laiskai",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+    "full": true
+   },
+   {
+    "n": "e2_paruosta",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+    "full": true
+   },
+   {
+    "n": "e2_klausimai",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "full": true
+   },
+   {
+    "n": "e2_neapmoketi",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=neapmoketi",
+    "full": true
+   },
+   {
+    "n": "e2_visi",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+    "full": true
+   },
+   {
+    "n": "e2_nauji_mob",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+    "w": 420,
+    "h": 900,
+    "full": true
+   },
+   {
+    "n": "e2_senas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&senas=1"
+   }
+  ]
+ },
+ "shots": {
+  "e2_nauji": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2_laukiam": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2_surinkti": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2_laiskai": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2_paruosta": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2_klausimai": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2_neapmoketi": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=neapmoketi",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2_visi": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2_nauji_mob": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  },
+  "e2_senas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&senas=1",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress"
+  }
+ }
+}
