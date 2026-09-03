@@ -1,0 +1,75 @@
+{
+ "v": "dep-101929",
+ "kurimas": 200,
+ "sid": 4571,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run14b",
+  "f": "D",
+  "buvo": "61c3ce3479f523544d598644bdd4759a",
+  "deploy": {
+   "bytes": 130771,
+   "md5": "868aff393b6e49711f78482222802f37"
+  }
+ },
+ "T": {
+  "v": "run14b",
+  "f": "T",
+  "versija": "2.4",
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788434476|Pnxy42KgsHXiGQ6GonwX72DEQeSIDdOtzryqauQ7pC4|cc427163a2a59698edc40390f8227bc366c1f0444067b241557a64fe9b43ddc8"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788434476|Pnxy42KgsHXiGQ6GonwX72DEQeSIDdOtzryqauQ7pC4|c5df2c77b6202e2267bd02566ed46c5973a5d7ee2d006ed107d6971c35e8e3e4"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788434476|Pnxy42KgsHXiGQ6GonwX72DEQeSIDdOtzryqauQ7pC4|6166bdb196be915b6508b083b8032eb1dc5ede56dc4ed49150043463b9ce3c83"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e2k_siandien",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk",
+    "h": 700,
+    "eval": "({juosta:(document.querySelector('.dl-siand')||{}).innerText})"
+   },
+   {
+    "n": "e2k_siandien_klik",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk",
+    "click": ".dl-siand-u",
+    "h": 900,
+    "eval": "({on:document.getElementById('dlSk').classList.contains('on'),nr:document.getElementById('skNr').textContent,kur:(document.querySelector('.dl-kur')||{}).textContent})"
+   }
+  ]
+ },
+ "shots": {
+  "e2k_siandien": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "juosta": "Šiandien atėjo 6\n#35442\n13:11 · Rai B · 4 prek.\nNauji — rūšiuoti · kitas žingsnis: Rūšiuoti\n#35441\n13:10 · Rai B · 1 prek.\nLaiškai tiekėjams (Vetfarmas) · kitas žingsnis: Laiškas Vetfarmas\n#35440\n12:30 · AUDITAS Testas 27 · 1 prek.\nParuošta siųsti · kitas žingsnis: Kurjeris paėmė\n#35439\n12:30 · AUDITAS Testas 26 · 2 prek.\nSurinkti Avesoje · kitas žingsnis: Surinkti\n#35436\n10:17 · AUDITAS Testas 23 · 2 prek.\nSurinkti Avesoje + Laiškai tiekėjams (Quattro) · kitas žingsnis: Laiškas Quattro\n#35435\n10:17 · AUDITAS Testas 22 · 1 prek.\nSurinkti Avesoje · kitas žingsnis: Surinkti"
+   }
+  },
+  "e2k_siandien_klik": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=nauji",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": ".dl-siand-u",
+   "eval": {
+    "on": true,
+    "nr": "#35442",
+    "kur": "Dabar: Nauji — rūšiuoti · kitas žingsnis: Rūšiuoti"
+   }
+  }
+ }
+}
