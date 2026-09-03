@@ -1,0 +1,322 @@
+{
+ "v": "dep-092911",
+ "kurimas": 200,
+ "sid": 4562,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run9b",
+  "f": "D",
+  "buvo": "fa7966a3d0cd7eea02678999ffe3b83f",
+  "deploy": {
+   "bytes": 116257,
+   "md5": "fc51af230457e8b33f01f36b2f499e62"
+  }
+ },
+ "T": {
+  "v": "run9b",
+  "f": "T",
+  "versija": "2.1",
+  "T1_A": 35439,
+  "T1_a_kelias": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "dl_kelias",
+    "pd_nr": "35439|Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg → Prins → Avesa sandėlį"
+   },
+   "loc_url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&pd_ok=dl_kelias&pd_nr=35439%7CPrins%20Diet%20Skin%20%26%20Intestinal%20Hypoallergic%20sausas%20maistas%20kat%C4%97ms%201%2C5%20kg%20%E2%86%92%20Prins%20%E2%86%92%20Avesa%20sand%C4%97l%C4%AF"
+  },
+  "T1_b_rusiuoti": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "dl_rusiuota",
+    "pd_nr": "35439|Animonda Carny Adult Beef + Chicken + Du — Avesa sandėlis; Prins Diet Skin & Intestinal Hypoallergi — Prins → Avesa sandėlį"
+   },
+   "loc_url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&pd_ok=dl_rusiuota&pd_nr=35439%7CAnimonda%20Carny%20Adult%20Beef%20%2B%20Chicken%20%2B%20Du%20%E2%80%94%20Avesa%20sand%C4%97lis%3B%20Prins%20Diet%20Skin%20%26%20Intestinal%20Hypoallergi%20%E2%80%94%20Prins%20%E2%86%92%20Avesa%20sand%C4%97l%C4%AF"
+  },
+  "T1_c_po_rus": {
+   "st": "processing",
+   "rus": "2026-09-03 12:30:32 | Testuotojas",
+   "eiles": "laukiam",
+   "btn": "Užsakyti iš Prins",
+   "eil": {
+    "867": "19708 av/av",
+    "868": "16889 prins/i_av (neužsakyta)"
+   },
+   "tk": "✓surūšiuota › ▶užsakyti Prins › ·laukiam Prins › ·surinkti › ·lipdukas › ·išsiųsta",
+   "ships": "2",
+   "dalys_iss": "",
+   "siuntos": ""
+  },
+  "T1_d_kons": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "kons_ok",
+    "pd_nr": "35439|1"
+   },
+   "loc_url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&pd_ok=kons_ok&pd_nr=35439%7C1"
+  },
+  "T1_e_po_kons": {
+   "st": "processing",
+   "rus": "2026-09-03 12:30:32 | Testuotojas",
+   "eiles": "laukiam",
+   "btn": "Užsakyti iš Prins",
+   "eil": {
+    "867": "19708 av/av",
+    "868": "16889 prins/i_av (partijoje #13 · neužsakyta)"
+   },
+   "tk": "✓surūšiuota › ▶užsakyti Prins › ·laukiam Prins › ·surinkti › ·lipdukas › ·išsiųsta",
+   "ships": "2",
+   "dalys_iss": "",
+   "siuntos": ""
+  },
+  "T1_partija": [
+   13,
+   20
+  ],
+  "T1_f_uzsakyti": {
+   "code": 302,
+   "loc": {
+    "page": "ps-tiekimas"
+   },
+   "loc_url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-tiekimas&p=13&b=uzsakyta&tk=uzsakyta_man"
+  },
+  "T1_g_partija": {
+   "id": "13",
+   "busena": "uzsakyta",
+   "pristatymas": "tiekejas"
+  },
+  "T1_h_po_uzsakyti": {
+   "st": "processing",
+   "rus": "2026-09-03 12:30:32 | Testuotojas",
+   "eiles": "laukiam",
+   "btn": "Laukiam Prins",
+   "eil": {
+    "867": "19708 av/av",
+    "868": "16889 prins/i_av (užsakyta · partija #13)"
+   },
+   "tk": "✓surūšiuota › ✓užsakyta Prins › ⏳laukiam Prins › ·surinkti › ·lipdukas › ·išsiųsta",
+   "ships": "2",
+   "dalys_iss": "",
+   "siuntos": ""
+  },
+  "T1_i_priimti": {
+   "code": 302,
+   "loc": {
+    "page": "ps-tiekimas"
+   },
+   "loc_url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-tiekimas&p=13&b=gauta&tk=priimta"
+  },
+  "T1_j_PO_PRIEMIMO": {
+   "st": "processing",
+   "rus": "2026-09-03 12:30:32 | Testuotojas",
+   "eiles": "surinkti",
+   "btn": "Surinkti",
+   "eil": {
+    "867": "19708 av/av",
+    "868": "16889 av/av gauta:prins"
+   },
+   "tk": "✓surūšiuota › ✓užsakyta Prins › ✓gauta į Avesą › ▶surinkti › ·lipdukas › ·išsiųsta",
+   "ships": "1",
+   "dalys_iss": "",
+   "siuntos": ""
+  },
+  "T1_k_lapas": {
+   "code": 302,
+   "loc": {
+    "page": "ps-lapai"
+   },
+   "loc_url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-lapai&ps_ready=1"
+  },
+  "T1_l_lape": {
+   "animonda": true,
+   "prins": true
+  },
+  "V13_35090": {
+   "st": "processing",
+   "rus": "2026-08-26 16:50:32 | Rai",
+   "eiles": "laukiam",
+   "btn": "Užsakyti iš Ambrosia ir Vetfarmas (2)",
+   "eil": {
+    "734": "19760 ambrosia/i_av (neužsakyta)",
+    "735": "22912 vf/i_av (neužsakyta)",
+    "736": "18332 av/av"
+   },
+   "tk": "✓surūšiuota › ▶užsakyti Ambrosia › ·laukiam Ambrosia › ▶užsakyti Vetfarmas › ·laukiam Vetfarmas › ·surinkti › ·lipdukas › ·išsiųsta",
+   "ships": "3",
+   "dalys_iss": "",
+   "siuntos": ""
+  },
+  "T6_B": 35440,
+  "T6_a_lipdukas": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "vp_ok",
+    "pd_nr": "1 · AV"
+   },
+   "loc_url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&pd_ok=vp_ok&pd_nr=1%20%C2%B7%20AV"
+  },
+  "T6_b_po": {
+   "st": "processing",
+   "rus": "auto",
+   "eiles": "paruosta",
+   "btn": "Kurjeris paėmė",
+   "eil": {
+    "871": "19708 av/av"
+   },
+   "tk": "✓surūšiuota auto › ✓surinkta › ✓lipdukas › ▶išsiųsta",
+   "ships": "1",
+   "dalys_iss": "",
+   "siuntos": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260903001\",\"numeriai\":[\"V07267E1000049\",\"V07267E1000050\",\"V07267E1000051\"],\"data\":\"2026-09-03 12:30:41\"}}"
+  },
+  "T6_c_packs": {
+   "pak_meta": "3",
+   "pack_numbers": [
+    "V07267E1000049",
+    "V07267E1000050",
+    "V07267E1000051"
+   ]
+  },
+  "T9_antras": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "vp_nieko",
+    "pd_nr": "#35440 jau registruotas"
+   },
+   "loc_url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&pd_ok=vp_nieko&pd_nr=%2335440%20jau%20registruotas"
+  },
+  "T4_0": {
+   "st": "processing",
+   "rus": "2026-09-03 11:08:09 | Testuotojas",
+   "eiles": "surinkti,paruosta",
+   "btn": "Prins išsiuntė",
+   "eil": {
+    "863": "19708 av/av",
+    "864": "16889 prins/tiesiai"
+   },
+   "tk": "✓surūšiuota › ▶surinkti › ·lipdukas › ·išsiųsta › ✓lipdukas Prins › ✓laiškas Prins › ⏳Prins išsiuntė",
+   "ships": "2",
+   "dalys_iss": "",
+   "siuntos": "{\"prins\":{\"sandelis\":\"prins\",\"kodas\":\"005\",\"manifest\":\"07267260903005\",\"numeriai\":[\"V07267E1000047\"],\"data\":\"2026-09-03 11:23:31\"}}"
+  },
+  "T4_a_lipdukas_av": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "vp_nieko",
+    "pd_nr": "#35438 jau registruotas"
+   },
+   "loc_url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&pd_ok=vp_nieko&pd_nr=%2335438%20jau%20registruotas"
+  },
+  "T4_b_po": {
+   "st": "processing",
+   "rus": "2026-09-03 11:08:09 | Testuotojas",
+   "eiles": "surinkti,paruosta",
+   "btn": "Prins išsiuntė",
+   "eil": {
+    "863": "19708 av/av",
+    "864": "16889 prins/tiesiai"
+   },
+   "tk": "✓surūšiuota › ▶surinkti › ·lipdukas › ·išsiųsta › ✓lipdukas Prins › ✓laiškas Prins › ⏳Prins išsiuntė",
+   "ships": "2",
+   "dalys_iss": "",
+   "siuntos": "{\"prins\":{\"sandelis\":\"prins\",\"kodas\":\"005\",\"manifest\":\"07267260903005\",\"numeriai\":[\"V07267E1000047\"],\"data\":\"2026-09-03 11:23:31\"}}"
+  },
+  "T4_c_kurjeris_paeme": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "dl_klaida",
+    "pd_nr": "35438|Avesos siunta dar be lipduko"
+   },
+   "loc_url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&pd_ok=dl_klaida&pd_nr=35438%7CAvesos%20siunta%20dar%20be%20lipduko"
+  },
+  "T4_d_po": {
+   "st": "processing",
+   "rus": "2026-09-03 11:08:09 | Testuotojas",
+   "eiles": "surinkti,paruosta",
+   "btn": "Prins išsiuntė",
+   "eil": {
+    "863": "19708 av/av",
+    "864": "16889 prins/tiesiai"
+   },
+   "tk": "✓surūšiuota › ▶surinkti › ·lipdukas › ·išsiųsta › ✓lipdukas Prins › ✓laiškas Prins › ⏳Prins išsiuntė",
+   "ships": "2",
+   "dalys_iss": "",
+   "siuntos": "{\"prins\":{\"sandelis\":\"prins\",\"kodas\":\"005\",\"manifest\":\"07267260903005\",\"numeriai\":[\"V07267E1000047\"],\"data\":\"2026-09-03 11:23:31\"}}"
+  },
+  "T4_e_prins_issiunte": {
+   "code": 302,
+   "loc": {
+    "page": "ps-desk",
+    "pd_ok": "dl_dalis",
+    "pd_nr": "35438|Prins išsiuntė — dar laukiam: Avesa"
+   },
+   "loc_url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&pd_ok=dl_dalis&pd_nr=35438%7CPrins%20i%C5%A1siunt%C4%97%20%E2%80%94%20dar%20laukiam%3A%20Avesa"
+  },
+  "T4_f_po": {
+   "st": "processing",
+   "rus": "2026-09-03 11:08:09 | Testuotojas",
+   "eiles": "surinkti",
+   "btn": "Surinkti",
+   "eil": {
+    "863": "19708 av/av",
+    "864": "16889 prins/tiesiai"
+   },
+   "tk": "✓surūšiuota › ▶surinkti › ·lipdukas › ·išsiųsta › ✓lipdukas Prins › ✓laiškas Prins › ✓Prins išsiuntė",
+   "ships": "2",
+   "dalys_iss": "{\"prins\":{\"laikas\":\"2026-09-03 12:30:47\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"}}",
+   "siuntos": "{\"prins\":{\"sandelis\":\"prins\",\"kodas\":\"005\",\"manifest\":\"07267260903005\",\"numeriai\":[\"V07267E1000047\"],\"data\":\"2026-09-03 11:23:31\"}}"
+  },
+  "T8_paruosta_btns": {
+   "paeme_viska": "2",
+   "paeme_eilute": 2
+  },
+  "mail": [
+   [
+    "12:30:28",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35439 — 2026-09-03",
+    "run9"
+   ],
+   [
+    "12:30:29",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35439 — apmokėjimas gautas",
+    "run9"
+   ],
+   [
+    "12:30:34",
+    "terra@petshop.lt",
+    "[PERSIŲSTI Prins / Faunas] UAB Avesa · prekių užsakymas 2026-09-03",
+    "run9"
+   ],
+   [
+    "12:30:38",
+    "uzsakymai@petshop.lt",
+    "Naujas užsakymas Nr. 35440 — 2026-09-03",
+    "run9"
+   ],
+   [
+    "12:30:39",
+    "terra@petshop.lt",
+    "Jūsų užsakymas Nr. 35440 — apmokėjimas gautas",
+    "run9"
+   ]
+  ],
+  "zurnalas_C": [
+   "09-03 12:30 · Testuotojas — Issiusta dalis",
+   "09-03 12:30 · Testuotojas — Lipdukas (Venipak registracija) (praleista): vp_nieko #35438 jau registruotas",
+   "09-03 11:23 · Testuotojas — Laiškas tiekėjui išsiųstas: perduota — → {\"prins\":\"2026-09-03 11:23:34\"} · laiškai: terra@petshop.lt „[PERSIŲSTI Prins Petfoods] užsakymas 2026-09-03“ · išsiųsta 1 · grupė: 2 užs.",
+   "09-03 11:23 · Testuotojas — Lipdukas (Venipak registracija): siuntos +{\"prins\":{\"sandelis\":\"prins\",\"kodas\":\"005\",\"manifest\":\"07267260903005\",\"numeriai\":[\"V07267E1000047\"],\"data\":\"2026-09-03 11:23:31\"}} · vp_ok 2 · PRINS · grupė: 2 užs.",
+   "09-03 11:08 · Testuotojas — Perduoti tiekėjams (į laiškų langą)"
+  ]
+ }
+}
