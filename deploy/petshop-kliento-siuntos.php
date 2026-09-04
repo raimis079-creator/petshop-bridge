@@ -1,6 +1,9 @@
 <?php
 /**
- * Petshop Kliento siuntos v1.1 (S1610, 2026-09-04; 3 etapas #5b — Raimio sprendimai 2026-09-03 naktis) + kliento pusės sargai.
+ * Petshop Kliento siuntos v1.2 (S1612, 2026-09-04; 4 etapas #1 — būsena „Pristatyta“ iš Venipak sekimo) + kliento pusės sargai.
+ *
+ * v1.2 — trečia būsena **Pristatyta** (`kliento_siuntos()` `busena=pristatyta`, darbalaukis v3.11: visi dalies numeriai Venipak'e „Delivered“).
+ *   Žymė žalia kaip „Išsiųsta“, be datos (kaip kitos būsenos); „Sekti siuntą“ lieka. Piešia tik — duomenys vis tas pats vienas šaltinis.
  *
  * KODĖL: paskyros užsakymo puslapyje siuntų nebuvo (S1609 `e8_uzsakymas_35421.png`) — Venipak/LP pluginai kliento pusėje nieko
  * nekabina, klientas po laiško „Išsiųsta 1 iš 2 siuntų“ paskyroje nematė nei siuntų, nei numerių.
@@ -31,7 +34,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Kliento_Siuntos {
 
-	const VERSIJA = '1.1';
+	const VERSIJA = '1.2';
 
 	public static function init() {
 		add_action( 'woocommerce_order_details_before_order_table', array( __CLASS__, 'blokas' ), 5, 1 );
@@ -78,10 +81,10 @@ class Petshop_Kliento_Siuntos {
 		$h  = '<section class="ps-siuntos" data-n="' . (int) count( $siuntos ) . '">';
 		$h .= '<h2 class="woocommerce-order-details__title">' . esc_html( 'Siuntos' ) . '</h2>';
 		foreach ( $siuntos as $s ) {
-			$iss = 'issiusta' === ( $s['busena'] ?? '' );
+			$b = (string) ( $s['busena'] ?? '' ); $iss = in_array( $b, array( 'issiusta', 'pristatyta' ), true );
 			$antr = (int) ( $s['viso'] ?? 1 ) > 1 ? sprintf( 'Siunta %d iš %d', (int) $s['n'], (int) $s['viso'] ) : 'Siunta';
 			$h .= '<div class="ps-siunta ps-siunta--' . ( $iss ? 'issiusta' : 'ruosiama' ) . '">';
-			$h .= '<div class="ps-siunta__antr"><b>' . esc_html( $antr ) . '</b><span class="ps-siunta__busena">' . esc_html( $iss ? 'Išsiųsta' : 'Ruošiama' ) . '</span></div>';
+			$h .= '<div class="ps-siunta__antr"><b>' . esc_html( $antr ) . '</b><span class="ps-siunta__busena">' . esc_html( 'pristatyta' === $b ? 'Pristatyta' : ( $iss ? 'Išsiųsta' : 'Ruošiama' ) ) . '</span></div>';
 			if ( ! empty( $s['prekes'] ) ) {
 				$h .= '<ul class="ps-siunta__prekes">';
 				foreach ( $s['prekes'] as $p ) { $h .= '<li>' . esc_html( (int) $p['q'] . ' × ' . $p['n'] ) . '</li>'; }
