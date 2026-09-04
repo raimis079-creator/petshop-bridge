@@ -1,0 +1,1126 @@
+{
+ "v": "dep-175308",
+ "kurimas": 200,
+ "sid": 4769,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1615 e2r",
+  "temp_istrinta": 1,
+  "mu": [
+   "automation-by-installatron.php",
+   "petshop-akcijos.php",
+   "petshop-analitika.php",
+   "petshop-anketa-ivykiai.php",
+   "petshop-anketos-ataskaita.php",
+   "petshop-ataskaita-atsargos.php",
+   "petshop-ataskaita-klientai.php",
+   "petshop-ataskaita-menuo.php",
+   "petshop-ataskaita-pardavimai.php",
+   "petshop-ataskaita-prekes.php",
+   "petshop-ataskaitos-ui.php",
+   "petshop-ataskaitu-agregavimas.php",
+   "petshop-ataskaitu-eksportas.php",
+   "petshop-atributai.php",
+   "petshop-atsargu-laukimas.php",
+   "petshop-atsisakymas.php",
+   "petshop-av-admin.php",
+   "petshop-av-dropship.php",
+   "petshop-av-expiry.php",
+   "petshop-av-limit.php",
+   "petshop-av-order.php",
+   "petshop-av-reduce.php",
+   "petshop-av-sheets.php",
+   "petshop-av-source.php",
+   "petshop-av-stock.php",
+   "petshop-av-tiekimas.php",
+   "petshop-cache.php",
+   "petshop-code-search.php",
+   "petshop-darbalaukis.php",
+   "petshop-desk.php",
+   "petshop-dev-pastas.php",
+   "petshop-dev-veidrodis.php",
+   "petshop-dim-klientai.php",
+   "petshop-dropship-sargas.php",
+   "petshop-dydziai.php",
+   "petshop-fakt-atsargos.php",
+   "petshop-fakt-grazinimai.php",
+   "petshop-fakt-kainos.php",
+   "petshop-fakt-reklama.php",
+   "petshop-fakt-siuntos.php",
+   "petshop-faktai.php",
+   "petshop-feeding-calc-rest.php",
+   "petshop-ga4-serveris.php",
+   "petshop-gavimas.php",
+   "petshop-greitis.php",
+   "petshop-hero-preload.php",
+   "petshop-higiena.php",
+   "petshop-import-log.php",
+   "petshop-import-tempas.php",
+   "petshop-innodb.php",
+   "petshop-islaidos.php",
+   "petshop-istorijos-adapteris.php",
+   "petshop-ivykiai.php",
+   "petshop-juosta.php",
+   "petshop-kalendorius.php",
+   "petshop-kampaniju-langas.php",
+   "petshop-kanalai.php",
+   "petshop-katalogas.php",
+   "petshop-kategorijos-aprasymas.php",
+   "petshop-klientai.php",
+   "petshop-kliento-siuntos.php",
+   "petshop-kreipinys.php",
+   "petshop-laiskai-importas.php",
+   "petshop-laiskai.php",
+   "petshop-langai-admin.php",
+   "petshop-laukai.php",
+   "petshop-legacy-301.php",
+   "petshop-legacy-importas.php",
+   "petshop-login-sargas.php",
+   "petshop-m8-food.php",
+   "petshop-naujienlaiskiai-admin.php",
+   "petshop-naujienlaiskiai.php",
+   "petshop-nepamoketi.php",
+   "petshop-pardavimai.php",
+   "petshop-parseris.php",
+   "petshop-partijos.php",
+   "petshop-paruostu-ataskaita.php",
+   "petshop-payment-failed.php",
+   "petshop-perziuru-priminimas.php",
+   "petshop-pet-claim.php",
+   "petshop-pet-kontraktas.php",
+   "petshop-pilnumas.php",
+   "petshop-pren-nuorodos.php",
+   "petshop-pren-sutikimas.php",
+   "petshop-prenumerata-katalogas.php",
+   "petshop-prenumerata-paskyra.php",
+   "petshop-prenumerata-veiksmas.php",
+   "petshop-prenumerata.php",
+   "petshop-prenumeratos-langas.php",
+   "petshop-prenumeratu-prognoze.php",
+   "petshop-prieziura.php",
+   "petshop-ps-pets-migration-freeze.php",
+   "petshop-rankos.php",
+   "petshop-rec-log.php",
+   "petshop-rec-ui.php",
+   "petshop-rec-variklis.php",
+   "petshop-refill-ivykiai.php",
+   "petshop-rezultatai.php",
+   "petshop-rinkiniai.php",
+   "petshop-rinkiniu-ataskaita.php",
+   "petshop-rinkiniu-likuciai.php",
+   "petshop-rinkiniu-rusis.php",
+   "petshop-rysiai.php",
+   "petshop-rytas.php",
+   "petshop-sargas.php",
+   "petshop-schema.php",
+   "petshop-seo-aprasymas.php",
+   "petshop-seo.php",
+   "petshop-seseliai.php",
+   "petshop-siuntu-laiskai.php",
+   "petshop-siuntu-valymas.php",
+   "petshop-statistika-vitrina.php",
+   "petshop-statistika.php",
+   "petshop-teises.php",
+   "petshop-uzsakymu-ivykiai.php",
+   "petshop-vartai.php",
+   "petshop-vertimai.php",
+   "petshop-vf-feed.php",
+   "petshop-wc-sync.php",
+   "petshop-webp.php"
+  ],
+  "reduce_size": 5742,
+  "reduce_hooks": [],
+  "reduce_fns": [
+   [
+    "init",
+    ""
+   ],
+   [
+    "wc_kiekis",
+    " $qty, $order, $item "
+   ],
+   [
+    "mazinti",
+    " $order_id "
+   ],
+   [
+    "grazinti",
+    " $order_id "
+   ]
+  ],
+  "reduce_mazinti": "function mazinti( $order_id ) {\n\t\t$order = is_numeric( $order_id ) ? wc_get_order( $order_id ) : $order_id;\n\t\tif ( ! $order ) { return; }\n\t\tif ( $order->get_meta( '_ps_av_reduced' ) ) { return; }          // idempotencija\n\t\tif ( ! class_exists( 'Petshop_AV_Stock' ) ) { return; }\n\n\t\t$padaryta = []; $klaidos = [];\n\t\tforeach ( $order->get_items() as $item_id => $item ) {\n\t\t\tif ( 'av' !== $item->get_meta( '_ps_source' ) ) { continue; }\n\t\t\t$pid = (int) $item->get_product_id();\n\t\t\t$qty = max( 1, (int) $item->get_quantity() );\n\n\t\t\t// GRYNAI AV prekės likutis gyvena `_stock`, ne `_own_stock_qty` —\n\t\t\t// joms WC nurašymo NESTABDOM... bet mes jį jau sustabdėm filtru.\n\t\t\t// Todėl čia nurašom pagal tai, kur likutis realiai yra.\n\t\t\t$av = Petshop_AV_Stock::qty( $pid );\n\t\t\tif ( null === $av ) {\n\t\t\t\t// grynai AV: mažinam WooCommerce `_stock` rankomis\n\t\t\t\t$p = wc_get_product( $pid );\n\t\t\t\tif ( $p && $p->managing_stock() ) {\n\t\t\t\t\t$dabar = (int) get_post_meta( $pid, '_stock', true );\n\t\t\t\t\t$naujas = max( 0, $dabar - $qty );\n\t\t\t\t\t$p->set_stock_quantity( $naujas );\n\t\t\t\t\tif ( 0 === $naujas ) { $p->set_stock_status( 'outofstock' ); }\n\t\t\t\t\t$p->save();\n\t\t\t\t\twc_delete_product_transients( $pid );\n\t\t\t\t\t$padaryta[] = \"#{$pid} grynai AV {$dabar} -> {$naujas}\";\n\t\t\t\t\t$item->update_meta_data( '_ps_av_reduced_qty', $qty );\n\t\t\t\t\t$item->save();\n\t\t\t\t}\n\t\t\t\tcontinue;\n\t\t\t}\n\n\t\t\t$rez = Petshop_AV_Stock::decrease( $pid, $qty, 'užsakymas #' . $order->get_order_number() );\n\t\t\tif ( is_wp_error( $rez ) ) {\n\t\t\t\t$klaidos[] = \"#{$pid}: \" . $rez->get_error_message();\n\t\t\t} else {\n\t\t\t\t$padaryta[] = \"#{$pid} AV {$av} -> {$rez}\";\n\t\t\t\t$item->update_meta_data( '_ps_av_reduced_qty', $qty );\n\t\t\t\t$item->save();\n\t\t\t}\n\t\t}\n\n\t\tif ( $padaryta || $klaidos ) {\n\t\t\t$order->update_meta_data( '_ps_av_reduced', current_time( 'mysql' ) );\n\t\t\t$order->save();\n\t\t\t$tekstas = 'AV nurašymas: ' . ( $padaryta ? implode( ' · ', $padaryta ) : 'nieko' );\n\t\t\tif ( $klaidos ) { $tekstas .= ' | KLAIDOS: ' . implode( ' · ', $klaidos ); }\n\t\t\t$order->add_order_note( $tekstas );\n\t\t}\n\t}\n\n\t/** Grąžina AV likutį atšaukus arba grąžinus pinigus. */\n\tpublic static function grazinti( $order_id ) {\n\t\t$order = is_numeric( $order_id ) ? wc_get_order( $order_id ) : $order_id;\n\t\tif ( ! $order ) { return; }\n\t\tif ( ! $order->get_meta( '_ps_av_reduced' ) ) { return; }\n\t\tif ( $order->get_meta( '_ps_av_restored' ) ) { return; }\n\t\tif ( ! class_exists( 'Petshop_AV_Stock' ) ) { return; }\n\n\t\t$padaryta = [];\n\t\tforeach ( $order->get_items() as $item_id => $item ) {\n\t\t\t$qty = (int) $item->get_meta( '_ps_av_reduced_qty' );\n\t\t\tif ( $qty <= 0 ) { contin",
+  "reduce_header": "<?php\n/**\n * Petshop AV Reduce v1.1 (S482) — AV likučio nurašymas.\n *\n * PENKTAS SLUOKSNIS (REGISTRAS §17.7, §19.6).\n *\n * PROBLEMA (rasta s479): WooCommerce jau mažina `_stock` per\n * `wc_maybe_reduce_stock_levels` (payment_complete / processing).\n * Jei papildomai mažintume `_own_stock_qty`, AV prekei nusirašytų DU kartus.\n *\n * SPRENDIMAS — nurašymas pagal EILUTĖS šaltinį:\n *   _ps_source = av   → mažinam `_own_stock_qty`, WC mažinimą PRALEIDŽIAM\n *   kiti šaltiniai    → paliekam WC elgtis kaip įprasta\n *\n * KAIP SUSTABDOM WC eilutei: `woocommerce_order_item_quantity` filtras grąžina 0\n * toms eilutėms, kurių šaltinis AV. WC tada nusirašo 0 vienetų iš `_stock`.\n * Tai švariau nei `can_reduce_order_stock`, kuris veikia VISAM užsakymui.\n *\n * KADA MAŽINAM AV: tuo pačiu momentu kaip WC — payment_complete / processing.\n * Idempotentiška per `_ps_av_reduced` žymę užsakyme.\n *\n * GRĄŽINIMAS: `woocommerce_order_status_cancelled` ir `..._refunded` — AV likutis\n * grąžinamas atgal.\n *\n * PRIKLAUSO nuo 4 sluoksnio: eilutė turi turėti `_ps_source`. Jei jo nėra\n * (senas užsakymas) — nieko nedarom, WC elgiasi kaip anksčiau.\n */\nif ( !",
+  "cls": {
+   "Petshop_AV_Stock": {
+    "file": "petshop-av-stock.php",
+    "m": [
+     "init()",
+     "sortable($cols)",
+     "sort_query($q)",
+     "filter_dropdown()",
+     "filter_query($q)",
+     "qty($product_id)",
+     "has($product_id,$need)",
+     "decrease($product_id,$by,$priezastis)",
+     "increase($product_id,$by,$priezastis)",
+     "field()",
+     "save($post_id)",
+     "column($cols)",
+     "column_value($col,$post_id)",
+     "quick_edit($col,$post_type)",
+     "quick_edit_js()",
+     "quick_edit_save($post_id,$post)"
+    ]
+   },
+   "Petshop_AV_Tiekimas": {
+    "file": "petshop-av-tiekimas.php",
+    "m": [
+     "laisko_nust()",
+     "rankinis($tiekejas)",
+     "init()",
+     "t_partijos()",
+     "t_eilutes()",
+     "lenteles()",
+     "atvira_partija($tiekejas)",
+     "eilutes_veiksmas()",
+     "ideti_eilute($o,$iid,$src)",
+     "isimti_eilute($o,$iid)",
+     "kg($kg)",
+     "partijos_svoris($pid)",
+     "svoris($part)",
+     "eilutes_bukle($order_id,$item_id)",
+     "eilutes_url($order_id,$item_id,$ka,$grazinti)",
+     "meniu()",
+     "tiekejo_vardas($k)",
+     "partijos_eilutes($partija_id)",
+     "puslapis()",
+     "lipduko_atsisiuntimas()",
+     "veiksmas()",
+     "venipak_registruoti($part)",
+     "venipak_lipdukas($pack)",
+     "atvira_su_eilutemis($tiekejas)",
+     "paruosti($pid,$dezes)",
+     "laisko_dalis($part,$eil,$pack)",
+     "uzdaryti_po_laisko($pid,$kontekstas)",
+     "eilutes_i_av($oo,$pid)",
+     "likuciu_perziura($vykdyti)",
+     "laukianciu_skaiciai()"
+    ]
+   },
+   "Petshop_AV_Dropship": {
+    "file": "petshop-av-dropship.php",
+    "m": [
+     "tiekejai()",
+     "init()",
+     "veiksmas($v)",
+     "vykdyti($redirect,$veiksmas,$ids)",
+     "meniu()",
+     "perduotos($order)",
+     "perduota($order,$src)",
+     "neperduotos($order)",
+     "zymeti_perduota($order,$src)",
+     "laisko_nust()",
+     "archyvuoti($gavejai,$tema,$html,$priedai,$kontekstas)",
+     "laukiantys_perdavimo()",
+     "archyvo_puslapis()",
+     "lipduko_vardas($order)",
+     "puslapis()",
+     "lipdukas_atsisiusti()",
+     "zb_pazymeti()",
+     "nustatymai()",
+     "saugoti_nustatymus()",
+     "skriptas()",
+     "laisko_html($src,$uzsakymai,$pastaba,$partija_html)",
+     "perduoti_visus()",
+     "siusti()"
+    ]
+   },
+   "Petshop_AV_Order": {
+    "file": "petshop-av-order.php",
+    "m": [
+     "init()",
+     "nuspresta($order)",
+     "fiksuoti($order_id,$priverstinai)",
+     "skaityti($order)"
+    ]
+   },
+   "Petshop_AV_Source": {
+    "file": "petshop-av-source.php",
+    "m": [
+     "resolve($product_id,$qty)",
+     "is_av($product_id,$qty)",
+     "group($eilutes)",
+     "order_type($grupes)",
+     "group_order($order)"
+    ]
+   },
+   "Petshop_Desk": {
+    "file": "petshop-desk.php",
+    "m": [
+     "init()",
+     "vykdyti_veiksma()",
+     "meniu()",
+     "slepti_wc()",
+     "chrome()",
+     "pakuociu($o)",
+     "lp_svoris($o)",
+     "siuntos_kodas($o)",
+     "puslapis()"
+    ]
+   }
+  },
+  "wc": {
+   "manage_stock": "yes",
+   "hold_stock": "90",
+   "notify_low": "yes",
+   "has_reduce_hook_payment": 10,
+   "has_reduce_hook_processing": 10,
+   "has_increase_cancelled": 10,
+   "adjust_line_item": false,
+   "adjust_fn": false
+  },
+  "wc_adjust_hooks": [],
+  "uzs": {
+   "35421": {
+    "st": "processing",
+    "reduced": "2026-09-02 17:41:47",
+    "restored": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"quattro\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"prins\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "total": "54.03",
+    "ship": "3.99",
+    "tax": "9.38",
+    "coupons": [],
+    "pay": "paysera",
+    "ds_sent": "{\"prins\":\"2026-09-03 11:23:34\"}",
+    "invoice_meta": [
+     "_petshop_avpn_number",
+     "_petshop_invoice_document_type",
+     "_wcdn_invoice_date",
+     "_wcdn_invoice_number",
+     "_wcdn_invoice_number_counter",
+     "_wcdn_invoice_pdf",
+     "_wcdn_invoice_pdf_token"
+    ],
+    "eil": {
+     "805": {
+      "n": "Animonda Carny Adult",
+      "q": 1,
+      "src": "av",
+      "k": "",
+      "rq": "1",
+      "wc_reduced": "0",
+      "src_qty": "1",
+      "kons": "",
+      "own": "",
+      "stock": "18",
+      "manage": "yes",
+      "total": "2.14876",
+      "sub": "2.14876"
+     },
+     "806": {
+      "n": "QUATTRO 1,5 kg Adult",
+      "q": 1,
+      "src": "quattro",
+      "k": "",
+      "rq": "",
+      "wc_reduced": "1",
+      "src_qty": "1",
+      "kons": "1",
+      "own": "0",
+      "stock": "5",
+      "manage": "yes",
+      "total": "14.049587",
+      "sub": "14.049587"
+     },
+     "807": {
+      "n": "Prins Diet Skin & In",
+      "q": 1,
+      "src": "prins",
+      "k": "",
+      "rq": "",
+      "wc_reduced": "1",
+      "src_qty": "1",
+      "kons": "",
+      "own": "1",
+      "stock": "12",
+      "manage": "yes",
+      "total": "24.46281",
+      "sub": "24.46281"
+     }
+    }
+   },
+   "35431": {
+    "st": "processing",
+    "reduced": "2026-09-02 20:09:55",
+    "restored": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":2,\"vienetai\":2}}",
+    "type": "MAIN",
+    "total": "24.43",
+    "ship": "3.99",
+    "tax": "4.24",
+    "coupons": [],
+    "pay": "paysera",
+    "ds_sent": "",
+    "invoice_meta": [
+     "_petshop_avpn_number",
+     "_petshop_invoice_document_type",
+     "_wcdn_invoice_date",
+     "_wcdn_invoice_number",
+     "_wcdn_invoice_number_counter",
+     "_wcdn_invoice_pdf",
+     "_wcdn_invoice_pdf_token"
+    ],
+    "eil": {
+     "839": {
+      "n": "Animonda Carny Adult",
+      "q": 1,
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wc_reduced": "0",
+      "src_qty": "1",
+      "kons": "",
+      "own": "",
+      "stock": "18",
+      "manage": "yes",
+      "total": "2.14876",
+      "sub": "2.14876"
+     },
+     "840": {
+      "n": "QUATTRO 1,5 kg Adult",
+      "q": 1,
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wc_reduced": "0",
+      "src_qty": "1",
+      "kons": "",
+      "own": "0",
+      "stock": "5",
+      "manage": "yes",
+      "total": "14.049587",
+      "sub": "14.049587"
+     }
+    }
+   },
+   "35436": {
+    "st": "processing",
+    "reduced": "2026-09-03 10:17:41",
+    "restored": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"quattro\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "total": "23.61",
+    "ship": "3.49",
+    "tax": "4.09",
+    "coupons": [],
+    "pay": "paysera",
+    "ds_sent": "",
+    "invoice_meta": [
+     "_petshop_avpn_number",
+     "_petshop_invoice_document_type",
+     "_wcdn_invoice_date",
+     "_wcdn_invoice_number",
+     "_wcdn_invoice_number_counter",
+     "_wcdn_invoice_pdf",
+     "_wcdn_invoice_pdf_token"
+    ],
+    "eil": {
+     "856": {
+      "n": "Exclusion Hypoallerg",
+      "q": 1,
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wc_reduced": "0",
+      "src_qty": "1",
+      "kons": "",
+      "own": "21",
+      "stock": "70.000000",
+      "manage": "yes",
+      "total": "1.975207",
+      "sub": "1.975207"
+     },
+     "857": {
+      "n": "QUATTRO 1,5 kg Adult",
+      "q": 1,
+      "src": "quattro",
+      "k": "tiesiai",
+      "rq": "",
+      "wc_reduced": "1",
+      "src_qty": "1",
+      "kons": "",
+      "own": "0",
+      "stock": "5",
+      "manage": "yes",
+      "total": "14.049587",
+      "sub": "14.049587"
+     }
+    }
+   },
+   "35438": {
+    "st": "processing",
+    "reduced": "2026-09-03 11:07:53",
+    "restored": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":2,\"vienetai\":2}}",
+    "type": "MAIN",
+    "total": "36.42",
+    "ship": "3.49",
+    "tax": "6.32",
+    "coupons": [],
+    "pay": "paysera",
+    "ds_sent": "{\"prins\":\"2026-09-03 11:23:34\"}",
+    "invoice_meta": [
+     "_petshop_avpn_number",
+     "_petshop_completed_pdf",
+     "_petshop_invoice_document_type",
+     "_wcdn_invoice_date",
+     "_wcdn_invoice_number",
+     "_wcdn_invoice_number_counter"
+    ],
+    "eil": {
+     "863": {
+      "n": "Animonda Carny Adult",
+      "q": 1,
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wc_reduced": "0",
+      "src_qty": "1",
+      "kons": "",
+      "own": "",
+      "stock": "18",
+      "manage": "yes",
+      "total": "2.14876",
+      "sub": "2.14876"
+     },
+     "864": {
+      "n": "Prins Diet Skin & In",
+      "q": 1,
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wc_reduced": "1",
+      "src_qty": "1",
+      "kons": "",
+      "own": "1",
+      "stock": "12",
+      "manage": "yes",
+      "total": "24.46281",
+      "sub": "24.46281"
+     }
+    }
+   },
+   "35442": {
+    "st": "processing",
+    "reduced": "2026-09-03 13:12:52",
+    "restored": "",
+    "groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"av\":{\"carrier\":\"any\",\"eilutes\":3,\"vienetai\":5}}",
+    "type": "MIXED",
+    "total": "30.73",
+    "ship": "0",
+    "tax": "5.34",
+    "coupons": [],
+    "pay": "bacs",
+    "ds_sent": "",
+    "invoice_meta": [
+     "_petshop_avpn_number",
+     "_petshop_iapv_number",
+     "_petshop_invoice_document_type",
+     "_petshop_order_pdf",
+     "_wcdn_invoice_date",
+     "_wcdn_invoice_number",
+     "_wcdn_invoice_number_counter"
+    ],
+    "eil": {
+     "877": {
+      "n": "Exclusion Mediterran",
+      "q": 1,
+      "src": "vf",
+      "k": "tiesiai",
+      "rq": "",
+      "wc_reduced": "1",
+      "src_qty": "1",
+      "kons": "",
+      "own": "",
+      "stock": "93.000000",
+      "manage": "yes",
+      "total": "14.371901",
+      "sub": "14.371901"
+     },
+     "878": {
+      "n": "Animonda GranCarno A",
+      "q": 1,
+      "src": "av",
+      "k": "",
+      "rq": "1",
+      "wc_reduced": "0",
+      "src_qty": "1",
+      "kons": "",
+      "own": "",
+      "stock": "23",
+      "manage": "yes",
+      "total": "2.768595",
+      "sub": "2.768595"
+     },
+     "879": {
+      "n": "Animonda GranCarno A",
+      "q": 3,
+      "src": "av",
+      "k": "",
+      "rq": "3",
+      "wc_reduced": "0",
+      "src_qty": "3",
+      "kons": "",
+      "own": "",
+      "stock": "51",
+      "manage": "yes",
+      "total": "5.454545",
+      "sub": "5.454545"
+     },
+     "880": {
+      "n": "Animonda GranCarno A",
+      "q": 1,
+      "src": "av",
+      "k": "",
+      "rq": "1",
+      "wc_reduced": "0",
+      "src_qty": "1",
+      "kons": "",
+      "own": "",
+      "stock": "60",
+      "manage": "yes",
+      "total": "2.801653",
+      "sub": "2.801653"
+     }
+    }
+   }
+  },
+  "plugins_active": [
+   "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php",
+   "woo-lithuaniapost-main/woo-lithuaniapost.php",
+   "woo-payment-gateway-paysera/paysera.php"
+  ],
+  "avpn_opt": [
+   {
+    "option_name": "wpo_wcpdf_documents_settings_invoice",
+    "v": "a:10:{s:7:\"enabled\";s:1:\"1\";s:19:\"attach_to_email_ids\";a:3:{s:9:\"new_order\";s:1:\"1\";s:24:\"customer_completed_order\";s:1:"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter",
+    "v": "349"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter_year",
+    "v": "a:1:{i:2026;i:1;}"
+   },
+   {
+    "option_name": "petshop_avpn_counter",
+    "v": "324"
+   },
+   {
+    "option_name": "petshop_iapv_counter",
+    "v": "163"
+   }
+  ],
+  "avpn_meta": [
+   {
+    "meta_key": "_petshop_avpn_number",
+    "n": "45"
+   },
+   {
+    "meta_key": "_petshop_iapv_number",
+    "n": "7"
+   },
+   {
+    "meta_key": "_petshop_invoice_document_type",
+    "n": "45"
+   },
+   {
+    "meta_key": "_wcdn_invoice_date",
+    "n": "45"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number",
+    "n": "45"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number_counter",
+    "n": "45"
+   },
+   {
+    "meta_key": "_wcdn_invoice_pdf",
+    "n": "17"
+   },
+   {
+    "meta_key": "_wcdn_invoice_pdf_token",
+    "n": "17"
+   }
+  ],
+  "avpn_grep_mu": [],
+  "avpn_grep_plugins": [
+   "petshop-pragma/petshop-pragma.php"
+  ],
+  "snippets_avpn": [
+   {
+    "id": "635",
+    "name": "Petshop Recon Pries Testini Uzsakyma v1",
+    "active": "0"
+   },
+   {
+    "id": "637",
+    "name": "Petshop Saskaitos Recon LIGHT v2",
+    "active": "0"
+   },
+   {
+    "id": "643",
+    "name": "Petshop Invoice Bug Recon v1",
+    "active": "0"
+   },
+   {
+    "id": "645",
+    "name": "Petshop Read Functions v1",
+    "active": "0"
+   },
+   {
+    "id": "647",
+    "name": "Petshop Invoice Timing Test v1",
+    "active": "0"
+   },
+   {
+    "id": "652",
+    "name": "Petshop R608 Recon v1",
+    "active": "0"
+   },
+   {
+    "id": "654",
+    "name": "Petshop Invoice Test2 v1",
+    "active": "0"
+   },
+   {
+    "id": "655",
+    "name": "Petshop Read Attach v1",
+    "active": "0"
+   },
+   {
+    "id": "3688",
+    "name": "QQ H211 es recon",
+    "active": "0"
+   },
+   {
+    "id": "4769",
+    "name": "TEMP PS dep-175308",
+    "active": "1"
+   }
+  ],
+  "dropship_file": "petshop-dropship-sargas.php",
+  "dropship_fns": [
+   [
+    "init",
+    ""
+   ],
+   [
+    "planuoti",
+    ""
+   ],
+   [
+    "tikrinti",
+    ""
+   ]
+  ],
+  "dropship_perduota": "pattern nerastas",
+  "dropship_send": "pattern nerastas",
+  "tiekimas_isimti": "function isimti_eilute( $o, $iid ) {\n\t\tglobal $wpdb;\n\t\t$n = $wpdb->query( $wpdb->prepare(\n\t\t\t'DELETE e FROM ' . self::t_eilutes() . ' e\n\t\t\t INNER JOIN ' . self::t_partijos() . \" p ON p.id=e.partija_id\n\t\t\t WHERE e.order_id=%d AND e.pastaba=%s AND p.busena='kaupiama'\",\n\t\t\t$o->get_id(), 'eilutė ' . (int) $iid ) );\n\n\t\tif ( $n ) {\n\t\t\t$o->add_order_note( 'Tiekimas: prekė išimta iš tiekimo lentelės — grįžta į dropshipą.', false, true );\n\t\t}\n\t\tself::perziuret_laukima( $o );\n\t\treturn (int) $n;\n\t}\n\n\t/** „12,4 kg“ arba „—“. */\n\tpublic static function kg( $kg ) {\n\t\tif ( $kg <= 0 ) { return '—'; }\n\t\treturn rtrim( rtrim( number_format( (float) $kg, 1, ',', ' ' ), '0' ), ',' ) . ' kg';\n\t}\n\n\t/** Partijos svoris iš prekių (kg) ir kiek eilučių be svorio. */\n\tpublic static function partijos_svoris( $pid ) {\n\t\t$kg = 0.0; $be = 0;\n\t\tforeach ( self::partijos_eilutes( $pid ) as $e ) {\n\t\t\t$pr = wc_get_product( $e->product_id );\n\t\t\t$w  = $pr ? (float) $pr->get_weight() : 0;\n\t\t\tif ( $w <= 0 ) { $be++; continue; }\n\t\t\t$kg += $w * (int) $e->qty;\n\t\t}\n\t\treturn array( round( $kg, 2 ), $be );\n\t}\n\n\t/** Rodomas svoris: rankinis, jei įvestas; kitaip — iš prekių. */\n\tpublic static function svoris( $part ) {\n\t\tif ( null !== $part->svoris && '' !== $part->svoris && (float) $part->svoris > 0 ) {\n\t\t\treturn (float) $part->svoris;\n\t\t}\n\t\tlist( $kg ) = self::partijos_svoris( $part->id );\n\t\treturn $kg;\n\t}\n\n\t/** Ar užsakymas dar ko nors laukia; jei ne — vėliavėlė nuimama. */\n\tprotecte",
+  "tiekimas_prideti": "pattern nerastas",
+  "paysera_refund": [],
+  "desk_fns": [
+   [
+    "init",
+    ""
+   ],
+   [
+    "laiskai_off",
+    ""
+   ],
+   [
+    "laiskai_on",
+    ""
+   ],
+   [
+    "veiksmo_url",
+    " $v, $id "
+   ],
+   [
+    "veiksmai",
+    " $o, $row "
+   ],
+   [
+    "venipak_registruoti",
+    " $ids, $manifesto_kodas "
+   ],
+   [
+    "venipak_manifesto_pdf",
+    " $kodas "
+   ],
+   [
+    "vykdyti_veiksma",
+    ""
+   ],
+   [
+    "meniu",
+    ""
+   ],
+   [
+    "slepti_wc",
+    ""
+   ],
+   [
+    "musu_puslapis",
+    ""
+   ],
+   [
+    "chrome",
+    ""
+   ],
+   [
+    "sprendimas",
+    " $pid, $qty "
+   ],
+   [
+    "eilutes_saltinis",
+    " $item "
+   ],
+   [
+    "saltiniai",
+    " $order "
+   ],
+   [
+    "vykdymas",
+    " $order "
+   ],
+   [
+    "pakuociu",
+    " $o "
+   ],
+   [
+    "reikia_pakuociu",
+    " $o "
+   ],
+   [
+    "lp_svoris",
+    " $o "
+   ],
+   [
+    "siuntos_kodas",
+    " $o "
+   ],
+   [
+    "vezejas",
+    " $order "
+   ],
+   [
+    "turi_siunta",
+    " $order "
+   ],
+   [
+    "eile",
+    " $order "
+   ],
+   [
+    "klausimas",
+    " $order "
+   ],
+   [
+    "klausimo_eilutes",
+    " $order "
+   ],
+   [
+    "paieska_ids",
+    " $q "
+   ],
+   [
+    "lauku_paieska",
+    " $f "
+   ],
+   [
+    "datos_riba",
+    " $kodas, $nuo, $iki "
+   ],
+   [
+    "gauti",
+    " $eile, $f "
+   ],
+   [
+    "skaiciai",
+    ""
+   ],
+   [
+    "url",
+    " $args = array("
+   ],
+   [
+    "zyme",
+    " $s "
+   ],
+   [
+    "puslapis",
+    ""
+   ],
+   [
+    "ryto_partija",
+    " $naujai = false "
+   ],
+   [
+    "ryto_partija_isvalyti",
+    " $p, $raktas = '' "
+   ],
+   [
+    "ryto_partija_be",
+    " $p, $ids "
+   ],
+   [
+    "ryto_partija_ismesti",
+    " $id "
+   ],
+   [
+    "ryto_url",
+    " $z, $extra = array("
+   ],
+   [
+    "rytas",
+    ""
+   ],
+   [
+    "ryt_kojele",
+    " $z, $p "
+   ],
+   [
+    "ryt_uzuomina",
+    " $z "
+   ],
+   [
+    "ryt_kort",
+    " $sk, $etikete, $spalva "
+   ],
+   [
+    "ryt1",
+    " $p "
+   ],
+   [
+    "ryt2",
+    " $p "
+   ],
+   [
+    "siuntu_bukle",
+    " $ids "
+   ],
+   [
+    "perdavimo_zenklas",
+    " $e "
+   ],
+   [
+    "siuntu_lentele",
+    " $ids, $pastomatu_tikrinti = true "
+   ],
+   [
+    "ryt3",
+    " $p "
+   ],
+   [
+    "riba",
+    " $sandelis "
+   ],
+   [
+    "ribos_zyme",
+    " $sandelis "
+   ],
+   [
+    "manifesto_numeris",
+    " $kodas "
+   ],
+   [
+    "grupes_manifestas",
+    " $ids "
+   ],
+   [
+    "siuntos_klaida",
+    " $nr, $ids "
+   ],
+   [
+    "ryt4",
+    " $p "
+   ],
+   [
+    "ryt5",
+    " $p "
+   ],
+   [
+    "ryt6",
+    " $p "
+   ],
+   [
+    "ryt_skriptas",
+    ""
+   ],
+   [
+    "pranesimas",
+    ""
+   ],
+   [
+    "virsus",
+    " $f "
+   ],
+   [
+    "pipe",
+    " $c "
+   ],
+   [
+    "rail",
+    " $eile, $c "
+   ],
+   [
+    "rail_punktas",
+    " $k, $eile, $n, $blankus "
+   ],
+   [
+    "juosta",
+    " $eile, $f, $kiek "
+   ],
+   [
+    "linksnis",
+    " $n, $v, $d, $g "
+   ],
+   [
+    "select",
+    " $vardas, $opcijos, $reiksme "
+   ],
+   [
+    "uzsakymo_svoris",
+    " $o "
+   ],
+   [
+    "grupes_svoris",
+    " $ids "
+   ],
+   [
+    "kg",
+    " $kg "
+   ],
+   [
+    "misrus_grupes",
+    " $o "
+   ],
+   [
+    "kons_laukia",
+    " $o "
+   ],
+   [
+    "misrus_sprendimas",
+    " $o "
+   ],
+   [
+    "misriu_korteles",
+    " $eilutes "
+   ],
+   [
+    "klausimu_korteles",
+    " $eilutes "
+   ],
+   [
+    "lentele",
+    " $eilutes, $statusai, $eile = '', $f = array("
+   ],
+   [
+    "juostos_spalva",
+    " $row "
+   ],
+   [
+    "vezejo_vardas",
+    " $o "
+   ],
+   [
+    "veiksmas",
+    " $o, $row "
+   ],
+   [
+    "laikas",
+    " $d "
+   ],
+   [
+    "skydelio_duomenys",
+    " $o, $row "
+   ],
+   [
+    "skydelis",
+    ""
+   ],
+   [
+    "dialogas",
+    ""
+   ],
+   [
+    "bulk",
+    ""
+   ],
+   [
+    "wc_forma",
+    ""
+   ],
+   [
+    "stilius",
+    ""
+   ],
+   [
+    "skriptas",
+    ""
+   ],
+   [
+    "misrusSuma",
+    "f"
+   ],
+   [
+    "d",
+    "r"
+   ],
+   [
+    "esc",
+    "s"
+   ],
+   [
+    "dlg",
+    "url,d"
+   ],
+   [
+    "dlgOff",
+    ""
+   ],
+   [
+    "mark",
+    ""
+   ],
+   [
+    "open",
+    "i"
+   ],
+   [
+    "close",
+    ""
+   ],
+   [
+    "selAll",
+    ""
+   ],
+   [
+    "wcVienam",
+    "veiksmas,id"
+   ],
+   [
+    "pazymeti",
+    ""
+   ]
+  ]
+ }
+}
