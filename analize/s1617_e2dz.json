@@ -1,0 +1,175 @@
+{
+ "v": "dep-215838",
+ "kurimas": 200,
+ "sid": 4794,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1617 e2d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": {
+   "1": [
+    80000,
+    "c6a328257f361148742b690cb7a496ba"
+   ],
+   "2": 44208
+  },
+  "bytes": 339494,
+  "md5": "99533f9116ad805ee39aa9c1b5240cc3",
+  "token": "ok",
+  "buvo": "c6a2232b00d9399ab7b9c050e8dfc9a0",
+  "backup": true,
+  "rasyta": 339494,
+  "po": "99533f9116ad805ee39aa9c1b5240cc3",
+  "part_unlink": true,
+  "orig": {
+   "st": "processing",
+   "griz": "{\"av\":{\"nr\":\"V07267E1000779\",\"t\":\"gr\\u012f\\u017eta siunt\\u0117jui (sim)\",\"e\":\"\",\"d\":\"\",\"kada\":\"2026-09-05 00:52:09\"}}",
+   "pk_id": "35792",
+   "nemok": ""
+  },
+  "pastas": {
+   "n": 10,
+   "pask": [
+    [
+     "2026-09-05 00:52:43",
+     "terra@petshop.lt",
+     "Jūsų užsakymo Nr. 35436 siunta grįžo — pakartotinis siuntimas 8,21 €",
+     1
+    ],
+    [
+     "2026-09-05 00:52:56",
+     "terra@petshop.lt",
+     "Apmokėjimas gautas — užsakymo Nr. 35436 siuntą išsiųsime iš naujo",
+     1
+    ],
+    [
+     "2026-09-05 00:52:56",
+     "uzsakymai@petshop.lt",
+     "Naujas užsakymas Nr. 35792 — 2026-09-05",
+     0
+    ],
+    [
+     "2026-09-05 00:52:56",
+     "terra@petshop.lt",
+     "Jūsų užsakymas Nr. 35792 — apmokėjimas gautas",
+     0
+    ]
+   ]
+  }
+ },
+ "Z": {
+  "v": "S1617 e2d",
+  "f": "Z",
+  "temp_istrinta": 0,
+  "is_naujo_url": "yra",
+  "is_naujo": {
+   "code": 302,
+   "pd_ok": "dl_dalis",
+   "pd_nr": "35436|siunta V07267E1000779 grįžo — AV dalis: Surinkti AV → naujas lipdukas"
+  },
+  "orig": {
+   "st": "processing",
+   "griz": "",
+   "pk_id": "",
+   "nemok": "",
+   "istorija": "[{\"id\":35792,\"b\":\"apmoketa\",\"suma\":\"8,21\",\"laikas\":\"2026-09-05 01:00:24\"}]",
+   "surinkta": ""
+  },
+  "kortele_po": "DAR YRA",
+  "pastas": {
+   "n": 10,
+   "pask": [
+    [
+     "2026-09-05 00:52:43",
+     "terra@petshop.lt",
+     "Jūsų užsakymo Nr. 35436 siunta grįžo — pakartotinis siuntimas 8,21 €",
+     1
+    ],
+    [
+     "2026-09-05 00:52:56",
+     "terra@petshop.lt",
+     "Apmokėjimas gautas — užsakymo Nr. 35436 siuntą išsiųsime iš naujo",
+     1
+    ],
+    [
+     "2026-09-05 00:52:56",
+     "uzsakymai@petshop.lt",
+     "Naujas užsakymas Nr. 35792 — 2026-09-05",
+     0
+    ],
+    [
+     "2026-09-05 00:52:56",
+     "terra@petshop.lt",
+     "Jūsų užsakymas Nr. 35792 — apmokėjimas gautas",
+     0
+    ]
+   ]
+  },
+  "temp_liko": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788561026|SEOSPHK8iDDrvEcCPj1tq03kDvJOWmIqnU1VDaBko1h|96744ad8374785b26059171e7c4f1587273005e1cc3477f6c2a544383fc69bb6"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788561026|SEOSPHK8iDDrvEcCPj1tq03kDvJOWmIqnU1VDaBko1h|9b9c3709a8b96757d6ce74ecabb86fd8eaf1446f5f728be5c04fb665ffe130f8"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788561026|SEOSPHK8iDDrvEcCPj1tq03kDvJOWmIqnU1VDaBko1h|0fa11ecdccbeba667c1bf514b060ebc81cb8804183d2c61d330974829c895def"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1617_e2_klausimai_forma",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "full": true,
+    "click": ".dl-kortele[data-id=\"35436\"] .dl-pk-b",
+    "eval": "({forma:(function(){var f=document.querySelector('.dl-kortele[data-id=\"35436\"] .dl-pk-f');return f?{display:f.style.display,suma:f.querySelector('[name=suma]').value,txt:f.innerText.replace(/\\s+/g,' ')}:null})(),m:[...document.querySelectorAll('.dl-kortele[data-id=\"35436\"] .dl-veiksmai .v')].map(function(x){return x.innerText;})})"
+   },
+   {
+    "n": "s1617_e2_surinkti_35436",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti&atidaryti=35436",
+    "w": 1400,
+    "eval": "({pastaba:(document.getElementById('skPastaba')||{}).innerText||''})"
+   }
+  ]
+ },
+ "shots": {
+  "s1617_e2_klausimai_forma": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": ".dl-kortele[data-id=\"35436\"] .dl-pk-b",
+   "eval": {
+    "forma": {
+     "display": "flex",
+     "suma": "8.21",
+     "txt": "Suma € 4,22 + 3,99 — taisyk, jei reikia Sukurti ir siųsti nuorodą Be mokesčio atgal"
+    },
+    "m": [
+     "Pakartotinis užsakymas",
+     "Atšaukti — prekės grįžo į AV",
+     "Atidaryti",
+     "Parašyti klientui"
+    ]
+   }
+  },
+  "s1617_e2_surinkti_35436": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "pastaba": "Dabar: Klausimai · toliau: Spręsti\nSurūšiuota. Kelią dar gali keisti, kol prekei nepadarytas pirmas žingsnis. Klientui pranešta apie vėlavimą (09-04 17:28)."
+   }
+  }
+ }
+}
