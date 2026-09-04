@@ -1,0 +1,1013 @@
+{
+ "v": "dep-151326",
+ "list_praleistas": "TypeError: terminated",
+ "kurimas": 200,
+ "sid": 4729,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1614 e2r",
+  "temp_istrinta": 1,
+  "pluginai": {
+   "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php": [
+    "Shipping with Venipak for WooCommerce",
+    "1.26.5",
+    "aktyvus"
+   ],
+   "woo-lithuaniapost-main/woo-lithuaniapost.php": [
+    "UNISEND for WooCommerce",
+    "4.0.32",
+    "aktyvus"
+   ]
+  },
+  "dirs": [
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wc-venipak-shipping",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main"
+  ],
+  "vp_meta_grep": [
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:225: $order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:316: $order->update_meta_data( 'venipak_shipping_order_data', json_encode( $venipak_shipping_order_data ) );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:412: $order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:421: $order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:751: $order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-product.php:93: $product->update_meta_data('shopup_venipak_shipping_min_age', sanitize_text_field( $_POST['shopup_venipak_shipping_min_age'] ) );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-product.php:98: $product->update_meta_data('_venipak_total_shipments', sanitize_text_field( $_POST['_venipak_total_shipments'] ) );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-product.php:101: $product->update_meta_data('venipak_is_locker_excluded', 1);",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-product.php:103: $product->update_meta_data('venipak_is_locker_excluded', 0);",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:386: $order->update_meta_data('venipak_shipping_order_data', json_encode($order_meta));",
+   "includes/venipak-fetch-pickups.php:109: $order->update_meta_data('venipak_pickup_point', $point_id);",
+   "includes/venipak-fetch-pickups.php:113: $order->update_meta_data('venipak_pickup_point_data', wp_json_encode(venipak_pickup_snapshot($point)));",
+   "public/class-woocommerce-shopup-venipak-shipping-public-courier-checkout.php:164: $order->update_meta_data('venipak_door_code', sanitize_text_field($_POST['venipak_door_code']));",
+   "public/class-woocommerce-shopup-venipak-shipping-public-courier-checkout.php:167: $order->update_meta_data('venipak_office_no', sanitize_text_field($_POST['venipak_office_no']));",
+   "public/class-woocommerce-shopup-venipak-shipping-public-courier-checkout.php:170: $order->update_meta_data('venipak_delivery_time', sanitize_text_field($_POST['venipak_delivery_time']));"
+  ],
+  "vp_pickup_grep": [
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:263: private function missing_pickup_point_message() {",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:276: private function reject_orders_with_missing_pickup_point( $order_ids ) {",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:315: $venipak_shipping_order_data['error_message'] = $this->missing_pickup_point_message();",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:335: $order_ids = $this->reject_orders_with_missing_pickup_point( $order_ids );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:337: return array( 'status' => 'error', 'data' => $this->missing_pickup_point_message() );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:470: $venipak_pickup_point = venipak_resolve_order_pickup($order);",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:523: if ($venipak_pickup_point) {",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:524: $name = $document->createElement( 'name', $venipak_pickup_point['name'] );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:525: $company_code = $document->createElement( 'company_code',  $venipak_pickup_point['code'] );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:527: $country = $document->createElement( 'country', $venipak_pickup_point['country'] );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:528: $city = $document->createElement( 'city', $venipak_pickup_point['city'] );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:529: $address = $document->createElement( 'address', $venipak_pickup_point['address'] );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:530: $post_code = $document->createElement( 'post_code', preg_replace('/\\D/', '', $venipak_pickup_point['zip']));",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:561: if (!$venipak_pickup_point) {",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:643: $needed_packs += $venipak_pickup_point ? 1 : max(1, ceil(sizeof($products_without_shipments) / $this->shopup_venipak_shipping_field_maxpackproducts));",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:713: $pack_count = $venipak_pickup_point ? 1 : ceil(sizeof($products_without_shipments) / $this->shopup_venipak_shipping_field_maxpackproducts);",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:109: $venipak_pickup_point_id = $order->get_meta('venipak_pickup_point', true );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:110: $venipak_pickup_point_title = $this->get_venipak_point_title($order);",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:138: <?php if ($venipak_pickup_point_title) { ?>",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:139: <p><strong><?php echo __( 'Pickup point', 'woocommerce-shopup-venipak-shipping' ); ?></strong><?php echo $venipak_pickup_point_title ?></p>",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:211: $default_options = $venipak_pickup_point_id ? [$venipak_pickup_point_id => $venipak_pickup_point_title] : [];",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:213: 'id' => 'venipak_pickup_point',",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:215: 'class' => 'venipak_pickup_point',",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:220: <button type=\"button\" onclick=\"jQuery('.venipak_pickup_point').val(null).trigger('change');\"><?php echo __( 'Remove', 'woocommerce-shopup-venipak-shipping' ); ?></button>",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:224: $.get('admin-ajax.php', { 'action': 'woocommerce_venipak_shipping_pickup_points' }, function(data) {",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:225: $('.venipak_pickup_point').select2({",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:231: $('.venipak_pickup_point').val(<?php echo wp_json_encode($venipak_pickup_point_id); ?>).trigger('change');",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:253: if ( isset( $_POST['venipak_pickup_point'] )) {",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:254: venipak_store_order_pickup( $order, wc_clean( $_POST[ 'venipak_pickup_point' ] ) );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:262: $venipak_pickup_entity = venipak_resolve_order_pickup($order, $source);",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:263: if (!$venipak_pickup_entity) {",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:267: $title = $venipak_pickup_entity['name'] . ' ' . $venipak_pickup_entity['address'] . ' ' . $venipak_pickup_entity['city'];",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php:440: if ($order->get_meta('venipak_pickup_point', true )) {",
+   "includes/class-woocommerce-shopup-venipak-shipping.php:266: $this->loader->add_action( 'wp_ajax_woocommerce_venipak_shipping_pickup_points', $plugin_public_pickup_checkout, 'add_venipak_shipping_pickup_points' );",
+   "includes/class-woocommerce-shopup-venipak-shipping.php:267: $this->loader->add_action( 'wp_ajax_nopriv_woocommerce_venipak_shipping_pickup_points', $plugin_public_pickup_checkout, 'add_venipak_shipping_pickup_points' );",
+   "includes/venipak-fetch-pickups.php:50: $response = wp_remote_get( \"https://go.venipak.lt/ws/get_pickup_points\" );",
+   "includes/venipak-fetch-pickups.php:53: error_log(\"VENIPAK https://go.venipak.lt/ws/get_pickup_points SERVICE ERROR\");",
+   "includes/venipak-fetch-pickups.php:61: error_log(\"VENIPAK https://go.venipak.lt/ws/get_pickup_points RESPONSE READ ERROR\");",
+   "includes/venipak-fetch-pickups.php:84: function venipak_pickup_snapshot($point) {",
+   "includes/venipak-fetch-pickups.php:108: $previous_id = trim((string) $order->get_meta('venipak_pickup_point'));"
+  ],
+  "vp_error_grep": [
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:272: * address instead of the locker, with no error anywhere.",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:314: $venipak_shipping_order_data['status'] = 'error';",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:315: $venipak_shipping_order_data['error_message'] = $this->missing_pickup_point_message();",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:337: return array( 'status' => 'error', 'data' => $this->missing_pickup_point_message() );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:343: $transport_error = '';",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:367: if ( is_wp_error( $response ) ) {",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:368: $transport_error = $response->get_error_message();",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:373: $transport_error = '';",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:378: $transport_error = sprintf(",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:387: $transport_error = __( 'Venipak returned an empty response — the shipment was NOT registered.', 'woocommerce-shopup-venipak-shipping' );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:396: // Only retry if the error is about pack number being in use",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:402: if ( ! $transport_error && strpos( $result_xml_string, 'type=\"ok\"' ) !== false ) {",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:411: $venipak_shipping_order_data['error_message'] = '';",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:419: $venipak_shipping_order_data['status'] = 'error';",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:420: $venipak_shipping_order_data['error_message'] = $transport_error ? $transport_error : strip_tags($result_xml_string);",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:423: if ( $transport_error ) {",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:424: error_log( 'VENIPAK ' . $url . ' dispatch failed: ' . $transport_error );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:426: return array('status' => 'error', 'data' => $venipak_shipping_order_data['error_message']);",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:226: if ( is_wp_error( $response ) ) {",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:228: /* translators: %s: transport error reported by WordPress */",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:230: $response->get_error_message()",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:237: // The endpoint answers errors as plain text or XML on the same 200 response, so the",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:241: error_log( 'VENIPAK ' . $url . ' returned status ' . $status . ': ' . substr( $detail, 0, 500 ) );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-label.php:243: /* translators: %s: error text returned by Venipak */",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-orders-list.php:126: $error_message = $venipak_shipping_order_data['error_message'];"
+  ],
+  "lp_meta_grep": [
+   "admin/class-woo-lithuaniapost-admin-order-service.php:297: $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$COURIER_CALLED->value);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:353: $order->update_meta_data('_woo_lithuaniapost_barcode', null);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:354: $order->update_meta_data('_woo_lithuaniapost_shipping_item_id', null);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:355: $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$PARCEL_CANCELED->value);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:422: $order->update_meta_data('_woo_lithuaniapost_lpexpress_shipping_method_instance_id', $lp_shipping_method->instance_id);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:491: $order->update_meta_data('_woo_lithuaniapost_returns_barcodes', json_encode($barcodes));",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:566: $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$PARCEL_PENDING->value);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:817: $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$PARCEL_CREATED->value);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:818: $order->update_meta_data('_woo_lithuaniapost_shipping_item_id', $parcel_id);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:828: $order->update_meta_data('_woo_lithuaniapost_shipping_item_weight', $parcel_request['parcel']['weight'] ?? null);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:829: $order->update_meta_data('_woo_lithuaniapost_shipping_item_size', $parcel_request['parcel']['size'] ?? null);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:830: $order->update_meta_data('_woo_lithuaniapost_shipping_item_size', $parcel_request['parcel']['size'] ?? null);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:839: $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal_id', $terminal_id);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:840: $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal', sprintf('%s - %s, %s', $terminal [0]->name, $terminal [0]->address, $terminal [0]->city));",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:844: $order->update_meta_data('_woo_lithuaniapost_parcel_create_error', null);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:942: $order->update_meta_data('_woo_lithuaniapost_returns_barcodes', json_encode($shipping_item_status->returnsBarcode));",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:945: $order->update_meta_data('_woo_lithuaniapost_return_supported', true);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:948: $order->update_meta_data('_woo_lithuaniapost_barcode', $shipping_item_status->barcode);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:949: $order->update_meta_data('_woo_lithuaniapost_shipping_request_id', $shipping_request_id);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:952: $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$COURIER_PENDING->value);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:954: $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$COURIER_CALLED->value);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:956: $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$SHIPPING_INITIATED->value);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:964: $order->update_meta_data('_woo_lithuaniapost_tracking_mail_send', true);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:988: $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$PARCEL_FAILED->value);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:989: $order->update_meta_data('_woo_lithuaniapost_parcel_create_error', $error_result);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:1000: $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$PARCEL_FAILED->value);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:1001: $order->update_meta_data('_woo_lithuaniapost_parcel_create_error', (object)['error' => 'Invalid request: ' . $error_message]);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:1103: $order->update_meta_data('_woo_lithuaniapost_lpexpress_shipping_method_instance_id', $lp_shipping_method->instance_id);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:1115: $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal_id', $terminal_id);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:1116: $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal', sprintf('%s - %s, %s', $terminal [0]->name, $terminal [0]->address, $terminal [0]->city));",
+   "admin/schedule/class-woo-lithuaniapost-admin-courier-schedule.php:92: $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', LpOrderStatus::$COURIER_CALLED->value);",
+   "admin/schedule/class-woo-lithuaniapost-admin-courier-schedule.php:93: $order->update_meta_data('_woo_lithuaniapost_lpexpress_courier_called_date', date('Y-m-d H:i:s'));",
+   "admin/class-woo-lithuaniapost-admin-order-tracking.php:128: $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', $lp_order_status->value);",
+   "admin/class-woo-lithuaniapost-admin-order-tracking.php:132: $order->update_meta_data('_woo_lithuaniapost_tracking_mail_send', true);",
+   "public/class-woo-lithuaniapost-public.php:485: $order->update_meta_data('_woo_lithuaniapost_lpexpress_shipping_method_instance_id', $shipping_method_instance_id);",
+   "public/class-woo-lithuaniapost-public.php:508: $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal_id', $terminal_id);",
+   "public/class-woo-lithuaniapost-public.php:509: $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal', sprintf('%s - %s, %s', $terminal [0]->name, $terminal [0]->address, $terminal [0]->city));"
+  ],
+  "lp_terminal_grep": [
+   "admin/class-woo-lithuaniapost-admin-api-hooks.php:8: require_once plugin_dir_path(dirname(__FILE__)) . 'admin/api/class-woo-lithuaniapost-admin-terminal-api.php';",
+   "admin/class-woo-lithuaniapost-admin-api-hooks.php:53: private $terminal_api;",
+   "admin/class-woo-lithuaniapost-admin-api-hooks.php:66: $this->terminal_api = new Woo_Lithuaniapost_Admin_Terminal_Api($plugin_name, $version);",
+   "admin/class-woo-lithuaniapost-admin-api-hooks.php:100: * - Save Terminal List",
+   "admin/class-woo-lithuaniapost-admin-api-hooks.php:111: $is_terminals_saved = apply_filters('woo_lithuaniapost_terminal_service_update_terminals', '');",
+   "admin/class-woo-lithuaniapost-admin-api-hooks.php:113: if ($is_terminals_saved === false) {",
+   "admin/class-woo-lithuaniapost-admin-size-service.php:120: if ($plan_code === 'HANDS' || $plan_code === 'TERMINAL') {",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:5: require_once plugin_dir_path(dirname(__FILE__)) . 'admin/api/class-woo-lithuaniapost-admin-terminal-api.php';",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:14: class Woo_Lithuaniapost_Admin_Terminal_Service",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:42: private $terminal_api;",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:48: $this->terminal_api = new Woo_Lithuaniapost_Admin_Terminal_Api($plugin_name, $version);",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:52: public function update_terminal_list()",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:54: $unisend_terminals_saved = $this->save_unisend_terminal_list();",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:55: return $unisend_terminals_saved;",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:58: public function save_unisend_terminal_list()",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:62: $ee_terminals = $this->terminal_api->get_terminals(\"EE\");",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:63: $lv_terminals = $this->terminal_api->get_terminals(\"LV\");",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:64: $lt_terminals = $this->terminal_api->get_terminals(\"LT\");",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:66: // Get LPEXPRESS terminal list",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:67: if ($ee_terminals && $lv_terminals && $lt_terminals) {",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:68: $terminals = array_merge($lv_terminals, $lt_terminals, $ee_terminals);",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:70: // Truncate terminals table",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:71: $wpdb->query(\"TRUNCATE TABLE {$wpdb->woo_lithuaniapost_unisend_terminals}\");",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:72: /** @var \\stdClass $terminal */",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:73: foreach ($terminals as $terminal) {",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:75: $wpdb->woo_lithuaniapost_unisend_terminals, [",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:76: 'terminal_id' => $terminal->id,",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:77: 'name' => $terminal->name,",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:78: 'address' => $terminal->address,",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:79: 'city' => $terminal->city,",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:80: 'country_code' => $terminal->countryCode",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:84: return $terminals;",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:90: * Schedule update terminal list",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:94: public function schedule_update_terminal_list()",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:96: wp_clear_scheduled_hook('woo_lithuaniapost_api_update_terminals');",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:97: wp_clear_scheduled_hook('woo_lithuaniapost_api_update_terminals_daily');",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:98: if (!wp_next_scheduled('woo_lithuaniapost_terminal_service_update_terminals')) {",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:99: wp_schedule_event(time(), 'daily', 'woo_lithuaniapost_terminal_service_update_terminals');",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:103: public function get_terminals_by_country_code(string $shipping_country_code): array",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:107: $terminals = $wpdb->get_results($wpdb->prepare(\"SELECT terminal_id,name,address,city FROM {$wpdb->woo_lithuaniapost_unisend_terminals} WHERE country_code = %s\", $shipping_country_code)) ?? [];",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:109: // Get terminals from DB",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:110: if (!$terminals) {",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:111: $terminals = $wpdb->get_results(sprintf('SELECT * FROM %s',",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:112: $wpdb->woo_lithuaniapost_lpexpress_terminals)",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:115: return $this->format_terminals($terminals);",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:118: public function get_all_terminals(): array",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:123: $terminals = $wpdb->get_results($wpdb->prepare(\"SELECT terminal_id,name,address,city, country_code FROM {$wpdb->woo_lithuaniapost_unisend_terminals}\")) ?? [];",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:125: // Get terminals from DB",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:126: if (!$terminals) {",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php:127: $terminals = $wpdb->get_results(sprintf('SELECT * FROM %s',"
+  ],
+  "lp_addr_grep": [
+   "admin/class-woo-lithuaniapost-admin-order-service.php:697: $receiver_phone = $order->get_billing_phone() ? $order->get_billing_phone() : null;",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:756: 'locality' => $order->get_shipping_city(),",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:757: 'address' => $order->get_shipping_address_1() . ' ' . $order->get_shipping_address_2(),",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:760: 'postalCode' => $order->get_shipping_postcode(),",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:875: $address1 = $order->get_shipping_address_1();",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:884: return array('address1' => $order->get_shipping_address_1(), 'address2' => $order->get_shipping_address_2());",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:1009: $receiver_phone = $order->get_billing_phone();",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:1069: 'locality' => $order->get_shipping_city(),",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:1070: 'address' => $order->get_shipping_address_1() . ' ' . $order->get_shipping_address_2(),",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:1073: 'postalCode' => $order->get_shipping_postcode(),",
+   "admin/class-woo-lithuaniapost-admin-order-settings.php:81: if ($item instanceof \\Automattic\\WooCommerce\\Admin\\Overrides\\OrderRefund || !method_exists($item, 'get_shipping_address_1') || !method_exists($item, 'get_shipping_first_name')) {",
+   "admin/class-woo-lithuaniapost-admin-order-settings.php:85: $address = $item->get_shipping_address_1();",
+   "admin/class-woo-lithuaniapost-admin-order-settings.php:89: $address = sprintf('%s, %s %s, %s', $address, $item->get_shipping_postcode(), $item->get_shipping_city(), $item->get_shipping_country());"
+  ],
+  "desk_klausimas": {
+   "f": "petshop-desk.php:1224-1270",
+   "src": [
+    "\tprotected static function klausimas( $order ) {",
+    "\t\t$st = $order->get_status();",
+    "\t\tif ( in_array( $st, array( 'completed', 'lp-delivered', 'cancelled', 'lp-cancelled', 'refunded', 'checkout-draft' ), true ) ) {",
+    "\t\t\treturn '';",
+    "\t\t}",
+    "\t\tif ( 'failed' === $st )           { return 'Mokėjimas nepavyko'; }",
+    "\t\tif ( 'lp-parcel-failed' === $st ) { return 'Siuntos sukurti nepavyko'; }",
+    "",
+    "\t\tif ( $order->get_meta( '_ps_withdrawal' ) ) { return 'Klientas atsisako sutarties'; }",
+    "",
+    "\t\tif ( $order->get_meta( '_ps_sla_velavimas' ) ) { return 'Tiekėjas vėluoja — perduota prieš 24+ val.'; }",
+    "",
+    "\t\tif ( ! $order->is_paid() ) { return ''; }",
+    "",
+    "\t\t// LP Express galimas TIK iš AV — dropship eilutė su LP pristatymu yra",
+    "\t\t// fiziškai neįmanomas derinys, kuris kitaip išlįstų tik prie lipduko.",
+    "\t\tif ( 'lp' === self::vezejas( $order ) ) {",
+    "\t\t\tforeach ( $order->get_items() as $it ) {",
+    "\t\t\t\t$ls = self::eilutes_saltinis( $it );",
+    "\t\t\t\tif ( $ls && 'av' !== $ls ) { return 'LP negalimas — siuntoje ne-AV prekių'; }",
+    "\t\t\t}",
+    "\t\t}",
+    "",
+    "\t\tforeach ( $order->get_items() as $it ) {",
+    "\t\t\tif ( 'av' !== self::eilutes_saltinis( $it ) ) { continue; }",
+    "\t\t\t// jau nurašyta iš AV — prekė paimta, klausimo nėra",
+    "\t\t\tif ( $it->get_meta( '_reduced_stock' ) || $it->get_meta( '_ps_av_reduced' ) ) { continue; }",
+    "\t\t\t$pid = $it->get_product_id();",
+    "\t\t\tif ( ! $pid ) { continue; }",
+    "\t\t\t$fiksuota = (int) $it->get_meta( '_ps_source_qty' );",
+    "\t\t\t$reikia   = $fiksuota ? $fiksuota : (int) $it->get_quantity();",
+    "\t\t\t/*",
+    "\t\t\t * s589 — TIKRASIS modelis (perskaitytas AV_Source::resolve kode):",
+    "\t\t\t *   legacy prekė = AV sandėlis, likutis WooCommerce `_stock` lauke;",
+    "\t\t\t *   `_own_stock_qty` reikalingas TIK toms prekėms, kurios turi ir",
+    "\t\t\t *   tiekėją (jų katalogе vos 3).",
+    "\t\t\t * Todėl AV_Stock::qty() legacy prekėms grąžina null — remtis juo",
+    "\t\t\t * NEGALIMA. Vienintelis teisingas rodiklis yra resolve()['av_qty'].",
+    "\t\t\t */",
+    "\t\t\t$v = self::sprendimas( $pid, $reikia );",
+    "\t\t\tif ( $v && ! empty( $v['source'] ) && 'av' === $v['source']",
+    "\t\t\t\t&& isset( $v['av_qty'] ) && (int) $v['av_qty'] < $reikia ) {",
+    "\t\t\t\treturn 'Trūksta sandėlyje';",
+    "\t\t\t}",
+    "\t\t}",
+    "\t\treturn '';",
+    "\t}"
+   ]
+  },
+  "desk_vezejas": {
+   "f": "petshop-desk.php:1178-1185",
+   "src": [
+    "\tprotected static function vezejas( $order ) {",
+    "\t\t$m = mb_strtoupper( (string) $order->get_shipping_method() );",
+    "\t\t$lp = ( false !== mb_strpos( $m, 'UNISEND' ) || false !== mb_strpos( $m, 'LP ' ) || false !== mb_strpos( $m, 'LIETUVOS PAŠT' ) );",
+    "\t\t$pastomatas = ( false !== mb_strpos( $m, 'PAŠTOMAT' ) || false !== mb_strpos( $m, 'ATSIĖMIM' ) || false !== mb_strpos( $m, 'PICKUP' ) );",
+    "\t\tif ( $lp ) { return 'lp'; }",
+    "\t\tif ( false !== mb_strpos( $m, 'VENIPAK' ) ) { return $pastomatas ? 'venipak_pastomatas' : 'venipak_kurjeris'; }",
+    "\t\treturn 'kita';",
+    "\t}"
+   ]
+  },
+  "desk_vezejo_vardas": {
+   "f": "petshop-desk.php:2967-2975",
+   "src": [
+    "\tprotected static function vezejo_vardas( $o ) {",
+    "\t\t$v = self::vezejas( $o );",
+    "\t\t$m = array(",
+    "\t\t\t'venipak_kurjeris'   => 'Venipak kurjeris',",
+    "\t\t\t'venipak_pastomatas' => 'Venipak paštomatas',",
+    "\t\t\t'lp'                 => 'LP Express',",
+    "\t\t);",
+    "\t\treturn $m[ $v ] ?? ( $o->get_shipping_method() ? $o->get_shipping_method() : '—' );",
+    "\t}"
+   ]
+  },
+  "desk_turi_siunta": {
+   "f": "petshop-desk.php:1188-1191",
+   "src": [
+    "\tprotected static function turi_siunta( $order ) {",
+    "\t\tlist( $k ) = self::siuntos_kodas( $order );",
+    "\t\treturn '' !== $k;",
+    "\t}"
+   ]
+  },
+  "desk_siuntos_kodas": {
+   "f": "petshop-desk.php:1159-1175",
+   "src": [
+    "\tpublic static function siuntos_kodas( $o ) {",
+    "\t\t$d = $o->get_meta( 'venipak_shipping_order_data' );",
+    "\t\t// Pluginas raktą saugo JSON eilute (H202/H222) — maybe_unserialize jo NEatkoduoja.",
+    "\t\tif ( is_string( $d ) && $d ) {",
+    "\t\t\t$j = json_decode( $d, true );",
+    "\t\t\t$d = null !== $j ? $j : maybe_unserialize( $d );",
+    "\t\t}",
+    "\t\tif ( is_array( $d ) && ! empty( $d['pack_numbers'] ) ) {",
+    "\t\t\t$p = (array) $d['pack_numbers'];",
+    "\t\t\treturn array( implode( ', ', $p ), count( $p ) );",
+    "\t\t}",
+    "\t\tforeach ( array( '_lpexpress_tracking_number', 'lpexpress_tracking_number', '_lp_tracking' ) as $k ) {",
+    "\t\t\t$v = $o->get_meta( $k );",
+    "\t\t\tif ( $v ) { return array( is_array( $v ) ? implode( ', ', $v ) : $v, 1 ); }",
+    "\t\t}",
+    "\t\treturn array( '', 0 );",
+    "\t}"
+   ]
+  },
+  "desk_pakuociu": {
+   "f": "petshop-desk.php:1127-1130",
+   "src": [
+    "\tpublic static function pakuociu( $o ) {",
+    "\t\t$n = (int) $o->get_meta( self::META_PAK );",
+    "\t\treturn $n > 0 ? $n : 1;",
+    "\t}"
+   ]
+  },
+  "desk_reikia_pakuociu": {
+   "f": "petshop-desk.php:1132-1138",
+   "src": [
+    "\tprotected static function reikia_pakuociu( $o ) {",
+    "\t\t$v = self::vezejas( $o );",
+    "\t\t// Venipak: ir kurjeriui, ir paštomatui — į paštomatą kiekviena dėžė",
+    "\t\t// keliauja kaip atskira siunta (§19.11), todėl klausiama abiem.",
+    "\t\treturn in_array( $v, array( 'venipak_kurjeris', 'venipak_pastomatas', 'lp' ), true )",
+    "\t\t\t&& ( 'lp' !== $v || ! $o->get_meta( '_woo_lithuaniapost_lpexpress_terminal_id' ) );",
+    "\t}"
+   ]
+  },
+  "siuntos_metodai": [
+   "init",
+   "prideti_is_plugino",
+   "zalias",
+   "sarasas",
+   "turi",
+   "registruota_grupiu",
+   "uzbaigimo_sargas",
+   "laisko_turinys",
+   "siusti",
+   "meniu",
+   "puslapis",
+   "mixed_pastaba"
+  ],
+  "siuntos_zalias": {
+   "f": "petshop-siuntu-laiskai.php:86-93",
+   "src": [
+    "\tprotected static function zalias( $o ) {",
+    "\t\t// Meta gali grįžti ir masyvu (WC kartais deserializuoja pati) — tada",
+    "\t\t// (string) cast'as kėlė „Array to string conversion\" (H240).",
+    "\t\t$m = $o->get_meta( self::META );",
+    "\t\tif ( is_array( $m ) ) { return $m; }",
+    "\t\t$s = json_decode( (string) $m, true );",
+    "\t\treturn is_array( $s ) ? $s : array();",
+    "\t}"
+   ]
+  },
+  "siuntos_prideti_is_plugino": {
+   "f": "petshop-siuntu-laiskai.php:58-83",
+   "src": [
+    "\tpublic static function prideti_is_plugino( $order_id, $sandelis, $manifesto_kodas ) {",
+    "\t\t$o = wc_get_order( $order_id );",
+    "\t\tif ( ! $o ) { return false; }",
+    "",
+    "\t\t$raw = $o->get_meta( 'venipak_shipping_order_data' );",
+    "\t\t$d   = is_array( $raw ) ? $raw : json_decode( (string) $raw, true );",
+    "\t\tif ( empty( $d['pack_numbers'] ) || ! is_array( $d['pack_numbers'] ) ) { return false; }",
+    "",
+    "\t\t$sarasas = self::zalias( $o );",
+    "\t\t$sarasas[ sanitize_key( $sandelis ) ] = array(",
+    "\t\t\t'sandelis'  => sanitize_key( $sandelis ),",
+    "\t\t\t'kodas'     => sanitize_text_field( $manifesto_kodas ),",
+    "\t\t\t'manifest'  => sanitize_text_field( $d['manifest'] ?? '' ),",
+    "\t\t\t'numeriai'  => array_map( 'sanitize_text_field', $d['pack_numbers'] ),",
+    "\t\t\t'data'      => current_time( 'mysql' ),",
+    "\t\t);",
+    "\t\t$o->update_meta_data( self::META, wp_json_encode( $sarasas ) );",
+    "\t\t$o->add_order_note( sprintf( 'Siuntos numeriai išsaugoti (%s): %s',",
+    "\t\t\tmb_strtoupper( $sandelis ), implode( ', ', $d['pack_numbers'] ) ), false, true );",
+    "\t\t$o->save();",
+    "\t\t/* E1b (Q-E0-1): vienintelis pranesimas is sio failo. Logika NESIKEICIA.",
+    "\t\t   `prideti_is_plugino()` yra Venipak-only, todel vezejas cia visada",
+    "\t\t   'venipak'; LP Express siuntos faktus gauna per naktini cron. */",
+    "\t\tdo_action( 'petshop_siunta_sukurta', (int) $order_id, sanitize_key( $sandelis ), 'venipak', (array) $d['pack_numbers'] );",
+    "\t\treturn true;",
+    "\t}"
+   ]
+  },
+  "siuntos_sarasas": {
+   "f": "petshop-siuntu-laiskai.php:99-117",
+   "src": [
+    "\tpublic static function sarasas( $order_id ) {",
+    "\t\t$o = wc_get_order( $order_id );",
+    "\t\tif ( ! $o ) { return array(); }",
+    "\t\t$s = self::zalias( $o );",
+    "\t\tif ( $s ) { return array_values( $s ); }",
+    "",
+    "\t\t$raw = $o->get_meta( 'venipak_shipping_order_data' );",
+    "\t\t$d   = is_array( $raw ) ? $raw : json_decode( (string) $raw, true );",
+    "\t\tif ( ! empty( $d['pack_numbers'] ) ) {",
+    "\t\t\treturn array( array(",
+    "\t\t\t\t'sandelis' => '',",
+    "\t\t\t\t'kodas'    => '',",
+    "\t\t\t\t'manifest' => (string) ( $d['manifest'] ?? '' ),",
+    "\t\t\t\t'numeriai' => (array) $d['pack_numbers'],",
+    "\t\t\t\t'data'     => '',",
+    "\t\t\t) );",
+    "\t\t}",
+    "\t\treturn array();",
+    "\t}"
+   ]
+  },
+  "siuntos_turi": {
+   "f": "petshop-siuntu-laiskai.php:120-122",
+   "src": [
+    "\tpublic static function turi( $order_id ) {",
+    "\t\treturn (bool) self::sarasas( $order_id );",
+    "\t}"
+   ]
+  },
+  "desk_metodai_vp": [
+   "venipak_registruoti",
+   "venipak_manifesto_pdf",
+   "lp_svoris",
+   "siuntos_kodas",
+   "turi_siunta",
+   "siuntu_bukle",
+   "siuntu_lentele",
+   "siuntos_klaida"
+  ],
+  "uzs": {
+   "35414": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai"
+    ],
+    "adr": "AUDITAS Testas 1, Testų g. 1, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "venipak_pickup_point": "2884",
+     "venipak_pickup_point_data": "{\"id\":2884,\"code\":\"300906055\",\"name\":\"Venipak locker, ANC\\u0116 Venipak pa\\u0161"
+    }
+   },
+   "35415": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 2, Testų g. 2, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": []
+   },
+   "35416": {
+    "st": "completed",
+    "sm": [
+     "woo_lithuaniapost_lpexpress_terminal:12 LP Express"
+    ],
+    "adr": "AUDITAS Testas 3, Testų g. 3, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"CC000000001LT\":{\"k\":9,\"t\":\"lp-delivered\",\"e\":\"pristatyta\",\"d\":\"2026-09-04 13:2",
+     "_woo_lithuaniapost_barcode": "CC000000001LT",
+     "_woo_lithuaniapost_lpexpress_shipping_method_instance_id": "12",
+     "_woo_lithuaniapost_lpexpress_terminal_id": "LT0001",
+     "_woo_lithuaniapost_parcel_create_error": "[{\"error\":\"INCORRECT RECEIVER\",\"error_description\":\"Incorrectly specified recipient's parcel terminal id.\",\"field\":\"receiver.address.terminalId\"}]",
+     "_woo_lithuaniapost_shipping_status_value": "lp-delivered"
+    }
+   },
+   "35417": {
+    "st": "completed",
+    "sm": [
+     "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai"
+    ],
+    "adr": "AUDITAS Testas 4, Testų g. 4, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000036\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-02 ",
+     "venipak_pickup_point": "2884",
+     "venipak_pickup_point_data": "{\"id\":2884,\"code\":\"300906055\",\"name\":\"Venipak locker, ANC\\u0116 Venipak pa\\u0161",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260902002\",\"pack_numbers\":[\"V07267E1000036\"],\"weight\":0.105000"
+    }
+   },
+   "35418": {
+    "st": "completed",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 5, Testų g. 5, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000037\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-02 ",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260902003\",\"pack_numbers\":[\"V07267E1000037\"],\"weight\":0.4,\"pro"
+    }
+   },
+   "35419": {
+    "st": "cancelled",
+    "sm": [
+     "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai"
+    ],
+    "adr": "AUDITAS Testas 6, Testų g. 6, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000039\":{\"k\":7,\"t\":\"Returning to sender\",\"e\":\"Returning to sender\",\"d\"",
+     "_ps_venipak_sena": "{\"manifest\":\"07267260902002\",\"pack_numbers\":[\"V07267E1000039\"],\"weight\":2.070000",
+     "venipak_pickup_point": "2884",
+     "venipak_pickup_point_data": "{\"id\":2884,\"code\":\"300906055\",\"name\":\"Venipak locker, ANC\\u0116 Venipak pa\\u0161",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260902006\",\"pack_numbers\":[\"V07267E1000040\"],\"weight\":2.070000"
+    }
+   },
+   "35420": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 7, Testų g. 7, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000054\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-03 ",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260903002\",\"pack_numbers\":[\"V07267E1000054\"],\"weight\":0.435000"
+    }
+   },
+   "35421": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 8, Testų g. 8, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000046\":{\"k\":9,\"t\":\"Delivered\",\"e\":\"Delivered\",\"d\":\"2026-09-04 13:00:0",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260903005\",\"pack_numbers\":[\"V07267E1000046\"],\"weight\":3.5,\"pro"
+    }
+   },
+   "35422": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai"
+    ],
+    "adr": "AUDITAS Testas 9, Testų g. 9, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000038\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-02 ",
+     "venipak_pickup_point": "2884",
+     "venipak_pickup_point_data": "{\"id\":2884,\"code\":\"300906055\",\"name\":\"Venipak locker, ANC\\u0116 Venipak pa\\u0161",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260902006\",\"pack_numbers\":[\"V07267E1000038\"],\"weight\":2,\"produ"
+    }
+   },
+   "35423": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai"
+    ],
+    "adr": "AUDITAS Testas 10, Testų g. 10, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "venipak_pickup_point": "2884",
+     "venipak_pickup_point_data": "{\"id\":2884,\"code\":\"300906055\",\"name\":\"Venipak locker, ANC\\u0116 Venipak pa\\u0161"
+    }
+   },
+   "35424": {
+    "st": "cancelled",
+    "sm": [
+     "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai"
+    ],
+    "adr": "AUDITAS Testas 11, Testų g. 11, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "venipak_pickup_point": "2884",
+     "venipak_pickup_point_data": "{\"id\":2884,\"code\":\"300906055\",\"name\":\"Venipak locker, ANC\\u0116 Venipak pa\\u0161"
+    }
+   },
+   "35425": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai"
+    ],
+    "adr": "AUDITAS Testas 12, Testų g. 12, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "venipak_pickup_point": "2884",
+     "venipak_pickup_point_data": "{\"id\":2884,\"code\":\"300906055\",\"name\":\"Venipak locker, ANC\\u0116 Venipak pa\\u0161"
+    }
+   },
+   "35426": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 13, Testų g. 13, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000053\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-03 ",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260903007\",\"pack_numbers\":[\"V07267E1000053\"],\"weight\":4.5,\"pro"
+    }
+   },
+   "35427": {
+    "st": "completed",
+    "sm": [
+     "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai"
+    ],
+    "adr": "AUDITAS Testas 14, Testų g. 14, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000030\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-02 ",
+     "venipak_pickup_point": "2884",
+     "venipak_pickup_point_data": "{\"id\":2884,\"code\":\"300906055\",\"name\":\"Venipak locker, ANC\\u0116 Venipak pa\\u0161",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260902001\",\"pack_numbers\":[\"V07267E1000030\"],\"weight\":1,\"produ"
+    }
+   },
+   "35428": {
+    "st": "completed",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 15, Testų g. 15, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000033\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-02 ",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260902001\",\"pack_numbers\":[\"V07267E1000033\",\"V07267E1000034\",\""
+    }
+   },
+   "35429": {
+    "st": "cancelled",
+    "sm": [
+     "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai"
+    ],
+    "adr": "AUDITAS Testas 16, Testų g. 16, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000031\":{\"k\":2,\"t\":\"At terminal\",\"e\":\"At terminal\",\"d\":\"2026-09-04 11:",
+     "venipak_pickup_point": "2884",
+     "venipak_pickup_point_data": "{\"id\":2884,\"code\":\"300906055\",\"name\":\"Venipak locker, ANC\\u0116 Venipak pa\\u0161",
+     "venipak_shipping_order_data": "{\"status\":\"sent\",\"pack_numbers\":[\"V07267E1000031\",\"V07267E1000032\"],\"manifest\":\""
+    }
+   },
+   "35430": {
+    "st": "cancelled",
+    "sm": [
+     "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai"
+    ],
+    "adr": "AUDITAS Testas 17, Testų g. 17, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "venipak_pickup_point": "2884",
+     "venipak_pickup_point_data": "{\"id\":2884,\"code\":\"300906055\",\"name\":\"Venipak locker, ANC\\u0116 Venipak pa\\u0161",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260902001\",\"pack_numbers\":[\"V07267E1000041\"],\"weight\":0.5,\"pro"
+    }
+   },
+   "35431": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 18, Testų g. 18, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": []
+   },
+   "35432": {
+    "st": "cancelled",
+    "sm": [
+     "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai"
+    ],
+    "adr": "AUDITAS Testas 19, Testų g. 19, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "venipak_pickup_point": "2884",
+     "venipak_pickup_point_data": "{\"id\":2884,\"code\":\"300906055\",\"name\":\"Venipak locker, ANC\\u0116 Venipak pa\\u0161"
+    }
+   },
+   "35433": {
+    "st": "cancelled",
+    "sm": [
+     "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai"
+    ],
+    "adr": "AUDITAS Testas 20, Testų g. 20, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": {
+     "venipak_pickup_point": "2884",
+     "venipak_pickup_point_data": "{\"id\":2884,\"code\":\"300906055\",\"name\":\"Venipak locker, ANC\\u0116 Venipak pa\\u0161"
+    }
+   },
+   "35434": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 21, Testų g. 21, Vilnius, 01100",
+    "tel": "+37060000000/+37060000000",
+    "meta": []
+   },
+   "35435": {
+    "st": "processing",
+    "sm": [
+     "flat_rate: Venipak kurjeris"
+    ],
+    "adr": "AUDITAS Testas 22, Testų g. 22, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": {
+     "venipak_shipping_order_data": "{\"status\":\"sent\",\"error_message\":\"\"}"
+    }
+   },
+   "35436": {
+    "st": "processing",
+    "sm": [
+     "flat_rate: Venipak kurjeris"
+    ],
+    "adr": "AUDITAS Testas 23, Testų g. 23, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": []
+   },
+   "35437": {
+    "st": "completed",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 24, Testų g. 24, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000048\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-03 ",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260903001\",\"pack_numbers\":[\"V07267E1000048\"],\"weight\":1,\"produ"
+    }
+   },
+   "35438": {
+    "st": "completed",
+    "sm": [
+     "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai"
+    ],
+    "adr": "AUDITAS Testas 25, Testų g. 25, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000047\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-03 ",
+     "_ps_venipak_sena": "{\"manifest\":\"07267260903005\",\"pack_numbers\":[\"V07267E1000047\"],\"weight\":2,\"produ",
+     "venipak_pickup_point": "2884",
+     "venipak_pickup_point_data": "{\"id\":2884,\"code\":\"300906055\",\"name\":\"Venipak locker, ANC\\u0116 Venipak pa\\u0161",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260903001\",\"pack_numbers\":[\"V07267E1000052\"],\"weight\":2,\"produ"
+    }
+   },
+   "35439": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 26, Testų g. 26, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": []
+   },
+   "35440": {
+    "st": "completed",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 27, Testų g. 27, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000049\":{\"k\":7,\"t\":\"Returning to sender\",\"e\":\"Returning to sender\",\"d\"",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260903001\",\"pack_numbers\":[\"V07267E1000049\",\"V07267E1000050\",\""
+    }
+   },
+   "35441": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "Rai B, Miško g. 1, Agurkiškė, Kazlų Rūdos sav., 12222",
+    "tel": "+37065082900/+37065082900",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000057\":{\"k\":7,\"t\":\"Returning to sender\",\"e\":\"Returning to sender\",\"d\"",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260903002\",\"pack_numbers\":[\"V07267E1000057\"],\"weight\":0.1,\"pro"
+    }
+   },
+   "35442": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai"
+    ],
+    "adr": "Rai B, Miško g. 1, Agurkiškė, Kazlų Rūdos sav., 12222",
+    "tel": "+37065082900/+37065082900",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000056\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-03 ",
+     "venipak_pickup_point": "3648",
+     "venipak_pickup_point_data": "{\"id\":3648,\"code\":\"300906055\",\"name\":\"Venipak locker, AIB\\u0116 Venipak pa\\u0161",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260903002\",\"pack_numbers\":[\"V07267E1000056\"],\"weight\":4.5,\"pro"
+    }
+   },
+   "35443": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 29, Testų g. 29, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": {
+     "_ps_venipak_sekimas": "{\"V07267E1000055\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-03 ",
+     "venipak_shipping_order_data": "{\"manifest\":\"07267260903002\",\"pack_numbers\":[\"V07267E1000055\"],\"weight\":0.435000"
+    }
+   },
+   "35444": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 30, Testų g. 30, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": []
+   },
+   "35450": {
+    "st": "processing",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 31, Testų g. 31, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": []
+   },
+   "35771": {
+    "st": "cancelled",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 32, Testų g. 32, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": []
+   },
+   "35772": {
+    "st": "cancelled",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 33, Testų g. 33, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": []
+   },
+   "35774": {
+    "st": "completed",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 32, Testų g. 32, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": []
+   },
+   "35775": {
+    "st": "completed",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 33, Testų g. 33, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": []
+   },
+   "35776": {
+    "st": "completed",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "Testas Klientas, Testų g. 33, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": []
+   },
+   "35777": {
+    "st": "completed",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "AUDITAS Testas 34, Testų g. 33, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": []
+   },
+   "35778": {
+    "st": "cancelled",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "Testas Klientas, Testų g. 33, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": []
+   },
+   "35779": {
+    "st": "cancelled",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "Testas Klientas, Testų g. 33, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": []
+   },
+   "35780": {
+    "st": "cancelled",
+    "sm": [
+     "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris"
+    ],
+    "adr": "Testas Klientas, Testų g. 33, Vilnius, 01100",
+    "tel": "+37060000000/",
+    "meta": []
+   }
+  },
+  "metodai": [
+   {
+    "instance_id": "1",
+    "method_id": "free_shipping",
+    "is_enabled": "0"
+   },
+   {
+    "instance_id": "2",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "3",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "5",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "6",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "7",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "8",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "9",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "10",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "12",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "13",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "15",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "is_enabled": "1"
+   }
+  ],
+  "lp_lenteles": [
+   "gaj6_woo_lithuaniapost_api_token",
+   "gaj6_woo_lithuaniapost_country_rates",
+   "gaj6_woo_lithuaniapost_country_weight_rates",
+   "gaj6_woo_lithuaniapost_lpexpress_terminals",
+   "gaj6_woo_lithuaniapost_shipping_request",
+   "gaj6_woo_lithuaniapost_table_rates",
+   "gaj6_woo_lithuaniapost_tracking_status",
+   "gaj6_woo_lithuaniapost_unisend_terminals"
+  ],
+  "vp_lenteles": [],
+  "vp_opcijos": [
+   "ps_venipak_sekimas_paskutinis",
+   "shopup_venipak_shipping_settings",
+   "venipak_pack_number",
+   "woocommerce_shopup_venipak_shipping_courier_method_10_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_2_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_6_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_7_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_8_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_3_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_5_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_9_settings"
+  ],
+  "lp_opcijos": [
+   "lpsettings_woo_lithuaniapost_address_pickup_id",
+   "lpsettings_woo_lithuaniapost_updated_version",
+   "woo_lithuaniapost_module_active",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_12_settings",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_13_settings",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_15_settings"
+  ]
+ }
+}
