@@ -1,0 +1,106 @@
+{
+ "v": "dep-154042",
+ "kurimas": 200,
+ "sid": 4737,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "35431": {
+   "sh": [
+    "Testų g. 18-5",
+    "01101"
+   ],
+   "tel": "+37060000018/+37060000018",
+   "vsod": "",
+   "pastaba": "Darbalaukis: pristatymo duomenys pakeisti (Testuotojas): Adresas: „Testų g. 18“ → „Testų g. 18-5“; Pašto kodas: „01100“ → „01101“; Tel.: „+37060000000“ → „+37060000018“. Klientui laiškas: išsiųstas terra@petshop.lt.",
+   "ivykis": {
+    "veiksmas": "redaguoti",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "laikas": "2026-09-04 15:37:44",
+    "pastaba": "kurjeris: Adresas: „Testų g. 18“ → „Testų g. 18-5“; Pašto kodas: „01100“ → „01101“; Tel.: „+37060000000“ → „+37060000018“ · laiškas išsiųstas terra@petshop.lt",
+    "pries": "{\"adresas\":\"Testų g. 18\",\"kodas\":\"01100\",\"tel\":\"+37060000000\"}",
+    "po": "{\"adresas\":\"Testų g. 18-5\",\"kodas\":\"01101\",\"tel\":\"+37060000018\"}"
+   }
+  },
+  "35434": {
+   "sh": [
+    "Testų g. 21",
+    "01121"
+   ],
+   "tel": "+37060000000/+37060000000",
+   "vsod": "{\"status\":\"\",\"error_message\":\"\",\"pack_numbers\":[]}",
+   "pastaba": "Darbalaukis: pristatymo duomenys pakeisti (Testuotojas): Pašto kodas: „01100“ → „01121“. Venipak klaida nuimta — registruok lipduką iš naujo. Klientui laiškas: nesiųstas.",
+   "ivykis": {
+    "veiksmas": "redaguoti",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "laikas": "2026-09-04 15:37:46",
+    "pastaba": "kurjeris: Pašto kodas: „01100“ → „01121“ · Venipak klaida nuimta — registruok lipduką iš naujo. laiškas nesiųstas",
+    "pries": "{\"kodas\":\"01100\"}",
+    "po": "{\"kodas\":\"01121\"}"
+   }
+  },
+  "v": "S1614 e4v",
+  "temp_istrinta": 1,
+  "dev_zurnalas": 5,
+  "dev_paskutinis": {
+   "laikas": "2026-09-04 18:37:44",
+   "kam": "terra@petshop.lt",
+   "tema": "Jūsų užsakymo Nr. 35431 pristatymo duomenys pakeisti",
+   "priedai": 1,
+   "url": "/wp-admin/admin-post.php"
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788538343|l5CCjo1je0qwDaCrcfSLFaNptCZlka3Ccb3drUlq4X7|2f71610fea3425f584fa29ef655ec94729291d180f8f4ccea134adef3faba9ed"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788538343|l5CCjo1je0qwDaCrcfSLFaNptCZlka3Ccb3drUlq4X7|c90ee05340a64f44382a57f5464c2a7a4845364134796414956c5aa91cb8c7e5"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788538343|l5CCjo1je0qwDaCrcfSLFaNptCZlka3Ccb3drUlq4X7|53e13cfbe0a5d36b27ed6cc5b031f451ef3f0d470e5742137870d5a1051ee8d4"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1614_e4_taisyti_35439",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "click": ".dl-kortele[data-id=\"35439\"] button[data-redaguoti]",
+    "eval": "(async()=>{await new Promise(r=>setTimeout(r,2500)); return {forma:!!document.getElementById('skRedF'),laukai:[...document.querySelectorAll('#skRedF input:not([type=hidden])')].map(x=>x.name+'='+x.value),klaus:(document.getElementById('skKlaus')||{innerText:''}).innerText,v:(document.getElementById('skV')||{innerText:''}).innerText.replace(/\\s+/g,' ')}; })()"
+   }
+  ]
+ },
+ "shots": {
+  "s1614_e4_taisyti_35439": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": ".dl-kortele[data-id=\"35439\"] button[data-redaguoti]",
+   "eval": {
+    "forma": true,
+    "laukai": [
+     "vardas=AUDITAS",
+     "pavarde=Testas 26",
+     "adresas=Testų g. 26",
+     "adresas2=",
+     "miestas=Vilnius",
+     "kodas=01100",
+     "tel=+37060000000",
+     "laiskas=1"
+    ],
+    "klaus": "Klausimas: Siuntos sukurti nepavyko",
+    "v": "Redaguoti Sąskaita Pranešti klientui apie vėlavimą Parašyti klientui Atšaukti"
+   }
+  }
+ }
+}
