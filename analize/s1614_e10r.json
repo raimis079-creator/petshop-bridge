@@ -1,0 +1,35 @@
+{
+ "v": "dep-165200",
+ "kurimas": 200,
+ "sid": 4753,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1614 e10r",
+  "temp_istrinta": 1,
+  "dydis": 236,
+  "grep": [
+   "18: * Į LAPUS PATENKA TIK AV EILUTĖS (`_ps_source = av`) — dropship prekių nerenkam.",
+   "21: * GALIOJIMO PASTABA (`_ps_expiry_note`) rodoma prie prekės — tam ji ir daroma.",
+   "29: public static function init() {",
+   "37: add_action( 'woocommerce_order_action_ps_lapas', [ __CLASS__, 'vieno_uzsakymo' ], 10, 1 );",
+   "40: public static function veiksmas( $veiksmai ) {",
+   "45: public static function uzsakymo_veiksmas( $veiksmai ) {",
+   "50: public static function vieno_uzsakymo( $order ) {",
+   "55: public static function vykdyti( $redirect, $veiksmas, $ids ) {",
+   "63: public static function meniu() {",
+   "69: protected static function vezejas( $order ) {",
+   "78: protected static function duomenys( array $ids ) {",
+   "86: foreach ( $o->get_items() as $item ) {",
+   "87: if ( 'av' !== $item->get_meta( '_ps_source' ) ) { continue; }   // TIK AV",
+   "111: 'tipas'     => $o->get_meta( '_ps_order_type' ),",
+   "112: 'siuntos'   => (int) $o->get_meta( '_ps_shipments' ),",
+   "116: uasort( $surinkti, function ( $a, $b ) { return strcmp( $a['pav'], $b['pav'] ); } );",
+   "120: public static function puslapis() {",
+   "134: protected static function linksnis( $n, $v, $d, $g ) {",
+   "141: protected static function spausdinti( array $d, $viso ) {"
+  ]
+ }
+}
