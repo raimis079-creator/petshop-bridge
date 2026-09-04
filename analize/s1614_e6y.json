@@ -1,0 +1,144 @@
+{
+ "v": "dep-161246",
+ "kurimas": 200,
+ "sid": 4745,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Y": {
+  "v": "S1614 e6d",
+  "f": "Y",
+  "temp_istrinta": 1,
+  "versija": "3.17",
+  "ks_versija": "1.3",
+  "md5": "aa47912f4b062698fee395d949366024",
+  "now": "2026-09-04 19:14:20",
+  "kort_sim": {
+   "35438": {
+    "tekstas": "#35438 · AUDITAS Testas 25 · 36,42 € siunta grįžtaVežėjas grąžina siuntą: siunta V07267E1000047 (Prins) — Venipak: „Returning to sender“ (2026-09-04 19:14:20); prekės: 1× Prins Diet Skin &amp; Intestinal Hypoallergic sausas maistas katėms 1,5 kg.Kai prekės grįš į AV, spręsk: „Siųsti iš naujo“ — grįžusi dalis siunčiama iš AV iš naujo kaip ta pati dalis (skydelyje „Lipdukas iš naujo“ tai daliai → „išsiuntė“ arba sekimas), klientui vėl išeis „Išsiųsta“; „Atšaukti — prekės grįžo į AV“ — užsakymas atšaukiamas, prekės į AV likutį. Pinigus grąžinsi rankomis. Adresą taisyk „Redaguoti“ prieš naują lipduką.Siųsti iš naujo Atšaukti — prekės grįžo į AV Atidaryti Parašyti klientui",
+    "mygtukai": [
+     "Kai prekės grįš į AV, spręsk: „Siųsti iš naujo“ — grįžusi dalis siunčiama iš AV iš naujo kaip ta pati dalis (skydelyje „Lipdukas iš naujo“ tai daliai → „išsiuntė“ arba sekimas), klientui vėl išeis „Išsiųsta“; „Atšaukti — prekės grįžo į AV“ — užsakymas atšaukiamas, prekės į AV likutį. Pinigus grąžinsi rankomis. Adresą taisyk „Redaguoti“ prieš naują lipduką.",
+     "Siųsti iš naujo",
+     "Atšaukti — prekės grįžo į AV",
+     "Atidaryti",
+     "Parašyti klientui"
+    ]
+   }
+  },
+  "sk_sim": {
+   "35438": {
+    "code": 200,
+    "kl": "Siunta grįžta",
+    "kur": "įvykdytas",
+    "btn": null,
+    "nr_siuntos": [
+     "Prins: V07267E1000047 — Venipak: pas siuntėją, 09-03 11:23",
+     "AV: V07267E1000052 — atšaukta 09-04 19:12, prekės grįžo į AV"
+    ],
+    "perreg_t": [],
+    "eil": [
+     {
+      "n": "Animonda Carny Adult Beef",
+      "k": "av",
+      "lock": "atšaukta 09-04 19:12 — prekės grįžo į AV (siunta V07267E1000052)",
+      "zing": 0
+     },
+     {
+      "n": "Prins Diet Skin & Intesti",
+      "k": "tiesiai",
+      "lock": "užsakymas uždarytas",
+      "zing": 3
+     }
+    ],
+    "red": null
+   }
+  },
+  "veiksmas": {
+   "35438": {
+    "code": 302,
+    "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35438&pd_ok=dl_dalis&pd_nr=35438|siunta V07267E1000047 grįžo — Prins dalis siunčiama iš AV iš naujo kaip ta pati dalis: skydelyje „Lipdukas Prins iš naujo“, tada „Prins išsiuntė“ (Paruošta siųsti) arba sekimas pažymės pats · likutis Prins Diet Skin & Intestinal Hypoallergi: AV +1 −1 → 1",
+    "body": ""
+   }
+  },
+  "sk_po": {
+   "35438": {
+    "code": 200,
+    "kl": "",
+    "kur": "Paruošta siųsti · toliau: Prins išsiuntė",
+    "btn": "Prins išsiuntė",
+    "nr_siuntos": [
+     "AV: V07267E1000052 — atšaukta 09-04 19:12, prekės grįžo į AV"
+    ],
+    "perreg_t": [
+     [
+      "Lipdukas Prins iš naujo",
+      "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=lipdukas&amp;id=35438&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35438&amp;sandelis=prins&amp;perreg=1&amp;_wpnonce=45e486419e"
+     ]
+    ],
+    "eil": [
+     {
+      "n": "Animonda Carny Adult Beef",
+      "k": "av",
+      "lock": "atšaukta 09-04 19:12 — prekės grįžo į AV (siunta V07267E1000052)",
+      "zing": 0
+     },
+     {
+      "n": "Prins Diet Skin & Intesti",
+      "k": "tiesiai",
+      "lock": "jau užsakyta iš Prins",
+      "zing": 3
+     }
+    ],
+    "red": true
+   }
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788540260|CzPYAbuhqHM16q9qqZrUfgo6TVt27UMIPg1T5ig9BAG|94a8b0e2c961583fb27f0e34aa19a7bd05e320d3634149b8e6032e6d965dbc0d"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788540260|CzPYAbuhqHM16q9qqZrUfgo6TVt27UMIPg1T5ig9BAG|62f814bbbb0d749bc888c42ac57cc2ba52a880820ed15a35107864438767aa0b"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788540260|CzPYAbuhqHM16q9qqZrUfgo6TVt27UMIPg1T5ig9BAG|9aaa4aefef7d191bea82771973e758c7db9c96cf1b1ac86a68e0c37609982688"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1614_e6_skydelis_35438_po",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35438&atidaryti=35438",
+    "w": 1400,
+    "eval": "({siunta:(document.getElementById('skSiuntaT')||{innerText:''}).innerText.replace(/\\s+/g,' '),pastaba:(document.getElementById('skPastaba')||{innerText:''}).innerText.replace(/\\s+/g,' ').slice(0,200),locks:[...document.querySelectorAll('#skEil .lock')].map(x=>x.innerText),v:(document.getElementById('skV')||{innerText:''}).innerText.replace(/\\s+/g,' ')})"
+   },
+   {
+    "n": "s1614_e6_paruosta_po",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+    "w": 1400,
+    "eval": "({nr:[...document.querySelectorAll('tr.eil .nr')].map(x=>x.innerText),mygtukai:[...document.querySelectorAll('tr.eil[data-id=\"35438\"] a.v,tr.eil[data-id=\"35438\"] button')].map(x=>x.innerText)})"
+   }
+  ],
+  "laiskai_sis_procesas": []
+ },
+ "shots": {
+  "s1614_e6_skydelis_35438_po": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35438&atidaryti=35438\", waiting until \"networkidle\"\n",
+  "s1614_e6_paruosta_po": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "nr": [
+     "#35421",
+     "#35438"
+    ],
+    "mygtukai": [
+     "Prins išsiuntė"
+    ]
+   }
+  }
+ }
+}
