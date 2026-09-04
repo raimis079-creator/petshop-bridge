@@ -1,0 +1,64 @@
+{
+ "v": "dep-150931",
+ "kurimas": 200,
+ "sid": 4728,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "v": "S1614 e1v",
+  "temp_istrinta": 1,
+  "st": "processing",
+  "vel": "2026-09-04 18:05:57",
+  "pastabos": [
+   "Klientui išsiųstas vėlavimo laiškas (terra@petshop.lt; darbuotojas Testuotojas): apmokėta 09-03, praėjo 0 pilnos darbo dienos; dar neišsiųsta: VF.",
+   "Venipak registracija darbalaukyje (VF, manifestas 002): KLAIDA — Venipak negrąžino atsakymo"
+  ],
+  "ivykiai": [
+   {
+    "veiksmas": "velavimo_laiskas",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "laikas": "2026-09-04 15:05:57",
+    "pastaba": "rankiniu mygtuku"
+   },
+   {
+    "veiksmas": "vp_reg",
+    "rezultatas": "klaida",
+    "kanalas": "web",
+    "kas_vardas": "Rai",
+    "laikas": "2026-09-03 13:29:46",
+    "pastaba": null
+   }
+  ],
+  "dev_zurnalas": 4,
+  "dev_paskutiniai": [
+   {
+    "laikas": "2026-09-04 07:01:47",
+    "kam": "terra@gyvunai.lt",
+    "tema": "[Petshop sargas] Cron neatsiskaite (1)",
+    "priedai": 0,
+    "url": "/wp-cron.php?doing_wp_cron=1788494506.1186869144439697265625"
+   },
+   {
+    "laikas": "2026-09-04 18:05:57",
+    "kam": "terra@petshop.lt",
+    "tema": "Jūsų užsakymą Nr. 35435 dar komplektuojame",
+    "priedai": 1,
+    "url": "/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=velavimas&id=35435&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%"
+   }
+  ],
+  "velavimo_opcija": {
+   "laikas": "2026-09-04 14:02:14",
+   "darbo_diena": true,
+   "uzsakymu": 0,
+   "issiusta": 0,
+   "praleista": 0,
+   "klaidos": 0,
+   "s": 0
+  },
+  "cron_kitas": "2026-09-05 14:00"
+ }
+}
