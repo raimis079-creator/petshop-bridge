@@ -1,0 +1,57 @@
+{
+ "v": "dep-083336",
+ "kurimas": 200,
+ "sid": 4676,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "106313457": {
+   "pack_no": {
+    "code": 422,
+    "body": "{\"message\":\"The pack no format is invalid.\",\"errors\":{\"pack_no\":[\"The pack no format is invalid.\"]}}"
+   },
+   "shipment_id": {
+    "code": 200,
+    "body": "[{\"shipment_id\":106313457,\"pack_no\":\"V00073E7777958\",\"event\":\"Shipment created\",\"pack_status\":0,\"pack_status_text\":\"At sender\",\"location\":{\"place\":null,\"address\":null,\"city\":null,\"lat\":null,\"lng\":null},\"date\":\"2026-08-03 09:53:59\",\"date_iso\":\"2026-08-03T09:53:59+03:00\"},{\"shipment_id\":106313457,\"pack_no\":\"V00073E7777958\",\"event\":\"At terminal\",\"pack_status\":2,\"pack_status_text\":\"At terminal\",\"location\":{\"place\":\"KAUNAS\",\"address\":\"Ozo g. 5\",\"city\":\"KAUNAS\",\"lat\":54.964481,\"lng\":23.873211},\"date\":\"2026-08-03 17:03:37\",\"date_iso\":\"2026-08-03T17:03:37+03:00\"},{\"shipment_id\":106313457,\"pack_no\":\"V00073E7777958\",\"event\":\"Out for delivery\",\"pack_status\":3,\"pack_status_text\":\"On route to receiver\",\"location\":{\"place\":\"KAUNAS\",\"address\":\"Ozo g. 5\",\"city\":\"\\u017demaitkiemis\",\"lat\":54.964481,\"lng\":23.873211},\"date\":\"2026-08-04 07:18:14\",\"date_iso\":\"2026-08-04T07:18:14+03:00\"},{\"shipment_id\":106313457,\"pack_no\":\"V00073E7777958\",\"event\":\"Delivered\",\"pack_status\":9,\"pack_status_text\":\"Delivered\",\"location\":{\"place\":null,\"address\":null,\"city\":null,\"lat\":null,\"lng\":null},\"date\":\"2026-08-04 12:52:48\",\"date_iso\":\"2026-08-04T12:52:48+03:00\"}]"
+   },
+   "shipment_no": {
+    "code": 422,
+    "body": "{\"message\":\"The shipment id field is required when pack no is not present. (and 1 more error)\",\"errors\":{\"shipment_id\":[\"The shipment id field is required when pack no is not present.\"],\"pack_no\":[\"The pack no field is required when shipment id is not present.\"]}}"
+   },
+   "id": {
+    "code": 422,
+    "body": "{\"message\":\"The shipment id field is required when pack no is not present. (and 1 more error)\",\"errors\":{\"shipment_id\":[\"The shipment id field is required when pack no is not present.\"],\"pack_no\":[\"The pack no field is required when shipment id is not present.\"]}}"
+   },
+   "ws_tracking": {
+    "code": 200,
+    "body": "Error: Wrong pack number\n"
+   }
+  },
+  "106325241": {
+   "pack_no": {
+    "code": 422,
+    "body": "{\"message\":\"The pack no format is invalid.\",\"errors\":{\"pack_no\":[\"The pack no format is invalid.\"]}}"
+   },
+   "shipment_id": {
+    "code": 200,
+    "body": "[{\"shipment_id\":106325241,\"pack_no\":\"V00073E7787973\",\"event\":\"Shipment created\",\"pack_status\":0,\"pack_status_text\":\"At sender\",\"location\":{\"place\":null,\"address\":null,\"city\":null,\"lat\":null,\"lng\":null},\"date\":\"2026-08-03 11:30:27\",\"date_iso\":\"2026-08-03T11:30:27+03:00\"},{\"shipment_id\":106325241,\"pack_no\":\"V00073E7787973\",\"event\":\"On route to terminal\",\"pack_status\":1,\"pack_status_text\":\"On route to terminal\",\"location\":{\"place\":null,\"address\":null,\"city\":null,\"lat\":54.868668,\"lng\":25.565348},\"date\":\"2026-08-03 12:40:14\",\"date_iso\":\"2026-08-03T12:40:14+03:00\"},{\"shipment_id\":106325241,\"pack_no\":\"V00073E7787973\",\"event\":\"At terminal\",\"pack_status\":2,\"pack_status_text\":\"At terminal\",\"location\":{\"place\":\"VILNIUS\",\"address\":\"Vilkped\\u0117s g. 4\",\"city\":\"Vilnius\",\"lat\":54.664693,\"lng\":25.247646},\"date\":\"2026-08-03 15:01:25\",\"date_iso\":\"2026-08-03T15:01:25+03:00\"},{\"shipment_id\":106325241,\"pack_no\":\"V00073E7787973\",\"event\":\"At terminal\",\"pack_status\":2,\"pack_status_text\":\"At terminal\",\"location\":{\"place\":\"KLAIP\\u0116DA\",\"address\":\"Vilniaus pl. 8\",\"city\":\"Klaip\\u0117da\",\"lat\":55.694627,\"lng\":21.1896},\"date\":\"2026-08-04 07:00:16\",\"date_iso\":\"2026-08-04T07:00:16+03:00\"},{\"shipment_id\":106325241,\"pack_no\":\"V00073E7787973\",\"event\":\"Out for delivery\",\"pack_status\":3,\"pack_status_text\":\"On route to receiver\",\"location\":{\"place\":\"KLAIP\\u0116DA\",\"address\":\"Vilniaus pl. 8\",\"city\":\"Klaip\\u0117da\",\"lat\":55.694627,\"lng\":21.1896},\"date\":\"2026-08-04 07:00:16\",\"date_iso\":\"2026-08-04T07:00:16+03:00\"},{\"shipment_id\":106325241,\"pack_no\":\"V00073E7787973\",\"event\":\"At pickup waiting for receiver\",\"pack_status\":6,\"pack_status_text\":\"At pickup point waiting for receiver\",\"location\":{\"place\":\"Klaip\\u0117dos Vingio NORFA Venipak pa\\u0161tomatas\",\"address\":\"Vingio g. 21A\",\"city\":\"Klaip\\u0117da\",\"lat\":55.6678881,\"lng\":21.1961256},\"date\":\"2026-08-04 12:55:18\",\"date_iso\":\"2026-08-04T12:55:18+03:00\"},{\"shipment_id\":106325241,\"pack_no\":\"V00073E7787973\",\"event\":\"Delivered\",\"pack_status\":9,\"pack_status_text\":\"Delivered\",\"location\":{\"place\":\"Klaip\\u0117dos Vingio NORFA Venipak pa\\u0161tomatas\",\"address\":\"Vingio g. 21A\",\"city\":\"Klaip\\u0117da\",\"lat\":null,\"lng\":null},\"date\":\"2026-08-04 19:37:16\",\"date_iso\":\"2026-08-04T19:37:16+03:00\"}]"
+   },
+   "shipment_no": {
+    "code": 422,
+    "body": "{\"message\":\"The shipment id field is required when pack no is not present. (and 1 more error)\",\"errors\":{\"shipment_id\":[\"The shipment id field is required when pack no is not present.\"],\"pack_no\":[\"The pack no field is required when shipment id is not present.\"]}}"
+   },
+   "id": {
+    "code": 422,
+    "body": "{\"message\":\"The shipment id field is required when pack no is not present. (and 1 more error)\",\"errors\":{\"shipment_id\":[\"The shipment id field is required when pack no is not present.\"],\"pack_no\":[\"The pack no field is required when shipment id is not present.\"]}}"
+   },
+   "ws_tracking": {
+    "code": 200,
+    "body": "Error: Wrong pack number\n"
+   }
+  },
+  "v": "run e3r",
+  "temp_istrinta": 1
+ }
+}
