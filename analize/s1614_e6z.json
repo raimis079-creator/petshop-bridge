@@ -1,0 +1,90 @@
+{
+ "v": "dep-161104",
+ "kurimas": 200,
+ "sid": 4744,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Z": {
+  "v": "S1614 e6d",
+  "f": "Z",
+  "temp_istrinta": 1,
+  "versija": "3.17",
+  "ks_versija": "1.3",
+  "md5": "aa47912f4b062698fee395d949366024",
+  "now": "2026-09-04 19:12:15",
+  "veiksmas": {
+   "35421": {
+    "code": 302,
+    "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35421&pd_ok=dl_dalis&pd_nr=35421|Prins dalis atšaukta — siunta V07267E1000046 grįžo į AV · likutis Prins Diet Skin & Intestinal Hypoallergi: AV +1 → 1 · kita dalis lieka: AV (dar ruošiama) · pinigus už atšauktą dalį grąžink rankomis",
+    "body": ""
+   },
+   "35438": {
+    "code": 302,
+    "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35438&pd_ok=dl_dalis&pd_nr=35438|AV dalis atšaukta — siunta V07267E1000052 grįžo į AV · likutis Animonda Carny Adult Beef + Chicken + Du: AV +1 → 18 · kita dalis lieka: Prins (išsiųsta) · pinigus už atšauktą dalį grąžink rankomis",
+    "body": ""
+   }
+  },
+  "sk_po": {
+   "35421": {
+    "code": 200,
+    "kl": "",
+    "kur": "Paruošta siųsti · toliau: Kurjeris paėmė",
+    "btn": "Kurjeris paėmė",
+    "nr_siuntos": [
+     "Prins: V07267E1000046 — atšaukta 09-04 19:12, prekės grįžo į AV"
+    ],
+    "perreg_t": [],
+    "eil": [
+     {
+      "n": "Animonda Carny Adult Beef",
+      "k": "av",
+      "lock": "siunta jau užregistruota",
+      "zing": 3
+     },
+     {
+      "n": "QUATTRO 1,5 kg Adult Salm",
+      "k": "i_av",
+      "lock": "jau užsakyta iš Quattro (užsakymas tiekėjui #10)",
+      "zing": 5
+     },
+     {
+      "n": "Prins Diet Skin & Intesti",
+      "k": "tiesiai",
+      "lock": "atšaukta 09-04 19:12 — prekės grįžo į AV (siunta V07267E1000046)",
+      "zing": 0
+     }
+    ],
+    "red": true
+   },
+   "35438": {
+    "code": 200,
+    "kl": "",
+    "kur": "įvykdytas",
+    "btn": null,
+    "nr_siuntos": [
+     "Prins: V07267E1000047 — Venipak: pas siuntėją, 09-03 11:23",
+     "AV: V07267E1000052 — atšaukta 09-04 19:12, prekės grįžo į AV"
+    ],
+    "perreg_t": [],
+    "eil": [
+     {
+      "n": "Animonda Carny Adult Beef",
+      "k": "av",
+      "lock": "atšaukta 09-04 19:12 — prekės grįžo į AV (siunta V07267E1000052)",
+      "zing": 0
+     },
+     {
+      "n": "Prins Diet Skin & Intesti",
+      "k": "tiesiai",
+      "lock": "užsakymas uždarytas",
+      "zing": 3
+     }
+    ],
+    "red": null
+   }
+  },
+  "laiskai_sis_procesas": []
+ }
+}
