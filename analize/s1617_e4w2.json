@@ -1,0 +1,111 @@
+{
+ "v": "dep-223544",
+ "kurimas": 200,
+ "sid": 4805,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "W2": {
+  "v": "S1617 e4d",
+  "f": "W2",
+  "temp_istrinta": 1,
+  "bukle": {
+   "b": "laukia",
+   "id": 35794,
+   "nr": "35794",
+   "suma": "8,21",
+   "laikas": "2026-09-05 01:29:05",
+   "bacs": true,
+   "t": "Pakartotinis užsakymas #35794 (8,21 €): laukia kliento apmokėjimo — nuoroda išsiųsta 09-05 01:29. Klientas pasirinko pavedimą — kai pinigai banke, spausk „Apmokėta pavedimu“."
+  },
+  "doc_type": "proforma",
+  "kortele": {
+   "mygtukai": [
+    "Apmokėta pavedimu",
+    "Atšaukti — prekės grįžo į AV",
+    "Atidaryti",
+    "Parašyti klientui"
+   ],
+   "sumos": [
+    "Klientui grąžink: 23,61 − 3,99 = 19,62 € (visa siunta grįžta — sumokėta su pristatymu)Pakartotinis užsakymas: 4,22 + 3,99 = 8,21 € (kaip sumokėta užsakyme; siunčiama tik apmokėjus)",
+    "Pakartotinis užsakymas #35794 (8,21 €): laukia kliento apmokėjimo — nuoroda išsiųsta 09-05 01:29. Klientas pasirinko pavedimą — kai pinigai banke, spausk „Apmokėta pavedimu“. siųsti nuorodą dar kartą"
+   ],
+   "forma": "NĖRA"
+  },
+  "apmoketa_url": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=pakart_apmoketa&id=35436&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26eile%3Dklausimai%26atidaryti%3D35436&_wpnonce=a526fb07a0",
+  "dialogas": {
+   "antraste": "Užsakymas #35436 · 23,61 €",
+   "tekstas": "Pavedimas 8,21 € už pakartotinį užsakymą #35794 jau banke? Užsakymas pažymimas apmokėtu, išrašoma PVM sąskaita, klientui išeina laiškas „apmokėjimas gautas“ — atsiras „Siųsti iš naujo“.",
+   "ok": "Apmokėta pavedimu"
+  },
+  "sk": {
+   "kl": "Siunta grįžta",
+   "pastaba": "Surūšiuota. Kelią dar gali keisti, kol prekei nepadarytas pirmas žingsnis. Klientui pranešta apie vėlavimą (09-04 17:28). Pakartotinis užsakymas #35794 (8,21 €): laukia kliento apmokėjimo — nuoroda išsiųsta 09-05 01:29. Klientas pasirinko pavedimą — kai pinigai banke, spausk „Apmokėta pavedimu“."
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788563242|cfJMwUQuKiNVGc6W0wg3ymiH03aNVLyMY41QpoDs2aO|bf208901b2ec8f6d1a69f58e72994cb61d1ae0a0c7f7253d18ecd044a2af892a"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788563242|cfJMwUQuKiNVGc6W0wg3ymiH03aNVLyMY41QpoDs2aO|3131942722a375d2892dc3639b18c8faca5e351a0656253c3294cb8a7a5a6f84"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788563242|cfJMwUQuKiNVGc6W0wg3ymiH03aNVLyMY41QpoDs2aO|8d516a248110cebf23a1f640f01fea50d7188015c88cd152fdbb970c67f867c3"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1617_e4_apmokejimas_onhold",
+    "u": "https://dev.avesa.lt/kasa/order-pay/35794/?pay_for_order=true&key=wc_order_mcpNG7mKjtYGp",
+    "w": 1200,
+    "full": true,
+    "eval": "({gw:[...document.querySelectorAll('.wc_payment_method')].map(function(x){return x.innerText.replace(/\\s+/g,' ').slice(0,60);}),err:[...document.querySelectorAll('.woocommerce-error')].map(function(x){return x.innerText;})})"
+   },
+   {
+    "n": "s1617_e4_klausimai_pavedimas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "eval": "({k:[...document.querySelectorAll('.dl-kortele[data-id=\"35436\"] .dl-sumos')].map(function(x){return x.innerText.replace(/\\s+/g,' ');}),m:[...document.querySelectorAll('.dl-kortele[data-id=\"35436\"] .dl-veiksmai .v')].map(function(x){return x.innerText;})})"
+   }
+  ]
+ },
+ "shots": {
+  "s1617_e4_apmokejimas_onhold": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/kasa/order-pay/35794/?pay_for_order=true&key=wc_order_mcpNG7mKjtYGp",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "gw": [
+     " Mokėjimas internetu Informuojame, kad sąskaitos informacijo",
+     " Bankinis pavedimas"
+    ],
+    "err": [
+     "You are paying for a guest order. Please continue with payment only if you recognize this order."
+    ]
+   }
+  },
+  "s1617_e4_klausimai_pavedimas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "k": [
+     "Klientui grąžink: 23,61 − 3,99 = 19,62 € (visa siunta grįžta — sumokėta su pristatymu) Pakartotinis užsakymas: 4,22 + 3,99 = 8,21 € (kaip sumokėta užsakyme; siunčiama tik apmokėjus)",
+     "Pakartotinis užsakymas #35794 (8,21 €): laukia kliento apmokėjimo — nuoroda išsiųsta 09-05 01:29. Klientas pasirinko pavedimą — kai pinigai banke, spausk „Apmokėta pavedimu“. siųsti nuorodą dar kartą"
+    ],
+    "m": [
+     "Apmokėta pavedimu",
+     "Atšaukti — prekės grįžo į AV",
+     "Atidaryti",
+     "Parašyti klientui"
+    ]
+   }
+  }
+ }
+}
