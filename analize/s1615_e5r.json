@@ -1,0 +1,287 @@
+{
+ "v": "dep-180516",
+ "kurimas": 200,
+ "sid": 4772,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1615 e5r",
+  "temp_istrinta": 1,
+  "cls": {
+   "Petshop_Partijos": {
+    "file": "petshop-partijos.php",
+    "m": [
+     "lentele()",
+     "pakuociu_lentele()",
+     "uztikrinti_lenteles()",
+     "av_preke($pid)",
+     "priimti($pid,$a)",
+     "av_laukas($pid)",
+     "av_likutis($pid)",
+     "svertine_savikaina($pid)",
+     "paskutine_savikaina($pid)",
+     "perskaiciuoti_savikaina($pid)",
+     "nurasyti($pid,$kiekis,$dry)",
+     "partijos($pid,$tik_su_likuciu)",
+     "artimiausias_galiojimas($pid)",
+     "santrauka($pid)",
+     "pakuotes($pid)",
+     "medziagos()",
+     "tipai()",
+     "trinti_pakuote($id,$pid)",
+     "irasyti_pakuote($pid,$a)",
+     "pakuociu_svoris($pid,$vienetu)",
+     "gpais_pagal_metus($pid)",
+     "kabinti_uzsakymus()",
+     "uzsakymo_nurasymas($order_id)",
+     "grazinti_i_partija($partijos_id,$kiekis)",
+     "sutapimo_patikra($pid)",
+     "statistika()"
+    ]
+   },
+   "Petshop_Faktai": {
+    "file": "petshop-faktai.php",
+    "m": [
+     "init()",
+     "t_uzsakymai()",
+     "t_eilutes()",
+     "uztikrinti_lenteles($priverstinai)",
+     "ct($eurai)",
+     "dabar()",
+     "verslo_diena($utc_eilute)",
+     "reguliari_neto_ct($pid)",
+     "aplinka()",
+     "ar_testinis($order)",
+     "rasyti($order_id)",
+     "statusas($order_id,$senas,$naujas,$order)",
+     "migracija_v2($dry)",
+     "kontrole($order_id)"
+    ]
+   },
+   "Petshop_Fakt_Grazinimai": {
+    "file": "petshop-fakt-grazinimai.php",
+    "m": [
+     "init()",
+     "t()",
+     "uztikrinti_lenteles($priverstinai)",
+     "savikaina_grazinimui($fe,$kiekis)",
+     "rasyti($order_id,$refund_id)",
+     "kontrole($order_id)"
+    ]
+   },
+   "Petshop_Fakt_Siuntos": {
+    "file": "petshop-fakt-siuntos.php",
+    "m": [
+     "init()",
+     "planuoti_cron()",
+     "t_siuntos()",
+     "t_tarifai()",
+     "t_priemokos()",
+     "uztikrinti_lenteles($priverstinai)",
+     "dabar()",
+     "verslo_diena($utc)",
+     "aplinka()",
+     "ar_testinis($order)",
+     "svoris_g($uzsakymas_id,$sandelis)",
+     "sandelio_kodas($s)",
+     "sandelis_pagal_taisykle($vezejas)",
+     "pristatymo_tipas($order)",
+     "dydis($order,$vezejas)",
+     "tarifas($vezejas,$tipas,$svoris_g,$diena,$dydis)",
+     "priemokos($vezejas,$diena)",
+     "kaina_is_tarifo($vezejas,$tipas,$svoris_g,$diena,$dydis)",
+     "is_desko($order_id,$sandelis,$vezejas,$numeriai)",
+     "irasyti($a)",
+     "rasti_shipment_id($order_id,$vezejas,$nr)",
+     "nakties_sutikrinimas($dry)",
+     "sutikrinti_uzsakyma($order_id,$dry)",
+     "kontrole($order_id)",
+     "meniu()",
+     "puslapis()",
+     "issaugoti()",
+     "priemoka_irasyti()",
+     "priemoka_uzdaryti()",
+     "uzdaryti()"
+    ]
+   },
+   "Petshop_Fakt_Atsargos": {
+    "file": "petshop-fakt-atsargos.php",
+    "m": [
+     "init()",
+     "planuoti()",
+     "t()",
+     "uztikrinti_lenteles($priverstinai)",
+     "kodas($s)",
+     "turi_tiekeja($pid,$sandelis)",
+     "likuciai($pid,$sandelis)",
+     "savikaina($pid,$sandelis)",
+     "partijos($pid)",
+     "rezervuota($pid)",
+     "snapshot($diena,$dry)",
+     "kontrole($diena)"
+    ]
+   },
+   "Petshop_Event_Emitters": {
+    "file": "class-event-emitters.php",
+    "m": [
+     "init()",
+     "on_payment_complete($order_id)",
+     "on_order_paid_status($order_id)",
+     "maybe_emit_order_shipped($order_id)",
+     "resolve_tracking($order)"
+    ]
+   }
+  },
+  "partijos_head": "<?php\n/**\n * Petshop Partijos v1.2 (S697) — PAKUOCIU SARASAI IR TRYNIMAS.\n *   Savininkas: „nera jokio redagavimo, mes kazka dareme, bet nieko neliko.\n *   As net negaliu susivesti duomenu\".\n *   Buvo tiesa: `irasyti_pakuote()` egzistavo nuo pirmos dienos, bet jokia\n *   sasaja jo nekviete — duomenis buvo galima iraSyti tik kodu. Cia pridedama\n *   tai, ko truko sasajai: medziagu ir tipu sarasai VIENOJE vietoje (kad\n *   GPAIS deklaracijoje nesusidarytu „Plastikas\", „plastikas\" ir „PET\" kaip\n *   trys skirtingos medziagos) bei eilutes trynimas.\n *\n * Petshop Partijos v1.0 (S734) — AV PARTIJOS, SAVIKAINA, PAKUOTES\n *\n * KAM: `_cost_price` yra VIENAS skaicius prekei, o realybeje savikaina yra\n * PARTIJOS savybe. Gavai partija uz 30 €, po menesio kita uz 34 € — antrasis\n * irasymas uztrindavo pirmaji, ir marza buvo rodoma nuo paskutines, nors\n * lentynoje dar guli pigiosios. Akcines partijos atvejis (nusipirkai su ZB\n * akcija, o kita menesi akcijos nebera) sistemoje isvis nesimatydavo.\n *\n * APIMTIS — TIK AV (savininko sprendimas 2026-08-10): \"savikaina aktualu tik\n * AV turimoms prekems. Dropshipingas cia man neaktualu — ten ateina saskaitos\n * pagal fakta.\" VF/ZB savikaina lieka is `_vf_cost` / `_zb_cost`.\n *\n * VALIUTOS TAISYKLE: kursas irasomas pirkimo diena ir NIEKADA\n * neperskaiciuojamas. Tai jau ivykusi operacija — veliau kurso svyravimai\n * atsa",
+  "partijos_nurasymas": "function uzsakymo_nurasymas( $order_id ) {\n\t\t$order_id = (int) $order_id;\n\t\tif ( ! $order_id || ! function_exists( 'wc_get_order' ) ) { return; }\n\t\t$order = wc_get_order( $order_id );\n\t\tif ( ! $order ) { return; }\n\n\t\t/* Jau nurasyta — antras hook'as to paties uzsakymo neliecia. */\n\t\tif ( $order->get_meta( '_ps_partijos_nurasyta' ) ) { return; }\n\n\t\tif ( ! self::lentele_yra( self::lentele() ) ) { return; }\n\n\t\t$rez = array( 'nurasyta' => array(), 'praleista' => array(), 'ispejimai' => array() );\n\n\t\tforeach ( $order->get_items() as $item ) {\n\t\t\tif ( ! method_exists( $item, 'get_product_id' ) ) { continue; }\n\t\t\t$pid  = (int) $item->get_product_id();\n\t\t\t$vpid = method_exists( $item, 'get_variation_id' ) ? (int) $item->get_variation_id() : 0;\n\t\t\t$tikras = $vpid ? $vpid : $pid;\n\t\t\t$kiekis = (int) $item->get_quantity();\n\t\t\tif ( ! $tikras || $kiekis <= 0 ) { continue; }\n\n\t\t\t/* Partijos yra TIK AV prekems. Dropship prekiu partiju nera —\n\t\t\t   ju likutis ir savikaina gyvena tiekejo pusėje. */\n\t\t\tif ( ! self::av_preke( $tikras ) ) {\n\t\t\t\t$rez['praleista'][] = $tikras . ' (ne AV)';\n\t\t\t\tcontinue;\n\t\t\t}\n\n\t\t\t$n = self::nurasyti( $tikras, $kiekis );\n\t\t\tif ( is_wp_error( $n ) ) {\n\t\t\t\t$rez['ispejimai'][] = '#' . $tikras . ': ' . $n->get_error_message();\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\t$rez['nurasyta'][] = array(\n\t\t\t\t'pid'      => $tikras,\n\t\t\t\t'kiekis'   => $kiekis,\n\t\t\t\t'padengta' => $n['padengta'],\n\t\t\t\t'partiju'  => count( $n['planas'] ),\n\t\t\t);\n\t\t\tif ( ! empty( $n['ispejimas'] ) ) {\n\t\t\t\t$rez['ispejimai'][] = '#' . $tikras . ': ' . $n['ispejimas'];\n\t\t\t}\n\t\t}\n\n\t\t$order->update_meta_data( '_ps_partijos_nurasyta', current_time( 'mysql' ) );\n\t\t$order->save();\n\n\t\t/* Pastaba uzsakyme — kad veliau matytusi, is kuriu partiju paimta. */\n\t\tif ( $rez['nurasyta'] || $rez['ispejimai'] ) {\n\t\t\t$t = array();\n\t\t\tforeach ( $rez['nurasyta'] as $x ) {\n\t\t\t\t$t[] = '#' . $x['pid'] . ' −' . $x['padengta'] . ' vnt. (' . $x['partiju'] . ' partijos)';\n\t\t\t}\n\t\t\t$zinute = 'Partijos nurašytos: ' . ( $t ? implode( ' · ', $t ) : 'nėra' );\n            if ( $rez['ispejimai'] ) {\n\t\t\t\t$zinute .= \"\\nĮSPĖJIMAI: \" . implode( ' · ', $rez['ispejimai'] );\n\t\t\t}\n\t\t\t$order->add_order_note( $zinute );\n\t\t}\n\t}\n\n\t/** Grazinimas i",
+  "partijos_grazinimas": "implode( ' · ', $t ) : 'nėra' );\n            if ( $rez['ispejimai'] ) {\n\t\t\t\t$zinute .= \"\\nĮSPĖJIMAI: \" . implode( ' · ', $rez['ispejimai'] );\n\t\t\t}\n\t\t\t$order->add_order_note( $zinute );\n\t\t}\n\t}\n\n\t/** Grazinimas i partijas — kviečiamas RANKINIU budu, ne automatiskai. */\n\tpublic static function grazinti_i_partija( $partijos_id, $kiekis ) {\n\t\tglobal $wpdb;\n\t\t$partijos_id = (int) $partijos_id; $kiekis = (int) $kiekis;\n\t\tif ( $partijos_id <= 0 || $kiekis <= 0 ) { return new WP_Error( 'ivestis', 'Netinkami duomenys' ); }\n\t\t$t = self::lentele();\n\t\t$p = $wpdb->get_row( $wpdb->prepare( \"SELECT * FROM {$t} WHERE id=%d\", $partijos_id ), ARRAY_A );\n\t\tif ( ! $p ) { return new WP_Error( 'nera', 'Partija nerasta' ); }\n\t\tif ( (int) $p['kiekis_liko'] + $kiekis > (int) $p['kiekis_gautas'] ) {\n\t\t\treturn new WP_Error( 'per_daug', 'Grąžinus viršytų partijoje gautą kiekį' );\n\t\t}\n\t\t$wpdb->query( $w",
+  "partijos_hooks": [
+   [
+    "woocommerce_payment_complete",
+    "array( __CLASS__"
+   ],
+   [
+    "woocommerce_order_status_processing",
+    "array( __CLASS__"
+   ],
+   [
+    "woocommerce_order_status_completed",
+    "array( __CLASS__"
+   ]
+  ],
+  "faktai_head": "<?php\n/**\n * Plugin Name: Petshop Faktai\n * Description: Uzsakymu ir eiluciu faktu lenteles (ps_fakt_uzsakymai, ps_fakt_eilutes). Master planas v1.3 §4.1/§4.2, etapas E1a.\n * Version: 1.3\n *\n * VIENA MINTIS (planas §0): „Ataskaita galima perdaryti bet kada. Fakto,\n * kurio niekas neuzfiksavo, nebus niekada.\"\n *\n * KO SIS MODULIS NEDARO:\n *  - neskaiciuoja neto is bruto (Q-E0-4): WC eilute jau turi `line_total`\n *    (BE PVM) ir `line_tax` atskirai — abu KOPIJUOJAMI;\n *  - neperskaiciuoja savikainos: kopijuojama is `_ps_savikaina_vnt`, kuria\n *    `petshop-statistika.php` uzsaldo pardavimo momentu (savininko sprendimas\n *    2026-08-15);\n *  - nerodo nieko ekrane — tai A sluoksnis (faktai), ne B (ekranai).\n *\n * KABLIUKO PRIORITETAS 35 (planas v1.3 §7 taisykle 4). Zemesni UZIMTI:\n *   p5  petshop-av-order      — fiksuoja sandeli\n *   p15 petshop-av-reduce     — mazina AV likuti\n *   p20 core/class-event-emitters\n *   p25 petshop-partijos      — nurabo partijas (savikaina tampa galutine)\n *   p30 core/class-refill-engine\n *   p35 CIA — po visu, kad savikaina ir sandelis butu galutiniai.\n *\n * LAIKO ZONA (v1.1, planas v1.4 §3 taisykle 11): VISI `*_at` laukai saugomi\n * **UTC**. Priezastis — E1b `ps_fakt_siuntos` jungiasi su `ps_shipments`, o ta\n * lentele raso UTC (`current_time('mysql', TRUE)`, class-shipments.php:96);\n * `ps_carts`, `ps_email_jobs`, `ps_event_log` — taip pat UTC. Vietinis laikas\n * cia reikstu 3 val. poslinki kiekviename JOIN'e.\n * Ekrane rodoma Vilniaus laiku (`wp_date()`), ne `date()`.\n * IZIMTIS: `ar_testinis()` lygina VERSLO DIENA ",
+  "faktai_rasyti": "function rasyti( $order_id ) {\n\t\t$order_id = (int) $order_id;\n\t\tif ( ! $order_id ) { return; }\n\t\t$order = wc_get_order( $order_id );\n\t\tif ( ! $order || 'shop_order' !== $order->get_type() ) { return; }\n\n\t\t/* Faktas rasomas VIENA KARTA (planas §3 taisykle 2). */\n\t\tif ( $order->get_meta( self::META_IRASYTA ) ) { return; }\n\n\t\tglobal $wpdb;\n\t\t$jau = (int) $wpdb->get_var( $wpdb->prepare(\n\t\t\t'SELECT COUNT(*) FROM ' . self::t_uzsakymai() . ' WHERE uzsakymas_id=%d', $order_id ) );\n\t\tif ( $jau ) {\n\t\t\t$order->update_meta_data( self::META_IRASYTA, self::dabar() );\n\t\t\t$order->save();\n\t\t\treturn;\n\t\t}\n\n\t\tself::uztikrinti_lenteles();\n\n\t\t$aplinka  = self::aplinka();\n\t\t$testinis = self::ar_testinis( $order );\n\t\t$hash     = self::email_hash( $order );\n\t\t$apmoketa = $order->get_date_paid() ? self::utc( $order->get_date_paid() ) : self::dabar();\n\n\t\t/* ---------- klientas: kelintas uzsakymas ---------- */\n\t\tlist( $nr, $naujas, $dienos ) = self::kliento_eile( $hash, $apmoketa );\n\n\t\t/* ---------- eilutes ---------- */\n\t\t$eil = self::surinkti_eilutes( $order );\n\n\t\t$prekiu_suma = 0; $pvm_eiluciu = 0; $savikaina = 0; $dovanu_sav = 0;\n\t\t$nuolaidos   = 0; $sandeliai = array();\n\t\t/* prekiu_suma_ct = PRIES nuolaida (planas §4.1: marza = prekiu_suma\n\t\t   - nuolaidu - savikaina). Jei cia dedtume line_total (jau PO\n\t\t   nuolaidos), nuolaida butu atimta DU kartus. Faktuose laikom\n\t\t   daugiau informacijos: is bruto visada gali gauti neto, atvirksciai\n\t\t   ne. Neto pajamos = prekiu_suma_ct - nuolaidu_ct. */\n\t\tforeach ( $eil as $r ) {\n\t\t\t$prekiu_suma += $r['kaina_ct'] + $r['nuolaida_ct'];\n\t\t\t$pvm_eiluciu += $r['pvm_ct'];\n\t\t\t$nuolaidos   += $r['nuolaida_ct'];\n\t\t\tif ( $r['savikaina_ct'] !== null ) {\n\t\t\t\tif ( $r['dovana'] ) { $dovanu_sav += $r['savikaina_ct']; }\n\t\t\t\telse { $savikaina += $r['savikaina_ct']; ",
+  "faktai_korekcija": null,
+  "faktai_hooks": [
+   [
+    "woocommerce_payment_complete",
+    "array( __CLASS__"
+   ],
+   [
+    "woocommerce_order_status_processing",
+    "array( __CLASS__"
+   ],
+   [
+    "woocommerce_order_status_completed",
+    "array( __CLASS__"
+   ],
+   [
+    "woocommerce_order_status_changed",
+    "array( __CLASS__"
+   ]
+  ],
+  "fg_head": "<?php\n/**\n * Plugin Name: Petshop Faktai — Grazinimai\n * Description: Grazinimu faktu lentele (ps_fakt_grazinimai). Master planas v1.4 §4.4, etapas E1b.\n * Version: 1.2\n *\n * TAISYKLE (planas §3 taisykle 2): faktas rasomas VIENA KARTA ivykio momentu ir\n * nebekeiciamas. Grazinimas — NE pardavimo fakto pataisymas, o NAUJAS faktas\n * grazinimo diena. `ps_fakt_uzsakymai` / `ps_fakt_eilutes` cia NELIECIAMOS.\n *\n * KABLIUKAS: `woocommerce_order_refunded` prioritetu 35.\n * E0 grep'as rado 0 klausytoju is 137 failu; E1b recon (148 failai) —\n * taip pat 0. Vieta laisva, konfliktu nera. Prioritetas 35 — ta pati\n * taisykle kaip `Petshop_Faktai` (planas §7 taisykle 4): zemesni prioritetai\n * uzimti (`av-reduce` p15 ant `status_refunded`), o mums reikia, kad\n * atsargu grazinimas jau butu ivykes.\n *\n * SUMA (Q-E0-4 + DoD (c)): `suma_ct` = REALIAI GRAZINTA suma BE PVM, imama\n * is Woo refund eilutes (`$item->get_total()`, neigiamas -> abs). Neto is bruto\n * per tarifa NIEKADA neskaiciuojam. PVM — atskirai `pvm_ct`.\n * Uzsakymui 35090 (kuponas −10 %) tai reiskia, kad grazinama suma yra PO\n * nuolaidos — tiek, kiek klientas realiai sumokejo uz ta eilute.\n *\n * SAVIKAINA (v1.2): `savikaina_grazinimui()` — proporcingai grazintam kiekiui is `ps_fakt_eilutes`\n * (`savikaina_vnt_ct` * grazintas kiekis). NEPERSKAICIUOJAM is prekes meta —\n * kitaip praeities marza taptu netikra (savininko sprendimas 2026-08-15).\n * NEZINOMA -> **NULL, ne 0** (v1.2): fakto eilutes nera; `savikaina_vnt_ct`\n * yra NULL (MnM/DP konteineris — savikaina gyvena vaikuose); arba kiekis 0.\n * Nulis",
+  "fg_hooks": [
+   [
+    "woocommerce_order_refunded",
+    "array( __CLASS__"
+   ]
+  ],
+  "fg_fns": [
+   [
+    "init",
+    ""
+   ],
+   [
+    "t",
+    ""
+   ],
+   [
+    "uztikrinti_lenteles",
+    " $priverstinai = false "
+   ],
+   [
+    "ct",
+    " $e "
+   ],
+   [
+    "dabar",
+    ""
+   ],
+   [
+    "verslo_diena",
+    " $u "
+   ],
+   [
+    "aplinka",
+    ""
+   ],
+   [
+    "fakto_eilute",
+    " $uzsakymas_id, $wc_item_id "
+   ],
+   [
+    "savikaina_grazinimui",
+    " $fe, $kiekis "
+   ],
+   [
+    "rasyti",
+    " $order_id, $refund_id "
+   ],
+   [
+    "insert",
+    " $eil "
+   ],
+   [
+    "kontrole",
+    " $order_id "
+   ]
+  ],
+  "th_doc_type": "function petshop_get_invoice_document_type( $order ) {\n    if ( ! $order instanceof WC_Order ) return 'invoice';\n    $payment_method   = $order->get_payment_method();\n    $is_bank_transfer = ( $payment_method === 'bacs' );\n    if ( $is_bank_transfer && in_array( $order->get_status(), array( 'pending', 'on-hold' ), true ) ) {\n        return 'proforma';\n    }\n    return 'invoice';\n}\n\nfunction petshop_get_invoice_title( $order ) {\n    $type     = petshop_get_invoice_document_type( $order );\n    $order_id = $order->get_id();\n    if ( $type === 'proforma' ) {\n        return array(\n            'title'  => 'Išankstinisė sąskaita',\n            'number' => petshop_get_iapv_number( $order_id ),\n        );\n    }\n    return array(\n        'title'  => 'PVM sąskaita faktūra',\n        'number' => petshop_get_avpn_number( $order_id ),\n    );\n}\n\n// ===================================================",
+  "th_gen_pdf": "function petshop_generate_invoice_pdf( $order_id ) {\n    $wc_order = wc_get_order( $order_id );\n    if ( ! $wc_order ) return false;\n\n    $countries      = WC()->countries ? WC()->countries->get_countries() : array();\n    $b_country      = $wc_order->get_billing_country();\n    $b_country_name = isset( $countries[ $b_country ] ) ? $countries[ $b_country ] : $b_country;\n\n    $skip_states = array( 'pasirinkite rajona', 'select a region', 'select an option' );\n    $b_state     = $wc_order->get_billing_state();\n    $b_state_val = ( $b_state && ! in_array( mb_strtolower( $b_state ), $skip_states ) ) ? $b_state : '';\n\n    $city_post = trim( $wc_order->get_billing_city() . ( $wc_order->get_billing_postcode() ? ', ' . $wc_order->get_billing_postcode() : '' ) );\n\n    $billing_lines = array_values( array_filter( array(\n        $wc_order->get_billing_address_1(),\n        $wc_order->get_billing_address_2(),\n        $city_post,\n        $b_state_val,\n        $b_country_name,\n    ) ) );\n\n    $order = array(\n        'id'            => $order_id,\n        'orderNumber'   => $wc_order->get_order_number(),\n        'documentDate'  => date_i18n( 'Y-m-d' ),\n        'date'          => $wc_order->get_date_created()\n                            ? $wc_order->get_date_created()->format( 'Y-m-d' )\n                            : date( 'Y-m-d' ),\n        'paymentMethod' => $wc_order->get_payment_method_title(),\n        'billing'       => array(\n            'name'    => trim( $wc_order->get_billing_first_name() . ' ' . $wc_order->get_billing_last_name() ),\n            'address' => $billing_lines,\n            'phone'   => $wc_order->get_billing_phone(),\n            'email'   => $wc_order->get_billing_email(),\n        ),\n        'shipping'      => array( 'name' => '', 'address' => array() ),\n    );\n\n    $logo_url  = '';\n    $logo_path = '';\n    $flatsome_logo_id = get_theme_mod( 'site_logo' );\n    if ( $flatsome_logo_id ) {\n        $logo_url  = wp_get_attachment_image_url( $flatsome_logo_id, 'full' );\n        $logo_path = get_attached_file( $flatsome_logo_id );\n    }\n\n    $shop     = array( 'logo' => $logo_url, 'logo_path' => $logo_path, 'name' => get_bloginfo( 'name' ) );\n    $settings = array( 'd",
+  "th_received": "'petshop_send_order_received_email', array( $order->get_id() ) );\n}, 20 );\n\nadd_action( 'petshop_send_order_received_email', function( $order_id ) {\n    $order = wc_get_order( $order_id );\n    if ( ! $order ) return;\n\n    $payment_method_id = $order->get_payment_method();\n    $is_bank           = ( $payment_method_id === 'bacs' );\n\n    $items_html  = '<h2 style=\"font-size:16px;margin:16px 0 8px;\">Jūsų užsakymas:</h2>';\n    $items_html .= '<table cellpadding=\"8\" style=\"width:100%;border-collapse:collapse;font-size:14px;\">';\n    $items_html .= '<tr style=\"background:#f4f4f2;\"><th style=\"text-align:left;border-bottom:2px solid #ddd;\">Prekė</th><th style=\"text-align:center;border-bottom:2px solid #ddd;\">Kiekis</th><th style=\"text-align:right;border-bottom:2px solid #ddd;\">Suma</th></tr>';\n    foreach ( $order->get_items() as $item ) {\n        $total       = $item->get_total() + $item->get_total_tax();\n        $items_html .= '<tr style=\"border-bottom:1px solid #eee;\">';\n        $items_html .= '<td>' . esc_html( $item->get_name() ) . '</td>';\n        $items_html .= '<td style=\"text-align:center;\">' . $item->get_quantity() . '</td>';\n        $items_html .= '<td style=\"text-align:right;\">' . wc_price( $total ) . '</td>';\n        $items_html .= '</tr>';\n    }\n    $items_html .= '</table>';\n    $items_html .= '<table style=\"width:100%;margin-top:8px;font-size:14px;\">';\n    $items_html .= '<tr><td style=\"padding:4px 8px;\">Pristatymas:</td><td style=\"text-align:right;padding:4px 8px;\">' . wc_price( $order->get_shipping_total() + $order->get_shipping_tax() ) . '</td></tr>';\n    $items_html .= '<tr><td style=\"padding:4px 8px;\">PVM:</td><td style=\"text-align:right;padding:4px 8px;\">' . wc_price( $order->get_total_tax() ) . '</td></tr>';\n    $items_html .= '<tr><td style=\"padding:4",
+  "th_attach": "'woocommerce_email_attachments', function( $attachments, $email_id, $order, $email ) {\n    if ( $email_id === 'customer_completed_order' && $order instanceof WC_Order ) {\n        $pdf_file = $order->get_meta( '_petshop_completed_pdf' );\n        if ( $pdf_file && file_exists( $pdf_file ) ) {\n            $attachments[] = $pdf_file;\n        }\n    }\n    return $attachments;\n}, 10, 4 );\n\nadd_action( 'woocommerce_before_template_part', function( $template_name ) {\n    if ( strpos( $template_name, 'customer-completed-order' ) !== false ) {\n        ob_start();\n    }\n}, 10 );\n\nadd_action( 'woocommerce_after_template_part', function( $template_name, $template_path, $located, $args ) {\n    if ( strpos( $template_name, 'customer-completed-order' ) === false ) return;\n    ob_end_clean();\n    $order = isset( $args['order'] ) ? $args['order'] : null;\n    if ( ! $order ) return;\n\n    $first_name    = esc_html( $order->get_billing_first_name() );\n    $order_num     = $order->get_order_number();\n    // -----------------------------------------------------------------\n    // S313 (2026-07-30): TIKRAS siuntos numeris vietoj bendriniu nuorodu.\n    //\n    // Buvo: dvi nuorodos i BENDRUS paieskos puslapi",
+  "th_status_changed": "'woocommerce_order_status_changed', function( $order_id, $old_status, $new_status, $order ) {\n    if ( ! $order instanceof WC_Order ) {\n        $order = wc_get_order( $order_id );\n    }\n    if ( ! $order ) return;\n    $doc_type = petshop_get_invoice_document_type( $order );\n    $order->update_meta_data( '_petshop_invoice_document_type', $doc_type );\n    $order->delete_meta_data( '_wcdn_invoice_pdf' );\n    $order->delete_meta_data( '_wcdn_invoice_pdf_token' );\n    $order->save();\n}, 1, 4 );\n\n// ===============================================================\n// Laiskas #3 - Uzsakymas issiustas\n// ===============================================================\nfunction petshop_get_shipping_carrier( $order ) {\n    foreach ( $order->get_items( 'shipping' ) as $item ) {\n        $method_id = strtolower( $item->get_method_id() ? $item->get_method_id() : '' );\n        $name      = strtolower( $item->get_name() ? $item->get_name() : '' );\n        $combined  = $method_id . ' ' . $name;\n        if ( strpos( $combined, 'venipak' ) !== false ) return 'venipak';\n        if ( strpos( $combined, 'lpexpress' ) !== false ||\n             strpos( $combined, 'lp_express' ) !== false ||\n             strpos( $combined, 'lp express' ) !== false ) return 'lpexpress';\n        break;\n    }\n    return 'unknown';\n}\n\nadd_action( 'woocommerce_order_status_completed', function( $order_id ) {\n    $order = wc_ge",
+  "ivykiai": {
+   "file": "petshop-uzsakymu-ivykiai.php",
+   "m": [
+    "init()",
+    "t()",
+    "lentele()",
+    "irasyti($a)",
+    "uzsakymo($order_id,$limit)",
+    "paskutinis($order_id,$veiksmas)",
+    "zmogui($row)",
+    "skirtumas($row)",
+    "html($order_id,$limit)",
+    "pradzia()",
+    "snap($oid)",
+    "peradresavimas($location,$status)",
+    "laiskas($args)",
+    "die_handleris($handler)",
+    "pabaiga_shutdown()",
+    "busena($id,$nuo,$i,$order)",
+    "apmokejimas($id)",
+    "meniu()",
+    "puslapis()"
+   ]
+  },
+  "cancel_hooks": {
+   "woocommerce_order_status_cancelled": [
+    "10:wc_update_coupon_usage_counts",
+    "10:wc_maybe_increase_stock_levels",
+    "11:wc_release_stock_for_order",
+    "15:Petshop_AV_Reduce::grazinti"
+   ],
+   "woocommerce_order_status_refunded": [
+    "10:wc_order_fully_refunded",
+    "15:Petshop_AV_Reduce::grazinti"
+   ],
+   "woocommerce_order_partially_refunded": [
+    "10:Automattic\\WooCommerce\\Admin\\API\\Reports\\Products\\DataStore::add_partial_refund_type_meta",
+    "10:WC_Emails::send_transactional_email"
+   ],
+   "woocommerce_order_refunded": [
+    "35:Petshop_Fakt_Grazinimai::rasyti"
+   ],
+   "woocommerce_order_fully_refunded": [
+    "10:Automattic\\WooCommerce\\Admin\\API\\Reports\\Products\\DataStore::add_full_refund_type_meta",
+    "10:WC_Emails::send_transactional_email"
+   ],
+   "woocommerce_saved_order_items": [],
+   "woocommerce_before_delete_order_item": []
+  }
+ }
+}
