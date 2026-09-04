@@ -1,0 +1,284 @@
+{
+ "v": "dep-111238",
+ "kurimas": 200,
+ "sid": 4709,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1613 e5d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": [
+   80000,
+   80000,
+   80000,
+   70040
+  ],
+  "bytes": 232530,
+  "md5": "0bc7795f845d9da241efc90a6c9d891b",
+  "token": "ok",
+  "buvo": "5a90a6eddb9a9174662f35ccbaa8a67b",
+  "backup": true,
+  "rasyta": 232530,
+  "po": "0bc7795f845d9da241efc90a6c9d891b"
+ },
+ "T": {
+  "v": "S1613 e5d",
+  "f": "T",
+  "temp_istrinta": 0,
+  "versija": "3.13.2",
+  "md5": "0bc7795f845d9da241efc90a6c9d891b",
+  "dev_zurnalas_pries": 3,
+  "velykos": {
+   "2025": "2025-04-20",
+   "2026": "2026-04-05",
+   "2027": "2027-03-28"
+  },
+  "darbo": {
+   "2026-09-04": true,
+   "2026-09-05": false,
+   "2026-09-06": false,
+   "2026-09-07": true,
+   "2026-11-01": false,
+   "2026-11-02": false,
+   "2026-04-06": false,
+   "2026-04-07": true,
+   "2026-12-24": false,
+   "2026-02-16": false
+  },
+  "pilnos": {
+   "08-31→09-04": 3,
+   "09-04→09-07": 0,
+   "09-04→09-10": 3,
+   "09-02→09-08": 3,
+   "09-03→09-08": 2,
+   "04-02→04-09": 3,
+   "09-04→09-04": 0
+  },
+  "kitas_1400": {
+   "nuo_dabar": "2026-09-05 14:00",
+   "nuo_13_59": "2026-09-04 14:00",
+   "nuo_14_00": "2026-09-05 14:00"
+  },
+  "cron_planas": "2026-09-05 14:00",
+  "cron_venipak": "2026-09-04 14:28",
+  "hpos_meta_stulpeliai": [
+   "id",
+   "order_id",
+   "meta_key",
+   "meta_value"
+  ],
+  "wc_orders_stulpeliai": [
+   "id",
+   "status",
+   "currency",
+   "type",
+   "tax_amount",
+   "total_amount",
+   "customer_id",
+   "billing_email",
+   "date_created_gmt",
+   "date_updated_gmt",
+   "parent_order_id",
+   "payment_method",
+   "payment_method_title",
+   "transaction_id",
+   "ip_address",
+   "user_agent",
+   "customer_note"
+  ],
+  "sql_klaida_po": "",
+  "kandidatai": {
+   "35090": "processing 08-26 Wed terra@gyvunai.lt kl=",
+   "35100": "processing 08-26 Wed terra@gyvunai.lt kl=",
+   "35414": "processing 09-02 Wed terra@petshop.lt kl=",
+   "35415": "processing 09-02 Wed terra@petshop.lt kl=",
+   "35418": "processing 09-02 Wed terra@petshop.lt kl=",
+   "35420": "processing 09-02 Wed terra@petshop.lt kl=",
+   "35421": "processing 09-02 Wed terra@petshop.lt kl=",
+   "35422": "processing 09-02 Wed terra@petshop.lt kl=",
+   "35423": "processing 09-02 Wed terra@petshop.lt kl=2026-09-02 17:46:12",
+   "35425": "processing 09-02 Wed terra@petshop.lt kl=",
+   "35426": "processing 09-02 Wed terra@petshop.lt kl=",
+   "35431": "processing 09-02 Wed terra@petshop.lt kl=",
+   "35434": "processing 09-02 Wed terra@petshop.lt kl=",
+   "35435": "processing 09-03 Thu terra@petshop.lt kl=",
+   "35436": "processing 09-03 Thu terra@petshop.lt kl=",
+   "35439": "processing 09-03 Thu terra@petshop.lt kl=",
+   "35441": "processing 09-03 Thu terra@gyvunai.lt kl=",
+   "35442": "processing 09-03 Thu terra@gyvunai.lt kl=",
+   "35443": "processing 09-03 Thu terra@petshop.lt kl=",
+   "35444": "processing 09-03 Thu terra@petshop.lt kl=",
+   "35450": "processing 09-03 Thu terra@petshop.lt kl="
+  },
+  "test_ids": [
+   35414,
+   35435,
+   35421
+  ],
+  "pries": {
+   "35414": {
+    "st": "processing",
+    "vel": "",
+    "iss": ""
+   },
+   "35421": {
+    "st": "processing",
+    "vel": "",
+    "iss": "{\"prins\":{\"laikas\":\"2026-09-03 21:33:34\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:34\"}}"
+   },
+   "35435": {
+    "st": "processing",
+    "vel": "",
+    "iss": ""
+   }
+  },
+  "sim_sa": {
+   "dabar": "2026-09-05 14:00",
+   "darbo_diena": false,
+   "uzsakymu": 0,
+   "issiusta": [],
+   "praleista": [
+    "ne darbo diena"
+   ],
+   "klaidos": [],
+   "s": 0
+  },
+  "sim_pr": {
+   "dabar": "2026-09-07 14:00",
+   "darbo_diena": true,
+   "uzsakymu": 3,
+   "issiusta": [],
+   "praleista": [
+    "#35414 apmokėta 09-02 — praėjo 2 d. d.",
+    "#35435 apmokėta 09-03 — praėjo 1 d. d.",
+    "#35421 apmokėta 09-02 — praėjo 2 d. d."
+   ],
+   "klaidos": [],
+   "s": 0
+  },
+  "mail_po_pr": 0,
+  "sim_an": {
+   "dabar": "2026-09-08 14:00",
+   "darbo_diena": true,
+   "uzsakymu": 3,
+   "issiusta": [
+    "#35414 laiškas terra@petshop.lt (apmokėta 09-02, 3 d. d.; liko: AV, Ambrosia)"
+   ],
+   "praleista": [
+    "#35435 apmokėta 09-03 — praėjo 2 d. d.",
+    "#35421 Klausimuose: Tiekėjas vėluoja — perduota prieš 24+ val."
+   ],
+   "klaidos": [],
+   "s": 0.1
+  },
+  "mail_po_an": 1,
+  "sim_an2": {
+   "dabar": "2026-09-08 14:00",
+   "darbo_diena": true,
+   "uzsakymu": 3,
+   "issiusta": [],
+   "praleista": [
+    "#35414 jau pranešta 2026-09-04 14:16:41",
+    "#35435 apmokėta 09-03 — praėjo 2 d. d.",
+    "#35421 Klausimuose: Tiekėjas vėluoja — perduota prieš 24+ val."
+   ],
+   "klaidos": [],
+   "s": 0
+  },
+  "mail_po_an2": 1,
+  "po": {
+   "35414": {
+    "st": "processing",
+    "vel": "2026-09-04 14:16:41",
+    "iss": ""
+   },
+   "35421": {
+    "st": "processing",
+    "vel": "",
+    "iss": "{\"prins\":{\"laikas\":\"2026-09-03 21:33:34\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:34\"}}"
+   },
+   "35435": {
+    "st": "processing",
+    "vel": "",
+    "iss": ""
+   }
+  },
+  "notes_a": [
+   "14:16 Klientui išsiųstas vėlavimo laiškas (terra@petshop.lt): apmokėta 09-02, praėjo 3 pilnos darbo dienos; dar neišsiųsta: AV, Ambrosia.",
+   "10:12 Darbalaukis: „AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg“ kelias Ambrosia → Avesa sandėlį → Ambrosia → klientui (Testuotojas)."
+  ],
+  "ivykiai_a": [
+   {
+    "veiksmas": "velavimo_laiskas",
+    "kanalas": "cron",
+    "rezultatas": "ok",
+    "po": "{\"el\":\"terra@petshop.lt\",\"apmoketa\":\"2026-09-02\",\"darbo_dienos\":3,\"liko\":[\"av\",\"ambrosia\"],\"issiusta_daliu\":0}"
+   },
+   {
+    "veiksmas": "kelias",
+    "kanalas": "web",
+    "rezultatas": "ok",
+    "po": "{\"kelias\":\"tiesiai\",\"src\":\"ambrosia\",\"reduced\":0,\"zinute\":\"likutis nejudėjo\"}"
+   }
+  ],
+  "laiskai": [
+   "terra@petshop.lt | Užsakymas Nr. 35414 — surinkimas užtruko | Petshop.lt Surinkimas užtruko Sveiki, AUDITAS. Jūsų užsakymo Nr. 35414 surinkimas truputį užtruko. Išsiųsime jį kaip galėdami greičiau. Ačiū už kantrybę. Išsiuntę užsakymą informuosime Jus atskiru laišku. Jei turite klausimų, tiesiog atsakykite į šį laišką. Gražios dienos,petshop.lt Petshop.ltLiucionių g. 46, Liucionių k., 15166, Lietuva"
+  ],
+  "dev_zurnalas_po": 3,
+  "paskutinis_opcija": {
+   "laikas": "2026-09-04 14:02:14",
+   "darbo_diena": true,
+   "uzsakymu": 0,
+   "issiusta": 0,
+   "praleista": 0,
+   "klaidos": 0,
+   "s": 0
+  },
+  "skydelis": {
+   "code": 200,
+   "pastaba": "Surūšiuota. Kelią dar gali keisti, kol prekei nepadarytas pirmas žingsnis. Klientui pranešta apie vėlavimą (09-04 14:16).",
+   "kl": "",
+   "kur": "Surinkti AV + Dropshipping (Ambrosia) · toliau: Užsakyti iš Ambrosia"
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788522401|HcsflDNMzuiGE54MpoQb7fmILSBe854g7Odvifafv2O|30f1cde6800ceb904da6efe79f65b11555e1cc9b4000140e0038eb92aac9c0e5"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788522401|HcsflDNMzuiGE54MpoQb7fmILSBe854g7Odvifafv2O|7436b72faa42984a3bd09fa46fe13402200de598be135195497ca971d8ccfd7d"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788522401|HcsflDNMzuiGE54MpoQb7fmILSBe854g7Odvifafv2O|70f6f00b6444c3cc6a4ef8e03c6d74a710758141f6f03845a2d661d7d87f8925"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1613_e7_visi_pill",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+    "w": 1400,
+    "full": false,
+    "eval": "({pills:[...document.querySelectorAll('.dl-pill-e')].map(x=>x.closest('tr').querySelector('.nr').innerText+' '+x.innerText).slice(0,10)})"
+   }
+  ]
+ },
+ "shots": {
+  "s1613_e7_visi_pill": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "pills": [
+     "#35423 laukia nuo 09-02 20:46",
+     "#35414 klientui pranešta apie vėlavimą 09-04 14:16"
+    ]
+   }
+  }
+ }
+}
