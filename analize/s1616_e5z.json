@@ -1,0 +1,86 @@
+{
+ "v": "dep-202857",
+ "kurimas": 200,
+ "sid": 4783,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1616 e5z",
+  "temp_istrinta": 1,
+  "dev_pastas_pries": 5,
+  "klausimai_code": 200,
+  "grazinta_url": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=grazinta&id=35425&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26eile%3Dklausimai%26atidaryti%3D35425&_wpnonce=b723508b60",
+  "graz_pries": "[{\"laikas\":\"2026-09-04 23:04:08\",\"kas\":\"Testuotojas\",\"suma\":28.58,\"refund\":35789,\"ka\":\"i\\u0161imta AMBROSIA begr\\u016bdis su \\u0117riena ir \\u0161vie\\u017eia elniena sau\"}]",
+  "grazinta": {
+   "code": 302,
+   "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai&atidaryti=35425&pd_ok=dl_info&pd_nr=35425|pažymėta: grąžinta 28,58 € — Klausimas nuimtas"
+  },
+  "graz_po": "[{\"laikas\":\"2026-09-04 23:04:08\",\"kas\":\"Testuotojas\",\"suma\":28.58,\"refund\":35789,\"ka\":\"i\\u0161imta AMBROSIA begr\\u016bdis su \\u0117riena ir \\u0161vie\\u017eia elniena sau\"}]",
+  "ivykis": {
+   "veiksmas": "grazinta",
+   "rezultatas": "ok",
+   "kas_vardas": "Testuotojas",
+   "pastaba": "grąžinta rankomis 28,58 €"
+  },
+  "pastaba": "Darbalaukis: pinigai klientui grąžinti rankomis — 28,58 € (Testuotojas). Sąskaita / kreditinė — rankomis.",
+  "sk_po": {
+   "kl": "",
+   "kur": "Neišrūšiuoti · toliau: Rūšiuoti"
+  },
+  "grazinta_2": {
+   "code": 302,
+   "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai&atidaryti=35425&pd_ok=dl_info&pd_nr=35425|grąžintinų pinigų nėra — Klausimo nebėra"
+  },
+  "laiskai": 0,
+  "dev_pastas_po": 5,
+  "temp_liko": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788555637|h8XJof4vG1YUNx4eSMBDbKrHlJEHJnmikmrEm0bekHu|d3eb404cf126bd3b19587c85bf7adacacbc8873aaf387ea8cbaf3cdfc93ea782"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788555637|h8XJof4vG1YUNx4eSMBDbKrHlJEHJnmikmrEm0bekHu|cef6b2c3e3720878789b18f62e6d8a4c648e50f5339b5b6c0d4992054fe4c486"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788555637|h8XJof4vG1YUNx4eSMBDbKrHlJEHJnmikmrEm0bekHu|c6a8d66a2b187150d36cd1ca196143f8da248d52e8b06d6f45b5cbe9257a2a0e"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1616_e5_skydelis_35414_forma",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35414",
+    "w": 1400,
+    "eval": "(async function(){ function q(s){return document.querySelector(s);} var r=q('tr.eil[data-id=\"35414\"]'); if(r) r.click(); for(var i=0;i<40;i++){ if(document.querySelector('#skEil .eilute')) break; await new Promise(function(x){setTimeout(x,250);}); } var a=q('a.dl-kk'); if(a){ a.click(); await new Promise(function(x){setTimeout(x,300);}); } return {eil:[...document.querySelectorAll('#skEil .eilute')].map(function(x){return x.innerText.replace(/\\s+/g,' ').slice(0,120);}),kk:document.querySelectorAll('a.dl-kk').length,forma:!!document.querySelector('.dl-kk-f'),laukai:[...document.querySelectorAll('.dl-kk-f input:not([type=hidden]),.dl-kk-f button,.dl-kk-f a')].map(function(x){return (x.name||x.className)+'='+((x.value||x.innerText||'')+'').slice(0,24)+(x.disabled?'(off)':'');}),klaus:(q('#skKlaus')||{innerText:''}).innerText,kur:(q('.dl-kur')||{innerText:''}).innerText}; })()"
+   }
+  ]
+ },
+ "shots": {
+  "s1616_e5_skydelis_35414_forma": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35414",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "eil": [
+     "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg AMLE02 Kiekis",
+     "1× Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis"
+    ],
+    "kk": 2,
+    "forma": true,
+    "laukai": [
+     "n=1(off)",
+     "v p dl-kk-s=Išsaugoti(off)",
+     "v t raud dl-kk-i=Išimti",
+     "pilkas maz dl-kk-x=atgal"
+    ],
+    "klaus": "Klausimas: Grąžink klientui pinigus",
+    "kur": "Dabar: Klausimai · toliau: Spręsti"
+   }
+  }
+ }
+}
