@@ -1,0 +1,15 @@
+{
+ "v": "dep-093945",
+ "kurimas": 200,
+ "sid": 4690,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "run e11r",
+  "temp_istrinta": 1,
+  "bytes": 2665,
+  "kodas": "<?php\n/**\n * Petshop Dropship Sargas v1.0 (H210) — tiekėjo vėlavimo (SLA) stebėjimas.\n *\n * PROBLEMA: perdavus užsakymą tiekėjui (`_ps_dropship_sent`) niekas neseka,\n * ar tiekėjas realiai išsiuntė. Užsakymas gali tyliai kaboti „vykdomas\" dienomis.\n *\n * SPRENDIMAS: valandinis cron. Jei nuo perdavimo praėjo daugiau nei 24 val.\n * (keičiama filtru `ps_dropship_sla_valandos`), o užsakymas vis dar\n * processing/on-hold — uždedama žymė `_ps_sla_velavimas` + pastaba istorijoje.\n * Darbalaukio `klausimas()` (desk v3.16) žymę paverčia kortele „Klausimuose\".\n *\n * SAUGUMO RIBA: sargas gali TIK uždėti žymę ir pastabą. Jokių statusų,\n * likučių, laiškų. Žymė dedama VIENĄ kartą (idempotencija per žymės buvimą).\n * Savaitgalio niuansas sprendžiamas žmogaus: kortelėje yra „Laukti\".\n */\n\ndefined( 'ABSPATH' ) || exit;\n\nclass Petshop_Dropship_Sargas {\n\n\tconst ZYME   = '_ps_sla_velavimas';\n\tconst CRON   = 'ps_dropship_sargas';\n\tconst RIBA_H = 24;\n\n\tpublic static function init() {\n\t\tadd_action( 'init', array( __CLASS__, 'planuoti' ) );\n\t\tadd_action( self::CRON, array( __CLASS__, 'tikrinti' ) );\n\t}\n\n\tpublic static function planuoti() {\n\t\tif ( ! wp_next_scheduled( self::CRON ) ) {\n\t\t\twp_schedule_event( time() + 300, 'hourly', self::CRON );\n\t\t}\n\t}\n\n\t/** Valandinis patikrinimas. Grąžina pažymėtų skaičių (testams). */\n\tpublic static function tikrinti() {\n\t\tglobal $wpdb;\n\t\t$valandu = (int) apply_filters( 'ps_dropship_sla_valandos', self::RIBA_H );\n\t\t$riba    = gmdate( 'Y-m-d H:i:s', current_time( 'timestamp' ) - $valandu * HOUR_IN_SECONDS );\n\t\t$t  = $wpdb->prefix . 'wc_orders';\n\t\t$mt = $wpdb->prefix . 'wc_orders_meta';\n\n\t\t$ids = $wpdb->get_col( $wpdb->prepare(\n\t\t\t\"SELECT o.id\n\t\t\t FROM {$t} o\n\t\t\t JOIN {$mt} m ON m.order_id = o.id AND m.meta_key = '_ps_dropship_sent'\n\t\t\t LEFT JOIN {$mt} f ON f.order_id = o.id AND f.meta_key = %s\n\t\t\t WHERE o.status IN ('wc-processing','wc-on-hold')\n\t\t\t   AND f.order_id IS NULL\n\t\t\t   AND m.meta_value <> '' AND m.meta_value < %s\n\t\t\t LIMIT 50\", self::ZYME, $riba ) );\n\n\t\t$k = 0;\n\t\tforeach ( $ids as $oid ) {\n\t\t\t$o = wc_get_order( $oid );\n\t\t\tif ( ! $o || $o->get_meta( self::ZYME ) ) { continue; }\n\t\t\t$sent = (string) $o->get_meta( '_ps_dropship_sent' );\n\t\t\tif ( ! $sent || $sent >= $riba ) { continue; }\n\n\t\t\t$o->update_meta_data( self::ZYME, current_time( 'mysql' ) );\n\t\t\t$o->add_order_note( sprintf(\n\t\t\t\t'Dropship sargas: tiekėjui perduota %s (daugiau nei %d val.), užsakymas vis dar vykdomas. Įkelta į „Klausimus\" — patikrink pas tiekėją.',\n\t\t\t\t$sent, $valandu ), false, true );\n\t\t\t$o->save();\n\t\t\t$k++;\n\t\t}\n\t\treturn $k;\n\t}\n}\nPetshop_Dropship_Sargas::init();\n"
+ }
+}
