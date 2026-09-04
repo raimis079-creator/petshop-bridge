@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.18.1 (S1615, 5 etapas #1–#3 po Raimio sprendimų 09-04 vakaras + 2 stulpelio kosmetika) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.19.1 (S1616, 5 etapas #4 „kiekiai“ — B modelis; po v3.18.1) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -26,6 +26,24 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v3.19.1 (S1616): po eilutės perrašymo `update_taxes()` prieš `calculate_totals(false)` — kitaip PVM lieka senas (e3d testas: #35414 19,49 € vietoj 19,04 €).
+ * v3.19 (S1616, 5 etapas #4 „kiekiai“ — B modelis, spec §12.5; Raimis 09-05 „darom“): skydelio eilutės „q×“ tampa spaudžiamas, kai
+ *   eilutė be užrakto (tas pats `lock` kaip keliui: nėra lipduko, tiekėjui nepranešta, partija ne užsakyta, nesurinkta) ir užsakymas
+ *   apmokėtas → `Kiekis [n] × · Išsaugoti · Išimti` (POST `admin_post_ps_dl_kiekis`, nonce `ps_dl_kiekis_{id}`, lock, dialogas prieš).
+ *   Eiga (`kiekis_vykdyti`): (1) likutis grįžta — AV per `likutis()` pagal `_ps_av_reduced_qty` (perrašomas), WC veidrodis per
+ *   `wc_update_product_stock` pagal `_reduced_stock` (perrašomas), `_restock_refunded_items` += n (faktui „atsargos grįžo“);
+ *   (2) WC dalinis refund su `line_items` (`refund_payment=false`, `restock_items=false`, refund meta `_ps_kiekis`) →
+ *   `Petshop_Fakt_Grazinimai::rasyti` (prior. 35) rašo faktą pats; WC laiškai klientui — `laiskai_off`; nepavykus — likutis ir žymės
+ *   atstatomi, niekas nekeista; (3) eilutė perrašoma (`set_quantity`, proporcingos sumos ir mokesčiai, `_ps_kiekis_keistas`,
+ *   `calculate_totals(false)`, pristatymas nekinta) arba išimama (`remove_item`; išimti vienintelę = „Atšaukti“ — neleidžiama);
+ *   kaupiamos Tiekimo partijos eilutė perdedama (`isimti_eilute` + `ideti_eilute`); grupės/planas perskaičiuojami; `_ps_surinkta`
+ *   nuimama; (4) pastaba, įvykis `kiekis` (eilutė, prieš/po), žymė `_ps_grazinti_rankomis` → Klausimas „Grąžink klientui pinigus“
+ *   (kortelė su suma ir „Grąžinta“ = `v=grazinta`; galioja ir įvykdytam / atšauktam užsakymui — `atviri()` juos įtraukia). Klientui
+ *   laiško nėra. Partijos — rankomis (pastaba). „Pridėti prekę“ — vėliau per „naujas mažas užsakymas + apmokėjimo nuoroda“ (§12.5).
+ *   WC savo refund'ą rodytų dukart (eilutė jau perrašyta) — darbalaukio filtrai paskyroje / laiškuose / sumoje nuima `_ps_kiekis`
+ *   refund'us (`woocommerce_order_item_quantity_html`, `woocommerce_email_order_item_quantity`, `woocommerce_get_order_item_totals`,
+ *   `woocommerce_get_formatted_order_total`). Dokumentuota pasekmė: WC `get_remaining_refund_amount()` po keitimo mažesnis už realų —
+ *   WC admin refund'ų nenaudojam; kreditinė (5 etapas „Sąskaita“) skaičiuos iš savų sumų (`_ps_grazinti_rankomis`, faktai).
  * v3.18.1 (S1615, kosmetika — S1614 radinys): sąrašo 2 stulpelis „Prekės pagal kelią“ nebeskaičiuoja eilučių su `_ps_issiusta` (jau išsiųsta
  *   ankstesne AV siunta) ir `_ps_atsaukta` (dalis atšaukta) — #35438 rodė „2 vnt. … +1“, pakuoti reikia 1; pill ir skydelis jau rodė teisingai.
  *   Jei po filtro eilučių neliktų (teoriškai) — rodomos visos, kaip anksčiau.
@@ -239,7 +257,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.18.1';
+	const VERSIJA = '3.19.1';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -271,6 +289,12 @@ class Petshop_Darbalaukis {
 		add_action( 'wp_ajax_ps_dl_matyta', array( __CLASS__, 'ajax_matyta' ) );
 		add_action( 'admin_post_ps_dl_tiekimas', array( __CLASS__, 'tiekimas_vykdyti' ) );
 		add_action( 'admin_post_ps_dl_redaguoti', array( __CLASS__, 'redaguoti_vykdyti' ) ); // v3.16
+		add_action( 'admin_post_ps_dl_kiekis', array( __CLASS__, 'kiekis_vykdyti' ) ); // v3.19 (5 etapas #4)
+		// v3.19: kiekio keitimo refund'ai (`_ps_kiekis`) — eilutė jau perrašyta, WC juos rodytų dukart (paskyra, laiškai, „Suma“).
+		add_filter( 'woocommerce_order_item_quantity_html', array( __CLASS__, 'kiekio_html' ), 20, 2 );
+		add_filter( 'woocommerce_email_order_item_quantity', array( __CLASS__, 'kiekio_laiske' ), 20, 2 );
+		add_filter( 'woocommerce_get_order_item_totals', array( __CLASS__, 'sumu_eilutes' ), 20, 2 );
+		add_filter( 'woocommerce_get_formatted_order_total', array( __CLASS__, 'suma_be_savu' ), 20, 4 );
 		add_action( 'wp_ajax_ps_dl_vietos', array( __CLASS__, 'ajax_vietos' ) ); // v3.16
 		// v3.11 (4 etapas #1): Venipak sekimo cron kas 30 min.
 		add_filter( 'cron_schedules', array( __CLASS__, 'cron_tvarkarastis' ) );
@@ -626,6 +650,8 @@ class Petshop_Darbalaukis {
 		// V14 (v3.16, 5 etapas #2): „Siuntos sukurti nepavyko“ darbalaukio lygiu — Venipak/LP plugino klaidos meta (variklio `klausimas()` žiūri į statusą `lp-parcel-failed`, kurio pluginas neskiria).
 		$f['siuntos_klaida'] = ( $f['paid'] && ! $f['uzdarytas'] ) ? self::siuntos_klaida( $o, $f['vez'] ) : null;
 		if ( $f['siuntos_klaida'] && ! $f['kl'] ) { $f['kl'] = 'Siuntos sukurti nepavyko'; }
+		// v3.19 (5 etapas #4): kiekis sumažintas / prekė išimta → pinigai klientui grąžinami rankomis — Klausimas, kol darbuotojas nepažymi „Grąžinta“ (galioja ir įvykdytam / atšauktam).
+		$f['grazinti'] = self::grazinti( $o ); if ( $f['grazinti'] && ! $f['kl'] ) { $f['kl'] = 'Grąžink klientui pinigus'; }
 
 		// Žingsneliai kiekvienai eilutei (maketo zingsniai()) + užraktas (A8).
 		foreach ( $f['eil'] as $iid => $e ) {
@@ -761,8 +787,9 @@ class Petshop_Darbalaukis {
 					'kodel_ne' => empty( $e['galimi'][ $k ] ) ? ( 'av' === $k ? 'AV tik ' . (int) $e['av_qty'] . ', reikia ' . $e['q'] : ( 'tiesiai' === $k && 'lp' === $f['vez'] ? 'LP Express — tik iš AV' : 'tiekėjo nėra' ) ) : $e['lock'] );
 			}
 			$tiek_url = ( 'i_av' === $e['k'] && $e['b'] && 'gauta' !== $e['b']['busena'] ) ? self::url( array( 'eile' => 'laukiam', 'view' => null, 'q' => null, 'b' => null, 'atidaryti' => null ) ) : '';
-			$eil[] = array( 'q' => $e['q'], 'n' => $e['n'], 'sku' => $e['sku'], 'img' => $e['img'], 'k' => $e['k'], 'keliai' => $keliai, 'kodel' => self::kodel( $e ), 'zing' => $e['zing'], 'lock' => $e['lock'], 'tiek_url' => $tiek_url, 'bukle' => $e['bukle'] );
+			$eil[] = array( 'iid' => $e['iid'], 'q' => $e['q'], 'n' => $e['n'], 'sku' => $e['sku'], 'img' => $e['img'], 'k' => $e['k'], 'keliai' => $keliai, 'kodel' => self::kodel( $e ), 'zing' => $e['zing'], 'lock' => $e['lock'], 'tiek_url' => $tiek_url, 'bukle' => $e['bukle'], 'kk' => self::kiekio_gal( $f, $e ) ); // v3.19: kk — kiekį keisti galima
 		}
+		$kk = null; foreach ( $eil as $x ) { if ( ! empty( $x['kk'] ) ) { $kk = array( 'u' => admin_url( 'admin-post.php' ), 'n' => wp_create_nonce( 'ps_dl_kiekis_' . $id ), 'g' => $g ); break; } } // v3.19
 		$adr = $o->get_formatted_shipping_address(); if ( ! $adr ) { $adr = $o->get_formatted_billing_address(); }
 		$nr = array(); foreach ( $f['dalys'] as $k => $p ) { if ( $p && ! empty( $p['nr'] ) ) { $nr[] = self::vardas( $k ) . ': ' . implode( ', ', $p['nr'] ) . self::sekimo_tekstas( $f['sek'], $p['nr'] ); } }
 		foreach ( $f['dalys_atsaukta'] as $k => $a ) { $nr[] = self::vardas( $k ) . ': ' . implode( ', ', (array) ( $a['nr'] ?? array() ) ) . ' — atšaukta ' . substr( (string) ( $a['laikas'] ?? '' ), 5, 11 ) . ', prekės grįžo į AV'; } // v3.17
@@ -797,6 +824,7 @@ class Petshop_Darbalaukis {
 			'nesurinkta' => ( ! empty( $f['dalys']['av']['lapas'] ) && empty( $f['dalys']['av']['siunta'] ) && ! $f['uzdarytas'] ) ? self::dl_url( 'nesurinkta', $id ) : '',
 			'velavimas' => self::velavimo_mygtukas( $f ), // v3.15
 			'red' => self::redagavimas( $f ), 'siuntos_klaida' => $f['siuntos_klaida'] ? $f['siuntos_klaida']['t'] : '', // v3.16
+			'kk' => $kk, // v3.19
 			'zn' => wp_create_nonce( 'ps_dl_zurnalas' ),
 		);
 	}
@@ -959,6 +987,7 @@ class Petshop_Darbalaukis {
 			elseif ( 'rusiuoti' === $v ) { $rez = self::rusiuoti( $o, $u ); }
 			elseif ( 'grizta_is_naujo' === $v ) { $rez = self::grizta_is_naujo( $o, $u ); }
 			elseif ( 'grizta_atsaukti' === $v ) { $rez = self::grizta_atsaukti( $o, $u ); }
+			elseif ( 'grazinta' === $v ) { $rez = self::grazinta( $o, $u ); } // v3.19
 			elseif ( 'velavimas' === $v ) { $tz = wp_timezone(); $dn = new DateTime( 'now', $tz ); $r = self::velavimo_laiskas( $o, $dn->format( 'Y-m-d' ), $u ); $rez = array( $r[0] ? 'dl_info' : 'dl_klaida', $r[0] ? 'klientui pranešta apie vėlavimą — ' . $r[1] : 'nepranešta: ' . $r[1] ); } // v3.15
 			elseif ( 'nesurinkta' === $v ) {
 				$o->delete_meta_data( '_ps_surinkta' ); $o->add_order_note( 'Darbalaukis: surinkimas atšauktas (' . $u->display_name . ') — užsakymas grįžo į „Surinkti“.', false, true ); $o->save();
@@ -1036,6 +1065,133 @@ class Petshop_Darbalaukis {
 	}
 
 	/** Eilutės AV likučio judesys: +q / −q pagal prekės rūšį (grynai AV → `_stock`, AV+tiekėjas → `_own_stock_qty`). */
+	/* ============================ v3.19: KIEKIS (5 etapas #4, B modelis — spec §12.5) ============================ */
+
+	/** Kiekį keisti galima: apmokėtas, neuždarytas, eilutė be užrakto (tas pats `lock` kaip keliui), neatšaukta, neišsiųsta. */
+	protected static function kiekio_gal( $f, $e ) {
+		return ! empty( $f['paid'] ) && empty( $f['uzdarytas'] ) && '' === (string) ( $e['lock'] ?? '' ) && empty( $e['atsaukta'] ) && empty( $e['issiusta_l'] ) && (int) $e['q'] >= 1;
+	}
+	/** Žymė „grąžink klientui rankomis“: [{laikas,kas,suma,refund,ka}]. */
+	public static function grazinti( $o ) { $j = json_decode( (string) $o->get_meta( self::GRAZINTI_META ), true ); return is_array( $j ) ? $j : array(); }
+
+	/**
+	 * „q×“ → kiekio mažinimas / prekės išėmimas (POST admin-post `ps_dl_kiekis`). Variklis neliestas.
+	 * 1) likutis grįžta (pasitikim žymėmis, kaip pilnas atšaukimas: AV pagal `_ps_av_reduced_qty`, WC veidrodis pagal `_reduced_stock`);
+	 * 2) WC dalinio grąžinimo įrašas su eilute (pinigai NEGRĄŽINAMI, laiškai išjungti) — faktas `ps_fakt_grazinimai` rašosi pats; nepavykus — viskas atgal;
+	 * 3) eilutė perrašoma arba išimama, Tiekimo kaupiama partija perdedama, grupės/planas, `_ps_surinkta` nuimama;
+	 * 4) žymė `_ps_grazinti_rankomis` (Klausimas), pastaba, įvykis `kiekis`. Klientui laiško nėra.
+	 */
+	public static function kiekis_vykdyti() {
+		if ( ! current_user_can( 'edit_shop_orders' ) ) { wp_die( 'Nepakanka teisių' ); }
+		$id = absint( $_POST['id'] ?? 0 ); check_admin_referer( 'ps_dl_kiekis_' . $id );
+		$o = wc_get_order( $id ); if ( ! $o ) { wp_die( 'Užsakymas nerastas' ); }
+		$atgal = wp_validate_redirect( wp_unslash( $_POST['g'] ?? '' ), admin_url( 'admin.php?page=' . self::SLUG . '&atidaryti=' . $id ) );
+		$u = wp_get_current_user(); $lock = 'ps_dl_lock_' . $id;
+		$baigti = function ( $k, $t ) use ( $o, $atgal, $lock ) { delete_transient( $lock ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => $k, 'pd_nr' => rawurlencode( $o->get_order_number() . '|' . $t ) ), $atgal ) ); exit; };
+		if ( get_transient( $lock ) ) { $baigti( 'dl_info', 'veiksmas jau vykdomas — palauk sekundę' ); } set_transient( $lock, 1, 20 );
+		try {
+			$iid = absint( $_POST['iid'] ?? 0 ); $ka = sanitize_key( wp_unslash( $_POST['ka'] ?? '' ) ); $n = absint( $_POST['n'] ?? 0 );
+			$it = $o->get_item( $iid ); if ( ! $it || ! ( $it instanceof WC_Order_Item_Product ) ) { $baigti( 'dl_klaida', 'eilutės nėra' ); }
+			$f = self::faktai( $o, self::zurnalas( array( $id ) ) ); $e = $f['eil'][ $iid ] ?? null;
+			if ( ! $e || ! self::kiekio_gal( $f, $e ) ) { $baigti( 'dl_klaida', 'kiekio keisti negalima — ' . ( $e && $e['lock'] ? $e['lock'] : ( ! $f['paid'] ? 'neapmokėtas' : 'užsakymas uždarytas arba eilutė išsiųsta / atšaukta' ) ) . ' (keisk rankiniu būdu)' ); }
+			$q = (int) $it->get_quantity();
+			if ( 'isimti' === $ka ) { $n = 0; } elseif ( 'kiekis' !== $ka || $n < 1 || $n >= $q ) { $baigti( 'dl_klaida', 'blogas kiekis — dabar ' . $q . ', galima 1…' . ( $q - 1 ) . ' arba „Išimti“' ); }
+			$isimti = ( 0 === $n ); $d = $q - $n;
+			if ( $isimti ) { $kitos = 0; foreach ( $o->get_items() as $x ) { if ( (int) $x->get_id() !== $iid && (int) $x->get_quantity() > 0 && ! $x->get_meta( '_ps_atsaukta' ) ) { $kitos++; } } if ( ! $kitos ) { $baigti( 'dl_klaida', 'tai vienintelė prekė — naudok „Atšaukti“' ); } }
+			$pid = (int) $it->get_product_id(); $vardas = $it->get_name(); $nr = $o->get_order_number();
+			// Sumos proporcingai (WC saugo be PVM pilnu tikslumu); grąžintina — su PVM.
+			$sub = (float) $it->get_subtotal(); $tot = (float) $it->get_total(); $taxes = (array) $it->get_taxes(); $dalis = $d / $q;
+			$ref_tot = $tot * $dalis; $ref_tax = array(); $ref_tax_sum = 0.0;
+			foreach ( (array) ( $taxes['total'] ?? array() ) as $rid => $amt ) { $ref_tax[ $rid ] = (float) $amt * $dalis; $ref_tax_sum += (float) $amt * $dalis; }
+			$suma = round( $ref_tot + $ref_tax_sum, 2 );
+			if ( $suma > (float) $o->get_remaining_refund_amount() + 0.005 ) { $baigti( 'dl_klaida', 'WC neleidžia grąžinimo įrašo ' . number_format( $suma, 2, ',', '' ) . ' € (liko ' . number_format( (float) $o->get_remaining_refund_amount(), 2, ',', '' ) . ' €)' ); }
+			$judesiai = array(); $atstatyti = array();
+			// 1) Likutis grįžta.
+			$rq = (int) $it->get_meta( '_ps_av_reduced_qty' ); if ( ! $rq && $it->get_meta( '_ps_av_reduced' ) ) { $rq = $q; }
+			if ( $rq > 0 ) {
+				$m = min( $d, $rq ); $x = self::likutis( $pid, $m, 'kiekis ' . $q . ' → ' . $n . ', užsakymas #' . $nr );
+				if ( is_wp_error( $x ) ) { $baigti( 'dl_klaida', 'likučio grąžinti nepavyko: ' . $x->get_error_message() ); }
+				$judesiai[] = 'AV +' . $m . ' → ' . $x; $atstatyti[] = array( 'av', $pid, $m );
+				$liko = $rq - $m; if ( $liko > 0 ) { $it->update_meta_data( '_ps_av_reduced_qty', $liko ); } else { $it->delete_meta_data( '_ps_av_reduced_qty' ); $it->delete_meta_data( '_ps_av_reduced' ); }
+			}
+			$wr = (int) $it->get_meta( '_reduced_stock' );
+			if ( $wr > 0 ) {
+				$p = wc_get_product( $pid ); $m = min( $d, $wr );
+				if ( $p && $p->managing_stock() ) { $x = wc_update_product_stock( $p, $m, 'increase' ); $judesiai[] = 'WC veidrodis +' . $m . ' → ' . ( null === $x ? '?' : (int) $x ); $atstatyti[] = array( 'wc', $pid, $m ); }
+				$liko = $wr - $m; if ( $liko > 0 ) { $it->update_meta_data( '_reduced_stock', $liko ); } else { $it->delete_meta_data( '_reduced_stock' ); }
+			}
+			$it->update_meta_data( '_restock_refunded_items', (int) $it->get_meta( '_restock_refunded_items' ) + $d ); // faktui „atsargos grįžo“
+			$it->save();
+			// 2) WC dalinio grąžinimo įrašas (pinigai NEGRĄŽINAMI, laiškai išjungti) — faktas rašosi pats.
+			self::d( 'laiskai_off' );
+			$refund = wc_create_refund( array( 'order_id' => $id, 'amount' => $suma, 'reason' => sprintf( 'Darbalaukis: %s „%s“ (%s)', $isimti ? 'prekė išimta' : 'kiekis ' . $q . ' → ' . $n, mb_substr( $vardas, 0, 60 ), $u->display_name ), 'line_items' => array( $iid => array( 'qty' => $d, 'refund_total' => $ref_tot, 'refund_tax' => $ref_tax ) ), 'refund_payment' => false, 'restock_items' => false ) );
+			self::d( 'laiskai_on' );
+			if ( is_wp_error( $refund ) ) {
+				foreach ( $atstatyti as $a ) { if ( 'av' === $a[0] ) { self::likutis( $a[1], -$a[2], 'kiekio keitimas nepavyko — atstatyta, užsakymas #' . $nr ); } else { $p = wc_get_product( $a[1] ); if ( $p ) { wc_update_product_stock( $p, $a[2], 'decrease' ); } } }
+				$it = $o->get_item( $iid ); if ( $it ) { if ( $rq > 0 ) { $it->update_meta_data( '_ps_av_reduced_qty', $rq ); } if ( $wr > 0 ) { $it->update_meta_data( '_reduced_stock', $wr ); } $it->update_meta_data( '_restock_refunded_items', max( 0, (int) $it->get_meta( '_restock_refunded_items' ) - $d ) ); $it->save(); }
+				$baigti( 'dl_klaida', 'WC grąžinimo įrašo sukurti nepavyko: ' . $refund->get_error_message() . ' — niekas nepakeista' );
+			}
+			$refund->update_meta_data( '_ps_kiekis', 1 ); $refund->save();
+			// 3) Eilutė perrašoma arba išimama; kaupiama Tiekimo partija — eilutė perdedama su nauju kiekiu.
+			$o = wc_get_order( $id ); $it = $o->get_item( $iid );
+			$part = ( class_exists( 'Petshop_AV_Tiekimas' ) && ! empty( $e['b'] ) && 'kaupiama' === $e['b']['busena'] ) ? (int) $e['b']['partija'] : 0;
+			if ( $part ) { Petshop_AV_Tiekimas::isimti_eilute( $o, $iid ); $o = wc_get_order( $id ); $it = $o->get_item( $iid ); }
+			if ( $isimti ) {
+				$o->remove_item( $iid );
+			} else {
+				$k = $n / $q;
+				$it->set_quantity( $n ); $it->set_subtotal( $sub * $k ); $it->set_total( $tot * $k );
+				$nt = array( 'total' => array(), 'subtotal' => array() );
+				foreach ( (array) ( $taxes['total'] ?? array() ) as $rid => $amt ) { $nt['total'][ $rid ] = (float) $amt * $k; }
+				foreach ( (array) ( $taxes['subtotal'] ?? array() ) as $rid => $amt ) { $nt['subtotal'][ $rid ] = (float) $amt * $k; }
+				$it->set_taxes( $nt );
+				$it->update_meta_data( '_ps_kiekis_keistas', current_time( 'mysql' ) . '|' . $u->display_name . '|' . $q . '→' . $n );
+				if ( $it->get_meta( '_ps_source_qty' ) ) { $it->update_meta_data( '_ps_source_qty', $n ); }
+				$it->save();
+				if ( $part ) { Petshop_AV_Tiekimas::ideti_eilute( $o, $iid, $e['src'] ); $o = wc_get_order( $id ); }
+			}
+			$o->update_taxes(); $o->calculate_totals( false ); // v3.19.1: `update_taxes()` būtinas — `calculate_totals(false)` PVM iš eilučių nesumuoja (v3.19 radinys: #35414 19,49 vietoj 19,04); pristatymas nekinta
+			if ( $o->get_meta( '_ps_misrus_sprendimas' ) ) { self::planas_is_eiluciu( $o ); }
+			self::perskaiciuoti_grupes( $o );
+			if ( $o->get_meta( '_ps_surinkta' ) ) { $o->delete_meta_data( '_ps_surinkta' ); $judesiai[] = 'surinkimas nuimtas — lapą spausdink iš naujo'; }
+			$o->delete_meta_data( '_ps_klaus_laukti' );
+			// 4) Žymė, pastaba, įvykis.
+			$g = self::grazinti( $o ); $g[] = array( 'laikas' => current_time( 'mysql' ), 'kas' => $u->display_name, 'suma' => $suma, 'refund' => $refund->get_id(), 'ka' => ( $isimti ? 'išimta ' : 'kiekis ' . $q . ' → ' . $n . ' ' ) . mb_substr( $vardas, 0, 50 ) );
+			$o->update_meta_data( self::GRAZINTI_META, wp_json_encode( $g ) );
+			$o->add_order_note( sprintf( 'Darbalaukis: „%s“ %s (%s). WC grąžinimo įrašas #%d: %s € — pinigai NEGRĄŽINTI, grąžink rankomis (Klausimas primins). Likutis: %s. Partijos — rankomis (jei nurašytos). Klientui laiškas: NESIŲSTAS.', $vardas, $isimti ? 'išimta iš užsakymo (' . $q . ' vnt.)' : 'kiekis ' . $q . ' → ' . $n, $u->display_name, $refund->get_id(), number_format( $suma, 2, ',', '' ), $judesiai ? implode( ', ', $judesiai ) : 'nejudėjo' ), false, true );
+			$o->save();
+			if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $id, 'eilute' => $iid, 'sritis' => 'desk', 'veiksmas' => 'kiekis', 'rezultatas' => 'ok', 'kanalas' => 'web', 'kas' => $u->ID, 'kas_vardas' => $u->display_name, 'pries' => array( 'q' => $q, 'total' => $tot, 'rq' => $rq, 'wc' => $wr ), 'po' => array( 'q' => $n, 'refund' => $refund->get_id(), 'suma' => $suma, 'zinute' => $judesiai ? implode( '; ', $judesiai ) : '' ), 'pastaba' => mb_substr( $vardas, 0, 60 ) . ( $isimti ? ' išimta' : ' ' . $q . ' → ' . $n ) . ' · grąžink ' . number_format( $suma, 2, ',', '' ) . ' €' ) ); }
+			do_action( 'ps_juosta_isvalyti' );
+			$baigti( 'dl_info', ( $isimti ? '„' . mb_substr( $vardas, 0, 40 ) . '“ išimta' : 'kiekis ' . $q . ' → ' . $n ) . ' · grąžink klientui ' . number_format( $suma, 2, ',', '' ) . ' € rankomis (Klausimai)' . ( $judesiai ? ' · likutis: ' . implode( ', ', $judesiai ) : '' ) );
+		} catch ( Throwable $ex ) { $baigti( 'dl_klaida', 'klaida: ' . $ex->getMessage() ); }
+	}
+
+	/** „Grąžinta“ (Klausimų kortelė): žymė nuimama, pastaba, įvykis `grazinta`. */
+	protected static function grazinta( $o, $u ) {
+		$g = self::grazinti( $o ); if ( ! $g ) { return array( 'dl_info', 'grąžintinų pinigų nėra — Klausimo nebėra' ); }
+		$viso = 0.0; foreach ( $g as $x ) { $viso += (float) ( $x['suma'] ?? 0 ); }
+		$o->delete_meta_data( self::GRAZINTI_META );
+		$o->add_order_note( sprintf( 'Darbalaukis: pinigai klientui grąžinti rankomis — %s € (%s). Sąskaita / kreditinė — rankomis.', number_format( $viso, 2, ',', '' ), $u->display_name ), false, true ); $o->save();
+		if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_id(), 'sritis' => 'desk', 'veiksmas' => 'grazinta', 'rezultatas' => 'ok', 'kanalas' => 'web', 'kas' => $u->ID, 'kas_vardas' => $u->display_name, 'pries' => array( 'irasai' => $g ), 'po' => array( 'suma' => $viso ), 'pastaba' => 'grąžinta rankomis ' . number_format( $viso, 2, ',', '' ) . ' €' ) ); }
+		return array( 'dl_info', 'pažymėta: grąžinta ' . number_format( $viso, 2, ',', '' ) . ' € — Klausimas nuimtas' );
+	}
+
+	/** WC refund'ai, sukurti kiekio keitimo (`_ps_kiekis`): [refund_id => suma]. Eilutė jau perrašyta — WC juos rodytų dukart. */
+	protected static function savi_refundai( $o ) {
+		$r = array(); if ( ! ( $o instanceof WC_Order ) || (float) $o->get_total_refunded() <= 0 ) { return $r; }
+		foreach ( $o->get_refunds() as $x ) { if ( $x->get_meta( '_ps_kiekis' ) ) { $r[ $x->get_id() ] = (float) $x->get_amount(); } }
+		return $r;
+	}
+	public static function kiekio_html( $html, $item ) { return ( $item instanceof WC_Order_Item_Product && $item->get_meta( '_ps_kiekis_keistas' ) ) ? ' <strong class="product-quantity">' . sprintf( '&times;&nbsp;%s', esc_html( $item->get_quantity() ) ) . '</strong>' : $html; }
+	public static function kiekio_laiske( $qty, $item ) { return ( $item instanceof WC_Order_Item_Product && $item->get_meta( '_ps_kiekis_keistas' ) ) ? esc_html( $item->get_quantity() ) : $qty; }
+	public static function sumu_eilutes( $rows, $o ) { foreach ( array_keys( self::savi_refundai( $o ) ) as $rid ) { unset( $rows[ 'refund_' . $rid ] ); } return $rows; }
+	public static function suma_be_savu( $html, $o, $tax = '', $rodyti = true ) {
+		if ( ! $rodyti ) { return $html; }
+		$savi = array_sum( self::savi_refundai( $o ) ); if ( $savi <= 0 ) { return $html; }
+		$kiti = (float) $o->get_total_refunded() - $savi; $a = array( 'currency' => $o->get_currency() ); $t = wc_price( $o->get_total(), $a );
+		return $kiti > 0.005 ? '<del aria-hidden="true">' . wp_strip_all_tags( $t ) . '</del> <ins>' . wc_price( $o->get_total() - $kiti, $a ) . '</ins>' : $t;
+	}
+
 	protected static function likutis( $pid, $delta, $pastaba ) {
 		$pid = (int) $pid;
 		if ( class_exists( 'Petshop_AV_Stock' ) && null !== Petshop_AV_Stock::qty( $pid ) ) {
@@ -1204,6 +1360,7 @@ class Petshop_Darbalaukis {
 	const SEK_META    = '_ps_venipak_sekimas';
 	const GRIZTA_META = '_ps_siunta_grizta';
 	const ATSAUKTA_META = '_ps_dalys_atsaukta'; // v3.17: [dalis => {laikas,kas,nr[]}]
+	const GRAZINTI_META = '_ps_grazinti_rankomis'; // v3.19: [{laikas,kas,suma,refund,ka}] — Klausimas „Grąžink klientui pinigus“, kol nepažymėta „Grąžinta“
 	const BAIGTOS_META = '_ps_dalys_baigtos'; // v3.18: [dalis => [{nr[],laikas,prekes[[q,n]]}, …]] — ankstesnės išsiųstos AV siuntos, kai AV dalis ruošiama iš naujo
 	public static function dalys_atsaukta( $o ) { $j = json_decode( (string) $o->get_meta( self::ATSAUKTA_META ), true ); return is_array( $j ) ? $j : array(); }
 	public static function dalys_baigtos( $o ) { $j = json_decode( (string) $o->get_meta( self::BAIGTOS_META ), true ); return is_array( $j ) ? $j : array(); }
@@ -1790,6 +1947,10 @@ class Petshop_Darbalaukis {
 		// v3.11: įvykdytas / kelyje užsakymas, kurio siuntą Venipak grąžina — Klausimas „Siunta grįžta“ (žymė nuimama sprendimu, 4 etapo #3).
 		$grizta = wc_get_orders( array( 'limit' => 50, 'type' => 'shop_order', 'orderby' => 'date', 'order' => 'DESC', 'return' => 'objects', 'status' => array_merge( Petshop_Desk::STATUSAI['ivykdyti'], Petshop_Desk::STATUSAI['kelyje'] ), 'meta_query' => array( array( 'key' => self::GRIZTA_META, 'compare' => 'EXISTS' ) ) ) );
 		foreach ( (array) $grizta as $go ) { if ( self::grizta( $go ) ) { $orders[] = $go; } }
+		// v3.19: įvykdytas / atšauktas užsakymas, kuriam po kiekio keitimo dar negrąžinti pinigai — Klausimas „Grąžink klientui pinigus“ (žymė nuimama „Grąžinta“).
+		$turim = array(); foreach ( (array) $orders as $x ) { $turim[ $x->get_id() ] = 1; }
+		$graz = wc_get_orders( array( 'limit' => 50, 'type' => 'shop_order', 'orderby' => 'date', 'order' => 'DESC', 'return' => 'objects', 'status' => array_merge( Petshop_Desk::STATUSAI['ivykdyti'], Petshop_Desk::STATUSAI['kelyje'], array( 'cancelled', 'refunded' ) ), 'meta_query' => array( array( 'key' => self::GRAZINTI_META, 'compare' => 'EXISTS' ) ) ) );
+		foreach ( (array) $graz as $go ) { if ( empty( $turim[ $go->get_id() ] ) && self::grazinti( $go ) ) { $orders[] = $go; } }
 		return self::faktu_sarasas( $orders );
 	}
 
@@ -2245,6 +2406,13 @@ class Petshop_Darbalaukis {
 				if ( $sk['siuntos_klaida'] ) { $tekstas = 'Vežėjas siuntos nesukūrė: ' . $sk['siuntos_klaida'] . '.'; }
 				$pastaba = 'Dažniausiai paštomatas nebegalioja arba adresas / pašto kodas neteisingas. „Taisyti adresą“ — pataisyk skydelyje ir išsaugok; klaida nusiims, tada registruok lipduką iš naujo.' . ( $sk['red'] ? '' : ' Redaguoti nebegalima (išsiųsta / uždaryta).' );
 				$veiksmai = ( $sk['red'] ? '<button class="v p" data-atidaryti="1" data-redaguoti="1">Taisyti adresą</button> ' : '<button class="v p" data-atidaryti="1">Atidaryti</button> ' ) . $rasyti . ' ' . $atsaukti;
+			} elseif ( 0 === strpos( $kl, 'Grąžink klientui' ) ) {
+				// v3.19 (5 etapas #4): kiekis sumažintas / prekė išimta — pinigus grąžina darbuotojas rankomis; „Grąžinta“ nuima žymę. Galioja ir įvykdytam / atšauktam.
+				$g = (array) ( $r['grazinti'] ?? array() ); $viso = 0.0; $d = array();
+				foreach ( $g as $x ) { $viso += (float) ( $x['suma'] ?? 0 ); $d[] = substr( (string) ( $x['laikas'] ?? '' ), 5, 11 ) . ' ' . ( $x['kas'] ?? '' ) . ': ' . ( $x['ka'] ?? '' ) . ' (' . number_format( (float) ( $x['suma'] ?? 0 ), 2, ',', '' ) . ' €)'; }
+				$tekstas = 'Grąžink klientui ' . number_format( $viso, 2, ',', '' ) . ' € rankomis (Paysera / pavedimu). ' . implode( '; ', $d ) . '.' . ( 'cancelled' === $o->get_status() ? ' Užsakymas atšauktas — likusią sumą tvarkyk atskirai.' : '' );
+				$pastaba = 'Pinigų sistema negrąžina. Grąžink per Paysera arba pavedimu ir spausk „Grąžinta“ — Klausimas nusiims. Sąskaitą / kreditinę — rankomis, kol „Sąskaita“ nepadaryta.';
+				$veiksmai = '<a class="v p" href="' . esc_url( self::dl_url( 'grazinta', $id ) ) . '" data-d="' . esc_attr( wp_json_encode( array( 'antraste' => sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), $sk['suma'] ), 'tekstas' => 'Pinigai (' . number_format( $viso, 2, ',', '' ) . ' €) klientui jau grąžinti? Klausimas nusiims; sistema pinigų nejudina.', 'ok' => 'Grąžinta' ) ) ) . '">Grąžinta</a> <button class="v t" data-atidaryti="1">Atidaryti</button> ' . $rasyti . ' ' . $atsaukti;
 			} elseif ( 0 === strpos( $kl, 'Klientas atsisako' ) ) {
 				$pastaba = 'Klientas pateikė sutarties atsisakymą (14 d.). Atšauk užsakymą; pinigų grąžinimą ir kreditinę tvarkysi atskirai.';
 				$veiksmai = $atsaukti . ' ' . $rasyti;
@@ -2403,6 +2571,7 @@ class Petshop_Darbalaukis {
 .skydas .dl-klaus{background:var(--raudona-s);color:var(--raudona);border-radius:8px;padding:8px 12px;margin:0 0 10px;font-size:13px}
 .skydas footer{padding:12px 20px;border-top:1px solid var(--linija);display:flex;gap:8px;flex-wrap:wrap;align-items:center}.skydas .zurnalas{font-size:12px;color:var(--pilka)}.skydas .zurnalas ol{margin:0;padding-left:16px}.skydas .zurnalas li{padding:2px 0}.skydas .psuz-klaida{color:var(--raudona)}.skydas .pak input{width:54px;font:inherit;border:1px solid var(--linija);border-radius:5px;padding:2px 6px}
 .dl-red label{display:block;font-size:12px;color:var(--pilka);margin:6px 0 0}.dl-red label.cb{display:flex;align-items:center;gap:6px;color:var(--rasalas);font-size:13px;margin-top:10px}.dl-red input:not([type=checkbox]),.dl-red select{display:block;width:100%;box-sizing:border-box;font:inherit;font-size:13px;color:var(--rasalas);border:1px solid var(--linija);border-radius:5px;padding:5px 8px;background:var(--popierius);margin-top:2px}.dl-red .e2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dl-red .dl-red-v{display:flex;gap:8px;margin-top:10px;align-items:center}.dl-red .dl-note{margin-top:6px}
+a.dl-kk{color:var(--melyna);text-decoration:underline dotted;cursor:pointer}a.dl-kk:hover{color:var(--rasalas)}.dl-kk-f{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0 2px 38px;font-size:13px}.dl-kk-f label{display:inline-flex;gap:6px;align-items:center;color:var(--pilka)}.dl-kk-f input[type=number]{width:58px;font:inherit;font-size:13px;color:var(--rasalas);border:1px solid var(--linija);border-radius:5px;padding:4px 6px;background:var(--popierius)}
 .dl-shade{display:none;position:fixed;inset:0;background:rgba(27,38,32,.45);z-index:100000}.dl-shade.on{display:block}
 .dl-dlg{display:none;position:fixed;left:50%;top:38%;transform:translate(-50%,-50%);width:440px;max-width:94vw;background:#fff;border-radius:10px;padding:18px 20px;z-index:100001;box-shadow:0 20px 50px rgba(0,0,0,.25)}
 .dl-dlg.on{display:block}.dl-dlg h3{margin:0 0 8px;font-size:15px}.dl-dlg p{margin:0 0 12px;color:var(--pilka);font-size:13.5px}.dl-opt{display:flex;gap:8px;align-items:center;font-size:13px;margin-bottom:14px}.dl-dlg-b{display:flex;justify-content:flex-end;gap:8px}
@@ -2430,16 +2599,30 @@ class Petshop_Darbalaukis {
 		SH.classList.add('on'); DL.classList.add('on'); dlgOn=true; ok.focus(); return true; }
 	function dlgOff(){ SH.classList.remove('on'); DL.classList.remove('on'); dlgOn=false; }
 	$('dlDlgNo').onclick=dlgOff; SH.onclick=dlgOff;
+	/* --- v3.19: kiekis skydelyje („q×“ → forma eilutėje, dialogas prieš POST) --- */
+	function dlgForm(d,f){ $('dlDlgH').textContent=d.antraste||''; $('dlDlgT').textContent=d.tekstas||''; var ok=$('dlDlgOk'); ok.textContent=d.ok||'Gerai'; $('dlDlgOptL').style.display='none'; $('dlDlgN').style.display='none'; ok.href='#'; ok.onclick=function(ev){ ev.preventDefault(); ok.style.pointerEvents='none'; ok.style.opacity='.6'; f.submit(); }; SH.classList.add('on'); DL.classList.add('on'); dlgOn=true; ok.focus(); }
+	document.addEventListener('click',function(e){
+		var x=e.target.closest('.dl-kk-x'); if(x){ e.preventDefault(); e.stopPropagation(); var fx=x.closest('.dl-kk-f'); if(fx){ if(fx._a) fx._a.style.display=''; fx.remove(); } return; }
+		var a=e.target.closest('a.dl-kk'); if(!a) return; e.preventDefault(); e.stopPropagation(); if(!skO||!skO.kk) return;
+		var q=+a.getAttribute('data-q'), iid=a.getAttribute('data-iid'), K=skO.kk, eil=a.closest('.eilute'); if(!eil||eil.querySelector('.dl-kk-f')) return;
+		var f=document.createElement('form'); f.method='post'; f.action=K.u; f.className='dl-kk-f'; f._a=a;
+		f.innerHTML='<input type="hidden" name="action" value="ps_dl_kiekis"><input type="hidden" name="id" value="'+skO.id+'"><input type="hidden" name="iid" value="'+esc(iid)+'"><input type="hidden" name="_wpnonce" value="'+esc(K.n)+'"><input type="hidden" name="g" value="'+esc(K.g)+'"><input type="hidden" name="ka" value="">'
+			+'<label>Kiekis <input type="number" name="n" min="1" max="'+(q-1)+'" value="'+Math.max(1,q-1)+'"'+(q<2?' disabled':'')+'> × <span class="pilkas maz">iš '+q+'</span></label> <button type="button" class="v p dl-kk-s"'+(q<2?' disabled title="liko 1 vnt. — tik Išimti"':'')+'>Išsaugoti</button> <button type="button" class="v t raud dl-kk-i">Išimti</button> <a href="#" class="pilkas maz dl-kk-x">atgal</a>';
+		var v=eil.querySelector('.virsus'); v.parentNode.insertBefore(f,v.nextSibling); a.style.display='none'; var ni=f.querySelector('[name=n]'); if(ni&&!ni.disabled){ ni.focus(); ni.select(); }
+		f.onsubmit=function(ev){ ev.preventDefault(); var s=f.querySelector('.dl-kk-s'); if(s&&!s.disabled) s.click(); };
+		f.querySelector('.dl-kk-s').onclick=function(){ var nn=+f.querySelector('[name=n]').value; if(!(nn>=1&&nn<q)){ f.querySelector('[name=n]').focus(); return; } f.querySelector('[name=ka]').value='kiekis'; dlgForm({antraste:'Kiekis '+q+' → '+nn,tekstas:'Eilutė perrašoma: likutis grįžta, lapas ir laiškai rodys '+nn+' vnt. Skirtumą už '+(q-nn)+' vnt. sistema įrašo kaip grąžintiną, pinigų NEGRĄŽINA — grąžinsi rankomis (Klausimas primins). Klientui laiškas nesiunčiamas.',ok:'Išsaugoti'},f); };
+		f.querySelector('.dl-kk-i').onclick=function(){ f.querySelector('[name=ka]').value='isimti'; dlgForm({antraste:'Išimti prekę iš užsakymo',tekstas:'Prekė ('+q+' vnt.) išimama: likutis grįžta, lapas ir laiškai jos neberodys. Sumą sistema įrašo kaip grąžintiną, pinigų NEGRĄŽINA — grąžinsi rankomis (Klausimas primins). Jei tai paskutinė prekė — naudok „Atšaukti“. Klientui laiškas nesiunčiamas.',ok:'Išimti'},f); };
+	});
 	/* --- skydas --- */
 	var KC={av:'sandelis',tiesiai:'tk',i_av:'ts'};
 	function atidaryti(i){ var r=rows[i]; if(!r) return; mark(i); var id=r.getAttribute('data-id'), my=++seq; if(r._o){ rodyti(r._o,r); return; }
 		$('skNr').textContent='#'+(r.querySelector('.nr')||{textContent:''}).textContent.replace('#','')+' · kraunama…'; SK.classList.add('on'); UZ.classList.add('on'); SK.setAttribute('aria-hidden','false'); skOn=true;
 		fetch(ajaxurl+'?action=ps_dl_skydelis&id='+id+'&n='+encodeURIComponent(DLN),{credentials:'same-origin'}).then(function(x){return x.json();}).then(function(j){ if(!j||!j.success||my!==seq) return; r._o=j.data; rodyti(j.data,r); }).catch(function(){ $('skNr').textContent='#'+id+' · nepavyko įkelti'; }); }
-	function rodyti(o,r){
+	function rodyti(o,r){ skO=o;
 		$('skNr').textContent='#'+o.nr+(o.uzdarytas?' · '+o.st:''); $('skKl').textContent=o.kl+' · '+o.suma+' · '+o.apmok;
 		$('skPastaba').innerHTML='<b class="dl-kur">Dabar: '+esc(o.kur)+'</b><br>'+esc(o.pastaba);
 		if(o.matyti){ fetch(ajaxurl+'?action=ps_dl_matyta&id='+o.id+'&n='+encodeURIComponent(o.zn),{credentials:'same-origin'}).catch(function(){}); r.classList.remove('dl-n'); var nb=r.querySelector('.dl-nz'); if(nb) nb.remove(); } var K=$('skKlaus'); if(o.klausimas){ K.style.display='block'; K.textContent='Klausimas: '+o.klausimas; } else K.style.display='none';
-		$('skEil').innerHTML=o.eil.map(function(l){ return '<div class="eilute"><div class="virsus">'+(l.img?'<img class="dl-img" src="'+esc(l.img)+'" alt="">':'<span class="dl-img dl-img-n"></span>')+'<div class="k">'+l.q+'×</div><div class="p">'+esc(l.n)+(l.sku?' <span class="pilkas maz">'+esc(l.sku)+'</span>':'')+'</div></div>'
+		$('skEil').innerHTML=o.eil.map(function(l){ return '<div class="eilute"><div class="virsus">'+(l.img?'<img class="dl-img" src="'+esc(l.img)+'" alt="">':'<span class="dl-img dl-img-n"></span>')+(l.kk?'<a class="k dl-kk" href="#" data-iid="'+l.iid+'" data-q="'+l.q+'" title="Keisti kiekį">'+l.q+'×</a>':'<div class="k">'+l.q+'×</div>')+'<div class="p">'+esc(l.n)+(l.sku?' <span class="pilkas maz">'+esc(l.sku)+'</span>':'')+'</div></div>'
 			+'<div class="keliai">'+l.keliai.map(function(k){ var c=KC[k.k]+(k.on?' on':'')+(k.gal||k.on?'':' ne'); var t='<i></i>'+esc(k.t); if(k.u) return '<a class="'+c+'" href="'+esc(k.u)+'" title="Keisti kelią">'+t+'</a>'; return '<span class="kb '+c+'"'+(k.kodel_ne&&!k.on?' title="'+esc(k.kodel_ne)+'"':'')+'>'+t+'</span>'; }).join('')+'</div>'
 			+'<div class="kodel">'+esc(l.kodel)+(l.tiek_url?' <a href="'+esc(l.tiek_url)+'">Laukiam iš tiekėjų →</a>':'')+'</div>'+(l.lock?'<div class="lock">Nebekeičiama: '+esc(l.lock)+'</div>':'')
 			+(l.zing.length?'<div class="zingsneliai">'+l.zing.map(function(z){ return '<span class="'+z[1]+'">'+(z[1]==='ok'?'✓ ':'')+esc(z[0])+'</span>'; }).join('')+'</div>':'')+'</div>'; }).join('');
@@ -2455,7 +2638,7 @@ class Petshop_Darbalaukis {
 		$('skV').innerHTML=f; SK.classList.add('on'); UZ.classList.add('on'); SK.setAttribute('aria-hidden','false'); skOn=true;
 		var rb=$('skRed'); if(rb){ rb.onclick=function(){ redaguoti(o); }; } if(redOn&&o.red){ redOn=false; redaguoti(o); } else redOn=false; }
 	/* --- v3.16: Redaguoti (adresas / paštomatas) --- */
-	var redOn=false;
+	var redOn=false, skO=null;
 	function redaguoti(o){ var r=o.red; if(!r) return; var P=$('skPr'); var L=r.laukai; var h='<form method="post" action="'+esc(r.u)+'" class="dl-red" id="skRedF"><input type="hidden" name="action" value="ps_dl_redaguoti"><input type="hidden" name="id" value="'+o.id+'"><input type="hidden" name="_wpnonce" value="'+esc(r.n)+'"><input type="hidden" name="g" value="'+esc(r.g)+'">';
 		h+='<div class="pilkas maz">'+esc(o.vezejas)+' — pristatymo būdas nekeičiamas</div>';
 		if(r.tipas==='kurjeris'){ h+='<div class="e2"><label>Vardas<input name="vardas" value="'+esc(L.vardas)+'"></label><label>Pavardė<input name="pavarde" value="'+esc(L.pavarde)+'"></label></div><label>Adresas (gatvė, namas, butas)<input name="adresas" value="'+esc(L.adresas)+'" required></label><label>Adresas (2) — papildomai<input name="adresas2" value="'+esc(L.adresas2)+'"></label><div class="e2"><label>Miestas<input name="miestas" value="'+esc(L.miestas)+'" required></label><label>Pašto kodas<input name="kodas" value="'+esc(L.kodas)+'" required></label></div>'; }
