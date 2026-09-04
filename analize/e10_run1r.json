@@ -1,170 +1,35 @@
 {
- "v": "dep-201614",
+ "v": "dep-093809",
  "kurimas": 200,
- "sid": 4658,
+ "sid": 4689,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
  "R": {
+  "35421": {
+   "st": "processing",
+   "sla": "2026-09-04 12:14:34",
+   "dropship_sent": "2026-09-03 11:23:34",
+   "dropship_sent_src": "{\"prins\":\"2026-09-03 11:23:34\"}",
+   "dalys_issiusta": "{\"prins\":{\"laikas\":\"2026-09-03 21:33:34\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:34\"}}",
+   "shipments": "3",
+   "order_shipped": "yes"
+  },
   "v": "run e10r",
   "temp_istrinta": 1,
-  "lp_dirs": [
-   "woo-lithuaniapost-main"
-  ],
-  "aktyvus": [
-   "woo-lithuaniapost-main/woo-lithuaniapost.php"
-  ],
-  "files": 164,
-  "meta_raktai_kode": {
-   "_woo_lithuaniapost_shipping_status_value": 13,
-   "_woo_lithuaniapost_barcode": 12,
-   "_woo_lithuaniapost_shipping_item_id": 8,
-   "_woo_lithuaniapost_lpexpress_terminal_id": 7,
-   "_woo_lithuaniapost_parcel_create_error": 6,
-   "_woo_lithuaniapost_lpexpress_terminal": 6,
-   "_woo_lithuaniapost_lpexpress_shipping_method_instance_id": 4,
-   "_woo_lithuaniapost_returns_barcodes": 4,
-   "_woo_lithuaniapost_tracking_mail_send": 4,
-   "_woo_lithuaniapost_return_supported": 3,
-   "_woo_lithuaniapost_shipping_item_size": 3,
-   "woo_lithuaniapost_allowed_terminal": 3,
-   "woo_lithuaniapost_allowed_terminal_parcel_locker": 3,
-   "_woo_lithuaniapost_lpexpress_courier_called_date": 2,
-   "_woo_lithuaniapost_shipping_item_weight": 2,
-   "_woo_lithuaniapost_shipping_request_id": 1
-  },
-  "ajax": {
-   "woo_lithuaniapost_handle_parcel_save": "class-woo-lithuaniapost.php",
-   "save_selected_lpexpress_terminal": "class-woo-lithuaniapost.php",
-   "nopriv_save_selected_lpexpress_terminal": "class-woo-lithuaniapost.php",
-   "woo_lithuaniapost_check_plan": "class-woo-lithuaniapost.php",
-   "nopriv_woo_lithuaniapost_check_plan": "class-woo-lithuaniapost.php",
-   "woo_lithuaniapost_get_saved_terminal": "class-woo-lithuaniapost.php",
-   "nopriv_woo_lithuaniapost_get_saved_terminal": "class-woo-lithuaniapost.php"
-  },
-  "status_keitimai": {
-   "class-woo-lithuaniapost-admin-order-service.php": [
-    "completed"
+  "vietos": {
+   "petshop-desk.php": [
+    "1234: if ( $order->get_meta( '_ps_sla_velavimas' ) ) { return 'Tiekėjas vėluoja — perduota prieš 24+ val.'; }"
    ],
-   "class-woo-lithuaniapost-admin-order-tracking.php": [
-    "completed"
+   "petshop-dropship-sargas.php": [
+    "10: * processing/on-hold — uždedama žymė `_ps_sla_velavimas` + pastaba istorijoje.",
+    "22: const ZYME   = '_ps_sla_velavimas';",
+    "23: const CRON   = 'ps_dropship_sargas';"
+   ],
+   "petshop-rytas.php": [
+    "425: $n = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM {$p}wc_orders_meta m JOIN {$p}wc_orders o ON o.id = m.order_id WHERE m.meta_key = '_ps_sla_velavimas' AND o.status IN ('wc-processing','wc-on-hold')\" );"
    ]
-  },
-  "barcode_ctx": {
-   "class-woo-lithuaniapost-admin-order-service.php": [
-    "$order->update_meta_data('_woo_lithuaniapost_barcode', null);",
-    "$barcodes[] = $order->get_meta('_woo_lithuaniapost_barcode');",
-    "if ($order->get_meta('_woo_lithuaniapost_barcode')) {",
-    "return $this->create_parcel($order, $order->get_meta('_woo_lithuaniapost_parcel_create_error') != false, $parcel_save_request);",
-    "$order->update_meta_data('_woo_lithuaniapost_parcel_create_error', null);",
-    "$order->update_meta_data('_woo_lithuaniapost_barcode', $shipping_item_status->barcode);",
-    "if (!$order->get_meta('_woo_lithuaniapost_tracking_mail_send') && $order->get_meta('_woo_lithuaniapost_barcode')) {",
-    "$order->update_meta_data('_woo_lithuaniapost_tracking_mail_send', true);"
-   ],
-   "html-shipment-editor-side.php": [
-    "$parcel_create_error = $this->get_order()->get_meta('_woo_lithuaniapost_parcel_create_error');"
-   ],
-   "html-lithuaniapost-admin-order-settings.php": [
-    "if ($order->get_meta('_woo_lithuaniapost_parcel_create_error')) {"
-   ],
-   "class-woo-lithuaniapost-admin-order-settings.php": [
-    "$query['_woo_lithuaniapost_barcode'] = $_GET['barcode'];",
-    "$query = $this->apply_meta_query($query, '_woo_lithuaniapost_barcode', $_GET['barcode']);",
-    "\"barcode\" => $item->get_meta('_woo_lithuaniapost_barcode'),",
-    "if (!empty($query_vars['_woo_lithuaniapost_barcode'])) {",
-    "'key' => '_woo_lithuaniapost_barcode',",
-    "'value' => esc_attr($query_vars['_woo_lithuaniapost_barcode']),"
-   ],
-   "class-woo-lithuaniapost-admin-order-meta-box.php": [
-    "return $this->get_order ()->get_meta ( '_woo_lithuaniapost_barcode' );"
-   ],
-   "class-woo-lithuaniapost-admin-order-tracking.php": [
-    "if (!$order->get_meta('_woo_lithuaniapost_tracking_mail_send') && $order->get_meta('_woo_lithuaniapost_barcode')) {",
-    "$order->update_meta_data('_woo_lithuaniapost_tracking_mail_send', true);",
-    "$barcode = $order->get_meta('_woo_lithuaniapost_barcode');"
-   ],
-   "tracking-email.php": [
-    "<?= __( 'Tracking nr.', 'woo-lithuaniapost' ); ?> <?= $order->get_meta ( '_woo_lithuaniapost_barcode' ); ?>",
-    "<a href=\"https://www.post.lt/siuntu-sekimas?parcels=<?= $order->get_meta ( '_woo_lithuaniapost_barcode' ); ?>\" target=\"_blank\" style=\"text-decoration: none;"
-   ]
-  },
-  "db_raktai": [
-   {
-    "meta_key": "_woo_lithuaniapost_lpexpress_terminal_id",
-    "n": "1"
-   },
-   {
-    "meta_key": "_woo_lithuaniapost_lpexpress_shipping_method_instance_id",
-    "n": "1"
-   },
-   {
-    "meta_key": "_woo_lithuaniapost_shipping_status_value",
-    "n": "1"
-   },
-   {
-    "meta_key": "_woo_lithuaniapost_parcel_create_error",
-    "n": "1"
-   }
-  ],
-  "db_raktai_post": [
-   {
-    "meta_key": "woo_lithuaniapost_allowed_terminal",
-    "n": "9"
-   },
-   {
-    "meta_key": "woo_lithuaniapost_allowed_terminal_parcel_locker",
-    "n": "9"
-   },
-   {
-    "meta_key": "_woo_lithuaniapost_parcel_create_error",
-    "n": "1"
-   },
-   {
-    "meta_key": "_woo_lithuaniapost_lpexpress_terminal_id",
-    "n": "1"
-   },
-   {
-    "meta_key": "_woo_lithuaniapost_lpexpress_shipping_method_instance_id",
-    "n": "1"
-   },
-   {
-    "meta_key": "_woo_lithuaniapost_shipping_status_value",
-    "n": "1"
-   }
-  ],
-  "pavyzdziai": {
-   "35416": {
-    "_woo_lithuaniapost_shipping_status_value": "lp-parcel-failed",
-    "_woo_lithuaniapost_parcel_create_error": "a:1:{i:0;O:8:\"stdClass\":3:{s:5:\"error\";s:18:\"INCORRECT RECEIVER\";s:17:\"error_description\";s:53:\"Incorrectly specified recipient's parcel terminal id.\";s:5:\"fiel"
-   }
-  },
-  "lp_statusai_db": [],
-  "wc_statusai_lp": {
-   "wc-lp-courier-await": "Laukiama kurjerio iškvietimo",
-   "wc-lp-parcel-created": "Siunta vykdoma",
-   "wc-lp-parcel-failed": "Siuntos sukurti nepavyko",
-   "wc-lp-label-created": "Paruošta siuntimui",
-   "wc-lp-courier-called": "Kurjeris iškviestas",
-   "wc-lp-on-the-way": "Siunčiama",
-   "wc-lp-delivered": "Siunta pristatyta",
-   "wc-lp-cancelled": "Siunta atšaukta",
-   "wc-lp-parcel-await": "Sustabdytas"
-  },
-  "lp_uzsakymai": [
-   {
-    "id": 35416,
-    "st": "processing",
-    "metodas": "LP Express",
-    "term": "LT0001",
-    "meta_lp": [
-     "_woo_lithuaniapost_lpexpress_terminal_id",
-     "_woo_lithuaniapost_lpexpress_shipping_method_instance_id",
-     "_woo_lithuaniapost_shipping_status_value",
-     "_woo_lithuaniapost_parcel_create_error"
-    ]
-   }
-  ],
-  "ps_siuntos_su_lp": "0"
+  }
  }
 }
