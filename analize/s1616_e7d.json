@@ -1,0 +1,200 @@
+{
+ "v": "dep-205349",
+ "kurimas": 200,
+ "sid": 4786,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1616 e7d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": {
+   "1": [
+    80000,
+    "6034be8e36565fb854282da10e1b8aeb"
+   ],
+   "2": 33640
+  },
+  "bytes": 306853,
+  "md5": "f4d32aefb19a27b3db85bb464b6b82e9",
+  "token": "ok",
+  "buvo": "c1a278f17c0dfd17e869bdf496d50b64",
+  "backup": true,
+  "rasyta": 306853,
+  "po": "f4d32aefb19a27b3db85bb464b6b82e9",
+  "part_unlink": true,
+  "sim": {
+   "35434": {
+    "pries": {
+     "st": "processing",
+     "total": "37.03",
+     "griz": ""
+    }
+   },
+   "35436": {
+    "pries": {
+     "st": "processing",
+     "total": "23.61",
+     "griz": ""
+    }
+   }
+  }
+ },
+ "T": {
+  "v": "S1616 e7d",
+  "f": "T",
+  "temp_istrinta": 0,
+  "versija": "3.20",
+  "md5": "f4d32aefb19a27b3db85bb464b6b82e9",
+  "uzs": {
+   "35434": {
+    "st": "processing",
+    "total": "37.03",
+    "sh": [
+     {
+      "m": "shopup_venipak_shipping_courier_method",
+      "inst": 2,
+      "cost": "3.99",
+      "tax": "0.84",
+      "fee": "3.30",
+      "fixed": "",
+      "title": "VENIPAK Kurjeris"
+     }
+    ],
+    "it": {
+     "849": [
+      "Animonda Carny A",
+      1,
+      2.6,
+      "av",
+      "",
+      ""
+     ],
+     "850": [
+      "Prins Diet Skin ",
+      1,
+      29.6,
+      "av",
+      "",
+      ""
+     ]
+    },
+    "griz": "{\"av\":{\"nr\":\"V07267E1000777\",\"t\":\"gr\\u012f\\u017eta siunt\\u0117jui (sim)\",\"e\":\"\",\"d\":\"\",\"kada\":\"2026-09-04 23:55:19\"}}",
+    "graz": "",
+    "own_16727": "0",
+    "stock_16727": "5"
+   },
+   "35436": {
+    "st": "processing",
+    "total": "23.61",
+    "sh": [
+     {
+      "m": "flat_rate",
+      "inst": 0,
+      "cost": "3.49",
+      "tax": "0.73",
+      "fee": null,
+      "fixed": null,
+      "title": null
+     }
+    ],
+    "it": {
+     "856": [
+      "Exclusion Hypoal",
+      1,
+      2.39,
+      "av",
+      "av",
+      ""
+     ],
+     "857": [
+      "QUATTRO 1,5 kg A",
+      1,
+      17,
+      "quattro",
+      "tiesiai",
+      ""
+     ]
+    },
+    "griz": "{\"quattro\":{\"nr\":\"V07267E1000778\",\"t\":\"gr\\u012f\\u017eta siunt\\u0117jui (sim)\",\"e\":\"\",\"d\":\"\",\"kada\":\"2026-09-04 23:55:19\"}}",
+    "graz": "",
+    "own_16727": "0",
+    "stock_16727": "5"
+   }
+  },
+  "sk": {
+   "35434": {
+    "kl": "Siunta grįžta",
+    "kur": "Klausimai · toliau: Spręsti",
+    "suma": "37,03 €"
+   },
+   "35436": {
+    "kl": "Siunta grįžta",
+    "kur": "Klausimai · toliau: Spręsti",
+    "suma": "23,61 €"
+   }
+  },
+  "klausimai_code": 200,
+  "kortele": {
+   "35434": {
+    "sumos": "Klientui grąžink: 37,03 − 3,99 = 33,04 € (visa siunta grįžta — sumokėta su pristatymu)Pakartotinis užsakymas: 3,99 + 3,99 = 7,98 € (VENIPAK Kurjeris įkainis; siunčiama tik apmokėjus)",
+    "tekstas": "Vežėjas grąžina siuntą: siunta V07267E1000777 (AV) — Venipak: „grįžta siuntėjui (sim)“ (); prekės: 1× Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g, 1× Prins Diet Skin &amp; Intestinal Hypoallergic sausas maistas katėms 1,5 kg.",
+    "mygtukai": [
+     "Siųsti iš naujo",
+     "Atšaukti — prekės grįžo į AV",
+     "Parašyti klientui"
+    ],
+    "dialog_ats": "{\"antraste\":\"U\\u017esakymas #35434 \\u00b7 37,03\\u00a0\\u20ac\",\"tekstas\":\"Prek\\u0117s jau AV? U\\u017esakymas bus at\\u0161auktas, prek\\u0117s prid\\u0117tos \\u012f AV likut\\u012f. Pinigai NEGR\\u0104\\u017dINAMI automati\\u0161kai \\u2014 gr\\u0105\\u017eink klientui 33,04 \\u20ac rankomis (37,03 \\u2212 3,99; Klausimas \\u201eGr\\u0105\\u017eink klientui pinigus\\u201c primins). Klientui lai\\u0161kas nesiun\\u010"
+   },
+   "35436": {
+    "sumos": "Klientui grąžink: 17,00 − 3,99 = 13,01 € (tik grįžusios dalies prekės; kita dalis lieka: AV)Pakartotinis užsakymas: 4,22 + 3,99 = 8,21 € (kaip sumokėta užsakyme; siunčiama tik apmokėjus)",
+    "tekstas": "Vežėjas grąžina siuntą: siunta V07267E1000778 (Quattro) — Venipak: „grįžta siuntėjui (sim)“ (); prekės: 1× QUATTRO 1,5 kg Adult Salmon &amp; Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu,. Kita dalis: AV (dar ruošiama).",
+    "mygtukai": [
+     "Siųsti iš naujo",
+     "Atšaukti tik grįžusią dalį",
+     "Parašyti klientui"
+    ],
+    "dialog_ats": "{\"antraste\":\"U\\u017esakymas #35436 \\u00b7 23,61\\u00a0\\u20ac\",\"tekstas\":\"Prek\\u0117s jau AV? At\\u0161aukiama TIK gr\\u012f\\u017eusi dalis: jos prek\\u0117s pridedamos \\u012f AV likut\\u012f, kita dalis (AV (dar ruo\\u0161iama)) lieka kaip yra. Pinigai NEGR\\u0104\\u017dINAMI automati\\u0161kai \\u2014 gr\\u0105\\u017eink klientui 13,01 \\u20ac rankomis (17,00 \\u2212 3,99; Klausimas \\u201eGr\\u0105\\u017eink kli"
+   }
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788557129|LHetqTBTEyXARbZIV8TuGLgNokx44MqTdYUEbTWsPMx|b4b32622d4b6c143f512c37f5f84e0c96535c072b68463a36bc1f95bec1e2cec"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788557129|LHetqTBTEyXARbZIV8TuGLgNokx44MqTdYUEbTWsPMx|863b8be2ddeec47a220b1eb0c8353b39e054943438aa2b065c5cb67a545bbe98"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788557129|LHetqTBTEyXARbZIV8TuGLgNokx44MqTdYUEbTWsPMx|09ca8a3cd058933cc6403e031c3dc0094e769e18232672f94f58e0c5983c36cc"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1616_e7_klausimai_sumos",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "full": true,
+    "eval": "({sumos:[...document.querySelectorAll('.dl-kortele .dl-sumos')].map(function(x){return x.closest('.dl-kortele').getAttribute('data-id')+': '+x.innerText.replace(/\\s+/g,' ');})})"
+   }
+  ]
+ },
+ "shots": {
+  "s1616_e7_klausimai_sumos": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "sumos": [
+     "35436: Klientui grąžink: 17,00 − 3,99 = 13,01 € (tik grįžusios dalies prekės; kita dalis lieka: AV) Pakartotinis užsakymas: 4,22 + 3,99 = 8,21 € (kaip sumokėta užsakyme; siunčiama tik apmokėjus)",
+     "35434: Klientui grąžink: 37,03 − 3,99 = 33,04 € (visa siunta grįžta — sumokėta su pristatymu) Pakartotinis užsakymas: 3,99 + 3,99 = 7,98 € (VENIPAK Kurjeris įkainis; siunčiama tik apmokėjus)"
+    ]
+   }
+  }
+ }
+}
