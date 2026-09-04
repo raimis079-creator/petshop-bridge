@@ -1,0 +1,195 @@
+{
+ "v": "dep-223756",
+ "kurimas": 200,
+ "sid": 4806,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "W3": {
+  "v": "S1617 e4d",
+  "f": "W3",
+  "temp_istrinta": 1,
+  "pastas_pries": 13,
+  "apmoketa": {
+   "code": 403,
+   "pd_ok": null,
+   "pd_nr": null
+  },
+  "N4": {
+   "st": "on-hold",
+   "cid": 0,
+   "email": "terra@petshop.lt",
+   "via": "darbalaukis",
+   "total": "8.21",
+   "tax": "1.42",
+   "paid": false,
+   "date_paid": null,
+   "pm": "bacs",
+   "ship": "0",
+   "it": {
+    "1582": {
+     "n": "Pakartotinis siuntimas už užsakymą #35436",
+     "q": 1,
+     "sub": "6.785124",
+     "tot": "6.785124",
+     "tax": "1.42",
+     "pid": 35790,
+     "src": "av"
+    }
+   },
+   "meta": {
+    "_petshop_dl_purchase_sent": "yes",
+    "_petshop_invoice_document_type": "proforma",
+    "_ps_decided_at": "2026-09-05 01:31:25",
+    "_ps_ga4_mp_kodas": "dev-nesiusta",
+    "_ps_groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
+    "_ps_order_type": "MAIN",
+    "_ps_pakart_ikainis": "4.22",
+    "_ps_pakart_nuoroda": "2026-09-05 01:29:05",
+    "_ps_pakartotinis": "35436",
+    "_ps_shipments": "1",
+    "_ps_uzbaigti_be_siuntu": "1"
+   },
+   "notes": [
+    "TEST S1617 (WC bacs sim): Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
+    "Vykdymas: MAIN — AV 1 vnt (1 siunta(-os))",
+    "Darbalaukis: pakartotinis siuntimas už užsakymą #35436 — 8,21 € (Testuotojas). Apmokėjimo nuoroda klientui (terra@petshop.lt) išsiųsta. Apmokėjus — įvykdomas pats (į Suri"
+   ],
+   "pay_url": "https://dev.avesa.lt/kasa/order-pay/35794/?pay_for_order=true&key=wc_order_mcpNG7mKjtYGp"
+  },
+  "pdf": {
+   "kelias": "",
+   "yra": false,
+   "dydis": 0
+  },
+  "faktas": null,
+  "faktas_35793": {
+   "uzsakymas_id": "35793",
+   "testinis": "1",
+   "viso_ct": "821",
+   "mokejimo_budas": "",
+   "sandeliai": "legacy"
+  },
+  "pastas": {
+   "n": 13,
+   "pask": [
+    [
+     "2026-09-05 00:52:56",
+     "terra@petshop.lt",
+     "Jūsų užsakymas Nr. 35792 — apmokėjimas gautas",
+     0
+    ],
+    [
+     "2026-09-05 01:03:01",
+     "terra@petshop.lt",
+     "Jūsų užsakymo Nr. 35436 siunta grįžo — pakartotinis siuntimas 8,21 €",
+     1
+    ],
+    [
+     "2026-09-05 01:05:10",
+     "terra@petshop.lt",
+     "Apmokėjimas gautas — užsakymo Nr. 35436 siuntą išsiųsime iš naujo",
+     1
+    ],
+    [
+     "2026-09-05 01:29:05",
+     "terra@petshop.lt",
+     "Jūsų užsakymo Nr. 35436 siunta grįžo — pakartotinis siuntimas 8,21 €",
+     1
+    ]
+   ]
+  },
+  "pastas_delta": 0,
+  "email_sent_notes": 0,
+  "bukle": {
+   "b": "laukia",
+   "id": 35794,
+   "nr": "35794",
+   "suma": "8,21",
+   "laikas": "2026-09-05 01:29:05",
+   "bacs": true,
+   "t": "Pakartotinis užsakymas #35794 (8,21 €): laukia kliento apmokėjimo — nuoroda išsiųsta 09-05 01:29. Klientas pasirinko pavedimą — kai pinigai banke, spausk „Apmokėta pavedimu“."
+  },
+  "orig_notes": [
+   "Darbalaukis: sukurtas pakartotinis užsakymas #35794 — 8,21 € (Testuotojas). Klientui apmokėjimo nuoroda išsiųsta. „Siųsti iš naujo“ — tik apmokėjus.",
+   "Darbalaukis: siunta V07267E1000780 grįžo — SIUNČIAMA IŠ NAUJO iš AV (Testuotojas). AV dalis: Surinkti AV → naujas lipdukas. Seni numeriai nebeskaitomi: ."
+  ],
+  "ivykiai": [
+   {
+    "veiksmas": "pakartotinis",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "pastaba": "pakartotinis užsakymas #35794 8,21 €"
+   },
+   {
+    "veiksmas": "grizta_is_naujo",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "pastaba": "siunta grįžo → iš naujo iš AV"
+   },
+   {
+    "veiksmas": "pakart_apmoketa",
+    "rezultatas": "ok",
+    "kanalas": "paysera",
+    "pastaba": "pakartotinis užsakymas #35793 apmokėtas"
+   }
+  ],
+  "kortele_po": {
+   "mygtukai": [
+    "Apmokėta pavedimu",
+    "Atšaukti — prekės grįžo į AV",
+    "Atidaryti",
+    "Parašyti klientui"
+   ],
+   "sumos": [
+    "Klientui grąžink: 23,61 − 3,99 = 19,62 € (visa siunta grįžta — sumokėta su pristatymu)Pakartotinis užsakymas: 4,22 + 3,99 = 8,21 € (kaip sumokėta užsakyme; siunčiama tik apmokėjus)",
+    "Pakartotinis užsakymas #35794 (8,21 €): laukia kliento apmokėjimo — nuoroda išsiųsta 09-05 01:29. Klientas pasirinko pavedimą — kai pinigai banke, spausk „Apmokėta pavedimu“. siųsti nuorodą dar kartą"
+   ],
+   "is_naujo": "nėra"
+  },
+  "temp_liko": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788563370|Pai28iK4EFbyb7vnz7VYp87IOOdueXN1kLcRielvez0|56053deb35a5cdbaa1e16360b74ae306ae6cd818ad570973a609f64e50c77694"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788563370|Pai28iK4EFbyb7vnz7VYp87IOOdueXN1kLcRielvez0|47a0303a286ec36f06573052fed84fdde06097ba6bd1e83448e6c090e5df984f"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788563370|Pai28iK4EFbyb7vnz7VYp87IOOdueXN1kLcRielvez0|5edd0f46f121ecc959baf3c5d0515a11153a0635a017bfad524fe2b4c7cd034d"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1617_e4_klausimai_apmoketa",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "eval": "({k:[...document.querySelectorAll('.dl-kortele[data-id=\"35436\"] .dl-sumos')].map(function(x){return x.innerText.replace(/\\s+/g,' ');}),m:[...document.querySelectorAll('.dl-kortele[data-id=\"35436\"] .dl-veiksmai .v')].map(function(x){return x.innerText;})})"
+   }
+  ]
+ },
+ "shots": {
+  "s1617_e4_klausimai_apmoketa": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "k": [
+     "Klientui grąžink: 23,61 − 3,99 = 19,62 € (visa siunta grįžta — sumokėta su pristatymu) Pakartotinis užsakymas: 4,22 + 3,99 = 8,21 € (kaip sumokėta užsakyme; siunčiama tik apmokėjus)",
+     "Pakartotinis užsakymas #35794 (8,21 €): laukia kliento apmokėjimo — nuoroda išsiųsta 09-05 01:29. Klientas pasirinko pavedimą — kai pinigai banke, spausk „Apmokėta pavedimu“. siųsti nuorodą dar kartą"
+    ],
+    "m": [
+     "Apmokėta pavedimu",
+     "Atšaukti — prekės grįžo į AV",
+     "Atidaryti",
+     "Parašyti klientui"
+    ]
+   }
+  }
+ }
+}
