@@ -1,0 +1,285 @@
+{
+ "v": "dep-153606",
+ "kurimas": 200,
+ "sid": 4736,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Z": {
+  "v": "S1614 e4d",
+  "f": "Z",
+  "temp_istrinta": 1,
+  "versija": "3.16",
+  "md5": "03deb5b6b18b3d251c7aeb3b02560005",
+  "now": "2026-09-04 18:37:42",
+  "pries": {
+   "35431": {
+    "st": "processing",
+    "sh": [
+     "AUDITAS",
+     "Testas 18",
+     "Testų g. 18",
+     "",
+     "Vilnius",
+     "01100"
+    ],
+    "tel": "+37060000000/+37060000000",
+    "vsod": "",
+    "pastaba": "Surūšiuota automatiškai: Animonda Carny Adult Beef + Chicken + Du — Avesa sandėlis; QUATTRO 1,5 kg Adult Salmon & Krill visa — Avesa sandėlis",
+    "ivykis": {
+     "veiksmas": "rusiuoti",
+     "rezultatas": "ok",
+     "kanalas": "auto",
+     "kas_vardas": "sistema",
+     "laikas": "2026-09-03 07:28:32",
+     "pastaba": "auto: visos prekės vienu keliu",
+     "pries": null,
+     "po": "{\"zinute\":\"Animonda Carny Adult Beef + Chicken + Du — Avesa sandėlis; QUATTRO 1,5 kg Adult Salmon & Krill visa — Avesa sandėlis\"}"
+    }
+   },
+   "35434": {
+    "st": "processing",
+    "sh": [
+     "AUDITAS",
+     "Testas 21",
+     "Testų g. 21",
+     "",
+     "Vilnius",
+     "01100"
+    ],
+    "tel": "+37060000000/+37060000000",
+    "vsod": "{\"status\":\"error\",\"error_message\":\"Venipak returned an empty response \\u2014 the shipment was NOT registered.\",\"pack_numbers\":[]}",
+    "pastaba": "Darbalaukis: pakuočių skaičius nustatytas — 1.",
+    "ivykis": {
+     "veiksmas": "pakuotes",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "laikas": "2026-09-02 22:10:22",
+     "pastaba": null,
+     "pries": "{\"status\":\"processing\",\"tipas\":\"MAIN\",\"pak\":1,\"siuntos\":[],\"vp\":\"\",\"misrus\":\"{\\\"prins\\\":\\\"av\\\"}\",\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"2026-09-02 20:11:55\",\"eil\":{\"849\":{\"pid\":19708,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"1\",\"av_q\":\"\",\"stock\":\"24\"},\"850\":{\"pid\":16889,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"\",\"av_q\":\"0\",\"stock\":\"18\"}}}",
+     "po": "{\"status\":\"processing\",\"tipas\":\"MAIN\",\"pak\":1,\"siuntos\":[],\"vp\":\"\",\"misrus\":\"{\\\"prins\\\":\\\"av\\\"}\",\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"2026-09-02 20:11:55\",\"eil\":{\"849\":{\"pid\":19708,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"1\",\"av_q\":\"\",\"stock\":\"24\"},\"850\":{\"pid\":16889,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"\",\"av_q\":\"0\",\"stock\":\"18\"}},\"param\":{\"n\":\"1\"},\"trukme_ms\":74,\"redirect\":{\"pd_ok\":\"pakuotes\",\"pd_nr\":\"1\",\"page\":\"ps-desk\"},\"zinute\":\"pakuotes 1\"}"
+    }
+   }
+  },
+  "post": {
+   "35431": {
+    "code": 302,
+    "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35431&pd_ok=dl_info&pd_nr=35431|pristatymo duomenys pakeisti: Adresas: „Testų g. 18“ → „Testų g. 18-5“; Pašto kodas: „01100“ → „01101“; Tel.: „+37060000000“ → „+37060000018“",
+    "body": ""
+   },
+   "35434": {
+    "code": 302,
+    "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35434&pd_ok=dl_info&pd_nr=35434|pristatymo duomenys pakeisti: Pašto kodas: „01100“ → „01121“ · Venipak klaida nuimta — registruok lipduką iš naujo.",
+    "body": ""
+   }
+  },
+  "post_nieko": {
+   "35434": {
+    "code": 302,
+    "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35434&pd_ok=dl_info&pd_nr=35434|nieko nepakeista",
+    "body": ""
+   }
+  },
+  "sk_po": {
+   "35431": {
+    "code": 200,
+    "kl": "",
+    "kur": "Surinkti AV · toliau: Surinkti",
+    "btn": "Surinkti",
+    "siuntos_klaida": "",
+    "adresas": "AUDITAS Testas 18, Testų g. 18-5, Vilnius, 01101",
+    "tel": "+37060000018",
+    "vieta": "",
+    "red": {
+     "tipas": "kurjeris",
+     "isp": [],
+     "laukai": {
+      "vardas": "AUDITAS",
+      "pavarde": "Testas 18",
+      "adresas": "Testų g. 18-5",
+      "adresas2": "",
+      "miestas": "Vilnius",
+      "kodas": "01101",
+      "tel": "+37060000018"
+     },
+     "vieta": {
+      "id": "",
+      "t": ""
+     },
+     "laiskas": true
+    },
+    "red_n": "95e19e713a",
+    "red_g": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35431"
+   },
+   "35434": {
+    "code": 200,
+    "kl": "",
+    "kur": "Surinkti AV · toliau: Surinkti",
+    "btn": "Surinkti",
+    "siuntos_klaida": "",
+    "adresas": "AUDITAS Testas 21, Testų g. 21, Vilnius, 01121",
+    "tel": "+37060000000",
+    "vieta": "",
+    "red": {
+     "tipas": "kurjeris",
+     "isp": [],
+     "laukai": {
+      "vardas": "AUDITAS",
+      "pavarde": "Testas 21",
+      "adresas": "Testų g. 21",
+      "adresas2": "",
+      "miestas": "Vilnius",
+      "kodas": "01121",
+      "tel": "+37060000000"
+     },
+     "vieta": {
+      "id": "",
+      "t": ""
+     },
+     "laiskas": true
+    },
+    "red_n": "2b0d7758c3",
+    "red_g": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35434"
+   }
+  },
+  "sk_sim": {
+   "35439": {
+    "code": 200,
+    "kl": "Siuntos sukurti nepavyko",
+    "kur": "Klausimai · toliau: Spręsti",
+    "btn": null,
+    "siuntos_klaida": "Venipak: neteisingas pašto kodas (Bad post code)",
+    "adresas": "AUDITAS Testas 26, Testų g. 26, Vilnius, 01100",
+    "tel": "+37060000000",
+    "vieta": "",
+    "red": {
+     "tipas": "kurjeris",
+     "isp": [],
+     "laukai": {
+      "vardas": "AUDITAS",
+      "pavarde": "Testas 26",
+      "adresas": "Testų g. 26",
+      "adresas2": "",
+      "miestas": "Vilnius",
+      "kodas": "01100",
+      "tel": "+37060000000"
+     },
+     "vieta": {
+      "id": "",
+      "t": ""
+     },
+     "laiskas": true
+    },
+    "red_n": "55c9a737ac",
+    "red_g": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35439"
+   }
+  },
+  "laiskai_sis_procesas": [],
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788538062|a5hTRrJtcuFWRYvy6fQbWOdAoqBaKGG4HbetfP17Nqp|aec14f731182be0c96ec2b675cf483f227675df73e37c60e74cd3eb7294d822a"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788538062|a5hTRrJtcuFWRYvy6fQbWOdAoqBaKGG4HbetfP17Nqp|eab4c91e72cf9ed765d7d72e4200338370a1709e985db5e280eef7215a4eb91d"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788538062|a5hTRrJtcuFWRYvy6fQbWOdAoqBaKGG4HbetfP17Nqp|21b337702b03a2cbcbb952b5775220d33fb164f8e45ce53ccb7db8a17f2bba3e"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1614_e4_klausimai_po",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "full": true,
+    "eval": "({korteles:[...document.querySelectorAll('.dl-kortele')].map(x=>x.innerText.replace(/\\s+/g,' ').slice(0,300)),mygtukai:[...document.querySelectorAll('.dl-kortele a,.dl-kortele button')].map(x=>x.innerText).filter(t=>/Taisyti/.test(t))})"
+   },
+   {
+    "n": "s1614_e4_skydelis_35431_po",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35431&atidaryti=35431",
+    "w": 1400,
+    "eval": "({forma:!!document.getElementById('skRedF'),laukai:[...document.querySelectorAll('#skRedF input:not([type=hidden]),#skRedF select')].map(x=>x.name+'='+(x.type==='checkbox'?x.checked:x.value).toString().slice(0,60)),isp:[...document.querySelectorAll('#skRedF .dl-note')].map(x=>x.innerText),n:(document.getElementById('skRedN')||{innerText:''}).innerText,opts:(document.getElementById('skRedS')||{options:[]}).options.length,v:(document.getElementById('skV')||{innerText:''}).innerText.replace(/\\s+/g,' '),klaus:(document.getElementById('skKlaus')||{innerText:''}).innerText})"
+   },
+   {
+    "n": "s1614_e4_forma_35442_sarasas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35442&atidaryti=35442",
+    "w": 1400,
+    "click": "#skRed",
+    "eval": "(async()=>{await new Promise(r=>setTimeout(r,5000)); const Q=document.getElementById('skRedQ'); Q.value='Kaunas'; Q.dispatchEvent(new Event('input')); await new Promise(r=>setTimeout(r,300)); return {n:(document.getElementById('skRedN')||{innerText:''}).innerText,opts:(document.getElementById('skRedS')||{options:[]}).options.length,pirmas:((document.getElementById('skRedS')||{options:[]}).options[0]||{text:''}).text}; })()"
+   },
+   {
+    "n": "s1614_e4_taisyti_35434",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "click": ".dl-kortele[data-id=\"35434\"] button[data-redaguoti]",
+    "eval": "({forma:!!document.getElementById('skRedF'),laukai:[...document.querySelectorAll('#skRedF input:not([type=hidden]),#skRedF select')].map(x=>x.name+'='+(x.type==='checkbox'?x.checked:x.value).toString().slice(0,60)),isp:[...document.querySelectorAll('#skRedF .dl-note')].map(x=>x.innerText),n:(document.getElementById('skRedN')||{innerText:''}).innerText,opts:(document.getElementById('skRedS')||{options:[]}).options.length,v:(document.getElementById('skV')||{innerText:''}).innerText.replace(/\\s+/g,' '),klaus:(document.getElementById('skKlaus')||{innerText:''}).innerText})"
+   }
+  ]
+ },
+ "shots": {
+  "s1614_e4_klausimai_po": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "korteles": [
+     "#35100 · Aru ZX · 47,66 € trūksta sandėlyje Trūksta AV: 20 vnt. rudų kiaulės knyslių — reikia 1, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas siunčia klientui / veža į AV); užsakyk pats ir palik „Iš AV“, kai turėsi; parašyk klientui pakaitalą; arba atšauk. „Laukti“ tik pažymi — primi",
+     "#35423 · AUDITAS Testas 10 · 19,13 € trūksta sandėlyje Trūksta AV: Žaislas šuniui – Medžiaginis kaktusas Fernando, 17 x 15 cm — reikia 3, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas siunčia klientui / veža į AV); užsakyk pats ir palik „Iš AV“, kai turėsi; parašyk klientui pakaitalą;",
+     "#35439 · AUDITAS Testas 26 · 36,42 € siuntos sukurti nepavyko Vežėjas siuntos nesukūrė: Venipak: neteisingas pašto kodas (Bad post code). Dažniausiai paštomatas nebegalioja arba adresas / pašto kodas neteisingas. „Taisyti adresą“ — pataisyk skydelyje ir išsaugok; klaida nusiims, tada registruok lipd"
+    ],
+    "mygtukai": [
+     "Taisyti adresą"
+    ]
+   }
+  },
+  "s1614_e4_skydelis_35431_po": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35431",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "forma": false,
+    "laukai": [],
+    "isp": [],
+    "n": "",
+    "opts": 0,
+    "v": "Surinkti Redaguoti Sąskaita Pranešti klientui apie vėlavimą Parašyti klientui Atšaukti",
+    "klaus": ""
+   }
+  },
+  "s1614_e4_forma_35442_sarasas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35442",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "#skRed",
+   "eval": {
+    "n": "68 iš 567 (LT)",
+    "opts": 68,
+    "pirmas": "EOLTAS Venipak atsiėmimo punktas — Islandijos pl. 197, Kaunas"
+   }
+  },
+  "s1614_e4_taisyti_35434": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('.dl-kortele[data-id=\"35434\"] button[data-redaguoti]')\n",
+   "eval": {
+    "forma": false,
+    "laukai": [],
+    "isp": [],
+    "n": "",
+    "opts": 0,
+    "v": "",
+    "klaus": ""
+   }
+  }
+ }
+}
