@@ -1,0 +1,174 @@
+{
+ "v": "dep-160627",
+ "kurimas": 200,
+ "sid": 4743,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1614 e6d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": {
+   "1": 80000,
+   "2": 80000,
+   "3": 80000,
+   "4": 80000,
+   "5": 46940
+  },
+  "bytes": 275203,
+  "md5": "aa47912f4b062698fee395d949366024",
+  "token": "ok",
+  "buvo": "03deb5b6b18b3d251c7aeb3b02560005",
+  "ks_md5": "69b897ad02b0ab5ea35942a1a926a666",
+  "ks_token": "ok",
+  "ks_buvo": "fb5a0c084731f57eecd2faa069f3ef3b",
+  "backup": true,
+  "ks_backup": true,
+  "rasyta": 275203,
+  "po": "aa47912f4b062698fee395d949366024",
+  "ks_rasyta": 8325,
+  "ks_po": "69b897ad02b0ab5ea35942a1a926a666"
+ },
+ "T": {
+  "v": "S1614 e6d",
+  "f": "T",
+  "temp_istrinta": 0,
+  "versija": "3.17",
+  "ks_versija": "1.3",
+  "md5": "aa47912f4b062698fee395d949366024",
+  "now": "2026-09-04 19:08:36",
+  "pries": {
+   "35421": {
+    "own16889": "0"
+   },
+   "35438": {
+    "stock19708": "17",
+    "own16889": "0"
+   }
+  },
+  "sk_sim": {
+   "35421": {
+    "code": 200,
+    "kl": "Siunta grįžta",
+    "kur": "Klausimai · toliau: Spręsti",
+    "btn": null,
+    "nr_siuntos": [
+     "Prins: V07267E1000046 — Venipak: pristatyta, Kauno Akropolio Venipak paštomatas, 09-04 13:00"
+    ],
+    "perreg_t": [],
+    "eil": [
+     {
+      "n": "Animonda Carny Adult Beef",
+      "k": "av",
+      "lock": "",
+      "zing": 3
+     },
+     {
+      "n": "QUATTRO 1,5 kg Adult Salm",
+      "k": "i_av",
+      "lock": "jau užsakyta iš Quattro (užsakymas tiekėjui #10)",
+      "zing": 5
+     },
+     {
+      "n": "Prins Diet Skin & Intesti",
+      "k": "tiesiai",
+      "lock": "jau užsakyta iš Prins",
+      "zing": 3
+     }
+    ],
+    "red": true
+   },
+   "35438": {
+    "code": 200,
+    "kl": "Siunta grįžta",
+    "kur": "įvykdytas",
+    "btn": null,
+    "nr_siuntos": [
+     "AV: V07267E1000052 — Venipak: pas siuntėją, 09-03 12:34",
+     "Prins: V07267E1000047 — Venipak: pas siuntėją, 09-03 11:23"
+    ],
+    "perreg_t": [],
+    "eil": [
+     {
+      "n": "Animonda Carny Adult Beef",
+      "k": "av",
+      "lock": "užsakymas uždarytas",
+      "zing": 3
+     },
+     {
+      "n": "Prins Diet Skin & Intesti",
+      "k": "tiesiai",
+      "lock": "užsakymas uždarytas",
+      "zing": 3
+     }
+    ],
+    "red": null
+   }
+  },
+  "kort_sim": {
+   "35421": {
+    "tekstas": "#35421 · AUDITAS Testas 8 · 54,03 € siunta grįžtaVežėjas grąžina siuntą: siunta V07267E1000046 (Prins) — Venipak: „Returning to sender“ (2026-09-04 19:08:40); prekės: 1× Prins Diet Skin &amp; Intestinal Hypoallergic sausas maistas katėms 1,5 kg. Kita dalis: AV (dar ruošiama).Kai prekės grįš į AV, spręsk: „Siųsti iš naujo“ — grįžusios prekės sujungiamos į AV siuntą (Surinkti AV → naujas lipdukas), klientui vėl išeis „Išsiųsta“; „Atšaukti tik grįžusią dalį“ — atšaukiama tik ši dalis, prekės į AV likutį, kita dalis lieka kaip yra. Pinigus grąžinsi rankomis (WC dalinis grąžinimas — rankomis). Adresą taisyk „Redaguoti“ prieš naują lipduką.Siųsti iš naujo Atšaukti tik grįžusią dalį Atidaryti Paraš",
+    "mygtukai": [
+     "Kai prekės grįš į AV, spręsk: „Siųsti iš naujo“ — grįžusios prekės sujungiamos į AV siuntą (Surinkti AV → naujas lipdukas), klientui vėl išeis „Išsiųsta“; „Atšaukti tik grįžusią dalį“ — atšaukiama tik ši dalis, prekės į AV likutį, kita dalis lieka kaip yra. Pinigus grąžinsi rankomis (WC dalinis grąžinimas — rankomis). Adresą taisyk „Redaguoti“ prieš naują lipduką.",
+     "Siųsti iš naujo",
+     "Atšaukti tik grįžusią dalį",
+     "Atidaryti",
+     "Parašyti klientui"
+    ]
+   },
+   "35438": {
+    "tekstas": "#35438 · AUDITAS Testas 25 · 36,42 € siunta grįžtaVežėjas grąžina siuntą: siunta V07267E1000052 (AV) — Venipak: „Returning to sender“ (2026-09-04 19:08:36); prekės: 1× Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g. Kita dalis: Prins (išsiųsta).Kai prekės grįš į AV, spręsk: „Siųsti iš naujo“ — siunta ruošiama iš AV tuo pačiu adresu (Surinkti AV → naujas lipdukas), klientui vėl išeis „Išsiųsta“; „Atšaukti tik grįžusią dalį“ — atšaukiama tik ši dalis, prekės į AV likutį, kita dalis lieka kaip yra. Pinigus grąžinsi rankomis (WC dalinis grąžinimas — rankomis). Adresą taisyk „Redaguoti“ prieš naują lipduką.Siųsti iš nau",
+    "mygtukai": [
+     "Kai prekės grįš į AV, spręsk: „Siųsti iš naujo“ — siunta ruošiama iš AV tuo pačiu adresu (Surinkti AV → naujas lipdukas), klientui vėl išeis „Išsiųsta“; „Atšaukti tik grįžusią dalį“ — atšaukiama tik ši dalis, prekės į AV likutį, kita dalis lieka kaip yra. Pinigus grąžinsi rankomis (WC dalinis grąžinimas — rankomis). Adresą taisyk „Redaguoti“ prieš naują lipduką.",
+     "Siųsti iš naujo",
+     "Atšaukti tik grįžusią dalį",
+     "Atidaryti",
+     "Parašyti klientui"
+    ]
+   }
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788539916|vexiht1MSPXWChgm32lnmqTfUmZF65NdUC3gLpARV0q|0cbdc5775fc11075d0c034ccd58573ac219519fad36d0bd36619dc523bb1d0d8"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788539916|vexiht1MSPXWChgm32lnmqTfUmZF65NdUC3gLpARV0q|f8fa025c91282a5605c274d357825332214245289ce005975534e901fa7c7abf"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788539916|vexiht1MSPXWChgm32lnmqTfUmZF65NdUC3gLpARV0q|c37098a5325b76e408679361ba181494e99c67f61356f205a236821cf97bbb26"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1614_e6_klausimai",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "full": true,
+    "eval": "({korteles:[...document.querySelectorAll('.dl-kortele')].map(x=>x.innerText.replace(/\\s+/g,' ').slice(0,400))})"
+   }
+  ],
+  "laiskai_sis_procesas": []
+ },
+ "shots": {
+  "s1614_e6_klausimai": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "korteles": [
+     "#35421 · AUDITAS Testas 8 · 54,03 € siunta grįžta Vežėjas grąžina siuntą: siunta V07267E1000046 (Prins) — Venipak: „Returning to sender“ (2026-09-04 19:08:40); prekės: 1× Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg. Kita dalis: AV (dar ruošiama). Kai prekės grįš į AV, spręsk: „Siųsti iš naujo“ — grįžusios prekės sujungiamos į AV siuntą (Surinkti AV → naujas lipdukas), kl",
+     "#35438 · AUDITAS Testas 25 · 36,42 € siunta grįžta Vežėjas grąžina siuntą: siunta V07267E1000052 (AV) — Venipak: „Returning to sender“ (2026-09-04 19:08:36); prekės: 1× Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g. Kita dalis: Prins (išsiųsta). Kai prekės grįš į AV, spręsk: „Siųsti iš naujo“ — siunta ruošiama iš AV tuo",
+     "#35100 · Aru ZX · 47,66 € trūksta sandėlyje Trūksta AV: 20 vnt. rudų kiaulės knyslių — reikia 1, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas siunčia klientui / veža į AV); užsakyk pats ir palik „Iš AV“, kai turėsi; parašyk klientui pakaitalą; arba atšauk. „Laukti“ tik pažymi — priminimo nebus. Rūšiuoti Laukti Parašyti klientui Atšaukti",
+     "#35423 · AUDITAS Testas 10 · 19,13 € trūksta sandėlyje Trūksta AV: Žaislas šuniui – Medžiaginis kaktusas Fernando, 17 x 15 cm — reikia 3, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas siunčia klientui / veža į AV); užsakyk pats ir palik „Iš AV“, kai turėsi; parašyk klientui pakaitalą; arba atšauk. „Laukti“ tik pažymi — priminimo nebus. Rūšiuoti Laukti Parašyti klientui Atšaukti Pažy",
+     "#35439 · AUDITAS Testas 26 · 36,42 € siuntos sukurti nepavyko Vežėjas siuntos nesukūrė: Venipak: neteisingas pašto kodas (Bad post code). Dažniausiai paštomatas nebegalioja arba adresas / pašto kodas neteisingas. „Taisyti adresą“ — pataisyk skydelyje ir išsaugok; klaida nusiims, tada registruok lipduką iš naujo. Taisyti adresą Parašyti klientui Atšaukti"
+    ]
+   }
+  }
+ }
+}
