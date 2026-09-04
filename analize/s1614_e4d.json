@@ -1,0 +1,460 @@
+{
+ "v": "dep-153036",
+ "kurimas": 200,
+ "sid": 4735,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1614 e4d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": {
+   "1": 80000,
+   "2": 80000,
+   "3": 80000,
+   "4": 80000,
+   "5": 27672
+  },
+  "bytes": 260754,
+  "md5": "03deb5b6b18b3d251c7aeb3b02560005",
+  "token": "ok",
+  "buvo": "488142d766f60c8e305b95b6028c046c",
+  "backup": true,
+  "rasyta": 260754,
+  "po": "03deb5b6b18b3d251c7aeb3b02560005"
+ },
+ "T": {
+  "v": "S1614 e4d",
+  "f": "T",
+  "temp_istrinta": 0,
+  "versija": "3.16",
+  "md5": "03deb5b6b18b3d251c7aeb3b02560005",
+  "now": "2026-09-04 18:32:19",
+  "recon_read_pickups": [
+   "function _venipak_read_pickups() {",
+   "  $upload_dir = wp_upload_dir();",
+   "  if (!file_exists($upload_dir['basedir'] . '/venipak')) {",
+   "    mkdir($upload_dir['basedir'] . '/venipak', 0755, true);",
+   "  }",
+   "  $file_path = $upload_dir['basedir'] . '/venipak/pickups.json';",
+   "  if (!file_exists($file_path) || (time() - filemtime($file_path) > 86400)) {",
+   "    _venipak_fetch_pickups_request($file_path);",
+   "  }",
+   "",
+   "  // Still missing means the very first fetch failed — there is nothing to read yet.",
+   "  if (!file_exists($file_path)) {",
+   "    return [];",
+   "  }",
+   "",
+   "  $contents = file_get_contents($file_path);",
+   "  if ($contents === false) {",
+   "    return [];",
+   "  }",
+   "  return json_decode($contents, true) ?: [];",
+   "}"
+  ],
+  "recon_get_order_address": [
+   "    private function get_order_address($order) {",
+   "        $ship_to_billing = get_option('woocommerce_ship_to_destination');",
+   "        $is_shipping_address = $order->get_shipping_address_1() && $ship_to_billing !== 'billing_only';",
+   "",
+   "        $company = $order->get_shipping_company() !== '' ? $order->get_shipping_company() : $order->get_billing_company();",
+   "        if ($company) {",
+   "            $full_name = $company;",
+   "        } elseif ($is_shipping_address) {",
+   "            $full_name = $order->get_shipping_first_name() . ' ' . $order->get_shipping_last_name();",
+   "        } else {",
+   "            $full_name = $order->get_billing_first_name() . ' ' . $order->get_billing_last_name();",
+   "        }",
+   "        if ($is_shipping_address) {",
+   "            $address = $order->get_shipping_address_1() . ' ' . $order->get_shipping_address_2();",
+   "            $city = $order->get_shipping_city();",
+   "            $postcode = $order->get_shipping_postcode();",
+   "            $country = $order->get_shipping_country();",
+   "            $phone = $order->get_shipping_phone() ? $order->get_shipping_phone() : $order->get_billing_phone();",
+   "        } else {",
+   "            $address = $order->get_billing_address_1() . ' ' . $order->get_billing_address_2();",
+   "            $city = $order->get_billing_city();",
+   "            $postcode = $order->get_billing_postcode();",
+   "            $country = $order->get_billing_country();",
+   "            $phone = $order->get_billing_phone();",
+   "        }",
+   "",
+   "        $contact_person = $is_shipping_address ? $order->get_shipping_first_name() . ' ' . $order->get_shipping_last_name() : $order->get_billing_first_name() . ' ' . $order->get_billing_last_name();",
+   "",
+   "        return [",
+   "            'full_name' => $full_name,",
+   "            'contact_person' => $contact_person,",
+   "            'address' => $address,",
+   "            'city' => $city,",
+   "            'postcode' => preg_replace('/\\D/', '', $postcode),",
+   "            'country' => $country,",
+   "            'phone' => $phone,",
+   "        ];",
+   "    }"
+  ],
+  "vietos": {
+   "pastomatas": {
+    "code": 200,
+    "s": 2.37,
+    "n": 567,
+    "pvz": [
+     [
+      "2630",
+      "Akademija",
+      "Akademijos Pilėnų Express Market Venipak paštomatas — Pilėnų g. 1, Akademija"
+     ],
+     [
+      "2707",
+      "Akmenė",
+      "Akmenės S. Daukanto NORFA Venipak paštomatas — S. Daukanto g. 7a, Akmenė"
+     ]
+    ],
+    "kaunas": 68
+   },
+   "lp": {
+    "code": 200,
+    "s": 1.12,
+    "n": 531,
+    "pvz": [
+     [
+      "0251",
+      "Akademija",
+      "Rimi Akademija — Varžupio g. 1, Akademija"
+     ],
+     [
+      "2402",
+      "Akmenė",
+      "Pašto skyrius — K.Kasakausko g. 7, Akmenė"
+     ]
+    ],
+    "kaunas": 73
+   }
+  },
+  "pries": {
+   "35431": {
+    "st": "processing",
+    "sh": [
+     "AUDITAS",
+     "Testas 18",
+     "Testų g. 18",
+     "",
+     "Vilnius",
+     "01100"
+    ],
+    "tel": "+37060000000/+37060000000",
+    "vsod": "",
+    "pastaba": "Surūšiuota automatiškai: Animonda Carny Adult Beef + Chicken + Du — Avesa sandėlis; QUATTRO 1,5 kg Adult Salmon & Krill visa — Avesa sandėlis",
+    "ivykis": {
+     "veiksmas": "rusiuoti",
+     "rezultatas": "ok",
+     "kanalas": "auto",
+     "kas_vardas": "sistema",
+     "laikas": "2026-09-03 07:28:32",
+     "pastaba": "auto: visos prekės vienu keliu",
+     "pries": null,
+     "po": "{\"zinute\":\"Animonda Carny Adult Beef + Chicken + Du — Avesa sandėlis; QUATTRO 1,5 kg Adult Salmon & Krill visa — Avesa sandėlis\"}"
+    }
+   },
+   "35434": {
+    "st": "processing",
+    "sh": [
+     "AUDITAS",
+     "Testas 21",
+     "Testų g. 21",
+     "",
+     "Vilnius",
+     "01100"
+    ],
+    "tel": "+37060000000/+37060000000",
+    "vsod": "",
+    "pastaba": "Darbalaukis: pakuočių skaičius nustatytas — 1.",
+    "ivykis": {
+     "veiksmas": "pakuotes",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "laikas": "2026-09-02 22:10:22",
+     "pastaba": null,
+     "pries": "{\"status\":\"processing\",\"tipas\":\"MAIN\",\"pak\":1,\"siuntos\":[],\"vp\":\"\",\"misrus\":\"{\\\"prins\\\":\\\"av\\\"}\",\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"2026-09-02 20:11:55\",\"eil\":{\"849\":{\"pid\":19708,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"1\",\"av_q\":\"\",\"stock\":\"24\"},\"850\":{\"pid\":16889,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"\",\"av_q\":\"0\",\"stock\":\"18\"}}}",
+     "po": "{\"status\":\"processing\",\"tipas\":\"MAIN\",\"pak\":1,\"siuntos\":[],\"vp\":\"\",\"misrus\":\"{\\\"prins\\\":\\\"av\\\"}\",\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"2026-09-02 20:11:55\",\"eil\":{\"849\":{\"pid\":19708,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"1\",\"av_q\":\"\",\"stock\":\"24\"},\"850\":{\"pid\":16889,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"\",\"av_q\":\"0\",\"stock\":\"18\"}},\"param\":{\"n\":\"1\"},\"trukme_ms\":74,\"redirect\":{\"pd_ok\":\"pakuotes\",\"pd_nr\":\"1\",\"page\":\"ps-desk\"},\"zinute\":\"pakuotes 1\"}"
+    }
+   },
+   "35442": {
+    "st": "processing",
+    "sh": [
+     "Rai",
+     "B",
+     "Miško g. 1",
+     "",
+     "Agurkiškė",
+     "12222"
+    ],
+    "tel": "+37065082900/+37065082900",
+    "vsod": "{\"manifest\":\"07267260903002\",\"pack_numbers\":[\"V07267E1000056\"],\"weight\":4.5,\"products_count\":6,\"status\":\"sent\",\"error_message\":\"\"}",
+    "pastaba": "Siuntos numeriai išsaugoti (VF): V07267E1000056",
+    "ivykis": {
+     "veiksmas": "vp_reg",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Rai",
+     "laikas": "2026-09-03 13:28:58",
+     "pastaba": "grupė: 5 užs.",
+     "pries": "{\"status\":\"processing\",\"tipas\":\"MIXED\",\"pak\":0,\"siuntos\":[],\"vp\":\"\",\"misrus\":\"{\\\"vf\\\":\\\"tiesiai\\\"}\",\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"2026-09-03 13:12:52\",\"eil\":{\"877\":{\"pid\":18536,\"q\":1,\"src\":\"vf\",\"car\":\"venipak\",\"red\":\"\",\"av_q\":\"\",\"stock\":\"93.000000\"},\"878\":{\"pid\":19590,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"1\",\"av_q\":\"\",\"stock\":\"23\"},\"879\":{\"pid\":19574,\"q\":3,\"src\":\"av\",\"car\":\"any\",\"red\":\"3\",\"av_q\":\"\",\"stock\":\"51\"},\"880\":{\"pid\":19570,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"1\",\"av_q\":\"\",\"stock\":\"60\"}}}",
+     "po": "{\"status\":\"processing\",\"tipas\":\"MIXED\",\"pak\":0,\"siuntos\":\"{\\\"vf\\\":{\\\"sandelis\\\":\\\"vf\\\",\\\"kodas\\\":\\\"002\\\",\\\"manifest\\\":\\\"07267260903002\\\",\\\"numeriai\\\":[\\\"V07267E1000056\\\"],\\\"data\\\":\\\"2026-09-03 16:28:58\\\"}}\",\"vp\":\"{\\\"manifest\\\":\\\"07267260903002\\\",\\\"pack_numbers\\\":[\\\"V07267E1000056\\\"],\\\"weight\\\":4.5,\\\"products_count\\\":6,\\\"status\\\":\\\"sent\\\",\\\"error_me\",\"misrus\":\"{\\\"vf\\\":\\\"tiesiai\\\"}\",\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"2026-09-03 13:12:52\",\"eil\":{\"877\":{\"pid\":18536,\"q\":1,\"src\":\"vf\",\"car\":\"venipak\",\"red\":\"\",\"av_q\":\"\",\"stock\":\"93.000000\"},\"878\":{\"pid\":19590,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"1\",\"av_q\":\"\",\"stock\":\"23\"},\"879\":{\"pid\":19574,\"q\":3,\"src\":\"av\",\"car\":\"any\",\"red\":\"3\",\"av_q\":\"\",\"stock\":\"51\"},\"880\":{\"pid\":19570,\"q\":1,\"src\":\"av\",\"car\":\"any\",\"red\":\"1\",\"av_q\":\"\",\"stock\":\"60\"}},\"param\":{\"sandelis\":\"vf\"},\"trukme_ms\":987,\"redirect\":{\"pd_ok\":\"vp_ok\",\"pd_nr\":\"5 · VF\",\"page\":\"ps-desk\",\"eile\":\"laiskai\"},\"zinute\":\"vp_ok 5 · VF\"}"
+    }
+   }
+  },
+  "sk_pries": {
+   "35431": {
+    "code": 200,
+    "kl": "",
+    "kur": "Surinkti AV · toliau: Surinkti",
+    "btn": "Surinkti",
+    "siuntos_klaida": "",
+    "adresas": "AUDITAS Testas 18, Testų g. 18, Vilnius, 01100",
+    "tel": "+37060000000",
+    "vieta": "",
+    "red": {
+     "tipas": "kurjeris",
+     "isp": [],
+     "laukai": {
+      "vardas": "AUDITAS",
+      "pavarde": "Testas 18",
+      "adresas": "Testų g. 18",
+      "adresas2": "",
+      "miestas": "Vilnius",
+      "kodas": "01100",
+      "tel": "+37060000000"
+     },
+     "vieta": {
+      "id": "",
+      "t": ""
+     },
+     "laiskas": true
+    },
+    "red_n": "24eaef772b",
+    "red_g": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35431"
+   },
+   "35434": {
+    "code": 200,
+    "kl": "",
+    "kur": "Surinkti AV · toliau: Surinkti",
+    "btn": "Surinkti",
+    "siuntos_klaida": "",
+    "adresas": "AUDITAS Testas 21, Testų g. 21, Vilnius, 01100",
+    "tel": "+37060000000",
+    "vieta": "",
+    "red": {
+     "tipas": "kurjeris",
+     "isp": [],
+     "laukai": {
+      "vardas": "AUDITAS",
+      "pavarde": "Testas 21",
+      "adresas": "Testų g. 21",
+      "adresas2": "",
+      "miestas": "Vilnius",
+      "kodas": "01100",
+      "tel": "+37060000000"
+     },
+     "vieta": {
+      "id": "",
+      "t": ""
+     },
+     "laiskas": true
+    },
+    "red_n": "5b72d5bfc8",
+    "red_g": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35434"
+   },
+   "35442": {
+    "code": 200,
+    "kl": "",
+    "kur": "Surinkti AV + Dropshipping (VF) · toliau: Surinkti",
+    "btn": "Surinkti",
+    "siuntos_klaida": "",
+    "adresas": "Rai B, Miško g. 1, Agurkiškė, Kazlų Rūdos sav., 12222",
+    "tel": "+37065082900",
+    "vieta": "3648",
+    "red": {
+     "tipas": "pastomatas",
+     "isp": [],
+     "laukai": {
+      "vardas": "Rai",
+      "pavarde": "B",
+      "adresas": "Miško g. 1",
+      "adresas2": "",
+      "miestas": "Agurkiškė",
+      "kodas": "12222",
+      "tel": "+37065082900"
+     },
+     "vieta": {
+      "id": "3648",
+      "t": "Nemenčinės AIBĖ Venipak paštomatas — Švenčionių g. 72, Nemenčinė"
+     },
+     "laiskas": true
+    },
+    "red_n": "624cc8e945",
+    "red_g": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35442"
+   }
+  },
+  "sk_sim": {
+   "35434": {
+    "code": 200,
+    "kl": "Siuntos sukurti nepavyko",
+    "kur": "Klausimai · toliau: Spręsti",
+    "btn": null,
+    "siuntos_klaida": "Venipak neatsakė (Venipak returned an empty response — the shipment was NOT registered.)",
+    "adresas": "AUDITAS Testas 21, Testų g. 21, Vilnius, 01100",
+    "tel": "+37060000000",
+    "vieta": "",
+    "red": {
+     "tipas": "kurjeris",
+     "isp": [],
+     "laukai": {
+      "vardas": "AUDITAS",
+      "pavarde": "Testas 21",
+      "adresas": "Testų g. 21",
+      "adresas2": "",
+      "miestas": "Vilnius",
+      "kodas": "01100",
+      "tel": "+37060000000"
+     },
+     "vieta": {
+      "id": "",
+      "t": ""
+     },
+     "laiskas": true
+    },
+    "red_n": "5b72d5bfc8",
+    "red_g": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35434"
+   }
+  },
+  "laiskai_sis_procesas": [],
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788537739|S997N4saqjkkaGRS7NxEfrj3Qbh30iqLt8DHyiDsP5L|e13cca9f6792771ad0eb381f6c212b5ebc748dfc1d4bf8e9d9eeb0874ec440cf"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788537739|S997N4saqjkkaGRS7NxEfrj3Qbh30iqLt8DHyiDsP5L|0a2256b2d5bc7108e94b5131c194298dcb441c6f347c41a888d5760da4562f59"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788537739|S997N4saqjkkaGRS7NxEfrj3Qbh30iqLt8DHyiDsP5L|53f870b86382c92022a2471996a9769ed561fa777ebf0c84357f71222241cd2a"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1614_e4_klausimai",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "full": true,
+    "eval": "({korteles:[...document.querySelectorAll('.dl-kortele')].map(x=>x.innerText.replace(/\\s+/g,' ').slice(0,300)),mygtukai:[...document.querySelectorAll('.dl-kortele a,.dl-kortele button')].map(x=>x.innerText).filter(t=>/Taisyti/.test(t))})"
+   },
+   {
+    "n": "s1614_e4_forma_35431",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35431&atidaryti=35431",
+    "w": 1400,
+    "click": "#skRed",
+    "eval": "({forma:!!document.getElementById('skRedF'),laukai:[...document.querySelectorAll('#skRedF input:not([type=hidden]),#skRedF select')].map(x=>x.name+'='+(x.type==='checkbox'?x.checked:x.value).toString().slice(0,60)),isp:[...document.querySelectorAll('#skRedF .dl-note')].map(x=>x.innerText),n:(document.getElementById('skRedN')||{innerText:''}).innerText,opts:(document.getElementById('skRedS')||{options:[]}).options.length,v:(document.getElementById('skV')||{innerText:''}).innerText.replace(/\\s+/g,' '),klaus:(document.getElementById('skKlaus')||{innerText:''}).innerText})"
+   },
+   {
+    "n": "s1614_e4_forma_35442",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35442&atidaryti=35442",
+    "w": 1400,
+    "click": "#skRed",
+    "eval": "({forma:!!document.getElementById('skRedF'),laukai:[...document.querySelectorAll('#skRedF input:not([type=hidden]),#skRedF select')].map(x=>x.name+'='+(x.type==='checkbox'?x.checked:x.value).toString().slice(0,60)),isp:[...document.querySelectorAll('#skRedF .dl-note')].map(x=>x.innerText),n:(document.getElementById('skRedN')||{innerText:''}).innerText,opts:(document.getElementById('skRedS')||{options:[]}).options.length,v:(document.getElementById('skV')||{innerText:''}).innerText.replace(/\\s+/g,' '),klaus:(document.getElementById('skKlaus')||{innerText:''}).innerText})"
+   },
+   {
+    "n": "s1614_e4_taisyti_35434",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "click": ".dl-kortele[data-id=\\\"35434\\\"] button[data-redaguoti]",
+    "eval": "({forma:!!document.getElementById('skRedF'),laukai:[...document.querySelectorAll('#skRedF input:not([type=hidden]),#skRedF select')].map(x=>x.name+'='+(x.type==='checkbox'?x.checked:x.value).toString().slice(0,60)),isp:[...document.querySelectorAll('#skRedF .dl-note')].map(x=>x.innerText),n:(document.getElementById('skRedN')||{innerText:''}).innerText,opts:(document.getElementById('skRedS')||{options:[]}).options.length,v:(document.getElementById('skV')||{innerText:''}).innerText.replace(/\\s+/g,' '),klaus:(document.getElementById('skKlaus')||{innerText:''}).innerText})"
+   }
+  ]
+ },
+ "shots": {
+  "s1614_e4_klausimai": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "korteles": [
+     "#35100 · Aru ZX · 47,66 € trūksta sandėlyje Trūksta AV: 20 vnt. rudų kiaulės knyslių — reikia 1, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas siunčia klientui / veža į AV); užsakyk pats ir palik „Iš AV“, kai turėsi; parašyk klientui pakaitalą; arba atšauk. „Laukti“ tik pažymi — primi",
+     "#35423 · AUDITAS Testas 10 · 19,13 € trūksta sandėlyje Trūksta AV: Žaislas šuniui – Medžiaginis kaktusas Fernando, 17 x 15 cm — reikia 3, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas siunčia klientui / veža į AV); užsakyk pats ir palik „Iš AV“, kai turėsi; parašyk klientui pakaitalą;",
+     "#35434 · AUDITAS Testas 21 · 37,03 € siuntos sukurti nepavyko Vežėjas siuntos nesukūrė: Venipak neatsakė (Venipak returned an empty response — the shipment was NOT registered.). Dažniausiai paštomatas nebegalioja arba adresas / pašto kodas neteisingas. „Taisyti adresą“ — pataisyk skydelyje ir išsaug"
+    ],
+    "mygtukai": [
+     "Taisyti adresą"
+    ]
+   }
+  },
+  "s1614_e4_forma_35431": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35431",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "#skRed",
+   "eval": {
+    "forma": true,
+    "laukai": [
+     "vardas=AUDITAS",
+     "pavarde=Testas 18",
+     "adresas=Testų g. 18",
+     "adresas2=",
+     "miestas=Vilnius",
+     "kodas=01100",
+     "tel=+37060000000",
+     "laiskas=true"
+    ],
+    "isp": [],
+    "n": "",
+    "opts": 0,
+    "v": "Surinkti Redaguoti Sąskaita Pranešti klientui apie vėlavimą Parašyti klientui Atšaukti",
+    "klaus": ""
+   }
+  },
+  "s1614_e4_forma_35442": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35442",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "#skRed",
+   "eval": {
+    "forma": true,
+    "laukai": [
+     "=",
+     "vieta=3648",
+     "tel=+37065082900",
+     "laiskas=true"
+    ],
+    "isp": [],
+    "n": "kraunama…",
+    "opts": 1,
+    "v": "Surinkti Redaguoti Sąskaita Sekimo numeriai klientui Pranešti klientui apie vėlavimą Parašyti klientui Atšaukti",
+    "klaus": ""
+   }
+  },
+  "s1614_e4_taisyti_35434": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('.dl-kortele[data-id=\\\\\"35434\\\\\"] button[data-redaguoti]')\n",
+   "eval": {
+    "forma": false,
+    "laukai": [],
+    "isp": [],
+    "n": "",
+    "opts": 0,
+    "v": "",
+    "klaus": ""
+   }
+  }
+ }
+}
