@@ -1,0 +1,162 @@
+{
+ "v": "dep-190642",
+ "kurimas": 200,
+ "sid": 4776,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1615 e9r",
+  "temp_istrinta": 1,
+  "wcdn_dirs": [
+   "woocommerce-pdf-invoices-packing-slips"
+  ],
+  "active": [
+   "woocommerce-delivery-notes/woocommerce-delivery-notes.php"
+  ],
+  "wcdn_opts": [
+   {
+    "option_name": "wcdn_allow_tracking",
+    "v": "dismissed"
+   },
+   {
+    "option_name": "wcdn_db_version",
+    "v": "7.3.0"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter",
+    "v": "349"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter_year",
+    "v": "a:1:{i:2026;i:1;}"
+   },
+   {
+    "option_name": "wcdn_legacy_backup",
+    "v": "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:10:\"1779385649\";s:15:\"wcdn_db_version\";s:5:\"0.0.0\";s:24:\"wcdn_flush_rewrite_rules\";s:1:\"1\";s:19:\"wcdn_migration_lock\";s:10:\"1779385650\";s:12:\"wcdn_notices\";a:0:{}s:12:\"wcdn_version\";s:5:\"7.1.2\";}"
+   },
+   {
+    "option_name": "wcdn_legacy_backup_autoload",
+    "v": "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:4:\"auto\";s:15:\"wcdn_db_version\";s:4:\"auto\";s:24:\"wcdn_flush_rewrite_rules\";s:4:\"auto\";s:19:\"wcdn_migration_lock\";s:3:\"off\";s:12:\"wcdn_notices\";s:4:\"auto\";s:12:\"wcdn_version\";s:4:\"auto\";}"
+   },
+   {
+    "option_name": "wcdn_migration_7_0_2_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_1_0_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_1_2_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_settings",
+    "v": "a:42:{s:9:\"storeName\";s:9:\"UAB Avesa\";s:9:\"storeLogo\";s:87:\"https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg\";s:12:\"storeAddress\";s:87:\"Liucionių g. 46, Liucionių k.<br />Nemenčinės sen., Vilniaus r., 15166<br />Lietuva\";s:5:\"email\";s:16:\"terra@petshop.lt\";s:5:"
+   },
+   {
+    "option_name": "wcdn_template_settings",
+    "v": "a:4:{s:7:\"invoice\";a:152:{s:7:\"enabled\";b:1;s:10:\"dateFormat\";s:5:\"Y-m-d\";s:17:\"orderMetaPosition\";s:5:\"below\";s:11:\"pdfFilename\";s:27:\"Invoice -{order_number}.pdf\";s:19:\"attachCustomerEmail\";b:1;s:16:\"attachAdminEmail\";b:0;s:18:\"attachCustomEmails\";b:0;s:20:\"customEmailAddresses\";s:0:\"\";s:19:\"attac"
+   },
+   {
+    "option_name": "wcdn_version",
+    "v": "7.3.0"
+   }
+  ],
+  "theme_credit": [],
+  "theme_kredit": [],
+  "theme_KR": [],
+  "theme_files": [
+   "functions.php",
+   "functions.php.20260711211033.bak",
+   "functions.php.20260712120303.bak",
+   "functions.php.bak",
+   "functions.php.bak_S313",
+   "functions.php.bak_S319",
+   "inc",
+   "screenshot.png",
+   "style.css",
+   "woocommerce",
+   "woocommerce-delivery-notes",
+   "woocommerce-pip",
+   "inc/home-popular-products.php",
+   "inc/home-popular-products.php.20260712123227.bak",
+   "inc/home-popular-products.php.20260712125257.bak",
+   "inc/home-popular-products.php.20260712134513.bak",
+   "woocommerce-delivery-notes/base.php",
+   "woocommerce-delivery-notes/base.php.20260711193959.bak",
+   "woocommerce-delivery-notes/base.php.20260711215212.bak",
+   "woocommerce-delivery-notes/base.php.bak",
+   "woocommerce-delivery-notes/base.php.bak-20260822-195517",
+   "woocommerce-pip/invoice.php",
+   "woocommerce/emails ",
+   "woocommerce/myaccount",
+   "woocommerce/emails /customer-processing-order.php",
+   "woocommerce/myaccount/form-login.php",
+   "woocommerce/myaccount/form-login.php.bak_S292"
+  ],
+  "theme_grep": {
+   "woocommerce-delivery-notes/base.php": [
+    1,
+    2,
+    1
+   ]
+  },
+  "desk_creditnote": [
+   "\">▲ %s</div>', esc_html( $row['klausimas'] ) );\n\n\t\t\tif ( 0 === strpos( $row['klausimas'], 'Klientas atsisako' ) ) {\n\t\t\t\tprintf( '<div class=\"pd-kline\"><div class=\"pd-kprek\"><b>Gauta %s</b><span>%s</span></div><div class=\"pd-kbtns\"><button type=\"button\" class=\"pd-btn pd-btn-s\" data-wc1=\"wcdn_print_creditnote\" data-oid=\"%d\">Kreditinė</button><span class=\"pd-knone\">pinigai — rankinis grąžinimas (Paysera)</span></div></div>',\n\t\t\t\t\tesc_html( mysql2date( 'Y-m-d H:i', $o->get_meta( '_ps_withdrawal' ) ) ),\n\t\t\t\t\tesc_html( $o->get_meta( '_ps_withdrawal_reason' ) ?: 'priežastis nenurodyta' ),\n\t\t\t\t\t(int) $o->get_id() );\n\t\t\t}\n\n\t\t\tif ( $prob ) {\n\t\t\t\tforeach ( $prob as $p ) {\n\t\t\t\t\tprintf( '<div class=\"pd-kline\"><div class=\"pd-kprek\"><b>%s</b><span>reikia %d · AV likutis %d%s</span></div><div class=\"pd-kbtns\">',\n\t\t\t\t\t\tesc_html( $p['pav'] ), (int) $p['reikia'], (int) $p['turi'],\n\t\t\t\t\t\t$p['tiekv'"
+  ],
+  "uploads_wcdn": {
+   "invoice": 68,
+   "kiti": [
+    "creditnote",
+    "deliverynote",
+    "fonts",
+    "invoice",
+    "packingslip",
+    "receipt"
+   ]
+  },
+  "kr_meta": [
+   {
+    "meta_key": "_wcdn_creditnote_date",
+    "n": "2"
+   },
+   {
+    "meta_key": "_wcdn_creditnote_pdf",
+    "n": "2"
+   },
+   {
+    "meta_key": "_wcdn_creditnote_pdf_token",
+    "n": "2"
+   }
+  ],
+  "snip_credit": [
+   {
+    "id": "3689",
+    "name": "QQ H212 es atsisakymas",
+    "active": "0",
+    "len": "166399"
+   },
+   {
+    "id": "3688",
+    "name": "QQ H211 es recon",
+    "active": "0",
+    "len": "1964"
+   }
+  ],
+  "pdf_lib": {
+   "dompdf": true,
+   "mpdf": false,
+   "tcpdf": false,
+   "gen_ctx": [
+    "function petshop_generate_invoice_pdf( $order_id ) {\n    $wc_order = wc_get_order( $order_id );\n    if ( ! $wc_order ) return false;\n\n    $countries      = WC()->countries ? WC()->countries->get_countries() : array();\n    $b_country      = $wc_order->get_billing_country();\n    $b_country_name = isset( $countries[ $b_country ] ) ? $countries[ $b_country ] : $b_country;\n\n    $skip_states = array( 'pasirinkite rajona', 'select a region', 'select an option' );\n    $b_state     = $wc_order->get_billing_state();\n    $b_state_val = ( $b_state && ! in_array( mb_strtolower( $b_state ), $skip_states ) ) ? $b_state : '';\n\n    $city_post = trim( $wc_order->get_billing_city() . ( $wc_order->get_billing_postcode() ? ', ' . $wc_order->get_billing_postcode() : '' ) );\n\n    $billing_lines = array_values( array_filter( array(\n        $wc_order->get_billing_address_1(),\n        $wc_order->get_billing_address_2(),\n        $city_post,\n        $b_state_val,\n        $b_country_name,\n    ) ) );\n\n    $order = array(\n        'id'            => $order_id,\n        'orderNumber'   => $wc_order->get_order_number(),\n        'documentDate'  => date_i18n( 'Y-m-d' ),\n        'date'          => $wc_order->get_date_created()\n                            ? $wc_order->get_date_created()->format( 'Y-m-d' )\n                            : date( 'Y-m-d' ),\n        'paymentMethod' => $wc_order->get_payment_method_title(),\n        'billing'       => array(\n            'name'    => trim( $wc_order->get_billing_first_name() . ' ' . $wc_order->get_billing_last_name() ),\n            'address' => $billing_lines,\n            'phone'   => $wc_order->get_billing_phone(),\n            'email'   => $wc_order->get_billing_email(),\n        ),\n        'shipping'      => array( 'name' => '', 'address' => array() ),\n    );\n\n    $logo_url  = '';\n    $logo_path = '';\n    $flatsome_logo_id = get_theme_mod( 'site_logo' );\n    if ( $flatsome_logo_id ) {\n        $logo_url  = wp_get_attachment_image_url( $flatsome_logo_id, 'full' );\n        $logo_path = get_attached_file( $flatsome_logo_id );\n    }\n\n    $shop     = array( 'logo' => $logo_url, 'logo_path' => $logo_path, 'name' => get_bloginfo( 'name' ) );\n    $settings = array( 'displayPriceInProductDetailsTable' => true );\n    $document = array();\n    $template = 'invoice';\n    $type     = 'pdf';\n    $items    = array();\n    $totals   = array();\n\n    $template_file = get_stylesheet_directory() . '/woocommerce-delivery-notes/base.php';\n    if ( ! file_exists( $template_file ) ) return false;\n\n    ob_start();\n    include $template_file;\n    $body_html = ob_get_clean();\n\n    $full_html = '<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><style>@page{size:A4;margin:12mm 14mm;}body{margin:0;padding:0;}</style></head><body>' . $body_html . '</body></html>';\n\n    if ( ! class_exists( 'Dompdf\\Dompdf' ) ) return false;\n\n    $upload_dir = wp_upload_dir();\n    $pdf_dir    = trailingslashit( $upload_dir['basedir'] ) . 'wcdn/invoice/';\n    wp_mkdir_p( $pdf_dir );\n    // Svarus lietuviskas failo pavadinimas pagal dokumento numeri (base.php nustato $invoice_number ir $doc_title virsuje).\n    $doc_num  = isset( $invoice_number ) ? preg_replace( '/[^A-Za-z0-9]/', '', $invoice_"
+   ]
+  }
+ }
+}
