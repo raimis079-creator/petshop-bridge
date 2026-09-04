@@ -1,0 +1,53 @@
+{
+ "v": "dep-082453",
+ "kurimas": 200,
+ "sid": 4675,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "run e2r",
+  "temp_istrinta": 1,
+  "bytes": 21512,
+  "fn": {
+   "get_venipak_status_title": "public function get_venipak_status_title($status) {\n\t\tswitch($status) {\n\t\t\tcase \"waiting\":\n\t\t\t\treturn __( 'Waiting', 'woocommerce-shopup-venipak-shipping' );\n\t\t\tcase \"sent\":\n\t\t\t\treturn __( 'Sent', 'woocommerce-shopup-venipak-shipping' );\n\t\t\tcase \"error\":\n\t\t\t\treturn __( 'Error', 'woocommerce-shopup-venipak-shipping' );\n\t\t}\n\t\treturn null;\n\t}\n",
+   "get_venipak_status": "public function get_venipak_status($order) {\n\t\t$order_data = json_decode($order->get_meta('venipak_shipping_order_data'), true);\n\t\tif ($order_data) {\n\t\t\treturn $order_data['status'];\n\t\t}\n\t\treturn null;\n\t}\n",
+   "get_order_event_detail": "public function get_order_event_detail($order) {\n\t    $order_data = json_decode($order->get_meta('venipak_shipping_order_data'), true);\n\n\t    if ($order_data && isset($order_data['event']) && is_array($order_data['event'])) {\n\t        return end($order_data['event']);\n\t    }\n\n\t    return null;\n\t}\n",
+   "get_order_tracking_data": "public function get_order_tracking_data($pack_number, $order, $order_event_detail) { \n\n\t\tif( $order_event_detail != \"Delivered\")\n\t\t{\n\t\t\t$url = \"https://tracking.venipak.com/api/v1/events?pack_no=\" . $pack_number;\n\n        // WordPress API request\n        $response = wp_remote_get($url, [\n            'headers' => [\n                \"Accept\" => \"application/json\",\n                \"Content-Type\" => \"application/json\"\n            ]\n        ]);\n\n\n        // Check for errors\n        if (is_wp_error($response)) {\n            $error_message = $response->get_error_message();\n            error_log(\"API Request failed: $error_message\");\n            return null;\n        }\n\n        // Extract response body and decode JSON\n        $body = wp_remote_retrieve_body($response);\n        $status = wp_remote_retrieve_response_code($response);\n\n        if ($status !== 200) {\n            error_log(\"API returned status code $status: $body\");\n            return null;\n        }\n\n        $data = json_decode($body, true);\n        if (!is_array($data)) {\n            error_log(\"Failed to decode API response.\");\n            return null;\n        }\n\n\t\t$order_meta = json_decode($order->get_meta('venipak_shipping_order_data'), true); \n\t\t$ischanged = false;\n\t\tif (is_array($order_meta) && isset($order_meta['pack_numbers']) && is_array($order_meta['pack_numbers'])) {\n\t\t$order_meta['event'] = [];\n\t\t$order_meta['date'] = [];\n\t\t$order_meta['pack_status_text'] = [];\n\t\t}\n\n\t\tforeach ($data as $a) { \n\t\t\tif (is_array($order_meta) && isset($order_meta['pack_numbers']) && is_array($order_meta['pack_numbers'])) {  \n\t\t\t\t$pack_numbers = $order_meta['pack_numbers'];\n\t\t\t\t$ischanged = false; \n\t\t\t\tif (!empty($pack_numbers[0]) && isset($a['pack_no']) && !empty($a['pack_no']) ) {\n\t\t\t\t\t$ischanged = true;\n\t\t\t\t\t$order_meta['pack_numbers'][0] = $a['pack_no'];\n\t\t\t\t} \n\t\t\t\tif (isset($a['event']) && !empty($a['event'])) {\n\t\t\t\t\t$ischanged = true;\n\t\t\t\t\t$order_meta['event'][] = $a['event'];\n\t\t\t\t} \n\t\t\t\tif (isset($a['date']) && !empty($a['date'])) {\n\t\t\t\t\t$ischanged = true;\n\t\t\t\t\t$order_meta['date'][] = $a['date'];\n\t\t\t\t}\n\t\t \n\t\t\t\tif (isset($a['pack_status_text']) && !empty($a['pack_status_text'])) {\n\t\t\t\t\t$ischanged = true;\n\t\t\t\t\t$order",
+   "get_venipak_tracking_code": "public function get_venipak_tracking_code($order) {\n\t\t$order_data = json_decode($order->get_meta('venipak_shipping_order_data'), true);\n\t\tif ($order_data) {\n\t\t\treturn $order_data['pack_numbers'] ? implode('<br/>', $order_data['pack_numbers']) : '';\n\t\t}\n\t\treturn null;\n\t}\n"
+  },
+  "pack_status_eilutes": [
+   "pack_status_text']) ? $data['pack_status_text'] : ''?></strong></span> ",
+   "pack_status_text'] as $key => $pack_status_text)",
+   "pack_status_text) ? $pack_status_text : ''?></strong></span> ",
+   "pack_status_text'] = [];",
+   "pack_status_text']) && !empty($a['pack_status_text'])) {",
+   "pack_status_text'][] = $a['pack_status_text'];"
+  ],
+  "shortcode": "function venipak_shipping_status_shortcode( $atts ) {\n\t\t// If order_id is not passed in the shortcode attributes, attempt to get it from the global order context\n\t\tif ( ! isset( $atts['order_id'] ) ) {\n\t\t\t$order = $this->get_current_order(); // Use a custom function to retrieve the order dynamically\n\t\t} else {\n\t\t\t$order = wc_get_order( $atts['order_id'] );\n\t\t}\n\n\t\tif ( ! $order ) {\n\t\t\treturn ''; // No valid order found\n\t\t}\n\n\t\t// Retrieve Venipak shipping order data from the order meta\n\t\t$venipak_shipping_order_data = json_decode( $order->get_meta( 'venipak_shipping_order_data' ), true );\n\n\t\tif ( $venipak_shipping_order_data && isset( $venipak_shipping_order_data['pack_numbers'][0] ) ) {\n\t\t\t$pack_number = $venipak_shipping_order_data['pack_numbers'][0];\n\t\t\t\n\t\t\t// Get the shipping country from the order\n\t\t\t$shipping_country = $order->get_shipping_country();\n\t\t\t\n\t\t\t// Determine the domain based on the shipping country\n\t\t\t$domain = 'com'; // Default to 'com'\n\t\t\tif ( $shipping_country === 'LT' ) {\n\t\t\t\t$domain = 'lt';\n\t\t\t} elseif ( $shipping_country === 'LV' ) {\n\t\t\t\t$domain = 'lv';\n\t\t\t} elseif ( $shipping_country === 'EE' ) {\n\t\t\t\t$domain = 'ee';\n\t\t\t}\n\n\t\t\t// Return the tracking link HTML\n\t\t\treturn '<p>' . __( 'Your tracking order code ', 'woocommerce-shopup-venipak-shipping' ) . ' <a href=\"https://venipak.' . $domain . '/tracking/track/' . $pack_number . '/\">' . $pack_number . '</a></p>';\n\t\t}\n\n\t\treturn ''; // Return nothing if no shipping data is available\n\t}\n",
+  "meta_venipak": [
+   {
+    "k": "_ps_venipak_sena",
+    "n": "2"
+   },
+   {
+    "k": "venipak_pickup_point",
+    "n": "18"
+   },
+   {
+    "k": "venipak_pickup_point_data",
+    "n": "18"
+   },
+   {
+    "k": "venipak_shipping_order_data",
+    "n": "18"
+   }
+  ],
+  "track_030": "[{\"shipment_id\":107674603,\"pack_no\":\"V07267E1000030\",\"event\":\"Shipment created\",\"pack_status\":0,\"pack_status_text\":\"At sender\",\"location\":{\"place\":null,\"address\":null,\"city\":null,\"lat\":null,\"lng\":null},\"date\":\"2026-09-02 17:49:38\",\"date_iso\":\"2026-09-02T17:49:38+03:00\"}]",
+  "track_neegz": {
+   "code": 404,
+   "body": "{\"message\":\"No events found by provided parameters\"}"
+  }
+ }
+}
