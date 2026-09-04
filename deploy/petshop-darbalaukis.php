@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.14.1 (S1613, 4 etapas #4a V13 „[T] vėluoja“ pagal dalis — darbalaukio lygiu) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.14.2 (S1613, 4 etapas #4a V13 „[T] vėluoja“ pagal dalis — darbalaukio lygiu) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -38,13 +38,14 @@
  *   (Tiekimo partija) — kitas mechanizmas, ne šis. Darbalaukio klausimai „Siunta grįžta“ / „Prekė be sandėlio“ tikrinami PO V13 (kad variklio
  *   nuimtas tekstas jų neužstotų). Vėlavimo laiškas (#4) praleidžia užsakymus Klausimuose — su V13 „[T] vėluoja“ irgi (Raimio taisyklė; klausimas jam).
  *   v3.14.1: Klausimo kortelės žymė trumpa „ZB vėluoja“ (buvo visas sakinys mažosiomis — e9 ekrano nuotrauka), tekstas — pilnas sakinys.
+ *   v3.14.2: vėlavimo laiško tema „Jūsų užsakymą Nr. N dar komplektuojame“ (Raimis 09-04), antraštė viduje — tas pats sakinys; tekstas nekeistas.
  * v3.13 (S1613, 4 etapas #4, log S1611 sprendimas 3 — Raimis 09-04): VĖLAVIMO LAIŠKAS — AUTOMATINIS. Cron `ps_velavimo_laiskai` — vienkartinis
  *   įvykis, kas run'ą perplanuojamas į kitą 14:00 Vilnius (`wp_timezone()`, DST-saugus; `cron_planuoti` `init` 30 užtikrina, kad suplanuotas).
  *   Ne darbo dieną (Sa/Se, LT šventės `LT_SVENTES` + Velykų pirmadienis pagal Grigaliaus algoritmą `velykos()`) — nieko nedaro. Sąlyga užsakymui:
  *   apmokėtas, tarp apmokėjimo dienos ir šiandienos ≥3 PILNOS darbo dienos (`pilnos_darbo_dienos()`, abi kraštinės neskaičiuojamos: Pr → Pn 14:00),
  *   bent viena dalis be `_ps_dalys_issiusta`; praleidžiam neapmokėtus, atšauktus, uždarytus, Klausimuose (`$f['kl']` — ir variklio „Tiekėjas vėluoja“),
  *   jau gavusius (žymė `_ps_velavimo_laiskas`). Vienas laiškas užsakymui — Raimio tekstas žodis į žodį (dalis išsiųsta → „Likusių … prekių“);
- *   tema „Užsakymas Nr. N — surinkimas užtruko“ (mano prielaida). Žymė + pastaba + įvykis `velavimo_laiskas` (kanalas cron); eilutėje pill
+ *   tema „Jūsų užsakymą Nr. N dar komplektuojame“ (Raimis 09-04, v3.14.2; antraštė viduje — tas pats). Žymė + pastaba + įvykis `velavimo_laiskas` (kanalas cron); eilutėje pill
  *   „klientui pranešta apie vėlavimą 09-04 14:00“, skydelio „Dabar“ — tas pats sakinys; į Klausimus NEkeliam. Variklio `_ps_sla_velavimas` neliesta.
  *   Būsena — opcija `ps_velavimo_laiskai_paskutinis`. Testams — `velavimo_laiskai($dabar_ts, [ids])` (simuliuota diena, be perplanavimo/opcijos).
  *   v3.13.1: kandidatų SQL — HPOS `wc_orders_meta` PK yra `id`, ne `meta_id` (LEFT JOIN „be žymės“ per `m.order_id IS NULL`; e5d radinys — kandidatų 0).
@@ -191,7 +192,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.14.1';
+	const VERSIJA = '3.14.2';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -1290,8 +1291,8 @@ class Petshop_Darbalaukis {
 		$h .= '<p>' . esc_html( 'Išsiuntę užsakymą informuosime Jus atskiru laišku.' ) . '</p>';
 		$h .= '<p>' . esc_html( 'Jei turite klausimų, tiesiog atsakykite į šį laišką.' ) . '</p>';
 		$h .= '<p>' . esc_html( 'Gražios dienos,' ) . '<br>' . esc_html( 'petshop.lt' ) . '</p>';
-		$tema = sprintf( 'Užsakymas Nr. %s — surinkimas užtruko', $nr );
-		$mailer = WC()->mailer(); $ok = $mailer->send( $el, $tema, $mailer->wrap_message( 'Surinkimas užtruko', $h ) );
+		$tema = sprintf( 'Jūsų užsakymą Nr. %s dar komplektuojame', $nr ); // Raimis 09-04 (S1613); antraštė viduje — tas pats sakinys
+		$mailer = WC()->mailer(); $ok = $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ) );
 		if ( ! $ok ) { return array( false, 'laiško išsiųsti nepavyko' ); }
 		$dabar = current_time( 'mysql' ); $liko_v = array(); foreach ( $liko as $k ) { $liko_v[] = self::vardas( $k ); }
 		$o->update_meta_data( self::VEL_META, $dabar );
