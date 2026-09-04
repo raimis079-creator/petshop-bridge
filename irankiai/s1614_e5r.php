@@ -1,0 +1,19 @@
+<?php
+/** TEMP PS S1614 run e5r — RECON (tik skaitymas) #3 dalinis „Siunta grįžta“: variklio `petshop-av-reduce.php` grąžinimo kabliukas (woocommerce_order_status_cancelled prior. 15) šaltinis; `Petshop_AV_Stock::increase/decrease/qty`; testinių grįžtančių užsakymų būklė (#35440, #35441, #35419, #35429) + kandidatai daliniam testui (mišrūs, completed, dvi dalys). */
+add_action('init', function(){
+  if (!isset($_GET['ps_e5r'])) return;
+  $o=array('v'=>'S1614 e5r'); global $wpdb, $wp_filter; $p=$wpdb->prefix; set_time_limit(280);
+  $o['temp_istrinta']=(int)$wpdb->query("DELETE FROM {$p}snippets WHERE name LIKE 'TEMP%' AND active=0");
+  $src=function($fn,$max=90){ try{ $r=is_array($fn)?new ReflectionMethod($fn[0],$fn[1]):(is_string($fn)&&strpos($fn,'::')?new ReflectionMethod($fn):new ReflectionFunction($fn)); $f=file($r->getFileName()); return array('f'=>basename($r->getFileName()).':'.$r->getStartLine(),'src'=>array_map(function($l){ return rtrim(mb_substr($l,0,220)); },array_slice($f,$r->getStartLine()-1,min($max,$r->getEndLine()-$r->getStartLine()+1)))); }catch(Throwable $e){ return 'ERR '.$e->getMessage(); } };
+  try{
+    foreach(array('woocommerce_order_status_cancelled') as $h){ if(isset($wp_filter[$h])){ foreach($wp_filter[$h]->callbacks as $pr=>$cbs){ foreach($cbs as $cb){ $fn=$cb['function']; $name=is_array($fn)?(is_object($fn[0])?get_class($fn[0]):$fn[0]).'::'.$fn[1]:(is_string($fn)?$fn:'closure'); $o['cancelled_hooks'][]=$pr.' '.$name; if(is_array($fn)&&stripos($name,'reduce')!==false||stripos($name,'grazin')!==false||stripos($name,'AV_')!==false){ $o['src_'.$name]=$src($fn,90); } } } } }
+    foreach(array('increase','decrease','qty') as $m){ $o['avstock_'.$m]=$src(array('Petshop_AV_Stock',$m),40); }
+    $o['avstock_metodai']=array_map(function($m){ return $m->getName(); },(new ReflectionClass('Petshop_AV_Stock'))->getMethods());
+    if(class_exists('Petshop_AV_Reduce')){ $o['avreduce_metodai']=array_map(function($m){ return $m->getName(); },(new ReflectionClass('Petshop_AV_Reduce'))->getMethods()); foreach(array('grazinti','nurasyti','reduce','restore') as $m){ if(method_exists('Petshop_AV_Reduce',$m)) $o['avreduce_'.$m]=$src(array('Petshop_AV_Reduce',$m),90); } }
+    $o['reduce_klases']=array_values(array_filter(get_declared_classes(),function($c){ return preg_match('/AV_Reduce|Av_Reduce|Reduce/i',$c); }));
+    // testiniai: dalys, statusas, grizta, issiusta, senos, eilutės (kelias/src/reduced_qty/_reduced_stock)
+    foreach(array(35440,35441,35419,35429,35442,35421,35428,35437,35438,35417,35427,35418) as $id){ $x=wc_get_order($id); if(!$x) continue; $eil=array(); foreach($x->get_items() as $iid=>$it){ $eil[$iid]=array('pid'=>$it->get_product_id(),'q'=>$it->get_quantity(),'k'=>(string)$it->get_meta('_ps_kelias'),'src'=>(string)$it->get_meta('_ps_source'),'rq'=>(string)$it->get_meta('_ps_av_reduced_qty'),'rs'=>(string)$it->get_meta('_reduced_stock'),'own'=>get_post_meta($it->get_product_id(),'_own_stock_qty',true),'stock'=>get_post_meta($it->get_product_id(),'_stock',true),'n'=>mb_substr($it->get_name(),0,30)); }
+      $o['uzs'][$id]=array('st'=>$x->get_status(),'grizta'=>(string)$x->get_meta('_ps_siunta_grizta'),'iss'=>(string)$x->get_meta('_ps_dalys_issiusta'),'senos'=>(string)$x->get_meta('_ps_siuntos_senos'),'av_reduced'=>(string)$x->get_meta('_ps_av_reduced'),'av_restored'=>(string)$x->get_meta('_ps_av_restored'),'sent_src'=>(string)$x->get_meta('_ps_dropship_sent_src'),'reg'=>array_map(function($s){ return $s['sandelis'].':'.implode('/',$s['numeriai']); },Petshop_Siuntos::sarasas($id)),'sek'=>mb_substr((string)$x->get_meta('_ps_venipak_sekimas'),0,160),'eil'=>$eil); }
+  }catch(Throwable $e){ $o['FATAL']=$e->getMessage().' @'.$e->getLine(); }
+  header('Content-Type: application/json'); echo json_encode($o,JSON_UNESCAPED_UNICODE|JSON_PARTIAL_OUTPUT_ON_ERROR); exit;
+},99);
