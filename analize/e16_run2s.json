@@ -1,0 +1,31 @@
+{
+ "v": "dep-080649",
+ "kurimas": 200,
+ "sid": 4673,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "run e16s",
+  "temp_istrinta": 1,
+  "isopas_ips": [
+   "79.98.29.24"
+  ],
+  "dnsbl": {
+   "79.98.29.24": {
+    "zen.spamhaus.org": "švarus",
+    "bl.spamcop.net": "švarus",
+    "b.barracudacentral.org": "švarus",
+    "dnsbl.sorbs.net": "švarus",
+    "hostkarma.junkemailfilter.com": "švarus",
+    "spam.dnsbl.sorbs.net": "švarus",
+    "dnsbl-1.uceprotect.net": "švarus",
+    "psbl.surriel.com": "švarus"
+   }
+  },
+  "ptr": [
+   "isopas.serveriai.lt"
+  ]
+ }
+}
