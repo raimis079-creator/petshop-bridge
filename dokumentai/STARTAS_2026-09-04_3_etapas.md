@@ -1,6 +1,6 @@
-# STARTAS — 2026-09-04 — UŽSAKYMŲ LANGAS, 3 ETAPAS (tęsinys po S1610; #1–#5b padaryti, #6 papildymas padarytas — liko J1 (T-0) ir Raimio sprendimai)
+# STARTAS — 2026-09-04 — UŽSAKYMŲ LANGAS, 3 ETAPAS — UŽDARYTAS S1611 (liko J1). Toliau: `STARTAS_2026-09-04_4_etapas.md`
 
-> Naujam pokalbio langui. Perskaityti PIRMA, prieš bet kokį veiksmą: šį failą → `deployment_log_v1_9_14.md` (S1611 viršuje) → `dokumentai/UZSAKYMU_DARBALAUKIS_SPEC_v1.md` v1.2 (§12 — Raimio sprendimai) → `dokumentai/ZODYNAS_DARBUOTOJUI_v1.md` v1.1 → `dokumentai/AUDITAS_UZSAKYMU_LANGAS_2026-09-03.md` (kas liko) → `dokumentai/UZSAKYMU_LOGIKOS_REGISTRAS_v1.md` (variklio taisyklės A–J, neliesti).
+> Naujam pokalbio langui. Perskaityti PIRMA, prieš bet kokį veiksmą: šį failą → `deployment_log_v1_9_15.md` (S1611 viršuje) → `dokumentai/UZSAKYMU_DARBALAUKIS_SPEC_v1.md` v1.2 (§12 — Raimio sprendimai) → `dokumentai/ZODYNAS_DARBUOTOJUI_v1.md` v1.1 → `dokumentai/AUDITAS_UZSAKYMU_LANGAS_2026-09-03.md` (kas liko) → `dokumentai/UZSAKYMU_LOGIKOS_REGISTRAS_v1.md` (variklio taisyklės A–J, neliesti).
 
 ## Raimio taisyklės (pažeidimas = kritinė klaida)
 - Nieko iš atminties — pirma REGISTRAS / log / spec. Pilni failai. Vizuali patikra (Playwright paspaudimai, ne dry-run). Dev duomenys = norma. Fiksuotų datų nėra. Terse. TEMP snippet'ai trinami kiekvieno run'o pradžioje.
