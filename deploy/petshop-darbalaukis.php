@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.18 (S1614, 5 etapas #1–#3 po Raimio sprendimų 09-04 vakaras) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.18.1 (S1615, 5 etapas #1–#3 po Raimio sprendimų 09-04 vakaras + 2 stulpelio kosmetika) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -25,6 +25,10 @@
  *  - AUTO RŪŠIAVIMAS (spec 6a): `woocommerce_payment_complete` / `..._status_processing` prior. 100 — jei visos
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
+ *
+ * v3.18.1 (S1615, kosmetika — S1614 radinys): sąrašo 2 stulpelis „Prekės pagal kelią“ nebeskaičiuoja eilučių su `_ps_issiusta` (jau išsiųsta
+ *   ankstesne AV siunta) ir `_ps_atsaukta` (dalis atšaukta) — #35438 rodė „2 vnt. … +1“, pakuoti reikia 1; pill ir skydelis jau rodė teisingai.
+ *   Jei po filtro eilučių neliktų (teoriškai) — rodomos visos, kaip anksčiau.
  *
  * v3.18 (S1614, RAIMIO SPRENDIMAI 09-04 vakaras — keičia v3.16/v3.17 prielaidas): 1) „Redaguoti“ — laiško klientui NĖRA (varnelė išimta; jei reikia —
  *   darbuotojas rašo pats); 2) po BET KURIO užregistruoto lipduko (AV, tiekėjo, LP) „Redaguoti“ neveikia (pilkas, „rankiniu būdu“) — įspėjimai
@@ -235,7 +239,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.18';
+	const VERSIJA = '3.18.1';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -2003,7 +2007,8 @@ class Petshop_Darbalaukis {
 			if ( $o->get_customer_note() ) { echo '<div class="dl-note">Klientas: ' . esc_html( $o->get_customer_note() ) . '</div>'; }
 			echo '</td>';
 			// 2 stulpelis: prekės pagal kelią — viena eilutė kiekvienam keliui
-			$gr = array(); foreach ( $r['eil'] as $e ) { $k = 'av' === $e['k'] ? 'av' : ( ( $e['k'] ?: 'kur' ) . '|' . $e['tiek'] ); $gr[ $k ][] = $e; }
+			$gr = array(); foreach ( $r['eil'] as $e ) { if ( ! empty( $e['atsaukta'] ) || ! empty( $e['issiusta_l'] ) ) { continue; } $k = 'av' === $e['k'] ? 'av' : ( ( $e['k'] ?: 'kur' ) . '|' . $e['tiek'] ); $gr[ $k ][] = $e; } // v3.18.1: jau išsiųstos / atšauktos eilutės nerodomos (pill ir skydelis jas rodo)
+			if ( ! $gr ) { foreach ( $r['eil'] as $e ) { $k = 'av' === $e['k'] ? 'av' : ( ( $e['k'] ?: 'kur' ) . '|' . $e['tiek'] ); $gr[ $k ][] = $e; } }
 			echo '<td>';
 			foreach ( $gr as $k => $es ) { $e0 = $es[0]; $n = 0; foreach ( $es as $e ) { $n += $e['q']; } $bad = array(); foreach ( $es as $e ) { if ( false === $e['av_ok'] ) { $bad[] = 'Avesoje ' . (int) $e['av_qty'] . ', reikia ' . $e['q']; } }
 				$pav = mb_substr( $e0['n'], 0, 42 ) . ( mb_strlen( $e0['n'] ) > 42 ? '…' : '' );
