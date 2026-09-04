@@ -1,0 +1,616 @@
+{
+ "v": "dep-202430",
+ "kurimas": 200,
+ "sid": 4782,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1616 e4d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": {
+   "1": [
+    80000,
+    "c97c1734ada1ad71f064d0a3fefc9662"
+   ],
+   "2": 31296
+  },
+  "bytes": 300706,
+  "md5": "c1a278f17c0dfd17e869bdf496d50b64",
+  "token": "ok",
+  "buvo": "29506f10517127b1e69bfbd3c2adafc9",
+  "backup": true,
+  "rasyta": 300706,
+  "po": "c1a278f17c0dfd17e869bdf496d50b64",
+  "part_unlink": true,
+  "taisyta": {
+   "35414": {
+    "pries": [
+     "19.49",
+     "3.75"
+    ],
+    "po": [
+     "19.04",
+     "3.3",
+     "2.93",
+     "0.37"
+    ]
+   },
+   "35425": {
+    "pries": [
+     "12.31",
+     "6.23"
+    ],
+    "po": [
+     "7.35",
+     "1.27",
+     "0.9",
+     "0.37"
+    ]
+   }
+  }
+ },
+ "V": {
+  "v": "S1616 e4d",
+  "f": "V",
+  "temp_istrinta": 0,
+  "versija": "3.19.1",
+  "md5": "c1a278f17c0dfd17e869bdf496d50b64",
+  "stock": {
+   "19708": {
+    "raw_stock": "19",
+    "own": "",
+    "product_qty": 19,
+    "manage": true
+   },
+   "19756": {
+    "raw_stock": "13",
+    "own": "1",
+    "product_qty": 14,
+    "manage": true
+   }
+  },
+  "uzs": {
+   "35414": {
+    "st": "processing",
+    "total": "19.04",
+    "sub": 13.96,
+    "tax": "3.3",
+    "cart_tax": "2.93",
+    "ship": "1.78",
+    "ship_tax": "0.37",
+    "refunded": 2.6,
+    "remaining": "16.44",
+    "fmt_total": "19,04 €",
+    "totals_rows": {
+     "cart_subtotal": "16,89 €",
+     "shipping": "2,15 € per VENIPAK paštomatai/atsiėmimo punktai",
+     "refund_0": "-2,60 €Darbalaukis: kiekis 2 → 1 „Animonda Carny Adult Beef + Chicken + Duck Heart – konservai“ (Testuotojas)",
+     "order_total": "19,04 €",
+     "payment_method": "Mokėjimas internetu"
+    },
+    "tax_items": [
+     [
+      1,
+      2.93,
+      0.37
+     ]
+    ],
+    "it": {
+     "780": {
+      "n": "AMBROSIA begrūdis ",
+      "q": 1,
+      "sub": 11.8099,
+      "tot": 11.8099,
+      "tax": 2.48,
+      "rq": "",
+      "wcred": "1",
+      "restock": "",
+      "keistas": "",
+      "src": "ambrosia",
+      "k": "tiesiai",
+      "refq": 0
+     },
+     "781": {
+      "n": "Animonda Carny Adu",
+      "q": 1,
+      "sub": 2.1488,
+      "tot": 2.1488,
+      "tax": 0.45,
+      "rq": "1",
+      "wcred": "0",
+      "restock": "1",
+      "keistas": "2026-09-04 23:04:03|Testuotojas|2→1",
+      "src": "av",
+      "k": "av",
+      "refq": -1
+     }
+    },
+    "refunds": [
+     {
+      "id": 35788,
+      "amount": "2.6",
+      "ps_kiekis": "1",
+      "items": [
+       [
+        781,
+        -1,
+        -2.1488,
+        -0.45
+       ]
+      ]
+     }
+    ],
+    "graz": "[{\"laikas\":\"2026-09-04 23:04:03\",\"kas\":\"Testuotojas\",\"suma\":2.6,\"refund\":35788,\"ka\":\"kiekis 2 \\u2192 1 Animonda Carny Adult Beef + Chicken + Duck Heart \\u2013\"}]",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "ship_n": "2",
+    "misrus": "{\"ambrosia\":\"tiesiai\"}",
+    "pastabos": [
+     "Darbalaukis v3.19.1: sumos perskaičiuotos po kiekio keitimo (v3.19 klaida — PVM nesumuotas). Testinis užsakymas.",
+     "Darbalaukis: „Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g“ kiekis 2 → 1 (Testuotojas). WC grąžinimo įrašas #35788: 2,60 € — pinigai NEGRĄŽINTI, grąžink rankomis (Klausimas primins). Likutis: AV +1 → 19. Partijos — ranko"
+    ],
+    "ivykis": {
+     "veiksmas": "kiekis",
+     "rezultatas": "ok",
+     "kas_vardas": "Testuotojas",
+     "laikas": "2026-09-04 20:04:03",
+     "pastaba": "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai 2 → 1 · grąžink 2,60 €",
+     "eilute": "781"
+    }
+   },
+   "35421": {
+    "st": "processing",
+    "total": "54.03",
+    "sub": 40.66,
+    "tax": "9.38",
+    "cart_tax": "8.54",
+    "ship": "3.99",
+    "ship_tax": "0.84",
+    "refunded": 0,
+    "remaining": "54.03",
+    "fmt_total": "54,03 €",
+    "totals_rows": {
+     "cart_subtotal": "49,20 €",
+     "shipping": "4,83 € per VENIPAK Kurjeris",
+     "order_total": "54,03 € (įskaičiuota 9,38 € PVM)",
+     "payment_method": "Mokėjimas internetu"
+    },
+    "tax_items": [
+     [
+      1,
+      8.54,
+      0.84
+     ]
+    ],
+    "it": {
+     "805": {
+      "n": "Animonda Carny Adu",
+      "q": 1,
+      "sub": 2.1488,
+      "tot": 2.1488,
+      "tax": 0.45,
+      "rq": "1",
+      "wcred": "0",
+      "restock": "",
+      "keistas": "",
+      "src": "av",
+      "k": "",
+      "refq": 0
+     },
+     "806": {
+      "n": "QUATTRO 1,5 kg Adu",
+      "q": 1,
+      "sub": 14.0496,
+      "tot": 14.0496,
+      "tax": 2.95,
+      "rq": "",
+      "wcred": "1",
+      "restock": "",
+      "keistas": "",
+      "src": "quattro",
+      "k": "",
+      "refq": 0
+     },
+     "807": {
+      "n": "Prins Diet Skin & ",
+      "q": 1,
+      "sub": 24.4628,
+      "tot": 24.4628,
+      "tax": 5.14,
+      "rq": "",
+      "wcred": "1",
+      "restock": "",
+      "keistas": "",
+      "src": "prins",
+      "k": "",
+      "refq": 0
+     }
+    },
+    "refunds": [],
+    "graz": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"quattro\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"prins\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "ship_n": "3",
+    "misrus": "{\"quattro\":\"av\",\"prins\":\"tiesiai\"}",
+    "pastabos": [
+     "Darbalaukis: Prins dalis ATŠAUKTA — siunta V07267E1000046 grįžo į AV (Testuotojas). Prekės: 1× Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg. Likutis: Prins Diet Skin & Intestinal Hypoallergi: AV +1 → 1. Kita dalis lieka: AV (dar ruošiama). WC dalinį grąžinimą ir pinigus už ",
+     "Dropship sargas: tiekėjui perduota 2026-09-03 11:23:34 (daugiau nei 24 val.), užsakymas vis dar vykdomas. Įkelta į „Klausimus\" — patikrink pas tiekėją."
+    ],
+    "ivykis": {
+     "veiksmas": "grizta_atsaukti_dalis",
+     "rezultatas": "ok",
+     "kas_vardas": "Testuotojas",
+     "laikas": "2026-09-04 16:12:18",
+     "pastaba": "siunta grįžo → dalis atšaukta, kita lieka",
+     "eilute": "0"
+    }
+   },
+   "35423": {
+    "st": "processing",
+    "total": "19.13",
+    "sub": 14.03,
+    "tax": "3.32",
+    "cart_tax": "2.95",
+    "ship": "1.78",
+    "ship_tax": "0.37",
+    "refunded": 0,
+    "remaining": "19.13",
+    "fmt_total": "19,13 €",
+    "totals_rows": {
+     "cart_subtotal": "16,98 €",
+     "shipping": "2,15 € per VENIPAK paštomatai/atsiėmimo punktai",
+     "order_total": "19,13 € (įskaičiuota 3,32 € PVM)",
+     "payment_method": "Mokėjimas internetu"
+    },
+    "tax_items": [
+     [
+      1,
+      2.95,
+      0.37
+     ]
+    ],
+    "it": {
+     "813": {
+      "n": "Žaislas šuniui – M",
+      "q": 3,
+      "sub": 14.0331,
+      "tot": 14.0331,
+      "tax": 2.95,
+      "rq": "3",
+      "wcred": "0",
+      "restock": "",
+      "keistas": "",
+      "src": "av",
+      "k": "",
+      "refq": 0
+     }
+    },
+    "refunds": [],
+    "graz": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":3}}",
+    "type": "MAIN",
+    "ship_n": "1",
+    "misrus": "",
+    "pastabos": [
+     "Klausimas: pažymėta LAUKTI (Testuotojas). Jokio automatinio priminimo — grįši pats.",
+     "Email \"Užsakymas vykdomas\" sent."
+    ],
+    "ivykis": null
+   },
+   "35425": {
+    "st": "processing",
+    "total": "7.35",
+    "sub": 4.3,
+    "tax": "1.27",
+    "cart_tax": "0.9",
+    "ship": "1.78",
+    "ship_tax": "0.37",
+    "refunded": 28.58,
+    "remaining": "-21.23",
+    "fmt_total": "7,35 €",
+    "totals_rows": {
+     "cart_subtotal": "5,20 €",
+     "shipping": "2,15 € per VENIPAK paštomatai/atsiėmimo punktai",
+     "refund_0": "-28,58 €Darbalaukis: prekė išimta „AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maista“ (Testuotojas)",
+     "order_total": "7,35 €",
+     "payment_method": "Mokėjimas internetu"
+    },
+    "tax_items": [
+     [
+      1,
+      0.9,
+      0.37
+     ]
+    ],
+    "it": {
+     "820": {
+      "n": "Animonda Carny Adu",
+      "q": 2,
+      "sub": 4.2975,
+      "tot": 4.2975,
+      "tax": 0.9,
+      "rq": "2",
+      "wcred": "0",
+      "restock": "",
+      "keistas": "",
+      "src": "av",
+      "k": "",
+      "refq": 0
+     }
+    },
+    "refunds": [
+     {
+      "id": 35789,
+      "amount": "28.58",
+      "ps_kiekis": "1",
+      "items": [
+       [
+        819,
+        -2,
+        -23.6198,
+        -4.96
+       ]
+      ]
+     }
+    ],
+    "graz": "[{\"laikas\":\"2026-09-04 23:04:08\",\"kas\":\"Testuotojas\",\"suma\":28.58,\"refund\":35789,\"ka\":\"i\\u0161imta AMBROSIA begr\\u016bdis su \\u0117riena ir \\u0161vie\\u017eia elniena sau\"}]",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":2}}",
+    "type": "MAIN",
+    "ship_n": "1",
+    "misrus": "",
+    "pastabos": [
+     "Darbalaukis v3.19.1: sumos perskaičiuotos po kiekio keitimo (v3.19 klaida — PVM nesumuotas). Testinis užsakymas.",
+     "Darbalaukis: „AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg“ išimta iš užsakymo (2 vnt.) (Testuotojas). WC grąžinimo įrašas #35789: 28,58 € — pinigai NEGRĄŽINTI, grąžink rankomis (Klausimas primins). Likutis: WC veidrodis +2 → 14. Partijos"
+    ],
+    "ivykis": {
+     "veiksmas": "kiekis",
+     "rezultatas": "ok",
+     "kas_vardas": "Testuotojas",
+     "laikas": "2026-09-04 20:04:08",
+     "pastaba": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maista išimta · grąžink 28,58 €",
+     "eilute": "819"
+    }
+   }
+  },
+  "fakt_graz": [
+   {
+    "id": "4",
+    "uzsakymas_id": "35414",
+    "refund_id": "35788",
+    "wc_eilutes_id": "781",
+    "kiekis": "1",
+    "suma_ct": "215",
+    "pvm_ct": "45",
+    "savikaina_ct": "170",
+    "atsargos_grizo": "1",
+    "sandelis": "legacy",
+    "testinis": "1"
+   },
+   {
+    "id": "5",
+    "uzsakymas_id": "35425",
+    "refund_id": "35789",
+    "wc_eilutes_id": "819",
+    "kiekis": "2",
+    "suma_ct": "2362",
+    "pvm_ct": "496",
+    "savikaina_ct": "1554",
+    "atsargos_grizo": "1",
+    "sandelis": "ambrosia",
+    "testinis": "1"
+   }
+  ],
+  "paskyra_35414": {
+   "url": "https://dev.avesa.lt/paskyra/uzsakymas/35414/",
+   "code": 200,
+   "len": 183168,
+   "title": "Mano paskyra - Petshop.lt",
+   "turi_35414": 0,
+   "turi_qty": 1,
+   "del": 0,
+   "refund": 1,
+   "animonda_apl": "NĖRA",
+   "totals": "tfoot NĖRA"
+  },
+  "laisko_eilutes_35414": {
+   "del": 0,
+   "tekstas": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg ×1 14,29 € Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g ×1 2,60 €"
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788555376|H9Q722w8l0jJiQuMt29hRPin0SMHuGy0a0hx3OrRd8I|073d263459a431209811f9547014525bad2c6cbf30eca7802b05438e7185d941"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788555376|H9Q722w8l0jJiQuMt29hRPin0SMHuGy0a0hx3OrRd8I|1f2858cc5df6a3ac2dbbe2dfe9a6bb42e4f6a15fc9f9c9f0c582ac3e74639186"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788555376|H9Q722w8l0jJiQuMt29hRPin0SMHuGy0a0hx3OrRd8I|bb4800085374bdf2977fd9f3575741b2f9e9cffaa6e4b7aff899e1c299881c77"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1616_e4_skydelis_35414_forma",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35414",
+    "w": 1400,
+    "click": "tr.eil[data-id=\"35414\"]",
+    "eval": "(function(){ var a=document.querySelector('a.dl-kk'); if(a) a.click(); return ({eil:[...document.querySelectorAll('#skEil .eilute')].map(x=>x.innerText.replace(/\\s+/g,' ').slice(0,140)),kk:document.querySelectorAll('a.dl-kk').length,forma:!!document.querySelector('.dl-kk-f'),laukai:[...document.querySelectorAll('.dl-kk-f input:not([type=hidden]),.dl-kk-f button,.dl-kk-f a')].map(x=>(x.name||x.className)+'='+(x.value||x.innerText||'').toString().slice(0,30)+(x.disabled?'(off)':'')),klaus:(document.getElementById('skKlaus')||{innerText:''}).innerText,antr:(document.getElementById('skKl')||{innerText:''}).innerText}); })()"
+   },
+   {
+    "n": "s1616_e4_klausimai",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "full": true,
+    "eval": "({korteles:[...document.querySelectorAll('.dl-kortele')].map(x=>x.innerText.replace(/\\s+/g,' ').slice(0,320)),grazinta:[...document.querySelectorAll('.dl-kortele a')].map(x=>x.innerText).filter(t=>/Grąžinta/.test(t)).length})"
+   },
+   {
+    "n": "s1616_e4_skydelis_35425",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35425",
+    "w": 1400,
+    "click": "tr.eil[data-id=\"35425\"]",
+    "eval": "(function(){ var a=document.querySelector('a.dl-kk'); if(a) a.click(); return ({eil:[...document.querySelectorAll('#skEil .eilute')].map(x=>x.innerText.replace(/\\s+/g,' ').slice(0,140)),kk:document.querySelectorAll('a.dl-kk').length,forma:!!document.querySelector('.dl-kk-f'),laukai:[...document.querySelectorAll('.dl-kk-f input:not([type=hidden]),.dl-kk-f button,.dl-kk-f a')].map(x=>(x.name||x.className)+'='+(x.value||x.innerText||'').toString().slice(0,30)+(x.disabled?'(off)':'')),klaus:(document.getElementById('skKlaus')||{innerText:''}).innerText,antr:(document.getElementById('skKl')||{innerText:''}).innerText}); })()"
+   }
+  ]
+ },
+ "Z": {
+  "v": "S1616 e4d",
+  "f": "Z",
+  "temp_istrinta": 0,
+  "dev_pastas_pries": 5,
+  "sk_pries": {
+   "code": 200,
+   "kl": "Grąžink klientui pinigus",
+   "kur": "Klausimai · toliau: Spręsti",
+   "suma": "7,35 €"
+  },
+  "grazinta": {
+   "code": 403,
+   "loc": ""
+  },
+  "sk_po": {
+   "code": 200,
+   "kl": "Grąžink klientui pinigus",
+   "kur": "Klausimai · toliau: Spręsti",
+   "suma": "7,35 €"
+  },
+  "grazinta_2": {
+   "code": 403,
+   "loc": ""
+  },
+  "laiskai_sis_procesas": [],
+  "dev_pastas_po": 5,
+  "temp_liko": 1
+ },
+ "Y": {
+  "v": "S1616 e4d",
+  "f": "Y",
+  "temp_istrinta": 0,
+  "uzs_35425": {
+   "st": "processing",
+   "total": "7.35",
+   "sub": 4.3,
+   "tax": "1.27",
+   "cart_tax": "0.9",
+   "ship": "1.78",
+   "ship_tax": "0.37",
+   "refunded": 28.58,
+   "remaining": "-21.23",
+   "fmt_total": "7,35 €",
+   "totals_rows": {
+    "cart_subtotal": "5,20 €",
+    "shipping": "2,15 € per VENIPAK paštomatai/atsiėmimo punktai",
+    "refund_0": "-28,58 €Darbalaukis: prekė išimta „AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maista“ (Testuotojas)",
+    "order_total": "7,35 €",
+    "payment_method": "Mokėjimas internetu"
+   },
+   "tax_items": [
+    [
+     1,
+     0.9,
+     0.37
+    ]
+   ],
+   "it": {
+    "820": {
+     "n": "Animonda Carny Adu",
+     "q": 2,
+     "sub": 4.2975,
+     "tot": 4.2975,
+     "tax": 0.9,
+     "rq": "2",
+     "wcred": "0",
+     "restock": "",
+     "keistas": "",
+     "src": "av",
+     "k": "",
+     "refq": 0
+    }
+   },
+   "refunds": [
+    {
+     "id": 35789,
+     "amount": "28.58",
+     "ps_kiekis": "1",
+     "items": [
+      [
+       819,
+       -2,
+       -23.6198,
+       -4.96
+      ]
+     ]
+    }
+   ],
+   "graz": "[{\"laikas\":\"2026-09-04 23:04:08\",\"kas\":\"Testuotojas\",\"suma\":28.58,\"refund\":35789,\"ka\":\"i\\u0161imta AMBROSIA begr\\u016bdis su \\u0117riena ir \\u0161vie\\u017eia elniena sau\"}]",
+   "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":2}}",
+   "type": "MAIN",
+   "ship_n": "1",
+   "misrus": "",
+   "pastabos": [
+    "Darbalaukis v3.19.1: sumos perskaičiuotos po kiekio keitimo (v3.19 klaida — PVM nesumuotas). Testinis užsakymas.",
+    "Darbalaukis: „AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg“ išimta iš užsakymo (2 vnt.) (Testuotojas). WC grąžinimo įrašas #35789: 28,58 € — pinigai NEGRĄŽINTI, grąžink rankomis (Klausimas primins). Likutis: WC veidrodis +2 → 14. Partijos"
+   ],
+   "ivykis": {
+    "veiksmas": "kiekis",
+    "rezultatas": "ok",
+    "kas_vardas": "Testuotojas",
+    "laikas": "2026-09-04 20:04:08",
+    "pastaba": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maista išimta · grąžink 28,58 €",
+    "eilute": "819"
+   }
+  }
+ },
+ "shots": {
+  "s1616_e4_skydelis_35414_forma": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35414",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "tr.eil[data-id=\"35414\"]",
+   "eval": {
+    "eil": [],
+    "kk": 0,
+    "forma": false,
+    "laukai": [],
+    "klaus": "",
+    "antr": ""
+   }
+  },
+  "s1616_e4_klausimai": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "korteles": [
+     "#35100 · Aru ZX · 47,66 € trūksta sandėlyje Trūksta AV: 20 vnt. rudų kiaulės knyslių — reikia 1, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas siunčia klientui / veža į AV); užsakyk pats ir palik „Iš AV“, kai turėsi; parašyk klientui pakaitalą; arba atšauk. „Laukti“ tik pažymi — priminimo nebus. Rūšiuoti",
+     "#35414 · AUDITAS Testas 1 · 19,04 € grąžink klientui pinigus Grąžink klientui 2,60 € rankomis (Paysera / pavedimu). 09-04 23:04 Testuotojas: kiekis 2 → 1 Animonda Carny Adult Beef + Chicken + Duck Heart – (2,60 €). Pinigų sistema negrąžina. Grąžink per Paysera arba pavedimu ir spausk „Grąžinta“ — Klausimas nusiims. Sąs",
+     "#35423 · AUDITAS Testas 10 · 19,13 € trūksta sandėlyje Trūksta AV: Žaislas šuniui – Medžiaginis kaktusas Fernando, 17 x 15 cm — reikia 3, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas siunčia klientui / veža į AV); užsakyk pats ir palik „Iš AV“, kai turėsi; parašyk klientui pakaitalą; arba atšauk. „Laukt",
+     "#35425 · AUDITAS Testas 12 · 7,35 € grąžink klientui pinigus Grąžink klientui 28,58 € rankomis (Paysera / pavedimu). 09-04 23:04 Testuotojas: išimta AMBROSIA begrūdis su ėriena ir šviežia elniena sau (28,58 €). Pinigų sistema negrąžina. Grąžink per Paysera arba pavedimu ir spausk „Grąžinta“ — Klausimas nusiims. Sąskait",
+     "#35439 · AUDITAS Testas 26 · 36,42 € siuntos sukurti nepavyko Vežėjas siuntos nesukūrė: Venipak: neteisingas pašto kodas (Bad post code). Dažniausiai paštomatas nebegalioja arba adresas / pašto kodas neteisingas. „Taisyti adresą“ — pataisyk skydelyje ir išsaugok; klaida nusiims, tada registruok lipduką iš naujo. Taisyt"
+    ],
+    "grazinta": 2
+   }
+  },
+  "s1616_e4_skydelis_35425": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35425",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "tr.eil[data-id=\"35425\"]",
+   "eval": {
+    "eil": [],
+    "kk": 0,
+    "forma": false,
+    "laukai": [],
+    "klaus": "",
+    "antr": ""
+   }
+  }
+ }
+}
