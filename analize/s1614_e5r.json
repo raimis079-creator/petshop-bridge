@@ -1,0 +1,560 @@
+{
+ "v": "dep-154916",
+ "kurimas": 200,
+ "sid": 4738,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1614 e5r",
+  "temp_istrinta": 1,
+  "cancelled_hooks": [
+   "10 wc_update_coupon_usage_counts",
+   "10 wc_maybe_increase_stock_levels",
+   "11 wc_release_stock_for_order",
+   "15 Petshop_AV_Reduce::grazinti"
+  ],
+  "src_Petshop_AV_Reduce::grazinti": {
+   "f": "petshop-av-reduce.php:106",
+   "src": [
+    "\tpublic static function grazinti( $order_id ) {",
+    "\t\t$order = is_numeric( $order_id ) ? wc_get_order( $order_id ) : $order_id;",
+    "\t\tif ( ! $order ) { return; }",
+    "\t\tif ( ! $order->get_meta( '_ps_av_reduced' ) ) { return; }",
+    "\t\tif ( $order->get_meta( '_ps_av_restored' ) ) { return; }",
+    "\t\tif ( ! class_exists( 'Petshop_AV_Stock' ) ) { return; }",
+    "",
+    "\t\t$padaryta = [];",
+    "\t\tforeach ( $order->get_items() as $item_id => $item ) {",
+    "\t\t\t$qty = (int) $item->get_meta( '_ps_av_reduced_qty' );",
+    "\t\t\tif ( $qty <= 0 ) { continue; }",
+    "\t\t\t$pid = (int) $item->get_product_id();",
+    "",
+    "\t\t\tif ( null === Petshop_AV_Stock::qty( $pid ) ) {",
+    "\t\t\t\t$p = wc_get_product( $pid );",
+    "\t\t\t\tif ( $p ) {",
+    "\t\t\t\t\t$dabar = (int) get_post_meta( $pid, '_stock', true );",
+    "\t\t\t\t\t$p->set_stock_quantity( $dabar + $qty );",
+    "\t\t\t\t\t$p->set_stock_status( 'instock' );",
+    "\t\t\t\t\t$p->save();",
+    "\t\t\t\t\twc_delete_product_transients( $pid );",
+    "\t\t\t\t\t$padaryta[] = \"#{$pid} grynai AV +{$qty}\";",
+    "\t\t\t\t}",
+    "\t\t\t} else {",
+    "\t\t\t\t$rez = Petshop_AV_Stock::increase( $pid, $qty, 'grąžinta #' . $order->get_order_number() );",
+    "\t\t\t\tif ( ! is_wp_error( $rez ) ) { $padaryta[] = \"#{$pid} AV +{$qty} -> {$rez}\"; }",
+    "\t\t\t}",
+    "\t\t}",
+    "\t\tif ( $padaryta ) {",
+    "\t\t\t$order->update_meta_data( '_ps_av_restored', current_time( 'mysql' ) );",
+    "\t\t\t$order->save();",
+    "\t\t\t$order->add_order_note( 'AV grąžinimas: ' . implode( ' · ', $padaryta ) );",
+    "\t\t}",
+    "\t}"
+   ]
+  },
+  "avstock_increase": {
+   "f": "petshop-av-stock.php:122",
+   "src": [
+    "\tpublic static function increase( $product_id, $by, $priezastis = '' ) {",
+    "\t\t$by = (int) $by;",
+    "\t\tif ( $by <= 0 ) { return new WP_Error( 'blogas_kiekis', 'Kiekis turi būti teigiamas' ); }",
+    "\t\t$q = self::qty( $product_id );",
+    "\t\t$naujas = ( null === $q ? 0 : $q ) + $by;",
+    "\t\tself::apsaugotas_rasymas( $product_id, $naujas );",
+    "\t\tself::log( $product_id, $q, $naujas, $priezastis );",
+    "\t\treturn $naujas;",
+    "\t}"
+   ]
+  },
+  "avstock_decrease": {
+   "f": "petshop-av-stock.php:109",
+   "src": [
+    "\tpublic static function decrease( $product_id, $by, $priezastis = '' ) {",
+    "\t\t$by = (int) $by;",
+    "\t\tif ( $by <= 0 ) { return new WP_Error( 'blogas_kiekis', 'Kiekis turi būti teigiamas' ); }",
+    "\t\t$q = self::qty( $product_id );",
+    "\t\tif ( null === $q ) { return new WP_Error( 'nera_av', 'Prekė neturi AV likučio' ); }",
+    "\t\tif ( $q < $by ) { return new WP_Error( 'nepakanka', \"AV turi $q, prašoma $by\" ); }",
+    "\t\t$naujas = $q - $by;",
+    "\t\tself::apsaugotas_rasymas( $product_id, $naujas );",
+    "\t\tself::log( $product_id, $q, $naujas, $priezastis );",
+    "\t\treturn $naujas;",
+    "\t}"
+   ]
+  },
+  "avstock_qty": {
+   "f": "petshop-av-stock.php:96",
+   "src": [
+    "\tpublic static function qty( $product_id ) {",
+    "\t\t$v = get_post_meta( (int) $product_id, self::META, true );",
+    "\t\tif ( '' === $v || null === $v ) { return null; }",
+    "\t\treturn max( 0, (int) $v );",
+    "\t}"
+   ]
+  },
+  "avstock_metodai": [
+   "init",
+   "sortable",
+   "sort_query",
+   "filter_dropdown",
+   "filter_query",
+   "qty",
+   "has",
+   "decrease",
+   "increase",
+   "apsaugotas_rasymas",
+   "log",
+   "field",
+   "save",
+   "column",
+   "column_value",
+   "quick_edit",
+   "quick_edit_js",
+   "quick_edit_save"
+  ],
+  "avreduce_metodai": [
+   "init",
+   "wc_kiekis",
+   "mazinti",
+   "grazinti"
+  ],
+  "avreduce_grazinti": {
+   "f": "petshop-av-reduce.php:106",
+   "src": [
+    "\tpublic static function grazinti( $order_id ) {",
+    "\t\t$order = is_numeric( $order_id ) ? wc_get_order( $order_id ) : $order_id;",
+    "\t\tif ( ! $order ) { return; }",
+    "\t\tif ( ! $order->get_meta( '_ps_av_reduced' ) ) { return; }",
+    "\t\tif ( $order->get_meta( '_ps_av_restored' ) ) { return; }",
+    "\t\tif ( ! class_exists( 'Petshop_AV_Stock' ) ) { return; }",
+    "",
+    "\t\t$padaryta = [];",
+    "\t\tforeach ( $order->get_items() as $item_id => $item ) {",
+    "\t\t\t$qty = (int) $item->get_meta( '_ps_av_reduced_qty' );",
+    "\t\t\tif ( $qty <= 0 ) { continue; }",
+    "\t\t\t$pid = (int) $item->get_product_id();",
+    "",
+    "\t\t\tif ( null === Petshop_AV_Stock::qty( $pid ) ) {",
+    "\t\t\t\t$p = wc_get_product( $pid );",
+    "\t\t\t\tif ( $p ) {",
+    "\t\t\t\t\t$dabar = (int) get_post_meta( $pid, '_stock', true );",
+    "\t\t\t\t\t$p->set_stock_quantity( $dabar + $qty );",
+    "\t\t\t\t\t$p->set_stock_status( 'instock' );",
+    "\t\t\t\t\t$p->save();",
+    "\t\t\t\t\twc_delete_product_transients( $pid );",
+    "\t\t\t\t\t$padaryta[] = \"#{$pid} grynai AV +{$qty}\";",
+    "\t\t\t\t}",
+    "\t\t\t} else {",
+    "\t\t\t\t$rez = Petshop_AV_Stock::increase( $pid, $qty, 'grąžinta #' . $order->get_order_number() );",
+    "\t\t\t\tif ( ! is_wp_error( $rez ) ) { $padaryta[] = \"#{$pid} AV +{$qty} -> {$rez}\"; }",
+    "\t\t\t}",
+    "\t\t}",
+    "\t\tif ( $padaryta ) {",
+    "\t\t\t$order->update_meta_data( '_ps_av_restored', current_time( 'mysql' ) );",
+    "\t\t\t$order->save();",
+    "\t\t\t$order->add_order_note( 'AV grąžinimas: ' . implode( ' · ', $padaryta ) );",
+    "\t\t}",
+    "\t}"
+   ]
+  },
+  "reduce_klases": [
+   "Phalcon\\Support\\Helper\\Str\\ReduceSlashes",
+   "Petshop_AV_Reduce"
+  ],
+  "uzs": {
+   "35417": {
+    "st": "completed",
+    "grizta": "",
+    "iss": "",
+    "senos": "",
+    "av_reduced": "",
+    "av_restored": "",
+    "sent_src": "{\"vf\":\"2026-09-02 17:49:54\"}",
+    "reg": [
+     "vf:V07267E1000036"
+    ],
+    "sek": "{\"V07267E1000036\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-02 17:49:41\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tikr\":\"2026-09-04 11:58:36\"}}",
+    "eil": {
+     "791": {
+      "pid": 34828,
+      "q": 3,
+      "k": "",
+      "src": "vf",
+      "rq": "",
+      "rs": "3",
+      "own": "2",
+      "stock": "94.000000",
+      "n": "Churu Popn Serve skanėstas kat"
+     }
+    }
+   },
+   "35418": {
+    "st": "completed",
+    "grizta": "",
+    "iss": "{\"zb\":{\"laikas\":\"2026-09-04 16:42:02\",\"kas\":\"sistema\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-04 16:42:03\"}}",
+    "senos": "",
+    "av_reduced": "",
+    "av_restored": "",
+    "sent_src": "{\"zb\":\"2026-09-02 17:50:10\"}",
+    "reg": [
+     "zb:V07267E1000037"
+    ],
+    "sek": "{\"V07267E1000037\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-02 17:49:43\",\"v\":\"\",\"n\":1,\"dalis\":\"zb\",\"tikr\":\"2026-09-04 11:58:36\"}}",
+    "eil": {
+     "794": {
+      "pid": 33904,
+      "q": 1,
+      "k": "tiesiai",
+      "src": "zb",
+      "rq": "",
+      "rs": "1",
+      "own": "",
+      "stock": "0.000000",
+      "n": "Trixie Stovas su dubenėliais, "
+     }
+    }
+   },
+   "35419": {
+    "st": "cancelled",
+    "grizta": "",
+    "iss": "",
+    "senos": "",
+    "av_reduced": "",
+    "av_restored": "",
+    "sent_src": "{\"vf\":\"2026-09-02 17:50:00\",\"ambrosia\":\"2026-09-02 17:50:06\"}",
+    "reg": [
+     "vf:V07267E1000039",
+     "ambrosia:V07267E1000040"
+    ],
+    "sek": "{\"V07267E1000039\":{\"k\":7,\"t\":\"Returning to sender\",\"e\":\"Returning to sender\",\"d\":\"2026-09-04 14:00:00\",\"v\":\"KAUNAS\",\"n\":3,\"dalis\":\"vf\",\"tikr\":\"2026-09-04 12:27:",
+    "eil": {
+     "797": {
+      "pid": 19756,
+      "q": 1,
+      "k": "",
+      "src": "ambrosia",
+      "rq": "",
+      "rs": "",
+      "own": "1",
+      "stock": "11",
+      "n": "AMBROSIA begrūdis su ėriena ir"
+     },
+     "798": {
+      "pid": 34828,
+      "q": 2,
+      "k": "",
+      "src": "vf",
+      "rq": "",
+      "rs": "",
+      "own": "2",
+      "stock": "94.000000",
+      "n": "Churu Popn Serve skanėstas kat"
+     }
+    }
+   },
+   "35421": {
+    "st": "processing",
+    "grizta": "",
+    "iss": "{\"prins\":{\"laikas\":\"2026-09-03 21:33:34\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:34\"}}",
+    "senos": "",
+    "av_reduced": "2026-09-02 17:41:47",
+    "av_restored": "",
+    "sent_src": "{\"prins\":\"2026-09-03 11:23:34\"}",
+    "reg": [
+     "prins:V07267E1000046"
+    ],
+    "sek": "{\"V07267E1000046\":{\"k\":9,\"t\":\"Delivered\",\"e\":\"Delivered\",\"d\":\"2026-09-04 13:00:00\",\"v\":\"Kauno Akropolio Venipak pa\\u0161tomatas\",\"n\":4,\"dalis\":\"prins\",\"tikr\":\"2",
+    "eil": {
+     "805": {
+      "pid": 19708,
+      "q": 1,
+      "k": "",
+      "src": "av",
+      "rq": "1",
+      "rs": "0",
+      "own": "",
+      "stock": "17",
+      "n": "Animonda Carny Adult Beef + Ch"
+     },
+     "806": {
+      "pid": 16727,
+      "q": 1,
+      "k": "",
+      "src": "quattro",
+      "rq": "",
+      "rs": "1",
+      "own": "0",
+      "stock": "5",
+      "n": "QUATTRO 1,5 kg Adult Salmon & "
+     },
+     "807": {
+      "pid": 16889,
+      "q": 1,
+      "k": "",
+      "src": "prins",
+      "rq": "",
+      "rs": "1",
+      "own": "0",
+      "stock": "12",
+      "n": "Prins Diet Skin & Intestinal H"
+     }
+    }
+   },
+   "35427": {
+    "st": "completed",
+    "grizta": "",
+    "iss": "",
+    "senos": "",
+    "av_reduced": "2026-09-02 17:46:01",
+    "av_restored": "",
+    "sent_src": "",
+    "reg": [
+     "av:V07267E1000030"
+    ],
+    "sek": "{\"V07267E1000030\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-02 17:49:38\",\"v\":\"\",\"n\":1,\"dalis\":\"av\",\"tikr\":\"2026-09-04 11:58:35\"}}",
+    "eil": {
+     "827": {
+      "pid": 19708,
+      "q": 2,
+      "k": "",
+      "src": "av",
+      "rq": "2",
+      "rs": "0",
+      "own": "",
+      "stock": "17",
+      "n": "Animonda Carny Adult Beef + Ch"
+     }
+    }
+   },
+   "35428": {
+    "st": "completed",
+    "grizta": "",
+    "iss": "",
+    "senos": "",
+    "av_reduced": "2026-09-02 17:46:03",
+    "av_restored": "",
+    "sent_src": "",
+    "reg": [
+     "av:V07267E1000033/V07267E1000034/V07267E1000035"
+    ],
+    "sek": "{\"V07267E1000033\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-02 17:49:38\",\"v\":\"\",\"n\":1,\"dalis\":\"av\",\"tikr\":\"2026-09-04 11:58:35\"},\"V07267E100003",
+    "eil": {
+     "830": {
+      "pid": 19708,
+      "q": 3,
+      "k": "av",
+      "src": "av",
+      "rq": "3",
+      "rs": "0",
+      "own": "",
+      "stock": "17",
+      "n": "Animonda Carny Adult Beef + Ch"
+     }
+    }
+   },
+   "35429": {
+    "st": "cancelled",
+    "grizta": "",
+    "iss": "{\"av\":{\"laikas\":\"2026-09-04 12:01:49\",\"kas\":\"Venipak\",\"kanalas\":\"venipak\",\"laiskas\":\"2026-09-04 12:01:49\"}}",
+    "senos": "",
+    "av_reduced": "2026-09-02 17:46:04",
+    "av_restored": "2026-09-04 12:27:18",
+    "sent_src": "",
+    "reg": [
+     "av:V07267E1000031/V07267E1000032"
+    ],
+    "sek": "{\"V07267E1000031\":{\"k\":2,\"t\":\"At terminal\",\"e\":\"At terminal\",\"d\":\"2026-09-04 11:00:00\",\"v\":\"KAUNAS\",\"n\":3,\"dalis\":\"av\",\"tikr\":\"2026-09-04 12:01:49\"},\"V07267E100",
+    "eil": {
+     "833": {
+      "pid": 19708,
+      "q": 2,
+      "k": "av",
+      "src": "av",
+      "rq": "2",
+      "rs": "0",
+      "own": "",
+      "stock": "17",
+      "n": "Animonda Carny Adult Beef + Ch"
+     }
+    }
+   },
+   "35437": {
+    "st": "completed",
+    "grizta": "",
+    "iss": "",
+    "senos": "",
+    "av_reduced": "2026-09-03 11:07:51",
+    "av_restored": "",
+    "sent_src": "",
+    "reg": [
+     "av:V07267E1000048"
+    ],
+    "sek": "{\"V07267E1000048\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-03 11:26:39\",\"v\":\"\",\"n\":1,\"dalis\":\"av\",\"tikr\":\"2026-09-04 11:58:35\"}}",
+    "eil": {
+     "860": {
+      "pid": 19708,
+      "q": 2,
+      "k": "av",
+      "src": "av",
+      "rq": "2",
+      "rs": "0",
+      "own": "",
+      "stock": "17",
+      "n": "Animonda Carny Adult Beef + Ch"
+     }
+    }
+   },
+   "35438": {
+    "st": "completed",
+    "grizta": "",
+    "iss": "{\"prins\":{\"laikas\":\"2026-09-03 12:30:47\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"},\"av\":{\"laikas\":\"2026-09-03 12:34:35\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"}}",
+    "senos": "",
+    "av_reduced": "2026-09-03 11:07:53",
+    "av_restored": "",
+    "sent_src": "{\"prins\":\"2026-09-03 11:23:34\"}",
+    "reg": [
+     "prins:V07267E1000047",
+     "av:V07267E1000052"
+    ],
+    "sek": "{\"V07267E1000047\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-03 11:23:31\",\"v\":\"\",\"n\":1,\"dalis\":\"prins\",\"tikr\":\"2026-09-04 11:58:35\"},\"V07267E100",
+    "eil": {
+     "863": {
+      "pid": 19708,
+      "q": 1,
+      "k": "av",
+      "src": "av",
+      "rq": "1",
+      "rs": "0",
+      "own": "",
+      "stock": "17",
+      "n": "Animonda Carny Adult Beef + Ch"
+     },
+     "864": {
+      "pid": 16889,
+      "q": 1,
+      "k": "tiesiai",
+      "src": "prins",
+      "rq": "",
+      "rs": "1",
+      "own": "0",
+      "stock": "12",
+      "n": "Prins Diet Skin & Intestinal H"
+     }
+    }
+   },
+   "35440": {
+    "st": "completed",
+    "grizta": "",
+    "iss": "{\"av\":{\"laikas\":\"2026-09-04 12:27:16\",\"kas\":\"Venipak\",\"kanalas\":\"venipak\",\"laiskas\":\"2026-09-04 12:27:16\"}}",
+    "senos": "[\"V07267E1000049\",\"V07267E1000050\",\"V07267E1000051\"]",
+    "av_reduced": "2026-09-03 12:30:38",
+    "av_restored": "",
+    "sent_src": "",
+    "reg": [
+     "av:V07267E1000099"
+    ],
+    "sek": "{\"V07267E1000049\":{\"k\":7,\"t\":\"Returning to sender\",\"e\":\"Returning to sender\",\"d\":\"2026-09-04 14:00:00\",\"v\":\"KAUNAS\",\"n\":3,\"dalis\":\"av\",\"tikr\":\"2026-09-04 11:53:",
+    "eil": {
+     "871": {
+      "pid": 19708,
+      "q": 3,
+      "k": "av",
+      "src": "av",
+      "rq": "3",
+      "rs": "0",
+      "own": "",
+      "stock": "17",
+      "n": "Animonda Carny Adult Beef + Ch"
+     }
+    }
+   },
+   "35441": {
+    "st": "processing",
+    "grizta": "",
+    "iss": "[]",
+    "senos": "[\"V07267E1000057\"]",
+    "av_reduced": "2026-09-04 12:27:22",
+    "av_restored": "",
+    "sent_src": "",
+    "reg": [
+     "vf:V07267E1000057"
+    ],
+    "sek": "{\"V07267E1000057\":{\"k\":7,\"t\":\"Returning to sender\",\"e\":\"Returning to sender\",\"d\":\"2026-09-04 14:00:00\",\"v\":\"KAUNAS\",\"n\":3,\"dalis\":\"vf\",\"tikr\":\"2026-09-04 12:27:",
+    "eil": {
+     "874": {
+      "pid": 26166,
+      "q": 1,
+      "k": "av",
+      "src": "av",
+      "rq": "1",
+      "rs": "1",
+      "own": "0",
+      "stock": "3.000000",
+      "n": "Happet uždaras tualetas katei,"
+     }
+    }
+   },
+   "35442": {
+    "st": "processing",
+    "grizta": "",
+    "iss": "",
+    "senos": "",
+    "av_reduced": "2026-09-03 13:12:52",
+    "av_restored": "",
+    "sent_src": "",
+    "reg": [
+     "vf:V07267E1000056"
+    ],
+    "sek": "{\"V07267E1000056\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-03 16:28:58\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tikr\":\"2026-09-04 11:58:34\"}}",
+    "eil": {
+     "877": {
+      "pid": 18536,
+      "q": 1,
+      "k": "tiesiai",
+      "src": "vf",
+      "rq": "",
+      "rs": "1",
+      "own": "",
+      "stock": "93.000000",
+      "n": "Exclusion Mediterraneo Monopro"
+     },
+     "878": {
+      "pid": 19590,
+      "q": 1,
+      "k": "",
+      "src": "av",
+      "rq": "1",
+      "rs": "0",
+      "own": "",
+      "stock": "23",
+      "n": "Animonda GranCarno Adult Beef "
+     },
+     "879": {
+      "pid": 19574,
+      "q": 3,
+      "k": "",
+      "src": "av",
+      "rq": "3",
+      "rs": "0",
+      "own": "",
+      "stock": "51",
+      "n": "Animonda GranCarno Adult Beef:"
+     },
+     "880": {
+      "pid": 19570,
+      "q": 1,
+      "k": "",
+      "src": "av",
+      "rq": "1",
+      "rs": "0",
+      "own": "",
+      "stock": "60",
+      "n": "Animonda GranCarno Adult Beef:"
+     }
+    }
+   }
+  }
+ }
+}
