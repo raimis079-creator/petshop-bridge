@@ -1,0 +1,136 @@
+{
+ "v": "dep-101143",
+ "kurimas": 200,
+ "sid": 4692,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1613 e2r",
+  "f": "R",
+  "temp_istrinta": 1,
+  "update_tracking_status": {
+   "f": "class-woo-lithuaniapost-admin-order-tracking.php",
+   "l": "82-152",
+   "kodas": "    public function update_tracking_status ()\r\n    {\r\n        global $wpdb;\r\n\r\n        date_default_timezone_set('Europe/Vilnius');\r\n\r\n        $last_order_id = 0;\r\n        $limit = Woo_Lithuaniapost_Admin_Settings::get_option('tracking_page_size') ?: 500;\r\n        $tracking_datetime_option = Woo_Lithuaniapost_Admin_Settings::get_option('tracking_datetime');\r\n        $event_to_complete_order = Woo_Lithuaniapost_Admin_Settings::get_option('event_to_change_status_to_completed');\r\n        $event_to_send_tracking_email = Woo_Lithuaniapost_Admin_Settings::get_option('event_to_send_tracking_email');\r\n        $tracking_datetime = $tracking_datetime_option ?: null;\r\n        $tracking_datetime_to_save = date('Y-m-d H:i:s');\r\n        $save_datetime = false;\r\n        while ($statuses = $wpdb->get_results($wpdb->prepare(\"SELECT order_id, barcode, status FROM {$wpdb->woo_lithuaniapost_tracking_status} WHERE order_id > %d AND status NOT IN ('PARCEL_DELIVERED','PARCEL_CANCELED') ORDER BY order_id LIMIT %d\", $last_order_id, $limit))) {\r\n            if (!$statuses || empty($statuses)) {\r\n                break;\r\n            }\r\n            $last_order_id = end($statuses)->order_id;\r\n\r\n            $barcodes = array_column($statuses, 'barcode');\r\n            $tracking_events = apply_filters('woo_lithuaniapost_api_get_tracking_list', $barcodes, $tracking_datetime);\r\n            if ($tracking_events === false) {\r\n                return;\r\n            }\r\n            $save_datetime = true;\r\n            if (!empty($tracking_events)) {\r\n                foreach ($statuses as $status) {\r\n                    $status_tracking_events = array_filter($tracking_events, function ($event) use ($status) {\r\n                        return $event->mailBarcode == $status->barcode;\r\n                    });\r\n                    if ($status_tracking_events && count($status_tracking_events) > 0) {\r\n                        $last_event = $this->find_with_greatest_date($status_tracking_events);\r\n                        if ($last_event) {\r\n                            if ($last_event->publicStateType != $status->status) {\r\n                                $wpdb->update($wpdb->woo_lithuaniapost_tracking_status, [\r\n                                    'status' => $last_event->publicStateType,\r\n                                    'updated' => date('Y-m-d H:i:s')\r\n                                ], ['barcode' => $status->barcode]);\r\n                                $lp_order_status = LpOrderStatus::find_by_name($last_event->publicStateType);\r\n                                if ($lp_order_status) {\r\n                                    $order = wc_get_order($status->order_id);\r\n                                    if ($order) {\r\n                                        if ($event_to_complete_order && $lp_order_status->to_order_status() === $event_to_complete_order) {\r\n                                            $order->update_status('completed');\r\n                                        }\r\n                                        $order->update_meta_data('_woo_lithuaniapost_shipping_status_value', $lp_order_status->value);\r\n                                        $order->save();\r\n                                        if ((!$event_to_send_tracking_email === false && $lp_order_status == LpOrderStatus::$ON_THE_WAY) || ($event_to_send_tracking_email && $lp_order_status->to_order_status() == $event_to_send_tracking_email)) {\r\n                                            if (!$order->get_meta('_woo_lithuaniapost_tracking_mail_send') && $order->get_meta('_woo_lithuaniapost_barcode')) {\r\n                                                $order->update_meta_data('_woo_lithuaniapost_tracking_mail_send', true);\r\n                                                $order->save();\r\n                                                do_action('woo_lithuaniapost_send_tracking_email', $order);\r\n                                            }\r\n                                        }\r\n                                    }\r\n                                }\r\n                            }\r\n                        }\r\n                    }\r\n                }\r\n            }\r\n            if (count($statuses) < $limit) {\r\n                break;\r\n            }\r\n        }\r\n        if ($save_datetime === true) {\r\n            Woo_Lithuaniapost_Admin_Settings::delete_option('tracking_datetime');\r\n            Woo_Lithuaniapost_Admin_Settings::add_option('tracking_datetime', $tracking_datetime_to_save);\r\n        }\r\n    }\r\n"
+  },
+  "get_tracking_events": {
+   "f": "class-woo-lithuaniapost-admin-order-tracking.php",
+   "l": "200-209",
+   "kodas": "    public function get_tracking_events($order_id)\r\n    {\r\n        global $wpdb;\r\n\r\n        $barcode = $wpdb->get_var($wpdb->prepare(\"SELECT barcode FROM {$wpdb->woo_lithuaniapost_tracking_status} WHERE order_id = %d\", $order_id));\r\n        if ($barcode) {\r\n            return apply_filters('woo_lithuaniapost_api_get_tracking', $barcode);\r\n        }\r\n        return [];\r\n    }\r\n"
+  },
+  "is_supported": {
+   "f": "class-woo-lithuaniapost-admin-order-service.php",
+   "l": "376-379",
+   "kodas": "    protected function is_shipping_method_supported($order)\r\n    {\r\n        return $order->has_shipping_method('woo_lithuaniapost_lpexpress_terminal');\r\n    }\r\n"
+  },
+  "on_parcel_save": {
+   "f": "class-woo-lithuaniapost-admin-order-service.php",
+   "l": "826-848",
+   "kodas": "    private function on_parcel_save($order, $parcel_request, $save_order = true)\r\n    {\r\n        $order->update_meta_data('_woo_lithuaniapost_shipping_item_weight', $parcel_request['parcel']['weight'] ?? null);\r\n        $order->update_meta_data('_woo_lithuaniapost_shipping_item_size', $parcel_request['parcel']['size'] ?? null);\r\n        $order->update_meta_data('_woo_lithuaniapost_shipping_item_size', $parcel_request['parcel']['size'] ?? null);\r\n\r\n        $saved_terminal_id = $parcel_request['receiver']['address']['terminalId'] ?? null;\r\n        if ($saved_terminal_id) {\r\n\r\n            $terminal_id = sanitize_text_field($saved_terminal_id);\r\n            $terminal = apply_filters('woo_lithuaniapost_terminal_service_get_terminal_by_id', $terminal_id);\r\n\r\n            if ($terminal) {\r\n                $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal_id', $terminal_id);\r\n                $order->update_meta_data('_woo_lithuaniapost_lpexpress_terminal', sprintf('%s - %s, %s', $terminal [0]->name, $terminal [0]->address, $terminal [0]->city));\r\n            }\r\n        }\r\n\r\n        $order->update_meta_data('_woo_lithuaniapost_parcel_create_error', null);\r\n        if ($save_order) {\r\n            $order->save();\r\n        }\r\n    }\r\n"
+  },
+  "LpOrderStatus": "    public static $ON_THE_WAY;\r\n    public static $PARCEL_DELIVERED;\r\n    public static $PARCEL_CANCELED;\r\n    public static $PARCEL_PENDING;\r\n\r\n    public $value;\r\n    public $name;\r\n\r\n    /**\r\n     * @param $value\r\n     * @param $name\r\n     */\r\n    public function __construct($value, $name)\r\n    {\r\n        $this->value = $value;\r\n        $this->name = $name;\r\n    }\r\n\r\n    public function to_order_status(): string\r\n    {\r\n        return 'wc-' . $this->value;\r\n    }\r\n\r\n    public function is_shipping_initiated(): bool\r\n    {\r\n        return $this == LpOrderStatus::$SHIPPING_INITIATED || $this == LpOrderStatus::$COURIER_PENDING || $this == LpOrderStatus::$COURIER_CALLED || $this == LpOrderStatus::$PARCEL_DELIVERED || $this == LpOrderStatus::$ON_THE_WAY;\r\n    }\r\n\r\n    public function is_ready_to_initiated(): bool\r\n    {\r\n        return $this == LpOrderStatus::$PARCEL_CREATED;\r\n    }\r\n\r\n    public static function find_by_value(string $value)\r\n    {\r\n        return LpOrderStatus::find_by($value, 'value');\r\n    }\r\n\r\n    public static function find_by_name(string $name)\r\n    {\r\n        return LpOrderStatus::find_by($name, 'name');\r\n    }\r\n\r\n    private static function find_by(string $arg_to_find, string $find_by_key)\r\n    {\r\n        $all_statuses = [self::$PARCEL_CREATED, self::$PARCEL_FAILED, self::$COURIER_PENDING, self::$COURIER_CALLED, self::$SHIPPING_INITIATED, self::$ON_THE_WAY, self::$PARCEL_DELIVERED, self::$PARCEL_CANCELED];\r\n        $found_value = array_search($arg_to_find, array_column($all_statuses, $find_by_key));\r\n\r\n        if ($found_value !== false) {\r\n            return $all_statuses[$found_value];\r\n        }\r\n        return null;\r\n    }\r\n}\r\n\r\nLpOrderStatus::$PARCEL_CREATED = new LpOrderStatus(\"lp-parcel-created\", \"PARCEL_CREATED\");\r\nLpOrderStatus::$PARCEL_FAILED = new LpOrderStatus(\"lp-parcel-failed\", \"PARCEL_FAILED\");\r\nLpOrderStatus::$COURIER_PENDING = new LpOrderStatus(\"lp-courier-await\", \"COURIER_PENDING\");\r\nLpOrderStatus::$COURIER_CALLED = new LpOrderStatus(\"lp-courier-called\", \"COURIER_CALLED\");\r\nLpOrderStatus::$SHIPPING_INITIATED = new LpOrderStatus(\"lp-label-created\", \"SHIPPING_INITIATED\");\r\nLpOrderStatus::$ON_THE_WAY = new LpOrderStatus(\"lp-on-the-way\", \"ON_THE_WAY\");\r\nLpOrderStatus::$PARCEL_DELIVERED = new LpOrderStatus(\"lp-delivered\", \"PARCEL_DELIVERED\");\r\nLpOrderStatus::$PARCEL_CANCELED = new LpOrderStatus(\"lp-cancelled\", \"PARCEL_CANCELED\");\r\nLpOrderStatus::$PARCEL_PENDING = new LpOrderStatus(\"lp-parcel-await\", \"PARCEL_PENDING\");\r\n\r\nclass LpOrderActionErrorKey\r",
+  "lenteles": {
+   "woo_lithuaniapost_tracking_status": {
+    "vardas": "gaj6_woo_lithuaniapost_tracking_status",
+    "yra": "gaj6_woo_lithuaniapost_tracking_status",
+    "stulpeliai": [
+     "order_id",
+     "barcode",
+     "status",
+     "created",
+     "updated"
+    ],
+    "eiluciu": 0,
+    "pvz": []
+   },
+   "woo_lithuaniapost_tracking_events": {
+    "vardas": "gaj6_woo_lithuaniapost_tracking_events",
+    "yra": null,
+    "stulpeliai": [],
+    "eiluciu": 0,
+    "pvz": []
+   }
+  },
+  "lp_opcijos_tracking": [],
+  "u35416": {
+   "st": "processing",
+   "paid": true,
+   "cust": 0,
+   "email": "terra@petshop.lt",
+   "ship": "LP Express",
+   "created": "2026-09-02 17:41",
+   "meta": {
+    "_ps_av_reduced": "2026-09-02 17:41:39",
+    "_ps_decided_at": "2026-09-02 17:41:39",
+    "_ps_faktas_irasytas": "2026-09-02 14:41:39",
+    "_ps_ga4_mp_kodas": "dev-nesiusta",
+    "_ps_groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
+    "_ps_matyta": "2026-09-03 15:33:51 | Rai",
+    "_ps_misrus_sprestas": "2026-09-03 10:12:30 | auto",
+    "_ps_order_type": "MAIN",
+    "_ps_partijos_nurasyta": "2026-09-02 17:41:39",
+    "_ps_rusiuota": "auto",
+    "_ps_shipments": "1",
+    "_woo_lithuaniapost_lpexpress_shipping_method_instance_id": "12",
+    "_woo_lithuaniapost_lpexpress_terminal_id": "LT0001",
+    "_woo_lithuaniapost_parcel_create_error": "[{\"error\":\"INCORRECT RECEIVER\",\"error_description\":\"Incorrectly specified recipient's parcel terminal id.\",\"field\":\"receiver.address.termina",
+    "_woo_lithuaniapost_shipping_status_value": "lp-parcel-failed"
+   },
+   "items": {
+    "788": {
+     "n": "Animonda Carny Adult Beef + Chicken + Duck Heart –",
+     "q": 1,
+     "pid": 19708,
+     "kelias": "av",
+     "src": "av",
+     "red": "1"
+    }
+   },
+   "reg": [],
+   "kl": [
+    {
+     "dalis": "av",
+     "busena": "ruosiama",
+     "laikas": "",
+     "pristatyta": "",
+     "vez": "lp",
+     "numeriai": [],
+     "url": "",
+     "prekes": [
+      {
+       "q": 1,
+       "n": "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g"
+      }
+     ],
+     "n": 1,
+     "viso": 1
+    }
+   ]
+  },
+  "k5787": [
+   "35780 cancelled VENIPAK Kurjeris",
+   "35779 cancelled VENIPAK Kurjeris",
+   "35778 cancelled VENIPAK Kurjeris",
+   "35776 completed VENIPAK Kurjeris",
+   "35440 completed VENIPAK Kurjeris",
+   "35421 processing VENIPAK Kurjeris"
+  ],
+  "dl_versija": "3.11.1",
+  "dl_md5": "fc4076c7a7152dfd12140b3e33075cc1",
+  "ks_md5": "fb5a0c084731f57eecd2faa069f3ef3b",
+  "paskutinis": {
+   "laikas": "2026-09-04 12:58:49",
+   "uzsakymu": 14,
+   "numeriu": 17,
+   "uzklausu": 15,
+   "pakeista": 0,
+   "issiusta": 0,
+   "pristatyta": 0,
+   "grizta": 0,
+   "klaidos": 0,
+   "s": 0.7
+  }
+ }
+}
