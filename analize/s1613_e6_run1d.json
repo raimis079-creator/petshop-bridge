@@ -1,0 +1,191 @@
+{
+ "v": "dep-105413",
+ "kurimas": 200,
+ "sid": 4705,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1613 e5d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": [
+   80000,
+   80000,
+   80000,
+   69864
+  ],
+  "bytes": 232397,
+  "md5": "5a90a6eddb9a9174662f35ccbaa8a67b",
+  "token": "ok",
+  "buvo": "ae3d3416f288c4cb1bb2b65b18799c63",
+  "backup": true,
+  "rasyta": 232397,
+  "po": "5a90a6eddb9a9174662f35ccbaa8a67b"
+ },
+ "T": {
+  "v": "S1613 e5d",
+  "f": "T",
+  "temp_istrinta": 0,
+  "versija": "3.13.1",
+  "md5": "5a90a6eddb9a9174662f35ccbaa8a67b",
+  "dev_zurnalas_pries": 3,
+  "velykos": {
+   "2025": "2025-04-20",
+   "2026": "2026-04-05",
+   "2027": "2027-03-28"
+  },
+  "darbo": {
+   "2026-09-04": true,
+   "2026-09-05": false,
+   "2026-09-06": false,
+   "2026-09-07": true,
+   "2026-11-01": false,
+   "2026-11-02": false,
+   "2026-04-06": false,
+   "2026-04-07": true,
+   "2026-12-24": false,
+   "2026-02-16": false
+  },
+  "pilnos": {
+   "08-31→09-04": 3,
+   "09-04→09-07": 0,
+   "09-04→09-10": 3,
+   "09-02→09-08": 3,
+   "09-03→09-08": 2,
+   "04-02→04-09": 3,
+   "09-04→09-04": 0
+  },
+  "kitas_1400": {
+   "nuo_dabar": "2026-09-05 14:00",
+   "nuo_13_59": "2026-09-04 14:00",
+   "nuo_14_00": "2026-09-05 14:00"
+  },
+  "cron_planas": "2026-09-05 14:00",
+  "cron_venipak": "2026-09-04 14:28",
+  "hpos_meta_stulpeliai": [
+   "id",
+   "order_id",
+   "meta_key",
+   "meta_value"
+  ],
+  "paid_gmt_processing": [],
+  "sql_klaida": "Unknown column 'date_paid_gmt' in 'field list'",
+  "sql_klaida_po": "Unknown column 'o.date_paid_gmt' in 'where clause'",
+  "kandidatai": [],
+  "test_ids": [
+   35421
+  ],
+  "pries": {
+   "35421": {
+    "st": "processing",
+    "vel": "",
+    "iss": "{\"prins\":{\"laikas\":\"2026-09-03 21:33:34\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:34\"}}"
+   }
+  },
+  "sim_sa": {
+   "dabar": "2026-09-05 14:00",
+   "darbo_diena": false,
+   "uzsakymu": 0,
+   "issiusta": [],
+   "praleista": [
+    "ne darbo diena"
+   ],
+   "klaidos": [],
+   "s": 0
+  },
+  "sim_pr": {
+   "dabar": "2026-09-07 14:00",
+   "darbo_diena": true,
+   "uzsakymu": 1,
+   "issiusta": [],
+   "praleista": [
+    "#35421 apmokėta 09-02 — praėjo 2 d. d."
+   ],
+   "klaidos": [],
+   "s": 0
+  },
+  "mail_po_pr": 0,
+  "sim_an": {
+   "dabar": "2026-09-08 14:00",
+   "darbo_diena": true,
+   "uzsakymu": 1,
+   "issiusta": [],
+   "praleista": [
+    "#35421 Klausimuose: Tiekėjas vėluoja — perduota prieš 24+ val."
+   ],
+   "klaidos": [],
+   "s": 0
+  },
+  "mail_po_an": 0,
+  "sim_an2": {
+   "dabar": "2026-09-08 14:00",
+   "darbo_diena": true,
+   "uzsakymu": 1,
+   "issiusta": [],
+   "praleista": [
+    "#35421 Klausimuose: Tiekėjas vėluoja — perduota prieš 24+ val."
+   ],
+   "klaidos": [],
+   "s": 0
+  },
+  "mail_po_an2": 0,
+  "po": {
+   "35421": {
+    "st": "processing",
+    "vel": "",
+    "iss": "{\"prins\":{\"laikas\":\"2026-09-03 21:33:34\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:34\"}}"
+   }
+  },
+  "notes_a": null,
+  "ivykiai_a": null,
+  "laiskai": [],
+  "dev_zurnalas_po": 3,
+  "paskutinis_opcija": {
+   "laikas": "2026-09-04 14:02:14",
+   "darbo_diena": true,
+   "uzsakymu": 0,
+   "issiusta": 0,
+   "praleista": 0,
+   "klaidos": 0,
+   "s": 0
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788521576|5EKeWhk3lhCDtVBCpzYD0ZHJ3ZbkpeJfFYwBE5tF8lG|0835fde2aaba0604a7ea0538aca78d5976af5645f77f9c4ff6c0a9202ab13966"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788521576|5EKeWhk3lhCDtVBCpzYD0ZHJ3ZbkpeJfFYwBE5tF8lG|5143bab7ea7f75886541deb1baa945952f7167049f6755f67593d913f15cc011"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788521576|5EKeWhk3lhCDtVBCpzYD0ZHJ3ZbkpeJfFYwBE5tF8lG|91a3edd1ce5f378791d705693f32ea42242b4abba6a31fd72469deee897d6ce3"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1613_e6_visi_pill",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+    "w": 1400,
+    "full": false,
+    "eval": "({pills:[...document.querySelectorAll('.dl-pill-e')].map(x=>x.closest('tr').querySelector('.nr').innerText+' '+x.innerText).slice(0,10)})"
+   }
+  ]
+ },
+ "shots": {
+  "s1613_e6_visi_pill": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "pills": [
+     "#35423 laukia nuo 09-02 20:46"
+    ]
+   }
+  }
+ }
+}
