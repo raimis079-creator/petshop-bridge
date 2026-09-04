@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.12 (S1613, 4 etapas #2 LP Express sekimas iš plugino meta — tas pats cron) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.13.2 (S1613, 4 etapas #4 vėlavimo laiškas klientui — darbo dienom 14:00, 3 pilnos darbo dienos nuo apmokėjimo) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -26,6 +26,17 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v3.13 (S1613, 4 etapas #4, log S1611 sprendimas 3 — Raimis 09-04): VĖLAVIMO LAIŠKAS — AUTOMATINIS. Cron `ps_velavimo_laiskai` — vienkartinis
+ *   įvykis, kas run'ą perplanuojamas į kitą 14:00 Vilnius (`wp_timezone()`, DST-saugus; `cron_planuoti` `init` 30 užtikrina, kad suplanuotas).
+ *   Ne darbo dieną (Sa/Se, LT šventės `LT_SVENTES` + Velykų pirmadienis pagal Grigaliaus algoritmą `velykos()`) — nieko nedaro. Sąlyga užsakymui:
+ *   apmokėtas, tarp apmokėjimo dienos ir šiandienos ≥3 PILNOS darbo dienos (`pilnos_darbo_dienos()`, abi kraštinės neskaičiuojamos: Pr → Pn 14:00),
+ *   bent viena dalis be `_ps_dalys_issiusta`; praleidžiam neapmokėtus, atšauktus, uždarytus, Klausimuose (`$f['kl']` — ir variklio „Tiekėjas vėluoja“),
+ *   jau gavusius (žymė `_ps_velavimo_laiskas`). Vienas laiškas užsakymui — Raimio tekstas žodis į žodį (dalis išsiųsta → „Likusių … prekių“);
+ *   tema „Užsakymas Nr. N — surinkimas užtruko“ (mano prielaida). Žymė + pastaba + įvykis `velavimo_laiskas` (kanalas cron); eilutėje pill
+ *   „klientui pranešta apie vėlavimą 09-04 14:00“, skydelio „Dabar“ — tas pats sakinys; į Klausimus NEkeliam. Variklio `_ps_sla_velavimas` neliesta.
+ *   Būsena — opcija `ps_velavimo_laiskai_paskutinis`. Testams — `velavimo_laiskai($dabar_ts, [ids])` (simuliuota diena, be perplanavimo/opcijos).
+ *   v3.13.1: kandidatų SQL — HPOS `wc_orders_meta` PK yra `id`, ne `meta_id` (LEFT JOIN „be žymės“ per `m.order_id IS NULL`; e5d radinys — kandidatų 0).
+ *   v3.13.2: HPOS `wc_orders` NETURI `date_paid_gmt` (jis `wc_order_operational_data`) — sąlyga išimta iš SQL, apmokėjimą tikrina `is_paid()` (e6d radinys).
  * v3.12 (S1613, 4 etapas #2, STARTAS 09-04): LP EXPRESS SEKIMAS — tame pačiame cron'e `ps_venipak_sekimas` (kas 30 min). Recon (S1613 e1r/e2r): LP
  *   pluginas 4.0.32, kai abu nustatymai „Never“, užsakymo STATUSO NEKEIČIA (vienintelis `update_status('completed')` — tik kai nustatymas sutampa;
  *   `wc-lp-*` statusai registruoti, bet niekada neskiriami) — rašo TIK meta `_woo_lithuaniapost_shipping_status_value` (lipdukas → `lp-label-created` /
@@ -168,7 +179,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.12';
+	const VERSIJA = '3.13.2';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -203,6 +214,7 @@ class Petshop_Darbalaukis {
 		add_filter( 'cron_schedules', array( __CLASS__, 'cron_tvarkarastis' ) );
 		add_action( 'init', array( __CLASS__, 'cron_planuoti' ), 30 );
 		add_action( 'ps_venipak_sekimas', array( __CLASS__, 'venipak_sekimas' ) );
+		add_action( 'ps_velavimo_laiskai', array( __CLASS__, 'velavimo_laiskai' ) ); // v3.13
 	}
 
 	/** V5: „Surinkti“ (lapai) — aiški užsakymo žymė `_ps_surinkta` (laikas|kas), ne tik žurnalo įrašas. */
@@ -680,6 +692,7 @@ class Petshop_Darbalaukis {
 			: ( ! $f['rus'] ? 'Sistema pasiūlė, iš kur važiuos kiekviena prekė. Pataisyk, jei reikia, ir spausk „Surūšiuota“.'
 			: ( 'auto' === $f['rus'] ? 'Surūšiuota pati — viskas iš vienos vietos. Keisk, jei reikia, iki lipduko.'
 			: 'Surūšiuota. Kelią dar gali keisti, kol prekei nepadarytas pirmas žingsnis.' ) );
+		if ( $o->get_meta( self::VEL_META ) ) { $pastaba .= ' Klientui pranešta apie vėlavimą (' . substr( (string) $o->get_meta( self::VEL_META ), 5, 11 ) . ').'; } // v3.13
 		$antraste = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ) );
 		$isp = array(); foreach ( $f['dalys'] as $k => $p ) { if ( ! $p ) { continue; } if ( ! empty( $p['nr'] ) ) { $isp[] = '⚠ siunta ' . implode( ', ', $p['nr'] ) . ' jau užregistruota Venipak — ištrink savitarnoje'; } if ( 'av' !== $k && ! empty( $p['perduota'] ) ) { $isp[] = '⚠ jau užsakyta iš ' . self::vardas( $k ) . ' ' . wp_date( 'm-d H:i', strtotime( $p['kada'] ) ) . ' — parašyk tiekėjui, kad nesiųstų'; } }
 		foreach ( $f['eil'] as $e ) { if ( 'i_av' === $e['k'] && $e['b'] && 'kaupiama' !== $e['b']['busena'] ) { $isp[] = '⚠ „' . mb_substr( $e['n'], 0, 30 ) . '“ jau užsakyta iš ' . self::vardas( $e['src'] ) . ' į AV'; } }
@@ -991,7 +1004,10 @@ class Petshop_Darbalaukis {
 	const LP_TEKSTAI = array( 'lp-parcel-await' => 'siunta dar nesukurta', 'lp-parcel-created' => 'siunta sukurta', 'lp-parcel-failed' => 'siuntos sukurti nepavyko', 'lp-label-created' => 'lipdukas sukurtas', 'lp-courier-await' => 'laukia kurjerio', 'lp-courier-called' => 'kurjeris iškviestas', 'lp-on-the-way' => 'keliauja gavėjui', 'lp-delivered' => 'pristatyta', 'lp-cancelled' => 'siunta atšaukta' );
 
 	public static function cron_tvarkarastis( $s ) { if ( ! isset( $s['ps_30min'] ) ) { $s['ps_30min'] = array( 'interval' => 1800, 'display' => 'Kas 30 min (petshop)' ); } return $s; }
-	public static function cron_planuoti() { if ( ! wp_next_scheduled( 'ps_venipak_sekimas' ) ) { wp_schedule_event( time() + 300, 'ps_30min', 'ps_venipak_sekimas' ); } }
+	public static function cron_planuoti() {
+		if ( ! wp_next_scheduled( 'ps_venipak_sekimas' ) ) { wp_schedule_event( time() + 300, 'ps_30min', 'ps_venipak_sekimas' ); }
+		if ( ! wp_next_scheduled( 'ps_velavimo_laiskai' ) ) { wp_schedule_single_event( self::kitas_1400(), 'ps_velavimo_laiskai' ); } // v3.13: vienkartinis, perplanuojamas kas run'ą
+	}
 
 	/** `_ps_venipak_sekimas` → [nr => {k,t,e,d,v,n,dalis,tikr}]. */
 	public static function sekimas( $o ) { $m = $o->get_meta( self::SEK_META ); if ( is_array( $m ) ) { return $m; } $j = json_decode( (string) $m, true ); return is_array( $j ) ? $j : array(); }
@@ -1161,6 +1177,107 @@ class Petshop_Darbalaukis {
 			if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $id, 'sritis' => 'desk', 'veiksmas' => 'lp_pristatyta', 'rezultatas' => 'ok', 'kanalas' => 'lp', 'po' => array( 'dalis' => 'av', 'nr' => $bc, 'kada' => $sek[ $bc ]['d'] ) ) ); }
 			$rep['pristatyta'][] = '#' . $id . ' av ' . $bc . ' (LP) ' . $sek[ $bc ]['d'];
 		}
+	}
+
+	/* ============================ v3.13 — VĖLAVIMO LAIŠKAS (4 etapas #4, log S1611 sprendimas 3) ============================ */
+
+	const VEL_META   = '_ps_velavimo_laiskas';
+	const VEL_VAL    = 14; // darbo dienom 14:00 Vilnius (Raimis: tiekėjai ir Venipak išsiunčia iki pietų)
+	const VEL_DIENOS = 3;  // pilnos darbo dienos nuo apmokėjimo (apmokėjimo diena neskaičiuojama)
+	/** LT šventės (fiksuotos, mm-dd) + Velykų pirmadienis (`velykos()`). Motinos / Tėvo diena — sekmadieniai. */
+	const LT_SVENTES = array( '01-01', '02-16', '03-11', '05-01', '06-24', '07-06', '08-15', '11-01', '11-02', '12-24', '12-25', '12-26' );
+
+	/** Velykų sekmadienis (Grigaliaus, anoniminis algoritmas) → 'Y-m-d'. */
+	public static function velykos( $metai ) {
+		$metai = (int) $metai; $a = $metai % 19; $b = intdiv( $metai, 100 ); $c = $metai % 100; $d = intdiv( $b, 4 ); $e = $b % 4; $f = intdiv( $b + 8, 25 ); $g = intdiv( $b - $f + 1, 3 );
+		$h = ( 19 * $a + $b - $d - $g + 15 ) % 30; $i = intdiv( $c, 4 ); $k = $c % 4; $l = ( 32 + 2 * $e + 2 * $i - $h - $k ) % 7; $m = intdiv( $a + 11 * $h + 22 * $l, 451 );
+		$men = intdiv( $h + $l - 7 * $m + 114, 31 ); $diena = ( ( $h + $l - 7 * $m + 114 ) % 31 ) + 1;
+		return sprintf( '%04d-%02d-%02d', $metai, $men, $diena );
+	}
+	/** Ar darbo diena (Pr–Pn be LT švenčių ir Velykų pirmadienio); $ymd — 'Y-m-d' Vilniaus laiku. */
+	public static function darbo_diena( $ymd ) {
+		$tz = wp_timezone(); $dt = new DateTime( $ymd . ' 12:00:00', $tz );
+		if ( (int) $dt->format( 'N' ) >= 6 ) { return false; }
+		if ( in_array( $dt->format( 'm-d' ), self::LT_SVENTES, true ) ) { return false; }
+		$v = new DateTime( self::velykos( (int) $dt->format( 'Y' ) ) . ' 12:00:00', $tz ); $v->modify( '+1 day' );
+		return $dt->format( 'Y-m-d' ) !== $v->format( 'Y-m-d' );
+	}
+	/** Pilnos darbo dienos GRIEŽTAI tarp dviejų datų (apmokėjimo diena ir šiandiena neskaičiuojamos): Pr → Pn = 3 (An, Tr, Kt). */
+	public static function pilnos_darbo_dienos( $nuo_ymd, $iki_ymd ) {
+		$tz = wp_timezone(); $d = new DateTime( $nuo_ymd . ' 12:00:00', $tz ); $iki = new DateTime( $iki_ymd . ' 12:00:00', $tz ); $n = 0;
+		for ( $i = 0; $i < 120; $i++ ) { $d->modify( '+1 day' ); if ( $d >= $iki ) { break; } if ( self::darbo_diena( $d->format( 'Y-m-d' ) ) ) { $n++; } }
+		return $n;
+	}
+	/** Kitas 14:00 Vilnius (UTC timestamp) griežtai po $nuo (numatyta — dabar). */
+	public static function kitas_1400( $nuo = null ) {
+		$tz = wp_timezone(); $d = new DateTime( 'now', $tz ); if ( null !== $nuo ) { $d->setTimestamp( (int) $nuo ); }
+		$t = clone $d; $t->setTime( self::VEL_VAL, 0, 0 ); if ( $t <= $d ) { $t->modify( '+1 day' ); }
+		return $t->getTimestamp();
+	}
+	/** Kandidatai: apmokėti, atviri (processing / LP paruošta), be žymės, sukurti per 60 d. (HPOS). */
+	protected static function velavimo_kandidatai() {
+		global $wpdb; $p = $wpdb->prefix;
+		$st = array_merge( array( 'processing' ), Petshop_Desk::STATUSAI['paruosta'] );
+		$in = implode( ',', array_map( function ( $x ) use ( $wpdb ) { return $wpdb->prepare( '%s', 'wc-' . $x ); }, $st ) );
+		$nuo = gmdate( 'Y-m-d H:i:s', time() - 60 * DAY_IN_SECONDS );
+		return array_map( 'intval', (array) $wpdb->get_col( $wpdb->prepare( "SELECT o.id FROM {$p}wc_orders o LEFT JOIN {$p}wc_orders_meta m ON m.order_id = o.id AND m.meta_key = %s WHERE o.type = 'shop_order' AND o.status IN ($in) AND o.date_created_gmt > %s AND m.order_id IS NULL ORDER BY o.id ASC LIMIT 300", self::VEL_META, $nuo ) ) );
+	}
+	/** CRON `ps_velavimo_laiskai` — darbo dienom 14:00 Vilnius. $dabar — UTC timestamp (testams: simuliuota diena), $tik_ids — testams. Grąžina ataskaitą. */
+	public static function velavimo_laiskai( $dabar = null, $tik_ids = array() ) {
+		$testas = ( null !== $dabar ) || ! empty( $tik_ids );
+		if ( ! $testas ) { wp_clear_scheduled_hook( 'ps_velavimo_laiskai' ); wp_schedule_single_event( self::kitas_1400(), 'ps_velavimo_laiskai' ); }
+		$tz = wp_timezone(); $d = new DateTime( 'now', $tz ); if ( null !== $dabar ) { $d->setTimestamp( (int) $dabar ); }
+		$siandien = $d->format( 'Y-m-d' );
+		$rep = array( 'dabar' => $d->format( 'Y-m-d H:i' ), 'darbo_diena' => self::darbo_diena( $siandien ), 'uzsakymu' => 0, 'issiusta' => array(), 'praleista' => array(), 'klaidos' => array(), 's' => 0 );
+		$pradzia = microtime( true );
+		if ( ! $rep['darbo_diena'] ) { $rep['praleista'][] = 'ne darbo diena'; }
+		elseif ( ! class_exists( 'Petshop_Desk' ) ) { $rep['klaidos'][] = 'variklio nėra'; }
+		else {
+			$ids = $tik_ids ? array_map( 'intval', (array) $tik_ids ) : self::velavimo_kandidatai();
+			foreach ( $ids as $oid ) {
+				if ( microtime( true ) - $pradzia > 200 ) { $rep['klaidos'][] = 'laikas baigėsi ties #' . $oid; break; }
+				$o = wc_get_order( $oid ); if ( ! $o ) { continue; }
+				$rep['uzsakymu']++;
+				try { $r = self::velavimo_laiskas( $o, $siandien ); } catch ( Throwable $e ) { $rep['klaidos'][] = '#' . $oid . ': ' . $e->getMessage(); continue; }
+				if ( $r[0] ) { $rep['issiusta'][] = '#' . $oid . ' ' . $r[1]; } else { $rep['praleista'][] = '#' . $oid . ' ' . $r[1]; }
+			}
+		}
+		$rep['s'] = round( microtime( true ) - $pradzia, 1 );
+		if ( ! $testas ) { update_option( 'ps_velavimo_laiskai_paskutinis', array( 'laikas' => current_time( 'mysql' ), 'darbo_diena' => $rep['darbo_diena'], 'uzsakymu' => $rep['uzsakymu'], 'issiusta' => count( $rep['issiusta'] ), 'praleista' => count( $rep['praleista'] ), 'klaidos' => count( $rep['klaidos'] ), 's' => $rep['s'] ), false ); }
+		return $rep;
+	}
+	/** Vienas užsakymas: sąlygos (log S1611 spr. 3) → laiškas Raimio tekstu → žymė, pastaba, įvykis. Grąžina [ok, tekstas]. */
+	protected static function velavimo_laiskas( $o, $siandien ) {
+		if ( $o->get_meta( self::VEL_META ) ) { return array( false, 'jau pranešta ' . $o->get_meta( self::VEL_META ) ); }
+		if ( ! $o->is_paid() ) { return array( false, 'neapmokėtas' ); }
+		$st = $o->get_status();
+		if ( in_array( $st, array_merge( Petshop_Desk::STATUSAI['neapmoketi'], Petshop_Desk::STATUSAI['atsaukti'], Petshop_Desk::STATUSAI['ivykdyti'], Petshop_Desk::STATUSAI['kelyje'] ), true ) ) { return array( false, 'būsena ' . $st ); }
+		$dp = $o->get_date_paid() ? $o->get_date_paid() : $o->get_date_created(); if ( ! $dp ) { return array( false, 'apmokėjimo datos nėra' ); }
+		$dpv = clone $dp; $dpv->setTimezone( wp_timezone() ); $dd = self::pilnos_darbo_dienos( $dpv->format( 'Y-m-d' ), $siandien );
+		if ( $dd < self::VEL_DIENOS ) { return array( false, 'apmokėta ' . $dpv->format( 'm-d' ) . ' — praėjo ' . $dd . ' d. d.' ); }
+		$f = self::faktai( $o, self::zurnalas( array( $o->get_id() ) ) );
+		if ( $f['kl'] ) { return array( false, 'Klausimuose: ' . $f['kl'] ); }
+		$liko = array(); $issiusta = 0;
+		foreach ( $f['dalys'] as $k => $p ) { if ( ! $p ) { continue; } if ( ! empty( $p['issiusta'] ) ) { $issiusta++; } else { $liko[] = $k; } }
+		if ( ! $liko ) { return array( false, 'visos siuntos išsiųstos' ); }
+		$el = $o->get_billing_email(); if ( ! $el ) { return array( false, 'el. pašto nėra' ); }
+		$nr = $o->get_order_number(); $vardas = trim( (string) $o->get_billing_first_name() );
+		// Raimio tekstas (log S1611 sprendimas 3), pataisyta rašyba; dalis išsiųsta — „Likusių …“.
+		$p1 = $issiusta ? sprintf( 'Likusių Jūsų užsakymo Nr. %s prekių surinkimas truputį užtruko.', $nr ) : sprintf( 'Jūsų užsakymo Nr. %s surinkimas truputį užtruko.', $nr );
+		$h  = '<p>' . esc_html( $vardas ? "Sveiki, {$vardas}." : 'Sveiki.' ) . '</p>';
+		$h .= '<p>' . esc_html( $p1 . ' Išsiųsime jį kaip galėdami greičiau. Ačiū už kantrybę.' ) . '</p>';
+		$h .= '<p>' . esc_html( 'Išsiuntę užsakymą informuosime Jus atskiru laišku.' ) . '</p>';
+		$h .= '<p>' . esc_html( 'Jei turite klausimų, tiesiog atsakykite į šį laišką.' ) . '</p>';
+		$h .= '<p>' . esc_html( 'Gražios dienos,' ) . '<br>' . esc_html( 'petshop.lt' ) . '</p>';
+		$tema = sprintf( 'Užsakymas Nr. %s — surinkimas užtruko', $nr );
+		$mailer = WC()->mailer(); $ok = $mailer->send( $el, $tema, $mailer->wrap_message( 'Surinkimas užtruko', $h ) );
+		if ( ! $ok ) { return array( false, 'laiško išsiųsti nepavyko' ); }
+		$dabar = current_time( 'mysql' ); $liko_v = array(); foreach ( $liko as $k ) { $liko_v[] = self::vardas( $k ); }
+		$o->update_meta_data( self::VEL_META, $dabar );
+		$o->add_order_note( sprintf( 'Klientui išsiųstas vėlavimo laiškas (%s): apmokėta %s, praėjo %d pilnos darbo dienos; dar neišsiųsta: %s.', $el, $dpv->format( 'm-d' ), $dd, implode( ', ', $liko_v ) ), false, true ); $o->save();
+		if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_id(), 'sritis' => 'desk', 'veiksmas' => 'velavimo_laiskas', 'rezultatas' => 'ok', 'kanalas' => 'cron', 'po' => array( 'el' => $el, 'apmoketa' => $dpv->format( 'Y-m-d' ), 'darbo_dienos' => $dd, 'liko' => $liko, 'issiusta_daliu' => $issiusta ) ) ); }
+		do_action( 'ps_juosta_isvalyti' );
+		return array( true, 'laiškas ' . $el . ' (apmokėta ' . $dpv->format( 'm-d' ) . ', ' . $dd . ' d. d.; liko: ' . implode( ', ', $liko_v ) . ')' );
 	}
 
 	/* ============================ v3.11.1 — KLAUSIMAS „SIUNTA GRĮŽTA“: SPRENDIMAI (4 etapas #3) ============================ */
@@ -1609,6 +1726,7 @@ class Petshop_Darbalaukis {
 			if ( 'processing' !== $r['st'] ) { echo ' <span class="dl-pill" style="background:' . esc_attr( $sp[0] ) . ';color:' . esc_attr( $sp[1] ) . '">' . esc_html( wc_get_order_statuses()[ 'wc-' . $r['st'] ] ?? $r['st'] ) . '</span>'; }
 			echo '<br>' . esc_html( $vardas ?: '—' ) . ' <span class="pilkas maz">· ' . esc_html( self::d( 'vezejo_vardas', $o ) ) . ( $miestas ? ', ' . esc_html( $miestas ) : '' ) . ' · ' . esc_html( wp_strip_all_tags( $o->get_formatted_order_total() ) ) . ( $r['paid'] ? '' : ' · <b class="raud">neapmokėta</b>' ) . '</span>';
 			if ( $o->get_meta( '_ps_klaus_laukti' ) ) { echo ' <span class="dl-pill dl-pill-e">laukia nuo ' . esc_html( wp_date( 'm-d H:i', strtotime( $o->get_meta( '_ps_klaus_laukti' ) ) ) ) . '</span>'; }
+			if ( $o->get_meta( self::VEL_META ) ) { echo ' <span class="dl-pill dl-pill-e">klientui pranešta apie vėlavimą ' . esc_html( substr( (string) $o->get_meta( self::VEL_META ), 5, 11 ) ) . '</span>'; } // v3.13
 			if ( $o->get_customer_note() ) { echo '<div class="dl-note">Klientas: ' . esc_html( $o->get_customer_note() ) . '</div>'; }
 			echo '</td>';
 			// 2 stulpelis: prekės pagal kelią — viena eilutė kiekvienam keliui
