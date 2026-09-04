@@ -1,0 +1,317 @@
+{
+ "v": "dep-102232",
+ "kurimas": 200,
+ "sid": 4696,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1613 e3d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": [
+   80000,
+   80000,
+   80000,
+   54640
+  ],
+  "bytes": 220980,
+  "md5": "b20740b6ee0abcc8930a5c1eb0f74246",
+  "token": "ok",
+  "buvo": "fc4076c7a7152dfd12140b3e33075cc1",
+  "backup": true,
+  "rasyta": 220980,
+  "po": "b20740b6ee0abcc8930a5c1eb0f74246"
+ },
+ "T": {
+  "v": "S1613 e3d",
+  "f": "T",
+  "temp_istrinta": 0,
+  "versija": "3.12",
+  "md5": "b20740b6ee0abcc8930a5c1eb0f74246",
+  "dev_zurnalas_pries": 3,
+  "pries": {
+   "st": "processing",
+   "lp_st": "lp-parcel-failed",
+   "bc": "",
+   "iss": "",
+   "sek": [],
+   "kl": [
+    "av ruosiama  lp prist= url="
+   ]
+  },
+  "r1": {
+   "pradzia": "2026-09-04 13:24:49",
+   "uzsakymu": 1,
+   "numeriu": 0,
+   "uzklausu": 0,
+   "pakeista": 1,
+   "lp": 1,
+   "issiusta": [],
+   "pristatyta": [],
+   "grizta": [],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 13:24:49",
+   "s": 0
+  },
+  "r1_po": {
+   "st": "processing",
+   "lp_st": "lp-label-created",
+   "bc": "CC000000001LT",
+   "iss": "",
+   "sek": {
+    "CC000000001LT": {
+     "k": 0,
+     "t": "lp-label-created",
+     "e": "lipdukas sukurtas",
+     "d": "2026-09-04 13:24:49",
+     "v": "",
+     "n": 0,
+     "dalis": "av",
+     "tikr": "2026-09-04 13:24:49",
+     "vez": "lp"
+    }
+   },
+   "kl": [
+    "av ruosiama CC000000001LT lp prist= url=https://www.post.lt/siuntu-sekimas?parcels=CC000000001LT"
+   ]
+  },
+  "r1_mail": 0,
+  "r1_again": {
+   "pradzia": "2026-09-04 13:24:49",
+   "uzsakymu": 1,
+   "numeriu": 0,
+   "uzklausu": 0,
+   "pakeista": 0,
+   "lp": 1,
+   "issiusta": [],
+   "pristatyta": [],
+   "grizta": [],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 13:24:49",
+   "s": 0
+  },
+  "r2": {
+   "pradzia": "2026-09-04 13:24:49",
+   "uzsakymu": 1,
+   "numeriu": 0,
+   "uzklausu": 0,
+   "pakeista": 1,
+   "lp": 1,
+   "issiusta": [
+    "#35416 av CC000000001LT (LP) → dl_issiusta: klientui išėjo „Užsakymas išsiųstas“"
+   ],
+   "pristatyta": [],
+   "grizta": [],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 13:24:50",
+   "s": 0.7
+  },
+  "r2_po": {
+   "st": "completed",
+   "lp_st": "lp-parcel-failed",
+   "bc": "CC000000001LT",
+   "iss": "{\"av\":{\"laikas\":\"2026-09-04 13:24:49\",\"kas\":\"LP Express\",\"kanalas\":\"lp\",\"laiskas\":\"2026-09-04 13:24:50\"}}",
+   "sek": {
+    "CC000000001LT": {
+     "k": 3,
+     "t": "lp-on-the-way",
+     "e": "keliauja gavėjui",
+     "d": "2026-09-04 13:24:49",
+     "v": "",
+     "n": 0,
+     "dalis": "av",
+     "tikr": "2026-09-04 13:24:49",
+     "vez": "lp"
+    }
+   },
+   "kl": [
+    "av issiusta CC000000001LT lp prist= url=https://www.post.lt/siuntu-sekimas?parcels=CC000000001LT"
+   ]
+  },
+  "r2_mail": 1,
+  "r2_again": {
+   "pradzia": "2026-09-04 13:24:50",
+   "uzsakymu": 1,
+   "numeriu": 0,
+   "uzklausu": 0,
+   "pakeista": 1,
+   "lp": 1,
+   "issiusta": [],
+   "pristatyta": [],
+   "grizta": [],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 13:24:50",
+   "s": 0
+  },
+  "r2_again_mail": 1,
+  "r3": {
+   "pradzia": "2026-09-04 13:24:50",
+   "uzsakymu": 1,
+   "numeriu": 0,
+   "uzklausu": 0,
+   "pakeista": 1,
+   "lp": 1,
+   "issiusta": [],
+   "pristatyta": [
+    "#35416 av CC000000001LT (LP) 2026-09-04 13:24:50"
+   ],
+   "grizta": [],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 13:24:50",
+   "s": 0
+  },
+  "r3_po": {
+   "st": "completed",
+   "lp_st": "lp-delivered",
+   "bc": "CC000000001LT",
+   "iss": "{\"av\":{\"laikas\":\"2026-09-04 13:24:49\",\"kas\":\"LP Express\",\"kanalas\":\"lp\",\"laiskas\":\"2026-09-04 13:24:50\"}}",
+   "sek": {
+    "CC000000001LT": {
+     "k": 9,
+     "t": "lp-delivered",
+     "e": "pristatyta",
+     "d": "2026-09-04 13:24:50",
+     "v": "",
+     "n": 0,
+     "dalis": "av",
+     "tikr": "2026-09-04 13:24:50",
+     "vez": "lp"
+    }
+   },
+   "kl": [
+    "av pristatyta CC000000001LT lp prist=2026-09-04 13:24:50 url=https://www.post.lt/siuntu-sekimas?parcels=CC000000001LT"
+   ]
+  },
+  "r3_mail": 1,
+  "r3_again": {
+   "pradzia": "2026-09-04 13:24:50",
+   "uzsakymu": 1,
+   "numeriu": 0,
+   "uzklausu": 0,
+   "pakeista": 0,
+   "lp": 1,
+   "issiusta": [],
+   "pristatyta": [],
+   "grizta": [],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 13:24:50",
+   "s": 0
+  },
+  "r4_cron": {
+   "pradzia": "2026-09-04 13:24:50",
+   "uzsakymu": 15,
+   "numeriu": 17,
+   "uzklausu": 15,
+   "pakeista": 0,
+   "lp": 1,
+   "issiusta": [],
+   "pristatyta": [],
+   "grizta": [],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 13:24:51",
+   "s": 0.8
+  },
+  "paskutinis": {
+   "laikas": "2026-09-04 13:24:51",
+   "uzsakymu": 15,
+   "numeriu": 17,
+   "uzklausu": 15,
+   "pakeista": 0,
+   "lp": 1,
+   "issiusta": 0,
+   "pristatyta": 0,
+   "grizta": 0,
+   "klaidos": 0,
+   "s": 0.8
+  },
+  "notes": [
+   "13:24 LP Express: siunta CC000000001LT pristatyta (2026-09-04 13:24:50).",
+   "13:24 Klientui išsiųsta „Užsakymas išsiųstas“ (terra@petshop.lt): CC000000001LT",
+   "13:24 Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+   "13:24 Pažymėta išsiųsta darbalaukyje (LP Express, lp). WC laiškas klientui: NESIŲSTAS.",
+   "10:12 Surūšiuota automatiškai: Animonda Carny Adult Beef + Chicken + Du — Avesa sandėlis",
+   "17:41 Email \"Užsakymas vykdomas\" sent."
+  ],
+  "ivykiai": [
+   {
+    "veiksmas": "lp_pristatyta",
+    "kanalas": "lp",
+    "rezultatas": "ok",
+    "po": "{\"dalis\":\"av\",\"nr\":\"CC000000001LT\",\"kada\":\"2026-09-04 13:24:50\"}"
+   },
+   {
+    "veiksmas": "issiusta",
+    "kanalas": "lp",
+    "rezultatas": "ok",
+    "po": "{\"status\":\"completed\",\"dalis\":\"av\",\"zinute\":\"klientui išėjo „Užsakymas išsiųstas“\"}"
+   },
+   {
+    "veiksmas": "busena",
+    "kanalas": "auto",
+    "rezultatas": "ok",
+    "po": "{\"status\":\"completed\"}"
+   },
+   {
+    "veiksmas": "rusiuoti",
+    "kanalas": "auto",
+    "rezultatas": "ok",
+    "po": "{\"zinute\":\"Animonda Carny Adult Beef + Chicken + Du — Avesa sandėlis\"}"
+   }
+  ],
+  "laiskai": [
+   "terra@petshop.lt | Jūsų užsakymas Nr. 35416 išsiųstas | Petshop.lt Užsakymas išsiųstas Sveiki, AUDITAS, Jūsų užsakymas Nr. 35416 išsiųstas. Siuntos numeris (LP Express) CC000000001LT Sekti siuntą Siuntos kelią sekite paspaudę „Sekti siuntą“. Prekės: 1 × Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g Gražios dienos,petshop.lt Petshop.ltLiucionių g. 46, Liucionių k., 15166, Lietuva"
+  ],
+  "dev_zurnalas_po": 3,
+  "sargas": [],
+  "skydelis": {
+   "code": 403,
+   "nr": null,
+   "kur": null,
+   "kl": null,
+   "raktai": null
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788519291|6useDQk4955r0KqL9jy9614uwBjKqg9kjfv9Zuhjcxy|e31e0b317dad09dd0f5917738e8ea936477f5e96fff3eb3a55cb88c77d69bf54"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788519291|6useDQk4955r0KqL9jy9614uwBjKqg9kjfv9Zuhjcxy|4e49fc19cded7610e8d047f63c84c60d7df56c0f8dd9b11cc399a26d33642452"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788519291|6useDQk4955r0KqL9jy9614uwBjKqg9kjfv9Zuhjcxy|5a249b1bf2dca3462f4aa4f36604e607b586bfd3b6c0f8c88fbc17bdd2d7f9d2"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1613_e3_skydelis_35416",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&atidaryti=35416",
+    "w": 1400,
+    "full": false,
+    "eval": "({sk:(document.querySelector('#skydelis,.dl-skydelis,.dl-sk')||document.body).innerText.replace(/\\s+/g,' ').slice(0,900)})"
+   }
+  ]
+ },
+ "shots": {
+  "s1613_e3_skydelis_35416": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "sk": "Petshop.lt Sveiki, Testuotojas ⌂ Užsakymai 21 Rytinė eiga Prekės 453 Gavimas Tiekimas 1 Rinkiniai Akcijos Laiškai 17 ribos šiandien praėjo Žurnalas Testuotojas ⏻ Gauti 5 Neišrūšiuoti 1 Laukiam iš tiekėjų 1 Surinkti AV 10 Dropshipping 11 Paruošta siųsti 1 Klausimai 4 Neapmokėti 0 Visi 45 Filtrai ▾ Užsakymas Prekės Būsena Kur dabar Toliau #35780 prieš 3 val. Atšauktas Testas Klientas · Venipak kurjeris, Vilnius · 44,91 € · neapmokėta VF siunčia klientui 1 vnt. HAP žaislas šunims, pliušinė varlė su išim… Prins siunčia klientui 1 vnt. Prins Diet Skin & Intestinal Hypoallergic … Atšauktas atšauktas Atidaryti #35779 prieš 3 val. Atšauktas Testas Klientas · Venipak kurjeris, Vilnius · 9,21 € · neapmokėta Iš AV 2 vnt. Exclusion Hypoallergenic konservai šunims … +1 Atšauktas atšauktas Atidaryti #35778 prieš 3 val. Atšauktas Testas Klientas · Venipak kurjeris, Vilnius · 44,91 € · neapmokėta VF siu"
+   }
+  }
+ }
+}
