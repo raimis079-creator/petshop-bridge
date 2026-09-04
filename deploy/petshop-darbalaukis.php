@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.15 (S1614, 5 etapas #1 — mygtukas „Pranešti klientui apie vėlavimą“) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.16 (S1614, 5 etapas #2 — „Redaguoti“: pristatymo adresas / paštomatas + V14 „Siuntos sukurti nepavyko“) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -26,6 +26,17 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v3.16 (S1614, 5 etapas #2 — Raimis 09-04: „klientai prirašo nesąmoningų adresų — kurjeriui, ne tik paštomatui“; spec §6c): „REDAGUOTI“ SKYDELYJE BE WC —
+ *   pristatymo adresas (gavėjas, gatvė, miestas, pašto kodas) / Venipak paštomatas (`venipak_store_order_pickup()`, sąrašas `venipak_fetch_pickups('LT')`) /
+ *   LP paštomatas (`_woo_lithuaniapost_lpexpress_terminal_id` + `_woo_lithuaniapost_lpexpress_terminal` plugino formatu, sąrašas plugino lentelė
+ *   `woo_lithuaniapost_unisend_terminals` LT) + telefonas (billing ir shipping — abu pluginai skaito billing). Pristatymo BŪDAS nekeičiamas (kaina/PVM — vėliau).
+ *   Galima, kol bent viena dalis neišsiųsta ir užsakymas neuždarytas; įspėjimai, kai AV siunta jau užregistruota („Lipdukas iš naujo“), LP siunta sukurta,
+ *   tiekėjui jau užsakyta („parašyk tiekėjui“) — sprendžia žmogus. Išsaugojus: pastaba prieš/po, įvykis `redaguoti`, Venipak/LP klaidos meta nuimama
+ *   (statusas „error“ → tuščias; `lp-parcel-failed` → `lp-parcel-await`), klientui laiškas „Jūsų užsakymo Nr. N pristatymo duomenys pakeisti“ — varnelė
+ *   (numatyta ON, spec §6c; tekstas — Claude prielaida, Raimiui tvirtinti). Veiksmas `admin_post_ps_dl_redaguoti` (POST, nonce `ps_dl_red_{id}`),
+ *   sąrašai `wp_ajax_ps_dl_vietos`. V14 (darbalaukio lygiu, variklio `klausimas()` neliestas): `faktai()` → Klausimas „Siuntos sukurti nepavyko“, kai
+ *   `venipak_shipping_order_data.status=error` (tekstas lietuviškai) arba LP meta `lp-parcel-failed` (`_woo_lithuaniapost_parcel_create_error`);
+ *   kortelėje „Taisyti adresą“ → skydelis su atverta forma; po išsaugojimo Klausimas dingsta, lipdukas registruojamas iš naujo.
  * v3.15 (S1614, 5 etapas #1 — Raimio idėja 09-04, sutarta): MYGTUKAS „PRANEŠTI KLIENTUI APIE VĖLAVIMĄ“ — Klausimo kortelėje „[T] vėluoja“ IR skydelyje
  *   (sąlyga: apmokėtas, neuždarytas, bent viena dalis dar neišsiųsta, žymės `_ps_velavimo_laiskas` nėra). Siunčia TĄ PATĮ suderintą laišką (tema „Jūsų
  *   užsakymą Nr. N dar komplektuojame“, tekstas v3.13 žodis į žodį) per `velavimo_laiskas($o, $siandien, $u)` — rankiniu būdu praleidžiami tik ≥3 d. d.
@@ -198,7 +209,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.15';
+	const VERSIJA = '3.16';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -229,6 +240,8 @@ class Petshop_Darbalaukis {
 		add_action( 'wp_ajax_ps_dl_skydelis', array( __CLASS__, 'ajax_skydelis' ) );
 		add_action( 'wp_ajax_ps_dl_matyta', array( __CLASS__, 'ajax_matyta' ) );
 		add_action( 'admin_post_ps_dl_tiekimas', array( __CLASS__, 'tiekimas_vykdyti' ) );
+		add_action( 'admin_post_ps_dl_redaguoti', array( __CLASS__, 'redaguoti_vykdyti' ) ); // v3.16
+		add_action( 'wp_ajax_ps_dl_vietos', array( __CLASS__, 'ajax_vietos' ) ); // v3.16
 		// v3.11 (4 etapas #1): Venipak sekimo cron kas 30 min.
 		add_filter( 'cron_schedules', array( __CLASS__, 'cron_tvarkarastis' ) );
 		add_action( 'init', array( __CLASS__, 'cron_planuoti' ), 30 );
@@ -508,7 +521,7 @@ class Petshop_Darbalaukis {
 	protected static function faktai( $o, $z = array() ) {
 		$id = $o->get_id(); $st = $o->get_status();
 		$f  = array( 'o' => $o, 'id' => $id, 'st' => $st, 'paid' => $o->is_paid(), 'kl' => self::d( 'klausimas', $o ), 'vez' => self::d( 'vezejas', $o ),
-			'eil' => array(), 'dalys' => array(), 'rus' => '', 'eiles' => array(), 'takelis' => array(), 'btn' => null, 'skuba' => PHP_INT_MAX, 'uzdarytas' => false, 'riba_s' => '', 'btn_s' => '', 'tiesiai' => array(), 'av_side' => false );
+			'eil' => array(), 'dalys' => array(), 'rus' => '', 'eiles' => array(), 'takelis' => array(), 'btn' => null, 'skuba' => PHP_INT_MAX, 'uzdarytas' => false, 'riba_s' => '', 'btn_s' => '', 'tiesiai' => array(), 'av_side' => false, 'siuntos_klaida' => null );
 		$neapm  = in_array( $st, Petshop_Desk::STATUSAI['neapmoketi'], true );
 		$atsauk = in_array( $st, Petshop_Desk::STATUSAI['atsaukti'], true );
 		$baigta = in_array( $st, array_merge( Petshop_Desk::STATUSAI['ivykdyti'], Petshop_Desk::STATUSAI['kelyje'] ), true );
@@ -575,6 +588,9 @@ class Petshop_Darbalaukis {
 		if ( $f['veluoja'] && ! $f['kl'] ) { $t = array(); foreach ( $f['veluoja'] as $s => $h ) { $t[] = self::vardas( $s ) . ' vėluoja — užsakyta prieš ' . $h . ' val., siunta neišėjo. Paskambink ' . self::vardas( $s ) . '.'; } $f['kl'] = implode( ' ', $t ); }
 		if ( $f['grizta'] && ! $f['kl'] && ! $atsauk ) { $f['kl'] = 'Siunta grįžta'; }
 		if ( ! $f['kl'] && $f['paid'] && ! $f['uzdarytas'] ) { foreach ( $f['eil'] as $e ) { if ( '' === $e['k'] ) { $f['kl'] = 'Prekė be sandėlio'; break; } } }
+		// V14 (v3.16, 5 etapas #2): „Siuntos sukurti nepavyko“ darbalaukio lygiu — Venipak/LP plugino klaidos meta (variklio `klausimas()` žiūri į statusą `lp-parcel-failed`, kurio pluginas neskiria).
+		$f['siuntos_klaida'] = ( $f['paid'] && ! $f['uzdarytas'] ) ? self::siuntos_klaida( $o, $f['vez'] ) : null;
+		if ( $f['siuntos_klaida'] && ! $f['kl'] ) { $f['kl'] = 'Siuntos sukurti nepavyko'; }
 
 		// Žingsneliai kiekvienai eilutei (maketo zingsniai()) + užraktas (A8).
 		foreach ( $f['eil'] as $iid => $e ) {
@@ -740,6 +756,7 @@ class Petshop_Darbalaukis {
 			'laukti' => ( $f['kl'] && ! $f['uzdarytas'] ) ? self::veiksmo_url( 'klaus', $id, $g ) . '&t=laukti' : '',
 			'nesurinkta' => ( ! empty( $f['dalys']['av']['lapas'] ) && empty( $f['dalys']['av']['siunta'] ) && ! $f['uzdarytas'] ) ? self::dl_url( 'nesurinkta', $id ) : '',
 			'velavimas' => self::velavimo_mygtukas( $f ), // v3.15
+			'red' => self::redagavimas( $f ), 'siuntos_klaida' => $f['siuntos_klaida'] ? $f['siuntos_klaida']['t'] : '', // v3.16
 			'zn' => wp_create_nonce( 'ps_dl_zurnalas' ),
 		);
 	}
@@ -768,6 +785,131 @@ class Petshop_Darbalaukis {
 		return array( 'u' => self::dl_url( 'velavimas', $f['id'] ), 'd' => array( 'antraste' => sprintf( 'Užsakymas #%s · %s', $nr, html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ) ),
 			'tekstas' => 'Klientui (' . $o->get_billing_email() . ') išeis laiškas „Jūsų užsakymą Nr. ' . $nr . ' dar komplektuojame“: „' . ( $vardas ? 'Sveiki, ' . $vardas . '.' : 'Sveiki.' ) . ' ' . $p1 . ' Išsiųsime jį kaip galėdami greičiau. Ačiū už kantrybę. Išsiuntę užsakymą informuosime Jus atskiru laišku. Jei turite klausimų, tiesiog atsakykite į šį laišką.“ Vieną kartą — po to mygtuko nebebus.',
 			'ok' => 'Pranešti klientui' ) );
+	}
+
+	/* ============================ v3.16 — REDAGUOTI (adresas / paštomatas) + V14 ============================ */
+
+	/** V14: vežėjo klaida iš plugino meta → ['vez'=>venipak|lp,'t'=>lietuviškai,'raw'=>…] arba null. */
+	protected static function siuntos_klaida( $o, $vez ) {
+		if ( 'lp' === $vez ) {
+			if ( 'lp-parcel-failed' !== (string) $o->get_meta( '_woo_lithuaniapost_shipping_status_value' ) ) { return null; }
+			$e = $o->get_meta( '_woo_lithuaniapost_parcel_create_error' ); $raw = ''; $t = '';
+			$list = is_array( $e ) ? $e : ( is_object( $e ) ? array( $e ) : array() );
+			foreach ( $list as $x ) { $x = (array) $x; $raw .= trim( ( $x['error'] ?? '' ) . ' ' . ( $x['error_description'] ?? '' ) . ' ' . ( $x['field'] ?? '' ) ) . '; '; if ( ! $t && false !== stripos( (string) ( $x['field'] ?? '' ), 'terminal' ) ) { $t = 'LP Express: neteisingas paštomatas'; } }
+			$raw = trim( $raw, '; ' ); if ( ! $raw && is_string( $e ) ) { $raw = $e; }
+			if ( ! $t ) { $t = false !== stripos( $raw, 'address' ) ? 'LP Express: neteisingas adresas' : 'LP Express nepriėmė siuntos'; }
+			return array( 'vez' => 'lp', 't' => $t . ( $raw ? ' (' . mb_substr( $raw, 0, 120 ) . ')' : '' ), 'raw' => $raw );
+		}
+		if ( 0 !== strpos( (string) $vez, 'venipak' ) ) { return null; }
+		$d = json_decode( (string) $o->get_meta( 'venipak_shipping_order_data' ), true );
+		if ( ! is_array( $d ) || 'error' !== ( $d['status'] ?? '' ) || empty( $d['error_message'] ) || ! empty( $d['pack_numbers'] ) ) { return null; }
+		$raw = wp_strip_all_tags( (string) $d['error_message'] ); $t = 'Venipak nepriėmė siuntos';
+		if ( false !== stripos( $raw, 'empty response' ) ) { $t = 'Venipak neatsakė'; }
+		elseif ( preg_match( '/post.?code|pašto/i', $raw ) ) { $t = 'Venipak: neteisingas pašto kodas'; }
+		elseif ( preg_match( '/pickup|locker|terminal|paštomat/i', $raw ) ) { $t = 'Venipak: neteisingas paštomatas'; }
+		elseif ( preg_match( '/address|city|adres|miest/i', $raw ) ) { $t = 'Venipak: neteisingas adresas'; }
+		elseif ( preg_match( '/phone|tel/i', $raw ) ) { $t = 'Venipak: neteisingas telefonas'; }
+		return array( 'vez' => 'venipak', 't' => $t . ' (' . mb_substr( $raw, 0, 120 ) . ')', 'raw' => $raw );
+	}
+
+	/** Redagavimo duomenys skydeliui: kada galima, kokie laukai, dabartinės reikšmės, įspėjimai. null — negalima (priežastis atskirai `red_ne`). */
+	protected static function redagavimas( $f ) {
+		$o = $f['o']; $id = $f['id'];
+		if ( $f['uzdarytas'] ) { return null; }
+		$liko = 0; foreach ( $f['dalys'] as $p ) { if ( $p && empty( $p['issiusta'] ) ) { $liko++; } }
+		if ( ! $liko && $f['dalys'] ) { return null; }
+		$vez = $f['vez']; $tipas = 'lp' === $vez ? 'lp' : ( 'venipak_pastomatas' === $vez ? 'pastomatas' : 'kurjeris' );
+		$isp = array();
+		if ( ! empty( $f['dalys']['av']['nr'] ) ) { $isp[] = 'AV siunta jau užregistruota (' . implode( ', ', $f['dalys']['av']['nr'] ) . ') — išsaugojus spausk „Lipdukas iš naujo“, senas lipdukas negalioja.'; }
+		if ( 'lp' === $vez && $o->get_meta( '_woo_lithuaniapost_shipping_item_id' ) ) { $isp[] = 'LP siunta jau sukurta — po pakeitimo perregistruok (senas langas, Raimis).'; }
+		foreach ( $f['dalys'] as $k => $p ) { if ( 'av' !== $k && $p && ! empty( $p['perduota'] ) && empty( $p['issiusta'] ) ) { $isp[] = 'Jau užsakyta iš ' . self::vardas( $k ) . ' — parašyk tiekėjui naują adresą, sistema pati nepraneša.'; } }
+		$vieta = array( 'id' => '', 't' => '' );
+		if ( 'pastomatas' === $tipas ) { $vieta['id'] = (string) $o->get_meta( 'venipak_pickup_point' ); $pt = function_exists( 'venipak_resolve_order_pickup' ) ? venipak_resolve_order_pickup( $o ) : false; $vieta['t'] = $pt ? self::vietos_tekstas( $pt ) : $vieta['id']; }
+		if ( 'lp' === $tipas ) { $vieta['id'] = (string) $o->get_meta( '_woo_lithuaniapost_lpexpress_terminal_id' ); $vieta['t'] = (string) $o->get_meta( '_woo_lithuaniapost_lpexpress_terminal' ) ?: $vieta['id']; }
+		return array( 'u' => admin_url( 'admin-post.php' ), 'n' => wp_create_nonce( 'ps_dl_red_' . $id ), 'g' => self::url( array( 'atidaryti' => $id ) ), 'tipas' => $tipas, 'isp' => $isp, 'laiskas' => (bool) $o->get_billing_email(),
+			'laukai' => array( 'vardas' => $o->get_shipping_first_name() ?: $o->get_billing_first_name(), 'pavarde' => $o->get_shipping_last_name() ?: $o->get_billing_last_name(), 'adresas' => $o->get_shipping_address_1(), 'adresas2' => $o->get_shipping_address_2(), 'miestas' => $o->get_shipping_city(), 'kodas' => $o->get_shipping_postcode(), 'tel' => $o->get_billing_phone() ?: $o->get_shipping_phone() ), 'vieta' => $vieta );
+	}
+	protected static function vietos_tekstas( $pt ) { $pt = (array) $pt; return trim( ( $pt['display_name'] ?? $pt['name'] ?? '' ) . ' — ' . ( $pt['address'] ?? '' ) . ', ' . ( $pt['city'] ?? '' ), ' —,' ); }
+
+	/** Paštomatų sąrašas formai (LT): Venipak — plugino `venipak_fetch_pickups('LT')`; LP — plugino lentelė `woo_lithuaniapost_unisend_terminals`. [[id, tekstas], …] pagal miestą. */
+	public static function ajax_vietos() {
+		if ( ! current_user_can( 'edit_shop_orders' ) || ! check_ajax_referer( 'ps_dl_zurnalas', 'n', false ) ) { wp_send_json_error( 'teisės', 403 ); }
+		$vez = sanitize_key( $_GET['vez'] ?? '' ); $out = array();
+		if ( 'pastomatas' === $vez ) {
+			if ( ! function_exists( 'venipak_fetch_pickups' ) ) { wp_send_json_error( 'Venipak plugino nėra', 500 ); }
+			foreach ( (array) venipak_fetch_pickups( 'LT' ) as $pt ) { $pt = (array) $pt; if ( empty( $pt['id'] ) ) { continue; } $out[] = array( (string) $pt['id'], (string) ( $pt['city'] ?? '' ), self::vietos_tekstas( $pt ) ); }
+		} elseif ( 'lp' === $vez ) {
+			global $wpdb; $t = $wpdb->prefix . 'woo_lithuaniapost_unisend_terminals';
+			foreach ( (array) $wpdb->get_results( "SELECT terminal_id, name, address, city FROM {$t} WHERE country_code = 'LT'", ARRAY_A ) as $r ) { $out[] = array( (string) $r['terminal_id'], (string) $r['city'], trim( $r['name'] . ' — ' . $r['address'] . ', ' . $r['city'] ) ); }
+		} else { wp_send_json_error( 'nežinomas vežėjas', 400 ); }
+		usort( $out, function ( $a, $b ) { return strcasecmp( $a[1] . ' ' . $a[2], $b[1] . ' ' . $b[2] ); } );
+		wp_send_json_success( $out );
+	}
+
+	/** „Redaguoti“ → „Išsaugoti“ (POST admin-post `ps_dl_redaguoti`): adresas / paštomatas / telefonas be WC; pastaba prieš/po, įvykis `redaguoti`, klaidos meta nuimama, laiškas klientui (varnelė). */
+	public static function redaguoti_vykdyti() {
+		if ( ! current_user_can( 'edit_shop_orders' ) ) { wp_die( 'Nepakanka teisių' ); }
+		$id = absint( $_POST['id'] ?? 0 ); check_admin_referer( 'ps_dl_red_' . $id );
+		$o = wc_get_order( $id ); if ( ! $o ) { wp_die( 'Užsakymas nerastas' ); }
+		$atgal = wp_validate_redirect( wp_unslash( $_POST['g'] ?? '' ), admin_url( 'admin.php?page=' . self::SLUG . '&atidaryti=' . $id ) );
+		$u = wp_get_current_user(); $lock = 'ps_dl_lock_' . $id;
+		$baigti = function ( $k, $t ) use ( $o, $atgal, $lock ) { delete_transient( $lock ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => $k, 'pd_nr' => rawurlencode( $o->get_order_number() . '|' . $t ) ), $atgal ) ); exit; };
+		if ( get_transient( $lock ) ) { $baigti( 'dl_info', 'veiksmas jau vykdomas — palauk sekundę' ); } set_transient( $lock, 1, 20 );
+		try {
+			$f = self::faktai( $o, self::zurnalas( array( $id ) ) ); $red = self::redagavimas( $f );
+			if ( ! $red ) { $baigti( 'dl_klaida', 'redaguoti nebegalima — užsakymas uždarytas arba viskas išsiųsta' ); }
+			$g = function ( $k ) { return trim( sanitize_text_field( wp_unslash( $_POST[ $k ] ?? '' ) ) ); };
+			$tel = $g('tel'); $pries = array(); $po = array(); $zin = array();
+			if ( 'kurjeris' === $red['tipas'] ) {
+				$nauji = array( 'vardas' => $g('vardas'), 'pavarde' => $g('pavarde'), 'adresas' => $g('adresas'), 'adresas2' => $g('adresas2'), 'miestas' => $g('miestas'), 'kodas' => $g('kodas') );
+				if ( '' === $nauji['adresas'] || '' === $nauji['miestas'] || '' === $nauji['kodas'] ) { $baigti( 'dl_klaida', 'adresas, miestas ir pašto kodas privalomi' ); }
+				$set = array( 'vardas' => 'set_shipping_first_name', 'pavarde' => 'set_shipping_last_name', 'adresas' => 'set_shipping_address_1', 'adresas2' => 'set_shipping_address_2', 'miestas' => 'set_shipping_city', 'kodas' => 'set_shipping_postcode' );
+				$pav = array( 'vardas' => 'Vardas', 'pavarde' => 'Pavardė', 'adresas' => 'Adresas', 'adresas2' => 'Adresas (2)', 'miestas' => 'Miestas', 'kodas' => 'Pašto kodas' );
+				foreach ( $nauji as $k => $v ) { $buvo = (string) $red['laukai'][ $k ]; if ( $v !== $buvo ) { $pries[ $k ] = $buvo; $po[ $k ] = $v; $zin[] = $pav[ $k ] . ': „' . $buvo . '“ → „' . $v . '“'; $o->{$set[ $k ]}( $v ); } }
+			} elseif ( 'pastomatas' === $red['tipas'] ) {
+				$vid = $g('vieta'); if ( '' === $vid ) { $baigti( 'dl_klaida', 'paštomatas nepasirinktas' ); }
+				if ( $vid !== $red['vieta']['id'] ) {
+					if ( ! function_exists( 'venipak_store_order_pickup' ) || ! function_exists( 'venipak_find_pickup_by_id' ) ) { $baigti( 'dl_klaida', 'Venipak plugino paštomatų funkcijų nėra' ); }
+					$pt = venipak_find_pickup_by_id( $vid ); if ( ! $pt ) { $baigti( 'dl_klaida', 'tokio Venipak paštomato sąraše nėra (' . $vid . ')' ); }
+					venipak_store_order_pickup( $o, $vid ); $nt = self::vietos_tekstas( $pt );
+					$pries['vieta'] = $red['vieta']['t']; $po['vieta'] = $nt; $zin[] = 'Paštomatas: „' . $red['vieta']['t'] . '“ → „' . $nt . '“';
+				}
+			} elseif ( 'lp' === $red['tipas'] ) {
+				$vid = $g('vieta'); if ( '' === $vid ) { $baigti( 'dl_klaida', 'paštomatas nepasirinktas' ); }
+				if ( $vid !== $red['vieta']['id'] ) {
+					global $wpdb; $tt = $wpdb->prefix . 'woo_lithuaniapost_unisend_terminals';
+					$r = $wpdb->get_row( $wpdb->prepare( "SELECT terminal_id, name, address, city FROM {$tt} WHERE terminal_id = %s AND country_code = 'LT' LIMIT 1", $vid ), ARRAY_A );
+					if ( ! $r ) { $baigti( 'dl_klaida', 'tokio LP paštomato sąraše nėra (' . $vid . ')' ); }
+					$nt = sprintf( '%s - %s, %s', $r['name'], $r['address'], $r['city'] ); // plugino formatas (order-service 840)
+					$o->update_meta_data( '_woo_lithuaniapost_lpexpress_terminal_id', $r['terminal_id'] ); $o->update_meta_data( '_woo_lithuaniapost_lpexpress_terminal', $nt );
+					$pries['vieta'] = $red['vieta']['t']; $po['vieta'] = $nt; $zin[] = 'Paštomatas: „' . $red['vieta']['t'] . '“ → „' . $nt . '“';
+				}
+			}
+			if ( $tel !== (string) $red['laukai']['tel'] ) { if ( '' === $tel ) { $baigti( 'dl_klaida', 'telefonas privalomas' ); } $pries['tel'] = $red['laukai']['tel']; $po['tel'] = $tel; $zin[] = 'Tel.: „' . $red['laukai']['tel'] . '“ → „' . $tel . '“'; $o->set_billing_phone( $tel ); $o->set_shipping_phone( $tel ); }
+			if ( ! $zin ) { $baigti( 'dl_info', 'nieko nepakeista' ); }
+			// Vežėjo klaida — nuimama, kad lipduką būtų galima registruoti iš naujo ir Klausimas dingtų.
+			$nuimta = '';
+			if ( $f['siuntos_klaida'] ) {
+				if ( 'lp' === $f['siuntos_klaida']['vez'] ) { $o->update_meta_data( '_woo_lithuaniapost_shipping_status_value', 'lp-parcel-await' ); $o->delete_meta_data( '_woo_lithuaniapost_parcel_create_error' ); $nuimta = 'LP klaida nuimta — kurk siuntą iš naujo. '; }
+				else { $d = json_decode( (string) $o->get_meta( 'venipak_shipping_order_data' ), true ); if ( is_array( $d ) ) { $d['status'] = ''; $d['error_message'] = ''; $o->update_meta_data( 'venipak_shipping_order_data', wp_json_encode( $d ) ); } $nuimta = 'Venipak klaida nuimta — registruok lipduką iš naujo. '; }
+			}
+			// Laiškas klientui (varnelė, spec §6c numatyta ON). Tekstas — Claude prielaida (Raimiui tvirtinti).
+			$laiskas = 'nesiųstas'; $el = $o->get_billing_email();
+			if ( ! empty( $_POST['laiskas'] ) && $el ) {
+				$nr = $o->get_order_number(); $vardas = trim( (string) $o->get_billing_first_name() ); $dabar_t = array();
+				if ( 'kurjeris' === $red['tipas'] ) { $dabar_t[] = 'Pristatymo adresas: ' . trim( ( $g('vardas') . ' ' . $g('pavarde') ) ) . ', ' . $g('adresas') . ( $g('adresas2') ? ', ' . $g('adresas2') : '' ) . ', ' . $g('kodas') . ' ' . $g('miestas'); }
+				else { $dabar_t[] = 'Paštomatas: ' . ( $po['vieta'] ?? $red['vieta']['t'] ); }
+				$dabar_t[] = 'Telefonas: ' . $tel;
+				$h  = '<p>' . esc_html( $vardas ? "Sveiki, {$vardas}." : 'Sveiki.' ) . '</p><p>' . esc_html( 'Jūsų užsakymo Nr. ' . $nr . ' pristatymo duomenis pakeitėme. Dabar:' ) . '</p><p>' . implode( '<br>', array_map( 'esc_html', $dabar_t ) ) . '</p>';
+				$h .= '<p>' . esc_html( 'Jei tai netikslu, tiesiog atsakykite į šį laišką.' ) . '</p><p>' . esc_html( 'Gražios dienos,' ) . '<br>petshop.lt</p>';
+				$tema = sprintf( 'Jūsų užsakymo Nr. %s pristatymo duomenys pakeisti', $nr );
+				$mailer = WC()->mailer(); $laiskas = $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ) ) ? 'išsiųstas ' . $el : 'išsiųsti nepavyko';
+			}
+			$o->add_order_note( sprintf( 'Darbalaukis: pristatymo duomenys pakeisti (%s): %s. %sKlientui laiškas: %s.', $u->display_name, implode( '; ', $zin ), $nuimta, $laiskas ), false, true ); $o->save();
+			if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $id, 'sritis' => 'desk', 'veiksmas' => 'redaguoti', 'rezultatas' => 'ok', 'kanalas' => 'web', 'kas' => $u->ID, 'kas_vardas' => $u->display_name, 'pries' => $pries, 'po' => $po, 'pastaba' => trim( $red['tipas'] . ': ' . implode( '; ', $zin ) . ' · ' . $nuimta . 'laiškas ' . $laiskas ) ) ); }
+			do_action( 'ps_juosta_isvalyti' );
+			$baigti( 'dl_info', 'pristatymo duomenys pakeisti: ' . implode( '; ', $zin ) . ( $nuimta ? ' · ' . trim( $nuimta ) : '' ) . ( $red['isp'] ? ' · ' . implode( ' ', $red['isp'] ) : '' ) );
+		} catch ( Throwable $e ) { $baigti( 'dl_klaida', 'klaida: ' . $e->getMessage() ); }
 	}
 
 	/* ============================ VEIKSMAI ============================ */
@@ -2006,8 +2148,10 @@ class Petshop_Darbalaukis {
 				$pastaba = 'Mokėjimas nepavyko (Paysera/bankas grąžino klaidą). Jei pinigai vis dėlto atėjo — „Pažymėti apmokėtu“; jei ne — parašyk klientui arba atšauk.';
 				$veiksmai = self::btn_html( self::mygtukas( array( 'apmoketa', '', 'now', '', 'apmoketa' ), $r ) ) . ' ' . $rasyti . ' ' . $atsaukti;
 			} elseif ( 0 === strpos( $kl, 'Siuntos' ) ) {
-				$pastaba = 'Vežėjas siuntos nesukūrė (dažniausiai paštomatas nebegalioja arba adresas). Paštomato / adreso keitimas čia dar nepadarytas — parašyk Raimiui, po pakeitimo registruok lipduką iš naujo.';
-				$veiksmai = '<button class="v p" data-atidaryti="1">Atidaryti</button> ' . $rasyti . ' ' . $atsaukti;
+				// v3.16 (V14): klaida iš plugino meta lietuviškai; „Taisyti adresą“ atveria skydelį su forma; po išsaugojimo klaida nuimama, Klausimas dingsta, lipdukas iš naujo.
+				if ( $sk['siuntos_klaida'] ) { $tekstas = 'Vežėjas siuntos nesukūrė: ' . $sk['siuntos_klaida'] . '.'; }
+				$pastaba = 'Dažniausiai paštomatas nebegalioja arba adresas / pašto kodas neteisingas. „Taisyti adresą“ — pataisyk skydelyje ir išsaugok; klaida nusiims, tada registruok lipduką iš naujo.' . ( $sk['red'] ? '' : ' Redaguoti nebegalima (išsiųsta / uždaryta).' );
+				$veiksmai = ( $sk['red'] ? '<button class="v p" data-atidaryti="1" data-redaguoti="1">Taisyti adresą</button> ' : '<button class="v p" data-atidaryti="1">Atidaryti</button> ' ) . $rasyti . ' ' . $atsaukti;
 			} elseif ( 0 === strpos( $kl, 'Klientas atsisako' ) ) {
 				$pastaba = 'Klientas pateikė sutarties atsisakymą (14 d.). Atšauk užsakymą; pinigų grąžinimą ir kreditinę tvarkysi atskirai.';
 				$veiksmai = $atsaukti . ' ' . $rasyti;
@@ -2165,6 +2309,7 @@ class Petshop_Darbalaukis {
 .skydas .blokas{background:var(--fonas);border-radius:8px;padding:10px 12px;margin:10px 0}.skydas .blokas b{display:block;font-size:12px;color:var(--pilka);font-weight:500;margin-bottom:3px}
 .skydas .dl-klaus{background:var(--raudona-s);color:var(--raudona);border-radius:8px;padding:8px 12px;margin:0 0 10px;font-size:13px}
 .skydas footer{padding:12px 20px;border-top:1px solid var(--linija);display:flex;gap:8px;flex-wrap:wrap;align-items:center}.skydas .zurnalas{font-size:12px;color:var(--pilka)}.skydas .zurnalas ol{margin:0;padding-left:16px}.skydas .zurnalas li{padding:2px 0}.skydas .psuz-klaida{color:var(--raudona)}.skydas .pak input{width:54px;font:inherit;border:1px solid var(--linija);border-radius:5px;padding:2px 6px}
+.dl-red label{display:block;font-size:12px;color:var(--pilka);margin:6px 0 0}.dl-red label.cb{display:flex;align-items:center;gap:6px;color:var(--rasalas);font-size:13px;margin-top:10px}.dl-red input:not([type=checkbox]),.dl-red select{display:block;width:100%;box-sizing:border-box;font:inherit;font-size:13px;color:var(--rasalas);border:1px solid var(--linija);border-radius:5px;padding:5px 8px;background:var(--popierius);margin-top:2px}.dl-red .e2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dl-red .dl-red-v{display:flex;gap:8px;margin-top:10px;align-items:center}.dl-red .dl-note{margin-top:6px}
 .dl-shade{display:none;position:fixed;inset:0;background:rgba(27,38,32,.45);z-index:100000}.dl-shade.on{display:block}
 .dl-dlg{display:none;position:fixed;left:50%;top:38%;transform:translate(-50%,-50%);width:440px;max-width:94vw;background:#fff;border-radius:10px;padding:18px 20px;z-index:100001;box-shadow:0 20px 50px rgba(0,0,0,.25)}
 .dl-dlg.on{display:block}.dl-dlg h3{margin:0 0 8px;font-size:15px}.dl-dlg p{margin:0 0 12px;color:var(--pilka);font-size:13.5px}.dl-opt{display:flex;gap:8px;align-items:center;font-size:13px;margin-bottom:14px}.dl-dlg-b{display:flex;justify-content:flex-end;gap:8px}
@@ -2205,7 +2350,7 @@ class Petshop_Darbalaukis {
 			+'<div class="keliai">'+l.keliai.map(function(k){ var c=KC[k.k]+(k.on?' on':'')+(k.gal||k.on?'':' ne'); var t='<i></i>'+esc(k.t); if(k.u) return '<a class="'+c+'" href="'+esc(k.u)+'" title="Keisti kelią">'+t+'</a>'; return '<span class="kb '+c+'"'+(k.kodel_ne&&!k.on?' title="'+esc(k.kodel_ne)+'"':'')+'>'+t+'</span>'; }).join('')+'</div>'
 			+'<div class="kodel">'+esc(l.kodel)+(l.tiek_url?' <a href="'+esc(l.tiek_url)+'">Laukiam iš tiekėjų →</a>':'')+'</div>'+(l.lock?'<div class="lock">Nebekeičiama: '+esc(l.lock)+'</div>':'')
 			+(l.zing.length?'<div class="zingsneliai">'+l.zing.map(function(z){ return '<span class="'+z[1]+'">'+(z[1]==='ok'?'✓ ':'')+esc(z[0])+'</span>'; }).join('')+'</div>':'')+'</div>'; }).join('');
-		$('skPr').innerHTML=esc(o.vezejas)+(o.vieta?' · '+esc(o.vieta):'')+'<br><span class="pilkas maz">'+esc(o.adresas)+(o.tel?' · '+esc(o.tel):'')+(o.mail?' · '+esc(o.mail):'')+'</span>';
+		$('skPr').innerHTML=prist(o);
 		var S=$('skSiunta'); if(o.pak||o.nr_siuntos.length||o.perreg){ S.style.display='block'; $('skSiuntaT').innerHTML=(o.nr_siuntos.length?'<div>'+o.nr_siuntos.map(esc).join('<br>')+'</div>':'<div class="pilkas maz">siunta dar neregistruota</div>')
 			+(o.pak?'<div class="pak" style="margin-top:6px">Dėžių: <input type="number" min="1" max="20" value="'+o.pak.kiek+'" id="skPakN"> <a class="v" id="skPakSave" href="'+esc(o.pak.u)+'">Išsaugoti</a>'+(o.perreg?' <a class="v" href="'+esc(o.perreg)+'" id="skPerreg">Lipdukas iš naujo</a>':'')+'</div>':'');
 			var pn=$('skPakN'),ps=$('skPakSave'); if(pn&&ps){ var base=ps.getAttribute('href'); var upd=function(){ ps.href=base+'&n='+encodeURIComponent(pn.value); var pr=$('skPerreg'); if(pr) pr.href=o.perreg+'&n='+encodeURIComponent(pn.value); }; pn.oninput=upd; pn.onkeydown=function(ev){ if(ev.key==='Enter'){ ev.preventDefault(); ps.click(); } }; upd(); } } else S.style.display='none';
@@ -2213,13 +2358,29 @@ class Petshop_Darbalaukis {
 		$('skZur').innerHTML='<span class="pilkas maz">kraunama…</span>'; fetch(ajaxurl+'?action=ps_dl_zurnalas&id='+o.id+'&n='+encodeURIComponent(o.zn),{credentials:'same-origin'}).then(function(r){return r.json();}).then(function(j){ if(j&&j.success&&$('skNr').textContent.indexOf('#'+o.nr)===0) $('skZur').innerHTML=j.data; }).catch(function(){ $('skZur').textContent='žurnalo įkelti nepavyko'; });
 		var f=''; if(o.rusiuoti) f+='<a class="v p" href="'+esc(o.rusiuoti)+'">Surūšiuota</a><span class="pilkas maz">peržiūrėk, iš kur važiuoja prekės, ir patvirtink</span>';
 		if(o.btn&&!o.rusiuoti){ if(o.btn.pasyvus) f+='<a class="kel ts" href="'+esc(o.btn.u)+'"><i></i>'+esc(o.btn.t)+'</a>'; else f+='<a class="v p" href="'+esc(o.btn.u)+'"'+(o.btn.d?' data-d="'+esc(JSON.stringify(o.btn.d))+'"':'')+'>'+esc(o.btn.t)+'</a>'; }
-		f+='<span style="margin-left:auto"></span><button class="v t" disabled title="dar nepadaryta">Redaguoti</button><button class="v t" disabled title="dar nepadaryta">Sąskaita</button>'+(o.nesurinkta?'<a class="v t" href="'+esc(o.nesurinkta)+'" title="Grąžinti į „Surinkti“">Atšaukti surinkimą</a>':'')+(o.sekimo?'<a class="v t" href="'+esc(o.sekimo)+'">Sekimo numeriai klientui</a>':'')+(o.velavimas?'<a class="v t" href="'+esc(o.velavimas.u)+'" data-d="'+esc(JSON.stringify(o.velavimas.d))+'">Pranešti klientui apie vėlavimą</a>':'')+(o.mail?'<a class="v t" href="mailto:'+esc(o.mail)+'?subject='+encodeURIComponent('Užsakymas #'+o.nr+' — petshop.lt')+'">Parašyti klientui</a>':'')+(o.atsaukti?'<a class="v t raud" href="'+esc(o.atsaukti.u)+'" data-d="'+esc(JSON.stringify(o.atsaukti.d))+'">Atšaukti</a>':'');
-		$('skV').innerHTML=f; SK.classList.add('on'); UZ.classList.add('on'); SK.setAttribute('aria-hidden','false'); skOn=true; }
+		f+='<span style="margin-left:auto"></span>'+(o.red?'<button class="v t" id="skRed">Redaguoti</button>':'<button class="v t" disabled title="išsiųsta arba uždaryta">Redaguoti</button>')+'<button class="v t" disabled title="dar nepadaryta">Sąskaita</button>'+(o.nesurinkta?'<a class="v t" href="'+esc(o.nesurinkta)+'" title="Grąžinti į „Surinkti“">Atšaukti surinkimą</a>':'')+(o.sekimo?'<a class="v t" href="'+esc(o.sekimo)+'">Sekimo numeriai klientui</a>':'')+(o.velavimas?'<a class="v t" href="'+esc(o.velavimas.u)+'" data-d="'+esc(JSON.stringify(o.velavimas.d))+'">Pranešti klientui apie vėlavimą</a>':'')+(o.mail?'<a class="v t" href="mailto:'+esc(o.mail)+'?subject='+encodeURIComponent('Užsakymas #'+o.nr+' — petshop.lt')+'">Parašyti klientui</a>':'')+(o.atsaukti?'<a class="v t raud" href="'+esc(o.atsaukti.u)+'" data-d="'+esc(JSON.stringify(o.atsaukti.d))+'">Atšaukti</a>':'');
+		$('skV').innerHTML=f; SK.classList.add('on'); UZ.classList.add('on'); SK.setAttribute('aria-hidden','false'); skOn=true;
+		var rb=$('skRed'); if(rb){ rb.onclick=function(){ redaguoti(o); }; } if(redOn&&o.red){ redOn=false; redaguoti(o); } else redOn=false; }
+	/* --- v3.16: Redaguoti (adresas / paštomatas) --- */
+	var redOn=false;
+	function redaguoti(o){ var r=o.red; if(!r) return; var P=$('skPr'); var L=r.laukai; var h='<form method="post" action="'+esc(r.u)+'" class="dl-red" id="skRedF"><input type="hidden" name="action" value="ps_dl_redaguoti"><input type="hidden" name="id" value="'+o.id+'"><input type="hidden" name="_wpnonce" value="'+esc(r.n)+'"><input type="hidden" name="g" value="'+esc(r.g)+'">';
+		h+='<div class="pilkas maz">'+esc(o.vezejas)+' — pristatymo būdas nekeičiamas</div>';
+		if(r.isp.length) h+=r.isp.map(function(t){ return '<div class="dl-note">⚠ '+esc(t)+'</div>'; }).join('');
+		if(r.tipas==='kurjeris'){ h+='<div class="e2"><label>Vardas<input name="vardas" value="'+esc(L.vardas)+'"></label><label>Pavardė<input name="pavarde" value="'+esc(L.pavarde)+'"></label></div><label>Adresas (gatvė, namas, butas)<input name="adresas" value="'+esc(L.adresas)+'" required></label><label>Adresas (2) — papildomai<input name="adresas2" value="'+esc(L.adresas2)+'"></label><div class="e2"><label>Miestas<input name="miestas" value="'+esc(L.miestas)+'" required></label><label>Pašto kodas<input name="kodas" value="'+esc(L.kodas)+'" required></label></div>'; }
+		else { h+='<label>Paštomatas dabar<div class="pilkas maz">'+esc(r.vieta.t||'—')+'</div></label><label>Ieškoti (miestas, vieta)<input id="skRedQ" placeholder="pvz. Kaunas"></label><label>Naujas paštomatas<select name="vieta" id="skRedS" required><option value="'+esc(r.vieta.id)+'">'+esc(r.vieta.t||'— nepasirinkta —')+'</option></select></label><div class="pilkas maz" id="skRedN">kraunama…</div>'; }
+		h+='<label>Telefonas<input name="tel" value="'+esc(L.tel)+'" required></label>';
+		h+='<label class="cb"><input type="checkbox" name="laiskas" value="1"'+(r.laiskas?' checked':' disabled')+'> Pranešti klientui laišku'+(r.laiskas?'':' (el. pašto nėra)')+'</label>';
+		h+='<div class="dl-red-v"><button type="submit" class="v p">Išsaugoti</button><button type="button" class="v t" id="skRedNe">Atšaukti</button></div></form>';
+		P.innerHTML=h; $('skRedNe').onclick=function(){ P.innerHTML=prist(o); }; var fi=P.querySelector('input:not([type=hidden])'); if(fi) fi.focus();
+		if(r.tipas!=='kurjeris'){ fetch(ajaxurl+'?action=ps_dl_vietos&vez='+encodeURIComponent(r.tipas)+'&n='+encodeURIComponent(o.zn),{credentials:'same-origin'}).then(function(x){return x.json();}).then(function(j){ if(!j||!j.success){ $('skRedN').textContent='sąrašo įkelti nepavyko'; return; } var V=j.data, S=$('skRedS'), Q=$('skRedQ');
+			function pild(q){ q=(q||'').toLowerCase(); var n=0; var opts=''; V.forEach(function(v){ if(q&&(v[1]+' '+v[2]).toLowerCase().indexOf(q)<0) return; n++; if(n>300) return; opts+='<option value="'+esc(v[0])+'"'+(v[0]===r.vieta.id?' selected':'')+'>'+esc(v[2])+'</option>'; }); S.innerHTML=opts||'<option value="">— nerasta —</option>'; $('skRedN').textContent=(n>300?'rodoma 300 iš ':'')+n+' iš '+V.length+' (LT)'; }
+			pild(''); Q.oninput=function(){ pild(Q.value); }; }).catch(function(){ $('skRedN').textContent='sąrašo įkelti nepavyko'; }); } }
+	function prist(o){ return esc(o.vezejas)+(o.vieta?' · '+esc(o.vieta):'')+'<br><span class="pilkas maz">'+esc(o.adresas)+(o.tel?' · '+esc(o.tel):'')+(o.mail?' · '+esc(o.mail):'')+'</span>'; }
 	function uzdaryti(){ SK.classList.remove('on'); UZ.classList.remove('on'); SK.setAttribute('aria-hidden','true'); skOn=false; }
 	$('skUzd').onclick=uzdaryti; UZ.onclick=uzdaryti;
 	document.addEventListener('click',function(e){
 		var a=e.target.closest('a[data-d]'); if(a){ e.preventDefault(); e.stopPropagation(); dlg(a); return; }
-		var b=e.target.closest('button[data-atidaryti]'); if(b){ e.preventDefault(); e.stopPropagation(); var r=b.closest('.eil'); if(r) atidaryti(rows.indexOf(r)); return; }
+		var b=e.target.closest('button[data-atidaryti]'); if(b){ e.preventDefault(); e.stopPropagation(); var r=b.closest('.eil'); if(r){ redOn=!!b.getAttribute('data-redaguoti'); if(redOn&&r._o) r._o=null; atidaryti(rows.indexOf(r)); } return; }
 		if(e.target.closest('a,button,input,select,label')) return;
 		var r2=e.target.closest('.eil[data-sk]'); if(r2) atidaryti(rows.indexOf(r2));
 	});
