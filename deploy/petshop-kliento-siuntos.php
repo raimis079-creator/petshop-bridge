@@ -1,6 +1,9 @@
 <?php
 /**
- * Petshop Kliento siuntos v1.2 (S1612, 2026-09-04; 4 etapas #1 — būsena „Pristatyta“ iš Venipak sekimo) + kliento pusės sargai.
+ * Petshop Kliento siuntos v1.3 (S1614, 2026-09-04; 5 etapas #3 — būsena „Atšaukta“ daliai, kuri grįžo ir buvo atšaukta) + kliento pusės sargai.
+ *
+ * v1.3 — ketvirta būsena **Atšaukta** (`kliento_siuntos()` `busena=atsaukta`, darbalaukis v3.17 dalinis „Siunta grįžta“): pilka žymė, be numerių
+ *   ir „Sekti siuntą“, antraštė „Siunta“ (į „n iš N“ neskaičiuojama). Tekstas — Claude prielaida (Raimiui tvirtinti).
  *
  * v1.2 — trečia būsena **Pristatyta** (`kliento_siuntos()` `busena=pristatyta`, darbalaukis v3.11: visi dalies numeriai Venipak'e „Delivered“).
  *   Žymė žalia kaip „Išsiųsta“, be datos (kaip kitos būsenos); „Sekti siuntą“ lieka. Piešia tik — duomenys vis tas pats vienas šaltinis.
@@ -34,7 +37,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Kliento_Siuntos {
 
-	const VERSIJA = '1.2';
+	const VERSIJA = '1.3';
 
 	public static function init() {
 		add_action( 'woocommerce_order_details_before_order_table', array( __CLASS__, 'blokas' ), 5, 1 );
@@ -81,10 +84,10 @@ class Petshop_Kliento_Siuntos {
 		$h  = '<section class="ps-siuntos" data-n="' . (int) count( $siuntos ) . '">';
 		$h .= '<h2 class="woocommerce-order-details__title">' . esc_html( 'Siuntos' ) . '</h2>';
 		foreach ( $siuntos as $s ) {
-			$b = (string) ( $s['busena'] ?? '' ); $iss = in_array( $b, array( 'issiusta', 'pristatyta' ), true );
-			$antr = (int) ( $s['viso'] ?? 1 ) > 1 ? sprintf( 'Siunta %d iš %d', (int) $s['n'], (int) $s['viso'] ) : 'Siunta';
-			$h .= '<div class="ps-siunta ps-siunta--' . ( $iss ? 'issiusta' : 'ruosiama' ) . '">';
-			$h .= '<div class="ps-siunta__antr"><b>' . esc_html( $antr ) . '</b><span class="ps-siunta__busena">' . esc_html( 'pristatyta' === $b ? 'Pristatyta' : ( $iss ? 'Išsiųsta' : 'Ruošiama' ) ) . '</span></div>';
+			$b = (string) ( $s['busena'] ?? '' ); $iss = in_array( $b, array( 'issiusta', 'pristatyta' ), true ); $ats = 'atsaukta' === $b; // v1.3
+			$antr = ( ! $ats && (int) ( $s['viso'] ?? 1 ) > 1 ) ? sprintf( 'Siunta %d iš %d', (int) $s['n'], (int) $s['viso'] ) : 'Siunta';
+			$h .= '<div class="ps-siunta ps-siunta--' . ( $ats ? 'atsaukta' : ( $iss ? 'issiusta' : 'ruosiama' ) ) . '">';
+			$h .= '<div class="ps-siunta__antr"><b>' . esc_html( $antr ) . '</b><span class="ps-siunta__busena">' . esc_html( $ats ? 'Atšaukta' : ( 'pristatyta' === $b ? 'Pristatyta' : ( $iss ? 'Išsiųsta' : 'Ruošiama' ) ) ) . '</span></div>';
 			if ( ! empty( $s['prekes'] ) ) {
 				$h .= '<ul class="ps-siunta__prekes">';
 				foreach ( $s['prekes'] as $p ) { $h .= '<li>' . esc_html( (int) $p['q'] . ' × ' . $p['n'] ) . '</li>'; }
@@ -102,7 +105,7 @@ class Petshop_Kliento_Siuntos {
 		$h .= '</section>';
 		$h .= '<style>.ps-siuntos{margin:0 0 30px}.ps-siunta{border:1px solid #e2e2e2;border-radius:6px;padding:14px 16px;margin:0 0 12px}'
 			. '.ps-siunta__antr{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:1.05em}.ps-siunta__busena{font-size:.8em;font-weight:700;letter-spacing:.3px;padding:2px 10px;border-radius:12px;background:#ececec;color:#555}'
-			. '.ps-siunta--issiusta .ps-siunta__busena{background:' . esc_attr( $spalva ) . ';color:#fff}'
+			. '.ps-siunta--issiusta .ps-siunta__busena{background:' . esc_attr( $spalva ) . ';color:#fff}.ps-siunta--atsaukta{opacity:.7}'
 			. '.ps-siunta__prekes{margin:8px 0 6px;padding-left:20px;font-size:.95em}.ps-siunta__prekes li{margin:0 0 3px}'
 			. '.ps-siunta__nr{display:flex;align-items:center;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;margin-top:8px;font-size:.95em}'
 			. '.ps-siunta__nr b{letter-spacing:.4px}.ps-siunta__sekti.button{margin:0;background:' . esc_attr( $spalva ) . ';color:#fff}</style>';
