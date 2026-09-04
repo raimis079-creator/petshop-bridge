@@ -1,0 +1,125 @@
+{
+ "v": "dep-185209",
+ "kurimas": 200,
+ "sid": 4775,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1615 e8d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "rasyta": {
+   "14894": {
+    "id": 14894,
+    "len_pries": 6992,
+    "len_po": 7409,
+    "md5_po": "085dc3bb856edd63534f7e444ed7c42e"
+   },
+   "34523": {
+    "id": 34523,
+    "len_pries": 2695,
+    "len_po": 3220,
+    "md5_po": "60dbd49c561a969fb30b2ab5470fe853"
+   },
+   "34524": {
+    "id": 34524,
+    "len_pries": 16941,
+    "len_po": 18107,
+    "md5_po": "8c1f2c48789031284b5100820b27614c"
+   }
+  },
+  "wpsc": "post_change"
+ },
+ "T": {
+  "v": "S1615 e8d",
+  "f": "T",
+  "temp_istrinta": 0,
+  "db": {
+   "14894": {
+    "md5": "085dc3bb856edd63534f7e444ed7c42e",
+    "yra": 3
+   },
+   "34523": {
+    "md5": "60dbd49c561a969fb30b2ab5470fe853",
+    "yra": 1
+   },
+   "34524": {
+    "md5": "8c1f2c48789031284b5100820b27614c",
+    "yra": 1
+   }
+  },
+  "front": {
+   "14894": {
+    "code": 200,
+    "yra": 3,
+    "url": "https://dev.avesa.lt/pristatymas/"
+   },
+   "34523": {
+    "code": 200,
+    "yra": 1,
+    "url": "https://dev.avesa.lt/grazinimas/"
+   },
+   "34524": {
+    "code": 200,
+    "yra": 1,
+    "url": "https://dev.avesa.lt/taisykles/"
+   }
+  },
+  "shots": [
+   {
+    "n": "s1615_e8_taisykles_610",
+    "u": "https://dev.avesa.lt/taisykles/",
+    "w": 1200,
+    "eval": "(()=>{const ps=[...document.querySelectorAll('p')].filter(p=>/^6\\.1[01]\\./.test(p.innerText.trim())); if(ps[0]) ps[0].scrollIntoView(); return {n:ps.length,t:ps.map(p=>p.innerText.slice(0,120))}; })()"
+   },
+   {
+    "n": "s1615_e8_pristatymas",
+    "u": "https://dev.avesa.lt/pristatymas/",
+    "w": 1200,
+    "eval": "(()=>{const p=[...document.querySelectorAll('p')].find(p=>p.innerText.includes('3,99 Eur') && p.innerText.includes('neatsiima')); if(p) p.scrollIntoView(); return {yra:!!p,t:p?p.innerText.slice(0,160):''}; })()"
+   },
+   {
+    "n": "s1615_e8_grazinimas",
+    "u": "https://dev.avesa.lt/grazinimas/",
+    "w": 1200,
+    "eval": "(()=>{const h=[...document.querySelectorAll('h2')].find(h=>h.innerText.includes('Neatsiimta')); if(h) h.scrollIntoView(); return {yra:!!h}; })()"
+   }
+  ]
+ },
+ "shots": {
+  "s1615_e8_taisykles_610": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/taisykles/",
+   "title": "Pirkimo sąlygos ir taisyklės - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "n": 2,
+    "t": [
+     "6.10. Jeigu Pirkėjas siuntos neatsiima iš paštomato ar atsiėmimo punkto per vežėjo nustatytą saugojimo terminą arba nepr",
+     "6.11. Pirkėjui atsisakius pakartotinio siuntimo arba per 14 (keturiolika) dienų nuo Pardavėjo pranešimo nesusitarus dėl "
+    ]
+   }
+  },
+  "s1615_e8_pristatymas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/pristatymas/",
+   "title": "Pristatymas - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "yra": true,
+    "t": "Jeigu Pirkėjas siuntos neatsiima iš paštomato ar atsiėmimo punkto per vežėjo nustatytą saugojimo terminą arba nepriima jos iš kurjerio, siunta grąžinama Pardavė"
+   }
+  },
+  "s1615_e8_grazinimas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/grazinimas/",
+   "title": "Grąžinimas - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "yra": true
+   }
+  }
+ }
+}
