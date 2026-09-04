@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.10.5 (S1611, 3 etapas #5b — Raimio sprendimai 09-04: nesurūšiuotam mišriam klientui viena „Siunta — Ruošiama“) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.10.6 (S1611, Raimis 09-04: lipdukai privalomi visoms siuntoms klientui — „be lipdukų“ tik į AV) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -26,6 +26,11 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v3.10.6 (S1611, Raimis 09-04): LIPDUKAI PRIVALOMI visoms siuntoms klientui (AV ir tiekėjų dropship); „be lipdukų“ galimas TIK tiekėjo
+ *   užsakymui į AV (prekės atkeliauja įvairiai). Todėl: Dropshipping kortelės mygtukas „Užsakyti be lipdukų“ IŠIMTAS (variklio
+ *   `ps_dropship_send` parametras `be_lipduku` lieka — UI jo nebesiūlo); §18.3 sargo apėjimas `_ps_uzbaigti_be_siuntu` (v3.10.1) IŠIMTAS;
+ *   „[T] išsiuntė“ / „Kurjeris paėmė (viską)“ be registruoto siuntos numerio — NELEIDŽIAMA („siuntos numerio nėra — pirma lipdukas“).
+ *   Laiško „be numerio“ tekstas lieka tik tekstiniu saugikliu.
  * v3.10.5 (S1611, Raimis 09-04, #5b prielaida 4 = B): kol mišrus užsakymas NEsurūšiuotas (`_ps_rusiuota` tuščia, dalių >1, nė viena
  *   neišsiųsta), `kliento_siuntos()` klientui grąžina VIENĄ „Siunta — Ruošiama“ su visomis prekėmis, be numerio — kad siuntų skaičius
  *   klientui nesikeistų atgal po rūšiavimo „viską į AV“. Prielaidos 1, 2, 3, 5 — Raimio patvirtintos 09-04.
@@ -128,7 +133,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.10.5';
+	const VERSIJA = '3.10.6';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -875,6 +880,11 @@ class Petshop_Darbalaukis {
 		$visos = true; foreach ( $f['dalys'] as $k => $p ) { if ( $p && empty( $iss[ $k ] ) ) { $visos = false; } }
 		if ( $jau && ! $visos ) { return array( 'dl_info', ( 'av' === $dalis ? 'AV dalis' : self::vardas( $dalis ) ) . ' jau pažymėta išsiųsta' ); }
 		if ( ! $jau && $dalis && ( 'av' === $dalis ? ! $f['dalys']['av']['siunta'] : empty( $f['dalys'][ $dalis ]['perduota'] ) ) ) { return array( 'dl_klaida', ( 'av' === $dalis ? 'AV siunta dar be lipduko' : 'dar neužsakyta iš ' . self::vardas( $dalis ) ) ); }
+		// v3.10.6 (Raimis 09-04): siunta klientui — tik su registruotu numeriu (lipduku); „be lipdukų“ tik į AV.
+		foreach ( $f['dalys'] as $k => $p ) {
+			if ( ! $p || ! empty( $iss[ $k ] ) || ( $dalis && $k !== $dalis ) ) { continue; }
+			if ( 'av' === $k ? empty( $p['siunta'] ) : empty( $p['nr'] ) ) { return array( 'dl_klaida', 'av' === $k ? 'AV siunta dar be lipduko' : self::vardas( $k ) . ' — siuntos numerio nėra, pirma lipdukas' ); }
+		}
 		// K4: dalies būsena — pažymim šią dalį; kitos dalys — kaip yra. Jei visos jau pažymėtos, o užsakymas ne completed — kartojam užbaigimą (v3.10.1).
 		if ( ! $jau ) {
 			$zym = array( $dalis ? $dalis : null ); if ( ! $dalis ) { $zym = array(); foreach ( $f['dalys'] as $k => $p ) { if ( $p ) { $zym[] = $k; } } }
@@ -892,13 +902,8 @@ class Petshop_Darbalaukis {
 			do_action( 'ps_juosta_isvalyti' );
 			return array( 'dl_dalis', ( 'av' === $dalis ? 'kurjeris paėmė AV siuntą' : self::vardas( $dalis ) . ' išsiuntė' ) . ' — ' . $laiskas . ' · dar laukiam: ' . implode( ', ', $truksta ) );
 		}
-		// Paskutinė dalis → completed. §18.3 sargas: jei registruota mažiau siuntų nei `_ps_shipments` (dropship „be lipdukų“), o darbuotojas
-		// pažymėjo VISAS dalis išsiųstomis — variklio apėjimas `_ps_uzbaigti_be_siuntu=1` (v3.10.1).
+		// Paskutinė dalis → completed. §18.3 sargas (variklis) — apėjimo nebėra (v3.10.6): visos siuntos klientui registruotos su numeriu.
 		$ship = (int) $o->get_meta( '_ps_shipments' ); $reg = class_exists( 'Petshop_Siuntos' ) ? Petshop_Siuntos::registruota_grupiu( $o ) : $ship;
-		if ( $ship > 1 && $reg < $ship && ! $o->get_meta( '_ps_uzbaigti_be_siuntu' ) ) {
-			$o->update_meta_data( '_ps_uzbaigti_be_siuntu', 1 );
-			$o->add_order_note( sprintf( 'Užbaigiama be registruotų siuntų (%d iš %d): visos dalys pažymėtos išsiųstomis darbalaukyje (%s).', $reg, $ship, implode( ', ', array_map( array( __CLASS__, 'vardas' ), array_keys( $iss ) ) ) ), false, true ); $o->save();
-		}
 		self::d( 'laiskai_off' );
 		$o->add_order_note( sprintf( 'Pažymėta išsiųsta darbalaukyje (%s, %s). WC laiškas klientui: NESIŲSTAS.', $kas, $kanalas ), false, true );
 		$o->update_status( 'completed', '' );
@@ -1376,7 +1381,6 @@ class Petshop_Darbalaukis {
 				echo '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" class="dl-inl dl-laiskas-f" id="dlf_' . esc_attr( $src ) . '">' . wp_nonce_field( 'ps_dropship_send', '_wpnonce', true, false ) . '<input type="hidden" name="action" value="ps_dropship_send"><input type="hidden" name="tiekejas" value="' . esc_attr( $src ) . '"><input type="hidden" name="uzsakymai" value="' . esc_attr( $ids_csv ) . '" class="dl-uzs-ids"><input type="hidden" name="ps_dl_g" value="' . esc_url( $cia ) . '"><input type="hidden" name="laisk_zyme" value="1">';
 				echo '<span class="zn">2</span><button class="v' . ( $be ? '' : ' p' ) . '" type="submit"' . ( $be ? ' disabled title="pirma lipdukai"' : '' ) . ' data-tpl="Užsakyti iš ' . esc_attr( $vardas ) . ' (%n užs.)">Užsakyti iš ' . esc_html( $vardas ) . ' (' . count( $uzs ) . ' užs.)</button>';
 				echo ' <button type="button" class="v t dl-perz">Peržiūrėti laišką</button>';
-				if ( $be ) { echo ' <button class="v t" type="submit" name="be_lipduku" value="1" formnovalidate onclick="return confirm(\'Užsakyti be lipdukų? Tiekėjas neturės ko klijuoti — tik išimtiniu atveju.\')">Užsakyti be lipdukų</button>'; }
 				echo '<div class="dl-laisko-nust"><label>Prierašas laiške <input type="text" name="pastaba" placeholder="pvz.: prašome pristatyti iki penktadienio"></label>';
 				echo '<label><input type="checkbox" name="su_lipdukais" value="1" checked> lipdukai</label><label><input type="checkbox" name="su_manifestu" value="1" checked> kurjerio sąrašas</label>';
 				echo '<label><input type="checkbox" name="laisk_tiekejui" value="1"' . checked( ! empty( $ln['tiekejui'] ), true, false ) . '> siųsti tiekėjui' . ( ! empty( $pastai[ $src ] ) ? ' (' . esc_html( $pastai[ $src ] ) . ')' : ' <span class="raud">— el. pašto nėra</span>' ) . '</label><label><input type="checkbox" name="laisk_man" value="1"' . checked( ! empty( $ln['man'] ), true, false ) . '> kopija man</label>';
