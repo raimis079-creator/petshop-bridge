@@ -1,0 +1,80 @@
+{
+ "v": "dep-065806",
+ "kurimas": 200,
+ "sid": 4668,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run e14d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": [
+   80000,
+   80000,
+   85904
+  ],
+  "bytes": 184427,
+  "md5": "786445f11fbe62a677bf26d23b3baf62",
+  "token": "ok",
+  "buvo": "9f15a7e00baeb885377c9b1c8c681b1f",
+  "backup": true,
+  "rasyta": 184427,
+  "po": "786445f11fbe62a677bf26d23b3baf62"
+ },
+ "T": {
+  "v": "run e14d",
+  "f": "T",
+  "temp_istrinta": 0,
+  "versija": "3.10.5",
+  "md5": "786445f11fbe62a677bf26d23b3baf62",
+  "oid": 35778,
+  "pries_apmokejima": {
+   "ks": [],
+   "pask": "BLOKO NĖRA (code 200)"
+  },
+  "nesurusiuotas": {
+   "st": "processing",
+   "rus": "",
+   "ks": [
+    "1/1 * ruosiama [1x HAP žaislas šunims, , 1x Prins Diet Skin & In]"
+   ],
+   "pask": "SiuntosSiuntaRuošiama1 × HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm1 × Prins Diet Skin &amp; Intestinal Hypoallergic sausas maistas katėms 1,5 kg"
+  },
+  "kelias_vf": "35778|kelias nepakeistas — jau VF siunčia klientui",
+  "kelias_prins": "35778|kelias nepakeistas — jau Prins siunčia klientui",
+  "rusiuoti": "35778|HAP žaislas šunims, pliušinė varlė su iš — VF siunčia klientui; Prins Diet Skin & Intestinal Hypoallergi — Prins siunčia klientui",
+  "surusiuotas": {
+   "rus": "",
+   "ks": [
+    "1/2 vf ruosiama [1x HAP žaislas šunims, ]",
+    "2/2 prins ruosiama [1x Prins Diet Skin & In]"
+   ],
+   "pask": "SiuntosSiunta 1 iš 2Ruošiama1 × HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cmSiunta 2 iš 2Ruošiama1 × Prins Diet Skin &amp; Intestinal Hypoallergic sausas maistas katėms 1,5 kg"
+  },
+  "atsauktas": {
+   "st": "cancelled",
+   "ks": [],
+   "pask": "BLOKO NĖRA (code 200)"
+  },
+  "mail": [
+   {
+    "kam": "uzsakymai@petshop.lt",
+    "tema": "Naujas užsakymas Nr. 35778 — 2026-09-04"
+   },
+   {
+    "kam": "s1609.klientas@avesa.lt",
+    "tema": "Jūsų užsakymas Nr. 35778 — apmokėjimas gautas"
+   },
+   {
+    "kam": "uzsakymai@petshop.lt",
+    "tema": "[Petshop.lt]: Užsakymas #35778 buvo atšauktas"
+   },
+   {
+    "kam": "s1609.klientas@avesa.lt",
+    "tema": "Jūsų užsakymas Nr. 35778 atšauktas — Petshop.lt"
+   }
+  ]
+ }
+}
