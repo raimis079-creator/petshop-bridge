@@ -1,0 +1,292 @@
+{
+ "v": "dep-080428",
+ "kurimas": 200,
+ "sid": 4672,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "run e16r",
+  "temp_istrinta": 1,
+  "smtp_pluginai": [
+   "wp-mail-smtp/wp_mail_smtp.php"
+  ],
+  "smtp_opt": {
+   "wp_mail_smtp": {
+    "mail": {
+     "from_email": "terra@petshop.lt",
+     "from_name": "Petshop.lt",
+     "mailer": "smtp",
+     "return_path": true,
+     "from_email_force": true,
+     "from_name_force": true
+    },
+    "smtp": {
+     "autotls": true,
+     "auth": true,
+     "host": "isopas.serveriai.lt",
+     "port": 465,
+     "encryption": "ssl",
+     "user": "uzsakymai@petshop.lt",
+     "pass": "***"
+    },
+    "general": {
+     "summary_report_email_disabled": false
+    },
+    "sendlayer": {
+     "api_key": "***",
+     "quick_connect": false,
+     "is_shared_domain": false,
+     "sender_domain": ""
+    },
+    "smtpcom": {
+     "api_key": "***",
+     "channel": ""
+    },
+    "sendinblue": {
+     "api_key": "***",
+     "domain": ""
+    },
+    "mailersend": {
+     "api_key": "***",
+     "has_pro_plan": false
+    },
+    "mailgun": {
+     "api_key": "***",
+     "domain": "",
+     "region": "US"
+    },
+    "mailjet": {
+     "api_key": "***",
+     "secret_key": "***"
+    },
+    "resend": {
+     "api_key": "***"
+    },
+    "sendgrid": {
+     "api_key": "***",
+     "domain": ""
+    },
+    "smtp2go": {
+     "api_key": "***"
+    },
+    "sparkpost": {
+     "api_key": "***",
+     "region": "US"
+    },
+    "postmark": {
+     "server_api_token": "***",
+     "message_stream": ""
+    },
+    "mandrill": {
+     "api_key": "***"
+    },
+    "amazonses": {
+     "client_id": "",
+     "client_secret": "***",
+     "region": "us-east-1"
+    },
+    "elasticemail": {
+     "api_key": "***"
+    },
+    "gmail": {
+     "client_id": "",
+     "client_secret": "***",
+     "access_token": [],
+     "refresh_token": "***",
+     "user_details": {
+      "email": ""
+     },
+     "one_click_setup_enabled": false,
+     "one_click_setup_credentials": {
+      "key": "***",
+      "token": "***"
+     },
+     "one_click_setup_user_details": {
+      "email": ""
+     }
+    },
+    "outlook": {
+     "client_id": "",
+     "client_secret": "***",
+     "access_token": [],
+     "refresh_token": "***",
+     "user_details": {
+      "email": ""
+     },
+     "one_click_setup_enabled": false,
+     "one_click_setup_credentials": {
+      "access_token": "***",
+      "refresh_token": "***",
+      "expires": ""
+     },
+     "one_click_setup_user_details": {
+      "email": ""
+     }
+    },
+    "zoho": {
+     "client_id": "",
+     "client_secret": "***",
+     "domain": "com",
+     "access_token": [],
+     "refresh_token": "***",
+     "user_details": {
+      "email": ""
+     }
+    },
+    "logs": {
+     "enabled": false,
+     "log_email_content": false,
+     "save_attachments": false,
+     "open_email_tracking": false,
+     "click_link_tracking": false
+    },
+    "alert_email": {
+     "enabled": false,
+     "connections": []
+    },
+    "license": {
+     "key": "***",
+     "is_expired": false,
+     "is_disabled": false,
+     "is_invalid": false,
+     "is_limit_reached": false
+    }
+   }
+  },
+  "hooks": {
+   "phpmailer_init": [
+    "10: WPMailSMTP\\Processor::phpmailer_init"
+   ],
+   "pre_wp_mail": [
+    "5: Petshop_Dev_Pastas::gaudyti"
+   ],
+   "wp_mail_from": [
+    "9223372036854775807: WPMailSMTP\\Processor::filter_mail_from_email"
+   ],
+   "wp_mail_from_name": [
+    "9223372036854775807: WPMailSMTP\\Processor::filter_mail_from_name"
+   ]
+  },
+  "wc_from": [
+   "Petshop.lt",
+   "uzsakymai@petshop.lt"
+  ],
+  "dev_pastas_zurnalas": 3,
+  "sender_tokenai": {
+   "marketing": 988,
+   "transactional": 987
+  },
+  "sender": {
+   "/domains": {
+    "code": 200,
+    "body": "{\"data\":[{\"id\":\"eE9p2l\",\"account_id\":\"azv2GY\",\"domain_name\":\"petshop.lt\",\"domain_verified\":1,\"spf_verified\":1,\"dkim_verified\":1,\"created\":\"2026-01-04 13:44:51\",\"modified\":\"2026-02-04 17:08:42\",\"dmarc\":1,\"logo\":null,\"spf_record\":[\"v=spf1 a mx include:spf.serveriai.lt include:mailgun.org include:spf.sendersrv.com include:sendersrv.com ~all\"],\"merged_spf_record\":null,\"spf_error_messages\":null,\"dns_records_changed\":null,\"tracking_subdomain\":null,\"registrar\":{\"display_name\":\"Serveriai.lt\",\"control_panel\":\"https:\\/\\/serveriai.lt\\/login\\/\",\"instructions\":\"https:\\/\\/www.iv.lt\\/pagalba\\/Kategorija:Domenų_valdymas\",\"id\":\"serveriai.lt\"},\"expected_dkim_value\":\"dkim.sendersrv.com\",\"has_tracking_cname\":0,\"subdomain_ssl_working\":false}],\"links\":{\"first\":\"https:\\/\\/api.sender.net\\/v2\\/domains?page=1\",\"last\":\"https:\\/\\/api.sender.net\\/v2\\/domains?page=1\",\"prev\":null,\"next\":null},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"page\":null,\"active\":false},{\"url\":\"https:\\/\\/api.sender.net\\/v2\\/domains?page=1\",\"label\":\"1\",\"page\":1,\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"page\":null,\"active\":false}],\"path\":\"https:\\/\\/api.sender.net\\/v2\\/domains\","
+   },
+   "/senders": {
+    "code": 404,
+    "body": "{\"message\":\"The route v2\\/senders could not be found.\"}"
+   },
+   "/account": {
+    "code": 404,
+    "body": "{\"message\":\"The route v2\\/account could not be found.\"}"
+   },
+   "/me": {
+    "code": 200,
+    "body": "{\"data\":{\"id\":\"aQvN6M\",\"username\":\"terra@petshop.lt\",\"email\":\"terra@petshop.lt\",\"surname\":\"Bulakas\",\"name\":\"Raimundas\",\"comments\":null,\"language\":\"lt\",\"tour\":2,\"verification_email_sent\":null,\"active\":1,\"created\":\"2026-01-04 13:41:21\",\"role\":\"Administrator\",\"role_id\":\"Pdy7aQ\",\"is_admin\":false,\"qr_image\":\"\",\"google2fa_enabled\":0,\"phone_number\":null,\"phone_verified\":false,\"accepted_at\":\"2026-01-04 13:44:51\",\"can_resend_invitation\":false}}"
+   },
+   "/campaigns?limit=3": {
+    "code": 200,
+    "body": "{\"data\":[{\"id\":\"e7jNY1\",\"subject\":\"1+0,5 kg NEMOKAMAI: Quattro katėms\",\"reply_to\":\"terra@petshop.lt\",\"language\":\"en\",\"recipient_count\":2,\"from\":\"Petshop.lt\",\"schedule_time\":\"2026-02-04 12:04:21\",\"last_action\":\"step4\",\"sent_time\":\"2026-02-04 12:06:03\",\"status\":\"SENT\",\"created\":\"2026-02-04 11:03:58\",\"modified\":\"2026-02-04 12:06:03\",\"title\":\"1+0,5 kg NEMOKAMAI: Quattro katėms\",\"domain_id\":\"eE9p2l\",\"preheader\":\"Gauni 1,5 kg už 1 kg kainą.\",\"auto_followup_active\":0,\"auto_followup_subject\":\"\",\"auto_followup_delay\":null,\"send_to_all\":0,\"sent_count\":2,\"campaign_groups\":[\"eZG6RQ\"],\"segments\":[],\"ecommerce_tracking_enabled\":0,\"experiment_id\":null,\"opens\":2,\"bounces_count\":0,\"clicks\":1,\"html\":{\"id\":\"W6P53o\",\"thumbnail_url\":\"https:\\/\\/cdn.sender.net\\/thumbnails\\/azv2GY\\/html\\/W6P53o.webp?v=1770206703\",\"has_preview\":true,\"has_snapshots\":false,\"html_content\":\"<!D<!DOCTYPE html>\\n<html lang=\\\"lt\\\">\\n<head>\\n    <meta charset=\\\"UTF-8\\\">\\n    <meta name=\\\"viewport\\\" content=\\\"width=device-width, initial-scale=1.0\\\">\\n    <title>Quattro Akcija - Petshop.lt<\\/title>\\n    <!--\\n    SVARBU: Prieš siųsdami per Sender sistemą:\\n    1. Pakeiskite [unsubscribe] footer'yje į Sender unsubscribe tag'ą\\n    2."
+   },
+   "/groups?limit=3": {
+    "code": 200,
+    "body": "{\"data\":[{\"id\":\"bDxp2q\",\"title\":\"PS_TEST\",\"recipient_count\":1,\"active_subscribers\":0,\"unsubscribed_count\":1,\"bounced_count\":0,\"phone_count\":0,\"active_phone_count\":0,\"account_id\":\"azv2GY\",\"user_id\":\"aQvN6M\",\"created\":\"2026-07-13 23:15:47\",\"modified\":\"2026-07-30 14:29:37\",\"is_recalculating_subscribers\":false,\"is_favourite\":false,\"used_in_integration\":false},{\"id\":\"dPlYRA\",\"title\":\"PS_SUPPRESSED_OR_ARCHIVE\",\"recipient_count\":0,\"active_subscribers\":0,\"unsubscribed_count\":0,\"bounced_count\":0,\"phone_count\":0,\"active_phone_count\":0,\"account_id\":\"azv2GY\",\"user_id\":\"aQvN6M\",\"created\":\"2026-07-30 14:21:46\",\"modified\":null,\"is_recalculating_subscribers\":false,\"is_favourite\":false,\"used_in_integration\":false},{\"id\":\"aOkZQR\",\"title\":\"PS_LEGACY_IMPORT\",\"recipient_count\":0,\"active_subscribers\":0,\"unsubscribed_count\":0,\"bounced_count\":0,\"phone_count\":0,\"active_phone_count\":0,\"account_id\":\"azv2GY\",\"user_id\":\"aQvN6M\",\"created\":\"2026-07-30 14:21:45\",\"modified\":null,\"is_recalculating_subscribers\":false,\"is_favourite\":false,\"used_in_integration\":false}],\"links\":{\"first\":\"https:\\/\\/api.sender.net\\/v2\\/groups?page=1\",\"last\":\"https:\\/\\/api.sender.net\\/v2\\/groups?page=2\",\"prev\":null,\"next\":\"https:\\/\\/api.s"
+   },
+   "/subscribers?limit=1": {
+    "code": 200,
+    "body": "{\"data\":[{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"enrYL5\",\"title\":\"PS_TRANSACTIONAL_ONLY\",\"type\":\"text\",\"value\":\"true\"}],\"created\":\"2026-01-04 16:07:57\",\"created_utc\":\"2026-01-04 16:07:57\",\"email\":\"terra@gyvunai.lt\",\"firstname\":null,\"id\":\"AMYvBNl\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"},\"subscriber_tags\":[{\"id\":\"bDxp2q\",\"title\":\"PS_TEST\"}],\"unsubscribed_at\":\"2026-01-04 16:09:58\",\"unsubscribed_at_utc\":\"2026-01-04 16:09:58\"},{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"ejqvXy\",\"title\":\"PS_REFILL_CANDIDATE\",\"type\":\"text\",\"value\":\"true\"},{\"id\":\"bkZwYJ\",\"title\":\"PS_NEXT_REFILL_DATE\",\"type\":\"date\",\"value\":\"2026-09-11\"}],\"created\":\"2026-01-04 16:07:16\",\"created_utc\":\"2026-01-04 16:07:16\",\"email\":\"raimundas@gyvunai.lt\",\"firstname\":null,\"id\":\"j09zEZv\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"active\",\"temail\":\"active\"},\"subscriber_tags\":[],\"unsubscribed_at\":null,\"unsubscribed_at_utc\":null},{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"enrYL5\",\"title\":\"PS_TRANSACTIONAL_ONLY\","
+   },
+   "/subscribers?limit=3&status=bounced": {
+    "code": 200,
+    "body": "{\"data\":[{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"enrYL5\",\"title\":\"PS_TRANSACTIONAL_ONLY\",\"type\":\"text\",\"value\":\"true\"}],\"created\":\"2026-01-04 16:07:57\",\"created_utc\":\"2026-01-04 16:07:57\",\"email\":\"terra@gyvunai.lt\",\"firstname\":null,\"id\":\"AMYvBNl\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"},\"subscriber_tags\":[{\"id\":\"bDxp2q\",\"title\":\"PS_TEST\"}],\"unsubscribed_at\":\"2026-01-04 16:09:58\",\"unsubscribed_at_utc\":\"2026-01-04 16:09:58\"},{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"bkZwYJ\",\"title\":\"PS_NEXT_REFILL_DATE\",\"type\":\"date\",\"value\":\"2026-09-11\"},{\"id\":\"ejqvXy\",\"title\":\"PS_REFILL_CANDIDATE\",\"type\":\"text\",\"value\":\"true\"}],\"created\":\"2026-01-04 16:07:16\",\"created_utc\":\"2026-01-04 16:07:16\",\"email\":\"raimundas@gyvunai.lt\",\"firstname\":null,\"id\":\"j09zEZv\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"active\",\"temail\":\"active\"},\"subscriber_tags\":[],\"unsubscribed_at\":null,\"unsubscribed_at_utc\":null},{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"enrYL5\",\"title\":\"PS_TRANSACTIONAL_ONLY\","
+   },
+   "/subscribers?limit=3&status=unsubscribed": {
+    "code": 200,
+    "body": "{\"data\":[{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"enrYL5\",\"title\":\"PS_TRANSACTIONAL_ONLY\",\"type\":\"text\",\"value\":\"true\"}],\"created\":\"2026-01-04 16:07:57\",\"created_utc\":\"2026-01-04 16:07:57\",\"email\":\"terra@gyvunai.lt\",\"firstname\":null,\"id\":\"AMYvBNl\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"},\"subscriber_tags\":[{\"id\":\"bDxp2q\",\"title\":\"PS_TEST\"}],\"unsubscribed_at\":\"2026-01-04 16:09:58\",\"unsubscribed_at_utc\":\"2026-01-04 16:09:58\"},{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"ejqvXy\",\"title\":\"PS_REFILL_CANDIDATE\",\"type\":\"text\",\"value\":\"true\"},{\"id\":\"bkZwYJ\",\"title\":\"PS_NEXT_REFILL_DATE\",\"type\":\"date\",\"value\":\"2026-09-11\"}],\"created\":\"2026-01-04 16:07:16\",\"created_utc\":\"2026-01-04 16:07:16\",\"email\":\"raimundas@gyvunai.lt\",\"firstname\":null,\"id\":\"j09zEZv\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"active\",\"temail\":\"active\"},\"subscriber_tags\":[],\"unsubscribed_at\":null,\"unsubscribed_at_utc\":null},{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"enrYL5\",\"title\":\"PS_TRANSACTIONAL_ONLY\","
+   },
+   "/subscribers?limit=3&status=spam": {
+    "code": 200,
+    "body": "{\"data\":[{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"enrYL5\",\"title\":\"PS_TRANSACTIONAL_ONLY\",\"type\":\"text\",\"value\":\"true\"}],\"created\":\"2026-01-04 16:07:57\",\"created_utc\":\"2026-01-04 16:07:57\",\"email\":\"terra@gyvunai.lt\",\"firstname\":null,\"id\":\"AMYvBNl\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"},\"subscriber_tags\":[{\"id\":\"bDxp2q\",\"title\":\"PS_TEST\"}],\"unsubscribed_at\":\"2026-01-04 16:09:58\",\"unsubscribed_at_utc\":\"2026-01-04 16:09:58\"},{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"ejqvXy\",\"title\":\"PS_REFILL_CANDIDATE\",\"type\":\"text\",\"value\":\"true\"},{\"id\":\"bkZwYJ\",\"title\":\"PS_NEXT_REFILL_DATE\",\"type\":\"date\",\"value\":\"2026-09-11\"}],\"created\":\"2026-01-04 16:07:16\",\"created_utc\":\"2026-01-04 16:07:16\",\"email\":\"raimundas@gyvunai.lt\",\"firstname\":null,\"id\":\"j09zEZv\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"active\",\"temail\":\"active\"},\"subscriber_tags\":[],\"unsubscribed_at\":null,\"unsubscribed_at_utc\":null},{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"enrYL5\",\"title\":\"PS_TRANSACTIONAL_ONLY\","
+   },
+   "/statistics": {
+    "code": 404,
+    "body": "{\"message\":\"The route v2\\/statistics could not be found.\"}"
+   },
+   "/transactional/messages?limit=5": {
+    "code": 404,
+    "body": "{\"success\":false,\"message\":\"Not found\"}"
+   },
+   "/message?limit=5": {
+    "code": 404,
+    "body": "{\"message\":\"The route v2\\/message could not be found.\"}"
+   }
+  },
+  "sender_tr": {
+   "/transactional/messages?limit=5": {
+    "code": 404,
+    "body": "{\"success\":false,\"message\":\"Not found\"}"
+   },
+   "/domains": {
+    "code": 200,
+    "body": "{\"data\":[{\"id\":\"eE9p2l\",\"account_id\":\"azv2GY\",\"domain_name\":\"petshop.lt\",\"domain_verified\":1,\"spf_verified\":1,\"dkim_verified\":1,\"created\":\"2026-01-04 13:44:51\",\"modified\":\"2026-02-04 17:08:42\",\"dmarc\":1,\"logo\":null,\"spf_record\":[\"v=spf1 a mx include:spf.serveriai.lt include:mailgun.org include:spf.sendersrv.com include:sendersrv.com ~all\"],\"merged_spf_record\":null,\"spf_error_messages\":null,\"dns_records_changed\":null,\"tracking_subdomain\":null,\"registrar\":{\"display_name\":\"Serveriai.lt\",\"control_panel\":\"https:\\/\\/serveriai.lt\\/login\\/\",\"instructions\":\"https:\\/\\/www.iv.lt\\/pagalba\\/Kategorija:Domenų_valdymas\",\"id\":\"serveriai.lt\"},\"expected_dkim_value\":\"dkim.sendersrv.com\",\"has_tracking_cname\":0,\"subdomain_ssl_working\":false}],\"links\":{\"first\":\"https:\\/\\/api.sender.net\\/v2\\/domains?page=1\",\"last\":\"https:\\/\\/api.sender.net\\/v2\\/domains?page=1\",\"prev\":null,\"next\":null},\"meta\":{\"current_page\":1,\"from\":1,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"page\":null,\"active\":false},{\"url\":\"https:\\/\\/api.sender.net\\/v2\\/domains?page=1\",\"label\":\"1\",\"page\":1,\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"page\":null,\"active\":false}],\"path\":\"https:\\/\\/api.sender.net\\/v2\\/domains\","
+   }
+  },
+  "dns_txt": {
+   "petshop.lt": [
+    "v=spf1 a mx include:spf.serveriai.lt include:sendersrv.com ~all",
+    "google-site-verification=XPcuD8vHzqrHuXMrZLXCMHfGieqYGPN5C0iI9uUeEGs"
+   ],
+   "_dmarc.petshop.lt": [
+    "v=DMARC1; p=none; rua=mailto:terra@petshop.lt"
+   ],
+   "sender._domainkey.petshop.lt": [
+    "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCtKpwlxyG5fI29ZqyvJHmbB8bcZ5+f7JCpJmvgX54edS1/HCVZhUZD0o8mjmMg35HB1ZedI4MP4+s3qTdSwGEUhPFGNf85KGGvfhqQVFcRDGKahQh2/V7ZRm9AF8I4wtFjvsvcTizjnE54F4X4PzHPjsrSamnvTpcHq8XzEbMp4QIDAQAB"
+   ],
+   "default._domainkey.petshop.lt": null,
+   "s1._domainkey.petshop.lt": null,
+   "mail.petshop.lt": null,
+   "dev.avesa.lt": null
+  },
+  "dns_mx": [
+   "isopas.serveriai.lt (10)"
+  ],
+  "iseinantis_ip": "79.98.29.24",
+  "dnsbl": {
+   "79.98.29.24": {
+    "zen.spamhaus.org": "švarus",
+    "bl.spamcop.net": "švarus",
+    "b.barracudacentral.org": "švarus",
+    "dnsbl.sorbs.net": "švarus",
+    "hostkarma.junkemailfilter.com": "švarus",
+    "spam.dnsbl.sorbs.net": "švarus"
+   },
+   "185.3.229.130": {
+    "zen.spamhaus.org": "švarus",
+    "bl.spamcop.net": "švarus",
+    "b.barracudacentral.org": "127.0.0.2",
+    "dnsbl.sorbs.net": "švarus",
+    "hostkarma.junkemailfilter.com": "švarus",
+    "spam.dnsbl.sorbs.net": "švarus"
+   },
+   "213.226.161.16": {
+    "zen.spamhaus.org": "švarus",
+    "bl.spamcop.net": "švarus",
+    "b.barracudacentral.org": "švarus",
+    "dnsbl.sorbs.net": "švarus",
+    "hostkarma.junkemailfilter.com": "švarus",
+    "spam.dnsbl.sorbs.net": "švarus"
+   }
+  }
+ }
+}
