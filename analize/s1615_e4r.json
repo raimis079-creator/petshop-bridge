@@ -1,0 +1,272 @@
+{
+ "v": "dep-180241",
+ "kurimas": 200,
+ "sid": 4771,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1615 e4r",
+  "temp_istrinta": 1,
+  "files": {
+   "petshop-desk.php": {
+    "n": 2,
+    "size": 185134,
+    "hooks": [
+     "admin_menu",
+     "admin_head",
+     "admin_post_ps_desk_veiksmas",
+     "woocommerce_email_enabled_"
+    ]
+   },
+   "petshop-pragma/petshop-pragma.php": {
+    "n": 23,
+    "size": 22662,
+    "hooks": [
+     "init",
+     "petshop_pragma_monthly_export",
+     "admin_menu",
+     "petshop_pragma_recipient"
+    ]
+   },
+   "themes/flatsome-child/functions.php": {
+    "n": 16,
+    "size": 71132,
+    "hooks": [
+     "yith_wcan_supported_taxonomies",
+     "woocommerce_cart_calculate_fees",
+     "woocommerce_cart_totals_after_order_total",
+     "woocommerce_widget_shopping_cart_before_buttons",
+     "woocommerce_package_rates",
+     "woocommerce_cart_totals_before_order_total",
+     "woocommerce_checkout_order_created",
+     "petshop_send_order_received_email",
+     "woocommerce_order_status_changed",
+     "woocommerce_order_status_completed",
+     "woocommerce_email_attachments",
+     "woocommerce_before_template_part",
+     "woocommerce_after_template_part",
+     "woocommerce_email_before_order_table",
+     "woocommerce_email_header",
+     "option_woocommerce_email_header_image",
+     "woocommerce_email_subject_new_order",
+     "woocommerce_email_subject_customer_processing_order",
+     "woocommerce_email_subject_customer_completed_order",
+     "woocommerce_email_subject_customer_on_hold_order",
+     "woocommerce_email_subject_customer_invoice",
+     "woocommerce_checkout_fields",
+     "woocommerce_order_formatted_billing_address",
+     "woocommerce_order_formatted_shipping_address",
+     "woocommerce_localisation_address_formats"
+    ]
+   }
+  },
+  "snippets": [
+   {
+    "id": "653",
+    "name": "Petshop Invoice Completed Attach Fix v3 (LIVE)",
+    "active": "1",
+    "len": "1974"
+   },
+   {
+    "id": "648",
+    "name": "Petshop Invoice Doc Type Fix v2 (LIVE)",
+    "active": "1",
+    "len": "741"
+   },
+   {
+    "id": "3688",
+    "name": "QQ H211 es recon",
+    "active": "0",
+    "len": "1964"
+   },
+   {
+    "id": "657",
+    "name": "Petshop Real Render v1",
+    "active": "0",
+    "len": "919"
+   },
+   {
+    "id": "655",
+    "name": "Petshop Read Attach v1",
+    "active": "0",
+    "len": "892"
+   },
+   {
+    "id": "654",
+    "name": "Petshop Invoice Test2 v1",
+    "active": "0",
+    "len": "1651"
+   },
+   {
+    "id": "652",
+    "name": "Petshop R608 Recon v1",
+    "active": "0",
+    "len": "3208"
+   },
+   {
+    "id": "647",
+    "name": "Petshop Invoice Timing Test v1",
+    "active": "0",
+    "len": "2764"
+   },
+   {
+    "id": "645",
+    "name": "Petshop Read Functions v1",
+    "active": "0",
+    "len": "1335"
+   },
+   {
+    "id": "644",
+    "name": "Petshop Invoice Bug Recon2 v1",
+    "active": "0",
+    "len": "3726"
+   },
+   {
+    "id": "643",
+    "name": "Petshop Invoice Bug Recon v1",
+    "active": "0",
+    "len": "3212"
+   },
+   {
+    "id": "637",
+    "name": "Petshop Saskaitos Recon LIGHT v2",
+    "active": "0",
+    "len": "2839"
+   },
+   {
+    "id": "635",
+    "name": "Petshop Recon Pries Testini Uzsakyma v1",
+    "active": "0",
+    "len": "4014"
+   }
+  ],
+  "snip": {
+   "648": {
+    "name": "Petshop Invoice Doc Type Fix v2 (LIVE)",
+    "hooks": [
+     [
+      "woocommerce_order_status_completed",
+      "function( $order_id "
+     ]
+    ],
+    "head": "/**\n * Petshop Invoice Doc Type Fix v2 (LIVE, GLOBAL)\n * Perjungia doc_type PRIES generacija ant completed. GLOBAL - veikia ir admin/REST kontekste.\n */\nif ( ! defined( 'ABSPATH' ) ) { return; }\nadd_action( 'woocommerce_order_status_completed', function( $order_id ) {\n\tif ( ! function_exists( 'petshop_get_invoice_document_type' ) ) { return; }\n\t$order = wc_get_order( $order_id );\n\tif ( ! $order ) { return; }\n\t$dt = petshop_get_invoice_document_type( $order );\n\tif ( $order->get_meta( '_petshop_invoice_document_type' ) !== $dt ) {\n\t\t$order->update_meta_data( '_petshop_invoice_document_type', $dt );\n\t\t$order->delete_meta_data( '_wcdn_invoice_pdf' );\n\t\t$order->delete_meta_data( '_wcdn_invoice_pdf_token' );\n\t\t$order->save();\n\t}\n}, 1 );\n",
+    "counter_ctx": null,
+    "doc_type_ctx": "rn; }\nadd_action( 'woocommerce_order_status_completed', function( $order_id ) {\n\tif ( ! function_exists( 'petshop_get_invoice_document_type' ) ) { return; }\n\t$order = wc_get_order( $order_id );\n\tif ( ! $order ) { return; }\n\t$dt = petshop_get_invoice_document_type( $order );\n\tif ( $order->get_meta( '_petshop_invoice_document_type' ) !== $dt ) {\n\t\t$order->update_meta_data( '_petshop_invoice_document_type', $dt );\n\t\t$order->delete_meta_data( '_wcdn_invoice_pdf' );\n\t\t$order->delete_meta_data( '_wcdn_invoice_pdf_token' );\n\t\t$order->save();\n\t}\n}, 1 );\n",
+    "kredit": 0,
+    "pdf": [
+     "wcdn"
+    ]
+   },
+   "653": {
+    "name": "Petshop Invoice Completed Attach Fix v3 (LIVE)",
+    "hooks": [
+     [
+      "woocommerce_email_attachments",
+      "function ( $attachments"
+     ]
+    ],
+    "head": "/**\n * Petshop Invoice Completed Attach Fix v3 (LIVE, GLOBAL scope)\n * Kritinis: snippet turi buti GLOBAL, nes completed laiskas siunciamas admin/REST kontekste, ne front-end.\n * Regeneruoja svieziа PVM saskaita faktura completed laisko siuntimo metu + nukerpa senus/WCDN priedus.\n */\nif ( ! defined( 'ABSPATH' ) ) { return; }\nadd_filter( 'woocommerce_email_attachments', function ( $attachments, $email_id, $order, $email ) {\n\tif ( $email_id !== 'customer_completed_order' || ! ( $order instanceof WC_Order ) ) { return $attachments; }\n\tif ( ! function_exists( 'petshop_generate_invoice_pdf' ) ) { return $attachments; }\n\t$fresh_order = wc_get_order( $order->get_id() );\n\tif ( ! $fresh_order ) { return $attachments; }\n\tif ( function_exists( 'petshop_get_invoice_document_type' ) ) {\n\t\t$dt = petshop_get_invoice_document_type( $fresh_order );\n\t\tif ( $fresh_order->get_meta( '_petshop_invoice_docume",
+    "counter_ctx": null,
+    "doc_type_ctx": "ate_invoice_pdf' ) ) { return $attachments; }\n\t$fresh_order = wc_get_order( $order->get_id() );\n\tif ( ! $fresh_order ) { return $attachments; }\n\tif ( function_exists( 'petshop_get_invoice_document_type' ) ) {\n\t\t$dt = petshop_get_invoice_document_type( $fresh_order );\n\t\tif ( $fresh_order->get_meta( '_petshop_invoice_document_type' ) !== $dt ) {\n\t\t\t$fresh_order->update_meta_data( '_petshop_invoice_document_type', $dt );\n\t\t\t$fresh_order->save();\n\t\t}\n\t}\n\t$fresh_pdf = petshop_generate_invoice_pdf( $order->get_id() );\n\t$clean = array();\n\tforeach ( (array) $attachments as $a ) {\n\t\t$b = basename( (string) $a );\n\t\tif ( stripos( $b, 'Isankstine-saskaita' ) !== false ) { continue; }\n\t\tif ( stripos( $b, 'PVM-saskaita' ) !== false ) { continue; }\n\t\tif ( stripos( $b, 'Invoice -' ) !== false ) { continue; }\n\t\tif ( preg_match( '/^invoice-\\d+-\\d+\\.pdf$/i', $b ) ) { continue; }\n\t\t$clean[] = $a;\n\t}\n\tif ( $",
+    "kredit": 0,
+    "pdf": [
+     "WCDN"
+    ]
+   }
+  },
+  "ctx": {
+   "petshop-pragma/petshop-pragma.php": {
+    "counter": null,
+    "doc_type": " );\n        return;\n    }\n\n    // Filtruojame - tik tie kurie turi AVPN numerį (PVM sąskaita faktūra = apmokėti)\n    // IAPV (išankstinė sąskaita = neapmokėti bankiniai) - NEEKSPORTUOJAME\n    $valid_orders = array();\n    foreach ( $orders as $order ) {\n        $doc_type = $order->get_meta( '_petshop_invoice_document_type' );\n        $avpn     = $order->get_meta( '_petshop_avpn_number' );\n\n        // Tik jei doc_type = 'invoice' IR turi AVPN numerį\n        if ( $doc_type === 'invoice' && $avpn ) {\n            $valid_orders[] = $order;\n        }\n    }\n\n    if ( empty( $valid_orders ) ) {\n        petshop_pragma_log( $period_label . ': nera AVPN saskaitu' );\n        return;\n    }\n\n    // Generuojame 3 failus\n    $imones_content      = petshop_pragma_generate_imones( $valid_orders );\n "
+   },
+   "themes/flatsome-child/functions.php": {
+    "counter": "echo '<div style=\"width:' . $percent . '%;background:#365a51;height:8px;border-radius:4px;\"></div>';\n    echo '</div>';\n\n    echo '</div>';\n    echo '</td></tr>';\n}\n\n// ===============================================================\n// Saskaitu numeracija\n// Reset pries launcha:\n//   update_option('petshop_avpn_counter', 101)\n//   update_option('petshop_iapv_counter', 101)\n// ===============================================================\nfunction petshop_get_avpn_number( $order_id ) {\n    $order    = wc_get_order( $order_id );\n    $existing = $order ? $order->get_meta( '_petshop_avpn_number' ) : '';\n    if ( $existing ) return $existing;\n    $counter = (int) get_option( 'petshop_avpn_counter', 101 );\n    $number  = 'AVPN' . str_pad( $counter, 6, '0', STR_PAD_LEFT );\n    update_option( 'petshop_avpn_counter', $counter + 1 );\n    if ( $order ) {\n        $order->update_meta_data( '_petshop_avpn_number', $number );\n        $order->save();\n    }\n    return $number;\n}\n\nfunction petshop_get_iapv_number( $order_id ) {\n    $order    = wc_get_order( $order_id );\n    $existing = $order ? $order->get_meta( '_petshop_iapv_number' ) : '';\n    if ( $existing ) return $existing;\n    $counter = (int) get_option( 'petshop_iapv_counter', 101 );\n    $number  = 'IAPV' . str_pad( $counter, 6, '0', STR_PAD_LEFT );\n    update_option( 'petshop_iapv_counter', $counter + 1 );\n    if ( $order ) {\n       ",
+    "doc_type": "====================================\n// Laiskas #1 - Uzsakymas gautas\n// ===============================================================\nadd_action( 'woocommerce_checkout_order_created', function( $order ) {\n    $doc_type = petshop_get_invoice_document_type( $order );\n    $order->update_meta_data( '_petshop_invoice_document_type', $doc_type );\n    try {\n        $order_id = $order->get_id();\n        $order->save();\n        $pdf_file = petshop_generate_invoice_pdf( $order_id );\n        if ( $pdf_file && file_exists( $pdf_file ) ) {\n            $order->update_meta_data( '_petshop_order_pdf', $pdf_file );\n            $order->save();\n        }\n    } catch ( \\Throwable $e ) {}\n    wp_schedule_single_event( time() + 5, 'petshop_send_order_received_email', array( $order->get_id() ) );\n}, 20 );\n\nad"
+   }
+  },
+  "wcdn_dir": [
+   "PVM-saskaita-AVPN000309.pdf",
+   "PVM-saskaita-AVPN000317.pdf",
+   "PVM-saskaita-AVPN000318.pdf",
+   "PVM-saskaita-AVPN000319.pdf",
+   "PVM-saskaita-AVPN000320.pdf"
+  ],
+  "wcdn_n": 67,
+  "status_hooks": {
+   "woocommerce_payment_complete": [
+    "5:Petshop_AV_Order::fiksuoti",
+    "10:Petshop_Juosta::isvalyti",
+    "10:Petshop_Prenumerata::apmoketa",
+    "10:wc_paying_customer",
+    "10:wc_maybe_reduce_stock_levels",
+    "10:WC_MNM_Order::remove_get_product_from_item_filter",
+    "11:wc_release_stock_for_order",
+    "15:Petshop_AV_Reduce::mazinti",
+    "20:Petshop_GA4_Serveris::siusti",
+    "20:Petshop_Event_Emitters::on_payment_complete",
+    "25:Petshop_Partijos::uzsakymo_nurasymas",
+    "30:Petshop_Prenumerata_Katalogas::is_uzsakymo",
+    "30:Petshop_Refill_Engine::on_order_paid",
+    "35:Petshop_Faktai::rasyti",
+    "99:Petshop_Uzsakymu_Ivykiai::apmokejimas",
+    "100:Petshop_Darbalaukis::auto_rusiuoti"
+   ],
+   "woocommerce_order_status_processing": [
+    "5:Petshop_AV_Order::fiksuoti",
+    "10:wc_downloadable_product_permissions",
+    "10:wc_update_total_sales_counts",
+    "10:wc_update_coupon_usage_counts",
+    "10:wc_maybe_reduce_stock_levels",
+    "11:wc_release_stock_for_order",
+    "15:Petshop_AV_Reduce::mazinti",
+    "20:Petshop_GA4_Serveris::siusti",
+    "20:Petshop_Event_Emitters::on_order_paid_status",
+    "25:Petshop_Partijos::uzsakymo_nurasymas",
+    "30:Petshop_Prenumerata_Katalogas::is_uzsakymo",
+    "30:Petshop_Refill_Engine::on_order_paid",
+    "35:Petshop_Faktai::rasyti",
+    "100:Petshop_Darbalaukis::auto_rusiuoti"
+   ],
+   "woocommerce_order_status_completed": [
+    "1:closure",
+    "5:closure",
+    "10:wc_paying_customer",
+    "10:wc_downloadable_product_permissions",
+    "10:wc_update_total_sales_counts",
+    "10:wc_update_coupon_usage_counts",
+    "10:wc_maybe_reduce_stock_levels",
+    "10:Petshop_Post_Purchase::stamp",
+    "10:WC_Emails::send_transactional_email",
+    "11:wc_release_stock_for_order",
+    "20:Petshop_GA4_Serveris::siusti",
+    "20:Petshop_Event_Emitters::on_order_paid_status",
+    "25:Petshop_Partijos::uzsakymo_nurasymas",
+    "30:Petshop_Prenumerata_Katalogas::is_uzsakymo",
+    "30:Petshop_Refill_Engine::on_order_paid",
+    "35:Petshop_Faktai::rasyti"
+   ],
+   "woocommerce_checkout_order_processed": [
+    "1:Paysera\\Admin\\PayseraDeliveryAdmin::wcCheckoutOrderProcessed",
+    "10:Petshop_Cart_Abandonment::on_order_created",
+    "20:Petshop_Rec_Log::pirkta",
+    "20:Petshop_Plan_Attribution::link_order",
+    "30:Petshop_Refill_Ivykiai::pirkta"
+   ],
+   "woocommerce_new_order": [
+    "2:closure",
+    "10:Automattic\\WooCommerce\\Caches\\OrderCountCacheService::update_on_new_order",
+    "10:Automattic\\WooCommerce\\Internal\\Admin\\OrderMilestoneEasterEgg::clear_milestone_cache",
+    "10:Automattic\\WooCommerce\\Internal\\PushNotifications\\Triggers\\NewOrderNotificationTrigger::on_new_order",
+    "100:Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\DataSynchronizer::handle_updated_order"
+   ],
+   "woocommerce_thankyou": [
+    "10:Woo_Lithuaniapost_Public::add_terminal_field_order_thankyou",
+    "10:woocommerce_order_details_table",
+    "10:petshop_gtm_purchase",
+    "100:flatsome_thank_you_html"
+   ]
+  }
+ }
+}
