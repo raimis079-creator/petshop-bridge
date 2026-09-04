@@ -1,0 +1,273 @@
+{
+ "v": "dep-162943",
+ "kurimas": 200,
+ "sid": 4750,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1614 e7d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": {
+   "1": 80000,
+   "2": 80000,
+   "3": 80000,
+   "4": 80000,
+   "5": 47584
+  },
+  "bytes": 275687,
+  "md5": "bfc3d9044fdf32053ef838bdbce2416f",
+  "token": "ok",
+  "buvo": "aa47912f4b062698fee395d949366024",
+  "backup": true,
+  "rasyta": 275687,
+  "po": "bfc3d9044fdf32053ef838bdbce2416f"
+ },
+ "T": {
+  "v": "S1614 e7d",
+  "f": "T",
+  "temp_istrinta": 0,
+  "versija": "3.17.1",
+  "md5": "bfc3d9044fdf32053ef838bdbce2416f",
+  "sk": {
+   "35421": {
+    "code": 200,
+    "kl": "",
+    "kur": "Surinkti AV · toliau: Surinkti",
+    "btn": "Surinkti",
+    "nr_siuntos": [
+     "Prins: V07267E1000046 — atšaukta 09-04 19:12, prekės grįžo į AV"
+    ],
+    "perreg_t": 0,
+    "eil": [
+     {
+      "n": "Animonda Carny Adult B",
+      "k": "av",
+      "lock": "",
+      "zing": [
+       "Surinkti:dabar",
+       "Lipdukas:",
+       "Kurjeris paėmė:"
+      ]
+     },
+     {
+      "n": "QUATTRO 1,5 kg Adult S",
+      "k": "i_av",
+      "lock": "jau užsakyta iš Quattro (užsakymas tiekėjui #10)",
+      "zing": [
+       "Užsakyti iš Quattro į AV:ok",
+       "Gauta į AV:ok",
+       "Surinkti:dabar",
+       "Lipdukas:",
+       "Kurjeris paėmė:"
+      ]
+     },
+     {
+      "n": "Prins Diet Skin & Inte",
+      "k": "tiesiai",
+      "lock": "atšaukta 09-04 19:12 — prekės grįžo į AV (siunta V07267E1000046)",
+      "zing": []
+     }
+    ]
+   },
+   "35438": {
+    "code": 200,
+    "kl": "",
+    "kur": "Paruošta siųsti · toliau: Prins išsiuntė",
+    "btn": "Prins išsiuntė",
+    "nr_siuntos": [
+     "AV: V07267E1000052 — atšaukta 09-04 19:12, prekės grįžo į AV"
+    ],
+    "perreg_t": 1,
+    "eil": [
+     {
+      "n": "Animonda Carny Adult B",
+      "k": "av",
+      "lock": "atšaukta 09-04 19:12 — prekės grįžo į AV (siunta V07267E1000052)",
+      "zing": []
+     },
+     {
+      "n": "Prins Diet Skin & Inte",
+      "k": "tiesiai",
+      "lock": "jau užsakyta iš Prins",
+      "zing": [
+       "Lipdukas Prins:ok",
+       "Užsakyti iš Prins:ok",
+       "Prins išsiuntė:dabar"
+      ]
+     }
+    ]
+   }
+  },
+  "ks": {
+   "35421": [
+    [
+     "av",
+     "ruosiama",
+     "1/1",
+     "",
+     2
+    ],
+    [
+     "prins",
+     "atsaukta",
+     "0/1",
+     "",
+     1
+    ]
+   ],
+   "35438": [
+    [
+     "prins",
+     "ruosiama",
+     "1/1",
+     "",
+     1
+    ],
+    [
+     "av",
+     "atsaukta",
+     "0/1",
+     "",
+     1
+    ]
+   ]
+  },
+  "ks_html": {
+   "35421": [
+    [
+     "ruosiama",
+     "Siunta",
+     "Ruošiama"
+    ],
+    [
+     "atsaukta",
+     "Siunta",
+     "Atšaukta"
+    ]
+   ],
+   "35438": [
+    [
+     "ruosiama",
+     "Siunta",
+     "Ruošiama"
+    ],
+    [
+     "atsaukta",
+     "Siunta",
+     "Atšaukta"
+    ]
+   ]
+  },
+  "pastabos": {
+   "35421": [
+    "Darbalaukis: Prins dalis ATŠAUKTA — siunta V07267E1000046 grįžo į AV (Testuotojas). Prekės: 1× Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg. Likutis: Prins Diet Skin & Intestinal Hypoallergi: AV +1 → 1. Kita dalis lieka: AV (dar ruošiama). WC dalinį grąžinimą ir pinigus už atšauktą dalį tvarkyk rankomis",
+    "Dropship sargas: tiekėjui perduota 2026-09-03 11:23:34 (daugiau nei 24 val.), užsakymas vis dar vykdomas. Įkelta į „Klausimus\" — patikrink pas tiekėją.",
+    "Venipak: siunta V07267E1000046 pristatyta (2026-09-04 13:00:00, Kauno Akropolio Venipak paštomatas)."
+   ],
+   "35438": [
+    "Dropship sargas: tiekėjui perduota 2026-09-03 11:23:34 (daugiau nei 24 val.), užsakymas vis dar vykdomas. Įkelta į „Klausimus\" — patikrink pas tiekėją.",
+    "Darbalaukis: siunta V07267E1000047 grįžo — SIUNČIAMA IŠ NAUJO (Testuotojas). Prins dalis siunčiama iš AV iš naujo kaip ta pati dalis: skydelyje „Lipdukas Prins iš naujo“, tada „Prins išsiuntė“ (Paruošta siųsti) arba sekimas pažymės pats. Likutis: Prins Diet Skin & Intestinal Hypoallergi: AV +1 −1 → 1. Seni numeriai nebeskaitomi:",
+    "Darbalaukis: siunta grįžo — siunčiama iš naujo. WC laiškas klientui: NESIŲSTAS. Užsakymo statusas pakeistas iš Įvykdytas į Vykdomas."
+   ]
+  },
+  "ivykiai": {
+   "35421": [
+    {
+     "veiksmas": "grizta_atsaukti_dalis",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "laikas": "2026-09-04 16:12:18",
+     "pastaba": "siunta grįžo → dalis atšaukta, kita lieka"
+    },
+    {
+     "veiksmas": "venipak_pristatyta",
+     "rezultatas": "ok",
+     "kanalas": "venipak",
+     "kas_vardas": "sistema",
+     "laikas": "2026-09-04 08:53:32",
+     "pastaba": null
+    }
+   ],
+   "35438": [
+    {
+     "veiksmas": "grizta_is_naujo",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "laikas": "2026-09-04 16:14:26",
+     "pastaba": "siunta grįžo → iš naujo"
+    },
+    {
+     "veiksmas": "busena",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "laikas": "2026-09-04 16:14:26",
+     "pastaba": "WooCommerce"
+    }
+   ]
+  },
+  "meta": {
+   "35421": {
+    "st": "processing",
+    "eil": {
+     "805": {
+      "k": "",
+      "rq": "1",
+      "ats": ""
+     },
+     "806": {
+      "k": "",
+      "rq": "",
+      "ats": ""
+     },
+     "807": {
+      "k": "",
+      "rq": "",
+      "ats": "2026-09-04 19:12:18|Testuotojas|V07267E1000046|0"
+     }
+    },
+    "ats": "{\"prins\":{\"laikas\":\"2026-09-04 19:12:18\",\"kas\":\"Testuotojas\",\"nr\":[\"V07267E1000046\"]}}",
+    "is_naujo": "",
+    "iss": "{\"prins\":{\"laikas\":\"2026-09-03 21:33:34\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:34\"}}",
+    "senos": "",
+    "grizta": "",
+    "av_red": "2026-09-02 17:41:47",
+    "sla": "2026-09-04 12:14:34"
+   },
+   "35438": {
+    "st": "processing",
+    "eil": {
+     "863": {
+      "k": "av",
+      "rq": "0",
+      "ats": "2026-09-04 19:12:16|Testuotojas|V07267E1000052|1"
+     },
+     "864": {
+      "k": "tiesiai",
+      "rq": "1",
+      "ats": ""
+     }
+    },
+    "ats": "{\"av\":{\"laikas\":\"2026-09-04 19:12:16\",\"kas\":\"Testuotojas\",\"nr\":[\"V07267E1000052\"]}}",
+    "is_naujo": "{\"prins\":{\"laikas\":\"2026-09-04 19:14:25\",\"kas\":\"Testuotojas\",\"nr\":[\"V07267E1000047\"]}}",
+    "iss": "{\"av\":{\"laikas\":\"2026-09-03 12:34:35\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"}}",
+    "senos": "[\"V07267E1000047\"]",
+    "grizta": "",
+    "av_red": "2026-09-03 11:07:53",
+    "sla": "2026-09-04 19:14:30"
+   }
+  },
+  "stock": {
+   "19708": "18",
+   "16889_own": "1"
+  },
+  "dev_zurnalas": 5,
+  "cron_vel": "09-05 14:00",
+  "cron_sek": "09-04 19:58"
+ }
+}
