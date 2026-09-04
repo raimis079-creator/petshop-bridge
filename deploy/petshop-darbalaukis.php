@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.11 (S1612, 4 etapas #1: Venipak sekimo cron — paėmė / pristatyta / grįžta) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.11.1 (S1612, 4 etapas #1 Venipak sekimo cron + #3 Klausimas „Siunta grįžta“ su sprendimo mygtukais) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -26,6 +26,19 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v3.11.1 (S1612, 4 etapas #3, log S1611 sprendimas 5 — Raimis 09-04): KLAUSIMAS „SIUNTA GRĮŽTA“ — DU MYGTUKAI, sprendžia darbuotojas, be sumų.
+ *   „Siųsti iš naujo“ (`grizta_is_naujo`): prekės jau AV → siunta ruošiama IŠ AV (net buvusi tiekėjo dropship): grįžusios dalies eilutės → kelias „Iš AV“
+ *   (`_ps_source=av`, `_ps_av_reduced_qty=q`, planas + grupės perskaičiuojami); likutis dropship eilutėms +q (grįžo) −q (išeina) = 0 per
+ *   `Petshop_AV_Stock` (prekė tampa AV+tiekėjas su 0; vėlesnis atšaukimas grąžina +q — variklio `grazinti`), AV eilutėms nieko; seni numeriai
+ *   (grįžusios dalies + esami AV) → `_ps_siuntos_senos` (darbalaukio žymė — `siuntos()` jų nerodo, `av_siunta` be jų; variklio registras
+ *   `_ps_siuntos` neliečiamas — naujas AV lipdukas jį perrašo per `perreg`); `_ps_dalys_issiusta[dalis]` ir `[av]` nuimamos, `_ps_surinkta` nuimama;
+ *   įvykdytas → `processing` be WC laiškų; klientui paskyroje dalis vėl „Ruošiama“, po naujo lipduko ir paėmimo — vėl „Išsiųsta“ (laiškas).
+ *   Adresas tas pats (keitimas — 5 etapo „Redaguoti“). PRIELAIDA: grįžusi tiekėjo dalis, kai AV siunta JAU išsiųsta — dalinis persiuntimas, 5 etapas → neleidžiama.
+ *   „Atšaukti — prekės grįžo į AV“ (`grizta_atsaukti`): dropship eilutėms +q į `_own_stock_qty` (`Petshop_AV_Stock::increase` — sukuria lauką, prekė tampa
+ *   AV+tiekėjas), AV eilutėms nieko (variklis `grazinti` ant `woocommerce_order_status_cancelled` grąžina pats — nedubliuojam); `cancelled` be WC laiškų.
+ *   Pinigai — rankomis. PRIELAIDA: kai kita dalis jau išsiųsta / pristatyta — dalinis grąžinimas (5 etapas) → „Atšaukti“ nerodomas, tik „Siųsti iš naujo“.
+ *   Abu: `_ps_siunta_grizta[dalis]` nuimama (Klausimas išnyksta), pastaba + įvykis `grizta_is_naujo` / `grizta_atsaukti`.
+ *   Taip pat: suma skydelyje / Klausimų kortelėse buvo „12,02&nbsp;&euro;“ (dviguba esc nuo C8) — `html_entity_decode`.
  * v3.11 (S1612, 4 etapas #1, spec §12.2 „Automatinis“ + log S1611 sprendimas 5): VENIPAK SEKIMO CRON `ps_venipak_sekimas` kas 30 min (`ps_30min`).
  *   Šaltinis — `_ps_siuntos` registras (`Petshop_Siuntos::sarasas()`), API `tracking.venipak.com/api/v1/events?pack_no=` (viešas, be autentifikacijos;
  *   recon e1/e2/e3: įvykiai chronologiškai, `pack_status` int + `pack_status_text`). Kodai PATVIRTINTI iš dviejų realių siuntų (Raimis 09-04):
@@ -144,7 +157,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.11';
+	const VERSIJA = '3.11.1';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -412,6 +425,9 @@ class Petshop_Darbalaukis {
 		}
 		// v3.10.4 (#6): LP Express — lipduką kuria LP pluginas (Rytinė eiga, J1), registre `_ps_siuntos` jo nėra; numeris — plugino meta
 		// `_woo_lithuaniapost_barcode` (patikrinta plugino kode: `update_meta_data('_woo_lithuaniapost_barcode', $shipping_item_status->barcode)`).
+		// v3.11.1: „Siųsti iš naujo“ — seni (grįžusios siuntos ir tuomet buvę AV) numeriai nerodomi; naujas lipdukas juos perrašys registre.
+		$senos = self::senos( $o );
+		if ( $senos ) { foreach ( $out as $k => $nrs ) { $out[ $k ] = array_values( array_diff( (array) $nrs, $senos ) ); if ( ! $out[ $k ] ) { unset( $out[ $k ] ); } } }
 		if ( empty( $out['av'] ) && 'lp' === self::d( 'vezejas', $o ) ) {
 			$bc = $o->get_meta( '_woo_lithuaniapost_barcode' );
 			$bc = array_values( array_filter( array_map( 'trim', is_array( $bc ) ? $bc : array( (string) $bc ) ) ) );
@@ -503,7 +519,8 @@ class Petshop_Darbalaukis {
 		$av_side = false; $tiesiai = array();
 		foreach ( $f['eil'] as $e ) { if ( 'av' === $e['k'] || 'i_av' === $e['k'] ) { $av_side = true; } if ( 'tiesiai' === $e['k'] && $e['src'] ) { $tiesiai[ $e['src'] ] = 1; } }
 		$tiesiai = array_keys( $tiesiai ); $f['tiesiai'] = $tiesiai; $f['av_side'] = $av_side;
-		$av_siunta = ! empty( $siuntos['av'] ) || $lp_par || ( $av_side && ! $tiesiai && self::d( 'turi_siunta', $o ) );
+		$f['senos'] = self::senos( $o );
+		$av_siunta = ! empty( $siuntos['av'] ) || $lp_par || ( $av_side && ! $tiesiai && ! $f['senos'] && self::d( 'turi_siunta', $o ) );
 		$lapas     = (bool) $o->get_meta( '_ps_surinkta' ) || ( ! empty( $zz['lapai'] ) && ! isset( $zz['nesurinkta'] ) );
 		$vietoje   = ! $av_truksta && ! $i_av_laukia;
 		$f['dalys']['av'] = $av_side ? array( 'siunta' => $av_siunta, 'nr' => $siuntos['av'] ?? array(), 'lapas' => $lapas, 'vietoje' => $vietoje, 'issiusta' => $baigta || ! empty( $iss['av'] ) ) : null;
@@ -590,7 +607,7 @@ class Petshop_Darbalaukis {
 	/** Mygtuko duomenys: [tekstas, url, dialogas|null, klasė, pasyvus]. Veiksmai — esami `ps_desk_veiksmas` arba skydelis. */
 	protected static function mygtukas( $t, $f ) {
 		$o = $f['o']; $id = $f['id']; $s = $t[3];
-		$antraste = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), wp_strip_all_tags( $o->get_formatted_order_total() ) );
+		$antraste = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ) );
 		switch ( $t[4] ) {
 			case 'apmoketa':
 				return array( 'Pažymėti apmokėtu', self::veiksmo_url( 'apmoketa', $id ), array( 'antraste' => $antraste, 'tekstas' => 'Pažymėti apmokėtu? Prekės rezervuojamos; užsakymas eina į darbą.', 'ok' => 'Pažymėti apmokėtu', 'opt' => array( 'vardas' => 'be_laisko', 'tekstas' => 'Nesiųsti laiško klientui', 'def' => 0 ) ), 'p', 0 );
@@ -652,7 +669,7 @@ class Petshop_Darbalaukis {
 			: ( ! $f['rus'] ? 'Sistema pasiūlė, iš kur važiuos kiekviena prekė. Pataisyk, jei reikia, ir spausk „Surūšiuota“.'
 			: ( 'auto' === $f['rus'] ? 'Surūšiuota pati — viskas iš vienos vietos. Keisk, jei reikia, iki lipduko.'
 			: 'Surūšiuota. Kelią dar gali keisti, kol prekei nepadarytas pirmas žingsnis.' ) );
-		$antraste = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), wp_strip_all_tags( $o->get_formatted_order_total() ) );
+		$antraste = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ) );
 		$isp = array(); foreach ( $f['dalys'] as $k => $p ) { if ( ! $p ) { continue; } if ( ! empty( $p['nr'] ) ) { $isp[] = '⚠ siunta ' . implode( ', ', $p['nr'] ) . ' jau užregistruota Venipak — ištrink savitarnoje'; } if ( 'av' !== $k && ! empty( $p['perduota'] ) ) { $isp[] = '⚠ jau užsakyta iš ' . self::vardas( $k ) . ' ' . wp_date( 'm-d H:i', strtotime( $p['kada'] ) ) . ' — parašyk tiekėjui, kad nesiųstų'; } }
 		foreach ( $f['eil'] as $e ) { if ( 'i_av' === $e['k'] && $e['b'] && 'kaupiama' !== $e['b']['busena'] ) { $isp[] = '⚠ „' . mb_substr( $e['n'], 0, 30 ) . '“ jau užsakyta iš ' . self::vardas( $e['src'] ) . ' į AV'; } }
 		$atsaukti = ! $f['uzdarytas'] ? array( 'u' => self::veiksmo_url( 'atsaukti', $id, $g ), 'd' => array( 'antraste' => $antraste, 'tekstas' => ( $f['paid'] ? 'Atšaukti šį APMOKĖTĄ užsakymą? Prekės grįš į likutį. Pinigai NEGRĄŽINAMI automatiškai — grąžinimą ir kreditinę tvarkysi atskirai.' : 'Atšaukti šį užsakymą? Prekės grįš į likutį. Klientui laiškas nesiunčiamas.' ) . ( $isp ? ' ' . implode( ' ', $isp ) . '.' : '' ), 'ok' => 'Atšaukti užsakymą', 'opt' => array( 'vardas' => 'su_laisku', 'tekstas' => 'Pranešti klientui laišku', 'def' => 0 ) ) ) : null;
@@ -661,7 +678,7 @@ class Petshop_Darbalaukis {
 		foreach ( $f['eil'] as $e ) { if ( ! $e['k'] ) { $rus_gal = false; } }
 		return array(
 			'id' => $id, 'nr' => $o->get_order_number(), 'st' => wc_get_order_statuses()[ 'wc-' . $f['st'] ] ?? $f['st'], 'uzdarytas' => $f['uzdarytas'], 'kur' => self::kur_dabar( $f ),
-			'kl' => trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ), 'suma' => wp_strip_all_tags( $o->get_formatted_order_total() ), 'apmok' => ( $f['paid'] ? 'apmokėta · ' : 'neapmokėta · ' ) . $o->get_payment_method_title(),
+			'kl' => trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ), 'suma' => html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ), 'apmok' => ( $f['paid'] ? 'apmokėta · ' : 'neapmokėta · ' ) . $o->get_payment_method_title(),
 			'tel' => $o->get_billing_phone(), 'mail' => $o->get_billing_email(), 'adresas' => wp_strip_all_tags( str_replace( '<br/>', ', ', $adr ) ),
 			'vezejas' => self::d( 'vezejo_vardas', $o ), 'vieta' => (string) $o->get_meta( 'venipak_pickup_point' ), 'pastaba_kl' => $o->get_customer_note(),
 			'eil' => $eil, 'pastaba' => $pastaba, 'nr_siuntos' => $nr, 'pak' => $pak, 'perreg' => $perreg,
@@ -707,6 +724,8 @@ class Petshop_Darbalaukis {
 		try {
 			if ( 'kelias' === $v ) { $rez = self::keisti_kelia( $o, absint( $_GET['iid'] ?? 0 ), sanitize_key( $_GET['k'] ?? '' ), $u ); }
 			elseif ( 'rusiuoti' === $v ) { $rez = self::rusiuoti( $o, $u ); }
+			elseif ( 'grizta_is_naujo' === $v ) { $rez = self::grizta_is_naujo( $o, $u ); }
+			elseif ( 'grizta_atsaukti' === $v ) { $rez = self::grizta_atsaukti( $o, $u ); }
 			elseif ( 'nesurinkta' === $v ) {
 				$o->delete_meta_data( '_ps_surinkta' ); $o->add_order_note( 'Darbalaukis: surinkimas atšauktas (' . $u->display_name . ') — užsakymas grįžo į „Surinkti“.', false, true ); $o->save();
 				if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $id, 'sritis' => 'desk', 'veiksmas' => 'nesurinkta', 'rezultatas' => 'ok', 'kanalas' => 'web', 'pastaba' => 'surinkimas atšauktas' ) ); }
@@ -1083,6 +1102,88 @@ class Petshop_Darbalaukis {
 			}
 			$oo->save();
 		}
+	}
+
+	/* ============================ v3.11.1 — KLAUSIMAS „SIUNTA GRĮŽTA“: SPRENDIMAI (4 etapas #3) ============================ */
+
+	const SENOS_META = '_ps_siuntos_senos';
+	/** `_ps_siuntos_senos` → [nr, …] — numeriai, kurių nebeskaitom (grįžusi siunta, perregistruota). */
+	public static function senos( $o ) { $m = $o->get_meta( self::SENOS_META ); if ( is_array( $m ) ) { return array_values( array_filter( array_map( 'strval', $m ) ) ); } $j = json_decode( (string) $m, true ); return is_array( $j ) ? array_values( array_filter( array_map( 'strval', $j ) ) ) : array(); }
+
+	/** „Siųsti iš naujo“ (log S1611 sprendimas 5): grįžusios dalies prekės — iš AV (kelias „Iš AV“, likutis +q −q = 0), seni numeriai į `_ps_siuntos_senos`,
+	 *  žymės nuimamos, įvykdytas → processing be laiškų; Klausimas išnyksta. Prielaida: tiekėjo dalis + AV siunta jau išsiųsta → neleidžiama (5 etapas). */
+	protected static function grizta_is_naujo( $o, $u ) {
+		$g = self::grizta( $o ); if ( ! $g ) { return array( 'dl_info', 'grįžtančios siuntos nėra' ); }
+		if ( ! $o->is_paid() ) { return array( 'dl_klaida', 'užsakymas neapmokėtas' ); }
+		if ( in_array( $o->get_status(), Petshop_Desk::STATUSAI['atsaukti'], true ) ) { return array( 'dl_klaida', 'užsakymas atšauktas' ); }
+		$f = self::faktai( $o, self::zurnalas( array( $o->get_id() ) ) );
+		$iss = $f['dalys_issiusta']; $senos = $f['senos']; $judesiai = array(); $perkelta = array(); $nrai = array();
+		foreach ( $g as $dalis => $x ) {
+			if ( 'av' !== $dalis && ! empty( $f['dalys']['av'] ) && ! empty( $f['dalys']['av']['issiusta'] ) && empty( $g['av'] ) ) { return array( 'dl_klaida', 'AV siunta jau išsiųsta — dalinis persiuntimas dar nepadarytas (5 etapas), parašyk Raimiui' ); }
+			$nrai[] = $x['nr'];
+			$senos = array_merge( $senos, (array) ( $f['dalys'][ $dalis ]['nr'] ?? array() ), 'av' !== $dalis ? (array) ( $f['dalys']['av']['nr'] ?? array() ) : array() );
+			if ( 'av' !== $dalis ) {
+				foreach ( $o->get_items() as $iid => $it ) {
+					$e = $f['eil'][ (int) $iid ] ?? null; if ( ! $e || 'tiesiai' !== $e['k'] || $e['src'] !== $dalis ) { continue; }
+					$pid = (int) $it->get_product_id(); $q = max( 1, (int) $it->get_quantity() ); $liko = '';
+					if ( $pid && class_exists( 'Petshop_AV_Stock' ) ) {
+						$a = Petshop_AV_Stock::increase( $pid, $q, 'siunta ' . $x['nr'] . ' grįžo į AV, užsakymas #' . $o->get_order_number() );
+						$b = is_wp_error( $a ) ? $a : Petshop_AV_Stock::decrease( $pid, $q, 'siunčiama iš AV iš naujo, užsakymas #' . $o->get_order_number() );
+						$liko = is_wp_error( $b ) ? 'likučio klaida: ' . $b->get_error_message() : '+' . $q . ' −' . $q . ' → ' . (int) $b;
+					}
+					$it->update_meta_data( '_ps_kelias', 'av' ); $it->update_meta_data( '_ps_source', 'av' ); $it->update_meta_data( '_ps_carrier', 'any' );
+					$it->update_meta_data( '_ps_source_at', current_time( 'mysql' ) ); $it->update_meta_data( '_ps_source_reason', 'darbalaukis: ' . $u->display_name . ' — siunta ' . $x['nr'] . ' grįžo, siunčiama iš AV iš naujo' );
+					$it->update_meta_data( '_ps_av_reduced_qty', $q ); $it->delete_meta_data( '_ps_konsolidacija' ); $it->save();
+					$perkelta[] = $it->get_name(); $judesiai[] = mb_substr( $it->get_name(), 0, 40 ) . ': AV ' . $liko;
+				}
+				if ( ! $o->get_meta( '_ps_av_reduced' ) ) { $o->update_meta_data( '_ps_av_reduced', current_time( 'mysql' ) ); }
+				$o->delete_meta_data( '_ps_av_restored' );
+			}
+			unset( $iss[ $dalis ], $iss['av'], $g[ $dalis ] );
+		}
+		$o->update_meta_data( '_ps_dalys_issiusta', wp_json_encode( $iss ) );
+		$o->update_meta_data( self::SENOS_META, wp_json_encode( array_values( array_unique( array_filter( array_map( 'strval', $senos ) ) ) ) ) );
+		if ( $g ) { $o->update_meta_data( self::GRIZTA_META, wp_json_encode( $g ) ); } else { $o->delete_meta_data( self::GRIZTA_META ); }
+		$o->delete_meta_data( '_ps_surinkta' ); $o->delete_meta_data( '_ps_klaus_laukti' ); $o->delete_meta_data( '_ps_uzbaigti_be_siuntu' );
+		if ( $perkelta ) { self::planas_is_eiluciu( $o ); self::perskaiciuoti_grupes( $o ); }
+		$o->save();
+		$buvo = $o->get_status();
+		if ( in_array( $buvo, array_merge( Petshop_Desk::STATUSAI['ivykdyti'], Petshop_Desk::STATUSAI['kelyje'] ), true ) ) {
+			self::d( 'laiskai_off' ); $o->update_status( 'processing', 'Darbalaukis: siunta grįžo — siunčiama iš naujo iš AV. WC laiškas klientui: NESIŲSTAS.' ); self::d( 'laiskai_on' );
+		}
+		$o = wc_get_order( $o->get_id() );
+		$o->add_order_note( sprintf( 'Darbalaukis: siunta %s grįžo — SIUNČIAMA IŠ NAUJO iš AV (%s). %s%sSeni numeriai nebeskaitomi: %s. Toliau: Surinkti AV → naujas lipdukas.', implode( ', ', $nrai ), $u->display_name, $perkelta ? 'Į AV perkelta: ' . implode( ', ', $perkelta ) . '. ' : '', $judesiai ? 'Likutis: ' . implode( '; ', $judesiai ) . '. ' : '', implode( ', ', $senos ) ), false, true ); $o->save();
+		if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_id(), 'sritis' => 'desk', 'veiksmas' => 'grizta_is_naujo', 'rezultatas' => 'ok', 'kanalas' => 'web', 'pries' => array( 'status' => $buvo, 'nr' => $nrai ), 'po' => array( 'status' => $o->get_status(), 'perkelta' => $perkelta, 'senos' => $senos, 'zinute' => $judesiai ? implode( '; ', $judesiai ) : 'likutis nejudėjo' ), 'pastaba' => 'siunta grįžo → iš naujo iš AV' ) ); }
+		do_action( 'ps_juosta_isvalyti' );
+		return array( 'dl_dalis', 'siunta ' . implode( ', ', $nrai ) . ' grįžo — siunčiama iš naujo iš AV: Surinkti AV → naujas lipdukas' . ( $judesiai ? ' · likutis ' . implode( '; ', $judesiai ) : '' ) );
+	}
+
+	/** „Atšaukti — prekės grįžo į AV“ (log S1611 sprendimas 5): dropship eilutėms +q į `_own_stock_qty`, AV eilutėms — variklis ant cancelled; be laiškų, be sumų.
+	 *  Prielaida: kita dalis jau išsiųsta → neleidžiama (dalinis grąžinimas — 5 etapas). */
+	protected static function grizta_atsaukti( $o, $u ) {
+		$g = self::grizta( $o ); if ( ! $g ) { return array( 'dl_info', 'grįžtančios siuntos nėra' ); }
+		if ( in_array( $o->get_status(), Petshop_Desk::STATUSAI['atsaukti'], true ) ) { return array( 'dl_info', 'jau atšauktas' ); }
+		$f = self::faktai( $o, self::zurnalas( array( $o->get_id() ) ) );
+		foreach ( $f['dalys'] as $dk => $dp ) { if ( $dp && ! empty( $dp['issiusta'] ) && ! isset( $g[ $dk ] ) ) { return array( 'dl_klaida', 'kita siunta jau išsiųsta — dalinis grąžinimas dar nepadarytas (5 etapas), parašyk Raimiui' ); } }
+		$judesiai = array(); $nrai = array();
+		foreach ( $g as $dalis => $x ) {
+			$nrai[] = $x['nr']; if ( 'av' === $dalis ) { continue; }
+			foreach ( $o->get_items() as $iid => $it ) {
+				$e = $f['eil'][ (int) $iid ] ?? null; if ( ! $e || 'tiesiai' !== $e['k'] || $e['src'] !== $dalis ) { continue; }
+				$pid = (int) $it->get_product_id(); $q = max( 1, (int) $it->get_quantity() ); if ( ! $pid || ! class_exists( 'Petshop_AV_Stock' ) ) { continue; }
+				$a = Petshop_AV_Stock::increase( $pid, $q, 'siunta ' . $x['nr'] . ' grįžo į AV, užsakymas #' . $o->get_order_number() . ' atšauktas' );
+				$judesiai[] = mb_substr( $it->get_name(), 0, 40 ) . ': AV +' . $q . ( is_wp_error( $a ) ? ' KLAIDA ' . $a->get_error_message() : ' → ' . (int) $a );
+			}
+		}
+		$o->delete_meta_data( self::GRIZTA_META ); $o->delete_meta_data( '_ps_klaus_laukti' );
+		$o->add_order_note( sprintf( 'Darbalaukis: siunta %s grįžo — ATŠAUKIAMA, prekės grįžo į AV (%s). %sPinigai grąžinami rankomis. WC laiškas klientui: NESIŲSTAS.', implode( ', ', $nrai ), $u->display_name, $judesiai ? 'Likutis: ' . implode( '; ', $judesiai ) . '. ' : '' ), false, true ); $o->save();
+		$buvo = $o->get_status();
+		self::d( 'laiskai_off' ); $o->update_status( 'cancelled', '' ); self::d( 'laiskai_on' );
+		$o = wc_get_order( $o->get_id() );
+		if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_id(), 'sritis' => 'desk', 'veiksmas' => 'grizta_atsaukti', 'rezultatas' => 'cancelled' === $o->get_status() ? 'ok' : 'klaida', 'kanalas' => 'web', 'pries' => array( 'status' => $buvo, 'nr' => $nrai ), 'po' => array( 'status' => $o->get_status(), 'zinute' => $judesiai ? implode( '; ', $judesiai ) : 'dropship eilučių nėra — AV grąžina variklis' ), 'pastaba' => 'siunta grįžo → atšaukta' ) ); }
+		do_action( 'ps_juosta_isvalyti' );
+		if ( 'cancelled' !== $o->get_status() ) { return array( 'dl_klaida', 'atšaukti nepavyko — statusas ' . $o->get_status() ); }
+		return array( 'dl_dalis', 'atšauktas — siunta ' . implode( ', ', $nrai ) . ' grįžo į AV' . ( $judesiai ? ' · likutis ' . implode( '; ', $judesiai ) : '' ) . ' · pinigus grąžink rankomis' );
 	}
 
 	/** #5b (Raimis 09-03 naktis): SIUNTOS KLIENTUI — vienas tiesos šaltinis laiškui, paskyros blokui („Siuntos“, `petshop-kliento-siuntos.php`)
@@ -1694,11 +1795,19 @@ class Petshop_Darbalaukis {
 				$pastaba = 'Užsakyta iš tiekėjo prieš 24+ val., siunta neišėjo. Paskambink tiekėjui; jei išsiuntė — pažymėk „[tiekėjas] išsiuntė“.';
 				$veiksmai = '<button class="v p" data-atidaryti="1">Atidaryti</button> ' . $laukti . ' ' . $rasyti . ' ' . $atsaukti;
 			} elseif ( 0 === strpos( $kl, 'Siunta grįžta' ) ) {
-				$g = self::grizta( $o ); $d = array();
+				$g = self::grizta( $o ); $d = array(); $kita_issiusta = false; $av_issiusta = ! empty( $r['dalys']['av']['issiusta'] );
+				foreach ( $r['dalys'] as $dk => $dp ) { if ( $dp && ! empty( $dp['issiusta'] ) && ! isset( $g[ $dk ] ) ) { $kita_issiusta = true; } }
 				foreach ( $g as $dalis => $x ) { $pr = array(); foreach ( $r['eil'] as $e ) { $ed = ( 'tiesiai' === $e['k'] && $e['src'] ) ? $e['src'] : 'av'; if ( $ed === $dalis ) { $pr[] = $e['q'] . '× ' . $e['n']; } } $d[] = 'siunta ' . $x['nr'] . ' — Venipak: „' . $x['t'] . '“ (' . $x['d'] . ')' . ( $pr ? '; prekės: ' . implode( ', ', $pr ) : '' ); }
 				$tekstas = 'Vežėjas grąžina siuntą: ' . implode( '; ', $d ) . '.';
-				$pastaba = 'Kai siunta grįš į AV: „Siųsti iš naujo“ arba „Atšaukti — prekės grįžo į AV“ — mygtukai ateina kitu žingsniu. Kol kas parašyk klientui ir Raimiui.';
-				$veiksmai = '<button class="v p" data-atidaryti="1">Atidaryti</button> ' . $rasyti;
+				$tiek_griz = false; foreach ( $g as $dalis => $x ) { if ( 'av' !== $dalis ) { $tiek_griz = true; } }
+				$is_naujo_gal = ! ( $tiek_griz && $av_issiusta );
+				$pastaba = 'Kai prekės grįš į AV, spręsk: „Siųsti iš naujo“ — siunta ruošiama iš AV tuo pačiu adresu (Surinkti AV → naujas lipdukas), klientui vėl išeis „Išsiųsta“; „Atšaukti — prekės grįžo į AV“ — užsakymas atšaukiamas, prekės į AV likutį. Pinigus grąžinsi rankomis.'
+					. ( ! $is_naujo_gal ? ' Siųsti iš naujo negalima: AV siunta jau išsiųsta (dalinis persiuntimas — 5 etapas, parašyk Raimiui).' : '' )
+					. ( $kita_issiusta ? ' Atšaukti negalima: kita siunta jau išsiųsta (dalinis grąžinimas — 5 etapas, parašyk Raimiui).' : '' );
+				$antr = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), $sk['suma'] );
+				$b1 = $is_naujo_gal ? '<a class="v p" href="' . esc_url( self::dl_url( 'grizta_is_naujo', $id ) ) . '" data-d="' . esc_attr( wp_json_encode( array( 'antraste' => $antr, 'tekstas' => 'Prekės jau AV? Siunta bus ruošiama iš AV tuo pačiu adresu: užsakymas grįžta į „Surinkti AV“, reikės naujo lipduko. Klientui laiškas išeis, kai kurjeris paims.', 'ok' => 'Siųsti iš naujo' ) ) ) . '">Siųsti iš naujo</a> ' : '';
+				$b2 = ! $kita_issiusta ? '<a class="v t raud" href="' . esc_url( self::dl_url( 'grizta_atsaukti', $id ) ) . '" data-d="' . esc_attr( wp_json_encode( array( 'antraste' => $antr, 'tekstas' => 'Prekės jau AV? Užsakymas bus atšauktas, prekės pridėtos į AV likutį. Pinigai NEGRĄŽINAMI automatiškai — grąžinimą tvarkysi atskirai. Klientui laiškas nesiunčiamas.', 'ok' => 'Atšaukti — prekės grįžo į AV' ) ) ) . '">Atšaukti — prekės grįžo į AV</a> ' : '';
+				$veiksmai = $b1 . $b2 . '<button class="v t" data-atidaryti="1">Atidaryti</button> ' . $rasyti;
 			} elseif ( 0 === strpos( $kl, 'LP negalimas' ) ) {
 				$pastaba = 'LP Express galimas tik iš AV. Keisk ne-AV prekių kelią į „Iš AV“ / „veža į AV“ (pristatymo keitimas į Venipak čia dar nepadarytas — parašyk Raimiui).';
 				$veiksmai = '<button class="v p" data-atidaryti="1">Rūšiuoti</button> ' . $rasyti . ' ' . $atsaukti;
