@@ -1,0 +1,68 @@
+{
+ "v": "dep-111757",
+ "kurimas": 200,
+ "sid": 4710,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1613 e8r",
+  "temp_istrinta": 1,
+  "perduotos_src": {
+   "f": "petshop-av-dropship.php",
+   "l": "259-276",
+   "kodas": "\tpublic static function perduotos( $order ) {\n\t\t$m = $order->get_meta( self::META_SENT_SRC );\n\t\t$j = is_array( $m ) ? $m : json_decode( (string) $m, true );\n\t\tif ( is_array( $j ) && $j ) { return $j; }\n\n\t\t$sena = $order->get_meta( self::META_SENT );\n\t\tif ( ! $sena ) { return array(); }\n\n\t\t$kam = $order->get_meta( self::META_SENT_TO );\n\t\tif ( $kam ) { return array( $kam => $sena ); }\n\n\t\t$visi = array();\n\t\tforeach ( $order->get_items() as $item ) {\n\t\t\t$s = $item->get_meta( '_ps_source' );\n\t\t\tif ( $s && 'av' !== $s ) { $visi[ $s ] = $sena; }\n\t\t}\n\t\treturn $visi;\n\t}\n"
+  },
+  "sent_src_rasymas": [
+   "petshop-av-dropship.php:108 * DABAR: `_ps_dropship_sent_src` = {\"vf\":\"2026-08-23 11:04\"} — kiekvienam",
+   "petshop-av-dropship.php:164 const META_SENT_SRC = '_ps_dropship_sent_src';",
+   "petshop-desk.php:94 * jau buvo (_ps_dropship_sent_src) — tik niekur nesimatė vienu žvilgsniu.",
+   "petshop-uzsakymu-ivykiai.php:342 'dropship_sent' => $o->get_meta( '_ps_dropship_sent_src' ) ?: null,"
+  ],
+  "sargas": {
+   "dydis": 2665,
+   "md5": "561285de45f4812186e6105372b89c68",
+   "antraste": "<?php\n/**\n * Petshop Dropship Sargas v1.0 (H210) — tiekėjo vėlavimo (SLA) stebėjimas.\n *\n * PROBLEMA: perdavus užsakymą tiekėjui (`_ps_dropship_sent`) niekas neseka,\n * ar tiekėjas realiai išsiuntė. Užsakymas gali tyliai kaboti „vykdomas\" dienomis.\n *\n * SPRENDIMAS: valandinis cron. Jei nuo perdavimo praėjo daugiau nei 24 val.\n * (keičiama filtru `ps_dropship_sla_valandos`), o užsakymas vis dar\n * processing/on-hold — uždedama žymė `_ps_sla_velavimas` + pastaba istorijoje.\n * Darbalaukio `klausimas()` (desk v3.16) žymę paverčia kortele „Klausimuose\".\n *\n * SAUGUMO RIBA: sargas gali TIK uždėti žymę ir pastabą. Jokių statusų,\n * likučių, laiškų. Žymė dedama VIENĄ kartą (idempotencija per žymės buvimą).\n * Savaitgalio niuansas sprendžiamas žmogaus: kortelėje yra „Laukti\".\n */\n\ndefined( 'ABSPATH' ) || exit;\n\nclass Petshop_Dropship_Sargas {\n\n\tconst ZYME   = '_ps_sla_velavimas';\n\tconst CRON   = 'ps_dropship_sargas';\n\tconst RIBA_H = 24;\n\n\tpublic static function init() {\n\t\tadd_action( 'init', array( __CLASS__, 'planuoti' ) );\n\t\tadd_action( self::CRON, array( __CLASS__, 'tikrinti' ) );\n\t}\n\n\tpublic static function planuoti() {\n\t\tif ( ! wp_next_scheduled( self::CRON ) ) {\n\t\t\twp_schedule_event( time() + 300, 'hourly', self::CRON );\n\t\t}\n\t}\n\n\t/** Valandinis patikrinimas. Grąžina pažymėtų skaičių (testams). */\n\tpublic static function tikrinti() {\n\t\tglobal $wpdb;\n\t\t$valandu = (int) apply_filters( 'ps_dropship_sla_valandos', self::RIBA_H );\n\t\t$riba    = gmdate( 'Y-m-d H:i:s', current_time( 'timestamp' ) - $valandu * HOUR_IN_SECONDS );\n\t\t$t  = $wpdb->prefix . 'wc_orders';\n\t\t$mt = $wpdb->prefix . 'wc_orders_meta';\n\n\t\t$ids = $wpdb->get_col( $wpdb->prepare(\n\t\t\t\"SELECT o.id\n\t\t\t FROM {$t} o\n\t\t\t JOIN {$mt} m ON m.order_id = o.id AND m.meta_key = '_ps_dropship_sent'\n\t\t\t LEFT JOIN {$mt} f ON f.o"
+  },
+  "sla_uzs": [
+   {
+    "id": "35421",
+    "status": "wc-processing",
+    "v": "2026-09-04 12:14:34"
+   },
+   {
+    "id": "35418",
+    "status": "wc-processing",
+    "v": "2026-09-03 18:15:03"
+   }
+  ],
+  "sent_uzs": [
+   {
+    "id": "35421",
+    "status": "wc-processing",
+    "k": "_ps_dropship_sent_src",
+    "v": "{\"prins\":\"2026-09-03 11:23:34\"}"
+   },
+   {
+    "id": "35421",
+    "status": "wc-processing",
+    "k": "_ps_dropship_sent",
+    "v": "2026-09-03 11:23:34"
+   },
+   {
+    "id": "35418",
+    "status": "wc-processing",
+    "k": "_ps_dropship_sent_src",
+    "v": "{\"zb\":\"2026-09-02 17:50:10\"}"
+   },
+   {
+    "id": "35418",
+    "status": "wc-processing",
+    "k": "_ps_dropship_sent",
+    "v": "2026-09-02 17:50:10"
+   }
+  ],
+  "FATAL": "Call to protected method Petshop_Desk::klausimas() from global scope @15"
+ }
+}
