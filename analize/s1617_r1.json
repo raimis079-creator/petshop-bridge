@@ -1,0 +1,1521 @@
+{
+ "v": "dep-212016",
+ "kurimas": 200,
+ "sid": 4788,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1617 r1",
+  "temp_istrinta": 1,
+  "wc_ver": "11.0.1",
+  "locale": "lt_LT",
+  "cap_pay_for_order": [
+   "622: if ( $order && $user_id === $order->get_user_id() ) { $allcaps['view_order'] = true; } break; ",
+   "626: case 'pay_for_order': $user_id  = intval( $args[1] ); $order_id = isset( $args[2] ) ? $args[2] : null;  ",
+   "633: $allcaps['pay_for_order'] = true; break; }  ",
+   "639: if ( $order && ( $user_id === $order->get_user_id() || ! $order->get_user_id() ) ) { $allcaps['pay_for_order'] = true; } break; ",
+   "640: $allcaps['pay_for_order'] = true; } break; case 'order_again': ",
+   "647: if ( $order && $user_id === $order->get_user_id() ) { $allcaps['order_again'] = true; } break; ",
+   "655: if ( $order && $user_id === $order->get_user_id() ) { $allcaps['cancel_order'] = true; } break; ",
+   "663: if ( $download && $user_id === $download->get_user_id() ) { $allcaps['download_file'] = true; } break; "
+  ],
+  "order_pay_login": [
+   "88: if ( isset( $_GET['pay_for_order'], $_GET['key'] ) && $order_id ) { // WPCS: input var ok, CSRF ok. try { ",
+   "90: $order_key = isset( $_GET['key'] ) ? wc_clean( wp_unslash( $_GET['key'] ) ) : ''; // WPCS: input var ok, CSRF ok. $order     = wc_get_order( $order_id ); ",
+   "94: if ( ! $order || $order->get_id() !== $order_id || ! hash_equals( $order->get_order_key(), $order_key ) ) { throw new Exception( __( 'Sorry, this order is invalid and cannot be paid for.', 'woocommerce' ) ); ",
+   "99: if ( ! current_user_can( 'pay_for_order', $order_id ) && ! is_user_logged_in() ) { wc_print_notice( esc_html__( 'Please log in to your account below to continue to the payment form.', 'woocommerce' ), 'notice' ); ",
+   "100: wc_print_notice( esc_html__( 'Please log in to your account below to continue to the payment form.', 'woocommerce' ), 'notice' ); woocommerce_login_form( ",
+   "101: woocommerce_login_form( array( ",
+   "118: if ( ! current_user_can( 'pay_for_order', $order_id ) ) { throw new Exception( __( 'This order cannot be paid for. Please contact us if you need assistance.', 'woocommerce' ) ); ",
+   "236: $order_key = isset( $_GET['key'] ) ? wc_clean( wp_unslash( $_GET['key'] ) ) : ''; // WPCS: input var ok, CSRF ok. $order     = wc_get_order( $order_id ); ",
+   "239: if ( $order && $order->get_id() === $order_id && hash_equals( $order->get_order_key(), $order_key ) ) {  ",
+   "269: $order_key = apply_filters( 'woocommerce_thankyou_order_key', empty( $_GET['key'] ) ? '' : wc_clean( wp_unslash( $_GET['key'] ) ) ); // WPCS: input var ok, CSRF ok.  ",
+   "274: if ( ( ! $order instanceof WC_Order ) || ! hash_equals( $order->get_order_key(), $order_key ) ) { $order = false; ",
+   "314: wc_print_notice( esc_html__( 'Please log in to your account to view this order.', 'woocommerce' ), 'notice' ); woocommerce_login_form( array( 'redirect' => $order->get_checkout_order_received_url() ) ); ",
+   "315: woocommerce_login_form( array( 'redirect' => $order->get_checkout_order_received_url() ) ); return; "
+  ],
+  "order_pay_endpoint": "order-pay",
+  "checkout_page": 13,
+  "myaccount_page": 14,
+  "guest_checkout": "yes",
+  "login_from_checkout": "yes",
+  "wc_emails": {
+   "WC_Email_New_Order": {
+    "id": "new_order",
+    "on": 1,
+    "subj": "Naujas užsakymas Nr. {order_number} — {order_date}",
+    "title": "Naujas užsakymas"
+   },
+   "WC_Email_Cancelled_Order": {
+    "id": "cancelled_order",
+    "on": 1,
+    "subj": "",
+    "title": "Atšauktas užsakymas"
+   },
+   "WC_Email_Customer_Cancelled_Order": {
+    "id": "customer_cancelled_order",
+    "on": 1,
+    "subj": "Jūsų užsakymas Nr. {order_number} atšauktas — Petshop.lt",
+    "title": "Atšauktas užsakymas"
+   },
+   "WC_Email_Failed_Order": {
+    "id": "failed_order",
+    "on": 1,
+    "subj": "",
+    "title": "Nepavykęs užsakymas"
+   },
+   "WC_Email_Customer_Failed_Order": {
+    "id": "customer_failed_order",
+    "on": 0,
+    "subj": "",
+    "title": "Nepavykęs užsakymas"
+   },
+   "WC_Email_Customer_On_Hold_Order": {
+    "id": "customer_on_hold_order",
+    "on": 0,
+    "subj": "",
+    "title": "Užsakymas sustabdytas"
+   },
+   "WC_Email_Customer_Processing_Order": {
+    "id": "customer_processing_order",
+    "on": 1,
+    "subj": "Jūsų užsakymas Nr. {order_number} — apmokėjimas gautas",
+    "title": "Užsakymas vykdomas"
+   },
+   "WC_Email_Customer_Completed_Order": {
+    "id": "customer_completed_order",
+    "on": 1,
+    "subj": "Jūsų užsakymas №{order_number} išsiųstas!",
+    "title": "Įvykdytas užsakymas"
+   },
+   "WC_Email_Customer_Refunded_Order": {
+    "id": "customer_refunded_order",
+    "on": 1,
+    "subj": "",
+    "title": "Grąžintas užsakymas"
+   },
+   "WC_Email_Customer_Invoice": {
+    "id": "customer_invoice",
+    "on": 0,
+    "subj": "",
+    "title": "Užsakymo informacija"
+   },
+   "WC_Email_Customer_Note": {
+    "id": "customer_note",
+    "on": 1,
+    "subj": "",
+    "title": "Pirkėjo pastaba"
+   },
+   "WC_Email_Customer_Reset_Password": {
+    "id": "customer_reset_password",
+    "on": 1,
+    "subj": "",
+    "title": "Atkurti slaptažodį"
+   },
+   "WC_Email_Customer_New_Account": {
+    "id": "customer_new_account",
+    "on": 1,
+    "subj": "",
+    "title": "Nauja paskyra"
+   },
+   "WC_Email_Admin_Payment_Gateway_Enabled": {
+    "id": "admin_payment_gateway_enabled",
+    "on": 0,
+    "subj": "",
+    "title": "Payment gateway enabled"
+   },
+   "WC_Email_Customer_POS_Completed_Order": {
+    "id": "customer_pos_completed_order",
+    "on": 0,
+    "subj": "",
+    "title": "POS completed order"
+   },
+   "WC_Email_Customer_POS_Refunded_Order": {
+    "id": "customer_pos_refunded_order",
+    "on": 0,
+    "subj": "",
+    "title": "POS refunded order"
+   },
+   "WC_Email_Customer_Verify_Email": {
+    "id": "customer_verify_email",
+    "on": 1,
+    "subj": "",
+    "title": "Confirm email address"
+   }
+  },
+  "inv_default": {
+   "subj_unpaid": "Užsakymo #{order_number} iš {site_title} informacija",
+   "subj_paid": "Užsakymo #{order_number} iš {site_title} informacija",
+   "head_unpaid": "Užsakymo #{order_number} informacija",
+   "head_paid": "Užsakymo #{order_number} informacija",
+   "add_text": "Thanks again! If you need any help with your order, please contact us at {store_email}.",
+   "tpl": "emails/customer-invoice.php"
+  },
+  "tema_email_override": "nera",
+  "tema_tpl_override": [
+   "emails /customer-processing-order.php",
+   "myaccount/form-login.php"
+  ],
+  "inv_tpl_lt": [
+   "39: printf( esc_html__( 'Hi %s,', 'woocommerce' ), esc_html( $order->get_billing_first_name() ) ); } else { ",
+   "41: printf( esc_html__( 'Hi,', 'woocommerce' ) ); } ",
+   "49: printf( wp_kses( ",
+   "59: esc_html( get_bloginfo( 'name', 'display' ) ), '<a href=\"' . esc_url( $order->get_checkout_payment_url() ) . '\">' . esc_html__( 'Pay for this order', 'woocommerce' ) . '</a>' ",
+   "60: '<a href=\"' . esc_url( $order->get_checkout_payment_url() ) . '\">' . esc_html__( 'Pay for this order', 'woocommerce' ) . '</a>' ); ",
+   "63: printf( wp_kses( ",
+   "73: esc_html( get_bloginfo( 'name', 'display' ) ), '<a href=\"' . esc_url( $order->get_checkout_payment_url() ) . '\">' . esc_html__( 'Pay for this order', 'woocommerce' ) . '</a>' ",
+   "74: '<a href=\"' . esc_url( $order->get_checkout_payment_url() ) . '\">' . esc_html__( 'Pay for this order', 'woocommerce' ) . '</a>' ); ",
+   "84: printf( esc_html__( 'Here are the details of your order placed on %s:', 'woocommerce' ), esc_html( wc_format_datetime( $order->get_date_created() ) ) ); ?> "
+  ],
+  "paysera_plugins": [
+   "woo-payment-gateway-paysera/paysera.php"
+  ],
+  "gateways": {
+   "paysera": {
+    "on": "yes",
+    "title": "Mokėjimas internetu",
+    "class": "Paysera_Payment_Gateway"
+   },
+   "bacs": {
+    "on": "yes",
+    "title": "Bankinis pavedimas",
+    "class": "WC_Gateway_BACS"
+   },
+   "cheque": {
+    "on": "no",
+    "title": "Apmokėjimas čekiu",
+    "class": "WC_Gateway_Cheque"
+   },
+   "cod": {
+    "on": "no",
+    "title": "Apmokėjimas grynais atsiimant (COD)",
+    "class": "WC_Gateway_COD"
+   }
+  },
+  "paysera_files": [
+   "woo-payment-gateway-paysera/src/Repository/RefundRepository.php",
+   "woo-payment-gateway-paysera/src/Entity/class-paysera-payment-gateway.php",
+   "woo-payment-gateway-paysera/src/Entity/PayseraDeliverySettings.php",
+   "woo-payment-gateway-paysera/src/Entity/Delivery/Callback.php",
+   "woo-payment-gateway-paysera/src/Entity/Delivery/Order.php",
+   "woo-payment-gateway-paysera/src/Blocks/CheckoutStoreEndpoint.php",
+   "woo-payment-gateway-paysera/src/Admin/PayseraPaymentAdmin.php",
+   "woo-payment-gateway-paysera/src/Admin/PayseraDeliveryAdmin.php",
+   "woo-payment-gateway-paysera/src/Rest/PayseraDeliveryController.php",
+   "woo-payment-gateway-paysera/src/Rest/PayseraPaymentController.php",
+   "woo-payment-gateway-paysera/src/Resources/config/parameters.php",
+   "woo-payment-gateway-paysera/vendor/willdurand/jsonp-callback-validator/src/JsonpCallbackValidator.php",
+   "woo-payment-gateway-paysera/vendor/willdurand/jsonp-callback-validator/tests/JsonpCallbackValidatorTest.php",
+   "woo-payment-gateway-paysera/vendor/madesimple/php-arrays/src/Arr.php",
+   "woo-payment-gateway-paysera/vendor/madesimple/php-arrays/src/Collection.php"
+  ],
+  "paysera_RefundRepository.php": [
+   "57: public function refundExistsForCallback( "
+  ],
+  "paysera_class-paysera-payment-gateway.php": [
+   "72: add_action('woocommerce_thankyou_paysera', [$this, 'processOrderAfterPayment']); ",
+   "73: add_action('woocommerce_api_wc_gateway_paysera', [$this, 'processCallbackRequest']); ",
+   "74: add_action('woocommerce_update_options_payment_gateways_paysera', [$this, 'process_admin_options']); ",
+   "94: public function process_payment($order_id): array ",
+   "120: $this->get_return_url($order) ",
+   "125: public function processCallbackRequest(): void ",
+   "163: private function checkCallback(array $request): PaymentCallbackValidationResponse ",
+   "183: private function confirmOrder(PaymentCallbackValidationResponse $callbackResponse, WC_Order $order): void ",
+   "215: PayseraDeliverySettings::WC_ORDER_EVENT_PAYMENT_COMPLETED, ",
+   "225: private function refundOrder(PaymentCallbackValidationResponse $callbackResponse, WC_Order $order): void ",
+   "296: private function isPaymentValid(WC_Order $order, PaymentCallbackValidationResponse $response): bool ",
+   "333: $order->update_status( "
+  ],
+  "paysera_PayseraDeliverySettings.php": [
+   "85: public const WC_ORDER_EVENT_PAYMENT_COMPLETED = 'wc_order_payment_completed'; "
+  ],
+  "paysera_Callback.php": [],
+  "paysera_Order.php": [
+   "108: public function getNotificationCallback(): ?NotificationCallbackInterface "
+  ],
+  "paysera_CheckoutStoreEndpoint.php": [],
+  "snippets_aktyvus": [
+   {
+    "id": "239",
+    "name": "Petshop Disable Image Sizes v1 (NUOLATINIS - nedeaktyvuoti)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "329",
+    "name": "Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "332",
+    "name": "Petshop Filtru Kontekstas v20 [VISADA AKTYVUS]",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "375",
+    "name": "Baltymu Saltinis Dry-Run Konservai v2",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "461",
+    "name": "Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "463",
+    "name": "Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "464",
+    "name": "Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "465",
+    "name": " Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "469",
+    "name": "Petshop Dev App Passwords v1",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "472",
+    "name": "Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "492",
+    "name": "Petshop Filtru Atidarymas v2 (CSS+JS)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "494",
+    "name": "Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "502",
+    "name": "Higienos Modulis v1.0",
+    "scope": "global",
+    "priority": "11"
+   },
+   {
+    "id": "503",
+    "name": "Grauziko Rusis Modulis v1.2",
+    "scope": "global",
+    "priority": "11"
+   },
+   {
+    "id": "507",
+    "name": "Paukscio Rusis Modulis v1.3",
+    "scope": "global",
+    "priority": "11"
+   },
+   {
+    "id": "509",
+    "name": "Zuvies Rusis Modulis v1.0",
+    "scope": "global",
+    "priority": "11"
+   },
+   {
+    "id": "510",
+    "name": "Pasaro Forma Modulis v1.1",
+    "scope": "global",
+    "priority": "11"
+   },
+   {
+    "id": "512",
+    "name": "Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "513",
+    "name": "Petshop Katalogo Auditas v1 (read-only)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "518",
+    "name": "Petshop Slėpti svorį ir dimensijas v1 (display only)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "520",
+    "name": "Petshop Meniu Grupavimas v1 (komerciniai 3)",
+    "scope": "front-end",
+    "priority": "99"
+   },
+   {
+    "id": "525",
+    "name": "Petshop UI: kortelės + mobile sticky ATC",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "532",
+    "name": "Petshop MnM Fiksuoti komponentų kiekiai v2",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "535",
+    "name": "Petshop MnM Sutaupymo žymeklis v8 (nauda < 3 % nerodoma)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "539",
+    "name": "Petshop Rinkinių Kūrimo Forma v2",
+    "scope": "admin",
+    "priority": "10"
+   },
+   {
+    "id": "547",
+    "name": "Petshop Susidėjimo Rinkinio Vitrina v19",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "550",
+    "name": "Petshop Susidėjimo Rinkinio Kūrimo Forma v15",
+    "scope": "admin",
+    "priority": "10"
+   },
+   {
+    "id": "558",
+    "name": "Petshop Choice Krepšelio Elgsena",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "560",
+    "name": "Petshop Rinkinio CTA Banneris kategorijose v10",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "561",
+    "name": "Petshop Rinkinių Gyvūno Filtras v1",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "562",
+    "name": "Petshop Sprendimai Shortcode Variklis v9",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "563",
+    "name": "Petshop Spalvų Swatch Burbuliukai v1 (pa_spalva)",
+    "scope": "front-end",
+    "priority": "20"
+   },
+   {
+    "id": "565",
+    "name": "Petshop VF Sync v1.1 (reprice+stock+publish)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "566",
+    "name": "Petshop Akcijos Shortcode v1.3",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "567",
+    "name": "Petshop Daugiau=Pigiau Stock Sync v1.2",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "568",
+    "name": "Petshop Daugiau=Pigiau Display v1.2",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "569",
+    "name": "Petshop Pack/Rinkinys Auto-Categories v1.3",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "570",
+    "name": "Petshop Daugiau=Pigiau Puslapis Shortcode v1.0",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "572",
+    "name": "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v9",
+    "scope": "admin",
+    "priority": "10"
+   },
+   {
+    "id": "573",
+    "name": "Petshop DP Kortelės Ženkliukas v4",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "582",
+    "name": "Petshop LP Terminalu Svorio Riba v1 (29.90kg)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "587",
+    "name": "Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "594",
+    "name": "Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "609",
+    "name": "SEO Auto H1 v1 (page fallback + _petshop_h1)",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "610",
+    "name": "Petshop Topbar v2",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "613",
+    "name": "Petshop Shop→Parduotuvė 301 v1 (LIVE)",
+    "scope": "front-end",
+    "priority": "5"
+   },
+   {
+    "id": "614",
+    "name": "Petshop DataLayer v1.1 (GA4 ecommerce)",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "615",
+    "name": "Petshop GTM Snippet v2.0 (GTM-MF3GZGT, atidėtas)",
+    "scope": "front-end",
+    "priority": "5"
+   },
+   {
+    "id": "619",
+    "name": "Petshop Consent Bridge v1.2 (Complianz -> GTM)",
+    "scope": "front-end",
+    "priority": "1"
+   },
+   {
+    "id": "628",
+    "name": "Petshop Complianz X = Atmesti v1",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "632",
+    "name": "Petshop Slapuku Politika ES 301 v1 (LIVE)",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "648",
+    "name": "Petshop Invoice Doc Type Fix v2 (LIVE)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "653",
+    "name": "Petshop Invoice Completed Attach Fix v3 (LIVE)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "685",
+    "name": "Atrinktos Prekės Modulis v1 (rotacija)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "688",
+    "name": "Petshop Kategorijos Landing v2 (5 hub'ai + apatinis aprasymas)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "692",
+    "name": "Petshop Maisto Tipo Mygtukai v1",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "693",
+    "name": "Petshop Mobile Filtru Dublio Fix v1",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "705",
+    "name": "Petshop Produktu Nuotrauku Vienodinimas v1",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "707",
+    "name": "Petshop UI Lokalizacija v1",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "709",
+    "name": "Petshop Build-a-box UI Valymas v1",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "1357",
+    "name": "Feeding Calc REST v1",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "2024",
+    "name": "Petshop Anketa→Augintinio profilis 301 v1 (LIVE)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "2029",
+    "name": "Petshop MyAccount LT Slug 301 v1 (LIVE)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "2037",
+    "name": "Petshop Paskyros Sablonas v1 (LIVE)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "2051",
+    "name": "Petshop UI Lokalizacija v1 (LIVE)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "2403",
+    "name": "Petshop Stock Service v1.3 (per registra)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "2515",
+    "name": "Petshop Sources v2.3 (registras + palaikymas + sandelio pildymas + dvieju sandeliu eilutes)",
+    "scope": "global",
+    "priority": "10"
+   },
+   {
+    "id": "2868",
+    "name": "PS Masinis Sudeliojimas v6 (tik prekyboje)",
+    "scope": "global",
+    "priority": "5"
+   },
+   {
+    "id": "2871",
+    "name": "Petshop Vitrina Dalinimasis v1.0 (isjungti social mygtukai)",
+    "scope": "front-end",
+    "priority": "10"
+   },
+   {
+    "id": "2880",
+    "name": "Petshop Admin Juosta v1.0 (parduotuve naujame lange)",
+    "scope": "admin",
+    "priority": "10"
+   },
+   {
+    "id": "4788",
+    "name": "TEMP PS dep-212016",
+    "scope": "global",
+    "priority": "5"
+   }
+  ],
+  "s653": "/**\n * Petshop Invoice Completed Attach Fix v3 (LIVE, GLOBAL scope)\n * Kritinis: snippet turi buti GLOBAL, nes completed laiskas siunciamas admin/REST kontekste, ne front-end.\n * Regeneruoja svieziа PVM saskaita faktura completed laisko siuntimo metu + nukerpa senus/WCDN priedus.\n */\nif ( ! defined( 'ABSPATH' ) ) { return; }\nadd_filter( 'woocommerce_email_attachments', function ( $attachments, $email_id, $order, $email ) {\n\tif ( $email_id !== 'customer_completed_order' || ! ( $order instanceof WC_Order ) ) { return $attachments; }\n\tif ( ! function_exists( 'petshop_generate_invoice_pdf' ) ) { return $attachments; }\n\t$fresh_order = wc_get_order( $order->get_id() );\n\tif ( ! $fresh_order ) { return $attachments; }\n\tif ( function_exists( 'petshop_get_invoice_document_type' ) ) {\n\t\t$dt = petshop_get_invoice_document_type( $fresh_order );\n\t\tif ( $fresh_order->get_meta( '_petshop_invoice_document_type' ) !== $dt ) {\n\t\t\t$fresh_order->update_meta_data( '_petshop_invoice_document_type', $dt );\n\t\t\t$fresh_order->save();\n\t\t}\n\t}\n\t$fresh_pdf = petshop_generate_invoice_pdf( $order->get_id() );\n\t$clean = array();\n\tforeach ( (array) $attachments as $a ) {\n\t\t$b = basename( (string) $a );\n\t\tif ( stripos( $b, 'Isankstine-saskaita' ) !== false ) { continue; }\n\t\tif ( stripos( $b, 'PVM-saskaita' ) !== false ) { continue; }\n\t\tif ( stripos( $b, 'Invoice -' ) !== false ) { continue; }\n\t\tif ( preg_match( '/^invoice-\\d+-\\d+\\.pdf$/i', $b ) ) { continue; }\n\t\t$clean[] = $a;\n\t}\n\tif ( $fresh_pdf && file_exists( $fresh_pdf ) ) {\n\t\t$clean[] = $fresh_pdf;\n\t\t$fresh_order->update_meta_data( '_petshop_completed_pdf', $fresh_pdf );\n\t\t$fresh_order->save();\n\t}\n\t$clean = array_values( $clean );\n\tupdate_option( 'ps_last_completed_attach', array(\n\t\t'time'  => time(),\n\t\t'order' => $order->get_id(),\n\t\t'ctx'   => is_admin() ? 'admin' : ( ( defined('REST_REQUEST') && REST_REQUEST ) ? 'rest' : 'front' ),\n\t\t'atts'  => array_map( 'basename', $clean ),\n\t), false );\n\treturn $clean;\n}, 50, 4 );\n",
+  "tema_functions_dydis": 71132,
+  "tema_hooks": [
+   "386: add_action( 'woocommerce_checkout_order_created', function( $order ) { ",
+   "479: add_action( 'woocommerce_order_status_changed', function( $order_id, $old_status, $new_status, $order ) { ",
+   "508: add_action( 'woocommerce_order_status_completed', function( $order_id ) { ",
+   "518: add_filter( 'woocommerce_email_attachments', function( $attachments, $email_id, $order, $email ) { ",
+   "622: add_filter( 'woocommerce_email_attachments', 'petshop_remove_invoice_from_processing_email', 9999, 4 ); ",
+   "704: add_action( 'woocommerce_email_before_order_table', function( $order, $sent_to_admin, $plain_text, $email ) { ",
+   "714: add_action( 'woocommerce_email_header', function( $heading, $email ) { ",
+   "745: add_filter( 'woocommerce_email_subject_new_order',                 'petshop_fix_order_nr_in_subject', 10 ); ",
+   "746: add_filter( 'woocommerce_email_subject_customer_processing_order', 'petshop_fix_order_nr_in_subject', 10 ); ",
+   "747: add_filter( 'woocommerce_email_subject_customer_completed_order',  'petshop_fix_order_nr_in_subject', 10 ); ",
+   "748: add_filter( 'woocommerce_email_subject_customer_on_hold_order',    'petshop_fix_order_nr_in_subject', 10 ); ",
+   "749: add_filter( 'woocommerce_email_subject_customer_invoice',          'petshop_fix_order_nr_in_subject', 10 ); ",
+   "758: add_filter( 'woocommerce_checkout_fields', function( $fields ) { ",
+   "807: add_action( 'woocommerce_checkout_process', function() { ",
+   "861: add_filter( 'woocommerce_checkout_fields', 'petshop_address_optional_for_parcel', 20 ); ",
+   "1301: add_filter( 'woocommerce_checkout_fields', 'petshop_add_company_fields', 30 ); ",
+   "1342: add_action( 'woocommerce_checkout_create_order', 'petshop_save_company_fields_to_order', 20, 2 ); ",
+   "1373: add_action( 'woocommerce_checkout_process', 'petshop_validate_company_fields' ); "
+  ],
+  "tema_avpn": [
+   "233: //   update_option('petshop_avpn_counter', 101) ",
+   "234: //   update_option('petshop_iapv_counter', 101) ",
+   "236: function petshop_get_avpn_number( $order_id ) { ",
+   "238: $existing = $order ? $order->get_meta( '_petshop_avpn_number' ) : ''; ",
+   "240: $counter = (int) get_option( 'petshop_avpn_counter', 101 ); ",
+   "241: $number  = 'AVPN' . str_pad( $counter, 6, '0', STR_PAD_LEFT ); ",
+   "242: update_option( 'petshop_avpn_counter', $counter + 1 ); ",
+   "244: $order->update_meta_data( '_petshop_avpn_number', $number ); ",
+   "250: function petshop_get_iapv_number( $order_id ) { ",
+   "252: $existing = $order ? $order->get_meta( '_petshop_iapv_number' ) : ''; ",
+   "254: $counter = (int) get_option( 'petshop_iapv_counter', 101 ); ",
+   "255: $number  = 'IAPV' . str_pad( $counter, 6, '0', STR_PAD_LEFT ); ",
+   "256: update_option( 'petshop_iapv_counter', $counter + 1 ); ",
+   "258: $order->update_meta_data( '_petshop_iapv_number', $number ); ",
+   "280: 'number' => petshop_get_iapv_number( $order_id ), ",
+   "285: 'number' => petshop_get_avpn_number( $order_id ), ",
+   "361: // Svarus lietuviskas failo pavadinimas pagal dokumento numeri (base.php nustato $invoice_number ir $doc_title virsuje). ",
+   "362: $doc_num  = isset( $invoice_number ) ? preg_replace( '/[^A-Za-z0-9]/', '', $invoice_number ) : (string) $order_id; ",
+   "394: $order->update_meta_data( '_petshop_order_pdf', $pdf_file ); ",
+   "441: $petshop_pdf = $order->get_meta( '_petshop_order_pdf' ); ",
+   "513: $order->update_meta_data( '_petshop_completed_pdf', $pdf_file ); ",
+   "520: $pdf_file = $order->get_meta( '_petshop_completed_pdf' ); "
+  ],
+  "tema_gen_pdf": "function petshop_generate_invoice_pdf( $order_id ) {\n    $wc_order = wc_get_order( $order_id );\n    if ( ! $wc_order ) return false;\n\n    $countries      = WC()->countries ? WC()->countries->get_countries() : array();\n    $b_country      = $wc_order->get_billing_country();\n    $b_country_name = isset( $countries[ $b_country ] ) ? $countries[ $b_country ] : $b_country;\n\n    $skip_states = array( 'pasirinkite rajona', 'select a region', 'select an option' );\n    $b_state     = $wc_order->get_billing_state();\n    $b_state_val = ( $b_state && ! in_array( mb_strtolower( $b_state ), $skip_states ) ) ? $b_state : '';\n\n    $city_post = trim( $wc_order->get_billing_city() . ( $wc_order->get_billing_postcode() ? ', ' . $wc_order->get_billing_postcode() : '' ) );\n\n    $billing_lines = array_values( array_filter( array(\n        $wc_order->get_billing_address_1(),\n        $wc_order->get_billing_address_2(),\n        $city_post,\n        $b_state_val,\n        $b_country_name,\n    ) ) );\n\n    $order = array(\n        'id'            => $order_id,\n        'orderNumber'   => $wc_order->get_order_number(),\n        'documentDate'  => date_i18n( 'Y-m-d' ),\n        'date'          => $wc_order->get_date_created()\n                            ? $wc_order->get_date_created()->format( 'Y-m-d' )\n                            : date( 'Y-m-d' ),\n        'paymentMethod' => $wc_order->get_payment_method_title(),",
+  "mu_hooks": {
+   "petshop-av-dropship.php": [
+    "187: add_action( 'wp_mail_failed', function ( $e ) { self::$pasto_klaida = is_wp_error( $e ) ? $e->get_error_message() : 'wp_mail klaida'; } ); "
+   ],
+   "petshop-av-order.php": [
+    "40: add_action( 'woocommerce_payment_complete', [ __CLASS__, 'fiksuoti' ], 5, 1 ); ",
+    "41: add_action( 'woocommerce_order_status_processing', [ __CLASS__, 'fiksuoti' ], 5, 1 ); ",
+    "42: add_action( 'woocommerce_order_status_on-hold', [ __CLASS__, 'fiksuoti' ], 5, 1 ); "
+   ],
+   "petshop-av-reduce.php": [
+    "36: add_action( 'woocommerce_payment_complete', [ __CLASS__, 'mazinti' ], 15, 1 ); ",
+    "37: add_action( 'woocommerce_order_status_processing', [ __CLASS__, 'mazinti' ], 15, 1 ); ",
+    "39: add_action( 'woocommerce_order_status_cancelled', [ __CLASS__, 'grazinti' ], 15, 1 ); ",
+    "40: add_action( 'woocommerce_order_status_refunded', [ __CLASS__, 'grazinti' ], 15, 1 ); "
+   ],
+   "petshop-darbalaukis.php": [
+    "291: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'auto_rusiuoti' ), 100, 1 ); ",
+    "292: add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'auto_rusiuoti' ), 100, 1 ); ",
+    "303: add_filter( 'woocommerce_email_order_item_quantity', array( __CLASS__, 'kiekio_laiske' ), 20, 2 ); "
+   ],
+   "petshop-desk.php": [
+    "315: add_filter( 'woocommerce_email_enabled_' . $e, '__return_false', 999 ); "
+   ],
+   "petshop-dev-pastas.php": [
+    "20: add_filter( 'pre_wp_mail', array( __CLASS__, 'gaudyti' ), 5, 2 ); "
+   ],
+   "petshop-fakt-grazinimai.php": [
+    "76: add_action( 'woocommerce_order_refunded', array( __CLASS__, 'rasyti' ), 35, 2 ); "
+   ],
+   "petshop-faktai.php": [
+    "86: add_action( 'woocommerce_payment_complete',           array( __CLASS__, 'rasyti' ), 35, 1 ); ",
+    "89: add_action( 'woocommerce_order_status_processing',    array( __CLASS__, 'rasyti' ), 35, 1 ); ",
+    "90: add_action( 'woocommerce_order_status_completed',     array( __CLASS__, 'rasyti' ), 35, 1 ); ",
+    "91: add_action( 'woocommerce_order_status_changed',       array( __CLASS__, 'statusas' ), 35, 4 ); "
+   ],
+   "petshop-ga4-serveris.php": [
+    "30: add_action( 'woocommerce_checkout_create_order', array( __CLASS__, 'isiminti_slapukus' ), 10, 1 ); "
+   ],
+   "petshop-kanalai.php": [
+    "46: add_action( 'woocommerce_checkout_create_order', array( __CLASS__, 'i_uzsakyma' ), 21, 2 ); "
+   ],
+   "petshop-laukai.php": [
+    "119: add_action( 'woocommerce_checkout_create_order_line_item', array( __CLASS__, 'dovanos_eilute' ), 11, 4 ); ",
+    "123: add_action( 'woocommerce_checkout_create_order_line_item', array( __CLASS__, 'eilutes_zyme' ), 10, 4 ); "
+   ],
+   "petshop-legacy-importas.php": [
+    "174: add_filter('pre_wp_mail', array(__CLASS__, 'blokuoti_pasta'), 1); ",
+    "177: add_filter('woocommerce_email_enabled_customer_new_account', '__return_false', 99); "
+   ],
+   "petshop-partijos.php": [
+    "581: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 ); ",
+    "582: add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 ); ",
+    "583: add_action( 'woocommerce_order_status_completed', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 ); "
+   ],
+   "petshop-payment-failed.php": [
+    "28: add_action( 'woocommerce_order_status_failed', 'petshop_emit_payment_failed', 20, 1 ); ",
+    "32: add_action( 'woocommerce_order_status_pending', function ( $order_id ) { "
+   ],
+   "petshop-pren-sutikimas.php": [
+    "16: add_action('woocommerce_checkout_process', array(__CLASS__, 'tikrinti')); ",
+    "17: add_action('woocommerce_checkout_create_order', array(__CLASS__, 'irasyti'), 10, 2); "
+   ],
+   "petshop-prenumerata-katalogas.php": [
+    "36: add_action('woocommerce_checkout_create_order_line_item', array(__CLASS__, 'i_uzsakyma'), 10, 4); ",
+    "39: add_action('woocommerce_payment_complete', array(__CLASS__, 'is_uzsakymo'), 30, 1); ",
+    "40: add_action('woocommerce_order_status_processing', array(__CLASS__, 'is_uzsakymo'), 30, 1); ",
+    "41: add_action('woocommerce_order_status_completed', array(__CLASS__, 'is_uzsakymo'), 30, 1); "
+   ],
+   "petshop-prenumerata.php": [
+    "51: add_action('woocommerce_payment_complete', array(__CLASS__, 'apmoketa'), 10, 1); "
+   ],
+   "petshop-rec-log.php": [
+    "48: add_action( 'woocommerce_checkout_order_processed', array( __CLASS__, 'pirkta' ), 20, 3 ); "
+   ],
+   "petshop-refill-ivykiai.php": [
+    "50: add_action( 'woocommerce_checkout_order_processed', array( __CLASS__, 'pirkta' ), 30, 3 ); "
+   ],
+   "petshop-siuntu-laiskai.php": [
+    "46: add_action( 'woocommerce_email_order_details', array( __CLASS__, 'mixed_pastaba' ), 5, 4 ); ",
+    "47: add_action( 'woocommerce_before_order_object_save', array( __CLASS__, 'uzbaigimo_sargas' ), 10, 1 ); "
+   ],
+   "petshop-statistika.php": [
+    "90: add_action( 'woocommerce_checkout_create_order_line_item', array( __CLASS__, 'savikaina_i_eilute' ), 20, 4 ); ",
+    "92: add_action( 'woocommerce_new_order_item', array( __CLASS__, 'savikaina_naujam_item' ), 20, 3 ); ",
+    "95: add_action( 'woocommerce_checkout_create_order', array( __CLASS__, 'uzsakymo_atributai' ), 20, 2 ); "
+   ],
+   "petshop-uzsakymu-ivykiai.php": [
+    "115: add_filter( 'wp_mail', array( __CLASS__, 'laiskas' ), 999 ); ",
+    "119: add_action( 'woocommerce_order_status_changed', array( __CLASS__, 'busena' ), 99, 4 ); ",
+    "120: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'apmokejimas' ), 99, 1 ); "
+   ]
+  },
+  "mu_failai": [
+   "automation-by-installatron.php",
+   "petshop-akcijos.php",
+   "petshop-analitika.php",
+   "petshop-anketa-ivykiai.php",
+   "petshop-anketos-ataskaita.php",
+   "petshop-ataskaita-atsargos.php",
+   "petshop-ataskaita-klientai.php",
+   "petshop-ataskaita-menuo.php",
+   "petshop-ataskaita-pardavimai.php",
+   "petshop-ataskaita-prekes.php",
+   "petshop-ataskaitos-ui.php",
+   "petshop-ataskaitu-agregavimas.php",
+   "petshop-ataskaitu-eksportas.php",
+   "petshop-atributai.php",
+   "petshop-atsargu-laukimas.php",
+   "petshop-atsisakymas.php",
+   "petshop-av-admin.php",
+   "petshop-av-dropship.php",
+   "petshop-av-expiry.php",
+   "petshop-av-limit.php",
+   "petshop-av-order.php",
+   "petshop-av-reduce.php",
+   "petshop-av-sheets.php",
+   "petshop-av-source.php",
+   "petshop-av-stock.php",
+   "petshop-av-tiekimas.php",
+   "petshop-cache.php",
+   "petshop-code-search.php",
+   "petshop-darbalaukis.php",
+   "petshop-desk.php",
+   "petshop-dev-pastas.php",
+   "petshop-dev-veidrodis.php",
+   "petshop-dim-klientai.php",
+   "petshop-dropship-sargas.php",
+   "petshop-dydziai.php",
+   "petshop-fakt-atsargos.php",
+   "petshop-fakt-grazinimai.php",
+   "petshop-fakt-kainos.php",
+   "petshop-fakt-reklama.php",
+   "petshop-fakt-siuntos.php",
+   "petshop-faktai.php",
+   "petshop-feeding-calc-rest.php",
+   "petshop-ga4-serveris.php",
+   "petshop-gavimas.php",
+   "petshop-greitis.php",
+   "petshop-hero-preload.php",
+   "petshop-higiena.php",
+   "petshop-import-log.php",
+   "petshop-import-tempas.php",
+   "petshop-innodb.php",
+   "petshop-islaidos.php",
+   "petshop-istorijos-adapteris.php",
+   "petshop-ivykiai.php",
+   "petshop-juosta.php",
+   "petshop-kalendorius.php",
+   "petshop-kampaniju-langas.php",
+   "petshop-kanalai.php",
+   "petshop-katalogas.php",
+   "petshop-kategorijos-aprasymas.php",
+   "petshop-klientai.php",
+   "petshop-kliento-siuntos.php",
+   "petshop-kreipinys.php",
+   "petshop-laiskai-importas.php",
+   "petshop-laiskai.php",
+   "petshop-langai-admin.php",
+   "petshop-laukai.php",
+   "petshop-legacy-301.php",
+   "petshop-legacy-importas.php",
+   "petshop-login-sargas.php",
+   "petshop-m8-food.php",
+   "petshop-naujienlaiskiai-admin.php",
+   "petshop-naujienlaiskiai.php",
+   "petshop-nepamoketi.php",
+   "petshop-pardavimai.php",
+   "petshop-parseris.php",
+   "petshop-partijos.php",
+   "petshop-paruostu-ataskaita.php",
+   "petshop-payment-failed.php",
+   "petshop-perziuru-priminimas.php",
+   "petshop-pet-claim.php",
+   "petshop-pet-kontraktas.php",
+   "petshop-pilnumas.php",
+   "petshop-pren-nuorodos.php",
+   "petshop-pren-sutikimas.php",
+   "petshop-prenumerata-katalogas.php",
+   "petshop-prenumerata-paskyra.php",
+   "petshop-prenumerata-veiksmas.php",
+   "petshop-prenumerata.php",
+   "petshop-prenumeratos-langas.php",
+   "petshop-prenumeratu-prognoze.php",
+   "petshop-prieziura.php",
+   "petshop-ps-pets-migration-freeze.php",
+   "petshop-rankos.php",
+   "petshop-rec-log.php",
+   "petshop-rec-ui.php",
+   "petshop-rec-variklis.php",
+   "petshop-refill-ivykiai.php",
+   "petshop-rezultatai.php",
+   "petshop-rinkiniai.php",
+   "petshop-rinkiniu-ataskaita.php",
+   "petshop-rinkiniu-likuciai.php",
+   "petshop-rinkiniu-rusis.php",
+   "petshop-rysiai.php",
+   "petshop-rytas.php",
+   "petshop-sargas.php",
+   "petshop-schema.php",
+   "petshop-seo-aprasymas.php",
+   "petshop-seo.php",
+   "petshop-seseliai.php",
+   "petshop-siuntu-laiskai.php",
+   "petshop-siuntu-valymas.php",
+   "petshop-statistika-vitrina.php",
+   "petshop-statistika.php",
+   "petshop-teises.php",
+   "petshop-uzsakymu-ivykiai.php",
+   "petshop-vartai.php",
+   "petshop-vertimai.php",
+   "petshop-vf-feed.php",
+   "petshop-wc-sync.php",
+   "petshop-webp.php"
+  ],
+  "dl_auto_rusiuoti": "function auto_rusiuoti( $order_id ) {\n\t\t$o = is_numeric( $order_id ) ? wc_get_order( $order_id ) : $order_id;\n\t\tif ( ! $o || ! $o->is_paid() || $o->get_meta( '_ps_rusiuota' ) || ! class_exists( 'Petshop_Desk' ) || self::d( 'misrus_sprendimas', $o ) ) { return false; }\n\t\tif ( self::d( 'klausimas', $o ) ) { return false; }\n\t\t$src = array();\n\t\tforeach ( $o->get_items() as $it ) { $s = (string) $it->get_meta( '_ps_source' ); if ( ! $s ) { return false; } $src[ $s ] = 1; }\n\t\t// Raimis 09-03: pati išrūšiuoja TIK vieno sandėlio užsakymus. 2+ sandėliai → Neišrūšiuoti (siųsti atskirai ar sudėti į AV — žmogaus sprendimas, „Auto“ eilutėje).\n\t\tif ( count( $src ) > 1 ) { return false; }\n\t\t$r = self::rusiuoti( $o, wp_get_current_user(), true );\n\t\treturn 'dl_rusiuota' === $r[0];\n\t}\n\n\t/* ============================ UŽKLAUSA ============================ */\n\n\tprotected static function filtrai() {\n\t\t$g = function ( $k, $t = 'key' ) { if ( ! isset( $_GET[ $k ] ) ) { return ''; } return 'key' === $t ? sanitize_key( $_GET[ $k ] ) : sanitize_text_field( wp_unslash( $_GET[ $k ] ) ); };\n\t\treturn array( 'q' => $g( 'q', 't' ), 'data' => $g( 'data' ), 'nuo' => $g( 'nuo', 't' ), 'iki' => $g( 'iki', 't' ), 'vykdymas' => $g( 'vykdymas' ), 'vezejas' => $g( 'vezejas' ),\n\t\t\t'busena' => '', 'mokejimas' => '', 'amzius' => '', 'nr' => '', 'klientas' => '', 'tel' => '', 'adresas' => '', 'zvilgsnis' => '', 'b' => $g( 'b' ), 'r' => $g( 'r' ), 'psl' => max( 1, (int) ( $_GET['psl'] ?? 1 ) ) );\n\t}\n\n\tprotected static function faktu_sarasas( $orders ) {\n\t\t$orders = array_filter( (array) $orders, function ( $o ) { return is_a( $o, 'WC_Order' ); } );\n\t\t$z = self::zurnalas( array_map( function ( $o ) { return $o->get_id(); }, $orders ) );\n\t\t$out = array(); foreach ( $orders as $o ) { $out[] = self::faktai( $o, $z ); } return $out;\n\t}\n\n\tconst RIBA = 1000;\n\tprotected static $ne_visi = false;\n\n\t/** Atviri = tik tie, kur reikia darbo (processing / on-hold / LP). Neapmokėti — atskirai (K2). Riba 1000 + įspėjimas. */\n\tprotected static function atviri() {\n\t\t$orders = wc_get_orders( array( 'limit' => self::RIBA, 'type' => 'shop_order', 'orderby' => 'date', 'order' => 'DESC', 'return' => '",
+  "dl_atviri": "function atviri() {\n\t\t$orders = wc_get_orders( array( 'limit' => self::RIBA, 'type' => 'shop_order', 'orderby' => 'date', 'order' => 'DESC', 'return' => 'objects',\n\t\t\t'status' => array_merge( array( 'processing', 'on-hold', 'lp-parcel-await', 'lp-parcel-failed' ), Petshop_Desk::STATUSAI['paruosta'] ) ) );\n\t\tif ( count( (array) $orders ) >= self::RIBA ) { self::$ne_visi = true; }\n\t\t// v3.11: įvykdytas / kelyje užsakymas, kurio siuntą Venipak grąžina — Klausimas „Siunta grįžta“ (žymė nuimama sprendimu, 4 etapo #3).\n\t\t$grizta = wc_get_orders( array( 'limit' => 50, 'type' => 'shop_order', 'orderby' => 'date', 'order' => 'DESC', 'return' => 'objects', 'status' => array_merge( Petshop_Desk::STATUSAI['ivykdyti'], Petshop_Desk::STATUSAI['kelyje'] ), 'meta_query' => array( array( 'key' => self::GRIZTA_META, 'compare' => 'EXISTS' ) ) ) );\n\t\tforeach ( (array) $grizta as $go ) { if ( self::grizta( $go ) ) { $orders[] = $go; } }\n\t\t// v3.19: įvykdytas / atšauktas užsakymas, kuriam po kiekio keitimo dar negrąžinti pinigai — Klausimas „Grąžink klientui pinigus“ (žymė nuimama „Grąžinta“).\n\t\t$turim = array(); foreach ( (array) $orders as $x ) { $turim[ $x->get_id() ] = 1; }\n\t\t$graz = wc_get_orders( array( 'limit' => 50, 'type' => 'shop_order', 'orderby' => 'date', 'order' => 'DESC', 'return' => 'objects', 'status' => array_merge( Petshop_Desk::STATUSAI['ivykdyti'], Petshop_Desk::STATUSAI['kelyje'], array( 'cancelled', 'refunded' ) ), 'meta_query' => array( array( 'key' => self::GRAZINTI_META, 'compare' => 'EXISTS' ) ) ) );\n\t\tforeach ( (array) $graz as $go ) { if ( empty( $turim[ $go->get_id() ] ) && self::grazinti( $go ) ) { $orders[] = $go; } }\n\t\treturn self::faktu_sarasas( $orders );\n\t}\n\n\tprotected static function neapmoketi() {\n\t\t$orders = wc_get_orders( array( 'limit' => 300, 'type' => 'shop_order', 'orderby' => 'date', 'order' => 'DESC', 'return' => 'objects', 'status' => array( 'pending', 'failed' ), 'date_created' => '>' . ( time() - 14 * DAY_IN_SECONDS ) ) );\n\t\tif ( count( (array) $orders ) >= 300 ) { self::$ne_visi = 'neapmoketi'; } // T3: riba pasiekta — įspėjimas juostoje\n\t\treturn self::faktu_sarasas( $orders );\n\t}\n\n\tconst PSL = 50;\n\tprotected static $visi_iš_viso = 0;\n\n\t/** V9: „Visi“ puslapiais po 50 (`psl`), „Išsiųsta šiandien“ — iš `_ps_dalys_issiusta` (K4) arba `date_completed` šiandien, ne pagal `date_modified`. */\n\tprotected static function visi( $f ) {\n\t\tif ( '' !== $f['q'] || $f['data'] ) { return self::faktu_sarasas( array_map( function ( $r ) { return $r['o']; }, (array) self::d( 'gauti', 'visi'",
+  "dl_hooks": [
+   "289: add_action( 'plugins_loaded', array( __CLASS__, 'perimti' ), 20 ); ",
+   "290: add_action( 'admin_post_ps_dl_veiksmas', array( __CLASS__, 'vykdyti' ) ); ",
+   "291: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'auto_rusiuoti' ), 100, 1 ); ",
+   "292: add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'auto_rusiuoti' ), 100, 1 ); ",
+   "293: add_filter( 'wp_redirect', array( __CLASS__, 'grizti_cia' ), 5, 2 ); ",
+   "294: add_action( 'admin_post_ps_desk_veiksmas', array( __CLASS__, 'surinkta_zyme' ), 0 ); ",
+   "295: add_action( 'wp_ajax_ps_dl_zurnalas', array( __CLASS__, 'ajax_zurnalas' ) ); ",
+   "296: add_action( 'wp_ajax_ps_dl_skydelis', array( __CLASS__, 'ajax_skydelis' ) ); ",
+   "297: add_action( 'wp_ajax_ps_dl_matyta', array( __CLASS__, 'ajax_matyta' ) ); ",
+   "298: add_action( 'admin_post_ps_dl_tiekimas', array( __CLASS__, 'tiekimas_vykdyti' ) ); ",
+   "299: add_action( 'admin_post_ps_dl_redaguoti', array( __CLASS__, 'redaguoti_vykdyti' ) ); // v3.16 ",
+   "300: add_action( 'admin_post_ps_dl_kiekis', array( __CLASS__, 'kiekis_vykdyti' ) ); // v3.19 (5 etapas #4) ",
+   "302: add_filter( 'woocommerce_order_item_quantity_html', array( __CLASS__, 'kiekio_html' ), 20, 2 ); ",
+   "303: add_filter( 'woocommerce_email_order_item_quantity', array( __CLASS__, 'kiekio_laiske' ), 20, 2 ); ",
+   "304: add_filter( 'woocommerce_get_order_item_totals', array( __CLASS__, 'sumu_eilutes' ), 20, 2 ); ",
+   "305: add_filter( 'woocommerce_get_formatted_order_total', array( __CLASS__, 'suma_be_savu' ), 20, 4 ); ",
+   "306: add_action( 'wp_ajax_ps_dl_vietos', array( __CLASS__, 'ajax_vietos' ) ); // v3.16 ",
+   "308: add_filter( 'cron_schedules', array( __CLASS__, 'cron_tvarkarastis' ) ); ",
+   "309: add_action( 'init', array( __CLASS__, 'cron_planuoti' ), 30 ); ",
+   "310: add_action( 'ps_venipak_sekimas', array( __CLASS__, 'venipak_sekimas' ) ); ",
+   "311: add_action( 'ps_velavimo_laiskai', array( __CLASS__, 'velavimo_laiskai' ) ); // v3.13 ",
+   "388: add_action( 'admin_menu', array( __CLASS__, 'meniu' ) ); ",
+   "389: add_action( 'admin_head', array( __CLASS__, 'chrome' ) ); "
+  ],
+  "dl_laiskai_off": "nerasta:laiskai_off",
+  "dl_laiskas_fns": [
+   "2269: protected static function laisku_korteles( $rows ) { "
+  ],
+  "dl_grizta_sumos": "function grizta_sumos( $f ) {\n\t\t$o = $f['o']; $g = (array) ( $f['grizta'] ?? array() ); if ( ! $g ) { return null; }\n\t\t$kitos = array(); foreach ( (array) $f['dalys'] as $dk => $dp ) { if ( $dp && ! isset( $g[ $dk ] ) ) { $kitos[] = self::vardas( $dk ); } }\n\t\t$visa = ! $kitos;\n\t\tif ( $visa ) { $s = (float) $o->get_total(); $baze = 'visa siunta grįžta — sumokėta su pristatymu'; }\n\t\telse {\n\t\t\t$s = 0.0;\n\t\t\tforeach ( $o->get_items() as $iid => $it ) { $e = $f['eil'][ (int) $iid ] ?? null; if ( ! $e || ! empty( $e['atsaukta'] ) || ! empty( $e['issiusta_l'] ) ) { continue; } $ed = ( 'tiesiai' === $e['k'] && $e['src'] ) ? $e['src'] : 'av'; if ( isset( $g[ $ed ] ) ) { $s += (float) $it->get_total() + (float) $it->get_total_tax(); } }\n\t\t\t$baze = 'tik grįžusios dalies prekės; kita dalis lieka: ' . implode( ', ', $kitos );\n\t\t}\n\t\tlist( $ik, $ik_t ) = self::pristatymo_ikainis( $o, (string) ( $f['vez'] ?? '' ) );\n\t\treturn array( 'sumoketa' => round( $s, 2 ), 'grazinti' => max( 0, round( $s - self::GRAZINIMO_MOKESTIS, 2 ) ), 'baze' => $baze, 'ikainis' => $ik, 'ikainis_t' => $ik_t, 'pakart' => null === $ik ? null : round( $ik + self::GRAZINIMO_MOKESTIS, 2 ), 'visa' => $visa );\n\t}\n\t/** Žymė „grąžink klientui X € rankomis“ po grįžusios siuntos atšaukimo (refund 0 — WC įrašo nėra, kreditinė vėliau). */\n\tprotected static function grazinti_zyme( $o, $u, $suma, $ka ) {\n\t\tif ( $suma <= 0 ) { return; }\n\t\t$gr = self::grazinti( $o ); $gr[] = array( 'laikas' => current_time( 'mysql' ), 'kas' => $u->display_name, 'suma' => round( (float) $suma, 2 ), 'refund' => 0, 'ka' => $ka );\n\t\t$o->update_meta_data( self::GRAZINTI_META, wp_json_encode( $gr ) );\n\t}\n\n\t/** Kiekį keisti galima: apmokėtas, neuždarytas, eilutė be užrakto (tas pats `lock` kaip keliui), neatšaukta, neišsiųsta. */\n\tprotected static function kiekio_gal( $f, $e ) {\n\t\treturn ! empty( $f['paid'] ) && empty( $f['uzdarytas'] ) && '' === (string) ( $e['lock'] ?? '' ) && empty( $e['atsaukta'] ) && empty( $e['issiusta_l'] ) && (int) $e['q'] >= 1;\n\t}\n\t/** Žymė „grąžink klientui rankomis“: [{laikas,kas,suma,refund,ka}]. */\n\tpublic static function grazinti( $o ) { $j = json_decode( (string) $o->get_meta( self::GRAZINTI_META ), true ); return is_array( $j ) ? $j : array(); }\n\n\t/**\n\t * „q×“ → kiekio mažinimas / prekės išėmimas (POST admin-post `ps_dl_kiekis`). Variklis neliestas.\n\t * 1) likutis grįžta (pasitikim žymėmis, kaip pilnas atšaukimas: AV pagal `_ps_av_reduced_qty`, WC veidrodis pagal `_reduced_stock`);\n\t * 2) WC dalinio grąžinimo įrašas su eilute (pinigai NEGRĄ",
+  "dl_pristatymo_ikainis": "function pristatymo_ikainis( $o, $vez ) {\n\t\t$inst = 0; $cost = 0.0; $tax = 0.0;\n\t\tforeach ( $o->get_items( 'shipping' ) as $s ) { $inst = (int) $s->get_instance_id(); $cost = (float) $s->get_total(); $tax = (float) $s->get_total_tax(); break; }\n\t\t$santykis = ( $cost > 0 && $tax > 0 ) ? $tax / $cost : 0.21;\n\t\tif ( $inst && class_exists( 'WC_Shipping_Zones' ) ) {\n\t\t\t$m = WC_Shipping_Zones::get_shipping_method( $inst );\n\t\t\tif ( $m ) {\n\t\t\t\t$raw = (string) $m->get_option( 'fee' ); if ( '' === $raw ) { $raw = (string) $m->get_option( 'fixed_cost' ); }\n\t\t\t\t$raw = str_replace( ',', '.', $raw );\n\t\t\t\tif ( is_numeric( $raw ) && (float) $raw > 0 ) { return array( round( (float) $raw * ( 1 + $santykis ), 2 ), $m->get_title() . ' įkainis' ); }\n\t\t\t}\n\t\t}\n\t\tif ( $cost > 0 ) { return array( round( $cost + $tax, 2 ), 'kaip sumokėta užsakyme' ); }\n\t\tif ( 'venipak_pastomatas' === $vez || 'lp' === $vez ) { return array( 2.15, 'paštomato įkainis' ); }\n\t\tif ( 'venipak_kurjeris' === $vez ) { return array( 3.99, 'kurjerio įkainis iki 50 kg' ); }\n\t\treturn array( null, 'įkainį nustatyk pats' );\n\t}\n\n\t/** v3.20 (spec §12.5): „Siunta grįžta“ sumos — [sumoketa, grazinti (− 3,99), baze, ikainis, ikainis_t, pakart (+ 3,99), visa] arba null. */\n\tprotected static function grizta_sumos( $f ) {\n\t\t$o = $f['o']; $g = (array) ( $f['grizta'] ?? array() ); if ( ! $g ) { return null; }\n\t\t$kitos = array(); foreach ( (array) $f['dalys'] as $dk => $dp ) { if ( $dp && ! isset( $g[ $dk ] ) ) { $kitos[] = self::vardas( $dk ); } }\n\t\t$visa = ! $kitos;\n\t\tif ( $visa ) { $s = (float) $o->get_total(); $baze = 'visa siunta grįžta — sumokėta su pristatymu'; }\n\t\telse {\n\t\t\t$s = 0.0;\n\t\t\tforeach ( $o->get_items() as $iid => $it ) { $e = $f['eil'][ (int) $iid ] ?? null; if ( ! $e || ! empty( $e['atsaukta'] )",
+  "dl_kortele_grizta": [
+   "3: * Petshop Darbalaukis v3.20 (S1616, 5 etapas: #4 kiekiai + „Siunta grįžta“ sumos; po v3.19.1) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS. ",
+   "29: * v3.20 (S1616, spec §12.5 „Siunta grįžta“ sumos; Raimis 09-05: kortelėje, 3,99 nuo grįžusios dalies ar visos — „skirtumo nėra“, tik suma, pavadinimas ",
+   "30: *   „Pakartotinis užsakymas“): Klausimų kortelėje „Siunta grįžta“ rodomos suskaičiuotos sumos — „Klientui grąžink: [sumokėta] − 3,99 = X €“ ",
+   "32: *   ir „Pakartotinis užsakymas: [įkainis] + 3,99 = Y €“ (`pristatymo_ikainis()`: pasirinkto pristatymo metodo instance `fee`/`fixed_cost` + PVM pagal ",
+   "36: *   „Pakartotinis užsakymas“ (naujas mažas užsakymas + apmokėjimo nuoroda) — kitas žingsnis. ",
+   "111: *   (Tiekimo partija) — kitas mechanizmas, ne šis. Darbalaukio klausimai „Siunta grįžta“ / „Prekė be sandėlio“ tikrinami PO V13 (kad variklio ",
+   "158: *   [dalis]{nr,t,e,d,kada} → Klausimas „Siunta grįžta“ (darbalaukio lygiu — `Petshop_Desk::klausimas()` neliestas; įvykdytas užsakymas su tokia žyme ",
+   "626: // v3.11 (4 etapas #1): Venipak grąžina siuntą → Klausimas „Siunta grįžta“ (darbalaukio lygiu; galioja ir įvykdytam užsakymui). ",
+   "656: if ( $f['grizta'] && ! $f['kl'] && ! $atsauk ) { $f['kl'] = 'Siunta grįžta'; } ",
+   "1099: /** v3.20 (spec §12.5): „Siunta grįžta“ sumos — [sumoketa, grazinti (− 3,99), baze, ikainis, ikainis_t, pakart (+ 3,99), visa] arba null. */ ",
+   "1544: $o->add_order_note( sprintf( 'Venipak: siunta %s grąžinama siuntėjui („%s“, %s) — Klausimas „Siunta grįžta“.', $nr, $grizta[ $dalis ]['t'], $grizta[ $dalis ]['d'] ), false, true ); ",
+   "1545: if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $id, 'sritis' => 'desk', 'veiksmas' => 'venipak_grizta', 'rezultatas' => 'ok', 'kanalas' => 'venipak', 'po' => array( 'dalis' => $dalis, 'nr' => $nr, '",
+   "2001: // v3.11: įvykdytas / kelyje užsakymas, kurio siuntą Venipak grąžina — Klausimas „Siunta grįžta“ (žymė nuimama sprendimu, 4 etapo #3). ",
+   "2440: $tekstas = $kl; $pastaba = ''; $veiksmai = ''; $zyme = mb_strtolower( $kl ); $sumos_html = ''; // v3.20: sumos „Siunta grįžta“ kortelėje ",
+   "2480: } elseif ( 0 === strpos( $kl, 'Siunta grįžta' ) ) { ",
+   "2490: $sumos_html = '<p class=\"dl-sumos\">Klientui grąžink: <b>' . esc_html( self::eur( $sm['sumoketa'] ) . ' − 3,99 = ' . self::eur( $sm['grazinti'] ) ) . ' €</b> <span class=\"pilkas maz\">(' . esc_html( $sm['baze'] ) . ')</span><br>Pakartotinis užsakymas: <b>' . esc",
+   "2616: .dl-kortele{background:var(--popierius);border:1px solid var(--linija);border-radius:8px;padding:16px 18px;margin-bottom:14px}.dl-kortele h2{margin:0 0 6px;font-size:16px;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.dl-kortele p{margin:6px 0}.dl-kor"
+  ],
+  "eng_petshop-av-order.php": {
+   "dydis": 4923,
+   "hooks": [
+    "40: add_action( 'woocommerce_payment_complete', [ __CLASS__, 'fiksuoti' ], 5, 1 ); ",
+    "41: add_action( 'woocommerce_order_status_processing', [ __CLASS__, 'fiksuoti' ], 5, 1 ); ",
+    "42: add_action( 'woocommerce_order_status_on-hold', [ __CLASS__, 'fiksuoti' ], 5, 1 ); "
+   ],
+   "virtual": []
+  },
+  "eng_petshop-av-reduce.php": {
+   "dydis": 5742,
+   "hooks": [
+    "34: add_filter( 'woocommerce_order_item_quantity', [ __CLASS__, 'wc_kiekis' ], 20, 3 ); ",
+    "36: add_action( 'woocommerce_payment_complete', [ __CLASS__, 'mazinti' ], 15, 1 ); ",
+    "37: add_action( 'woocommerce_order_status_processing', [ __CLASS__, 'mazinti' ], 15, 1 ); ",
+    "39: add_action( 'woocommerce_order_status_cancelled', [ __CLASS__, 'grazinti' ], 15, 1 ); ",
+    "40: add_action( 'woocommerce_order_status_refunded', [ __CLASS__, 'grazinti' ], 15, 1 ); "
+   ],
+   "virtual": []
+  },
+  "eng_petshop-faktai.php": {
+   "dydis": 37122,
+   "hooks": [
+    "86: add_action( 'woocommerce_payment_complete',           array( __CLASS__, 'rasyti' ), 35, 1 ); ",
+    "89: add_action( 'woocommerce_order_status_processing',    array( __CLASS__, 'rasyti' ), 35, 1 ); ",
+    "90: add_action( 'woocommerce_order_status_completed',     array( __CLASS__, 'rasyti' ), 35, 1 ); ",
+    "91: add_action( 'woocommerce_order_status_changed',       array( __CLASS__, 'statusas' ), 35, 4 ); "
+   ],
+   "virtual": []
+  },
+  "eng_petshop-dropship-sargas.php": {
+   "dydis": 2665,
+   "hooks": [
+    "27: add_action( 'init', array( __CLASS__, 'planuoti' ) ); ",
+    "28: add_action( self::CRON, array( __CLASS__, 'tikrinti' ) ); "
+   ],
+   "virtual": []
+  },
+  "eng_petshop-partijos.php": {
+   "dydis": 27850,
+   "hooks": [
+    "581: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 ); ",
+    "582: add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 ); ",
+    "583: add_action( 'woocommerce_order_status_completed', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 ); "
+   ],
+   "virtual": [
+    "141: $s = get_post_meta( $pid, '_ps_sandelis', true ); "
+   ]
+  },
+  "eng_petshop-desk.php": {
+   "dydis": 185134,
+   "hooks": [
+    "294: add_action( 'admin_menu', array( __CLASS__, 'meniu' ) ); ",
+    "295: add_action( 'admin_head', array( __CLASS__, 'slepti_wc' ) ); ",
+    "296: add_action( 'admin_head', array( __CLASS__, 'chrome' ) ); ",
+    "297: add_action( 'admin_post_ps_desk_veiksmas', array( __CLASS__, 'vykdyti_veiksma' ) ); ",
+    "315: add_filter( 'woocommerce_email_enabled_' . $e, '__return_false', 999 ); "
+   ],
+   "virtual": []
+  },
+  "eng_petshop-av-dropship.php": {
+   "dydis": 60432,
+   "hooks": [
+    "179: add_filter( 'bulk_actions-woocommerce_page_wc-orders', [ __CLASS__, 'veiksmas' ], 31 ); ",
+    "180: add_filter( 'bulk_actions-edit-shop_order', [ __CLASS__, 'veiksmas' ], 31 ); ",
+    "181: add_filter( 'handle_bulk_actions-woocommerce_page_wc-orders', [ __CLASS__, 'vykdyti' ], 10, 3 ); ",
+    "182: add_filter( 'handle_bulk_actions-edit-shop_order', [ __CLASS__, 'vykdyti' ], 10, 3 ); ",
+    "183: add_action( 'admin_menu', [ __CLASS__, 'meniu' ], 20 ); ",
+    "184: add_action( 'admin_footer', [ __CLASS__, 'skriptas' ] ); ",
+    "185: add_action( 'admin_post_ps_dropship_send', [ __CLASS__, 'siusti' ] ); ",
+    "186: add_action( 'admin_post_ps_dropship_visi', [ __CLASS__, 'perduoti_visus' ] ); ",
+    "187: add_action( 'wp_mail_failed', function ( $e ) { self::$pasto_klaida = is_wp_error( $e ) ? $e->get_error_message() : 'wp_mail klaida'; } ); ",
+    "188: add_action( 'admin_post_ps_dropship_nust', [ __CLASS__, 'saugoti_nustatymus' ] ); ",
+    "189: add_action( 'admin_post_ps_dropship_lipdukas', [ __CLASS__, 'lipdukas_atsisiusti' ] ); ",
+    "190: add_action( 'admin_post_ps_dropship_zb_done', [ __CLASS__, 'zb_pazymeti' ] ); "
+   ],
+   "virtual": []
+  },
+  "eng_petshop-av-tiekimas.php": {
+   "dydis": 75499,
+   "hooks": [
+    "171: add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 20 ); ",
+    "172: add_action( 'admin_init', array( __CLASS__, 'lenteles' ) ); ",
+    "173: add_action( 'admin_post_ps_tiekimas', array( __CLASS__, 'veiksmas' ) ); ",
+    "175: add_action( 'admin_post_ps_tiekimas_eilute', array( __CLASS__, 'eilutes_veiksmas' ) ); ",
+    "176: add_action( 'admin_post_ps_tiekimas_lipdukas', array( __CLASS__, 'lipduko_atsisiuntimas' ) ); "
+   ],
+   "virtual": []
+  },
+  "eng_petshop-siuntu-laiskai.php": {
+   "dydis": 17047,
+   "hooks": [
+    "44: add_action( 'admin_menu', array( __CLASS__, 'meniu' ) ); ",
+    "45: add_action( 'admin_post_ps_siuntu_siusti', array( __CLASS__, 'siusti' ) ); ",
+    "46: add_action( 'woocommerce_email_order_details', array( __CLASS__, 'mixed_pastaba' ), 5, 4 ); ",
+    "47: add_action( 'woocommerce_before_order_object_save', array( __CLASS__, 'uzbaigimo_sargas' ), 10, 1 ); "
+   ],
+   "virtual": []
+  },
+  "eng_petshop-uzsakymu-ivykiai.php": {
+   "dydis": 27433,
+   "hooks": [
+    "108: add_action( 'plugins_loaded', array( __CLASS__, 'lentele' ), 20 ); ",
+    "109: add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 30 ); ",
+    "112: add_action( 'admin_post_' . $a, array( __CLASS__, 'pradzia' ), 1 ); ",
+    "114: add_filter( 'wp_redirect', array( __CLASS__, 'peradresavimas' ), 1, 2 ); ",
+    "115: add_filter( 'wp_mail', array( __CLASS__, 'laiskas' ), 999 ); ",
+    "116: add_filter( 'wp_die_handler', array( __CLASS__, 'die_handleris' ), 999 ); ",
+    "117: add_action( 'shutdown', array( __CLASS__, 'pabaiga_shutdown' ), 1 ); ",
+    "119: add_action( 'woocommerce_order_status_changed', array( __CLASS__, 'busena' ), 99, 4 ); ",
+    "120: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'apmokejimas' ), 99, 1 ); "
+   ],
+   "virtual": []
+  },
+  "klases": {
+   "Petshop_AV_Order": {
+    "file": "petshop-av-order.php",
+    "methods": [
+     "init()",
+     "nuspresta($order)",
+     "fiksuoti($order_id,?$priverstinai)",
+     "skaityti($order)"
+    ]
+   },
+   "Petshop_AV_Reduce": {
+    "file": "petshop-av-reduce.php",
+    "methods": [
+     "init()",
+     "wc_kiekis($qty,$order,$item)",
+     "mazinti($order_id)",
+     "grazinti($order_id)"
+    ]
+   },
+   "Petshop_Desk": {
+    "file": "petshop-desk.php",
+    "methods": [
+     "init()",
+     "vykdyti_veiksma()",
+     "meniu()",
+     "slepti_wc()",
+     "chrome()",
+     "pakuociu($o)",
+     "lp_svoris($o)",
+     "siuntos_kodas($o)",
+     "puslapis()"
+    ]
+   },
+   "Petshop_Siuntos": {
+    "file": "petshop-siuntu-laiskai.php",
+    "methods": [
+     "init()",
+     "prideti_is_plugino($order_id,$sandelis,$manifesto_kodas)",
+     "sarasas($order_id)",
+     "turi($order_id)",
+     "registruota_grupiu($o)",
+     "uzbaigimo_sargas($order)",
+     "laisko_turinys($o,?$prierasas)",
+     "siusti()",
+     "meniu()",
+     "puslapis()",
+     "mixed_pastaba($order,?$sent_to_admin,?$plain,?$email)"
+    ]
+   },
+   "Petshop_Fakt_Uzsakymai": "nera",
+   "Petshop_Faktai": {
+    "file": "petshop-faktai.php",
+    "methods": [
+     "init()",
+     "t_uzsakymai()",
+     "t_eilutes()",
+     "uztikrinti_lenteles(?$priverstinai)",
+     "ct($eurai)",
+     "dabar()",
+     "verslo_diena($utc_eilute)",
+     "reguliari_neto_ct($pid)",
+     "aplinka()",
+     "ar_testinis($order)",
+     "rasyti($order_id)",
+     "statusas($order_id,$senas,$naujas,?$order)",
+     "migracija_v2(?$dry)",
+     "kontrole($order_id)"
+    ]
+   },
+   "Petshop_Dropship_Sargas": {
+    "file": "petshop-dropship-sargas.php",
+    "methods": [
+     "init()",
+     "planuoti()",
+     "tikrinti()"
+    ]
+   },
+   "Petshop_Partijos": {
+    "file": "petshop-partijos.php",
+    "methods": [
+     "lentele()",
+     "pakuociu_lentele()",
+     "uztikrinti_lenteles()",
+     "av_preke($pid)",
+     "priimti($pid,$a)",
+     "av_laukas($pid)",
+     "av_likutis($pid)",
+     "svertine_savikaina($pid)",
+     "paskutine_savikaina($pid)",
+     "perskaiciuoti_savikaina($pid)",
+     "nurasyti($pid,$kiekis,?$dry)",
+     "partijos($pid,?$tik_su_likuciu)",
+     "artimiausias_galiojimas($pid)",
+     "santrauka($pid)",
+     "pakuotes($pid)",
+     "medziagos()",
+     "tipai()",
+     "trinti_pakuote($id,$pid)",
+     "irasyti_pakuote($pid,$a)",
+     "pakuociu_svoris($pid,$vienetu)",
+     "gpais_pagal_metus($pid)",
+     "kabinti_uzsakymus()",
+     "uzsakymo_nurasymas($order_id)",
+     "grazinti_i_partija($partijos_id,$kiekis)",
+     "sutapimo_patikra($pid)",
+     "statistika()"
+    ]
+   },
+   "Petshop_Magic_Login": {
+    "file": "class-magic-login.php",
+    "methods": [
+     "init()",
+     "register_routes()",
+     "handle_request($request)",
+     "handle_login_page()"
+    ]
+   },
+   "Petshop_Uzsakymu_Ivykiai": {
+    "file": "petshop-uzsakymu-ivykiai.php",
+    "methods": [
+     "init()",
+     "t()",
+     "lentele()",
+     "irasyti($a)",
+     "uzsakymo($order_id,?$limit)",
+     "paskutinis($order_id,?$veiksmas)",
+     "zmogui($row)",
+     "skirtumas($row)",
+     "html($order_id,?$limit)",
+     "pradzia()",
+     "snap($oid)",
+     "peradresavimas($location,$status)",
+     "laiskas($args)",
+     "die_handleris($handler)",
+     "pabaiga_shutdown()",
+     "busena($id,$nuo,$i,$order)",
+     "apmokejimas($id)",
+     "meniu()",
+     "puslapis()"
+    ]
+   }
+  },
+  "faktai_fns": [
+   "85: public static function init() { ",
+   "98: public static function t_uzsakymai() { global $wpdb; return $wpdb->prefix . 'ps_fakt_uzsakymai'; } ",
+   "99: public static function t_eilutes()   { global $wpdb; return $wpdb->prefix . 'ps_fakt_eilutes'; } ",
+   "101: public static function uztikrinti_lenteles( $priverstinai = false ) { ",
+   "234: public static function ct( $eurai ) { return (int) round( ( (float) $eurai ) * 100 ); } ",
+   "241: public static function dabar() { return current_time( 'mysql', true ); } ",
+   "247: public static function verslo_diena( $utc_eilute ) { ",
+   "257: public static function reguliari_neto_ct( $pid ) { ",
+   "273: private static function utc( $wc_datetime ) { ",
+   "279: public static function aplinka() { ",
+   "291: public static function ar_testinis( $order ) { ",
+   "310: private static function email_hash( $order ) { ",
+   "316: private static function saltinis( $pid ) { ",
+   "325: private static function pa_uzsaldymas( $pid ) { ",
+   "336: private static function kategoriju_kelias( $pid ) { ",
+   "362: public static function rasyti( $order_id ) { ",
+   "563: private static function surinkti_eilutes( $order ) { ",
+   "568: foreach ( $order->get_items() as $it ) { ",
+   "573: foreach ( $order->get_items() as $item_id => $it ) { ",
+   "675: private static function kliento_eile( $hash, $apmoketa ) { ",
+   "691: private static function mokejimo_mokestis( $budas, $viso_ct ) { ",
+   "702: public static function statusas( $order_id, $senas, $naujas, $order = null ) { ",
+   "720: public static function migracija_v2( $dry = true ) { ",
+   "759: public static function kontrole( $order_id ) { "
+  ],
+  "magic_files": [
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-magic-login.php",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-magic-login.php.bak-s207",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-magic-login.php.bak-s209",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-magic-login.php.bak_S337",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-magic-login.php.bak_S338",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-magic-login.php.bak_S338b"
+  ],
+  "magic_class-magic-login.php": [
+   "5: * Naudoja M6 Petshop_Action_Tokens (purpose=magic_login, TTL 15 min). ",
+   "8: * saugo token'o action lauke — redirect po prisijungimo pagal tai, is kur zmogus atejo: ",
+   "10: * (2) Pasibaiges/panaudotas tokenas NEBERODOMAS kaip aklas klaidos puslapis — rodoma ",
+   "17: * Dabar: token generuojamas bet kuriam validziam email'ui (subject_id=0, email-only), ",
+   "38: *   2. Jei email turi WP user: generate token, siusti laiska su nuoroda ",
+   "39: *      /petshop-login?token=XXX. Visais atvejais atsakymas: \"Jei toks email ",
+   "41: *   3. Vartotojas paspaudzia nuoroda -> GET /petshop-login?token=XXX -> ",
+   "42: *      confirmation page (peek token, rodo \"Prisijungti\" mygtuka su POST forma). ",
+   "43: *   4. POST -> consume token -> wp_set_auth_cookie + session regen -> redirect MyAccount. ",
+   "52: const TOKEN_PURPOSE = 'magic_login'; ",
+   "53: const TOKEN_TTL = 900;               // 15 min ",
+   "57: const LOGIN_PATH = 'petshop-login';  // /petshop-login?token=XXX ",
+   "60: public static function init() { ",
+   "62: add_action( 'rest_api_init', array( __CLASS__, 'register_routes' ) ); ",
+   "64: add_action( 'init', array( __CLASS__, 'handle_login_page' ) ); ",
+   "67: public static function register_routes() { ",
+   "87: * ★ KODEL CIA, o ne anksciau: `ps_consume_token()` token'a sunaudoja NEGRIZTAMAI ",
+   "89: *   ankstinimas token'o neapsaugotu. Po login'o klaida reiskia: vartotojas ",
+   "106: private static function claim_draft( $user_id, $email, $draft_id ) { ",
+   "122: // already_claimed (kito), email_mismatch, expired, race_lost, not_found ",
+   "175: 'expires_at'   => $dabar + 14 * DAY_IN_SECONDS, ",
+   "209: * S337: TRIGUBA drafto patikra pries pririsant ji prie magic-login token'o. ",
+   "212: *   1. formatas — galiojantis UUID v4; ",
+   "215: *   4. statusas `active` (NE claiming/claimed/expired); ",
+   "216: *   5. `expires_at` dar nepraejo. ",
+   "224: private static function resolve_draft_for_email( $draft_id, $email ) { ",
+   "251: if ( strtotime( (string) $row->expires_at ) < time() ) { ",
+   "261: public static function handle_request( $request ) { ",
+   "282: // S207: token generuojam IR nezinomam email'ui (subject_id=0 — email-only token). ",
+   "292: // token'o payload'e (HMAC-SHA256), IR DB eiluteje — todel `process_login` ",
+   "293: // gaus TIK ta draft_id, kuri SERVERIS susiejo su siuo token'u. ",
+   "297: $token = ps_generate_token( array( ",
+   "298: 'purpose'       => self::TOKEN_PURPOSE, ",
+   "301: 'ttl_seconds'   => self::TOKEN_TTL, ",
+   "305: if ( $token ) { ",
+   "306: self::send_login_email( $email, $user, $token ); ",
+   "314: * URL: /petshop-login?token=XXX ",
+   "316: public static function handle_login_page() { ",
+   "324: $token = isset( $_REQUEST['token'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['token'] ) ) : ''; ",
+   "325: if ( ! $token ) { "
+  ],
+  "magic_class-magic-login.php.bak-s207": [
+   "5: * Naudoja M6 Petshop_Action_Tokens (purpose=magic_login, TTL 15 min). ",
+   "23: *   2. Jei email turi WP user: generate token, siusti laiska su nuoroda ",
+   "24: *      /petshop-login?token=XXX. Visais atvejais atsakymas: \"Jei toks email ",
+   "26: *   3. Vartotojas paspaudzia nuoroda -> GET /petshop-login?token=XXX -> ",
+   "27: *      confirmation page (peek token, rodo \"Prisijungti\" mygtuka su POST forma). ",
+   "28: *   4. POST -> consume token -> wp_set_auth_cookie + session regen -> redirect MyAccount. ",
+   "37: const TOKEN_PURPOSE = 'magic_login'; ",
+   "38: const TOKEN_TTL = 900;               // 15 min ",
+   "42: const LOGIN_PATH = 'petshop-login';  // /petshop-login?token=XXX ",
+   "45: public static function init() { ",
+   "47: add_action( 'rest_api_init', array( __CLASS__, 'register_routes' ) ); ",
+   "49: add_action( 'init', array( __CLASS__, 'handle_login_page' ) ); ",
+   "52: public static function register_routes() { ",
+   "67: public static function handle_request( $request ) { ",
+   "91: // Generuojam token + siunciam laiska ",
+   "92: $token = ps_generate_token( array( ",
+   "93: 'purpose'       => self::TOKEN_PURPOSE, ",
+   "96: 'ttl_seconds'   => self::TOKEN_TTL, ",
+   "98: if ( $token ) { ",
+   "99: self::send_login_email( $email, $user, $token ); ",
+   "109: * URL: /petshop-login?token=XXX ",
+   "111: public static function handle_login_page() { ",
+   "119: $token = isset( $_REQUEST['token'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['token'] ) ) : ''; ",
+   "120: if ( ! $token ) { ",
+   "129: self::process_login( $token ); ",
+   "132: self::render_confirmation( $token ); ",
+   "137: * GET confirmation page — peek token, rodo POST forma su \"Prisijungti\". ",
+   "139: private static function render_confirmation( $token ) { ",
+   "140: $peek = ps_peek_token( $token ); ",
+   "146: if ( isset( $peek['row']->purpose ) && $peek['row']->purpose !== self::TOKEN_PURPOSE ) { ",
+   "152: $token_esc = esc_attr( $token ); ",
+   "160: <input type=\"hidden\" name=\"token\" value=\"' . $token_esc . '\"> ",
+   "164: <p style=\"margin-top:16px;color:#888;font-size:13px;\">Nuoroda galioja 15 minučių ir gali būti panaudota vieną kartą.</p>' ",
+   "169: * POST — consume token, login, session regen, redirect. ",
+   "171: private static function process_login( $token ) { ",
+   "179: $result = ps_consume_token( $token ); ",
+   "181: self::render_error( 'Nuoroda nebegalioja arba jau panaudota. Prašome prisijungti iš naujo.' ); ",
+   "184: if ( isset( $result['row']->purpose ) && $result['row']->purpose !== self::TOKEN_PURPOSE ) { ",
+   "197: // zemiau duoda nauja auth cookie (sena negalioja). WP neturi PHP session'u ",
+   "231: private static function send_login_email( $email, $user, $token ) { "
+  ],
+  "virt_prekes": [
+   {
+    "ID": "35002",
+    "post_title": "TESTAS Paysera 1 EUR",
+    "post_status": "trash"
+   }
+  ],
+  "siunt_prekes": [],
+  "pvm": {
+   "calc": "yes",
+   "incl": "yes",
+   "display_shop": "incl",
+   "rates": [
+    {
+     "tax_rate_id": "1",
+     "tax_rate_country": "LT",
+     "tax_rate": "21.0000",
+     "tax_rate_name": "PVM",
+     "tax_rate_class": "",
+     "tax_rate_shipping": "1"
+    }
+   ],
+   "classes": {
+    "": "Standartinis"
+   }
+  },
+  "wc_manage_stock": "yes",
+  "uzs": {
+   "35434": {
+    "st": "cancelled",
+    "cid": 0,
+    "email": "terra@petshop.lt",
+    "bill": {
+     "first_name": "AUDITAS",
+     "last_name": "Testas 21",
+     "company": "",
+     "address_1": "Testų g. 21",
+     "address_2": "",
+     "city": "Vilnius",
+     "state": "",
+     "postcode": "01100",
+     "country": "LT",
+     "email": "terra@petshop.lt",
+     "phone": "+37060000000"
+    },
+    "ship": {
+     "first_name": "AUDITAS",
+     "last_name": "Testas 21",
+     "company": "",
+     "address_1": "Testų g. 21",
+     "address_2": "",
+     "city": "Vilnius",
+     "state": "",
+     "postcode": "01121",
+     "country": "LT",
+     "phone": "+37060000000"
+    },
+    "pm": "paysera",
+    "pmt": "Mokėjimas internetu",
+    "created_via": "checkout",
+    "key": "wc_order_iEWFFNSVeYU0R",
+    "pay_url": "https://dev.avesa.lt/kasa/order-pay/35434/?pay_for_order=true&key=wc_order_iEWFFNSVeYU0R",
+    "pay_url_gw": "https://dev.avesa.lt/kasa/order-pay/35434/?key=wc_order_iEWFFNSVeYU0R",
+    "grizta": "",
+    "meta_ps": [
+     "_ps_av_reduced=2026-09-02 20:11:55",
+     "_ps_av_restored=2026-09-04 23:58:14",
+     "_ps_decided_at=2026-09-02 20:11:55",
+     "_ps_faktas_irasytas=2026-09-02 17:11:56",
+     "_ps_ga4_mp_kodas=dev-nesiusta",
+     "_ps_grazinti_rankomis=[{\"laikas\":\"2026-09-04 23:58:14\",\"kas\":\"Testuotojas\",\"suma\":33.04,\"refund\":0,\"ka",
+     "_ps_groups={\"av\":{\"carrier\":\"any\",\"eilutes\":2,\"vienetai\":2}}",
+     "_ps_matyta=2026-09-03 15:42:34 | Rai",
+     "_ps_misrus_sprendimas={\"prins\":\"av\"}",
+     "_ps_misrus_sprestas=2026-09-02 20:11:58 | Testuotojas",
+     "_ps_order_type=MAIN",
+     "_ps_pakuociu=1",
+     "_ps_partijos_nurasyta=2026-09-02 20:11:55",
+     "_ps_shipments=1"
+    ]
+   },
+   "35436": {
+    "st": "processing",
+    "cid": 0,
+    "email": "terra@petshop.lt",
+    "bill": {
+     "first_name": "AUDITAS",
+     "last_name": "Testas 23",
+     "company": "",
+     "address_1": "Testų g. 23",
+     "address_2": "",
+     "city": "Vilnius",
+     "state": "",
+     "postcode": "01100",
+     "country": "LT",
+     "email": "terra@petshop.lt",
+     "phone": "+37060000000"
+    },
+    "ship": {
+     "first_name": "AUDITAS",
+     "last_name": "Testas 23",
+     "company": "",
+     "address_1": "Testų g. 23",
+     "address_2": "",
+     "city": "Vilnius",
+     "state": "",
+     "postcode": "01100",
+     "country": "LT",
+     "phone": ""
+    },
+    "pm": "paysera",
+    "pmt": "Mokėjimas internetu",
+    "created_via": "",
+    "key": "wc_order_XKLrRAvt8gRbI",
+    "pay_url": "https://dev.avesa.lt/kasa/order-pay/35436/?pay_for_order=true&key=wc_order_XKLrRAvt8gRbI",
+    "pay_url_gw": "https://dev.avesa.lt/kasa/order-pay/35436/?key=wc_order_XKLrRAvt8gRbI",
+    "grizta": "",
+    "meta_ps": [
+     "_ps_av_reduced=2026-09-03 10:17:41",
+     "_ps_dalys_atsaukta={\"quattro\":{\"laikas\":\"2026-09-04 23:58:12\",\"kas\":\"Testuotojas\",\"nr\":[]}}",
+     "_ps_decided_at=2026-09-03 10:17:40",
+     "_ps_faktas_irasytas=2026-09-03 07:17:41",
+     "_ps_ga4_mp_kodas=dev-nesiusta",
+     "_ps_grazinti_rankomis=[{\"laikas\":\"2026-09-04 23:58:12\",\"kas\":\"Testuotojas\",\"suma\":13.01,\"refund\":0,\"ka",
+     "_ps_groups={\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"quattro\":{\"carrier\":\"venipak\",",
+     "_ps_misrus_sprendimas={\"quattro\":\"tiesiai\"}",
+     "_ps_order_type=MIXED",
+     "_ps_partijos_nurasyta=2026-09-03 10:17:41",
+     "_ps_rusiuota=2026-09-03 10:17:56 | Testuotojas",
+     "_ps_shipments=2",
+     "_ps_velavimo_laiskas=2026-09-04 17:28:01"
+    ]
+   }
+  },
+  "pask_meta_raktai": [
+   "_billing_address_index",
+   "_shipping_address_index",
+   "_dp_stock_reduced",
+   "_petshop_avpn_number",
+   "_petshop_completed_pdf",
+   "_petshop_invoice_document_type",
+   "_ps_completed_at",
+   "_ps_dalys_issiusta",
+   "_ps_decided_at",
+   "_ps_dropship_sent",
+   "_ps_dropship_sent_src",
+   "_ps_dropship_to",
+   "_ps_faktas_irasytas",
+   "_ps_ga4_mp_kodas",
+   "_ps_groups",
+   "_ps_misrus_sprendimas",
+   "_ps_misrus_sprestas",
+   "_ps_order_type",
+   "_ps_partijos_nurasyta",
+   "_ps_rusiuota",
+   "_ps_sekimo_siusta",
+   "_ps_shipments",
+   "_ps_uzbaigti_be_siuntu",
+   "_wc_push_notification_sent",
+   "_wcdn_invoice_date",
+   "_wcdn_invoice_number",
+   "_wcdn_invoice_number_counter"
+  ],
+  "pask_created_via": "checkout",
+  "pask_id": "35777",
+  "sekmes": 64
+ }
+}
