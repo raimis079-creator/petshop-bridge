@@ -1,0 +1,107 @@
+{
+ "v": "dep-083803",
+ "kurimas": 200,
+ "sid": 4677,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "run e4r",
+  "temp_istrinta": 1,
+  "STATUSAI": {
+   "neapmoketi": [
+    "pending",
+    "failed",
+    "on-hold",
+    "lp-parcel-await"
+   ],
+   "paruosta": [
+    "lp-label-created",
+    "lp-parcel-created",
+    "lp-courier-await",
+    "lp-courier-called"
+   ],
+   "atsaukti": [
+    "cancelled",
+    "lp-cancelled",
+    "refunded"
+   ],
+   "kelyje": [
+    "lp-on-the-way"
+   ],
+   "ivykdyti": [
+    "completed",
+    "lp-delivered"
+   ]
+  },
+  "META_PAK": "_ps_pakuociu",
+  "zalias": "\tprotected static function zalias( $o ) {\n\t\t// Meta gali grįžti ir masyvu (WC kartais deserializuoja pati) — tada\n\t\t// (string) cast'as kėlė „Array to string conversion\" (H240).\n\t\t$m = $o->get_meta( self::META );\n\t\tif ( is_array( $m ) ) { return $m; }\n\t\t$s = json_decode( (string) $m, true );\n\t\treturn is_array( $s ) ? $s : array();\n\t}\n",
+  "prideti": "\tpublic static function prideti_is_plugino( $order_id, $sandelis, $manifesto_kodas ) {\n\t\t$o = wc_get_order( $order_id );\n\t\tif ( ! $o ) { return false; }\n\n\t\t$raw = $o->get_meta( 'venipak_shipping_order_data' );\n\t\t$d   = is_array( $raw ) ? $raw : json_decode( (string) $raw, true );\n\t\tif ( empty( $d['pack_numbers'] ) || ! is_array( $d['pack_numbers'] ) ) { return false; }\n\n\t\t$sarasas = self::zalias( $o );\n\t\t$sarasas[ sanitize_key( $sandelis ) ] = array(\n\t\t\t'sandelis'  => sanitize_key( $sandelis ),\n\t\t\t'kodas'     => sanitize_text_field( $manifesto_kodas ),\n\t\t\t'manifest'  => sanitize_text_field( $d['manifest'] ?? '' ),\n\t\t\t'numeriai'  => array_map( 'sanitize_text_field', $d['pack_numbers'] ),\n\t\t\t'data'      => current_time( 'mysql' ),\n\t\t);\n\t\t$o->update_meta_data( self::META, wp_json_encode( $sarasas ) );\n\t\t$o->add_order_note( sprintf( 'Siuntos numeriai išsaugoti (%s): %s',\n\t\t\tmb_strtoupper( $sandelis ), implode( ', ', $d['pack_numbers'] ) ), false, true );\n\t\t$o->save();\n\t\t/* E1b (Q-E0-1): vienintelis pranesimas is sio failo. Logika NESIKEICIA.\n\t\t   `prideti_is_plugino()` yra Venipak-only, todel vezejas cia visada\n\t\t   'venipak'; LP Express siuntos faktus gauna per naktini cron. */\n\t\tdo_action( 'petshop_siunta_sukurta', (int) $order_id, sanitize_key( $sandelis ), 'venipak', (array) $d['pack_numbers'] );\n\t\treturn true;\n\t}\n",
+  "registruota_grupiu": "\tpublic static function registruota_grupiu( $o ) {\n\t\treturn count( self::zalias( $o ) );\n\t}\n",
+  "cancel_hookai": {
+   "petshop-av-reduce.php": [
+    "add_action( 'woocommerce_order_status_cancelled', [ __CLASS__, 'grazinti' ], 15, 1 );"
+   ]
+  },
+  "av_grazinimas": {
+   "petshop-av-reduce.php": [
+    "AV grąžinimas: ' . implode( ' · ', $padaryta ) );"
+   ]
+  },
+  "av_stock": [
+   "init",
+   "sortable",
+   "sort_query",
+   "filter_dropdown",
+   "filter_query",
+   "qty",
+   "has",
+   "decrease",
+   "increase",
+   "apsaugotas_rasymas",
+   "log",
+   "field",
+   "save",
+   "column",
+   "column_value",
+   "quick_edit",
+   "quick_edit_js",
+   "quick_edit_save"
+  ],
+  "likutis_dl": "\tprotected static function likutis( $pid, $delta, $pastaba ) {\n\t\t$pid = (int) $pid;\n\t\tif ( class_exists( 'Petshop_AV_Stock' ) && null !== Petshop_AV_Stock::qty( $pid ) ) {\n\t\t\treturn $delta > 0 ? Petshop_AV_Stock::increase( $pid, $delta, $pastaba ) : Petshop_AV_Stock::decrease( $pid, -$delta, $pastaba );\n\t\t}\n\t\t$p = wc_get_product( $pid );\n\t\tif ( ! $p ) { return new WP_Error( 'nera', 'prekės nėra' ); }\n\t\t$dabar = (int) get_post_meta( $pid, '_stock', true );\n\t\tif ( $dabar + $delta < 0 ) { return new WP_Error( 'nepakanka', 'AV tik ' . $dabar ); }\n\t\tif ( ! $p->managing_stock() ) { return $dabar + $delta; }\n\t\t$naujas = wc_update_product_stock( $p, abs( $delta ), $delta > 0 ? 'increase' : 'decrease' ); // atominis SQL (auditas V2)\n\t\treturn null === $naujas ? new WP_Error( 'klaida', 'likučio įrašyti nepavyko' ) : (int) $naujas;\n\t}\n",
+  "siuntos_35440": [
+   {
+    "sandelis": "av",
+    "kodas": "001",
+    "manifest": "07267260903001",
+    "numeriai": [
+     "V07267E1000049",
+     "V07267E1000050",
+     "V07267E1000051"
+    ],
+    "data": "2026-09-03 12:30:41"
+   }
+  ],
+  "siuntos_35438": [
+   {
+    "sandelis": "prins",
+    "kodas": "005",
+    "manifest": "07267260903005",
+    "numeriai": [
+     "V07267E1000047"
+    ],
+    "data": "2026-09-03 11:23:31"
+   },
+   {
+    "sandelis": "av",
+    "kodas": "001",
+    "manifest": "07267260903001",
+    "numeriai": [
+     "V07267E1000052"
+    ],
+    "data": "2026-09-03 12:34:34"
+   }
+  ]
+ }
+}
