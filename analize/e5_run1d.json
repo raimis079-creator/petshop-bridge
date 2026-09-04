@@ -1,0 +1,427 @@
+{
+ "v": "dep-085057",
+ "kurimas": 200,
+ "sid": 4681,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run e5d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": [
+   80000,
+   80000,
+   80000,
+   27680
+  ],
+  "bytes": 200758,
+  "md5": "2c8a1ec90092b4873ee53418be84f1ea",
+  "token": "ok",
+  "ks_bytes": 7876,
+  "ks_md5": "fb5a0c084731f57eecd2faa069f3ef3b",
+  "ks_token": "ok",
+  "buvo": "770feb233b28fefb8a52968b6a290dd0",
+  "ks_buvo": "b13362f1077cd746f9d9e760c29f2942",
+  "backup": true,
+  "ks_backup": true,
+  "rasyta": 200758,
+  "po": "2c8a1ec90092b4873ee53418be84f1ea",
+  "ks_rasyta": 7876,
+  "ks_po": "fb5a0c084731f57eecd2faa069f3ef3b"
+ },
+ "T": {
+  "v": "run e5d",
+  "f": "T",
+  "temp_istrinta": 0,
+  "versija": "3.11",
+  "ks": "1.2",
+  "md5": "2c8a1ec90092b4873ee53418be84f1ea",
+  "ks_md5": "fb5a0c084731f57eecd2faa069f3ef3b",
+  "cron_kada": "2026-09-04 08:58:25",
+  "cron_sched": {
+   "interval": 1800,
+   "display": "Kas 30 min (petshop)"
+  },
+  "cron_hook": true,
+  "pries": {
+   "35421": {
+    "st": "processing",
+    "cust": 5787,
+    "iss": "{\"prins\":{\"laikas\":\"2026-09-03 21:33:34\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:34\"}}",
+    "reg": [
+     {
+      "sandelis": "prins",
+      "kodas": "005",
+      "manifest": "07267260903005",
+      "numeriai": [
+       "V07267E1000046"
+      ],
+      "data": "2026-09-03 11:23:31"
+     }
+    ],
+    "sek": [],
+    "griz": [],
+    "kl": [
+     "prins issiusta  V07267E1000046",
+     "av ruosiama  "
+    ]
+   },
+   "35438": {
+    "st": "completed",
+    "cust": 0,
+    "iss": "{\"prins\":{\"laikas\":\"2026-09-03 12:30:47\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"},\"av\":{\"laikas\":\"2026-09-03 12:34:35\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"}}",
+    "reg": [
+     {
+      "sandelis": "prins",
+      "kodas": "005",
+      "manifest": "07267260903005",
+      "numeriai": [
+       "V07267E1000047"
+      ],
+      "data": "2026-09-03 11:23:31"
+     },
+     {
+      "sandelis": "av",
+      "kodas": "001",
+      "manifest": "07267260903001",
+      "numeriai": [
+       "V07267E1000052"
+      ],
+      "data": "2026-09-03 12:34:34"
+     }
+    ],
+    "sek": [],
+    "griz": [],
+    "kl": [
+     "prins issiusta  V07267E1000047",
+     "av issiusta  V07267E1000052"
+    ]
+   },
+   "35440": {
+    "st": "completed",
+    "cust": 5787,
+    "iss": "{\"av\":{\"laikas\":\"2026-09-03 21:33:43\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:43\"}}",
+    "reg": [
+     {
+      "sandelis": "av",
+      "kodas": "001",
+      "manifest": "07267260903001",
+      "numeriai": [
+       "V07267E1000049",
+       "V07267E1000050",
+       "V07267E1000051"
+      ],
+      "data": "2026-09-03 12:30:41"
+     }
+    ],
+    "sek": [],
+    "griz": [],
+    "kl": [
+     "av issiusta  V07267E1000049/V07267E1000050/V07267E1000051"
+    ]
+   }
+  },
+  "r1_real": {
+   "pradzia": "2026-09-04 11:53:32",
+   "uzsakymu": 1,
+   "numeriu": 1,
+   "uzklausu": 1,
+   "pakeista": 1,
+   "issiusta": [],
+   "pristatyta": [],
+   "grizta": [],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 11:53:32",
+   "s": 0.1
+  },
+  "r1_po": {
+   "st": "processing",
+   "cust": 5787,
+   "iss": "{\"prins\":{\"laikas\":\"2026-09-03 21:33:34\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:34\"}}",
+   "reg": [
+    {
+     "sandelis": "prins",
+     "kodas": "005",
+     "manifest": "07267260903005",
+     "numeriai": [
+      "V07267E1000046"
+     ],
+     "data": "2026-09-03 11:23:31"
+    }
+   ],
+   "sek": {
+    "V07267E1000046": {
+     "k": 0,
+     "t": "At sender",
+     "e": "Shipment created",
+     "d": "2026-09-03 11:23:31",
+     "v": "",
+     "n": 1,
+     "dalis": "prins",
+     "tikr": "2026-09-04 11:53:32"
+    }
+   },
+   "griz": [],
+   "kl": [
+    "prins issiusta  V07267E1000046",
+    "av ruosiama  "
+   ]
+  },
+  "nrB": {
+   "prins": [
+    "V07267E1000047"
+   ],
+   "av": [
+    "V07267E1000052"
+   ]
+  },
+  "B_st": "completed",
+  "B_praleista": "ne processing arba registras kitoks",
+  "nrC": {
+   "av": [
+    "V07267E1000049",
+    "V07267E1000050",
+    "V07267E1000051"
+   ]
+  },
+  "r3": {
+   "pradzia": "2026-09-04 11:53:32",
+   "uzsakymu": 1,
+   "numeriu": 3,
+   "uzklausu": 3,
+   "pakeista": 3,
+   "issiusta": [],
+   "pristatyta": [
+    "#35440 av V07267E1000051 2026-09-04 13:00:00"
+   ],
+   "grizta": [
+    "#35440 av V07267E1000049"
+   ],
+   "nezinomi": [
+    "#35440 V07267E1000050 4 „Delivery attempt failed“"
+   ],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 11:53:32",
+   "s": 0.1
+  },
+  "r3_po": {
+   "st": "completed",
+   "cust": 5787,
+   "iss": "{\"av\":{\"laikas\":\"2026-09-03 21:33:43\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:43\"}}",
+   "reg": [
+    {
+     "sandelis": "av",
+     "kodas": "001",
+     "manifest": "07267260903001",
+     "numeriai": [
+      "V07267E1000049",
+      "V07267E1000050",
+      "V07267E1000051"
+     ],
+     "data": "2026-09-03 12:30:41"
+    }
+   ],
+   "sek": {
+    "V07267E1000049": {
+     "k": 7,
+     "t": "Returning to sender",
+     "e": "Returning to sender",
+     "d": "2026-09-04 14:00:00",
+     "v": "KAUNAS",
+     "n": 3,
+     "dalis": "av",
+     "tikr": "2026-09-04 11:53:32",
+     "stop": 1
+    },
+    "V07267E1000050": {
+     "k": 4,
+     "t": "Delivery attempt failed",
+     "e": "Delivery attempt failed",
+     "d": "2026-09-04 12:30:00",
+     "v": "KAUNAS",
+     "n": 3,
+     "dalis": "av",
+     "tikr": "2026-09-04 11:53:32"
+    },
+    "V07267E1000051": {
+     "k": 9,
+     "t": "Delivered",
+     "e": "Delivered",
+     "d": "2026-09-04 13:00:00",
+     "v": "Kauno Akropolio Venipak paštomatas",
+     "n": 3,
+     "dalis": "av",
+     "tikr": "2026-09-04 11:53:32"
+    }
+   },
+   "griz": {
+    "av": {
+     "nr": "V07267E1000049",
+     "t": "Returning to sender",
+     "e": "Returning to sender",
+     "d": "2026-09-04 14:00:00",
+     "kada": "2026-09-04 11:53:32"
+    }
+   },
+   "kl": [
+    "av issiusta  V07267E1000049/V07267E1000050/V07267E1000051"
+   ]
+  },
+  "r3_notes": [
+   "Venipak: siunta V07267E1000051 pristatyta (2026-09-04 13:00:00, Kauno Akropolio Venipak paštomatas).",
+   "Venipak: siunta V07267E1000049 grąžinama siuntėjui („Returning to sender“, 2026-09-04 14:00:00) — Klausimas „Siunta grįžta“.",
+   "Venipak: V07267E1000050 4 „Delivery attempt failed“ — nežinomas būsenos kodas, veiksmo nėra (žr. skydelį).",
+   "Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas."
+  ],
+  "r3_again": {
+   "pradzia": "2026-09-04 11:53:32",
+   "uzsakymu": 1,
+   "numeriu": 3,
+   "uzklausu": 1,
+   "pakeista": 0,
+   "issiusta": [],
+   "pristatyta": [],
+   "grizta": [],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 11:53:32",
+   "s": 0
+  },
+  "r4": {
+   "pradzia": "2026-09-04 11:53:32",
+   "uzsakymu": 1,
+   "numeriu": 1,
+   "uzklausu": 1,
+   "pakeista": 1,
+   "issiusta": [],
+   "pristatyta": [
+    "#35421 prins V07267E1000046 2026-09-04 13:00:00"
+   ],
+   "grizta": [],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 11:53:32",
+   "s": 0
+  },
+  "r4_po": {
+   "st": "processing",
+   "cust": 5787,
+   "iss": "{\"prins\":{\"laikas\":\"2026-09-03 21:33:34\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:34\"}}",
+   "reg": [
+    {
+     "sandelis": "prins",
+     "kodas": "005",
+     "manifest": "07267260903005",
+     "numeriai": [
+      "V07267E1000046"
+     ],
+     "data": "2026-09-03 11:23:31"
+    }
+   ],
+   "sek": {
+    "V07267E1000046": {
+     "k": 9,
+     "t": "Delivered",
+     "e": "Delivered",
+     "d": "2026-09-04 13:00:00",
+     "v": "Kauno Akropolio Venipak paštomatas",
+     "n": 4,
+     "dalis": "prins",
+     "tikr": "2026-09-04 11:53:32"
+    }
+   },
+   "griz": [],
+   "kl": [
+    "prins pristatyta 2026-09-04 13:00:00 V07267E1000046",
+    "av ruosiama  "
+   ]
+  },
+  "ivykiai": [
+   {
+    "uzsakymas": "35421",
+    "veiksmas": "venipak_pristatyta",
+    "kanalas": "venipak",
+    "kas_vardas": "sistema",
+    "pastaba": null
+   },
+   {
+    "uzsakymas": "35440",
+    "veiksmas": "venipak_pristatyta",
+    "kanalas": "venipak",
+    "kas_vardas": "sistema",
+    "pastaba": null
+   },
+   {
+    "uzsakymas": "35440",
+    "veiksmas": "venipak_grizta",
+    "kanalas": "venipak",
+    "kas_vardas": "sistema",
+    "pastaba": "Klausimas „Siunta grįžta“"
+   }
+  ],
+  "laiskai": [],
+  "dev_zurnalas": 3,
+  "testuotojas": 75,
+  "klausimai": {
+   "code": 200,
+   "korteliu": 4,
+   "grizta_yra": true,
+   "kortele_35440": "#35440 · AUDITAS Testas 27 · 12,02&nbsp;&euro; siunta grįžtaVežėjas grąžina siuntą: siunta V07267E1000049 — Venipak: „Returning to sender“ (2026-09-04 14:00:00); prekės: 3× Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g.Kai siunta grįš į AV: „Siųsti iš naujo“ arba „Atšaukti — prekės grįžo į AV“ — mygtukai ateina kitu žingsniu. Kol kas parašyk klientui ir Raimiui.Atidaryti Parašyti klientui"
+  },
+  "skydelis_B": {
+   "code": 200,
+   "venipak_tekstas": "nerasta"
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788513815|oxj1RhsFLlSKE2MQ75NQgvh3ZVnSYhEKwtTEG17H21N|6638c3242590241ddf836d69f638fbd6d09f8afcf451a28934eda8fc5ff3f63f"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788513815|oxj1RhsFLlSKE2MQ75NQgvh3ZVnSYhEKwtTEG17H21N|4d869c77f33f5a60bdddfee1e31daee74611c3bca7c4745412658be3f6658203"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788513815|oxj1RhsFLlSKE2MQ75NQgvh3ZVnSYhEKwtTEG17H21N|bccaa2b7f8f3daefc66b6b16ccc8bc077de33cd5249863775b3e825f71f0a2ca"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e5_paskyra_35421",
+    "u": "https://dev.avesa.lt/paskyra/uzsakymas/35421/",
+    "full": false,
+    "eval": "({tekstas:(document.querySelector('.ps-siuntos')||document.body).innerText.replace(/\\s+/g,' ').slice(0,500)})"
+   },
+   {
+    "n": "e5_paskyra_35440",
+    "u": "https://dev.avesa.lt/paskyra/uzsakymas/35440/",
+    "full": false,
+    "eval": "({tekstas:(document.querySelector('.ps-siuntos')||document.body).innerText.replace(/\\s+/g,' ').slice(0,500)})"
+   }
+  ]
+ },
+ "shots": {
+  "e5_paskyra_35421": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/paskyra/uzsakymas/35421/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "tekstas": "Siuntos Siunta 1 iš 2 Pristatyta 1 × Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg Siuntos numeris (Venipak): V07267E1000046 SEKTI SIUNTĄ Siunta 2 iš 2 Ruošiama 1 × Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g 1 × QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu,"
+   }
+  },
+  "e5_paskyra_35440": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/paskyra/uzsakymas/35440/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "tekstas": "Siuntos Siunta Išsiųsta 3 × Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g Siuntų numeriai (Venipak): V07267E1000049, V07267E1000050, V07267E1000051 SEKTI SIUNTĄ"
+   }
+  }
+ }
+}
