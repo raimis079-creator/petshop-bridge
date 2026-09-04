@@ -1,0 +1,220 @@
+{
+ "v": "dep-150410",
+ "kurimas": 200,
+ "sid": 4727,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "S1614 e1d",
+  "f": "T",
+  "temp_istrinta": 1,
+  "versija": "3.15",
+  "md5": "488142d766f60c8e305b95b6028c046c",
+  "dev_zurnalas_pries": 3,
+  "now": "2026-09-04 18:05:53",
+  "pries": {
+   "35421": {
+    "st": "processing",
+    "vel": "",
+    "iss": "{\"prins\":{\"laikas\":\"2026-09-03 21:33:34\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:34\"}}",
+    "pastaba": "Dropship sargas: tiekėjui perduota 2026-09-03 11:23:34 (daugiau nei 24 val.), užsakymas vis dar vykdomas. Įkelta į „Klausimus\" — patikrink pas tiekėją.",
+    "ivykis": {
+     "veiksmas": "venipak_pristatyta",
+     "rezultatas": "ok",
+     "kanalas": "venipak",
+     "kas_vardas": "sistema",
+     "laikas": "2026-09-04 08:53:32",
+     "pastaba": null
+    }
+   },
+   "35435": {
+    "st": "processing",
+    "vel": "",
+    "iss": "",
+    "pastaba": "Venipak registracija darbalaukyje (VF, manifestas 002): KLAIDA — Venipak negrąžino atsakymo",
+    "ivykis": {
+     "veiksmas": "vp_reg",
+     "rezultatas": "klaida",
+     "kanalas": "web",
+     "kas_vardas": "Rai",
+     "laikas": "2026-09-03 13:29:46",
+     "pastaba": null
+    }
+   }
+  },
+  "sk_pries": {
+   "35421": {
+    "code": 200,
+    "kl": "",
+    "kur": "Surinkti AV · toliau: Surinkti",
+    "btn": "Surinkti",
+    "pastaba": "Surūšiuota. Kelią dar gali keisti, kol prekei nepadarytas pirmas žingsnis.",
+    "apmok": "apmokėta · Mokėjimas internetu",
+    "st": "Vykdomas",
+    "velavimas": {
+     "u": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=velavimas&amp;id=35421&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35421&amp;_wpnonce=f2c054a840",
+     "d": {
+      "antraste": "Užsakymas #35421 · 54,03 €",
+      "tekstas": "Klientui (terra@petshop.lt) išeis laiškas „Jūsų užsakymą Nr. 35421 dar komplektuojame“: „Sveiki, AUDITAS. Likusių Jūsų užsakymo Nr. 35421 prekių surinkimas truputį užtruko. Išsiųsime jį kaip galėdami greičiau. Ačiū už kantrybę. Išsiuntę užsakymą informuosime Jus atskiru laišku. Jei turite klausimų, tiesiog atsakykite į šį laišką.“ Vieną kartą — po to mygtuko nebebus.",
+      "ok": "Pranešti klientui"
+     }
+    }
+   },
+   "35435": {
+    "code": 200,
+    "kl": "",
+    "kur": "Dropshipping (VF) · toliau: Užsakyti iš VF",
+    "btn": "Užsakyti iš VF",
+    "pastaba": "Surūšiuota pati — viskas iš vienos vietos. Keisk, jei reikia, iki lipduko.",
+    "apmok": "apmokėta · Mokėjimas internetu",
+    "st": "Vykdomas",
+    "velavimas": {
+     "u": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=velavimas&amp;id=35435&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35435&amp;_wpnonce=7ef90faaed",
+     "d": {
+      "antraste": "Užsakymas #35435 · 6,61 €",
+      "tekstas": "Klientui (terra@petshop.lt) išeis laiškas „Jūsų užsakymą Nr. 35435 dar komplektuojame“: „Sveiki, AUDITAS. Jūsų užsakymo Nr. 35435 surinkimas truputį užtruko. Išsiųsime jį kaip galėdami greičiau. Ačiū už kantrybę. Išsiuntę užsakymą informuosime Jus atskiru laišku. Jei turite klausimų, tiesiog atsakykite į šį laišką.“ Vieną kartą — po to mygtuko nebebus.",
+      "ok": "Pranešti klientui"
+     }
+    }
+   }
+  },
+  "veiksmo_url": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=velavimas&amp;id=35435&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35435&amp;_wpnonce=…",
+  "veiksmas": {
+   "code": 302,
+   "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35435&pd_ok=dl_info&pd_nr=35435|klientui pranešta apie vėlavimą — laiškas terra@petshop.lt (apmokėta 09-03, 0 d. d.; liko: VF)",
+   "body": ""
+  },
+  "po": {
+   "35435": {
+    "st": "processing",
+    "vel": "",
+    "iss": "",
+    "pastaba": "Venipak registracija darbalaukyje (VF, manifestas 002): KLAIDA — Venipak negrąžino atsakymo",
+    "ivykis": {
+     "veiksmas": "velavimo_laiskas",
+     "rezultatas": "ok",
+     "kanalas": "web",
+     "kas_vardas": "Testuotojas",
+     "laikas": "2026-09-04 15:05:57",
+     "pastaba": "rankiniu mygtuku"
+    }
+   }
+  },
+  "sk_po": {
+   "35435": {
+    "code": 200,
+    "kl": "",
+    "kur": "Dropshipping (VF) · toliau: Užsakyti iš VF",
+    "btn": "Užsakyti iš VF",
+    "pastaba": "Surūšiuota pati — viskas iš vienos vietos. Keisk, jei reikia, iki lipduko. Klientui pranešta apie vėlavimą (09-04 18:05).",
+    "apmok": "apmokėta · Mokėjimas internetu",
+    "st": "Vykdomas",
+    "velavimas": null
+   }
+  },
+  "laiskai_sis_procesas": [],
+  "dev_zurnalas_po": 3,
+  "dev_zurnalas_paskutinis": {
+   "laikas": "2026-09-04 07:01:47",
+   "kam": "terra@gyvunai.lt",
+   "tema": "[Petshop sargas] Cron neatsiskaite (1)",
+   "priedai": 0,
+   "url": "/wp-cron.php?doing_wp_cron=1788494506.1186869144439697265625"
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788536153|jcFWQ3Sirr28arRMfHQogoKGUmIdYqPjvoNH3D9gx4V|02c8d1bfce8080a18b76659e21ef9e003bf85ae1f731b4ba4d72998e8e11c6f3"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788536153|jcFWQ3Sirr28arRMfHQogoKGUmIdYqPjvoNH3D9gx4V|4affeb4ae72efcd31bb1fc4349551a33c8df455ad1650cfe6dc738436734a991"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788536153|jcFWQ3Sirr28arRMfHQogoKGUmIdYqPjvoNH3D9gx4V|e6aa7d377209b7b678f8c4ba6fca3efd976a1b03a4f883fa9b8cef34baf74676"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1614_e1_klausimai",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "full": true,
+    "eval": "({korteles:[...document.querySelectorAll('.dl-kortele')].map(x=>x.innerText.replace(/\\s+/g,' ').slice(0,260)),mygtukai:[...document.querySelectorAll('.dl-kortele a,.dl-kortele button')].map(x=>x.innerText).filter(t=>/vėlavim/.test(t))})"
+   },
+   {
+    "n": "s1614_e1_skydelis_35435_po",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35435&atidaryti=35435",
+    "w": 1400,
+    "eval": "({v:(document.getElementById('skV')||{innerText:''}).innerText.replace(/\\s+/g,' '),pastaba:(document.getElementById('skPastaba')||{innerText:''}).innerText.replace(/\\s+/g,' ').slice(0,300),pill:[...document.querySelectorAll('.dl-pill')].map(x=>x.innerText).filter(t=>/vėlavim/.test(t))})"
+   },
+   {
+    "n": "s1614_e1_skydelis_35421",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35421&atidaryti=35421",
+    "w": 1400,
+    "eval": "({v:(document.getElementById('skV')||{innerText:''}).innerText.replace(/\\s+/g,' '),pastaba:(document.getElementById('skPastaba')||{innerText:''}).innerText.replace(/\\s+/g,' ').slice(0,300),pill:[...document.querySelectorAll('.dl-pill')].map(x=>x.innerText).filter(t=>/vėlavim/.test(t))})"
+   },
+   {
+    "n": "s1614_e1_dialogas_35421",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35421&atidaryti=35421",
+    "w": 1400,
+    "click": "#skV a:has-text(\"Pranešti klientui apie vėlavimą\")",
+    "eval": "({dlg:(document.getElementById('dlDlgT')||{textContent:''}).textContent.slice(0,400),ok:(document.getElementById('dlDlgOk')||{textContent:''}).textContent,on:!!(document.getElementById('dlDlg')||{}).classList&&document.getElementById('dlDlg').classList.contains('on')})"
+   }
+  ]
+ },
+ "shots": {
+  "s1614_e1_klausimai": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "korteles": [
+     "#35100 · Aru ZX · 47,66 € trūksta sandėlyje Trūksta AV: 20 vnt. rudų kiaulės knyslių — reikia 1, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas siunčia klientui / veža į AV); užsakyk pats ir palik „Iš AV“, kai turėsi; parašyk klientui pakaitalą; ",
+     "#35423 · AUDITAS Testas 10 · 19,13 € trūksta sandėlyje Trūksta AV: Žaislas šuniui – Medžiaginis kaktusas Fernando, 17 x 15 cm — reikia 3, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas siunčia klientui / veža į AV); užsakyk pats ir palik „Iš AV“,"
+    ],
+    "mygtukai": []
+   }
+  },
+  "s1614_e1_skydelis_35435_po": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35435",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "v": "Užsakyti iš VF Redaguoti Sąskaita Parašyti klientui Atšaukti",
+    "pastaba": "Dabar: Dropshipping (VF) · toliau: Užsakyti iš VF Surūšiuota pati — viskas iš vienos vietos. Keisk, jei reikia, iki lipduko. Klientui pranešta apie vėlavimą (09-04 18:05).",
+    "pill": [
+     "klientui pranešta apie vėlavimą 09-04 18:05"
+    ]
+   }
+  },
+  "s1614_e1_skydelis_35421": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35421",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "v": "Surinkti Redaguoti Sąskaita Sekimo numeriai klientui Pranešti klientui apie vėlavimą Parašyti klientui Atšaukti",
+    "pastaba": "Dabar: Surinkti AV · toliau: Surinkti Surūšiuota. Kelią dar gali keisti, kol prekei nepadarytas pirmas žingsnis.",
+    "pill": []
+   }
+  },
+  "s1614_e1_dialogas_35421": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35421",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "#skV a:has-text(\"Pranešti klientui apie vėlavimą\")",
+   "eval": {
+    "dlg": "Klientui (terra@petshop.lt) išeis laiškas „Jūsų užsakymą Nr. 35421 dar komplektuojame“: „Sveiki, AUDITAS. Likusių Jūsų užsakymo Nr. 35421 prekių surinkimas truputį užtruko. Išsiųsime jį kaip galėdami greičiau. Ačiū už kantrybę. Išsiuntę užsakymą informuosime Jus atskiru laišku. Jei turite klausimų, tiesiog atsakykite į šį laišką.“ Vieną kartą — po to mygtuko nebebus.",
+    "ok": "Pranešti klientui",
+    "on": true
+   }
+  }
+ }
+}
