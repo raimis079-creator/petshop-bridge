@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.14.2 (S1613, 4 etapas #4a V13 „[T] vėluoja“ pagal dalis — darbalaukio lygiu) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.15 (S1614, 5 etapas #1 — mygtukas „Pranešti klientui apie vėlavimą“) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -26,6 +26,12 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v3.15 (S1614, 5 etapas #1 — Raimio idėja 09-04, sutarta): MYGTUKAS „PRANEŠTI KLIENTUI APIE VĖLAVIMĄ“ — Klausimo kortelėje „[T] vėluoja“ IR skydelyje
+ *   (sąlyga: apmokėtas, neuždarytas, bent viena dalis dar neišsiųsta, žymės `_ps_velavimo_laiskas` nėra). Siunčia TĄ PATĮ suderintą laišką (tema „Jūsų
+ *   užsakymą Nr. N dar komplektuojame“, tekstas v3.13 žodis į žodį) per `velavimo_laiskas($o, $siandien, $u)` — rankiniu būdu praleidžiami tik ≥3 d. d.
+ *   ir Klausimų sargai (darbuotojas sprendžia), kiti (žymė, apmokėta, būsena, dalis neišsiųsta, el. paštas) lieka. Vieną kartą: po to ta pati žymė,
+ *   pill „klientui pranešta apie vėlavimą …“, mygtuko nebėra. Įvykis `velavimo_laiskas` kanalas web, kas — darbuotojas; pastaboje „(darbuotojas X)“.
+ *   Veiksmas `admin_post_ps_dl_veiksmas` `v=velavimas` (nonce `ps_dl_velavimas_{id}`, lock). Dialogas su laiško tekstu prieš siuntimą. Automatinis 14:00 nekeistas.
  * v3.14 (S1613, 4 etapas #4a V13 — Raimis 09-04 sutiko, darbalaukio lygiu): „TIEKĖJAS VĖLUOJA“ TIKSLIAU, PAGAL DALIS. Variklio sargas
  *   `petshop-dropship-sargas.php` v1.0 ir jo žymė `_ps_sla_velavimas` NELIEČIAMI (Rytinė eiga ją skaičiuoja) — sargas žiūri į užsakymo lygio
  *   `_ps_dropship_sent` (>24 val.) ∧ processing, dalių nemato: kaltina tiekėją, net kai tiekėjas jau išsiuntė ir laukiama AV (#35421), o užsakymas
@@ -192,7 +198,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.14.2';
+	const VERSIJA = '3.15';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -733,6 +739,7 @@ class Petshop_Darbalaukis {
 			'atsaukti' => $atsaukti, 'sekimo' => ( class_exists( 'Petshop_Siuntos' ) && Petshop_Siuntos::turi( $id ) ) ? admin_url( 'admin.php?page=ps-siuntos-laiskas&id=' . $id ) : '',
 			'laukti' => ( $f['kl'] && ! $f['uzdarytas'] ) ? self::veiksmo_url( 'klaus', $id, $g ) . '&t=laukti' : '',
 			'nesurinkta' => ( ! empty( $f['dalys']['av']['lapas'] ) && empty( $f['dalys']['av']['siunta'] ) && ! $f['uzdarytas'] ) ? self::dl_url( 'nesurinkta', $id ) : '',
+			'velavimas' => self::velavimo_mygtukas( $f ), // v3.15
 			'zn' => wp_create_nonce( 'ps_dl_zurnalas' ),
 		);
 	}
@@ -749,6 +756,18 @@ class Petshop_Darbalaukis {
 		if ( $e['reduced'] && 'av' === $e['k'] ) { $s .= ' Rezervuota.'; }
 		if ( $e['kodel'] && ( 0 === strpos( $e['kodel'], 'darbalaukis:' ) || 0 === strpos( $e['kodel'], 'parsivežta' ) ) ) { $s .= ' · ' . $e['kodel']; }
 		return $s;
+	}
+
+	/** v3.15 (5 etapas #1): mygtukas „Pranešti klientui apie vėlavimą“ — kada rodyti ir ką sako dialogas. Sąlyga: apmokėtas, neuždarytas, žymės nėra, bent viena dalis neišsiųsta. */
+	protected static function velavimo_mygtukas( $f ) {
+		$o = $f['o']; if ( ! $f['paid'] || $f['uzdarytas'] || $o->get_meta( self::VEL_META ) || ! $o->get_billing_email() ) { return null; }
+		$liko = 0; $iss = 0; foreach ( $f['dalys'] as $p ) { if ( ! $p ) { continue; } if ( ! empty( $p['issiusta'] ) ) { $iss++; } else { $liko++; } }
+		if ( ! $liko ) { return null; }
+		$nr = $o->get_order_number(); $vardas = trim( (string) $o->get_billing_first_name() );
+		$p1 = $iss ? sprintf( 'Likusių Jūsų užsakymo Nr. %s prekių surinkimas truputį užtruko.', $nr ) : sprintf( 'Jūsų užsakymo Nr. %s surinkimas truputį užtruko.', $nr );
+		return array( 'u' => self::dl_url( 'velavimas', $f['id'] ), 'd' => array( 'antraste' => sprintf( 'Užsakymas #%s · %s', $nr, html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ) ),
+			'tekstas' => 'Klientui (' . $o->get_billing_email() . ') išeis laiškas „Jūsų užsakymą Nr. ' . $nr . ' dar komplektuojame“: „' . ( $vardas ? 'Sveiki, ' . $vardas . '.' : 'Sveiki.' ) . ' ' . $p1 . ' Išsiųsime jį kaip galėdami greičiau. Ačiū už kantrybę. Išsiuntę užsakymą informuosime Jus atskiru laišku. Jei turite klausimų, tiesiog atsakykite į šį laišką.“ Vieną kartą — po to mygtuko nebebus.',
+			'ok' => 'Pranešti klientui' ) );
 	}
 
 	/* ============================ VEIKSMAI ============================ */
@@ -771,6 +790,7 @@ class Petshop_Darbalaukis {
 			elseif ( 'rusiuoti' === $v ) { $rez = self::rusiuoti( $o, $u ); }
 			elseif ( 'grizta_is_naujo' === $v ) { $rez = self::grizta_is_naujo( $o, $u ); }
 			elseif ( 'grizta_atsaukti' === $v ) { $rez = self::grizta_atsaukti( $o, $u ); }
+			elseif ( 'velavimas' === $v ) { $tz = wp_timezone(); $dn = new DateTime( 'now', $tz ); $r = self::velavimo_laiskas( $o, $dn->format( 'Y-m-d' ), $u ); $rez = array( $r[0] ? 'dl_info' : 'dl_klaida', $r[0] ? 'klientui pranešta apie vėlavimą — ' . $r[1] : 'nepranešta: ' . $r[1] ); } // v3.15
 			elseif ( 'nesurinkta' === $v ) {
 				$o->delete_meta_data( '_ps_surinkta' ); $o->add_order_note( 'Darbalaukis: surinkimas atšauktas (' . $u->display_name . ') — užsakymas grįžo į „Surinkti“.', false, true ); $o->save();
 				if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $id, 'sritis' => 'desk', 'veiksmas' => 'nesurinkta', 'rezultatas' => 'ok', 'kanalas' => 'web', 'pastaba' => 'surinkimas atšauktas' ) ); }
@@ -1268,17 +1288,18 @@ class Petshop_Darbalaukis {
 		if ( ! $testas ) { update_option( 'ps_velavimo_laiskai_paskutinis', array( 'laikas' => current_time( 'mysql' ), 'darbo_diena' => $rep['darbo_diena'], 'uzsakymu' => $rep['uzsakymu'], 'issiusta' => count( $rep['issiusta'] ), 'praleista' => count( $rep['praleista'] ), 'klaidos' => count( $rep['klaidos'] ), 's' => $rep['s'] ), false ); }
 		return $rep;
 	}
-	/** Vienas užsakymas: sąlygos (log S1611 spr. 3) → laiškas Raimio tekstu → žymė, pastaba, įvykis. Grąžina [ok, tekstas]. */
-	protected static function velavimo_laiskas( $o, $siandien ) {
+	/** Vienas užsakymas: sąlygos (log S1611 spr. 3) → laiškas Raimio tekstu → žymė, pastaba, įvykis. Grąžina [ok, tekstas].
+	 *  v3.15: $u (WP_User) — rankinis mygtukas: ≥3 d. d. ir Klausimų sargai praleidžiami (darbuotojas sprendžia), kanalas web, kas — darbuotojas. */
+	protected static function velavimo_laiskas( $o, $siandien, $u = null ) {
 		if ( $o->get_meta( self::VEL_META ) ) { return array( false, 'jau pranešta ' . $o->get_meta( self::VEL_META ) ); }
 		if ( ! $o->is_paid() ) { return array( false, 'neapmokėtas' ); }
 		$st = $o->get_status();
 		if ( in_array( $st, array_merge( Petshop_Desk::STATUSAI['neapmoketi'], Petshop_Desk::STATUSAI['atsaukti'], Petshop_Desk::STATUSAI['ivykdyti'], Petshop_Desk::STATUSAI['kelyje'] ), true ) ) { return array( false, 'būsena ' . $st ); }
 		$dp = $o->get_date_paid() ? $o->get_date_paid() : $o->get_date_created(); if ( ! $dp ) { return array( false, 'apmokėjimo datos nėra' ); }
 		$dpv = clone $dp; $dpv->setTimezone( wp_timezone() ); $dd = self::pilnos_darbo_dienos( $dpv->format( 'Y-m-d' ), $siandien );
-		if ( $dd < self::VEL_DIENOS ) { return array( false, 'apmokėta ' . $dpv->format( 'm-d' ) . ' — praėjo ' . $dd . ' d. d.' ); }
+		if ( ! $u && $dd < self::VEL_DIENOS ) { return array( false, 'apmokėta ' . $dpv->format( 'm-d' ) . ' — praėjo ' . $dd . ' d. d.' ); }
 		$f = self::faktai( $o, self::zurnalas( array( $o->get_id() ) ) );
-		if ( $f['kl'] ) { return array( false, 'Klausimuose: ' . $f['kl'] ); }
+		if ( ! $u && $f['kl'] ) { return array( false, 'Klausimuose: ' . $f['kl'] ); }
 		$liko = array(); $issiusta = 0;
 		foreach ( $f['dalys'] as $k => $p ) { if ( ! $p ) { continue; } if ( ! empty( $p['issiusta'] ) ) { $issiusta++; } else { $liko[] = $k; } }
 		if ( ! $liko ) { return array( false, 'visos siuntos išsiųstos' ); }
@@ -1296,8 +1317,8 @@ class Petshop_Darbalaukis {
 		if ( ! $ok ) { return array( false, 'laiško išsiųsti nepavyko' ); }
 		$dabar = current_time( 'mysql' ); $liko_v = array(); foreach ( $liko as $k ) { $liko_v[] = self::vardas( $k ); }
 		$o->update_meta_data( self::VEL_META, $dabar );
-		$o->add_order_note( sprintf( 'Klientui išsiųstas vėlavimo laiškas (%s): apmokėta %s, praėjo %d pilnos darbo dienos; dar neišsiųsta: %s.', $el, $dpv->format( 'm-d' ), $dd, implode( ', ', $liko_v ) ), false, true ); $o->save();
-		if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_id(), 'sritis' => 'desk', 'veiksmas' => 'velavimo_laiskas', 'rezultatas' => 'ok', 'kanalas' => 'cron', 'po' => array( 'el' => $el, 'apmoketa' => $dpv->format( 'Y-m-d' ), 'darbo_dienos' => $dd, 'liko' => $liko, 'issiusta_daliu' => $issiusta ) ) ); }
+		$o->add_order_note( sprintf( 'Klientui išsiųstas vėlavimo laiškas (%s%s): apmokėta %s, praėjo %d pilnos darbo dienos; dar neišsiųsta: %s.', $el, $u ? '; darbuotojas ' . $u->display_name : '', $dpv->format( 'm-d' ), $dd, implode( ', ', $liko_v ) ), false, true ); $o->save();
+		if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_id(), 'sritis' => 'desk', 'veiksmas' => 'velavimo_laiskas', 'rezultatas' => 'ok', 'kanalas' => $u ? 'web' : 'cron', 'kas' => $u ? $u->ID : 0, 'kas_vardas' => $u ? $u->display_name : 'sistema', 'po' => array( 'el' => $el, 'apmoketa' => $dpv->format( 'Y-m-d' ), 'darbo_dienos' => $dd, 'liko' => $liko, 'issiusta_daliu' => $issiusta ), 'pastaba' => $u ? 'rankiniu mygtuku' : null ) ); }
 		do_action( 'ps_juosta_isvalyti' );
 		return array( true, 'laiškas ' . $el . ' (apmokėta ' . $dpv->format( 'm-d' ) . ', ' . $dd . ' d. d.; liko: ' . implode( ', ', $liko_v ) . ')' );
 	}
@@ -1994,8 +2015,9 @@ class Petshop_Darbalaukis {
 				// v3.14 (V13): pagal dalis; užsakymas kartu Paruošta siųsti su „[T] išsiuntė“; dingsta pats, kai dalis pažymima išsiųsta — „Laukti“ nebesiūlomas.
 				$tv = array(); foreach ( array_keys( (array) $r['veluoja'] ) as $s ) { $tv[] = self::vardas( $s ); }
 				if ( $tv ) { $zyme = implode( ', ', $tv ) . ' vėluoja'; }
-				$pastaba = 'Užsakyta iš ' . ( $tv ? implode( ', ', $tv ) : 'tiekėjo' ) . ' prieš 24+ val., siunta neišėjo. Paskambink; kai išsiųs — pažymėk „' . ( $tv ? $tv[0] : 'tiekėjas' ) . ' išsiuntė“ (Paruošta siųsti) arba Venipak sekimas pažymės pats — Klausimas dings pats.';
-				$veiksmai = '<button class="v p" data-atidaryti="1">Atidaryti</button> ' . $rasyti . ' ' . $atsaukti;
+				$pastaba = 'Užsakyta iš ' . ( $tv ? implode( ', ', $tv ) : 'tiekėjo' ) . ' prieš 24+ val., siunta neišėjo. Paskambink; kai išsiųs — pažymėk „' . ( $tv ? $tv[0] : 'tiekėjas' ) . ' išsiuntė“ (Paruošta siųsti) arba Venipak sekimas pažymės pats — Klausimas dings pats.' . ( $sk['velavimas'] ? ' Jei užtruks — „Pranešti klientui apie vėlavimą“ (vienas laiškas).' : '' );
+				$vel = $sk['velavimas'] ? '<a class="v t" href="' . esc_url( $sk['velavimas']['u'] ) . '" data-d="' . esc_attr( wp_json_encode( $sk['velavimas']['d'] ) ) . '">Pranešti klientui apie vėlavimą</a> ' : ''; // v3.15
+				$veiksmai = '<button class="v p" data-atidaryti="1">Atidaryti</button> ' . $vel . $rasyti . ' ' . $atsaukti;
 			} elseif ( 0 === strpos( $kl, 'Siunta grįžta' ) ) {
 				$g = self::grizta( $o ); $d = array(); $kita_issiusta = false; $av_issiusta = ! empty( $r['dalys']['av']['issiusta'] );
 				foreach ( $r['dalys'] as $dk => $dp ) { if ( $dp && ! empty( $dp['issiusta'] ) && ! isset( $g[ $dk ] ) ) { $kita_issiusta = true; } }
@@ -2191,7 +2213,7 @@ class Petshop_Darbalaukis {
 		$('skZur').innerHTML='<span class="pilkas maz">kraunama…</span>'; fetch(ajaxurl+'?action=ps_dl_zurnalas&id='+o.id+'&n='+encodeURIComponent(o.zn),{credentials:'same-origin'}).then(function(r){return r.json();}).then(function(j){ if(j&&j.success&&$('skNr').textContent.indexOf('#'+o.nr)===0) $('skZur').innerHTML=j.data; }).catch(function(){ $('skZur').textContent='žurnalo įkelti nepavyko'; });
 		var f=''; if(o.rusiuoti) f+='<a class="v p" href="'+esc(o.rusiuoti)+'">Surūšiuota</a><span class="pilkas maz">peržiūrėk, iš kur važiuoja prekės, ir patvirtink</span>';
 		if(o.btn&&!o.rusiuoti){ if(o.btn.pasyvus) f+='<a class="kel ts" href="'+esc(o.btn.u)+'"><i></i>'+esc(o.btn.t)+'</a>'; else f+='<a class="v p" href="'+esc(o.btn.u)+'"'+(o.btn.d?' data-d="'+esc(JSON.stringify(o.btn.d))+'"':'')+'>'+esc(o.btn.t)+'</a>'; }
-		f+='<span style="margin-left:auto"></span><button class="v t" disabled title="dar nepadaryta">Redaguoti</button><button class="v t" disabled title="dar nepadaryta">Sąskaita</button>'+(o.nesurinkta?'<a class="v t" href="'+esc(o.nesurinkta)+'" title="Grąžinti į „Surinkti“">Atšaukti surinkimą</a>':'')+(o.sekimo?'<a class="v t" href="'+esc(o.sekimo)+'">Sekimo numeriai klientui</a>':'')+(o.mail?'<a class="v t" href="mailto:'+esc(o.mail)+'?subject='+encodeURIComponent('Užsakymas #'+o.nr+' — petshop.lt')+'">Parašyti klientui</a>':'')+(o.atsaukti?'<a class="v t raud" href="'+esc(o.atsaukti.u)+'" data-d="'+esc(JSON.stringify(o.atsaukti.d))+'">Atšaukti</a>':'');
+		f+='<span style="margin-left:auto"></span><button class="v t" disabled title="dar nepadaryta">Redaguoti</button><button class="v t" disabled title="dar nepadaryta">Sąskaita</button>'+(o.nesurinkta?'<a class="v t" href="'+esc(o.nesurinkta)+'" title="Grąžinti į „Surinkti“">Atšaukti surinkimą</a>':'')+(o.sekimo?'<a class="v t" href="'+esc(o.sekimo)+'">Sekimo numeriai klientui</a>':'')+(o.velavimas?'<a class="v t" href="'+esc(o.velavimas.u)+'" data-d="'+esc(JSON.stringify(o.velavimas.d))+'">Pranešti klientui apie vėlavimą</a>':'')+(o.mail?'<a class="v t" href="mailto:'+esc(o.mail)+'?subject='+encodeURIComponent('Užsakymas #'+o.nr+' — petshop.lt')+'">Parašyti klientui</a>':'')+(o.atsaukti?'<a class="v t raud" href="'+esc(o.atsaukti.u)+'" data-d="'+esc(JSON.stringify(o.atsaukti.d))+'">Atšaukti</a>':'');
 		$('skV').innerHTML=f; SK.classList.add('on'); UZ.classList.add('on'); SK.setAttribute('aria-hidden','false'); skOn=true; }
 	function uzdaryti(){ SK.classList.remove('on'); UZ.classList.remove('on'); SK.setAttribute('aria-hidden','true'); skOn=false; }
 	$('skUzd').onclick=uzdaryti; UZ.onclick=uzdaryti;
