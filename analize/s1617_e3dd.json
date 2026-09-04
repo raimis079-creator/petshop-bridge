@@ -1,0 +1,64 @@
+{
+ "v": "dep-222558",
+ "kurimas": 200,
+ "sid": 4800,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1617 e3d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": {
+   "1": [
+    80000,
+    "e01b21f5378bc753c2f3b042b4563cda"
+   ],
+   "2": 46112
+  },
+  "bytes": 344966,
+  "md5": "41cf2b8f61b16a33fff61b2938ee87d4",
+  "token": "ok",
+  "buvo": "99533f9116ad805ee39aa9c1b5240cc3",
+  "backup": true,
+  "rasyta": 344966,
+  "po": "41cf2b8f61b16a33fff61b2938ee87d4",
+  "part_unlink": true,
+  "orig": {
+   "st": "processing",
+   "griz": "{\"av\":{\"nr\":\"V07267E1000780\",\"t\":\"gr\\u012f\\u017eta siunt\\u0117jui (sim 2)\",\"e\":\"\",\"d\":\"\",\"kada\":\"2026-09-05 01:00:26\"}}",
+   "pk_id": "35793",
+   "nemok": ""
+  },
+  "pastas": {
+   "n": 12,
+   "pask": [
+    [
+     "2026-09-05 00:52:56",
+     "uzsakymai@petshop.lt",
+     "Naujas užsakymas Nr. 35792 — 2026-09-05",
+     0
+    ],
+    [
+     "2026-09-05 00:52:56",
+     "terra@petshop.lt",
+     "Jūsų užsakymas Nr. 35792 — apmokėjimas gautas",
+     0
+    ],
+    [
+     "2026-09-05 01:03:01",
+     "terra@petshop.lt",
+     "Jūsų užsakymo Nr. 35436 siunta grįžo — pakartotinis siuntimas 8,21 €",
+     1
+    ],
+    [
+     "2026-09-05 01:05:10",
+     "terra@petshop.lt",
+     "Apmokėjimas gautas — užsakymo Nr. 35436 siuntą išsiųsime iš naujo",
+     1
+    ]
+   ]
+  }
+ }
+}
