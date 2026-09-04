@@ -1,0 +1,61 @@
+{
+ "v": "dep-142642",
+ "kurimas": 200,
+ "sid": 4722,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1613 e11d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": [
+   80000,
+   80000,
+   80000,
+   74904
+  ],
+  "bytes": 236178,
+  "md5": "165871eb0c83297ebdfd637416ed6d53",
+  "token": "ok",
+  "buvo": "dc990f3c7577508b47e1f7465ab3066b",
+  "backup": true,
+  "rasyta": 236178,
+  "po": "165871eb0c83297ebdfd637416ed6d53"
+ },
+ "T": {
+  "v": "S1613 e11d",
+  "f": "T",
+  "temp_istrinta": 0,
+  "versija": "3.14.2",
+  "md5": "165871eb0c83297ebdfd637416ed6d53",
+  "dev_zurnalas_pries": 3,
+  "pries": {
+   "35435": "processing vel=",
+   "35436": "processing vel="
+  },
+  "sim_tr": {
+   "dabar": "2026-09-09 14:00",
+   "darbo_diena": true,
+   "uzsakymu": 1,
+   "issiusta": [
+    "#35436 laiškas terra@petshop.lt (apmokėta 09-03, 3 d. d.; liko: AV, Quattro)"
+   ],
+   "praleista": [],
+   "klaidos": [],
+   "s": 0.1
+  },
+  "laiskai": [
+   {
+    "to": "terra@petshop.lt",
+    "tema": "Jūsų užsakymą Nr. 35436 dar komplektuojame",
+    "h1": "Jūsų užsakymą Nr. 35436 dar komplektuojame",
+    "tekstas": "Petshop.lt Jūsų užsakymą Nr. 35436 dar komplektuojame Sveiki, AUDITAS. Jūsų užsakymo Nr. 35436 surinkimas truputį užtruko. Išsiųsime jį kaip galėdami greičiau. Ačiū už kantrybę. Išsiuntę užsakymą informuosime Jus atskiru laišku. Jei turite klausimų, tiesiog atsakykite į šį laišką. Gražios dienos,petshop.lt Petshop.ltLiucionių g. 46, Liucionių k., 15166, Lietuva"
+   }
+  ],
+  "dev_zurnalas_po": 3,
+  "po_35436": "processing vel=2026-09-04 17:28:01",
+  "cron_planas": "2026-09-05 14:00"
+ }
+}
