@@ -1,0 +1,198 @@
+{
+ "v": "dep-134016",
+ "kurimas": 200,
+ "sid": 4718,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1613 e9d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": [
+   80000,
+   80000,
+   80000,
+   74568
+  ],
+  "bytes": 235926,
+  "md5": "dc990f3c7577508b47e1f7465ab3066b",
+  "token": "ok",
+  "buvo": "005facb497c4bd7a0b6512c3b6af426f",
+  "backup": true,
+  "rasyta": 235926,
+  "po": "dc990f3c7577508b47e1f7465ab3066b"
+ },
+ "Z": {
+  "v": "S1613 e9d",
+  "f": "Z",
+  "temp_istrinta": 0,
+  "versija": "3.14.1",
+  "md5": "dc990f3c7577508b47e1f7465ab3066b",
+  "dev_zurnalas_pries": 3,
+  "now": "2026-09-04 16:41:58",
+  "pries": {
+   "35418": {
+    "st": "processing",
+    "sla": "2026-09-03 18:15:03",
+    "sent_src": "{\"zb\":\"2026-09-02 17:50:10\"}",
+    "iss": "",
+    "reg": [
+     "zb:V07267E1000037"
+    ]
+   },
+   "35421": {
+    "st": "processing",
+    "sla": "2026-09-04 12:14:34",
+    "sent_src": "{\"prins\":\"2026-09-03 11:23:34\"}",
+    "iss": "{\"prins\":{\"laikas\":\"2026-09-03 21:33:34\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:34\"}}",
+    "reg": [
+     "prins:V07267E1000046"
+    ]
+   }
+  },
+  "sk_pries": {
+   "35418": {
+    "code": 200,
+    "kl": "ZB vėluoja — užsakyta prieš 46 val., siunta neišėjo. Paskambink ZB.",
+    "kur": "Klausimai + Paruošta siųsti · toliau: ZB išsiuntė",
+    "btn": "ZB išsiuntė",
+    "laukti": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_desk_veiksmas&amp;v=klaus&amp;id=35418&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35418&amp;_wpnonce=b26bfb86bd&t=laukti",
+    "st": "Vykdomas"
+   },
+   "35421": {
+    "code": 200,
+    "kl": "",
+    "kur": "Surinkti AV · toliau: Surinkti",
+    "btn": "Surinkti",
+    "laukti": "",
+    "st": "Vykdomas"
+   }
+  },
+  "zb_issiusta": [
+   "dl_issiusta",
+   "klientui išėjo „Užsakymas išsiųstas“"
+  ],
+  "po_35418": {
+   "st": "completed",
+   "sla": "2026-09-03 18:15:03",
+   "sent_src": "{\"zb\":\"2026-09-02 17:50:10\"}",
+   "iss": "{\"zb\":{\"laikas\":\"2026-09-04 16:42:02\",\"kas\":\"sistema\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-04 16:42:03\"}}",
+   "reg": [
+    "zb:V07267E1000037"
+   ]
+  },
+  "sk_po_35418": {
+   "code": 200,
+   "kl": "",
+   "kur": "įvykdytas",
+   "btn": null,
+   "laukti": "",
+   "st": "Įvykdytas"
+  },
+  "laiskai": [
+   "terra@petshop.lt | Jūsų užsakymas Nr. 35418 išsiųstas | Petshop.lt Užsakymas išsiųstas Sveiki, AUDITAS, Jūsų užsakymas Nr. 35418 išsiųstas. Siuntos numeris (Venipak) V07267E1000037 Sekti siuntą Siuntos kelią sekite paspaudę „Sekti siuntą“. Prekės: 1 × Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas, 2×2.8 l, ø 24 cm Gražios dienos,pets"
+  ],
+  "dev_zurnalas_po": 3,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788531118|NxnvDiCzYngiKVMvD5IpsSVPZ0qNOUhvnSDV0WxWkKp|791fcc1457df048b721eace61a45ee54032bc2f1bacf8bb62e55a1448c8b6089"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788531118|NxnvDiCzYngiKVMvD5IpsSVPZ0qNOUhvnSDV0WxWkKp|1e4198ca1c4e9e61377a96bcf0220dc981a91029bbabdb53e0afeb04c0101899"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788531118|NxnvDiCzYngiKVMvD5IpsSVPZ0qNOUhvnSDV0WxWkKp|a569f758d312cc0b5d7877cf1531f2299a6622b7f1b2608fc585a5e3dea3bbc7"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1613_e10_klausimai_po",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "full": true,
+    "eval": "({eiles:[...document.querySelectorAll('.dl-eiles a, .dl-eiles button, nav a')].map(x=>x.innerText.replace(/\\s+/g,' ')).filter(t=>/Klausimai|Surinkti AV|Paruošta/.test(t)).slice(0,6),korteles:[...document.querySelectorAll('.dl-kortele')].map(x=>x.innerText.replace(/\\s+/g,' ').slice(0,200)),nr:[...document.querySelectorAll('tr.eil .nr')].map(x=>x.innerText).slice(0,40)})"
+   },
+   {
+    "n": "s1613_e10_surinkti_po",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+    "w": 1400,
+    "full": true,
+    "eval": "({eiles:[...document.querySelectorAll('.dl-eiles a, .dl-eiles button, nav a')].map(x=>x.innerText.replace(/\\s+/g,' ')).filter(t=>/Klausimai|Surinkti AV|Paruošta/.test(t)).slice(0,6),korteles:[...document.querySelectorAll('.dl-kortele')].map(x=>x.innerText.replace(/\\s+/g,' ').slice(0,200)),nr:[...document.querySelectorAll('tr.eil .nr')].map(x=>x.innerText).slice(0,40)})"
+   },
+   {
+    "n": "s1613_e10_paruosta_po",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+    "w": 1400,
+    "full": true,
+    "eval": "({eiles:[...document.querySelectorAll('.dl-eiles a, .dl-eiles button, nav a')].map(x=>x.innerText.replace(/\\s+/g,' ')).filter(t=>/Klausimai|Surinkti AV|Paruošta/.test(t)).slice(0,6),korteles:[...document.querySelectorAll('.dl-kortele')].map(x=>x.innerText.replace(/\\s+/g,' ').slice(0,200)),nr:[...document.querySelectorAll('tr.eil .nr')].map(x=>x.innerText).slice(0,40)})"
+   }
+  ]
+ },
+ "shots": {
+  "s1613_e10_klausimai_po": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "eiles": [
+     "Surinkti AV 11",
+     "Paruošta siųsti 0",
+     "Klausimai 2"
+    ],
+    "korteles": [
+     "#35100 · Aru ZX · 47,66 € trūksta sandėlyje Trūksta AV: 20 vnt. rudų kiaulės knyslių — reikia 1, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas siunčia klientui / veža į AV); užsakyk pat",
+     "#35423 · AUDITAS Testas 10 · 19,13 € trūksta sandėlyje Trūksta AV: Žaislas šuniui – Medžiaginis kaktusas Fernando, 17 x 15 cm — reikia 3, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas s"
+    ],
+    "nr": []
+   }
+  },
+  "s1613_e10_surinkti_po": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "eiles": [
+     "Surinkti AV 11",
+     "Paruošta siųsti 0",
+     "Klausimai 2"
+    ],
+    "korteles": [],
+    "nr": [
+     "#35436",
+     "#35414",
+     "#35415",
+     "#35425",
+     "#35421",
+     "#35431",
+     "#35434",
+     "#35439",
+     "#35441",
+     "#35442",
+     "#35450"
+    ]
+   }
+  },
+  "s1613_e10_paruosta_po": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=paruosta",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "eiles": [
+     "Surinkti AV 11",
+     "Paruošta siųsti 0",
+     "Klausimai 2"
+    ],
+    "korteles": [],
+    "nr": []
+   }
+  }
+ }
+}
