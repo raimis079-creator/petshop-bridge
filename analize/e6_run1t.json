@@ -1,0 +1,260 @@
+{
+ "v": "dep-085512",
+ "kurimas": 200,
+ "sid": 4682,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "run e6t",
+  "temp_istrinta": 1,
+  "versija": "3.11",
+  "dev_zurnalas_pries": 3,
+  "kandidatai": {
+   "pradzia": "2026-09-04 12:01:49",
+   "uzsakymu": 16,
+   "numeriu": 23,
+   "uzklausu": 20,
+   "pakeista": 0,
+   "issiusta": [],
+   "pristatyta": [],
+   "grizta": [],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 12:01:49",
+   "s": 0
+  },
+  "paskutinis": {
+   "laikas": "2026-09-04 12:01:49",
+   "uzsakymu": 16,
+   "numeriu": 23,
+   "uzklausu": 20,
+   "pakeista": 0,
+   "issiusta": 0,
+   "pristatyta": 0,
+   "grizta": 0,
+   "klaidos": 0,
+   "s": 0
+  },
+  "pries": {
+   "35419": {
+    "st": "completed",
+    "cust": 0,
+    "iss": "",
+    "perd": "2026-09-02 17:50:06",
+    "reg": {
+     "vf": [
+      "V07267E1000039"
+     ],
+     "ambrosia": [
+      "V07267E1000040"
+     ]
+    },
+    "sek": {
+     "V07267E1000039": "0 At sender",
+     "V07267E1000040": "0 At sender"
+    },
+    "kl": [
+     "ambrosia issiusta V07267E1000040",
+     "vf issiusta V07267E1000039"
+    ]
+   },
+   "35427": {
+    "st": "completed",
+    "cust": 0,
+    "iss": "",
+    "perd": "",
+    "reg": {
+     "av": [
+      "V07267E1000030"
+     ]
+    },
+    "sek": {
+     "V07267E1000030": "0 At sender"
+    },
+    "kl": [
+     "av issiusta V07267E1000030"
+    ]
+   },
+   "35429": {
+    "st": "processing",
+    "cust": 0,
+    "iss": "",
+    "perd": "",
+    "reg": {
+     "av": [
+      "V07267E1000031",
+      "V07267E1000032"
+     ]
+    },
+    "sek": {
+     "V07267E1000031": "0 At sender",
+     "V07267E1000032": "0 At sender"
+    },
+    "kl": [
+     "av ruosiama V07267E1000031/V07267E1000032"
+    ]
+   },
+   "35430": {
+    "st": "cancelled",
+    "cust": 0,
+    "iss": "",
+    "perd": "",
+    "reg": {
+     "av": [
+      "V07267E1000041"
+     ]
+    },
+    "sek": [],
+    "kl": []
+   },
+   "35437": {
+    "st": "completed",
+    "cust": 0,
+    "iss": "",
+    "perd": "",
+    "reg": {
+     "av": [
+      "V07267E1000048"
+     ]
+    },
+    "sek": {
+     "V07267E1000048": "0 At sender"
+    },
+    "kl": [
+     "av issiusta V07267E1000048"
+    ]
+   }
+  },
+  "rA": {
+   "pradzia": "2026-09-04 12:01:49",
+   "uzsakymu": 1,
+   "numeriu": 2,
+   "uzklausu": 2,
+   "pakeista": 1,
+   "issiusta": [
+    "#35429 av V07267E1000031 → dl_issiusta: klientui išėjo „Užsakymas išsiųstas“"
+   ],
+   "pristatyta": [],
+   "grizta": [],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 12:01:50",
+   "s": 0.6
+  },
+  "rA_po": {
+   "st": "completed",
+   "cust": 0,
+   "iss": "{\"av\":{\"laikas\":\"2026-09-04 12:01:49\",\"kas\":\"Venipak\",\"kanalas\":\"venipak\",\"laiskas\":\"2026-09-04 12:01:49\"}}",
+   "perd": "",
+   "reg": {
+    "av": [
+     "V07267E1000031",
+     "V07267E1000032"
+    ]
+   },
+   "sek": {
+    "V07267E1000031": "2 At terminal",
+    "V07267E1000032": "0 At sender"
+   },
+   "kl": [
+    "av issiusta V07267E1000031/V07267E1000032"
+   ]
+  },
+  "rA_mail": 1,
+  "rA_again": {
+   "pradzia": "2026-09-04 12:01:50",
+   "uzsakymu": 1,
+   "numeriu": 2,
+   "uzklausu": 2,
+   "pakeista": 0,
+   "issiusta": [],
+   "pristatyta": [],
+   "grizta": [],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 12:01:50",
+   "s": 0
+  },
+  "B_praleista": "completed",
+  "laiskai": [
+   "terra@petshop.lt | Jūsų užsakymas Nr. 35429 išsiųstas | Petshop.lt Užsakymas išsiųstas Sveiki, AUDITAS, Jūsų užsakymas Nr. 35429 išsiųstas. Siuntų numeriai (Venipak) V07267E1000031, V07267E1000032 Sekti siuntą Siuntos kelią sekite paspaudę „Sekti siuntą“. Prekės: 2 × Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g Gražios dienos,petshop.lt Petshop.ltLiucionių g. 46, Liucionių k., 15166, Lietuva"
+  ],
+  "dev_zurnalas_po": 3,
+  "notes_A": [
+   "Klientui išsiųsta „Užsakymas išsiųstas“ (terra@petshop.lt): V07267E1000031, V07267E1000032",
+   "Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+   "Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS.",
+   "Surūšiuota automatiškai: Animonda Carny Adult Beef + Chicken + Du — Avesa sandėlis"
+  ],
+  "skydelis": {
+   "35429": {
+    "code": 403,
+    "nr": null,
+    "kur": null,
+    "kl": null
+   },
+   "35440": {
+    "code": 403,
+    "nr": null,
+    "kur": null,
+    "kl": null
+   }
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788514310|GXIpky0xCvu2pG5eTHF3s5R42QLLhUxYw2ze6u05cW2|7b8548b882c623c149288e12f28e515aec2c5f31db166c0927efab609ee41670"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788514310|GXIpky0xCvu2pG5eTHF3s5R42QLLhUxYw2ze6u05cW2|1f36fbe26031fde9d576252254960456f1f4e24bcc6b0041ed9b52418fee8240"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788514310|GXIpky0xCvu2pG5eTHF3s5R42QLLhUxYw2ze6u05cW2|56662642af84ca3fd63684e35997cbeb4980248b5b62ebd4da3c7999d0b6b94d"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e6_klausimai",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "full": true,
+    "eval": "({korteles:[...document.querySelectorAll('.dl-kortele')].map(x=>x.innerText.replace(/\\s+/g,' ').slice(0,160))})"
+   },
+   {
+    "n": "e6_skydelis_35440",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai&atidaryti=35440",
+    "w": 1400,
+    "full": false,
+    "eval": "({sk:(document.querySelector('#skydelis,.dl-skydelis,.dl-sk')||document.body).innerText.replace(/\\s+/g,' ').slice(0,700)})"
+   }
+  ]
+ },
+ "shots": {
+  "e6_klausimai": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "korteles": [
+     "#35100 · Aru ZX · 47,66 € trūksta sandėlyje Trūksta AV: 20 vnt. rudų kiaulės knyslių — reikia 1, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas si",
+     "#35418 · AUDITAS Testas 5 · 34,52 € tiekėjas vėluoja — perduota prieš 24+ val. Tiekėjas vėluoja — perduota prieš 24+ val. Užsakyta iš tiekėjo prieš 24+ val., si",
+     "#35423 · AUDITAS Testas 10 · 19,13 € trūksta sandėlyje Trūksta AV: Žaislas šuniui – Medžiaginis kaktusas Fernando, 17 x 15 cm — reikia 3, AV nėra, tiekėjo nėra.",
+     "#35440 · AUDITAS Testas 27 · 12,02 € siunta grįžta Vežėjas grąžina siuntą: siunta V07267E1000049 — Venipak: „Returning to sender“ (2026-09-04 14:00:00); prekės:"
+    ]
+   }
+  },
+  "e6_skydelis_35440": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "sk": "Petshop.lt Sveiki, Testuotojas ⌂ Užsakymai 22 Rytinė eiga Prekės 454 Gavimas Tiekimas 1 Rinkiniai Akcijos Laiškai 18 LP 13:00 · 58 min Žurnalas Testuotojas ⏻ Gauti 5 Neišrūšiuoti 1 Laukiam iš tiekėjų 1 Surinkti AV 11 Dropshipping 12 Paruošta siųsti 1 Klausimai 4 Neapmokėti 0 Visi 45 Filtrai ▾ #35100 · Aru ZX · 47,66 € trūksta sandėlyje Trūksta AV: 20 vnt. rudų kiaulės knyslių — reikia 1, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas siunčia klientui / veža į AV); užsakyk pats ir palik „Iš AV“, kai turėsi; parašyk klientui pakaitalą; arba atšauk. „Laukti“ tik pažymi — priminimo nebus. Rūšiuoti Laukti Parašyti klientui Atšaukti #35418 · AUDITAS Testas 5 · 34,52 € tiekėjas vėluoj"
+   }
+  }
+ }
+}
