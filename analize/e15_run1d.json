@@ -1,0 +1,202 @@
+{
+ "v": "dep-071850",
+ "kurimas": 200,
+ "sid": 4671,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run e15d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": [
+   80000,
+   80000,
+   86344
+  ],
+  "bytes": 184758,
+  "md5": "770feb233b28fefb8a52968b6a290dd0",
+  "token": "ok",
+  "buvo": "786445f11fbe62a677bf26d23b3baf62",
+  "backup": true,
+  "rasyta": 184758,
+  "po": "770feb233b28fefb8a52968b6a290dd0"
+ },
+ "T": {
+  "v": "run e15d",
+  "f": "T",
+  "temp_istrinta": 0,
+  "versija": "3.10.6",
+  "md5": "770feb233b28fefb8a52968b6a290dd0",
+  "L0_pries": {
+   "18593_own": "21",
+   "18593_stock": "70.000000",
+   "19708_stock": "15",
+   "19708_own": ""
+  },
+  "A": 35779,
+  "L1_po_apmok": {
+   "lik": {
+    "18593_own": "20",
+    "18593_stock": "70",
+    "19708_stock": "14",
+    "19708_own": ""
+   },
+   "eil": {
+    "st": "processing",
+    "eiles": [
+     "surinkti"
+    ],
+    "eil": {
+     "1564": "1x Exclusion Hypoalle [av/av] av_qty=20 galimi=av,tiesiai,i_av reduced=1/",
+     "1565": "1x Animonda Carny Adu [av/av] av_qty=14 galimi=av reduced=1/"
+    },
+    "av_reduced": "2026-09-04 10:20:10",
+    "restored": ""
+   }
+  },
+  "L2_kelias_18593_tiesiai": "35779|Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200 g → VF siunčia klientui · likutis AV +1 → 21",
+  "L2_po": {
+   "lik": {
+    "18593_own": "21",
+    "18593_stock": "70",
+    "19708_stock": "14",
+    "19708_own": ""
+   },
+   "eil": {
+    "st": "processing",
+    "eiles": [
+     "surinkti",
+     "laiskai"
+    ],
+    "eil": {
+     "1564": "1x Exclusion Hypoalle [tiesiai/vf] av_qty=20 galimi=av,tiesiai,i_av reduced=/",
+     "1565": "1x Animonda Carny Adu [av/av] av_qty=14 galimi=av reduced=1/"
+    },
+    "av_reduced": "2026-09-04 10:20:10",
+    "restored": ""
+   }
+  },
+  "L3_kelias_18593_av": "35779|Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200 g → Iš AV · likutis AV −1 → 20",
+  "L3_po": {
+   "lik": {
+    "18593_own": "20",
+    "18593_stock": "70",
+    "19708_stock": "14",
+    "19708_own": ""
+   },
+   "eil": {
+    "st": "processing",
+    "eiles": [
+     "surinkti"
+    ],
+    "eil": {
+     "1564": "1x Exclusion Hypoalle [av/av] av_qty=20 galimi=av,tiesiai,i_av reduced=1/",
+     "1565": "1x Animonda Carny Adu [av/av] av_qty=14 galimi=av reduced=1/"
+    },
+    "av_reduced": "2026-09-04 10:20:10",
+    "restored": ""
+   }
+  },
+  "L4_kelias_19708_tiesiai": "35779|negalima: tiekėjo nėra",
+  "L4_po": {
+   "lik": {
+    "18593_own": "20",
+    "18593_stock": "70",
+    "19708_stock": "14",
+    "19708_own": ""
+   },
+   "eil": {
+    "st": "processing",
+    "eiles": [
+     "surinkti"
+    ],
+    "eil": {
+     "1564": "1x Exclusion Hypoalle [av/av] av_qty=20 galimi=av,tiesiai,i_av reduced=1/",
+     "1565": "1x Animonda Carny Adu [av/av] av_qty=14 galimi=av reduced=1/"
+    },
+    "av_reduced": "2026-09-04 10:20:10",
+    "restored": ""
+   }
+  },
+  "L5_atsaukus": {
+   "lik": {
+    "18593_own": "21",
+    "18593_stock": "70",
+    "19708_stock": "15",
+    "19708_own": ""
+   },
+   "eil": {
+    "st": "cancelled",
+    "eiles": [],
+    "eil": {
+     "1564": "1x Exclusion Hypoalle [av/av] av_qty=20 galimi=av,tiesiai,i_av reduced=1/",
+     "1565": "1x Animonda Carny Adu [av/av] av_qty=14 galimi=av reduced=1/"
+    },
+    "av_reduced": "2026-09-04 10:20:10",
+    "restored": "2026-09-04 10:20:18"
+   },
+   "notes": [
+    "Email \"Atšauktas užsakymas\" sent.",
+    "Email \"Atšauktas užsakymas\" sent.",
+    "S1611 testas (likutis seka kelią) — atšaukta Užsakymo statusas pakeistas iš Vykdomas į Atšauktas.",
+    "AV grąžinimas: #18593 AV +1 -> 21 · #19708 grynai AV +1",
+    "Darbalaukis: „Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200 g“ kelias VF siunčia klientui → Iš AV (Testuotojas). Likutis: AV −1 → 20.",
+    "Darbalaukis: „Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200 g“ kelias Iš AV → VF siunčia klientui (Testuotojas). Likutis: AV +1 → 21."
+   ]
+  },
+  "B": 35780,
+  "B_rusiuoti": "35780|HAP žaislas šunims, pliušinė varlė su iš — VF siunčia klientui; Prins Diet Skin & Intestinal Hypoallergi — Prins siunčia klientui",
+  "B_dropshipping_kortele": {
+   "code": 200,
+   "be_lipduku_mygtukas": false,
+   "be_lipduku_tekstas": false,
+   "uzsakyti_is_VF": true,
+   "lipdukai_n": "2",
+   "disabled_pirma_lipdukai": 5
+  },
+  "B_vf_be_lipduku_variklis": "VF|1 užs. → terra@petshop.lt",
+  "B_po_uzsakymo": {
+   "st": "processing",
+   "eiles": [
+    "paruosta",
+    "laiskai"
+   ],
+   "eil": {
+    "1568": "1x HAP žaislas šunims [tiesiai/vf] av_qty=0 galimi=tiesiai,i_av reduced=/",
+    "1569": "1x Prins Diet Skin &  [tiesiai/prins] av_qty=0 galimi=tiesiai,i_av reduced=/"
+   },
+   "av_reduced": "",
+   "restored": ""
+  },
+  "B_vf_issiunte": "35780|VF — siuntos numerio nėra, pirma lipdukas",
+  "B_po_issiusta": {
+   "st": "processing",
+   "eiles": [
+    "paruosta",
+    "laiskai"
+   ],
+   "eil": {
+    "1568": "1x HAP žaislas šunims [tiesiai/vf] av_qty=0 galimi=tiesiai,i_av reduced=/",
+    "1569": "1x Prins Diet Skin &  [tiesiai/prins] av_qty=0 galimi=tiesiai,i_av reduced=/"
+   },
+   "av_reduced": "",
+   "restored": ""
+  },
+  "B_dalys_issiusta": "",
+  "B_visos": "35780|VF — siuntos numerio nėra, pirma lipdukas",
+  "B_st": "cancelled",
+  "mail": [
+   "uzsakymai@petshop.lt | Naujas užsakymas Nr. 35779 — 2026-09-04",
+   "s1609.klientas@avesa.lt | Jūsų užsakymas Nr. 35779 — apmokėjimas gautas",
+   "uzsakymai@petshop.lt | [Petshop.lt]: Užsakymas #35779 buvo atšauktas",
+   "s1609.klientas@avesa.lt | Jūsų užsakymas Nr. 35779 atšauktas — Petshop.lt",
+   "uzsakymai@petshop.lt | Naujas užsakymas Nr. 35780 — 2026-09-04",
+   "s1609.klientas@avesa.lt | Jūsų užsakymas Nr. 35780 — apmokėjimas gautas",
+   "terra@petshop.lt | [PERSIŲSTI Vetfarmas] užsakymas 2026-09-04",
+   "uzsakymai@petshop.lt | [Petshop.lt]: Užsakymas #35780 buvo atšauktas",
+   "s1609.klientas@avesa.lt | Jūsų užsakymas Nr. 35780 atšauktas — Petshop.lt"
+  ]
+ }
+}
