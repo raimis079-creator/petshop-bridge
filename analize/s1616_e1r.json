@@ -1,0 +1,2695 @@
+{
+ "v": "dep-194316",
+ "kurimas": 200,
+ "sid": 4777,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1616 e1r",
+  "temp_istrinta": 1,
+  "wc_ver": "11.0.1",
+  "wc_create_refund": "pattern nerastas: function wc_create_refund",
+  "wc_restock_refunded": "pattern nerastas: function wc_restock_refunded_items",
+  "wc_item_totals_refund": "NĖRA /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/abstract-wc-order.php",
+  "wc_item_totals_net": "NĖRA /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/abstract-wc-order.php",
+  "tpl_order_item_qty": "item->get_name() ) : $item->get_name(), $item, $is_visible ) );\n\n\t\t$qty          = $item->get_quantity();\n\t\t$refunded_qty = $order->get_qty_refunded_for_item( $item_id );\n\n\t\tif ( $refunded_qty ) {\n\t\t\t$qty_display = '<del>' . esc_html( $qty ) . '</del> <ins>' . esc_html( $qty - ( $refunded_qty * -1 ) ) . '</ins>';\n\t\t} else {\n\t\t\t$qty_display = esc_html( $qty );\n\t\t}\n\n\t\techo apply_filters( 'woocommerce_order_item_quantity_html', ' <strong class=\"product-quantity\">' . sprintf( '&times;&nbsp;%s', $qty_display ) . '</strong>', $item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped\n\n\t\tdo_action( 'woocommerce_order_item_meta_start', $item_id, $item, $order, false );\n\n\t\twc_display_item_meta( $item ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped\n\n\t\tdo_action( 'woocommerce_order_item_meta_end', $item_id, $item, $order, false );\n\t\t?>\n\t</td>\n\n\t<td class=\"woocomme",
+  "tpl_email_item_qty": "e_text_align ); ?>\" style=\"vertical-align:middle;\">\n\t\t\t<?php\n\t\t\t$qty          = $item->get_quantity();\n\t\t\t$refunded_qty = $order->get_qty_refunded_for_item( $item_id );\n\n\t\t\tif ( $refunded_qty ) {\n\t\t\t\t$qty_display = '<del>' . esc_html( $qty ) . '</del> <ins>' . esc_html( $qty - ( $refunded_qty * -1 ) ) . '</ins>';\n\t\t\t} else {\n\t\t\t\t$qty_display = esc_html( $qty );\n\t\t\t}\n\t\t\t/**\n\t\t\t * Email Order Item Quantity hook.\n\t\t\t *\n\t\t\t * @since 2.4.0\n\t\t\t * @param string                $qty_display Item quantity.\n\t\t\t * @param WC_Order_Item_Product $item        Item object.\n\t\t\t * @return string\n\t\t\t */\n\t\t\t$quantity = apply_filters( 'woocommerce_email_order_item_quantity', $qty_display, $item );\n\t\t\tif ( '' !== $quantity ) {\n\t\t\t\t$quantity_prefix = $email_improvements_enabled ? '&times;' : '';\n\t\t\t\techo wp_kses_post( $quantity_prefix . $quantity );\n\t\t\t}\n\t\t\t?>\n\t\t</td>\n\t\t<td class=\"td font-family text-align-<?ph",
+  "theme_dir": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/themes/flatsome-child",
+  "theme_override": {
+   "/woocommerce/order/order-details-item.php": false,
+   "/woocommerce/emails/email-order-items.php": false,
+   "/woocommerce/order/order-details.php": false,
+   "/woocommerce/emails/email-order-details.php": false
+  },
+  "functions_size": 71132,
+  "invoice_pdf": "function petshop_generate_invoice_pdf( $order_id ) {\n    $wc_order = wc_get_order( $order_id );\n    if ( ! $wc_order ) return false;\n\n    $countries      = WC()->countries ? WC()->countries->get_countries() : array();\n    $b_country      = $wc_order->get_billing_country();\n    $b_country_name = isset( $countries[ $b_country ] ) ? $countries[ $b_country ] : $b_country;\n\n    $skip_states = array( 'pasirinkite rajona', 'select a region', 'select an option' );\n    $b_state     = $wc_order->get_billing_state();\n    $b_state_val = ( $b_state && ! in_array( mb_strtolower( $b_state ), $skip_states ) ) ? $b_state : '';\n\n    $city_post = trim( $wc_order->get_billing_city() . ( $wc_order->get_billing_postcode() ? ', ' . $wc_order->get_billing_postcode() : '' ) );\n\n    $billing_lines = array_values( array_filter( array(\n        $wc_order->get_billing_address_1(),\n        $wc_order->get_billing_address_2(),\n        $city_post,\n        $b_state_val,\n        $b_country_name,\n    ) ) );\n\n    $order = array(\n        'id'            => $order_id,\n        'orderNumber'   => $wc_order->get_order_number(),\n        'documentDate'  => date_i18n( 'Y-m-d' ),\n        'date'          => $wc_order->get_date_created()\n                            ? $wc_order->get_date_created()->format( 'Y-m-d' )\n                            : date( 'Y-m-d' ),\n        'paymentMethod' => $wc_order->get_payment_method_title(),\n        'billing'       => array(\n            'name'    => trim( $wc_order->get_billing_first_name() . ' ' . $wc_order->get_billing_last_name() ),\n            'address' => $billing_lines,\n            'phone'   => $wc_order->get_billing_phone(),\n            'email'   => $wc_order->get_billing_email(),\n        ),\n        'shipping'      => array( 'name' => '', 'address' => array() ),\n    );\n\n    $logo_url  = '';\n    $logo_path = '';\n    $flatsome_logo_id = get_theme_mod( 'site_logo' );\n    if ( $flatsome_logo_id ) {\n        $logo_url  = wp_get_attachment_image_url( $flatsome_logo_id, 'full' );\n        $logo_path = get_attached_file( $flatsome_logo_id );\n    }\n\n    $shop     = array( 'logo' => $logo_url, 'logo_path' => $logo_path, 'name' => get_bloginfo( 'name' ) );\n    $settings = array( 'displayPriceInProductDetailsTable' => true );\n    $document = array();\n    $template = 'invoice';\n    $type     = 'pdf';\n    $items    = array();\n    $totals   = array();\n\n    $template_file = get_stylesheet_directory() . '/woocommerce-delivery-notes/base.php';\n    if ( ! file_exists( $template_file ) ) return false;\n\n    ob_start();\n    include $template_file;\n    $body_html = ob_get_clean();\n\n    $full_html = '<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><style>@page{size:A4;margin:12mm 14mm;}body{margin:0;padding:0;}</style></head><body>' . $body_html . '</body></html>';\n\n    if ( ! class_exists( 'Dompdf\\Dompdf' ) ) return false;\n\n    $upload_dir = wp_upload_dir();\n    $pdf_dir    = trailingslashit( $upload_dir['basedir'] ) . 'wcdn/invoice/';\n    wp_mkdir_p( $pdf_dir );\n    // Svarus lietuviskas failo pavadinimas pagal dokumento numeri (base.php nustato $invoice_number ir $doc_title virsuje).\n    $doc_num  = isset( $invoice_number ) ? preg_replace( '/[^A-Za-z0-9]/', '', $invoice_number ) : (string) $order_id;\n    $name_pfx = ( isset( $doc_title ) && mb_stripos( $doc_title, 'ankstin' ) !== false ) ? 'Isankstine-saskaita' : 'PVM-saskaita';\n    $pdf_file = $pdf_dir . $name_pfx . '-' . $doc_num . '.pdf';\n\n    try {\n        $options = new \\Dompdf\\Options();\n        $options->set( 'isRemoteEnabled', true );\n        $options->set( 'isHtml5ParserEnabled', true );\n        $options->set( 'isFontSubsettingEnabled', true );\n        $options->set( 'chroot', array( realpath( ABSPATH ), realpath( $upload_dir['basedir'] ) ) );\n        $dompdf = new \\Dompdf\\Dompdf( $options );\n        $dompdf->loadHtml( $full_html, 'UTF-8' );\n        $dompdf->setPaper( array( 0, 0, 595.28, 841.89 ), 'portrait' );\n        $dompdf->render();\n        file_put_contents( $pdf_file, $dompdf->output() );\n        return file_exists( $pdf_file ) ? $pdf_file : false;\n    } catch ( \\Throwable $e ) {\n        return false;\n    }\n}\n\n// ===============================================================\n// Laiskas #1 - Uzsakymas gautas\n// ===============================================================\nadd_action( 'woocommerce_checkout_order_created', function( $order ) {\n    $doc_type = petshop_get_invoice_document_type( $order );\n    $order->update_meta_data( '_petshop_invoice_document_type', $doc_type );\n    try {\n        $order_id = $order->get_id();\n        $order->save();\n        $pdf_file = petshop_generate_invoice_pdf( $order_id );\n        if ( $pdf_file && file_exists( $pdf_file ) ) {\n            $order->update_meta_data( '_petshop_order_pdf', $pdf_file );\n            $order->save();\n        }\n    } catch ( \\Throwable $e ) {}\n    wp_schedule_single_event( time() + 5, 'petshop_send_order_received_email', array( $order->get_id() ) );\n}, 20 );\n\nadd_action( 'petshop_send_order_received_email', function( $order_id ) {\n    $order = wc_get_order( $order_id );\n    if ( ! $order ) return;\n\n    $payment_method_id = $order->get_payment_method();\n    $is_bank           = ( $payment_method_id === ",
+  "functions_refund_mentions": 4,
+  "functions_total_calls": {
+   "get_subtotal()": 2,
+   "get_total()": 3,
+   "get_total_tax()": 2,
+   "get_shipping_total()": 2
+  },
+  "snip_653": {
+   "id": "653",
+   "name": "Petshop Invoice Completed Attach Fix v3 (LIVE)",
+   "active": "1",
+   "code": "/**\n * Petshop Invoice Completed Attach Fix v3 (LIVE, GLOBAL scope)\n * Kritinis: snippet turi buti GLOBAL, nes completed laiskas siunciamas admin/REST kontekste, ne front-end.\n * Regeneruoja svieziа PVM saskaita faktura completed laisko siuntimo metu + nukerpa senus/WCDN priedus.\n */\nif ( ! defined( 'ABSPATH' ) ) { return; }\nadd_filter( 'woocommerce_email_attachments', function ( $attachments, $email_id, $order, $email ) {\n\tif ( $email_id !== 'customer_completed_order' || ! ( $order instanceof WC_Order ) ) { return $attachments; }\n\tif ( ! function_exists( 'petshop_generate_invoice_pdf' ) ) { return $attachments; }\n\t$fresh_order = wc_get_order( $order->get_id() );\n\tif ( ! $fresh_order ) { return $attachments; }\n\tif ( function_exists( 'petshop_get_invoice_document_type' ) ) {\n\t\t$dt = petshop_get_invoice_document_type( $fresh_order );\n\t\tif ( $fresh_order->get_meta( '_petshop_invoice_document_type' ) !== $dt ) {\n\t\t\t$fresh_order->update_meta_data( '_petshop_invoice_document_type', $dt );\n\t\t\t$fresh_order->save();\n\t\t}\n\t}\n\t$fresh_pdf = petshop_generate_invoice_pdf( $order->get_id() );\n\t$clean = array();\n\tforeach ( (array) $attachments as $a ) {\n\t\t$b = basename( (string) $a );\n\t\tif ( stripos( $b, 'Isankstine-saskaita' ) !== false ) { continue; }\n\t\tif ( stripos( $b, 'PVM-saskaita' ) !== false ) { continue; }\n\t\tif ( stripos( $b, 'Invoice -' ) !== false ) { continue; }\n\t\tif ( preg_match( '/^invoice-\\d+-\\d+\\.pdf$/i', $b ) ) { continue; }\n\t\t$clean[] = $a;\n\t}\n\tif ( $fresh_pdf && file_exists( $fresh_pdf ) ) {\n\t\t$clean[] = $fresh_pdf;\n\t\t$fresh_order->update_meta_data( '_petshop_completed_pdf', $fresh_pdf );\n\t\t$fresh_order->save();\n\t}\n\t$clean = array_values( $clean );\n\tupdate_option( 'ps_last_completed_attach', array(\n\t\t'time'  => time(),\n\t\t'order' => $order->get_id(),\n\t\t'ctx'   => is_ad"
+  },
+  "snip_648": {
+   "id": "648",
+   "name": "Petshop Invoice Doc Type Fix v2 (LIVE)",
+   "active": "1",
+   "code": "/**\n * Petshop Invoice Doc Type Fix v2 (LIVE, GLOBAL)\n * Perjungia doc_type PRIES generacija ant completed. GLOBAL - veikia ir admin/REST kontekste.\n */\nif ( ! defined( 'ABSPATH' ) ) { return; }\nadd_action( 'woocommerce_order_status_completed', function( $order_id ) {\n\tif ( ! function_exists( 'petshop_get_invoice_document_type' ) ) { return; }\n\t$order = wc_get_order( $order_id );\n\tif ( ! $order ) { return; }\n\t$dt = petshop_get_invoice_document_type( $order );\n\tif ( $order->get_meta( '_petshop_invoice_document_type' ) !== $dt ) {\n\t\t$order->update_meta_data( '_petshop_invoice_document_type', $dt );\n\t\t$order->delete_meta_data( '_wcdn_invoice_pdf' );\n\t\t$order->delete_meta_data( '_wcdn_invoice_pdf_token' );\n\t\t$order->save();\n\t}\n}, 1 );\n"
+  },
+  "sig": {
+   "AV_Stock::qty": "public static qty($product_id)",
+   "AV_Stock::increase": "public static increase($product_id, $by, $priezastis=?)",
+   "AV_Stock::decrease": "public static decrease($product_id, $by, $priezastis=?)",
+   "Dropship::perduotos": "public static perduotos($order)",
+   "Tiekimas::ideti_eilute": "public static ideti_eilute($o, $iid, $src=?)",
+   "Tiekimas::isimti_eilute": "public static isimti_eilute($o, $iid)",
+   "Tiekimas::eilutes_bukle": "public static eilutes_bukle($order_id, $item_id)",
+   "Fakt_Grazinimai::rasyti": "public static rasyti($order_id, $refund_id)",
+   "Ivykiai::irasyti": "public static irasyti($a)",
+   "Faktai::ar_testinis": "public static ar_testinis($order)",
+   "Darbalaukis::VERSIJA": "3.18.1"
+  },
+  "hooks": {
+   "order_refunded": [
+    "35:Petshop_Fakt_Grazinimai::rasyti"
+   ],
+   "partially_refunded": [
+    "10:Automattic\\WooCommerce\\Admin\\API\\Reports\\Products\\DataStore::add_partial_refund_type_meta",
+    "10:WC_Emails::send_transactional_email"
+   ],
+   "fully_refunded": [
+    "10:Automattic\\WooCommerce\\Admin\\API\\Reports\\Products\\DataStore::add_full_refund_type_meta",
+    "10:WC_Emails::send_transactional_email"
+   ],
+   "refund_created": [
+    "100:Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\DataSynchronizer::handle_updated_order"
+   ],
+   "restock_item": [],
+   "update_order": [
+    "10:Automattic\\WooCommerce\\Internal\\Admin\\OrderMilestoneEasterEgg::clear_milestone_cache",
+    "20:Petshop_Event_Emitters::maybe_emit_order_shipped",
+    "100:Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\DataSynchronizer::handle_updated_order"
+   ],
+   "before_delete_item": [],
+   "delete_item": [],
+   "item_qty_html": [],
+   "email_item_qty": [],
+   "item_totals": []
+  },
+  "fakt_graz_lentele": [
+   "id",
+   "uzsakymas_id",
+   "refund_id",
+   "eilute_id",
+   "wc_eilutes_id",
+   "eilute_raktas",
+   "preke_id",
+   "grazinta_at",
+   "diena",
+   "kiekis",
+   "suma_ct",
+   "pvm_ct",
+   "savikaina_ct",
+   "priezastis_kodas",
+   "priezastis_tekstas",
+   "atsargos_grizo",
+   "sandelis",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija"
+  ],
+  "uzs": {
+   "35414": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "21.64",
+    "ship": "1.78",
+    "refunded": 0,
+    "remaining": "21.64",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":2}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "780": {
+      "n": "AMBROSIA begrūdis su ė",
+      "pid": 19756,
+      "q": 1,
+      "sub": "11.809917",
+      "tot": "11.809917",
+      "tax": "2.48",
+      "taxes": {
+       "total": {
+        "1": "2.480083"
+       },
+       "subtotal": {
+        "1": "2.480083"
+       }
+      },
+      "src": "ambrosia",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "781": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 2,
+      "sub": "4.297521",
+      "tot": "4.297521",
+      "tax": "0.9",
+      "taxes": {
+       "total": {
+        "1": "0.902479"
+       },
+       "subtotal": {
+        "1": "0.902479"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "2",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35415": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "69.79",
+    "ship": "3.99",
+    "refunded": 0,
+    "remaining": "69.79",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":4},\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":3}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "784": {
+      "n": "AMBROSIA begrūdis su ė",
+      "pid": 19756,
+      "q": 4,
+      "sub": "47.239669",
+      "tot": "47.239669",
+      "tax": "9.92",
+      "taxes": {
+       "total": {
+        "1": "9.92033"
+       },
+       "subtotal": {
+        "1": "9.92033"
+       }
+      },
+      "src": "ambrosia",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "4",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "785": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 3,
+      "sub": "6.446281",
+      "tot": "6.446281",
+      "tax": "1.35",
+      "taxes": {
+       "total": {
+        "1": "1.353719"
+       },
+       "subtotal": {
+        "1": "1.353719"
+       }
+      },
+      "src": "av",
+      "k": "",
+      "rq": "3",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35416": {
+    "st": "completed",
+    "paid": true,
+    "pm": "paysera",
+    "total": "5.61",
+    "ship": "2.49",
+    "refunded": 0,
+    "remaining": "5.61",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "CC000000001LT",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "788": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 1,
+      "sub": "2.14876",
+      "tot": "2.14876",
+      "tax": "0.45",
+      "taxes": {
+       "total": {
+        "1": "0.45124"
+       },
+       "subtotal": {
+        "1": "0.45124"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35417": {
+    "st": "completed",
+    "paid": true,
+    "pm": "paysera",
+    "total": "9.92",
+    "ship": "1.78",
+    "refunded": 0,
+    "remaining": "9.92",
+    "surinkta": "",
+    "siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260902002\",\"numeriai\":[\"V07267E1000036\"],\"data\":\"2026-09-02 17:49:41\"}}",
+    "perd": {
+     "vf": "2026-09-02 17:49:54"
+    },
+    "vp": "{\"manifest\":\"07267260902002\",\"pack_numbers\":[\"V07267E1000036\"],\"weight\":0.105000",
+    "lp": "",
+    "groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":3}}",
+    "type": "DS",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "791": {
+      "n": "Churu Popn Serve skanė",
+      "pid": 34828,
+      "q": 3,
+      "sub": "6.421488",
+      "tot": "6.421488",
+      "tax": "1.35",
+      "taxes": {
+       "total": {
+        "1": "1.348512"
+       },
+       "subtotal": {
+        "1": "1.348512"
+       }
+      },
+      "src": "vf",
+      "k": "",
+      "rq": "",
+      "wcred": "3",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35418": {
+    "st": "completed",
+    "paid": true,
+    "pm": "paysera",
+    "total": "34.52",
+    "ship": "3.99",
+    "refunded": 0,
+    "remaining": "34.52",
+    "surinkta": "",
+    "siuntos": "{\"zb\":{\"sandelis\":\"zb\",\"kodas\":\"003\",\"manifest\":\"07267260902003\",\"numeriai\":[\"V07267E1000037\"],\"data\":\"2026-09-02 17:49:44\"}}",
+    "perd": {
+     "zb": "2026-09-02 17:50:10"
+    },
+    "vp": "{\"manifest\":\"07267260902003\",\"pack_numbers\":[\"V07267E1000037\"],\"weight\":0.4,\"pro",
+    "lp": "",
+    "groups": "{\"zb\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "DS",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "794": {
+      "n": "Trixie Stovas su duben",
+      "pid": 33904,
+      "q": 1,
+      "sub": "24.53719",
+      "tot": "24.53719",
+      "tax": "5.15",
+      "taxes": {
+       "total": {
+        "1": "5.15281"
+       },
+       "subtotal": {
+        "1": "5.15281"
+       }
+      },
+      "src": "zb",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35419": {
+    "st": "cancelled",
+    "paid": false,
+    "pm": "paysera",
+    "total": "21.62",
+    "ship": "1.78",
+    "refunded": 0,
+    "remaining": "21.62",
+    "surinkta": "",
+    "siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260902002\",\"numeriai\":[\"V07267E1000039\"],\"data\":\"2026-09-02 17:49:57\"},\"ambrosia\":{\"sandelis\":\"ambrosia\",\"",
+    "perd": {
+     "vf": "2026-09-02 17:50:00",
+     "ambrosia": "2026-09-02 17:50:06"
+    },
+    "vp": "{\"manifest\":\"07267260902006\",\"pack_numbers\":[\"V07267E1000040\"],\"weight\":2.070000",
+    "lp": "",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":2}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "797": {
+      "n": "AMBROSIA begrūdis su ė",
+      "pid": 19756,
+      "q": 1,
+      "sub": "11.809917",
+      "tot": "11.809917",
+      "tax": "2.48",
+      "taxes": {
+       "total": {
+        "1": "2.480083"
+       },
+       "subtotal": {
+        "1": "2.480083"
+       }
+      },
+      "src": "ambrosia",
+      "k": "",
+      "rq": "",
+      "wcred": "",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "798": {
+      "n": "Churu Popn Serve skanė",
+      "pid": 34828,
+      "q": 2,
+      "sub": "4.280992",
+      "tot": "4.280992",
+      "tax": "0.9",
+      "taxes": {
+       "total": {
+        "1": "0.899008"
+       },
+       "subtotal": {
+        "1": "0.899008"
+       }
+      },
+      "src": "vf",
+      "k": "",
+      "rq": "",
+      "wcred": "",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35420": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "37.11",
+    "ship": "3.99",
+    "refunded": 0,
+    "remaining": "37.11",
+    "surinkta": "",
+    "siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260903002\",\"numeriai\":[\"V07267E1000054\"],\"data\":\"2026-09-03 16:28:58\"}}",
+    "perd": [],
+    "vp": "{\"manifest\":\"07267260903002\",\"pack_numbers\":[\"V07267E1000054\"],\"weight\":0.435000",
+    "lp": "",
+    "groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"zb\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "801": {
+      "n": "Churu Popn Serve skanė",
+      "pid": 34828,
+      "q": 1,
+      "sub": "2.140496",
+      "tot": "2.140496",
+      "tax": "0.45",
+      "taxes": {
+       "total": {
+        "1": "0.449504"
+       },
+       "subtotal": {
+        "1": "0.449504"
+       }
+      },
+      "src": "vf",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "802": {
+      "n": "Trixie Stovas su duben",
+      "pid": 33904,
+      "q": 1,
+      "sub": "24.53719",
+      "tot": "24.53719",
+      "tax": "5.15",
+      "taxes": {
+       "total": {
+        "1": "5.15281"
+       },
+       "subtotal": {
+        "1": "5.15281"
+       }
+      },
+      "src": "zb",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35421": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "54.03",
+    "ship": "3.99",
+    "refunded": 0,
+    "remaining": "54.03",
+    "surinkta": "",
+    "siuntos": "{\"prins\":{\"sandelis\":\"prins\",\"kodas\":\"005\",\"manifest\":\"07267260903005\",\"numeriai\":[\"V07267E1000046\"],\"data\":\"2026-09-03 11:23:31\"}}",
+    "perd": {
+     "prins": "2026-09-03 11:23:34"
+    },
+    "vp": "{\"manifest\":\"07267260903005\",\"pack_numbers\":[\"V07267E1000046\"],\"weight\":3.5,\"pro",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"quattro\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"prins\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "805": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 1,
+      "sub": "2.14876",
+      "tot": "2.14876",
+      "tax": "0.45",
+      "taxes": {
+       "total": {
+        "1": "0.45124"
+       },
+       "subtotal": {
+        "1": "0.45124"
+       }
+      },
+      "src": "av",
+      "k": "",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "806": {
+      "n": "QUATTRO 1,5 kg Adult S",
+      "pid": 16727,
+      "q": 1,
+      "sub": "14.049587",
+      "tot": "14.049587",
+      "tax": "2.95",
+      "taxes": {
+       "total": {
+        "1": "2.950413"
+       },
+       "subtotal": {
+        "1": "2.950413"
+       }
+      },
+      "src": "quattro",
+      "k": "",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": [
+       "10",
+       "gauta"
+      ],
+      "refq": 0
+     },
+     "807": {
+      "n": "Prins Diet Skin & Inte",
+      "pid": 16889,
+      "q": 1,
+      "sub": "24.46281",
+      "tot": "24.46281",
+      "tax": "5.14",
+      "taxes": {
+       "total": {
+        "1": "5.13719"
+       },
+       "subtotal": {
+        "1": "5.13719"
+       }
+      },
+      "src": "prins",
+      "k": "",
+      "rq": "",
+      "wcred": "1",
+      "ats": "2026-09-04 19:12:18|Testuotojas|V07267E1000046|0",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35422": {
+    "st": "processing",
+    "paid": true,
+    "pm": "bacs",
+    "total": "16.44",
+    "ship": "1.78",
+    "refunded": 0,
+    "remaining": "16.44",
+    "surinkta": "",
+    "siuntos": "{\"ambrosia\":{\"sandelis\":\"ambrosia\",\"kodas\":\"006\",\"manifest\":\"07267260902006\",\"numeriai\":[\"V07267E1000038\"],\"data\":\"2026-09-02 17:49:45\"}}",
+    "perd": [],
+    "vp": "{\"manifest\":\"07267260902006\",\"pack_numbers\":[\"V07267E1000038\"],\"weight\":2,\"produ",
+    "lp": "",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "DS",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "810": {
+      "n": "AMBROSIA begrūdis su ė",
+      "pid": 19756,
+      "q": 1,
+      "sub": "11.809917",
+      "tot": "11.809917",
+      "tax": "2.48",
+      "taxes": {
+       "total": {
+        "1": "2.480083"
+       },
+       "subtotal": {
+        "1": "2.480083"
+       }
+      },
+      "src": "ambrosia",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35423": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "19.13",
+    "ship": "1.78",
+    "refunded": 0,
+    "remaining": "19.13",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":3}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "813": {
+      "n": "Žaislas šuniui – Medži",
+      "pid": 35074,
+      "q": 3,
+      "sub": "14.033058",
+      "tot": "14.033058",
+      "tax": "2.95",
+      "taxes": {
+       "total": {
+        "1": "2.946942"
+       },
+       "subtotal": {
+        "1": "2.946942"
+       }
+      },
+      "src": "av",
+      "k": "",
+      "rq": "3",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35424": {
+    "st": "cancelled",
+    "paid": false,
+    "pm": "paysera",
+    "total": "16.44",
+    "ship": "1.78",
+    "refunded": 0,
+    "remaining": "16.44",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "DS",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "816": {
+      "n": "AMBROSIA begrūdis su ė",
+      "pid": 19756,
+      "q": 1,
+      "sub": "11.809917",
+      "tot": "11.809917",
+      "tax": "2.48",
+      "taxes": {
+       "total": {
+        "1": "2.480083"
+       },
+       "subtotal": {
+        "1": "2.480083"
+       }
+      },
+      "src": "ambrosia",
+      "k": "",
+      "rq": "",
+      "wcred": "",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35425": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "35.93",
+    "ship": "1.78",
+    "refunded": 0,
+    "remaining": "35.93",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":2},\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":2}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "819": {
+      "n": "AMBROSIA begrūdis su ė",
+      "pid": 19756,
+      "q": 2,
+      "sub": "23.619835",
+      "tot": "23.619835",
+      "tax": "4.96",
+      "taxes": {
+       "total": {
+        "1": "4.960165"
+       },
+       "subtotal": {
+        "1": "4.960165"
+       }
+      },
+      "src": "ambrosia",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "2",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "820": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 2,
+      "sub": "4.297521",
+      "tot": "4.297521",
+      "tax": "0.9",
+      "taxes": {
+       "total": {
+        "1": "0.902479"
+       },
+       "subtotal": {
+        "1": "0.902479"
+       }
+      },
+      "src": "av",
+      "k": "",
+      "rq": "2",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35426": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "23.31",
+    "ship": "3.99",
+    "refunded": 0,
+    "remaining": "23.31",
+    "surinkta": "",
+    "siuntos": "{\"belcor_tofu\":{\"sandelis\":\"belcor_tofu\",\"kodas\":\"007\",\"manifest\":\"07267260903007\",\"numeriai\":[\"V07267E1000053\"],\"data\":\"2026-09-03 16:22:45\"}}",
+    "perd": [],
+    "vp": "{\"manifest\":\"07267260903007\",\"pack_numbers\":[\"V07267E1000053\"],\"weight\":4.5,\"pro",
+    "lp": "",
+    "groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"belcor_tofu\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "823": {
+      "n": "AMBROSIA Junior begrūd",
+      "pid": 19780,
+      "q": 1,
+      "sub": "11.14876",
+      "tot": "11.14876",
+      "tax": "2.34",
+      "taxes": {
+       "total": {
+        "1": "2.34124"
+       },
+       "subtotal": {
+        "1": "2.34124"
+       }
+      },
+      "src": "ambrosia",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "824": {
+      "n": "Kraikas katėms Purrfec",
+      "pid": 17719,
+      "q": 1,
+      "sub": "4.123967",
+      "tot": "4.123967",
+      "tax": "0.87",
+      "taxes": {
+       "total": {
+        "1": "0.866033"
+       },
+       "subtotal": {
+        "1": "0.866033"
+       }
+      },
+      "src": "belcor_tofu",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35427": {
+    "st": "completed",
+    "paid": true,
+    "pm": "paysera",
+    "total": "7.35",
+    "ship": "1.78",
+    "refunded": 0,
+    "remaining": "7.35",
+    "surinkta": "",
+    "siuntos": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260902001\",\"numeriai\":[\"V07267E1000030\"],\"data\":\"2026-09-02 17:49:39\"}}",
+    "perd": [],
+    "vp": "{\"manifest\":\"07267260902001\",\"pack_numbers\":[\"V07267E1000030\"],\"weight\":1,\"produ",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":2}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "827": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 2,
+      "sub": "4.297521",
+      "tot": "4.297521",
+      "tax": "0.9",
+      "taxes": {
+       "total": {
+        "1": "0.902479"
+       },
+       "subtotal": {
+        "1": "0.902479"
+       }
+      },
+      "src": "av",
+      "k": "",
+      "rq": "2",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35428": {
+    "st": "completed",
+    "paid": true,
+    "pm": "paysera",
+    "total": "12.63",
+    "ship": "3.99",
+    "refunded": 0,
+    "remaining": "12.63",
+    "surinkta": "",
+    "siuntos": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260902001\",\"numeriai\":[\"V07267E1000033\",\"V07267E1000034\",\"V07267E1000035\"],\"data\":\"2026-09-02 17:49:39\"}}",
+    "perd": [],
+    "vp": "{\"manifest\":\"07267260902001\",\"pack_numbers\":[\"V07267E1000033\",\"V07267E1000034\",\"",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":3}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "830": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 3,
+      "sub": "6.446281",
+      "tot": "6.446281",
+      "tax": "1.35",
+      "taxes": {
+       "total": {
+        "1": "1.353719"
+       },
+       "subtotal": {
+        "1": "1.353719"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "3",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35429": {
+    "st": "cancelled",
+    "paid": false,
+    "pm": "paysera",
+    "total": "7.35",
+    "ship": "1.78",
+    "refunded": 0,
+    "remaining": "7.35",
+    "surinkta": "",
+    "siuntos": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260902001\",\"numeriai\":[\"V07267E1000031\",\"V07267E1000032\"],\"data\":\"2026-09-02 17:49:39\"}}",
+    "perd": [],
+    "vp": "{\"status\":\"sent\",\"pack_numbers\":[\"V07267E1000031\",\"V07267E1000032\"],\"manifest\":\"",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":2}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "833": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 2,
+      "sub": "4.297521",
+      "tot": "4.297521",
+      "tax": "0.9",
+      "taxes": {
+       "total": {
+        "1": "0.902479"
+       },
+       "subtotal": {
+        "1": "0.902479"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "2",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35430": {
+    "st": "cancelled",
+    "paid": false,
+    "pm": "paysera",
+    "total": "4.75",
+    "ship": "1.78",
+    "refunded": 0,
+    "remaining": "4.75",
+    "surinkta": "",
+    "siuntos": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260902001\",\"numeriai\":[\"V07267E1000041\"],\"data\":\"2026-09-02 17:53:27\"}}",
+    "perd": [],
+    "vp": "{\"manifest\":\"07267260902001\",\"pack_numbers\":[\"V07267E1000041\"],\"weight\":0.5,\"pro",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "836": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 1,
+      "sub": "2.14876",
+      "tot": "2.14876",
+      "tax": "0.45",
+      "taxes": {
+       "total": {
+        "1": "0.45124"
+       },
+       "subtotal": {
+        "1": "0.45124"
+       }
+      },
+      "src": "av",
+      "k": "",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35431": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "24.43",
+    "ship": "3.99",
+    "refunded": 0,
+    "remaining": "24.43",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":2,\"vienetai\":2}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "839": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 1,
+      "sub": "2.14876",
+      "tot": "2.14876",
+      "tax": "0.45",
+      "taxes": {
+       "total": {
+        "1": "0.45124"
+       },
+       "subtotal": {
+        "1": "0.45124"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "840": {
+      "n": "QUATTRO 1,5 kg Adult S",
+      "pid": 16727,
+      "q": 1,
+      "sub": "14.049587",
+      "tot": "14.049587",
+      "tax": "2.95",
+      "taxes": {
+       "total": {
+        "1": "2.950413"
+       },
+       "subtotal": {
+        "1": "2.950413"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35432": {
+    "st": "cancelled",
+    "paid": false,
+    "pm": "paysera",
+    "total": "4.75",
+    "ship": "1.78",
+    "refunded": 0,
+    "remaining": "4.75",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "843": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 1,
+      "sub": "2.14876",
+      "tot": "2.14876",
+      "tax": "0.45",
+      "taxes": {
+       "total": {
+        "1": "0.45124"
+       },
+       "subtotal": {
+        "1": "0.45124"
+       }
+      },
+      "src": "av",
+      "k": "",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35433": {
+    "st": "cancelled",
+    "paid": false,
+    "pm": "paysera",
+    "total": "4.75",
+    "ship": "1.78",
+    "refunded": 0,
+    "remaining": "4.75",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "846": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 1,
+      "sub": "2.14876",
+      "tot": "2.14876",
+      "tax": "0.45",
+      "taxes": {
+       "total": {
+        "1": "0.45124"
+       },
+       "subtotal": {
+        "1": "0.45124"
+       }
+      },
+      "src": "av",
+      "k": "",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35434": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "37.03",
+    "ship": "3.99",
+    "refunded": 0,
+    "remaining": "37.03",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "{\"status\":\"\",\"error_message\":\"\",\"pack_numbers\":[]}",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":2,\"vienetai\":2}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "849": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 1,
+      "sub": "2.14876",
+      "tot": "2.14876",
+      "tax": "0.45",
+      "taxes": {
+       "total": {
+        "1": "0.45124"
+       },
+       "subtotal": {
+        "1": "0.45124"
+       }
+      },
+      "src": "av",
+      "k": "",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "850": {
+      "n": "Prins Diet Skin & Inte",
+      "pid": 16889,
+      "q": 1,
+      "sub": "24.46281",
+      "tot": "24.46281",
+      "tax": "5.14",
+      "taxes": {
+       "total": {
+        "1": "5.13719"
+       },
+       "subtotal": {
+        "1": "5.13719"
+       }
+      },
+      "src": "av",
+      "k": "",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": [
+       "11",
+       "gauta"
+      ],
+      "refq": 0
+     }
+    }
+   },
+   "35435": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "6.61",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "6.61",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "{\"status\":\"sent\",\"error_message\":\"\"}",
+    "lp": "",
+    "groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "DS",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "853": {
+      "n": "Exclusion Hypoallergen",
+      "pid": 18593,
+      "q": 1,
+      "sub": "1.975207",
+      "tot": "1.975207",
+      "tax": "0.41",
+      "taxes": {
+       "total": {
+        "1": "0.414793"
+       },
+       "subtotal": {
+        "1": "0.414793"
+       }
+      },
+      "src": "vf",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35436": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "23.61",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "23.61",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"quattro\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "856": {
+      "n": "Exclusion Hypoallergen",
+      "pid": 18593,
+      "q": 1,
+      "sub": "1.975207",
+      "tot": "1.975207",
+      "tax": "0.41",
+      "taxes": {
+       "total": {
+        "1": "0.414793"
+       },
+       "subtotal": {
+        "1": "0.414793"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "857": {
+      "n": "QUATTRO 1,5 kg Adult S",
+      "pid": 16727,
+      "q": 1,
+      "sub": "14.049587",
+      "tot": "14.049587",
+      "tax": "2.95",
+      "taxes": {
+       "total": {
+        "1": "2.950413"
+       },
+       "subtotal": {
+        "1": "2.950413"
+       }
+      },
+      "src": "quattro",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35437": {
+    "st": "completed",
+    "paid": true,
+    "pm": "paysera",
+    "total": "9.42",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "9.42",
+    "surinkta": "",
+    "siuntos": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260903001\",\"numeriai\":[\"V07267E1000048\"],\"data\":\"2026-09-03 11:26:39\"}}",
+    "perd": [],
+    "vp": "{\"manifest\":\"07267260903001\",\"pack_numbers\":[\"V07267E1000048\"],\"weight\":1,\"produ",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":2}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "860": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 2,
+      "sub": "4.297521",
+      "tot": "4.297521",
+      "tax": "0.9",
+      "taxes": {
+       "total": {
+        "1": "0.902479"
+       },
+       "subtotal": {
+        "1": "0.902479"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "2",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35438": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "36.42",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "36.42",
+    "surinkta": "",
+    "siuntos": "{\"prins\":{\"sandelis\":\"prins\",\"kodas\":\"005\",\"manifest\":\"07267260903005\",\"numeriai\":[\"V07267E1000047\"],\"data\":\"2026-09-03 11:23:31\"},\"av\":{\"sandelis\":\"av\",\"kodas\"",
+    "perd": {
+     "prins": "2026-09-03 11:23:34"
+    },
+    "vp": "{\"manifest\":\"07267260903001\",\"pack_numbers\":[\"V07267E1000052\"],\"weight\":2,\"produ",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":2,\"vienetai\":2}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "863": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 1,
+      "sub": "2.14876",
+      "tot": "2.14876",
+      "tax": "0.45",
+      "taxes": {
+       "total": {
+        "1": "0.45124"
+       },
+       "subtotal": {
+        "1": "0.45124"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "2026-09-03 12:34:35|V07267E1000052",
+      "part": null,
+      "refq": 0
+     },
+     "864": {
+      "n": "Prins Diet Skin & Inte",
+      "pid": 16889,
+      "q": 1,
+      "sub": "24.46281",
+      "tot": "24.46281",
+      "tax": "5.14",
+      "taxes": {
+       "total": {
+        "1": "5.13719"
+       },
+       "subtotal": {
+        "1": "5.13719"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35439": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "36.42",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "36.42",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "{\"status\":\"error\",\"error_message\":\"Bad post code\",\"pack_numbers\":[]}",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":2,\"vienetai\":2}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "867": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 1,
+      "sub": "2.14876",
+      "tot": "2.14876",
+      "tax": "0.45",
+      "taxes": {
+       "total": {
+        "1": "0.45124"
+       },
+       "subtotal": {
+        "1": "0.45124"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "868": {
+      "n": "Prins Diet Skin & Inte",
+      "pid": 16889,
+      "q": 1,
+      "sub": "24.46281",
+      "tot": "24.46281",
+      "tax": "5.14",
+      "taxes": {
+       "total": {
+        "1": "5.13719"
+       },
+       "subtotal": {
+        "1": "5.13719"
+       }
+      },
+      "src": "av",
+      "k": "i_av",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": [
+       "13",
+       "gauta"
+      ],
+      "refq": 0
+     }
+    }
+   },
+   "35440": {
+    "st": "completed",
+    "paid": true,
+    "pm": "paysera",
+    "total": "12.02",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "12.02",
+    "surinkta": "2026-09-04 12:27:16|testas",
+    "siuntos": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"TEST-e8\",\"numeriai\":[\"V07267E1000099\"],\"data\":\"2026-09-04 12:27:16\"}}",
+    "perd": [],
+    "vp": "{\"manifest\":\"07267260903001\",\"pack_numbers\":[\"V07267E1000049\",\"V07267E1000050\",\"",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":3}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "871": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 3,
+      "sub": "6.446281",
+      "tot": "6.446281",
+      "tax": "1.35",
+      "taxes": {
+       "total": {
+        "1": "1.353719"
+       },
+       "subtotal": {
+        "1": "1.353719"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "3",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35441": {
+    "st": "processing",
+    "paid": true,
+    "pm": "bacs",
+    "total": "28.98",
+    "ship": "3.3",
+    "refunded": 0,
+    "remaining": "28.98",
+    "surinkta": "",
+    "siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260903002\",\"numeriai\":[\"V07267E1000057\"],\"data\":\"2026-09-03 16:28:58\"}}",
+    "perd": [],
+    "vp": "{\"manifest\":\"07267260903002\",\"pack_numbers\":[\"V07267E1000057\"],\"weight\":0.1,\"pro",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "874": {
+      "n": "Happet uždaras tualeta",
+      "pid": 26166,
+      "q": 1,
+      "sub": "20.652893",
+      "tot": "20.652893",
+      "tax": "4.34",
+      "taxes": {
+       "total": {
+        "1": "4.337107"
+       },
+       "subtotal": {
+        "1": "4.337107"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35442": {
+    "st": "processing",
+    "paid": true,
+    "pm": "bacs",
+    "total": "30.73",
+    "ship": "0",
+    "refunded": 0,
+    "remaining": "30.73",
+    "surinkta": "",
+    "siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260903002\",\"numeriai\":[\"V07267E1000056\"],\"data\":\"2026-09-03 16:28:58\"}}",
+    "perd": [],
+    "vp": "{\"manifest\":\"07267260903002\",\"pack_numbers\":[\"V07267E1000056\"],\"weight\":4.5,\"pro",
+    "lp": "",
+    "groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"av\":{\"carrier\":\"any\",\"eilutes\":3,\"vienetai\":5}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "877": {
+      "n": "Exclusion Mediterraneo",
+      "pid": 18536,
+      "q": 1,
+      "sub": "14.371901",
+      "tot": "14.371901",
+      "tax": "3.02",
+      "taxes": {
+       "total": {
+        "1": "3.018099"
+       },
+       "subtotal": {
+        "1": "3.018099"
+       }
+      },
+      "src": "vf",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "878": {
+      "n": "Animonda GranCarno Adu",
+      "pid": 19590,
+      "q": 1,
+      "sub": "2.768595",
+      "tot": "2.768595",
+      "tax": "0.58",
+      "taxes": {
+       "total": {
+        "1": "0.581405"
+       },
+       "subtotal": {
+        "1": "0.581405"
+       }
+      },
+      "src": "av",
+      "k": "",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "879": {
+      "n": "Animonda GranCarno Adu",
+      "pid": 19574,
+      "q": 3,
+      "sub": "5.454545",
+      "tot": "5.454545",
+      "tax": "1.15",
+      "taxes": {
+       "total": {
+        "1": "1.145455"
+       },
+       "subtotal": {
+        "1": "1.145455"
+       }
+      },
+      "src": "av",
+      "k": "",
+      "rq": "3",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "880": {
+      "n": "Animonda GranCarno Adu",
+      "pid": 19570,
+      "q": 1,
+      "sub": "2.801653",
+      "tot": "2.801653",
+      "tax": "0.59",
+      "taxes": {
+       "total": {
+        "1": "0.588347"
+       },
+       "subtotal": {
+        "1": "0.588347"
+       }
+      },
+      "src": "av",
+      "k": "",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35443": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "36.50",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "36.50",
+    "surinkta": "",
+    "siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260903002\",\"numeriai\":[\"V07267E1000055\"],\"data\":\"2026-09-03 16:28:58\"}}",
+    "perd": [],
+    "vp": "{\"manifest\":\"07267260903002\",\"pack_numbers\":[\"V07267E1000055\"],\"weight\":0.435000",
+    "lp": "",
+    "groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"zb\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "883": {
+      "n": "Churu Popn Serve skanė",
+      "pid": 34828,
+      "q": 1,
+      "sub": "2.140496",
+      "tot": "2.140496",
+      "tax": "0.45",
+      "taxes": {
+       "total": {
+        "1": "0.449504"
+       },
+       "subtotal": {
+        "1": "0.449504"
+       }
+      },
+      "src": "vf",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "884": {
+      "n": "Trixie Stovas su duben",
+      "pid": 33904,
+      "q": 1,
+      "sub": "24.53719",
+      "tot": "24.53719",
+      "tax": "5.15",
+      "taxes": {
+       "total": {
+        "1": "5.15281"
+       },
+       "subtotal": {
+        "1": "5.15281"
+       }
+      },
+      "src": "zb",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35444": {
+    "st": "processing",
+    "paid": true,
+    "pm": "paysera",
+    "total": "23.82",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "23.82",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"quattro\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "887": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 1,
+      "sub": "2.14876",
+      "tot": "2.14876",
+      "tax": "0.45",
+      "taxes": {
+       "total": {
+        "1": "0.45124"
+       },
+       "subtotal": {
+        "1": "0.45124"
+       }
+      },
+      "src": "av",
+      "k": "",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "888": {
+      "n": "QUATTRO 1,5 kg Adult S",
+      "pid": 16727,
+      "q": 1,
+      "sub": "14.049587",
+      "tot": "14.049587",
+      "tax": "2.95",
+      "taxes": {
+       "total": {
+        "1": "2.950413"
+       },
+       "subtotal": {
+        "1": "2.950413"
+       }
+      },
+      "src": "quattro",
+      "k": "",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35450": {
+    "st": "processing",
+    "paid": true,
+    "pm": "bacs",
+    "total": "41.60",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "41.60",
+    "surinkta": "2026-09-03 18:55:27 | Testuotojas",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":3,\"vienetai\":3}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "891": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 1,
+      "sub": "2.14876",
+      "tot": "2.14876",
+      "tax": "0.45",
+      "taxes": {
+       "total": {
+        "1": "0.45124"
+       },
+       "subtotal": {
+        "1": "0.45124"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "892": {
+      "n": "Trixie Stovas su duben",
+      "pid": 33902,
+      "q": 1,
+      "sub": "19.578512",
+      "tot": "19.578512",
+      "tax": "4.11",
+      "taxes": {
+       "total": {
+        "1": "4.111488"
+       },
+       "subtotal": {
+        "1": "4.111488"
+       }
+      },
+      "src": "av",
+      "k": "i_av",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": [
+       "15",
+       "gauta"
+      ],
+      "refq": 0
+     },
+     "893": {
+      "n": "HAP žaislas šunims, pl",
+      "pid": 35357,
+      "q": 1,
+      "sub": "9.165289",
+      "tot": "9.165289",
+      "tax": "1.92",
+      "taxes": {
+       "total": {
+        "1": "1.924711"
+       },
+       "subtotal": {
+        "1": "1.924711"
+       }
+      },
+      "src": "av",
+      "k": "i_av",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": [
+       "14",
+       "gauta"
+      ],
+      "refq": 0
+     }
+    }
+   },
+   "35771": {
+    "st": "cancelled",
+    "paid": false,
+    "pm": "bacs",
+    "total": "6.61",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "6.61",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "1536": {
+      "n": "Exclusion Hypoallergen",
+      "pid": 18593,
+      "q": 1,
+      "sub": "1.975207",
+      "tot": "1.975207",
+      "tax": "0.41",
+      "taxes": {
+       "total": {
+        "1": "0.414793"
+       },
+       "subtotal": {
+        "1": "0.414793"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35772": {
+    "st": "cancelled",
+    "paid": false,
+    "pm": "bacs",
+    "total": "6.61",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "6.61",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "1539": {
+      "n": "Exclusion Hypoallergen",
+      "pid": 18593,
+      "q": 1,
+      "sub": "1.975207",
+      "tot": "1.975207",
+      "tax": "0.41",
+      "taxes": {
+       "total": {
+        "1": "0.414793"
+       },
+       "subtotal": {
+        "1": "0.414793"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35774": {
+    "st": "completed",
+    "paid": true,
+    "pm": "bacs",
+    "total": "44.91",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "44.91",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": {
+     "vf": "2026-09-03 21:34:04",
+     "prins": "2026-09-03 21:34:05"
+    },
+    "vp": "",
+    "lp": "",
+    "groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"prins\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "1544": {
+      "n": "HAP žaislas šunims, pl",
+      "pid": 35357,
+      "q": 1,
+      "sub": "9.165289",
+      "tot": "9.165289",
+      "tax": "1.92",
+      "taxes": {
+       "total": {
+        "1": "1.924711"
+       },
+       "subtotal": {
+        "1": "1.924711"
+       }
+      },
+      "src": "vf",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "1545": {
+      "n": "Prins Diet Skin & Inte",
+      "pid": 16889,
+      "q": 1,
+      "sub": "24.46281",
+      "tot": "24.46281",
+      "tax": "5.14",
+      "taxes": {
+       "total": {
+        "1": "5.13719"
+       },
+       "subtotal": {
+        "1": "5.13719"
+       }
+      },
+      "src": "prins",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35775": {
+    "st": "completed",
+    "paid": true,
+    "pm": "bacs",
+    "total": "44.91",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "44.91",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": {
+     "vf": "2026-09-03 21:48:23",
+     "prins": "2026-09-03 21:48:25"
+    },
+    "vp": "",
+    "lp": "",
+    "groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"prins\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "1548": {
+      "n": "HAP žaislas šunims, pl",
+      "pid": 35357,
+      "q": 1,
+      "sub": "9.165289",
+      "tot": "9.165289",
+      "tax": "1.92",
+      "taxes": {
+       "total": {
+        "1": "1.924711"
+       },
+       "subtotal": {
+        "1": "1.924711"
+       }
+      },
+      "src": "vf",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "1549": {
+      "n": "Prins Diet Skin & Inte",
+      "pid": 16889,
+      "q": 1,
+      "sub": "24.46281",
+      "tot": "24.46281",
+      "tax": "5.14",
+      "taxes": {
+       "total": {
+        "1": "5.13719"
+       },
+       "subtotal": {
+        "1": "5.13719"
+       }
+      },
+      "src": "prins",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35776": {
+    "st": "completed",
+    "paid": true,
+    "pm": "bacs",
+    "total": "44.91",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "44.91",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": {
+     "vf": "2026-09-03 23:08:21",
+     "prins": "2026-09-03 23:08:22"
+    },
+    "vp": "",
+    "lp": "",
+    "groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"prins\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "1552": {
+      "n": "HAP žaislas šunims, pl",
+      "pid": 35357,
+      "q": 1,
+      "sub": "9.165289",
+      "tot": "9.165289",
+      "tax": "1.92",
+      "taxes": {
+       "total": {
+        "1": "1.924711"
+       },
+       "subtotal": {
+        "1": "1.924711"
+       }
+      },
+      "src": "vf",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "1553": {
+      "n": "Prins Diet Skin & Inte",
+      "pid": 16889,
+      "q": 1,
+      "sub": "24.46281",
+      "tot": "24.46281",
+      "tax": "5.14",
+      "taxes": {
+       "total": {
+        "1": "5.13719"
+       },
+       "subtotal": {
+        "1": "5.13719"
+       }
+      },
+      "src": "prins",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35777": {
+    "st": "completed",
+    "paid": true,
+    "pm": "bacs",
+    "total": "44.91",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "44.91",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": {
+     "vf": "2026-09-03 23:08:23",
+     "prins": "2026-09-03 23:08:24"
+    },
+    "vp": "",
+    "lp": "",
+    "groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"prins\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "1556": {
+      "n": "HAP žaislas šunims, pl",
+      "pid": 35357,
+      "q": 1,
+      "sub": "9.165289",
+      "tot": "9.165289",
+      "tax": "1.92",
+      "taxes": {
+       "total": {
+        "1": "1.924711"
+       },
+       "subtotal": {
+        "1": "1.924711"
+       }
+      },
+      "src": "vf",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "1557": {
+      "n": "Prins Diet Skin & Inte",
+      "pid": 16889,
+      "q": 1,
+      "sub": "24.46281",
+      "tot": "24.46281",
+      "tax": "5.14",
+      "taxes": {
+       "total": {
+        "1": "5.13719"
+       },
+       "subtotal": {
+        "1": "5.13719"
+       }
+      },
+      "src": "prins",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "1",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35778": {
+    "st": "cancelled",
+    "paid": false,
+    "pm": "bacs",
+    "total": "44.91",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "44.91",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"prins\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "1560": {
+      "n": "HAP žaislas šunims, pl",
+      "pid": 35357,
+      "q": 1,
+      "sub": "9.165289",
+      "tot": "9.165289",
+      "tax": "1.92",
+      "taxes": {
+       "total": {
+        "1": "1.924711"
+       },
+       "subtotal": {
+        "1": "1.924711"
+       }
+      },
+      "src": "vf",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "1561": {
+      "n": "Prins Diet Skin & Inte",
+      "pid": 16889,
+      "q": 1,
+      "sub": "24.46281",
+      "tot": "24.46281",
+      "tax": "5.14",
+      "taxes": {
+       "total": {
+        "1": "5.13719"
+       },
+       "subtotal": {
+        "1": "5.13719"
+       }
+      },
+      "src": "prins",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35779": {
+    "st": "cancelled",
+    "paid": false,
+    "pm": "bacs",
+    "total": "9.21",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "9.21",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": [],
+    "vp": "",
+    "lp": "",
+    "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":2,\"vienetai\":2}}",
+    "type": "MAIN",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "1564": {
+      "n": "Exclusion Hypoallergen",
+      "pid": 18593,
+      "q": 1,
+      "sub": "1.975207",
+      "tot": "1.975207",
+      "tax": "0.41",
+      "taxes": {
+       "total": {
+        "1": "0.414793"
+       },
+       "subtotal": {
+        "1": "0.414793"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "1565": {
+      "n": "Animonda Carny Adult B",
+      "pid": 19708,
+      "q": 1,
+      "sub": "2.14876",
+      "tot": "2.14876",
+      "tax": "0.45",
+      "taxes": {
+       "total": {
+        "1": "0.45124"
+       },
+       "subtotal": {
+        "1": "0.45124"
+       }
+      },
+      "src": "av",
+      "k": "av",
+      "rq": "1",
+      "wcred": "0",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   },
+   "35780": {
+    "st": "cancelled",
+    "paid": false,
+    "pm": "bacs",
+    "total": "44.91",
+    "ship": "3.49",
+    "refunded": 0,
+    "remaining": "44.91",
+    "surinkta": "",
+    "siuntos": "",
+    "perd": {
+     "vf": "2026-09-04 10:20:27"
+    },
+    "vp": "",
+    "lp": "",
+    "groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"prins\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "type": "MIXED",
+    "graz": "",
+    "tax_rates": [
+     1
+    ],
+    "eil": {
+     "1568": {
+      "n": "HAP žaislas šunims, pl",
+      "pid": 35357,
+      "q": 1,
+      "sub": "9.165289",
+      "tot": "9.165289",
+      "tax": "1.92",
+      "taxes": {
+       "total": {
+        "1": "1.924711"
+       },
+       "subtotal": {
+        "1": "1.924711"
+       }
+      },
+      "src": "vf",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     },
+     "1569": {
+      "n": "Prins Diet Skin & Inte",
+      "pid": 16889,
+      "q": 1,
+      "sub": "24.46281",
+      "tot": "24.46281",
+      "tax": "5.14",
+      "taxes": {
+       "total": {
+        "1": "5.13719"
+       },
+       "subtotal": {
+        "1": "5.13719"
+       }
+      },
+      "src": "prins",
+      "k": "tiesiai",
+      "rq": "",
+      "wcred": "",
+      "ats": "",
+      "iss": "",
+      "part": null,
+      "refq": 0
+     }
+    }
+   }
+  },
+  "likuciai": {
+   "19708_stock": "18",
+   "19708_own": "",
+   "16889_own": "1",
+   "16889_stock": "12"
+  },
+  "dev_pastas": 5,
+  "dl_md5": "43fe4d99b1f093816f39413ad033626c",
+  "dl_size": 277163
+ }
+}
