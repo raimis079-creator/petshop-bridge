@@ -1,0 +1,66 @@
+{
+ "v": "dep-222720",
+ "kurimas": 200,
+ "sid": 4801,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "W1": {
+  "v": "S1617 e3d",
+  "f": "W1",
+  "temp_istrinta": 1,
+  "versija": "3.23",
+  "md5": "41cf2b8f61b16a33fff61b2938ee87d4",
+  "is_naujo_url": "yra",
+  "is_naujo": {
+   "code": 302,
+   "pd_ok": "dl_dalis",
+   "pd_nr": "35436|siunta V07267E1000780 grįžo — AV dalis: Surinkti AV → naujas lipdukas"
+  },
+  "istorija": "[{\"id\":35792,\"b\":\"apmoketa\",\"suma\":\"8,21\",\"laikas\":\"2026-09-05 01:00:24\"},{\"id\":35793,\"b\":\"apmoketa\",\"suma\":\"8,21\",\"laikas\":\"2026-09-05 01:29:02\"}]",
+  "forma": {
+   "suma": "8.21",
+   "mygt": [
+    "Sukurti ir siųsti nuorodą",
+    "Be mokesčio"
+   ]
+  },
+  "post_sukurti": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd_nr": "35436|pakartotinis užsakymas #35794 (8,21 €) sukurtas — apmokėjimo nuoroda klientui išsiųsta (terra@petshop.lt)",
+   "body": ""
+  },
+  "n4": 0,
+  "pastas": {
+   "n": 13,
+   "pask": [
+    [
+     "2026-09-05 00:52:56",
+     "terra@petshop.lt",
+     "Jūsų užsakymas Nr. 35792 — apmokėjimas gautas",
+     0
+    ],
+    [
+     "2026-09-05 01:03:01",
+     "terra@petshop.lt",
+     "Jūsų užsakymo Nr. 35436 siunta grįžo — pakartotinis siuntimas 8,21 €",
+     1
+    ],
+    [
+     "2026-09-05 01:05:10",
+     "terra@petshop.lt",
+     "Apmokėjimas gautas — užsakymo Nr. 35436 siuntą išsiųsime iš naujo",
+     1
+    ],
+    [
+     "2026-09-05 01:29:05",
+     "terra@petshop.lt",
+     "Jūsų užsakymo Nr. 35436 siunta grįžo — pakartotinis siuntimas 8,21 €",
+     1
+    ]
+   ]
+  }
+ }
+}
