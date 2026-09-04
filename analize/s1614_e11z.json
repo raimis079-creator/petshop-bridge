@@ -1,0 +1,125 @@
+{
+ "v": "dep-171833",
+ "kurimas": 200,
+ "sid": 4759,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Z": {
+  "v": "S1614 e11d",
+  "f": "Z",
+  "temp_istrinta": 1,
+  "versija": "3.18",
+  "ks_versija": "1.2",
+  "md5": "348901306c34d5fbc5c3702bb35a791f",
+  "meta": {
+   "st": "processing",
+   "eil": {
+    "863": {
+     "k": "av",
+     "src": "av",
+     "rq": "1",
+     "iss": "2026-09-03 12:34:35|V07267E1000052",
+     "ats": ""
+    },
+    "864": {
+     "k": "av",
+     "src": "av",
+     "rq": "1",
+     "iss": "",
+     "ats": ""
+    }
+   },
+   "baigtos": "{\"av\":[{\"nr\":[\"V07267E1000052\"],\"laikas\":\"2026-09-03 12:34:35\",\"prekes\":[[1,\"Animonda Carny Adult Beef + Chicken + Duck Heart \\u2013 konservai kat\\u0117ms su \\u0161vie\\u017eia jautiena, vi\\u0161tiena ir an\\u010di\\u0173 \\u0161irdel\\u0117mis, 400 g\"]]}]}",
+   "iss": "[]",
+   "senos": "[\"V07267E1000047\",\"V07267E1000052\"]",
+   "grizta": "",
+   "is_naujo": "",
+   "ats": "",
+   "type": "MAIN",
+   "ship": "1"
+  },
+  "pastabos": [
+   "Darbalaukis: siunta V07267E1000047 grįžo — SIUNČIAMA IŠ NAUJO iš AV (Testuotojas). AV siunta V07267E1000052 jau išsiųsta — lieka klientui kaip išsiųsta; jos prekės pažymėtos „IŠSIŲSTA — NEPAKUOK“; Prins dalis → AV: Surinkti AV → naujas lipdukas. Į AV perkelta: Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg. Likutis: Prins Diet Skin & Intestinal Hypoallergi: AV +1 −1 → 1. ⚠ SURINKIMO LAPE BUS I",
+   "Dropship sargas: tiekėjui perduota 2026-09-03 11:23:34 (daugiau nei 24 val.), užsakymas vis dar vykdomas. Įkelta į „Klausimus\" — patikrink pas tiekėją."
+  ],
+  "ivykis": {
+   "veiksmas": "grizta_is_naujo",
+   "rezultatas": "ok",
+   "kanalas": "web",
+   "kas_vardas": "Testuotojas",
+   "laikas": "2026-09-04 17:15:31",
+   "pastaba": "siunta grįžo → iš naujo iš AV",
+   "po": "{\"status\":\"processing\",\"kaip\":[\"AV siunta V07267E1000052 jau išsiųsta — lieka klientui kaip išsiųsta; jos prekės pažymėtos „IŠSIŲSTA — NEPAKUOK“\",\"Prins dalis → AV: Surinkti AV → naujas lipdukas\"],\"perkelta\":[\"Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg\"],\"senos\":[\"V07267E1000047\",\"V07267E1000052\"],\"nepakuok\":[\"1× Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g\"],\"zinute\":\"Prins Diet Skin & Intestinal Hypoallergi: AV +1 −1 → 1\"}"
+  },
+  "ks": [
+   [
+    "av",
+    "issiusta",
+    "1/2",
+    "V07267E1000052",
+    [
+     "1× Animonda Carny Adult"
+    ]
+   ],
+   [
+    "av",
+    "ruosiama",
+    "2/2",
+    "",
+    [
+     "1× Prins Diet Skin & In"
+    ]
+   ]
+  ],
+  "ks_html_busenos": [
+   [
+    "Siunta 1 iš 2",
+    "Išsiųsta"
+   ],
+   [
+    "Siunta 2 iš 2",
+    "Ruošiama"
+   ]
+  ],
+  "stock": {
+   "19708": "18",
+   "16889_own": "1"
+  },
+  "sk_po": {
+   "code": 200,
+   "kl": "",
+   "kur": "Surinkti AV · toliau: Surinkti",
+   "btn": "Surinkti",
+   "pastaba": "Surūšiuota. Kelią dar gali keisti, kol prekei nepadarytas pirmas žingsnis. ⚠ SURINKIMO LAPE BUS IR JAU IŠSIŲSTOS PREKĖS — NEPAKUOK: 1× Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g.",
+   "nr_siuntos": [
+    "AV (ankstesnė siunta): V07267E1000052 — Venipak: pas siuntėją, 09-03 12:34 — išsiųsta 09-03 12:34"
+   ],
+   "red": [
+    "u",
+    "n",
+    "g",
+    "tipas",
+    "laukai",
+    "vieta"
+   ],
+   "eil": [
+    {
+     "n": "Animonda Carny Adult B",
+     "k": "av",
+     "lock": "IŠSIŲSTA 09-03 (siunta V07267E1000052) — NEPAKUOK",
+     "zing": 0
+    },
+    {
+     "n": "Prins Diet Skin & Inte",
+     "k": "av",
+     "lock": "",
+     "zing": 3
+    }
+   ]
+  },
+  "dev_zurnalas": 5,
+  "laiskai_sis_procesas": []
+ }
+}
