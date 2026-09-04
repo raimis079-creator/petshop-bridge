@@ -1,7 +1,7 @@
 {
- "v": "dep-223756",
+ "v": "dep-223959",
  "kurimas": 200,
- "sid": 4806,
+ "sid": 4807,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
@@ -10,21 +10,22 @@
   "v": "S1617 e4d",
   "f": "W3",
   "temp_istrinta": 1,
+  "url_yra": 1,
   "pastas_pries": 13,
   "apmoketa": {
-   "code": 403,
-   "pd_ok": null,
-   "pd_nr": null
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd_nr": "35436|pakartotinis užsakymas #35794 (8,21 €) pažymėtas apmokėtu pavedimu, PVM sąskaita AVPN000326 — dabar „Siųsti iš naujo“"
   },
   "N4": {
-   "st": "on-hold",
+   "st": "completed",
    "cid": 0,
    "email": "terra@petshop.lt",
    "via": "darbalaukis",
    "total": "8.21",
    "tax": "1.42",
-   "paid": false,
-   "date_paid": null,
+   "paid": true,
+   "date_paid": "2026-09-05 01:41:40",
    "pm": "bacs",
    "ship": "0",
    "it": {
@@ -39,19 +40,30 @@
     }
    },
    "meta": {
+    "_petshop_avpn_number": "AVPN000326",
+    "_petshop_completed_pdf": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita",
     "_petshop_dl_purchase_sent": "yes",
-    "_petshop_invoice_document_type": "proforma",
+    "_petshop_invoice_document_type": "invoice",
+    "_ps_completed_at": "2026-09-04 22:41:40",
     "_ps_decided_at": "2026-09-05 01:31:25",
+    "_ps_faktas_irasytas": "2026-09-04 22:41:40",
     "_ps_ga4_mp_kodas": "dev-nesiusta",
     "_ps_groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
     "_ps_order_type": "MAIN",
     "_ps_pakart_ikainis": "4.22",
+    "_ps_pakart_ivykdyta": "2026-09-05 01:41:40",
     "_ps_pakart_nuoroda": "2026-09-05 01:29:05",
     "_ps_pakartotinis": "35436",
+    "_ps_partijos_nurasyta": "2026-09-05 01:41:40",
     "_ps_shipments": "1",
     "_ps_uzbaigti_be_siuntu": "1"
    },
    "notes": [
+    "Darbalaukis: pavedimas gautas (Testuotojas). Užsakymo statusas pakeistas iš Sustabdytas į Vykdomas.",
+    "Darbalaukis: laiškas klientui „apmokėjimas gautas“ išsiųstas su PVM sąskaita AVPN000326.",
+    "Darbalaukis: pakartotinis siuntimas apmokėtas — užsakymas įvykdytas automatiškai (tik pinigams; į Surinkti / lapus / Venipak neina). WC laiškas klientui: NESIŲSTAS — darb",
+    "Faktai irasyti: 1 eilutes · pajamos 6,79 EUR (be PVM, po nuolaidu) · PVM 1,42 EUR · marza 6,79 EUR · kontribucija (be pristatymo) 6,39 EUR · TESTINIS",
+    "Darbalaukis: pavedimas gautas — patvirtino Testuotojas („Apmokėta pavedimu“).",
     "TEST S1617 (WC bacs sim): Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
     "Vykdymas: MAIN — AV 1 vnt (1 siunta(-os))",
     "Darbalaukis: pakartotinis siuntimas už užsakymą #35436 — 8,21 € (Testuotojas). Apmokėjimo nuoroda klientui (terra@petshop.lt) išsiųsta. Apmokėjus — įvykdomas pats (į Suri"
@@ -59,11 +71,19 @@
    "pay_url": "https://dev.avesa.lt/kasa/order-pay/35794/?pay_for_order=true&key=wc_order_mcpNG7mKjtYGp"
   },
   "pdf": {
-   "kelias": "",
-   "yra": false,
-   "dydis": 0
+   "kelias": "PVM-saskaita-AVPN000326.pdf",
+   "yra": true,
+   "dydis": 33638
   },
-  "faktas": null,
+  "faktas": {
+   "uzsakymas_id": "35794",
+   "testinis": "1",
+   "statusas_galutinis": "processing",
+   "viso_ct": "821",
+   "prekiu_suma_ct": "679",
+   "mokejimo_budas": "bacs",
+   "sandeliai": "legacy"
+  },
   "faktas_35793": {
    "uzsakymas_id": "35793",
    "testinis": "1",
@@ -103,64 +123,63 @@
   "pastas_delta": 0,
   "email_sent_notes": 0,
   "bukle": {
-   "b": "laukia",
+   "b": "apmoketa",
    "id": 35794,
    "nr": "35794",
    "suma": "8,21",
-   "laikas": "2026-09-05 01:29:05",
-   "bacs": true,
-   "t": "Pakartotinis užsakymas #35794 (8,21 €): laukia kliento apmokėjimo — nuoroda išsiųsta 09-05 01:29. Klientas pasirinko pavedimą — kai pinigai banke, spausk „Apmokėta pavedimu“."
+   "laikas": "09-05 01:41",
+   "t": "Pakartotinis užsakymas #35794 (8,21 €) apmokėtas 09-05 01:41 — galima „Siųsti iš naujo“."
   },
   "orig_notes": [
-   "Darbalaukis: sukurtas pakartotinis užsakymas #35794 — 8,21 € (Testuotojas). Klientui apmokėjimo nuoroda išsiųsta. „Siųsti iš naujo“ — tik apmokėjus.",
-   "Darbalaukis: siunta V07267E1000780 grįžo — SIUNČIAMA IŠ NAUJO iš AV (Testuotojas). AV dalis: Surinkti AV → naujas lipdukas. Seni numeriai nebeskaitomi: ."
+   "Pakartotinis užsakymas #35794 apmokėtas pavedimu (8,21 €, AVPN000326) — galima „Siųsti iš naujo“.",
+   "Darbalaukis: sukurtas pakartotinis užsakymas #35794 — 8,21 € (Testuotojas). Klientui apmokėjimo nuoroda išsiųsta. „Siųsti iš naujo“ — tik apmokėjus."
   ],
   "ivykiai": [
+   {
+    "veiksmas": "pakart_pavedimas",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "pastaba": "pavedimas už pakartotinį užsakymą #35794"
+   },
+   {
+    "veiksmas": "pakart_apmoketa",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "pastaba": "pakartotinis užsakymas #35794 apmokėtas"
+   },
    {
     "veiksmas": "pakartotinis",
     "rezultatas": "ok",
     "kanalas": "web",
     "pastaba": "pakartotinis užsakymas #35794 8,21 €"
-   },
-   {
-    "veiksmas": "grizta_is_naujo",
-    "rezultatas": "ok",
-    "kanalas": "web",
-    "pastaba": "siunta grįžo → iš naujo iš AV"
-   },
-   {
-    "veiksmas": "pakart_apmoketa",
-    "rezultatas": "ok",
-    "kanalas": "paysera",
-    "pastaba": "pakartotinis užsakymas #35793 apmokėtas"
    }
   ],
   "kortele_po": {
    "mygtukai": [
-    "Apmokėta pavedimu",
+    "Siųsti iš naujo",
     "Atšaukti — prekės grįžo į AV",
     "Atidaryti",
     "Parašyti klientui"
    ],
    "sumos": [
     "Klientui grąžink: 23,61 − 3,99 = 19,62 € (visa siunta grįžta — sumokėta su pristatymu)Pakartotinis užsakymas: 4,22 + 3,99 = 8,21 € (kaip sumokėta užsakyme; siunčiama tik apmokėjus)",
-    "Pakartotinis užsakymas #35794 (8,21 €): laukia kliento apmokėjimo — nuoroda išsiųsta 09-05 01:29. Klientas pasirinko pavedimą — kai pinigai banke, spausk „Apmokėta pavedimu“. siųsti nuorodą dar kartą"
+    "Pakartotinis užsakymas #35794 (8,21 €) apmokėtas 09-05 01:41 — galima „Siųsti iš naujo“."
    ],
-   "is_naujo": "nėra"
+   "is_naujo": "yra"
   },
   "temp_liko": 1,
   "cookies": [
    {
     "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
-    "value": "testuotojas|1788563370|Pai28iK4EFbyb7vnz7VYp87IOOdueXN1kLcRielvez0|56053deb35a5cdbaa1e16360b74ae306ae6cd818ad570973a609f64e50c77694"
+    "value": "testuotojas|1788563503|X5TaQOtn32HShmO7o8hYQwbCfhjxEWcL3U8d7Umsmje|dfcbca5c30e656f523b931b9df9a5b815e5dcb66f1d5f3f32c1a29abfc8c6b62"
    },
    {
     "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
-    "value": "testuotojas|1788563370|Pai28iK4EFbyb7vnz7VYp87IOOdueXN1kLcRielvez0|47a0303a286ec36f06573052fed84fdde06097ba6bd1e83448e6c090e5df984f"
+    "value": "testuotojas|1788563503|X5TaQOtn32HShmO7o8hYQwbCfhjxEWcL3U8d7Umsmje|f93674876d4126c01d705e1b0889a359288373833ab74f1aae726c58c459c6c1"
    },
    {
     "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
-    "value": "testuotojas|1788563370|Pai28iK4EFbyb7vnz7VYp87IOOdueXN1kLcRielvez0|5edd0f46f121ecc959baf3c5d0515a11153a0635a017bfad524fe2b4c7cd034d"
+    "value": "testuotojas|1788563503|X5TaQOtn32HShmO7o8hYQwbCfhjxEWcL3U8d7Umsmje|1bd3134726b4a7c3d5ac2e45a97f5d16044c0bd89b965c15ec5ce8bce1f4b97f"
    }
   ],
   "shots": [
@@ -174,17 +193,17 @@
  },
  "shots": {
   "s1617_e4_klausimai_apmoketa": {
-   "status": 201,
+   "status": 200,
    "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
    "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
    "errors": [],
    "eval": {
     "k": [
      "Klientui grąžink: 23,61 − 3,99 = 19,62 € (visa siunta grįžta — sumokėta su pristatymu) Pakartotinis užsakymas: 4,22 + 3,99 = 8,21 € (kaip sumokėta užsakyme; siunčiama tik apmokėjus)",
-     "Pakartotinis užsakymas #35794 (8,21 €): laukia kliento apmokėjimo — nuoroda išsiųsta 09-05 01:29. Klientas pasirinko pavedimą — kai pinigai banke, spausk „Apmokėta pavedimu“. siųsti nuorodą dar kartą"
+     "Pakartotinis užsakymas #35794 (8,21 €) apmokėtas 09-05 01:41 — galima „Siųsti iš naujo“."
     ],
     "m": [
-     "Apmokėta pavedimu",
+     "Siųsti iš naujo",
      "Atšaukti — prekės grįžo į AV",
      "Atidaryti",
      "Parašyti klientui"
