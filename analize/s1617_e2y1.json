@@ -1,0 +1,122 @@
+{
+ "v": "dep-220125",
+ "kurimas": 200,
+ "sid": 4795,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Y1": {
+  "v": "S1617 e2d",
+  "f": "Y1",
+  "temp_istrinta": 1,
+  "versija": "3.22",
+  "md5": "99533f9116ad805ee39aa9c1b5240cc3",
+  "filtras": 20,
+  "forma": {
+   "suma": "8.21",
+   "mygt": [
+    "Sukurti ir siųsti nuorodą",
+    "Be mokesčio"
+   ]
+  },
+  "post_sukurti": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd_nr": "35436|pakartotinis užsakymas #35793 (8,21 €) sukurtas — apmokėjimo nuoroda klientui išsiųsta (terra@petshop.lt)",
+   "body": ""
+  },
+  "n3": 35793,
+  "N3": {
+   "st": "pending",
+   "cid": 0,
+   "email": "terra@petshop.lt",
+   "via": "darbalaukis",
+   "total": "8.21",
+   "tax": "1.42",
+   "paid": false,
+   "date_paid": null,
+   "pm": "",
+   "ship": "0",
+   "it": {
+    "1580": {
+     "n": "Pakartotinis siuntimas už užsakymą #35436",
+     "q": 1,
+     "sub": "6.785124",
+     "tot": "6.785124",
+     "tax": "1.42",
+     "pid": 35790,
+     "src": ""
+    }
+   },
+   "meta": {
+    "_ps_pakart_ikainis": "4.22",
+    "_ps_pakart_nuoroda": "2026-09-05 01:03:01",
+    "_ps_pakartotinis": "35436",
+    "_ps_uzbaigti_be_siuntu": "1"
+   },
+   "notes": [
+    "Darbalaukis: pakartotinis siuntimas už užsakymą #35436 — 8,21 € (Testuotojas). Apmokėjimo nuoroda klientui (terra@petshop.lt) išsiųsta. Apmokėjus — įvykdomas pats (į Suri"
+   ],
+   "pay_url": "https://dev.avesa.lt/kasa/order-pay/35793/?pay_for_order=true&key=wc_order_PnVuf3IMgUYKD"
+  },
+  "pastas": {
+   "n": 11,
+   "pask": [
+    [
+     "2026-09-05 00:52:56",
+     "terra@petshop.lt",
+     "Apmokėjimas gautas — užsakymo Nr. 35436 siuntą išsiųsime iš naujo",
+     1
+    ],
+    [
+     "2026-09-05 00:52:56",
+     "uzsakymai@petshop.lt",
+     "Naujas užsakymas Nr. 35792 — 2026-09-05",
+     0
+    ],
+    [
+     "2026-09-05 00:52:56",
+     "terra@petshop.lt",
+     "Jūsų užsakymas Nr. 35792 — apmokėjimas gautas",
+     0
+    ],
+    [
+     "2026-09-05 01:03:01",
+     "terra@petshop.lt",
+     "Jūsų užsakymo Nr. 35436 siunta grįžo — pakartotinis siuntimas 8,21 €",
+     1
+    ]
+   ]
+  },
+  "shots": [
+   {
+    "n": "s1617_e2_apmokejimas_svecias",
+    "u": "https://dev.avesa.lt/kasa/order-pay/35793/?pay_for_order=true&key=wc_order_PnVuf3IMgUYKD",
+    "w": 1200,
+    "full": true,
+    "eval": "({gw:[...document.querySelectorAll('.wc_payment_method')].map(function(x){return x.innerText.replace(/\\s+/g,' ').slice(0,80);}),login:!!document.querySelector('.woocommerce-form-login'),err:[...document.querySelectorAll('.woocommerce-error')].map(function(x){return x.innerText;}),eil:[...document.querySelectorAll('.order_details .product-name, td.product-name')].map(function(x){return x.innerText.replace(/\\s+/g,' ');}),viso:[...document.querySelectorAll('.order-total, tr.order-total')].map(function(x){return x.innerText.replace(/\\s+/g,' ');}),mygt:(document.getElementById('place_order')||{}).innerText||''})"
+   }
+  ]
+ },
+ "shots": {
+  "s1617_e2_apmokejimas_svecias": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/kasa/order-pay/35793/?pay_for_order=true&key=wc_order_PnVuf3IMgUYKD",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "gw": [
+     "Mokėjimas internetu Informuojame, kad sąskaitos informacijos ir mokėjimo inicija"
+    ],
+    "login": false,
+    "err": [],
+    "eil": [
+     "Pakartotinis siuntimas už užsakymą #35436"
+    ],
+    "viso": [],
+    "mygt": "APMOKĖTI UŽSAKYMĄ"
+   }
+  }
+ }
+}
