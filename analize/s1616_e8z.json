@@ -1,0 +1,209 @@
+{
+ "v": "dep-205639",
+ "kurimas": 200,
+ "sid": 4787,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Z": {
+  "v": "S1616 e8z",
+  "f": "Z",
+  "temp_istrinta": 1,
+  "dev_pastas_pries": 5,
+  "stock_pries": {
+   "16727_own": "0",
+   "16727_stock": "5",
+   "19708_stock": "19",
+   "16889_own": "1",
+   "16889_stock": "12"
+  },
+  "urls": {
+   "35434": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=grizta_atsaukti&id=35434&g=https%3A%2F%2Fdev.avesa.",
+   "35436": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=grizta_atsaukti&id=35436&g=https%3A%2F%2Fdev.avesa."
+  },
+  "ats": {
+   "35434": {
+    "code": 302,
+    "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai&atidaryti=35434&pd_ok=dl_dalis&pd_nr=35434|atšauktas — siunta V07267E1000777 grįžo į AV · grąžink klientui 33,04 € rankomis (Klausimai)"
+   },
+   "35436": {
+    "code": 302,
+    "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai&atidaryti=35436&pd_ok=dl_dalis&pd_nr=35436|Quattro dalis atšaukta — siunta V07267E1000778 grįžo į AV · likutis QUATTRO 1,5 kg Adult Salmon & Krill visa: AV +1 → 1 · kita dalis lieka: AV (dar ruošiama) · grąžink klientui 13,01 € rankomis (Klausimai)"
+   }
+  },
+  "sk_po": {
+   "35434": {
+    "kl": "Grąžink klientui pinigus",
+    "kur": "atšauktas",
+    "st": "Atšauktas"
+   },
+   "35436": {
+    "kl": "Grąžink klientui pinigus",
+    "kur": "Klausimai · toliau: Spręsti",
+    "st": "Vykdomas"
+   }
+  },
+  "kortele_po": {
+   "35434": {
+    "tekstas": "data-sk=\"1\">#35434 · AUDITAS Testas 21 · 37,03 € grąžink klientui pinigusGrąžink klientui 33,04 € rankomis (Paysera / pavedimu). 09-04 23:58 Testuotojas: siunta V07267E1000777 grįžo → atšaukta: 37,03 − 3,99 (33,04 €).Pinigų sistema negrąžina. Grąžink per Paysera arba pavedimu ir spausk „Grąžinta“ — Klausimas nusiims. Sąskaitą / kreditinę — rankomis, kol „Sąskaita“ nepadaryta.",
+    "mygtukai": [
+     "Grąžinta",
+     "Atidaryti",
+     "Parašyti klientui"
+    ]
+   },
+   "35436": {
+    "tekstas": "data-sk=\"1\">#35436 · AUDITAS Testas 23 · 23,61 € grąžink klientui pinigusGrąžink klientui 13,01 € rankomis (Paysera / pavedimu). 09-04 23:58 Testuotojas: Quattro dalis grįžo → atšaukta: 17,00 − 3,99 (13,01 €).Pinigų sistema negrąžina. Grąžink per Paysera arba pavedimu ir spausk „Grąžinta“ — Klausimas nusiims. Sąskaitą / kreditinę — rankomis, kol „Sąskaita“ nepadaryta.",
+    "mygtukai": [
+     "Grąžinta",
+     "Atidaryti",
+     "Parašyti klientui",
+     "Atšaukti"
+    ]
+   }
+  },
+  "laiskai": [],
+  "dev_pastas_po": 5,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788557297|yuW5uAEVeW8hZxoIyC1WfuxaIXvqITfmaDozROJBUEh|61907ac4e9a40f04ac065bdbf5c49716436cf9157e587b0c79b0a87377b1694d"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788557297|yuW5uAEVeW8hZxoIyC1WfuxaIXvqITfmaDozROJBUEh|6257ac9323b7c54595ff17e01776738cada390c051aee79215ac7da7c6b09c6c"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788557297|yuW5uAEVeW8hZxoIyC1WfuxaIXvqITfmaDozROJBUEh|57052c98686632ec9d36ebfbdc6001d1df3dd92c1c5950c828fbd5828b86dc48"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1616_e8_klausimai_po",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "full": true,
+    "eval": "({korteles:[...document.querySelectorAll('.dl-kortele')].map(function(x){return x.getAttribute('data-id')+': '+x.innerText.replace(/\\s+/g,' ').slice(0,260);})})"
+   }
+  ]
+ },
+ "Y": {
+  "v": "S1616 e8z",
+  "f": "Y",
+  "temp_istrinta": 0,
+  "stock": {
+   "16727_own": "1",
+   "16727_stock": "5",
+   "19708_stock": "20",
+   "16889_own": "1",
+   "16889_stock": "13"
+  },
+  "uzs": {
+   "35434": {
+    "st": "cancelled",
+    "total": "37.03",
+    "griz": "",
+    "graz": "[{\"laikas\":\"2026-09-04 23:58:14\",\"kas\":\"Testuotojas\",\"suma\":33.04,\"refund\":0,\"ka\":\"siunta V07267E1000777 gr\\u012f\\u017eo \\u2192 at\\u0161aukta: 37,03 \\u2212 3,99\"}]",
+    "ats": "",
+    "restored": "2026-09-04 23:58:14",
+    "it": {
+     "849": [
+      "Animonda Carny",
+      1,
+      "1",
+      "0",
+      ""
+     ],
+     "850": [
+      "Prins Diet Ski",
+      1,
+      "",
+      "",
+      ""
+     ]
+    },
+    "pastabos": [
+     "Užsakymo statusas pakeistas iš Vykdomas į Atšauktas.",
+     "AV grąžinimas: #19708 grynai AV +1"
+    ],
+    "ivykiai": [
+     {
+      "veiksmas": "grizta_atsaukti",
+      "rezultatas": "ok",
+      "kas_vardas": "Testuotojas",
+      "pastaba": "siunta grįžo → atšaukta"
+     },
+     {
+      "veiksmas": "busena",
+      "rezultatas": "ok",
+      "kas_vardas": "Testuotojas",
+      "pastaba": "WooCommerce"
+     }
+    ]
+   },
+   "35436": {
+    "st": "processing",
+    "total": "23.61",
+    "griz": "",
+    "graz": "[{\"laikas\":\"2026-09-04 23:58:12\",\"kas\":\"Testuotojas\",\"suma\":13.01,\"refund\":0,\"ka\":\"Quattro dalis gr\\u012f\\u017eo \\u2192 at\\u0161aukta: 17,00 \\u2212 3,99\"}]",
+    "ats": "{\"quattro\":{\"laikas\":\"2026-09-04 23:58:12\",\"kas\":\"Testuotojas\",\"nr\":[]}}",
+    "restored": "",
+    "it": {
+     "856": [
+      "Exclusion Hypo",
+      1,
+      "1",
+      "0",
+      ""
+     ],
+     "857": [
+      "QUATTRO 1,5 kg",
+      1,
+      "",
+      "1",
+      "2026-09-04 23:58:12|Testuotojas||0"
+     ]
+    },
+    "pastabos": [
+     "Darbalaukis: Quattro dalis ATŠAUKTA — siunta V07267E1000778 grįžo į AV (Testuotojas). Prekės: 1× QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu,. Likutis: QUATTRO 1,5 kg Adult Salmon & Krill visa: AV +1 → 1. Kita dalis lieka: AV (dar ruošiama). Grąžink kli",
+     "Klientui išsiųstas vėlavimo laiškas (terra@petshop.lt): apmokėta 09-03, praėjo 3 pilnos darbo dienos; dar neišsiųsta: AV, Quattro."
+    ],
+    "ivykiai": [
+     {
+      "veiksmas": "grizta_atsaukti_dalis",
+      "rezultatas": "ok",
+      "kas_vardas": "Testuotojas",
+      "pastaba": "siunta grįžo → dalis atšaukta, kita lieka"
+     },
+     {
+      "veiksmas": "velavimo_laiskas",
+      "rezultatas": "ok",
+      "kas_vardas": "sistema",
+      "pastaba": null
+     }
+    ]
+   }
+  },
+  "temp_liko": 1
+ },
+ "shots": {
+  "s1616_e8_klausimai_po": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "korteles": [
+     "35436: #35436 · AUDITAS Testas 23 · 23,61 € grąžink klientui pinigus Grąžink klientui 13,01 € rankomis (Paysera / pavedimu). 09-04 23:58 Testuotojas: Quattro dalis grįžo → atšaukta: 17,00 − 3,99 (13,01 €). Pinigų sistema negrąžina. Grąžink per Paysera arba pavedimu i",
+     "35100: #35100 · Aru ZX · 47,66 € trūksta sandėlyje Trūksta AV: 20 vnt. rudų kiaulės knyslių — reikia 1, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas siunčia klientui / veža į AV); užsakyk pats ir palik „Iš AV“, kai turėsi; parašyk klientui pakaitalą; ",
+     "35414: #35414 · AUDITAS Testas 1 · 19,04 € grąžink klientui pinigus Grąžink klientui 2,60 € rankomis (Paysera / pavedimu). 09-04 23:04 Testuotojas: kiekis 2 → 1 Animonda Carny Adult Beef + Chicken + Duck Heart – (2,60 €). Pinigų sistema negrąžina. Grąžink per Paysera",
+     "35423: #35423 · AUDITAS Testas 10 · 19,13 € trūksta sandėlyje Trūksta AV: Žaislas šuniui – Medžiaginis kaktusas Fernando, 17 x 15 cm — reikia 3, AV nėra, tiekėjo nėra. Ką gali daryti: keisk kelią (tiekėjas siunčia klientui / veža į AV); užsakyk pats ir palik „Iš AV“,",
+     "35434: #35434 · AUDITAS Testas 21 · 37,03 € grąžink klientui pinigus Grąžink klientui 33,04 € rankomis (Paysera / pavedimu). 09-04 23:58 Testuotojas: siunta V07267E1000777 grįžo → atšaukta: 37,03 − 3,99 (33,04 €). Pinigų sistema negrąžina. Grąžink per Paysera arba pa",
+     "35439: #35439 · AUDITAS Testas 26 · 36,42 € siuntos sukurti nepavyko Vežėjas siuntos nesukūrė: Venipak: neteisingas pašto kodas (Bad post code). Dažniausiai paštomatas nebegalioja arba adresas / pašto kodas neteisingas. „Taisyti adresą“ — pataisyk skydelyje ir išsaug"
+    ]
+   }
+  }
+ }
+}
