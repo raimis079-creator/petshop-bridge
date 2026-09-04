@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.13.2 (S1613, 4 etapas #4 vėlavimo laiškas klientui — darbo dienom 14:00, 3 pilnos darbo dienos nuo apmokėjimo) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.14.1 (S1613, 4 etapas #4a V13 „[T] vėluoja“ pagal dalis — darbalaukio lygiu) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -26,6 +26,18 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v3.14 (S1613, 4 etapas #4a V13 — Raimis 09-04 sutiko, darbalaukio lygiu): „TIEKĖJAS VĖLUOJA“ TIKSLIAU, PAGAL DALIS. Variklio sargas
+ *   `petshop-dropship-sargas.php` v1.0 ir jo žymė `_ps_sla_velavimas` NELIEČIAMI (Rytinė eiga ją skaičiuoja) — sargas žiūri į užsakymo lygio
+ *   `_ps_dropship_sent` (>24 val.) ∧ processing, dalių nemato: kaltina tiekėją, net kai tiekėjas jau išsiuntė ir laukiama AV (#35421), o užsakymas
+ *   Klausimuose dingsta iš Surinkti AV. Taisyklė `faktai()` (`$f['veluoja']`): vėluoja = tiekėjo „tiesiai“ dalis, kuriai užsakymas išėjo prieš
+ *   >24 val. (`_ps_dropship_sent_src[t]` = `dalys[t]['kada']`, `Petshop_AV_Dropship::perduotos()`) ir `issiusta` nėra. Bent viena → Klausimas
+ *   „[T] vėluoja — užsakyta prieš N val., siunta neišėjo. Paskambink [T].“ (vardai iš ZODYNAS), užsakymas KARTU lieka Paruošta siųsti su
+ *   „[T] išsiuntė“ (mygtukas nenuimamas — „wait“ žingsnis). Variklio tekstas „Tiekėjas vėluoja“ visada pakeičiamas darbalaukio: kai vėluojančių dalių
+ *   nėra (tiekėjas išsiuntė, laukia AV; arba dar neužsakytas) — Klausimo nėra. Dingsta pats, kai dalis pažymima išsiųsta (darbuotojas ar cron),
+ *   „Laukti“ kortelėje nebesiūlomas. „Kartu su Dropshipping iš [T]“ (kons) — tas pats `ps_dropship_send`, `_ps_dropship_sent_src` rašo; „veža į AV“
+ *   (Tiekimo partija) — kitas mechanizmas, ne šis. Darbalaukio klausimai „Siunta grįžta“ / „Prekė be sandėlio“ tikrinami PO V13 (kad variklio
+ *   nuimtas tekstas jų neužstotų). Vėlavimo laiškas (#4) praleidžia užsakymus Klausimuose — su V13 „[T] vėluoja“ irgi (Raimio taisyklė; klausimas jam).
+ *   v3.14.1: Klausimo kortelės žymė trumpa „ZB vėluoja“ (buvo visas sakinys mažosiomis — e9 ekrano nuotrauka), tekstas — pilnas sakinys.
  * v3.13 (S1613, 4 etapas #4, log S1611 sprendimas 3 — Raimis 09-04): VĖLAVIMO LAIŠKAS — AUTOMATINIS. Cron `ps_velavimo_laiskai` — vienkartinis
  *   įvykis, kas run'ą perplanuojamas į kitą 14:00 Vilnius (`wp_timezone()`, DST-saugus; `cron_planuoti` `init` 30 užtikrina, kad suplanuotas).
  *   Ne darbo dieną (Sa/Se, LT šventės `LT_SVENTES` + Velykų pirmadienis pagal Grigaliaus algoritmą `velykos()`) — nieko nedaro. Sąlyga užsakymui:
@@ -179,7 +191,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.13.2';
+	const VERSIJA = '3.14.1';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -529,8 +541,6 @@ class Petshop_Darbalaukis {
 		$sandeliai = array_keys( $sandeliai );
 		// v3.11 (4 etapas #1): Venipak grąžina siuntą → Klausimas „Siunta grįžta“ (darbalaukio lygiu; galioja ir įvykdytam užsakymui).
 		$f['sek'] = self::sekimas( $o ); $f['grizta'] = self::grizta( $o );
-		if ( $f['grizta'] && ! $f['kl'] && ! $atsauk ) { $f['kl'] = 'Siunta grįžta'; }
-		if ( ! $f['kl'] && $f['paid'] && ! $f['uzdarytas'] ) { foreach ( $f['eil'] as $e ) { if ( '' === $e['k'] ) { $f['kl'] = 'Prekė be sandėlio'; break; } } }
 		$siuntos   = self::siuntos( $o, $sandeliai );
 		$zz        = $z[ $id ] ?? array();
 
@@ -548,6 +558,16 @@ class Petshop_Darbalaukis {
 		$vietoje   = ! $av_truksta && ! $i_av_laukia;
 		$f['dalys']['av'] = $av_side ? array( 'siunta' => $av_siunta, 'nr' => $siuntos['av'] ?? array(), 'lapas' => $lapas, 'vietoje' => $vietoje, 'issiusta' => $baigta || ! empty( $iss['av'] ) ) : null;
 		foreach ( $tiesiai as $s ) { $f['dalys'][ $s ] = array( 'perduota' => ! empty( $perd[ $s ] ), 'kada' => $perd[ $s ] ?? '', 'nr' => $siuntos[ $s ] ?? array(), 'issiusta' => $baigta || ! empty( $iss[ $s ] ) ); }
+		// V13 (v3.14, Raimis 09-04): „[T] vėluoja“ pagal DALIS — tiekėjo „tiesiai“ dalis, užsakyta prieš >24 val. ir dar neišsiųsta. Variklio sargo tekstas pakeičiamas.
+		$f['veluoja'] = array();
+		if ( ! $f['uzdarytas'] ) {
+			$dabar_l = current_time( 'timestamp' );
+			foreach ( $tiesiai as $s ) { $p = $f['dalys'][ $s ]; if ( $p['perduota'] && ! $p['issiusta'] && $p['kada'] ) { $h = ( $dabar_l - (int) strtotime( (string) $p['kada'] ) ) / HOUR_IN_SECONDS; if ( $h > self::VELUOJA_VAL ) { $f['veluoja'][ $s ] = (int) floor( $h ); } } }
+		}
+		if ( 0 === strpos( (string) $f['kl'], 'Tiekėjas vėluoja' ) ) { $f['kl'] = ''; }
+		if ( $f['veluoja'] && ! $f['kl'] ) { $t = array(); foreach ( $f['veluoja'] as $s => $h ) { $t[] = self::vardas( $s ) . ' vėluoja — užsakyta prieš ' . $h . ' val., siunta neišėjo. Paskambink ' . self::vardas( $s ) . '.'; } $f['kl'] = implode( ' ', $t ); }
+		if ( $f['grizta'] && ! $f['kl'] && ! $atsauk ) { $f['kl'] = 'Siunta grįžta'; }
+		if ( ! $f['kl'] && $f['paid'] && ! $f['uzdarytas'] ) { foreach ( $f['eil'] as $e ) { if ( '' === $e['k'] ) { $f['kl'] = 'Prekė be sandėlio'; break; } } }
 
 		// Žingsneliai kiekvienai eilutei (maketo zingsniai()) + užraktas (A8).
 		foreach ( $f['eil'] as $iid => $e ) {
@@ -1181,6 +1201,7 @@ class Petshop_Darbalaukis {
 
 	/* ============================ v3.13 — VĖLAVIMO LAIŠKAS (4 etapas #4, log S1611 sprendimas 3) ============================ */
 
+	const VELUOJA_VAL = 24; // v3.14 V13: tiekėjo dalis „vėluoja“ po tiek val. nuo užsakymo tiekėjui (kaip variklio sargo RIBA_H)
 	const VEL_META   = '_ps_velavimo_laiskas';
 	const VEL_VAL    = 14; // darbo dienom 14:00 Vilnius (Raimis: tiekėjai ir Venipak išsiunčia iki pietų)
 	const VEL_DIENOS = 3;  // pilnos darbo dienos nuo apmokėjimo (apmokėjimo diena neskaičiuojama)
@@ -1944,7 +1965,7 @@ class Petshop_Darbalaukis {
 	protected static function klausimu_korteles( $rows ) {
 		foreach ( $rows as $r ) {
 			$o = $r['o']; $id = $r['id']; $sk = self::skydelis( $r ); $kl = $r['kl'];
-			$tekstas = $kl; $pastaba = ''; $veiksmai = '';
+			$tekstas = $kl; $pastaba = ''; $veiksmai = ''; $zyme = mb_strtolower( $kl );
 			$atsaukti = $sk['atsaukti'] ? '<a class="v t raud" href="' . esc_url( $sk['atsaukti']['u'] ) . '" data-d="' . esc_attr( wp_json_encode( $sk['atsaukti']['d'] ) ) . '">Atšaukti</a>' : '';
 			$rasyti = $sk['mail'] ? '<a class="v t" href="mailto:' . esc_attr( $sk['mail'] ) . '?subject=' . rawurlencode( 'Užsakymas #' . $o->get_order_number() . ' — petshop.lt' ) . '">Parašyti klientui</a>' : '';
 			$laukti = $sk['laukti'] ? '<a class="v" href="' . esc_url( $sk['laukti'] ) . '">Laukti</a>' : '';
@@ -1968,9 +1989,12 @@ class Petshop_Darbalaukis {
 			} elseif ( 0 === strpos( $kl, 'Klientas atsisako' ) ) {
 				$pastaba = 'Klientas pateikė sutarties atsisakymą (14 d.). Atšauk užsakymą; pinigų grąžinimą ir kreditinę tvarkysi atskirai.';
 				$veiksmai = $atsaukti . ' ' . $rasyti;
-			} elseif ( 0 === strpos( $kl, 'Tiekėjas vėluoja' ) ) {
-				$pastaba = 'Užsakyta iš tiekėjo prieš 24+ val., siunta neišėjo. Paskambink tiekėjui; jei išsiuntė — pažymėk „[tiekėjas] išsiuntė“.';
-				$veiksmai = '<button class="v p" data-atidaryti="1">Atidaryti</button> ' . $laukti . ' ' . $rasyti . ' ' . $atsaukti;
+			} elseif ( ! empty( $r['veluoja'] ) || 0 === strpos( $kl, 'Tiekėjas vėluoja' ) ) {
+				// v3.14 (V13): pagal dalis; užsakymas kartu Paruošta siųsti su „[T] išsiuntė“; dingsta pats, kai dalis pažymima išsiųsta — „Laukti“ nebesiūlomas.
+				$tv = array(); foreach ( array_keys( (array) $r['veluoja'] ) as $s ) { $tv[] = self::vardas( $s ); }
+				if ( $tv ) { $zyme = implode( ', ', $tv ) . ' vėluoja'; }
+				$pastaba = 'Užsakyta iš ' . ( $tv ? implode( ', ', $tv ) : 'tiekėjo' ) . ' prieš 24+ val., siunta neišėjo. Paskambink; kai išsiųs — pažymėk „' . ( $tv ? $tv[0] : 'tiekėjas' ) . ' išsiuntė“ (Paruošta siųsti) arba Venipak sekimas pažymės pats — Klausimas dings pats.';
+				$veiksmai = '<button class="v p" data-atidaryti="1">Atidaryti</button> ' . $rasyti . ' ' . $atsaukti;
 			} elseif ( 0 === strpos( $kl, 'Siunta grįžta' ) ) {
 				$g = self::grizta( $o ); $d = array(); $kita_issiusta = false; $av_issiusta = ! empty( $r['dalys']['av']['issiusta'] );
 				foreach ( $r['dalys'] as $dk => $dp ) { if ( $dp && ! empty( $dp['issiusta'] ) && ! isset( $g[ $dk ] ) ) { $kita_issiusta = true; } }
@@ -1992,7 +2016,7 @@ class Petshop_Darbalaukis {
 				$veiksmai = '<button class="v p" data-atidaryti="1">Atidaryti</button> ' . $laukti . ' ' . $rasyti . ' ' . $atsaukti;
 			}
 			printf( '<div class="dl-kortele eil" data-id="%d" data-sk="1"><h2>#%s · %s · %s <span class="kel klaus"><i></i>%s</span></h2><p>%s</p>%s<p class="dl-veiksmai">%s</p>%s</div>',
-				$id, esc_html( $o->get_order_number() ), esc_html( $sk['kl'] ), esc_html( $sk['suma'] ), esc_html( mb_strtolower( $kl ) ), esc_html( $tekstas ),
+				$id, esc_html( $o->get_order_number() ), esc_html( $sk['kl'] ), esc_html( $sk['suma'] ), esc_html( $zyme ), esc_html( $tekstas ),
 				$pastaba ? '<p class="pastaba">' . esc_html( $pastaba ) . '</p>' : '', $veiksmai, $o->get_meta( '_ps_klaus_laukti' ) ? '<p class="pilkas maz">Pažymėta laukti ' . esc_html( $o->get_meta( '_ps_klaus_laukti' ) ) . '</p>' : '' );
 		}
 	}
