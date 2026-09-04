@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.10.4 (S1610, 3 etapas #5b + #6 papildymas — siuntos klientui iš vieno šaltinio; LP numeris siuntų sąraše) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.10.5 (S1611, 3 etapas #5b — Raimio sprendimai 09-04: nesurūšiuotam mišriam klientui viena „Siunta — Ruošiama“) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -26,6 +26,9 @@
  *    eilutės turi šaltinį ir vienu keliu (gryna Avesa su likučiu arba vienas tiekėjas) → `_ps_rusiuota=auto`.
  *  Kiekvienas veiksmas rašo `Petshop_Uzsakymu_Ivykiai::irasyti()` su prieš/po.
  *
+ * v3.10.5 (S1611, Raimis 09-04, #5b prielaida 4 = B): kol mišrus užsakymas NEsurūšiuotas (`_ps_rusiuota` tuščia, dalių >1, nė viena
+ *   neišsiųsta), `kliento_siuntos()` klientui grąžina VIENĄ „Siunta — Ruošiama“ su visomis prekėmis, be numerio — kad siuntų skaičius
+ *   klientui nesikeistų atgal po rūšiavimo „viską į AV“. Prielaidos 1, 2, 3, 5 — Raimio patvirtintos 09-04.
  * v3.10.4 (S1610, #6 papildymas — Raimis 09-03 naktis): LP Express siuntos numeris (LP plugino meta `_woo_lithuaniapost_barcode` — patikrinta
  *   plugino kode, recon e10_run1r) patenka į `siuntos()` AV dalį, kai `_ps_siuntos` registre AV numerių nėra → laiškas ir paskyra rodo
  *   „Siuntos numeris (LP Express)“ + „Sekti siuntą“ (post.lt) kaip Venipak. Registras `_ps_siuntos` NErašomas (variklis neliestas).
@@ -125,7 +128,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.10.4';
+	const VERSIJA = '3.10.5';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -928,6 +931,12 @@ class Petshop_Darbalaukis {
 		if ( ! $o instanceof WC_Order || ! class_exists( 'Petshop_Desk' ) ) { return array(); }
 		if ( in_array( $o->get_status(), array_merge( Petshop_Desk::STATUSAI['neapmoketi'], Petshop_Desk::STATUSAI['atsaukti'], array( 'checkout-draft', 'draft' ) ), true ) ) { return array(); }
 		$f = self::faktai( $o ); $iss = $f['dalys_issiusta']; $out = array();
+		$dalys = array_filter( $f['dalys'] ); $kazkas_issiusta = false; foreach ( $dalys as $p ) { if ( ! empty( $p['issiusta'] ) ) { $kazkas_issiusta = true; } }
+		// v3.10.5 (Raimis 09-04, B): nesurūšiuotas mišrus — klientui viena „Siunta — Ruošiama“ su visomis prekėmis; skaičius atsiranda po rūšiavimo.
+		if ( ! $f['rus'] && count( $dalys ) > 1 && ! $kazkas_issiusta ) {
+			$prekes = array(); foreach ( $f['eil'] as $e ) { $prekes[] = array( 'q' => (int) $e['q'], 'n' => (string) $e['n'] ); }
+			return array( array( 'n' => 1, 'viso' => 1, 'dalis' => '*', 'busena' => 'ruosiama', 'laikas' => '', 'vez' => 'lp' === $f['vez'] ? 'lp' : 'venipak', 'numeriai' => array(), 'url' => '', 'prekes' => $prekes ) );
+		}
 		foreach ( $f['dalys'] as $k => $p ) {
 			if ( ! $p ) { continue; }
 			$prekes = array();
