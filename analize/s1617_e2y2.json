@@ -1,0 +1,184 @@
+{
+ "v": "dep-220338",
+ "kurimas": 200,
+ "sid": 4796,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Y2": {
+  "v": "S1617 e2d",
+  "f": "Y2",
+  "temp_istrinta": 1,
+  "pastas_pries": 11,
+  "N3": {
+   "st": "completed",
+   "cid": 0,
+   "email": "terra@petshop.lt",
+   "via": "darbalaukis",
+   "total": "8.21",
+   "tax": "1.42",
+   "paid": true,
+   "date_paid": "2026-09-05 01:05:10",
+   "pm": "",
+   "ship": "0",
+   "it": {
+    "1580": {
+     "n": "Pakartotinis siuntimas už užsakymą #35436",
+     "q": 1,
+     "sub": "6.785124",
+     "tot": "6.785124",
+     "tax": "1.42",
+     "pid": 35790,
+     "src": "av"
+    }
+   },
+   "meta": {
+    "_petshop_avpn_number": "AVPN000325",
+    "_petshop_completed_pdf": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita",
+    "_petshop_invoice_document_type": "invoice",
+    "_ps_completed_at": "2026-09-04 22:05:10",
+    "_ps_decided_at": "2026-09-05 01:05:10",
+    "_ps_faktas_irasytas": "2026-09-04 22:05:10",
+    "_ps_ga4_mp_kodas": "dev-nesiusta",
+    "_ps_groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
+    "_ps_order_type": "MAIN",
+    "_ps_pakart_ikainis": "4.22",
+    "_ps_pakart_ivykdyta": "2026-09-05 01:05:10",
+    "_ps_pakart_nuoroda": "2026-09-05 01:03:01",
+    "_ps_pakartotinis": "35436",
+    "_ps_partijos_nurasyta": "2026-09-05 01:05:10",
+    "_ps_shipments": "1",
+    "_ps_uzbaigti_be_siuntu": "1"
+   },
+   "notes": [
+    "TEST S1617 (Paysera sim 2): Callback order payment completed Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+    "Darbalaukis: laiškas klientui „apmokėjimas gautas“ išsiųstas su PVM sąskaita AVPN000325.",
+    "Darbalaukis: pakartotinis siuntimas apmokėtas — užsakymas įvykdytas automatiškai (tik pinigams; į Surinkti / lapus / Venipak neina). WC laiškas klientui: NESIŲSTAS — darb",
+    "Faktai irasyti: 1 eilutes · pajamos 6,79 EUR (be PVM, po nuolaidu) · PVM 1,42 EUR · marza 6,79 EUR · kontribucija (be pristatymo) 6,39 EUR · TESTINIS",
+    "Vykdymas: MAIN — AV 1 vnt (1 siunta(-os))",
+    "Darbalaukis: pakartotinis siuntimas už užsakymą #35436 — 8,21 € (Testuotojas). Apmokėjimo nuoroda klientui (terra@petshop.lt) išsiųsta. Apmokėjus — įvykdomas pats (į Suri"
+   ],
+   "pay_url": "https://dev.avesa.lt/kasa/order-pay/35793/?pay_for_order=true&key=wc_order_PnVuf3IMgUYKD"
+  },
+  "pastas": {
+   "n": 12,
+   "pask": [
+    [
+     "2026-09-05 00:52:56",
+     "uzsakymai@petshop.lt",
+     "Naujas užsakymas Nr. 35792 — 2026-09-05",
+     0
+    ],
+    [
+     "2026-09-05 00:52:56",
+     "terra@petshop.lt",
+     "Jūsų užsakymas Nr. 35792 — apmokėjimas gautas",
+     0
+    ],
+    [
+     "2026-09-05 01:03:01",
+     "terra@petshop.lt",
+     "Jūsų užsakymo Nr. 35436 siunta grįžo — pakartotinis siuntimas 8,21 €",
+     1
+    ],
+    [
+     "2026-09-05 01:05:10",
+     "terra@petshop.lt",
+     "Apmokėjimas gautas — užsakymo Nr. 35436 siuntą išsiųsime iš naujo",
+     1
+    ]
+   ]
+  },
+  "pastas_delta": 1,
+  "email_sent_notes": 0,
+  "bukle": {
+   "b": "apmoketa",
+   "id": 35793,
+   "nr": "35793",
+   "suma": "8,21",
+   "laikas": "09-05 01:05",
+   "t": "Pakartotinis užsakymas #35793 (8,21 €) apmokėtas 09-05 01:05 — galima „Siųsti iš naujo“."
+  },
+  "istorija": "[{\"id\":35792,\"b\":\"apmoketa\",\"suma\":\"8,21\",\"laikas\":\"2026-09-05 01:00:24\"}]",
+  "kortele_po": {
+   "mygtukai": [
+    "Siųsti iš naujo",
+    "Atšaukti — prekės grįžo į AV",
+    "Atidaryti",
+    "Parašyti klientui"
+   ],
+   "sumos": [
+    "Klientui grąžink: 23,61 − 3,99 = 19,62 € (visa siunta grįžta — sumokėta su pristatymu)Pakartotinis užsakymas: 4,22 + 3,99 = 8,21 € (kaip sumokėta užsakyme; siunčiama tik apmokėjus)",
+    "Pakartotinis užsakymas #35793 (8,21 €) apmokėtas 09-05 01:05 — galima „Siųsti iš naujo“."
+   ],
+   "is_naujo": "yra"
+  },
+  "temp_liko": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788561312|EC8UBFe0KyQSscz0vT8Rx1akhXdxtK6OBqfhPhmhQHM|00506e452cfae3c67853955863e28f66bf908171fb994356659f68ae239f78ac"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788561312|EC8UBFe0KyQSscz0vT8Rx1akhXdxtK6OBqfhPhmhQHM|34d20349ac885d68d2936ac9ef22f9cd1d993d799bc555ff2e583b7008593571"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788561312|EC8UBFe0KyQSscz0vT8Rx1akhXdxtK6OBqfhPhmhQHM|750936959d0c718532f08f15c2c4caec74adeb2d0036769329fec740a2f96e08"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1617_e2_klausimai_apmoketa",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "eval": "({k:[...document.querySelectorAll('.dl-kortele[data-id=\"35436\"] .dl-sumos')].map(function(x){return x.innerText.replace(/\\s+/g,' ');}),m:[...document.querySelectorAll('.dl-kortele[data-id=\"35436\"] .dl-veiksmai .v')].map(function(x){return x.innerText;})})"
+   },
+   {
+    "n": "s1617_e2_wc_uzsakymas_n3",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=wc-orders&action=edit&id=35793",
+    "w": 1400,
+    "full": true,
+    "eval": "({notes:[...document.querySelectorAll('.note_content')].map(function(x){return x.innerText.replace(/\\s+/g,' ').slice(0,120);})})"
+   }
+  ]
+ },
+ "shots": {
+  "s1617_e2_klausimai_apmoketa": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "k": [
+     "Klientui grąžink: 23,61 − 3,99 = 19,62 € (visa siunta grįžta — sumokėta su pristatymu) Pakartotinis užsakymas: 4,22 + 3,99 = 8,21 € (kaip sumokėta užsakyme; siunčiama tik apmokėjus)",
+     "Pakartotinis užsakymas #35793 (8,21 €) apmokėtas 09-05 01:05 — galima „Siųsti iš naujo“."
+    ],
+    "m": [
+     "Siųsti iš naujo",
+     "Atšaukti — prekės grįžo į AV",
+     "Atidaryti",
+     "Parašyti klientui"
+    ]
+   }
+  },
+  "s1617_e2_wc_uzsakymas_n3": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=wc-orders&action=edit&id=35793",
+   "title": "Redaguoti užsakymą #35793 ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "notes": [
+     "TEST S1617 (Paysera sim 2): Callback order payment completed Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+     "Darbalaukis: laiškas klientui „apmokėjimas gautas“ išsiųstas su PVM sąskaita AVPN000325.",
+     "Darbalaukis: pakartotinis siuntimas apmokėtas — užsakymas įvykdytas automatiškai (tik pinigams; į Surinkti / lapus / Ven",
+     "Faktai irasyti: 1 eilutes · pajamos 6,79 EUR (be PVM, po nuolaidu) · PVM 1,42 EUR · marza 6,79 EUR · kontribucija (be pr",
+     "Vykdymas: MAIN — AV 1 vnt (1 siunta(-os))",
+     "Darbalaukis: pakartotinis siuntimas už užsakymą #35436 — 8,21 € (Testuotojas). Apmokėjimo nuoroda klientui (terra@petsho"
+    ]
+   }
+  }
+ }
+}
