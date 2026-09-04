@@ -1,0 +1,90 @@
+{
+ "v": "dep-092911",
+ "kurimas": 200,
+ "sid": 4688,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "v": "run e9v",
+  "temp_istrinta": 1,
+  "temp_liko": 1,
+  "versija": "3.11.1",
+  "md5": "fc4076c7a7152dfd12140b3e33075cc1",
+  "ks": "1.2",
+  "likuciai": {
+   "19708 _stock": "17",
+   "34828 _own_stock_qty": "2",
+   "19756 _own_stock_qty": "1",
+   "26166 _own_stock_qty": "0",
+   "18593 _own_stock_qty": "21",
+   "16727 _own_stock_qty": "0"
+  },
+  "uzs": {
+   "35419": {
+    "st": "cancelled",
+    "griz": [],
+    "senos": [],
+    "kl": []
+   },
+   "35421": {
+    "st": "processing",
+    "griz": [],
+    "senos": [],
+    "kl": [
+     "prins pristatyta",
+     "av ruosiama"
+    ]
+   },
+   "35429": {
+    "st": "cancelled",
+    "griz": [],
+    "senos": [],
+    "kl": []
+   },
+   "35440": {
+    "st": "completed",
+    "griz": [],
+    "senos": [
+     "V07267E1000049",
+     "V07267E1000050",
+     "V07267E1000051"
+    ],
+    "kl": [
+     "av issiusta"
+    ]
+   },
+   "35441": {
+    "st": "processing",
+    "griz": [],
+    "senos": [
+     "V07267E1000057"
+    ],
+    "kl": [
+     "av ruosiama"
+    ]
+   }
+  },
+  "grizta_meta_kiek": 0,
+  "cron": {
+   "kada": "09:58:25",
+   "paskutinis": {
+    "laikas": "2026-09-04 12:28:37",
+    "uzsakymu": 14,
+    "numeriu": 17,
+    "uzklausu": 15,
+    "pakeista": 0,
+    "issiusta": 0,
+    "pristatyta": 0,
+    "grizta": 0,
+    "klaidos": 0,
+    "s": 0.8
+   }
+  },
+  "opcijos_test": [
+   "ps_e3_oid",
+   "ps_e3_oid2"
+  ]
+ }
+}
