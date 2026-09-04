@@ -1,0 +1,101 @@
+{
+ "v": "dep-221946",
+ "kurimas": 200,
+ "sid": 4798,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1617 r5",
+  "temp_istrinta": 1,
+  "tema_failai": [
+   "functions.php",
+   "woocommerce-delivery-notes/base.php"
+  ],
+  "grep": {
+   "functions.php": [
+    "432: . '<tr><td style=\"padding:3px 0;color:#666;width:40%;\">Gavėjas:</td><td><strong>UAB Avesa</strong></td></tr>' ⏎ . '<tr><td style=\"padding:3px 0;color:#666;\">Bankas:</td><td>AB Swedbank</td></tr>' ⏎ . '<tr><td style=\"padding:3px 0;color:#666;\">Šąskaita:</td><td><strong>LT127300010124940593</strong></td></tr>'",
+    "433: . '<tr><td style=\"padding:3px 0;color:#666;\">Bankas:</td><td>AB Swedbank</td></tr>' ⏎ . '<tr><td style=\"padding:3px 0;color:#666;\">Šąskaita:</td><td><strong>LT127300010124940593</strong></td></tr>' ⏎ . '<tr><td style=\"padding:3px 0;color:#666;\">Suma:</td><td><strong>' . wc_price( $order->get_total() ) . '</strong></td></tr>'",
+    "1319: $fields['billing']['billing_vat_code'] = array( ⏎ 'label'       => 'PVM mokėtojo kodas (nebūtinas)', ⏎ 'placeholder' => 'LT123456789',",
+    "1320: 'label'       => 'PVM mokėtojo kodas (nebūtinas)', ⏎ 'placeholder' => 'LT123456789', ⏎ 'required'    => false,",
+    "1326: $fields['billing']['billing_company_code'] = array( ⏎ 'label'       => 'Įmonės kodas', ⏎ 'placeholder' => '123456789',",
+    "1369: if ( $vat )     echo '<p><strong>PVM kodas:</strong> ' . esc_html( $vat ) . '</p>'; ⏎ if ( $code )    echo '<p><strong>Įmonės kodas:</strong> ' . esc_html( $code ) . '</p>'; ⏎ if ( $address ) echo '<p><strong>Įmonės adresas:</strong> ' . esc_html( $address ) . '</p>';",
+    "1381: 'billing_company'         => 'Įmonės pavadinimas', ⏎ 'billing_company_code'    => 'Įmonės kodas', ⏎ 'billing_company_address' => 'Įmonės registracijos adresas',"
+   ],
+   "woocommerce-delivery-notes/base.php": [
+    "306: UAB Avesa<br> ⏎ Įmonės kodas: 302568442<br> ⏎ PVM kodas: LT100005768519<br>",
+    "307: Įmonės kodas: 302568442<br> ⏎ PVM kodas: LT100005768519<br> ⏎ Bankas: AB Swedbank<br>",
+    "308: PVM kodas: LT100005768519<br> ⏎ Bankas: AB Swedbank<br> ⏎ Banko sąskaita: LT127300010124940593<br>",
+    "309: Bankas: AB Swedbank<br> ⏎ Banko sąskaita: LT127300010124940593<br> ⏎ Reg. adresas: Liucionių g. 46, Liucionys,<br>",
+    "332: <?php if ( $company_code ) : ?> ⏎ Įmonės kodas: <?php echo esc_html( $company_code ); ?><br> ⏎ <?php endif; ?>",
+    "479: <strong>Mokėjimo paskirtis:</strong> Išankstinės sąskaitos Nr. <?php echo esc_html( $invoice_number ); ?><br> ⏎ <strong>Gavėjas:</strong> UAB Avesa&nbsp;&nbsp;|&nbsp;&nbsp;<strong>Sąskaita:</strong> LT127300010124940593 (AB Swedbank)<br> ⏎ <span class=\"ps-paybox-note\">Užsakymas paruošiamas išsiuntimui gavus apmokėjimą.</span>",
+    "488: <div class=\"ps-doc-footer\"> ⏎ UAB Avesa &middot; Įmonės kodas 302568442 &middot; PVM LT100005768519 &middot; Liucionių g. 46, Vilniaus r., LT-15166 &middot; terra@petshop.lt &middot; +370 681 87787 ⏎ </div>"
+   ]
+  },
+  "opcijos": [
+   {
+    "option_name": "woocommerce_bacs_settings",
+    "v": "a:11:{s:7:\"enabled\";s:3:\"yes\";s:5:\"title\";s:18:\"Bankinis pavedimas\";s:11:\"description\";s:208:\"Apmokėkite padarydami pavedimą į mūsų banko sąskaitą. Prašome įrašyti Jūsų užsakymo numerį kaip mokėjimo paskirtį. Užsakymas nebus išsiųstas kol pavedimas nepasieks mūsų banko sąskaitos.\";s:12:\"instructions\";s:0:\"\";s:15:\"account_details\";s:0:\"\";s:12:\"account_name\";s:0:\"\";s:14:\"account_number\";s:0:\"\";s:9:\"sort_code\";s:0:\"\";s:9:\"bank_name\";s:0:\"\";s:4:\"iban\";s:0:\"\";s:3:\"bic\";s:0:\"\";}"
+   },
+   {
+    "option_name": "wcdn_version",
+    "v": "7.3.0"
+   },
+   {
+    "option_name": "wcdn_legacy_backup",
+    "v": "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:10:\"1779385649\";s:15:\"wcdn_db_version\";s:5:\"0.0.0\";s:24:\"wcdn_flush_rewrite_rules\";s:1:\"1\";s:19:\"wcdn_migration_lock\";s:10:\"1779385650\";s:12:\"wcdn_notices\";a:0:{}s:12:\"wcdn_version\";s:5:\"7.1.2\";}"
+   },
+   {
+    "option_name": "wcdn_legacy_backup_autoload",
+    "v": "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:4:\"auto\";s:15:\"wcdn_db_version\";s:4:\"auto\";s:24:\"wcdn_flush_rewrite_rules\";s:4:\"auto\";s:19:\"wcdn_migration_lock\";s:3:\"off\";s:12:\"wcdn_notices\";s:4:\"auto\";s:12:\"wcdn_version\";s:4:\"auto\";}"
+   },
+   {
+    "option_name": "wcdn_settings",
+    "v": "a:42:{s:9:\"storeName\";s:9:\"UAB Avesa\";s:9:\"storeLogo\";s:87:\"https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg\";s:12:\"storeAddress\";s:87:\"Liucionių g. 46, Liucionių k.<br />Nemenčinės sen., Vilniaus r., 15166<br />Lietuva\";s:5:\"email\";s:16:\"terra@petshop.lt\";s:5:\"phone\";s:14:\"+370 681 87787\";s:10:\"footerText\";s:0:\"\";s:18:\"complimentaryClose\";s:0:\"\";s:8:\"policies\";s:0:\"\";s:13:\"printEndpoint\";s:11:\"print-order\";s:20:\"defaultDocumentLabel\";s:8:\"Document\";s:13:\"textDirection\";s:3:\"ltr\";s:9:\"enablePDF\";b:1;s:12:\"pdfPaperSize\";s:2:\"A4\";s:18:\"pdfUseCurrencyCode\";b"
+   },
+   {
+    "option_name": "wcdn_template_settings",
+    "v": "a:4:{s:7:\"invoice\";a:152:{s:7:\"enabled\";b:1;s:10:\"dateFormat\";s:5:\"Y-m-d\";s:17:\"orderMetaPosition\";s:5:\"below\";s:11:\"pdfFilename\";s:27:\"Invoice -{order_number}.pdf\";s:19:\"attachCustomerEmail\";b:1;s:16:\"attachAdminEmail\";b:0;s:18:\"attachCustomEmails\";b:0;s:20:\"customEmailAddresses\";s:0:\"\";s:19:\"attachToOrderStatus\";b:0;s:21:\"orderStatusToAttachTo\";a:0:{}s:25:\"attachToWoocommerceEmails\";b:0;s:27:\"woocommerceEmailsToAttachTo\";a:0:{}s:12:\"documentZoom\";i:100;s:16:\"documentZoomMode\";s:6:\"layout\";s:14:\"applyZoomToAll\";s:0:\"\";s:8:\"showLogo\";b:1;s:9:\"logoScale\";i:100;s:13:\"logoAlignment\";s:4:\"left\";s:"
+   },
+   {
+    "option_name": "wcdn_migration_7_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_0_2_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_1_0_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_1_2_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_db_version",
+    "v": "7.3.0"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter",
+    "v": "351"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter_year",
+    "v": "a:1:{i:2026;i:1;}"
+   },
+   {
+    "option_name": "wcdn_allow_tracking",
+    "v": "dismissed"
+   }
+  ],
+  "opcijos_iban": [
+   {
+    "option_name": "wpo_wcpdf_settings_general",
+    "v": "a:22:{s:28:\"checkout_field_as_vat_number\";i:0;s:16:\"download_display\";s:7:\"display\";s:10:\"paper_size\";s:2:\"a4\";s:13:\"template_path\";s:14:\"default/Simple\";s:11:\"header_logo\";a:1:{s:7:\"default\";s:4:\"3257\";}s:18:\"header_logo_height\";s:3:\"200\";s:9:\"shop_name\";a:1:{s:7:\"default\";s:9:\"UAB AVESA\";}s:19:\"sh"
+   }
+  ]
+ }
+}
