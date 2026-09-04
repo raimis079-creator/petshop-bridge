@@ -1,0 +1,140 @@
+{
+ "v": "dep-174608",
+ "kurimas": 200,
+ "sid": 4768,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1615 e1e",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": {
+   "1": [
+    80000,
+    "453fe52c916f61b88b50bb8c5d2b9bfb"
+   ],
+   "2": [
+    80000,
+    "55ae11f2b883d4724e2285ee042109fc"
+   ],
+   "3": [
+    80000,
+    "cbbb1f8e06adc6aa8008a33a1478f3d4"
+   ],
+   "4": [
+    80000,
+    "ea53d0472acab9bb2a9bb5bdf078630a"
+   ],
+   "5": 49552
+  },
+  "bytes": 277163,
+  "md5": "43fe4d99b1f093816f39413ad033626c",
+  "token": "ok",
+  "buvo": "348901306c34d5fbc5c3702bb35a791f",
+  "backup": true,
+  "rasyta": 277163,
+  "po": "43fe4d99b1f093816f39413ad033626c"
+ },
+ "T": {
+  "v": "S1615 e1e",
+  "f": "T",
+  "temp_istrinta": 0,
+  "versija": "3.18.1",
+  "md5": "43fe4d99b1f093816f39413ad033626c",
+  "surinkti_35438": {
+   "code": 200,
+   "len": 276705,
+   "td2": "Iš AV 1 vnt. Prins Diet Skin &amp; Intestinal Hypoallergic …",
+   "td2_it": 1,
+   "tr_class": "eil dl-demesys",
+   "pill_r": true
+  },
+  "visi_35421": {
+   "code": 200,
+   "len": 261256,
+   "td2": "Iš AV 1 vnt. Animonda Carny Adult Beef + Chicken + Duck…Quattro veža į AV 1 vnt. QUATTRO 1,5 kg Adult Salmon &amp; Krill visave… gauta · užsakymas tiekėjui #10",
+   "td2_it": 2,
+   "tr_class": "eil dl-row-b-blue",
+   "pill_r": false
+  },
+  "visi_35438": {
+   "code": 200,
+   "len": 260900,
+   "td2": "Iš AV 1 vnt. Prins Diet Skin &amp; Intestinal Hypoallergic …",
+   "td2_it": 1,
+   "tr_class": "eil dl-demesys dl-row-b-blue",
+   "pill_r": true
+  },
+  "eil_35438": {
+   "863": [
+    "Animonda Carny Adult Bee",
+    1,
+    "av",
+    "2026-09-03 12:34:35|V07267E1000052",
+    ""
+   ],
+   "864": [
+    "Prins Diet Skin & Intest",
+    1,
+    "av",
+    "",
+    ""
+   ]
+  },
+  "st_35438": "processing",
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788545864|15GD7yGMVudZEMtIa53drE7X4WYm1SFOyiiGxsFdkYd|eec92e3fa0e874d407325cdb04a681063b1ab40107ebdc0349ad27e380d1244e"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788545864|15GD7yGMVudZEMtIa53drE7X4WYm1SFOyiiGxsFdkYd|b01cd60467c9aab086bc59c3bc92455cf2455feb4f7b67440c7ed5c4bf5a34f3"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788545864|15GD7yGMVudZEMtIa53drE7X4WYm1SFOyiiGxsFdkYd|0eae3d2f66a25a8ac8619a6955b849abbe7364e31bae2bd274b20ea9dd65a15f"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1615_e1_surinkti",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+    "w": 1400,
+    "full": true,
+    "eval": "({r35438:(document.querySelector('tr.eil[data-id=\"35438\"] td:nth-child(2)')||{innerText:'NĖRA'}).innerText.replace(/\\s+/g,' '),demesys:[...document.querySelectorAll('tr.eil.dl-demesys .nr')].map(x=>x.innerText)})"
+   },
+   {
+    "n": "s1615_e1_visi_35421",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35421",
+    "w": 1400,
+    "eval": "({r35421:(document.querySelector('tr.eil[data-id=\"35421\"] td:nth-child(2)')||{innerText:'NĖRA'}).innerText.replace(/\\s+/g,' ')})"
+   }
+  ]
+ },
+ "shots": {
+  "s1615_e1_surinkti": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=surinkti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "r35438": "Iš AV 1 vnt. Prins Diet Skin & Intestinal Hypoallergic …",
+    "demesys": [
+     "#35438"
+    ]
+   }
+  },
+  "s1615_e1_visi_35421": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35421",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "r35421": "Iš AV 1 vnt. Animonda Carny Adult Beef + Chicken + Duck… Quattro veža į AV 1 vnt. QUATTRO 1,5 kg Adult Salmon & Krill visave… gauta · užsakymas tiekėjui #10"
+   }
+  }
+ }
+}
