@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Juosta v1.6 (S1617) — „Užsakymai“ / „Neapmokėti“ skaičiai be pakartotinių užsakymų (meta `_ps_pakartotinis`, darbalaukis v3.21 — jie darbalaukyje nerodomi).
+ *
  * Petshop Juosta v1.5 (S1607) — Prekių kortelė (`.pskat-kort`, sticky top:0) lįsdavo po juosta (44+26 px + admin bar 32):
  * top:102px, max-height pagal tai. Raimio pastaba 2026-09-03 17:02.
  *
@@ -56,7 +58,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Juosta {
 
-	const VERSIJA = '1.4';
+	const VERSIJA = '1.6';
 	const TR      = 'ps_juosta_sk';
 
 	/** Puslapiai, kur juosta NErodoma (Raimio analitika turi savą UI). */
@@ -117,8 +119,9 @@ class Petshop_Juosta {
 		$s = array( 'uzs' => 0, 'neapm' => 0, 'kaup' => 0, 'lauk' => 0, 'laiskai' => 0, 'reikia' => null, 'riba' => null, 'gavimas' => null );
 		try {
 			if ( $wpdb->get_var( "SHOW TABLES LIKE '{$p}wc_orders'" ) ) {
-				$s['uzs']   = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$p}wc_orders WHERE type='shop_order' AND status IN ('wc-processing','wc-on-hold')" );
-				$s['neapm'] = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$p}wc_orders WHERE type='shop_order' AND status IN ('wc-pending','wc-failed')" );
+				$be = "AND id NOT IN (SELECT order_id FROM {$p}wc_orders_meta WHERE meta_key='_ps_pakartotinis')"; // v1.6
+				$s['uzs']   = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$p}wc_orders WHERE type='shop_order' AND status IN ('wc-processing','wc-on-hold') {$be}" );
+				$s['neapm'] = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$p}wc_orders WHERE type='shop_order' AND status IN ('wc-pending','wc-failed') {$be}" );
 			}
 			if ( $wpdb->get_var( "SHOW TABLES LIKE '{$p}ps_tiekimas'" ) ) {
 				$s['kaup'] = (int) $wpdb->get_var( "SELECT COUNT(*) FROM {$p}ps_tiekimas WHERE busena='kaupiama'" );
