@@ -1,0 +1,535 @@
+{
+ "v": "dep-091829",
+ "kurimas": 200,
+ "sid": 4687,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "run e8d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": [
+   80000,
+   80000,
+   80000,
+   45496
+  ],
+  "bytes": 214122,
+  "md5": "fc4076c7a7152dfd12140b3e33075cc1",
+  "token": "ok",
+  "buvo": "2c8a1ec90092b4873ee53418be84f1ea",
+  "backup": true,
+  "rasyta": 214122,
+  "po": "fc4076c7a7152dfd12140b3e33075cc1"
+ },
+ "T": {
+  "v": "run e8d",
+  "f": "T",
+  "temp_istrinta": 0,
+  "versija": "3.11.1",
+  "md5": "fc4076c7a7152dfd12140b3e33075cc1",
+  "1_pries": {
+   "st": "completed",
+   "iss": "{\"av\":{\"laikas\":\"2026-09-03 21:33:43\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:43\"}}",
+   "reg": {
+    "av": [
+     "V07267E1000049",
+     "V07267E1000050",
+     "V07267E1000051"
+    ]
+   },
+   "senos": [],
+   "griz": [
+    "av"
+   ],
+   "surinkta": "",
+   "shipments": "1",
+   "type": "MAIN",
+   "eil": [
+    "19708 av/av r=3"
+   ],
+   "kl": [
+    "av issiusta V07267E1000049/V07267E1000050/V07267E1000051"
+   ]
+  },
+  "1_stock_pries": {
+   "own": "",
+   "stock": "15"
+  },
+  "1_veiksmas": {
+   "code": 302,
+   "pd_ok": "dl_dalis",
+   "pd_nr": "35440|siunta V07267E1000049 grįžo — siunčiama iš naujo iš AV: Surinkti AV → naujas lipdukas"
+  },
+  "1_po": {
+   "st": "completed",
+   "iss": "{\"av\":{\"laikas\":\"2026-09-03 21:33:43\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\",\"laiskas\":\"2026-09-03 21:33:43\"}}",
+   "reg": {
+    "av": [
+     "V07267E1000049",
+     "V07267E1000050",
+     "V07267E1000051"
+    ]
+   },
+   "senos": [],
+   "griz": [
+    "av"
+   ],
+   "surinkta": "",
+   "shipments": "1",
+   "type": "MAIN",
+   "eil": [
+    "19708 av/av r=3"
+   ],
+   "kl": [
+    "av issiusta V07267E1000049/V07267E1000050/V07267E1000051"
+   ]
+  },
+  "1_stock_po": {
+   "own": "",
+   "stock": "15"
+  },
+  "1_notes": [
+   "Darbalaukis: siunta V07267E1000049 grįžo — SIUNČIAMA IŠ NAUJO iš AV (Testuotojas). Seni numeriai nebeskaitomi: V07267E1000049, V07267E1000050, V07267E1000051. Toliau: Surinkti AV → naujas lipdukas.",
+   "Darbalaukis: siunta grįžo — siunčiama iš naujo iš AV. WC laiškas klientui: NESIŲSTAS. Užsakymo statusas pakeistas iš Įvykdytas į Vykdomas.",
+   "Venipak: siunta V07267E1000051 pristatyta (2026-09-04 13:00:00, Kauno Akropolio Venipak paštomatas)."
+  ],
+  "1b_po_lipduko": {
+   "st": "processing",
+   "iss": "[]",
+   "reg": {
+    "av": [
+     "V07267E1000099"
+    ]
+   },
+   "senos": [
+    "V07267E1000049",
+    "V07267E1000050",
+    "V07267E1000051"
+   ],
+   "griz": [],
+   "surinkta": "2026-09-04 12:27:16|testas",
+   "shipments": "1",
+   "type": "MAIN",
+   "eil": [
+    "19708 av/av r=3"
+   ],
+   "kl": [
+    "av ruosiama V07267E1000099"
+   ]
+  },
+  "1b_cron": {
+   "pradzia": "2026-09-04 12:27:16",
+   "uzsakymu": 1,
+   "numeriu": 1,
+   "uzklausu": 1,
+   "pakeista": 1,
+   "issiusta": [
+    "#35440 av V07267E1000099 → dl_issiusta: klientui išėjo „Užsakymas išsiųstas“"
+   ],
+   "pristatyta": [],
+   "grizta": [],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 12:27:16",
+   "s": 0.5
+  },
+  "1b_po": {
+   "st": "completed",
+   "iss": "{\"av\":{\"laikas\":\"2026-09-04 12:27:16\",\"kas\":\"Venipak\",\"kanalas\":\"venipak\",\"laiskas\":\"2026-09-04 12:27:16\"}}",
+   "reg": {
+    "av": [
+     "V07267E1000099"
+    ]
+   },
+   "senos": [
+    "V07267E1000049",
+    "V07267E1000050",
+    "V07267E1000051"
+   ],
+   "griz": [],
+   "surinkta": "2026-09-04 12:27:16|testas",
+   "shipments": "1",
+   "type": "MAIN",
+   "eil": [
+    "19708 av/av r=3"
+   ],
+   "kl": [
+    "av issiusta V07267E1000099"
+   ]
+  },
+  "1b_mail": 1,
+  "2_stock_pries": {
+   "own": "",
+   "stock": "15"
+  },
+  "2_cron": {
+   "pradzia": "2026-09-04 12:27:16",
+   "uzsakymu": 1,
+   "numeriu": 2,
+   "uzklausu": 2,
+   "pakeista": 1,
+   "issiusta": [],
+   "pristatyta": [],
+   "grizta": [
+    "#35429 av V07267E1000032"
+   ],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 12:27:16",
+   "s": 0.1
+  },
+  "2_pries": {
+   "st": "completed",
+   "iss": "{\"av\":{\"laikas\":\"2026-09-04 12:01:49\",\"kas\":\"Venipak\",\"kanalas\":\"venipak\",\"laiskas\":\"2026-09-04 12:01:49\"}}",
+   "reg": {
+    "av": [
+     "V07267E1000031",
+     "V07267E1000032"
+    ]
+   },
+   "senos": [],
+   "griz": [
+    "av"
+   ],
+   "surinkta": "",
+   "shipments": "1",
+   "type": "MAIN",
+   "eil": [
+    "19708 av/av r=2"
+   ],
+   "kl": [
+    "av issiusta V07267E1000031/V07267E1000032"
+   ]
+  },
+  "2_veiksmas": {
+   "code": 302,
+   "pd_ok": "dl_dalis",
+   "pd_nr": "35429|atšauktas — siunta V07267E1000032 grįžo į AV · pinigus grąžink rankomis"
+  },
+  "2_po": {
+   "st": "completed",
+   "iss": "{\"av\":{\"laikas\":\"2026-09-04 12:01:49\",\"kas\":\"Venipak\",\"kanalas\":\"venipak\",\"laiskas\":\"2026-09-04 12:01:49\"}}",
+   "reg": {
+    "av": [
+     "V07267E1000031",
+     "V07267E1000032"
+    ]
+   },
+   "senos": [],
+   "griz": [
+    "av"
+   ],
+   "surinkta": "",
+   "shipments": "1",
+   "type": "MAIN",
+   "eil": [
+    "19708 av/av r=2"
+   ],
+   "kl": [
+    "av issiusta V07267E1000031/V07267E1000032"
+   ]
+  },
+  "2_stock_po": {
+   "own": "",
+   "stock": "15"
+  },
+  "2_notes": [
+   "Užsakymo statusas pakeistas iš Įvykdytas į Atšauktas.",
+   "AV grąžinimas: #19708 grynai AV +2",
+   "Darbalaukis: siunta V07267E1000032 grįžo — ATŠAUKIAMA, prekės grįžo į AV (Testuotojas). Pinigai grąžinami rankomis. WC laiškas klientui: NESIŲSTAS."
+  ],
+  "3_pids": {
+   "19756": "ambrosia",
+   "34828": "vf"
+  },
+  "3_stock_pries": {
+   "19756": {
+    "own": "0",
+    "stock": "10"
+   },
+   "34828": {
+    "own": "",
+    "stock": "94.000000"
+   }
+  },
+  "3_cron": {
+   "pradzia": "2026-09-04 12:27:18",
+   "uzsakymu": 1,
+   "numeriu": 2,
+   "uzklausu": 2,
+   "pakeista": 1,
+   "issiusta": [],
+   "pristatyta": [],
+   "grizta": [
+    "#35419 vf V07267E1000039"
+   ],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 12:27:18",
+   "s": 0
+  },
+  "3a_veiksmas": {
+   "code": 302,
+   "pd_ok": "dl_klaida",
+   "pd_nr": "35419|kita siunta jau išsiųsta — dalinis grąžinimas dar nepadarytas (5 etapas), parašyk Raimiui"
+  },
+  "3a_po": {
+   "st": "completed",
+   "iss": "",
+   "reg": {
+    "vf": [
+     "V07267E1000039"
+    ],
+    "ambrosia": [
+     "V07267E1000040"
+    ]
+   },
+   "senos": [],
+   "griz": [
+    "vf"
+   ],
+   "surinkta": "",
+   "shipments": "2",
+   "type": "MIXED",
+   "eil": [
+    "19756 /ambrosia r=",
+    "34828 /vf r="
+   ],
+   "kl": [
+    "ambrosia issiusta V07267E1000040",
+    "vf issiusta V07267E1000039"
+   ]
+  },
+  "3_cron2": {
+   "pradzia": "2026-09-04 12:27:19",
+   "uzsakymu": 1,
+   "numeriu": 2,
+   "uzklausu": 1,
+   "pakeista": 1,
+   "issiusta": [],
+   "pristatyta": [],
+   "grizta": [
+    "#35419 ambrosia V07267E1000040"
+   ],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 12:27:19",
+   "s": 0.1
+  },
+  "3b_veiksmas": {
+   "code": 302,
+   "pd_ok": "dl_dalis",
+   "pd_nr": "35419|atšauktas — siunta V07267E1000039, V07267E1000040 grįžo į AV · likutis Churu Popn Serve skanėstas katėms  su tu: AV +2 → 2; AMBROSIA begrūdis su ėriena ir šviežia e: AV +1 → 1 · pinigus grąžink rankomis"
+  },
+  "3b_po": {
+   "st": "completed",
+   "iss": "",
+   "reg": {
+    "vf": [
+     "V07267E1000039"
+    ],
+    "ambrosia": [
+     "V07267E1000040"
+    ]
+   },
+   "senos": [],
+   "griz": [
+    "vf",
+    "ambrosia"
+   ],
+   "surinkta": "",
+   "shipments": "2",
+   "type": "MIXED",
+   "eil": [
+    "19756 /ambrosia r=",
+    "34828 /vf r="
+   ],
+   "kl": [
+    "ambrosia issiusta V07267E1000040",
+    "vf issiusta V07267E1000039"
+   ]
+  },
+  "3_stock_po": {
+   "19756": {
+    "own": "0",
+    "stock": "10"
+   },
+   "34828": {
+    "own": "",
+    "stock": "94.000000"
+   }
+  },
+  "4_pries": {
+   "st": "processing",
+   "iss": "",
+   "reg": {
+    "vf": [
+     "V07267E1000057"
+    ]
+   },
+   "senos": [],
+   "griz": [],
+   "surinkta": "",
+   "shipments": "1",
+   "type": "DS",
+   "eil": [
+    "26166 tiesiai/vf r="
+   ],
+   "kl": [
+    "vf ruosiama V07267E1000057"
+   ]
+  },
+  "4_stock_pries": {
+   "own": "",
+   "stock": "3.000000"
+  },
+  "4_cron": {
+   "pradzia": "2026-09-04 12:27:21",
+   "uzsakymu": 1,
+   "numeriu": 1,
+   "uzklausu": 1,
+   "pakeista": 1,
+   "issiusta": [],
+   "pristatyta": [],
+   "grizta": [
+    "#35441 vf V07267E1000057"
+   ],
+   "nezinomi": [],
+   "klaidos": [],
+   "pabaiga": "2026-09-04 12:27:21",
+   "s": 0.1
+  },
+  "4_veiksmas": {
+   "code": 302,
+   "pd_ok": "dl_dalis",
+   "pd_nr": "35441|siunta V07267E1000057 grįžo — siunčiama iš naujo iš AV: Surinkti AV → naujas lipdukas · likutis Happet uždaras tualetas katei, kreminis,: AV +1 −1 → 0"
+  },
+  "4_po": {
+   "st": "processing",
+   "iss": "",
+   "reg": {
+    "vf": [
+     "V07267E1000057"
+    ]
+   },
+   "senos": [],
+   "griz": [
+    "vf"
+   ],
+   "surinkta": "",
+   "shipments": "1",
+   "type": "DS",
+   "eil": [
+    "26166 av/av r=1"
+   ],
+   "kl": [
+    "av ruosiama "
+   ]
+  },
+  "4_stock_po": {
+   "own": "",
+   "stock": "3.000000"
+  },
+  "4_notes": [
+   "Darbalaukis: siunta V07267E1000057 grįžo — SIUNČIAMA IŠ NAUJO iš AV (Testuotojas). Į AV perkelta: Happet uždaras tualetas katei, kreminis, 60x55x42 cm. Likutis: Happet uždaras tualetas katei, kreminis,: AV +1 −1 → 0. Seni numeriai nebeskaitomi: V07267E1000057. Toliau: Surinkti AV → naujas lipdukas.",
+   "Venipak: siunta V07267E1000057 grąžinama siuntėjui („Returning to sender“, 2026-09-04 14:00:00) — Klausimas „Siunta grįžta“."
+  ],
+  "laiskai": [
+   "terra@petshop.lt | Jūsų užsakymas Nr. 35440 išsiųstas | Petshop.lt Užsakymas išsiųstas Sveiki, AUDITAS, Jūsų užsakymas Nr. 35440 išsiųstas. Siuntos numeris (Venipak) V07267E1000099 Sekti siuntą Siuntos kelią sekite paspaudę „Sekti siuntą“. Visą užsakymo eigą matysite paskyroje → Užsakymas Nr. 35440. Prekės: 3 × Animonda Carny Adult Beef + Chicken + Duck "
+  ],
+  "dev_zurnalas": 3,
+  "ivykiai": [
+   {
+    "uzsakymas": "35441",
+    "veiksmas": "grizta_is_naujo",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": "siunta grįžo → iš naujo iš AV"
+   },
+   {
+    "uzsakymas": "35419",
+    "veiksmas": "grizta_atsaukti",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": "siunta grįžo → atšaukta"
+   },
+   {
+    "uzsakymas": "35429",
+    "veiksmas": "grizta_atsaukti",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": "siunta grįžo → atšaukta"
+   },
+   {
+    "uzsakymas": "35440",
+    "veiksmas": "grizta_is_naujo",
+    "rezultatas": "ok",
+    "kanalas": "web",
+    "kas_vardas": "Testuotojas",
+    "pastaba": "siunta grįžo → iš naujo iš AV"
+   }
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788515834|GwD3JWrznnE7hjZfdHYgZ5mlJLQ4f9dST3meVG1crK8|d71dce26b245362a0ca8d42bd45805a36725cedc0299fe4c79c9e7ed203dbcf0"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788515834|GwD3JWrznnE7hjZfdHYgZ5mlJLQ4f9dST3meVG1crK8|56f3172848c400723c25be24481b489737860f40dddb07e9fcfa0c02770972a3"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788515834|GwD3JWrznnE7hjZfdHYgZ5mlJLQ4f9dST3meVG1crK8|6c313d89268f3ea18874d41b28b88ec24f3278f6445a732984d6f21a45869ef9"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e8_klausimai",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "full": true,
+    "eval": "({korteles:[...document.querySelectorAll('.dl-kortele')].map(x=>x.innerText.replace(/\\s+/g,' ').slice(0,120))})"
+   },
+   {
+    "n": "e8_visi_35440",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35440",
+    "w": 1400,
+    "full": false,
+    "eval": "({eil:[...document.querySelectorAll('tr,.dl-eil')].map(x=>x.innerText.replace(/\\s+/g,' ')).filter(t=>t.includes('35440')).slice(0,2)})"
+   }
+  ]
+ },
+ "shots": {
+  "e8_klausimai": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "korteles": [
+     "#35100 · Aru ZX · 47,66 € trūksta sandėlyje Trūksta AV: 20 vnt. rudų kiaulės knyslių — reikia 1, AV nėra, tiekėjo nėra. ",
+     "#35418 · AUDITAS Testas 5 · 34,52 € tiekėjas vėluoja — perduota prieš 24+ val. Tiekėjas vėluoja — perduota prieš 24+ val",
+     "#35421 · AUDITAS Testas 8 · 54,03 € tiekėjas vėluoja — perduota prieš 24+ val. Tiekėjas vėluoja — perduota prieš 24+ val",
+     "#35423 · AUDITAS Testas 10 · 19,13 € trūksta sandėlyje Trūksta AV: Žaislas šuniui – Medžiaginis kaktusas Fernando, 17 x "
+    ]
+   }
+  },
+  "e8_visi_35440": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35440",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "eil": [
+     "#35440 vakar 12:30 Įvykdytas AUDITAS Testas 27 · Venipak kurjeris, Vilnius · 12,02 € Klientas: AUDITAS T27 (T6): AV kurjeris 3 dėžės per dialogą Iš AV 3 vnt. Animonda Carny Adult Beef + Chicken + Duck… Įvykdytas įvykdytas Atidaryti"
+    ]
+   }
+  }
+ }
+}
