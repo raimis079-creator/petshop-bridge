@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.22 (S1617, 5 etapas: „Pakartotinis užsakymas“ — naujas mažas užsakymas + apmokėjimo nuoroda; v3.22: WC laiškai pakartotiniam užsakymui išjungti per `woocommerce_email_enabled_*`; po v3.20) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.24 (S1617, 5 etapas: „Pakartotinis užsakymas“ — naujas mažas užsakymas + apmokėjimo nuoroda; v3.22: WC laiškai pakartotiniam užsakymui išjungti per `woocommerce_email_enabled_*`; v3.23 (Raimis 09-05 „pavedimas reikia“): apmokėjimo puslapyje Paysera + bankinis pavedimas, laiške ir „ačiū“ puslapyje rekvizitai, kortelėje „Apmokėta pavedimu“ — darbuotojas patvirtina gavęs pinigus; v3.24: pasirinkus pavedimą (`on-hold`) nuoroda toliau veikia — Paysera vis dar galima; po v3.20) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -39,6 +39,12 @@
  *   naujas užsakymas → `completed` be WC laiškų (tema jį rašytų „išsiųstas“), temos kablys išrašo AVPN, darbalaukio laiškas „apmokėjimas gautas“ su PVM
  *   (v3.22: VISI WC laiškai pakartotiniam užsakymui — klientui „vykdomas“ / „įvykdytas“ / „laukiama“ ir administratoriui „naujas užsakymas“ — išjungti per
  *   `woocommerce_email_enabled_{id}` (`pakartotinis_wc_laiskai`), nes WC „vykdomas“ šaudo prior. 10, prieš `pakartotinis_apmoketas` (110); e1d testas rado 2 perteklinius)
+ *   v3.23 (Raimis 09-05: pavedimas reikia): `pakartotinis_vartai` palieka Paysera + bacs; laiške su nuoroda — antras būdas „pavedimu“ su rekvizitais (`PAKART_BANKAS`,
+ *   kaip temos `functions.php` „gautas“ laiške / IAPV; paskirtis „Pakartotinis siuntimas, užsakymas Nr. N“); klientui pasirinkus pavedimą WC bacs → `on-hold` (WC bacs sąskaitų
+ *   nustatymuose nėra — „ačiū“ puslapyje rekvizitus rašo `pakartotinis_aciu_bankas`, `woocommerce_thankyou_bacs`); kortelėje, kol laukia, mygtukas „Apmokėta pavedimu“
+ *   (GET `pakart_apmoketa` → `pakartotinis_pavedimas`: `payment_method=bacs`, `update_status(processing)` kaip Paysera callback → tas pats `pakartotinis_apmoketas` kelias).
+ *   v3.24: WC apmokėjimo puslapis `on-hold` užsakymui sako „apmokėjimas negalimas“ (e3 W1B) — pakartotiniam `woocommerce_valid_order_statuses_for_payment` += on-hold
+ *   (`pakartotinis_moketini_statusai`): klientas, pasirinkęs pavedimą, vis dar gali apmokėti Paysera per tą pačią nuorodą, kol darbuotojas nepažymėjo „Apmokėta pavedimu“.
  *   sąskaita; pradiniame pastaba + įvykis `pakart_apmoketa` → kortelėje atsiranda „Siųsti iš naujo“ (`grizta_is_naujo` leidžia tik kai pakartotinis
  *   apmokėtas arba pažymėta „Be mokesčio“ — mūsų / vežėjo kaltė, `_ps_pakartotinis_nemokamai`). Kortelė ir skydelis rodo būseną („laukia apmokėjimo —
  *   nuoroda išsiųsta …“ + „siųsti nuorodą dar kartą“ / „apmokėtas … — galima Siųsti iš naujo“). Naujas užsakymas darbalaukyje NERODOMAS
@@ -284,7 +290,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.22';
+	const VERSIJA = '3.24';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -324,6 +330,8 @@ class Petshop_Darbalaukis {
 		add_filter( 'woocommerce_available_payment_gateways', array( __CLASS__, 'pakartotinis_vartai' ), 50, 1 );
 		add_filter( 'woocommerce_order_email_verification_required', array( __CLASS__, 'pakartotinis_be_patvirtinimo' ), 20, 3 );
 		foreach ( array( 'new_order', 'customer_processing_order', 'customer_completed_order', 'customer_on_hold_order', 'customer_invoice', 'customer_pending_order' ) as $wc_l ) { add_filter( 'woocommerce_email_enabled_' . $wc_l, array( __CLASS__, 'pakartotinis_wc_laiskai' ), 20, 2 ); } // v3.22
+		add_action( 'woocommerce_thankyou_bacs', array( __CLASS__, 'pakartotinis_aciu_bankas' ), 20, 1 ); // v3.23
+		add_filter( 'woocommerce_valid_order_statuses_for_payment', array( __CLASS__, 'pakartotinis_moketini_statusai' ), 20, 2 ); // v3.24
 		// v3.19: kiekio keitimo refund'ai (`_ps_kiekis`) — eilutė jau perrašyta, WC juos rodytų dukart (paskyra, laiškai, „Suma“).
 		add_filter( 'woocommerce_order_item_quantity_html', array( __CLASS__, 'kiekio_html' ), 20, 2 );
 		add_filter( 'woocommerce_email_order_item_quantity', array( __CLASS__, 'kiekio_laiske' ), 20, 2 );
@@ -1024,6 +1032,7 @@ class Petshop_Darbalaukis {
 			elseif ( 'grizta_atsaukti' === $v ) { $rez = self::grizta_atsaukti( $o, $u ); }
 			elseif ( 'grazinta' === $v ) { $rez = self::grazinta( $o, $u ); } // v3.19
 			elseif ( 'pakart_nuoroda' === $v ) { $rez = self::pakartotinis_nuoroda( $o, $u ); } // v3.21
+			elseif ( 'pakart_apmoketa' === $v ) { $rez = self::pakartotinis_pavedimas( $o, $u ); } // v3.23
 			elseif ( 'velavimas' === $v ) { $tz = wp_timezone(); $dn = new DateTime( 'now', $tz ); $r = self::velavimo_laiskas( $o, $dn->format( 'Y-m-d' ), $u ); $rez = array( $r[0] ? 'dl_info' : 'dl_klaida', $r[0] ? 'klientui pranešta apie vėlavimą — ' . $r[1] : 'nepranešta: ' . $r[1] ); } // v3.15
 			elseif ( 'nesurinkta' === $v ) {
 				$o->delete_meta_data( '_ps_surinkta' ); $o->add_order_note( 'Darbalaukis: surinkimas atšauktas (' . $u->display_name . ') — užsakymas grįžo į „Surinkti“.', false, true ); $o->save();
@@ -1444,6 +1453,7 @@ class Petshop_Darbalaukis {
 	const PAKART_ID_META = '_ps_pakartotinis_id';        // v3.21: pradiniame — pakartotinio užsakymo ID
 	const PAKART_NEMOK_META = '_ps_pakartotinis_nemokamai'; // v3.21: pradiniame — „be mokesčio“ (mūsų / vežėjo kaltė): laikas|kas
 	const PAKART_PREKE_OPT = 'ps_pakartotinio_preke';    // v3.21: paslaugos prekės „Pakartotinis siuntimas“ ID
+	const PAKART_BANKAS = 'UAB Avesa · AB Swedbank · LT127300010124940593'; // v3.23: pavedimo rekvizitai (kaip temos functions.php / IAPV — Claude prielaida: tie patys)
 	const BAIGTOS_META = '_ps_dalys_baigtos'; // v3.18: [dalis => [{nr[],laikas,prekes[[q,n]]}, …]] — ankstesnės išsiųstos AV siuntos, kai AV dalis ruošiama iš naujo
 	public static function dalys_atsaukta( $o ) { $j = json_decode( (string) $o->get_meta( self::ATSAUKTA_META ), true ); return is_array( $j ) ? $j : array(); }
 	public static function dalys_baigtos( $o ) { $j = json_decode( (string) $o->get_meta( self::BAIGTOS_META ), true ); return is_array( $j ) ? $j : array(); }
@@ -1764,7 +1774,7 @@ class Petshop_Darbalaukis {
 		if ( $n && 'shop_order' === $n->get_type() ) {
 			$suma = self::eur( $n->get_total() ); $nr = $n->get_order_number();
 			if ( $n->is_paid() ) { $dp = $n->get_date_paid() ? $n->get_date_paid() : $n->get_date_modified(); $k = $dp ? wp_date( 'm-d H:i', $dp->getTimestamp() ) : ''; return array( 'b' => 'apmoketa', 'id' => $nid, 'nr' => $nr, 'suma' => $suma, 'laikas' => $k, 't' => 'Pakartotinis užsakymas #' . $nr . ' (' . $suma . ' €) apmokėtas ' . $k . ' — galima „Siųsti iš naujo“.' ); }
-			if ( in_array( $n->get_status(), array( 'pending', 'on-hold', 'failed' ), true ) ) { $s = (string) $n->get_meta( '_ps_pakart_nuoroda' ); return array( 'b' => 'laukia', 'id' => $nid, 'nr' => $nr, 'suma' => $suma, 'laikas' => $s, 't' => 'Pakartotinis užsakymas #' . $nr . ' (' . $suma . ' €): laukia kliento apmokėjimo' . ( $s ? ' — nuoroda išsiųsta ' . substr( $s, 5, 11 ) : ' — nuoroda NEIŠSIŲSTA' ) . '.' ); }
+			if ( in_array( $n->get_status(), array( 'pending', 'on-hold', 'failed' ), true ) ) { $s = (string) $n->get_meta( '_ps_pakart_nuoroda' ); $bacs = 'bacs' === $n->get_payment_method(); return array( 'b' => 'laukia', 'id' => $nid, 'nr' => $nr, 'suma' => $suma, 'laikas' => $s, 'bacs' => $bacs, 't' => 'Pakartotinis užsakymas #' . $nr . ' (' . $suma . ' €): laukia kliento apmokėjimo' . ( $s ? ' — nuoroda išsiųsta ' . substr( $s, 5, 11 ) : ' — nuoroda NEIŠSIŲSTA' ) . '.' . ( $bacs ? ' Klientas pasirinko pavedimą — kai pinigai banke, spausk „Apmokėta pavedimu“.' : '' ) ); }
 		}
 		$nm = (string) $o->get_meta( self::PAKART_NEMOK_META );
 		if ( $nm ) { return array( 'b' => 'nemokamai', 'id' => 0, 'nr' => '', 'suma' => '0,00', 'laikas' => $nm, 't' => 'Pakartotinis siuntimas be mokesčio — mūsų / vežėjo kaltė (' . str_replace( '|', ', ', substr( $nm, 5, 11 ) . substr( $nm, 19 ) ) . ') — galima „Siųsti iš naujo“.' ); }
@@ -1869,8 +1879,9 @@ class Petshop_Darbalaukis {
 		$kaina = null === $ik ? $suma . ' € (pristatymas + 3,99 € siuntos grąžinimo išlaidos)' : $suma . ' € (' . self::eur( $ik ) . ' € pristatymas + 3,99 € siuntos grąžinimo išlaidos)';
 		$h  = '<p>' . esc_html( $vardas ? "Sveiki, {$vardas}." : 'Sveiki.' ) . '</p>';
 		$h .= '<p>' . esc_html( sprintf( 'Jūsų užsakymo Nr. %s siunta grįžo mums neatsiimta / nepristatyta.', $nr ) ) . '</p>';
-		$h .= '<p>' . esc_html( 'Galime išsiųsti ją iš naujo tuo pačiu adresu. Pakartotinio siuntimo kaina — ' . $kaina . ', pagal pirkimo taisyklių 6.10–6.11 p.' ) . '</p>';
+		$h .= '<p>' . esc_html( 'Galime išsiųsti ją iš naujo tuo pačiu adresu. Pakartotinio siuntimo kaina — ' . $kaina . ', pagal pirkimo taisyklių 6.10–6.11 p. Apmokėti galite internetu (mygtukas) arba pavedimu.' ) . '</p>';
 		$h .= '<p style="margin:18px 0"><a href="' . esc_url( $url ) . '" style="display:inline-block;background:#2d6a35;color:#fff;text-decoration:none;padding:12px 22px;border-radius:6px;font-weight:bold">' . esc_html( 'Apmokėti ' . $suma . ' €' ) . '</a><br><span style="font-size:12px;color:#777">' . esc_html( 'Jei mygtukas neveikia, atidarykite nuorodą: ' ) . '<a href="' . esc_url( $url ) . '">' . esc_html( $url ) . '</a></span></p>';
+		$h .= '<p>' . esc_html( 'Arba pavedimu: ' . self::PAKART_BANKAS . ', suma ' . $suma . ' €, paskirtis „Pakartotinis siuntimas, užsakymas Nr. ' . $nr . '“.' ) . '</p>';
 		$h .= '<p>' . esc_html( 'Gavę apmokėjimą, siuntą išsiųsime iš naujo ir atsiųsime sekimo numerį. Jei norite kito adreso ar paštomato — parašykite atsakydami į šį laišką prieš apmokėdami.' ) . '</p>';
 		$h .= '<p>' . esc_html( 'Jei siųsti iš naujo nenorite — parašykite: užsakymą atšauksime ir grąžinsime už prekes ir pristatymą sumokėtą sumą, atskaičius 3,99 € siuntos grąžinimo išlaidas.' ) . '</p>';
 		$h .= '<p>' . esc_html( 'Gražios dienos,' ) . '<br>' . esc_html( 'Petshop.lt komanda' ) . '<br>+370 681 87787<br>terra@petshop.lt</p>';
@@ -1902,18 +1913,44 @@ class Petshop_Darbalaukis {
 		$avpn = (string) $n->get_meta( '_petshop_avpn_number' );
 		$n->add_order_note( 'Darbalaukis: laiškas klientui „apmokėjimas gautas“ ' . ( $ok ? 'išsiųstas' : 'NEIŠSIŲSTAS' ) . ( $pdf && file_exists( $pdf ) ? ' su PVM sąskaita ' . $avpn : ' BE sąskaitos (PDF nesugeneruotas)' ) . '.', false, true ); $n->save();
 		if ( $o ) {
-			$o->add_order_note( sprintf( 'Pakartotinis užsakymas #%s apmokėtas (%s €, %s) — galima „Siųsti iš naujo“.', $n->get_order_number(), self::eur( $n->get_total() ), $avpn ? $avpn : 'sąskaita ' . ( $pdf ? 'yra' : 'nėra' ) ), false, true ); $o->save();
-			if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $oid, 'sritis' => 'desk', 'veiksmas' => 'pakart_apmoketa', 'rezultatas' => 'ok', 'kanalas' => 'paysera', 'po' => array( 'naujas' => $id, 'suma' => (float) $n->get_total(), 'avpn' => $avpn, 'laiskas' => $ok ? 1 : 0 ), 'pastaba' => 'pakartotinis užsakymas #' . $n->get_order_number() . ' apmokėtas' ) ); }
+			$o->add_order_note( sprintf( 'Pakartotinis užsakymas #%s apmokėtas %s(%s €, %s) — galima „Siųsti iš naujo“.', $n->get_order_number(), 'bacs' === $n->get_payment_method() ? 'pavedimu ' : '', self::eur( $n->get_total() ), $avpn ? $avpn : 'sąskaita ' . ( $pdf ? 'yra' : 'nėra' ) ), false, true ); $o->save();
+			if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $oid, 'sritis' => 'desk', 'veiksmas' => 'pakart_apmoketa', 'rezultatas' => 'ok', 'kanalas' => 'bacs' === $n->get_payment_method() ? 'web' : 'paysera', 'po' => array( 'naujas' => $id, 'suma' => (float) $n->get_total(), 'avpn' => $avpn, 'laiskas' => $ok ? 1 : 0 ), 'pastaba' => 'pakartotinis užsakymas #' . $n->get_order_number() . ' apmokėtas' ) ); }
 		}
 		do_action( 'ps_juosta_isvalyti' );
 	}
 
-	/** Apmokėjimo puslapyje (`order-pay`) pakartotiniam užsakymui — tik Paysera (Claude prielaida: pavedimo patvirtinimui reiktų atskiro mygtuko; Paysera turi visus LT bankus). */
+	/** Apmokėjimo puslapyje (`order-pay`) pakartotiniam užsakymui — Paysera + bankinis pavedimas (v3.23, Raimis 09-05: pavedimas reikia; patvirtina darbuotojas „Apmokėta pavedimu“). */
 	public static function pakartotinis_vartai( $gws ) {
 		if ( is_admin() || ! function_exists( 'is_wc_endpoint_url' ) || ! is_wc_endpoint_url( 'order-pay' ) ) { return $gws; }
 		global $wp; $oid = absint( $wp->query_vars['order-pay'] ?? 0 ); $o = $oid ? wc_get_order( $oid ) : null;
 		if ( ! $o || ! $o->get_meta( self::PAKART_META ) ) { return $gws; }
-		return isset( $gws['paysera'] ) ? array( 'paysera' => $gws['paysera'] ) : $gws;
+		$r = array(); foreach ( array( 'paysera', 'bacs' ) as $k ) { if ( isset( $gws[ $k ] ) ) { $r[ $k ] = $gws[ $k ]; } }
+		return $r ? $r : $gws;
+	}
+
+	/** v3.24: pakartotinis užsakymas `on-hold` (klientas pasirinko pavedimą) lieka apmokamas per nuorodą — Paysera vis dar galima. */
+	public static function pakartotinis_moketini_statusai( $statusai, $order = null ) {
+		if ( $order instanceof WC_Order && $order->get_meta( self::PAKART_META ) && ! in_array( 'on-hold', (array) $statusai, true ) ) { $statusai[] = 'on-hold'; }
+		return $statusai;
+	}
+
+	/** v3.23: klientui pasirinkus pavedimą („ačiū“ puslapis, WC bacs `thankyou_page` — WC bacs sąskaitų nustatymuose nėra) — rekvizitai ir paskirtis. */
+	public static function pakartotinis_aciu_bankas( $order_id ) {
+		$n = wc_get_order( $order_id ); if ( ! $n || ! $n->get_meta( self::PAKART_META ) || $n->is_paid() ) { return; }
+		$o = wc_get_order( (int) $n->get_meta( self::PAKART_META ) ); $nr = $o ? $o->get_order_number() : (string) $n->get_meta( self::PAKART_META );
+		echo '<section class="woocommerce-bacs-bank-details"><h2 class="wc-bacs-bank-details-heading">Pavedimo rekvizitai</h2><p>' . esc_html( 'Gavėjas: ' . self::PAKART_BANKAS . ' · Suma: ' . self::eur( $n->get_total() ) . ' € · Paskirtis: „Pakartotinis siuntimas, užsakymas Nr. ' . $nr . '“.' ) . '</p><p>' . esc_html( 'Gavę pavedimą, siuntą išsiųsime iš naujo ir atsiųsime sekimo numerį.' ) . '</p></section>';
+	}
+
+	/** v3.23: „Apmokėta pavedimu“ (GET `pakart_apmoketa`) — darbuotojas patvirtina, kad pinigai banke: `payment_method=bacs` + `update_status(processing)` (kaip Paysera callback) → `pakartotinis_apmoketas`. */
+	protected static function pakartotinis_pavedimas( $o, $u ) {
+		$pk = self::pakartotinis_bukle( $o ); if ( ! $pk || 'laukia' !== $pk['b'] ) { return array( 'dl_info', $pk && 'apmoketa' === $pk['b'] ? 'pakartotinis užsakymas #' . $pk['nr'] . ' jau apmokėtas — spausk „Siųsti iš naujo“' : 'neapmokėto pakartotinio užsakymo nėra' ); }
+		$n = wc_get_order( $pk['id'] ); if ( ! $n ) { return array( 'dl_klaida', 'užsakymo nėra' ); }
+		if ( 'bacs' !== $n->get_payment_method() ) { $n->set_payment_method( 'bacs' ); $n->set_payment_method_title( 'Bankinis pavedimas' ); }
+		$n->add_order_note( 'Darbalaukis: pavedimas gautas — patvirtino ' . $u->display_name . ' („Apmokėta pavedimu“).', false, true ); $n->save();
+		$n->update_status( 'processing', 'Darbalaukis: pavedimas gautas (' . $u->display_name . ').', true );
+		$n = wc_get_order( $n->get_id() ); $ok = (bool) $n->get_meta( '_ps_pakart_ivykdyta' );
+		if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_id(), 'sritis' => 'desk', 'veiksmas' => 'pakart_pavedimas', 'rezultatas' => $ok ? 'ok' : 'klaida', 'kanalas' => 'web', 'kas' => $u->ID, 'kas_vardas' => $u->display_name, 'po' => array( 'naujas' => $n->get_id(), 'suma' => (float) $n->get_total(), 'avpn' => (string) $n->get_meta( '_petshop_avpn_number' ) ), 'pastaba' => 'pavedimas už pakartotinį užsakymą #' . $n->get_order_number() ) ); }
+		return array( $ok ? 'dl_info' : 'dl_klaida', $ok ? 'pakartotinis užsakymas #' . $n->get_order_number() . ' (' . self::eur( $n->get_total() ) . ' €) pažymėtas apmokėtu pavedimu' . ( $n->get_meta( '_petshop_avpn_number' ) ? ', PVM sąskaita ' . $n->get_meta( '_petshop_avpn_number' ) : '' ) . ' — dabar „Siųsti iš naujo“' : 'užsakymas #' . $n->get_order_number() . ' nepersijungė (būsena ' . $n->get_status() . ') — žiūrėk pastabas' );
 	}
 
 	/** Svečio užsakymo „ačiū“ puslapis (grįžus iš Paysera) — be WC el. pašto patvirtinimo formos (užsakymas sukurtas anksčiau nei WC „malonės“ langas). */
@@ -2726,13 +2763,14 @@ class Petshop_Darbalaukis {
 				$pk = self::pakartotinis_bukle( $o ); $pk_html = ''; $pk_forma = ''; $bp = '';
 				if ( $pk ) { $pk_html = '<p class="dl-sumos dl-pk">' . esc_html( $pk['t'] ) . ( 'laukia' === $pk['b'] ? ' <a class="pilkas maz" href="' . esc_url( self::dl_url( 'pakart_nuoroda', $id ) ) . '" data-d="' . esc_attr( wp_json_encode( array( 'antraste' => $antr, 'tekstas' => 'Išsiųsti klientui (' . $o->get_billing_email() . ') apmokėjimo nuorodą dar kartą? Užsakymas #' . $pk['nr'] . ', ' . $pk['suma'] . ' €.', 'ok' => 'Siųsti' ) ) ) . '">siųsti nuorodą dar kartą</a>' : '' ) . '</p>'; }
 				$gal_is_naujo = $pk && in_array( $pk['b'], array( 'apmoketa', 'nemokamai' ), true );
+				$bpv = ( $pk && 'laukia' === $pk['b'] ) ? '<a class="v t" href="' . esc_url( self::dl_url( 'pakart_apmoketa', $id ) ) . '" data-d="' . esc_attr( wp_json_encode( array( 'antraste' => $antr, 'tekstas' => 'Pavedimas ' . $pk['suma'] . ' € už pakartotinį užsakymą #' . $pk['nr'] . ' jau banke? Užsakymas pažymimas apmokėtu, išrašoma PVM sąskaita, klientui išeina laiškas „apmokėjimas gautas“ — atsiras „Siųsti iš naujo“.', 'ok' => 'Apmokėta pavedimu' ) ) ) . '">Apmokėta pavedimu</a> ' : ''; // v3.23
 				if ( ! $pk && ! $sk['uzdarytas'] ) {
 					$bp = '<button type="button" class="v p dl-pk-b">Pakartotinis užsakymas</button> ';
 					$pk_forma = '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '" class="dl-pk-f" style="display:none">' . wp_nonce_field( 'ps_dl_pakart_' . $id, '_wpnonce', true, false ) . '<input type="hidden" name="action" value="ps_dl_pakartotinis"><input type="hidden" name="id" value="' . (int) $id . '"><input type="hidden" name="g" value="' . esc_attr( self::url( array( 'eile' => 'klausimai', 'view' => null, 'q' => null, 'b' => null, 'atidaryti' => null ) ) ) . '"><input type="hidden" name="ka" value="">'
 						. '<label>Suma <input type="number" name="suma" step="0.01" min="0.5" max="200" value="' . esc_attr( $sm && null !== $sm['pakart'] ? number_format( (float) $sm['pakart'], 2, '.', '' ) : '' ) . '"> €</label> <label class="pilkas maz">' . esc_html( $sm && null !== $sm['pakart'] ? self::eur( $sm['ikainis'] ) . ' + 3,99 — taisyk, jei reikia' : 'įkainis + 3,99 — įrašyk' ) . '</label> <button type="button" class="v p dl-pk-s">Sukurti ir siųsti nuorodą</button> <button type="button" class="v t dl-pk-n" title="Tik kai nepristatyta dėl mūsų ar vežėjo kaltės">Be mokesčio</button> <a href="#" class="pilkas maz dl-pk-x">atgal</a></form>';
 				}
 				$sumos_html .= $pk_html;
-				$veiksmai = ( $gal_is_naujo ? $b1 : $bp ) . $b2 . '<button class="v t" data-atidaryti="1">Atidaryti</button> ' . $rasyti; $papild = $pk_forma;
+				$veiksmai = ( $gal_is_naujo ? $b1 : $bp . $bpv ) . $b2 . '<button class="v t" data-atidaryti="1">Atidaryti</button> ' . $rasyti; $papild = $pk_forma;
 			} elseif ( 0 === strpos( $kl, 'LP negalimas' ) ) {
 				$pastaba = 'LP Express galimas tik iš AV. Keisk ne-AV prekių kelią į „Iš AV“ / „veža į AV“ (pristatymo keitimas į Venipak čia dar nepadarytas — parašyk Raimiui).';
 				$veiksmai = '<button class="v p" data-atidaryti="1">Rūšiuoti</button> ' . $rasyti . ' ' . $atsaukti;
