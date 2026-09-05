@@ -1,0 +1,40 @@
+{
+ "v": "dep-174214",
+ "kurimas": 200,
+ "sid": 4822,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DBG": {
+  "v": "S1617 e6d",
+  "f": "DBG",
+  "temp_istrinta": 1,
+  "html_len": 868,
+  "last_error": "Unknown column 'o.date_completed_gmt' in 'field list'",
+  "last_query": "SELECT DISTINCT x.* FROM (SELECT 'avpn' t, o.id did, o.id oid, m.meta_value nr, COALESCE(o.date_completed_gmt,o.date_paid_gmt,o.date_created_gmt) d, o.total_amount s, o.status st, o.billing_email em, CONCAT(COALESCE(a.first_name,''),' ',COALESCE(a.last_name,'')) kl, p.meta_value pdf FROM gaj6_wc_orders_meta m JOIN gaj6_wc_orders o ON o.id=m.order_id AND o.type='shop_order' LEFT JOIN gaj6_wc_order_addresses a ON a.order_id=o.id AND a.address_type='billing' LEFT JOIN gaj6_wc_orders_meta p ON p.order_id=o.id AND p.meta_key='_petshop_completed_pdf' WHERE m.meta_key='_petshop_avpn_number' UNION ALL SELECT 'iapv' t, o.id did, o.id oid, m.meta_value nr, o.date_created_gmt d, o.total_amount s, o.status st, o.billing_email em, CONCAT(COALESCE(a.first_name,''),' ',COALESCE(a.last_name,'')) kl, p.meta_value pdf FROM gaj6_wc_orders_meta m JOIN gaj6_wc_orders o ON o.id=m.order_id AND o.type='shop_order' LEFT JOIN gaj6_wc_order_addresses a ON a.order_id=o.id AND a.address_type='billing' LEFT JOIN gaj6_wc_orders_meta p ON p.order_id=o.id AND p.meta_key='_petshop_order_pdf' WHERE m.meta_key='_petshop_iapv_number' UNION ALL SELECT 'kr' t, r.id did, o.id oid, m.meta_value nr, r.date_created_gmt d, r.total_amount s, o.status st, o.billing_email em, CONCAT(COALESCE(a.first_name,''),' ',COALESCE(a.last_name,'')) kl, p.meta_value pdf FROM gaj6_wc_orders_meta m JOIN gaj6_wc_orders r ON r.id=m.order_id AND r.type='shop_order_refund' JOIN gaj6_wc_orders o ON o.id=r.parent_order_id LEFT JOIN gaj6_wc_order_addresses a ON a.order_id=o.id AND a.address_type='billing' LEFT JOIN gaj6_wc_orders_meta p ON p.order_id=r.id AND p.meta_key='_petshop_kravpn_pdf' WHERE m.meta_key='_petshop_kravpn_number') x WHERE 1=1 ORDER BY x.d DESC, x.nr DESC",
+  "role_caps": [
+   "read",
+   "upload_files",
+   "manage_woocommerce",
+   "view_woocommerce_reports",
+   "edit_products",
+   "edit_others_products",
+   "edit_published_products",
+   "publish_products",
+   "read_private_products",
+   "manage_product_terms",
+   "edit_product_terms",
+   "assign_product_terms",
+   "edit_shop_orders",
+   "edit_others_shop_orders",
+   "edit_published_shop_orders",
+   "read_private_shop_orders",
+   "read_private_shop_coupons",
+   "delete_products",
+   "delete_published_products",
+   "delete_others_products",
+   "ps_akcijas_taikyti"
+  ]
+ }
+}
