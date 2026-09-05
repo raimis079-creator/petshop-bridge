@@ -1,0 +1,254 @@
+{
+ "v": "dep-221345",
+ "kurimas": 200,
+ "sid": 4869,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1619 e5d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 11Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 62+ Naujas užsakymasFiltr"
+  },
+  "bytes": 497247,
+  "md5": "4e8c13665454cb6d7413ba8892bf4b6a",
+  "token": "ok",
+  "buvo": "51172cea296c748ca96ff4f18a150917",
+  "klase_pries": "3.35",
+  "backup": true,
+  "rasyta": 497247,
+  "po": "4e8c13665454cb6d7413ba8892bf4b6a",
+  "ping": {
+   "code": 200,
+   "fatal": 0,
+   "err": ""
+  },
+  "zona": "Lietuva",
+  "inst": {
+   "instance_id": "16",
+   "is_enabled": "0"
+  }
+ },
+ "Q": {
+  "v": "S1619 e5d",
+  "f": "Q",
+  "temp_istrinta": 0,
+  "eiles_po": {
+   "code": 200,
+   "nav": "Gauti 11Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 62+ Naujas užsakymasFiltr"
+  },
+  "versija": "3.35.1",
+  "md5": "4e8c13665454cb6d7413ba8892bf4b6a",
+  "inst": {
+   "instance_id": "16",
+   "is_enabled": "0"
+  },
+  "dev_pastas": 34
+ },
+ "T0": {
+  "v": "S1619 e5d",
+  "f": "T0",
+  "temp_istrinta": 0,
+  "inst": {
+   "instance_id": "16",
+   "is_enabled": "1"
+  },
+  "forma": {
+   "code": 200,
+   "prist_opts": [
+    "Venipak kurjeris",
+    "Venipak paštomatas",
+    "LP Express paštomatas",
+    "LP Express kurjeris",
+    "Atsiėmimas AV"
+   ],
+   "pm": [
+    "venipak_kurjeris",
+    "venipak_pastomatas",
+    "lp",
+    "lp_kurjeris",
+    "av"
+   ]
+  },
+  "saskaitos_sabl": {
+   "ats_forma": 1,
+   "summary": [
+    "Kreditinės laiško šablonas (numatytas)",
+    "„Paruošta atsiimti“ laiško šablonas (Atsiėmimas AV) (numatytas)"
+   ]
+  },
+  "av_preke": 19708
+ },
+ "T3": {
+  "v": "S1619 e5d",
+  "f": "T3",
+  "temp_istrinta": 0,
+  "post": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35812|užsakymas sukurtas — 2,60 €, Atsiėmimas AV, apmokėta grynais — eina į darbą; kvitą (PPK) suformuok skydelio „Sąskaitos“ bloke, kai klientas sumoka",
+   "eile": "siandien",
+   "id": 35812
+  },
+  "id": 35812,
+  "sk": {
+   "kur": "Surinkti AV · toliau: Surinkti",
+   "apmok": "apmokėta · Apmokėta grynais",
+   "vezejas": "Atsiėmimas AV",
+   "btn": "Surinkti",
+   "btn_d": "",
+   "grynais": 0,
+   "red": 0,
+   "pastaba": "ATSIĖMIMAS AV (lipduko nėra): surinkti → „Paruošta atsiimti“ (laiškas klientui) → „Klientas atsiėmė“ (įvykdytas, PVM sąskaita). Surūšiuota pati — viskas iš vienos vietos. Keisk, jei reikia, iki lipduk",
+   "eil": [
+    [
+     "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g",
+     "av",
+     null,
+     [
+      "Surinkti:dabar",
+      "Paruošta atsiimti:",
+      "Klientas atsiėmė:"
+     ]
+    ]
+   ],
+   "takelis": [],
+   "klausimas": "",
+   "dok": [
+    "avpn AVPN000340",
+    "ppk  [Suformuoti kvitą]"
+   ]
+  },
+  "btn_po_lapu": "Paruošta atsiimti",
+  "paruosta": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35812|paruošta atsiimti — laiškas nesiųstas (varnelė)",
+   "body": ""
+  },
+  "btn_po_paruosta": "Klientas atsiėmė",
+  "atsieme": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35812|klientas atsiėmė — užsakymas įvykdytas, PVM sąskaita AVPN000340 · išsiųstas (atsiemimas3.s1619@dev.avesa.lt, su PDF)",
+   "body": ""
+  },
+  "uzs": {
+   "st": "completed",
+   "pm": "cod",
+   "pmt": "Apmokėta grynais",
+   "paid": true,
+   "total": "2.60",
+   "avpn": "AVPN000340",
+   "pdf": "PVM-saskaita-AVPN000340.pdf",
+   "rus": "auto",
+   "surinkta": "2026-09-06 01:15:25 | Testuotojas",
+   "ats": "{\"paruosta\":\"2026-09-06 01:15:27|Testuotojas\",\"laiskas\":\"\",\"atsieme\":\"2026-09-06 01:15:29|Testuotojas\"}",
+   "iss": "{\"av\":{\"laikas\":\"2026-09-06 01:15:29\",\"kas\":\"Testuotojas\",\"kanalas\":\"atsiemimas\"}}",
+   "be_siuntu": "1",
+   "ship": [
+    [
+     "Atsiėmimas AV",
+     "local_pickup",
+     "16",
+     "0"
+    ]
+   ],
+   "items": [
+    {
+     "n": "Animonda Carny Adult Beef + Ch",
+     "q": 1,
+     "src": "av",
+     "kelias": "av",
+     "red": "0",
+     "av": "1"
+    }
+   ]
+  },
+  "sk_po": {
+   "kur": "įvykdytas",
+   "apmok": "apmokėta · Apmokėta grynais",
+   "vezejas": "Atsiėmimas AV",
+   "btn": null,
+   "btn_d": "",
+   "grynais": 0,
+   "red": 0,
+   "pastaba": "Užsakymas įvykdytas.",
+   "eil": [
+    [
+     "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g",
+     "av",
+     null,
+     [
+      "Surinkti:ok",
+      "Paruošta atsiimti:ok",
+      "Klientas atsiėmė:ok"
+     ]
+    ]
+   ],
+   "takelis": [],
+   "klausimas": "",
+   "dok": [
+    "avpn AVPN000340",
+    "ppk  [Suformuoti kvitą]"
+   ]
+  },
+  "pastabos": [
+   "Darbalaukis: atsiėmimo laiškas su PVM sąskaita — išsiųstas (atsiemimas3.s1619@dev.avesa.lt, su PDF).",
+   "Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+   "Darbalaukis: klientas atsiėmė prekes AV (Testuotojas) — užsakymas įvykdytas be siuntos. WC „įvykdytas“ laiškas (tema „išsiųstas“) NESIŲSTAS — siunčiamas darbalaukio laiškas su PVM sąskaita.",
+   "Darbalaukis: paruošta atsiimti (Testuotojas) — laiškas nesiųstas (varnelė).",
+   "Email \"Užsakymas vykdomas\" sent."
+  ],
+  "dev_pastas": {
+   "pries": 34,
+   "po": 37,
+   "nauji": [
+    {
+     "laikas": "2026-09-06 01:15:23",
+     "kam": "uzsakymai@petshop.lt",
+     "tema": "Naujas užsakymas Nr. 35812 — 2026-09-06",
+     "priedai": "0",
+     "url": "/wp-admin/admin-post.php"
+    },
+    {
+     "laikas": "2026-09-06 01:15:23",
+     "kam": "atsiemimas3.s1619@dev.avesa.lt",
+     "tema": "Jūsų užsakymas Nr. 35812 — apmokėjimas gautas",
+     "priedai": "0",
+     "url": "/wp-admin/admin-post.php"
+    },
+    {
+     "laikas": "2026-09-06 01:15:30",
+     "kam": "atsiemimas3.s1619@dev.avesa.lt",
+     "tema": "Užsakymas Nr. 35812 atsiimtas — PVM sąskaita faktūra Nr. AVPN000340",
+     "priedai": "1",
+     "url": "/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=atsieme&id=35812&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3F"
+    }
+   ]
+  },
+  "eiles": {
+   "code": 200,
+   "nav": "Gauti 11Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 63+ Naujas užsakymasFiltr"
+  }
+ },
+ "C": {
+  "v": "S1619 e5d",
+  "f": "C",
+  "temp_istrinta": 0,
+  "inst": {
+   "instance_id": "16",
+   "is_enabled": "0"
+  },
+  "forma_av_yra": 0,
+  "eiles": {
+   "code": 200,
+   "nav": "Gauti 11Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 63+ Naujas užsakymasFiltr"
+  },
+  "temp_liko": 1
+ }
+}
