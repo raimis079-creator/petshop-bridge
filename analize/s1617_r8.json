@@ -1,0 +1,129 @@
+{
+ "v": "dep-064114",
+ "kurimas": 200,
+ "sid": 4811,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1617 r8",
+  "temp_istrinta": 1,
+  "wcdn_klases": [],
+  "creditnote_meta": [
+   {
+    "order_id": "35090",
+    "meta_key": "_wcdn_creditnote_date",
+    "v": "1787734027"
+   },
+   {
+    "order_id": "35088",
+    "meta_key": "_wcdn_creditnote_date",
+    "v": "1787736373"
+   },
+   {
+    "order_id": "35088",
+    "meta_key": "_wcdn_creditnote_pdf",
+    "v": "credit-note-35088-db2949515f216807b0d015e5.pdf"
+   },
+   {
+    "order_id": "35090",
+    "meta_key": "_wcdn_creditnote_pdf",
+    "v": "credit-note-35090-0f1cebddfc7fe69898fda6d0.pdf"
+   }
+  ],
+  "wc_create_refund": [
+   "476: ⏎ $line_items = $order->get_items(); ⏎ if ( count( $line_items ) > 0 ) {",
+   "477: $line_items = $order->get_items(); ⏎ if ( count( $line_items ) > 0 ) { ⏎ foreach ( $line_items as $item ) {",
+   "478: if ( count( $line_items ) > 0 ) { ⏎ foreach ( $line_items as $item ) { ⏎ $product = $item->get_product();",
+   "559: */ ⏎ function wc_create_refund( $args = array() ) { ⏎ $default_args = array(",
+   "561: $default_args = array( ⏎ 'amount'         => 0, ⏎ 'reason'         => null,",
+   "565: 'refund_id'      => 0, ⏎ 'line_items'     => array(), ⏎ 'refund_payment' => false,",
+   "578: ⏎ $remaining_refund_amount     = $order->get_remaining_refund_amount(); ⏎ $remaining_refund_items      = $order->get_remaining_refund_items();",
+   "584: ⏎ if ( 0 > $args['amount'] || $args['amount'] > $remaining_refund_amount ) { ⏎ throw new Exception( __( 'Invalid refund amount.', 'woocommerce' ) );",
+   "585: if ( 0 > $args['amount'] || $args['amount'] > $remaining_refund_amount ) { ⏎ throw new Exception( __( 'Invalid refund amount.', 'woocommerce' ) ); ⏎ }",
+   "599: // Negative line items. ⏎ if ( is_array( $args['line_items'] ) && count( $args['line_items'] ) > 0 ) { ⏎ $items = $order->get_items( array( 'line_item', 'fee', 'shipping' ) );",
+   "600: if ( is_array( $args['line_items'] ) && count( $args['line_items'] ) > 0 ) { ⏎ $items = $order->get_items( array( 'line_item', 'fee', 'shipping' ) ); ⏎",
+   "603: foreach ( $items as $item_id => $item ) { ⏎ if ( ! isset( $args['line_items'][ $item_id ] ) ) { ⏎ continue;",
+   "607: ⏎ $qty          = isset( $args['line_items'][ $item_id ]['qty'] ) ? $args['line_items'][ $item_id ]['qty'] : 0; ⏎ $refund_total = $args['line_items'][ $item_id ]['refund_total'];",
+   "608: $qty          = isset( $args['line_items'][ $item_id ]['qty'] ) ? $args['line_items'][ $item_id ]['qty'] : 0; ⏎ $refund_total = $args['line_items'][ $item_id ]['refund_total']; ⏎ $refund_tax   = isset( $args['line_items'][ $item_id ]['refund_tax'] ) ? array_filter( (array) $args['line_items'][ $item",
+   "609: $refund_total = $args['line_items'][ $item_id ]['refund_total']; ⏎ $refund_tax   = isset( $args['line_items'][ $item_id ]['refund_tax'] ) ? array_filter( (array) $args['line_items'][ $item_id ]['refund_tax'] ) : array(); ⏎",
+   "611: ⏎ if ( empty( $qty ) && empty( $refund_total ) && empty( $args['line_items'][ $item_id ]['refund_tax'] ) ) { ⏎ continue;",
+   "669: if ( $args['refund_payment'] ) { ⏎ $result = wc_refund_payment( $order, $refund->get_amount(), $refund->get_reason() ); ⏎",
+   "681: if ( $args['restock_items'] ) { ⏎ wc_restock_refunded_items( $order, $args['line_items'] ); ⏎ }",
+   "710: 'woocommerce_order_is_partially_refunded', ⏎ ( $remaining_refund_amount - $args['amount'] ) > 0 || ⏎ ( ! empty( $args['line_items'] ) && $order->has_free_item() && ( $remaining_refund_items - $refund_item_count ) > 0 ),",
+   "711: ( $remaining_refund_amount - $args['amount'] ) > 0 || ⏎ ( ! empty( $args['line_items'] ) && $order->has_free_item() && ( $remaining_refund_items - $refund_item_count ) > 0 ), ⏎ $order->get_id(),",
+   "806: * @param WC_Order $order               Order instance. ⏎ * @param array    $refunded_line_items Refunded items list. ⏎ */",
+   "808: */ ⏎ function wc_restock_refunded_items( $order, $refunded_line_items ) { ⏎ if ( ! apply_filters( 'woocommerce_can_restock_refunded_items', true, $order, $refunded_line_items ) ) {",
+   "809: function wc_restock_refunded_items( $order, $refunded_line_items ) { ⏎ if ( ! apply_filters( 'woocommerce_can_restock_refunded_items', true, $order, $refunded_line_items ) ) { ⏎ return;",
+   "813: ⏎ $line_items = $order->get_items(); ⏎",
+   "815: ⏎ foreach ( $line_items as $item_id => $item ) { ⏎ if ( ! isset( $refunded_line_items[ $item_id ], $refunded_line_items[ $item_id ]['qty'] ) ) {"
+  ],
+  "fakt_graz_sig": [
+   "order_id",
+   "refund_id"
+  ],
+  "fakt_graz_cols": [
+   "id",
+   "uzsakymas_id",
+   "refund_id",
+   "eilute_id",
+   "wc_eilutes_id",
+   "eilute_raktas",
+   "preke_id",
+   "grazinta_at",
+   "diena",
+   "kiekis",
+   "suma_ct",
+   "pvm_ct",
+   "savikaina_ct",
+   "priezastis_kodas",
+   "priezastis_tekstas",
+   "atsargos_grizo",
+   "sandelis",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija"
+  ],
+  "refunds_all": [
+   {
+    "id": "35789",
+    "parent_order_id": "35425",
+    "status": "wc-completed",
+    "total_amount": "-28.58000000",
+    "date_created_gmt": "2026-09-04 20:04:07"
+   },
+   {
+    "id": "35788",
+    "parent_order_id": "35414",
+    "status": "wc-completed",
+    "total_amount": "-2.60000000",
+    "date_created_gmt": "2026-09-04 20:04:03"
+   },
+   {
+    "id": "35093",
+    "parent_order_id": "35088",
+    "status": "wc-completed",
+    "total_amount": "-2.65000000",
+    "date_created_gmt": "2026-08-26 09:26:13"
+   },
+   {
+    "id": "35092",
+    "parent_order_id": "35090",
+    "status": "wc-completed",
+    "total_amount": "-1.00000000",
+    "date_created_gmt": "2026-08-26 08:47:08"
+   },
+   {
+    "id": "35091",
+    "parent_order_id": "35090",
+    "status": "wc-completed",
+    "total_amount": "-53.99000000",
+    "date_created_gmt": "2026-08-26 08:47:07"
+   }
+  ],
+  "avpn_counter": "327",
+  "iapv_counter": "163",
+  "kr_opcijos": []
+ }
+}
