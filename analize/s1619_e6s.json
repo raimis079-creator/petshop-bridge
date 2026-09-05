@@ -1,0 +1,128 @@
+{
+ "v": "dep-221640",
+ "kurimas": 200,
+ "sid": 4870,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "S1619 e6s",
+  "temp_istrinta": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788648501|pz8mmP4zkmWUl9AFScpflCcKY5bHfFNJYk3XVct9skB|23858e25030268b995e8e6db8674acce3e6f6efdcb54b1d9e64aeee3ef85e3cc"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788648501|pz8mmP4zkmWUl9AFScpflCcKY5bHfFNJYk3XVct9skB|25ae2bf6a08a8c4b129f2f1a5d90158ee5b83cf21d782805994ad5d1f48a7239"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788648501|pz8mmP4zkmWUl9AFScpflCcKY5bHfFNJYk3XVct9skB|6c467f66104110b4a5b1b74606bf60c9ec0029d3caec91847c9d9626421737f1"
+   }
+  ],
+  "tema_mail": [
+   "518: add_filter( 'woocommerce_email_attachments', function( $attachments, $email_id, $order, $email ) {",
+   "522: $attachments[] = $pdf_file;",
+   "525: return $attachments;",
+   "622: add_filter( 'woocommerce_email_attachments', 'petshop_remove_invoice_from_processing_email', 9999, 4 );",
+   "624: function petshop_remove_invoice_from_processing_email( $attachments, $email_id, $order, $email ) {",
+   "625: if ( $email_id !== 'customer_processing_order' ) return $attachments;",
+   "626: if ( empty( $attachments ) || ! is_array( $attachments ) ) return array();",
+   "628: foreach ( $attachments as $attachment ) {"
+  ],
+  "shots": [
+   {
+    "n": "s1619_e6_skydelis_35809_ppk",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&atidaryti=35809",
+    "w": 1440,
+    "h": 1000,
+    "full": true,
+    "eval": "(async function(){ var sl=function(ms){return new Promise(function(r){setTimeout(r,ms);});}; await sl(2500); var d=document.getElementById(\"skDokT\"); var v=document.getElementById(\"skV\"); return {dok:d?d.innerText:\"\", footer:v?v.innerText:\"\", pr:(document.getElementById(\"skPr\")||{}).innerText||\"\"}; })()"
+   },
+   {
+    "n": "s1619_e6_skydelis_35811_atsiemimas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&atidaryti=35811",
+    "w": 1440,
+    "h": 1000,
+    "full": true,
+    "eval": "(async function(){ var sl=function(ms){return new Promise(function(r){setTimeout(r,ms);});}; await sl(2500); var d=document.getElementById(\"skDokT\"); var v=document.getElementById(\"skV\"); return {dok:d?d.innerText:\"\", footer:v?v.innerText:\"\", pr:(document.getElementById(\"skPr\")||{}).innerText||\"\"}; })()"
+   },
+   {
+    "n": "s1619_e6_skydelis_35810_neisrusiuotas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=neisrusiuoti&atidaryti=35810",
+    "w": 1440,
+    "h": 1000,
+    "full": true,
+    "eval": "(async function(){ var sl=function(ms){return new Promise(function(r){setTimeout(r,ms);});}; await sl(2500); var d=document.getElementById(\"skDokT\"); var v=document.getElementById(\"skV\"); return {dok:d?d.innerText:\"\", footer:v?v.innerText:\"\", pr:(document.getElementById(\"skPr\")||{}).innerText||\"\"}; })()"
+   },
+   {
+    "n": "s1619_e6_saskaitos_ppk",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=saskaitos&t=ppk",
+    "w": 1440,
+    "h": 800,
+    "eval": "(function(){var t=document.querySelector(\"table.dl-sask\"); return t?t.innerText.slice(0,400):\"lentelės nėra\";})()"
+   },
+   {
+    "n": "s1619_e6_saskaitos_sablonai",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=saskaitos&t=kr&pd_ok=dl_info&pd_nr=%C5%A1ablonas%7C%E2%80%9Eparuo%C5%A1ta%20atsiimti%E2%80%9C%20%28per%C5%BEi%C5%ABra%29",
+    "w": 1440,
+    "h": 1400,
+    "full": true,
+    "eval": "(function(){ document.querySelectorAll(\"details.dl-sabl\").forEach(function(d){d.open=true;}); return Array.from(document.querySelectorAll(\"details.dl-sabl summary\")).map(function(s){return s.innerText;}); })()"
+   },
+   {
+    "n": "s1619_e6_naujas_apmokejimas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=naujas",
+    "w": 1440,
+    "h": 1000,
+    "full": true,
+    "eval": "(function(){ return Array.from(document.querySelectorAll(\".dl-nu-mok label\")).map(function(l){return l.innerText;}); })()"
+   }
+  ]
+ },
+ "shots": {
+  "s1619_e6_skydelis_35809_ppk": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&atidaryti=35809\", waiting until \"networkidle\"\n",
+  "s1619_e6_skydelis_35811_atsiemimas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "dok": "IAPV000167\n· Išankstinė sąskaita · 2026-09-06 · 2,60 € · PDF nėra\nAVPN000339\n· PVM sąskaita faktūra · 2026-09-06 · 2,60 € · PDF\nPinigų priėmimo kvitas · 2,60 € · Suformuoti kvitą",
+    "footer": "Redaguoti\nKaip mato klientas\nGrąžinimas\nParašyti klientui",
+    "pr": "Atsiėmimas AV\nATSIEMIMAS Testas S1619 · +37060000097 · atsiemimas.s1619@dev.avesa.lt"
+   }
+  },
+  "s1619_e6_skydelis_35810_neisrusiuotas": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=neisrusiuoti&atidaryti=35810\", waiting until \"networkidle\"\n",
+  "s1619_e6_saskaitos_ppk": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=saskaitos&t=ppk",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": "Data\tNr.\tTipas\tUžsakymas\tKlientas\tSuma\tPDF\n2026-09-06\tPPK000102\tKvitas\t#35809 Vykdomas\tTELEFONU Testas S1619\t15,08 €\tPDF\n2026-09-06\tPPK000101\tKvitas\t#35807 Vykdomas\tTELEFONU Testas S1618\t7,78 €\tPDF\n2 dok.\t0,00 €\t"
+  },
+  "s1619_e6_saskaitos_sablonai": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=saskaitos&t=kr",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": [
+    "Kreditinės laiško šablonas (numatytas)",
+    "„Paruošta atsiimti“ laiško šablonas (Atsiėmimas AV) (numatytas)"
+   ]
+  },
+  "s1619_e6_naujas_apmokejimas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=naujas",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": [
+    "Pavedimu — laukiam pinigų: klientui išankstinė sąskaita ir rekvizitai el. paštu (jei yra), užsakymas „Neapmokėti“, gavus — „Pažymėti apmokėtu“",
+    "Apmokėta grynais — užsakymas iškart į darbą; pinigų priėmimo kvitą (PPK) suformuok skydelio „Sąskaitos“ bloke, kai klientas sumoka"
+   ]
+  }
+ }
+}
