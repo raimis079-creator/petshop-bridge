@@ -1,0 +1,98 @@
+{
+ "v": "dep-185623",
+ "kurimas": 200,
+ "sid": 4838,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1617 r11",
+  "temp_istrinta": 1,
+  "cron_cb": [
+   [
+    10,
+    "closure",
+    "wp-content/plugins/petshop-pragma/petshop-pragma.php",
+    36
+   ]
+  ],
+  "cron_next": 1791187200,
+  "cron_next_d": "2026-10-05 11:00",
+  "snippets": [
+   {
+    "id": "345",
+    "name": "Snippetu Sarasas v1",
+    "active": "0",
+    "scope": "global",
+    "len": "5469"
+   },
+   {
+    "id": "346",
+    "name": "Snippetu Valymas v1",
+    "active": "0",
+    "scope": "global",
+    "len": "5818"
+   },
+   {
+    "id": "637",
+    "name": "Petshop Saskaitos Recon LIGHT v2",
+    "active": "0",
+    "scope": "front-end",
+    "len": "2839"
+   },
+   {
+    "id": "643",
+    "name": "Petshop Invoice Bug Recon v1",
+    "active": "0",
+    "scope": "front-end",
+    "len": "3212"
+   },
+   {
+    "id": "644",
+    "name": "Petshop Invoice Bug Recon2 v1",
+    "active": "0",
+    "scope": "front-end",
+    "len": "3726"
+   },
+   {
+    "id": "1146",
+    "name": "S212-C Find Hash (read-only)",
+    "active": "0",
+    "scope": "front-end",
+    "len": "1683"
+   },
+   {
+    "id": "4838",
+    "name": "TEMP PS dep-185623",
+    "active": "1",
+    "scope": "global",
+    "len": "2795"
+   }
+  ],
+  "failai": [
+   "wp-content/plugins/petshop-pragma/petshop-pragma.php (22662)"
+  ],
+  "opcijos": [
+   {
+    "option_name": "petshop_pragma_known_emails",
+    "v": "a:1:{i:0;s:20:\"raimundas@gyvunai.lt\";}"
+   },
+   {
+    "option_name": "petshop_pragma_log",
+    "v": "a:12:{i:0;a:2:{s:4:\"time\";s:19:\"2026-05-26 18:52:08\";s:7:\"message\";s:59:\"2026-05: eksportas sekmingai. Uzsakymu: 2, Nauju klientu: 2\";}i:1;a:2:{s:4:\"t"
+   }
+  ],
+  "active_plugins": [
+   "petshop-attributes/petshop-attributes.php",
+   "petshop-core/petshop-core.php",
+   "petshop-esp/petshop-esp.php",
+   "petshop-fbt/petshop-fbt.php",
+   "petshop-feeds/petshop-feeds.php",
+   "petshop-fonts/petshop-fonts.php",
+   "petshop-pragma/petshop-pragma.php",
+   "petshop-promotions/petshop-promotions.php",
+   "petshop-xml/petshop-xml.php"
+  ]
+ }
+}
