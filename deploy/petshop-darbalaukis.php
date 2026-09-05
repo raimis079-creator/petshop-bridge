@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.29 (S1617, 5 etapas: „Pakartotinis užsakymas“ — naujas mažas užsakymas + apmokėjimo nuoroda; v3.22: WC laiškai pakartotiniam užsakymui išjungti per `woocommerce_email_enabled_*`; v3.23 (Raimis 09-05 „pavedimas reikia“): apmokėjimo puslapyje Paysera + bankinis pavedimas, laiške ir „ačiū“ puslapyje rekvizitai, kortelėje „Apmokėta pavedimu“ — darbuotojas patvirtina gavęs pinigus; v3.24: pasirinkus pavedimą (`on-hold`) nuoroda toliau veikia — Paysera vis dar galima; v3.25: KREDITINĖ pusiau automatinė (spec §12.5, Raimis K1–K3) — žr. žemiau; v3.26/v3.27: SĄSKAITOS — skydelio blokas „Sąskaitos“ + langas `view=saskaitos` (visi dokumentai, filtrai, PDF; v3.27: AVPN data iš `wc_order_operational_data`; v3.28: kreditinių refund'ai (`_ps_kreditine`) — savi, kaip `_ps_kiekis`: sumose nerodomi, skydelio antraštė lieka pradinė suma; v3.29: `sumu_eilutes` — WC `refund_{indeksas}`, ne `refund_{id}` (S1616 klaida, savų refund'ų eilutės klientui vis tiek rodėsi); po v3.20) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.30.1 (S1617, 5 etapas: „Pakartotinis užsakymas“ — naujas mažas užsakymas + apmokėjimo nuoroda; v3.22: WC laiškai pakartotiniam užsakymui išjungti per `woocommerce_email_enabled_*`; v3.23 (Raimis 09-05 „pavedimas reikia“): apmokėjimo puslapyje Paysera + bankinis pavedimas, laiške ir „ačiū“ puslapyje rekvizitai, kortelėje „Apmokėta pavedimu“ — darbuotojas patvirtina gavęs pinigus; v3.24: pasirinkus pavedimą (`on-hold`) nuoroda toliau veikia — Paysera vis dar galima; v3.25: KREDITINĖ pusiau automatinė (spec §12.5, Raimis K1–K3) — žr. žemiau; v3.26/v3.27: SĄSKAITOS — skydelio blokas „Sąskaitos“ + langas `view=saskaitos` (visi dokumentai, filtrai, PDF; v3.27: AVPN data iš `wc_order_operational_data`; v3.28: kreditinių refund'ai (`_ps_kreditine`) — savi, kaip `_ps_kiekis`: sumose nerodomi, skydelio antraštė lieka pradinė suma; v3.29: `sumu_eilutes` — WC `refund_{indeksas}`, ne `refund_{id}` (S1616 klaida, savų refund'ų eilutės klientui vis tiek rodėsi; v3.30: `paid` = `is_paid() || date_paid` — atšauktas apmokėtas užsakymas nebe „neapmokėta · laukiam pinigų“, uždaryto pastaba „atšauktas / įvykdytas“; skydelio footer „Kaip mato klientas“ — kliento užsakymo puslapis (spec 5 et.)); po v3.20) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -307,7 +307,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.29';
+	const VERSIJA = '3.30.1';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -635,7 +635,7 @@ class Petshop_Darbalaukis {
 	/** Vieno užsakymo faktai: eilutės su keliais ir žingsneliais, dalys, takelis, eilės, mygtukas, skuba. */
 	protected static function faktai( $o, $z = array() ) {
 		$id = $o->get_id(); $st = $o->get_status();
-		$f  = array( 'o' => $o, 'id' => $id, 'st' => $st, 'paid' => $o->is_paid(), 'kl' => self::d( 'klausimas', $o ), 'vez' => self::d( 'vezejas', $o ),
+		$f  = array( 'o' => $o, 'id' => $id, 'st' => $st, 'paid' => $o->is_paid() || (bool) $o->get_date_paid(), // v3.30: atšauktas / kitas uždarytas, bet apmokėtas — vis tiek „apmokėta“ 'kl' => self::d( 'klausimas', $o ), 'vez' => self::d( 'vezejas', $o ),
 			'eil' => array(), 'dalys' => array(), 'rus' => '', 'eiles' => array(), 'takelis' => array(), 'btn' => null, 'skuba' => PHP_INT_MAX, 'uzdarytas' => false, 'riba_s' => '', 'btn_s' => '', 'tiesiai' => array(), 'av_side' => false, 'siuntos_klaida' => null );
 		$neapm  = in_array( $st, Petshop_Desk::STATUSAI['neapmoketi'], true );
 		$atsauk = in_array( $st, Petshop_Desk::STATUSAI['atsaukti'], true );
@@ -858,10 +858,11 @@ class Petshop_Darbalaukis {
 		$pak = self::d( 'reikia_pakuociu', $o ) ? array( 'kiek' => Petshop_Desk::pakuociu( $o ), 'u' => self::veiksmo_url( 'pakuotes', $id, $g ) ) : null;
 		$perreg = ( ! empty( $f['dalys']['av']['siunta'] ) && 'lp' !== $f['vez'] && ! $f['uzdarytas'] ) ? self::dl_url( 'lipdukas', $id, array( 'sandelis' => 'av', 'perreg' => 1 ) ) : '';
 		$b = $f['btn'];
-		$pastaba = ! $f['paid'] ? 'Neapmokėtas — laukiam kliento pinigų. Gavus pavedimą — „Pažymėti apmokėtu“.'
+		if ( $f['uzdarytas'] ) { $pastaba = in_array( $f['st'], Petshop_Desk::STATUSAI['atsaukti'], true ) ? 'Užsakymas atšauktas' . ( $f['paid'] ? ' — buvo apmokėtas, pinigus grąžink rankomis (jei dar ne).' : '.' ) : 'Užsakymas įvykdytas.'; } // v3.30 (v3.30.1: be įdėto ternario — PHP 8 fatal)
+		else { $pastaba = ! $f['paid'] ? 'Neapmokėtas — laukiam kliento pinigų. Gavus pavedimą — „Pažymėti apmokėtu“.'
 			: ( ! $f['rus'] ? 'Sistema pasiūlė, iš kur važiuos kiekviena prekė. Pataisyk, jei reikia, ir spausk „Surūšiuota“.'
 			: ( 'auto' === $f['rus'] ? 'Surūšiuota pati — viskas iš vienos vietos. Keisk, jei reikia, iki lipduko.'
-			: 'Surūšiuota. Kelią dar gali keisti, kol prekei nepadarytas pirmas žingsnis.' ) );
+			: 'Surūšiuota. Kelią dar gali keisti, kol prekei nepadarytas pirmas žingsnis.' ) ); }
 		if ( $o->get_meta( self::VEL_META ) ) { $pastaba .= ' Klientui pranešta apie vėlavimą (' . substr( (string) $o->get_meta( self::VEL_META ), 5, 11 ) . ').'; } // v3.13
 		if ( $f['grizta'] || $o->get_meta( self::PAKART_ID_META ) ) { $pk_sk = self::pakartotinis_bukle( $o ); if ( $pk_sk ) { $pastaba .= ' ' . $pk_sk['t']; } } // v3.21: pakartotinio užsakymo būsena skydelyje
 		if ( $f['nepakuok'] ) { $pastaba .= ' ⚠ SURINKIMO LAPE BUS IR JAU IŠSIŲSTOS PREKĖS — NEPAKUOK: ' . implode( '; ', $f['nepakuok'] ) . '. Pakuok tik prekes be užrakto „IŠSIŲSTA“.'; } // v3.18
@@ -885,6 +886,7 @@ class Petshop_Darbalaukis {
 			'laukti' => ( $f['kl'] && ! $f['uzdarytas'] ) ? self::veiksmo_url( 'klaus', $id, $g ) . '&t=laukti' : '',
 			'nesurinkta' => ( ! empty( $f['dalys']['av']['lapas'] ) && empty( $f['dalys']['av']['siunta'] ) && ! $f['uzdarytas'] ) ? self::dl_url( 'nesurinkta', $id ) : '',
 			'dok' => self::dokumentai( $o ), // v3.26
+			'klientas_url' => $o->get_checkout_order_received_url(), // v3.30: „Kaip mato klientas“ — kliento užsakymo puslapis (svečio nuoroda su raktu)
 			'velavimas' => self::velavimo_mygtukas( $f ), // v3.15
 			'red' => self::redagavimas( $f ), 'siuntos_klaida' => $f['siuntos_klaida'] ? $f['siuntos_klaida']['t'] : '', // v3.16
 			'kk' => $kk, // v3.19
@@ -3292,7 +3294,7 @@ class Petshop_Darbalaukis {
 		$('skZur').innerHTML='<span class="pilkas maz">kraunama…</span>'; fetch(ajaxurl+'?action=ps_dl_zurnalas&id='+o.id+'&n='+encodeURIComponent(o.zn),{credentials:'same-origin'}).then(function(r){return r.json();}).then(function(j){ if(j&&j.success&&$('skNr').textContent.indexOf('#'+o.nr)===0) $('skZur').innerHTML=j.data; }).catch(function(){ $('skZur').textContent='žurnalo įkelti nepavyko'; });
 		var f=''; if(o.rusiuoti) f+='<a class="v p" href="'+esc(o.rusiuoti)+'">Surūšiuota</a><span class="pilkas maz">peržiūrėk, iš kur važiuoja prekės, ir patvirtink</span>';
 		if(o.btn&&!o.rusiuoti){ if(o.btn.pasyvus) f+='<a class="kel ts" href="'+esc(o.btn.u)+'"><i></i>'+esc(o.btn.t)+'</a>'; else f+='<a class="v p" href="'+esc(o.btn.u)+'"'+(o.btn.d?' data-d="'+esc(JSON.stringify(o.btn.d))+'"':'')+'>'+esc(o.btn.t)+'</a>'; }
-		f+='<span style="margin-left:auto"></span>'+(o.red?'<button class="v t" id="skRed">Redaguoti</button>':'<button class="v t" disabled title="lipdukas jau užregistruotas / išsiųsta / uždaryta — keisk rankiniu būdu">Redaguoti</button>')+(o.nesurinkta?'<a class="v t" href="'+esc(o.nesurinkta)+'" title="Grąžinti į „Surinkti“">Atšaukti surinkimą</a>':'')+(o.sekimo?'<a class="v t" href="'+esc(o.sekimo)+'">Sekimo numeriai klientui</a>':'')+(o.velavimas?'<a class="v t" href="'+esc(o.velavimas.u)+'" data-d="'+esc(JSON.stringify(o.velavimas.d))+'">Pranešti klientui apie vėlavimą</a>':'')+(o.mail?'<a class="v t" href="mailto:'+esc(o.mail)+'?subject='+encodeURIComponent('Užsakymas #'+o.nr+' — petshop.lt')+'">Parašyti klientui</a>':'')+(o.atsaukti?'<a class="v t raud" href="'+esc(o.atsaukti.u)+'" data-d="'+esc(JSON.stringify(o.atsaukti.d))+'">Atšaukti</a>':'');
+		f+='<span style="margin-left:auto"></span>'+(o.red?'<button class="v t" id="skRed">Redaguoti</button>':'<button class="v t" disabled title="lipdukas jau užregistruotas / išsiųsta / uždaryta — keisk rankiniu būdu">Redaguoti</button>')+(o.nesurinkta?'<a class="v t" href="'+esc(o.nesurinkta)+'" title="Grąžinti į „Surinkti“">Atšaukti surinkimą</a>':'')+(o.sekimo?'<a class="v t" href="'+esc(o.sekimo)+'">Sekimo numeriai klientui</a>':'')+(o.velavimas?'<a class="v t" href="'+esc(o.velavimas.u)+'" data-d="'+esc(JSON.stringify(o.velavimas.d))+'">Pranešti klientui apie vėlavimą</a>':'')+(o.klientas_url?'<a class="v t" target="_blank" rel="noopener" href="'+esc(o.klientas_url)+'" title="Kliento užsakymo puslapis — kaip jį mato klientas (siuntos, sąskaita)">Kaip mato klientas</a>':'')+(o.mail?'<a class="v t" href="mailto:'+esc(o.mail)+'?subject='+encodeURIComponent('Užsakymas #'+o.nr+' — petshop.lt')+'">Parašyti klientui</a>':'')+(o.atsaukti?'<a class="v t raud" href="'+esc(o.atsaukti.u)+'" data-d="'+esc(JSON.stringify(o.atsaukti.d))+'">Atšaukti</a>':'');
 		$('skV').innerHTML=f; SK.classList.add('on'); UZ.classList.add('on'); SK.setAttribute('aria-hidden','false'); skOn=true;
 		var rb=$('skRed'); if(rb){ rb.onclick=function(){ redaguoti(o); }; } if(redOn&&o.red){ redOn=false; redaguoti(o); } else redOn=false; }
 	/* --- v3.16: Redaguoti (adresas / paštomatas) --- */
