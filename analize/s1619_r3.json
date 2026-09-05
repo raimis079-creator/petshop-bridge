@@ -1,0 +1,158 @@
+{
+ "v": "dep-215444",
+ "kurimas": 200,
+ "sid": 4864,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1619 r3",
+  "temp_istrinta": 1,
+  "sargas": {
+   "f": "petshop-siuntu-laiskai.php",
+   "nuo": 139,
+   "kodas": [
+    "\tpublic static function uzbaigimo_sargas( $order ) {",
+    "\t\tif ( ! $order instanceof WC_Order || ! $order->get_id() ) { return; }",
+    "\t\t$ch = $order->get_changes();",
+    "\t\tif ( empty( $ch['status'] ) || 'completed' !== $ch['status'] ) { return; }",
+    "\t\tif ( $order->get_meta( '_ps_uzbaigti_be_siuntu' ) ) { return; }",
+    "",
+    "\t\t$tiketasi = (int) $order->get_meta( '_ps_shipments' );",
+    "\t\tif ( $tiketasi <= 1 ) { return; }",
+    "",
+    "\t\t$turima = self::registruota_grupiu( $order );",
+    "\t\tif ( $turima >= $tiketasi ) { return; }",
+    "",
+    "\t\tglobal $wpdb;",
+    "\t\t$db_status = (string) $wpdb->get_var( $wpdb->prepare(",
+    "\t\t\t\"SELECT status FROM {$wpdb->prefix}wc_orders WHERE id=%d\", $order->get_id() ) );",
+    "\t\t$orig = $db_status ? preg_replace( '/^wc-/', '', $db_status ) : 'processing';",
+    "\t\tif ( 'completed' === $orig ) { return; }",
+    "",
+    "\t\t$order->set_status( $orig, '', false );",
+    "\t\t$order->add_order_note( sprintf(",
+    "\t\t\t'Užbaigimas sustabdytas: registruotos %d iš %d siuntų. Užbaigti galima, kai visos siuntos registruotos (apėjimas ypatingam atvejui: meta _ps_uzbaigti_be_siuntu = 1).',",
+    "\t\t\t$turima, $tiketasi ), false, true );",
+    "\t}"
+   ]
+  },
+  "sargo_klase": "Petshop_Siuntos",
+  "wc_laiskai": {
+   "WC_Email_Customer_Completed_Order": {
+    "on": true,
+    "subject": ""
+   },
+   "WC_Email_Customer_Processing_Order": {
+    "on": true,
+    "subject": ""
+   },
+   "WC_Email_Customer_On_Hold_Order": {
+    "on": false,
+    "subject": ""
+   },
+   "WC_Email_New_Order": {
+    "on": true,
+    "subject": ""
+   }
+  },
+  "desk_lapai": [
+   "370: \t\t\tif ( $turi_av ) {",
+   "371: \t\t\t\t$out[] = array( 'id' => 'lapai', 't' => 'Surinkti', 'url' => self::veiksmo_url( 'lapai', $id ), 'd' => null );",
+   "372: \t\t\t}",
+   "--",
+   "452: ",
+   "453: \t\tif ( 'lapai' !== $out[0]['id'] ) {",
+   "454: \t\t\t$out[] = array( 'id' => 'lapai', 't' => 'Pakavimo lapas', 'url' => self::veiksmo_url( 'lapai', $id ), 'd' => null );",
+   "--",
+   "453: \t\tif ( 'lapai' !== $out[0]['id'] ) {",
+   "454: \t\t\t$out[] = array( 'id' => 'lapai', 't' => 'Pakavimo lapas', 'url' => self::veiksmo_url( 'lapai', $id ), 'd' => null );",
+   "455: \t\t}",
+   "--",
+   "630: ",
+   "631: \t\t$masinis = in_array( $v, array( 'lapai', 'perduoti', 'vp_reg', 'vp_bulk', 'vp_manifestas' ), true );",
+   "632: \t\t$o = $id ? wc_get_order( $id ) : false;",
+   "--",
+   "648: ",
+   "649: \t\tif ( 'lapai' === $v && $ids ) {",
+   "650: \t\t\tset_transient( 'ps_sheets_' . get_current_user_id(), $ids, 900 );",
+   "--",
+   "1912: \t\tprintf( '<a class=\"pd-btn pd-btn-p pd-rbig\" target=\"_blank\" rel=\"noopener\" href=\"%s\">Atidaryti surinkimo lapus →</a>',",
+   "1913: \t\t\tesc_url( self::veiksmo_url( 'lapai', 0 ) . '&ids=' . implode( ',', $p['av'] ) ) );",
+   "1914: \t}",
+   "--",
+   "3156: \t\t\t<span class=\"pd-bcnt\" id=\"pdBcnt\">Pažymėta 0</span>",
+   "3157: \t\t\t<button class=\"pd-btn\" data-ba=\"<?php echo esc_attr( self::veiksmo_url( 'lapai', 0 ) ); ?>\">Surinkimo lapai</button>",
+   "3158: \t\t\t<button class=\"pd-btn\" data-ba=\"<?php echo esc_attr( self::veiksmo_url( 'perduoti', 0 ) ); ?>\">Perduoti tiekėjams</button>",
+   "--"
+  ],
+  "desk_veiksmas_apmoketa": [
+   "344: \t\t\t$out[] = array(",
+   "345: \t\t\t\t'id'  => 'apmoketa',",
+   "346: \t\t\t\t't'   => 'Pažymėti apmokėtu',",
+   "--",
+   "346: \t\t\t\t't'   => 'Pažymėti apmokėtu',",
+   "347: \t\t\t\t'url' => self::veiksmo_url( 'apmoketa', $id ),",
+   "348: \t\t\t\t'd'   => array(",
+   "--",
+   "872: ",
+   "873: \t\tif ( 'apmoketa' === $v ) {",
+   "874: \t\t\tif ( $o->is_paid() ) {",
+   "--",
+   "883: \t\t\t\tif ( $tylus ) { self::laiskai_off(); }",
+   "884: \t\t\t\t$o->payment_complete();",
+   "885: \t\t\t\tif ( $tylus ) { self::laiskai_on(); }",
+   "--",
+   "885: \t\t\t\tif ( $tylus ) { self::laiskai_on(); }",
+   "886: \t\t\t\t$zinute = $tylus ? 'apmoketa_tyliai' : 'apmoketa';",
+   "887: ",
+   "--",
+   "1473: \t\t\t\t$m = $f['mokejimas'];",
+   "1474: \t\t\t\tif ( 'apmoketa' === $m && ! $o->is_paid() ) { continue; }",
+   "1475: \t\t\t\tif ( 'neapmoketa' === $m && $o->is_paid() ) { continue; }",
+   "--",
+   "2258: \t\t$t  = array(",
+   "2259: \t\t\t'apmoketa'        => array( 'ok', 'Užsakymas #%s pažymėtas apmokėtu. Prekės nurašytos, klientui išsiųstas patvirtinimas.' ),",
+   "2260: \t\t\t'apmoketa_tyliai' => array( 'ok', 'Užsakymas #%s pažymėtas apmokėtu. Prekės nurašytos. Laiškas klientui NEIŠSIŲSTAS.' ),",
+   "--",
+   "2463: \t\t\t''           => 'Mokėjimas: visi',",
+   "2464: \t\t\t'apmoketa'   => 'Apmokėta',",
+   "2465: \t\t\t'neapmoketa' => 'Neapmokėta',",
+   "--"
+  ],
+  "dl_surinkta_zyme": {
+   "f": "petshop-darbalaukis.php",
+   "nuo": 375,
+   "kodas": [
+    "\tpublic static function surinkta_zyme() {",
+    "\t\tif ( 'lapai' !== sanitize_key( $_GET['v'] ?? '' ) || ! current_user_can( 'edit_shop_orders' ) ) { return; }",
+    "\t\t$ids = array(); if ( ! empty( $_GET['id'] ) ) { $ids[] = absint( $_GET['id'] ); } if ( ! empty( $_GET['ids'] ) ) { $ids = array_merge( $ids, array_map( 'absint', explode( ',', sanitize_text_field( wp_unslash( $_GET['ids'] ) ) ) ",
+    "\t\tif ( ! wp_verify_nonce( $_GET['_wpnonce'] ?? '', 'ps_desk_lapai_' . absint( $_GET['id'] ?? 0 ) ) ) { return; }",
+    "\t\tforeach ( array_unique( array_filter( $ids ) ) as $oid ) { $o = wc_get_order( $oid ); if ( $o && ! $o->get_meta( '_ps_surinkta' ) ) { $o->update_meta_data( '_ps_surinkta', current_time( 'mysql' ) . ' | ' . wp_get_current_user()-",
+    "\t}"
+   ]
+  },
+  "dl_siuntos_laiskas_head": {
+   "f": "petshop-darbalaukis.php",
+   "nuo": 2867,
+   "kodas": [
+    "\tpublic static function siuntos_laiskas( $o, $f, $dalis, $iss ) {",
+    "\t\t$el = $o->get_billing_email();",
+    "\t\tif ( ! $el ) { return array( false, 'klientui nepranešta — el. pašto nėra' ); }",
+    "\t\tif ( $dalis && ! empty( $iss[ $dalis ]['laiskas'] ) ) { return array( false, 'klientui jau pranešta apie šią siuntą (' . $iss[ $dalis ]['laiskas'] . ')' ); }",
+    "\t\t$dalys = array(); foreach ( $f['dalys'] as $k => $p ) { if ( $p ) { $dalys[ $k ] = $p; } }",
+    "\t\t$viso = count( $dalys ); $n = 0; foreach ( $dalys as $k => $p ) { if ( ! empty( $iss[ $k ] ) ) { $n++; } }",
+    "\t\tif ( ! $dalis ) { $n = $viso; }",
+    "\t\t$baig = 0; foreach ( $f['dalys_baigtos'] as $sar ) { $baig += count( (array) $sar ); } $viso += $baig; $n += $baig; // v3.18: ankstesnės AV siuntos",
+    "\t\t$vardas_l = $viso > 1 ? sprintf( 'Išsiųsta %d iš %d siuntų', $n, $viso ) : 'Užsakymas išsiųstas';",
+    "\t\t$nr_uzs = $o->get_order_number(); $bazine = get_option( 'woocommerce_email_base_color', '#2d6a35' );",
+    "\t\t// Šios siuntos prekės / dar keliaus.",
+    "\t\t$sios = array(); $kitos = array(); $nrs = array(); $vez = 'venipak';",
+    "\t\tforeach ( $f['eil'] as $e ) {",
+    "\t\t\tif ( ! empty( $e['atsaukta'] ) || ! empty( $e['issiusta_l'] ) ) { continue; } // v3.17 / v3.18"
+   ]
+  },
+  "temp_liko": 1
+ }
+}
