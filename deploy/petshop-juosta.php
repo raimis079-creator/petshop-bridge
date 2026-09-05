@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Juosta v1.7 (S1617) — dešinėje, prie „Žurnalas“, nuoroda „Sąskaitos“ (darbalaukis `view=saskaitos`, v3.26) — tik `manage_woocommerce` (Raimis / buhalterė); darbuotojui nieko nepridėta.
+ *
  * Petshop Juosta v1.6 (S1617) — „Užsakymai“ / „Neapmokėti“ skaičiai be pakartotinių užsakymų (meta `_ps_pakartotinis`, darbalaukis v3.21 — jie darbalaukyje nerodomi).
  *
  * Petshop Juosta v1.5 (S1607) — Prekių kortelė (`.pskat-kort`, sticky top:0) lįsdavo po juosta (44+26 px + admin bar 32):
@@ -58,7 +60,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Juosta {
 
-	const VERSIJA = '1.6';
+	const VERSIJA = '1.7';
 	const TR      = 'ps_juosta_sk';
 
 	/** Puslapiai, kur juosta NErodoma (Raimio analitika turi savą UI). */
@@ -176,7 +178,7 @@ class Petshop_Juosta {
 				<a class="psj-home" href="<?php echo esc_url( home_url( '/' ) ); ?>" target="_blank" rel="noopener" title="Svetainė kliento akimis (nauja kortelė)">⌂</a>
 				<nav class="psj-nav">
 					<?php
-					echo $a( 'ps-desk', 'Užsakymai', array( array( $s['uzs'], 'reikia veiksmo', 'a' ), array( $s['neapm'], 'neapmokėti', 'n' ) ), 'ps-desk' === $pg && 'rytas' !== $view );
+					echo $a( 'ps-desk', 'Užsakymai', array( array( $s['uzs'], 'reikia veiksmo', 'a' ), array( $s['neapm'], 'neapmokėti', 'n' ) ), 'ps-desk' === $pg && ! in_array( $view, array( 'rytas', 'saskaitos' ), true ) );
 					echo $a( 'ps-desk', 'Rytinė eiga', null, 'ps-desk' === $pg && 'rytas' === $view, '&view=rytas' );
 					echo $a( 'ps-katalogas', 'Prekės', $s['reikia'], 'ps-katalogas' === $pg, '', null === $s['reikia'] ? '' : 'reikia užsakyti: ' . (int) $s['reikia'] . ( empty( $s['reikia_laikas'] ) ? '' : ' (katalogo duomenys ' . wp_date( 'H:i', $s['reikia_laikas'] ) . ')' ) );
 					echo $a( 'ps-gavimas', 'Gavimas', null, 'ps-gavimas' === $pg );
@@ -192,6 +194,7 @@ class Petshop_Juosta {
 					<input type="search" name="q" id="psjQ" placeholder="Užsakymas, klientas, el. paštas, telefonas, adresas, prekė, SKU" autocomplete="off" value="<?php echo 'ps-desk' === $pg && isset( $_GET['q'] ) ? esc_attr( sanitize_text_field( wp_unslash( $_GET['q'] ) ) ) : ''; ?>">
 				</form>
 				<div class="psj-r">
+					<?php if ( current_user_can( 'manage_woocommerce' ) ) { echo $a( 'ps-desk', 'Sąskaitos', null, 'ps-desk' === $pg && 'saskaitos' === $view, '&view=saskaitos', 'Visos sąskaitos — PVM, išankstinės, kreditinės (PDF)' ); } // v1.7 ?>
 					<?php echo $a( 'ps-ivykiai', 'Žurnalas', null, 'ps-ivykiai' === $pg, '', 'Užsakymų žurnalas — kas, ką, kada' ); ?>
 					<span class="psj-user" title="<?php echo esc_attr( $u->user_login ); ?>"><?php echo esc_html( $u->display_name ); ?></span>
 					<a class="psj-out" href="<?php echo esc_url( wp_logout_url( wp_login_url() ) ); ?>" title="Atsijungti">⏻</a>
