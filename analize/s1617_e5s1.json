@@ -1,0 +1,140 @@
+{
+ "v": "dep-072052",
+ "kurimas": 200,
+ "sid": 4816,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S1": {
+  "v": "S1617 e5d",
+  "f": "S1",
+  "temp_istrinta": 1,
+  "versija": "3.25",
+  "md5": "bd1bb760aa56182b003e6eadc939ba21",
+  "base_md5": "0461c0df089d1be3d5da19c91f085605",
+  "klaus_code": 200,
+  "kort": {
+   "35414": {
+    "sarasas": "09-04 23:04 Testuotojas: kiekis 2 → 1 Animonda Carny Adult Beef + Chicken + Duck Heart – (2,60 €) Kreditinė",
+    "mygtukai": [
+     "Grąžinta",
+     "Atidaryti",
+     "Parašyti klientui",
+     "Atšaukti"
+    ],
+    "formos": [
+     {
+      "dlg": "Išrašoma kreditinė PVM sąskaita faktūra esamam WC grąžinimo įrašui: numeris KR-AVPN iš eilės, PDF čia. Pinigų sistema ne",
+      "rows": [
+       "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su−1−2,60 €",
+       "Kreditinė iš viso−2,60 €"
+      ],
+      "inputs": [],
+      "pristatymas": 0,
+      "mokestis": null,
+      "nonce": "a8d848f9db",
+      "g": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai"
+     }
+    ],
+    "kr_pdf_url": "",
+    "kr_laiskas_url": ""
+   },
+   "35434": {
+    "sarasas": "09-04 23:58 Testuotojas: siunta V07267E1000777 grįžo → atšaukta: 37,03 − 3,99 (33,04 €) Kreditinė",
+    "mygtukai": [
+     "Grąžinta",
+     "Atidaryti",
+     "Parašyti klientui"
+    ],
+    "formos": [
+     {
+      "dlg": "Sukuriamas WC grąžinimo įrašas (pinigų nejudina, likučių neliečia — jie jau sutvarkyti), išrašoma kreditinė PVM sąskaita",
+      "rows": [
+       "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su[input] iš 1−2,60 €",
+       "Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg[input] iš 1−29,60 €",
+       "[input] Pristatymas (visa siunta grįžo)−4,83 €",
+       "Kreditinė iš viso−37,03 €"
+      ],
+      "inputs": [
+       [
+        "q[849]",
+        "1",
+        "1"
+       ],
+       [
+        "q[850]",
+        "1",
+        "1"
+       ]
+      ],
+      "pristatymas": 1,
+      "mokestis": 1,
+      "nonce": "76b394c33c",
+      "g": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai"
+     }
+    ],
+    "kr_pdf_url": "",
+    "kr_laiskas_url": ""
+   },
+   "35436": {
+    "sarasas": "",
+    "mygtukai": [
+     "Siųsti iš naujo",
+     "Atšaukti — prekės grįžo į AV",
+     "Atidaryti",
+     "Parašyti klientui"
+    ],
+    "formos": [],
+    "kr_pdf_url": "",
+    "kr_laiskas_url": ""
+   }
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788594753|Sx0hypVxs3N9Nv4KkQcDlXrU5LyPLrQfQGunDULeQNi|de1c816d0a0b51e10d8047a713e5c2c45938a774ad25cd7c5554d5d1086fb9e5"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788594753|Sx0hypVxs3N9Nv4KkQcDlXrU5LyPLrQfQGunDULeQNi|a31dd0c4b724f728f4d72b0281632be2075e099218239e40a7048e20008dc576"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788594753|Sx0hypVxs3N9Nv4KkQcDlXrU5LyPLrQfQGunDULeQNi|7c772f577c309a2a0bb32554544df0f28e1261a750a5bd0bb02a7c08228ce4f3"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1617_e5_klausimai_kr_forma",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1400,
+    "full": true,
+    "click": ".dl-kortele[data-id=\"35434\"] .dl-kr-b",
+    "eval": "({forma:(function(){var f=document.querySelector('.dl-kortele[data-id=\"35434\"] .dl-kr-f');return f?{display:f.style.display,viso:(f.querySelector('.dl-kr-viso')||{}).textContent,graz:(f.querySelector('.dl-kr-graz')||{}).textContent,txt:f.innerText.replace(/\\s+/g,' ').slice(0,500)}:null})(),m:[...document.querySelectorAll('.dl-kortele[data-id=\"35434\"] .dl-veiksmai .v')].map(function(x){return x.innerText;})})"
+   }
+  ]
+ },
+ "shots": {
+  "s1617_e5_klausimai_kr_forma": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": ".dl-kortele[data-id=\"35434\"] .dl-kr-b",
+   "eval": {
+    "forma": {
+     "display": "block",
+     "viso": "37,03",
+     "graz": "33,04",
+     "txt": "Kreditinė PVM sąskaita faktūra — visam atšauktam užsakymui (peržiūrėk, pataisyk kiekius, patvirtink) Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su iš 1 −2,60 € Prins Diet Skin & Intestinal Hypoallergic sausas maistas katėms 1,5 kg iš 1 −29,60 € Pristatymas (visa siunta grįžo) −4,83 € Kreditinė iš viso −37,03 € Siuntos grąžinimo išlaidos 3,99 € — atskira PVM sąskaita (išskaičiuojama iš grąžinamos sumos; nežymėk, kai nepristatyta dėl mūsų / vežėjo kaltės) → klientui grąžin"
+    },
+    "m": [
+     "Grąžinta",
+     "Atidaryti",
+     "Parašyti klientui"
+    ]
+   }
+  }
+ }
+}
