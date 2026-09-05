@@ -1,0 +1,34 @@
+<?php
+/** TEMP PS S1619 run r1 — RECON (tik skaitymas): PPK (WC stock f-jos, cod užsakymas #35807, skaitikliai) + C (zona LT metodai, vezejas(), local_pickup paminėjimai, darbo laikas / adresas svetainėje, Venipak siuntėjas). */
+add_action('init', function(){
+  if (!isset($_GET['ps_r1'])) return;
+  $o=array('v'=>'S1619 r1'); global $wpdb; $p=$wpdb->prefix; set_time_limit(280);
+  $o['temp_istrinta']=(int)$wpdb->query("DELETE FROM {$p}snippets WHERE name LIKE 'TEMP%' AND active=0");
+  $J=function($o){ header('Content-Type: application/json'); echo json_encode($o,JSON_UNESCAPED_UNICODE|JSON_PARTIAL_OUTPUT_ON_ERROR); exit; };
+  $src=function($fn,$n=14){ try{ $r=new ReflectionFunction($fn); $l=file($r->getFileName()); return array('f'=>basename($r->getFileName()),'nuo'=>$r->getStartLine(),'kodas'=>array_map('trim',array_slice($l,$r->getStartLine()-1,$n))); }catch(Throwable $e){ return $e->getMessage(); } };
+  $grep=function($files,$re,$lim=40){ $out=array(); foreach($files as $f){ if(!file_exists($f)) { $out[]=basename($f).': NĖRA'; continue; } foreach(file($f) as $i=>$l){ if(preg_match($re,$l)){ $out[]=basename($f).':'.($i+1).': '.mb_substr(trim($l),0,170); if(count($out)>=$lim) return $out; } } } return $out; };
+  try{
+  $o['wc']=WC()->version; $o['php']=PHP_VERSION;
+  $o['wc_maybe_reduce']=$src('wc_maybe_reduce_stock_levels',18); $o['wc_reduce']=$src('wc_reduce_stock_levels',8);
+  $mu=WPMU_PLUGIN_DIR; $o['variklio_kabliai']=$grep(array($mu.'/petshop-av-reduce.php',$mu.'/petshop-desk.php',$mu.'/petshop-partijos.php',$mu.'/petshop-faktai.php'),'/add_(action|filter)\(\s*[\'"](woocommerce_(order_status|payment|reduce|can_reduce|thankyou|checkout)[^\'"]*)/',40);
+  $o['local_pickup']=$grep(array_merge(glob($mu.'/*.php'),array(get_stylesheet_directory().'/functions.php')),'/local_pickup|Atsiėmimas|atsiemim|Atsiimti/u',40);
+  try{ $rm=new ReflectionMethod('Petshop_Desk','vezejas'); $l=file($rm->getFileName()); $o['vezejas']=array('f'=>basename($rm->getFileName()),'nuo'=>$rm->getStartLine(),'kodas'=>array_map('trim',array_slice($l,$rm->getStartLine()-1,$rm->getEndLine()-$rm->getStartLine()+1))); }catch(Throwable $e){ $o['vezejas']=$e->getMessage(); }
+  $z=array(); foreach(WC_Shipping_Zones::get_zones() as $zi=>$zz){ $ms=array(); foreach($zz['shipping_methods'] as $m){ $ms[]=array('id'=>$m->id,'inst'=>(int)$m->instance_id,'on'=>$m->enabled,'t'=>(string)$m->title); } $z[]=array('zid'=>$zi,'n'=>$zz['zone_name'],'loc'=>array_map(function($l){return $l->type.':'.$l->code;},(array)$zz['zone_locations']),'m'=>$ms); } $o['zonos']=$z;
+  $o['darbo_laikas_posts']=$wpdb->get_results("SELECT ID,post_type,post_status,post_title,LOCATE('arbo laik',post_content) pos FROM {$p}posts WHERE post_status IN ('publish','private','draft') AND post_type IN ('page','post','wp_block','ux_block','blocks') AND post_content LIKE '%arbo laik%' LIMIT 12",ARRAY_A);
+  foreach($o['darbo_laikas_posts'] as &$r){ $c=$wpdb->get_var($wpdb->prepare("SELECT post_content FROM {$p}posts WHERE ID=%d",$r['ID'])); $r['istrauka']=mb_substr(preg_replace('/\s+/',' ',wp_strip_all_tags(mb_substr($c,max(0,(int)$r['pos']-200),700))),0,420); } unset($r);
+  $o['darbo_laikas_options']=$wpdb->get_results("SELECT option_name,LENGTH(option_value) len,LOCATE('arbo laik',option_value) pos FROM {$p}options WHERE option_value LIKE '%arbo laik%' AND option_name NOT LIKE '_transient%' LIMIT 10",ARRAY_A);
+  foreach($o['darbo_laikas_options'] as &$r){ $v=get_option($r['option_name']); $s=is_scalar($v)?(string)$v:json_encode($v,JSON_UNESCAPED_UNICODE); $pp=mb_strpos($s,'arbo laik'); $r['istrauka']=mb_substr(preg_replace('/\s+/',' ',wp_strip_all_tags(mb_substr($s,max(0,(int)$pp-250),650))),0,420); } unset($r);
+  $o['kontaktai_puslapis']=$wpdb->get_results("SELECT ID,post_name,post_title FROM {$p}posts WHERE post_type='page' AND post_status='publish' AND (post_name LIKE '%kontakt%' OR post_title LIKE '%ontakt%') LIMIT 5",ARRAY_A);
+  $vn=$wpdb->get_col("SELECT option_name FROM {$p}options WHERE option_name LIKE '%venipak%' AND option_name NOT LIKE '_transient%' LIMIT 20"); $o['venipak_opts']=$vn;
+  foreach($vn as $on){ $v=get_option($on); if(is_array($v)){ $s=array(); foreach($v as $k=>$x){ if(preg_match('/address|city|post|sender|name|phone|contact|country|adres|miest/i',$k)&&is_scalar($x)) $s[$k]=mb_substr((string)$x,0,80); } if($s) $o['venipak_siuntejas'][$on]=$s; } }
+  foreach(array(35807,35806,35801) as $id){ $x=wc_get_order($id); if(!$x){ $o['uzs'][$id]='NĖRA'; continue; } $it=array(); foreach($x->get_items() as $i){ $it[]=array('n'=>mb_substr($i->get_name(),0,30),'q'=>$i->get_quantity(),'red'=>$i->get_meta('_reduced_stock'),'av'=>$i->get_meta('_ps_av_reduced_qty'),'src'=>$i->get_meta('_ps_source')); }
+    $o['uzs'][$id]=array('st'=>$x->get_status(),'pm'=>$x->get_payment_method(),'pmt'=>$x->get_payment_method_title(),'paid'=>$x->is_paid(),'date_paid'=>$x->get_date_paid()?$x->get_date_paid()->date('Y-m-d H:i'):null,'total'=>$x->get_total(),'avpn'=>$x->get_meta('_petshop_avpn_number'),'iapv'=>$x->get_meta('_petshop_iapv_number'),'pdf'=>basename((string)$x->get_meta('_petshop_completed_pdf')),'stock_reduced'=>$x->get_data_store()->get_stock_reduced($id),'tel'=>$x->get_meta('_ps_telefonu'),'bill'=>trim($x->get_billing_first_name().' '.$x->get_billing_last_name()),'imone'=>$x->get_billing_company(),'items'=>$it); }
+  $o['skaitikliai']=array('ppk'=>get_option('petshop_ppk_counter'),'kr'=>get_option('petshop_kravpn_counter'),'avpn'=>get_option('petshop_avpn_counter'),'iapv'=>get_option('petshop_iapv_counter'),'atsiemimas_av'=>get_option('ps_dl_atsiemimas_av'),'kr_laiskas'=>is_array(get_option('ps_dl_kr_laiskas'))?array_keys(get_option('ps_dl_kr_laiskas')):get_option('ps_dl_kr_laiskas'));
+  $up=wp_upload_dir(); $o['wcdn_dirs']=array_map('basename',glob(trailingslashit($up['basedir']).'wcdn/*',GLOB_ONLYDIR));
+  $o['tema_funcs']=$grep(array(get_stylesheet_directory().'/functions.php'),'/receipt|creditnote|function petshop_generate_invoice_pdf|_petshop_invoice_document_type|petshop_get_avpn_number|woocommerce_order_status_processing|woocommerce_order_status_on-hold|petshop_send_order_received_email|shipping_method|local_pickup/',40);
+  $tu=get_user_by('login','testuotojas'); $o['darbuotojas']=$tu?array('id'=>$tu->ID,'dn'=>$tu->display_name,'fn'=>$tu->first_name.' '.$tu->last_name,'roles'=>$tu->roles):null;
+  $o['base_md5']=md5_file(get_stylesheet_directory().'/woocommerce-delivery-notes/base.php'); $o['dl_md5']=md5_file(WPMU_PLUGIN_DIR.'/petshop-darbalaukis.php'); $o['dl_ver']=class_exists('Petshop_Darbalaukis')?Petshop_Darbalaukis::VERSIJA:'NĖRA';
+  $o['temp_liko']=(int)$wpdb->get_var("SELECT COUNT(*) FROM {$p}snippets WHERE name LIKE 'TEMP%'");
+  }catch(Throwable $e){ $o['FATAL']=$e->getMessage().' @'.basename($e->getFile()).':'.$e->getLine(); }
+  $J($o);
+},99);
