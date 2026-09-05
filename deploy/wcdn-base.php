@@ -2,7 +2,8 @@
 /**
  * petshop.lt — PDF/HTML sąskaitos šablonas
  * Plugin: Print Invoices & Delivery Notes (woocommerce-delivery-notes)
- * Versija: 2.7 — antraštės kolizijos taisymas, tarpai, PDF paraščių kompensacija
+ * Versija: 2.10 (S1617) — kreditinėje pristatymo eilutė ir „Pristatymas“ suma (kaip sąskaitoje; e5 testas: be jos sumos nesueina). 2.9 (S1617, Raimis K1) — kreditinė: sava KR eilė iš refund meta `_petshop_kravpn_number`, konkretus grąžinimas (kai $order['id'] = refund),
+ *   data iš `_petshop_kravpn_date`, „Originali sąskaita“ = pradinio AVPN. 2.8 — logotipas PDF'e per data URI (dompdf negali per https/URL)
  */
 
 if ( ! isset( $type ) ) { $type = 'html'; }
@@ -39,7 +40,7 @@ if ( $is_credit_note ) {
                 ? petshop_get_avpn_number( $parent_id )
                 : 'AVPN' . str_pad( $parent_order->get_order_number(), 6, '0', STR_PAD_LEFT );
         }
-        $invoice_number = 'KR-' . $original_avpn;
+        $invoice_number = ( $maybe_parent && $maybe_order && $maybe_order->get_meta( '_petshop_kravpn_number' ) ) ? $maybe_order->get_meta( '_petshop_kravpn_number' ) : 'KR-' . $original_avpn; // v2.9: sava KR-AVPN eilė (darbalaukis)
     } else {
         $invoice_number = 'KR-AVPN' . ( isset( $order['orderNumber'] ) ? $order['orderNumber'] : '' );
     }
@@ -132,18 +133,56 @@ if ( $wc_order ) {
     ] ) );
 }
 
+/* LOGOTIPAS
+ * PDF (dompdf) NEGALI paimti logotipo per URL: dev.avesa.lt sertifikatas
+ * nevalidus (cURL 60), o file_get_contents per https grazina false. Todel
+ * PDF'ui logotipas idedamas kaip data URI is VIETINIO failo — nepriklauso
+ * nei nuo SSL, nei nuo domeno (veiks ir po perjungimo i petshop.lt).
+ * HTML lieka iprastas URL.
+ */
+$logo_url  = ! empty( $shop['logo'] ) ? $shop['logo'] : '';
+if ( ! $logo_url ) {
+    $ps_wcdn_opts = get_option( 'wcdn_settings' );
+    if ( is_array( $ps_wcdn_opts ) && ! empty( $ps_wcdn_opts['storeLogo'] ) ) {
+        $logo_url = $ps_wcdn_opts['storeLogo'];
+    }
+}
+$logo_path = ( ! empty( $shop['logo_path'] ) && file_exists( $shop['logo_path'] ) )
+    ? $shop['logo_path']
+    : '';
+if ( ! $logo_path && $logo_url ) {
+    $ps_wc_pos = strpos( $logo_url, '/wp-content/' );
+    if ( false !== $ps_wc_pos ) {
+        $ps_cand = WP_CONTENT_DIR . substr( $logo_url, $ps_wc_pos + strlen( '/wp-content' ) );
+        $ps_cand = strtok( $ps_cand, '?' );
+        if ( $ps_cand && file_exists( $ps_cand ) && is_readable( $ps_cand ) ) {
+            $logo_path = $ps_cand;
+        }
+    }
+}
+
 $logo_src = '';
 if ( $is_pdf ) {
-    if ( ! empty( $shop['logo_path'] ) && file_exists( $shop['logo_path'] ) ) {
-        $logo_src = $shop['logo_path'];
-    } elseif ( ! empty( $shop['logo'] ) ) {
-        $logo_src = $shop['logo'];
+    if ( $logo_path ) {
+        $ps_ext  = strtolower( pathinfo( $logo_path, PATHINFO_EXTENSION ) );
+        $ps_mime = [ 'jpg' => 'image/jpeg', 'jpeg' => 'image/jpeg', 'png' => 'image/png', 'gif' => 'image/gif' ];
+        if ( isset( $ps_mime[ $ps_ext ] ) ) {
+            $ps_bin = @file_get_contents( $logo_path );
+            if ( false !== $ps_bin && '' !== $ps_bin ) {
+                $logo_src = 'data:' . $ps_mime[ $ps_ext ] . ';base64,' . base64_encode( $ps_bin );
+            }
+        }
+        if ( ! $logo_src ) {
+            $logo_src = $logo_path;
+        }
+    } elseif ( $logo_url ) {
+        $logo_src = $logo_url;
     }
 } else {
-    if ( ! empty( $shop['logo'] ) ) {
-        $logo_src = $shop['logo'];
-    } elseif ( ! empty( $shop['logo_path'] ) ) {
-        $logo_src = str_replace( ABSPATH, site_url('/'), $shop['logo_path'] );
+    if ( $logo_url ) {
+        $logo_src = $logo_url;
+    } elseif ( $logo_path ) {
+        $logo_src = str_replace( ABSPATH, site_url( '/' ), $logo_path );
     }
 }
 
@@ -338,7 +377,7 @@ $sz_foot  = $is_pdf ? '11px'  : '10px';
         <?php if ( $is_credit_note ) :
             $cn_parent  = wc_get_order( $parent_id );
             $cn_refunds = $cn_parent ? $cn_parent->get_refunds() : [];
-            $refund_obj = ! empty( $cn_refunds ) ? $cn_refunds[0] : null;
+            $refund_obj = ( $maybe_parent && $maybe_order ) ? $maybe_order : ( ! empty( $cn_refunds ) ? $cn_refunds[0] : null ); // v2.9: konkretus grąžinimas, ne paskutinis
             if ( $refund_obj ) :
                 foreach ( $refund_obj->get_items() as $item ) :
                     if ( abs( $item->get_quantity() ) == 0 ) continue;
@@ -354,6 +393,17 @@ $sz_foot  = $is_pdf ? '11px'  : '10px';
             <td class="col-qty c">-<?php echo intval( $qty ); ?></td>
             <td class="col-price r"><?php echo ps_eur( $unit_price ); ?></td>
             <td class="col-total r"><?php echo ps_eur( $line_tot, true ); ?></td>
+        </tr>
+        <?php   endforeach;
+                foreach ( $refund_obj->get_items( 'shipping' ) as $sh_item ) : // v2.10: pristatymo eilutė kreditinėje
+                    $sh_tot = abs( (float) $sh_item->get_total() ); if ( $sh_tot <= 0 ) continue;
+        ?>
+        <tr>
+            <td class="col-name">Pristatymas (<?php echo esc_html( $sh_item->get_name() ); ?>)</td>
+            <td class="col-code"></td>
+            <td class="col-qty c">-1</td>
+            <td class="col-price r"><?php echo ps_eur( $sh_tot ); ?></td>
+            <td class="col-total r"><?php echo ps_eur( $sh_tot, true ); ?></td>
         </tr>
         <?php   endforeach;
             endif;
@@ -384,8 +434,8 @@ $sz_foot  = $is_pdf ? '11px'  : '10px';
     <tr>
         <td class="ps-col-info">
             <?php if ( $is_credit_note ) : ?>
-            <strong>Kreditinė data:</strong> <?php echo esc_html( date( 'Y-m-d' ) ); ?><br>
-            <strong>Originali sąskaita:</strong> <?php echo esc_html( str_replace( 'KR-', '', $invoice_number ) ); ?><br>
+            <strong>Kreditinė data:</strong> <?php echo esc_html( ( $maybe_parent && $maybe_order && $maybe_order->get_meta( '_petshop_kravpn_date' ) ) ? $maybe_order->get_meta( '_petshop_kravpn_date' ) : date( 'Y-m-d' ) ); ?><br>
+            <strong>Originali sąskaita:</strong> <?php echo esc_html( ! empty( $original_avpn ) ? $original_avpn : str_replace( 'KR-', '', $invoice_number ) ); ?><br>
             <strong>Užsakymo nr.:</strong> <?php echo esc_html( $order_no_disp ); ?><br>
             <?php else : ?>
             <strong>Užsakymo data:</strong> <?php
@@ -407,12 +457,16 @@ $sz_foot  = $is_pdf ? '11px'  : '10px';
                 <?php if ( $is_credit_note ) :
                     $cn_parent2    = wc_get_order( $parent_id );
                     $cn_refunds2   = $cn_parent2 ? $cn_parent2->get_refunds() : [];
-                    $latest_refund = ! empty( $cn_refunds2 ) ? $cn_refunds2[0] : null;
+                    $latest_refund = ( $maybe_parent && $maybe_order ) ? $maybe_order : ( ! empty( $cn_refunds2 ) ? $cn_refunds2[0] : null ); // v2.9
                     $ref_subtotal  = $latest_refund ? abs( (float) $latest_refund->get_subtotal() ) : 0;
                     $ref_tax       = $latest_refund ? abs( (float) $latest_refund->get_total_tax() ) : 0;
                     $ref_total     = $latest_refund ? abs( (float) $latest_refund->get_total() ) : 0;
+                    $ref_ship      = $latest_refund ? abs( (float) $latest_refund->get_shipping_total() ) : 0; // v2.10
                 ?>
                 <tr><td class="lbl">Suma be PVM:</td><td class="val"><?php echo ps_eur( $ref_subtotal, true ); ?></td></tr>
+                <?php if ( $ref_ship > 0 ) : ?>
+                <tr><td class="lbl">Pristatymas:</td><td class="val"><?php echo ps_eur( $ref_ship, true ); ?></td></tr>
+                <?php endif; ?>
                 <tr><td class="lbl">PVM (21%):</td><td class="val"><?php echo ps_eur( $ref_tax, true ); ?></td></tr>
                 <tr class="grand"><td class="lbl">Grąžinama suma:</td><td class="val"><?php echo ps_eur( $ref_total, true ); ?></td></tr>
                 <?php else : ?>
