@@ -1,0 +1,102 @@
+{
+ "v": "dep-204124",
+ "kurimas": 200,
+ "sid": 4855,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "S1618 e5s",
+  "temp_istrinta": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788642775|TPEkUURXYsrKLcSqsQE0RHMO4wIGlXMPHWHeojMgf7t|90b06798825e82dc27444d42a1ea43f2f25d6bfdbee85b4332b527e137bf6c69"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788642775|TPEkUURXYsrKLcSqsQE0RHMO4wIGlXMPHWHeojMgf7t|8b53fe0264c03bb1cc38c033c2a548b412f7d1761f9f0edb51e961a6626b4d31"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788642775|TPEkUURXYsrKLcSqsQE0RHMO4wIGlXMPHWHeojMgf7t|3cd2df11a2fce4a8c55d298829c3cc73bbeb784f41e77e02b7f45e01e68f886d"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1618_e5_naujas_tuscias",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=naujas",
+    "w": 1440,
+    "h": 1000,
+    "full": true,
+    "eval": "(function(){return {forma:!!document.getElementById(\"dlNu\"),prist:Array.from(document.querySelectorAll(\"#nuPrist option\")).map(function(o){return o.textContent;}),kaina:document.getElementById(\"nuPristK\").value,pristN:document.getElementById(\"nuPristN\").textContent};})()"
+   },
+   {
+    "n": "s1618_e5_naujas_uzpildytas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=naujas",
+    "w": 1440,
+    "h": 1000,
+    "full": true,
+    "eval": "(async function(){ var sl=function(ms){return new Promise(function(r){setTimeout(r,ms);});}; var q=document.getElementById(\"nuKlQ\"); q.value=\"Testas 34\"; q.dispatchEvent(new Event(\"input\",{bubbles:true})); await sl(1500); var k=document.querySelector(\"#nuKlR .dl-nu-k\"); if(k) k.click(); var pq=document.getElementById(\"nuPrQ\"); pq.value=\"exclusion hypo\"; pq.dispatchEvent(new Event(\"input\",{bubbles:true})); await sl(1800); var a=document.querySelectorAll(\"#nuPrR .dl-nu-k\"); if(a[0]) a[0].click(); await sl(300); pq.value=\"HAP žaislas\"; pq.dispatchEvent(new Event(\"input\",{bubbles:true})); await sl(1800); a=document.querySelectorAll(\"#nuPrR .dl-nu-k\"); if(a[0]) a[0].click(); await sl(300); var qi=document.querySelector(\"#nuPrT input[data-f=q]\"); if(qi){ qi.value=\"3\"; qi.dispatchEvent(new Event(\"input\",{bubbles:true})); } var nu=document.getElementById(\"nuNuol\"); nu.value=\"2\"; nu.dispatchEvent(new Event(\"input\",{bubbles:true})); document.getElementById(\"nuNuolP\").value=\"lojalus klientas\"; var s=document.getElementById(\"nuPrist\"); s.value=\"venipak_pastomatas\"; s.dispatchEvent(new Event(\"change\",{bubbles:true})); await sl(2500); var vq=document.getElementById(\"nuVietaQ\"); vq.value=\"Nemenčinė\"; vq.dispatchEvent(new Event(\"input\",{bubbles:true})); await sl(300); var vs=document.getElementById(\"nuVietaS\"); if(vs.options.length>1) vs.selectedIndex=1; return {klientas:document.querySelector(\"[name=\\\"kl[vardas]\\\"]\").value+\" \"+document.querySelector(\"[name=\\\"kl[tel]\\\"]\").value,prekes:document.querySelectorAll(\"#nuPrT tbody tr\").length,sumos:[document.getElementById(\"nuS1\").textContent,document.getElementById(\"nuS2\").textContent,document.getElementById(\"nuS3\").textContent,document.getElementById(\"nuS4\").textContent],pristN:document.getElementById(\"nuPristN\").textContent,vieta:vs.options[vs.selectedIndex]?vs.options[vs.selectedIndex].textContent:\"\",vietaN:document.getElementById(\"nuVietaN\").textContent}; })()"
+   },
+   {
+    "n": "s1618_e5_eiles_juosta",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=siandien",
+    "w": 1440,
+    "h": 700,
+    "eval": "(function(){var a=document.querySelector(\".dl-e-naujas\"); return a?a.textContent:\"nuorodos nėra\";})()"
+   }
+  ]
+ },
+ "shots": {
+  "s1618_e5_naujas_tuscias": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=naujas",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "forma": true,
+    "prist": [
+     "Venipak kurjeris",
+     "Venipak paštomatas",
+     "LP Express paštomatas",
+     "LP Express kurjeris"
+    ],
+    "kaina": "3.99",
+    "pristN": "(pagal parduotuvę: 3,99 €)"
+   }
+  },
+  "s1618_e5_naujas_uzpildytas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=naujas",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [
+    "pageerror: ReferenceError: esc is not defined",
+    "pageerror: ReferenceError: esc is not defined",
+    "pageerror: ReferenceError: esc is not defined",
+    "pageerror: ReferenceError: esc is not defined"
+   ],
+   "eval": {
+    "klientas": " ",
+    "prekes": 0,
+    "sumos": [
+     "0,00",
+     "0,00",
+     "2,15",
+     "2,15"
+    ],
+    "pristN": "(pagal parduotuvę: 2,15 €, nemokamas nuo 30,00 €)",
+    "vieta": "— nepasirinkta —",
+    "vietaN": "sąrašo įkelti nepavyko"
+   }
+  },
+  "s1618_e5_eiles_juosta": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=siandien",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": "+ Naujas užsakymas"
+  }
+ }
+}
