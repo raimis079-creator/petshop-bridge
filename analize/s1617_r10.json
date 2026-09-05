@@ -1,0 +1,257 @@
+{
+ "v": "dep-173033",
+ "kurimas": 200,
+ "sid": 4819,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1617 r10",
+  "temp_istrinta": 1,
+  "juosta_nav": [
+   "21: * Petshop Juosta v1.1 (S1606) — WP kairysis meniu paslepiamas visur, kur juosta (desk/katalogas jau slėpė; ⏎ * Tiekimas/Laiškai/Žurnalas turėjo dvi navigacijas). Desk `.pd` (position:fixed) nustumiamas žemiau juostos. ⏎ * Riba trumpesnė, siaurame lange slepiama; kelio pavadinimas — tik h1 tekstas be <small>.",
+   "27: * KODĖL (auditas 2026-09-02, `analize/audit_m2.json`): prekių pusė turėjo savo ⏎ * juostą (Katalogas·Akcijos·Gavimas·Tiekimas·Rinkiniai·Užsakymai — `.pskat-bar`, ⏎ * `.psgav-bar`), užsakymų pusė — savą (`.pd-top`), Tiekimas/Laiškai/Lapai/",
+   "28: * juostą (Katalogas·Akcijos·Gavimas·Tiekimas·Rinkiniai·Užsakymai — `.pskat-bar`, ⏎ * `.psgav-bar`), užsakymų pusė — savą (`.pd-top`), Tiekimas/Laiškai/Lapai/ ⏎ * Perdavimas — jokios; 12 skirtingų „Atgal“ variantų. Darbuotojas klaidžiojo.",
+   "32: * SPRENDIMAS (Raimis R3): viena juosta, vienoda visur, su gyvais skaičiais: ⏎ *   ⌂ · Užsakymai [n] · Rytinė eiga · Prekės [reikia užsakyti] · Gavimas · ⏎ *   Tiekimas [kaupiama/laukiam] · Rinkiniai · Akcijos · Laiškai [laukia] · riba ·",
+   "33: *   ⌂ · Užsakymai [n] · Rytinė eiga · Prekės [reikia užsakyti] · Gavimas · ⏎ *   Tiekimas [kaupiama/laukiam] · Rinkiniai · Akcijos · Laiškai [laukia] · riba · ⏎ *   paieška · Žurnalas · vartotojas.",
+   "34: *   Tiekimas [kaupiama/laukiam] · Rinkiniai · Akcijos · Laiškai [laukia] · riba · ⏎ *   paieška · Žurnalas · vartotojas. ⏎ *   Po juosta — KELIAS (iš kur atėjai, sessionStorage, iki 4 žingsnių) ir vienas",
+   "44: * SKAIČIAI: transientas 60 s (`ps_juosta_sk`), skaičiuojama pigiai: ⏎ *   Užsakymai = processing + on-hold (wc_orders, HPOS); Tiekimas = partijos ⏎ *   kaupiama / uzsakyta; Laiškai = užsakymai, laukiantys perdavimo",
+   "45: *   Užsakymai = processing + on-hold (wc_orders, HPOS); Tiekimas = partijos ⏎ *   kaupiama / uzsakyta; Laiškai = užsakymai, laukiantys perdavimo ⏎ *   (Petshop_AV_Dropship::laukiantys_perdavimo); Prekės „reikia užsakyti“ — iš",
+   "68: public static function init() { ⏎ add_action( 'in_admin_header', array( __CLASS__, 'juosta' ), 5 ); ⏎ add_action( 'admin_head', array( __CLASS__, 'stilius' ), 99 );",
+   "69: add_action( 'in_admin_header', array( __CLASS__, 'juosta' ), 5 ); ⏎ add_action( 'admin_head', array( __CLASS__, 'stilius' ), 99 ); ⏎ add_action( 'admin_footer', array( __CLASS__, 'skriptas' ) );",
+   "70: add_action( 'admin_head', array( __CLASS__, 'stilius' ), 99 ); ⏎ add_action( 'admin_footer', array( __CLASS__, 'skriptas' ) ); ⏎ add_action( 'ps_juosta_isvalyti', array( __CLASS__, 'isvalyti' ) );",
+   "71: add_action( 'admin_footer', array( __CLASS__, 'skriptas' ) ); ⏎ add_action( 'ps_juosta_isvalyti', array( __CLASS__, 'isvalyti' ) ); ⏎ add_filter( 'admin_title', array( __CLASS__, 'pavadinimas' ), 10, 2 );",
+   "73: add_filter( 'admin_title', array( __CLASS__, 'pavadinimas' ), 10, 2 ); ⏎ add_action( 'ps_juosta_reikia_cron', array( __CLASS__, 'reikia_perskaiciuoti' ) ); ⏎ if ( ! wp_next_scheduled( 'ps_juosta_reikia_cron' ) ) { wp_schedule_event( time() + 120, 'hourly', 'ps_juosta_reikia_cron' ); }",
+   "75: if ( ! wp_next_scheduled( 'ps_juosta_reikia_cron' ) ) { wp_schedule_event( time() + 120, 'hourly', 'ps_juosta_reikia_cron' ); } ⏎ foreach ( array( 'woocommerce_order_status_changed', 'woocommerce_payment_complete', 'ps_uzs_ivykis' ) as $h ) { add_action( $h, array( __CLASS__, 'isvalyti' ) ); } ⏎ }",
+   "156: ⏎ public static function juosta() { ⏎ $pg = self::puslapis();",
+   "180: echo $a( 'ps-desk', 'Užsakymai', array( array( $s['uzs'], 'reikia veiksmo', 'a' ), array( $s['neapm'], 'neapmokėti', 'n' ) ), 'ps-desk' === $pg && 'rytas' !== $view ); ⏎ echo $a( 'ps-desk', 'Rytinė eiga', null, 'ps-desk' === $pg && 'rytas' === $view, '&view=rytas' ); ⏎ echo $a( 'ps-katalogas', 'Prekės', $s['reikia'], 'ps-katalogas' === $pg, '', null === $s['reikia'] ? '' : 'reikia užsakyti: ' . (int) $s['reikia'] . ( empty( $s['reikia_laikas'] ) ? '' : ' (katalogo duomenys ' . wp_date( 'H:i', $s",
+   "182: echo $a( 'ps-katalogas', 'Prekės', $s['reikia'], 'ps-katalogas' === $pg, '', null === $s['reikia'] ? '' : 'reikia užsakyti: ' . (int) $s['reikia'] . ( empty( $s['reikia_laikas'] ) ? '' : ' (katalogo duomenys ' . wp_date( 'H:i', $s['reikia_laikas'] ) . ')' ) ); ⏎ echo $a( 'ps-gavimas', 'Gavimas', null, 'ps-gavimas' === $pg ); ⏎ echo $a( 'ps-tiekimas', 'Tiekimas', array( array( $s['kaup'], 'kaupiama', 'k' ), array( $s['lauk'], 'užsakyta, laukiam', 'l' ) ), 'ps-tiekimas' === $pg );",
+   "183: echo $a( 'ps-gavimas', 'Gavimas', null, 'ps-gavimas' === $pg ); ⏎ echo $a( 'ps-tiekimas', 'Tiekimas', array( array( $s['kaup'], 'kaupiama', 'k' ), array( $s['lauk'], 'užsakyta, laukiam', 'l' ) ), 'ps-tiekimas' === $pg ); ⏎ echo $a( 'ps-rinkiniai', 'Rinkiniai', null, in_array( $pg, array( 'ps-rinkiniai', 'ps-laukai' ), true ) );",
+   "184: echo $a( 'ps-tiekimas', 'Tiekimas', array( array( $s['kaup'], 'kaupiama', 'k' ), array( $s['lauk'], 'užsakyta, laukiam', 'l' ) ), 'ps-tiekimas' === $pg ); ⏎ echo $a( 'ps-rinkiniai', 'Rinkiniai', null, in_array( $pg, array( 'ps-rinkiniai', 'ps-laukai' ), true ) ); ⏎ echo $a( 'ps-akcijos', 'Akcijos', null, 'ps-akcijos' === $pg );",
+   "185: echo $a( 'ps-rinkiniai', 'Rinkiniai', null, in_array( $pg, array( 'ps-rinkiniai', 'ps-laukai' ), true ) ); ⏎ echo $a( 'ps-akcijos', 'Akcijos', null, 'ps-akcijos' === $pg ); ⏎ echo $a( 'ps-laiskai', 'Laiškai', $s['laiskai'], in_array( $pg, array( 'ps-laiskai', 'ps-dropship' ), true ), '&b=laukia', 'laukia išsiuntimo tiekėjams' );",
+   "186: echo $a( 'ps-akcijos', 'Akcijos', null, 'ps-akcijos' === $pg ); ⏎ echo $a( 'ps-laiskai', 'Laiškai', $s['laiskai'], in_array( $pg, array( 'ps-laiskai', 'ps-dropship' ), true ), '&b=laukia', 'laukia išsiuntimo tiekėjams' ); ⏎ ?>",
+   "195: <div class=\"psj-r\"> ⏎ <?php echo $a( 'ps-ivykiai', 'Žurnalas', null, 'ps-ivykiai' === $pg, '', 'Užsakymų žurnalas — kas, ką, kada' ); ?> ⏎ <span class=\"psj-user\" title=\"<?php echo esc_attr( $u->user_login ); ?>\"><?php echo esc_html( $u->display_name ); ?></span>"
+  ],
+  "tema_meta": [
+   "238: $existing = $order ? $order->get_meta( '_petshop_avpn_number' ) : '';",
+   "244: $order->update_meta_data( '_petshop_avpn_number', $number );",
+   "252: $existing = $order ? $order->get_meta( '_petshop_iapv_number' ) : '';",
+   "258: $order->update_meta_data( '_petshop_iapv_number', $number );",
+   "388: $order->update_meta_data( '_petshop_invoice_document_type', $doc_type );",
+   "394: $order->update_meta_data( '_petshop_order_pdf', $pdf_file );",
+   "441: $petshop_pdf = $order->get_meta( '_petshop_order_pdf' );",
+   "485: $order->update_meta_data( '_petshop_invoice_document_type', $doc_type );",
+   "513: $order->update_meta_data( '_petshop_completed_pdf', $pdf_file );",
+   "520: $pdf_file = $order->get_meta( '_petshop_completed_pdf' );"
+  ],
+  "meta_kiekiai": [
+   {
+    "meta_key": "_petshop_avpn_number",
+    "n": "50"
+   },
+   {
+    "meta_key": "_petshop_completed_pdf",
+    "n": "20"
+   },
+   {
+    "meta_key": "_petshop_dl_purchase_sent",
+    "n": "7"
+   },
+   {
+    "meta_key": "_petshop_iapv_number",
+    "n": "7"
+   },
+   {
+    "meta_key": "_petshop_invoice_document_type",
+    "n": "59"
+   },
+   {
+    "meta_key": "_petshop_kravpn_date",
+    "n": "3"
+   },
+   {
+    "meta_key": "_petshop_kravpn_number",
+    "n": "3"
+   },
+   {
+    "meta_key": "_petshop_kravpn_pdf",
+    "n": "3"
+   },
+   {
+    "meta_key": "_petshop_order_pdf",
+    "n": "6"
+   }
+  ],
+  "meta_pvz": [
+   {
+    "order_id": "35799",
+    "meta_key": "_petshop_invoice_document_type",
+    "v": "invoice"
+   },
+   {
+    "order_id": "35799",
+    "meta_key": "_petshop_avpn_number",
+    "v": "AVPN000328"
+   },
+   {
+    "order_id": "35799",
+    "meta_key": "_petshop_completed_pdf",
+    "v": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN000328.pdf"
+   },
+   {
+    "order_id": "35799",
+    "meta_key": "_petshop_invoice_document_type",
+    "v": "invoice"
+   },
+   {
+    "order_id": "35799",
+    "meta_key": "_petshop_invoice_document_type",
+    "v": "invoice"
+   },
+   {
+    "order_id": "35798",
+    "meta_key": "_petshop_kravpn_number",
+    "v": "KR-AVPN000103"
+   },
+   {
+    "order_id": "35798",
+    "meta_key": "_petshop_kravpn_date",
+    "v": "2026-09-05"
+   },
+   {
+    "order_id": "35798",
+    "meta_key": "_petshop_kravpn_pdf",
+    "v": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/creditnote/Kreditine-saskaita-KR-AVPN000103.pdf"
+   },
+   {
+    "order_id": "35797",
+    "meta_key": "_petshop_invoice_document_type",
+    "v": "invoice"
+   },
+   {
+    "order_id": "35797",
+    "meta_key": "_petshop_avpn_number",
+    "v": "AVPN000327"
+   },
+   {
+    "order_id": "35797",
+    "meta_key": "_petshop_completed_pdf",
+    "v": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN000327.pdf"
+   },
+   {
+    "order_id": "35797",
+    "meta_key": "_petshop_invoice_document_type",
+    "v": "invoice"
+   },
+   {
+    "order_id": "35797",
+    "meta_key": "_petshop_invoice_document_type",
+    "v": "invoice"
+   },
+   {
+    "order_id": "35795",
+    "meta_key": "_petshop_kravpn_number",
+    "v": "KR-AVPN000101"
+   },
+   {
+    "order_id": "35795",
+    "meta_key": "_petshop_kravpn_date",
+    "v": "2026-09-05"
+   },
+   {
+    "order_id": "35795",
+    "meta_key": "_petshop_kravpn_pdf",
+    "v": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/creditnote/Kreditine-saskaita-KR-AVPN000101.pdf"
+   },
+   {
+    "order_id": "35794",
+    "meta_key": "_petshop_invoice_document_type",
+    "v": "invoice"
+   },
+   {
+    "order_id": "35794",
+    "meta_key": "_petshop_avpn_number",
+    "v": "AVPN000326"
+   },
+   {
+    "order_id": "35794",
+    "meta_key": "_petshop_completed_pdf",
+    "v": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN000326.pdf"
+   },
+   {
+    "order_id": "35793",
+    "meta_key": "_petshop_invoice_document_type",
+    "v": "invoice"
+   },
+   {
+    "order_id": "35793",
+    "meta_key": "_petshop_avpn_number",
+    "v": "AVPN000325"
+   },
+   {
+    "order_id": "35793",
+    "meta_key": "_petshop_completed_pdf",
+    "v": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN000325.pdf"
+   },
+   {
+    "order_id": "35793",
+    "meta_key": "_petshop_invoice_document_type",
+    "v": "invoice"
+   },
+   {
+    "order_id": "35793",
+    "meta_key": "_petshop_invoice_document_type",
+    "v": "invoice"
+   }
+  ],
+  "invoice_failai": {
+   "n": 71,
+   "pvz": [
+    "PVM-saskaita-AVPN000318.pdf",
+    "PVM-saskaita-AVPN000319.pdf",
+    "PVM-saskaita-AVPN000320.pdf",
+    "PVM-saskaita-AVPN000324.pdf",
+    "PVM-saskaita-AVPN000325.pdf",
+    "PVM-saskaita-AVPN000326.pdf",
+    "PVM-saskaita-AVPN000327.pdf",
+    "PVM-saskaita-AVPN000328.pdf"
+   ],
+   "iapv": 3
+  },
+  "refunds_kr": [
+   {
+    "id": "35795",
+    "parent_order_id": "35434",
+    "total_amount": "-37.03000000",
+    "date_created_gmt": "2026-09-05 07:25:03",
+    "kr": "KR-AVPN000101"
+   },
+   {
+    "id": "35788",
+    "parent_order_id": "35414",
+    "total_amount": "-2.60000000",
+    "date_created_gmt": "2026-09-04 20:04:03",
+    "kr": "KR-AVPN000102"
+   },
+   {
+    "id": "35798",
+    "parent_order_id": "35436",
+    "total_amount": "-17.00000000",
+    "date_created_gmt": "2026-09-05 07:25:33",
+    "kr": "KR-AVPN000103"
+   }
+  ],
+  "pragma": [],
+  "dl_saskaita": [
+   "3208: f+='<span style=\"margin-left:auto\"></span>'+(o.red?'<button class=\"v t\" id=\"skRed\">Redaguoti</button>':'<button class=\"v t\" disabled title=\"lipdukas jau užregistruotas / išsiųsta / uždaryta — keisk rankiniu būdu\">Redaguoti</button>')+'<button class=\"v t\" disabled title=\"dar nepadaryta\">Sąskaita</but"
+  ],
+  "skydelis_fn": [
+   "229: * v3.8 (3 etapas #3 — audito likučiai): K2 antra pusė — skydelis per `wp_ajax_ps_dl_skydelis` (eilutėse tik `data-sk`, ne JSON), kešuojama",
+   "332: add_action( 'wp_ajax_ps_dl_skydelis', array( __CLASS__, 'ajax_skydelis' ) );",
+   "831: protected static function skydelis( $f ) {",
+   "3191: fetch(ajaxurl+'?action=ps_dl_skydelis&id='+id+'&n='+encodeURIComponent(DLN),{credentials:'same-origin'}).then(function(x){return x.json();}).then(function(j){ if(!j||!j.success||my!==seq) return; r._o=j.data; rodyti(j.data,r); }).catch(function(){ $('skNr').textContent='#'+id+' · nepavyko įkelti'; }"
+  ],
+  "orders_docs": "50"
+ }
+}
