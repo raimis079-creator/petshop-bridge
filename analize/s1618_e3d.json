@@ -1,0 +1,517 @@
+{
+ "v": "dep-202135",
+ "kurimas": 200,
+ "sid": 4848,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1618 e3d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 1Neišrūšiuoti 2Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 8Paruošta siųsti 0Klausimai 7Neapmokėti 0Visi 51Filtrai ▾Iš kur: visiTik ",
+   "naujas_nuoroda": 0
+  },
+  "bytes": 459344,
+  "md5": "54dfe5fef46154ae3f34f9db51e17cf7",
+  "token": "ok",
+  "buvo": "3c126a8cabc21cb2faa393892e723803",
+  "klase_pries": "3.32",
+  "backup": true,
+  "rasyta": 459344,
+  "po": "54dfe5fef46154ae3f34f9db51e17cf7",
+  "ping": {
+   "code": 200,
+   "fatal": 0,
+   "body": "{\"wp-auth-check\":false,\"server_time\":1788639766}"
+  },
+  "ping2": {
+   "code": 200,
+   "fatal": 0
+  }
+ },
+ "Q": {
+  "v": "S1618 e3d",
+  "f": "Q",
+  "temp_istrinta": 0,
+  "eiles_po": {
+   "code": 200,
+   "nav": "Gauti 1Neišrūšiuoti 2Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 8Paruošta siųsti 0Klausimai 7Neapmokėti 0Visi 51+ Naujas užsakymasFiltrai",
+   "naujas_nuoroda": 1
+  },
+  "versija": "3.33",
+  "md5": "54dfe5fef46154ae3f34f9db51e17cf7",
+  "dev_pastas": 18
+ },
+ "T1": {
+  "v": "S1618 e3d",
+  "f": "T1",
+  "temp_istrinta": 0,
+  "langas": {
+   "code": 200,
+   "forma": 1,
+   "h1": "Naujas užsakymas telefonu / vietoje — kainos parduotuvės (su akcijomis), nuolaida tik su pastaba · užsakymas toliau eina įprastai (Gauti → Surinkti → lipdukas)",
+   "prist_opts": [
+    "Venipak kurjeris",
+    "Venipak paštomatas",
+    "LP Express paštomatas"
+   ],
+   "rate": "21.0000",
+   "pm": {
+    "venipak_kurjeris": {
+     "t": "Venipak kurjeris",
+     "tipas": "kurjeris",
+     "inst": [
+      {
+       "id": "shopup_venipak_shipping_courier_method",
+       "inst": 10,
+       "title": "VENIPAK Kurjeris",
+       "fee": 24.79,
+       "nuo": 0,
+       "iki": 100,
+       "nemok": 0
+      }
+     ]
+    },
+    "venipak_pastomatas": {
+     "t": "Venipak paštomatas",
+     "tipas": "pastomatas",
+     "inst": [
+      {
+       "id": "shopup_venipak_shipping_pickup_method",
+       "inst": 9,
+       "title": "VENIPAK paštomatai/atsiėmimo punktai",
+       "fee": 1.78,
+       "nuo": 0,
+       "iki": 24.9,
+       "nemok": 0
+      }
+     ]
+    },
+    "lp": {
+     "t": "LP Express paštomatas",
+     "tipas": "lp",
+     "inst": [
+      {
+       "id": "woo_lithuaniapost_lpexpress_terminal",
+       "inst": 13,
+       "title": "LP Express",
+       "fee": 1.78,
+       "nuo": 0,
+       "iki": 0,
+       "nemok": 30
+      }
+     ]
+    }
+   },
+   "js": 1,
+   "sekcijos": [
+    "1. Klientas",
+    "2. Prekės",
+    "3. Pristatymas",
+    "4. Apmokėjimas"
+   ]
+  },
+  "klientai": {
+   "success": true,
+   "data": [
+    {
+     "vardas": "AUDITAS",
+     "pavarde": "Testas 34",
+     "imone": null,
+     "adresas": "Testų g. 33",
+     "miestas": "Vilnius",
+     "kodas": "01100",
+     "el": "terra@petshop.lt",
+     "tel": "+37060000000",
+     "uid": 0,
+     "pask": "2026-09-03 #35777"
+    }
+   ]
+  },
+  "klientai_tel": {
+   "ok": true,
+   "n": 6,
+   "pirmas": {
+    "vardas": "AUDITAS",
+    "pavarde": "Testas 23",
+    "imone": null,
+    "adresas": "Testų g. 23",
+    "miestas": "Vilnius",
+    "kodas": "01100",
+    "el": "terra@petshop.lt",
+    "tel": "+37060000000",
+    "uid": 0,
+    "pask": "2026-09-05 #35799"
+   }
+  },
+  "prekes": {
+   "ok": true,
+   "n": 12,
+   "pvz": [
+    {
+     "id": 35316,
+     "n": "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g",
+     "sku": "PA37",
+     "kaina": 3.79,
+     "reg": 3.79,
+     "stock": 304,
+     "av": 0,
+     "svoris": 0
+    },
+    {
+     "id": 18620,
+     "n": "Exclusion Hydrolyzed Hypoallergenic maistas šunims su hidrolizuota žuvimi ir kukurūzų krakmolu M/L 12 kg",
+     "sku": "HHFM11",
+     "kaina": 80.79,
+     "reg": 80.79,
+     "stock": 37,
+     "av": 0,
+     "svoris": 12
+    },
+    {
+     "id": 35027,
+     "n": "Exclusion Hydrolyzed Hypoallergenic sausas pašaras vidutinių ir didelių veislių šunims su žuvimi, M/L, 2 kg",
+     "sku": "HHFM02",
+     "kaina": 26.09,
+     "reg": 26.09,
+     "stock": 6,
+     "av": 0,
+     "svoris": 0
+    }
+   ]
+  }
+ },
+ "T2": {
+  "v": "S1618 e3d",
+  "f": "T2",
+  "temp_istrinta": 0,
+  "prekes": [
+   {
+    "id": "35357",
+    "n": "HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm",
+    "kaina": "11.09",
+    "stock": 6,
+    "av": 0,
+    "svoris": ""
+   },
+   {
+    "id": "35340",
+    "n": "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g",
+    "kaina": "3.79",
+    "stock": 50,
+    "av": null,
+    "svoris": ""
+   }
+  ],
+  "body": {
+   "action": "ps_dl_naujas",
+   "_wpnonce": "cd6447ec16",
+   "kl": {
+    "uid": "0",
+    "vardas": "TELEFONU",
+    "pavarde": "Testas S1618",
+    "tel": "+37060000099",
+    "el": "telefonu.s1618@dev.avesa.lt",
+    "imone": "",
+    "adresas": "Testų g. 1",
+    "miestas": "Vilnius",
+    "kodas": "01100"
+   },
+   "pr": [
+    {
+     "id": "35357",
+     "q": 2,
+     "kaina": "11.09"
+    },
+    {
+     "id": "35340",
+     "q": 1,
+     "kaina": "3.79"
+    }
+   ],
+   "prist": "venipak_pastomatas",
+   "prist_kaina": "0.00",
+   "vieta": "3648",
+   "nuolaida": "1.50",
+   "nuolaida_pastaba": "TEST: nuolaida telefonu",
+   "pastaba": "TEST S1618 T2",
+   "mok": "pavedimu"
+  },
+  "post": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35801|užsakymas sukurtas — 24,47 €, Venipak paštomatas, laukiam pavedimo (UAB Avesa · AB Swedbank · LT127300010124940593, paskirtis „Užsakymas #35801“; klientui išėjo laiškas su išankstine)",
+   "eile": "neapmoketi",
+   "atidaryti": "35801",
+   "body": ""
+  },
+  "uzsakymas": {
+   "id": 35801,
+   "st": "on-hold",
+   "via": "darbalaukis",
+   "total": "24.47",
+   "sub": 21.46,
+   "disc": 1.24,
+   "ship": "0",
+   "tax": "4.25",
+   "paid": false,
+   "date_paid": 0,
+   "pm": "bacs",
+   "pmt": "Bankinis pavedimas",
+   "cust": 0,
+   "bill": "TELEFONU Testas S1618<br/>Testų g. 1<br/>Vilnius<br/>01100",
+   "note": "TEST S1618 T2",
+   "ship_method": "VENIPAK paštomatai/atsiėmimo punktai",
+   "items": [
+    {
+     "n": "HAP žaislas šunims, pliušinė varlė su iš",
+     "q": 2,
+     "sub": "18.330579",
+     "tot": "17.272727",
+     "tax": "3.63",
+     "src": "vf",
+     "kaina_pak": "",
+     "reduced": "2",
+     "av_red": ""
+    },
+    {
+     "n": "Exclusion Hypo konservuotas pašaras šuni",
+     "q": 1,
+     "sub": "3.132231",
+     "tot": "2.950413",
+     "tax": "0.62",
+     "src": "vf",
+     "kaina_pak": "",
+     "reduced": "1",
+     "av_red": ""
+    }
+   ],
+   "shipping": [
+    {
+     "t": "VENIPAK paštomatai/atsiėmimo punktai",
+     "m": "shopup_venipak_shipping_pickup_method",
+     "inst": "9",
+     "tot": "0",
+     "tax": "0"
+    }
+   ],
+   "meta": {
+    "_petshop_avpn_number": "AVPN000329",
+    "_petshop_iapv_number": "IAPV000163",
+    "_ps_decided_at": "2026-09-05 23:23:15",
+    "_ps_ga4_mp_kodas": "dev-nesiusta",
+    "_ps_groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":2,\"vienetai\":3}}",
+    "_ps_nuolaida": "1.5",
+    "_ps_nuolaida_pastaba": "TEST: nuolaida telefonu",
+    "_ps_order_type": "DS",
+    "_ps_shipments": "1",
+    "_ps_telefonu": "2026-09-05 23:23:15|Testuotojas",
+    "venipak_pickup_point": "3648",
+    "venipak_pickup_point_data": "{\"id\":3648,\"code\":\"300906055\",\"name\":\"Venipak locker, AIB\\u0116 Venipak pa\\u0161tomatas\",\"display_name\":\"Nemen\\u010din\\u0117s AIB\\u0116 Venipak pa\\u0161tomatas\""
+   }
+  },
+  "pastabos": [
+   "Email \"Naujas užsakymas\" sent.",
+   "Darbalaukis: telefoninis užsakymas, laukiam pavedimo (Testuotojas). Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
+   "Likutis sumažintas: HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm (6&rarr;4), Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g (50&rarr;49)",
+   "Vykdymas: DS — VF 3 vnt (1 siunta(-os))"
+  ],
+  "skydelis": {
+   "kur": "Neapmokėti · toliau: Pažymėti apmokėtu",
+   "apmok": "neapmokėta · Bankinis pavedimas",
+   "vezejas": "Venipak paštomatas",
+   "vieta": "3648",
+   "pastaba": "Neapmokėtas — laukiam kliento pinigų. Gavus pavedimą — „Pažymėti apmokėtu“.",
+   "eil": [
+    [
+     "HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm",
+     "tiesiai",
+     "AV nėra, VF turi — VF siunčia klientui. Jei nori vienos siuntos — „VF veža į AV“."
+    ],
+    [
+     "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g",
+     "tiesiai",
+     "AV nėra, VF turi — VF siunčia klientui. Jei nori vienos siuntos — „VF veža į AV“."
+    ]
+   ],
+   "btn": "Pažymėti apmokėtu",
+   "klausimas": ""
+  },
+  "dev_pastas": {
+   "pries": 18,
+   "po": 19,
+   "nauji": [
+    [
+     "Naujas užsakymas Nr. 35801 — 2026-09-05",
+     "uzsakymai@petshop.lt",
+     0
+    ]
+   ]
+  },
+  "eiles": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 2Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 8Paruošta siųsti 0Klausimai 7Neapmokėti 1Visi 52+ Naujas užsakymasFiltrai",
+   "naujas_nuoroda": 1
+  },
+  "temp_liko": 1
+ },
+ "T3": {
+  "v": "S1618 e3d",
+  "f": "T3",
+  "temp_istrinta": 0,
+  "prekes": [
+   {
+    "id": "35357",
+    "n": "HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm",
+    "kaina": "11.09",
+    "stock": 4,
+    "av": 0,
+    "svoris": ""
+   },
+   {
+    "id": "35340",
+    "n": "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g",
+    "kaina": "3.79",
+    "stock": 49,
+    "av": null,
+    "svoris": ""
+   }
+  ],
+  "body": {
+   "action": "ps_dl_naujas",
+   "_wpnonce": "f1420eb3b8",
+   "kl": {
+    "uid": "0",
+    "vardas": "TELEFONU",
+    "pavarde": "Testas S1618",
+    "tel": "+37060000099",
+    "el": "",
+    "imone": "",
+    "adresas": "Testų g. 1",
+    "miestas": "Vilnius",
+    "kodas": "01100"
+   },
+   "pr": [
+    {
+     "id": "35357",
+     "q": 1,
+     "kaina": "11.09"
+    }
+   ],
+   "prist": "lp",
+   "prist_kaina": "2.15",
+   "vieta": "0001",
+   "nuolaida": "0",
+   "nuolaida_pastaba": "",
+   "pastaba": "TEST S1618 T3",
+   "mok": "vietoje"
+  },
+  "post": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35802|užsakymas sukurtas — 13,24 €, LP Express paštomatas, apmokėta vietoje — eina į darbą",
+   "eile": "siandien",
+   "atidaryti": "35802",
+   "body": ""
+  },
+  "uzsakymas": {
+   "id": 35802,
+   "st": "processing",
+   "via": "darbalaukis",
+   "total": "13.24",
+   "sub": 9.17,
+   "disc": 0,
+   "ship": "1.78",
+   "tax": "2.29",
+   "paid": true,
+   "date_paid": 1,
+   "pm": "cod",
+   "pmt": "Apmokėta vietoje",
+   "cust": 0,
+   "bill": "TELEFONU Testas S1618<br/>Testų g. 1<br/>Vilnius<br/>01100",
+   "note": "TEST S1618 T3",
+   "ship_method": "LP Express",
+   "items": [
+    {
+     "n": "HAP žaislas šunims, pliušinė varlė su iš",
+     "q": 1,
+     "sub": "9.165289",
+     "tot": "9.165289",
+     "tax": "1.92",
+     "src": "vf",
+     "kaina_pak": "",
+     "reduced": "1",
+     "av_red": ""
+    }
+   ],
+   "shipping": [
+    {
+     "t": "LP Express",
+     "m": "woo_lithuaniapost_lpexpress_terminal",
+     "inst": "13",
+     "tot": "1.77686",
+     "tax": "0.37"
+    }
+   ],
+   "meta": {
+    "_petshop_avpn_number": "AVPN000330",
+    "_ps_decided_at": "2026-09-05 23:23:27",
+    "_ps_faktas_irasytas": "2026-09-05 20:23:27",
+    "_ps_ga4_mp_kodas": "dev-nesiusta",
+    "_ps_groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+    "_ps_order_type": "DS",
+    "_ps_partijos_nurasyta": "2026-09-05 23:23:27",
+    "_ps_shipments": "1",
+    "_ps_telefonu": "2026-09-05 23:23:27|Testuotojas",
+    "_woo_lithuaniapost_lpexpress_shipping_method_instance_id": "13",
+    "_woo_lithuaniapost_lpexpress_terminal": "Saurida degalinė - Buivydiškių g. 1A, Zujūnai, Vilnius",
+    "_woo_lithuaniapost_lpexpress_terminal_id": "0001",
+    "_woo_lithuaniapost_parcel_create_error": "[{\"error\":\"size must be between 1 and 128\",\"error_description\":\"size must be between 1 and 128\",\"field\":\"receiver.contacts.email\"}]",
+    "_woo_lithuaniapost_shipping_status_value": "lp-parcel-failed"
+   }
+  },
+  "pastabos": [
+   "Email \"Naujas užsakymas\" sent.",
+   "Darbalaukis: apmokėta vietoje (Testuotojas). Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+   "Faktai irasyti: 1 eilutes · pajamos 9,17 EUR (be PVM, po nuolaidu) · PVM 2,29 EUR · marza 2,89 EUR · kontribucija (be pristatymo) 4,27 EUR · TESTINIS",
+   "Likutis sumažintas: HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm (4&rarr;3)"
+  ],
+  "skydelis": {
+   "kur": "Klausimai · toliau: Spręsti",
+   "apmok": "apmokėta · Apmokėta vietoje",
+   "vezejas": "LP Express",
+   "vieta": "",
+   "pastaba": "Sistema pasiūlė, iš kur važiuos kiekviena prekė. Pataisyk, jei reikia, ir spausk „Surūšiuota“.",
+   "eil": [
+    [
+     "HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm",
+     "tiesiai",
+     "AV nėra, VF turi — VF siunčia klientui. Jei nori vienos siuntos — „VF veža į AV“."
+    ]
+   ],
+   "btn": null,
+   "klausimas": "LP negalimas — siuntoje ne-AV prekių"
+  },
+  "dev_pastas": {
+   "pries": 19,
+   "po": 20,
+   "nauji": [
+    [
+     "Naujas užsakymas Nr. 35802 — 2026-09-05",
+     "uzsakymai@petshop.lt",
+     0
+    ]
+   ]
+  },
+  "eiles": {
+   "code": 200,
+   "nav": "Gauti 3Neišrūšiuoti 2Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 8Paruošta siųsti 0Klausimai 8Neapmokėti 1Visi 53+ Naujas užsakymasFiltrai",
+   "naujas_nuoroda": 1
+  },
+  "temp_liko": 1
+ }
+}
