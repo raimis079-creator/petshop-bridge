@@ -1,0 +1,545 @@
+{
+ "v": "dep-220745",
+ "kurimas": 200,
+ "sid": 4867,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T0": {
+  "v": "S1619 e4d",
+  "f": "T0",
+  "temp_istrinta": 1,
+  "inst": {
+   "instance_id": "16",
+   "is_enabled": "1"
+  },
+  "forma": {
+   "code": 200,
+   "prist_opts": [
+    "Venipak kurjeris",
+    "Venipak paštomatas",
+    "LP Express paštomatas",
+    "LP Express kurjeris",
+    "Atsiėmimas AV"
+   ],
+   "pm": [
+    "venipak_kurjeris",
+    "venipak_pastomatas",
+    "lp",
+    "lp_kurjeris",
+    "av"
+   ]
+  },
+  "saskaitos_sabl": {
+   "ats_forma": 1,
+   "summary": [
+    "Kreditinės laiško šablonas (numatytas)",
+    "„Paruošta atsiimti“ laiško šablonas (Atsiėmimas AV) (numatytas)"
+   ]
+  },
+  "av_preke": 19708
+ },
+ "T1": {
+  "v": "S1619 e4d",
+  "f": "T1",
+  "temp_istrinta": 0,
+  "av_preke": {
+   "id": 19708,
+   "n": "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g",
+   "stock": 20,
+   "av": null
+  },
+  "post": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35810|užsakymas sukurtas — 13,69 €, Atsiėmimas AV, apmokėta grynais — eina į darbą; kvitą (PPK) suformuok skydelio „Sąskaitos“ bloke, kai klientas sumoka",
+   "eile": "siandien",
+   "id": 35810
+  },
+  "id": 35810,
+  "uzs": {
+   "st": "processing",
+   "pm": "cod",
+   "pmt": "Apmokėta grynais",
+   "paid": true,
+   "total": "13.69",
+   "avpn": "AVPN000338",
+   "pdf": "",
+   "rus": "",
+   "surinkta": "",
+   "ats": "",
+   "iss": "",
+   "be_siuntu": "",
+   "ship": [
+    [
+     "Atsiėmimas AV",
+     "local_pickup",
+     "16",
+     "0"
+    ]
+   ],
+   "items": [
+    {
+     "n": "Animonda Carny Adult Beef + Ch",
+     "q": 1,
+     "src": "av",
+     "kelias": "",
+     "red": "0",
+     "av": "1"
+    },
+    {
+     "n": "HAP žaislas šunims, pliušinė v",
+     "q": 1,
+     "src": "vf",
+     "kelias": "",
+     "red": "1",
+     "av": ""
+    }
+   ]
+  },
+  "sk": {
+   "kur": "Neišrūšiuoti · toliau: Rūšiuoti",
+   "apmok": "apmokėta · Apmokėta grynais",
+   "vezejas": "Atsiėmimas AV",
+   "btn": null,
+   "btn_d": "",
+   "grynais": 0,
+   "red": 0,
+   "pastaba": "ATSIĖMIMAS AV (lipduko nėra): surinkti → „Paruošta atsiimti“ (laiškas klientui) → „Klientas atsiėmė“ (įvykdytas, PVM sąskaita). Sistema pasiūlė, iš kur važiuos kiekviena prekė. Pataisyk, jei reikia, i",
+   "eil": [
+    [
+     "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g",
+     "av",
+     null,
+     [
+      "Surinkti:",
+      "Paruošta atsiimti:",
+      "Klientas atsiėmė:"
+     ]
+    ],
+    [
+     "HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm",
+     "i_av",
+     null,
+     [
+      "Užsakyti iš VF į AV:",
+      "Gauta į AV:",
+      "Surinkti:",
+      "Paruošta atsiimti:",
+      "Klientas atsiėmė:"
+     ]
+    ]
+   ],
+   "takelis": [],
+   "klausimas": "",
+   "dok": [
+    "avpn AVPN000338",
+    "ppk  [Suformuoti kvitą]"
+   ]
+  },
+  "pastabos": [
+   "Email \"Užsakymas vykdomas\" sent.",
+   "Email \"Naujas užsakymas\" sent.",
+   "Darbalaukis: apmokėta grynais (Testuotojas). Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+   "Faktai irasyti: 2 eilutes · pajamos 11,32 EUR (be PVM, po nuolaidu) · PVM 2,37 EUR · marza 3,34 EUR · kontribucija (be pristatymo) 2,54 EUR · TESTINIS",
+   "Partijos nurašytos: #19708 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #19708: Partijose trūksta 1 vnt. — likutis ir partijos nesutampa",
+   "AV nurašymas: #19708 grynai AV 20 -> 19",
+   "Likutis sumažintas: Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g (20&rarr;20), HAP žaislas šunims, pliušinė varlė su iši"
+  ],
+  "dev_pastas": {
+   "pries": 28,
+   "po": 30,
+   "nauji": [
+    [
+     "Naujas užsakymas Nr. 35810 — 2026-09-06",
+     "uzsakymai@petshop.lt",
+     0,
+     ""
+    ],
+    [
+     "Jūsų užsakymas Nr. 35810 — apmokėjimas gautas",
+     "atsiemimas.s1619@dev.avesa.lt",
+     0,
+     ""
+    ]
+   ]
+  },
+  "eiles": {
+   "code": 200,
+   "nav": "Gauti 11Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 61+ Naujas užsakymasFiltr"
+  }
+ },
+ "T2": {
+  "v": "S1619 e4d",
+  "f": "T2",
+  "temp_istrinta": 0,
+  "av_preke": {
+   "id": 19708,
+   "n": "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g",
+   "stock": 19,
+   "av": null
+  },
+  "post": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35811|užsakymas sukurtas — 2,60 €, Atsiėmimas AV, laukiam pavedimo (UAB Avesa · AB Swedbank · LT127300010124940593, paskirtis „Užsakymas #35811“; klientui išėjo laiškas su išankstine)",
+   "eile": "neapmoketi",
+   "id": 35811
+  },
+  "id": 35811,
+  "uzs": {
+   "st": "on-hold",
+   "pm": "bacs",
+   "pmt": "Bankinis pavedimas",
+   "paid": false,
+   "total": "2.60",
+   "avpn": "AVPN000339",
+   "pdf": "",
+   "rus": "",
+   "surinkta": "",
+   "ats": "",
+   "iss": "",
+   "be_siuntu": "",
+   "ship": [
+    [
+     "Atsiėmimas AV",
+     "local_pickup",
+     "16",
+     "0"
+    ]
+   ],
+   "items": [
+    {
+     "n": "Animonda Carny Adult Beef + Ch",
+     "q": 1,
+     "src": "av",
+     "kelias": "",
+     "red": "",
+     "av": ""
+    }
+   ]
+  },
+  "sk": {
+   "kur": "Neapmokėti · toliau: Pažymėti apmokėtu",
+   "apmok": "neapmokėta · Bankinis pavedimas",
+   "vezejas": "Atsiėmimas AV",
+   "btn": "Pažymėti apmokėtu",
+   "btn_d": "Pažymėti apmokėtu? Prekės rezervuojamos; užsakymas eina į darbą.",
+   "grynais": 1,
+   "red": 0,
+   "pastaba": "ATSIĖMIMAS AV (lipduko nėra): surinkti → „Paruošta atsiimti“ (laiškas klientui) → „Klientas atsiėmė“ (įvykdytas, PVM sąskaita). Neapmokėtas — klientas moka atvykęs → „Apmokėta grynais“; pavedimas gaut",
+   "eil": [
+    [
+     "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g",
+     "av",
+     null,
+     [
+      "Surinkti:",
+      "Paruošta atsiimti:",
+      "Klientas atsiėmė:"
+     ]
+    ]
+   ],
+   "takelis": [],
+   "klausimas": "",
+   "dok": [
+    "iapv IAPV000167",
+    "avpn AVPN000339"
+   ]
+  },
+  "grynais": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35811|apmokėta grynais (2,60 €) — eina į darbą; kvitą (PPK) suformuok „Sąskaitos“ bloke",
+   "body": ""
+  },
+  "uzs_po_grynais": {
+   "st": "processing",
+   "pm": "cod",
+   "pmt": "Apmokėta grynais",
+   "paid": true,
+   "total": "2.60",
+   "avpn": "AVPN000339",
+   "pdf": "",
+   "rus": "auto",
+   "surinkta": "",
+   "ats": "",
+   "iss": "",
+   "be_siuntu": "",
+   "ship": [
+    [
+     "Atsiėmimas AV",
+     "local_pickup",
+     "16",
+     "0"
+    ]
+   ],
+   "items": [
+    {
+     "n": "Animonda Carny Adult Beef + Ch",
+     "q": 1,
+     "src": "av",
+     "kelias": "av",
+     "red": "0",
+     "av": "1"
+    }
+   ]
+  },
+  "sk_po_grynais": {
+   "kur": "Surinkti AV · toliau: Surinkti",
+   "apmok": "apmokėta · Apmokėta grynais",
+   "vezejas": "Atsiėmimas AV",
+   "btn": "Surinkti",
+   "btn_d": "",
+   "grynais": 0,
+   "red": 0,
+   "pastaba": "ATSIĖMIMAS AV (lipduko nėra): surinkti → „Paruošta atsiimti“ (laiškas klientui) → „Klientas atsiėmė“ (įvykdytas, PVM sąskaita). Surūšiuota pati — viskas iš vienos vietos. Keisk, jei reikia, iki lipduk",
+   "eil": [
+    [
+     "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g",
+     "av",
+     null,
+     [
+      "Surinkti:dabar",
+      "Paruošta atsiimti:",
+      "Klientas atsiėmė:"
+     ]
+    ]
+   ],
+   "takelis": [],
+   "klausimas": "",
+   "dok": [
+    "iapv IAPV000167",
+    "avpn AVPN000339",
+    "ppk  [Suformuoti kvitą]"
+   ]
+  },
+  "lapai": {
+   "code": 302,
+   "b": 0
+  },
+  "surinkta": "2026-09-06 01:09:30 | Testuotojas",
+  "sk_po_lapu": {
+   "kur": "Paruošta siųsti · toliau: Paruošta atsiimti",
+   "apmok": "apmokėta · Apmokėta grynais",
+   "vezejas": "Atsiėmimas AV",
+   "btn": "Paruošta atsiimti",
+   "btn_d": "Užsakymas surinktas — pranešti klientui, kad galima atsiimti (Liucionių g. 46, Liucionys (Nemenčinės sen., Vilniaus r.); I–V 09:00–18:00, VI 10:00–15:00)? Laišk",
+   "grynais": 0,
+   "red": 0,
+   "pastaba": "ATSIĖMIMAS AV (lipduko nėra): surinkti → „Paruošta atsiimti“ (laiškas klientui) → „Klientas atsiėmė“ (įvykdytas, PVM sąskaita). Surūšiuota pati — viskas iš vienos vietos. Keisk, jei reikia, iki lipduk",
+   "eil": [
+    [
+     "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g",
+     "av",
+     null,
+     [
+      "Surinkti:ok",
+      "Paruošta atsiimti:dabar",
+      "Klientas atsiėmė:"
+     ]
+    ]
+   ],
+   "takelis": [],
+   "klausimas": "",
+   "dok": [
+    "iapv IAPV000167",
+    "avpn AVPN000339",
+    "ppk  [Suformuoti kvitą]"
+   ]
+  },
+  "paruosta": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35811|paruošta atsiimti — klientui pranešta (atsiemimas.s1619@dev.avesa.lt)",
+   "body": ""
+  },
+  "uzs_po_paruosta": {
+   "st": "processing",
+   "pm": "cod",
+   "pmt": "Apmokėta grynais",
+   "paid": true,
+   "total": "2.60",
+   "avpn": "AVPN000339",
+   "pdf": "",
+   "rus": "auto",
+   "surinkta": "2026-09-06 01:09:30 | Testuotojas",
+   "ats": "{\"paruosta\":\"2026-09-06 01:09:32|Testuotojas\",\"laiskas\":\"2026-09-06 01:09:32|atsiemimas.s1619@dev.avesa.lt\",\"atsieme\":\"\"}",
+   "iss": "",
+   "be_siuntu": "",
+   "ship": [
+    [
+     "Atsiėmimas AV",
+     "local_pickup",
+     "16",
+     "0"
+    ]
+   ],
+   "items": [
+    {
+     "n": "Animonda Carny Adult Beef + Ch",
+     "q": 1,
+     "src": "av",
+     "kelias": "av",
+     "red": "0",
+     "av": "1"
+    }
+   ]
+  },
+  "sk_po_paruosta": {
+   "kur": "Paruošta siųsti · toliau: Klientas atsiėmė",
+   "apmok": "apmokėta · Apmokėta grynais",
+   "vezejas": "Atsiėmimas AV",
+   "btn": "Klientas atsiėmė",
+   "btn_d": "Klientas atsiėmė prekes? Užsakymas įvykdytas; PVM sąskaita klientui — el. paštu (kaip visada).",
+   "grynais": 0,
+   "red": 0,
+   "pastaba": "ATSIĖMIMAS AV (lipduko nėra): surinkti → „Paruošta atsiimti“ (laiškas klientui) → „Klientas atsiėmė“ (įvykdytas, PVM sąskaita). Surūšiuota pati — viskas iš vienos vietos. Keisk, jei reikia, iki lipduk",
+   "eil": [
+    [
+     "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g",
+     "av",
+     null,
+     [
+      "Surinkti:ok",
+      "Paruošta atsiimti:ok",
+      "Klientas atsiėmė:dabar"
+     ]
+    ]
+   ],
+   "takelis": [],
+   "klausimas": "",
+   "dok": [
+    "iapv IAPV000167",
+    "avpn AVPN000339",
+    "ppk  [Suformuoti kvitą]"
+   ]
+  },
+  "atsieme": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35811|klientas atsiėmė — užsakymas įvykdytas, PVM sąskaita AVPN000339",
+   "body": ""
+  },
+  "uzs_po_atsieme": {
+   "st": "completed",
+   "pm": "cod",
+   "pmt": "Apmokėta grynais",
+   "paid": true,
+   "total": "2.60",
+   "avpn": "AVPN000339",
+   "pdf": "PVM-saskaita-AVPN000339.pdf",
+   "rus": "auto",
+   "surinkta": "2026-09-06 01:09:30 | Testuotojas",
+   "ats": "{\"paruosta\":\"2026-09-06 01:09:32|Testuotojas\",\"laiskas\":\"2026-09-06 01:09:32|atsiemimas.s1619@dev.avesa.lt\",\"atsieme\":\"2026-09-06 01:09:34|Testuotojas\"}",
+   "iss": "{\"av\":{\"laikas\":\"2026-09-06 01:09:34\",\"kas\":\"Testuotojas\",\"kanalas\":\"atsiemimas\"}}",
+   "be_siuntu": "1",
+   "ship": [
+    [
+     "Atsiėmimas AV",
+     "local_pickup",
+     "16",
+     "0"
+    ]
+   ],
+   "items": [
+    {
+     "n": "Animonda Carny Adult Beef + Ch",
+     "q": 1,
+     "src": "av",
+     "kelias": "av",
+     "red": "0",
+     "av": "1"
+    }
+   ]
+  },
+  "sk_po_atsieme": {
+   "kur": "įvykdytas",
+   "apmok": "apmokėta · Apmokėta grynais",
+   "vezejas": "Atsiėmimas AV",
+   "btn": null,
+   "btn_d": "",
+   "grynais": 0,
+   "red": 0,
+   "pastaba": "Užsakymas įvykdytas.",
+   "eil": [
+    [
+     "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g",
+     "av",
+     null,
+     [
+      "Surinkti:ok",
+      "Paruošta atsiimti:ok",
+      "Klientas atsiėmė:ok"
+     ]
+    ]
+   ],
+   "takelis": [],
+   "klausimas": "",
+   "dok": [
+    "iapv IAPV000167",
+    "avpn AVPN000339",
+    "ppk  [Suformuoti kvitą]"
+   ]
+  },
+  "pastabos": [
+   "Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+   "Email \"Įvykdytas užsakymas\" sent.",
+   "Darbalaukis: klientas atsiėmė prekes AV (Testuotojas) — užsakymas įvykdytas be siuntos. PVM sąskaita klientui — WC „užsakymas įvykdytas“ laiškas.",
+   "Darbalaukis: paruošta atsiimti (Testuotojas) — klientui pranešta (atsiemimas.s1619@dev.avesa.lt).",
+   "Darbalaukis: apmokėta grynais vietoje (Testuotojas; buvo „Bankinis pavedimas“). Kvitas PPK — „Suformuoti kvitą“. Užsakymo statusas pakeistas iš Sustabdytas į Vykdomas.",
+   "Surūšiuota pati: Animonda Carny Adult Beef + Chicken + Du — Iš AV",
+   "Faktai irasyti: 1 eilutes · pajamos 2,15 EUR (be PVM, po nuolaidu) · PVM 0,45 EUR · marza 0,45 EUR · kontribucija (be pristatymo) 0,05 EUR · TESTINIS"
+  ],
+  "dev_pastas": {
+   "pries": 30,
+   "po": 34,
+   "nauji": [
+    [
+     "Naujas užsakymas Nr. 35811 — 2026-09-06",
+     "uzsakymai@petshop.lt",
+     0,
+     ""
+    ],
+    [
+     "Jūsų užsakymas Nr. 35811 gautas - Petshop.lt",
+     "atsiemimas.s1619@dev.avesa.lt",
+     1,
+     ""
+    ],
+    [
+     "Jūsų užsakymas Nr. 35811 paruoštas atsiimti — Petshop.lt",
+     "atsiemimas.s1619@dev.avesa.lt",
+     1,
+     ""
+    ],
+    [
+     "Jūsų užsakymas Nr.35811 išsiųstas!",
+     "atsiemimas.s1619@dev.avesa.lt",
+     1,
+     ""
+    ]
+   ]
+  },
+  "eiles": {
+   "code": 200,
+   "nav": "Gauti 11Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 62+ Naujas užsakymasFiltr"
+  }
+ },
+ "C": {
+  "v": "S1619 e4d",
+  "f": "C",
+  "temp_istrinta": 0,
+  "inst": {
+   "instance_id": "16",
+   "is_enabled": "0"
+  },
+  "forma_av_yra": 0,
+  "eiles": {
+   "code": 200,
+   "nav": "Gauti 11Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 62+ Naujas užsakymasFiltr"
+  },
+  "temp_liko": 1
+ }
+}
