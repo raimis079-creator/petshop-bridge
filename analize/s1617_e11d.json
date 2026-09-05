@@ -1,0 +1,88 @@
+{
+ "v": "dep-182954",
+ "kurimas": 200,
+ "sid": 4833,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1617 e11d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "bytes": 398499,
+  "md5": "c520a4c9beb8e70bfbc6906960f55886",
+  "token": "ok",
+  "buvo": "NĖRA",
+  "klase_pries": false,
+  "rasyta": 398499,
+  "po": "c520a4c9beb8e70bfbc6906960f55886",
+  "ping": {
+   "code": 200,
+   "fatal": 0,
+   "body": "{\"wp-auth-check\":false,\"server_time\":1788633064}"
+  },
+  "ping2": {
+   "code": 200,
+   "fatal": 0
+  }
+ },
+ "T": {
+  "v": "S1617 e11d",
+  "f": "T",
+  "temp_istrinta": 0,
+  "versija": "3.30.1",
+  "md5": "c520a4c9beb8e70bfbc6906960f55886",
+  "sk": {
+   "35414": {
+    "kur": "Klausimai · toliau: Spręsti",
+    "apmok": "apmokėta · Mokėjimas internetu",
+    "pastaba": "Surūšiuota. Kelią dar gali keisti, kol prekei nepadarytas pirmas žingsnis. Klientui pranešta apie vėlavimą (09-04 14:16).",
+    "klientas_url": true,
+    "btn": null,
+    "dok": 2
+   },
+   "35434": {
+    "kur": "atšauktas",
+    "apmok": "apmokėta · Mokėjimas internetu",
+    "pastaba": "Užsakymas atšauktas — buvo apmokėtas, pinigus grąžink rankomis (jei dar ne).",
+    "klientas_url": true,
+    "btn": null,
+    "dok": 3
+   },
+   "35436": {
+    "kur": "Klausimai · toliau: Spręsti",
+    "apmok": "apmokėta · Mokėjimas internetu",
+    "pastaba": "Surūšiuota. Kelią dar gali keisti, kol prekei nepadarytas pirmas žingsnis. Klientui pranešta apie vėlavimą (09-04 17:28).",
+    "klientas_url": true,
+    "btn": null,
+    "dok": 6
+   },
+   "35799": {
+    "kur": "įvykdytas",
+    "apmok": "apmokėta · Įskaitymas iš grąžinamos sumos",
+    "pastaba": "Užsakymas įvykdytas.",
+    "klientas_url": true,
+    "btn": null,
+    "dok": 1
+   }
+  },
+  "klaus_code": 200,
+  "eiles": null,
+  "kort_n": 3,
+  "saskaitos": {
+   "code": 200,
+   "h1": "Sąskaitos visos PVM sąskaitos, išankstinės ir kreditinės — PDF čia, WC lango nereikia · 60 dok.",
+   "rows": 60
+  },
+  "klientas_pusl": {
+   "code": 200,
+   "title": "Apmokėjimas - Petshop.lt",
+   "siuntos": 1,
+   "verif": 1,
+   "h2": []
+  },
+  "visi_code": 200,
+  "temp_liko": 1
+ }
+}
