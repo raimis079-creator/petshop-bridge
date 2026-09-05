@@ -1,0 +1,91 @@
+{
+ "v": "dep-174742",
+ "kurimas": 200,
+ "sid": 4825,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S1": {
+  "v": "S1617 e7d",
+  "f": "S1",
+  "temp_istrinta": 1,
+  "admin": "bdz487",
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788632354|HVjGq73RLTVltLguBgXGrttafFdrAMqMRBog4hSCzS5|61f06518a792bd0f78947d8d2b7466b35042055b746665b67061a098432f1628"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788632354|HVjGq73RLTVltLguBgXGrttafFdrAMqMRBog4hSCzS5|82b00d9a92c62db02d03f928ee535541bb665c700e95ae2c169574d74beb076f"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "bdz487|1788632354|HVjGq73RLTVltLguBgXGrttafFdrAMqMRBog4hSCzS5|56f57f0f3ed64b39b9245470832d8556b59aff614fc281af4a1102bc4417f15e"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1617_e6_saskaitos",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=saskaitos",
+    "w": 1400,
+    "full": true,
+    "eval": "({rows:document.querySelectorAll('.dl-sask tbody tr').length,foot:(document.querySelector('.dl-sask tfoot')||{}).innerText||'',juosta:[...document.querySelectorAll('.psj-r a')].map(function(a){return a.innerText.trim();})})"
+   },
+   {
+    "n": "s1617_e6_saskaitos_kr",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=saskaitos&t=kr",
+    "w": 1400,
+    "eval": "({rows:[...document.querySelectorAll('.dl-sask tbody tr')].map(function(r){return r.innerText.replace(/\\s+/g,' ').slice(0,160);})})"
+   },
+   {
+    "n": "s1617_e6_skydelis_35434",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35434&atidaryti=35434",
+    "w": 1400,
+    "eval": "({dok:(document.getElementById('skDokT')||{}).innerText||'',blk:(document.getElementById('skDok')||{}).style?document.getElementById('skDok').style.display:'',foot:(document.getElementById('skV')||{}).innerText||''})"
+   }
+  ]
+ },
+ "shots": {
+  "s1617_e6_saskaitos": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=saskaitos",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "rows": 60,
+    "foot": "60 dok.\t1486,38 €\t",
+    "juosta": [
+     "Sąskaitos",
+     "Žurnalas",
+     "⏻"
+    ]
+   }
+  },
+  "s1617_e6_saskaitos_kr": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=saskaitos&t=kr",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "rows": [
+     "2026-09-05 KR-AVPN000103 Kreditinė #35436 Vykdomas AUDITAS Testas 23 terra@petshop.lt −17,00 € PDF",
+     "2026-09-05 KR-AVPN000101 Kreditinė #35434 Atšauktas AUDITAS Testas 21 terra@petshop.lt −37,03 € PDF",
+     "2026-09-04 KR-AVPN000102 Kreditinė #35414 Vykdomas AUDITAS Testas 1 terra@petshop.lt −2,60 € PDF"
+    ]
+   }
+  },
+  "s1617_e6_skydelis_35434": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&q=35434",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "dok": "AVPN000303\n· PVM sąskaita faktūra · 2026-09-02 · 37,03 € · PDF nėra\nKR-AVPN000101\n· Kreditinė · 2026-09-05 · −37,03 € · PDF\nAVPN000327\n· Siuntos grąžinimo išlaidos (#35797) · 2026-09-05 · 3,99 € · PDF",
+    "blk": "block",
+    "foot": "Redaguoti\nParašyti klientui"
+   }
+  }
+ }
+}
