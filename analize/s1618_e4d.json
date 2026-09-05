@@ -1,24 +1,50 @@
 {
- "v": "dep-203107",
+ "v": "dep-203854",
  "kurimas": 200,
- "sid": 4852,
+ "sid": 4854,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "zalias_D": "<br />\n<b>Warning</b>:  gzdecode(): data error in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code</b> on line <b>18</b><br />\n{\"v\":\"S1618 e4d\",\"f\":\"D\",\"temp_istrinta\":1,\"eiles_pries\":{\"code\":200,\"nav\":\"Gauti 3Neišrūšiuoti 2Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 8Paruošta siųsti 0Klausimai 8Neapmokėti 1Visi 53+ Naujas užsakymasFiltrai\",\"naujas_nuoroda\":1},\"STOP\":\"b64\\/gz\"}",
+ "D": {
+  "v": "S1618 e4d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 6Neišrūšiuoti 2Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 9Paruošta siųsti 0Klausimai 9Neapmokėti 2Visi 56+ Naujas užsakymasFiltrai",
+   "naujas_nuoroda": 1
+  },
+  "bytes": 460651,
+  "md5": "185aeb5160e01d09db16e556453f1906",
+  "token": "ok",
+  "buvo": "54dfe5fef46154ae3f34f9db51e17cf7",
+  "klase_pries": "3.33",
+  "backup": true,
+  "rasyta": 460651,
+  "po": "185aeb5160e01d09db16e556453f1906",
+  "ping": {
+   "code": 200,
+   "fatal": 0,
+   "body": "{\"wp-auth-check\":false,\"server_time\":1788640803}"
+  },
+  "ping2": {
+   "code": 200,
+   "fatal": 0
+  }
+ },
  "Q": {
   "v": "S1618 e4d",
   "f": "Q",
   "temp_istrinta": 0,
   "eiles_po": {
    "code": 200,
-   "nav": "Gauti 3Neišrūšiuoti 2Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 8Paruošta siųsti 0Klausimai 8Neapmokėti 1Visi 53+ Naujas užsakymasFiltrai",
+   "nav": "Gauti 6Neišrūšiuoti 2Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 9Paruošta siųsti 0Klausimai 9Neapmokėti 2Visi 56+ Naujas užsakymasFiltrai",
    "naujas_nuoroda": 1
   },
-  "versija": "3.33",
-  "md5": "54dfe5fef46154ae3f34f9db51e17cf7",
-  "dev_pastas": 20
+  "versija": "3.33.1",
+  "md5": "185aeb5160e01d09db16e556453f1906",
+  "dev_pastas": 23
  },
  "T2": {
   "v": "S1618 e4d",
@@ -29,7 +55,7 @@
     "id": "35340",
     "n": "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g",
     "kaina": "3.79",
-    "stock": 49,
+    "stock": 45,
     "av": null,
     "svoris": ""
    },
@@ -37,14 +63,14 @@
     "id": "35316",
     "n": "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g",
     "kaina": "3.79",
-    "stock": 304,
+    "stock": 303,
     "av": null,
     "svoris": ""
    }
   ],
   "body": {
    "action": "ps_dl_naujas",
-   "_wpnonce": "8d9ed82a7a",
+   "_wpnonce": "0093fa6c11",
    "kl": {
     "uid": "0",
     "vardas": "TELEFONU",
@@ -79,13 +105,13 @@
   "post": {
    "code": 302,
    "pd_ok": "dl_info",
-   "pd": "35803|užsakymas sukurtas — 9,87 €, Venipak paštomatas, laukiam pavedimo (UAB Avesa · AB Swedbank · LT127300010124940593, paskirtis „Užsakymas #35803“; klientui išėjo laiškas su išankstine)",
+   "pd": "35806|užsakymas sukurtas — 9,87 €, Venipak paštomatas, laukiam pavedimo (UAB Avesa · AB Swedbank · LT127300010124940593, paskirtis „Užsakymas #35806“; klientui išėjo laiškas su išankstine)",
    "eile": "neapmoketi",
-   "atidaryti": "35803",
+   "atidaryti": "35806",
    "body": ""
   },
   "uzsakymas": {
-   "id": 35803,
+   "id": 35806,
    "st": "on-hold",
    "via": "darbalaukis",
    "total": "9.87",
@@ -129,22 +155,22 @@
     {
      "t": "VENIPAK paštomatai/atsiėmimo punktai",
      "m": "shopup_venipak_shipping_pickup_method",
-     "inst": "9",
+     "inst": "3",
      "tot": "0",
      "tax": "0"
     }
    ],
    "meta": {
-    "_petshop_avpn_number": "AVPN000331",
-    "_petshop_iapv_number": "IAPV000164",
-    "_ps_decided_at": "2026-09-05 23:32:30",
+    "_petshop_avpn_number": "AVPN000334",
+    "_petshop_iapv_number": "IAPV000165",
+    "_ps_decided_at": "2026-09-05 23:40:21",
     "_ps_ga4_mp_kodas": "dev-nesiusta",
     "_ps_groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":2,\"vienetai\":3}}",
     "_ps_nuolaida": "1.5",
     "_ps_nuolaida_pastaba": "TEST: nuolaida telefonu",
     "_ps_order_type": "DS",
     "_ps_shipments": "1",
-    "_ps_telefonu": "2026-09-05 23:32:30|Testuotojas",
+    "_ps_telefonu": "2026-09-05 23:40:20|Testuotojas",
     "venipak_pickup_point": "3648",
     "venipak_pickup_point_data": "{\"id\":3648,\"code\":\"300906055\",\"name\":\"Venipak locker, AIB\\u0116 Venipak pa\\u0161tomatas\",\"display_name\":\"Nemen\\u010din\\u0117s AIB\\u0116 Venipak pa\\u0161tomatas\""
    }
@@ -152,7 +178,7 @@
   "pastabos": [
    "Email \"Naujas užsakymas\" sent.",
    "Darbalaukis: telefoninis užsakymas, laukiam pavedimo (Testuotojas). Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
-   "Likutis sumažintas: Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g (49&rarr;47), Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g (304&rarr;303)",
+   "Likutis sumažintas: Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g (45&rarr;43), Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g (303&rarr;302)",
    "Vykdymas: DS — VF 3 vnt (1 siunta(-os))"
   ],
   "skydelis": {
@@ -177,19 +203,24 @@
    "klausimas": ""
   },
   "dev_pastas": {
-   "pries": 20,
-   "po": 21,
+   "pries": 23,
+   "po": 25,
    "nauji": [
     [
-     "Naujas užsakymas Nr. 35803 — 2026-09-05",
+     "Naujas užsakymas Nr. 35806 — 2026-09-05",
      "uzsakymai@petshop.lt",
      0
+    ],
+    [
+     "Jūsų užsakymas Nr. 35806 gautas - Petshop.lt",
+     "telefonu.s1618@dev.avesa.lt",
+     1
     ]
    ]
   },
   "eiles": {
    "code": 200,
-   "nav": "Gauti 4Neišrūšiuoti 2Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 8Paruošta siųsti 0Klausimai 8Neapmokėti 2Visi 54+ Naujas užsakymasFiltrai",
+   "nav": "Gauti 7Neišrūšiuoti 2Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 9Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 57+ Naujas užsakymasFiltrai",
    "naujas_nuoroda": 1
   },
   "temp_liko": 1
@@ -203,7 +234,7 @@
     "id": "35340",
     "n": "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g",
     "kaina": "3.79",
-    "stock": 47,
+    "stock": 43,
     "av": null,
     "svoris": ""
    },
@@ -211,14 +242,14 @@
     "id": "35316",
     "n": "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g",
     "kaina": "3.79",
-    "stock": 303,
+    "stock": 302,
     "av": null,
     "svoris": ""
    }
   ],
   "body": {
    "action": "ps_dl_naujas",
-   "_wpnonce": "775130a36b",
+   "_wpnonce": "6d322b2aa7",
    "kl": {
     "uid": "0",
     "vardas": "TELEFONU",
@@ -247,107 +278,13 @@
   },
   "post": {
    "code": 302,
-   "pd_ok": "dl_info",
-   "pd": "35804|užsakymas sukurtas — 5,94 €, LP Express paštomatas, apmokėta vietoje — eina į darbą",
-   "eile": "siandien",
-   "atidaryti": "35804",
+   "pd_ok": "dl_klaida",
+   "pd": "—|LP Express siuntai reikia kliento el. pašto (LP sistema be jo siuntos nesukuria) — įrašyk arba rink Venipak",
+   "eile": null,
+   "atidaryti": null,
    "body": ""
   },
-  "uzsakymas": {
-   "id": 35804,
-   "st": "processing",
-   "via": "darbalaukis",
-   "total": "5.94",
-   "sub": 3.13,
-   "disc": 0,
-   "ship": "1.78",
-   "tax": "1.03",
-   "paid": true,
-   "date_paid": 1,
-   "pm": "cod",
-   "pmt": "Apmokėta vietoje",
-   "cust": 0,
-   "bill": "TELEFONU Testas S1618<br/>Testų g. 1<br/>Vilnius<br/>01100",
-   "note": "TEST S1618 T3",
-   "ship_method": "LP Express",
-   "items": [
-    {
-     "n": "Exclusion Hypo konservuotas pašaras šuni",
-     "q": 1,
-     "sub": "3.132231",
-     "tot": "3.132231",
-     "tax": "0.66",
-     "src": "vf",
-     "kaina_pak": "",
-     "reduced": "1",
-     "av_red": ""
-    }
-   ],
-   "shipping": [
-    {
-     "t": "LP Express",
-     "m": "woo_lithuaniapost_lpexpress_terminal",
-     "inst": "13",
-     "tot": "1.77686",
-     "tax": "0.37"
-    }
-   ],
-   "meta": {
-    "_petshop_avpn_number": "AVPN000332",
-    "_ps_decided_at": "2026-09-05 23:32:42",
-    "_ps_faktas_irasytas": "2026-09-05 20:32:42",
-    "_ps_ga4_mp_kodas": "dev-nesiusta",
-    "_ps_groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
-    "_ps_order_type": "DS",
-    "_ps_partijos_nurasyta": "2026-09-05 23:32:42",
-    "_ps_shipments": "1",
-    "_ps_telefonu": "2026-09-05 23:32:42|Testuotojas",
-    "_woo_lithuaniapost_lpexpress_shipping_method_instance_id": "13",
-    "_woo_lithuaniapost_lpexpress_terminal": "Saurida degalinė - Buivydiškių g. 1A, Zujūnai, Vilnius",
-    "_woo_lithuaniapost_lpexpress_terminal_id": "0001",
-    "_woo_lithuaniapost_parcel_create_error": "[{\"error\":\"size must be between 1 and 128\",\"error_description\":\"size must be between 1 and 128\",\"field\":\"receiver.contacts.email\"}]",
-    "_woo_lithuaniapost_shipping_status_value": "lp-parcel-failed"
-   }
-  },
-  "pastabos": [
-   "Email \"Naujas užsakymas\" sent.",
-   "Darbalaukis: apmokėta vietoje (Testuotojas). Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
-   "Faktai irasyti: 1 eilutes · pajamos 3,13 EUR (be PVM, po nuolaidu) · PVM 1,03 EUR · marza 0,53 EUR · kontribucija (be pristatymo) 1,91 EUR · TESTINIS",
-   "Likutis sumažintas: Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g (47&rarr;46)"
-  ],
-  "skydelis": {
-   "kur": "Klausimai · toliau: Spręsti",
-   "apmok": "apmokėta · Apmokėta vietoje",
-   "vezejas": "LP Express",
-   "vieta": "",
-   "pastaba": "Sistema pasiūlė, iš kur važiuos kiekviena prekė. Pataisyk, jei reikia, ir spausk „Surūšiuota“.",
-   "eil": [
-    [
-     "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g",
-     "tiesiai",
-     "AV nėra, VF turi — VF siunčia klientui. Jei nori vienos siuntos — „VF veža į AV“."
-    ]
-   ],
-   "btn": null,
-   "klausimas": "LP negalimas — siuntoje ne-AV prekių"
-  },
-  "dev_pastas": {
-   "pries": 21,
-   "po": 22,
-   "nauji": [
-    [
-     "Naujas užsakymas Nr. 35804 — 2026-09-05",
-     "uzsakymai@petshop.lt",
-     0
-    ]
-   ]
-  },
-  "eiles": {
-   "code": 200,
-   "nav": "Gauti 5Neišrūšiuoti 2Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 8Paruošta siųsti 0Klausimai 9Neapmokėti 2Visi 55+ Naujas užsakymasFiltrai",
-   "naujas_nuoroda": 1
-  },
-  "temp_liko": 1
+  "dev_pastas_po": 25
  },
  "T4": {
   "v": "S1618 e4d",
@@ -358,7 +295,7 @@
     "id": "35340",
     "n": "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g",
     "kaina": "3.79",
-    "stock": 46,
+    "stock": 43,
     "av": null,
     "svoris": ""
    },
@@ -366,14 +303,14 @@
     "id": "35316",
     "n": "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g",
     "kaina": "3.79",
-    "stock": 303,
+    "stock": 302,
     "av": null,
     "svoris": ""
    }
   ],
   "body": {
    "action": "ps_dl_naujas",
-   "_wpnonce": "af81c20ced",
+   "_wpnonce": "079832fe31",
    "kl": {
     "uid": "0",
     "vardas": "TELEFONU",
@@ -403,13 +340,13 @@
   "post": {
    "code": 302,
    "pd_ok": "dl_info",
-   "pd": "35805|užsakymas sukurtas — 7,78 €, Venipak kurjeris, apmokėta vietoje — eina į darbą",
+   "pd": "35807|užsakymas sukurtas — 7,78 €, Venipak kurjeris, apmokėta vietoje — eina į darbą",
    "eile": "siandien",
-   "atidaryti": "35805",
+   "atidaryti": "35807",
    "body": ""
   },
   "uzsakymas": {
-   "id": 35805,
+   "id": 35807,
    "st": "processing",
    "via": "darbalaukis",
    "total": "7.78",
@@ -442,24 +379,24 @@
     {
      "t": "VENIPAK Kurjeris",
      "m": "shopup_venipak_shipping_courier_method",
-     "inst": "10",
+     "inst": "2",
      "tot": "3.297521",
      "tax": "0.69"
     }
    ],
    "meta": {
-    "_petshop_avpn_number": "AVPN000333",
-    "_ps_decided_at": "2026-09-05 23:32:53",
-    "_ps_faktas_irasytas": "2026-09-05 20:32:53",
+    "_petshop_avpn_number": "AVPN000335",
+    "_ps_decided_at": "2026-09-05 23:40:38",
+    "_ps_faktas_irasytas": "2026-09-05 20:40:39",
     "_ps_ga4_mp_kodas": "dev-nesiusta",
     "_ps_groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
     "_ps_misrus_sprendimas": "{\"vf\":\"tiesiai\"}",
-    "_ps_misrus_sprestas": "2026-09-05 23:32:53 | auto",
+    "_ps_misrus_sprestas": "2026-09-05 23:40:39 | auto",
     "_ps_order_type": "DS",
-    "_ps_partijos_nurasyta": "2026-09-05 23:32:53",
+    "_ps_partijos_nurasyta": "2026-09-05 23:40:39",
     "_ps_rusiuota": "auto",
     "_ps_shipments": "1",
-    "_ps_telefonu": "2026-09-05 23:32:53|Testuotojas"
+    "_ps_telefonu": "2026-09-05 23:40:38|Testuotojas"
    }
   },
   "pastabos": [
@@ -485,11 +422,11 @@
    "klausimas": ""
   },
   "dev_pastas": {
-   "pries": 22,
-   "po": 23,
+   "pries": 25,
+   "po": 26,
    "nauji": [
     [
-     "Naujas užsakymas Nr. 35805 — 2026-09-05",
+     "Naujas užsakymas Nr. 35807 — 2026-09-05",
      "uzsakymai@petshop.lt",
      0
     ]
@@ -497,7 +434,7 @@
   },
   "eiles": {
    "code": 200,
-   "nav": "Gauti 6Neišrūšiuoti 2Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 9Paruošta siųsti 0Klausimai 9Neapmokėti 2Visi 56+ Naujas užsakymasFiltrai",
+   "nav": "Gauti 8Neišrūšiuoti 2Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 10Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 58+ Naujas užsakymasFiltra",
    "naujas_nuoroda": 1
   },
   "temp_liko": 1
