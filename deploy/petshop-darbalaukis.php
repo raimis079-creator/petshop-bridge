@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.30.1 (S1617, 5 etapas: „Pakartotinis užsakymas“ — naujas mažas užsakymas + apmokėjimo nuoroda; v3.22: WC laiškai pakartotiniam užsakymui išjungti per `woocommerce_email_enabled_*`; v3.23 (Raimis 09-05 „pavedimas reikia“): apmokėjimo puslapyje Paysera + bankinis pavedimas, laiške ir „ačiū“ puslapyje rekvizitai, kortelėje „Apmokėta pavedimu“ — darbuotojas patvirtina gavęs pinigus; v3.24: pasirinkus pavedimą (`on-hold`) nuoroda toliau veikia — Paysera vis dar galima; v3.25: KREDITINĖ pusiau automatinė (spec §12.5, Raimis K1–K3) — žr. žemiau; v3.26/v3.27: SĄSKAITOS — skydelio blokas „Sąskaitos“ + langas `view=saskaitos` (visi dokumentai, filtrai, PDF; v3.27: AVPN data iš `wc_order_operational_data`; v3.28: kreditinių refund'ai (`_ps_kreditine`) — savi, kaip `_ps_kiekis`: sumose nerodomi, skydelio antraštė lieka pradinė suma; v3.29: `sumu_eilutes` — WC `refund_{indeksas}`, ne `refund_{id}` (S1616 klaida, savų refund'ų eilutės klientui vis tiek rodėsi; v3.30: `paid` = `is_paid() || date_paid` — atšauktas apmokėtas užsakymas nebe „neapmokėta · laukiam pinigų“, uždaryto pastaba „atšauktas / įvykdytas“; skydelio footer „Kaip mato klientas“ — kliento užsakymo puslapis (spec 5 et.)); po v3.20) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.30.2 (S1617, 5 etapas: „Pakartotinis užsakymas“ — naujas mažas užsakymas + apmokėjimo nuoroda; v3.22: WC laiškai pakartotiniam užsakymui išjungti per `woocommerce_email_enabled_*`; v3.23 (Raimis 09-05 „pavedimas reikia“): apmokėjimo puslapyje Paysera + bankinis pavedimas, laiške ir „ačiū“ puslapyje rekvizitai, kortelėje „Apmokėta pavedimu“ — darbuotojas patvirtina gavęs pinigus; v3.24: pasirinkus pavedimą (`on-hold`) nuoroda toliau veikia — Paysera vis dar galima; v3.25: KREDITINĖ pusiau automatinė (spec §12.5, Raimis K1–K3) — žr. žemiau; v3.26/v3.27: SĄSKAITOS — skydelio blokas „Sąskaitos“ + langas `view=saskaitos` (visi dokumentai, filtrai, PDF; v3.27: AVPN data iš `wc_order_operational_data`; v3.28: kreditinių refund'ai (`_ps_kreditine`) — savi, kaip `_ps_kiekis`: sumose nerodomi, skydelio antraštė lieka pradinė suma; v3.29: `sumu_eilutes` — WC `refund_{indeksas}`, ne `refund_{id}` (S1616 klaida, savų refund'ų eilutės klientui vis tiek rodėsi; v3.30: `paid` = `is_paid() || date_paid` — atšauktas apmokėtas užsakymas nebe „neapmokėta · laukiam pinigų“, uždaryto pastaba „atšauktas / įvykdytas“; skydelio footer „Kaip mato klientas“ — kliento užsakymo puslapis (spec 5 et.)); po v3.20) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -307,7 +307,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.30.1';
+	const VERSIJA = '3.30.2';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -635,7 +635,7 @@ class Petshop_Darbalaukis {
 	/** Vieno užsakymo faktai: eilutės su keliais ir žingsneliais, dalys, takelis, eilės, mygtukas, skuba. */
 	protected static function faktai( $o, $z = array() ) {
 		$id = $o->get_id(); $st = $o->get_status();
-		$f  = array( 'o' => $o, 'id' => $id, 'st' => $st, 'paid' => $o->is_paid() || (bool) $o->get_date_paid(), // v3.30: atšauktas / kitas uždarytas, bet apmokėtas — vis tiek „apmokėta“ 'kl' => self::d( 'klausimas', $o ), 'vez' => self::d( 'vezejas', $o ),
+		$f  = array( 'o' => $o, 'id' => $id, 'st' => $st, 'paid' => $o->is_paid() || (bool) $o->get_date_paid(), /* v3.30: uždarytas, bet apmokėtas — „apmokėta“; v3.30.2: BE `//` — v3.30.1 komentaras nurijo 'kl' ir 'vez' */ 'kl' => self::d( 'klausimas', $o ), 'vez' => self::d( 'vezejas', $o ),
 			'eil' => array(), 'dalys' => array(), 'rus' => '', 'eiles' => array(), 'takelis' => array(), 'btn' => null, 'skuba' => PHP_INT_MAX, 'uzdarytas' => false, 'riba_s' => '', 'btn_s' => '', 'tiesiai' => array(), 'av_side' => false, 'siuntos_klaida' => null );
 		$neapm  = in_array( $st, Petshop_Desk::STATUSAI['neapmoketi'], true );
 		$atsauk = in_array( $st, Petshop_Desk::STATUSAI['atsaukti'], true );
