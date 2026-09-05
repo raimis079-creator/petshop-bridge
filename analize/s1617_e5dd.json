@@ -1,0 +1,100 @@
+{
+ "v": "dep-071929",
+ "kurimas": 200,
+ "sid": 4815,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1617 e5d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "parts": {
+   "1": [
+    80000,
+    "2c85a8ac26727ecf9103e6e5d0e21efc"
+   ],
+   "2": 59448
+  },
+  "bytes": 381439,
+  "md5": "bd1bb760aa56182b003e6eadc939ba21",
+  "token": "ok",
+  "buvo": "95e5c3ba12581760dcae6b340e8f9571",
+  "base_token": "ok",
+  "base_buvo": "79b9da255e84b1356f36505da69b5d66",
+  "backup": true,
+  "base_backup": true,
+  "rasyta": 381439,
+  "po": "bd1bb760aa56182b003e6eadc939ba21",
+  "part_unlink": true,
+  "base_rasyta": 23814,
+  "base_po": "0461c0df089d1be3d5da19c91f085605",
+  "kr_counter": 101,
+  "avpn_counter": "327",
+  "pries": {
+   "35414": {
+    "st": "processing",
+    "graz": [
+     {
+      "laikas": "2026-09-04 23:04:03",
+      "kas": "Testuotojas",
+      "suma": 2.6,
+      "refund": 35788,
+      "ka": "kiekis 2 → 1 Animonda Carny Adult Beef + Chicken + Duck Heart –"
+     }
+    ],
+    "remaining": "16.44"
+   },
+   "35434": {
+    "st": "cancelled",
+    "graz": [
+     {
+      "laikas": "2026-09-04 23:58:14",
+      "kas": "Testuotojas",
+      "suma": 33.04,
+      "refund": 0,
+      "ka": "siunta V07267E1000777 grįžo → atšaukta: 37,03 − 3,99"
+     }
+    ],
+    "remaining": "37.03"
+   },
+   "35436": {
+    "st": "processing",
+    "graz": [
+     {
+      "laikas": "2026-09-04 23:58:12",
+      "kas": "Testuotojas",
+      "suma": 13.01,
+      "refund": 0,
+      "ka": "Quattro dalis grįžo → atšaukta: 17,00 − 3,99"
+     }
+    ],
+    "remaining": "23.61"
+   }
+  },
+  "pastas": {
+   "n": 16,
+   "pask": [
+    [
+     "2026-09-05 01:41:40",
+     "terra@petshop.lt",
+     "Apmokėjimas gautas — užsakymo Nr. 35436 siuntą išsiųsime iš naujo",
+     1
+    ],
+    [
+     "2026-09-05 06:30:04",
+     "terra@gyvunai.lt",
+     "[Petshop] Rytas: 2 raudonos",
+     0
+    ],
+    [
+     "2026-09-05 10:04:59",
+     "terra@gyvunai.lt",
+     "[Petshop sargas] Fatal error",
+     0
+    ]
+   ]
+  }
+ }
+}
