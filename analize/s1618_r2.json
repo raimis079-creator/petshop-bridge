@@ -1,0 +1,392 @@
+{
+ "v": "dep-200942",
+ "kurimas": 200,
+ "sid": 4846,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1618 r2",
+  "temp_istrinta": 1,
+  "metodai": [
+   {
+    "zona": "Neringos savivaldybe",
+    "id": "shopup_venipak_shipping_pickup_method",
+    "inst": 9,
+    "title": "VENIPAK paštomatai/atsiėmimo punktai",
+    "on": "yes",
+    "set": {
+     "title": "VENIPAK paštomatai/atsiėmimo punktai",
+     "description": "Išsiuntimas per 1-3 darbo dienas",
+     "fee": "1.78",
+     "minimum_weight": "",
+     "maximum_weight": "24.90",
+     "min_amount_for_free_shipping": "",
+     "ignore_shipping_classes": []
+    }
+   },
+   {
+    "zona": "Neringos savivaldybe",
+    "id": "shopup_venipak_shipping_courier_method",
+    "inst": 10,
+    "title": "VENIPAK Kurjeris",
+    "on": "yes",
+    "set": {
+     "title": "VENIPAK Kurjeris",
+     "description": "Išsiuntimas per 1-3 darbo dienas",
+     "fee": "24.79",
+     "minimum_weight": "",
+     "maximum_weight": "100",
+     "min_amount_for_free_shipping": "",
+     "ignore_shipping_classes": []
+    }
+   },
+   {
+    "zona": "Neringos savivaldybe",
+    "id": "woo_lithuaniapost_lpexpress_terminal",
+    "inst": 13,
+    "title": "LP Express",
+    "on": "yes",
+    "set": {
+     "title": "LP Express",
+     "plan": "TERMINAL",
+     "parcel_type": "H2T",
+     "delivery_time": "",
+     "cost": "flat",
+     "fixed_cost": "1,78",
+     "weight_cost": "",
+     "size_cost": "",
+     "free_shipping_cost": "30",
+     "apply_free_shipping_before_discount": "no",
+     "order_return_service": "no",
+     "tax_status": "taxable",
+     "class_costs": "",
+     "class_cost_237": "",
+     "class_cost_235": "",
+     "class_cost_236": "",
+     "class_cost_234": "",
+     "no_class_cost": "",
+     "type": "class",
+     "description": "Išsiuntimas per 1-3 darbo dienas"
+    }
+   },
+   {
+    "zona": "Lietuva",
+    "id": "free_shipping",
+    "inst": 1,
+    "title": "Nemokamas pristatymas",
+    "on": "no",
+    "set": {
+     "title": "Nemokamas pristatymas",
+     "requires": "",
+     "min_amount": "0",
+     "ignore_discounts": "no"
+    }
+   },
+   {
+    "zona": "Lietuva",
+    "id": "shopup_venipak_shipping_courier_method",
+    "inst": 2,
+    "title": "VENIPAK Kurjeris",
+    "on": "yes",
+    "set": {
+     "title": "VENIPAK Kurjeris",
+     "description": "Išsiuntimas per 1-3 darbo dienas",
+     "fee": "3.30",
+     "minimum_weight": "",
+     "maximum_weight": "50",
+     "min_amount_for_free_shipping": "",
+     "ignore_shipping_classes": [
+      "235",
+      "236",
+      "237"
+     ]
+    }
+   },
+   {
+    "zona": "Lietuva",
+    "id": "shopup_venipak_shipping_pickup_method",
+    "inst": 3,
+    "title": "VENIPAK paštomatai/atsiėmimo punktai",
+    "on": "yes",
+    "set": {
+     "title": "VENIPAK paštomatai/atsiėmimo punktai",
+     "description": "Išsiuntimas per 1-3 darbo dienas",
+     "fee": "1.78",
+     "minimum_weight": "",
+     "maximum_weight": "24.90",
+     "min_amount_for_free_shipping": "30",
+     "ignore_shipping_classes": []
+    }
+   },
+   {
+    "zona": "Lietuva",
+    "id": "shopup_venipak_shipping_courier_method",
+    "inst": 6,
+    "title": "VENIPAK Kurjeris",
+    "on": "yes",
+    "set": {
+     "title": "VENIPAK Kurjeris",
+     "description": "Išsiuntimas per 1-3 darbo dienas",
+     "fee": "6.60",
+     "minimum_weight": "50",
+     "maximum_weight": "70",
+     "min_amount_for_free_shipping": "",
+     "ignore_shipping_classes": [
+      "234",
+      "236",
+      "237"
+     ]
+    }
+   },
+   {
+    "zona": "Lietuva",
+    "id": "shopup_venipak_shipping_courier_method",
+    "inst": 7,
+    "title": "VENIPAK Kurjeris",
+    "on": "yes",
+    "set": {
+     "title": "VENIPAK Kurjeris",
+     "description": "Išsiuntimas per 1-3 darbo dienas",
+     "fee": "9.90",
+     "minimum_weight": "70",
+     "maximum_weight": "100",
+     "min_amount_for_free_shipping": "",
+     "ignore_shipping_classes": [
+      "234",
+      "235",
+      "237"
+     ]
+    }
+   },
+   {
+    "zona": "Lietuva",
+    "id": "shopup_venipak_shipping_courier_method",
+    "inst": 8,
+    "title": "VENIPAK Kurjeris",
+    "on": "yes",
+    "set": {
+     "title": "VENIPAK Kurjeris",
+     "description": "Išsiuntimas per 1-3 darbo dienas",
+     "fee": "20.65",
+     "minimum_weight": "100",
+     "maximum_weight": "200",
+     "min_amount_for_free_shipping": "",
+     "ignore_shipping_classes": [
+      "234",
+      "235",
+      "236"
+     ]
+    }
+   },
+   {
+    "zona": "Lietuva",
+    "id": "woo_lithuaniapost_lpexpress_terminal",
+    "inst": 12,
+    "title": "LP Express",
+    "on": "yes",
+    "set": {
+     "title": "LP Express",
+     "plan": "TERMINAL",
+     "parcel_type": "H2T",
+     "delivery_time": "",
+     "cost": "flat",
+     "fixed_cost": "1,78",
+     "weight_cost": "",
+     "size_cost": "",
+     "free_shipping_cost": "30",
+     "apply_free_shipping_before_discount": "no",
+     "order_return_service": "no",
+     "tax_status": "taxable",
+     "class_costs": "",
+     "class_cost_237": "",
+     "class_cost_235": "",
+     "class_cost_236": "",
+     "class_cost_234": "",
+     "no_class_cost": "",
+     "type": "class",
+     "description": "Išsiuntimas per 1-3 darbo dienas"
+    }
+   },
+   {
+    "zona": "Lietuva",
+    "id": "woo_lithuaniapost_lpexpress_terminal",
+    "inst": 15,
+    "title": "LP Express kurjeris",
+    "on": "yes",
+    "set": {
+     "title": "LP Express kurjeris",
+     "plan": "HANDS",
+     "parcel_type": "H2H",
+     "delivery_time": "",
+     "cost": "weight",
+     "fixed_cost": "",
+     "weight_cost": "",
+     "size_cost": "",
+     "free_shipping_cost": "",
+     "apply_free_shipping_before_discount": "no",
+     "order_return_service": "no",
+     "tax_status": "taxable",
+     "class_costs": "",
+     "class_cost_237": "",
+     "class_cost_235": "",
+     "class_cost_236": "",
+     "class_cost_234": "",
+     "no_class_cost": "",
+     "type": "class",
+     "weights_0": "50000",
+     "weights_1": "70000",
+     "weights_2": "100000",
+     "weights_3": "200000",
+     "weights_costs_0": "3,30",
+     "weights_costs_1": "6,60",
+     "weights_costs_2": "9,90",
+     "weights_costs_3": "20,65",
+     "description": "Išsiuntimas per 1-3 darbo dienas"
+    }
+   },
+   {
+    "zona": "Baltijos šalys, be LIetuvos",
+    "id": "shopup_venipak_shipping_pickup_method",
+    "inst": 5,
+    "title": "VENIPAK paštomatai/atsiėmimo punktai",
+    "on": "yes",
+    "set": {
+     "title": "VENIPAK paštomatai/atsiėmimo punktai",
+     "description": "Išsiuntimas per 1-3 darbo dienas",
+     "fee": "2.47",
+     "minimum_weight": "",
+     "maximum_weight": "24.90",
+     "min_amount_for_free_shipping": "",
+     "ignore_shipping_classes": []
+    }
+   }
+  ],
+  "venipak_settings": {
+   "shopup_venipak_shipping_field_userid": "07267",
+   "shopup_venipak_shipping_field_username": "Avesa97",
+   "shopup_venipak_shipping_field_password": "avesazoo",
+   "shopup_venipak_shipping_field_firstpacknumber": "1000057",
+   "shopup_venipak_shipping_field_manifest": "001",
+   "shopup_venipak_shipping_field_labelformat": "sticker",
+   "shopup_venipak_shipping_field_maxpackproducts": "20",
+   "shopup_venipak_shipping_field_return_service": "0",
+   "shopup_venipak_shipping_field_ismapenabled": "on",
+   "shopup_venipak_shipping_field_googlemapapikey": "AIzaSyBsi7bs2XiqmUJ1wFyTg3nCVN2TZAAghko",
+   "shopup_venipak_shipping_field_pickuptype": "all",
+   "shopup_venipak_shipping_field_pickupposition": "after_shipping",
+   "shopup_venipak_shipping_field_pickupwidth": "275",
+   "shopup_venipak_shipping_field_sendername": "UAB Avesa",
+   "shopup_venipak_shipping_field_sendercompanycode": "302568442",
+   "shopup_venipak_shipping_field_sendercountry": "LT",
+   "shopup_venipak_shipping_field_sendercity": "Liucionys",
+   "shopup_venipak_shipping_field_senderaddress": "Liucionių g. 46",
+   "shopup_venipak_shipping_field_senderpostcode": "15166",
+   "shopup_venipak_shipping_field_sendercontactperson": "Raimundas Bulakas",
+   "shopup_venipak_shipping_field_sendercontacttel": "+37068187787",
+   "shopup_venipak_shipping_field_sendercontactemail": "terra@petshop.lt",
+   "shopup_venipak_shipping_field_isstatuschangedisabled": "on"
+  },
+  "vp_funcs": [
+   "venipak_fetch_pickups($country = null)",
+   "_venipak_read_pickups()",
+   "_venipak_fetch_pickups_request($file_path)",
+   "venipak_find_pickup_by_id($point_id)",
+   "venipak_pickup_snapshot($point)",
+   "venipak_store_order_pickup($order, $point_id)",
+   "venipak_clear_order_pickup($order)",
+   "venipak_resolve_order_pickup($order, &$source = null)"
+  ],
+  "vp_saltiniai": [
+   "wp_upload_dir(",
+   "file_get_contents($file_path",
+   "wp_remote_get(\"https://go.venipak.lt/ws/get_pickup_points\" "
+  ],
+  "find_src": "function venipak_find_pickup_by_id($point_id) {\n\n  if (!is_numeric($point_id)) {\n\n    return false;\n\n  }\n\n\n\n  foreach (venipak_fetch_pickups() as $point) {\n\n    if ($point['id'] == $point_id) {\n\n      return $point;\n\n    }\n\n  }\n\n  return false;\n\n}\n",
+  "src_venipak_fetch_pickups": "function venipak_fetch_pickups($country = null) {\n\n  static $collection = null;\n\n\n\n  if ($collection === null) {\n\n    $collection = _venipak_read_pickups();\n\n  }\n\n\n\n  if ($country === null) {\n\n    return $collection;\n\n  }\n\n\n\n  $result = [];\n\n  foreach ($collection as $point) {\n\n    if ($point['country'] === $country) {\n\n      $result[] = $point;\n\n    }\n\n  }\n\n  return $result;\n\n}\n",
+  "vp_files": [
+   "LICENSE.txt",
+   "README.txt",
+   "admin",
+   "includes",
+   "index.php",
+   "languages",
+   "public",
+   "uninstall.php",
+   "woocommerce-shopup-venipak-shipping.php"
+  ],
+  "vp_uploads": [
+   "venipak 4096",
+   "pickups.json 1766897"
+  ],
+  "vp_transients": [],
+  "pickup_3648": {
+   "id": 3648,
+   "name": "Venipak locker, AIBĖ Venipak paštomatas",
+   "code": "300906055",
+   "address": "Švenčionių g. 72",
+   "city": "Nemenčinė",
+   "zip": "15168",
+   "country": "LT",
+   "type": 3
+  },
+  "lp_LT0001": null,
+  "lp_lt_n": 531,
+  "lp_lt_pvz": [
+   {
+    "terminal_id": "0251",
+    "name": "Rimi Akademija",
+    "address": "Varžupio g. 1",
+    "city": "Akademija"
+   },
+   {
+    "terminal_id": "2402",
+    "name": "Pašto skyrius",
+    "address": "K.Kasakausko g. 7",
+    "city": "Akmenė"
+   },
+   {
+    "terminal_id": "0711",
+    "name": "IKI",
+    "address": "Naujoji g. 2C",
+    "city": "Alytus"
+   }
+  ],
+  "lp_order_meta": {
+   "_woo_lithuaniapost_barcode": "CC000000001LT",
+   "_woo_lithuaniapost_lpexpress_shipping_method_instance_id": "12",
+   "_woo_lithuaniapost_lpexpress_terminal_id": "LT0001",
+   "_woo_lithuaniapost_parcel_create_error": "[{\"error\":\"INCORRECT RECEIVER\",\"error_description\":\"Incorrectly specified recipient's parcel terminal id.\",\"field\":\"receiver.address.terminalId\"}]",
+   "_woo_lithuaniapost_shipping_status_value": "lp-delivered"
+  },
+  "vp_order_meta": {
+   "_ps_venipak_sekimas": "{\"V07267E1000056\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-03 16:28:58\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tikr\":\"2026-09-04 11:58:34\"}}",
+   "venipak_pickup_point": "3648",
+   "venipak_pickup_point_data": "{\"id\":3648,\"code\":\"300906055\",\"name\":\"Venipak locker, AIB\\u0116 Venipak pa\\u0161tomatas\",\"display_name\":\"Nemen\\u010din\\u0117s AIB\\u0116 Venipak pa\\u0161tomatas\",\"country\":\"LT\",\"city\":\"Nemen\\u010din\\u0117\",\"address\":\"\\u0160ven\\u010dioni\\u0173 g. 72\",\"zip\":\"15168\"}",
+   "venipak_shipping_order_data": "{\"manifest\":\"07267260903002\",\"pack_numbers\":[\"V07267E1000056\"],\"weight\":4.5,\"products_count\":6,\"status\":\"sent\",\"error_message\":\"\"}"
+  },
+  "vp_order_total": "30.73",
+  "vp_order_items": 6,
+  "fs_resolve_src": "",
+  "fs_venipak_only": "\tpublic static function is_venipak_only( int $product_id ): bool {\n\n\t\t$f = self::resolve( $product_id );\n\n\t\treturn $f['carrier'] === 'venipak';\n\n\t}\n",
+  "tema_iapv": [
+   "234: //   update_option('petshop_iapv_counter', 101)",
+   "250: function petshop_get_iapv_number( $order_id ) {",
+   "252: $existing = $order ? $order->get_meta( '_petshop_iapv_number' ) : '';",
+   "254: $counter = (int) get_option( 'petshop_iapv_counter', 101 );",
+   "255: $number  = 'IAPV' . str_pad( $counter, 6, '0', STR_PAD_LEFT );",
+   "256: update_option( 'petshop_iapv_counter', $counter + 1 );",
+   "258: $order->update_meta_data( '_petshop_iapv_number', $number );",
+   "267: $is_bank_transfer = ( $payment_method === 'bacs' );",
+   "268: if ( $is_bank_transfer && in_array( $order->get_status(), array( 'pending', 'on-hold' ), true ) ) {",
+   "269: return 'proforma';",
+   "277: if ( $type === 'proforma' ) {",
+   "280: 'number' => petshop_get_iapv_number( $order_id ),",
+   "363: $name_pfx = ( isset( $doc_title ) && mb_stripos( $doc_title, 'ankstin' ) !== false ) ? 'Isankstine-saskaita' : 'PVM-saskaita';",
+   "406: $is_bank           = ( $payment_method_id === 'bacs' );",
+   "748: add_filter( 'woocommerce_email_subject_customer_on_hold_order',    'petshop_fix_order_nr_in_subject', 10 );"
+  ],
+  "temp_liko": 1
+ }
+}
