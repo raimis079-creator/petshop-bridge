@@ -1,0 +1,271 @@
+{
+ "v": "dep-174552",
+ "kurimas": 200,
+ "sid": 4824,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1617 e7d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "bytes": 396778,
+  "md5": "83873ef192ebf6e1f3b06c51eba6ef17",
+  "token": "ok",
+  "buvo": "550c25e1acc472ed1c0555060171254d",
+  "backup": true,
+  "rasyta": 396778,
+  "po": "83873ef192ebf6e1f3b06c51eba6ef17"
+ },
+ "T1": {
+  "v": "S1617 e7d",
+  "f": "T1",
+  "temp_istrinta": 0,
+  "versija": "3.27",
+  "md5": "83873ef192ebf6e1f3b06c51eba6ef17",
+  "juosta": "1.7",
+  "visi": {
+   "code": 200,
+   "n": 60,
+   "pvz": [
+    "2026-09-05KR-AVPN000103Kreditinė#35436 VykdomasAUDITAS Testas 23 terra@petshop.lt−17,00 €PDF",
+    "2026-09-05AVPN000328PVM sąskaita#35799 ĮvykdytasAUDITAS Testas 23 terra@petshop.lt3,99 €PDF",
+    "2026-09-05AVPN000327PVM sąskaita#35797 ĮvykdytasAUDITAS Testas 21 terra@petshop.lt3,99 €PDF",
+    "2026-09-05KR-AVPN000101Kreditinė#35434 AtšauktasAUDITAS Testas 21 terra@petshop.lt−37,03 €PDF",
+    "2026-09-05AVPN000326PVM sąskaita#35794 ĮvykdytasAUDITAS Testas 23 terra@petshop.lt8,21 €PDF",
+    "2026-09-05AVPN000325PVM sąskaita#35793 ĮvykdytasAUDITAS Testas 23 terra@petshop.lt8,21 €PDF"
+   ],
+   "foot": "60 dok.1486,38 €",
+   "h1": "Sąskaitos visos PVM sąskaitos, išankstinės ir kreditinės — PDF čia, WC lango nereikia · 60 dok.",
+   "pdf_urls": 24,
+   "gen_urls": [
+    "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=dok_gen&id=35450&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26view%3Dsaskaitos%26psl%3D1&_wpnonce=87bf519e82",
+    "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=dok_gen&id=35444&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26view%3Dsaskaitos%26psl%3D1&_wpnonce=c378dcae00"
+   ],
+   "first_pdf": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=dok_pdf&id=35798&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35798&t=kr&_wpnonce=89d0119b03",
+   "juosta_sask": 1,
+   "juosta_sask_testuotojas": 1
+  },
+  "kr": {
+   "code": 200,
+   "n": 3,
+   "pvz": [
+    "2026-09-05KR-AVPN000103Kreditinė#35436 VykdomasAUDITAS Testas 23 terra@petshop.lt−17,00 €PDF",
+    "2026-09-05KR-AVPN000101Kreditinė#35434 AtšauktasAUDITAS Testas 21 terra@petshop.lt−37,03 €PDF",
+    "2026-09-04KR-AVPN000102Kreditinė#35414 VykdomasAUDITAS Testas 1 terra@petshop.lt−2,60 €PDF"
+   ],
+   "foot": "3 dok.−56,63 €",
+   "h1": "Sąskaitos visos PVM sąskaitos, išankstinės ir kreditinės — PDF čia, WC lango nereikia · 3 dok.",
+   "pdf_urls": 3,
+   "gen_urls": [],
+   "first_pdf": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=dok_pdf&id=35798&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35798&t=kr&_wpnonce=89d0119b03",
+   "juosta_sask": 1
+  },
+  "q35434": {
+   "code": 200,
+   "n": 2,
+   "pvz": [
+    "2026-09-05KR-AVPN000101Kreditinė#35434 AtšauktasAUDITAS Testas 21 terra@petshop.lt−37,03 €PDF",
+    "2026-09-02AVPN000303PVM sąskaita#35434 AtšauktasAUDITAS Testas 21 terra@petshop.lt37,03 €nėra"
+   ],
+   "foot": "2 dok.0,00 €",
+   "h1": "Sąskaitos visos PVM sąskaitos, išankstinės ir kreditinės — PDF čia, WC lango nereikia · 2 dok.",
+   "pdf_urls": 1,
+   "gen_urls": [],
+   "first_pdf": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=dok_pdf&id=35795&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26q%3D35434%26atidaryti%3D35795&t=kr&_wpnonce=dfc3005ae7",
+   "juosta_sask": 1
+  },
+  "iapv": {
+   "code": 200,
+   "n": 7,
+   "pvz": [
+    "2026-09-03IAPV000162Išankstinė#35442 VykdomasRai B terra@gyvunai.lt30,73 €PDF",
+    "2026-09-03IAPV000161Išankstinė#35441 VykdomasRai B terra@gyvunai.lt28,98 €PDF",
+    "2026-09-02IAPV000160Išankstinė#35422 VykdomasAUDITAS Testas 9 terra@petshop.lt16,44 €nėra",
+    "2026-08-26IAPV000158Išankstinė#35100 VykdomasAru ZX terra@gyvunai.lt47,66 €nėra",
+    "2026-08-26IAPV000157Išankstinė#35090 VykdomasSart tr terra@gyvunai.lt74,78 €nėra",
+    "2026-08-26IAPV000156Išankstinė#35088 ĮvykdytasDar L terra@gyvunai.lt19,54 €nėra"
+   ],
+   "foot": "7 dok.285,59 €",
+   "h1": "Sąskaitos visos PVM sąskaitos, išankstinės ir kreditinės — PDF čia, WC lango nereikia · 7 dok.",
+   "pdf_urls": 2,
+   "gen_urls": [],
+   "first_pdf": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=dok_pdf&id=35442&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35442&t=iapv&_wpnonce=be394dda05",
+   "juosta_sask": 1
+  },
+  "siandien": {
+   "code": 200,
+   "n": 7,
+   "pvz": [
+    "2026-09-05KR-AVPN000103Kreditinė#35436 VykdomasAUDITAS Testas 23 terra@petshop.lt−17,00 €PDF",
+    "2026-09-05AVPN000328PVM sąskaita#35799 ĮvykdytasAUDITAS Testas 23 terra@petshop.lt3,99 €PDF",
+    "2026-09-05AVPN000327PVM sąskaita#35797 ĮvykdytasAUDITAS Testas 21 terra@petshop.lt3,99 €PDF",
+    "2026-09-05KR-AVPN000101Kreditinė#35434 AtšauktasAUDITAS Testas 21 terra@petshop.lt−37,03 €PDF",
+    "2026-09-05AVPN000326PVM sąskaita#35794 ĮvykdytasAUDITAS Testas 23 terra@petshop.lt8,21 €PDF",
+    "2026-09-05AVPN000325PVM sąskaita#35793 ĮvykdytasAUDITAS Testas 23 terra@petshop.lt8,21 €PDF"
+   ],
+   "foot": "7 dok.−21,42 €",
+   "h1": "Sąskaitos visos PVM sąskaitos, išankstinės ir kreditinės — PDF čia, WC lango nereikia · 7 dok.",
+   "pdf_urls": 7,
+   "gen_urls": [],
+   "first_pdf": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=dok_pdf&id=35798&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26nuo%3D2026-09-05%26iki%3D2026-09-05%26atidaryti%3D35798&t=kr&_wpnonce=89d0119b03",
+   "juosta_sask": 1
+  },
+  "kr_pdf": {
+   "code": 200,
+   "h": {
+    "ct": "application/pdf",
+    "cd": "inline; filename=\"Kreditine-saskaita-KR-AVPN000103.pdf\"",
+    "loc": ""
+   },
+   "len": 34707,
+   "pdf": "%PDF-"
+  },
+  "iapv_pdf": {
+   "code": 200,
+   "h": {
+    "ct": "application/pdf",
+    "cd": "inline; filename=\"Isankstine-saskaita-IAPV000162.pdf\"",
+    "loc": ""
+   },
+   "len": 36310,
+   "pdf": "%PDF-"
+  },
+  "avpn_pdf": {
+   "code": 200,
+   "h": {
+    "ct": "application/pdf",
+    "cd": "inline; filename=\"Kreditine-saskaita-KR-AVPN000103.pdf\"",
+    "loc": ""
+   },
+   "len": 34707,
+   "pdf": "%PDF-"
+  },
+  "gen_id": 35450,
+  "gen_pries": {
+   "st": "processing",
+   "avpn": "AVPN000314",
+   "pdf": ""
+  },
+  "gen": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd_nr": "35450|PDF PVM-saskaita-AVPN000314.pdf sugeneruotas",
+   "loc_view": "saskaitos"
+  },
+  "gen_po": {
+   "pdf": "PVM-saskaita-AVPN000314.pdf",
+   "yra": true,
+   "dydis": 35578
+  },
+  "sk_dok": {
+   "35414": [
+    {
+     "t": "avpn",
+     "z": "PVM sąskaita faktūra",
+     "nr": "AVPN000283",
+     "d": "2026-09-02",
+     "s": "19,04",
+     "u": "",
+     "gen": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=dok_gen&amp;id=35414&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35414&amp;_wpnonce=483cbeae19"
+    },
+    {
+     "t": "kr",
+     "z": "Kreditinė",
+     "nr": "KR-AVPN000102",
+     "d": "2026-09-05",
+     "s": "−2,60",
+     "u": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=dok_pdf&amp;id=35788&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35788&amp;t=kr&amp;_wpnonce=da74ca3a87",
+     "gen": ""
+    }
+   ],
+   "35434": [
+    {
+     "t": "avpn",
+     "z": "PVM sąskaita faktūra",
+     "nr": "AVPN000303",
+     "d": "2026-09-02",
+     "s": "37,03",
+     "u": "",
+     "gen": ""
+    },
+    {
+     "t": "kr",
+     "z": "Kreditinė",
+     "nr": "KR-AVPN000101",
+     "d": "2026-09-05",
+     "s": "−37,03",
+     "u": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=dok_pdf&amp;id=35795&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35795&amp;t=kr&amp;_wpnonce=dfc3005ae7",
+     "gen": ""
+    },
+    {
+     "t": "avpn",
+     "z": "Siuntos grąžinimo išlaidos (#35797)",
+     "nr": "AVPN000327",
+     "d": "2026-09-05",
+     "s": "3,99",
+     "u": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=dok_pdf&amp;id=35797&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35797&amp;t=avpn&amp;_wpnonce=92427f838b",
+     "gen": ""
+    }
+   ],
+   "35436": [
+    {
+     "t": "avpn",
+     "z": "PVM sąskaita faktūra",
+     "nr": "AVPN000305",
+     "d": "2026-09-03",
+     "s": "23,61",
+     "u": "",
+     "gen": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=dok_gen&amp;id=35436&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35436&amp;_wpnonce=18a7d14e26"
+    },
+    {
+     "t": "kr",
+     "z": "Kreditinė",
+     "nr": "KR-AVPN000103",
+     "d": "2026-09-05",
+     "s": "−17,00",
+     "u": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=dok_pdf&amp;id=35798&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35798&amp;t=kr&amp;_wpnonce=89d0119b03",
+     "gen": ""
+    },
+    {
+     "t": "avpn",
+     "z": "Pakartotinis siuntimas (#35792)",
+     "nr": "AVPN000324",
+     "d": "2026-09-05",
+     "s": "8,21",
+     "u": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=dok_pdf&amp;id=35792&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35792&amp;t=avpn&amp;_wpnonce=2dcb145bed",
+     "gen": ""
+    },
+    {
+     "t": "avpn",
+     "z": "Pakartotinis siuntimas (#35793)",
+     "nr": "AVPN000325",
+     "d": "2026-09-05",
+     "s": "8,21",
+     "u": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=dok_pdf&amp;id=35793&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35793&amp;t=avpn&amp;_wpnonce=cdd1bd7105",
+     "gen": ""
+    },
+    {
+     "t": "avpn",
+     "z": "Pakartotinis siuntimas (#35794)",
+     "nr": "AVPN000326",
+     "d": "2026-09-05",
+     "s": "8,21",
+     "u": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=dok_pdf&amp;id=35794&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35794&amp;t=avpn&amp;_wpnonce=afa06e48be",
+     "gen": ""
+    },
+    {
+     "t": "avpn",
+     "z": "Siuntos grąžinimo išlaidos (#35799)",
+     "nr": "AVPN000328",
+     "d": "2026-09-05",
+     "s": "3,99",
+     "u": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=dok_pdf&amp;id=35799&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35799&amp;t=avpn&amp;_wpnonce=d7a9208098",
+     "gen": ""
+    }
+   ]
+  },
+  "temp_liko": 1
+ }
+}
