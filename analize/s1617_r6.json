@@ -1,0 +1,375 @@
+{
+ "v": "dep-063607",
+ "kurimas": 200,
+ "sid": 4809,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1617 r6",
+  "temp_istrinta": 1,
+  "wcdn_dir": true,
+  "wcdn_creditnote_failai": {
+   "includes/services/template/class-template-engine.php": 15,
+   "includes/helpers/class-utils.php": 7,
+   "templates/base.php": 6,
+   "includes/admin/class-backend.php": 6,
+   "includes/services/template/class-template-renderer.php": 4,
+   "templates/creditnote.php": 2,
+   "includes/api/class-settings.php": 2,
+   "includes/core/class-migration.php": 1
+  },
+  "wcdn_grep": {
+   "includes/services/template/class-template-engine.php": [
+    "162: ⏎ case 'creditnote': ⏎ $structure = array(",
+    "167: 'type'  => 'section', ⏎ 'id'    => 'creditNoteSettings', ⏎ 'title' => __( 'Credit Note Settings', 'woocommerce-delivery-notes' ),",
+    "173: 'type'  => 'section', ⏎ 'id'    => 'creditNoteTemplateSettings', ⏎ 'title' => __( 'Template Settings', 'woocommerce-delivery-notes' ),",
+    "500: ), ⏎ 'creditnote'   => array( ⏎ 'documentZoom',",
+    "573: 'packingslip'  => __( 'Enable Packing Slip', 'woocommerce-delivery-notes' ), ⏎ 'creditnote'   => __( 'Enable Credit Note', 'woocommerce-delivery-notes' ), ⏎ ),",
+    "594: ), ⏎ 'creditnote'   => __( ⏎ 'The credit note is a document created to refund or adjust a previously issued invoice.',",
+    "646: 'bottomLabel' => __( ⏎ 'Available placeholders: {order_number}, {order_date}, {customer_name}', ⏎ 'woocommerce-delivery-notes'",
+    "651: 'default'     => array( ⏎ 'invoice'      => 'invoice-{order_number}.pdf', ⏎ 'receipt'      => 'receipt-{order_number}.pdf',",
+    "652: 'invoice'      => 'invoice-{order_number}.pdf', ⏎ 'receipt'      => 'receipt-{order_number}.pdf', ⏎ 'deliverynote' => 'delivery-note-{order_number}.pdf',",
+    "653: 'receipt'      => 'receipt-{order_number}.pdf', ⏎ 'deliverynote' => 'delivery-note-{order_number}.pdf', ⏎ 'packingslip'  => 'packing-slip-{order_number}.pdf',",
+    "654: 'deliverynote' => 'delivery-note-{order_number}.pdf', ⏎ 'packingslip'  => 'packing-slip-{order_number}.pdf', ⏎ 'creditnote'   => 'credit-note-{order_number}.pdf',",
+    "655: 'packingslip'  => 'packing-slip-{order_number}.pdf', ⏎ 'creditnote'   => 'credit-note-{order_number}.pdf', ⏎ ),",
+    "724: 'packingslip'  => self::get_template_order_statuses( 'packingslip' ), ⏎ 'creditnote'   => self::get_template_order_statuses( 'creditnote' ), ⏎ ),",
+    "866: 'packingslip'  => __( 'PACKING SLIP', 'woocommerce-delivery-notes' ), ⏎ 'creditnote'   => __( 'CREDIT NOTE', 'woocommerce-delivery-notes' ), ⏎ ),",
+    "1600: 'packingslip'  => __( 'Packing Slip Date', 'woocommerce-delivery-notes' ), ⏎ 'creditnote'   => __( 'Credit Note Date', 'woocommerce-delivery-notes' ), ⏎ ),",
+    "1622: 'packingslip'  => __( 'Packing Slip Date', 'woocommerce-delivery-notes' ), ⏎ 'creditnote'   => __( 'Credit Note Date', 'woocommerce-delivery-notes' ), ⏎ ),",
+    "1802: 'deliverynote' => false, ⏎ 'creditnote'   => true, ⏎ ),",
+    "2362: 'receipt'    => __( 'PAID', 'woocommerce-delivery-notes' ), ⏎ 'creditnote' => __( 'REFUNDED', 'woocommerce-delivery-notes' ), ⏎ ),",
+    "2691: ⏎ 'creditnote'   => array( ⏎ 'refunded',"
+   ],
+   "includes/helpers/class-utils.php": [
+    "131: * Supported placeholders: ⏎ * {order_number}, {order_date}, {customer_name} ⏎ *",
+    "178: ⏎ $needs_counter = strpos( $text, '{next_number}' ) !== false; ⏎ $counter       = $order->get_meta( '_wcdn_invoice_number_counter', true );",
+    "179: $needs_counter = strpos( $text, '{next_number}' ) !== false; ⏎ $counter       = $order->get_meta( '_wcdn_invoice_number_counter', true ); ⏎",
+    "186: if ( $counter ) { ⏎ $length  = (int) get_option( 'wcdn_invoice_number_counter_length', 4 ); ⏎ $counter = str_pad( (int) $counter, $length, '0', STR_PAD_LEFT );",
+    "197: $replacements = array( ⏎ '{order_number}'  => $order->get_order_number(), ⏎ '{order_date}'    => $order_date,",
+    "205: '{customer_id}'   => $customer_id ? $customer_id : '', ⏎ '{next_number}'   => $counter ? $counter : '', ⏎ );",
+    "238: ⏎ $meta_key = '_wcdn_invoice_number_counter'; ⏎",
+    "256: ⏎ $lock_key = 'wcdn_invoice_number_counter_lock'; ⏎",
+    "287: } else { ⏎ $current = (int) get_option( 'wcdn_invoice_number_counter', 0 ); ⏎ $counter = $current + 1;",
+    "289: $counter = $current + 1; ⏎ update_option( 'wcdn_invoice_number_counter', $counter ); ⏎ }",
+    "306: */ ⏎ public static function get_order_invoice_number( $order_id ) { ⏎ $invoice_number_format = Settings::get( 'invoiceNumberFormat' );",
+    "307: public static function get_order_invoice_number( $order_id ) { ⏎ $invoice_number_format = Settings::get( 'invoiceNumberFormat' ); ⏎ $order                 = wc_get_order( $order_id );",
+    "309: $order                 = wc_get_order( $order_id ); ⏎ $meta_key              = '_wcdn_invoice_number'; ⏎",
+    "315: ⏎ $invoice_number = $order->get_meta( $meta_key, true ); ⏎",
+    "317: ⏎ if ( '' === $invoice_number ) { ⏎",
+    "321: ⏎ $invoice_number = self::replace_placeholders( $invoice_number_format, $order ); ⏎",
+    "323: ⏎ $order->add_meta_data( $meta_key, $invoice_number, true ); ⏎ $order->save();",
+    "327: ⏎ return apply_filters( 'wcdn_order_invoice_number', $invoice_number ); ⏎ }",
+    "349: * @param int    $order_id Order ID. ⏎ * @param string $template Template key ('invoice', 'receipt', 'deliverynote', 'packingslip', 'creditnote'). ⏎ * @return string Formatted date string.",
+    "448: ⏎ 'creditnote'   => apply_filters( ⏎ 'wcdn_template_registration_creditnote',",
+    "449: 'creditnote'   => apply_filters( ⏎ 'wcdn_template_registration_creditnote', ⏎ array(",
+    "544: if ( (float) $order->get_total_refunded() > 0 ) { ⏎ $types[] = 'creditnote'; ⏎ }",
+    "568: 'receipt'      => 'receiptButtonLabel', ⏎ 'creditnote'   => 'creditNoteButtonLabel', ⏎ 'packingslip'  => 'packingSlipButtonLabel',",
+    "599: 'receipt'      => __( 'Receipt', 'woocommerce-delivery-notes' ), ⏎ 'creditnote'   => __( 'Credit Note', 'woocommerce-delivery-notes' ), ⏎ 'packingslip'  => __( 'Packing Slip', 'woocommerce-delivery-notes' ),"
+   ],
+   "templates/base.php": [
+    "233: * --- OTHER --- ⏎ * @var string $template            Template key: 'invoice', 'receipt', 'deliverynote', 'packingslip', 'creditnote'. ⏎ * @var string $type                Render context: 'html' (print preview) or 'pdf' (Dompdf).",
+    "297: <p class=\"wcdn-columns-billingPhone\"> ⏎ <?php echo esc_html( ( $settings['billingPhoneText'] ?? __( 'Phone', 'woocommerce-delivery-notes' ) ) . ': ' . wcdn_format_phone_number( $order['billing']['phone'], $order['billing']['country'] ?? '' ) ); ?> ⏎ </p>",
+    "756: $show_price_cols = ! empty( $settings['displayPriceInProductDetailsTable'] ) || ⏎ ( 'creditnote' === $template && ! empty( $settings['displayRefundItemsInTable'] ) ); ⏎ ?>",
+    "788: <th style=\"width:<?php echo $show_price_cols ? '50%' : '80%'; ?>;\"> ⏎ <?php echo esc_html( ( 'creditnote' === $template ) ? __( 'Refunded Item', 'woocommerce-delivery-notes' ) : __( 'Product', 'woocommerce-delivery-notes' ) ); ?> ⏎ </th>",
+    "802: /* \"Total Refunded\" for credit notes; \"Total\" for everything else. */ ⏎ echo esc_html( ( 'creditnote' === $template ) ? __( 'Total Refunded', 'woocommerce-delivery-notes' ) : __( 'Total', 'woocommerce-delivery-notes' ) ); ⏎ ?>",
+    "1043: *   - $totals['total'] is set, AND ⏎ *   - template is not 'creditnote', AND ⏎ *   - displayPriceInProductDetailsTable is enabled.",
+    "1065: <?php ⏎ if ( isset( $totals['total'] ) && 'creditnote' !== $template && ! empty( $settings['displayPriceInProductDetailsTable'] ) ) : ⏎ $render_totals_row = function ( $value, $label, $bold = false, $row_class = '' ) use ( $order ) {"
+   ],
+   "includes/admin/class-backend.php": [
+    "75: <?php foreach ( Template_Engine::get_template_keys() as $template ) : ?> ⏎ <?php if ( Templates::get( $template, 'enabled' ) && ( 'creditnote' !== $template || (float) $order->get_total_refunded() > 0 ) ) : ?> ⏎ <?php",
+    "199: <?php foreach ( Template_Engine::get_template_keys() as $template ) : ?> ⏎ <?php if ( Templates::get( $template, 'enabled' ) && ( 'creditnote' !== $template || (float) $order->get_total_refunded() > 0 ) ) : ?> ⏎ <a href=\"<?php echo esc_url( Utils::get_print_page_url( $order_id, $template ) ); ?>\"",
+    "207: <?php ⏎ $invoice_number = Utils::get_order_invoice_number( $order_id ); ⏎ $invoice_date   = Utils::get_order_invoice_date( $order_id );",
+    "212: <li><strong><?php esc_html_e( 'Invoice number: ', 'woocommerce-delivery-notes' ); ?></strong> ⏎ <?php echo esc_html( $invoice_number ); ?> ⏎ </li>",
+    "242: ⏎ if ( Templates::get( 'creditnote', 'enabled' ) ) { ⏎ $bulk_actions['wcdn_print_creditnote'] = Settings::get( 'creditNoteButtonLabel' );",
+    "243: if ( Templates::get( 'creditnote', 'enabled' ) ) { ⏎ $bulk_actions['wcdn_print_creditnote'] = Settings::get( 'creditNoteButtonLabel' ); ⏎ }",
+    "284: 'receipt', ⏎ 'creditnote', ⏎ 'packingslip',"
+   ],
+   "includes/services/template/class-template-renderer.php": [
+    "243: ⏎ $is_creditnote = 'creditnote' === $template; ⏎",
+    "245: ⏎ $items = $is_creditnote ⏎ ? ( $order['refund']['items'] ?? array() )",
+    "249: ⏎ $totals = $is_creditnote ⏎ ? array( 'total' => $order['refund']['total'] ?? 0 )",
+    "321: 'label' => $settings['billingPhoneText'] ?? __( 'Phone', 'woocommerce-delivery-notes' ), ⏎ 'value' => wcdn_format_phone_number( $order['billing']['phone'], $order['billing']['country'] ?? '' ), ⏎ 'key'   => 'billingPhone',"
+   ]
+  },
+  "wcdn_tpl_creditnote": [],
+  "wcdn_tpl_keys": [
+   "invoice",
+   "receipt",
+   "deliverynote",
+   "packingslip"
+  ],
+  "wcdn_tpl_invoice_nr": {
+   "enabled": true,
+   "pdfFilename": "Invoice -{order_number}.pdf",
+   "attachCustomerEmail": true,
+   "showInvoiceNumber": true,
+   "invoiceNumberText": "Invoice No",
+   "invoiceNumberFontSize": 14,
+   "invoiceNumberFontStyle": "normal",
+   "invoiceNumberAlign": "left",
+   "invoiceNumberTextColor": "#000000",
+   "showOrderNumber": true,
+   "orderNumberText": "Order No",
+   "orderNumberFontSize": 14,
+   "orderNumberFontStyle": "normal",
+   "orderNumberAlign": "left",
+   "orderNumberTextColor": "#000000"
+  },
+  "wcdn_opcijos": [
+   {
+    "option_name": "wcdn_allow_tracking",
+    "v": "dismissed"
+   },
+   {
+    "option_name": "wcdn_db_version",
+    "v": "7.3.0"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter",
+    "v": "351"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter_year",
+    "v": "a:1:{i:2026;i:1;}"
+   },
+   {
+    "option_name": "wcdn_legacy_backup",
+    "v": "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:10:\"1779385649\";s:15:\"wcdn_db_version\";s:5:\"0.0.0\";s:24:\"wcdn_flush_rewrite_rules\";s:1:\"1\";s:19:\"wcdn_migration_lock\";s:10:\"1779385650\";s:12:\"wcdn_notic"
+   },
+   {
+    "option_name": "wcdn_legacy_backup_autoload",
+    "v": "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:4:\"auto\";s:15:\"wcdn_db_version\";s:4:\"auto\";s:24:\"wcdn_flush_rewrite_rules\";s:4:\"auto\";s:19:\"wcdn_migration_lock\";s:3:\"off\";s:12:\"wcdn_notices\";s:4:\"auto"
+   },
+   {
+    "option_name": "wcdn_migration_7_0_2_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_1_0_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_1_2_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_settings",
+    "v": "a:42:{s:9:\"storeName\";s:9:\"UAB Avesa\";s:9:\"storeLogo\";s:87:\"https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg\";s:12:\"storeAddress\";s:87:\"Liucionių g. 46, Liucioni"
+   },
+   {
+    "option_name": "wcdn_template_settings",
+    "v": "a:4:{s:7:\"invoice\";a:152:{s:7:\"enabled\";b:1;s:10:\"dateFormat\";s:5:\"Y-m-d\";s:17:\"orderMetaPosition\";s:5:\"below\";s:11:\"pdfFilename\";s:27:\"Invoice -{order_number}.pdf\";s:19:\"attachCustomerEmail\";b:1;s:16"
+   },
+   {
+    "option_name": "wcdn_version",
+    "v": "7.3.0"
+   }
+  ],
+  "base_creditnote": [
+   "8: ⏎ if ( ! isset( $type ) ) { $type = 'html'; } ⏎ $is_pdf = ( 'pdf' === $type );",
+   "9: if ( ! isset( $type ) ) { $type = 'html'; } ⏎ $is_pdf = ( 'pdf' === $type ); ⏎",
+   "22: $order_id       = isset( $order['id'] ) ? $order['id'] : 0; ⏎ $is_credit_note = ( isset( $template ) && $template === 'creditnote' ); ⏎",
+   "24: ⏎ if ( $is_credit_note ) { ⏎ $doc_title = 'Kreditinė PVM sąskaita faktūra';",
+   "25: if ( $is_credit_note ) { ⏎ $doc_title = 'Kreditinė PVM sąskaita faktūra'; ⏎ $maybe_order  = wc_get_order( $order_id );",
+   "376: <tbody> ⏎ <?php if ( $is_credit_note ) : ⏎ $cn_parent  = wc_get_order( $parent_id );",
+   "378: $cn_parent  = wc_get_order( $parent_id ); ⏎ $cn_refunds = $cn_parent ? $cn_parent->get_refunds() : []; ⏎ $refund_obj = ! empty( $cn_refunds ) ? $cn_refunds[0] : null;",
+   "379: $cn_refunds = $cn_parent ? $cn_parent->get_refunds() : []; ⏎ $refund_obj = ! empty( $cn_refunds ) ? $cn_refunds[0] : null; ⏎ if ( $refund_obj ) :",
+   "380: $refund_obj = ! empty( $cn_refunds ) ? $cn_refunds[0] : null; ⏎ if ( $refund_obj ) : ⏎ foreach ( $refund_obj->get_items() as $item ) :",
+   "381: if ( $refund_obj ) : ⏎ foreach ( $refund_obj->get_items() as $item ) : ⏎ if ( abs( $item->get_quantity() ) == 0 ) continue;",
+   "424: <td class=\"ps-col-info\"> ⏎ <?php if ( $is_credit_note ) : ?> ⏎ <strong>Kreditinė data:</strong> <?php echo esc_html( date( 'Y-m-d' ) ); ?><br>",
+   "425: <?php if ( $is_credit_note ) : ?> ⏎ <strong>Kreditinė data:</strong> <?php echo esc_html( date( 'Y-m-d' ) ); ?><br> ⏎ <strong>Originali sąskaita:</strong> <?php echo esc_html( str_replace( 'KR-', '', $invoice_number ) ); ?><br>",
+   "445: <table class=\"ps-totals\"> ⏎ <?php if ( $is_credit_note ) : ⏎ $cn_parent2    = wc_get_order( $parent_id );",
+   "447: $cn_parent2    = wc_get_order( $parent_id ); ⏎ $cn_refunds2   = $cn_parent2 ? $cn_parent2->get_refunds() : []; ⏎ $latest_refund = ! empty( $cn_refunds2 ) ? $cn_refunds2[0] : null;",
+   "448: $cn_refunds2   = $cn_parent2 ? $cn_parent2->get_refunds() : []; ⏎ $latest_refund = ! empty( $cn_refunds2 ) ? $cn_refunds2[0] : null; ⏎ $ref_subtotal  = $latest_refund ? abs( (float) $latest_refund->get_subtotal() ) : 0;",
+   "449: $latest_refund = ! empty( $cn_refunds2 ) ? $cn_refunds2[0] : null; ⏎ $ref_subtotal  = $latest_refund ? abs( (float) $latest_refund->get_subtotal() ) : 0; ⏎ $ref_tax       = $latest_refund ? abs( (float) $latest_refund->get_total_tax() ) : 0;",
+   "450: $ref_subtotal  = $latest_refund ? abs( (float) $latest_refund->get_subtotal() ) : 0; ⏎ $ref_tax       = $latest_refund ? abs( (float) $latest_refund->get_total_tax() ) : 0; ⏎ $ref_total     = $latest_refund ? abs( (float) $latest_refund->get_total() ) : 0;",
+   "451: $ref_tax       = $latest_refund ? abs( (float) $latest_refund->get_total_tax() ) : 0; ⏎ $ref_total     = $latest_refund ? abs( (float) $latest_refund->get_total() ) : 0; ⏎ ?>",
+   "471: ⏎ <?php if ( $is_proforma && ! $is_credit_note ) : ?> ⏎ <!-- MOKĖJIMO INSTRUKCIJA (proformai) -->"
+  ],
+  "functions_pdf": [
+   "236: //   update_option('petshop_iapv_counter', 101) ⏎ // =============================================================== ⏎ function petshop_get_avpn_number( $order_id ) { ⏎ $order    = wc_get_order( $order_id ); ⏎ $existing = $order ? $order->get_meta( '_petshop_avpn_number' ) : '';",
+   "250: } ⏎  ⏎ function petshop_get_iapv_number( $order_id ) { ⏎ $order    = wc_get_order( $order_id ); ⏎ $existing = $order ? $order->get_meta( '_petshop_iapv_number' ) : '';",
+   "264: } ⏎  ⏎ function petshop_get_invoice_document_type( $order ) { ⏎ if ( ! $order instanceof WC_Order ) return 'invoice'; ⏎ $payment_method   = $order->get_payment_method();",
+   "274: } ⏎  ⏎ function petshop_get_invoice_title( $order ) { ⏎ $type     = petshop_get_invoice_document_type( $order ); ⏎ $order_id = $order->get_id();",
+   "292: // PDF saskaitos generavimas ⏎ // =============================================================== ⏎ function petshop_generate_invoice_pdf( $order_id ) { ⏎ $wc_order = wc_get_order( $order_id ); ⏎ if ( ! $wc_order ) return false;",
+   "356: $full_html = '<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><style>@page{size:A4;margin:12mm 14mm;}body{margin:0;padding:0;}</style></head><body>' . $body_html . '</body></html>'; ⏎  ⏎ if ( ! class_exists( 'Dompdf\\Dompdf' ) ) return false; ⏎  ⏎ $upload_dir = wp_upload_dir();",
+   "359: ⏎ $upload_dir = wp_upload_dir(); ⏎ $pdf_dir    = trailingslashit( $upload_dir['basedir'] ) . 'wcdn/invoice/'; ⏎ wp_mkdir_p( $pdf_dir ); ⏎ // Svarus lietuviskas failo pavadinimas pagal dokumento numeri (base.php nustato $invoice_number ir $doc_title virsuje).",
+   "367: ⏎ try { ⏎ $options = new \\Dompdf\\Options(); ⏎ $options->set( 'isRemoteEnabled', true ); ⏎ $options->set( 'isHtml5ParserEnabled', true );",
+   "372: $options->set( 'isFontSubsettingEnabled', true ); ⏎ $options->set( 'chroot', array( realpath( ABSPATH ), realpath( $upload_dir['basedir'] ) ) ); ⏎ $dompdf = new \\Dompdf\\Dompdf( $options ); ⏎ $dompdf->loadHtml( $full_html, 'UTF-8' ); ⏎ $dompdf->setPaper( array( 0, 0, 595.28, 841.89 ), 'portrait' );",
+   "373: $options->set( 'chroot', array( realpath( ABSPATH ), realpath( $upload_dir['basedir'] ) ) ); ⏎ $dompdf = new \\Dompdf\\Dompdf( $options ); ⏎ $dompdf->loadHtml( $full_html, 'UTF-8' ); ⏎ $dompdf->setPaper( array( 0, 0, 595.28, 841.89 ), 'portrait' ); ⏎ $dompdf->render();",
+   "374: $dompdf = new \\Dompdf\\Dompdf( $options ); ⏎ $dompdf->loadHtml( $full_html, 'UTF-8' ); ⏎ $dompdf->setPaper( array( 0, 0, 595.28, 841.89 ), 'portrait' ); ⏎ $dompdf->render(); ⏎ file_put_contents( $pdf_file, $dompdf->output() );",
+   "375: $dompdf->loadHtml( $full_html, 'UTF-8' ); ⏎ $dompdf->setPaper( array( 0, 0, 595.28, 841.89 ), 'portrait' ); ⏎ $dompdf->render(); ⏎ file_put_contents( $pdf_file, $dompdf->output() ); ⏎ return file_exists( $pdf_file ) ? $pdf_file : false;",
+   "376: $dompdf->setPaper( array( 0, 0, 595.28, 841.89 ), 'portrait' ); ⏎ $dompdf->render(); ⏎ file_put_contents( $pdf_file, $dompdf->output() ); ⏎ return file_exists( $pdf_file ) ? $pdf_file : false; ⏎ } catch ( \\Throwable $e ) {",
+   "486: $doc_type = petshop_get_invoice_document_type( $order ); ⏎ $order->update_meta_data( '_petshop_invoice_document_type', $doc_type ); ⏎ $order->delete_meta_data( '_wcdn_invoice_pdf' ); ⏎ $order->delete_meta_data( '_wcdn_invoice_pdf_token' ); ⏎ $order->save();",
+   "487: $order->update_meta_data( '_petshop_invoice_document_type', $doc_type ); ⏎ $order->delete_meta_data( '_wcdn_invoice_pdf' ); ⏎ $order->delete_meta_data( '_wcdn_invoice_pdf_token' ); ⏎ $order->save(); ⏎ }, 1, 4 );",
+   "624: add_filter( 'woocommerce_email_attachments', 'petshop_remove_invoice_from_processing_email', 9999, 4 ); ⏎  ⏎ function petshop_remove_invoice_from_processing_email( $attachments, $email_id, $order, $email ) { ⏎ if ( $email_id !== 'customer_processing_order' ) return $attachments; ⏎ if ( empty( $attachments ) || ! is_array( $attachments ) ) return array();",
+   "632: $basename = $path ? basename( $path ) : ''; ⏎ $is_pdf   = ( strtolower( pathinfo( $basename, PATHINFO_EXTENSION ) ) === 'pdf' ); ⏎ $is_inv   = ( stripos( $path, '/wcdn/invoice/' ) !== false || stripos( $basename, 'invoice' ) !== false ); ⏎ if ( $is_pdf && $is_inv ) continue; ⏎ $filtered[] = $attachment;",
+   "702: ⏎ // =============================================================== ⏎ // WCDN nuorodu salinimas is processing ir admin laisku ⏎ // =============================================================== ⏎ add_action( 'woocommerce_email_before_order_table', function( $order, $sent_to_admin, $plain_text, $email ) {",
+   "707: if ( in_array( $email->id, array( 'customer_processing_order', 'new_order' ), true ) ) { ⏎ remove_all_actions( 'woocommerce_email_after_order_table' ); ⏎ remove_all_actions( 'wcdn_email_document_links' ); ⏎ } ⏎ }, 1, 4 );"
+  ],
+  "desk_creditnote": [
+   "202: * 1 SLUOKSNIS: sąrašas · eilės · filtrai · paieška · skydelis · masiniai veiksmai. ⏎ * 2 sluoksnis (atskirai): rytinė eiga, klausimų sprendimai, atšaukimas su kreditine. ⏎ */",
+   "476: 'tekstas'  => $o->is_paid() ⏎ ? 'Atšaukti šį APMOKĖTĄ užsakymą? Prekės grįš į likutį. Pinigai NEGRĄŽINAMI automatiškai — grąžinimą ir kreditinę tvarkysi atskirai.' ⏎ : 'Atšaukti šį užsakymą? Prekės grįš į likutį. Klientui laiškas nesiunčiamas — patogu, kai tas pats žmogus pridarė kelis užsakymus, kol apmokėjo.',",
+   "2760: if ( 0 === strpos( $row['klausimas'], 'Klientas atsisako' ) ) { ⏎ printf( '<div class=\"pd-kline\"><div class=\"pd-kprek\"><b>Gauta %s</b><span>%s</span></div><div class=\"pd-kbtns\"><button type=\"button\" class=\"pd-btn pd-btn-s\" data-wc1=\"wcdn_print_creditnote\" data-oid=\"%d\">Kreditinė</button><span class=\"pd-knone\">pinigai — rankinis grąžinimas (Paysera)</span></d"
+  ],
+  "atsisakymas": [
+   "6: * GRANDINĖ: klientas užsakymo puslapyje (paskyra ARBA svečio nuoroda su order key) ⏎ * spaudžia „Atsisakyti sutarties\" → `_ps_withdrawal` + priežastis + pastaba ⏎ * istorijoje → darbalaukio „Klausimai\" kortelė (desk `klausimas()` žymę mato",
+   "13: * KO MODULIS NEDARO (užrakinti sprendimai): pinigų negrąžina (Paysera refund ⏎ * rankinis), statuso nekeičia, kreditinės nekuria — ji spausdinama esamu wcdn ⏎ * („Spausdinti kreditinę sąskaitą\") užsakymo lange.",
+   "14: * rankinis), statuso nekeičia, kreditinės nekuria — ji spausdinama esamu wcdn ⏎ * („Spausdinti kreditinę sąskaitą\") užsakymo lange. ⏎ *",
+   "25: ⏎ const META    = '_ps_withdrawal'; ⏎ const REASON  = '_ps_withdrawal_reason';",
+   "26: const META    = '_ps_withdrawal'; ⏎ const REASON  = '_ps_withdrawal_reason'; ⏎ const LANGO_D = 30;",
+   "105: . ( $priezastis ? '. Priežastis: „' . $priezastis . '\"' : '' ) ⏎ . '. Užsakymas darbalaukio „Klausimuose\". Pinigų grąžinimas rankinis; kreditinė — wcdn mygtuku.', false, true ); ⏎ $o->save();"
+  ],
+  "meta_creditnote": [
+   {
+    "meta_key": "_wcdn_creditnote_date",
+    "n": "2"
+   },
+   {
+    "meta_key": "_wcdn_creditnote_pdf",
+    "n": "2"
+   },
+   {
+    "meta_key": "_wcdn_creditnote_pdf_token",
+    "n": "2"
+   }
+  ],
+  "meta_wcdn": [
+   {
+    "meta_key": "_wcdn_creditnote_date",
+    "n": "2"
+   },
+   {
+    "meta_key": "_wcdn_creditnote_pdf",
+    "n": "2"
+   },
+   {
+    "meta_key": "_wcdn_creditnote_pdf_token",
+    "n": "2"
+   },
+   {
+    "meta_key": "_wcdn_invoice_date",
+    "n": "47"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number",
+    "n": "47"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number_counter",
+    "n": "47"
+   },
+   {
+    "meta_key": "_wcdn_invoice_pdf",
+    "n": "17"
+   },
+   {
+    "meta_key": "_wcdn_invoice_pdf_token",
+    "n": "17"
+   }
+  ],
+  "postmeta_wcdn": [
+   {
+    "meta_key": "_wcdn_creditnote_date",
+    "n": "2"
+   },
+   {
+    "meta_key": "_wcdn_creditnote_pdf",
+    "n": "2"
+   },
+   {
+    "meta_key": "_wcdn_creditnote_pdf_token",
+    "n": "2"
+   },
+   {
+    "meta_key": "_wcdn_invoice_date",
+    "n": "47"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number",
+    "n": "47"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number_counter",
+    "n": "47"
+   },
+   {
+    "meta_key": "_wcdn_invoice_pdf",
+    "n": "17"
+   },
+   {
+    "meta_key": "_wcdn_invoice_pdf_token",
+    "n": "17"
+   }
+  ],
+  "wcdn_uploads": [
+   "creditnote (0)",
+   "deliverynote (0)",
+   "fonts (23)",
+   "invoice (72)",
+   "packingslip (0)",
+   "receipt (0)"
+  ],
+  "refund": {
+   "35788": {
+    "type": "shop_order_refund",
+    "parent": 35414,
+    "amount": "2.6",
+    "reason": "Darbalaukis: kiekis 2 → 1 „Animonda Carny Adult Beef + Chicken + Duck Heart – konservai“ (Testuotojas)",
+    "total": "-2.60",
+    "items": [
+     {
+      "n": "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g",
+      "q": -1,
+      "tot": "-2.14876",
+      "tax": "-0.45",
+      "refunded_item_id": "781"
+     }
+    ],
+    "ps_kiekis": "1"
+   },
+   "35789": {
+    "type": "shop_order_refund",
+    "parent": 35425,
+    "amount": "28.58",
+    "reason": "Darbalaukis: prekė išimta „AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maista“ (Testuotojas)",
+    "total": "-28.58",
+    "items": [
+     {
+      "n": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg",
+      "q": -2,
+      "tot": "-23.619835",
+      "tax": "-4.96",
+      "refunded_item_id": "819"
+     }
+    ],
+    "ps_kiekis": "1"
+   }
+  },
+  "desk_saskaita": [
+   "13: *    (5 etapas) · Sąskaita (5 etapas) · Parašyti klientui · Atšaukti;",
+   "48: *   sąskaita; pradiniame pastaba + įvykis `pakart_apmoketa` → kortelėje atsiranda „Siųsti iš naujo“ (`grizta_is_naujo` leidžia tik kai pakartotinis",
+   "79: *   WC admin refund'ų nenaudojam; kreditinė (5 etapas „Sąskaita“) skaičiuos iš savų sumų (`_ps_grazinti_rankomis`, faktai).",
+   "1261: $o->add_order_note( sprintf( 'Darbalaukis: pinigai klientui grąžinti rankomis — %s € (%s). Sąskaita / kreditinė — rankomis.', number_format( $viso, 2, ',', '' ), $u->display_name ), false, true ); $o->save();",
+   "1830: *  meta `_ps_pakartotinis` = pradinio ID (darbalaukis jį praleidžia); klientui laiškas su WC apmokėjimo nuoroda. Pradinis užsakymas ir sąskaita neliečiami. */",
+   "1891: /** Laiškas po apmokėjimo (su PVM sąskaita) — [tema, html]. */",
+   "1896: $h .= '<p>' . esc_html( 'PVM sąskaita faktūra už pakartotinį siuntimą prisegta prie šio laiško.' ) . '</p>';",
+   "1902: *  (tema rašytų „išsiųstas“), temos kablys (prior. 5) išrašo AVPN, darbalaukio laiškas su PVM sąskaita; pradiniame pastaba + įvykis → „Siųsti iš naujo“. */",
+   "1908: self::d( 'laiskai_off' ); $n->update_status( 'completed', 'Darbalaukis: pakartotinis siuntimas apmokėtas — užsakymas įvykdytas automatiškai (tik pinigams; į Surinkti / lapus / Venipak neina). WC laiškas klientui: NESIŲSTAS — darbalaukio laiškas su PVM sąskaita.' ); self::d( 'laiskai_on' );",
+   "1914: $n->add_order_note( 'Darbalaukis: laiškas klientui „apmokėjimas gautas“ ' . ( $ok ? 'išsiųstas' : 'NEIŠSIŲSTAS' ) . ( $pdf && file_exists( $pdf ) ? ' su PVM sąskaita ' . $avpn : ' BE sąskaitos (PDF nesugeneruotas)' ) . '.', false, true ); $n->save();",
+   "1916: $o->add_order_note( sprintf( 'Pakartotinis užsakymas #%s apmokėtas %s(%s €, %s) — galima „Siųsti iš naujo“.', $n->get_order_number(), 'bacs' === $n->get_payment_method() ? 'pavedimu ' : '', self::eur( $n->get_total() ), $avpn ? $avpn : 'sąskaita ' . ( $pdf ? 'yra' : 'nėra' ) ), false, true ); $o->sa",
+   "1953: return array( $ok ? 'dl_info' : 'dl_klaida', $ok ? 'pakartotinis užsakymas #' . $n->get_order_number() . ' (' . self::eur( $n->get_total() ) . ' €) pažymėtas apmokėtu pavedimu' . ( $n->get_meta( '_petshop_avpn_number' ) ? ', PVM sąskaita ' . $n->get_meta( '_petshop_avpn_number' ) : '' ) . ' — dabar ",
+   "1963: *  darbalaukio „apmokėjimas gautas“ su PVM sąskaita (`pakartotinis_apmoketas`); administratoriui — pradinio užsakymo kortelė / pastaba (Claude prielaida). */",
+   "2731: $pastaba = 'Pinigų sistema negrąžina. Grąžink per Paysera arba pavedimu ir spausk „Grąžinta“ — Klausimas nusiims. Sąskaitą / kreditinę — rankomis, kol „Sąskaita“ nepadaryta.';",
+   "2766: $bpv = ( $pk && 'laukia' === $pk['b'] ) ? '<a class=\"v t\" href=\"' . esc_url( self::dl_url( 'pakart_apmoketa', $id ) ) . '\" data-d=\"' . esc_attr( wp_json_encode( array( 'antraste' => $antr, 'tekstas' => 'Pavedimas ' . $pk['suma'] . ' € už pakartotinį užsakymą #' . $pk['nr'] . ' jau banke? Užsakymas p",
+   "2954: var s2=e.target.closest('.dl-pk-s'); if(s2){ e.preventDefault(); e.stopPropagation(); var f2=s2.closest('.dl-pk-f'), si=f2.querySelector('[name=suma]'), v=parseFloat(String(si.value).replace(',','.')); if(!(v>=0.5&&v<=200)){ si.focus(); return; } si.value=v.toFixed(2); f2.querySelector('[name=ka]').",
+   "2978: f+='<span style=\"margin-left:auto\"></span>'+(o.red?'<button class=\"v t\" id=\"skRed\">Redaguoti</button>':'<button class=\"v t\" disabled title=\"lipdukas jau užregistruotas / išsiųsta / uždaryta — keisk rankiniu būdu\">Redaguoti</button>')+'<button class=\"v t\" disabled title=\"dar nepadaryta\">Sąskaita</but"
+  ]
+ }
+}
