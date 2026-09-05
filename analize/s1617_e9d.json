@@ -1,0 +1,75 @@
+{
+ "v": "dep-175624",
+ "kurimas": 200,
+ "sid": 4829,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1617 e9d",
+  "f": "D",
+  "temp_istrinta": 1,
+  "bytes": 397454,
+  "md5": "d067b40cfbfd4ad520ddffd961b4af15",
+  "token": "ok",
+  "buvo": "96478c6a99c2c728ccbe8c4759118b1b",
+  "backup": true,
+  "rasyta": 397454,
+  "po": "d067b40cfbfd4ad520ddffd961b4af15"
+ },
+ "T2": {
+  "v": "S1617 e9d",
+  "f": "T2",
+  "temp_istrinta": 0,
+  "versija": "3.29",
+  "sk": {
+   "35414": {
+    "suma": "19,04 €",
+    "apmok": "apmokėta · Mokėjimas internetu",
+    "dok": 2
+   },
+   "35434": {
+    "suma": "37,03 €",
+    "apmok": "neapmokėta · Mokėjimas internetu",
+    "dok": 3
+   },
+   "35436": {
+    "suma": "23,61 €",
+    "apmok": "apmokėta · Mokėjimas internetu",
+    "dok": 6
+   }
+  },
+  "visi_n": 60,
+  "temp_liko": 1,
+  "wc_totals": {
+   "35414": {
+    "formatted": "19,04&nbsp;&euro;",
+    "rows": [
+     "cart_subtotal",
+     "shipping",
+     "order_total",
+     "payment_method"
+    ]
+   },
+   "35434": {
+    "formatted": "37,03&nbsp;&euro;",
+    "rows": [
+     "cart_subtotal",
+     "shipping",
+     "order_total",
+     "payment_method"
+    ]
+   },
+   "35436": {
+    "formatted": "23,61&nbsp;&euro;",
+    "rows": [
+     "cart_subtotal",
+     "shipping",
+     "order_total",
+     "payment_method"
+    ]
+   }
+  }
+ }
+}
