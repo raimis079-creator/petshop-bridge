@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Darbalaukis v3.30.2 (S1617, 5 etapas: „Pakartotinis užsakymas“ — naujas mažas užsakymas + apmokėjimo nuoroda; v3.22: WC laiškai pakartotiniam užsakymui išjungti per `woocommerce_email_enabled_*`; v3.23 (Raimis 09-05 „pavedimas reikia“): apmokėjimo puslapyje Paysera + bankinis pavedimas, laiške ir „ačiū“ puslapyje rekvizitai, kortelėje „Apmokėta pavedimu“ — darbuotojas patvirtina gavęs pinigus; v3.24: pasirinkus pavedimą (`on-hold`) nuoroda toliau veikia — Paysera vis dar galima; v3.25: KREDITINĖ pusiau automatinė (spec §12.5, Raimis K1–K3) — žr. žemiau; v3.26/v3.27: SĄSKAITOS — skydelio blokas „Sąskaitos“ + langas `view=saskaitos` (visi dokumentai, filtrai, PDF; v3.27: AVPN data iš `wc_order_operational_data`; v3.28: kreditinių refund'ai (`_ps_kreditine`) — savi, kaip `_ps_kiekis`: sumose nerodomi, skydelio antraštė lieka pradinė suma; v3.29: `sumu_eilutes` — WC `refund_{indeksas}`, ne `refund_{id}` (S1616 klaida, savų refund'ų eilutės klientui vis tiek rodėsi; v3.30: `paid` = `is_paid() || date_paid` — atšauktas apmokėtas užsakymas nebe „neapmokėta · laukiam pinigų“, uždaryto pastaba „atšauktas / įvykdytas“; skydelio footer „Kaip mato klientas“ — kliento užsakymo puslapis (spec 5 et.)); po v3.20) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
+ * Petshop Darbalaukis v3.31 (S1617, 5 etapas: „Pakartotinis užsakymas“ — naujas mažas užsakymas + apmokėjimo nuoroda; v3.22: WC laiškai pakartotiniam užsakymui išjungti per `woocommerce_email_enabled_*`; v3.23 (Raimis 09-05 „pavedimas reikia“): apmokėjimo puslapyje Paysera + bankinis pavedimas, laiške ir „ačiū“ puslapyje rekvizitai, kortelėje „Apmokėta pavedimu“ — darbuotojas patvirtina gavęs pinigus; v3.24: pasirinkus pavedimą (`on-hold`) nuoroda toliau veikia — Paysera vis dar galima; v3.25: KREDITINĖ pusiau automatinė (spec §12.5, Raimis K1–K3) — žr. žemiau; v3.26/v3.27: SĄSKAITOS — skydelio blokas „Sąskaitos“ + langas `view=saskaitos` (visi dokumentai, filtrai, PDF; v3.27: AVPN data iš `wc_order_operational_data`; v3.28: kreditinių refund'ai (`_ps_kreditine`) — savi, kaip `_ps_kiekis`: sumose nerodomi, skydelio antraštė lieka pradinė suma; v3.29: `sumu_eilutes` — WC `refund_{indeksas}`, ne `refund_{id}` (S1616 klaida, savų refund'ų eilutės klientui vis tiek rodėsi; v3.30: `paid` = `is_paid() || date_paid` — atšauktas apmokėtas užsakymas nebe „neapmokėta · laukiam pinigų“, uždaryto pastaba „atšauktas / įvykdytas“; skydelio footer „Kaip mato klientas“ — kliento užsakymo puslapis (spec 5 et.); v3.31 (Raimis #10): kreditinės laiško ŠABLONAS taisomas Sąskaitų lange (opcija `ps_dl_kr_laiskas`, vietaženkliai), siunčia tik darbuotojas); po v3.20) — SĄRAŠAS KAIP MAKETE v7 + SKYDELIS SU TRIMIS KELIAIS.
  *
  * KODĖL (Raimis 2026-09-03): „paspaudus ant užsakymo, kaip makete prekės kortelė dešinėje neatsidaro“.
  * Langas daromas pagal `uzsakymai-maketas-v7.html` (suderintas maketas) + spec §3–§5 + registras:
@@ -307,7 +307,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.30.2';
+	const VERSIJA = '3.31';
 	const SLUG    = 'ps-desk';
 
 	/** Eilės: slug => [pavadinimas, paaiškinimas, spalva]. */
@@ -350,6 +350,7 @@ class Petshop_Darbalaukis {
 		add_action( 'woocommerce_thankyou_bacs', array( __CLASS__, 'pakartotinis_aciu_bankas' ), 20, 1 ); // v3.23
 		add_filter( 'woocommerce_valid_order_statuses_for_payment', array( __CLASS__, 'pakartotinis_moketini_statusai' ), 20, 2 ); // v3.24
 		add_action( 'admin_post_ps_dl_kreditine', array( __CLASS__, 'kreditine_vykdyti' ) ); // v3.25
+		add_action( 'admin_post_ps_dl_kr_sablonas', array( __CLASS__, 'kr_sablonas_vykdyti' ) ); // v3.31
 		add_filter( 'woocommerce_order_fully_refunded_status', array( __CLASS__, 'kr_be_statuso' ), 20, 3 ); // v3.25
 		// v3.19: kiekio keitimo refund'ai (`_ps_kiekis`) — eilutė jau perrašyta, WC juos rodytų dukart (paskyra, laiškai, „Suma“).
 		add_filter( 'woocommerce_order_item_quantity_html', array( __CLASS__, 'kiekio_html' ), 20, 2 );
@@ -2178,13 +2179,7 @@ class Petshop_Darbalaukis {
 		$kr = $g[ $idx ]['kr']; $el = $o->get_billing_email(); if ( ! is_email( $el ) ) { return array( 'dl_klaida', 'kliento el. pašto nėra' ); }
 		$r = wc_get_order( (int) $kr['refund'] ); $pdf = $r ? (string) $r->get_meta( '_petshop_kravpn_pdf' ) : ''; if ( ! $pdf || ! file_exists( $pdf ) ) { return array( 'dl_klaida', 'kreditinės PDF nėra — laiškas nesiųstas' ); }
 		$priedai = array( $pdf ); $mok_pdf = ''; if ( ! empty( $kr['mokestis'] ) ) { $m = wc_get_order( (int) $kr['mokestis'] ); $mok_pdf = $m ? (string) $m->get_meta( '_petshop_completed_pdf' ) : ''; if ( $mok_pdf && file_exists( $mok_pdf ) ) { $priedai[] = $mok_pdf; } }
-		$vardas = trim( (string) $o->get_billing_first_name() ); $nr = $o->get_order_number(); $graz = self::eur( $g[ $idx ]['suma'] ?? 0 );
-		$h  = '<p>' . esc_html( $vardas ? "Sveiki, {$vardas}." : 'Sveiki.' ) . '</p>';
-		$h .= '<p>' . esc_html( sprintf( 'Pridedame kreditinę PVM sąskaitą faktūrą Nr. %s (%s €) už užsakymą Nr. %s.', $kr['nr'], self::eur( $kr['suma'] ), $nr ) ) . '</p>';
-		if ( ! empty( $kr['mok_avpn'] ) ) { $h .= '<p>' . esc_html( sprintf( 'Siuntos grąžinimo išlaidos — %s € (pirkimo taisyklių 6.10–6.11 p.) — PVM sąskaita faktūra Nr. %s pridėta; jos apmokėjimą įskaitome iš grąžinamos sumos.', self::eur( self::GRAZINIMO_MOKESTIS ), $kr['mok_avpn'] ) ) . '</p>'; }
-		$h .= '<p>' . esc_html( sprintf( 'Grąžinama suma — %s €. Pinigus grąžinsime per 14 dienų tuo pačiu būdu, kuriuo mokėjote.', $graz ) ) . '</p>';
-		$h .= '<p>' . esc_html( 'Gražios dienos,' ) . '<br>' . esc_html( 'Petshop.lt komanda' ) . '<br>+370 681 87787<br>terra@petshop.lt</p>';
-		$tema = sprintf( 'Kreditinė sąskaita Nr. %s už užsakymą Nr. %s', $kr['nr'], $nr );
+		list( $tema, $h ) = self::kr_laiskas_sudeti( $o, $kr, (float) ( $g[ $idx ]['suma'] ?? 0 ) ); // v3.31: šablonas iš opcijos (Sąskaitų lange), Raimis #10
 		$mailer = WC()->mailer(); $ok = (bool) $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ), '', $priedai );
 		if ( $ok ) { $g[ $idx ]['kr']['laiskas'] = current_time( 'mysql' ); $o->update_meta_data( self::GRAZINTI_META, wp_json_encode( $g ) ); }
 		$o->add_order_note( sprintf( 'Darbalaukis: kreditinė %s klientui (%s) %s%s (%s).', $kr['nr'], $el, $ok ? 'išsiųsta' : 'NEIŠSIŲSTA', $mok_pdf && file_exists( $mok_pdf ) ? ' su 3,99 € sąskaita ' . $kr['mok_avpn'] : '', $u->display_name ), false, true ); $o->save();
@@ -2261,7 +2256,7 @@ class Petshop_Darbalaukis {
 			. '<label>nuo <input type="date" name="nuo" value="' . esc_attr( $nuo ) . '"></label><label>iki <input type="date" name="iki" value="' . esc_attr( $iki ) . '"></label>'
 			. '<input type="search" name="q" placeholder="Nr., užsakymas, klientas, el. paštas" value="' . esc_attr( $q ) . '">'
 			. '<button class="v p" type="submit">Rodyti</button>' . ( $t || $q || $nuo || $iki ? ' <a class="pilkas maz" href="' . esc_url( admin_url( 'admin.php?page=' . self::SLUG . '&view=saskaitos' ) ) . '">išvalyti</a>' : '' ) . '</form>';
-		if ( ! $rows ) { echo '<p class="dl-paaisk">Dokumentų pagal šiuos filtrus nėra.</p></main>'; return; }
+		if ( ! $rows ) { echo '<p class="dl-paaisk">Dokumentų pagal šiuos filtrus nėra.</p>'; self::kr_sablono_forma(); echo '</main>'; return; }
 		echo '<table class="dl-sask"><thead><tr><th>Data</th><th>Nr.</th><th>Tipas</th><th>Užsakymas</th><th>Klientas</th><th class="r">Suma</th><th>PDF</th></tr></thead><tbody>';
 		foreach ( $rows as $r ) {
 			$did = (int) $r['did']; $oid = (int) $r['oid']; $s = (float) $r['s']; $yra = $r['pdf'] && file_exists( $r['pdf'] );
@@ -2271,7 +2266,58 @@ class Petshop_Darbalaukis {
 		}
 		echo '</tbody><tfoot><tr><td colspan="5">' . esc_html( $n . ' dok.' . ( $psl_n > 1 ? ' · psl. ' . $psl . ' iš ' . $psl_n : '' ) ) . '</td><td class="r"><b>' . esc_html( ( $suma < 0 ? '−' : '' ) . self::eur( abs( $suma ) ) ) . ' €</b></td><td></td></tr></tfoot></table>';
 		if ( $psl_n > 1 ) { echo '<p class="dl-paaisk">' . ( $psl > 1 ? '<a href="' . esc_url( $url( array( 'psl' => $psl - 1 ) ) ) . '">← ankstesni</a> ' : '' ) . ( $psl < $psl_n ? '<a href="' . esc_url( $url( array( 'psl' => $psl + 1 ) ) ) . '">kiti →</a>' : '' ) . '</p>'; }
-		echo '<p class="dl-paaisk">Suma — pagal filtrą (kreditinės minusu). Kreditinės data — išrašymo diena; PVM sąskaitos — įvykdymo (apmokėjimo) diena; išankstinės — užsakymo diena.</p></main>';
+		echo '<p class="dl-paaisk">Suma — pagal filtrą (kreditinės minusu). Kreditinės data — išrašymo diena; PVM sąskaitos — įvykdymo (apmokėjimo) diena; išankstinės — užsakymo diena.</p>';
+		self::kr_sablono_forma(); // v3.31
+		echo '</main>';
+	}
+
+	/* ============================ v3.31: KREDITINĖS LAIŠKO ŠABLONAS (Raimis 09-05 #10: tekstas taisomas, siunčia TIK darbuotojas) ============================ */
+
+	const KR_LAISKAS_OPT = 'ps_dl_kr_laiskas'; // v3.31: [tema, tekstas, mokestis] su vietaženkliais
+
+	/** Numatytas šablonas. Vietaženkliai: {vardas} {kr_nr} {kr_suma} {uzsakymas} {grazinama} {mokestis} (pastraipa tik kai yra 3,99 € sąskaita) {mok_suma} {mok_avpn}. Tuščia eilutė = nauja pastraipa. */
+	protected static function kr_laisko_numatytas() {
+		return array(
+			'tema'     => 'Kreditinė sąskaita Nr. {kr_nr} už užsakymą Nr. {uzsakymas}',
+			'tekstas'  => "Sveiki, {vardas}.\n\nPridedame kreditinę PVM sąskaitą faktūrą Nr. {kr_nr} ({kr_suma} €) už užsakymą Nr. {uzsakymas}.\n\n{mokestis}\n\nGrąžinama suma — {grazinama} €. Pinigus grąžinsime per 14 dienų tuo pačiu būdu, kuriuo mokėjote.\n\nGražios dienos,\nPetshop.lt komanda\n+370 681 87787\nterra@petshop.lt",
+			'mokestis' => 'Siuntos grąžinimo išlaidos — {mok_suma} € (pirkimo taisyklių 6.10–6.11 p.) — PVM sąskaita faktūra Nr. {mok_avpn} pridėta; jos apmokėjimą įskaitome iš grąžinamos sumos.',
+		);
+	}
+	protected static function kr_laisko_sablonas() { $s = get_option( self::KR_LAISKAS_OPT ); $n = self::kr_laisko_numatytas(); return is_array( $s ) ? array_merge( $n, array_intersect_key( array_map( 'strval', $s ), $n ) ) : $n; }
+
+	/** Šablonas → [tema, html]. Pastraipos — tuščia eilutė; viena eilutė — <br>. */
+	protected static function kr_laiskas_sudeti( $o, $kr, $grazinama ) {
+		$s = self::kr_laisko_sablonas(); $vardas = trim( (string) $o->get_billing_first_name() );
+		$z = array( '{vardas}' => $vardas ? $vardas : 'kliente', '{kr_nr}' => (string) $kr['nr'], '{kr_suma}' => self::eur( $kr['suma'] ), '{uzsakymas}' => (string) $o->get_order_number(), '{grazinama}' => self::eur( $grazinama ), '{mok_suma}' => self::eur( self::GRAZINIMO_MOKESTIS ), '{mok_avpn}' => (string) ( $kr['mok_avpn'] ?? '' ) );
+		$mok = ! empty( $kr['mok_avpn'] ) ? strtr( $s['mokestis'], $z ) : '';
+		$tekstas = strtr( str_replace( '{mokestis}', $mok, $s['tekstas'] ), $z );
+		$tekstas = preg_replace( "/\n{3,}/", "\n\n", trim( $tekstas ) );
+		$h = ''; foreach ( preg_split( "/\n\s*\n/", $tekstas ) as $p ) { $p = trim( $p ); if ( '' === $p ) { continue; } $h .= '<p>' . nl2br( esc_html( $p ) ) . '</p>'; }
+		return array( strtr( $s['tema'], $z ), $h );
+	}
+
+	/** POST `ps_dl_kr_sablonas` (Sąskaitų lange, `manage_woocommerce`) — išsaugoti / atstatyti šabloną. */
+	public static function kr_sablonas_vykdyti() {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_die( 'Nepakanka teisių' ); }
+		check_admin_referer( 'ps_dl_kr_sablonas' ); $atgal = admin_url( 'admin.php?page=' . self::SLUG . '&view=saskaitos' );
+		if ( ! empty( $_POST['atstatyti'] ) ) { delete_option( self::KR_LAISKAS_OPT ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_info', 'pd_nr' => rawurlencode( 'šablonas|kreditinės laiško šablonas atstatytas į numatytą' ) ), $atgal ) ); exit; }
+		$n = self::kr_laisko_numatytas(); $s = array();
+		foreach ( array_keys( $n ) as $k ) { $v = isset( $_POST[ $k ] ) ? trim( (string) wp_unslash( $_POST[ $k ] ) ) : ''; $s[ $k ] = 'tema' === $k ? sanitize_text_field( $v ) : sanitize_textarea_field( $v ); if ( '' === $s[ $k ] ) { $s[ $k ] = $n[ $k ]; } }
+		update_option( self::KR_LAISKAS_OPT, $s, false );
+		wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_info', 'pd_nr' => rawurlencode( 'šablonas|kreditinės laiško šablonas išsaugotas' ) ), $atgal ) ); exit;
+	}
+
+	/** Šablono forma Sąskaitų lange (tik `manage_woocommerce`): <details>, tema, tekstas, 3,99 pastraipa, vietaženklių sąrašas, „Išsaugoti“ / „Atstatyti numatytą“. */
+	protected static function kr_sablono_forma() {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { return; }
+		$s = self::kr_laisko_sablonas(); $n = self::kr_laisko_numatytas(); $keistas = $s !== $n;
+		echo '<details class="dl-sabl"' . ( isset( $_GET['pd_nr'] ) && 0 === strpos( rawurldecode( (string) $_GET['pd_nr'] ), 'šablonas' ) ? ' open' : '' ) . '><summary>Kreditinės laiško šablonas' . ( $keistas ? ' <span class="pilkas maz">(pakeistas)</span>' : ' <span class="pilkas maz">(numatytas)</span>' ) . '</summary>'
+			. '<form method="post" action="' . esc_url( admin_url( 'admin-post.php' ) ) . '">' . wp_nonce_field( 'ps_dl_kr_sablonas', '_wpnonce', true, false ) . '<input type="hidden" name="action" value="ps_dl_kr_sablonas">'
+			. '<p class="pilkas maz">Laišką su kreditine siunčia TIK darbuotojas („siųsti klientui“ kortelėje) — automatiškai nesiunčiama. Vietaženkliai: {vardas} {kr_nr} {kr_suma} {uzsakymas} {grazinama} {mokestis} (3,99 € pastraipa — tik kai ji yra) {mok_suma} {mok_avpn}. Tuščia eilutė — nauja pastraipa.</p>'
+			. '<label>Tema<br><input type="text" name="tema" value="' . esc_attr( $s['tema'] ) . '"></label>'
+			. '<label>Tekstas<br><textarea name="tekstas" rows="10">' . esc_textarea( $s['tekstas'] ) . '</textarea></label>'
+			. '<label>3,99 € pastraipa ({mokestis})<br><textarea name="mokestis" rows="3">' . esc_textarea( $s['mokestis'] ) . '</textarea></label>'
+			. '<div class="dl-sabl-v"><button class="v p" type="submit">Išsaugoti</button> <button class="v t" type="submit" name="atstatyti" value="1">Atstatyti numatytą</button></div></form></details>';
 	}
 
 	/** „Siųsti iš naujo“ — TIK grįžusią dalį (log S1611 spr. 5 + Raimis 09-04 vakaras: grįžusi tiekėjo dalis VISADA → AV, standartinė procedūra).
@@ -3218,7 +3264,7 @@ class Petshop_Darbalaukis {
 .skydas .dl-klaus{background:var(--raudona-s);color:var(--raudona);border-radius:8px;padding:8px 12px;margin:0 0 10px;font-size:13px}
 .skydas footer{padding:12px 20px;border-top:1px solid var(--linija);display:flex;gap:8px;flex-wrap:wrap;align-items:center}.skydas .zurnalas{font-size:12px;color:var(--pilka)}.skydas .zurnalas ol{margin:0;padding-left:16px}.skydas .zurnalas li{padding:2px 0}.skydas .psuz-klaida{color:var(--raudona)}.skydas .pak input{width:54px;font:inherit;border:1px solid var(--linija);border-radius:5px;padding:2px 6px}
 .dl-red label{display:block;font-size:12px;color:var(--pilka);margin:6px 0 0}.dl-red label.cb{display:flex;align-items:center;gap:6px;color:var(--rasalas);font-size:13px;margin-top:10px}.dl-red input:not([type=checkbox]),.dl-red select{display:block;width:100%;box-sizing:border-box;font:inherit;font-size:13px;color:var(--rasalas);border:1px solid var(--linija);border-radius:5px;padding:5px 8px;background:var(--popierius);margin-top:2px}.dl-red .e2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.dl-red .dl-red-v{display:flex;gap:8px;margin-top:10px;align-items:center}.dl-red .dl-note{margin-top:6px}
-.dl-pk-f{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0 2px;font-size:13px}.dl-pk-f label{display:inline-flex;gap:6px;align-items:center;color:var(--pilka)}.dl-pk-f input[type=number]{width:74px;font:inherit;font-size:13px;color:var(--rasalas);border:1px solid var(--linija);border-radius:6px;padding:3px 6px}.dl-kortele .dl-pk{color:var(--rasalas)}.dl-kortele .dl-kr-l{color:var(--rasalas);line-height:1.7}.dl-dok{font-size:13px;padding:3px 0;border-bottom:1px solid var(--linija)}.dl-dok:last-child{border-bottom:0}.dl-sask-f{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0 0 12px;font-size:13px}.dl-sask-f label{display:inline-flex;gap:6px;align-items:center;color:var(--pilka)}.dl-sask-f select,.dl-sask-f input{font:inherit;font-size:13px;color:var(--rasalas);border:1px solid var(--linija);border-radius:6px;padding:5px 8px;background:var(--popierius)}.dl-sask-f input[type=search]{width:280px}.dl-sask{border-collapse:collapse;width:100%;max-width:1100px;background:var(--popierius);border:1px solid var(--linija);border-radius:8px;font-size:13px}.dl-sask th,.dl-sask td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--linija);vertical-align:top}.dl-sask th{font-weight:600;color:var(--pilka);font-size:12px}.dl-sask .r{text-align:right;white-space:nowrap}.dl-sask tfoot td{border-bottom:0;font-weight:500}.dl-kr-l .dl-kr-b{margin-left:4px;padding:1px 8px;font-size:12px}.dl-kr-f{margin:8px 0 2px;font-size:13px;background:var(--popierius);border:1px solid var(--linija);border-radius:8px;padding:8px 12px;max-width:760px}.dl-kr-f .dl-kr-a{font-weight:600;margin-bottom:4px}.dl-kr-f table{border-collapse:collapse;margin:2px 0 6px}.dl-kr-f td{padding:3px 10px 3px 0;vertical-align:middle;border-bottom:1px solid var(--linija)}.dl-kr-f tr.viso td{border-bottom:0}.dl-kr-f td.c{text-align:center;white-space:nowrap}.dl-kr-f td.r{text-align:right;white-space:nowrap}.dl-kr-f input[type=number]{width:58px;font:inherit;font-size:13px;color:var(--rasalas);border:1px solid var(--linija);border-radius:5px;padding:3px 6px}.dl-kr-f .dl-kr-m{margin:4px 0 8px;color:var(--pilka)}.dl-kr-f .dl-kr-m label{display:inline-flex;gap:6px;align-items:flex-start}.dl-kr-f .dl-kr-v{display:flex;gap:10px;align-items:center}a.dl-kk{color:var(--melyna);text-decoration:underline dotted;cursor:pointer}a.dl-kk:hover{color:var(--rasalas)}.dl-kk-f{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0 2px 38px;font-size:13px}.dl-kk-f label{display:inline-flex;gap:6px;align-items:center;color:var(--pilka)}.dl-kk-f input[type=number]{width:58px;font:inherit;font-size:13px;color:var(--rasalas);border:1px solid var(--linija);border-radius:5px;padding:4px 6px;background:var(--popierius)}
+.dl-pk-f{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:8px 0 2px;font-size:13px}.dl-pk-f label{display:inline-flex;gap:6px;align-items:center;color:var(--pilka)}.dl-pk-f input[type=number]{width:74px;font:inherit;font-size:13px;color:var(--rasalas);border:1px solid var(--linija);border-radius:6px;padding:3px 6px}.dl-kortele .dl-pk{color:var(--rasalas)}.dl-kortele .dl-kr-l{color:var(--rasalas);line-height:1.7}.dl-dok{font-size:13px;padding:3px 0;border-bottom:1px solid var(--linija)}.dl-dok:last-child{border-bottom:0}.dl-sask-f{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin:0 0 12px;font-size:13px}.dl-sask-f label{display:inline-flex;gap:6px;align-items:center;color:var(--pilka)}.dl-sask-f select,.dl-sask-f input{font:inherit;font-size:13px;color:var(--rasalas);border:1px solid var(--linija);border-radius:6px;padding:5px 8px;background:var(--popierius)}.dl-sask-f input[type=search]{width:280px}.dl-sask{border-collapse:collapse;width:100%;max-width:1100px;background:var(--popierius);border:1px solid var(--linija);border-radius:8px;font-size:13px}.dl-sask th,.dl-sask td{padding:7px 10px;text-align:left;border-bottom:1px solid var(--linija);vertical-align:top}.dl-sask th{font-weight:600;color:var(--pilka);font-size:12px}.dl-sask .r{text-align:right;white-space:nowrap}.dl-sask tfoot td{border-bottom:0;font-weight:500}.dl-sabl{margin:18px 0;max-width:760px;font-size:13px;background:var(--popierius);border:1px solid var(--linija);border-radius:8px;padding:8px 14px}.dl-sabl summary{cursor:pointer;font-weight:600}.dl-sabl label{display:block;margin:8px 0;color:var(--pilka)}.dl-sabl input[type=text],.dl-sabl textarea{width:100%;font:inherit;font-size:13px;color:var(--rasalas);border:1px solid var(--linija);border-radius:6px;padding:6px 8px;background:#fff;margin-top:3px}.dl-sabl .dl-sabl-v{display:flex;gap:10px;margin:6px 0 4px}.dl-kr-l .dl-kr-b{margin-left:4px;padding:1px 8px;font-size:12px}.dl-kr-f{margin:8px 0 2px;font-size:13px;background:var(--popierius);border:1px solid var(--linija);border-radius:8px;padding:8px 12px;max-width:760px}.dl-kr-f .dl-kr-a{font-weight:600;margin-bottom:4px}.dl-kr-f table{border-collapse:collapse;margin:2px 0 6px}.dl-kr-f td{padding:3px 10px 3px 0;vertical-align:middle;border-bottom:1px solid var(--linija)}.dl-kr-f tr.viso td{border-bottom:0}.dl-kr-f td.c{text-align:center;white-space:nowrap}.dl-kr-f td.r{text-align:right;white-space:nowrap}.dl-kr-f input[type=number]{width:58px;font:inherit;font-size:13px;color:var(--rasalas);border:1px solid var(--linija);border-radius:5px;padding:3px 6px}.dl-kr-f .dl-kr-m{margin:4px 0 8px;color:var(--pilka)}.dl-kr-f .dl-kr-m label{display:inline-flex;gap:6px;align-items:flex-start}.dl-kr-f .dl-kr-v{display:flex;gap:10px;align-items:center}a.dl-kk{color:var(--melyna);text-decoration:underline dotted;cursor:pointer}a.dl-kk:hover{color:var(--rasalas)}.dl-kk-f{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:6px 0 2px 38px;font-size:13px}.dl-kk-f label{display:inline-flex;gap:6px;align-items:center;color:var(--pilka)}.dl-kk-f input[type=number]{width:58px;font:inherit;font-size:13px;color:var(--rasalas);border:1px solid var(--linija);border-radius:5px;padding:4px 6px;background:var(--popierius)}
 .dl-shade{display:none;position:fixed;inset:0;background:rgba(27,38,32,.45);z-index:100000}.dl-shade.on{display:block}
 .dl-dlg{display:none;position:fixed;left:50%;top:38%;transform:translate(-50%,-50%);width:440px;max-width:94vw;background:#fff;border-radius:10px;padding:18px 20px;z-index:100001;box-shadow:0 20px 50px rgba(0,0,0,.25)}
 .dl-dlg.on{display:block}.dl-dlg h3{margin:0 0 8px;font-size:15px}.dl-dlg p{margin:0 0 12px;color:var(--pilka);font-size:13.5px}.dl-opt{display:flex;gap:8px;align-items:center;font-size:13px;margin-bottom:14px}.dl-dlg-b{display:flex;justify-content:flex-end;gap:8px}
