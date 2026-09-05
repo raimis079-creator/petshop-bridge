@@ -1,0 +1,390 @@
+{
+ "v": "dep-212849",
+ "kurimas": 200,
+ "sid": 4859,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1619 r1",
+  "temp_istrinta": 1,
+  "wc": "11.0.1",
+  "php": "8.3.20",
+  "wc_maybe_reduce": {
+   "f": "wc-stock-functions.php",
+   "nuo": 104,
+   "kodas": [
+    "function wc_maybe_reduce_stock_levels( $order_id ) {",
+    "$order = wc_get_order( $order_id );",
+    "",
+    "if ( ! $order ) {",
+    "return;",
+    "}",
+    "",
+    "$stock_reduced  = $order->get_data_store()->get_stock_reduced( $order_id );",
+    "$trigger_reduce = apply_filters( 'woocommerce_payment_complete_reduce_order_stock', ! $stock_reduced, $order_id );",
+    "",
+    "// Only continue if we're reducing stock.",
+    "if ( ! $trigger_reduce ) {",
+    "return;",
+    "}",
+    "",
+    "wc_reduce_stock_levels( $order );",
+    "",
+    "// Ensure stock is marked as \"reduced\" in case payment complete or other stock actions are called."
+   ]
+  },
+  "wc_reduce": {
+   "f": "wc-stock-functions.php",
+   "nuo": 170,
+   "kodas": [
+    "function wc_reduce_stock_levels( $order_id ) {",
+    "if ( is_a( $order_id, 'WC_Order' ) ) {",
+    "$order    = $order_id;",
+    "$order_id = $order->get_id();",
+    "} else {",
+    "$order = wc_get_order( $order_id );",
+    "}",
+    "// We need an order, and a store with stock management to continue."
+   ]
+  },
+  "variklio_kabliai": [
+   "petshop-av-reduce.php:36: add_action( 'woocommerce_payment_complete', [ __CLASS__, 'mazinti' ], 15, 1 );",
+   "petshop-av-reduce.php:37: add_action( 'woocommerce_order_status_processing', [ __CLASS__, 'mazinti' ], 15, 1 );",
+   "petshop-av-reduce.php:39: add_action( 'woocommerce_order_status_cancelled', [ __CLASS__, 'grazinti' ], 15, 1 );",
+   "petshop-av-reduce.php:40: add_action( 'woocommerce_order_status_refunded', [ __CLASS__, 'grazinti' ], 15, 1 );",
+   "petshop-partijos.php:581: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 );",
+   "petshop-partijos.php:582: add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 );",
+   "petshop-partijos.php:583: add_action( 'woocommerce_order_status_completed', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 );",
+   "petshop-faktai.php:86: add_action( 'woocommerce_payment_complete',           array( __CLASS__, 'rasyti' ), 35, 1 );",
+   "petshop-faktai.php:89: add_action( 'woocommerce_order_status_processing',    array( __CLASS__, 'rasyti' ), 35, 1 );",
+   "petshop-faktai.php:90: add_action( 'woocommerce_order_status_completed',     array( __CLASS__, 'rasyti' ), 35, 1 );",
+   "petshop-faktai.php:91: add_action( 'woocommerce_order_status_changed',       array( __CLASS__, 'statusas' ), 35, 4 );"
+  ],
+  "local_pickup": [
+   "petshop-darbalaukis.php:3: * Petshop Darbalaukis v3.33.2 (S1617/S1618, 5 etapas: „Pakartotinis užsakymas“ — naujas mažas užsakymas + apmokėjimo nuoroda; v3.22: WC laiškai pakartotiniam užsakymui iš",
+   "petshop-darbalaukis.php:2409: if ( get_option( 'ps_dl_atsiemimas_av' ) ) { $out['av'] = array( 't' => 'Atsiėmimas AV', 'tipas' => 'av', 'inst' => array( array( 'id' => 'local_pickup', 'inst' => 0, 'ti",
+   "petshop-darbalaukis.php:2539: $sh = new WC_Order_Item_Shipping(); $sh->set_method_title( 'av' === $tipas ? 'Atsiėmimas AV' : $inst['title'] ); $sh->set_method_id( $inst['id'] ); $sh->set_instance_id( ",
+   "petshop-fakt-siuntos.php:366: *       „VENIPAK pastomatai/atsiemimo punktai\" — vienas metodas dengia abu;",
+   "petshop-rinkiniai.php:455: $zodziai = array( 'pastomat', 'paštomat', 'terminal', 'locker', 'pickup', 'atsiemim', 'parcel' );"
+  ],
+  "vezejas": {
+   "f": "petshop-desk.php",
+   "nuo": 1178,
+   "kodas": [
+    "protected static function vezejas( $order ) {",
+    "$m = mb_strtoupper( (string) $order->get_shipping_method() );",
+    "$lp = ( false !== mb_strpos( $m, 'UNISEND' ) || false !== mb_strpos( $m, 'LP ' ) || false !== mb_strpos( $m, 'LIETUVOS PAŠT' ) );",
+    "$pastomatas = ( false !== mb_strpos( $m, 'PAŠTOMAT' ) || false !== mb_strpos( $m, 'ATSIĖMIM' ) || false !== mb_strpos( $m, 'PICKUP' ) );",
+    "if ( $lp ) { return 'lp'; }",
+    "if ( false !== mb_strpos( $m, 'VENIPAK' ) ) { return $pastomatas ? 'venipak_pastomatas' : 'venipak_kurjeris'; }",
+    "return 'kita';",
+    "}"
+   ]
+  },
+  "zonos": [
+   {
+    "zid": 3,
+    "n": "Neringos savivaldybe",
+    "loc": [
+     "country:LT",
+     "postcode:931*"
+    ],
+    "m": [
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "inst": 9,
+      "on": "yes",
+      "t": "VENIPAK paštomatai/atsiėmimo punktai"
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 10,
+      "on": "yes",
+      "t": "VENIPAK Kurjeris"
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "inst": 13,
+      "on": "yes",
+      "t": "LP Express"
+     }
+    ]
+   },
+   {
+    "zid": 1,
+    "n": "Lietuva",
+    "loc": [
+     "country:LT"
+    ],
+    "m": [
+     {
+      "id": "free_shipping",
+      "inst": 1,
+      "on": "no",
+      "t": "Nemokamas pristatymas"
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 2,
+      "on": "yes",
+      "t": "VENIPAK Kurjeris"
+     },
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "inst": 3,
+      "on": "yes",
+      "t": "VENIPAK paštomatai/atsiėmimo punktai"
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 6,
+      "on": "yes",
+      "t": "VENIPAK Kurjeris"
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 7,
+      "on": "yes",
+      "t": "VENIPAK Kurjeris"
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 8,
+      "on": "yes",
+      "t": "VENIPAK Kurjeris"
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "inst": 12,
+      "on": "yes",
+      "t": "LP Express"
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "inst": 15,
+      "on": "yes",
+      "t": "LP Express kurjeris"
+     }
+    ]
+   },
+   {
+    "zid": 2,
+    "n": "Baltijos šalys, be LIetuvos",
+    "loc": [
+     "country:EE",
+     "country:LV"
+    ],
+    "m": [
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "inst": 5,
+      "on": "yes",
+      "t": "VENIPAK paštomatai/atsiėmimo punktai"
+     }
+    ]
+   }
+  ],
+  "darbo_laikas_posts": [
+   {
+    "ID": "34515",
+    "post_type": "page",
+    "post_status": "publish",
+    "post_title": "Apie mus",
+    "pos": "4789",
+    "istrauka": "s\"> Telefonas: +370 681 87787 El. paštas: terra@petshop.lt Darbo laikas: I–V 09:00–18:00, VI 10:00–15:00 Oficialūs įmonės rekvizitai Įmonės pavadinimas: UAB „Avesa\" Įmonės kodas: 302568442 PVM kodas: LT100005768519 Juridinis adresas: Liucionių g. 46, Liucionių k., Nemenčinės sen., Vilniaus r., LT-15166 Ačiū, kad remiate smulkųjį Lietuvos verslą."
+   },
+   {
+    "ID": "34521",
+    "post_type": "page",
+    "post_status": "publish",
+    "post_title": "Kontaktai",
+    "pos": "1182",
+    "istrauka": "mo, pristatymo ar prekės pasirinkimo? Parašykite mums – atsakysime el. paštu. +370 681 87787 Darbo laikas:I–V 09:00–18:00VI 10:00–15:00 Užklausas siųskite per kontaktinę formą – atsakome el. paštu. Rekvizitai Įmonės pavadinimas: UAB „Avesa\" Įmonės kodas: 302568442 PVM kodas: LT100005768519 Juridinis adresas:Liucionių g. 46, Liucionių k., Nemenčinės sen., Vilniaus r., LT-151"
+   }
+  ],
+  "darbo_laikas_options": [],
+  "kontaktai_puslapis": [
+   {
+    "ID": "34521",
+    "post_name": "kontaktai",
+    "post_title": "Kontaktai"
+   }
+  ],
+  "venipak_opts": [
+   "ps_venipak_sekimas_paskutinis",
+   "shopup_venipak_shipping_settings",
+   "venipak_pack_number",
+   "woocommerce_shopup_venipak_shipping_courier_method_10_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_2_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_6_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_7_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_8_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_3_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_5_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_9_settings"
+  ],
+  "venipak_siuntejas": {
+   "shopup_venipak_shipping_settings": {
+    "shopup_venipak_shipping_field_username": "Avesa97",
+    "shopup_venipak_shipping_field_sendername": "UAB Avesa",
+    "shopup_venipak_shipping_field_sendercompanycode": "302568442",
+    "shopup_venipak_shipping_field_sendercountry": "LT",
+    "shopup_venipak_shipping_field_sendercity": "Liucionys",
+    "shopup_venipak_shipping_field_senderaddress": "Liucionių g. 46",
+    "shopup_venipak_shipping_field_senderpostcode": "15166",
+    "shopup_venipak_shipping_field_sendercontactperson": "Raimundas Bulakas",
+    "shopup_venipak_shipping_field_sendercontacttel": "+37068187787",
+    "shopup_venipak_shipping_field_sendercontactemail": "terra@petshop.lt"
+   }
+  },
+  "uzs": {
+   "35801": {
+    "st": "on-hold",
+    "pm": "bacs",
+    "pmt": "Bankinis pavedimas",
+    "paid": false,
+    "date_paid": null,
+    "total": "24.47",
+    "avpn": "AVPN000329",
+    "iapv": "IAPV000163",
+    "pdf": "",
+    "stock_reduced": true,
+    "tel": "2026-09-05 23:23:15|Testuotojas",
+    "bill": "TELEFONU Testas S1618",
+    "imone": "",
+    "items": [
+     {
+      "n": "HAP žaislas šunims, pliušinė v",
+      "q": 2,
+      "red": "2",
+      "av": "",
+      "src": "vf"
+     },
+     {
+      "n": "Exclusion Hypo konservuotas pa",
+      "q": 1,
+      "red": "1",
+      "av": "",
+      "src": "vf"
+     }
+    ]
+   },
+   "35806": {
+    "st": "on-hold",
+    "pm": "bacs",
+    "pmt": "Bankinis pavedimas",
+    "paid": false,
+    "date_paid": null,
+    "total": "9.87",
+    "avpn": "AVPN000334",
+    "iapv": "IAPV000165",
+    "pdf": "",
+    "stock_reduced": true,
+    "tel": "2026-09-05 23:40:20|Testuotojas",
+    "bill": "TELEFONU Testas S1618",
+    "imone": "",
+    "items": [
+     {
+      "n": "Exclusion Hypo konservuotas pa",
+      "q": 2,
+      "red": "2",
+      "av": "",
+      "src": "vf"
+     },
+     {
+      "n": "Exclusion diet hypo konservai ",
+      "q": 1,
+      "red": "1",
+      "av": "",
+      "src": "vf"
+     }
+    ]
+   },
+   "35807": {
+    "st": "processing",
+    "pm": "cod",
+    "pmt": "Apmokėta vietoje",
+    "paid": true,
+    "date_paid": "2026-09-05 23:40",
+    "total": "7.78",
+    "avpn": "AVPN000335",
+    "iapv": "",
+    "pdf": "",
+    "stock_reduced": true,
+    "tel": "2026-09-05 23:40:38|Testuotojas",
+    "bill": "TELEFONU Testas S1618",
+    "imone": "",
+    "items": [
+     {
+      "n": "Exclusion Hypo konservuotas pa",
+      "q": 1,
+      "red": "1",
+      "av": "",
+      "src": "vf"
+     }
+    ]
+   }
+  },
+  "skaitikliai": {
+   "ppk": false,
+   "kr": "105",
+   "avpn": "336",
+   "iapv": "166",
+   "atsiemimas_av": false,
+   "kr_laiskas": false
+  },
+  "wcdn_dirs": [
+   "creditnote",
+   "deliverynote",
+   "fonts",
+   "invoice",
+   "packingslip",
+   "receipt"
+  ],
+  "tema_funcs": [
+   "functions.php:236: function petshop_get_avpn_number( $order_id ) {",
+   "functions.php:285: 'number' => petshop_get_avpn_number( $order_id ),",
+   "functions.php:292: function petshop_generate_invoice_pdf( $order_id ) {",
+   "functions.php:388: $order->update_meta_data( '_petshop_invoice_document_type', $doc_type );",
+   "functions.php:398: wp_schedule_single_event( time() + 5, 'petshop_send_order_received_email', array( $order->get_id() ) );",
+   "functions.php:401: add_action( 'petshop_send_order_received_email', function( $order_id ) {",
+   "functions.php:485: $order->update_meta_data( '_petshop_invoice_document_type', $doc_type );",
+   "functions.php:849: if ( empty( $_POST['shipping_method'] ) ) return false;",
+   "functions.php:850: $methods = wc_clean( wp_unslash( $_POST['shipping_method'] ) );",
+   "functions.php:889: .woocommerce-checkout #shipping_method li {",
+   "functions.php:898: .woocommerce-checkout #shipping_method li > input[type=\"radio\"],",
+   "functions.php:899: .woocommerce-checkout #shipping_method li input[type=\"radio\"] {",
+   "functions.php:905: .woocommerce-checkout #shipping_method li > label,",
+   "functions.php:906: .woocommerce-checkout #shipping_method li label {",
+   "functions.php:916: .woocommerce-checkout #shipping_method li.petshop-selected-shipping label select,",
+   "functions.php:917: .woocommerce-checkout #shipping_method li.petshop-selected-shipping label .select2-container {",
+   "functions.php:926: .woocommerce-checkout #shipping_method li.petshop-selected-shipping > select,",
+   "functions.php:927: .woocommerce-checkout #shipping_method li.petshop-selected-shipping > .select2-container,",
+   "functions.php:928: .woocommerce-checkout #shipping_method li.petshop-selected-shipping .petshop-terminal-wrapper select,",
+   "functions.php:929: .woocommerce-checkout #shipping_method li.petshop-selected-shipping .petshop-terminal-wrapper .select2-container {",
+   "functions.php:938: .woocommerce-checkout #shipping_method li.petshop-selected-shipping .wc-venipak-shipping-terminals,",
+   "functions.php:939: .woocommerce-checkout #shipping_method li.petshop-selected-shipping .petshop-terminal-wrapper {",
+   "functions.php:1025: var s = $('input[name^=\"shipping_method\"]:checked').val();",
+   "functions.php:1026: if (!s) s = $('select[name^=\"shipping_method\"]').val();",
+   "functions.php:1031: $('#shipping_method li').removeClass('petshop-selected-shipping');",
+   "functions.php:1032: var $li = $('input[name^=\"shipping_method\"]:checked').closest('li');",
+   "functions.php:1089: $(document).on('change', 'input[name^=\"shipping_method\"], select[name^=\"shipping_method\"]', scheduleUpdate);",
+   "functions.php:1090: $(document.body).on('init_checkout updated_checkout updated_shipping_method wc_fragments_refreshed', scheduleUpdate);",
+   "functions.php:1123: WC()->session->set( 'chosen_shipping_methods', array() );"
+  ],
+  "darbuotojas": {
+   "id": 75,
+   "dn": "Testuotojas",
+   "fn": "Ingiukas ",
+   "roles": [
+    "ps_darbuotojas"
+   ]
+  },
+  "base_md5": "24ca0be71f45f910f253e663c2fff210",
+  "dl_md5": "29c9bede2199f95ad38b0591878a2f8a",
+  "dl_ver": "3.33.2",
+  "temp_liko": 1
+ }
+}
