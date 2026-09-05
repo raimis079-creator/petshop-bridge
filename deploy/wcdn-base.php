@@ -2,7 +2,7 @@
 /**
  * petshop.lt — PDF/HTML sąskaitos šablonas
  * Plugin: Print Invoices & Delivery Notes (woocommerce-delivery-notes)
- * Versija: 2.10 (S1617) — kreditinėje pristatymo eilutė ir „Pristatymas“ suma (kaip sąskaitoje; e5 testas: be jos sumos nesueina). 2.9 (S1617, Raimis K1) — kreditinė: sava KR eilė iš refund meta `_petshop_kravpn_number`, konkretus grąžinimas (kai $order['id'] = refund),
+ * Versija: 2.11 (S1617, Raimis 11) — paslaugų užsakymuose (be pristatymo eilutės — pakartotinis siuntimas, grąžinimo išlaidos) sumose „Pristatymas: Nemokamas“ nerodoma. 2.10 (S1617) — kreditinėje pristatymo eilutė ir „Pristatymas“ suma (kaip sąskaitoje; e5 testas: be jos sumos nesueina). 2.9 (S1617, Raimis K1) — kreditinė: sava KR eilė iš refund meta `_petshop_kravpn_number`, konkretus grąžinimas (kai $order['id'] = refund),
  *   data iš `_petshop_kravpn_date`, „Originali sąskaita“ = pradinio AVPN. 2.8 — logotipas PDF'e per data URI (dompdf negali per https/URL)
  */
 
@@ -197,6 +197,7 @@ if ( $wc_order ) {
     $order_total    = (float) $wc_order->get_total();
 }
 $shipping_is_free = ( $shipping_total == 0 );
+$has_shipping     = $wc_order ? count( $wc_order->get_items( 'shipping' ) ) > 0 : true; // v2.11: paslaugos užsakymas be pristatymo eilutės — eilutės „Pristatymas“ sumose nerodom
 
 $doc_date_raw  = isset( $order['documentDate'] ) ? $order['documentDate'] : date( 'Y-m-d' );
 $order_no_disp = isset( $order['orderNumber'] ) ? $order['orderNumber'] : '';
@@ -471,9 +472,9 @@ $sz_foot  = $is_pdf ? '11px'  : '10px';
                 <tr class="grand"><td class="lbl">Grąžinama suma:</td><td class="val"><?php echo ps_eur( $ref_total, true ); ?></td></tr>
                 <?php else : ?>
                 <tr><td class="lbl">Suma be PVM:</td><td class="val"><?php echo ps_eur( $subtotal_excl ); ?></td></tr>
-                <?php if ( $shipping_is_free ) : ?>
+                <?php if ( $shipping_is_free && $has_shipping ) : ?>
                 <tr><td class="lbl">Pristatymas:</td><td class="val">Nemokamas</td></tr>
-                <?php else : ?>
+                <?php elseif ( ! $shipping_is_free ) : ?>
                 <tr><td class="lbl">Pristatymas:</td><td class="val"><?php echo ps_eur( $shipping_total ); ?></td></tr>
                 <?php endif; ?>
                 <tr><td class="lbl">PVM (21%):</td><td class="val"><?php echo ps_eur( $total_tax ); ?></td></tr>
