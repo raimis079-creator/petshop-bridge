@@ -1,0 +1,130 @@
+{
+ "v": "dep-195024",
+ "kurimas": 200,
+ "sid": 4843,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "S1618 e2s",
+  "f": "S",
+  "temp_istrinta": 1,
+  "eiles": {
+   "code": 200,
+   "eiles": null,
+   "kort": [
+    "35436",
+    "35777",
+    "35100",
+    "35414",
+    "35423",
+    "35434",
+    "35439",
+    "35450"
+   ]
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788639716|Qy2xpCVzRZpUqB2y0hxGICrRP87gRPVlMwt42e8x6zk|ddb5beba9290a0ed2c8b9a71ae295934d3c14c7b760e3da2708ba4962463428a"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788639716|Qy2xpCVzRZpUqB2y0hxGICrRP87gRPVlMwt42e8x6zk|19c0db36999032ed93444f807697d289b8ecf385a4342ad23bbe549bfc6a137e"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788639716|Qy2xpCVzRZpUqB2y0hxGICrRP87gRPVlMwt42e8x6zk|59e39808326e0f43a6c7b95bc339a40caf0b6bc3c9739b1ea8a53bd1af4b1ca0"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1618_e2_kortele_35450_forma",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1440,
+    "h": 1100,
+    "click": ".dl-kortele[data-id=\"35450\"] .dl-gr-b",
+    "eval": "(function(){var f=document.querySelector(\".dl-kortele[data-id='35450'] .dl-gr-f\"); if(!f) return \"formos nėra\"; f.scrollIntoView(); var s=f.querySelector(\".dl-gr-pz\"); s.value=\"brokas\"; s.dispatchEvent(new Event(\"change\",{bubbles:true})); var q=f.querySelector(\"input[type=number]\"); q.value=\"0\"; q.dispatchEvent(new Event(\"input\",{bubbles:true})); var pr=f.querySelector(\".dl-gr-pr\"); return {rodoma:f.style.display,viso:f.querySelector(\".dl-kr-viso\").textContent,tinkama:f.querySelector(\".dl-gr-tk\").checked,prist_disabled:pr?pr.disabled:null,prist_checked:pr?pr.checked:null,top:f.getBoundingClientRect().top}; })()",
+    "full": true
+   },
+   {
+    "n": "s1618_e2_kortele_35450_atsisakymas_dalinis",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1440,
+    "h": 1100,
+    "click": ".dl-kortele[data-id=\"35450\"] .dl-gr-b",
+    "eval": "(function(){var f=document.querySelector(\".dl-kortele[data-id='35450'] .dl-gr-f\"); if(!f) return \"formos nėra\"; f.scrollIntoView(); var q=f.querySelector(\"input[type=number]\"); q.value=\"0\"; q.dispatchEvent(new Event(\"input\",{bubbles:true})); var pr=f.querySelector(\".dl-gr-pr\"); return {viso:f.querySelector(\".dl-kr-viso\").textContent,tinkama:f.querySelector(\".dl-gr-tk\").checked,prist_disabled:pr?pr.disabled:null,prist_checked:pr?pr.checked:null}; })()",
+    "full": true
+   },
+   {
+    "n": "s1618_e2_skydelis_35777_forma",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&atidaryti=35777",
+    "w": 1440,
+    "h": 1000,
+    "click": "#skGraz",
+    "eval": "(function(){var f=document.querySelector(\"#skPr .dl-gr-f\"); if(!f) return \"formos nėra\"; return {viso:f.querySelector(\".dl-kr-viso\").textContent,q:Array.from(f.querySelectorAll(\"input[type=number]\")).map(function(i){return i.name+\"=\"+i.value+\"/\"+i.max;}),prist:!!f.querySelector(\".dl-gr-pr\"),dabar:document.getElementById(\"skPastaba\").textContent.slice(0,80)}; })()"
+   },
+   {
+    "n": "s1618_e2_klausimai_35777",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "w": 1440,
+    "h": 900,
+    "eval": "(function(){var k=document.querySelector(\".dl-kortele[data-id='35777']\"); if(!k) return \"kortelės nėra\"; k.scrollIntoView(); return k.innerText.slice(0,400); })()",
+    "full": true
+   }
+  ]
+ },
+ "shots": {
+  "s1618_e2_kortele_35450_forma": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": ".dl-kortele[data-id=\"35450\"] .dl-gr-b",
+   "eval": {
+    "rodoma": "block",
+    "viso": "38,99",
+    "tinkama": false,
+    "prist_disabled": false,
+    "prist_checked": true,
+    "top": 684.125
+   }
+  },
+  "s1618_e2_kortele_35450_atsisakymas_dalinis": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": ".dl-kortele[data-id=\"35450\"] .dl-gr-b",
+   "eval": {
+    "viso": "34,77",
+    "tinkama": true,
+    "prist_disabled": true,
+    "prist_checked": false
+   }
+  },
+  "s1618_e2_skydelis_35777_forma": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": "#skGraz",
+   "eval": {
+    "viso": "29,60",
+    "q": [
+     "q[1557]=1/1"
+    ],
+    "prist": false,
+    "dabar": "Dabar: įvykdytasUžsakymas įvykdytas."
+   }
+  },
+  "s1618_e2_klausimai_35777": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": "#35777 · AUDITAS Testas 34 · 44,91 €\ngrąžink klientui pinigus\n\nGrąžink klientui 15,31 € rankomis (Paysera / pavedimu).\n\n09-05 22:48 Testuotojas: Grąžinimas (mūsų klaida): 1× HAP žaislas šunims, pliušinė varlė su iš + pristatymas (15,31 €) · Kreditinė KR-AVPN000104 (15,31 €) PDF siųsti klientui\n\nPinigų sistema negrąžina. Eiga: „Kreditinė“ — peržiūrėk, pataisyk, patvirtink (PDF čia; klientui — „siųs"
+  }
+ }
+}
