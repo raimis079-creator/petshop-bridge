@@ -1,0 +1,511 @@
+{
+ "v": "dep-200725",
+ "kurimas": 200,
+ "sid": 4845,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1618 r1",
+  "temp_istrinta": 1,
+  "zonos": [
+   {
+    "id": 3,
+    "name": "Neringos savivaldybe",
+    "loc": [
+     "LT",
+     "931*"
+    ],
+    "m": [
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "inst": 9,
+      "title": "VENIPAK paštomatai/atsiėmimo punktai",
+      "on": "yes",
+      "set": []
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 10,
+      "title": "VENIPAK Kurjeris",
+      "on": "yes",
+      "set": []
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "inst": 13,
+      "title": "LP Express",
+      "on": "yes",
+      "set": {
+       "cost": "flat",
+       "tax_status": "taxable",
+       "type": "class"
+      }
+     }
+    ]
+   },
+   {
+    "id": 1,
+    "name": "Lietuva",
+    "loc": [
+     "LT"
+    ],
+    "m": [
+     {
+      "id": "free_shipping",
+      "inst": 1,
+      "title": "Nemokamas pristatymas",
+      "on": "no",
+      "set": {
+       "requires": "",
+       "min_amount": "0"
+      }
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 2,
+      "title": "VENIPAK Kurjeris",
+      "on": "yes",
+      "set": []
+     },
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "inst": 3,
+      "title": "VENIPAK paštomatai/atsiėmimo punktai",
+      "on": "yes",
+      "set": []
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 6,
+      "title": "VENIPAK Kurjeris",
+      "on": "yes",
+      "set": []
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 7,
+      "title": "VENIPAK Kurjeris",
+      "on": "yes",
+      "set": []
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 8,
+      "title": "VENIPAK Kurjeris",
+      "on": "yes",
+      "set": []
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "inst": 12,
+      "title": "LP Express",
+      "on": "yes",
+      "set": {
+       "cost": "flat",
+       "tax_status": "taxable",
+       "type": "class"
+      }
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "inst": 15,
+      "title": "LP Express kurjeris",
+      "on": "yes",
+      "set": {
+       "cost": "weight",
+       "tax_status": "taxable",
+       "type": "class"
+      }
+     }
+    ]
+   },
+   {
+    "id": 2,
+    "name": "Baltijos šalys, be LIetuvos",
+    "loc": [
+     "EE",
+     "LV"
+    ],
+    "m": [
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "inst": 5,
+      "title": "VENIPAK paštomatai/atsiėmimo punktai",
+      "on": "yes",
+      "set": []
+     }
+    ]
+   }
+  ],
+  "ship_pvz": [
+   {
+    "order": "35777",
+    "method": "shopup_venipak_shipping_courier_method",
+    "inst": "2",
+    "name": "VENIPAK Kurjeris",
+    "total": "3.49",
+    "tax": "0.73",
+    "meta": [],
+    "order_meta": {
+     "vp": "",
+     "lp_t": "",
+     "lp_t2": "",
+     "vez": ""
+    },
+    "pm": "bacs",
+    "pmt": "Banko pavedimas",
+    "via": "checkout"
+   },
+   {
+    "order": "35442",
+    "method": "shopup_venipak_shipping_pickup_method",
+    "inst": "3",
+    "name": "VENIPAK paštomatai/atsiėmimo punktai",
+    "total": "0",
+    "tax": "0",
+    "meta": {
+     "Prekės": "Exclusion Mediterraneo Monoprotein sausas pašaras kačiukams su vištiena, 1,5 kg "
+    },
+    "order_meta": {
+     "vp": "3648",
+     "lp_t": "",
+     "lp_t2": "",
+     "vez": ""
+    },
+    "pm": "bacs",
+    "pmt": "Bankinis pavedimas",
+    "via": "checkout"
+   },
+   {
+    "order": "35436",
+    "method": "flat_rate",
+    "inst": "",
+    "name": "Venipak kurjeris",
+    "total": "3.49",
+    "tax": "0.73",
+    "meta": [],
+    "order_meta": {
+     "vp": "",
+     "lp_t": "",
+     "lp_t2": "",
+     "vez": ""
+    },
+    "pm": "paysera",
+    "pmt": "Mokėjimas internetu",
+    "via": ""
+   },
+   {
+    "order": "35416",
+    "method": "woo_lithuaniapost_lpexpress_terminal",
+    "inst": "12",
+    "name": "LP Express",
+    "total": "2.49",
+    "tax": "0.52",
+    "meta": [],
+    "order_meta": {
+     "vp": "",
+     "lp_t": "LT0001",
+     "lp_t2": "",
+     "vez": ""
+    },
+    "pm": "paysera",
+    "pmt": "Mokėjimas internetu",
+    "via": "checkout"
+   }
+  ],
+  "venipak_dir": "wc-venipak-shipping",
+  "venipak_resolve_file": "venipak-fetch-pickups.php",
+  "venipak_saltiniai": [],
+  "venipak_resolve_src": "function venipak_resolve_order_pickup($order, &$source = null) {\n\n  $source = null;\n\n  $point_id = $order->get_meta('venipak_pickup_point');\n\n\n\n  if (is_numeric($point_id)) {\n\n    $point = venipak_find_pickup_by_id($point_id);\n\n    if ($point) {\n\n      $source = 'live';\n\n      return $point;\n\n    }\n\n\n\n    $snapshot = json_decode($order->get_meta('venipak_pickup_point_data'), true);\n\n    if (is_array($snapshot) && !empty($snapshot['code'])) {\n\n      $source = 'snapshot';\n\n      return $snapshot;\n\n    }\n\n\n\n    return false;\n\n  }\n\n\n\n  // Orders written before the id-only meta stored the whole point as JSON.\n\n  if (is_string($point_id) && $point_id !== '') {\n\n    $legacy = json_decode($point_id, true);\n\n    if (is_array($legacy) && !empty($legacy['code'])) {\n\n      $source = 'legacy';\n\n      return $legacy;\n\n    }\n\n  }\n\n\n\n  return false;\n\n}\n",
+  "tables_like": [
+   "gaj6_woo_lithuaniapost_api_token",
+   "gaj6_woo_lithuaniapost_country_rates",
+   "gaj6_woo_lithuaniapost_country_weight_rates",
+   "gaj6_woo_lithuaniapost_lpexpress_terminals",
+   "gaj6_woo_lithuaniapost_shipping_request",
+   "gaj6_woo_lithuaniapost_table_rates",
+   "gaj6_woo_lithuaniapost_tracking_status",
+   "gaj6_woo_lithuaniapost_unisend_terminals"
+  ],
+  "tables_venipak": [],
+  "opt_pickup": [
+   "lpsettings_pickup_apartment",
+   "lpsettings_pickup_building",
+   "lpsettings_pickup_city",
+   "lpsettings_pickup_company_name",
+   "lpsettings_pickup_country",
+   "lpsettings_pickup_email",
+   "lpsettings_pickup_name",
+   "lpsettings_pickup_phone",
+   "lpsettings_pickup_postcode",
+   "lpsettings_pickup_street",
+   "lpsettings_use_pickup_address",
+   "lpsettings_woo_lithuaniapost_address_pickup_id",
+   "lpsettings_woo_lithuaniapost_updated_version",
+   "ps_venipak_sekimas_paskutinis",
+   "shopup_venipak_shipping_settings",
+   "venipak_pack_number",
+   "woo_lithuaniapost_module_active",
+   "woocommerce_shopup_venipak_shipping_courier_method_10_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_2_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_6_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_7_settings",
+   "woocommerce_shopup_venipak_shipping_courier_method_8_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_3_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_5_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_9_settings",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_12_settings",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_13_settings",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_15_settings"
+  ],
+  "lp_tbl": {
+   "gaj6_woo_lithuaniapost_api_token": {
+    "n": 1,
+    "cols": [
+     "id",
+     "access_token",
+     "refresh_token",
+     "expires"
+    ],
+    "pvz": {
+     "id": "1",
+     "access_token": "5e7ab9f4-6808-3cf1-8061-b7fd559cdd80",
+     "refresh_token": "e2675471-c09c-4dbf-a4b0-2dc3a0d4d0d1",
+     "expires": "2026-09-06 00:26:09"
+    }
+   },
+   "gaj6_woo_lithuaniapost_country_rates": {
+    "n": 0,
+    "cols": [
+     "id",
+     "method_id",
+     "country",
+     "price"
+    ],
+    "pvz": null
+   },
+   "gaj6_woo_lithuaniapost_country_weight_rates": {
+    "n": 0,
+    "cols": [
+     "id",
+     "method_id",
+     "country",
+     "weight",
+     "price"
+    ],
+    "pvz": null
+   },
+   "gaj6_woo_lithuaniapost_lpexpress_terminals": {
+    "n": 0,
+    "cols": [
+     "id",
+     "terminal_id",
+     "name",
+     "address",
+     "city"
+    ],
+    "pvz": null
+   },
+   "gaj6_woo_lithuaniapost_shipping_request": {
+    "n": 0,
+    "cols": [
+     "request_id",
+     "status",
+     "created",
+     "updated"
+    ],
+    "pvz": null
+   },
+   "gaj6_woo_lithuaniapost_table_rates": {
+    "n": 0,
+    "cols": [
+     "id",
+     "method_id",
+     "weight_to",
+     "price"
+    ],
+    "pvz": null
+   },
+   "gaj6_woo_lithuaniapost_tracking_status": {
+    "n": 0,
+    "cols": [
+     "order_id",
+     "barcode",
+     "status",
+     "created",
+     "updated"
+    ],
+    "pvz": null
+   },
+   "gaj6_woo_lithuaniapost_unisend_terminals": {
+    "n": 1391,
+    "cols": [
+     "id",
+     "terminal_id",
+     "name",
+     "address",
+     "city",
+     "country_code"
+    ],
+    "pvz": {
+     "id": "1",
+     "terminal_id": "8003",
+     "name": "Aibė",
+     "address": "Buļļu iela 35",
+     "city": "Rīga",
+     "country_code": "LV"
+    }
+   }
+  },
+  "desk_vezejo_vardas": "\tprotected static function vezejo_vardas( $o ) {\n\n\t\t$v = self::vezejas( $o );\n\n\t\t$m = array(\n\n\t\t\t'venipak_kurjeris'   => 'Venipak kurjeris',\n\n\t\t\t'venipak_pastomatas' => 'Venipak paštomatas',\n\n\t\t\t'lp'                 => 'LP Express',\n\n\t\t);\n\n\t\treturn $m[ $v ] ?? ( $o->get_shipping_method() ? $o->get_shipping_method() : '—' );\n\n\t}\n",
+  "desk_vezejas": "\tprotected static function vezejas( $order ) {\n\n\t\t$m = mb_strtoupper( (string) $order->get_shipping_method() );\n\n\t\t$lp = ( false !== mb_strpos( $m, 'UNISEND' ) || false !== mb_strpos( $m, 'LP ' ) || false !== mb_strpos( $m, 'LIETUVOS PAŠT' ) );\n\n\t\t$pastomatas = ( false !== mb_strpos( $m, 'PAŠTOMAT' ) || false !== mb_strpos( $m, 'ATSIĖMIM' ) || false !== mb_strpos( $m, 'PICKUP' ) );\n\n\t\tif ( $lp ) { return 'lp'; }\n\n\t\tif ( false !== mb_strpos( $m, 'VENIPAK' ) ) { return $pastomatas ? 'venipak_pastomatas' : 'venipak_kurjeris'; }\n\n\t\treturn 'kita';\n\n\t}\n",
+  "desk_methods_vez": [
+   "lp_svoris",
+   "vezejas",
+   "vezejo_vardas"
+  ],
+  "tema_iapv": [
+   "250: function petshop_get_iapv_number( $order_id ) {"
+  ],
+  "gw": [
+   {
+    "id": "paysera",
+    "on": "yes",
+    "title": "Mokėjimas internetu",
+    "instr": ""
+   },
+   {
+    "id": "bacs",
+    "on": "yes",
+    "title": "Bankinis pavedimas",
+    "instr": ""
+   },
+   {
+    "id": "cheque",
+    "on": "no",
+    "title": "Apmokėjimas čekiu",
+    "instr": ""
+   },
+   {
+    "id": "cod",
+    "on": "no",
+    "title": "Apmokėjimas grynais atsiimant (COD)",
+    "instr": "Apmokėti atsiimant užsakymą."
+   }
+  ],
+  "bacs_accounts": false,
+  "klientai": {
+   "users": 5703,
+   "lookup": 28,
+   "addr_cols": [
+    "id",
+    "order_id",
+    "address_type",
+    "first_name",
+    "last_name",
+    "company",
+    "address_1",
+    "address_2",
+    "city",
+    "state",
+    "postcode",
+    "country",
+    "email",
+    "phone"
+   ],
+   "addr_n": 51,
+   "phone_meta": 5595
+  },
+  "prekes_pvz": [
+   {
+    "ID": "16320",
+    "post_title": "Royal Canin Persian Adult, 10 kg sausas maistas katėms",
+    "sku": "RC102040",
+    "min_price": "80.6000",
+    "max_price": "80.6000",
+    "stock_quantity": "2",
+    "stock_status": "instock",
+    "post_type": "product"
+   },
+   {
+    "ID": "16323",
+    "post_title": "Royal Canin Fit 32, 10 kg sausas maistas katėms",
+    "sku": "RC102030",
+    "min_price": "60.9000",
+    "max_price": "60.9000",
+    "stock_quantity": "0",
+    "stock_status": "outofstock",
+    "post_type": "product"
+   },
+   {
+    "ID": "16454",
+    "post_title": "ROYAL CANIN YORKSHIRE TERRIER ADULT 7,5 KG - sausas maistas suaugusiems Jorkšyro terjerams",
+    "sku": "188690",
+    "min_price": "48.8000",
+    "max_price": "48.8000",
+    "stock_quantity": "0",
+    "stock_status": "outofstock",
+    "post_type": "product"
+   },
+   {
+    "ID": "16457",
+    "post_title": "ROYAL CANIN YORKSHIRE TERRIER ADULT 1,5 KG - sausas maistas suaugusiems Jorkšyro terjerams",
+    "sku": "188690966",
+    "min_price": "14.3500",
+    "max_price": "14.3500",
+    "stock_quantity": "0",
+    "stock_status": "outofstock",
+    "post_type": "product"
+   }
+  ],
+  "prekiu_n": {
+   "product": 2672,
+   "variation": 241
+  },
+  "preke1": {
+   "id": 16320,
+   "type": "simple",
+   "price": "80.6",
+   "regular": "80.6",
+   "sale": "",
+   "incl": 80.6,
+   "tax_class": "",
+   "stock": 2,
+   "manage": true,
+   "av": null,
+   "meta": [
+    "_price",
+    "_product_image_gallery",
+    "_product_attributes",
+    "_ps_sandelis",
+    "_ps_sales_30d",
+    "_ps_sales_90d",
+    "_ps_sales_365d",
+    "_ps_revenue_365d",
+    "_ps_orders_365d",
+    "_ps_last_sale",
+    "_ps_sales_updated",
+    "_ps_pilnumas",
+    "_ps_pilnumas_truksta",
+    "_ps_pilnumas_updated",
+    "_ps_publikuota",
+    "_ps_pilnumas_kodai",
+    "_ps_margin_365d"
+   ]
+  },
+  "fs_class": [
+   "dropship_map",
+   "resolve",
+   "is_venipak_only",
+   "is_zb",
+   "is_vf",
+   "detect_dropship"
+  ],
+  "prices_incl_tax": "yes",
+  "tax_based": "shipping",
+  "calc_taxes": "yes",
+  "temp_liko": 1
+ }
+}
