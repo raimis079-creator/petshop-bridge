@@ -1,0 +1,177 @@
+{
+ "v": "dep-202507",
+ "kurimas": 200,
+ "sid": 4849,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1618 r3",
+  "temp_istrinta": 1,
+  "siuntimai": [
+   "233: //   update_option('petshop_avpn_counter', 101)",
+   "236: function petshop_get_avpn_number( $order_id ) {",
+   "240: $counter = (int) get_option( 'petshop_avpn_counter', 101 );",
+   "242: update_option( 'petshop_avpn_counter', $counter + 1 );",
+   "285: 'number' => petshop_get_avpn_number( $order_id ),",
+   "470: $mailer->send( $to, $subject, $wrapped, '', $pdf_attachment );",
+   "472: $mailer->send( $to, $subject, $wrapped );"
+  ],
+  "kabliai": [
+   "401: add_action( 'petshop_send_order_received_email', function( $order_id ) {",
+   "479: add_action( 'woocommerce_order_status_changed', function( $order_id, $old_status, $new_status, $order ) {",
+   "508: add_action( 'woocommerce_order_status_completed', function( $order_id ) {",
+   "518: add_filter( 'woocommerce_email_attachments', function( $attachments, $email_id, $order, $email ) {",
+   "622: add_filter( 'woocommerce_email_attachments', 'petshop_remove_invoice_from_processing_email', 9999, 4 );",
+   "704: add_action( 'woocommerce_email_before_order_table', function( $order, $sent_to_admin, $plain_text, $email ) {",
+   "714: add_action( 'woocommerce_email_header', function( $heading, $email ) {",
+   "730: add_filter( 'option_woocommerce_email_header_image', function( $value ) {",
+   "735: add_filter( 'option_woocommerce_email_header_image', function( $value ) {",
+   "745: add_filter( 'woocommerce_email_subject_new_order',                 'petshop_fix_order_nr_in_subject', 10 );",
+   "746: add_filter( 'woocommerce_email_subject_customer_processing_order', 'petshop_fix_order_nr_in_subject', 10 );",
+   "747: add_filter( 'woocommerce_email_subject_customer_completed_order',  'petshop_fix_order_nr_in_subject', 10 );",
+   "748: add_filter( 'woocommerce_email_subject_customer_on_hold_order',    'petshop_fix_order_nr_in_subject', 10 );",
+   "749: add_filter( 'woocommerce_email_subject_customer_invoice',          'petshop_fix_order_nr_in_subject', 10 );"
+  ],
+  "funkcijos": [
+   "236: function petshop_get_avpn_number( $order_id ) {",
+   "292: function petshop_generate_invoice_pdf( $order_id ) {",
+   "624: function petshop_remove_invoice_from_processing_email( $attachments, $email_id, $order, $email ) {"
+  ],
+  "visos_f": [
+   "petshop_yith_add_product_brand_taxonomy",
+   "petshop_hide_parcel_if_courier_only",
+   "petshop_free_shipping_progress",
+   "petshop_get_avpn_number",
+   "petshop_get_iapv_number",
+   "petshop_get_invoice_document_type",
+   "petshop_get_invoice_title",
+   "petshop_generate_invoice_pdf",
+   "petshop_get_shipping_carrier",
+   "petshop_remove_invoice_from_processing_email",
+   "petshop_fix_order_nr_in_subject",
+   "petshop_is_parcel_terminal",
+   "petshop_post_has_parcel_terminal",
+   "petshop_address_optional_for_parcel",
+   "petshop_checkout_shipping_fix_css",
+   "petshop_checkout_shipping_fix_js",
+   "petshop_cart_shipping_css",
+   "petshop_cart_shipping_notice",
+   "petshop_checkout_totals_css",
+   "petshop_checkout_fee_top_row",
+   "petshop_checkout_custom_totals_rows",
+   "petshop_add_company_fields",
+   "petshop_save_company_fields_to_order",
+   "petshop_display_company_fields_admin",
+   "petshop_validate_company_fields",
+   "petshop_company_fields_css",
+   "petshop_company_fields_js",
+   "petshop_cart_icon_css",
+   "petshop_fix_checkout_texts",
+   "petshop_font_fix",
+   "petshop_account_checkbox_default",
+   "petshop_hide_shipping_when_not_needed_css",
+   "petshop_ship_to_different_toggle_js"
+  ],
+  "tipas_src": "    }\n    return $number;\n}\n\nfunction petshop_get_invoice_document_type( $order ) {\n    if ( ! $order instanceof WC_Order ) return 'invoice';\n    $payment_method   = $order->get_payment_method();\n    $is_bank_transfer = ( $payment_method === 'bacs' );\n    if ( $is_bank_transfer && in_array( $order->get_status(), array( 'pending', 'on-hold' ), true ) ) {\n        return 'proforma';\n    }\n    return 'invoice';\n}\n\nfunction petshop_get_invoice_title( $order ) {\n    $type     = petshop_get_invoice_document_type( $order );\n    $order_id = $order->get_id();\n    if ( $type === 'proforma' ) {\n        return array(\n            'title'  => 'Išankstinisė sąskaita',\n            'number' => petshop_get_iapv_number( $order_id ),\n        );\n    }\n    return array(\n        'title'  => 'PVM sąskaita faktūra',\n        'number' => petshop_get_avpn_number( $order_id ),\n    );\n}\n\n// ===============================================================\n// PDF saskaitos generavimas\n// ===============================================================\nfunction petshop_generate_invoice_pdf( $order_id ) {\n    $wc_order = wc_get_order( $order_id );\n    if ( ! $wc_order ) return false;\n\n    $countries      = WC()->countries ? WC()->countries->get_countries() : array();\n    $b_country      = $wc_order->get_billing_country();\n    $b_country_name = isset( $countries[ $b_country ] ) ? $countries[ $b_country ] : $b_country;\n\n    $skip_states = array( 'pasirinkite rajona', 'select a region', 'select an option' );\n    $b_state     = $wc_order->get_billing_state();\n    $b_state_val = ( $b_state && ! in_array( mb_strtolower( $b_state ), $skip_states ) ) ? $b_state : '';\n\n    $city_post = trim( $wc_order->get_billing_city() . ( $wc_order->get_billing_postcode() ? ', ' . $wc_order->get_billing_postcode() : '' ) );\n",
+  "wc_email": {
+   "woocommerce_customer_on_hold_order_settings": {
+    "enabled": "no",
+    "subject": ""
+   },
+   "woocommerce_customer_processing_order_settings": {
+    "enabled": "yes",
+    "subject": "Jūsų užsakymas Nr. {order_number} — apmokėjimas gautas"
+   },
+   "woocommerce_new_order_settings": {
+    "enabled": "yes",
+    "subject": "Naujas užsakymas Nr. {order_number} — {order_date}"
+   },
+   "woocommerce_customer_invoice_settings": false
+  },
+  "meta": {
+   "35436": {
+    "st": "processing",
+    "pm": "paysera",
+    "avpn": "AVPN000305",
+    "iapv": "",
+    "pdf": "",
+    "iapv_pdf": "",
+    "keys": [
+     "_petshop_avpn_number",
+     "_petshop_invoice_document_type",
+     "_wcdn_invoice_pdf",
+     "_wcdn_invoice_pdf_token"
+    ]
+   },
+   "35442": {
+    "st": "processing",
+    "pm": "bacs",
+    "avpn": "AVPN000311",
+    "iapv": "IAPV000162",
+    "pdf": "",
+    "iapv_pdf": "",
+    "keys": [
+     "_petshop_avpn_number",
+     "_petshop_dl_purchase_sent",
+     "_petshop_iapv_number",
+     "_petshop_invoice_document_type",
+     "_petshop_order_pdf"
+    ]
+   },
+   "35777": {
+    "st": "completed",
+    "pm": "bacs",
+    "avpn": "AVPN000320",
+    "iapv": "",
+    "pdf": "PVM-saskaita-AVPN000320.pdf",
+    "iapv_pdf": "",
+    "keys": [
+     "_petshop_avpn_number",
+     "_petshop_completed_pdf",
+     "_petshop_invoice_document_type"
+    ]
+   },
+   "35801": {
+    "st": "on-hold",
+    "pm": "bacs",
+    "avpn": "AVPN000329",
+    "iapv": "IAPV000163",
+    "pdf": "",
+    "iapv_pdf": "",
+    "keys": [
+     "_petshop_avpn_number",
+     "_petshop_iapv_number",
+     "_petshop_invoice_document_type",
+     "_wcdn_invoice_pdf",
+     "_wcdn_invoice_pdf_token"
+    ]
+   },
+   "35802": {
+    "st": "processing",
+    "pm": "cod",
+    "avpn": "AVPN000330",
+    "iapv": "",
+    "pdf": "",
+    "iapv_pdf": "",
+    "keys": [
+     "_petshop_avpn_number",
+     "_petshop_invoice_document_type",
+     "_wcdn_invoice_pdf",
+     "_wcdn_invoice_pdf_token"
+    ]
+   }
+  },
+  "avpn_counter": "331",
+  "iapv_counter": "164",
+  "notes_35801": [
+   "Email \"Naujas užsakymas\" sent.",
+   "Darbalaukis: telefoninis užsakymas, laukiam pavedimo (Testuotojas). Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
+   "Likutis sumažintas: HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm (6&rarr;4), Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400",
+   "Vykdymas: DS — VF 3 vnt (1 siunta(-os))",
+   "Darbalaukis: užsakymas priimtas telefonu / vietoje (Testuotojas). Prekės: 2× HAP žaislas šunims, pliušinė varlė su iš, 1× Exclusion Hypo konservuotas pašaras šu"
+  ],
+  "temp_liko": 1
+ }
+}
