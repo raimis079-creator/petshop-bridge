@@ -1,0 +1,65 @@
+{
+ "v": "dep-120352",
+ "kurimas": 200,
+ "sid": 4903,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "K": {
+  "v": "S1621 e6t",
+  "f": "K",
+  "temp_istrinta": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788698136|Zpphrr8io58Jeqfy5G5LCiB6FuzvHv7jd49YUtmxhDa|564976e4c16b0a9bee52b3aac7d7b3c147284c1e14306927d8ed86510983f81b"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788698136|Zpphrr8io58Jeqfy5G5LCiB6FuzvHv7jd49YUtmxhDa|5407f3a5e835f4db95d80f6f1acf5694de098f9ff796013546abf909134c30ae"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788698136|Zpphrr8io58Jeqfy5G5LCiB6FuzvHv7jd49YUtmxhDa|88eea4ce3d533db49628d31f8c440df5da590202597c242a5475799a33dae5f8"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1621_e6_dropshipping_vf",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+    "w": 1440,
+    "h": 1400,
+    "full": 1
+   },
+   {
+    "n": "s1621_e6_laukiam",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+    "w": 1440,
+    "h": 900
+   },
+   {
+    "n": "s1621_e6_skydelis_35815",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&atidaryti=35815",
+    "w": 1440,
+    "h": 1000,
+    "click": "tr.eil[data-id=\"35815\"]"
+   }
+  ]
+ },
+ "shots": {
+  "s1621_e6_dropshipping_vf": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": []
+  },
+  "s1621_e6_laukiam": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": []
+  },
+  "s1621_e6_skydelis_35815": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&atidaryti=35815\", waiting until \"networkidle\"\n"
+ }
+}
