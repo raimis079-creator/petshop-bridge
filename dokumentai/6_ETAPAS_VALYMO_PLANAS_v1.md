@@ -43,7 +43,7 @@
 - **F.** Likučiai: 19708 `_stock` 16 → **20** (log). VF prekių `_stock` (35357 6, 16889 14) — VF sync (kas val.) atstato pats. AV likučiai 16727 / 16889 / 19756 = 1 (`Petshop_AV_Stock::qty`, `_own_stock` tuščias — saugoma ne postmeta; pradines reikšmes atkurti iš `ps_ivykiai` 6 187 eil. `sena/nauja` prieš apply) — atkurti?
 - **G. Kada:** siūlau (Claude) — vienas įrankis su **dry-run** (skaičiai per lentelę) ir **apply** (kiekvienas žingsnis su sargu: tik ID iš sąrašo / tik `testinis=1` / tik `aplinka=dev`; kopija — SQL dump per `wpdb` į `ps-backups/` prieš), paleisti DABAR (po A–F), po E2E (naujų testinių) pakartoti **T-0 naktį** kartu su skaitikliais → 101 (AVPN dabar 342, IAPV 168, KR-AVPN 105, PPK 103 — „kitas“).
 - **H.** Faktų `sandelis` **`legacy` → `av`** — variklio keitimas (`Fulfillment_Source::resolve`, log S1617 r4/r5); po valymo eilučių nebeliks, bet naujos toliau rašys `legacy` — leidimas keisti variklį?
-- **I.** Tikra darbuotojo paskyra — vardas, el. paštas (rolė `ps_darbuotojas`).
+- **I.** ~~Tikra darbuotojo paskyra~~ — PADARYTA S1620: #5788 `inga`, terra@petshop.lt, `ps_darbuotojas`.
 
 ## 4. Eiga (po sprendimų)
 1) Įrankis `irankiai/s16xx_valymas.php`: fazė **D** (dry-run: kiekvienai lentelei `COUNT` pagal sargą, failų sąrašas, likučių planas) → Raimis peržiūri → fazė **A** (apply: kopija → užsakymai per `wc_get_order()->delete(true)` po vieną su `try`, refund'ai pirma → lentelės → failai → opcijos → likučiai → WC lookup našlaičiai → `wc_customer_lookup`) → fazė **Q** (skaičiai po: viskas 0, darbalaukio eilės Visi 0, skydelis tuščias — Playwright). 2) E2E auditas (spec §10.6) su `testuotojas` → naujų testinių sąrašas → T-0 pakartoti A su skaitikliais → 101. 3) Tikra paskyra, `testuotojas` išjungti.
