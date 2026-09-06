@@ -1,0 +1,44 @@
+{
+ "v": "dep-162047",
+ "kurimas": 200,
+ "sid": 4957,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "K": {
+  "v": "S1628 k",
+  "temp_istrinta": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788712659|SG7AUw5Yr3DozOWjVmKprlt4n3lG4MbRlmU5kcl6SLg|58cbb43cecc94baee0e065d220a35dca0655043df580288db4a533487e2a5a60"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788712659|SG7AUw5Yr3DozOWjVmKprlt4n3lG4MbRlmU5kcl6SLg|5fd82458ad0c24602083254bd2a4e5bc61f23256fac09d5c7a627983318183e2"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "s1609klientas|1788712659|SG7AUw5Yr3DozOWjVmKprlt4n3lG4MbRlmU5kcl6SLg|dded5fcc010f47c0c76023bde58931566c445f193f278c9a635d98dfa4dd72cb"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1628_klientas_uzsakymas_35826",
+    "u": "https://dev.avesa.lt/paskyra/uzsakymas/35826/",
+    "w": 1440,
+    "h": 1400,
+    "full": 1
+   }
+  ]
+ },
+ "shots": {
+  "s1628_klientas_uzsakymas_35826": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/paskyra/uzsakymas/35826/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": []
+  }
+ }
+}
