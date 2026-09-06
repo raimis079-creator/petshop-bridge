@@ -1,5 +1,6 @@
 <?php
 /**
+ * Petshop AV Tiekimas v1.10.1 (S1624) — savas laiškas `uzsakyti()` įdeda `ps_tiekimas.pastaba` (darbuotojo prierašas iš darbalaukio kortelės) po prekių lentele, prieš parašą.
  * Petshop AV Tiekimas v1.10 (S1623, Raimio leidimas 09-06) — `priimti()`: kai „Gauta“ formoje eilutei nurodyta savikaina (`savikaina[eid]`), gavimas eina per
  *   `Petshop_Partijos::priimti()` (gavimo partija su savikaina, `tiekimas_id`, AV likutis kyla ten pat) — nebelieka „Partijose trūksta n vnt.“ ir savikaina skaičiuojasi; be savikainos — kaip buvo (`Petshop_AV_Stock::increase`).
  *   Galiojimas iš formos YYYY-MM partijai virsta paskutine mėnesio diena. Likusi logika (trūkumas → nauja partija, K2 `eilutes_i_av`) nekeista.
@@ -1172,6 +1173,7 @@ class Petshop_AV_Tiekimas {
 
 		$tema = sprintf( 'UAB Avesa · prekių užsakymas %s', wp_date( 'Y-m-d' ) );
 		$body = '<p>Laba diena,</p><p>prašome paruošti šias prekes.</p>' . self::laisko_dalis( $part, $eil, $vp['pack'] )
+			. ( '' !== trim( (string) $part->pastaba ) ? '<p style="margin:14px 0">' . nl2br( esc_html( trim( (string) $part->pastaba ) ) ) . '</p>' : '' ) // v1.10.1: darbuotojo prierašas (darbalaukio kortelė → `ps_tiekimas.pastaba`)
 			. '<p>Ačiū,<br>UAB Avesa · petshop.lt<br>terra@petshop.lt</p>';
 
 		$ok = false;
