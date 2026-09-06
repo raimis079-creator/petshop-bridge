@@ -1,5 +1,8 @@
 <?php
 /**
+ * Petshop Juosta v1.9 (S1627, Raimis: „į ataskaitas — per Flatsome; Inga nemato nei ataskaitų, nei langų“) — dešinėje, prieš „Sąskaitos“, išskleidžiamas **„Ataskaitos ▾“**:
+ *   Pardavimai ir pelnas · Prekių analizė · Atsargos ir pirkimas · Klientų analizė · Mėnesio uždarymas · Klientai (visi `manage_woocommerce`, kaip patys puslapiai) · Petshop langai (`manage_options`).
+ *   Aktyvus, kai esi ataskaitoje; atidaromas paspaudimu (ir užvedus). Ataskaitų puslapiai `ps-*` juostą jau turėjo — trūko tik nuorodos.
  * Petshop Juosta v1.8 (S1623, Raimis 09-06: „Tiekimas ir Laiškai nereikalingi“) — juostos punktai „Tiekimas“ ir „Laiškai“ IŠIMTI: po darbalaukio v3.37 viena kortelė per tiekėją
  *   (Dropshipping) ir Laukiam („Gauta“) daro viską; išsiųstų laiškų archyvas — darbalaukyje `view=laiskai`. Skaičiavimas (`kaup`/`lauk`/`laiskai`) paliktas, nerodomas. Langai `ps-tiekimas`/`ps-laiskai` lieka pasiekiami tiesiogine nuoroda (istorija).
  * Petshop Juosta v1.7 (S1617) — dešinėje, prie „Žurnalas“, nuoroda „Sąskaitos“ (darbalaukis `view=saskaitos`, v3.26) — tik `manage_woocommerce` (Raimis / buhalterė); darbuotojui nieko nepridėta.
@@ -62,7 +65,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Juosta {
 
-	const VERSIJA = '1.8';
+	const VERSIJA = '1.9';
 	const TR      = 'ps_juosta_sk';
 
 	/** Puslapiai, kur juosta NErodoma (Raimio analitika turi savą UI). */
@@ -195,7 +198,11 @@ class Petshop_Juosta {
 					<input type="search" name="q" id="psjQ" placeholder="Užsakymas, klientas, el. paštas, telefonas, adresas, prekė, SKU" autocomplete="off" value="<?php echo 'ps-desk' === $pg && isset( $_GET['q'] ) ? esc_attr( sanitize_text_field( wp_unslash( $_GET['q'] ) ) ) : ''; ?>">
 				</form>
 				<div class="psj-r">
-					<?php if ( current_user_can( 'manage_woocommerce' ) ) { echo $a( 'ps-desk', 'Sąskaitos', null, 'ps-desk' === $pg && 'saskaitos' === $view, '&view=saskaitos', 'Visos sąskaitos — PVM, išankstinės, kreditinės (PDF)' ); } // v1.7 ?>
+					<?php // v1.9: Ataskaitos ▾
+					$ats = array( array( 'ps-pardavimai', 'Pardavimai ir pelnas', 'manage_woocommerce' ), array( 'ps-prekes', 'Prekių analizė', 'manage_woocommerce' ), array( 'ps-atsargos', 'Atsargos ir pirkimas', 'manage_woocommerce' ), array( 'ps-klientai', 'Klientų analizė', 'manage_woocommerce' ), array( 'ps-menuo', 'Mėnesio uždarymas', 'manage_woocommerce' ), array( 'petshop-klientai', 'Klientai', 'manage_woocommerce' ), array( 'petshop-langai', 'Petshop langai', 'manage_options' ) );
+					$ats_html = ''; $ats_on = false; foreach ( $ats as $x ) { if ( ! current_user_can( $x[2] ) ) { continue; } $on_ = $pg === $x[0]; if ( $on_ ) { $ats_on = true; } $ats_html .= '<a class="psj-dd-i' . ( $on_ ? ' on' : '' ) . '" href="' . esc_url( admin_url( 'admin.php?page=' . $x[0] ) ) . '">' . esc_html( $x[1] ) . '</a>'; }
+					if ( $ats_html ) { echo '<div class="psj-dd"><button type="button" class="psj-a psj-dd-b' . ( $ats_on ? ' on' : '' ) . '" aria-haspopup="true" aria-expanded="false">Ataskaitos ▾</button><div class="psj-dd-m">' . $ats_html . '</div></div>'; }
+					if ( current_user_can( 'manage_woocommerce' ) ) { echo $a( 'ps-desk', 'Sąskaitos', null, 'ps-desk' === $pg && 'saskaitos' === $view, '&view=saskaitos', 'Visos sąskaitos — PVM, išankstinės, kreditinės (PDF)' ); } // v1.7 ?>
 					<?php echo $a( 'ps-ivykiai', 'Žurnalas', null, 'ps-ivykiai' === $pg, '', 'Užsakymų žurnalas — kas, ką, kada' ); ?>
 					<span class="psj-user" title="<?php echo esc_attr( $u->user_login ); ?>"><?php echo esc_html( $u->display_name ); ?></span>
 					<a class="psj-out" href="<?php echo esc_url( wp_logout_url( wp_login_url() ) ); ?>" title="Atsijungti">⏻</a>
@@ -229,6 +236,7 @@ class Petshop_Juosta {
 		.psj-q input{width:100%;height:30px;border:1px solid rgba(255,255,255,.18);background:rgba(255,255,255,.08);color:#fff;border-radius:6px;padding:0 10px;font-size:12px;box-shadow:none}
 		.psj-q input::placeholder{color:#9fb0a5}.psj-q input:focus{outline:none;border-color:#f4b942;background:rgba(255,255,255,.14)}
 		.psj-r{display:flex;align-items:center;gap:4px;margin-left:4px}
+		.psj-dd{position:relative}.psj-dd-b{background:none;border:0;cursor:pointer;font:inherit}.psj-dd-m{display:none;position:absolute;right:0;top:100%;margin-top:4px;background:#1f2a24;border:1px solid #3a4a41;border-radius:8px;padding:6px;min-width:210px;z-index:100001;box-shadow:0 8px 24px rgba(0,0,0,.35)}.psj-dd.open .psj-dd-m,.psj-dd:hover .psj-dd-m{display:block}.psj-dd-i{display:block;color:#d5e0d8;text-decoration:none;padding:7px 10px;border-radius:6px;white-space:nowrap}.psj-dd-i:hover{background:#2f3f36;color:#fff}.psj-dd-i.on{background:#3d7a4a;color:#fff}
 		.psj-user{padding:0 6px;color:#9fb0a5;white-space:nowrap;max-width:140px;overflow:hidden;text-overflow:ellipsis}
 		.psj-out{color:#9fb0a5;text-decoration:none;padding:4px 6px;border-radius:6px}.psj-out:hover{background:rgba(255,255,255,.12);color:#fff}
 		.psj-2{display:flex;align-items:center;gap:10px;height:26px;padding:0 12px;background:#f3f6f4;color:#4b5a51;font-size:12px;border-bottom:1px solid #d9e2dc}
@@ -278,6 +286,7 @@ class Petshop_Juosta {
 			});
 			function esc(s){ return String(s).replace(/[&<>"]/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c];}); }
 		})();
+		document.addEventListener('click',function(e){ var b=e.target.closest('.psj-dd-b'); document.querySelectorAll('.psj-dd.open').forEach(function(d){ if(!b||d!==b.parentNode) d.classList.remove('open'); }); if(b){ b.parentNode.classList.toggle('open'); b.setAttribute('aria-expanded',b.parentNode.classList.contains('open')?'true':'false'); } }); // v1.9
 		</script>
 		<?php
 	}
