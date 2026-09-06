@@ -1,0 +1,92 @@
+{
+ "v": "dep-173842",
+ "kurimas": 200,
+ "sid": 4968,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "C": {
+  "v": "S1632 a C",
+  "partiju_istrinta": 570
+ },
+ "P0": {
+  "v": "S1632 a P0",
+  "temp_istrinta": 1,
+  "chunk": 0,
+  "eiluciu": 180,
+  "st": {
+   "partija": 95,
+   "stock": 38,
+   "own": 3,
+   "praleista": 44,
+   "klaidos": []
+  },
+  "klaidu": 0
+ },
+ "P1": {
+  "v": "S1632 a P1",
+  "chunk": 1,
+  "eiluciu": 180,
+  "st": {
+   "partija": 131,
+   "stock": 28,
+   "own": 11,
+   "praleista": 10,
+   "klaidos": []
+  },
+  "klaidu": 0
+ },
+ "P2": {
+  "v": "S1632 a P2",
+  "chunk": 2,
+  "eiluciu": 180,
+  "st": {
+   "partija": 88,
+   "stock": 38,
+   "own": 1,
+   "praleista": 53,
+   "klaidos": []
+  },
+  "klaidu": 0
+ },
+ "P3": {
+  "v": "S1632 a P3",
+  "chunk": 3,
+  "eiluciu": 180,
+  "st": {
+   "partija": 52,
+   "stock": 16,
+   "own": 77,
+   "praleista": 35,
+   "klaidos": []
+  },
+  "klaidu": 0
+ },
+ "P4": {
+  "v": "S1632 a P4",
+  "chunk": 4,
+  "eiluciu": 180,
+  "st": {
+   "partija": 105,
+   "stock": 28,
+   "own": 31,
+   "praleista": 16,
+   "klaidos": []
+  },
+  "klaidu": 0
+ },
+ "V": {
+  "v": "S1632 a V",
+  "st": {
+   "kodu": 116,
+   "atributu": 123,
+   "praleista": 93,
+   "klaidos": []
+  },
+  "partiju_lentele": 591,
+  "partiju_s1632": 580,
+  "bak_n": 976,
+  "ping": 200
+ }
+}
