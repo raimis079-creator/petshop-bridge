@@ -1,0 +1,35 @@
+{
+ "v": "dep-190754",
+ "kurimas": 200,
+ "sid": 4982,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R3": {
+  "v": "S1634 r3",
+  "temp_istrinta": 1,
+  "code": 200,
+  "dydis": 301518,
+  "login_puslapis": 0,
+  "kiek": {
+   "dl-nav": 0,
+   "dl-eiles": 2,
+   "<nav": 1,
+   "eile=": 17
+  },
+  "aplink": "savo darbo eilėje.\">Gauti <span class=\"sk z\">1</span></a><a class=\"dl-e\" href=\"https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&#038;eile=nauji\" title=\"Reikia tavo sprendimo: dalis prekių AV, dalis pas tiekėją — siųsti atskirai ar vežti į AV? Aiškius sistema išrūšiuoja pati.\">Neišrūšiuoti <span class=\"sk\">0</span></a><a class=\"dl-e\" href=\"https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&#038;eile=laukiam\" title=\"Užsakyta iš tiekėjo į AV — atvažiavus spausk „Gauta“. AV siunta nerenkama, kol visos jos prekės neatvyko.\">Laukiam iš tiekėjų <span class=\"sk\">0</span></a><a class=\"dl-e\" href=\"https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&#038;eile=surinkti\" title=\"Visos AV siuntos prekės vietoje — Surinkti → Lipdukas → Kurjeris paėmė.\">Surinkti AV <span class=\"sk z\">1</span></a><a class=\"dl-e\" href=\"https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&#038;eile=laiskai\" title=\"Viena kortelė tiekėjui: siunčia klientui (lipdukai), veža į AV, į atsargas — vienas laiškas „Užsakyti iš [T]“ (laišką gali peržiūrėti).\">Dropshipping <span class=\"sk\">0</span></a><a class=\"dl-e\" href=\"https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&#038;eile=paruosta\" title=\"AV siuntos laukia kur",
+  "sk": {
+   "Visi": "0161",
+   "Laukiam": "20"
+  },
+  "dl_lapas": {
+   "3357": "if ( '' !== $f['q'] || self::filtras_aktyvus( $f ) ) { $rw = self::faktu_sarasas( array_map( function ( $r ) { return $r['o']; }",
+   "3375": "protected static function puslapiai( $f ) {",
+   "3433": "public static function puslapis() {"
+  },
+  "dl_sku_lape": {
+   "3777": "$pr = wc_get_product( $e->product_id ); $pav = $pr ? $pr->get_name() : '#' . $e->product_id; $sku = $pr ? $pr->get_sku() : ''"
+  }
+ }
+}
