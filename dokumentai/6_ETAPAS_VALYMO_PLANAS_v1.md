@@ -1,4 +1,4 @@
-# 6 ETAPAS — TESTINIŲ DUOMENŲ VALYMO PLANAS v1 (recon S1620, 2026-09-06; NIEKAS DAR NETRINTA)
+# 6 ETAPAS — TESTINIŲ DUOMENŲ VALYMO PLANAS v1.2 (recon S1620, papildyta S1621 2026-09-06; NIEKAS DAR NETRINTA)
 
 > Šaltinis: `irankiai/s1620_e6r.php` (U/L/K) + `s1620_e7r.php` (R), `analize/s1620_e6r.json`, `s1620_e7r.json`. Dev ir prod — tas pats WP/DB (dev veidrodis), todėl **viskas, kas čia, atsidurs petshop.lt** — valymas privalomas iki T-0. S1267 pamoka: trynimo kaskadų NĖRA — kiekvienai lentelei atskiras žingsnis su sargu ir skaičiais prieš/po.
 
@@ -53,3 +53,7 @@
 - **Trinti papildomai / tiksliau:** opcijos `ps_audit_ids`, `ps_e3_oid`, `ps_e3_oid2`; `wc_customer_lookup` #85–#96; `wc_order_stats` našlaičiai 35087–35100 + 35091–35093 po užsakymų trynimo; `ps_refill_tracking` #42–#48 (konkrečiai testiniai; kitų 23 — pagal B); `ps_fakt_uzsakymai` našlaičiai 35240/35262–35266/35288 ir `ps_fakt_grazinimai` 35088/35090.
 - **F tikslinimas:** 19708 — AV žurnale paskutinė teisėta `_stock` **48 (08-07 gavimas)**, „20“ = prieš S1619; galutinę reikšmę nustatyti iš `ps_ivykiai` grandinės + pastabų, Raimis tvirtina.
 
+## 6. Papildymas v1.2 (S1621, 2026-09-06 diena)
+- **Nauji testiniai:** užsakymai **#35814** (processing, Laukiam, VF eilutė `i_av` užsakyta #16), **#35815** (processing, Surinkti AV, VF eilutė gauta → `av`); `ps_tiekimas` **#16** (vf, uzsakyta) + **#17** (vf, gauta) su `ps_tiekimas_eil` #23–#28 (atsargų eilutės 18154×2, 18599×6 abiejose); #35442/#35443 `_ps_dropship_sent_src.vf` (testiniai, trinami su užsakymais); `ps_laisku_archyvas` +2 įrašai (VF 14:15, 15:01); opcijos **`ps_s1621_oid`, `ps_s1621b_oid`** — trinti; `ps_uzsakymu_ivykiai` +~12.
+- **Likučiai (F papildymas):** 18154 Festival AV 0→**2** (WC `_stock` 696→698), 18599 Exclusion AV 32→**38** (`_stock` 1394→1400), 25411 Josera ML AV +1 −1 = 0, 19475 Grancarno `_stock` 40→**32** (2 rezervai po 4) — atstatyti kartu su F (AV per `Petshop_AV_Stock`, žurnalas `ps_ivykiai`).
+- **Raimio sprendimas S1621 (F/partijos, spec §12.7 p.5):** T-0 — **pradinio likučio partija kiekvienai AV prekei** (`ps_partijos`; kiekis = likutis, savikaina iš kortelės, Raimis sudeda savikainas iki paleidimo) → klausimas **C** lieka tik dėl 10 esamų 08-10/12 partijų (testinės ar tikros).
