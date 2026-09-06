@@ -1,5 +1,8 @@
 <?php
 /**
+ * Petshop AV Tiekimas v1.10 (S1623, Raimio leidimas 09-06) — `priimti()`: kai „Gauta“ formoje eilutei nurodyta savikaina (`savikaina[eid]`), gavimas eina per
+ *   `Petshop_Partijos::priimti()` (gavimo partija su savikaina, `tiekimas_id`, AV likutis kyla ten pat) — nebelieka „Partijose trūksta n vnt.“ ir savikaina skaičiuojasi; be savikainos — kaip buvo (`Petshop_AV_Stock::increase`).
+ *   Galiojimas iš formos YYYY-MM partijai virsta paskutine mėnesio diena. Likusi logika (trūkumas → nauja partija, K2 `eilutes_i_av`) nekeista.
  * Petshop AV Tiekimas v1.9.3 (S1602, K2+K3) — PRIĖMIMAS PERKELIA EILUTĘ Į AV; PAŠTOMATO KODAS.
  *
  * K2 (auditas 2026-09-02): po partijos priėmimo užsakymo eilutė liko `_ps_source=quattro`
@@ -1260,7 +1263,16 @@ class Petshop_AV_Tiekimas {
 				array( 'qty_gauta' => $g, 'galiojimas' => $d ? $d : null ),
 				array( 'id' => $e->id ) );
 
-			if ( $g > 0 && class_exists( 'Petshop_AV_Stock' ) ) {
+			// v1.10 (S1623, Raimis): savikaina iš „Gauta“ formos → gavimo partija (`Petshop_Partijos::priimti` — pati pakelia AV likutį, perskaičiuoja `_cost_price`);
+			// be savikainos — kaip iki šiol, tik likutis (`Petshop_AV_Stock::increase`). Galiojimas YYYY-MM → partijai paskutinė mėnesio diena.
+			$sav = isset( $_POST['savikaina'][ $e->id ] ) ? (float) str_replace( ',', '.', sanitize_text_field( wp_unslash( $_POST['savikaina'][ $e->id ] ) ) ) : 0;
+			$part_ok = false;
+			if ( $g > 0 && $sav > 0 && class_exists( 'Petshop_Partijos' ) && method_exists( 'Petshop_Partijos', 'priimti' ) ) {
+				$gi = $d && preg_match( '/^(\d{4})-(\d{2})$/', $d, $dm ) ? date( 'Y-m-t', strtotime( $dm[1] . '-' . $dm[2] . '-01' ) ) : ( $d && preg_match( '/^\d{4}-\d{2}-\d{2}$/', $d ) ? $d : '' );
+				$r = Petshop_Partijos::priimti( (int) $e->product_id, array( 'kiekis' => $g, 'savikaina' => $sav, 'valiuta' => 'EUR', 'geriausia_iki' => $gi, 'tiekejas' => $part->tiekejas, 'tiekimas_id' => $pid, 'pastaba' => sprintf( 'Tiekimas: %s partija #%d', mb_strtoupper( $part->tiekejas ), $pid ) ) );
+				$part_ok = is_array( $r ) && ! empty( $r['partijos_id'] );
+			}
+			if ( $g > 0 && ! $part_ok && class_exists( 'Petshop_AV_Stock' ) ) {
 				Petshop_AV_Stock::increase( $e->product_id, $g,
 					sprintf( 'Tiekimas: %s partija #%d', mb_strtoupper( $part->tiekejas ), $pid ) );
 			}
