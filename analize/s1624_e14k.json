@@ -1,0 +1,90 @@
+{
+ "v": "dep-141333",
+ "kurimas": 200,
+ "sid": 4930,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "K": {
+  "v": "S1624 e14t",
+  "f": "K",
+  "temp_istrinta": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788705896|K2qL5nNUnlZGSqbwanLP0zxiQRQHH1aVcMOdZohV0dD|e585ee56e72467da93ab66f6541dfd61de9c41c88ca58e76662729e4c6e1dfef"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788705896|K2qL5nNUnlZGSqbwanLP0zxiQRQHH1aVcMOdZohV0dD|81eb58b2906e8c12cf8a2098864dfd6d6ed484ee31d60543b7add6ed31876482"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788705896|K2qL5nNUnlZGSqbwanLP0zxiQRQHH1aVcMOdZohV0dD|c4fbb04fe545097e6f1cb05e694246895c552f743a2a121bd9aec9ef1f3a65aa"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1624_e14_prierasas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+    "w": 1440,
+    "h": 1200,
+    "eval": "(async()=>{var f=document.getElementById('dlf_vf'); var t=f.querySelector('textarea[name=pastaba]'); t.value='Prašome pristatyti iki penktadienio. Jei Festival 900 g nėra — pakeiskite 3 kg pakuote.'; t.dispatchEvent(new Event('input',{bubbles:true})); f.querySelector('.dl-perz').click(); await new Promise(r=>setTimeout(r,600)); return f.querySelector('.dl-perz-pastaba').textContent.length; })()"
+   },
+   {
+    "n": "s1623_e11_rinkiklis_josera",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai&tiek=vf",
+    "w": 1440,
+    "h": 1300,
+    "click": ".dl-rink[data-src=\"vf\"] .dl-rink-atv",
+    "eval": "(async()=>{var s=document.querySelector('.dl-rink[data-src=\"vf\"] .dl-rink-z'); s.value='314'; s.dispatchEvent(new Event('change',{bubbles:true})); await new Promise(r=>setTimeout(r,3500)); var q=document.querySelector('.dl-rink[data-src=\"vf\"] .dl-rink-q'); q.value='festival'; q.dispatchEvent(new Event('input',{bubbles:true})); await new Promise(r=>setTimeout(r,2500)); var cb=document.querySelectorAll('.dl-rink[data-src=\"vf\"] .dl-rink-cb'); if(cb.length){ cb[0].click(); } return document.querySelectorAll('.dl-rink[data-src=\"vf\"] .dl-rink-lent tr').length; })()"
+   },
+   {
+    "n": "s1623_e11_laukiam_savikaina",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+    "w": 1440,
+    "h": 700
+   },
+   {
+    "n": "s1623_e11_archyvas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=laiskai",
+    "w": 1440,
+    "h": 900,
+    "click": ".dl-arch-atv"
+   }
+  ]
+ },
+ "shots": {
+  "s1624_e14_prierasas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": 87
+  },
+  "s1623_e11_rinkiklis_josera": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai&tiek=vf",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [
+    "error: Failed to load resource: net::ERR_HTTP2_PROTOCOL_ERROR"
+   ],
+   "clicked": ".dl-rink[data-src=\"vf\"] .dl-rink-atv",
+   "eval": 4
+  },
+  "s1623_e11_laukiam_savikaina": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laukiam",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": []
+  },
+  "s1623_e11_archyvas": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=laiskai",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": ".dl-arch-atv"
+  }
+ }
+}
