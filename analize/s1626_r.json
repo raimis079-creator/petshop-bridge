@@ -1,0 +1,41 @@
+{
+ "v": "dep-164545",
+ "kurimas": 200,
+ "sid": 4960,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1626 r",
+  "temp_istrinta": 1,
+  "f": {
+   "petshop-darbalaukis.php": {
+    "v": "3.39.2",
+    "md5": "f94d08e832f3852653ecde5cfdc27ef8",
+    "b": 544460
+   },
+   "petshop-juosta.php": {
+    "v": "1.10",
+    "md5": "1015dea6290f7c3486a50f2adc193cc4",
+    "b": 23264
+   },
+   "petshop-av-tiekimas.php": {
+    "v": "1.10.1",
+    "md5": "cf7677a8c355c58cc79a489dae4114f1",
+    "b": 77645
+   },
+   "petshop-dev-pastas.php": {
+    "v": "1.2",
+    "md5": "f761afc71f5e42f5205366076d79d16f",
+    "b": 6135
+   }
+  },
+  "eiles": {
+   "code": 200,
+   "nav": "",
+   "warning": 0
+  },
+  "ping": 200
+ }
+}
