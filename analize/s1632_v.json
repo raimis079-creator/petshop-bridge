@@ -1,0 +1,73 @@
+{
+ "v": "dep-174339",
+ "kurimas": 200,
+ "sid": 4970,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "v": "S1632 v",
+  "temp_istrinta": 2,
+  "paprastos": {
+   "tikrinta": 892,
+   "lauk_suma": 16991,
+   "db_suma": 16893,
+   "nesutampa_pvz": [
+    "JOS0915 #18046 lauk93 db9 own",
+    "341850-dp #35076 lauk14 db0"
+   ]
+  },
+  "variacijos": {
+   "tikrinta": 239,
+   "lauk_suma": 696,
+   "db_suma": 699,
+   "nesutampa_pvz": [
+    "10546/Pilka #34281 lauk2 db3",
+    "10586/Žalsva #34302 lauk1 db0",
+    "10586/Melsva #34303 lauk0 db1",
+    "10586/Rausvai ruda #34305 lauk1 db3"
+   ]
+  },
+  "partiju_s1632": 708,
+  "partiju_kiekis_suma": 15972,
+  "ping": 200,
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788717936|jAP2BDeG5nMOPatVgsVLp3yYgWotW5WdKmrgzOXFv5q|f3d98e11b2a4344621c9cc5f44c416f7f78735ef45f4eac7a1b5cd1e5732fc46"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1632_v_partija_kortele",
+    "u": "https://dev.avesa.lt/wp-admin/post.php?post=15373&action=edit",
+    "w": 1440,
+    "h": 1100
+   },
+   {
+    "n": "s1632_v_variacija_front",
+    "u": "https://dev.avesa.lt/product/tualetas-katems-su-remeliu-vidutinis-lettiera-max-435x34x11/",
+    "w": 1280,
+    "h": 1000
+   }
+  ]
+ },
+ "shots": {
+  "s1632_v_partija_kortele": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-login.php?redirect_to=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fpost.php%3Fpost%3D15373%26action%3Dedit&reauth=1",
+   "title": "Prisijungti ‹ Petshop.lt — WordPress",
+   "errors": [
+    "pageerror: TypeError: o(...) is not a function",
+    "pageerror: ReferenceError: ClipboardJS is not defined"
+   ]
+  },
+  "s1632_v_variacija_front": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/product/tualetas-katems-su-remeliu-vidutinis-lettiera-max-435x34x11/",
+   "title": "Tualetas katėms su rėmeliu vidutinis, Lettiera max (43,5x34x11) - Petshop.lt",
+   "errors": []
+  }
+ }
+}
