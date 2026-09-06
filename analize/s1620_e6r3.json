@@ -1,0 +1,802 @@
+{
+ "v": "dep-093131",
+ "kurimas": 200,
+ "sid": 4880,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1620 e6r3",
+  "temp_istrinta": 1,
+  "post": {
+   "35773": "NĖRA",
+   "35781": [
+    "product",
+    "publish",
+    "Konservų dėžė, 400 g. Įvairovė",
+    "2026-09-04 11:02:13",
+    0,
+    0
+   ],
+   "35782": [
+    "product",
+    "draft",
+    "Konservų dėžė, 800 g. Įvairovė",
+    "2026-09-04 12:02:31",
+    0,
+    0
+   ],
+   "35783": [
+    "product",
+    "draft",
+    "3.6_44433 TRIXIE Draskyklė Saul Cat, 64 cm, pilka",
+    "2026-09-04 18:01:33",
+    0,
+    0
+   ],
+   "35784": [
+    "product",
+    "draft",
+    "3.6_48090 TRIXIE Draskyklė, 52 cm, kreminė",
+    "2026-09-04 18:01:33",
+    0,
+    0
+   ]
+  },
+  "fakt_uzs_ne_test": [
+   "35087",
+   "35088",
+   "35090",
+   "35100",
+   "35240",
+   "35262",
+   "35263",
+   "35264",
+   "35265",
+   "35266",
+   "35288"
+  ],
+  "fakt_eil_ne_test": [
+   {
+    "uzsakymas_id": "35087",
+    "n": "15"
+   },
+   {
+    "uzsakymas_id": "35088",
+    "n": "1"
+   },
+   {
+    "uzsakymas_id": "35090",
+    "n": "3"
+   },
+   {
+    "uzsakymas_id": "35100",
+    "n": "4"
+   },
+   {
+    "uzsakymas_id": "35266",
+    "n": "1"
+   },
+   {
+    "uzsakymas_id": "35288",
+    "n": "1"
+   }
+  ],
+  "fakt_graz_ne_test": [
+   "35088",
+   "35090",
+   "35090"
+  ],
+  "fakt_sandelis": [
+   {
+    "sandelis": "ambrosia",
+    "n": "9"
+   },
+   {
+    "sandelis": "belcor_tofu",
+    "n": "1"
+   },
+   {
+    "sandelis": "legacy",
+    "n": "51"
+   },
+   {
+    "sandelis": "prins",
+    "n": "10"
+   },
+   {
+    "sandelis": "quattro",
+    "n": "4"
+   },
+   {
+    "sandelis": "vf",
+    "n": "29"
+   },
+   {
+    "sandelis": "zb",
+    "n": "5"
+   }
+  ],
+  "fakt_siuntos_sandelis": [
+   {
+    "sandelis": "ambrosia",
+    "vezejas": "venipak",
+    "n": "2"
+   },
+   {
+    "sandelis": "av",
+    "vezejas": "lp_express",
+    "n": "1"
+   },
+   {
+    "sandelis": "av",
+    "vezejas": "venipak",
+    "n": "12"
+   },
+   {
+    "sandelis": "belcor_tofu",
+    "vezejas": "venipak",
+    "n": "1"
+   },
+   {
+    "sandelis": "prins",
+    "vezejas": "venipak",
+    "n": "2"
+   },
+   {
+    "sandelis": "vf",
+    "vezejas": "venipak",
+    "n": "6"
+   },
+   {
+    "sandelis": "zb",
+    "vezejas": "venipak",
+    "n": "1"
+   }
+  ],
+  "fakt_testinis_reiksme": [
+   {
+    "testinis": "1",
+    "n": "67"
+   }
+  ],
+  "fakt_testinis_emailai": "",
+  "ivykiai_ne_test": [
+   {
+    "uzsakymas": "35090",
+    "n": "4"
+   },
+   {
+    "uzsakymas": "0",
+    "n": "3"
+   },
+   {
+    "uzsakymas": "35478",
+    "n": "1"
+   },
+   {
+    "uzsakymas": "35510",
+    "n": "1"
+   },
+   {
+    "uzsakymas": "35542",
+    "n": "1"
+   },
+   {
+    "uzsakymas": "35574",
+    "n": "1"
+   },
+   {
+    "uzsakymas": "35606",
+    "n": "1"
+   },
+   {
+    "uzsakymas": "35638",
+    "n": "1"
+   },
+   {
+    "uzsakymas": "35670",
+    "n": "1"
+   },
+   {
+    "uzsakymas": "35702",
+    "n": "1"
+   },
+   {
+    "uzsakymas": "35734",
+    "n": "1"
+   },
+   {
+    "uzsakymas": "35766",
+    "n": "1"
+   },
+   {
+    "uzsakymas": "35457",
+    "n": "1"
+   },
+   {
+    "uzsakymas": "35489",
+    "n": "1"
+   },
+   {
+    "uzsakymas": "35521",
+    "n": "1"
+   }
+  ],
+  "stats_ne_test": [
+   "3300",
+   "3301",
+   "3302",
+   "3304",
+   "35087",
+   "35088",
+   "35090",
+   "35091",
+   "35092",
+   "35093",
+   "35100"
+  ],
+  "partijos": [
+   {
+    "id": "1",
+    "product_id": "34889",
+    "gauta": "2026-08-10",
+    "kiekis_gautas": "24",
+    "kiekis_liko": "24",
+    "tiekejas": "Vetfarmas"
+   },
+   {
+    "id": "2",
+    "product_id": "34889",
+    "gauta": "2026-08-10",
+    "kiekis_gautas": "30",
+    "kiekis_liko": "16",
+    "tiekejas": "Lenkija"
+   },
+   {
+    "id": "3",
+    "product_id": "34889",
+    "gauta": "2026-08-10",
+    "kiekis_gautas": "7",
+    "kiekis_liko": "7",
+    "tiekejas": "TESTAS naršyklė"
+   },
+   {
+    "id": "11",
+    "product_id": "34905",
+    "gauta": "2026-08-12",
+    "kiekis_gautas": "1",
+    "kiekis_liko": "1",
+    "tiekejas": "Lenkija"
+   },
+   {
+    "id": "13",
+    "product_id": "19740",
+    "gauta": "2026-08-12",
+    "kiekis_gautas": "1",
+    "kiekis_liko": "1",
+    "tiekejas": ""
+   },
+   {
+    "id": "14",
+    "product_id": "19765",
+    "gauta": "2026-08-12",
+    "kiekis_gautas": "1",
+    "kiekis_liko": "1",
+    "tiekejas": ""
+   },
+   {
+    "id": "18",
+    "product_id": "19770",
+    "gauta": "2026-08-12",
+    "kiekis_gautas": "1",
+    "kiekis_liko": "1",
+    "tiekejas": "ambrosia"
+   },
+   {
+    "id": "19",
+    "product_id": "16317",
+    "gauta": "2026-08-13",
+    "kiekis_gautas": "100",
+    "kiekis_liko": "100",
+    "tiekejas": "av"
+   },
+   {
+    "id": "20",
+    "product_id": "16305",
+    "gauta": "2026-08-13",
+    "kiekis_gautas": "192",
+    "kiekis_liko": "190",
+    "tiekejas": "av"
+   },
+   {
+    "id": "21",
+    "product_id": "17245",
+    "gauta": "2026-08-14",
+    "kiekis_gautas": "20",
+    "kiekis_liko": "20",
+    "tiekejas": "av"
+   }
+  ],
+  "tiekimas": [
+   {
+    "id": "10",
+    "tiekejas": "quattro",
+    "busena": "gauta",
+    "sukurta": "2026-09-02 17:46:08",
+    "uzsakyta": "2026-09-02 17:58:35",
+    "gauta": "2026-09-02 17:58:37"
+   },
+   {
+    "id": "11",
+    "tiekejas": "prins",
+    "busena": "gauta",
+    "sukurta": "2026-09-02 20:11:59",
+    "uzsakyta": "2026-09-02 20:20:09",
+    "gauta": "2026-09-02 20:20:10"
+   },
+   {
+    "id": "12",
+    "tiekejas": "quattro",
+    "busena": "kaupiama",
+    "sukurta": "2026-09-03 10:28:36",
+    "uzsakyta": null,
+    "gauta": null
+   },
+   {
+    "id": "13",
+    "tiekejas": "prins",
+    "busena": "gauta",
+    "sukurta": "2026-09-03 12:30:33",
+    "uzsakyta": "2026-09-03 12:30:34",
+    "gauta": "2026-09-03 12:30:35"
+   },
+   {
+    "id": "14",
+    "tiekejas": "vf",
+    "busena": "gauta",
+    "sukurta": "2026-09-03 18:53:04",
+    "uzsakyta": "2026-09-03 18:53:04",
+    "gauta": "2026-09-03 18:53:13"
+   },
+   {
+    "id": "15",
+    "tiekejas": "zb",
+    "busena": "gauta",
+    "sukurta": "2026-09-03 18:55:22",
+    "uzsakyta": "2026-09-03 18:55:22",
+    "gauta": "2026-09-03 18:55:24"
+   }
+  ],
+  "tiekimas_eil": [
+   {
+    "id": "17",
+    "partija_id": "10",
+    "product_id": "16727",
+    "order_id": "35421",
+    "qty": "1",
+    "qty_gauta": "1"
+   },
+   {
+    "id": "18",
+    "partija_id": "11",
+    "product_id": "16889",
+    "order_id": "35434",
+    "qty": "1",
+    "qty_gauta": "1"
+   },
+   {
+    "id": "20",
+    "partija_id": "13",
+    "product_id": "16889",
+    "order_id": "35439",
+    "qty": "1",
+    "qty_gauta": "1"
+   },
+   {
+    "id": "21",
+    "partija_id": "14",
+    "product_id": "35357",
+    "order_id": "35450",
+    "qty": "1",
+    "qty_gauta": "1"
+   },
+   {
+    "id": "22",
+    "partija_id": "15",
+    "product_id": "33902",
+    "order_id": "35450",
+    "qty": "1",
+    "qty_gauta": "1"
+   }
+  ],
+  "av_zurnalas": {
+   "16727": {
+    "n": 0,
+    "pirmas": null,
+    "pask": []
+   },
+   "16889": {
+    "n": 0,
+    "pirmas": null,
+    "pask": []
+   },
+   "19708": {
+    "n": 8,
+    "pirmas": {
+     "operacija": "AV26080720004238",
+     "laukas": "_stock",
+     "buvo": "43",
+     "tapo": "48",
+     "priezastis": "gavimas",
+     "sukurta": "2026-08-07 23:00:42"
+    },
+    "pask": [
+     {
+      "operacija": "SV26082115360520",
+      "laukas": "_cost_price",
+      "buvo": "3.45",
+      "tapo": "1.7",
+      "pr": "savikaina",
+      "sukurta": "2026-08-21 18:36:05"
+     },
+     {
+      "operacija": "LK26081811421095",
+      "laukas": "_ean",
+      "buvo": null,
+      "tapo": "4017721837224",
+      "pr": "kortelė",
+      "sukurta": "2026-08-18 14:42:10"
+     },
+     {
+      "operacija": "SV26081709290525",
+      "laukas": "_cost_price",
+      "buvo": null,
+      "tapo": "3.45",
+      "pr": "savikaina",
+      "sukurta": "2026-08-17 12:29:05"
+     }
+    ]
+   },
+   "19756": {
+    "n": 0,
+    "pirmas": null,
+    "pask": []
+   },
+   "35357": {
+    "n": 0,
+    "pirmas": null,
+    "pask": []
+   }
+  },
+  "av_zurnalas_po_0902": 5,
+  "av_zurnalas_po_0902_prekes": [
+   {
+    "product_id": "16976",
+    "n": "1",
+    "minb": null,
+    "maxt": "1.63"
+   },
+   {
+    "product_id": "16979",
+    "n": "2",
+    "minb": null,
+    "maxt": "1.25"
+   },
+   {
+    "product_id": "16996",
+    "n": "1",
+    "minb": null,
+    "maxt": "2.59"
+   },
+   {
+    "product_id": "16999",
+    "n": "1",
+    "minb": null,
+    "maxt": "2.41"
+   }
+  ],
+  "refill_test": [
+   {
+    "id": "42",
+    "user_id": "1",
+    "product_id": "18536",
+    "last_order_id": "35442"
+   },
+   {
+    "id": "43",
+    "user_id": "1",
+    "product_id": "19590",
+    "last_order_id": "35442"
+   },
+   {
+    "id": "44",
+    "user_id": "1",
+    "product_id": "19574",
+    "last_order_id": "35442"
+   },
+   {
+    "id": "45",
+    "user_id": "1",
+    "product_id": "19570",
+    "last_order_id": "35442"
+   },
+   {
+    "id": "46",
+    "user_id": "5787",
+    "product_id": "16889",
+    "last_order_id": "35780"
+   },
+   {
+    "id": "47",
+    "user_id": "5787",
+    "product_id": "18593",
+    "last_order_id": "35779"
+   },
+   {
+    "id": "48",
+    "user_id": "5787",
+    "product_id": "19708",
+    "last_order_id": "35440"
+   }
+  ],
+  "pet_products_test": [],
+  "dim_klientai_test": [
+   {
+    "raktas": "c672e64f9ff0549825eba28fd41028744f4d0709ed9c4b55aca5ecaa1e51444f",
+    "klientas_id": "3442",
+    "uzsakymu_sk": "1"
+   },
+   {
+    "raktas": "da7e6972cd4b7ff7a9609283827bbda12c71d4af2b52372776c615c62492d1cf",
+    "klientas_id": "5160",
+    "uzsakymu_sk": "2"
+   },
+   {
+    "raktas": "33f9e852cdf44c57ad7363cfce8e35360f5c71644283be1072777789bbbf4b96",
+    "klientas_id": "4798",
+    "uzsakymu_sk": "1"
+   },
+   {
+    "raktas": "5339a2a07cef72486ab139b69c6e0a2e8456d5029ab1fbf6cfdbd2fa66af2058",
+    "klientas_id": "614",
+    "uzsakymu_sk": "3"
+   },
+   {
+    "raktas": "278ecabd36a381dc91e52e7f713127984bf779ef0490f2118e39b63beaae0a20",
+    "klientas_id": "1752",
+    "uzsakymu_sk": "1"
+   },
+   {
+    "raktas": "c54a42ab7fb323801e1b4dedbe390dcde25b26774cb20eab0d6b4e22bceacb47",
+    "klientas_id": "508",
+    "uzsakymu_sk": "8"
+   },
+   {
+    "raktas": "53e9f5015362b0ef6c27defcbe901a0cef8b0fe775e5d202abb9d522923f2726",
+    "klientas_id": "3680",
+    "uzsakymu_sk": "2"
+   },
+   {
+    "raktas": "71d61e67145df66f7384dc529ad6c470914efb51d780281114a45787b48d4159",
+    "klientas_id": "2940",
+    "uzsakymu_sk": "13"
+   },
+   {
+    "raktas": "15110d753262656f13dd35f7f4a57b0bfb127f99a44ba874f7d93e330d91a86e",
+    "klientas_id": "5118",
+    "uzsakymu_sk": "1"
+   },
+   {
+    "raktas": "bdb58728692e233e2b7799be1d1fd85ced7289ea43824e2e859c5ad648fa7327",
+    "klientas_id": "2619",
+    "uzsakymu_sk": "1"
+   },
+   {
+    "raktas": "350bf39f669c7858ae928e3b927da4972edf214bc4cca4aa8455afa65f5b5967",
+    "klientas_id": "1099",
+    "uzsakymu_sk": "2"
+   },
+   {
+    "raktas": "1c719a6a261cbd7964b8dde75ac1c103e4af4ee273a757b8b6c955789a8ac67a",
+    "klientas_id": "559",
+    "uzsakymu_sk": "1"
+   }
+  ],
+  "customer_lookup": [
+   {
+    "customer_id": "96",
+    "user_id": null,
+    "email": "atsiemimas.s1620@dev.avesa.lt"
+   },
+   {
+    "customer_id": "95",
+    "user_id": null,
+    "email": ""
+   },
+   {
+    "customer_id": "94",
+    "user_id": null,
+    "email": "atsiemimas3.s1619@dev.avesa.lt"
+   },
+   {
+    "customer_id": "93",
+    "user_id": null,
+    "email": "atsiemimas.s1619@dev.avesa.lt"
+   },
+   {
+    "customer_id": "92",
+    "user_id": null,
+    "email": ""
+   },
+   {
+    "customer_id": "91",
+    "user_id": null,
+    "email": ""
+   },
+   {
+    "customer_id": "90",
+    "user_id": null,
+    "email": ""
+   },
+   {
+    "customer_id": "89",
+    "user_id": null,
+    "email": ""
+   },
+   {
+    "customer_id": "88",
+    "user_id": null,
+    "email": ""
+   },
+   {
+    "customer_id": "87",
+    "user_id": null,
+    "email": "telefonu.s1618@dev.avesa.lt"
+   },
+   {
+    "customer_id": "86",
+    "user_id": "5787",
+    "email": "s1609.klientas@avesa.lt"
+   },
+   {
+    "customer_id": "85",
+    "user_id": null,
+    "email": "terra@petshop.lt"
+   }
+  ],
+  "pdf_ne_test": [
+   "Invoice -35262-0e717eb3cc0190f5f600862f.pdf",
+   "Invoice -35263-ec4a3970fc8c7c42300fbd3b.pdf",
+   "Invoice -35264-b8ef95e91eb3fdeec3626428.pdf",
+   "Invoice -35265-6a18c7343f5b0d10ff033318.pdf",
+   "Invoice -35288-f0b1920ae4341f795dc5f997.pdf",
+   "Invoice -35308-9ded25236cc2fcf8a79e84de.pdf",
+   "Invoice -35414-7b2ef1933d28cb957599fad6.pdf",
+   "Invoice -35415-69aaccd818d6b826a6985c0b.pdf",
+   "Invoice -35416-2298eeebf1f62dfd9f3b1ddf.pdf",
+   "Invoice -35417-a4a9b516d961d96de4adc203.pdf",
+   "Invoice -35418-af677233c8127050c2bb4844.pdf",
+   "Invoice -35419-1fa2cce4aea4a5e5a6b0d1b4.pdf",
+   "Invoice -35420-af519e454ad07bd384b09623.pdf",
+   "Invoice -35421-e4f1755c5b4c4d05d8694413.pdf",
+   "Invoice -35422-926e68a87aeee9d742b879ed.pdf",
+   "Invoice -35423-ae8b6c55e0eaad815d168918.pdf",
+   "Invoice -35424-645d9f9424705d32b17aa913.pdf",
+   "Invoice -35425-217eba7412e309b6ba90e1cc.pdf",
+   "Invoice -35426-f706a80386f4b917016b85aa.pdf",
+   "Invoice -35427-f616675c4981fe421badfeeb.pdf",
+   "Invoice -35428-ef743a7911650c8087a9d2f1.pdf",
+   "Invoice -35429-dc204a8c5bac1e63748c0e1f.pdf",
+   "Invoice -35430-292449242720af3f1a68b706.pdf",
+   "Invoice -35431-4587d308a868efed0ba3769c.pdf",
+   "Invoice -35432-1e684cfc163dae0825c0674d.pdf",
+   "Invoice -35433-e6c6b44d50de5fd13929591e.pdf",
+   "Invoice -35434-14229b5d165e83a5c850d5c7.pdf",
+   "Invoice -35434-2b736e6705ea22257ef0eb46.pdf",
+   "Invoice -35435-313d02c77a38803e2a8c1a76.pdf",
+   "Invoice -35436-f1f48336619c420d2c42bc85.pdf",
+   "Invoice -35437-f848a32b355391c0e71d6f1a.pdf",
+   "Invoice -35438-60e14e0d3309c9555ef82e59.pdf",
+   "Invoice -35439-3b5cae148bf5b3be69f2812b.pdf",
+   "Invoice -35440-caaa988411ae11392dfbdc69.pdf",
+   "Invoice -35441-2d0b83d3147a86a3771d840f.pdf",
+   "Invoice -35442-0825f100ebb6898285b532aa.pdf",
+   "Invoice -35443-061809bb7d781f3682cef5cc.pdf",
+   "Invoice -35444-6886a0bbf779822e78c233d1.pdf",
+   "Invoice -35450-b4737c44a7ed84fb38963279.pdf",
+   "Invoice -35771-770ffbc2258ef3de4717a83c.pdf",
+   "Invoice -35772-64d9cff06acd2dfe917fa4b9.pdf",
+   "Invoice -35774-712fd212876ac00036468a47.pdf",
+   "Invoice -35775-ec6790068a8f9f02424daaf6.pdf",
+   "Invoice -35776-b432d588dc92180cc3be019a.pdf",
+   "Invoice -35777-ffb638c71129fa9a7cabdd11.pdf",
+   "Invoice -35778-34ed660c4eaf75c0e79a638d.pdf",
+   "Invoice -35779-eaab742e97e44520a8b4825e.pdf",
+   "Invoice -35780-1c22e500af77ddb9a1f98e73.pdf",
+   "Invoice -35792-251861552a23c67b632846c4.pdf",
+   "Invoice -35801-4b36ebf009f2505139722043.pdf",
+   "Invoice -35802-3b3efce9148102f6a5bf3c03.pdf",
+   "Invoice -35803-82c0a0981a42723a506b2759.pdf",
+   "Invoice -35804-4364a9752f7704abf311e7e0.pdf",
+   "Invoice -35805-d2a8e900d24bb487228cb242.pdf",
+   "Invoice -35806-370de611e231aafb2f637fb7.pdf",
+   "Invoice -35807-3c9d4ae70f02878fc31dc35b.pdf",
+   "Invoice -35808-8eccd7aff6b219eaaea7d772.pdf",
+   "Invoice -35809-226592a73643cc5536d2545a.pdf",
+   "Invoice -35810-d36932628e13491b3da31f66.pdf",
+   "Invoice -35811-35dbaa63bf6cc0089eb95b4a.pdf",
+   "Invoice -35811-3fd22d8aa9ec60c254e90763.pdf",
+   "Invoice -35812-446f180c127fe95588a0db57.pdf",
+   "Invoice -35813-1700e78028ae2876166b3f37.pdf",
+   "Isankstine-saskaita-IAPV000159.pdf"
+  ],
+  "pdf_iapv": 5,
+  "testuotojas": [
+   75,
+   "ps_darbuotojas",
+   "testuotojas@dev.avesa.lt",
+   "Testuotojas"
+  ],
+  "darbuotojai": [
+   {
+    "ID": "1",
+    "user_login": "bdz487",
+    "user_email": "raimundas@gyvunai.lt"
+   },
+   {
+    "ID": "75",
+    "user_login": "testuotojas",
+    "user_email": "testuotojas@dev.avesa.lt"
+   }
+  ],
+  "raimio4": {
+   "35087": [
+    "cancelled",
+    "checkout",
+    "AVPN000272",
+    "IAPV000155",
+    15,
+    "",
+    ""
+   ],
+   "35088": [
+    "completed",
+    "checkout",
+    "AVPN000273",
+    "IAPV000156",
+    1,
+    "",
+    "PVM-saskaita-AVPN000273.pdf"
+   ],
+   "35090": [
+    "processing",
+    "checkout",
+    "AVPN000274",
+    "IAPV000157",
+    3,
+    "",
+    ""
+   ],
+   "35100": [
+    "processing",
+    "checkout",
+    "AVPN000275",
+    "IAPV000158",
+    4,
+    "",
+    ""
+   ]
+  },
+  "audit_ids": "{\"1\":35414,\"2\":35415,\"3\":35416,\"4\":35417,\"5\":35418,\"6\":35419,\"7\":35420,\"8\":35421,\"9\":35422,\"10\":35423,\"11\":35424,\"12\":35425,\"13\":35426,\"14\":35427,\"15\":35428,\"16\":35429,\"17\":35430,\"18\":35431,\"19\":35432,\"20\":35433,\"21\":35434}",
+  "e3_oid": [
+   "35450",
+   "35771",
+   "34889"
+  ],
+  "comments_test": 752,
+  "comments_r4": 59,
+  "temp_liko": 1
+ }
+}
