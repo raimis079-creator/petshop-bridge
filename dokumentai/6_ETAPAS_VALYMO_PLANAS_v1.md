@@ -47,3 +47,10 @@
 
 ## 4. Eiga (po sprendimų)
 1) Įrankis `irankiai/s16xx_valymas.php`: fazė **D** (dry-run: kiekvienai lentelei `COUNT` pagal sargą, failų sąrašas, likučių planas) → Raimis peržiūri → fazė **A** (apply: kopija → užsakymai per `wc_get_order()->delete(true)` po vieną su `try`, refund'ai pirma → lentelės → failai → opcijos → likučiai → WC lookup našlaičiai → `wc_customer_lookup`) → fazė **Q** (skaičiai po: viskas 0, darbalaukio eilės Visi 0, skydelis tuščias — Playwright). 2) E2E auditas (spec §10.6) su `testuotojas` → naujų testinių sąrašas → T-0 pakartoti A su skaitikliais → 101. 3) Tikra paskyra, `testuotojas` išjungti.
+
+## 5. Papildymas v1.1 (antras recon — `s1620_e6r2.php` R1/R2 + `s1620_e6r3.php`, log S1620 „PAPILDYMAS“)
+- **NELIESTI papildomai:** prekės **#35781–#35784** (09-04 „Konservų dėžė 400/800 g Įvairovė“, 2 TRIXIE draskyklės — kito projekto), #35785–#35787 revizijos; vartotojai #5757–#5785 (08-31 importas, tikri); `ps_test_product_id`=34889; `wcdn_invoice_number_counter` 364 (WCDN savas).
+- **Trinti papildomai / tiksliau:** opcijos `ps_audit_ids`, `ps_e3_oid`, `ps_e3_oid2`; `wc_customer_lookup` #85–#96; `wc_order_stats` našlaičiai 35087–35100 + 35091–35093 po užsakymų trynimo; `ps_refill_tracking` #42–#48 (konkrečiai testiniai; kitų 23 — pagal B); `ps_fakt_uzsakymai` našlaičiai 35240/35262–35266/35288 ir `ps_fakt_grazinimai` 35088/35090.
+- **F tikslinimas:** 19708 — AV žurnale paskutinė teisėta `_stock` **48 (08-07 gavimas)**, „20“ = prieš S1619; galutinę reikšmę nustatyti iš `ps_ivykiai` grandinės + pastabų, Raimis tvirtina.
+- ⚠ Du langai dirbo lygiagrečiai (09:21–09:35) — toliau valymą daryti TIK viename lange.
+
