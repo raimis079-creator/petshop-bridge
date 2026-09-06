@@ -1,0 +1,100 @@
+{
+ "v": "dep-192424",
+ "kurimas": 200,
+ "sid": 4987,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S4": {
+  "v": "S1634 p2",
+  "temp_istrinta": 1,
+  "smtp": {
+   "mailer": "smtp",
+   "from": {
+    "0": "Petshop.lt",
+    "1": "terra@petshop.lt",
+    "force": true
+   },
+   "host": "isopas.serveriai.lt",
+   "port": 465,
+   "encryption": "ssl",
+   "auth": true,
+   "autotls": true,
+   "user": "uzs…(20)"
+  },
+  "paysera_vardai": {
+   "PAYSERA_DB_VERSION": "6",
+   "paysera_delivery_extra_settings": "45",
+   "paysera_delivery_settings": "65",
+   "paysera_payment_extra_settings": "239",
+   "paysera_payment_main_settings": "126",
+   "ps_fakt_paysera_fiks_ct": "1",
+   "woocommerce_paysera_settings": "30"
+  },
+  "paysera": {
+   "paysera_delivery_extra_settings": {
+    "hide_shipping_methods": "yes"
+   },
+   "paysera_delivery_settings": {
+    "delivery_enabled": "no",
+    "test_mode": "yes"
+   },
+   "paysera_payment_extra_settings": {
+    "title": "Mokėjimas internetu",
+    "description": "Pasirinkite mokėjimo būdą Paysera svetainėje",
+    "list_of_payments": "yes",
+    "grid_view": "no",
+    "buyer_consent": "yes",
+    "log_level": "error"
+   },
+   "paysera_payment_main_settings": {
+    "project_id": "29276",
+    "project_password": "752…(32)",
+    "test_mode": "yes"
+   },
+   "woocommerce_paysera_settings": {
+    "enabled": "yes"
+   }
+  },
+  "serijos": {
+   "petshop_avpn_counter": "354",
+   "petshop_iapv_counter": "169",
+   "petshop_kravpn_counter": "105",
+   "petshop_ppk_counter": "103"
+  },
+  "siteurl_db": "https://dev.avesa.lt",
+  "home_db": "https://dev.avesa.lt",
+  "konst": {
+   "WP_HOME": "https://dev.avesa.lt",
+   "WP_SITEURL": "https://dev.avesa.lt"
+  },
+  "esp": {
+   "ver": "0.4.0",
+   "failas": "petshop-esp.php",
+   "dydis": 33126,
+   "kiek": {
+    "api.sender.net": 2,
+    "rest_route": 1,
+    "register_rest_route": 1,
+    "wp_mail": 0,
+    "woocommerce_email": 0,
+    "add_subscriber": 0,
+    "webhook": 26,
+    "cron": 0
+   },
+   "hooks": [
+    "plugins_loaded",
+    "admin_notices",
+    "rest_api_init"
+   ],
+   "opt": {
+    "petshop_esp_event_log_db_version": "5",
+    "petshop_esp_sender_mk": "1320",
+    "petshop_esp_sender_tk": "1316",
+    "petshop_esp_sender_webhook_secret": "40",
+    "ps_sender_webhook_log": "6"
+   }
+  }
+ }
+}
