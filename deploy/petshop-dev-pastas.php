@@ -1,6 +1,6 @@
 <?php
 /**
- * Petshop Dev paštas v1.0 (S1608, 2026-09-03) — dev.avesa.lt laiškai NEIŠSIUNČIAMI, tik užrašomi.
+ * Petshop Dev paštas v1.1 (S1608, 2026-09-03; v1.1 S1620 2026-09-06: „priedai“ — tik tikri failai (WC `send()` be priedų duoda `''` → buvo 1), + failų vardai) — dev.avesa.lt laiškai NEIŠSIUNČIAMI, tik užrašomi.
  *
  * KODĖL: T3 testas (320 „laukia apmokėjimo“ užsakymų) išsiuntė ~320 tikrų WC laiškų į terra@petshop.lt (Raimio spam).
  * Dev ir prod — tas pats WP (dev veidrodis), todėl skiriama pagal užklausos hostą: kai `HTTP_HOST` = dev.avesa.lt
@@ -13,7 +13,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Dev_Pastas {
-	const VERSIJA = '1.0';
+	const VERSIJA = '1.1';
 	const OPT = 'ps_dev_pastas_zurnalas';
 
 	public static function init() {
@@ -32,7 +32,7 @@ class Petshop_Dev_Pastas {
 	public static function gaudyti( $r, $a ) {
 		if ( null !== $r || ! self::dev() || get_option( 'ps_dev_pastas_leisti' ) ) { return $r; }
 		$z = (array) get_option( self::OPT, array() );
-		$z[] = array( 'laikas' => current_time( 'mysql' ), 'kam' => is_array( $a['to'] ?? '' ) ? implode( ', ', $a['to'] ) : (string) ( $a['to'] ?? '' ), 'tema' => mb_substr( (string) ( $a['subject'] ?? '' ), 0, 120 ), 'priedai' => count( (array) ( $a['attachments'] ?? array() ) ), 'url' => mb_substr( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), 0, 120 ) );
+		$z[] = array( 'laikas' => current_time( 'mysql' ), 'kam' => is_array( $a['to'] ?? '' ) ? implode( ', ', $a['to'] ) : (string) ( $a['to'] ?? '' ), 'tema' => mb_substr( (string) ( $a['subject'] ?? '' ), 0, 120 ), 'priedai' => count( array_filter( (array) ( $a['attachments'] ?? array() ) ) ), 'failai' => implode( ', ', array_map( 'basename', array_filter( (array) ( $a['attachments'] ?? array() ) ) ) ), 'url' => mb_substr( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), 0, 120 ) );
 		update_option( self::OPT, array_slice( $z, -300 ), false );
 		return true; // „išsiųsta“ — kodas nemato skirtumo, laiškas neišeina
 	}
@@ -53,7 +53,7 @@ class Petshop_Dev_Pastas {
 		echo '<form method="post" style="margin:8px 0">' . wp_nonce_field( 'ps_dev_pastas', '_wpnonce', true, false ) . '<button class="button" name="ps_dev_pastas_valyti" value="1">Išvalyti žurnalą</button></form>';
 		if ( ! $z ) { echo '<p>Tuščia.</p></div>'; return; }
 		echo '<table class="widefat striped"><thead><tr><th>Laikas</th><th>Kam</th><th>Tema</th><th>Priedų</th><th>Iš kur</th></tr></thead><tbody>';
-		foreach ( $z as $x ) { echo '<tr><td>' . esc_html( $x['laikas'] ) . '</td><td>' . esc_html( $x['kam'] ) . '</td><td>' . esc_html( $x['tema'] ) . '</td><td>' . (int) $x['priedai'] . '</td><td style="color:#666">' . esc_html( $x['url'] ) . '</td></tr>'; }
+		foreach ( $z as $x ) { echo '<tr><td>' . esc_html( $x['laikas'] ) . '</td><td>' . esc_html( $x['kam'] ) . '</td><td>' . esc_html( $x['tema'] ) . '</td><td>' . (int) $x['priedai'] . ( ! empty( $x['failai'] ) ? ' <small>' . esc_html( $x['failai'] ) . '</small>' : '' ) . '</td><td style="color:#666">' . esc_html( $x['url'] ) . '</td></tr>'; }
 		echo '</tbody></table></div>';
 	}
 }
