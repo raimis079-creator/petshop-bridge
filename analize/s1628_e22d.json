@@ -1,0 +1,51 @@
+{
+ "v": "dep-162838",
+ "kurimas": 200,
+ "sid": 4958,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1628 e22d",
+  "temp_istrinta": 1,
+  "petshop-klientui.php": {
+   "backup": "petshop-klientui-v10-BACKUP-2026-09-06.php",
+   "rasyta": 1817,
+   "po": "ccf9032d78416e805d90993b7fe1def1",
+   "ping": {
+    "code": 200,
+    "fatal": 0,
+    "err": ""
+   }
+  },
+  "aciu_url": "https://dev.avesa.lt/kasa/order-received/35826/?key=wc_order_cPSYdz5jLZMS4",
+  "admin_aciu": {
+   "code": 200,
+   "mygtukai": [
+    "Spausdinti sąskaitą"
+   ]
+  },
+  "klientas_aciu": {
+   "code": 200,
+   "mygtukai": [
+    "Spausdinti sąskaitą"
+   ]
+  },
+  "klientas_view": {
+   "code": 200,
+   "mygtukai": [
+    "Spausdinti sąskaitą"
+   ]
+  },
+  "inga_aciu": {
+   "code": 200,
+   "mygtukai": [
+    "Spausdinti sąskaitą"
+   ]
+  },
+  "versijos": {
+   "klientui": "ccf9032d78416e805d90993b7fe1def1"
+  }
+ }
+}
