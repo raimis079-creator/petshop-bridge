@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Dev paštas v1.2 (S1625, 2026-09-06): `ps_dev_pastas_leisti` gali būti ne tik 1 (viskas išeina), bet ir el. paštų sąrašas (kableliais) — laiškas išleidžiamas tik jei VISI gavėjai
+ *   sąraše (pvz. `terra@petshop.lt` — Raimis gauna tiekėjų užsakymus iš dev, klientų/tiekėjų laiškai lieka sugauti; žurnale pažymima „IŠLEISTA“).
  * Petshop Dev paštas v1.1 (S1608, 2026-09-03; v1.1 S1620 2026-09-06: „priedai“ — tik tikri failai (WC `send()` be priedų duoda `''` → buvo 1), + failų vardai) — dev.avesa.lt laiškai NEIŠSIUNČIAMI, tik užrašomi.
  *
  * KODĖL: T3 testas (320 „laukia apmokėjimo“ užsakymų) išsiuntė ~320 tikrų WC laiškų į terra@petshop.lt (Raimio spam).
@@ -13,7 +15,7 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Dev_Pastas {
-	const VERSIJA = '1.1';
+	const VERSIJA = '1.2';
 	const OPT = 'ps_dev_pastas_zurnalas';
 
 	public static function init() {
@@ -30,10 +32,18 @@ class Petshop_Dev_Pastas {
 	}
 
 	public static function gaudyti( $r, $a ) {
-		if ( null !== $r || ! self::dev() || get_option( 'ps_dev_pastas_leisti' ) ) { return $r; }
+		if ( null !== $r || ! self::dev() ) { return $r; }
+		$leisti = get_option( 'ps_dev_pastas_leisti' ); $isleista = false;
+		if ( $leisti && ! is_array( $leisti ) && '1' === (string) $leisti ) { return $r; }
+		if ( $leisti ) { // v1.2: sąrašas — išleidžiam tik kai visi gavėjai sąraše
+			$sar = array_filter( array_map( 'strtolower', array_map( 'trim', is_array( $leisti ) ? $leisti : explode( ',', (string) $leisti ) ) ) );
+			$kam = array_filter( array_map( 'trim', is_array( $a['to'] ?? '' ) ? $a['to'] : explode( ',', (string) ( $a['to'] ?? '' ) ) ) );
+			$isleista = $kam && ! array_diff( array_map( 'strtolower', $kam ), $sar );
+		}
 		$z = (array) get_option( self::OPT, array() );
-		$z[] = array( 'laikas' => current_time( 'mysql' ), 'kam' => is_array( $a['to'] ?? '' ) ? implode( ', ', $a['to'] ) : (string) ( $a['to'] ?? '' ), 'tema' => mb_substr( (string) ( $a['subject'] ?? '' ), 0, 120 ), 'priedai' => count( array_filter( (array) ( $a['attachments'] ?? array() ) ) ), 'failai' => implode( ', ', array_map( 'basename', array_filter( (array) ( $a['attachments'] ?? array() ) ) ) ), 'url' => mb_substr( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), 0, 120 ) );
+		$z[] = array( 'laikas' => current_time( 'mysql' ), 'kam' => is_array( $a['to'] ?? '' ) ? implode( ', ', $a['to'] ) : (string) ( $a['to'] ?? '' ), 'tema' => ( $isleista ? 'IŠLEISTA · ' : '' ) . mb_substr( (string) ( $a['subject'] ?? '' ), 0, 120 ), 'priedai' => count( array_filter( (array) ( $a['attachments'] ?? array() ) ) ), 'failai' => implode( ', ', array_map( 'basename', array_filter( (array) ( $a['attachments'] ?? array() ) ) ) ), 'url' => mb_substr( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), 0, 120 ) );
 		update_option( self::OPT, array_slice( $z, -300 ), false );
+		if ( $isleista ) { return $r; } // v1.2: gavėjai leidžiamų sąraše — laiškas išeina
 		return true; // „išsiųsta“ — kodas nemato skirtumo, laiškas neišeina
 	}
 
@@ -42,7 +52,7 @@ class Petshop_Dev_Pastas {
 	public static function pranesimas() {
 		if ( ! self::dev() || ! current_user_can( 'manage_woocommerce' ) || empty( $_GET['page'] ) || 0 !== strpos( (string) $_GET['page'], 'ps-' ) || 'ps-dev-pastas' === $_GET['page'] ) { return; }
 		$z = (array) get_option( self::OPT, array() ); $d = wp_date( 'Y-m-d' ); $n = 0; foreach ( $z as $x ) { if ( 0 === strpos( $x['laikas'] ?? '', $d ) ) { $n++; } }
-		echo '<div class="notice notice-info" style="margin:8px 24px 0"><p>Dev: laiškai neišsiunčiami' . ( get_option( 'ps_dev_pastas_leisti' ) ? ' — <b>IŠJUNGTA (ps_dev_pastas_leisti)</b>' : '' ) . ' · šiandien sugauta ' . (int) $n . ' · <a href="' . esc_url( admin_url( 'admin.php?page=ps-dev-pastas' ) ) . '">žiūrėti</a></p></div>';
+		echo '<div class="notice notice-info" style="margin:8px 24px 0"><p>Dev: laiškai neišsiunčiami' . ( ( $l_ = get_option( 'ps_dev_pastas_leisti' ) ) ? ' — <b>' . ( '1' === (string) $l_ ? 'IŠJUNGTA (ps_dev_pastas_leisti)' : 'išleidžiama: ' . esc_html( is_array( $l_ ) ? implode( ', ', $l_ ) : (string) $l_ ) ) . '</b>' : '' ) . ' · šiandien sugauta ' . (int) $n . ' · <a href="' . esc_url( admin_url( 'admin.php?page=ps-dev-pastas' ) ) . '">žiūrėti</a></p></div>';
 	}
 
 	public static function langas() {
