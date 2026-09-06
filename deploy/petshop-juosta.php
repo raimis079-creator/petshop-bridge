@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Juosta v1.8 (S1623, Raimis 09-06: „Tiekimas ir Laiškai nereikalingi“) — juostos punktai „Tiekimas“ ir „Laiškai“ IŠIMTI: po darbalaukio v3.37 viena kortelė per tiekėją
+ *   (Dropshipping) ir Laukiam („Gauta“) daro viską; išsiųstų laiškų archyvas — darbalaukyje `view=laiskai`. Skaičiavimas (`kaup`/`lauk`/`laiskai`) paliktas, nerodomas. Langai `ps-tiekimas`/`ps-laiskai` lieka pasiekiami tiesiogine nuoroda (istorija).
  * Petshop Juosta v1.7 (S1617) — dešinėje, prie „Žurnalas“, nuoroda „Sąskaitos“ (darbalaukis `view=saskaitos`, v3.26) — tik `manage_woocommerce` (Raimis / buhalterė); darbuotojui nieko nepridėta.
  *
  * Petshop Juosta v1.6 (S1617) — „Užsakymai“ / „Neapmokėti“ skaičiai be pakartotinių užsakymų (meta `_ps_pakartotinis`, darbalaukis v3.21 — jie darbalaukyje nerodomi).
@@ -60,7 +62,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Juosta {
 
-	const VERSIJA = '1.7';
+	const VERSIJA = '1.8';
 	const TR      = 'ps_juosta_sk';
 
 	/** Puslapiai, kur juosta NErodoma (Raimio analitika turi savą UI). */
@@ -182,10 +184,9 @@ class Petshop_Juosta {
 					echo $a( 'ps-desk', 'Rytinė eiga', null, 'ps-desk' === $pg && 'rytas' === $view, '&view=rytas' );
 					echo $a( 'ps-katalogas', 'Prekės', $s['reikia'], 'ps-katalogas' === $pg, '', null === $s['reikia'] ? '' : 'reikia užsakyti: ' . (int) $s['reikia'] . ( empty( $s['reikia_laikas'] ) ? '' : ' (katalogo duomenys ' . wp_date( 'H:i', $s['reikia_laikas'] ) . ')' ) );
 					echo $a( 'ps-gavimas', 'Gavimas', null, 'ps-gavimas' === $pg );
-					echo $a( 'ps-tiekimas', 'Tiekimas', array( array( $s['kaup'], 'kaupiama', 'k' ), array( $s['lauk'], 'užsakyta, laukiam', 'l' ) ), 'ps-tiekimas' === $pg );
+					// v1.8: „Tiekimas“ ir „Laiškai“ — išimti (dubliavo Dropshipping kortelę / Laukiam; archyvas — darbalaukis `view=laiskai`)
 					echo $a( 'ps-rinkiniai', 'Rinkiniai', null, in_array( $pg, array( 'ps-rinkiniai', 'ps-laukai' ), true ) );
 					echo $a( 'ps-akcijos', 'Akcijos', null, 'ps-akcijos' === $pg );
-					echo $a( 'ps-laiskai', 'Laiškai', $s['laiskai'], in_array( $pg, array( 'ps-laiskai', 'ps-dropship' ), true ), '&b=laukia', 'laukia išsiuntimo tiekėjams' );
 					?>
 				</nav>
 				<?php echo $riba; ?>
