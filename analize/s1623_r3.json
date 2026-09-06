@@ -1,0 +1,252 @@
+{
+ "v": "dep-132501",
+ "kurimas": 200,
+ "sid": 4916,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1623 r3",
+  "temp_istrinta": 1,
+  "juosta_dydis": 19526,
+  "juosta_md5": "d4a86860feb3fd0da6258338f72a36f4",
+  "juosta": [
+   "3: * Petshop Juosta v1.7 (S1617) — dešinėje, prie „Žurnalas“, nuoroda „Sąskaitos“ (darbalaukis `view=saskaitos`, v3.26) — tik `manage_woocommerce` (Raimis / buhalterė); darbuotojui nieko neprid",
+   "5: * Petshop Juosta v1.6 (S1617) — „Užsakymai“ / „Neapmokėti“ skaičiai be pakartotinių užsakymų (meta `_ps_pakartotinis`, darbalaukis v3.21 — jie darbalaukyje nerodomi).",
+   "7: * Petshop Juosta v1.5 (S1607) — Prekių kortelė (`.pskat-kort`, sticky top:0) lįsdavo po juosta (44+26 px + admin bar 32):",
+   "10: * Petshop Juosta v1.4 (S1606) — patikra parodė, kad katalogo kešas `ps_kat_duomenys` NĖRA saugomas",
+   "12: * kas valandą (`ps_juosta_reikia_cron` → Petshop_Katalogas::surinkti() + eiles()) į opciją",
+   "13: * `ps_juosta_reikia`; juosta ją tik skaito. Pirmas skaičiavimas — deploy metu.",
+   "15: * Petshop Juosta v1.3 (S1606) — katalogo kešas gyvena 300 s, todėl „reikia užsakyti“ skaičius įsimenamas",
+   "16: * opcijoje `ps_juosta_reikia` (n, laikas) ir rodomas iš jos, kol katalogas neperskaičiuos.",
+   "18: * Petshop Juosta v1.2 (S1606) — „Prekės [reikia užsakyti]“: iš katalogo kešo `ps_kat_duomenys` per",
+   "19: * Petshop_Katalogas::eiles($prekes,'prekyboje')['uzsakyti'] (tas pats skaičius, kaip katalogo eilėje",
+   "22: * Petshop Juosta v1.1 (S1606) — WP kairysis meniu paslepiamas visur, kur juosta (desk/katalogas jau slėpė;",
+   "23: * Tiekimas/Laiškai/Žurnalas turėjo dvi navigacijas). Desk `.pd` (position:fixed) nustumiamas žemiau juostos.",
+   "26: * Petshop Juosta v1.0 (S1606, spec R3/R4, §7) — VIENA VIRŠUTINĖ JUOSTA VISUOSE PETSHOP LANGUOSE.",
+   "29: * juostą (Katalogas·Akcijos·Gavimas·Tiekimas·Rinkiniai·Užsakymai — `.pskat-bar`,",
+   "30: * `.psgav-bar`), užsakymų pusė — savą (`.pd-top`), Tiekimas/Laiškai/Lapai/",
+   "35: *   Tiekimas [kaupiama/laukiam] · Rinkiniai · Akcijos · Laiškai [laukia] · riba ·",
+   "46: *   Užsakymai = processing + on-hold (wc_orders, HPOS); Tiekimas = partijos",
+   "47: *   kaupiama / uzsakyta; Laiškai = užsakymai, laukiantys perdavimo",
+   "75: add_action( 'ps_juosta_reikia_cron', array( __CLASS__, 'reikia_perskaiciuoti' ) );",
+   "76: if ( ! wp_next_scheduled( 'ps_juosta_reikia_cron' ) ) { wp_schedule_event( time() + 120, 'hourly', 'ps_juosta_reikia_cron' ); }",
+   "83: public static function reikia_perskaiciuoti() {",
+   "88: $e = Petshop_Katalogas::eiles( $k['prekes'], 'prekyboje' );",
+   "89: if ( ! isset( $e['uzsakyti'] ) ) { return null; }",
+   "90: update_option( 'ps_juosta_reikia', array( (int) $e['uzsakyti'], time() ), false );",
+   "92: return (int) $e['uzsakyti'];",
+   "121: $s = array( 'uzs' => 0, 'neapm' => 0, 'kaup' => 0, 'lauk' => 0, 'laiskai' => 0, 'reikia' => null, 'riba' => null, 'gavimas' => null );",
+   "124: $be = \"AND id NOT IN (SELECT order_id FROM {$p}wc_orders_meta WHERE meta_key='_ps_pakartotinis')\"; // v1.6",
+   "128: if ( $wpdb->get_var( \"SHOW TABLES LIKE '{$p}ps_tiekimas'\" ) ) {",
+   "129: $s['kaup'] = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM {$p}ps_tiekimas WHERE busena='kaupiama'\" );",
+   "130: $s['lauk'] = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM {$p}ps_tiekimas WHERE busena='uzsakyta'\" );",
+   "135: $s['laiskai'] = $n;",
+   "137: $r = get_option( 'ps_juosta_reikia' );",
+   "185: echo $a( 'ps-tiekimas', 'Tiekimas', array( array( $s['kaup'], 'kaupiama', 'k' ), array( $s['lauk'], 'užsakyta, laukiam', 'l' ) ), 'ps-tiekimas' === $pg );",
+   "188: echo $a( 'ps-laiskai', 'Laiškai', $s['laiskai'], in_array( $pg, array( 'ps-laiskai', 'ps-dropship' ), true ), '&b=laukia', 'laukia išsiuntimo tiekėjams' );",
+   "197: <?php if ( current_user_can( 'manage_woocommerce' ) ) { echo $a( 'ps-desk', 'Sąskaitos', null, 'ps-desk' === $pg && 'saskaitos' === $view, '&view=saskaitos', 'Visos sąskaitos — PVM, išanksti"
+  ],
+  "part_priimti": [
+   "165: \tpublic static function priimti( $pid, $a ) {",
+   "166: \t\tglobal $wpdb;",
+   "167: \t\t$pid = (int) $pid;",
+   "168: \t\tif ( ! $pid || get_post_type( $pid ) !== 'product' ) {",
+   "169: \t\t\treturn new WP_Error( 'nera_prekes', 'Prekė nerasta' );",
+   "170: \t\t}",
+   "171: \t\tif ( ! self::uztikrinti_lenteles() ) {",
+   "172: \t\t\treturn new WP_Error( 'nera_lenteles', 'Nepavyko paruošti partijų lentelės' );",
+   "173: \t\t}",
+   "174: ",
+   "175: \t\t$kiekis = isset( $a['kiekis'] ) ? (int) $a['kiekis'] : 0;",
+   "176: \t\tif ( $kiekis <= 0 ) { return new WP_Error( 'kiekis', 'Kiekis turi būti didesnis už nulį' ); }",
+   "177: ",
+   "178: \t\t$valiuta = isset( $a['valiuta'] ) ? strtoupper( substr( (string) $a['valiuta'], 0, 3 ) ) : 'EUR';",
+   "179: \t\t$kursas  = isset( $a['kursas'] ) ? (float) str_replace( ',', '.', $a['kursas'] ) : 1.0;",
+   "180: \t\t$sav_iv  = isset( $a['savikaina'] ) ? (float) str_replace( ',', '.', $a['savikaina'] ) : 0;",
+   "181: \t\tif ( $sav_iv <= 0 ) { return new WP_Error( 'savikaina', 'Savikaina turi būti didesnė už nulį' ); }",
+   "182: ",
+   "183: \t\tif ( $valiuta !== 'EUR' ) {",
+   "184: \t\t\tif ( $kursas <= 0 ) { return new WP_Error( 'kursas', 'Nurodykite kursą' ); }",
+   "185: \t\t\t$sav_eur  = round( $sav_iv / $kursas, 4 );",
+   "186: \t\t\t$sav_orig = $sav_iv;",
+   "187: \t\t} else {",
+   "188: \t\t\t$sav_eur  = round( $sav_iv, 4 );",
+   "189: \t\t\t$sav_orig = null;",
+   "190: \t\t\t$kursas   = 1.0;",
+   "191: \t\t}",
+   "192: ",
+   "193: \t\t$gal = isset( $a['geriausia_iki'] ) ? trim( (string) $a['geriausia_iki'] ) : '';",
+   "194: \t\tif ( $gal !== '' && ! preg_match( '/^\\d{4}-\\d{2}-\\d{2}$/', $gal ) ) {",
+   "195: \t\t\treturn new WP_Error( 'data', 'Galiojimo data turi būti formatu 2027-09-30' );",
+   "196: \t\t}",
+   "197: ",
+   "198: \t\t$gauta = isset( $a['gauta'] ) && preg_match( '/^\\d{4}-\\d{2}-\\d{2}$/', (string) $a['gauta'] )",
+   "199: \t\t\t? $a['gauta'] : current_time( 'Y-m-d' );",
+   "200: "
+  ],
+  "part_pask": [
+   "304: \tpublic static function paskutine_savikaina( $pid ) {",
+   "305: \t\tglobal $wpdb;",
+   "306: \t\tif ( ! self::lentele_yra( self::lentele() ) ) { return null; }",
+   "307: \t\t$t = self::lentele();",
+   "308: \t\t$v = $wpdb->get_var( $wpdb->prepare(",
+   "309: \t\t\t\"SELECT savikaina_eur FROM {$t} WHERE product_id=%d AND atsaukta=0",
+   "310: \t\t\t  ORDER BY gauta DESC, id DESC LIMIT 1\", $pid ) );",
+   "311: \t\treturn $v === null ? null : (float) $v;",
+   "312: \t}",
+   "313: ",
+   "314: \t/**",
+   "315: \t * Irasо svertine savikaina i `_cost_price` kaip greitaja kopija.",
+   "316: \t * NELIECIA prekiu, kuriu savikaina valdo tiekejas — ten irasymas nieko",
+   "317: \t * nepakeistu, nes resolveris ima `_vf_cost` / `_zb_cost`.",
+   "318: \t */"
+  ],
+  "part_cols": [
+   "id",
+   "product_id",
+   "gauta",
+   "kiekis_gautas",
+   "kiekis_liko",
+   "savikaina_eur",
+   "savikaina_orig",
+   "valiuta",
+   "kursas",
+   "geriausia_iki",
+   "tiekejas",
+   "importuota",
+   "tiekimas_id",
+   "pastaba",
+   "sukurta",
+   "user_id",
+   "atsaukta"
+  ],
+  "tiek_priimti": [
+   "1243: \tprotected static function priimti( $pid ) {",
+   "1244: \t\tglobal $wpdb;",
+   "1245: \t\t$part = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . self::t_partijos() . ' WHERE id=%d', $pid ) );",
+   "1246: \t\tif ( ! $part || 'uzsakyta' !== $part->busena ) { return 'klaida'; }",
+   "1247: ",
+   "1248: \t\t$gauta   = isset( $_POST['gauta'] ) && is_array( $_POST['gauta'] ) ? $_POST['gauta'] : array();",
+   "1249: \t\t$galioja = isset( $_POST['galioja'] ) && is_array( $_POST['galioja'] ) ? $_POST['galioja'] : array();",
+   "1250: ",
+   "1251: \t\t$eil      = self::partijos_eilutes( $pid );",
+   "1252: \t\t$trukumas = array();",
+   "1253: \t\t$paliesti = array();",
+   "1254: ",
+   "1255: \t\tforeach ( $eil as $e ) {",
+   "1256: \t\t\t$g = isset( $gauta[ $e->id ] ) ? max( 0, (int) $gauta[ $e->id ] ) : 0;",
+   "1257: \t\t\t$d = isset( $galioja[ $e->id ] ) ? sanitize_text_field( wp_unslash( $galioja[ $e->id ] ) ) : '';",
+   "1258: ",
+   "1259: \t\t\t$wpdb->update( self::t_eilutes(),",
+   "1260: \t\t\t\tarray( 'qty_gauta' => $g, 'galiojimas' => $d ? $d : null ),",
+   "1261: \t\t\t\tarray( 'id' => $e->id ) );",
+   "1262: ",
+   "1263: \t\t\tif ( $g > 0 && class_exists( 'Petshop_AV_Stock' ) ) {",
+   "1264: \t\t\t\tPetshop_AV_Stock::increase( $e->product_id, $g,",
+   "1265: \t\t\t\t\tsprintf( 'Tiekimas: %s partija #%d', mb_strtoupper( $part->tiekejas ), $pid ) );",
+   "1266: \t\t\t}",
+   "1267: \t\t\tif ( $d && class_exists( 'Petshop_AV_Expiry' ) ) {",
+   "1268: \t\t\t\tupdate_post_meta( $e->product_id, Petshop_AV_Expiry::META, $d );",
+   "1269: \t\t\t}",
+   "1270: \t\t\tif ( $g < (int) $e->qty ) {",
+   "1271: \t\t\t\t$trukumas[] = array( 'pid' => $e->product_id, 'qty' => (int) $e->qty - $g,",
+   "1272: \t\t\t\t\t'oid' => $e->order_id, 'pastaba' => $e->pastaba );",
+   "1273: \t\t\t}",
+   "1274: \t\t\tif ( $e->order_id ) { $paliesti[ $e->order_id ] = true; }",
+   "1275: \t\t}",
+   "1276: ",
+   "1277: \t\t$wpdb->update( self::t_partijos(),",
+   "1278: \t\t\tarray( 'busena' => 'gauta', 'gauta' => current_time( 'mysql' ) ),",
+   "1279: \t\t\tarray( 'id' => $pid ) );",
+   "1280: ",
+   "1281: \t\t// Trūkumas — į naują tos pačios tiekėjo partiją.",
+   "1282: \t\tif ( $trukumas ) {",
+   "1283: \t\t\t$nauja = self::atvira_partija( $part->tiekejas );",
+   "1284: \t\t\tforeach ( $trukumas as $t ) {",
+   "1285: \t\t\t\t$wpdb->insert( self::t_eilutes(), array(",
+   "1286: \t\t\t\t\t'partija_id' => $nauja, 'product_id' => $t['pid'],",
+   "1287: \t\t\t\t\t'order_id' => $t['oid'], 'qty' => $t['qty'],",
+   "1288: \t\t\t\t\t'pastaba' => $t['pastaba'] ) );",
+   "1289: \t\t\t}",
+   "1290: \t\t}",
+   "1291: ",
+   "1292: \t\t// Užsakymai: kuriems prekių užteko — laisvi; kuriems ne — lieka laukti.",
+   "1293: \t\tforeach ( array_keys( $paliesti ) as $oid ) {",
+   "1294: \t\t\t$oo = wc_get_order( $oid );",
+   "1295: \t\t\tif ( ! $oo ) { continue; }",
+   "1296: \t\t\t$liko = (int) $wpdb->get_var( $wpdb->prepare(",
+   "1297: \t\t\t\t'SELECT COUNT(*) FROM ' . self::t_eilutes() . ' e",
+   "1298: \t\t\t\t INNER JOIN ' . self::t_partijos() . \" p ON p.id=e.partija_id",
+   "1299: \t\t\t\t WHERE e.order_id=%d AND p.busena<>'gauta'\", $oid ) );",
+   "1300: \t\t\tif ( $liko ) {"
+  ],
+  "tiek_md5": "018548dccb63b9e59c317f07c3a89a08",
+  "tiek_dydis": 75499,
+  "zenklai_vf": [
+   {
+    "name": "Josera",
+    "n": "213"
+   },
+   {
+    "name": "FLEXI",
+    "n": "76"
+   },
+   {
+    "name": "Nobby",
+    "n": "76"
+   },
+   {
+    "name": "Exclusion",
+    "n": "72"
+   },
+   {
+    "name": "Churu",
+    "n": "72"
+   },
+   {
+    "name": "NOBLEZA",
+    "n": "67"
+   },
+   {
+    "name": "Happet",
+    "n": "49"
+   },
+   {
+    "name": "COMFY",
+    "n": "43"
+   }
+  ],
+  "zenklai_n_pagal_tiek": [
+   {
+    "sand": "ambrosia",
+    "n": "1"
+   },
+   {
+    "sand": "av",
+    "n": "82"
+   },
+   {
+    "sand": "belcor_tofu",
+    "n": "2"
+   },
+   {
+    "sand": "prins",
+    "n": "1"
+   },
+   {
+    "sand": "quattro",
+    "n": "1"
+   },
+   {
+    "sand": "vf",
+    "n": "41"
+   },
+   {
+    "sand": "zb",
+    "n": "23"
+   }
+  ]
+ }
+}
