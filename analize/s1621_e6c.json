@@ -1,0 +1,240 @@
+{
+ "v": "dep-115839",
+ "kurimas": 200,
+ "sid": 4900,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "C": {
+  "v": "S1621 e6t",
+  "f": "C",
+  "temp_istrinta": 1,
+  "id": 35815,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 9Neišrūšiuoti 4Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 1Klausimai 9Neapmokėti 3Visi 66+ Naujas užsakymasFiltra"
+  },
+  "sk1": {
+   "kur": "Neišrūšiuoti · toliau: Rūšiuoti",
+   "btn": null,
+   "rusiuoti": true,
+   "takelis": [],
+   "eil": [
+    {
+     "iid": 1644,
+     "q": 4,
+     "n": "Animonda GranCarno Adult: konservai šuni",
+     "k": "av",
+     "bukle": "",
+     "kodel": "AV yra 32 — siunčiam iš AV. Rezervuota.",
+     "keliai": [
+      "av:Iš AV*"
+     ]
+    },
+    {
+     "iid": 1645,
+     "q": 1,
+     "n": "Josera Mini Lamb begrūdis sausas pašaras",
+     "k": "i_av",
+     "bukle": "neužsakyta",
+     "kodel": "AV nėra, VF turi. Užsakymas tiekėjui #16 (VF į AV) jau atviras — siūlom vežti į AV ir siųsti viena siunta. Jei skubu — „",
+     "keliai": [
+      "av:Iš AV (ne: AV tik 0, reikia 1)",
+      "tiesiai:VF siunčia klientui",
+      "i_av:VF veža į AV*"
+     ]
+    }
+   ],
+   "zinute": ""
+  },
+  "sk2": {
+   "kur": "Neišrūšiuoti · toliau: Rūšiuoti",
+   "btn": null,
+   "rusiuoti": true,
+   "takelis": [],
+   "eil": [
+    {
+     "iid": 1644,
+     "q": 4,
+     "n": "Animonda GranCarno Adult: konservai šuni",
+     "k": "av",
+     "bukle": "",
+     "kodel": "AV yra 32 — siunčiam iš AV. Rezervuota.",
+     "keliai": [
+      "av:Iš AV*"
+     ]
+    },
+    {
+     "iid": 1645,
+     "q": 1,
+     "n": "Josera Mini Lamb begrūdis sausas pašaras",
+     "k": "i_av",
+     "bukle": "neužsakyta",
+     "kodel": "AV nėra, VF turi. Užsakymas tiekėjui #16 (VF į AV) jau atviras — siūlom vežti į AV ir siųsti viena siunta. Jei skubu — „",
+     "keliai": [
+      "av:Iš AV (ne: AV tik 0, reikia 1)",
+      "tiesiai:VF siunčia klientui",
+      "i_av:VF veža į AV*"
+     ]
+    }
+   ],
+   "zinute": ""
+  },
+  "rusiuota": {
+   "code": 302,
+   "pd_ok": "dl_rusiuota",
+   "pd": "35815|Animonda GranCarno Adult: konservai šuni — Iš AV; Josera Mini Lamb begrūdis sausas pašaras — VF veža į AV"
+  },
+  "sk3": {
+   "kur": "Dropshipping · toliau: Užsakyti iš VF į AV",
+   "btn": "Užsakyti iš VF į AV",
+   "rusiuoti": false,
+   "takelis": [],
+   "eil": [
+    {
+     "iid": 1644,
+     "q": 4,
+     "n": "Animonda GranCarno Adult: konservai šuni",
+     "k": "av",
+     "bukle": "",
+     "kodel": "AV yra 32 — siunčiam iš AV. Rezervuota.",
+     "keliai": [
+      "av:Iš AV*"
+     ]
+    },
+    {
+     "iid": 1645,
+     "q": 1,
+     "n": "Josera Mini Lamb begrūdis sausas pašaras",
+     "k": "i_av",
+     "bukle": "neužsakyta",
+     "kodel": "AV nėra, VF turi. Užsakymas tiekėjui #16 (VF į AV) jau atviras — siūlom vežti į AV ir siųsti viena siunta. Jei skubu — „",
+     "keliai": [
+      "av:Iš AV (ne: AV tik 0, reikia 1)",
+      "tiesiai:VF siunčia klientui",
+      "i_av:VF veža į AV*"
+     ]
+    }
+   ],
+   "zinute": ""
+  },
+  "eiles_po_rus": {
+   "code": 200,
+   "nav": "Gauti 9Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 13Paruošta siųsti 1Klausimai 9Neapmokėti 3Visi 66+ Naujas užsakymasFiltra"
+  },
+  "laiskai_code": 200,
+  "kortele_vf": {
+   "in": {
+    "_wpnonce": "f10d55fe07",
+    "_wp_http_referer": "/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+    "action": "ps_dl_uzsakyti",
+    "tiekejas": "vf",
+    "uzsakymai": "35420,35442,35435,35805,35807,35809,35808",
+    "ids_av": "35090,35815",
+    "ps_dl_g": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
+    "laisk_zyme": "1",
+    "pristatymas": "tiekejas",
+    "svoris": "",
+    "dezes": "1",
+    "su_lipdukais": "1",
+    "su_manifestu": "1",
+    "laisk_tiekejui": "1",
+    "laisk_man": "1"
+   },
+   "btn": [
+    "Užsakyti iš VF (7 užs. + 2 prek. į AV)",
+    "Peržiūrėti laišką"
+   ],
+   "ck": [
+    "pristatymas=pastomatas",
+    "pristatymas=kurjeris",
+    "pristatymas=tiekejas",
+    "su_lipdukais=1*",
+    "su_manifestu=1*",
+    "laisk_tiekejui=1",
+    "laisk_man=1*"
+   ],
+   "tekstas": "Kaip atkeliaus į AV: Venipak paštomatas (Nemenčinė) Venipak kurjeris į AV Tiekėjas atveža patssvoris kgdėžių 2Užsakyti iš VF (7 užs. + 2 prek. į AV) Peržiūrėti laiškąPrierašas laiške lipdukai kurjerio sąrašas siųsti tiekėjui (ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt) kopija manLaba diena,šiandienai35420AUDITAS Testas 7Churu Popn Serve skanėstas katėms su tunu,35g EU7541 vnt.35442Rai BExclusion Mediterraneo Monoprotein sausas pašaras kačiukams su vištiena, 1,5 kg NGCKC011 vnt.35435AUDITAS Testas 22Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200 g AM201 vnt.35805TELEFONU Testas S1618Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmi"
+  },
+  "veza_i_av_uzs": [
+   "35090",
+   "35815"
+  ],
+  "musu_yra": true,
+  "ats_nonce": "yra",
+  "prideti": [
+   {
+    "code": 302,
+    "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai&pd_ok=dl_info&pd_nr=VF%7Cprek%C4%97%20prid%C4%97ta%20%C4%AF%20atsargas%20%E2%80%94%20u%C5%BEsakymas%20tiek%C4%97jui%20%2317%20%28i%C5%",
+    "q": {
+     "page": "ps-desk",
+     "eile": "laiskai",
+     "pd_ok": "dl_info",
+     "pd_nr": "VF|prekė pridėta į atsargas — užsakymas tiekėjui #17 (išeis su „Užsakyti iš VF“)"
+    },
+    "body": ""
+   },
+   {
+    "code": 302,
+    "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai&pd_ok=dl_info&pd_nr=VF%7Cprek%C4%97%20prid%C4%97ta%20%C4%AF%20atsargas%20%E2%80%94%20u%C5%BEsakymas%20tiek%C4%97jui%20%2317%20%28i%C5%",
+    "q": {
+     "page": "ps-desk",
+     "eile": "laiskai",
+     "pd_ok": "dl_info",
+     "pd_nr": "VF|prekė pridėta į atsargas — užsakymas tiekėjui #17 (išeis su „Užsakyti iš VF“)"
+    },
+    "body": ""
+   }
+  ],
+  "partija_po_prideti": {
+   "id": "17",
+   "tiekejas": "vf",
+   "busena": "kaupiama",
+   "sukurta": "2026-09-06 15:00:01",
+   "uzsakyta": null,
+   "gauta": null,
+   "siuntos_kodas": null,
+   "pastaba": null,
+   "pristatymas": null,
+   "svoris": null,
+   "venipak_pack": null,
+   "venipak_manifest": null,
+   "dezes": "1",
+   "eil": [
+    {
+     "id": "26",
+     "product_id": "18154",
+     "order_id": null,
+     "qty": "2",
+     "pastaba": null
+    },
+    {
+     "id": "27",
+     "product_id": "18599",
+     "order_id": null,
+     "qty": "6",
+     "pastaba": null
+    }
+   ]
+  },
+  "kortele_vf_po": {
+   "btn": [
+    "Užsakyti iš VF (7 užs. + 4 prek. į AV)",
+    "Peržiūrėti laišką"
+   ],
+   "ck": [
+    "pristatymas=pastomatas",
+    "pristatymas=kurjeris",
+    "pristatymas=tiekejas",
+    "su_lipdukais=1*",
+    "su_manifestu=1*",
+    "laisk_tiekejui=1",
+    "laisk_man=1*"
+   ],
+   "tekstas": "Kaip atkeliaus į AV: Venipak paštomatas (Nemenčinė) Venipak kurjeris į AV Tiekėjas atveža patssvoris kgdėžių 2Užsakyti iš VF (7 užs. + 4 prek. į AV) Peržiūrėti laiškąPrierašas laiške lipdukai kurjerio sąrašas siųsti tiekėjui (ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt) kopija manLaba diena,šiandienai35420AUDITAS Testas 7Churu Popn Serve skanėstas katėms su tunu,35g EU7541 vnt.35442Rai BExclusion Mediterraneo Monoprotein sausas pašaras kačiukams su vištiena, 1,5 kg NGCKC011 vnt.35435AUDITAS Testas 22Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200 g AM201 vnt.35805TELEFONU Testas S1618Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmi"
+  },
+  "perziura": "Laba diena,šiandienai35420AUDITAS Testas 7Churu Popn Serve skanėstas katėms su tunu,35g EU7541 vnt. 35442Rai BExclusion Mediterraneo Monoprotein sausas pašaras kačiukams su vištiena, 1,5 kg NGCKC011 vnt. 35435AUDITAS Testas 22Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200 g AM201 vnt. 35805TELEFONU Testas S1618Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g BM371 vnt. 35807TELEFONU Testas S1618Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g BM371 vnt. 35809TELEFONU Testas S1619HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm AQ2803161 vnt. 35808TELEFONU Testas S1619HAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm AQ2803161 vnt. UAB Avesa, Liucionių g. 46691756 FURminator deShedding šampūnas šunims, 473 ml 4048422153511 vnt. Josera Mini Lamb begrūdis sausas pašaras mažų veislių šunims su ėriena, 900 g JOS09331 vnt. JOSERA FESTIVAL pašaras šunims su lašiša, 12,5 kg JOS09132 vnt. Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 400 g PM376 vnt. 1 dėžė — lipdukai bus priede.Linkėjimai,UAB Avesaterra@petshop.lt",
+  "antras_isp": "VF šiandien jau užsakyta 14:15 — tai bus antras laiškas tą pačią dieną. Siunti tik jei tikrai reikia."
+ }
+}
