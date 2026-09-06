@@ -8,7 +8,7 @@
  *
  *              KODEL NE .mo FAILAS: temos atnaujinimas ji istrintu. Filtras
  *              islieka.
- * Version: 1.0
+ * Version: 1.2 (S1620, 2026-09-06: + WooCommerce `form-verify-email.php` 2 sakiniai — svečio užsakymo puslapis po 10 min. malonės laiko, lt_LT vertimo nėra)
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
@@ -28,6 +28,10 @@ class Petshop_Vertimai {
 			'Older Comments'   => 'Senesni komentarai',
 			'Newer Comments'   => 'Naujesni komentarai',
 			'Comment navigation' => 'Komentarų naršymas',
+		),
+		'woocommerce' => array(
+			'To view this page, you must either %1$slogin%2$s or verify the email address associated with the order.' => 'Norėdami matyti šį puslapį, %1$sprisijunkite%2$s arba patvirtinkite el. pašto adresą, nurodytą užsakyme.',
+			'We were unable to verify the email address you provided. Please try again.' => 'Nepavyko patvirtinti nurodyto el. pašto adreso. Bandykite dar kartą.',
 		),
 	);
 
