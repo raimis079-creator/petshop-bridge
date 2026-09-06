@@ -1,0 +1,131 @@
+{
+ "v": "dep-153216",
+ "kurimas": 200,
+ "sid": 4948,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1627 r",
+  "temp_istrinta": 1,
+  "katalogas_sandelis": [
+   "180: *   `_ps_sandelis` = TIEKEJAS (is ko preke pirkta), o ne vieta.",
+   "593: *   Taip pat: `belacor` → `belcor_tofu` (tikroji `_ps_sandelis` reiksme),",
+   "802: * melavo: prekės turėjo ZB sandėlį, tik neturėjo `_ps_sandelis` lauko.",
+   "953: $s = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
+   "976: $sand = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
+   "983: $sand = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
+   "1072: 'tiekejas'      => (string) get_post_meta( $p['pid'], '_ps_sandelis', true ),",
+   "1186: /* v8.5: TIK AV sandėlis (savininko sprendimas 2026-08-17).",
+   "1190: $sand = strtolower( trim( (string) get_post_meta( $pid, '_ps_sandelis', true ) ) );",
+   "1192: $klaidos[] = array( 'id' => $pid, 'kl' => 'ne AV sandėlis (' . ( $sand ?: 'nenurodytas' ) . ') — savikaina redaguojama tik AV prekėms' ); continue;",
+   "2210: 'pastaba' => strtoupper( (string) get_post_meta( $pid, '_ps_sandelis', true ) ) . ' · įvesta ranka kortelėje',",
+   "2760: 'sand' => (string) get_post_meta( $pid, '_ps_sandelis', true ),",
+   "2948: 'br' => '', 'sand' => (string) $mv( '_ps_sandelis' ),",
+   "3086: $sand_z   = strtoupper( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
+   "4661: * Butent ta akla zona leme, kad `_ps_sandelis` dingimo istorija (S718)",
+   "4849: if ( $sand === '' ) { $sand = (string) $mv( '_ps_sandelis' ); }",
+   "5106: '_ps_sandelis','_own_stock_qty','_stock','_cost_price',",
+   "5183: $sand  = $v( '_ps_sandelis' );",
+   "5676: 'sand'       => array( 'g' => 'Vieta',    'v' => 'Vykdymo sandėlis',   't' => 'sar' ),"
+  ],
+  "source_failas": "petshop-av-source.php",
+  "source": [
+   "23: *   1. GRYNAI AV — 959 publish, _legacy_source=excel_v2_20260604, likutis `_stock`.",
+   "24: *      Resolveris grąžina `legacy`; mes verčiam į `av`. `_own_stock_qty` NEREIKIA.",
+   "26: *      Likutis `_own_stock_qty`; `_stock` perrašo sync.",
+   "48: public static function resolve( $product_id, $qty = 1 ) {",
+   "54: : [ 'source' => 'legacy', 'carrier' => 'any', 'courier_only' => false, 'reason' => 'resolverio nėra' ];",
+   "58: // WooCommerce `_stock` lauke (niekas jų neperrašo — sinchronizacijos nėra).",
+   "59: // Joms `_own_stock_qty` NEREIKIA — jos ir taip AV.",
+   "62: 'source'       => 'av',",
+   "65: 'av_qty'       => (int) get_post_meta( $product_id, '_stock', true ),",
+   "72: $av        = class_exists( 'Petshop_AV_Stock' ) ? Petshop_AV_Stock::qty( $product_id ) : null;",
+   "78: 'source'       => 'av',",
+   "91: 'source'       => $tiekejas,"
+  ],
+  "av_stock": [
+   "7: * KODĖL ATSKIRAS LAUKAS, o ne WooCommerce `_stock`:",
+   "8: *   VF/ZB sinchronizacija `_stock` PERRAŠO kas valandą (Import #6, VF cron).",
+   "9: *   `_own_stock_qty` su sync nesikerta.",
+   "21: *   - API kitiems sluoksniams: Petshop_AV_Stock::qty() / has() / decrease()",
+   "34: class Petshop_AV_Stock {",
+   "36: const META = '_own_stock_qty';",
+   "96: public static function qty( $product_id ) {",
+   "133: * SAUGIKLIS (S477): `_own_stock_qty` rašymas NEGALI paliesti `_stock`.",
+   "135: * PRIEŽASTIS: S468 testo metu Josera `_stock` iš 653 tapo 2 — lygiai tiek, kiek",
+   "137: * perrašyti `_stock`. Tikroji reikšmė ateina iš VF sync (`_vf_qty`).",
+   "139: * Prieš rašydami įsimenam `_stock`; po rašymo — jei pasikeitė, grąžinam.",
+   "143: $stock_pries = get_post_meta( $product_id, '_stock', true );",
+   "148: $stock_po = get_post_meta( $product_id, '_stock', true );",
+   "150: update_post_meta( $product_id, '_stock', $stock_pries );",
+   "151: if ( function_exists( 'wc_update_product_stock_status' ) ) {",
+   "154: error_log( \"[Petshop_AV_Stock] SAUGIKLIS: _stock $product_id buvo pakeistas \"",
+   "161: $log = get_post_meta( (int) $product_id, '_own_stock_log', true );",
+   "172: update_post_meta( (int) $product_id, '_own_stock_log', $log );",
+   "182: 'id'          => 'ps_own_stock_qty',",
+   "198: . ' · WooCommerce likutis: <strong>' . esc_html( (string) get_post_meta( $post->ID, '_stock', true ) ) . '</strong>'",
+   "205: if ( ! isset( $_POST['ps_own_stock_qty'] ) ) { return; }",
+   "206: $raw = trim( (string) wp_unslash( $_POST['ps_own_stock_qty'] ) );",
+   "226: if ( 'is_in_stock' === $k ) { $nauji['ps_av'] = 'AV'; }",
+   "251: <input type=\"number\" name=\"ps_own_stock_qty\" class=\"ps-av-qty\"",
+   "286: var v = (p.get('ps_own_stock_qty') || '').trim();"
+  ],
+  "xml_class-admin-ui.php": [
+   "33: add_action( 'woocommerce_product_options_stock_fields', [ $this, 'render_own_stock_field' ] );",
+   "34: add_action( 'woocommerce_process_product_meta',         [ $this, 'save_own_stock_field' ] );",
+   "92: $own    = get_post_meta($pid,'_own_stock_qty',true);",
+   "314: public function render_own_stock_field(): void {",
+   "316: $val = get_post_meta( $post->ID, '_own_stock_qty', true );",
+   "318: 'id'          => '_own_stock_qty',",
+   "331: public function save_own_stock_field( int $post_id ): void {",
+   "332: $qty = isset($_POST['_own_stock_qty']) ? (int)$_POST['_own_stock_qty'] : 0;",
+   "334: $fulfillment->update_own_stock( $post_id, $qty );"
+  ],
+  "xml_class-fulfillment.php": [
+   "10: *   av-limit, av-reduce) `_own_stock_qty` yra ATSKIRAS AV sandėlio kiekis,",
+   "13: *     - `_own_stock_qty`  = AV lentynos kiekis (S477: jo rašymas neliečia _stock)",
+   "16: *   Senoji v1.3–v1.5 logika `_own_stock_qty` laikė `_stock` šaltiniu su",
+   "22: *   update_own_stock() paliktas suderinamumui: rašo meta ir perskaičiuoja,",
+   "25: * v1.5.0 (2026-06-05): pridėtas VF dropship sluoksnis + update_vf_qty().",
+   "36: 'vf_dropship' => '_vf_qty',",
+   "71: update_post_meta( $post_id, '_manage_stock', 'yes' );",
+   "81: public function update_vf_qty( int $post_id, int $qty ): void {",
+   "82: update_post_meta( $post_id, '_vf_qty', $qty );",
+   "90: public function update_own_stock( int $post_id, int $qty ): void {",
+   "91: update_post_meta( $post_id, '_own_stock_qty', $qty );"
+  ],
+  "xml_class-import-rules-vf.php": [
+   "14: *   sandėliai\" (AV `_own_stock_qty` + VF `_vf_qty`), tad VF gali suporuoti"
+  ],
+  "pvz_vf_su_av": [
+   {
+    "ID": "18159",
+    "n": "JOSERA BALANCE pašaras šunims su vištiena, 12,5 kg",
+    "sand": "vf",
+    "own": "3",
+    "vf": "271",
+    "stock": "271.000000"
+   },
+   {
+    "ID": "34828",
+    "n": "Churu Popn Serve skanėstas katėms  su tunu,35g",
+    "sand": "vf",
+    "own": "2",
+    "vf": "94",
+    "stock": "94.000000"
+   },
+   {
+    "ID": "18154",
+    "n": "JOSERA FESTIVAL pašaras šunims su lašiša, 12,5 kg",
+    "sand": "vf",
+    "own": "6",
+    "vf": "696",
+    "stock": "696.000000"
+   }
+  ],
+  "kiek_vf_su_own": 6,
+  "kiek_av_su_vf": 8
+ }
+}
