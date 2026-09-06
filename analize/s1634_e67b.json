@@ -1,0 +1,140 @@
+{
+ "6": {
+  "v": "S1634 e2f",
+  "f": "6",
+  "temp_istrinta": 1,
+  "id": 35827,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 3Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 3Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 16+ Naujas užsakymas",
+   "warning": 0
+  },
+  "stock_pries": 36,
+  "pries": {
+   "st": "completed",
+   "siuntos": [
+    {
+     "sandelis": "av",
+     "kodas": "E2F",
+     "manifest": "07267260906E2F",
+     "numeriai": [
+      "V07267E2F001"
+     ],
+     "data": "2026-09-06 23:17:15"
+    }
+   ]
+  },
+  "sk_grizta": {
+   "kur": "įvykdytas",
+   "btn": null,
+   "eil": [
+    "av"
+   ]
+  },
+  "eiles_grizta": {
+   "code": 200,
+   "nav": "Gauti 3Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 3Dropshipping 0Paruošta siųsti 5Klausimai 1Neapmokėti 0Visi 16+ Naujas užsakymas",
+   "warning": 0
+  },
+  "nemokamai": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35827|pažymėta: siunčiama be mokesčio — dabar „Siųsti iš naujo“",
+   "id": 0
+  },
+  "is_naujo": {
+   "code": 302,
+   "pd_ok": "dl_dalis",
+   "pd": "35827|siunta V07267E2F001 grįžo — AV dalis: Surinkti AV → naujas lipdukas"
+  },
+  "sk_po": {
+   "kur": "Surinkti AV · toliau: Lipdukas",
+   "btn": "Lipdukas",
+   "eil": [
+    "av"
+   ]
+  },
+  "grizta_meta_po": "",
+  "STOP": "#35827 laukiau „Surinkti“, yra „Lipdukas“ (Surinkti AV · toliau: Lipdukas)",
+  "surinkti2": null
+ },
+ "7": {
+  "v": "S1634 e2f",
+  "f": "7",
+  "temp_istrinta": 0,
+  "id": 35831,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 4Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 4Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 16+ Naujas užsakymas",
+   "warning": 0
+  },
+  "stock_pries": 36,
+  "kr_pries": "105",
+  "pries": {
+   "st": "processing",
+   "iid": 1692,
+   "q": 3,
+   "total": "11.34"
+  },
+  "graz": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35831|grąžinimas įrašytas: kreditinė KR-AVPN000105 (2,45 €) · likutis: AV +1 → 37 · grąžink klientui rankomis (Klausimas)",
+   "id": 0
+  },
+  "grazinti_rankomis": [
+   {
+    "suma": 2.45,
+    "ka": "Grąžinimas (klientas atsisakė): 1× Animonda GranCarno Adult: konservai šuni",
+    "kr_nr": "KR-AVPN000105",
+    "pdf": "Kreditine-saskaita-KR-AVPN000105.pdf"
+   }
+  ],
+  "refundai": [
+   {
+    "id": 35833,
+    "suma": "2.45",
+    "kreditine": "1"
+   }
+  ],
+  "eil_grazinta_q": "1",
+  "sk_po": {
+   "kur": "Klausimai · toliau: Spręsti",
+   "btn": null,
+   "eil": [
+    "av"
+   ]
+  },
+  "stock_po": 37,
+  "kr_po": "106",
+  "eiles_po": {
+   "code": 200,
+   "nav": "Gauti 4Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 3Dropshipping 0Paruošta siųsti 5Klausimai 1Neapmokėti 0Visi 16+ Naujas užsakymas",
+   "warning": 0
+  },
+  "grazinta_klik": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35831|pažymėta: grąžinta 2,45 € — Klausimas nuimtas"
+  },
+  "sk_gal": {
+   "kur": "Surinkti AV · toliau: Surinkti",
+   "btn": "Surinkti",
+   "eil": [
+    "av"
+   ]
+  },
+  "eiles_gal": {
+   "code": 200,
+   "nav": "Gauti 4Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 4Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 16+ Naujas užsakymas",
+   "warning": 0
+  }
+ },
+ "v": "dep-202434",
+ "kurimas": 200,
+ "sid": 4993,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
