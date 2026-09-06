@@ -1,0 +1,115 @@
+{
+ "v": "dep-160234",
+ "kurimas": 200,
+ "sid": 4953,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1628 r",
+  "temp_istrinta": 1,
+  "wcdn_opt": [
+   {
+    "option_name": "wcdn_allow_tracking",
+    "v": "dismissed"
+   },
+   {
+    "option_name": "wcdn_db_version",
+    "v": "7.3.0"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter",
+    "v": "376"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter_year",
+    "v": "a:1:{i:2026;i:1;}"
+   },
+   {
+    "option_name": "wcdn_legacy_backup",
+    "v": "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:10:\"1779385649\";s:15:\"wcdn_db_version\";s:5:\"0.0.0\";s:24:\"wcdn_flush_rewrite_rules\";s:1:\"1\";s:19:\"wcdn_migration_"
+   },
+   {
+    "option_name": "wcdn_legacy_backup_autoload",
+    "v": "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:4:\"auto\";s:15:\"wcdn_db_version\";s:4:\"auto\";s:24:\"wcdn_flush_rewrite_rules\";s:4:\"auto\";s:19:\"wcdn_migration_lock\""
+   },
+   {
+    "option_name": "wcdn_migration_7_0_2_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_1_0_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_1_2_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_settings",
+    "v": "a:42:{s:9:\"storeName\";s:9:\"UAB Avesa\";s:9:\"storeLogo\";s:87:\"https://dev.avesa.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg\";s:12:\"store"
+   },
+   {
+    "option_name": "wcdn_version",
+    "v": "7.3.0"
+   }
+  ],
+  "wcdn_dir": true,
+  "wcdn_kodas": [
+   "includes/core/class-migration.php:410: 'source'    => 'wcdn_print_button_on_my_account_page',",
+   "includes/core/class-migration.php:414: 'source'    => 'wcdn_print_button_on_view_order_page',",
+   "includes/frontend/class-frontend.php:55: add_action( 'wp_ajax_print_order', array( $this, 'template_redirect_admin' ) );",
+   "includes/frontend/class-frontend.php:57: add_filter( 'woocommerce_my_account_my_orders_actions', array( $this, 'create_print_button_account_page' ), 10, 2 );",
+   "includes/frontend/class-frontend.php:58: add_action( 'woocommerce_view_order', array( $this, 'create_print_button_order_page' ) );",
+   "includes/frontend/class-frontend.php:59: add_action( 'woocommerce_thankyou', array( $this, 'create_print_button_order_page' ) );",
+   "includes/frontend/class-frontend.php:127: public function create_print_button_account_page( $actions, $order ) {",
+   "includes/frontend/class-frontend.php:140: $show_print_button = apply_filters(",
+   "includes/frontend/class-frontend.php:141: 'wcdn_show_print_button_for_order_status',",
+   "includes/frontend/class-frontend.php:146: if ( ! Settings::get( 'showPrintButtonMyAccountPage' ) || ! $show_print_button ) {",
+   "includes/frontend/class-frontend.php:175: public function create_print_button_order_page( $order_id ) {",
+   "includes/helpers/class-helper.php:225: 'myAccountPageButtonLabel' => 'wcdn_print_button_name_on_my_account_page',",
+   "includes/helpers/class-helper.php:226: 'viewOrderButtonLabel'     => 'wcdn_print_button_name_order_page',",
+   "includes/integrations/class-emails.php:49: add_action( 'woocommerce_email_after_order_table', array( $this, 'add_email_print_url' ), 100, 3 );"
+  ],
+  "tema_mu": [
+   "mu-plugins/petshop-akcijos.php:1764: \"<button type=\\\"button\\\" data-g=\\\"14\\\">+14 d.</button>\"+",
+   "mu-plugins/petshop-ataskaita-prekes.php:20: * KAINŲ ISTORIJA — kiekvienam kainos pokyčiui: vnt./d. 14 d. prieš ir po.",
+   "mu-plugins/petshop-ataskaita-prekes.php:89: /** Kainų pokyčiai su pardavimais 14 d. prieš/po. */",
+   "mu-plugins/petshop-ataskaita-prekes.php:178: echo '<p class=\"psru-aprasas\">Kiekvienas kainos pokytis ir kiek vnt./d. parduota 14 d. prieš ir po. „Po\" langas trumpėja, jei pokytis šviežias. Tik petshop.lt — istorijoje kainų fa",
+   "mu-plugins/petshop-atsisakymas.php:3: * Petshop Atsisakymas v1.0 (H212) — ES 14 d. sutarties atsisakymas kliento paskyroje.",
+   "mu-plugins/petshop-atsisakymas.php:6: * spaudžia „Atsisakyti sutarties\" → `_ps_withdrawal` + priežastis + pastaba",
+   "mu-plugins/petshop-atsisakymas.php:13: * rankinis), statuso nekeičia, kreditinės nekuria — ji spausdinama esamu wcdn",
+   "mu-plugins/petshop-atsisakymas.php:14: * („Spausdinti kreditinę sąskaitą\") užsakymo lange.",
+   "mu-plugins/petshop-atsisakymas.php:17: * nuo sukūrimo. Teisinį 14 d. nuo PRISTATYMO vertinimą daro žmogus kortelėje —",
+   "mu-plugins/petshop-atsisakymas.php:58: <summary style=\"cursor:pointer\">Atsisakyti sutarties (ES 14 d. teisė)</summary>",
+   "mu-plugins/petshop-atsisakymas.php:68: <p><small>Per 14 dienų nuo prekių gavimo turite teisę atsisakyti sutarties",
+   "mu-plugins/petshop-atsisakymas.php:105: . '. Užsakymas darbalaukio „Klausimuose\". Pinigų grąžinimas rankinis; kreditinė — wcdn mygtuku.', false, true );",
+   "mu-plugins/petshop-av-sheets.php:130: self::spausdinti( $d, count( (array) $ids ) );",
+   "mu-plugins/petshop-av-sheets.php:141: protected static function spausdinti( array $d, $viso ) {",
+   "mu-plugins/petshop-av-sheets.php:149: <button class=\"button button-primary\" onclick=\"window.print()\">Spausdinti (A4)</button>",
+   "mu-plugins/petshop-darbalaukis.php:25: * Petshop Darbalaukis v3.36 (S1620, Raimis 09-06 „2 – ok, 3 – a ir b“): FILTRAI „Visi“ lange — Data „Nuo–iki“ (variklio `datos_riba('intervalas')`), Apmokėjimas (pavedimu / Paysera",
+   "mu-plugins/petshop-darbalaukis.php:76: *   meta `_petshop_kravpn_number/_date`, PDF per temos base.php (`$template='creditnote'`, `$order['id']`=refund; Dompdf kaip `petshop_generate_invoice_pdf`) → `uploads/wcdn/credit",
+   "mu-plugins/petshop-darbalaukis.php:302: *   (pending/failed ≤ 14 d.), žurnalas į skydelį per `wp_ajax_ps_dl_zurnalas` (data-json lengvesnis).",
+   "mu-plugins/petshop-darbalaukis.php:2176: . ' <a class=\"pilkas maz\" href=\"' . esc_url( self::dl_url( 'kr_laiskas', $id, array( 'e' => $idx ) ) ) . '\" data-d=\"' . esc_attr( wp_json_encode( array( 'antraste' => $antr, 'tekst",
+   "mu-plugins/petshop-darbalaukis.php:2201: *  (2) KR-AVPN numeris iš eilės (`petshop_kravpn_counter`) → refund meta; (3) PDF per temos base.php (`$template='creditnote'`, `$order['id']` = refund) → `uploads/wcdn/creditnote/",
+   "mu-plugins/petshop-darbalaukis.php:2272: $up = wp_upload_dir(); $dir = trailingslashit( $up['basedir'] ) . 'wcdn/creditnote/'; wp_mkdir_p( $dir ); $nr = (string) $refund->get_meta( '_petshop_kravpn_number' ); $file = $dir",
+   "mu-plugins/petshop-darbalaukis.php:2324: /** GET `kr_pdf&e=` — kreditinės PDF atsisiuntimas (be WC lango; failas `uploads/wcdn/creditnote/`). */",
+   "mu-plugins/petshop-darbalaukis.php:2445: . '<div class=\"dl-kr-m\"><label>Priežastis <select name=\"priezastis\" class=\"dl-gr-pz\"><option value=\"atsisakymas\">Klientas atsisako (14 d.)</option><option value=\"brokas\">Brokas / s",
+   "mu-plugins/petshop-darbalaukis.php:2929: /** GET `kvitas` (skydelio „Sąskaitos“ → „Suformuoti kvitą“, dialogas): darbuotojas spaudžia, kai klientas MOKA grynais (Raimis: ne automatiškai). PPK numeris (sava eilė nuo 101), ",
+   "mu-plugins/petshop-darbalaukis.php:2949: /** Kvito PDF — kaip `kreditine_pdf` (tas pats `$order` masyvas, logotipas, Dompdf A4), `$template='receipt'` (tema base.php v2.12 — atskira šaka, Raimis leido), `$order['receipt']",
+   "mu-plugins/petshop-darbalaukis.php:2964: $up = wp_upload_dir(); $dir = trailingslashit( $up['basedir'] ) . 'wcdn/receipt/'; wp_mkdir_p( $dir ); $file = $dir . 'Kvitas-' . $nr . '.pdf';",
+   "mu-plugins/petshop-darbalaukis.php:3459: if ( self::$ne_visi ) { echo '<div class=\"pd-msg pd-msg-klaida\">' . ( 'neapmoketi' === self::$ne_visi ? 'Neapmokėtų (14 d.) daugiau nei 300 — rodomi ne visi; skaitliukai Gauti/Klau",
+   "mu-plugins/petshop-darbalaukis.php:3859: $pastaba = 'Klientas pateikė sutarties atsisakymą (14 d.). Prekės dar pas mus — „Atšaukti“. Klientas prekes grąžina — „Grąžinimas“: pažymėk prekes, kiekius, priežastį; kreditinė iš",
+   "mu-plugins/petshop-desk.php:427: 'id' => 'spausdinti', 't' => 'Spausdinti lipduką', 'url' => '', 'd' => null,",
+   "mu-plugins/petshop-desk.php:458: $out[] = array( 'id' => 'saskaita', 't' => 'Sąskaita', 'url' => '', 'd' => null, 'wc' => 'wcdn_print_invoice' );"
+  ],
+  "aktyvus": [
+   "woocommerce-delivery-notes/woocommerce-delivery-notes.php"
+  ]
+ }
+}
