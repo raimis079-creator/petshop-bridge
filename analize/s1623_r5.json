@@ -1,0 +1,72 @@
+{
+ "v": "dep-133327",
+ "kurimas": 200,
+ "sid": 4919,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1623 r5",
+  "temp_istrinta": 1,
+  "eiles": [
+   "5349: \tpublic static function eiles( $prekes, $kruva ) {",
+   "5350: \t\t$sal = self::eiliu_salygos();",
+   "5351: \t\t$e   = array_fill_keys( array_keys( $sal ), 0 );",
+   "5352: \t\tforeach ( $prekes as $r ) {",
+   "5353: \t\t\tif ( ! self::kruvoje( $r, $kruva ) ) { continue; }",
+   "5354: \t\t\tforeach ( $sal as $view => $s ) {",
+   "5355: \t\t\t\tif ( self::atitinka( $r, $s ) ) { $e[ $view ]++; }",
+   "5356: \t\t\t}",
+   "5357: \t\t}",
+   "5358: \t\treturn $e;",
+   "5359: \t}",
+   "5360: ",
+   "5361: \t/**",
+   "5362: \t * v5.1: artimiausia galiojimo data KIEKVIENAI prekei — vienu SELECT.",
+   "5363: \t *",
+   "5364: \t * Imamos tik partijos, kurios dar turi likutį: pasibaigusi data ant",
+   "5365: \t * partijos, kurioje nieko nebeliko, yra istorija, ne problema.",
+   "5366: \t * FEFO tvarka reiškia, kad pirmiausia išeis būtent artimiausia — todėl",
+   "5367: \t * sąrašui rūpi MIN(geriausia_iki), o ne vidurkis.",
+   "5368: \t */",
+   "5369: \tpublic static function partiju_datos() {",
+   "5370: \t\tglobal $wpdb;",
+   "5371: \t\t$t = $wpdb->prefix . 'ps_partijos';",
+   "5372: \t\tif ( $wpdb->get_var( \"SHOW TABLES LIKE '{$t}'\" ) !== $t ) { return array(); }"
+  ],
+  "taisykles": [
+   "5790: ",
+   "5791: \t/**",
+   "5792: \t * Darbo eilės kaip sąlygų rinkiniai.",
+   "5793: \t *",
+   "5794: \t * Perrašyta 1:1 pagal senąjį `switch` — kontrolinė patikra reikalauja,",
+   "5795: \t * kad kiekvienos eilės skaičius nepasikeistų nė vienetu.",
+   "5796: \t */",
+   "5797: \tpublic static function eiliu_salygos() {",
+   "5798: \t\t$nd = self::nepard_riba();",
+   "5799: \t\t$gr = self::gi_ribos();",
+   "5800: \t\t$sk = array( 'sk_savikaina' => 'savikaina', 'sk_serimo_lentele' => 'serimo_lentele',",
+   "5801: \t\t\t'sk_analitines' => 'analitines', 'sk_sudetis' => 'sudetis',",
+   "5802: \t\t\t'sk_serimo_instr' => 'serimo_instr', 'sk_aprasymas' => 'aprasymas',",
+   "5803: \t\t\t'sk_pakuotes_dydis' => 'pakuotes_dydis', 'sk_gyvuno_rusis' => 'gyvuno_rusis' );",
+   "5804: ",
+   "5805: \t\t$e = array(",
+   "5806: \t\t\t'visos_kruvoje' => array(),",
+   "5807: \t\t\t'be_savikainos' => array( array( 'l' => 'cost', 'op' => 'tuscia' ) ),",
+   "5808: \t\t\t'zemiau_ribos'  => array( array( 'l' => 'marza', 'op' => 'netuscia' ),",
+   "5809: \t\t\t                          array( 'l' => 'marza', 'op' => '<lauk', 'r' => 'grind' ) ),",
+   "5810: \t\t\t'uzsakyti'      => array( array( 'l' => 'pard', 'op' => '<=', 'r' => 0 ) ),",
+   "5811: \t\t\t'av_pasibaige'  => array( array( 'l' => 'av', 'op' => 'netuscia' ),",
+   "5812: \t\t\t                          array( 'l' => 'av', 'op' => '=', 'r' => 0 ) ),",
+   "5813: \t\t\t'pr_foto'       => array( array( 'l' => 'foto', 'op' => 'ne' ) ),",
+   "5814: \t\t\t'pr_apras'      => array( array( 'l' => 'apras', 'op' => 'ne' ) ),",
+   "5815: \t\t\t'pr_ean'        => array( array( 'l' => 'ean', 'op' => 'tuscia' ) ),"
+  ],
+  "pard": [
+   "2255: 'pard'   => (int) $r['pard'],",
+   "4938: 'pard'  => $parduodama,",
+   "5682: 'pard'       => array( 'g' => 'Vieta',    'v' => 'Parduodama',         't' => 'sk' ),"
+  ]
+ }
+}
