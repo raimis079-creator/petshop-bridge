@@ -1,0 +1,120 @@
+{
+ "6": {
+  "v": "S1634 e2f",
+  "f": "6",
+  "temp_istrinta": 1,
+  "id": 35828,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 2Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 15+ Naujas užsakymas",
+   "warning": 0
+  },
+  "stock_pries": 36,
+  "pries": {
+   "st": "completed",
+   "siuntos": [
+    {
+     "sandelis": "vf",
+     "kodas": "E2F",
+     "manifest": "07267260906E2F",
+     "numeriai": [
+      "V07267E2F002"
+     ],
+     "data": "2026-09-06 23:17:29"
+    }
+   ]
+  },
+  "sk_grizta": {
+   "kur": "įvykdytas",
+   "btn": null,
+   "eil": [
+    "tiesiai"
+   ]
+  },
+  "eiles_grizta": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 2Dropshipping 0Paruošta siųsti 5Klausimai 1Neapmokėti 0Visi 15+ Naujas užsakymas",
+   "warning": 0
+  },
+  "is_naujo": {
+   "code": 302,
+   "pd_ok": "dl_klaida",
+   "pd": "35828|pirma „Pakartotinis užsakymas“ (apmokėjimo nuoroda klientui) arba „Be mokesčio“"
+  },
+  "sk_po": {
+   "kur": "įvykdytas",
+   "btn": null,
+   "eil": [
+    "tiesiai"
+   ]
+  },
+  "grizta_meta_po": "{\"av\":{\"nr\":\"V07267E2F001\",\"t\":\"Return to sender\",\"e\":\"4\",\"d\":\"2026-09-06\",\"kada\":\"2026-09-06 23:22:02\"}}",
+  "STOP": "#35828 laukiau „Surinkti“, yra „-“ (įvykdytas)",
+  "surinkti2": null
+ },
+ "7": {
+  "v": "S1634 e2f",
+  "f": "7",
+  "temp_istrinta": 0,
+  "id": 0,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 2Dropshipping 0Paruošta siųsti 5Klausimai 1Neapmokėti 0Visi 15+ Naujas užsakymas",
+   "warning": 0
+  },
+  "stock_pries": 36,
+  "kr_pries": "105",
+  "FATAL": "Call to a member function get_items() on false @snippet-ops.php(663) : eval()'d code:72"
+ },
+ "8": {
+  "v": "S1634 e2f",
+  "f": "8",
+  "temp_istrinta": 0,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 2Dropshipping 0Paruošta siųsti 5Klausimai 1Neapmokėti 0Visi 15+ Naujas užsakymas",
+   "warning": 0
+  },
+  "ppk_pries": "103",
+  "post": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35832|užsakymas sukurtas — 6,59 €, Venipak kurjeris, apmokėta grynais — eina į darbą; kvitą (PPK) suformuok skydelio „Sąskaitos“ bloke, kai klientas sumoka",
+   "id": 35832
+  },
+  "id": 35832,
+  "uzs": {
+   "st": "processing",
+   "paid": true,
+   "total": "6.59",
+   "avpn": "AVPN000359",
+   "iss": "",
+   "siuntos": []
+  },
+  "kvitas": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35832|kvitas PPK000103 (6,59 €) suformuotas — atspausdink ir pasirašyk (skydelio „Sąskaitos“)"
+  },
+  "ppk": {
+   "nr": "PPK000103",
+   "suma": "6.59",
+   "kas": "Testuotojas",
+   "pdf": "Kvitas-PPK000103.pdf",
+   "pdf_yra": 1
+  },
+  "ppk_po": "104",
+  "eiles_po": {
+   "code": 200,
+   "nav": "Gauti 3Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 3Dropshipping 0Paruošta siųsti 5Klausimai 1Neapmokėti 0Visi 16+ Naujas užsakymas",
+   "warning": 0
+  }
+ },
+ "v": "dep-202053",
+ "kurimas": 200,
+ "sid": 4991,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
