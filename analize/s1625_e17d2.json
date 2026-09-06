@@ -1,0 +1,98 @@
+{
+ "v": "dep-145719",
+ "kurimas": 200,
+ "sid": 4939,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1625 e17t",
+  "f": "D",
+  "temp_istrinta": 1,
+  "id": 35822,
+  "opt": {
+   "0": 35822,
+   "2a": 35823,
+   "2b": 35824
+  },
+  "btn_u": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=lipdukas&amp;id=35822&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35822&amp;sandelis=av&amp;_wpnonce=03c6de03d1",
+  "klik": {
+   "code": 302,
+   "loc": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_desk_veiksmas&amp;v=vp_reg&amp;id=35822&amp;g=https%3A%2F%2Fdev.a"
+  },
+  "klik2": {
+   "code": 302,
+   "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&atidaryti=35822&pd_ok=vp_ok&pd_nr=1%20%C2%B7%20AV",
+   "pd_ok": "vp_ok",
+   "pd": "1 · AV",
+   "body": ""
+  },
+  "sk_35823": {
+   "kur": "Dropshipping · toliau: Užsakyti iš VF į AV",
+   "btn": "Užsakyti iš VF į AV",
+   "eil": [
+    "i_av (neužsakyta)"
+   ]
+  },
+  "sk_35824": {
+   "kur": "Dropshipping · toliau: Užsakyti iš VF į AV",
+   "btn": "Užsakyti iš VF į AV",
+   "eil": [
+    "i_av (neužsakyta)"
+   ]
+  },
+  "meta_vp": {
+   "siuntos": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260906001\",\"numeriai\":[\"V07267E1000059\",\"V07267E1000060\"],\"data\":\"2026-09-06 17:58:27\"}}",
+   "vp_data": "{\"manifest\":\"07267260906001\",\"pack_numbers\":[\"V07267E1000059\",\"V07267E1000060\"],\"weight\":0.8,\"products_count\":2,\"status\":\"sent\",\"error_message\":\"\"}",
+   "pak": "2"
+  },
+  "pastabos": [
+   "Siuntos numeriai išsaugoti (AV): V07267E1000059, V07267E1000060",
+   "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+   "Darbalaukis: dėžių skaičius — 2.",
+   "Email \"Užsakymas vykdomas\" sent.",
+   "Email \"Naujas užsakymas\" sent."
+  ],
+  "sargas": [
+   {
+    "laikas": "2026-09-06 17:58:27",
+    "lygis": "notice",
+    "z": "Only variables should be passed by reference",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+    "eilute": "457"
+   },
+   {
+    "laikas": "2026-09-06 17:58:27",
+    "lygis": "notice",
+    "z": "Only variables should be passed by reference",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+    "eilute": "283"
+   },
+   {
+    "laikas": "2026-09-06 17:17:53",
+    "lygis": "deprecated",
+    "z": "strip_tags(): Passing null to parameter #1 ($string) of type string is deprecated",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-admin/admin-header.php",
+    "eilute": "41"
+   },
+   {
+    "laikas": "2026-09-06 17:08:05",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/dev.avesa.lt/product/gimcat-gras-bits-425g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624"
+   },
+   {
+    "laikas": "2026-09-06 17:08:05",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/dev.avesa.lt/product/eukanuba-dog-senior-virs-9-m-l-xl-breeds-15-kg/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624"
+   }
+  ],
+  "vf_zingsniai": "<button class=\"v p dl-rink-prid\" type=\"submit\" disabled data-tpl=\"Pridėti pažymėtas (%n)\">Pridėti pažymėtas (0)</button> <button type=\"button\" class=\"v t dl-rink-uzd\">Uždaryti</button>",
+  "vf_eil": [],
+  "be_lipduko_tekstai": []
+ }
+}
