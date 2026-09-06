@@ -1,0 +1,93 @@
+{
+ "v": "dep-124915",
+ "kurimas": 200,
+ "sid": 4908,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1622 r",
+  "temp_istrinta": 1,
+  "failas": "petshop-siuntu-laiskai.php",
+  "kodas": [
+   "\tpublic static function prideti_is_plugino( $order_id, $sandelis, $manifesto_kodas ) {",
+   "\t\t$o = wc_get_order( $order_id );",
+   "\t\tif ( ! $o ) { return false; }",
+   "",
+   "\t\t$raw = $o->get_meta( 'venipak_shipping_order_data' );",
+   "\t\t$d   = is_array( $raw ) ? $raw : json_decode( (string) $raw, true );",
+   "\t\tif ( empty( $d['pack_numbers'] ) || ! is_array( $d['pack_numbers'] ) ) { return false; }",
+   "",
+   "\t\t$sarasas = self::zalias( $o );",
+   "\t\t$sarasas[ sanitize_key( $sandelis ) ] = array(",
+   "\t\t\t'sandelis'  => sanitize_key( $sandelis ),",
+   "\t\t\t'kodas'     => sanitize_text_field( $manifesto_kodas ),",
+   "\t\t\t'manifest'  => sanitize_text_field( $d['manifest'] ?? '' ),",
+   "\t\t\t'numeriai'  => array_map( 'sanitize_text_field', $d['pack_numbers'] ),",
+   "\t\t\t'data'      => current_time( 'mysql' ),",
+   "\t\t);",
+   "\t\t$o->update_meta_data( self::META, wp_json_encode( $sarasas ) );",
+   "\t\t$o->add_order_note( sprintf( 'Siuntos numeriai išsaugoti (%s): %s',",
+   "\t\t\tmb_strtoupper( $sandelis ), implode( ', ', $d['pack_numbers'] ) ), false, true );",
+   "\t\t$o->save();",
+   "\t\t/* E1b (Q-E0-1): vienintelis pranesimas is sio failo. Logika NESIKEICIA.",
+   "\t\t   `prideti_is_plugino()` yra Venipak-only, todel vezejas cia visada",
+   "\t\t   'venipak'; LP Express siuntos faktus gauna per naktini cron. */",
+   "\t\tdo_action( 'petshop_siunta_sukurta', (int) $order_id, sanitize_key( $sandelis ), 'venipak', (array) $d['pack_numbers'] );",
+   "\t\treturn true;",
+   "\t}",
+   "",
+   "\t/** Žalias kaupiamasis masyvas (raktai — sandėliai). */",
+   "\tprotected static function zalias( $o ) {",
+   "\t\t// Meta gali grįžti ir masyvu (WC kartais deserializuoja pati) — tada",
+   "\t\t// (string) cast'as kėlė „Array to string conversion\" (H240).",
+   "\t\t$m = $o->get_meta( self::META );",
+   "\t\tif ( is_array( $m ) ) { return $m; }",
+   "\t\t$s = json_decode( (string) $m, true );",
+   "\t\treturn is_array( $s ) ? $s : array();",
+   "\t}",
+   "",
+   "\t/**",
+   "\t * Sąrašas laiškui. Jei kaupiamojo dar nėra (pvz., siunta registruota per",
+   "\t * WC sąrašą, aplenkiant darbalaukį), imamas plugino raktas kaip vienintelė siunta."
+  ],
+  "web_dienos_cols": [
+   "id",
+   "data",
+   "pjuvis",
+   "raktas",
+   "raktas2",
+   "apsilankymai",
+   "lankytojai",
+   "perziuros",
+   "atmetimai",
+   "trukme_s_suma",
+   "view_item",
+   "add_to_cart",
+   "begin_checkout",
+   "uzsakymai",
+   "pajamos_ct",
+   "kontribucija_ct",
+   "sutikusiu_dalis",
+   "aplinka"
+  ],
+  "web_dienos_min_max": null,
+  "customer_lookup": [
+   {
+    "customer_id": "15",
+    "user_id": "24",
+    "email": "gutulis@gmail.com"
+   }
+  ],
+  "venipak_meta_pvz": [
+   "shopup_venipak_shipping_min_age",
+   "_venipak_total_shipments",
+   "venipak_is_locker_excluded"
+  ],
+  "inst16": {
+   "instance_id": "16",
+   "is_enabled": "0"
+  }
+ }
+}
