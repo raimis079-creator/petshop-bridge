@@ -1,0 +1,403 @@
+{
+ "1": {
+  "v": "S1634 e2f",
+  "f": "1",
+  "temp_istrinta": 1,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 1Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 10+ Naujas užsakymas",
+   "warning": 0
+  },
+  "stock_pries": 42,
+  "id": 35827,
+  "uzs": {
+   "st": "processing",
+   "paid": true,
+   "total": "8.89",
+   "avpn": "AVPN000354",
+   "iss": "",
+   "siuntos": []
+  },
+  "sk0": {
+   "kur": "Surinkti AV · toliau: Surinkti",
+   "btn": "Surinkti",
+   "eil": [
+    "av"
+   ]
+  },
+  "eiles_po_uzs": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 2Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 11+ Naujas užsakymas",
+   "warning": 0
+  },
+  "surinkti": {
+   "mygtukas": "Surinkti",
+   "r": {
+    "code": 302,
+    "pd_ok": null,
+    "pd": ""
+   },
+   "po": {
+    "kur": "Surinkti AV · toliau: Lipdukas",
+    "btn": "Lipdukas",
+    "eil": [
+     "av"
+    ]
+   },
+   "uzs": {
+    "st": "processing",
+    "paid": true,
+    "total": "8.89",
+    "avpn": "AVPN000354",
+    "iss": "",
+    "siuntos": []
+   }
+  },
+  "lipdukas_fikt": true,
+  "sk_po_lipduko": {
+   "kur": "Paruošta siųsti · toliau: Kurjeris paėmė",
+   "btn": "Kurjeris paėmė",
+   "eil": [
+    "av"
+   ]
+  },
+  "paeme": {
+   "mygtukas": "Kurjeris paėmė",
+   "r": {
+    "code": 302,
+    "pd_ok": "dl_issiusta",
+    "pd": "35827|klientui nepranešta (varnelė nuimta)"
+   },
+   "po": {
+    "kur": "įvykdytas",
+    "btn": null,
+    "eil": [
+     "av"
+    ]
+   },
+   "uzs": {
+    "st": "completed",
+    "paid": true,
+    "total": "8.89",
+    "avpn": "AVPN000354",
+    "iss": "{\"av\":{\"laikas\":\"2026-09-06 23:17:17\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"}}",
+    "siuntos": [
+     {
+      "sandelis": "av",
+      "kodas": "E2F",
+      "manifest": "07267260906E2F",
+      "numeriai": [
+       "V07267E2F001"
+      ],
+      "data": "2026-09-06 23:17:15"
+     }
+    ]
+   }
+  },
+  "eiles_po": {
+   "code": 200,
+   "nav": "Gauti 1Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 11+ Naujas užsakymas",
+   "warning": 0
+  },
+  "stock_po": 40
+ },
+ "2": {
+  "v": "S1634 e2f",
+  "f": "2",
+  "temp_istrinta": 0,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 1Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 11+ Naujas užsakymas",
+   "warning": 0
+  },
+  "id": 35828,
+  "lipdukas_fikt": true,
+  "uzs": {
+   "st": "processing",
+   "paid": true,
+   "total": "15.08",
+   "avpn": "AVPN000355",
+   "iss": "",
+   "siuntos": [
+    {
+     "sandelis": "vf",
+     "kodas": "E2F",
+     "manifest": "07267260906E2F",
+     "numeriai": [
+      "V07267E2F002"
+     ],
+     "data": "2026-09-06 23:17:29"
+    }
+   ]
+  },
+  "sk0": {
+   "kur": "Dropshipping (VF) · toliau: Užsakyti iš VF",
+   "btn": "Užsakyti iš VF",
+   "eil": [
+    "tiesiai"
+   ]
+  },
+  "eiles_po_uzs": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 1Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 12+ Naujas užsakymas",
+   "warning": 0
+  },
+  "sk_po_lipduko": {
+   "kur": "Dropshipping (VF) · toliau: Užsakyti iš VF",
+   "btn": "Užsakyti iš VF",
+   "eil": [
+    "tiesiai"
+   ]
+  },
+  "kortele": {
+   "btn": [
+    "Užsakyti iš VF (1 užs. + 0 prek. į AV)",
+    "Peržiūrėti laišką"
+   ],
+   "uzsakymai": "35828",
+   "ids_av": "",
+   "antras": "VF šiandien jau užsakyta 15:56, 16:46, 17:13, 17:21 — tai bus antras laiškas tą pačią dieną. Siunti tik jei tikrai reikia."
+  },
+  "siusti": {
+   "code": 302,
+   "pd_ok": "dl_laiskas",
+   "pd": "VF|1 užs. → terra@petshop.lt",
+   "id": 0
+  },
+  "sk_po_laisko": {
+   "kur": "Paruošta siųsti · toliau: VF išsiuntė",
+   "btn": "VF išsiuntė",
+   "eil": [
+    "tiesiai"
+   ]
+  },
+  "issiunte": {
+   "mygtukas": "VF išsiuntė",
+   "r": {
+    "code": 302,
+    "pd_ok": "dl_issiusta",
+    "pd": "35828|klientui nepranešta (varnelė nuimta)"
+   },
+   "po": {
+    "kur": "įvykdytas",
+    "btn": null,
+    "eil": [
+     "tiesiai"
+    ]
+   },
+   "uzs": {
+    "st": "completed",
+    "paid": true,
+    "total": "15.08",
+    "avpn": "AVPN000355",
+    "iss": "{\"vf\":{\"laikas\":\"2026-09-06 23:17:36\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"}}",
+    "siuntos": [
+     {
+      "sandelis": "vf",
+      "kodas": "E2F",
+      "manifest": "07267260906E2F",
+      "numeriai": [
+       "V07267E2F002"
+      ],
+      "data": "2026-09-06 23:17:29"
+     }
+    ]
+   }
+  },
+  "eiles_po": {
+   "code": 200,
+   "nav": "Gauti 1Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 12+ Naujas užsakymas",
+   "warning": 0
+  }
+ },
+ "3": {
+  "v": "S1634 e2f",
+  "f": "3",
+  "temp_istrinta": 0,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 1Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 12+ Naujas užsakymas",
+   "warning": 0
+  },
+  "av_pries": {
+   "18154": 6,
+   "25411": 0
+  },
+  "id": 35829,
+  "uzs": {
+   "st": "processing",
+   "paid": true,
+   "total": "11.33",
+   "avpn": "AVPN000356",
+   "iss": "",
+   "siuntos": []
+  },
+  "sk0": {
+   "kur": "Neišrūšiuoti · toliau: Rūšiuoti",
+   "btn": null,
+   "eil": [
+    "av",
+    "i_av (neužsakyta)"
+   ]
+  },
+  "rusiuota": {
+   "code": 302,
+   "pd_ok": "dl_rusiuota",
+   "pd": "35829|Animonda GranCarno Adult: konservai šuni — Iš AV; Josera Mini Lamb begrūdis sausas pašaras — VF veža į AV"
+  },
+  "sk1": {
+   "kur": "Dropshipping · toliau: Užsakyti iš VF į AV",
+   "btn": "Užsakyti iš VF į AV",
+   "eil": [
+    "av",
+    "i_av (neužsakyta)"
+   ]
+  },
+  "eiles_po_rus": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 1Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 13+ Naujas užsakymas",
+   "warning": 0
+  },
+  "prideti": {
+   "code": 403,
+   "pd_ok": null,
+   "pd": "",
+   "id": 0
+  },
+  "kortele": {
+   "btn": [
+    "Užsakyti iš VF (0 užs. + 1 prek. į AV)",
+    "Peržiūrėti laišką"
+   ],
+   "uzsakymai": "",
+   "ids_av": "35829",
+   "antras": "VF šiandien jau užsakyta 15:56, 16:46, 17:13, 17:21 — tai bus antras laiškas tą pačią dieną. Siunti tik jei tikrai reikia."
+  },
+  "uzsakyti": {
+   "code": 302,
+   "pd_ok": "dl_uzsak_av",
+   "pd": "#35829|užsakyta iš VF į AV — užsakymas tiekėjui #22; laiškas išėjo tik man (terra@petshop.lt) — persiųsk tiekėjui",
+   "id": 0
+  },
+  "sk2": {
+   "kur": "Laukiam iš tiekėjų · toliau: Laukiam iš VF",
+   "btn": "Laukiam iš VF",
+   "eil": [
+    "av",
+    "i_av (užsakyta · užsakymas tiekėjui #22)"
+   ]
+  },
+  "partija": {
+   "id": "22",
+   "busena": "uzsakyta",
+   "pristatymas": "tiekejas"
+  },
+  "eiles_po_uzsak": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 1Surinkti AV 1Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 13+ Naujas užsakymas",
+   "warning": 0
+  },
+  "gauta": {
+   "code": 302,
+   "pd_ok": "dl_gauta",
+   "pd": "#35829|gauta į AV iš VF (užsakymas tiekėjui #22) — likučiai papildyti",
+   "id": 0
+  },
+  "sk3": {
+   "kur": "Surinkti AV · toliau: Surinkti",
+   "btn": "Surinkti",
+   "eil": [
+    "av",
+    "av"
+   ]
+  },
+  "eiles_po_gauta": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 2Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 13+ Naujas užsakymas",
+   "warning": 0
+  },
+  "surinkti": {
+   "mygtukas": "Surinkti",
+   "r": {
+    "code": 302,
+    "pd_ok": null,
+    "pd": ""
+   },
+   "po": {
+    "kur": "Surinkti AV · toliau: Lipdukas",
+    "btn": "Lipdukas",
+    "eil": [
+     "av",
+     "av"
+    ]
+   },
+   "uzs": {
+    "st": "processing",
+    "paid": true,
+    "total": "11.33",
+    "avpn": "AVPN000356",
+    "iss": "",
+    "siuntos": []
+   }
+  },
+  "lipdukas_fikt": true,
+  "sk4": {
+   "kur": "Paruošta siųsti · toliau: Kurjeris paėmė",
+   "btn": "Kurjeris paėmė",
+   "eil": [
+    "av",
+    "av"
+   ]
+  },
+  "paeme": {
+   "mygtukas": "Kurjeris paėmė",
+   "r": {
+    "code": 302,
+    "pd_ok": "dl_issiusta",
+    "pd": "35829|klientui nepranešta (varnelė nuimta)"
+   },
+   "po": {
+    "kur": "įvykdytas",
+    "btn": null,
+    "eil": [
+     "av",
+     "av"
+    ]
+   },
+   "uzs": {
+    "st": "completed",
+    "paid": true,
+    "total": "11.33",
+    "avpn": "AVPN000356",
+    "iss": "{\"av\":{\"laikas\":\"2026-09-06 23:18:10\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"}}",
+    "siuntos": [
+     {
+      "sandelis": "av",
+      "kodas": "E2F",
+      "manifest": "07267260906E2F",
+      "numeriai": [
+       "V07267E2F003"
+      ],
+      "data": "2026-09-06 23:18:06"
+     }
+    ]
+   }
+  },
+  "eiles_po": {
+   "code": 200,
+   "nav": "Gauti 1Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 13+ Naujas užsakymas",
+   "warning": 0
+  },
+  "av_po": {
+   "18154": 6,
+   "25411": 0
+  }
+ },
+ "v": "dep-201554",
+ "kurimas": 200,
+ "sid": 4989,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
