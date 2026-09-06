@@ -1,0 +1,57 @@
+{
+ "v": "dep-103713",
+ "kurimas": 200,
+ "sid": 4890,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "S1620 e14s",
+  "temp_istrinta": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788692024|naZXM7fWSaO6K5vkNK7AGPK9sNjfPL1TpT3gQqQybuY|563ebe6e4dbe504a050a42bbfe9ea103ced527b05f2ab971313da2a7f811f9ca"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788692024|naZXM7fWSaO6K5vkNK7AGPK9sNjfPL1TpT3gQqQybuY|7fb5353eabe6e9325c87191cc67e7cc4520d2db44ea16b33506ff41c25ead7f7"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788692024|naZXM7fWSaO6K5vkNK7AGPK9sNjfPL1TpT3gQqQybuY|d060c14ecdf984caaab13efe6c2babeba4331ef1789423c95e9cda5fbce37d22"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1620_e14_visi_filtrai_v336",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&nuo=2026-09-05&iki=2026-09-06&mok=grynais",
+    "w": 1600,
+    "h": 900
+   },
+   {
+    "n": "s1620_e14_visi_atsaukti_v336",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&b=atsaukti",
+    "w": 1600,
+    "h": 700,
+    "click": ".dl-f-tog"
+   }
+  ]
+ },
+ "shots": {
+  "s1620_e14_visi_filtrai_v336": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&nuo=2026-09-05&iki=2026-09-06&mok=grynais",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": []
+  },
+  "s1620_e14_visi_atsaukti_v336": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&b=atsaukti",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": ".dl-f-tog"
+  }
+ }
+}
