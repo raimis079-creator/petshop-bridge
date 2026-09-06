@@ -1,5 +1,122 @@
 {
- "v": "dep-144638",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "1": {
+  "v": "S1625 e17t",
+  "f": "1",
+  "temp_istrinta": 1,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 0Paruošta siųsti 1Klausimai 0Neapmokėti 0Visi 6+ Naujas užsakymas",
+   "warning": 0
+  },
+  "id": 35822,
+  "surinkti": {
+   "mygtukas": "Surinkti",
+   "r": {
+    "code": 302,
+    "pd_ok": null,
+    "pd": ""
+   },
+   "po": {
+    "kur": "Surinkti AV · toliau: Lipdukas",
+    "btn": "Lipdukas",
+    "eil": [
+     "av"
+    ]
+   },
+   "uzs": {
+    "st": "processing",
+    "paid": true,
+    "total": "8.89",
+    "avpn": "AVPN000350",
+    "iss": "",
+    "siuntos": []
+   }
+  },
+  "lipdukas": {
+   "code": 302,
+   "pd_ok": null,
+   "pd": ""
+  },
+  "uzs": {
+   "st": "processing",
+   "paid": true,
+   "total": "8.89",
+   "avpn": "AVPN000350",
+   "iss": "",
+   "siuntos": []
+  },
+  "sk_po": {
+   "kur": "Surinkti AV · toliau: Lipdukas",
+   "btn": "Lipdukas",
+   "eil": [
+    "av"
+   ]
+  },
+  "pak": "2",
+  "pdf": {
+   "code": 500,
+   "ct": "text/html; charset=UTF-8",
+   "n": 2518,
+   "pdf": null,
+   "tekstas": "WordPress &rsaquo; Klaida\n\t\n\n\n\tLipduko gauti nepavyko — ar siunta registruota Venipak (3 žingsnis)?"
+  },
+  "eiles_po": {
+   "code": 200,
+   "nav": "Gauti 3Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 2Dropshipping 0Paruošta siųsti 1Klausimai 0Neapmokėti 0Visi 7+ Naujas užsakymas",
+   "warning": 0
+  }
+ },
+ "2": {
+  "v": "S1625 e17t",
+  "f": "2",
+  "temp_istrinta": 0,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 3Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 2Dropshipping 0Paruošta siųsti 1Klausimai 0Neapmokėti 0Visi 7+ Naujas užsakymas",
+   "warning": 0
+  },
+  "ids": [
+   35823,
+   35824
+  ],
+  "lipdukai_mygtukas": null,
+  "STOP": "nėra Lipdukai (n)"
+ },
+ "3": {
+  "v": "S1625 e17t",
+  "f": "3",
+  "temp_istrinta": 0,
+  "vidine_pries": [
+   "",
+   ""
+  ],
+  "ajax": {
+   "success": true,
+   "data": {
+    "kas": "2026-09-06 17:53:26|Testuotojas",
+    "tekstas": "Paskambinti klientui dėl adreso.\nDėžė trapi — pažymėti."
+   }
+  },
+  "meta": [
+   "Paskambinti klientui dėl adreso.\nDėžė trapi — pažymėti.",
+   "2026-09-06 17:53:26|Testuotojas"
+  ],
+  "vidine_po": [
+   "Paskambinti klientui dėl adreso.\nDėžė trapi — pažymėti.",
+   "2026-09-06 17:53:26|Testuotojas"
+  ],
+  "sarase_zenklas": 1,
+  "ivykis": {
+   "veiksmas": "vidine_pastaba",
+   "kas_vardas": "Testuotojas",
+   "p": "vidinė pastaba: Paskambinti klientui dėl adreso.\nDėžė trapi — pažymėti."
+  }
+ },
+ "v": "dep-145147",
+ "kurimas": 200,
+ "sid": 4936,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
 }
