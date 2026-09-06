@@ -1,0 +1,155 @@
+{
+ "v": "dep-131456",
+ "kurimas": 200,
+ "sid": 4914,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1623 r",
+  "temp_istrinta": 1,
+  "tiek_priimti": [
+   "251: public static function eilutes_veiksmas() {",
+   "401: . '&iid=' . (int) $item_id . '&ka=' . rawurlencode( $ka )",
+   "624: list( $eil, $gali, $laukia ) = self::likuciu_perziura( false );",
+   "810: $ka = isset( $_POST['ka'] ) ? sanitize_text_field( wp_unslash( $_POST['ka'] ) ) : '';",
+   "868: list( , $gali ) = self::likuciu_perziura( true );",
+   "1243: protected static function priimti( $pid ) {",
+   "1264: Petshop_AV_Stock::increase( $e->product_id, $g,",
+   "1371: public static function likuciu_perziura( $vykdyti = false ) {",
+   "1478: list( $eil, $gali, $laukia ) = self::likuciu_perziura( false );"
+  ],
+  "gav_yra": true,
+  "gav": [
+   "71: *   Savininko paaiskinimas: „prekes galiu susivesti su 0 likuciu ir savikaina,",
+   "77: *   lentele, o „Irasyti gavima\" ja atmesdavo be kiekio ir savikainos —",
+   "149: * KAM: partijos iki siol egzistavo tik kaip API (`Petshop_Partijos`, S734).",
+   "151: * skanestu — suvedi kiekius, savikainas ir galiojimus per kelias minutes.",
+   "160: *   Enter → savikaina → Enter → galiojimas → Enter grazina i paieska",
+   "187: public static function init() {",
+   "201: public static function meniu() {",
+   "212: public static function be_diakritiku( $t ) {",
+   "220: private static function skaicius( $v ) {",
+   "228: public static function ajax_paieska() {",
+   "269: $av = class_exists( 'Petshop_Partijos' ) ? Petshop_Partijos::av_likutis( $id ) : 0;",
+   "271: if ( class_exists( 'Petshop_Partijos' ) ) {",
+   "272: $s = Petshop_Partijos::paskutine_savikaina( $id );",
+   "288: 'av_preke'=> class_exists( 'Petshop_Partijos' ) ? Petshop_Partijos::av_preke( $id ) : true,",
+   "298: public static function ajax_praeitas() {",
+   "302: if ( ! class_exists( 'Petshop_Partijos' ) ) { wp_send_json_error( 'partijų modulio nėra' ); }",
+   "303: $t = Petshop_Partijos::lentele();",
+   "311: \"SELECT product_id, savikaina_eur, valiuta, savikaina_orig, tiekejas",
+   "322: 'av'   => Petshop_Partijos::av_likutis( $pid ),",
+   "323: 'sav'  => number_format( (float) $e['savikaina_eur'], 2, '.', '' ),",
+   "351: public static function ajax_nauja() {",
+   "553: public static function ajax_kopija() {",
+   "569: $vienas = function ( $tax ) use ( $pid ) {",
+   "649: private static function i_teksta( $html ) {",
+   "675: public static function ajax_sudelioti() {",
+   "754: public static function skaidyti( $tekstas, $laukiamos, &$info = null ) {",
+   "781: function ( $m ) { return \"\\n\" . $m[1] . ':'; },",
+   "789: function ( $m ) { return \"\\n\" . $m[1] . ':'; },",
+   "906: public static function ajax_naujas_brendas() {",
+   "923: public static function atributo_vardas( $tax ) {",
+   "938: public static function sekcijos_html( $sekcijos ) {",
+   "959: public static function ajax_saltiniai() {",
+   "963: $sar = function ( $tax, $tik_netusti = false ) {",
+   "983: $eiti = function ( $tevas, $kelias ) use ( &$eiti, &$kategorijos, $pagal_teva ) {",
+   "986: usort( $vaikai, function ( $a, $b ) { return strcasecmp( $a->name, $b->name ); } );",
+   "1013: public static function ajax_irasyti() {",
+   "1016: if ( ! class_exists( 'Petshop_Partijos' ) ) { wp_send_json_error( 'Partijų modulis neįdiegtas' ); }",
+   "1042: $r = Petshop_Partijos::priimti( $pid, array(",
+   "1044: 'savikaina'     => $sav,",
+   "1084: public static function puslapis() {",
+   "1087: $sandelis_yra = class_exists( 'Petshop_Partijos' );",
+   "1211: . '<th style=\"width:13%\" class=\"n\">Savikaina <span class=\"z\" id=\"val-z\">EUR</span></th>'",
+   "1233: echo '<div class=\"pastaba\">Kiekvienai eilutei sukuriama <b>partija</b> su savo savikaina ir '",
+   "1235: . 'Prekės savikaina kataloge tampa svertiniu vidurkiu iš likusių partijų. '",
+   "1244: private static function tiekeju_sarasas() {"
+  ],
+  "part_yra": true,
+  "part": [
+   "74: public static function lentele()          { global $wpdb; return $wpdb->prefix . 'ps_partijos'; }",
+   "75: public static function pakuociu_lentele() { global $wpdb; return $wpdb->prefix . 'ps_pakuotes'; }",
+   "77: public static function uztikrinti_lenteles() {",
+   "84: $sql1 = \"CREATE TABLE {$p} (",
+   "109: $sql2 = \"CREATE TABLE {$pk} (",
+   "140: public static function av_preke( $pid ) {",
+   "165: public static function priimti( $pid, $a ) {",
+   "257: public static function av_laukas( $pid ) {",
+   "264: public static function av_likutis( $pid ) {",
+   "292: public static function svertine_savikaina( $pid ) {",
+   "304: public static function paskutine_savikaina( $pid ) {",
+   "319: public static function perskaiciuoti_savikaina( $pid ) {",
+   "339: public static function nurasyti( $pid, $kiekis, $dry = false ) {",
+   "376: $rez['ispejimas'] = 'Partijose trūksta ' . $liko . ' vnt. — likutis ir partijos nesutampa';",
+   "393: public static function partijos( $pid, $tik_su_likuciu = false ) {",
+   "404: public static function artimiausias_galiojimas( $pid ) {",
+   "413: public static function santrauka( $pid ) {",
+   "430: public static function pakuotes( $pid ) {",
+   "443: public static function medziagos() {",
+   "457: public static function tipai() {",
+   "466: public static function trinti_pakuote( $id, $pid ) {",
+   "477: public static function irasyti_pakuote( $pid, $a ) {",
+   "508: public static function pakuociu_svoris( $pid, $vienetu ) {",
+   "539: public static function gpais_pagal_metus( $pid ) {",
+   "580: public static function kabinti_uzsakymus() {",
+   "586: public static function uzsakymo_nurasymas( $order_id ) {",
+   "614: $n = self::nurasyti( $tikras, $kiekis );",
+   "648: public static function grazinti_i_partija( $partijos_id, $kiekis ) {",
+   "665: public static function sutapimo_patikra( $pid ) {",
+   "681: public static function statistika() {"
+  ],
+  "prekes_failai": [
+   "petshop-ataskaita-prekes.php",
+   "petshop-juosta.php",
+   "petshop-rytas.php"
+  ],
+  "prekes": [],
+  "sandelis_meta": [
+   {
+    "sand": "ambrosia",
+    "n": "15"
+   },
+   {
+    "sand": "av",
+    "n": "1395"
+   },
+   {
+    "sand": "belcor_tofu",
+    "n": "62"
+   },
+   {
+    "sand": "paslauga",
+    "n": "2"
+   },
+   {
+    "sand": "prins",
+    "n": "43"
+   },
+   {
+    "sand": "quattro",
+    "n": "65"
+   },
+   {
+    "sand": "vf",
+    "n": "1208"
+   },
+   {
+    "sand": "zb",
+    "n": "1093"
+   }
+  ],
+  "tiekejai_prekiu": [
+   {
+    "meta_key": "_vf_qty",
+    "n": "1210"
+   },
+   {
+    "meta_key": "_zb_cost",
+    "n": "1113"
+   }
+  ]
+ }
+}
