@@ -1,0 +1,79 @@
+{
+ "v": "dep-203136",
+ "kurimas": 200,
+ "sid": 4996,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "K": {
+  "v": "S1634 e2f",
+  "f": "K",
+  "temp_istrinta": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788728586|yY5f2Dw1Nx82w4EKYMD356SjvL4jgYFbblBev24m5JZ|a5933bcbcc837dcf3b5778f6adcc256f153748e9f5fed11318771b5f31804c5f"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788728586|yY5f2Dw1Nx82w4EKYMD356SjvL4jgYFbblBev24m5JZ|41683410ae6d9ad3a152b9cbbc184f3fb7d0baa1f3dfdbec5d767775f400b0f8"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788728586|yY5f2Dw1Nx82w4EKYMD356SjvL4jgYFbblBev24m5JZ|17858f72074ee9b9faab3e6711d17c9376c26233ba423615bdec6c02e3efc1f2"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1634_visi",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+    "w": 1440,
+    "h": 1200,
+    "full": 1
+   },
+   {
+    "n": "s1634_skydelis_35831",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&atidaryti=35831",
+    "w": 1440,
+    "h": 1400,
+    "click": "tr.eil[data-id=\"35831\"]"
+   },
+   {
+    "n": "s1634_lapas_35832",
+    "u": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_desk_veiksmas&v=lapai&id=35832&_wpnonce=7f80c855b7",
+    "w": 900,
+    "h": 1200,
+    "full": 1
+   },
+   {
+    "n": "s1634_naujas",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=naujas",
+    "w": 1440,
+    "h": 1200,
+    "full": 1
+   }
+  ]
+ },
+ "shots": {
+  "s1634_visi": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": []
+  },
+  "s1634_skydelis_35831": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi&atidaryti=35831\", waiting until \"networkidle\"\n",
+  "s1634_lapas_35832": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-lapai&ps_ready=1",
+   "title": "‹ Petshop.lt — WordPress",
+   "errors": []
+  },
+  "s1634_naujas": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&view=naujas",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": []
+  }
+ }
+}
