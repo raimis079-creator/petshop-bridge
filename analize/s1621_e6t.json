@@ -1,0 +1,67 @@
+{
+ "v": "dep-115540",
+ "kurimas": 200,
+ "sid": 4899,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "S1621 e6t",
+  "f": "T",
+  "temp_istrinta": 1,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 8Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 1Klausimai 9Neapmokėti 3Visi 65+ Naujas užsakymasFiltra"
+  },
+  "stock_pries": {
+   "19475": 36,
+   "25411": 145
+  },
+  "id": 35815,
+  "uzs": {
+   "st": "processing",
+   "total": "18.68",
+   "ship": "3.3+0.69",
+   "paid": true
+  },
+  "eiles_po_uzs": {
+   "code": 200,
+   "nav": "Gauti 9Neišrūšiuoti 4Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 1Klausimai 9Neapmokėti 3Visi 66+ Naujas užsakymasFiltra"
+  },
+  "sk1": {
+   "kur": "Neišrūšiuoti · toliau: Rūšiuoti",
+   "btn": null,
+   "rusiuoti": true,
+   "takelis": [],
+   "eil": [
+    {
+     "iid": 1644,
+     "q": 4,
+     "n": "Animonda GranCarno Adult: konservai šuni",
+     "k": "av",
+     "bukle": "",
+     "kodel": "AV yra 32 — siunčiam iš AV. Rezervuota.",
+     "keliai": [
+      "av:Iš AV*"
+     ]
+    },
+    {
+     "iid": 1645,
+     "q": 1,
+     "n": "Josera Mini Lamb begrūdis sausas pašaras",
+     "k": "i_av",
+     "bukle": "neužsakyta",
+     "kodel": "AV nėra, VF turi. Užsakymas tiekėjui #16 (VF į AV) jau atviras — siūlom vežti į AV ir siųsti viena siunta. Jei skubu — „",
+     "keliai": [
+      "av:Iš AV (ne: AV tik 0, reikia 1)",
+      "tiesiai:VF siunčia klientui",
+      "i_av:VF veža į AV*"
+     ]
+    }
+   ],
+   "zinute": ""
+  },
+  "STOP": "nėra i_av nuorodos"
+ }
+}
