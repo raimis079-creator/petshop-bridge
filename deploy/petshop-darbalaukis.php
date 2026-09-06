@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Darbalaukis v3.39.2 (S1626, Raimis: „kaip padaryti užsakymą į AV, jei čia jokių laukų nėra?“): tuščioje Dropshipping eilėje rodydavo tik „Čia tuščia“ — `laisku_korteles()` buvo kviečiama tik su eilutėmis;
+ *   dabar kviečiama visada (be paieškos) → tiekėjų mygtukai „Užsakyti į atsargas iš: VF · ZB · …“, kaupiamos partijos ir archyvo nuoroda matomi ir kai dropship užsakymų nėra.
  * Petshop Darbalaukis v3.39.1 (S1625, radinys Venipak teste): pasiūlymas „[T] veža į AV“, kai to tiekėjo užsakymas į AV atviras (v3.2 taisyklė), taikomas TIK mišriam užsakymui (yra AV eilutė) —
  *   grynai tiekėjo užsakymas (#35823/#35824 VF) būdavo surūšiuojamas pats kaip „veža į AV“ ir dingdavo iš Dropshipping be darbuotojo sprendimo; dabar — „siunčia klientui“ kaip visada.
  * Petshop Darbalaukis v3.39 (S1625, darbuotojo prašymas per Raimį): skydelyje **„Pastabos (vidinės — mato tik darbuotojai)“** — laisvas tekstas prie užsakymo (meta `_ps_vidine_pastaba`,
@@ -327,7 +329,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.39.1';
+	const VERSIJA = '3.39.2';
 	const ATSAUKTU_DIENOS = 30; // v3.36: po kiek dienų atšauktas neapmokėtas → šiukšlinė (ir šiukšlinėje → galutinai)
 	const SLUG    = 'ps-desk';
 
@@ -3460,7 +3462,7 @@ class Petshop_Darbalaukis {
 		self::eiles( $eile, $c );
 		self::filtru_juosta( $eile, $f );
 		if ( 'klausimai' === $eile && $rows ) { self::klausimu_korteles( $rows ); }
-		elseif ( 'laiskai' === $eile && $rows ) { self::laisku_korteles( $rows ); }
+		elseif ( 'laiskai' === $eile && '' === $f['q'] ) { self::laisku_korteles( $rows ); } // v3.39.2: ir tuščia eilė — tiekėjų mygtukai „Užsakyti į atsargas iš“ + archyvas
 		elseif ( 'paruosta' === $eile && $rows ) { self::paruostos_korteles( $rows ); }
 		elseif ( 'laukiam' === $eile && '' === $f['q'] ) { $ds = array(); foreach ( $atviri as $r ) { if ( in_array( 'laiskai', $r['eiles'], true ) ) { foreach ( $r['tiesiai'] as $s ) { if ( empty( $r['dalys'][ $s ]['perduota'] ) ) { $ds[ $s ] = ( $ds[ $s ] ?? 0 ) + 1; } } } } self::laukiam_korteles( $rows, $ds ); }
 		else { self::lentele( $rows, $eile ); if ( 'visi' === $eile && '' === $f['q'] && ! self::filtras_aktyvus( $f ) ) { self::puslapiai( $f ); } }
