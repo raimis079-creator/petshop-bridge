@@ -1,0 +1,183 @@
+{
+ "4": {
+  "v": "S1634 e2f",
+  "f": "4",
+  "temp_istrinta": 1,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 1Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 13+ Naujas užsakymas",
+   "warning": 0
+  },
+  "post": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35830|užsakymas sukurtas — 2,60 €, Atsiėmimas AV, apmokėta grynais — eina į darbą; kvitą (PPK) suformuok skydelio „Sąskaitos“ bloke, kai klientas sumoka",
+   "id": 35830
+  },
+  "id": 35830,
+  "uzs": {
+   "st": "processing",
+   "paid": true,
+   "total": "2.60",
+   "avpn": "AVPN000357",
+   "iss": "",
+   "siuntos": []
+  },
+  "sk0": {
+   "kur": "Surinkti AV · toliau: Surinkti",
+   "btn": "Surinkti",
+   "eil": [
+    "av"
+   ]
+  },
+  "surinkti": {
+   "mygtukas": "Surinkti",
+   "r": {
+    "code": 302,
+    "pd_ok": null,
+    "pd": ""
+   },
+   "po": {
+    "kur": "Paruošta siųsti · toliau: Paruošta atsiimti",
+    "btn": "Paruošta atsiimti",
+    "eil": [
+     "av"
+    ]
+   },
+   "uzs": {
+    "st": "processing",
+    "paid": true,
+    "total": "2.60",
+    "avpn": "AVPN000357",
+    "iss": "",
+    "siuntos": []
+   }
+  },
+  "paruosta": {
+   "mygtukas": "Paruošta atsiimti",
+   "r": {
+    "code": 302,
+    "pd_ok": "dl_info",
+    "pd": "35830|paruošta atsiimti — klientui pranešta (e2e.atsiemimas@dev.avesa.lt)"
+   },
+   "po": {
+    "kur": "Paruošta siųsti · toliau: Klientas atsiėmė",
+    "btn": "Klientas atsiėmė",
+    "eil": [
+     "av"
+    ]
+   },
+   "uzs": {
+    "st": "processing",
+    "paid": true,
+    "total": "2.60",
+    "avpn": "AVPN000357",
+    "iss": "",
+    "siuntos": []
+   }
+  },
+  "atsieme": {
+   "mygtukas": "Klientas atsiėmė",
+   "r": {
+    "code": 302,
+    "pd_ok": "dl_info",
+    "pd": "35830|klientas atsiėmė — užsakymas įvykdytas, PVM sąskaita AVPN000357 · išsiųstas (e2e.atsiemimas@dev.avesa.lt, su PDF)"
+   },
+   "po": {
+    "kur": "įvykdytas",
+    "btn": null,
+    "eil": [
+     "av"
+    ]
+   },
+   "uzs": {
+    "st": "completed",
+    "paid": true,
+    "total": "2.60",
+    "avpn": "AVPN000357",
+    "iss": "{\"av\":{\"laikas\":\"2026-09-06 23:20:12\",\"kas\":\"Testuotojas\",\"kanalas\":\"atsiemimas\"}}",
+    "siuntos": []
+   }
+  },
+  "eiles_po": {
+   "code": 200,
+   "nav": "Gauti 1Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 14+ Naujas užsakymas",
+   "warning": 0
+  },
+  "inst16": "0"
+ },
+ "5": {
+  "v": "S1634 e2f",
+  "f": "5",
+  "temp_istrinta": 0,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 1Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 14+ Naujas užsakymas",
+   "warning": 0
+  },
+  "post": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35831|užsakymas sukurtas — 11,34 €, Venipak kurjeris, laukiam pavedimo (UAB Avesa · AB Swedbank · LT127300010124940593, paskirtis „Užsakymas #35831“; klientui i",
+   "id": 35831
+  },
+  "id": 35831,
+  "uzs": {
+   "st": "on-hold",
+   "paid": false,
+   "total": "11.34",
+   "avpn": "AVPN000358",
+   "iss": "",
+   "siuntos": []
+  },
+  "stock_onhold": 39,
+  "sk0": {
+   "kur": "Neapmokėti · toliau: Pažymėti apmokėtu",
+   "btn": "Pažymėti apmokėtu",
+   "eil": [
+    "av"
+   ]
+  },
+  "eiles_onhold": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 1Visi 15+ Naujas užsakymas",
+   "warning": 0
+  },
+  "apmoketa": {
+   "mygtukas": "Pažymėti apmokėtu",
+   "r": {
+    "code": 302,
+    "pd_ok": "apmoketa",
+    "pd": "35831"
+   },
+   "po": {
+    "kur": "Surinkti AV · toliau: Surinkti",
+    "btn": "Surinkti",
+    "eil": [
+     "av"
+    ]
+   },
+   "uzs": {
+    "st": "processing",
+    "paid": true,
+    "total": "11.34",
+    "avpn": "AVPN000358",
+    "iss": "",
+    "siuntos": []
+   }
+  },
+  "stock_po": 36,
+  "eiles_po": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 2Dropshipping 0Paruošta siųsti 5Klausimai 0Neapmokėti 0Visi 15+ Naujas užsakymas",
+   "warning": 0
+  }
+ },
+ "v": "dep-201854",
+ "kurimas": 200,
+ "sid": 4990,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
