@@ -1,5 +1,9 @@
 <?php
 /**
+ * Petshop Darbalaukis v3.39.1 (S1625, radinys Venipak teste): pasiūlymas „[T] veža į AV“, kai to tiekėjo užsakymas į AV atviras (v3.2 taisyklė), taikomas TIK mišriam užsakymui (yra AV eilutė) —
+ *   grynai tiekėjo užsakymas (#35823/#35824 VF) būdavo surūšiuojamas pats kaip „veža į AV“ ir dingdavo iš Dropshipping be darbuotojo sprendimo; dabar — „siunčia klientui“ kaip visada.
+ * Petshop Darbalaukis v3.39 (S1625, darbuotojo prašymas per Raimį): skydelyje **„Pastabos (vidinės — mato tik darbuotojai)“** — laisvas tekstas prie užsakymo (meta `_ps_vidine_pastaba`,
+ *   `_ps_vidine_pastaba_kas` = laikas|vardas), AJAX `ps_dl_vidine` (nonce `ps_dl_vidine_{id}`), įvykis `vidine_pastaba`; sąraše prie numerio ženklas ✎ (title — tekstas). Klientui nerodoma niekur.
  * Petshop Darbalaukis v3.38.1 (S1624, Raimis: „neliko laiko, kur galėčiau kažką parašyti laiške“): kortelėje matomas laukas **„Prierašas tiekėjui (įeis į laišką)“** (textarea, vietoj mažo „Prierašas laiške“),
  *   rodomas ir peržiūroje gyvai (`.dl-perz-pastaba` po klientų lentele / prieš AV lentelę); be dropship — prierašas įrašomas į `ps_tiekimas.pastaba`, variklio savas laiškas (tiekimas v1.10.1) jį įdeda.
  * Petshop Darbalaukis v3.38 (S1623, Raimis 09-06 „daryk“): (1) Dropshipping eilės viršuje „Užsakyti į atsargas iš: VF · ZB · Prins · Belacor · Quattro · Ambrosia“ (`&tiek=src` — tuščia to tiekėjo kortelė);
@@ -323,7 +327,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.38.1';
+	const VERSIJA = '3.39.1';
 	const ATSAUKTU_DIENOS = 30; // v3.36: po kiek dienų atšauktas neapmokėtas → šiukšlinė (ir šiukšlinėje → galutinai)
 	const SLUG    = 'ps-desk';
 
@@ -357,6 +361,7 @@ class Petshop_Darbalaukis {
 		add_action( 'admin_post_ps_dl_tiekimas', array( __CLASS__, 'tiekimas_vykdyti' ) );
 		add_action( 'admin_post_ps_dl_uzsakyti', array( __CLASS__, 'uzsakyti_vykdyti' ) ); // v3.37: viena kortelė — vienas laiškas
 		add_action( 'wp_ajax_ps_dl_atsargos', array( __CLASS__, 'ajax_atsargos' ) ); // v3.38: prekių rinkiklis „į atsargas“
+		add_action( 'wp_ajax_ps_dl_vidine', array( __CLASS__, 'ajax_vidine' ) ); // v3.39: vidinės pastabos
 		add_action( 'admin_post_ps_dl_redaguoti', array( __CLASS__, 'redaguoti_vykdyti' ) ); // v3.16
 		add_action( 'admin_post_ps_dl_kiekis', array( __CLASS__, 'kiekis_vykdyti' ) ); // v3.19 (5 etapas #4)
 		// v3.21 (5 etapas: „Pakartotinis užsakymas“, spec §12.5): forma kortelėje; apmokėjus (Paysera callback → processing) — įvykdytas + laiškas su AVPN; apmokėjimo puslapyje tik Paysera.
@@ -645,7 +650,8 @@ class Petshop_Darbalaukis {
 		if ( class_exists( 'Petshop_AV_Tiekimas' ) && $src && 'av' !== $src ) { $b = Petshop_AV_Tiekimas::eilutes_bukle( $o->get_id(), (int) $iid ); }
 		if ( ! isset( self::KELIAI[ $k ] ) ) {
 			if ( 'av' === $src ) { $k = 'av'; }
-			elseif ( $src ) { $k = ( $it->get_meta( '_ps_konsolidacija' ) || 'av' === ( $spr[ $src ] ?? '' ) || $b || ( ! $o->get_meta( '_ps_rusiuota' ) && self::atvira_partija( $src ) ) ) ? 'i_av' : 'tiesiai'; }
+			elseif ( $src ) { $sug = false; if ( ! $o->get_meta( '_ps_rusiuota' ) && self::atvira_partija( $src ) ) { foreach ( $o->get_items() as $it2 ) { if ( 'av' === self::d( 'eilutes_saltinis', $it2 ) ) { $sug = true; break; } } } // v3.39.1: siūlyti „veža į AV“ tik mišriam (yra AV eilutė)
+				$k = ( $it->get_meta( '_ps_konsolidacija' ) || 'av' === ( $spr[ $src ] ?? '' ) || $b || $sug ) ? 'i_av' : 'tiesiai'; }
 			else { $k = ''; }
 		}
 		if ( 'tiesiai' === $k && self::atsiemimas( $o ) ) { $k = 'i_av'; } // v3.35 (C): atsiėmimas AV — tiekėjo prekės TIK per AV (tiesiai klientui nėra kam siųsti)
@@ -924,6 +930,7 @@ class Petshop_Darbalaukis {
 			'id' => $id, 'nr' => $o->get_order_number(), 'st' => wc_get_order_statuses()[ 'wc-' . $f['st'] ] ?? $f['st'], 'uzdarytas' => $f['uzdarytas'], 'kur' => self::kur_dabar( $f ),
 			'kl' => trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ), 'suma' => html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ), 'apmok' => ( $f['paid'] ? 'apmokėta · ' : 'neapmokėta · ' ) . $o->get_payment_method_title(),
 			'tel' => $o->get_billing_phone(), 'mail' => $o->get_billing_email(), 'adresas' => wp_strip_all_tags( str_replace( '<br/>', ', ', $adr ) ),
+			'vidine' => (string) $o->get_meta( '_ps_vidine_pastaba' ), 'vidine_kas' => (string) $o->get_meta( '_ps_vidine_pastaba_kas' ), 'vidine_n' => wp_create_nonce( 'ps_dl_vidine_' . $id ), // v3.39
 			'vezejas' => $f['ats'] ? 'Atsiėmimas AV' : self::d( 'vezejo_vardas', $o ), 'vieta' => (string) $o->get_meta( 'venipak_pickup_point' ), 'pastaba_kl' => $o->get_customer_note(), /* v3.35 (C) */
 			'eil' => $eil, 'pastaba' => $pastaba, 'nr_siuntos' => $nr, 'pak' => $pak, 'perreg' => $perreg,
 			'klausimas' => $f['kl'],
@@ -2633,6 +2640,19 @@ class Petshop_Darbalaukis {
 		wp_send_json_success( $out );
 	}
 
+	/** v3.39: AJAX `ps_dl_vidine` — darbuotojo vidinė pastaba prie užsakymo (POST id, n, tekstas ≤ 2000). Klientui nerodoma. */
+	public static function ajax_vidine() {
+		if ( ! current_user_can( 'edit_shop_orders' ) ) { wp_send_json_error( 'teisės', 403 ); }
+		$id = absint( $_POST['id'] ?? 0 ); if ( ! $id || ! check_ajax_referer( 'ps_dl_vidine_' . $id, 'n', false ) ) { wp_send_json_error( 'nonce', 403 ); }
+		$o = wc_get_order( $id ); if ( ! $o ) { wp_send_json_error( 'nėra užsakymo' ); }
+		$t = mb_substr( sanitize_textarea_field( wp_unslash( $_POST['tekstas'] ?? '' ) ), 0, 2000 ); $u = wp_get_current_user(); $buvo = (string) $o->get_meta( '_ps_vidine_pastaba' );
+		$kas = '' === $t ? '' : current_time( 'mysql' ) . '|' . $u->display_name;
+		if ( '' === $t ) { $o->delete_meta_data( '_ps_vidine_pastaba' ); $o->delete_meta_data( '_ps_vidine_pastaba_kas' ); } else { $o->update_meta_data( '_ps_vidine_pastaba', $t ); $o->update_meta_data( '_ps_vidine_pastaba_kas', $kas ); }
+		$o->save();
+		if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) && $buvo !== $t ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $id, 'sritis' => 'desk', 'veiksmas' => 'vidine_pastaba', 'rezultatas' => 'ok', 'kanalas' => 'web', 'kas' => $u->ID, 'kas_vardas' => $u->display_name, 'pries' => array( 'tekstas' => mb_substr( $buvo, 0, 200 ) ), 'po' => array( 'tekstas' => mb_substr( $t, 0, 200 ) ), 'pastaba' => '' === $t ? 'vidinė pastaba ištrinta' : 'vidinė pastaba: ' . mb_substr( $t, 0, 80 ) ) ); }
+		wp_send_json_success( array( 'kas' => $kas, 'tekstas' => $t ) );
+	}
+
 	public static function ajax_prekes() {
 		if ( ! current_user_can( 'edit_shop_orders' ) || ! check_ajax_referer( 'ps_dl_zurnalas', 'n', false ) ) { wp_send_json_error( 'teisės', 403 ); }
 		global $wpdb; $q = trim( (string) wp_unslash( $_GET['q'] ?? '' ) ); if ( mb_strlen( $q ) < 2 ) { wp_send_json_success( array() ); }
@@ -3549,7 +3569,8 @@ class Petshop_Darbalaukis {
 			$rb = 'visi' === $eile ? ' dl-row-' . self::busena( $r )[1] : '';
 			printf( '<tr class="eil%s%s%s%s" data-id="%d" tabindex="0" data-sk="1">', empty( $r['svetimas'] ) ? '' : ' dl-svetimas', empty( $r['naujas'] ) ? '' : ' dl-n', empty( $r['nepakuok'] ) ? '' : ' dl-demesys', $rb, $id ); // v3.18: dl-demesys
 			// 1 stulpelis: nr · laikas · klientas · pristatymas · pastaba
-			echo '<td><span class="nr">#' . esc_html( $o->get_order_number() ) . '</span>' . ( ! empty( $r['naujas'] ) ? ' <b class="dl-nz" title="dar neatidarytas">N</b>' : '' ) . ' <span class="pilkas maz">' . esc_html( self::amzius( $laikas ) ) . '</span>';
+			$vid_ = (string) $o->get_meta( '_ps_vidine_pastaba' ); // v3.39
+			echo '<td><span class="nr">#' . esc_html( $o->get_order_number() ) . '</span>' . ( ! empty( $r['naujas'] ) ? ' <b class="dl-nz" title="dar neatidarytas">N</b>' : '' ) . ( '' !== $vid_ ? ' <span class="dl-vid" title="' . esc_attr( mb_substr( $vid_, 0, 200 ) ) . '">✎</span>' : '' ) . ' <span class="pilkas maz">' . esc_html( self::amzius( $laikas ) ) . '</span>';
 			if ( 'processing' !== $r['st'] ) { echo ' <span class="dl-pill" style="background:' . esc_attr( $sp[0] ) . ';color:' . esc_attr( $sp[1] ) . '">' . esc_html( wc_get_order_statuses()[ 'wc-' . $r['st'] ] ?? $r['st'] ) . '</span>'; }
 			echo '<br>' . esc_html( $vardas ?: '—' ) . ' <span class="pilkas maz">· ' . esc_html( self::d( 'vezejo_vardas', $o ) ) . ( $miestas ? ', ' . esc_html( $miestas ) : '' ) . ' · ' . esc_html( wp_strip_all_tags( $o->get_formatted_order_total() ) ) . ( $r['paid'] ? '' : ' · <b class="raud">neapmokėta</b>' ) . '</span>';
 			if ( $o->get_meta( '_ps_klaus_laukti' ) ) { echo ' <span class="dl-pill dl-pill-e">laukia nuo ' . esc_html( wp_date( 'm-d H:i', strtotime( $o->get_meta( '_ps_klaus_laukti' ) ) ) ) . '</span>'; }
@@ -3892,6 +3913,7 @@ class Petshop_Darbalaukis {
 			<header><div><h2 id="skNr"></h2><div class="pilkas maz" id="skKl"></div></div><button class="uzdaryti" id="skUzd" title="Uždaryti (Esc)">×</button></header>
 			<div class="kunas">
 				<div class="pastaba" id="skPastaba"></div>
+				<div class="dl-vidine" id="skVidine"></div>
 				<div class="dl-klaus" id="skKlaus" style="display:none"></div>
 				<div id="skEil"></div>
 				<div class="blokas"><b>Pristatymas</b><div id="skPr"></div></div>
@@ -3975,7 +3997,7 @@ class Petshop_Darbalaukis {
 .dl-tbl-k{border:0;border-radius:0;margin:6px 0 10px}.dl-tbl-k td{padding:8px 6px}.dl-zingsniai-k{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.dl-zingsniai-k .zn{width:22px;height:22px;border-radius:50%;background:var(--zalia-s);color:var(--zalia);display:inline-flex;align-items:center;justify-content:center;font-weight:600;font-size:12px;flex:none}
 .dl-inl{display:contents}.dl-laisko-nust{flex-basis:100%;display:flex;gap:14px;flex-wrap:wrap;align-items:center;font-size:12.5px;color:var(--pilka);margin-top:4px}.dl-psl{display:flex;gap:14px;align-items:center;justify-content:center;padding:12px 0}
 .dl-cb{display:inline-block;margin-right:6px;vertical-align:middle}.dl-cb input{margin:0}
-.dl-tk-blk{border-top:1px solid var(--linija);padding-top:10px;margin-top:10px}.dl-tk-h3{margin:10px 0 4px;font-size:13px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:.02em}.dl-antras{border-left:3px solid #d9822b;padding-left:8px}.dl-prier{flex-basis:100%;display:block}.dl-prier textarea{display:block;width:100%;max-width:720px;margin-top:3px;font:inherit;border:1px solid var(--linija);border-radius:6px;padding:5px 8px;resize:vertical}.dl-ats-tiek{margin:0 0 10px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.dl-rink{margin:6px 0 10px}.dl-rink-filtrai{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:8px 0;font-size:12.5px}.dl-rink-filtrai select,.dl-rink-filtrai input[type=text]{font:inherit;border:1px solid var(--linija);border-radius:5px;padding:3px 6px}.dl-rink-filtrai input[type=text]{width:180px}.dl-rink-lent{max-height:420px;overflow:auto;border:1px solid var(--linija);border-radius:6px}.dl-rink-lent table{width:100%;border-collapse:collapse;font-size:12.5px}.dl-rink-lent th{position:sticky;top:0;background:#f4f5f4;text-align:left;padding:5px 8px;font-weight:600;color:#555}.dl-rink-lent td{padding:4px 8px;border-top:1px solid var(--linija)}.dl-rink-lent td.sk{text-align:right;white-space:nowrap}.dl-rink-lent input[type=number]{width:56px;font:inherit;border:1px solid var(--linija);border-radius:5px;padding:2px 4px}.dl-rink-lent tr.isp td.av{color:#b3261e;font-weight:600}.dl-eil-f{display:inline-flex;gap:6px;align-items:center}.dl-eil-q{width:52px;font:inherit;border:1px solid var(--linija);border-radius:5px;padding:1px 4px}.dl-eil-x{padding:0 6px;line-height:1.3}.dl-tk-gauta input[type=number][name^=savikaina]{width:72px}.dl-arch-t{margin-top:8px;padding:8px;border:1px solid var(--linija);border-radius:6px;background:#fff;font-size:12.5px}.dl-tk-blk h3{margin:0 0 6px;font-size:14px;font-weight:600;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.dl-tk-blk .dl-tbl-k{margin-bottom:8px}
+.dl-tk-blk{border-top:1px solid var(--linija);padding-top:10px;margin-top:10px}.dl-tk-h3{margin:10px 0 4px;font-size:13px;font-weight:600;color:#555;text-transform:uppercase;letter-spacing:.02em}.dl-antras{border-left:3px solid #d9822b;padding-left:8px}.dl-vidine{margin:8px 0 4px}.dl-vid-l{display:block;font-size:12.5px;font-weight:600;color:#555}.dl-vid-l textarea{display:block;width:100%;margin-top:3px;font:inherit;font-weight:400;border:1px solid var(--linija);border-radius:6px;padding:5px 8px;resize:vertical;background:#fffbe8}.dl-vid-b{margin-top:4px;display:flex;gap:8px;align-items:center}.dl-vid{color:#b8860b;font-size:13px;cursor:help}.dl-prier{flex-basis:100%;display:block}.dl-prier textarea{display:block;width:100%;max-width:720px;margin-top:3px;font:inherit;border:1px solid var(--linija);border-radius:6px;padding:5px 8px;resize:vertical}.dl-ats-tiek{margin:0 0 10px;display:flex;gap:6px;align-items:center;flex-wrap:wrap}.dl-rink{margin:6px 0 10px}.dl-rink-filtrai{display:flex;gap:14px;align-items:center;flex-wrap:wrap;margin:8px 0;font-size:12.5px}.dl-rink-filtrai select,.dl-rink-filtrai input[type=text]{font:inherit;border:1px solid var(--linija);border-radius:5px;padding:3px 6px}.dl-rink-filtrai input[type=text]{width:180px}.dl-rink-lent{max-height:420px;overflow:auto;border:1px solid var(--linija);border-radius:6px}.dl-rink-lent table{width:100%;border-collapse:collapse;font-size:12.5px}.dl-rink-lent th{position:sticky;top:0;background:#f4f5f4;text-align:left;padding:5px 8px;font-weight:600;color:#555}.dl-rink-lent td{padding:4px 8px;border-top:1px solid var(--linija)}.dl-rink-lent td.sk{text-align:right;white-space:nowrap}.dl-rink-lent input[type=number]{width:56px;font:inherit;border:1px solid var(--linija);border-radius:5px;padding:2px 4px}.dl-rink-lent tr.isp td.av{color:#b3261e;font-weight:600}.dl-eil-f{display:inline-flex;gap:6px;align-items:center}.dl-eil-q{width:52px;font:inherit;border:1px solid var(--linija);border-radius:5px;padding:1px 4px}.dl-eil-x{padding:0 6px;line-height:1.3}.dl-tk-gauta input[type=number][name^=savikaina]{width:72px}.dl-arch-t{margin-top:8px;padding:8px;border:1px solid var(--linija);border-radius:6px;background:#fff;font-size:12.5px}.dl-tk-blk h3{margin:0 0 6px;font-size:14px;font-weight:600;display:flex;gap:8px;align-items:center;flex-wrap:wrap}.dl-tk-blk .dl-tbl-k{margin-bottom:8px}
 .dl-tk-prist{flex-basis:100%;display:flex;gap:12px;flex-wrap:wrap;align-items:center;font-size:12.5px;margin-bottom:4px}.dl-tk-prist input[type=number]{width:64px;font:inherit;border:1px solid var(--linija);border-radius:5px;padding:2px 6px}
 .dl-tk-gauta input[type=number]{width:60px;font:inherit;border:1px solid var(--linija);border-radius:5px;padding:2px 6px}.dl-tk-gauta input[type=text]{width:86px;font:inherit;border:1px solid var(--linija);border-radius:5px;padding:2px 6px}
 .dl-laisko-nust input[type=text]{font:inherit;border:1px solid var(--linija);border-radius:5px;padding:3px 8px;min-width:280px}
@@ -4081,6 +4103,8 @@ class Petshop_Darbalaukis {
 	function rodyti(o,r){ skO=o;
 		$('skNr').textContent='#'+o.nr+(o.uzdarytas?' · '+o.st:''); $('skKl').textContent=o.kl+' · '+o.suma+' · '+o.apmok;
 		$('skPastaba').innerHTML='<b class="dl-kur">Dabar: '+esc(o.kur)+'</b><br>'+esc(o.pastaba);
+		$('skVidine').innerHTML='<label class="dl-vid-l">Pastabos <span class="pilkas maz">(vidinės — mato tik darbuotojai)</span><textarea id="skVidT" rows="2" placeholder="pvz.: paskambinti klientui dėl adreso; dėžė 2 — trapu">'+esc(o.vidine)+'</textarea></label><div class="dl-vid-b"><button type="button" class="v t" id="skVidOk">Išsaugoti</button> <span class="pilkas maz" id="skVidSt">'+(o.vidine_kas?esc(o.vidine_kas.replace('|',' · ')):'')+'</span></div>'; // v3.39
+		$('skVidOk').onclick=function(){ var t=$('skVidT').value, b=$('skVidOk'); b.disabled=true; var fd=new FormData(); fd.append('action','ps_dl_vidine'); fd.append('id',o.id); fd.append('n',o.vidine_n); fd.append('tekstas',t); fetch(ajaxurl,{method:'POST',credentials:'same-origin',body:fd}).then(function(x){return x.json();}).then(function(j){ b.disabled=false; if(!j||!j.success){ $('skVidSt').textContent='nepavyko'; return; } o.vidine=j.data.tekstas; o.vidine_kas=j.data.kas; $('skVidSt').textContent=j.data.kas?'išsaugota · '+j.data.kas.replace('|',' · '):'ištrinta'; if(r){ var nr=r.querySelector('span.nr'); var m=r.querySelector('.dl-vid'); if(j.data.tekstas){ if(!m&&nr){ m=document.createElement('span'); m.className='dl-vid'; m.textContent='✎'; nr.insertAdjacentElement('afterend',m); nr.insertAdjacentText('afterend',' '); } if(m) m.title=j.data.tekstas.slice(0,200); } else if(m){ m.remove(); } } }).catch(function(){ b.disabled=false; $('skVidSt').textContent='nepavyko'; }); };
 		if(o.matyti){ fetch(ajaxurl+'?action=ps_dl_matyta&id='+o.id+'&n='+encodeURIComponent(o.zn),{credentials:'same-origin'}).catch(function(){}); r.classList.remove('dl-n'); var nb=r.querySelector('.dl-nz'); if(nb) nb.remove(); } var K=$('skKlaus'); if(o.klausimas){ K.style.display='block'; K.textContent='Klausimas: '+o.klausimas; } else K.style.display='none';
 		$('skEil').innerHTML=o.eil.map(function(l){ return '<div class="eilute"><div class="virsus">'+(l.img?'<img class="dl-img" src="'+esc(l.img)+'" alt="">':'<span class="dl-img dl-img-n"></span>')+(l.kk?'<a class="k dl-kk" href="#" data-iid="'+l.iid+'" data-q="'+l.q+'" title="Keisti kiekį">'+l.q+'×</a>':'<div class="k">'+l.q+'×</div>')+'<div class="p">'+esc(l.n)+(l.sku?' <span class="pilkas maz">'+esc(l.sku)+'</span>':'')+'</div></div>'
 			+'<div class="keliai">'+l.keliai.map(function(k){ var c=KC[k.k]+(k.on?' on':'')+(k.gal||k.on?'':' ne'); var t='<i></i>'+esc(k.t); if(k.u) return '<a class="'+c+'" href="'+esc(k.u)+'" title="Keisti kelią">'+t+'</a>'; return '<span class="kb '+c+'"'+(k.kodel_ne&&!k.on?' title="'+esc(k.kodel_ne)+'"':'')+'>'+t+'</span>'; }).join('')+'</div>'
