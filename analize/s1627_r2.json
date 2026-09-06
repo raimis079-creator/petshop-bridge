@@ -1,0 +1,67 @@
+{
+ "v": "dep-154007",
+ "kurimas": 200,
+ "sid": 4950,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1627 r2",
+  "temp_istrinta": 1,
+  "menu": [
+   {
+    "slug": "ps-katalogas",
+    "t": "Petshop prekės",
+    "cap": "manage_woocommerce"
+   },
+   {
+    "slug": "petshop-langai",
+    "t": "Petshop langai",
+    "cap": "manage_options"
+   },
+   {
+    "slug": "ps-desk",
+    "t": "Petshop užsakymai",
+    "cap": "edit_shop_orders"
+   },
+   {
+    "slug": "petshop-klientai",
+    "t": "Petshop klientai",
+    "cap": "manage_woocommerce"
+   }
+  ],
+  "submenu": [
+   "ps-katalogas → ps-katalogas | Petshop prekės | manage_woocommerce",
+   "ps-katalogas → ps-gavimas | Gavimas | manage_woocommerce",
+   "ps-katalogas → ps-akcijos | Akcijos | manage_woocommerce",
+   "ps-katalogas → ps-rinkiniai | Rinkiniai | manage_woocommerce",
+   "ps-katalogas → petshop-fbt | Perkame kartu | manage_woocommerce",
+   "ps-katalogas → ps-laukai | Surenkami rinkiniai | manage_woocommerce",
+   "ps-katalogas → ps-atributai | Atributai | manage_woocommerce",
+   "petshop-langai → petshop-langai | Apžvalga | manage_options",
+   "petshop-langai → petshop-prenumeratos | Prenumeratos | manage_woocommerce",
+   "petshop-langai → ps-prognoze | Prognozes | manage_woocommerce",
+   "petshop-reports → ps-atsargos | Atsargos ir pirkimas | manage_woocommerce",
+   "petshop-reports → ps-klientai | Klientų analizė | manage_woocommerce",
+   "petshop-reports → ps-menuo | Mėnesio uždarymas | manage_woocommerce",
+   "petshop-reports → ps-pardavimai | Pardavimai ir pelnas | manage_woocommerce",
+   "petshop-reports → ps-prekes | Prekių analizė | manage_woocommerce",
+   "petshop-reports → ps-tarifai | Pristatymo tarifai | manage_woocommerce",
+   "petshop-reports → petshop-reports-rinkiniai | Surenkami rinkiniai | manage_woocommerce",
+   "petshop-reports → ps-islaidos | Išlaidos ir nustatymai | manage_woocommerce",
+   "petshop-reports → petshop-reports-paruosti | Rinkiniai | manage_woocommerce",
+   "petshop-reports → ps-seo | SEO | manage_woocommerce",
+   "petshop-reports → ps-kontrole | Kontrolė | manage_options",
+   "petshop-reports → petshop-reports-brandai | Brand zodynas | manage_woocommerce",
+   "petshop-reports → petshop-reports-anketa | Augintinio anketa | manage_woocommerce",
+   "ps-desk → ps-desk | Petshop užsakymai | edit_shop_orders",
+   "ps-desk → ps-laiskai | Laiškai | edit_shop_orders",
+   "ps-desk → ps-tiekimas | Tiekimas | edit_shop_orders",
+   "petshop-klientai → petshop-klientai | Klientai | manage_woocommerce",
+   "petshop-klientai → petshop-naujienlaiskiai | Naujienlaiškiai ir kampanijos | manage_woocommerce",
+   "petshop-klientai → petshop-laiskai | Laiškų šablonai | manage_options",
+   "petshop-klientai → petshop-rezultatai | Laiškų rezultatai | manage_woocommerce"
+  ]
+ }
+}
