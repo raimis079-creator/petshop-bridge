@@ -1,0 +1,151 @@
+{
+ "1": {
+  "v": "S1622 e2e",
+  "f": "1",
+  "temp_istrinta": 1,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 0Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 0Dropshipping 0Paruošta siųsti 0Klausimai 0Neapmokėti 0Visi 0+ Naujas užsakymas",
+   "warning": 0
+  },
+  "stock_pries": 32,
+  "id": 35816,
+  "uzs": {
+   "st": "processing",
+   "paid": true,
+   "total": "8.89",
+   "avpn": "AVPN000344",
+   "iss": "",
+   "siuntos": []
+  },
+  "sk0": {
+   "kur": "Surinkti AV · toliau: Surinkti",
+   "btn": "Surinkti",
+   "eil": [
+    "av"
+   ]
+  },
+  "eiles_po_uzs": {
+   "code": 200,
+   "nav": "Gauti 1Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 0Paruošta siųsti 0Klausimai 0Neapmokėti 0Visi 1+ Naujas užsakymas",
+   "warning": 0
+  },
+  "surinkti": {
+   "mygtukas": "Surinkti",
+   "r": {
+    "code": 302,
+    "pd_ok": null,
+    "pd": ""
+   },
+   "po": {
+    "kur": "Surinkti AV · toliau: Lipdukas",
+    "btn": "Lipdukas",
+    "eil": [
+     "av"
+    ]
+   },
+   "uzs": {
+    "st": "processing",
+    "paid": true,
+    "total": "8.89",
+    "avpn": "AVPN000344",
+    "iss": "",
+    "siuntos": []
+   }
+  },
+  "lipdukas_fikt": true,
+  "sk_po_lipduko": {
+   "kur": "Paruošta siųsti · toliau: Kurjeris paėmė",
+   "btn": "Kurjeris paėmė",
+   "eil": [
+    "av"
+   ]
+  },
+  "paeme": {
+   "mygtukas": "Kurjeris paėmė",
+   "r": {
+    "code": 302,
+    "pd_ok": "dl_issiusta",
+    "pd": "35816|klientui nepranešta (varnelė nuimta)"
+   },
+   "po": {
+    "kur": "įvykdytas",
+    "btn": null,
+    "eil": [
+     "av"
+    ]
+   },
+   "uzs": {
+    "st": "completed",
+    "paid": true,
+    "total": "8.89",
+    "avpn": "AVPN000344",
+    "iss": "{\"av\":{\"laikas\":\"2026-09-06 15:53:46\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"}}",
+    "siuntos": [
+     {
+      "sandelis": "av",
+      "kodas": "E2E",
+      "manifest": "07267260906E2E",
+      "numeriai": [
+       "V07267E1E2E001"
+      ],
+      "data": "2026-09-06 15:53:42"
+     }
+    ]
+   }
+  },
+  "eiles_po": {
+   "code": 200,
+   "nav": "Gauti 0Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 0Dropshipping 0Paruošta siųsti 0Klausimai 0Neapmokėti 0Visi 1+ Naujas užsakymas",
+   "warning": 0
+  },
+  "stock_po": 30
+ },
+ "2": {
+  "v": "S1622 e2e",
+  "f": "2",
+  "temp_istrinta": 0,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 0Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 0Dropshipping 0Paruošta siųsti 0Klausimai 0Neapmokėti 0Visi 1+ Naujas užsakymas",
+   "warning": 0
+  },
+  "id": 35817,
+  "uzs": {
+   "st": "processing",
+   "paid": true,
+   "total": "15.08",
+   "avpn": "AVPN000345",
+   "iss": "",
+   "siuntos": []
+  },
+  "sk0": {
+   "kur": "Dropshipping (VF) · toliau: Užsakyti iš VF",
+   "btn": "Užsakyti iš VF",
+   "eil": [
+    "tiesiai"
+   ]
+  },
+  "eiles_po_uzs": {
+   "code": 200,
+   "nav": "Gauti 1Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 0Dropshipping 1Paruošta siųsti 0Klausimai 0Neapmokėti 0Visi 2+ Naujas užsakymas",
+   "warning": 0
+  },
+  "lipdukas_fikt": true,
+  "sk_po_lipduko": {
+   "kur": "Dropshipping (VF) · toliau: Užsakyti iš VF",
+   "btn": "Užsakyti iš VF",
+   "eil": [
+    "tiesiai"
+   ]
+  },
+  "FATAL": "Call to protected method Petshop_Darbalaukis::vardas() from global scope @snippet-ops.php(663) : eval()'d code:22"
+ },
+ "v": "dep-125226",
+ "kurimas": 200,
+ "sid": 4909,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
