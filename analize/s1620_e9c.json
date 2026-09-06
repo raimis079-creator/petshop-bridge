@@ -1,0 +1,80 @@
+{
+ "v": "dep-095546",
+ "kurimas": 200,
+ "sid": 4882,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "C": {
+  "v": "S1620 e9c",
+  "f": "C",
+  "temp_istrinta": 1,
+  "email_exists": 0,
+  "login_exists": 0,
+  "sukurta": 5788,
+  "user": [
+   5788,
+   "inga",
+   "terra@petshop.lt",
+   "Inga",
+   "ps_darbuotojas"
+  ],
+  "reset_laiskas": "išsiųsta",
+  "leisti_po": null,
+  "reset_key_yra": 1,
+  "dev_pastas_pask": [
+   [
+    "2026-09-06 11:27:45",
+    "atsiemimas.s1620@dev.avesa.lt",
+    "Jūsų užsakymas Nr. 35813 paruoštas atsiimti — Petshop.lt"
+   ],
+   [
+    "2026-09-06 11:27:48",
+    "atsiemimas.s1620@dev.avesa.lt",
+    "Užsakymas Nr. 35813 atsiimtas — PVM sąskaita faktūra Nr. AVP"
+   ]
+  ]
+ },
+ "Q": {
+  "v": "S1620 e9c",
+  "f": "Q",
+  "temp_istrinta": 0,
+  "user": [
+   5788,
+   "inga",
+   "terra@petshop.lt",
+   "Inga",
+   "ps_darbuotojas",
+   "2026-09-06 09:57:00"
+  ],
+  "can": {
+   "manage_woocommerce": 1,
+   "edit_shop_orders": 1,
+   "edit_products": 1,
+   "upload_files": 1,
+   "activate_plugins": 0,
+   "manage_options": 0,
+   "edit_snippets": 0,
+   "manage_snippets": 0,
+   "list_users": 0,
+   "edit_pages": 0,
+   "edit_posts": 0,
+   "edit_theme_options": 0
+  },
+  "prieiga": {
+   "wp-admin/": "302 → /wp-admin/admin.php?page=ps-katalogas",
+   "admin.php?page=ps-desk": "200",
+   "admin.php?page=ps-desk&view=naujas": "200",
+   "admin.php?page=ps-desk&view=saskaitos": "200",
+   "admin.php?page=ps-katalogas": "200",
+   "plugins.php": "403",
+   "users.php": "403",
+   "admin.php?page=snippets": "403",
+   "admin.php?page=wc-settings": "403",
+   "options-general.php": "403"
+  },
+  "leisti": null,
+  "temp_liko": 1
+ }
+}
