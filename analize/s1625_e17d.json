@@ -1,7 +1,7 @@
 {
- "v": "dep-145404",
+ "v": "dep-145530",
  "kurimas": 200,
- "sid": 4937,
+ "sid": 4938,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
@@ -10,13 +10,69 @@
   "v": "S1625 e17t",
   "f": "D",
   "temp_istrinta": 1,
-  "id": 0,
-  "btn_u": null,
+  "id": 35822,
+  "opt": {
+   "0": 35822,
+   "2a": 35823,
+   "2b": 35824
+  },
+  "btn_u": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_dl_veiksmas&amp;v=lipdukas&amp;id=35822&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35822&amp;sandelis=av&amp;_wpnonce=6d3785a849",
   "klik": {
-   "code": "",
-   "loc": "",
+   "code": 302,
+   "loc": "https://dev.avesa.lt/wp-admin/admin-post.php?action=ps_desk_veiksmas&amp;v=vp_reg&amp;id=35822&amp;g=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D35822&amp;_wpnonce=a46f2d5875&ids=35822&sandelis=av",
    "body": ""
   },
-  "FATAL": "Call to a member function get_meta() on false @snippet-ops.php(663) : eval()'d code:48"
+  "meta_vp": {
+   "siuntos": "",
+   "vp_data": "",
+   "pak": "2"
+  },
+  "pastabos": [
+   "Darbalaukis: dėžių skaičius — 2.",
+   "Email \"Užsakymas vykdomas\" sent.",
+   "Email \"Naujas užsakymas\" sent.",
+   "Surūšiuota pati: Animonda GranCarno Adult: konservai šuni — Iš AV",
+   "Faktai irasyti: 1 eilutes · pajamos 4,05 EUR (be PVM, po nuolaidu) · PVM 1,54 EUR · marza 1,45 EUR · kontribucija (be pristatymo) 4,35 EUR · TESTINIS"
+  ],
+  "sargas": [
+   {
+    "laikas": "2026-09-06 17:17:53",
+    "lygis": "deprecated",
+    "z": "strip_tags(): Passing null to parameter #1 ($string) of type string is deprecated",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-admin/admin-header.php",
+    "eilute": "41"
+   },
+   {
+    "laikas": "2026-09-06 17:08:05",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/dev.avesa.lt/product/gimcat-gras-bits-425g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624"
+   },
+   {
+    "laikas": "2026-09-06 17:08:05",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/dev.avesa.lt/product/eukanuba-dog-senior-virs-9-m-l-xl-breeds-15-kg/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624"
+   },
+   {
+    "laikas": "2026-09-06 17:08:05",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/dev.avesa.lt/product/eukanuba-dog-salmon-barley-l-xl-breed-12-kg-su-lasisa-ir-mieziais/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624"
+   },
+   {
+    "laikas": "2026-09-06 17:08:04",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/dev.avesa.lt/product/monge-vetsolution-dog-struvite-2-kg/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624"
+   }
+  ],
+  "vf_zingsniai": "<button class=\"v p dl-rink-prid\" type=\"submit\" disabled data-tpl=\"Pridėti pažymėtas (%n)\">Pridėti pažymėtas (0)</button> <button type=\"button\" class=\"v t dl-rink-uzd\">Uždaryti</button>",
+  "vf_eil": [],
+  "be_lipduko_tekstai": []
  }
 }
