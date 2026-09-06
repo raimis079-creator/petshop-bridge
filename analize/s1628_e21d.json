@@ -1,0 +1,72 @@
+{
+ "v": "dep-161909",
+ "kurimas": 200,
+ "sid": 4956,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1628 e21",
+  "f": "D",
+  "temp_istrinta": 1,
+  "pries_klientas": {
+   "code": 200,
+   "mygtukai": [
+    "Spausdinti sąskaitą",
+    "Spausdinti kvitą",
+    "Spausdinti važtaraštį",
+    "Spausdinti važtaraštį"
+   ],
+   "atsisakymas": 1,
+   "sarase": [
+    "wcdn_print_invoice",
+    "wcdn_print_receipt",
+    "wcdn_print_packingslip",
+    "wcdn_print_deliverynote"
+   ]
+  },
+  "pries_sarasas": {
+   "code": 200,
+   "mygtukai": [],
+   "atsisakymas": 0,
+   "sarase": [
+    "wcdn_print_invoice",
+    "wcdn_print_receipt",
+    "wcdn_print_packingslip",
+    "wcdn_print_deliverynote"
+   ]
+  },
+  "rasyta": 1426,
+  "po": "96ee85d5b669dc78a38642dcc6e8379f",
+  "ping": {
+   "code": 200,
+   "fatal": 0,
+   "err": ""
+  },
+  "po_klientas": {
+   "code": 200,
+   "mygtukai": [
+    "Spausdinti sąskaitą"
+   ],
+   "atsisakymas": 1,
+   "sarase": [
+    "wcdn_print_invoice"
+   ]
+  },
+  "po_sarasas": {
+   "code": 200,
+   "mygtukai": [],
+   "atsisakymas": 0,
+   "sarase": [
+    "wcdn_print_invoice"
+   ]
+  },
+  "po_darbuotojas_view": {
+   "code": 200,
+   "mygtukai": [],
+   "atsisakymas": 0,
+   "sarase": []
+  }
+ }
+}
