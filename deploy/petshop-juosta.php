@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Juosta v1.10 (S1629, Raimis: „kodėl rodo Prekės 453? geriau kiek parduodama, ne kiek jų nėra“) — „Prekės“ skaitliukas = **parduodama** (katalogo „prekyboje“ prekių, kurių parduodama > 0:
+ *   `visos_kruvoje − uzsakyti`), žalias; title — „parduodama N · išparduota M (katalogo duomenys HH:MM)“. Cron `ps_juosta_reikia_cron` opcijoje `ps_juosta_reikia` saugo [išparduota, laikas, parduodama]; pirmas perskaičiavimas — deploy metu.
  * Petshop Juosta v1.9 (S1627, Raimis: „į ataskaitas — per Flatsome; Inga nemato nei ataskaitų, nei langų“) — dešinėje, prieš „Sąskaitos“, išskleidžiamas **„Ataskaitos ▾“**:
  *   Pardavimai ir pelnas · Prekių analizė · Atsargos ir pirkimas · Klientų analizė · Mėnesio uždarymas · Klientai (visi `manage_woocommerce`, kaip patys puslapiai) · Petshop langai (`manage_options`).
  *   Aktyvus, kai esi ataskaitoje; atidaromas paspaudimu (ir užvedus). Ataskaitų puslapiai `ps-*` juostą jau turėjo — trūko tik nuorodos.
@@ -65,7 +67,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Juosta {
 
-	const VERSIJA = '1.9';
+	const VERSIJA = '1.10';
 	const TR      = 'ps_juosta_sk';
 
 	/** Puslapiai, kur juosta NErodoma (Raimio analitika turi savą UI). */
@@ -92,7 +94,8 @@ class Petshop_Juosta {
 			if ( ! is_array( $k ) || empty( $k['prekes'] ) ) { return null; }
 			$e = Petshop_Katalogas::eiles( $k['prekes'], 'prekyboje' );
 			if ( ! isset( $e['uzsakyti'] ) ) { return null; }
-			update_option( 'ps_juosta_reikia', array( (int) $e['uzsakyti'], time() ), false );
+			$parduodama = isset( $e['visos_kruvoje'] ) ? max( 0, (int) $e['visos_kruvoje'] - (int) $e['uzsakyti'] ) : null; // v1.10
+			update_option( 'ps_juosta_reikia', array( (int) $e['uzsakyti'], time(), $parduodama ), false );
 			delete_transient( self::TR );
 			return (int) $e['uzsakyti'];
 		} catch ( Throwable $ex ) { return null; }
@@ -140,7 +143,7 @@ class Petshop_Juosta {
 				$s['laiskai'] = $n;
 			}
 			$r = get_option( 'ps_juosta_reikia' );
-			if ( is_array( $r ) && isset( $r[0] ) ) { $s['reikia'] = (int) $r[0]; $s['reikia_laikas'] = (int) $r[1]; }
+			if ( is_array( $r ) && isset( $r[0] ) ) { $s['reikia'] = (int) $r[0]; $s['reikia_laikas'] = (int) $r[1]; $s['parduodama'] = isset( $r[2] ) ? (int) $r[2] : null; } // v1.10
 			if ( class_exists( 'Petshop_Desk' ) && defined( 'Petshop_Desk::RIBOS' ) ) {
 				$r = new ReflectionMethod( 'Petshop_Desk', 'riba' ); $r->setAccessible( true );
 				$art = null;
@@ -185,7 +188,7 @@ class Petshop_Juosta {
 					<?php
 					echo $a( 'ps-desk', 'Užsakymai', array( array( $s['uzs'], 'reikia veiksmo', 'a' ), array( $s['neapm'], 'neapmokėti', 'n' ) ), 'ps-desk' === $pg && ! in_array( $view, array( 'rytas', 'saskaitos' ), true ) );
 					echo $a( 'ps-desk', 'Rytinė eiga', null, 'ps-desk' === $pg && 'rytas' === $view, '&view=rytas' );
-					echo $a( 'ps-katalogas', 'Prekės', $s['reikia'], 'ps-katalogas' === $pg, '', null === $s['reikia'] ? '' : 'reikia užsakyti: ' . (int) $s['reikia'] . ( empty( $s['reikia_laikas'] ) ? '' : ' (katalogo duomenys ' . wp_date( 'H:i', $s['reikia_laikas'] ) . ')' ) );
+					echo $a( 'ps-katalogas', 'Prekės', isset( $s['parduodama'] ) && null !== $s['parduodama'] ? array( array( $s['parduodama'], 'parduodama', 'p' ) ) : null, 'ps-katalogas' === $pg, '', null === $s['reikia'] ? '' : 'parduodama ' . (int) ( $s['parduodama'] ?? 0 ) . ' · išparduota ' . (int) $s['reikia'] . ( empty( $s['reikia_laikas'] ) ? '' : ' (katalogo duomenys ' . wp_date( 'H:i', $s['reikia_laikas'] ) . ')' ) ); // v1.10
 					echo $a( 'ps-gavimas', 'Gavimas', null, 'ps-gavimas' === $pg );
 					// v1.8: „Tiekimas“ ir „Laiškai“ — išimti (dubliavo Dropshipping kortelę / Laukiam; archyvas — darbalaukis `view=laiskai`)
 					echo $a( 'ps-rinkiniai', 'Rinkiniai', null, in_array( $pg, array( 'ps-rinkiniai', 'ps-laukai' ), true ) );
@@ -228,7 +231,7 @@ class Petshop_Juosta {
 		.psj-a{color:#d5e0d8;text-decoration:none;padding:7px 10px;border-radius:6px;white-space:nowrap;display:inline-flex;align-items:center;gap:5px}
 		.psj-a:hover{background:rgba(255,255,255,.1);color:#fff}.psj-a.on{background:#2d5f3f;color:#fff;font-weight:600}
 		.psj-sk{display:inline-block;min-width:16px;padding:1px 6px;border-radius:10px;background:#f4b942;color:#1f2a24;font-size:11px;font-weight:700;text-align:center;line-height:1.5}
-		.psj-sk-n{background:#b32d2e;color:#fff}.psj-sk-l{background:#6d8fb5;color:#fff}.psj-sk-k{background:#f4b942}
+		.psj-sk-p{background:#3d7a4a;color:#fff}.psj-sk-n{background:#b32d2e;color:#fff}.psj-sk-l{background:#6d8fb5;color:#fff}.psj-sk-k{background:#f4b942}
 		.psj-riba{margin-left:4px;padding:4px 9px;border-radius:6px;font-size:12px;white-space:nowrap;background:rgba(255,255,255,.08);color:#cfd9d2}
 		.psj-riba-skuba{background:#b32d2e;color:#fff;font-weight:600}.psj-riba-praejo{opacity:.6}
 		.psj-q{margin-left:auto;display:flex;align-items:center;min-width:110px;max-width:420px;flex:1 1 110px}
