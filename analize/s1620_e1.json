@@ -1,0 +1,457 @@
+{
+ "v": "dep-082619",
+ "kurimas": 200,
+ "sid": 4871,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1620 e1",
+  "f": "R",
+  "temp_istrinta": 1,
+  "dev_pastas_n": 38,
+  "dev_pastas_priedai": [
+   [
+    "2026-09-05 23:40:21",
+    "Jūsų užsakymas Nr. 35806 gautas - Petshop.lt",
+    1
+   ],
+   [
+    "2026-09-05 23:40:39",
+    "Naujas užsakymas Nr. 35807 — 2026-09-05",
+    0
+   ],
+   [
+    "2026-09-06 00:41:57",
+    "Naujas užsakymas Nr. 35808 — 2026-09-06",
+    0
+   ],
+   [
+    "2026-09-06 00:42:13",
+    "Naujas užsakymas Nr. 35809 — 2026-09-06",
+    0
+   ],
+   [
+    "2026-09-06 01:09:13",
+    "Naujas užsakymas Nr. 35810 — 2026-09-06",
+    0
+   ],
+   [
+    "2026-09-06 01:09:13",
+    "Jūsų užsakymas Nr. 35810 — apmokėjimas gautas",
+    0
+   ],
+   [
+    "2026-09-06 01:09:24",
+    "Naujas užsakymas Nr. 35811 — 2026-09-06",
+    0
+   ],
+   [
+    "2026-09-06 01:09:24",
+    "Jūsų užsakymas Nr. 35811 gautas - Petshop.lt",
+    1
+   ],
+   [
+    "2026-09-06 01:09:32",
+    "Jūsų užsakymas Nr. 35811 paruoštas atsiimti — Petshop.lt",
+    1
+   ],
+   [
+    "2026-09-06 01:09:35",
+    "Jūsų užsakymas Nr.35811 išsiųstas!",
+    1
+   ],
+   [
+    "2026-09-06 01:15:23",
+    "Naujas užsakymas Nr. 35812 — 2026-09-06",
+    0
+   ],
+   [
+    "2026-09-06 01:15:23",
+    "Jūsų užsakymas Nr. 35812 — apmokėjimas gautas",
+    0
+   ],
+   [
+    "2026-09-06 01:15:30",
+    "Užsakymas Nr. 35812 atsiimtas — PVM sąskaita faktūra Nr. AVPN000340",
+    1
+   ],
+   [
+    "2026-09-06 06:30:03",
+    "[Petshop] Rytas: 2 raudonos",
+    0
+   ]
+  ],
+  "dev_pastas_kodas": "count( (array) ( $a['attachments'] ?? array() ) )",
+  "dl_md5": "4e8c13665454cb6d7413ba8892bf4b6a",
+  "ats_send": "(bool) $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ) )",
+  "wc_email_send": "'' ",
+  "eiles": {
+   "code": 200,
+   "nav": "Gauti 9Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 63+ Naujas užsakymasFiltra"
+  },
+  "inst": {
+   "instance_id": "16",
+   "is_enabled": "0"
+  },
+  "av19708": 17
+ },
+ "T": {
+  "v": "S1620 e1",
+  "f": "T",
+  "temp_istrinta": 0,
+  "inst_on": {
+   "instance_id": "16",
+   "is_enabled": "1"
+  },
+  "post": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35813|užsakymas sukurtas — 2,60 €, Atsiėmimas AV, apmokėta grynais — eina į darbą; kvitą (PPK) suformuok skydelio „Sąskaitos“ bloke, kai klientas sumoka",
+   "id": 35813
+  },
+  "id": 35813,
+  "uzs": {
+   "st": "processing",
+   "pm": "cod",
+   "paid": true,
+   "total": "2.60",
+   "avpn": "AVPN000341",
+   "pdf": "",
+   "surinkta": "",
+   "ats": "",
+   "iss": ""
+  },
+  "sk": {
+   "kur": "Surinkti AV · toliau: Surinkti",
+   "btn": "Surinkti",
+   "takelis": [],
+   "dok": [
+    "avpn AVPN000341",
+    "ppk  [Suformuoti kvitą]"
+   ]
+  },
+  "lapai": 302,
+  "sk_po_lapu": {
+   "kur": "Paruošta siųsti · toliau: Paruošta atsiimti",
+   "btn": "Paruošta atsiimti",
+   "takelis": [],
+   "dok": [
+    "avpn AVPN000341",
+    "ppk  [Suformuoti kvitą]"
+   ]
+  },
+  "paruosta": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35813|paruošta atsiimti — klientui pranešta (atsiemimas.s1620@dev.avesa.lt)",
+   "body": ""
+  },
+  "gaudykle_paruosta": [
+   {
+    "kam": "atsiemimas.s1620@dev.avesa.lt",
+    "tema": "Jūsų užsakymas Nr. 35813 paruoštas atsiimti — Petshop.lt",
+    "tipas": "string",
+    "export": "''",
+    "kiek_arr": null,
+    "kiek_devpastas": 1,
+    "failai": null,
+    "uri": "/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=ats_paruosta&id=35813&g=https%3A%2F%2Fdev.avesa.lt%"
+   }
+  ],
+  "uzs_po_paruosta": {
+   "st": "processing",
+   "pm": "cod",
+   "paid": true,
+   "total": "2.60",
+   "avpn": "AVPN000341",
+   "pdf": "",
+   "surinkta": "2026-09-06 11:27:43 | Testuotojas",
+   "ats": "{\"paruosta\":\"2026-09-06 11:27:45|Testuotojas\",\"laiskas\":\"2026-09-06 11:27:45|atsiemimas.s1620@dev.avesa.lt\",\"atsieme\":\"\"}",
+   "iss": ""
+  },
+  "sk_po_paruosta": {
+   "kur": "Paruošta siųsti · toliau: Klientas atsiėmė",
+   "btn": "Klientas atsiėmė",
+   "takelis": [],
+   "dok": [
+    "avpn AVPN000341",
+    "ppk  [Suformuoti kvitą]"
+   ]
+  },
+  "atsieme": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35813|klientas atsiėmė — užsakymas įvykdytas, PVM sąskaita AVPN000341 · išsiųstas (atsiemimas.s1620@dev.avesa.lt, su PDF)",
+   "body": ""
+  },
+  "gaudykle_viso": [
+   {
+    "kam": "atsiemimas.s1620@dev.avesa.lt",
+    "tema": "Jūsų užsakymas Nr. 35813 paruoštas atsiimti — Petshop.lt",
+    "tipas": "string",
+    "export": "''",
+    "kiek_arr": null,
+    "kiek_devpastas": 1,
+    "failai": null,
+    "uri": "/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=ats_paruosta&id=35813&g=https%3A%2F%2Fdev.avesa.lt%"
+   },
+   {
+    "kam": "atsiemimas.s1620@dev.avesa.lt",
+    "tema": "Užsakymas Nr. 35813 atsiimtas — PVM sąskaita faktūra Nr. AVPN000341",
+    "tipas": "array",
+    "export": "array (\n  0 => '/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN000341.pdf',\n)",
+    "kiek_arr": 1,
+    "kiek_devpastas": 1,
+    "failai": [
+     "PVM-saskaita-AVPN000341.pdf:33854"
+    ],
+    "uri": "/wp-admin/admin-post.php?action=ps_dl_veiksmas&v=atsieme&id=35813&g=https%3A%2F%2Fdev.avesa.lt%2Fwp-"
+   }
+  ],
+  "uzs_po_atsieme": {
+   "st": "completed",
+   "pm": "cod",
+   "paid": true,
+   "total": "2.60",
+   "avpn": "AVPN000341",
+   "pdf": "PVM-saskaita-AVPN000341.pdf",
+   "surinkta": "2026-09-06 11:27:43 | Testuotojas",
+   "ats": "{\"paruosta\":\"2026-09-06 11:27:45|Testuotojas\",\"laiskas\":\"2026-09-06 11:27:45|atsiemimas.s1620@dev.avesa.lt\",\"atsieme\":\"2026-09-06 11:27:48|Testuotojas\"}",
+   "iss": "{\"av\":{\"laikas\":\"2026-09-06 11:27:48\",\"kas\":\"Testuotojas\",\"kanalas\":\"atsiemimas\"}}"
+  },
+  "sk_po_atsieme": {
+   "kur": "įvykdytas",
+   "btn": null,
+   "takelis": [],
+   "dok": [
+    "avpn AVPN000341",
+    "ppk  [Suformuoti kvitą]"
+   ]
+  },
+  "gaud_isvalyta": 0,
+  "inst_off": {
+   "instance_id": "16",
+   "is_enabled": "0"
+  },
+  "dev_pastas": {
+   "pries": 38,
+   "po": 42,
+   "nauji": [
+    [
+     "Naujas užsakymas Nr. 35813 — 2026-09-06",
+     0
+    ],
+    [
+     "Jūsų užsakymas Nr. 35813 — apmokėjimas gautas",
+     0
+    ],
+    [
+     "Jūsų užsakymas Nr. 35813 paruoštas atsiimti — Petshop.lt",
+     1
+    ],
+    [
+     "Užsakymas Nr. 35813 atsiimtas — PVM sąskaita faktūra Nr. AVPN000341",
+     1
+    ]
+   ]
+  },
+  "pastabos": [
+   "Darbalaukis: atsiėmimo laiškas su PVM sąskaita — išsiųstas (atsiemimas.s1620@dev.avesa.lt, su PDF).",
+   "Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+   "Darbalaukis: klientas atsiėmė prekes AV (Testuotojas) — užsakymas įvykdytas be siuntos. WC „įvykdytas“ laiškas (tema „iš",
+   "Darbalaukis: paruošta atsiimti (Testuotojas) — klientui pranešta (atsiemimas.s1620@dev.avesa.lt).",
+   "Email \"Užsakymas vykdomas\" sent.",
+   "Email \"Naujas užsakymas\" sent."
+  ],
+  "eiles": {
+   "code": 200,
+   "nav": "Gauti 9Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 64+ Naujas užsakymasFiltra"
+  }
+ },
+ "P": {
+  "v": "S1620 e1",
+  "f": "P",
+  "temp_istrinta": 0,
+  "yra": true,
+  "dydis": 22662,
+  "md5": "36c374cded28a12199c4e68809c1f6d7",
+  "eiluciu": 532,
+  "aktyvus": 1,
+  "dir": [
+   "petshop-pragma.php"
+  ],
+  "antraste": [
+   "<?php",
+   "/**",
+   " * Plugin Name: Petshop Pragma Export",
+   " * Description: Automatinis Pragma buhalterines sistemos eksportas",
+   " * Version: 1.0.0",
+   " */",
+   "",
+   "defined( 'ABSPATH' ) || exit;",
+   "",
+   "// ================================================================",
+   "// 1. SCHEDULED TASK - 5ta einamojo menesio diena",
+   "// ================================================================",
+   "add_action( 'init', function() {",
+   "    if ( ! wp_next_scheduled( 'petshop_pragma_monthly_export' ) ) {",
+   "        // Suplanuojame kitą 5-ą dienos paleidimą",
+   "        $next_run = petshop_pragma_next_run_time();",
+   "        wp_schedule_single_event( $next_run, 'petshop_pragma_monthly_export' );",
+   "    }",
+   "});",
+   "",
+   "function petshop_pragma_next_run_time() {",
+   "    $now   = current_time( 'timestamp' );",
+   "    $year  = (int) date( 'Y', $now );",
+   "    $month = (int) date( 'n', $now );",
+   "    $day   = (int) date( 'j', $now );",
+   "",
+   "    if ( $day >= 5 ) {",
+   "        // Jau praleidome šio mėnesio 5-ą — einame į kitą mėnesį",
+   "        $month++;",
+   "        if ( $month > 12 ) { $month = 1; $year++; }",
+   "    }",
+   "",
+   "    return mktime( 8, 0, 0, $month, 5, $year ); // 08:00 LT",
+   "}",
+   "",
+   "add_action( 'petshop_pragma_monthly_export', function() {",
+   "    // SAUGIKLIS: siusti tik kai production mode ijungtas",
+   "    if ( ! get_option( 'petshop_pragma_production_mode', false ) ) {",
+   "        petshop_pragma_log( 'Automatinis eksportas PRALEISTAS — production mode isjungtas' );",
+   "        wp_schedule_single_event( petshop_pragma_next_run_time(), 'petshop_pragma_monthly_export' );",
+   "        return;",
+   "    }",
+   "",
+   "    $now        = current_time( 'timestamp' );",
+   "    $prev_month = (int) date( 'n', strtotime( '-1 month', $now ) );"
+  ],
+  "grep": [
+   "3: * Plugin Name: Petshop Pragma Export",
+   "4: * Description: Automatinis Pragma buhalterines sistemos eksportas",
+   "13: add_action( 'init', function() {",
+   "14: if ( ! wp_next_scheduled( 'petshop_pragma_monthly_export' ) ) {",
+   "16: $next_run = petshop_pragma_next_run_time();",
+   "17: wp_schedule_single_event( $next_run, 'petshop_pragma_monthly_export' );",
+   "21: function petshop_pragma_next_run_time() {",
+   "36: add_action( 'petshop_pragma_monthly_export', function() {",
+   "37: // SAUGIKLIS: siusti tik kai production mode ijungtas",
+   "38: if ( ! get_option( 'petshop_pragma_production_mode', false ) ) {",
+   "39: petshop_pragma_log( 'Automatinis eksportas PRALEISTAS — production mode isjungtas' );",
+   "40: wp_schedule_single_event( petshop_pragma_next_run_time(), 'petshop_pragma_monthly_export' );",
+   "48: petshop_pragma_run_export( $prev_year, $prev_month );",
+   "51: wp_schedule_single_event( petshop_pragma_next_run_time(), 'petshop_pragma_monthly_export' );",
+   "55: // 2. PAGRINDINE EKSPORTO FUNKCIJA",
+   "57: function petshop_pragma_run_export( $year, $month ) {",
+   "76: petshop_pragma_log( $period_label . ': nera uzsakymu' );",
+   "80: // Filtruojame - tik tie kurie turi AVPN numerį (PVM sąskaita faktūra = apmokėti)",
+   "81: // IAPV (išankstinė sąskaita = neapmokėti bankiniai) - NEEKSPORTUOJAME",
+   "85: $avpn     = $order->get_meta( '_petshop_avpn_number' );",
+   "87: // Tik jei doc_type = 'invoice' IR turi AVPN numerį",
+   "88: if ( $doc_type === 'invoice' && $avpn ) {",
+   "94: petshop_pragma_log( $period_label . ': nera AVPN saskaitu' );",
+   "99: $imones_content      = petshop_pragma_generate_imones( $valid_orders );",
+   "100: $pardavimai_content  = petshop_pragma_generate_pardavimai( $valid_orders );",
+   "101: $pardavimai_sum_content = petshop_pragma_generate_pardavimai_sum( $valid_orders );",
+   "114: $known_emails  = (array) get_option( 'petshop_pragma_known_emails', array() );",
+   "129: $new_order_nrs[] = $order->get_meta( '_petshop_avpn_number' ) . ' (' . $order->get_billing_first_name() . ' ' . $order->get_billing_last_name() . ')';",
+   "134: petshop_pragma_send_email(",
+   "144: update_option( 'petshop_pragma_known_emails', $updated );",
+   "152: petshop_pragma_log( $period_label . ': eksportas sekmingai. Uzsakymu: ' . count( $valid_orders ) . ', Nauju klientu: ' . count( $new_emails ) );",
+   "158: function petshop_pragma_generate_imones( $orders ) {",
+   "162: $client_id = petshop_pragma_get_client_id( $order );",
+   "163: $name      = petshop_pragma_get_client_name( $order );",
+   "164: $address   = petshop_pragma_clean_value( $order->get_billing_address_1() );",
+   "166: $phone     = petshop_pragma_clean_value( $order->get_billing_phone() );",
+   "167: $email     = petshop_pragma_clean_value( $order->get_billing_email() );",
+   "168: $company   = petshop_pragma_clean_value( $order->get_billing_company() );",
+   "202: function petshop_pragma_generate_pardavimai( $orders ) {",
+   "207: $avpn      = $order->get_meta( '_petshop_avpn_number' ); // Visada AVPN (filtras viršuje garantuoja)",
+   "208: $client_id = petshop_pragma_get_client_id( $order );",
+   "233: $avpn,            // 6: AVPN numeris",
+   "255: function petshop_pragma_generate_pardavimai_sum( $orders ) {",
+   "288: function petshop_pragma_send_email( $period_label, $txt_files, $new_pdfs, $new_order_nrs ) {",
+   "289: $production = get_option( 'petshop_pragma_production_mode', false );",
+   "291: // Gavėjas — production: info@audac.lt, test: terra@petshop.lt",
+   "292: $default_to = $production ? 'info@audac.lt' : 'terra@petshop.lt';",
+   "293: $to = apply_filters( 'petshop_pragma_recipient', $default_to );",
+   "295: $subject = ( $production ? '' : '[TEST] ' ) . 'Petshop.lt pardavimai ' . $period_label;",
+   "332: function petshop_pragma_get_client_id( $order ) {",
+   "347: function petshop_pragma_get_client_name( $order ) {",
+   "349: if ( $company ) return petshop_pragma_clean_value( $company );",
+   "355: return petshop_pragma_clean_value( $name );",
+   "358: function petshop_pragma_clean_value( $val ) {",
+   "363: function petshop_pragma_log( $message ) {",
+   "364: $log  = (array) get_option( 'petshop_pragma_log', array() );",
+   "373: update_option( 'petshop_pragma_log', $log );",
+   "377: // 8. ADMIN PUSLAPIS - rankinis eksportas + log",
+   "379: add_action( 'admin_menu', function() {",
+   "382: 'Pragma eksportas',",
+   "383: 'Pragma eksportas',",
+   "386: 'petshop_pragma_admin_page'",
+   "390: function petshop_pragma_admin_page() {",
+   "391: // Production mode toggle",
+   "392: if ( isset( $_POST['pragma_production_toggle'] ) && check_admin_referer( 'pragma_production_action' ) ) {",
+   "393: $current = get_option( 'petshop_pragma_production_mode', false );",
+   "394: update_option( 'petshop_pragma_production_mode', ! $current );",
+   "395: echo '<div class=\"notice notice-success\"><p>' . ( ! $current ? '✅ Production mode ĮJUNGTAS' : '⛔ Production mode IŠJUNGTAS' ) . '</p></div>';",
+   "398: // Rankinio eksporto apdorojimas",
+   "399: if ( isset( $_POST['pragma_export'] ) && check_admin_referer( 'pragma_export_action' ) ) {",
+   "400: $year  = (int) $_POST['export_year'];",
+   "401: $month = (int) $_POST['export_month'];",
+   "406: add_filter( 'petshop_pragma_recipient', function() { return 'terra@petshop.lt'; } );",
+   "409: petshop_pragma_run_export( $year, $month );",
+   "410: echo '<div class=\"notice notice-success\"><p>Eksportas paleistas! ' . ( $test ? '(TEST — siusta tik Jums)' : '' ) . ' Patikrinkite el. paštą ir žurnalą",
+   "415: update_option( 'petshop_pragma_known_emails', array() );",
+   "419: $known_count = count( (array) get_option( 'petshop_pragma_known_emails', array() ) );",
+   "420: $log         = (array) get_option( 'petshop_pragma_log', array() );",
+   "421: $next_run    = wp_next_scheduled( 'petshop_pragma_monthly_export' );",
+   "422: $production  = get_option( 'petshop_pragma_production_mode', false );",
+   "426: <h1>Pragma buhalterinis eksportas</h1>",
+   "428: <!-- PRODUCTION MODE -->",
+   "429: <div style=\"background:<?php echo $production ? '#d4edda' : '#fff3cd'; ?>;padding:20px;margin:20px 0;border:1px solid <?php echo $production ? '#28a74",
+   "431: <?php echo $production ? '✅ Production mode — ĮJUNGTAS' : '⛔ Production mode — IŠJUNGTAS (test)'; ?>",
+   "434: <?php if ( $production ) : ?>",
+   "435: Automatinis eksportas siunčiamas į <strong>info@audac.lt</strong>.",
+   "437: Automatinis eksportas NEBUS siunčiamas. Rankinis eksportas siunčiamas TIK Jums (terra@petshop.lt).",
+   "442: <?php wp_nonce_field( 'pragma_production_action' ); ?>",
+   "443: <input type=\"submit\" name=\"pragma_production_toggle\" class=\"button <?php echo $production ? 'button-secondary' : 'button-primary'; ?>\"",
+   "444: value=\"<?php echo $production ? '⛔ Išjungti production mode' : '✅ Įjungti production mode (prieš launch!)'; ?>\"",
+   "445: onclick=\"return confirm('<?php echo $production ? 'Išjungti? Automatinis siuntimas sustabdomas.' : 'Įjungti? Eksportas pradės siųsti į info@audac.lt!'",
+   "451: <p>Kitas automatinis eksportas: <strong><?php echo $next_run ? date( 'Y-m-d H:i', $next_run ) : 'nesuplanuotas'; ?></strong></p>",
+   "456: <h2>Rankinis eksportas</h2>",
+   "458: <?php wp_nonce_field( 'pragma_export_action' ); ?>",
+   "459: <label>Metai: <input type=\"number\" name=\"export_year\" value=\"<?php echo date('Y'); ?>\" min=\"2024\" max=\"2030\"></label>",
+   "461: <label>Mėnuo: <input type=\"number\" name=\"export_month\" value=\"<?php echo date('n') == 1 ? 12 : date('n') - 1; ?>\" min=\"1\" max=\"12\"></label>",
+   "463: <?php if ( ! $production ) : ?>",
+   "467: <input type=\"submit\" name=\"pragma_export\" class=\"button button-primary\" value=\"Eksportuoti ir siųsti\">",
+   "472: <h2>Priskirti AVPN numerius esamiems užsakymams</h2>",
+   "473: <p>Naudoti vieną kartą — priskiria AVPN numerius visiems <strong>completed</strong> užsakymams kurie jo neturi.</p>",
+   "482: if ( ! $o->get_meta( '_petshop_avpn_number' ) ) {",
+   "483: // Tikriname ar jau turi IAPV (bankinis neapmoketas - praleisti)",
+   "485: // Priskiriame AVPN",
+   "486: $avpn = petshop_get_avpn_number( $o->get_id() );",
+   "493: echo '<div class=\"notice notice-success inline\"><p>Priskirta ' . $count . ' AVPN numerių.</p></div>';",
+   "498: <input type=\"submit\" name=\"pragma_backfill\" class=\"button button-secondary\" value=\"Priskirti AVPN numerius\" onclick=\"return confirm('Priskirti AVPN nu",
+   "512: <h2>Eksporto žurnalas</h2>"
+  ],
+  "opcijos": [
+   {
+    "option_name": "petshop_pragma_known_emails",
+    "v": "a:1:{i:0;s:20:\"raimundas@gyvunai.lt\";}"
+   },
+   {
+    "option_name": "petshop_pragma_log",
+    "v": "a:12:{i:0;a:2:{s:4:\"time\";s:19:\"2026-05-26 18:52:08\";s:7:\"message\";s:59:\"2026-05: eksportas sekmingai. Uzsakymu: 2, Nauj"
+   }
+  ],
+  "cron": [
+   "petshop_pragma_monthly_export"
+  ],
+  "uploads_pragma": [],
+  "temp_liko": 1
+ }
+}
