@@ -1,0 +1,29 @@
+{
+ "v": "dep-091158",
+ "kurimas": 200,
+ "sid": 4876,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "S1620 e5s",
+  "temp_istrinta": 1,
+  "shots": [
+   {
+    "n": "s1620_e5_svecio_uzsakymas_35813",
+    "u": "https://dev.avesa.lt/kasa/order-received/35813/?key=wc_order_hjsUZn3Oe0tIc",
+    "w": 1280,
+    "h": 800
+   }
+  ]
+ },
+ "shots": {
+  "s1620_e5_svecio_uzsakymas_35813": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/kasa/order-received/35813/?key=wc_order_hjsUZn3Oe0tIc",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": []
+  }
+ }
+}
