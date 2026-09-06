@@ -1,0 +1,68 @@
+{
+ "v": "dep-175822",
+ "kurimas": 200,
+ "sid": 4975,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "v": "S1632 v",
+  "temp_istrinta": 1,
+  "paprastos": {
+   "tikrinta": 890,
+   "lauk_suma": 16976,
+   "db_suma": 16989,
+   "nesutampa_pvz": [
+    "JOS0915 #18046 lauk93 db102 own",
+    "JOS0815 #18092 lauk4 db8 own"
+   ]
+  },
+  "variacijos": {
+   "tikrinta": 239,
+   "lauk_suma": 696,
+   "db_suma": 696,
+   "nesutampa_pvz": []
+  },
+  "partiju_s1632": 705,
+  "partiju_kiekis_suma": 15958,
+  "ping": 200,
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788718806|ldP88Dx0v69PBaHTR80pezyvC78DIjSmq9ZjnEemZFM|7d2c2da93b82764363d0485f086c757cf350c855110932056c74f120b2dfa51c"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1632_v_partija_kortele",
+    "u": "https://dev.avesa.lt/wp-admin/post.php?post=15373&action=edit",
+    "w": 1440,
+    "h": 1100
+   },
+   {
+    "n": "s1632_v_variacija_front",
+    "u": "https://dev.avesa.lt/product/tualetas-katems-su-remeliu-vidutinis-lettiera-max-435x34x11/",
+    "w": 1280,
+    "h": 1000
+   }
+  ]
+ },
+ "shots": {
+  "s1632_v_partija_kortele": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/wp-login.php?redirect_to=https%3A%2F%2Fdev.avesa.lt%2Fwp-admin%2Fpost.php%3Fpost%3D15373%26action%3Dedit&reauth=1",
+   "title": "Prisijungti ‹ Petshop.lt — WordPress",
+   "errors": [
+    "pageerror: TypeError: o(...) is not a function",
+    "pageerror: ReferenceError: ClipboardJS is not defined"
+   ]
+  },
+  "s1632_v_variacija_front": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/product/tualetas-katems-su-remeliu-vidutinis-lettiera-max-435x34x11/",
+   "title": "Tualetas katėms su rėmeliu vidutinis, Lettiera max (43,5x34x11) - Petshop.lt",
+   "errors": []
+  }
+ }
+}
