@@ -1,0 +1,232 @@
+{
+ "5": {
+  "v": "S1622 e2e",
+  "f": "5",
+  "temp_istrinta": 1,
+  "eiles_pries": {
+   "code": 200,
+   "nav": "Gauti 1Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 0Dropshipping 1Paruošta siųsti 0Klausimai 0Neapmokėti 0Visi 5+ Naujas užsakymas",
+   "warning": 0
+  },
+  "post": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "35821|užsakymas sukurtas — 11,34 €, Venipak kurjeris, laukiam pavedimo (UAB Avesa · AB Swedbank · LT127300010124940593, paskirtis „Užsakymas #35821“; klientui i",
+   "id": 35821
+  },
+  "id": 35821,
+  "uzs": {
+   "st": "on-hold",
+   "paid": false,
+   "total": "11.34",
+   "avpn": "AVPN000349",
+   "iss": "",
+   "siuntos": []
+  },
+  "stock_onhold": 29,
+  "sk0": {
+   "kur": "Neapmokėti · toliau: Pažymėti apmokėtu",
+   "btn": "Pažymėti apmokėtu",
+   "eil": [
+    "av"
+   ]
+  },
+  "eiles_onhold": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 0Dropshipping 1Paruošta siųsti 0Klausimai 0Neapmokėti 1Visi 6+ Naujas užsakymas",
+   "warning": 0
+  },
+  "apmoketa": {
+   "mygtukas": "Pažymėti apmokėtu",
+   "r": {
+    "code": 302,
+    "pd_ok": "apmoketa",
+    "pd": "35821"
+   },
+   "po": {
+    "kur": "Surinkti AV · toliau: Surinkti",
+    "btn": "Surinkti",
+    "eil": [
+     "av"
+    ]
+   },
+   "uzs": {
+    "st": "processing",
+    "paid": true,
+    "total": "11.34",
+    "avpn": "AVPN000349",
+    "iss": "",
+    "siuntos": []
+   }
+  },
+  "stock_po": 26,
+  "eiles_po": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 1Paruošta siųsti 0Klausimai 0Neapmokėti 0Visi 6+ Naujas užsakymas",
+   "warning": 0
+  }
+ },
+ "v": "dep-125902",
+ "kurimas": 200,
+ "sid": 4912,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Z": {
+  "v": "S1622 e2e",
+  "f": "Z",
+  "temp_istrinta": 0,
+  "ids": [
+   35816,
+   35817,
+   35818,
+   35819,
+   35820,
+   35821
+  ],
+  "uzs": {
+   "0:35816": {
+    "st": "completed",
+    "paid": true,
+    "total": "8.89",
+    "avpn": "AVPN000344",
+    "iss": "{\"av\":{\"laikas\":\"2026-09-06 15:53:46\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"}}",
+    "siuntos": [
+     {
+      "sandelis": "av",
+      "kodas": "E2E",
+      "manifest": "07267260906E2E",
+      "numeriai": [
+       "V07267E1E2E001"
+      ],
+      "data": "2026-09-06 15:53:42"
+     }
+    ]
+   },
+   "1:35817": {
+    "st": "processing",
+    "paid": true,
+    "total": "15.08",
+    "avpn": "AVPN000345",
+    "iss": "",
+    "siuntos": [
+     {
+      "sandelis": "vf",
+      "kodas": "E2E",
+      "manifest": "07267260906E2E",
+      "numeriai": [
+       "V07267E1E2E002"
+      ],
+      "data": "2026-09-06 15:53:59"
+     }
+    ]
+   },
+   "2:35818": {
+    "st": "completed",
+    "paid": true,
+    "total": "15.08",
+    "avpn": "AVPN000346",
+    "iss": "{\"vf\":{\"laikas\":\"2026-09-06 15:55:51\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"}}",
+    "siuntos": [
+     {
+      "sandelis": "vf",
+      "kodas": "E2E",
+      "manifest": "07267260906E2E",
+      "numeriai": [
+       "V07267E1E2E002"
+      ],
+      "data": "2026-09-06 15:55:42"
+     }
+    ]
+   },
+   "3:35819": {
+    "st": "completed",
+    "paid": true,
+    "total": "11.33",
+    "avpn": "AVPN000347",
+    "iss": "{\"av\":{\"laikas\":\"2026-09-06 15:56:24\",\"kas\":\"Testuotojas\",\"kanalas\":\"web\"}}",
+    "siuntos": [
+     {
+      "sandelis": "av",
+      "kodas": "E2E",
+      "manifest": "07267260906E2E",
+      "numeriai": [
+       "V07267E1E2E003"
+      ],
+      "data": "2026-09-06 15:56:21"
+     }
+    ]
+   },
+   "4:35820": {
+    "st": "completed",
+    "paid": true,
+    "total": "2.60",
+    "avpn": "AVPN000348",
+    "iss": "{\"av\":{\"laikas\":\"2026-09-06 15:58:10\",\"kas\":\"Testuotojas\",\"kanalas\":\"atsiemimas\"}}",
+    "siuntos": []
+   },
+   "5:35821": {
+    "st": "processing",
+    "paid": true,
+    "total": "11.34",
+    "avpn": "AVPN000349",
+    "iss": "",
+    "siuntos": []
+   }
+  },
+  "eiles": {
+   "code": 200,
+   "nav": "Gauti 2Neišrūšiuoti 0Laukiam iš tiekėjų 0Surinkti AV 1Dropshipping 1Paruošta siųsti 0Klausimai 0Neapmokėti 0Visi 6+ Naujas užsakymas",
+   "warning": 0
+  },
+  "dev_pastas": {
+   "n": 17,
+   "temos": [
+    "Naujas užsakymas Nr. 35816 — 2026-09-06 → uzsakymai@petshop.lt [0]",
+    "Jūsų užsakymas Nr. 35816 — apmokėjimas gautas → s1609.klientas@avesa.lt [0]",
+    "Naujas užsakymas Nr. 35817 — 2026-09-06 → uzsakymai@petshop.lt [0]",
+    "Jūsų užsakymas Nr. 35817 — apmokėjimas gautas → s1609.klientas@avesa.lt [0]",
+    "Naujas užsakymas Nr. 35818 — 2026-09-06 → uzsakymai@petshop.lt [0]",
+    "Jūsų užsakymas Nr. 35818 — apmokėjimas gautas → s1609.klientas@avesa.lt [0]",
+    "[PERSIŲSTI Vetfarmas] užsakymas 2026-09-06 → terra@petshop.lt [0]",
+    "Naujas užsakymas Nr. 35819 — 2026-09-06 → uzsakymai@petshop.lt [0]",
+    "Jūsų užsakymas Nr. 35819 — apmokėjimas gautas → s1609.klientas@avesa.lt [0]",
+    "[PERSIŲSTI Vetfarmas] UAB Avesa · prekių užsakymas 2026-09-06 → terra@petshop.lt [0]",
+    "Naujas užsakymas Nr. 35820 — 2026-09-06 → uzsakymai@petshop.lt [0]",
+    "Jūsų užsakymas Nr. 35820 — apmokėjimas gautas → e2e.atsiemimas@dev.avesa.lt [0]",
+    "Jūsų užsakymas Nr. 35820 paruoštas atsiimti — Petshop.lt → e2e.atsiemimas@dev.avesa.lt [0]",
+    "Užsakymas Nr. 35820 atsiimtas — PVM sąskaita faktūra Nr. AVPN000348 → e2e.atsiemimas@dev.avesa.lt [1]",
+    "Naujas užsakymas Nr. 35821 — 2026-09-06 → uzsakymai@petshop.lt [0]",
+    "Jūsų užsakymas Nr. 35821 gautas - Petshop.lt → s1609.klientas@avesa.lt [1]",
+    "Jūsų užsakymas Nr. 35821 — apmokėjimas gautas → s1609.klientas@avesa.lt [0]"
+   ]
+  },
+  "archyvas": [
+   "2026-09-06 15:56:11 Tiekimo partija #18 · Vetfarmas",
+   "2026-09-06 15:55:48 Perdavimas tiekėjui: Vetfarmas · 1 užsak.",
+   "2026-09-06 15:01:35 Perdavimas tiekėjui: Vetfarmas · 1 užsak. + partija #17 į AV"
+  ],
+  "web_dienos_dev_istrinta": 0,
+  "web_dienos_liko": 0,
+  "tiekimas": [
+   {
+    "id": "18",
+    "tiekejas": "vf",
+    "busena": "gauta"
+   }
+  ],
+  "skait": {
+   "avpn": "350",
+   "iapv": "169"
+  },
+  "likuciai": {
+   "19475": 26,
+   "19708": 15,
+   "35357": 4,
+   "18154_av": 3,
+   "25411_av": 0
+  },
+  "temp_liko": 1
+ }
+}
