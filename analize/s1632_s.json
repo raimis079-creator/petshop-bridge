@@ -1,0 +1,48 @@
+{
+ "v": "dep-180106",
+ "kurimas": 200,
+ "sid": 4976,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "S1632 s",
+  "temp_istrinta": 1,
+  "pvz_partija": {
+   "product_id": "12484",
+   "kiekis_liko": "729",
+   "savikaina_eur": "19.7100"
+  },
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788718967|PMd4F46xK4rz6TKUcLOCYvyx5Ax2abKobaBYL3gewXg|86358ef33b560a7e3c2e8d165b794b7f40a8bd79e25c634350a4335af918eb00"
+   },
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788718967|PMd4F46xK4rz6TKUcLOCYvyx5Ax2abKobaBYL3gewXg|20e3b3657d07557906e3ba131270920210e94647d49f88bdce04526b1ac66f3b"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1632_s_preke_partija",
+    "u": "https://dev.avesa.lt/wp-admin/post.php?post=12484&action=edit",
+    "w": 1440,
+    "h": 1400,
+    "eval": "(()=>{var e=[...document.querySelectorAll('h2,h3,strong,label')].find(x=>/Partij/i.test(x.textContent)); if(e) e.scrollIntoView(); return !!e;})()"
+   }
+  ]
+ },
+ "shots": {
+  "s1632_s_preke_partija": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/post.php?post=12484&action=edit",
+   "title": "Redaguoti produktą “Family Dog Adult Medium visavertis pašaras suaugusiems šunims su ėriena ir ryžiais 15kg” ‹ Petshop.lt — WordPress",
+   "errors": [
+    "pageerror: Error: Minified React error #299; visit https://reactjs.org/docs/error-decoder.html?invariant=299 for the full message or use the non-minified dev environment for full errors and additional helpful warnings."
+   ],
+   "eval": false
+  }
+ }
+}
