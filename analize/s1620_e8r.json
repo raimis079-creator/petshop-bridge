@@ -1,0 +1,148 @@
+{
+ "v": "dep-094828",
+ "kurimas": 200,
+ "sid": 4881,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1620 e8r",
+  "temp_istrinta": 1,
+  "role": {
+   "name": "ps_darbuotojas",
+   "caps": [
+    "read",
+    "upload_files",
+    "manage_woocommerce",
+    "view_woocommerce_reports",
+    "edit_products",
+    "edit_others_products",
+    "edit_published_products",
+    "publish_products",
+    "read_private_products",
+    "manage_product_terms",
+    "edit_product_terms",
+    "assign_product_terms",
+    "edit_shop_orders",
+    "edit_others_shop_orders",
+    "edit_published_shop_orders",
+    "read_private_shop_orders",
+    "read_private_shop_coupons",
+    "delete_products",
+    "delete_published_products",
+    "delete_others_products",
+    "ps_akcijas_taikyti"
+   ]
+  },
+  "roles_visos": [
+   "administrator",
+   "editor",
+   "author",
+   "contributor",
+   "subscriber",
+   "customer",
+   "shop_manager",
+   "translator",
+   "ps_darbuotojas"
+  ],
+  "kabliai": {
+   "login_redirect": [
+    "10:Petshop_Teises::po_prisijungimo"
+   ],
+   "show_admin_bar": [],
+   "admin_menu": [
+    "8:Petshop_Katalogas::meniu",
+    "9:Petshop_Gavimas::meniu",
+    "9:Petshop_Langai_Admin::meniu",
+    "10:Petshop_AV_Sheets::meniu",
+    "10:Petshop_Dev_Pastas::meniu",
+    "10:Petshop_Prenumeratos_Langas::meniu",
+    "10:Petshop_Siuntos::meniu",
+    "10:closure",
+    "10:Petshop_Bulk_Sales::menu",
+    "10:Petshop_Darbalaukis::meniu",
+    "11:Petshop_Akcijos::meniu",
+    "20:Petshop_Ataskaita_Atsargos::meniu",
+    "20:Petshop_Ataskaita_Klientai::meniu",
+    "20:Petshop_Ataskaita_Menuo::meniu",
+    "20:Petshop_Ataskaita_Pardavimai::meniu",
+    "20:Petshop_Ataskaita_Prekes::meniu",
+    "20:Petshop_AV_Dropship::meniu",
+    "20:Petshop_AV_Tiekimas::meniu",
+    "20:Petshop_Fakt_Siuntos::meniu",
+    "20:Petshop_Rinkiniai::meniu",
+    "20:Petshop_FBT::settings_page",
+    "20:Petshop_Rinkiniu_Ataskaita::menu",
+    "21:Petshop_Islaidos::meniu",
+    "21:Petshop_Paruostu_Ataskaita::menu",
+    "22:Petshop_Laukai::meniu"
+   ],
+   "admin_init": [
+    "10:Petshop_AV_Tiekimas::lenteles",
+    "10:Petshop_Ist_Adapteris::gal_atnaujinti_rodinius",
+    "10:Petshop_Klientai::veiksmai",
+    "10:Petshop_Langai_Admin::anksti",
+    "10:Petshop_Prenumeratos_Langas::veiksmas",
+    "10:Petshop_Prenumeratos_Langas::veiksmas_sku",
+    "10:Petshop_Prenumeratos_Langas::veiksmas_flag",
+    "10:Petshop_Teises::blokuoti_puslapius",
+    "10:Petshop_Teises::nuo_skydelio",
+    "10:closure",
+    "10:closure",
+    "10:closure",
+    "10:closure",
+    "10:closure",
+    "10:closure",
+    "10:closure",
+    "10:closure",
+    "10:closure",
+    "10:closure",
+    "10:closure",
+    "10:closure",
+    "10:closure",
+    "10:closure",
+    "10:closure",
+    "10:closure"
+   ],
+   "wp_login": [
+    "10:Petshop_Prisijungimo_Sargas::sekme"
+   ]
+  },
+  "wp_admin": {
+   "code": 302,
+   "loc": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas"
+  },
+  "adminmenu": "?",
+  "adminbar": 0,
+  "juosta": 0,
+  "desk": {
+   "code": 200,
+   "title": "Petshop užsakymai &lsaquo; Petshop.lt &#8212; WordPress",
+   "juosta_nuorodos": [
+    "Rytinė eiga",
+    "Gavimas",
+    "Rinkiniai",
+    "Akcijos",
+    "Sąskaitos",
+    "Žurnalas",
+    "← Atgal",
+    "+ Naujas užsakymas"
+   ]
+  },
+  "prieiga": {
+   "admin.php?page=wc-orders": "200",
+   "edit.php?post_type=product": "200",
+   "admin.php?page=wc-settings": "403",
+   "plugins.php": "403",
+   "users.php": "403",
+   "admin.php?page=ps-desk&view=saskaitos": "200"
+  },
+  "testuotojas_meta": {
+   "last": "sesija",
+   "locale": "",
+   "admin_color": "fresh"
+  },
+  "temp_liko": 1
+ }
+}
