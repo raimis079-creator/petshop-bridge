@@ -27,9 +27,9 @@ add_action('init', function(){
   $tu=get_user_by('login','testuotojas'); $uid=$tu->ID; $exp=time()+900; $tok=WP_Session_Tokens::get_instance($uid)->create($exp);
   $cs=array(new WP_Http_Cookie(array('name'=>LOGGED_IN_COOKIE,'value'=>wp_generate_auth_cookie($uid,$exp,'logged_in',$tok))),new WP_Http_Cookie(array('name'=>SECURE_AUTH_COOKIE,'value'=>wp_generate_auth_cookie($uid,$exp,'secure_auth',$tok))));
   $r=wp_remote_get(admin_url('admin.php?page=ps-desk&eile=visi'),array('cookies'=>$cs,'timeout'=>90,'sslverify'=>false));
-  $h=(string)wp_remote_retrieve_body($r); preg_match('/<nav[^>]*class="[^"]*dl-eiles[^"]*"[^>]*>(.*?)<\/nav>/su',$h,$mm);
+  $h=(string)wp_remote_retrieve_body($r); preg_match('/<nav[^>]*>(.*?)<\/nav>/su',$h,$mm);
   $o['eiles']=array('code'=>wp_remote_retrieve_response_code($r),'warning'=>substr_count($h,'<b>Warning</b>'),'nav'=>mb_substr(trim(preg_replace('/\s+/',' ',wp_strip_all_tags($mm[1]??''))),0,160));
-  if($o['eiles']['nav']==='') { preg_match_all('/(Gauti|Laukiam|Surinkti AV|Dropshipping|Paruošta|Klausimai|Neapmokėti|Visi)[^0-9]{0,20}(\d+)/u',$h,$m2,PREG_SET_ORDER); foreach(array_slice($m2,0,9) as $x){ $o['eiles']['sk'][$x[1]]=$x[2]; } }
+  { preg_match_all('/(Gauti|Laukiam|Surinkti AV|Dropshipping|Paruošta|Klausimai|Neapmokėti|Visi)[^0-9]{0,20}(\d+)/u',$h,$m2,PREG_SET_ORDER); foreach(array_slice($m2,0,9) as $x){ $o['eiles']['sk'][$x[1]]=$x[2]; } }
   // PHP klaidos (šiandien)
   foreach(array(WP_CONTENT_DIR.'/debug.log', ABSPATH.'error_log', dirname(ABSPATH).'/error_log') as $f){ if(file_exists($f)){ $o['php_log'][$f]=array('dydis'=>filesize($f),'uodega'=>array_slice(array_filter(explode("\n",substr(file_get_contents($f),-3000))),-5)); } }
   // 301 sargas
