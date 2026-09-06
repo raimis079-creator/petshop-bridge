@@ -1,0 +1,219 @@
+{
+ "v": "dep-143641",
+ "kurimas": 200,
+ "sid": 4932,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1625 r2",
+  "temp_istrinta": 1,
+  "vp_options": [
+   {
+    "option_name": "venipak_pack_number",
+    "v": "1000058"
+   },
+   {
+    "option_name": "shopup_venipak_shipping_settings",
+    "v": "a:23:{s:36:\"shopup_venipak_shipping_field_userid\";s:5:\"07267\";s:38:\"shopup_venipak_shipping_field_username\";s:7:\"Avesa97\";s:38:\"shopup_venipak_shipping_field_password\";s:8:\"avesazoo\";s:45:\"shopup_venipak_shipping_field_firstpacknumber\";i:1000057;s:38:\"shopup_venipak_shipping_field_manifest\";s:3:\"001\";s:41:\"shopup_venipak_shipping_field_labelformat\";s:7:\"sticker\";s:45:\"shopup_venipak_shipping_field_maxpackproducts\";s:2:\"20\";s:44:\"shopup_venipak_shipping_field_return_service\";s:1:\"0\";s:42:\"shopup_venipak_shipping_field_ismapenabled\";s:2:\"on\";s:45:\"shopup_venipak_shipping_field_googlemapapikey\";s"
+   },
+   {
+    "option_name": "woocommerce_shopup_venipak_shipping_courier_method_2_settings",
+    "v": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"3.30\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:2:\"50\";s:28:\"min_amount_for_free_shipping\";s:0:\"\";s:23:\"ignore_shipping_classes\";a:3:{i:0;s:3:\"235\";i:1;s:3:\"236\";i:2;s:3:\"237\";}}"
+   },
+   {
+    "option_name": "woocommerce_shopup_venipak_shipping_pickup_method_3_settings",
+    "v": "a:7:{s:5:\"title\";s:38:\"VENIPAK paštomatai/atsiėmimo punktai\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"1.78\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:5:\"24.90\";s:28:\"min_amount_for_free_shipping\";s:2:\"30\";s:23:\"ignore_shipping_classes\";s:0:\"\";}"
+   },
+   {
+    "option_name": "woocommerce_shopup_venipak_shipping_pickup_method_5_settings",
+    "v": "a:7:{s:5:\"title\";s:38:\"VENIPAK paštomatai/atsiėmimo punktai\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"2.47\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:5:\"24.90\";s:28:\"min_amount_for_free_shipping\";s:0:\"\";s:23:\"ignore_shipping_classes\";s:0:\"\";}"
+   },
+   {
+    "option_name": "woocommerce_shopup_venipak_shipping_courier_method_6_settings",
+    "v": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"6.60\";s:14:\"minimum_weight\";s:2:\"50\";s:14:\"maximum_weight\";s:2:\"70\";s:28:\"min_amount_for_free_shipping\";s:0:\"\";s:23:\"ignore_shipping_classes\";a:3:{i:0;s:3:\"234\";i:1;s:3:\"236\";i:2;s:3:\"237\";}}"
+   },
+   {
+    "option_name": "woocommerce_shopup_venipak_shipping_courier_method_7_settings",
+    "v": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"9.90\";s:14:\"minimum_weight\";s:2:\"70\";s:14:\"maximum_weight\";s:3:\"100\";s:28:\"min_amount_for_free_shipping\";s:0:\"\";s:23:\"ignore_shipping_classes\";a:3:{i:0;s:3:\"234\";i:1;s:3:\"235\";i:2;s:3:\"237\";}}"
+   },
+   {
+    "option_name": "woocommerce_shopup_venipak_shipping_courier_method_8_settings",
+    "v": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:5:\"20.65\";s:14:\"minimum_weight\";s:3:\"100\";s:14:\"maximum_weight\";s:3:\"200\";s:28:\"min_amount_for_free_shipping\";s:0:\"\";s:23:\"ignore_shipping_classes\";a:3:{i:0;s:3:\"234\";i:1;s:3:\"235\";i:2;s:3:\"236\";}}"
+   },
+   {
+    "option_name": "woocommerce_shopup_venipak_shipping_pickup_method_9_settings",
+    "v": "a:7:{s:5:\"title\";s:38:\"VENIPAK paštomatai/atsiėmimo punktai\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"1.78\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:5:\"24.90\";s:28:\"min_amount_for_free_shipping\";s:0:\"\";s:23:\"ignore_shipping_classes\";s:0:\"\";}"
+   },
+   {
+    "option_name": "woocommerce_shopup_venipak_shipping_courier_method_10_settings",
+    "v": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:5:\"24.79\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:3:\"100\";s:28:\"min_amount_for_free_shipping\";s:0:\"\";s:23:\"ignore_shipping_classes\";s:0:\"\";}"
+   },
+   {
+    "option_name": "ps_venipak_sekimas_paskutinis",
+    "v": "a:11:{s:6:\"laikas\";s:19:\"2026-09-06 17:37:36\";s:8:\"uzsakymu\";i:4;s:7:\"numeriu\";i:4;s:8:\"uzklausu\";i:4;s:8:\"pakeista\";i:0;s:2:\"lp\";i:0;s:8:\"issiusta\";i:0;s:10:\"pristatyta\";i:0;s:6:\"grizta\";i:0;s:7:\"klaidos\";i:4;s:1:\"s\";d:0.1;}"
+   }
+  ],
+  "tiek_snd": [
+   "936: \t\t// H261: į TĄ PATĮ tiekėjo manifestą kaip klientų siuntos (vienas kurjerio paėmimas).",
+   "937: \t\t$kodas = ( class_exists( 'Petshop_Desk' ) && isset( Petshop_Desk::MANIFESTAI[ $part->tiekejas ] ) )",
+   "938: \t\t\t? Petshop_Desk::MANIFESTAI[ $part->tiekejas ] : $n['manif'];",
+   "939: \t\t$man   = $n['userid'] . wp_date( 'ymd' ) . $kodas;",
+   "940: \t\t$packs = array(); for ( $i = 0; $i < $dezes; $i++ ) { $packs[] = self::pack_numeris(); }",
+   "941: \t\t$kg1   = round( $kg / $dezes, 2 ); if ( $kg1 < 0.1 ) { $kg1 = 0.1; }",
+   "942: \t\t// Paštomatas: Venipak leidžia 1 dėžę siuntai → n siuntų tame pačiame manifeste. Kurjeris: 1 siunta, n pack'ų.",
+   "943: \t\t$siuntu = ( 'pastomatas' === $part->pristatymas ) ? $dezes : 1;",
+   "944: ",
+   "945: \t\t$d = new DOMDocument( '1.0', 'utf-8' );",
+   "946: \t\t$desc = $d->createElement( 'description' );",
+   "947: \t\t$desc->setAttribute( 'type', '1' );",
+   "948: \t\t$d->appendChild( $desc );",
+   "949: \t\t$mf = $d->createElement( 'manifest' );",
+   "950: \t\t$mf->setAttribute( 'title', $man );",
+   "951: \t\t$desc->appendChild( $mf );",
+   "952: ",
+   "953: \t\tfor ( $s = 0; $s < $siuntu; $s++ ) {",
+   "954: \t\t$sh = $d->createElement( 'shipment' );",
+   "955: \t\t$mf->appendChild( $sh );",
+   "956: ",
+   "957: \t\t// SIUNTĖJAS — standartinis, kaip visose siuntose (plugino nustatymai).",
+   "958: \t\t$snd = $n['snd'];",
+   "959: \t\t$se  = $d->createElement( 'sender' );",
+   "960: \t\t$sh->appendChild( $se );",
+   "961: \t\t$se->appendChild( $d->createElement( 'name', $snd['name'] ) );",
+   "962: \t\t$se->appendChild( $d->createElement( 'company_code', $snd['code'] ) );",
+   "963: \t\t$se->appendChild( $d->createElement( 'country', $snd['country'] ) );",
+   "964: \t\t$se->appendChild( $d->createElement( 'city', $snd['city'] ) );",
+   "965: \t\t$se->appendChild( $d->createElement( 'address', $snd['addr'] ) );",
+   "966: \t\t$se->appendChild( $d->createElement( 'post_code', preg_replace( '/\\D/', '', $snd['post'] ) ) );",
+   "967: \t\t$se->appendChild( $d->createElement( 'contact_person', $snd['person'] ) );",
+   "968: \t\t$se->appendChild( $d->createElement( 'contact_tel', $snd['tel'] ) );",
+   "969: \t\t$se->appendChild( $d->createElement( 'contact_email', $snd['email'] ) );",
+   "970: "
+  ],
+  "sender_kode": [
+   "petshop-ataskaitu-agregavimas.php:207: /* Isemimai pagal dezes pilnuma — atskiri tipai, nes `kiek_dezeje` nera",
+   "petshop-ataskaitu-agregavimas.php:229: * skaiciuojamos dezes lygmeniu, tad ekranas gali saugiai sumuoti.",
+   "petshop-ataskaitu-agregavimas.php:360: 'dydis'     => (string) ( $it->get_meta( Petshop_Statistika::META_EIL_DYDIS, true ) ?: Petshop_Statistika::dezes_dydis( $pid ) ),",
+   "petshop-ataskaitu-agregavimas.php:361: 'skirtukas' => Petshop_Statistika::dezes_skirtukas( $pid ),",
+   "petshop-ataskaitu-agregavimas.php:384: /* rinkinio/dezes vaikas */",
+   "petshop-ataskaitu-agregavimas.php:429: /* Konteinerio eilute laiko PILNA dezes verte (konteineris + vaikai).",
+   "petshop-ataskaitu-eksportas.php:347: $dezes = Petshop_Rinkiniu_Ataskaita::dezes();",
+   "petshop-ataskaitu-eksportas.php:449: if ( ! $dz || ! isset( $dezes[ $dz ] ) ) { continue; }",
+   "petshop-ataskaitu-eksportas.php:487: $dezes[ $q['deze'] ] ?? ( '#' . $q['deze'] ),",
+   "petshop-ataskaitu-eksportas.php:535: array( 'v' => $dz ?: null, 't' => 'n' ), $dz ? ( $dezes[ $dz ] ?? get_the_title( $dz ) ) : '',",
+   "petshop-ataskaitu-eksportas.php:656: else { $praleista++; continue; }   /* surenkamos dezes — kitas langas */",
+   "petshop-av-dropship.php:741: $pp_dezes = max( 1, (int) ( $pp->dezes ?? 1 ) );",
+   "petshop-av-dropship.php:755: <?php elseif ( $pp->venipak_pack ) : ?>· siunta registruota: <?php echo esc_html( str_replace( ',', ', ', $pp->venipak_pack ) ); ?> (<?php echo (int) $pp_dezes; ?> lipduk",
+   "petshop-av-dropship.php:825: <?php if ( 'tiekejas' !== $pp->pristatymas && ! $pp->venipak_pack ) : ?>· lipdukų <input type=\"number\" name=\"partija_dezes\" min=\"1\" max=\"20\" value=\"<?php echo (int) $pp_d",
+   "petshop-av-dropship.php:1029: $pr = Petshop_AV_Tiekimas::paruosti( $pid, isset( $_POST['partija_dezes'] ) ? absint( $_POST['partija_dezes'] ) : 0 );",
+   "petshop-av-tiekimas.php:32: * „atvešite patys\"). Partija turi `dezes` (kiek lipdukų): kurjeriui — viena",
+   "petshop-av-tiekimas.php:207: dezes INT NOT NULL DEFAULT 1,",
+   "petshop-av-tiekimas.php:569: <input type=\"number\" step=\"1\" min=\"1\" max=\"20\" name=\"dezes\" value=\"<?php echo (int) max( 1, (int) ( $part->dezes ?? 1 ) ); ?>\">",
+   "petshop-av-tiekimas.php:840: if ( isset( $_POST['dezes'] ) ) { $pr_upd['dezes'] = max( 1, min( 20, absint( $_POST['dezes'] ) ) ); }",
+   "petshop-av-tiekimas.php:899: 'name'    => $n['shopup_venipak_shipping_field_sendername'] ?? '',",
+   "petshop-av-tiekimas.php:900: 'code'    => $n['shopup_venipak_shipping_field_sendercompanycode'] ?? '',",
+   "petshop-av-tiekimas.php:901: 'country' => $n['shopup_venipak_shipping_field_sendercountry'] ?? 'LT',",
+   "petshop-av-tiekimas.php:902: 'city'    => $n['shopup_venipak_shipping_field_sendercity'] ?? '',",
+   "petshop-av-tiekimas.php:903: 'addr'    => $n['shopup_venipak_shipping_field_senderaddress'] ?? '',",
+   "petshop-av-tiekimas.php:904: 'post'    => $n['shopup_venipak_shipping_field_senderpostcode'] ?? '',",
+   "petshop-av-tiekimas.php:905: 'person'  => $n['shopup_venipak_shipping_field_sendercontactperson'] ?? '',",
+   "petshop-av-tiekimas.php:906: 'tel'     => $n['shopup_venipak_shipping_field_sendercontacttel'] ?? '',",
+   "petshop-av-tiekimas.php:907: 'email'   => $n['shopup_venipak_shipping_field_sendercontactemail'] ?? '',",
+   "petshop-av-tiekimas.php:935: $dezes = max( 1, (int) ( $part->dezes ?? 1 ) );",
+   "petshop-av-tiekimas.php:940: $packs = array(); for ( $i = 0; $i < $dezes; $i++ ) { $packs[] = self::pack_numeris(); }",
+   "petshop-av-tiekimas.php:941: $kg1   = round( $kg / $dezes, 2 ); if ( $kg1 < 0.1 ) { $kg1 = 0.1; }",
+   "petshop-av-tiekimas.php:943: $siuntu = ( 'pastomatas' === $part->pristatymas ) ? $dezes : 1;",
+   "petshop-av-tiekimas.php:1065: public static function paruosti( $pid, $dezes = 0 ) {",
+   "petshop-av-tiekimas.php:1071: if ( $dezes > 0 && empty( $part->venipak_pack ) ) { // dėžių skaičius iš kortelės — kol siunta neregistruota",
+   "petshop-av-tiekimas.php:1072: $wpdb->update( self::t_partijos(), array( 'dezes' => max( 1, min( 20, (int) $dezes ) ) ), array( 'id' => $pid ) );",
+   "petshop-av-tiekimas.php:1073: $part->dezes = max( 1, min( 20, (int) $dezes ) );",
+   "petshop-av-tiekimas.php:1113: $dezes = max( 1, (int) ( $part->dezes ?? 1 ) );",
+   "petshop-av-tiekimas.php:1120: $h .= '<p style=\"font-size:12px;color:#444\">' . $dezes . ' dėž' . ( 1 === $dezes ? 'ė' : 'ės' ) . ' — lipdukai bus priede.</p>';",
+   "petshop-darbalaukis.php:1241: if ( isset( $_POST['dezes'] ) ) { $upd['dezes'] = max( 1, min( 20, absint( $_POST['dezes'] ) ) ); }",
+   "petshop-darbalaukis.php:1248: $_POST['uzsakymai'] = implode( ',', $ids_ds ); if ( $pid ) { $_POST['su_partija'] = $pid; $_POST['partija_dezes'] = $upd['dezes'] ?? 0; } else { unset( $_POST['su_partija"
+  ],
+  "tiek_vp": [
+   {
+    "id": "18",
+    "tiekejas": "vf",
+    "busena": "gauta",
+    "pristatymas": "tiekejas",
+    "venipak_pack": null,
+    "venipak_manifest": null
+   },
+   {
+    "id": "19",
+    "tiekejas": "vf",
+    "busena": "gauta",
+    "pristatymas": "tiekejas",
+    "venipak_pack": null,
+    "venipak_manifest": null
+   },
+   {
+    "id": "20",
+    "tiekejas": "vf",
+    "busena": "uzsakyta",
+    "pristatymas": "tiekejas",
+    "venipak_pack": null,
+    "venipak_manifest": null
+   },
+   {
+    "id": "21",
+    "tiekejas": "vf",
+    "busena": "uzsakyta",
+    "pristatymas": "kurjeris",
+    "venipak_pack": "V07267E1000058",
+    "venipak_manifest": "07267260906002"
+   }
+  ],
+  "ps_shipments": [
+   {
+    "id": "56",
+    "shipment_id": "shp_447d4b1e46d93255",
+    "order_id": "35819",
+    "carrier": "venipak",
+    "tracking_number": "V07267E1E2E003",
+    "tracking_url": "https://venipak.lt/tracking/track/V07267E1E2E003",
+    "source": "venipak_plugin",
+    "created_at": "2026-09-06 12:56:21",
+    "notified_at": null
+   },
+   {
+    "id": "55",
+    "shipment_id": "shp_0ebbda521463c0b4",
+    "order_id": "35818",
+    "carrier": "venipak",
+    "tracking_number": "V07267E1E2E002",
+    "tracking_url": "https://venipak.lt/tracking/track/V07267E1E2E002",
+    "source": "venipak_plugin",
+    "created_at": "2026-09-06 12:55:42",
+    "notified_at": null
+   },
+   {
+    "id": "54",
+    "shipment_id": "shp_6892b1021680b6b4",
+    "order_id": "35817",
+    "carrier": "venipak",
+    "tracking_number": "V07267E1E2E002",
+    "tracking_url": "https://venipak.lt/tracking/track/V07267E1E2E002",
+    "source": "venipak_plugin",
+    "created_at": "2026-09-06 12:53:59",
+    "notified_at": null
+   },
+   {
+    "id": "53",
+    "shipment_id": "shp_0eb5d73b427ef9e7",
+    "order_id": "35816",
+    "carrier": "venipak",
+    "tracking_number": "V07267E1E2E001",
+    "tracking_url": "https://venipak.lt/tracking/track/V07267E1E2E001",
+    "source": "venipak_plugin",
+    "created_at": "2026-09-06 12:53:42",
+    "notified_at": null
+   }
+  ],
+  "ivykiai_siandien": []
+ }
+}
