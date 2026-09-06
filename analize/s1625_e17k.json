@@ -1,7 +1,7 @@
 {
- "v": "dep-150607",
+ "v": "dep-150828",
  "kurimas": 200,
- "sid": 4943,
+ "sid": 4944,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
@@ -13,15 +13,15 @@
   "cookies": [
    {
     "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
-    "value": "testuotojas|1788709055|PoWb3CZRVsQuypK9eQiFv539omHi2qcYSaSO12SbtZl|1e26d874f0f3702087d0ecb4812e089b167987334e586e2059909c51ece13167"
+    "value": "testuotojas|1788709198|gIV2LjVlYRDoJjzkftDumkibLxxq7pg9FLlfkz3vw6B|8c4b6a1aad325f244ea52cc43de4c425d973526974be5ccd381482fd7312c575"
    },
    {
     "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
-    "value": "testuotojas|1788709055|PoWb3CZRVsQuypK9eQiFv539omHi2qcYSaSO12SbtZl|62d5ab3288d67b71de885532f24eb06f98f8c6d838eb0d9f06e1ce1b6a2dbf93"
+    "value": "testuotojas|1788709198|gIV2LjVlYRDoJjzkftDumkibLxxq7pg9FLlfkz3vw6B|170542c74474353a2c892d64424b96a6e923cfe94eaec71397b8cb9fdc049492"
    },
    {
     "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
-    "value": "testuotojas|1788709055|PoWb3CZRVsQuypK9eQiFv539omHi2qcYSaSO12SbtZl|5adfaac5575182e0707561ae222dde1e381683c132d9458b74f46068b6b05066"
+    "value": "testuotojas|1788709198|gIV2LjVlYRDoJjzkftDumkibLxxq7pg9FLlfkz3vw6B|56dd5ca52652a437bb4a462c76b2d9fd2e899d1dc92ecf7f980fd32c7486387a"
    }
   ],
   "shots": [
@@ -30,7 +30,8 @@
     "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
     "w": 1440,
     "h": 1000,
-    "click": "tr.eil[data-id=\"35821\"] td"
+    "click": "tr.eil[data-id=\"35821\"] td",
+    "eval": "(async()=>{ for(var i=0;i<20;i++){ if(document.getElementById('skVidT')) break; await new Promise(r=>setTimeout(r,500)); } await new Promise(r=>setTimeout(r,500)); return !!document.getElementById('skVidT'); })()"
    },
    {
     "n": "s1625_e17_dropshipping",
@@ -42,14 +43,15 @@
  },
  "shots": {
   "s1625_e17_skydelis_vidine": {
-   "status": 201,
+   "status": 200,
    "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=visi",
    "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
    "errors": [],
-   "clicked": "tr.eil[data-id=\"35821\"] td"
+   "clicked": "tr.eil[data-id=\"35821\"] td",
+   "eval": true
   },
   "s1625_e17_dropshipping": {
-   "status": 201,
+   "status": 200,
    "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk&eile=laiskai",
    "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
    "errors": []
