@@ -1,0 +1,63 @@
+{
+ "v": "dep-185737",
+ "kurimas": 200,
+ "sid": 4980,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1633 dns",
+  "NS": [
+   {
+    "d": "ns3.serveriai.lt.",
+    "TTL": 21600
+   },
+   {
+    "d": "ns1.serveriai.lt.",
+    "TTL": 21600
+   },
+   {
+    "d": "ns4.serveriai.lt.",
+    "TTL": 21600
+   },
+   {
+    "d": "ns2.serveriai.lt.",
+    "TTL": 21600
+   }
+  ],
+  "A": [
+   {
+    "d": "213.226.161.16",
+    "TTL": 3087
+   },
+   {
+    "d": "213.226.161.15",
+    "TTL": 3087
+   }
+  ],
+  "SOA": [
+   {
+    "d": "ns1.serveriai.lt. hostmaster.iv.lt. 2026073100 43200 3600 1209600 3600",
+    "TTL": 21600
+   }
+  ],
+  "www": [
+   {
+    "t": 5,
+    "d": "petshop.lt.",
+    "TTL": 3600
+   },
+   {
+    "t": 1,
+    "d": "213.226.161.15",
+    "TTL": 3600
+   },
+   {
+    "t": 1,
+    "d": "213.226.161.16",
+    "TTL": 3600
+   }
+  ]
+ }
+}
