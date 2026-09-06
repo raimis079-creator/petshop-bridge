@@ -1,0 +1,34 @@
+{
+ "v": "dep-193404",
+ "kurimas": 200,
+ "sid": 4988,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S5": {
+  "v": "S1634 s5",
+  "temp_istrinta": 1,
+  "smtp_buvo": [
+   "Petshop.lt",
+   "terra@petshop.lt",
+   true
+  ],
+  "wc_buvo": {
+   "woocommerce_new_order_settings": "uzsakymai@petshop.lt",
+   "woocommerce_cancelled_order_settings": "uzsakymai@petshop.lt",
+   "woocommerce_failed_order_settings": "uzsakymai@petshop.lt"
+  },
+  "smtp_dabar": [
+   "Petshop.lt",
+   "uzsakymai@petshop.lt",
+   true
+  ],
+  "wc_dabar": {
+   "woocommerce_new_order_settings": "uzsakymai@petshop.lt",
+   "woocommerce_cancelled_order_settings": "uzsakymai@petshop.lt",
+   "woocommerce_failed_order_settings": "uzsakymai@petshop.lt"
+  },
+  "ping": 200
+ }
+}
