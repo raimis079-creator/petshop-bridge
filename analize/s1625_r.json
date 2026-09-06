@@ -1,0 +1,172 @@
+{
+ "v": "dep-143438",
+ "kurimas": 200,
+ "sid": 4931,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1625 r",
+  "temp_istrinta": 1,
+  "dev_pastas_kodas": [
+   "5: * KODĖL: T3 testas (320 „laukia apmokėjimo“ užsakymų) išsiuntė ~320 tikrų WC laiškų į terra@petshop.lt (Raimio spam).",
+   "6: * Dev ir prod — tas pats WP (dev veidrodis), todėl skiriama pagal užklausos hostą: kai `HTTP_HOST` = dev.avesa.lt",
+   "7: * (arba bet kuris ne petshop.lt hostas), `pre_wp_mail` grąžina true (laiškas neišeina) ir įrašo į žurnalą",
+   "8: * `ps_dev_pastas_zurnalas` (paskutiniai 300: laikas, kam, tema, priedų sk., URL). Cron/CLI be hosto — neliečiama",
+   "9: * (prod cron laiškai eina). Išimtis: opcija `ps_dev_pastas_leisti=1` — praleisti (Raimiui, kai reikia tikro laiško iš dev).",
+   "10: * Langas: admin.php?page=ps-dev-pastas (manage_woocommerce). Testų gaudyklės (`pre_wp_mail` prior. 10) veikia toliau —",
+   "20: add_filter( 'pre_wp_mail', array( __CLASS__, 'gaudyti' ), 5, 2 );",
+   "25: /** Dev = užklausa ne per petshop.lt (www. irgi prod). */",
+   "27: $h = strtolower( (string) ( $_SERVER['HTTP_HOST'] ?? '' ) );",
+   "28: if ( '' === $h ) { return false; } // cron / CLI — nežinom, praleidžiam",
+   "29: return ! in_array( preg_replace( '/:\\d+$/', '', $h ), array( 'petshop.lt', 'www.petshop.lt' ), true );",
+   "33: if ( null !== $r || ! self::dev() || get_option( 'ps_dev_pastas_leisti' ) ) { return $r; }",
+   "34: $z = (array) get_option( self::OPT, array() );",
+   "36: update_option( self::OPT, array_slice( $z, -300 ), false );",
+   "44: $z = (array) get_option( self::OPT, array() ); $d = wp_date( 'Y-m-d' ); $n = 0; foreach ( $z as $x ) { if ( 0 === strpos( $x['laikas'] ?? '', $d ) ) { $n++; } }",
+   "45: echo '<div class=\"notice notice-info\" style=\"margin:8px 24px 0\"><p>Dev: laiškai neišsiunčiami' . ( get_option( 'ps_dev_pastas_leisti' ) ? ' — <b>IŠJUNGTA (ps_dev_pastas_leisti)</b>' : '' ) . ' · šiand",
+   "50: if ( ! empty( $_POST['ps_dev_pastas_valyti'] ) && check_admin_referer( 'ps_dev_pastas' ) ) { delete_option( self::OPT ); echo '<div class=\"notice notice-success\"><p>Žurnalas išvalytas.</p></div>'; }",
+   "51: $z = array_reverse( (array) get_option( self::OPT, array() ) );"
+  ],
+  "ps_dev_pastas_leisti": false,
+  "dev_pastas_n": 21,
+  "dev_pastas_pask": [
+   "2026-09-06 15:58:10 Užsakymas Nr. 35820 atsiimtas — PVM sąskaita faktūra Nr. AVP → e2e.atsiemimas@dev.avesa.lt",
+   "2026-09-06 16:00:17 Naujas užsakymas Nr. 35821 — 2026-09-06 → uzsakymai@petshop.lt",
+   "2026-09-06 16:00:17 Jūsų užsakymas Nr. 35821 gautas - Petshop.lt → s1609.klientas@avesa.lt",
+   "2026-09-06 16:00:22 Jūsų užsakymas Nr. 35821 — apmokėjimas gautas → s1609.klientas@avesa.lt",
+   "2026-09-06 16:46:43 [PERSIŲSTI Vetfarmas] UAB Avesa · prekių užsakymas 2026-09-0 → terra@petshop.lt",
+   "2026-09-06 17:13:15 [PERSIŲSTI Vetfarmas] UAB Avesa · prekių užsakymas 2026-09-0 → terra@petshop.lt",
+   "2026-09-06 17:16:27 [Petshop.lt] Slaptažodis pakeistas → terra@gyvunai.lt",
+   "2026-09-06 17:21:43 [PERSIŲSTI Vetfarmas] užsakymas 2026-09-06 → terra@petshop.lt"
+  ],
+  "uzs_siuntos": [
+   {
+    "order_id": "35816",
+    "v": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"E2E\",\"manifest\":\"07267260906E2E\",\"numeriai\":[\"V07267E1E2E001\"],\"data\":\"2026-09-06 15:53:42\"}}"
+   },
+   {
+    "order_id": "35817",
+    "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"E2E\",\"manifest\":\"07267260906E2E\",\"numeriai\":[\"V07267E1E2E002\"],\"data\":\"2026-09-06 15:53:59\"}}"
+   },
+   {
+    "order_id": "35818",
+    "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"E2E\",\"manifest\":\"07267260906E2E\",\"numeriai\":[\"V07267E1E2E002\"],\"data\":\"2026-09-06 15:55:42\"}}"
+   },
+   {
+    "order_id": "35819",
+    "v": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"E2E\",\"manifest\":\"07267260906E2E\",\"numeriai\":[\"V07267E1E2E003\"],\"data\":\"2026-09-06 15:56:21\"}}"
+   }
+  ],
+  "uzs_vp_data": [
+   {
+    "order_id": "35816",
+    "v": "{\"pack_numbers\":[\"V07267E1E2E001\"],\"manifest\":\"07267260906E2E\"}"
+   },
+   {
+    "order_id": "35817",
+    "v": "{\"pack_numbers\":[\"V07267E1E2E002\"],\"manifest\":\"07267260906E2E\"}"
+   },
+   {
+    "order_id": "35818",
+    "v": "{\"pack_numbers\":[\"V07267E1E2E002\"],\"manifest\":\"07267260906E2E\"}"
+   },
+   {
+    "order_id": "35819",
+    "v": "{\"pack_numbers\":[\"V07267E1E2E003\"],\"manifest\":\"07267260906E2E\"}"
+   }
+  ],
+  "uzs_visi": [
+   {
+    "id": "35816",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-06 12:53:35"
+   },
+   {
+    "id": "35817",
+    "status": "wc-processing",
+    "date_created_gmt": "2026-09-06 12:53:56"
+   },
+   {
+    "id": "35818",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-06 12:55:40"
+   },
+   {
+    "id": "35819",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-06 12:56:01"
+   },
+   {
+    "id": "35820",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-06 12:57:59"
+   },
+   {
+    "id": "35821",
+    "status": "wc-processing",
+    "date_created_gmt": "2026-09-06 13:00:16"
+   }
+  ],
+  "ivykiai_vp": [],
+  "sargas": [],
+  "ivykiai_cols": [
+   "id",
+   "laikas",
+   "diena",
+   "uzsakymas",
+   "eilute",
+   "sritis",
+   "veiksmas",
+   "rezultatas",
+   "busena",
+   "kanalas",
+   "kas",
+   "kas_vardas",
+   "pries",
+   "po",
+   "pastaba"
+  ],
+  "sargas_cols": [
+   "id",
+   "laikas",
+   "lygis",
+   "parasas",
+   "zinute",
+   "failas",
+   "eilute",
+   "url",
+   "kiek"
+  ],
+  "sender": [],
+  "bulakas_kode": [
+   "petshop-av-tiekimas.php:967: $se->appendChild( $d->createElement( 'contact_person', $snd['person'] ) );",
+   "petshop-av-tiekimas.php:991: $co->appendChild( $d->createElement( 'contact_person', $n['snd']['person'] ) );"
+  ],
+  "vp_plugin_failai": [
+   "index.php",
+   "uninstall.php",
+   "woocommerce-shopup-venipak-shipping.php"
+  ],
+  "vp_contact_kode": [
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:127: private $venipak_sender_contact_person;",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:134: private $venipak_sender_contact_tel;",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:141: private $venipak_sender_contact_email;",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:187: $this->venipak_sender_contact_person = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercontactperson');",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:188: $this->venipak_sender_contact_tel = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercontacttel');",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:189: $this->venipak_sender_contact_email = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercontactemail');",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:505: $contact_person = $document->createElement( 'contact_person', $this->venipak_sender_contact_person );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:506: $contact_tel = $document->createElement( 'contact_tel', $this->venipak_sender_contact_tel );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:507: $contact_email = $document->createElement( 'contact_email', $this->venipak_sender_contact_email );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:515: $sender->appendChild($contact_person);",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:551: $contact_person = $document->createElement('contact_person', $order_address['contact_person']);",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:552: $consignee->appendChild($contact_person);",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:598: $return_doc_consignee_contact_person = $document->createElement( 'contact_person', $this->venipak_sender_contact_person );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:599: $return_doc_consignee_contact_tel = $document->createElement( 'contact_tel', $this->venipak_sender_contact_tel );",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:607: $return_consignee->appendChild($return_doc_consignee_contact_person);",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:796: $contact_person = $is_shipping_address ? $order->get_shipping_first_name() . ' ' . $order->get_shipping_last_name() : $order->get_billing_first_name() . ' ' . $",
+   "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php:800: 'contact_person' => $contact_person,"
+  ]
+ }
+}
