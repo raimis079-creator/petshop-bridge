@@ -1,0 +1,334 @@
+{
+ "v": "dep-103219",
+ "kurimas": 200,
+ "sid": 4888,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T1": {
+  "v": "S1620 e13t",
+  "f": "T1",
+  "temp_istrinta": 1,
+  "eiles": "Gauti 7Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 64+ Na",
+  "a_nuo_iki": {
+   "n": 7,
+   "blogi": [],
+   "db": 13,
+   "forma": {
+    "nuo_val": 1,
+    "data_sel": 1,
+    "isvalyti": 1,
+    "riba": 0
+   }
+  },
+  "b_grynais": {
+   "n": 9,
+   "blogi": [],
+   "db_cod": 9
+  },
+  "c_atsaukti": {
+   "n": 13,
+   "blogi": []
+  },
+  "d_suma": {
+   "n": 14,
+   "blogi": []
+  },
+  "e_seniausi": {
+   "n": 54,
+   "rikiuota": 1,
+   "pirmas": "35414",
+   "pask": "35813"
+  },
+  "g_chip_plus_mok": {
+   "n": 5,
+   "blogi": []
+  },
+  "h_atsaukti_chip": {
+   "n": 13,
+   "bulk": 1,
+   "bulk_href": 1
+  },
+  "v_be_filtro": {
+   "n": 44,
+   "psl": 1,
+   "selects": [
+    "vykdymas",
+    "vezejas",
+    "mok",
+    "st",
+    "data",
+    "r"
+   ],
+   "inputs": [
+    "nuo",
+    "iki",
+    "suma_nuo",
+    "suma_iki",
+    "n"
+   ],
+   "rodyti": 1
+  }
+ },
+ "T2": {
+  "v": "S1620 e13t",
+  "f": "T2",
+  "temp_istrinta": 0,
+  "eiles_pries": "Gauti 7Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 64+ Na",
+  "atsaukti_n": 14,
+  "sargas": [
+   [
+    35087,
+    "cancelled",
+    1,
+    0,
+    "",
+    "",
+    0,
+    0,
+    "OK"
+   ],
+   [
+    35419,
+    "cancelled",
+    1,
+    0,
+    "pdf",
+    "siunt",
+    0,
+    0,
+    "OK"
+   ],
+   [
+    35424,
+    "cancelled",
+    1,
+    0,
+    "",
+    "",
+    0,
+    0,
+    "OK"
+   ],
+   [
+    35429,
+    "cancelled",
+    1,
+    0,
+    "pdf",
+    "siunt",
+    0,
+    0,
+    "OK"
+   ],
+   [
+    35430,
+    "cancelled",
+    1,
+    0,
+    "",
+    "siunt",
+    0,
+    0,
+    "OK"
+   ],
+   [
+    35432,
+    "cancelled",
+    1,
+    0,
+    "",
+    "",
+    0,
+    0,
+    "OK"
+   ],
+   [
+    35433,
+    "cancelled",
+    1,
+    0,
+    "",
+    "",
+    0,
+    0,
+    "OK"
+   ],
+   [
+    35434,
+    "cancelled",
+    1,
+    1,
+    "",
+    "",
+    0,
+    0,
+    "OK"
+   ],
+   [
+    35771,
+    "cancelled",
+    1,
+    0,
+    "",
+    "",
+    0,
+    0,
+    "OK"
+   ],
+   [
+    35772,
+    "cancelled",
+    1,
+    0,
+    "",
+    "",
+    0,
+    0,
+    "OK"
+   ],
+   [
+    35778,
+    "cancelled",
+    1,
+    0,
+    "",
+    "",
+    0,
+    0,
+    "OK"
+   ],
+   [
+    35779,
+    "cancelled",
+    1,
+    0,
+    "",
+    "",
+    0,
+    0,
+    "OK"
+   ],
+   [
+    35780,
+    "cancelled",
+    1,
+    0,
+    "",
+    "",
+    0,
+    0,
+    "OK"
+   ],
+   [
+    35791,
+    "cancelled",
+    0,
+    0,
+    "",
+    "",
+    1,
+    1,
+    "OK"
+   ]
+  ],
+  "trinamas": 35791,
+  "klik": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "0|užsakymas #35791 perkeltas į šiukšlinę (30 d. galima atstatyti WooCommerce → Užsakymai → Šiukšlinė)",
+   "loc": "/wp-admin/admin.php?page=ps-desk&pd_ok=dl_info&pd_nr=0%7Cu%C5%BEsakymas%20%2335791%20perkeltas%20%C4%AF%20%C5%A1iuk%C5%A"
+  },
+  "po": {
+   "st": "trash",
+   "pastaba": "Darbalaukis: darbuotojas — atšauktas neapmokėtas užsakymas perkeltas į šiukšlinę (Testuotojas).",
+   "ivykis": {
+    "veiksmas": "istrinti",
+    "rezultatas": "ok",
+    "kas_vardas": "Testuotojas",
+    "pastaba": "darbuotojas → šiukšlinė"
+   },
+   "db_status": "trash"
+  },
+  "sarase_liko": 0,
+  "eiles_po": "Gauti 7Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 64+ Na",
+  "ne_trinamas_test": {
+   "code": 302,
+   "pd_ok": "dl_klaida",
+   "pd": "35434|trinti negalima — tik atšauktas NEAPMOKĖTAS užsakymas be sąskaitos ir siuntų",
+   "loc": "/wp-admin/admin.php?page=ps-desk&eile=visi&pd_ok=dl_klaida&pd_nr=35434%7Ctrinti%20negalima%20%E2%80%94%20tik%20at%C5%A1a"
+  },
+  "35434_po": "cancelled"
+ },
+ "T3": {
+  "v": "S1620 e13t",
+  "f": "T3",
+  "temp_istrinta": 0,
+  "eiles_pries": "Gauti 7Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 64+ Na",
+  "bulk_n": 0,
+  "klik": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "|į šiukšlinę perkelta neapmokėtų atšauktų užsakymų: 0",
+   "loc": "/wp-admin/admin.php?page=ps-desk&eile=visi&b=atsaukti&pd_ok=dl_info&pd_nr=%7C%C4%AF%20%C5%A1iuk%C5%A1lin%C4%99%20perkelt"
+  },
+  "trash_dabar": [
+   "35791"
+  ],
+  "cancelled_liko": [
+   "35087",
+   "35419",
+   "35424",
+   "35429",
+   "35430",
+   "35432",
+   "35433",
+   "35434",
+   "35771",
+   "35772",
+   "35778",
+   "35779",
+   "35780"
+  ],
+  "liko_sargas": {
+   "35087": 0,
+   "35419": 0,
+   "35424": 0,
+   "35429": 0,
+   "35430": 0,
+   "35432": 0,
+   "35433": 0,
+   "35434": 0,
+   "35771": 0,
+   "35772": 0,
+   "35778": 0,
+   "35779": 0,
+   "35780": 0
+  },
+  "bulk_po": 0,
+  "eiles_po": "Gauti 7Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 64+ Na"
+ },
+ "T4": {
+  "v": "S1620 e13t",
+  "f": "T4",
+  "temp_istrinta": 0,
+  "cron_kitas": "2026-09-07 03:20",
+  "ataskaita": {
+   "laikas": "2026-09-06 13:34:29",
+   "i_siuksline": 0,
+   "galutinai": 0,
+   "klaidos": 0
+  },
+  "opcija": {
+   "laikas": "2026-09-06 13:34:29",
+   "i_siuksline": 0,
+   "galutinai": 0,
+   "klaidos": 0
+  },
+  "trash_n": 1,
+  "eiles": "Gauti 7Neišrūšiuoti 3Laukiam iš tiekėjų 1Surinkti AV 7Dropshipping 12Paruošta siųsti 0Klausimai 9Neapmokėti 3Visi 64+ Na",
+  "dev_pastas": 42,
+  "temp_liko": 1
+ }
+}
