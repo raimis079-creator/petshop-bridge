@@ -1,0 +1,231 @@
+{
+ "v": "dep-134521",
+ "kurimas": 200,
+ "sid": 4923,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "S1623 e11t",
+  "f": "T",
+  "temp_istrinta": 1,
+  "zb": {
+   "code": 200,
+   "h2": [
+    "Užsakyti iš ZB · 0 užs. · po 09:00 — rytoj",
+    "Užsakyti iš VF · 1 užs. · po 13:00 — rytoj"
+   ],
+   "tiek_mygtukai": "Užsakyti į atsargas iš: VF ZB Prins Belacor Quattro Ambrosia",
+   "warning": 0,
+   "juosta_tiekimas": 2,
+   "juosta_laiskai": 2,
+   "arch_nuoroda": 1,
+   "rink": 2
+  },
+  "josera_term": 314,
+  "ajax_josera": {
+   "n": 213,
+   "pvz": [
+    "Josera A/S Chicken&Rice 12,5 kg - sausas maistas šunims | sku JOS0943 | av 0 | tiek 100 | sav 16.9 | ",
+    "Josera A/S Duck + Potato begrūdis sausas pašaras šunims su antiena ir bulvėmis, 900 g | sku JOS0986 | av 0 | tiek 0 | sav 3.33 | ",
+    "Josera A/S Lamb + Rice sausas pašaras šunims su ėriena ir ryžiais, 12,5+2,5kg AKCIJA | sku JOS1023 | av 0 | tiek 1568 | sav 31.24 | "
+   ]
+  },
+  "ajax_isparduota_vf": {
+   "n": 179,
+   "pvz": [
+    "691758 FURminator Sensitive Skin kondicionierius šunims, 473ml | sku 404842215341 | av 0 | tiek 0 | sav 6.37 | ",
+    "8in1 Šukos šunims L | sku 404842215182 | av 0 | tiek 0 | sav 6.85 | ",
+    "Antos skanėstas šunims Capelin žuvis 90g | sku 20103 | av 0 | tiek 0 | sav 3.28 | "
+   ]
+  },
+  "ajax_q": {
+   "n": 3,
+   "pvz": [
+    "JOSERA FESTIVAL pašaras šunims su lašiša, 12,5 kg | sku JOS0913 | av 3 | tiek 696 | sav 31.15 | ",
+    "Josera Festival sausas pašaras šunims su lašiša, 3 kg | sku JOS0977 | av 0 | tiek 228 | sav 9.31 | ",
+    "Josera Festival sausas pašaras šunims su lašiša, 900 g | sku JOS0940 | av 0 | tiek 68 | sav 3.18 | "
+   ]
+  },
+  "ajax_zb_isp": {
+   "n": 57,
+   "pvz": [
+    "Chewllagen BAR Jautienos 12,5cm - M dėžė 24x105g | sku 01WH71307 | av 0 | tiek  | sav 60.87 | ",
+    "Chewllagen BAR Riešutų sviesto 12,5cm - M dėžė 24x105 g | sku 01WH71301 | av 0 | tiek  | sav 60.87 | ",
+    "DoggyeBag CHRISTMAS BALLS 6 vnt. COUNTER DISPLAY | sku 01DB0302 | av 0 | tiek  | sav 36.83 | "
+   ]
+  },
+  "nonce_vf": "yra",
+  "prideti": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "VF|į atsargas pridėta 2 prek. (2× JOSERA FESTIVAL pašaras šunims su lašiša; 1× Josera Festival sausas pašaras šunims su) — užsakymas tiekėjui #19"
+  },
+  "partija1": {
+   "id": "19",
+   "tiekejas": "vf",
+   "busena": "kaupiama",
+   "sukurta": "2026-09-06 16:46:38",
+   "uzsakyta": null,
+   "gauta": null,
+   "siuntos_kodas": null,
+   "pastaba": null,
+   "pristatymas": null,
+   "svoris": null,
+   "venipak_pack": null,
+   "venipak_manifest": null,
+   "dezes": "1",
+   "eil": [
+    {
+     "id": "31",
+     "product_id": "18154",
+     "order_id": null,
+     "qty": "2",
+     "qty_gauta": null
+    },
+    {
+     "id": "32",
+     "product_id": "25415",
+     "order_id": null,
+     "qty": "1",
+     "qty_gauta": null
+    }
+   ]
+  },
+  "kortele_eil": {
+   "eil_formos": 2,
+   "qty_inputs": [
+    "class=\"dl-eil-q\" onchange=\"this.form.submit()\" title=\"kiekis — pakeitus išsaugoma\"",
+    "class=\"dl-eil-q\" onchange=\"this.form.submit()\" title=\"kiekis — pakeitus išsaugoma\""
+   ],
+   "btn": [
+    "Rodyti",
+    "×",
+    "×",
+    "Pridėti pažymėtas (0)",
+    "Užsakyti iš VF (1 užs. + 2 prek. į AV)",
+    "Išsaugoti"
+   ]
+  },
+  "kiekis": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "VF|kiekis 3 — užsakymas tiekėjui #19"
+  },
+  "isimti": {
+   "code": 302,
+   "pd_ok": "dl_info",
+   "pd": "VF|prekė išimta iš užsakymo tiekėjui #19"
+  },
+  "partija2": {
+   "id": "19",
+   "tiekejas": "vf",
+   "busena": "kaupiama",
+   "sukurta": "2026-09-06 16:46:38",
+   "uzsakyta": null,
+   "gauta": null,
+   "siuntos_kodas": null,
+   "pastaba": null,
+   "pristatymas": null,
+   "svoris": null,
+   "venipak_pack": null,
+   "venipak_manifest": null,
+   "dezes": "1",
+   "eil": [
+    {
+     "id": "31",
+     "product_id": "18154",
+     "order_id": null,
+     "qty": "3",
+     "qty_gauta": null
+    }
+   ]
+  },
+  "uzsakyti": {
+   "code": 302,
+   "pd_ok": "dl_uzsak_av",
+   "pd": "VF|užsakyta iš VF į AV — užsakymas tiekėjui #19; laiškas išėjo tik man (terra@petshop.lt) — persiųsk tiekėjui"
+  },
+  "partija3": {
+   "id": "19",
+   "busena": "uzsakyta"
+  },
+  "gauta_forma": {
+   "gauta": 1,
+   "savikaina_laukai": [
+    "31=31.15"
+   ]
+  },
+  "gauta": {
+   "code": 302,
+   "pd_ok": "dl_gauta",
+   "pd": "VF|gauta į AV iš VF (užsakymas tiekėjui #19) — likučiai papildyti"
+  },
+  "partijos_po": [
+   {
+    "id": "22",
+    "product_id": "18154",
+    "gauta": "2026-09-06",
+    "kiekis_gautas": "3",
+    "kiekis_liko": "3",
+    "savikaina_eur": "31.5000",
+    "geriausia_iki": "2027-06-30",
+    "tiekejas": "vf",
+    "tiekimas_id": "19",
+    "pastaba": "Tiekimas: VF partija #19"
+   },
+   {
+    "id": "21",
+    "product_id": "17245",
+    "gauta": "2026-08-14",
+    "kiekis_gautas": "20",
+    "kiekis_liko": "20",
+    "savikaina_eur": "0.9700",
+    "geriausia_iki": "2028-11-14",
+    "tiekejas": "av",
+    "tiekimas_id": null,
+    "pastaba": "GAV26081408424712"
+   }
+  ],
+  "ps_partijos_n": [
+   10,
+   11
+  ],
+  "av_18154": [
+   3,
+   6
+  ],
+  "cost_price_18154": "",
+  "partija4": {
+   "id": "19",
+   "busena": "gauta",
+   "gauta": "2026-09-06 16:46:45"
+  },
+  "nurasymas_dry": {
+   "prasyta": 1,
+   "padengta": 1,
+   "nepadengta": 0,
+   "planas": [
+    {
+     "partijos_id": 22,
+     "imam": 1,
+     "buvo": 3,
+     "geriausia_iki": "2027-06-30",
+     "savikaina": 31.5
+    }
+   ],
+   "dry": true
+  },
+  "archyvas": {
+   "code": 200,
+   "h2": "Išsiųsti laiškai tiekėjams · 29",
+   "eil": 30,
+   "warning": 0
+  },
+  "dev_pastas_pask": [
+   "Jūsų užsakymas Nr. 35821 — apmokėjimas gautas",
+   "[PERSIŲSTI Vetfarmas] UAB Avesa · prekių užsakymas 2026-09-06"
+  ]
+ }
+}
