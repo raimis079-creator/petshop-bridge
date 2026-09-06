@@ -39,6 +39,12 @@ Nauji testiniai **#35827–#35832** (+refund #35833), lipdukai V07267E2F001–00
 - **PDF akimis (pdftoppm):** AVPN000354 (sumos sueina, PVM 21 %), KR-AVPN000105 (−1 vnt., originali AVPN000358), PPK000103 („Šeši eurai 59 ct“, parašų vietos) — visi teisingi. Lapas #35832 kadre: vežėjas/SKU/1 vnt. ✓. „Visi“ langas kadre švarus.
 - **Pastebėjimai (ne klaidos):** (1) AVPN/KR/PPK šablonuose kontaktas terra@petshop.lt — ar keisti į uzsakymai@? (base.php — tik su leidimu; Raimiui klausti); (2) sekimo laiškas klientui netikrintas (mano GET be varnelės → „klientui nepranešta“; automatika per cron testuota S1612–S1615, cron gyvas).
 - **Harness pamokos:** `prideti` sena forma nebeveikia (S1623 rinkiklis — 403, ne produkto klaida); `array_merge` su '1','2' raktais pernumeruoja → ids žemėlapį rašyti expliciškai.
+#### S1634 — PABAIGA (Raimio sprendimai)
+- **TTL→300 padaryta** (Raimis, 09-07 naktis). Verdiktas galutinis: **paleidimui niekas nemaišo**; Raimiui liko A/C smulkmenos (Excel, 35 prekės, savikainos, švieži eksportai an vakare, šablonų klausimas).
+- **Naujo sargo prieš paleidimą NEDAROM** (Raimis; „mažiau, ne daugiau“) — dengia esami cron sargai + watch-run/backup-run + rankinis `s1634_g.php`. Vietoj to TR ryto 3 rankinės patikros (T0 v1.2 §E): Paysera callback → processing; laiškai realiai išeina po dev-pastas OFF; s1634_g žalias. T1 kandidatas: SMTP klaidų sargas (nepavykęs laiškas → Klausimas).
+- Šablonų terra@→uzsakymai@ klausimas — Raimis dar neatsakė (STARTAS primins).
+- Dokumentai: T0 planas **v1.2**, STARTAS 09-07, log v1.9.41.
+
 - **VALYMUI T-0 (D2 papildymas):** #35816–#35833, partijos #18–#22, `ps_e2f_ids`, `ps_s1634_smtp_bak`, `ps_s1634_wc_bak`.
 
 ---
