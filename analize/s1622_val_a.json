@@ -1,0 +1,331 @@
+{
+ "v": "dep-124655",
+ "kurimas": 200,
+ "sid": 4907,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1622 valymas",
+  "f": "A",
+  "temp_istrinta": 1,
+  "pries": {
+   "uzs": 66,
+   "ref": 8
+  },
+  "lp_barkodai": [
+   {
+    "order_id": "35416",
+    "meta_key": "_woo_lithuaniapost_barcode",
+    "v": "CC000000001LT"
+   },
+   {
+    "order_id": "35416",
+    "meta_key": "_woo_lithuaniapost_parcel_create_error",
+    "v": "a:1:{i:0;O:8:\"stdClass\":3:{s:5:\"error\";s:18:\"INCORRECT RECEI"
+   },
+   {
+    "order_id": "35802",
+    "meta_key": "_woo_lithuaniapost_parcel_create_error",
+    "v": "a:1:{i:0;O:8:\"stdClass\":3:{s:5:\"error\";s:30:\"size must be be"
+   },
+   {
+    "order_id": "35804",
+    "meta_key": "_woo_lithuaniapost_parcel_create_error",
+    "v": "a:1:{i:0;O:8:\"stdClass\":3:{s:5:\"error\";s:30:\"size must be be"
+   },
+   {
+    "order_id": "35416",
+    "meta_key": "_woo_lithuaniapost_shipping_status_value",
+    "v": "lp-delivered"
+   },
+   {
+    "order_id": "35802",
+    "meta_key": "_woo_lithuaniapost_shipping_status_value",
+    "v": "lp-parcel-failed"
+   },
+   {
+    "order_id": "35804",
+    "meta_key": "_woo_lithuaniapost_shipping_status_value",
+    "v": "lp-parcel-failed"
+   }
+  ],
+  "vp_numeriai": [
+   {
+    "order_id": "35422",
+    "v": "{\"ambrosia\":{\"sandelis\":\"ambrosia\",\"kodas\":\"006\",\"manifest\":\"07267260902006\",\"numeriai\":[\"V07267E1000038\"],\"data\":\"2026-09-02 17:49:45\"}}"
+   },
+   {
+    "order_id": "35429",
+    "v": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260902001\",\"numeriai\":[\"V07267E1000031\",\"V07267E1000032\"],\"data\":\"2026-09-02 17:49:39\"}}"
+   },
+   {
+    "order_id": "35428",
+    "v": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260902001\",\"numeriai\":[\"V07267E1000033\",\"V07267E1000034\",\"V07267E1000035\"],\"data\":\"2026-09-02 17:49:39\"}}"
+   },
+   {
+    "order_id": "35427",
+    "v": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260902001\",\"numeriai\":[\"V07267E1000030\"],\"data\":\"2026-09-02 17:49:39\"}}"
+   },
+   {
+    "order_id": "35430",
+    "v": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260902001\",\"numeriai\":[\"V07267E1000041\"],\"data\":\"2026-09-02 17:53:27\"}}"
+   },
+   {
+    "order_id": "35437",
+    "v": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260903001\",\"numeriai\":[\"V07267E1000048\"],\"data\":\"2026-09-03 11:26:39\"}}"
+   },
+   {
+    "order_id": "35440",
+    "v": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"TEST-e8\",\"numeriai\":[\"V07267E1000099\"],\"data\":\"2026-09-04 12:27:16\"}}"
+   },
+   {
+    "order_id": "35426",
+    "v": "{\"belcor_tofu\":{\"sandelis\":\"belcor_tofu\",\"kodas\":\"007\",\"manifest\":\"07267260903007\",\"numeriai\":[\"V07267E1000053\"],\"data\":\"2026-09-03 16:22:45\"}}"
+   },
+   {
+    "order_id": "35421",
+    "v": "{\"prins\":{\"sandelis\":\"prins\",\"kodas\":\"005\",\"manifest\":\"07267260903005\",\"numeriai\":[\"V07267E1000046\"],\"data\":\"2026-09-03 11:23:31\"}}"
+   },
+   {
+    "order_id": "35438",
+    "v": "{\"prins\":{\"sandelis\":\"prins\",\"kodas\":\"005\",\"manifest\":\"07267260903005\",\"numeriai\":[\"V07267E1000047\"],\"data\":\"2026-09-03 11:23:31\"},\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260903001\",\"nume"
+   },
+   {
+    "order_id": "35417",
+    "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260902002\",\"numeriai\":[\"V07267E1000036\"],\"data\":\"2026-09-02 17:49:41\"}}"
+   },
+   {
+    "order_id": "35419",
+    "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260902002\",\"numeriai\":[\"V07267E1000039\"],\"data\":\"2026-09-02 17:49:57\"},\"ambrosia\":{\"sandelis\":\"ambrosia\",\"kodas\":\"006\",\"manifest\":\"07267260902006\""
+   },
+   {
+    "order_id": "35420",
+    "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260903002\",\"numeriai\":[\"V07267E1000054\"],\"data\":\"2026-09-03 16:28:58\"}}"
+   },
+   {
+    "order_id": "35443",
+    "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260903002\",\"numeriai\":[\"V07267E1000055\"],\"data\":\"2026-09-03 16:28:58\"}}"
+   },
+   {
+    "order_id": "35442",
+    "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260903002\",\"numeriai\":[\"V07267E1000056\"],\"data\":\"2026-09-03 16:28:58\"}}"
+   },
+   {
+    "order_id": "35441",
+    "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260903002\",\"numeriai\":[\"V07267E1000057\"],\"data\":\"2026-09-03 16:28:58\"}}"
+   },
+   {
+    "order_id": "35418",
+    "v": "{\"zb\":{\"sandelis\":\"zb\",\"kodas\":\"003\",\"manifest\":\"07267260902003\",\"numeriai\":[\"V07267E1000037\"],\"data\":\"2026-09-02 17:49:44\"}}"
+   }
+  ],
+  "kopija_uzs": 60131,
+  "kopija": {
+   "ps_shipments": 25,
+   "ps_fakt_siuntos": 25,
+   "ps_fakt_uzsakymai": 69,
+   "ps_fakt_eilutes": 113,
+   "ps_fakt_grazinimai": 11,
+   "ps_fakt_atsargos_d": 31765,
+   "ps_uzsakymu_ivykiai": 647,
+   "ps_tiekimas_eil": 11,
+   "ps_tiekimas": 8,
+   "ps_plan_events": 7,
+   "ps_carts": 131,
+   "ps_refill_tracking": 32,
+   "ps_email_jobs": 378,
+   "ps_event_log": 868,
+   "ps_action_tokens": 415,
+   "ps_ataskaitu_dienos": 838,
+   "ps_kontrole_dienos": 9,
+   "ps_web_ivykiai": 1106,
+   "ps_web_dienos": 0,
+   "ps_sargas_klaidos": 3198
+  },
+  "kabliai_nuimti": [
+   "woocommerce_delete_order Petshop_Siuntu_Valymas::istrinti",
+   "before_delete_post Petshop_Siuntu_Valymas::is_posto",
+   "woocommerce_order_status_changed Petshop_Juosta::isvalyti",
+   "woocommerce_order_status_changed Woo_Lithuaniapost_Admin_Order_Service::on_status_changed",
+   "woocommerce_order_status_changed Petshop_Faktai::statusas",
+   "woocommerce_order_status_changed Petshop_Uzsakymu_Ivykiai::busena",
+   "woocommerce_order_status_cancelled Petshop_AV_Reduce::grazinti"
+  ],
+  "trinta": {
+   "ref": 8,
+   "uzs": 66,
+   "klaidos": []
+  },
+  "liko_wc_orders": 0,
+  "lenteles": {
+   "ps_shipments": 25,
+   "ps_fakt_siuntos": 25,
+   "ps_fakt_uzsakymai": 69,
+   "ps_fakt_eilutes": 113,
+   "ps_fakt_grazinimai": 11,
+   "ps_fakt_atsargos_d": 31765,
+   "ps_uzsakymu_ivykiai": 647,
+   "ps_tiekimas_eil": 11,
+   "ps_tiekimas": 8,
+   "ps_plan_events": 7,
+   "ps_carts": 131,
+   "ps_refill_tracking": 32,
+   "ps_email_jobs": 378,
+   "ps_event_log": 868,
+   "ps_action_tokens": 415,
+   "ps_ataskaitu_dienos": 838,
+   "ps_kontrole_dienos": 9,
+   "ps_web_ivykiai": 1106,
+   "ps_web_dienos": false,
+   "ps_sargas_klaidos": 3198
+  },
+  "nasl": {
+   "order_stats": 12,
+   "order_items": 27,
+   "itemmeta": 235,
+   "product_lookup": 13,
+   "tax_lookup": 11,
+   "coupon_lookup": 0,
+   "orders_meta": 0,
+   "addresses": 0,
+   "opdata": 0
+  },
+  "customer_lookup": 26,
+  "pdf": {
+   "invoice": 93,
+   "creditnote": 4,
+   "receipt": 2
+  },
+  "opcijos": {
+   "ps_s1617_test": 1,
+   "ps_audit_ids": 1,
+   "ps_e3_oid": 1,
+   "ps_e3_oid2": 1,
+   "ps_s1621_oid": 1,
+   "ps_s1621b_oid": 1,
+   "ps_audit_mail": 1,
+   "ps_dev_pastas_zurnalas": 1
+  },
+  "kopija_dir": "/ps-backups/valymas-2026-09-06",
+  "kopija_failai": 22
+ },
+ "Q": {
+  "v": "S1622 valymas",
+  "f": "Q",
+  "temp_istrinta": 0,
+  "wc_orders": 0,
+  "lenteles": {
+   "ps_shipments": [
+    0,
+    0
+   ],
+   "ps_fakt_siuntos": [
+    0,
+    0
+   ],
+   "ps_fakt_uzsakymai": [
+    0,
+    0
+   ],
+   "ps_fakt_eilutes": [
+    0,
+    0
+   ],
+   "ps_fakt_grazinimai": [
+    0,
+    0
+   ],
+   "ps_fakt_atsargos_d": [
+    0,
+    0
+   ],
+   "ps_uzsakymu_ivykiai": [
+    0,
+    0
+   ],
+   "ps_tiekimas_eil": [
+    0,
+    0
+   ],
+   "ps_tiekimas": [
+    0,
+    0
+   ],
+   "ps_plan_events": [
+    0,
+    0
+   ],
+   "ps_carts": [
+    0,
+    0
+   ],
+   "ps_refill_tracking": [
+    0,
+    0
+   ],
+   "ps_email_jobs": [
+    0,
+    0
+   ],
+   "ps_event_log": [
+    0,
+    0
+   ],
+   "ps_action_tokens": [
+    0,
+    0
+   ],
+   "ps_ataskaitu_dienos": [
+    0,
+    0
+   ],
+   "ps_kontrole_dienos": [
+    0,
+    0
+   ],
+   "ps_web_ivykiai": [
+    0,
+    0
+   ],
+   "ps_web_dienos": [
+    423,
+    0
+   ],
+   "ps_sargas_klaidos": [
+    0,
+    0
+   ]
+  },
+  "wc": {
+   "wc_orders_meta": 0,
+   "wc_order_addresses": 0,
+   "woocommerce_order_items": 0,
+   "wc_order_stats": 0,
+   "wc_customer_lookup": 1
+  },
+  "pdf": {
+   "invoice": 0,
+   "creditnote": 0,
+   "receipt": 0
+  },
+  "eiles": {
+   "code": 200,
+   "nav": "",
+   "warning": 0
+  },
+  "ping": 200,
+  "likuciai": {
+   "19475": 32,
+   "19708": 16,
+   "35357": 6,
+   "18154_av": 2,
+   "18599_av": 38,
+   "19756_av": 1,
+   "16889_av": 1,
+   "16727_av": 1
+  },
+  "temp_liko": 1
+ }
+}
