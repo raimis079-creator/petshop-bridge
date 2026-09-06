@@ -1,0 +1,57 @@
+{
+ "v": "dep-154409",
+ "kurimas": 200,
+ "sid": 4952,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "K": {
+  "v": "S1627 k",
+  "temp_istrinta": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "inga|1788710442|rVx8SFVAEA7fTtcQovggms6CacNb7q7jpT3vuT0RMqX|5fb230019bd22e484875d6ac7abb87b9e9fa47197b4e3f7e7f9b63f4f4aaa5c7"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "inga|1788710442|rVx8SFVAEA7fTtcQovggms6CacNb7q7jpT3vuT0RMqX|0af488b8897b2a8f59751f6b322054b735eb5aadc3d6f973c1e74303e6f39432"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "inga|1788710442|rVx8SFVAEA7fTtcQovggms6CacNb7q7jpT3vuT0RMqX|832c04ca4c95e54414a07cda4bb8879d129f4ca7b8503cf5eb2d383d6af31956"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1627_juosta_ataskaitos_inga",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk",
+    "w": 1440,
+    "h": 500,
+    "click": ".psj-dd-b"
+   },
+   {
+    "n": "s1627_ataskaita_prekes_inga",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-prekes",
+    "w": 1440,
+    "h": 700
+   }
+  ]
+ },
+ "shots": {
+  "s1627_juosta_ataskaitos_inga": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-desk",
+   "title": "Petshop užsakymai ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "clicked": ".psj-dd-b"
+  },
+  "s1627_ataskaita_prekes_inga": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-prekes",
+   "title": "Prekių analizė ‹ Petshop.lt — WordPress",
+   "errors": []
+  }
+ }
+}
