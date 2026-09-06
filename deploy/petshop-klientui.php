@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Klientui v1.0.1 (S1628, Raimio kadras: prisijungęs kaip administratorius „ačiū“ puslapyje matė visus 4 mygtukus — v1.0 darbuotojams paliko viską):
+ *   front-end'e (užsakymo, „ačiū“, paskyros puslapiai, `print-order` endpoint'as) — VISIEMS tik `invoice`, nepriklausomai nuo teisių; admin'as ir `wp_ajax_print_order` — kaip buvo.
  * Petshop Klientui v1.0 (S1628, Raimis 09-06: „klientui reikia tik sąskaitos, o kvitų ir važtaraščių tikrai nereikia“)
  *
  * KAS: WCDN (WooCommerce Print Invoice & Delivery Notes 7.3) kliento pusėje — paskyros užsakymų sąraše, užsakymo
@@ -14,7 +16,6 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 add_filter( 'wcdn_template_types_from_order', function ( $types, $order ) {
-	if ( is_admin() && ! wp_doing_ajax() ) { return $types; }
-	if ( current_user_can( 'edit_shop_orders' ) ) { return $types; }
-	return in_array( 'invoice', (array) $types, true ) ? array( 'invoice' ) : array();
+	if ( is_admin() ) { return $types; } // WC admin langas ir `wp_ajax_print_order` — darbuotojams viskas
+	return in_array( 'invoice', (array) $types, true ) ? array( 'invoice' ) : array(); // v1.0.1: front-end — visiems tik sąskaita
 }, 20, 2 );
