@@ -1,0 +1,12 @@
+{
+ "v": "dep-140949",
+ "kurimas": 200,
+ "sid": 5048,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V7": {
+  "kont": "function open( $subject, $preheader = '' ) {\n\t\t$logo = self::logo_url();\n\t\tob_start();\n\t\t?><!DOCTYPE html>\n<html lang=\"lt\"><head>\n<meta charset=\"utf-8\">\n<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">\n<meta name=\"x-apple-disable-message-reformatting\">\n<title><?php echo esc_html( $subject ); ?></title>\n</head>\n<body style=\"margin:0;padding:0;background:<?php echo self::C_BG; ?>;font-family:Arial,Helvetica,sans-serif;color:<?php echo self::C_TEXT; ?>;-webkit-text-size-adjust:100%;\">\n<?php if ( $preheader ) : ?>\n<div style=\"display:none;max-height:0;overflow:hidden;opacity:0;mso-hide:all;\"><?php echo esc_html( $preheader ); ?></div>\n<?php endif; ?>\n<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"background:<?php echo self::C_BG; ?>;padding:24px 12px;\">\n<tr><td align=\"center\">\n<table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"max-width:600px;width:100%;background:<?php echo self::C_CARD; ?>;border-radius:12px;padding:32px 28px;\">\n<?php if ( $logo ) : ?>\n  <tr><td style=\"padding-bottom:22px;\">\n    <img src=\"<?php echo esc_url( $logo ); ?>\" alt=\"Petshop.lt\" width=\"150\" style=\"display:block;border:0;max-width:150px;height:auto;\">\n  </td></tr>\n<?php endif; ?>\n  <tr><td style=\"font-size:21px;font-weight:700;line-height:1.35;padding-bottom:14px;\"><?php echo esc_html( $subject ); ?></td></"
+ }
+}
