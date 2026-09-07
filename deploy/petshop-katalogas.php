@@ -1,12 +1,22 @@
 <?php
 /**
+ * Petshop Katalogas v8.7.3 (S1637) - sticky antraste veikia ir siaurame lange.
+ *
+ * KLAIDA (Raimio kadras 09-07): siauresniame lange (zoom / <=1400px CSS px)
+ * .pskat-lent-lauk gaudavo overflow-x:auto ir tapdavo sticky konteineriu -
+ * thead nebelipdavo prie juostos, kabodavo vidury saraso arba nuslinkdavo.
+ * Playwright 1366px: thead.top=-180 vietoj 100. FIX: media taisykle ISIMTA -
+ * siauras langas slenka horizontaliai VISAS (kaip Raimis ir daro), sticky
+ * kontekstas lieka viewport visais plociais. "Samoningas kompromisas" (S903)
+ * panaikintas.
+ *
  * Petshop Katalogas v8.7.2 (S1636) - sticky antraste seka juosta scrollinant.
  * v8.7.1 (S903) - STULPELIU ANTRASTE NEJUDA.
  *
  * SAVININKAS: "desineje puseje virsus nejudetu, ir as slinkdamas prekes
  * matyciau ka kiekvieno stulpelio reiksme." Antraste sticky prie juostos
- * apacios (--ps-virsus). Laukas nebe scroll konteineris placiam ekranui;
- * siauram (<=1400px) grazinamas overflow-x, ten antraste nuslenka.
+ * apacios (--ps-virsus). Laukas NIEKADA ne scroll konteineris (v8.7.3) -
+ * siauram langui horizontaliai slenka visas puslapis, sticky veikia visur.
  *
  * Petshop Katalogas v8.7 (S902) - NORMALUS DARBINIS LANGAS.
  *
@@ -9034,17 +9044,10 @@ class Petshop_Katalogas {
 		   Aukscio ribos NERA - lentele auga pagal turini, slenka puslapis. */
 		/* v8.7.1 (savininkas): stulpeliu antraste NEJUDA slenkant prekes -
 		   sticky prie virsutines juostos apacios. Kad sticky veiktu pries
-		   viso puslapio slinkti, laukas NEGALI buti scroll konteineris,
-		   todel overflow-x tik siauram ekranui (ten antraste nuslenka -
-		   samoningas kompromisas). */
+		   viso puslapio slinkti, laukas NEGALI buti scroll konteineris
+		   JOKIAM plociui (v8.7.3): siaurame lange horizontaliai slenka
+		   visas puslapis. */
 		.pskat-lent-lauk{border:1px solid #d3d8d2;border-radius:9px;background:#fff}
-		@media (max-width:1400px){
-			.pskat-lent-lauk{overflow-x:auto;
-				scrollbar-width:thin;scrollbar-color:#c3cbc5 transparent}
-			.pskat-lent-lauk::-webkit-scrollbar{height:11px}
-			.pskat-lent-lauk::-webkit-scrollbar-thumb{background:#c3cbc5;border-radius:6px}
-			.pskat-lent-lauk::-webkit-scrollbar-track{background:#f2f4f1}
-		}
 		/* Remeli pereme laukas - lentelei jo nebereikia. */
 		.pskat-lent-lauk .pskat-t{border:0;border-radius:0;overflow:visible}
 		.pskat-lent-lauk .pskat-t thead th{position:sticky;top:var(--ps-virsus,118px);z-index:6;
