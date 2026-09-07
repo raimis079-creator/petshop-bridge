@@ -1,0 +1,142 @@
+{
+ "v": "dep-195139",
+ "kurimas": 200,
+ "sid": 5093,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "j": {
+  "v": "S1637 j",
+  "temp_istrinta": 1,
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788811995|BgzPy89l9a9mouaojv9lIudKVUiZpDNQ3NSD0RaMuT5|0966db7ac975f1a92e737c4cdc80079dbbdcf9063e15142c7ee0052c197de953"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788811995|BgzPy89l9a9mouaojv9lIudKVUiZpDNQ3NSD0RaMuT5|e8df288dddac3ef72bbbece706bfdc61b55a1565df6bf1f8a5ba34232f581c8a"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788811995|BgzPy89l9a9mouaojv9lIudKVUiZpDNQ3NSD0RaMuT5|03cf61675b4bf59a298594e7fd0bc76bbd71355f166d9776e81d4d83049d23f6"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1637_j_1760",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&kruva=prekyboje&view=visos_kruvoje&q=tofu",
+    "w": 1760,
+    "h": 820,
+    "eval": "(async()=>{ window.scrollTo(0,600); await new Promise(r=>setTimeout(r,600));\n var cs=getComputedStyle(document.documentElement).getPropertyValue('--ps-virsus');\n var b=document.querySelector('.pskat-bar'); var th=document.querySelector('.pskat-lent-lauk .pskat-t thead th');\n var lauk=document.querySelector('.pskat-lent-lauk'); var lcs=lauk?getComputedStyle(lauk):null;\n return {virsus:cs, scrollY:window.scrollY, scrollX:window.scrollX,\n  bar: b?{top:Math.round(b.getBoundingClientRect().top),bottom:Math.round(b.getBoundingClientRect().bottom),pos:getComputedStyle(b).position}:null,\n  thead: th?{top:Math.round(th.getBoundingClientRect().top),pos:getComputedStyle(th).position,cssTop:getComputedStyle(th).top}:null,\n  lauk: lauk?{ovx:lcs.overflowX,ovy:lcs.overflowY,scrollH:lauk.scrollHeight,clientH:lauk.clientHeight,rectTop:Math.round(lauk.getBoundingClientRect().top)}:null,\n  docScroll: document.scrollingElement===document.documentElement?'html':'kitas',\n  wpwrapOv: getComputedStyle(document.getElementById('wpbody-content')||document.body).overflow};})()"
+   },
+   {
+    "n": "s1637_j_1760_hx",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&kruva=prekyboje&view=visos_kruvoje&q=tofu",
+    "w": 1760,
+    "h": 820,
+    "eval": "(async()=>{ window.scrollTo(400,600); await new Promise(r=>setTimeout(r,600));\n var cs=getComputedStyle(document.documentElement).getPropertyValue('--ps-virsus');\n var b=document.querySelector('.pskat-bar'); var th=document.querySelector('.pskat-lent-lauk .pskat-t thead th');\n var lauk=document.querySelector('.pskat-lent-lauk'); var lcs=lauk?getComputedStyle(lauk):null;\n return {virsus:cs, scrollY:window.scrollY, scrollX:window.scrollX,\n  bar: b?{top:Math.round(b.getBoundingClientRect().top),bottom:Math.round(b.getBoundingClientRect().bottom),pos:getComputedStyle(b).position}:null,\n  thead: th?{top:Math.round(th.getBoundingClientRect().top),pos:getComputedStyle(th).position,cssTop:getComputedStyle(th).top}:null,\n  lauk: lauk?{ovx:lcs.overflowX,ovy:lcs.overflowY,scrollH:lauk.scrollHeight,clientH:lauk.clientHeight,rectTop:Math.round(lauk.getBoundingClientRect().top)}:null,\n  docScroll: document.scrollingElement===document.documentElement?'html':'kitas',\n  wpwrapOv: getComputedStyle(document.getElementById('wpbody-content')||document.body).overflow};})()"
+   },
+   {
+    "n": "s1637_j_1907",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&kruva=prekyboje&view=visos_kruvoje&q=tofu",
+    "w": 1907,
+    "h": 900,
+    "eval": "(async()=>{ window.scrollTo(0,600); await new Promise(r=>setTimeout(r,600));\n var cs=getComputedStyle(document.documentElement).getPropertyValue('--ps-virsus');\n var b=document.querySelector('.pskat-bar'); var th=document.querySelector('.pskat-lent-lauk .pskat-t thead th');\n var lauk=document.querySelector('.pskat-lent-lauk'); var lcs=lauk?getComputedStyle(lauk):null;\n return {virsus:cs, scrollY:window.scrollY, scrollX:window.scrollX,\n  bar: b?{top:Math.round(b.getBoundingClientRect().top),bottom:Math.round(b.getBoundingClientRect().bottom),pos:getComputedStyle(b).position}:null,\n  thead: th?{top:Math.round(th.getBoundingClientRect().top),pos:getComputedStyle(th).position,cssTop:getComputedStyle(th).top}:null,\n  lauk: lauk?{ovx:lcs.overflowX,ovy:lcs.overflowY,scrollH:lauk.scrollHeight,clientH:lauk.clientHeight,rectTop:Math.round(lauk.getBoundingClientRect().top)}:null,\n  docScroll: document.scrollingElement===document.documentElement?'html':'kitas',\n  wpwrapOv: getComputedStyle(document.getElementById('wpbody-content')||document.body).overflow};})()"
+   }
+  ]
+ },
+ "shots": {
+  "s1637_j_1760": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&kruva=prekyboje&view=visos_kruvoje&q=tofu",
+   "title": "Petshop prekės ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "virsus": "100px",
+    "scrollY": 600,
+    "scrollX": 0,
+    "bar": {
+     "top": 32,
+     "bottom": 100,
+     "pos": "sticky"
+    },
+    "thead": {
+     "top": 100,
+     "pos": "sticky",
+     "cssTop": "100px"
+    },
+    "lauk": {
+     "ovx": "visible",
+     "ovy": "visible",
+     "scrollH": 3044,
+     "clientH": 3044,
+     "rectTop": -281
+    },
+    "docScroll": "html",
+    "wpwrapOv": "visible"
+   }
+  },
+  "s1637_j_1760_hx": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&kruva=prekyboje&view=visos_kruvoje&q=tofu",
+   "title": "Petshop prekės ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "virsus": "100px",
+    "scrollY": 600,
+    "scrollX": 0,
+    "bar": {
+     "top": 32,
+     "bottom": 100,
+     "pos": "sticky"
+    },
+    "thead": {
+     "top": 100,
+     "pos": "sticky",
+     "cssTop": "100px"
+    },
+    "lauk": {
+     "ovx": "visible",
+     "ovy": "visible",
+     "scrollH": 3044,
+     "clientH": 3044,
+     "rectTop": -281
+    },
+    "docScroll": "html",
+    "wpwrapOv": "visible"
+   }
+  },
+  "s1637_j_1907": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&kruva=prekyboje&view=visos_kruvoje&q=tofu",
+   "title": "Petshop prekės ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "virsus": "100px",
+    "scrollY": 600,
+    "scrollX": 0,
+    "bar": {
+     "top": 32,
+     "bottom": 100,
+     "pos": "sticky"
+    },
+    "thead": {
+     "top": 100,
+     "pos": "sticky",
+     "cssTop": "100px"
+    },
+    "lauk": {
+     "ovx": "visible",
+     "ovy": "visible",
+     "scrollH": 3041,
+     "clientH": 3041,
+     "rectTop": -281
+    },
+    "docScroll": "html",
+    "wpwrapOv": "visible"
+   }
+  }
+ }
+}
