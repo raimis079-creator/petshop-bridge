@@ -1,0 +1,71 @@
+{
+ "v": "dep-082629",
+ "kurimas": 200,
+ "sid": 5003,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "C1": {
+  "v": "S1635 fe",
+  "faze": "C1",
+  "cart": {
+   "19475": "OK",
+   "35357": "OK"
+  },
+  "kuponas_ats": "Nuolaidos kodas sėkmingai pritaikytas.",
+  "suvestine": "class=\"woocommerce-checkout-review-order\">\n\t\t\t\t\t\t\t\t\n\t\n\t\t\n\t\t\tProduktas\n\t\t\tSuma\n\t\t\n\t\n\t\n\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tAnimonda GranCarno Adult: konservai šunims su širdimis, 400 g&nbsp;\t\t\t\t\t\t &times;&nbsp;1\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t2,45&nbsp;&euro;\t\t\t\t\t\n\t\t\t\t\n\t\t\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\tHAP žaislas šunims, pliušinė varlė su išimamu garsu,33cm&nbsp;\t\t\t\t\t\t &times;&nbsp;1\t\t\t\t\t\t\t\t\t\t\t\n\t\t\t\t\t\n\t\t\t\t\t\t11,09&nbsp;&euro;\t\t\t\t\t\n\t\t\t\t\n\t",
+  "nonce": 1,
+  "ship": "shopup_venipak_shipping_courier_method:2",
+  "checkout": {
+   "result": "success",
+   "redirect": "https://dev.avesa.lt/kasa/order-received/35835/?key=wc_order_kLZC1W1CBUL69",
+   "msg": ""
+  },
+  "id": 35835
+ },
+ "C2": {
+  "v": "S1635 fe",
+  "faze": "C2",
+  "id": 35835,
+  "uzs": {
+   "status": "on-hold",
+   "mok": "bacs",
+   "viso": "16.42",
+   "nuolaida": "0.917355",
+   "kuponai": [
+    "petshop.10"
+   ],
+   "prist": "VENIPAK Kurjeris 3.3",
+   "prekes": [
+    [
+     19475,
+     1,
+     "2.024793"
+    ],
+    [
+     35357,
+     1,
+     "8.247934"
+    ]
+   ],
+   "klientas": "e2f.frontend@dev.avesa.lt"
+  },
+  "stock": {
+   "19475": 37,
+   "35357": 4
+  },
+  "kelias": {
+   "src": "",
+   "kur": ""
+  },
+  "laiskai": [
+   "uzsakymai@petshop.lt | Naujas užsakymas Nr. 35832 — 2026-09-06 | pr:0",
+   "e2f.grynais@dev.avesa.lt | Jūsų užsakymas Nr. 35832 — apmokėjimas gautas | pr:0",
+   "terra@gyvunai.lt | Your Weekly WPForms Summary for dev.avesa.lt | pr:0",
+   "terra@gyvunai.lt | [Petshop] Rytas: 1 raudonos | pr:0",
+   "uzsakymai@petshop.lt | Naujas užsakymas Nr. 35835 — 2026-09-07 | pr:0"
+  ],
+  "gauti_eileje": 0
+ }
+}
