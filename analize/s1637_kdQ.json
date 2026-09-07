@@ -1,0 +1,75 @@
+{
+ "v": "dep-200155",
+ "kurimas": 200,
+ "sid": 5097,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Q": {
+  "v": "S1637 kd",
+  "f": "Q",
+  "temp_istrinta": 1,
+  "md5": "443fec898ac3349304621c9c23bdeed5",
+  "ping": {
+   "code": 200,
+   "fatal": 0
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788812607|dxPkn4sZ1F6qXUIfVgYzrE1haEo4VqGVnxVev1F4A2K|d66e1b0adcc1ed6ffc78449c294acca189a4c95d06d9958a116edb23bd5d09f0"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788812607|dxPkn4sZ1F6qXUIfVgYzrE1haEo4VqGVnxVev1F4A2K|e29f404834a4789c573bcad121812c523d734fef5195228905727ff1d0d78c9a"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788812607|dxPkn4sZ1F6qXUIfVgYzrE1haEo4VqGVnxVev1F4A2K|7834434fbe79fd99daa40f634db082357f6c6362f0e5c25a85218c08e3bc1b7c"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1637_kat873_1366",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&kruva=prekyboje&view=visos_kruvoje&q=tofu",
+    "w": 1366,
+    "h": 768,
+    "eval": "(async()=>{ window.scrollTo(300,600); await new Promise(r=>setTimeout(r,600)); var b=document.querySelector(\".pskat-bar\"); var th=document.querySelector(\".pskat-lent-lauk .pskat-t thead th\"); var lk=document.querySelector(\".pskat-lent-lauk\"); return {virsus:getComputedStyle(document.documentElement).getPropertyValue(\"--ps-virsus\"), barBottom:b?Math.round(b.getBoundingClientRect().bottom):null, theadTop:th?Math.round(th.getBoundingClientRect().top):null, laukOvx:lk?getComputedStyle(lk).overflowX:null};})()"
+   },
+   {
+    "n": "s1637_kat873_1907",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&kruva=prekyboje&view=visos_kruvoje&q=tofu",
+    "w": 1907,
+    "h": 900,
+    "eval": "(async()=>{ window.scrollTo(300,600); await new Promise(r=>setTimeout(r,600)); var b=document.querySelector(\".pskat-bar\"); var th=document.querySelector(\".pskat-lent-lauk .pskat-t thead th\"); var lk=document.querySelector(\".pskat-lent-lauk\"); return {virsus:getComputedStyle(document.documentElement).getPropertyValue(\"--ps-virsus\"), barBottom:b?Math.round(b.getBoundingClientRect().bottom):null, theadTop:th?Math.round(th.getBoundingClientRect().top):null, laukOvx:lk?getComputedStyle(lk).overflowX:null};})()"
+   }
+  ]
+ },
+ "shots": {
+  "s1637_kat873_1366": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&kruva=prekyboje&view=visos_kruvoje&q=tofu",
+   "title": "Petshop prekės ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "virsus": "100px",
+    "barBottom": 100,
+    "theadTop": 100,
+    "laukOvx": "visible"
+   }
+  },
+  "s1637_kat873_1907": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&kruva=prekyboje&view=visos_kruvoje&q=tofu",
+   "title": "Petshop prekės ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "virsus": "100px",
+    "barBottom": 100,
+    "theadTop": 100,
+    "laukOvx": "visible"
+   }
+  }
+ }
+}
