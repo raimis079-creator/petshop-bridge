@@ -1,0 +1,159 @@
+{
+ "v": "dep-211602",
+ "kurimas": 200,
+ "sid": 5108,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1638c",
+  "faktura": "3656/W/2026",
+  "kursas": 4.12,
+  "eil": [
+   {
+    "id": 18236,
+    "q": 5,
+    "pln": "7.90",
+    "STOP": "pavadinimas nesutampa: Hikari Goldfish Staple, baby pellet, 100 g"
+   },
+   {
+    "id": 18269,
+    "q": 5,
+    "pln": "5.43",
+    "stock_pries": 5,
+    "ean_irasytas": "042055031110",
+    "partija": {
+     "partijos_id": 3966,
+     "kiekis": 5,
+     "savikaina": 1.318,
+     "likutis": 10,
+     "savikaina_prekes": 1.294
+    },
+    "stock_po": 10,
+    "db_partija": {
+     "id": "3966",
+     "kiekis_gautas": "5",
+     "kiekis_liko": "5",
+     "savikaina_eur": "1.3180",
+     "savikaina_orig": "5.4300",
+     "valiuta": "PLN",
+     "kursas": "4.120000"
+    },
+    "OK": 1
+   },
+   {
+    "id": 18272,
+    "q": 5,
+    "pln": "21.15",
+    "stock_pries": 0,
+    "ean_irasytas": "042055046336",
+    "partija": {
+     "partijos_id": 3967,
+     "kiekis": 5,
+     "savikaina": 5.1335,
+     "likutis": 5,
+     "savikaina_prekes": 5.1335
+    },
+    "stock_po": 5,
+    "db_partija": {
+     "id": "3967",
+     "kiekis_gautas": "5",
+     "kiekis_liko": "5",
+     "savikaina_eur": "5.1335",
+     "savikaina_orig": "21.1500",
+     "valiuta": "PLN",
+     "kursas": "4.120000"
+    },
+    "OK": 1
+   },
+   {
+    "id": 18278,
+    "q": 5,
+    "pln": "21.15",
+    "stock_pries": 0,
+    "ean_irasytas": "042055047333",
+    "partija": {
+     "partijos_id": 3968,
+     "kiekis": 5,
+     "savikaina": 5.1335,
+     "likutis": 5,
+     "savikaina_prekes": 5.1335
+    },
+    "stock_po": 5,
+    "db_partija": {
+     "id": "3968",
+     "kiekis_gautas": "5",
+     "kiekis_liko": "5",
+     "savikaina_eur": "5.1335",
+     "savikaina_orig": "21.1500",
+     "valiuta": "PLN",
+     "kursas": "4.120000"
+    },
+    "OK": 1
+   },
+   {
+    "id": 18203,
+    "q": 6,
+    "pln": "13.84",
+    "stock_pries": 0,
+    "partija": {
+     "partijos_id": 3969,
+     "kiekis": 6,
+     "savikaina": 3.3592,
+     "likutis": 6,
+     "savikaina_prekes": 3.3592
+    },
+    "stock_po": 6,
+    "db_partija": {
+     "id": "3969",
+     "kiekis_gautas": "6",
+     "kiekis_liko": "6",
+     "savikaina_eur": "3.3592",
+     "savikaina_orig": "13.8400",
+     "valiuta": "PLN",
+     "kursas": "4.120000"
+    },
+    "OK": 1
+   },
+   {
+    "id": 18218,
+    "q": 1,
+    "pln": "127.83",
+    "stock_pries": 0,
+    "ean_irasytas": "042055014823",
+    "partija": {
+     "partijos_id": 3970,
+     "kiekis": 1,
+     "savikaina": 31.0267,
+     "likutis": 1,
+     "savikaina_prekes": 31.0267
+    },
+    "stock_po": 1,
+    "db_partija": {
+     "id": "3970",
+     "kiekis_gautas": "1",
+     "kiekis_liko": "1",
+     "savikaina_eur": "31.0267",
+     "savikaina_orig": "127.8300",
+     "valiuta": "PLN",
+     "kursas": "4.120000"
+    },
+    "OK": 1
+   }
+  ],
+  "db_partiju": 5,
+  "db_sum_q": 22,
+  "db_sum_pln": 449.52,
+  "laukta": {
+   "eil": 6,
+   "q": 27,
+   "pln": 489.02
+  },
+  "sum_apply": {
+   "q": 22,
+   "pln": 449.52
+  },
+  "KRYZMINE": "FAIL"
+ }
+}
