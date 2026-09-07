@@ -1,0 +1,84 @@
+{
+ "v": "dep-201313",
+ "kurimas": 200,
+ "sid": 5101,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Q": {
+  "v": "S1637 k4d",
+  "f": "Q",
+  "temp_istrinta": 1,
+  "md5": "4af8484cdc72f09c64d66d55d1ad255a",
+  "ping": {
+   "code": 200,
+   "fatal": 0
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788813291|2EgRc4ZAL4AKzze4ndqF0G5iKsBqjFvn4EJOB4eltzL|fc24377725c32990e9484c26c55b9861394d6f25df30298e1cf23ef066922ce1"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788813291|2EgRc4ZAL4AKzze4ndqF0G5iKsBqjFvn4EJOB4eltzL|ee705062a9bf5ff5bf4b63c5817e9ef6fa4c6b8acd3eb2074a505a0911275bc4"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788813291|2EgRc4ZAL4AKzze4ndqF0G5iKsBqjFvn4EJOB4eltzL|9c94cb16c19f1f278ce90f010260de18c739e9d8f48ed81e244c70dcd2bcb871"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1637_kat873_1366",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&kruva=prekyboje&view=visos_kruvoje&q=tofu",
+    "w": 1366,
+    "h": 768,
+    "eval": "(async()=>{ window.scrollTo(300,600); await new Promise(r=>setTimeout(r,700));\n var b=document.querySelector(\".pskat-bar\");\n var th=document.querySelector(\".pskat-lent-lauk .pskat-t thead th\");\n var lk=document.querySelector(\".pskat-lent-lauk\");\n var k=document.getElementById(\"ps-thead-fix\");\n var kl=null; if(k){ var r=k.getBoundingClientRect(); kl={rodomas:getComputedStyle(k).display!==\"none\", top:Math.round(r.top), w:Math.round(r.width), thN:k.querySelectorAll(\"th\").length}; }\n return {virsus:getComputedStyle(document.documentElement).getPropertyValue(\"--ps-virsus\"),\n  barBottom:b?Math.round(b.getBoundingClientRect().bottom):null,\n  theadTop:th?Math.round(th.getBoundingClientRect().top):null,\n  laukOvx:lk?getComputedStyle(lk).overflowX:null,\n  laukScroll:lk?(lk.scrollWidth-lk.clientWidth):null,\n  klonas:kl};})()"
+   },
+   {
+    "n": "s1637_kat873_1907",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&kruva=prekyboje&view=visos_kruvoje&q=tofu",
+    "w": 1907,
+    "h": 900,
+    "eval": "(async()=>{ window.scrollTo(300,600); await new Promise(r=>setTimeout(r,700));\n var b=document.querySelector(\".pskat-bar\");\n var th=document.querySelector(\".pskat-lent-lauk .pskat-t thead th\");\n var lk=document.querySelector(\".pskat-lent-lauk\");\n var k=document.getElementById(\"ps-thead-fix\");\n var kl=null; if(k){ var r=k.getBoundingClientRect(); kl={rodomas:getComputedStyle(k).display!==\"none\", top:Math.round(r.top), w:Math.round(r.width), thN:k.querySelectorAll(\"th\").length}; }\n return {virsus:getComputedStyle(document.documentElement).getPropertyValue(\"--ps-virsus\"),\n  barBottom:b?Math.round(b.getBoundingClientRect().bottom):null,\n  theadTop:th?Math.round(th.getBoundingClientRect().top):null,\n  laukOvx:lk?getComputedStyle(lk).overflowX:null,\n  laukScroll:lk?(lk.scrollWidth-lk.clientWidth):null,\n  klonas:kl};})()"
+   }
+  ]
+ },
+ "shots": {
+  "s1637_kat873_1366": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&kruva=prekyboje&view=visos_kruvoje&q=tofu",
+   "title": "Petshop prekės ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "virsus": "100px",
+    "barBottom": 100,
+    "theadTop": -180,
+    "laukOvx": "auto",
+    "laukScroll": 118,
+    "klonas": {
+     "rodomas": true,
+     "top": 100,
+     "w": 1080,
+     "thN": 13
+    }
+   }
+  },
+  "s1637_kat873_1907": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&kruva=prekyboje&view=visos_kruvoje&q=tofu",
+   "title": "Petshop prekės ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "virsus": "100px",
+    "barBottom": 100,
+    "theadTop": 100,
+    "laukOvx": "visible",
+    "laukScroll": 0,
+    "klonas": null
+   }
+  }
+ }
+}
