@@ -1,0 +1,40 @@
+{
+ "v": "dep-153825",
+ "kurimas": 200,
+ "sid": 5056,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "S1636 d",
+  "f": "S",
+  "temp_istrinta": 1,
+  "temp_deakt": 0,
+  "shots": [
+   {
+    "n": "s1636_welcome_B",
+    "u": "https://dev.avesa.lt/",
+    "eval": "new Promise(r=>setTimeout(()=>{var m=document.getElementById(\"psw\");r({rodomas:!!(m&&!m.hidden),tekstas:m?m.querySelector(\".psw-t\").textContent:\"NERA\"})},3600))"
+   }
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "05-state.bred@icloud.com|1788799205|niziq3NzUxTdhgAO6cyMfFXxcr3v80Z6DDxd9rNsraI|82942eeaedb4b6f5ead5d32859aebfca8c6d185329834ed38875f060cc4f797e"
+   }
+  ]
+ },
+ "shots": {
+  "s1636_welcome_B": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "rodomas": true,
+    "tekstas": "Sveiki sugrįžę – Petshop.lt atsinaujino"
+   }
+  }
+ }
+}
