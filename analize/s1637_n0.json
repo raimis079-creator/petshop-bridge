@@ -1,0 +1,32 @@
+{
+ "v": "dep-190411",
+ "kurimas": 200,
+ "sid": 5084,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "n": {
+  "v": "S1637 n0",
+  "temp_istrinta": 1,
+  "kopija": {
+   "meta_eil": 4229,
+   "partijos": 630,
+   "dir": "/ps-backups/likuciai-pries-nulinima-2026-09-07_1905"
+  },
+  "pries": {
+   "stock_suma": 301106,
+   "own_suma": 904
+  },
+  "istrinta_partiju": 630,
+  "stock_nulinta": 3532,
+  "own_istrinta": 85,
+  "kontrole": {
+   "stock_suma": 0,
+   "stock_gt0": 0,
+   "own_eil": 0,
+   "partijos": 0,
+   "lookup_gt0": 0
+  }
+ }
+}
