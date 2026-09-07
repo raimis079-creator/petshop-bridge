@@ -18,10 +18,14 @@
 - REGISTRAS §8j: launch modalas `class-welcome-modal.php` v1.1 jau yra (jungiklis `petshop_welcome_modal_enabled`=0, JOKIOS NUOLAIDOS sprendimas galioja). Radinys: v1.1 `rodyti()` blokuoja my-account, o **magic login klientą nuveda būtent ten** — B variantui my-account leidžiamas.
 
 #### S1636 — v1.2 (deploy OK)
-- `plugins/petshop-core/includes/class-welcome-modal.php` v1.1 (762d69afb200c3e6ffad0481f58b6a32) → **v1.2, md5 `e10c6a717e4d1c4a6e03cb8e3fc6a2fd`, 8 833 B** = repo `deploy/class-welcome-modal.php`; v1.1 kopija serveryje `ps-backups/class-welcome-modal-v11-BACKUP-2026-09-07.php`.
+- `plugins/petshop-core/includes/class-welcome-modal.php` v1.1 (762d69afb200c3e6ffad0481f58b6a32) → **v1.2, md5 v1.2 e10c6a71… → **v1.3 `b7bcf6af97626216823332ecfe6db4be`, 8 842 B**** = repo `deploy/class-welcome-modal.php`; v1.1 kopija serveryje `ps-backups/class-welcome-modal-v11-BACKUP-2026-09-07.php`.
 - B logika: prisijungęs + `_ps_importas` + be aktyvaus augintinio + be `ps_welcome_seen` user meta (meta rašoma render'e — 1× per įrenginius; cookie tik svečiams). Delsa 3 s, be exit intent, be naujienlaiškio; CTA „Pridėti augintinį“ → /augintinio-profilis/, antrinė „Peržiūrėti rinkinius →“ → kat. 91 (/kategorija/daugiau-pigiau/). Tekstas — Raimio galutinis (antraštė „Sveiki sugrįžę – Petshop.lt atsinaujino“, poraštė „…nereikia prisiminti slaptažodžio.“). **A (svečio) variantas nekeistas nė raide.**
 - Testai (T, uid 119 importuotas, laiškai per dev-pastas): B home ✓, meta įrašyta ✓, antrą kartą NErodo ✓, my-account rodo ✓, checkout NErodo ✓, svečias mato A (12 s, naujienlaiškis) ✓. Kadras: modalas su galutiniu tekstu ✓ (pastaba: Complianz slapukų juosta kampe persidengia — atskiras sluoksnis, netrukdo).
 - Valymas (Z): jungiklis grąžintas į **0**, uid 119 `ps_welcome_seen` ištrinta, TEMP ištrinti, ping 200.
+
+#### S1636 — v1.3 + RAIMIO PERŽIŪRA (patvirtinta gyvai)
+- Raimis abu variantus žiūrėjo gyvai (laikinas opt=1 + vienkartinė B prisijungimo nuoroda per tmp mu-plugin, uid 119). B — „viskas gerai“; A tekstą atmetė („nederinom“, S413 frazeologija šabloniška) → **v1.3, md5 `b7bcf6af97626216823332ecfe6db4be` (8 842 B)**: A suvienodintas su B tonu („Atnaujinome parduotuvę: prekių turime daugiau, jas rasti lengviau“ + „Pridėkite savo augintinį…“ + CTA „Pridėti augintinį“; naujienlaiškio kelias ir poraštė liko). v1.2 kopija `ps-backups/class-welcome-modal-v12-BACKUP-2026-09-07.php`. Q patikra: naujos eilutės ✓, senos frazės 0 ✓. Po peržiūros valymas: tmp mu-plugin ištrintas, opt→0, uid 119 seen ištrinta.
+- Aliarmas „ką pridarei“ (tušti kategorijų apskritimai + Not secure): recon k/k2/k3 — NE sesijos darbai; titulinis nekeistas nuo 07-09; 9 img hardcodinti į //petshop.lt (failai serveryje YRA, po DNS atgis — T0 §E patikra); dev certas visada buvo *.serveriai.lt. Raimiui: „taip negązdink prieš startą :)“ — bet radinys naudingas.
 
 #### S1636 — HARNESS PASTABOS
 - Du lygiagretūs Actions run'ai su Playwright kabo „Run task“ — atšaukta, pakartota po vieną: praėjo. **PAMOKA: browser run'ai — tik po vieną.** Atšauktų run'ų TEMP snippet'ai lieka AKTYVŪS — payload'e pridėtas kitų TEMP deaktyvavimas run'o pradžioje.
