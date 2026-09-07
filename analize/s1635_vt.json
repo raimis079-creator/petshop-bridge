@@ -1,0 +1,50 @@
+{
+ "v": "dep-083541",
+ "kurimas": 200,
+ "sid": 5006,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "v": "S1635 vt",
+  "locale": "lt_LT",
+  "nust": {
+   "woocommerce_failed_order_settings": {
+    "enabled": "yes",
+    "subject": "",
+    "heading": ""
+   },
+   "woocommerce_cancelled_order_settings": {
+    "enabled": "yes",
+    "subject": "",
+    "heading": ""
+   },
+   "woocommerce_new_order_settings": {
+    "enabled": "yes",
+    "subject": "Naujas užsakymas Nr. {order_number} — {order_date}",
+    "heading": ""
+   }
+  },
+  "vert": {
+   "Order Failed: %s": "Order Failed: %s",
+   "body": "Apmokėti užsakymo #%1$s (pirkėjas %2$s) nepavyko. Užsakymo informacija:",
+   "Order summary": "Užsakymo suvestinė",
+   "New Order: #%s": "New Order: #%s"
+  },
+  "mo": {
+   "woocommerce-lt_LT.l10n.php": [
+    417679,
+    "2026-05-26"
+   ],
+   "woocommerce-lt_LT.mo": [
+    493633,
+    "2026-05-26"
+   ],
+   "woocommerce-lt_LT.po": [
+    2425308,
+    "2026-05-26"
+   ]
+  }
+ }
+}
