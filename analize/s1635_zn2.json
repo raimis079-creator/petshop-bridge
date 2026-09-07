@@ -1,0 +1,42 @@
+{
+ "v": "dep-111051",
+ "kurimas": 200,
+ "sid": 5031,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Z2": {
+  "v": "zn2",
+  "rasta": [
+   "wp-content/themes/flatsome-child/woocommerce-delivery-notes/base.php",
+   "wp-content/mu-plugins/petshop-ataskaitu-eksportas.php",
+   "wp-content/mu-plugins/petshop-fakt-grazinimai.php",
+   "wp-content/mu-plugins/petshop-rytas.php",
+   "wp-content/mu-plugins/petshop-perziuru-priminimas.php",
+   "wp-content/mu-plugins/petshop-prenumerata-katalogas.php",
+   "wp-content/mu-plugins/petshop-katalogas.php",
+   "wp-content/mu-plugins/petshop-desk.php",
+   "wp-content/mu-plugins/petshop-laukai.php",
+   "wp-content/mu-plugins/petshop-darbalaukis.php",
+   "wp-content/mu-plugins/petshop-av-admin.php",
+   "wp-content/mu-plugins/petshop-av-expiry.php",
+   "wp-content/mu-plugins/petshop-wc-sync.php",
+   "wp-content/mu-plugins/petshop-gavimas.php",
+   "wp-content/mu-plugins/petshop-prenumeratos-langas.php",
+   "wp-content/mu-plugins/petshop-rinkiniai.php",
+   "wp-content/mu-plugins/petshop-av-stock.php"
+  ],
+  "kont": [
+   "          <?php endif; ?>\n            <?php endif; ?>\n        </td>\n    </tr>\n</table>\n\n<!-- PREKIŲ LENTELĖ -->\n<table class=\"ps-items\">\n    <thead>\n        <tr>\n            <th class=\"col-name\">Pavadinimas</th>\n            <th class=\"col-code\">Kodas</th>\n            <th class=\"col-qty c\">Kiekis</th>\n            <th class=\"col-price r\">Vnt. kaina</th>\n            <th class=\"col-total r\">Suma</th>\n        </tr>\n    </",
+   "po eilutę kiekvienam jos viduje esančiam vienetui. Sudėjus gautum kelis kartus per daug.' ),\n\t\t\tarray( '' ),\n\t\t\tarray( 'Teisingai:' ),\n\t\t\tarray( '  · Dėžės pajamos    = eilutės „parduota\", kur PREKĖS ID TUŠČIAS' ),\n\t\t\tarray( '  · Prekių analizė   = eilutės „parduota\", kur prekės ID UŽPILDYTAS' ),\n\t\t\tarray( '  · Bendra apyvarta  = eilutės „parduotuve / pajamos\"' ),\n\t\t\tarray( '' ),\n\t\t\tarray( array( 'v' => 'Sritis', 't'"
+  ],
+  "html_kiek": {
+   "PREKĖ": 1,
+   "PREKĖS": 0,
+   "PREKIŲ": 0,
+   "badge": 29
+  },
+  "html": "tem_id]').forEach(function(row){var i=row.querySelector('input.qty,input[type=number],input[name^=mnm_quantity]');var q=i?(parseInt(i.getAttribute('max')||i.value)||1):1;row.setAttribute('data-kiekis-rodyti',q);});});}\n\t\tsetInterval(n,400);})();\n\t\t</script>\n\t\t\t\t\t\t<style>body.ps-fiksuotas-rinkinys{--ps-rink-zenklas:\"1\\APREKĖ\"}</style>\n\t\t\t\t<style>\n\t\t.ps-rink-sudetis{margin:14px 0}\n\t\t.ps-rink-preke{display:flex;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px sol"
+ }
+}
