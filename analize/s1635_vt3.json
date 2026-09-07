@@ -1,0 +1,42 @@
+{
+ "v": "dep-083924",
+ "kurimas": 200,
+ "sid": 5008,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V3": {
+  "v": "S1635 vt3",
+  "admin-failed-order": [
+   {
+    "en": "Payment for order #%1$s from %2$s has failed. The order was as follows:",
+    "lt": "Apmokėti užsakymo #%1$s (pirkėjas %2$s) nepavyko. Užsakymo i"
+   },
+   {
+    "en": "Unfortunately, the payment for order #%1$s from %2$s has failed. The order was as follows:",
+    "lt": "NEIŠVERSTA"
+   }
+  ],
+  "admin-cancelled": [
+   {
+    "en": "Notification to let you know &mdash; order #%1$s belonging to %2$s has been cancelled:",
+    "lt": "Užsakymas #%1$s (pirkėjas %2$s) buvo atšauktas:"
+   },
+   {
+    "en": "We’re getting in touch to let you know that order #%1$s from %2$s has been cancelled.",
+    "lt": "NEIŠVERSTA"
+   }
+  ],
+  "thankyou": [
+   {
+    "en": "Thank you. Your order has been received.",
+    "lt": "Dėkojame. Jūsų užsakymas priimtas."
+   },
+   {
+    "en": "Thank you. Your order has been received.",
+    "lt": "Dėkojame. Jūsų užsakymas priimtas."
+   }
+  ]
+ }
+}
