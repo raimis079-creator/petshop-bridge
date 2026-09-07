@@ -1,0 +1,69 @@
+{
+ "v": "dep-162217",
+ "kurimas": 200,
+ "sid": 5065,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "J": {
+  "v": "S1636 j",
+  "temp_istrinta": 1,
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788799436|Rim2ODCh8aEuC4ZBzyILTkGSMslztG0LzcquUiXuwS1|ebbff507621a38682ed576d40aa573d3dcb6022d9520aecc5223843c7237d506"
+   },
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788799436|Rim2ODCh8aEuC4ZBzyILTkGSMslztG0LzcquUiXuwS1|d0cbdc26817f17df795f777748d1e7c6b91287472f78022d22afffd3bf39076e"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1636_j_virsus",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas",
+    "w": 1440,
+    "h": 900,
+    "eval": "(function(){var cs=getComputedStyle(document.documentElement);var b=document.querySelector(\".pskat-bar\");var th=document.querySelector(\".pskat-t thead th\");return {virsus:cs.getPropertyValue(\"--ps-virsus\"),bar:b?Math.round(b.getBoundingClientRect().bottom):null,bar_pos:b?getComputedStyle(b).position:null,th_top:th?getComputedStyle(th).top:null,th_rect:th?Math.round(th.getBoundingClientRect().top):null,scrollY:Math.round(window.scrollY)};})()"
+   },
+   {
+    "n": "s1636_j_scroll",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas",
+    "w": 1440,
+    "h": 900,
+    "eval": "new Promise(r=>{window.scrollTo(0,700);setTimeout(function(){r(((function(){var cs=getComputedStyle(document.documentElement);var b=document.querySelector(\".pskat-bar\");var th=document.querySelector(\".pskat-t thead th\");return {virsus:cs.getPropertyValue(\"--ps-virsus\"),bar:b?Math.round(b.getBoundingClientRect().bottom):null,bar_pos:b?getComputedStyle(b).position:null,th_top:th?getComputedStyle(th).top:null,th_rect:th?Math.round(th.getBoundingClientRect().top):null,scrollY:Math.round(window.scrollY)};}))())},800)})"
+   }
+  ]
+ },
+ "shots": {
+  "s1636_j_virsus": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas",
+   "title": "Petshop prekės ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "virsus": "171px",
+    "bar": 171,
+    "bar_pos": "sticky",
+    "th_top": "171px",
+    "th_rect": 320,
+    "scrollY": 0
+   }
+  },
+  "s1636_j_scroll": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas",
+   "title": "Petshop prekės ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "virsus": "171px",
+    "bar": 100,
+    "bar_pos": "sticky",
+    "th_top": "171px",
+    "th_rect": 171,
+    "scrollY": 700
+   }
+  }
+ }
+}
