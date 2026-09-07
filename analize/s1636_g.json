@@ -1,0 +1,71 @@
+{
+ "v": "dep-155015",
+ "kurimas": 200,
+ "sid": 5058,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "G": {
+  "v": "S1634 g",
+  "temp_istrinta": 1,
+  "cron_musu": {
+   "ps_venipak_sekimas": "09-07 16:06",
+   "ps_dropship_sargas": "09-07 16:13",
+   "ps_dl_atsauktu_valymas": "09-08 00:20",
+   "ps_velavimo_laiskai": "09-08 11:00"
+  },
+  "cron_viso": 84,
+  "venipak_sekimas_pask": {
+   "laikas": "2026-09-07 18:36:52",
+   "uzsakymu": 11,
+   "numeriu": 12,
+   "uzklausu": 12,
+   "pakeista": 0,
+   "lp": 0,
+   "issiusta": 0,
+   "pristatyta": 0,
+   "grizta": 0,
+   "klaidos": 7,
+   "s": 0.5
+  },
+  "sla_velavimai": 4,
+  "siunta_grizta": 0,
+  "importai": {
+   "zb": [],
+   "vf": []
+  },
+  "import_opcijos": {
+   "ps_import_tempas_host": "https://dev.avesa.lt",
+   "ps_import_tempas_paskutinis": "a:6:{s:6:\"laikas\";s:19:\"2026-09-07 18:13:58\";s:9:\"import_id\";i:3;s:8:\"veiksmas\";"
+  },
+  "dev_pastas_leisti": "terra@petshop.lt",
+  "dev_pastas_zurnalas": 59,
+  "laisku_archyvas": 34,
+  "eiles": {
+   "code": 200,
+   "warning": 0,
+   "nav": "Užsakymai9Rytinė eigaPrekės2249GavimasRinkiniaiAkcijos",
+   "sk": {
+    "Gauti": "3",
+    "Surinkti AV": "3",
+    "Dropshipping": "0",
+    "Klausimai": "4",
+    "Neapmokėti": "0",
+    "Visi": "0161"
+   }
+  },
+  "legacy_301_map": "yra",
+  "ga4_plug": "yra",
+  "pickup16": {
+   "is_enabled": "0"
+  },
+  "serijos": {
+   "ps_avpn_serija": "?",
+   "ps_iapv_serija": "?",
+   "ps_kr_serija": "?",
+   "ps_ppk_serija": "?"
+  },
+  "ping": 200
+ }
+}
