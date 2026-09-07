@@ -1,0 +1,83 @@
+{
+ "v": "dep-211731",
+ "kurimas": 200,
+ "sid": 5109,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1638c",
+  "faktura": "3656/W/2026",
+  "kursas": 4.12,
+  "eil": [
+   {
+    "id": 18236,
+    "q": 5,
+    "pln": "7.90",
+    "stock_pries": 0,
+    "partija": {
+     "partijos_id": 3971,
+     "kiekis": 5,
+     "savikaina": 1.9175,
+     "likutis": 5,
+     "savikaina_prekes": 1.9175
+    },
+    "stock_po": 5,
+    "db_partija": {
+     "id": "3971",
+     "kiekis_gautas": "5",
+     "kiekis_liko": "5",
+     "savikaina_eur": "1.9175",
+     "savikaina_orig": "7.9000",
+     "valiuta": "PLN",
+     "kursas": "4.120000"
+    },
+    "OK": 1
+   },
+   {
+    "id": 18269,
+    "q": 5,
+    "pln": "5.43",
+    "jau_yra": 1
+   },
+   {
+    "id": 18272,
+    "q": 5,
+    "pln": "21.15",
+    "jau_yra": 1
+   },
+   {
+    "id": 18278,
+    "q": 5,
+    "pln": "21.15",
+    "jau_yra": 1
+   },
+   {
+    "id": 18203,
+    "q": 6,
+    "pln": "13.84",
+    "jau_yra": 1
+   },
+   {
+    "id": 18218,
+    "q": 1,
+    "pln": "127.83",
+    "jau_yra": 1
+   }
+  ],
+  "db_partiju": 6,
+  "db_sum_q": 27,
+  "db_sum_pln": 489.02,
+  "laukta": {
+   "eil": 6,
+   "q": 27,
+   "pln": 489.02
+  },
+  "sum_apply": {
+   "q": 5,
+   "pln": 39.5
+  },
+  "KRYZMINE": "OK"
+ }
+}
