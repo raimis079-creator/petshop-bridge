@@ -1,0 +1,52 @@
+{
+ "v": "dep-143046",
+ "kurimas": 200,
+ "sid": 5050,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1636 r",
+  "temp_istrinta": 1,
+  "users_viso": 5704,
+  "roles": {
+   "a:1:{s:8:\"customer\";b:1;}": 5701,
+   "a:1:{s:14:\"ps_darbuotojas\";b:1;}": 2,
+   "a:1:{s:13:\"administrator\";b:1;}": 1
+  },
+  "users_su_uzsakymais_hpos": 1,
+  "usermeta_zymos": {
+   "_ps_banga": 5666,
+   "_ps_importas": 5666,
+   "_ps_ist_n": 5666,
+   "_ps_ist_suma": 5666,
+   "_ps_imone": 5666,
+   "_ps_ist_paskutinis": 5589,
+   "_ps_ist_pirmas": 5589,
+   "ps_marketing_consent": 561,
+   "ps_content_seen_tick_season": 19,
+   "ps_content_seen_summer_water": 12,
+   "_ps_email_verified": 10,
+   "ps_content_seen_travel_pets": 9,
+   "ps_content_seen_food_transition": 7,
+   "ps_content_seen_sensitive_digestion": 4,
+   "ps_content_seen_sterilised_diet": 2
+  },
+  "registracijos_top": {
+   "2026-08-31": 5666,
+   "2026-07-15": 17,
+   "2026-08-03": 5,
+   "2026-07-10": 3,
+   "2026-07-14": 3,
+   "2026-08-16": 3
+  },
+  "welcome_modal_enabled": "0",
+  "welcome_modal_failas": "plugins/petshop-core/includes",
+  "magic_login": "yra",
+  "magic_failai": [
+   "/plugins/petshop-core/includes/class-magic-login.php"
+  ],
+  "sender_lenteles": []
+ }
+}
