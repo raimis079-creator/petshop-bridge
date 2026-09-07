@@ -1,0 +1,17 @@
+{
+ "v": "dep-135237",
+ "kurimas": 200,
+ "sid": 5043,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V2": {
+  "v": "vl2",
+  "snippet": {
+   "id": "5043",
+   "name": "TEMP PS dep-135237"
+  },
+  "kont": "\n/** TEMP PS S1635 vl2 — laiško šaltinis: mu + plugins + snippets + options. READ-ONLY. */\nadd_action('init', function(){\n  if (!isset($_GET['ps_s1635vl2'])) return;\n  global $wpdb; $p=$wpdb->prefix; $o=array('v'=>'vl2');\n  $wpdb->query(\"DELETE FROM {$p}snippets WHERE name LIKE 'TEMP%' AND active=0\");\n  $ADATA='Ar su užsakymu viskas gerai';\n  $r=$wpdb->get_row($wpdb->prepare(\"SELECT id,name FROM {$p}snippets WHERE code LIKE %s LIMIT 1\",'%'.$wpdb->esc_like($ADATA).'%'),ARRAY_A);\n  if($r){ $o['snippet']=$r; $c=$wpdb->get_var($wpdb->prepare(\"SELECT code FROM {$p}snippets WHERE id=%d\",$r['id']));\n    $pos=mb_strpos($c,$ADATA); $o['kont']=mb_substr($c,max(0,$pos-2000),3000); }\n  if(!$r){ $rows=$wpdb->get_results($wpdb->prepare(\"SELECT option_name FROM {$p}options WHERE option_value LIKE %s LIMIT 5\",'%'.$wpdb->esc_like($ADATA).'%')); foreach($rows as $x) $o['opcijos'][]=$x->option_name;\n    foreach(glob(WP_PLUGIN_DIR.'/petshop*/*.php') as $g){ $s=file_get_contents($g); if(strpos($s,$ADATA)!==false){ $o['failas']=str_replace(WP_PLUGIN_DIR,'',$g); $pos=strpos($s,$ADATA); $o['kont']=mb_substr($s,max(0,$pos-2000),3000); break; } } }\n  header('Content-Type: application/json'); echo json_encode($o,JSON_UNESCAPED_UNICODE); exit;\n},99);\n"
+ }
+}
