@@ -1,0 +1,36 @@
+{
+ "v": "dep-214930",
+ "kurimas": 200,
+ "sid": 5114,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1638h",
+  "pries": {
+   "sku": "83443",
+   "ean": "4017721834438",
+   "guid": "4017721834438",
+   "stock": 3
+  },
+  "partija": {
+   "partijos_id": 4010,
+   "kiekis": 64,
+   "savikaina": 0.5218,
+   "likutis": 67,
+   "savikaina_prekes": 0.5266
+  },
+  "po": {
+   "sku": "83304",
+   "ean": "4017721833042",
+   "stock": 67
+  },
+  "db": {
+   "partiju": 39,
+   "q": 2700,
+   "pln": 12325.74
+  },
+  "KRYZMINE": "OK"
+ }
+}
