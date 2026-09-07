@@ -32,6 +32,9 @@
 - FIX: **`mu-plugins/petshop-katalogas.php` v8.7.1 → v8.7.2, md5 `99cfa781e5d89b8760f7212df01bee0e` (499 022 B)** — `virsus()` perskaičiuojamas ir scroll'inant (rAF-throttled, passive). Chirurginis server-side str_replace su sargais (old_count==1, token_get_all, kopija `ps-backups/petshop-katalogas-v871-BACKUP-2026-09-07.php`, ping 200). Repo `deploy/petshop-katalogas.php` sinchronizuota iš gyvo (senos repo kopijos buvo pasenusios!). Patikra po: scroll'e virsus=bar=th 100 px, kadre plyšio nėra.
 - PAMOKA: token_get_all STOP išgelbėjo — įterpiamame JS komentare buvo apostrofai, o katalogo JS spausdinamas PHP viengubose kabutėse; apostrofai iš įterpiamo teksto pašalinti.
 
+#### S1636 — POST-S1637 „nusimušė" (23:17): naršyklės ZOOM
+- Po S1637 Raimio „admin nusimušė": gyvas katalogas patikrintas = v8.7.2 (99cfa781…) — serveris tvarkoj. Priežastis — naršyklės mastelis ≠100 % (Ctrl+ratukas; adreso juostoje lupa): ~150 % zoom → CSS plotis ~1270 px → nuo v8.7 (S903) dizainu ≤1400 px siauras režimas (h-scroll, antraštė ne sticky). Sprendimas: Ctrl+0. NE kodas, netaisyta. Breadcrumb „Rinkiniai›Rinkiniai…" — vaikščiojimo takas, ne klaida.
+
 #### S1636 — HARNESS PASTABOS
 - Du lygiagretūs Actions run'ai su Playwright kabo „Run task“ — atšaukta, pakartota po vieną: praėjo. **PAMOKA: browser run'ai — tik po vieną.** Atšauktų run'ų TEMP snippet'ai lieka AKTYVŪS — payload'e pridėtas kitų TEMP deaktyvavimas run'o pradžioje.
 - Konteineryje `php` nebūna — `apt-get install php8.3-cli` prieš run.sh.
