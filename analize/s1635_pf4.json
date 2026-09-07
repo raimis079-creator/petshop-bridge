@@ -1,0 +1,14 @@
+{
+ "v": "dep-115450",
+ "kurimas": 200,
+ "sid": 5038,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "P4": {
+  "v": "pf4",
+  "failas": "wp-content/themes/flatsome/inc/woocommerce/structure-wc-global.php",
+  "kont": "$wc_page = false;\n\t\t\tif ( $post->post_type == 'page' ) {\n\t\t\t\tforeach ( array( 'shop', 'cart', 'checkout', 'view_order', 'terms' ) as $wc_page_type ) {\n\t\t\t\t\tif ( $post->ID == wc_get_page_id( $wc_page_type ) ) $wc_page = true;\n\t\t\t\t}\n\t\t\t}\n\t\t\tif ( ! $wc_page ) array_push( $pages, $post->ID );\n\t\tendwhile;\n\n\t\twp_reset_query();\n\n\t\tif ( ! empty( $posts ) ) {\n\t\t\techo '<hr/><h4 class=\"uppercase\">' . esc_html__( 'Posts found', 'flatsome' ) . '</h4>';\n\t\t\techo flatsome_apply_shortcode( 'blog_posts', array(\n\t\t\t\t'columns'      => '3',\n\t\t\t\t'columns__md'  => '3',\n\t\t\t\t'columns__sm'  => '2',\n\t\t\t\t'type'         => get_theme_mod( 'search_result_style', 'slider' ),\n\t\t\t\t'image_height' => '56.25%',\n\t\t\t\t'show_date'    => get_theme_mod( 'blog_badge', 1 ) ? 'true' : 'false',\n\t\t\t\t'ids'          => implode( ',', $posts ),\n\t\t\t) );\n\t\t}\n\n\t\tif ( ! empty( $pages ) ) {\n\t\t\techo '<hr/><h4 class=\"uppercase\">' . esc_html__( 'Pages found', 'flatsome' ) . '</h4>';\n\t\t\techo flatsome_apply_shortcode( 'ux_pages', array(\n\t\t\t\t'columns'      => '3',\n\t\t\t\t'columns__md'  => '3',\n\t\t\t\t'columns__sm'  => '2',\n\t\t\t\t'type'         => get_theme_mod( 'search_result_style', 'slider' ),\n\t\t\t\t'image_height' => '56.25%',\n\t\t\t\t'ids'          => implode( ',', $pages ),\n\t\t\t) );\n\t\t}\n\t\t?>\n\t<?php endif; ?>\n\n\t<?php\n}\n\nadd_action( 'woocommerce_after_main_content', 'flatsome_pages_in_search_results' );\n\n/**\n * Filters the WooCommerce sale flash.\n *\n *"
+ }
+}
