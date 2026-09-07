@@ -1,0 +1,25 @@
+{
+ "v": "dep-160015",
+ "kurimas": 200,
+ "sid": 5061,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "K3": {
+  "v": "S1636 k3",
+  "failai": {
+   "upl_cat-sunims-v2.webp": 20460,
+   "upl_cat-katems-v2.webp": 23354,
+   "upl_cat-grauzikams-v2.webp": 23014,
+   "upl_cat-pauksciams-v2.webp": 16098,
+   "upl_cat-zuvims-v2.webp": 19466
+  },
+  "upl_visi": 196,
+  "petshop_lt_nuorodu_turinyje": 9,
+  "dev_avesa_nuorodu": 0,
+  "cert": "cURL error 60: SSL: no alternative certificate subject name matches target hostname 'dev.avesa.lt'",
+  "cert_cn": "*.serveriai.lt",
+  "cert_iki": "2026-10-17 23:59"
+ }
+}
