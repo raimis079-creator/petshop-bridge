@@ -1,0 +1,574 @@
+{
+ "v": "dep-070019",
+ "kurimas": 200,
+ "sid": 4997,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "K": {
+  "v": "S1635 kat",
+  "kat": [
+   {
+    "id": 689,
+    "tevas": 681,
+    "vardas": "Akcijiniai pasiūlymai",
+    "slug": "akcijiniai-pasiulymai",
+    "n": 0
+   },
+   {
+    "id": 666,
+    "tevas": 89,
+    "vardas": "Aksesuarai paukščiams",
+    "slug": "aksesuarai-pauksciams",
+    "n": 2
+   },
+   {
+    "id": 94,
+    "tevas": 93,
+    "vardas": "Akvariumo žuvyčių maistas",
+    "slug": "akvariumo-zuvyciu-maistas",
+    "n": 36
+   },
+   {
+    "id": 371,
+    "tevas": 93,
+    "vardas": "Akvariumų įranga",
+    "slug": "akvariumai-iranga",
+    "n": 3
+   },
+   {
+    "id": 86,
+    "tevas": 0,
+    "vardas": "Animonda konservai šunims",
+    "slug": "animonda-konservai-sunims",
+    "n": 37
+   },
+   {
+    "id": 109,
+    "tevas": 77,
+    "vardas": "Antiparazitinės priemonės katėms",
+    "slug": "antiparazitines-priemones-katems",
+    "n": 6
+   },
+   {
+    "id": 108,
+    "tevas": 70,
+    "vardas": "Antiparazitinės priemonės šunims",
+    "slug": "antiparazitines-priemones-sunims",
+    "n": 9
+   },
+   {
+    "id": 117,
+    "tevas": 77,
+    "vardas": "Antkakliai ir petnešos katėms",
+    "slug": "antkakliai-ir-petnesos-katems",
+    "n": 9
+   },
+   {
+    "id": 116,
+    "tevas": 70,
+    "vardas": "Antkakliai, pavadėliai šunims",
+    "slug": "antkakliai-pavadeliai-sunims",
+    "n": 175
+   },
+   {
+    "id": 655,
+    "tevas": 70,
+    "vardas": "Baseinai šunims",
+    "slug": "baseinai-sunims",
+    "n": 1
+   },
+   {
+    "id": 91,
+    "tevas": 0,
+    "vardas": "DAUGIAU=PIGIAU",
+    "slug": "daugiau-pigiau",
+    "n": 4
+   },
+   {
+    "id": 119,
+    "tevas": 0,
+    "vardas": "DOVANOS",
+    "slug": "dovanos",
+    "n": 4
+   },
+   {
+    "id": 124,
+    "tevas": 77,
+    "vardas": "Draskyklės katėms",
+    "slug": "draskykles-katems",
+    "n": 38
+   },
+   {
+    "id": 112,
+    "tevas": 77,
+    "vardas": "Dubenėliai katėms",
+    "slug": "dubeneliai-katems",
+    "n": 34
+   },
+   {
+    "id": 111,
+    "tevas": 70,
+    "vardas": "Dubenėliai šunims",
+    "slug": "dubeneliai-sunims",
+    "n": 55
+   },
+   {
+    "id": 113,
+    "tevas": 91,
+    "vardas": "Graužikams",
+    "slug": "dp-grauzikams",
+    "n": 0
+   },
+   {
+    "id": 87,
+    "tevas": 0,
+    "vardas": "GRAUŽIKAMS",
+    "slug": "grauzikams",
+    "n": 64
+   },
+   {
+    "id": 569,
+    "tevas": 77,
+    "vardas": "Guoliai katėms",
+    "slug": "guoliai-katems",
+    "n": 12
+   },
+   {
+    "id": 82,
+    "tevas": 70,
+    "vardas": "Higienos priemonės šunims",
+    "slug": "higienos-priemones-sunims",
+    "n": 45
+   },
+   {
+    "id": 85,
+    "tevas": 0,
+    "vardas": "Hipoalerginis maistas šunims",
+    "slug": "hipoalerginis-maistas-sunims",
+    "n": 33
+   },
+   {
+    "id": 687,
+    "tevas": 680,
+    "vardas": "Jautrus virškinimas",
+    "slug": "jautrus-virskinimas",
+    "n": 0
+   },
+   {
+    "id": 99,
+    "tevas": 91,
+    "vardas": "Katėms",
+    "slug": "dp-katems",
+    "n": 0
+   },
+   {
+    "id": 77,
+    "tevas": 0,
+    "vardas": "KATĖMS",
+    "slug": "katems",
+    "n": 846
+   },
+   {
+    "id": 123,
+    "tevas": 70,
+    "vardas": "Kelionių įranga",
+    "slug": "kelioniu-iranga",
+    "n": 18
+   },
+   {
+    "id": 104,
+    "tevas": 87,
+    "vardas": "Kita",
+    "slug": "kita-grauzikams",
+    "n": 0
+   },
+   {
+    "id": 105,
+    "tevas": 89,
+    "vardas": "Kita",
+    "slug": "kita-pauksciams",
+    "n": 0
+   },
+   {
+    "id": 16,
+    "tevas": 0,
+    "vardas": "Kita",
+    "slug": "uncategorized",
+    "n": 0
+   },
+   {
+    "id": 126,
+    "tevas": 70,
+    "vardas": "Kita",
+    "slug": "kita-sunims",
+    "n": 0
+   },
+   {
+    "id": 84,
+    "tevas": 0,
+    "vardas": "Kitos prekes Žalios Bangos",
+    "slug": "kitos-prekes-zalios-bangos",
+    "n": 0
+   },
+   {
+    "id": 79,
+    "tevas": 78,
+    "vardas": "Konservai katėms",
+    "slug": "konservai-katems",
+    "n": 147
+   },
+   {
+    "id": 73,
+    "tevas": 71,
+    "vardas": "Konservai šunims",
+    "slug": "konservai-sunims",
+    "n": 130
+   },
+   {
+    "id": 682,
+    "tevas": 679,
+    "vardas": "Konservų rinkiniai",
+    "slug": "konservu-rinkiniai",
+    "n": 5
+   },
+   {
+    "id": 107,
+    "tevas": 77,
+    "vardas": "Kraikai kačių tualetams",
+    "slug": "kraikai-kaciu-tualetams",
+    "n": 69
+   },
+   {
+    "id": 684,
+    "tevas": 679,
+    "vardas": "Kramtalų rinkiniai",
+    "slug": "kramtalu-rinkiniai",
+    "n": 5
+   },
+   {
+    "id": 90,
+    "tevas": 89,
+    "vardas": "Lesalas paukščiams",
+    "slug": "lesalas-pauksciams",
+    "n": 11
+   },
+   {
+    "id": 78,
+    "tevas": 77,
+    "vardas": "Maistas katėms",
+    "slug": "maistas-katems",
+    "n": 353
+   },
+   {
+    "id": 71,
+    "tevas": 70,
+    "vardas": "Maistas šunims",
+    "slug": "maistas-sunims",
+    "n": 641
+   },
+   {
+    "id": 80,
+    "tevas": 0,
+    "vardas": "Miamor katėms",
+    "slug": "miamor-katems",
+    "n": 22
+   },
+   {
+    "id": 125,
+    "tevas": 70,
+    "vardas": "Narvai",
+    "slug": "narvai",
+    "n": 7
+   },
+   {
+    "id": 686,
+    "tevas": 680,
+    "vardas": "Naujas kačiukas",
+    "slug": "naujas-kaciukas",
+    "n": 0
+   },
+   {
+    "id": 685,
+    "tevas": 680,
+    "vardas": "Naujas šuniukas",
+    "slug": "naujas-suniukas",
+    "n": 0
+   },
+   {
+    "id": 681,
+    "tevas": 0,
+    "vardas": "PASIŪLYMAI",
+    "slug": "pasiulymai",
+    "n": 0
+   },
+   {
+    "id": 110,
+    "tevas": 91,
+    "vardas": "Paukščiams",
+    "slug": "dp-pauksciams",
+    "n": 0
+   },
+   {
+    "id": 89,
+    "tevas": 0,
+    "vardas": "PAUKŠČIAMS",
+    "slug": "pauksciams",
+    "n": 16
+   },
+   {
+    "id": 656,
+    "tevas": 70,
+    "vardas": "Pirmoji pagalba šunims",
+    "slug": "pirmoji-pagalba-sunims",
+    "n": 2
+   },
+   {
+    "id": 679,
+    "tevas": 0,
+    "vardas": "RINKINIAI",
+    "slug": "rinkiniai",
+    "n": 20
+   },
+   {
+    "id": 76,
+    "tevas": 70,
+    "vardas": "Šampūnai šunims",
+    "slug": "sampunai-sunims",
+    "n": 44
+   },
+   {
+    "id": 81,
+    "tevas": 78,
+    "vardas": "Sausas maistas katėms",
+    "slug": "sausas-maistas-katems",
+    "n": 205
+   },
+   {
+    "id": 72,
+    "tevas": 71,
+    "vardas": "Sausas maistas šunims",
+    "slug": "sausas-maistas-sunims",
+    "n": 510
+   },
+   {
+    "id": 96,
+    "tevas": 77,
+    "vardas": "Skanėstai katėms",
+    "slug": "skanestai-katems",
+    "n": 90
+   },
+   {
+    "id": 98,
+    "tevas": 89,
+    "vardas": "Skanėstai paukščiams",
+    "slug": "skanestai-pauksciams",
+    "n": 3
+   },
+   {
+    "id": 95,
+    "tevas": 70,
+    "vardas": "Skanėstai šunims",
+    "slug": "skanestai-sunims",
+    "n": 300
+   },
+   {
+    "id": 683,
+    "tevas": 679,
+    "vardas": "Skanėstų rinkiniai",
+    "slug": "skanestu-rinkiniai",
+    "n": 5
+   },
+   {
+    "id": 680,
+    "tevas": 0,
+    "vardas": "SPRENDIMAI",
+    "slug": "sprendimai",
+    "n": 0
+   },
+   {
+    "id": 639,
+    "tevas": 77,
+    "vardas": "Šukos, šepečiai, žirklės katėms",
+    "slug": "sukos-sepeciai-zirkles-katems",
+    "n": 46
+   },
+   {
+    "id": 75,
+    "tevas": 70,
+    "vardas": "Šukos, šepečiai, žirklės šunims",
+    "slug": "sukos-sepeciai-zirkles-sunims",
+    "n": 63
+   },
+   {
+    "id": 70,
+    "tevas": 0,
+    "vardas": "ŠUNIMS",
+    "slug": "sunims",
+    "n": 1778
+   },
+   {
+    "id": 92,
+    "tevas": 91,
+    "vardas": "Šunims",
+    "slug": "dp-sunims",
+    "n": 0
+   },
+   {
+    "id": 688,
+    "tevas": 680,
+    "vardas": "Šuo kasosi",
+    "slug": "suo-kasosi",
+    "n": 0
+   },
+   {
+    "id": 83,
+    "tevas": 0,
+    "vardas": "Super Premium šunų maistas",
+    "slug": "super-premium-sunu-maistas",
+    "n": 5
+   },
+   {
+    "id": 121,
+    "tevas": 77,
+    "vardas": "Transportavimo dėžės katėms",
+    "slug": "transportavimo-dezes-katems",
+    "n": 39
+   },
+   {
+    "id": 122,
+    "tevas": 70,
+    "vardas": "Transportavimo dėžės šunims",
+    "slug": "transportavimo-dezes-sunims",
+    "n": 43
+   },
+   {
+    "id": 106,
+    "tevas": 77,
+    "vardas": "Tualetai, semtuvėliai",
+    "slug": "tualetai-kraikai-semtuveliai",
+    "n": 59
+   },
+   {
+    "id": 100,
+    "tevas": 93,
+    "vardas": "Tvenkinių žuvų maistas",
+    "slug": "tvenkiniu-zuvu-maistas",
+    "n": 14
+   },
+   {
+    "id": 654,
+    "tevas": 70,
+    "vardas": "Vėsinantys kilimėliai šunims",
+    "slug": "vesinantys-kilimeliai-sunims",
+    "n": 7
+   },
+   {
+    "id": 102,
+    "tevas": 77,
+    "vardas": "Vitaminai ir papildai katėms",
+    "slug": "vitaminai-ir-papildai-katems",
+    "n": 17
+   },
+   {
+    "id": 101,
+    "tevas": 70,
+    "vardas": "Vitaminai ir papildai šunims",
+    "slug": "vitaminai-ir-papildai-sunims",
+    "n": 73
+   },
+   {
+    "id": 120,
+    "tevas": 0,
+    "vardas": "Ypatingi pasiūlymai",
+    "slug": "ypatingi-pasiulymai",
+    "n": 0
+   },
+   {
+    "id": 114,
+    "tevas": 77,
+    "vardas": "Žaislai katėms",
+    "slug": "zaislai-katems",
+    "n": 61
+   },
+   {
+    "id": 115,
+    "tevas": 70,
+    "vardas": "Žaislai šunims",
+    "slug": "zaislai-sunims",
+    "n": 212
+   },
+   {
+    "id": 103,
+    "tevas": 91,
+    "vardas": "Žuvims",
+    "slug": "dp-zuvims",
+    "n": 0
+   },
+   {
+    "id": 93,
+    "tevas": 0,
+    "vardas": "ŽUVIMS",
+    "slug": "zuvims",
+    "n": 53
+   },
+   {
+    "id": 305,
+    "tevas": 70,
+    "vardas": "Apranga šunims",
+    "slug": "apranga-sunims",
+    "n": 39
+   },
+   {
+    "id": 233,
+    "tevas": 70,
+    "vardas": "Guoliai šunims",
+    "slug": "guoliai-boksai-sunims",
+    "n": 42
+   },
+   {
+    "id": 131,
+    "tevas": 0,
+    "vardas": "kita",
+    "slug": "kita",
+    "n": 0
+   },
+   {
+    "id": 130,
+    "tevas": 77,
+    "vardas": "Priežiūros priemonės katėms",
+    "slug": "prieziuros-priemones-katems",
+    "n": 27
+   },
+   {
+    "id": 88,
+    "tevas": 87,
+    "vardas": "Pašaras graužikams",
+    "slug": "pasaras-grauzikams",
+    "n": 20
+   },
+   {
+    "id": 97,
+    "tevas": 87,
+    "vardas": "Skanėstai graužikams",
+    "slug": "skanestai-grauzikams",
+    "n": 22
+   },
+   {
+    "id": 304,
+    "tevas": 87,
+    "vardas": "Narvai ir aksesuarai graužikams",
+    "slug": "narvai-grauzikams",
+    "n": 19
+   },
+   {
+    "id": 657,
+    "tevas": 87,
+    "vardas": "Kraikas ir šienas graužikams",
+    "slug": "kraikas-ir-sienas-grauzikams",
+    "n": 3
+   }
+  ]
+ }
+}
