@@ -1,0 +1,39 @@
+{
+ "v": "dep-120230",
+ "kurimas": 200,
+ "sid": 5041,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "E": {
+  "v": "en",
+  "en": {
+   "results": 5,
+   "Read more": 1,
+   "Shop": 1,
+   "Sale": 1,
+   "New": 1
+  },
+  "frazes": [
+   "Skip to content"
+  ],
+  "shots": [
+   {
+    "n": "s1635_search",
+    "u": "https://dev.avesa.lt/?s=tofu&post_type=product",
+    "w": 1366,
+    "h": 1200,
+    "full": 0
+   }
+  ]
+ },
+ "shots": {
+  "s1635_search": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/?s=tofu&post_type=product",
+   "title": "tofu - Petshop.lt",
+   "errors": []
+  }
+ }
+}
