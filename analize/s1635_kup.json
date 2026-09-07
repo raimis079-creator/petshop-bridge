@@ -1,0 +1,58 @@
+{
+ "v": "dep-070508",
+ "kurimas": 200,
+ "sid": 4998,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "K": {
+  "v": "S1635 kup",
+  "id": 35834,
+  "dabar": {
+   "kodas": "petshop.10",
+   "tipas": "percent",
+   "suma": "10",
+   "indiv": 1,
+   "free_ship": 0,
+   "excl_kat": [
+    71,
+    72,
+    73,
+    83,
+    85,
+    86,
+    78,
+    79,
+    80,
+    81
+   ],
+   "limit": 0,
+   "galioja_iki": "be datos"
+  },
+  "test": {
+   "19475": {
+    "kas": "konservai šunims (maistas — NEgalioti)",
+    "kat": [
+     86,
+     73
+    ],
+    "galioja": "NE"
+   },
+   "19708": {
+    "kas": "konservai šunims (maistas — turi NEgalioti)",
+    "kat": [
+     79
+    ],
+    "galioja": "NE"
+   },
+   "35357": {
+    "kas": "žaislas šunims (turi galioti)",
+    "kat": [
+     115
+    ],
+    "galioja": "TAIP"
+   }
+  }
+ }
+}
