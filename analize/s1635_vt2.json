@@ -1,0 +1,30 @@
+{
+ "v": "dep-083740",
+ "kurimas": 200,
+ "sid": 5007,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V2": {
+  "v": "S1635 vt2",
+  "rasta": [
+   "wp-content/themes/flatsome/woocommerce/checkout/thankyou.php"
+  ],
+  "wc_sabl_unfort": 1,
+  "po": {
+   "woocommerce_failed_order_settings": {
+    "subject": "[Petshop.lt]: Užsakymo #{order_number} apmokėti nepavyko",
+    "heading": "Užsakymo #{order_number} apmokėti nepavyko"
+   },
+   "woocommerce_cancelled_order_settings": {
+    "subject": "[Petshop.lt]: Užsakymas #{order_number} atšauktas",
+    "heading": "Užsakymas #{order_number} atšauktas"
+   },
+   "woocommerce_new_order_settings": {
+    "subject": "Naujas užsakymas Nr. {order_number} — {order_date}",
+    "heading": "Naujas užsakymas Nr. {order_number}"
+   }
+  }
+ }
+}
