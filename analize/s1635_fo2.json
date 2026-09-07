@@ -1,0 +1,65 @@
+{
+ "v": "dep-094717",
+ "kurimas": 200,
+ "sid": 5015,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "F2": {
+  "v": "S1635 fo2",
+  "url": {
+   "34938": "https://dev.avesa.lt/product/skanestai-katems2/",
+   "34942": "https://dev.avesa.lt/product/test-konservu-deze-800-be-vistienos/",
+   "34944": "https://dev.avesa.lt/product/test-konservu-deze-400-be-vistienos/",
+   "34945": "https://dev.avesa.lt/product/test-konservu-deze-400-monoproteinas/",
+   "34947": "https://dev.avesa.lt/product/test-konservu-deze-katei-isrankioms/",
+   "35309": "https://dev.avesa.lt/product/konservu-deze-katei/",
+   "35390": "https://dev.avesa.lt/product/konservu-rinkinys-katems/",
+   "35781": "https://dev.avesa.lt/product/konservu-deze-400-g-ivairove/"
+  },
+  "shots": [
+   {
+    "n": "s1635_rink_34947",
+    "u": "https://dev.avesa.lt/product/test-konservu-deze-katei-isrankioms/",
+    "w": 1366,
+    "h": 1100,
+    "full": 0
+   },
+   {
+    "n": "s1635_rink_34938",
+    "u": "https://dev.avesa.lt/product/skanestai-katems2/",
+    "w": 1366,
+    "h": 1100,
+    "full": 0
+   },
+   {
+    "n": "s1635_rink_34944",
+    "u": "https://dev.avesa.lt/product/test-konservu-deze-400-be-vistienos/",
+    "w": 1366,
+    "h": 1100,
+    "full": 0
+   }
+  ]
+ },
+ "shots": {
+  "s1635_rink_34947": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/product/test-konservu-deze-katei-isrankioms/",
+   "title": "Konservų rinkinys katėms - Petshop.lt",
+   "errors": []
+  },
+  "s1635_rink_34938": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/product/skanestai-katems2/",
+   "title": "Skanėstų dėžutė katei - Petshop.lt",
+   "errors": []
+  },
+  "s1635_rink_34944": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/product/test-konservu-deze-400-be-vistienos/",
+   "title": "Konservų dėžė, 400 g. Be vištienos - Petshop.lt",
+   "errors": []
+  }
+ }
+}
