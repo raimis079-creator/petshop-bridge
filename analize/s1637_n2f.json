@@ -1,0 +1,61 @@
+{
+ "v": "dep-192324",
+ "kurimas": 200,
+ "sid": 5091,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "S1637 n2",
+  "f": "S",
+  "temp_istrinta": 1,
+  "prod_vs_opt_konfliktai": [],
+  "baz_nustatyta": {
+   "62": 8,
+   "2359": 4,
+   "11190": 6,
+   "711002": 10
+  }
+ },
+ "K": {
+  "v": "S1637 n2",
+  "f": "K",
+  "temp_istrinta": 0,
+  "prod_vs_opt_konfliktai": [],
+  "saltinis_i_db": {
+   "tikrinta": 1010,
+   "ok": 1010,
+   "nesutampa": 0,
+   "sarasas": []
+  },
+  "tiekejo_feed_veidrodziai": {
+   "n": 300,
+   "suma": 27870
+  },
+  "db_av_stock_php": 10499,
+  "db_i_saltini_naslaiciai": {
+   "n": 0,
+   "sarasas": []
+  },
+  "sumos": {
+   "lauk_stock": 10499,
+   "db_stock_be_tiekejo": 10499,
+   "lauk_own": 581,
+   "db_own": 581,
+   "partiju_kiekis_liko": 9488,
+   "partijos_n": 619
+  },
+  "a_st": {
+   "eil": 997,
+   "skip": 179,
+   "tiekejo": 102
+  },
+  "b_st": {
+   "eil": 276,
+   "nerasta": 2,
+   "baz_dengia_prod": 45
+  },
+  "ping": 200
+ }
+}
