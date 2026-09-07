@@ -1,0 +1,29 @@
+{
+ "v": "dep-101458",
+ "kurimas": 200,
+ "sid": 5021,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "K": {
+  "v": "tf5",
+  "shots": [
+   {
+    "n": "s1635_kraiko_deze",
+    "u": "https://dev.avesa.lt/product/kraiko-deze-8-vnt-tofu-belocat/",
+    "w": 1366,
+    "h": 1300,
+    "full": 0
+   }
+  ]
+ },
+ "shots": {
+  "s1635_kraiko_deze": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/product/kraiko-deze-8-vnt-tofu-belocat/",
+   "title": "Kraiko dėžė, 8 vnt. — TOFU BeloCat kraikas katėms, 6 l (2,5 kg), 2 mm granulės - Petshop.lt",
+   "errors": []
+  }
+ }
+}
