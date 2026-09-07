@@ -1,6 +1,7 @@
 <?php
 /**
- * Petshop Welcome Modal v1.2 (S1636) — + „Sveiki sugrįžę“ (B) variantas migruotiems klientams.
+ * Petshop Welcome Modal v1.3 (S1636) — A tekstas suvienodintas su B tonu (Raimio sprendimas).
+ * v1.2 (S1636) — + „Sveiki sugrįžę“ (B) variantas migruotiems klientams.
  * v1.1 (S413) — launch pasisveikinimas seniems klientams.
  *
  * SPRENDIMAS (Raimis 2026-08-04): JOKIOS NUOLAIDOS. Maisto marža 15-20%,
@@ -100,14 +101,13 @@ class Petshop_Welcome_Modal {
 			<?php else : ?>
 			<div class="psw-t" id="psw-t">Petshop.lt atsinaujino</div>
 			<div class="psw-p">
-			  Ta pati parduotuvė, kurią pažįstate — naujas vaizdas ir keli dalykai,
-			  kurių anksčiau nebuvo.
+			  Atnaujinome parduotuvę: prekių turime daugiau, jas rasti lengviau.
 			</div>
 			<div class="psw-p psw-hi">
-			  Dabar matome, <strong>kiek jūsų augintiniui kainuoja diena</strong> ir
-			  kiek maisto jam reikia pagal gamintojo lentelę — ne pagal spėjimą.
+			  Pridėkite savo augintinį. Pagal jo svorį parodysime rekomenduojamą
+			  dienos maisto normą ir kiek maitinimas kainuoja per dieną.
 			</div>
-			<a class="psw-b1" href="<?php echo esc_url( $anketa ); ?>">Susipažinkime su jūsų augintiniu</a>
+			<a class="psw-b1" href="<?php echo esc_url( $anketa ); ?>">Pridėti augintinį</a>
 			<button type="button" class="psw-b2">Tik naujienos el. paštu</button>
 			<div class="psw-nl" hidden><?php echo do_shortcode( '[petshop_newsletter title="" text="" button="Prenumeruoti"]' ); ?></div>
 			<div class="psw-f">Užtruks minutę. Bet kada galėsite pakeisti ar ištrinti.</div>
