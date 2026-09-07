@@ -1,0 +1,172 @@
+{
+ "v": "dep-175512",
+ "kurimas": 200,
+ "sid": 5073,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1637 valymas",
+  "f": "A",
+  "temp_istrinta": 1,
+  "saugomi_rasti": [],
+  "pries": {
+   "uzs": 17,
+   "ref": 1
+  },
+  "lp_barkodai": [],
+  "vp_numeriai": [
+   {
+    "order_id": "35816",
+    "v": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"E2E\",\"manifest\":\"07267260906E2E\",\"numeriai\":[\"V07267E1E2E001\"],\"data\":\"2026-09-06 15:53:42\"}}"
+   },
+   {
+    "order_id": "35819",
+    "v": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"E2E\",\"manifest\":\"07267260906E2E\",\"numeriai\":[\"V07267E1E2E003\"],\"data\":\"2026-09-06 15:56:21\"}}"
+   },
+   {
+    "order_id": "35822",
+    "v": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260906001\",\"numeriai\":[\"V07267E1000059\",\"V07267E1000060\"],\"data\":\"2026-09-06 17:58:27\"}}"
+   },
+   {
+    "order_id": "35827",
+    "v": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"E2F\",\"manifest\":\"07267260906E2F\",\"numeriai\":[\"V07267E2F006\"],\"data\":\"2026-09-06 23:28:19\"}}"
+   },
+   {
+    "order_id": "35829",
+    "v": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"E2F\",\"manifest\":\"07267260906E2F\",\"numeriai\":[\"V07267E2F003\"],\"data\":\"2026-09-06 23:18:06\"}}"
+   },
+   {
+    "order_id": "35817",
+    "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"E2E\",\"manifest\":\"07267260906E2E\",\"numeriai\":[\"V07267E1E2E002\"],\"data\":\"2026-09-06 15:53:59\"}}"
+   },
+   {
+    "order_id": "35818",
+    "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"E2E\",\"manifest\":\"07267260906E2E\",\"numeriai\":[\"V07267E1E2E002\"],\"data\":\"2026-09-06 15:55:42\"}}"
+   },
+   {
+    "order_id": "35823",
+    "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260906002\",\"numeriai\":[\"V07267E1000061\"],\"data\":\"2026-09-06 18:04:23\"}}"
+   },
+   {
+    "order_id": "35824",
+    "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260906002\",\"numeriai\":[\"V07267E1000062\"],\"data\":\"2026-09-06 18:04:23\"}}"
+   },
+   {
+    "order_id": "35826",
+    "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260906002\",\"numeriai\":[\"V07267E1000063\"],\"data\":\"2026-09-06 18:04:23\"}}"
+   },
+   {
+    "order_id": "35828",
+    "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"E2F\",\"manifest\":\"07267260906E2F\",\"numeriai\":[\"V07267E2F002\"],\"data\":\"2026-09-06 23:17:29\"}}"
+   }
+  ],
+  "kopija_uzs": 14510,
+  "kopija": {
+   "ps_shipments": 13,
+   "ps_fakt_siuntos": 13,
+   "ps_fakt_uzsakymai": 17,
+   "ps_fakt_eilutes": 20,
+   "ps_fakt_grazinimai": 1,
+   "ps_fakt_atsargos_d": 2672,
+   "ps_uzsakymu_ivykiai": 121,
+   "ps_tiekimas_eil": 11,
+   "ps_tiekimas": 5,
+   "ps_plan_events": 0,
+   "ps_carts": 7,
+   "ps_refill_tracking": 2,
+   "ps_email_jobs": 3,
+   "ps_event_log": 34,
+   "ps_action_tokens": 0,
+   "ps_ataskaitu_dienos": 104,
+   "ps_kontrole_dienos": 4,
+   "ps_web_ivykiai": 204,
+   "ps_web_dienos": 0,
+   "ps_sargas_klaidos": 823
+  },
+  "kabliai_nuimti": [
+   "woocommerce_delete_order Petshop_Siuntu_Valymas::istrinti",
+   "before_delete_post Petshop_Siuntu_Valymas::is_posto",
+   "woocommerce_order_status_changed Petshop_Juosta::isvalyti",
+   "woocommerce_order_status_changed Woo_Lithuaniapost_Admin_Order_Service::on_status_changed",
+   "woocommerce_order_status_changed Petshop_Faktai::statusas",
+   "woocommerce_order_status_changed Petshop_Uzsakymu_Ivykiai::busena",
+   "woocommerce_order_status_cancelled Petshop_AV_Reduce::grazinti"
+  ],
+  "trinta": {
+   "ref": 1,
+   "uzs": 17,
+   "klaidos": []
+  },
+  "liko_wc_orders": 0,
+  "lenteles": {
+   "ps_shipments": 13,
+   "ps_fakt_siuntos": 13,
+   "ps_fakt_uzsakymai": 17,
+   "ps_fakt_eilutes": 20,
+   "ps_fakt_grazinimai": 1,
+   "ps_fakt_atsargos_d": 2672,
+   "ps_uzsakymu_ivykiai": 121,
+   "ps_tiekimas_eil": 11,
+   "ps_tiekimas": 5,
+   "ps_plan_events": 0,
+   "ps_carts": 7,
+   "ps_refill_tracking": 2,
+   "ps_email_jobs": 3,
+   "ps_event_log": 34,
+   "ps_action_tokens": 0,
+   "ps_ataskaitu_dienos": 104,
+   "ps_kontrole_dienos": 4,
+   "ps_web_ivykiai": 204,
+   "ps_web_dienos": false,
+   "ps_sargas_klaidos": 823
+  },
+  "nasl": {
+   "order_stats": 1,
+   "order_items": 2,
+   "itemmeta": 19,
+   "product_lookup": 1,
+   "tax_lookup": 1,
+   "coupon_lookup": 0,
+   "orders_meta": 0,
+   "addresses": 0,
+   "opdata": 0
+  },
+  "customer_lookup": 1,
+  "pdf": {
+   "invoice": 29,
+   "creditnote": 1,
+   "receipt": 1
+  },
+  "opcijos": {
+   "ps_s1617_test": 0,
+   "ps_audit_ids": 0,
+   "ps_e3_oid": 0,
+   "ps_e3_oid2": 0,
+   "ps_s1621_oid": 0,
+   "ps_s1621b_oid": 0,
+   "ps_audit_mail": 0,
+   "ps_dev_pastas_zurnalas": 1,
+   "ps_e2e_ids": 1,
+   "ps_e17_ids": 1,
+   "ps_e2f_ids": 1,
+   "ps_e2f_fe_id": 1,
+   "ps_laisku_archyvas": 1,
+   "ps_s1634_smtp_bak": 1,
+   "ps_s1634_wc_bak": 0,
+   "ps_s1632_seen": 1,
+   "ps_s1636x_done": 0
+  },
+  "s1632": {
+   "bak_n": 1131,
+   "stock": 1046,
+   "del_s": 85,
+   "own": 28,
+   "del_o": 864,
+   "partijos": 551
+  },
+  "kopija_dir": "/ps-backups/valymas-2026-09-07",
+  "kopija_failai": 20
+ }
+}
