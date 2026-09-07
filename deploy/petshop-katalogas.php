@@ -1,31 +1,12 @@
 <?php
 /**
- * Petshop Katalogas v8.7.4 (S1637) - siauram langui: vidinis scroll + antrastes klonas.
- *
- * v8.7.3 puslapio horizontalus scroll Raimiui netiko ("netelpa i ekrana").
- * v8.7.4: griztas vidinis lauko overflow-x (puslapis telpa), o antraste
- * siaurame rezime laiko fiksuotas JS klonas (#ps-thead-fix): rodomas tik
- * kai laukas turi horizontalu scroll IR gimtasis thead uz juostos; plotis =
- * lauko clientWidth, stulpeliu plociai kopijuojami, marginLeft seka
- * lauko scrollLeft. Placiam ekranui - gimtasis sticky, klono nera.
- *
- * Petshop Katalogas v8.7.3 (S1637) - sticky antraste veikia ir siaurame lange.
- *
- * KLAIDA (Raimio kadras 09-07): siauresniame lange (zoom / <=1400px CSS px)
- * .pskat-lent-lauk gaudavo overflow-x:auto ir tapdavo sticky konteineriu -
- * thead nebelipdavo prie juostos, kabodavo vidury saraso arba nuslinkdavo.
- * Playwright 1366px: thead.top=-180 vietoj 100. FIX: media taisykle ISIMTA -
- * siauras langas slenka horizontaliai VISAS (kaip Raimis ir daro), sticky
- * kontekstas lieka viewport visais plociais. "Samoningas kompromisas" (S903)
- * panaikintas.
- *
  * Petshop Katalogas v8.7.2 (S1636) - sticky antraste seka juosta scrollinant.
  * v8.7.1 (S903) - STULPELIU ANTRASTE NEJUDA.
  *
  * SAVININKAS: "desineje puseje virsus nejudetu, ir as slinkdamas prekes
  * matyciau ka kiekvieno stulpelio reiksme." Antraste sticky prie juostos
- * apacios (--ps-virsus). Placiam ekranui laukas ne scroll konteineris;
- * siauram (<=1400px) - vidinis overflow-x + JS antrastes klonas (v8.7.4).
+ * apacios (--ps-virsus). Laukas nebe scroll konteineris placiam ekranui;
+ * siauram (<=1400px) grazinamas overflow-x, ten antraste nuslenka.
  *
  * Petshop Katalogas v8.7 (S902) - NORMALUS DARBINIS LANGAS.
  *
@@ -6812,45 +6793,8 @@ class Petshop_Katalogas {
 			window.addEventListener("resize", virsus);
 			/* v8.7.2 (S1636): breadcrumb nuslenka -> juostos apacia kyla, o thead likdavo
 			   ties senu --ps-virsus (plysys virs antrastes). Perskaiciuojam scrollinant. */
-			var vRAF=false; window.addEventListener("scroll", function(){ if(vRAF) return; vRAF=true; requestAnimationFrame(function(){ vRAF=false; virsus(); antrKlonas(); }); }, {passive:true});
+			var vRAF=false; window.addEventListener("scroll", function(){ if(vRAF) return; vRAF=true; requestAnimationFrame(function(){ vRAF=false; virsus(); }); }, {passive:true});
 			setTimeout(virsus, 400); setTimeout(virsus, 1200);
-
-			/* ---------- v8.7.4: ANTRASTES KLONAS SIAURAM LANGUI ----------
-			   Kai .pskat-lent-lauk turi vidini horizontalu scroll (siauras
-			   langas), position:sticky thead nebelimpa prie juostos (sticky
-			   kontekstas tampa laukas). Sprendimas: fiksuotas thead klonas
-			   prie juostos apacios, plocio kaip laukas, horizontaliai
-			   sinchronizuotas su lauko scrollLeft. Placiam ekranui klonas
-			   nerodomas - ten veikia gimtasis sticky. */
-			var klF=null, klT=null;
-			function antrKlonas(){
-				var lauk=document.querySelector(".pskat-lent-lauk");
-				var tbl=lauk?lauk.querySelector(".pskat-t"):null;
-				var th0=tbl?tbl.querySelector("thead"):null;
-				if(!lauk||!th0) return;
-				var siauras=lauk.scrollWidth>lauk.clientWidth+1;
-				var r=lauk.getBoundingClientRect();
-				var top=parseFloat(getComputedStyle(document.documentElement).getPropertyValue("--ps-virsus"))||118;
-				var reikia=siauras && r.top<top && r.bottom>top+40;
-				if(!reikia){ if(klF) klF.style.display="none"; return; }
-				if(!klF){
-					klF=document.createElement("div"); klF.id="ps-thead-fix";
-					klT=document.createElement("table"); klT.className=tbl.className;
-					klF.appendChild(klT); document.body.appendChild(klF);
-					lauk.addEventListener("scroll", function(){ if(klT) klT.style.marginLeft=(-lauk.scrollLeft)+"px"; }, {passive:true});
-					window.addEventListener("resize", function(){ if(klT){ klT.innerHTML=""; } antrKlonas(); });
-				}
-				if(!klT.firstChild){
-					var kop=th0.cloneNode(true);
-					var o1=th0.querySelectorAll("th"), o2=kop.querySelectorAll("th");
-					for(var i=0;i<o1.length;i++){ o2[i].style.width=o1[i].offsetWidth+"px"; o2[i].style.boxSizing="border-box"; }
-					klT.style.width=tbl.offsetWidth+"px"; klT.appendChild(kop);
-				}
-				klF.style.top=top+"px"; klF.style.left=r.left+"px"; klF.style.width=lauk.clientWidth+"px";
-				klT.style.marginLeft=(-lauk.scrollLeft)+"px";
-				klF.style.display="block";
-			}
-			setTimeout(antrKlonas, 500); setTimeout(antrKlonas, 1300);
 
 			/* v8.6.2 (lieka): filtru dezes suskleidimas. Busena isimenama. */
 			function frBusena(b){
@@ -9089,10 +9033,10 @@ class Petshop_Katalogas {
 		/* Prekiu lentele: laukas tik horizontaliai slinkciai siauram ekranui.
 		   Aukscio ribos NERA - lentele auga pagal turini, slenka puslapis. */
 		/* v8.7.1 (savininkas): stulpeliu antraste NEJUDA slenkant prekes -
-		   sticky prie virsutines juostos apacios. v8.7.4: siauram langui
-		   griztame prie VIDINIO horizontalaus scroll (puslapis telpa,
-		   niekas nesvyruoja i sonus), o antraste ten laiko JS klonas
-		   (fiksuotas prie juostos, sinchronizuotas su lauku). */
+		   sticky prie virsutines juostos apacios. Kad sticky veiktu pries
+		   viso puslapio slinkti, laukas NEGALI buti scroll konteineris,
+		   todel overflow-x tik siauram ekranui (ten antraste nuslenka -
+		   samoningas kompromisas). */
 		.pskat-lent-lauk{border:1px solid #d3d8d2;border-radius:9px;background:#fff}
 		@media (max-width:1400px){
 			.pskat-lent-lauk{overflow-x:auto;
@@ -9101,11 +9045,6 @@ class Petshop_Katalogas {
 			.pskat-lent-lauk::-webkit-scrollbar-thumb{background:#c3cbc5;border-radius:6px}
 			.pskat-lent-lauk::-webkit-scrollbar-track{background:#f2f4f1}
 		}
-		/* v8.7.4: fiksuotas antrastes klonas siauram rezimui */
-		#ps-thead-fix{position:fixed;display:none;overflow:hidden;z-index:7;
-			background:#f7f9f6;box-shadow:inset 0 -1px 0 #d3d8d2;
-			border-left:1px solid #d3d8d2;border-right:1px solid #d3d8d2}
-		#ps-thead-fix table{table-layout:fixed;border-collapse:collapse;margin:0}
 		/* Remeli pereme laukas - lentelei jo nebereikia. */
 		.pskat-lent-lauk .pskat-t{border:0;border-radius:0;overflow:visible}
 		.pskat-lent-lauk .pskat-t thead th{position:sticky;top:var(--ps-virsus,118px);z-index:6;
