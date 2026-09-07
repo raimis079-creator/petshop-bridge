@@ -1,0 +1,14 @@
+{
+ "v": "dep-140803",
+ "kurimas": 200,
+ "sid": 5047,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V6": {
+  "v": "vl6",
+  "failas": "class-email-layout.php",
+  "kont": "sakymu ar paskyra.';\n\t\t}\n\n\t\t$out .= '</td></tr>';\n\t\t$out .= '</table></td></tr></table></body></html>';\n\t\treturn $out;\n\t}\n\n\t/**\n\t * Patogumo metodas: surenka viska i viena eilute.\n\t */\n\tpublic static function wrap( $args ) {\n\t\t$a = wp_parse_args( $args, array(\n\t\t\t'subject'    => '',\n\t\t\t'preheader'  => '',\n\t\t\t'body'       => '',\n\t\t\t'flow_class' => 'service',\n\t\t\t'email'      => '',\n\t\t\t'reason'     => '',\n\t\t) );\n\t\treturn self::open( $a['subject'], $a['preheader'] )\n\t\t\t. $a['body']\n\t\t\t. self::close( $a['flow_class'], $a['email'], $a['reason'] );\n\t}\n}\n"
+ }
+}
