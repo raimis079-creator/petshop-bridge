@@ -1,5 +1,16 @@
 # DEPLOYMENT LOG v1.9.44
 
+### S1638 (2026-09-08, diena) — PIRMIEJI GYVI GAVIMAI PER PARTIJŲ VARIKLĮ
+
+> Pridėti po šia antrašte (virš S1637). Tema: **dvi tiekėjų faktūros (PLN) sukeltos per `Petshop_Partijos::priimti()` su 100 % kryžmine iki vieneto; 2 pakuotės keitimai; EAN pildymas.** Bridge: `s1638_a/b/d/e/f.php` (read-only paieškos), `s1638_c.php` (Hikari gavimas), `s1638_g.php` (Animonda 39 eil.), `s1638_h.php` (19440). Rezultatai `analize/s1638_*.json`.
+
+- **Hikari, Faktura VAT 3656/W/2026:** 6 eil., 27 vnt., 489,02 PLN. Partijos #3966–3971. Kortelės: 18236, 18269 (5→10), 18272, 18278, 18203, 18218.
+- **Animonda, Faktura vat 5510/T/2026:** 39 eil., 2 700 vnt., 12 325,74 PLN. Partijos #3972–4010. Kryžminė abiem kryptim: eilutė→DB kiekviena (stock prieš/po, kiekis, savikaina_orig, eur), DB→faktūra Σ — OK.
+- **Metodas (šablonas kitiems gavimams — `s1638_g.php`):** `priimti()` pats moka valiutą (`savikaina` PLN + `kursas` 4,12 → `savikaina_eur=round(pln/kursas,4)`, `savikaina_orig` saugoma) ir pats kelia AV `_stock` — jokio rankinio stock rašymo. Sargai kiekvienai eilutei: `_ps_sandelis='av'`, be `_vf/_zb_qty`, publish, `product`, **EAN sutampa ARBA tuščias+žodžių sargas** (sargas pagavo 19440 su svetimu EAN — išgelbėjo nuo aklo perrašymo). Idempotencija pagal faktūros nr. pastaboje. Pastaba VISADA su faktūros nr. (Raimio taisyklė — atsekamumui).
+- **Pakuotės keitimai (Raimio sprendimai, ne naujos kortelės):** #19471 „su širdimis 800g" SKU 82740→82482 + EAN 4017721824828 (14→134); #19440 „Chicken Liver 100g" SKU 83443→83304 + EAN 4017721833042 (3→67). Požymis: faktūros simbolis su „/8" + barkodo nėra DB — tikrinti seną kortelę tuo pačiu pavadinimu/gramažu.
+- **EAN įrašyta 11 kortelių** (Hikari: 18269/18272/18278/18218; Animonda: 19553/19590/19562/19620/19449 + 2 keitimai). `_ean` ir `_global_unique_id`.
+- Pastaba: gavimo skriptuose pavadinimo sargui neimti frazių per kablelį (18236 „Staple, baby pellet" — pirmas bandymas užstrigo dėl to).
+
 ### S1637 (2026-09-07, vakaras/naktis — T-1)
 
 > Pridėti po šia antrašte (virš S1636). Tema: **T-1 valymas + likučių kėlimas NUO NULIO su 100 % kryžmine (Raimio reikalavimas po 5 rastų klaidų) + tiekėjų Excel + Belacor Tofu pagal Raimio planą + katalogo sticky fiasco (v8.7.3/v8.7.4 → atstatyta v8.7.2).** Bridge: `irankiai/s1637_v.php` (valymas D/A/Q), `s1637_d.php` (dry šviežiais 09-07), `s1637_a.php` (apply C,P0–P5,V), `s1637_ver.php`, `s1636_x.php` (Excel, +savikainos fallback), `s1637_n0.php` (NULINIMAS), `s1637_n2.php` (S bazinės + K kryžminė), `s1637_r.php`, `s1637_z.php` (nenaudotas — pakeistas nuliniu keliu), `s1637_t.php`, `s1637_b.php` (Tofu), `s1637_j.php`/`s1637_ka|kd|k4a|k4d|rb.php`/`s1637_q2.php` (katalogas). Kadrai `screenshots/s1637_*`.
