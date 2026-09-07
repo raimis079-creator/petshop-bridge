@@ -1,0 +1,61 @@
+{
+ "v": "dep-153615",
+ "kurimas": 200,
+ "sid": 5055,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "S1636 d",
+  "f": "T",
+  "temp_istrinta": 1,
+  "temp_deakt": 0,
+  "opt_pries": "1",
+  "test_uid": 119,
+  "t1_home_B": {
+   "psw": 1,
+   "sveiki": 1,
+   "prideti": 1,
+   "rinkiniai": 1,
+   "nl_nera": 0,
+   "delsa3": 1
+  },
+  "t1_meta_irasyta": "2026-09-07 18:37:34",
+  "t2_antra_karta_nerodo": 1,
+  "t3_myaccount_B": {
+   "psw": 1,
+   "sveiki": 1
+  },
+  "t4_checkout_nerodo": 1,
+  "t5_svecias_A": {
+   "psw": 1,
+   "A_title": 1,
+   "ne_B": 1,
+   "delsa12": 1,
+   "nl_yra": 1
+  },
+  "rink_url": "https://dev.avesa.lt/kategorija/daugiau-pigiau/",
+  "shots": [
+   {
+    "n": "s1636_welcome_B",
+    "u": "https://dev.avesa.lt/",
+    "eval": "new Promise(r=>setTimeout(()=>r({rodomas:!document.getElementById(\"psw\").hidden,tekstas:document.querySelector(\".psw-t\").textContent}),3600))"
+   },
+   {
+    "n": "s1636_welcome_B_mob",
+    "u": "https://dev.avesa.lt/",
+    "w": 390,
+    "h": 844,
+    "eval": "new Promise(r=>setTimeout(()=>r(!document.getElementById(\"psw\").hidden),3600))"
+   }
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "05-state.bred@icloud.com|1788799058|6XJ1dm1yuYNlvPY5pEjtIts8bPUWQGujBbanEEsqW5Y|8630db139f5d471e3e9b31cb991fdf97879a3071043bd355e9425788c0463960"
+   }
+  ]
+ },
+ "shots_klaida": "Error [ERR_MODULE_NOT_FOUND]: Cannot find package 'playwright' imported from /home/runner/work/petshop-bridge/petshop-bridge/screenshot.mjs"
+}
