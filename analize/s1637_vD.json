@@ -1,0 +1,308 @@
+{
+ "v": "dep-175333",
+ "kurimas": 200,
+ "sid": 5072,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1637 valymas",
+  "f": "D",
+  "temp_istrinta": 1,
+  "uzsakymai": [
+   35816,
+   35817,
+   35818,
+   35819,
+   35820,
+   35821,
+   35822,
+   35823,
+   35824,
+   35826,
+   35827,
+   35828,
+   35829,
+   35830,
+   35831,
+   35832,
+   35835
+  ],
+  "refundai": [
+   35833
+  ],
+  "uzs_n": 17,
+  "ref_n": 1,
+  "lp_uzs": [],
+  "lp_meta_raktai": [],
+  "vp_uzs_n": 11,
+  "lp_vp_kabliai": [
+   "woocommerce_order_status_changed @10 Woo_Lithuaniapost_Admin_Order_Service::on_status_changed",
+   "woocommerce_thankyou @10 Woo_Lithuaniapost_Public::add_terminal_field_order_thankyou"
+  ],
+  "lp_plugin": [
+   "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php",
+   "woo-lithuaniapost-main/woo-lithuaniapost.php"
+  ],
+  "lenteles": {
+   "ps_shipments": {
+    "viso": 13,
+    "trinti": 13
+   },
+   "ps_fakt_siuntos": {
+    "viso": 13,
+    "trinti": 13
+   },
+   "ps_fakt_uzsakymai": {
+    "viso": 17,
+    "trinti": 17
+   },
+   "ps_fakt_eilutes": {
+    "viso": 20,
+    "trinti": 20
+   },
+   "ps_fakt_grazinimai": {
+    "viso": 1,
+    "trinti": 1
+   },
+   "ps_fakt_atsargos_d": {
+    "viso": 2672,
+    "trinti": 2672
+   },
+   "ps_uzsakymu_ivykiai": {
+    "viso": 121,
+    "trinti": 121
+   },
+   "ps_tiekimas_eil": {
+    "viso": 11,
+    "trinti": 11
+   },
+   "ps_tiekimas": {
+    "viso": 5,
+    "trinti": 5
+   },
+   "ps_plan_events": {
+    "viso": 0,
+    "trinti": 0
+   },
+   "ps_carts": {
+    "viso": 7,
+    "trinti": 7
+   },
+   "ps_refill_tracking": {
+    "viso": 2,
+    "trinti": 2
+   },
+   "ps_email_jobs": {
+    "viso": 3,
+    "trinti": 3
+   },
+   "ps_event_log": {
+    "viso": 34,
+    "trinti": 34
+   },
+   "ps_action_tokens": {
+    "viso": 0,
+    "trinti": 0
+   },
+   "ps_ataskaitu_dienos": {
+    "viso": 104,
+    "trinti": 104
+   },
+   "ps_kontrole_dienos": {
+    "viso": 4,
+    "trinti": 4
+   },
+   "ps_web_ivykiai": {
+    "viso": 203,
+    "trinti": 203
+   },
+   "ps_web_dienos": {
+    "viso": 12,
+    "trinti": 0
+   },
+   "ps_sargas_klaidos": {
+    "viso": 823,
+    "trinti": 823
+   }
+  },
+  "wc": {
+   "wc_orders_meta": 481,
+   "wc_order_addresses": 34,
+   "wc_order_operational_data": 18,
+   "woocommerce_order_items": 57,
+   "woocommerce_order_itemmeta": 604,
+   "wc_order_stats": 18,
+   "wc_order_product_lookup": 21,
+   "wc_order_tax_lookup": 18,
+   "wc_order_coupon_lookup": 1,
+   "wc_customer_lookup": 6
+  },
+  "wc_nasl": {
+   "order_stats": 0,
+   "order_items": 0,
+   "product_lookup": 0,
+   "tax_lookup": 0
+  },
+  "pdf": {
+   "invoice": 29,
+   "creditnote": 1,
+   "receipt": 1
+  },
+  "opcijos": {
+   "ps_s1617_test": "-",
+   "ps_audit_ids": "-",
+   "ps_e3_oid": "-",
+   "ps_e3_oid2": "-",
+   "ps_s1621_oid": "-",
+   "ps_s1621b_oid": "-",
+   "ps_audit_mail": "-",
+   "ps_dev_pastas_zurnalas": "array(59)",
+   "ps_e2e_ids": "array(6)",
+   "ps_e17_ids": "array(3)",
+   "ps_e2f_ids": "array(6)",
+   "ps_e2f_fe_id": "35835",
+   "ps_laisku_archyvas": "array(34)",
+   "ps_s1634_smtp_bak": "array(3)",
+   "ps_s1634_wc_bak": "-",
+   "ps_s1632_seen": "array(959)",
+   "ps_s1636x_done": "-"
+  },
+  "skait": {
+   "avpn": "362",
+   "iapv": "171",
+   "kr": "106",
+   "ppk": "104"
+  },
+  "s1632": {
+   "bak_n": 1131,
+   "partijos": 551
+  },
+  "posts_35834_rinkiniai": [
+   {
+    "ID": "35834",
+    "post_type": "shop_coupon",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35840",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35841",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35842",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35843",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35844",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35845",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35846",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35847",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35848",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35849",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35850",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35851",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35852",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35853",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35854",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35855",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35856",
+    "post_type": "product",
+    "post_status": "publish"
+   }
+  ],
+  "uzs_saugomi": [],
+  "posts_products_35790_35796": [
+   {
+    "ID": "35781",
+    "post_type": "product",
+    "post_status": "publish"
+   },
+   {
+    "ID": "35782",
+    "post_type": "product",
+    "post_status": "draft"
+   },
+   {
+    "ID": "35783",
+    "post_type": "product",
+    "post_status": "draft"
+   },
+   {
+    "ID": "35784",
+    "post_type": "product",
+    "post_status": "draft"
+   },
+   {
+    "ID": "35790",
+    "post_type": "product",
+    "post_status": "private"
+   },
+   {
+    "ID": "35796",
+    "post_type": "product",
+    "post_status": "private"
+   }
+  ]
+ }
+}
