@@ -1,0 +1,29 @@
+{
+ "v": "dep-235702",
+ "kurimas": 200,
+ "sid": 5242,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "K": {
+  "v": "S1662",
+  "snip": {
+   "463": [
+    " *             https://dev.avesa.lt/?petshop_attr_breakdown=1"
+   ],
+   "2024": [
+    " * home_url() — NE hardcode dev.avesa.lt: po domeno perjungimo veiks be pataisu."
+   ]
+  },
+  "mu": {
+   "petshop-import-tempas.php": [
+    " * HOSTAS: option `ps_import_tempas_host` (dabar `https://dev.avesa.lt`, nes"
+   ],
+   "petshop-vf-feed.php": [
+    " * petshop.lt/public_html, dev.avesa.lt liko tik router'is) URL",
+    " * https://dev.avesa.lt/wp-content/petshop-xml-vf-fetcher.php grąžina 404."
+   ]
+  }
+ }
+}
