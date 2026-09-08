@@ -1,0 +1,37 @@
+{
+ "v": "dep-222318",
+ "kurimas": 200,
+ "sid": 5220,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "CL": {
+  "v": "S1644",
+  "faze": "CL",
+  "istrinta": 35867
+ },
+ "GO": {
+  "v": "S1644",
+  "faze": "GO",
+  "preke": {
+   "id": 22763,
+   "sku": "JOS0888",
+   "pav": "JosiDog Beef in Sauce konservai šunims, jautiena padaže, 415g",
+   "kaina": "1",
+   "stock": 1133
+  },
+  "gateways": [
+   "paysera:yes",
+   "bacs:yes",
+   "cheque:no",
+   "cod:no"
+  ],
+  "oid": 35868,
+  "numeris": "35868",
+  "suma": "1.00",
+  "gw": "paysera",
+  "key": "wc_order_jhEMy1YBoScj1",
+  "pay_url": "https://dev.avesa.lt/kasa/order-pay/35868/?pay_for_order=true&key=wc_order_jhEMy1YBoScj1"
+ }
+}
