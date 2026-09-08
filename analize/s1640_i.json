@@ -1,0 +1,21 @@
+{
+ "v": "dep-082637",
+ "kurimas": 200,
+ "sid": 5150,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1640i",
+  "flows_dunning": "nera",
+  "kodas": "\tpublic static function render( $flow, $payload, $row = array() ) {\n\t\t$flows = self::flows();\n\t\tif ( ! isset( $flows[ $flow ] ) ) {\n\t\t\treturn array( 'subject' => '', 'html' => '' );\n\t\t}\n\t\t$slug = $flows[ $flow ]['template'];\n\t\t$file = PETSHOP_CORE_DIR . 'templates/emails/' . $slug . '.php';\n\n\t\t$custom = apply_filters( 'petshop_email_template_path', $file, $flow, $slug );\n\t\tif ( ! file_exists( $custom ) ) {\n\t\t\treturn array( 'subject' => '', 'html' => '' );\n\t\t}\n\n\t\t$subject    = '';\n\t\t$flow_class = isset( $row['flow_class'] ) ? $row['flow_class'] : 'service';\n\t\t$recipient  = isset( $row['recipient_email'] ) ? $row['recipient_email'] : '';\n\t\tob_start();\n\t\tinclude $custom; // sablonas gali nustatyti $subject; mato $payload, $flow_class, $recipient\n\t\t$html = ob_get_clean();\n\n\t\tif ( $subject === '' && ! empty( $row['subject'] ) ) {\n\t\t\t$subject = $row['subject'];\n\t\t}\n\t\treturn array( 'subject' => $subject, 'html' => $html );\n\t}\n\n\t/* ---------------------------------------------------------------- */\n\t/* Statistika / diagnostika                                         */\n\t/* ---------------------------------------------------------------- */\n\n\tpublic static function stats() {\n\t\tglobal $wpdb;\n\t\t$t = self::table();\n\t\treturn array(\n\t\t\t'by_status' => $wpdb->get_results( \"SELECT status, COUNT(*) c FROM $t GROUP BY status\", ARRAY_A ),\n\t\t\t'by_flow'   => $wpdb->get_results( \"SELECT flow, status, COUNT(*) c FROM $t GROUP BY flow, status\", ARRAY_A ),\n\t\t\t'skipped'   => $wpdb->get_results( \"SELECT skip_reason, COUNT(*) c FROM $t WHERE status IN ('skipped','deferred') GROUP BY skip_reason\", ARRAY_A ),\n\t\t\t'per_flow'  => $wpdb->get_results(\n\t\t\t\t\"SELECT flow,\n\t\t\t\t        SUM(status='sent')     AS sent,\n\t\t\t\t        SUM(status='skipped')  AS skipped,\n\t\t\t\t        SUM(status='deferred') AS deferred,\n\t\t\t\t        SUM(status='failed')   AS failed,\n\t\t\t\t        SUM(status='pending')  AS pending\n\t\t\t\t FROM $t GROUP BY flow\", ARRAY_A ),\n",
+  "perziura_dunning": {
+   "ok": false,
+   "klaida": "Nezinomas srautas",
+   "saltinis": "",
+   "html_len": 0,
+   "subject": ""
+  }
+ }
+}
