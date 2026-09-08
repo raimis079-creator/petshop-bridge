@@ -1,0 +1,92 @@
+{
+ "v": "dep-184544",
+ "kurimas": 200,
+ "sid": 5195,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1643i",
+  "shots": [
+   {
+    "n": "s1643_rink_35070",
+    "u": "https://dev.avesa.lt/product/stirnos-ir-avies-koju-rinkinys-sunims-%c2%b7-12-vnt/",
+    "full": false,
+    "eval": "Array.from(document.querySelectorAll('.ps-rink-img img')).map(i=>({src:i.getAttribute('src'),ok:i.naturalWidth>0}))"
+   },
+   {
+    "n": "s1643_rink_35404",
+    "u": "https://dev.avesa.lt/product/vytintu-skanestu-rinkinys-suniui-8-rusys-antiena-elniena-eriena-jautiena/",
+    "full": false,
+    "eval": "Array.from(document.querySelectorAll('.ps-rink-img img')).map(i=>({src:i.getAttribute('src'),ok:i.naturalWidth>0}))"
+   }
+  ]
+ },
+ "shots": {
+  "s1643_rink_35070": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/product/stirnos-ir-avies-koju-rinkinys-sunims-%c2%b7-12-vnt/",
+   "title": "Stirnos ir avies kojų rinkinys šunims · 12 vnt. - Petshop.lt",
+   "errors": [],
+   "eval": [
+    {
+     "src": "/wp-content/uploads/2026/06/ba-balta-avies-koja-1-vnt-1-280x280.png",
+     "ok": true
+    },
+    {
+     "src": "/wp-content/uploads/2026/08/stirnos-koja-nauja-1-1-280x280.jpg",
+     "ok": true
+    },
+    {
+     "src": "/wp-content/uploads/2026/06/ru-ruda-avies-koja-1-vnt-1-280x280.png",
+     "ok": true
+    },
+    {
+     "src": "/wp-content/uploads/2026/06/ru-ruda-stirnos-koja-1-vnt-1-280x280.png",
+     "ok": true
+    }
+   ]
+  },
+  "s1643_rink_35404": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/product/vytintu-skanestu-rinkinys-suniui-8-rusys-antiena-elniena-eriena-jautiena/",
+   "title": "Vytintų skanėstų rinkinys šuniui — 8 rūšys (antiena, elniena, ėriena, jautiena) - Petshop.lt",
+   "errors": [],
+   "eval": [
+    {
+     "src": "/wp-content/uploads/2026/06/45de88cc-5942-4dc1-9fe2-94898d53b02e-280x280.png",
+     "ok": true
+    },
+    {
+     "src": "/wp-content/uploads/2026/06/04fbf28c-e6b2-46a4-9984-99825baf9eca-280x280.png",
+     "ok": true
+    },
+    {
+     "src": "/wp-content/uploads/2026/06/421e27c7-09f8-4dfe-98bc-a0ec0ec40f29-280x280.png",
+     "ok": true
+    },
+    {
+     "src": "/wp-content/uploads/2026/06/381d3e67-3298-41b4-a348-36a8b96d8562-280x280.png",
+     "ok": true
+    },
+    {
+     "src": "/wp-content/uploads/2026/06/1ddf8387-bec5-4ecb-b0db-21d330338f28-280x280.png",
+     "ok": true
+    },
+    {
+     "src": "/wp-content/uploads/2026/06/100e06b8-9b5f-4329-a58f-f7db89d918a8-280x280.png",
+     "ok": true
+    },
+    {
+     "src": "/wp-content/uploads/2026/06/5725e436-10d9-4169-b6e2-ef1a9968101c-280x280.png",
+     "ok": true
+    },
+    {
+     "src": "/wp-content/uploads/2026/06/1842c08c-25f7-4853-b6fb-eeb308c56258-280x280.png",
+     "ok": true
+    }
+   ]
+  }
+ }
+}
