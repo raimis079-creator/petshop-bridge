@@ -1,0 +1,89 @@
+{
+ "v": "dep-062132",
+ "kurimas": 200,
+ "sid": 5117,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1639c",
+  "flows": [
+   {
+    "flow": "back_in_stock",
+    "version": "1",
+    "status": "draft"
+   },
+   {
+    "flow": "cart_abandoned",
+    "version": "1",
+    "status": "draft"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "version": "1",
+    "status": "draft"
+   },
+   {
+    "flow": "legacy_reactivation_l1",
+    "version": "1",
+    "status": "draft"
+   },
+   {
+    "flow": "order_shipped",
+    "version": "1",
+    "status": "draft"
+   },
+   {
+    "flow": "pet_reminder_due",
+    "version": "1",
+    "status": "draft"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "version": "1",
+    "status": "draft"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "version": "1",
+    "status": "draft"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "version": "1",
+    "status": "draft"
+   },
+   {
+    "flow": "refill_due",
+    "version": "1",
+    "status": "draft"
+   },
+   {
+    "flow": "shipment_returned",
+    "version": "1",
+    "status": "draft"
+   },
+   {
+    "flow": "subscription_t5_notice",
+    "version": "1",
+    "status": "draft"
+   },
+   {
+    "flow": "win_back_120",
+    "version": "1",
+    "status": "draft"
+   },
+   {
+    "flow": "win_back_60",
+    "version": "1",
+    "status": "draft"
+   },
+   {
+    "flow": "win_back_90",
+    "version": "1",
+    "status": "draft"
+   }
+  ]
+ }
+}
