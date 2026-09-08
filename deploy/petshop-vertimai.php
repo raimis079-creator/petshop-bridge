@@ -1,62 +1,31 @@
 <?php
 /**
- * Plugin Name: Petshop Vertimai
- * Description: Flatsome temos tekstai, kuriems nera lietuvisko vertimo. Tema
- *              tiekia ~14 kalbu (es, de, pl, it, tr, zh...), lietuviu tarp ju
- *              NERA, todel dalis matomu uzrasu lieka angliski. Cia — zodynas,
- *              einantis per `gettext` filtra.
- *
- *              KODEL NE .mo FAILAS: temos atnaujinimas ji istrintu. Filtras
- *              islieka.
- * Version: 1.2 (S1620, 2026-09-06: + WooCommerce `form-verify-email.php` 2 sakiniai — svečio užsakymo puslapis po 10 min. malonės laiko, lt_LT vertimo nėra)
+ * Plugin Name: Petshop vertimai
+ * Description: Trūkstami WooCommerce/Flatsome lt_LT vertimai (laiškai, paieškos antraštės). Tik eilutės, kurių nėra oficialiuose .mo.
+ * Version: 1.2 (S1639, 2026-09-08: + grąžinimo laiško sakiniai — email_improvements body lt_LT vertimo nėra, matyta teste #35863)
  */
-if ( ! defined( 'ABSPATH' ) ) { exit; }
-
-class Petshop_Vertimai {
-
-	/** Tik tie tekstai, kuriuos MATEME ekrane arba radome sablone. */
-	const ZODYNAS = array(
-		'flatsome' => array(
-			'Posts found'      => 'Rasti straipsniai',
-			'Products found'   => 'Rastos prekės',
-			'Pages found'      => 'Rasti puslapiai',
-			'No results found' => 'Nieko nerasta',
-			'Read more'        => 'Skaityti plačiau',
-			'Load more'        => 'Rodyti daugiau',
-			'Search'           => 'Ieškoti',
-			'Continue reading' => 'Skaityti toliau',
-			'Older Comments'   => 'Senesni komentarai',
-			'Newer Comments'   => 'Naujesni komentarai',
-			'Comment navigation' => 'Komentarų naršymas',
-		),
-		'woocommerce' => array(
-			'To view this page, you must either %1$slogin%2$s or verify the email address associated with the order.' => 'Norėdami matyti šį puslapį, %1$sprisijunkite%2$s arba patvirtinkite el. pašto adresą, nurodytą užsakyme.',
-			'We were unable to verify the email address you provided. Please try again.' => 'Nepavyko patvirtinti nurodyto el. pašto adreso. Bandykite dar kartą.',
-		),
+if ( ! defined( 'ABSPATH' ) ) exit;
+add_filter( 'gettext_woocommerce', function( $translated, $text, $domain ) {
+	static $map = array(
+		// v1.2: grąžinimo laiškas (email_improvements)
+		'Your order from %s has been partially refunded.' => 'Jums grąžinta dalis pinigų už užsakymą parduotuvėje %s.',
+		'Your order from %s has been refunded.' => 'Jums grąžinti pinigai už užsakymą parduotuvėje %s.',
+		'Your order on %s has been partially refunded. There are more details below for your reference:' => 'Jums grąžinta dalis pinigų už užsakymą parduotuvėje %s. Detalės žemiau:',
+		'Your order on %s has been refunded. There are more details below for your reference:' => 'Jums grąžinti pinigai už užsakymą parduotuvėje %s. Detalės žemiau:',
+		'Unfortunately, the payment for order #%1$s from %2$s has failed. The order was as follows:' => 'Deja, užsakymo #%1$s (pirkėjas %2$s) apmokėjimas nepavyko. Užsakymo informacija:',
+		"We\xE2\x80\x99re getting in touch to let you know that order #%1\$s from %2\$s has been cancelled." => 'Pranešame, kad užsakymas #%1$s (pirkėjas %2$s) buvo atšauktas.',
+		'Order Failed: %s' => 'Užsakymo apmokėti nepavyko: %s',
+		'New Order: #%s' => 'Naujas užsakymas: #%s',
 	);
-
-	public static function start() {
-		add_filter( 'gettext', array( __CLASS__, 'versti' ), 20, 3 );
-		add_filter( 'gettext_with_context', array( __CLASS__, 'versti_su_kontekstu' ), 20, 4 );
-	}
-
-	public static function versti( $isverstas, $originalas, $domenas ) {
-		/* Keiciam TIK tada, kai vertimo sluoksnis nieko nepadare — kitaip
-		   uzkloti butume ir tikra vertima, jei jis kada atsirastu. */
-		if ( $isverstas !== $originalas ) { return $isverstas; }
-		if ( ! isset( self::ZODYNAS[ $domenas ][ $originalas ] ) ) { return $isverstas; }
-		return self::ZODYNAS[ $domenas ][ $originalas ];
-	}
-
-	public static function versti_su_kontekstu( $isverstas, $originalas, $kontekstas, $domenas ) {
-		return self::versti( $isverstas, $originalas, $domenas );
-	}
-
-	/** Diagnostikai: ka zodynas apima. */
-	public static function apimtis() {
-		$n = 0;
-		foreach ( self::ZODYNAS as $d => $z ) { $n += count( $z ); }
-		return $n;
-	}
-}
-Petshop_Vertimai::start();
+	if ( $translated === $text && isset( $map[ $text ] ) ) return $map[ $text ];
+	return $translated;
+}, 10, 3 );
+add_filter( 'gettext_flatsome', function( $translated, $text, $domain ) {
+	static $map = array(
+		'Pages found'    => 'Rasti puslapiai',
+		'Products found' => 'Rastos prekės',
+		'Posts found'    => 'Rasti įrašai',
+	);
+	if ( $translated === $text && isset( $map[ $text ] ) ) return $map[ $text ];
+	return $translated;
+}, 10, 3 );
