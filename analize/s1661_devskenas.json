@@ -1,0 +1,51 @@
+{
+ "v": "dep-235519",
+ "kurimas": 200,
+ "sid": 5241,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "S1661",
+  "options": 0,
+  "posts_content": [],
+  "posts_n": 0,
+  "posts_excerpt": 0,
+  "guid": 1,
+  "postmeta": [
+   {
+    "meta_key": "_used_by",
+    "n": "1"
+   }
+  ],
+  "usermeta": 0,
+  "snippets_kodas": [
+   {
+    "id": "463",
+    "name": "Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija)"
+   },
+   {
+    "id": "2024",
+    "name": "Petshop Anketa→Augintinio profilis 301 v1 (LIVE)"
+   },
+   {
+    "id": "5241",
+    "name": "TEMP PS dep-235519"
+   }
+  ],
+  "snippets_neakt": 42,
+  "mu_failai": [
+   "petshop-import-tempas.php",
+   "petshop-vf-feed.php"
+  ],
+  "root": {
+   ".htaccess": "svaru",
+   "robots.txt": "nera",
+   "wp-config.php": "svaru"
+  },
+  "robots_body": "User-agent: *\nDisallow: /wp-content/uploads/wc-logs/\nDisallow: /wp-content/uploads/woocommerce_transient_files/\nDisallow: /wp-content/uploads/woocommerce_uploads/\nDisallow: /*?add-to-cart=\nDisallow: /*?*add-to-cart=\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://petshop.lt/si",
+  "sitemap": "HTTP/1.1 301 Moved Permanently",
+  "comments": 0
+ }
+}
