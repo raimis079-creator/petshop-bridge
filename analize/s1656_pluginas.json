@@ -1,0 +1,60 @@
+{
+ "v": "dep-234002",
+ "kurimas": 200,
+ "sid": 5234,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "G": {
+  "v": "S1656",
+  "dirs": [
+   "woo-payment-gateway-paysera"
+  ],
+  "kodas": {
+   "/src/Helper/PayseraPaymentHelper.php": [
+    "    public function getWooCommerceOrderStatuses(): array",
+    "            $statuses[$status] = wc_get_order_status_name($status);"
+   ],
+   "/src/Provider/PayseraPaymentSettingsProvider.php": [
+    "            ->setPaidOrderStatus('wc-completed')",
+    "            $payseraPaymentSettings->setPaidOrderStatus($statusOptions[PayseraPaymentSettings::PAID_ORDER_STATUS][0]);",
+    "            $payseraPaymentSettings->setPaidOrderStatus($oldOptions['paymentCompletedStatus']);"
+   ],
+   "/src/Entity/class-paysera-payment-gateway.php": [
+    "    private const RESPONSE_STATUS_CONFIRMED = 1;",
+    "    private const RESPONSE_STATUS_ADDITIONAL_INFO = 3;",
+    "    private const RESPONSE_STATUS_REFUNDED = 5;",
+    "        $this->updateOrderStatus($order, $this->payseraPaymentSettings->getPendingPaymentStatus());",
+    "                case self::RESPONSE_STATUS_CONFIRMED:"
+   ],
+   "/src/Entity/PayseraPaymentSettings.php": [
+    "    private ?string $paidOrderStatus;",
+    "        $this->paidOrderStatus = null;",
+    "    public function getPaidOrderStatus(): ?string",
+    "        return $this->paidOrderStatus;",
+    "    public function setPaidOrderStatus(string $paidOrderStatus): self"
+   ],
+   "/src/Admin/PayseraPaymentAdmin.php": [
+    "                [$this, 'paidOrderStatusRender'],",
+    "    public function paidOrderStatusRender(): void",
+    "                $this->payseraPaymentHelper->getWooCommerceOrderStatuses(),",
+    "                $this->payseraPaymentSettings->getPaidOrderStatus()"
+   ],
+   "/src/EventHandler/WCOrderPaymentCompletedHandler.php": [
+    "                $this->deliveryOrderService->setDeliveryOrderStatusPrepaid($deliveryOrderRequest);"
+   ],
+   "/src/Service/PayseraDeliveryOrderService.php": [
+    "    public function setDeliveryOrderStatusPrepaid("
+   ],
+   "/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderCreate.php": [
+    "    const ORDER_INITIAL_STATUS_DRAFT = 'draft';",
+    "    const ORDER_INITIAL_STATUS_PREPAID = 'prepaid';"
+   ],
+   "/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderFilter.php": [
+    "    public function getOrderStatuses()",
+    "    public function setOrderStatuses(array $orderStatuses)"
+   ]
+  }
+ }
+}
