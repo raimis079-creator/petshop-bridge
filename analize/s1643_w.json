@@ -1,0 +1,189 @@
+{
+ "v": "dep-195924",
+ "kurimas": 200,
+ "sid": 5209,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1643w",
+  "draft": {
+   "14274": {
+    "buvo": "publish",
+    "kaina": "",
+    "tapo": "draft"
+   },
+   "14824": {
+    "buvo": "publish",
+    "kaina": "",
+    "tapo": "draft"
+   }
+  },
+  "rinkiniai": [
+   {
+    "id": 34942,
+    "st": "publish",
+    "thumb": "",
+    "get_image_id": 35030,
+    "galerija": "",
+    "komponentu": 0,
+    "aprase_rink_img": 0,
+    "kompozicija_meta": 0,
+    "pav": "Konservų dėžė, 800 g. Be vištienos",
+    "nuoroda": "https://dev.avesa.lt/product/test-konservu-deze-800-be-vistienos/"
+   },
+   {
+    "id": 34944,
+    "st": "publish",
+    "thumb": "",
+    "get_image_id": 35030,
+    "galerija": "",
+    "komponentu": 0,
+    "aprase_rink_img": 0,
+    "kompozicija_meta": 0,
+    "pav": "Konservų dėžė, 400 g. Be vištienos",
+    "nuoroda": "https://dev.avesa.lt/product/test-konservu-deze-400-be-vistienos/"
+   },
+   {
+    "id": 34945,
+    "st": "publish",
+    "thumb": "",
+    "get_image_id": 35030,
+    "galerija": "",
+    "komponentu": 0,
+    "aprase_rink_img": 0,
+    "kompozicija_meta": 0,
+    "pav": "Konservų dėžė 300/400 g – Monoproteinas",
+    "nuoroda": "https://dev.avesa.lt/product/test-konservu-deze-400-monoproteinas/"
+   },
+   {
+    "id": 34947,
+    "st": "publish",
+    "thumb": "",
+    "get_image_id": 35031,
+    "galerija": "",
+    "komponentu": 0,
+    "aprase_rink_img": 0,
+    "kompozicija_meta": 0,
+    "pav": "Konservų rinkinys katėms",
+    "nuoroda": "https://dev.avesa.lt/product/test-konservu-deze-katei-isrankioms/"
+   },
+   {
+    "id": 34938,
+    "st": "publish",
+    "thumb": "",
+    "get_image_id": 35069,
+    "galerija": "",
+    "komponentu": 0,
+    "aprase_rink_img": 0,
+    "kompozicija_meta": 0,
+    "pav": "Skanėstų dėžutė katei",
+    "nuoroda": "https://dev.avesa.lt/product/skanestai-katems2/"
+   },
+   {
+    "id": 35309,
+    "st": "publish",
+    "thumb": "",
+    "get_image_id": 35031,
+    "galerija": "",
+    "komponentu": 0,
+    "aprase_rink_img": 0,
+    "kompozicija_meta": 0,
+    "pav": "Konservų rinkinys katėms",
+    "nuoroda": "https://dev.avesa.lt/product/konservu-deze-katei/"
+   },
+   {
+    "id": 35390,
+    "st": "publish",
+    "thumb": "",
+    "get_image_id": 35031,
+    "galerija": "",
+    "komponentu": 0,
+    "aprase_rink_img": 0,
+    "kompozicija_meta": 0,
+    "pav": "Konservų rinkinys katėms",
+    "nuoroda": "https://dev.avesa.lt/product/konservu-rinkinys-katems/"
+   },
+   {
+    "id": 35781,
+    "st": "publish",
+    "thumb": "",
+    "get_image_id": 35030,
+    "galerija": "",
+    "komponentu": 0,
+    "aprase_rink_img": 0,
+    "kompozicija_meta": 0,
+    "pav": "Konservų dėžė, 400 g. Įvairovė",
+    "nuoroda": "https://dev.avesa.lt/product/konservu-deze-400-g-ivairove/"
+   },
+   {
+    "id": 35861,
+    "st": "publish",
+    "thumb": "",
+    "get_image_id": 35004,
+    "galerija": "",
+    "komponentu": 0,
+    "aprase_rink_img": 0,
+    "kompozicija_meta": 0,
+    "pav": "Kramtalų rinkinys šunims",
+    "nuoroda": "https://dev.avesa.lt/product/kramtalu-rinkinys-sunims/"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1643_rink_34942",
+    "u": "https://dev.avesa.lt/product/test-konservu-deze-800-be-vistienos/",
+    "eval": "(function(){var g=document.querySelector('.product-images, .woocommerce-product-gallery, .product-gallery');var i=g?g.querySelectorAll('img'):[];return {galerijos_blokas:!!g,img:i.length,pirmas:i[0]?i[0].getAttribute('src'):null,rodoma:i[0]?i[0].naturalWidth>0:false};})()"
+   },
+   {
+    "n": "s1643_rink_35309",
+    "u": "https://dev.avesa.lt/product/konservu-deze-katei/",
+    "eval": "(function(){var g=document.querySelector('.product-images, .woocommerce-product-gallery, .product-gallery');var i=g?g.querySelectorAll('img'):[];return {galerijos_blokas:!!g,img:i.length,pirmas:i[0]?i[0].getAttribute('src'):null,rodoma:i[0]?i[0].naturalWidth>0:false};})()"
+   },
+   {
+    "n": "s1643_rink_35861",
+    "u": "https://dev.avesa.lt/product/kramtalu-rinkinys-sunims/",
+    "eval": "(function(){var g=document.querySelector('.product-images, .woocommerce-product-gallery, .product-gallery');var i=g?g.querySelectorAll('img'):[];return {galerijos_blokas:!!g,img:i.length,pirmas:i[0]?i[0].getAttribute('src'):null,rodoma:i[0]?i[0].naturalWidth>0:false};})()"
+   }
+  ]
+ },
+ "shots": {
+  "s1643_rink_34942": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/product/test-konservu-deze-800-be-vistienos/",
+   "title": "Konservų dėžė, 800 g. Be vištienos - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "galerijos_blokas": true,
+    "img": 1,
+    "pirmas": "https://dev.avesa.lt/wp-content/uploads/2026/08/sunu-konservai-800x800.jpg",
+    "rodoma": true
+   }
+  },
+  "s1643_rink_35309": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/product/konservu-deze-katei/",
+   "title": "Konservų rinkinys katėms - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "galerijos_blokas": true,
+    "img": 1,
+    "pirmas": "https://dev.avesa.lt/wp-content/uploads/2026/08/konservai-katems-3-800x671.jpg",
+    "rodoma": true
+   }
+  },
+  "s1643_rink_35861": {
+   "status": 201,
+   "url": "https://dev.avesa.lt/product/kramtalu-rinkinys-sunims/",
+   "title": "Kramtalų rinkinys šunims - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "galerijos_blokas": true,
+    "img": 1,
+    "pirmas": "https://dev.avesa.lt/wp-content/uploads/2026/08/skanestai-2-800x671.jpg",
+    "rodoma": true
+   }
+  }
+ }
+}
