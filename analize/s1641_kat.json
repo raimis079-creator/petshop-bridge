@@ -1,0 +1,17 @@
+{
+ "v": "dep-090210",
+ "kurimas": 200,
+ "sid": 5160,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "PHP1": {
+  "file": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-prenumerata-katalogas.php",
+  "md5": "d474d5466d5e3590e420a5826ff0b1df",
+  "eilutes": [
+   "61: if (!$p->is_purchasable() || $p->get_price() === '') return false;",
+   "112: if (!$p->is_purchasable() || $p->get_price() === '') {"
+  ]
+ }
+}
