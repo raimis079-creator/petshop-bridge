@@ -1,0 +1,32 @@
+{
+ "v": "dep-222149",
+ "kurimas": 200,
+ "sid": 5219,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1644",
+  "faze": "GO",
+  "preke": {
+   "id": 17547,
+   "sku": "2835",
+   "pav": "Miamor Feine Filets konservai katėms, tunas lašišos drebučiuose, 100 g",
+   "kaina": "2.05",
+   "stock": 0
+  },
+  "gateways": [
+   "paysera:yes",
+   "bacs:yes",
+   "cheque:no",
+   "cod:no"
+  ],
+  "oid": 35867,
+  "numeris": "35867",
+  "suma": "2.05",
+  "gw": "paysera",
+  "key": "wc_order_mOgtykPokptHV",
+  "pay_url": "https://dev.avesa.lt/kasa/order-pay/35867/?pay_for_order=true&key=wc_order_mOgtykPokptHV"
+ }
+}
