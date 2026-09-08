@@ -82,6 +82,35 @@ Raimio nurodymas: „visus dalykus sutvarkyk, negalima palikti šiukšlių". Kop
 **PASTABA ATEIČIAI:** rinkinių aprašymus (`<div class="ps-rink-img">`) generuoja kodas — jei jis naudoja `home_url()`, po pergeneravimo dev'e vėl atsirastų absoliutus dev URL. T-0 naktį pakartoti tą pačią `dev.avesa.lt` kontrolinę užklausą prieš paleidimą.
 
 
+#### 9. 🔴 RADINYS: PARTIJŲ REDAGAVIMAS KATALOGO KORTELĖJE NIEKADA NEVEIKĖ (`ryšio klaida`)
+
+**Raimio signalas:** taisant prekių savikainas, partijos eilutėje (#3882, VF, 17 vnt.) prie lauko atsiranda **„ryšio klaida"**, reikšmė neįsirašo.
+
+**Diagnozė — tai NE ryšys.** JS `partijaSiusti()` naudoja `fetch(...).then(r=>r.json()).catch(...)`; `.catch` suveikia ir tada, kai atsakymas nėra validus JSON. Simuliavus kvietimą serveryje (`s1643_n.php`, adminas + to paties proceso nonce, `do_action('wp_ajax_ps_kat_partija')`):
+
+```
+call_user_func_array(): Argument #1 ($callback) must be a valid callback,
+class Petshop_Katalogas does not have a method "ajax_partija"
+```
+
+**Šaknis:** `petshop-katalogas.php` REGISTRUOJA du kablius į neegzistuojančius metodus:
+
+```
+wp_ajax_ps_kat_partija       -> Petshop_Katalogas::ajax_partija        NĖRA
+wp_ajax_ps_kat_partija_nauja -> Petshop_Katalogas::ajax_partija_nauja  NĖRA
+```
+
+Iš 23 registruotų `wp_ajax_ps_kat_*` kablių **21 metodas egzistuoja, šie 2 — ne.** Visoje instaliacijoje (`mu-plugins`, `petshop-core`, tema) `function ajax_partija` NĖRA nė vieno.
+
+**Tai NE S1642 regresija.** Patikrinta visa backup grandinė `ps-backups/`: v8.7.1 (08-20), v8.7.2 (08-21), v8.7.3 (08-21), v8.7.1/2/3 (09-07), v8.7.5, v8.7.6, v8.7.7, v8.7.8 — **nė viename nėra `function ajax_partija`, o registracija yra visuose.** Vadinasi, partijų redagavimas kortelėje (savikaina / likutis / geriausia iki / nauja partija) **niekada neveikė** — UI nupieštas, backend'o niekada nebuvo.
+
+**Kas VEIKIA (nesutrikdyta):** prekės kainos redagavimas (`ps_kat_kaina` → `ajax_kaina_irasyti`), savikaina kortelės lauke (`ps_kat_sav` → `ajax_sav_irasyti`), AV likutis (`ps_kat_av`), tiekėjo likutis, ir kiti 21 kablys.
+
+**Sprendimo kelias (Raimio sprendimui, NEDARYTA):** rašyti trūkstamus `ajax_partija` / `ajax_partija_nauja`. Variklio `Petshop_Partijos` viešas API turi visa, ko reikia, jo liesti nereikia: `partijos()`, `svertine_savikaina()`, `perskaiciuoti_savikaina()`, `av_likutis()`, `priimti()` (naujai partijai), `sutapimo_patikra()`. Laukai iš JS: `savikaina`, `kiekis_liko`, `geriausia_iki`. Kortelės tekstas jau žada: „Pakeitus likutį ar savikainą, prekės AV likutis ir svertinė savikaina perskaičiuojami" — vadinasi, handleris privalo kviesti `perskaiciuoti_savikaina()` + AV likučio perskaičiavimą, ne tik rašyti į lentelę.
+
+**Rekomendacija:** paleidimo NEBLOKUOJA (partijos kuriamos per Gavimą, kuris veikia — S1638 įrodė 45 partijomis). Daryti PO T-0, ramiai, su dienoraščiu. Bet **UI apgaudinėja** — laukai atrodo redaguojami. Iki pataisymo verta arba užrakinti tuos laukus, arba palikti kaip yra ir žinoti.
+
+
 #### 7. T-0 SĄRAŠO PAPILDYMAS (siūlomas, Raimio tvirtinimui)
 
 ```
