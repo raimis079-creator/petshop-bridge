@@ -111,6 +111,36 @@ Iš 23 registruotų `wp_ajax_ps_kat_*` kablių **21 metodas egzistuoja, šie 2 �
 **Rekomendacija:** paleidimo NEBLOKUOJA (partijos kuriamos per Gavimą, kuris veikia — S1638 įrodė 45 partijomis). Daryti PO T-0, ramiai, su dienoraščiu. Bet **UI apgaudinėja** — laukai atrodo redaguojami. Iki pataisymo verta arba užrakinti tuos laukus, arba palikti kaip yra ir žinoti.
 
 
+#### 10. SISTEMOS PJŪVIAI (Raimis: „gal dar ką praleidome?") — `s1643_t/u/v.php`, READ-ONLY
+
+**A. Negyvų kablių šukavimas per visą gyvą `$wp_filter`** (ne failų grep — tikra WP būsena, `method_exists`/`function_exists` kiekvienam callback'ui). Rezultatas: **iš visų petshop kablių negyvi tik du — tie patys `ajax_partija` ir `ajax_partija_nauja` (§9).** Likę „negyvi" sąraše — WP core `_wp_ajax_add_hierarchical_term` ir YITH `YITH_WCAN_Ajax::process`: jie kraunami tik `admin-ajax` kontekste, matavimas vyko froante — **klaidingi teigiami, ne problema.** Daugiau tokios klasės skylių petshop kode NĖRA.
+
+**B. Cron:** 84 kabliai, **0 įvykių vėluoja >1 h**, orfanų (įvykis be kablio) 0. ✅
+
+**C. Užsakymai / laiškų eilė:** `wc_orders` visų statusų 0; `ps_email_jobs` 0. ✅ (atitinka T-0 pasiruošimo būseną)
+
+**D. Prekės:** publish **2 633** · draft 1 233 · be kategorijos **0** ✅
+
+**E. 🟡 DVI PUBLISH PREKĖS BE KAINOS** — klientui matomos, bet nenuperkamos:
+
+| ID | SKU | Prekė | `_zb_cost` | `_zb_qty` | `_stock_status` |
+|---|---|---|---|---|---|
+| 14274 | 01KOM057 | Monge Cat 4x10kg Kitten+Adult+Urinary+Rabbit Mono | 171,15 | 4 | instock |
+| 14824 | 01GIC510510 | GIMCAT GRAS BITS 425G | 8,504 | 10 | instock |
+
+Abi ZB, abiem `_regular_price` / `_sale_price` / `_price` **tušti**, o `_zb_last_sync` = **šios dienos 22:06 / 22:09** — t. y. importas kiekius atnaujina, bet kainos taip ir nėra. Prekė rodoma „yra sandėlyje" be kainos. **Prieš paleidimą: arba įkainoti, arba į draft.** Sprendimas — Raimio.
+
+**F. 🟡 DEVYNIOS PUBLISH PREKĖS BE PAGRINDINĖS NUOTRAUKOS** — visos **Mix and Match rinkiniai**: 34942 (20,10 €), 34944 (13,20), 34945 (14,70), 34947 (10,74), 34938 (4,17), 35309 (5,76), 35390 (7,74), 35781 (10,74), 35861 (2,25). Kainas turi, nuotraukos nėra — parduotuvės sąraše bus tuščias langelis. Dalis jų (35840–56 ruožas) jau yra T-0 valymo saugiklių sąraše; **34938–34947 — NE, jie lieka gyvi.**
+
+**G. SKU dublikatai — 2, abu nekenksmingi:** `718000428` (#34905 trash + #34908 publish) ir `HYPM11 x2` (abu trash). Realaus konflikto nėra.
+
+**H. Be SKU (publish) 26:** 9 Mix and Match + 17 simple (dalis — „Konservų dėžė" AV rinkiniai, #35840 belcor_tofu jau saugiklių sąraše). Rinkiniams SKU nebūtinas — ne gedimas, fiksuojama žinojimui.
+
+**I. Autoload 223,2 KB** — sveika (didžiausi: `rewrite_rules` 28,5 · `_transient_wp_core_block_css_files` 21,7 · `wcdn_template_settings` 20,9 · `cron` 13,8). ✅
+
+**Metodinė pastaba:** negyvų kablių patikra per gyvą `$wp_filter` yra pigi (vienas run'as) ir pagavo tai, ko failų grep nebūtų parodęs kaip problemos. **Verta kartoti po kiekvieno didesnio deploy.**
+
+
 #### 7. T-0 SĄRAŠO PAPILDYMAS (siūlomas, Raimio tvirtinimui)
 
 ```
