@@ -1,0 +1,33 @@
+{
+ "v": "dep-185817",
+ "kurimas": 200,
+ "sid": 5199,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1643m",
+  "nonce_veiksmas": "NERASTA",
+  "handler_pradzia": "<?php\n/**\n * Petshop Katalogas v8.7.9 (S1642) - DP pakuotems savikaina ir is bazines META kaskados x N (kai bazine registre neturi eilutes);\n *   v8.7.8 (S1642) - rinkiniams (_ps_rinkinys/DP sablonas/Mix and Match) nerodomas 'be saltinio' (saltinius turi komponentai);\n *   v8.7.5 (S1641) - variacines prekes KAINA saraso eiluteje.\n *\n * SAVININKAS: \"Admin lange nerodo pardavimo kainu\". Variacines prekes tevui\n * WooCommerce `_regular_price` isvalo - kaina gyvena variacijose, o `_price`\n * WC pats sinchronizuoja kaip maziausia variacijos kaina. Sarasas skaite tik\n * `_regular_price`, todel KAINA ir ANTKAINIS variacinems rode brukssni, nors\n * kainos yra. Dabar surinkti() variacinei prekei ima ",
+  "partija": {
+   "id": "3882",
+   "product_id": "18614",
+   "gauta": "2026-09-07",
+   "kiekis_gautas": "17",
+   "kiekis_liko": "17",
+   "savikaina_eur": "1.9000",
+   "savikaina_orig": null,
+   "valiuta": "EUR",
+   "kursas": "1.000000",
+   "geriausia_iki": null,
+   "tiekejas": "VF",
+   "importuota": "0",
+   "tiekimas_id": null,
+   "pastaba": "Fizinis likutis (Raimio Excel, S1636)",
+   "sukurta": "2026-09-07 22:09:58",
+   "user_id": "0",
+   "atsaukta": "0"
+  }
+ }
+}
