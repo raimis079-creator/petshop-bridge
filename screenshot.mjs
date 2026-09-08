@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLy8gVEVNUCBzMTY0MV9rYWluYSB2MyDigJQgcGVyIGluaXQgKyBHRVQgc2FyZ2EKYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYoIWlzc2V0KCRfR0VUWydwc194J10pKSByZXR1cm47CiAgJHNrdXM9WycxMTE4NCcsJzExODM3JywnNDE1OCcsJzExMTU4JywnMTE4MzgnLCcxMTgzNicsJzgwMjYxMCddOwogICRyPVtdOwogIGZvcmVhY2goJHNrdXMgYXMgJHMpewogICAgJHBpZD13Y19nZXRfcHJvZHVjdF9pZF9ieV9za3UoJHMpOwogICAgJHJbJHNdPVsncGlkJz0+JHBpZF07CiAgICBpZighJHBpZCkgY29udGludWU7CiAgICAkcD13Y19nZXRfcHJvZHVjdCgkcGlkKTsKICAgIGlmKCEkcCl7JHJbJHNdWyd3YyddPSdGQUxTRSc7Y29udGludWU7fQogICAgJHJbJHNdKz1bJ3R5cGUnPT4kcC0+Z2V0X3R5cGUoKSwnc3RhdHVzJz0+JHAtPmdldF9zdGF0dXMoKSwKICAgICAgJ19wcmljZSc9PmdldF9wb3N0X21ldGEoJHBpZCwnX3ByaWNlJyx0cnVlKSwKICAgICAgJ19yZWcnPT5nZXRfcG9zdF9tZXRhKCRwaWQsJ19yZWd1bGFyX3ByaWNlJyx0cnVlKSwKICAgICAgJ19zYWxlJz0+Z2V0X3Bvc3RfbWV0YSgkcGlkLCdfc2FsZV9wcmljZScsdHJ1ZSksCiAgICAgICdnZXRfcHJpY2UnPT4kcC0+Z2V0X3ByaWNlKCldOwogIH0KICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOwogIGVjaG8ganNvbl9lbmNvZGUoJHIsSlNPTl9VTkVTQ0FQRURfVU5JQ09ERSk7CiAgZXhpdDsKfSk7Cg==';
-const VER='dep-085910';
+const VER='dep-090030';
 const GKEY='ps_x';
 const PHASES=["PHP1"];
-const OUT='analize/s1641_kaina3.json';
+const OUT='analize/s1641_kaina3b.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
