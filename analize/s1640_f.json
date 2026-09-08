@@ -1,0 +1,10 @@
+{
+ "v": "dep-081837",
+ "kurimas": 200,
+ "sid": 5147,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "zalias_GO": "<?php\n/**\n * Sablonas: payment_failed — apmokejimas neivyko (dunning, 1-as laiskas).\n * Gauna: $payload (order_number, total, name, pay_url, order_url, method, expires_at),\n *        $flow_class, $recipient (dispatch::render).\n * Nustato: $subject\n * TZ §4.4.1: \"jus\" mazaja, siuntejas Petshop.lt, fallback be vardo.\n * TONAS: NE kaltinimas. Dazniausia priezastis — nutruko rysys su banku.\n *\n * v2.0 (S1548): perkeltas ant Petshop_Email_Layout — turinys nepakeistas.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$order_no  = isset( $payload['order_number'] ) ? $payload['order_number'] : '';\n$total     = isset( $payload['total'] ) ? $payload['total'] : '';\n$name      = isset( $payload['name'] ) ? trim( (string) $payload['name'] ) : '';\n$pay_url   = isset( $payload['pay_url'] ) ? $payload['pay_url'] : '';\n$order_url = isset( $payload['order_url'] ) ? $payload['order_url'] : wc_get_account_endpoint_url( 'orders' );\n$galioja   = isset( $payload['expires_at'] ) ? (string) $payload['expires_at'] : '';\n$email     = isset( $recipient ) ? $recipient : '';\n$fc        = isset( $flow_class ) ? $flow_class : 'transactional';\n\n$subject = $order_no\n\t? sprintf( 'Užsakymas %s laukia apmokėjimo', $order_no )\n\t: 'Jūsų užsakymas laukia apmokėjimo';\n\n$greet = function_exists( 'ps_sveiki' ) ? ps_sveiki( $name ) : ( $name !== '' ? sprintf( 'Sveiki, %s,', esc_html( $name ) ) : 'Sveiki,' );\n$cta   = $pay_url ? $pay_url : $order_url;\n\n$body  = Petshop_Email_Layout::p(\n\t$greet . ' jūsų užsakymą gavome, bet apmokėjimas nepasiekė mūsų. Dažniausiai taip nutinka, kai mokėjimo lange nutrūksta ryšys su banku — "
+}
