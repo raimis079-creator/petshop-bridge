@@ -1,6 +1,6 @@
 # DEPLOYMENT LOG v1.9.49
 
-### S1642 (2026-09-08, diena) — SAVIKAINOS: Raimio lentelė (8) + Georplast promo Excel (135)
+### S1642 (2026-09-08, diena–vakaras, UŽDARYTA) — SAVIKAINOS (Raimio 8 + Georplast 135) + KATALOGAS v8.7.6→v8.7.9 (rinkinių „be šaltinio", DP savikaina). Tęsinys — NAUJAME lange iškart (be pertraukos): T-1 likučiai + parduotų DELTA → T-0 ~0:30–1:00. Startas: `STARTAS_2026-09-08_po_S1642.md`. Resursai: Max planas, Fable savaitinis ~8 % likutis (reset pentk. 17:00), prireikus Raimis dasiperka kreditų.
 
 > Pridėti po šia antrašte (virš S1641). Tema: **savikainų pildymas — Raimio 8 kortelių lentelė ir Georplast „One Shot Promotion 31/10/2025" Excel (faktūrinė+15 %); rašom `_cost_price` TIK jei esama tuščia arba mažesnė.** Bridge: `irankiai/s1642_s.php` (8 kortelės, R+A), `s1642_g.php` (Georplast 135, A), `s1642_p.php` (probe, TEMP). Rezultatai `analize/s1642_s.json`, `s1642_g.json`, `s1642_p.json`.
 
