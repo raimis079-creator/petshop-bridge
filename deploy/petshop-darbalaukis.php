@@ -1,5 +1,7 @@
 <?php
 /**
+ * Petshop Darbalaukis v3.39.3 (S1639, Raimis 09-08): siuntos_laiskas() — pilname laiške (viena siunta arba paskutinė „visas išsiųstas") prekių sąrašo NĖRA (jos sąskaitoje/paskyroje) ir segamas PVM sąskaitos PDF
+ *   (meta `_petshop_completed_pdf` arba temos `petshop_generate_invoice_pdf`); dalinių siuntų laiškai NEKEISTI — „Šioje siuntoje / Dar keliaus" lieka (klientas žino, ką gauna), be sąskaitos. Sutaupomas atskiras sąskaitos laiškas.
  * Petshop Darbalaukis v3.39.2 (S1626, Raimis: „kaip padaryti užsakymą į AV, jei čia jokių laukų nėra?“): tuščioje Dropshipping eilėje rodydavo tik „Čia tuščia“ — `laisku_korteles()` buvo kviečiama tik su eilutėmis;
  *   dabar kviečiama visada (be paieškos) → tiekėjų mygtukai „Užsakyti į atsargas iš: VF · ZB · …“, kaupiamos partijos ir archyvo nuoroda matomi ir kai dropship užsakymų nėra.
  * Petshop Darbalaukis v3.39.1 (S1625, radinys Venipak teste): pasiūlymas „[T] veža į AV“, kai to tiekėjo užsakymas į AV atviras (v3.2 taisyklė), taikomas TIK mišriam užsakymui (yra AV eilutė) —
@@ -329,7 +331,7 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Darbalaukis {
 
-	const VERSIJA = '3.39.2';
+	const VERSIJA = '3.39.3';
 	const ATSAUKTU_DIENOS = 30; // v3.36: po kiek dienų atšauktas neapmokėtas → šiukšlinė (ir šiukšlinėje → galutinai)
 	const SLUG    = 'ps-desk';
 
@@ -3253,12 +3255,19 @@ class Petshop_Darbalaukis {
 		if ( $pask ) { $sek[] = esc_html( 'Visą užsakymo eigą matysite ' ) . '<a href="' . esc_url( $pask ) . '" style="color:' . esc_attr( $bazine ) . ';font-weight:700">' . esc_html( 'paskyroje → Užsakymas Nr. ' . $nr_uzs ) . '</a>.'; }
 		if ( $sek ) { $h .= '<p style="margin:-6px 0 18px;font-size:13px;color:#555">' . implode( ' ', $sek ) . '</p>'; }
 		$sar = function( $eil ) { $l = '<ul style="margin:6px 0 14px;padding-left:20px">'; foreach ( $eil as $e ) { $l .= '<li style="margin:0 0 4px">' . esc_html( $e['q'] . ' × ' . $e['n'] ) . '</li>'; } return $l . '</ul>'; };
-		if ( $sios ) { $h .= '<p style="margin:0"><b>' . esc_html( $viso > 1 && $dalis ? 'Šioje siuntoje:' : 'Prekės:' ) . '</b></p>' . $sar( $sios ); }
+		if ( $sios && $dalis && $n < $viso ) { $h .= '<p style="margin:0"><b>' . esc_html( 'Šioje siuntoje:' ) . '</b></p>' . $sar( $sios ); } // v3.39.3: pilname laiške prekių nerodom
 		if ( $kitos ) { $h .= '<p style="margin:0"><b>' . esc_html( 'Dar keliaus atskira siunta:' ) . '</b></p>' . $sar( $kitos ); }
 		$h .= '<p>' . esc_html( 'Gražios dienos,' ) . '<br>' . esc_html( 'petshop.lt' ) . '</p>';
 		$tema = $viso > 1 && $dalis ? sprintf( 'Užsakymas Nr. %s — išsiųsta %d iš %d siuntų', $nr_uzs, $n, $viso ) : sprintf( 'Jūsų užsakymas Nr. %s išsiųstas', $nr_uzs );
 		$mailer = WC()->mailer();
-		$ok = $mailer->send( $el, $tema, $mailer->wrap_message( $vardas_l, $h ) );
+		// v3.39.3 (Raimis 09-08): pilnas laiškas — su PVM sąskaitos PDF; dalinis — be (sąskaita visam užsakymui).
+		$pried = array();
+		if ( ! $dalis || $n >= $viso ) {
+			$pdf = (string) $o->get_meta( '_petshop_completed_pdf' );
+			if ( ( ! $pdf || ! file_exists( $pdf ) ) && function_exists( 'petshop_generate_invoice_pdf' ) ) { try { $pdf = (string) petshop_generate_invoice_pdf( $o->get_id() ); if ( $pdf && file_exists( $pdf ) ) { $o->update_meta_data( '_petshop_completed_pdf', $pdf ); } } catch ( Throwable $e ) { $pdf = ''; } }
+			if ( $pdf && file_exists( $pdf ) ) { $pried[] = $pdf; }
+		}
+		$ok = $mailer->send( $el, $tema, $mailer->wrap_message( $vardas_l, $h ), '', $pried );
 		if ( ! $ok ) { return array( false, 'laiško klientui išsiųsti nepavyko' ); }
 		$dabar = current_time( 'mysql' );
 		if ( $dalis ) { $iss[ $dalis ]['laiskas'] = $dabar; } else { foreach ( $iss as $k => $x ) { $iss[ $k ]['laiskas'] = $dabar; } }
