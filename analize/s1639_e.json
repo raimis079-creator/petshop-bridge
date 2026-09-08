@@ -1,0 +1,16 @@
+{
+ "v": "dep-062502",
+ "kurimas": 200,
+ "sid": 5119,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1639e",
+  "failai": [
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/themes/flatsome-child/functions.php"
+  ],
+  "istrauka": " .= '<p style=\"font-size:14px;margin:0 0 10px;line-height:1.6;\">';\n            if ( $total > 1 ) {\n                $tracking_html .= '<span style=\"color:#555;\">Siunta ' . $i . ' iš ' . (int) $total . '</span>';\n                if ( $label ) { $tracking_html .= ' <span style=\"color:#7A867C;\">· ' . esc_html( $label ) . '</span>'; }\n                $tracking_html .= '<br>';\n            } elseif ( $label ) {\n                $tracking_html .= '<span style=\"color:#555;\">' . esc_html( $label ) . '</span><br>';\n            }\n            $tracking_html .= 'Siuntos numeris: <strong>' . esc_html( $num ) . '</strong>';\n            if ( $url ) {\n                $tracking_html .= '<br><a href=\"' . esc_url( $url ) . '\" style=\"color:#2d6a35;\">Sekti siuntą</a>';\n            }\n            $tracking_html .= '</p>';\n        }\n        $tracking_html .= '<div style=\"height:8px;\"></div>';\n    }\n\n    $heading = 'Jūsų užsakymas išsiųstas!';\n    $message = '<p>Sveiki ' . $first_name . ',</p>'\n        . '<p>Jūsų užsakymas <strong>Nr. ' . $order_num . '</strong> išsiųstas ir jau kelyje pas Jus!</p>'\n        . $tracking_html\n        . '<p>PVM sąskaita faktūra prisegta prie šio laiško.</p>'\n        . '<br><p>Ačiū, kad esate su mumis!<br>Petshop.lt komanda<br>+370 681 87787<br>terra@petshop.lt</p>';\n\n    $mailer  = WC()->mailer();\n    $wrapped = $mailer->wrap_message( $heading, $message );\n    echo $wrapped;\n}, 10, 4 );\n\n// ===============================================================\n// Laiskas #2 - Apmokejimas gautas - BE saskaitos\n// ===============================================================\nadd_filter( 'woocommerce_email_attachments', 'petshop_remove_invoice_from_processing_email', 9999, 4 );\n\nfunction petshop_remove_invoice_from_processing_email( $attachments, $email_id, $order, $email ) {\n    if ( $email_id !== 'customer_processing_order' ) return $attachments;\n    if ( empty( $attachments ) || ! is_array( $attachments ) ) return array();\n    $filtered = array();\n    foreach ( $attachments as $attachment ) {\n        $path     = is_string( $attachment ) ? $attachment : '';\n        $basename = $path ? basename( $path ) : '';\n        $is_pdf   = ( strtolower( pathinfo( $basename, PATHINFO_EXTENSION ) ) === 'pdf' );\n        $is_inv   = ( stripos( $path, '/wcdn/invoice/' ) !== false || stripos( $basename, 'invoice' ) !== false );\n        if ( $is_pdf && $is_inv ) continue;\n       "
+ }
+}
