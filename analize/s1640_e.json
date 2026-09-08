@@ -1,0 +1,49 @@
+{
+ "v": "dep-081652",
+ "kurimas": 200,
+ "sid": 5146,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1640e",
+  "stulpeliai": [
+   "id",
+   "flow",
+   "version",
+   "status",
+   "subject",
+   "preheader",
+   "reason",
+   "blocks_json",
+   "notes",
+   "author_id",
+   "created_at",
+   "published_at"
+  ],
+  "cart_abandoned": {
+   "id": "54",
+   "flow": "cart_abandoned",
+   "version": "1",
+   "status": "draft",
+   "subject": "Jūsų prekės vis dar laukia krepšelyje",
+   "preheader": "Krepšelis išsaugotas — galite tęsti bet kada.",
+   "reason": "Gavote šį laišką, nes sutikote gauti Petshop.lt pasiūlymus.",
+   "blocks_json": "[{\"t\":\"p\",\"text\":\"Sveiki, pasteb\\u0117jome, kad krep\\u0161elyje liko preki\\u0173. Jis i\\u0161saugotas \\u2014 galite t\\u0119sti, kai b\\u016bsite pasiruo\\u0161\\u0119.\"},{\"t\":\"items\",\"saltinis\":\"cart_ite",
+   "notes": "Perkelta is cart-abandoned-1.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip atrodo be: recovery_url",
+   "author_id": "0",
+   "created_at": "2026-08-29 18:30:23",
+   "published_at": "null"
+  },
+  "failai": [
+   "/wp-content/mu-plugins/petshop-laiskai/renderis.php",
+   "/wp-content/plugins/petshop-core/templates/emails/order-paid.php",
+   "/wp-content/plugins/petshop-core/templates/emails/dunning-1.php"
+  ],
+  "zurnalo_uodega": [
+   "2026-09-08 11:16:22 | Naujas užsakymas Nr. 35866 — 2026-09-08 | pr:0",
+   "2026-09-08 11:16:22 | IŠLEISTA · Jūsų užsakymas Nr. 35866 gautas - Petshop.lt | pr:1"
+  ]
+ }
+}
