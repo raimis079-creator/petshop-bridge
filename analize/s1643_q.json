@@ -1,0 +1,66 @@
+{
+ "v": "dep-190508",
+ "kurimas": 200,
+ "sid": 5203,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1643q",
+  "Petshop_Partijos": [
+   "lentele",
+   "pakuociu_lentele",
+   "uztikrinti_lenteles",
+   "av_preke",
+   "priimti",
+   "av_laukas",
+   "av_likutis",
+   "svertine_savikaina",
+   "paskutine_savikaina",
+   "perskaiciuoti_savikaina",
+   "nurasyti",
+   "partijos",
+   "artimiausias_galiojimas",
+   "santrauka",
+   "pakuotes",
+   "medziagos",
+   "tipai",
+   "trinti_pakuote",
+   "irasyti_pakuote",
+   "pakuociu_svoris",
+   "gpais_pagal_metus",
+   "kabinti_uzsakymus",
+   "uzsakymo_nurasymas",
+   "grazinti_i_partija",
+   "sutapimo_patikra",
+   "statistika"
+  ],
+  "Petshop_AV_Stock": [
+   "init",
+   "sortable",
+   "sort_query",
+   "filter_dropdown",
+   "filter_query",
+   "qty",
+   "has",
+   "decrease",
+   "increase",
+   "field",
+   "save",
+   "column",
+   "column_value",
+   "quick_edit",
+   "quick_edit_js",
+   "quick_edit_save"
+  ],
+  "js_laukai": [
+   "_sku",
+   "_ps_var_ijungta",
+   "_ps_tik_kurjeriu",
+   "kiekis_liko",
+   "savikaina_eur",
+   "geriausia_iki"
+  ]
+ }
+}
