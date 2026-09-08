@@ -1,0 +1,10 @@
+{
+ "v": "dep-063231",
+ "kurimas": 200,
+ "sid": 5121,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "zalias_GO": "<br />\n<b>Warning</b>:  Array to string conversion in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-shipments.php</b> on line <b>131</b><br />\n<br />\n<b>Warning</b>:  Array to string conversion in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-shipments.php</b> on line <b>131</b><br />\n<br />\n<b>Warning</b>:  Array to string conversion in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-shipments.php</b> on line <b>131</b><br />\n{\"v\":\"S1639g\",\"nr\":\"107744316\",\"resolve\":{\"carrier\":\"venipak\",\"carrier_label\":\"Venipak\",\"tracking_number\":\"107744316\",\"tracking_numbers\":[\"107744316\"],\"tracking_url\":\"https:\\/\\/venipak.lt\\/tracking\\/track\\/107744316\",\"tracking_urls\":{\"107744316\":\"https:\\/\\/venipak.lt\\/tracking\\/track\\/107744316\"},\"delivery_type\":\"courier\"},\"FATAL\":\"Call to undefined method Petshop_Desk::issiusta() @17\"}"
+}
