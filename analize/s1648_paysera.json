@@ -1,0 +1,40 @@
+{
+ "v": "dep-224038",
+ "kurimas": 200,
+ "sid": 5224,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1648",
+  "faze": "R",
+  "opts": {
+   "paysera_delivery_extra_settings": {
+    "hide_shipping_methods": "yes"
+   },
+   "paysera_delivery_settings": {
+    "delivery_enabled": "no",
+    "test_mode": "yes"
+   },
+   "PAYSERA_DB_VERSION": "3.12.2",
+   "paysera_payment_main_settings": {
+    "project_id": "29276",
+    "project_password": "752c325f9cae94bbbd34b6b4b697fe2f",
+    "test_mode": "yes"
+   },
+   "woocommerce_paysera_settings": {
+    "enabled": "yes"
+   },
+   "paysera_payment_extra_settings": {
+    "title": "Mokėjimas internetu",
+    "description": "Pasirinkite mokėjimo būdą Paysera sve",
+    "list_of_payments": "yes",
+    "grid_view": "no",
+    "buyer_consent": "yes",
+    "log_level": "error"
+   },
+   "ps_fakt_paysera_fiks_ct": "5"
+  }
+ }
+}
