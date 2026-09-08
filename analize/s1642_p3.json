@@ -1,0 +1,50 @@
+{
+ "v": "dep-165128",
+ "kurimas": 200,
+ "sid": 5181,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1642 p3",
+  "temp_istrinta": 1,
+  "terms": [
+   {
+    "taxonomy": "product_cat",
+    "slug": "tualetai-kraikai-semtuveliai",
+    "name": "Tualetai, semtuvėliai"
+   },
+   {
+    "taxonomy": "product_shipping_class",
+    "slug": "iki-50kg",
+    "name": "Iki 50kg"
+   },
+   {
+    "taxonomy": "pa_gyvuno_rusis",
+    "slug": "katems",
+    "name": "Katėms"
+   },
+   {
+    "taxonomy": "product_cat",
+    "slug": "rinkiniai",
+    "name": "RINKINIAI"
+   },
+   {
+    "taxonomy": "product_type",
+    "slug": "mix-and-match",
+    "name": "Mix and Match"
+   }
+  ],
+  "md5_gyvas": "e060ea0e3d1927ce7134f9abdf8bd21c",
+  "turi_v877": 1,
+  "nesalt_eil": [
+   "'nesalt' => $mv( '_ps_be_saltinio' ) === '1' && ! $dp_paveldeta && $mv( '_ps_rinkinys' ) === null && $mv( '_petshop_dp_sablonas' ) === null && ! has_term( 'mix-and-match', 'product_type', $pid ), /* v8.7.7/7: rinkiniai (t.sk. MnM) saltinio neturi pagal apibrezima */",
+   "'nesalt'=> isset( $m['_ps_be_saltinio'] ) && $m['_ps_be_saltinio'] === '1' && $tipas !== 'rinkinys', /* v8.7.7 */",
+   "'šaltinis'   => $r['sand'] !== '' && ! $r['nesalt'],",
+   "'nesalt'     => array( 'g' => 'Kita',     'v' => 'Be šaltinio',        't' => 'log' ),",
+   "'be_saltinio'   => array( array( 'l' => 'nesalt', 'op' => 'taip' ) ),",
+   "if ( $r['nesalt'] ) { $zenklai .= '<span class=\"z bad\" title=\"Registre nėra aktyvaus šaltinio įrašo\">be šaltinio</span>'; }"
+  ]
+ }
+}
