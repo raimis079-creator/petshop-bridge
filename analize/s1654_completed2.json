@@ -1,0 +1,20 @@
+{
+ "v": "dep-233649",
+ "kurimas": 200,
+ "sid": 5232,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "G": {
+  "v": "S1654",
+  "virtual": 0,
+  "downloadable": 0,
+  "needs_processing": 1,
+  "kabliai": {
+   "woocommerce_order_item_needs_processing": [
+    "WC_MNM_Order::container_item_needs_processing"
+   ]
+  }
+ }
+}
