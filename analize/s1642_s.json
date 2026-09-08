@@ -1,0 +1,221 @@
+{
+ "v": "dep-103732",
+ "kurimas": 200,
+ "sid": 5171,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1642 s R",
+  "temp_istrinta": 66,
+  "eil": [
+   {
+    "id": 19145,
+    "kodas": "10110",
+    "nauja": 11.8,
+    "pav": "Automatinė vandens gertuvė fontanas gyvūnams, Trevi, 2 l",
+    "status": "publish",
+    "sku_db": "10110",
+    "sandelis": "av",
+    "cost_dabar": "10.26",
+    "sargas": "sku",
+    "veiksmas": "RASYTU"
+   },
+   {
+    "id": 15928,
+    "kodas": "10528",
+    "nauja": 4,
+    "pav": "Tualetas katėms aukštu rėmeliu, Georplast Sonic Big",
+    "status": "publish",
+    "sku_db": "10528",
+    "sandelis": "av",
+    "cost_dabar": "3.48",
+    "sargas": "sku",
+    "veiksmas": "RASYTU"
+   },
+   {
+    "id": 15920,
+    "kodas": "10529",
+    "nauja": 4.89,
+    "pav": "Tualetas katėms labai aukštu rėmeliu (30 cm), Georplast Colosseo",
+    "status": "publish",
+    "sku_db": "10529",
+    "sandelis": "av",
+    "cost_dabar": "4.26",
+    "sargas": "sku",
+    "veiksmas": "RASYTU"
+   },
+   {
+    "id": 15938,
+    "kodas": "10530",
+    "nauja": 2.11,
+    "pav": "Tualetas katėms Shuttle, 45 cm",
+    "status": "publish",
+    "sku_db": "640560",
+    "sandelis": "av",
+    "cost_dabar": null,
+    "sargas": "zodziai",
+    "veiksmas": "RASYTU"
+   },
+   {
+    "id": 15935,
+    "kodas": "10533",
+    "nauja": 3.04,
+    "pav": "Tualetas katėms Shuttle, 57 cm",
+    "status": "publish",
+    "sku_db": "6403961",
+    "sandelis": "av",
+    "cost_dabar": null,
+    "sargas": "zodziai",
+    "veiksmas": "RASYTU"
+   },
+   {
+    "id": 17916,
+    "kodas": "10536",
+    "nauja": 3.54,
+    "pav": "Kampinis tualetas katėms Shuttle Big",
+    "status": "publish",
+    "sku_db": "641003",
+    "sandelis": "av",
+    "cost_dabar": null,
+    "sargas": "zodziai",
+    "veiksmas": "RASYTU"
+   },
+   {
+    "id": 15914,
+    "kodas": "10550",
+    "nauja": 1.87,
+    "pav": "Tualetas katėms su rėmeliu vidutinis, Lettiera max (43,5x34x11)",
+    "status": "publish",
+    "sku_db": "640049",
+    "sandelis": "av",
+    "cost_dabar": null,
+    "sargas": "zodziai",
+    "veiksmas": "RASYTU"
+   },
+   {
+    "id": 15993,
+    "kodas": "10565",
+    "nauja": 5.4,
+    "pav": "Transportavimo dėžė / boksas gyvūnams Rocket Classic, Georplast",
+    "status": "publish",
+    "sku_db": "10565",
+    "sandelis": "av",
+    "cost_dabar": "4.6953",
+    "sargas": "sku",
+    "veiksmas": "RASYTU"
+   }
+  ]
+ },
+ "A": {
+  "v": "S1642 s A",
+  "temp_istrinta": 0,
+  "eil": [
+   {
+    "id": 19145,
+    "kodas": "10110",
+    "nauja": 11.8,
+    "pav": "Automatinė vandens gertuvė fontanas gyvūnams, Trevi, 2 l",
+    "status": "publish",
+    "sku_db": "10110",
+    "sandelis": "av",
+    "cost_dabar": "10.26",
+    "sargas": "sku",
+    "veiksmas": "IRASYTA",
+    "cost_po": "11.8000"
+   },
+   {
+    "id": 15928,
+    "kodas": "10528",
+    "nauja": 4,
+    "pav": "Tualetas katėms aukštu rėmeliu, Georplast Sonic Big",
+    "status": "publish",
+    "sku_db": "10528",
+    "sandelis": "av",
+    "cost_dabar": "3.48",
+    "sargas": "sku",
+    "veiksmas": "IRASYTA",
+    "cost_po": "4.0000"
+   },
+   {
+    "id": 15920,
+    "kodas": "10529",
+    "nauja": 4.89,
+    "pav": "Tualetas katėms labai aukštu rėmeliu (30 cm), Georplast Colosseo",
+    "status": "publish",
+    "sku_db": "10529",
+    "sandelis": "av",
+    "cost_dabar": "4.26",
+    "sargas": "sku",
+    "veiksmas": "IRASYTA",
+    "cost_po": "4.8900"
+   },
+   {
+    "id": 15938,
+    "kodas": "10530",
+    "nauja": 2.11,
+    "pav": "Tualetas katėms Shuttle, 45 cm",
+    "status": "publish",
+    "sku_db": "640560",
+    "sandelis": "av",
+    "cost_dabar": null,
+    "sargas": "zodziai",
+    "veiksmas": "IRASYTA",
+    "cost_po": "2.1100"
+   },
+   {
+    "id": 15935,
+    "kodas": "10533",
+    "nauja": 3.04,
+    "pav": "Tualetas katėms Shuttle, 57 cm",
+    "status": "publish",
+    "sku_db": "6403961",
+    "sandelis": "av",
+    "cost_dabar": null,
+    "sargas": "zodziai",
+    "veiksmas": "IRASYTA",
+    "cost_po": "3.0400"
+   },
+   {
+    "id": 17916,
+    "kodas": "10536",
+    "nauja": 3.54,
+    "pav": "Kampinis tualetas katėms Shuttle Big",
+    "status": "publish",
+    "sku_db": "641003",
+    "sandelis": "av",
+    "cost_dabar": null,
+    "sargas": "zodziai",
+    "veiksmas": "IRASYTA",
+    "cost_po": "3.5400"
+   },
+   {
+    "id": 15914,
+    "kodas": "10550",
+    "nauja": 1.87,
+    "pav": "Tualetas katėms su rėmeliu vidutinis, Lettiera max (43,5x34x11)",
+    "status": "publish",
+    "sku_db": "640049",
+    "sandelis": "av",
+    "cost_dabar": null,
+    "sargas": "zodziai",
+    "veiksmas": "IRASYTA",
+    "cost_po": "1.8700"
+   },
+   {
+    "id": 15993,
+    "kodas": "10565",
+    "nauja": 5.4,
+    "pav": "Transportavimo dėžė / boksas gyvūnams Rocket Classic, Georplast",
+    "status": "publish",
+    "sku_db": "10565",
+    "sandelis": "av",
+    "cost_dabar": "4.6953",
+    "sargas": "sku",
+    "veiksmas": "IRASYTA",
+    "cost_po": "5.4000"
+   }
+  ]
+ }
+}
