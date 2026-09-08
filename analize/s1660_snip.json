@@ -1,0 +1,299 @@
+{
+ "v": "dep-234906",
+ "kurimas": 200,
+ "sid": 5240,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "L": {
+  "v": "S1660",
+  "faze": "L",
+  "aktyvus": [
+   {
+    "id": "239",
+    "name": "Petshop Disable Image Sizes v1 (NUOLATINIS - nedeaktyvuoti)"
+   },
+   {
+    "id": "329",
+    "name": "Petshop Filtrai PILNAS v14 [VISADA AKTYVUS]"
+   },
+   {
+    "id": "332",
+    "name": "Petshop Filtru Kontekstas v20 [VISADA AKTYVUS]"
+   },
+   {
+    "id": "375",
+    "name": "Baltymu Saltinis Dry-Run Konservai v2"
+   },
+   {
+    "id": "461",
+    "name": "Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS"
+   },
+   {
+    "id": "463",
+    "name": "Petshop Atributu Auditas v2.0 (read-only, atributu detale pagal kategorija)"
+   },
+   {
+    "id": "464",
+    "name": "Petshop Attr Modulis: Dubeneliai v1.0 (parseris + dry/apply)"
+   },
+   {
+    "id": "465",
+    "name": " Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo)"
+   },
+   {
+    "id": "469",
+    "name": "Petshop Dev App Passwords v1"
+   },
+   {
+    "id": "472",
+    "name": "Petshop Attr Modulis: Zaislai Katems v1.0 (parseris + dry/apply)"
+   },
+   {
+    "id": "492",
+    "name": "Petshop Filtru Atidarymas v2 (CSS+JS)"
+   },
+   {
+    "id": "494",
+    "name": "Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunims v1.0 (parseris + dry/apply)"
+   },
+   {
+    "id": "502",
+    "name": "Higienos Modulis v1.0"
+   },
+   {
+    "id": "503",
+    "name": "Grauziko Rusis Modulis v1.2"
+   },
+   {
+    "id": "507",
+    "name": "Paukscio Rusis Modulis v1.3"
+   },
+   {
+    "id": "509",
+    "name": "Zuvies Rusis Modulis v1.0"
+   },
+   {
+    "id": "510",
+    "name": "Pasaro Forma Modulis v1.1"
+   },
+   {
+    "id": "512",
+    "name": "Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)"
+   },
+   {
+    "id": "513",
+    "name": "Petshop Katalogo Auditas v1 (read-only)"
+   },
+   {
+    "id": "518",
+    "name": "Petshop Slėpti svorį ir dimensijas v1 (display only)"
+   },
+   {
+    "id": "520",
+    "name": "Petshop Meniu Grupavimas v1 (komerciniai 3)"
+   },
+   {
+    "id": "525",
+    "name": "Petshop UI: kortelės + mobile sticky ATC"
+   },
+   {
+    "id": "532",
+    "name": "Petshop MnM Fiksuoti komponentų kiekiai v2"
+   },
+   {
+    "id": "535",
+    "name": "Petshop MnM Sutaupymo žymeklis v8 (nauda < 3 % nerodoma)"
+   },
+   {
+    "id": "539",
+    "name": "Petshop Rinkinių Kūrimo Forma v2"
+   },
+   {
+    "id": "547",
+    "name": "Petshop Susidėjimo Rinkinio Vitrina v19"
+   },
+   {
+    "id": "550",
+    "name": "Petshop Susidėjimo Rinkinio Kūrimo Forma v15"
+   },
+   {
+    "id": "558",
+    "name": "Petshop Choice Krepšelio Elgsena"
+   },
+   {
+    "id": "560",
+    "name": "Petshop Rinkinio CTA Banneris kategorijose v10"
+   },
+   {
+    "id": "561",
+    "name": "Petshop Rinkinių Gyvūno Filtras v1"
+   },
+   {
+    "id": "562",
+    "name": "Petshop Sprendimai Shortcode Variklis v9"
+   },
+   {
+    "id": "563",
+    "name": "Petshop Spalvų Swatch Burbuliukai v1 (pa_spalva)"
+   },
+   {
+    "id": "565",
+    "name": "Petshop VF Sync v1.1 (reprice+stock+publish)"
+   },
+   {
+    "id": "566",
+    "name": "Petshop Akcijos Shortcode v1.3"
+   },
+   {
+    "id": "567",
+    "name": "Petshop Daugiau=Pigiau Stock Sync v1.2"
+   },
+   {
+    "id": "568",
+    "name": "Petshop Daugiau=Pigiau Display v1.2"
+   },
+   {
+    "id": "569",
+    "name": "Petshop Pack/Rinkinys Auto-Categories v1.3"
+   },
+   {
+    "id": "570",
+    "name": "Petshop Daugiau=Pigiau Puslapis Shortcode v1.0"
+   },
+   {
+    "id": "572",
+    "name": "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v9"
+   },
+   {
+    "id": "573",
+    "name": "Petshop DP Kortelės Ženkliukas v4"
+   },
+   {
+    "id": "582",
+    "name": "Petshop LP Terminalu Svorio Riba v1 (29.90kg)"
+   },
+   {
+    "id": "587",
+    "name": "Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1"
+   },
+   {
+    "id": "594",
+    "name": "Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1"
+   },
+   {
+    "id": "609",
+    "name": "SEO Auto H1 v1 (page fallback + _petshop_h1)"
+   },
+   {
+    "id": "610",
+    "name": "Petshop Topbar v2"
+   },
+   {
+    "id": "613",
+    "name": "Petshop Shop→Parduotuvė 301 v1 (LIVE)"
+   },
+   {
+    "id": "614",
+    "name": "Petshop DataLayer v1.1 (GA4 ecommerce)"
+   },
+   {
+    "id": "615",
+    "name": "Petshop GTM Snippet v2.0 (GTM-MF3GZGT, atidėtas)"
+   },
+   {
+    "id": "619",
+    "name": "Petshop Consent Bridge v1.2 (Complianz -> GTM)"
+   },
+   {
+    "id": "628",
+    "name": "Petshop Complianz X = Atmesti v1"
+   },
+   {
+    "id": "632",
+    "name": "Petshop Slapuku Politika ES 301 v1 (LIVE)"
+   },
+   {
+    "id": "648",
+    "name": "Petshop Invoice Doc Type Fix v2 (LIVE)"
+   },
+   {
+    "id": "653",
+    "name": "Petshop Invoice Completed Attach Fix v3 (LIVE)"
+   },
+   {
+    "id": "685",
+    "name": "Atrinktos Prekės Modulis v1 (rotacija)"
+   },
+   {
+    "id": "688",
+    "name": "Petshop Kategorijos Landing v2 (5 hub'ai + apatinis aprasymas)"
+   },
+   {
+    "id": "692",
+    "name": "Petshop Maisto Tipo Mygtukai v1"
+   },
+   {
+    "id": "693",
+    "name": "Petshop Mobile Filtru Dublio Fix v1"
+   },
+   {
+    "id": "705",
+    "name": "Petshop Produktu Nuotrauku Vienodinimas v1"
+   },
+   {
+    "id": "707",
+    "name": "Petshop UI Lokalizacija v1"
+   },
+   {
+    "id": "709",
+    "name": "Petshop Build-a-box UI Valymas v1"
+   },
+   {
+    "id": "1357",
+    "name": "Feeding Calc REST v1"
+   },
+   {
+    "id": "2024",
+    "name": "Petshop Anketa→Augintinio profilis 301 v1 (LIVE)"
+   },
+   {
+    "id": "2029",
+    "name": "Petshop MyAccount LT Slug 301 v1 (LIVE)"
+   },
+   {
+    "id": "2037",
+    "name": "Petshop Paskyros Sablonas v1 (LIVE)"
+   },
+   {
+    "id": "2051",
+    "name": "Petshop UI Lokalizacija v1 (LIVE)"
+   },
+   {
+    "id": "2403",
+    "name": "Petshop Stock Service v1.3 (per registra)"
+   },
+   {
+    "id": "2515",
+    "name": "Petshop Sources v2.3 (registras + palaikymas + sandelio pildymas + dvieju sandeliu eilutes)"
+   },
+   {
+    "id": "2868",
+    "name": "PS Masinis Sudeliojimas v6 (tik prekyboje)"
+   },
+   {
+    "id": "2871",
+    "name": "Petshop Vitrina Dalinimasis v1.0 (isjungti social mygtukai)"
+   },
+   {
+    "id": "2880",
+    "name": "Petshop Admin Juosta v1.0 (parduotuve naujame lange)"
+   },
+   {
+    "id": "5240",
+    "name": "TEMP PS dep-234906"
+   }
+  ]
+ }
+}
