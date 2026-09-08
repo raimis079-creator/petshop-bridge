@@ -128,9 +128,23 @@ Iš 23 registruotų `wp_ajax_ps_kat_*` kablių **21 metodas egzistuoja, šie 2 �
 | 14274 | 01KOM057 | Monge Cat 4x10kg Kitten+Adult+Urinary+Rabbit Mono | 171,15 | 4 | instock |
 | 14824 | 01GIC510510 | GIMCAT GRAS BITS 425G | 8,504 | 10 | instock |
 
-Abi ZB, abiem `_regular_price` / `_sale_price` / `_price` **tušti**, o `_zb_last_sync` = **šios dienos 22:06 / 22:09** — t. y. importas kiekius atnaujina, bet kainos taip ir nėra. Prekė rodoma „yra sandėlyje" be kainos. **Prieš paleidimą: arba įkainoti, arba į draft.** Sprendimas — Raimio.
+Abi ZB, abiem `_regular_price` / `_sale_price` / `_price` **tušti**, o `_zb_last_sync` = **šios dienos 22:06 / 22:09** — t. y. importas kiekius atnaujina, bet kainos taip ir nėra. Prekė rodoma „yra sandėlyje" be kainos.
 
-**F. 🟡 DEVYNIOS PUBLISH PREKĖS BE PAGRINDINĖS NUOTRAUKOS** — visos **Mix and Match rinkiniai**: 34942 (20,10 €), 34944 (13,20), 34945 (14,70), 34947 (10,74), 34938 (4,17), 35309 (5,76), 35390 (7,74), 35781 (10,74), 35861 (2,25). Kainas turi, nuotraukos nėra — parduotuvės sąraše bus tuščias langelis. Dalis jų (35840–56 ruožas) jau yra T-0 valymo saugiklių sąraše; **34938–34947 — NE, jie lieka gyvi.**
+**✅ ATLIKTA (Raimio nurodymas „permesk į draft", `s1643_w.php`):** 14274 `publish`→`draft`, 14824 `publish`→`draft`, abiem `_price` buvo tuščia; `clean_post_cache` iškviesta. **Neištirta ir lieka atvira:** KODĖL ZB importas kiekius sinchronizuoja, o kainų nesuteikia — tai gali liesti ir daugiau prekių ateityje.
+
+**F. ❌ MANO KLAIDA — „devynios prekės be nuotraukos" NEPASITVIRTINO.** Raimis suabejojo („ar tikrai?") ir buvo teisus. Pirminis matavimas rėmėsi SQL patikra, ar yra `_thumbnail_id` meta — **tai neteisingas įrankis** šioms prekėms. Patikrinus per WC API ir gyvai:
+
+| ID | `_thumbnail_id` | `get_image_id()` | Vizualiai puslapyje |
+|---|---|---|---|
+| 34942 | tuščias | 35030 | `sunu-konservai-800x800.jpg` rodoma ✅ |
+| 35309 | tuščias | 35031 | `konservai-katems-3-800x671.jpg` rodoma ✅ |
+| 35861 | tuščias | 35004 | `skanestai-2-800x671.jpg` rodoma ✅ |
+
+Visi 9 (34942, 34944, 34945, 34947, 34938, 35309, 35390, 35781, 35861) turi neblankų `get_image_id()`; trys patikrintos Playwright'u — galerijos blokas yra, `naturalWidth>0`, 4xx/5xx 0. Nuotrauką rinkiniams paduoda ne standartinė `_thumbnail_id` meta, o kitas kelias (filtras) — **kas tiksliai, neištirta.**
+
+**PAMOKA (į taisyklių lygį):** prekės nuotraukos buvimo NEMATUOTI per `_thumbnail_id` SQL — tik `get_image_id()` / vizualiai. Ta pati klaidos klasė, kaip M8 „skaitikliai melavo, kadras pasakė tiesą".
+
+**Šalutinis pastebėjimas (ne gedimas):** nuotraukos bendrinės — 35030 naudojama 4 rinkiniams, 35031 trims. Ar tai sąmoninga, sprendžia Raimis.
 
 **G. SKU dublikatai — 2, abu nekenksmingi:** `718000428` (#34905 trash + #34908 publish) ir `HYPM11 x2` (abu trash). Realaus konflikto nėra.
 
