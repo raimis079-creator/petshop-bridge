@@ -1,0 +1,54 @@
+{
+ "v": "dep-230235",
+ "kurimas": 200,
+ "sid": 5227,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "P": {
+  "v": "S1650",
+  "host": "petshop.lt",
+  "https": 1,
+  "siteurl": "https://petshop.lt",
+  "feed": {
+   "kaina24": 6059923,
+   "kainos": 5566758,
+   "google": 5034078
+  },
+  "shots": [
+   {
+    "n": "t0_titulinis",
+    "u": "https://petshop.lt/"
+   },
+   {
+    "n": "t0_preke",
+    "u": "https://petshop.lt/?p=22763"
+   },
+   {
+    "n": "t0_paymt",
+    "u": "https://petshop.lt/kasa/order-pay/35868/?pay_for_order=true&key=wc_order_jhEMy1YBoScj1"
+   }
+  ]
+ },
+ "shots": {
+  "t0_titulinis": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "t0_preke": {
+   "status": 201,
+   "url": "https://petshop.lt/product/josidog-beef-in-sauce-konservai-sunims-jautiena-padaze-415g/",
+   "title": "JosiDog Beef in Sauce konservai šunims, jautiena padaže, 415g - Petshop.lt",
+   "errors": []
+  },
+  "t0_paymt": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/order-pay/35868/?pay_for_order=true&key=wc_order_jhEMy1YBoScj1",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": []
+  }
+ }
+}
