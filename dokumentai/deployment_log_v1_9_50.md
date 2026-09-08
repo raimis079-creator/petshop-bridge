@@ -56,6 +56,32 @@ Registre §R192: „dev/ router + stub'ai" po petshop.lt. **Gyvai:** `petshop.lt
 - PHP gyvai 8.3.33; mu-plugins 121 failas
 - Backup/watch cron URL vis dar `dev.avesa.lt` (T-0 punktas #4) — jei praleista, kopijos sustotų tyliai, sargas praneštų tik po 26 h
 
+#### 8. VALYMAS ATLIKTAS (S1643h) — dev.avesa.lt liekanos IŠVALYTOS
+
+Raimio nurodymas: „visus dalykus sutvarkyk, negalima palikti šiukšlių". Kopija prieš darbą: `uploads/ps-backups/dev-url-valymas-S1643-20260908-184523.json` (254 588 B — pilnas originalus turinys, meta, guid, options).
+
+| Sluoksnis | Rasta | Padaryta | Metodas |
+|---|---|---|---|
+| `posts.post_content` | 18 (138 atvejai) | 18 atnaujinta | `https://dev.avesa.lt/…` → **šakninis kelias** `/wp-content/…` (veikia IR dev'e, IR po perjungimo — nėra lūžio tarpinėje būsenoje) + `clean_post_cache` |
+| `postmeta._menu_item_url` | 5 | 5 atnaujinta | → šakniniai `/product/…` |
+| `posts.guid` | 334 | 334 atnaujinta | → `https://petshop.lt` (nuoseklu su R192) |
+| transientai | 5 | 5 ištrinta | `_site_transient_update_themes`, `_transient_wc_tracks_blog_details`, 2× `woocommerce_blocks_asset_api_script_data`, `cmplz_transients` — atsikuria savaime |
+
+**Kontrolė po:** `posts.post_content` 0 · `posts.guid` 0 · `postmeta` 1 (žr. žemiau) · `usermeta` 0.
+
+**SĄMONINGAI NELIESTA (su priežastimi):**
+- `siteurl` / `home` — **privalo likti `dev.avesa.lt` iki DNS perjungimo**, kitaip lūžta Raimio prieiga ir tiltas. T-0 darbas.
+- `ps_import_tempas_host` — tas pats: importų tempo mechanizmas rodo į gyvą hostą (T-0 #27).
+- `flatsome_registration` — perregistruoja Raimis ranka (Q-FLATSOME), perrašys pati.
+- `postmeta._used_by` = `e2f.frontend@dev.avesa.lt` prie **#35834** — tai T-0 valymo saugiklyje esantis testinis kuponas, bus ištrintas kartu su juo.
+- `ps_feeds_paskutinis`, `ps_cc_v2_preview`, `ps_import_tempas_paskutinis` — vykdymo žurnalai, perrašomi kito paleidimo metu.
+- 🟡 `woocommerce_wp_subscription_paypal_settings` (serializuotas, 572 B) — PayPal nenaudojamas (mokėjimai per Paysera), bet **jei kada bus įjungtas — jame dev URL**. Į T-0 sąrašą, ne skubu.
+
+**Vizuali patikra (Playwright, `analize/s1643_i.json`, kadrai `screenshots/s1643_rink_35070`, `s1643_rink_35404`):** #35070 — 4/4 rinkinio nuotraukos rodomos (`naturalWidth>0`), #35404 — 8/8; `src` atributai šakniniai; 4xx/5xx užklausų 0. **Šakninių kelių sprendimas patvirtintas gyvai.**
+
+**PASTABA ATEIČIAI:** rinkinių aprašymus (`<div class="ps-rink-img">`) generuoja kodas — jei jis naudoja `home_url()`, po pergeneravimo dev'e vėl atsirastų absoliutus dev URL. T-0 naktį pakartoti tą pačią `dev.avesa.lt` kontrolinę užklausą prieš paleidimą.
+
+
 #### 7. T-0 SĄRAŠO PAPILDYMAS (siūlomas, Raimio tvirtinimui)
 
 ```
