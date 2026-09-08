@@ -1,0 +1,48 @@
+{
+ "v": "dep-234138",
+ "kurimas": 200,
+ "sid": 5235,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "G": {
+  "v": "S1657",
+  "faze": "G",
+  "provider": [
+   "        $mainOptions = get_option(PayseraPaymentSettings::MAIN_SETTINGS_NAME);",
+   "        $extraOptions = get_option(PayseraPaymentSettings::EXTRA_SETTINGS_NAME);",
+   "        $statusOptions = get_option(PayseraPaymentSettings::STATUS_SETTINGS_NAME);",
+   "        $projectAdditionsOptions = get_option(PayseraPaymentSettings::PROJECT_ADDITIONS_SETTINGS_NAME);",
+   "        $oldOptions = get_option('woocommerce_paysera_settings');"
+  ],
+  "konstantos": [
+   "const MAIN_SETTINGS_NAME = 'paysera_payment_main_settings'",
+   "const EXTRA_SETTINGS_NAME = 'paysera_payment_extra_settings'",
+   "const STATUS_SETTINGS_NAME = 'paysera_payment_status_settings'",
+   "const PROJECT_ADDITIONS_SETTINGS_NAME = 'paysera_payment_project_additions_settings'",
+   "const ENABLED = 'enabled'",
+   "const PROJECT_ID = 'project_id'",
+   "const PROJECT_PASSWORD = 'project_password'",
+   "const TEST_MODE = 'test_mode'",
+   "const TITLE = 'title'",
+   "const DESCRIPTION = 'description'",
+   "const LIST_OF_PAYMENTS = 'list_of_payments'",
+   "const SPECIFIC_COUNTRIES = 'specific_countries'",
+   "const GRID_VIEW = 'grid_view'",
+   "const BUYER_CONSENT = 'buyer_consent'",
+   "const PAID_ORDER_STATUS = 'paid_order_status'",
+   "const PENDING_PAYMENT_STATUS = 'pending_checkout_status'",
+   "const REFUND_PAYMENT_STATUS = 'refund_payment_status'",
+   "const OWNERSHIP_CODE_ENABLED = 'ownership_code_enabled'",
+   "const OWNERSHIP_CODE = 'ownership_code'",
+   "const QUALITY_SIGN_ENABLED = 'quality_sign_enabled'",
+   "const LOG_LEVEL = 'log_level'",
+   "const DEFAULT_TITLE = 'All popular payment methods'",
+   "const DEFAULT_DESCRIPTION = 'Choose a payment method on the Paysera page'",
+   "const ORDER_PAYMENT_CONFIRMED_META_KEY = '_paysera_payment_confirmed'",
+   "const ORDER_PAYMENT_AMOUNT = '_paysera_payment_paid_amount'",
+   "const ORDER_PAYMENT_CURRENCY = '_paysera_payment_paid_currency'"
+  ]
+ }
+}
