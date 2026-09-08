@@ -1,0 +1,35 @@
+{
+ "v": "dep-072509",
+ "kurimas": 200,
+ "sid": 5133,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "35862": "cancelled",
+  "35863": {
+   "statusas": "completed",
+   "refunds": [
+    {
+     "id": 35864,
+     "suma": "1.942149",
+     "kr_nr": "",
+     "kr_pdf": ""
+    }
+   ]
+  },
+  "v": "S1639r",
+  "18236_stock": "5",
+  "velavimo_uzsakymas": 35865,
+  "velavimo_zyme": "",
+  "z": [
+   "2026-09-08 10:02:09 | terra@petshop.lt | IŠLEISTA · Jūsų užsakymas Nr. 35862 išsiųstas",
+   "2026-09-08 10:14:53 | uzsakymai@petshop.lt | Naujas užsakymas Nr. 35863 — 2026-09-08",
+   "2026-09-08 10:14:54 | terra@petshop.lt | IŠLEISTA · Jūsų užsakymas Nr. 35863 — apmokėjimas gautas",
+   "2026-09-08 10:14:54 | terra@petshop.lt | IŠLEISTA · Užsakymas Nr. 35863 — išsiųsta 1 iš 2 siuntų",
+   "2026-09-08 10:14:55 | terra@petshop.lt | IŠLEISTA · Užsakymas Nr. 35863 — išsiųsta 2 iš 2 siuntų",
+   "2026-09-08 10:26:25 | uzsakymai@petshop.lt | Naujas užsakymas Nr. 35865 — 2026-09-08"
+  ]
+ }
+}
