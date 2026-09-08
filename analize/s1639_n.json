@@ -1,0 +1,69 @@
+{
+ "v": "dep-070715",
+ "kurimas": 200,
+ "sid": 5129,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1639n",
+  "wc": [
+   {
+    "id": "new_order",
+    "on": 1,
+    "kam": "admin",
+    "tema": ""
+   },
+   {
+    "id": "cancelled_order",
+    "on": 1,
+    "kam": "admin",
+    "tema": null
+   },
+   {
+    "id": "customer_cancelled_order",
+    "on": 1,
+    "kam": "klientas",
+    "tema": null
+   },
+   {
+    "id": "failed_order",
+    "on": 1,
+    "kam": "admin",
+    "tema": null
+   },
+   {
+    "id": "customer_failed_order",
+    "on": 0,
+    "kam": "klientas",
+    "tema": null
+   },
+   {
+    "id": "customer_on_hold_order",
+    "on": 0,
+    "kam": "klientas",
+    "tema": ""
+   },
+   {
+    "id": "customer_processing_order",
+    "on": 1,
+    "kam": "klientas",
+    "tema": ""
+   },
+   {
+    "id": "customer_completed_order",
+    "on": 1,
+    "kam": "klientas",
+    "tema": ""
+   },
+   {
+    "id": "customer_refunded_order",
+    "on": 1,
+    "kam": "klientas",
+    "tema": null
+   }
+  ],
+  "FATAL": "Call to a member function has_status() on null"
+ }
+}
