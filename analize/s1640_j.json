@@ -1,0 +1,18 @@
+{
+ "v": "dep-083744",
+ "kurimas": 200,
+ "sid": 5152,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1640j",
+  "emitter_total": [
+   "53: $total = (float) $order->get_total();",
+   "54: if ( $total <= 0 || 0 === count( $order->get_items() ) ) { return; }",
+   "59: 'total'        => html_entity_decode( wp_strip_all_tags( wc_price( $total, array( 'currency' => $order->get_currency() ) ) ) ),"
+  ],
+  "gautas_istrauka": ");\n\nadd_action( 'petshop_send_order_received_email', function( $order_id ) {\n    $order = wc_get_order( $order_id );\n    if ( ! $order ) return;\n\n    $payment_method_id = $order->get_payment_method();\n    $is_bank           = ( $payment_method_id === 'bacs' );\n\n    $items_html  = '<h2 style=\"font-size:16px;margin:16px 0 8px;\">Jūsų užsakymas:</h2>';\n    $items_html .= '<table cellpadding=\"8\" style=\"width:100%;border-collapse:collapse;font-size:14px;\">';\n    $items_html .= '<tr style=\"background:#f4f4f2;\"><th style=\"text-align:left;border-bottom:2px solid #ddd;\">Prekė</th><th style=\"text-align:center;border-bottom:2px solid #ddd;\">Kiekis</th><th style=\"text-align:right;border-bottom:2px solid #ddd;\">Suma</th></tr>';\n    foreach ( $order->get_items() as $item ) {\n        $total       = $item->get_total() + $item->get_total_tax();\n        $items_html .= '<tr style=\"border-bottom:1px solid #eee;\">';\n        $items_html .= '<td>' . esc_html( $item->get_name() ) . '</td>';\n        $items_html .= '<td style=\"text-align:center;\">' . $item->get_quantity() . '</td>';\n        $items_html .= '<td style=\"text-align:right;\">' . wc_price( $total ) . '</td>';\n        $items_html .= '</tr>';\n    }\n    $items_html .= '</table>';\n    $items_html .= '<table style=\"width:100%;margin-top:8px;font-size:14px;\">';\n    $items_html .= '<tr><td style=\"padding:4px 8px;\">Pristatymas:</td><td style=\"text-align:right;padding:4px 8px;\">' . wc_price( $order->get_shipping_total() + $order->get_shipping_tax() ) . '</td></tr>';\n    $items_html .= '<tr><td style=\"padding:4px 8px;\">PVM:</td><td style=\"text-align:right;padding:4px 8px;\">' . wc_price( $order->get_total_tax() ) . '</td></tr>';\n    $items_html .= '<tr><td style=\"padding:4px 8px;font-weight:bold;\">Viso:</td><td style=\"text-align:right;padding:4px 8px;font-weight:bold;\">' . wc_price( $order->get_total() ) . '</td></tr>';\n    $items_html .= '</table>';\n\n    $bank_html = '';\n    if ( $is_bank ) {\n        $bank_html = '<div style=\"background:#f9f9f9;border:1px solid #e0e0e0;padding:16px;margin:16px 0;font-size:14px;\">'\n            . '<p style=\"font-weight:bold;margin-bottom:8px;\">Mokėjimo rekvizitai:</p>'\n            . '<table style=\"width:100%;\">'\n            . '<tr><td style=\"padding:3px 0;color:#666;width:40%;\">Gavėjas:</td><td><strong>UAB Avesa</strong></td></tr>'\n            . '<tr><td style=\"padding:3px 0;color:#666;\">Bankas:</td><td>AB Swedbank</td></tr>'\n            . '<tr><td style=\"padding:3px 0;color:#666;\">Šąskaita:</td><td><strong>LT127300010124940593</strong></td></tr>'\n            . '<tr><td style=\"padding:3px 0;color:#6"
+ }
+}
