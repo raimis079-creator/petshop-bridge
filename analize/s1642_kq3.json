@@ -1,0 +1,55 @@
+{
+ "v": "dep-165638",
+ "kurimas": 200,
+ "sid": 5184,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "Q": {
+  "v": "S1642 kd",
+  "f": "Q",
+  "temp_istrinta": 1,
+  "md5": "17392b381b190e04133195a6d99d0407",
+  "ping": {
+   "code": 200,
+   "fatal": 0
+  },
+  "cookies": [
+   {
+    "name": "wordpress_sec_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788887926|pXcBZosokA7XRDEXmRRby9xkjqXovv0eOrcpfyv9bZP|65f48e4951353eb10971f41bd0afbf8fffc9a410a213107d8dcebee2dffff793"
+   },
+   {
+    "name": "wordpress_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788887926|pXcBZosokA7XRDEXmRRby9xkjqXovv0eOrcpfyv9bZP|1d9aa6efc58edb98e944575a7c6282ce91b901510ac6665cd67e54e341cd03a9"
+   },
+   {
+    "name": "wordpress_logged_in_00e5f2b22d1de7ee3a1c7f647a9457ea",
+    "value": "testuotojas|1788887926|pXcBZosokA7XRDEXmRRby9xkjqXovv0eOrcpfyv9bZP|59a6bb7879b7da80cf9538142d3e57d2215115b3f93eb88a38f131c63ec5c5e6"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1642_kat876_rink",
+    "u": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&q=RINK-",
+    "w": 1366,
+    "h": 768,
+    "eval": "(async()=>{ var q=document.querySelector(\"input[name=q]\"); var rows=[...document.querySelectorAll(\"tr\")].filter(r=>r.textContent.includes(\"RINK-\")); var badges=[...document.querySelectorAll(\"span.z.bad\")].filter(s=>s.textContent.trim()===\"be \\u0161altinio\"); var rinkBad=rows.filter(r=>[...r.querySelectorAll(\"span.z.bad\")].some(s=>s.textContent.includes(\"altinio\"))); return {rinkEiluciu:rows.length, rinkSuBadge:rinkBad.length, visoBadge:badges.length}; })()"
+   }
+  ]
+ },
+ "shots": {
+  "s1642_kat876_rink": {
+   "status": 200,
+   "url": "https://dev.avesa.lt/wp-admin/admin.php?page=ps-katalogas&q=RINK-",
+   "title": "Petshop prekės ‹ Petshop.lt — WordPress",
+   "errors": [],
+   "eval": {
+    "rinkEiluciu": 10,
+    "rinkSuBadge": 0,
+    "visoBadge": 0
+   }
+  }
+ }
+}
