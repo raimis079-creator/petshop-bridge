@@ -1,6 +1,7 @@
 <?php
 /**
- * Petshop Katalogas v8.7.8 (S1642) - rinkiniams (_ps_rinkinys/DP sablonas/Mix and Match) nerodomas 'be saltinio' (saltinius turi komponentai);
+ * Petshop Katalogas v8.7.9 (S1642) - DP pakuotems savikaina ir is bazines META kaskados x N (kai bazine registre neturi eilutes);
+ *   v8.7.8 (S1642) - rinkiniams (_ps_rinkinys/DP sablonas/Mix and Match) nerodomas 'be saltinio' (saltinius turi komponentai);
  *   v8.7.5 (S1641) - variacines prekes KAINA saraso eiluteje.
  *
  * SAVININKAS: "Admin lange nerodo pardavimo kainu". Variacines prekes tevui
@@ -2938,6 +2939,13 @@ class Petshop_Katalogas {
 				if ( $cv !== null && (float) $cv > 0 ) { $cost = (float) $cv; break; }
 			}
 		}
+		/* v8.7.9: DP pakuote be bazines registro eilutes — savikaina is bazines meta kaskados x N. */
+		if ( $cost === null && $dp_baze ) {
+			foreach ( array( '_cost_price', '_vf_cost', '_zb_cost' ) as $ck ) {
+				$cv = get_post_meta( $dp_baze, $ck, true );
+				if ( $cv !== '' && (float) $cv > 0 ) { $cost = round( (float) $cv * $dp_kiek, 4 ); break; }
+			}
+		}
 		$marza = self::marza( $kaina, $cost );
 		$grind = self::grindys_prekei( $slugs );
 
@@ -2957,7 +2965,7 @@ class Petshop_Katalogas {
 			'ean' => (string) ( $mv( '_vf_barcode' ) ?: ( $mv( '_zb_ean' ) ?: ( $mv( '_ean' ) ?: '' ) ) ),
 			'price' => $kaina, 'cost' => $cost, 'kat' => $kats,
 			'br' => '', 'sand' => (string) $mv( '_ps_sandelis' ),
-			'nesalt' => $mv( '_ps_be_saltinio' ) === '1' && ! $dp_paveldeta && $mv( '_ps_rinkinys' ) === null && $mv( '_petshop_dp_sablonas' ) === null && ! has_term( 'mix-and-match', 'product_type', $pid ), /* v8.7.8/7: rinkiniai (t.sk. MnM) saltinio neturi pagal apibrezima */
+			'nesalt' => $mv( '_ps_be_saltinio' ) === '1' && ! $dp_paveldeta && $mv( '_ps_rinkinys' ) === null && $mv( '_petshop_dp_sablonas' ) === null && ! has_term( 'mix-and-match', 'product_type', $pid ), /* v8.7.9/7: rinkiniai (t.sk. MnM) saltinio neturi pagal apibrezima */
 		);
 		$br = wp_get_post_terms( $pid, 'pa_brendas', array( 'fields' => 'names' ) );
 		if ( ! is_wp_error( $br ) && $br ) { $r['br'] = $br[0]; }
@@ -4886,6 +4894,15 @@ class Petshop_Katalogas {
 					if ( $cv !== null && (float) $cv > 0 ) { $cost = (float) $cv; break; }
 				}
 			}
+			/* v8.7.9: DP pakuote, kurios bazine registre neturi eilutes,
+			   savikaina paveldi is BAZINES meta kaskados x N (Raimio 2026-09-08:
+			   „tegul daugiau-pigiau buna savikaina, ten su ja viskas aisku"). */
+			if ( $cost === null && $dp_b ) {
+				$bm2 = isset( $meta[ $dp_b ] ) ? $meta[ $dp_b ] : array();
+				foreach ( array( '_cost_price', '_vf_cost', '_zb_cost' ) as $ck ) {
+					if ( isset( $bm2[ $ck ] ) && $bm2[ $ck ] !== '' && (float) $bm2[ $ck ] > 0 ) { $cost = round( (float) $bm2[ $ck ] * $dp_n, 4 ); break; }
+				}
+			}
 
 			/* Variacine preke: AV likutis = variaciju suma (zr. $var_likuciai).
 			   Pakeiciam ir $s_list irasa, kad Stock_Service skaiciuotu is to
@@ -4909,7 +4926,7 @@ class Petshop_Katalogas {
 			}
 
 			$kaina  = $mv( '_regular_price', true );
-			/* v8.7.8: variacinei prekei WC tevo `_regular_price` isvalo -
+			/* v8.7.9: variacinei prekei WC tevo `_regular_price` isvalo -
 			   imame `_price` (maziausia variacijos kaina, WC sinchronizuoja).
 			   Kitaip KAINA ir ANTKAINIS sarase rodo bruksni, nors kainos yra. */
 			if ( $kaina === null && isset( $tipai[ $pid ] ) && in_array( 'variable', $tipai[ $pid ], true ) ) {
@@ -4943,7 +4960,7 @@ class Petshop_Katalogas {
 			$tipas = 'simple';
 			if ( isset( $tipai[ $pid ] ) && in_array( 'variable', $tipai[ $pid ], true ) ) { $tipas = 'var'; }
 			if ( isset( $m['_ps_rinkinys'] ) || isset( $m['_petshop_dp_sablonas'] )
-				|| ( isset( $tipai[ $pid ] ) && ( in_array( 'Mix and Match', $tipai[ $pid ], true ) || in_array( 'mix-and-match', $tipai[ $pid ], true ) ) ) ) { $tipas = 'rinkinys'; } /* v8.7.8: MnM rinkiniai (terminai() grazina vardus) */
+				|| ( isset( $tipai[ $pid ] ) && ( in_array( 'Mix and Match', $tipai[ $pid ], true ) || in_array( 'mix-and-match', $tipai[ $pid ], true ) ) ) ) { $tipas = 'rinkinys'; } /* v8.7.9: MnM rinkiniai (terminai() grazina vardus) */
 
 			$prekes[] = array(
 				'id'    => $pid,
@@ -4979,7 +4996,7 @@ class Petshop_Katalogas {
 				'apras' => $apras,
 				'tipas' => $tipas,
 				'delist'=> isset( $m['_ps_isimta'] ) && $m['_ps_isimta'] === '1',
-				'nesalt'=> isset( $m['_ps_be_saltinio'] ) && $m['_ps_be_saltinio'] === '1' && $tipas !== 'rinkinys', /* v8.7.8 */
+				'nesalt'=> isset( $m['_ps_be_saltinio'] ) && $m['_ps_be_saltinio'] === '1' && $tipas !== 'rinkinys', /* v8.7.9 */
 				'dp_n'  => $dp_n > 1 ? $dp_n : 0,
 				/* v2.9: pardavimu greitis ir pilnumo balas */
 				'v30'   => isset( $m['_ps_sales_30d'] ) ? (int) $m['_ps_sales_30d'] : null,
@@ -5125,7 +5142,7 @@ class Petshop_Katalogas {
 			'_vf_qty','_vf_cost','_vf_last_sync','_vf_supplier_sku','_vf_barcode',
 			'_zb_qty','_zb_cost','_zb_last_sync','_zb_sku','_zb_barcode',
 			'_regular_price','_sale_price','_sku','_thumbnail_id',
-			/* v8.7.8: `_price` — variacines prekes tevo kainos atsarginis kelias */
+			/* v8.7.9: `_price` — variacines prekes tevo kainos atsarginis kelias */
 			'_price',
 			'_ps_isimta','_ps_be_saltinio','_ean','_barcode','_wpm_gtin_code',
 			/* v6.0: DAUGIAU=PIGIAU pakuotes — saltinis paveldimas is bazines */
