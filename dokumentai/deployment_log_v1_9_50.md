@@ -1,171 +1,20 @@
 # DEPLOYMENT LOG v1.9.50
 
-### S1643 (2026-09-08, vakaras) — T-0 PASIRUOŠIMO PATIKROS: BACKUP OK, RASTOS DOMENO LIEKANOS (siteurl/home dev.avesa.lt!), NUOTRAUKŲ SUSPAUDIMO VERDIKTAS
+### S1643 (2026-09-08, vakaras) — T-1: PARDUOTŲ DELTA NURAŠYTA (AV, 23 vnt) + užsakymų/istorijos inventorius. Istorijos papildymas PARUOŠTAS, bet **NEPALEISTAS** (Raimio sprendimas — rytoj, aukštesnei versijai). Startas: `STARTAS_2026-09-09_T0.md`.
 
-> Pridėti po šia antrašte (virš S1642). Tema: **Raimio klausimai prieš migraciją — (a) ar tvarkoje DB kopijos ir kur jos guli, (b) ar domenas persijungs automatiškai, (c) ar įjungti nuotraukų suspaudimą. Visi trys atsakyti gyvais matavimais; rasta, kad §R192 teiginys „siteurl/home — padaryta" NEBEGALIOJA.** Bridge: `irankiai/s1643_b.php` (backup būsena), `s1643_c.php` (paleidikliai, mu sąrašas), `s1643_d.php` (DB URL + dev katalogas), `s1643_e.php` (nuotraukos + T0 sargai), `s1643_f.php` (webp + posts detalizacija) — visi READ-ONLY. Rezultatai `analize/s1643_b|c|d|e|f.json`.
+> Pridėti po šia antrašte (virš S1642).
 
-#### 1. DB KOPIJOS — SVEIKA ✅
-
-- **Paskutinė (2026-09-08 01:00):** `last_result=OK`, 14,4 s, **231 lentelė · 844 016 eilučių · 556 kodo failai · 36 306 422 B** šifruoto archyvo, SHA-1 `7cd79c7bac0d1f5f5b8bc0159d8feab27a1e3c12`. Kelias B2: `petshop-backups/2026/09/petshop-2026-09-08_010001.tar.gz.enc`.
-- **Sargas (07:00):** `verdict=OK`, `problems=[]`, kopijos amžius 6 h.
-- **Augimas nuo 2026-08-04** (§8f): 174→231 lentelės, 489 k→844 k eilučių, 17,6→36,3 MB. Norma (istorija, paskyros, partijos).
-- **Katalogas** `/home/gyvunai2/backups/`: `.b2creds.php` (391 B), abu būsenos failai, `ps-backup.php`, `ps-backup-watch.php`, 2 `.bak` kopijos.
-- **Paleidikliai jau petshop.lt ŠAKNYJE:** `public_html/backup-run.php` (200 B) ir `watch-run.php` (143 B) — po veidrodžio trynimo kelias nesikeičia, keičiasi tik domenas cron'e.
-
-#### 2. 🔴 DOMENO LIEKANOS — §R192 TEIGINYS NEBEGALIOJA
-
-`ABSPATH` = `/home/gyvunai2/domains/petshop.lt/public_html/` ✅ (failai vietoje). **BET tiesiogine SQL užklausa (ne `get_option`, kad WP_HOME/WP_SITEURL konstantos neapgautų):**
-
-```
-gaj6_options.siteurl = https://dev.avesa.lt   ← registre parašyta petshop.lt
-gaj6_options.home    = https://dev.avesa.lt
-```
-
-Registro „PERJUNGIMO SĄRAŠAS — perrašytas" skiltyje **„Atkrenta (padaryta): siteurl/home"** — **NETIESA dabartinei būsenai.** Kada ir kas perrašė — netirta (spėjimų nefiksuoju). **T-0 naktį BŪTINA:** wp-config dev bloko trynimas + `siteurl`/`home` → `https://petshop.lt`.
-
-**Likusios `dev.avesa.lt` eilutės (išmatuota):**
-
-| Vieta | Kiekis | Vertinimas |
-|---|---|---|
-| `options` | 11 | 5 transient'ai (praeis savaime); **realūs: `flatsome_registration`, `ps_feeds_paskutinis`, `woocommerce_wp_subscription_paypal_settings`, `ps_cc_v2_preview`, `ps_import_tempas_host`, `ps_import_tempas_paskutinis`** |
-| `posts.guid` | 334 | attachment 102 · product 134 · product_variation 83 · page 1 · revision 11 · **shop_coupon 2** · yith_wcan_preset 1. GUID WP nenaudoja kaip URL — žala maža, bet feed'ai/agregatoriai kartais skaito |
-| `posts.post_content` | **18** | **17 PUBLISH product + 1 draft** — klientui MATOMAS turinys (pvz. #35070 „Stirnos ir avies kojų rinkinys šunims · 12 vnt.") |
-| `postmeta` | 6 | raktai `_menu_item_url` (**meniu nuoroda į dev domeną!**) ir `_used_by` |
-| `usermeta` | 0 | ✅ |
-
-**`ps_import_tempas_host`** — jau buvo T-0 sąraše (#27), patvirtinta gyvai.
-
-#### 3. VEIDRODŽIO FAILAI — KITAME KATALOGE, NEI REGISTRE
-
-Registre §R192: „dev/ router + stub'ai" po petshop.lt. **Gyvai:** `petshop.lt/public_html/dev` — **NĖRA**. Veidrodis gyvena `/home/gyvunai2/domains/avesa.lt/public_html/dev/`: `.htaccess`, `backup-run.php`, `dev-router.php`, `index.php`, `watch-run.php`, `wp-load.php` (6 failai). `perkelti-r186.php` (3 801 B) — petshop.lt šaknyje, trinti po patikros. `petshop-dev-veidrodis.php` — mu-plugins (yra).
-
-#### 4. FLATSOME LICENCIJA — JAU META KLAIDĄ
-
-`flatsome_registration`: `type=STAGING`, `domain=dev.avesa.lt`, registruota 2026-05-05, ir jau yra `errors[]`: tema nebegauna naujausios versijos, nes domenas pasikeitė. **Q-FLATSOME patvirtinta gyvai** — perregistruoti į petshop.lt (Raimio veiksmas, ~1 min).
-
-#### 5. NUOTRAUKŲ SUSPAUDIMAS — VERDIKTAS: NEĮJUNGTI PRIEŠ PALEIDIMĄ
-
-- **ShortPixel 6.5.5 — NEAKTYVUS**, nustatymų nėra (`wp-short-pixel-settings` = nėra), kvota nenaudota, `fileCount`/`savedSpace` = false. G6 statusas registre „⚪ suplanuota, ne spraga" — teisingas.
-- **WebP JAU DAROMAS savo mu-pluginu:** `petshop-webp.php` **v1.1** (8 530 B, TŽ Sk. 28 skola, S1567/S1568). GD `imagewebp` q82 kuria `x.webp` šalia kiekvieno jpg/png (originalas + visi dydžiai); Apache atiduoda .webp pagal `Accept: image/webp` (.htaccess blokas „Petshop WebP"), HTML nekeičiamas, `Vary: Accept`. Kabliai: `init`, `cron_schedules`, `wp_generate_attachment_metadata`, `delete_attachment`. Nauji upload'ai — iš karto; sena eilė — cron kas 5 min po ≤45 s. `.nowebp` žymeklis, jei laimėjimas <10 %; `.webperr` klaidoms (v1.1).
-- **Išmatuota `uploads/`:** 141 923 vaizdo failai · **56 306 .webp** · **8 422 MB**. Attachment'ų DB: 8 503.
-- **Argumentai NEĮJUNGTI dabar:** (a) pagrindinę naudą — WebP naršyklei — jau duoda savas pluginas; (b) ShortPixel perrašo originalus ir kuria `ShortpixelBackups` (senų jau 4,02 GB, §8x; inode 66 %); (c) 8 503 attachment'ai = kreditai + valandos bulk apdorojimo; (d) paleidimo naktį — nauja kintamųjų grupė be klientui matomos naudos. **Rekomendacija: po paleidimo, ramiai, su išjungtomis ShortPixel kopijomis.** Sprendimas — Raimio.
-
-#### 6. KITI GYVAI PATVIRTINTI T-0 PUNKTAI
-
-- `blog_public = 0` — „Discourage search engines" ĮJUNGTAS, T-0 punktas #7 galioja ✅
-- PHP gyvai 8.3.33; mu-plugins 121 failas
-- Backup/watch cron URL vis dar `dev.avesa.lt` (T-0 punktas #4) — jei praleista, kopijos sustotų tyliai, sargas praneštų tik po 26 h
-
-#### 8. VALYMAS ATLIKTAS (S1643h) — dev.avesa.lt liekanos IŠVALYTOS
-
-Raimio nurodymas: „visus dalykus sutvarkyk, negalima palikti šiukšlių". Kopija prieš darbą: `uploads/ps-backups/dev-url-valymas-S1643-20260908-184523.json` (254 588 B — pilnas originalus turinys, meta, guid, options).
-
-| Sluoksnis | Rasta | Padaryta | Metodas |
-|---|---|---|---|
-| `posts.post_content` | 18 (138 atvejai) | 18 atnaujinta | `https://dev.avesa.lt/…` → **šakninis kelias** `/wp-content/…` (veikia IR dev'e, IR po perjungimo — nėra lūžio tarpinėje būsenoje) + `clean_post_cache` |
-| `postmeta._menu_item_url` | 5 | 5 atnaujinta | → šakniniai `/product/…` |
-| `posts.guid` | 334 | 334 atnaujinta | → `https://petshop.lt` (nuoseklu su R192) |
-| transientai | 5 | 5 ištrinta | `_site_transient_update_themes`, `_transient_wc_tracks_blog_details`, 2× `woocommerce_blocks_asset_api_script_data`, `cmplz_transients` — atsikuria savaime |
-
-**Kontrolė po:** `posts.post_content` 0 · `posts.guid` 0 · `postmeta` 1 (žr. žemiau) · `usermeta` 0.
-
-**SĄMONINGAI NELIESTA (su priežastimi):**
-- `siteurl` / `home` — **privalo likti `dev.avesa.lt` iki DNS perjungimo**, kitaip lūžta Raimio prieiga ir tiltas. T-0 darbas.
-- `ps_import_tempas_host` — tas pats: importų tempo mechanizmas rodo į gyvą hostą (T-0 #27).
-- `flatsome_registration` — perregistruoja Raimis ranka (Q-FLATSOME), perrašys pati.
-- `postmeta._used_by` = `e2f.frontend@dev.avesa.lt` prie **#35834** — tai T-0 valymo saugiklyje esantis testinis kuponas, bus ištrintas kartu su juo.
-- `ps_feeds_paskutinis`, `ps_cc_v2_preview`, `ps_import_tempas_paskutinis` — vykdymo žurnalai, perrašomi kito paleidimo metu.
-- 🟡 `woocommerce_wp_subscription_paypal_settings` (serializuotas, 572 B) — PayPal nenaudojamas (mokėjimai per Paysera), bet **jei kada bus įjungtas — jame dev URL**. Į T-0 sąrašą, ne skubu.
-
-**Vizuali patikra (Playwright, `analize/s1643_i.json`, kadrai `screenshots/s1643_rink_35070`, `s1643_rink_35404`):** #35070 — 4/4 rinkinio nuotraukos rodomos (`naturalWidth>0`), #35404 — 8/8; `src` atributai šakniniai; 4xx/5xx užklausų 0. **Šakninių kelių sprendimas patvirtintas gyvai.**
-
-**PASTABA ATEIČIAI:** rinkinių aprašymus (`<div class="ps-rink-img">`) generuoja kodas — jei jis naudoja `home_url()`, po pergeneravimo dev'e vėl atsirastų absoliutus dev URL. T-0 naktį pakartoti tą pačią `dev.avesa.lt` kontrolinę užklausą prieš paleidimą.
-
-
-#### 9. 🔴 RADINYS: PARTIJŲ REDAGAVIMAS KATALOGO KORTELĖJE NIEKADA NEVEIKĖ (`ryšio klaida`)
-
-**Raimio signalas:** taisant prekių savikainas, partijos eilutėje (#3882, VF, 17 vnt.) prie lauko atsiranda **„ryšio klaida"**, reikšmė neįsirašo.
-
-**Diagnozė — tai NE ryšys.** JS `partijaSiusti()` naudoja `fetch(...).then(r=>r.json()).catch(...)`; `.catch` suveikia ir tada, kai atsakymas nėra validus JSON. Simuliavus kvietimą serveryje (`s1643_n.php`, adminas + to paties proceso nonce, `do_action('wp_ajax_ps_kat_partija')`):
-
-```
-call_user_func_array(): Argument #1 ($callback) must be a valid callback,
-class Petshop_Katalogas does not have a method "ajax_partija"
-```
-
-**Šaknis:** `petshop-katalogas.php` REGISTRUOJA du kablius į neegzistuojančius metodus:
-
-```
-wp_ajax_ps_kat_partija       -> Petshop_Katalogas::ajax_partija        NĖRA
-wp_ajax_ps_kat_partija_nauja -> Petshop_Katalogas::ajax_partija_nauja  NĖRA
-```
-
-Iš 23 registruotų `wp_ajax_ps_kat_*` kablių **21 metodas egzistuoja, šie 2 — ne.** Visoje instaliacijoje (`mu-plugins`, `petshop-core`, tema) `function ajax_partija` NĖRA nė vieno.
-
-**Tai NE S1642 regresija.** Patikrinta visa backup grandinė `ps-backups/`: v8.7.1 (08-20), v8.7.2 (08-21), v8.7.3 (08-21), v8.7.1/2/3 (09-07), v8.7.5, v8.7.6, v8.7.7, v8.7.8 — **nė viename nėra `function ajax_partija`, o registracija yra visuose.** Vadinasi, partijų redagavimas kortelėje (savikaina / likutis / geriausia iki / nauja partija) **niekada neveikė** — UI nupieštas, backend'o niekada nebuvo.
-
-**Kas VEIKIA (nesutrikdyta):** prekės kainos redagavimas (`ps_kat_kaina` → `ajax_kaina_irasyti`), savikaina kortelės lauke (`ps_kat_sav` → `ajax_sav_irasyti`), AV likutis (`ps_kat_av`), tiekėjo likutis, ir kiti 21 kablys.
-
-**Sprendimo kelias (Raimio sprendimui, NEDARYTA):** rašyti trūkstamus `ajax_partija` / `ajax_partija_nauja`. Variklio `Petshop_Partijos` viešas API turi visa, ko reikia, jo liesti nereikia: `partijos()`, `svertine_savikaina()`, `perskaiciuoti_savikaina()`, `av_likutis()`, `priimti()` (naujai partijai), `sutapimo_patikra()`. Laukai iš JS: `savikaina`, `kiekis_liko`, `geriausia_iki`. Kortelės tekstas jau žada: „Pakeitus likutį ar savikainą, prekės AV likutis ir svertinė savikaina perskaičiuojami" — vadinasi, handleris privalo kviesti `perskaiciuoti_savikaina()` + AV likučio perskaičiavimą, ne tik rašyti į lentelę.
-
-**Rekomendacija:** paleidimo NEBLOKUOJA (partijos kuriamos per Gavimą, kuris veikia — S1638 įrodė 45 partijomis). Daryti PO T-0, ramiai, su dienoraščiu. Bet **UI apgaudinėja** — laukai atrodo redaguojami. Iki pataisymo verta arba užrakinti tuos laukus, arba palikti kaip yra ir žinoti.
-
-
-#### 10. SISTEMOS PJŪVIAI (Raimis: „gal dar ką praleidome?") — `s1643_t/u/v.php`, READ-ONLY
-
-**A. Negyvų kablių šukavimas per visą gyvą `$wp_filter`** (ne failų grep — tikra WP būsena, `method_exists`/`function_exists` kiekvienam callback'ui). Rezultatas: **iš visų petshop kablių negyvi tik du — tie patys `ajax_partija` ir `ajax_partija_nauja` (§9).** Likę „negyvi" sąraše — WP core `_wp_ajax_add_hierarchical_term` ir YITH `YITH_WCAN_Ajax::process`: jie kraunami tik `admin-ajax` kontekste, matavimas vyko froante — **klaidingi teigiami, ne problema.** Daugiau tokios klasės skylių petshop kode NĖRA.
-
-**B. Cron:** 84 kabliai, **0 įvykių vėluoja >1 h**, orfanų (įvykis be kablio) 0. ✅
-
-**C. Užsakymai / laiškų eilė:** `wc_orders` visų statusų 0; `ps_email_jobs` 0. ✅ (atitinka T-0 pasiruošimo būseną)
-
-**D. Prekės:** publish **2 633** · draft 1 233 · be kategorijos **0** ✅
-
-**E. 🟡 DVI PUBLISH PREKĖS BE KAINOS** — klientui matomos, bet nenuperkamos:
-
-| ID | SKU | Prekė | `_zb_cost` | `_zb_qty` | `_stock_status` |
-|---|---|---|---|---|---|
-| 14274 | 01KOM057 | Monge Cat 4x10kg Kitten+Adult+Urinary+Rabbit Mono | 171,15 | 4 | instock |
-| 14824 | 01GIC510510 | GIMCAT GRAS BITS 425G | 8,504 | 10 | instock |
-
-Abi ZB, abiem `_regular_price` / `_sale_price` / `_price` **tušti**, o `_zb_last_sync` = **šios dienos 22:06 / 22:09** — t. y. importas kiekius atnaujina, bet kainos taip ir nėra. Prekė rodoma „yra sandėlyje" be kainos.
-
-**✅ ATLIKTA (Raimio nurodymas „permesk į draft", `s1643_w.php`):** 14274 `publish`→`draft`, 14824 `publish`→`draft`, abiem `_price` buvo tuščia; `clean_post_cache` iškviesta. **Neištirta ir lieka atvira:** KODĖL ZB importas kiekius sinchronizuoja, o kainų nesuteikia — tai gali liesti ir daugiau prekių ateityje.
-
-**F. ❌ MANO KLAIDA — „devynios prekės be nuotraukos" NEPASITVIRTINO.** Raimis suabejojo („ar tikrai?") ir buvo teisus. Pirminis matavimas rėmėsi SQL patikra, ar yra `_thumbnail_id` meta — **tai neteisingas įrankis** šioms prekėms. Patikrinus per WC API ir gyvai:
-
-| ID | `_thumbnail_id` | `get_image_id()` | Vizualiai puslapyje |
-|---|---|---|---|
-| 34942 | tuščias | 35030 | `sunu-konservai-800x800.jpg` rodoma ✅ |
-| 35309 | tuščias | 35031 | `konservai-katems-3-800x671.jpg` rodoma ✅ |
-| 35861 | tuščias | 35004 | `skanestai-2-800x671.jpg` rodoma ✅ |
-
-Visi 9 (34942, 34944, 34945, 34947, 34938, 35309, 35390, 35781, 35861) turi neblankų `get_image_id()`; trys patikrintos Playwright'u — galerijos blokas yra, `naturalWidth>0`, 4xx/5xx 0. Nuotrauką rinkiniams paduoda ne standartinė `_thumbnail_id` meta, o kitas kelias (filtras) — **kas tiksliai, neištirta.**
-
-**PAMOKA (į taisyklių lygį):** prekės nuotraukos buvimo NEMATUOTI per `_thumbnail_id` SQL — tik `get_image_id()` / vizualiai. Ta pati klaidos klasė, kaip M8 „skaitikliai melavo, kadras pasakė tiesą".
-
-**Šalutinis pastebėjimas (ne gedimas):** nuotraukos bendrinės — 35030 naudojama 4 rinkiniams, 35031 trims. Ar tai sąmoninga, sprendžia Raimis.
-
-**G. SKU dublikatai — 2, abu nekenksmingi:** `718000428` (#34905 trash + #34908 publish) ir `HYPM11 x2` (abu trash). Realaus konflikto nėra.
-
-**H. Be SKU (publish) 26:** 9 Mix and Match + 17 simple (dalis — „Konservų dėžė" AV rinkiniai, #35840 belcor_tofu jau saugiklių sąraše). Rinkiniams SKU nebūtinas — ne gedimas, fiksuojama žinojimui.
-
-**I. Autoload 223,2 KB** — sveika (didžiausi: `rewrite_rules` 28,5 · `_transient_wp_core_block_css_files` 21,7 · `wcdn_template_settings` 20,9 · `cron` 13,8). ✅
-
-**Metodinė pastaba:** negyvų kablių patikra per gyvą `$wp_filter` yra pigi (vienas run'as) ir pagavo tai, ko failų grep nebūtų parodęs kaip problemos. **Verta kartoti po kiekvieno didesnio deploy.**
-
-
-#### 7. T-0 SĄRAŠO PAPILDYMAS (siūlomas, Raimio tvirtinimui)
-
-```
-+ siteurl/home → https://petshop.lt (DB, po wp-config bloko trynimo)
-+ 6 realios options eilutės su dev.avesa.lt (be transient'ų)
-+ 18 posts.post_content (17 publish prekių!) — search-replace
-+ 6 postmeta (_menu_item_url — meniu nuoroda)
-+ 334 posts.guid — sprendimas: liesti ar palikti (Raimis)
-+ AVPN serija: NE 101, o senos eShoprent numeracijos tęsinys (paskutinis+1;
-  paskutinė sena 10996 → 11000, jei tilps). KR/IAPV startas — ATVIRA.
-```
+- **Parduotų DELTA (`irankiai/s1643_n.php` dry → `s1643_a.php` apply; `analize/s1643n.json`, `s1643a.json`):** šaltinis `eshoprent_orders_2026-09-08_21_19.xlsx`. Riba: #12098 jau buvo įtrauktas anksčiau → imti **12099–12106** (20 eilučių). **Raimio taisyklė: nurašom TIK AV, kitų sandėlių — ne.**
+  - **Nurašyta 12 eilučių / 23 vnt, 0 skip, 0 klaidų:** 5414365260569 13→12 · 83722 20→17 · 83721 35→32 · 83967 27→24 · 704001 7→6 · G378 1→0 · 82767 63→61 · 82765 143→141 · 82764 20→18 · 82741 103→101 · 82804 56→54 · G377 5→4. Σ `_stock` 293 380 → 293 356.
+  - **Sargai apply fazėje (visi 5 privalomi):** `_sku` sutampa · `_ps_sandelis='av'` · `_vf_qty`/`_zb_qty` tuščios · `_manage_stock='yes'` · DB `_stock` == laukiamas senas (kitaip skip). Rašymas per `wc_get_product()->set_stock_quantity()`, po kiekvienos — `po` reikšmės patikra.
+  - **Praleista Raimio sprendimu (skola, jei kada spręs):** `AMLE12` 1 (`_ps_sandelis=ambrosia`), `WWSOG5035` 2 (`belcor_tofu`) — tas pats T1 atviras `av_laukas()` ≠ `_ps_sandelis`; `341850-dp` 1 — SKU DB priklauso **rinkiniui #35076** (MnM, `_ps_rink_komp_hash`, `_manage_stock=no`, `_stock` tuščias), nurašymo mechanizmo rinkiniams nėra; `82700121` 1 ir `5904181400848`(S) 1 — SKU DB nerasti. VF `HYPS02` 3 + `HYPS06` 1 — ne mūsų sandėlis.
+- **Užsakymų inventorius dev'e (`s1643_u.php`, `analize/s1643u.json`):** `shop_order` **0**, HPOS lentelės `wc_orders` NĖRA, refund'ų 0 → **T-0 naujų testinių valymas nebeaktualus** (užsakymų objektų nebėra; naktį tikrinti tik metadatos/opcijų likučius). `posts` AUTO_INCREMENT 35 867. Skaitikliai dabar: `petshop_avpn_counter` **366** · `petshop_iapv_counter` **172** · `petshop_kravpn_counter` **107** · `petshop_ppk_counter` **104** · `wcdn_invoice_number_counter` **388** (sąskaitų — atskiras, T0 plane neminimas → **Raimio sprendimas atviras**).
+- **Istorijos sluoksnio aprėptis (`s1643_i.php`/`s1643_m.php`):** `ps_ist_uzsakymai` 10 076 (id PK = eShoprent order_id), **2023-11-20 → 2026-08-30 08:13:26, max id #12003**; `ps_ist_eilutes` 24 338. `ps_ist_fakt_uzsakymai` 9 528 / `ps_ist_fakt_eilutes` 23 174 (**BASE TABLE**, id formatas 9000+order_id, max 900012003); `ps_v_analize_*` — **VIEW** (atsinaujina savaime); `ps_dim_klientai` 5 431; `ps_kl_suvestine` 5 701. Kodo vietos: `MU/petshop-klientai.php`, `MU/petshop-ataskaita-klientai.php`, **`MU/petshop-istorijos-adapteris.php`**.
+- **Konvencijų patikra prieš rašymą (`s1643_p.php`, `analize/s1643p.json`) — svarbu ateities kėlimams:** `imone` = vėliava **'0'/'1'** (ne pavadinimas; 10 029 / 47); `saskaita` = prefiksas+numeris (`AVP10999`), be numerio — tik `AVP` (541); `variantas` = **tik reikšmė** („S", „500 g"), be atributo vardo; `wc_product_id` = **NULL** kai nesusieta (0 nenaudojamas); `susiejimas` ∈ sku 20 853 / pavadinimas 2 661 / '' 589 / rankinis 235. Laukų kilmė iš eksporto: `kaina`=product_price (be PVM), `suma`=product_total, `suma_be`=sub_total, `suma`(užs.)=total, `data`=date_added.
+- **PARUOŠTA, NEPALEISTA — istorijos papildymas (`irankiai/s1643_h2.php`, DRY `analize/s1643h2.json`):** šaltinis `eshoprent_orders_2026-09-08_21_50.xlsx` (11999–12106, 231 eil., seka su spragomis 12045/12057/12072/12088/12090/12095/12105 — eShoprent pusėje). DRY: **93 nauji užsakymai #12004–12106** (atšaukti **12007/12009/12053 neimami — Raimio sprendimas**), **217 eilučių**, susiejimas 190 sku + 13 pagal pavadinimą = 203/217 (93,5 %), nesusieta 14 (rinkiniai, -2 pakuotės, nauji SKU), suma **3 949,17 €**, dublikatų 0. Plius **5 statusų atnaujinimai** #11999–12003 („Mokėjimas gautas" → „Užsakymas išsiųstas"; Raimis: „užsakymai bus išsiųsti, jie jau surinkti").
+  - **STABDIKLIS ir kodėl nepaleista:** skriptas rašo tik ŽALIĄ sluoksnį (`ps_ist_uzsakymai` + `ps_ist_eilutes`). `ps_ist_fakt_*`, `ps_dim_klientai`, `ps_kl_suvestine` savaime NEATSINAUJINA — juos stato `petshop-istorijos-adapteris.php`, kurio API šioje sesijoje netirtas. Įrašius vien žalią sluoksnį būtų nesuderinta būklė (užsakymai matomi istorijoje, bet ne klientų LTV/kohortose/ataskaitose). **Raimio sprendimas: nedaryti, palikti rytojui ir galutiniam eksportui iki eShoprent stabdymo.** Nieko į istoriją neįrašyta.
+  - **Rytojaus eiga:** (1) eksportas **nuo #12004** iki paskutinio prieš stabdymą; (2) `s1643_h2.php` payload perkurti (lokaliai pandas/openpyxl → gz+b64), DRY → Raimio OK → A; (3) **prieš tai** ištirti `petshop-istorijos-adapteris.php` — ar yra rebuild/inkrementinis kablys `ps_ist_fakt_*` ir `ps_dim_klientai` perstatymui; (4) po apply — vientisumas: be_tevo 0, `eiluciu` sutampa, Σ įvykdytų.
+- **Aplinka:** bridge `run.sh` lint'as reikalauja `php` — konteineryje jo nebūna, diegti `apt-get install -y php8.3-cli` (leista per archive.ubuntu.com); PHP lint STABDIKLIS galioja. Sesijoje naudoti `s1643_n/a/u/i/m/p/h2.php`, artefaktai `analize/s1643*.json`.
 
 ### S1642 (2026-09-08, diena–vakaras, UŽDARYTA) — SAVIKAINOS (Raimio 8 + Georplast 135) + KATALOGAS v8.7.6→v8.7.9 (rinkinių „be šaltinio", DP savikaina). Tęsinys — NAUJAME lange iškart (be pertraukos): T-1 likučiai + parduotų DELTA → T-0 ~0:30–1:00. Startas: `STARTAS_2026-09-08_po_S1642.md`. Resursai: Max planas, Fable savaitinis ~8 % likutis (reset pentk. 17:00), prireikus Raimis dasiperka kreditų.
 
