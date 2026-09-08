@@ -1,0 +1,32 @@
+{
+ "v": "dep-065523",
+ "kurimas": 200,
+ "sid": 5126,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1639k",
+  "nr": "HC034722339LT",
+  "res1": [
+   "dl_klaida",
+   "AV siunta dar be lipduko"
+  ],
+  "res2": [
+   "dl_issiusta",
+   "klientui išėjo „Užsakymas išsiųstas“"
+  ],
+  "statusas": "completed",
+  "zurnalas": [
+   {
+    "laikas": "2026-09-08 09:56:37",
+    "kam": "terra@petshop.lt",
+    "tema": "IŠLEISTA · Jūsų užsakymas Nr. 35862 išsiųstas",
+    "priedai": 1,
+    "failai": "PVM-saskaita-AVPN000362.pdf",
+    "url": "/?ps_n2=GO"
+   }
+  ]
+ }
+}
