@@ -1,0 +1,73 @@
+{
+ "v": "dep-183601",
+ "kurimas": 200,
+ "sid": 5192,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1643f",
+  "webp_galva": "<?php\n/**\n * Plugin Name: Petshop WebP v1.0 (paveikslėlių konversija į WebP + automatinis naujų failų apdorojimas)\n * Description: TŽ Sk. 28 skola. GD `imagewebp` (q82) sukuria `x.webp` šalia kiekvieno `x.jpg/png` (originalas + visi\n *   dydžiai); Apache atiduoda .webp, kai naršyklė siunčia `Accept: image/webp` ir failas egzistuoja (.htaccess blokas\n *   „Petshop WebP“, S1567) — HTML nekeičiamas, cache nekenkia (Vary: Accept). Eilė: WP attachment'ai pagal ID\n *   (prekės pirmos: rikiuojama pagal post_parent tipą), cron kas 5 min po ≤45 s; nauji upload'ai — iš karto per\n *   `wp_generate_attachment_metadata`. Jei WebP ne bent 10 % mažesnis — rašomas `.nowebp` žymeklis, failas praleidžiamas.\n * Version: 1.1\n *\n * v1.1 (S1568): klaidos žymimos `.webperr` (su priežastimi) ir nekartojamos; serve patikrinta prod vhost'e per\n *   `curl --resolve petshop.lt:443:",
+  "webp_kabliai": [
+   "init",
+   "cron_schedules",
+   "wp_generate_attachment_metadata",
+   "delete_attachment"
+  ],
+  "webp_versija": "1.1",
+  "posts_guid": 334,
+  "posts_turinys": 18,
+  "posts_turinys_tipai": [
+   {
+    "post_type": "product",
+    "post_status": "draft",
+    "k": "1"
+   },
+   {
+    "post_type": "product",
+    "post_status": "publish",
+    "k": "17"
+   }
+  ],
+  "posts_guid_tipai": [
+   {
+    "post_type": "attachment",
+    "k": "102"
+   },
+   {
+    "post_type": "page",
+    "k": "1"
+   },
+   {
+    "post_type": "product",
+    "k": "134"
+   },
+   {
+    "post_type": "product_variation",
+    "k": "83"
+   },
+   {
+    "post_type": "revision",
+    "k": "11"
+   },
+   {
+    "post_type": "shop_coupon",
+    "k": "2"
+   },
+   {
+    "post_type": "yith_wcan_preset",
+    "k": "1"
+   }
+  ],
+  "postmeta_raktai": [
+   "_menu_item_url",
+   "_used_by"
+  ],
+  "pvz": {
+   "ID": "35070",
+   "post_type": "product",
+   "post_title": "Stirnos ir avies kojų rinkinys šunims · 12 vnt."
+  }
+ }
+}
