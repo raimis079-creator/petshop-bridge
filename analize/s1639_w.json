@@ -1,0 +1,14 @@
+{
+ "v": "dep-073846",
+ "kurimas": 200,
+ "sid": 5138,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "md5": "3025c02a5d09ca5ef75ce9cf6b2f448f",
+  "dydis": 1258,
+  "head": "<?php\n/**\n * Plugin Name: Petshop vertimai\n * Description: Trūkstami WooCommerce/Flatsome lt_LT vertimai (laiškai, paieškos antraštės). Tik eilutės, kurių nėra oficialiuose .mo.\n * Version: 1.1\n */\nif ( ! defined( 'ABSPATH' ) ) exit;\nadd_filter( 'gettext_woocommerce', function( $translated, $text, $domain ) {\n\tstatic $map = array(\n\t\t'Unfortunately, the payment for order #%1$s from %2$s has failed. The order was as follows:' => 'Deja, užsakymo #%1$s (pirkėjas %2$s) apmokėjimas nepavyko. Užsakymo informacija:',\n\t\t\"We\\xE2\\x80\\x99re getting in touch to let you know that order #%1\\$s from %2\\$s has been cancelled.\" => 'Pranešame, kad užsakymas #%1$s (pirkėjas %2$s) buvo atšauktas."
+ }
+}
