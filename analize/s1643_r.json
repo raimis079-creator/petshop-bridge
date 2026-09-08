@@ -1,0 +1,267 @@
+{
+ "v": "dep-193200",
+ "kurimas": 200,
+ "sid": 5204,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1643r",
+  "rezimas": "READ-ONLY",
+  "partijos_pagal_tiekeja": [
+   {
+    "tiekejas": "Animonda",
+    "k": "39",
+    "vnt": "2700"
+   },
+   {
+    "tiekejas": "av",
+    "k": "3",
+    "vnt": "15"
+   },
+   {
+    "tiekejas": "Belacor",
+    "k": "13",
+    "vnt": "139"
+   },
+   {
+    "tiekejas": "eShoprent",
+    "k": "544",
+    "vnt": "8870"
+   },
+   {
+    "tiekejas": "Hikari",
+    "k": "6",
+    "vnt": "25"
+   },
+   {
+    "tiekejas": "VF",
+    "k": "57",
+    "vnt": "424"
+   },
+   {
+    "tiekejas": "ZB",
+    "k": "15",
+    "vnt": "156"
+   }
+  ],
+  "s1636": [
+   {
+    "tiekejas": "VF",
+    "k": "57"
+   },
+   {
+    "tiekejas": "ZB",
+    "k": "16"
+   }
+  ],
+  "prekiu_su_partijomis": 638,
+  "su_vf_cost": 57,
+  "av_sandelio": 468,
+  "be_vf_cost": 581,
+  "nesutampa_5pr": 34,
+  "top20": [
+   {
+    "id": "18054",
+    "sku": "JOS0805",
+    "sand": "vf",
+    "pav": "Josera Leger 10 kg &#8211; sausas maistas kat",
+    "vf_cost": 2.344,
+    "svertine": 29.64,
+    "cost_price": "",
+    "skirtumas_pr": 1164.5
+   },
+   {
+    "id": "18080",
+    "sku": "JOS1005",
+    "sand": "vf",
+    "pav": "Josera Indoor 2 kg &#8211; sausas maistas nam",
+    "vf_cost": 8.008,
+    "svertine": 35.16,
+    "cost_price": "",
+    "skirtumas_pr": 339.1
+   },
+   {
+    "id": "17962",
+    "sku": "JOS0836",
+    "sand": "vf",
+    "pav": "Josidog Active 15 kg &#8211; sausas maistas a",
+    "vf_cost": 17.268,
+    "svertine": 22.96,
+    "cost_price": "",
+    "skirtumas_pr": 33
+   },
+   {
+    "id": "18032",
+    "sku": "JOS0912",
+    "sand": "vf",
+    "pav": "Josera Mini Chicken&#038;Rice 10 kg &#8211; s",
+    "vf_cost": 18.2944,
+    "svertine": 23.85,
+    "cost_price": "",
+    "skirtumas_pr": 30.4
+   },
+   {
+    "id": "18593",
+    "sku": "AM20",
+    "sand": "av",
+    "pav": "Exclusion Hypoallergenic konservai šunims su ",
+    "vf_cost": 1.649,
+    "svertine": 2,
+    "cost_price": "2.00",
+    "skirtumas_pr": 21.3
+   },
+   {
+    "id": "18602",
+    "sku": "PM20",
+    "sand": "av",
+    "pav": "Exclusion Hypoallergenic konservai šunims su ",
+    "vf_cost": 1.649,
+    "svertine": 2,
+    "cost_price": "2.00",
+    "skirtumas_pr": 21.3
+   },
+   {
+    "id": "17972",
+    "sku": "JOS0812",
+    "sand": "vf",
+    "pav": "JosiCat Crispy Duck sausas pašaras katėms su ",
+    "vf_cost": 17.92,
+    "svertine": 21.68,
+    "cost_price": "",
+    "skirtumas_pr": 21
+   },
+   {
+    "id": "18026",
+    "sku": "JOS0974",
+    "sand": "vf",
+    "pav": "Josera Mini Duck+Potato sausas pašaras mažų v",
+    "vf_cost": 11.432,
+    "svertine": 13.83,
+    "cost_price": "",
+    "skirtumas_pr": 21
+   },
+   {
+    "id": "18029",
+    "sku": "JOS0973",
+    "sand": "vf",
+    "pav": "Josera Mini Duck+Potato sausas pašaras mažų v",
+    "vf_cost": 36.072,
+    "svertine": 43.64,
+    "cost_price": "",
+    "skirtumas_pr": 21
+   },
+   {
+    "id": "18614",
+    "sku": "DM20",
+    "sand": "av",
+    "pav": "Exclusion Hypoallergenic konservai šunims su ",
+    "vf_cost": 1.5725,
+    "svertine": 1.9,
+    "cost_price": "1.90",
+    "skirtumas_pr": 20.8
+   },
+   {
+    "id": "18512",
+    "sku": "NGALA40",
+    "sand": "vf",
+    "pav": "Exclusion Mono Protein Mediterraneo konservuo",
+    "vf_cost": 1.683,
+    "svertine": 2.03,
+    "cost_price": "",
+    "skirtumas_pr": 20.6
+   },
+   {
+    "id": "18515",
+    "sku": "NGAVA40",
+    "sand": "vf",
+    "pav": "Exclusion Mono Protein Mediterraneo konservuo",
+    "vf_cost": 1.683,
+    "svertine": 2.03,
+    "cost_price": "",
+    "skirtumas_pr": 20.6
+   },
+   {
+    "id": "18518",
+    "sku": "NGAUA40",
+    "sand": "vf",
+    "pav": "Exclusion Mono Protein Mediterraneo konservuo",
+    "vf_cost": 1.683,
+    "svertine": 2.03,
+    "cost_price": "",
+    "skirtumas_pr": 20.6
+   },
+   {
+    "id": "18521",
+    "sku": "NGABA40",
+    "sand": "vf",
+    "pav": "Exclusion Mono Protein Mediterraneo konservuo",
+    "vf_cost": 1.683,
+    "svertine": 2.03,
+    "cost_price": "",
+    "skirtumas_pr": 20.6
+   },
+   {
+    "id": "18068",
+    "sku": "JOS0765",
+    "sand": "vf",
+    "pav": "Josera Kitten Salmon begrūdis konservuotas pa",
+    "vf_cost": 1.328,
+    "svertine": 1.6,
+    "cost_price": "",
+    "skirtumas_pr": 20.5
+   },
+   {
+    "id": "18071",
+    "sku": "JOS0763",
+    "sand": "vf",
+    "pav": "Josera Kitten Duck begrūdis konservuotas paša",
+    "vf_cost": 1.328,
+    "svertine": 1.6,
+    "cost_price": "",
+    "skirtumas_pr": 20.5
+   },
+   {
+    "id": "18587",
+    "sku": "HYPS06",
+    "sand": "vf",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "vf_cost": 37.485,
+    "svertine": 34,
+    "cost_price": "",
+    "skirtumas_pr": -9.3
+   },
+   {
+    "id": "19015",
+    "sku": "EU105",
+    "sand": "vf",
+    "pav": "Churu su vištiena ir šukutėmis &#8211; kremin",
+    "vf_cost": 1.57,
+    "svertine": 1.43,
+    "cost_price": "",
+    "skirtumas_pr": -8.9
+   },
+   {
+    "id": "19018",
+    "sku": "EU107",
+    "sand": "vf",
+    "pav": "Churu su vištiena ir sūriu &#8211; kreminis s",
+    "vf_cost": 1.57,
+    "svertine": 1.43,
+    "cost_price": "",
+    "skirtumas_pr": -8.9
+   },
+   {
+    "id": "19024",
+    "sku": "EU104",
+    "sand": "vf",
+    "pav": "Churu su tunu ir šukutėmis &#8211; kreminis s",
+    "vf_cost": 1.57,
+    "svertine": 1.43,
+    "cost_price": "",
+    "skirtumas_pr": -8.9
+   }
+  ]
+ }
+}
