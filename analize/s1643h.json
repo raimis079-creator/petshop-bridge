@@ -1,0 +1,124 @@
+{
+ "v": "dep-215750",
+ "kurimas": 200,
+ "sid": 5215,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1643 H",
+  "f": "D",
+  "temp_istrinta": 1,
+  "etalonas_12003": {
+   "id": "12003",
+   "data": "2026-08-30 08:13:26",
+   "email": "martynas.civilis@gmail.com",
+   "vardas": "Martynas",
+   "pavarde": "Čivilis",
+   "tel": "37067169433",
+   "imone": "0",
+   "siuntimas": "Pristatymas per Venipak kurjerių tarnybą",
+   "miestas": "Ukmergės raj",
+   "apmokejimas": "AB „SEB bankas“",
+   "suma_be": "181.80",
+   "suma": "223.97",
+   "statusas": "Mokėjimas gautas",
+   "ivykdytas": "1",
+   "saskaita": "AVP",
+   "eiluciu": "1"
+  },
+  "etalonas_12003_eil": [
+   {
+    "modelis": "HYPS06-2",
+    "pavadinimas": "2 vnt. - Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    "variantas": "",
+    "kiekis": "2",
+    "kaina": "90.9008",
+    "suma": "181.80",
+    "wc_product_id": null,
+    "susiejimas": ""
+   }
+  ],
+  "statistika": {
+   "nauji": 93,
+   "jau_yra": 0,
+   "eil": 217,
+   "sku_ok": 190,
+   "sku_ne": 27,
+   "suma": 3949.17
+  },
+  "sku_nerasti": {
+   "2862": "Džiovinti galvijų plaučiai",
+   "2866": "Džiovinti galvijų skrandžiai",
+   "82740": "Animonda GranCarno Adult: konservai šunims su širdimis, 800 g",
+   "83443": "Animonda Vom Feinsten Adult with Chicken Liver – konservai katėms su vištienos kepenėlėmis, 100 g",
+   "82700121": "Animonda GranCarno Adult konservų rinkinys 6 x 800 g",
+   "5904181400848": "Natūralūs skanėstai šunims - Elnio rago kramtukas, minkštas",
+   "HYPS02-2": "2 vnt. - Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg",
+   "PET0TR1382_13234": "TRIXIE  Automobilio sėdynės užtiesalas, 1.40x1.45 m, juodas-smėlio",
+   "82700160#2": "Animonda GranCarno Adult konservų rinkinys 6 x 400 g, #2",
+   "TOFUNAM5251384": "8 VNT. - Kraikas katėms TOFU BeloCat, naujų namų kvapo, 6 l (2,5 kg), 2 mm granulės",
+   "341000-dp": "20 vnt. baltų jaučio ausų",
+   "708001-dp": "20 vnt. baltų kiaulės knyslių",
+   "AL201": "Skanėstai šunims - BBQ Mini šonkauliukai, 300 g, 20 vnt.",
+   "SKU#166495848324217021": "Žaislas šuniui - Kaulas 19 cm",
+   "HM-8142": "Saldžiosios bulvės, apvyniotos antiena, 500 g, natūralūs skanėstai šunims, Hau&amp;Miau",
+   "SKU#168080607522828511": "Žaislas gyvūnui - Riedantis kamuolys su skylute, 12 cm",
+   "640372-P": "Kilimėlis prie kačių tualeto Aladdin",
+   "PET01O702701": "Real Dog Sensitive 15kg pašaras suaugusiems šunims su ėriena ir ryžiais",
+   "024262": "Konservai šunims Super Beno Grain Free (ėriena ir vištos kepenėlės), 415 g",
+   "640181-K": "Žaislas katei - Laiminga katė, Happy Cat Georplast"
+  },
+  "upd_dabar": [
+   {
+    "id": "11999",
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1"
+   },
+   {
+    "id": "12000",
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1"
+   },
+   {
+    "id": "12001",
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1"
+   },
+   {
+    "id": "12002",
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1"
+   },
+   {
+    "id": "12003",
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1"
+   }
+  ],
+  "upd_nauji": [
+   {
+    "id": 12003,
+    "statusas": "Užsakymas išsiųstas"
+   },
+   {
+    "id": 12002,
+    "statusas": "Užsakymas išsiųstas"
+   },
+   {
+    "id": 12001,
+    "statusas": "Užsakymas išsiųstas"
+   },
+   {
+    "id": 12000,
+    "statusas": "Užsakymas išsiųstas"
+   },
+   {
+    "id": 11999,
+    "statusas": "Užsakymas išsiųstas"
+   }
+  ],
+  "ping": 200
+ }
+}
