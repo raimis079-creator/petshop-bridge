@@ -1,0 +1,99 @@
+{
+ "v": "dep-214713",
+ "kurimas": 200,
+ "sid": 5213,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "I": {
+  "v": "S1643 I",
+  "temp_istrinta": 1,
+  "ps_ist_uzsakymai": {
+   "n": 10076,
+   "stulpeliai": "id,data,email,vardas,pavarde,tel,imone,siuntimas,miestas,apmokejimas,suma_be,suma,statusas,ivykdytas",
+   "datos_stulp": "data",
+   "min": "2023-11-20 12:35:03",
+   "max": "2026-08-30 08:13:26"
+  },
+  "ps_ist_eilutes": {
+   "n": 24338,
+   "stulpeliai": "id,uzsakymo_id,modelis,pavadinimas,variantas,kiekis,kaina,suma,wc_product_id,susiejimas"
+  },
+  "ps_ist_fakt_uzsakymai": {
+   "n": 9528,
+   "stulpeliai": "uzsakymas_id,sukurta_at,apmoketa_at,statusas_galutinis,statusas_at,klientas_id,klientas_email_hash,klientas_naujas,klientas_uzsakymo_nr,dienos_nuo_ankstesnio,prekiu_suma_ct,nuolaidu_ct,kuponu_kodai,tasku_panaudota_ct",
+   "datos_stulp": "diena",
+   "min": "2023-11-20",
+   "max": "2026-08-30"
+  },
+  "ps_ist_fakt_eilutes": {
+   "n": 23174,
+   "stulpeliai": "id,uzsakymas_id,eilutes_id,apmoketa_at,preke_id,variacija_id,sku,gtin,pavadinimas_tuo_metu,kategorija_id_giliausia,kategoriju_kelias,brendas_slug,gyvunas,pa_uzsaldymas",
+   "datos_stulp": "diena",
+   "min": "2023-11-20",
+   "max": "2026-08-30"
+  },
+  "ps_v_analize_uzsakymai": {
+   "n": 9528,
+   "stulpeliai": "uzsakymas_id,sukurta_at,apmoketa_at,statusas_galutinis,statusas_at,klientas_id,klientas_email_hash,klientas_naujas,klientas_uzsakymo_nr,dienos_nuo_ankstesnio,prekiu_suma_ct,nuolaidu_ct,kuponu_kodai,tasku_panaudota_ct",
+   "datos_stulp": "diena",
+   "min": "2023-11-20",
+   "max": "2026-08-30"
+  },
+  "ps_v_analize_eilutes": {
+   "n": 23174,
+   "stulpeliai": "id,uzsakymas_id,eilutes_id,apmoketa_at,preke_id,variacija_id,sku,gtin,pavadinimas_tuo_metu,kategorija_id_giliausia,kategoriju_kelias,brendas_slug,gyvunas,pa_uzsaldymas",
+   "datos_stulp": "diena",
+   "min": "2023-11-20",
+   "max": "2026-08-30"
+  },
+  "ps_fakt_uzsakymai": {
+   "n": 3,
+   "stulpeliai": "uzsakymas_id,sukurta_at,apmoketa_at,statusas_galutinis,statusas_at,klientas_id,klientas_email_hash,klientas_naujas,klientas_uzsakymo_nr,dienos_nuo_ankstesnio,prekiu_suma_ct,nuolaidu_ct,kuponu_kodai,tasku_panaudota_ct",
+   "datos_stulp": "diena",
+   "min": "2026-09-08",
+   "max": "2026-09-08"
+  },
+  "ps_fakt_eilutes": {
+   "n": 4,
+   "stulpeliai": "id,uzsakymas_id,eilutes_id,apmoketa_at,preke_id,variacija_id,sku,gtin,pavadinimas_tuo_metu,kategorija_id_giliausia,kategoriju_kelias,brendas_slug,gyvunas,pa_uzsaldymas",
+   "datos_stulp": "diena",
+   "min": "2026-09-08",
+   "max": "2026-09-08"
+  },
+  "ps_kl_suvestine": {
+   "n": 5701,
+   "stulpeliai": "user_id,email,vardas,banga,sutikimas,sutikimo_data,sutikimo_saltinis,suppression,ist_n,ist_suma,wc_n,wc_suma,uzsakymai,suma",
+   "datos_stulp": "sutikimo_data",
+   "min": "2026-08-31 07:34:04",
+   "max": "2026-08-31 15:35:28"
+  },
+  "ps_dim_klientai": {
+   "n": 5431,
+   "stulpeliai": "raktas,klientas_id,pirmas_pirkimas_at,paskutinis_pirkimas_at,uzsakymu_sk,pajamos_ct,marza_ct,kontribucija_ct,ltv_90_ct,ltv_180_ct,ltv_365_ct,vid_intervalas_d,kohorta,rfm_r"
+  },
+  "ps_fakt_atsargos_d": {
+   "n": 5321,
+   "stulpeliai": "id,data,preke_id,sandelis,likutis_av,likutis_tiekejo,rezervuota,savikaina_vnt_ct,savikainos_saltinis,verte_ct,pardavimai_vnt_7d,pardavimai_vnt_30d,dienu_atsargu,stockout",
+   "datos_stulp": "data",
+   "min": "2026-09-07",
+   "max": "2026-09-08"
+  },
+  "ps_ataskaitu_dienos": {
+   "n": 104,
+   "stulpeliai": "id,diena,aplinka,sritis,deze_id,preke_id,dydis,skirtukas,irenginys,tipas,kiekis,sesiju,suma_ct,sav_ct",
+   "datos_stulp": "diena",
+   "min": "2026-09-05",
+   "max": "2026-09-07"
+  },
+  "ps_fakt_kainos": {
+   "n": 1420,
+   "stulpeliai": "id,preke_id,nuo_at,diena,kaina_ct,reguliari_ct,savikaina_ct,akcijoje,saltinis,vartotojas_id,testinis,saltinis_aplinka",
+   "datos_stulp": "diena",
+   "min": "2026-08-26",
+   "max": "2026-09-08"
+  },
+  "ping": 200
+ }
+}
