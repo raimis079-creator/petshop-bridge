@@ -1,0 +1,96 @@
+{
+ "v": "dep-222816",
+ "kurimas": 200,
+ "sid": 5221,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1645",
+  "wcdn_opts": [
+   {
+    "option_name": "wcdn_invoice_number_counter",
+    "option_value": "388"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter_year",
+    "option_value": "a:1:{i:2026;i:1;}"
+   }
+  ],
+  "serijos": {
+   "petshop-darbalaukis.php": [
+    "ai klientas moka — ne automatiškai; GET `kvitas` → `kvitas_vykdyti`): PPK sava eilė nuo 101 (`petshop_ppk_counter`), meta `_petshop_ppk_number/_date/_suma/_kas/_pdf`, PDF temos base.php v2.12 `$template='receipt'` (UAB Avesa, mokėtojas, suma skaičiais ir žodž",
+    "ilės: Surinkti → Paruošta; „Redaguoti“ atsiėmimui nėra; Sąskaitų lange kvito data iš `_petshop_ppk_date`; filtras „Pristatymas“ + „Atsiėmimas AV / kita“; v3.35.1: „Klientas atsiėmė“ — WC „įvykdytas“ laiškas (temos tema „išsiųs",
+    "d_items` faktui, WC riba `get_remaining_refund_amount` — klaida su paaiškinimu), KR numeris iš `petshop_kravpn_counter` (KITAS, kaip AVPN; T-0 → 101) į refund",
+    " *   meta `_petshop_kravpn_number/_date`, PDF per temos base.php (`$template='creditnote'`, `$order['id']`=refund; Dompdf kaip `petshop_generate_invoice_pdf`) → `uploads/wcdn/credit",
+    " *   (`_petshop_kravpn_pdf`), 3,99 € — `grazinimo_mokestis_sukurti` (paslaugos prekė „Siuntos grąžinimo išlaidos“, `ps_grazinimo_preke`; svečio užsakymas su `_ps_",
+    "); (2) langas `view=saskaitos` (`saskaitos()`): visi dokumentai iš meta per HPOS SQL UNION (AVPN `_petshop_avpn_number`"
+   ],
+   "petshop-desk.php": [
+    "\t\t\t'saskaita'=> $o->get_meta( '_petshop_avpn_number' ) ? $o->get_meta( '_petshop_avpn_number' ) : $o->get_meta( '_wcdn_invoice_number' ),"
+   ]
+  },
+  "serijos_opts": [
+   {
+    "option_name": "petshop_avpn_counter",
+    "option_value": "366"
+   },
+   {
+    "option_name": "petshop_iapv_counter",
+    "option_value": "172"
+   },
+   {
+    "option_name": "petshop_kravpn_counter",
+    "option_value": "107"
+   },
+   {
+    "option_name": "petshop_ppk_counter",
+    "option_value": "104"
+   }
+  ],
+  "bak_opts": [
+   "ps_akcijos_bak_20260810_184840",
+   "ps_bak_brevo_34525",
+   "ps_bak_brevo_34526",
+   "ps_bak_mobile_sidebar_20260801",
+   "ps_footer_widget5_bak_20260801",
+   "ps_home_cta_bak_20260801",
+   "ps_juodr_bak_20260811_084157",
+   "ps_katalogas_v28_bak",
+   "ps_katalogas_v29_bak",
+   "ps_katalogas_v30_bak",
+   "ps_katalogas_v31_bak",
+   "ps_katalogas_v32_bak",
+   "ps_katalogas_v33_bak",
+   "ps_katalogas_v34_bak",
+   "ps_katalogas_v35_bak",
+   "ps_katalogas_v36_bak",
+   "ps_katalogas_v37_bak",
+   "ps_katalogas_v38_bak",
+   "ps_katalogas_v39_bak",
+   "ps_katalogas_v40_bak",
+   "ps_prist_bak_14894_20260829",
+   "ps_prist_bak_14894_sakinys_20260829",
+   "ps_prist_bak_3228_20260829",
+   "ps_prist_bak_3230_20260829",
+   "ps_prist_bak_3232_20260829",
+   "ps_prist_bak_3233_20260829",
+   "ps_prist_bak_3234_20260829",
+   "ps_prist_bak_34595_20260829",
+   "ps_prist_bak_title_3233",
+   "ps_quattro_savikainu_bak_20260817",
+   "ps_rink_cumulative_bak_0814",
+   "ps_s1635_email_bak",
+   "ps_s1637_bak",
+   "ps_sandelio_norm_bak_20260817",
+   "ps_savikainos_bak_20260817",
+   "ps_shipments_naslaiciai_bak_20260829_082044",
+   "ps_wpai1_bak_20260810",
+   "ps_wpforms_settings_bak_20260801"
+  ],
+  "laisku_archyvas": 0,
+  "dev_pastas_log": "nera_lenteles",
+  "dev_url_opts": 11
+ }
+}
