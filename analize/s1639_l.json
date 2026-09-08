@@ -1,0 +1,29 @@
+{
+ "v": "dep-065917",
+ "kurimas": 200,
+ "sid": 5127,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1639l",
+  "fail": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-desk.php",
+  "kodas": "\tprotected static function vezejas( $order ) {\n\t\t$m = mb_strtoupper( (string) $order->get_shipping_method() );\n\t\t$lp = ( false !== mb_strpos( $m, 'UNISEND' ) || false !== mb_strpos( $m, 'LP ' ) || false !== mb_strpos( $m, 'LIETUVOS PAŠT' ) );\n\t\t$pastomatas = ( false !== mb_strpos( $m, 'PAŠTOMAT' ) || false !== mb_strpos( $m, 'ATSIĖMIM' ) || false !== mb_strpos( $m, 'PICKUP' ) );\n\t\tif ( $lp ) { return 'lp'; }\n\t\tif ( false !== mb_strpos( $m, 'VENIPAK' ) ) { return $pastomatas ? 'venipak_pastomatas' : 'venipak_kurjeris'; }\n\t\treturn 'kita';\n\t}\n",
+  "metodai": [
+   "shopup_venipak_shipping_pickup_method:9 VENIPAK paštomatai/atsiėmimo punktai",
+   "shopup_venipak_shipping_courier_method:10 VENIPAK Kurjeris",
+   "woo_lithuaniapost_lpexpress_terminal:13 LP Express",
+   "free_shipping:1 Nemokamas pristatymas",
+   "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris",
+   "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai",
+   "shopup_venipak_shipping_courier_method:6 VENIPAK Kurjeris",
+   "shopup_venipak_shipping_courier_method:7 VENIPAK Kurjeris",
+   "shopup_venipak_shipping_courier_method:8 VENIPAK Kurjeris",
+   "woo_lithuaniapost_lpexpress_terminal:12 LP Express",
+   "woo_lithuaniapost_lpexpress_terminal:15 LP Express kurjeris",
+   "local_pickup:16 Atsiėmimas AV — Liucionių g. 46, Liucionys",
+   "shopup_venipak_shipping_pickup_method:5 VENIPAK paštomatai/atsiėmimo punktai"
+  ]
+ }
+}
