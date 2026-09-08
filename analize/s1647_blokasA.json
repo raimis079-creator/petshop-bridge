@@ -1,0 +1,31 @@
+{
+ "v": "dep-223900",
+ "kurimas": 200,
+ "sid": 5223,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1647",
+  "skaitikliai": {
+   "petshop_avpn_counter": "366->11000",
+   "petshop_kravpn_counter": "107->101",
+   "petshop_iapv_counter": "172->101",
+   "petshop_ppk_counter": "104->101"
+  },
+  "paysera_raktai": [
+   "enabled"
+  ],
+  "blog_public": 1,
+  "force_ssl": "yes",
+  "wpconfig": "R194 pasalinta (403 B)",
+  "trinta": {
+   "perkelti-r186.php": "OK",
+   "petshop-dev-veidrodis.php": "OK",
+   "petshop-dev-pastas.php": "OK"
+  },
+  "sc_dev": 0,
+  "cache": "flush"
+ }
+}
