@@ -1,0 +1,149 @@
+{
+ "v": "dep-215231",
+ "kurimas": 200,
+ "sid": 5214,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "M": {
+  "v": "S1643 M",
+  "temp_istrinta": 1,
+  "ist_max_id": 12003,
+  "ist_min_id": 1364,
+  "ist_paskutiniai": [
+   {
+    "id": "12003",
+    "data": "2026-08-30 08:13:26",
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1",
+    "suma": "223.97",
+    "eiluciu": "1"
+   },
+   {
+    "id": "12002",
+    "data": "2026-08-30 07:20:31",
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1",
+    "suma": "11.78",
+    "eiluciu": "1"
+   },
+   {
+    "id": "12001",
+    "data": "2026-08-29 18:27:42",
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1",
+    "suma": "19.15",
+    "eiluciu": "1"
+   },
+   {
+    "id": "12000",
+    "data": "2026-08-29 16:38:54",
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1",
+    "suma": "31.38",
+    "eiluciu": "2"
+   },
+   {
+    "id": "11999",
+    "data": "2026-08-29 09:28:38",
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1",
+    "suma": "50.62",
+    "eiluciu": "2"
+   },
+   {
+    "id": "11998",
+    "data": "2026-08-28 18:54:38",
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1",
+    "suma": "33.40",
+    "eiluciu": "1"
+   },
+   {
+    "id": "11997",
+    "data": "2026-08-28 18:46:26",
+    "statusas": "Atšauktas",
+    "ivykdytas": "0",
+    "suma": "33.40",
+    "eiluciu": "1"
+   },
+   {
+    "id": "11996",
+    "data": "2026-08-28 10:16:31",
+    "statusas": "Užsakymas išsiųstas",
+    "ivykdytas": "1",
+    "suma": "23.75",
+    "eiluciu": "1"
+   }
+  ],
+  "ist_virs_11990": 13,
+  "ist_uzs_stulpeliai": [
+   "id",
+   "data",
+   "email",
+   "vardas",
+   "pavarde",
+   "tel",
+   "imone",
+   "siuntimas",
+   "miestas",
+   "apmokejimas",
+   "suma_be",
+   "suma",
+   "statusas",
+   "ivykdytas",
+   "saskaita",
+   "eiluciu"
+  ],
+  "ist_eil_stulpeliai": [
+   "id",
+   "uzsakymo_id",
+   "modelis",
+   "pavadinimas",
+   "variantas",
+   "kiekis",
+   "kaina",
+   "suma",
+   "wc_product_id",
+   "susiejimas"
+  ],
+  "fakt_uzs_max": "900012003",
+  "fakt_uzs_pvz": [
+   {
+    "uzsakymas_id": "900012003",
+    "sukurta_at": "2026-08-30 08:13:26",
+    "statusas_galutinis": "Mokėjimas gautas"
+   },
+   {
+    "uzsakymas_id": "900012002",
+    "sukurta_at": "2026-08-30 07:20:31",
+    "statusas_galutinis": "Mokėjimas gautas"
+   },
+   {
+    "uzsakymas_id": "900012001",
+    "sukurta_at": "2026-08-29 18:27:42",
+    "statusas_galutinis": "Mokėjimas gautas"
+   },
+   {
+    "uzsakymas_id": "900012000",
+    "sukurta_at": "2026-08-29 16:38:54",
+    "statusas_galutinis": "Mokėjimas gautas"
+   },
+   {
+    "uzsakymas_id": "900011999",
+    "sukurta_at": "2026-08-29 09:28:38",
+    "statusas_galutinis": "Mokėjimas gautas"
+   }
+  ],
+  "analize_max": "900012003",
+  "v_analize_tipas": "VIEW",
+  "ist_fakt_tipas": "BASE TABLE",
+  "kodo_failai": [
+   "MU/petshop-klientai.php",
+   "MU/petshop-ataskaita-klientai.php",
+   "MU/petshop-istorijos-adapteris.php"
+  ],
+  "ping": 200
+ }
+}
