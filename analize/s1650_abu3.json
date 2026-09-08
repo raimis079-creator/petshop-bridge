@@ -1,50 +1,52 @@
 {
- "v": "dep-230235",
+ "v": "dep-230905",
  "kurimas": 200,
- "sid": 5227,
+ "sid": 5228,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "P": {
+ "GO": {
   "v": "S1650",
-  "host": "petshop.lt",
-  "https": 1,
   "siteurl": "https://petshop.lt",
-  "feed": {
-   "kaina24": 6059923,
-   "kainos": 5566758,
-   "google": 5034078
+  "host": "petshop.lt",
+  "fetch": {
+   "robots": "cURL error 60: SSL certificate OpenSSL verify result: certificate has expired (10)",
+   "rest": "cURL error 60: SSL certificate OpenSSL verify result: certificate has expired (10)",
+   "rest2": "cURL error 60: SSL certificate OpenSSL verify result: certificate has expired (10)",
+   "feed_k24": "cURL error 60: SSL certificate OpenSSL verify result: certificate has expired (10)"
   },
+  "ord35868": "pending 1.00",
   "shots": [
    {
     "n": "t0_titulinis",
-    "u": "https://petshop.lt/"
+    "u": "https://petshop.lt/",
+    "full": 1
    },
    {
     "n": "t0_preke",
-    "u": "https://petshop.lt/?p=22763"
+    "u": "https://petshop.lt/product/josidog-beef-in-sauce-konservai-sunims-jautiena-padaze-415g/"
    },
    {
-    "n": "t0_paymt",
+    "n": "t0_paypage",
     "u": "https://petshop.lt/kasa/order-pay/35868/?pay_for_order=true&key=wc_order_jhEMy1YBoScj1"
    }
   ]
  },
  "shots": {
   "t0_titulinis": {
-   "status": 201,
+   "status": 200,
    "url": "https://petshop.lt/",
    "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
    "errors": []
   },
   "t0_preke": {
-   "status": 201,
+   "status": 200,
    "url": "https://petshop.lt/product/josidog-beef-in-sauce-konservai-sunims-jautiena-padaze-415g/",
    "title": "JosiDog Beef in Sauce konservai šunims, jautiena padaže, 415g - Petshop.lt",
    "errors": []
   },
-  "t0_paymt": {
+  "t0_paypage": {
    "status": 201,
    "url": "https://petshop.lt/kasa/order-pay/35868/?pay_for_order=true&key=wc_order_jhEMy1YBoScj1",
    "title": "Apmokėjimas - Petshop.lt",
