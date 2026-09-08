@@ -1,0 +1,82 @@
+{
+ "v": "dep-182203",
+ "kurimas": 200,
+ "sid": 5188,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1643",
+  "dabar": "2026-09-08 18:23:25",
+  "tz": "UTC",
+  "busena": {
+   ".ps-backup-state.json": {
+    "mtime": "2026-09-08 01:00:15",
+    "val": {
+     "last_result": "OK",
+     "last_run": "2026-09-08T01:00:15+00:00",
+     "file": "petshop-backups/2026/09/petshop-2026-09-08_010001.tar.gz.enc",
+     "bytes": 36306422,
+     "sha1": "7cd79c7bac0d1f5f5b8bc0159d8feab27a1e3c12",
+     "tables": 231,
+     "rows": 844016,
+     "code_files": 556,
+     "duration_s": 14.4
+    }
+   },
+   ".ps-watch-state.json": {
+    "mtime": "2026-09-08 07:00:01",
+    "val": {
+     "last_check": "2026-09-08T07:00:01+00:00",
+     "verdict": "OK",
+     "problems": [],
+     "backup": {
+      "last_run": "2026-09-08T01:00:15+00:00",
+      "result": "OK",
+      "age_h": 6
+     }
+    }
+   }
+  },
+  "katalogas": [
+   {
+    "f": ".b2creds.php",
+    "dydis": 391,
+    "mtime": "2026-08-04 07:00"
+   },
+   {
+    "f": ".ps-backup-state.json",
+    "dydis": 316,
+    "mtime": "2026-09-08 01:00"
+   },
+   {
+    "f": ".ps-watch-state.json",
+    "dydis": 205,
+    "mtime": "2026-09-08 07:00"
+   },
+   {
+    "f": "ps-backup-watch.php",
+    "dydis": 4426,
+    "mtime": "2026-08-04 08:08"
+   },
+   {
+    "f": "ps-backup.php",
+    "dydis": 19237,
+    "mtime": "2026-08-24 17:27"
+   },
+   {
+    "f": "ps-backup.php.bak_20260804-064640",
+    "dydis": 18392,
+    "mtime": "2026-08-04 06:46"
+   },
+   {
+    "f": "ps-backup.php.bak_h256",
+    "dydis": 19239,
+    "mtime": "2026-08-24 17:27"
+   }
+  ],
+  "home": "https://dev.avesa.lt",
+  "php": "8.3.33"
+ }
+}
