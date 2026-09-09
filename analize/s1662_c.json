@@ -1,0 +1,70 @@
+{
+ "v": "dep-121534",
+ "kurimas": 200,
+ "sid": 5325,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1662C",
+  "uzs": [
+   {
+    "id": "35868",
+    "status": "wc-completed",
+    "tot": "1.00000000",
+    "paid": "2026-09-08 23:30:57",
+    "avpn": "AVPN011000"
+   },
+   {
+    "id": "35871",
+    "status": "wc-cancelled",
+    "tot": "56.99000000",
+    "paid": null,
+    "avpn": "AVPN011001"
+   },
+   {
+    "id": "35872",
+    "status": "wc-processing",
+    "tot": "11.02000000",
+    "paid": "2026-09-09 06:56:00",
+    "avpn": "AVPN011002"
+   },
+   {
+    "id": "35873",
+    "status": "wc-on-hold",
+    "tot": "13.31000000",
+    "paid": null,
+    "avpn": "AVPN011003"
+   },
+   {
+    "id": "35874",
+    "status": "wc-cancelled",
+    "tot": "13.31000000",
+    "paid": null,
+    "avpn": "AVPN011004"
+   },
+   {
+    "id": "35875",
+    "status": "wc-cancelled",
+    "tot": "13.31000000",
+    "paid": null,
+    "avpn": "AVPN011005"
+   },
+   {
+    "id": "35876",
+    "status": "wc-pending",
+    "tot": "6.15000000",
+    "paid": null,
+    "avpn": "AVPN011006"
+   }
+  ],
+  "db_klaida": "",
+  "kodas": [
+   "/themes/flatsome-child/functions.php:233 //   update_option('petshop_avpn_counter', 101)",
+   "/themes/flatsome-child/functions.php:240 $counter = (int) get_option( 'petshop_avpn_counter', 101 );",
+   "/themes/flatsome-child/functions.php:242 update_option( 'petshop_avpn_counter', $counter + 1 );",
+   "/themes/flatsome-child/functions.php:244 $order->update_meta_data( '_petshop_avpn_number', $number );"
+  ]
+ }
+}
