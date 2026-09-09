@@ -1,0 +1,77 @@
+{
+ "v": "dep-070726",
+ "kurimas": 200,
+ "sid": 5257,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1668R",
+  "wp": "2026-09-09 10:08:36",
+  "pluginas": {
+   "complianz-gdpr/complianz-gpdr.php": [
+    "7.5.3.1",
+    "aktyvus"
+   ]
+  },
+  "klases": [
+   "COMPLIANZ",
+   "cmplz_document",
+   "CMPLZ_COOKIE",
+   "CMPLZ_SERVICE",
+   "cmplz_proof_of_consent",
+   "CMPLZ_COOKIEBANNER",
+   "cmplz_banner_loader",
+   "cmplz_company",
+   "cmplz_DNSMPD",
+   "cmplz_config",
+   "cmplz_cookie_blocker",
+   "cmplz_wsc",
+   "cmplz_wsc_api",
+   "cmplz_wsc_scanner",
+   "cmplz_wsc_logger",
+   "cmplz_wsc_auth",
+   "cmplz_mailer"
+  ],
+  "metodai": {
+   "COMPLIANZ": [
+    "run"
+   ],
+   "cmplz_banner_loader": [
+    "detect_conflicts",
+    "add_asyncdefer_attribute",
+    "get_last_cookie_scan_date",
+    "get_last_cookie_sync_date"
+   ],
+   "cmplz_wsc_api": [
+    "wsc_scan_enable_webhook_api",
+    "wsc_scan_webhook_checks_callback",
+    "wsc_scan_webhook_callback",
+    "wsc_scan_validate_request",
+    "validate_scan_hmac",
+    "validate_scan_hmac_if_set",
+    "validate_scan_headers"
+   ],
+   "cmplz_wsc_scanner": [
+    "wsc_scan_enabled",
+    "wsc_scan_start",
+    "wsc_scan_process",
+    "wsc_scan_store_cookies",
+    "wsc_scan_reset",
+    "wsc_scan_completed",
+    "wsc_scan_progress",
+    "wsc_complete_cookie_scan",
+    "wsc_scan_retrieve_scan",
+    "wsc_scan_init",
+    "wsc_scan_forced",
+    "wsc_scan_process_checks",
+    "wsc_checks_retrieve_detections"
+   ],
+   "cmplz_wsc_auth": [
+    "maybe_sync_wsc_site_id"
+   ]
+  },
+  "FATAL": "Call to undefined method COMPLIANZ::instance() @21"
+ }
+}
