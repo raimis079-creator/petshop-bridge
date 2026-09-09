@@ -1,0 +1,43 @@
+{
+ "v": "dep-094633",
+ "kurimas": 200,
+ "sid": 5293,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1684DEP",
+  "faze": "A",
+  "wp": "2026-09-09 12:47:39",
+  "pries": {
+   "dydis": 501779,
+   "md5": "236f5659f4016a51e1b53cea3d9e0e1d"
+  },
+  "sintakse": "OK",
+  "bak": "petshop-katalogas.php-v879-BACKUP-20260909-094739",
+  "irasyta_baitu": 509511,
+  "po": {
+   "dydis": 509511,
+   "md5": "d8a4d3377f614555d78314d9a08d6274",
+   "metodai_yra": true
+  },
+  "heartbeat": 200
+ },
+ "B": {
+  "v": "S1684DEP",
+  "faze": "B",
+  "wp": "2026-09-09 12:47:47",
+  "failas": {
+   "dydis": 509511,
+   "md5": "d8a4d3377f614555d78314d9a08d6274"
+  },
+  "metodai": {
+   "ajax_partija": true,
+   "ajax_partija_nauja": true
+  },
+  "ajax_metodu": 23,
+  "svetaine": 200,
+  "adminas": 302
+ }
+}
