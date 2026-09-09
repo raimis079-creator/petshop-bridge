@@ -1,0 +1,148 @@
+{
+ "v": "dep-100824",
+ "kurimas": 200,
+ "sid": 5300,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1685c",
+  "wp": "2026-09-09 13:10:04",
+  "bandymai": {
+   "09:30:49": {
+    "zingsniai": [
+     "#1 Place Order flow initiated",
+     "#2 Session updated with checkout data and totals calculated"
+    ],
+    "paskutinis": "#2 Session updated with checkout data and totals calculated",
+    "klaidos": [],
+    "dydis": 1446
+   },
+   "09:31:40": {
+    "zingsniai": [
+     "#1 Place Order flow initiated",
+     "#2 Session updated with checkout data and totals calculated"
+    ],
+    "paskutinis": "#2 Session updated with checkout data and totals calculated",
+    "klaidos": [],
+    "dydis": 1446
+   },
+   "09:32:18": {
+    "zingsniai": [
+     "#1 Place Order flow initiated",
+     "#2 Session updated with checkout data and totals calculated",
+     "#3 "
+    ],
+    "paskutinis": "#3 ",
+    "klaidos": [],
+    "dydis": 2992
+   },
+   "09:38:27": {
+    "zingsniai": [
+     "#1 Place Order flow initiated",
+     "#2 Session updated with checkout data and totals calculated",
+     "#3 "
+    ],
+    "paskutinis": "#3 ",
+    "klaidos": [],
+    "dydis": 2989
+   },
+   "09:38:42": {
+    "zingsniai": [
+     "#1 Place Order flow initiated",
+     "#2 Session updated with checkout data and totals calculated",
+     "#3 "
+    ],
+    "paskutinis": "#3 ",
+    "klaidos": [],
+    "dydis": 2989
+   },
+   "09:42:16": {
+    "zingsniai": [
+     "#1 Place Order flow initiated",
+     "#2 Session updated with checkout data and totals calculated",
+     "#3 "
+    ],
+    "paskutinis": "#3 ",
+    "klaidos": [],
+    "dydis": 2992
+   },
+   "09:49:16": {
+    "zingsniai": [
+     "#1 Place Order flow initiated",
+     "#2 Session updated with checkout data and totals calculated"
+    ],
+    "paskutinis": "#2 Session updated with checkout data and totals calculated",
+    "klaidos": [
+     "\"last_error\":{\"type\":2,\"message\":\"Attempt to read property \\\"errors\\\" on array\",\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php\",\"line\":414}"
+    ],
+    "dydis": 1677
+   },
+   "09:49:42": {
+    "zingsniai": [
+     "#1 Place Order flow initiated",
+     "#2 Session updated with checkout data and totals calculated",
+     "#3 "
+    ],
+    "paskutinis": "#3 ",
+    "klaidos": [],
+    "dydis": 2992
+   },
+   "09:56:46": {
+    "zingsniai": [
+     "#1 Place Order flow initiated",
+     "#2 Session updated with checkout data and totals calculated",
+     "#3 "
+    ],
+    "paskutinis": "#3 ",
+    "klaidos": [],
+    "dydis": 2992
+   }
+  },
+  "lp_414": [
+   "        foreach ($error_messages as $error_message) {\r\n",
+   "            wc_add_notice(__('Please fill correct shipping data: ' . $error_message, 'woo-lithuaniapost'), 'error');\r\n",
+   "        }\r\n",
+   "    }\r\n",
+   "\r\n",
+   "    private function collect_validation_error_response_messages($response_body)\r\n",
+   "    {\r\n",
+   "        $errors = [];\r\n",
+   "        if ($response_body && $response_body->errors && is_array($response_body->errors)) {\r\n",
+   "            foreach ($response_body->errors as $error_response) {\r\n",
+   "                $error_message = $this->to_error_message($error_response);\r\n",
+   "                if ($error_message) {\r\n",
+   "                    $errors[] = $error_message;\r\n",
+   "                }\r\n",
+   "            }\r\n",
+   "        } else if (isset($response_body->error)) {\r\n",
+   "            $error_message = $this->to_error_message($response_body->error);\r\n",
+   "            if ($error_message) {\r\n",
+   "                $errors[] = $error_message;\r\n",
+   "            }\r\n"
+  ],
+  "lp_versija": null,
+  "zonos": {
+   "Neringos savivaldybe": [
+    "shopup_venipak_shipping_pickup_method#9 ON",
+    "shopup_venipak_shipping_courier_method#10 ON",
+    "woo_lithuaniapost_lpexpress_terminal#13 ON"
+   ],
+   "Lietuva": [
+    "free_shipping#1 off",
+    "shopup_venipak_shipping_courier_method#2 ON",
+    "shopup_venipak_shipping_pickup_method#3 ON",
+    "shopup_venipak_shipping_courier_method#6 ON",
+    "shopup_venipak_shipping_courier_method#7 ON",
+    "shopup_venipak_shipping_courier_method#8 ON",
+    "woo_lithuaniapost_lpexpress_terminal#12 ON",
+    "woo_lithuaniapost_lpexpress_terminal#15 ON",
+    "local_pickup#16 off"
+   ],
+   "Baltijos šalys, be LIetuvos": [
+    "shopup_venipak_shipping_pickup_method#5 ON"
+   ]
+  }
+ }
+}
