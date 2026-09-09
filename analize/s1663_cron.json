@@ -1,0 +1,23 @@
+{
+ "v": "dep-002126",
+ "kurimas": 200,
+ "sid": 5243,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "C": {
+  "v": "S1663",
+  "dabar": "00:22:34",
+  "tempas_host": "https://petshop.lt",
+  "tempas_pask": {
+   "laikas": "2026-09-09 03:08:47",
+   "import_id": 3,
+   "veiksmas": "processing",
+   "hostas": "https://petshop.lt",
+   "sek": 27.6,
+   "atsakymas": "{\"status\":200,\"message\":\"Import #3 complete\"}"
+  },
+  "backup_state": "nera failo (iki 04:00 norma)"
+ }
+}
