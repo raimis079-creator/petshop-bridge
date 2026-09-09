@@ -1,0 +1,30 @@
+{
+ "v": "dep-140502",
+ "kurimas": 200,
+ "sid": 5350,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1665 j",
+  "atsakas": "200 {\"ok\":true,\"processed\":1,\"results\":[{\"type\":\"bounces\\/new\",\"email\":\"s1665-test@petshop.lt\",\"result\":{\"ok\":true,\"customer_id\":0}}]}",
+  "zurnale": 1,
+  "pask": {
+   "t": "2026-09-09 17:06:13",
+   "topic_get": "bounces/new",
+   "headers": {
+    "x-sender-signature": "58ea28d13f1be4c9f73703aef790e5f56e18f04cac58a0991bf8ce9cd65a62f1",
+    "user-agent": "WordPress/6.9.4; https://petshop.lt",
+    "content-type": "application/json"
+   },
+   "body": "{\"data\":{\"email\":\"s1665-test@petshop.lt\"}}"
+  },
+  "suppr": {
+   "channel": "transactional",
+   "reason": "bounce",
+   "source": "sender_webhook"
+  },
+  "isvalyta": 2
+ }
+}
