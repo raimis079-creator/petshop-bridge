@@ -1,0 +1,55 @@
+{
+ "v": "dep-110626",
+ "kurimas": 200,
+ "sid": 5313,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1661K",
+  "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-welcome-modal.php",
+  "eilute": 32,
+  "snip": [
+   {
+    "id": "5304",
+    "name": "TEMP PS dep-103146",
+    "active": "0",
+    "c": "\n/** Plugin Name: TEMP PS S1688 kliento paskyra */\nadd_action('init', function()"
+   },
+   {
+    "id": "5305",
+    "name": "TEMP PS dep-103707",
+    "active": "0",
+    "c": "\n/** Plugin Name: TEMP PS S1689 veiksmai */\nadd_action('init', function(){\n  $f="
+   },
+   {
+    "id": "5307",
+    "name": "TEMP PS dep-103905",
+    "active": "0",
+    "c": "\n/** Plugin Name: TEMP PS S1689 patikra */\nadd_action('init', function(){\n  if(("
+   },
+   {
+    "id": "5309",
+    "name": "TEMP PS dep-105211",
+    "active": "0",
+    "c": "\n/** Plugin Name: TEMP PS S1661 hipotezes patikra (modalas + likuciai) */\nadd_ac"
+   },
+   {
+    "id": "5312",
+    "name": "TEMP PS dep-110424",
+    "active": "0",
+    "c": "\n/** Plugin Name: TEMP PS S1661 modalo deploy (D/V) */\nadd_action('init', functi"
+   },
+   {
+    "id": "5313",
+    "name": "TEMP PS dep-110626",
+    "active": "1",
+    "c": "\n/** Plugin Name: TEMP PS S1661 kur klase */\nadd_action('init', function(){\n  if"
+   }
+  ],
+  "md5": "b7bcf6af97626216823332ecfe6db4be",
+  "dydis": 8842,
+  "versija": "v1.3"
+ }
+}
