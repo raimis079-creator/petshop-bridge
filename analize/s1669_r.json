@@ -1,0 +1,21 @@
+{
+ "v": "dep-071805",
+ "kurimas": 200,
+ "sid": 5261,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1669R",
+  "meniu": {
+   "settings/settings.php": [
+    "add_menu_page(",
+    "add_submenu_page(",
+    "add_submenu_page(",
+    "add_submenu_page("
+   ]
+  },
+  "FATAL": "Call to undefined function shell_exec() @13"
+ }
+}
