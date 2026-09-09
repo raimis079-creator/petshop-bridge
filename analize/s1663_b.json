@@ -1,0 +1,30 @@
+{
+ "v": "dep-122824",
+ "kurimas": 200,
+ "sid": 5329,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1663B",
+  "faze": "D",
+  "snip_id": 5330,
+  "counter": 999,
+  "heartbeat": 200
+ },
+ "T": {
+  "v": "S1663B",
+  "faze": "T",
+  "test_oid": 35879,
+  "test_nr": "999",
+  "senas_35872": "35872",
+  "counter_po": "1000"
+ },
+ "CL": {
+  "v": "S1663B",
+  "faze": "CL",
+  "istrinta": 35879,
+  "counter": "1000"
+ }
+}
