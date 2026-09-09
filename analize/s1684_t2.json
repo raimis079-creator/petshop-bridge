@@ -1,0 +1,156 @@
+{
+ "v": "dep-095113",
+ "kurimas": 200,
+ "sid": 5295,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "S1684T2",
+  "wp": "2026-09-09 12:52:18",
+  "testine": {
+   "partija": 4073,
+   "preke": 15746,
+   "pav": "Zolux Anah šepetys katėms",
+   "gauta": 6,
+   "liko": 6,
+   "sav": "4.8700",
+   "gal": "2027-09-30"
+  },
+  "testai": {
+   "1_data_bloga": {
+    "success": false,
+    "data": {
+     "zinute": "data turi būti formatu 2027-09-30"
+    }
+   },
+   "2_data_formatas": {
+    "success": false,
+    "data": {
+     "zinute": "data turi būti formatu 2027-09-30"
+    }
+   },
+   "3_likutis_per_didelis": {
+    "success": false,
+    "data": {
+     "zinute": "likutis negali viršyti gauto kiekio (6 vnt.) — didesniam kiekiui reikia naujos partijos"
+    }
+   },
+   "4_likutis_neskaicius": {
+    "success": false,
+    "data": {
+     "zinute": "likutis turi būti sveikas skaičius (0–999999)"
+    }
+   },
+   "5_savikaina_neigiama": {
+    "success": false,
+    "data": {
+     "zinute": "savikaina negali būti neigiama"
+    }
+   },
+   "6_svetimas_laukas": {
+    "success": false,
+    "data": {
+     "zinute": "šis laukas neredaguojamas"
+    }
+   },
+   "7_kita_preke": {
+    "success": false,
+    "data": {
+     "zinute": "partija priklauso kitai prekei"
+    }
+   },
+   "8_nera_partijos": {
+    "success": false,
+    "data": {
+     "zinute": "partija #99999999 nerasta"
+    }
+   },
+   "9_savikaina_kableliu": {
+    "success": true,
+    "data": {
+     "partija": 4073,
+     "laukas": "savikaina_eur",
+     "buvo": "4.8700",
+     "tapo": 9.99,
+     "partijose_viso": 6,
+     "prekes_likutis": 6,
+     "sutampa": true
+    }
+   },
+   "10_likutis_mazinam": {
+    "success": true,
+    "data": {
+     "partija": 4073,
+     "laukas": "kiekis_liko",
+     "buvo": "6",
+     "tapo": 5,
+     "partijose_viso": 5,
+     "prekes_likutis": 6,
+     "sutampa": false
+    }
+   },
+   "11_data_valom": {
+    "success": true,
+    "data": {
+     "partija": 4073,
+     "laukas": "geriausia_iki",
+     "buvo": "2027-09-30",
+     "tapo": "",
+     "partijose_viso": 5,
+     "prekes_likutis": 6,
+     "sutampa": false
+    }
+   }
+  },
+  "db_po_testu": {
+   "kiekis_liko": "5",
+   "savikaina_eur": "9.9900",
+   "geriausia_iki": null
+  },
+  "atstatyta": {
+   "kiekis_liko": "6",
+   "savikaina_eur": "4.8700",
+   "geriausia_iki": null
+  },
+  "zurnale": [
+   {
+    "laikas": "2026-09-08 15:48:17",
+    "laukas": "_cost_price",
+    "sena": "",
+    "nauja": "4.87",
+    "pastaba": "Savikaina"
+   },
+   {
+    "laikas": "2026-09-07 22:07:09",
+    "laukas": "_stock",
+    "sena": "0",
+    "nauja": "6",
+    "pastaba": "Likutis"
+   },
+   {
+    "laikas": "2026-09-07 21:00:36",
+    "laukas": "_stock",
+    "sena": "5",
+    "nauja": "6",
+    "pastaba": "Likutis"
+   },
+   {
+    "laikas": "2026-09-07 20:56:25",
+    "laukas": "_stock",
+    "sena": "6",
+    "nauja": "5",
+    "pastaba": "Likutis"
+   },
+   {
+    "laikas": "2026-09-06 20:36:53",
+    "laukas": "_stock",
+    "sena": "5",
+    "nauja": "6",
+    "pastaba": "Likutis"
+   }
+  ],
+  "svetaine": 200
+ }
+}
