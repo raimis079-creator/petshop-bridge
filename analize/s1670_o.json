@@ -1,0 +1,83 @@
+{
+ "v": "dep-072700",
+ "kurimas": 200,
+ "sid": 5265,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "O": {
+  "35871": {
+   "busena": "pending",
+   "suma": "56.99",
+   "mokejimas": "Mokėjimas internetu",
+   "sukurta": "08:49:01",
+   "apmoketa": null,
+   "klientas": "R. B.",
+   "vidinis": "TAIP (vidinis)",
+   "miestas": "",
+   "siuntimas": "VENIPAK paštomatai/atsiėmimo punktai",
+   "avpn": "AVPN011001",
+   "eiluciu": 1,
+   "prekes": [
+    "Exclusion Hypoallergenic mažų veislių šunų maistas x1"
+   ],
+   "pastabos": [
+    "08:49 Likutis sumažintas: Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg (249&rarr;",
+    "08:49 Paysera: Neapmokėto užsakymo būsena",
+    "08:49 Stock hold of 90 minutes applied to: - Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirnelia"
+   ]
+  },
+  "35872": {
+   "busena": "processing",
+   "suma": "11.02",
+   "mokejimas": "Mokėjimas internetu",
+   "sukurta": "09:54:44",
+   "apmoketa": "09:56:00",
+   "klientas": "A. S.",
+   "vidinis": "ne (isorinis)",
+   "miestas": "Vilnius",
+   "siuntimas": "VENIPAK paštomatai/atsiėmimo punktai",
+   "avpn": "AVPN011002",
+   "eiluciu": 1,
+   "prekes": [
+    "Sepija mineralas / skanėstas paukščiams, 20 cm, 1 vn x2"
+   ],
+   "pastabos": [
+    "09:56 Paysera: Naujo užsakymo kūrimo būsena",
+    "09:56 Email \"Užsakymas vykdomas\" sent.",
+    "09:56 Email \"Naujas užsakymas\" sent.",
+    "09:56 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+    "09:56 Surūšiuota pati: Sepija mineralas / skanėstas paukščiams, — Iš AV",
+    "09:56 Faktai irasyti: 1 eilutes · pajamos 6,33 EUR (be PVM, po nuolaidu) · PVM 1,91 EUR · marza 1,93 EUR · kontribucija (b",
+    "09:56 Partijos nurašytos: #16165 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #16165: Partijose trūksta 2 vnt. — likutis ir partijo",
+    "09:56 AV nurašymas: #16165 grynai AV 1 -> 0",
+    "09:56 Vykdymas: MAIN — AV 2 vnt (1 siunta(-os))",
+    "09:56 Paysera: Užsakymo būsena po apmokėjimo",
+    "09:54 Likutis sumažintas: Sepija mineralas / skanėstas paukščiams, 20 cm, 1 vnt. (3&rarr;1)",
+    "09:54 Paysera: Neapmokėto užsakymo būsena"
+   ]
+  },
+  "v": "S1670O",
+  "wp": "2026-09-09 10:28:12",
+  "viso_uzsakymu": [
+   {
+    "status": "wc-completed",
+    "k": "1"
+   },
+   {
+    "status": "wc-pending",
+    "k": "1"
+   },
+   {
+    "status": "wc-processing",
+    "k": "1"
+   }
+  ],
+  "skaitikliai": {
+   "avpn": "11003",
+   "iapv": "101"
+  },
+  "laiskai": "2026-09-09T05:49:16+00:00 INFO Email \"\" sent CONTEXT: {\"email_type\":\"\",\"status\":\"sent\",\"recipient\":\"guest\"}\n2026-09-09T06:54:44+00:00 INFO Email \"customer_new_account\" for user #5789 sent CONTEXT: {\"email_type\":\"customer_new_account\",\"status\":\"sent\",\"recipient\":\"anastasija.semcova\",\"user\":5789}\n2026-09-09T06:55:29+00:00 INFO Email \"\" sent CONTEXT: {\"email_type\":\"\",\"status\":\"sent\",\"recipient\":\"guest\"}\n2026-09-09T06:56:01+00:00 INFO Email \"new_order\" for order #35872 sent CONTEXT: {\"email_type\":\"new_order\",\"status\":\"sent\",\"recipient\":\"guest\",\"order\":35872}\n2026-09-09T06:56:01+00:00 INFO Email \"customer_processing_order\" for order #35872 sent CONTEXT: {\"email_type\":\"customer_processing_order\",\"status\":\"sent\",\"recipient\":\"anastasija.semcova\",\"order\":35872}\n"
+ }
+}
