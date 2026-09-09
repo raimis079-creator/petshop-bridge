@@ -1,0 +1,85 @@
+{
+ "v": "dep-093431",
+ "kurimas": 200,
+ "sid": 5290,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1684",
+  "wp": "2026-09-09 12:35:40",
+  "failas": {
+   "dydis": 501779,
+   "md5": "236f5659f4016a51e1b53cea3d9e0e1d",
+   "keista": "2026-09-08 17:16"
+  },
+  "suvestine": {
+   "OK": 0,
+   "TRUKSTA": 0
+  },
+  "kabliu_viso_faile": 23,
+  "js_partija": [
+   "masinis', array( __CLASS__, 'ajax_masinis' ) ); /* v4.5: atributai ir nuotraukos redaguojami VIETOJE — iki šiol kortelė išmesdavo į WooCommerce redagavimo puslapį. */ add_action( 'wp_ajax_ps_kat_atributas', array( __CLASS__, 'ajax_atributas' ) ); add_action( 'wp_ajax_ps_kat_nuotraukos', array( __CLASS__, 'ajax_nuotraukos' ) ); add_action( 'wp_ajax_ps_kat_pavadinimas', array( __CLASS__, 'ajax_pavadinimas' ) ); /* v5.2: publikavimo momentas fiksuojamas TADA, kai jis ivyksta. */ add_action( 'transition_post_status', array( __CLASS__, 'sekti_publikavima' ), 10, 3 ); add_action( 'wp_ajax_ps_kat_paleidimas', array( __CLASS__, 'ajax_paleidimas' ) ); add_action( 'wp_ajax_ps_kat_partija', array( __CLASS__, 'ajax_partija' ) ); /* v6.8: GPAIS pakuociu eilutes — pridejimas, keitimas, trynimas. */ add_action( 'wp_ajax_ps_kat_pakuote', array( __CLASS__, 'ajax_pakuote' ) ); /* v7.0: kategorijos — kortelėje, ne WooCommerce lange. */ add_action( 'wp_ajax_ps_kat_kategorijos', array( __CLASS__, 'ajax_kategorijos' ) ); /* v7.3: nauja partija su galiojimu — tiesiai kortelėje. */ add_action( 'wp_ajax_ps_kat_partija_nauja', array( __CLASS__, 'ajax_partija_nauja' ) ); /* v7.5: vienos eilutes atnaujinimas sarase po pakeitimo kortelėje. */ add_action( 'wp_ajax_ps_kat_eilute', array( __CLASS__, 'ajax_eilute' ) ); /* v8.0: tiekejo (ne XML) likutis — atskiras nuo AV. */ add_action( 'wp_ajax_ps_kat_tiekejo_likutis', array( __CLASS__, 'ajax_tiekejo_likutis' ) ); /* v8.3: busenos perjungimas kortelėje. */ add_action( 'wp_ajax_ps_kat_busena', ",
+   "publikavimo momentas fiksuojamas TADA, kai jis ivyksta. */ add_action( 'transition_post_status', array( __CLASS__, 'sekti_publikavima' ), 10, 3 ); add_action( 'wp_ajax_ps_kat_paleidimas', array( __CLASS__, 'ajax_paleidimas' ) ); add_action( 'wp_ajax_ps_kat_partija', array( __CLASS__, 'ajax_partija' ) ); /* v6.8: GPAIS pakuociu eilutes — pridejimas, keitimas, trynimas. */ add_action( 'wp_ajax_ps_kat_pakuote', array( __CLASS__, 'ajax_pakuote' ) ); /* v7.0: kategorijos — kortelėje, ne WooCommerce lange. */ add_action( 'wp_ajax_ps_kat_kategorijos', array( __CLASS__, 'ajax_kategorijos' ) ); /* v7.3: nauja partija su galiojimu — tiesiai kortelėje. */ add_action( 'wp_ajax_ps_kat_partija_nauja', array( __CLASS__, 'ajax_partija_nauja' ) ); /* v7.5: vienos eilutes atnaujinimas sarase po pakeitimo kortelėje. */ add_action( 'wp_ajax_ps_kat_eilute', array( __CLASS__, 'ajax_eilute' ) ); /* v8.0: tiekejo (ne XML) likutis — atskiras nuo AV. */ add_action( 'wp_ajax_ps_kat_tiekejo_likutis', array( __CLASS__, 'ajax_tiekejo_likutis' ) ); /* v8.3: busenos perjungimas kortelėje. */ add_action( 'wp_ajax_ps_kat_busena', array( __CLASS__, 'ajax_busena' ) ); /* Pakeitus prekę bet kur — WooCommerce, importe, kitur — katalogo kešas turi pasenti iškart, kitaip langas iki 5 min. rodytų senus skaičius. */ add_action( 'woocommerce_update_product', array( __CLASS__, 'kesas_lauk' ), 99 ); add_action( 'woocommerce_new_product', array( __CLASS__, 'kesas_lauk' ), 99 ); add_action( 'trashed_post', array( __CLASS__, 'kesas_lauk' ), 99 ); add_acti",
+   "eturn \"laukas\"; }); } function juostaAtnaujinti(){ var j=document.getElementById(\"kort-saugoti\"); if(!j) return; var n=purvini().length; j.hidden = n===0; if(n){ j.querySelector(\".kiek b\").textContent=n; j.querySelector(\".ks-ka\").textContent=\"· \"+purviniVardai().join(\", \"); j.querySelector(\".ks-klaida\").textContent=\"\"; } } /* Vienas laukas — vienas iraso kelias. Juosta ir Enter daro TA PATI. */ function irasytiLauka(inp, done){ var v=inp.value.trim(); /* v5.5: partijos laukas turi savo kelia */ var pt=inp.closest(\".pt-red\"); if(pt){ var ptr=pt.closest(\"tr\"); var f3=new FormData(); f3.append(\"action\",\"ps_kat_partija\"); f3.append(\"nonce\",NONCE); f3.append(\"part\",ptr.dataset.part); f3.append(\"id\",ptr.dataset.id); f3.append(\"laukas\",pt.dataset.laukas); f3.append(\"reiksme\",v); fetch(AJAX,{method:\"POST\",body:f3,credentials:\"same-origin\"}) .then(function(r){return r.json();}) .then(function(d){ if(d&&d.success){ inp.dataset.buvo=v; inp.classList.remove(\"purvinas\"); done(true); } else { done(false,(d&&d.data)?(d.data.zinute||d.data):\"nepavyko\"); } }) .catch(function(){ done(false,\"ryšio klaida\"); }); return; } if(inp.classList.contains(\"kort-pav-in\")){ var blk=inp.closest(\".kort-pav-red\"); var f=new FormData(); f.append(\"action\",\"ps_kat_pavadinimas\"); f.append(\"nonce\",NONCE); f.append(\"id\",blk.dataset.id); f.append(\"tekstas\",v); fetch(AJAX,{method:\"POST\",body:f,credentials:\"same-origin\"}) .then("
+  ],
+  "js_pt_red": [
+   "d=\"' . (int) $pid . '\">'; echo '<td>#' . (int) $b['id'] . ' · ' . esc_html( mb_substr( (string) $b['gauta'], 0, 10 ) ) . ( $b['tiekejas'] !== '' ? '<div class=\"sml2\">' . esc_html( $b['tiekejas'] ) . '</div>' : '' ) . '</td>'; echo '<td class=\"n\">' . (int) $b['kiekis_gautas'] . '</td>'; /* Likutis redaguojamas: nurasymai ir inventorizacija. */ echo '<td class=\"n\"><span class=\"pt-red\" data-laukas=\"kiekis_liko\">' . '<input type=\"text\" value=\"' . $liko . '\" data-buvo=\"' . $liko . '\"></span></td>'; echo '<td class=\"n\"><span class=\"pt-red\" data-laukas=\"savikaina_eur\">' . '<input type=\"text\" value=\"' . number_format( (float) $b['savikaina_eur'], 2, '.', '' ) . '\" data-buvo=\"' . number_format( (float) $b['savikaina_eur'], 2, '.', '' ) . '\"></span> €'; if ( $b['valiuta'] !== 'EUR' && $b['savikaina_orig'] !== null ) { echo '<div class=\"sml2\">' . $eur( $b['savikaina_orig'] ) . ' ' . esc_html( $b['valiuta'] ) . ' · ' . number_format( (float) $b['kursas'], 2, ',', '' ) . '</div>'; } echo '</td>'; echo '<td><span class=\"pt-red ",
+   "class=\"sml2\">' . esc_html( $b['tiekejas'] ) . '</div>' : '' ) . '</td>'; echo '<td class=\"n\">' . (int) $b['kiekis_gautas'] . '</td>'; /* Likutis redaguojamas: nurasymai ir inventorizacija. */ echo '<td class=\"n\"><span class=\"pt-red\" data-laukas=\"kiekis_liko\">' . '<input type=\"text\" value=\"' . $liko . '\" data-buvo=\"' . $liko . '\"></span></td>'; echo '<td class=\"n\"><span class=\"pt-red\" data-laukas=\"savikaina_eur\">' . '<input type=\"text\" value=\"' . number_format( (float) $b['savikaina_eur'], 2, '.', '' ) . '\" data-buvo=\"' . number_format( (float) $b['savikaina_eur'], 2, '.', '' ) . '\"></span> €'; if ( $b['valiuta'] !== 'EUR' && $b['savikaina_orig'] !== null ) { echo '<div class=\"sml2\">' . $eur( $b['savikaina_orig'] ) . ' ' . esc_html( $b['valiuta'] ) . ' · ' . number_format( (float) $b['kursas'], 2, ',', '' ) . '</div>'; } echo '</td>'; echo '<td><span class=\"pt-red pt-data\" data-laukas=\"geriausia_iki\">' . '<input type=\"text\" class=\"ps-data\" placeholder=\"2027-09-30\" value=\"' . esc_attr( (string) $b['geriausia_iki'] ) . '\""
+  ],
+  "etalonas_av": "function ajax_av_irasyti() { if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); } check_ajax_referer( 'ps_kat', 'nonce' ); $priez = isset( $_POST['priezastis'] ) ? sanitize_key( $_POST['priezastis'] ) : ''; if ( ! isset( self::priezastys()[ $priez ] ) ) { wp_send_json_error( 'nenurodyta priežastis' ); } $raw = isset( $_POST['pakeitimai'] ) ? wp_unslash( $_POST['pakeitimai'] ) : ''; $sar = json_decode( $raw, true ); if ( ! is_array( $sar ) || ! $sar ) { wp_send_json_error( 'nėra ką išsaugoti' ); } if ( count( $sar ) > 500 ) { wp_send_json_error( 'per daug eilučių vienu kartu (riba 500)' ); } if ( ! self::uztikrinti_zurnala() ) { wp_send_json_error( 'nepavyko paruošti žurnalo' ); } /* 1) SKAIČIUOJAM — dar nieko nerašom */ $planas = array(); $klaidos = array(); foreach ( $sar as $e ) { $pid = isset( $e['id'] ) ? (int) $e['id'] : 0; $iv = isset( $e['ivestis'] ) ? trim( (string) $e['ivestis'] ) : ''; if ( ! $pid || get_post_type( $pid ) !== 'product' ) { $klaidos[] = array( 'id' => $pid, 'kl' => 'nėra prekės' ); continue; } if ( ! preg_match( '/^([+-]?)(\\d{1,6})$/', $iv, $m ) ) { $klaidos[] = array( 'id' => $pid, 'kl' => 'netinkama reikšmė: ' . $iv ); continue; } $buvo = self::av_dabar( $pid ); $sk = (int) $m[2]; if ( $m[1] === '+' ) { $tapo = (int) $buvo + $sk; } elseif ( $m[1] === '-' ) { $tapo = (int) $buvo - $sk; } else { $tapo = $sk; } $prasyta = $tapo; if ( $tapo < 0 ) { $tapo = 0; } /* neigiamo likučio nebūna */ $planas[] = array( 'pid' => $pid, 'laukas' => self::av_laukas( $pid ), 'buvo' => $buvo, 'tapo' => $tapo, 'prasyta' => $prasyta, 'pokytis' => $tapo - (int) $buvo, ); } if ( ! $planas ) { wp_send_json_error( array( 'zinute' => 'nėra galiojančių eilučių', 'klaidos' => $klaidos ) ); } /* 2) RAŠOM */ global $wpdb; $t = self::zurnalo_lentele(); $op = 'AV' . gmdate( 'ymdHis' ) . wp_rand( 10, 99 ); $now = current_time( 'mysql' ); $uid = get_current_user_id(); $ok = array(); /* v7.7: GAVIMAS KURIA PARTIJA. Likutis, atsiradęs be partijos, neturi nei galiojimo, nei savikainos — o FEFO nurasymas tokio nemato. */ $gal_iki = isset( $_POST['geriausia_iki'] ) ? trim( (string) wp_unslash( $_POST['geriausia_iki'] ) ) : ''; $sav_nauja = isset( $_POST['savikaina'] ) ? trim( (string) wp_unslash( $_POST['savikaina'] ) ) : ''; foreach ( $planas as &$p ) { $pokytis = (int) $p['pokytis']; if ( $priez === 'gavimas' && $pokytis > 0 && class_exists( 'Petshop_Part",
+  "partiju_klase": [
+   "lentele",
+   "pakuociu_lentele",
+   "uztikrinti_lenteles",
+   "av_preke",
+   "priimti",
+   "av_laukas",
+   "av_likutis",
+   "svertine_savikaina",
+   "paskutine_savikaina",
+   "perskaiciuoti_savikaina",
+   "nurasyti",
+   "partijos",
+   "artimiausias_galiojimas",
+   "santrauka",
+   "pakuotes",
+   "medziagos",
+   "tipai",
+   "trinti_pakuote",
+   "irasyti_pakuote",
+   "pakuociu_svoris",
+   "gpais_pagal_metus",
+   "kabinti_uzsakymus",
+   "uzsakymo_nurasymas",
+   "grazinti_i_partija",
+   "sutapimo_patikra",
+   "statistika"
+  ],
+  "ivykiai": [
+   "lentele",
+   "uztikrinti_lentele",
+   "stebimi",
+   "saltinis",
+   "kas",
+   "pradeti_operacija",
+   "baigti_operacija",
+   "irasyti",
+   "kabinti",
+   "pries_irasyma",
+   "meta_pakeista",
+   "meta_prideta",
+   "statusas_pakeistas",
+   "juosta",
+   "santrauka",
+   "perkelti_av_zurnala",
+   "valyti",
+   "statistika"
+  ],
+  "nonce": [
+   " skriptas() { $baze = esc_js( admin_url( 'admin.php?page=ps-katalogas' ) ); $ajax = esc_js( admin_url( 'admin-ajax.php' ) ); $nonce = esc_js( wp_create_nonce( 'ps_kat' ) ); echo '<script> (function(){ var AJAX=\"' . $ajax . '\", NONCE=\"' . $nonce . '\"; var laukai=[\"kruva\",\"view\",\"sand\",\"kat\",\"brand\",\"likutis\",\"marza\",\"tipas\",\"q\",\"sa",
+   "i * neveiktu naujam turiniui. */ private static function skriptas_v35() { $ajax = esc_js( admin_url( 'admin-ajax.php' ) ); $nonce = esc_js( wp_create_nonce( 'ps_kat' ) ); echo '<script>(function(){ var AJAX=\"' . $ajax . '\", NONCE=\"' . $nonce . '\"; function zenklas(el, tekstas, klaida){ var s=el.querySelector(\".stat\"); if("
+  ]
+ }
+}
