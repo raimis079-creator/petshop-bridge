@@ -1,0 +1,50 @@
+{
+ "v": "dep-134457",
+ "kurimas": 200,
+ "sid": 5342,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1665 b",
+  "failai": [
+   "/schemas/events/consent_changed.schema.json 1244B",
+   "/templates/emails/consent-changed.php 3655B",
+   "/includes/class-consent-sync.php 11075B",
+   "/includes/class-consent-log.php 5081B",
+   "/includes/class-email-suppression.php 13735B",
+   "/includes/class-email-suppression.php.bak_S315 13321B",
+   "/includes/class-email-suppression.php.bak_S314 13321B"
+  ],
+  "rest": [
+   "/complianz/v1/manage_consent_html",
+   "/complianz/v1/consent-area/(?P<post_id>([0-9]+))/(?P<block_id>([a-z0-9-_]+))",
+   "/petshop/v1/sender-webhook",
+   "/wc/v1/webhooks",
+   "/wc/v1/webhooks/(?P<id>[\\d]+)",
+   "/wc/v1/webhooks/batch",
+   "/wc/v1/webhooks/(?P<webhook_id>[\\d]+)/deliveries",
+   "/wc/v1/webhooks/(?P<webhook_id>[\\d]+)/deliveries/(?P<id>[\\d]+)",
+   "/wc/v2/webhooks",
+   "/wc/v2/webhooks/(?P<id>[\\d]+)",
+   "/wc/v2/webhooks/batch",
+   "/wc/v2/webhooks/(?P<webhook_id>[\\d]+)/deliveries",
+   "/wc/v2/webhooks/(?P<webhook_id>[\\d]+)/deliveries/(?P<id>[\\d]+)",
+   "/wc/v3/webhooks",
+   "/wc/v3/webhooks/(?P<id>[\\d]+)",
+   "/wc/v3/webhooks/batch",
+   "/wc/v3/paypal-webhooks",
+   "/wp/v2/block-types/(?P<namespace>[a-zA-Z0-9_-]+)",
+   "/wp/v2/block-types/(?P<namespace>[a-zA-Z0-9_-]+)/(?P<name>[a-zA-Z0-9_-]+)"
+  ],
+  "reg": [
+   "class-magic-login.php:68 register_rest_route( 'petshop/v1', '/magic-login/request', array(",
+   "class-pet-profile.php:159 register_rest_route( 'petshop/v1', '/pet-profile', array(",
+   "class-pet-profile.php:172 register_rest_route( 'petshop/v1', '/pet-profile/(?P<id>\\d+)', array(",
+   "class-pet-profile.php:185 register_rest_route( 'petshop/v1', '/food-search', array(",
+   "class-pet-profile.php:191 register_rest_route( 'petshop/v1', '/brands', array(",
+   "class-newsletter.php:121 register_rest_route( 'petshop/v1', '/newsletter-subscribe', array("
+  ]
+ }
+}
