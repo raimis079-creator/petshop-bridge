@@ -1,0 +1,68 @@
+{
+ "v": "dep-175553",
+ "kurimas": 200,
+ "sid": 5390,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1670 i",
+  "partijos": {
+   "17363": [],
+   "17662": [],
+   "18655": []
+  },
+  "suma": {
+   "17363": null,
+   "17662": null,
+   "18655": null
+  },
+  "likutis": {
+   "17363": {
+    "_stock": "3",
+    "own": "0"
+   },
+   "17662": {
+    "_stock": "80",
+    "own": "8"
+   },
+   "18655": {
+    "_stock": "236",
+    "own": ""
+   }
+  },
+  "else": [
+   "1151 \t\t\t} else {",
+   "1152 \t\t\t\t/* _own_stock_qty — mūsų laukas, WooCommerce jo nepažįsta */",
+   "1153 \t\t\t\tupdate_post_meta( $p['pid'], $p['laukas'], $p['tapo'] );",
+   "1154 \t\t\t}",
+   "1155 \t\t\t$wpdb->insert( $t, array(",
+   "1156 \t\t\t\t'operacija' => $op, 'product_id' => $p['pid'], 'laukas' => $p['laukas'],",
+   "1157 \t\t\t\t'buvo' => $p['buvo'] === null ? null : (string) $p['buvo'], 'tapo' => (string) $p['tapo'],",
+   "1158 \t\t\t\t'pokytis' => $p['pokytis'], 'priezastis' => $priez, 'user_id' => $uid, 'sukurta' => $now,",
+   "1159 \t\t\t) );",
+   "1160 \t\t\t/* v7.7: TAS PATS irasas i `Petshop_Ivykiai` — istorijos skirtukas",
+   "1161 \t\t\t   skaito TIK ji, o `ps_av_zurnalas` lieka atsaukimui. */",
+   "1162 \t\t\tif ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) {",
+   "1163 \t\t\t\ttry { Petshop_Ivykiai::irasyti( $p['pid'], 'likutis', array(",
+   "1164 \t\t\t\t\t'laukas'  => 'likutis',",
+   "1165 \t\t\t\t\t'buvo'    => $p['buvo'] === null ? '' : (string) $p['buvo'],",
+   "1166 \t\t\t\t\t'tapo'    => (string) $p['tapo'],",
+   "1167 \t\t\t\t\t'pastaba' => self::priezastys()[ $priez ] . ' · kortelėje'",
+   "1168 \t\t\t\t\t\t. ( ! empty( $p['partija'] ) ? ' · partija #' . (int) $p['partija'] : '' ),",
+   "1169 \t\t\t\t) ); }",
+   "1170 \t\t\t\tcatch ( Throwable $e ) { /* zurnalas neprivalo blokuoti */ }",
+   "1171 \t\t\t}",
+   "1172 \t\t\t$ok[] = array(",
+   "1173 \t\t\t\t'id' => $p['pid'], 'buvo' => $p['buvo'], 'tapo' => $p['tapo'],",
+   "1174 \t\t\t\t'partija' => isset( $p['partija'] ) ? (int) $p['partija'] : 0,",
+   "1175 \t\t\t\t/* sąžiningumas: jei prašyta −10, o buvo 1, pritaikyta tik −1 */",
+   "1176 \t\t\t\t'pastaba' => ( $p['prasyta'] !== $p['tapo'] )",
+   "1177 \t\t\t\t\t? sprintf( 'prašyta %d, pritaikyta %d (neigiamo likučio nebūna)', $p['prasyta'], $p['tapo'] ) : '',",
+   "1178 \t\t\t);",
+   "1179 \t\t}",
+   "1180 \t\tdelete_transient( 'ps_kat_duomenys' );"
+  ]
+ }
+}
