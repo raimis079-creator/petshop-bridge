@@ -1,0 +1,54 @@
+{
+ "v": "dep-191854",
+ "kurimas": 200,
+ "sid": 5408,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1674 c",
+  "a": [
+   "7900 \t\t\tfunction rengykleiIrasyti(t){",
+   "7901 \t\t\t\tvar ta=document.getElementById(REDAKTORIUS_ID);",
+   "7902 \t\t\t\tif(ta) ta.value=t;",
+   "7903 \t\t\t\tif(window.tinymce){ var ed=tinymce.get(REDAKTORIUS_ID); if(ed) ed.setContent(t); }",
+   "7904 \t\t\t}",
+   "7905 \t\t\t/* Kortele ikraunama AJAX metodu, todel laukiam, kol textarea atsiras. */",
+   "7906 \t\t\tvar stebetojas=new MutationObserver(function(){",
+   "7907 \t\t\t\tvar ta=document.getElementById(REDAKTORIUS_ID);",
+   "7908 \t\t\t\tif(ta && !ta.dataset.paleista){ ta.dataset.paleista=\"1\"; setTimeout(paleistiRengykle,120); }",
+   "7909 \t\t\t});",
+   "7910 \t\t\tstebetojas.observe(document.body,{childList:true,subtree:true});",
+   "7911 ",
+   "7912 \t\t\t/* Tekstas / HTML kodas perjungimas */",
+   "7913 \t\t\tdocument.addEventListener(\"click\", function(e){",
+   "7914 \t\t\t\tvar b=e.target;",
+   "7915 \t\t\t\tif(!b.classList || !b.classList.contains(\"ka-rez\")) return;",
+   "7916 \t\t\t\tvar kodas=b.classList.contains(\"ka-rez-kodas\");",
+   "7917 \t\t\t\tb.parentElement.querySelectorAll(\".ka-rez\").forEach(function(x){ x.classList.toggle(\"on\", x===b); });",
+   "7918 \t\t\t\tif(window.switchEditors){ switchEditors.go(REDAKTORIUS_ID, kodas ? \"html\" : \"tmce\"); }",
+   "7919 \t\t\t});",
+   "7920 ",
+   "7921 \t\t\t/* v6.9: GPAIS PAKUOCIU REDAKTORIUS.",
+   "7922 \t\t\t   Duomenys imami is `data-` atributu, o ne is `<script>` bloko —",
+   "7923 \t\t\t   kortele ikraunama per `innerHTML`, todel skriptai joje negyvi. */",
+   "7924 \t\t\t/* v7.0: LIKUTIS IR KATEGORIJOS KORTELEJE.",
+   "7925 \t\t\t   Paleidziama kartu su pakuotemis — is `atidaryk()`, nes kortele",
+   "7926 \t\t\t   ikraunama per `innerHTML` ir jos viduje esantys skriptai negyvi. */",
+   "7927 \t\t\twindow.korteleInit=function(){",
+   "7928 \t\t\t\t/* --- LIKUTIS --- */",
+   "7929 \t\t\t\tvar L=document.querySelector(\".kort-lik\");",
+   "7930 \t\t\t\tif(L && !L.dataset.paleista){",
+   "7931 \t\t\t\t\tL.dataset.paleista=\"1\";",
+   "7932 \t\t\t\t\tvar LID=parseInt(L.dataset.id,10);",
+   "7933 \t\t\t\t\tvar inp=L.querySelector(\".kort-lik-in\"), st=L.querySelector(\".kort-lik-stat\");",
+   "7934 \t\t\t\t\tvar priez=L.querySelector(\".kort-lik-priez\"), gav=L.querySelector(\".kort-lik-gav\");",
+   "7935 \t\t\t\t\t/* Gavimo laukai matomi tik tada, kai turi prasme: priezastis"
+  ],
+  "b": [
+   "7822 echo '<script>(function(){",
+   "7922 Duomenys imami is `data-` atributu, o ne is `<script>` bloko —"
+  ]
+ }
+}
