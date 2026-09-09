@@ -1,0 +1,92 @@
+{
+ "v": "dep-102027",
+ "kurimas": 200,
+ "sid": 5303,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1687",
+  "wp": "2026-09-09 13:21:46",
+  "kvietejai": [
+   " if (!$this->is_chosen_method_lp() || !is_checkout()) return; $shipping_plan = $this->get_chosen_method_settings_value('plan'); if ($shipping_plan == 'TERMINAL') { if (!$this->validate_selected_terminal($arg)) return; } $this->validate_parcel($arg); } private function str_contains($haystack, $needle) { if ('' === $needle) { return true; } return false !== strpos($haystack, $needle); } public function validate_api_shipping($order) { $lp_shipping_method = apply_filters('woo_lithuaniapost__order_action_get_lp_shipping_method', $order); if (!$lp_shipping_method) return; $validate_parcel_request = $this->create_parcel_validation_request($order); $error_callback = function ($response_body) { $error_messages = $this->collect_validation_error_response_messages($response_body); if (!empty($error_messages)) { $error_message = implode('<br>', $error_messages); throw new RouteException( 'woo_lithuaniapost_rest_invalid_shipping', sprintf( __('Please fill correct shipping data: (%s)', 'woo-lithuaniapost')",
+   "s_container['billing_email'] ?? $billing_address_container['email'] ?? null ], 'address' => [ 'terminalId' => $terminal_id, 'locality' => $shipping_address_container[$delivery_address_type . 'city'], 'address' => $address, 'address1' => $shipping_address_container[$delivery_address_type . 'address_1'], 'address2' => $shipping_address_container[$delivery_address_type . 'address_2'], 'postalCode' => $shipping_address_container[$delivery_address_type . 'postcode'], 'countryCode' => $country_code ], ]; } private function is_terminal_required($plan_code) { return $plan_code == 'TERMINAL'; } private function handle_validation_error_response($response_body) { $error_messages = $this->collect_validation_error_response_messages($response_body); foreach ($error_messages as $error_message) { wc_add_notice(__('Please fill correct shipping data: ' . $error_message, 'woo-lithuaniapost'), 'error'); } } private function collect_validation_error_response_messages($response_body) { $errors = []; if ($response_body && $resp",
+   " 'address' => $address, 'address1' => $shipping_address_container[$delivery_address_type . 'address_1'], 'address2' => $shipping_address_container[$delivery_address_type . 'address_2'], 'postalCode' => $shipping_address_container[$delivery_address_type . 'postcode'], 'countryCode' => $country_code ], ]; } private function is_terminal_required($plan_code) { return $plan_code == 'TERMINAL'; } private function handle_validation_error_response($response_body) { $error_messages = $this->collect_validation_error_response_messages($response_body); foreach ($error_messages as $error_message) { wc_add_notice(__('Please fill correct shipping data: ' . $error_message, 'woo-lithuaniapost'), 'error'); } } private function collect_validation_error_response_messages($response_body) { $errors = []; if ($response_body && $response_body->errors && is_array($response_body->errors)) { foreach ($response_body->errors as $error_response) { $error_message = $this->to_error_message($error_response); if ($error_message) { $errors[] = $er"
+  ],
+  "validate": [
+   "); ?> <input type=\"hidden\" id=\"<?php echo $element_value ?>\" class=\"woo_lithuaniapost_shipping_method_terminal\"/> <?php return ob_get_clean(); } public function validate_shipping($arg) { if (!$this->is_chosen_method_lp() || !is_checkout()) return; $shipping_plan = $this->get_chosen_method_settings_value('plan'); if ($shipping_plan == 'TERMINAL') { if (!$this->validate_selected_terminal($arg)) return; } $this->validate_parcel($arg); } private function str_contains($haystack, $needle) { if ('' === $needle) { return true; } return false !== strpos($haystack, $needle); } public function validate_api_shipping($order) { $lp_shipping_method = apply_filters('woo_lithuaniapost__order_action_get_lp_shipping_method', $order); if (!$lp_shipping_method) return; $validate_parcel_request = $this->create_parcel_validation_request($order); $error_callback = function ($response_body) ",
+   "private function str_contains($haystack, $needle) { if ('' === $needle) { return true; } return false !== strpos($haystack, $needle); } public function validate_api_shipping($order) { $lp_shipping_method = apply_filters('woo_lithuaniapost__order_action_get_lp_shipping_method', $order); if (!$lp_shipping_method) return; $validate_parcel_request = $this->create_parcel_validation_request($order); $error_callback = function ($response_body) { $error_messages = $this->collect_validation_error_response_messages($response_body); if (!empty($error_messages)) { $error_message = implode('<br>', $error_messages); throw new RouteException( 'woo_lithuaniapost_rest_invalid_shipping', sprintf( __('Please fill correct shipping data: (%s)', 'woo-lithuaniapost'), $error_message ), 400 ); ",
+   "on get_shipping_method() { return WC()->session->get('chosen_shipping_methods'); } /** * Custom terminal field validation * * @since 1.0.0 */ private function validate_selected_terminal($arg): bool { $selected_terminal_id = $this->get_selected_terminal_id(); if (empty ($selected_terminal_id)) { wc_add_notice(__('Please select parcel locker', 'woo-lithuaniapost'), 'error'); return false; } else { // Validate against random values global $wpdb; $request_terminal_id = sanitize_text_field($selected_terminal_id); // Check if selected terminal exists in DB $terminal = apply_filters('woo_lithuaniapost_terminal_service_get_terminal_by_id', $request_terminal_id); if (!$terminal) { wc_add_notice(__('Please select parcel locker', 'woo-lithuaniapost'), 'error'); return false; } } return true; } private function get_request_shipping_cou",
+   "g_address = $_POST['ship_to_different_address'] ?? null == true; $prefix = $use_shipping_address ? 'shipping' : 'billing'; return $_POST[$prefix . '_country']; } private function validate_parcel($arg): bool { $validation_option = Woo_Lithuaniapost_Admin_Settings::get_option('validate_shipping_before_checkout'); if ($validation_option == 'no') { return true; } $validate_parcel_request = $this->create_parcel_validation_request(null);//TODO resolve order $error_callback = function ($response_body) { return $this->handle_validation_error_response($response_body); }; return apply_filters('woo_lithuaniapost_api_is_parcel_valid', $validate_parcel_request, $error_callback); } public function get_order_weight($order): int { /** * Get WooCommerce weight unit */ $min_weight = apply_filters('woo_lithuaniapost_admin_util_get_min_weight', ''); $total_weight = 0; foreach ($order->get_items() as $item_"
+  ],
+  "versija": {
+   "woo-lithuaniapost.php": "4.0.32"
+  },
+  "updated_version": "4.0.32",
+  "nustatymai": {
+   "lpsettings_api_password": "(paslėpta, ilgis 13)",
+   "lpsettings_api_username": "terra@petshop.lt",
+   "lpsettings_dimension_height": "15",
+   "lpsettings_dimension_length": "30",
+   "lpsettings_dimension_width": "20",
+   "lpsettings_event_to_change_status_to_completed": "",
+   "lpsettings_event_to_send_tracking_email": "",
+   "lpsettings_other_label_format": "LAYOUT_10x15",
+   "lpsettings_other_label_orientation": "LANDSCAPE",
+   "lpsettings_pickup_apartment": "",
+   "lpsettings_pickup_building": "46",
+   "lpsettings_pickup_city": "Liucionys",
+   "lpsettings_pickup_company_name": "UAB Avesa",
+   "lpsettings_pickup_country": "LT",
+   "lpsettings_pickup_email": "terra@petshop.lt",
+   "lpsettings_pickup_name": "UAB Avesa",
+   "lpsettings_pickup_phone": "+37068187787",
+   "lpsettings_pickup_postcode": "15166",
+   "lpsettings_pickup_street": "Liucionių g.",
+   "lpsettings_sender_apartment": "",
+   "lpsettings_sender_building": "46",
+   "lpsettings_sender_city": "Liucionys",
+   "lpsettings_sender_company_name": "UAB Avesa",
+   "lpsettings_sender_country": "LT",
+   "lpsettings_sender_email": "terra@petshop.lt",
+   "lpsettings_sender_name": "UAB Avesa",
+   "lpsettings_sender_phone": "+37068187787",
+   "lpsettings_sender_postcode": "15166",
+   "lpsettings_sender_street": "Liucionių g.",
+   "lpsettings_use_pickup_address": "yes",
+   "lpsettings_validate_shipping_before_checkout": "yes",
+   "lpsettings_woo_lithuaniapost_address_pickup_id": "32742454",
+   "lpsettings_woo_lithuaniapost_updated_version": "4.0.32"
+  },
+  "terminalu_opcijos": [
+   {
+    "option_name": "woocommerce_woo_lithuaniapost_lpexpress_terminal_12_settings",
+    "l": "629"
+   },
+   {
+    "option_name": "woocommerce_woo_lithuaniapost_lpexpress_terminal_13_settings",
+    "l": "629"
+   },
+   {
+    "option_name": "woocommerce_woo_lithuaniapost_lpexpress_terminal_15_settings",
+    "l": "882"
+   }
+  ],
+  "lp_transientai": [
+   {
+    "option_name": "_transient_timeout__woocommerce_helper_product_usage_notice_rules",
+    "l": "10"
+   },
+   {
+    "option_name": "_transient__woocommerce_helper_product_usage_notice_rules",
+    "l": "1365"
+   }
+  ],
+  "logu_paminejimai": {
+   "place-order-debug-c8982cac-2026-09-09-32bfe5a5b11e422ee70da059593a8991.log": [
+    "dcc03d7a\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2,\"message\":\"Attempt to read property \\\"errors\\\" on array\",\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php\",\"line\":414},\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1"
+   ]
+  }
+ }
+}
