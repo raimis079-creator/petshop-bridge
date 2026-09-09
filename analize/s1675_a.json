@@ -1,0 +1,146 @@
+{
+ "v": "dep-201635",
+ "kurimas": 200,
+ "sid": 5410,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1675 a",
+  "stulpeliai": [
+   "id",
+   "event_id",
+   "event_name",
+   "email",
+   "payload_json",
+   "emitted_at",
+   "status",
+   "adapter_name",
+   "attempts",
+   "next_retry_at",
+   "last_error",
+   "esp_response"
+  ],
+  "pagal_bukle": [
+   {
+    "event_name": "cart_abandoned",
+    "status": "dead",
+    "n": "35"
+   },
+   {
+    "event_name": "order_paid",
+    "status": "sent",
+    "n": "6"
+   },
+   {
+    "event_name": "order_shipped",
+    "status": "sent",
+    "n": "4"
+   },
+   {
+    "event_name": "order_paid",
+    "status": "dead",
+    "n": "1"
+   },
+   {
+    "event_name": "cart_abandoned",
+    "status": "sent",
+    "n": "1"
+   },
+   {
+    "event_name": "order_shipped",
+    "status": "dead",
+    "n": "1"
+   }
+  ],
+  "paskutiniai": [
+   {
+    "id": "1203",
+    "event_id": "cart_abandoned_c_864a3fc1a2151c811c3e59217641d4c6",
+    "event_name": "cart_abandoned",
+    "email": "",
+    "payload_json": "{\"cart_id\":\"c_864a3fc1a2151c811c3e59217641d4c6\",\"cart_total\":13.4,\"cart_currency\":\"EUR\",\"cart_items\":[{\"product_id\":18341,\"variation_id\":0,\"quantity\":1,\"name\":\"Hikari  Cichlid Bio - Gold Plus Medium, 250 g\",\"price\":13.4}],\"last_activity_at\":\"2026-09-09T18:00:10+00:00\"}",
+    "emitted_at": "2026-09-09 20:00:47",
+    "status": "dead",
+    "adapter_name": "sender",
+    "attempts": "1",
+    "next_retry_at": null,
+    "last_error": "non_retriable: subscriber must contain at least one of: id, email, or phone",
+    "esp_response": "{\"errors\":{\"subscriber\":\"subscriber must contain at least one of: id, email, or phone\"},\"message\":\"subscriber must contain at least one of: id, email, or phone\",\"success\":false,\"type\":\"validation\"}"
+   },
+   {
+    "id": "1202",
+    "event_id": "cart_abandoned_c_6788c84e0bc2df4ebfcbf0cabb98f46d",
+    "event_name": "cart_abandoned",
+    "email": "",
+    "payload_json": "{\"cart_id\":\"c_6788c84e0bc2df4ebfcbf0cabb98f46d\",\"cart_total\":1.96,\"cart_currency\":\"EUR\",\"cart_items\":[{\"product_id\":16162,\"variation_id\":0,\"quantity\":1,\"name\":\"Sepija mineralas / skanėstas paukščiams, 15 cm, 1 vnt.\",\"price\":1.96}],\"last_activity_at\":\"2026-09-09T16:42:14+00:00\"}",
+    "emitted_at": "2026-09-09 18:44:55",
+    "status": "dead",
+    "adapter_name": "sender",
+    "attempts": "1",
+    "next_retry_at": null,
+    "last_error": "non_retriable: subscriber must contain at least one of: id, email, or phone",
+    "esp_response": "{\"errors\":{\"subscriber\":\"subscriber must contain at least one of: id, email, or phone\"},\"message\":\"subscriber must contain at least one of: id, email, or phone\",\"success\":false,\"type\":\"validation\"}"
+   },
+   {
+    "id": "1196",
+    "event_id": "cart_abandoned_c_023eadae6e6fed4e9df33043843fa46a",
+    "event_name": "cart_abandoned",
+    "email": "mjumasevas@gmail.com",
+    "payload_json": "{\"cart_id\":\"c_023eadae6e6fed4e9df33043843fa46a\",\"cart_total\":43.9,\"cart_currency\":\"EUR\",\"cart_items\":[{\"product_id\":18590,\"variation_id\":0,\"quantity\":2,\"name\":\"Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg\",\"price\":21.95}],\"last_activity_at\":\"2026-09-09T12:51:00+00:00\"}",
+    "emitted_at": "2026-09-09 14:55:04",
+    "status": "sent",
+    "adapter_name": "sender",
+    "attempts": "0",
+    "next_retry_at": null,
+    "last_error": null,
+    "esp_response": "{\"message\":\"Event created\",\"success\":true}"
+   },
+   {
+    "id": "1195",
+    "event_id": "cart_abandoned_c_dae0900cc84cef019a6e0f04552fb443",
+    "event_name": "cart_abandoned",
+    "email": "",
+    "payload_json": "{\"cart_id\":\"c_dae0900cc84cef019a6e0f04552fb443\",\"cart_total\":6.58,\"cart_currency\":\"EUR\",\"cart_items\":[{\"product_id\":15700,\"variation_id\":0,\"quantity\":1,\"name\":\"Šampūnas Jorkšyro terjerams, Super Beno York Professional, 250 ml\",\"price\":6.58}],\"last_activity_at\":\"2026-09-09T10:53:56+00:00\"}",
+    "emitted_at": "2026-09-09 12:54:43",
+    "status": "dead",
+    "adapter_name": "sender",
+    "attempts": "1",
+    "next_retry_at": null,
+    "last_error": "non_retriable: subscriber must contain at least one of: id, email, or phone",
+    "esp_response": "{\"errors\":{\"subscriber\":\"subscriber must contain at least one of: id, email, or phone\"},\"message\":\"subscriber must contain at least one of: id, email, or phone\",\"success\":false,\"type\":\"validation\"}"
+   },
+   {
+    "id": "1194",
+    "event_id": "cart_abandoned_c_3b7c2231c8efeebf36b9e875442d13f0",
+    "event_name": "cart_abandoned",
+    "email": "",
+    "payload_json": "{\"cart_id\":\"c_3b7c2231c8efeebf36b9e875442d13f0\",\"cart_total\":59.69,\"cart_currency\":\"EUR\",\"cart_items\":[{\"product_id\":18632,\"variation_id\":0,\"quantity\":1,\"name\":\"Džiovintos galvijų kepenys, 100 g\",\"price\":2.15},{\"product_id\":18128,\"variation_id\":0,\"quantity\":1,\"name\":\"Jaučio peniai pjaustyti, 15 cm, 10 vnt.\",\"price\":18.99},{\"product_id\":17386,\"variation_id\":0,\"quantity\":1,\"name\":\"Natūralios triušio ausys su kailiuku, 100 g\",\"price\":3.9},{\"product_id\":35126,\"variation_id\":0,\"quantity\":1,\"name\":\"Natūralūs skanėstai šunims - Elnio rago kramtukas, kietas, M\",\"price\":8.46},{\"product_id\":15864,\"variation_id\":0,\"quantity\":1,\"name\":\"Veršiuko koja, 1 vnt.\",\"price\":3.19},{\"product_id\":35098,\"variation_id\":0,\"quantity\":1,\"name\":\"20 vnt. rudų jaučio ausų\",\"price\":23}],\"last_activity_at\":\"2026-09-09T08:45:58+00:00\"}",
+    "emitted_at": "2026-09-09 10:49:49",
+    "status": "dead",
+    "adapter_name": "sender",
+    "attempts": "1",
+    "next_retry_at": null,
+    "last_error": "non_retriable: subscriber must contain at least one of: id, email, or phone",
+    "esp_response": "{\"errors\":{\"subscriber\":\"subscriber must contain at least one of: id, email, or phone\"},\"message\":\"subscriber must contain at least one of: id, email, or phone\",\"success\":false,\"type\":\"validation\"}"
+   },
+   {
+    "id": "1193",
+    "event_id": "cart_abandoned_c_24d51ddabfa8d3f2511a5ea5ad91239c",
+    "event_name": "cart_abandoned",
+    "email": "",
+    "payload_json": "{\"cart_id\":\"c_24d51ddabfa8d3f2511a5ea5ad91239c\",\"cart_total\":12.99,\"cart_currency\":\"EUR\",\"cart_items\":[{\"product_id\":35306,\"variation_id\":0,\"quantity\":1,\"name\":\"20 vnt. baltų kiaulės knyslių\",\"price\":12.99}],\"last_activity_at\":\"2026-09-09T08:40:03+00:00\"}",
+    "emitted_at": "2026-09-09 10:45:09",
+    "status": "dead",
+    "adapter_name": "sender",
+    "attempts": "1",
+    "next_retry_at": null,
+    "last_error": "non_retriable: subscriber must contain at least one of: id, email, or phone",
+    "esp_response": "{\"errors\":{\"subscriber\":\"subscriber must contain at least one of: id, email, or phone\"},\"message\":\"subscriber must contain at least one of: id, email, or phone\",\"success\":false,\"type\":\"validation\"}"
+   }
+  ],
+  "be_pasto": 35,
+  "be_pasto_siandien": 0
+ }
+}
