@@ -1,0 +1,72 @@
+{
+ "v": "dep-063700",
+ "kurimas": 200,
+ "sid": 5254,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1666",
+  "faze": "A",
+  "wp": "2026-09-09 09:38:06",
+  "buvo": null,
+  "issaugota": 5255,
+  "db_po": {
+   "id": "5255",
+   "name": "Prekes Tusciu atributu slepimas v1.0 (woocommerce_display_product_attributes)",
+   "active": "1",
+   "scope": "global",
+   "priority": "10",
+   "l": "1048"
+  },
+  "aktyviu_snippetu": 72
+ },
+ "B": {
+  "v": "S1666",
+  "faze": "B",
+  "wp": "2026-09-09 09:38:12",
+  "filtras_uzregistruotas": "taip",
+  "tikra": {
+   "junior": {
+    "id": 19780,
+    "url": "https://petshop.lt/product/ambrosia-junior-begrudis-su-sviezia-vistiena-ir-lasisa-sausas-maistas-dideliu-veisliu-jauniems-suniukams-fresh-chicken-salmon-2-kg/",
+    "kodas": 200,
+    "atributai": {
+     "Gyvūno rūšis": "Šunims",
+     "Amžius": "Jauniems",
+     "Baltymų šaltinis": "Lašiša, Vištiena",
+     "Pakuotės dydis": "2 kg",
+     "Be grūdų": "Be grūdų"
+    },
+    "tusciu": 0
+   },
+   "turkey": {
+    "id": 19715,
+    "url": "https://petshop.lt/product/ambrosia-begrudis-su-sviezia-kalakutiena-ir-antiena-sausas-maistas-sunims-fresh-turkey-duck-2kg/",
+    "kodas": 200,
+    "atributai": {
+     "Gyvūno rūšis": "Šunims",
+     "Baltymų šaltinis": "Antiena, Kalakutiena",
+     "Pakuotės dydis": "2 kg",
+     "Be grūdų": "Be grūdų"
+    },
+    "tusciu": 0
+   },
+   "kontrole_su_reiksme": {
+    "id": 12540,
+    "url": "https://petshop.lt/product/monge-spec-line-monoprotein-mini-adult-sausas-pasaras-mazu-veisliu-suaugusiems-sunims-su-eriena-ryziais-bulvemis-25kg/",
+    "kodas": 200,
+    "atributai": {
+     "Gyvūno rūšis": "Šunims",
+     "Amžius": "Suaugusiems",
+     "Baltymų šaltinis": "Ėriena",
+     "Monoprotein": "Taip",
+     "Pakuotės dydis": "2,5 kg",
+     "Be grūdų": "Su ryžiais"
+    },
+    "tusciu": 0
+   }
+  }
+ }
+}
