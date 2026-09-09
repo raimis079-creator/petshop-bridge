@@ -1,0 +1,167 @@
+{
+ "v": "dep-070917",
+ "kurimas": 200,
+ "sid": 5258,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1668R2",
+  "wp": "2026-09-09 10:10:23",
+  "opcijos": {
+   "cmplz_wsc_status": "pending",
+   "cmplz_wsc_signup_status": "pending",
+   "cmplz_wsc_onboarding_status": "{\"terms\":false,\"newsletter\":true,\"plugins\":false}",
+   "cmplz_wsc_email": "false",
+   "cmplz_wsc_signup_date": "1783671705",
+   "cmplz_wsc_site_id": "false",
+   "cmplz_wsc_scan_id": "false",
+   "cmplz_wsc_last_scan": "false",
+   "cmplz_wsc_token": "false",
+   "cmplz_detected_cookies": "false",
+   "cmplz_sync_cookies_complete": "false",
+   "cmplz_cookie_data_verified_date": "1783673208",
+   "cmplz_changed_cookies": "1",
+   "cmplz_generate_new_cookiepolicy_snapshot": "1788899291",
+   "cmplz_documents_update_date": "1783673460",
+   "cmplz_publish_date": "1783673460",
+   "cmplz_activation_time": "1783671622",
+   "cmplz_dismissed_warnings": "[\"upgraded_to_6\"]"
+  },
+  "wsc_visos": {
+   "cmplz_wsc_onboarding_status": "a:3:{s:5:\"terms\";b:0;s:10:\"newsletter\";b:1;s:7:\"plugins\";b:0;}",
+   "cmplz_wsc_signup_status": "pending",
+   "cmplz_wsc_status": "pending",
+   "cmplz_wsc_signup_date": "1783671705",
+   "cmplz_wsc_consent_consentdata": "{\"timestamp\":\"2026-07-10T08:21:41+00:00\",\"subject\":{\"id\":\"cmplz-aHR0cDovL2Rldi5hdmVzYS5sdA==#dGVycmFAcGV0c2hvcC5sdA==\",\"email\":\"terra@petshop.lt\"},\"preferences\":{\"wsc_consent\":true},\"legal_notices\":[{",
+   "cmplz_consent_wsc_consent": "O:8:\"stdClass\":3:{s:2:\"id\";s:36:\"1fa88d0b-c9ec-479f-bcd7-f47aa9f3538b\";s:10:\"subject_id\";s:59:\"cmplz-aHR0cDovL2Rldi5hdmVzYS5sdA==#dGVycmFAcGV0c2hvcC5sdA==\";s:9:\"timestamp\";s:25:\"2026-07-10T08:21:41+00",
+   "cmplz_transients": "a:3:{s:35:\"cmplz_shortcode_cookie-statement-eu\";a:2:{s:5:\"value\";s:5:\"34591\";s:7:\"expires\";i:1789498040;}s:45:\"cmplz_shortcode_privacy-statement-children-eu\";a:2:{s:5:\"value\";s:4:\"none\";s:7:\"expires\";"
+  },
+  "klase": {
+   "cmplz_wsc_scanner": {
+    "wsc_scan_enabled": "1 ()",
+    "wsc_scan_start": "1 ([url], [secret])",
+    "wsc_scan_request": "4 (token, body)",
+    "wsc_scan_process": "1 ()",
+    "wsc_scan_store_cookies": "1 (cookies)",
+    "wsc_scan_reset": "static 17 ()",
+    "wsc_scan_completed": "1 ()",
+    "wsc_scan_progress": "1 ()",
+    "wsc_scan_get_site_url": "4 ()",
+    "wsc_scan_get_status": "4 (scan_id, iteration, max_iterations)",
+    "wsc_complete_cookie_scan": "1 (scan, [webhook])",
+    "wsc_scan_retrieve_scan": "1 (scan_id)",
+    "wsc_scan_init": "1 ()",
+    "wsc_get_scanner_source": "4 ()",
+    "wsc_scan_run_checks": "4 ([retry], [carried_secret])",
+    "wsc_retry_checks_scan": "4 (retry, carried_secret, reason)",
+    "wsc_scan_forced": "1 ()",
+    "wsc_scan_process_checks": "1 (result)"
+   },
+   "cmplz_wsc": [],
+   "cmplz_wsc_auth": {
+    "send_auth_email": "static 17 (email)",
+    "confirm_email_auth": "1 ()",
+    "check_failed_newsletter_signup": "1 ()",
+    "wsc_is_authenticated": "static 17 ()",
+    "maybe_sync_wsc_site_id": "1 ()",
+    "schedule_create_wsc_site_id": "1 ()",
+    "wsc_create_site_id": "4 ()",
+    "retrieve_wsc_site_id": "static 17 ()"
+   },
+   "cmplz_wsc_api": {
+    "wsc_scan_enable_webhook_api": "1 ()",
+    "wsc_scan_webhook_checks_callback": "1 (request)",
+    "wsc_scan_webhook_callback": "1 (request)",
+    "wsc_scan_validate_request": "static 17 (request, type)",
+    "validate_scan_hmac": "static 17 (request, secret)",
+    "validate_scan_hmac_if_set": "static 17 (request, secret)",
+    "validate_scan_headers": "static 17 (request)"
+   }
+  },
+  "klase_props": {
+   "cmplz_wsc_scanner": [
+    "_this"
+   ],
+   "cmplz_wsc": [
+    "_this",
+    "onboarding",
+    "notices",
+    "settings",
+    "auth",
+    "logger"
+   ],
+   "cmplz_wsc_auth": [],
+   "cmplz_wsc_api": [
+    "_this"
+   ]
+  },
+  "COMPLIANZ_static": {
+   "instance": "COMPLIANZ",
+   "config": "cmplz_config",
+   "company": "cmplz_company",
+   "review": "NULL",
+   "admin": "NULL",
+   "scan": "NULL",
+   "sync": "NULL",
+   "wizard": "NULL",
+   "export_settings": "NULL",
+   "rsp_upgrade_to_pro": "NULL",
+   "banner_loader": "cmplz_banner_loader",
+   "document": "cmplz_document",
+   "cookie_blocker": "cmplz_cookie_blocker",
+   "progress": "NULL",
+   "DNSMPD": "cmplz_DNSMPD",
+   "admin_DNSMPD": "NULL",
+   "support": "NULL",
+   "proof_of_consent": "cmplz_proof_of_consent",
+   "documents_admin": "NULL",
+   "websitescan": "NULL",
+   "wsc_onboarding": "NULL",
+   "wsc_api": "cmplz_wsc_api",
+   "wsc_scanner": "cmplz_wsc_scanner"
+  },
+  "struktura_cookies": [
+   "ID",
+   "name",
+   "slug",
+   "sync",
+   "ignored",
+   "retention",
+   "type",
+   "serviceID",
+   "cookieFunction",
+   "collectedPersonalData",
+   "purpose",
+   "language",
+   "isTranslationFrom",
+   "isOwnDomainCookie",
+   "domain",
+   "deleted",
+   "isMembersOnly",
+   "showOnPolicy",
+   "lastUpdatedDate",
+   "lastAddDate",
+   "firstAddDate"
+  ],
+  "cookies": [],
+  "services": [],
+  "nustatymai": {
+   "cookie_scan": "",
+   "use_cdb_api": "yes",
+   "uses_thirdparty_services": "no",
+   "thirdparty_services_on_site": "",
+   "wsc_scan_post_types": "post,page",
+   "consent_per_service": "no",
+   "gtm_code": "",
+   "ua_code": "",
+   "aw_code": "",
+   "configuration_by_complianz": "yes",
+   "regions": "eu"
+  },
+  "locale": "lt_LT",
+  "kalbos": "nera fn",
+  "siteurl": "https://petshop.lt"
+ }
+}
