@@ -1,0 +1,59 @@
+{
+ "v": "dep-071327",
+ "kurimas": 200,
+ "sid": 5260,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1668X",
+  "faze": "A",
+  "bak": [
+   "cmplz_wsc_status",
+   "cmplz_wsc_signup_status",
+   "cmplz_wsc_signup_date",
+   "cmplz_wsc_onboarding_status",
+   "cmplz_wsc_consent_consentdata",
+   "cmplz_consent_wsc_consent"
+  ],
+  "pries": {
+   "status": "pending",
+   "signup": "pending",
+   "site_id": false
+  },
+  "reset": "cmplz_wsc_scanner::wsc_scan_reset() ivykdyta",
+  "po": {
+   "status": false,
+   "signup": false,
+   "site_id": false,
+   "onboarding": {
+    "terms": false,
+    "newsletter": true,
+    "plugins": false
+   }
+  },
+  "likusios_wsc": [
+   "cmplz_wsc_onboarding_status",
+   "ps_s1668_wsc_bak"
+  ]
+ },
+ "B": {
+  "v": "S1668X",
+  "faze": "B",
+  "busena": {
+   "status": false,
+   "signup": false,
+   "site_id": false,
+   "onboarding": {
+    "terms": false,
+    "newsletter": true,
+    "plugins": false
+   },
+   "autentifikuotas": "ne",
+   "scan_enabled": "metodas yra"
+  },
+  "bak_yra": "taip",
+  "svetaine_ok": 200
+ }
+}
