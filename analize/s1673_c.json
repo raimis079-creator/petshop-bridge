@@ -1,0 +1,44 @@
+{
+ "v": "dep-190346",
+ "kurimas": 200,
+ "sid": 5405,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "E": {
+  "v": "S1673 c",
+  "faze": "E",
+  "md5_pries": "bc12db88c54ae9569d36b9af274eb0a7",
+  "radiniai": 1,
+  "md5_po": "a229cb1f06566758bdea66c80b2e2ec3",
+  "taisyta": {
+   "17339": {
+    "buvo": "14",
+    "tapo": 3
+   },
+   "17354": {
+    "buvo": "12",
+    "tapo": 3
+   }
+  }
+ },
+ "T": {
+  "v": "S1673 c",
+  "faze": "T",
+  "nesutampa": [],
+  "pvz": {
+   "17339": {
+    "av": "3",
+    "partijos": 3,
+    "parduodama": 3
+   },
+   "17354": {
+    "av": "3",
+    "partijos": 3,
+    "parduodama": 3
+   }
+  },
+  "front": 200
+ }
+}
