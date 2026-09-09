@@ -1,0 +1,123 @@
+{
+ "v": "dep-184420",
+ "kurimas": 200,
+ "sid": 5400,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1672 e",
+  "snippetai": [
+   {
+    "id": "2384",
+    "name": "Petshop Sources v1.1 (ps_sources lentele + NULL)",
+    "active": "0",
+    "dydis": "15292"
+   },
+   {
+    "id": "2402",
+    "name": "Petshop Sources v2.0 (registras + gyvi skaiciai)",
+    "active": "0",
+    "dydis": "19505"
+   },
+   {
+    "id": "2404",
+    "name": "Petshop Sources v2.1 (registras + palaikymas)",
+    "active": "0",
+    "dydis": "30123"
+   },
+   {
+    "id": "2515",
+    "name": "Petshop Sources v2.3 (registras + palaikymas + sandelio pildymas + dvieju sandeliu eilutes)",
+    "active": "1",
+    "dydis": "39130"
+   },
+   {
+    "id": "5400",
+    "name": "TEMP PS dep-184420",
+    "active": "1",
+    "dydis": "967"
+   }
+  ],
+  "kodas": [
+   "2515:69     const AV = 'av';",
+   "2515:117     public static function suskaiciuoti($pid) {",
+   "2515:119         $own  = get_post_meta($pid, '_own_stock_qty', true);",
+   "2515:120         $stock= get_post_meta($pid, '_stock', true);",
+   "2515:394         $own   = get_post_meta($pid, '_own_stock_qty', true);",
+   "2515:395         $stock = get_post_meta($pid, '_stock', true);",
+   "2515:480             $own = get_post_meta($pid, '_own_stock_qty', true);",
+   "2515:720                         'own_stock'=>get_post_meta($pid,'_own_stock_qty',true),",
+   "5400:14       if(preg_match('/function suskaiciuoti|const AV|function eilutes|_own_stock_qty|_stock/',$l)){",
+   "5400:18     foreach($L as $n=>$l){ if(strpos($l,'function suskaiciuoti')!==false){"
+  ],
+  "suskaiciuoti": [
+   "117     public static function suskaiciuoti($pid) {",
+   "118         $sand = get_post_meta($pid, '_ps_sandelis', true);",
+   "119         $own  = get_post_meta($pid, '_own_stock_qty', true);",
+   "120         $stock= get_post_meta($pid, '_stock', true);",
+   "121         $out  = array();",
+   "122 ",
+   "123         // 1) AV šaltinis — kai sandėlis av ARBA turime savo likutį",
+   "124         $turi_av = ($sand === self::AV) || ($own !== '' && (int)$own > 0);",
+   "125         if ($turi_av) {",
+   "126             $qty = ($sand === self::AV)",
+   "127                  ? (($own !== '') ? (int)$own : (($stock !== '' && $stock !== null) ? (int)$stock : null))",
+   "128                  : (int)$own;",
+   "129             $out[] = array(",
+   "130                 'source'       => self::AV,",
+   "131                 'supplier_sku' => null,",
+   "132                 'ean'          => null,",
+   "133                 'stock_qty'    => $qty,",
+   "134                 'cost_net'     => self::sk(get_post_meta($pid,'_cost_price',true)),",
+   "135                 'synced_at'    => null,",
+   "136                 'is_active'    => 1,",
+   "137                 'is_sellable'  => 1,",
+   "138                 'priority'     => 1,   // AV visada pirma (TŽ 37.2 v1 taisyklė)",
+   "139             );",
+   "140         }",
+   "141 ",
+   "142         // 2) Tiekėjo šaltinis",
+   "143         if ($sand !== '' && $sand !== self::AV) {",
+   "144             $L = self::laukai($sand);",
+   "145             $qty = $L['qty'] ? get_post_meta($pid,$L['qty'],true) : '';",
+   "146             if ($qty === '') $qty = $stock;",
+   "147             $cost = $L['cost'] ? get_post_meta($pid,$L['cost'],true) : '';",
+   "148             if ($cost === '' || (float)$cost <= 0) $cost = get_post_meta($pid,'_cost_price',true);",
+   "149             $out[] = array(",
+   "150                 'source'       => $sand,",
+   "151                 'supplier_sku' => $L['sku'] ? (get_post_meta($pid,$L['sku'],true) ?: null) : null,",
+   "152                 'ean'          => $L['ean'] ? (get_post_meta($pid,$L['ean'],true) ?: null) : null,",
+   "153                 'stock_qty'    => ($qty === '' || $qty === null) ? null : (int)$qty,",
+   "154                 'cost_net'     => self::sk($cost),",
+   "155                 'synced_at'    => $L['sync'] ? (get_post_meta($pid,$L['sync'],true) ?: null) : null,",
+   "156                 'is_active'    => 1,",
+   "157                 'is_sellable'  => 1,",
+   "158                 'priority'     => 2,   // po AV",
+   "159             );",
+   "160         }",
+   "161 ",
+   "162         // 3) v2.3: kiti tiekėjai iš meta (dviejų sandėlių modelis)",
+   "163         if ( get_post_meta($pid, '_ps_shadow_of', true) === '' ) {",
+   "164             foreach ( self::tiekejai_is_meta($pid) as $src ) {",
+   "165                 if ( $src === $sand ) continue;",
+   "166                 $L = self::laukai($src);",
+   "167                 $qty  = get_post_meta($pid, $L['qty'], true);",
+   "168                 $cost = get_post_meta($pid, $L['cost'], true);",
+   "169                 $out[] = array(",
+   "170                     'source'       => $src,",
+   "171                     'supplier_sku' => get_post_meta($pid, $L['sku'], true) ?: null,",
+   "14       if(preg_match('/function suskaiciuoti|const AV|function eilutes|_own_stock_qty|_stock/',$l)){",
+   "15         $o['kodas'][]=$x['id'].':'.($n+1).' '.mb_substr(rtrim($l),0,190);",
+   "16       }",
+   "17     }",
+   "18     foreach($L as $n=>$l){ if(strpos($l,'function suskaiciuoti')!==false){",
+   "19       for($i=$n;$i<$n+55 && isset($L[$i]);$i++) $o['suskaiciuoti'][]=($i+1).' '.mb_substr(rtrim($L[$i]),0,190); break; } }",
+   "20   }",
+   "21   wp_send_json($o);",
+   "22 });",
+   "23 "
+  ]
+ }
+}
