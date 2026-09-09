@@ -1,0 +1,51 @@
+{
+ "v": "dep-173326",
+ "kurimas": 200,
+ "sid": 5380,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1669 d",
+  "xml": [
+   "964 \tpublic static function xml_sandelis( $pid ) {",
+   "965 \t\t$s = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
+   "966 \t\treturn in_array( $s, array( 'vf', 'zb' ), true );",
+   "967 \t}",
+   "968 ",
+   "969 \t/**",
+   "970 \t * AV likutis ivedamas ranka VISADA — tai musu lentyna, jos niekas",
+   "971 \t * neatsiuncia. Net VF/ZB prekes atveju: jei parsivezei ju prekiu i",
+   "972 \t * Avesos sandeli, tas kiekis yra tavo ir tu ji zinai.",
+   "973 \t */",
+   "974 \tpublic static function likutis_rankinis( $pid ) {",
+   "975 \t\treturn true;",
+   "976 \t}",
+   "977 ",
+   "978 \t/**",
+   "979 \t * Kur guli AVESOS (AV) likutis.",
+   "980 \t *",
+   "981 \t * v8.0 (savininko patikslinimas): Ambrosia, Prins, Quattro, Belacor yra"
+  ],
+  "naud": [
+   "192 *   `_ps_sandelis` = TIEKEJAS (is ko preke pirkta), o ne vieta.",
+   "605 *   Taip pat: `belacor` → `belcor_tofu` (tikroji `_ps_sandelis` reiksme),",
+   "814 * melavo: prekės turėjo ZB sandėlį, tik neturėjo `_ps_sandelis` lauko.",
+   "965 $s = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
+   "988 $sand = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
+   "995 $sand = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
+   "1084 'tiekejas'      => (string) get_post_meta( $p['pid'], '_ps_sandelis', true ),",
+   "1202 $sand = strtolower( trim( (string) get_post_meta( $pid, '_ps_sandelis', true ) ) );",
+   "2222 'pastaba' => strtoupper( (string) get_post_meta( $pid, '_ps_sandelis', true ) ) . ' · įvesta ranka kortelėje',",
+   "2772 'sand' => (string) get_post_meta( $pid, '_ps_sandelis', true ),",
+   "2967 'br' => '', 'sand' => (string) $mv( '_ps_sandelis' ),",
+   "3105 $sand_z   = strtoupper( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
+   "4731 'tiekejas'      => (string) get_post_meta( $pid, '_ps_sandelis', true ),",
+   "4866 * Butent ta akla zona leme, kad `_ps_sandelis` dingimo istorija (S718)",
+   "5054 if ( $sand === '' ) { $sand = (string) $mv( '_ps_sandelis' ); }",
+   "5327 '_ps_sandelis','_own_stock_qty','_stock','_cost_price',",
+   "5406 $sand  = $v( '_ps_sandelis' );"
+  ]
+ }
+}
