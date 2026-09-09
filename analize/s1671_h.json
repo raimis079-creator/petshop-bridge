@@ -1,0 +1,29 @@
+{
+ "v": "dep-073642",
+ "kurimas": 200,
+ "sid": 5269,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "H": {
+  "v": "S1671H",
+  "wp": "2026-09-09 10:37:46",
+  "titulinis": 200,
+  "slapukai": 200,
+  "onboarding": {
+   "terms": false,
+   "newsletter": true,
+   "plugins": true
+  },
+  "fatal_uodega": "2026-09-09T03:32:42+00:00 CRITICAL Allowed memory size of 268435456 bytes exhausted (tried to allocate 28672 bytes) CONTEXT: {\"error\":{\"type\":1,\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-all-import-pro/models/import/record.php\",\"line\":3699},\"remote-logging\":true,\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-woocommerce.php\",\"line\":511,\"function\":\"critical\",\"class\":\"WC_Logger\",\"type\":\"->\"},{\"function\":\"log_errors\",\"class\":\"WooCommerce\",\"type\":\"->\"}]}\n",
+  "fatal_dydis": 555,
+  "aktyvus_temp": [
+   {
+    "id": "5269",
+    "name": "TEMP PS dep-073642",
+    "active": "1"
+   }
+  ]
+ }
+}
