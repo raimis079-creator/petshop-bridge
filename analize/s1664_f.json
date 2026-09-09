@@ -1,0 +1,197 @@
+{
+ "v": "dep-061457",
+ "kurimas": 200,
+ "sid": 5247,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "F": {
+  "v": "S1664F",
+  "wp": "2026-09-09 09:16:05",
+  "carts_stulpeliai": [
+   "id",
+   "cart_id",
+   "session_key",
+   "user_id",
+   "email",
+   "email_source",
+   "last_cart_activity_at",
+   "cart_hash",
+   "snapshot_json",
+   "snapshot_version",
+   "status",
+   "status_changed_at",
+   "converted_order_id",
+   "created_at",
+   "updated_at"
+  ],
+  "carts_viso": "33",
+  "carts_paskutiniai": [
+   {
+    "id": "224",
+    "cart_id": "c_78aa64fa7d23c937a478f26d28456cb3",
+    "session_key": "t_8338b38fb8cc567e1faa94f50c46c8",
+    "user_id": null,
+    "email": null,
+    "email_source": null,
+    "last_cart_activity_at": "2026-09-09 05:49:24",
+    "cart_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4",
+    "snapshot_json": "[]",
+    "snapshot_version": "1",
+    "status": "converted",
+    "status_changed_at": "2026-09-09 05:49:01",
+    "converted_order_id": "35871",
+    "created_at": "2026-09-09 05:47:23",
+    "updated_at": "2026-09-09 05:49:24"
+   },
+   {
+    "id": "223",
+    "cart_id": "c_e5829712b6503fb1c8fc5f2324e33ea2",
+    "session_key": "t_da096fef8c63000b9b89313aad87dc",
+    "user_id": null,
+    "email": null,
+    "email_source": null,
+    "last_cart_activity_at": "2026-09-09 04:51:43",
+    "cart_hash": "063d7765feb34c71965c8c5aa89a28b3c927fd62",
+    "snapshot_json": "[{\"product_id\":18458,\"variation_id\":0,\"quantity\":1,\"variation\":[],\"item_data\":[]}]",
+    "snapshot_version": "1",
+    "status": "active",
+    "status_changed_at": "2026-09-09 04:51:43",
+    "converted_order_id": null,
+    "created_at": "2026-09-09 04:51:43",
+    "updated_at": "2026-09-09 04:51:43"
+   },
+   {
+    "id": "222",
+    "cart_id": "c_a75d936f581b4f564f8d731e90363f15",
+    "session_key": "t_2abcb4336fb670703bd911f164adc5",
+    "user_id": null,
+    "email": null,
+    "email_source": null,
+    "last_cart_activity_at": "2026-09-09 03:17:31",
+    "cart_hash": "f21684449532aca1e03dd461f18c9b202472d1ed",
+    "snapshot_json": "[{\"product_id\":16162,\"variation_id\":0,\"quantity\":1,\"variation\":[],\"item_data\":[]}]",
+    "snapshot_version": "1",
+    "status": "abandoned",
+    "status_changed_at": "2026-09-09 05:20:03",
+    "converted_order_id": null,
+    "created_at": "2026-09-09 03:17:31",
+    "updated_at": "2026-09-09 05:20:03"
+   },
+   {
+    "id": "221",
+    "cart_id": "c_daf31de908eb5f3a9ba8cc354aa7c7f3",
+    "session_key": "t_26d3f2352efddd9545ffeeb95b47e9",
+    "user_id": null,
+    "email": null,
+    "email_source": null,
+    "last_cart_activity_at": "2026-09-09 00:34:16",
+    "cart_hash": "d214e91d39fc29b0fa023bca2c59c1d317fa917b",
+    "snapshot_json": "[{\"product_id\":19760,\"variation_id\":0,\"quantity\":1,\"variation\":[],\"item_data\":[]}]",
+    "snapshot_version": "1",
+    "status": "abandoned",
+    "status_changed_at": "2026-09-09 02:34:43",
+    "converted_order_id": null,
+    "created_at": "2026-09-09 00:34:16",
+    "updated_at": "2026-09-09 02:34:43"
+   },
+   {
+    "id": "220",
+    "cart_id": "c_ad48e868fece95660ccc8967f4332389",
+    "session_key": "t_666c83ff2647f585ef892fd9d2fc01",
+    "user_id": null,
+    "email": null,
+    "email_source": null,
+    "last_cart_activity_at": "2026-09-09 00:34:15",
+    "cart_hash": "a4407b1b89e5730a23a93dc9749fe1aaecb27c26",
+    "snapshot_json": "[{\"product_id\":17415,\"variation_id\":0,\"quantity\":1,\"variation\":[],\"item_data\":[]}]",
+    "snapshot_version": "1",
+    "status": "abandoned",
+    "status_changed_at": "2026-09-09 02:34:43",
+    "converted_order_id": null,
+    "created_at": "2026-09-09 00:34:15",
+    "updated_at": "2026-09-09 02:34:43"
+   },
+   {
+    "id": "219",
+    "cart_id": "c_ca29885b266102dab4ebd2d031fa0913",
+    "session_key": "t_c64d6fc04219cd9b835e43ee704574",
+    "user_id": null,
+    "email": null,
+    "email_source": null,
+    "last_cart_activity_at": "2026-09-09 00:34:15",
+    "cart_hash": "164906c21e50da75a3aca3795aaaf4fee14f5ee7",
+    "snapshot_json": "[{\"product_id\":19582,\"variation_id\":0,\"quantity\":1,\"variation\":[],\"item_data\":[]}]",
+    "snapshot_version": "1",
+    "status": "abandoned",
+    "status_changed_at": "2026-09-09 02:34:43",
+    "converted_order_id": null,
+    "created_at": "2026-09-09 00:34:15",
+    "updated_at": "2026-09-09 02:34:43"
+   }
+  ],
+  "sesijos_60": {
+   "su_prekemis": 1,
+   "tuscios": 59,
+   "naujausia_baigsis": "09-16 06:04"
+  },
+  "sesijos_per_val": "37",
+  "sesijos_per_6val": "96",
+  "ps_browse_log": {
+   "stulp": [
+    "id",
+    "email",
+    "user_id",
+    "product_id",
+    "views",
+    "status",
+    "viewed_at",
+    "created_at"
+   ],
+   "viso": "0",
+   "siandien": "0"
+  },
+  "ps_event_log": {
+   "stulp": [
+    "id",
+    "event_id",
+    "event_name",
+    "email",
+    "payload_json",
+    "emitted_at",
+    "status",
+    "adapter_name",
+    "attempts",
+    "next_retry_at",
+    "last_error",
+    "esp_response"
+   ],
+   "viso": "34"
+  },
+  "ps_ivykiai": {
+   "stulp": [
+    "id",
+    "product_id",
+    "laikas",
+    "tipas",
+    "laukas",
+    "sena",
+    "nauja",
+    "saltinis",
+    "kas",
+    "op_nr",
+    "pastaba"
+   ],
+   "viso": "28557",
+   "siandien": "125"
+  },
+  "carts_siandien": "30",
+  "ga4": {
+   "ps_ga4_mp_secret": "5GGbP2GxRMa0LCDPYLSnag"
+  },
+  "instock": 3081,
+  "outofstock": 1066,
+  "pastaruoju_metu_prisijunge": "35"
+ }
+}
