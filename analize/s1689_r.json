@@ -1,0 +1,162 @@
+{
+ "v": "dep-103905",
+ "kurimas": 200,
+ "sid": 5307,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1689R",
+  "wp": "2026-09-09 13:40:12",
+  "pastabos": {
+   "35874": [
+    "13:38:15 Email \"Atšauktas užsakymas\" sent.",
+    "13:38:15 Atšaukta rankiniu būdu: klientas tam pačiam krepšeliui sukūrė tris užsakymus (#35873 laukia pavedimo). Likutis grąžinamas. S1689. U",
+    "13:08:44 Paysera: Neapmokėto užsakymo būsena",
+    "13:08:43 Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000) &times; 4",
+    "13:07:19 Paysera: Neapmokėto užsakymo būsena",
+    "13:07:19 Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000) &times; 4",
+    "13:02:46 Paysera: Neapmokėto užsakymo būsena",
+    "13:02:46 Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000) &times; 4"
+   ],
+   "35875": [
+    "13:38:15 Email \"Atšauktas užsakymas\" sent.",
+    "13:38:15 Atšaukta rankiniu būdu: klientas tam pačiam krepšeliui sukūrė tris užsakymus (#35873 laukia pavedimo). Likutis grąžinamas. S1689. U",
+    "13:25:21 Paysera: Neapmokėto užsakymo būsena",
+    "13:25:21 Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000) &times; 4",
+    "13:23:26 Paysera: Neapmokėto užsakymo būsena",
+    "13:23:26 Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000) &times; 4",
+    "13:22:28 Paysera: Neapmokėto užsakymo būsena",
+    "13:22:27 Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000) &times; 4"
+   ]
+  },
+  "restock_meta": {
+   "35874": [
+    {
+     "meta_key": "_dp_stock_reduced",
+     "v": "no"
+    }
+   ],
+   "35875": [
+    {
+     "meta_key": "_dp_stock_reduced",
+     "v": "no"
+    }
+   ]
+  },
+  "likutis_14951": "10",
+  "own_14951": "",
+  "sandelis_14951": "av",
+  "ivykiai_14951": [
+   {
+    "laikas": "2026-09-07 22:07:04",
+    "laukas": "partija",
+    "sena": "0",
+    "nauja": "23",
+    "pastaba": "Gavimas: +23 vnt. po 1,49 €"
+   },
+   {
+    "laikas": "2026-09-07 22:07:04",
+    "laukas": "_stock_status",
+    "sena": "outofstock",
+    "nauja": "instock",
+    "pastaba": "Likučio būsena"
+   },
+   {
+    "laikas": "2026-09-07 22:07:04",
+    "laukas": "_stock",
+    "sena": "0",
+    "nauja": "23",
+    "pastaba": "Likutis"
+   },
+   {
+    "laikas": "2026-09-07 22:07:04",
+    "laukas": "_stock_status",
+    "sena": "instock",
+    "nauja": "outofstock",
+    "pastaba": "Likučio būsena"
+   },
+   {
+    "laikas": "2026-09-07 21:00:30",
+    "laukas": "partija",
+    "sena": "0",
+    "nauja": "23",
+    "pastaba": "Gavimas: +23 vnt. po 1,49 €"
+   },
+   {
+    "laikas": "2026-09-07 21:00:30",
+    "laukas": "_stock_status",
+    "sena": "outofstock",
+    "nauja": "instock",
+    "pastaba": "Likučio būsena"
+   },
+   {
+    "laikas": "2026-09-07 21:00:30",
+    "laukas": "_stock",
+    "sena": "0",
+    "nauja": "23",
+    "pastaba": "Likutis"
+   },
+   {
+    "laikas": "2026-09-07 21:00:30",
+    "laukas": "_stock_status",
+    "sena": "instock",
+    "nauja": "outofstock",
+    "pastaba": "Likučio būsena"
+   }
+  ],
+  "mu_failai": [],
+  "snippetai": [
+   {
+    "id": "5222",
+    "name": "TEMP PS dep-223700",
+    "active": "0",
+    "l": "1368"
+   },
+   {
+    "id": "5304",
+    "name": "TEMP PS dep-103146",
+    "active": "0",
+    "l": "2192"
+   },
+   {
+    "id": "5305",
+    "name": "TEMP PS dep-103707",
+    "active": "0",
+    "l": "3865"
+   },
+   {
+    "id": "5307",
+    "name": "TEMP PS dep-103905",
+    "active": "1",
+    "l": "2550"
+   }
+  ],
+  "modal_snippetai": [
+   {
+    "id": "5307",
+    "name": "TEMP PS dep-103905",
+    "active": "1"
+   }
+  ],
+  "option_naudojimas": [
+   {
+    "id": "5304",
+    "name": "TEMP PS dep-103146",
+    "active": "0"
+   },
+   {
+    "id": "5305",
+    "name": "TEMP PS dep-103707",
+    "active": "0"
+   },
+   {
+    "id": "5307",
+    "name": "TEMP PS dep-103905",
+    "active": "1"
+   }
+  ],
+  "ps_welcome_seen_kiek": 0
+ }
+}
