@@ -1,0 +1,91 @@
+{
+ "v": "dep-174509",
+ "kurimas": 200,
+ "sid": 5384,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1670 c",
+  "prekes": {
+   "17363": {
+    "pav": "Natūralus bentonitinis sušokantis kraikas kat",
+    "sku": "WWAL4779",
+    "sandelis": "belcor_tofu",
+    "_stock": "3",
+    "own": "0",
+    "manage": "yes",
+    "tiek": "belcor_tofu",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "rankinis": 1,
+    "registras": [
+     {
+      "source": "belcor_tofu",
+      "stock_qty": "3",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "synced_at": null
+     }
+    ]
+   },
+   "17662": {
+    "pav": "Kraikas katėms TOFU BeloCat, vyšnių žiedų kva",
+    "sku": "TOFUVZ3832",
+    "sandelis": "belcor_tofu",
+    "_stock": "80",
+    "own": "8",
+    "manage": "yes",
+    "tiek": "belcor_tofu",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "rankinis": 1,
+    "registras": [
+     {
+      "source": "av",
+      "stock_qty": "8",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "synced_at": null
+     },
+     {
+      "source": "belcor_tofu",
+      "stock_qty": "80",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "synced_at": null
+     }
+    ]
+   },
+   "18655": {
+    "pav": "Džiovinta kiaulės uodega, 1 vnt.",
+    "sku": "650954",
+    "sandelis": "av",
+    "_stock": "236",
+    "own": "",
+    "manage": "yes",
+    "tiek": "",
+    "av_laukas": "_stock",
+    "tiek_laukas": "",
+    "rankinis": 0,
+    "registras": [
+     {
+      "source": "av",
+      "stock_qty": "236",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "synced_at": null
+     }
+    ]
+   }
+  },
+  "rasytojai": [
+   "petshop-seseliai.php:14 *   - AV prekės `ps_sources` zb eilutė (stock_qty, cost_net, synced_at)"
+  ]
+ }
+}
