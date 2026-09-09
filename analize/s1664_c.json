@@ -1,0 +1,501 @@
+{
+ "v": "dep-061010",
+ "kurimas": 200,
+ "sid": 5245,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1664D",
+  "utc": "06:11:23",
+  "wp": "2026-09-09 09:11:23",
+  "visi_35860": [
+   {
+    "id": "35868",
+    "type": "shop_order",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-08 22:24:33",
+    "date_updated_gmt": "2026-09-08 23:31:01",
+    "total_amount": "1.00000000",
+    "payment_method": "paysera",
+    "customer_id": "0"
+   },
+   {
+    "id": "35871",
+    "type": "shop_order",
+    "status": "wc-pending",
+    "date_created_gmt": "2026-09-09 05:49:01",
+    "date_updated_gmt": "2026-09-09 05:49:01",
+    "total_amount": "56.99000000",
+    "payment_method": "paysera",
+    "customer_id": "0"
+   }
+  ],
+  "o35871": {
+   "st": "pending",
+   "total": "56.99",
+   "pm": "Mokėjimas internetu",
+   "sukurta": "2026-09-09 08:49:01",
+   "apmoketa": null,
+   "vardas": "R B",
+   "email": "terra@gyvunai.lt",
+   "tel": "+37065082900",
+   "siuntimas": "VENIPAK paštomatai/atsiėmimo punktai",
+   "created_via": "checkout",
+   "cust_ip": "216.128.1.196",
+   "ua": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0",
+   "eilutes": [
+    "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg ×1 = 47.099174"
+   ],
+   "pastabos": [
+    "08:49 | Likutis sumažintas: Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg (249&rarr;248)",
+    "08:49 | Paysera: Neapmokėto užsakymo būsena",
+    "08:49 | Stock hold of 90 minutes applied to: - Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg (HYPS06) &times; 1"
+   ],
+   "meta": [
+    {
+     "meta_key": "_ps_ga_cid",
+     "v": "542433816.1662187597"
+    },
+    {
+     "meta_key": "_ps_ga_sid",
+     "v": "1776603216"
+    },
+    {
+     "meta_key": "_ps_ga_sutikimas",
+     "v": "--"
+    },
+    {
+     "meta_key": "_ps_irenginys",
+     "v": "mobile"
+    },
+    {
+     "meta_key": "_ps_kanalai",
+     "v": "{\"sutikimas_statistika\":0,\"fiksuota_at\":\"2026-09-09 05:49:01\",\"modulis\":\"kanalai/1.1\",\"paskutinis\":{\"kanalas\":\"direct\",\""
+    },
+    {
+     "meta_key": "_petshop_avpn_number",
+     "v": "AVPN011001"
+    }
+   ]
+  },
+  "as_failed": [
+   {
+    "action_id": "139686",
+    "hook": "wpforms_admin_builder_templates_cache_update",
+    "status": "failed",
+    "scheduled_date_gmt": "2026-09-04 15:32:04",
+    "args": "{\"tasks_meta_id\":97}"
+   },
+   {
+    "action_id": "139685",
+    "hook": "wpforms_admin_addons_cache_update",
+    "status": "failed",
+    "scheduled_date_gmt": "2026-09-04 15:32:04",
+    "args": "{\"tasks_meta_id\":96}"
+   },
+   {
+    "action_id": "127675",
+    "hook": "wpforms_admin_builder_templates_cache_update",
+    "status": "failed",
+    "scheduled_date_gmt": "2026-08-21 15:30:04",
+    "args": "{\"tasks_meta_id\":97}"
+   },
+   {
+    "action_id": "127674",
+    "hook": "wpforms_admin_addons_cache_update",
+    "status": "failed",
+    "scheduled_date_gmt": "2026-08-21 15:30:04",
+    "args": "{\"tasks_meta_id\":96}"
+   },
+   {
+    "action_id": "63302",
+    "hook": "wpo_ips_semaphore_lock_cleanup",
+    "status": "failed",
+    "scheduled_date_gmt": "2026-06-25 15:18:15",
+    "args": "[]"
+   },
+   {
+    "action_id": "43417",
+    "hook": "wpo_ips_semaphore_lock_cleanup",
+    "status": "failed",
+    "scheduled_date_gmt": "2026-06-18 15:18:15",
+    "args": "[]"
+   },
+   {
+    "action_id": "30253",
+    "hook": "wpo_ips_semaphore_lock_cleanup",
+    "status": "failed",
+    "scheduled_date_gmt": "2026-06-11 15:17:57",
+    "args": "[]"
+   }
+  ],
+  "as_pending": [
+   {
+    "hook": "woocommerce_cleanup_personal_data",
+    "k": "1",
+    "anksc": "2026-09-09 15:17:08"
+   },
+   {
+    "hook": "woocommerce_tracker_send_event_wrapper",
+    "k": "1",
+    "anksc": "2026-09-09 15:17:08"
+   },
+   {
+    "hook": "wcdn_delete_pdf_files",
+    "k": "1",
+    "anksc": "2026-09-09 15:17:08"
+   },
+   {
+    "hook": "action_scheduler_run_recurring_actions_schedule_hook",
+    "k": "1",
+    "anksc": "2026-09-09 15:17:08"
+   },
+   {
+    "hook": "wc_update_product_lookup_tables_rating_count_batch",
+    "k": "1",
+    "anksc": "2026-09-09 06:11:17"
+   },
+   {
+    "hook": "woocommerce_cleanup_sessions",
+    "k": "1",
+    "anksc": "2026-09-09 15:46:03"
+   },
+   {
+    "hook": "fetch_patterns",
+    "k": "1",
+    "anksc": "2026-09-09 22:20:49"
+   },
+   {
+    "hook": "woocommerce_custom_orders_table_background_sync",
+    "k": "1",
+    "anksc": "2026-09-09 06:37:26"
+   },
+   {
+    "hook": "wpforms_analytics_aggregate",
+    "k": "1",
+    "anksc": "2026-09-09 22:36:03"
+   },
+   {
+    "hook": "woocommerce_cancel_unpaid_orders",
+    "k": "1",
+    "anksc": "2026-09-09 06:42:44"
+   }
+  ],
+  "as_paskutiniai": [
+   {
+    "hook": "wc_update_product_lookup_tables_rating_count_batch",
+    "status": "complete",
+    "last_attempt_gmt": "2026-09-09 06:11:16"
+   },
+   {
+    "hook": "wc_update_product_lookup_tables_rating_count_batch",
+    "status": "complete",
+    "last_attempt_gmt": "2026-09-09 06:11:10"
+   },
+   {
+    "hook": "wc_update_product_lookup_tables_rating_count_batch",
+    "status": "complete",
+    "last_attempt_gmt": "2026-09-09 06:11:04"
+   },
+   {
+    "hook": "wc_update_product_lookup_tables_rating_count_batch",
+    "status": "complete",
+    "last_attempt_gmt": "2026-09-09 06:10:58"
+   },
+   {
+    "hook": "wc_update_product_lookup_tables_rating_count_batch",
+    "status": "complete",
+    "last_attempt_gmt": "2026-09-09 06:10:51"
+   },
+   {
+    "hook": "wc_update_product_lookup_tables_rating_count_batch",
+    "status": "complete",
+    "last_attempt_gmt": "2026-09-09 06:10:45"
+   },
+   {
+    "hook": "wc_update_product_lookup_tables_rating_count_batch",
+    "status": "complete",
+    "last_attempt_gmt": "2026-09-09 06:10:43"
+   },
+   {
+    "hook": "wc_update_product_lookup_tables_rating_count_batch",
+    "status": "complete",
+    "last_attempt_gmt": "2026-09-09 06:10:39"
+   }
+  ],
+  "as_klaidos": [
+   {
+    "action_id": "139686",
+    "m": "action failed via Async Request: Scheduled action for wpforms_admin_builder_templates_cache_update will not be executed as no callbacks are registered.",
+    "log_date_gmt": "2026-09-04 15:32:23"
+   },
+   {
+    "action_id": "139685",
+    "m": "action failed via Async Request: Scheduled action for wpforms_admin_addons_cache_update will not be executed as no callbacks are registered.",
+    "log_date_gmt": "2026-09-04 15:32:23"
+   },
+   {
+    "action_id": "139686",
+    "m": "veiksmas sukurtas",
+    "log_date_gmt": "2026-08-28 15:32:04"
+   },
+   {
+    "action_id": "139685",
+    "m": "veiksmas sukurtas",
+    "log_date_gmt": "2026-08-28 15:32:04"
+   },
+   {
+    "action_id": "127675",
+    "m": "action failed via Async Request: Scheduled action for wpforms_admin_builder_templates_cache_update will not be executed as no callbacks are registered.",
+    "log_date_gmt": "2026-08-21 15:30:55"
+   },
+   {
+    "action_id": "127674",
+    "m": "action failed via Async Request: Scheduled action for wpforms_admin_addons_cache_update will not be executed as no callbacks are registered.",
+    "log_date_gmt": "2026-08-21 15:30:55"
+   },
+   {
+    "action_id": "127675",
+    "m": "veiksmas sukurtas",
+    "log_date_gmt": "2026-08-14 15:30:04"
+   },
+   {
+    "action_id": "127674",
+    "m": "veiksmas sukurtas",
+    "log_date_gmt": "2026-08-14 15:30:04"
+   },
+   {
+    "action_id": "63302",
+    "m": "This action appears to be consistently failing. A new instance will not be scheduled.",
+    "log_date_gmt": "2026-06-25 15:18:29"
+   },
+   {
+    "action_id": "63302",
+    "m": "action failed via WP Cron: Scheduled action for wpo_ips_semaphore_lock_cleanup will not be executed as no callbacks are registered.",
+    "log_date_gmt": "2026-06-25 15:18:29"
+   },
+   {
+    "action_id": "63302",
+    "m": "veiksmas sukurtas",
+    "log_date_gmt": "2026-06-18 15:18:15"
+   },
+   {
+    "action_id": "43417",
+    "m": "action failed via Async Request: Scheduled action for wpo_ips_semaphore_lock_cleanup will not be executed as no callbacks are registered.",
+    "log_date_gmt": "2026-06-18 15:18:15"
+   }
+  ],
+  "wc_logai": {
+   "fatal-errors-2026-09-08-1462fc278b95d42698cb7c577a8d691c.log": [
+    21458,
+    "09-08 20:39"
+   ],
+   "fatal-errors-2026-09-09-9e07c06e7fe465b40a4bf6c0f9efb531.log": [
+    555,
+    "09-09 03:32"
+   ],
+   "transactional-emails-2026-09-07-e9ed26827fe0cf79e078b06e9b09e7d6.log": [
+    2535,
+    "09-07 08:46"
+   ],
+   "transactional-emails-2026-09-08-f4f33230af34551e6994fe6cbae14837.log": [
+    4507,
+    "09-08 23:30"
+   ],
+   "transactional-emails-2026-09-09-ffebcc88e34eb8464ce9217e399000ef.log": [
+    108,
+    "09-09 05:49"
+   ],
+   "wc-analytics-order-import-2026-09-07-1b268061cd95389157bf2b5643da009c.log": [
+    408,
+    "09-07 21:27"
+   ],
+   "wc-analytics-order-import-2026-09-08-9f6a42cebd17544c2f61ce915b8f4634.log": [
+    318,
+    "09-08 21:29"
+   ],
+   "wc_logger-2026-09-07-6c28fa474fbed82c55e6dd8d63f70315.log": [
+    5024,
+    "09-07 14:48"
+   ],
+   "wc_logger-2026-09-08-ff04c1938aee07d56bd8893d96cb5f5a.log": [
+    65,
+    "09-08 14:48"
+   ],
+   "wc_logger-2026-09-09-42448e47ec921dce7b55d7def10acf79.log": [
+    3887,
+    "09-09 05:49"
+   ]
+  },
+  "log_fatal-errors-2026-09-08-14": "domains/avesa.lt/public_html/dev/dev-router.php(33): require('...')\",\"#4 {main}\",\"thrown\"]}\n2026-09-08T20:39:40+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, class Petshop_Katalogas does not have a method \"ajax_partija\" in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php:341 CONTEXT: {\"error\":{\"type\":1,\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php\",\"line\":341},\"remote-logging\":true,\"backtrace\":[\"\",\"#0 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()\",\"#1 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/plugin.php(522): WP_Hook->do_action()\",\"#2 /home/gyvunai2/domains/petshop.lt/public_html/wp-admin/admin-ajax.php(192): do_action()\",\"#3 /home/gyvunai2/domains/avesa.lt/public_html/dev/dev-router.php(33): require('...')\",\"#4 {main}\",\"thrown\"]}\n2026-09-08T20:39:42+00:00 CRITICAL Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, class Petshop_Katalogas does not have a method \"ajax_partija\" in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php:341 CONTEXT: {\"error\":{\"type\":1,\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php\",\"line\":341},\"remote-logging\":true,\"backtrace\":[\"\",\"#0 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()\",\"#1 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/plugin.php(522): WP_Hook->do_action()\",\"#2 /home/gyvunai2/domains/petshop.lt/public_html/wp-admin/admin-ajax.php(192): do_action()\",\"#3 /home/gyvunai2/domains/avesa.lt/public_html/dev/dev-router.php(33): require('...')\",\"#4 {main}\",\"thrown\"]}\n",
+  "log_fatal-errors-2026-09-09-9e": "2026-09-09T03:32:42+00:00 CRITICAL Allowed memory size of 268435456 bytes exhausted (tried to allocate 28672 bytes) CONTEXT: {\"error\":{\"type\":1,\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-all-import-pro/models/import/record.php\",\"line\":3699},\"remote-logging\":true,\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-woocommerce.php\",\"line\":511,\"function\":\"critical\",\"class\":\"WC_Logger\",\"type\":\"->\"},{\"function\":\"log_errors\",\"class\":\"WooCommerce\",\"type\":\"->\"}]}\n",
+  "paysera_opcijos": {
+   "paysera_delivery_extra_settings": "a:1:{s:21:\"hide_shipping_methods\";s:3:\"yes\";}",
+   "paysera_delivery_settings": "a:2:{s:16:\"delivery_enabled\";s:2:\"no\";s:9:\"test_mode\";s:2:\"no\";}",
+   "PAYSERA_DB_VERSION": "3.12.2",
+   "paysera_payment_main_settings": "a:3:{s:10:\"project_id\";s:5:\"29276\";s:16:\"project_password\";s:32:\"752c325f9cae94bbbd34b6b4b697fe2f\";s:9:\"test_mode\";s:2:\"no\";}",
+   "woocommerce_paysera_settings": "a:1:{s:7:\"enabled\";s:3:\"yes\";}",
+   "paysera_payment_extra_settings": "a:6:{s:5:\"title\";s:20:\"Mokėjimas internetu\";s:11:\"description\";s:48:\"Pasirinkite mokėjimo būdą Paysera svetainėje\";s:16:\"list_of_payments\";s:3:\"yes\";s:9:\"grid_view\";s:2:\"no\";s:13:\"buyer_consent\";s:3:\"yes\";s:9:\"log_level\";s:5:\"error\";}",
+   "ps_fakt_paysera_fiks_ct": "5",
+   "paysera_payment_status_settings": "a:1:{s:17:\"paid_order_status\";a:1:{i:0;s:13:\"wc-processing\";}}"
+  },
+  "sesijos_naujos": "30",
+  "smtp_mailer": {
+   "mail": {
+    "from_email": "uzsakymai@petshop.lt",
+    "from_name": "Petshop.lt",
+    "mailer": "smtp",
+    "return_path": true,
+    "from_email_force": true,
+    "from_name_force": true
+   },
+   "smtp": {
+    "autotls": true,
+    "auth": true,
+    "host": "isopas.serveriai.lt",
+    "port": 465,
+    "encryption": "ssl",
+    "user": "uzsakymai@petshop.lt",
+    "pass": "l6XAqEqrFbtXBhfSk6JeXYcLwaU7nPJnOXoF09B+dMgXfLyN5KAZ3FT/EbiAbpSI2adrAw=="
+   },
+   "general": {
+    "summary_report_email_disabled": false
+   },
+   "sendlayer": {
+    "api_key": "",
+    "quick_connect": false,
+    "is_shared_domain": false,
+    "sender_domain": ""
+   },
+   "smtpcom": {
+    "api_key": "",
+    "channel": ""
+   },
+   "sendinblue": {
+    "api_key": "",
+    "domain": ""
+   },
+   "mailersend": {
+    "api_key": "",
+    "has_pro_plan": false
+   },
+   "mailgun": {
+    "api_key": "",
+    "domain": "",
+    "region": "US"
+   },
+   "mailjet": {
+    "api_key": "",
+    "secret_key": ""
+   },
+   "resend": {
+    "api_key": ""
+   },
+   "sendgrid": {
+    "api_key": "",
+    "domain": ""
+   },
+   "smtp2go": {
+    "api_key": ""
+   },
+   "sparkpost": {
+    "api_key": "",
+    "region": "US"
+   },
+   "postmark": {
+    "server_api_token": "",
+    "message_stream": ""
+   },
+   "mandrill": {
+    "api_key": ""
+   },
+   "amazonses": {
+    "client_id": "",
+    "client_secret": "",
+    "region": "us-east-1"
+   },
+   "elasticemail": {
+    "api_key": ""
+   },
+   "gmail": {
+    "client_id": "",
+    "client_secret": "",
+    "access_token": [],
+    "refresh_token": "",
+    "user_details": {
+     "email": ""
+    },
+    "one_click_setup_enabled": false,
+    "one_click_setup_credentials": {
+     "key": "",
+     "token": ""
+    },
+    "one_click_setup_user_details": {
+     "email": ""
+    }
+   },
+   "outlook": {
+    "client_id": "",
+    "client_secret": "",
+    "access_token": [],
+    "refresh_token": "",
+    "user_details": {
+     "email": ""
+    },
+    "one_click_setup_enabled": false,
+    "one_click_setup_credentials": {
+     "access_token": "",
+     "refresh_token": "",
+     "expires": ""
+    },
+    "one_click_setup_user_details": {
+     "email": ""
+    }
+   },
+   "zoho": {
+    "client_id": "",
+    "client_secret": "",
+    "domain": "com",
+    "access_token": [],
+    "refresh_token": "",
+    "user_details": {
+     "email": ""
+    }
+   },
+   "logs": {
+    "enabled": false,
+    "log_email_content": false,
+    "save_attachments": false,
+    "open_email_tracking": false,
+    "click_link_tracking": false
+   },
+   "alert_email": {
+    "enabled": false,
+    "connections": []
+   },
+   "license": {
+    "key": "",
+    "is_expired": false,
+    "is_disabled": false,
+    "is_invalid": false,
+    "is_limit_reached": false
+   }
+  },
+  "cron_artimiausi": [
+   "09-09 06:11 action_scheduler_run_queue",
+   "09-09 06:11 petshop_import_tempas",
+   "09-09 06:11 ps_webp_batch",
+   "09-09 06:12 cmplz_every_five_minutes_hook",
+   "09-09 06:12 ps_esp_cron_process_pending",
+   "09-09 06:13 ps_dropship_sargas",
+   "09-09 06:13 ps_email_dispatch_cron",
+   "09-09 06:13 ps_seseliai_valandinis",
+   "09-09 06:13 ps_vartai_valanda",
+   "09-09 06:14 ps_cart_abandon_check",
+   "09-09 06:21 jetpack_clean_nonces",
+   "09-09 06:25 ps_juosta_reikia_cron"
+  ]
+ }
+}
