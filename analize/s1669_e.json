@@ -1,0 +1,104 @@
+{
+ "v": "dep-173538",
+ "kurimas": 200,
+ "sid": 5381,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "E": {
+  "v": "S1669 e",
+  "faze": "E",
+  "md5_pries": "3628589705d4ac57fed600031e70d437",
+  "dydis_pries": 509542,
+  "radiniai": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "md5_po": "bc12db88c54ae9569d36b9af274eb0a7",
+  "dydis_po": 510548
+ },
+ "T": {
+  "v": "S1669 e",
+  "faze": "T",
+  "dvisaltiniai": [
+   {
+    "id": 16950,
+    "tiek": "zb",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "av_dabar": 8,
+    "_stock": "40.000000"
+   },
+   {
+    "id": 16953,
+    "tiek": "zb",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "av_dabar": 2,
+    "_stock": "39.000000"
+   },
+   {
+    "id": 16956,
+    "tiek": "zb",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "av_dabar": 2,
+    "_stock": "73.000000"
+   },
+   {
+    "id": 16959,
+    "tiek": "zb",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "av_dabar": 7,
+    "_stock": "37.000000"
+   },
+   {
+    "id": 17394,
+    "tiek": "zb",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "av_dabar": 25,
+    "_stock": "414.000000"
+   }
+  ],
+  "gryna_av": [
+   {
+    "id": 35147,
+    "tiek": "",
+    "av_laukas": "_stock",
+    "av_dabar": 0
+   },
+   {
+    "id": 35146,
+    "tiek": "",
+    "av_laukas": "_stock",
+    "av_dabar": 0
+   },
+   {
+    "id": 35144,
+    "tiek": "",
+    "av_laukas": "_stock",
+    "av_dabar": 6
+   }
+  ],
+  "vf": [
+   {
+    "id": 20294,
+    "tiek": "vf",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock"
+   },
+   {
+    "id": 20395,
+    "tiek": "vf",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock"
+   }
+  ],
+  "front": 200
+ }
+}
