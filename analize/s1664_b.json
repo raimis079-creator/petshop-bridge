@@ -1,0 +1,531 @@
+{
+ "v": "dep-060719",
+ "kurimas": 200,
+ "sid": 5244,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "S1664",
+  "dabar": "2026-09-09 06:08:37",
+  "tz": "Europe/Vilnius",
+  "baze": {
+   "siteurl": "https://petshop.lt",
+   "home": "https://petshop.lt",
+   "blog_public": "1",
+   "force_ssl": "yes",
+   "store_notice": "no",
+   "wc_ver": "11.0.1"
+  },
+  "uzsakymai": {
+   "viso": "2",
+   "pagal_statusa": [
+    {
+     "status": "wc-completed",
+     "k": "1"
+    },
+    {
+     "status": "wc-pending",
+     "k": "1"
+    }
+   ],
+   "paskutiniai": [
+    {
+     "id": "35871",
+     "status": "wc-pending",
+     "date_created_gmt": "2026-09-09 05:49:01",
+     "total_amount": "56.99000000",
+     "payment_method": "paysera",
+     "billing_email": "terra@gyvunai.lt"
+    },
+    {
+     "id": "35868",
+     "status": "wc-completed",
+     "date_created_gmt": "2026-09-08 22:24:33",
+     "total_amount": "1.00000000",
+     "payment_method": "paysera",
+     "billing_email": "terra@gyvunai.lt"
+    }
+   ],
+   "nuo_35868": "1"
+  },
+  "sesijos": "1093",
+  "paysera": {
+   "enabled": "yes",
+   "test": "?",
+   "proj": "?"
+  },
+  "paysera_status": {
+   "paid_order_status": [
+    "wc-processing"
+   ]
+  },
+  "gateway_order": {
+   "_wc_pes_woopayments": 0,
+   "woocommerce_payments": 1,
+   "woocommerce_payments_affirm": 2,
+   "woocommerce_payments_afterpay_clearpay": 3,
+   "woocommerce_payments_alipay": 4,
+   "woocommerce_payments_bancontact": 5,
+   "woocommerce_payments_au_becs_debit": 6,
+   "woocommerce_payments_eps": 7,
+   "woocommerce_payments_giropay": 8,
+   "woocommerce_payments_grabpay": 9,
+   "woocommerce_payments_ideal": 10,
+   "woocommerce_payments_link": 11,
+   "woocommerce_payments_multibanco": 12,
+   "woocommerce_payments_klarna": 13,
+   "woocommerce_payments_p24": 14,
+   "woocommerce_payments_sepa_debit": 15,
+   "woocommerce_payments_sofort": 16,
+   "woocommerce_payments_wechat_pay": 17,
+   "woocommerce_payments_apple_pay": 18,
+   "woocommerce_payments_google_pay": 19,
+   "woocommerce_payments_amazon_pay": 20,
+   "_wc_pes_paypal_full_stack": 21,
+   "ppcp-axo-gateway": 22,
+   "ppcp-gateway": 23,
+   "paysera": 24,
+   "_wc_offline_payment_methods_group": 25,
+   "bacs": 26,
+   "cheque": 27,
+   "cod": 28
+  },
+  "gw_bacs": "yes",
+  "gw_cod": "nera",
+  "cron": {
+   "viso": 84,
+   "veluoja": [],
+   "disabled": false
+  },
+  "importai": {
+   "ps_import_tempas_paskutinis": "(masyvas)",
+   "ps_import_tempas_host": "https://petshop.lt",
+   "sekimas": [
+    {
+     "option_name": "ps_ads_paskutinis",
+     "v": "a:3:{s:4:\"kada\";s:19:\"2026-08-27 18:25:57\";s:7:\"eiluciu\";i:9;s:2:\"st\";a:4:{s:3:\"new\";i:9;s"
+    },
+    {
+     "option_name": "ps_ata_paskutinis_agregavimas",
+     "v": "2026-09-09 03:15:03"
+    },
+    {
+     "option_name": "ps_ata_paskutinis_perskaiciavimas",
+     "v": "2026-08-26 11:43:27 | 2026-08-01..2026-08-05 | 0 eil."
+    },
+    {
+     "option_name": "ps_dim_klientu_paskutinis",
+     "v": "2026-09-08 20:40:03 | 5431"
+    },
+    {
+     "option_name": "ps_dl_atsauktu_valymas_paskutinis",
+     "v": "a:4:{s:6:\"laikas\";s:19:\"2026-09-09 03:20:03\";s:11:\"i_siuksline\";i:0;s:9:\"galutinai\";i:0;s:"
+    },
+    {
+     "option_name": "ps_fakt_atsargu_paskutinis",
+     "v": "2026-09-08 | 2631"
+    },
+    {
+     "option_name": "ps_feeds_paskutinis",
+     "v": "a:2:{s:4:\"kada\";s:19:\"2026-09-09 04:30:22\";s:10:\"statistika\";a:8:{s:7:\"versija\";s:5:\"2.2.0"
+    },
+    {
+     "option_name": "ps_import_tempas_paskutinis",
+     "v": "a:6:{s:6:\"laikas\";s:19:\"2026-09-09 09:07:02\";s:9:\"import_id\";i:3;s:8:\"veiksmas\";s:10:\"proc"
+    },
+    {
+     "option_name": "ps_kontrole_paskutinis",
+     "v": "a:2:{s:4:\"kada\";s:19:\"2026-09-09 04:30:03\";s:3:\"ga4\";s:2:\"ok\";}"
+    },
+    {
+     "option_name": "ps_last_completed_attach",
+     "v": "a:4:{s:4:\"time\";i:1788910258;s:5:\"order\";i:35868;s:3:\"ctx\";s:5:\"front\";s:4:\"atts\";a:1:{i:0"
+    },
+    {
+     "option_name": "ps_seseliai_paskutinis",
+     "v": "a:6:{s:4:\"kada\";s:19:\"2026-09-09 08:15:03\";s:3:\"kas\";s:4:\"cron\";s:4:\"poru\";i:15;s:10:\"atna"
+    },
+    {
+     "option_name": "ps_vartai_paskutinis",
+     "v": "2026-09-01 21:13:36 · 1"
+    },
+    {
+     "option_name": "ps_velavimo_laiskai_paskutinis",
+     "v": "a:7:{s:6:\"laikas\";s:19:\"2026-09-08 14:02:02\";s:11:\"darbo_diena\";b:1;s:8:\"uzsakymu\";i:0;s:8"
+    },
+    {
+     "option_name": "ps_venipak_sekimas_paskutinis",
+     "v": "a:11:{s:6:\"laikas\";s:19:\"2026-09-09 09:07:01\";s:8:\"uzsakymu\";i:0;s:7:\"numeriu\";i:0;s:8:\"uz"
+    },
+    {
+     "option_name": "ps_vf_feed_paskutinis",
+     "v": "a:7:{s:6:\"laikas\";s:19:\"2026-09-09 09:05:15\";s:2:\"ok\";b:1;s:6:\"klaida\";s:0:\"\";s:7:\"eilutes"
+    }
+   ]
+  },
+  "as": [
+   {
+    "status": "complete",
+    "k": "33440"
+   },
+   {
+    "status": "failed",
+    "k": "7"
+   },
+   {
+    "status": "pending",
+    "k": "24"
+   }
+  ],
+  "sender_webhook": 0,
+  "debug_log": "nera failo",
+  "stock_suma": 293348,
+  "prekiu_publish": 2629,
+  "http": {
+   "/": [
+    200,
+    233265,
+    ""
+   ],
+   "shop": [
+    200,
+    290136,
+    ""
+   ],
+   "kaina24": [
+    301,
+    0,
+    "https://petshop.lt/feed/kaina24/"
+   ],
+   "kainos": [
+    301,
+    0,
+    "https://petshop.lt/feed/kainos/"
+   ],
+   "sitemap": [
+    200,
+    2499,
+    ""
+   ],
+   "robots": [
+    200,
+    316,
+    ""
+   ],
+   "krepselis": [
+    200,
+    219420,
+    ""
+   ],
+   "apmokejimas": [
+    302,
+    0,
+    "https://petshop.lt/krepselis/"
+   ]
+  },
+  "skaitikliai": {
+   "ps_avpn_counter": false,
+   "ps_kravpn_counter": false,
+   "ps_iapv_counter": false,
+   "ps_ppk_counter": false,
+   "visi": [
+    {
+     "option_name": "wcdn_invoice_number_counter",
+     "option_value": "389"
+    },
+    {
+     "option_name": "wcdn_invoice_number_counter_year",
+     "option_value": "a:1:{i:2026;i:1;}"
+    },
+    {
+     "option_name": "petshop_avpn_counter",
+     "option_value": "11002"
+    },
+    {
+     "option_name": "petshop_iapv_counter",
+     "option_value": "101"
+    },
+    {
+     "option_name": "wp_mail_smtp_lite_sent_email_counter",
+     "option_value": "906"
+    },
+    {
+     "option_name": "wp_mail_smtp_lite_weekly_sent_email_counter",
+     "option_value": "a:12:{i:26;i:1;i:27;i:15;i:28;i:62;i:29;i:23;i:30;i:10;i:31;i:43;i:32;i:210;i:33;i:17;i:34;i:35;i:35;i:44;i:36;i:356;i:37;i:29;}"
+    },
+    {
+     "option_name": "petshop_kravpn_counter",
+     "option_value": "101"
+    },
+    {
+     "option_name": "petshop_ppk_counter",
+     "option_value": "101"
+    }
+   ]
+  },
+  "snippetai": "71",
+  "temp_snippetai": [
+   {
+    "id": "5218",
+    "name": "TEMP PS dep-220533",
+    "active": "0"
+   },
+   {
+    "id": "5219",
+    "name": "TEMP PS dep-222149",
+    "active": "0"
+   },
+   {
+    "id": "5220",
+    "name": "TEMP PS dep-222318",
+    "active": "0"
+   },
+   {
+    "id": "5221",
+    "name": "TEMP PS dep-222816",
+    "active": "0"
+   },
+   {
+    "id": "5222",
+    "name": "TEMP PS dep-223700",
+    "active": "0"
+   },
+   {
+    "id": "5223",
+    "name": "TEMP PS dep-223900",
+    "active": "0"
+   },
+   {
+    "id": "5224",
+    "name": "TEMP PS dep-224038",
+    "active": "0"
+   },
+   {
+    "id": "5225",
+    "name": "TEMP PS dep-224206",
+    "active": "0"
+   },
+   {
+    "id": "5226",
+    "name": "TEMP PS dep-224759",
+    "active": "0"
+   },
+   {
+    "id": "5227",
+    "name": "TEMP PS dep-230235",
+    "active": "0"
+   },
+   {
+    "id": "5228",
+    "name": "TEMP PS dep-230905",
+    "active": "0"
+   },
+   {
+    "id": "5229",
+    "name": "TEMP PS dep-233135",
+    "active": "0"
+   },
+   {
+    "id": "5230",
+    "name": "TEMP PS dep-233327",
+    "active": "0"
+   },
+   {
+    "id": "5231",
+    "name": "TEMP PS dep-233516",
+    "active": "0"
+   },
+   {
+    "id": "5232",
+    "name": "TEMP PS dep-233649",
+    "active": "0"
+   },
+   {
+    "id": "5233",
+    "name": "TEMP PS dep-233823",
+    "active": "0"
+   },
+   {
+    "id": "5234",
+    "name": "TEMP PS dep-234002",
+    "active": "0"
+   },
+   {
+    "id": "5235",
+    "name": "TEMP PS dep-234138",
+    "active": "0"
+   },
+   {
+    "id": "5236",
+    "name": "TEMP PS dep-234258",
+    "active": "0"
+   },
+   {
+    "id": "5237",
+    "name": "TEMP PS dep-234428",
+    "active": "0"
+   },
+   {
+    "id": "5238",
+    "name": "TEMP PS dep-234555",
+    "active": "0"
+   },
+   {
+    "id": "5239",
+    "name": "TEMP PS dep-234737",
+    "active": "0"
+   },
+   {
+    "id": "5240",
+    "name": "TEMP PS dep-234906",
+    "active": "0"
+   },
+   {
+    "id": "5241",
+    "name": "TEMP PS dep-235519",
+    "active": "0"
+   },
+   {
+    "id": "5242",
+    "name": "TEMP PS dep-235702",
+    "active": "0"
+   },
+   {
+    "id": "5243",
+    "name": "TEMP PS dep-002126",
+    "active": "0"
+   },
+   {
+    "id": "5244",
+    "name": "TEMP PS dep-060719",
+    "active": "1"
+   }
+  ],
+  "ga4_serverio_log": false,
+  "bak_opcijos": 35,
+  "dev_pastas_failas": false,
+  "mu_pluginai": [
+   "automation-by-installatron.php",
+   "petshop-akcijos.php",
+   "petshop-analitika.php",
+   "petshop-anketa-ivykiai.php",
+   "petshop-anketos-ataskaita.php",
+   "petshop-ataskaita-atsargos.php",
+   "petshop-ataskaita-klientai.php",
+   "petshop-ataskaita-menuo.php",
+   "petshop-ataskaita-pardavimai.php",
+   "petshop-ataskaita-prekes.php",
+   "petshop-ataskaitos-ui.php",
+   "petshop-ataskaitu-agregavimas.php",
+   "petshop-ataskaitu-eksportas.php",
+   "petshop-atributai.php",
+   "petshop-atsargu-laukimas.php",
+   "petshop-atsisakymas.php",
+   "petshop-av-admin.php",
+   "petshop-av-dropship.php",
+   "petshop-av-expiry.php",
+   "petshop-av-limit.php",
+   "petshop-av-order.php",
+   "petshop-av-reduce.php",
+   "petshop-av-sheets.php",
+   "petshop-av-source.php",
+   "petshop-av-stock.php",
+   "petshop-av-tiekimas.php",
+   "petshop-cache.php",
+   "petshop-code-search.php",
+   "petshop-darbalaukis.php",
+   "petshop-desk.php",
+   "petshop-dim-klientai.php",
+   "petshop-dropship-sargas.php",
+   "petshop-dydziai.php",
+   "petshop-fakt-atsargos.php",
+   "petshop-fakt-grazinimai.php",
+   "petshop-fakt-kainos.php",
+   "petshop-fakt-reklama.php",
+   "petshop-fakt-siuntos.php",
+   "petshop-faktai.php",
+   "petshop-feeding-calc-rest.php",
+   "petshop-ga4-serveris.php",
+   "petshop-gavimas.php",
+   "petshop-greitis.php",
+   "petshop-hero-preload.php",
+   "petshop-higiena.php",
+   "petshop-import-log.php",
+   "petshop-import-tempas.php",
+   "petshop-innodb.php",
+   "petshop-islaidos.php",
+   "petshop-istorijos-adapteris.php",
+   "petshop-ivykiai.php",
+   "petshop-juosta.php",
+   "petshop-kalendorius.php",
+   "petshop-kampaniju-langas.php",
+   "petshop-kanalai.php",
+   "petshop-katalogas.php",
+   "petshop-kategorijos-aprasymas.php",
+   "petshop-klientai.php",
+   "petshop-kliento-siuntos.php",
+   "petshop-klientui.php",
+   "petshop-kreipinys.php",
+   "petshop-laiskai-importas.php",
+   "petshop-laiskai.php",
+   "petshop-langai-admin.php",
+   "petshop-laukai.php",
+   "petshop-legacy-301.php",
+   "petshop-legacy-importas.php",
+   "petshop-login-sargas.php",
+   "petshop-m8-food.php",
+   "petshop-naujienlaiskiai-admin.php",
+   "petshop-naujienlaiskiai.php",
+   "petshop-nepamoketi.php",
+   "petshop-pardavimai.php",
+   "petshop-parseris.php",
+   "petshop-partijos.php",
+   "petshop-paruostu-ataskaita.php",
+   "petshop-payment-failed.php",
+   "petshop-perziuru-priminimas.php",
+   "petshop-pet-claim.php",
+   "petshop-pet-kontraktas.php",
+   "petshop-pilnumas.php",
+   "petshop-pren-nuorodos.php",
+   "petshop-pren-sutikimas.php",
+   "petshop-prenumerata-katalogas.php",
+   "petshop-prenumerata-paskyra.php",
+   "petshop-prenumerata-veiksmas.php",
+   "petshop-prenumerata.php",
+   "petshop-prenumeratos-langas.php",
+   "petshop-prenumeratu-prognoze.php",
+   "petshop-prieziura.php",
+   "petshop-ps-pets-migration-freeze.php",
+   "petshop-rankos.php",
+   "petshop-rec-log.php",
+   "petshop-rec-ui.php",
+   "petshop-rec-variklis.php",
+   "petshop-refill-ivykiai.php",
+   "petshop-rezultatai.php",
+   "petshop-rinkiniai.php",
+   "petshop-rinkiniu-ataskaita.php",
+   "petshop-rinkiniu-likuciai.php",
+   "petshop-rinkiniu-rusis.php",
+   "petshop-rysiai.php",
+   "petshop-rytas.php",
+   "petshop-sargas.php",
+   "petshop-schema.php",
+   "petshop-seo-aprasymas.php",
+   "petshop-seo.php",
+   "petshop-seseliai.php",
+   "petshop-siuntu-laiskai.php",
+   "petshop-siuntu-valymas.php",
+   "petshop-statistika-vitrina.php",
+   "petshop-statistika.php",
+   "petshop-teises.php",
+   "petshop-uzsakymu-ivykiai.php",
+   "petshop-vartai.php",
+   "petshop-vertimai.php",
+   "petshop-vf-feed.php",
+   "petshop-wc-sync.php",
+   "petshop-webp.php"
+  ]
+ }
+}
