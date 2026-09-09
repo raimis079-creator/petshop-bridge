@@ -1,0 +1,188 @@
+{
+ "v": "dep-061701",
+ "kurimas": 200,
+ "sid": 5248,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "G": {
+  "v": "S1664G",
+  "wp": "2026-09-09 09:18:17",
+  "krepseliai_siandien": {
+   "viso": 18,
+   "su_prekemis": 17,
+   "tusti": 1,
+   "su_prekemis_sar": [
+    {
+     "id": "207",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "163",
+     "created_at": "2026-09-09 00:23:59",
+     "converted_order_id": null
+    },
+    {
+     "id": "208",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "82",
+     "created_at": "2026-09-09 00:24:01",
+     "converted_order_id": null
+    },
+    {
+     "id": "209",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "82",
+     "created_at": "2026-09-09 00:24:02",
+     "converted_order_id": null
+    },
+    {
+     "id": "210",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "82",
+     "created_at": "2026-09-09 00:24:02",
+     "converted_order_id": null
+    },
+    {
+     "id": "211",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "244",
+     "created_at": "2026-09-09 00:24:03",
+     "converted_order_id": null
+    },
+    {
+     "id": "212",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "163",
+     "created_at": "2026-09-09 00:24:28",
+     "converted_order_id": null
+    },
+    {
+     "id": "213",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "82",
+     "created_at": "2026-09-09 00:24:28",
+     "converted_order_id": null
+    },
+    {
+     "id": "214",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "82",
+     "created_at": "2026-09-09 00:24:28",
+     "converted_order_id": null
+    },
+    {
+     "id": "215",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "82",
+     "created_at": "2026-09-09 00:24:29",
+     "converted_order_id": null
+    },
+    {
+     "id": "216",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "82",
+     "created_at": "2026-09-09 00:24:29",
+     "converted_order_id": null
+    },
+    {
+     "id": "217",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "163",
+     "created_at": "2026-09-09 00:34:14",
+     "converted_order_id": null
+    },
+    {
+     "id": "218",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "82",
+     "created_at": "2026-09-09 00:34:14",
+     "converted_order_id": null
+    },
+    {
+     "id": "219",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "82",
+     "created_at": "2026-09-09 00:34:15",
+     "converted_order_id": null
+    },
+    {
+     "id": "220",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "82",
+     "created_at": "2026-09-09 00:34:15",
+     "converted_order_id": null
+    },
+    {
+     "id": "221",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "82",
+     "created_at": "2026-09-09 00:34:16",
+     "converted_order_id": null
+    },
+    {
+     "id": "222",
+     "status": "abandoned",
+     "sj": "[{\"product",
+     "l": "82",
+     "created_at": "2026-09-09 03:17:31",
+     "converted_order_id": null
+    },
+    {
+     "id": "223",
+     "status": "active",
+     "sj": "[{\"product",
+     "l": "82",
+     "created_at": "2026-09-09 04:51:43",
+     "converted_order_id": null
+    }
+   ]
+  },
+  "testine_preke": [
+   35861,
+   "Kramtalų rinkinys šunims"
+  ],
+  "e2e_add": {
+   "kodas": 401,
+   "prekiu": null,
+   "suma": null,
+   "klaida": "woocommerce_rest_missing_nonce | Missing the Nonce header. This endpoint requires a valid nonce."
+  },
+  "e2e_tokenas": "yra",
+  "e2e_krepselis": {
+   "kodas": 200,
+   "prekiu": 0,
+   "siuntimo_variantai": 0,
+   "variantai": null
+  },
+  "checkout_tusciam": [
+   302,
+   "https://petshop.lt/krepselis/"
+  ],
+  "prekes_psl": {
+   "kodas": 200,
+   "ilgis": 335586,
+   "add_to_cart": 42,
+   "kaina": "li + li {border-top",
+   "warning": 0
+  },
+  "paysera_callback": [
+   400,
+   "{\"success\":false,\"data\":\"Error while processing callback request: \\\"data\\\" parameter not found\"}"
+  ]
+ }
+}
