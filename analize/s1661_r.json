@@ -1,0 +1,32 @@
+{
+ "v": "dep-112751",
+ "kurimas": 200,
+ "sid": 5320,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1661R",
+  "petshop-nepamoketi.php": [
+   "7: * PROBLEMA: `woocommerce_hold_stock_minutes` yra VIENAS skaičius visiems"
+  ],
+  "petshop-darbalaukis.php": [
+   "108: *   `wc_update_product_stock` pagal `_reduced_stock` (perrašomas), `_restock_refunded_items` += n (faktui „atsargos grįžo“);",
+   "700: $reduced = (int) $it->get_meta( '_ps_av_reduced_qty' ) > 0 || $it->get_meta( '_reduced_stock' ) || $it->get_meta( '_ps_av_reduc",
+   "1326: * 1) likutis grįžta (pasitikim žymėmis, kaip pilnas atšaukimas: AV pagal `_ps_av_reduced_qty`, WC veidrodis pagal `_reduced_stoc",
+   "1364: $wr = (int) $it->get_meta( '_reduced_stock' );",
+   "1368: $liko = $wr - $m; if ( $liko > 0 ) { $it->update_meta_data( '_reduced_stock', $liko ); } else { $it->delete_meta_data( '_reduc",
+   "1378: $it = $o->get_item( $iid ); if ( $it ) { if ( $rq > 0 ) { $it->update_meta_data( '_ps_av_reduced_qty', $rq ); } if ( $wr > 0 )",
+   "2455: *  (2) „tinkama prekybai“ → likutis grįžta kaip #4 kiekiuose (`_ps_av_reduced_qty` → AV, `_reduced_stock` → WC veidrodis; tiekėj",
+   "2487: $metos[ $iid ] = array( 'rq' => (int) $it->get_meta( '_ps_av_reduced_qty' ), 'rd' => (string) $it->get_meta( '_ps_av_reduced'",
+   "2493: if ( $wr > 0 ) { $p = wc_get_product( $pid ); $m = min( $q, $wr ); if ( $p && $p->managing_stock() ) { $xw = wc_update_produc",
+   "2504: foreach ( $metos as $iid => $m_ ) { $it = $o->get_item( $iid ); if ( ! $it ) { continue; } if ( $m_['rq'] ) { $it->update_meta"
+  ],
+  "petshop-desk.php": [
+   "1250: if ( $it->get_meta( '_reduced_stock' ) || $it->get_meta( '_ps_av_reduced' ) ) { continue; }",
+   "1280: if ( $it->get_meta( '_reduced_stock' ) || $it->get_meta( '_ps_av_reduced' ) ) { continue; }"
+  ],
+  "nepamoketi_dydis": 2708
+ }
+}
