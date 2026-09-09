@@ -1,0 +1,19 @@
+{
+ "v": "dep-110424",
+ "kurimas": 200,
+ "sid": 5312,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1661D",
+  "faze": "D",
+  "md5": "b7bcf6af97626216823332ecfe6db4be",
+  "dydis": 8842,
+  "irasyta": 8842,
+  "heartbeat": 500,
+  "ROLLBACK": "failas pasalintas"
+ },
+ "zalias_V": "<br />\n<b>Warning</b>:  md5_file(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-welcome-modal.php): Failed to open stream: No such file or directory in <b>/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code</b> on line <b>20</b><br />\n{\"v\":\"S1661D\",\"faze\":\"V\",\"yra\":false,\"md5\":false,\"klase\":true,\"opt\":\"1\",\"http\":200,\"psw_html\":true,\"sveiki_html\":true}"
+}
