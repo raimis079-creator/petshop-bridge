@@ -1,0 +1,236 @@
+{
+ "v": "dep-105211",
+ "kurimas": 200,
+ "sid": 5309,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1661P",
+  "mu_failai": [
+   "automation-by-installatron.php",
+   "petshop-akcijos.php",
+   "petshop-analitika.php",
+   "petshop-anketa-ivykiai.php",
+   "petshop-anketos-ataskaita.php",
+   "petshop-ataskaita-atsargos.php",
+   "petshop-ataskaita-klientai.php",
+   "petshop-ataskaita-menuo.php",
+   "petshop-ataskaita-pardavimai.php",
+   "petshop-ataskaita-prekes.php",
+   "petshop-ataskaitos-ui.php",
+   "petshop-ataskaitu-agregavimas.php",
+   "petshop-ataskaitu-eksportas.php",
+   "petshop-atributai.php",
+   "petshop-atsargu-laukimas.php",
+   "petshop-atsisakymas.php",
+   "petshop-av-admin.php",
+   "petshop-av-dropship.php",
+   "petshop-av-expiry.php",
+   "petshop-av-limit.php",
+   "petshop-av-order.php",
+   "petshop-av-reduce.php",
+   "petshop-av-sheets.php",
+   "petshop-av-source.php",
+   "petshop-av-stock.php",
+   "petshop-av-tiekimas.php",
+   "petshop-cache.php",
+   "petshop-code-search.php",
+   "petshop-darbalaukis.php",
+   "petshop-desk.php",
+   "petshop-dim-klientai.php",
+   "petshop-dropship-sargas.php",
+   "petshop-dydziai.php",
+   "petshop-fakt-atsargos.php",
+   "petshop-fakt-grazinimai.php",
+   "petshop-fakt-kainos.php",
+   "petshop-fakt-reklama.php",
+   "petshop-fakt-siuntos.php",
+   "petshop-faktai.php",
+   "petshop-feeding-calc-rest.php",
+   "petshop-ga4-serveris.php",
+   "petshop-gavimas.php",
+   "petshop-greitis.php",
+   "petshop-hero-preload.php",
+   "petshop-higiena.php",
+   "petshop-import-log.php",
+   "petshop-import-tempas.php",
+   "petshop-innodb.php",
+   "petshop-islaidos.php",
+   "petshop-istorijos-adapteris.php",
+   "petshop-ivykiai.php",
+   "petshop-juosta.php",
+   "petshop-kalendorius.php",
+   "petshop-kampaniju-langas.php",
+   "petshop-kanalai.php",
+   "petshop-katalogas.php",
+   "petshop-kategorijos-aprasymas.php",
+   "petshop-klientai.php",
+   "petshop-kliento-siuntos.php",
+   "petshop-klientui.php",
+   "petshop-kreipinys.php",
+   "petshop-laiskai-importas.php",
+   "petshop-laiskai.php",
+   "petshop-langai-admin.php",
+   "petshop-laukai.php",
+   "petshop-legacy-301.php",
+   "petshop-legacy-importas.php",
+   "petshop-login-sargas.php",
+   "petshop-m8-food.php",
+   "petshop-naujienlaiskiai-admin.php",
+   "petshop-naujienlaiskiai.php",
+   "petshop-nepamoketi.php",
+   "petshop-pardavimai.php",
+   "petshop-parseris.php",
+   "petshop-partijos.php",
+   "petshop-paruostu-ataskaita.php",
+   "petshop-payment-failed.php",
+   "petshop-perziuru-priminimas.php",
+   "petshop-pet-claim.php",
+   "petshop-pet-kontraktas.php",
+   "petshop-pilnumas.php",
+   "petshop-pren-nuorodos.php",
+   "petshop-pren-sutikimas.php",
+   "petshop-prenumerata-katalogas.php",
+   "petshop-prenumerata-paskyra.php",
+   "petshop-prenumerata-veiksmas.php",
+   "petshop-prenumerata.php",
+   "petshop-prenumeratos-langas.php",
+   "petshop-prenumeratu-prognoze.php",
+   "petshop-prieziura.php",
+   "petshop-ps-pets-migration-freeze.php",
+   "petshop-rankos.php",
+   "petshop-rec-log.php",
+   "petshop-rec-ui.php",
+   "petshop-rec-variklis.php",
+   "petshop-refill-ivykiai.php",
+   "petshop-rezultatai.php",
+   "petshop-rinkiniai.php",
+   "petshop-rinkiniu-ataskaita.php",
+   "petshop-rinkiniu-likuciai.php",
+   "petshop-rinkiniu-rusis.php",
+   "petshop-rysiai.php",
+   "petshop-rytas.php",
+   "petshop-sargas.php",
+   "petshop-schema.php",
+   "petshop-seo-aprasymas.php",
+   "petshop-seo.php",
+   "petshop-seseliai.php",
+   "petshop-siuntu-laiskai.php",
+   "petshop-siuntu-valymas.php",
+   "petshop-statistika-vitrina.php",
+   "petshop-statistika.php",
+   "petshop-teises.php",
+   "petshop-uzsakymu-ivykiai.php",
+   "petshop-vartai.php",
+   "petshop-vertimai.php",
+   "petshop-vf-feed.php",
+   "petshop-wc-sync.php",
+   "petshop-webp.php"
+  ],
+  "mu_welcome_hits": [],
+  "snip_welcome": [
+   {
+    "id": "5222",
+    "name": "TEMP PS dep-223700",
+    "active": "0"
+   },
+   {
+    "id": "5304",
+    "name": "TEMP PS dep-103146",
+    "active": "0"
+   },
+   {
+    "id": "5305",
+    "name": "TEMP PS dep-103707",
+    "active": "0"
+   },
+   {
+    "id": "5307",
+    "name": "TEMP PS dep-103905",
+    "active": "0"
+   },
+   {
+    "id": "5309",
+    "name": "TEMP PS dep-105211",
+    "active": "1"
+   }
+  ],
+  "opt_enabled": "1",
+  "seen_meta_kiek": 0,
+  "ord": {
+   "35871": {
+    "status": "cancelled",
+    "_dp_stock_reduced": "no",
+    "_order_stock_reduced": false,
+    "_ps_stock_reduced": "",
+    "prekes": [
+     {
+      "pid": 18587,
+      "qty": 1,
+      "_stock": "246.000000",
+      "pav": "Exclusion Hypoallergenic mažų "
+     }
+    ],
+    "likucio_pastabos": [
+     "Likutis sumažintas: Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg (249&rarr;248)",
+     "Likutis padidintas: Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg (249&rarr;250)"
+    ]
+   },
+   "35873": {
+    "status": "on-hold",
+    "_dp_stock_reduced": "yes",
+    "_order_stock_reduced": true,
+    "_ps_stock_reduced": "",
+    "prekes": [
+     {
+      "pid": 14951,
+      "qty": 4,
+      "_stock": "10",
+      "pav": "Žarnų pagaliukai, 80 g"
+     }
+    ],
+    "likucio_pastabos": [
+     "Likutis sumažintas: Žarnų pagaliukai, 80 g (23&rarr;19)"
+    ]
+   },
+   "35874": {
+    "status": "cancelled",
+    "_dp_stock_reduced": "no",
+    "_order_stock_reduced": false,
+    "_ps_stock_reduced": "",
+    "prekes": [
+     {
+      "pid": 14951,
+      "qty": 4,
+      "_stock": "10",
+      "pav": "Žarnų pagaliukai, 80 g"
+     }
+    ],
+    "likucio_pastabos": [
+     "Likutis sumažintas: Žarnų pagaliukai, 80 g (19&rarr;15)",
+     "Atšaukta rankiniu būdu: klientas tam pačiam krepšeliui sukūrė tris užsakymus (#35873 laukia pavedimo). Likutis grąžinamas. S1689. Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas."
+    ]
+   },
+   "35875": {
+    "status": "cancelled",
+    "_dp_stock_reduced": "no",
+    "_order_stock_reduced": false,
+    "_ps_stock_reduced": "",
+    "prekes": [
+     {
+      "pid": 14951,
+      "qty": 4,
+      "_stock": "10",
+      "pav": "Žarnų pagaliukai, 80 g"
+     }
+    ],
+    "likucio_pastabos": [
+     "Likutis sumažintas: Žarnų pagaliukai, 80 g (15&rarr;11)",
+     "Atšaukta rankiniu būdu: klientas tam pačiam krepšeliui sukūrė tris užsakymus (#35873 laukia pavedimo). Likutis grąžinamas. S1689. Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas."
+    ]
+   }
+  }
+ }
+}
