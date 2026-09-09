@@ -1,0 +1,176 @@
+{
+ "v": "dep-081123",
+ "kurimas": 200,
+ "sid": 5274,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "V": {
+  "v": "S1674V",
+  "wp": "2026-09-09 11:12:29",
+  "puslapis": {
+   "kodas": 200,
+   "ilgis": 208924,
+   "overview_div": 1,
+   "tuscias_div": 0,
+   "cmplz_lentele": 9,
+   "nesinchronizuotas": 0,
+   "ex_com": 0
+  },
+  "skyrius_6": "Yandex Metrica Funkcinis, Statistika Consent to service yandex-metrica Naudojimas Dalijimasis duomenimis Šie duomenys nėra bendrinami su trečiosiomis šalimis. Funkcinis Vardas _ym*_lastHit Galiojimo laikas persistent Funkcija Store time of visit Vardas _ym_retryReqs Galiojimo laikas persistent Funkcija Store dynamic variables from the browser Statistika Vardas _ym*_il Galiojimo laikas persistent Funkcija Provide functions across pages Vardas _ym_synced Galiojimo laikas Funkcija Vardas _ym_uid Galiojimo laikas 1 year Funkcija Store and track a visitor&#8217;s identity Vardas _ym*_lsid Galiojimo laikas persistent Funkcija Store a unique user ID WooCommerce Funkcinis Consent to service woocommerce Naudojimas Dalijimasis duomenimis Šie duomenys nėra bendrinami su trečiosiomis šalimis. Funkcinis Vardas wc_cart_hash_* Galiojimo laikas session Funkcija Store items in shopping cart Vardas wp_woocommerce_session_* Galiojimo laikas session Funkcija Store performed actions on the website Google Analytics Statistika Consent to service google-analytics Naudojimas Dalijimasis duomenimis Šie duomenys nėra bendrinami su trečiosiomis šalimis. Statistika Vardas _ga Galiojimo laikas 2 years Funkcija Store and count pageviews Vardas _ga_* Galiojimo laikas 1 year Funkcija Store and count pageviews Complianz Funkcinis Consent to service complianz Naudojimas Dalijimasis duomenimis Šie duomenys nėra",
+  "services": [
+   {
+    "ID": "15",
+    "name": "Automattic",
+    "language": "en",
+    "sync": "1"
+   },
+   {
+    "ID": "16",
+    "name": "Automattic",
+    "language": "lt",
+    "sync": "1"
+   },
+   {
+    "ID": "1",
+    "name": "Complianz",
+    "language": "en",
+    "sync": "1"
+   },
+   {
+    "ID": "2",
+    "name": "Complianz",
+    "language": "lt",
+    "sync": "1"
+   },
+   {
+    "ID": "9",
+    "name": "Google Adsense",
+    "language": "en",
+    "sync": "1"
+   },
+   {
+    "ID": "10",
+    "name": "Google Adsense",
+    "language": "lt",
+    "sync": "1"
+   },
+   {
+    "ID": "7",
+    "name": "Google Analytics",
+    "language": "en",
+    "sync": "1"
+   },
+   {
+    "ID": "8",
+    "name": "Google Analytics",
+    "language": "lt",
+    "sync": "1"
+   },
+   {
+    "ID": "11",
+    "name": "Microsoft Clarity",
+    "language": "en",
+    "sync": "1"
+   },
+   {
+    "ID": "12",
+    "name": "Microsoft Clarity",
+    "language": "lt",
+    "sync": "1"
+   },
+   {
+    "ID": "17",
+    "name": "Sourcebuster JS",
+    "language": "en",
+    "sync": "1"
+   },
+   {
+    "ID": "18",
+    "name": "Sourcebuster JS",
+    "language": "lt",
+    "sync": "1"
+   },
+   {
+    "ID": "5",
+    "name": "WooCommerce",
+    "language": "en",
+    "sync": "1"
+   },
+   {
+    "ID": "6",
+    "name": "WooCommerce",
+    "language": "lt",
+    "sync": "1"
+   },
+   {
+    "ID": "13",
+    "name": "WordPress",
+    "language": "en",
+    "sync": "1"
+   },
+   {
+    "ID": "14",
+    "name": "WordPress",
+    "language": "lt",
+    "sync": "1"
+   },
+   {
+    "ID": "3",
+    "name": "Yandex Metrica",
+    "language": "en",
+    "sync": "1"
+   },
+   {
+    "ID": "4",
+    "name": "Yandex Metrica",
+    "language": "lt",
+    "sync": "1"
+   }
+  ],
+  "cookies_pagal_kalba": [
+   {
+    "language": "en",
+    "k": "66"
+   },
+   {
+    "language": "lt",
+    "k": "66"
+   }
+  ],
+  "wsc_logai": [
+   {
+    "context": "get_token",
+    "error_message": "cannot retrieve token, email or client id or secret not found",
+    "timestamp": "2026-09-09 10:58:26"
+   },
+   {
+    "context": "get_token",
+    "error_message": "cannot retrieve token, email or client id or secret not found",
+    "timestamp": "2026-09-09 11:04:51"
+   },
+   {
+    "context": "get_token",
+    "error_message": "cannot retrieve token, email or client id or secret not found",
+    "timestamp": "2026-09-09 11:04:54"
+   }
+  ],
+  "bukle": {
+   "auth": "TAIP",
+   "status": "enabled",
+   "site_id": false,
+   "checks_scan_id": "01a08532-c318-729b-81a6-660cdf455019"
+  },
+  "vedlys": {
+   "uses_thirdparty_services": "no",
+   "thirdparty_services_on_site": "",
+   "consent-mode": "no",
+   "gtm_code": "",
+   "ua_code": "",
+   "aw_code": "",
+   "compile_statistics": "yes",
+   "uses_ad_cookies": "yes"
+  }
+ }
+}
