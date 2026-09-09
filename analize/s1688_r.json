@@ -1,0 +1,60 @@
+{
+ "v": "dep-103146",
+ "kurimas": 200,
+ "sid": 5304,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1688",
+  "wp": "2026-09-09 13:32:51",
+  "vartotojas": {
+   "id": 4008,
+   "login": "ptomas887@gmail.com",
+   "registruotas": "2026-08-31 15:33:20",
+   "roles": [
+    "customer"
+   ]
+  },
+  "meta": {
+   "last_name": "Paulauskas",
+   "billing_last_name": "Paulauskas",
+   "_ps_importas": "S1539 2026-08-31",
+   "last_update": "1788949521",
+   "wc_last_active": "1788949406",
+   "session_tokens": "a:2:{s:64:\"85f7d0b3974f975afe04e6a08e46fa054c6da93682fcb701d",
+   "shipping_last_name": "Paulauskas"
+  },
+  "activation_key": null,
+  "turi_slaptazodi": true,
+  "laiskai": "order\" for order #35871 sent CONTEXT: {\"email_type\":\"cancelled_order\",\"status\":\"sent\",\"recipient\":\"guest\",\"order\":35871}\n2026-09-09T09:34:26+00:00 INFO Email \"\" sent CONTEXT: {\"email_type\":\"\",\"status\":\"sent\",\"recipient\":\"guest\"}\n2026-09-09T09:39:13+00:00 INFO Email \"new_order\" for order #35873 sent CONTEXT: {\"email_type\":\"new_order\",\"status\":\"sent\",\"recipient\":\"guest\",\"order\":35873}\n2026-09-09T09:39:13+00:00 NOTICE Email \"customer_on_hold_order\" for order #35873 not sent: email type is disabled CONTEXT: {\"email_type\":\"customer_on_hold_order\",\"status\":\"disabled\",\"recipient\":\"ptomas887@gmail.com\",\"order\":35873}\n2026-09-09T09:39:18+00:00 INFO Email \"\" sent CONTEXT: {\"email_type\":\"\",\"status\":\"sent\",\"recipient\":\"guest\"}\n2026-09-09T09:43:05+00:00 INFO Email \"\" sent CONTEXT: {\"email_type\":\"\",\"status\":\"sent\",\"recipient\":\"guest\"}\n2026-09-09T09:50:21+00:00 INFO Email \"\" sent CONTEXT: {\"email_type\":\"\",\"status\":\"sent\",\"recipient\":\"guest\"}\n2026-09-09T09:57:33+00:00 INFO Email \"customer_reset_password\" for user #4008 sent CONTEXT: {\"email_type\":\"customer_reset_password\",\"status\":\"sent\",\"recipient\":\"ptomas887@gmail.com\",\"user\":4008}\n2026-09-09T10:02:55+00:00 INFO Email \"\" sent CONTEXT: {\"email_type\":\"\",\"status\":\"sent\",\"recipient\":\"guest\"}\n2026-09-09T10:07:25+00:00 INFO Email \"\" sent CONTEXT: {\"email_type\":\"\",\"status\":\"sent\",\"recipient\":\"guest\"}\n2026-09-09T10:09:10+00:00 INFO Email \"\" sent CONTEXT: {\"email_type\":\"\",\"status\":\"sent\",\"recipient\":\"guest\"}\n2026-09-09T10:19:03+00:00 INFO Email \"\" sent CONTEXT: {\"email_type\":\"\",\"status\":\"sent\",\"recipient\":\"guest\"}\n2026-09-09T10:22:45+00:00 INFO Email \"\" sent CONTEXT: {\"email_type\":\"\",\"status\":\"sent\",\"recipient\":\"guest\"}\n2026-09-09T10:24:03+00:00 INFO Email \"\" sent CONTEXT: {\"email_type\":\"\",\"status\":\"sent\",\"recipient\":\"guest\"}\n2026-09-09T10:25:29+00:00 INFO Email \"\" sent CONTEXT: {\"email_type\":\"\",\"status\":\"sent\",\"recipient\":\"guest\"}\n2026-09-09T10:27:21+00:00 INFO Email \"\" sent CONTEXT: {\"email_type\":\"\",\"status\":\"sent\",\"recipient\":\"guest\"}\n",
+  "importuotu": 5666,
+  "reset_key_turi": 8,
+  "welcome_modal": "0",
+  "uzsakymai": [
+   {
+    "id": "35873",
+    "status": "wc-on-hold",
+    "date_created_gmt": "2026-09-09 09:33:57",
+    "payment_method": "bacs",
+    "total_amount": "13.31000000"
+   },
+   {
+    "id": "35874",
+    "status": "wc-pending",
+    "date_created_gmt": "2026-09-09 09:42:37",
+    "payment_method": "paysera",
+    "total_amount": "13.31000000"
+   },
+   {
+    "id": "35875",
+    "status": "wc-pending",
+    "date_created_gmt": "2026-09-09 09:50:07",
+    "payment_method": "paysera",
+    "total_amount": "13.31000000"
+   }
+  ],
+  "likutis_14951": "10"
+ }
+}
