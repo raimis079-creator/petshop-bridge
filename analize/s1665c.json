@@ -1,0 +1,16 @@
+{
+ "v": "dep-134642",
+ "kurimas": 200,
+ "sid": 5343,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1665 c",
+  "pasiek": {
+   "/wp-json/petshop/v1/sender-webhook": "401 {\"error\":\"invalid_signature\"}",
+   "/?rest_route=/petshop/v1/sender-webhook": "401 {\"error\":\"invalid_signature\"}"
+  }
+ }
+}
