@@ -1,0 +1,33 @@
+{
+ "v": "dep-183754",
+ "kurimas": 200,
+ "sid": 5396,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1672 a",
+  "eil": [
+   "2922 $stock = class_exists( 'Petshop_Stock_Service' )",
+   "3113 echo '<div class=\"kort-eil\"><span>Parduodama pirkėjui</span><b class=\"' . ( $stock['qty'] > 0 ? '' : 'nula' ) . '\">'",
+   "3384 $ff = Petshop_AV_Source::resolve( $pid );",
+   "4700 $stock = get_post_meta( $pid, '_stock', true );",
+   "4709 'sutampa'        => ( '' !== $stock && (int) $stock === $suma ),",
+   "5129 /* Parduodamas kiekis — TAS PATS Stock_Service, tik gryna funkcija,",
+   "5431 $stock = $v( '_stock' );",
+   "5928 'pard'       => array( 'g' => 'Vieta',    'v' => 'Parduodama',         't' => 'sk' ),",
+   "6758 echo '<th class=\"num\">Parduodama</th>';",
+   "7711 if(!ids.length) return Promise.resolve(null);"
+  ],
+  "kand": [
+   "999 public static function likutis_rankinis( $pid ) {",
+   "1022 public static function tiekejo_likutis_rankinis( $pid ) {",
+   "2205 public static function ajax_tiekejo_likutis() {",
+   "2783 $praleisti[] = array( 'id' => $pid, 'kodel' => 'nėra prekės' ); continue;",
+   "2788 'kodel' => 'jau tokios būsenos' ); continue;",
+   "2923 ? Petshop_Stock_Service::parduodama( $pid ) : array( 'qty' => 0, 'kodel' => '—', 'saltiniai' => array(), 'perspejimai' => array() );",
+   "8618 function likutis(){"
+  ]
+ }
+}
