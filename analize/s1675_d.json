@@ -1,0 +1,427 @@
+{
+ "v": "dep-081812",
+ "kurimas": 200,
+ "sid": 5277,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1675D",
+  "services_stulpeliai": [
+   "ID",
+   "name",
+   "slug",
+   "serviceType",
+   "category",
+   "thirdParty",
+   "sharesData",
+   "secondParty",
+   "privacyStatementURL",
+   "language",
+   "isTranslationFrom",
+   "sync",
+   "lastUpdatedDate"
+  ],
+  "cookies_stulpeliai": [
+   "ID",
+   "name",
+   "slug",
+   "sync",
+   "ignored",
+   "retention",
+   "type",
+   "serviceID",
+   "cookieFunction",
+   "collectedPersonalData",
+   "purpose",
+   "language",
+   "isTranslationFrom",
+   "isOwnDomainCookie",
+   "domain",
+   "deleted",
+   "isMembersOnly",
+   "showOnPolicy",
+   "lastUpdatedDate",
+   "lastAddDate",
+   "firstAddDate"
+  ],
+  "services_visos": [
+   {
+    "ID": "1",
+    "name": "Complianz",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "en",
+    "isTranslationFrom": "0",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "2",
+    "name": "Complianz",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "lt",
+    "isTranslationFrom": "1",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "3",
+    "name": "Yandex Metrica",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "en",
+    "isTranslationFrom": "0",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "4",
+    "name": "Yandex Metrica",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "lt",
+    "isTranslationFrom": "3",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "5",
+    "name": "WooCommerce",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "en",
+    "isTranslationFrom": "0",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "6",
+    "name": "WooCommerce",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "lt",
+    "isTranslationFrom": "5",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "7",
+    "name": "Google Analytics",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "en",
+    "isTranslationFrom": "0",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "8",
+    "name": "Google Analytics",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "lt",
+    "isTranslationFrom": "7",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "9",
+    "name": "Google Adsense",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "en",
+    "isTranslationFrom": "0",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "10",
+    "name": "Google Adsense",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "lt",
+    "isTranslationFrom": "9",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "11",
+    "name": "Microsoft Clarity",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "en",
+    "isTranslationFrom": "0",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "12",
+    "name": "Microsoft Clarity",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "lt",
+    "isTranslationFrom": "11",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "13",
+    "name": "WordPress",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "en",
+    "isTranslationFrom": "0",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "14",
+    "name": "WordPress",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "lt",
+    "isTranslationFrom": "13",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "15",
+    "name": "Automattic",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "en",
+    "isTranslationFrom": "0",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "16",
+    "name": "Automattic",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "lt",
+    "isTranslationFrom": "15",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "17",
+    "name": "Sourcebuster JS",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "en",
+    "isTranslationFrom": "0",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   },
+   {
+    "ID": "18",
+    "name": "Sourcebuster JS",
+    "slug": "",
+    "serviceType": "",
+    "category": "",
+    "thirdParty": "0",
+    "sharesData": "0",
+    "secondParty": "0",
+    "privacyStatementURL": "",
+    "language": "lt",
+    "isTranslationFrom": "17",
+    "sync": "1",
+    "lastUpdatedDate": "0"
+   }
+  ],
+  "cookies_deleted": 20,
+  "paskutine_klaida": "",
+  "transients": [
+   {
+    "option_name": "_transient_timeout_cmplz_pages_list",
+    "v": "1789114379"
+   },
+   {
+    "option_name": "_transient_cmplz_pages_list",
+    "v": "a:8:{i:0;s:4:\"home\";i:1;s:9:\"loginpage\";i:2;i:34789;i:3;i:34676;i:4;i:3229;i:5;i:3223;i:6;i:3220;i:7;i:3222;}"
+   },
+   {
+    "option_name": "_transient_timeout_cmplz_dn_notifications_lt",
+    "v": "1788976305"
+   },
+   {
+    "option_name": "_transient_cmplz_dn_notifications_lt",
+    "v": "a:0:{}"
+   },
+   {
+    "option_name": "_transient_timeout_cmplz_processed_pages_list",
+    "v": "1791533333"
+   },
+   {
+    "option_name": "_transient_cmplz_processed_pages_list",
+    "v": "a:8:{i:0;s:4:\"home\";i:1;s:9:\"loginpage\";i:2;i:34789;i:3;i:34676;i:4;i:3229;i:5;i:3223;i:6;i:3220;i:7;i:3222;}"
+   },
+   {
+    "option_name": "_transient_timeout_cmplz_wsc_rest_accessible",
+    "v": "1788944908"
+   },
+   {
+    "option_name": "_transient_cmplz_wsc_rest_accessible",
+    "v": "1"
+   },
+   {
+    "option_name": "cmplz_transients",
+    "v": "a:7:{s:22:\"wsc_scanner_cb_enabled\";a:2:{s:5:\"value\";b:1;s:7:\"expires\";i:1788942150;}s:22:\"cmplz_wsc_access_token\";a:2:{s"
+   },
+   {
+    "option_name": "_transient_timeout_cmplz_cookies",
+    "v": "1788942003"
+   },
+   {
+    "option_name": "_transient_cmplz_cookies",
+    "v": "a:132:{i:0;O:8:\"stdClass\":21:{s:2:\"ID\";s:1:\"1\";s:4:\"name\";s:16:\"cmplz_functional\";s:4:\"slug\";s:16:\"cmplz_functional\";s:4"
+   }
+  ],
+  "snapshot_opcijos": [
+   {
+    "option_name": "woocommerce_payments_provider_state_snapshots",
+    "l": "339"
+   },
+   {
+    "option_name": "cmplz_generate_new_cookiepolicy_snapshot",
+    "l": "10"
+   },
+   {
+    "option_name": "cmplz_preloaded_privacy_info",
+    "l": "9978"
+   },
+   {
+    "option_name": "subscrpt_stats_last_snapshot",
+    "l": "10"
+   }
+  ],
+  "fn": {
+   "cmplz_update_cookie_policy_snapshot": false,
+   "cmplz_get_cookie_policy": false,
+   "cmplz_delete_transients": false
+  },
+  "document_metodai": [
+   "get_cookie_snapshot_list",
+   "cookies"
+  ],
+  "cookie_metodai": [
+   "__construct",
+   "add",
+   "__get",
+   "__set",
+   "delete",
+   "restore",
+   "get_translations",
+   "get",
+   "save",
+   "get_used_languages",
+   "sanitize_cookie",
+   "is_valid_cookie",
+   "get_fuzzy_match"
+  ],
+  "service_metodai": [
+   "__construct",
+   "__get",
+   "__set",
+   "get_cookies",
+   "get",
+   "save",
+   "delete",
+   "drop_from_wizard",
+   "add_to_wizard",
+   "get_service_slug",
+   "get_translations",
+   "add",
+   "sanitize_service"
+  ]
+ }
+}
