@@ -1,0 +1,24 @@
+{
+ "v": "dep-071944",
+ "kurimas": 200,
+ "sid": 5262,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1669R2",
+  "meniu": [
+   "'Complianz', 'Complianz' . $plus_one, apply_filters( 'cmplz_capability', 'manage_privacy' ), 'complianz', 'cmplz_settings_page', CMPLZ_URL . 'assets/images/menu-icon.svg', CMPLZ_MAIN_MENU_POSITION ",
+   "'complianz#dashboard', __( 'Dashboard', 'complianz-gdpr' ) . $plus_one, __( 'Dashboard', 'complianz-gdpr' ), apply_filters( 'cmplz_capability', 'manage_privacy' ), 'complianz', 'cmplz_settings_page' ",
+   "'complianz', __( 'Wizard', 'complianz-gdpr' ), __( 'Wizard', 'complianz-gdpr' ), apply_filters( 'cmplz_capability', 'manage_privacy' ), 'complianz#wizard', 'cmplz_settings_page' ",
+   "'complianz', __( 'Integrations', 'complianz-gdpr' ), __( 'Integrations', 'complianz-gdpr' ), apply_filters( 'cmplz_capability', 'manage_privacy' ), 'complianz#integrations', 'cmplz_settings_page' ",
+   "'complianz', __( 'Settings', 'complianz-gdpr' ), __( 'Settings', 'complianz-gdpr' ), apply_filters( 'cmplz_capability', 'manage_privacy' ), 'complianz#settings', 'cmplz_settings_page' ",
+   "'complianz', __( 'Tools', 'complianz-gdpr' ), __( 'Tools', 'complianz-gdpr' ), apply_filters( 'cmplz_capability', 'manage_privacy' ), 'complianz#tools', 'cmplz_settings_page' "
+  ],
+  "config_yra": "cmplz_config",
+  "config_savybes": {
+   "fields": "masyvas 0"
+  }
+ }
+}
