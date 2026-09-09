@@ -1,0 +1,47 @@
+{
+ "v": "dep-111914",
+ "kurimas": 200,
+ "sid": 5316,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1661M3",
+  "dydis": 5742,
+  "grazinti": "public static function grazinti( $order_id ) {\n\t\t$order = is_numeric( $order_id ) ? wc_get_order( $order_id ) : $order_id;\n\t\tif ( ! $order ) { return; }\n\t\tif ( ! $order->get_meta( '_ps_av_reduced' ) ) { return; }\n\t\tif ( $order->get_meta( '_ps_av_restored' ) ) { return; }\n\t\tif ( ! class_exists( 'Petshop_AV_Stock' ) ) { return; }\n\n\t\t$padaryta = [];\n\t\tforeach ( $order->get_items() as $item_id => $item ) {\n\t\t\t$qty = (int) $item->get_meta( '_ps_av_reduced_qty' );\n\t\t\tif ( $qty <= 0 ) { continue; }\n\t\t\t$pid = (int) $item->get_product_id();\n\n\t\t\tif ( null === Petshop_AV_Stock::qty( $pid ) ) {\n\t\t\t\t$p = wc_get_product( $pid );\n\t\t\t\tif ( $p ) {\n\t\t\t\t\t$dabar = (int) get_post_meta( $pid, '_stock', true );\n\t\t\t\t\t$p->set_stock_quantity( $dabar + $qty );\n\t\t\t\t\t$p->set_stock_status( 'instock' );\n\t\t\t\t\t$p->save();\n\t\t\t\t\twc_delete_product_transients( $pid );\n\t\t\t\t\t$padaryta[] = \"#{$pid} grynai AV +{$qty}\";\n\t\t\t\t}\n\t\t\t} else {\n\t\t\t\t$rez = Petshop_AV_Stock::increase( $pid, $qty, 'grąžinta #' . $order->get_order_number() );\n\t\t\t\tif ( ! is_wp_error( $rez ) ) { $padaryta[] = \"#{$pid} AV +{$qty} -> {$rez}\"; }\n\t\t\t}\n\t\t}\n\t\tif ( $padaryta ) {\n\t\t\t$order->update_meta_data( '_ps_av_restored', current_time( 'mysql' ) );\n\t\t\t$order->save();\n\t\t\t$order->add_order_note( 'AV grąžinimas: ' . implode( ' · ', $padaryta ) );\n\t\t}\n\t}",
+  "flagai": [
+   "_ps_av_reduced",
+   "_ps_av_reduced_qty",
+   "_ps_av_restored"
+  ],
+  "meta": {
+   "35871": {
+    "_dp_stock_reduced": "no",
+    "_petshop_avpn_number": "AVPN011001"
+   },
+   "35874": {
+    "_dp_stock_reduced": "no",
+    "_petshop_avpn_number": "AVPN011004"
+   },
+   "35875": {
+    "_dp_stock_reduced": "no",
+    "_petshop_avpn_number": "AVPN011005"
+   }
+  },
+  "imeta": {
+   "35871": {
+    "_ps_savikaina_vnt": "37.4850",
+    "_ps_savikaina_saltinis": "pardavimai"
+   },
+   "35874": {
+    "_ps_savikaina_vnt": "1.4900",
+    "_ps_savikaina_saltinis": "pardavimai"
+   },
+   "35875": {
+    "_ps_savikaina_vnt": "1.4900",
+    "_ps_savikaina_saltinis": "pardavimai"
+   }
+  }
+ }
+}
