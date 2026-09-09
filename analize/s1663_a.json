@@ -1,0 +1,32 @@
+{
+ "v": "dep-122425",
+ "kurimas": 200,
+ "sid": 5328,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1663A",
+  "filtrai": "NERA",
+  "naudoja": {
+   "petshop-atsisakymas.php": 4,
+   "petshop-av-dropship.php": 2,
+   "petshop-av-reduce.php": 2,
+   "petshop-av-sheets.php": 1,
+   "petshop-av-tiekimas.php": 4,
+   "petshop-darbalaukis.php": 66,
+   "petshop-desk.php": 22,
+   "petshop-payment-failed.php": 1,
+   "petshop-siuntu-laiskai.php": 3,
+   "class-event-emitters.php": 2,
+   "class-post-purchase.php": 2
+  },
+  "snip": [
+   "614 Petshop DataLayer v1.1 (GA4 ecommerce) act=1",
+   "639 Petshop Saskaitos Render v1 act=0",
+   "641 Petshop Saskaitos Render LIVE v1 act=0"
+  ],
+  "paysera_failu": 0
+ }
+}
