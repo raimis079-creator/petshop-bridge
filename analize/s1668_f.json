@@ -1,0 +1,42 @@
+{
+ "v": "dep-165556",
+ "kurimas": 200,
+ "sid": 5376,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "K": {
+  "v": "S1668 f",
+  "faze": "K",
+  "test_pid": 34889,
+  "priezastys": {
+   "gavimas": "Gavimas",
+   "inventorizacija": "Inventorizacija",
+   "nurasymas": "Nurašymas",
+   "korekcija": "Korekcija",
+   "kaina": "Kainos keitimas",
+   "isimta": "Išimta iš prekybos"
+  },
+  "av_dabar": 0,
+  "av_laukas": "_stock"
+ },
+ "T": {
+  "success": true,
+  "data": {
+   "operacija": "AV26090916571284",
+   "irasyta": 1,
+   "eilutes": [
+    {
+     "id": 34889,
+     "buvo": 0,
+     "tapo": 0,
+     "partija": 0,
+     "pastaba": ""
+    }
+   ],
+   "klaidos": [],
+   "priezastis": "Gavimas"
+  }
+ }
+}
