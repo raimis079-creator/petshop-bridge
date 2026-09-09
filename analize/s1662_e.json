@@ -1,0 +1,44 @@
+{
+ "v": "dep-122024",
+ "kurimas": 200,
+ "sid": 5327,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1662E",
+  "faze": "D",
+  "sen_md5": "55f561398d3f6e745b93e4d7d3d895a2",
+  "md5": "1dd8e6f66a3960bae4b9a5377abff78e",
+  "dydis": 71608,
+  "irasyta": 71608,
+  "heartbeat": 200
+ },
+ "F": {
+  "v": "S1662E",
+  "faze": "F",
+  "nuimta": {
+   "35871": "AVPN011001",
+   "35873": "AVPN011003",
+   "35874": "AVPN011004",
+   "35875": "AVPN011005",
+   "35876": "AVPN011006"
+  },
+  "p35872": "AVPN011002→AVPN011001",
+  "counter": 11002
+ },
+ "V": {
+  "v": "S1662E",
+  "faze": "V",
+  "tipas_35873_onhold": "proforma",
+  "tipas_35876_pending": "proforma",
+  "tipas_35872_paid": "invoice",
+  "tipas_35874_cancelled": "proforma",
+  "avpn_35872": "AVPN011001",
+  "avpn_35876": "",
+  "counter": "11002",
+  "md5_gyvas": "1dd8e6f66a3960bae4b9a5377abff78e",
+  "titulinis": 200
+ }
+}
