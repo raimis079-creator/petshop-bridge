@@ -1,0 +1,67 @@
+{
+ "v": "dep-081620",
+ "kurimas": 200,
+ "sid": 5276,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1675",
+  "faze": "A",
+  "wp": "2026-09-09 11:17:29",
+  "paslaugu_id": [
+   "3",
+   "4",
+   "11",
+   "12"
+  ],
+  "slapuku_id": [
+   "5",
+   "6",
+   "7",
+   "8",
+   "17",
+   "18",
+   "29",
+   "30",
+   "41",
+   "42",
+   "51",
+   "52",
+   "95",
+   "96",
+   "97",
+   "98",
+   "45",
+   "46",
+   "47",
+   "48"
+  ],
+  "slapuku_sk": 20,
+  "bak": {
+   "services": 4,
+   "cookies": 20
+  },
+  "upd_cookies": 20,
+  "upd_services": false,
+  "liko_rodomu": 112
+ },
+ "B": {
+  "v": "S1675",
+  "faze": "B",
+  "wp": "2026-09-09 11:17:36",
+  "services_liko": [],
+  "cookies_rodomi": 112,
+  "ym_liko": 0,
+  "politika": {
+   "kodas": 200,
+   "yandex": 1,
+   "clarity": 1,
+   "adsense": 1,
+   "woocommerce": 2,
+   "analytics": 1
+  },
+  "skyrius_6_pradzia": "Yandex Metrica Funkcinis, Statistika Consent to service yandex-metrica Naudojimas Dalijimasis duomenimis Šie duomenys nėra bendrinami su trečiosiomis šalimis. Funkcinis Vardas _ym*_lastHit Galiojimo laikas persistent Funkcija Store time of visit Vardas _ym_retryReqs Galiojimo laikas persistent Funkcija Store dynamic variables from the browser Statistika Vardas _ym*_il Galiojimo laikas persistent Funkcija Provide functions across pages Vardas _ym_synced Galiojimo laikas Funkcija Vardas _ym_uid Galiojimo laikas 1 year Funkcija Store and track a visitor&#8217;s identity Vardas _ym*_lsid Galiojim"
+ }
+}
