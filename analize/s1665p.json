@@ -1,0 +1,21 @@
+{
+ "v": "dep-142820",
+ "kurimas": 200,
+ "sid": 5357,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1665 p",
+  "url": {
+   "/pagrindinis-meniu/sunims-2": 404,
+   "/pagrindinis-meniu/katems-2": 404,
+   "/pagrindinis-meniu/zuvims-2": 404,
+   "/index.php?route=product/search&filter_name=animoda&page=1": "301 -> /?route=product%2Fsearch&filter_name=animoda [200]",
+   "/sunims/maistas-sunims?filters=151-prekes-zenklas[GranCarno]": "301 -> /kategorija/sunims/maistas-sunims/ [200]",
+   "/index.php?route=product/search&filter_name=prins%20pup": "301 -> /?route=product%2Fsearch&filter_name=prins%20pup [200]",
+   "/": 200
+  }
+ }
+}
