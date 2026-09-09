@@ -1,0 +1,65 @@
+{
+ "v": "dep-103707",
+ "kurimas": 200,
+ "sid": 5305,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1689",
+  "faze": "A",
+  "wp": "2026-09-09 13:38:14",
+  "modal_pries": "0",
+  "modal_po": "1",
+  "snippetas": 5306,
+  "uzsakymai": {
+   "35874": "atšauktas",
+   "35875": "atšauktas"
+  },
+  "likutis_po": "10"
+ },
+ "B": {
+  "v": "S1689",
+  "faze": "B",
+  "wp": "2026-09-09 13:38:22",
+  "modal": "1",
+  "filtras_registruotas": "taip",
+  "uzsakymai": [
+   {
+    "id": "35873",
+    "status": "wc-on-hold",
+    "total_amount": "13.31000000"
+   },
+   {
+    "id": "35874",
+    "status": "wc-cancelled",
+    "total_amount": "13.31000000"
+   },
+   {
+    "id": "35875",
+    "status": "wc-cancelled",
+    "total_amount": "13.31000000"
+   }
+  ],
+  "likutis_14951": "10",
+  "titulinis": {
+   "kodas": 200,
+   "welcome": 0,
+   "sveiki": 0,
+   "modal": 2
+  },
+  "snippetai_welcome": [
+   {
+    "id": "5304",
+    "name": "TEMP PS dep-103146",
+    "active": "0"
+   },
+   {
+    "id": "5305",
+    "name": "TEMP PS dep-103707",
+    "active": "1"
+   }
+  ]
+ }
+}
