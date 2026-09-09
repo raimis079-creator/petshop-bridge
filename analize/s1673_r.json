@@ -1,0 +1,41 @@
+{
+ "v": "dep-080056",
+ "kurimas": 200,
+ "sid": 5271,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1673",
+  "should_onboard": [
+   "['page'] ) || strpos( $_GET['page'], 'complianz' ) === false ) { return; } if ( ! $this->should_onboard() ) { return; } wp_redirect( add_query_arg( [ 'websitescan' => '' ], cmplz_admin_url() ) ); exit; } /** * Determines whether the user should be onboarded. * Capability is verified by the sole caller (maybe_show_onboarding_modal). * * @return bool Returns true if the user should be onboarded, false otherwise. */ private function should_onboard(): bool { // Developer override: bypasses auth/reset/dismissed guards. // Still gated by wsc_api_open — if API is closed, modal is not shown. if ( isset( $_GET['cmplz_force_signup'] ) ) { $cb_wsc_signup_status = cmplz_wsc_auth::wsc_api_open( 'signup' ); if ( ! $cb_wsc_signup_status ) { cmplz_wsc_logger::log_errors( 'wsc_api_open', 'COMPLIANZ: WSC API is not open' ); return false; } return true; } if ( cmplz_wsc_auth::wsc_is_authenticated() ) { return ",
+   "return bool Returns true if the user should be onboarded, false otherwise. */ private function should_onboard(): bool { // Developer override: bypasses auth/reset/dismissed guards. // Still gated by wsc_api_open — if API is closed, modal is not shown. if ( isset( $_GET['cmplz_force_signup'] ) ) { $cb_wsc_signup_status = cmplz_wsc_auth::wsc_api_open( 'signup' ); if ( ! $cb_wsc_signup_status ) { cmplz_wsc_logger::log_errors( 'wsc_api_open', 'COMPLIANZ: WSC API is not open' ); return false; } return true; } if ( cmplz_wsc_auth::wsc_is_authenticated() ) { return false; } if ( get_option( 'cmplz_wsc_reset_complete', false ) ) { return false; } if ( $this->wsc_is_dismissed() ) { return false; } $cb_wsc_signup_status = cmplz_wsc_auth::wsc_api_open( 'signup' ); if ( ! $cb_wsc_signup_status ) { cmplz_wsc_logger::log_errors( 'wsc_api_open', 'COMPLIANZ: WSC API is not open' ); return false; } retur"
+  ],
+  "maybe_show": [
+   "ction\", array($this, 'handle_onboarding_action'), 10, 3); add_action(\"admin_init\", array($this, 'maybe_show_onboarding_modal'), 20); add_action(\"cmplz_every_week_hook\", array($this, 'check_wsc_consent'), 20); // Check if the option already exists, if not, set it up if (!get_option('cmplz_wsc_onboarding_status')) { $this->set_onboarding_status_option(); } // One-time migration: consolidate legacy dismiss counters into single boolean. // Null default distinguishes \"never migrated\" from \"migrated, value=false\". if ( null === get_option( 'cmplz_wsc_dismissed', null ) ) { $legacy_dismissed = ( (int) get_option( 'cmplz_wsc_onboarding_dismissed', 0 ) >= 1 || (int) get_option( 'cmplz_wsc_websitescan_dismissed', 0 ) >= 1 || (bool) get_option( 'cmplz_wsc_newsletter_dismissed', false ) ); update_option( 'cmplz_wsc_dismissed', $legacy_dismissed, false ); } add_action('cmplz_store_wsc_onboarding_consent', array($this, 'cmplz_store_wsc_onb"
+  ],
+  "dismiss": [
+   "st->get_json_params(); $step = sanitize_text_field( $posted_data['step'] ); $this->store_onboarding_dismiss( $step ); break; case 'get_newsletter_terms': $data = $this->get_onboarding_doc('newsletter'); break; case 'get_recommended_plugins_status': $posted_data = $request->get_json_params(); $plugins = $posted_data['plugins'] ?? []; $data = [ 'plugins' => $this->get_recommended_plugins_status($plugins), 'isUpgrade' => get_option('cmplz_upgraded_to_7', false) ]; break; case 'install_plugin': case 'activate_plugin': $posted_data = $request->get_json_params(); $data = [ 'plugins' => $this->process_plugin_action($action, $posted_data), ]; break; } return $data; } /** * "
+  ],
+  "handle": [
+   "complianz-gdpr'; public function init_hooks() { add_action(\"cmplz_do_action\", array($this, 'handle_onboarding_action'), 10, 3); add_action(\"admin_init\", array($this, 'maybe_show_onboarding_modal'), 20); add_action(\"cmplz_every_week_hook\", array($this, 'check_wsc_consent'), 20); // Check if the option already exists, if not, set it up if (!get_option('cmplz_wsc_onboarding_status')) { $this->set_onboarding_status_option(); } // One-time migration: consolidate legacy dismiss counters into single boolean. // Null default distinguishes \"never migrated\" from \"migrated, value=false\". if ( null === get_option( 'cmplz_wsc_dismissed', null ) ) { $legacy_dismissed = ( (int) get_option( 'cmplz_wsc_onboarding_dismissed', 0 ) >= 1 || (int) get_option( 'cmplz_wsc_websitescan_dismissed', 0 ) >= 1 || (bool) get_option( 'cmplz_wsc_newsletter_dismissed', false ) ); update_option( 'cmplz_wsc_dismissed', $legacy_dismissed, false ); } add_action('cmplz_store_wsc_onboarding_consent', array($this, 'cmplz_store_wsc_onboarding_consent_handler'), 10, 2); } /** * Sets the onboarding status option. * * This method initializes t"
+  ],
+  "websitescan_param": [
+   "smissed', null ) ) { $legacy_dismissed = ( (int) get_option( 'cmplz_wsc_onboarding_dismissed', 0 ) >= 1 || (int) get_option( 'cmplz_wsc_websitescan_dismissed', 0 ) >= 1 || (bool) get_option( 'cmplz_wsc_newsletter_dismissed', false ) ); update_option( 'cmplz_wsc_dismissed', $legacy_dismissed, false ); } add_action('cmplz_store_wsc_onboarding_consent', array($this, 'cmplz_store_wsc_onboarding_consent_handler'), 10, 2); } /** * Sets the onboarding status option. * * This method initializes the onboar",
+   "turn void */ public function maybe_show_onboarding_modal(): void { if ( ! cmplz_user_can_manage() ) { return; } if ( isset( $_GET['websitescan'] ) ) { return; } if ( ! isset( $_GET['page'] ) || strpos( $_GET['page'], 'complianz' ) === false ) { return; } if ( ! $this->should_onboard() ) { return; } wp_redirect( add_query_arg( [ 'websitescan' => '' ], cmplz_admin_url() ) ); exit; } /** * Determines whether the user should be onboarded. * Capability is verified by the sole caller ",
+   "_GET['page'], 'complianz' ) === false ) { return; } if ( ! $this->should_onboard() ) { return; } wp_redirect( add_query_arg( [ 'websitescan' => '' ], cmplz_admin_url() ) ); exit; } /** * Determines whether the user should be onboarded. * Capability is verified by the sole caller (maybe_show_onboarding_modal). * * @return bool Returns true if the user should be onboarded, false otherwise. */ private function should_onboard(): bool { // Developer override: bypasses auth/reset/dismissed guards. "
+  ],
+  "busena": {
+   "onboarding": {
+    "terms": false,
+    "newsletter": true,
+    "plugins": true
+   },
+   "status": "pending",
+   "signup": "pending",
+   "email": false,
+   "auth": "ne"
+  }
+ }
+}
