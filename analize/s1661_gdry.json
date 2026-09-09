@@ -1,0 +1,121 @@
+{
+ "v": "dep-105607",
+ "kurimas": 200,
+ "sid": 5310,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DRY": {
+  "v": "S1661G",
+  "faze": "DRY",
+  "meta": {
+   "_stock": "10",
+   "_ps_sandelis": "av",
+   "_vf_qty": "",
+   "_zb_qty": "",
+   "_own_stock_qty": "",
+   "_manage_stock": "yes"
+  },
+  "pastabos": [
+   {
+    "oid": "35873",
+    "d": "2026-09-09 12:33:58",
+    "t": "Stock hold of 90 minutes applied to: <br>- Žarnų pagaliukai, 80 g (720000) &times; 4"
+   },
+   {
+    "oid": "35873",
+    "d": "2026-09-09 12:33:58",
+    "t": "Likutis sumažintas: Žarnų pagaliukai, 80 g (23&rarr;19)"
+   },
+   {
+    "oid": "35873",
+    "d": "2026-09-09 12:39:11",
+    "t": "Stock hold of 90 minutes applied to: <br>- Žarnų pagaliukai, 80 g (720000) &times; 4"
+   },
+   {
+    "oid": "35874",
+    "d": "2026-09-09 12:42:37",
+    "t": "Stock hold of 90 minutes applied to: <br>- Žarnų pagaliukai, 80 g (720000) &times; 4"
+   },
+   {
+    "oid": "35874",
+    "d": "2026-09-09 12:42:38",
+    "t": "Likutis sumažintas: Žarnų pagaliukai, 80 g (19&rarr;15)"
+   },
+   {
+    "oid": "35875",
+    "d": "2026-09-09 12:50:07",
+    "t": "Stock hold of 90 minutes applied to: <br>- Žarnų pagaliukai, 80 g (720000) &times; 4"
+   },
+   {
+    "oid": "35875",
+    "d": "2026-09-09 12:50:08",
+    "t": "Likutis sumažintas: Žarnų pagaliukai, 80 g (15&rarr;11)"
+   },
+   {
+    "oid": "35874",
+    "d": "2026-09-09 13:02:46",
+    "t": "Stock hold of 90 minutes applied to: <br>- Žarnų pagaliukai, 80 g (720000) &times; 4"
+   },
+   {
+    "oid": "35874",
+    "d": "2026-09-09 13:07:19",
+    "t": "Stock hold of 90 minutes applied to: <br>- Žarnų pagaliukai, 80 g (720000) &times; 4"
+   },
+   {
+    "oid": "35874",
+    "d": "2026-09-09 13:08:43",
+    "t": "Stock hold of 90 minutes applied to: <br>- Žarnų pagaliukai, 80 g (720000) &times; 4"
+   },
+   {
+    "oid": "35875",
+    "d": "2026-09-09 13:18:55",
+    "t": "Stock hold of 90 minutes applied to: <br>- Žarnų pagaliukai, 80 g (720000) &times; 4"
+   },
+   {
+    "oid": "35875",
+    "d": "2026-09-09 13:22:27",
+    "t": "Stock hold of 90 minutes applied to: <br>- Žarnų pagaliukai, 80 g (720000) &times; 4"
+   },
+   {
+    "oid": "35875",
+    "d": "2026-09-09 13:23:26",
+    "t": "Stock hold of 90 minutes applied to: <br>- Žarnų pagaliukai, 80 g (720000) &times; 4"
+   },
+   {
+    "oid": "35875",
+    "d": "2026-09-09 13:25:21",
+    "t": "Stock hold of 90 minutes applied to: <br>- Žarnų pagaliukai, 80 g (720000) &times; 4"
+   },
+   {
+    "oid": "35876",
+    "d": "2026-09-09 13:27:15",
+    "t": "Stock hold of 90 minutes applied to: <br>- Žarnų pagaliukai, 80 g (720000) &times; 1"
+   },
+   {
+    "oid": "35876",
+    "d": "2026-09-09 13:27:15",
+    "t": "Likutis sumažintas: Žarnų pagaliukai, 80 g (11&rarr;10)"
+   }
+  ],
+  "uzsakymai": [
+   {
+    "order_id": "35873",
+    "status": "wc-on-hold"
+   },
+   {
+    "order_id": "35874",
+    "status": "wc-cancelled"
+   },
+   {
+    "order_id": "35875",
+    "status": "wc-cancelled"
+   },
+   {
+    "order_id": "35876",
+    "status": "wc-pending"
+   }
+  ]
+ }
+}
