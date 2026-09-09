@@ -1,0 +1,357 @@
+{
+ "v": "dep-081403",
+ "kurimas": 200,
+ "sid": 5275,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1675R",
+  "wp": "2026-09-09 11:15:14",
+  "html": {
+   "titulinis": {
+    "yandex": 0,
+    "mc.yandex": 0,
+    "metrika": 0,
+    "ym(": 0,
+    "clarity": 0,
+    "adsense": 0,
+    "pagead": 0
+   },
+   "preke": {
+    "yandex": 0,
+    "mc.yandex": 0,
+    "metrika": 0,
+    "ym(": 0,
+    "clarity": 0,
+    "adsense": 0,
+    "pagead": 0
+   },
+   "krepselis": {
+    "yandex": 0,
+    "mc.yandex": 0,
+    "metrika": 0,
+    "ym(": 0,
+    "clarity": 0,
+    "adsense": 0,
+    "pagead": 0
+   }
+  },
+  "cmplz_nustatymai": {
+   "yandex_id": 0,
+   "yandex_ecommerce": "no",
+   "clarity_id": "",
+   "clarity_consent_mode": "yes",
+   "matomo_url": "",
+   "matomo_site_id": 0,
+   "clicky_site_id": 0,
+   "compile_statistics": "yes",
+   "uses_ad_cookies": "yes",
+   "uses_ad_cookies_personalized": "no",
+   "thirdparty_services_on_site": ""
+  },
+  "services": [
+   {
+    "ID": "3",
+    "name": "Yandex Metrica",
+    "language": "en",
+    "sync": "1",
+    "slug": ""
+   },
+   {
+    "ID": "4",
+    "name": "Yandex Metrica",
+    "language": "lt",
+    "sync": "1",
+    "slug": ""
+   },
+   {
+    "ID": "9",
+    "name": "Google Adsense",
+    "language": "en",
+    "sync": "1",
+    "slug": ""
+   },
+   {
+    "ID": "10",
+    "name": "Google Adsense",
+    "language": "lt",
+    "sync": "1",
+    "slug": ""
+   },
+   {
+    "ID": "11",
+    "name": "Microsoft Clarity",
+    "language": "en",
+    "sync": "1",
+    "slug": ""
+   },
+   {
+    "ID": "12",
+    "name": "Microsoft Clarity",
+    "language": "lt",
+    "sync": "1",
+    "slug": ""
+   }
+  ],
+  "ju_slapukai": [
+   {
+    "ID": "5",
+    "name": "_ym*_lastHit",
+    "language": "en",
+    "serviceID": "3"
+   },
+   {
+    "ID": "6",
+    "name": "_ym*_lastHit",
+    "language": "lt",
+    "serviceID": "4"
+   },
+   {
+    "ID": "7",
+    "name": "_ym_retryReqs",
+    "language": "en",
+    "serviceID": "3"
+   },
+   {
+    "ID": "8",
+    "name": "_ym_retryReqs",
+    "language": "lt",
+    "serviceID": "4"
+   },
+   {
+    "ID": "17",
+    "name": "_ym*_il",
+    "language": "en",
+    "serviceID": "3"
+   },
+   {
+    "ID": "18",
+    "name": "_ym*_il",
+    "language": "lt",
+    "serviceID": "4"
+   },
+   {
+    "ID": "29",
+    "name": "_ym_synced",
+    "language": "en",
+    "serviceID": "3"
+   },
+   {
+    "ID": "30",
+    "name": "_ym_synced",
+    "language": "lt",
+    "serviceID": "4"
+   },
+   {
+    "ID": "41",
+    "name": "_ym_uid",
+    "language": "en",
+    "serviceID": "3"
+   },
+   {
+    "ID": "42",
+    "name": "_ym_uid",
+    "language": "lt",
+    "serviceID": "4"
+   },
+   {
+    "ID": "51",
+    "name": "_ym*_lsid",
+    "language": "en",
+    "serviceID": "3"
+   },
+   {
+    "ID": "52",
+    "name": "_ym*_lsid",
+    "language": "lt",
+    "serviceID": "4"
+   },
+   {
+    "ID": "93",
+    "name": "_gcl_au",
+    "language": "en",
+    "serviceID": "9"
+   },
+   {
+    "ID": "94",
+    "name": "_gcl_au",
+    "language": "lt",
+    "serviceID": "10"
+   },
+   {
+    "ID": "95",
+    "name": "_clck",
+    "language": "en",
+    "serviceID": "11"
+   },
+   {
+    "ID": "96",
+    "name": "_clck",
+    "language": "lt",
+    "serviceID": "12"
+   },
+   {
+    "ID": "97",
+    "name": "_clsk",
+    "language": "en",
+    "serviceID": "11"
+   },
+   {
+    "ID": "98",
+    "name": "_clsk",
+    "language": "lt",
+    "serviceID": "12"
+   }
+  ],
+  "slapuku_sk": 18,
+  "itartini_slapukai": [
+   {
+    "ID": "5",
+    "name": "_ym*_lastHit",
+    "language": "en",
+    "serviceID": "3"
+   },
+   {
+    "ID": "6",
+    "name": "_ym*_lastHit",
+    "language": "lt",
+    "serviceID": "4"
+   },
+   {
+    "ID": "7",
+    "name": "_ym_retryReqs",
+    "language": "en",
+    "serviceID": "3"
+   },
+   {
+    "ID": "8",
+    "name": "_ym_retryReqs",
+    "language": "lt",
+    "serviceID": "4"
+   },
+   {
+    "ID": "17",
+    "name": "_ym*_il",
+    "language": "en",
+    "serviceID": "3"
+   },
+   {
+    "ID": "18",
+    "name": "_ym*_il",
+    "language": "lt",
+    "serviceID": "4"
+   },
+   {
+    "ID": "21",
+    "name": "_gcl_ls",
+    "language": "en",
+    "serviceID": "0"
+   },
+   {
+    "ID": "22",
+    "name": "_gcl_ls",
+    "language": "lt",
+    "serviceID": "0"
+   },
+   {
+    "ID": "29",
+    "name": "_ym_synced",
+    "language": "en",
+    "serviceID": "3"
+   },
+   {
+    "ID": "30",
+    "name": "_ym_synced",
+    "language": "lt",
+    "serviceID": "4"
+   },
+   {
+    "ID": "41",
+    "name": "_ym_uid",
+    "language": "en",
+    "serviceID": "3"
+   },
+   {
+    "ID": "42",
+    "name": "_ym_uid",
+    "language": "lt",
+    "serviceID": "4"
+   },
+   {
+    "ID": "45",
+    "name": "_ym_wv2rf:95838413:0",
+    "language": "en",
+    "serviceID": "0"
+   },
+   {
+    "ID": "46",
+    "name": "_ym_wv2rf:95838413:0",
+    "language": "lt",
+    "serviceID": "0"
+   },
+   {
+    "ID": "47",
+    "name": "_ym*_reqNum",
+    "language": "en",
+    "serviceID": "0"
+   },
+   {
+    "ID": "48",
+    "name": "_ym*_reqNum",
+    "language": "lt",
+    "serviceID": "0"
+   },
+   {
+    "ID": "51",
+    "name": "_ym*_lsid",
+    "language": "en",
+    "serviceID": "3"
+   },
+   {
+    "ID": "52",
+    "name": "_ym*_lsid",
+    "language": "lt",
+    "serviceID": "4"
+   },
+   {
+    "ID": "93",
+    "name": "_gcl_au",
+    "language": "en",
+    "serviceID": "9"
+   },
+   {
+    "ID": "94",
+    "name": "_gcl_au",
+    "language": "lt",
+    "serviceID": "10"
+   },
+   {
+    "ID": "95",
+    "name": "_clck",
+    "language": "en",
+    "serviceID": "11"
+   },
+   {
+    "ID": "96",
+    "name": "_clck",
+    "language": "lt",
+    "serviceID": "12"
+   },
+   {
+    "ID": "97",
+    "name": "_clsk",
+    "language": "en",
+    "serviceID": "11"
+   },
+   {
+    "ID": "98",
+    "name": "_clsk",
+    "language": "lt",
+    "serviceID": "12"
+   }
+  ],
+  "pluginai": "nera tokiu pluginu"
+ }
+}
