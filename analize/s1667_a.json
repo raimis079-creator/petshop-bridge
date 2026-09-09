@@ -1,49 +1,172 @@
 {
- "v": "dep-064503",
+ "v": "dep-161606",
  "kurimas": 200,
- "sid": 5256,
+ "sid": 5365,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "A": {
-  "v": "S1667",
-  "faze": "A",
-  "wp": "2026-09-09 09:46:12",
-  "rez": {
-   "19780": {
-    "pakeista": 1,
-    "delta": 3,
-    "ok": true
+ "GO": {
+  "v": "S1667 a",
+  "failai": {
+   "petshop-seo.php": {
+    "dydis": 42710,
+    "md5": "95bca2c4"
    },
-   "19785": {
-    "pakeista": 1,
-    "delta": 3,
-    "ok": true
+   "petshop-uzsakymu-ivykiai.php": {
+    "dydis": 27433,
+    "md5": "1bd24c70"
+   },
+   "petshop-laiskai.php": {
+    "dydis": 23371,
+    "md5": "2c0d6a07"
+   },
+   "petshop-darbalaukis.php": {
+    "dydis": 545577,
+    "md5": "4f37977e"
+   },
+   "petshop-naujienlaiskiai.php": {
+    "dydis": 8041,
+    "md5": "43615fcf"
+   },
+   "petshop-rinkiniai.php": {
+    "dydis": 213053,
+    "md5": "b90c5206"
+   },
+   "petshop-legacy-importas.php": {
+    "dydis": 10116,
+    "md5": "e268e729"
    }
   },
-  "bak_irasyta": [
-   19780,
-   19785
+  "eil": [
+   "petshop-uzsakymu-ivykiai.php:18 *  1. Esami veiksmai gaudomi iš išorės: `admin_post_ps_desk_veiksmas`,",
+   "petshop-uzsakymu-ivykiai.php:112 add_action( 'admin_post_' . $a, array( __CLASS__, 'pradzia' ), 1 );",
+   "petshop-uzsakymu-ivykiai.php:265 $a = substr( $action, strlen( 'admin_post_' ) );",
+   "petshop-uzsakymu-ivykiai.php:485 <button class=\"button\">Rodyti</button> <a class=\"button\" href=\"<?php echo esc_url( admin_url( 'admin.php?page=' . self::SLUG ) ); ?>\">Išvalyti</a>",
+   "petshop-uzsakymu-ivykiai.php:494 $r['uzsakymas'] ? '<a href=\"' . esc_url( admin_url( 'admin.php?page=' . self::SLUG . '&uzs=' . (int) $r['uzsakymas'] ) ) . '\">#' . (int) $r['uzsakymas'] . '</a>' . ( $r['eilute'] ? ' / ' . (int) $r['e",
+   "petshop-darbalaukis.php:22 *   „Kaip atkeliaus į AV“ / svoris / dėžės, VIENAS mygtukas „Užsakyti iš [T] (n užs. + m prek. į AV)“, pilna peržiūra (su AV lentele). Savas `admin_post_ps_dl_uzsakyti`: eilutės į partiją",
+   "petshop-darbalaukis.php:40 * NAUJI VEIKSMAI (`admin_post_ps_dl_veiksmas`, nonce `ps_dl_{v}_{id}`), variklis (registras A–J) neliestas:",
+   "petshop-darbalaukis.php:55 *   POST `admin_post_ps_dl_pakartotinis`, nonce `ps_dl_pakart_{id}`, lock). `pakartotinis_sukurti()`: naujas mažas užsakymas `wc_create_order` — SVEČIO",
+   "petshop-darbalaukis.php:106 *   apmokėtas → `Kiekis [n] × · Išsaugoti · Išimti` (POST `admin_post_ps_dl_kiekis`, nonce `ps_dl_kiekis_{id}`, lock, dialogas prieš).",
+   "petshop-darbalaukis.php:158 *   (numatyta ON, spec §6c; tekstas — Claude prielaida, Raimiui tvirtinti). Veiksmas `admin_post_ps_dl_redaguoti` (POST, nonce `ps_dl_red_{id}`),",
+   "petshop-darbalaukis.php:167 *   Veiksmas `admin_post_ps_dl_veiksmas` `v=velavimas` (nonce `ps_dl_velavimas_{id}`, lock). Dialogas su laiško tekstu prieš siuntimą. Automatinis 14:00 nekeistas.",
+   "petshop-darbalaukis.php:271 *   Dropshipping (n užs.)“ (G4) — sudeda į partiją ir veda į Dropshipping kortelę su varnele „+ į AV“. Savas `admin_post_ps_dl_tiekimas`",
+   "petshop-darbalaukis.php:272 *   sudeda eilutes (kaip variklio `kons`) ir paleidžia `admin_post_ps_tiekimas` — variklis ir žurnalas nekeisti; grįžimas per `grizti_cia()`.",
+   "petshop-darbalaukis.php:302 *   žurnale „rankinis“). V5 — `_ps_surinkta` (laikas|kas) rašoma per `admin_post_ps_desk_veiksmas` (lapai) + „Atšaukti surinkimą“",
+   "petshop-darbalaukis.php:322 *   tekstuose nebėra „etapas“/„WC“; „Išsiųsta“ — savas `ps_dl_veiksmas v=issiusta` su sekimo laiško varnele (V3, I1: ON, kai",
+   "petshop-darbalaukis.php:357 add_action( 'admin_post_ps_dl_veiksmas', array( __CLASS__, 'vykdyti' ) );",
+   "petshop-darbalaukis.php:361 add_action( 'admin_post_ps_desk_veiksmas', array( __CLASS__, 'surinkta_zyme' ), 0 );",
+   "petshop-darbalaukis.php:365 add_action( 'admin_post_ps_dl_tiekimas', array( __CLASS__, 'tiekimas_vykdyti' ) );",
+   "petshop-darbalaukis.php:366 add_action( 'admin_post_ps_dl_uzsakyti', array( __CLASS__, 'uzsakyti_vykdyti' ) ); // v3.37: viena kortelė — vienas laiškas",
+   "petshop-darbalaukis.php:369 add_action( 'admin_post_ps_dl_redaguoti', array( __CLASS__, 'redaguoti_vykdyti' ) ); // v3.16",
+   "petshop-darbalaukis.php:370 add_action( 'admin_post_ps_dl_kiekis', array( __CLASS__, 'kiekis_vykdyti' ) ); // v3.19 (5 etapas #4)",
+   "petshop-darbalaukis.php:372 add_action( 'admin_post_ps_dl_pakartotinis', array( __CLASS__, 'pakartotinis_vykdyti' ) );",
+   "petshop-darbalaukis.php:380 add_action( 'admin_post_ps_dl_kreditine', array( __CLASS__, 'kreditine_vykdyti' ) ); // v3.25",
+   "petshop-darbalaukis.php:381 add_action( 'admin_post_ps_dl_kr_sablonas', array( __CLASS__, 'kr_sablonas_vykdyti' ) ); // v3.31",
+   "petshop-darbalaukis.php:382 add_action( 'admin_post_ps_dl_ats_sablonas', array( __CLASS__, 'ats_sablonas_vykdyti' ) ); // v3.35 (C)",
+   "petshop-darbalaukis.php:383 add_action( 'admin_post_ps_dl_grazinimas', array( __CLASS__, 'grazinimas_vykdyti' ) ); // v3.32 (A)",
+   "petshop-darbalaukis.php:384 add_action( 'admin_post_ps_dl_naujas', array( __CLASS__, 'naujas_vykdyti' ) ); // v3.33 (B)",
+   "petshop-darbalaukis.php:401 add_action( 'admin_post_ps_dl_istrinti_atsauktus', array( __CLASS__, 'istrinti_atsauktus_vykdyti' ) ); // v3.36 (3a)",
+   "petshop-darbalaukis.php:407 if ( 'lapai' !== sanitize_key( $_GET['v'] ?? '' ) || ! current_user_can( 'edit_shop_orders' ) ) { return; }",
+   "petshop-darbalaukis.php:443 if ( '1' === (string) $q['psl_sent'] ) { return add_query_arg( array( 'pd_ok' => 'dl_laiskas', 'pd_nr' => rawurlencode( self::vardas( $src ) . '|' . $n . ' užs. → ' . $kam ) ), $g ); }",
+   "petshop-darbalaukis.php:444 return add_query_arg( array( 'pd_ok' => 'dl_klaida', 'pd_nr' => rawurlencode( self::vardas( $src ) . '|laiškas neišsiųstas: ' . rawurldecode( (string) ( $q['psl_err'] ?? '' ) ) ) ), $g );",
+   "petshop-darbalaukis.php:446 if ( isset( $q['ps_zb'] ) ) { return add_query_arg( array( 'pd_ok' => 'dl_zb', 'pd_nr' => rawurlencode( 'Žalioji Banga|' . (int) $q['ps_zb'] ) ), $g ); }",
+   "petshop-darbalaukis.php:469 return add_query_arg( array( 'pd_ok' => $r[0], 'pd_nr' => rawurlencode( $nr . '|' . $r[1] ) ), $g );",
+   "petshop-darbalaukis.php:884 return wp_nonce_url( admin_url( 'admin-post.php?action=ps_desk_veiksmas&v=' . rawurlencode( $v ) . '&id=' . (int) $id . '&g=' . rawurlencode( $g ?: self::url() ) ), 'ps_desk_' . $v . '_' . (int) $id )",
+   "petshop-darbalaukis.php:888 return wp_nonce_url( admin_url( 'admin-post.php?' . http_build_query( array_merge( array( 'action' => 'ps_dl_veiksmas', 'v' => $v, 'id' => (int) $id, 'g' => self::url( array( 'atidaryti' => (int) $id ",
+   "petshop-darbalaukis.php:1049 $baigti = function ( $k, $t ) use ( $o, $atgal, $lock ) { delete_transient( $lock ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => $k, 'pd_nr' => rawurlencode( $o->get_order_number() . '|' . $t )",
+   "petshop-darbalaukis.php:1100 $v  = isset( $_GET['v'] ) ? sanitize_key( wp_unslash( $_GET['v'] ) ) : '';",
+   "petshop-darbalaukis.php:1111 if ( $id && get_transient( $lock ) ) { wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_info', 'pd_nr' => rawurlencode( $o->get_order_number() . '|veiksmas jau vykdomas — palauk sekundę' ) ), $a",
+   "petshop-darbalaukis.php:1154 wp_safe_redirect( add_query_arg( array( 'pd_ok' => $rez[0], 'pd_nr' => rawurlencode( ( $o ? $o->get_order_number() : '' ) . '|' . $rez[1] ) ), $atgal ) );",
+   "petshop-darbalaukis.php:1161 * į kaupiamą partiją (kaip variklio `kons`, tik šiam tiekėjui) ir paleidžiam `admin_post_ps_tiekimas` su savo pačių",
+   "petshop-darbalaukis.php:1169 $klaida = function ( $t ) use ( $atgal, $src ) { wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_klaida', 'pd_nr' => rawurlencode( self::vardas( $src ) . '|' . $t ) ), $atgal ) ); exit; };",
+   "petshop-darbalaukis.php:1176 do_action( 'ps_juosta_isvalyti' ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_info', 'pd_nr' => rawurlencode( self::vardas( $src ) . '|' . $z ) ), $atgal ) ); exit;",
+   "petshop-darbalaukis.php:1185 do_action( 'ps_juosta_isvalyti' ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_info', 'pd_nr' => rawurlencode( self::vardas( $src ) . '|į atsargas pridėta ' . $n . ' prek. (' . implode( '; ",
+   "petshop-darbalaukis.php:1190 do_action( 'ps_juosta_isvalyti' ); do_action( 'admin_post_ps_tiekimas' ); exit;",
+   "petshop-darbalaukis.php:1220 do_action( 'admin_post_ps_tiekimas' ); // variklis + žurnalas; grįžimas per `grizti_cia()`",
+   "petshop-darbalaukis.php:1230 $klaida = function ( $t ) use ( $atgal, $src ) { wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_klaida', 'pd_nr' => rawurlencode( self::vardas( $src ) . '|' . $t ) ), $atgal ) ); exit; };",
+   "petshop-darbalaukis.php:1261 do_action( 'admin_post_ps_dropship_send' ); // variklis: laiškas + lipdukai + partija (`uzdaryti_po_laisko`), grįžimas per `grizti_cia()`",
+   "petshop-darbalaukis.php:1266 do_action( 'admin_post_ps_tiekimas' ); // variklis: savas laiškas (ZB — be laiško), grįžimas per `grizti_cia()`",
+   "petshop-darbalaukis.php:1337 $baigti = function ( $k, $t ) use ( $o, $atgal, $lock ) { delete_transient( $lock ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => $k, 'pd_nr' => rawurlencode( $o->get_order_number() . '|' . $t )",
+   "petshop-darbalaukis.php:1974 $baigti = function ( $k, $t ) use ( $o, $atgal, $lock ) { delete_transient( $lock ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => $k, 'pd_nr' => rawurlencode( $o->get_order_number() . '|' . $t )",
+   "petshop-darbalaukis.php:2193 $formos .= '<form method=\"post\" action=\"' . esc_url( admin_url( 'admin-post.php' ) ) . '\" class=\"dl-kr-f\" data-e=\"' . (int) $idx . '\" data-dlg=\"' . esc_attr( $dlg ) . '\" style=\"display:none\">' . wp_no",
+   "petshop-darbalaukis.php:2211 $baigti = function ( $k, $t ) use ( $o, $atgal, $lock ) { self::$kr_kuriama = false; delete_transient( $lock ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => $k, 'pd_nr' => rawurlencode( $o->get_",
+   "petshop-darbalaukis.php:2396 echo '<form class=\"dl-sask-f\" method=\"get\" action=\"' . esc_url( admin_url( 'admin.php' ) ) . '\"><input type=\"hidden\" name=\"page\" value=\"' . esc_attr( self::SLUG ) . '\"><input type=\"hidden\" name=\"view\"",
+   "petshop-darbalaukis.php:2400 . '<button class=\"v p\" type=\"submit\">Rodyti</button>' . ( $t || $q || $nuo || $iki ? ' <a class=\"pilkas maz\" href=\"' . esc_url( admin_url( 'admin.php?page=' . self::SLUG . '&view=saskaitos' ) ) . '\">i",
+   "petshop-darbalaukis.php:2445 return '<form method=\"post\" action=\"' . esc_url( admin_url( 'admin-post.php' ) ) . '\" class=\"dl-kr-f dl-gr-f' . ( $skydelis ? ' dl-gr-sk' : '' ) . '\" data-dlg=\"' . esc_attr( $dlg ) . '\"' . ( $skydelis",
+   "petshop-darbalaukis.php:2464 $baigti = function ( $k, $t ) use ( $o, $atgal, $lock ) { self::$kr_kuriama = false; delete_transient( $lock ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => $k, 'pd_nr' => rawurlencode( $o->get_",
+   "petshop-darbalaukis.php:2556 echo '<form method=\"post\" action=\"' . esc_url( admin_url( 'admin-post.php' ) ) . '\" class=\"dl-nu\" id=\"dlNu\" data-rate=\"' . esc_attr( number_format( $rate, 4, '.', '' ) ) . '\" data-pm=\"' . esc_attr( wp",
+   "petshop-darbalaukis.php:2571 . '<div class=\"dl-kr-v\"><button type=\"button\" class=\"v p\" id=\"nuSubmit\">Sukurti užsakymą</button> <a class=\"pilkas maz\" href=\"' . esc_url( admin_url( 'admin.php?page=' . self::SLUG ) ) . '\">atgal į už",
+   "petshop-darbalaukis.php:2676 $klaida = function ( $t ) use ( $atgal ) { wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_klaida', 'pd_nr' => rawurlencode( '—|' . $t ) ), $atgal ) ); exit; };",
+   "petshop-darbalaukis.php:2721 wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_info', 'pd_nr' => rawurlencode( $n->get_order_number() . '|' . $t ) ), admin_url( 'admin.php?page=' . self::SLUG . '&eile=' . ( 'grynais' === $mo",
+   "petshop-darbalaukis.php:2824 wp_safe_redirect( add_query_arg( array( 'pd_ok' => $kl ? 'dl_klaida' : 'dl_info', 'pd_nr' => rawurlencode( '|į šiukšlinę perkelta neapmokėtų atšauktų užsakymų: ' . $n . ( $kl ? ', nepavyko: ' . $kl : ",
+   "petshop-darbalaukis.php:2888 if ( ! empty( $_POST['atstatyti'] ) ) { delete_option( self::ATS_LAISKAS_OPT ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_info', 'pd_nr' => rawurlencode( 'šablonas|„paruošta atsiimti“ lai",
+   "petshop-darbalaukis.php:2892 wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_info', 'pd_nr' => rawurlencode( 'šablonas|„paruošta atsiimti“ laiško šablonas išsaugotas' ) ), $atgal ) ); exit;",
+   "petshop-darbalaukis.php:2900 . '<form method=\"post\" action=\"' . esc_url( admin_url( 'admin-post.php' ) ) . '\">' . wp_nonce_field( 'ps_dl_ats_sablonas', '_wpnonce', true, false ) . '<input type=\"hidden\" name=\"action\" value=\"ps_dl_",
+   "petshop-darbalaukis.php:3017 if ( ! empty( $_POST['atstatyti'] ) ) { delete_option( self::KR_LAISKAS_OPT ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_info', 'pd_nr' => rawurlencode( 'šablonas|kreditinės laiško šablon",
+   "petshop-darbalaukis.php:3021 wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_info', 'pd_nr' => rawurlencode( 'šablonas|kreditinės laiško šablonas išsaugotas' ) ), $atgal ) ); exit;",
+   "petshop-darbalaukis.php:3029 . '<form method=\"post\" action=\"' . esc_url( admin_url( 'admin-post.php' ) ) . '\">' . wp_nonce_field( 'ps_dl_kr_sablonas', '_wpnonce', true, false ) . '<input type=\"hidden\" name=\"action\" value=\"ps_dl_k",
+   "petshop-darbalaukis.php:3507 echo '<a class=\"dl-e dl-e-naujas\" href=\"' . esc_url( admin_url( 'admin.php?page=' . self::SLUG . '&view=naujas' ) ) . '\" title=\"Užsakymas telefonu / vietoje\">+ Naujas užsakymas</a>'; // v3.33 (B)",
+   "petshop-darbalaukis.php:3523 if ( 'atsaukti' === $f['b'] ) { $kand = self::atsauktu_kandidatai( 0 ); $nk = count( $kand ); echo '<a class=\"v t maz\" href=\"' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=ps_dl_istrinti",
+   "petshop-darbalaukis.php:3526 echo '<form method=\"get\" class=\"dl-f\" action=\"' . esc_url( admin_url( 'admin.php' ) ) . '\"><input type=\"hidden\" name=\"page\" value=\"' . esc_attr( self::SLUG ) . '\"><input type=\"hidden\" name=\"eile\" valu",
+   "petshop-darbalaukis.php:3633 return wp_nonce_url( admin_url( 'admin-post.php?action=ps_dropship_lipdukas&id=' . (int) $id ), 'ps_dropship_lipdukas' );",
+   "petshop-darbalaukis.php:3700 echo '<tr><td><span class=\"pilkas\">į atsargas</span></td><td><div><form method=\"post\" action=\"' . esc_url( admin_url( 'admin-post.php' ) ) . '\" class=\"dl-eil-f\">' . wp_nonce_field( 'ps_dl_tiek_' . $sr",
+   "petshop-darbalaukis.php:3708 echo '<form method=\"post\" action=\"' . esc_url( admin_url( 'admin-post.php' ) ) . '\" class=\"dl-rink-f\" style=\"display:none\">' . wp_nonce_field( 'ps_dl_tiek_' . $src . '_0', '_wpnonce', true, false ) . ",
+   "petshop-darbalaukis.php:3717 echo '<form method=\"post\" action=\"' . esc_url( admin_url( 'admin-post.php' ) ) . '\" class=\"dl-inl\" onsubmit=\"return confirm(\\'Pažymėti ' . count( $uzs ) . ' ZB užsakymus suvestais? Tik kai suvesta į Z",
+   "petshop-darbalaukis.php:3720 echo '<form method=\"post\" action=\"' . esc_url( admin_url( 'admin-post.php' ) ) . '\" class=\"dl-inl dl-laiskas-f dl-tk-f\" id=\"dlf_' . esc_attr( $src ) . '\">' . wp_nonce_field( 'ps_dl_uzs_' . $src, '_wpn",
+   "petshop-darbalaukis.php:3749 protected static function laisku_archyvo_nuoroda() { $n = count( (array) get_option( 'ps_laisku_archyvas', array() ) ); echo '<p class=\"pastaba dl-arch-n\"><a href=\"' . esc_url( admin_url( 'admin.php?p",
+   "petshop-darbalaukis.php:3783 echo '<form method=\"post\" action=\"' . esc_url( admin_url( 'admin-post.php' ) ) . '\" class=\"dl-tk-f\" onsubmit=\"return confirm(\\'Gauta iš ' . esc_js( $vardas ) . '? Įvesti kiekiai pridedami į AV likutį.",
+   "petshop-darbalaukis.php:3815 foreach ( array_keys( $man ) as $m ) { echo '<a class=\"v t\" href=\"' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=ps_desk_veiksmas&v=vp_manifestas&id=0&kodas=' . rawurlencode( $m ) ), 'ps",
+   "petshop-darbalaukis.php:3903 $pk_forma = '<form method=\"post\" action=\"' . esc_url( admin_url( 'admin-post.php' ) ) . '\" class=\"dl-pk-f\" style=\"display:none\">' . wp_nonce_field( 'ps_dl_pakart_' . $id, '_wpnonce', true, false ) . '",
+   "petshop-darbalaukis.php:3966 if ( current_user_can( 'manage_woocommerce' ) ) { echo '<p class=\"dl-paaisk\"><a href=\"' . esc_url( admin_url( 'admin.php?page=' . self::SLUG . '&senas=1&view=rytas' ) ) . '\">Senoji eiga (LP Express li",
+   "petshop-rinkiniai.php:270 . esc_url( admin_url( 'admin.php?page=' . $slug ) ) . '\">' . esc_html( $vardas ) . '</a>';",
+   "petshop-rinkiniai.php:276 . '<form class=\"pskat-search\" method=\"get\" action=\"' . esc_url( admin_url( 'admin.php' ) ) . '\">'",
+   "petshop-rinkiniai.php:1622 $u = add_query_arg( 'gm', $g );"
   ],
-  "liko_db": 0
- },
- "B": {
-  "v": "S1667",
-  "faze": "B",
-  "wp": "2026-09-09 09:46:18",
-  "tikra": {
-   "19780": {
-    "kodas": 200,
-    "IU_IU": 0,
-    "kontekstas": "Ca (kalcis) 1,6 % P (fosforas) 1,1 % Vitaminai ir papildai Vitaminas A 14.000 IU Gyvūno rūšis Šunims Amžius Jauniems Baltymų šalti"
-   },
-   "19785": {
-    "kodas": 200,
-    "IU_IU": 0,
-    "kontekstas": "Ca (kalcis) 1,6 % P (fosforas) 1,1 % Vitaminai ir papildai Vitaminas A 14.000 IU Gyvūno rūšis Šunims Amžius Jauniems Baltymų šalti"
-   }
+  "hook": {
+   "admin_post_ps_dl_veiksmas": "YRA",
+   "admin_post_nopriv_ps_dl_veiksmas": "NERA"
   },
-  "liko_db": 0
+  "visi_admin_post": [
+   "admin_post_ps_klientai_csv",
+   "admin_post_ps_menuo_xlsx",
+   "admin_post_ps_pard_xlsx",
+   "admin_post_ps_ata_vaizdas",
+   "admin_post_ps_dropship_send",
+   "admin_post_ps_dropship_visi",
+   "admin_post_ps_dropship_nust",
+   "admin_post_ps_dropship_lipdukas",
+   "admin_post_ps_dropship_zb_done",
+   "admin_post_ps_tiekimas",
+   "admin_post_ps_tiekimas_eilute",
+   "admin_post_ps_tiekimas_lipdukas",
+   "admin_post_ps_dl_veiksmas",
+   "admin_post_ps_desk_veiksmas",
+   "admin_post_ps_dl_tiekimas",
+   "admin_post_ps_dl_uzsakyti",
+   "admin_post_ps_dl_redaguoti",
+   "admin_post_ps_dl_kiekis",
+   "admin_post_ps_dl_pakartotinis",
+   "admin_post_ps_dl_kreditine",
+   "admin_post_ps_dl_kr_sablonas",
+   "admin_post_ps_dl_ats_sablonas",
+   "admin_post_ps_dl_grazinimas",
+   "admin_post_ps_dl_naujas",
+   "admin_post_ps_dl_istrinti_atsauktus",
+   "admin_post_ps_tarifai_irasyti",
+   "admin_post_ps_tarifai_uzdaryti",
+   "admin_post_ps_priemoka_irasyti",
+   "admin_post_ps_priemoka_uzdaryti",
+   "admin_post_ps_islaidos_irasyti",
+   "admin_post_ps_islaidos_trinti",
+   "admin_post_ps_nustatymai_irasyti",
+   "admin_post_ps_kat_vaizdas",
+   "admin_post_ps_brand_veiksmas",
+   "admin_post_ps_rytas_ribos",
+   "admin_post_ps_rytas_tikrinti",
+   "admin_post_ps_siuntu_siusti",
+   "admin_post_ps_stat_pradzia",
+   "admin_post_ps_ata_xlsx"
+  ]
  }
 }
