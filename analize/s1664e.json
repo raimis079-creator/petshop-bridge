@@ -1,0 +1,23 @@
+{
+ "v": "dep-133214",
+ "kurimas": 200,
+ "sid": 5340,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1664 e",
+  "pries": 0,
+  "po": 1,
+  "pask": {
+   "t": "2026-09-09 16:33:34",
+   "item": 1727,
+   "uri": "/?ps_s1664e=GO",
+   "ajax": 0,
+   "cron": 0,
+   "bt": "require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}, wc_delete_order_item_meta, WC_Data_Store->__call, WC_Order_Item_Data_Store->delete_metadata, delete_metadata, apply_filters('delete_order_item_metadata')"
+  },
+  "liko_meta": "1"
+ }
+}
