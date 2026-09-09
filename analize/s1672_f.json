@@ -1,0 +1,93 @@
+{
+ "v": "dep-184558",
+ "kurimas": 200,
+ "sid": 5401,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1672 f",
+  "metodai": [
+   "lentele(0)",
+   "kurti_lentele(0)",
+   "laukai(1)",
+   "suskaiciuoti(1)",
+   "tiekejai_is_meta(1)",
+   "sk(1)",
+   "val(1)",
+   "num(1)",
+   "taisyti(0)",
+   "importas_vyksta(0)",
+   "sinchronizuoti(2)",
+   "naktinis(0)",
+   "be_saltinio_sarasas(1)",
+   "registras(1)",
+   "gyvi(2)",
+   "saltiniai(1)",
+   "yra_registre(1)",
+   "sandelio_reiksmes(0)",
+   "uzpildyti_sandeli(1)",
+   "sandelio_kandidatai(0)",
+   "pirmas(1)"
+  ],
+  "ss_metodai": [
+   "nust(0)",
+   "sinchronizuojami(0)",
+   "parduodama(2)",
+   "skaiciuoti_is_masyvo(2)",
+   "qty(1)"
+  ],
+  "registras": {
+   "15838": [
+    {
+     "source": "belcor_tofu",
+     "stock_qty": "6",
+     "updated_at": "2026-09-09 07:20:13"
+    }
+   ],
+   "16537": [
+    {
+     "source": "quattro",
+     "stock_qty": "22",
+     "updated_at": "2026-09-09 07:20:13"
+    }
+   ],
+   "17363": [
+    {
+     "source": "belcor_tofu",
+     "stock_qty": "3",
+     "updated_at": "2026-09-09 07:20:14"
+    }
+   ]
+  },
+  "meta": {
+   "15838": {
+    "own": "6",
+    "_stock": "0"
+   },
+   "16537": {
+    "own": "22",
+    "_stock": "0"
+   },
+   "17363": {
+    "own": "3",
+    "_stock": "0"
+   }
+  },
+  "suskaiciuoti": {
+   "15838": [
+    "av=6",
+    "belcor_tofu=0"
+   ],
+   "16537": [
+    "av=22",
+    "quattro=0"
+   ],
+   "17363": [
+    "av=3",
+    "belcor_tofu=0"
+   ]
+  }
+ }
+}
