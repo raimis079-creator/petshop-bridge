@@ -1,0 +1,171 @@
+{
+ "v": "dep-080930",
+ "kurimas": 200,
+ "sid": 5273,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "S1674S",
+  "wp": "2026-09-09 11:10:43",
+  "wsc": {
+   "status": "enabled",
+   "signup": "enabled",
+   "onboarding": {
+    "terms": true,
+    "newsletter": true,
+    "plugins": true
+   },
+   "site_id": false,
+   "email": false,
+   "dismissed": "1",
+   "reset_complete": false,
+   "autentifikuotas": "TAIP"
+  },
+  "visos_wsc": {
+   "_transient_cmplz_wsc_api_open_scanner": "1",
+   "_transient_cmplz_wsc_api_open_signup": "1",
+   "_transient_cmplz_wsc_rest_accessible": "1",
+   "_transient_timeout_cmplz_wsc_api_open_scanner": "1788941913",
+   "_transient_timeout_cmplz_wsc_api_open_signup": "1788941676",
+   "_transient_timeout_cmplz_wsc_rest_accessible": "1788944908",
+   "cmplz_consent_wsc_consent": "O:8:\"stdClass\":3:{s:2:\"id\";s:36:\"d2d48031-bdfa-42d6-ade3-e7076e2b3c21\";s:10:\"subject_id\";s",
+   "cmplz_wsc_auth_completed": "1",
+   "cmplz_wsc_checks_scan_createdAt": "1788941091608",
+   "cmplz_wsc_checks_scan_id": "01a08532-c318-729b-81a6-660cdf455019",
+   "cmplz_wsc_checks_webhook_secret": "CctdlxomQBuo9YMBtc2rPZrjLJKUfKly",
+   "cmplz_wsc_connection_updated": "1788941312",
+   "cmplz_wsc_consent_consentdata": "{\"timestamp\":\"2026-09-09T07:27:08+00:00\",\"subject\":{\"id\":\"cmplz-aHR0cHM6Ly9wZXRzaG9wLmx0#d",
+   "cmplz_wsc_dismissed": "1",
+   "cmplz_wsc_logs": "a:3:{i:0;a:3:{s:7:\"context\";s:9:\"get_token\";s:13:\"error_message\";s:61:\"cannot retrieve tok",
+   "cmplz_wsc_onboarding_status": "a:3:{s:5:\"terms\";b:1;s:10:\"newsletter\";b:1;s:7:\"plugins\";b:1;}",
+   "cmplz_wsc_signup_date": "1788941156",
+   "cmplz_wsc_signup_status": "enabled",
+   "cmplz_wsc_status": "enabled",
+   "ps_s1668_wsc_bak": "a:6:{s:16:\"cmplz_wsc_status\";s:7:\"pending\";s:23:\"cmplz_wsc_signup_status\";s:7:\"pending\";s:"
+  },
+  "cookies_n": 132,
+  "cookies_lt": 66,
+  "services_n": 18,
+  "cookies": [
+   {
+    "ID": "132",
+    "name": "wordpress_test_cookie",
+    "language": "lt",
+    "sync": "1",
+    "showOnPolicy": "1"
+   },
+   {
+    "ID": "131",
+    "name": "wordpress_test_cookie",
+    "language": "en",
+    "sync": "1",
+    "showOnPolicy": "1"
+   },
+   {
+    "ID": "130",
+    "name": "ee39232f299f5f2111af5a60d5d10fd1",
+    "language": "lt",
+    "sync": "1",
+    "showOnPolicy": "1"
+   },
+   {
+    "ID": "129",
+    "name": "ee39232f299f5f2111af5a60d5d10fd1",
+    "language": "en",
+    "sync": "1",
+    "showOnPolicy": "1"
+   },
+   {
+    "ID": "128",
+    "name": "wc_fragments_ba413f4ba6261c541bbc45cfe5bfdb62",
+    "language": "lt",
+    "sync": "1",
+    "showOnPolicy": "1"
+   },
+   {
+    "ID": "127",
+    "name": "wc_fragments_ba413f4ba6261c541bbc45cfe5bfdb62",
+    "language": "en",
+    "sync": "1",
+    "showOnPolicy": "1"
+   },
+   {
+    "ID": "126",
+    "name": "wp_woocommerce_session_*",
+    "language": "lt",
+    "sync": "1",
+    "showOnPolicy": "1"
+   },
+   {
+    "ID": "125",
+    "name": "wp_woocommerce_session_*",
+    "language": "en",
+    "sync": "1",
+    "showOnPolicy": "1"
+   },
+   {
+    "ID": "124",
+    "name": "wordpress_logged_in_*",
+    "language": "lt",
+    "sync": "1",
+    "showOnPolicy": "1"
+   },
+   {
+    "ID": "123",
+    "name": "wordpress_logged_in_*",
+    "language": "en",
+    "sync": "1",
+    "showOnPolicy": "1"
+   },
+   {
+    "ID": "122",
+    "name": "esh_517da599db78",
+    "language": "lt",
+    "sync": "1",
+    "showOnPolicy": "1"
+   },
+   {
+    "ID": "121",
+    "name": "esh_517da599db78",
+    "language": "en",
+    "sync": "1",
+    "showOnPolicy": "1"
+   },
+   {
+    "ID": "120",
+    "name": "sbjs_session",
+    "language": "lt",
+    "sync": "1",
+    "showOnPolicy": "1"
+   },
+   {
+    "ID": "119",
+    "name": "sbjs_session",
+    "language": "en",
+    "sync": "1",
+    "showOnPolicy": "1"
+   },
+   {
+    "ID": "118",
+    "name": "sbjs_udata",
+    "language": "lt",
+    "sync": "1",
+    "showOnPolicy": "1"
+   }
+  ],
+  "scan": {
+   "progress": false,
+   "scan_id": false,
+   "last_scan": false,
+   "sync_complete": "1"
+  },
+  "politika": {
+   "kodas": 200,
+   "overview_tuscias": 0,
+   "tr": 0,
+   "nesinchronizuotas": 0
+  }
+ }
+}
