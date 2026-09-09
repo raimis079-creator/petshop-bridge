@@ -1,0 +1,17 @@
+{
+ "v": "dep-121353",
+ "kurimas": 200,
+ "sid": 5324,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1662B",
+  "db_klaida": "Unknown column 'date_paid_gmt' in 'field list'",
+  "kodas": [
+   "petshop-darbalaukis.php:1618 const KR_COUNTER_OPT = 'petshop_kravpn_counter';     // v3.25: kreditinių KR-AVPN sava eilė — KITAS numeris (kaip `petshop_avpn_c",
+   "petshop-darbalaukis.php:2253 /** KR-AVPN numeris iš savos eilės (`petshop_kravpn_counter` = KITAS numeris, kaip `petshop_avpn_counter`; T-0 → 101). Rašomas į"
+  ]
+ }
+}
