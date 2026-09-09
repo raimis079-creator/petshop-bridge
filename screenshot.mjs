@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP='https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFRFTVAgUFMgUzE2NjUgbyDigJQgUkVBRC1PTkxZOiBwc19hZHNfcmVjb24gYm9keSBneitiNjQuICovCmFkZF9hY3Rpb24oJ2luaXQnLCBmdW5jdGlvbigpewogIGlmICghaXNzZXQoJF9HRVRbJ3BzX3MxNjY1byddKSkgcmV0dXJuOwogICRyPWdldF9vcHRpb24oJ3BzX2Fkc19yZWNvbicpOwogIHdwX3NlbmRfanNvbihhcnJheSgndic9PidTMTY2NSBvJywna2FkYSc9PiRyWydrYWRhJ10/PycnLCdkeWRpcyc9PiRyWydkeWRpcyddPz8wLCdiNjQnPT5iYXNlNjRfZW5jb2RlKGd6ZW5jb2RlKChzdHJpbmcpKCRyWydib2R5J10/PycnKSw5KSkpKTsKfSk7Cg==';
-const VER='dep-155014';
+const VER='dep-155440';
 const GKEY='ps_s1665o';
 const PHASES=["GO"];
-const OUT='analize/s1666d.json';
+const OUT='analize/s1666e.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
