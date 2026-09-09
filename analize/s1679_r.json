@@ -1,0 +1,49 @@
+{
+ "v": "dep-083637",
+ "kurimas": 200,
+ "sid": 5282,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1679",
+  "wp": "2026-09-09 11:37:47",
+  "stulpeliai": [
+   "id",
+   "product_id",
+   "gauta",
+   "kiekis_gautas",
+   "kiekis_liko",
+   "savikaina_eur",
+   "savikaina_orig",
+   "valiuta",
+   "kursas",
+   "geriausia_iki",
+   "tiekejas",
+   "importuota",
+   "tiekimas_id",
+   "pastaba",
+   "sukurta",
+   "user_id",
+   "atsaukta"
+  ],
+  "partiju_viso": 680,
+  "preke": {
+   "id": 16165,
+   "pav": "Sepija mineralas / skanėstas paukščiams, 20 cm, 1 vnt.",
+   "sku": "026122594",
+   "stock": "0",
+   "sandelis": "av",
+   "own": "",
+   "vf": "",
+   "zb": ""
+  },
+  "jos_partijos": [],
+  "stulpeliai_naudojami": {
+   "likutis": null,
+   "preke": "product_id"
+  },
+  "uzsakymu": "3"
+ }
+}
