@@ -1,0 +1,54 @@
+{
+ "v": "dep-191350",
+ "kurimas": 200,
+ "sid": 5406,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1674 a",
+  "statusai": {
+   "kort-pav-stat": 3013,
+   "kb-stat": 3028,
+   "kort-tiek-stat": 3151,
+   "kort-lik-stat": 3175,
+   "kort-kat-stat": 3232,
+   "kort-atr-stat": 3467,
+   "kt-stat": 3701,
+   "ka-stat": 3733,
+   "kn-stat": 3878,
+   "pt-stat": 4096,
+   "ps-seima-stat": 4226,
+   "ps-var-stat": 4362,
+   "kpak-stat": 4515,
+   "pl-stat": 6653
+  },
+  "mygtukai": {
+   "kort-pav-irasyti": 3011,
+   "kort-tiek-irasyti": 3150,
+   "kort-lik-irasyti": 3174,
+   "kort-kat-irasyti": 3236,
+   "kort-atr-irasyti": 3489,
+   "kort-saugoti": 3575,
+   "ks-irasyti": 3579,
+   "kt-irasyti": 3699,
+   "ka-irasyti": 3728,
+   "k-irasyti": 6327,
+   "pl-irasyti": 6652,
+   "pskat-saugoti": 6731,
+   "issaugoti": 6734,
+   "kpf-irasyti": 8153
+  },
+  "kont": [
+   "3575 echo '<div class=\"kort-saugoti\" id=\"kort-saugoti\" hidden>'",
+   "3666 $turinys = (string) get_post_field( 'post_content', $pid );",
+   "7205 var turinys=kort.querySelector(\".kort-turinys\");",
+   "7927 window.korteleInit=function(){",
+   "9609 .kort-kaire .kort-blokas, .kort-desine .kort-blokas { margin:0 0 12px; }",
+   "9610 .kort-desine .kort-blokas { background:#f7f9f6; }",
+   "9779 .kort-blokas{padding:12px 16px;border-bottom:1px solid #e8ebe6}"
+  ],
+  "init_nuo": 7927
+ }
+}
