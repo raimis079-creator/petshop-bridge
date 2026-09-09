@@ -1,0 +1,80 @@
+{
+ "v": "dep-132022",
+ "kurimas": 200,
+ "sid": 5333,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1664 a",
+  "cron_zb_vf_import": {
+   "petshop_import_tempas": "09-09 13:21",
+   "petshop_vf_sync_stock_hourly": "09-09 13:59",
+   "petshop_vf_feed_hourly": "09-09 14:05",
+   "petshop_vf_sync_reprice_daily": "09-10 03:00",
+   "petshop_vf_sync_publish_daily": "09-10 04:00"
+  },
+  "titulinis": {
+   "code": 200,
+   "img": 20,
+   "ilgis": 239717
+  },
+  "sender_webhook_log": {
+   "n": 0,
+   "pask": false
+  },
+  "bak_n": 44,
+  "bak": [
+   "ps_akcijos_bak_20260810_184840",
+   "ps_bak_brevo_34525",
+   "ps_bak_brevo_34526",
+   "ps_bak_mobile_sidebar_20260801",
+   "ps_footer_widget5_bak_20260801",
+   "ps_home_cta_bak_20260801",
+   "ps_juodr_bak_20260811_084157",
+   "ps_katalogas_v28_bak",
+   "ps_katalogas_v29_bak",
+   "ps_katalogas_v30_bak",
+   "ps_katalogas_v31_bak",
+   "ps_katalogas_v32_bak",
+   "ps_katalogas_v33_bak",
+   "ps_katalogas_v34_bak",
+   "ps_katalogas_v35_bak",
+   "ps_katalogas_v36_bak",
+   "ps_katalogas_v37_bak",
+   "ps_katalogas_v38_bak",
+   "ps_katalogas_v39_bak",
+   "ps_katalogas_v40_bak",
+   "ps_prist_bak_14894_20260829",
+   "ps_prist_bak_14894_sakinys_20260829",
+   "ps_prist_bak_3228_20260829",
+   "ps_prist_bak_3230_20260829",
+   "ps_prist_bak_3232_20260829",
+   "ps_prist_bak_3233_20260829",
+   "ps_prist_bak_3234_20260829",
+   "ps_prist_bak_34595_20260829",
+   "ps_prist_bak_title_3233",
+   "ps_quattro_savikainu_bak_20260817",
+   "ps_rink_cumulative_bak_0814",
+   "ps_s1635_email_bak",
+   "ps_s1637_bak",
+   "ps_s1667_iu_bak",
+   "ps_s1668_wsc_bak",
+   "ps_s1671_onboarding_bak",
+   "ps_s1675_cmplz_bak",
+   "ps_s1678_adsense_bak",
+   "ps_s1682_partijos_bak",
+   "ps_sandelio_norm_bak_20260817",
+   "ps_savikainos_bak_20260817",
+   "ps_shipments_naslaiciai_bak_20260829_082044",
+   "ps_wpai1_bak_20260810",
+   "ps_wpforms_settings_bak_20260801"
+  ],
+  "legacy": {
+   "/katalogas/sunims": "404 ",
+   "/prekes/kate-maistas": "404 ",
+   "/nesamas-xyz-123": "404 "
+  }
+ }
+}
