@@ -1,0 +1,131 @@
+{
+ "v": "dep-095257",
+ "kurimas": 200,
+ "sid": 5296,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1684Z",
+  "stebimi": {
+   "_regular_price": [
+    "kaina",
+    "Reguliari kaina"
+   ],
+   "_sale_price": [
+    "kaina",
+    "Akcijinė kaina"
+   ],
+   "_price": [
+    "kaina",
+    "Kaina pirkėjui"
+   ],
+   "_manual_price_override": [
+    "kaina",
+    "Kainos užraktas"
+   ],
+   "_stock": [
+    "likutis",
+    "Likutis"
+   ],
+   "_stock_status": [
+    "likutis",
+    "Likučio būsena"
+   ],
+   "_own_stock_qty": [
+    "likutis",
+    "AV likutis"
+   ],
+   "_vf_qty": [
+    "likutis",
+    "VF likutis"
+   ],
+   "_zb_qty": [
+    "likutis",
+    "ZB likutis"
+   ],
+   "_cost_price": [
+    "savikaina",
+    "Savikaina"
+   ],
+   "_vf_cost": [
+    "savikaina",
+    "VF savikaina"
+   ],
+   "_zb_cost": [
+    "savikaina",
+    "ZB savikaina"
+   ],
+   "_ps_sandelis": [
+    "sandelis",
+    "Sandėlis"
+   ],
+   "_sku": [
+    "duomenys",
+    "SKU"
+   ],
+   "_ean": [
+    "duomenys",
+    "EAN"
+   ],
+   "_thumbnail_id": [
+    "nuotrauka",
+    "Pagrindinė nuotrauka"
+   ],
+   "_weight": [
+    "duomenys",
+    "Prekės svoris"
+   ],
+   "_tax_status": [
+    "duomenys",
+    "PVM būsena"
+   ]
+  },
+  "irasyti_kodas": " public static function irasyti( $pid, $tipas, $args = array() ) { $pid = (int) $pid; if ( ! $pid || self::$dirba ) { return false; } $sena = isset( $args['sena'] ) ? self::trumpinti( $args['sena'] ) : ''; $nauja = isset( $args['nauja'] ) ? self::trumpinti( $args['nauja'] ) : ''; /* Be pokycio nera ivykio. Importas kas valanda \"atnaujina\" tas pacias * reiksmes — be sios patikros lentele augtu megabaitais be naudos. */ if ( $sena === $nauja && ! isset( $args['leisti_be_pokycio'] ) ) { return false; } /* Riba saugo nuo ciklo gyvame darbe, taciau backfill'e ji tyliai * nukirstu prekes istorija ties 40-tuoju irasu — todel ten sąmoningai * apeinama per `be_ribos`. */ if ( empty( $args['be_ribos'] ) ) { if ( ! isset( self::$skaitikliai[ $pid ] ) ) { self::$skaitikliai[ $pid ] = 0; } if ( self::$skaitikliai[ $pid ] >= self::RIBA_PREKEI ) { return false; } } if ( ! self::uztikrinti_lentele() ) { return false; } global $wpdb; self::$dirba = true; $ok = $wpdb->insert( self::lentele(), array( 'product_id' => $pid, 'laikas' => isset( $args['laikas'] ) ? $args['laikas'] : current_time( 'mysql' ), 'tipas' => substr( (string) $tipas, 0, 24 ), 'laukas' => isset( $args['laukas'] ) ? substr( (string) $args['laukas'], 0, 64 ) : '', 'sena' => $sena, 'nauja' => $nauja, 'saltinis' => isset( $args['saltinis'] ) ? substr( (string) $args['saltinis'], 0, 24 ) : self::saltinis(), 'kas' => isset( $args['kas'] ) ? substr( (string) $args['kas'], 0, 96 ) : self::kas(), 'op_nr' => isset( $args['op_nr'] ) ? substr( (string) $args['op_nr'], 0, 24 ) : (string) self::$op_nr, 'pastaba' => isset( $args['pastaba'] ) ? substr( (string) $args['pastaba'], 0, 255 ): '', ), array( '%d','%s','%s','%s','%s','%s','%s','%s','%s','%s' ) ); self::$dirba = false; if ( $ok && empty( $args['be_ribos'] ) ) { self::$skaitikliai[ $pid ]++; } return (bool) $ok; } ",
+  "failas": "petshop-ivykiai.php",
+  "tipai_db": [
+   {
+    "tipas": "likutis",
+    "k": "22342"
+   },
+   {
+    "tipas": "kaina",
+    "k": "2444"
+   },
+   {
+    "tipas": "duomenys",
+    "k": "1590"
+   },
+   {
+    "tipas": "savikaina",
+    "k": "1333"
+   },
+   {
+    "tipas": "busena",
+    "k": "511"
+   },
+   {
+    "tipas": "nuotrauka",
+    "k": "176"
+   },
+   {
+    "tipas": "sandelis",
+    "k": "171"
+   }
+  ],
+  "stulpeliai": [
+   "id",
+   "product_id",
+   "laikas",
+   "tipas",
+   "laukas",
+   "sena",
+   "nauja",
+   "saltinis",
+   "kas",
+   "op_nr",
+   "pastaba"
+  ]
+ }
+}
