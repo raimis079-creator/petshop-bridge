@@ -1,0 +1,16 @@
+{
+ "v": "dep-135750",
+ "kurimas": 200,
+ "sid": 5346,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1665 f",
+  "tk_len": 1320,
+  "/webhooks": "404 {\n    \"message\": \"The route v2/webhooks could not be found.\"\n}",
+  "/account/webhooks": "401 {\"message\":\"Unauthenticated.\"}",
+  "/hooks": "405 {\n    \"message\": \"The GET method is not supported for route v2/hooks. Supported methods: POST.\"\n}"
+ }
+}
