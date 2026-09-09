@@ -1,0 +1,191 @@
+{
+ "v": "dep-101048",
+ "kurimas": 200,
+ "sid": 5301,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1685d",
+  "wp": "2026-09-09 13:12:28",
+  "zonos": {
+   "Neringos savivaldybe": [
+    {
+     "id": "shopup_venipak_shipping_pickup_method",
+     "inst": 9,
+     "ijungtas": "yes",
+     "pav": "VENIPAK paštomatai/atsiėmimo punktai",
+     "kaina": ""
+    },
+    {
+     "id": "shopup_venipak_shipping_courier_method",
+     "inst": 10,
+     "ijungtas": "yes",
+     "pav": "VENIPAK Kurjeris",
+     "kaina": ""
+    },
+    {
+     "id": "woo_lithuaniapost_lpexpress_terminal",
+     "inst": 13,
+     "ijungtas": "yes",
+     "pav": "LP Express",
+     "kaina": "flat"
+    }
+   ],
+   "Lietuva": [
+    {
+     "id": "free_shipping",
+     "inst": 1,
+     "ijungtas": "no",
+     "pav": "Nemokamas pristatymas",
+     "kaina": ""
+    },
+    {
+     "id": "shopup_venipak_shipping_courier_method",
+     "inst": 2,
+     "ijungtas": "yes",
+     "pav": "VENIPAK Kurjeris",
+     "kaina": ""
+    },
+    {
+     "id": "shopup_venipak_shipping_pickup_method",
+     "inst": 3,
+     "ijungtas": "yes",
+     "pav": "VENIPAK paštomatai/atsiėmimo punktai",
+     "kaina": ""
+    },
+    {
+     "id": "shopup_venipak_shipping_courier_method",
+     "inst": 6,
+     "ijungtas": "yes",
+     "pav": "VENIPAK Kurjeris",
+     "kaina": ""
+    },
+    {
+     "id": "shopup_venipak_shipping_courier_method",
+     "inst": 7,
+     "ijungtas": "yes",
+     "pav": "VENIPAK Kurjeris",
+     "kaina": ""
+    },
+    {
+     "id": "shopup_venipak_shipping_courier_method",
+     "inst": 8,
+     "ijungtas": "yes",
+     "pav": "VENIPAK Kurjeris",
+     "kaina": ""
+    },
+    {
+     "id": "woo_lithuaniapost_lpexpress_terminal",
+     "inst": 12,
+     "ijungtas": "yes",
+     "pav": "LP Express",
+     "kaina": "flat"
+    },
+    {
+     "id": "woo_lithuaniapost_lpexpress_terminal",
+     "inst": 15,
+     "ijungtas": "yes",
+     "pav": "LP Express kurjeris",
+     "kaina": "weight"
+    },
+    {
+     "id": "local_pickup",
+     "inst": 16,
+     "ijungtas": "no",
+     "pav": "Atsiėmimas AV — Liucionių g. 46, Liucionys",
+     "kaina": "0"
+    }
+   ],
+   "Baltijos šalys, be LIetuvos": [
+    {
+     "id": "shopup_venipak_shipping_pickup_method",
+     "inst": 5,
+     "ijungtas": "yes",
+     "pav": "VENIPAK paštomatai/atsiėmimo punktai",
+     "kaina": ""
+    }
+   ],
+   "(likusios sritys)": []
+  },
+  "uzsakymai": {
+   "35872": {
+    "metodai": [
+     "shopup_venipak_shipping_pickup_method#3 — VENIPAK paštomatai/atsiėmimo punktai — 1.78"
+    ],
+    "busena": "processing",
+    "lp_meta": [
+     {
+      "meta_key": "venipak_pickup_point",
+      "v": "2644"
+     },
+     {
+      "meta_key": "venipak_pickup_point_data",
+      "v": "{\"id\":2644,\"code\":\"300906055\",\"name\":\"Venipak locker, \\u010c"
+     }
+    ]
+   },
+   "35873": {
+    "metodai": [
+     "shopup_venipak_shipping_pickup_method#3 — VENIPAK paštomatai/atsiėmimo punktai — 1.78"
+    ],
+    "busena": "on-hold",
+    "lp_meta": [
+     {
+      "meta_key": "venipak_pickup_point",
+      "v": "2771"
+     },
+     {
+      "meta_key": "venipak_pickup_point_data",
+      "v": "{\"id\":2771,\"code\":\"300906055\",\"name\":\"Venipak locker, MAXIMA"
+     }
+    ]
+   },
+   "35874": {
+    "metodai": [
+     "shopup_venipak_shipping_pickup_method#3 — VENIPAK paštomatai/atsiėmimo punktai — 1.78"
+    ],
+    "busena": "pending",
+    "lp_meta": [
+     {
+      "meta_key": "venipak_pickup_point",
+      "v": "2771"
+     },
+     {
+      "meta_key": "venipak_pickup_point_data",
+      "v": "{\"id\":2771,\"code\":\"300906055\",\"name\":\"Venipak locker, MAXIMA"
+     }
+    ]
+   },
+   "35875": {
+    "metodai": [
+     "woo_lithuaniapost_lpexpress_terminal#12 — LP Express — 1.78"
+    ],
+    "busena": "pending",
+    "lp_meta": [
+     {
+      "meta_key": "_woo_lithuaniapost_lpexpress_shipping_method_instance_id",
+      "v": "12"
+     },
+     {
+      "meta_key": "_woo_lithuaniapost_lpexpress_terminal",
+      "v": "Maxima X - Vandžiogalos pl. 106A, Domeikava, Kaunas"
+     },
+     {
+      "meta_key": "_woo_lithuaniapost_lpexpress_terminal_id",
+      "v": "0231"
+     }
+    ]
+   }
+  },
+  "lp_opcijos": {
+   "lpsettings_woo_lithuaniapost_updated_version": "4.0.32",
+   "woo_lithuaniapost_module_active": "1",
+   "lpsettings_woo_lithuaniapost_address_pickup_id": "32742454",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_12_settings": "a:20:{s:5:\"title\";s:10:\"LP Express\";s:4:\"plan\";s:8:\"TERMINAL\";s:11:\"parcel_type\";s:3:\"H2T\";s:13:\"delivery_time\";s:0:\"\";s",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_13_settings": "a:20:{s:5:\"title\";s:10:\"LP Express\";s:4:\"plan\";s:8:\"TERMINAL\";s:11:\"parcel_type\";s:3:\"H2T\";s:13:\"delivery_time\";s:0:\"\";s",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_15_settings": "a:28:{s:5:\"title\";s:19:\"LP Express kurjeris\";s:4:\"plan\";s:5:\"HANDS\";s:11:\"parcel_type\";s:3:\"H2H\";s:13:\"delivery_time\";s:"
+  }
+ }
+}
