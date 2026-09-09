@@ -1,0 +1,138 @@
+{
+ "v": "dep-184736",
+ "kurimas": 200,
+ "sid": 5402,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "S1672 g",
+  "faze": "S",
+  "parasas": [
+   "pid",
+   "rasyti_kopija?"
+  ],
+  "prekiu": 142,
+  "sinchronizuota": 142,
+  "nepavyko": 0
+ },
+ "T": {
+  "v": "S1672 g",
+  "faze": "T",
+  "parasas": [
+   "pid",
+   "rasyti_kopija?"
+  ],
+  "prekiu": 142,
+  "pvz": {
+   "15838": {
+    "registras": [
+     {
+      "source": "av",
+      "stock_qty": null
+     },
+     {
+      "source": "belcor_tofu",
+      "stock_qty": "0"
+     }
+    ],
+    "parduodama": {
+     "qty": 6,
+     "av": 6,
+     "tiekejo": 0,
+     "kodel": "AV 6 + BELCOR_TOFU 0",
+     "perspejimai": [],
+     "saltiniai": [
+      {
+       "source": "av",
+       "raw": 6,
+       "iskaityta": 6,
+       "kodel": "sava lentyna"
+      },
+      {
+       "source": "belcor_tofu",
+       "raw": 0,
+       "iskaityta": 0,
+       "kodel": "rankinis likutis · atimtas 0 vnt. rezervas",
+       "duomenu_amzius_val": null
+      }
+     ],
+     "is_lenteles": true
+    }
+   },
+   "16537": {
+    "registras": [
+     {
+      "source": "av",
+      "stock_qty": null
+     },
+     {
+      "source": "quattro",
+      "stock_qty": "0"
+     }
+    ],
+    "parduodama": {
+     "qty": 22,
+     "av": 22,
+     "tiekejo": 0,
+     "kodel": "AV 22 + QUATTRO 0",
+     "perspejimai": [],
+     "saltiniai": [
+      {
+       "source": "av",
+       "raw": 22,
+       "iskaityta": 22,
+       "kodel": "sava lentyna"
+      },
+      {
+       "source": "quattro",
+       "raw": 0,
+       "iskaityta": 0,
+       "kodel": "rankinis likutis · atimtas 0 vnt. rezervas",
+       "duomenu_amzius_val": null
+      }
+     ],
+     "is_lenteles": true
+    }
+   },
+   "17363": {
+    "registras": [
+     {
+      "source": "av",
+      "stock_qty": null
+     },
+     {
+      "source": "belcor_tofu",
+      "stock_qty": "0"
+     }
+    ],
+    "parduodama": {
+     "qty": 3,
+     "av": 3,
+     "tiekejo": 0,
+     "kodel": "AV 3 + BELCOR_TOFU 0",
+     "perspejimai": [],
+     "saltiniai": [
+      {
+       "source": "av",
+       "raw": 3,
+       "iskaityta": 3,
+       "kodel": "sava lentyna"
+      },
+      {
+       "source": "belcor_tofu",
+       "raw": 0,
+       "iskaityta": 0,
+       "kodel": "rankinis likutis · atimtas 0 vnt. rezervas",
+       "duomenu_amzius_val": null
+      }
+     ],
+     "is_lenteles": true
+    }
+   }
+  },
+  "vis_dar_maziau_nei_av": 0,
+  "front": 200
+ }
+}
