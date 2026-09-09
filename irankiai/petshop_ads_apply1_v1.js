@@ -1,140 +1,73 @@
 /**
- * PETSHOP ADS APPLY #1 v1.0 (S1666) — Raimio patvirtinta seka, 2 veiksmai.
- * (1) Prins Puppy 23394555043 -> PAUSED
- * (2) Brand_Exclusion sharedSets/11895318074 -> campaigns 21472017542 ir 21565450990
- * BIUDZETAI IR tROAS NELIECIAMI.
- * Po veiksmu pats pasitikrina ir issiuncia rezultata i petshop.lt.
- * Naudojimas: Google Ads -> Tools -> Scripts -> + -> ideti -> Authorize -> RUN (ne Preview).
+ * PETSHOP ADS APPLY #1 + PMAX PATIKRA v1.0 (S1666)
+ * Veiksmai: 1) Prins Puppy -> PAUSED. 2) Patikrina Brand_Exclusion priskyrimus (skaito).
+ * 3) Istraukia PMax asset grupiu final URL + url expansion (skaito).
+ * Rezultatus atsiuncia i petshop.lt. Biudzetu/tROAS NELIECIA.
+ * Naudojimas: Tools -> Scripts -> pakeisti koda -> Issaugoti -> Run.
  */
 var URL = 'https://petshop.lt/?rest_route=/ps-web/v1/ads-recon';
 var KEY = 'FDPFp74rq8G8ceoglCn5sA7YrR1IA8lo';
-
-var CID = '7541530584';
-var PRINS = '23394555043';
-var SSET = '11895318074';
-var PMAX = ['21472017542', '21565450990'];
+var PRINS_ID = 23394555043;
 
 function main() {
-  var out = { v: 'ADS APPLY #1 v1.0', kada: new Date().toISOString(), klaidos: [], veiksmai: [] };
+  var out = { v: 'APPLY1 v1.0', kada: new Date().toISOString(), klaidos: [] };
 
-  // --- (1) Prins -> PAUSED
+  // 1) Prins Puppy -> PAUSED
   try {
-    var c = rastiKampanija(PRINS);
-    if (!c) {
-      out.klaidos.push('Prins ' + PRINS + ' nerasta nei viename selektoriuje');
-    } else if (c.isPaused()) {
-      out.veiksmai.push({ zingsnis: 'prins_pause', busena: 'jau_paused', vardas: c.getName() });
-    } else {
-      c.pause();
-      out.veiksmai.push({ zingsnis: 'prins_pause', busena: 'ok', vardas: c.getName() });
-    }
-  } catch (e) { out.klaidos.push('prins_pause: ' + e); }
+    var it = AdsApp.campaigns().withIds([PRINS_ID]).get();
+    if (it.hasNext()) {
+      var c = it.next();
+      var buvo = c.isPaused() ? 'PAUSED' : (c.isEnabled() ? 'ENABLED' : '?');
+      if (c.isEnabled()) { c.pause(); }
+      var po = AdsApp.campaigns().withIds([PRINS_ID]).get().next();
+      out.prins = { buvo: buvo, dabar: po.isPaused() ? 'PAUSED' : 'ENABLED' };
+    } else { out.klaidos.push('prins: nerasta'); }
+  } catch (e) { out.klaidos.push('prins: ' + e); }
 
-  // --- (2) Brand_Exclusion -> 2 PMax
-  var jauPriskirta = esamiPriskyrimai();
-  out.priskyrimai_pries = jauPriskirta;
-  var ops = [];
-  var opsCamp = [];
-  for (var i = 0; i < PMAX.length; i++) {
-    var rn = 'customers/' + CID + '/campaigns/' + PMAX[i];
-    if (jauPriskirta.indexOf(PMAX[i]) !== -1) {
-      out.veiksmai.push({ zingsnis: 'sset_' + PMAX[i], busena: 'jau_priskirta' });
-      continue;
-    }
-    ops.push({
-      campaignSharedSetOperation: {
-        create: {
-          campaign: rn,
-          sharedSet: 'customers/' + CID + '/sharedSets/' + SSET
-        }
-      }
-    });
-    opsCamp.push(PMAX[i]);
-  }
-  if (ops.length) {
-    try {
-      var res = AdsApp.mutate(ops);
-      var k = 0;
-      while (res.hasNext()) {
-        var r = res.next();
-        var cid = opsCamp[k++];
-        if (r.isSuccessful()) {
-          out.veiksmai.push({ zingsnis: 'sset_' + cid, busena: 'ok', rn: r.getResourceName ? r.getResourceName() : '' });
-        } else {
-          out.veiksmai.push({ zingsnis: 'sset_' + cid, busena: 'KLAIDA', kl: r.getErrorMessages().join(' | ') });
-          out.klaidos.push('sset_' + cid + ': ' + r.getErrorMessages().join(' | '));
-        }
-      }
-    } catch (e) { out.klaidos.push('mutate: ' + e); }
-  }
+  // 2) Brand_Exclusion priskyrimu patikra
+  out.sarasu_priskyrimai = gaql(out, 'priskyrimai',
+    'SELECT campaign.name, shared_set.name, campaign_shared_set.status ' +
+    'FROM campaign_shared_set WHERE campaign_shared_set.status != "REMOVED"');
 
-  // --- PATIKRA
-  out.priskyrimai_po = esamiPriskyrimai();
-  out.busenos = [];
-  var ids = [PRINS].concat(PMAX);
-  var q = AdsApp.search(
-    'SELECT campaign.id, campaign.name, campaign.status, campaign.advertising_channel_type, ' +
-    'campaign_budget.amount_micros, campaign.maximize_conversion_value.target_roas ' +
-    'FROM campaign WHERE campaign.id IN (' + ids.join(',') + ')');
-  while (q.hasNext()) {
-    var row = q.next();
-    out.busenos.push({
-      id: String(row.campaign.id),
-      vardas: row.campaign.name,
-      status: row.campaign.status,
-      tipas: row.campaign.advertisingChannelType,
-      biudzetas: row.campaignBudget ? Number(row.campaignBudget.amountMicros) / 1000000 : null,
-      troas: row.campaign.maximizeConversionValue ? row.campaign.maximizeConversionValue.targetRoas : null
-    });
-  }
+  // 3) PMax asset grupiu URL + url expansion
+  out.pmax_urls = gaql(out, 'pmax_urls',
+    'SELECT campaign.name, asset_group.name, asset_group.final_urls, ' +
+    'asset_group.status FROM asset_group');
+  out.pmax_nustatymai = gaql(out, 'pmax_nustatymai',
+    'SELECT campaign.id, campaign.name, campaign.url_expansion_opt_out, ' +
+    'campaign.status FROM campaign ' +
+    'WHERE campaign.advertising_channel_type = "PERFORMANCE_MAX"');
 
-  out.ok = out.klaidos.length === 0;
-  Logger.log(JSON.stringify(out, null, 2));
-  siusti(out);
+  // 4) Galutine visu kampaniju busena
+  out.busenos = gaql(out, 'busenos',
+    'SELECT campaign.id, campaign.name, campaign.status FROM campaign ' +
+    'ORDER BY campaign.id');
+
+  var body = JSON.stringify(out);
+  Logger.log('Dydis: ' + body.length + ' B, klaidos: ' + out.klaidos.length);
+  var resp = UrlFetchApp.fetch(URL, {
+    method: 'post', contentType: 'application/json', payload: body,
+    headers: { 'x-ps-key': KEY }, muteHttpExceptions: true });
+  Logger.log('POST: ' + resp.getResponseCode() + ' ' + resp.getContentText());
 }
 
-function rastiKampanija(id) {
-  var sel = [];
-  try { sel.push(AdsApp.campaigns()); } catch (e) {}
-  try { sel.push(AdsApp.shoppingCampaigns()); } catch (e) {}
-  try { sel.push(AdsApp.videoCampaigns()); } catch (e) {}
-  try { sel.push(AdsApp.performanceMaxCampaigns()); } catch (e) {}
-  for (var i = 0; i < sel.length; i++) {
-    try {
-      var it = sel[i].withIds([id]).get();
-      if (it.hasNext()) return it.next();
-    } catch (e) {}
-  }
-  return null;
+function gaql(out, vardas, q) {
+  var rows = [];
+  try {
+    var it = AdsApp.search(q);
+    while (it.hasNext() && rows.length < 200) { rows.push(flat(it.next())); }
+  } catch (e) { out.klaidos.push(vardas + ': ' + e); }
+  return rows;
 }
 
-function esamiPriskyrimai() {
-  var r = [];
-  try {
-    var it = AdsApp.search(
-      'SELECT campaign_shared_set.campaign, campaign_shared_set.shared_set, campaign_shared_set.status ' +
-      'FROM campaign_shared_set WHERE campaign_shared_set.status = "ENABLED"');
-    while (it.hasNext()) {
-      var row = it.next();
-      var ss = String(row.campaignSharedSet.sharedSet);
-      if (ss.indexOf('/' + SSET) !== -1) {
-        var cm = String(row.campaignSharedSet.campaign);
-        r.push(cm.substring(cm.lastIndexOf('/') + 1));
-      }
+function flat(o) {
+  var r = {};
+  (function eiti(x, pre) {
+    for (var k in x) {
+      var v = x[k];
+      if (v !== null && typeof v === 'object' && !Array.isArray(v)) { eiti(v, pre + k + '.'); }
+      else { r[pre + k] = v; }
     }
-  } catch (e) { r.push('KLAIDA:' + e); }
+  })(o, '');
   return r;
-}
-
-function siusti(out) {
-  try {
-    var resp = UrlFetchApp.fetch(URL, {
-      method: 'post',
-      contentType: 'application/json',
-      headers: { 'x-ps-key': KEY },
-      payload: JSON.stringify(out),
-      muteHttpExceptions: true
-    });
-    Logger.log('SIUNTIMAS: ' + resp.getResponseCode() + ' ' + resp.getContentText().substring(0, 300));
-  } catch (e) { Logger.log('SIUNTIMO KLAIDA: ' + e); }
 }
