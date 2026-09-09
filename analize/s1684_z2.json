@@ -1,0 +1,48 @@
+{
+ "v": "dep-095508",
+ "kurimas": 200,
+ "sid": 5297,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1684Z2",
+  "faze": "A",
+  "pries_md5": "d8a4d3377f614555d78314d9a08d6274",
+  "pakeitimas_0": 1,
+  "pakeitimas_1": 1,
+  "bak": "petshop-katalogas.php-v880-BACKUP-20260909-095615",
+  "po_md5": "3628589705d4ac57fed600031e70d437",
+  "heartbeat": 200
+ },
+ "B": {
+  "v": "S1684Z2",
+  "faze": "B",
+  "atsakas": {
+   "success": true,
+   "data": {
+    "partija": 4073,
+    "laukas": "geriausia_iki",
+    "buvo": "",
+    "tapo": "2028-01-15",
+    "partijose_viso": 6,
+    "prekes_likutis": 6,
+    "sutampa": true
+   }
+  },
+  "zurnalo_pries": 5,
+  "zurnalo_po": 6,
+  "naujas_irasas": {
+   "laikas": "2026-09-09 12:56:24",
+   "tipas": "partija",
+   "laukas": "Geriausia iki",
+   "sena": "",
+   "nauja": "2028-01-15",
+   "kas": "Rai",
+   "pastaba": "Partija #4073 · kortelėje"
+  },
+  "atstatyta": null,
+  "svetaine": 200
+ }
+}
