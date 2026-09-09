@@ -1,0 +1,49 @@
+{
+ "v": "dep-121211",
+ "kurimas": 200,
+ "sid": 5322,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1662A",
+  "sargas_id": 5323,
+  "uzsakymai": [],
+  "opcijos": [
+   {
+    "option_name": "petshop_avpn_counter",
+    "option_value": "11007"
+   },
+   {
+    "option_name": "petshop_kravpn_counter",
+    "option_value": "101"
+   }
+  ],
+  "kodas": [
+   "petshop-darbalaukis.php:85 *   mygtukas nuimtas (bloką pakeitė — „mažiau, ne daugiau“; Claude prielaida); (2) langas `view=saskaitos` (`saskaitos(",
+   "petshop-darbalaukis.php:2079 $n->add_order_note( 'Darbalaukis: PVM sąskaita ' . ( $n->get_meta( '_petshop_avpn_number' ) ? $n->get_meta( '_petshop",
+   "petshop-darbalaukis.php:2084 $avpn = (string) $n->get_meta( '_petshop_avpn_number' );",
+   "petshop-darbalaukis.php:2123 if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_i",
+   "petshop-darbalaukis.php:2124 return array( $ok ? 'dl_info' : 'dl_klaida', $ok ? 'pakartotinis užsakymas #' . $n->get_order_number() . ' (' . self::",
+   "petshop-darbalaukis.php:2309 return array( 'id' => $n->get_id(), 'nr' => $n->get_order_number(), 'avpn' => (string) $n->get_meta( '_petshop_avpn_nu",
+   "petshop-darbalaukis.php:2341 if ( $o->get_meta( '_petshop_avpn_number' ) ) { $p = (string) $o->get_meta( '_petshop_completed_pdf' ); $d[] = array(",
+   "petshop-darbalaukis.php:2344 foreach ( $pasl as $pid ) { $n = wc_get_order( (int) $pid ); if ( ! $n || ! $n->get_meta( '_petshop_avpn_number' ) ) {",
+   "petshop-darbalaukis.php:2364 if ( ! $o->get_meta( '_petshop_avpn_number' ) || ! $o->is_paid() ) { return array( 'dl_info', 'AVPN PDF generuojamas t",
+   "petshop-darbalaukis.php:2367 $o->update_meta_data( '_petshop_completed_pdf', $pdf ); $o->add_order_note( 'Darbalaukis: PVM sąskaitos ' . $o->get_me",
+   "petshop-darbalaukis.php:2386 $dalys = array(); if ( ! $t || 'avpn' === $t ) { $dalys[] = $sel( 'avpn', '_petshop_avpn_number', '_petshop_completed_",
+   "petshop-darbalaukis.php:2778 if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_i",
+   "petshop-darbalaukis.php:2780 return array( 'dl_info', 'klientas atsiėmė — užsakymas įvykdytas' . ( $o->get_meta( '_petshop_avpn_number' ) ? ', PVM",
+   "petshop-darbalaukis.php:2864 $s = self::ats_laisko_sablonas(); $vardas = trim( (string) $o->get_billing_first_name() ); $avpn = (string) $o->get_me",
+   "petshop-darbalaukis.php:2958 $avpn = (string) $o->get_meta( '_petshop_avpn_number' ); $vardas = trim( $o->get_billing_first_name() . ' ' . $o->get_",
+   "petshop-desk.php:3093 'saskaita'=> $o->get_meta( '_petshop_avpn_number' ) ? $o->get_meta( '_petshop_avpn_number' ) : $o->get_meta( '_wcdn_i"
+  ],
+  "snip": [
+   "643 Petshop Invoice Bug Recon v1 act=0",
+   "647 Petshop Invoice Timing Test v1 act=0",
+   "652 Petshop R608 Recon v1 act=0",
+   "654 Petshop Invoice Test2 v1 act=0",
+   "655 Petshop Read Attach v1 act=0"
+  ]
+ }
+}
