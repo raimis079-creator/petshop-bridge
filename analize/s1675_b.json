@@ -1,0 +1,128 @@
+{
+ "v": "dep-201817",
+ "kurimas": 200,
+ "sid": 5411,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1675 b",
+  "failai": [
+   "petshop-laiskai.php",
+   "petshop-rezultatai.php",
+   "petshop-langai-admin.php",
+   "cart-abandoned-2.php",
+   "cart-abandoned-1.php",
+   "class-cart-recovery.php",
+   "class-email-dispatch.php",
+   "class-cart-abandonment.php",
+   "class-event-registry.php",
+   "class-event-emitters.php"
+  ],
+  "eil": [
+   "petshop-laiskai.php:9 *   TURINYS   gaj6_ps_email_content (DB, keicia Raimis)",
+   "petshop-laiskai.php:10 *   JUNGTIS   filtras petshop_email_template_path -> renderis.php",
+   "petshop-laiskai.php:21 const LENTELE   = 'ps_email_content';",
+   "petshop-laiskai.php:28 public static function lentele() {",
+   "petshop-laiskai.php:33 public static function install() {",
+   "petshop-laiskai.php:61 public static function paskelbtas( $flow ) {",
+   "petshop-laiskai.php:74 public static function juodrastis( $flow ) {",
+   "petshop-laiskai.php:87 public static function versijos( $flow, $riba = 20 ) {",
+   "petshop-laiskai.php:103 public static function issaugoti( $flow, $duom, $author_id = 0 ) {",
+   "petshop-laiskai.php:130 public static function paskelbti( $flow, $version ) {",
+   "petshop-laiskai.php:152 public static function atjungti( $flow ) {",
+   "petshop-laiskai.php:161 public static function patikrinti( $duom ) {",
+   "petshop-laiskai.php:206 public static function pakeisti( $tekstas, $payload, $url_rezimas = false ) {",
+   "petshop-laiskai.php:209 return preg_replace_callback( '/\\{([a-z0-9_]+)(?:\\|([^}]*))?\\}/i', function ( $m ) use ( $payload, $url_rezimas ) {",
+   "petshop-laiskai.php:219 protected static function yra( $payload, $k ) {",
+   "petshop-laiskai.php:226 protected static function salygos( $tekstas, $payload ) {",
+   "petshop-laiskai.php:233 function ( $m ) use ( $payload ) {",
+   "petshop-laiskai.php:244 public static function papildyti( $payload ) {",
+   "petshop-laiskai.php:255 public static function kintamieji( $flow ) {",
+   "petshop-laiskai.php:264 'cart_abandoned'         => array( 'recovery_url', 'cart_items', 'pirma_preke' ),",
+   "petshop-laiskai.php:265 'cart_abandoned_2'       => array( 'recovery_url', 'cart_items', 'pirma_preke' ),",
+   "petshop-laiskai.php:280 public static function blokai_i_html( $blocks, $payload ) {",
+   "petshop-laiskai.php:344 protected static function prekiu_sarasas( $blk, $payload ) {",
+   "petshop-laiskai.php:381 public static function renderinti( $flow, $payload, $flow_class = 'service', $recipient = '' ) {",
+   "petshop-laiskai.php:394 'email'      => $recipient,",
+   "petshop-laiskai.php:401 public static function perziura( $flow, $version = 0, $payload = array() ) {",
+   "petshop-laiskai.php:417 'flow_class' => $fl[ $flow ]['class'], 'recipient_email' => 'pavyzdys@petshop.lt' ) );",
+   "petshop-laiskai.php:439 'email'      => 'pavyzdys@petshop.lt',",
+   "petshop-laiskai.php:445 public static function pavyzdinis_payload( $flow ) {",
+   "petshop-laiskai.php:486 public static function dabartinis_flow() { return self::$dabartinis_flow; }",
+   "petshop-laiskai.php:488 public static function renderio_failas() {",
+   "petshop-laiskai.php:493 public static function uztikrinti_renderi() {",
+   "petshop-laiskai.php:514 public static function init() {",
+   "petshop-laiskai.php:515 add_filter( 'petshop_email_template_path', array( __CLASS__, 'kelias' ), 10, 3 );",
+   "petshop-laiskai.php:524 public static function kelias( $file, $flow, $slug ) {",
+   "petshop-laiskai.php:539 public static function busena() {",
+   "petshop-rezultatai.php:4 * Description: E3 — srautų rezultatai, stop/go šviesoforas, bangos, suppression, email→pajamos (last-click, 7 d.). Tik skaito.",
+   "petshop-rezultatai.php:12 public static function init() {",
+   "petshop-rezultatai.php:16 public static function meniu() {",
+   "petshop-rezultatai.php:28 public static function vardas($flow) {",
+   "petshop-rezultatai.php:34 'cart_abandoned'=>'Paliktas krepšelis 1','cart_abandoned_2'=>'Paliktas krepšelis 2',",
+   "petshop-rezultatai.php:48 public static function sviesa($reiksme, $gelt, $raud, $vardiklis) {",
+   "petshop-rezultatai.php:56 public static function duomenys($dienos) {",
+   "petshop-rezultatai.php:58 $jt = $wpdb->prefix . 'ps_email_jobs';",
+   "petshop-rezultatai.php:59 $st = $wpdb->prefix . 'ps_email_suppression';",
+   "petshop-rezultatai.php:115 $d['klaidos'] = $wpdb->get_results(\"SELECT flow, recipient_email, last_error, error_message, updated_at",
+   "petshop-rezultatai.php:122 /* ---------- email -> pajamos ----------",
+   "petshop-rezultatai.php:127 public static function priskyrimas($dienos) {",
+   "petshop-rezultatai.php:130 $jt = $wpdb->prefix . 'ps_email_jobs';",
+   "petshop-rezultatai.php:137 'email_pajamos' => 0.0, 'email_uzsakymu' => 0, 'pagal_srauta' => array());",
+   "petshop-rezultatai.php:147 JOIN `$jt` j ON LOWER(j.recipient_email) = LOWER(o.billing_email)",
+   "petshop-rezultatai.php:163 $r['email_uzsakymu']++;",
+   "petshop-rezultatai.php:164 $r['email_pajamos'] += (float) $p['suma'];",
+   "petshop-rezultatai.php:170 public static function puslapis() {",
+   "petshop-rezultatai.php:237 <div class=\"kort\"><span>Priskirtos pajamos</span><b><?php echo number_format($pr['email_pajamos'], 2, ',', ' '); ?> &euro;</b>",
+   "petshop-rezultatai.php:238 <span class=\"mut\"><?php echo (int) $pr['email_uzsakymu']; ?> užsak. iš <?php echo (int) $pr['viso_uzsakymu']; ?></span></div>",
+   "petshop-rezultatai.php:239 <div class=\"kort\"><span>Dalis nuo visų pajamų</span><b><?php echo $pr['viso_pajamos'] > 0 ? round($pr['email_pajamos'] / $pr['viso_pajamos'] * 100, 1) : 0; ?>%<",
+   "petshop-rezultatai.php:262 $proc = function ($x) use ($snt) { return $snt ? ' <span class=\"mut\">(' . round($x / $snt * 100) . '%)</span>' : ''; };",
+   "petshop-rezultatai.php:319 <td><?php echo esc_html($r['recipient_email']); ?></td>",
+   "petshop-langai-admin.php:18 public static function pavadinimai() {",
+   "petshop-langai-admin.php:28 'cart_abandoned'         => array( 'Paliktas krepšelis · 1', 'Pirmas priminimas su prekių sąrašu.' ),",
+   "petshop-langai-admin.php:29 'cart_abandoned_2'       => array( 'Paliktas krepšelis · 2', 'Antras, paskutinis priminimas.' ),",
+   "petshop-langai-admin.php:43 public static function vardas( $flow ) {",
+   "petshop-langai-admin.php:48 public static function paaiskinimas( $flow ) {",
+   "petshop-langai-admin.php:54 public static function redaguojamas( $flow ) {",
+   "petshop-langai-admin.php:62 public static function init() {",
+   "petshop-langai-admin.php:68 public static function meniu() {",
+   "petshop-langai-admin.php:74 protected static function nuoroda( $args = array() ) {",
+   "petshop-langai-admin.php:80 public static function ajax_gyva() {",
+   "petshop-langai-admin.php:96 'email'      => 'pavyzdys@petshop.lt',"
+  ],
+  "snippetai": [
+   {
+    "id": "714",
+    "name": "Petshop Test11 RetryQueue tmp",
+    "active": "0"
+   },
+   {
+    "id": "715",
+    "name": "Petshop Test11b RetryQueue tmp",
+    "active": "0"
+   },
+   {
+    "id": "717",
+    "name": "Petshop Test11c RetryQueue tmp",
+    "active": "0"
+   },
+   {
+    "id": "753",
+    "name": "S188 Deploy tmp",
+    "active": "0"
+   },
+   {
+    "id": "5410",
+    "name": "TEMP PS dep-201635",
+    "active": "0"
+   },
+   {
+    "id": "5411",
+    "name": "TEMP PS dep-201817",
+    "active": "1"
+   }
+  ]
+ }
+}
