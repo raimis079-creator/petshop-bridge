@@ -1,0 +1,52 @@
+{
+ "v": "dep-082333",
+ "kurimas": 200,
+ "sid": 5279,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "C": {
+  "v": "S1676",
+  "wp": "2026-09-09 11:24:48",
+  "serverio_slapukai": [],
+  "aprasytu_sk": 56,
+  "NEAPRASYTI": [],
+  "paslaugos": [
+   "Complianz",
+   "Yandex Metrica",
+   "WooCommerce",
+   "Google Analytics",
+   "Google Adsense",
+   "Microsoft Clarity",
+   "WordPress",
+   "Automattic",
+   "Sourcebuster JS"
+  ],
+  "ar_yra_paslauga": {
+   "Paysera": "NE",
+   "Venipak": "NE",
+   "Sender": "NE",
+   "Google Tag Manager": "NE",
+   "Google Ads": "NE",
+   "Flatsome": "NE",
+   "YouTube": "NE",
+   "Facebook": "NE"
+  },
+  "skriptai": {
+   "googletagmanager": 2,
+   "gtag": 5,
+   "paysera": 0,
+   "sender": 0,
+   "facebook": 0,
+   "youtube": 0,
+   "hotjar": 0,
+   "sourcebuster": 3
+  },
+  "baneris": {
+   "lenteliu": 1,
+   "blokavimas": 0,
+   "cmplz_js": 8
+  }
+ }
+}
