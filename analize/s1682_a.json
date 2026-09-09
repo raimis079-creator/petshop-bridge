@@ -1,0 +1,46 @@
+{
+ "v": "dep-090504",
+ "kurimas": 200,
+ "sid": 5288,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1682",
+  "faze": "A",
+  "wp": "2026-09-09 12:06:14",
+  "bak_eiluciu": 680,
+  "sukurta": 204,
+  "klaidos": [],
+  "vnt": 6651,
+  "eur": 14800.1,
+  "partiju_po": 884
+ },
+ "B": {
+  "v": "S1682",
+  "faze": "B",
+  "wp": "2026-09-09 12:06:21",
+  "kryzmine": {
+   "av_prekiu": 870,
+   "sutampa": 856,
+   "stock_daugiau": 0,
+   "truksta_vnt": 0,
+   "partijose_daugiau": 14
+  },
+  "s1682_partiju": 204,
+  "s1682_vnt": 6651,
+  "s1682_verte": 14800.1,
+  "partiju_viso": 884,
+  "preke_16165": [],
+  "pvz_17397": [
+   {
+    "id": "4014",
+    "kiekis_liko": "1355",
+    "savikaina_eur": "1.8360",
+    "gauta": "2026-09-07"
+   }
+  ],
+  "svetaine": 200
+ }
+}
