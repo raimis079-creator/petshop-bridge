@@ -1,0 +1,62 @@
+{
+ "v": "dep-080744",
+ "kurimas": 200,
+ "sid": 5272,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1674",
+  "fields_failas": "nera",
+  "config_failai": [
+   "blocks.php",
+   "config.php",
+   "disable-fields-filter.php",
+   "fields",
+   "fields-notices.php",
+   "index.php",
+   "menu.php"
+  ],
+  "parinktys": {
+   "config.php": [
+    "url => https://complianz.io/pricing/",
+    "default => no",
+    "relation => AND",
+    "relation => AND",
+    "label => default"
+   ]
+  },
+  "sync_failai": [
+   "cookie/class-cookie.php",
+   "cookie/class-sync.php",
+   "class-cookie-blocker.php",
+   "cookiebanner/class-cookiebanner.php",
+   "settings/config/fields/wizard/cookiedatabase.php"
+  ],
+  "sync_fn": {
+   "cookie/class-sync.php": [
+    "do_sync_batch_rest",
+    "maybe_sync_cookies",
+    "get_syncable_services",
+    "get_syncable_cookies",
+    "maybe_sync_services",
+    "update_sync_date",
+    "update_cookies_services",
+    "resync",
+    "get_sync_data",
+    "do_sync_batch",
+    "get_sync_progress"
+   ]
+  },
+  "klases_yra": {
+   "CMPLZ_COOKIE": true,
+   "CMPLZ_SERVICE": true
+  },
+  "cdb_fn": {
+   "cmplz_get_cookiedatabase": false,
+   "cmplz_sync_cookies": false,
+   "cmplz_update_cookie_policy_snapshot": false
+  }
+ }
+}
