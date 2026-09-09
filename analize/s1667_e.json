@@ -1,0 +1,20 @@
+{
+ "v": "dep-162247",
+ "kurimas": 200,
+ "sid": 5369,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1667 e",
+  "esc": [
+   "2579 var esc=window.dlEsc||function(s){ return String(s==null?'':s).replace(/[<>&\"]/g,function(c){return {'<':'&lt;','>':'&gt;','&':'&amp;','\"':'&quot;'}[c];}); }; var dlgForm=window.dlgForm||function(d,f){ if(window.confirm(d.tekstas||'')) f.submit(); }; // v3.33.2: dl-js yra IIFE — esc/dlgForm iš windo",
+   "4062 function esc(s){ return String(s==null?'':s).replace(/[<>&\"]/g,function(c){return {'<':'&lt;','>':'&gt;','&':'&amp;','\"':'&quot;'}[c];}); }"
+  ],
+  "eil": {
+   "4121": "+'<div class=\"keliai\">'+l.keliai.map(function(k){ var c=KC[k.k]+(k.on?' on':'')+(k.gal||k.on?'':' ne'); var t='<i></i>'+esc(k.t); if(k.u) return '<a class=\"'+c+'\" href=\"'+esc(k.u)+'\" title=\"Keisti kelią\">'+t+'</a>'; return '<span class=\"kb '+c+'\"'+(k.kodel_ne&&!k.on?' title=\"'+esc(k.kodel_ne)+'\"':'')+'>'+t+'</span>'; }).join('')+'</div>'",
+   "4132": "if(o.btn&&!o.rusiuoti){ if(o.btn.pasyvus) f+='<a class=\"kel ts\" href=\"'+esc(o.btn.u)+'\"><i></i>'+esc(o.btn.t)+'</a>'; else f+='<a class=\"v p\" href=\"'+esc(o.btn.u)+'\"'+(o.btn.d?' data-d=\"'+esc(JSON.stringify(o.btn.d))+'\"':'')+'>'+esc(o.btn.t)+'</a>'; }"
+  }
+ }
+}
