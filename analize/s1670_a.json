@@ -1,0 +1,260 @@
+{
+ "v": "dep-174135",
+ "kurimas": 200,
+ "sid": 5382,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1670 a",
+  "saltiniai": [
+   {
+    "source": "ambrosia",
+    "n": "15"
+   },
+   {
+    "source": "av",
+    "n": "1544"
+   },
+   {
+    "source": "belcor_tofu",
+    "n": "80"
+   },
+   {
+    "source": "paslauga",
+    "n": "2"
+   },
+   {
+    "source": "prins",
+    "n": "43"
+   },
+   {
+    "source": "quattro",
+    "n": "65"
+   },
+   {
+    "source": "vf",
+    "n": "1216"
+   },
+   {
+    "source": "zb",
+    "n": "1112"
+   }
+  ],
+  "sandeliai_meta": [
+   {
+    "meta_value": "ambrosia",
+    "n": "15"
+   },
+   {
+    "meta_value": "av",
+    "n": "1386"
+   },
+   {
+    "meta_value": "belcor_tofu",
+    "n": "56"
+   },
+   {
+    "meta_value": "paslauga",
+    "n": "2"
+   },
+   {
+    "meta_value": "prins",
+    "n": "43"
+   },
+   {
+    "meta_value": "quattro",
+    "n": "65"
+   },
+   {
+    "meta_value": "vf",
+    "n": "1208"
+   },
+   {
+    "meta_value": "zb",
+    "n": "1096"
+   }
+  ],
+  "dvisaltiniu_n": 123,
+  "belacor": [
+   {
+    "id": 17662,
+    "sku": "TOFUVZ3832",
+    "src": "av:8,belcor_tofu:80",
+    "sandelis": "belcor_tofu",
+    "_stock": "80",
+    "own": "8",
+    "tiek": "belcor_tofu",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "rankinis": 1
+   },
+   {
+    "id": 17665,
+    "sku": "TOFUV3870",
+    "src": "av:4,belcor_tofu:80",
+    "sandelis": "belcor_tofu",
+    "_stock": "80",
+    "own": "4",
+    "tiek": "belcor_tofu",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "rankinis": 1
+   },
+   {
+    "id": 17671,
+    "sku": "TOFUPU1371",
+    "src": "av:4,belcor_tofu:0",
+    "sandelis": "belcor_tofu",
+    "_stock": "0",
+    "own": "4",
+    "tiek": "belcor_tofu",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "rankinis": 1
+   },
+   {
+    "id": 17677,
+    "sku": "TOFUPER5720",
+    "src": "av:27,belcor_tofu:0",
+    "sandelis": "belcor_tofu",
+    "_stock": "0",
+    "own": "27",
+    "tiek": "belcor_tofu",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "rankinis": 1
+   },
+   {
+    "id": 17680,
+    "sku": "TOFUOC3856",
+    "src": "av:7,belcor_tofu:80",
+    "sandelis": "belcor_tofu",
+    "_stock": "80",
+    "own": "7",
+    "tiek": "belcor_tofu",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "rankinis": 1
+   },
+   {
+    "id": 17683,
+    "sku": "TOFUO1357",
+    "src": "av:22,belcor_tofu:80",
+    "sandelis": "belcor_tofu",
+    "_stock": "80",
+    "own": "22",
+    "tiek": "belcor_tofu",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "rankinis": 1
+   },
+   {
+    "id": 17686,
+    "sku": "TOFUM3863",
+    "src": "av:2,belcor_tofu:80",
+    "sandelis": "belcor_tofu",
+    "_stock": "80",
+    "own": "2",
+    "tiek": "belcor_tofu",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "rankinis": 1
+   },
+   {
+    "id": 17692,
+    "sku": "TOFULE3825",
+    "src": "av:5,belcor_tofu:80",
+    "sandelis": "belcor_tofu",
+    "_stock": "80",
+    "own": "5",
+    "tiek": "belcor_tofu",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "rankinis": 1
+   },
+   {
+    "id": 17695,
+    "sku": "TOFUKOK6352",
+    "src": "av:18,belcor_tofu:80",
+    "sandelis": "belcor_tofu",
+    "_stock": "80",
+    "own": "18",
+    "tiek": "belcor_tofu",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "rankinis": 1
+   },
+   {
+    "id": 17698,
+    "sku": "TOFUK3849",
+    "src": "av:24,belcor_tofu:80",
+    "sandelis": "belcor_tofu",
+    "_stock": "80",
+    "own": "24",
+    "tiek": "belcor_tofu",
+    "av_laukas": "_own_stock_qty",
+    "tiek_laukas": "_stock",
+    "rankinis": 1
+   }
+  ],
+  "deriniai": {
+   "zb": 1,
+   "av,zb": 17,
+   "av,quattro": 1,
+   "av,prins": 1,
+   "av,belcor_tofu": 16,
+   "av,vf": 59,
+   "vf": 27,
+   "ambrosia,av": 1
+  },
+  "handleris": [
+   "2205 \tpublic static function ajax_tiekejo_likutis() {",
+   "2206 \t\tif ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); }",
+   "2207 \t\tcheck_ajax_referer( 'ps_kat', 'nonce' );",
+   "2208 ",
+   "2209 \t\t$pid = isset( $_POST['id'] ) ? (int) $_POST['id'] : 0;",
+   "2210 \t\tif ( ! $pid || get_post_type( $pid ) !== 'product' ) { wp_send_json_error( 'nėra prekės' ); }",
+   "2211 \t\tif ( ! self::tiekejo_likutis_rankinis( $pid ) ) {",
+   "2212 \t\t\twp_send_json_error( 'šio tiekėjo likutį valdo XML — ranka nekeičiamas' );",
+   "2213 \t\t}",
+   "2214 ",
+   "2215 \t\t$iv = isset( $_POST['ivestis'] ) ? trim( (string) wp_unslash( $_POST['ivestis'] ) ) : '';",
+   "2216 \t\t$iv = str_replace( \"\\xE2\\x88\\x92\", '-', $iv );",
+   "2217 \t\tif ( ! preg_match( '/^([+-]?)(\\d{1,6})$/', $iv, $m ) ) { wp_send_json_error( 'įrašyk 12, +3 arba −2' ); }",
+   "2218 ",
+   "2219 \t\t$laukas = self::tiekejo_laukas( $pid );",
+   "2220 \t\t$buvo   = get_post_meta( $pid, $laukas, true );",
+   "2221 \t\t$buvo_i = ( $buvo === '' || $buvo === null ) ? 0 : (int) $buvo;",
+   "2222 \t\t$sk     = (int) $m[2];",
+   "2223 \t\tif ( $m[1] === '+' )     { $tapo = $buvo_i + $sk; }",
+   "2224 \t\telseif ( $m[1] === '-' ) { $tapo = $buvo_i - $sk; }",
+   "2225 \t\telse                     { $tapo = $sk; }",
+   "2226 \t\tif ( $tapo < 0 ) { $tapo = 0; }",
+   "2227 ",
+   "2228 \t\t/* Per CRUD — kad `wc_product_meta_lookup` ir vitrina pasikeistu kartu. */",
+   "2229 \t\t$prod = wc_get_product( $pid );",
+   "2230 \t\tif ( $prod ) {",
+   "2231 \t\t\t$prod->set_manage_stock( true );",
+   "2232 \t\t\t$prod->set_stock_quantity( $tapo );",
+   "2233 \t\t\t$prod->set_stock_status( $tapo > 0 ? 'instock' : 'outofstock' );",
+   "2234 \t\t\t$prod->save();",
+   "2235 \t\t} else {",
+   "2236 \t\t\tupdate_post_meta( $pid, $laukas, $tapo );",
+   "2237 \t\t}",
+   "2238 ",
+   "2239 \t\tif ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) {",
+   "2240 \t\t\ttry { Petshop_Ivykiai::irasyti( $pid, 'likutis', array(",
+   "2241 \t\t\t\t'laukas'  => 'tiekėjo likutis',",
+   "2242 \t\t\t\t'buvo'    => (string) $buvo_i,",
+   "2243 \t\t\t\t'tapo'    => (string) $tapo,",
+   "2244 \t\t\t\t'pastaba' => strtoupper( (string) get_post_meta( $pid, '_ps_sandelis', true ) ) . ' · įvesta ranka kortelėje',",
+   "2245 \t\t\t) ); }",
+   "2246 \t\t\tcatch ( Throwable $e ) { /* zurnalas neprivalo blokuoti */ }",
+   "2247 \t\t}",
+   "2248 \t\tself::kesas_lauk( $pid );",
+   "2249 \t\tif ( function_exists( 'wc_delete_product_transients' ) ) { wc_delete_product_transients( $pid ); }"
+  ]
+ }
+}
