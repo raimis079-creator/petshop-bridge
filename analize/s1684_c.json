@@ -1,0 +1,32 @@
+{
+ "v": "dep-093830",
+ "kurimas": 200,
+ "sid": 5292,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1684c",
+  "kiek_kartu": {
+   "ps_kat_partija_nauja": 1,
+   "ps_kat_partija": 4,
+   "pt-nauja": 0,
+   "ptn": 0,
+   "nauja partija": 5
+  },
+  "nauja_visos": [
+   {
+    "poz": 53107,
+    "tekstas": "ASS__, 'ajax_isimti' ) ); add_action( 'wp_ajax_ps_kat_masinis', array( __CLASS__, 'ajax_masinis' ) ); /* v4.5: atributai ir nuotraukos redaguojami VIETOJE — iki šiol kortelė išmesdavo į WooCommerce redagavimo puslapį. */ add_action( 'wp_ajax_ps_kat_atributas', array( __CLASS__, 'ajax_atributas' ) ); add_action( 'wp_ajax_ps_kat_nuotraukos', array( __CLASS__, 'ajax_nuotraukos' ) ); add_action( 'wp_ajax_ps_kat_pavadinimas', array( __CLASS__, 'ajax_pavadinimas' ) ); /* v5.2: publikavimo momentas fiksuojamas TADA, kai jis ivyksta. */ add_action( 'transition_post_status', array( __CLASS__, 'sekti_publikavima' ), 10, 3 ); add_action( 'wp_ajax_ps_kat_paleidimas', array( __CLASS__, 'ajax_paleidimas' ) ); add_action( 'wp_ajax_ps_kat_partija', array( __CLASS__, 'ajax_partija' ) ); /* v6.8: GPAIS pakuociu eilutes — pridejimas, keitimas, trynimas. */ add_action( 'wp_ajax_ps_kat_pakuote', array( __CLASS__, 'ajax_pakuote' ) ); /* v7.0: kategorijos — kortelėje, ne WooCommerce lange. */ add_action( 'wp_ajax_ps_kat_kategorijos', array( __CLASS__, 'ajax_kategorijos' ) ); /* v7.3: nauja partija su galiojimu — tiesiai kortelėje. */ add_action( 'wp_ajax_ps_kat_partija_nauja', array( __CLASS__, 'ajax_partija_nauja' ) ); /* v7.5: vienos eilutes atnaujinimas sarase po pakeitimo kortelėje. */ add_action( 'wp_ajax_ps_kat_eilute', array( __CLASS__, 'ajax_eilute' ) ); /* v8.0: tiekejo (ne XML) likutis — atskiras nuo AV. */ add_action( 'wp_ajax_ps_kat_tiekejo_likutis', array( __CLASS__, 'ajax_tiekejo_likutis' ) ); /* v8.3: busenos perjungimas kortelėje. */ add_action( 'wp_ajax_ps_kat_busena', array( __CLASS__, 'ajax_busena' ) ); /* Pakeitus prekę bet kur — WooCommerce, importe, kitur — katalogo kešas turi pasenti iškart, kitaip langas iki 5 min. rodytų senus skaičius. */ add_action( 'woocommerce_update_product', array( __CLASS__, 'kesas_lauk' ), 99 ); add_action( 'woocommerce_new_product', array( __CLASS__, 'kesas_lauk' ), 99 ); add_action( 'trashed_post', array( __CLASS__, 'kesas_lauk' ), 99 ); add_action( 'untrashed_post', array( __CLASS__, 'kesas_lauk' ), 99 ); } public static function kesas_lauk( $pid = 0 ) { if ( $pid && get_post_type( $pid ) !== 'product' ) { return; } delete_transient( 'ps_kat_duomenys' ); } /* ==================== AV LIKUČIO RAŠYMAS ==================== */ pub"
+   }
+  ],
+  "pt_nauja": [],
+  "partiju_blokas": [
+   {
+    "poz": 159844,
+    "tekstas": "nput type=\"text\" class=\"kort-lik-sav\" placeholder=\"0,00\" value=\"' . ( (float) $sav_dab > 0 ? esc_attr( number_format( (float) $sav_dab, 2, '.', '' ) ) : '' ) . '\"></label>' . '<span class=\"kort-lik-uz\">Sukuriama partija — kiekis su savo galiojimu ir savikaina.</span>' . '</div>'; echo '<div class=\"kort-info-m\">Tai <b>tavo lentyna</b>: kiek šios prekės parsivežei į Avesą. ' . 'Pasirinkus <b>Gavimą</b>, kiekis įrašomas kaip partija su galiojimu ir savikaina; ' . 'kitos priežastys tik tikslina skaičių. Partijos ir galiojimai priklauso tik AV.</div>'; echo '</div>'; /* Partijos — tik ten, kur jos apskritai yra (AV). */ if ( class_exists( 'Petshop_Partijos' ) ) { $part = Petshop_Partijos::partijos( $pid, true ); if ( $part ) { echo '<table class=\"kort-t\"><tr><th>Gauta</th><th class=\"n\">Liko</th>' . '<th class=\"n\">Savikaina</th><th>Geriausia iki</th><th>Tiekėjas</th></tr>'; foreach ( $part as $b ) { echo '<tr><td>' . esc_html( mb_substr( (string) $b['gauta'], 0, 10 ) ) . '</td>' . '<td class=\"n\"><b>' . (int) $b['kiekis_liko'] . '</b></td>' . '<td class=\"n\">' . number_format( (float) $b['savikaina_eur'], 2, ',', '' ) . ' €</td>' . '<td>' . esc_html( $b['geriausia_iki'] ? mb_substr( (string) $b['geriausia_iki'], 0, 10 ) : '—' ) . '</td>' . '<td class=\"sml2\">' . esc_html( mb_substr( (string) $b['tiekejas'], 0, 22 ) ) . '</td></tr>'; } echo '</table>'; echo '<div class=\"kort-info-m\">Partijas kuria Gavimo langas. Čia jos rodomos, kad matytum, ' . 'kuri dar guli lentynoje ir kiek ji kainavo.</div>'; } } echo '</div>'; /* ==================== v7.0: KATEGORIJOS ==================== Kategorija lemia ne tik vieta kataloge: is jos skaiciuojami sekciju lukesciai ir atributu zemelapis. Todel jos keitimas per WooCommerce langa buvo skaudziausias — grizes matydavai kitokia kortele. */ $dab_kat = wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'all' ) ); $dab_kat = is_wp_error( $dab_kat ) ? array() : $dab_kat; $visos_kat = get_terms( "
+   }
+  ]
+ }
+}
