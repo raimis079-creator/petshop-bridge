@@ -1,0 +1,110 @@
+{
+ "v": "dep-190137",
+ "kurimas": 200,
+ "sid": 5404,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "17339": {
+   "meta": {
+    "own": "14",
+    "_stock": "0",
+    "sand": "belcor_tofu"
+   },
+   "atsargine": {
+    "own": "",
+    "stock": "14",
+    "status": "instock",
+    "lk": {
+     "stock_quantity": "14",
+     "stock_status": "instock"
+    }
+   },
+   "partijos": [
+    {
+     "id": "3673",
+     "kiekis_gautas": "14",
+     "kiekis_liko": "3",
+     "savikaina_eur": "3.5000",
+     "sukurta": "2026-09-07 22:07:52",
+     "pastaba": "Pradinis likutis T-0",
+     "atsaukta": "0"
+    }
+   ],
+   "zurnalas": [
+    {
+     "id": "1039",
+     "laukas": "_own_stock_qty",
+     "buvo": "14",
+     "tapo": "3",
+     "pokytis": "-11",
+     "priezastis": "nurasymas",
+     "user_id": "1",
+     "sukurta": "2026-09-09 21:57:09"
+    },
+    {
+     "id": "329",
+     "laukas": "_ean",
+     "buvo": null,
+     "tapo": "8682162005035",
+     "pokytis": null,
+     "priezastis": "kortelė",
+     "user_id": "75",
+     "sukurta": "2026-08-18 13:57:13"
+    }
+   ]
+  },
+  "17354": {
+   "meta": {
+    "own": "12",
+    "_stock": "0",
+    "sand": "belcor_tofu"
+   },
+   "atsargine": {
+    "own": "",
+    "stock": "12",
+    "status": "instock",
+    "lk": {
+     "stock_quantity": "12",
+     "stock_status": "instock"
+    }
+   },
+   "partijos": [
+    {
+     "id": "3670",
+     "kiekis_gautas": "12",
+     "kiekis_liko": "3",
+     "savikaina_eur": "3.6000",
+     "sukurta": "2026-09-07 22:07:52",
+     "pastaba": "Pradinis likutis T-0",
+     "atsaukta": "0"
+    }
+   ],
+   "zurnalas": [
+    {
+     "id": "1038",
+     "laukas": "_own_stock_qty",
+     "buvo": "12",
+     "tapo": "3",
+     "pokytis": "-9",
+     "priezastis": "nurasymas",
+     "user_id": "1",
+     "sukurta": "2026-09-09 21:56:40"
+    },
+    {
+     "id": "328",
+     "laukas": "_ean",
+     "buvo": null,
+     "tapo": "8682162004731",
+     "pokytis": null,
+     "priezastis": "kortelė",
+     "user_id": "75",
+     "sukurta": "2026-08-18 13:56:05"
+    }
+   ]
+  },
+  "v": "S1673 b"
+ }
+}
