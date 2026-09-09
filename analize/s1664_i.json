@@ -1,0 +1,51 @@
+{
+ "v": "dep-062133",
+ "kurimas": 200,
+ "sid": 5250,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "I": {
+  "v": "S1664I",
+  "katalogas_metodai": [
+   "ajax_av_irasyti",
+   "ajax_sav_irasyti",
+   "ajax_kaina_irasyti",
+   "ajax_seima",
+   "ajax_var_kurti",
+   "ajax_variacija",
+   "ajax_laukas_irasyti",
+   "ajax_atributas",
+   "ajax_nuotraukos",
+   "ajax_busena",
+   "ajax_tiekejo_likutis",
+   "ajax_eilute",
+   "ajax_paleidimas",
+   "ajax_pavadinimas",
+   "ajax_aprasymas",
+   "ajax_isimti",
+   "ajax_masinis",
+   "ajax_atsaukti",
+   "ajax_kortele",
+   "ajax_kategorijos",
+   "ajax_pakuote",
+   "partiju_datos"
+  ],
+  "ajax_partija_yra": false,
+  "kabliai": {
+   "wp_ajax_ps_partija": "nera",
+   "wp_ajax_pskat_partija": "nera",
+   "wp_ajax_ps_kat_partija": "yra",
+   "rasta_wp_ajax_ps_kat_partija": "yra",
+   "rasta_wp_ajax_ps_kat_partija_nauja": "yra"
+  },
+  "failas": {
+   "dydis": 501779,
+   "md5": "236f5659f4016a51e1b53cea3d9e0e1d",
+   "keista": "09-08 17:16",
+   "versija": "8.7.9"
+  },
+  "temp_neaktyvus": 32
+ }
+}
