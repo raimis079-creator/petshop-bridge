@@ -1,0 +1,49 @@
+{
+ "v": "dep-064503",
+ "kurimas": 200,
+ "sid": 5256,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1667",
+  "faze": "A",
+  "wp": "2026-09-09 09:46:12",
+  "rez": {
+   "19780": {
+    "pakeista": 1,
+    "delta": 3,
+    "ok": true
+   },
+   "19785": {
+    "pakeista": 1,
+    "delta": 3,
+    "ok": true
+   }
+  },
+  "bak_irasyta": [
+   19780,
+   19785
+  ],
+  "liko_db": 0
+ },
+ "B": {
+  "v": "S1667",
+  "faze": "B",
+  "wp": "2026-09-09 09:46:18",
+  "tikra": {
+   "19780": {
+    "kodas": 200,
+    "IU_IU": 0,
+    "kontekstas": "Ca (kalcis) 1,6 % P (fosforas) 1,1 % Vitaminai ir papildai Vitaminas A 14.000 IU Gyvūno rūšis Šunims Amžius Jauniems Baltymų šalti"
+   },
+   "19785": {
+    "kodas": 200,
+    "IU_IU": 0,
+    "kontekstas": "Ca (kalcis) 1,6 % P (fosforas) 1,1 % Vitaminai ir papildai Vitaminas A 14.000 IU Gyvūno rūšis Šunims Amžius Jauniems Baltymų šalti"
+   }
+  },
+  "liko_db": 0
+ }
+}
