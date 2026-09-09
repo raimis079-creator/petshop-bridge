@@ -1,0 +1,30 @@
+{
+ "v": "dep-073306",
+ "kurimas": 200,
+ "sid": 5267,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1671R",
+  "dydis": 16597,
+  "settings_laukai": [
+   "settings-websitescan",
+   "websitescan_status",
+   "wsc_batch_scan_enabled",
+   "websitescan_actions",
+   "wsc_scan_post_types"
+  ],
+  "busena": {
+   "onboarding": {
+    "terms": false,
+    "newsletter": true,
+    "plugins": true
+   },
+   "status": "pending",
+   "signup": "pending",
+   "auth": "ne"
+  }
+ }
+}
