@@ -1,0 +1,42 @@
+{
+ "v": "dep-162116",
+ "kurimas": 200,
+ "sid": 5368,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1667 d",
+  "js": [
+   "215 *   Taip pat: suma skydelyje / Klausimų kortelėse buvo „12,02&nbsp;&euro;“ (dviguba esc nuo C8) — `html_entity_decode`.",
+   "851 $antraste = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ) );",
+   "926 $antraste = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ) );",
+   "935 'kl' => trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ), 'suma' => html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ),",
+   "979 return array( 'u' => self::dl_url( 'velavimas', $f['id'] ), 'd' => array( 'antraste' => sprintf( 'Užsakymas #%s · %s', $nr, html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), EN",
+   "4068 if(d.opt&&d.opt.tipas==='n'){ L.style.display='flex'; C.style.display='none'; N.style.display=''; N.value=d.opt.def||1; $('dlDlgOptT').textContent=d.opt.tekstas; N.oninput=function(){ ok.href=url+'&'+",
+   "4069 else if(d.opt){ L.style.display='flex'; $('dlDlgOptT').textContent=d.opt.tekstas; C.checked=!!d.opt.def; C.onchange=function(){ ok.href=url+(C.checked?'&'+encodeURIComponent(d.opt.vardas)+'=1':''); };",
+   "4077 function dlgForm(d,f){ $('dlDlgH').textContent=d.antraste||''; $('dlDlgT').textContent=d.tekstas||''; var ok=$('dlDlgOk'); ok.textContent=d.ok||'Gerai'; $('dlDlgOptL').style.display='none'; $('dlDlgN'",
+   "4121 +'<div class=\"keliai\">'+l.keliai.map(function(k){ var c=KC[k.k]+(k.on?' on':'')+(k.gal||k.on?'':' ne'); var t='<i></i>'+esc(k.t); if(k.u) return '<a class=\"'+c+'\" href=\"'+esc(k.u)+'\" title=\"Keisti kel",
+   "4122 +'<div class=\"kodel\">'+esc(l.kodel)+(l.tiek_url?' <a href=\"'+esc(l.tiek_url)+'\">Laukiam iš tiekėjų →</a>':'')+'</div>'+(l.lock?'<div class=\"lock\">Nebekeičiama: '+esc(l.lock)+'</div>':'')",
+   "4126 +(o.pak?'<div class=\"pak\" style=\"margin-top:6px\">Dėžių: <input type=\"number\" min=\"1\" max=\"20\" value=\"'+o.pak.kiek+'\" id=\"skPakN\"> <a class=\"v\" id=\"skPakSave\" href=\"'+esc(o.pak.u)+'\">Išsaugoti</a>'+(o.",
+   "4127 var pn=$('skPakN'),ps=$('skPakSave'); if(pn&&ps){ var base=ps.getAttribute('href'); var upd=function(){ ps.href=base+'&n='+encodeURIComponent(pn.value); var pr=$('skPerreg'); if(pr) pr.href=o.perreg+'",
+   "4129 var D=$('skDok'); if(o.dok&&o.dok.length){ D.style.display='block'; $('skDokT').innerHTML=o.dok.map(function(x){ if(x.btn){ return '<div class=\"dl-dok\">'+esc(x.z)+' · '+esc(x.s)+' € · <a class=\"v p ma",
+   "4131 var f=''; if(o.rusiuoti) f+='<a class=\"v p\" href=\"'+esc(o.rusiuoti)+'\">Surūšiuota</a><span class=\"pilkas maz\">peržiūrėk, iš kur važiuoja prekės, ir patvirtink</span>';",
+   "4132 if(o.btn&&!o.rusiuoti){ if(o.btn.pasyvus) f+='<a class=\"kel ts\" href=\"'+esc(o.btn.u)+'\"><i></i>'+esc(o.btn.t)+'</a>'; else f+='<a class=\"v p\" href=\"'+esc(o.btn.u)+'\"'+(o.btn.d?' data-d=\"'+esc(JSON.str",
+   "4133 if(o.grynais) f+='<a class=\"v t\" href=\"'+esc(o.grynais)+'\" data-d=\"'+esc(JSON.stringify({antraste:'Apmokėta grynais · #'+o.nr,tekstas:'Klientas atvyko ir sumokėjo grynais? Užsakymas pažymimas apmokėtu",
+   "4134 if(o.istrinti) f+='<a class=\"v t\" href=\"'+esc(o.istrinti)+'\" data-d=\"'+esc(JSON.stringify({antraste:'Ištrinti · #'+o.nr,tekstas:'Atšauktas neapmokėtas užsakymas be sąskaitos ir siuntų. Perkeliamas į W",
+   "4135 f+='<span style=\"margin-left:auto\"></span>'+(o.red?'<button class=\"v t\" id=\"skRed\">Redaguoti</button>':'<button class=\"v t\" disabled title=\"lipdukas jau užregistruotas / išsiųsta / uždaryta — keisk ra",
+   "4141 function redaguoti(o){ var r=o.red; if(!r) return; var P=$('skPr'); var L=r.laukai; var h='<form method=\"post\" action=\"'+esc(r.u)+'\" class=\"dl-red\" id=\"skRedF\"><input type=\"hidden\" name=\"action\" value",
+   "4192 var u=new URL(location.href); ['pd_ok','pd_nr','atidaryti'].forEach(function(k){u.searchParams.delete(k);});",
+   "4196 try{ var u=new URL(location.href); if(u.searchParams.has('pd_ok')||u.searchParams.has('atidaryti')){ ['pd_ok','pd_nr','atidaryti'].forEach(function(k){u.searchParams.delete(k);}); history.replaceState"
+  ],
+  "dec": [
+   "215 *   Taip pat: suma skydelyje / Klausimų kortelėse buvo „12,02&nbsp;&euro;“ (dviguba esc nuo C8) — `html_entity_decode`.",
+   "851 $antraste = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), ENT_QUOTES | ENT_HT",
+   "926 $antraste = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), ENT_QUOTES | ENT_HT",
+   "935 'kl' => trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_name() ), 'suma' => html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total",
+   "979 return array( 'u' => self::dl_url( 'velavimas', $f['id'] ), 'd' => array( 'antraste' => sprintf( 'Užsakymas #%s · %s', $nr, html_entity_decode( wp_strip_all_tag"
+  ]
+ }
+}
