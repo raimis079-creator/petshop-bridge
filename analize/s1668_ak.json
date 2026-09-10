@@ -1,0 +1,35 @@
+{
+ "1": {
+  "v": "S1668 ak",
+  "nesut": [
+   {
+    "product_id": "34828",
+    "sand": "vf",
+    "stock_qty": "2",
+    "own": null,
+    "updated_at": "2026-09-07 23:00:14",
+    "zurn": null
+   },
+   {
+    "product_id": "18154",
+    "sand": "vf",
+    "stock_qty": "6",
+    "own": null,
+    "updated_at": "2026-09-07 22:59:39",
+    "zurn": null
+   }
+  ],
+  "fail": {
+   "wp-content/mu-plugins/petshop-seseliai.php": [
+    "public static function sync( $kas = 'cron' ) {"
+   ]
+  }
+ },
+ "v": "dep-094444",
+ "kurimas": 200,
+ "sid": 5454,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
