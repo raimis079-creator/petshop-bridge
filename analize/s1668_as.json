@@ -1,0 +1,25 @@
+{
+ "1": {
+  "v": "S1668 as",
+  "_dmarc.petshop.lt": [
+   "v=DMARC1; p=none; rua=mailto:terra@petshop.lt"
+  ],
+  "petshop.lt": [
+   "v=spf1 a mx include:spf.serveriai.lt include:sendersrv.com ~all",
+   "google-site-verification=XPcuD8vHzqrHuXMrZLXCMHfGieqYGPN5C0iI9uUeEGs"
+  ],
+  "x._domainkey.petshop.lt": [
+   "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDNwhn6JOVQrpXIYAs8KMWNi0i5/q2YLsYv81lTNn/RtEc72sBbFzN9A6UiTgsguY6CQGD1cdsQgvR1dD293eckkRxvicisBI1xQrlvSh"
+  ],
+  "default._domainkey.petshop.lt": [],
+  "google._domainkey.petshop.lt": [],
+  "mail._domainkey.petshop.lt": []
+ },
+ "v": "dep-105746",
+ "kurimas": 200,
+ "sid": 5462,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
