@@ -1,0 +1,114 @@
+{
+ "v": "dep-143501",
+ "kurimas": 200,
+ "sid": 5472,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DRY": {
+  "12580": {
+   "av_eil": "nera",
+   "av": 3,
+   "eilutes": [
+    {
+     "id": "1079",
+     "product_id": "12580",
+     "source": "zb",
+     "supplier_sku": "01M131102",
+     "ean": "",
+     "stock_qty": "115",
+     "cost_net": "8.2440",
+     "synced_at": "2026-08-07 10:02:19",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2",
+     "created_at": "2026-08-07 13:36:26",
+     "updated_at": "2026-09-10 07:20:05"
+    }
+   ],
+   "zb_av_sablonas": {
+    "id": "4562",
+    "product_id": "13975",
+    "source": "av",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "1",
+    "cost_net": null,
+    "synced_at": null,
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "1",
+    "created_at": "2026-09-08 07:20:19",
+    "updated_at": "2026-09-10 07:20:06"
+   }
+  },
+  "v": "S1668 bb",
+  "faze": "DRY",
+  "dr": {
+   "12825": {
+    "st": "draft",
+    "kaina": "11.09",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 3,
+    "t": "Hau&Miau Vištienos file ant baltų pagali"
+   },
+   "12826": {
+    "st": "draft",
+    "kaina": "12.69",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 6,
+    "t": "Hau&Miau minkštos Vištienos juotelės 500"
+   },
+   "12871": {
+    "st": "draft",
+    "kaina": "13.99",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 3,
+    "t": "Hau&Miau balti pagaliukai apsukti antien"
+   },
+   "12958": {
+    "st": "draft",
+    "kaina": "11.29",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 4,
+    "t": "Hau&Miau batatai (saldžiosios bulvės) ap"
+   },
+   "12998": {
+    "st": "draft",
+    "kaina": "8.99",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 3,
+    "t": "Hau&Miau ėrienos lazdelės 500g"
+   },
+   "12999": {
+    "st": "draft",
+    "kaina": "12.59",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 4,
+    "t": "Hau&Miau Jautienos čipsai 500g"
+   },
+   "14363": {
+    "st": "draft",
+    "kaina": "8.39",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 3,
+    "t": "Hau&Miau ėrienos žiedai apsukti žuvimi, "
+   }
+  }
+ }
+}
