@@ -1,42 +1,163 @@
 {
- "v": "dep-165556",
+ "1": {
+  "v": "S1668 f",
+  "t": "function t() { global $wpdb; return $wpdb->prefix . 'ps_fakt_reklama'; }",
+  "rasyti": "function rasyti( $r ) {\n\t\tglobal $wpdb; $t = self::t();\n\t\t$diena = preg_match( '/^\\d{4}-\\d{2}-\\d{2}$/', (string) $r['diena'] ) ? $r['diena'] : null;\n\t\tif ( ! $diena ) { return 'bad'; }\n\t\t$kid = mb_substr( (string) ( isset( $r['kampanija_id'] ) ? $r['kampanija_id'] : '' ), 0, 32 );\n\t\t$kan = mb_substr( (string) $r['kanalas'], 0, 24 );\n\t\t$sen = $wpdb->get_row( $wpdb->prepare( \"SELECT id, parodymai, paspaudimai, islaidos_ct, konversijos, konv_verte_ct, versija FROM $t WHERE diena=%s AND kanalas=%s AND kampanija_id=%s\", $diena, $kan, $kid ), ARRAY_A );\n\t\t$d = array(\n\t\t\t'diena' => $diena, 'kanalas' => $kan, 'kampanija_id' => $kid,\n\t\t\t'kampanija' => mb_substr( (string) ( isset( $r['kampanija'] ) ? $r['kampanija']",
+  "lentele": "gaj6_ps_fakt_reklama",
+  "cols": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ],
+  "dienos": [
+   {
+    "diena": "2026-09-09",
+    "n": "3",
+    "eur": "43.48",
+    "sen": "0",
+    "apl": "prod",
+    "cl": "111"
+   },
+   {
+    "diena": "2026-09-08",
+    "n": "3",
+    "eur": "47.15",
+    "sen": "0",
+    "apl": "prod",
+    "cl": "144"
+   },
+   {
+    "diena": "2026-09-07",
+    "n": "3",
+    "eur": "46.23",
+    "sen": "0",
+    "apl": "prod",
+    "cl": "172"
+   },
+   {
+    "diena": "2026-09-06",
+    "n": "3",
+    "eur": "45.75",
+    "sen": "0",
+    "apl": "prod",
+    "cl": "165"
+   },
+   {
+    "diena": "2026-09-05",
+    "n": "4",
+    "eur": "48.01",
+    "sen": "0",
+    "apl": "prod",
+    "cl": "167"
+   },
+   {
+    "diena": "2026-09-04",
+    "n": "3",
+    "eur": "47.14",
+    "sen": "0",
+    "apl": "prod",
+    "cl": "156"
+   },
+   {
+    "diena": "2026-09-03",
+    "n": "3",
+    "eur": "44.22",
+    "sen": "0",
+    "apl": "prod",
+    "cl": "129"
+   },
+   {
+    "diena": "2026-09-02",
+    "n": "3",
+    "eur": "41.30",
+    "sen": "0",
+    "apl": "prod",
+    "cl": "99"
+   },
+   {
+    "diena": "2026-09-01",
+    "n": "3",
+    "eur": "44.22",
+    "sen": "0",
+    "apl": "prod",
+    "cl": "146"
+   },
+   {
+    "diena": "2026-08-31",
+    "n": "3",
+    "eur": "37.68",
+    "sen": "0",
+    "apl": "prod",
+    "cl": "129"
+   },
+   {
+    "diena": "2026-08-30",
+    "n": "3",
+    "eur": "48.78",
+    "sen": "0",
+    "apl": "prod",
+    "cl": "154"
+   },
+   {
+    "diena": "2026-08-29",
+    "n": "3",
+    "eur": "36.29",
+    "sen": "0",
+    "apl": "prod",
+    "cl": "142"
+   },
+   {
+    "diena": "2026-08-28",
+    "n": "3",
+    "eur": "39.74",
+    "sen": "0",
+    "apl": "prod",
+    "cl": "129"
+   },
+   {
+    "diena": "2026-08-27",
+    "n": "3",
+    "eur": "47.11",
+    "sen": "0",
+    "apl": "prod",
+    "cl": "156"
+   },
+   {
+    "diena": "2026-08-26",
+    "n": "4",
+    "eur": "47.68",
+    "sen": "0",
+    "apl": "dev",
+    "cl": "144"
+   },
+   {
+    "diena": "2026-08-25",
+    "n": "4",
+    "eur": "63.80",
+    "sen": "0",
+    "apl": "dev",
+    "cl": "214"
+   }
+  ]
+ },
+ "v": "dep-065747",
  "kurimas": 200,
- "sid": 5376,
+ "sid": 5420,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
- },
- "K": {
-  "v": "S1668 f",
-  "faze": "K",
-  "test_pid": 34889,
-  "priezastys": {
-   "gavimas": "Gavimas",
-   "inventorizacija": "Inventorizacija",
-   "nurasymas": "Nurašymas",
-   "korekcija": "Korekcija",
-   "kaina": "Kainos keitimas",
-   "isimta": "Išimta iš prekybos"
-  },
-  "av_dabar": 0,
-  "av_laukas": "_stock"
- },
- "T": {
-  "success": true,
-  "data": {
-   "operacija": "AV26090916571284",
-   "irasyta": 1,
-   "eilutes": [
-    {
-     "id": 34889,
-     "buvo": 0,
-     "tapo": 0,
-     "partija": 0,
-     "pastaba": ""
-    }
-   ],
-   "klaidos": [],
-   "priezastis": "Gavimas"
-  }
  }
 }
