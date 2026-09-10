@@ -1,0 +1,176 @@
+{
+ "v": "dep-161406",
+ "kurimas": 200,
+ "sid": 5489,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1669 p",
+  "dabar": "2026-09-10 19:15:13",
+  "rytas": [
+   "zalia | import_2 | Importas #2 products.php: paskutinis prieš 1 val.",
+   "zalia | import_3 | Importas #3 stocks.php: paskutinis prieš 0 val.",
+   "zalia | feeds | Feed'ai Kaina24/Kainos: generuoti prieš -3 val.",
+   "zalia | faktai | Faktai: visi apmokėti užsakymai turi faktą",
+   "zalia | agregatas | Agregatas 2026-09-09: 3 eil.",
+   "zalia | siuntu_naslaiciai | ps_shipments našlaičiai: 0",
+   "zalia | neissiusti | Apmokėti > 2 d. be siuntos: 0",
+   "zalia | dropship_sla | Dropship tiekėjas vėluoja > 24 val.: 0 užsak.",
+   "zalia | laiskai | Laiškai 24 val.: išsiųsta 2, nepavyko 0",
+   "zalia | eventai | Eventai: failed 24 val. 0",
+   "zalia | ads | Google Ads duomenys: paskutinį kartą prieš 9 val. (43 eil.)",
+   "zalia | 404 | 404 vakar: 16 (7 d. vid. 0,0)",
+   "pilka | beacon | Web įvykiai vakar: 945 (iki launch nevertinama)"
+  ],
+  "rytas_pask": {
+   "laikas": "2026-09-10 03:30:01"
+  },
+  "sargas_klases": [
+   "Petshop_Dropship_Sargas",
+   "Petshop_Prisijungimo_Sargas",
+   "Petshop_Sargas"
+  ],
+  "sargas_metodai": {
+   "Petshop_Dropship_Sargas": [
+    "init",
+    "planuoti",
+    "tikrinti"
+   ],
+   "Petshop_Prisijungimo_Sargas": [
+    "pradzia",
+    "veikia",
+    "saugomas_kelias",
+    "adresas",
+    "raktas",
+    "bukle",
+    "tikrinti",
+    "nesekme",
+    "sekme",
+    "pranesimas",
+    "zurnalas"
+   ],
+   "Petshop_Sargas": [
+    "init",
+    "lentele",
+    "klaida",
+    "pabaiga",
+    "lygis",
+    "rasyti",
+    "isiminti_laukiamus",
+    "laukiami",
+    "cron_atsiskaite",
+    "pastas",
+    "galima_siusti",
+    "siusti",
+    "pranesti_fatal",
+    "reciau_nei_para",
+    "kasdien",
+    "stulpelis_yra",
+    "duomenu_svara",
+    "savaitine_suvestine",
+    "planuoti",
+    "rytoj"
+   ]
+  },
+  "sargas_opcijos": [
+   {
+    "option_name": "ps_sargas_pastas",
+    "v": "terra@gyvunai.lt"
+   },
+   {
+    "option_name": "ps_sargas_cron_laukiam",
+    "v": "a:79:{s:21:\"petshop_import_tempas\";s:12:\"petshop_2min\";s:26:\"action_scheduler_run_queue\";s:12:\"every_minute\";s:13:\"ps_webp_batch\";s:7:\"ps_5min\";s:27:\"ps_esp_cron_process_pending\";s:11:\"ps_esp_5min\";s:29:\"cmplz_every_five_minutes_hook\";s:18:\"cmplz_five_minutes\";s:22:\"ps_email_dispatch_cron\";s:11:\"ps_"
+   },
+   {
+    "option_name": "ps_sargas_cron_zinios",
+    "v": "a:79:{s:21:\"ps_cart_abandon_check\";i:1789056903;s:26:\"action_scheduler_run_queue\";i:1789056909;s:27:\"ps_esp_cron_process_pending\";i:1789056776;s:29:\"cmplz_every_five_minutes_hook\";i:1789056780;s:17:\"ps_vartai_valanda\";i:1789056800;s:22:\"ps_email_dispatch_cron\";i:1789056820;s:20:\"jetpack_clean_nonces"
+   },
+   {
+    "option_name": "ps_sargas_start",
+    "v": "1786994616"
+   },
+   {
+    "option_name": "ps_sargas_siusta",
+    "v": "a:31:{s:38:\"fatal:bcbdb6dd79f65bc31ebc909b7e4b49ba\";s:10:\"2026-08-17\";s:38:\"fatal:1076f1d971acc8014e8f225793a91a3c\";s:10:\"2026-08-18\";s:38:\"fatal:60704f445e77a72586805717f192bb7f\";s:10:\"2026-08-19\";s:37:\"cron:ebbd115a00f15f56ae4e2583f8b62115\";s:10:\"2026-08-22\";s:37:\"cron:fcd7c13a816a140d9ef6879cb164"
+   },
+   {
+    "option_name": "ps_rytas_sargas_pask",
+    "v": "a:5:{s:6:\"laikas\";s:19:\"2026-09-10 03:30:01\";s:8:\"raudonos\";a:1:{i:0;a:3:{s:5:\"kodas\";s:3:\"ads\";s:5:\"lygis\";s:7:\"raudona\";s:7:\"tekstas\";s:120:\"Google Ads duomenys: paskutinį kartą prieš 321 val. (9 eil.) — Ads Script nesuveikė (autorizacija? tvarkaraštis?)\";}}s:8:\"geltonos\";a:0:{}s:6:\"zalios\";i:11;s"
+   },
+   {
+    "option_name": "ps_rytas_sargas_siusta",
+    "v": "a:6:{s:32:\"cb1fbc289072998436b890616866e162\";s:10:\"2026-08-28\";s:32:\"9645fd129ac938cd7fcee71df257acc9\";s:10:\"2026-08-29\";s:32:\"ac5bc6cb4cadb7903651b7e341c510d4\";s:10:\"2026-09-09\";s:32:\"2deb000b57bfac9d72c14d4ed967b572\";s:10:\"2026-09-10\";s:32:\"ca05186193038ed907afa727acd0e0f0\";s:10:\"2026-09-03\";s:32:"
+   },
+   {
+    "option_name": "ps_sargas_svara",
+    "v": "a:3:{s:6:\"laikas\";s:19:\"2026-09-08 08:02:01\";s:6:\"negyvu\";i:43;s:7:\"eilutes\";a:4:{i:0;s:46:\"  augintinio prekes be prekes:       1 (is 36)\";i:1;s:46:\"  priminimai be augintinio:          4 (is 10)\";i:2;s:47:\"  serimo map be prekes:              3 (is 561)\";i:3;s:48:\"  MnM eilutes be konteinerio:    "
+   }
+  ],
+  "cron_viso": 74,
+  "feed": {
+   "google.xml": "09-10 04:30",
+   "kaina24.xml": "09-10 19:05",
+   "kainos.xml": "09-10 19:05"
+  },
+  "importai": [
+   {
+    "id": "1",
+    "n": "goods_clean.xml",
+    "last_activity": "2026-05-27 11:14:21",
+    "processing": "0",
+    "triggered": "0",
+    "executing": "0",
+    "imported": "0",
+    "updated": "0",
+    "failed": "0"
+   },
+   {
+    "id": "2",
+    "n": "products.php",
+    "last_activity": "2026-09-10 15:01:55",
+    "processing": "0",
+    "triggered": "0",
+    "executing": "0",
+    "imported": "0",
+    "updated": "0",
+    "failed": "0"
+   },
+   {
+    "id": "3",
+    "n": "stocks.php",
+    "last_activity": "2026-09-10 16:08:35",
+    "processing": "0",
+    "triggered": "0",
+    "executing": "0",
+    "imported": "1066",
+    "updated": "1066",
+    "failed": "0"
+   },
+   {
+    "id": "5",
+    "n": "vf-feed.xml",
+    "last_activity": "2026-09-10 03:31:56",
+    "processing": "0",
+    "triggered": "0",
+    "executing": "0",
+    "imported": "181",
+    "updated": "181",
+    "failed": "0"
+   },
+   {
+    "id": "7",
+    "n": "vf-feed.xml",
+    "last_activity": "2026-09-10 16:15:02",
+    "processing": "0",
+    "triggered": "1",
+    "executing": "0",
+    "imported": "0",
+    "updated": "0",
+    "failed": "0"
+   }
+  ],
+  "php_log": null
+ }
+}
