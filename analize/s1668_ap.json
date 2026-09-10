@@ -1,0 +1,29 @@
+{
+ "1": {
+  "v": "S1668 ap",
+  "eilutes": [
+   {
+    "source": "av",
+    "stock_qty": "0",
+    "updated_at": "2026-09-10 12:40:58"
+   },
+   {
+    "source": "quattro",
+    "stock_qty": "38",
+    "updated_at": "2026-09-10 11:22:40"
+   }
+  ],
+  "own": "6",
+  "saugiai": "function ps_sources_sync_saugiai( $pid ) {\n    static $dirba = array();\n    $pid = (int) $pid;\n    if ( ! $pid || isset($dirba[$pid]) ) return;\n    if ( ! class_exists('Petshop_Sources') ) return;\n    if ( Petshop_Sources::importas_vyksta() ) return;\n    if ( get_post_type($pid) !== 'product' ) return;\n    if ( wp_is_post_revision($pid) || wp_is_post_autosave($pid) ) return;\n    $dirba[$pid] = 1;\n    try { Petshop_Sources::sinchronizuoti($pid, false); }\n    catch ( Throwable $e ) { /* registro klaida NEGALI sustabdyti prekės išsaugojimo */ }\n    unset($dirba[$pid]);\n}\n}\n\nadd_action('woocommerce_update_product', 'ps_sources_sync_saugiai', 20, 1);\nadd_action('woocommerce_new_product',    'ps_sources_sync_saugiai', 20, 1);\n\n/* Sandėlio lauko pakeitimas — svarbiausias registro signalas. */\nadd_action('updated_post_meta', function( $mid, $pid, $key ) {\n    if ( $key === '_ps_sandelis' ||",
+  "kablys_yra": 2,
+  "cs_flat": "3.9.6",
+  "updated_post_meta_kabliu": 27
+ },
+ "v": "dep-095729",
+ "kurimas": 200,
+ "sid": 5459,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
