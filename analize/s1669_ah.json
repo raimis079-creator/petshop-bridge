@@ -1,0 +1,314 @@
+{
+ "v": "dep-185941",
+ "kurimas": 200,
+ "sid": 5506,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1669 ah",
+  "f": "wp-content/mu-plugins/petshop-legacy-301.php",
+  "md5": "46c8948be9cf2c7fb01007ad3fe340e1",
+  "dydis": 3329,
+  "galva": "<?php\n/**\n * Petshop Legacy 301 v2.1 (S436, S1668) — senos platformos adresų nukreipimas.\n *\n * v2.1 (S1668): 301 PERKELIA užklausos eilutę (gclid, gad_source, utm_*, _gl).\n *   v2.0 ją numesdavo → PMax/Merchant paspaudimai praradavo gclid, Ads nematė konversijų.\n *\n * Vienas mechanizmas visiems seniems adresams. Žemėlapis laikomas ATSKIRAME\n * JSON faile ir kraunamas TIK tada, kai adresas realiai 404 — kad kiekviena\n * užklausa neparsintų 137 KB PHP masyvo.\n *\n * ŠEŠI SLUOKSNIAI (visi ĮŠALDYTI iš GSC 2 445 URL / 19 735 clicks / 16 mėn.):\n *   1. kategorijos be /kategorija/ priešdėlio          34 · 1 596\n *   2. seni URL su ID uodegomis                        42 ·   666\n *   3. pervadinti slug                                 10 ·    30\n *   4. produktai iš šaknies → /product/                805 · 2 968\n *   5. likusios kategorijos                            24 ·   102\n *   6. brendai → /gamintojas/                          22 ·   501\n *\n * KRITINIS 6 sluoksnis: be jo WordPress redirect_canonical /exclusion\n * (218 clicks) SPĖJIMU 301-ina į ATSITIKTINĮ SKU. TŽ v1.56 tai įspėjo, ir\n * 2026-08-04 tai vis dar vyko.\n *\n * VARTAI:\n *   - TIK tiksliam adresui iš žemėlapio, TIK kai jis DABAR 404\n *   - vienas 301 tiesiai į galutinį 200, jokių grandinių\n *   - JOKIO „panašiausio URL\" spėjimo\n *   - redirect_canonical išjungiamas TIK mūsų atpažintam adresui\n *   - X-Redirect-By: Petshop-Legacy-Category\n *\n * ĮŠALDYTA, NE DINAMINIS. Naujoms kategorijoms/prekėms taisyklės NEKURIAMOS.\n * Naujas įrašas — tik rankiniu būdu su GSC pagrindimu.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nconst PS_LEGACY_301_MAP = __DIR__ . '/petshop-legacy-301-map.json';\n\nfunction petshop_legacy_301_map() {\n\tstatic $m = null;\n\tif ( null !== $m ) { return $m; }\n\t$raw = @file_get_contents( PS_LEGACY_301_MAP );\n\t$m   = ( false === $raw ) ? array() : (array) json_decode( $raw, true );\n\treturn $m;\n}\n\nfunction petshop_legacy_301_path() {\n\t$p = (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH );\n\treturn strtolower( trim( rawurldecode( $p ), '/' ) );\n}\n\nadd_action( 'template_redirect', function () {\n\tif ( is_admin() || wp_doing_ajax() || is_robots() || is_feed() ) { return; }\n\tif ( ! is_404() ) { return; }          // esami puslapiai NELIEČIAMI\n\n\t$kelias = petshop_legacy_301_path();\n\tif ( '' === $kelias ) { return; }\n\n\t$map = petshop_legacy_301_map();\n\tif ( ! isset( $map[ $kelias ] ) ) { return; }   // jokio spėjimo\n\n\t$t = $map[ $kelias ];\n\tif ( 0 === strpos( $t, '__TERM__' ) ) {\n\t\t$term = get_term( (int) substr( $t, 8 ), 'product_cat' );\n\t\tif ( ! $term || is_wp_error( $term ) ) { return; }\n\t\t$url = get_term_link( $term );\n\t\tif ( is_wp_error( $url ) || ! $url ) { return; }\n\t} else {\n\t\t$url = home_url( $t );\n\t}\n\n\t// Apsauga nuo kilpos\n\tif ( strtolower( trim( (string) parse_url( $url, PHP_URL_PATH ), '/' ) ) === $kelias ) { return; }\n\n\t// v2.1: užklausos eilutė keliauja kartu (gclid/utm/gad_source — Ads atribucijai)\n\t$qs = (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_QUERY );\n\tif ( '' !== $qs ) { $url .= ( false === strpos( $url, '?' ) ? '?' : '&' ) . $qs; }\n\n\tremove_action( 'template_redirect', 'redirect_canonical' );\n\twp_redirect( $url, 301, 'Petshop-Legacy-Category' );\n\texit;\n}, 1 );\n",
+  "funkc": [
+   "9: * JSON faile ir kraunamas TIK tada, kai adresas realiai 404 — kad kiekviena",
+   "12: * ŠEŠI SLUOKSNIAI (visi ĮŠALDYTI iš GSC 2 445 URL / 19 735 clicks / 16 mėn.):",
+   "20: * KRITINIS 6 sluoksnis: be jo WordPress redirect_canonical /exclusion",
+   "36: const PS_LEGACY_301_MAP = __DIR__ . '/petshop-legacy-301-map.json';",
+   "38: function petshop_legacy_301_map() {",
+   "42: $m   = ( false === $raw ) ? array() : (array) json_decode( $raw, true );",
+   "46: function petshop_legacy_301_path() {",
+   "51: add_action( 'template_redirect', function () {",
+   "58: $map = petshop_legacy_301_map();",
+   "59: if ( ! isset( $map[ $kelias ] ) ) { return; }   // jokio spėjimo",
+   "61: $t = $map[ $kelias ];"
+  ],
+  "map": {
+   "petshop-legacy-301-map.json": {
+    "md5": "5f869051e7c00a3cfb242181ae509ccf",
+    "n": 1091,
+    "raktai": [
+     "sunims/antiparazitines-priemones-sunims",
+     "katems/antiparazitines-priemones-katems",
+     "hipoalerginis-maistas-sunims"
+    ],
+    "pvz": {
+     "sunims/antiparazitines-priemones-sunims": "__TERM__108",
+     "katems/antiparazitines-priemones-katems": "__TERM__109",
+     "hipoalerginis-maistas-sunims": "__TERM__85"
+    }
+   }
+  },
+  "e404": [
+   {
+    "u": "/jaucio-ausis-ruda?utm_source=kaina24.lt&utm_medium=referral",
+    "c": "3",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.kaina24.lt"
+   },
+   {
+    "u": "/josera-miniwell-10-kg-sausas-maistas-mazu-veisliu-sunims?gad_source=1&gad_campaignid=21472043669&gbraid=0AAAAApaj7XW5ip38tSwYX2hChQIZxsaJQ&gclid=CjwKCAjwwfnUBhAtEiwAfQpAYlhncsZAILPz5koiIMU3LGKGzObrAf9V3tkDvz-xzvfK56tor8s_zBoCXXkQAvD_BwE",
+    "c": "2",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/lt/admin/contents/cms_news",
+    "c": "2",
+    "l": "1",
+    "nuo": "2026-09-09",
+    "iki": "2026-09-09",
+    "ref": null
+   },
+   {
+    "u": "/product/antkaklis-sunims-su-svieciancia-sagtimi-puzzle-20-mm-20-35-cm-led-matteo/",
+    "c": "2",
+    "l": "1",
+    "nuo": "2026-09-09",
+    "iki": "2026-09-09",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/product/apollo-dentinis-lazdeles-vidutiniu-ir-dideliu-veisliu-sunims-180-g/",
+    "c": "2",
+    "l": "1",
+    "nuo": "2026-09-09",
+    "iki": "2026-09-09",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/product/zaislas-suniui-guminis-kvepiantis-kamuoliukas-su-virve-8-cm/",
+    "c": "2",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.kaina24.lt"
+   },
+   {
+    "u": "/trixie-kilimelis-purvui-surinkti-120-80-cm?gad_source=1&gad_campaignid=21472043669&gbraid=0AAAAApaj7XU1t9LRr5IJOiQjlrKom-Smo&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3TWZxKciL-KcmJsa5u6W7FR0GmAJOxy0eAryYN8wbRrIFhjrL-quGhoCLtMQAvD_BwE",
+    "c": "2",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/8-vnt-kraikas-katems-tofu-belocat-braskiu-su-pienu-kvapo-6-l-2-5-kg-2-mm-granules?gad_source=1&gad_campaignid=21472043669&gclid=Cj0KCQjw5P7UBhDaARIsAOSlS1PAFkyU0y5bLTBTMhqfe0UT1PI4nuNe4E2ZLOSiKpmy8Sh3Sinr5BgaArUjEALw_wcB",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-09",
+    "iki": "2026-09-09",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/8-vnt-kraikas-katems-tofu-belocat-ledu-kvapo-6-l-2-5-kg-2-mm-granules",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.bing.com"
+   },
+   {
+    "u": "/admin/?route=extension/payment",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-09",
+    "iki": "2026-09-09",
+    "ref": null
+   },
+   {
+    "u": "/ambrosia-begrudis-su-jautiena-ir-sviezia-lasisa-sausas-maistas-sunims-grain-free-beef-and-fresh-salmon-12-kg?utm_source=kaina24.lt&utm_medium=referral",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-09",
+    "iki": "2026-09-09",
+    "ref": "www.kaina24.lt"
+   },
+   {
+    "u": "/automatine-serykla-kateisuniui?gad_source=1&gad_campaignid=21472043669&gbraid=0AAAAApaj7XWEpUrOqrsO9qW2_aPz9Q5Q2&gclid=Cj0KCQjw5P7UBhDaARIsAOSlS1NcAZCDao6jCy_CiGgG6qFkxdedqugVs-6TdGcFQgel9Cve29lYjEQaAsO5EALw_wcB",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-09",
+    "iki": "2026-09-09",
+    "ref": null
+   },
+   {
+    "u": "/exclusion-hypoallergenic-dietinis-sausas-pasaras-katems-su-kiauliena-ir-bulvemis-1-5-kg?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XXHjCrGwnigM2IloRBa33iqr&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3U5fbZFhuXyk4fb88C4EdTGF9Nc8gMSlzJ2Ap6HQPAJgLxB7tsjURh",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/exclusion-hypoallergenic-dietinis-sausas-pasaras-katems-su-kiauliena-ir-bulvemis-1-5-kg?utm_source=chatgpt.com",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "chatgpt.com"
+   },
+   {
+    "u": "/image/cache/data/kategorijos/new_ka-kategorija-sunys-sampunai-230x230_crop_0.jpg",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-09",
+    "iki": "2026-09-09",
+    "ref": null
+   },
+   {
+    "u": "/jaucio-ausis-ruda?utm_source=kainos.lt&utm_medium=referral",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.kainos.lt"
+   },
+   {
+    "u": "/jautienos-griezineliai-500-g-naturalus-skanestai-sunims-hau-and-miau",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-09",
+    "iki": "2026-09-09",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/josera-marinesse-10kg-sausas-maistas-katems?utm_source=kaina24.lt&utm_medium=referral",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.kaina24.lt"
+   },
+   {
+    "u": "/josera-miniwell-10-kg-sausas-maistas-mazu-veisliu-sunims?utm_source=kaina24.lt&utm_medium=referral",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-09",
+    "iki": "2026-09-09",
+    "ref": "www.kaina24.lt"
+   },
+   {
+    "u": "/konservai-sunims-super-beno-grain-free-jautiena-ir-zveriena-415-g",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": null
+   },
+   {
+    "u": "/konservai-sunims-super-beno-grain-free-light-su-kalakutiena-415-g",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": null
+   },
+   {
+    "u": "/kraikas-katems-tofu-belocat-original-bekvapis-6-l-2-5-kg-2-mm-granules",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/monge-monoprotein-rabbit-super-premium-pascaronaras-katems-su-triuscaroniena-10kg-48692-1?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XXE6iMjHHYhQFFaZy2R5O4_S&gclid=Cj0KCQjwh4TVBhCWARIsAG0czmqAjTSIzsBxH532h4dJiSYQK1cV1seVHYZi6fCkabfogCtk1jKy",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-09",
+    "iki": "2026-09-09",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/naturalus-bentonitinis-susokantis-kraikas-katems-wonder-white-sodium-grey-5-9-l-5-kg?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XXMWpU4snKhHRGcUN8P2Vz8N&gclid=Cj0KCQjwh4TVBhCWARIsAG0czmrgtnz5ugrd4KyJCU-04ajsg459BAZtQygX71_MKFwF3yG75WrQpiEaA",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/naturalus-bentonitinis-susokantis-kraikas-katems-wonder-white-sodium-grey-5-9-l-5-kg?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XXMWpU4snKhHRGcUN8P2Vz8N&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3b9Thf5bxKxslCANygIQWQ7oLp9-aw-STCOH_bzFclDPqrQSV9_ajBoCu",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/placek-pet-products-s-r-o",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/prisijungimas",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-09",
+    "iki": "2026-09-09",
+    "ref": null
+   },
+   {
+    "u": "/real-dog-sensitive-15kg-pascaronaras-suaugusiems-scaronunims-su-antiena-48486-1?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XXMWpU4snKhHRGcUN8P2Vz8N&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3a6aU7wb0ST2nwNdDzSrrNph3BrIa-gAMineElvP2zxhGV2c7xNzBRoCTn8QAv",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/real-dog-visavertis-pascaronaras-suaugusiems-scaronunims-su-paukscarontiena-20kg-48108-1?gad_source=1&gad_campaignid=21472043669&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3Z9HjT7KvKBDT5MHkgwU8QzF7_SgKlmjQjp6inE-4xCMquq012sOMxoCjisQAvD_BwE",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/royal-canin-sensible-33-sausas-pasaras-jautrioms-katems-10-kg?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XWcD7BDdjODAU81dPiTsCBlr&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3aziUeAoEGMe11wwHMZbk2T4Mhx8tdNrpZtoCUBio3xoOyRxx4E4uhoC8bIQAvD_BwE",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/saldziosios-bulves-apvyniotos-antiena-500-g-naturalus-skanestai-sunims-hau-and-miau",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-09",
+    "iki": "2026-09-09",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/trixie-kilimelis-purvui-surinkti-120-80-cm?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XVQSlV2wdCdcnlf9qrcFe_tj&gclid=Cj0KCQjwh4TVBhCWARIsAG0czmpwWDZNI22Ht_dg3uujvruJQ99E0mS9O5ULCIWRLZyQliNkeN7PlIIaAok_EALw_wcB",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.google.com"
+   },
+   {
+    "u": "/vienkartines-palutes-paklotai-60-90-cm-xl-universal-10-vnt?gad_source=1&gad_campaignid=21565466377&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3RyH3KhLqStb_AE-9GxmKIG2-BAu4pNXpi8MyckjC_XJQtpF1u1yMRoCJpkQAvD_BwE",
+    "c": "1",
+    "l": "1",
+    "nuo": "2026-09-10",
+    "iki": "2026-09-10",
+    "ref": "www.google.com"
+   }
+  ],
+  "kiti404": [
+   "gaj6_ps_seo_404"
+  ]
+ }
+}
