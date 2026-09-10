@@ -1,0 +1,42 @@
+{
+ "1": {
+  "v": "S1668 aj",
+  "nesutampa": {
+   "viso": "199",
+   "nesut": "2",
+   "pask": "2026-09-10 12:40:58"
+  },
+  "upd_laikai": [
+   {
+    "t": "2026-09-10 12:40",
+    "n": "62"
+   },
+   {
+    "t": "2026-09-10 11:24",
+    "n": "2"
+   },
+   {
+    "t": "2026-09-10 11:22",
+    "n": "62"
+   },
+   {
+    "t": "2026-09-10 07:20",
+    "n": "3905"
+   }
+  ],
+  "cron": {
+   "petshop_vf_sync_stock_hourly": "09-10 09:59",
+   "woo_lithuaniapost_sync_tracking_data": "09-11 00:00",
+   "petshop_vf_sync_reprice_daily": "09-11 03:00",
+   "petshop_vf_sync_publish_daily": "09-11 04:00",
+   "ps_sources_naktinis": "09-11 04:20"
+  }
+ },
+ "v": "dep-094256",
+ "kurimas": 200,
+ "sid": 5453,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
