@@ -1,0 +1,89 @@
+{
+ "v": "dep-193357",
+ "kurimas": 200,
+ "sid": 5514,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1669 ap",
+  "faze": "D",
+  "pries": "930c64d9d41a9bf7e31e823ea7956a18",
+  "po": "d5fd50d616b8c7b495e69f81c283b995",
+  "n": "1184→1193",
+  "home_pakeista": [
+   2,
+   1
+  ],
+  "home_md5": [
+   "dca0681773decc32fb49d1fafc74960b",
+   "b048fbf8a440af298017e53798e2c1d4"
+  ],
+  "ping": 200,
+  "rez": "OK"
+ },
+ "V": {
+  "v": "S1669 ap",
+  "faze": "V",
+  "t": {
+   "visos-prekes": [
+    301,
+    "/parduotuve/",
+    200
+   ],
+   "contact": [
+    301,
+    "/kontaktai/",
+    200
+   ],
+   "paieska": [
+    301,
+    "/parduotuve/",
+    200
+   ],
+   "akcijiniai-pasiulymai": [
+    301,
+    "/akcijos/",
+    200
+   ],
+   "jautrus-virskinimas": [
+    301,
+    "/sprendimai/jautrus-virskinimas/",
+    200
+   ],
+   "prisijungimas": [
+    301,
+    "/paskyra/",
+    200
+   ],
+   "parduotuves-kontaktai": [
+    301,
+    "/kontaktai/",
+    200
+   ],
+   "privatumo-politika-2": [
+    301,
+    "/privatumo-politika/",
+    200
+   ],
+   "sterilizuotas-augintinis": [
+    301,
+    "/sprendimai/sterilizuotas-augintinis/",
+    200
+   ]
+  },
+  "home": {
+   "dinaminis": {
+    "sprendimai_jv": 4,
+    "sprendimai_sa": 3,
+    "blogos": 0
+   },
+   "kesas": {
+    "sprendimai_jv": 4,
+    "sprendimai_sa": 3,
+    "blogos": 0
+   }
+  }
+ }
+}
