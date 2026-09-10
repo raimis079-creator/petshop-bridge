@@ -1,0 +1,255 @@
+{
+ "v": "dep-182832",
+ "kurimas": 200,
+ "sid": 5498,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1669 z",
+  "stulp": [
+   "id",
+   "laikas",
+   "diena",
+   "tipas",
+   "pusl_tipas",
+   "url_kelias",
+   "raktas",
+   "raktas2",
+   "reiksme",
+   "sesija",
+   "lankytojas_d",
+   "lankytojas_30",
+   "saltinis",
+   "medium",
+   "kampanija",
+   "referer_domenas",
+   "kanalas",
+   "landing",
+   "irenginys",
+   "os_seima",
+   "nars_seima",
+   "salis",
+   "prisijunges",
+   "sutikimas",
+   "testinis",
+   "saltinis_aplinka"
+  ],
+  "n": 1933,
+  "dc": "laikas",
+  "vid": "sesija",
+  "nuo": "2026-09-07 18:01:00",
+  "dienos": [
+   {
+    "d": "2026-09-07",
+    "iv": "19",
+    "lank": "0"
+   },
+   {
+    "d": "2026-09-08",
+    "iv": "66",
+    "lank": "2"
+   },
+   {
+    "d": "2026-09-09",
+    "iv": "907",
+    "lank": "158"
+   },
+   {
+    "d": "2026-09-10",
+    "iv": "941",
+    "lank": "164"
+   }
+  ],
+  "valandos_vakar": [
+   {
+    "h": "0",
+    "lank": "2"
+   },
+   {
+    "h": "1",
+    "lank": "0"
+   },
+   {
+    "h": "2",
+    "lank": "1"
+   },
+   {
+    "h": "3",
+    "lank": "2"
+   },
+   {
+    "h": "4",
+    "lank": "4"
+   },
+   {
+    "h": "5",
+    "lank": "9"
+   },
+   {
+    "h": "6",
+    "lank": "14"
+   },
+   {
+    "h": "7",
+    "lank": "10"
+   },
+   {
+    "h": "8",
+    "lank": "20"
+   },
+   {
+    "h": "9",
+    "lank": "11"
+   },
+   {
+    "h": "10",
+    "lank": "14"
+   },
+   {
+    "h": "11",
+    "lank": "7"
+   },
+   {
+    "h": "12",
+    "lank": "9"
+   },
+   {
+    "h": "13",
+    "lank": "6"
+   },
+   {
+    "h": "14",
+    "lank": "9"
+   },
+   {
+    "h": "15",
+    "lank": "11"
+   },
+   {
+    "h": "16",
+    "lank": "9"
+   },
+   {
+    "h": "17",
+    "lank": "9"
+   },
+   {
+    "h": "18",
+    "lank": "10"
+   },
+   {
+    "h": "19",
+    "lank": "9"
+   },
+   {
+    "h": "20",
+    "lank": "1"
+   },
+   {
+    "h": "21",
+    "lank": "1"
+   },
+   {
+    "h": "22",
+    "lank": "0"
+   },
+   {
+    "h": "23",
+    "lank": "2"
+   }
+  ],
+  "reiksmes": {
+   "tipas": [
+    {
+     "v": "pageview",
+     "c": "1252"
+    },
+    {
+     "v": "view_item",
+     "c": "321"
+    },
+    {
+     "v": "add_to_cart",
+     "c": "111"
+    },
+    {
+     "v": "begin_checkout",
+     "c": "55"
+    },
+    {
+     "v": "search",
+     "c": "44"
+    },
+    {
+     "v": "error404",
+     "c": "38"
+    },
+    {
+     "v": "view_cart",
+     "c": "27"
+    }
+   ],
+   "pusl_tipas": [
+    {
+     "v": null,
+     "c": "596"
+    },
+    {
+     "v": "kategorija",
+     "c": "430"
+    },
+    {
+     "v": "preke",
+     "c": "301"
+    },
+    {
+     "v": "info",
+     "c": "132"
+    },
+    {
+     "v": "home",
+     "c": "129"
+    },
+    {
+     "v": "kita",
+     "c": "73"
+    },
+    {
+     "v": "checkout",
+     "c": "55"
+    },
+    {
+     "v": "paieska",
+     "c": "44"
+    }
+   ],
+   "sutikimas": [
+    {
+     "v": "0",
+     "c": "1365"
+    },
+    {
+     "v": "1",
+     "c": "483"
+    }
+   ]
+  },
+  "moduliai": {
+   "petshop-analitika.php": "Petshop Analitika",
+   "petshop-fakt-reklama.php": "Petshop Fakt Reklama",
+   "petshop-islaidos.php": "Petshop Islaidos",
+   "petshop-rytas.php": "Petshop Rytas"
+  },
+  "sut": {
+   "petshop-analitika.php": [
+    "22: *     `pusl_tipas='aciu'`, BE SUMU. Tai pigus ad-blocker/sutikimo nuostoliu",
+    "38: *  Sluoksnis 0 — BE SUTIKIMO. `lankytojas_d` = sha256(IP + UA + DIENOS",
+    "43: *  Sluoksnis 1 — SU STATISTIKOS SUTIKIMU (Complianz `statistics`).",
+    "48: * SESIJA — esama WooCommerce sesija (butinas slapukas, sutikimo nereikalauja).",
+    "154: sutikimas TINYINT(1) NOT NULL DEFAULT 0,"
+   ]
+  }
+ }
+}
