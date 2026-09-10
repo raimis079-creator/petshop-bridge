@@ -1,77 +1,168 @@
 {
- "v": "dep-070726",
+ "1": {
+  "v": "S1668 r",
+  "adapter": {
+   "function upsert_contact": "function upsert_contact( $email, array $attributes ) {\n\t\tif ( $this->is_blocked_by_dev_allowlist( $email ) ) {\n\t\t\t$this->log_dev_blocked( $email, 'upsert_contact' );\n\t\t\treturn array( 'ok' => true, 'skipped' => 'dev_allowlist' );\n\t\t}\n\n\t\tif ( ! $this->is_configured() ) {\n\t\t\treturn array( 'ok' => false, 'status' => 'error', 'esp_contact_id' => '', 'error' => 'not_configured' );\n\t\t}\n\n\t\t// 1. POST /subscribers — sukuria arba (jei yra) atnaujina baze\n\t\t$base_payload = array( 'email' => $email );\n\t\t// firstname/lastname jei yra\n\t\tif ( isset( $attributes['PS_PET_NAME'] ) && $attributes['PS_PET_NAME'] ) {\n\t\t\t// PS_PET_NAME NE firstname — augintinio vardas atskiras laukas. Nemaišom.\n\t\t}\n\t\t$r1 = $this->request( 'POST', '/subscribers', $base_payload );\n\n\t\t$esp_id = '';\n\t\tif ( isset( $r1['body']['data']['id'] ) ) {\n\t\t\t$esp_id = $r1['body']['data']['id'];\n\t\t}\n\n\t\t// 200 arba 201 abu OK (200 = jau egzistavo, 201 = sukurta)\n\t\t$base_ok = ( $r1['code'] === 200 || $r1['code'] === 201 );\n\t\tif ( ! $base_ok ) {\n\t\t\treturn array(\n\t\t\t\t'ok'             => false,\n\t\t\t\t'status'         => 'error',\n\t\t\t\t'esp_contact_id' => $esp_id,\n\t\t\t\t'error'          => 'base_upsert: ' . $r1['error'],\n\t\t\t\t'retriable'      => self::is_retriable_code( $r1['code'] ),\n\t\t\t);\n\t\t}\n\n\t\t// 2. PATCH /subscribers/{email} su {fields:{TITLE:value}} — PS_ laukai\n\t\t$ps_fields = array();\n\t\tforeach ( $attributes as $key => $val ) {\n\t\t\tif ( strpos( $key, 'PS_' ) === 0 ) {\n\t\t\t\t// Boolean → \"true\"/\"false\" string (Sender text/number l",
+   "function emit_event": "function emit_event( $email, $event_id, $event, array $payload, $timestamp = null ) {\n\t\t// S205: dev allowlist — tas pats saugiklis kaip upsert_contact().\n\t\t// ok=true (ne false), kad retry queue nezymetu 'dead' — tai nera klaida, o samoningas praleidimas.\n\t\t// esp_response palieka audito pedsaka, kad 'sent' butu paaiskinamas.\n\t\tif ( $this->is_blocked_by_dev_allowlist( $email ) ) {\n\t\t\t$this->log_dev_blocked( $email, 'emit_event' );\n\t\t\treturn array(\n\t\t\t\t'ok'                => true,\n\t\t\t\t'already_processed' => false,\n\t\t\t\t'should_retry'      => false,\n\t\t\t\t'esp_event_id'      => '',\n\t\t\t\t'error'             => '',\n\t\t\t\t'http_code'         => 0,\n\t\t\t\t'esp_response'      => 'skipped: dev_allowlist',\n\t\t\t\t'skipped'           => 'dev_allowlist',\n\t\t\t);\n\t\t}\n\n\t\tif ( ! $this->is_configured() ) {\n\t\t\treturn array( 'ok' => false, 'already_processed' => false, 'should_retry' => false, 'esp_event_id' => '', 'error' => 'not_configured' );\n\t\t}\n\n\t\t$request_body = array_merge(\n\t\t\tarray(\n\t\t\t\t'subscriber' => array( 'email' => $email ),\n\t\t\t\t'type'       => $event,\n\t\t\t),\n\t\t\t$payload  // merge tag'ai + workflow property tiesiai i root\n\t\t);\n\n\t\t$r = $this->request( 'POST', '/events', $request_body );\n\n\t\treturn array(\n\t\t\t'ok'                => $r['ok'],\n\t\t\t'already_processed' => false,\n\t\t\t'should_retry'      => ( ! $r['ok'] && self::is_retriable_code( $r['code'] ) ),\n\t\t\t'esp_event_id'      => isset( $r['body']['id'] ) ? $r['body']['id'] : '',\n\t\t\t'error'             => $r['error'],\n\t\t\t'http_code'         ="
+  },
+  "calls": [
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai.php",
+    "k": "cart_abandoned",
+    "eil": 264,
+    "ctx": "dyti( $payload ) {\n\t\tforeach ( array( 'cart_items', 'items', 'products' ) as $k ) {\n\t\t\tif ( ! empty( $payload[ $k ] ) && is_array( $payload[ $k ] ) ) {\n\t\t\t\t$p = reset( $payload[ $k ] );\n\t\t\t\tif ( is_array( $p ) && isset( $p['name'] ) ) { $payload['pirma_preke'] = (string) $p['name']; }\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\treturn $payload;\n\t}\n\n\tpublic static function kintamieji( $flow ) {\n\t\t/* Bendri visiems + srautui budingi. Sarasas rodomas redaktoriuje. */\n\t\t$bendri = array( 'vardas', 'el_pastas' );\n\t\t$pagal_srauta = array(\n\t\t\t'order_paid'             => array( 'order_number', 'order_total', 'order_url' ),\n\t\t\t'order_shipped'          => array( 'order_number', 'carrier', 'tracking_number', 'tracking_url' ),\n\t\t\t'payment_failed'         => array( 'order_number', 'pay_url' ),\n\t\t\t'shipment_returned'      => array( 'order_number' ),\n\t\t\t'refill_due'             => array( 'reorder_url', 'feedback_url' ),\n\t\t\t'cart_abandoned'         => array( 'recovery_url', 'cart_items', 'pirma_preke' ),\n\t\t\t'cart_abandoned_2'       => array( 'recovery_url', 'cart_items', 'pirma_preke' ),\n\t\t\t'post_purchase_2d'       => arr"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai.php",
+    "k": "cart_abandoned",
+    "eil": 265,
+    "ctx": "\t\tif ( ! empty( $payload[ $k ] ) && is_array( $payload[ $k ] ) ) {\n\t\t\t\t$p = reset( $payload[ $k ] );\n\t\t\t\tif ( is_array( $p ) && isset( $p['name'] ) ) { $payload['pirma_preke'] = (string) $p['name']; }\n\t\t\t\tbreak;\n\t\t\t}\n\t\t}\n\t\treturn $payload;\n\t}\n\n\tpublic static function kintamieji( $flow ) {\n\t\t/* Bendri visiems + srautui budingi. Sarasas rodomas redaktoriuje. */\n\t\t$bendri = array( 'vardas', 'el_pastas' );\n\t\t$pagal_srauta = array(\n\t\t\t'order_paid'             => array( 'order_number', 'order_total', 'order_url' ),\n\t\t\t'order_shipped'          => array( 'order_number', 'carrier', 'tracking_number', 'tracking_url' ),\n\t\t\t'payment_failed'         => array( 'order_number', 'pay_url' ),\n\t\t\t'shipment_returned'      => array( 'order_number' ),\n\t\t\t'refill_due'             => array( 'reorder_url', 'feedback_url' ),\n\t\t\t'cart_abandoned'         => array( 'recovery_url', 'cart_items', 'pirma_preke' ),\n\t\t\t'cart_abandoned_2'       => array( 'recovery_url', 'cart_items', 'pirma_preke' ),\n\t\t\t'post_purchase_2d'       => array( 'order_number', 'order_url', 'items', 'pirma_preke' ),\n\t\t\t'post_purchase_7d'     "
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-rezultatai.php",
+    "k": "cart_abandoned",
+    "eil": 34,
+    "ctx": "if (!defined('ABSPATH')) exit;\n\nclass Petshop_Rezultatai {\n\n  const VERSIJA = '1.1';\n\n  public static function init() {\n    add_action('admin_menu', array(__CLASS__, 'meniu'), 30);\n  }\n\n  public static function meniu() {\n    add_submenu_page(\n      'petshop-langai',\n      'Laiškų rezultatai',\n      'Laiškų rezultatai',\n      'manage_woocommerce',\n      'petshop-rezultatai',\n      array(__CLASS__, 'puslapis')\n    );\n  }\n\n  /* ---------- žodynas (S1490) ---------- */\n  public static function vardas($flow) {\n    $z = array(\n      'order_paid'=>'Užsakymas priimtas','order_shipped'=>'Užsakymas išsiųstas',\n      'payment_failed'=>'Mokėjimas nepavyko','shipment_returned'=>'Siunta grįžo',\n      'consent_changed'=>'Sutikimas pakeistas','pet_reminder_due'=>'Augintinio priminimas',\n      'subscription_t5_notice'=>'Reguliari siunta po 5 d.','refill_due'=>'Maisto gali pritrūkti',\n      'cart_abandoned'=>'Paliktas krepšelis 1','cart_abandoned_2'=>'Paliktas krepšelis 2',\n      'post_purchase_2d'=>'Po pirkimo 2 diena','post_purchase_7d'=>'Po pirkimo 7 diena',\n      'post_purchase_14d'"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-rezultatai.php",
+    "k": "cart_abandoned",
+    "eil": 34,
+    "ctx": "hop_Rezultatai {\n\n  const VERSIJA = '1.1';\n\n  public static function init() {\n    add_action('admin_menu', array(__CLASS__, 'meniu'), 30);\n  }\n\n  public static function meniu() {\n    add_submenu_page(\n      'petshop-langai',\n      'Laiškų rezultatai',\n      'Laiškų rezultatai',\n      'manage_woocommerce',\n      'petshop-rezultatai',\n      array(__CLASS__, 'puslapis')\n    );\n  }\n\n  /* ---------- žodynas (S1490) ---------- */\n  public static function vardas($flow) {\n    $z = array(\n      'order_paid'=>'Užsakymas priimtas','order_shipped'=>'Užsakymas išsiųstas',\n      'payment_failed'=>'Mokėjimas nepavyko','shipment_returned'=>'Siunta grįžo',\n      'consent_changed'=>'Sutikimas pakeistas','pet_reminder_due'=>'Augintinio priminimas',\n      'subscription_t5_notice'=>'Reguliari siunta po 5 d.','refill_due'=>'Maisto gali pritrūkti',\n      'cart_abandoned'=>'Paliktas krepšelis 1','cart_abandoned_2'=>'Paliktas krepšelis 2',\n      'post_purchase_2d'=>'Po pirkimo 2 diena','post_purchase_7d'=>'Po pirkimo 7 diena',\n      'post_purchase_14d'=>'Po pirkimo 14 diena','win_back_60'=>'Su"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-langai-admin.php",
+    "k": "cart_abandoned",
+    "eil": 28,
+    "ctx": "on pavadinimai() {\n\t\treturn array(\n\t\t\t'order_paid'             => array( 'Užsakymas priimtas', 'Iškart po apmokėjimo.' ),\n\t\t\t'order_shipped'          => array( 'Užsakymas išsiųstas', 'Rezervinis — šiuo metu siunčia WooCommerce.' ),\n\t\t\t'payment_failed'         => array( 'Mokėjimas nepavyko', 'Priminimas apmokėti pradėtą užsakymą.' ),\n\t\t\t'shipment_returned'      => array( 'Siunta grįžo', 'Kurjeris grąžino siuntą mums.' ),\n\t\t\t'consent_changed'        => array( 'Sutikimas pakeistas', 'Patvirtinimas pakeitus pranešimų nustatymus.' ),\n\t\t\t'pet_reminder_due'       => array( 'Augintinio priminimas', 'Skiepai, antiparazitinės ir kiti terminai.' ),\n\t\t\t'subscription_t5_notice' => array( 'Reguliari siunta po 5 d.', 'Miega, kol nėra prenumeratų (F19).' ),\n\t\t\t'refill_due'             => array( 'Maisto gali pritrūkti', 'Pagal ankstesnį pirkimą apskaičiuotas laikas.' ),\n\t\t\t'cart_abandoned'         => array( 'Paliktas krepšelis · 1', 'Pirmas priminimas su prekių sąrašu.' ),\n\t\t\t'cart_abandoned_2'       => array( 'Paliktas krepšelis · 2', 'Antras, paskutinis priminim"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-langai-admin.php",
+    "k": "cart_abandoned",
+    "eil": 29,
+    "ctx": "mokėjimo.' ),\n\t\t\t'order_shipped'          => array( 'Užsakymas išsiųstas', 'Rezervinis — šiuo metu siunčia WooCommerce.' ),\n\t\t\t'payment_failed'         => array( 'Mokėjimas nepavyko', 'Priminimas apmokėti pradėtą užsakymą.' ),\n\t\t\t'shipment_returned'      => array( 'Siunta grįžo', 'Kurjeris grąžino siuntą mums.' ),\n\t\t\t'consent_changed'        => array( 'Sutikimas pakeistas', 'Patvirtinimas pakeitus pranešimų nustatymus.' ),\n\t\t\t'pet_reminder_due'       => array( 'Augintinio priminimas', 'Skiepai, antiparazitinės ir kiti terminai.' ),\n\t\t\t'subscription_t5_notice' => array( 'Reguliari siunta po 5 d.', 'Miega, kol nėra prenumeratų (F19).' ),\n\t\t\t'refill_due'             => array( 'Maisto gali pritrūkti', 'Pagal ankstesnį pirkimą apskaičiuotas laikas.' ),\n\t\t\t'cart_abandoned'         => array( 'Paliktas krepšelis · 1', 'Pirmas priminimas su prekių sąrašu.' ),\n\t\t\t'cart_abandoned_2'       => array( 'Paliktas krepšelis · 2', 'Antras, paskutinis priminimas.' ),\n\t\t\t'post_purchase_2d'       => array( 'Po pirkimo · 2 diena', 'Ar viskas gerai su užsakymu.' ),\n\t\t\t'"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/templates/emails/cart-abandoned-2.php",
+    "k": "cart_abandoned",
+    "eil": 3,
+    "ctx": "<?php\n/**\n * Sablonas: cart_abandoned_2 (stage 2, +24 val.)\n *\n * TEKSTAS PAGAL SALTINI: petshop_445_pirmi_sablonai_v1.md, SABLONAS 3.\n *   „+24 val., jei neuzbaigta: Krepselis vis dar laukia.\n *    Jei kilo klausimu del pasirinkimo — mielai padesime.\"\n *\n * Tema — saltinio fallback: „Jusu krepselis vis dar laukia\".\n * Antriniu linku NERA (saltinis: „vienas kelias, be antriniu\").\n *\n * NUKRYPIMAS NUO SALTINIO (dokumentuotas): saltinis rase, kad consent\n * netikrinamas. Raimio sprendimas 2026-07-31: `cart_abandoned` = MARKETING,\n * consent PRIVALOMAS. Saltinis yra 2026-07-06, veliau uzrakinti sprendimai\n * yra virsesni.\n *\n * Kintamieji: $payload, $flow_class, $recipient. Nustato: $subject.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$items = isset( $payload['cart_items'] ) && is_array( $payload['cart_items'] ) ? $payload['cart_items'] : array();\n$cta   = ! empty( $payload['recovery_url'] ) ? $payload['recovery_url'] : '';\n$email = isset( $recipient ) ? $recipient : '';\n$fc    = isset( $flow_class ) ? $flow_class : 'marketing';\n\n$subject = 'Jūsų krepšelis vis dar laukia'"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/templates/emails/cart-abandoned-2.php",
+    "k": "cart_abandoned",
+    "eil": 13,
+    "ctx": "<?php\n/**\n * Sablonas: cart_abandoned_2 (stage 2, +24 val.)\n *\n * TEKSTAS PAGAL SALTINI: petshop_445_pirmi_sablonai_v1.md, SABLONAS 3.\n *   „+24 val., jei neuzbaigta: Krepselis vis dar laukia.\n *    Jei kilo klausimu del pasirinkimo — mielai padesime.\"\n *\n * Tema — saltinio fallback: „Jusu krepselis vis dar laukia\".\n * Antriniu linku NERA (saltinis: „vienas kelias, be antriniu\").\n *\n * NUKRYPIMAS NUO SALTINIO (dokumentuotas): saltinis rase, kad consent\n * netikrinamas. Raimio sprendimas 2026-07-31: `cart_abandoned` = MARKETING,\n * consent PRIVALOMAS. Saltinis yra 2026-07-06, veliau uzrakinti sprendimai\n * yra virsesni.\n *\n * Kintamieji: $payload, $flow_class, $recipient. Nustato: $subject.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$items = isset( $payload['cart_items'] ) && is_array( $payload['cart_items'] ) ? $payload['cart_items'] : array();\n$cta   = ! empty( $payload['recovery_url'] ) ? $payload['recovery_url'] : '';\n$email = isset( $recipient ) ? $recipient : '';\n$fc    = isset( $flow_class ) ? $flow_class : 'marketing';\n\n$subject = 'Jūsų krepšelis vis dar laukia'"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/templates/emails/cart-abandoned-1.php",
+    "k": "cart_abandoned",
+    "eil": 3,
+    "ctx": "<?php\n/**\n * Sablonas: cart_abandoned (stage 1, +2 val.)\n *\n * Tekstas pagal petshop_445_pirmi_sablonai_v1.md (SABLONAS 3), TZ §4.4.5.\n *\n * VIENAS pagrindinis CTA — „Grizti i krepseli\". JOKIU antriniu nuorodu,\n * jokio cross-sell: sio srauto tikslas VIENAS (TZ §4.4.3).\n *\n * TEMOS FALLBACK:\n *   1 preke   -> „Dar svarstote del [produkto]?\"\n *   2+ prekes -> „Jusu prekes vis dar laukia krepselyje\"\n *   be prekiu -> „Jusu krepselis vis dar laukia\"\n *\n * Recovery nuoroda ATEINA IS KONTEKSTO (`recovery_url`), sukurta VIENA KARTA\n * po eligibility. Sablonas jos NEGENERUOJA — kitaip retry sukurtu kelias.\n *\n * Kintamieji: $payload, $flow_class, $recipient. Nustato: $subject.\n *\n * @since S322 (2026-07-31)\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$items = isset( $payload['cart_items'] ) && is_array( $payload['cart_items'] ) ? $payload['cart_items'] : array();\n$cta   = ! empty( $payload['recovery_url'] ) ? $payload['recovery_url'] : '';\n$email = isset( $recipient ) ? $recipient : '';\n$fc    = isset( $flow_class ) ? $flow_class : 'marketing';\n\n/* --- Tema pagal prekiu skaic"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-cart-recovery.php",
+    "k": "cart_abandoned",
+    "eil": 46,
+    "ctx": " petshop-core\n * @since 0.22.0 (S318, 2026-07-31)\n */\n\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Cart_Recovery {\n\n\tconst PURPOSE  = 'cart_recovery';\n\tconst QUERY    = 'ps_cartrec';\n\t/** Nuorodos galiojimas. NE detektoriaus 7 d. langas — atskiras dalykas. */\n\tconst TTL_DAYS = 7;\n\n\tpublic static function init() {\n\t\tadd_action( 'init', array( __CLASS__, 'add_rewrite' ) );\n\t\tadd_action( 'template_redirect', array( __CLASS__, 'handle' ) );\n\t\tadd_filter( 'petshop_email_prepare_context', array( __CLASS__, 'prepare_context' ), 10, 3 );\n\t}\n\n\t/**\n\t * S322: recovery nuoroda kuriama TIK VIENA KARTA — po sekmingos eligibility.\n\t * Jei kontekste jau yra `recovery_url`, NIEKO nedarom: retry privalo\n\t * naudoti TA PATI tokena, kitaip tam paciam krepseliui atsirastu kelios\n\t * galiojancios atkurimo nuorodos.\n\t */\n\tpublic static function prepare_context( $context, $flow, $row ) {\n\t\tif ( 'cart_abandoned' !== $flow && 'cart_abandoned_2' !== $flow ) { return $context; }\n\t\tif ( ! is_array( $context ) ) { $context = array(); }\n\t\tif ( ! empty( $context['recovery_url'] ) ) { return $context;"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-cart-recovery.php",
+    "k": "cart_abandoned",
+    "eil": 46,
+    "ctx": " (S318, 2026-07-31)\n */\n\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Cart_Recovery {\n\n\tconst PURPOSE  = 'cart_recovery';\n\tconst QUERY    = 'ps_cartrec';\n\t/** Nuorodos galiojimas. NE detektoriaus 7 d. langas — atskiras dalykas. */\n\tconst TTL_DAYS = 7;\n\n\tpublic static function init() {\n\t\tadd_action( 'init', array( __CLASS__, 'add_rewrite' ) );\n\t\tadd_action( 'template_redirect', array( __CLASS__, 'handle' ) );\n\t\tadd_filter( 'petshop_email_prepare_context', array( __CLASS__, 'prepare_context' ), 10, 3 );\n\t}\n\n\t/**\n\t * S322: recovery nuoroda kuriama TIK VIENA KARTA — po sekmingos eligibility.\n\t * Jei kontekste jau yra `recovery_url`, NIEKO nedarom: retry privalo\n\t * naudoti TA PATI tokena, kitaip tam paciam krepseliui atsirastu kelios\n\t * galiojancios atkurimo nuorodos.\n\t */\n\tpublic static function prepare_context( $context, $flow, $row ) {\n\t\tif ( 'cart_abandoned' !== $flow && 'cart_abandoned_2' !== $flow ) { return $context; }\n\t\tif ( ! is_array( $context ) ) { $context = array(); }\n\t\tif ( ! empty( $context['recovery_url'] ) ) { return $context; }  // JAU sukurta\n\t\t$cart_id "
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-consent-sync.php",
+    "k": "->upsert_contact(",
+    "eil": 115,
+    "ctx": "o_sender' => false, 'unchanged' => true, 'suppression' => $suppression );\n\t\t}\n\n\t\t// 1. Irasyti i consent_log (teisinis irodymas)\n\t\tPetshop_Consent_Log::record( array(\n\t\t\t'customer_id' => $customer_id,\n\t\t\t'email'       => $email,\n\t\t\t'field'       => 'marketing_consent',\n\t\t\t'from_value'  => $from,\n\t\t\t'to_value'    => $new_value,\n\t\t\t'source'      => $source,\n\t\t) );\n\n\t\t// 2. Irasyti i user_meta (jei zinom customer_id)\n\t\tif ( $customer_id ) {\n\t\t\tupdate_user_meta( $customer_id, self::META_MARKETING, $new_value );\n\t\t}\n\n\t\t// 3. Push i Sender (PS_MARKETING_CONSENT + jei atsisake, PS_UNSUBSCRIBED_AT)\n\t\t$attributes = array( 'PS_MARKETING_CONSENT' => $new_value );\n\t\tif ( ! $consent ) {\n\t\t\t$attributes['PS_UNSUBSCRIBED_AT'] = gmdate( 'Y-m-d' );\n\t\t}\n\t\t$pushed = false;\n\t\tif ( function_exists( 'ps_esp_adapter' ) ) {\n\t\t\t$adapter = ps_esp_adapter();\n\t\t\tif ( $adapter->is_configured() ) {\n\t\t\t\t$res = $adapter->upsert_contact( $email, $attributes );\n\t\t\t\t$pushed = ! empty( $res['ok'] );\n\t\t\t}\n\t\t}\n\n\t\t// 4. Emit consent_changed event (jei Registry yra)\n\t\tif ( class_exists( 'Petshop_Event_Registry' ) ) {\n\t\t\tPet"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-email-dispatch.php",
+    "k": "cart_abandoned",
+    "eil": 60,
+    "ctx": "ed'           => array( 'class' => 'transactional', 'template' => 'order-shipped',     'delay' => 0 ),\n\t\t\t'payment_failed'          => array( 'class' => 'transactional', 'template' => 'dunning-1',         'delay' => 0 ),\n\t\t\t'shipment_returned'       => array( 'class' => 'transactional', 'template' => 'shipment-returned', 'delay' => 0 ),\n\t\t\t'consent_changed'         => array( 'class' => 'transactional', 'template' => 'consent-changed',   'delay' => 0 ),\n\t\t\t'pet_reminder_due'        => array( 'class' => 'transactional', 'template' => 'pet-reminder',      'delay' => 0 ),\n\t\t\t'subscription_t5_notice'  => array( 'class' => 'transactional', 'template' => 'subscription-t5',   'delay' => 0 ),\n\n\t\t\t// --- Su preke susije (TZ §4.4.5: rodoma visiems, be marketingo consent) ---\n\t\t\t'refill_due'              => array( 'class' => 'service', 'template' => 'refill',            'delay' => 0 ),\n\t\t\t// S317: cart_abandoned = MARKETINGAS (privalomas consent).\n\t\t\t// Tai KEICIA uzrakinta TZ §4.4.5 — registruota kaip naujas sprendimas.\n\t\t\t// delay=0, nes 2 val. laukimas jau ivyko DETEKTORIUJE.\n\t\t\t'cart_aba"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-email-dispatch.php",
+    "k": "cart_abandoned",
+    "eil": 63,
+    "ctx": "-1',         'delay' => 0 ),\n\t\t\t'shipment_returned'       => array( 'class' => 'transactional', 'template' => 'shipment-returned', 'delay' => 0 ),\n\t\t\t'consent_changed'         => array( 'class' => 'transactional', 'template' => 'consent-changed',   'delay' => 0 ),\n\t\t\t'pet_reminder_due'        => array( 'class' => 'transactional', 'template' => 'pet-reminder',      'delay' => 0 ),\n\t\t\t'subscription_t5_notice'  => array( 'class' => 'transactional', 'template' => 'subscription-t5',   'delay' => 0 ),\n\n\t\t\t// --- Su preke susije (TZ §4.4.5: rodoma visiems, be marketingo consent) ---\n\t\t\t'refill_due'              => array( 'class' => 'service', 'template' => 'refill',            'delay' => 0 ),\n\t\t\t// S317: cart_abandoned = MARKETINGAS (privalomas consent).\n\t\t\t// Tai KEICIA uzrakinta TZ §4.4.5 — registruota kaip naujas sprendimas.\n\t\t\t// delay=0, nes 2 val. laukimas jau ivyko DETEKTORIUJE.\n\t\t\t'cart_abandoned'          => array( 'class' => 'marketing', 'template' => 'cart-abandoned-1',  'delay' => 0 ),\n\t\t\t\t\t\t// S324: delay=0 — 24 val. laukimas jau ivyko DETEKTORIUJE (detect_stage2).\n\t\t\t// "
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-cart-abandonment.php",
+    "k": "cart_abandoned",
+    "eil": 11,
+    "ctx": "<?php\n/**\n * Petshop Cart Abandonment — S317 DETEKTORIUS.\n *\n * PAMATINIS PRINCIPAS (Raimio sprendimas 2026-07-31):\n *   Eventas REGISTRUOJA, kas ivyko. Dispatch SPRENDZIA, ar leidziama komunikuoti.\n *\n * Todel abandono FAKTAS yra consent-neutralus:\n *   active + snapshot netuscias + activity <= dabar-2val + nera converted_order_id\n *   -> status = abandoned\n *   -> cart_abandoned eventas\n *\n * Marketingo consent tikrinamas TIK dispatch etape:\n *   apleistas + consent      -> job -> siunciama\n *   apleistas be consent     -> job -> skipped/consent_missing\n *   apleistas be el. pasto   -> job NEKURIAMAS (nera gavejo), eventas LIEKA analitikai\n *\n * Kitaip `cart_abandoned` statistika reikstu ne „apleisti krepseliai\",\n * o „apleisti krepseliai su marketingo sutikimu\" — KPI kreivas is prigimties.\n *\n * SIAME ETAPE NEDAROMA: recovery tokenas, laisko turinys, siuntimas.\n *\n * @package petshop-core\n * @since 0.19.0 (S317, 2026-07-31)\n */\n\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Cart_Abandonment {\n\n\t/** Po kiek laiko krepselis laikomas apleistu */\n\tconst ABANDON_AFTER "
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-cart-abandonment.php",
+    "k": "cart_abandoned",
+    "eil": 18,
+    "ctx": "<?php\n/**\n * Petshop Cart Abandonment — S317 DETEKTORIUS.\n *\n * PAMATINIS PRINCIPAS (Raimio sprendimas 2026-07-31):\n *   Eventas REGISTRUOJA, kas ivyko. Dispatch SPRENDZIA, ar leidziama komunikuoti.\n *\n * Todel abandono FAKTAS yra consent-neutralus:\n *   active + snapshot netuscias + activity <= dabar-2val + nera converted_order_id\n *   -> status = abandoned\n *   -> cart_abandoned eventas\n *\n * Marketingo consent tikrinamas TIK dispatch etape:\n *   apleistas + consent      -> job -> siunciama\n *   apleistas be consent     -> job -> skipped/consent_missing\n *   apleistas be el. pasto   -> job NEKURIAMAS (nera gavejo), eventas LIEKA analitikai\n *\n * Kitaip `cart_abandoned` statistika reikstu ne „apleisti krepseliai\",\n * o „apleisti krepseliai su marketingo sutikimu\" — KPI kreivas is prigimties.\n *\n * SIAME ETAPE NEDAROMA: recovery tokenas, laisko turinys, siuntimas.\n *\n * @package petshop-core\n * @since 0.19.0 (S317, 2026-07-31)\n */\n\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Cart_Abandonment {\n\n\t/** Po kiek laiko krepselis laikomas apleistu */\n\tconst ABANDON_AFTER "
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-magic-login.php",
+    "k": "->upsert_contact(",
+    "eil": 444,
+    "ctx": "WP_User( $new_id );\n\t\t\t\t$new_user->set_role( 'customer' );\n\t\t\t\t$user = get_user_by( 'id', $new_id );\n\t\t\t}\n\t\t\tif ( ! $user ) {\n\t\t\t\tself::render_error( 'Paskyra nerasta.' );\n\t\t\t\treturn;\n\t\t\t}\n\t\t}\n\t\t$user_id = (int) $user->ID;\n\n\t\t// Session fixation apsauga: wp_clear_auth_cookie + naujas wp_set_auth_cookie\n\t\t// zemiau duoda nauja auth cookie (sena negalioja). WP neturi PHP session'u\n\t\t// pagal nutylejima, tad atskiro session_regenerate_id nereikia.\n\n\t\t// Login\n\t\twp_clear_auth_cookie();\n\t\twp_set_current_user( $user_id );\n\t\twp_set_auth_cookie( $user_id, true );  // remember=true\n\t\tdo_action( 'wp_login', $user->user_login, $user );\n\n\t\t// PS_EMAIL_VERIFIED mirror\n\t\tupdate_user_meta( $user_id, self::META_EMAIL_VERIFIED, 'yes' );\n\t\t// Push i Sender (jei yra)\n\t\tif ( function_exists( 'ps_esp_adapter' ) ) {\n\t\t\t$adapter = ps_esp_adapter();\n\t\t\tif ( $adapter && $adapter->is_configured() ) {\n\t\t\t\t$adapter->upsert_contact( $user->user_email, array(\n\t\t\t\t\t'PS_EMAIL_VERIFIED' => 'true',\n\t\t\t\t\t'PS_LOGIN_METHOD'   => 'magic_link',\n\t\t\t\t) );\n\t\t\t}\n\t\t}\n\n\t\t// ===== S338: ANONIMINIO DRAFTO PERKELIMAS =====\n\t\t// Vi"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-event-registry.php",
+    "k": "cart_abandoned",
+    "eil": 15,
+    "ctx": "<?php\n/**\n * Petshop_Event_Registry — kanoninių event'ų registras + JSON schema validacija.\n *\n * Užrakina kad event'ai atitiktų kanoninį 13 sąrašą (dokumentai/events/EVENTS.md).\n * Kiekvienas event turi schema_version. Schemos: petshop-core/schemas/events/*.schema.json.\n *\n * NAUDOJIMAS:\n *   Petshop_Event_Registry::emit('order_paid', 'klientas@x.lt', $payload);\n *   → validuoja pagal order_paid.schema.json → ps_emit_event() → event log → async provider.\n *\n * Jei event'as nezinomas arba payload neatitinka schemos → log WARNING + (pagal strict) blokuoja.\n *\n * KANONINIAI EVENT'AI (13, S185): legacy_contact_imported, pet_profile_created,\n * pet_profile_updated, cart_abandoned, order_paid, order_shipped, refill_due,\n * subscription_t5_notice, subscription_t2_sms_needed, payment_failed,\n * shipment_returned, pet_reminder_due, consent_changed.\n */\n\nif ( ! defined( 'ABSPATH' ) ) {\n\texit;\n}\n\nclass Petshop_Event_Registry {\n\n\t/**\n\t * Kanoniniai event'ai (S185 registry). Reiksme = ar salltinis jau egzistuoja.\n\t */\n\tconst CANONICAL_EVENTS = array(\n\t\t'legacy_contact_importe"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-event-registry.php",
+    "k": "cart_abandoned",
+    "eil": 33,
+    "ctx": "y::emit('order_paid', 'klientas@x.lt', $payload);\n *   → validuoja pagal order_paid.schema.json → ps_emit_event() → event log → async provider.\n *\n * Jei event'as nezinomas arba payload neatitinka schemos → log WARNING + (pagal strict) blokuoja.\n *\n * KANONINIAI EVENT'AI (13, S185): legacy_contact_imported, pet_profile_created,\n * pet_profile_updated, cart_abandoned, order_paid, order_shipped, refill_due,\n * subscription_t5_notice, subscription_t2_sms_needed, payment_failed,\n * shipment_returned, pet_reminder_due, consent_changed.\n */\n\nif ( ! defined( 'ABSPATH' ) ) {\n\texit;\n}\n\nclass Petshop_Event_Registry {\n\n\t/**\n\t * Kanoniniai event'ai (S185 registry). Reiksme = ar salltinis jau egzistuoja.\n\t */\n\tconst CANONICAL_EVENTS = array(\n\t\t'legacy_contact_imported'     => false,  // M16\n\t\t'pet_profile_created'         => false,  // M7\n\t\t'pet_profile_updated'         => false,  // M7\n\t\t'cart_abandoned'              => false,  // atskiras modulis\n\t\t'order_paid'                  => true,   // WC hook — YRA\n\t\t'order_shipped'               => false,  // M12 (Venipak/LP meta-change)\n\t\t'"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-pet-profile.php",
+    "k": "->upsert_contact(",
+    "eil": 1173,
+    "ctx": "\n\t\t), array( 'event_id' => 'pet_updated_' . $pet_id . '_' . time() ) );\n\t}\n\n\t// --- Sender mirror ---\n\tprivate static function mirror_to_sender( $user_id, $pet_id ) {\n\t\tif ( ! function_exists( 'ps_esp_adapter' ) ) {\n\t\t\treturn;\n\t\t}\n\t\t$user = get_user_by( 'id', $user_id );\n\t\tif ( ! $user ) {\n\t\t\treturn;\n\t\t}\n\t\t$pet = self::get_pet( $pet_id );\n\t\tif ( ! $pet ) {\n\t\t\treturn;\n\t\t}\n\t\t$adapter = ps_esp_adapter();\n\t\tif ( ! $adapter || ! $adapter->is_configured() ) {\n\t\t\treturn;\n\t\t}\n\t\t$attrs = array(\n\t\t\t'PS_PET_SPECIES'    => $pet->species,\n\t\t\t'PS_PET_NAME'       => $pet->pet_name ?: '',\n\t\t\t'PS_PET_LIFE_STAGE' => $pet->life_stage ?: '',\n\t\t\t'PS_DOG_SIZE'       => $pet->dog_size ?: '',\n\t\t\t'PS_FEEDING_TYPE'   => $pet->feeding_type ?: '',\n\t\t\t'PS_PRIMARY_NEED'   => $pet->primary_need ?: '',\n\t\t);\n\t\tif ( $pet->current_food_brand ) {\n\t\t\t$attrs['PS_CURRENT_FOOD_BRAND'] = $pet->current_food_brand;\n\t\t}\n\t\t$adapter->upsert_contact( $user->user_email, $attrs );\n\t}\n}\n"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-event-emitters.php",
+    "k": "cart_abandoned",
+    "eil": 131,
+    "ctx": "\n\t\t\t'order_total'         => (float) $order->get_total(),\n\t\t\t'order_currency'      => $order->get_currency(),\n\t\t\t'order_items'         => $items,\n\t\t\t'payment_method'      => $order->get_payment_method(),\n\t\t\t'shipping_method'     => implode( ', ', $order->get_shipping_methods() ? array_map( function( $m ) { return $m->get_method_title(); }, $order->get_shipping_methods() ) : array() ),\n\t\t\t'customer_note'       => $order->get_customer_note() ?: null,\n\t\t\t'is_first_order'      => ( $order_count === 1 ),\n\t\t\t'order_count_at_time' => (int) $order_count,\n\t\t);\n\n\t\tPetshop_Event_Registry::emit( 'order_paid', $email, $payload, array(\n\t\t\t'event_id' => 'order_paid_' . $order_id,\n\t\t) );\n\n\t\t// S311: order_paid NEBEKVIECIA Email_Dispatch.\n\t\t// Uzsakymo laiskus siuncia WooCommerce per WP Mail SMTP (kritiniai transakciniai).\n\t\t// Dispatch sluoksnis skirtas TIK tiems srautams, kuriu WC nedaro\n\t\t// (refill, cart_abandoned, post-purchase, T-5, win-back...).\n\t\t// Eventas i ps_event_log LIEKA — jo reikia analitikai, segmentacijai,\n\t\t// post-purchase ir refill logikai.\n\t}\n\n\t// -----------------------------"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-contact-policy.php",
+    "k": "->upsert_contact(",
+    "eil": 124,
+    "ctx": "er.\n\t * NIEKADA nemeta klaidos i kviecianti koda — nesekmė tik uzregistruojama\n\t * pakartojimui. Laisko busena del sio lauko NESIKEICIA.\n\t *\n\t * @return array ok, value, action\n\t */\n\tpublic static function sync_transactional_only( $email, $source = 'auto' ) {\n\t\t$email = strtolower( sanitize_email( $email ) );\n\t\tif ( ! is_email( $email ) ) {\n\t\t\treturn array( 'ok' => false, 'action' => 'invalid_email' );\n\t\t}\n\n\t\t$want = self::compute( $email );\n\t\t$val  = $want ? 'true' : 'false';\n\n\t\ttry {\n\t\t\tif ( ! function_exists( 'ps_esp_adapter' ) ) {\n\t\t\t\tself::queue( $email );\n\t\t\t\treturn array( 'ok' => false, 'value' => $val, 'action' => 'no_adapter_queued' );\n\t\t\t}\n\t\t\t$adapter = ps_esp_adapter();\n\t\t\tif ( ! $adapter || ! method_exists( $adapter, 'upsert_contact' ) ) {\n\t\t\t\tself::queue( $email );\n\t\t\t\treturn array( 'ok' => false, 'value' => $val, 'action' => 'no_method_queued' );\n\t\t\t}\n\n\t\t\t$res = $adapter->upsert_contact( $email, array( self::FIELD => $val ) );\n\t\t\t$ok  = ! empty( $res['ok'] );\n\n\t\t\tif ( $ok ) {\n\t\t\t\tself::unqueue( $email );\n\t\t\t\tupdate_option( 'petshop_cp_last_sync', current_time( 'mysql"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-retry-queue.php",
+    "k": "->emit_event(",
+    "eil": 12,
+    "ctx": "<?php\n/**\n * Petshop_Retry_Queue\n *\n * Async event processing per Action Scheduler (WooCommerce atsiveza).\n * Emit'inimas (ps_emit_event) tik istaiso i event_log 'pending'; realus\n * siuntimas i Sender vyksta ČIA, background'e, su backoff retry.\n *\n * SRAUTAS:\n * 1. ps_emit_event() → event_log 'pending' + as_enqueue_async_action('ps_esp_process_event')\n * 2. Action Scheduler paleidzia handle_process_event()\n * 3. handle → SenderAdapter->emit_event()\n *    - success → status='sent'\n *    - retriable fail (5xx/429/timeout) → status='failed', attempts++, next_retry_at=backoff, re-enqueue\n *    - non-retriable fail (4xx) → status='dead' (nekartojam, nes mūsų klaida)\n *    - 7 attempts pasiekta → status='dead' + DLQ alert email\n *\n * BACKOFF (POC S180 Test #11 patvirtinta seka): 1min, 5min, 30min, 2h, 6h, 24h + ±20% jitter.\n *\n * \"GELEZINE TAISYKLE\": isjungus Sender, event'ai kaupiasi 'failed' su next_retry_at,\n * niekas neprarandama. Sender atsigauna → visi issisiuncia. Idempotencija (UNIQUE key) apsaugo\n * nuo dubliu re-enqueue atveju.\n *\n * TZ v1.58 §7 (S180-B, princ"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-retry-queue.php",
+    "k": "->emit_event(",
+    "eil": 157,
+    "ctx": " */\n\tpublic static function handle_process_event( $log_id ) {\n\t\tglobal $wpdb;\n\t\t$row = $wpdb->get_row( $wpdb->prepare(\n\t\t\t\"SELECT * FROM `\" . Petshop_Event_Log::table_name() . \"` WHERE id = %d LIMIT 1\",\n\t\t\t(int) $log_id\n\t\t) );\n\t\tif ( ! $row ) {\n\t\t\treturn; // jau istrinta arba klaidingas id\n\t\t}\n\t\t// Jau issiusta — nekartojam (idempotencija status lygmenyje)\n\t\tif ( $row->status === 'sent' || $row->status === 'dead' || $row->status === 'skipped' ) {\n\t\t\treturn;\n\t\t}\n\n\t\t$payload = json_decode( $row->payload_json, true );\n\t\tif ( ! is_array( $payload ) ) {\n\t\t\t$payload = array();\n\t\t}\n\n\t\t$adapter = self::adapter();\n\n\t\t// Jei adapter'is nesukonfiguruotas (nera tokenu) — palikti 'pending', nezymeti 'failed'\n\t\tif ( ! $adapter->is_configured() ) {\n\t\t\tPetshop_Event_Log::update( $row->id, array(\n\t\t\t\t'last_error' => 'adapter_not_configured',\n\t\t\t) );\n\t\t\treturn;\n\t\t}\n\n\t\t// SIUNTIMAS\n\t\t$result = $adapter->emit_event(\n\t\t\t$row->email,\n\t\t\t$row->event_id,\n\t\t\t$row->event_name,\n\t\t\t$payload\n\t\t);\n\n\t\tif ( $result['ok'] ) {\n\t\t\t// SEKME\n\t\t\tPetshop_Event_Log::update( $row->id, array(\n\t\t\t\t'status'       => 'sent'"
+   },
+   {
+    "f": "wp-content/plugins/petshop-core/includes/class-refill-engine.php",
+    "k": "->upsert_contact(",
+    "eil": 491,
+    "ctx": ">get_product();\n\t\t\t\tif ( $p && (int) $p->get_id() === (int) $product_id ) {\n\t\t\t\t\treturn true;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\treturn false;\n\t}\n\n\t/**\n\t * Sender mirror: PS_REFILL_CANDIDATE + PS_NEXT_REFILL_DATE.\n\t */\n\tprivate static function mirror_to_sender( $user_id ) {\n\t\tif ( ! function_exists( 'ps_esp_adapter' ) ) {\n\t\t\treturn;\n\t\t}\n\t\t$user = get_user_by( 'id', $user_id );\n\t\tif ( ! $user ) {\n\t\t\treturn;\n\t\t}\n\t\tglobal $wpdb;\n\t\t// Artimiausia predicted_empty_date (active)\n\t\t$nearest = $wpdb->get_var( $wpdb->prepare(\n\t\t\t\"SELECT MIN(predicted_empty_date) FROM `\" . self::table_name() . \"`\n\t\t\t WHERE user_id = %d AND status = 'active'\",\n\t\t\t$user_id\n\t\t) );\n\n\t\t$adapter = ps_esp_adapter();\n\t\tif ( ! $adapter || ! $adapter->is_configured() ) {\n\t\t\treturn;\n\t\t}\n\t\t$attrs = array(\n\t\t\t'PS_REFILL_CANDIDATE' => $nearest ? 'true' : 'false',\n\t\t);\n\t\tif ( $nearest ) {\n\t\t\t$attrs['PS_NEXT_REFILL_DATE'] = $nearest;\n\t\t}\n\t\t$adapter->upsert_contact( $user->user_email, $attrs );\n\t}\n}\n"
+   }
+  ]
+ },
+ "v": "dep-074731",
  "kurimas": 200,
- "sid": 5257,
+ "sid": 5432,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
- },
- "R": {
-  "v": "S1668R",
-  "wp": "2026-09-09 10:08:36",
-  "pluginas": {
-   "complianz-gdpr/complianz-gpdr.php": [
-    "7.5.3.1",
-    "aktyvus"
-   ]
-  },
-  "klases": [
-   "COMPLIANZ",
-   "cmplz_document",
-   "CMPLZ_COOKIE",
-   "CMPLZ_SERVICE",
-   "cmplz_proof_of_consent",
-   "CMPLZ_COOKIEBANNER",
-   "cmplz_banner_loader",
-   "cmplz_company",
-   "cmplz_DNSMPD",
-   "cmplz_config",
-   "cmplz_cookie_blocker",
-   "cmplz_wsc",
-   "cmplz_wsc_api",
-   "cmplz_wsc_scanner",
-   "cmplz_wsc_logger",
-   "cmplz_wsc_auth",
-   "cmplz_mailer"
-  ],
-  "metodai": {
-   "COMPLIANZ": [
-    "run"
-   ],
-   "cmplz_banner_loader": [
-    "detect_conflicts",
-    "add_asyncdefer_attribute",
-    "get_last_cookie_scan_date",
-    "get_last_cookie_sync_date"
-   ],
-   "cmplz_wsc_api": [
-    "wsc_scan_enable_webhook_api",
-    "wsc_scan_webhook_checks_callback",
-    "wsc_scan_webhook_callback",
-    "wsc_scan_validate_request",
-    "validate_scan_hmac",
-    "validate_scan_hmac_if_set",
-    "validate_scan_headers"
-   ],
-   "cmplz_wsc_scanner": [
-    "wsc_scan_enabled",
-    "wsc_scan_start",
-    "wsc_scan_process",
-    "wsc_scan_store_cookies",
-    "wsc_scan_reset",
-    "wsc_scan_completed",
-    "wsc_scan_progress",
-    "wsc_complete_cookie_scan",
-    "wsc_scan_retrieve_scan",
-    "wsc_scan_init",
-    "wsc_scan_forced",
-    "wsc_scan_process_checks",
-    "wsc_checks_retrieve_detections"
-   ],
-   "cmplz_wsc_auth": [
-    "maybe_sync_wsc_site_id"
-   ]
-  },
-  "FATAL": "Call to undefined method COMPLIANZ::instance() @21"
  }
 }
