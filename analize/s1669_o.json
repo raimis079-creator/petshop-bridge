@@ -1,0 +1,65 @@
+{
+ "v": "dep-160919",
+ "kurimas": 200,
+ "sid": 5488,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1669 o",
+  "faze": "D",
+  "pries": "39c3fb61ece880d5ccd80fd1514fb3cf",
+  "po": "7830f9c8abeab74700cf56f4eeeca760",
+  "ping": 200,
+  "rez": "OK"
+ },
+ "T": {
+  "v": "S1669 o",
+  "faze": "T",
+  "md5": "7830f9c8abeab74700cf56f4eeeca760",
+  "klase": "Petshop_Kanalai",
+  "versija": "1.2",
+  "t": {
+   "ads": {
+    "utm_campaign": "21472043669",
+    "gclid": 1,
+    "kanalas": "mokamas"
+   },
+   "ads_su_utm": {
+    "utm_campaign": "ruduo",
+    "gclid": 1,
+    "kanalas": "mokamas"
+   },
+   "kainos": {
+    "utm_source": "kainos",
+    "gclid": 0,
+    "kanalas": "mokamas"
+   },
+   "kaina24": {
+    "utm_source": "kaina24",
+    "gclid": 0,
+    "kanalas": "mokamas"
+   },
+   "vidinis": null
+  },
+  "reklama_stulp": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ]
+ }
+}
