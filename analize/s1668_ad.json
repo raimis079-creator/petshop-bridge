@@ -1,0 +1,25 @@
+{
+ "1": {
+  "v": "S1668 ad",
+  "f": "wp-content/mu-plugins/petshop-partijos.php",
+  "md5": "d9ca8db2c3fab34112b21e15a2d4b47a",
+  "dydis": 27850,
+  "hdr": "<?php\n/**\n * Petshop Partijos v1.2 (S697) — PAKUOCIU SARASAI IR TRYNIMAS.\n *   Savininkas: „nera jokio redagavimo, mes kazka dareme, bet nieko neliko.\n *   As net negaliu susivesti duomenu\".\n *   Buvo tiesa: `irasyti_pakuote()` egzistavo nuo pirmos dienos, bet jokia\n *   sasaja jo nekviete — duomenis buvo galima iraSyti tik kodu. Cia pridedama\n *   tai, ko truko sasajai: medziagu ir tipu sar",
+  "av_laukas": "'\n\t\t\t\t\t. ( $gal !== '' ? ' · iki ' . $gal : '' ),\n\t\t\t) );\n\t\t}\n\n\t\treturn array(\n\t\t\t'partijos_id' => $partijos_id,\n\t\t\t'kiekis'      => $kiekis,\n\t\t\t'savikaina'   => $sav_eur,\n\t\t\t'likutis'     => $buvo + $kiekis,\n\t\t\t'savikaina_prekes' => $nauja_sav,\n\t\t);\n\t}\n\n\t/* ============================================================\n\t *  AV LIKUTIS — kur rasyti\n\t * ============================================================ */\n\n\t/**\n\t * S590 taisykle: preke be tiekejo -> `_stock`; su tiekeju -> `_own_stock_qty`.\n\t * Sis modulis ta pacia taisykle ir taiko, kad neatsirastu antro kelio.\n\t */\n\tpublic static function av_laukas( $pid ) {\n\t\tforeach ( array( '_vf_qty', '_zb_qty' ) as $k ) {\n\t\t\tif ( get_post_meta( $pid, $k, true ) !== '' ) { return '_own_stock_qty'; }\n\t\t}\n\t\treturn '_stock';\n\t}\n\n\tpublic static function av_likutis( $pid ) {\n\t\t$v = get_post_meta( $pid, self::av_laukas( $pid ), true );\n\t\treturn ( $v === '' || $v === null ) ? 0 : (int) $v;\n\t}\n\n\tprivate static function rasyti_av_likuti( $pid, $kiekis ) {\n\t\t$kiekis = max( 0, (int) $kiekis );\n\t\t$laukas = self::av_laukas( $pid );\n\n\t\tif ( $laukas === '_stock' ) {\n\t\t\t/* Per WC CRUD, kad atsinaujintu lookup lentele ir transientai.\n\t\t\t   `update_post_meta` cia paliktu parduotuve rodancia sena likuti. */\n\t\t\t$prod = wc_get_product( $pid );\n\t\t\tif ( $prod ) {\n\t\t\t\t$prod->set_manage_stock( true );\n\t\t\t\t$prod->set_stock_quantity( $kiekis );\n\t\t\t\t$prod->save();\n\t\t\t\treturn;\n\t\t\t}\n\t\t}\n\t\tupdate_post_meta( $pid, $laukas, $kiekis );\n\t}\n\n\t/* ============================================================\n\t *  SAVIKAINA\n\t * ====================================",
+  "kvietimai": [
+   "\tpublic static function av_laukas( $pid ) {",
+   "\t\t$v = get_post_meta( $pid, self::av_laukas( $pid ), true );",
+   "\t\t$laukas = self::av_laukas( $pid );"
+  ],
+  "kiti": [
+   "petshop-fakt-atsargos.php"
+  ]
+ },
+ "v": "dep-085546",
+ "kurimas": 200,
+ "sid": 5447,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
