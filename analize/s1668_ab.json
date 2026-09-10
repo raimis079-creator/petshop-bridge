@@ -1,0 +1,78 @@
+{
+ "1": {
+  "v": "S1668 ab",
+  "kat_md5": "58e5d317cada5376a0cf9e1a4c860478",
+  "eilutes": {
+   "420": "*   Katalogas eme savikaina TIK is `ps_sources` registro, todel preke, kurios\n *   registre dar nera, atrode „be savikainos\", nors `_vf_cost` ar `_zb_cost`\n *   buvo uzpildyta. Del to katalogas rode 795, o pilnumo var",
+   "565": "*      kabo ps_sources registras, tiekėjų XML sutapdinimas, užsakymų eilutės\n *      ir kainų palyginimo feed sąrašai. Ne visiškai: naujoms ir legacy prekėms\n *      kodą suvesti reikia, todėl spyna nuimama",
+   "965": "* v8.4 (S1669): TIEKEJO sandelis imamas is saltiniu registro `ps_sources`,\n\t * ne is vieno `_ps_sandelis` lauko. Preke gali guleti IR AV, IR pas tiekeja\n\t * (22 tokios rastos: registre yra `av` ir `zb`/`vf` eilutes, o",
+   "977": "$t = $wpdb->prefix . 'ps_sources';\n\t\tif ( $yra === null ) { $yra = ( $wpdb->get_var( \"SHOW TABLES LIKE '$t'\" ) === $t ); }\n\t\t$s = '';\n\t\tif ( $yra ) {\n\t\t\t$s = (string) $wpdb->get_var( $wpdb->prepare( \"SELECT source FROM",
+   "981": "$s = (string) $wpdb->get_var( $wpdb->prepare( \"SELECT source FROM $t WHERE product_id=%d AND source<>'av' ORDER BY priority ASC, id ASC LIMIT 1\", $pid ) );\n\t\t}\n\t\tif ( $s === '' ) {\n\t\t\t$m = strtolower( (string) get_pos",
+   "985": "$s = ( $m === '' || $m === 'av' ) ? '' : $m;\n\t\t}\n\t\treturn $c[ $pid ] = strtolower( $s );\n\t}\n\n\tpublic static function xml_sandelis( $pid ) {\n\t\treturn in_array( self::tiekejo_sandelis( $pid ), array( 'vf', 'zb' ), true",
+   "1013": "return self::tiekejo_sandelis( $pid ) === '' ? '_stock' : '_own_stock_qty';\n\t}\n\n\t/** Kur guli TIEKEJO likutis. Tik ten, kur tiekejas apskritai yra. */\n\tpublic static function tiekejo_laukas( $pid ) {\n\t\treturn self::tie",
+   "1228": "if ( $sand !== 'av' ) {\n\t\t\t\t$klaidos[] = array( 'id' => $pid, 'kl' => 'ne AV sandėlis (' . ( $sand ?: 'nenurodytas' ) . ') — savikaina redaguojama tik AV prekėms' ); continue;\n\t\t\t}\n\t\t\tif ( self::tiekejo_savikaina(",
+   "2290": "'av'     => $r['av'],\n\t\t\t'tiek'   => $r['tiek'],\n\t\t\t'pard'   => (int) $r['pard'],\n\t\t\t'busena' => get_post_status( $pid ),\n\t\t) );\n\t}\n\n\t/**\n\t * v8.0: TIEKEJO likutis (Ambrosia, Prins, Quattro, Belacor).\n\t *\n\t * Atskiras",
+   "3106": "$sena = $s['source'] !== 'av' && in_array( $s['source'], array( 'vf','zb' ), true ) && self::pasenes( $s['synced_at'] );\n\t\t\t\techo '<tr><td><span class=\"sand s_' . esc_attr( $s['source'] ) . '\">' . esc_html( strtouppe",
+   "3364": "/* v4.6: SKU UŽRAKINTAS. Prie jo rišasi ps_sources registras, tiekėjų\n\t\t   XML sutapdinimas, užsakymų eilutės ir kainų palyginimo feed sąrašai —\n\t\t   atsitiktinis pakeitimas nutrauktų visas šias grandis v",
+   "4921": "$vardai = array( '_stock' => 'Likutis', '_own_stock_qty' => 'AV likutis',\n\t\t\t\t'_regular_price' => 'Kaina', '_manual_price_override' => 'Kainos užraktas' );\n\t\t\techo '<div class=\"kort-ist\">';\n\t\t\tforeach ( $eil as $r )",
+   "5063": "$turi = array( 'av' => false, 'vf' => false, 'zb' => false );\n\t\t\tforeach ( $s_list as $s ) {\n\t\t\t\t$src = strtolower( trim( (string) $s['source'] ) );\n\t\t\t\tif ( $src === 'av' ) {\n\t\t\t\t\t$av = $s['stock_qty'];\n\t\t\t\t\tif ( $co",
+   "5066": "if ( $src === 'av' ) {\n\t\t\t\t\t$av = $s['stock_qty'];\n\t\t\t\t\tif ( $cost_av === null ) { $cost_av = $s['cost_net']; }\n\t\t\t\t\tif ( $sand === '' ) { $sand = 'av'; }\n\t\t\t\t\tif ( $av !== null && (int) $av > 0 ) { $turi['av'] = tru",
+   "5069": "if ( $sand === '' ) { $sand = 'av'; }\n\t\t\t\t\tif ( $av !== null && (int) $av > 0 ) { $turi['av'] = true; }\n\t\t\t\t} else {\n\t\t\t\t\t$tiek = $s['stock_qty'];\n\t\t\t\t\t$sand = $src;\n\t\t\t\t\t$ssku = (string) $s['supplier_sku'];\n\t\t\t\t\t$s",
+   "5070": "if ( $av !== null && (int) $av > 0 ) { $turi['av'] = true; }\n\t\t\t\t} else {\n\t\t\t\t\t$tiek = $s['stock_qty'];\n\t\t\t\t\t$sand = $src;\n\t\t\t\t\t$ssku = (string) $s['supplier_sku'];\n\t\t\t\t\t$sync = $s['synced_at'];\n\t\t\t\t\tif ( $s['cost_n",
+   "5098": "Iki siol imta TIK is `ps_sources` registro, todel preke, kurios\n\t\t\t   registre nera, atrode „be savikainos\", nors `_vf_cost` ar\n\t\t\t   `_zb_cost` meta buvo uzpildyta. Del to katalogas rode 795, o\n\t\t\t   pilnumo var",
+   "5124": "$turi['av'] = ( $av > 0 );\n\t\t\t\tforeach ( $s_list as $si => $sv ) {\n\t\t\t\t\tif ( strtolower( trim( (string) $sv['source'] ) ) === 'av' ) {\n\t\t\t\t\t\t$s_list[ $si ]['stock_qty'] = $av;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\t/* Parduodamas kie",
+   "5126": "if ( strtolower( trim( (string) $sv['source'] ) ) === 'av' ) {\n\t\t\t\t\t\t$s_list[ $si ]['stock_qty'] = $av;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\t/* Parduodamas kiekis — TAS PATS Stock_Service, tik gryna funkcija,\n\t\t\t   kad nereikėt",
+   "5183": "'av'    => $av,\n\t\t\t\t'tiek'  => $tiek,\n\t\t\t\t'pard'  => $parduodama,\n\t\t\t\t'price' => $kaina,\n\t\t\t\t'sale'  => $akcija,\n\t\t\t\t'cost'  => $cost,\n\t\t\t\t/* v8.4: abi savikainos matomos atskirai — filtruoti galima\n\t\t\t\t   ir „ku",
+   "5193": "'turi_av'   => $turi['av'],\n\t\t\t\t'turi_vf'   => $turi['vf'],\n\t\t\t\t'turi_zb'   => $turi['zb'],\n\t\t\t\t'marza' => $marza,\n\t\t\t\t'grind' => self::grindys_prekei( $kats ),\n\t\t\t\t'kat'   => $kats,\n\t\t\t\t'br'    => $br,\n\t\t\t\t'sku'   =",
+   "5353": "'_ps_sandelis','_own_stock_qty','_stock','_cost_price',\n\t\t\t'_vf_qty','_vf_cost','_vf_last_sync','_vf_supplier_sku','_vf_barcode',\n\t\t\t'_zb_qty','_zb_cost','_zb_last_sync','_zb_sku','_zb_barcode',\n\t\t\t'_regular_price','_",
+   "5390": "$t = $wpdb->prefix . 'ps_sources';\n\t\tif ( $wpdb->get_var( \"SHOW TABLES LIKE '{$t}'\" ) !== $t ) { return array(); }\n\t\t$eil = $wpdb->get_results(\n\t\t\t\"SELECT product_id, source, supplier_sku, ean, is_active, is_sellable,",
+   "5433": "$own   = $v( '_own_stock_qty' );\n\t\t$stock = $v( '_stock' );\n\n\t\tif ( $source === 'av' ) {\n\t\t\t$qty = ( $sand === 'av' )\n\t\t\t\t? ( ( $own !== '' ) ? (int) $own : ( ( $stock !== '' ) ? (int) $stock : null ) )\n\t\t\t\t: (int) $ow",
+   "5436": "if ( $source === 'av' ) {\n\t\t\t$qty = ( $sand === 'av' )\n\t\t\t\t? ( ( $own !== '' ) ? (int) $own : ( ( $stock !== '' ) ? (int) $stock : null ) )\n\t\t\t\t: (int) $own;\n\t\t\treturn array( 'stock_qty' => $qty, 'cost_net' => $sk( $v(",
+   "5437": "$qty = ( $sand === 'av' )\n\t\t\t\t? ( ( $own !== '' ) ? (int) $own : ( ( $stock !== '' ) ? (int) $stock : null ) )\n\t\t\t\t: (int) $own;\n\t\t\treturn array( 'stock_qty' => $qty, 'cost_net' => $sk( $v( '_cost_price' ) ), 'synced_",
+   "5929": "'av'         => array( 'g' => 'Vieta',    'v' => 'AV likutis',         't' => 'sk' ),\n\t\t\t'tiek'       => array( 'g' => 'Vieta',    'v' => 'Tiekėjo likutis',    't' => 'sk' ),\n\t\t\t'pard'       => array( 'g' => 'Vieta',",
+   "6060": "'av_pasibaige'  => array( array( 'l' => 'av', 'op' => 'netuscia' ),\n\t\t\t                          array( 'l' => 'av', 'op' => '=', 'r' => 0 ) ),\n\t\t\t'pr_foto'       => array( array( 'l' => 'foto', 'op' => 'ne' ) ),\n\t\t\t'",
+   "6061": "array( 'l' => 'av', 'op' => '=', 'r' => 0 ) ),\n\t\t\t'pr_foto'       => array( array( 'l' => 'foto', 'op' => 'ne' ) ),\n\t\t\t'pr_apras'      => array( array( 'l' => 'apras', 'op' => 'ne' ) ),\n\t\t\t'p",
+   "6069": "'negyvos'       => array( array( 'l' => 'sand', 'op' => '=', 'r' => 'av' ),\n\t\t\t                          array( 'l' => 'av', 'op' => '>', 'r' => 0 ),\n\t\t\t                          array( 'l' => 'nepard', 'op' => 'netus",
+   "6070": "array( 'l' => 'av', 'op' => '>', 'r' => 0 ),\n\t\t\t                          array( 'l' => 'nepard', 'op' => 'netuscia' ),\n\t\t\t                          array( 'l' => 'nepard', 'op' => '>=', 'r'",
+   "6105": "case 'av_turi':  $s[] = array( 'l' => 'av', 'op' => '>', 'r' => 0 ); break;\n\t\t\t\tcase 'av_nulis': $s[] = array( 'l' => 'av', 'op' => 'netuscia' );\n\t\t\t\t                 $s[] = array( 'l' => 'av', 'op' => '=', 'r' => 0",
+   "6106": "case 'av_nulis': $s[] = array( 'l' => 'av', 'op' => 'netuscia' );\n\t\t\t\t                 $s[] = array( 'l' => 'av', 'op' => '=', 'r' => 0 ); break;\n\t\t\t\tcase 'tiekejas': $s[] = array( 'l' => 'av', 'op' => '<=', 'r' => 0",
+   "6107": "$s[] = array( 'l' => 'av', 'op' => '=', 'r' => 0 ); break;\n\t\t\t\tcase 'tiekejas': $s[] = array( 'l' => 'av', 'op' => '<=', 'r' => 0 );\n\t\t\t\t                 $s[] = array( 'l' => 'tiek', 'op' => '>', 'r'",
+   "6108": "case 'tiekejas': $s[] = array( 'l' => 'av', 'op' => '<=', 'r' => 0 );\n\t\t\t\t                 $s[] = array( 'l' => 'tiek', 'op' => '>', 'r' => 0 ); break;\n\t\t\t\tcase 'niekas':   $s[] = array( 'l' => 'pard', 'op' => '<=',",
+   "6208": "$av = (int) $r['av'];\n\t\t\tif ( $av <= 0 ) { continue; }\n\t\t\t$s['vnt'] += $av;\n\t\t\tif ( $r['cost'] !== null ) {\n\t\t\t\t$verte = $av * (float) $r['cost'];\n\t\t\t\t$s['av_savikaina'] += $verte;\n\t\t\t\t$s['su_savikaina']++;\n\t\t\t\tif ( $",
+   "6483": "$sand = array( '' => 'visi', 'av' => 'AV', 'vf' => 'VF', 'zb' => 'ZB', 'quattro' => 'Quattro',\n\t\t\t'belcor_tofu' => 'Belacor tofu', 'prins' => 'Prins', 'ambrosia' => 'Ambrosia' );\n\t\t/* v8.6.4: JUNGIKLIS — vienas, su u",
+   "6759": "self::th( 'av', 'AV', $sort, $kryp, 'num' );\n\t\tself::th( 'tiek', 'Tiekėjo', $sort, $kryp, 'num' );\n\t\techo '<th class=\"num\">Parduodama</th>';\n\t\tself::th( 'price', 'Kaina', $sort, $kryp, 'num', '€ su PVM' );\n\t\tself::t",
+   "6858": "if ( $r['sand'] === 'av' ) {\n\t\t\t\t$sand_p = 'Sava prekė · likutis įvedamas ranka';\n\t\t\t} elseif ( in_array( $r['sand'], array( 'vf', 'zb' ), true ) ) {\n\t\t\t\t$sand_p = 'Tiekėjas ' . strtoupper( $r['sand'] ) . ' · dro",
+   "6879": ". ( $r['av'] === null ? '' : (int) $r['av'] ) . '\">'\n\t\t\t\t. '<span class=\"av-rodo\" data-p=\"' . ( $rank\n\t\t\t\t\t? 'Spustelk ir įrašyk. 12 nustato, +5 prideda, −2 atima.'\n\t\t\t\t\t: 'Likutį valdo tiekėjo XML — ranka ne",
+   "6883": ". ( $r['av'] === null ? '<span class=\"nezinoma\">—</span>' : (int) $r['av'] ) . '</span></td>';\n\t\t\techo '<td class=\"num tiek-lang\">' . $sk( $r['tiek'], 'Tiekėjo likutis iš jo duomenų — tik skaitymui' ) . '</td>",
+   "6915": "$sav_rd = ( $r['sand'] === 'av' );\n\t\t\techo '<td class=\"num sav-lang' . ( $sav_rd ? ' red-lang' : ' nerd' ) . '\"'\n\t\t\t\t. ( $sav_rd ? ' data-st=\"sav\" data-id=\"' . (int) $r['id'] . '\"'\n\t\t\t\t\t. ' data-buvo=\"' . ( $r['cost']",
+   "8964": "if(!confirm(\"Atrakinti SKU?\\n\\nPrie jo rišasi šaltinių registras (ps_sources), tiekėjų XML sutapdinimas, užsakymų eilutės ir kainų palyginimo feed sąrašai. Pakeitus kodą šios grandys nutrūksta.\")) retu"
+  },
+  "fn": {
+   "ajax_av": "function ajax_av_irasyti() {\n\t\tif ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); }\n\t\tcheck_ajax_referer( 'ps_kat', 'nonce' );\n\n\t\t$priez = isset( $_POST['priezastis'] ) ? sanitize_key( $_POST['priezastis'] ) : '';\n\t\tif ( ! isset( self::priezastys()[ $priez ] ) ) { wp_send_json_error( 'nenurodyta priežastis' ); }\n\n\t\t$raw = isset( $_POST['pakeitimai'] ) ? wp_unslash( $_POST['pakeitimai'] ) : '';\n\t\t$sar = json_decode( $raw, true );\n\t\tif ( ! is_array( $sar ) || ! $sar ) { wp_send_json_error( 'nėra ką išsaugoti' ); }\n\t\tif ( count( $sar ) > 500 ) { wp_send_json_error( 'per daug eilučių vienu kartu (riba 500)' ); }\n\t\tif ( ! self::uztikrinti_zurnala() ) { wp_send_json_error( 'nepavyko paruošti žurnalo' ); }\n\n\t\t/* 1) SKAIČIUOJAM — dar nieko nerašom */\n\t\t$planas = array(); $klaidos = array();\n\t\tforeach ( $sar as $e ) {\n\t\t\t$pid = isset( $e['id'] ) ? (int) $e['id'] : 0;\n\t\t\t$iv  = isset( $e['ivestis'] ) ? trim( (string) $e['ivestis'] ) : '';\n\t\t\tif ( ! $pid || get_post_type( $pid ) !== 'product' ) { $klaidos[] = array( 'id' => $pid, 'kl' => 'nėra prekės' ); continue; }\n\t\t\tif ( ! preg_match( '/^([+-]?)(\\d{1,6})$/', $iv, $m ) ) {\n\t\t\t\t$klaidos[] = array( 'id' => $pid, 'kl' => 'netinkama reikšmė: ' . $iv ); continue;\n\t\t\t}\n\t\t\t$buvo = self::av_dabar( $pid );\n\t\t\t$sk   = (int) $m[2];\n\t\t\tif ( $m[1] === '+' )      { $tapo = (int) $buvo + $sk; }\n\t\t\telseif ( $m[1] === '-' )  { $tapo = (int) $buvo - $sk; }\n\t\t\telse                      { $tapo = $sk; }\n\n\t\t\t$prasyta = $tapo;\n\t\t\tif ( $tapo < 0 ) { $tapo = 0; }   /* neigiamo likučio nebūna */\n\t\t\t$planas[] = array(\n\t\t\t\t'pid' => $pid, 'laukas' => self::av_laukas( $pid ),\n\t\t\t\t'buvo' => $buvo, 'tapo' => $tapo, 'prasyta' => $prasyta,\n\t\t\t\t'pokytis' => $tapo - (int) $buvo,\n\t\t\t);\n\t\t}\n\t\tif ( !"
+  },
+  "naujos_partijos": [
+   {
+    "id": "4218",
+    "product_id": "16612",
+    "kiekis_gautas": "2",
+    "tiekejas": "quattro",
+    "pastaba": "Likučio įvedimas kortelėje",
+    "sukurta": "2026-09-10 11:35:13",
+    "atsaukta": "0"
+   }
+  ],
+  "nauji_sources_av": [],
+  "q_own": [],
+  "prins_av_eil": {
+   "av_eil": "57",
+   "prek": "114"
+  }
+ },
+ "v": "dep-084017",
+ "kurimas": 200,
+ "sid": 5445,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
