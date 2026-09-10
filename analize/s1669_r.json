@@ -1,21 +1,178 @@
 {
- "v": "dep-071805",
+ "v": "dep-161749",
  "kurimas": 200,
- "sid": 5261,
+ "sid": 5491,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "R": {
-  "v": "S1669R",
-  "meniu": {
-   "settings/settings.php": [
-    "add_menu_page(",
-    "add_submenu_page(",
-    "add_submenu_page(",
-    "add_submenu_page("
+ "A": {
+  "v": "S1669 r",
+  "siusta_po_0908": {
+   "cron:3108c2d05573f24f178ec172f8f196f7": "2026-09-08",
+   "fatal:a7031bd3627e8da86576229e1fbd09ed": "2026-09-08",
+   "fatal:bde4586b135e6f12e29ca5f7ecd36bc6": "2026-09-08",
+   "fatal:0187dfa4a104b232a8a4f4a856142714": "2026-09-09",
+   "cron:d42b8902f9c3f1cc44d89a75c2ce83a0": "2026-09-09",
+   "fatal:417ab0763ee645f300a7f75c145c7f0f": "2026-09-09",
+   "fatal:0423f52793b7ec2a4d9791dcb442068c": "2026-09-10"
+  },
+  "siusta_viso": 31,
+  "lentele": "NULL",
+  "lenteles": [
+   "gaj6_ps_fakt_atsargos_d",
+   "gaj6_ps_sargas_klaidos"
+  ],
+  "stulp": {
+   "gaj6_ps_fakt_atsargos_d": [
+    "id",
+    "data",
+    "preke_id",
+    "sandelis",
+    "likutis_av",
+    "likutis_tiekejo",
+    "rezervuota",
+    "savikaina_vnt_ct",
+    "savikainos_saltinis",
+    "verte_ct",
+    "pardavimai_vnt_7d",
+    "pardavimai_vnt_30d",
+    "dienu_atsargu",
+    "stockout",
+    "partiju_sk",
+    "artimiausia_galiojimas",
+    "testinis",
+    "saltinis_aplinka"
+   ],
+   "gaj6_ps_sargas_klaidos": [
+    "id",
+    "laikas",
+    "lygis",
+    "parasas",
+    "zinute",
+    "failas",
+    "eilute",
+    "url",
+    "kiek"
    ]
   },
-  "FATAL": "Call to undefined function shell_exec() @13"
+  "n": {
+   "gaj6_ps_fakt_atsargos_d": "7950",
+   "gaj6_ps_sargas_klaidos": "3016"
+  },
+  "po_t0": {
+   "gaj6_ps_sargas_klaidos": [
+    {
+     "id": "7038",
+     "laikas": "2026-09-10 19:18:43",
+     "lygis": "warning",
+     "parasas": "f357a0dd0b460e77564017af7458b8f3",
+     "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/churu-bites-skanestas-katems-su-vistiena-ivairiu-skoniu-suktinukai-16-vnt/): No such file or directory",
+     "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+     "eilute": "3624",
+     "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+     "kiek": "1"
+    },
+    {
+     "id": "7037",
+     "laikas": "2026-09-10 19:17:02",
+     "lygis": "warning",
+     "parasas": "f3664500d2acf091a238a839d573f632",
+     "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/nobleza-namas-guolis-katei-pilkas-43x36x35/): No such file or directory",
+     "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+     "eilute": "3624",
+     "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+     "kiek": "2"
+    },
+    {
+     "id": "6414",
+     "laikas": "2026-09-10 19:17:02",
+     "lygis": "warning",
+     "parasas": "807b092896a943787eebb7a942641b55",
+     "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/expertus-tofu-kraikas-katems-zaliosios-arbatos-kvapo-6l-26kg/): No such file or directory",
+     "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+     "eilute": "3624",
+     "url": "/wp-load.php?import_key=v&import_id=5&action=processing",
+     "kiek": "9"
+    },
+    {
+     "id": "7036",
+     "laikas": "2026-09-10 19:16:30",
+     "lygis": "warning",
+     "parasas": "1028f1c1e3a5d1e9c4458b5ce7b2089a",
+     "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/pess-biologinis-antkaklis-nuo-parazitu-katems-35-cm/): No such file or directory",
+     "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+     "eilute": "3624",
+     "url": "/?wc-ajax=checkout",
+     "kiek": "2"
+    },
+    {
+     "id": "4024",
+     "laikas": "2026-09-10 19:16:08",
+     "lygis": "deprecated",
+     "parasas": "b8134211401a082b2ab03cd682e13e5b",
+     "zinute": "str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated",
+     "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php",
+     "eilute": "2196",
+     "url": "/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+     "kiek": "2636"
+    },
+    {
+     "id": "4023",
+     "laikas": "2026-09-10 19:16:08",
+     "lygis": "deprecated",
+     "parasas": "1a73efb667af0a27ef119e7873f3ea58",
+     "zinute": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated",
+     "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php",
+     "eilute": "7374",
+     "url": "/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+     "kiek": "2636"
+    },
+    {
+     "id": "4859",
+     "laikas": "2026-09-10 19:13:09",
+     "lygis": "deprecated",
+     "parasas": "c2f94d93c844e0c3956cd3e28c50645e",
+     "zinute": "Return type of NAWebCo\\BoxPacker\\Solid::jsonSerialize() should either be compatible with JsonSerializable::jsonSerialize(): mixed, or the #[\\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice",
+     "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/Solid.php",
+     "eilute": "53",
+     "url": "/?ps_n4=GO",
+     "kiek": "185"
+    },
+    {
+     "id": "4858",
+     "laikas": "2026-09-10 19:13:09",
+     "lygis": "deprecated",
+     "parasas": "5dad639e69d1b774ec9e97fafdfa08ae",
+     "zinute": "Return type of NAWebCo\\BoxPacker\\Container::jsonSerialize() should either be compatible with JsonSerializable::jsonSerialize(): mixed, or the #[\\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice",
+     "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/Container.php",
+     "eilute": "259",
+     "url": "/?ps_n4=GO",
+     "kiek": "185"
+    },
+    {
+     "id": "4857",
+     "laikas": "2026-09-10 19:13:09",
+     "lygis": "deprecated",
+     "parasas": "e7c19658159524ad4e3151240189f5dc",
+     "zinute": "Return type of NAWebCo\\BoxPacker\\GenericPackable::jsonSerialize() should either be compatible with JsonSerializable::jsonSerialize(): mixed, or the #[\\ReturnTypeWillChange] attribute should be used to temporarily suppress the notice",
+     "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/GenericPackable.php",
+     "eilute": "49",
+     "url": "/?ps_n4=GO",
+     "kiek": "185"
+    },
+    {
+     "id": "6874",
+     "laikas": "2026-09-10 19:11:54",
+     "lygis": "warning",
+     "parasas": "9ec7b9fb89038d4838b39615a1f189bc",
+     "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/ruda-stirnos-koja-1-vnt/): No such file or directory",
+     "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+     "eilute": "3624",
+     "url": "/wp-admin/admin-ajax.php",
+     "kiek": "3"
+    }
+   ]
+  }
  }
 }
