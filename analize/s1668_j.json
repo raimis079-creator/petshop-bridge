@@ -1,0 +1,147 @@
+{
+ "1": {
+  "v": "S1668 j",
+  "html": {
+   "GTM-MF3GZGT": 2,
+   "GTM-MZGDV75F": 0,
+   "AW-11117260149": 0,
+   "G-FMTKEGGLMG": 0,
+   "gtag('consent', 'default'": 1,
+   "gtag(\"consent\",\"default\"": 0,
+   "cmplz": 164,
+   "wait_for_update": 1
+  },
+  "consent_default": "CONSENT MODE v2 DEFAULT (privalo buti pirmas) ---- */\n\tgtag('consent', 'default', {\n\t\t'ad_storage': 'denied',\n\t\t'ad_user_data': 'denied',\n\t\t'ad_personalization': 'denied',\n\t\t'analytics_storage': 'denied',\n\t\t'functionality_storage': 'granted',\n\t\t'personalization_storage': 'granted',\n\t\t'security_storage': 'granted',\n\t\t'wait_for_update': 500\n\t});\n\tgtag('set', 'ads_data_redaction', true);\n\tgtag('set', 'url_passthrough', ",
+  "dl": [
+   {
+    "f": "snippet 614 Petshop DataLayer v1.1 (GA4 ecommerce)",
+    "ctx": "/**\n * Petshop DataLayer v1.1 (GA4 ecommerce)\n *\n * Siuncia GA4 e-commerce ivykius i dataLayer, kuriuos pagauna GTM-MF3GZGT.\n * Ivykiai: view_item, add_to_cart, view_cart, begin_checkout, purchase\n *\n * Scope: front-end only\n * Priklausomybes: WooCommerce (klasikinis checkout, shortcode)\n * Idempotencija: purchase siunciamas vienakart per uzsakyma (_petshop_dl_purchase_sent + static guard)\n *\n * v1.1 pataisymai:\n *   - add_to_cart: prekes puslapyje mygtukas NETURI ajax_add_to_cart -> forma submit'ina,\n *     JS push'as dingsta su navigacija. Sprendimas: WC session queue + flush kitame page load.\n *     AJAX atveju (loop mygtukai) queue NEpildoma — ten veikia JS listener.\n *   - purchase: pridetas static guard nuo dvigubo hook kvietimo tame paciame request'e.\n */\n\nif ( ! defined( 'ABSPATH' ) ) { return; }\nif ( ! function_exists( 'WC' ) ) { return; }\n\n/* ============================================================\n * HELPERS\n * ============================================================ */\n\nif ( ! function_exists( 'petshop_gtm_brand' ) ) {\n\t/**\n\t * Prekes zenklas. Pirma bandom brand taksonomija, tada _legacy_manufacturer.\n\t */\n\tfunction petshop_gtm_brand( $product_id ) {\n\t\tforeach ( array( 'product_brand', 'pa_prekiu_zenklas', 'yith_product_brand' ) as $tax ) {\n\t\t\tif ( taxonomy_exists( $tax ) ) {\n\t\t\t\t$terms = wp_get_object_terms( $product_id, $tax, array( 'fields' => 'names' ) );\n\t\t\t\tif ( ! is_wp_error( $terms ) && ! empty( $terms[0] ) ) {\n\t\t\t\t\treturn $terms[0];\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\t$manuf = get_post_meta( $product_id, '_legacy_manufacturer', true );\n\t\treturn $manuf ? $manuf : '';\n\t}\n}\n\nif ( ! function_exists( 'petshop_gtm_category' ) ) {\n\t/**\n\t * Pirmoji prekes kategorija (pavadinimas).\n\t */\n\tfunction petshop_gtm_category( $product_id ) {\n\t\t$terms = wp_get_object_terms( $"
+   },
+   {
+    "f": "snippet 619 Petshop Consent Bridge v1.2 (Complianz -> GTM)",
+    "ctx": "/**\n * Petshop Consent Bridge v1.2 (Complianz -> GTM)\n *\n * Vienas inline blokas wp_head'e, PRIES GTM snippet'a (prio 0 < prio 1):\n *   1. Google Consent Mode v2 DEFAULT (visi denied)\n *   2. Jei Complianz cookies jau yra (pakartotinis lankytojas) -> consent UPDATE\n *   3. Listener'iai cmplz_status_change / cmplz_fire_categories -> consent UPDATE + dataLayer event\n *   4. v1.2: po sutikimo pakartoja ecommerce event'a TIK jei consent pasikeite denied -> granted.\n *      BUG v1.1: cmplz_fire_categories fire'ina kiekviename puslapyje, kur sutikimas jau duotas,\n *      todel replay dubliuodavo purchase -> dvigubos konversijos.\n *\n * KODEL cia, o ne GTM tag'e:\n *   consent default privalo buti dataLayer'yje PRIES consent update.\n *   GTM Consent Initialization tag'as fire'ina tik po gtm.js uzsikrovimo,\n *   o sis snippet'as vykdomas sinchroniskai anksciau. Tvarka garantuota tik cia.\n *\n * SVARBU: GTM tag'as \"00 — Consent Mode v2 Default\" turi buti ISTRINTAS/PAUZUOTAS,\n *         kitaip default perrasys update.\n *\n * Kategoriju atitikmenys:\n *   cmplz statistics -> analytics_storage\n *   cmplz marketing  -> ad_storage, ad_user_data, ad_personalization\n *\n * Scope: front-end only\n */\n\nif ( ! defined( 'ABSPATH' ) ) { return; }\n\nif ( ! function_exists( 'petshop_consent_bridge' ) ) {\n\tfunction petshop_consent_bridge() {\n\t\tif ( is_admin() ) { return; }\n\n\t\t$js = <<<'PETSHOPCONSENT'\n<script data-petshop-consent-bridge=\"1\">\n(function () {\n\twindow.dataLayer = window.dataLayer || [];\n\tfunction gtag() { window.dataLayer.push(arguments); }\n\n\t/* ---- 1. CONSENT MODE v2 DEFAULT (privalo buti pirmas) ---- */\n\tgtag('consent', 'default', {\n\t\t'ad_storage': 'denied',\n\t\t'ad_user_data': 'denied',\n\t\t'ad_personalization': 'denied',\n\t\t'analytics_storage': 'denied',\n\t\t'functionality_storage': 'gran"
+   },
+   {
+    "f": "snippet 5424 TEMP PS dep-071452",
+    "ctx": "\n/** TEMP PS S1668 j — READ-ONLY: purchase signalo grandinė (HTML žymos, dataLayer kodas, užsakymų meta, Ads konv. veiksmai). Padėkos puslapis NEKRAUNAMAS. */\nadd_action('init', function(){\n  if (!isset($_GET['ps_s1668j'])) return;\n  global $wpdb; $p=$wpdb->prefix; $o=array('v'=>'S1668 j');\n  try{\n  $r=wp_remote_get(home_url('/'),array('timeout'=>20)); $h=is_wp_error($r)?'':wp_remote_retrieve_body($r);\n  foreach(array('GTM-MF3GZGT','GTM-MZGDV75F','AW-11117260149','G-FMTKEGGLMG','gtag(\\'consent\\', \\'default\\'','gtag(\"consent\",\"default\"','cmplz','wait_for_update') as $k) $o['html'][$k]=substr_count($h,$k);\n  if(($i=strpos($h,\"'consent', 'default'\"))!==false) $o['consent_default']=substr($h,$i-60,420);\n  // dataLayer purchase kodas\n  $c=array(); foreach(array_merge(glob(WPMU_PLUGIN_DIR.'/*.php'),glob(WP_PLUGIN_DIR.'/petshop*/*.php'),glob(WP_PLUGIN_DIR.'/petshop*/includes/*.php'),array(get_stylesheet_directory().'/functions.php')) as $f){\n    $s=@file_get_contents($f); if(!$s) continue;\n    if(preg_match_all(\"/['\\\"]event['\\\"]\\s*(=>|:)\\s*['\\\"]purchase['\\\"]/\",$s,$m,PREG_OFFSET_CAPTURE)) foreach($m[0] as $x) $c[]=array('f'=>str_replace(ABSPATH,'',$f),'ctx'=>substr($s,max(0,$x[1]-1500),1800));\n  }\n  $sn=$wpdb->get_results(\"SELECT id,name,active,code FROM {$p}snippets WHERE active=1 AND code LIKE '%purchase%' AND (code LIKE '%dataLayer%' OR code LIKE '%thankyou%')\",ARRAY_A);\n  foreach($sn as $x){ $i=strpos($x['code'],'purchase'); $c[]=array('f'=>'snippet '.$x['id'].' '.$x['name'],'ctx'=>substr($x['code'],max(0,$i-1500),1800)); }\n  $o['dl']=$c;\n  // užsakymų meta\n  foreach(array(35872,35880,35881,35882,35883,35871,35876) as $id){ $od=wc_get_order($id); if(!$od) continue; $m=array();\n    foreach($od->get_meta_data() as $md){ $k=$md->key; if(preg_match('/dl|ga4|gtm|purch|t"
+   }
+  ],
+  "meta": {
+   "35871": {
+    "_wc_order_attribution_device_type": "Mobile",
+    "_wc_order_attribution_session_count": "1",
+    "_wc_order_attribution_session_entry": "https://petshop.lt/",
+    "_wc_order_attribution_session_pages": "4",
+    "_wc_order_attribution_session_start_time": "2026-09-09 05:47:14",
+    "_wc_order_attribution_source_type": "typein",
+    "_wc_order_attribution_user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome",
+    "_wc_order_attribution_utm_source": "(direct)"
+   },
+   "35872": {
+    "_petshop_dl_purchase_sent": "yes",
+    "_ps_ga4_mp_at": "2026-09-09 06:56:00",
+    "_ps_ga4_mp_cid": "ps.634681307.1788936884",
+    "_ps_ga4_mp_kodas": "204",
+    "_wc_order_attribution_device_type": "Mobile",
+    "_wc_order_attribution_referrer": "https://www.google.com/",
+    "_wc_order_attribution_session_count": "1",
+    "_wc_order_attribution_session_entry": "https://petshop.lt/product/sepija-mineralas-skanestas-pauksciams-15-cm-1-vnt-2/",
+    "_wc_order_attribution_session_pages": "3",
+    "_wc_order_attribution_session_start_time": "2026-09-09 06:53:21",
+    "_wc_order_attribution_source_type": "organic",
+    "_wc_order_attribution_user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Samsun",
+    "_wc_order_attribution_utm_medium": "organic",
+    "_wc_order_attribution_utm_source": "google"
+   },
+   "35876": {
+    "_wc_order_attribution_device_type": "Desktop",
+    "_wc_order_attribution_session_count": "1",
+    "_wc_order_attribution_session_entry": "https://petshop.lt/",
+    "_wc_order_attribution_session_pages": "9",
+    "_wc_order_attribution_session_start_time": "2026-09-09 10:15:36",
+    "_wc_order_attribution_source_type": "typein",
+    "_wc_order_attribution_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko)",
+    "_wc_order_attribution_utm_source": "(direct)"
+   },
+   "35880": {
+    "_petshop_dl_purchase_sent": "yes",
+    "_ps_ga4_mp_at": "2026-09-09 15:49:42",
+    "_ps_ga4_mp_cid": "ps.3481964300.1788968909",
+    "_ps_ga4_mp_kodas": "204",
+    "_ps_refill_tracked": "yes",
+    "_wc_order_attribution_device_type": "Mobile",
+    "_wc_order_attribution_referrer": "https://www.google.com/",
+    "_wc_order_attribution_session_count": "1",
+    "_wc_order_attribution_session_entry": "https://petshop.lt/gamintojas/exclusion/",
+    "_wc_order_attribution_session_pages": "4",
+    "_wc_order_attribution_session_start_time": "2026-09-09 15:42:32",
+    "_wc_order_attribution_source_type": "organic",
+    "_wc_order_attribution_user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 26_6_1 like Mac OS X) AppleWebKit/605.1.15 (K",
+    "_wc_order_attribution_utm_medium": "organic",
+    "_wc_order_attribution_utm_source": "google"
+   },
+   "35881": {
+    "_petshop_dl_purchase_sent": "yes",
+    "_ps_ga4_mp_at": "2026-09-09 16:59:12",
+    "_ps_ga4_mp_cid": "614317393.1788971594",
+    "_ps_ga4_mp_kodas": "204",
+    "_ps_refill_tracked": "yes",
+    "_wc_order_attribution_device_type": "Desktop",
+    "_wc_order_attribution_referrer": "https://www.google.com/",
+    "_wc_order_attribution_session_count": "1",
+    "_wc_order_attribution_session_entry": "https://petshop.lt/kategorija/katems/maistas-katems/",
+    "_wc_order_attribution_session_pages": "15",
+    "_wc_order_attribution_session_start_time": "2026-09-09 16:33:08",
+    "_wc_order_attribution_source_type": "organic",
+    "_wc_order_attribution_user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, lik",
+    "_wc_order_attribution_utm_medium": "organic",
+    "_wc_order_attribution_utm_source": "google"
+   },
+   "35882": {
+    "_petshop_dl_purchase_sent": "yes",
+    "_ps_ga4_mp_at": "2026-09-10 03:37:46",
+    "_ps_ga4_mp_cid": "1499857993.1789010811",
+    "_ps_ga4_mp_kodas": "204",
+    "_wc_order_attribution_device_type": "Mobile",
+    "_wc_order_attribution_referrer": "https://petshop.lt/product/miamor-feine-filets-konservai-katems-vistiena-pauksti",
+    "_wc_order_attribution_session_count": "1",
+    "_wc_order_attribution_session_entry": "https://petshop.lt/kasa/?_gl=1*14r9wo1*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjwh4TVBhCWA",
+    "_wc_order_attribution_session_pages": "35",
+    "_wc_order_attribution_session_start_time": "2026-09-10 03:34:19",
+    "_wc_order_attribution_source_type": "utm",
+    "_wc_order_attribution_user_agent": "Mozilla/5.0 (iPhone; CPU iPhone OS 26_6_1 like Mac OS X) AppleWebKit/605.1.15 (K",
+    "_wc_order_attribution_utm_campaign": "google_cpc",
+    "_wc_order_attribution_utm_medium": "cpc",
+    "_wc_order_attribution_utm_source": "google"
+   },
+   "35883": {
+    "_ps_ga4_mp_at": "2026-09-10 06:52:52",
+    "_ps_ga4_mp_cid": "1739540116.1763134514",
+    "_ps_ga4_mp_kodas": "204",
+    "_wc_order_attribution_device_type": "Mobile",
+    "_wc_order_attribution_referrer": "https://www.google.com/",
+    "_wc_order_attribution_session_count": "1",
+    "_wc_order_attribution_session_entry": "https://petshop.lt/?gad_source=1&gad_campaignid=23346712074&gclid=Cj0KCQjwh4TVBh",
+    "_wc_order_attribution_session_pages": "5",
+    "_wc_order_attribution_session_start_time": "2026-09-10 05:48:11",
+    "_wc_order_attribution_source_type": "utm",
+    "_wc_order_attribution_user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome",
+    "_wc_order_attribution_utm_campaign": "google_cpc",
+    "_wc_order_attribution_utm_medium": "cpc",
+    "_wc_order_attribution_utm_source": "google"
+   }
+  },
+  "recon_keys": [
+   "kada",
+   "dydis",
+   "body"
+  ]
+ },
+ "v": "dep-071452",
+ "kurimas": 200,
+ "sid": 5424,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
