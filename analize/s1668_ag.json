@@ -1,0 +1,51 @@
+{
+ "1": {
+  "v": "S1668 ag",
+  "zurnalas": [
+   {
+    "product_id": "16639",
+    "laukas": "_own_stock_qty",
+    "buvo": "0",
+    "tapo": "6",
+    "pokytis": "6",
+    "priezastis": "gavimas",
+    "sukurta": "2026-09-10 12:35:32",
+    "sand": "quattro"
+   }
+  ],
+  "pr": {
+   "16639": {
+    "_stock": "38",
+    "_own": "6",
+    "src": [
+     {
+      "source": "quattro",
+      "stock_qty": "38",
+      "is_active": "1",
+      "updated_at": "2026-09-10 11:22:40"
+     }
+    ],
+    "partijos": [
+     {
+      "kiekis_liko": "6",
+      "tiekejas": "quattro",
+      "pastaba": "Likučio įvedimas kortelėje",
+      "sukurta": "2026-09-10 12:35:32"
+     }
+    ]
+   }
+  },
+  "kat_av_calc": "ikutis (kelios vienu metu).\n\t\t\t   Del to preke, gulinti ir AV, ir VF, nebedingsta is filtro.\n\t\t\t   Savikaina renkama i du atskirus laukus, o aktyvioji\n\t\t\t   pasirenkama pagal AV likuti (savininko sprendimas 2026-08-17):\n\t\t\t   AV turi -> AV savikaina; AV tuscias -> tiekejo. */\n\t\t\t$av = null; $tiek = null; $sand = ''; $ssku = ''; $sync = null; $cost = null;\n\t\t\t$cost_av = null; $cost_tiek = null;\n\t\t\t$turi = array( 'av' => false, 'vf' => false, 'zb' => false );\n\t\t\tforeach ( $s_list as $s ) {\n\t\t\t\t$src = strtolower( trim( (string) $s['source'] ) );\n\t\t\t\tif ( $src === 'av' ) {\n\t\t\t\t\t$av = $s['stock_qty'];\n\t\t\t\t\tif ( $cost_av === null ) { $cost_av = $s['cost_net']; }\n\t\t\t\t\tif ( $sand === '' ) { $sand = 'av'; }\n\t\t\t\t\tif ( $av !== null && (int) $av > 0 ) { $turi['av'] = true; }\n\t\t\t\t} else {\n\t\t\t\t\t$tiek = $s['stock_qty'];\n\t\t\t\t\t$sand = $src;\n\t\t\t\t\t$ssku = (string) $s['supplier_sku'];\n\t\t\t\t\t$sync = $s['synced_at'];\n\t\t\t\t\tif ( $s['cost_net'] !== null ) { $cost_tiek = $s['cost_net']; }\n\t\t\t\t\tif ( isset( $turi[ $src ] ) && $tiek !== null && (int) $tiek > 0 ) { $turi[ $src ] = true; }\n\t\t\t\t}\n\t\t\t}\n\t\t\tif ( $sand === '' ) { $sand = (string) $mv( '_ps_sandelis' ); }\n\t\t\t/* v8.4: sandelis VISADA mazosiomis. Gavimas (petshop-gavimas.php:434)\n\t\t\t   ir laukai (petshop-laukai.php:581) raso didziosiomis; normalizuojam\n\t\t\t   skaitymo vietoje, kad nesvarbu butu, kas ir kaip irase. */\n\t\t\t$sand = strtolower( trim( (string) $sand ) );\n\n\t\t\t/* AKTYVIOJI savikaina. Iki v8.4 tiekejo saka perrasydavo AV\n\t\t\t   savikaina besalygiskai — dvigubai prekei butu laimejes tiekejas. */\n\t\t\tif ( $av !== null && (int) $av > 0 && $cost_av !== null ) {\n\t\t\t\t$cost = $cost_av;\n\t\t\t} elseif ( $cost_tiek !== null ) {\n\t\t\t\t$cost = $cost_tiek;\n\t\t\t} else {\n\t\t\t\t$cost = $cost_av;\n\t\t\t}\n\n\t\t\t/* v5.8: SAVIKAINA — tiekejo pateikta kaina YRA musu savikaina\n\t\t\t   (savininko sprendimas 2026-08-11).\n\t\t\t   Iki siol imta TIK is `ps_sources` registro, todel preke, kurios\n\t\t\t   registre nera, atrode „be savikainos\", nors `_vf_cost` ar\n\t\t\t   `_zb_cost` meta buvo uzpildyta. Del to katalogas rode 795, o\n\t\t\t   pilnumo variklis — 744: du skirtingi atsakymai i ta pati\n\t\t\t   klausima. Dabar atsargine tvarka ta pati abiejose vietose. */\n\t\t\tif ( $cost === null ) {\n\t\t\t\tforeach ( array( '_cost_price', '_vf_cost', '_zb_cost' ) as $ck ) {\n\t\t\t\t\t$cv = $mv( $ck, true );\n\t\t\t\t\tif ( $cv !== null && (float) $cv > 0 ) { $cost = (float) $cv; break; }\n\t\t\t\t}\n\t\t\t}\n\t\t\t/* v8.7.9: DP pakuote, kurios bazine registre neturi eilutes,\n\t\t\t   savikaina paveldi is BAZINES meta kaskados x N (Raimio 2026-09-08:\n\t\t\t   „tegul daugiau-pigiau buna savikaina, ten su ja viskas aisku\"). */\n\t\t\tif ( $cost === null && $dp_b ) {\n\t\t\t\t$bm2 = isset( $meta[ $dp_b ] ) ? $meta[ $dp_b ] : array();\n\t\t\t\tforeach ( array( '_cost_price', '_vf_cost', '_zb_cost' ) as $ck ) {\n\t\t\t\t\tif ( isset( $bm2[ $ck ] ) && $bm2[ $ck ] !== '' && (float) $bm2[ $ck ] > 0 ) { $cost = round( (float) $bm2[ $ck ] * $dp_n, 4 ); break; }\n\t\t\t\t}\n\t\t\t}\n\n\t\t\t/* Variacine preke: AV likutis = variaciju suma (zr. $var_likuciai).\n\t\t\t   Pakeiciam ir $s_list irasa, kad Stock_Service skaiciuotu is to\n\t\t\t   paties skaiciaus — kitaip „AV\" ir „parduodama\" vel issiskirtu. */\n\t\t\tif ( isset( $var_likuciai[ $pid ] ) ) {\n\t\t\t\t$av = (int) $var_likuciai[ $pid ];\n\t\t\t\t$turi['av'] = ( $av > 0 );\n\t\t\t\tforeach ( $s_list as $si => $sv ) {\n\t\t\t\t\tif ( strtolower( trim( (string) $sv['source'] ) ) === 'av' ) {\n\t\t\t\t\t\t$s_list[ $si ]['stock_qty'] = $av;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\t/* Parduodamas kiekis — TAS PATS Stock_Service, tik gryna funkcija,\n\t\t\t   kad nereikėtų iš naujo kelti šaltinių iš duomenų bazės. */\n\t\t\t$parduodam",
+  "kat_sync_fn": [
+   "registruoti_atributa",
+   "registras_masinis"
+  ]
+ },
+ "v": "dep-093758",
+ "kurimas": 200,
+ "sid": 5450,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
