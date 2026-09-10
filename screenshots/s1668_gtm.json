@@ -1,0 +1,374 @@
+{
+ "v": "S1668 gtm",
+ "status": 200,
+ "ver": {
+  "id": "7",
+  "name": "v5 — GA4 Config fire tik po statistics sutikimo",
+  "kurta": "1783675460777"
+ },
+ "tags": [
+  {
+   "id": "15",
+   "n": "00 — Consent Mode v2 Default",
+   "type": "html",
+   "paused": true,
+   "fire": [
+    "2147479573"
+   ],
+   "block": [],
+   "p": {
+    "html": "<script>\nwindow.dataLayer = window.dataLayer || [];\nfunction gtag(){dataLayer.push(arguments);}\ngtag('consent', 'default",
+    "supportDocumentWrite": "false"
+   },
+   "consent": "{\"consentStatus\":\"notSet\"}"
+  },
+  {
+   "id": "16",
+   "n": "01 — Conversion Linker",
+   "type": "gclidw",
+   "paused": false,
+   "fire": [
+    "CE — marketing granted"
+   ],
+   "block": [
+    "BLOCK — DEV (pageview)",
+    "BLOCK — DEV (visi custom events)"
+   ],
+   "p": {
+    "enableCrossDomain": "false"
+   },
+   "consent": "{\"consentStatus\":\"needed\",\"consentType\":{\"type\":\"list\",\"list\":[{\"type\":\"template\",\"value\":\"ad_storage\"}]}}"
+  },
+  {
+   "id": "24",
+   "n": "02 — GA4 Config",
+   "type": "googtag",
+   "paused": false,
+   "fire": [
+    "CE — statistics granted"
+   ],
+   "block": [
+    "BLOCK — DEV (pageview)",
+    "BLOCK — DEV (visi custom events)"
+   ],
+   "p": {
+    "tagId": "{{Const — GA4 ID}}"
+   },
+   "consent": "{\"consentStatus\":\"needed\",\"consentType\":{\"type\":\"list\",\"list\":[{\"type\":\"template\",\"value\":\"analytics_storage\"}]}}"
+  },
+  {
+   "id": "25",
+   "n": "GA4 — view_item",
+   "type": "gaawe",
+   "paused": false,
+   "fire": [
+    "CE — view_item"
+   ],
+   "block": [
+    "BLOCK — DEV (pageview)",
+    "BLOCK — DEV (visi custom events)"
+   ],
+   "p": {
+    "sendEcommerceData": "true",
+    "eventName": "view_item",
+    "measurementIdOverride": "{{Const — GA4 ID}}"
+   },
+   "consent": "{\"consentStatus\":\"needed\",\"consentType\":{\"type\":\"list\",\"list\":[{\"type\":\"template\",\"value\":\"analytics_storage\"}]}}"
+  },
+  {
+   "id": "26",
+   "n": "GA4 — add_to_cart",
+   "type": "gaawe",
+   "paused": false,
+   "fire": [
+    "CE — add_to_cart"
+   ],
+   "block": [
+    "BLOCK — DEV (pageview)",
+    "BLOCK — DEV (visi custom events)"
+   ],
+   "p": {
+    "sendEcommerceData": "true",
+    "eventName": "add_to_cart",
+    "measurementIdOverride": "{{Const — GA4 ID}}"
+   },
+   "consent": "{\"consentStatus\":\"needed\",\"consentType\":{\"type\":\"list\",\"list\":[{\"type\":\"template\",\"value\":\"analytics_storage\"}]}}"
+  },
+  {
+   "id": "27",
+   "n": "GA4 — view_cart",
+   "type": "gaawe",
+   "paused": false,
+   "fire": [
+    "CE — view_cart"
+   ],
+   "block": [
+    "BLOCK — DEV (pageview)",
+    "BLOCK — DEV (visi custom events)"
+   ],
+   "p": {
+    "sendEcommerceData": "true",
+    "eventName": "view_cart",
+    "measurementIdOverride": "{{Const — GA4 ID}}"
+   },
+   "consent": "{\"consentStatus\":\"needed\",\"consentType\":{\"type\":\"list\",\"list\":[{\"type\":\"template\",\"value\":\"analytics_storage\"}]}}"
+  },
+  {
+   "id": "28",
+   "n": "GA4 — begin_checkout",
+   "type": "gaawe",
+   "paused": false,
+   "fire": [
+    "CE — begin_checkout"
+   ],
+   "block": [
+    "BLOCK — DEV (pageview)",
+    "BLOCK — DEV (visi custom events)"
+   ],
+   "p": {
+    "sendEcommerceData": "true",
+    "eventName": "begin_checkout",
+    "measurementIdOverride": "{{Const — GA4 ID}}"
+   },
+   "consent": "{\"consentStatus\":\"needed\",\"consentType\":{\"type\":\"list\",\"list\":[{\"type\":\"template\",\"value\":\"analytics_storage\"}]}}"
+  },
+  {
+   "id": "29",
+   "n": "GA4 — purchase",
+   "type": "gaawe",
+   "paused": false,
+   "fire": [
+    "CE — purchase"
+   ],
+   "block": [
+    "BLOCK — DEV (pageview)",
+    "BLOCK — DEV (visi custom events)"
+   ],
+   "p": {
+    "sendEcommerceData": "true",
+    "eventName": "purchase",
+    "measurementIdOverride": "{{Const — GA4 ID}}"
+   },
+   "consent": "{\"consentStatus\":\"needed\",\"consentType\":{\"type\":\"list\",\"list\":[{\"type\":\"template\",\"value\":\"analytics_storage\"}]}}"
+  },
+  {
+   "id": "30",
+   "n": "03 — Google Ads Conversion (Purchase)",
+   "type": "awct",
+   "paused": false,
+   "fire": [
+    "CE — purchase"
+   ],
+   "block": [
+    "BLOCK — DEV (pageview)",
+    "BLOCK — DEV (visi custom events)"
+   ],
+   "p": {
+    "enableConversionLinker": "true",
+    "conversionValue": "{{DLV — value}}",
+    "orderId": "{{DLV — transaction_id}}",
+    "conversionId": "{{Const — Ads Conversion ID}}",
+    "currencyCode": "{{DLV — currency}}",
+    "conversionLabel": "{{Const — Ads Label}}"
+   },
+   "consent": "{\"consentStatus\":\"needed\",\"consentType\":{\"type\":\"list\",\"list\":[{\"type\":\"template\",\"value\":\"ad_storage\"},{\"type\":\"templat"
+  },
+  {
+   "id": "31",
+   "n": "04 — Meta Pixel Base + PageView",
+   "type": "html",
+   "paused": false,
+   "fire": [
+    "CE — marketing granted"
+   ],
+   "block": [
+    "BLOCK — DEV (pageview)",
+    "BLOCK — DEV (visi custom events)"
+   ],
+   "p": {
+    "html": "<script>\n!function(f,b,e,v,n,t,s)\n{if(f.fbq)return;n=f.fbq=function(){n.callMethod?\nn.callMethod.apply(n,arguments):n.qu",
+    "supportDocumentWrite": "false"
+   },
+   "consent": "{\"consentStatus\":\"needed\",\"consentType\":{\"type\":\"list\",\"list\":[{\"type\":\"template\",\"value\":\"ad_storage\"},{\"type\":\"templat"
+  },
+  {
+   "id": "32",
+   "n": "Meta — add_to_cart",
+   "type": "html",
+   "paused": false,
+   "fire": [
+    "CE — add_to_cart"
+   ],
+   "block": [
+    "BLOCK — DEV (pageview)",
+    "BLOCK — DEV (visi custom events)",
+    "BLOCK — marketing nesutikta (events)"
+   ],
+   "p": {
+    "html": "<script>\n(function(){\n  if (typeof fbq !== \"function\") return;\n  var dl = window.dataLayer || [];\n  var ec = null;\n  for",
+    "supportDocumentWrite": "false"
+   },
+   "consent": "{\"consentStatus\":\"needed\",\"consentType\":{\"type\":\"list\",\"list\":[{\"type\":\"template\",\"value\":\"ad_storage\"},{\"type\":\"templat"
+  },
+  {
+   "id": "33",
+   "n": "Meta — begin_checkout",
+   "type": "html",
+   "paused": false,
+   "fire": [
+    "CE — begin_checkout"
+   ],
+   "block": [
+    "BLOCK — DEV (pageview)",
+    "BLOCK — DEV (visi custom events)",
+    "BLOCK — marketing nesutikta (events)"
+   ],
+   "p": {
+    "html": "<script>\n(function(){\n  if (typeof fbq !== \"function\") return;\n  var dl = window.dataLayer || [];\n  var ec = null;\n  for",
+    "supportDocumentWrite": "false"
+   },
+   "consent": "{\"consentStatus\":\"needed\",\"consentType\":{\"type\":\"list\",\"list\":[{\"type\":\"template\",\"value\":\"ad_storage\"},{\"type\":\"templat"
+  },
+  {
+   "id": "34",
+   "n": "Meta — purchase",
+   "type": "html",
+   "paused": false,
+   "fire": [
+    "CE — purchase"
+   ],
+   "block": [
+    "BLOCK — DEV (pageview)",
+    "BLOCK — DEV (visi custom events)",
+    "BLOCK — marketing nesutikta (events)"
+   ],
+   "p": {
+    "html": "<script>\n(function(){\n  if (typeof fbq !== \"function\") return;\n  var dl = window.dataLayer || [];\n  var ec = null;\n  for",
+    "supportDocumentWrite": "false"
+   },
+   "consent": "{\"consentStatus\":\"needed\",\"consentType\":{\"type\":\"list\",\"list\":[{\"type\":\"template\",\"value\":\"ad_storage\"},{\"type\":\"templat"
+  }
+ ],
+ "triggers": [
+  {
+   "id": "17",
+   "n": "BLOCK — DEV (pageview)",
+   "type": "pageview",
+   "ce": "[]",
+   "f": "[{\"type\":\"contains\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{Page Hostname}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"dev.avesa.lt\"}]},{\"type\":\"matchRegex\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{Page URL}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"gtm_test=1\"},{\"ty"
+  },
+  {
+   "id": "18",
+   "n": "BLOCK — DEV (visi custom events)",
+   "type": "customEvent",
+   "ce": "[{\"type\":\"matchRegex\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{_event}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\".*\"}]}]",
+   "f": "[{\"type\":\"contains\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{Page Hostname}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"dev.avesa.lt\"}]},{\"type\":\"matchRegex\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{Page URL}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"gtm_test=1\"},{\"ty"
+  },
+  {
+   "id": "19",
+   "n": "CE — view_item",
+   "type": "customEvent",
+   "ce": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{_event}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"view_item\"}]}]",
+   "f": "[]"
+  },
+  {
+   "id": "20",
+   "n": "CE — add_to_cart",
+   "type": "customEvent",
+   "ce": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{_event}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"add_to_cart\"}]}]",
+   "f": "[]"
+  },
+  {
+   "id": "21",
+   "n": "CE — view_cart",
+   "type": "customEvent",
+   "ce": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{_event}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"view_cart\"}]}]",
+   "f": "[]"
+  },
+  {
+   "id": "22",
+   "n": "CE — begin_checkout",
+   "type": "customEvent",
+   "ce": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{_event}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"begin_checkout\"}]}]",
+   "f": "[]"
+  },
+  {
+   "id": "23",
+   "n": "CE — purchase",
+   "type": "customEvent",
+   "ce": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{_event}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"purchase\"}]}]",
+   "f": "[]"
+  },
+  {
+   "id": "37",
+   "n": "CE — cmplz_consent_update",
+   "type": "customEvent",
+   "ce": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{_event}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"cmplz_consent_update\"}]}]",
+   "f": "[]"
+  },
+  {
+   "id": "38",
+   "n": "CE — marketing granted",
+   "type": "customEvent",
+   "ce": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{_event}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"cmplz_consent_update\"}]}]",
+   "f": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{DLV — cmplz_marketing}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"granted\"}]}]"
+  },
+  {
+   "id": "39",
+   "n": "BLOCK — marketing nesutikta (events)",
+   "type": "customEvent",
+   "ce": "[{\"type\":\"matchRegex\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{_event}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\".*\"}]}]",
+   "f": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{DLV — cmplz_marketing}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"granted\"},{\"type\":\"boolean\",\"key\":\"negate\",\"value\":\"true\"}]}]"
+  },
+  {
+   "id": "40",
+   "n": "CE — statistics granted",
+   "type": "customEvent",
+   "ce": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{_event}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"cmplz_consent_update\"}]}]",
+   "f": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{DLV — cmplz_statistics}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"granted\"}]}]"
+  }
+ ],
+ "vars": [
+  {
+   "n": "Const — Ads Conversion ID",
+   "type": "c",
+   "p": {
+    "value": "11117260149"
+   }
+  },
+  {
+   "n": "DLV — transaction_id",
+   "type": "v",
+   "p": {
+    "dataLayerVersion": "2",
+    "name": "ecommerce.transaction_id"
+   }
+  },
+  {
+   "n": "DLV — value",
+   "type": "v",
+   "p": {
+    "dataLayerVersion": "2",
+    "name": "ecommerce.value"
+   }
+  }
+ ],
+ "headers": [
+  {
+   "id": "4",
+   "n": "v3 — consent default perkeltas i snippet"
+  },
+  {
+   "id": "5",
+   "n": "v3 — consent default perkeltas i snippet"
+  },
+  {
+   "id": "6",
+   "n": "v4 — consent-based triggers"
+  },
+  {
+   "id": "7",
+   "n": "v5 — GA4 Config fire tik po statistics sutikimo"
+  }
+ ]
+}
