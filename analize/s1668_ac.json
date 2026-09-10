@@ -1,0 +1,82 @@
+{
+ "1": {
+  "v": "S1668 ac",
+  "bak": {
+   "own": 49,
+   "stock": 0
+  },
+  "dabar": {
+   "_stock": "51",
+   "_own": "0",
+   "wc": 51,
+   "title": "QUATTRO begrūdis su antiena didelių veislių jaunų šunų pašaras 3kg"
+  },
+  "sources": [
+   {
+    "id": "1972",
+    "product_id": "16612",
+    "source": "quattro",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "49",
+    "cost_net": "15.8678",
+    "synced_at": null,
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-09-10 11:22:40"
+   }
+  ],
+  "partijos": [
+   {
+    "id": "4218",
+    "kiekis_gautas": "2",
+    "kiekis_liko": "2",
+    "savikaina_eur": "15.8700",
+    "tiekejas": "quattro",
+    "pastaba": "Likučio įvedimas kortelėje",
+    "sukurta": "2026-09-10 11:35:13",
+    "atsaukta": "0"
+   },
+   {
+    "id": "3745",
+    "kiekis_gautas": "49",
+    "kiekis_liko": "49",
+    "savikaina_eur": "19.2000",
+    "tiekejas": "eShoprent",
+    "pastaba": "Pradinis likutis T-0 | S1668: atšaukta — prekė perkelta į Quattro sandėlį (Raimio sprendimas)",
+    "sukurta": "2026-09-07 22:08:05",
+    "atsaukta": "1"
+   }
+  ],
+  "zurnalas": {
+   "gaj6_ps_av_zurnalas": [
+    {
+     "id": "1055",
+     "operacija": "AV26091008351365",
+     "product_id": "16612",
+     "laukas": "_own_stock_qty",
+     "buvo": "0",
+     "tapo": "51",
+     "pokytis": "2",
+     "priezastis": "gavimas",
+     "user_id": "1",
+     "sukurta": "2026-09-10 11:35:13",
+     "atsaukta": "0"
+    }
+   ]
+  },
+  "kodas": " = array( 'id' => $pid, 'kl' => 'netinkama reikšmė: ' . $iv ); continue;\n\t\t\t}\n\t\t\t$buvo = self::av_dabar( $pid );\n\t\t\t$sk   = (int) $m[2];\n\t\t\tif ( $m[1] === '+' )      { $tapo = (int) $buvo + $sk; }\n\t\t\telseif ( $m[1] === '-' )  { $tapo = (int) $buvo - $sk; }\n\t\t\telse                      { $tapo = $sk; }\n\n\t\t\t$prasyta = $tapo;\n\t\t\tif ( $tapo < 0 ) { $tapo = 0; }   /* neigiamo likučio nebūna */\n\t\t\t$planas[] = array(\n\t\t\t\t'pid' => $pid, 'laukas' => self::av_laukas( $pid ),\n\t\t\t\t'buvo' => $buvo, 'tapo' => $tapo, 'prasyta' => $prasyta,\n\t\t\t\t'pokytis' => $tapo - (int) $buvo,\n\t\t\t);\n\t\t}\n\t\tif ( ! $planas ) { wp_send_json_error( array( 'zinute' => 'nėra galiojančių eilučių', 'klaidos' => $klaidos ) ); }\n\n\t\t/* 2) RAŠOM */\n\t\tglobal $wpdb;\n\t\t$t   = self::zurnalo_lentele();\n\t\t$op  = 'AV' . gmdate( 'ymdHis' ) . wp_rand( 10, 99 );\n\t\t$now = current_time( 'mysql' );\n\t\t$uid = get_current_user_id();\n\t\t$ok  = array();\n\n\t\t/* v7.7: GAVIMAS KURIA PARTIJA. Likutis, atsiradęs be partijos, neturi\n\t\t   nei galiojimo, nei savikainos — o FEFO nurasymas tokio nemato. */\n\t\t$gal_iki = isset( $_POST['geriausia_iki'] ) ? trim( (string) wp_unslash( $_POST['geriausia_iki'] ) ) : '';\n\t\t$sav_nauja = isset( $_POST['savikaina'] ) ? trim( (string) wp_unslash( $_POST['savikaina'] ) ) : '';\n\n\t\tforeach ( $planas as &$p ) {\n\t\t\t$pokytis = (int) $p['pokytis'];\n\t\t\tif ( $priez === 'gavimas' && $pokytis > 0 && class_exists( 'Petshop_Partijos' )\n\t\t\t\t&& self::likutis_rankinis( $p['pid'] ) ) {\n\n\t\t\t\t$sav = $sav_nauja;\n\t\t\t\tif ( $sav === '' || (float) str_replace( ',', '.', $sav ) <= 0 ) {\n\t\t\t\t\t$sv = Petshop_Partijos::svertine_savikaina( $p['pid'] );\n\t\t\t\t\tif ( $sv === null || (float) $sv <= 0 ) { $sv = (float) get_post_meta( $p['pid'], '_cost_price', true ); }\n\t\t\t\t\t$sav = ( (float) $sv > 0 ) ? (string) $sv : '';\n\t\t\t\t}\n\t\t\t\tif ( $sav !== '' ) {\n\t\t\t\t\t$r = Petshop_Partijos::priimti( $p['pid'], array(\n\t\t\t\t\t\t'kiekis'        => $pokytis,\n\t\t\t\t\t\t'savikaina'     => $sav,\n\t\t\t\t\t\t'valiuta'       => 'EUR',\n\t\t\t\t\t\t'kursas'        => 1,\n\t\t\t\t\t\t'geriausia_iki' => $gal_iki,\n\t\t\t\t\t\t'tiekejas'      => (string) get_post_meta( $p['pid'], '_ps_sandelis', true ),\n\t\t\t\t\t\t'gauta'         => current_time( 'Y-m-d' ),\n\t\t\t\t\t\t'pastaba'       => 'Likučio įvedimas kortelėje',\n\t\t\t\t\t) );\n\t\t\t\t\tif ( ! is_wp_error( $r ) ) {\n\t\t\t\t\t\t/* `priimti()` jau pakele likuti — tiesiogiai nebesirasom. */\n\t\t\t\t\t\t$p['partija'] = isset( $r['partijos_id'] ) ? (int) $r['partijos_id'] : 0;\n\t\t\t\t\t\t$p['tapo']    = isset( $r['likutis'] ) ? (int) $r['likutis'] : $p['tapo'];\n\t\t\t\t\t\t$p['per_partija'] = true;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\n\t\t\t/* v7.8: MAZINIMAS — nurasom is parti",
+  "failai": [
+   "petshop-katalogas.php"
+  ]
+ },
+ "v": "dep-084212",
+ "kurimas": 200,
+ "sid": 5446,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
