@@ -1,104 +1,64 @@
 {
- "v": "dep-173538",
+ "v": "dep-152458",
  "kurimas": 200,
- "sid": 5381,
+ "sid": 5478,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "E": {
+ "A": {
   "v": "S1669 e",
-  "faze": "E",
-  "md5_pries": "3628589705d4ac57fed600031e70d437",
-  "dydis_pries": 509542,
-  "radiniai": [
-   1,
-   1,
-   1,
-   1
-  ],
-  "md5_po": "bc12db88c54ae9569d36b9af274eb0a7",
-  "dydis_po": 510548
- },
- "T": {
-  "v": "S1669 e",
-  "faze": "T",
-  "dvisaltiniai": [
+  "stock_pvz": {
+   "0": "12455",
+   "4": "12457",
+   "5": "12452",
+   "17": "12456",
+   "23": "12459",
+   "28": "12458"
+  },
+  "kainos_stock": {
+   ">0": 2104,
+   "0_ar_maziau": 70
+  },
+  "kaina24": {
+   "su_stock": 2174,
+   "nulis": 70,
+   "product": 2174
+  },
+  "wp_publish": [
    {
-    "id": 16950,
-    "tiek": "zb",
-    "av_laukas": "_own_stock_qty",
-    "tiek_laukas": "_stock",
-    "av_dabar": 8,
-    "_stock": "40.000000"
+    "stock_status": "instock",
+    "c": "2217"
    },
    {
-    "id": 16953,
-    "tiek": "zb",
-    "av_laukas": "_own_stock_qty",
-    "tiek_laukas": "_stock",
-    "av_dabar": 2,
-    "_stock": "39.000000"
-   },
-   {
-    "id": 16956,
-    "tiek": "zb",
-    "av_laukas": "_own_stock_qty",
-    "tiek_laukas": "_stock",
-    "av_dabar": 2,
-    "_stock": "73.000000"
-   },
-   {
-    "id": 16959,
-    "tiek": "zb",
-    "av_laukas": "_own_stock_qty",
-    "tiek_laukas": "_stock",
-    "av_dabar": 7,
-    "_stock": "37.000000"
-   },
-   {
-    "id": 17394,
-    "tiek": "zb",
-    "av_laukas": "_own_stock_qty",
-    "tiek_laukas": "_stock",
-    "av_dabar": 25,
-    "_stock": "414.000000"
+    "stock_status": "outofstock",
+    "c": "420"
    }
   ],
-  "gryna_av": [
-   {
-    "id": 35147,
-    "tiek": "",
-    "av_laukas": "_stock",
-    "av_dabar": 0
-   },
-   {
-    "id": 35146,
-    "tiek": "",
-    "av_laukas": "_stock",
-    "av_dabar": 0
-   },
-   {
-    "id": 35144,
-    "tiek": "",
-    "av_laukas": "_stock",
-    "av_dabar": 6
-   }
-  ],
-  "vf": [
-   {
-    "id": 20294,
-    "tiek": "vf",
-    "av_laukas": "_own_stock_qty",
-    "tiek_laukas": "_stock"
-   },
-   {
-    "id": 20395,
-    "tiek": "vf",
-    "av_laukas": "_own_stock_qty",
-    "tiek_laukas": "_stock"
-   }
-  ],
-  "front": 200
+  "kodas": {
+   "petshop-feeds.php:45": "*     _do_not_export        = 'yes'  -> niekur",
+   "petshop-feeds.php:46": "*     _ps_feed_off_kaina24  = 'yes'  -> tik i Kaina24 nesiunciama",
+   "petshop-feeds.php:47": "*     _ps_feed_off_kainos   = 'yes'  -> tik i Kainos.lt",
+   "petshop-feeds.php:48": "*     _ps_feed_off_google   = 'yes'  -> tik i Google",
+   "petshop-feeds.php:64": "'kaina24' => array( 'failas' => 'kaina24.xml', 'meta' => '_ps_feed_off_kaina24' ),",
+   "petshop-feeds.php:65": "'kainos'  => array( 'failas' => 'kainos.xml',  'meta' => '_ps_feed_off_kainos' ),",
+   "petshop-feeds.php:66": "'google'  => array( 'failas' => 'google.xml',  'meta' => '_ps_feed_off_google' ),",
+   "petshop-feeds.php:92": "* likutis instock · _do_not_export != yes.",
+   "petshop-feeds.php:102": "WHERE s.post_id = p.ID AND s.meta_key = '_stock_status' AND s.meta_value = 'instock'",
+   "petshop-feeds.php:106": "WHERE d.post_id = p.ID AND d.meta_key = '_do_not_export' AND d.meta_value = 'yes'",
+   "petshop-feeds.php:343": "$likutis = $pr->get_stock_quantity();",
+   "petshop-feeds.php:345": "$likutis = 1; // valdymas isjungtas, bet statusas instock",
+   "petshop-feeds.php:394": "$x .= '    <stock>' . $p['likutis'] . '</stock>' . \"\\n\";",
+   "petshop-feeds.php:454": "$x .= '      <stock>' . $p['likutis'] . '</stock>' . \"\\n\";",
+   "petshop-feeds.php:517": "$x .= '      <g:availability>in_stock</g:availability>' . \"\\n\";",
+   "petshop-feeds.php:751": "'id'          => '_ps_feed_off_kaina24',",
+   "petshop-feeds.php:756": "'id'          => '_ps_feed_off_kainos',",
+   "petshop-feeds.php:761": "'id'          => '_ps_feed_off_google',",
+   "petshop-feeds.php:767": "if ( $id && 'yes' === get_post_meta( $id, '_do_not_export', true ) ) {",
+   "petshop-feeds.php:768": "echo '<p class=\"form-field\"><em>' . esc_html__( 'Dėmesio: nustatytas _do_not_export — prekė nesiunčiama NIEKUR.', 'petshop' ) . '</em></p>';",
+   "petshop-feeds.php:791": "if ( 'is_in_stock' === $raktas ) {",
+   "petshop-feeds.php:805": "if ( 'yes' === get_post_meta( $post_id, '_do_not_export', true ) ) {",
+   "petshop-feeds.php:806": "echo '<span style=\"color:#b32d2e\" title=\"_do_not_export\">niekur</span>';"
+  }
  }
 }
