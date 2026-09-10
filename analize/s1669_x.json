@@ -1,0 +1,851 @@
+{
+ "v": "dep-180137",
+ "kurimas": 200,
+ "sid": 5496,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1669 x",
+  "lent": [
+   "gaj6_mailpoet_automation_run_logs",
+   "gaj6_mailpoet_automation_run_subjects",
+   "gaj6_mailpoet_automation_runs",
+   "gaj6_mailpoet_automation_triggers",
+   "gaj6_mailpoet_automation_versions",
+   "gaj6_mailpoet_automations",
+   "gaj6_mailpoet_custom_fields",
+   "gaj6_mailpoet_dynamic_segment_filters",
+   "gaj6_mailpoet_feature_flags",
+   "gaj6_mailpoet_forms",
+   "gaj6_mailpoet_log",
+   "gaj6_mailpoet_migrations",
+   "gaj6_mailpoet_newsletter_links",
+   "gaj6_mailpoet_newsletter_option",
+   "gaj6_mailpoet_newsletter_option_fields",
+   "gaj6_mailpoet_newsletter_posts",
+   "gaj6_mailpoet_newsletter_segment",
+   "gaj6_mailpoet_newsletter_templates",
+   "gaj6_mailpoet_newsletters",
+   "gaj6_mailpoet_scheduled_task_subscribers",
+   "gaj6_mailpoet_scheduled_tasks",
+   "gaj6_mailpoet_segments",
+   "gaj6_mailpoet_sending_queues",
+   "gaj6_mailpoet_settings",
+   "gaj6_mailpoet_statistics_bounces",
+   "gaj6_mailpoet_statistics_clicks",
+   "gaj6_mailpoet_statistics_forms",
+   "gaj6_mailpoet_statistics_newsletters",
+   "gaj6_mailpoet_statistics_opens",
+   "gaj6_mailpoet_statistics_unsubscribes",
+   "gaj6_mailpoet_statistics_woocommerce_purchases",
+   "gaj6_mailpoet_stats_notifications",
+   "gaj6_mailpoet_subscriber_custom_field",
+   "gaj6_mailpoet_subscriber_ips",
+   "gaj6_mailpoet_subscriber_segment",
+   "gaj6_mailpoet_subscriber_tag",
+   "gaj6_mailpoet_subscribers",
+   "gaj6_mailpoet_tags",
+   "gaj6_mailpoet_user_agents",
+   "gaj6_mailpoet_user_flags",
+   "gaj6_ps_email_content",
+   "gaj6_ps_email_jobs",
+   "gaj6_ps_email_suppression",
+   "gaj6_ps_naujienlaiskiai",
+   "gaj6_vf_block_log",
+   "gaj6_vf_observer",
+   "gaj6_wc_email_unsubscribes",
+   "gaj6_wpmailsmtp_debug_events",
+   "gaj6_wpmailsmtp_tasks_meta"
+  ],
+  "t": {
+   "gaj6_mailpoet_automation_run_logs": {
+    "stulp": [
+     "id",
+     "automation_run_id",
+     "step_id",
+     "step_type",
+     "step_key",
+     "status",
+     "started_at",
+     "updated_at",
+     "run_number",
+     "data",
+     "error"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_automation_run_subjects": {
+    "stulp": [
+     "id",
+     "automation_run_id",
+     "key",
+     "args",
+     "hash"
+    ],
+    "n": 0
+   },
+   "gaj6_mailpoet_automation_runs": {
+    "stulp": [
+     "id",
+     "automation_id",
+     "version_id",
+     "trigger_key",
+     "status",
+     "created_at",
+     "updated_at",
+     "next_step_id"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_automation_triggers": {
+    "stulp": [
+     "automation_id",
+     "trigger_key"
+    ],
+    "n": 0
+   },
+   "gaj6_mailpoet_automation_versions": {
+    "stulp": [
+     "id",
+     "automation_id",
+     "steps",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_automations": {
+    "stulp": [
+     "id",
+     "name",
+     "author",
+     "status",
+     "meta",
+     "created_at",
+     "updated_at",
+     "activated_at",
+     "deleted_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_custom_fields": {
+    "stulp": [
+     "id",
+     "name",
+     "type",
+     "params",
+     "created_at",
+     "updated_at",
+     "deleted_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_dynamic_segment_filters": {
+    "stulp": [
+     "id",
+     "segment_id",
+     "created_at",
+     "updated_at",
+     "filter_data",
+     "filter_type",
+     "action"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_feature_flags": {
+    "stulp": [
+     "id",
+     "name",
+     "value",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_forms": {
+    "stulp": [
+     "id",
+     "name",
+     "status",
+     "body",
+     "settings",
+     "styles",
+     "created_at",
+     "updated_at",
+     "deleted_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_log": {
+    "stulp": [
+     "id",
+     "name",
+     "level",
+     "message",
+     "created_at",
+     "raw_message",
+     "context"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_migrations": {
+    "stulp": [
+     "id",
+     "name",
+     "started_at",
+     "completed_at",
+     "retries",
+     "error"
+    ],
+    "n": 44
+   },
+   "gaj6_mailpoet_newsletter_links": {
+    "stulp": [
+     "id",
+     "newsletter_id",
+     "queue_id",
+     "url",
+     "hash",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_newsletter_option": {
+    "stulp": [
+     "id",
+     "newsletter_id",
+     "option_field_id",
+     "value",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_newsletter_option_fields": {
+    "stulp": [
+     "id",
+     "name",
+     "newsletter_type",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 34,
+    "pask": []
+   },
+   "gaj6_mailpoet_newsletter_posts": {
+    "stulp": [
+     "id",
+     "newsletter_id",
+     "post_id",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_newsletter_segment": {
+    "stulp": [
+     "id",
+     "newsletter_id",
+     "segment_id",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_newsletter_templates": {
+    "stulp": [
+     "id",
+     "newsletter_id",
+     "name",
+     "categories",
+     "description",
+     "body",
+     "thumbnail",
+     "thumbnail_data",
+     "readonly",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 77,
+    "pask": []
+   },
+   "gaj6_mailpoet_newsletters": {
+    "stulp": [
+     "id",
+     "hash",
+     "parent_id",
+     "subject",
+     "type",
+     "sender_address",
+     "sender_name",
+     "status",
+     "reply_to_address",
+     "reply_to_name",
+     "preheader",
+     "body",
+     "sent_at",
+     "created_at",
+     "updated_at",
+     "deleted_at",
+     "unsubscribe_token",
+     "ga_campaign",
+     "wp_post_id"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_scheduled_task_subscribers": {
+    "stulp": [
+     "task_id",
+     "subscriber_id",
+     "processed",
+     "failed",
+     "error",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_scheduled_tasks": {
+    "stulp": [
+     "id",
+     "type",
+     "status",
+     "priority",
+     "scheduled_at",
+     "processed_at",
+     "created_at",
+     "updated_at",
+     "deleted_at",
+     "in_progress",
+     "reschedule_count",
+     "meta",
+     "cancelled_at"
+    ],
+    "n": 25,
+    "pask": []
+   },
+   "gaj6_mailpoet_segments": {
+    "stulp": [
+     "id",
+     "name",
+     "type",
+     "description",
+     "created_at",
+     "updated_at",
+     "deleted_at",
+     "average_engagement_score",
+     "average_engagement_score_updated_at",
+     "display_in_manage_subscription_page",
+     "confirmation_email_id",
+     "confirmation_page_id"
+    ],
+    "n": 3,
+    "pask": []
+   },
+   "gaj6_mailpoet_sending_queues": {
+    "stulp": [
+     "id",
+     "task_id",
+     "newsletter_id",
+     "newsletter_rendered_body",
+     "newsletter_rendered_subject",
+     "subscribers",
+     "count_total",
+     "count_processed",
+     "count_to_process",
+     "meta",
+     "created_at",
+     "updated_at",
+     "deleted_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_settings": {
+    "stulp": [
+     "id",
+     "name",
+     "value",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 14,
+    "pask": []
+   },
+   "gaj6_mailpoet_statistics_bounces": {
+    "stulp": [
+     "id",
+     "newsletter_id",
+     "subscriber_id",
+     "queue_id",
+     "created_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_statistics_clicks": {
+    "stulp": [
+     "id",
+     "newsletter_id",
+     "subscriber_id",
+     "queue_id",
+     "link_id",
+     "user_agent_id",
+     "user_agent_type",
+     "count",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_statistics_forms": {
+    "stulp": [
+     "id",
+     "form_id",
+     "subscriber_id",
+     "created_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_statistics_newsletters": {
+    "stulp": [
+     "id",
+     "newsletter_id",
+     "subscriber_id",
+     "queue_id",
+     "sent_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_statistics_opens": {
+    "stulp": [
+     "id",
+     "newsletter_id",
+     "subscriber_id",
+     "queue_id",
+     "user_agent_id",
+     "user_agent_type",
+     "created_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_statistics_unsubscribes": {
+    "stulp": [
+     "id",
+     "newsletter_id",
+     "subscriber_id",
+     "queue_id",
+     "created_at",
+     "source",
+     "meta",
+     "method",
+     "reason",
+     "reason_text",
+     "reason_submitted_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_statistics_woocommerce_purchases": {
+    "stulp": [
+     "id",
+     "newsletter_id",
+     "subscriber_id",
+     "queue_id",
+     "click_id",
+     "order_id",
+     "order_currency",
+     "order_price_total",
+     "created_at",
+     "updated_at",
+     "status"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_stats_notifications": {
+    "stulp": [
+     "id",
+     "newsletter_id",
+     "task_id",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_subscriber_custom_field": {
+    "stulp": [
+     "id",
+     "subscriber_id",
+     "custom_field_id",
+     "value",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_subscriber_ips": {
+    "stulp": [
+     "ip",
+     "created_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_subscriber_segment": {
+    "stulp": [
+     "id",
+     "subscriber_id",
+     "segment_id",
+     "status",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 1,
+    "pask": []
+   },
+   "gaj6_mailpoet_subscriber_tag": {
+    "stulp": [
+     "id",
+     "subscriber_id",
+     "tag_id",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_subscribers": {
+    "stulp": [
+     "id",
+     "wp_user_id",
+     "is_woocommerce_user",
+     "first_name",
+     "last_name",
+     "email",
+     "status",
+     "subscribed_ip",
+     "confirmed_ip",
+     "confirmed_at",
+     "last_subscribed_at",
+     "created_at",
+     "updated_at",
+     "deleted_at",
+     "unconfirmed_data",
+     "source",
+     "count_confirmations",
+     "unsubscribe_token",
+     "link_token",
+     "engagement_score",
+     "engagement_score_updated_at",
+     "last_engagement_at",
+     "woocommerce_synced_at",
+     "email_count",
+     "last_sending_at",
+     "last_open_at",
+     "last_click_at",
+     "last_purchase_at",
+     "last_page_view_at",
+     "last_confirmation_email_sent_at",
+     "time_zone",
+     "time_zone_source",
+     "time_zone_confidence",
+     "time_zone_updated_at"
+    ],
+    "n": 1,
+    "pask": []
+   },
+   "gaj6_mailpoet_tags": {
+    "stulp": [
+     "id",
+     "name",
+     "description",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_user_agents": {
+    "stulp": [
+     "id",
+     "hash",
+     "user_agent",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_mailpoet_user_flags": {
+    "stulp": [
+     "id",
+     "user_id",
+     "name",
+     "value",
+     "created_at",
+     "updated_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_ps_email_content": {
+    "stulp": [
+     "id",
+     "flow",
+     "version",
+     "status",
+     "subject",
+     "preheader",
+     "reason",
+     "blocks_json",
+     "notes",
+     "author_id",
+     "created_at",
+     "published_at"
+    ],
+    "n": 15,
+    "pask": []
+   },
+   "gaj6_ps_email_jobs": {
+    "stulp": [
+     "id",
+     "job_key",
+     "flow",
+     "flow_class",
+     "recipient_email",
+     "recipient_user_id",
+     "subject",
+     "payload",
+     "status",
+     "block_reason",
+     "provider",
+     "provider_message_id",
+     "attempts",
+     "last_error",
+     "scheduled_at",
+     "sent_at",
+     "created_at",
+     "updated_at",
+     "skip_reason",
+     "error_message",
+     "decision_at",
+     "next_attempt_at",
+     "context_json",
+     "delivered_at",
+     "opened_at",
+     "clicked_at"
+    ],
+    "n": 4,
+    "pask": [
+     {
+      "id": "475",
+      "job_key": "cart_abandoned:c_6bf4b44e623d30b5734701f756e5bed4:stage1",
+      "flow": "cart_abandoned",
+      "flow_class": "marketing",
+      "recipient_email": "jolanta.ada@gmail.com",
+      "recipient_user_id": "",
+      "subject": "Dar svarstote dėl Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria virškinimo sistema?",
+      "payload": "{\"cart_id\":\"c_6bf4b44e623d30b5734701f756e5bed4\",\"cart_total\":39.99,\"cart_currency\":\"EUR\",\"cart_items\":[{\"product_id\":17978,\"variation_id\":0,",
+      "status": "sent",
+      "block_reason": "",
+      "provider": "sender",
+      "provider_message_id": "azv2GY-.eE9p2l-rmlLzLp-BnPYXY1zG5Vx-1SReOf",
+      "attempts": "1",
+      "last_error": "",
+      "scheduled_at": "2026-09-10 11:54:40",
+      "sent_at": "2026-09-10 11:58:44",
+      "created_at": "2026-09-10 11:54:40",
+      "updated_at": "2026-09-10 11:58:44",
+      "skip_reason": "",
+      "error_message": "",
+      "decision_at": "2026-09-10 11:58:44",
+      "next_attempt_at": "",
+      "context_json": "{\"cart_id\":\"c_6bf4b44e623d30b5734701f756e5bed4\",\"recovery_url\":\"https:\\/\\/petshop.lt\\/atkurti-krepseli\\/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY",
+      "delivered_at": "",
+      "opened_at": "",
+      "clicked_at": ""
+     },
+     {
+      "id": "474",
+      "job_key": "nl_acbe59f230fb2794a621a5c015a40395",
+      "flow": "consent_changed",
+      "flow_class": "transactional",
+      "recipient_email": "jolanta.ada@gmail.com",
+      "recipient_user_id": "",
+      "subject": "Patvirtiname: sutikote gauti mūsų naujienas",
+      "payload": "{\"name\":\"\",\"granted\":true,\"source\":\"footer_form\",\"changed_at\":\"2026-09-10 12:52:54\",\"prefs_url\":\"https:\\/\\/petshop.lt\\/paskyra\\/\"}",
+      "status": "sent",
+      "block_reason": "",
+      "provider": "sender",
+      "provider_message_id": "azv2GY-.eE9p2l-rmlLzLp-gknNn5Pgz58l-1n018I",
+      "attempts": "1",
+      "last_error": "",
+      "scheduled_at": "2026-09-10 09:52:54",
+      "sent_at": "2026-09-10 09:53:46",
+      "created_at": "2026-09-10 09:52:54",
+      "updated_at": "2026-09-10 09:53:46",
+      "skip_reason": "",
+      "error_message": "",
+      "decision_at": "2026-09-10 09:53:46",
+      "next_attempt_at": "",
+      "context_json": "",
+      "delivered_at": "",
+      "opened_at": "",
+      "clicked_at": ""
+     }
+    ]
+   },
+   "gaj6_ps_email_suppression": {
+    "stulp": [
+     "id",
+     "email",
+     "channel",
+     "reason",
+     "source",
+     "note",
+     "suppressed_at",
+     "released_at"
+    ],
+    "n": 2
+   },
+   "gaj6_ps_naujienlaiskiai": {
+    "stulp": [
+     "id",
+     "pavadinimas",
+     "subject",
+     "preheader",
+     "blocks_json",
+     "status",
+     "author_id",
+     "created_at",
+     "updated_at",
+     "sent_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_vf_block_log": {
+    "stulp": [
+     "id",
+     "ts",
+     "sku",
+     "brand",
+     "category",
+     "decision",
+     "reason"
+    ],
+    "n": 17
+   },
+   "gaj6_vf_observer": {
+    "stulp": [
+     "id",
+     "ts",
+     "post_id",
+     "sku",
+     "title",
+     "brand",
+     "decision",
+     "reason"
+    ],
+    "n": 285
+   },
+   "gaj6_wc_email_unsubscribes": {
+    "stulp": [
+     "id",
+     "email_hash",
+     "email_kind",
+     "action",
+     "created_at"
+    ],
+    "n": 0,
+    "pask": []
+   },
+   "gaj6_wpmailsmtp_debug_events": {
+    "stulp": [
+     "id",
+     "content",
+     "initiator",
+     "event_type",
+     "created_at"
+    ],
+    "n": 6,
+    "pask": [
+     {
+      "id": "6",
+      "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+      "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+      "event_type": "0",
+      "created_at": "2026-09-10 09:55:27"
+     }
+    ]
+   },
+   "gaj6_wpmailsmtp_tasks_meta": {
+    "stulp": [
+     "id",
+     "action",
+     "data",
+     "date"
+    ],
+    "n": 0,
+    "pask": []
+   }
+  },
+  "meta": [
+   {
+    "order_id": "35880",
+    "meta_key": "_ps_dropship_sent",
+    "v": "2026-09-10 12:47:57"
+   },
+   {
+    "order_id": "35880",
+    "meta_key": "_ps_dropship_sent_src",
+    "v": "{\"vf\":\"2026-09-10 12:47:57\"}"
+   },
+   {
+    "order_id": "35880",
+    "meta_key": "_ps_dropship_to",
+    "v": "vf"
+   },
+   {
+    "order_id": "35881",
+    "meta_key": "_ps_dropship_sent",
+    "v": "2026-09-10 12:47:57"
+   },
+   {
+    "order_id": "35881",
+    "meta_key": "_ps_dropship_sent_src",
+    "v": "{\"vf\":\"2026-09-10 12:47:57\"}"
+   },
+   {
+    "order_id": "35881",
+    "meta_key": "_ps_dropship_to",
+    "v": "vf"
+   }
+  ]
+ }
+}
