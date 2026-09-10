@@ -1,0 +1,23 @@
+{
+ "1": {
+  "v": "S1668 an",
+  "ilgis": 39130,
+  "hdr": "/**\n * Petshop Sources v2.3 (šaltinių REGISTRAS + gyvi skaičiai + palaikymas + sandėlio pildymas + dviejų sandėlių eilutės)\n *\n * v2.3 DVIEJŲ SANDĖLIŲ EILUTĖS (S1592, 2026-09-02). Priežastis: suskaiciuoti()\n *   tiekėjo eilutę kūrė TIK iš `_ps_sandelis` (viena reikšmė). AV+VF / AV+ZB\n *   prekės (Exclusion Hypo, Monge, Bioveterinary) vf/zb eilutės negaudavo —\n *   tik rankiniai 08-07/08-20 batch'ai. Naujoms VF prekėms uzpildyti_sandeli()\n *   reikalavo registro eilutės, kurios be sandėlio neatsiranda (užburtas ratas):\n *   41 VF + 32 ZB be tiekėjo eilutės, 38 publish be sandėlio.\n *   Taisyklės:\n *   - suskaiciuoti(): be sandėlio eilutės pridedamos vf/zb eilutės, kai prekė\n *     turi tiekėjo meta (`_vf_supplier_sku` / `_zb_supplier_sku` arba `_zb_qty`);\n *     priority: AV 1, sandėlio tiekėjas 2, kiti 3. Šešėliai (`_ps_shadow_of`) —\n *     nep",
+  "kabliai": [
+   "add_action('woocommerce_update_product', 'ps_sources_sync_saugiai', 20, 1)",
+   "add_action('woocommerce_new_product',    'ps_sources_sync_saugiai', 20, 1)",
+   "add_action('updated_post_meta', function( $mid, $pid, $key ) {\n    if ( $key === '_ps_sandelis' ) ps_sources_sync_saugiai( $pid )",
+   "add_action('added_post_meta', function( $mid, $pid, $key ) {\n    if ( $key === '_ps_sandelis' ) ps_sources_sync_saugiai( $pid )",
+   "add_action('ps_sources_naktinis', function () {\n    if ( class_exists('Petshop_Sources') ) Petshop_Sources::naktinis()",
+   "add_action('init', function () {\n    if ( ! wp_next_scheduled('ps_sources_naktinis') ) {\n        wp_schedule_event( strtotime('tomorrow 04:20') , 'daily', 'ps_sources_nakt",
+   "add_action('wp_loaded', function () {\n    $veiksmas = isset($_GET['ps_src']) ? sanitize_key($_GET['ps_src']) : ''"
+  ]
+ },
+ "v": "dep-095342",
+ "kurimas": 200,
+ "sid": 5457,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
