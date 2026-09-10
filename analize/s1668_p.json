@@ -1,0 +1,97 @@
+{
+ "1": {
+  "v": "S1668 p",
+  "cols": [
+   "id",
+   "event_id",
+   "event_name",
+   "email",
+   "payload_json",
+   "emitted_at",
+   "status",
+   "adapter_name",
+   "attempts",
+   "next_retry_at",
+   "last_error",
+   "esp_response"
+  ],
+  "eilute": {
+   "id": "1205",
+   "event_id": "order_shipped_35882",
+   "event_name": "order_shipped",
+   "email": "aa.gaiva@gmail.com",
+   "payload_json": "{\"order_id\":35882,\"order_number\":\"1002\",\"carrier\":\"venipak\",\"tracking_number\":\"V07267E1000067\",\"tracking_url\":\"https://venipak.lt/tracking/track/V07267E1000067\",\"delivery_type\":\"parcel_terminal\",\"estimated_delivery\":null}",
+   "emitted_at": "2026-09-10 05:08:47",
+   "status": "dead",
+   "adapter_name": "sender",
+   "attempts": "1",
+   "next_retry_at": "",
+   "last_error": "non_retriable: Subscriber not found",
+   "esp_response": "{\"message\":\"Subscriber not found\",\"success\":false}"
+  },
+  "suvestine": [
+   {
+    "event_name": "cart_abandoned",
+    "status": "dead",
+    "n": "35",
+    "pask": "2026-09-09 20:00:47"
+   },
+   {
+    "event_name": "order_paid",
+    "status": "sent",
+    "n": "6",
+    "pask": "2026-09-09 16:59:12"
+   },
+   {
+    "event_name": "order_shipped",
+    "status": "sent",
+    "n": "4",
+    "pask": "2026-09-09 16:59:56"
+   },
+   {
+    "event_name": "order_paid",
+    "status": "dead",
+    "n": "3",
+    "pask": "2026-09-10 06:52:52"
+   },
+   {
+    "event_name": "order_shipped",
+    "status": "dead",
+    "n": "2",
+    "pask": "2026-09-10 05:08:47"
+   },
+   {
+    "event_name": "cart_abandoned",
+    "status": "sent",
+    "n": "1",
+    "pask": "2026-09-09 14:55:04"
+   }
+  ],
+  "opt": {
+   "petshop_esp_sender_mk": "ilgis 1320",
+   "petshop_esp_sender_tk": "ilgis 1316",
+   "petshop_esp_sender_webhook_secret": "ilgis 40"
+  },
+  "kodas": [],
+  "notes": [
+   "09-10 08:08 Siuntos numeriai išsaugoti (AV): V07267E1000067",
+   "09-10 08:08 Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+   "09-10 08:08 Darbalaukis: dėžių skaičius — 1.",
+   "09-10 08:06 Darbalaukis: PVM sąskaitos AVPN011004 PDF sugeneruotas iš naujo (Inga).",
+   "09-10 06:37 Paysera: Naujo užsakymo kūrimo būsena",
+   "09-10 06:37 Email \"Užsakymas vykdomas\" sent.",
+   "09-10 06:37 Email \"Naujas užsakymas\" sent.",
+   "09-10 06:37 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+   "09-10 06:37 Surūšiuota pati: Gėrimas katėms - Miamor Trinkfein Vitald — Iš AV; Gėrimas katėms - Miamor Trinkfein Vitald — ",
+   "09-10 06:37 Faktai irasyti: 8 eilutes · pajamos 53,77 EUR (be PVM, po nuolaidu) · PVM 11,30 EUR · marza 19,31 EUR · kontri"
+  ],
+  "statusas": "processing"
+ },
+ "v": "dep-074401",
+ "kurimas": 200,
+ "sid": 5430,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
