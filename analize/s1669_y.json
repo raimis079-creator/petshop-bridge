@@ -1,0 +1,80 @@
+{
+ "v": "dep-180324",
+ "kurimas": 200,
+ "sid": 5497,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1669 y",
+  "u": {
+   "35880": {
+    "nr": "1000",
+    "st": "processing",
+    "pastabos": [
+     "12:47:57 Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt, terra@petshop.lt",
+     "19:58:51 Siuntos numeriai išsaugoti (VF): V07267E1000065",
+     "19:58:51 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "19:34:33 Darbalaukis: „Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg“ kelias Iš AV → VF siunčia klientui (Rai). Likutis: AV +1 → 5.",
+     "18:49:44 Paysera: Naujo užsakymo kūrimo būsena",
+     "18:49:43 Email \"Užsakymas vykdomas\" sent.",
+     "18:49:43 Email \"Naujas užsakymas\" sent.",
+     "18:49:42 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas."
+    ]
+   },
+   "35881": {
+    "nr": "1001",
+    "st": "processing",
+    "pastabos": [
+     "12:47:57 Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt, terra@petshop.lt",
+     "20:01:48 Darbalaukis: PVM sąskaitos AVPN011003 PDF sugeneruotas iš naujo (Inga).",
+     "19:59:56 Siuntos numeriai išsaugoti (VF): V07267E1000066",
+     "19:59:56 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "19:59:16 Paysera: Naujo užsakymo kūrimo būsena",
+     "19:59:14 Email \"Užsakymas vykdomas\" sent.",
+     "19:59:13 Email \"Naujas užsakymas\" sent.",
+     "19:59:13 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas."
+    ]
+   }
+  },
+  "smtp": [
+   {
+    "created_at": "2026-09-10 09:55:27",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address."
+   },
+   {
+    "created_at": "2026-05-26 09:09:52",
+    "c": "Mailer: Other SMTP\r\nSMTP Error: Could not connect to SMTP host. Failed to connect to server SMTP server error: Failed to connect to server Additional SMTP info: php_network_getaddresses: getaddrinfo f"
+   },
+   {
+    "created_at": "2026-05-26 09:09:48",
+    "c": "Mailer: Other SMTP\r\nSMTP Error: Could not connect to SMTP host. Failed to connect to server SMTP server error: Failed to connect to server Additional SMTP info: php_network_getaddresses: getaddrinfo f"
+   }
+  ],
+  "kodas": {
+   "petshop-av-dropship.php:27": "* po sėkmingo wp_mail — Tiekimas::uzdaryti_po_laisko(). Nepavykus — partija",
+   "petshop-av-dropship.php:59": "* „Laukia išsiuntimo\" su aiškia žinute (išsiųsta/nepavyko + wp_mail klaidos",
+   "petshop-av-dropship.php:103": "* KODĖL (H234, išmatuota su #35066 VF+PRINS): `_ps_dropship_sent` buvo VISO",
+   "petshop-av-dropship.php:108": "* DABAR: `_ps_dropship_sent_src` = {\"vf\":\"2026-08-23 11:04\"} — kiekvienam",
+   "petshop-av-dropship.php:158": "/** Paskutinė wp_mail klaida (H257) — kad po nepavykusio siuntimo būtų matomas tekstas, ne tyla. */",
+   "petshop-av-dropship.php:162": "const META_SENT     = '_ps_dropship_sent';",
+   "petshop-av-dropship.php:164": "const META_SENT_SRC = '_ps_dropship_sent_src';",
+   "petshop-av-dropship.php:187": "add_action( 'wp_mail_failed', function ( $e ) { self::$pasto_klaida = is_wp_error( $e ) ? $e->get_error_message() : 'wp_mail klaida'; } );",
+   "petshop-av-dropship.php:255": "* Grąžina masyvą sandėlis => laikas. Senus užsakymus (tik `_ps_dropship_sent`)",
+   "petshop-av-dropship.php:1074": "$ok   = wp_mail( $gav, $tema, $h, $antraste, $priedai );",
+   "petshop-darbalaukis.php:170": "*   `_ps_dropship_sent` (>24 val.) ∧ processing, dalių nemato: kaltina tiekėją, net kai tiekėjas jau išsiuntė ir laukiama AV (#35421), o užsakymas",
+   "petshop-darbalaukis.php:172": "*   >24 val. (`_ps_dropship_sent_src[t]` = `dalys[t]['kada']`, `Petshop_AV_Dropship::perduotos()`) ir `issiusta` nėra. Bent viena → Klausimas",
+   "petshop-darbalaukis.php:176": "*   „Laukti“ kortelėje nebesiūlomas. „Kartu su Dropshipping iš [T]“ (kons) — tas pats `ps_dropship_send`, `_ps_dropship_sent_src` rašo; „veža į AV“",
+   "petshop-darbalaukis.php:3226": "$nr_uzs = $o->get_order_number(); $bazine = get_option( 'woocommerce_email_base_color', '#2d6a35' );",
+   "petshop-desk.php:94": "* jau buvo (_ps_dropship_sent_src) — tik niekur nesimatė vienu žvilgsniu.",
+   "petshop-dropship-sargas.php:5": "* PROBLEMA: perdavus užsakymą tiekėjui (`_ps_dropship_sent`) niekas neseka,",
+   "petshop-dropship-sargas.php:48": "JOIN {$mt} m ON m.order_id = o.id AND m.meta_key = '_ps_dropship_sent'",
+   "petshop-dropship-sargas.php:59": "$sent = (string) $o->get_meta( '_ps_dropship_sent' );",
+   "petshop-uzsakymu-ivykiai.php:26": "*  3. Laiškai, išsiųsti veiksmo metu (wp_mail), įrašomi į `po.laiskai`.",
+   "petshop-uzsakymu-ivykiai.php:115": "add_filter( 'wp_mail', array( __CLASS__, 'laiskas' ), 999 );",
+   "petshop-uzsakymu-ivykiai.php:342": "'dropship_sent' => $o->get_meta( '_ps_dropship_sent_src' ) ?: null,"
+  },
+  "opt": []
+ }
+}
