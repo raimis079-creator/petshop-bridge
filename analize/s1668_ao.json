@@ -1,0 +1,40 @@
+{
+ "v": "dep-095551",
+ "kurimas": 200,
+ "sid": 5458,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1668 ao",
+  "faze": "D",
+  "md5_pries": "681bef7ec50a143ffdcf7035dfa0e524",
+  "md5_po": "4f023761f312dcb83847dc69208182df",
+  "ping": 200,
+  "rez": "OK"
+ },
+ "T": {
+  "v": "S1668 ao",
+  "faze": "T",
+  "own": 6,
+  "registras_pries": "0",
+  "registras_po": "0",
+  "own_po": "6",
+  "eilutes": [
+   {
+    "source": "av",
+    "stock_qty": "0",
+    "cost_net": "5.6198",
+    "is_active": "1"
+   },
+   {
+    "source": "quattro",
+    "stock_qty": "38",
+    "cost_net": "5.6198",
+    "is_active": "1"
+   }
+  ],
+  "rez": "FAIL"
+ }
+}
