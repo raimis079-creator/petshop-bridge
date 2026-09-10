@@ -1,0 +1,32 @@
+{
+ "v": "dep-072609",
+ "kurimas": 200,
+ "sid": 5428,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1668 n",
+  "faze": "D",
+  "pries": "1516e611f0822f3c5b65927bff426e30",
+  "po": "46c8948be9cf2c7fb01007ad3fe340e1",
+  "ping": 200,
+  "rez": "OK"
+ },
+ "T": {
+  "v": "S1668 n",
+  "faze": "T",
+  "md5": "46c8948be9cf2c7fb01007ad3fe340e1",
+  "t": {
+   "/katems/maistas-katems?gclid=PSTEST1668&gad_source=1": "301 → https://petshop.lt/kategorija/katems/maistas-katems/?gclid=PSTEST1668&gad_source=1",
+   "/sunims/maistas-sunims/?utm_source=google&utm_medium=cpc": "301 → https://petshop.lt/kategorija/sunims/maistas-sunims/?utm_source=google&utm_medium=cpc",
+   "/katems/maistas-katems": "301 → https://petshop.lt/kategorija/katems/maistas-katems/",
+   "/zuvims-2007550667/tvenkiniu-zuvu-maistas?gclid=PSTEST1668": "301 → https://petshop.lt/kategorija/zuvims/tvenkiniu-zuvu-maistas/?gclid=PSTEST1668",
+   "/exclusion?gclid=X1&_gl=1*14r9wo1*_up*MQ..": "301 → https://petshop.lt/gamintojas/exclusion/?gclid=X1&_gl=1*14r9wo1*_up*MQ..",
+   "/kategorija/katems/maistas-katems/?gclid=PSTEST1668": "200 → ",
+   "/": "200 → ",
+   "/nesamas-xyz-1668?gclid=1": "404 → "
+  }
+ }
+}
