@@ -1,43 +1,34 @@
 {
- "v": "dep-165214",
+ "1": {
+  "v": "S1668 d",
+  "t": "function t() { global $wpdb; return $wpdb->prefix . 'ps_fakt_reklama'; }",
+  "rasyti": "function rasyti( $r ) {\n\t\tglobal $wpdb; $t = self::t();\n\t\t$diena = preg_match( '/^\\d{4}-\\d{2}-\\d{2}$/', (string) $r['diena'] ) ? $r['diena'] : null;\n\t\tif ( ! $diena ) { return 'bad'; }\n\t\t$kid = mb_substr( (string) ( isset( $r['kampanija_id'] ) ? $r['kampanija_id'] : '' ), 0, 32 );\n\t\t$kan = mb_substr( (string) $r['kanalas'], 0, 24 );\n\t\t$sen = $wpdb->get_row( $wpdb->prepare( \"SELECT id, parodymai, paspaudimai, islaidos_ct, konversijos, konv_verte_ct, versija FROM $t WHERE diena=%s AND kanalas=%s AND kampanija_id=%s\", $diena, $kan, $kid ), ARRAY_A );\n\t\t$d = array(\n\t\t\t'diena' => $diena, 'kanalas' => $kan, 'kampanija_id' => $kid,\n\t\t\t'kampanija' => mb_substr( (string) ( isset( $r['kampanija'] ) ? $r['kampanija']",
+  "lentele": "gaj6_ps_fakt_reklama",
+  "cols": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ],
+  "dienos": []
+ },
+ "v": "dep-065133",
  "kurimas": 200,
- "sid": 5374,
+ "sid": 5418,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
- },
- "GO": {
-  "v": "S1668 d",
-  "eil": [
-   "3111 echo '<div class=\"kort-blokas kort-lik\" data-id=\"' . (int) $pid . '\">';",
-   "3116 echo '<div class=\"kort-lik-eil\">';",
-   "3122 echo '<div class=\"kort-lik-red\">'",
-   "3135 echo '<div class=\"kort-lik-eil kort-lik-av\">';",
-   "3138 . '<b class=\"kort-lik-dabar\">' . $av_kiek . ' vnt.</b></div>';",
-   "3141 echo '<div class=\"kort-lik-red\">'",
-   "3142 . '<input type=\"text\" class=\"kort-lik-in\" placeholder=\"12 arba +3 arba −2\" autocomplete=\"off\">'",
-   "3143 . '<select class=\"kort-lik-priez\">';",
-   "3148 echo '</select><button type=\"button\" class=\"kort-lik-irasyti\">Įrašyti</button>'",
-   "3149 . '<span class=\"kort-lik-stat\"></span></div>';",
-   "3150 echo '<div class=\"kort-lik-gav\">'",
-   "3151 . '<label>Geriausia iki<input type=\"text\" class=\"kort-lik-gal ps-data\" placeholder=\"2027-09-30\"></label>'",
-   "3152 . '<label>Savikaina, € (be PVM)<input type=\"text\" class=\"kort-lik-sav\" placeholder=\"0,00\" value=\"'",
-   "3154 . '<span class=\"kort-lik-uz\">Sukuriama partija — kiekis su savo galiojimu ir savikaina.</span>'",
-   "7243 if(window.korteleInit) window.korteleInit();",
-   "7901 window.korteleInit=function(){",
-   "7903 var L=document.querySelector(\".kort-lik\");",
-   "7954 L.querySelector(\".kort-lik-irasyti\").onclick=irasyti;",
-   "7991 var TID=parseInt(document.querySelector(\".kort-lik\").dataset.id,10);",
-   "8693 ji jau idėta i DOM — korteleInit yra ta vieta, kuria kviecia atidaryk(). */",
-   "8695 var senas = window.korteleInit;",
-   "8696 window.korteleInit = function(){",
-   "9378 .kort-lik-irasyti{border:1px solid #3a7bd5;background:#3a7bd5;color:#fff;border-radius:6px;padding:6px 14px;cursor:pointer;font-size:13px}"
-  ],
-  "ids": {
-   "vf": 18590,
-   "av": 35134
-  },
-  "klaida_vf": "Method Petshop_Katalogas::kortele_html() does not exist",
-  "klaida_av": "Method Petshop_Katalogas::kortele_html() does not exist"
  }
 }
