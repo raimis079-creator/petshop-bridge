@@ -1,59 +1,401 @@
 {
- "v": "dep-071327",
+ "1": {
+  "v": "S1668 x",
+  "n": 64,
+  "own": {
+   "su_own": "62",
+   "viso": "1997"
+  },
+  "stock": {
+   "su_stock": "0",
+   "viso": "0"
+  },
+  "sources_cols": [
+   "id",
+   "product_id",
+   "source",
+   "supplier_sku",
+   "ean",
+   "stock_qty",
+   "cost_net",
+   "synced_at",
+   "is_active",
+   "is_sellable",
+   "priority",
+   "created_at",
+   "updated_at"
+  ],
+  "sources": [
+   {
+    "source": "av",
+    "n": "62"
+   },
+   {
+    "source": "quattro",
+    "n": "64"
+   }
+  ],
+  "src_pvz": [
+   {
+    "id": "4582",
+    "product_id": "16540",
+    "source": "av",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "6",
+    "cost_net": "6.4463",
+    "synced_at": null,
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "1",
+    "created_at": "2026-09-09 21:48:40",
+    "updated_at": "2026-09-10 07:20:07"
+   },
+   {
+    "id": "1948",
+    "product_id": "16540",
+    "source": "quattro",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "0",
+    "cost_net": "6.4463",
+    "synced_at": null,
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-09-10 07:20:07"
+   }
+  ],
+  "partijos": [
+   {
+    "tiekejas": "eShoprent",
+    "pastaba": "Pradinis likutis T-0",
+    "n": "62",
+    "liko": "1997",
+    "smin": "4.4628",
+    "smax": "58.4000"
+   }
+  ],
+  "own_sarasas": [
+   {
+    "pid": "16594",
+    "own": "50",
+    "t": "QUATTRO begrūdis visų veislių suaugusių šunų "
+   },
+   {
+    "pid": "16627",
+    "own": "50",
+    "t": "QUATTRO Sport su paukštiena sausas aktyvių šu"
+   },
+   {
+    "pid": "16660",
+    "own": "50",
+    "t": "QUATTRO Junior su paukštiena sausas jaunų šun"
+   },
+   {
+    "pid": "16663",
+    "own": "50",
+    "t": "QUATTRO Junior su paukštiena sausas jaunų šun"
+   },
+   {
+    "pid": "16591",
+    "own": "49",
+    "t": "QUATTRO begrūdis visų veislių suaugusių šunų "
+   },
+   {
+    "pid": "16597",
+    "own": "49",
+    "t": "QUATTRO begrūdis visų veislių senjorų/dietini"
+   },
+   {
+    "pid": "16609",
+    "own": "49",
+    "t": "QUATTRO begrūdis su antiena didelių veislių s"
+   },
+   {
+    "pid": "16612",
+    "own": "49",
+    "t": "QUATTRO begrūdis su antiena didelių veislių j"
+   },
+   {
+    "pid": "16630",
+    "own": "49",
+    "t": "QUATTRO Mini Salmon su lašiša sausas mažų vei"
+   },
+   {
+    "pid": "16633",
+    "own": "49",
+    "t": "QUATTRO Mini Salmon su lašiša sausas mažų vei"
+   },
+   {
+    "pid": "16642",
+    "own": "49",
+    "t": "QUATTRO Mini Lamb su ėriena sausas mažų veisl"
+   },
+   {
+    "pid": "16654",
+    "own": "48",
+    "t": "QUATTRO Maxi Lamb su ėriena sausas didelių ve"
+   },
+   {
+    "pid": "16567",
+    "own": "47",
+    "t": "Quattro SB 7kg su antiena sausas pašaras mažų"
+   },
+   {
+    "pid": "16603",
+    "own": "47",
+    "t": "QUATTRO begrūdis su antiena visų veislių suau"
+   },
+   {
+    "pid": "16648",
+    "own": "47",
+    "t": "QUATTRO Maxi Poultry su paukštiena sausas did"
+   },
+   {
+    "pid": "16678",
+    "own": "47",
+    "t": "QUATTRO Extra Poultry su paukštiena sausas ka"
+   },
+   {
+    "pid": "16645",
+    "own": "46",
+    "t": "QUATTRO Mini Lamb su ėriena sausas mažų veisl"
+   },
+   {
+    "pid": "16561",
+    "own": "44",
+    "t": "Quattro SB 7kg su balta žuvimi ir kriliu saus"
+   },
+   {
+    "pid": "16615",
+    "own": "44",
+    "t": "QUATTRO begrūdis  lašiša ir kriliu visų veisl"
+   },
+   {
+    "pid": "16696",
+    "own": "44",
+    "t": "QUATTRO 12kg begrūdis su antiena visų veislių"
+   },
+   {
+    "pid": "16552",
+    "own": "43",
+    "t": "Quattro SB su antiena sausas jaunų mažų veisl"
+   },
+   {
+    "pid": "16564",
+    "own": "43",
+    "t": "Quattro SB 7kg su antiena sausas suaugusių ma"
+   },
+   {
+    "pid": "16705",
+    "own": "43",
+    "t": "QUATTRO 12kg begrūdis su antiena didelių veis"
+   },
+   {
+    "pid": "16549",
+    "own": "42",
+    "t": "Quattro SB su antiena sausas pašaras mažų vei"
+   },
+   {
+    "pid": "16699",
+    "own": "42",
+    "t": "QUATTRO 12kg begrūdis su antiena visų veislių"
+   },
+   {
+    "pid": "16606",
+    "own": "41",
+    "t": "QUATTRO begrūdis su antiena visų veislių jaun"
+   },
+   {
+    "pid": "16636",
+    "own": "40",
+    "t": "QUATTRO Mini Poultry su paukštiena sausas maž"
+   },
+   {
+    "pid": "16618",
+    "own": "39",
+    "t": "QUATTRO Sterilised su paukštiena sausas steri"
+   },
+   {
+    "pid": "16639",
+    "own": "38",
+    "t": "QUATTRO Mini Poultry su paukštiena sausas maž"
+   },
+   {
+    "pid": "16651",
+    "own": "38",
+    "t": "QUATTRO Maxi Poultry su paukštiena sausas did"
+   },
+   {
+    "pid": "16600",
+    "own": "37",
+    "t": "QUATTRO begrūdis su ėriena visų veislių suaug"
+   },
+   {
+    "pid": "16621",
+    "own": "37",
+    "t": "QUATTRO Sterilised su paukštiena sausas steri"
+   },
+   {
+    "pid": "16666",
+    "own": "37",
+    "t": "QUATTRO Extra Salmon su lašiša sausas šunų pa"
+   },
+   {
+    "pid": "16693",
+    "own": "36",
+    "t": "QUATTRO 12kg begrūdis su ėriena visų veislių "
+   },
+   {
+    "pid": "16558",
+    "own": "35",
+    "t": "Quattro SB 7kg su lašiša ir kriliu sausas sua"
+   },
+   {
+    "pid": "16555",
+    "own": "34",
+    "t": "Quattro SB 7kg su ėriena sausas suaugusių maž"
+   },
+   {
+    "pid": "16657",
+    "own": "31",
+    "t": "QUATTRO Kitten sausas kačiukų pašaras su daug"
+   },
+   {
+    "pid": "16672",
+    "own": "30",
+    "t": "QUATTRO Extra Poultry su paukštiena sausas šu"
+   },
+   {
+    "pid": "16546",
+    "own": "27",
+    "t": "Quattro SB su antiena sausas suaugusių mažų v"
+   },
+   {
+    "pid": "16537",
+    "own": "22",
+    "t": "Quattro SB su ėriena sausas suaugusių mažų ve"
+   },
+   {
+    "pid": "16681",
+    "own": "22",
+    "t": "QUATTRO Extra Poultry su paukštiena sausas ka"
+   },
+   {
+    "pid": "16573",
+    "own": "20",
+    "t": "QUATTRO visavertis sausas pašaras visų veisli"
+   },
+   {
+    "pid": "16579",
+    "own": "20",
+    "t": "QUATTRO visavertis sausas pašaras suaugusioms"
+   },
+   {
+    "pid": "16585",
+    "own": "20",
+    "t": "QUATTRO visavertis sausas pašaras suaugusioms"
+   },
+   {
+    "pid": "16576",
+    "own": "19",
+    "t": "QUATTRO visavertis sausas pašaras suaugusioms"
+   },
+   {
+    "pid": "16582",
+    "own": "19",
+    "t": "QUATTRO visavertis sausas pašaras suaugusioms"
+   },
+   {
+    "pid": "16588",
+    "own": "19",
+    "t": "QUATTRO visavertis sausas dietinis/senstančių"
+   },
+   {
+    "pid": "16669",
+    "own": "19",
+    "t": "QUATTRO Extra Salmon su lašiša sausas šunų pa"
+   },
+   {
+    "pid": "16690",
+    "own": "19",
+    "t": "QUATTRO 12kg begrūdis visų veislių senjorų/di"
+   },
+   {
+    "pid": "16708",
+    "own": "19",
+    "t": "QUATTRO 12kg begrūdis  lašiša ir kriliu visų "
+   },
+   {
+    "pid": "16570",
+    "own": "10",
+    "t": "Quattro SB 7kg su antiena sausas jaunų mažų v"
+   },
+   {
+    "pid": "16675",
+    "own": "10",
+    "t": "QUATTRO Extra Poultry su paukštiena sausas šu"
+   },
+   {
+    "pid": "16684",
+    "own": "10",
+    "t": "QUATTRO Extra Lamb su ėriena sausas šunų paša"
+   },
+   {
+    "pid": "16687",
+    "own": "10",
+    "t": "QUATTRO Extra Lamb su ėriena sausas šunų paša"
+   },
+   {
+    "pid": "16702",
+    "own": "10",
+    "t": "QUATTRO 12kg begrūdis su antiena didelių veis"
+   },
+   {
+    "pid": "16712",
+    "own": "10",
+    "t": "QUATTRO 1,5 kg Senior White Fish & Krill visa"
+   },
+   {
+    "pid": "16715",
+    "own": "10",
+    "t": "QUATTRO 1,5 kg Salmon for Sterilised Adult vi"
+   },
+   {
+    "pid": "16721",
+    "own": "10",
+    "t": "QUATTRO 1,5 kg Chicken for Sterilised Adult C"
+   },
+   {
+    "pid": "16724",
+    "own": "9",
+    "t": "QUATTRO 1,5 kg Chicken for Kittens (up to 12 "
+   },
+   {
+    "pid": "16727",
+    "own": "8",
+    "t": "QUATTRO 1,5 kg Adult Salmon & Krill visaverti"
+   },
+   {
+    "pid": "16540",
+    "own": "6",
+    "t": "Quattro SB su lašiša ir kriliu sausas suaugus"
+   },
+   {
+    "pid": "16718",
+    "own": "6",
+    "t": "QUATTRO 1,5 kg Duck for Adult Indoor Cats vis"
+   }
+  ],
+  "atviri_uzs": "0"
+ },
+ "v": "dep-081546",
  "kurimas": 200,
- "sid": 5260,
+ "sid": 5439,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
- },
- "A": {
-  "v": "S1668X",
-  "faze": "A",
-  "bak": [
-   "cmplz_wsc_status",
-   "cmplz_wsc_signup_status",
-   "cmplz_wsc_signup_date",
-   "cmplz_wsc_onboarding_status",
-   "cmplz_wsc_consent_consentdata",
-   "cmplz_consent_wsc_consent"
-  ],
-  "pries": {
-   "status": "pending",
-   "signup": "pending",
-   "site_id": false
-  },
-  "reset": "cmplz_wsc_scanner::wsc_scan_reset() ivykdyta",
-  "po": {
-   "status": false,
-   "signup": false,
-   "site_id": false,
-   "onboarding": {
-    "terms": false,
-    "newsletter": true,
-    "plugins": false
-   }
-  },
-  "likusios_wsc": [
-   "cmplz_wsc_onboarding_status",
-   "ps_s1668_wsc_bak"
-  ]
- },
- "B": {
-  "v": "S1668X",
-  "faze": "B",
-  "busena": {
-   "status": false,
-   "signup": false,
-   "site_id": false,
-   "onboarding": {
-    "terms": false,
-    "newsletter": true,
-    "plugins": false
-   },
-   "autentifikuotas": "ne",
-   "scan_enabled": "metodas yra"
-  },
-  "bak_yra": "taip",
-  "svetaine_ok": 200
  }
 }
