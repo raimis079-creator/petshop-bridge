@@ -1,0 +1,81 @@
+{
+ "v": "dep-090044",
+ "kurimas": 200,
+ "sid": 5449,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1668 af",
+  "faze": "D",
+  "pries": "d9ca8db2c3fab34112b21e15a2d4b47a",
+  "po": "b1a8309c74992f242f9f63b727e8e431",
+  "ping": 200,
+  "rez": "OK"
+ },
+ "T": {
+  "v": "S1668 af",
+  "faze": "T",
+  "md5": "b1a8309c74992f242f9f63b727e8e431",
+  "t": {
+   "quattro": [
+    16612,
+    "_own_stock_qty",
+    "OK"
+   ],
+   "prins": [
+    16760,
+    "_own_stock_qty",
+    "OK"
+   ],
+   "ambrosia": [
+    19715,
+    "_own_stock_qty",
+    "OK"
+   ],
+   "belcor_tofu": [
+    15835,
+    "_own_stock_qty",
+    "OK"
+   ],
+   "av": [
+    12815,
+    "_stock",
+    "OK"
+   ],
+   "av_su_vfzb": [
+    18593,
+    "_own_stock_qty",
+    "OK"
+   ],
+   "vf": [
+    24250,
+    "_own_stock_qty",
+    "OK"
+   ],
+   "zb": [
+    6350,
+    "_own_stock_qty",
+    "OK"
+   ]
+  }
+ },
+ "F": {
+  "v": "S1668 af",
+  "faze": "F",
+  "pries": {
+   "stock": 51,
+   "own": 0
+  },
+  "rez": "OK",
+  "po": {
+   "stock": "49",
+   "own": "2",
+   "wc_viso": 51,
+   "av_likutis": 2,
+   "kat_av": 2,
+   "partijos_aktyvios": "2"
+  }
+ }
+}
