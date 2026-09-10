@@ -1,0 +1,39 @@
+{
+ "v": "dep-075557",
+ "kurimas": 200,
+ "sid": 5434,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1668 t",
+  "faze": "D",
+  "pries": "e1c63b7488038b2df70f7b713bfd07cb",
+  "po": "7ded63839006545c8ac56b9f9a1141b9",
+  "ping": 200,
+  "rez": "OK"
+ },
+ "T": {
+  "v": "S1668 t",
+  "faze": "T",
+  "md5": "7ded63839006545c8ac56b9f9a1141b9",
+  "rez": {
+   "s1668_test_be_pasto": {
+    "status": "skipped",
+    "attempts": "0",
+    "last_error": "skipped: no_email",
+    "resp": null
+   },
+   "s1668_test_nera_sender": {
+    "status": "skipped",
+    "attempts": "1",
+    "last_error": "skipped: subscriber_not_in_sender",
+    "resp": "{\"message\":\"Subscriber not found\",\"success\":false}"
+   }
+  },
+  "laiskai_bandyti": [],
+  "liko_test": 0,
+  "titulinis": 200
+ }
+}
