@@ -1,0 +1,295 @@
+{
+ "v": "dep-143637",
+ "kurimas": 200,
+ "sid": 5473,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "12580": {
+   "av_eil": "nera",
+   "av": 3,
+   "eilutes": [
+    {
+     "id": "1079",
+     "product_id": "12580",
+     "source": "zb",
+     "supplier_sku": "01M131102",
+     "ean": "",
+     "stock_qty": "115",
+     "cost_net": "8.2440",
+     "synced_at": "2026-08-07 10:02:19",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2",
+     "created_at": "2026-08-07 13:36:26",
+     "updated_at": "2026-09-10 07:20:05"
+    }
+   ],
+   "zb_av_sablonas": {
+    "id": "4562",
+    "product_id": "13975",
+    "source": "av",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "1",
+    "cost_net": null,
+    "synced_at": null,
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "1",
+    "created_at": "2026-09-08 07:20:19",
+    "updated_at": "2026-09-10 07:20:06"
+   }
+  },
+  "v": "S1668 bb",
+  "faze": "A",
+  "dr": {
+   "12825": {
+    "st": "draft",
+    "kaina": "11.09",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 3,
+    "t": "Hau&Miau Vištienos file ant baltų pagali"
+   },
+   "12826": {
+    "st": "draft",
+    "kaina": "12.69",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 6,
+    "t": "Hau&Miau minkštos Vištienos juotelės 500"
+   },
+   "12871": {
+    "st": "draft",
+    "kaina": "13.99",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 3,
+    "t": "Hau&Miau balti pagaliukai apsukti antien"
+   },
+   "12958": {
+    "st": "draft",
+    "kaina": "11.29",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 4,
+    "t": "Hau&Miau batatai (saldžiosios bulvės) ap"
+   },
+   "12998": {
+    "st": "draft",
+    "kaina": "8.99",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 3,
+    "t": "Hau&Miau ėrienos lazdelės 500g"
+   },
+   "12999": {
+    "st": "draft",
+    "kaina": "12.59",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 4,
+    "t": "Hau&Miau Jautienos čipsai 500g"
+   },
+   "14363": {
+    "st": "draft",
+    "kaina": "8.39",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 3,
+    "t": "Hau&Miau ėrienos žiedai apsukti žuvimi, "
+   }
+  },
+  "ins": "OK #4695",
+  "ins_row": {
+   "product_id": 12580,
+   "source": "av",
+   "supplier_sku": "",
+   "ean": "",
+   "stock_qty": 3,
+   "cost_net": "6.8700",
+   "synced_at": null,
+   "is_active": "1",
+   "is_sellable": "1",
+   "priority": "1",
+   "created_at": "2026-09-10 17:37:47",
+   "updated_at": "2026-09-10 17:37:47"
+  }
+ },
+ "V": {
+  "12580": {
+   "av_eil": "YRA",
+   "av": 3,
+   "eilutes": [
+    {
+     "id": "4695",
+     "product_id": "12580",
+     "source": "av",
+     "supplier_sku": "",
+     "ean": "",
+     "stock_qty": "3",
+     "cost_net": "6.8700",
+     "synced_at": null,
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "1",
+     "created_at": "2026-09-10 17:37:47",
+     "updated_at": "2026-09-10 17:37:47"
+    },
+    {
+     "id": "1079",
+     "product_id": "12580",
+     "source": "zb",
+     "supplier_sku": "01M131102",
+     "ean": "",
+     "stock_qty": "115",
+     "cost_net": "8.2440",
+     "synced_at": "2026-08-07 10:02:19",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2",
+     "created_at": "2026-08-07 13:36:26",
+     "updated_at": "2026-09-10 07:20:05"
+    }
+   ],
+   "zb_av_sablonas": {
+    "id": "4562",
+    "product_id": "13975",
+    "source": "av",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "1",
+    "cost_net": null,
+    "synced_at": null,
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "1",
+    "created_at": "2026-09-08 07:20:19",
+    "updated_at": "2026-09-10 07:20:06"
+   }
+  },
+  "v": "S1668 bb",
+  "faze": "V",
+  "dr": {
+   "12825": {
+    "st": "publish",
+    "kaina": "11.09",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 3,
+    "t": "Hau&amp;Miau Vištienos file ant baltų pa"
+   },
+   "12826": {
+    "st": "publish",
+    "kaina": "12.69",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 6,
+    "t": "Hau&amp;Miau minkštos Vištienos juotelės"
+   },
+   "12871": {
+    "st": "publish",
+    "kaina": "13.99",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 3,
+    "t": "Hau&amp;Miau balti pagaliukai apsukti an"
+   },
+   "12958": {
+    "st": "publish",
+    "kaina": "11.29",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 4,
+    "t": "Hau&amp;Miau batatai (saldžiosios bulvės"
+   },
+   "12998": {
+    "st": "publish",
+    "kaina": "8.99",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 3,
+    "t": "Hau&amp;Miau ėrienos lazdelės 500g"
+   },
+   "12999": {
+    "st": "publish",
+    "kaina": "12.59",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 4,
+    "t": "Hau&amp;Miau Jautienos čipsai 500g"
+   },
+   "14363": {
+    "st": "publish",
+    "kaina": "8.39",
+    "kat": 1,
+    "foto": 1,
+    "vis": "visible",
+    "av": 3,
+    "t": "Hau&amp;Miau ėrienos žiedai apsukti žuvi"
+   }
+  },
+  "front": {
+   "12825": "200 in-stock",
+   "12826": "200 in-stock",
+   "12871": "200 in-stock",
+   "12958": "200 in-stock",
+   "12998": "200 in-stock",
+   "12999": "200 in-stock",
+   "14363": "200 in-stock"
+  },
+  "reg_dr": [
+   {
+    "product_id": "12825",
+    "stock_qty": "3",
+    "is_active": "1"
+   },
+   {
+    "product_id": "12826",
+    "stock_qty": "6",
+    "is_active": "1"
+   },
+   {
+    "product_id": "12871",
+    "stock_qty": "3",
+    "is_active": "1"
+   },
+   {
+    "product_id": "12958",
+    "stock_qty": "4",
+    "is_active": "1"
+   },
+   {
+    "product_id": "12998",
+    "stock_qty": "3",
+    "is_active": "1"
+   },
+   {
+    "product_id": "12999",
+    "stock_qty": "4",
+    "is_active": "1"
+   },
+   {
+    "product_id": "14363",
+    "stock_qty": "3",
+    "is_active": "1"
+   }
+  ]
+ }
+}
