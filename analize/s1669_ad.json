@@ -1,0 +1,281 @@
+{
+ "v": "dep-183804",
+ "kurimas": 200,
+ "sid": 5502,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1669 ad",
+  "fakt": [
+   "uzsakymas_id",
+   "sukurta_at",
+   "apmoketa_at",
+   "statusas_galutinis",
+   "statusas_at",
+   "klientas_id",
+   "klientas_email_hash",
+   "klientas_naujas",
+   "klientas_uzsakymo_nr",
+   "dienos_nuo_ankstesnio",
+   "prekiu_suma_ct",
+   "nuolaidu_ct",
+   "kuponu_kodai",
+   "tasku_panaudota_ct",
+   "tasku_sukaupta_ct",
+   "pristatymas_paimta_ct",
+   "pristatymas_savikaina_ct",
+   "small_cart_fee_ct",
+   "pvm_ct",
+   "viso_ct",
+   "mokejimo_budas",
+   "mokejimo_mokestis_ct",
+   "pakuotes_savikaina_ct",
+   "savikaina_ct",
+   "dovanu_savikaina_ct",
+   "marza_ct",
+   "kontribucija_ct",
+   "sandeliu_kiekis",
+   "misrus",
+   "sandeliai",
+   "vezejai",
+   "kanalas_pirmas",
+   "kanalas_paskutinis",
+   "utm_source",
+   "utm_medium",
+   "utm_campaign",
+   "gclid",
+   "fbclid",
+   "referer_domenas",
+   "landing_url",
+   "irenginys",
+   "sutikimas_statistika",
+   "salis",
+   "miestas",
+   "pasto_kodas",
+   "anketa_id",
+   "rec_log_id",
+   "is_refill",
+   "prenumerata_id",
+   "eiluciu_sk",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija",
+   "irasyta_at",
+   "diena"
+  ],
+  "dienos_stulp": [
+   "id",
+   "data",
+   "pjuvis",
+   "raktas",
+   "raktas2",
+   "apsilankymai",
+   "lankytojai",
+   "perziuros",
+   "atmetimai",
+   "trukme_s_suma",
+   "view_item",
+   "add_to_cart",
+   "begin_checkout",
+   "uzsakymai",
+   "pajamos_ct",
+   "kontribucija_ct",
+   "sutikusiu_dalis",
+   "aplinka"
+  ],
+  "dienos": [
+   {
+    "data": "2026-09-09",
+    "pjuvis": "irenginys",
+    "c": "2",
+    "l": "178"
+   },
+   {
+    "data": "2026-09-09",
+    "pjuvis": "kampanija",
+    "c": "1",
+    "l": "178"
+   },
+   {
+    "data": "2026-09-09",
+    "pjuvis": "kanalas",
+    "c": "5",
+    "l": "193"
+   },
+   {
+    "data": "2026-09-09",
+    "pjuvis": "paieska",
+    "c": "16",
+    "l": "16"
+   },
+   {
+    "data": "2026-09-09",
+    "pjuvis": "puslapis",
+    "c": "293",
+    "l": "485"
+   },
+   {
+    "data": "2026-09-09",
+    "pjuvis": "salis",
+    "c": "10",
+    "l": "179"
+   },
+   {
+    "data": "2026-09-09",
+    "pjuvis": "saltinis",
+    "c": "3",
+    "l": "180"
+   },
+   {
+    "data": "2026-09-09",
+    "pjuvis": "tipas",
+    "c": "13",
+    "l": "404"
+   },
+   {
+    "data": "2026-09-07",
+    "pjuvis": "irenginys",
+    "c": "1",
+    "l": "2"
+   },
+   {
+    "data": "2026-09-07",
+    "pjuvis": "kampanija",
+    "c": "1",
+    "l": "2"
+   }
+  ],
+  "aplinka": "prod",
+  "apl_raw": [
+   {
+    "a": "dev",
+    "t": "1",
+    "c": "40"
+   },
+   {
+    "a": "prod",
+    "t": "0",
+    "c": "1898"
+   }
+  ],
+  "kanalai_web": [
+   {
+    "kanalas": "organika",
+    "saltinis": null,
+    "referer_domenas": "www.google.com",
+    "l": "162"
+   },
+   {
+    "kanalas": "mokamas",
+    "saltinis": null,
+    "referer_domenas": "www.google.com",
+    "l": "98"
+   },
+   {
+    "kanalas": null,
+    "saltinis": null,
+    "referer_domenas": null,
+    "l": "60"
+   },
+   {
+    "kanalas": "mokamas",
+    "saltinis": null,
+    "referer_domenas": "",
+    "l": "47"
+   },
+   {
+    "kanalas": "referral",
+    "saltinis": null,
+    "referer_domenas": "bank.paysera.com",
+    "l": "9"
+   },
+   {
+    "kanalas": "referral",
+    "saltinis": "chatgpt.com",
+    "referer_domenas": "",
+    "l": "8"
+   },
+   {
+    "kanalas": "mokamas",
+    "saltinis": null,
+    "referer_domenas": "www.kaina24.lt",
+    "l": "8"
+   },
+   {
+    "kanalas": "mokamas",
+    "saltinis": "kaina24.lt",
+    "referer_domenas": "www.kaina24.lt",
+    "l": "5"
+   },
+   {
+    "kanalas": "mokamas",
+    "saltinis": null,
+    "referer_domenas": "www.kainos.lt",
+    "l": "3"
+   },
+   {
+    "kanalas": "referral",
+    "saltinis": null,
+    "referer_domenas": "www.bing.com",
+    "l": "3"
+   },
+   {
+    "kanalas": "referral",
+    "saltinis": null,
+    "referer_domenas": "www.blog2026.online",
+    "l": "2"
+   },
+   {
+    "kanalas": "mokamas",
+    "saltinis": null,
+    "referer_domenas": "www.facebook.com",
+    "l": "1"
+   }
+  ],
+  "metodai": [
+   "init",
+   "planuoti",
+   "t_ivykiai",
+   "t_dienos",
+   "uztikrinti_lenteles",
+   "dabar",
+   "verslo_diena",
+   "aplinka",
+   "druska",
+   "lankytojas_d",
+   "sutikimas",
+   "sesija",
+   "kanalai",
+   "preke_is_dl",
+   "botas",
+   "irenginys",
+   "os_seima",
+   "nars_seima",
+   "salis",
+   "marsrutai",
+   "gauti",
+   "lankytojas_30",
+   "irasyti",
+   "puslapio_tipas",
+   "beacon",
+   "agreguoti_vakar",
+   "agreguoti_diena",
+   "valyti",
+   "kontrole"
+  ],
+  "faktai_metodai": [
+   "dabar",
+   "verslo_diena",
+   "ar_testinis"
+  ],
+  "pard_metodai": [
+   "pjuvio_filtras",
+   "dim_filtras",
+   "rodom_testinius",
+   "stat_pradzia",
+   "filtro_parinktys"
+  ]
+ }
+}
