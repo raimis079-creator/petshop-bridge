@@ -1,0 +1,363 @@
+{
+ "v": "dep-142059",
+ "kurimas": 200,
+ "sid": 5470,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1668 az",
+  "faze": "A",
+  "p16248": "trash",
+  "klaidos": [],
+  "eil": {
+   "12580": {
+    "st": "publish",
+    "sand": "zb",
+    "laukas": "_own_stock_qty",
+    "av_pries": 0,
+    "kiekis": 3,
+    "jau": 0,
+    "rez": "partija #4220"
+   },
+   "12825": {
+    "st": "draft",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 0,
+    "kiekis": 3,
+    "jau": 0,
+    "rez": "partija #4224"
+   },
+   "12826": {
+    "st": "draft",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 0,
+    "kiekis": 6,
+    "jau": 0,
+    "rez": "partija #4225"
+   },
+   "12871": {
+    "st": "draft",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 0,
+    "kiekis": 3,
+    "jau": 0,
+    "rez": "partija #4228"
+   },
+   "12958": {
+    "st": "draft",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 0,
+    "kiekis": 4,
+    "jau": 0,
+    "rez": "partija #4229"
+   },
+   "12998": {
+    "st": "draft",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 0,
+    "kiekis": 3,
+    "jau": 0,
+    "rez": "partija #4230"
+   },
+   "12999": {
+    "st": "draft",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 0,
+    "kiekis": 4,
+    "jau": 0,
+    "rez": "partija #4231"
+   },
+   "14363": {
+    "st": "draft",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 0,
+    "kiekis": 3,
+    "jau": 0,
+    "rez": "partija #4232"
+   },
+   "17397": {
+    "st": "publish",
+    "sand": "av",
+    "laukas": "_own_stock_qty",
+    "av_pries": 1355,
+    "kiekis": 24,
+    "jau": 0,
+    "rez": "partija #4221"
+   },
+   "19281": {
+    "st": "publish",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 0,
+    "kiekis": 3,
+    "jau": 0,
+    "rez": "partija #4226"
+   },
+   "19290": {
+    "st": "publish",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 3,
+    "kiekis": 2,
+    "jau": 0,
+    "rez": "partija #4223"
+   },
+   "19297": {
+    "st": "publish",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 0,
+    "kiekis": 4,
+    "jau": 0,
+    "rez": "partija #4222"
+   },
+   "19306": {
+    "st": "publish",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 0,
+    "kiekis": 3,
+    "jau": 0,
+    "rez": "partija #4227"
+   }
+  }
+ },
+ "V": {
+  "v": "S1668 az",
+  "faze": "V",
+  "p16248": "trash",
+  "klaidos": [],
+  "eil": {
+   "12580": {
+    "st": "publish",
+    "sand": "zb",
+    "laukas": "_own_stock_qty",
+    "av_pries": 3,
+    "kiekis": 3,
+    "jau": 1,
+    "av_dabar": 3,
+    "cost": "",
+    "part": {
+     "id": "4220",
+     "kiekis_liko": "3",
+     "savikaina_eur": "6.8700",
+     "geriausia_iki": "2028-01-19"
+    },
+    "reg_av": null
+   },
+   "12825": {
+    "st": "draft",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 3,
+    "kiekis": 3,
+    "jau": 1,
+    "av_dabar": 3,
+    "cost": "5.28",
+    "part": {
+     "id": "4224",
+     "kiekis_liko": "3",
+     "savikaina_eur": "5.2780",
+     "geriausia_iki": "2028-01-30"
+    },
+    "reg_av": "0"
+   },
+   "12826": {
+    "st": "draft",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 6,
+    "kiekis": 6,
+    "jau": 1,
+    "av_dabar": 6,
+    "cost": "6.01",
+    "part": {
+     "id": "4225",
+     "kiekis_liko": "6",
+     "savikaina_eur": "6.0060",
+     "geriausia_iki": "2028-01-31"
+    },
+    "reg_av": "0"
+   },
+   "12871": {
+    "st": "draft",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 3,
+    "kiekis": 3,
+    "jau": 1,
+    "av_dabar": 3,
+    "cost": "6.64",
+    "part": {
+     "id": "4228",
+     "kiekis_liko": "3",
+     "savikaina_eur": "6.6430",
+     "geriausia_iki": "2028-02-29"
+    },
+    "reg_av": "0"
+   },
+   "12958": {
+    "st": "draft",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 4,
+    "kiekis": 4,
+    "jau": 1,
+    "av_dabar": 4,
+    "cost": "5.36",
+    "part": {
+     "id": "4229",
+     "kiekis_liko": "4",
+     "savikaina_eur": "5.3550",
+     "geriausia_iki": "2028-03-02"
+    },
+    "reg_av": "0"
+   },
+   "12998": {
+    "st": "draft",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 3,
+    "kiekis": 3,
+    "jau": 1,
+    "av_dabar": 3,
+    "cost": "4.27",
+    "part": {
+     "id": "4230",
+     "kiekis_liko": "3",
+     "savikaina_eur": "4.2700",
+     "geriausia_iki": "2027-03-24"
+    },
+    "reg_av": "0"
+   },
+   "12999": {
+    "st": "draft",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 4,
+    "kiekis": 4,
+    "jau": 1,
+    "av_dabar": 4,
+    "cost": "5.99",
+    "part": {
+     "id": "4231",
+     "kiekis_liko": "4",
+     "savikaina_eur": "5.9920",
+     "geriausia_iki": "2028-03-02"
+    },
+    "reg_av": "0"
+   },
+   "14363": {
+    "st": "draft",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 3,
+    "kiekis": 3,
+    "jau": 1,
+    "av_dabar": 3,
+    "cost": "4.00",
+    "part": {
+     "id": "4232",
+     "kiekis_liko": "3",
+     "savikaina_eur": "3.9970",
+     "geriausia_iki": "2027-07-11"
+    },
+    "reg_av": "0"
+   },
+   "17397": {
+    "st": "publish",
+    "sand": "av",
+    "laukas": "_own_stock_qty",
+    "av_pries": 1379,
+    "kiekis": 24,
+    "jau": 1,
+    "av_dabar": 1379,
+    "cost": "1.83",
+    "part": {
+     "id": "4221",
+     "kiekis_liko": "24",
+     "savikaina_eur": "1.6320",
+     "geriausia_iki": "2030-07-23"
+    },
+    "reg_av": "1355"
+   },
+   "19281": {
+    "st": "publish",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 3,
+    "kiekis": 3,
+    "jau": 1,
+    "av_dabar": 3,
+    "cost": "6.34",
+    "part": {
+     "id": "4226",
+     "kiekis_liko": "3",
+     "savikaina_eur": "6.3350",
+     "geriausia_iki": "2028-01-31"
+    },
+    "reg_av": "0"
+   },
+   "19290": {
+    "st": "publish",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 5,
+    "kiekis": 2,
+    "jau": 1,
+    "av_dabar": 5,
+    "cost": "8.06",
+    "part": {
+     "id": "4223",
+     "kiekis_liko": "2",
+     "savikaina_eur": "6.0410",
+     "geriausia_iki": "2028-01-01"
+    },
+    "reg_av": "3"
+   },
+   "19297": {
+    "st": "publish",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 4,
+    "kiekis": 4,
+    "jau": 1,
+    "av_dabar": 4,
+    "cost": "6.34",
+    "part": {
+     "id": "4222",
+     "kiekis_liko": "4",
+     "savikaina_eur": "6.3350",
+     "geriausia_iki": "2028-01-31"
+    },
+    "reg_av": "0"
+   },
+   "19306": {
+    "st": "publish",
+    "sand": "av",
+    "laukas": "_stock",
+    "av_pries": 3,
+    "kiekis": 3,
+    "jau": 1,
+    "av_dabar": 3,
+    "cost": "6.58",
+    "part": {
+     "id": "4227",
+     "kiekis_liko": "3",
+     "savikaina_eur": "6.5800",
+     "geriausia_iki": "2028-01-30"
+    },
+    "reg_av": "0"
+   }
+  }
+ }
+}
