@@ -1,0 +1,20 @@
+{
+ "1": {
+  "v": "S1668 at",
+  "ivykiai_hdr": "<?php\n/**\n * Plugin Name: Petshop Anketa Ivykiai\n * Description: Kontrakto §4.1 anketos ivykiai, §2 lauku istorija ir §3 brand susiejimas per REST kabliukus — M8 kodas NELIECIAMAS.\n * Version: 1.2\n *\n * ARCHITEKTURA (savininko procesas 2026-08-16: i M8 lendama tik §5, visa\n * kita — nauji failai):\n *  - Serverio ivykiai kabinami ant REST per `rest_request_before_callbacks`\n *    (momentine ps_pets kopija) ir `rest_request_after_callbacks`\n *    (skirtumas -> ps_pet_field_log + ivykis). M8 marsrutai:\n *      POST  /petshop/v1/pet-profile        -> anketa_completed (saltinis anketa)\n *      PATCH /petshop/v1/pet-profile/{id}   -> profile_updated  (klientas_profilyje)\n *      POST  /petshop/v1/pet-draft          -> anketa_completed (draft:ID)\n *      POST  /petshop/v1/pet-claim-resolve  -> profile_claimed\n *      pet-food-assign / pet-wet-product / pet-food-brand -> field_log (sistema)\n *  - Narsykles ivykiai (anketa_started, step_started/completed,\n *    anketa_abandoned su lauku busena) — atskiras JS stebetojas wp_footer'yje,\n *    siunciantis i musu AJAX `ps_anketa_ivykis` (sendBeacon — veikia pagehide).\n *  - Rasoma per Petshop_Statistika::irasyti() su sritis='anketa' ir user_id\n *    (statistika v2.2). Dvieju sluoksniu privatumas tas pats: be Complianz\n *    statistikos sutikimo — be sesijos, bet ivykis rasomas anonimiskai.\n *\n * SAZININGOS RIBOS (dokumentuota, ne nutylima):\n *  - pet-form.js NETURI step zymiu DOM'e — step numeracija yra euristika:\n *    kiekvienas .pspet-btn paspaudimas, po kurio persipiese turinys, laikomas\n *    zingsnio pabaiga. Tikslus zingsniu zemelapis atsiras, jei M8 prides\n *    data-step (atskiras savininko sprendimas, ne sio modulio darbas);\n *  - lauko \"uzpildyta\" pill'ams nustatoma pagal aria-pressed/active klase.\n *\n * v1",
+  "vardai": [
+   "anketa_started",
+   "step_started",
+   "step_completed",
+   "anketa_completed",
+   "anketa_abandoned"
+  ]
+ },
+ "v": "dep-112401",
+ "kurimas": 200,
+ "sid": 5463,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
