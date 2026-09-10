@@ -1,0 +1,24 @@
+{
+ "1": {
+  "v": "S1668 al",
+  "dydis": 3750,
+  "hdr": "<?php\n/**\n * Petshop Seseliu Sinchronas v1.0 (ZB šešėlis → AV prekė)\n *\n * KONTEKSTAS (2026-08-20, Monge sujungimas):\n *   Prekė gali gyventi dviem įrašais: AV prekė (publish, klientui) ir ZB\n *   „šešėlis\" (draft + hidden, `_ps_shadow_of` = AV prekės ID). Šešėlis\n *   NETRINAMAS, nes ZB Import #2/#3 prekes atpažįsta pagal ZB kodą `_sku` —\n *   ištrynus jį naktinis importas sukurtų iš naujo. Vietoj to importas toliau\n *   atnaujina ŠEŠĖLĮ, o šis modulis kiekius perkelia į AV prekę.\n *\n * KĄ DARO po kiekvieno ZB importo (#2/#3) ir kas valandą (saugiklis):\n *   - šešėlio `_zb_qty`/`_zb_cost`/`_zb_last_sync` → AV prekės meta\n *   - AV prekės `ps_sourc",
+  "kabliai": [
+   "add_action( 'pmxi_after_xml_import', [ __CLASS__, 'po_importo' ], 20, 1 )",
+   "add_action( 'ps_seseliai_valandinis', [ __CLASS__, 'sync' ] )",
+   "wp_schedule_event( time() + 600, 'hourly', 'ps_seseliai_valandinis' )"
+  ],
+  "fn": [
+   "function init()",
+   "function po_importo( $import_id )",
+   "function sync( $kas = 'cron' )"
+  ]
+ },
+ "v": "dep-094616",
+ "kurimas": 200,
+ "sid": 5455,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
