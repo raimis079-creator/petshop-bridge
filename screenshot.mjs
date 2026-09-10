@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFRFTVAgUFMgUzE2NjggYW4g4oCUIFJFQUQtT05MWTogc25pcHBldCAyNTE1IGthYmxpYWkgKyBhdiBlaWx1dMSXcyBrxatyaW1vL2F0bmF1amluaW1vIGxvZ2lrYS4gKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCFpc3NldCgkX0dFVFsncHNfczE2NjhhbiddKSkgcmV0dXJuOwogIGdsb2JhbCAkd3BkYjsgJGM9KHN0cmluZykkd3BkYi0+Z2V0X3ZhcigiU0VMRUNUIGNvZGUgRlJPTSB7JHdwZGItPnByZWZpeH1zbmlwcGV0cyBXSEVSRSBpZD0yNTE1Iik7ICRvPWFycmF5KCd2Jz0+J1MxNjY4IGFuJywnaWxnaXMnPT5zdHJsZW4oJGMpLCdoZHInPT5zdWJzdHIoJGMsMCw5MDApKTsKICBwcmVnX21hdGNoX2FsbCgnLyhhZGRfYWN0aW9ufGFkZF9maWx0ZXJ8d3Bfc2NoZWR1bGVfZXZlbnQpXHMqXChbXjtdezAsMTYwfS8nLCRjLCRtKTsgJG9bJ2thYmxpYWknXT0kbVswXTsKICBpZihwcmVnX21hdGNoKCcvLnswLDIwMH1kdmllanUgc2FuZGVsaXVbXHNcU117MCwxMjAwfS9pJywkYywkbTMpKSAkb1snZHZpJ109JG0zWzBdOwogIHdwX3NlbmRfanNvbigkbyk7Cn0pOwo=';
-const VER='dep-094917';
+const VER='dep-095342';
 const GKEY='ps_s1668an';
 const PHASES=["1"];
-const OUT='analize/s1668_an.json';
+const OUT='analize/s1668_an2.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
