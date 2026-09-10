@@ -1,51 +1,30 @@
 {
- "v": "dep-173326",
+ "v": "dep-151833",
  "kurimas": 200,
- "sid": 5380,
+ "sid": 5477,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "GO": {
+ "A": {
   "v": "S1669 d",
-  "xml": [
-   "964 \tpublic static function xml_sandelis( $pid ) {",
-   "965 \t\t$s = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
-   "966 \t\treturn in_array( $s, array( 'vf', 'zb' ), true );",
-   "967 \t}",
-   "968 ",
-   "969 \t/**",
-   "970 \t * AV likutis ivedamas ranka VISADA — tai musu lentyna, jos niekas",
-   "971 \t * neatsiuncia. Net VF/ZB prekes atveju: jei parsivezei ju prekiu i",
-   "972 \t * Avesos sandeli, tas kiekis yra tavo ir tu ji zinai.",
-   "973 \t */",
-   "974 \tpublic static function likutis_rankinis( $pid ) {",
-   "975 \t\treturn true;",
-   "976 \t}",
-   "977 ",
-   "978 \t/**",
-   "979 \t * Kur guli AVESOS (AV) likutis.",
-   "980 \t *",
-   "981 \t * v8.0 (savininko patikslinimas): Ambrosia, Prins, Quattro, Belacor yra"
-  ],
-  "naud": [
-   "192 *   `_ps_sandelis` = TIEKEJAS (is ko preke pirkta), o ne vieta.",
-   "605 *   Taip pat: `belacor` → `belcor_tofu` (tikroji `_ps_sandelis` reiksme),",
-   "814 * melavo: prekės turėjo ZB sandėlį, tik neturėjo `_ps_sandelis` lauko.",
-   "965 $s = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
-   "988 $sand = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
-   "995 $sand = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
-   "1084 'tiekejas'      => (string) get_post_meta( $p['pid'], '_ps_sandelis', true ),",
-   "1202 $sand = strtolower( trim( (string) get_post_meta( $pid, '_ps_sandelis', true ) ) );",
-   "2222 'pastaba' => strtoupper( (string) get_post_meta( $pid, '_ps_sandelis', true ) ) . ' · įvesta ranka kortelėje',",
-   "2772 'sand' => (string) get_post_meta( $pid, '_ps_sandelis', true ),",
-   "2967 'br' => '', 'sand' => (string) $mv( '_ps_sandelis' ),",
-   "3105 $sand_z   = strtoupper( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
-   "4731 'tiekejas'      => (string) get_post_meta( $pid, '_ps_sandelis', true ),",
-   "4866 * Butent ta akla zona leme, kad `_ps_sandelis` dingimo istorija (S718)",
-   "5054 if ( $sand === '' ) { $sand = (string) $mv( '_ps_sandelis' ); }",
-   "5327 '_ps_sandelis','_own_stock_qty','_stock','_cost_price',",
-   "5406 $sand  = $v( '_ps_sandelis' );"
-  ]
+  "xml_klaidos": 0,
+  "produktu": 2174,
+  "saknis": "product_feed",
+  "pavyzdys": "<product id=\"12452\">\n      <title>Eukanuba Active Small Adult (vištiena) 3kg</title>\n      <description>Išskirtinė pašaro sudėtis yra specialiai sukurta palaikyti optimalią fizinę būklę, išlaikyti liesus raumenis ir palaikyti energijos pusiausvyrą. Tinka mažų veislių šunims nuo 1 iki 8 metų amžiaus. Skaniose, mažose granulėse gausu šviežios vištienos ir jos yra specialiai pritaikytos mažų veislių šunų poreikiams. Be to, unikali šešiakampė forma taip pat padeda rūpintis jūsų šuns dantimis. Sukurta mitybos specialistų, patvirtinta veterinarijos gydytojų ir rekomenduojama geriausių veisėjų, EUKANUBA suteikia visą šuniui reikalingą mitybą ilgam ir sveikam gyvenimui. Pagrindiniai privalumai: L-karnitinas padeda kontroliuoti svorį, šeriuotoji juka padeda sumažinti išmatų kvapą, probiotikai FOS ir runkelių minkštimas padeda remti sveiką virškinimą, natūralūs Omega-6 ir Omega-3 šaltiniai, kad oda ir kailis būtų sveiki, antioksidantai vitaminai E ir C padeda palaikyti imunitetą, speciali granulės forma ir unikali DentaDefence dantų apsaugos technologija padeda išlaikyti dantis švarius ir sveikus Sudėtis: Džiovinta vištiena ir kalakutiena 28% (įskaitant 17% vištienos), šviežia vištiena (15%), kukurūzai, kviečiai, paukštienos riebalai, avižos, miežiai, sorgas, džiovintas runkelių minkštimas (3,5%), vištienos padažas, žuvų miltai, mineralai (įskaitant 0,35% natrio heksametafosfato), džiovintas visas kia",
+  "laukai": {
+   "title": 2174,
+   "description": 2174,
+   "item_price": 2174,
+   "stock": 2174,
+   "ean_code": 1756,
+   "manufacturer": 2173,
+   "image_url": 2174,
+   "product_url": 2174,
+   "purchase_url": 2174,
+   "categories": 2174,
+   "specs": 2174
+  },
+  "tusti": []
  }
 }
