@@ -1,218 +1,28 @@
 {
- "v": "dep-172707",
+ "v": "dep-150002",
  "kurimas": 200,
- "sid": 5377,
+ "sid": 5474,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "GO": {
+ "A": {
   "v": "S1669 a",
-  "av_laukas": [
-   "987 \tpublic static function av_laukas( $pid ) {",
-   "988 \t\t$sand = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
-   "989 \t\tif ( $sand === '' || $sand === 'av' ) { return '_stock'; }",
-   "990 \t\treturn '_own_stock_qty';",
-   "991 \t}",
-   "992 ",
-   "993 \t/** Kur guli TIEKEJO likutis. Tik ten, kur tiekejas apskritai yra. */",
-   "994 \tpublic static function tiekejo_laukas( $pid ) {",
-   "995 \t\t$sand = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
-   "996 \t\treturn ( $sand === '' || $sand === 'av' ) ? '' : '_stock';",
-   "997 \t}",
-   "998 ",
-   "999 \t/** Ar TIEKEJO likutis ivedamas ranka (t. y. tiekejas neduoda XML). */",
-   "1000 \tpublic static function tiekejo_likutis_rankinis( $pid ) {",
-   "1001 \t\t$t = self::tiekejo_laukas( $pid );",
-   "1002 \t\treturn $t !== '' && ! self::xml_sandelis( $pid );",
-   "1003 \t}",
-   "1004 ",
-   "1005 \tpublic static function av_dabar( $pid ) {",
-   "1006 \t\t$l = self::av_laukas( $pid );",
-   "1007 \t\t$v = get_post_meta( $pid, $l, true );",
-   "1008 \t\treturn ( $v === '' || $v === null ) ? null : (int) $v;"
-  ],
-  "av_dabar": [
-   "1005 \tpublic static function av_dabar( $pid ) {",
-   "1006 \t\t$l = self::av_laukas( $pid );",
-   "1007 \t\t$v = get_post_meta( $pid, $l, true );",
-   "1008 \t\treturn ( $v === '' || $v === null ) ? null : (int) $v;",
-   "1009 \t}",
-   "1010 ",
-   "1011 \t/**",
-   "1012 \t * Partija: [{id, ivestis}] kur ivestis „12\", „+5\" arba „-2\".",
-   "1013 \t * Viskas arba nieko: pirma apskaičiuojam ir patikrinam, tik tada rašom.",
-   "1014 \t */",
-   "1015 \tpublic static function ajax_av_irasyti() {",
-   "1016 \t\tif ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); }",
-   "1017 \t\tcheck_ajax_referer( 'ps_kat', 'nonce' );",
-   "1018 ",
-   "1019 \t\t$priez = isset( $_POST['priezastis'] ) ? sanitize_key( $_POST['priezastis'] ) : '';",
-   "1020 \t\tif ( ! isset( self::priezastys()[ $priez ] ) ) { wp_send_json_error( 'nenurodyta priežastis' ); }",
-   "1021 ",
-   "1022 \t\t$raw = isset( $_POST['pakeitimai'] ) ? wp_unslash( $_POST['pakeitimai'] ) : '';"
-  ],
-  "tiekejo_laukas": [
-   "994 \tpublic static function tiekejo_laukas( $pid ) {",
-   "995 \t\t$sand = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) );",
-   "996 \t\treturn ( $sand === '' || $sand === 'av' ) ? '' : '_stock';",
-   "997 \t}",
-   "998 ",
-   "999 \t/** Ar TIEKEJO likutis ivedamas ranka (t. y. tiekejas neduoda XML). */",
-   "1000 \tpublic static function tiekejo_likutis_rankinis( $pid ) {",
-   "1001 \t\t$t = self::tiekejo_laukas( $pid );",
-   "1002 \t\treturn $t !== '' && ! self::xml_sandelis( $pid );",
-   "1003 \t}",
-   "1004 ",
-   "1005 \tpublic static function av_dabar( $pid ) {",
-   "1006 \t\t$l = self::av_laukas( $pid );",
-   "1007 \t\t$v = get_post_meta( $pid, $l, true );",
-   "1008 \t\treturn ( $v === '' || $v === null ) ? null : (int) $v;",
-   "1009 \t}",
-   "1010 ",
-   "1011 \t/**",
-   "1012 \t * Partija: [{id, ivestis}] kur ivestis „12\", „+5\" arba „-2\".",
-   "1013 \t * Viskas arba nieko: pirma apskaičiuojam ir patikrinam, tik tada rašom."
-  ],
-  "su_own": 40,
-  "prekes": [
-   {
-    "id": 22443,
-    "sand": "vf",
-    "own": "1",
-    "_stock": "76.000000",
-    "manage": "yes",
-    "av_laukas": "_own_stock_qty",
-    "av_dabar": 1
-   },
-   {
-    "id": 19107,
-    "sand": "av",
-    "own": "1",
-    "_stock": "0",
-    "manage": "yes",
-    "av_laukas": "_stock",
-    "av_dabar": 0
-   },
-   {
-    "id": 19036,
-    "sand": "vf",
-    "own": "11",
-    "_stock": "197.000000",
-    "manage": "yes",
-    "av_laukas": "_own_stock_qty",
-    "av_dabar": 11
-   },
-   {
-    "id": 19033,
-    "sand": "vf",
-    "own": "21",
-    "_stock": "945.000000",
-    "manage": "yes",
-    "av_laukas": "_own_stock_qty",
-    "av_dabar": 21
-   },
-   {
-    "id": 19030,
-    "sand": "vf",
-    "own": "17",
-    "_stock": "121.000000",
-    "manage": "yes",
-    "av_laukas": "_own_stock_qty",
-    "av_dabar": 17
-   },
-   {
-    "id": 19027,
-    "sand": "vf",
-    "own": "10",
-    "_stock": "477.000000",
-    "manage": "yes",
-    "av_laukas": "_own_stock_qty",
-    "av_dabar": 10
-   },
-   {
-    "id": 19024,
-    "sand": "vf",
-    "own": "11",
-    "_stock": "1510.000000",
-    "manage": "yes",
-    "av_laukas": "_own_stock_qty",
-    "av_dabar": 11
-   },
-   {
-    "id": 19021,
-    "sand": "vf",
-    "own": "15",
-    "_stock": "75.000000",
-    "manage": "yes",
-    "av_laukas": "_own_stock_qty",
-    "av_dabar": 15
-   },
-   {
-    "id": 19018,
-    "sand": "vf",
-    "own": "15",
-    "_stock": "826.000000",
-    "manage": "yes",
-    "av_laukas": "_own_stock_qty",
-    "av_dabar": 15
-   },
-   {
-    "id": 19015,
-    "sand": "vf",
-    "own": "14",
-    "_stock": "251.000000",
-    "manage": "yes",
-    "av_laukas": "_own_stock_qty",
-    "av_dabar": 14
-   },
-   {
-    "id": 18614,
-    "sand": "av",
-    "own": "17",
-    "_stock": "40.000000",
-    "manage": "yes",
-    "av_laukas": "_stock",
-    "av_dabar": 40
-   },
-   {
-    "id": 18611,
-    "sand": "av",
-    "own": "12",
-    "_stock": "59.000000",
-    "manage": "yes",
-    "av_laukas": "_stock",
-    "av_dabar": 59
-   },
-   {
-    "id": 18608,
-    "sand": "av",
-    "own": "12",
-    "_stock": "76.000000",
-    "manage": "yes",
-    "av_laukas": "_stock",
-    "av_dabar": 76
-   },
-   {
-    "id": 18605,
-    "sand": "av",
-    "own": "17",
-    "_stock": "105.000000",
-    "manage": "yes",
-    "av_laukas": "_stock",
-    "av_dabar": 105
-   },
-   {
-    "id": 18602,
-    "sand": "av",
-    "own": "28",
-    "_stock": "46.000000",
-    "manage": "yes",
-    "av_laukas": "_stock",
-    "av_dabar": 46
-   }
-  ],
-  "ne_av_su_own": 65,
-  "av_su_own": 22
+  "cron_kitas": "2026-09-10 18:06:04",
+  "cron_paskutinis": {
+   "laikas": "2026-09-10 17:36:11",
+   "uzsakymu": 4,
+   "numeriu": 4,
+   "uzklausu": 4,
+   "pakeista": 0,
+   "lp": 0,
+   "issiusta": 0,
+   "pristatyta": 0,
+   "grizta": 0,
+   "klaidos": 0,
+   "s": 0.2
+  },
+  "disable_wp_cron": false,
+  "FATAL": "array_walk_recursive(): Argument #1 ($array) must be of type array, string given @13"
  }
 }
