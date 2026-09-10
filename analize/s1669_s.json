@@ -1,0 +1,68 @@
+{
+ "v": "dep-161918",
+ "kurimas": 200,
+ "sid": 5492,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1669 s",
+  "lygiai": [
+   {
+    "lygis": "deprecated",
+    "c": "9",
+    "k": "5930"
+   },
+   {
+    "lygis": "fatal",
+    "c": "3",
+    "k": "3"
+   },
+   {
+    "lygis": "notice",
+    "c": "2",
+    "k": "8"
+   },
+   {
+    "lygis": "warning",
+    "c": "2027",
+    "k": "34690"
+   }
+  ],
+  "sunkios": [
+   {
+    "pask": "2026-09-10 13:00:15",
+    "pirm": "2026-09-10 13:00:15",
+    "lygis": "fatal",
+    "k": "1",
+    "z": "Uncaught TypeError: array_slice(): Argument #1 ($array) must be of type array, false given in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : ",
+    "f": "wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:12"
+   },
+   {
+    "pask": "2026-09-09 14:05:28",
+    "pirm": "2026-09-09 14:05:28",
+    "lygis": "fatal",
+    "k": "1",
+    "z": "Cannot declare class Petshop_Welcome_Modal, because the name is already in use",
+    "f": "wp-content/plugins/petshop-core/includes/class-welcome-modal.php:32"
+   },
+   {
+    "pask": "2026-09-09 06:32:42",
+    "pirm": "2026-09-09 06:32:42",
+    "lygis": "fatal",
+    "k": "1",
+    "z": "Allowed memory size of 268435456 bytes exhausted (tried to allocate 28672 bytes)",
+    "f": "wp-content/plugins/wp-all-import-pro/models/import/record.php:3699"
+   }
+  ],
+  "imp7": {
+   "last_activity": "2026-09-10 16:20:04",
+   "triggered": "0",
+   "processing": "0",
+   "executing": "0",
+   "iteration": "1923",
+   "imported": "4"
+  }
+ }
+}
