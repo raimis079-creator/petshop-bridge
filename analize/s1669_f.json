@@ -1,0 +1,64 @@
+{
+ "v": "dep-153449",
+ "kurimas": 200,
+ "sid": 5479,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1669 f",
+  "f": {
+   "wp-content/mu-plugins/petshop-ga4-serveris.php": {
+    "eil": 275,
+    "hit": [
+     "15: * Aplinka: siunčia TIK iš petshop.lt hosto; dev'e — tik debug/validacija (option `ps_ga4_mp_dev=1` leidžia realiai siųsti iš dev).",
+     "16: * Raktas: option `ps_ga4_mp_secret` (GA4 Admin → Data Streams → Web → Measurement Protocol API secrets). Kol nėra — nesiunčia, žymi „laukia rakto“.",
+     "19: if ( ! defined( 'ABSPATH' ) ) { exit; }",
+     "21: final class Petshop_GA4_Serveris {",
+     "30: add_action( 'woocommerce_checkout_create_order', array( __CLASS__, 'isiminti_slapukus' ), 10, 1 );",
+     "32: add_action( $h, array( __CLASS__, 'siusti' ), 20, 1 );",
+     "34: add_action( 'init', array( __CLASS__, 'cron_reg' ) );",
+     "35: add_action( self::CRON, array( __CLASS__, 'cron' ) );",
+     "36: add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 30 );",
+     "37: add_filter( 'petshop_ataskaitu_aprasai', function ( $a ) { $a[ self::PUSLAPIS ] = 'Woo apmokėti · ps_fakt · GA4 purchase (serveris) · GA4 mato — trys skaičiai š",
+     "38: add_action( 'template_redirect', array( __CLASS__, 'debug_get' ), 1 );",
+     "44: if ( 'petshop.lt' === $h || 'www.petshop.lt' === $h ) { return true; }",
+     "45: return (bool) get_option( 'ps_ga4_mp_dev' );",
+     "47: public static function secret() { return trim( (string) get_option( 'ps_ga4_mp_secret', '' ) ); }",
+     "51: if ( ! is_object( $order ) ) { return; }",
+     "53: if ( $cid ) { $order->update_meta_data( '_ps_ga_cid', $cid ); }",
+     "55: if ( $sid ) { $order->update_meta_data( '_ps_ga_sid', $sid ); }",
+     "61: if ( empty( $_COOKIE['_ga'] ) ) { return ''; }",
+     "63: if ( preg_match( '/^GA1\\.\\d\\.(\\d+\\.\\d+)$/', $v, $m ) ) { return $m[1]; }",
+     "68: if ( empty( $_COOKIE[ $k ] ) ) { return ''; }",
+     "70: if ( preg_match( '/^GS1\\.\\d\\.(\\d+)\\./', $v, $m ) ) { return $m[1]; }",
+     "71: if ( preg_match( '/^GS2\\.\\d\\.s(\\d+)/', $v, $m ) ) { return $m[1]; }",
+     "88: if ( function_exists( 'petshop_gtm_brand' ) ) { $b = petshop_gtm_brand( $pid ); if ( $b ) { $row['item_brand'] = $b; } }",
+     "90: if ( $cats && ! is_wp_error( $cats ) ) { $row['item_category'] = $cats[0]->name; }",
+     "95: if ( '' === $cid ) { $cid = 'ps.' . sprintf( '%u', crc32( 'ps-' . $order->get_id() . '-' . $order->get_billing_email() ) ) . '.' . $order->get_date_created()->getTimest",
+     "108: if ( '' === $params['coupon'] ) { unset( $params['coupon'] ); }",
+     "110: if ( '' !== $sid ) { $params['session_id'] = $sid; }",
+     "118: if ( time() - $ts < 71 * HOUR_IN_SECONDS ) { $body['timestamp_micros'] = $ts * 1000000; }",
+     "126: if ( ! $order_id || isset( $done[ $order_id ] ) ) { return; }",
+     "128: if ( ! $order || ! in_array( $order->get_status(), array( 'processing', 'on-hold', 'completed' ), true ) ) { return; }",
+     "129: if ( $order->get_meta( '_ps_ga4_mp_at' ) ) { return; }",
+     "131: if ( ! self::prod() ) { $order->update_meta_data( '_ps_ga4_mp_kodas', 'dev-nesiusta' ); $order->save(); return; }",
+     "133: if ( '' === $secret ) { $order->update_meta_data( '_ps_ga4_mp_kodas', 'laukia-rakto' ); $order->save(); return; }",
+     "135: $r = wp_remote_post( 'https://www.google-analytics.com/mp/collect?measurement_id=' . self::MID . '&api_secret=' . rawurlencode( $secret ), array(",
+     "138: if ( '204' === $code ) { $order->update_meta_data( '_ps_ga4_mp_at', current_time( 'mysql', true ) ); }",
+     "139: $order->update_meta_data( '_ps_ga4_mp_kodas', $code );",
+     "140: $order->update_meta_data( '_ps_ga4_mp_cid', $body['client_id'] );",
+     "144: /* Debug endpoint validacija — nieko neįrašo GA4, grąžina validationMessages. Tik admin arba ?ps_ga4_dry su GET raktu. */",
+     "147: if ( ! $order ) { return array( 'klaida' => 'nėra užsakymo' ); }",
+     "150: $r = wp_remote_post( 'https://www.google-analytics.com/debug/mp/collect?measurement_id=' . self::MID . '&api_secret=' . rawurlencode( $secret ), array(",
+     "155: if ( ! isset( $_GET['ps_ga4_dry'] ) || ! current_user_can( 'manage_options' ) ) { return; }",
+     "157: echo wp_json_encode( self::validuoti( (int) $_GET['ps_ga4_dry'] ), JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT ); exit;",
+     "163: if ( is_string( $sa ) ) { $sa = json_decode( $sa, true ); }",
+     "167: $t = get_transient( 'ps_ga4_ro_token' );",
+     "168: if ( $t ) { return $t; }"
+    ]
+   }
+  }
+ }
+}
