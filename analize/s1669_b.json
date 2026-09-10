@@ -1,242 +1,113 @@
 {
- "v": "dep-172916",
+ "v": "dep-150200",
  "kurimas": 200,
- "sid": 5378,
+ "sid": 5475,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "GO": {
+ "A": {
   "v": "S1669 b",
-  "av_stock": [
-   "7 * KODĖL ATSKIRAS LAUKAS, o ne WooCommerce `_stock`:",
-   "8 *   VF/ZB sinchronizacija `_stock` PERRAŠO kas valandą (Import #6, VF cron).",
-   "9 *   `_own_stock_qty` su sync nesikerta.",
-   "36 const META = '_own_stock_qty';",
-   "38 public static function init() {",
-   "53 public static function sortable( $cols ) {",
-   "58 public static function sort_query( $q ) {",
-   "66 public static function filter_dropdown() {",
-   "78 public static function filter_query( $q ) {",
-   "96 public static function qty( $product_id ) {",
-   "103 public static function has( $product_id, $need = 1 ) {",
-   "109 public static function decrease( $product_id, $by, $priezastis = '' ) {",
-   "122 public static function increase( $product_id, $by, $priezastis = '' ) {",
-   "133 * SAUGIKLIS (S477): `_own_stock_qty` rašymas NEGALI paliesti `_stock`.",
-   "135 * PRIEŽASTIS: S468 testo metu Josera `_stock` iš 653 tapo 2 — lygiai tiek, kiek",
-   "137 * perrašyti `_stock`. Tikroji reikšmė ateina iš VF sync (`_vf_qty`).",
-   "139 * Prieš rašydami įsimenam `_stock`; po rašymo — jei pasikeitė, grąžinam.",
-   "141 protected static function apsaugotas_rasymas( $product_id, $reiksme ) {",
-   "143 $stock_pries = get_post_meta( $product_id, '_stock', true );",
-   "148 $stock_po = get_post_meta( $product_id, '_stock', true );",
-   "150 update_post_meta( $product_id, '_stock', $stock_pries );",
-   "151 if ( function_exists( 'wc_update_product_stock_status' ) ) {",
-   "154 error_log( \"[Petshop_AV_Stock] SAUGIKLIS: _stock $product_id buvo pakeistas \"",
-   "160 protected static function log( $product_id, $buvo, $tapo, $priezastis ) {",
-   "161 $log = get_post_meta( (int) $product_id, '_own_stock_log', true );",
-   "172 update_post_meta( (int) $product_id, '_own_stock_log', $log );",
-   "177 public static function field() {",
-   "182 'id'          => 'ps_own_stock_qty',",
-   "198 . ' · WooCommerce likutis: <strong>' . esc_html( (string) get_post_meta( $post->ID, '_stock', true ) ) . '</strong>'",
-   "204 public static function save( $post_id ) {",
-   "205 if ( ! isset( $_POST['ps_own_stock_qty'] ) ) { return; }",
-   "206 $raw = trim( (string) wp_unslash( $_POST['ps_own_stock_qty'] ) );",
-   "222 public static function column( $cols ) {",
-   "226 if ( 'is_in_stock' === $k ) { $nauji['ps_av'] = 'AV'; }",
-   "232 public static function column_value( $col, $post_id ) {",
-   "243 public static function quick_edit( $col, $post_type ) {",
-   "251 <input type=\"number\" name=\"ps_own_stock_qty\" class=\"ps-av-qty\"",
-   "260 public static function quick_edit_js() {",
-   "286 var v = (p.get('ps_own_stock_qty') || '').trim();",
-   "297 public static function quick_edit_save( $post_id, $post ) {",
-   "298 if ( ! isset( $_POST['ps_own_stock_qty'] ) ) { return; }"
-  ],
-  "kiti": [
-   "petshop-av-source.php:24 *      Resolveris grąžina `legacy`; mes verčiam į `av`. `_own_stock_qty` NEREIKIA.",
-   "petshop-av-source.php:26 *      Likutis `_own_stock_qty`; `_stock` perrašo sync.",
-   "petshop-av-source.php:59 // Joms `_own_stock_qty` NEREIKIA — jos ir taip AV.",
-   "petshop-av-reduce.php:9 * Jei papildomai mažintume `_own_stock_qty`, AV prekei nusirašytų DU kartus.",
-   "petshop-av-reduce.php:12 *   _ps_source = av   → mažinam `_own_stock_qty`, WC mažinimą PRALEIDŽIAM",
-   "petshop-av-reduce.php:65 // GRYNAI AV prekės likutis gyvena `_stock`, ne `_own_stock_qty` —"
-  ],
-  "dubliai": [
-   {
-    "id": 16950,
-    "sku": "B29194",
-    "p": "Papildas gyvūnams Bioveterinary Sąnariai",
-    "own": "8",
-    "_stock": 40,
-    "sutampa": 0
+  "cron_kitas": "2026-09-10 18:06:04",
+  "cron_paskutinis": {
+   "laikas": "2026-09-10 17:36:11",
+   "uzsakymu": 4,
+   "numeriu": 4,
+   "uzklausu": 4,
+   "pakeista": 0,
+   "lp": 0,
+   "issiusta": 0,
+   "pristatyta": 0,
+   "grizta": 0,
+   "klaidos": 0,
+   "s": 0.2
+  },
+  "disable_wp_cron": false,
+  "u": {
+   "35872": {
+    "nr": "35872",
+    "status": "processing",
+    "issiusta": "",
+    "sekimas": "{\"V07267E1000064\":{\"k\":5,\"t\":\"At pickup point waiting for courier\",\"e\":\"At pickup waiting for courier\",\"d\":\"2026-09-10 10:31:23\",\"v\":\"Nemen\\u010din\\u0117s NORFA Venipak pa\\u0161tomatas\",\"n\":2,\"dalis\":\"av\",\"tikr\":\"2026-09-10 11:07:19\"}}",
+    "api": {
+     "V07267E1000064": [
+      {
+       "shipment_id": 107992544,
+       "pack_no": "V07267E1000064",
+       "event": "Shipment created",
+       "pack_status": 0,
+       "pack_status_text": "At sender",
+       "location": {
+        "place": null,
+        "address": null,
+        "city": null,
+        "lat": null,
+        "lng": null
+       },
+       "date": "2026-09-09 19:53:08",
+       "date_iso": "2026-09-09T19:53:08+03:00"
+      },
+      {
+       "shipment_id": 107992544,
+       "pack_no": "V07267E1000064",
+       "event": "At pickup waiting for courier",
+       "pack_status": 5,
+       "pack_status_text": "At pickup point waiting for courier",
+       "location": {
+        "place": "Nemenčinės NORFA Venipak paštomatas",
+        "address": "Vilijos g. 2",
+        "city": "Nemenčinė",
+        "lat": 54.8449568,
+        "lng": 25.4598062
+       },
+       "date": "2026-09-10 10:31:23",
+       "date_iso": "2026-09-10T10:31:23+03:00"
+      }
+     ]
+    }
    },
-   {
-    "id": 16953,
-    "sku": "2704",
-    "p": "Papildas gyvūnams Bioveterinary Oda ir k",
-    "own": "2",
-    "_stock": 39,
-    "sutampa": 0
-   },
-   {
-    "id": 16956,
-    "sku": "2703",
-    "p": "Papildas gyvūnams Bioveterinary Multimin",
-    "own": "2",
-    "_stock": 73,
-    "sutampa": 0
-   },
-   {
-    "id": 16959,
-    "sku": "2702",
-    "p": "Papildas gyvūnams Bioveterinary Extra St",
-    "own": "7",
-    "_stock": 37,
-    "sutampa": 0
-   },
-   {
-    "id": 17394,
-    "sku": "M14229",
-    "p": "Monge Monoproteico Solo Tacchino – Monop",
-    "own": "25",
-    "_stock": 414,
-    "sutampa": 0
-   },
-   {
-    "id": 17400,
-    "sku": "M14236",
-    "p": "Monge Monoproteico Solo Agnello – Monopr",
-    "own": "22",
-    "_stock": 874,
-    "sutampa": 0
-   },
-   {
-    "id": 17403,
-    "sku": "m14441",
-    "p": "Monge Fresh Puppy Pate and chunkies Veal",
-    "own": "9",
-    "_stock": 190,
-    "sutampa": 0
-   },
-   {
-    "id": 17406,
-    "sku": "m14458",
-    "p": "Monge Fresh Pate and chunkies Veal - kon",
-    "own": "9",
-    "_stock": 420,
-    "sutampa": 0
-   },
-   {
-    "id": 17409,
-    "sku": "m14472",
-    "p": "Monge Fresh Pate and chunkies Chicken - ",
-    "own": "13",
-    "_stock": 0,
-    "sutampa": 0
-   },
-   {
-    "id": 17412,
-    "sku": "m12607",
-    "p": "Monge BWild begrūdžiai konservai šuniuka",
-    "own": "7",
-    "_stock": 157,
-    "sutampa": 0
-   },
-   {
-    "id": 17415,
-    "sku": "m12614",
-    "p": "Monge BWild begrūdžiai konservai šunims ",
-    "own": "17",
-    "_stock": 273,
-    "sutampa": 0
-   },
-   {
-    "id": 17418,
-    "sku": "m12621",
-    "p": "Monge BWild begrūdžiai konservai šunims ",
-    "own": "20",
-    "_stock": 216,
-    "sutampa": 0
-   },
-   {
-    "id": 17421,
-    "sku": "m12638",
-    "p": "Monge BWild begrūdžiai konservai šunims ",
-    "own": "13",
-    "_stock": 359,
-    "sutampa": 0
-   },
-   {
-    "id": 18593,
-    "sku": "AM20",
-    "p": "Exclusion Hypoallergenic konservai šunim",
-    "own": "28",
-    "_stock": 67,
-    "sutampa": 0
-   },
-   {
-    "id": 18596,
-    "sku": "QM37",
-    "p": "Exclusion Hypoallergenic konservai šunim",
-    "own": "17",
-    "_stock": 77,
-    "sutampa": 0
-   },
-   {
-    "id": 18599,
-    "sku": "PM37",
-    "p": "Exclusion Hypoallergenic konservai šunim",
-    "own": "19",
-    "_stock": 1106,
-    "sutampa": 0
-   },
-   {
-    "id": 18602,
-    "sku": "PM20",
-    "p": "Exclusion Hypoallergenic konservai šunim",
-    "own": "28",
-    "_stock": 46,
-    "sutampa": 0
-   },
-   {
-    "id": 18605,
-    "sku": "VM37",
-    "p": "Exclusion Hypoallergenic konservai šunim",
-    "own": "17",
-    "_stock": 105,
-    "sutampa": 0
-   },
-   {
-    "id": 18608,
-    "sku": "HM37",
-    "p": "Exclusion Hypoallergenic konservai šunim",
-    "own": "12",
-    "_stock": 76,
-    "sutampa": 0
-   },
-   {
-    "id": 18611,
-    "sku": "DM37",
-    "p": "Exclusion Hypoallergenic konservai šunim",
-    "own": "12",
-    "_stock": 59,
-    "sutampa": 0
-   },
-   {
-    "id": 18614,
-    "sku": "DM20",
-    "p": "Exclusion Hypoallergenic konservai šunim",
-    "own": "17",
-    "_stock": 40,
-    "sutampa": 0
-   },
-   {
-    "id": 19107,
-    "sku": "b43849",
-    "p": "BIOVETERINARY STRESS CONTROL – stresą ma",
-    "own": "1",
-    "_stock": 0,
-    "sutampa": 0
+   "35882": {
+    "nr": "1002",
+    "status": "processing",
+    "issiusta": "",
+    "sekimas": "{\"V07267E1000067\":{\"k\":5,\"t\":\"At pickup point waiting for courier\",\"e\":\"At pickup waiting for courier\",\"d\":\"2026-09-10 10:31:52\",\"v\":\"Nemen\\u010din\\u0117s NORFA Venipak pa\\u0161tomatas\",\"n\":2,\"dalis\":\"av\",\"tikr\":\"2026-09-10 11:07:19\"}}",
+    "api": {
+     "V07267E1000067": [
+      {
+       "shipment_id": 107999788,
+       "pack_no": "V07267E1000067",
+       "event": "Shipment created",
+       "pack_status": 0,
+       "pack_status_text": "At sender",
+       "location": {
+        "place": null,
+        "address": null,
+        "city": null,
+        "lat": null,
+        "lng": null
+       },
+       "date": "2026-09-10 08:08:48",
+       "date_iso": "2026-09-10T08:08:48+03:00"
+      },
+      {
+       "shipment_id": 107999788,
+       "pack_no": "V07267E1000067",
+       "event": "At pickup waiting for courier",
+       "pack_status": 5,
+       "pack_status_text": "At pickup point waiting for courier",
+       "location": {
+        "place": "Nemenčinės NORFA Venipak paštomatas",
+        "address": "Vilijos g. 2",
+        "city": "Nemenčinė",
+        "lat": 54.8449568,
+        "lng": 25.4598062
+       },
+       "date": "2026-09-10 10:31:52",
+       "date_iso": "2026-09-10T10:31:52+03:00"
+      }
+     ]
+    }
    }
-  ],
-  "dubliu_n": 22
+  }
  }
 }
