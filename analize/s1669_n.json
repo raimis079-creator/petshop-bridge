@@ -1,0 +1,50 @@
+{
+ "v": "dep-160412",
+ "kurimas": 200,
+ "sid": 5487,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1669 n",
+  "faze": "D",
+  "pries": "54803ace77565125284333ba00b7838e",
+  "po": "5eaad2aeda54a42710b81e2b220f7b58",
+  "ping": 200,
+  "rez": "OK"
+ },
+ "G": {
+  "v": "S1669 n",
+  "faze": "G",
+  "md5": "5eaad2aeda54a42710b81e2b220f7b58",
+  "google_mtime_pries": 1789003823,
+  "gen": "{\"versija\":\"2.2.0\",\"dry\":0,\"kandidatu\":2193,\"kanalai\":{\"kaina24\":{\"irasyta\":2193,\"praleista_isjungta\":0,\"be_gtin\":428,\"baitai\":6056566},\"kainos\":{\"irasyta\":2193,\"praleista_isjungta\":0,\"be_gtin\":428,\"baitai\":5563689}},\"praleista\":{\"nera_kainos\":0,\"nera_objekto\":0},\"pvz\":[\"  <product id=\\\"12452\\\">\\n    <title><![CDATA[Eukanuba Active Small Adult (vi\\u0161tiena) 3kg]]><\\/title>\\n    <description><![CDATA[I\\u0161skirtin\\u0117 pa\\u0161aro sud\\u0117tis yra specialiai sukurta palaikyti optimali\\u0105 fizin\\u0119 b\\u016bkl\\u0119, i\\u0161laikyti liesus raumenis ir palaikyti energijos pusiausvyr\\u0105. Tinka ma\\u017e\\u0173 veisli\\u0173 \\u0161unims nuo 1 iki 8 met\\u0173 am\\u017eiaus. Skaniose, ma\\u017e",
+  "f": {
+   "kaina24": {
+    "keista": "19:05:47",
+    "url": 2193,
+    "su_utm": 2193,
+    "pvz": "https://petshop.lt/product/eukanuba-active-small-adult-vistiena-3kg/?utm_source=kaina24"
+   },
+   "kainos": {
+    "keista": "19:05:47",
+    "url": 2193,
+    "su_utm": 2193,
+    "pvz": "https://petshop.lt/product/eukanuba-active-small-adult-vistiena-3kg/?utm_source=kainos"
+   }
+  },
+  "google_nekeistas": true,
+  "http": {
+   "/feed/kaina24/": [
+    200,
+    false
+   ],
+   "/feed/kainos/": [
+    200,
+    false
+   ]
+  },
+  "preke_su_utm": 200
+ }
+}
