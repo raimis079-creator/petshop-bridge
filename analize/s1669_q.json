@@ -1,0 +1,161 @@
+{
+ "v": "dep-161556",
+ "kurimas": 200,
+ "sid": 5490,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1669 q",
+  "lent": null,
+  "stulp": [],
+  "pask": [],
+  "cron_tyli": {
+   "wcdn_ts_tracker_send_event": [
+    "once_in_week",
+    "09-04 10:40",
+    "09-11 10:40"
+   ]
+  },
+  "imp": {
+   "5": {
+    "id": "5",
+    "name": "vf-feed.xml",
+    "path": "/wpallimport/files/vf-feed.xml",
+    "type": "file",
+    "feed_type": "xml",
+    "last_activity": "2026-09-10 03:31:56",
+    "triggered": "0",
+    "processing": "0",
+    "executing": "0",
+    "iteration": "87",
+    "count": "2392",
+    "imported": "181",
+    "updated": "181",
+    "failed": "0",
+    "canceled": "0",
+    "registered_on": "2026-09-10 03:31:56",
+    "x": ""
+   },
+   "7": {
+    "id": "7",
+    "name": "vf-feed.xml",
+    "path": "/wpallimport/files/vf-feed.xml",
+    "type": "file",
+    "feed_type": "xml",
+    "last_activity": "2026-09-10 16:17:01",
+    "triggered": "1",
+    "processing": "1",
+    "executing": "0",
+    "iteration": "1922",
+    "count": "2403",
+    "imported": "1",
+    "updated": "1",
+    "failed": "0",
+    "canceled": "0",
+    "registered_on": "2026-09-10 16:17:01",
+    "x": ""
+   }
+  },
+  "hist": {
+   "5": [
+    {
+     "date": "2026-09-10 03:31:02",
+     "type": "processing",
+     "time_run": "54",
+     "s": "import finished & cron un-triggered<br>0 Produktai created 181 updated 2211 skipped"
+    },
+    {
+     "date": "2026-09-10 03:30:02",
+     "type": "trigger",
+     "time_run": null,
+     "s": "triggered by cron"
+    },
+    {
+     "date": "2026-09-09 03:31:02",
+     "type": "processing",
+     "time_run": "437",
+     "s": "import finished & cron un-triggered<br>0 Produktai created 367 updated 2025 skipped"
+    },
+    {
+     "date": "2026-09-09 03:30:02",
+     "type": "trigger",
+     "time_run": null,
+     "s": "triggered by cron"
+    }
+   ],
+   "7": [
+    {
+     "date": "2026-09-10 16:16:02",
+     "type": "processing",
+     "time_run": null,
+     "s": "cron processing"
+    },
+    {
+     "date": "2026-09-10 16:15:02",
+     "type": "trigger",
+     "time_run": null,
+     "s": "triggered by cron"
+    },
+    {
+     "date": "2026-09-10 15:16:02",
+     "type": "processing",
+     "time_run": "250",
+     "s": "import finished & cron un-triggered<br>0 Produktai created 8 updated 2395 skipped"
+    },
+    {
+     "date": "2026-09-10 15:15:02",
+     "type": "trigger",
+     "time_run": null,
+     "s": "triggered by cron"
+    }
+   ]
+  },
+  "vf_cron": {
+   "petshop_vf_feed_hourly": [
+    "09-10 20:05",
+    "09-10 19:05"
+   ],
+   "petshop_vf_sync_stock_hourly": [
+    "09-10 19:59",
+    "09-10 18:59"
+   ],
+   "petshop_vf_reprice_daily": [
+    null,
+    null
+   ],
+   "petshop_vf_publish_daily": [
+    null,
+    null
+   ],
+   "ps_feeds_naktinis": [
+    "09-11 04:30",
+    "09-10 04:30"
+   ],
+   "petshop_import_tempas": [
+    "09-10 19:17",
+    "09-10 19:15"
+   ]
+  },
+  "vf_opt": [
+   {
+    "option_name": "petshop_vf_publish_last_run",
+    "v": "a:2:{s:4:\"when\";s:19:\"2026-09-10 07:00:28\";s:7:\"applied\";i:5;}"
+   },
+   {
+    "option_name": "petshop_vf_reprice_last_run",
+    "v": "a:2:{s:4:\"when\";s:19:\"2026-09-10 06:00:58\";s:7:\"applied\";i:18;}"
+   },
+   {
+    "option_name": "petshop_vf_stock_last_run",
+    "v": "a:2:{s:4:\"when\";s:19:\"2026-09-10 19:00:38\";s:7:\"applied\";i:1210;}"
+   }
+  ],
+  "dropship_opt": [],
+  "prisij": {
+   "kiek": 0,
+   "iki": 0
+  }
+ }
+}
