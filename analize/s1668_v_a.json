@@ -1,0 +1,384 @@
+{
+ "v": "dep-081029",
+ "list_praleistas": "Error: fx:list",
+ "kurimas": 200,
+ "sid": 5437,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1668 v",
+  "faze": "A",
+  "ok": 64,
+  "skip": [],
+  "pavyzdziai": [
+   [
+    16540,
+    "Quattro SB su lašiša ir kriliu sausas suaugusių ma",
+    "13→15",
+    "6.45→9.92",
+    "EAN 4770107253772/4770107253772"
+   ],
+   [
+    16558,
+    "Quattro SB 7kg su lašiša ir kriliu sausas suaugusi",
+    "47→52",
+    "23.31→34.38",
+    "EAN 4770107253796/4770107253796"
+   ],
+   [
+    16546,
+    "Quattro SB su antiena sausas suaugusių mažų veisli",
+    "12→14",
+    "5.95→9.26",
+    "EAN 4770107253802/4770107253802"
+   ],
+   [
+    16564,
+    "Quattro SB 7kg su antiena sausas suaugusių mažų ve",
+    "44→50",
+    "21.82→33.06",
+    "EAN 4770107253826/4770107253826"
+   ]
+  ],
+  "p16666": [
+   [
+    16666,
+    "QUATTRO Extra Salmon su lašiša sausas šunų pašaras",
+    "16→18",
+    "7.27→11.9",
+    "EAN -/-"
+   ]
+  ]
+ },
+ "V": {
+  "v": "S1668 v",
+  "faze": "V",
+  "ver": {
+   "16540": {
+    "reg": "15.00",
+    "price": "15.00",
+    "cost": "9.9174",
+    "lookup": {
+     "min_price": "15.0000",
+     "max_price": "15.0000"
+    },
+    "front_kodas": 200,
+    "front_kainos": [
+     "0,00",
+     "15,00",
+     "2,95",
+     "2,66"
+    ]
+   },
+   "16558": {
+    "reg": "52.00",
+    "price": "52.00",
+    "cost": "34.3802",
+    "lookup": {
+     "min_price": "52.0000",
+     "max_price": "52.0000"
+    },
+    "front_kodas": 200,
+    "front_kainos": [
+     "0,00",
+     "52,00",
+     "8,29",
+     "7,46"
+    ]
+   },
+   "16666": {
+    "reg": "18.00",
+    "price": "18.00",
+    "cost": "11.9008",
+    "lookup": {
+     "min_price": "18.0000",
+     "max_price": "18.0000"
+    },
+    "front_kodas": 200,
+    "front_kainos": [
+     "0,00",
+     "18,00",
+     "8,39",
+     "7,55"
+    ]
+   }
+  },
+  "bak_n": 64,
+  "src_n": 64,
+  "ok": 1,
+  "skip": [
+   [
+    16540,
+    "kaina pasikeitė nuo DRY: 15.00"
+   ],
+   [
+    16558,
+    "kaina pasikeitė nuo DRY: 52.00"
+   ],
+   [
+    16546,
+    "kaina pasikeitė nuo DRY: 14.00"
+   ],
+   [
+    16564,
+    "kaina pasikeitė nuo DRY: 50.00"
+   ],
+   [
+    16537,
+    "kaina pasikeitė nuo DRY: 14.00"
+   ],
+   [
+    16555,
+    "kaina pasikeitė nuo DRY: 49.00"
+   ],
+   [
+    16552,
+    "kaina pasikeitė nuo DRY: 15.00"
+   ],
+   [
+    16570,
+    "kaina pasikeitė nuo DRY: 52.00"
+   ],
+   [
+    16543,
+    "kaina pasikeitė nuo DRY: 14.00"
+   ],
+   [
+    16561,
+    "kaina pasikeitė nuo DRY: 49.00"
+   ],
+   [
+    16549,
+    "kaina pasikeitė nuo DRY: 15.00"
+   ],
+   [
+    16567,
+    "kaina pasikeitė nuo DRY: 52.00"
+   ],
+   [
+    16612,
+    "kaina pasikeitė nuo DRY: 24.00"
+   ],
+   [
+    16705,
+    "kaina pasikeitė nuo DRY: 72.00"
+   ],
+   [
+    16606,
+    "kaina pasikeitė nuo DRY: 24.00"
+   ],
+   [
+    16699,
+    "kaina pasikeitė nuo DRY: 72.00"
+   ],
+   [
+    16609,
+    "kaina pasikeitė nuo DRY: 24.00"
+   ],
+   [
+    16702,
+    "kaina pasikeitė nuo DRY: 72.00"
+   ],
+   [
+    16603,
+    "kaina pasikeitė nuo DRY: 24.00"
+   ],
+   [
+    16696,
+    "kaina pasikeitė nuo DRY: 72.00"
+   ],
+   [
+    16615,
+    "kaina pasikeitė nuo DRY: 25.00"
+   ],
+   [
+    16708,
+    "kaina pasikeitė nuo DRY: 73.00"
+   ],
+   [
+    16597,
+    "kaina pasikeitė nuo DRY: 24.00"
+   ],
+   [
+    16690,
+    "kaina pasikeitė nuo DRY: 72.00"
+   ],
+   [
+    16591,
+    "kaina pasikeitė nuo DRY: 24.00"
+   ],
+   [
+    16594,
+    "kaina pasikeitė nuo DRY: 72.00"
+   ],
+   [
+    16600,
+    "kaina pasikeitė nuo DRY: 25.00"
+   ],
+   [
+    16693,
+    "kaina pasikeitė nuo DRY: 73.00"
+   ],
+   [
+    16724,
+    "kaina pasikeitė nuo DRY: 16.50"
+   ],
+   [
+    16573,
+    "kaina pasikeitė nuo DRY: 60.00"
+   ],
+   [
+    16721,
+    "kaina pasikeitė nuo DRY: 16.50"
+   ],
+   [
+    16576,
+    "kaina pasikeitė nuo DRY: 60.00"
+   ],
+   [
+    16718,
+    "kaina pasikeitė nuo DRY: 17.50"
+   ],
+   [
+    16582,
+    "kaina pasikeitė nuo DRY: 63.00"
+   ],
+   [
+    16715,
+    "kaina pasikeitė nuo DRY: 18.50"
+   ],
+   [
+    16579,
+    "kaina pasikeitė nuo DRY: 68.00"
+   ],
+   [
+    16712,
+    "kaina pasikeitė nuo DRY: 18.50"
+   ],
+   [
+    16588,
+    "kaina pasikeitė nuo DRY: 68.00"
+   ],
+   [
+    16727,
+    "kaina pasikeitė nuo DRY: 18.50"
+   ],
+   [
+    16585,
+    "kaina pasikeitė nuo DRY: 68.00"
+   ],
+   [
+    16624,
+    "kaina pasikeitė nuo DRY: 14.00"
+   ],
+   [
+    16627,
+    "kaina pasikeitė nuo DRY: 44.00"
+   ],
+   [
+    16648,
+    "kaina pasikeitė nuo DRY: 13.00"
+   ],
+   [
+    16651,
+    "kaina pasikeitė nuo DRY: 40.00"
+   ],
+   [
+    16672,
+    "kaina pasikeitė nuo DRY: 13.00"
+   ],
+   [
+    16675,
+    "kaina pasikeitė nuo DRY: 42.00"
+   ],
+   [
+    16684,
+    "kaina pasikeitė nuo DRY: 17.00"
+   ],
+   [
+    16687,
+    "kaina pasikeitė nuo DRY: 52.00"
+   ],
+   [
+    16654,
+    "kaina pasikeitė nuo DRY: 53.00"
+   ],
+   [
+    16669,
+    "kaina pasikeitė nuo DRY: 53.00"
+   ],
+   [
+    16639,
+    "kaina pasikeitė nuo DRY: 8.50"
+   ],
+   [
+    16636,
+    "kaina pasikeitė nuo DRY: 28.00"
+   ],
+   [
+    16645,
+    "kaina pasikeitė nuo DRY: 12.00"
+   ],
+   [
+    16642,
+    "kaina pasikeitė nuo DRY: 36.00"
+   ],
+   [
+    16633,
+    "kaina pasikeitė nuo DRY: 13.00"
+   ],
+   [
+    16630,
+    "kaina pasikeitė nuo DRY: 37.00"
+   ],
+   [
+    16663,
+    "kaina pasikeitė nuo DRY: 8.50"
+   ],
+   [
+    16660,
+    "kaina pasikeitė nuo DRY: 28.00"
+   ],
+   [
+    16657,
+    "kaina pasikeitė nuo DRY: 12.00"
+   ],
+   [
+    16681,
+    "kaina pasikeitė nuo DRY: 11.00"
+   ],
+   [
+    16678,
+    "kaina pasikeitė nuo DRY: 38.00"
+   ],
+   [
+    16621,
+    "kaina pasikeitė nuo DRY: 12.00"
+   ],
+   [
+    16618,
+    "kaina pasikeitė nuo DRY: 40.00"
+   ]
+  ],
+  "pavyzdziai": [
+   [
+    16666,
+    "QUATTRO Extra Salmon su lašiša sausas šunų pašaras",
+    "18.00→18",
+    "11.9→11.9",
+    "EAN -/-"
+   ]
+  ],
+  "p16666": [
+   [
+    16666,
+    "QUATTRO Extra Salmon su lašiša sausas šunų pašaras",
+    "18.00→18",
+    "11.9→11.9",
+    "EAN -/-"
+   ]
+  ]
+ }
+}
