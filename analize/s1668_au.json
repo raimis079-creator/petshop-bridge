@@ -1,0 +1,179 @@
+{
+ "1": {
+  "v": "S1668 au",
+  "cols": [
+   "id",
+   "laikas",
+   "sesija",
+   "sritis",
+   "deze_id",
+   "preke_id",
+   "tipas",
+   "verte",
+   "aplinka",
+   "dydis",
+   "skirtukas",
+   "kiek_dezeje",
+   "irenginys",
+   "user_id"
+  ],
+  "lent": "gaj6_ps_laukai_ivykiai",
+  "map": [
+   "tipas",
+   "laikas",
+   "verte"
+  ],
+  "viso_pagal_ivyki": [
+   {
+    "ev": "step_started",
+    "n": "12",
+    "nuo": "2026-09-07 19:17:48",
+    "iki": "2026-09-10 14:17:26"
+   },
+   {
+    "ev": "anketa_started",
+    "n": "12",
+    "nuo": "2026-09-07 19:17:48",
+    "iki": "2026-09-10 14:17:26"
+   },
+   {
+    "ev": "anketa_abandoned",
+    "n": "10",
+    "nuo": "2026-09-09 11:08:42",
+    "iki": "2026-09-10 14:17:51"
+   }
+  ],
+  "po_T0": [
+   {
+    "ev": "anketa_started",
+    "n": "11"
+   },
+   {
+    "ev": "step_started",
+    "n": "11"
+   },
+   {
+    "ev": "anketa_abandoned",
+    "n": "10"
+   }
+  ],
+  "pvz": [
+   {
+    "id": "2155",
+    "laikas": "2026-09-10 14:17:51",
+    "sesija": "",
+    "sritis": "anketa",
+    "deze_id": "0",
+    "preke_id": "0",
+    "tipas": "anketa_abandoned",
+    "verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "aplinka": "prod",
+    "dydis": "",
+    "skirtukas": "",
+    "kiek_dezeje": "0",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "id": "2154",
+    "laikas": "2026-09-10 14:17:26",
+    "sesija": "",
+    "sritis": "anketa",
+    "deze_id": "0",
+    "preke_id": "0",
+    "tipas": "step_started",
+    "verte": "1",
+    "aplinka": "prod",
+    "dydis": "",
+    "skirtukas": "",
+    "kiek_dezeje": "0",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "id": "2153",
+    "laikas": "2026-09-10 14:17:26",
+    "sesija": "",
+    "sritis": "anketa",
+    "deze_id": "0",
+    "preke_id": "0",
+    "tipas": "anketa_started",
+    "verte": "v1",
+    "aplinka": "prod",
+    "dydis": "",
+    "skirtukas": "",
+    "kiek_dezeje": "0",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "id": "2152",
+    "laikas": "2026-09-09 22:39:36",
+    "sesija": "",
+    "sritis": "anketa",
+    "deze_id": "0",
+    "preke_id": "0",
+    "tipas": "anketa_abandoned",
+    "verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "aplinka": "prod",
+    "dydis": "",
+    "skirtukas": "",
+    "kiek_dezeje": "0",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "id": "2151",
+    "laikas": "2026-09-09 22:39:32",
+    "sesija": "",
+    "sritis": "anketa",
+    "deze_id": "0",
+    "preke_id": "0",
+    "tipas": "step_started",
+    "verte": "1",
+    "aplinka": "prod",
+    "dydis": "",
+    "skirtukas": "",
+    "kiek_dezeje": "0",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "id": "2150",
+    "laikas": "2026-09-09 22:39:32",
+    "sesija": "",
+    "sritis": "anketa",
+    "deze_id": "0",
+    "preke_id": "0",
+    "tipas": "anketa_started",
+    "verte": "v1",
+    "aplinka": "prod",
+    "dydis": "",
+    "skirtukas": "",
+    "kiek_dezeje": "0",
+    "irenginys": "mobile",
+    "user_id": "0"
+   }
+  ],
+  "abandoned_vertes": [
+   {
+    "v": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "n": "10"
+   }
+  ],
+  "step_vertes": [
+   {
+    "ev": "step_started",
+    "v": "1",
+    "n": "12"
+   }
+  ]
+ },
+ "v": "dep-112537",
+ "kurimas": 200,
+ "sid": 5464,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
