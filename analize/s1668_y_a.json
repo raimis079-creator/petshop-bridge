@@ -1,0 +1,85 @@
+{
+ "v": "dep-082126",
+ "kurimas": 200,
+ "sid": 5442,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1668 y",
+  "faze": "A",
+  "prekiu": 62,
+  "vnt": 1997,
+  "partiju": 62,
+  "skip": []
+ },
+ "V": {
+  "v": "S1668 y",
+  "faze": "V",
+  "prekiu": 62,
+  "vnt": 0,
+  "partiju": 0,
+  "skip": [],
+  "po": {
+   "own_likutis": 0,
+   "stock_suma": 1997,
+   "src_quattro": {
+    "n": "64",
+    "q": "1997"
+   },
+   "src_av_aktyvios": 0,
+   "partijos_aktyvios": 0,
+   "bak_n": 62
+  },
+  "pvz": {
+   "16540": {
+    "wc_stock": 6,
+    "_stock": "6",
+    "status": "instock",
+    "own": "0",
+    "kat_tiekejas": "quattro",
+    "src": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": "6.4463",
+      "is_active": "0"
+     },
+     {
+      "source": "quattro",
+      "stock_qty": "6",
+      "cost_net": "9.9174",
+      "is_active": "1"
+     }
+    ]
+   },
+   "16594": {
+    "wc_stock": 50,
+    "_stock": "50",
+    "status": "instock",
+    "own": "0",
+    "kat_tiekejas": "quattro",
+    "src": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": "34.2149",
+      "is_active": "0"
+     },
+     {
+      "source": "quattro",
+      "stock_qty": "50",
+      "cost_net": "47.6033",
+      "is_active": "1"
+     }
+    ]
+   }
+  },
+  "front": {
+   "kodas": 200,
+   "in_stock": 1,
+   "out": 1
+  }
+ }
+}
