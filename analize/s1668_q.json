@@ -1,0 +1,186 @@
+{
+ "1": {
+  "v": "S1668 q",
+  "rows": [
+   {
+    "id": "1161",
+    "event_name": "order_paid",
+    "status": "sent",
+    "attempts": "0",
+    "em": "terr",
+    "dom": "gyvunai.lt",
+    "emitted_at": "2026-09-08 23:30:59",
+    "err": null
+   },
+   {
+    "id": "1191",
+    "event_name": "order_paid",
+    "status": "dead",
+    "attempts": "1",
+    "em": "nast",
+    "dom": "inbox.lt",
+    "emitted_at": "2026-09-09 06:56:00",
+    "err": "non_retriable: Subscriber not found"
+   },
+   {
+    "id": "1197",
+    "event_name": "order_paid",
+    "status": "sent",
+    "attempts": "0",
+    "em": "dali",
+    "dom": "gmail.com",
+    "emitted_at": "2026-09-09 15:49:42",
+    "err": null
+   },
+   {
+    "id": "1198",
+    "event_name": "order_shipped",
+    "status": "dead",
+    "attempts": "1",
+    "em": "nast",
+    "dom": "inbox.lt",
+    "emitted_at": "2026-09-09 16:53:08",
+    "err": "non_retriable: Subscriber not found"
+   },
+   {
+    "id": "1199",
+    "event_name": "order_shipped",
+    "status": "sent",
+    "attempts": "0",
+    "em": "dali",
+    "dom": "gmail.com",
+    "emitted_at": "2026-09-09 16:58:51",
+    "err": null
+   },
+   {
+    "id": "1200",
+    "event_name": "order_paid",
+    "status": "sent",
+    "attempts": "0",
+    "em": "zina",
+    "dom": "icloud.com",
+    "emitted_at": "2026-09-09 16:59:12",
+    "err": null
+   },
+   {
+    "id": "1201",
+    "event_name": "order_shipped",
+    "status": "sent",
+    "attempts": "0",
+    "em": "zina",
+    "dom": "icloud.com",
+    "emitted_at": "2026-09-09 16:59:56",
+    "err": null
+   },
+   {
+    "id": "1204",
+    "event_name": "order_paid",
+    "status": "dead",
+    "attempts": "1",
+    "em": "aa.g",
+    "dom": "gmail.com",
+    "emitted_at": "2026-09-10 03:37:46",
+    "err": "non_retriable: Subscriber not found"
+   },
+   {
+    "id": "1205",
+    "event_name": "order_shipped",
+    "status": "dead",
+    "attempts": "1",
+    "em": "aa.g",
+    "dom": "gmail.com",
+    "emitted_at": "2026-09-10 05:08:47",
+    "err": "non_retriable: Subscriber not found"
+   },
+   {
+    "id": "1206",
+    "event_name": "order_paid",
+    "status": "dead",
+    "attempts": "1",
+    "em": "ptom",
+    "dom": "gmail.com",
+    "emitted_at": "2026-09-10 06:52:52",
+    "err": "non_retriable: Subscriber not found"
+   }
+  ],
+  "cart_err": [
+   {
+    "e": null,
+    "n": "1"
+   },
+   {
+    "e": "non_retriable: subscriber must contain at least one of: id, email, or phone",
+    "n": "35"
+   }
+  ],
+  "files": {
+   "wp-content/plugins/petshop-esp/includes/class-sender-adapter.php": {
+    "md5": "27a16b8bbd885e26593938464c308c9b",
+    "dydis": 17707
+   },
+   "wp-content/plugins/petshop-esp/petshop-esp.php": {
+    "md5": "3fb356137a993fb66e4836ac33d2ab34",
+    "dydis": 4095
+   },
+   "wp-content/plugins/petshop-core/includes/class-email-suppression.php": {
+    "md5": "362096160c592d94de04773aae793a66",
+    "dydis": 13735
+   }
+  },
+  "struct": {
+   "wp-content/plugins/petshop-esp/includes/class-sender-adapter.php": [
+    "api.sender.net/v2, Bearer auth\n * - Du tokenai: marketing (subscribers, events) + transact",
+    "function get_name()",
+    "function is_blocked_by_dev_allowlist( $email )",
+    "function log_dev_blocked( $email, $method )",
+    "api.sender.net/v2",
+    "function __construct( $marketing_token = '', $transactional_token = '' )",
+    "function get_stored_token( $type )",
+    "function store_token( $type, $token )",
+    "function is_configured()",
+    "function request( $method, $path, $body = null, $token = null )",
+    "retriable",
+    "function is_retriable_code( $code )",
+    "function upsert_contact( $email, array $attributes )",
+    "retriable_code",
+    "function emit_event( $email, $event_id, $event, array $payload, $timestamp = null )",
+    "function send_transactional_email( $to_email, $subject, $html_body, array $meta = array()",
+    "function send_transactional_sms( $phone_e164, $message, array $meta = array()",
+    "function verify_webhook( $raw_payload, $signature )",
+    "function get_health_status()",
+    "function is_operational()",
+    "function get_contact_field( $email, $field_title )",
+    "function get_contact_status( $email )"
+   ],
+   "wp-content/plugins/petshop-esp/petshop-esp.php": [
+    "function ps_esp_adapter()"
+   ],
+   "wp-content/plugins/petshop-core/includes/class-email-suppression.php": [
+    "function table()",
+    "function log_table()",
+    "function install()",
+    "function maybe_install()",
+    "function valid_channel( $ch )",
+    "function suppress( $email, $channel, $reason = 'manual', $source = 'local', $note = '' )",
+    "function release( $email, $channel, $note = '' )",
+    "function is_suppressed( $email, $channel )",
+    "function reason_for( $email, $channel )",
+    "function interpret_status( $status )",
+    "function apply_status( $email, $status, $source = 'sender_webhook' )",
+    "function log_webhook( $topic, $email, $status, $payload, $result = '' )",
+    "function reconcile( $dry_run = false )",
+    "api.sender.net/v2/subscribers?limit=100&page=",
+    "function stats()",
+    "function init()",
+    "function cron_reconcile()"
+   ]
+  }
+ },
+ "v": "dep-074554",
+ "kurimas": 200,
+ "sid": 5431,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
