@@ -1,0 +1,133 @@
+{
+ "1": {
+  "v": "S1668 aw",
+  "prekes": {
+   "M05234": [
+    {
+     "id": 16248,
+     "t": "Sausas maistas katėms nuo plaukų gumuliukų su",
+     "st": "draft",
+     "sand": "av",
+     "own": "",
+     "stock": "0",
+     "cost": "",
+     "ean": "",
+     "sku": "m05234"
+    },
+    {
+     "id": 12580,
+     "t": "Monge Daily Line Hairball super premium pašar",
+     "st": "publish",
+     "sand": "zb",
+     "own": "",
+     "stock": "115.000000",
+     "cost": "",
+     "ean": "8009470005234",
+     "sku": "01M131102"
+    }
+   ],
+   "M14434": [
+    {
+     "id": 17397,
+     "t": "Monge Monoproteico Solo Anatra – Monoproteini",
+     "st": "publish",
+     "sand": "av",
+     "own": "1355",
+     "stock": "1345.000000",
+     "cost": "",
+     "ean": "8009470014434",
+     "sku": "M14434"
+    }
+   ],
+   "HM-8102": [
+    {
+     "id": 19297,
+     "t": "Antienos filė juostelės, 500 g, natūralūs ska",
+     "st": "publish",
+     "sand": "av",
+     "own": "",
+     "stock": "0",
+     "cost": "7.6600",
+     "ean": "",
+     "sku": "HM-8102"
+    }
+   ],
+   "HM-8113": [
+    {
+     "id": 19290,
+     "t": "Antienos griežinėliai, 500 g, natūralūs skanė",
+     "st": "publish",
+     "sand": "av",
+     "own": "",
+     "stock": "3",
+     "cost": "9.40",
+     "ean": "",
+     "sku": "HM-8113"
+    }
+   ],
+   "HM-8122": [],
+   "HM-8123": [],
+   "HM-8124": [
+    {
+     "id": 19281,
+     "t": "Antienos juostelės, 500 g, natūralūs skanėsta",
+     "st": "publish",
+     "sand": "av",
+     "own": "",
+     "stock": "0",
+     "cost": "7.4500",
+     "ean": "",
+     "sku": "HM-8124"
+    }
+   ],
+   "HM-8125": [
+    {
+     "id": 19306,
+     "t": "Antienos filė apvynioti džiovintos odos pagal",
+     "st": "publish",
+     "sand": "av",
+     "own": "",
+     "stock": "0",
+     "cost": "",
+     "ean": "",
+     "sku": "HM-8125"
+    }
+   ],
+   "HM-8135": [],
+   "HM-8142": [],
+   "HM-8146": [],
+   "HM-8149": [],
+   "HM-8177": []
+  },
+  "partijos_cols": [
+   "id",
+   "product_id",
+   "gauta",
+   "kiekis_gautas",
+   "kiekis_liko",
+   "savikaina_eur",
+   "savikaina_orig",
+   "valiuta",
+   "kursas",
+   "geriausia_iki",
+   "tiekejas",
+   "importuota",
+   "tiekimas_id",
+   "pastaba",
+   "sukurta",
+   "user_id",
+   "atsaukta"
+  ],
+  "priimti_param": [
+   "pid",
+   "a"
+  ]
+ },
+ "v": "dep-135159",
+ "kurimas": 200,
+ "sid": 5466,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
