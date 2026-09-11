@@ -1,0 +1,1497 @@
+{
+ "v": "dep-210159",
+ "kurimas": 200,
+ "sid": 5597,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "mc_raw": {
+  "len": 2389,
+  "head": "\"type\": \"ser"
+ },
+ "mc": {
+  "sa": "claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com",
+  "token": 200,
+  "sources": {
+   "status": 200,
+   "items": [
+    {
+     "name": "accounts/5321054797/dataSources/10727325747",
+     "dn": "PRODUCTS SOURCE 1",
+     "lang": "en",
+     "label": "PETSHOP_LT",
+     "uri": "https://petshop.lt/feed/google/"
+    }
+   ]
+  },
+  "shipping": {
+   "status": 200,
+   "body": "{\n  \"name\": \"accounts/5321054797/shippingSettings\",\n  \"services\": [\n    {\n      \"serviceName\": \"Pristatymas Lietuvoje (paštomatas / kurjeris)\",\n      \"active\": true,\n      \"deliveryCountries\": [\n        \"LT\"\n      ],\n      \"currencyCode\": \"EUR\",\n      \"deliveryTime\": {\n        \"minTransitDays\": 1,\n        \"maxTransitDays\": 3,\n        \"minHandlingDays\": 0,\n        \"maxHandlingDays\": 1\n      },\n      \"rateGroups\": [\n        {\n          \"mainTable\": {\n            \"rowHeaders\": {\n              \"weights\": [\n                {\n                  \"amountMicros\": \"25000000\",\n                  \"unit\": \"KILOGRAM\"\n                },\n                {\n                  \"amountMicros\": \"50000000\",\n                  \"unit\": \"KILOGRAM\"\n                },\n                {\n                  \"amountMicros\": \"70000000\",\n                  \"unit\": \"KILOGRAM\"\n                },\n                {\n                  \"amountMicros\": \"100000000\",\n                  \"unit\": \"KILOGRAM\"\n                },\n                {\n                  \"amountMicros\": \"-1\",\n                  \"unit\": \"KILOGRAM\"\n                }\n              ]\n            },\n            \"columnHeaders\": {\n              \"prices\": [\n                {\n                  \"amountMicros\": \"29990000\",\n                  \"currencyCode\": \"EUR\"\n                },\n                {\n                  \"amountMicros\": \"-1\",\n                  \"currencyCode\": \"EUR\"\n                }\n              ]\n            },\n            \"rows\": [\n              {\n                \"cells\": [\n                  {\n                    \"flatRate\": {\n                      \"amountMicros\": \"1780000\",\n                      \"currencyCode\": \"EUR\"\n                    }\n                  },\n                  {\n                    \"flatRate\": {\n                      \"amountMicros\": \"0\",\n                      \"currencyCode\": \"EUR\"\n                    }\n                  }\n                ]\n              },\n              {\n                \"cells\": [\n                  {\n                    \"flatRate\": {\n                      \"amountMicros\": \"3300000\",\n                      \"currencyCode\": \"EUR\"\n                    }\n                  },\n                  {\n                    \"flatRate\": {\n                      \"amountMicros\": \"3300000\",\n                      \"currencyCode\": \"EUR\"\n                    }\n                  }\n                ]\n              },\n              {\n                \"cells\": [\n                  {\n                    \"flatRate\": {\n             "
+  },
+  "full": {
+   "image_too_small_for_high_resolution": {
+    "2628": "",
+    "2629": "",
+    "2630": "",
+    "2632": "",
+    "2633": "",
+    "2799": "",
+    "2808": "",
+    "2823": "",
+    "15045": "",
+    "17072": "",
+    "20010": "",
+    "20089": "",
+    "72847": "",
+    "72850": "",
+    "74746": "",
+    "74767": "",
+    "75925": "",
+    "80955": "",
+    "80956": "",
+    "80973": "",
+    "80976": "",
+    "121550": "",
+    "122340": "",
+    "122370": "",
+    "127380": "",
+    "149820": "",
+    "169913": "",
+    "185888": "",
+    "370133": "",
+    "370263": "",
+    "370324": "",
+    "370478": "",
+    "370546": "",
+    "370553": "",
+    "400501": "",
+    "480662": "",
+    "550017": "",
+    "550018": "",
+    "580206": "",
+    "619434": "",
+    "619625": "",
+    "619626": "",
+    "640366": "",
+    "640367": "",
+    "650501": "",
+    "651087": "",
+    "651135": "",
+    "651153": "",
+    "707002": "",
+    "709000": "",
+    "720000": "",
+    "720769": "",
+    "7430323": "",
+    "8001362": "",
+    "84798997": "",
+    "122340122": "",
+    "122370183": "",
+    "127380228": "",
+    "01GIC5115": "",
+    "013694672": "",
+    "4047059436059": "",
+    "F011PR0562": "",
+    "01M041902": "",
+    "01M010104": "",
+    "JOS1005": "",
+    "F011BR1261": "",
+    "JOS0815": "",
+    "AM20": "",
+    "013526": "",
+    "01WH71306": "",
+    "HM-8125": "",
+    "01M041301": "",
+    "AD04721": "",
+    "01DOG0306": "",
+    "01ORDZB10": "",
+    "F031VL0231": "",
+    "F041MAD0143": "",
+    "F011PU0663": "",
+    "JOS0917": "",
+    "30-D-papūgoms": "",
+    "JOS0069443": "",
+    "TRX 6004": "",
+    "01MB511301": "",
+    "m11938": "",
+    "01M041901": "",
+    "01M041201": "",
+    "013533": "",
+    "5902020353010": "",
+    "F011PR0571": "",
+    "WWAL4779": "",
+    "5904181401098": "",
+    "F011OC0402": "",
+    "01WH71101": "",
+    "030306": "",
+    "F011OC0381": "",
+    "F011QU0831": "",
+    "F011WH1201": "",
+    "04046": "",
+    "01M041502": "",
+    "01MB151101": "",
+    "JOS0799": "",
+    "5904479151230": "",
+    "F032VL0143": "",
+    "5902020353379": "",
+    "PM20": "",
+    "ps90071": "",
+    "F011QU0811": "",
+    "01M042002": "",
+    "01M0211020": "",
+    "F031VL0191": "",
+    "5904181401135": "",
+    "4011905359335": "",
+    "F031VL0122": "",
+    "01M0401203": "",
+    "01M110110": "",
+    "8594198750011": "",
+    "01OSU00070": "",
+    "5902921303770": "",
+    "m05524": "",
+    "JOS0003": "",
+    "F032VL0193": "",
+    "F011QU0832": "",
+    "01ORDZB09": "",
+    "F011PR0542": "",
+    "01M0400303": "",
+    "TX-24544": "",
+    "F011TR11301": "",
+    "2.009363": "",
+    "5902020353393": "",
+    "F012OC0242": "",
+    "01M0311020": "",
+    "03020": "",
+    "F011OC0401": "",
+    "4047059437506": "",
+    "JOS0912": "",
+    "F011OC0303": "",
+    "EU675": "",
+    "JOS0813": "",
+    "F012QU0553": "",
+    "TRX 42428": "",
+    "01M181110": "",
+    "01MB201101": "",
+    "F011BR1262": "",
+    "F011PR0561": "",
+    "JOS0796": "",
+    "01WH71252": "",
+    "5904378732059": "",
+    "F031VL0151": "",
+    "01M412102": "",
+    "01M121110": "",
+    "F011QU0922": "",
+    "F012PU0432": "",
+    "JOS0978": "",
+    "DM20": "",
+    "01M183102": "",
+    "01WH71152": "",
+    "F011PU0602": "",
+    "F011QU0931": "",
+    "01M511303": "",
+    "F032VL0152": "",
+    "01M041702": "",
+    "030301": "",
+    "Y0036": "",
+    "09015": "",
+    "NGABA40": "",
+    "PS70394": "",
+    "EU107": "",
+    "TX-40389": "",
+    "F041MAD0113": "",
+    "5904181401173": "",
+    "01M011102": "",
+    "EU105": "",
+    "F012PU0442": "",
+    "F032VL0123": "",
+    "HM-8170": "",
+    "01M041801": "",
+    "F011PU0732": "",
+    "01WH71308": "",
+    "JOS0974": "",
+    "HM-8169": "",
+    "01MB511201": "",
+    "JOS0617": "",
+    "8594198750035": "",
+    "F011PU0672": "",
+    "F031VL0172": "",
+    "5414365348854": "",
+    "01M041701": "",
+    "01M0400102": "",
+    "TX-2336": "",
+    "AD06": "",
+    "JOS0849": "",
+    "F031VL0192": "",
+    "F032VL0112": "",
+    "F011TR1151": "",
+    "HEPM11": "",
+    "F011PU0722": "",
+    "JOS0973": "",
+    "01M0401102": "",
+    "10225c": "",
+    "01WH71202": "",
+    "01M041602": "",
+    "01M051502": "",
+    "F011PU0652": "",
+    "F031VL0212": "",
+    "WWSOG5028": "",
+    "5904181401166": "",
+    "HM-8124": "",
+    "F012PR0302": "",
+    "EU691": "",
+    "01M0400103": "",
+    "F032VL0192": "",
+    "01M041802": "",
+    "F041MAD0132": "",
+    "01M041101": "",
+    "JOS0812": "",
+    "01M0301020": "",
+    "TX-33482": "",
+    "F011BR1281": "",
+    "F031VL0111": "",
+    "F011PU0742": "",
+    "EU106": "",
+    "F012OC0232": "",
+    "F011TR1171": "",
+    "40-amadinams": "",
+    "700603675758": "",
+    "EU104": "",
+    "013700": "",
+    "F011WH1212": "",
+    "F011TR1131": "",
+    "F011QU0852": "",
+    "700603706469": "",
+    "F011PU0711": "",
+    "01M0400203": "",
+    "01M041402": "",
+    "TX-4092": "",
+    "JOS0924": "",
+    "000332": "",
+    "F011TR1181": "",
+    "01M041501": "",
+    "013724": "",
+    "F031VL0142": "",
+    "01M510103": "",
+    "01M0401202": "",
+    "01O8B06002": "",
+    "01ORDZB11": "",
+    "01M0400202": "",
+    "JOS0913": "",
+    "F031VL0131": "",
+    "F011OC0392": "",
+    "NGALA40": "",
+    "F031VL0141": "",
+    "030303": "",
+    "5414365261214": "",
+    "F031VL0171": "",
+    "5904181401159": "",
+    "KM06": "",
+    "NGAUA40": "",
+    "TX-4007": "",
+    "WWSOG5035": "",
+    "01M011103": "",
+    "01O8B05001": "",
+    "01WH71100": "",
+    "EU110": "",
+    "EU109": "",
+    "01020": "",
+    "01M0400302": "",
+    "TX-2333": "",
+    "TX-24561": "",
+    "57511bv": "",
+    "06072": ""
+   },
+   "legal_restrictions_policy_violation": {
+    "708001": ""
+   },
+   "alcohol_policy_violation": {
+    "708001": ""
+   },
+   "live_animals_policy_violation": {
+    "10499": "",
+    "640165": "",
+    "640166": "",
+    "sku166940274158426271": "",
+    "HAPMC04": "",
+    "5414365438494": "",
+    "sku166940251494348061": ""
+   },
+   "sexual_interests_policy_violation": {
+    "393": "",
+    "704000": "",
+    "704001": "",
+    "707000": ""
+   },
+   "personal_hardships_policy_violation": {
+    "709000": "",
+    "2.009363": "",
+    "VET1200": "",
+    "01DOG0202": "",
+    "01WH71152": "",
+    "01DOG0102": "",
+    "2.009364": ""
+   },
+   "illegal_drugs_policy_violation": {
+    "VET1200": ""
+   },
+   "healthcare_misleading_claims_policy_violation": {
+    "01DOG0202": "",
+    "01DOG0102": ""
+   },
+   "invalid_upc": {
+    "V004979": "",
+    "V004978": "",
+    "TX-92576": "",
+    "RC102040": ""
+   },
+   "attribute_violated_discovery_ads_policy": {
+    "01O7A020072": "",
+    "01ORDZB05": "",
+    "404842215175": "",
+    "01ORDZB11": "",
+    "WWMS4755": ""
+   }
+  },
+  "products": {
+   "n": 2184,
+   "pages": 9,
+   "noStatus": 0,
+   "statuses": {
+    "SHOPPING_ADS": {
+     "ok": 0,
+     "pend": 2119,
+     "dis": 65
+    },
+    "FREE_LISTINGS": {
+     "ok": 0,
+     "pend": 2115,
+     "dis": 69
+    },
+    "DEMAND_GEN_ADS": {
+     "ok": 0,
+     "pend": 2106,
+     "dis": 78
+    },
+    "VIDEO_ADS": {
+     "ok": 0,
+     "pend": 2106,
+     "dis": 78
+    },
+    "DEMAND_GEN_ADS_DISCOVER_SURFACE": {
+     "ok": 0,
+     "pend": 2106,
+     "dis": 78
+    }
+   },
+   "issues": [
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|pending_initial_policy_review_shopping_ads|",
+     "c": 2184,
+     "desc": "Pending initial review",
+     "detail": "Please wait up to 3 business days for the review to be completed",
+     "res": "pending_processing",
+     "ids": [
+      "HM-8146-1",
+      "JOS0839",
+      "19145"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|pending_initial_policy_review_shopping_ads|",
+     "c": 2184,
+     "desc": "Pending initial review",
+     "detail": "Please wait up to 3 business days for the review to be completed",
+     "res": "pending_processing",
+     "ids": [
+      "HM-8146-1",
+      "JOS0839",
+      "19145"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|pending_initial_policy_review_shopping_ads|",
+     "c": 2184,
+     "desc": "Pending initial review",
+     "detail": "Please wait up to 3 business days for the review to be completed",
+     "res": "pending_processing",
+     "ids": [
+      "HM-8146-1",
+      "JOS0839",
+      "19145"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|pending_initial_policy_review_shopping_ads|",
+     "c": 2184,
+     "desc": "Pending initial review",
+     "detail": "Please wait up to 3 business days for the review to be completed",
+     "res": "pending_processing",
+     "ids": [
+      "HM-8146-1",
+      "JOS0839",
+      "19145"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|pending_initial_policy_review_free_listings|",
+     "c": 2184,
+     "desc": "Pending initial review",
+     "detail": "Please wait up to 3 business days for the review to be completed",
+     "res": "pending_processing",
+     "ids": [
+      "HM-8146-1",
+      "JOS0839",
+      "19145"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|NOT_IMPACTED|missing_potentially_required_attribute|unit pricing measure",
+     "c": 948,
+     "desc": "Missing unit pricing measure",
+     "detail": "Missing or invalid unit pricing measure attributes may be present in your product data",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0839",
+      "19145",
+      "01GIC5115"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|NOT_IMPACTED|missing_potentially_required_attribute|unit pricing measure",
+     "c": 948,
+     "desc": "Missing unit pricing measure",
+     "detail": "Missing or invalid unit pricing measure attributes may be present in your product data",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0839",
+      "19145",
+      "01GIC5115"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|NOT_IMPACTED|missing_potentially_required_attribute|unit pricing measure",
+     "c": 948,
+     "desc": "Missing unit pricing measure",
+     "detail": "Missing or invalid unit pricing measure attributes may be present in your product data",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0839",
+      "19145",
+      "01GIC5115"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|NOT_IMPACTED|missing_potentially_required_attribute|unit pricing measure",
+     "c": 948,
+     "desc": "Missing unit pricing measure",
+     "detail": "Missing or invalid unit pricing measure attributes may be present in your product data",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0839",
+      "19145",
+      "01GIC5115"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|NOT_IMPACTED|missing_potentially_required_attribute|unit pricing measure",
+     "c": 948,
+     "desc": "Missing unit pricing measure",
+     "detail": "Missing or invalid unit pricing measure attributes may be present in your product data",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0839",
+      "19145",
+      "01GIC5115"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|NOT_IMPACTED|image_link_internal_error|additional image link",
+     "c": 589,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [additional_image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "19145",
+      "2808",
+      "4047059431931"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|NOT_IMPACTED|image_link_internal_error|additional image link",
+     "c": 589,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [additional_image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "19145",
+      "2808",
+      "4047059431931"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|NOT_IMPACTED|image_link_internal_error|additional image link",
+     "c": 589,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [additional_image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "19145",
+      "2808",
+      "4047059431931"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|NOT_IMPACTED|image_link_internal_error|additional image link",
+     "c": 589,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [additional_image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "19145",
+      "2808",
+      "4047059431931"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|NOT_IMPACTED|image_link_internal_error|additional image link",
+     "c": 589,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [additional_image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "19145",
+      "2808",
+      "4047059431931"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|NOT_IMPACTED|image_too_small_for_high_resolution|image link",
+     "c": 270,
+     "desc": "Image too small for upcoming enforcement",
+     "detail": "Use an image that's at least 500x500 pixels to serve",
+     "res": "merchant_action",
+     "ids": [
+      "2808",
+      "01GIC5115",
+      "013694672"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|NOT_IMPACTED|image_too_small_for_high_resolution|image link",
+     "c": 270,
+     "desc": "Image too small for upcoming enforcement",
+     "detail": "Use an image that's at least 500x500 pixels to serve",
+     "res": "merchant_action",
+     "ids": [
+      "2808",
+      "01GIC5115",
+      "013694672"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|attribute_pending_review|image link",
+     "c": 245,
+     "desc": "Image under review",
+     "detail": "Google may take up to 5 days to review your product image",
+     "res": "pending_processing",
+     "ids": [
+      "871913818294",
+      "HAPQ80N",
+      "HAPMK11"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|attribute_pending_review|image link",
+     "c": 245,
+     "desc": "Image under review",
+     "detail": "Google may take up to 5 days to review your product image",
+     "res": "pending_processing",
+     "ids": [
+      "871913818294",
+      "HAPQ80N",
+      "HAPMK11"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|image_link_pending_crawl|image link",
+     "c": 60,
+     "desc": "Unable to show image",
+     "detail": "It might take up to 3 days for your product image to appear",
+     "res": "pending_processing",
+     "ids": [
+      "0TR2212_24171",
+      "PAE4495",
+      "EUD743"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|image_link_pending_crawl|image link",
+     "c": 60,
+     "desc": "Unable to show image",
+     "detail": "It might take up to 3 days for your product image to appear",
+     "res": "pending_processing",
+     "ids": [
+      "0TR2212_24171",
+      "PAE4495",
+      "EUD743"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|image_link_pending_crawl|image link",
+     "c": 60,
+     "desc": "Unable to show image",
+     "detail": "It might take up to 3 days for your product image to appear",
+     "res": "pending_processing",
+     "ids": [
+      "0TR2212_24171",
+      "PAE4495",
+      "EUD743"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|image_link_pending_crawl|image link",
+     "c": 60,
+     "desc": "Unable to show image",
+     "detail": "It might take up to 3 days for your product image to appear",
+     "res": "pending_processing",
+     "ids": [
+      "0TR2212_24171",
+      "PAE4495",
+      "EUD743"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|image_link_pending_crawl|image link",
+     "c": 60,
+     "desc": "Unable to show image",
+     "detail": "It might take up to 3 days for your product image to appear",
+     "res": "pending_processing",
+     "ids": [
+      "0TR2212_24171",
+      "PAE4495",
+      "EUD743"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|image_link_internal_error|image link",
+     "c": 53,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "EU153",
+      "01M182110",
+      "01M0400022"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|image_link_internal_error|image link",
+     "c": 53,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "EU153",
+      "01M182110",
+      "01M0400022"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|image_link_internal_error|image link",
+     "c": 53,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "EU153",
+      "01M182110",
+      "01M0400022"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|image_link_internal_error|image link",
+     "c": 53,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "EU153",
+      "01M182110",
+      "01M0400022"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|image_link_internal_error|image link",
+     "c": 53,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "EU153",
+      "01M182110",
+      "01M0400022"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|NOT_IMPACTED|image_link_internal_error_fallback|image link",
+     "c": 40,
+     "desc": "Your new image is experiencing processing delays [image_link]",
+     "detail": "Your previous image will continue to appear on Google for up to 30 days. If you recently updated other product details, check that this image still matches.",
+     "res": "merchant_action",
+     "ids": [
+      "JRS012",
+      "TX-41862",
+      "2.011755"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|NOT_IMPACTED|image_link_internal_error_fallback|image link",
+     "c": 40,
+     "desc": "Your new image is experiencing processing delays [image_link]",
+     "detail": "Your previous image will continue to appear on Google for up to 30 days. If you recently updated other product details, check that this image still matches.",
+     "res": "merchant_action",
+     "ids": [
+      "JRS012",
+      "TX-41862",
+      "2.011755"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|NOT_IMPACTED|image_link_internal_error_fallback|image link",
+     "c": 40,
+     "desc": "Your new image is experiencing processing delays [image_link]",
+     "detail": "Your previous image will continue to appear on Google for up to 30 days. If you recently updated other product details, check that this image still matches.",
+     "res": "merchant_action",
+     "ids": [
+      "JRS012",
+      "TX-41862",
+      "2.011755"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|NOT_IMPACTED|image_link_internal_error_fallback|image link",
+     "c": 40,
+     "desc": "Your new image is experiencing processing delays [image_link]",
+     "detail": "Your previous image will continue to appear on Google for up to 30 days. If you recently updated other product details, check that this image still matches.",
+     "res": "merchant_action",
+     "ids": [
+      "JRS012",
+      "TX-41862",
+      "2.011755"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|NOT_IMPACTED|image_link_internal_error_fallback|image link",
+     "c": 40,
+     "desc": "Your new image is experiencing processing delays [image_link]",
+     "detail": "Your previous image will continue to appear on Google for up to 30 days. If you recently updated other product details, check that this image still matches.",
+     "res": "merchant_action",
+     "ids": [
+      "JRS012",
+      "TX-41862",
+      "2.011755"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|live_animals_policy_violation|",
+     "c": 7,
+     "desc": "Sale of live animals",
+     "detail": "Live animals and services for their transportation are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "sku166940274158426271",
+      "HAPMC04",
+      "640165"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|live_animals_policy_violation|",
+     "c": 7,
+     "desc": "Sale of live animals",
+     "detail": "Live animals and services for their transportation are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "sku166940274158426271",
+      "HAPMC04",
+      "640165"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|live_animals_policy_violation|",
+     "c": 7,
+     "desc": "Sale of live animals",
+     "detail": "Live animals and services for their transportation are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "sku166940274158426271",
+      "HAPMC04",
+      "640165"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|live_animals_policy_violation|",
+     "c": 7,
+     "desc": "Sale of live animals",
+     "detail": "Live animals and services for their transportation are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "sku166940274158426271",
+      "HAPMC04",
+      "640165"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|live_animals_policy_violation|",
+     "c": 7,
+     "desc": "Sale of live animals",
+     "detail": "Live animals and services for their transportation are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "sku166940274158426271",
+      "HAPMC04",
+      "640165"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|personal_hardships_policy_violation|",
+     "c": 7,
+     "desc": "Personalized advertising: personal hardships",
+     "detail": "Personalized advertising should not be used to exploit customers' challenges or struggles such as health issues, financial status, relationship difficulties, or",
+     "res": "merchant_action",
+     "ids": [
+      "709000",
+      "2.009363",
+      "VET1200"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|personal_hardships_policy_violation|",
+     "c": 7,
+     "desc": "Personalized advertising: personal hardships",
+     "detail": "Personalized advertising should not be used to exploit customers' challenges or struggles such as health issues, financial status, relationship difficulties, or",
+     "res": "merchant_action",
+     "ids": [
+      "709000",
+      "2.009363",
+      "VET1200"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|personal_hardships_policy_violation|",
+     "c": 7,
+     "desc": "Personalized advertising: personal hardships",
+     "detail": "Personalized advertising should not be used to exploit customers' challenges or struggles such as health issues, financial status, relationship difficulties, or",
+     "res": "merchant_action",
+     "ids": [
+      "709000",
+      "2.009363",
+      "VET1200"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|violated_discovery_ads_policy_experiment2|image link",
+     "c": 5,
+     "desc": "Inappropriate image",
+     "detail": "Product images for YouTube Shopping Ads must meet quality standards and adhere to YouTube Shopping Ads prohibited categories",
+     "res": "merchant_action",
+     "ids": [
+      "01O7A020072",
+      "01ORDZB05",
+      "404842215175"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|attribute_violated_discovery_ads_policy|image link",
+     "c": 5,
+     "desc": "Inappropriate image",
+     "detail": "Product images must be relevant, high-quality, and abide by content restrictions",
+     "res": "merchant_action",
+     "ids": [
+      "01O7A020072",
+      "01ORDZB05",
+      "404842215175"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|attribute_violated_discovery_ads_policy|image link",
+     "c": 5,
+     "desc": "Inappropriate image",
+     "detail": "Product images must be relevant, high-quality, and abide by content restrictions",
+     "res": "merchant_action",
+     "ids": [
+      "01O7A020072",
+      "01ORDZB05",
+      "404842215175"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|sexual_interests_policy_violation|",
+     "c": 4,
+     "desc": "Personalized advertising: Sexual interests",
+     "detail": "Products cannot be targeted based on sexual interests",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|sexual_interests_policy_violation|",
+     "c": 4,
+     "desc": "Personalized advertising: Sexual interests",
+     "detail": "Products cannot be targeted based on sexual interests",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|sexual_interests_policy_violation|",
+     "c": 4,
+     "desc": "Personalized advertising: Sexual interests",
+     "detail": "Products cannot be targeted based on sexual interests",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|NOT_IMPACTED|restricted_nfs_policy_violation|",
+     "c": 4,
+     "desc": "Restricted adult content",
+     "detail": "Adult content that includes graphic nudity or sexual acts is not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|NOT_IMPACTED|restricted_nfs_policy_violation|",
+     "c": 4,
+     "desc": "Restricted adult content",
+     "detail": "Adult content that includes graphic nudity or sexual acts is not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|restricted_nfs_policy_violation|",
+     "c": 4,
+     "desc": "Restricted adult content",
+     "detail": "Adult content that includes graphic nudity or sexual acts is not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|NOT_IMPACTED|restricted_nfs_policy_violation|",
+     "c": 4,
+     "desc": "Restricted adult content",
+     "detail": "Adult content that includes graphic nudity or sexual acts is not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|restricted_nfs_policy_violation|",
+     "c": 4,
+     "desc": "Restricted adult content",
+     "detail": "Adult content that includes graphic nudity or sexual acts is not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|NOT_IMPACTED|invalid_upc|gtin",
+     "c": 4,
+     "desc": "Invalid GTIN value",
+     "detail": "Use a valid, internationally recognized GTIN or leave the field blank",
+     "res": "merchant_action",
+     "ids": [
+      "V004979",
+      "V004978",
+      "TX-92576"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|NOT_IMPACTED|invalid_upc|gtin",
+     "c": 4,
+     "desc": "Invalid GTIN value",
+     "detail": "Use a valid, internationally recognized GTIN or leave the field blank",
+     "res": "merchant_action",
+     "ids": [
+      "V004979",
+      "V004978",
+      "TX-92576"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|NOT_IMPACTED|invalid_upc|gtin",
+     "c": 4,
+     "desc": "Invalid GTIN value",
+     "detail": "Use a valid, internationally recognized GTIN or leave the field blank",
+     "res": "merchant_action",
+     "ids": [
+      "V004979",
+      "V004978",
+      "TX-92576"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|NOT_IMPACTED|invalid_upc|gtin",
+     "c": 4,
+     "desc": "Invalid GTIN value",
+     "detail": "Use a valid, internationally recognized GTIN or leave the field blank",
+     "res": "merchant_action",
+     "ids": [
+      "V004979",
+      "V004978",
+      "TX-92576"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|NOT_IMPACTED|invalid_upc|gtin",
+     "c": 4,
+     "desc": "Invalid GTIN value",
+     "detail": "Use a valid, internationally recognized GTIN or leave the field blank",
+     "res": "merchant_action",
+     "ids": [
+      "V004979",
+      "V004978",
+      "TX-92576"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|NOT_IMPACTED|restricted_adult_policy_violation|",
+     "c": 2,
+     "desc": "Adult-oriented content",
+     "detail": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "707000"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|NOT_IMPACTED|restricted_adult_policy_violation|",
+     "c": 2,
+     "desc": "Adult-oriented content",
+     "detail": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "707000"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|restricted_adult_policy_violation|",
+     "c": 2,
+     "desc": "Adult-oriented content",
+     "detail": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "707000"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|restricted_adult_policy_violation|",
+     "c": 2,
+     "desc": "Adult-oriented content",
+     "detail": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "707000"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|restricted_adult_policy_violation|",
+     "c": 2,
+     "desc": "Adult-oriented content",
+     "detail": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "707000"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|healthcare_misleading_claims_policy_violation|",
+     "c": 2,
+     "desc": "Healthcare and medicine: misleading claims",
+     "detail": "Products that make misleading healthcare claims or are marketed to prevent, cure, or treat diseases are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "01DOG0202",
+      "01DOG0102"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|healthcare_misleading_claims_policy_violation|",
+     "c": 2,
+     "desc": "Healthcare and medicine: misleading claims",
+     "detail": "Products that make misleading healthcare claims or are marketed to prevent, cure, or treat diseases are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "01DOG0202",
+      "01DOG0102"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|healthcare_misleading_claims_policy_violation|",
+     "c": 2,
+     "desc": "Healthcare and medicine: misleading claims",
+     "detail": "Products that make misleading healthcare claims or are marketed to prevent, cure, or treat diseases are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "01DOG0202",
+      "01DOG0102"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|healthcare_misleading_claims_policy_violation|",
+     "c": 2,
+     "desc": "Healthcare and medicine: misleading claims",
+     "detail": "Products that make misleading healthcare claims or are marketed to prevent, cure, or treat diseases are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "01DOG0202",
+      "01DOG0102"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|healthcare_misleading_claims_policy_violation|",
+     "c": 2,
+     "desc": "Healthcare and medicine: misleading claims",
+     "detail": "Products that make misleading healthcare claims or are marketed to prevent, cure, or treat diseases are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "01DOG0202",
+      "01DOG0102"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|legal_restrictions_policy_violation|",
+     "c": 1,
+     "desc": "Personalized advertising: legal restrictions",
+     "detail": "Targeting users based on legally restricted content is not allowed in personalized ads",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|legal_restrictions_policy_violation|",
+     "c": 1,
+     "desc": "Personalized advertising: legal restrictions",
+     "detail": "Targeting users based on legally restricted content is not allowed in personalized ads",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|legal_restrictions_policy_violation|",
+     "c": 1,
+     "desc": "Personalized advertising: legal restrictions",
+     "detail": "Targeting users based on legally restricted content is not allowed in personalized ads",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|alcohol_policy_violation|",
+     "c": 1,
+     "desc": "Alcoholic beverages",
+     "detail": "Products that violate applicable laws and industry standards for the sale of alcoholic beverages are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|alcohol_policy_violation|",
+     "c": 1,
+     "desc": "Alcoholic beverages",
+     "detail": "Products that violate applicable laws and industry standards for the sale of alcoholic beverages are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|alcohol_policy_violation|",
+     "c": 1,
+     "desc": "Alcoholic beverages",
+     "detail": "Products that violate applicable laws and industry standards for the sale of alcoholic beverages are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|alcohol_policy_violation|",
+     "c": 1,
+     "desc": "Alcoholic beverages",
+     "detail": "Products that violate applicable laws and industry standards for the sale of alcoholic beverages are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|alcohol_policy_violation|",
+     "c": 1,
+     "desc": "Alcoholic beverages",
+     "detail": "Products that violate applicable laws and industry standards for the sale of alcoholic beverages are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|illegal_drugs_policy_violation|",
+     "c": 1,
+     "desc": "Illegal drugs",
+     "detail": "Recreational drugs, drug-related equipment, or instructional content about illicit drug use are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "VET1200"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|illegal_drugs_policy_violation|",
+     "c": 1,
+     "desc": "Illegal drugs",
+     "detail": "Recreational drugs, drug-related equipment, or instructional content about illicit drug use are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "VET1200"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|illegal_drugs_policy_violation|",
+     "c": 1,
+     "desc": "Illegal drugs",
+     "detail": "Recreational drugs, drug-related equipment, or instructional content about illicit drug use are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "VET1200"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|illegal_drugs_policy_violation|",
+     "c": 1,
+     "desc": "Illegal drugs",
+     "detail": "Recreational drugs, drug-related equipment, or instructional content about illicit drug use are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "VET1200"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|illegal_drugs_policy_violation|",
+     "c": 1,
+     "desc": "Illegal drugs",
+     "detail": "Recreational drugs, drug-related equipment, or instructional content about illicit drug use are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "VET1200"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|image_link_broken|image link",
+     "c": 1,
+     "desc": "Unsupported image type [image_link]",
+     "detail": "Use an image in the accepted format (JPEG, PNG, GIF)",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0694"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|image_link_broken|image link",
+     "c": 1,
+     "desc": "Unsupported image type [image_link]",
+     "detail": "Use an image in the accepted format (JPEG, PNG, GIF)",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0694"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|image_link_broken|image link",
+     "c": 1,
+     "desc": "Unsupported image type [image_link]",
+     "detail": "Use an image in the accepted format (JPEG, PNG, GIF)",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0694"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|image_link_broken|image link",
+     "c": 1,
+     "desc": "Unsupported image type [image_link]",
+     "detail": "Use an image in the accepted format (JPEG, PNG, GIF)",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0694"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|image_link_broken|image link",
+     "c": 1,
+     "desc": "Unsupported image type [image_link]",
+     "detail": "Use an image in the accepted format (JPEG, PNG, GIF)",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0694"
+     ]
+    }
+   ]
+  }
+ },
+ "GO": {
+  "cl0": {
+   "C": 939,
+   "B": 734,
+   "A": 271,
+   "D": 201,
+   "X": 39
+  },
+  "cl0_viso": 2184,
+  "cl1": {
+   "ne_reklamai": 62,
+   "reklamuoti_ltv": 22
+  },
+  "cl1_viso": 84,
+  "cl2": {
+   "sausas-maistas-sunims": 433,
+   "skanestai-sunims": 242,
+   "sausas-maistas-katems": 186,
+   "zaislai-sunims": 170,
+   "antkakliai-pavadeliai-sunims": 150,
+   "konservai-katems": 125,
+   "konservai-sunims": 113,
+   "skanestai-katems": 73,
+   "kraikai-kaciu-tualetams": 72,
+   "vitaminai-ir-papildai-sunims": 58,
+   "zaislai-katems": 49,
+   "tualetai-kraikai-semtuveliai": 37,
+   "sampunai-sunims": 34,
+   "draskykles-katems": 33,
+   "akvariumo-zuvyciu-maistas": 33,
+   "higienos-priemones-sunims": 32,
+   "dubeneliai-katems": 32,
+   "apranga-sunims": 31,
+   "transportavimo-dezes-katems": 29,
+   "sukos-sepeciai-zirkles-katems": 29,
+   "dubeneliai-sunims": 25,
+   "prieziuros-priemones-katems": 24,
+   "guoliai-boksai-sunims": 21,
+   "sukos-sepeciai-zirkles-sunims": 19,
+   "pasaras-grauzikams": 18
+  },
+  "cl2_viso": 2184,
+  "cl3": {
+   "vf": 826,
+   "av": 717,
+   "zb": 492,
+   "quattro": 62,
+   "belcor_tofu": 42,
+   "prins": 23,
+   "ambrosia": 15,
+   "AV": 3
+  },
+  "cl3_viso": 2180,
+  "cl4": [],
+  "cl4_viso": 0,
+  "brand": {
+   "<![CDATA[Trixie]]>": 183,
+   "<![CDATA[Josera]]>": 165,
+   "<![CDATA[Farmina]]>": 130,
+   "<![CDATA[Monge]]>": 111,
+   "<![CDATA[Exclusion]]>": 77,
+   "<![CDATA[FLEXI]]>": 74,
+   "<![CDATA[Churu]]>": 63,
+   "<![CDATA[Quattro]]>": 62,
+   "<![CDATA[Animonda]]>": 59,
+   "<![CDATA[Duvo+]]>": 56,
+   "<![CDATA[NOBLEZA]]>": 54,
+   "<![CDATA[Ontario]]>": 53,
+   "<![CDATA[Happet]]>": 45,
+   "<![CDATA[BeloCat]]>": 44,
+   "<![CDATA[Nobby]]>": 40,
+   "<![CDATA[Hikari]]>": 36,
+   "<![CDATA[COMFY]]>": 34,
+   "<![CDATA[Sum-Plast]]>": 31,
+   "<![CDATA[GimCat]]>": 30,
+   "<![CDATA[Eukanuba]]>": 27,
+   "<![CDATA[Gnatek]]>": 26,
+   "<![CDATA[Miamor]]>": 26,
+   "<![CDATA[FURMINATOR]]>": 26,
+   "<![CDATA[Dingo]]>": 23,
+   "<![CDATA[Prins]]>": 23,
+   "<![CDATA[Romar]]>": 22,
+   "<![CDATA[Pet Nova]]>": 22,
+   "<![CDATA[Royal Canin]]>": 22,
+   "<![CDATA[Real Dog]]>": 21,
+   "<![CDATA[8in1]]>": 21
+  },
+  "product_type": {
+   "<![CDATA[Sausas maistas šunims]]>": 433,
+   "<![CDATA[Skanėstai šunims]]>": 242,
+   "<![CDATA[Sausas maistas katėms]]>": 186,
+   "<![CDATA[Žaislai šunims]]>": 170,
+   "<![CDATA[Antkakliai, pavadėliai šunims]]>": 150,
+   "<![CDATA[Konservai katėms]]>": 125,
+   "<![CDATA[Konservai šunims]]>": 113,
+   "<![CDATA[Skanėstai katėms]]>": 73,
+   "<![CDATA[Kraikai kačių tualetams]]>": 72,
+   "<![CDATA[Vitaminai ir papildai šunims]]>": 58,
+   "<![CDATA[Žaislai katėms]]>": 49,
+   "<![CDATA[Tualetai, semtuvėliai]]>": 37,
+   "<![CDATA[Šampūnai šunims]]>": 34,
+   "<![CDATA[Draskyklės katėms]]>": 33,
+   "<![CDATA[Akvariumo žuvyčių maistas]]>": 33,
+   "<![CDATA[Higienos priemonės šunims]]>": 32,
+   "<![CDATA[Dubenėliai katėms]]>": 32,
+   "<![CDATA[Apranga šunims]]>": 31,
+   "<![CDATA[Transportavimo dėžės katėms]]>": 29,
+   "<![CDATA[Šukos, šepečiai, žirklės katėms]]>": 29,
+   "<![CDATA[Dubenėliai šunims]]>": 25,
+   "<![CDATA[Priežiūros priemonės katėms]]>": 24,
+   "<![CDATA[Guoliai šunims]]>": 21,
+   "<![CDATA[Šukos, šepečiai, žirklės šunims]]>": 19,
+   "<![CDATA[Pašaras graužikams]]>": 18,
+   "<![CDATA[Skanėstai graužikams]]>": 17,
+   "<![CDATA[Kelionių įranga]]>": 15,
+   "<![CDATA[Vitaminai ir papildai katėms]]>": 15,
+   "<![CDATA[Narvai ir aksesuarai graužikams]]>": 10,
+   "<![CDATA[Guoliai katėms]]>": 9
+  }
+ }
+}
