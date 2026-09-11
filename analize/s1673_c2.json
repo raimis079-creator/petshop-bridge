@@ -1,0 +1,444 @@
+{
+ "v": "dep-200746",
+ "kurimas": 200,
+ "sid": 5585,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "gtm": {
+  "token": 200,
+  "accounts": [
+   "accounts/6071827163"
+  ],
+  "container": "accounts/6071827163/containers/101921278",
+  "workspace": "accounts/6071827163/containers/101921278/workspaces/8",
+  "live": {
+   "v": "7",
+   "name": "v5 — GA4 Config fire tik po statistics sutikimo",
+   "tags": 13,
+   "triggers": 11,
+   "vars": 12
+  },
+  "tags": [
+   {
+    "id": "15",
+    "name": "00 — Consent Mode v2 Default",
+    "type": "html",
+    "paused": true,
+    "consent": "notSet",
+    "fire": [
+     "2147479573"
+    ],
+    "block": [],
+    "p": {}
+   },
+   {
+    "id": "16",
+    "name": "01 — Conversion Linker",
+    "type": "gclidw",
+    "paused": false,
+    "consent": "needed",
+    "fire": [
+     "CE — marketing granted(customEvent)"
+    ],
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "p": {}
+   },
+   {
+    "id": "24",
+    "name": "02 — GA4 Config",
+    "type": "googtag",
+    "paused": false,
+    "consent": "needed",
+    "fire": [
+     "CE — statistics granted(customEvent)"
+    ],
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "p": {}
+   },
+   {
+    "id": "25",
+    "name": "GA4 — view_item",
+    "type": "gaawe",
+    "paused": false,
+    "consent": "needed",
+    "fire": [
+     "CE — view_item(customEvent)"
+    ],
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "p": {}
+   },
+   {
+    "id": "26",
+    "name": "GA4 — add_to_cart",
+    "type": "gaawe",
+    "paused": false,
+    "consent": "needed",
+    "fire": [
+     "CE — add_to_cart(customEvent)"
+    ],
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "p": {}
+   },
+   {
+    "id": "27",
+    "name": "GA4 — view_cart",
+    "type": "gaawe",
+    "paused": false,
+    "consent": "needed",
+    "fire": [
+     "CE — view_cart(customEvent)"
+    ],
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "p": {}
+   },
+   {
+    "id": "28",
+    "name": "GA4 — begin_checkout",
+    "type": "gaawe",
+    "paused": false,
+    "consent": "needed",
+    "fire": [
+     "CE — begin_checkout(customEvent)"
+    ],
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "p": {}
+   },
+   {
+    "id": "29",
+    "name": "GA4 — purchase",
+    "type": "gaawe",
+    "paused": false,
+    "consent": "needed",
+    "fire": [
+     "CE — purchase(customEvent)"
+    ],
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "p": {}
+   },
+   {
+    "id": "30",
+    "name": "03 — Google Ads Conversion (Purchase)",
+    "type": "awct",
+    "paused": false,
+    "consent": "needed",
+    "fire": [
+     "CE — purchase(customEvent)"
+    ],
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "p": {}
+   },
+   {
+    "id": "31",
+    "name": "04 — Meta Pixel Base + PageView",
+    "type": "html",
+    "paused": false,
+    "consent": "needed",
+    "fire": [
+     "CE — marketing granted(customEvent)"
+    ],
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "p": {}
+   },
+   {
+    "id": "32",
+    "name": "Meta — add_to_cart",
+    "type": "html",
+    "paused": false,
+    "consent": "needed",
+    "fire": [
+     "CE — add_to_cart(customEvent)"
+    ],
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)",
+     "BLOCK — marketing nesutikta (events)(customEvent)"
+    ],
+    "p": {}
+   },
+   {
+    "id": "33",
+    "name": "Meta — begin_checkout",
+    "type": "html",
+    "paused": false,
+    "consent": "needed",
+    "fire": [
+     "CE — begin_checkout(customEvent)"
+    ],
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)",
+     "BLOCK — marketing nesutikta (events)(customEvent)"
+    ],
+    "p": {}
+   },
+   {
+    "id": "34",
+    "name": "Meta — purchase",
+    "type": "html",
+    "paused": false,
+    "consent": "needed",
+    "fire": [
+     "CE — purchase(customEvent)"
+    ],
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)",
+     "BLOCK — marketing nesutikta (events)(customEvent)"
+    ],
+    "p": {}
+   }
+  ],
+  "vars": [
+   {
+    "name": "Const — Ads Conversion ID",
+    "type": "c",
+    "p": {}
+   },
+   {
+    "name": "Const — Ads Label",
+    "type": "c",
+    "p": {}
+   },
+   {
+    "name": "DLV — ecommerce",
+    "type": "v",
+    "p": {}
+   },
+   {
+    "name": "DLV — transaction_id",
+    "type": "v",
+    "p": {}
+   },
+   {
+    "name": "DLV — value",
+    "type": "v",
+    "p": {}
+   },
+   {
+    "name": "DLV — user_email_hashed",
+    "type": "v",
+    "p": {}
+   }
+  ],
+  "triggers": [
+   {
+    "name": "BLOCK — DEV (pageview)",
+    "type": "pageview",
+    "ev": []
+   },
+   {
+    "name": "BLOCK — DEV (visi custom events)",
+    "type": "customEvent",
+    "ev": [
+     "{{_event}} .*"
+    ]
+   },
+   {
+    "name": "CE — view_item",
+    "type": "customEvent",
+    "ev": [
+     "{{_event}} view_item"
+    ]
+   },
+   {
+    "name": "CE — add_to_cart",
+    "type": "customEvent",
+    "ev": [
+     "{{_event}} add_to_cart"
+    ]
+   },
+   {
+    "name": "CE — view_cart",
+    "type": "customEvent",
+    "ev": [
+     "{{_event}} view_cart"
+    ]
+   },
+   {
+    "name": "CE — begin_checkout",
+    "type": "customEvent",
+    "ev": [
+     "{{_event}} begin_checkout"
+    ]
+   },
+   {
+    "name": "CE — purchase",
+    "type": "customEvent",
+    "ev": [
+     "{{_event}} purchase"
+    ]
+   },
+   {
+    "name": "CE — cmplz_consent_update",
+    "type": "customEvent",
+    "ev": [
+     "{{_event}} cmplz_consent_update"
+    ]
+   },
+   {
+    "name": "CE — marketing granted",
+    "type": "customEvent",
+    "ev": [
+     "{{_event}} cmplz_consent_update"
+    ]
+   },
+   {
+    "name": "BLOCK — marketing nesutikta (events)",
+    "type": "customEvent",
+    "ev": [
+     "{{_event}} .*"
+    ]
+   },
+   {
+    "name": "CE — statistics granted",
+    "type": "customEvent",
+    "ev": [
+     "{{_event}} cmplz_consent_update"
+    ]
+   }
+  ]
+ },
+ "GO": {
+  "v": "S1673C2",
+  "min_sukurta": "2026-09-08 06:07:33",
+  "fakt": [
+   {
+    "d": "2026-09-08",
+    "n": "4",
+    "apm": "4",
+    "gclid": "0",
+    "utm_g": "0",
+    "kan": "",
+    "viso": "119.62"
+   },
+   {
+    "d": "2026-09-09",
+    "n": "3",
+    "apm": "3",
+    "gclid": "0",
+    "utm_g": "0",
+    "kan": "organika",
+    "viso": "102.14"
+   },
+   {
+    "d": "2026-09-10",
+    "n": "10",
+    "apm": "10",
+    "gclid": "6",
+    "utm_g": "0",
+    "kan": "direct,mokamas,organika",
+    "viso": "321.99"
+   },
+   {
+    "d": "2026-09-11",
+    "n": "6",
+    "apm": "6",
+    "gclid": "3",
+    "utm_g": "0",
+    "kan": "direct,mokamas,organika",
+    "viso": "171.63"
+   }
+  ],
+  "kanalai": [
+   {
+    "kanalas_pirmas": "",
+    "kanalas_paskutinis": "",
+    "utm_source": "",
+    "utm_medium": "",
+    "n": "4"
+   },
+   {
+    "kanalas_pirmas": "direct",
+    "kanalas_paskutinis": "direct",
+    "utm_source": "",
+    "utm_medium": "",
+    "n": "5"
+   },
+   {
+    "kanalas_pirmas": "mokamas",
+    "kanalas_paskutinis": "mokamas",
+    "utm_source": "",
+    "utm_medium": "",
+    "n": "8"
+   },
+   {
+    "kanalas_pirmas": "mokamas",
+    "kanalas_paskutinis": "organika",
+    "utm_source": "",
+    "utm_medium": "",
+    "n": "2"
+   },
+   {
+    "kanalas_pirmas": "organika",
+    "kanalas_paskutinis": "mokamas",
+    "utm_source": "",
+    "utm_medium": "",
+    "n": "1"
+   },
+   {
+    "kanalas_pirmas": "organika",
+    "kanalas_paskutinis": "organika",
+    "utm_source": "",
+    "utm_medium": "",
+    "n": "3"
+   }
+  ],
+  "statusai": [
+   {
+    "statusas_galutinis": "cancelled",
+    "n": "2"
+   },
+   {
+    "statusas_galutinis": "completed",
+    "n": "16"
+   },
+   {
+    "statusas_galutinis": "processing",
+    "n": "5"
+   }
+  ],
+  "ga4_tables_opts": [
+   "wc_orders",
+   "ps_fakt_uzsakymai",
+   "wc_orders_meta",
+   "ps_ga4_mp_dev",
+   "ps_ga4_mp_secret",
+   "ps_gsc_sa",
+   "gmt_offset",
+   "ps_kontrole_paskutinis"
+  ],
+  "ga4_siusti": "function siusti( $order_id ) {\n\t\tstatic $done = array();\n\t\t$order_id = (int) $order_id;\n\t\tif ( ! $order_id || isset( $done[ $order_id ] ) ) { return; }\n\t\t$order = wc_get_order( $order_id );\n\t\tif ( ! $order || ! in_array( $order->get_status(), array( 'processing', 'on-hold', 'completed' ), true ) ) { return; }\n\t\tif ( $order->get_meta( '_ps_ga4_mp_at' ) ) { return; }\n\t\t$done[ $order_id ] = 1;\n\t\tif ( ! self::prod() ) { $order->update_meta_data( '_ps_ga4_mp_kodas', 'dev-nesiusta' ); $order->save(); return; }\n\t\t$secret = self::secret();\n\t\tif ( '' === $secret ) { $order->update_meta_data( '_ps_ga4_mp_kodas', 'laukia-rakto' ); $order->save(); return; }\n\t\t$body = self::payload( $order );\n\t\t$r = wp_remote_post( 'https://www.google-analytics.com/mp/collect?measurement_id=' . self::MID . '&api_secret=' . rawurlencode( $secret ), array(\n\t\t\t'timeout' => 8, 'headers' => array( 'Content-Type' => 'application/json' ), 'body' => wp_json_encode( $body ) ) );\n\t\t$code = is_wp_error( $r ) ? 'err:' . $r->get_error_message() : (string) wp_remote_retrieve_response_code( $r );\n\t\tif ( '204' === $code ) { $order->update_meta_data( '_ps_ga4_mp_at', current_time( 'mysql', true ) ); }\n\t\t$order->update_meta_data( '_ps_ga4_mp_kodas', $code );\n\t\t$order->update_meta_data( '_ps_ga4_mp_cid', $body['client_id'] );\n\t\t$order->save();\n\t}\n\n\t/* Debug endpoint validacija — nieko neįrašo GA4, grąžina validationMessages. Tik admin arba ?ps_ga4_dry su GET raktu. */\n\tpublic static function validuoti( $order_id ) {\n\t",
+  "ga4_payload": "function payload( $order ) {\n\t\t$items = array();\n\t\tforeach ( $order->get_items( 'line_item' ) as $it ) {\n\t\t\t$p   = $it->get_product();\n\t\t\t$pid = $p ? ( $p->get_parent_id() ?: $p->get_id() ) : (int) $it->get_product_id();\n\t\t\t$qty = max( 1, (int) $it->get_quantity() );\n\t\t\t$row = array(\n\t\t\t\t'item_id'   => $p && $p->get_sku() ? (string) $p->get_sku() : (string) $pid,\n\t\t\t\t'item_name' => wp_strip_all_tags( $it->get_name() ),\n\t\t\t\t'quantity'  => $qty,\n\t\t\t\t'price'     => round( ( (float) $it->get_total() + (float) $it->get_total_tax() ) / $qty, 2 ),\n\t\t\t);\n\t\t\tif ( function_exists( 'petshop_gtm_brand' ) ) { $b = petshop_gtm_brand( $pid ); if ( $b ) { $row['item_brand'] = $b; } }\n\t\t\t$cats = get_the_terms( $pid, 'product_cat' );\n\t\t\tif ( $cats && ! is_wp_error( $cats ) ) { $row['item_category'] = $cats[0]->name; }\n\t\t\t$items[] = $row;\n\t\t}\n\t\t$cid = (string) $order->get_meta( '_ps_ga_cid' );\n\t\t$sut = (string) $order->get_meta( '_ps_ga_sutikimas' );\n\t\tif ( '' === $cid ) { $cid = 'ps.' . sprintf( '%u', crc32( 'ps-' . $order->get_id() . '-' . $order->get_billing_email() ) ) . '.' . $order->get_date_created()->getTimestamp(); }\n\t\t$params = array(\n\t\t\t'transaction_id'       => (string) $order->get_id(),\n\t\t\t'value'                => round( (float) $order->get_total(), 2 ),\n\t\t\t'tax'                  => round( (float) $order->get_total_tax(), 2 ),\n\t\t\t'shipping'             => round( (float) $order->get_shipping_total() + (float) $order->get_shipping_tax(), 2 ),\n\t\t\t'currency'             => $order->get_currency() ?: 'EUR',\n\t\t\t'coupon'               => implode( ',', $order->get_coupon_codes() ),\n\t\t\t'payment_type'         => (string) $order->get_payment_method(),\n\t\t\t'ps_saltinis'          => 'serveris',\n\t\t\t'engagement_time_msec' => 1,\n\t\t\t'items'                => $items,\n\t\t);\n\t\tif ( '' === $params['coupon'] ) { unset( $params['coupon'] ); }\n\t\t$sid = (string) $order->get_meta( '_ps_ga_sid' );\n\t\tif ( '' !== $sid ) { $params['session_id'] = $sid; }\n\t\t$body = array(\n\t\t\t'client_id'            => $cid,\n\t\t\t'non_personalized_ads' => ( strpos( $sut, 'M' ) === false ),\n\t\t\t'events'               => array( array( 'name' => 'purchase', 'params' => $params ) ),\n\t\t);\n\t\t/* timestamp_micros — leidžiama iki 72 val. atgal; užsakymo sukūrimo laikas sujungia su sesija */\n\t\t$ts = $order->get_date_created() ? $order->get_date_created()->getTimestamp() : time();\n\t\tif ( time() - $ts < 71 * HOUR_IN_SECONDS ) { $body['timestamp_micros'] = $ts * 1000000; }\n\t\treturn $body;\n\t}\n\n\t/* ---------- siuntimas ------",
+  "opt_ps_ga4_mp_dev": "",
+  "opt_ps_ga4_mp_secret": "5GGbP2GxRMa0LCDPYLSnag"
+ }
+}
