@@ -1,0 +1,132 @@
+{
+ "v": "dep-223241",
+ "kurimas": 200,
+ "sid": 5617,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1675 l",
+  "temp_istrinta": 1,
+  "kodas": {
+   "wp-content/plugins/petshop-core/includes/class-cart-abandonment.php": {
+    "3": "* Petshop Cart Abandonment — S317 DETEKTORIUS.",
+    "32": "const ABANDON_AFTER = 7200;      // 2 val.",
+    "62": "'abandoned' => 0,",
+    "67": "'expired'   => 0,",
+    "152": "'job_key' => 'cart_abandoned:' . $cart_id . ':stage1',",
+    "168": "// --- 7) Senesni nei 7 d. -> expired, BE evento ---",
+    "277": "WHERE j2.flow = 'cart_abandoned_2'",
+    "333": "'cart_abandoned_2',",
+    "337": "'job_key' => 'cart_abandoned:' . $cart_id . ':stage2',",
+    "420": "wp_schedule_event( time() + 300, 'ps_esp_5min', 'ps_cart_abandon_check' );"
+   },
+   "wp-content/plugins/petshop-core/includes/class-cart-recovery.php": {
+    "46": "if ( 'cart_abandoned' !== $flow && 'cart_abandoned_2' !== $flow ) { return $context; }"
+   },
+   "wp-content/plugins/petshop-core/includes/class-email-dispatch.php": {
+    "60": "// S317: cart_abandoned = MARKETINGAS (privalomas consent).",
+    "63": "'cart_abandoned'          => array( 'class' => 'marketing', 'template' => 'cart-abandoned-1',  'delay' => 0 ),",
+    "66": "'cart_abandoned_2'        => array( 'class' => 'marketing', 'template' => 'cart-abandoned-2',  'delay' => 0 ),"
+   },
+   "wp-content/plugins/petshop-core/includes/class-event-emitters.php": {
+    "131": "// (refill, cart_abandoned, post-purchase, T-5, win-back...)."
+   },
+   "wp-content/mu-plugins/petshop-laiskai.php": {
+    "265": "'cart_abandoned_2'       => array( 'recovery_url', 'cart_items', 'pirma_preke' ),"
+   },
+   "wp-content/mu-plugins/petshop-langai-admin.php": {
+    "28": "'cart_abandoned'         => array( 'Paliktas krepšelis · 1', 'Pirmas priminimas su prekių sąrašu.' ),",
+    "29": "'cart_abandoned_2'       => array( 'Paliktas krepšelis · 2', 'Antras, paskutinis priminimas.' ),"
+   },
+   "wp-content/mu-plugins/petshop-perziuru-priminimas.php": {
+    "3": "* Plugin Name: Petshop Perziuru Priminimas v1.0 (Browse abandonment)",
+    "25": "wp_schedule_event( time() + 600, 'hourly', 'ps_browse_abandon_check' );",
+    "142": "AND status IN ('active','abandoned') LIMIT 1\","
+   },
+   "wp-content/mu-plugins/petshop-rezultatai.php": {
+    "34": "'cart_abandoned'=>'Paliktas krepšelis 1','cart_abandoned_2'=>'Paliktas krepšelis 2',"
+   }
+  },
+  "opc": [
+   {
+    "n": "petshop_esp_event_log_db_version",
+    "v": "0.1.0"
+   },
+   {
+    "n": "petshop_esp_sender_mk",
+    "v": "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKU1V6STFOaUo5LmV5SmhkV1FpT2lJeElpd2lhblJwSWpvaVkyUmpZV1F3WXpGaFlUQmpaVE0yTWpVM09HUXpNREU1WlRNelpqY3pORGhrTW1VME5UZzNZVGN6T0RkaE1EWmtaakEzWkdOalpEaG1ZVGxpWVdGa1pHSXhZVE0wTm1aak1tRmlZak13TW1NaUxDSnBZWFFpT2pFM09ETTVOekk1TVRrdU9EUTNNRFU0TENKdVltWWlPakUzT0RNNU56STVNVGt1"
+   },
+   {
+    "n": "petshop_esp_sender_tk",
+    "v": "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKU1V6STFOaUo5LmV5SmhkV1FpT2lJeElpd2lhblJwSWpvaU5EbGxOekptWkRReFptRXpPVGs0TVdFd1pXVmpPV00zWldNeVl6QXdaVFpsWVRJME5tSmpNVGcxTkdJM01EYzNNV1JpWWpZM01EYzFZelExWVRObU5XWmtObUZpWVdSbE9Ua3lPRFprTWpjaUxDSnBZWFFpT2pFM09ETTVOek14TmpndU1qazNOVElzSW01aVppSTZNVGM0TXprM016RTJPQzR5"
+   },
+   {
+    "n": "petshop_esp_sender_webhook_secret",
+    "v": "uD5RdRkIjPorxrlouQDahacEyHxxoEO0TcemLKnX"
+   }
+  ],
+  "as_hooks": [],
+  "cron_cart": {
+   "ps_cart_abandon_check": {
+    "kada": "09-11 22:34",
+    "sched": "ps_esp_5min"
+   },
+   "ps_browse_abandon_check": {
+    "kada": "09-11 22:37",
+    "sched": "hourly"
+   }
+  },
+  "carts_pvz": [
+   {
+    "status": "abandoned",
+    "last_cart_activity_at": "2026-09-11 20:18:13",
+    "status_changed_at": "2026-09-11 22:19:40",
+    "min": "121"
+   },
+   {
+    "status": "abandoned",
+    "last_cart_activity_at": "2026-09-11 17:32:11",
+    "status_changed_at": "2026-09-11 19:34:45",
+    "min": "122"
+   },
+   {
+    "status": "abandoned",
+    "last_cart_activity_at": "2026-09-11 16:19:34",
+    "status_changed_at": "2026-09-11 18:19:41",
+    "min": "120"
+   },
+   {
+    "status": "abandoned",
+    "last_cart_activity_at": "2026-09-11 12:24:12",
+    "status_changed_at": "2026-09-11 14:24:57",
+    "min": "120"
+   },
+   {
+    "status": "abandoned",
+    "last_cart_activity_at": "2026-09-11 14:18:15",
+    "status_changed_at": "2026-09-11 13:14:40",
+    "min": "-63"
+   },
+   {
+    "status": "abandoned",
+    "last_cart_activity_at": "2026-09-11 10:19:02",
+    "status_changed_at": "2026-09-11 12:20:03",
+    "min": "121"
+   },
+   {
+    "status": "expired",
+    "last_cart_activity_at": null,
+    "status_changed_at": "2026-09-11 09:19:45",
+    "min": null
+   },
+   {
+    "status": "expired",
+    "last_cart_activity_at": null,
+    "status_changed_at": "2026-09-11 08:44:43",
+    "min": null
+   }
+  ]
+ }
+}
