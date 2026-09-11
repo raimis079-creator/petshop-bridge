@@ -1,0 +1,5 @@
+# PMax asset archyvas prieš mainus — S1672 (2026-09-11 21:56 LT)
+Pilnas JSON (dry preview v1.3, 128 asset_group_asset eilučių, 90 d. 06-13…09-11): WP opcija `ps_ads_recon` (dydis 33 727 B, įrašas 21:56:33) + ta pati ataskaita repo `analize/_pmax_arch_s1672_note.md`.
+Nuimami (MARKETING/SQUARE/PORTRAIT): šunų 4/10/6, kačių 6/7/7 = 40 asset ID (lieka Asset library, prikabinami atgal).
+Nuotraukų 90 d. rezultatas menkas: geriausia šunų SQUARE 149114027301 (3 930 parod., 107 paspaud., 2,98 konv., €134); kačių SQUARE 156008375672 (5 881/205/1,02 konv.). Didžioji dalis kitų 0 konv.
+Tekstai (E etapui): stipriausi šunų — „Šunų maistas. Internetu." 22,9 konv./€1 124; „Mėsingi konservai šunims" 13,9/€622; „Premium Klasės Šunų Maistas" 10,4/€610; description „Aukščiausios klasės sausas maistas šunims (Ontario, Rasco, Prins, Josera)" 15,3/€672. Kačių — description „Katėms dėl mitybos disbalanso…" 168,9 konv./€6 518 (dominuoja), „Kačių maistas. Internetu." 5,4/€214; „Kačių konservai. Užsakykite." 85 paspaud./0,02 konv. (blogas).
