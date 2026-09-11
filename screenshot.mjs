@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjcyIG1jIG5vb3AgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKGlzc2V0KCRfR0VUWydwc19zMTY3Mm0nXSkpeyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKGFycmF5KCd2Jz0+J1MxNjcybWMnLCdvayc9PjEpKTsgZXhpdDsgfSB9KTsK';
-const VER='dep-182251';
+const VER='dep-183724';
 const GKEY='ps_s1672m';
 const PHASES=["GO"];
-const OUT='analize/s1672_img3.json';
+const OUT='analize/s1672_img4.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -34,9 +34,9 @@ try{
   await miegok(9000);
   if(process.env.GTM_SA_JSON){ try{ const sr=await fx(WP+'/wp-json/ps-seo-temp/v1/sa',{method:'POST',headers:{Authorization:AUTH,'Content-Type':'text/plain'},body:process.env.GTM_SA_JSON},'sa'); out.sa_push={status:sr.status,body:(await sr.text()).slice(0,200)}; }catch(e){ out.sa_push=String(e).slice(0,200);} }
 
-  try{ const U=["https://petshop.lt/wp-content/uploads/2026/06/on-ontario-troskinys-sunims-is-lasisos-ir-darzoviu-sultinyje-300-g-pouch-salmon-with-vegetables-in-broth-1.jpg"]; out.img={n:U.length,ok:0,err:[]}; const m={};
+  try{ const U=["https://petshop.lt/wp-content/uploads/2026/06/mi-miamor-feine-filets-konservai-katems-tunas-krabu-drebuciuose-100-g-1.jpg", "https://petshop.lt/wp-content/uploads/2026/06/mi-miamor-feine-filets-konservai-katems-vistienos-ir-tuno-gabaleliai-drebuciuose-100-g-1.jpg", "https://petshop.lt/wp-content/uploads/2026/06/mi-miamor-super-premium-konservai-katems-su-tunu-ir-suriu-100-g-1.jpg", "https://petshop.lt/wp-content/uploads/2026/06/mi-miamor-feine-filets-konservai-katems-tunas-su-darzovemis-drebuciuose-100-g-1.jpg"]; out.img={n:U.length,ok:0,err:[]}; const m={};
     for(const u of U){ try{ const r=await fetch(u,{headers:{'User-Agent':'Mozilla/5.0'}}); const buf=Buffer.from(await r.arrayBuffer()); const ct=r.headers.get('content-type')||''; if(r.status===200&&buf.length>500){ m[u]={ct,b:buf.toString('base64'),len:buf.length}; out.img.ok++; } else out.img.err.push(u+' '+r.status+' '+buf.length); }catch(e){ out.img.err.push(u+' '+String(e).slice(0,80)); } }
-    await put('analize/pmax_pouch_s1672.json', Buffer.from(JSON.stringify(m)), VER+' img'); }catch(e){ out.img_klaida=String(e).slice(0,300); }
+    await put('analize/pmax_miamor_s1672.json', Buffer.from(JSON.stringify(m)), VER+' img'); }catch(e){ out.img_klaida=String(e).slice(0,300); }
   for(let i=0;i<PHASES.length;i++){
     const f=PHASES[i];
     if(i>0) await miegok(5000);
