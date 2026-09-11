@@ -1,0 +1,536 @@
+{
+ "v": "dep-224613",
+ "kurimas": 200,
+ "sid": 5623,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1675 p",
+  "temp_istrinta": 1,
+  "ivykiai": [
+   {
+    "uzsakymas": "35878",
+    "laikas": "2026-09-09 11:22:53",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "rezultatas": "ok",
+    "kas_vardas": "sistema",
+    "pastaba": "mokėjimas / svetainė"
+   }
+  ],
+  "fakt": [],
+  "fakt_stulp": [
+   "uzsakymas_id",
+   "sukurta_at",
+   "apmoketa_at",
+   "statusas_galutinis",
+   "statusas_at",
+   "klientas_id",
+   "klientas_email_hash",
+   "klientas_naujas"
+  ],
+  "carts": [],
+  "meta_liko": [],
+  "items_liko": [],
+  "posts_liko": [
+   {
+    "ID": "35869",
+    "post_type": "post",
+    "post_status": "auto-draft",
+    "post_date": "2026-09-09 02:39:24"
+   },
+   {
+    "ID": "35870",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-09-09 02:57:51"
+   },
+   {
+    "ID": "35895",
+    "post_type": "product",
+    "post_status": "publish",
+    "post_date": "2026-09-11 06:31:03"
+   },
+   {
+    "ID": "35896",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-09-11 06:32:12"
+   },
+   {
+    "ID": "35897",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-09-11 06:32:12"
+   },
+   {
+    "ID": "35898",
+    "post_type": "product",
+    "post_status": "publish",
+    "post_date": "2026-09-11 06:31:03"
+   },
+   {
+    "ID": "35899",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-09-11 06:32:13"
+   },
+   {
+    "ID": "35900",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-09-11 06:32:14"
+   }
+  ],
+  "notes_liko": [],
+  "web_0911_rytas": [
+   {
+    "laikas": "2026-09-11 06:05:06",
+    "tipas": "begin_checkout",
+    "u": "/kasa/",
+    "r": null
+   },
+   {
+    "laikas": "2026-09-11 06:07:06",
+    "tipas": "begin_checkout",
+    "u": "/kasa/",
+    "r": null
+   },
+   {
+    "laikas": "2026-09-11 06:07:29",
+    "tipas": "begin_checkout",
+    "u": "/kasa/",
+    "r": null
+   },
+   {
+    "laikas": "2026-09-11 06:09:34",
+    "tipas": "begin_checkout",
+    "u": "/kasa/",
+    "r": null
+   },
+   {
+    "laikas": "2026-09-11 06:10:16",
+    "tipas": "begin_checkout",
+    "u": "/kasa/",
+    "r": null
+   },
+   {
+    "laikas": "2026-09-11 08:12:41",
+    "tipas": "begin_checkout",
+    "u": "/kasa/",
+    "r": null
+   },
+   {
+    "laikas": "2026-09-11 08:26:49",
+    "tipas": "begin_checkout",
+    "u": "/kasa/",
+    "r": null
+   },
+   {
+    "laikas": "2026-09-11 08:27:23",
+    "tipas": "begin_checkout",
+    "u": "/kasa/",
+    "r": null
+   },
+   {
+    "laikas": "2026-09-11 08:33:50",
+    "tipas": "begin_checkout",
+    "u": "/kasa/",
+    "r": null
+   },
+   {
+    "laikas": "2026-09-11 08:34:00",
+    "tipas": "begin_checkout",
+    "u": "/kasa/",
+    "r": null
+   },
+   {
+    "laikas": "2026-09-11 09:10:57",
+    "tipas": "begin_checkout",
+    "u": "/kasa/",
+    "r": null
+   },
+   {
+    "laikas": "2026-09-11 09:13:18",
+    "tipas": "begin_checkout",
+    "u": "/kasa/",
+    "r": null
+   }
+  ],
+  "as_draft_cleanup": [],
+  "as_0911": [
+   {
+    "hook": "ps_esp_process_event",
+    "c": "12"
+   },
+   {
+    "hook": "wc_run_batch_process",
+    "c": "4"
+   },
+   {
+    "hook": "wc_schedule_pending_batch_processes",
+    "c": "4"
+   },
+   {
+    "hook": "wc_update_product_lookup_tables_column",
+    "c": "132"
+   },
+   {
+    "hook": "wc_update_product_lookup_tables_rating_count_batch",
+    "c": "528"
+   },
+   {
+    "hook": "woocommerce_cancel_unpaid_orders",
+    "c": "4"
+   },
+   {
+    "hook": "woocommerce_cleanup_sessions",
+    "c": "1"
+   },
+   {
+    "hook": "woocommerce_custom_orders_table_background_sync",
+    "c": "7"
+   },
+   {
+    "hook": "woocommerce_delete_legacy_report_transients",
+    "c": "29"
+   },
+   {
+    "hook": "wp_mail_smtp_admin_notifications_update",
+    "c": "1"
+   },
+   {
+    "hook": "wpforms_process_forms_locator_save",
+    "c": "1"
+   },
+   {
+    "hook": "wpforms_process_forms_locator_scan",
+    "c": "1"
+   },
+   {
+    "hook": "wpforms_process_purge_spam",
+    "c": "1"
+   }
+  ],
+  "ivykiai_visi_0911": [
+   {
+    "uzsakymas": "35894",
+    "laikas": "2026-09-11 05:21:53",
+    "sritis": "desk",
+    "veiksmas": "kelias",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35893",
+    "laikas": "2026-09-11 05:22:35",
+    "sritis": "desk",
+    "veiksmas": "kelias",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35883",
+    "laikas": "2026-09-11 05:24:51",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35888",
+    "laikas": "2026-09-11 05:24:51",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35889",
+    "laikas": "2026-09-11 05:24:51",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35890",
+    "laikas": "2026-09-11 05:24:51",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35891",
+    "laikas": "2026-09-11 05:24:51",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35892",
+    "laikas": "2026-09-11 05:24:51",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35883",
+    "laikas": "2026-09-11 05:28:18",
+    "sritis": "desk",
+    "veiksmas": "vp_reg",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35883",
+    "laikas": "2026-09-11 05:29:50",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35888",
+    "laikas": "2026-09-11 05:30:39",
+    "sritis": "desk",
+    "veiksmas": "vp_reg",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35891",
+    "laikas": "2026-09-11 05:32:13",
+    "sritis": "desk",
+    "veiksmas": "vp_reg",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35892",
+    "laikas": "2026-09-11 05:33:13",
+    "sritis": "desk",
+    "veiksmas": "vp_reg",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35901",
+    "laikas": "2026-09-11 06:11:30",
+    "sritis": "desk",
+    "veiksmas": "rusiuoti",
+    "kas_vardas": "sistema"
+   },
+   {
+    "uzsakymas": "35901",
+    "laikas": "2026-09-11 06:11:31",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "kas_vardas": "sistema"
+   },
+   {
+    "uzsakymas": "35886",
+    "laikas": "2026-09-11 06:14:46",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35886",
+    "laikas": "2026-09-11 06:14:46",
+    "sritis": "wc",
+    "veiksmas": "apmokejimas",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35886",
+    "laikas": "2026-09-11 06:14:46",
+    "sritis": "desk",
+    "veiksmas": "apmoketa",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35901",
+    "laikas": "2026-09-11 07:07:37",
+    "sritis": "desk",
+    "veiksmas": "vp_reg",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35901",
+    "laikas": "2026-09-11 07:09:29",
+    "sritis": "dropship",
+    "veiksmas": "lipdukas_pdf",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35901",
+    "laikas": "2026-09-11 07:13:39",
+    "sritis": "dropship",
+    "veiksmas": "laiskas",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35872",
+    "laikas": "2026-09-11 07:15:33",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35872",
+    "laikas": "2026-09-11 07:15:33",
+    "sritis": "desk",
+    "veiksmas": "issiusta",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35882",
+    "laikas": "2026-09-11 07:15:53",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35882",
+    "laikas": "2026-09-11 07:15:53",
+    "sritis": "desk",
+    "veiksmas": "issiusta",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35886",
+    "laikas": "2026-09-11 07:28:30",
+    "sritis": "desk",
+    "veiksmas": "rusiuoti",
+    "kas_vardas": "Raimis"
+   },
+   {
+    "uzsakymas": "35886",
+    "laikas": "2026-09-11 07:29:51",
+    "sritis": "desk",
+    "veiksmas": "pakuotes",
+    "kas_vardas": "Raimis"
+   },
+   {
+    "uzsakymas": "35886",
+    "laikas": "2026-09-11 07:38:31",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35886",
+    "laikas": "2026-09-11 07:38:54",
+    "sritis": "desk",
+    "veiksmas": "vp_reg",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35886",
+    "laikas": "2026-09-11 07:44:34",
+    "sritis": "desk",
+    "veiksmas": "vp_reg",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35886",
+    "laikas": "2026-09-11 07:45:59",
+    "sritis": "desk",
+    "veiksmas": "vp_reg",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35892",
+    "laikas": "2026-09-11 08:07:24",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "kas_vardas": "sistema"
+   },
+   {
+    "uzsakymas": "35892",
+    "laikas": "2026-09-11 08:07:24",
+    "sritis": "desk",
+    "veiksmas": "issiusta",
+    "kas_vardas": "sistema"
+   },
+   {
+    "uzsakymas": "35891",
+    "laikas": "2026-09-11 08:07:25",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "kas_vardas": "sistema"
+   },
+   {
+    "uzsakymas": "35891",
+    "laikas": "2026-09-11 08:07:25",
+    "sritis": "desk",
+    "veiksmas": "issiusta",
+    "kas_vardas": "sistema"
+   },
+   {
+    "uzsakymas": "35888",
+    "laikas": "2026-09-11 08:07:25",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "kas_vardas": "sistema"
+   },
+   {
+    "uzsakymas": "35888",
+    "laikas": "2026-09-11 08:07:26",
+    "sritis": "desk",
+    "veiksmas": "issiusta",
+    "kas_vardas": "sistema"
+   },
+   {
+    "uzsakymas": "35883",
+    "laikas": "2026-09-11 08:07:26",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "kas_vardas": "sistema"
+   },
+   {
+    "uzsakymas": "35883",
+    "laikas": "2026-09-11 08:07:26",
+    "sritis": "desk",
+    "veiksmas": "issiusta",
+    "kas_vardas": "sistema"
+   },
+   {
+    "uzsakymas": "35886",
+    "laikas": "2026-09-11 08:09:54",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35886",
+    "laikas": "2026-09-11 08:09:54",
+    "sritis": "desk",
+    "veiksmas": "issiusta",
+    "kas_vardas": "Inga"
+   },
+   {
+    "uzsakymas": "35902",
+    "laikas": "2026-09-11 08:19:06",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "kas_vardas": "Irma Beloviene"
+   },
+   {
+    "uzsakymas": "35903",
+    "laikas": "2026-09-11 09:16:15",
+    "sritis": "desk",
+    "veiksmas": "rusiuoti",
+    "kas_vardas": "sistema"
+   },
+   {
+    "uzsakymas": "35903",
+    "laikas": "2026-09-11 09:16:16",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "kas_vardas": "sistema"
+   },
+   {
+    "uzsakymas": "35903",
+    "laikas": "2026-09-11 09:17:29",
+    "sritis": "desk",
+    "veiksmas": "kelias",
+    "kas_vardas": "Inga"
+   }
+  ],
+  "db": ""
+ }
+}
