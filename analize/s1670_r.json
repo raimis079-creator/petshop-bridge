@@ -1,0 +1,146 @@
+{
+ "v": "dep-084903",
+ "kurimas": 200,
+ "sid": 5537,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1670 r",
+  "kodas": [
+   "1036: \t\t\t$partija_manif = ! empty( $pr['part']->venipak_manifest ) ? array( (string) $pr['part']->venipak_manifest ) : array();",
+   "1037: \t\t}",
+   "1038: \t\t$h = self::laisko_html( $src, $uzsakymai, $pastaba, $partija_html );",
+   "1039: \t\t$data = date_i18n( 'Y-m-d' );",
+   "1040: ",
+   "1041: \t\t// PRIEDAI",
+   "1042: \t\t$priedai = [];",
+   "1043: \t\tif ( ! empty( $_POST['su_lipdukais'] ) ) {",
+   "1044: \t\t\tforeach ( array_keys( $uzsakymai ) as $oid ) {",
+   "1045: \t\t\t\t$f = self::lipdukas( $oid );",
+   "1046: \t\t\t\tif ( $f ) { $priedai[] = $f; }",
+   "1047: \t\t\t}",
+   "1048: \t\t}",
+   "1049: \t\tif ( ! empty( $_POST['su_manifestu'] ) ) {",
+   "1050: \t\t\tforeach ( self::manifestas( array_keys( $uzsakymai ), $partija_manif ) as $m ) { $priedai[] = $m; } // H262: print_list pagal kodą",
+   "1051: \t\t}",
+   "1052: \t\tif ( $partija_priedas ) { $priedai[] = $partija_priedas; }",
+   "1053: ",
+   "1054: \t\t$antraste = [",
+   "1055: \t\t\t'Content-Type: text/html; charset=UTF-8',",
+   "1056: \t\t\t'From: UAB Avesa <terra@petshop.lt>',",
+   "1057: \t\t\t'Reply-To: terra@petshop.lt',",
+   "1058: \t\t];",
+   "1059: \t\t// Adresatai pagal varneles (H250).",
+   "1060: \t\tif ( isset( $_POST['laisk_zyme'] ) ) {",
+   "1061: \t\t\tupdate_option( 'ps_tiek_laiskai', [",
+   "1062: \t\t\t\t'tiekejui' => ! empty( $_POST['laisk_tiekejui'] ),",
+   "1063: \t\t\t\t'man'      => ! empty( $_POST['laisk_man'] ),",
+   "1064: \t\t\t] );",
+   "1065: \t\t}",
+   "1066: \t\t$ln  = self::laisko_nust();",
+   "1067: \t\t$gav = [];",
+   "1068: \t\tif ( $ln['tiekejui'] ) { $gav[] = $pastas; }",
+   "1069: \t\tif ( $ln['man'] ) { $gav[] = 'terra@petshop.lt'; }",
+   "1070: \t\t$gav = array_values( array_unique( array_filter( $gav ) ) );",
+   "1071: \t\tif ( ! $gav ) { wp_die( 'Nepažymėta, kam siųsti — uždėk bent vieną varnelę.' ); }",
+   "1072: ",
+   "1073: \t\t$tema = $ln['tiekejui'] ? 'užsakymas ' . $data : '[PERSIŲSTI ' . $vardas . '] užsakymas ' . $data;",
+   "1074: \t\t$ok   = wp_mail( $gav, $tema, $h, $antraste, $priedai );",
+   "1075: ",
+   "1076: \t\tself::archyvuoti( $gav, $tema, $h, $priedai,",
+   "1077: \t\t\t'Perdavimas tiekėjui: ' . $vardas . ' · ' . count( $uzsakymai ) . ' užsak.' . ( $pid ? ' + partija #' . $pid . ' į AV' : '' ) );",
+   "1078: \t\tif ( $ok && $pid && class_exists( 'Petshop_AV_Tiekimas' ) ) {",
+   "1079: \t\t\tPetshop_AV_Tiekimas::uzdaryti_po_laisko( $pid, 'laiške kartu su užsakymais' );",
+   "1080: \t\t}",
+   "1081: ",
+   "1082: \t\tif ( $ok ) {",
+   "1083: \t\t\tforeach ( array_keys( $uzsakymai ) as $oid ) {",
+   "1084: \t\t\t\t$o = wc_get_order( $oid );",
+   "1085: \t\t\t\tif ( ! $o ) { continue; }",
+   "1086: \t\t\t\tself::zymeti_perduota( $o, $src );",
+   "1087: \t\t\t\t$o->save();",
+   "1088: \t\t\t\t$o->add_order_note( 'Perduota tiekėjui ' . $vardas . ' — laiškas: ' . implode( ', ', $gav ) );",
+   "1089: \t\t\t}",
+   "1090: \t\t}",
+   "1091: \t\tforeach ( $priedai as $f ) { @unlink( $f ); }",
+   "1092: ",
+   "1093: \t\t// H257: pasirinkimas išvalomas; grįžtama į „Laukia išsiuntimo\" su aiškia žinute.",
+   "1094: \t\tdelete_transient( 'ps_dropship_' . get_current_user_id() );",
+   "1095: \t\twp_safe_redirect( add_query_arg( ["
+  ],
+  "dezutes": [
+   "dado",
+   "didmena",
+   "info",
+   "klausk",
+   "m.orlov",
+   "pasiulymai",
+   "svetaine",
+   "terra",
+   "uzsakymai"
+  ],
+  "laiskai": [
+   {
+    "dezute": "uzsakymai",
+    "failas_laikas": "09-11 11:19",
+    "vf_minimas": false,
+    "bounce": true,
+    "h": {
+     "Date": "Fri, 11 Sep 2026 11:19:14 +0300",
+     "From": "Mail Delivery System <Mailer-Daemon@isopas.serveriai.lt>",
+     "To": "uzsakymai@petshop.lt",
+     "Subject": "Mail delivery failed: returning message to sender",
+     "Return-Path": "<>",
+     "X-Failed-Recipients": "i.belovuene1@gnail.com",
+     "Auto-Submitted": "auto-replied",
+     "diag": [
+      "550 mailbox i.belovuene1@gnail.com unavailable (???䲻????)",
+      "Final-Recipient: rfc822;i.belovuene1@gnail.com",
+      "Status: 5.0.0",
+      "Remote-MTA: dns; mx1.oweb.cn",
+      "Diagnostic-Code: smtp; 550 mailbox i.belovuene1@gnail.com unavailable (???䲻????)"
+     ]
+    }
+   },
+   {
+    "dezute": "uzsakymai",
+    "failas_laikas": "09-11 11:19",
+    "vf_minimas": false,
+    "bounce": true,
+    "h": {
+     "Date": "Fri, 11 Sep 2026 11:19:15 +0300",
+     "From": "Mail Delivery System <Mailer-Daemon@isopas.serveriai.lt>",
+     "To": "uzsakymai@petshop.lt",
+     "Subject": "Mail delivery failed: returning message to sender",
+     "Return-Path": "<>",
+     "X-Failed-Recipients": "i.belovuene1@gnail.com",
+     "Auto-Submitted": "auto-replied",
+     "diag": [
+      "550 mailbox i.belovuene1@gnail.com unavailable (???䲻????)",
+      "Final-Recipient: rfc822;i.belovuene1@gnail.com",
+      "Status: 5.0.0",
+      "Remote-MTA: dns; mx1.oweb.cn",
+      "Diagnostic-Code: smtp; 550 mailbox i.belovuene1@gnail.com unavailable (???䲻????)"
+     ]
+    }
+   },
+   {
+    "dezute": "terra",
+    "failas_laikas": "09-10 15:33",
+    "vf_minimas": true,
+    "bounce": false,
+    "h": {
+     "Date": "Thu, 10 Sep 2026 15:33:25 +0300",
+     "From": "noreply@venipak.com",
+     "To": "terra@gyvunai.lt, terra@petshop.lt",
+     "Cc": "ieva.cvilikaite@venipak.com, giedrius.rinkevicius@venipak.com",
+     "Subject": "=?utf-8?Q?Klaidingas_u=c5=besakymas:_16787411?=",
+     "Return-Path": "<noreply@venipak.com>",
+     "DKIM-Signature": "v=1; a=rsa-sha256; c=relaxed/relaxed; d=venipak.com; h= cc:cc:content-"
+    }
+   }
+  ]
+ }
+}
