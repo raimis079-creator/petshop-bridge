@@ -1,0 +1,195 @@
+{
+ "v": "dep-200922",
+ "kurimas": 200,
+ "sid": 5586,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "gtm": {
+  "token": 200,
+  "accounts": [
+   "accounts/6071827163"
+  ],
+  "container": "accounts/6071827163/containers/101921278",
+  "workspace": "accounts/6071827163/containers/101921278/workspaces/8",
+  "live": {
+   "v": "7",
+   "name": "v5 — GA4 Config fire tik po statistics sutikimo",
+   "tags": 13,
+   "triggers": 11,
+   "vars": 12
+  },
+  "tags": [
+   {
+    "id": "15",
+    "name": "00 — Consent Mode v2 Default",
+    "type": "html",
+    "paused": true,
+    "consent": {
+     "consentStatus": "notSet"
+    },
+    "block": [],
+    "param": "[{\"type\":\"template\",\"key\":\"html\",\"value\":\"<script>\\nwindow.dataLayer = window.dataLayer || [];\\nfunction gtag(){dataLayer.push(arguments);}\\ngtag('consent', 'default', {\\n  'ad_storage': 'denied',\\n  'ad_user_data': 'denied',\\n  'ad_personalization': 'denied',\\n  'analytics_storage': 'denied',\\n  'functionality_storage': 'granted',\\n  'personalization_storage': 'granted',\\n  'security_storage': 'granted',\\n  'wait_for_update': 500\\n});\\ngtag('set', 'ads_data_redaction', true);\\ngtag('set', 'url_passthrough', true);\\n</script>\"},{\"type\":\"boolean\",\"key\":\"supportDocumentWrite\",\"value\":\"false\"}]"
+   },
+   {
+    "id": "16",
+    "name": "01 — Conversion Linker",
+    "type": "gclidw",
+    "paused": false,
+    "consent": {
+     "consentStatus": "needed",
+     "consentType": {
+      "type": "list",
+      "list": [
+       {
+        "type": "template",
+        "value": "ad_storage"
+       }
+      ]
+     }
+    },
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "param": "[{\"type\":\"boolean\",\"key\":\"enableCrossDomain\",\"value\":\"false\"}]"
+   },
+   {
+    "id": "24",
+    "name": "02 — GA4 Config",
+    "type": "googtag",
+    "paused": false,
+    "consent": {
+     "consentStatus": "needed",
+     "consentType": {
+      "type": "list",
+      "list": [
+       {
+        "type": "template",
+        "value": "analytics_storage"
+       }
+      ]
+     }
+    },
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "param": "[{\"type\":\"template\",\"key\":\"tagId\",\"value\":\"{{Const — GA4 ID}}\"}]"
+   },
+   {
+    "id": "29",
+    "name": "GA4 — purchase",
+    "type": "gaawe",
+    "paused": false,
+    "consent": {
+     "consentStatus": "needed",
+     "consentType": {
+      "type": "list",
+      "list": [
+       {
+        "type": "template",
+        "value": "analytics_storage"
+       }
+      ]
+     }
+    },
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "param": "[{\"type\":\"boolean\",\"key\":\"sendEcommerceData\",\"value\":\"true\"},{\"type\":\"template\",\"key\":\"eventName\",\"value\":\"purchase\"},{\"type\":\"template\",\"key\":\"measurementIdOverride\",\"value\":\"{{Const — GA4 ID}}\"}]"
+   },
+   {
+    "id": "30",
+    "name": "03 — Google Ads Conversion (Purchase)",
+    "type": "awct",
+    "paused": false,
+    "consent": {
+     "consentStatus": "needed",
+     "consentType": {
+      "type": "list",
+      "list": [
+       {
+        "type": "template",
+        "value": "ad_storage"
+       },
+       {
+        "type": "template",
+        "value": "ad_user_data"
+       }
+      ]
+     }
+    },
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "param": "[{\"type\":\"boolean\",\"key\":\"enableConversionLinker\",\"value\":\"true\"},{\"type\":\"template\",\"key\":\"conversionValue\",\"value\":\"{{DLV — value}}\"},{\"type\":\"template\",\"key\":\"orderId\",\"value\":\"{{DLV — transaction_id}}\"},{\"type\":\"template\",\"key\":\"conversionId\",\"value\":\"{{Const — Ads Conversion ID}}\"},{\"type\":\"template\",\"key\":\"currencyCode\",\"value\":\"{{DLV — currency}}\"},{\"type\":\"template\",\"key\":\"conversionLabel\",\"value\":\"{{Const — Ads Label}}\"}]"
+   }
+  ],
+  "vars": [
+   {
+    "name": "Const — Ads Conversion ID",
+    "type": "c",
+    "param": "[{\"type\":\"template\",\"key\":\"value\",\"value\":\"11117260149\"}]"
+   },
+   {
+    "name": "Const — Ads Label",
+    "type": "c",
+    "param": "[{\"type\":\"template\",\"key\":\"value\",\"value\":\"7JbYCNuThZIYEPXaj7Up\"}]"
+   },
+   {
+    "name": "DLV — ecommerce",
+    "type": "v",
+    "param": "[{\"type\":\"integer\",\"key\":\"dataLayerVersion\",\"value\":\"2\"},{\"type\":\"template\",\"key\":\"name\",\"value\":\"ecommerce\"}]"
+   },
+   {
+    "name": "DLV — transaction_id",
+    "type": "v",
+    "param": "[{\"type\":\"integer\",\"key\":\"dataLayerVersion\",\"value\":\"2\"},{\"type\":\"template\",\"key\":\"name\",\"value\":\"ecommerce.transaction_id\"}]"
+   },
+   {
+    "name": "DLV — value",
+    "type": "v",
+    "param": "[{\"type\":\"integer\",\"key\":\"dataLayerVersion\",\"value\":\"2\"},{\"type\":\"template\",\"key\":\"name\",\"value\":\"ecommerce.value\"}]"
+   },
+   {
+    "name": "DLV — user_email_hashed",
+    "type": "v",
+    "param": "[{\"type\":\"integer\",\"key\":\"dataLayerVersion\",\"value\":\"2\"},{\"type\":\"template\",\"key\":\"name\",\"value\":\"user_data.sha256_email_address\"}]"
+   }
+  ],
+  "triggers": [
+   {
+    "name": "BLOCK — DEV (pageview)",
+    "filter": "[{\"type\":\"contains\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{Page Hostname}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"dev.avesa.lt\"}]},{\"type\":\"matchRegex\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{Page URL}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"gtm_test=1\"},{\"type\":\"boolean\",\"key\":\"negate\",\"value\":\"true\"}]}]"
+   },
+   {
+    "name": "BLOCK — DEV (visi custom events)",
+    "filter": "[{\"type\":\"contains\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{Page Hostname}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"dev.avesa.lt\"}]},{\"type\":\"matchRegex\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{Page URL}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"gtm_test=1\"},{\"type\":\"boolean\",\"key\":\"negate\",\"value\":\"true\"}]}]"
+   },
+   {
+    "name": "CE — marketing granted",
+    "filter": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{DLV — cmplz_marketing}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"granted\"}]}]"
+   },
+   {
+    "name": "BLOCK — marketing nesutikta (events)",
+    "filter": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{DLV — cmplz_marketing}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"granted\"},{\"type\":\"boolean\",\"key\":\"negate\",\"value\":\"true\"}]}]"
+   },
+   {
+    "name": "CE — statistics granted",
+    "filter": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{DLV — cmplz_statistics}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"granted\"}]}]"
+   }
+  ]
+ },
+ "GO": {
+  "v": "S1673",
+  "faze": "GO",
+  "feed": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/petshop-feeds/google.xml",
+  "feed_age_min": 146,
+  "items": 2184,
+  "sw": 2184
+ }
+}
