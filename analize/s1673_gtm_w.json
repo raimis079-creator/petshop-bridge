@@ -1,0 +1,43 @@
+{
+ "v": "dep-202414",
+ "kurimas": 200,
+ "sid": 5588,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "gtm": {
+  "token": 200,
+  "accounts": [
+   "accounts/6071827163"
+  ],
+  "container": "accounts/6071827163/containers/101921278",
+  "ws_create": 200,
+  "ws": "accounts/6071827163/containers/101921278/workspaces/9",
+  "ud_create": {
+   "st": 200,
+   "e": "{\"path\":\"accounts/6071827163/containers/101921278/workspaces/9/variables/41\",\"accountId\":\"6071827163\",\"containerId\":\"101921278\",\"workspaceId\":\"9\",\"variableId\":\"41\",\"name\":\"DLV — user_data\",\"type\":\"v\","
+  },
+  "tag16": {
+   "st": 200,
+   "consent": {
+    "consentStatus": "notNeeded"
+   },
+   "param": "[{\"type\":\"boolean\",\"key\":\"enableCrossDomain\",\"value\":\"false\"}]",
+   "err": null
+  },
+  "tag30": {
+   "st": 400,
+   "param": "[]",
+   "err": "{\"code\":400,\"message\":\"vendorTemplate.parameter.cssProvidedEnhancedConversionValue: You must select a user-provided data variable.\\n\",\"errors\":[{\"message\":\"vendorTemplate.parameter.cssProvidedEnhancedConversionValue: You must select a user-provided data variable.\\n\",\"domain\":\"global\",\"reason\":\"badRe"
+  },
+  "status": {
+   "st": 200,
+   "changes": [
+    "updated:01 — Conversion Linker",
+    "added:DLV — user_data"
+   ]
+  }
+ },
+ "GO": []
+}
