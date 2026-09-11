@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjcyIG1jIG5vb3AgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKGlzc2V0KCRfR0VUWydwc19zMTY3Mm0nXSkpeyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKGFycmF5KCd2Jz0+J1MxNjcybWMnLCdvayc9PjEpKTsgZXhpdDsgfSB9KTsK';
-const VER='dep-172254';
+const VER='dep-172429';
 const GKEY='ps_s1672m';
 const PHASES=["GO"];
-const OUT='analize/s1672_mc2.json';
+const OUT='analize/s1672_mc3.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -45,14 +45,14 @@ try{
     if(tj.access_token){ const H={Authorization:'Bearer '+tj.access_token};
       const l=await fetch('https://merchantapi.googleapis.com/datasources/v1/accounts/5321054797/dataSources',{headers:H}); const lj=await l.json();
       out.mc.sources={status:l.status,items:(lj.dataSources||[]).map(d=>({name:d.name,dn:d.displayName,lang:d.primaryProductDataSource&&d.primaryProductDataSource.contentLanguage,label:d.primaryProductDataSource&&d.primaryProductDataSource.feedLabel,uri:d.fileInput&&d.fileInput.fetchSettings&&d.fileInput.fetchSettings.fetchUri}))};
-      let pt='',n=0,st={},iss={},pages=0,samples={},noStatus=0;
+      let pt='',n=0,st={},iss={},pages=0,samples={},noStatus=0,full={};
       do{ const r=await fetch('https://merchantapi.googleapis.com/products/v1/accounts/5321054797/products?pageSize=250'+(pt?'&pageToken='+pt:''),{headers:H}); const j=await r.json(); pages++;
         if(j.error){ out.mc.prod_err=JSON.stringify(j.error).slice(0,400); break; }
         for(const p of (j.products||[])){ n++; const ps=p.productStatus; if(!ps){noStatus++;continue;}
           for(const d of (ps.destinationStatuses||[])){ const k=d.reportingContext||'?'; st[k]=st[k]||{ok:0,pend:0,dis:0}; if((d.approvedCountries||[]).length) st[k].ok++; if((d.pendingCountries||[]).length) st[k].pend++; if((d.disapprovedCountries||[]).length) st[k].dis++; }
-          for(const i of (ps.itemLevelIssues||[])){ const k=(i.reportingContext||'?')+'|'+i.severity+'|'+i.code+'|'+(i.attribute||''); iss[k]=(iss[k]||0)+1; if(!samples[k]) samples[k]={desc:i.description,detail:(i.detail||'').slice(0,160),res:i.resolution,ids:[]}; if(samples[k].ids.length<3) samples[k].ids.push(p.offerId); } }
+          for(const i of (ps.itemLevelIssues||[])){ const k=(i.reportingContext||'?')+'|'+i.severity+'|'+i.code+'|'+(i.attribute||''); iss[k]=(iss[k]||0)+1; if(!samples[k]) samples[k]={desc:i.description,detail:(i.detail||'').slice(0,160),res:i.resolution,ids:[]}; if(samples[k].ids.length<3) samples[k].ids.push(p.offerId); if(/missing_shipping_weight|live_animals|healthcare|personal_hardships|inappropriate|violated_discovery|sexual|image_too_small|invalid_upc|alcohol|illegal_drugs|legal_restr/.test(i.code)&&(i.reportingContext==='SHOPPING_ADS'||i.reportingContext==='DEMAND_GEN_ADS')){ full[i.code]=full[i.code]||{}; full[i.code][p.offerId]=(p.attributes&&p.attributes.title||'').slice(0,70); } } }
         pt=j.nextPageToken||''; }while(pt&&pages<20);
-      out.mc.products={n,pages,noStatus,statuses:st,issues:Object.entries(iss).sort((a,b)=>b[1]-a[1]).map(([k,c])=>Object.assign({k,c},samples[k]))};
+      const ss=await fetch('https://merchantapi.googleapis.com/accounts/v1/accounts/5321054797/shippingSettings',{headers:H}); out.mc.shipping={status:ss.status,body:(await ss.text()).slice(0,2500)}; out.mc.full=full; out.mc.products={n,pages,noStatus,statuses:st,issues:Object.entries(iss).sort((a,b)=>b[1]-a[1]).map(([k,c])=>Object.assign({k,c},samples[k]))};
     } else out.mc.token_body=JSON.stringify(tj).slice(0,300);
   }catch(e){ out.mc_klaida=String(e).slice(0,400); } }
   for(let i=0;i<PHASES.length;i++){
