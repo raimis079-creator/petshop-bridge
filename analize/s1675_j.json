@@ -1,0 +1,116 @@
+{
+ "v": "dep-221635",
+ "kurimas": 200,
+ "sid": 5614,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "35873": {
+   "nr": "35873",
+   "vardas": "To***",
+   "el": "pt***@gmail.com",
+   "kiti": [
+    {
+     "id": "35883",
+     "status": "wc-completed",
+     "payment_method": "paysera",
+     "total_amount": "13.31000000",
+     "date_created_gmt": "2026-09-10 05:49:52",
+     "nr": "1003"
+    },
+    {
+     "id": "35875",
+     "status": "wc-cancelled",
+     "payment_method": "paysera",
+     "total_amount": "13.31000000",
+     "date_created_gmt": "2026-09-09 09:50:07",
+     "nr": "35875"
+    },
+    {
+     "id": "35874",
+     "status": "wc-cancelled",
+     "payment_method": "paysera",
+     "total_amount": "13.31000000",
+     "date_created_gmt": "2026-09-09 09:42:37",
+     "nr": "35874"
+    }
+   ]
+  },
+  "35902": {
+   "nr": "1016",
+   "vardas": "Ir***",
+   "el": "i.***@gnail.com",
+   "kiti": []
+  },
+  "v": "S1675 j",
+  "temp_istrinta": 1,
+  "cron": {
+   "ps_cart_abandon_check": "09-11 22:19",
+   "ps_browse_abandon_check": "09-11 22:37",
+   "ps_esp_cron_process_pending": "09-11 22:17",
+   "ps_email_dispatch_cron": "09-11 22:18"
+  },
+  "carts_stulp": [
+   "id",
+   "cart_id",
+   "session_key",
+   "user_id",
+   "email",
+   "email_source",
+   "last_cart_activity_at",
+   "cart_hash",
+   "snapshot_json",
+   "snapshot_version",
+   "status",
+   "status_changed_at",
+   "converted_order_id",
+   "created_at",
+   "updated_at"
+  ],
+  "carts_7d": [
+   {
+    "status": "abandoned",
+    "c": "77"
+   },
+   {
+    "status": "active",
+    "c": "3"
+   },
+   {
+    "status": "converted",
+    "c": "23"
+   },
+   {
+    "status": "expired",
+    "c": "13"
+   }
+  ],
+  "jobs_cart": [
+   {
+    "flow": "cart_abandoned",
+    "status": "sent",
+    "skip_reason": null,
+    "c": "2",
+    "pask": "2026-09-11 19:34:45"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "skip_reason": "consent_missing",
+    "c": "3",
+    "pask": "2026-09-11 10:29:45"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "sent",
+    "skip_reason": null,
+    "c": "1",
+    "pask": "2026-09-11 12:00:39"
+   }
+  ],
+  "flow_opc": [],
+  "db": ""
+ }
+}
