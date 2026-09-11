@@ -3,6 +3,7 @@
 ## GYVAI
 | # | Kas | Kur | Backup / įrodymas |
 |---|---|---|---|
+| 2 | **GTM v9 paskelbta per API** (~00:05, SA `claude-gtm-manager`, scope edit.containers + edit.containerversions + publish): „03 — Google Ads Conversion (Purchase)" — Enhanced Conversions ON (`enableEnhancedConversion`, `cssProvidedEnhancedConversionValue`); naujas kintamasis `UPD — user_data (EC)` tipo **`awec`** (User-Provided Data, mode CODE, dataSource `{{DLV — user_data}}`). Duomenys jau dataLayer'yje: Code Snippet #614 „Petshop DataLayer v1.1" prie purchase push'ina `user_data.sha256_email_address`. Svetainės kodas neliestas. | GTM-MF3GZGT, workspace 11 „S1673 EC" → versija 9 | Rollback: GTM v8. `analize/s1673_gtm_v9d.json` |
 | 1 | **GTM v8 paskelbta** (23:35, Raimis): „01 — Conversion Linker" ir „03 — Google Ads Conversion (Purchase)" — papildomas consent reikalavimas (`ad_storage`, `ad_user_data`) nuimtas → `consentStatus: notNeeded`; tag'ai šauna ir be sutikimo cookieless režimu (advanced Consent Mode; default/update tvarko snippet #619). Pridėtas kintamasis `DLV — user_data` (dar nenaudojamas). | GTM-MF3GZGT, konteineris 101921278, workspace 9 „S1673 consent + EC" → versija 8 | Ankstesnė versija v7 (rollback: GTM → Versijos → v7 → Publish). API rezultatai `analize/s1673_gtm_w.json`, `s1673_gtm_w2.json` |
 
 Svetainės kodas neliestas. TEMP snippet'ai išjungti (likę neaktyvūs #5424/#5584/#5589 — trinti rankomis).
@@ -17,7 +18,7 @@ Svetainės kodas neliestas. TEMP snippet'ai išjungti (likę neaktyvūs #5424/#5
 - **Serveris** `ps_fakt_uzsakymai` nuo T-0 (09-08): 23 apmokėti, €715 (≈5,8/d); gclid 9/23; kanalas „mokamas" 11. `analize/s1673_c1.json`, `s1673_c2.json`.
 - **Ads „Purchase" (awct, primary, 6480284123, `AW-11117260149/7JbYCNuThZIYEPXaj7Up`)**: 09-01…07 ≈5,7 konv./d, €231/d; 09-08…11 → 2 / 0 / 0,9 / 1 (€212 iš viso). **Ads matė ~20 % pirkimų.** GA4-based „petshop.lt (web) purchase" (serverio MP) matė 12/23. `analize/s1673_konv.json`.
 - **Priežastis**: GTM awct + Linker turėjo papildomą consent „needed" → be Complianz „marketing" sutikimo tag'as neiššaudavo (sena parduotuvė vartų neturėjo). GTM Consent Mode default tag pauzuotas — nereikalingas, default/update daro snippet #619 „Consent Bridge v1.2".
-- **EC (Enhanced Conversions)**: neįjungta; svetainė `user_data.sha256_email_address` į dataLayer nesiunčia (#614 „Petshop DataLayer v1.1" — tik ecommerce). Ads customer data terms priimtos.
+- **EC**: buvo neįjungta tag'e (dataLayer `user_data.sha256_email_address` #614 jau siuntė — pirmas grep tikrino tik failus, ne DB snippet'us). Sutvarkyta v9.
 - Kampanijos 09-08…11: šunų €78 / 208 cl / 1 konv; kačių €82 / 251 cl / 1 konv; search €10 / 58 cl / 1,9 konv. Abi PMax „Riboto biudžeto" — mokosi iš ~1 konv./d.
 - GTM struktūra: 13 tag'ų, DEV blokai (dev.avesa.lt / gtm_test=1), Complianz cmplz_consent_update trigeriai. GTM paskyra 6071827163, SA turi `tagmanager.edit.containers`.
 - Ads conversion actions: 8 (Purchase primary; GA4 import purchase/add_to_cart/begin_checkout/Email/Phone secondary; awct Add to cart, begin_checkout secondary).
@@ -27,11 +28,12 @@ Svetainės kodas neliestas. TEMP snippet'ai išjungti (likę neaktyvūs #5424/#5
 
 ## Pamokos
 - GAQL su `segments.date` reikia uždaro intervalo (`BETWEEN`), `>=` neužtenka.
-- GTM API: `consentSettings.consentStatus: notNeeded` nuima papildomą consent; EC per API reikalauja „User-Provided Data" tipo kintamojo (`cssProvidedEnhancedConversionValue`), ne DLV.
+- GTM API: `consentSettings.consentStatus: notNeeded` nuima papildomą consent. User-Provided Data kintamojo tipo ID = **`awec`** (`gtes`/`gtcs` priima, bet parametrus numeta). EC tag'e: `enableEnhancedConversion`=true + `cssProvidedEnhancedConversionValue`={{awec var}}. `create_version` reikia scope `tagmanager.edit.containerversions`, publish — `tagmanager.publish`; SA turi Publish teisę. Rašymo mjs: `irankiai/mjs_template_gtm_write_s1673.mjs`.
+- Grep'inti ir DB snippet'us (`gaj6_snippets`), ne tik failus — #614/#615/#619 gyvena ten.
 - Sutikimo vartai ant awct = signalo praradimas; advanced CM (built-in consent) — standartas ES.
 
 ## Atvira
 - Rytoj: ar Ads „Purchase" grįžo į ~5/d (recon v1.1 su IKI = rytojaus data).
-- EC: #614 v1.2 — pridėti `user_data.sha256_email_address` prie purchase push (WC billing email, sha256, lowercase/trim) + GTM „User-Provided Data" kintamasis + Purchase tag'e EC → v9.
+- EC patikra po 1–2 d.: Ads → Tikslai → Purchase → Diagnostika (user-provided data būsena).
 - Offline click conversions iš `ps_fakt_uzsakymai` (gclid 9/23) — prie D.
 - MC unit_pricing_measure 948 — vėliau.
