@@ -1,0 +1,49 @@
+{
+ "v": "dep-144929",
+ "kurimas": 200,
+ "sid": 5551,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "K": {
+  "kada": "2026-09-11 17:48:28",
+  "v": "ADS ASSET INV v1.0",
+  "klaidos": [
+   "turtas: UserError: QueryError.UNRECOGNIZED_FIELD: Unrecognized field in the query: 'asset_group_asset.performance_label'."
+  ],
+  "grupes_n": 2,
+  "grupes": [
+   {
+    "campaign.resourceName": "customers/7541530584/campaigns/21472017542",
+    "campaign.status": "ENABLED",
+    "campaign.name": "P-max| All LT | Šunų maistas",
+    "campaign.id": "21472017542",
+    "assetGroup.resourceName": "customers/7541530584/assetGroups/6506464671",
+    "assetGroup.name": "Generic | Šunų maistas",
+    "assetGroup.finalUrls": [
+     "https://petshop.lt/sunims/maistas-sunims"
+    ],
+    "assetGroup.status": "ENABLED",
+    "assetGroup.id": "6506464671",
+    "assetGroup.adStrength": "AVERAGE"
+   },
+   {
+    "campaign.resourceName": "customers/7541530584/campaigns/21565450990",
+    "campaign.status": "ENABLED",
+    "campaign.name": "P-max| All LT | Kačių maistas",
+    "campaign.id": "21565450990",
+    "assetGroup.resourceName": "customers/7541530584/assetGroups/6510738929",
+    "assetGroup.name": "Generic | Kačių maistas",
+    "assetGroup.finalUrls": [
+     "https://petshop.lt/katems/maistas-katems"
+    ],
+    "assetGroup.status": "ENABLED",
+    "assetGroup.id": "6510738929",
+    "assetGroup.adStrength": "AVERAGE"
+   }
+  ],
+  "stat_n": 2,
+  "signalai_n": 23
+ }
+}
