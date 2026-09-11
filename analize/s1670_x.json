@@ -1,0 +1,41 @@
+{
+ "v": "dep-094628",
+ "kurimas": 200,
+ "sid": 5543,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1670 x",
+  "f": {
+   "wp-content/plugins/petshop-core/includes/class-product-calc.php": {
+    "md5": "c7403c291ad9814a71f4dfa62780528d",
+    "eil": 269,
+    "h": [
+     "26: public static function init() {",
+     "32: add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'widget' ), 31 );",
+     "33: add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue' ) );",
+     "36: public static function enqueue() {",
+     "37: if ( ! function_exists( 'is_product' ) || ! is_product() ) { return; }",
+     "39: if ( ! file_exists( $f ) ) { return; }",
+     "55: private static function context( $product ) {",
+     "67: * „kiek uzteks\" klausimas klaidina. Rodoma tik maisto kategorijoms.",
+     "69: $slugs = wp_get_object_terms( $pid, 'product_cat', array( 'fields' => 'slugs' ) );",
+     "85: $species = in_array( 'katems', $sp, true ) ? 'cat' : 'dog';",
+     "106: private static function words( $species ) {",
+     "113: public static function hook_line() {",
+     "116: if ( ! $c ) { return; }",
+     "122: ? 'Kiek šio maisto užteks jūsų ' . $w['dat'] . '?'",
+     "123: : 'Kiek šio maisto užteks? Įveskite savo porciją';",
+     "132: public static function widget() {",
+     "135: if ( ! $c ) { return; }",
+     "157: <div class=\"ps-calc-h1\">Kiek šio maisto užteks jūsų <?php echo esc_html( $w['dat'] ); ?>?</div>",
+     "203: private static function assets() {",
+     "205: if ( $done ) { return; }"
+    ]
+   }
+  },
+  "FATAL": "array_map(): Argument #2 ($array) must be of type array, false given @15"
+ }
+}
