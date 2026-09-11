@@ -1,151 +1,54 @@
 {
- "v": "dep-174853",
+ "v": "dep-063457",
  "kurimas": 200,
- "sid": 5386,
+ "sid": 5523,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "GO": {
+ "A": {
   "v": "S1670 e",
-  "rasymas": [
-   "1053 \t\t\t$pid = isset( $e['id'] ) ? (int) $e['id'] : 0;",
-   "1054 \t\t\t$iv  = isset( $e['ivestis'] ) ? trim( (string) $e['ivestis'] ) : '';",
-   "1055 \t\t\tif ( ! $pid || get_post_type( $pid ) !== 'product' ) { $klaidos[] = array( 'id' => $pid, 'kl' => 'nėra prekės' ); continue; }",
-   "1056 \t\t\tif ( ! preg_match( '/^([+-]?)(\\d{1,6})$/', $iv, $m ) ) {",
-   "1057 \t\t\t\t$klaidos[] = array( 'id' => $pid, 'kl' => 'netinkama reikšmė: ' . $iv ); continue;",
-   "1058 \t\t\t}",
-   "1059 \t\t\t$buvo = self::av_dabar( $pid );",
-   "1060 \t\t\t$sk   = (int) $m[2];",
-   "1061 \t\t\tif ( $m[1] === '+' )      { $tapo = (int) $buvo + $sk; }",
-   "1062 \t\t\telseif ( $m[1] === '-' )  { $tapo = (int) $buvo - $sk; }",
-   "1063 \t\t\telse                      { $tapo = $sk; }",
-   "1064 ",
-   "1065 \t\t\t$prasyta = $tapo;",
-   "1066 \t\t\tif ( $tapo < 0 ) { $tapo = 0; }   /* neigiamo likučio nebūna */",
-   "1067 \t\t\t$planas[] = array(",
-   "1068 \t\t\t\t'pid' => $pid, 'laukas' => self::av_laukas( $pid ),",
-   "1069 \t\t\t\t'buvo' => $buvo, 'tapo' => $tapo, 'prasyta' => $prasyta,",
-   "1070 \t\t\t\t'pokytis' => $tapo - (int) $buvo,",
-   "1071 \t\t\t);",
-   "1072 \t\t}",
-   "1073 \t\tif ( ! $planas ) { wp_send_json_error( array( 'zinute' => 'nėra galiojančių eilučių', 'klaidos' => $klaidos ) ); }",
-   "1074 ",
-   "1075 \t\t/* 2) RAŠOM */",
-   "1076 \t\tglobal $wpdb;",
-   "1077 \t\t$t   = self::zurnalo_lentele();",
-   "1078 \t\t$op  = 'AV' . gmdate( 'ymdHis' ) . wp_rand( 10, 99 );",
-   "1079 \t\t$now = current_time( 'mysql' );",
-   "1080 \t\t$uid = get_current_user_id();",
-   "1081 \t\t$ok  = array();",
-   "1082 ",
-   "1083 \t\t/* v7.7: GAVIMAS KURIA PARTIJA. Likutis, atsiradęs be partijos, neturi",
-   "1084 \t\t   nei galiojimo, nei savikainos — o FEFO nurasymas tokio nemato. */",
-   "1085 \t\t$gal_iki = isset( $_POST['geriausia_iki'] ) ? trim( (string) wp_unslash( $_POST['geriausia_iki'] ) ) : '';",
-   "1086 \t\t$sav_nauja = isset( $_POST['savikaina'] ) ? trim( (string) wp_unslash( $_POST['savikaina'] ) ) : '';",
-   "1087 ",
-   "1088 \t\tforeach ( $planas as &$p ) {",
-   "1089 \t\t\t$pokytis = (int) $p['pokytis'];",
-   "1090 \t\t\tif ( $priez === 'gavimas' && $pokytis > 0 && class_exists( 'Petshop_Partijos' )",
-   "1091 \t\t\t\t&& self::likutis_rankinis( $p['pid'] ) ) {",
-   "1092 ",
-   "1093 \t\t\t\t$sav = $sav_nauja;",
-   "1094 \t\t\t\tif ( $sav === '' || (float) str_replace( ',', '.', $sav ) <= 0 ) {",
-   "1095 \t\t\t\t\t$sv = Petshop_Partijos::svertine_savikaina( $p['pid'] );",
-   "1096 \t\t\t\t\tif ( $sv === null || (float) $sv <= 0 ) { $sv = (float) get_post_meta( $p['pid'], '_cost_price', true ); }",
-   "1097 \t\t\t\t\t$sav = ( (float) $sv > 0 ) ? (string) $sv : '';",
-   "1098 \t\t\t\t}",
-   "1099 \t\t\t\tif ( $sav !== '' ) {",
-   "1100 \t\t\t\t\t$r = Petshop_Partijos::priimti( $p['pid'], array(",
-   "1101 \t\t\t\t\t\t'kiekis'        => $pokytis,",
-   "1102 \t\t\t\t\t\t'savikaina'     => $sav,",
-   "1103 \t\t\t\t\t\t'valiuta'       => 'EUR',",
-   "1104 \t\t\t\t\t\t'kursas'        => 1,",
-   "1105 \t\t\t\t\t\t'geriausia_iki' => $gal_iki,",
-   "1106 \t\t\t\t\t\t'tiekejas'      => (string) get_post_meta( $p['pid'], '_ps_sandelis', true ),",
-   "1107 \t\t\t\t\t\t'gauta'         => current_time( 'Y-m-d' ),",
-   "1108 \t\t\t\t\t\t'pastaba'       => 'Likučio įvedimas kortelėje',",
-   "1109 \t\t\t\t\t) );",
-   "1110 \t\t\t\t\tif ( ! is_wp_error( $r ) ) {",
-   "1111 \t\t\t\t\t\t/* `priimti()` jau pakele likuti — tiesiogiai nebesirasom. */",
-   "1112 \t\t\t\t\t\t$p['partija'] = isset( $r['partijos_id'] ) ? (int) $r['partijos_id'] : 0;",
-   "1113 \t\t\t\t\t\t$p['tapo']    = isset( $r['likutis'] ) ? (int) $r['likutis'] : $p['tapo'];",
-   "1114 \t\t\t\t\t\t$p['per_partija'] = true;",
-   "1115 \t\t\t\t\t}",
-   "1116 \t\t\t\t}",
-   "1117 \t\t\t}",
-   "1118 ",
-   "1119 \t\t\t/* v7.8: MAZINIMAS — nurasom is partiju (FEFO), o ne tik is likucio.",
-   "1120 \t\t\t   Kitaip partiju suma ir likutis issiskiria, ir savikaina bei",
-   "1121 \t\t\t   galiojimai pradeda meluoti. */",
-   "1122 \t\t\tif ( $pokytis < 0 && class_exists( 'Petshop_Partijos' ) && self::likutis_rankinis( $p['pid'] ) ) {",
-   "1123 \t\t\t\t$turi = Petshop_Partijos::partijos( $p['pid'], true );",
-   "1124 \t\t\t\tif ( $turi ) {",
-   "1125 \t\t\t\t\t$r = Petshop_Partijos::nurasyti( $p['pid'], abs( $pokytis ) );",
-   "1126 \t\t\t\t\tif ( ! is_wp_error( $r ) ) {",
-   "1127 \t\t\t\t\t\t$p['per_partija'] = true;",
-   "1128 \t\t\t\t\t\tif ( isset( $r['likutis'] ) ) { $p['tapo'] = (int) $r['likutis']; }",
-   "1129 \t\t\t\t\t}",
-   "1130 \t\t\t\t}",
-   "1131 \t\t\t}",
-   "1132 \t\t}",
-   "1133 \t\tunset( $p );",
-   "1134 ",
-   "1135 \t\tforeach ( $planas as $p ) {"
-  ],
-  "petshop-wc-sync.php": [
-   "11 * kainą ir kategorijų sąrašai. Rašant tiesiai per update_post_meta ta lentelė",
-   "56 '_stock', '_stock_status', '_manage_stock',",
-   "67 public static function init() {",
-   "69 add_action( $h, array( __CLASS__, 'meta_pakeista' ), 999, 3 );",
-   "71 add_action( 'deleted_post_meta', array( __CLASS__, 'meta_pakeista' ), 999, 3 );",
-   "74 add_action( 'woocommerce_before_product_object_save', array( __CLASS__, 'wc_pradeda' ), 1 );",
-   "75 add_action( 'woocommerce_after_product_object_save', array( __CLASS__, 'wc_baigia' ), 999 );",
-   "77 add_action( 'shutdown', array( __CLASS__, 'atnaujinti' ), 1 );",
-   "79 add_action( 'wp_loaded', array( __CLASS__, 'auditas' ), 5 );",
-   "82 public static function wc_pradeda() { self::$wc_dirba = true; }",
-   "83 public static function wc_baigia()  { self::$wc_dirba = false; }",
-   "90 public static function meta_pakeista( $mid, $pid, $key ) {",
-   "102 public static function atnaujinti() {",
-   "134 private static function lookup_metodas() {",
-   "156 public static function nesutapimai() {",
-   "170 INNER JOIN {$p}postmeta m ON m.post_id = l.product_id AND m.meta_key = '_stock'",
-   "175 INNER JOIN {$p}postmeta m ON m.post_id = l.product_id AND m.meta_key = '_stock_status'",
-   "189 public static function suderinti( $limit = 500 ) {",
-   "197 LEFT JOIN {$p}postmeta ms ON ms.post_id = l.product_id AND ms.meta_key = '_stock'",
-   "198 LEFT JOIN {$p}postmeta mt ON mt.post_id = l.product_id AND mt.meta_key = '_stock_status'",
-   "222 public static function auditas() {"
-  ],
-  "petshop-seseliai.php": [
-   "15 *   - Petshop_Fulfillment::recalculate() — WC `_stock` = tiekėjo kiekis",
-   "31 public static function init() {",
-   "32 add_action( 'pmxi_after_xml_import', [ __CLASS__, 'po_importo' ], 20, 1 );",
-   "33 add_action( 'ps_seseliai_valandinis', [ __CLASS__, 'sync' ] );",
-   "40 public static function po_importo( $import_id ) {",
-   "46 public static function sync( $kas = 'cron' ) {",
-   "78 update_post_meta( $a, '_zb_qty', $qty );",
-   "79 if ( $cost !== '' ) { update_post_meta( $a, '_zb_cost', $cost ); }",
-   "80 if ( $sync !== '' ) { update_post_meta( $a, '_zb_last_sync', $sync ); }"
-  ],
-  "petshop-av-limit.php": [
-   "7 * PROBLEMA: WooCommerce riboja pagal `_stock` — VIENO šaltinio kiekį.",
-   "17 *   - GRYNAI AV prekėms nieko nekeičia — jų `_stock` ir taip teisingas",
-   "20 *   - NEKEIČIA `_stock` reikšmės (sync ją perrašo)",
-   "23 * SAUGIKLIS: veikia TIK toms prekėms, kurios turi `_own_stock_qty` IR tiekėjo",
-   "30 public static function init() {",
-   "32 add_filter( 'woocommerce_product_get_stock_quantity', [ __CLASS__, 'stock_qty' ], 20, 2 );",
-   "33 add_filter( 'woocommerce_product_variation_get_stock_quantity', [ __CLASS__, 'stock_qty' ], 20, 2 );",
-   "35 add_filter( 'woocommerce_product_get_stock_status', [ __CLASS__, 'stock_status' ], 20, 2 );",
-   "37 add_filter( 'woocommerce_get_availability_text', [ __CLASS__, 'availability_text' ], 20, 2 );",
-   "38 add_filter( 'woocommerce_get_stock_html', [ __CLASS__, 'stock_html' ], 20, 2 );",
-   "42 protected static function taikoma( $product_id ) {",
-   "52 public static function stock_qty( $qty, $product ) {",
-   "57 $tiek = (int) $qty;                                  // WC `_stock` = tiekėjo kiekis",
-   "62 public static function stock_status( $status, $product ) {",
-   "72 public static function availability_text( $text, $product ) {",
-   "75 if ( ! $product->is_in_stock() ) { return $text; }",
-   "81 public static function stock_html( $html, $product ) {",
-   "83 if ( ! is_a( $product, 'WC_Product' ) || ! $product->is_in_stock() ) { return $html; }"
-  ]
+  "f": {
+   "petshop-av-source.php": [
+    "11750e14be57cd7ebc93457141233a79",
+    "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"
+   ],
+   "petshop-av-stock.php": [
+    "3a1585edd740eeae4ee429779be21c2f",
+    "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"
+   ]
+  },
+  "ui": {
+   "petshop-av-order.php": [
+    "68: $x = Petshop_AV_Source::resolve( $pid, $qty );",
+    "85: $tipas = Petshop_AV_Source::order_type( $grupes );"
+   ],
+   "petshop-av-tiekimas.php": [
+    "303: ? Petshop_AV_Source::resolve( $item->get_product_id(), $item->get_quantity() ) : array();",
+    "1362: ? Petshop_AV_Source::order_type( $grupes )"
+   ],
+   "petshop-darbalaukis.php": [
+    "280: * v3.2 (Raimis): taisyklė — pati išrūšiuoja TIK vieno sandėlio užsakymus; 2+ sandėliai (su AV ar be) → Neišrūšiuoti su",
+    "284: *   Neišrūšiuoti · Laukiam iš tiekėjų · Surinkti AV · Užsakyti iš tiekėjų · Paruošta siųsti · Klausimai · Neapmokėti · Visi;",
+    "288: *   Visuose — būsenos žymė (Neapmokėtas · Neišrūšiuotas · Ruošiamas · Paruoštas · Išsiųstas · Įvykdytas · Atšauktas · Klausimas).",
+    "341: 'nauji'      => array( 'Neišrūšiuoti',       'Reikia tavo sprendimo: dalis prekių AV, dalis pas tiekėją — siųsti atskirai ar vežti į AV? Aiškius sistema išrūš",
+    "573: if ( in_array( 'nauji', $f['eiles'], true ) ) { return array( 'Neišrūšiuotas', 'b-amber' ); }",
+    "582: $leid = array( 'nauji' => array( 'rusiuoti' ), 'surinkti' => array( 'lapai', 'lipdukas' ), 'laukiam' => array( 'tiekimas' ), 'laiskai' => array( 'kons' ), 'pa"
+   ],
+   "petshop-desk.php": [
+    "1070: * Petshop_AV_Source::resolve() rezultatas su kešu.",
+    "1080: $x = Petshop_AV_Source::resolve( $pid, max( 1, (int) $qty ) );"
+   ],
+   "petshop-katalogas.php": [
+    "3387: $ff = Petshop_AV_Source::resolve( $pid );"
+   ],
+   "petshop-rec-variklis.php": [
+    "175: /* Minkstas rusiavimas */"
+   ],
+   "petshop-fbt.php": [
+    "12: *   1. AV SOURCE SLUOKSNIS: source_of() naudoja Petshop_AV_Source::resolve()",
+    "112: $r = Petshop_AV_Source::resolve( $pid, $qty );"
+   ]
+  }
  }
 }
