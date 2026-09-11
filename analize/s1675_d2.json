@@ -1,0 +1,74 @@
+{
+ "v": "dep-215518",
+ "kurimas": 200,
+ "sid": 5605,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "APPLY": {
+  "v": "S1675 d",
+  "faze": "APPLY",
+  "temp_istrinta": 1,
+  "kandidatai": 63,
+  "praleista": {
+   "12455": "kitas šaltinis su likučiu",
+   "12930": "kitas šaltinis su likučiu",
+   "15938": "tipas variable",
+   "17862": "tipas variable"
+  },
+  "pagal_sandeli": {
+   "av": 60,
+   "belcor_tofu": 3
+  },
+  "pvz": {
+   "14984": {
+    "sand": "av",
+    "st": "0",
+    "own": "0",
+    "t": "Žaislas šuniui - Šuniukas su virvėmis, 35 cm"
+   },
+   "15101": {
+    "sand": "av",
+    "st": "0",
+    "own": "0",
+    "t": "Žaislas šuniui - Pliušinis Ponas Žaliasis, 40 cm, "
+   },
+   "15318": {
+    "sand": "av",
+    "st": "0",
+    "own": "0",
+    "t": "Žaislas šuniui - D&D virvė (XS) 22 cm*10 mm, juoda"
+   },
+   "15651": {
+    "sand": "av",
+    "st": "0",
+    "own": "0",
+    "t": "Šašlykas su antiena, vištiena, jautiena, 500 g, na"
+   },
+   "15706": {
+    "sand": "av",
+    "st": "0",
+    "own": "0",
+    "t": "Šampūnas Jorkšyro terjerams, CHAMP RICHER, 250 ml"
+   }
+  },
+  "apply": {
+   "ok": 63,
+   "klaidos": []
+  },
+  "po": 4,
+  "front": {
+   "14984": {
+    "code": 200,
+    "out_of_stock_html": 1,
+    "add_to_cart_btn": 1
+   },
+   "15101": {
+    "code": 200,
+    "out_of_stock_html": 1,
+    "add_to_cart_btn": 1
+   }
+  }
+ }
+}
