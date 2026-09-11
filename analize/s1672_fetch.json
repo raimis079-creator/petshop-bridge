@@ -1,0 +1,49 @@
+{
+ "v": "dep-174522",
+ "kurimas": 200,
+ "sid": 5575,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "mc_raw": {
+  "len": 2389,
+  "head": "\"type\": \"ser"
+ },
+ "mc": {
+  "sa": "claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com",
+  "token": 200,
+  "sources": {
+   "status": 200,
+   "items": [
+    {
+     "name": "accounts/5321054797/dataSources/10727325747",
+     "dn": "PRODUCTS SOURCE 1",
+     "lang": "en",
+     "label": "PETSHOP_LT",
+     "uri": "https://petshop.lt/feed/google/"
+    }
+   ]
+  },
+  "fetch_now": {
+   "status": 200,
+   "body": "{}\n"
+  },
+  "shipping": {
+   "status": 200,
+   "body": "{\n  \"name\": \"accounts/5321054797/shippingSettings\",\n  \"services\": [\n    {\n      \"serviceName\": \"Pristatymas Lietuvoje (paštomatas / kurjeris)\",\n      \"active\": true,\n      \"deliveryCountries\": [\n        \"LT\"\n      ],\n      \"currencyCode\": \"EUR\",\n      \"deliveryTime\": {\n        \"minTransitDays\": 1,\n        \"maxTransitDays\": 3,\n        \"minHandlingDays\": 0,\n        \"maxHandlingDays\": 1\n      },\n      \"rateGroups\": [\n        {\n          \"mainTable\": {\n            \"rowHeaders\": {\n              \"weights\": [\n                {\n                  \"amountMicros\": \"25000000\",\n                  \"unit\": \"KILOGRAM\"\n                },\n                {\n                  \"amountMicros\": \"50000000\",\n                  \"unit\": \"KILOGRAM\"\n                },\n                {\n                  \"amountMicros\": \"70000000\",\n                  \"unit\": \"KILOGRAM\"\n                },\n                {\n                  \"amountMicros\": \"100000000\",\n                  \"unit\": \"KILOGRAM\"\n                },\n                {\n                  \"amountMicros\": \"-1\",\n                  \"unit\": \"KILOGRAM\"\n                }\n              ]\n            },\n            \"columnHeaders\": {\n              \"prices\": [\n                {\n                  \"amountMicros\": \"29990000\",\n                  \"currencyCode\": \"EUR\"\n                },\n                {\n                  \"amountMicros\": \"-1\",\n                  \"currencyCode\": \"EUR\"\n                }\n              ]\n            },\n            \"rows\": [\n              {\n                \"cells\": [\n                  {\n                    \"flatRate\": {\n                      \"amountMicros\": \"1780000\",\n                      \"currencyCode\": \"EUR\"\n                    }\n                  },\n                  {\n                    \"flatRate\": {\n                      \"amountMicros\": \"0\",\n                      \"currencyCode\": \"EUR\"\n                    }\n                  }\n                ]\n              },\n              {\n                \"cells\": [\n                  {\n                    \"flatRate\": {\n                      \"amountMicros\": \"3300000\",\n                      \"currencyCode\": \"EUR\"\n                    }\n                  },\n                  {\n                    \"flatRate\": {\n                      \"amountMicros\": \"3300000\",\n                      \"currencyCode\": \"EUR\"\n                    }\n                  }\n                ]\n              },\n              {\n                \"cells\": [\n                  {\n                    \"flatRate\": {\n             "
+  },
+  "full": {},
+  "products": {
+   "n": 0,
+   "pages": 0,
+   "noStatus": 0,
+   "statuses": {},
+   "issues": []
+  }
+ },
+ "GO": {
+  "v": "S1672mc",
+  "ok": 1
+ }
+}
