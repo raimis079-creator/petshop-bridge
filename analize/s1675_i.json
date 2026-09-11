@@ -1,0 +1,25 @@
+{
+ "v": "dep-220833",
+ "kurimas": 200,
+ "sid": 5613,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1675 i",
+  "temp_istrinta": 1,
+  "ini": {
+   "display": "0",
+   "log": "1",
+   "file": "/home/gyvunai2/domains/petshop.lt/logs/php_error.log"
+  },
+  "log": {
+   "dydis": 197,
+   "uodega": [
+    "[11-Sep-2026 22:09:38 UTC] PHP Warning:  S1675 testinis warning in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 7"
+   ]
+  },
+  "ping": 200
+ }
+}
