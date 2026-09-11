@@ -2,11 +2,11 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjczIHVzZXJfZGF0YSBncmVwICovCmFkZF9hY3Rpb24oJ2luaXQnLCBmdW5jdGlvbigpeyBpZighaXNzZXQoJF9HRVRbJ3BzX3VkJ10pfHwkX0dFVFsncHNfdWQnXSE9PSdHTycpIHJldHVybjsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOyAkbz1hcnJheSgpOwogIGZvcmVhY2goYXJyYXlfbWVyZ2UoZ2xvYihXUE1VX1BMVUdJTl9ESVIuJy8qLnBocCcpLGdsb2IoZ2V0X3N0eWxlc2hlZXRfZGlyZWN0b3J5KCkuJy8qLnBocCcpKSBhcyAkZil7ICRjPWZpbGVfZ2V0X2NvbnRlbnRzKCRmKTsgaWYocHJlZ19tYXRjaCgnL3NoYTI1Nl9lbWFpbF9hZGRyZXNzfHVzZXJfZGF0YS8nLCRjKSl7IHByZWdfbWF0Y2hfYWxsKCcvLnswLDEyMH0oc2hhMjU2X2VtYWlsX2FkZHJlc3N8dXNlcl9kYXRhKS57MCwxNjB9LycsJGMsJG0pOyAkb1tiYXNlbmFtZSgkZildPWFycmF5X3NsaWNlKGFycmF5X21hcChmdW5jdGlvbigkeCl7cmV0dXJuIHByZWdfcmVwbGFjZSgnL1xzKy8nLCcgJywkeCk7fSwkbVswXSksMCw0KTsgfSB9CiAgZWNobyBqc29uX2VuY29kZSgkbyxKU09OX1VORVNDQVBFRF9VTklDT0RFKTsgZXhpdDsgfSk7Cg==';
-const VER='dep-202414';
-const GKEY='ps_ud';
+const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjczIGRhdGFMYXllciBncmVwICovCmFkZF9hY3Rpb24oJ2luaXQnLCBmdW5jdGlvbigpeyBpZighaXNzZXQoJF9HRVRbJ3BzX2RsJ10pfHwkX0dFVFsncHNfZGwnXSE9PSdHTycpIHJldHVybjsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOyAkbz1hcnJheSgpOwogICRyaWk9bmV3IFJlY3Vyc2l2ZUl0ZXJhdG9ySXRlcmF0b3IobmV3IFJlY3Vyc2l2ZURpcmVjdG9yeUl0ZXJhdG9yKFdQX1BMVUdJTl9ESVIpKTsgJG49MDsKICBmb3JlYWNoKGFycmF5X21lcmdlKGl0ZXJhdG9yX3RvX2FycmF5KCRyaWksZmFsc2UpLGFycmF5X21hcChmdW5jdGlvbigkZil7cmV0dXJuIG5ldyBTcGxGaWxlSW5mbygkZik7fSxhcnJheV9tZXJnZShnbG9iKFdQTVVfUExVR0lOX0RJUi4nLyoucGhwJyksZ2xvYihXUE1VX1BMVUdJTl9ESVIuJy8qLyoucGhwJyksZ2xvYihnZXRfc3R5bGVzaGVldF9kaXJlY3RvcnkoKS4nLyoucGhwJyksZ2xvYihnZXRfc3R5bGVzaGVldF9kaXJlY3RvcnkoKS4nLyovKi5waHAnKSkpKSBhcyAkZil7CiAgICBpZighJGYtPmlzRmlsZSgpfHwhcHJlZ19tYXRjaCgnL1wuKHBocHxqcykkLycsJGYtPmdldEZpbGVuYW1lKCkpfHwkZi0+Z2V0U2l6ZSgpPjgwMDAwMCkgY29udGludWU7IGlmKCsrJG4+NDAwMCkgYnJlYWs7CiAgICAkYz1AZmlsZV9nZXRfY29udGVudHMoJGYtPmdldFBhdGhuYW1lKCkpOyBpZigkYz09PWZhbHNlfHxzdHJwb3MoJGMsJ3RyYW5zYWN0aW9uX2lkJyk9PT1mYWxzZXx8c3RycG9zKCRjLCdkYXRhTGF5ZXInKT09PWZhbHNlKSBjb250aW51ZTsKICAgIHByZWdfbWF0Y2hfYWxsKCcvLnswLDEwMH10cmFuc2FjdGlvbl9pZC57MCwxMDB9LycsJGMsJG0pOyAkb1tzdHJfcmVwbGFjZShXUF9DT05URU5UX0RJUiwnJywkZi0+Z2V0UGF0aG5hbWUoKSldPWFycmF5X3NsaWNlKGFycmF5X21hcChmdW5jdGlvbigkeCl7cmV0dXJuIHByZWdfcmVwbGFjZSgnL1xzKy8nLCcgJywkeCk7fSwkbVswXSksMCwzKTsKICB9CiAgJG9bJ19hY3RpdmUnXT1hcnJheV92YWx1ZXMoYXJyYXlfZmlsdGVyKGdldF9vcHRpb24oJ2FjdGl2ZV9wbHVnaW5zJyksZnVuY3Rpb24oJHApe3JldHVybiBwcmVnX21hdGNoKCcvZ3RtfHRhZ3xhbmFseXRpY3xwaXhlbHx0cmFjay9pJywkcCk7fSkpOwogIGVjaG8ganNvbl9lbmNvZGUoJG8sSlNPTl9VTkVTQ0FQRURfVU5JQ09ERSk7IGV4aXQ7IH0pOwo=';
+const VER='dep-202609';
+const GKEY='ps_dl';
 const PHASES=["GO"];
-const OUT='analize/s1673_gtm_w.json';
+const OUT='analize/s1673_gtm_w2.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -55,10 +55,10 @@ try{
         const tags=(await J(w.path+'/tags')).j.tag||[]; const vars=(await J(w.path+'/variables')).j.variable||[];
         let ud=vars.find(v=>v.name==='DLV — user_data');
         if(!ud){ const c=await J(w.path+'/variables','POST',{name:'DLV — user_data',type:'v',parameter:[{type:'integer',key:'dataLayerVersion',value:'2'},{type:'boolean',key:'setDefaultValue',value:'false'},{type:'template',key:'name',value:'user_data'}]}); out.gtm.ud_create={st:c.st,e:JSON.stringify(c.j).slice(0,200)}; ud=c.j; }
-        for(const id of ['16','30']){ const t=tags.find(x=>String(x.tagId)===id); if(!t){ out.gtm['tag'+id]='nerastas'; continue; }
+        for(const id of ['30']){ const t=tags.find(x=>String(x.tagId)===id); if(!t){ out.gtm['tag'+id]='nerastas'; continue; }
           const b=Object.assign({},t); delete b.fingerprint; delete b.path; delete b.accountId; delete b.containerId; delete b.workspaceId; delete b.tagId;
           b.consentSettings={consentStatus:'notNeeded'};
-          if(id==='30'){ b.parameter=(b.parameter||[]).filter(p=>!['enableEnhancedConversion','userDataVariable','enableUserDataVariable'].includes(p.key)); b.parameter.push({type:'boolean',key:'enableEnhancedConversion',value:'true'},{type:'template',key:'userDataVariable',value:'{{DLV — user_data}}'}); }
+          
           const r=await J(t.path,'PUT',b); out.gtm['tag'+id]={st:r.st,consent:r.j.consentSettings,param:JSON.stringify(r.j.parameter||[]).slice(0,600),err:r.j.error?JSON.stringify(r.j.error).slice(0,300):null}; }
         const st=await J(w.path+'/status'); out.gtm.status={st:st.st,changes:(st.j.workspaceChange||[]).map(c=>c.changeStatus+':'+(c.tag?c.tag.name:c.variable?c.variable.name:'?'))};
       }
