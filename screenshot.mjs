@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjczIHJlY29uIHJlYWQgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKCFpc3NldCgkX0dFVFsncHNfciddKXx8JF9HRVRbJ3BzX3InXSE9PSdHTycpIHJldHVybjsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOyAkcj1nZXRfb3B0aW9uKCdwc19hZHNfcmVjb24nKTsgZWNobyBpc19hcnJheSgkcik/JHJbJ2JvZHknXTpqc29uX2VuY29kZSgkcik7IGV4aXQ7IH0pOwo=';
-const VER='dep-204647';
+const VER='dep-205517';
 const GKEY='ps_r';
 const PHASES=["GO"];
-const OUT='analize/s1673_gtm_v9b.json';
+const OUT='analize/s1673_gtm_v9c.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -51,7 +51,7 @@ try{
         const J=async(u,m,b)=>{ const r=await fetch(G+u,{method:m||'GET',headers:Object.assign({'Content-Type':'application/json'},H),body:b?JSON.stringify(b):undefined}); const t=await r.text(); let j; try{j=JSON.parse(t);}catch(e){j={raw:t.slice(0,300)};} return {st:r.status,j}; };
         let ws=(await J(cpath+'/workspaces')).j; let w=(ws.workspace||[]).find(x=>x.name==='S1673 EC'); out.gtm.ws=w&&w.path;
         if(w){ out.gtm.tipai={}; let found=null;
-          for(const ty of ['upd','ud','gtupd','uid','udv','gtes','gtcs','gt_upd','user_provided_data','userProvidedData','cvt_upd','ec','ecv']){
+          for(const ty of ['awec','awupd','gaec','ecwv']){
             const c=await J(w.path+'/variables','POST',{name:'TEST tipas '+ty,type:ty,parameter:[{type:'template',key:'mode',value:'CODE'},{type:'template',key:'dataSource',value:'{{DLV — user_data}}'}]});
             const keep=c.st===200&&(c.j.parameter||[]).length>0;
             out.gtm.tipai[ty]={st:c.st,params:c.st===200?JSON.stringify(c.j.parameter||[]):JSON.stringify(c.j.error&&c.j.error.message).slice(0,120)};
