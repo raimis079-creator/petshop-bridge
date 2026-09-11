@@ -1,0 +1,36 @@
+{
+ "v": "dep-220700",
+ "kurimas": 200,
+ "sid": 5612,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "APPLY": {
+  "v": "S1675 h",
+  "faze": "APPLY",
+  "temp_istrinta": 1,
+  "arch": {
+   "src": 1101825,
+   "dest_dir": "/home/gyvunai2/domains/petshop.lt/ps-archyvas",
+   "home_writable": true,
+   "logs_dir": "rašomas",
+   "moved": true,
+   "dest_md5": "59e6d15cbec8b04f5f50b9a31ecdba1d",
+   "http_po": 404
+  },
+  "cfg": {
+   "md5": "dc3c9b72e2a1721ec605fbcec0d9c0df",
+   "turi_bloka": 0,
+   "inkaras": 1,
+   "ini_dabar": {
+    "display": "1",
+    "log": "",
+    "file": ""
+   },
+   "pakeitimai": 1,
+   "irasyta": "91e788008fcaddba746871fc7ee51499"
+  },
+  "ping": 200
+ }
+}
