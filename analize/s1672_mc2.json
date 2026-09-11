@@ -1,0 +1,1113 @@
+{
+ "v": "dep-172254",
+ "kurimas": 200,
+ "sid": 5571,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "mc_raw": {
+  "len": 2389,
+  "head": "\"type\": \"ser"
+ },
+ "mc": {
+  "sa": "claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com",
+  "token": 200,
+  "sources": {
+   "status": 200,
+   "items": [
+    {
+     "name": "accounts/5321054797/dataSources/10727325747",
+     "dn": "PRODUCTS SOURCE 1",
+     "lang": "en",
+     "label": "PETSHOP_LT",
+     "uri": "https://petshop.lt/feed/google/"
+    }
+   ]
+  },
+  "products": {
+   "n": 2184,
+   "pages": 9,
+   "noStatus": 0,
+   "statuses": {
+    "SHOPPING_ADS": {
+     "ok": 0,
+     "pend": 1416,
+     "dis": 768
+    },
+    "FREE_LISTINGS": {
+     "ok": 0,
+     "pend": 1412,
+     "dis": 772
+    },
+    "DEMAND_GEN_ADS": {
+     "ok": 0,
+     "pend": 1404,
+     "dis": 780
+    },
+    "VIDEO_ADS": {
+     "ok": 0,
+     "pend": 1404,
+     "dis": 780
+    },
+    "DEMAND_GEN_ADS_DISCOVER_SURFACE": {
+     "ok": 0,
+     "pend": 1404,
+     "dis": 780
+    }
+   },
+   "issues": [
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|pending_initial_policy_review_shopping_ads|",
+     "c": 2184,
+     "desc": "Pending initial review",
+     "detail": "Please wait up to 3 business days for the review to be completed",
+     "res": "pending_processing",
+     "ids": [
+      "HM-8146-1",
+      "JOS0839",
+      "19145"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|pending_initial_policy_review_shopping_ads|",
+     "c": 2184,
+     "desc": "Pending initial review",
+     "detail": "Please wait up to 3 business days for the review to be completed",
+     "res": "pending_processing",
+     "ids": [
+      "HM-8146-1",
+      "JOS0839",
+      "19145"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|pending_initial_policy_review_shopping_ads|",
+     "c": 2184,
+     "desc": "Pending initial review",
+     "detail": "Please wait up to 3 business days for the review to be completed",
+     "res": "pending_processing",
+     "ids": [
+      "HM-8146-1",
+      "JOS0839",
+      "19145"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|pending_initial_policy_review_shopping_ads|",
+     "c": 2184,
+     "desc": "Pending initial review",
+     "detail": "Please wait up to 3 business days for the review to be completed",
+     "res": "pending_processing",
+     "ids": [
+      "HM-8146-1",
+      "JOS0839",
+      "19145"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|pending_initial_policy_review_free_listings|",
+     "c": 2184,
+     "desc": "Pending initial review",
+     "detail": "Please wait up to 3 business days for the review to be completed",
+     "res": "pending_processing",
+     "ids": [
+      "HM-8146-1",
+      "JOS0839",
+      "19145"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|NOT_IMPACTED|missing_potentially_required_attribute|unit pricing measure",
+     "c": 948,
+     "desc": "Missing unit pricing measure",
+     "detail": "Missing or invalid unit pricing measure attributes may be present in your product data",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0839",
+      "19145",
+      "01GIC5115"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|NOT_IMPACTED|missing_potentially_required_attribute|unit pricing measure",
+     "c": 948,
+     "desc": "Missing unit pricing measure",
+     "detail": "Missing or invalid unit pricing measure attributes may be present in your product data",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0839",
+      "19145",
+      "01GIC5115"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|NOT_IMPACTED|missing_potentially_required_attribute|unit pricing measure",
+     "c": 948,
+     "desc": "Missing unit pricing measure",
+     "detail": "Missing or invalid unit pricing measure attributes may be present in your product data",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0839",
+      "19145",
+      "01GIC5115"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|NOT_IMPACTED|missing_potentially_required_attribute|unit pricing measure",
+     "c": 948,
+     "desc": "Missing unit pricing measure",
+     "detail": "Missing or invalid unit pricing measure attributes may be present in your product data",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0839",
+      "19145",
+      "01GIC5115"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|NOT_IMPACTED|missing_potentially_required_attribute|unit pricing measure",
+     "c": 948,
+     "desc": "Missing unit pricing measure",
+     "detail": "Missing or invalid unit pricing measure attributes may be present in your product data",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0839",
+      "19145",
+      "01GIC5115"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|missing_shipping_weight|shipping weight",
+     "c": 715,
+     "desc": "Missing shipping weight [shipping_weight]",
+     "detail": "Add your shipping weight to calculate accurate shipping costs for your product",
+     "res": "merchant_action",
+     "ids": [
+      "4047059431931",
+      "871913818294",
+      "1717021"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|missing_shipping_weight|shipping weight",
+     "c": 715,
+     "desc": "Missing shipping weight [shipping_weight]",
+     "detail": "Add your shipping weight to calculate accurate shipping costs for your product",
+     "res": "merchant_action",
+     "ids": [
+      "4047059431931",
+      "871913818294",
+      "1717021"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|missing_shipping_weight|shipping weight",
+     "c": 715,
+     "desc": "Missing shipping weight [shipping_weight]",
+     "detail": "Add your shipping weight to calculate accurate shipping costs for your product",
+     "res": "merchant_action",
+     "ids": [
+      "4047059431931",
+      "871913818294",
+      "1717021"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|missing_shipping_weight|shipping weight",
+     "c": 715,
+     "desc": "Missing shipping weight [shipping_weight]",
+     "detail": "Add your shipping weight to calculate accurate shipping costs for your product",
+     "res": "merchant_action",
+     "ids": [
+      "4047059431931",
+      "871913818294",
+      "1717021"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|missing_shipping_weight|shipping weight",
+     "c": 715,
+     "desc": "Missing shipping weight [shipping_weight]",
+     "detail": "Add your shipping weight to calculate accurate shipping costs for your product",
+     "res": "merchant_action",
+     "ids": [
+      "4047059431931",
+      "871913818294",
+      "1717021"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|NOT_IMPACTED|image_link_internal_error|additional image link",
+     "c": 589,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [additional_image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "19145",
+      "2808",
+      "4047059431931"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|NOT_IMPACTED|image_link_internal_error|additional image link",
+     "c": 589,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [additional_image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "19145",
+      "2808",
+      "4047059431931"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|NOT_IMPACTED|image_link_internal_error|additional image link",
+     "c": 589,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [additional_image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "19145",
+      "2808",
+      "4047059431931"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|NOT_IMPACTED|image_link_internal_error|additional image link",
+     "c": 589,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [additional_image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "19145",
+      "2808",
+      "4047059431931"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|NOT_IMPACTED|image_link_internal_error|additional image link",
+     "c": 589,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [additional_image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "19145",
+      "2808",
+      "4047059431931"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|NOT_IMPACTED|image_too_small_for_high_resolution|image link",
+     "c": 270,
+     "desc": "Image too small for upcoming enforcement",
+     "detail": "Use an image that's at least 500x500 pixels to serve",
+     "res": "merchant_action",
+     "ids": [
+      "2808",
+      "01GIC5115",
+      "013694672"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|NOT_IMPACTED|image_too_small_for_high_resolution|image link",
+     "c": 270,
+     "desc": "Image too small for upcoming enforcement",
+     "detail": "Use an image that's at least 500x500 pixels to serve",
+     "res": "merchant_action",
+     "ids": [
+      "2808",
+      "01GIC5115",
+      "013694672"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|attribute_pending_review|image link",
+     "c": 247,
+     "desc": "Image under review",
+     "detail": "Google may take up to 5 days to review your product image",
+     "res": "pending_processing",
+     "ids": [
+      "871913818294",
+      "HAPQ80N",
+      "HAPMK11"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|attribute_pending_review|image link",
+     "c": 247,
+     "desc": "Image under review",
+     "detail": "Google may take up to 5 days to review your product image",
+     "res": "pending_processing",
+     "ids": [
+      "871913818294",
+      "HAPQ80N",
+      "HAPMK11"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|image_link_pending_crawl|image link",
+     "c": 60,
+     "desc": "Unable to show image",
+     "detail": "It might take up to 3 days for your product image to appear",
+     "res": "pending_processing",
+     "ids": [
+      "0TR2212_24171",
+      "PAE4495",
+      "EUD743"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|image_link_pending_crawl|image link",
+     "c": 60,
+     "desc": "Unable to show image",
+     "detail": "It might take up to 3 days for your product image to appear",
+     "res": "pending_processing",
+     "ids": [
+      "0TR2212_24171",
+      "PAE4495",
+      "EUD743"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|image_link_pending_crawl|image link",
+     "c": 60,
+     "desc": "Unable to show image",
+     "detail": "It might take up to 3 days for your product image to appear",
+     "res": "pending_processing",
+     "ids": [
+      "0TR2212_24171",
+      "PAE4495",
+      "EUD743"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|image_link_pending_crawl|image link",
+     "c": 60,
+     "desc": "Unable to show image",
+     "detail": "It might take up to 3 days for your product image to appear",
+     "res": "pending_processing",
+     "ids": [
+      "0TR2212_24171",
+      "PAE4495",
+      "EUD743"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|image_link_pending_crawl|image link",
+     "c": 60,
+     "desc": "Unable to show image",
+     "detail": "It might take up to 3 days for your product image to appear",
+     "res": "pending_processing",
+     "ids": [
+      "0TR2212_24171",
+      "PAE4495",
+      "EUD743"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|image_link_internal_error|image link",
+     "c": 53,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "EU153",
+      "01M182110",
+      "01M0400022"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|image_link_internal_error|image link",
+     "c": 53,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "EU153",
+      "01M182110",
+      "01M0400022"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|image_link_internal_error|image link",
+     "c": 53,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "EU153",
+      "01M182110",
+      "01M0400022"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|image_link_internal_error|image link",
+     "c": 53,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "EU153",
+      "01M182110",
+      "01M0400022"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|image_link_internal_error|image link",
+     "c": 53,
+     "desc": "Image not processed",
+     "detail": "No action needed. The [image_link] image will be processed again within 3 days",
+     "res": "merchant_action",
+     "ids": [
+      "EU153",
+      "01M182110",
+      "01M0400022"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|NOT_IMPACTED|image_link_internal_error_fallback|image link",
+     "c": 39,
+     "desc": "Your new image is experiencing processing delays [image_link]",
+     "detail": "Your previous image will continue to appear on Google for up to 30 days. If you recently updated other product details, check that this image still matches.",
+     "res": "merchant_action",
+     "ids": [
+      "JRS012",
+      "TX-41862",
+      "2.011755"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|NOT_IMPACTED|image_link_internal_error_fallback|image link",
+     "c": 39,
+     "desc": "Your new image is experiencing processing delays [image_link]",
+     "detail": "Your previous image will continue to appear on Google for up to 30 days. If you recently updated other product details, check that this image still matches.",
+     "res": "merchant_action",
+     "ids": [
+      "JRS012",
+      "TX-41862",
+      "2.011755"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|NOT_IMPACTED|image_link_internal_error_fallback|image link",
+     "c": 39,
+     "desc": "Your new image is experiencing processing delays [image_link]",
+     "detail": "Your previous image will continue to appear on Google for up to 30 days. If you recently updated other product details, check that this image still matches.",
+     "res": "merchant_action",
+     "ids": [
+      "JRS012",
+      "TX-41862",
+      "2.011755"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|NOT_IMPACTED|image_link_internal_error_fallback|image link",
+     "c": 39,
+     "desc": "Your new image is experiencing processing delays [image_link]",
+     "detail": "Your previous image will continue to appear on Google for up to 30 days. If you recently updated other product details, check that this image still matches.",
+     "res": "merchant_action",
+     "ids": [
+      "JRS012",
+      "TX-41862",
+      "2.011755"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|NOT_IMPACTED|image_link_internal_error_fallback|image link",
+     "c": 39,
+     "desc": "Your new image is experiencing processing delays [image_link]",
+     "detail": "Your previous image will continue to appear on Google for up to 30 days. If you recently updated other product details, check that this image still matches.",
+     "res": "merchant_action",
+     "ids": [
+      "JRS012",
+      "TX-41862",
+      "2.011755"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|live_animals_policy_violation|",
+     "c": 7,
+     "desc": "Sale of live animals",
+     "detail": "Live animals and services for their transportation are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "sku166940274158426271",
+      "HAPMC04",
+      "640165"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|live_animals_policy_violation|",
+     "c": 7,
+     "desc": "Sale of live animals",
+     "detail": "Live animals and services for their transportation are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "sku166940274158426271",
+      "HAPMC04",
+      "640165"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|live_animals_policy_violation|",
+     "c": 7,
+     "desc": "Sale of live animals",
+     "detail": "Live animals and services for their transportation are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "sku166940274158426271",
+      "HAPMC04",
+      "640165"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|live_animals_policy_violation|",
+     "c": 7,
+     "desc": "Sale of live animals",
+     "detail": "Live animals and services for their transportation are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "sku166940274158426271",
+      "HAPMC04",
+      "640165"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|live_animals_policy_violation|",
+     "c": 7,
+     "desc": "Sale of live animals",
+     "detail": "Live animals and services for their transportation are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "sku166940274158426271",
+      "HAPMC04",
+      "640165"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|personal_hardships_policy_violation|",
+     "c": 7,
+     "desc": "Personalized advertising: personal hardships",
+     "detail": "Personalized advertising should not be used to exploit customers' challenges or struggles such as health issues, financial status, relationship difficulties, or",
+     "res": "merchant_action",
+     "ids": [
+      "709000",
+      "2.009363",
+      "VET1200"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|personal_hardships_policy_violation|",
+     "c": 7,
+     "desc": "Personalized advertising: personal hardships",
+     "detail": "Personalized advertising should not be used to exploit customers' challenges or struggles such as health issues, financial status, relationship difficulties, or",
+     "res": "merchant_action",
+     "ids": [
+      "709000",
+      "2.009363",
+      "VET1200"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|personal_hardships_policy_violation|",
+     "c": 7,
+     "desc": "Personalized advertising: personal hardships",
+     "detail": "Personalized advertising should not be used to exploit customers' challenges or struggles such as health issues, financial status, relationship difficulties, or",
+     "res": "merchant_action",
+     "ids": [
+      "709000",
+      "2.009363",
+      "VET1200"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|violated_discovery_ads_policy_experiment2|image link",
+     "c": 5,
+     "desc": "Inappropriate image",
+     "detail": "Product images for YouTube Shopping Ads must meet quality standards and adhere to YouTube Shopping Ads prohibited categories",
+     "res": "merchant_action",
+     "ids": [
+      "01O7A020072",
+      "01ORDZB05",
+      "404842215175"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|attribute_violated_discovery_ads_policy|image link",
+     "c": 5,
+     "desc": "Inappropriate image",
+     "detail": "Product images must be relevant, high-quality, and abide by content restrictions",
+     "res": "merchant_action",
+     "ids": [
+      "01O7A020072",
+      "01ORDZB05",
+      "404842215175"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|attribute_violated_discovery_ads_policy|image link",
+     "c": 5,
+     "desc": "Inappropriate image",
+     "detail": "Product images must be relevant, high-quality, and abide by content restrictions",
+     "res": "merchant_action",
+     "ids": [
+      "01O7A020072",
+      "01ORDZB05",
+      "404842215175"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|sexual_interests_policy_violation|",
+     "c": 4,
+     "desc": "Personalized advertising: Sexual interests",
+     "detail": "Products cannot be targeted based on sexual interests",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|sexual_interests_policy_violation|",
+     "c": 4,
+     "desc": "Personalized advertising: Sexual interests",
+     "detail": "Products cannot be targeted based on sexual interests",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|sexual_interests_policy_violation|",
+     "c": 4,
+     "desc": "Personalized advertising: Sexual interests",
+     "detail": "Products cannot be targeted based on sexual interests",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|NOT_IMPACTED|restricted_nfs_policy_violation|",
+     "c": 4,
+     "desc": "Restricted adult content",
+     "detail": "Adult content that includes graphic nudity or sexual acts is not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|NOT_IMPACTED|restricted_nfs_policy_violation|",
+     "c": 4,
+     "desc": "Restricted adult content",
+     "detail": "Adult content that includes graphic nudity or sexual acts is not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|restricted_nfs_policy_violation|",
+     "c": 4,
+     "desc": "Restricted adult content",
+     "detail": "Adult content that includes graphic nudity or sexual acts is not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|NOT_IMPACTED|restricted_nfs_policy_violation|",
+     "c": 4,
+     "desc": "Restricted adult content",
+     "detail": "Adult content that includes graphic nudity or sexual acts is not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|restricted_nfs_policy_violation|",
+     "c": 4,
+     "desc": "Restricted adult content",
+     "detail": "Adult content that includes graphic nudity or sexual acts is not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "393",
+      "707000"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|NOT_IMPACTED|invalid_upc|gtin",
+     "c": 4,
+     "desc": "Invalid GTIN value",
+     "detail": "Use a valid, internationally recognized GTIN or leave the field blank",
+     "res": "merchant_action",
+     "ids": [
+      "V004979",
+      "V004978",
+      "TX-92576"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|NOT_IMPACTED|invalid_upc|gtin",
+     "c": 4,
+     "desc": "Invalid GTIN value",
+     "detail": "Use a valid, internationally recognized GTIN or leave the field blank",
+     "res": "merchant_action",
+     "ids": [
+      "V004979",
+      "V004978",
+      "TX-92576"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|NOT_IMPACTED|invalid_upc|gtin",
+     "c": 4,
+     "desc": "Invalid GTIN value",
+     "detail": "Use a valid, internationally recognized GTIN or leave the field blank",
+     "res": "merchant_action",
+     "ids": [
+      "V004979",
+      "V004978",
+      "TX-92576"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|NOT_IMPACTED|invalid_upc|gtin",
+     "c": 4,
+     "desc": "Invalid GTIN value",
+     "detail": "Use a valid, internationally recognized GTIN or leave the field blank",
+     "res": "merchant_action",
+     "ids": [
+      "V004979",
+      "V004978",
+      "TX-92576"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|NOT_IMPACTED|invalid_upc|gtin",
+     "c": 4,
+     "desc": "Invalid GTIN value",
+     "detail": "Use a valid, internationally recognized GTIN or leave the field blank",
+     "res": "merchant_action",
+     "ids": [
+      "V004979",
+      "V004978",
+      "TX-92576"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|NOT_IMPACTED|restricted_adult_policy_violation|",
+     "c": 2,
+     "desc": "Adult-oriented content",
+     "detail": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "707000"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|NOT_IMPACTED|restricted_adult_policy_violation|",
+     "c": 2,
+     "desc": "Adult-oriented content",
+     "detail": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "707000"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|restricted_adult_policy_violation|",
+     "c": 2,
+     "desc": "Adult-oriented content",
+     "detail": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "707000"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|restricted_adult_policy_violation|",
+     "c": 2,
+     "desc": "Adult-oriented content",
+     "detail": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "707000"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|restricted_adult_policy_violation|",
+     "c": 2,
+     "desc": "Adult-oriented content",
+     "detail": "Products with adult-oriented content, descriptions, or images, like pornography, are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "704000",
+      "707000"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|healthcare_misleading_claims_policy_violation|",
+     "c": 2,
+     "desc": "Healthcare and medicine: misleading claims",
+     "detail": "Products that make misleading healthcare claims or are marketed to prevent, cure, or treat diseases are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "01DOG0202",
+      "01DOG0102"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|healthcare_misleading_claims_policy_violation|",
+     "c": 2,
+     "desc": "Healthcare and medicine: misleading claims",
+     "detail": "Products that make misleading healthcare claims or are marketed to prevent, cure, or treat diseases are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "01DOG0202",
+      "01DOG0102"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|healthcare_misleading_claims_policy_violation|",
+     "c": 2,
+     "desc": "Healthcare and medicine: misleading claims",
+     "detail": "Products that make misleading healthcare claims or are marketed to prevent, cure, or treat diseases are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "01DOG0202",
+      "01DOG0102"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|healthcare_misleading_claims_policy_violation|",
+     "c": 2,
+     "desc": "Healthcare and medicine: misleading claims",
+     "detail": "Products that make misleading healthcare claims or are marketed to prevent, cure, or treat diseases are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "01DOG0202",
+      "01DOG0102"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|healthcare_misleading_claims_policy_violation|",
+     "c": 2,
+     "desc": "Healthcare and medicine: misleading claims",
+     "detail": "Products that make misleading healthcare claims or are marketed to prevent, cure, or treat diseases are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "01DOG0202",
+      "01DOG0102"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|legal_restrictions_policy_violation|",
+     "c": 1,
+     "desc": "Personalized advertising: legal restrictions",
+     "detail": "Targeting users based on legally restricted content is not allowed in personalized ads",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|legal_restrictions_policy_violation|",
+     "c": 1,
+     "desc": "Personalized advertising: legal restrictions",
+     "detail": "Targeting users based on legally restricted content is not allowed in personalized ads",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|legal_restrictions_policy_violation|",
+     "c": 1,
+     "desc": "Personalized advertising: legal restrictions",
+     "detail": "Targeting users based on legally restricted content is not allowed in personalized ads",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|alcohol_policy_violation|",
+     "c": 1,
+     "desc": "Alcoholic beverages",
+     "detail": "Products that violate applicable laws and industry standards for the sale of alcoholic beverages are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|alcohol_policy_violation|",
+     "c": 1,
+     "desc": "Alcoholic beverages",
+     "detail": "Products that violate applicable laws and industry standards for the sale of alcoholic beverages are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|alcohol_policy_violation|",
+     "c": 1,
+     "desc": "Alcoholic beverages",
+     "detail": "Products that violate applicable laws and industry standards for the sale of alcoholic beverages are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|alcohol_policy_violation|",
+     "c": 1,
+     "desc": "Alcoholic beverages",
+     "detail": "Products that violate applicable laws and industry standards for the sale of alcoholic beverages are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|alcohol_policy_violation|",
+     "c": 1,
+     "desc": "Alcoholic beverages",
+     "detail": "Products that violate applicable laws and industry standards for the sale of alcoholic beverages are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "708001"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|illegal_drugs_policy_violation|",
+     "c": 1,
+     "desc": "Illegal drugs",
+     "detail": "Recreational drugs, drug-related equipment, or instructional content about illicit drug use are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "VET1200"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|illegal_drugs_policy_violation|",
+     "c": 1,
+     "desc": "Illegal drugs",
+     "detail": "Recreational drugs, drug-related equipment, or instructional content about illicit drug use are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "VET1200"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|illegal_drugs_policy_violation|",
+     "c": 1,
+     "desc": "Illegal drugs",
+     "detail": "Recreational drugs, drug-related equipment, or instructional content about illicit drug use are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "VET1200"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|illegal_drugs_policy_violation|",
+     "c": 1,
+     "desc": "Illegal drugs",
+     "detail": "Recreational drugs, drug-related equipment, or instructional content about illicit drug use are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "VET1200"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|illegal_drugs_policy_violation|",
+     "c": 1,
+     "desc": "Illegal drugs",
+     "detail": "Recreational drugs, drug-related equipment, or instructional content about illicit drug use are not allowed",
+     "res": "merchant_action",
+     "ids": [
+      "VET1200"
+     ]
+    },
+    {
+     "k": "SHOPPING_ADS|DISAPPROVED|image_link_broken|image link",
+     "c": 1,
+     "desc": "Unsupported image type [image_link]",
+     "detail": "Use an image in the accepted format (JPEG, PNG, GIF)",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0694"
+     ]
+    },
+    {
+     "k": "FREE_LISTINGS|DISAPPROVED|image_link_broken|image link",
+     "c": 1,
+     "desc": "Unsupported image type [image_link]",
+     "detail": "Use an image in the accepted format (JPEG, PNG, GIF)",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0694"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS|DISAPPROVED|image_link_broken|image link",
+     "c": 1,
+     "desc": "Unsupported image type [image_link]",
+     "detail": "Use an image in the accepted format (JPEG, PNG, GIF)",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0694"
+     ]
+    },
+    {
+     "k": "VIDEO_ADS|DISAPPROVED|image_link_broken|image link",
+     "c": 1,
+     "desc": "Unsupported image type [image_link]",
+     "detail": "Use an image in the accepted format (JPEG, PNG, GIF)",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0694"
+     ]
+    },
+    {
+     "k": "DEMAND_GEN_ADS_DISCOVER_SURFACE|DISAPPROVED|image_link_broken|image link",
+     "c": 1,
+     "desc": "Unsupported image type [image_link]",
+     "detail": "Use an image in the accepted format (JPEG, PNG, GIF)",
+     "res": "merchant_action",
+     "ids": [
+      "JOS0694"
+     ]
+    }
+   ]
+  }
+ },
+ "GO": {
+  "v": "S1672mc",
+  "ok": 1
+ }
+}
