@@ -1,0 +1,57 @@
+{
+ "v": "dep-222349",
+ "kurimas": 200,
+ "sid": 5615,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DRY": {
+  "v": "S1675 k",
+  "faze": "DRY",
+  "temp_istrinta": 1,
+  "pries": {
+   "status": "on-hold",
+   "items": {
+    "1739": {
+     "pid": 14951,
+     "q": 4,
+     "stock": 11,
+     "own": "",
+     "reduced": "4",
+     "src": "av"
+    }
+   }
+  },
+  "klase": {
+   "Petshop_Laiskai_Turinys": [
+    "dabartinis_flow"
+   ]
+  },
+  "flows_db": [
+   "back_in_stock",
+   "cart_abandoned",
+   "cart_abandoned_2",
+   "legacy_reactivation_l1",
+   "order_shipped",
+   "pet_reminder_due",
+   "post_purchase_14d",
+   "post_purchase_2d",
+   "post_purchase_7d",
+   "refill_due",
+   "shipment_returned",
+   "subscription_t5_notice",
+   "win_back_120",
+   "win_back_60",
+   "win_back_90"
+  ],
+  "flows_kodas": [
+   "cart_abandoned",
+   "cart_abandoned_2",
+   "consent_changed",
+   "post_purchase_14d",
+   "post_purchase_2d",
+   "post_purchase_7d"
+  ]
+ }
+}
