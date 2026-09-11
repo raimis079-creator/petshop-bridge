@@ -1,0 +1,41 @@
+{
+ "v": "dep-172125",
+ "kurimas": 200,
+ "sid": 5570,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "mc_raw": {
+  "len": 2389,
+  "head": "\"type\": \"ser"
+ },
+ "mc": {
+  "sa": "claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com",
+  "token": 200,
+  "sources": {
+   "status": 200,
+   "items": [
+    {
+     "name": "accounts/5321054797/dataSources/10727325747",
+     "dn": "PRODUCTS SOURCE 1",
+     "lang": "en",
+     "label": "PETSHOP_LT",
+     "uri": "https://petshop.lt/feed/google/"
+    }
+   ]
+  },
+  "prod_err": "{\"code\":409,\"message\":\"The v1beta version of the Merchant API was discontinued on February 28, 2026 and is no longer available. Please upgrade to v1 version. See https://developers.google.com/merchant/api/guides/compatibility/migrate-v1beta-v1 for more details\",\"status\":\"ABORTED\",\"details\":[{\"@type\":\"type.googleapis.com/google.rpc.ErrorInfo\",\"reason\":\"deleted\",\"domain\":\"merchantapi.googleapis.com\"",
+  "products": {
+   "n": 0,
+   "pages": 1,
+   "noStatus": 0,
+   "statuses": {},
+   "issues": []
+  }
+ },
+ "GO": {
+  "v": "S1672mc",
+  "ok": 1
+ }
+}
