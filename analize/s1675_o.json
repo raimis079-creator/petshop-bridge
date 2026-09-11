@@ -1,0 +1,287 @@
+{
+ "v": "dep-224430",
+ "kurimas": 200,
+ "sid": 5622,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1675 o",
+  "temp_istrinta": 1,
+  "viso": 28,
+  "min_max": [
+   "35868",
+   "35906"
+  ],
+  "spragos_id": [
+   35869,
+   35870,
+   35877,
+   35878,
+   35879,
+   35895,
+   35896,
+   35897,
+   35898,
+   35899,
+   35900
+  ],
+  "sarasas": [
+   "35868  order completed paysera 1 09-08 22:24",
+   "35871  order cancelled paysera 56.99 09-09 05:49",
+   "35872  order completed paysera 11.02 09-09 06:54",
+   "35873  order cancelled bacs 13.31 09-09 09:33",
+   "35874  order cancelled paysera 13.31 09-09 09:42",
+   "35875  order cancelled paysera 13.31 09-09 09:50",
+   "35876  order cancelled paysera 6.15 09-09 10:27",
+   "35880 #1000 order completed paysera 24.1 09-09 15:48",
+   "35881 #1001 order completed paysera 67.02 09-09 16:56",
+   "35882 #1002 order completed paysera 65.07 09-10 03:36",
+   "35883 #1003 order completed paysera 13.31 09-10 05:49",
+   "35884 #1004 order cancelled paysera 59.99 09-10 07:25",
+   "35885 #1005 order cancelled paysera 59.99 09-10 09:34",
+   "35886 #1006 order completed bacs 83.88 09-10 10:13",
+   "35887 #1007 order completed paysera 22.05 09-10 13:28",
+   "35888 #1008 order completed paysera 19.89 09-10 13:53",
+   "35889 #1009 order processing paysera 42.46 09-10 15:18",
+   "35890 #1010 order processing paysera 6.34 09-10 16:10",
+   "35891 #1011 order completed paysera 6.46 09-10 16:13",
+   "35892 #1012 order completed paysera 22.54 09-10 16:43",
+   "35893 #1013 order completed paysera 39.99 09-10 18:21",
+   "35894 #1014 order completed paysera 24.1 09-11 03:13",
+   "35901 #1015 order completed paysera 19.15 09-11 06:10",
+   "35902 #1016 order on-hold bacs 11.72 09-11 08:19",
+   "35903 #1017 order completed paysera 56.99 09-11 09:14",
+   "35904 #1018 order processing paysera 15.68 09-11 10:38",
+   "35905 #1019 order processing paysera 10.32 09-11 11:16",
+   "35906 #1020 order processing paysera 45.39 09-11 17:46"
+  ],
+  "pagal_statusa": [
+   {
+    "status": "wc-cancelled",
+    "c": "7"
+   },
+   {
+    "status": "wc-completed",
+    "c": "15"
+   },
+   {
+    "status": "wc-on-hold",
+    "c": "1"
+   },
+   {
+    "status": "wc-processing",
+    "c": "5"
+   }
+  ],
+  "iv_stulp": [
+   "id",
+   "laikas",
+   "diena",
+   "uzsakymas",
+   "eilute",
+   "sritis",
+   "veiksmas",
+   "rezultatas",
+   "busena",
+   "kanalas",
+   "kas",
+   "kas_vardas",
+   "pries",
+   "po",
+   "pastaba"
+  ],
+  "iv_atsauk": [],
+  "hold_stock_min": "90",
+  "manage_stock": "yes",
+  "as_cancel": [
+   {
+    "status": "pending",
+    "scheduled_date_gmt": "2026-09-11 23:31:48",
+    "last_attempt_gmt": "0000-00-00 00:00:00"
+   },
+   {
+    "status": "complete",
+    "scheduled_date_gmt": "2026-09-11 22:00:56",
+    "last_attempt_gmt": "2026-09-11 22:01:48"
+   },
+   {
+    "status": "complete",
+    "scheduled_date_gmt": "2026-09-11 20:30:39",
+    "last_attempt_gmt": "2026-09-11 20:30:56"
+   }
+  ],
+  "kodas": {
+   "petshop-akcijos.php": {
+    "1057": "$d = (int) ceil( ( $iki - $dabar ) / DAY_IN_SECONDS );",
+    "1061": "$d = (int) ceil( ( $nuo - $dabar ) / DAY_IN_SECONDS );",
+    "1176": "$d['iki'] = date( 'Y-m-d H:i', current_time( 'timestamp' ) + min( 30, $gi_d ) * DAY_IN_SECONDS );"
+   },
+   "petshop-darbalaukis.php": {
+    "406": "add_action( 'ps_dl_atsauktu_valymas', array( __CLASS__, 'atsauktu_valymas' ) ); // v3.36 (3b)",
+    "523": "$out   = array( $x[0], $x[1], $liko <= 0 ? $liko + DAY_IN_SECONDS : $liko );",
+    "565": "if ( $dd === wp_date( 'Y-m-d', time() - DAY_IN_SECONDS ) ) { return 'vakar ' . wp_date( 'H:i', $d->getTimestamp() ); }",
+    "566": "$dienu = (int) floor( $s / DAY_IN_SECONDS );",
+    "1661": "if ( ! wp_next_scheduled( 'ps_dl_atsauktu_valymas' ) ) { $d = new DateTime( 'tomorrow 03:20', wp_timezone() ); wp_schedule_event( $d->getTimestamp(), ",
+    "1707": "$ne = array_merge( Petshop_Desk::STATUSAI['neapmoketi'], Petshop_Desk::STATUSAI['atsaukti'], array( 'checkout-draft', 'draft', 'trash' ) );",
+    "1711": "$nuo = gmdate( 'Y-m-d H:i:s', time() - 60 * DAY_IN_SECONDS );",
+    "1875": "$nuo = gmdate( 'Y-m-d H:i:s', time() - 60 * DAY_IN_SECONDS );",
+    "2819": "if ( $senumas_d > 0 ) { $args['date_modified'] = '<' . ( time() - $senumas_d * DAY_IN_SECONDS ); }",
+    "2848": "/** v3.36 (3b): CRON `ps_dl_atsauktu_valymas` kasdien 03:20 — atšauktas neapmokėtas, nemodifikuotas > ATSAUKTU_DIENOS → šiukšlinė; šiukšlinėje neapmok",
+    "2852": "$tr = wc_get_orders( array( 'limit' => 200, 'type' => 'shop_order', 'status' => 'trash', 'date_modified' => '<' . ( time() - self::ATSAUKTU_DIENOS * D",
+    "2853": "foreach ( (array) $tr as $o ) { if ( ! $o instanceof WC_Order ) { continue; } if ( $o->is_paid() || $o->get_date_paid() || $o->get_refunds() || (strin",
+    "2854": "update_option( 'ps_dl_atsauktu_valymas_paskutinis', $r, false ); return $r;",
+    "3203": "if ( in_array( $o->get_status(), array_merge( Petshop_Desk::STATUSAI['neapmoketi'], Petshop_Desk::STATUSAI['atsaukti'], array( 'checkout-draft', 'draf",
+    "3374": "$orders = wc_get_orders( array( 'limit' => 300, 'type' => 'shop_order', 'orderby' => 'date', 'order' => 'DESC', 'return' => 'objects', 'status' => arr",
+    "3399": "else { $args['status'] = array_diff( array_map( function ( $s ) { return str_replace( 'wc-', '', $s ); }, array_keys( wc_get_order_statuses() ) ), arr",
+    "3474": "global $wpdb; $c['visi'] = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM {$wpdb->prefix}wc_orders WHERE type='shop_order' AND status<>'wc-checkout-draft"
+   },
+   "petshop-desk.php": {
+    "1018": "$o->delete( true );",
+    "1226": "if ( in_array( $st, array( 'completed', 'lp-delivered', 'cancelled', 'lp-cancelled', 'refunded', 'checkout-draft' ), true ) ) {",
+    "1316": "WHERE o.type = 'shop_order' AND o.status <> 'wc-checkout-draft' AND (",
+    "1340": "$kur = array( \"o.type='shop_order'\", \"o.status<>'wc-checkout-draft'\" );",
+    "1424": "$args['status'] = array_diff( $args['status'], array( 'checkout-draft' ) );",
+    "1484": "$dienu = ( time() - $sk->getTimestamp() ) / DAY_IN_SECONDS;",
+    "1533": "\"SELECT COUNT(*) FROM {$pf}wc_orders WHERE type='shop_order' AND status<>'wc-checkout-draft'\" );",
+    "2941": "$dienu = (int) floor( ( time() - $skd->getTimestamp() ) / DAY_IN_SECONDS );",
+    "3004": "if ( $dd === wp_date( 'Y-m-d', $now - DAY_IN_SECONDS ) ) { return 'vakar ' . wp_date( 'H:i', $ts ); }"
+   },
+   "petshop-katalogas.php": {
+    "2714": "$r = wp_delete_post( $pid, true );",
+    "4113": "$men = (int) floor( ( $t - current_time( 'timestamp' ) ) / ( 30 * DAY_IN_SECONDS ) );",
+    "5700": "if ( $ts ) { return max( 0, (int) floor( ( $dabar - $ts ) / DAY_IN_SECONDS ) ); }",
+    "5718": "return max( 0, (int) floor( ( $dabar - $nuo ) / DAY_IN_SECONDS ) );"
+   },
+   "petshop-laukai.php": {
+    "2956": "if ( ! wp_delete_post( $lid, true ) ) { wp_send_json_error( 'Nepavyko ištrinti.' ); }"
+   },
+   "petshop-prenumerata.php": {
+    "153": "'next_cycle_date' => isset($d['next_cycle_date']) ? $d['next_cycle_date'] : gmdate('Y-m-d', time() + $int * DAY_IN_SECONDS),",
+    "188": "'next_cycle_date' => max($s['next_cycle_date'], gmdate('Y-m-d', time() + 5 * DAY_IN_SECONDS)),",
+    "193": "$nauja = gmdate('Y-m-d', strtotime($s['next_cycle_date'] . ' UTC') + $s['interval_days'] * DAY_IN_SECONDS);",
+    "392": "$t5d = gmdate('Y-m-d', strtotime($d0 . ' UTC') + 5 * DAY_IN_SECONDS);",
+    "414": "$nauja = gmdate('Y-m-d', strtotime($d0 . ' UTC') + 7 * DAY_IN_SECONDS);",
+    "421": "$kita = gmdate('Y-m-d', strtotime($s['next_cycle_date'] . ' UTC') + $s['interval_days'] * DAY_IN_SECONDS);",
+    "447": "'dunning_next' => $kitas === 999 ? $d0 : gmdate('Y-m-d', strtotime($d0 . ' UTC') + $kitas * DAY_IN_SECONDS),",
+    "479": "$kita = gmdate('Y-m-d', strtotime($s['next_cycle_date'] . ' UTC') + $s['interval_days'] * DAY_IN_SECONDS);",
+    "516": "'expires_at'  => gmdate('Y-m-d H:i:s', strtotime($s['next_cycle_date'] . ' UTC') + 3 * DAY_IN_SECONDS),",
+    "568": "'dunning_next' => gmdate('Y-m-d', time() + 2 * DAY_IN_SECONDS),"
+   },
+   "petshop-rinkiniai.php": {
+    "3556": "if ( ! wp_delete_post( $id, true ) ) { wp_send_json_error( 'Nepavyko ištrinti.' ); }",
+    "3607": "if ( ! wp_delete_post( $id, true ) ) { wp_send_json_error( 'Nepavyko ištrinti.' ); }",
+    "3634": "$dienos = (int) floor( ( time() - strtotime( $post->post_modified_gmt . ' UTC' ) ) / DAY_IN_SECONDS );"
+   },
+   "petshop-siuntu-valymas.php": {
+    "32": "/* Legacy posts lentele: wp_delete_post( $id, true ) */"
+   }
+  },
+  "cron_valymas": "09-12 00:20",
+  "valymas_opc": [
+   {
+    "n": "ps_dl_atsauktu_valymas_paskutinis",
+    "v": "a:4:{s:6:\"laikas\";s:19:\"2026-09-11 03:20:01\";s:11:\"i_siuksline\";i:0;s:9:\"galutinai\";i:0;s:7:\"klaidos\";i:0;}"
+   }
+  ],
+  "notes_cancel": [
+   {
+    "id": "35873",
+    "t": "Email \"Atšauktas užsakymas\" sent.",
+    "d": "2026-09-12 01:26:26"
+   },
+   {
+    "id": "35873",
+    "t": "Email \"Atšauktas užsakymas\" sent.",
+    "d": "2026-09-12 01:26:26"
+   },
+   {
+    "id": "35873",
+    "t": "S1675: atšaukta tyliai Raimio nurodymu — klientas užsakė iš naujo ir apmokėjo #1003 (Paysera). Laiškas klientu",
+    "d": "2026-09-12 01:26:26"
+   },
+   {
+    "id": "35886",
+    "t": "Tofu 8 VNT. pakas (#35856) perkeltas į AV rankiniu būdu (S1670): bazinė #17659 AV 16 → 8, partijos −8. DĖMESIO",
+    "d": "2026-09-11 10:24:28"
+   },
+   {
+    "id": "35885",
+    "t": "Email \"Atšauktas užsakymas\" sent.",
+    "d": "2026-09-10 15:51:47"
+   },
+   {
+    "id": "35885",
+    "t": "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
+    "d": "2026-09-10 15:51:47"
+   },
+   {
+    "id": "35884",
+    "t": "Email \"Atšauktas užsakymas\" sent.",
+    "d": "2026-09-10 12:51:41"
+   },
+   {
+    "id": "35884",
+    "t": "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
+    "d": "2026-09-10 12:51:41"
+   },
+   {
+    "id": "35876",
+    "t": "Email \"Atšauktas užsakymas\" sent.",
+    "d": "2026-09-09 17:14:47"
+   },
+   {
+    "id": "35876",
+    "t": "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
+    "d": "2026-09-09 17:14:46"
+   },
+   {
+    "id": "35873",
+    "t": "S1661: atstatyta _reduced_stock=4 ir stock_reduced žymė (pay-page kelias jas ištrynė) — kad atšaukimo atveju l",
+    "d": "2026-09-09 14:31:38"
+   },
+   {
+    "id": "35875",
+    "t": "Likutis padidintas rankiniu būdu S1661: Žarnų pagaliukai, 80 g +4 (14→18). Atšaukimo metu automatinis grąžinim",
+    "d": "2026-09-09 13:59:04"
+   },
+   {
+    "id": "35874",
+    "t": "Likutis padidintas rankiniu būdu S1661: Žarnų pagaliukai, 80 g +4 (10→14). Atšaukimo metu automatinis grąžinim",
+    "d": "2026-09-09 13:59:04"
+   },
+   {
+    "id": "35875",
+    "t": "Email \"Atšauktas užsakymas\" sent.",
+    "d": "2026-09-09 13:38:15"
+   },
+   {
+    "id": "35875",
+    "t": "Atšaukta rankiniu būdu: klientas tam pačiam krepšeliui sukūrė tris užsakymus (#35873 laukia pavedimo). Likutis",
+    "d": "2026-09-09 13:38:15"
+   },
+   {
+    "id": "35874",
+    "t": "Email \"Atšauktas užsakymas\" sent.",
+    "d": "2026-09-09 13:38:15"
+   },
+   {
+    "id": "35874",
+    "t": "Atšaukta rankiniu būdu: klientas tam pačiam krepšeliui sukūrė tris užsakymus (#35873 laukia pavedimo). Likutis",
+    "d": "2026-09-09 13:38:15"
+   },
+   {
+    "id": "35871",
+    "t": "Email \"Atšauktas užsakymas\" sent.",
+    "d": "2026-09-09 11:12:59"
+   },
+   {
+    "id": "35871",
+    "t": "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
+    "d": "2026-09-09 11:12:59"
+   }
+  ],
+  "db": ""
+ }
+}
