@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjcxIG1jIG5vb3AgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKGlzc2V0KCRfR0VUWydwc19zMTY3MW0nXSkpeyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKGFycmF5KCd2Jz0+J1MxNjcxbWMnLCdvayc9PjEpKTsgZXhpdDsgfSB9KTsK';
-const VER='dep-163346';
+const VER='dep-163532';
 const GKEY='ps_s1671m';
 const PHASES=["M"];
-const OUT='analize/s1671_mc9.json';
+const OUT='analize/s1671_mc10.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -43,13 +43,13 @@ try{
     const tr=await fetch('https://oauth2.googleapis.com/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion='+hdr+'.'+clm+'.'+sig});
     const tj=await tr.json(); out.mc={sa:sa.client_email,token:tr.status};
     if(tj.access_token){ const H={Authorization:'Bearer '+tj.access_token,'Content-Type':'application/json'}; const base='https://merchantapi.googleapis.com/datasources/v1beta/accounts/5321054797/dataSources';
-      const rg=await fetch('https://merchantapi.googleapis.com/accounts/v1/accounts/5321054797/developerRegistration:registerGcp',{method:'POST',headers:H,body:JSON.stringify({developerEmail:'raimis079@gmail.com'})}); out.mc.register={status:rg.status,body:(await rg.text()).slice(0,400)}; await miegok(25000);
+      const rg=await fetch('https://merchantapi.googleapis.com/accounts/v1/accounts/5321054797/developerRegistration:registerGcp',{method:'POST',headers:H,body:JSON.stringify({developerEmail:'raimis079@gmail.com'})}); out.mc.register={status:rg.status,body:(await rg.text()).slice(0,400)}; await miegok(2000);
       const mb='https://merchantapi.googleapis.com/datasources/v1/accounts/5321054797/dataSources';
       const l=await fetch(mb,{headers:H}); const lt=await l.text(); let lj={}; try{ lj=JSON.parse(lt); }catch(e){ out.mc.list_raw={status:l.status,body:lt.slice(0,300)}; }
       out.mc.list={status:l.status,items:(lj.dataSources||[]).map(d=>({name:d.name,dn:d.displayName,lang:d.primaryProductDataSource&&d.primaryProductDataSource.contentLanguage,label:d.primaryProductDataSource&&d.primaryProductDataSource.feedLabel,countries:d.primaryProductDataSource&&d.primaryProductDataSource.countries,uri:d.fileInput&&d.fileInput.fetchSettings&&d.fileInput.fetchSettings.fetchUri}))}; if(lj.error) out.mc.list_err=JSON.stringify(lj.error).slice(0,400);
       let ltds=(lj.dataSources||[]).find(d=>d.primaryProductDataSource&&d.primaryProductDataSource.contentLanguage==='lt');
       if(!ltds && l.status===200){
-        const body={displayName:'petshop.lt Google feed LT',primaryProductDataSource:{contentLanguage:'lt',feedLabel:'PETSHOP_LT',countries:['LT'],channel:'ONLINE_PRODUCTS'},fileInput:{fetchSettings:{enabled:true,timeOfDay:{hours:3},timeZone:'Europe/Vilnius',frequency:'FREQUENCY_DAILY',fetchUri:'https://petshop.lt/feed/google/'}}};
+        const body={displayName:'petshop.lt Google feed LT',primaryProductDataSource:{contentLanguage:'lt',feedLabel:'PETSHOP_LT',countries:['LT']},fileInput:{fetchSettings:{enabled:true,timeOfDay:{hours:3},timeZone:'Europe/Vilnius',frequency:'FREQUENCY_DAILY',fetchUri:'https://petshop.lt/feed/google/'}}};
         const c=await fetch(mb,{method:'POST',headers:H,body:JSON.stringify(body)}); const ct=await c.text(); let cj={}; try{cj=JSON.parse(ct);}catch(e){} out.mc.create={status:c.status,name:cj.name,err:cj.error?JSON.stringify(cj.error).slice(0,600):null}; if(cj.name) ltds=cj;
       }
       if(ltds){ const f=await fetch('https://merchantapi.googleapis.com/datasources/v1/'+ltds.name+':fetch',{method:'POST',headers:H,body:'{}'}); out.mc.fetch={status:f.status,body:(await f.text()).slice(0,300)};
