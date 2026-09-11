@@ -1,0 +1,45 @@
+{
+ "v": "dep-090132",
+ "kurimas": 200,
+ "sid": 5541,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1670 v",
+  "faze": "D",
+  "pries": "609d2b1e3056c744ad8fb93222a9b542",
+  "po": "a16f5a09742d7a92c96fb49550721fe3",
+  "ping": 200,
+  "ping_admin": 302,
+  "rez": "OK"
+ },
+ "T": {
+  "v": "S1670 v",
+  "faze": "T",
+  "md5": "a16f5a09742d7a92c96fb49550721fe3",
+  "klase": true,
+  "vf_skaidymas": {
+   "geri": [
+    "ieva.lastovskyte@vetfarmas.lt",
+    "karolina.kazlauskaite@vetfarmas.lt"
+   ],
+   "blogi": []
+  },
+  "senas_budas": {
+   "tikri": [
+    "terra@petshop.lt"
+   ],
+   "nutraukta": "TESTAS_NESIUNCIAM"
+  },
+  "naujas_budas": {
+   "tikri": [
+    "ieva.lastovskyte@vetfarmas.lt",
+    "karolina.kazlauskaite@vetfarmas.lt",
+    "terra@petshop.lt"
+   ],
+   "nutraukta": "TESTAS_NESIUNCIAM"
+  }
+ }
+}
