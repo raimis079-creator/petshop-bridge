@@ -1,128 +1,508 @@
 {
- "v": "dep-201817",
+ "v": "dep-214608",
  "kurimas": 200,
- "sid": 5411,
+ "sid": 5602,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
  "GO": {
   "v": "S1675 b",
-  "failai": [
-   "petshop-laiskai.php",
-   "petshop-rezultatai.php",
-   "petshop-langai-admin.php",
-   "cart-abandoned-2.php",
-   "cart-abandoned-1.php",
-   "class-cart-recovery.php",
-   "class-email-dispatch.php",
-   "class-cart-abandonment.php",
-   "class-event-registry.php",
-   "class-event-emitters.php"
-  ],
-  "eil": [
-   "petshop-laiskai.php:9 *   TURINYS   gaj6_ps_email_content (DB, keicia Raimis)",
-   "petshop-laiskai.php:10 *   JUNGTIS   filtras petshop_email_template_path -> renderis.php",
-   "petshop-laiskai.php:21 const LENTELE   = 'ps_email_content';",
-   "petshop-laiskai.php:28 public static function lentele() {",
-   "petshop-laiskai.php:33 public static function install() {",
-   "petshop-laiskai.php:61 public static function paskelbtas( $flow ) {",
-   "petshop-laiskai.php:74 public static function juodrastis( $flow ) {",
-   "petshop-laiskai.php:87 public static function versijos( $flow, $riba = 20 ) {",
-   "petshop-laiskai.php:103 public static function issaugoti( $flow, $duom, $author_id = 0 ) {",
-   "petshop-laiskai.php:130 public static function paskelbti( $flow, $version ) {",
-   "petshop-laiskai.php:152 public static function atjungti( $flow ) {",
-   "petshop-laiskai.php:161 public static function patikrinti( $duom ) {",
-   "petshop-laiskai.php:206 public static function pakeisti( $tekstas, $payload, $url_rezimas = false ) {",
-   "petshop-laiskai.php:209 return preg_replace_callback( '/\\{([a-z0-9_]+)(?:\\|([^}]*))?\\}/i', function ( $m ) use ( $payload, $url_rezimas ) {",
-   "petshop-laiskai.php:219 protected static function yra( $payload, $k ) {",
-   "petshop-laiskai.php:226 protected static function salygos( $tekstas, $payload ) {",
-   "petshop-laiskai.php:233 function ( $m ) use ( $payload ) {",
-   "petshop-laiskai.php:244 public static function papildyti( $payload ) {",
-   "petshop-laiskai.php:255 public static function kintamieji( $flow ) {",
-   "petshop-laiskai.php:264 'cart_abandoned'         => array( 'recovery_url', 'cart_items', 'pirma_preke' ),",
-   "petshop-laiskai.php:265 'cart_abandoned_2'       => array( 'recovery_url', 'cart_items', 'pirma_preke' ),",
-   "petshop-laiskai.php:280 public static function blokai_i_html( $blocks, $payload ) {",
-   "petshop-laiskai.php:344 protected static function prekiu_sarasas( $blk, $payload ) {",
-   "petshop-laiskai.php:381 public static function renderinti( $flow, $payload, $flow_class = 'service', $recipient = '' ) {",
-   "petshop-laiskai.php:394 'email'      => $recipient,",
-   "petshop-laiskai.php:401 public static function perziura( $flow, $version = 0, $payload = array() ) {",
-   "petshop-laiskai.php:417 'flow_class' => $fl[ $flow ]['class'], 'recipient_email' => 'pavyzdys@petshop.lt' ) );",
-   "petshop-laiskai.php:439 'email'      => 'pavyzdys@petshop.lt',",
-   "petshop-laiskai.php:445 public static function pavyzdinis_payload( $flow ) {",
-   "petshop-laiskai.php:486 public static function dabartinis_flow() { return self::$dabartinis_flow; }",
-   "petshop-laiskai.php:488 public static function renderio_failas() {",
-   "petshop-laiskai.php:493 public static function uztikrinti_renderi() {",
-   "petshop-laiskai.php:514 public static function init() {",
-   "petshop-laiskai.php:515 add_filter( 'petshop_email_template_path', array( __CLASS__, 'kelias' ), 10, 3 );",
-   "petshop-laiskai.php:524 public static function kelias( $file, $flow, $slug ) {",
-   "petshop-laiskai.php:539 public static function busena() {",
-   "petshop-rezultatai.php:4 * Description: E3 — srautų rezultatai, stop/go šviesoforas, bangos, suppression, email→pajamos (last-click, 7 d.). Tik skaito.",
-   "petshop-rezultatai.php:12 public static function init() {",
-   "petshop-rezultatai.php:16 public static function meniu() {",
-   "petshop-rezultatai.php:28 public static function vardas($flow) {",
-   "petshop-rezultatai.php:34 'cart_abandoned'=>'Paliktas krepšelis 1','cart_abandoned_2'=>'Paliktas krepšelis 2',",
-   "petshop-rezultatai.php:48 public static function sviesa($reiksme, $gelt, $raud, $vardiklis) {",
-   "petshop-rezultatai.php:56 public static function duomenys($dienos) {",
-   "petshop-rezultatai.php:58 $jt = $wpdb->prefix . 'ps_email_jobs';",
-   "petshop-rezultatai.php:59 $st = $wpdb->prefix . 'ps_email_suppression';",
-   "petshop-rezultatai.php:115 $d['klaidos'] = $wpdb->get_results(\"SELECT flow, recipient_email, last_error, error_message, updated_at",
-   "petshop-rezultatai.php:122 /* ---------- email -> pajamos ----------",
-   "petshop-rezultatai.php:127 public static function priskyrimas($dienos) {",
-   "petshop-rezultatai.php:130 $jt = $wpdb->prefix . 'ps_email_jobs';",
-   "petshop-rezultatai.php:137 'email_pajamos' => 0.0, 'email_uzsakymu' => 0, 'pagal_srauta' => array());",
-   "petshop-rezultatai.php:147 JOIN `$jt` j ON LOWER(j.recipient_email) = LOWER(o.billing_email)",
-   "petshop-rezultatai.php:163 $r['email_uzsakymu']++;",
-   "petshop-rezultatai.php:164 $r['email_pajamos'] += (float) $p['suma'];",
-   "petshop-rezultatai.php:170 public static function puslapis() {",
-   "petshop-rezultatai.php:237 <div class=\"kort\"><span>Priskirtos pajamos</span><b><?php echo number_format($pr['email_pajamos'], 2, ',', ' '); ?> &euro;</b>",
-   "petshop-rezultatai.php:238 <span class=\"mut\"><?php echo (int) $pr['email_uzsakymu']; ?> užsak. iš <?php echo (int) $pr['viso_uzsakymu']; ?></span></div>",
-   "petshop-rezultatai.php:239 <div class=\"kort\"><span>Dalis nuo visų pajamų</span><b><?php echo $pr['viso_pajamos'] > 0 ? round($pr['email_pajamos'] / $pr['viso_pajamos'] * 100, 1) : 0; ?>%<",
-   "petshop-rezultatai.php:262 $proc = function ($x) use ($snt) { return $snt ? ' <span class=\"mut\">(' . round($x / $snt * 100) . '%)</span>' : ''; };",
-   "petshop-rezultatai.php:319 <td><?php echo esc_html($r['recipient_email']); ?></td>",
-   "petshop-langai-admin.php:18 public static function pavadinimai() {",
-   "petshop-langai-admin.php:28 'cart_abandoned'         => array( 'Paliktas krepšelis · 1', 'Pirmas priminimas su prekių sąrašu.' ),",
-   "petshop-langai-admin.php:29 'cart_abandoned_2'       => array( 'Paliktas krepšelis · 2', 'Antras, paskutinis priminimas.' ),",
-   "petshop-langai-admin.php:43 public static function vardas( $flow ) {",
-   "petshop-langai-admin.php:48 public static function paaiskinimas( $flow ) {",
-   "petshop-langai-admin.php:54 public static function redaguojamas( $flow ) {",
-   "petshop-langai-admin.php:62 public static function init() {",
-   "petshop-langai-admin.php:68 public static function meniu() {",
-   "petshop-langai-admin.php:74 protected static function nuoroda( $args = array() ) {",
-   "petshop-langai-admin.php:80 public static function ajax_gyva() {",
-   "petshop-langai-admin.php:96 'email'      => 'pavyzdys@petshop.lt',"
-  ],
-  "snippetai": [
-   {
-    "id": "714",
-    "name": "Petshop Test11 RetryQueue tmp",
-    "active": "0"
+  "temp_istrinta": 1,
+  "ini_error_log": "",
+  "log_errors": "",
+  "display_errors": "1",
+  "log": {
+   "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz": {
+    "kb": 2164,
+    "mtime": "09-11 21:10",
+    "top": [],
+    "pask": ""
    },
-   {
-    "id": "715",
-    "name": "Petshop Test11b RetryQueue tmp",
-    "active": "0"
+   "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.1": {
+    "kb": 294,
+    "mtime": "09-11 04:31",
+    "top": [],
+    "pask": ""
    },
-   {
-    "id": "717",
-    "name": "Petshop Test11c RetryQueue tmp",
-    "active": "0"
+   "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.2": {
+    "kb": 1904,
+    "mtime": "09-10 21:11",
+    "top": [],
+    "pask": ""
    },
-   {
-    "id": "753",
-    "name": "S188 Deploy tmp",
-    "active": "0"
+   "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.3": {
+    "kb": 267,
+    "mtime": "09-10 04:31",
+    "top": [],
+    "pask": ""
    },
-   {
-    "id": "5410",
-    "name": "TEMP PS dep-201635",
-    "active": "0"
+   "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.4": {
+    "kb": 1962,
+    "mtime": "09-09 21:11",
+    "top": [],
+    "pask": ""
    },
-   {
-    "id": "5411",
-    "name": "TEMP PS dep-201817",
-    "active": "1"
+   "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.5": {
+    "kb": 132,
+    "mtime": "09-09 01:53",
+    "top": [],
+    "pask": ""
    }
-  ]
+  },
+  "wc_fatal": {
+   "fatal-errors-2026-09-10-ba90063add4e398f01c4803e18478cf7.log": {
+    "kb": 1,
+    "uodega": "php(365): WP_Hook->apply_filters()\",\"#3 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/plugin.php(522): WP_Hook->do_action()\",\"#4 /home/gyvunai2/domains/petshop.lt/public_html/wp-settings.php(742): do_action()\",\"#5 /home/gyvunai2/domains/petshop.lt/public_html/wp-config.php(118): require_once('...')\",\"#6 /home/gyvunai2/domains/petshop.lt/public_html/wp-load.php(50): require_once('...')\",\"#7 /home/gyvunai2/domains/petshop.lt/public_html/wp-blog-header.php(13): require_once('...')\",\"#8 /home/gyvunai2/domains/petshop.lt/public_html/index.php(17): require('...')\",\"#9 {main}\",\"thrown\"]}\n"
+   },
+   "fatal-errors-2026-09-09-9e07c06e7fe465b40a4bf6c0f9efb531.log": {
+    "kb": 1,
+    "uodega": "2026-09-09T03:32:42+00:00 CRITICAL Allowed memory size of 268435456 bytes exhausted (tried to allocate 28672 bytes) CONTEXT: {\"error\":{\"type\":1,\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-all-import-pro/models/import/record.php\",\"line\":3699},\"remote-logging\":true,\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-woocommerce.php\",\"line\":511,\"function\":\"critical\",\"class\":\"WC_Logger\",\"type\":\"->\"},{\"function\":\"log_errors\",\"class\":\"WooCommerce\",\"type\":\"->\"}]}\n"
+   }
+  },
+  "wc_logs_naujausi": {
+   "wc-analytics-order-import-2026-09-11-0d4dc4e361ede26dd64b8bbf9fbeaf39.log": "09-11 21:33 0kb",
+   "transactional-emails-2026-09-11-f293fbe1e5f3589e02b87a237e0ceb13.log": "09-11 17:47 9kb",
+   "wc_logger-2026-09-11-2a4421be8de4383d3ca91fdbf823c89a.log": "09-11 17:46 28kb",
+   "place-order-debug-2586f60a-2026-09-11-0a73134bdafa6284c6993e1f7b67ae94.log": "09-11 17:39 3kb",
+   "place-order-debug-a1fa768b-2026-09-11-533c61fc7f3d67427cf3f700e5a0411f.log": "09-11 17:39 1kb",
+   "place-order-debug-07ebe1ff-2026-09-11-373fe74e79af7d06a20c82225a4a20de.log": "09-11 17:37 3kb",
+   "place-order-debug-f78221ce-2026-09-11-c2088764d3f204a38bbfab26e2a6b263.log": "09-11 17:36 3kb",
+   "place-order-debug-78a8da4b-2026-09-11-649436ce70663da334d5e35412c7aa1a.log": "09-11 14:22 3kb"
+  },
+  "sargas": {
+   "ps_sargas_cron_laukiam": {
+    "n": 79,
+    "pvz": {
+     "wcdn_ts_tracker_send_event": "once_in_week",
+     "cmplz_every_week_hook": "cmplz_weekly",
+     "cmplz_every_month_hook": "cmplz_monthly"
+    }
+   },
+   "ps_sargas_cron_zinios": {
+    "n": 79,
+    "pvz": {
+     "ps_venipak_sekimas": 1789162564,
+     "ps_dl_atsauktu_valymas": 1789086001,
+     "cmplz_every_month_hook": 1788855183
+    }
+   },
+   "ps_sargas_pastas": "terra@gyvunai.lt",
+   "ps_sargas_siusta": {
+    "n": 32,
+    "pvz": {
+     "fatal:417ab0763ee645f300a7f75c145c7f0f": "2026-09-09",
+     "fatal:0423f52793b7ec2a4d9791dcb442068c": "2026-09-10",
+     "cron:7fbf69f4d78bc2fdafa6a618209337bb": "2026-09-11"
+    }
+   },
+   "ps_sargas_start": "1786994616",
+   "ps_sargas_svara": {
+    "n": 3,
+    "pvz": {
+     "laikas": "2026-09-08 08:02:01",
+     "negyvu": 43,
+     "eilutes": [
+      "  augintinio prekes be prekes:       1 (is 36)",
+      "  priminimai be augintinio:          4 (is 10)",
+      "  serimo map be prekes:              3 (is 561)",
+      "  MnM eilutes be konteinerio:        35 (is 344)"
+     ]
+    }
+   }
+  },
+  "sargas_transient": [],
+  "instock0_pagal_sandeli": [
+   {
+    "sandelis": "av",
+    "c": "62",
+    "pvz": "14984,15101,15318,15651,15706,15754"
+   },
+   {
+    "sandelis": "belcor_tofu",
+    "c": "3",
+    "pvz": "17345,17348,17363"
+   },
+   {
+    "sandelis": "zb",
+    "c": "2",
+    "pvz": "12455,12930"
+   }
+  ],
+  "instock0_manage_no": 47,
+  "av_reg_vs_own_pvz": [
+   {
+    "product_id": "18590",
+    "reg": "4",
+    "own": "5"
+   }
+  ],
+  "onhold": {
+   "35873": {
+    "nr": "35873",
+    "metodas": "bacs",
+    "suma": "13.31",
+    "sukurta": "09-09 12:33",
+    "meta": {
+     "iapv": "IAPV000101"
+    },
+    "pastabos": [
+     "S1662: AVPN numeris AVPN011003 nuimtas — PVM sąskaitos tik apmokėtiems (Raimio taisyklė). ",
+     "S1661: atstatyta _reduced_stock=4 ir stock_reduced žymė (pay-page kelias jas ištrynė) — ka",
+     "Email \"Naujas užsakymas\" sent.",
+     "Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas."
+    ]
+   },
+   "35902": {
+    "nr": "1016",
+    "metodas": "bacs",
+    "suma": "11.72",
+    "sukurta": "09-11 11:19",
+    "meta": {
+     "iapv": "IAPV000116",
+     "avpn": "AVPN011016"
+    },
+    "pastabos": [
+     "Email \"Naujas užsakymas\" sent.",
+     "Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
+     "Likutis sumažintas: Žaislas katei - Kamuoliukas su plunksnomis ir garsu (2&rarr;2)",
+     "Vykdymas: MAIN — AV 1 vnt (1 siunta(-os))"
+    ]
+   }
+  },
+  "sla_uzs": [
+   {
+    "order_id": "35880",
+    "status": "wc-completed",
+    "meta_value": "2026-09-11 13:14:05"
+   },
+   {
+    "order_id": "35881",
+    "status": "wc-completed",
+    "meta_value": "2026-09-11 13:14:05"
+   }
+  ],
+  "processing": [
+   {
+    "id": "35889",
+    "date_created_gmt": "2026-09-10 15:18:07",
+    "payment_method": "paysera",
+    "total_amount": "42.46000000"
+   },
+   {
+    "id": "35890",
+    "date_created_gmt": "2026-09-10 16:10:37",
+    "payment_method": "paysera",
+    "total_amount": "6.34000000"
+   },
+   {
+    "id": "35904",
+    "date_created_gmt": "2026-09-11 10:38:00",
+    "payment_method": "paysera",
+    "total_amount": "15.68000000"
+   },
+   {
+    "id": "35905",
+    "date_created_gmt": "2026-09-11 11:16:49",
+    "payment_method": "paysera",
+    "total_amount": "10.32000000"
+   },
+   {
+    "id": "35906",
+    "date_created_gmt": "2026-09-11 17:46:37",
+    "payment_method": "paysera",
+    "total_amount": "45.39000000"
+   }
+  ],
+  "email_jobs": [
+   {
+    "status": "pending",
+    "c": "2",
+    "pask": "2026-09-10 23:39:33"
+   },
+   {
+    "status": "sent",
+    "c": "5",
+    "pask": "2026-09-11 19:34:45"
+   },
+   {
+    "status": "skipped",
+    "c": "3",
+    "pask": "2026-09-11 10:29:45"
+   }
+  ],
+  "email_jobs_stulpeliai": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "ps_lenteles_visos": [
+   "gaj6_ps_action_tokens",
+   "gaj6_ps_akcijos",
+   "gaj6_ps_akciju_prekes",
+   "gaj6_ps_ataskaitu_dienos",
+   "gaj6_ps_av_zurnalas",
+   "gaj6_ps_brand_alias",
+   "gaj6_ps_browse_log",
+   "gaj6_ps_carts",
+   "gaj6_ps_consent_log",
+   "gaj6_ps_dim_klientai",
+   "gaj6_ps_email_content",
+   "gaj6_ps_email_jobs",
+   "gaj6_ps_email_suppression",
+   "gaj6_ps_event_log",
+   "gaj6_ps_fakt_atsargos_d",
+   "gaj6_ps_fakt_eilutes",
+   "gaj6_ps_fakt_grazinimai",
+   "gaj6_ps_fakt_gsc_dienos",
+   "gaj6_ps_fakt_gsc_url_d",
+   "gaj6_ps_fakt_kainos",
+   "gaj6_ps_fakt_reklama",
+   "gaj6_ps_fakt_siuntos",
+   "gaj6_ps_fakt_uzsakymai",
+   "gaj6_ps_feeding_import_log",
+   "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_map",
+   "gaj6_ps_feeding_map_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_map_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows",
+   "gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows_bak_s304",
+   "gaj6_ps_feeding_tables",
+   "gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_islaidos",
+   "gaj6_ps_ist_eilutes",
+   "gaj6_ps_ist_fakt_eilutes",
+   "gaj6_ps_ist_fakt_uzsakymai",
+   "gaj6_ps_ist_uzsakymai",
+   "gaj6_ps_istrintos_prekes_s668",
+   "gaj6_ps_ivykiai",
+   "gaj6_ps_kl_suvestine",
+   "gaj6_ps_kontrole_dienos",
+   "gaj6_ps_laukai_ivykiai",
+   "gaj6_ps_naujienlaiskiai",
+   "gaj6_ps_nl_snapshot",
+   "gaj6_ps_pakuotes",
+   "gaj6_ps_partijos",
+   "gaj6_ps_pet_field_log",
+   "gaj6_ps_pet_notes",
+   "gaj6_ps_pet_products",
+   "gaj6_ps_pet_profile_drafts",
+   "gaj6_ps_pets",
+   "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9",
+   "gaj6_ps_pets_bak_20260722_181456_hint",
+   "gaj6_ps_pets_bak_20260723_prof",
+   "gaj6_ps_pets_bak_20260726",
+   "gaj6_ps_pets_bak_20260726_ft",
+   "gaj6_ps_pets_bak_20260727_wet",
+   "gaj6_ps_pets_bak_20260731_pries_restore",
+   "gaj6_ps_plan_events",
+   "gaj6_ps_rec_log",
+   "gaj6_ps_refill_tracking",
+   "gaj6_ps_reminders",
+   "gaj6_ps_sargas_klaidos",
+   "gaj6_ps_seo_404",
+   "gaj6_ps_seo_qa",
+   "gaj6_ps_seo_url_svoris",
+   "gaj6_ps_shipments",
+   "gaj6_ps_sources",
+   "gaj6_ps_stock_watch",
+   "gaj6_ps_subscription_events",
+   "gaj6_ps_subscription_items",
+   "gaj6_ps_subscriptions",
+   "gaj6_ps_tarifai",
+   "gaj6_ps_tarifu_priemokos",
+   "gaj6_ps_tiekimas",
+   "gaj6_ps_tiekimas_eil",
+   "gaj6_ps_uzsakymu_ivykiai",
+   "gaj6_ps_v_analize_eilutes",
+   "gaj6_ps_v_analize_uzsakymai",
+   "gaj6_ps_web_dienos",
+   "gaj6_ps_web_ivykiai",
+   "gaj6_ps_webhook_log"
+  ],
+  "retry_lent": [
+   "gaj6_ps_partijos"
+  ],
+  "retry_stat": {
+   "gaj6_ps_partijos": [
+    {
+     "c": "909"
+    }
+   ]
+  },
+  "as_pending": [
+   {
+    "hook": "action_scheduler_run_actions_cleanup_hook",
+    "c": "1"
+   },
+   {
+    "hook": "action_scheduler_run_recurring_actions_schedule_hook",
+    "c": "1"
+   },
+   {
+    "hook": "fetch_patterns",
+    "c": "1"
+   },
+   {
+    "hook": "wc_admin_daily_wrapper",
+    "c": "1"
+   },
+   {
+    "hook": "wc-admin_process_pending_orders_batch",
+    "c": "1"
+   },
+   {
+    "hook": "wcdn_delete_pdf_files",
+    "c": "1"
+   },
+   {
+    "hook": "woocommerce_cancel_unpaid_orders",
+    "c": "1"
+   },
+   {
+    "hook": "woocommerce_cleanup_logs",
+    "c": "1"
+   },
+   {
+    "hook": "woocommerce_cleanup_personal_data",
+    "c": "1"
+   },
+   {
+    "hook": "woocommerce_cleanup_rate_limits_wrapper",
+    "c": "1"
+   },
+   {
+    "hook": "woocommerce_cleanup_sessions",
+    "c": "1"
+   },
+   {
+    "hook": "woocommerce_custom_orders_table_background_sync",
+    "c": "1"
+   },
+   {
+    "hook": "woocommerce_geoip_updater",
+    "c": "1"
+   },
+   {
+    "hook": "woocommerce_refresh_order_count_cache",
+    "c": "1"
+   },
+   {
+    "hook": "woocommerce_scheduled_sales",
+    "c": "1"
+   },
+   {
+    "hook": "woocommerce_tracker_send_event_wrapper",
+    "c": "1"
+   },
+   {
+    "hook": "wp_mail_smtp_admin_notifications_update",
+    "c": "1"
+   },
+   {
+    "hook": "wp_mail_smtp_summary_report_email",
+    "c": "1"
+   },
+   {
+    "hook": "wpforms_admin_addons_cache_update",
+    "c": "1"
+   },
+   {
+    "hook": "wpforms_admin_builder_templates_cache_update",
+    "c": "1"
+   },
+   {
+    "hook": "wpforms_analytics_aggregate",
+    "c": "1"
+   },
+   {
+    "hook": "wpforms_email_summaries_fetch_info_blocks",
+    "c": "1"
+   },
+   {
+    "hook": "wpforms_process_forms_locator_scan",
+    "c": "1"
+   },
+   {
+    "hook": "wpforms_process_purge_spam",
+    "c": "1"
+   }
+  ],
+  "as_past_due": 0,
+  "rs_trap": [
+   {
+    "uri": "/?ps_s1664e=GO",
+    "laikas": "2026-09-09 16:33:34"
+   }
+  ],
+  "e404_24h": [],
+  "web_stulp": [
+   "id",
+   "laikas",
+   "diena",
+   "tipas",
+   "pusl_tipas",
+   "url_kelias",
+   "raktas",
+   "raktas2",
+   "reiksme",
+   "sesija",
+   "lankytojas_d",
+   "lankytojas_30",
+   "saltinis",
+   "medium",
+   "kampanija",
+   "referer_domenas",
+   "kanalas",
+   "landing",
+   "irenginys",
+   "os_seima",
+   "nars_seima",
+   "salis",
+   "prisijunges",
+   "sutikimas",
+   "testinis",
+   "saltinis_aplinka"
+  ],
+  "ps_backups": {
+   "n": 421,
+   "mb": 81.5
+  },
+  "disk_free_gb": 383,
+  "upd": {
+   "wp": "6.9.4",
+   "wc": "11.0.1",
+   "php": "8.3.33",
+   "plugin_upd": 10
+  },
+  "cron_lock": false,
+  "cron_alt": 0,
+  "db_klaida": ""
  }
 }
