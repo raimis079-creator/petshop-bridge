@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjczIHJlY29uIHJlYWQgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKCFpc3NldCgkX0dFVFsncHNfciddKXx8JF9HRVRbJ3BzX3InXSE9PSdHTycpIHJldHVybjsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOyAkcj1nZXRfb3B0aW9uKCdwc19hZHNfcmVjb24nKTsgZWNobyBpc19hcnJheSgkcik/JHJbJ2JvZHknXTpqc29uX2VuY29kZSgkcik7IGV4aXQ7IH0pOwo=';
-const VER='dep-204033';
+const VER='dep-204403';
 const GKEY='ps_r';
 const PHASES=["GO"];
-const OUT='analize/s1673_gtm_ec.json';
+const OUT='analize/s1673_gtm_v9.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -49,21 +49,12 @@ try{
       out.gtm.container=cpath;
       if(cpath){
         const J=async(u,m,b)=>{ const r=await fetch(G+u,{method:m||'GET',headers:Object.assign({'Content-Type':'application/json'},H),body:b?JSON.stringify(b):undefined}); const t=await r.text(); let j; try{j=JSON.parse(t);}catch(e){j={raw:t.slice(0,300)};} return {st:r.status,j}; };
-        let ws=(await J(cpath+'/workspaces')).j; let w=(ws.workspace||[]).find(x=>x.name==='S1673 EC');
-        if(!w){ const c=await J(cpath+'/workspaces','POST',{name:'S1673 EC',description:'Enhanced Conversions: UPD kintamasis (user_data is dataLayer) + Purchase tag EC'}); out.gtm.ws_create=c.st; w=c.j; }
-        out.gtm.ws=w.path;
-        const vars=(await J(w.path+'/variables')).j.variable||[]; const tags=(await J(w.path+'/tags')).j.tag||[];
-        let upd=vars.find(v=>v.name==='UPD — user_data (EC)');
-        if(!upd){ for(const body of [
-            {name:'UPD — user_data (EC)',type:'ud',parameter:[{type:'template',key:'mode',value:'CODE'},{type:'template',key:'dataSource',value:'{{DLV — user_data}}'}]},
-            {name:'UPD — user_data (EC)',type:'gtes',parameter:[{type:'template',key:'mode',value:'CODE'},{type:'template',key:'dataSource',value:'{{DLV — user_data}}'}]}]){
-          const c=await J(w.path+'/variables','POST',body); out.gtm['upd_'+body.type]={st:c.st,e:JSON.stringify(c.j).slice(0,250)}; if(c.st===200){ upd=c.j; break; } } }
-        if(upd){ const t=tags.find(x=>String(x.tagId)==='30');
-          const b=Object.assign({},t); for(const k of ['fingerprint','path','accountId','containerId','workspaceId','tagId']) delete b[k];
-          b.parameter=(b.parameter||[]).filter(p=>!['enableEnhancedConversion','cssProvidedEnhancedConversionValue','userDataVariable'].includes(p.key));
-          b.parameter.push({type:'boolean',key:'enableEnhancedConversion',value:'true'},{type:'template',key:'cssProvidedEnhancedConversionValue',value:'{{UPD — user_data (EC)}}'});
-          const r=await J(t.path,'PUT',b); out.gtm.tag30={st:r.st,param:JSON.stringify(r.j.parameter||[]).slice(0,700),err:r.j.error?JSON.stringify(r.j.error).slice(0,300):null}; }
-        const st=await J(w.path+'/status'); out.gtm.status={st:st.st,changes:(st.j.workspaceChange||[]).map(c=>c.changeStatus+':'+(c.tag?c.tag.name:c.variable?c.variable.name:'?'))};
+        let ws=(await J(cpath+'/workspaces')).j; let w=(ws.workspace||[]).find(x=>x.name==='S1673 EC'); out.gtm.ws=w&&w.path;
+        if(w){ const v=await J(w.path+'/variables/42'); out.gtm.var42={st:v.st,type:v.j.type,name:v.j.name,param:JSON.stringify(v.j.parameter||[])};
+          const cv=await J(w.path+':create_version','POST',{name:'v9 — EC (user_data)',notes:'S1673: Purchase tag Enhanced Conversions; UPD kintamasis is dataLayer user_data.sha256_email_address (#614)'});
+          out.gtm.create_version={st:cv.st,compiler:cv.j.compilerError,sync:cv.j.syncStatus,ver:cv.j.containerVersion&&cv.j.containerVersion.containerVersionId};
+          if(cv.st===200&&!cv.j.compilerError&&cv.j.containerVersion){ const pb=await J(cv.j.containerVersion.path+':publish','POST'); out.gtm.publish={st:pb.st,compiler:pb.j.compilerError,live:pb.j.containerVersion&&pb.j.containerVersion.containerVersionId,err:pb.j.error?JSON.stringify(pb.j.error).slice(0,300):null}; }
+          const live=await J(cpath+'/versions:live'); out.gtm.live={v:live.j.containerVersionId,name:live.j.name}; }
       }
     } else out.gtm.token_body=JSON.stringify(tj).slice(0,300);
   }catch(e){ out.gtm_klaida=String(e).slice(0,400); } }
