@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjcxIG1jIG5vb3AgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKGlzc2V0KCRfR0VUWydwc19zMTY3MW0nXSkpeyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKGFycmF5KCd2Jz0+J1MxNjcxbWMnLCdvayc9PjEpKTsgZXhpdDsgfSB9KTsK';
-const VER='dep-162504';
+const VER='dep-162632';
 const GKEY='ps_s1671m';
 const PHASES=["M"];
-const OUT='analize/s1671_mc5.json';
+const OUT='analize/s1671_mc6.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -47,10 +47,10 @@ try{
       const l=await fetch(cb,{headers:H}); const lt=await l.text(); let lj={}; try{ lj=JSON.parse(lt); }catch(e){ out.mc.list_raw={status:l.status,body:lt.slice(0,300)}; }
       out.mc.list={status:l.status,items:(lj.resources||[]).map(d=>({id:d.id,name:d.name,targets:d.targets,url:d.fetchSchedule&&d.fetchSchedule.fetchUrl}))}; if(lj.error) out.mc.list_err=JSON.stringify(lj.error).slice(0,400);
       const yra=(lj.resources||[]).find(d=>(d.targets||[]).some(x=>x.language==='lt'));
-      if(!yra && process.env.MC_CREATE==='1'){
+      if(!yra){
         const body={name:'petshop.lt Google feed LT',contentType:'products',fileName:'google.xml',fetchSchedule:{hour:3,timeZone:'Europe/Vilnius',fetchUrl:'https://petshop.lt/feed/google/'},format:{fileEncoding:'utf-8'},targets:[{country:'LT',language:'lt',feedLabel:'PETSHOP_LT',includedDestinations:['Shopping','SurfacesAcrossGoogle']}]};
         const c=await fetch(cb,{method:'POST',headers:H,body:JSON.stringify(body)}); const ct=await c.text(); let cj={}; try{cj=JSON.parse(ct);}catch(e){} out.mc.create={status:c.status,id:cj.id,err:cj.error?JSON.stringify(cj.error).slice(0,500):(c.status!==200?ct.slice(0,300):null)};
-        if(cj.id){ const f=await fetch(cb+'/'+cj.id+'/fetchNow',{method:'POST',headers:H}); out.mc.fetch={status:f.status,body:(await f.text()).slice(0,300)}; }
+        if(cj.id){ const f=await fetch(cb+'/'+cj.id+'/fetchNow',{method:'POST',headers:H}); out.mc.fetch={status:f.status,body:(await f.text()).slice(0,300)}; const en=(lj.resources||[]).find(d=>d.id==='408479230'); if(en){ const dl=await fetch(cb+'/408479230',{method:'DELETE',headers:H}); out.mc.delete_en={status:dl.status}; } }
       }
     } else out.mc.token_body=JSON.stringify(tj).slice(0,300);
   }catch(e){ out.mc_klaida=String(e).slice(0,400); } }
