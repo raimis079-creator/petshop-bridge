@@ -2,11 +2,11 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjczIHJlY29uIHJlYWQgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKCFpc3NldCgkX0dFVFsncHNfciddKXx8JF9HRVRbJ3BzX3InXSE9PSdHTycpIHJldHVybjsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOyAkcj1nZXRfb3B0aW9uKCdwc19hZHNfcmVjb24nKTsgZWNobyBpc19hcnJheSgkcik/JHJbJ2JvZHknXTpqc29uX2VuY29kZSgkcik7IGV4aXQ7IH0pOwo=';
-const VER='dep-205732';
-const GKEY='ps_r';
+const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjczIGN1c3RvbSBsYWJlbHMgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKCFpc3NldCgkX0dFVFsncHNfY2wnXSl8fCRfR0VUWydwc19jbCddIT09J0dPJykgcmV0dXJuOwogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7ICRvPWFycmF5KCk7CiAgJGM9ZmlsZV9nZXRfY29udGVudHMoV1BfQ09OVEVOVF9ESVIuJy91cGxvYWRzL3BldHNob3AtZmVlZHMvZ29vZ2xlLnhtbCcpOwogIGZvcmVhY2goYXJyYXkoMCwxLDIsMyw0KSBhcyAkbil7IHByZWdfbWF0Y2hfYWxsKCcjPGc6Y3VzdG9tX2xhYmVsXycuJG4uJz4oLio/KTwvZzpjdXN0b21fbGFiZWxfJy4kbi4nPiNzJywkYywkbSk7ICR2PWFycmF5X2NvdW50X3ZhbHVlcyhhcnJheV9tYXAoJ3RyaW0nLCRtWzFdKSk7IGFyc29ydCgkdik7ICRvWydjbCcuJG5dPWFycmF5X3NsaWNlKCR2LDAsMjUsdHJ1ZSk7ICRvWydjbCcuJG4uJ192aXNvJ109Y291bnQoJG1bMV0pOyB9CiAgcHJlZ19tYXRjaF9hbGwoJyM8ZzpicmFuZD4oLio/KTwvZzpicmFuZD4jcycsJGMsJG0pOyAkdj1hcnJheV9jb3VudF92YWx1ZXMoYXJyYXlfbWFwKCd0cmltJywkbVsxXSkpOyBhcnNvcnQoJHYpOyAkb1snYnJhbmQnXT1hcnJheV9zbGljZSgkdiwwLDMwLHRydWUpOwogIHByZWdfbWF0Y2hfYWxsKCcjPGc6cHJvZHVjdF90eXBlPiguKj8pPC9nOnByb2R1Y3RfdHlwZT4jcycsJGMsJG0pOyAkdj1hcnJheV9jb3VudF92YWx1ZXMoYXJyYXlfbWFwKGZ1bmN0aW9uKCR4KXtyZXR1cm4gdHJpbShodG1sX2VudGl0eV9kZWNvZGUoJHgpKTt9LCRtWzFdKSk7IGFyc29ydCgkdik7ICRvWydwcm9kdWN0X3R5cGUnXT1hcnJheV9zbGljZSgkdiwwLDMwLHRydWUpOwogIGVjaG8ganNvbl9lbmNvZGUoJG8sSlNPTl9VTkVTQ0FQRURfVU5JQ09ERSk7IGV4aXQ7IH0pOwo=';
+const VER='dep-210159';
+const GKEY='ps_cl';
 const PHASES=["GO"];
-const OUT='analize/s1673_gtm_v9d.json';
+const OUT='analize/s1673_cl.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -34,39 +34,27 @@ try{
   await miegok(9000);
   if(process.env.GTM_SA_JSON){ try{ const sr=await fx(WP+'/wp-json/ps-seo-temp/v1/sa',{method:'POST',headers:{Authorization:AUTH,'Content-Type':'text/plain'},body:process.env.GTM_SA_JSON},'sa'); out.sa_push={status:sr.status,body:(await sr.text()).slice(0,200)}; }catch(e){ out.sa_push=String(e).slice(0,200);} }
 
-
-  // S1673 GTM API read-only: purchase/consent/EC
+  // S1671 MERCHANT API: data source lt
   if(process.env.GTM_SA_JSON){ try{
-    let raw=process.env.GTM_SA_JSON.trim(); if(!raw.startsWith('{')){ raw='{'+raw+'}'; } const sa=JSON.parse(raw); const crypto=await import('crypto');
+    let raw=process.env.GTM_SA_JSON.trim(); out.mc_raw={len:raw.length,head:raw.slice(0,12)}; if(!raw.startsWith('{')){ raw='{'+raw+'}'; } const sa=JSON.parse(raw); const crypto=await import('crypto');
     const now=Math.floor(Date.now()/1000); const b=s=>Buffer.from(JSON.stringify(s)).toString('base64url');
-    const hdr=b({alg:'RS256',typ:'JWT'}); const clm=b({iss:sa.client_email,scope:'https://www.googleapis.com/auth/tagmanager.edit.containers https://www.googleapis.com/auth/tagmanager.edit.containerversions https://www.googleapis.com/auth/tagmanager.publish',aud:'https://oauth2.googleapis.com/token',iat:now,exp:now+3600});
+    const hdr=b({alg:'RS256',typ:'JWT'}); const clm=b({iss:sa.client_email,scope:'https://www.googleapis.com/auth/content',aud:'https://oauth2.googleapis.com/token',iat:now,exp:now+3600});
     const sig=crypto.createSign('RSA-SHA256').update(hdr+'.'+clm).sign(sa.private_key,'base64url');
     const tr=await fetch('https://oauth2.googleapis.com/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion='+hdr+'.'+clm+'.'+sig});
-    const tj=await tr.json(); out.gtm={token:tr.status};
-    if(tj.access_token){ const H={Authorization:'Bearer '+tj.access_token}; const G='https://tagmanager.googleapis.com/tagmanager/v2/';
-      const ac=await (await fetch(G+'accounts',{headers:H})).json(); out.gtm.accounts=(ac.account||[]).map(a=>a.path);
-      let cpath=null; for(const a of (ac.account||[])){ const cs=await (await fetch(G+a.path+'/containers',{headers:H})).json(); for(const c of (cs.container||[])){ if(c.publicId==='GTM-MF3GZGT') cpath=c.path; } }
-      out.gtm.container=cpath;
-      if(cpath){
-        const J=async(u,m,b)=>{ const r=await fetch(G+u,{method:m||'GET',headers:Object.assign({'Content-Type':'application/json'},H),body:b?JSON.stringify(b):undefined}); const t=await r.text(); let j; try{j=JSON.parse(t);}catch(e){j={raw:t.slice(0,300)};} return {st:r.status,j}; };
-        let ws=(await J(cpath+'/workspaces')).j; let w=(ws.workspace||[]).find(x=>x.name==='S1673 EC'); out.gtm.ws=w&&w.path;
-        if(w){ const W=w.path;
-          const setTag=async(ref)=>{ const t=(await J(W+'/tags/30')).j; for(const k of ['fingerprint','path','accountId','containerId','workspaceId','tagId']) delete t[k];
-            t.parameter=(t.parameter||[]).filter(p=>!['enableEnhancedConversion','cssProvidedEnhancedConversionValue'].includes(p.key));
-            t.parameter.push({type:'boolean',key:'enableEnhancedConversion',value:'true'},{type:'template',key:'cssProvidedEnhancedConversionValue',value:ref}); const r=await J(W+'/tags/30','PUT',t); return {st:r.st,err:r.j.error?JSON.stringify(r.j.error).slice(0,200):null}; };
-          out.gtm.t1=await setTag('{{TEST tipas awec}}');
-          out.gtm.del42=(await J(W+'/variables/42','DELETE')).st;
-          const v=(await J(W+'/variables/45')).j; v.name='UPD — user_data (EC)'; delete v.fingerprint; const up=await J(W+'/variables/45','PUT',v); out.gtm.rename={st:up.st,name:up.j.name,type:up.j.type,param:JSON.stringify(up.j.parameter||[])};
-          out.gtm.t2=await setTag('{{UPD — user_data (EC)}}');
-          const tg=(await J(W+'/tags/30')).j; out.gtm.tag30_final=JSON.stringify((tg.parameter||[]).filter(p=>/Enhanced/.test(p.key)));
-          const st=await J(W+'/status'); out.gtm.status=(st.j.workspaceChange||[]).map(c=>c.changeStatus+':'+(c.tag?c.tag.name:c.variable?c.variable.name:'?'));
-          const cv=await J(W+':create_version','POST',{name:'v9 — EC (user_data)',notes:'S1673: Purchase tag Enhanced Conversions; UPD kintamasis (Code) is dataLayer user_data.sha256_email_address (#614)'});
-          out.gtm.create_version={st:cv.st,compiler:cv.j.compilerError,ver:cv.j.containerVersion&&cv.j.containerVersion.containerVersionId,err:cv.j.error?JSON.stringify(cv.j.error).slice(0,200):null};
-          if(cv.st===200&&!cv.j.compilerError&&cv.j.containerVersion){ const pb=await J(cv.j.containerVersion.path+':publish','POST'); out.gtm.publish={st:pb.st,err:pb.j.error?JSON.stringify(pb.j.error).slice(0,200):null}; }
-          const live=await J(cpath+'/versions:live'); out.gtm.live={v:live.j.containerVersionId,name:live.j.name}; }
-      }
-    } else out.gtm.token_body=JSON.stringify(tj).slice(0,300);
-  }catch(e){ out.gtm_klaida=String(e).slice(0,400); } }
+    const tj=await tr.json(); out.mc={sa:sa.client_email,token:tr.status};
+    if(tj.access_token){ const H={Authorization:'Bearer '+tj.access_token};
+      const l=await fetch('https://merchantapi.googleapis.com/datasources/v1/accounts/5321054797/dataSources',{headers:H}); const lj=await l.json();
+      out.mc.sources={status:l.status,items:(lj.dataSources||[]).map(d=>({name:d.name,dn:d.displayName,lang:d.primaryProductDataSource&&d.primaryProductDataSource.contentLanguage,label:d.primaryProductDataSource&&d.primaryProductDataSource.feedLabel,uri:d.fileInput&&d.fileInput.fetchSettings&&d.fileInput.fetchSettings.fetchUri}))};
+      let pt='',n=0,st={},iss={},pages=0,samples={},noStatus=0,full={};
+      do{ const r=await fetch('https://merchantapi.googleapis.com/products/v1/accounts/5321054797/products?pageSize=250'+(pt?'&pageToken='+pt:''),{headers:H}); const j=await r.json(); pages++;
+        if(j.error){ out.mc.prod_err=JSON.stringify(j.error).slice(0,400); break; }
+        for(const p of (j.products||[])){ n++; const ps=p.productStatus; if(!ps){noStatus++;continue;}
+          for(const d of (ps.destinationStatuses||[])){ const k=d.reportingContext||'?'; st[k]=st[k]||{ok:0,pend:0,dis:0}; if((d.approvedCountries||[]).length) st[k].ok++; if((d.pendingCountries||[]).length) st[k].pend++; if((d.disapprovedCountries||[]).length) st[k].dis++; }
+          for(const i of (ps.itemLevelIssues||[])){ const k=(i.reportingContext||'?')+'|'+i.severity+'|'+i.code+'|'+(i.attribute||''); iss[k]=(iss[k]||0)+1; if(!samples[k]) samples[k]={desc:i.description,detail:(i.detail||'').slice(0,160),res:i.resolution,ids:[]}; if(samples[k].ids.length<3) samples[k].ids.push(p.offerId); if(/missing_shipping_weight|live_animals|healthcare|personal_hardships|inappropriate|violated_discovery|sexual|image_too_small|invalid_upc|alcohol|illegal_drugs|legal_restr/.test(i.code)&&(i.reportingContext==='SHOPPING_ADS'||i.reportingContext==='DEMAND_GEN_ADS')){ full[i.code]=full[i.code]||{}; full[i.code][p.offerId]=(p.attributes&&p.attributes.title||'').slice(0,70); } } }
+        pt=j.nextPageToken||''; }while(pt&&pages<20);
+      const ss=await fetch('https://merchantapi.googleapis.com/accounts/v1/accounts/5321054797/shippingSettings',{headers:H}); out.mc.shipping={status:ss.status,body:(await ss.text()).slice(0,2500)}; out.mc.full=full; out.mc.products={n,pages,noStatus,statuses:st,issues:Object.entries(iss).sort((a,b)=>b[1]-a[1]).map(([k,c])=>Object.assign({k,c},samples[k]))};
+    } else out.mc.token_body=JSON.stringify(tj).slice(0,300);
+  }catch(e){ out.mc_klaida=String(e).slice(0,400); } }
   for(let i=0;i<PHASES.length;i++){
     const f=PHASES[i];
     if(i>0) await miegok(5000);
