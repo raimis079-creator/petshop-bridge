@@ -1,0 +1,26 @@
+{
+ "v": "dep-162945",
+ "kurimas": 200,
+ "sid": 5563,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "mc_raw": {
+  "len": 2389,
+  "head": "\"type\": \"ser"
+ },
+ "mc": {
+  "sa": "claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com",
+  "token": 200,
+  "list": {
+   "status": 401,
+   "items": []
+  },
+  "list_err": "{\"code\":401,\"message\":\"GCP project with id prefab-envoy-482617-b4 and number 683712074632 is not registered with the merchant account. Please follow these steps https://developers.google.com/merchant/api/guides/quickstart/direct-api-calls#step_1_register_as_a_developer to register the GCP project with the merchant account then try calling the API again in 5 minutes.\",\"status\":\"UNAUTHENTICATED\",\"de"
+ },
+ "M": {
+  "v": "S1671mc",
+  "ok": 1
+ }
+}
