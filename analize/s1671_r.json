@@ -1,30 +1,470 @@
 {
- "v": "dep-073306",
+ "v": "dep-142425",
  "kurimas": 200,
- "sid": 5267,
+ "sid": 5548,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
  "R": {
-  "v": "S1671R",
-  "dydis": 16597,
-  "settings_laukai": [
-   "settings-websitescan",
-   "websitescan_status",
-   "wsc_batch_scan_enabled",
-   "websitescan_actions",
-   "wsc_scan_post_types"
-  ],
-  "busena": {
-   "onboarding": {
-    "terms": false,
-    "newsletter": true,
-    "plugins": true
+  "v": "S1671r",
+  "cron_next": "2026-09-11 14:36:04 UTC",
+  "now_utc": "2026-09-11 14:25:30",
+  "paskutinis": {
+   "laikas": "2026-09-11 17:06:33",
+   "uzsakymu": 14,
+   "numeriu": 15,
+   "uzklausu": 15,
+   "pakeista": 1,
+   "lp": 0,
+   "issiusta": 0,
+   "pristatyta": 0,
+   "grizta": 0,
+   "klaidos": 0,
+   "s": 0.8
+  },
+  "kandidatai_n": 14,
+  "uzs": [
+   {
+    "id": "35880",
+    "nr": "1000",
+    "status": "processing",
+    "kandidatas": true,
+    "_ps_siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260909002\",\"numeriai\":[\"V07267E1000065\"],\"data\":\"2026-09-09 19:58:51\"}}",
+    "_ps_venipak_sekimas": "{\"V07267E1000065\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-09 19:58:51\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tikr\":\"2026-09-09 20:07:20\"}}",
+    "meta_raktai": [
+     {
+      "meta_key": "_ps_dropship_sent",
+      "v": "2026-09-10 12:47:57"
+     },
+     {
+      "meta_key": "_ps_dropship_sent_src",
+      "v": "{\"vf\":\"2026-09-10 12:47:57\"}"
+     },
+     {
+      "meta_key": "_ps_dropship_to",
+      "v": "vf"
+     },
+     {
+      "meta_key": "_ps_refill_tracked",
+      "v": "yes"
+     },
+     {
+      "meta_key": "_ps_siuntos",
+      "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260909002\",\"numeriai\":[\"V07267E1000065\"],\"data\":\"2026-09-09 19:58:"
+     },
+     {
+      "meta_key": "_ps_venipak_sekimas",
+      "v": "{\"V07267E1000065\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-09 19:58:51\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tik"
+     },
+     {
+      "meta_key": "venipak_pickup_point",
+      "v": "3788"
+     },
+     {
+      "meta_key": "venipak_pickup_point_data",
+      "v": "{\"id\":3788,\"code\":\"300906055\",\"name\":\"Venipak locker, MAXIMA Venipak pa\\u0161tomatas\",\"display_name\":\"Kauno \\u0160iaur\\u"
+     },
+     {
+      "meta_key": "venipak_shipping_order_data",
+      "v": "{\"manifest\":\"07267260909002\",\"pack_numbers\":[\"V07267E1000065\"],\"weight\":2,\"products_count\":1,\"status\":\"sent\",\"error_mess"
+     }
+    ],
+    "reg": [
+     {
+      "sandelis": "vf",
+      "kodas": "002",
+      "manifest": "07267260909002",
+      "numeriai": [
+       "V07267E1000065"
+      ],
+      "data": "2026-09-09 19:58:51"
+     }
+    ],
+    "pastabos": [
+     "09-11 13:14 Dropship sargas: tiekėjui perduota 2026-09-10 12:47:57 (daugiau nei 24 val.), užsakymas vis dar vykdomas. Įkelta į „Klausimus\" — patikrink p",
+     "09-10 12:47 Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt, terra@petshop.lt",
+     "09-09 19:58 Siuntos numeriai išsaugoti (VF): V07267E1000065",
+     "09-09 19:58 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-09 19:34 Darbalaukis: „Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg“ kelias Iš AV → VF siunčia klientui (Rai). ",
+     "09-09 18:49 Paysera: Naujo užsakymo kūrimo būsena"
+    ]
    },
-   "status": "pending",
-   "signup": "pending",
-   "auth": "ne"
-  }
+   {
+    "id": "35881",
+    "nr": "1001",
+    "status": "processing",
+    "kandidatas": true,
+    "_ps_siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260909002\",\"numeriai\":[\"V07267E1000066\"],\"data\":\"2026-09-09 19:59:56\"}}",
+    "_ps_venipak_sekimas": "{\"V07267E1000066\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-09 19:59:56\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tikr\":\"2026-09-09 20:07:19\"}}",
+    "meta_raktai": [
+     {
+      "meta_key": "_ps_dropship_sent",
+      "v": "2026-09-10 12:47:57"
+     },
+     {
+      "meta_key": "_ps_dropship_sent_src",
+      "v": "{\"vf\":\"2026-09-10 12:47:57\"}"
+     },
+     {
+      "meta_key": "_ps_dropship_to",
+      "v": "vf"
+     },
+     {
+      "meta_key": "_ps_refill_tracked",
+      "v": "yes"
+     },
+     {
+      "meta_key": "_ps_siuntos",
+      "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260909002\",\"numeriai\":[\"V07267E1000066\"],\"data\":\"2026-09-09 19:59:"
+     },
+     {
+      "meta_key": "_ps_venipak_sekimas",
+      "v": "{\"V07267E1000066\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-09 19:59:56\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tik"
+     },
+     {
+      "meta_key": "venipak_shipping_order_data",
+      "v": "{\"manifest\":\"07267260909002\",\"pack_numbers\":[\"V07267E1000066\"],\"weight\":11.619999999999997,\"products_count\":7,\"status\":\""
+     }
+    ],
+    "reg": [
+     {
+      "sandelis": "vf",
+      "kodas": "002",
+      "manifest": "07267260909002",
+      "numeriai": [
+       "V07267E1000066"
+      ],
+      "data": "2026-09-09 19:59:56"
+     }
+    ],
+    "pastabos": [
+     "09-11 13:14 Dropship sargas: tiekėjui perduota 2026-09-10 12:47:57 (daugiau nei 24 val.), užsakymas vis dar vykdomas. Įkelta į „Klausimus\" — patikrink p",
+     "09-10 12:47 Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt, terra@petshop.lt",
+     "09-09 20:01 Darbalaukis: PVM sąskaitos AVPN011003 PDF sugeneruotas iš naujo (Inga).",
+     "09-09 19:59 Siuntos numeriai išsaugoti (VF): V07267E1000066",
+     "09-09 19:59 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-09 19:59 Paysera: Naujo užsakymo kūrimo būsena"
+    ]
+   },
+   {
+    "id": "35887",
+    "nr": "1007",
+    "status": "processing",
+    "kandidatas": true,
+    "_ps_siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260911002\",\"numeriai\":[\"V07267E1000079\"],\"data\":\"2026-09-11 12:47:49\"}}",
+    "_ps_venipak_sekimas": "{\"V07267E1000079\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-11 12:47:49\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tikr\":\"2026-09-11 13:06:46\"}}",
+    "meta_raktai": [
+     {
+      "meta_key": "_ps_dropship_sent",
+      "v": "2026-09-11 12:48:56"
+     },
+     {
+      "meta_key": "_ps_dropship_sent_src",
+      "v": "{\"vf\":\"2026-09-11 12:48:56\"}"
+     },
+     {
+      "meta_key": "_ps_dropship_to",
+      "v": "vf"
+     },
+     {
+      "meta_key": "_ps_siuntos",
+      "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260911002\",\"numeriai\":[\"V07267E1000079\"],\"data\":\"2026-09-11 12:47:"
+     },
+     {
+      "meta_key": "_ps_venipak_sekimas",
+      "v": "{\"V07267E1000079\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-11 12:47:49\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tik"
+     },
+     {
+      "meta_key": "venipak_pickup_point",
+      "v": "3578"
+     },
+     {
+      "meta_key": "venipak_pickup_point_data",
+      "v": "{\"id\":3578,\"code\":\"300906055\",\"name\":\"Venipak locker, \\u0160ILAS Venipak pa\\u0161tomatas\",\"display_name\":\"Karm\\u0117lavo"
+     },
+     {
+      "meta_key": "venipak_shipping_order_data",
+      "v": "{\"manifest\":\"07267260911002\",\"pack_numbers\":[\"V07267E1000079\"],\"weight\":0.1,\"products_count\":5,\"status\":\"sent\",\"error_me"
+     }
+    ],
+    "reg": [
+     {
+      "sandelis": "vf",
+      "kodas": "002",
+      "manifest": "07267260911002",
+      "numeriai": [
+       "V07267E1000079"
+      ],
+      "data": "2026-09-11 12:47:49"
+     }
+    ],
+    "pastabos": [
+     "09-11 12:48 Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarmas.lt, terra@petshop.lt",
+     "09-11 12:47 Siuntos numeriai išsaugoti (VF): V07267E1000079",
+     "09-11 12:47 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-10 19:13 Darbalaukis: PVM sąskaitos AVPN011007 PDF sugeneruotas iš naujo (Inga).",
+     "09-10 16:29 Paysera: Naujo užsakymo kūrimo būsena",
+     "09-10 16:29 Email \"Užsakymas vykdomas\" sent."
+    ]
+   },
+   {
+    "id": "35893",
+    "nr": "1013",
+    "status": "processing",
+    "kandidatas": true,
+    "_ps_siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260911002\",\"numeriai\":[\"V07267E1000080\"],\"data\":\"2026-09-11 12:47:49\"}}",
+    "_ps_venipak_sekimas": "{\"V07267E1000080\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-11 12:47:49\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tikr\":\"2026-09-11 13:06:46\"}}",
+    "meta_raktai": [
+     {
+      "meta_key": "_ps_dropship_sent",
+      "v": "2026-09-11 12:48:56"
+     },
+     {
+      "meta_key": "_ps_dropship_sent_src",
+      "v": "{\"vf\":\"2026-09-11 12:48:56\"}"
+     },
+     {
+      "meta_key": "_ps_dropship_to",
+      "v": "vf"
+     },
+     {
+      "meta_key": "_ps_refill_tracked",
+      "v": "yes"
+     },
+     {
+      "meta_key": "_ps_siuntos",
+      "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260911002\",\"numeriai\":[\"V07267E1000080\"],\"data\":\"2026-09-11 12:47:"
+     },
+     {
+      "meta_key": "_ps_venipak_sekimas",
+      "v": "{\"V07267E1000080\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-11 12:47:49\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tik"
+     },
+     {
+      "meta_key": "venipak_pickup_point",
+      "v": "3489"
+     },
+     {
+      "meta_key": "venipak_pickup_point_data",
+      "v": "{\"id\":3489,\"code\":\"300906055\",\"name\":\"Venipak locker, RIMI Piktmi\\u0161kio Venipak pa\\u0161tomatas\",\"display_name\":\"\\u01"
+     },
+     {
+      "meta_key": "venipak_shipping_order_data",
+      "v": "{\"manifest\":\"07267260911002\",\"pack_numbers\":[\"V07267E1000080\"],\"weight\":12.5,\"products_count\":1,\"status\":\"sent\",\"error_m"
+     }
+    ],
+    "reg": [
+     {
+      "sandelis": "vf",
+      "kodas": "002",
+      "manifest": "07267260911002",
+      "numeriai": [
+       "V07267E1000080"
+      ],
+      "data": "2026-09-11 12:47:49"
+     }
+    ],
+    "pastabos": [
+     "09-11 12:48 Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarmas.lt, terra@petshop.lt",
+     "09-11 12:47 Siuntos numeriai išsaugoti (VF): V07267E1000080",
+     "09-11 12:47 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-11 08:22 Darbalaukis: PVM sąskaitos AVPN011013 PDF sugeneruotas iš naujo (Inga).",
+     "09-11 08:22 Darbalaukis: „Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria virškinimo sistema“ kelias Iš AV → VF siunčia klientui (Inga). Lik",
+     "09-10 21:23 Paysera: Naujo užsakymo kūrimo būsena"
+    ]
+   },
+   {
+    "id": "35894",
+    "nr": "1014",
+    "status": "processing",
+    "kandidatas": true,
+    "_ps_siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260911002\",\"numeriai\":[\"V07267E1000081\"],\"data\":\"2026-09-11 12:47:49\"}}",
+    "_ps_venipak_sekimas": "{\"V07267E1000081\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-11 12:47:49\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tikr\":\"2026-09-11 13:06:46\"}}",
+    "meta_raktai": [
+     {
+      "meta_key": "_ps_dropship_sent",
+      "v": "2026-09-11 12:48:56"
+     },
+     {
+      "meta_key": "_ps_dropship_sent_src",
+      "v": "{\"vf\":\"2026-09-11 12:48:56\"}"
+     },
+     {
+      "meta_key": "_ps_dropship_to",
+      "v": "vf"
+     },
+     {
+      "meta_key": "_ps_refill_tracked",
+      "v": "yes"
+     },
+     {
+      "meta_key": "_ps_siuntos",
+      "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260911002\",\"numeriai\":[\"V07267E1000081\"],\"data\":\"2026-09-11 12:47:"
+     },
+     {
+      "meta_key": "_ps_venipak_sekimas",
+      "v": "{\"V07267E1000081\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-11 12:47:49\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tik"
+     },
+     {
+      "meta_key": "venipak_pickup_point",
+      "v": "3694"
+     },
+     {
+      "meta_key": "venipak_pickup_point_data",
+      "v": "{\"id\":3694,\"code\":\"300906055\",\"name\":\"Venipak locker, MAXIMA Venipak pa\\u0161tomatas\",\"display_name\":\"Alytaus MAXIMA Nau"
+     },
+     {
+      "meta_key": "venipak_shipping_order_data",
+      "v": "{\"manifest\":\"07267260911002\",\"pack_numbers\":[\"V07267E1000081\"],\"weight\":2,\"products_count\":1,\"status\":\"sent\",\"error_mess"
+     }
+    ],
+    "reg": [
+     {
+      "sandelis": "vf",
+      "kodas": "002",
+      "manifest": "07267260911002",
+      "numeriai": [
+       "V07267E1000081"
+      ],
+      "data": "2026-09-11 12:47:49"
+     }
+    ],
+    "pastabos": [
+     "09-11 12:48 Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarmas.lt, terra@petshop.lt",
+     "09-11 12:47 Siuntos numeriai išsaugoti (VF): V07267E1000081",
+     "09-11 12:47 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-11 08:22 Darbalaukis: PVM sąskaitos AVPN011014 PDF sugeneruotas iš naujo (Inga).",
+     "09-11 08:21 Darbalaukis: „Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg“ kelias Iš AV → VF siunčia klientui (Inga).",
+     "09-11 06:14 Paysera: Naujo užsakymo kūrimo būsena"
+    ]
+   },
+   {
+    "id": "35903",
+    "nr": "1017",
+    "status": "processing",
+    "kandidatas": true,
+    "_ps_siuntos": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260911002\",\"numeriai\":[\"V07267E1000082\"],\"data\":\"2026-09-11 12:47:49\"}}",
+    "_ps_venipak_sekimas": "{\"V07267E1000082\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-11 12:47:49\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tikr\":\"2026-09-11 13:06:45\"}}",
+    "meta_raktai": [
+     {
+      "meta_key": "_ps_dropship_sent",
+      "v": "2026-09-11 12:48:56"
+     },
+     {
+      "meta_key": "_ps_dropship_sent_src",
+      "v": "{\"vf\":\"2026-09-11 12:48:56\"}"
+     },
+     {
+      "meta_key": "_ps_dropship_to",
+      "v": "vf"
+     },
+     {
+      "meta_key": "_ps_refill_tracked",
+      "v": "yes"
+     },
+     {
+      "meta_key": "_ps_siuntos",
+      "v": "{\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267260911002\",\"numeriai\":[\"V07267E1000082\"],\"data\":\"2026-09-11 12:47:"
+     },
+     {
+      "meta_key": "_ps_venipak_sekimas",
+      "v": "{\"V07267E1000082\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-11 12:47:49\",\"v\":\"\",\"n\":1,\"dalis\":\"vf\",\"tik"
+     },
+     {
+      "meta_key": "venipak_pickup_point",
+      "v": "3607"
+     },
+     {
+      "meta_key": "venipak_pickup_point_data",
+      "v": "{\"id\":3607,\"code\":\"300906055\",\"name\":\"Venipak locker, IKI Vai\\u0161vydava Venipak pa\\u0161tomatas\",\"display_name\":\"Kauno"
+     },
+     {
+      "meta_key": "venipak_shipping_order_data",
+      "v": "{\"manifest\":\"07267260911002\",\"pack_numbers\":[\"V07267E1000082\"],\"weight\":7,\"products_count\":1,\"status\":\"sent\",\"error_mess"
+     }
+    ],
+    "reg": [
+     {
+      "sandelis": "vf",
+      "kodas": "002",
+      "manifest": "07267260911002",
+      "numeriai": [
+       "V07267E1000082"
+      ],
+      "data": "2026-09-11 12:47:49"
+     }
+    ],
+    "pastabos": [
+     "09-11 12:48 Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarmas.lt, terra@petshop.lt",
+     "09-11 12:47 Siuntos numeriai išsaugoti (VF): V07267E1000082",
+     "09-11 12:47 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-11 12:17 Darbalaukis: PVM sąskaitos AVPN011017 PDF sugeneruotas iš naujo (Inga).",
+     "09-11 12:17 Darbalaukis: „Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg“ kelias Iš AV → VF siunčia klientui (Inga).",
+     "09-11 12:16 Paysera: Naujo užsakymo kūrimo būsena"
+    ]
+   }
+  ],
+  "api_test": {
+   "code": 200,
+   "body": "[{\"shipment_id\":107992587,\"pack_no\":\"V07267E1000065\",\"event\":\"Shipment created\",\"pack_status\":0,\"pack_status_text\":\"At sender\",\"location\":{\"place\":null,\"address\":null,\"city\":null,\"lat\":null,\"lng\":null},\"date\":\"2026-09-09 19:58:51\",\"date_iso\":\"2026-09-09T19:58:51+03:00\"}]"
+  },
+  "ivykiai": [
+   {
+    "uzsakymas": "35901",
+    "veiksmas": "issiusta",
+    "rezultatas": "ok",
+    "p": null,
+    "laikas": "2026-09-11 13:06:48"
+   },
+   {
+    "uzsakymas": "35883",
+    "veiksmas": "issiusta",
+    "rezultatas": "ok",
+    "p": null,
+    "laikas": "2026-09-11 08:07:26"
+   },
+   {
+    "uzsakymas": "35888",
+    "veiksmas": "issiusta",
+    "rezultatas": "ok",
+    "p": null,
+    "laikas": "2026-09-11 08:07:26"
+   },
+   {
+    "uzsakymas": "35891",
+    "veiksmas": "issiusta",
+    "rezultatas": "ok",
+    "p": null,
+    "laikas": "2026-09-11 08:07:25"
+   },
+   {
+    "uzsakymas": "35892",
+    "veiksmas": "issiusta",
+    "rezultatas": "ok",
+    "p": null,
+    "laikas": "2026-09-11 08:07:24"
+   },
+   {
+    "uzsakymas": "35863",
+    "veiksmas": "issiusta_dalis",
+    "rezultatas": "ok",
+    "p": null,
+    "laikas": "2026-09-08 07:14:54"
+   },
+   {
+    "uzsakymas": "35862",
+    "veiksmas": "issiusta",
+    "rezultatas": "ok",
+    "p": null,
+    "laikas": "2026-09-08 06:53:25"
+   },
+   {
+    "uzsakymas": "35862",
+    "veiksmas": "issiusta",
+    "rezultatas": "ok",
+    "p": null,
+    "laikas": "2026-09-08 06:35:25"
+   }
+  ]
  }
 }
