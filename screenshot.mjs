@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjcxIG1jIG5vb3AgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKGlzc2V0KCRfR0VUWydwc19zMTY3MW0nXSkpeyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKGFycmF5KCd2Jz0+J1MxNjcxbWMnLCdvayc9PjEpKTsgZXhpdDsgfSB9KTsK';
-const VER='dep-162158';
+const VER='dep-162331';
 const GKEY='ps_s1671m';
 const PHASES=["M"];
-const OUT='analize/s1671_mc3.json';
+const OUT='analize/s1671_mc4.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -42,14 +42,14 @@ try{
     const sig=crypto.createSign('RSA-SHA256').update(hdr+'.'+clm).sign(sa.private_key,'base64url');
     const tr=await fetch('https://oauth2.googleapis.com/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion='+hdr+'.'+clm+'.'+sig});
     const tj=await tr.json(); out.mc={sa:sa.client_email,token:tr.status};
-    if(tj.access_token){ const H={Authorization:'Bearer '+tj.access_token,'Content-Type':'application/json'}; const base='https://merchantapi.googleapis.com/accounts/v1beta/accounts/5321054797/dataSources';
-      const l=await fetch(base,{headers:H}); const lj=await l.json(); out.mc.list={status:l.status,items:(lj.dataSources||[]).map(d=>({name:d.name,dn:d.displayName,lang:d.primaryProductDataSource&&d.primaryProductDataSource.contentLanguage,label:d.primaryProductDataSource&&d.primaryProductDataSource.feedLabel,countries:d.primaryProductDataSource&&d.primaryProductDataSource.countries,uri:d.fileInput&&d.fileInput.fetchSettings&&d.fileInput.fetchSettings.fetchUri}))};
+    if(tj.access_token){ const H={Authorization:'Bearer '+tj.access_token,'Content-Type':'application/json'}; const base='https://merchantapi.googleapis.com/datasources/v1beta/accounts/5321054797/dataSources';
+      const l=await fetch(base,{headers:H}); const lt=await l.text(); let lj={}; try{ lj=JSON.parse(lt); }catch(e){ out.mc.list_raw={status:l.status,body:lt.slice(0,300)}; } out.mc.list={status:l.status,items:(lj.dataSources||[]).map(d=>({name:d.name,dn:d.displayName,lang:d.primaryProductDataSource&&d.primaryProductDataSource.contentLanguage,label:d.primaryProductDataSource&&d.primaryProductDataSource.feedLabel,countries:d.primaryProductDataSource&&d.primaryProductDataSource.countries,uri:d.fileInput&&d.fileInput.fetchSettings&&d.fileInput.fetchSettings.fetchUri}))};
       if(lj.error) out.mc.list_err=JSON.stringify(lj.error).slice(0,400);
       const yra=(lj.dataSources||[]).find(d=>d.primaryProductDataSource&&d.primaryProductDataSource.contentLanguage==='lt');
       if(!yra && process.env.MC_CREATE==='1'){
         const body={displayName:'petshop.lt Google feed LT',primaryProductDataSource:{contentLanguage:'lt',feedLabel:'PETSHOP_LT',countries:['LT'],channel:'ONLINE_PRODUCTS'},fileInput:{fetchSettings:{enabled:true,timeOfDay:{hours:3},timeZone:'Europe/Vilnius',frequency:'FREQUENCY_DAILY',fetchUri:'https://petshop.lt/feed/google/'}}};
         const c=await fetch(base,{method:'POST',headers:H,body:JSON.stringify(body)}); const cj=await c.json(); out.mc.create={status:c.status,name:cj.name,err:cj.error?JSON.stringify(cj.error).slice(0,500):null};
-        if(cj.name){ const f=await fetch('https://merchantapi.googleapis.com/accounts/v1beta/'+cj.name+':fetch',{method:'POST',headers:H,body:'{}'}); out.mc.fetch={status:f.status,body:(await f.text()).slice(0,300)}; }
+        if(cj.name){ const f=await fetch('https://merchantapi.googleapis.com/datasources/v1beta/'+cj.name+':fetch',{method:'POST',headers:H,body:'{}'}); out.mc.fetch={status:f.status,body:(await f.text()).slice(0,300)}; }
       }
     } else out.mc.token_body=JSON.stringify(tj).slice(0,300);
   }catch(e){ out.mc_klaida=String(e).slice(0,400); } }
