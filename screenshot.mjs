@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjcyIG1jIG5vb3AgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKGlzc2V0KCRfR0VUWydwc19zMTY3Mm0nXSkpeyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKGFycmF5KCd2Jz0+J1MxNjcybWMnLCdvayc9PjEpKTsgZXhpdDsgfSB9KTsK';
-const VER='dep-172125';
+const VER='dep-172254';
 const GKEY='ps_s1672m';
 const PHASES=["GO"];
-const OUT='analize/s1672_mc.json';
+const OUT='analize/s1672_mc2.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -46,7 +46,7 @@ try{
       const l=await fetch('https://merchantapi.googleapis.com/datasources/v1/accounts/5321054797/dataSources',{headers:H}); const lj=await l.json();
       out.mc.sources={status:l.status,items:(lj.dataSources||[]).map(d=>({name:d.name,dn:d.displayName,lang:d.primaryProductDataSource&&d.primaryProductDataSource.contentLanguage,label:d.primaryProductDataSource&&d.primaryProductDataSource.feedLabel,uri:d.fileInput&&d.fileInput.fetchSettings&&d.fileInput.fetchSettings.fetchUri}))};
       let pt='',n=0,st={},iss={},pages=0,samples={},noStatus=0;
-      do{ const r=await fetch('https://merchantapi.googleapis.com/products/v1beta/accounts/5321054797/products?pageSize=250'+(pt?'&pageToken='+pt:''),{headers:H}); const j=await r.json(); pages++;
+      do{ const r=await fetch('https://merchantapi.googleapis.com/products/v1/accounts/5321054797/products?pageSize=250'+(pt?'&pageToken='+pt:''),{headers:H}); const j=await r.json(); pages++;
         if(j.error){ out.mc.prod_err=JSON.stringify(j.error).slice(0,400); break; }
         for(const p of (j.products||[])){ n++; const ps=p.productStatus; if(!ps){noStatus++;continue;}
           for(const d of (ps.destinationStatuses||[])){ const k=d.reportingContext||'?'; st[k]=st[k]||{ok:0,pend:0,dis:0}; if((d.approvedCountries||[]).length) st[k].ok++; if((d.pendingCountries||[]).length) st[k].pend++; if((d.disapprovedCountries||[]).length) st[k].dis++; }
