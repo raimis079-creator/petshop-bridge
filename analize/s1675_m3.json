@@ -1,0 +1,31 @@
+{
+ "v": "dep-223715",
+ "kurimas": 200,
+ "sid": 5620,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1675 m",
+  "temp_istrinta": 1,
+  "l": {
+   "42": "/* ------------------------------------------------------------------ */",
+   "43": "/* Detektorius                                                        */",
+   "44": "/* ------------------------------------------------------------------ */",
+   "46": "/**",
+   "47": "* @param bool $dry_run Tik parodo, ka darytu.",
+   "48": "*/",
+   "49": "public static function detect( $dry_run = false ) {",
+   "50": "global $wpdb;",
+   "51": "$T = Petshop_Cart_Tracker::table();",
+   "53": "$now       = current_time( 'mysql', true );",
+   "54": "$cutoff    = gmdate( 'Y-m-d H:i:s', time() - self::ABANDON_AFTER );",
+   "55": "$floor     = gmdate( 'Y-m-d H:i:s', time() - ( self::MAX_AGE_DAYS * DAY_IN_SECONDS ) );",
+   "57": "$out = array(",
+   "58": "'dry_run'   => (bool) $dry_run,",
+   "59": "'cutoff'    => $cutoff,",
+   "60": "'floor'     => $floor,"
+  }
+ }
+}
