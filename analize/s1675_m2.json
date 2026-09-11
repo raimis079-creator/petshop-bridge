@@ -1,0 +1,39 @@
+{
+ "v": "dep-223556",
+ "kurimas": 200,
+ "sid": 5619,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1675 m",
+  "temp_istrinta": 1,
+  "l": {
+   "240": "*",
+   "241": "* SALYGOS (visos privalomos):",
+   "242": "*   stage1 job'as yra ir jo status = 'sent'",
+   "243": "*   nuo stage1 issiuntimo praejo >= 24 val.",
+   "244": "*   stage2 job'o DAR NERA",
+   "245": "*   krepselio status vis dar 'abandoned' (ne converted / expired)",
+   "246": "*   converted_order_id NERA",
+   "247": "*   bent viena preke vis dar realiai perkama",
+   "248": "*",
+   "249": "* consent ir marketing suppression tikrina DISPATCH (kaip ir stage1).",
+   "250": "*",
+   "251": "* TOKENAS: jei stage1 recovery tokenas VIS DAR GALIOJA — naudojam TA PATI.",
+   "252": "* Tai tas pats krepselis ir tas pats veiksmas; antras tokenas butu",
+   "253": "* antra galiojanti nuoroda be reikalo.",
+   "254": "*/",
+   "255": "public static function detect_stage2( $dry_run = false ) {",
+   "256": "global $wpdb;",
+   "257": "$T  = Petshop_Cart_Tracker::table();",
+   "258": "$EJ = $wpdb->prefix . 'ps_email_jobs';",
+   "260": "$cutoff = gmdate( 'Y-m-d H:i:s', time() - self::STAGE2_AFTER );",
+   "261": "$out = array(",
+   "262": "'dry_run' => (bool) $dry_run, 'cutoff' => $cutoff,",
+   "263": "'candidates' => 0, 'queued' => 0, 'skipped' => array(), 'details' => array(),",
+   "264": ");"
+  }
+ }
+}
