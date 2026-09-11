@@ -1,0 +1,44 @@
+{
+ "v": "dep-162504",
+ "kurimas": 200,
+ "sid": 5561,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "mc_raw": {
+  "len": 2389,
+  "head": "\"type\": \"ser"
+ },
+ "mc": {
+  "sa": "claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com",
+  "token": 200,
+  "list": {
+   "status": 200,
+   "items": [
+    {
+     "id": "408479230",
+     "name": "PRODUCTS SOURCE 1",
+     "targets": [
+      {
+       "feedLabel": "PETSHOP_LT",
+       "targetCountries": [
+        "LT"
+       ],
+       "language": "en",
+       "includedDestinations": [
+        "SurfacesAcrossGoogle",
+        "Shopping"
+       ]
+      }
+     ],
+     "url": "https://petshop.lt/feed/google/"
+    }
+   ]
+  }
+ },
+ "M": {
+  "v": "S1671mc",
+  "ok": 1
+ }
+}
