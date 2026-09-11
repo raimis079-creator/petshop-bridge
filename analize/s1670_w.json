@@ -1,0 +1,59 @@
+{
+ "v": "dep-091736",
+ "kurimas": 200,
+ "sid": 5542,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1670 w",
+  "faze": "D",
+  "pries": "f6a12b4e84beff7949d4bc8d0c2385a9",
+  "po": "2ee69c4eb0102243f8a1b8c8df25a70f",
+  "ping": 200,
+  "ping_admin": 302,
+  "rez": "OK"
+ },
+ "T": {
+  "v": "S1670 w",
+  "faze": "T",
+  "md5": "2ee69c4eb0102243f8a1b8c8df25a70f",
+  "red": {
+   "35872": {
+    "tipas": "tik_el",
+    "el": "nastia96@inbox.lt",
+    "laukai": [
+     "el"
+    ]
+   },
+   "35886": {
+    "tipas": "tik_el",
+    "el": "jolanta.ada@gmail.com",
+    "laukai": [
+     "el"
+    ]
+   }
+  },
+  "t_blogas": {
+   "ok": "dl_klaida",
+   "zinute": "35872|klaida: REDIR:https://petshop.lt/wp-admin/admin.php?page=petshop-darbalaukis&atidaryti=35872&pd_ok=dl_klaida&pd_nr=35872|neteisingas el. pašto adresas: „klientas@gnail“",
+   "el_nepakito": true
+  },
+  "t_tuscias": {
+   "ok": "dl_klaida",
+   "zinute": "35872|klaida: REDIR:https://petshop.lt/wp-admin/admin.php?page=petshop-darbalaukis&atidaryti=35872&pd_ok=dl_klaida&pd_nr=35872|el. paštas negali būti tuščias",
+   "el_nepakito": true
+  },
+  "t_tas_pats": {
+   "ok": "dl_klaida",
+   "zinute": "35872|klaida: REDIR:https://petshop.lt/wp-admin/admin.php?page=petshop-darbalaukis&atidaryti=35872&pd_ok=dl_info&pd_nr=35872|nieko nepakeista",
+   "el_nepakito": true
+  },
+  "t_su_tarpu": {
+   "ok": "dl_klaida",
+   "zinute": "35872|klaida: REDIR:https://petshop.lt/wp-admin/admin.php?page=petshop-darbalaukis&atidaryti=35872&pd_ok=dl_klaida&pd_nr=35872|neteisingas el. pašto adresas: „a b@gmail.com“",
+   "el_nepakito": true
+  }
+ }
+}
