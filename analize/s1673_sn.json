@@ -1,0 +1,118 @@
+{
+ "v": "dep-202745",
+ "kurimas": 200,
+ "sid": 5590,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "gtm": {
+  "token": 200,
+  "accounts": [
+   "accounts/6071827163"
+  ],
+  "container": "accounts/6071827163/containers/101921278",
+  "ws": "accounts/6071827163/containers/101921278/workspaces/9",
+  "tag30": {
+   "st": 200,
+   "consent": {
+    "consentStatus": "notNeeded"
+   },
+   "param": "[{\"type\":\"boolean\",\"key\":\"enableConversionLinker\",\"value\":\"true\"},{\"type\":\"template\",\"key\":\"conversionValue\",\"value\":\"{{DLV — value}}\"},{\"type\":\"template\",\"key\":\"orderId\",\"value\":\"{{DLV — transaction_id}}\"},{\"type\":\"template\",\"key\":\"conversionId\",\"value\":\"{{Const — Ads Conversion ID}}\"},{\"type\":\"template\",\"key\":\"currencyCode\",\"value\":\"{{DLV — currency}}\"},{\"type\":\"template\",\"key\":\"conversionLabel\",\"value\":\"{{Const — Ads Label}}\"}]",
+   "err": null
+  },
+  "status": {
+   "st": 200,
+   "changes": [
+    "updated:01 — Conversion Linker",
+    "updated:03 — Google Ads Conversion (Purchase)",
+    "added:DLV — user_data"
+   ]
+  }
+ },
+ "GO": {
+  "snippets": [
+   {
+    "id": "614",
+    "name": "Petshop DataLayer v1.1 (GA4 ecommerce)",
+    "active": "1",
+    "scope": "front-end",
+    "len": "15512"
+   },
+   {
+    "id": "615",
+    "name": "Petshop GTM Snippet v2.0 (GTM-MF3GZGT, atidėtas)",
+    "active": "1",
+    "scope": "front-end",
+    "len": "2170"
+   },
+   {
+    "id": "619",
+    "name": "Petshop Consent Bridge v1.2 (Complianz -> GTM)",
+    "active": "1",
+    "scope": "front-end",
+    "len": "4712"
+   },
+   {
+    "id": "5424",
+    "name": "TEMP PS dep-071452",
+    "active": "0",
+    "scope": "global",
+    "len": "2438"
+   },
+   {
+    "id": "5584",
+    "name": "TEMP PS dep-200524",
+    "active": "0",
+    "scope": "global",
+    "len": "2721"
+   },
+   {
+    "id": "5589",
+    "name": "TEMP PS dep-202609",
+    "active": "0",
+    "scope": "global",
+    "len": "1248"
+   },
+   {
+    "id": "5590",
+    "name": "TEMP PS dep-202745",
+    "active": "1",
+    "scope": "global",
+    "len": "946"
+   }
+  ],
+  "s614": [
+   " * Isveda dataLayer.push. Pries kiekviena ecommerce ivyki isvalo ecommerce objekta",
+   " echo \"window.dataLayer.push({ ecommerce: null });\\n\";",
+   " echo \"window.dataLayer.push(\" . $json . \");\\n\";",
+   " window.dataLayer.push({ ecommerce: null });",
+   " window.dataLayer.push({",
+   " 'transaction_id' => (string) $order->get_order_number(),"
+  ],
+  "s615": [
+   "pt data-petshop-gtm-loader=\\\"2\\\">(function(w,d,i){w.dataLayer=w.dataLayer||[];w.dataLayer.push({'gtm.start':new Date().getTime(),event:'gtm.js'});var done=false;function go(){if(done)return;done=true;ev.forEach(fun"
+  ],
+  "s619": [
+   " * cmplz marketing -> ad_storage, ad_user_data, ad_personalization",
+   " function gtag() { window.dataLayer.push(arguments); }",
+   " 'ad_user_data': 'denied',",
+   " 'ad_user_data': mkt ? 'granted' : 'denied',",
+   " window.dataLayer.push({",
+   " window.dataLayer.push({ ecommerce: null });"
+  ],
+  "s5424": [],
+  "s5584": [
+   "_filter\\([^,]+|measurement_id|api_secret|purchase|conversion|awct|consent|gclid|user_data|sha256)/i',$c,$m); $o['ga4_grep']=array_count_values($m[0]);"
+  ],
+  "s5589": [
+   " $c=@file_get_contents($f->getPathname()); if($c===false||strpos($c,'transaction_id')===false||strpos($c,'dataLayer')===false) continue;",
+   " preg_match_all('/.{0,100}transaction_id.{0,100}/',$c,$m); $o[str_replace(WP_CONTENT_DIR,'',$f->getPathname())]=array_slice(array_map(function($x){return preg_r"
+  ],
+  "s5590": [
+   "me,active,scope,LENGTH(code) len FROM {$wpdb->prefix}snippets WHERE code LIKE '%transaction_id%' OR code LIKE '%GTM-MF3GZGT%' OR code LIKE '%dataLayer%'\",ARRAY_A);",
+   " FROM {$wpdb->prefix}snippets WHERE id=%d\",$s['id'])); preg_match_all('/.{0,80}(transaction_id|dataLayer\\.push|user_data|email).{0,120}/',$c,$m); $o['s'.$s['id']]=array_slice(array_map(function($x){return preg_repl"
+  ],
+  "opt": []
+ }
+}
