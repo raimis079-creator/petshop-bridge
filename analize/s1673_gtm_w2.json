@@ -1,0 +1,36 @@
+{
+ "v": "dep-202609",
+ "kurimas": 200,
+ "sid": 5589,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "gtm": {
+  "token": 200,
+  "accounts": [
+   "accounts/6071827163"
+  ],
+  "container": "accounts/6071827163/containers/101921278",
+  "ws": "accounts/6071827163/containers/101921278/workspaces/9",
+  "tag30": {
+   "st": 200,
+   "consent": {
+    "consentStatus": "notNeeded"
+   },
+   "param": "[{\"type\":\"boolean\",\"key\":\"enableConversionLinker\",\"value\":\"true\"},{\"type\":\"template\",\"key\":\"conversionValue\",\"value\":\"{{DLV — value}}\"},{\"type\":\"template\",\"key\":\"orderId\",\"value\":\"{{DLV — transaction_id}}\"},{\"type\":\"template\",\"key\":\"conversionId\",\"value\":\"{{Const — Ads Conversion ID}}\"},{\"type\":\"template\",\"key\":\"currencyCode\",\"value\":\"{{DLV — currency}}\"},{\"type\":\"template\",\"key\":\"conversionLabel\",\"value\":\"{{Const — Ads Label}}\"}]",
+   "err": null
+  },
+  "status": {
+   "st": 200,
+   "changes": [
+    "updated:01 — Conversion Linker",
+    "updated:03 — Google Ads Conversion (Purchase)",
+    "added:DLV — user_data"
+   ]
+  }
+ },
+ "GO": {
+  "_active": []
+ }
+}
