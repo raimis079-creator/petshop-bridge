@@ -1,0 +1,44 @@
+{
+ "v": "dep-085308",
+ "kurimas": 200,
+ "sid": 5539,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1670 t",
+  "dropship": [
+   {
+    "oid": "35881",
+    "d": "2026-09-10 12:47:57",
+    "t": "Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt, terra@petshop.lt",
+    "nr": "1001",
+    "st": "processing"
+   },
+   {
+    "oid": "35880",
+    "d": "2026-09-10 12:47:57",
+    "t": "Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt, terra@petshop.lt",
+    "nr": "1000",
+    "st": "processing"
+   }
+  ],
+  "tiekimas": [],
+  "archyvas_opt": [
+   "ps_laisku_archyvas"
+  ],
+  "kas_naudoja_pastus": {
+   "petshop-av-dropship.php": [
+    "157: const OPT_EMAIL = 'ps_tiekeju_pastai';"
+   ],
+   "petshop-av-tiekimas.php": [
+    "1150: $pastai = (array) get_option( 'ps_tiekeju_pastai', array() );"
+   ],
+   "petshop-darbalaukis.php": [
+    "452: $pastai = (array) get_option( 'ps_tiekeju_pastai', array() ); $kam = trim( ( ! empty( $ln['tiekejui'] ) && ! empty( $pastai[ sanitize_key( $_POST['tiekejas'] ?? '' ) ] ) ? $pastai[ sanitize_key( $_POST['tiekejas'] ?? '' ) ] . '",
+    "3651: $pastai = (array) get_option( 'ps_tiekeju_pastai', array() ); $prist = $tk ? Petshop_AV_Tiekimas::PRISTATYMAI : array();"
+   ]
+  }
+ }
+}
