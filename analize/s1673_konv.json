@@ -1,0 +1,1040 @@
+{
+ "v": "dep-201842",
+ "kurimas": 200,
+ "sid": 5587,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "gtm": {
+  "token": 200,
+  "accounts": [
+   "accounts/6071827163"
+  ],
+  "container": "accounts/6071827163/containers/101921278",
+  "workspace": "accounts/6071827163/containers/101921278/workspaces/8",
+  "live": {
+   "v": "7",
+   "name": "v5 — GA4 Config fire tik po statistics sutikimo",
+   "tags": 13,
+   "triggers": 11,
+   "vars": 12
+  },
+  "tags": [
+   {
+    "id": "15",
+    "name": "00 — Consent Mode v2 Default",
+    "type": "html",
+    "paused": true,
+    "consent": {
+     "consentStatus": "notSet"
+    },
+    "block": [],
+    "param": "[{\"type\":\"template\",\"key\":\"html\",\"value\":\"<script>\\nwindow.dataLayer = window.dataLayer || [];\\nfunction gtag(){dataLayer.push(arguments);}\\ngtag('consent', 'default', {\\n  'ad_storage': 'denied',\\n  'ad_user_data': 'denied',\\n  'ad_personalization': 'denied',\\n  'analytics_storage': 'denied',\\n  'functionality_storage': 'granted',\\n  'personalization_storage': 'granted',\\n  'security_storage': 'granted',\\n  'wait_for_update': 500\\n});\\ngtag('set', 'ads_data_redaction', true);\\ngtag('set', 'url_passthrough', true);\\n</script>\"},{\"type\":\"boolean\",\"key\":\"supportDocumentWrite\",\"value\":\"false\"}]"
+   },
+   {
+    "id": "16",
+    "name": "01 — Conversion Linker",
+    "type": "gclidw",
+    "paused": false,
+    "consent": {
+     "consentStatus": "needed",
+     "consentType": {
+      "type": "list",
+      "list": [
+       {
+        "type": "template",
+        "value": "ad_storage"
+       }
+      ]
+     }
+    },
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "param": "[{\"type\":\"boolean\",\"key\":\"enableCrossDomain\",\"value\":\"false\"}]"
+   },
+   {
+    "id": "24",
+    "name": "02 — GA4 Config",
+    "type": "googtag",
+    "paused": false,
+    "consent": {
+     "consentStatus": "needed",
+     "consentType": {
+      "type": "list",
+      "list": [
+       {
+        "type": "template",
+        "value": "analytics_storage"
+       }
+      ]
+     }
+    },
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "param": "[{\"type\":\"template\",\"key\":\"tagId\",\"value\":\"{{Const — GA4 ID}}\"}]"
+   },
+   {
+    "id": "29",
+    "name": "GA4 — purchase",
+    "type": "gaawe",
+    "paused": false,
+    "consent": {
+     "consentStatus": "needed",
+     "consentType": {
+      "type": "list",
+      "list": [
+       {
+        "type": "template",
+        "value": "analytics_storage"
+       }
+      ]
+     }
+    },
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "param": "[{\"type\":\"boolean\",\"key\":\"sendEcommerceData\",\"value\":\"true\"},{\"type\":\"template\",\"key\":\"eventName\",\"value\":\"purchase\"},{\"type\":\"template\",\"key\":\"measurementIdOverride\",\"value\":\"{{Const — GA4 ID}}\"}]"
+   },
+   {
+    "id": "30",
+    "name": "03 — Google Ads Conversion (Purchase)",
+    "type": "awct",
+    "paused": false,
+    "consent": {
+     "consentStatus": "needed",
+     "consentType": {
+      "type": "list",
+      "list": [
+       {
+        "type": "template",
+        "value": "ad_storage"
+       },
+       {
+        "type": "template",
+        "value": "ad_user_data"
+       }
+      ]
+     }
+    },
+    "block": [
+     "BLOCK — DEV (pageview)(pageview)",
+     "BLOCK — DEV (visi custom events)(customEvent)"
+    ],
+    "param": "[{\"type\":\"boolean\",\"key\":\"enableConversionLinker\",\"value\":\"true\"},{\"type\":\"template\",\"key\":\"conversionValue\",\"value\":\"{{DLV — value}}\"},{\"type\":\"template\",\"key\":\"orderId\",\"value\":\"{{DLV — transaction_id}}\"},{\"type\":\"template\",\"key\":\"conversionId\",\"value\":\"{{Const — Ads Conversion ID}}\"},{\"type\":\"template\",\"key\":\"currencyCode\",\"value\":\"{{DLV — currency}}\"},{\"type\":\"template\",\"key\":\"conversionLabel\",\"value\":\"{{Const — Ads Label}}\"}]"
+   }
+  ],
+  "vars": [
+   {
+    "name": "Const — Ads Conversion ID",
+    "type": "c",
+    "param": "[{\"type\":\"template\",\"key\":\"value\",\"value\":\"11117260149\"}]"
+   },
+   {
+    "name": "Const — Ads Label",
+    "type": "c",
+    "param": "[{\"type\":\"template\",\"key\":\"value\",\"value\":\"7JbYCNuThZIYEPXaj7Up\"}]"
+   },
+   {
+    "name": "DLV — ecommerce",
+    "type": "v",
+    "param": "[{\"type\":\"integer\",\"key\":\"dataLayerVersion\",\"value\":\"2\"},{\"type\":\"template\",\"key\":\"name\",\"value\":\"ecommerce\"}]"
+   },
+   {
+    "name": "DLV — transaction_id",
+    "type": "v",
+    "param": "[{\"type\":\"integer\",\"key\":\"dataLayerVersion\",\"value\":\"2\"},{\"type\":\"template\",\"key\":\"name\",\"value\":\"ecommerce.transaction_id\"}]"
+   },
+   {
+    "name": "DLV — value",
+    "type": "v",
+    "param": "[{\"type\":\"integer\",\"key\":\"dataLayerVersion\",\"value\":\"2\"},{\"type\":\"template\",\"key\":\"name\",\"value\":\"ecommerce.value\"}]"
+   },
+   {
+    "name": "DLV — user_email_hashed",
+    "type": "v",
+    "param": "[{\"type\":\"integer\",\"key\":\"dataLayerVersion\",\"value\":\"2\"},{\"type\":\"template\",\"key\":\"name\",\"value\":\"user_data.sha256_email_address\"}]"
+   }
+  ],
+  "triggers": [
+   {
+    "name": "BLOCK — DEV (pageview)",
+    "filter": "[{\"type\":\"contains\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{Page Hostname}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"dev.avesa.lt\"}]},{\"type\":\"matchRegex\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{Page URL}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"gtm_test=1\"},{\"type\":\"boolean\",\"key\":\"negate\",\"value\":\"true\"}]}]"
+   },
+   {
+    "name": "BLOCK — DEV (visi custom events)",
+    "filter": "[{\"type\":\"contains\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{Page Hostname}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"dev.avesa.lt\"}]},{\"type\":\"matchRegex\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{Page URL}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"gtm_test=1\"},{\"type\":\"boolean\",\"key\":\"negate\",\"value\":\"true\"}]}]"
+   },
+   {
+    "name": "CE — marketing granted",
+    "filter": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{DLV — cmplz_marketing}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"granted\"}]}]"
+   },
+   {
+    "name": "BLOCK — marketing nesutikta (events)",
+    "filter": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{DLV — cmplz_marketing}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"granted\"},{\"type\":\"boolean\",\"key\":\"negate\",\"value\":\"true\"}]}]"
+   },
+   {
+    "name": "CE — statistics granted",
+    "filter": "[{\"type\":\"equals\",\"parameter\":[{\"type\":\"template\",\"key\":\"arg0\",\"value\":\"{{DLV — cmplz_statistics}}\"},{\"type\":\"template\",\"key\":\"arg1\",\"value\":\"granted\"}]}]"
+   }
+  ]
+ },
+ "GO": {
+  "v": "ADS KONV RECON v1.1",
+  "kada": "2026-09-11T20:18:14.336Z",
+  "klaidos": [],
+  "actions": [
+   {
+    "id": "6480110127",
+    "name": "petshop.lt (web) purchase",
+    "st": "ENABLED",
+    "type": "GOOGLE_ANALYTICS_4_PURCHASE",
+    "origin": "WEBSITE",
+    "cat": "PURCHASE",
+    "primary": false,
+    "inMetric": false,
+    "count": "MANY_PER_CLICK",
+    "label": null
+   },
+   {
+    "id": "6480284123",
+    "name": "Purchase",
+    "st": "ENABLED",
+    "type": "WEBPAGE",
+    "origin": "WEBSITE",
+    "cat": "PURCHASE",
+    "primary": true,
+    "inMetric": true,
+    "count": "MANY_PER_CLICK",
+    "label": [
+     "AW-11117260149/7JbYCNuThZIYEPXaj7Up"
+    ]
+   },
+   {
+    "id": "6491716236",
+    "name": "Add to cart",
+    "st": "ENABLED",
+    "type": "WEBPAGE",
+    "origin": "WEBSITE",
+    "cat": "ADD_TO_CART",
+    "primary": false,
+    "inMetric": false,
+    "count": "MANY_PER_CLICK",
+    "label": [
+     "AW-11117260149/KA2_CIz1vpcYEPXaj7Up"
+    ]
+   },
+   {
+    "id": "6707883090",
+    "name": "petshop.lt (web) Email_click",
+    "st": "ENABLED",
+    "type": "GOOGLE_ANALYTICS_4_CUSTOM",
+    "origin": "WEBSITE",
+    "cat": "CONTACT",
+    "primary": false,
+    "inMetric": false,
+    "count": "MANY_PER_CLICK",
+    "label": null
+   },
+   {
+    "id": "6707886609",
+    "name": "petshop.lt (web) begin_checkout",
+    "st": "ENABLED",
+    "type": "GOOGLE_ANALYTICS_4_CUSTOM",
+    "origin": "WEBSITE",
+    "cat": "BEGIN_CHECKOUT",
+    "primary": false,
+    "inMetric": false,
+    "count": "MANY_PER_CLICK",
+    "label": null
+   },
+   {
+    "id": "6707886636",
+    "name": "petshop.lt (web) add_to_cart",
+    "st": "ENABLED",
+    "type": "GOOGLE_ANALYTICS_4_CUSTOM",
+    "origin": "WEBSITE",
+    "cat": "ADD_TO_CART",
+    "primary": false,
+    "inMetric": false,
+    "count": "MANY_PER_CLICK",
+    "label": null
+   },
+   {
+    "id": "6707906144",
+    "name": "petshop.lt (web) Phone_click",
+    "st": "ENABLED",
+    "type": "GOOGLE_ANALYTICS_4_CUSTOM",
+    "origin": "WEBSITE",
+    "cat": "PHONE_CALL_LEAD",
+    "primary": false,
+    "inMetric": false,
+    "count": "MANY_PER_CLICK",
+    "label": null
+   },
+   {
+    "id": "6844381915",
+    "name": "begin_checkout",
+    "st": "ENABLED",
+    "type": "WEBPAGE",
+    "origin": "WEBSITE",
+    "cat": "BEGIN_CHECKOUT",
+    "primary": false,
+    "inMetric": false,
+    "count": "ONE_PER_CLICK",
+    "label": [
+     "AW-11117260149/K61cCNv1078ZEPXaj7Up"
+    ]
+   }
+  ],
+  "pagal_diena": [
+   {
+    "d": "2026-09-01",
+    "act": "Add to cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 34.89436
+   },
+   {
+    "d": "2026-09-01",
+    "act": "Purchase",
+    "konv": 8.195794,
+    "verte": 401.8604337,
+    "visos": 8.195794
+   },
+   {
+    "d": "2026-09-01",
+    "act": "begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 9.744584
+   },
+   {
+    "d": "2026-09-01",
+    "act": "petshop.lt (web) add_to_cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 33.529844
+   },
+   {
+    "d": "2026-09-01",
+    "act": "petshop.lt (web) begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 14.60962
+   },
+   {
+    "d": "2026-09-01",
+    "act": "petshop.lt (web) purchase",
+    "konv": 0,
+    "verte": 0,
+    "visos": 8.067774
+   },
+   {
+    "d": "2026-09-02",
+    "act": "Add to cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 19.914658
+   },
+   {
+    "d": "2026-09-02",
+    "act": "Purchase",
+    "konv": 2,
+    "verte": 154.56,
+    "visos": 2
+   },
+   {
+    "d": "2026-09-02",
+    "act": "begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 2.910171
+   },
+   {
+    "d": "2026-09-02",
+    "act": "petshop.lt (web) Email_click",
+    "konv": 0,
+    "verte": 0,
+    "visos": 1
+   },
+   {
+    "d": "2026-09-02",
+    "act": "petshop.lt (web) add_to_cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 23.983922
+   },
+   {
+    "d": "2026-09-02",
+    "act": "petshop.lt (web) begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 2
+   },
+   {
+    "d": "2026-09-02",
+    "act": "petshop.lt (web) purchase",
+    "konv": 0,
+    "verte": 0,
+    "visos": 3
+   },
+   {
+    "d": "2026-09-03",
+    "act": "Add to cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 15.982065
+   },
+   {
+    "d": "2026-09-03",
+    "act": "Purchase",
+    "konv": 4.593863,
+    "verte": 126.5510805,
+    "visos": 4.593863
+   },
+   {
+    "d": "2026-09-03",
+    "act": "begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 5.930994
+   },
+   {
+    "d": "2026-09-03",
+    "act": "petshop.lt (web) Email_click",
+    "konv": 0,
+    "verte": 0,
+    "visos": 1
+   },
+   {
+    "d": "2026-09-03",
+    "act": "petshop.lt (web) Phone_click",
+    "konv": 0,
+    "verte": 0,
+    "visos": 3
+   },
+   {
+    "d": "2026-09-03",
+    "act": "petshop.lt (web) add_to_cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 13
+   },
+   {
+    "d": "2026-09-03",
+    "act": "petshop.lt (web) begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 6
+   },
+   {
+    "d": "2026-09-03",
+    "act": "petshop.lt (web) purchase",
+    "konv": 0,
+    "verte": 0,
+    "visos": 4
+   },
+   {
+    "d": "2026-09-04",
+    "act": "Add to cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 41.942363
+   },
+   {
+    "d": "2026-09-04",
+    "act": "Purchase",
+    "konv": 6.988904,
+    "verte": 286.62896336,
+    "visos": 6.988904
+   },
+   {
+    "d": "2026-09-04",
+    "act": "begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 6.993315
+   },
+   {
+    "d": "2026-09-04",
+    "act": "petshop.lt (web) add_to_cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 46
+   },
+   {
+    "d": "2026-09-04",
+    "act": "petshop.lt (web) begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 8
+   },
+   {
+    "d": "2026-09-04",
+    "act": "petshop.lt (web) purchase",
+    "konv": 0,
+    "verte": 0,
+    "visos": 7
+   },
+   {
+    "d": "2026-09-05",
+    "act": "Add to cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 15.984552
+   },
+   {
+    "d": "2026-09-05",
+    "act": "Purchase",
+    "konv": 7,
+    "verte": 270.53,
+    "visos": 7
+   },
+   {
+    "d": "2026-09-05",
+    "act": "begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 7.993315
+   },
+   {
+    "d": "2026-09-05",
+    "act": "petshop.lt (web) add_to_cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 14
+   },
+   {
+    "d": "2026-09-05",
+    "act": "petshop.lt (web) begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 9
+   },
+   {
+    "d": "2026-09-05",
+    "act": "petshop.lt (web) purchase",
+    "konv": 0,
+    "verte": 0,
+    "visos": 7
+   },
+   {
+    "d": "2026-09-06",
+    "act": "Add to cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 37.900731
+   },
+   {
+    "d": "2026-09-06",
+    "act": "Purchase",
+    "konv": 4,
+    "verte": 120.86,
+    "visos": 4
+   },
+   {
+    "d": "2026-09-06",
+    "act": "begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 8.946315
+   },
+   {
+    "d": "2026-09-06",
+    "act": "petshop.lt (web) Phone_click",
+    "konv": 0,
+    "verte": 0,
+    "visos": 1
+   },
+   {
+    "d": "2026-09-06",
+    "act": "petshop.lt (web) add_to_cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 22
+   },
+   {
+    "d": "2026-09-06",
+    "act": "petshop.lt (web) begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 6
+   },
+   {
+    "d": "2026-09-06",
+    "act": "petshop.lt (web) purchase",
+    "konv": 0,
+    "verte": 0,
+    "visos": 3
+   },
+   {
+    "d": "2026-09-07",
+    "act": "Add to cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 35.93268
+   },
+   {
+    "d": "2026-09-07",
+    "act": "Purchase",
+    "konv": 7.082602,
+    "verte": 255.2013741,
+    "visos": 7.082602
+   },
+   {
+    "d": "2026-09-07",
+    "act": "begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 9
+   },
+   {
+    "d": "2026-09-07",
+    "act": "petshop.lt (web) add_to_cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 35.514334
+   },
+   {
+    "d": "2026-09-07",
+    "act": "petshop.lt (web) begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 8.819358
+   },
+   {
+    "d": "2026-09-07",
+    "act": "petshop.lt (web) purchase",
+    "konv": 0,
+    "verte": 0,
+    "visos": 6.610442
+   },
+   {
+    "d": "2026-09-08",
+    "act": "Add to cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 16
+   },
+   {
+    "d": "2026-09-08",
+    "act": "Purchase",
+    "konv": 2,
+    "verte": 153.64,
+    "visos": 2
+   },
+   {
+    "d": "2026-09-08",
+    "act": "begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 2
+   },
+   {
+    "d": "2026-09-08",
+    "act": "petshop.lt (web) add_to_cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 47
+   },
+   {
+    "d": "2026-09-08",
+    "act": "petshop.lt (web) begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 2
+   },
+   {
+    "d": "2026-09-08",
+    "act": "petshop.lt (web) purchase",
+    "konv": 0,
+    "verte": 0,
+    "visos": 2
+   },
+   {
+    "d": "2026-09-10",
+    "act": "Purchase",
+    "konv": 0.917398,
+    "verte": 20.2286259,
+    "visos": 0.917398
+   },
+   {
+    "d": "2026-09-10",
+    "act": "petshop.lt (web) add_to_cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 30
+   },
+   {
+    "d": "2026-09-10",
+    "act": "petshop.lt (web) begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 3.414395
+   },
+   {
+    "d": "2026-09-10",
+    "act": "petshop.lt (web) purchase",
+    "konv": 0,
+    "verte": 0,
+    "visos": 7
+   },
+   {
+    "d": "2026-09-11",
+    "act": "Purchase",
+    "konv": 1,
+    "verte": 19.15,
+    "visos": 1
+   },
+   {
+    "d": "2026-09-11",
+    "act": "petshop.lt (web) add_to_cart",
+    "konv": 0,
+    "verte": 0,
+    "visos": 11
+   },
+   {
+    "d": "2026-09-11",
+    "act": "petshop.lt (web) begin_checkout",
+    "konv": 0,
+    "verte": 0,
+    "visos": 8
+   },
+   {
+    "d": "2026-09-11",
+    "act": "petshop.lt (web) purchase",
+    "konv": 0,
+    "verte": 0,
+    "visos": 3
+   }
+  ],
+  "pagal_kampanija": [
+   {
+    "d": "2026-09-01",
+    "k": "P-max| All LT | Šunų maistas",
+    "st": "ENABLED",
+    "cost": 21.15,
+    "cl": "55",
+    "konv": 4.195794,
+    "verte": 153.8804337
+   },
+   {
+    "d": "2026-09-01",
+    "k": "P-max| All LT | Kačių maistas",
+    "st": "ENABLED",
+    "cost": 20.42,
+    "cl": "76",
+    "konv": 2,
+    "verte": 75.59
+   },
+   {
+    "d": "2026-09-01",
+    "k": "petshop",
+    "st": "ENABLED",
+    "cost": 2.65,
+    "cl": "15",
+    "konv": 2,
+    "verte": 172.39
+   },
+   {
+    "d": "2026-09-02",
+    "k": "P-max| All LT | Šunų maistas",
+    "st": "ENABLED",
+    "cost": 19.54,
+    "cl": "41",
+    "konv": 1,
+    "verte": 44.6
+   },
+   {
+    "d": "2026-09-02",
+    "k": "P-max| All LT | Kačių maistas",
+    "st": "ENABLED",
+    "cost": 20.21,
+    "cl": "47",
+    "konv": 1,
+    "verte": 109.96
+   },
+   {
+    "d": "2026-09-02",
+    "k": "petshop",
+    "st": "ENABLED",
+    "cost": 1.55,
+    "cl": "11",
+    "konv": 0,
+    "verte": 0
+   },
+   {
+    "d": "2026-09-03",
+    "k": "P-max| All LT | Šunų maistas",
+    "st": "ENABLED",
+    "cost": 21.37,
+    "cl": "59",
+    "konv": 2.289657,
+    "verte": 91.3215142
+   },
+   {
+    "d": "2026-09-03",
+    "k": "P-max| All LT | Kačių maistas",
+    "st": "ENABLED",
+    "cost": 20.33,
+    "cl": "57",
+    "konv": 2.304206,
+    "verte": 35.2295663
+   },
+   {
+    "d": "2026-09-03",
+    "k": "petshop",
+    "st": "ENABLED",
+    "cost": 2.52,
+    "cl": "13",
+    "konv": 0,
+    "verte": 0
+   },
+   {
+    "d": "2026-09-04",
+    "k": "P-max| All LT | Šunų maistas",
+    "st": "ENABLED",
+    "cost": 20.17,
+    "cl": "57",
+    "konv": 1.5,
+    "verte": 36.92
+   },
+   {
+    "d": "2026-09-04",
+    "k": "P-max| All LT | Kačių maistas",
+    "st": "ENABLED",
+    "cost": 21.62,
+    "cl": "71",
+    "konv": 3.488904,
+    "verte": 149.15896336
+   },
+   {
+    "d": "2026-09-04",
+    "k": "petshop",
+    "st": "ENABLED",
+    "cost": 5.35,
+    "cl": "28",
+    "konv": 2,
+    "verte": 100.55
+   },
+   {
+    "d": "2026-09-05",
+    "k": "P-max| All LT | Šunų maistas",
+    "st": "ENABLED",
+    "cost": 23.22,
+    "cl": "77",
+    "konv": 1,
+    "verte": 26.05
+   },
+   {
+    "d": "2026-09-05",
+    "k": "P-max| All LT | Kačių maistas",
+    "st": "ENABLED",
+    "cost": 21.65,
+    "cl": "71",
+    "konv": 5,
+    "verte": 209.73
+   },
+   {
+    "d": "2026-09-05",
+    "k": "petshop",
+    "st": "ENABLED",
+    "cost": 3.01,
+    "cl": "18",
+    "konv": 1,
+    "verte": 34.75
+   },
+   {
+    "d": "2026-09-05",
+    "k": "Petshop - Search - Prins Puppy",
+    "st": "PAUSED",
+    "cost": 0.13,
+    "cl": "1",
+    "konv": 0,
+    "verte": 0
+   },
+   {
+    "d": "2026-09-06",
+    "k": "P-max| All LT | Šunų maistas",
+    "st": "ENABLED",
+    "cost": 18.93,
+    "cl": "58",
+    "konv": 1,
+    "verte": 23.53
+   },
+   {
+    "d": "2026-09-06",
+    "k": "P-max| All LT | Kačių maistas",
+    "st": "ENABLED",
+    "cost": 23.09,
+    "cl": "87",
+    "konv": 2,
+    "verte": 66.73
+   },
+   {
+    "d": "2026-09-06",
+    "k": "petshop",
+    "st": "ENABLED",
+    "cost": 3.73,
+    "cl": "20",
+    "konv": 1,
+    "verte": 30.6
+   },
+   {
+    "d": "2026-09-07",
+    "k": "P-max| All LT | Šunų maistas",
+    "st": "ENABLED",
+    "cost": 22.99,
+    "cl": "78",
+    "konv": 3.666666,
+    "verte": 117.59663834
+   },
+   {
+    "d": "2026-09-07",
+    "k": "P-max| All LT | Kačių maistas",
+    "st": "ENABLED",
+    "cost": 20.21,
+    "cl": "75",
+    "konv": 2.415936,
+    "verte": 118.45473576
+   },
+   {
+    "d": "2026-09-07",
+    "k": "petshop",
+    "st": "ENABLED",
+    "cost": 3.03,
+    "cl": "19",
+    "konv": 1,
+    "verte": 19.15
+   },
+   {
+    "d": "2026-09-08",
+    "k": "P-max| All LT | Šunų maistas",
+    "st": "ENABLED",
+    "cost": 23.2,
+    "cl": "60",
+    "konv": 1,
+    "verte": 78.96
+   },
+   {
+    "d": "2026-09-08",
+    "k": "P-max| All LT | Kačių maistas",
+    "st": "ENABLED",
+    "cost": 21,
+    "cl": "66",
+    "konv": 0,
+    "verte": 0
+   },
+   {
+    "d": "2026-09-08",
+    "k": "petshop",
+    "st": "ENABLED",
+    "cost": 2.94,
+    "cl": "18",
+    "konv": 1,
+    "verte": 74.68
+   },
+   {
+    "d": "2026-09-09",
+    "k": "P-max| All LT | Šunų maistas",
+    "st": "ENABLED",
+    "cost": 20.34,
+    "cl": "45",
+    "konv": 0,
+    "verte": 0
+   },
+   {
+    "d": "2026-09-09",
+    "k": "P-max| All LT | Kačių maistas",
+    "st": "ENABLED",
+    "cost": 20.6,
+    "cl": "51",
+    "konv": 0,
+    "verte": 0
+   },
+   {
+    "d": "2026-09-09",
+    "k": "petshop",
+    "st": "ENABLED",
+    "cost": 2.53,
+    "cl": "15",
+    "konv": 0,
+    "verte": 0
+   },
+   {
+    "d": "2026-09-10",
+    "k": "P-max| All LT | Šunų maistas",
+    "st": "ENABLED",
+    "cost": 17.48,
+    "cl": "55",
+    "konv": 0,
+    "verte": 0
+   },
+   {
+    "d": "2026-09-10",
+    "k": "P-max| All LT | Kačių maistas",
+    "st": "ENABLED",
+    "cost": 21.67,
+    "cl": "76",
+    "konv": 0,
+    "verte": 0
+   },
+   {
+    "d": "2026-09-10",
+    "k": "petshop",
+    "st": "ENABLED",
+    "cost": 2.82,
+    "cl": "16",
+    "konv": 0.917398,
+    "verte": 20.2286259
+   },
+   {
+    "d": "2026-09-11",
+    "k": "P-max| All LT | Šunų maistas",
+    "st": "ENABLED",
+    "cost": 16.65,
+    "cl": "48",
+    "konv": 0,
+    "verte": 0
+   },
+   {
+    "d": "2026-09-11",
+    "k": "P-max| All LT | Kačių maistas",
+    "st": "ENABLED",
+    "cost": 18.27,
+    "cl": "58",
+    "konv": 1,
+    "verte": 19.15
+   },
+   {
+    "d": "2026-09-11",
+    "k": "petshop",
+    "st": "ENABLED",
+    "cost": 1.78,
+    "cl": "9",
+    "konv": 0,
+    "verte": 0
+   }
+  ],
+  "paskutiniai_30": [
+   {
+    "act": "Purchase",
+    "konv": 132.242412,
+    "verte": 5435.876671376
+   }
+  ],
+  "ec": [
+   {
+    "conversionTrackingId": "11117260149",
+    "acceptedCustomerDataTerms": true,
+    "googleAdsConversionCustomer": "customers/7541530584"
+   }
+  ]
+ }
+}
