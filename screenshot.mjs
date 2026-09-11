@@ -3,7 +3,7 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjczIHJlY29uIHJlYWQgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKCFpc3NldCgkX0dFVFsncHNfciddKXx8JF9HRVRbJ3BzX3InXSE9PSdHTycpIHJldHVybjsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOyAkcj1nZXRfb3B0aW9uKCdwc19hZHNfcmVjb24nKTsgZWNobyBpc19hcnJheSgkcik/JHJbJ2JvZHknXTpqc29uX2VuY29kZSgkcik7IGV4aXQ7IH0pOwo=';
-const VER='dep-211210';
+const VER='dep-211337';
 const GKEY='ps_r';
 const PHASES=["GO"];
 const OUT='analize/s1674_r.json';
