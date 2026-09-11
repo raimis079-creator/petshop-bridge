@@ -1,40 +1,37 @@
 {
- "v": "dep-202411",
+ "v": "dep-215655",
  "kurimas": 200,
- "sid": 5414,
+ "sid": 5606,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "E": {
-  "v": "S1675 e",
-  "faze": "E",
-  "md5_pries": "f41fe4c8f5a2ccc88164aa3edbb0d442",
-  "radiniai": 1,
-  "md5_po": "31fce55f3c412df9ef7c43bc5c3d8f28"
- },
- "T": {
-  "v": "S1675 e",
-  "faze": "T",
-  "dead_be_pasto": 35,
-  "sausas": {
-   "dry_run": true,
-   "cutoff": "2026-09-09 18:25:26",
-   "floor": "2026-09-02 20:25:26",
-   "candidates": 1,
-   "abandoned": 0,
-   "events": 0,
-   "jobs": 0,
-   "no_email": 0,
-   "skipped": [
-    [
-     "c_a48c2a371048a63adcb1ea9c24819ab7",
-     "empty_snapshot"
-    ]
-   ],
-   "expired": 0,
-   "details": []
+ "GO": {
+  "14984": {
+   "wc": "outofstock/1",
+   "code": 200,
+   "btn": 1,
+   "oos": 1,
+   "txt": "Neturime",
+   "cache_hdr": ""
   },
-  "front": 200
+  "15651": {
+   "wc": "outofstock/1",
+   "code": 200,
+   "btn": 1,
+   "oos": 1,
+   "txt": "Neturime",
+   "cache_hdr": ""
+  },
+  "17345": {
+   "wc": "outofstock/1",
+   "code": 200,
+   "btn": 1,
+   "oos": 1,
+   "txt": "Neturime",
+   "cache_hdr": ""
+  },
+  "v": "S1675 e",
+  "temp_istrinta": 1
  }
 }
