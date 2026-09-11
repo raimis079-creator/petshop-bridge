@@ -1,0 +1,264 @@
+{
+ "v": "dep-084706",
+ "kurimas": 200,
+ "sid": 5536,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1670 q",
+  "wpms": {
+   "mail": {
+    "from_email": "uzsakymai@petshop.lt",
+    "from_name": "Petshop.lt",
+    "mailer": "smtp",
+    "return_path": true,
+    "from_email_force": true,
+    "from_name_force": true
+   },
+   "smtp": {
+    "autotls": true,
+    "auth": true,
+    "host": "isopas.serveriai.lt",
+    "port": 465,
+    "encryption": "ssl",
+    "user": "uzsakymai@petshop.lt",
+    "pass": "***"
+   },
+   "general": {
+    "summary_report_email_disabled": false
+   },
+   "sendlayer": {
+    "api_key": "",
+    "quick_connect": false,
+    "is_shared_domain": false,
+    "sender_domain": ""
+   },
+   "smtpcom": {
+    "api_key": "",
+    "channel": ""
+   },
+   "sendinblue": {
+    "api_key": "",
+    "domain": ""
+   },
+   "mailersend": {
+    "api_key": "",
+    "has_pro_plan": false
+   },
+   "mailgun": {
+    "api_key": "",
+    "domain": "",
+    "region": "US"
+   },
+   "mailjet": {
+    "api_key": "",
+    "secret_key": ""
+   },
+   "resend": {
+    "api_key": ""
+   },
+   "sendgrid": {
+    "api_key": "",
+    "domain": ""
+   },
+   "smtp2go": {
+    "api_key": ""
+   },
+   "sparkpost": {
+    "api_key": "",
+    "region": "US"
+   },
+   "postmark": {
+    "server_api_token": "",
+    "message_stream": ""
+   },
+   "mandrill": {
+    "api_key": ""
+   },
+   "amazonses": {
+    "client_id": "",
+    "client_secret": "",
+    "region": "us-east-1"
+   },
+   "elasticemail": {
+    "api_key": ""
+   },
+   "gmail": {
+    "client_id": "",
+    "client_secret": "",
+    "access_token": [],
+    "refresh_token": "",
+    "user_details": {
+     "email": ""
+    },
+    "one_click_setup_enabled": false,
+    "one_click_setup_credentials": {
+     "key": "",
+     "token": ""
+    },
+    "one_click_setup_user_details": {
+     "email": ""
+    }
+   },
+   "outlook": {
+    "client_id": "",
+    "client_secret": "",
+    "access_token": [],
+    "refresh_token": "",
+    "user_details": {
+     "email": ""
+    },
+    "one_click_setup_enabled": false,
+    "one_click_setup_credentials": {
+     "access_token": "",
+     "refresh_token": "",
+     "expires": ""
+    },
+    "one_click_setup_user_details": {
+     "email": ""
+    }
+   },
+   "zoho": {
+    "client_id": "",
+    "client_secret": "",
+    "domain": "com",
+    "access_token": [],
+    "refresh_token": "",
+    "user_details": {
+     "email": ""
+    }
+   },
+   "logs": {
+    "enabled": false,
+    "log_email_content": false,
+    "save_attachments": false,
+    "open_email_tracking": false,
+    "click_link_tracking": false
+   },
+   "alert_email": {
+    "enabled": false,
+    "connections": []
+   },
+   "license": {
+    "key": "",
+    "is_expired": false,
+    "is_disabled": false,
+    "is_invalid": false,
+    "is_limit_reached": false
+   }
+  },
+  "wpms_ver": "4.9.0",
+  "aktyvus": [
+   "wp-mail-smtp/wp_mail_smtp.php"
+  ],
+  "dns": {
+   "petshop.lt": {
+    "mx": [
+     "10 isopas.serveriai.lt"
+    ],
+    "txt": [
+     "v=spf1 a mx include:spf.serveriai.lt include:sendersrv.com ~all",
+     "google-site-verification=XPcuD8vHzqrHuXMrZLXCMHfGieqYGPN5C0iI9uUeEGs"
+    ],
+    "dmarc": [
+     "v=DMARC1; p=none; rua=mailto:terra@petshop.lt"
+    ]
+   },
+   "vetfarmas.lt": {
+    "mx": [
+     "0 vetfarmas-lt.mail.protection.outlook.com"
+    ],
+    "txt": [
+     "v=spf1 include:_spf.mlsend.com a mx ip4:91.224.135.31 ip4:87.247.64.77 ip4:79.98.29.30 ip4:85.206.10.115 ip4:88.119.191.146 include:spf.serveriai.lt include:spf.protection.outlook.com -all"
+    ],
+    "dmarc": [
+     "v=DMARC1; p=reject;  adkim=s; aspf=s;"
+    ]
+   }
+  },
+  "dkim": {
+   "x": "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDNwh"
+  },
+  "a_petshop": [
+   "79.98.29.24"
+  ],
+  "hostname": "isopas.serveriai.lt",
+  "isorinis_ip": "79.98.29.24",
+  "ptr": "isopas.serveriai.lt",
+  "kodas": {
+   "petshop-av-dropship.php": [
+    "42: * KODĖL (Raimis, H258): „panaikinai laiško redagavimą; kur kopija sau; o jei",
+    "84: * ateina į terra@petshop.lt — kur?\" — varnelė buvo padaryta TIK tiekimo partijų",
+    "86: * kopijos. DABAR čia tos pačios dvi varnelės („siųsti tiekėjui\" / „kopija man\"),",
+    "125: * ps_sources (fallback SKU), mygtukas „Kopijuoti\" (kodas TAB kiekis — įklijavimui",
+    "130: *   vienas laiškas dienai iš terra@petshop.lt · lentelė Nr · vardas · prekė · kiekis",
+    "169: 'vf'          => [ 'Vetfarmas',      'sku' ],",
+    "466: echo '<p class=\"description\">Siunčiama iš <code>terra@petshop.lt</code>. AV prekės į laiškus nepatenka. Vienas laiškas — visi tiekėjo užsakymai.</p>';",
+    "545: su lipdukais ir manifestu. Eiga kortelės viršuje. Siunčiama iš <code>terra@petshop.lt</code>; AV prekės į laiškus nepatenka.",
+    "563: var b = ev.target.closest('.ps-kopijuoti');",
+    "566: function ok(){ b.textContent = 'Nukopijuota'; setTimeout(function(){ b.textContent='Kopijuoti'; }, 1500); }",
+    "632: array( 'ne', '2 · Suvesk į ZB', '„Kopijuoti\" prie kiekvieno užsakymo → įklijuok į ZB sistemą' ),",
+    "640: array( ( $ln0['tiekejui'] || $ln0['man'] ) ? 'ok' : 'ne', '3 · Kam', $ln0['tiekejui'] ? ( 'tiekėjui' . ( $ln0['man'] ? ' + kopija man' : '' ) ) : ( $ln0['man'] ? 'TIK man (tiekėjui NEIŠEIS — per",
+    "662: Kiekvieną užsakymą suveskite į ZB sistemą („Kopijuoti\" — kodas ir kiekis),",
+    "683: printf( ' <button type=\"button\" class=\"button button-small ps-kopijuoti\" data-tsv=\"%s\">Kopijuoti</button>',",
+    "835: kopija man (terra@petshop.lt)</label>",
+    "887: Kelis adresus atskirkite kableliu. Siunčiama iš <code>terra@petshop.lt</code>.</p>",
+    "985: $h .= '<p>Linkėjimai,<br>UAB Avesa<br>terra@petshop.lt</p>';",
+    "1056: 'From: UAB Avesa <terra@petshop.lt>',",
+    "1057: 'Reply-To: terra@petshop.lt',",
+    "1069: if ( $ln['man'] ) { $gav[] = 'terra@petshop.lt'; }",
+    "1074: $ok   = wp_mail( $gav, $tema, $h, $antraste, $priedai );"
+   ],
+   "petshop-darbalaukis.php": [
+    "269: *   prekių sąrašas su „Gauta“ kiekiais/galiojimu ir mygtukas „Gauta“ (variklio `priimti()`); ZB — „Kopijuoti“. B) „Užsakyti iš [T] į AV“ —",
+    "295: *   po kiekvieno veiksmo pranešimas sako, kur užsakymas nukeliavo („→ dabar: Laiškai tiekėjams · Laiškas Vetfarmas“);",
+    "310: *   Ambrosia ir Vetfarmas (2)“. V6 — atšaukimo dialogas įspėja apie registruotas siuntas / išsiųstus laiškus. V4/S4 — tekstai.",
+    "314: *   ZB: Kopijuoti · Lipdukas · Perduota) ant esamo dropship variklio (`ps_dropship_send` / `zb_done` / `vp_reg`; grįžimas į",
+    "452: $pastai = (array) get_option( 'ps_tiekeju_pastai', array() ); $kam = trim( ( ! empty( $ln['tiekejui'] ) && ! empty( $pastai[ sanitize_key( $_POST['tiekejas'] ?? '' ) ] ) ? $pastai[ sanitize_key( $_",
+    "456: 'uzsakyta_man'      => array( 'dl_uzsak_av', 'užsakyta iš ' . $v . ' į AV — užsakymas tiekėjui #' . $pid . '; laiškas išėjo tik man (terra@petshop.lt) — persiųsk tiekėjui' ),",
+    "457: 'uzsakyta_rankinis' => array( 'dl_uzsak_av', 'užsakymas tiekėjui #' . $pid . ' uždarytas — laiško nėra, sąrašą suvesk į ' . $v . ' sistemą („Kopijuoti“ kortelėje)' ),",
+    "2056: $h .= '<p>' . esc_html( 'Gražios dienos,' ) . '<br>' . esc_html( 'Petshop.lt komanda' ) . '<br>+370 681 87787<br>terra@petshop.lt</p>';",
+    "2066: $h .= '<p>' . esc_html( 'Gražios dienos,' ) . '<br>' . esc_html( 'Petshop.lt komanda' ) . '<br>+370 681 87787<br>terra@petshop.lt</p>';",
+    "2854: 'tekstas'    => \"Sveiki, {vardas}.\\n\\nJūsų užsakymas Nr. {nr} paruoštas — galite atsiimti mūsų sandėlyje: {adresas}. Darbo laikas: {valandos}. Atvykę pasakykite užsakymo numerį.\\n\\n{neapmoketa}\\n\\n",
+    "2859: 'iv_tekstas' => \"Sveiki, {vardas}.\\n\\nAčiū, kad atsiėmėte užsakymą Nr. {nr}. Pridedame PVM sąskaitą faktūrą Nr. {avpn} ({suma} €).\\n\\nGražios dienos,\\nPetshop.lt komanda\\n+370 681 87787\\nterra@pets",
+    "2998: 'tekstas'  => \"Sveiki, {vardas}.\\n\\nPridedame kreditinę PVM sąskaitą faktūrą Nr. {kr_nr} ({kr_suma} €) už užsakymą Nr. {uzsakymas}.\\n\\n{mokestis}\\n\\nGrąžinama suma — {grazinama} €. Pinigus grąžinsi",
+    "3497: if ( 0 !== strpos( $k, 'dl_' ) ) { ob_start(); self::d( 'pranesimas' ); $h = ob_get_clean(); $h = str_replace( array( 'Avesos sandėlį', 'Avesos sandėlyje', 'Avesoje', 'Avesos', 'Avesa', 'Vetfarmas',",
+    "3638: /** LAIŠKAI TIEKĖJAMS — kortelė per tiekėją (G1–G5, C4): 1 Lipdukai (n) → 2 Laiškas [T]; ZB: Kopijuoti · Lipdukas · Perduota. */",
+    "3688: if ( 'zb' === $src ) { echo ' <button type=\"button\" class=\"v t dl-kopijuoti\" data-tsv=\"' . esc_attr( $tsv ) . '\">Kopijuoti</button>'; }",
+    "3718: echo '<span class=\"zn\">2</span><span class=\"pilkas maz\">Suvesti į ZB — „Kopijuoti“ prie kiekvieno užsakymo</span>';",
+    "3730: if ( $m_prek ) { echo '<span class=\"zn\">' . ( $uzs ? 3 : 1 ) . '</span><button class=\"v p\" type=\"submit\" data-tpl=\"Užsakyti iš ZB į AV (%m prek.)\" onclick=\"return confirm(' . esc_attr( wp_json_enc",
+    "3737: echo '<label><input type=\"checkbox\" name=\"laisk_tiekejui\" value=\"1\"' . checked( ! empty( $ln['tiekejui'] ), true, false ) . '> siųsti tiekėjui' . ( ! empty( $pastai[ $src ] ) ? ' (' . esc_html( $p",
+    "3740: $perz = $uzs && class_exists( 'Petshop_AV_Dropship' ) ? str_replace( '<p style=\"margin:14px 0\">{{PRIERASAS}}</p>', '<p class=\"dl-perz-pastaba\" style=\"margin:14px 0;display:none\"></p>', Petshop_AV_",
+    "3796: if ( $rank ) { echo '<button type=\"button\" class=\"v t dl-kopijuoti\" data-tsv=\"' . esc_attr( $tsv ) . '\">Kopijuoti</button><span class=\"pilkas maz\">sąrašas suvedimui į ' . esc_html( $vardas ) . ' s",
+    "4187: document.addEventListener('click',function(e){ var k=e.target.closest('.dl-kopijuoti'); if(k){ e.stopPropagation(); var t=k.getAttribute('data-tsv'); (navigator.clipboard?navigator.clipboard.writeTex"
+   ],
+   "petshop-desk.php": [
+    "233: 'vf'          => array( '#2B5C8A', 'VF',  'Vetfarmas' ),",
+    "1991: 'av' => 'Savas sandėlis', 'vf' => 'Vetfarmas', 'zb' => 'Žalioji Banga',"
+   ],
+   "petshop-uzsakymu-ivykiai.php": [
+    "280: foreach ( array( 'kam', 'kopija', 'pastaba', 'partija', 'be_lipduku' ) as $k ) { if ( isset( $P[ $k ] ) ) { $param[ $k ] = is_array( $P[ $k ] ) ? implode( ',', array_map( 'sanitize_text_field', $P["
+   ]
+  },
+  "smtp_klaidos": [
+   {
+    "created_at": "2026-09-11 06:08:42",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}"
+   },
+   {
+    "created_at": "2026-09-11 03:12:44",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}"
+   },
+   {
+    "created_at": "2026-09-10 09:55:27",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}"
+   }
+  ],
+  "admin_email": "terra@gyvunai.lt"
+ }
+}
