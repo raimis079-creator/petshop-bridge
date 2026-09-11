@@ -1,90 +1,48 @@
 {
- "v": "dep-175218",
+ "v": "dep-072103",
  "kurimas": 200,
- "sid": 5388,
+ "sid": 5525,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "GO": {
+ "A": {
   "v": "S1670 g",
-  "kodas": [
-   "43     public function recalculate( int $post_id ): string {",
-   "44         $quantities = $this->get_all_quantities( $post_id );",
-   "45 ",
-   "46         foreach ( $this->suppliers as $source_key => $meta_key ) {",
-   "47             $qty = (int) ( $quantities[ $source_key ] ?? 0 );",
-   "48             if ( $qty > 0 ) {",
-   "49                 $this->set_wc_stock( $post_id, $qty, $source_key );",
-   "50                 return $source_key;",
-   "51             }",
-   "52         }",
-   "53 ",
-   "54         $this->set_wc_stock( $post_id, 0, 'out_of_stock' );",
-   "55         return 'out_of_stock';",
-   "56     }",
-   "57 ",
-   "58     public function get_all_quantities( int $post_id ): array {",
-   "59         $result = [];",
-   "60         foreach ( $this->suppliers as $source_key => $meta_key ) {",
-   "61             $result[ $source_key ] = (int) get_post_meta( $post_id, $meta_key, true );",
-   "62         }",
-   "63         return $result;",
-   "64     }",
-   "65 ",
-   "66     /**",
-   "67      * Nustato WC likutį.",
-   "68      * wc_update_product_stock($id, $qty, 'set') — ne rankinis _stock rašymas (fix #1).",
-   "69      */",
-   "70     private function set_wc_stock( int $post_id, int $qty, string $source ): void {",
-   "71         update_post_meta( $post_id, '_manage_stock', 'yes' );",
-   "72         update_post_meta( $post_id, '_active_fulfillment_source', $source );",
-   "73         wc_update_product_stock( $post_id, $qty, 'set' );",
-   "74     }",
-   "75 ",
-   "76     public function update_zb_qty( int $post_id, int $qty ): void {",
-   "77         update_post_meta( $post_id, '_zb_qty', $qty );",
-   "78         $this->recalculate( $post_id );",
-   "79     }",
-   "80 ",
-   "81     public function update_vf_qty( int $post_id, int $qty ): void {",
-   "82         update_post_meta( $post_id, '_vf_qty', $qty );",
-   "83         $this->recalculate( $post_id );",
-   "84     }",
-   "85 ",
-   "86     /**",
-   "87      * v1.6.1: rašo AV meta (suderinamumui), bet `_stock` skaičiuojamas",
-   "88      * tik iš tiekėjų — AV kiekį rodymui prideda Petshop_AV_Limit.",
-   "89      */",
-   "90     public function update_own_stock( int $post_id, int $qty ): void {",
-   "91         update_post_meta( $post_id, '_own_stock_qty', $qty );",
-   "92         $this->recalculate( $post_id );",
-   "93     }",
-   "94 ",
-   "95     public function get_active_source( int $post_id ): string {",
-   "96         return (string) get_post_meta( $post_id, '_active_fulfillment_source', true ) ?: 'unknown';",
-   "97     }",
-   "98 ",
-   "99     public function get_suppliers(): array { return $this->suppliers; }",
-   "100 }",
-   "101 "
-  ],
-  "failas": "class-fulfillment.php",
-  "bukle": {
-   "17363": {
-    "_stock": "3",
-    "own": "0",
-    "_zb_qty": "",
-    "_vf_qty": "",
-    "sand": "belcor_tofu"
-   },
-   "18655": {
-    "_stock": "236",
-    "own": "",
-    "_zb_qty": "",
-    "_vf_qty": "",
-    "sand": "av"
-   }
-  }
+  "f": {
+   "petshop-av-order.php": [
+    "97f8ddd65d43baed9f6c44ef8dc3e649",
+    "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"
+   ],
+   "petshop-av-reduce.php": [
+    "becc48441f03a1094795a47b2d546d73",
+    "H4sIAAAAAAACA8VYTW8byRE9i7+i7BWWpJempF0nzlIrG7QlOFzrC6JsIzCMUWvYolucL0/P0MuVBewhm1suQRAjR59y9CGHnOLDgvoj+0vyqnu+KEpaxV4kNiCKnK7qqlevXhX1zf3oZVRbunWrRrdoVyb6ZRhR9yntyUHqShqvtFeo0b/zuy+b9PMPf+Unnhql0z+rkII0FmfvJr7QbRgb+43tx/vdPvU3n+w87m/3+tTY23jU6+/v4cOf/rFyt323xa9ft3/bLGz2dh5sbmx1qRELnQjSd+5+3ezQszB8GPq+jBHEsUjJF2cfVCDowNFJ6I4OKJIxmx+8dh1fTA6lE5uI7WPHk2Pp6QNqRGLiyyBx3NCPPJlIWqIoDl2ptQqGJgj6ViqKRKS8QegLld2UpL7EZeHrIPP4KpkctDj/KJYjWASpVib/5OyftP6ERiJO0gKJ/u7exvZ6bwt5M2wlVLhpKDza6G0+2Z/+rU9n74SXqGD6vsNmRE6kHR2mnPYaiTE++flPf8mz9y+I6NnD7Knypz8Cze7mRm/97N+97pZ1OFKJym9RSC/zGAlPyRE8wl56w0RpZKAimr6PTB2yPB53e7vUf9Lf7z5Y39kyh5WXJlJ1gHwYulmJnDAeyNhRifSdV6kIEoXY6Eh5CZzRMJ7+aKu3zD6T0NfWzfStr1s0SmMFDPMYNUBu802JGIgC5pCWaaxkIBludfauIIIp4b7gHMciVqBKgOocuCLIGWFjs6ftbZrGUo2UoKe9fneL0rMPWowmfqraRdrrXdrqAsZtPO8+7VCShsAMvAcVQ2ZUavFCnFzgK2lmQuwNpB+FCQ4h+pFg/iIHVFuMs0AHB3T2YeJP/14EJPN4Hu1N/8jBMKEuRB4VA/scZO1Kz2NXCu7b7TZ8H6XBgD+p9C/KzW6LwjAxRQJill3Ze7zZfdLfQQFCukPaS8ORDlTYySsHRGLFP6ZvQbCDkrcHbdNRxxCI6duYiUQNLQPckKcltBWTAAzEKTkQcei3MiYqoZWFVgQjDcBFykEt1dQRNegGDeSRgkmD6t0H/d3u/u/r1MT/E5LfqWSVTms11xNa51rmdJ86mZad1GoLUXroKZcYLrwAGTdRYUCgXdKAk9rCwtISrTRJpzhyCEE411/Ar2AuDovBwGGWyxjx/EI/1Fv0nBzn4Wa333ecFs67zggIKF2nFy36crlFX1Fz1YYAuS16HncyWrs7HEsjilUYw3ECQFd+06Kr9I8msaCV5WYWqTDJnov0PHPnwvTF95BDZYLkC1dskJc6nCFk2QTX9Yvkv2pWmHntqwruz900jD8lhbyBrusWDFzAPOVi5bKfQi6rzKmkRyg7JJolkYucqBEeEfNi+r7NtL+MsgV7GrSISdCiRRM1Xpl1ZMmc9YyCyjTsA8T97KGzYxLsMT134xC8SfIuiiVaOjAuuZkWFhZ17GIUGePb94YycXxwD4CVHV+3cJrL6mJcpxtrMGC7Cz2iwiUYJmtAVcz1QGIwcdtz5TPb5Qqs/TRfBXItm76/3ki5AsyMi40MREcNMgDte+QPCAOsBLFyZw/d50IwKuaz2Wed8t1qWYzMZQmNRcU8tc/mYC5HxGyZYEnFP8Cq8hnjqmNR3mgE0YE+6gRsqVeUsc+Yz/msceIRpm88wUK2Rs9frNLiyBNqEGr7FgeOwlgK9+W5oJklGkoKcTKMYSDW7s1w8jxPriaWicwNUZwglRYpxMZeqYGSNav2kaUy7mwYQi4w53DQF981aKU1b5BLMwKGAVsAxEd7f9ju9vJNb/pW5xOThpOxrKygLXB1biFjPmeOjpmUFRUIaXsjW6QwmOlQJuRLTcfgL2+42cgBge3ihLFn/eyH+NAj7onMF8aSXSMToQzZixBRE4+3PAi/MV/ECrlG5yve6SBUFI5xtEiZmgSp59Ea1wRWWbE4gGE8CeCT16BiKFX386J3Y4zs0FfaGC5GuDlrjqwyM1dmjI/o88/x8/Y9XwRiiEFhnTWaRQQLiwNxKOKi4sZhqHO+sEuomjWDSAM5mV+xsBiI9FjonAQQ28zZbSNI5TkEoOE3K2TOC8rt83Mm5mULUv4IBJ01t4MDTA7TJDzSWY9l5M3uEmPZyJ0CpIHk2VswGGtzoLHtcr9WISvb8vkL5HTzsxN+elpWiE5sfqd0+x5+tyGe3sytLfXTaCBwGcPn4Ld5lWEmA8lZhKxtNXCbT9GcNfORYV0sv7+QdgPpgqFa5lWzk6teLob0WZ3aM4piFRTaewh5bVbpCkl+HTkyjkPWXb6y5EwuVzMwdegmO8dJ69qYAgatxTBP6hQ7qJa5l4vRNjCLcYYx3OUAfwK+8/AyugbOrE9yPX7zphTjLN0cr1+8GJe6aRzzvpcoH2Wo+xP9yjM6u1r1VIljMZEjnZgeqiPz8qtsh7hW1dDuk8ISGQ7YMf30L+Ici4c8D+tm5a9Xq1jNhYq72riM3hC+g/TWd/r2pnnfhWk+GLLoebHLeINp2CjdmntPy2XiUfHNtLJMiAR7QzpK8ZUoPhTFrob3EXaJIb7kX7VK5Fvh/32XuPER28R19hDoWXyF6a+ybnzSfpFN/blpfyEEphVn+MjW36xB5D9685gfqFcO4FK0rjsxf5XJeNnEsy6/uGo+FgNOBcV0+x/Mti9OOKZcbE/n5fqysaOCC8dO3tlg3fXGTuX71EWThy6fF1no1YlhGWVVfk7k/wthz/rxY5T9Erlkmc+xUYXQXyntpbCe1ub+8sIF4L+vrNb+A6gmzFZuFgAA"
+   ]
+  },
+  "om": {
+   "_ps_av_reduced": "2026-09-11 09:14:46",
+   "_ps_decided_at": "2026-09-10 13:13:24",
+   "_ps_faktas_irasytas": "2026-09-11 06:14:46",
+   "_ps_ga_sutikimas": "--",
+   "_ps_ga4_mp_at": "2026-09-10 10:13:25",
+   "_ps_ga4_mp_cid": "ps.1001655783.1789035203",
+   "_ps_ga4_mp_kodas": "204",
+   "_ps_groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":2,\"vienetai\":2},\"belcor_tofu\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+   "_ps_irenginys": "mobile",
+   "_ps_kanalai": "{\"sutikimas_statistika\":0,\"fiksuota_at\":\"2026-09-10 10:13:23\",\"modulis\":\"kanalai/1.1\",\"paskutinis\":{\"kanalas\":\"direct\",\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"\",\"laikas\":\"2026-09-10 10:13:23\"},\"pirmas\":{\"kanalas\":\"direct\",\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"\",\"laikas\":\"2026-09-10 10:13:23\"}}",
+   "_ps_matyta": "2026-09-11 09:11:04 | Inga",
+   "_ps_order_number": "1006",
+   "_ps_order_type": "MIXED",
+   "_ps_partijos_nurasyta": "2026-09-11 09:14:46",
+   "_ps_refill_tracked": "yes",
+   "_ps_shipments": "2"
+  },
+  "pastabos": [
+   "09-11 09:15 Darbalaukis: PVM sąskaitos AVPN011006 PDF sugeneruotas iš naujo (Inga).",
+   "09-11 09:14 Email \"Užsakymas vykdomas\" sent.",
+   "09-11 09:14 Faktai irasyti: 3 eilutes · pajamos 66,03 EUR (be PVM, po nuolaidu) · PVM 14,55 EUR · marza 33,53 EUR · kontribucija (be pristatymo) 36,03 EUR",
+   "09-11 09:14 Partijos nurašytos: #17882 −1 vnt. (1 partijos)",
+   "09-11 09:14 AV nurašymas: #17978 AV 4 -> 3 · #17882 grynai AV 2 -> 1",
+   "09-11 09:14 Payment complete."
+  ]
  }
 }
