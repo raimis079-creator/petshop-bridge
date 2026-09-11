@@ -1,0 +1,44 @@
+{
+ "v": "dep-163346",
+ "kurimas": 200,
+ "sid": 5565,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "mc_raw": {
+  "len": 2389,
+  "head": "\"type\": \"ser"
+ },
+ "mc": {
+  "sa": "claude-gtm-manager@prefab-envoy-482617-b4.iam.gserviceaccount.com",
+  "token": 200,
+  "register": {
+   "status": 200,
+   "body": "{\n  \"name\": \"accounts/5321054797/developerRegistration\",\n  \"gcpIds\": [\n    \"683712074632\"\n  ]\n}\n"
+  },
+  "list": {
+   "status": 200,
+   "items": [
+    {
+     "name": "accounts/5321054797/dataSources/10727306667",
+     "dn": "PRODUCTS SOURCE 1",
+     "lang": "en",
+     "label": "PETSHOP_LT",
+     "countries": [
+      "LT"
+     ],
+     "uri": "https://petshop.lt/feed/google/"
+    }
+   ]
+  },
+  "create": {
+   "status": 400,
+   "err": "{\"code\":400,\"message\":\"Invalid JSON payload received. Unknown name \\\"channel\\\" at 'data_source.primary_product_data_source': Cannot find field.\",\"status\":\"INVALID_ARGUMENT\",\"details\":[{\"@type\":\"type.googleapis.com/google.rpc.BadRequest\",\"fieldViolations\":[{\"field\":\"data_source.primary_product_data_source\",\"description\":\"Invalid JSON payload received. Unknown name \\\"channel\\\" at 'data_source.primary_product_data_source': Cannot find field.\"}]}]}"
+  }
+ },
+ "M": {
+  "v": "S1671mc",
+  "ok": 1
+ }
+}
