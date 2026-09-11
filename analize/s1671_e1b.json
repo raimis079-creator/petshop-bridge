@@ -1,0 +1,1466 @@
+{
+ "v": "dep-151739",
+ "kurimas": 200,
+ "sid": 5553,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "E1": {
+  "v": "S1671e1",
+  "ist_uzs_cols": [
+   "id",
+   "data",
+   "email",
+   "vardas",
+   "pavarde",
+   "tel",
+   "imone",
+   "siuntimas",
+   "miestas",
+   "apmokejimas",
+   "suma_be",
+   "suma",
+   "statusas",
+   "ivykdytas",
+   "saskaita",
+   "eiluciu"
+  ],
+  "ist_eil_cols": [
+   "id",
+   "uzsakymo_id",
+   "modelis",
+   "pavadinimas",
+   "variantas",
+   "kiekis",
+   "kaina",
+   "suma",
+   "wc_product_id",
+   "susiejimas"
+  ],
+  "n": 2639,
+  "be_kainos": 0,
+  "be_savikainos": 101,
+  "marzos_pasiskirstymas": {
+   "<0": 0,
+   "0-10": 2,
+   "10-20": 304,
+   "20-30": 1292,
+   "30-40": 731,
+   "40+": 209
+  },
+  "agg": {
+   "gyv|sunims": {
+    "n": 1735,
+    "su_sav": 1667,
+    "instock": 1436,
+    "vid_kaina": 22.6,
+    "marza_sv": 26
+   },
+   "sand|vf": {
+    "n": 1005,
+    "su_sav": 1005,
+    "instock": 826,
+    "vid_kaina": 16.85,
+    "marza_sv": 25.7
+   },
+   "sand|av": {
+    "n": 875,
+    "su_sav": 798,
+    "instock": 721,
+    "vid_kaina": 10.71,
+    "marza_sv": 30.9
+   },
+   "gyv|katems": {
+    "n": 610,
+    "su_sav": 600,
+    "instock": 543,
+    "vid_kaina": 19.98,
+    "marza_sv": 24.3
+   },
+   "sand|zb": {
+    "n": 574,
+    "su_sav": 574,
+    "instock": 492,
+    "vid_kaina": 45.26,
+    "marza_sv": 25.3
+   },
+   "sub|sunims|sausas-maistas-sunims": {
+    "n": 509,
+    "su_sav": 506,
+    "instock": 433,
+    "vid_kaina": 42.6,
+    "marza_sv": 22.7
+   },
+   "sub|sunims|skanestai-sunims": {
+    "n": 298,
+    "su_sav": 265,
+    "instock": 251,
+    "vid_kaina": 13.41,
+    "marza_sv": 29.9
+   },
+   "gyv|kita": {
+    "n": 231,
+    "su_sav": 208,
+    "instock": 182,
+    "vid_kaina": 23,
+    "marza_sv": 31.6
+   },
+   "brand|Josera": {
+    "n": 215,
+    "su_sav": 215,
+    "instock": 165,
+    "vid_kaina": 16.78,
+    "marza_sv": 17.7
+   },
+   "brand|Trixie": {
+    "n": 207,
+    "su_sav": 206,
+    "instock": 183,
+    "vid_kaina": 27.57,
+    "marza_sv": 30.4
+   },
+   "sub|sunims|zaislai-sunims": {
+    "n": 206,
+    "su_sav": 197,
+    "instock": 170,
+    "vid_kaina": 9.05,
+    "marza_sv": 32.4
+   },
+   "sub|katems|sausas-maistas-katems": {
+    "n": 196,
+    "su_sav": 196,
+    "instock": 181,
+    "vid_kaina": 37.85,
+    "marza_sv": 21.4
+   },
+   "sub|sunims|antkakliai-pavadeliai-sunims": {
+    "n": 174,
+    "su_sav": 172,
+    "instock": 150,
+    "vid_kaina": 19.74,
+    "marza_sv": 31.8
+   },
+   "brand|Farmina": {
+    "n": 154,
+    "su_sav": 154,
+    "instock": 130,
+    "vid_kaina": 53.59,
+    "marza_sv": 23.1
+   },
+   "sub|katems|konservai-katems": {
+    "n": 134,
+    "su_sav": 131,
+    "instock": 124,
+    "vid_kaina": 2.2,
+    "marza_sv": 24.6
+   },
+   "sub|sunims|konservai-sunims": {
+    "n": 119,
+    "su_sav": 113,
+    "instock": 106,
+    "vid_kaina": 3.08,
+    "marza_sv": 28.8
+   },
+   "brand|Monge": {
+    "n": 116,
+    "su_sav": 116,
+    "instock": 111,
+    "vid_kaina": 38.65,
+    "marza_sv": 23.3
+   },
+   "sub|katems|skanestai-katems": {
+    "n": 87,
+    "su_sav": 85,
+    "instock": 74,
+    "vid_kaina": 10.49,
+    "marza_sv": 25.3
+   },
+   "brand|Exclusion": {
+    "n": 86,
+    "su_sav": 86,
+    "instock": 77,
+    "vid_kaina": 26.89,
+    "marza_sv": 23
+   },
+   "sub|kita|kraikai-kaciu-tualetams": {
+    "n": 86,
+    "su_sav": 68,
+    "instock": 72,
+    "vid_kaina": 13.77,
+    "marza_sv": 30.2
+   },
+   "brand|FLEXI": {
+    "n": 78,
+    "su_sav": 78,
+    "instock": 74,
+    "vid_kaina": 19.85,
+    "marza_sv": 31.2
+   },
+   "brand|Nobby": {
+    "n": 77,
+    "su_sav": 77,
+    "instock": 40,
+    "vid_kaina": 20.73,
+    "marza_sv": 30.6
+   },
+   "brand|Churu": {
+    "n": 72,
+    "su_sav": 72,
+    "instock": 63,
+    "vid_kaina": 9.83,
+    "marza_sv": 23.4
+   },
+   "brand|Georplast": {
+    "n": 72,
+    "su_sav": 72,
+    "instock": 18,
+    "vid_kaina": 7.93,
+    "marza_sv": 45
+   },
+   "sub|sunims|vitaminai-ir-papildai-sunims": {
+    "n": 67,
+    "su_sav": 67,
+    "instock": 58,
+    "vid_kaina": 21.73,
+    "marza_sv": 26.1
+   },
+   "brand|NOBLEZA": {
+    "n": 67,
+    "su_sav": 67,
+    "instock": 54,
+    "vid_kaina": 23.91,
+    "marza_sv": 29.9
+   },
+   "brand|Duvo+": {
+    "n": 65,
+    "su_sav": 60,
+    "instock": 56,
+    "vid_kaina": 9.37,
+    "marza_sv": 33
+   },
+   "brand|Quattro": {
+    "n": 64,
+    "su_sav": 64,
+    "instock": 62,
+    "vid_kaina": 35.92,
+    "marza_sv": 20
+   },
+   "sand|quattro": {
+    "n": 64,
+    "su_sav": 64,
+    "instock": 62,
+    "vid_kaina": 35.92,
+    "marza_sv": 20
+   },
+   "gyv|grauzikams": {
+    "n": 63,
+    "su_sav": 63,
+    "instock": 47,
+    "vid_kaina": 17.63,
+    "marza_sv": 28.1
+   },
+   "brand|Animonda": {
+    "n": 61,
+    "su_sav": 61,
+    "instock": 61,
+    "vid_kaina": 2.76,
+    "marza_sv": 32.5
+   },
+   "brand|BeloCat": {
+    "n": 58,
+    "su_sav": 40,
+    "instock": 44,
+    "vid_kaina": 13.91,
+    "marza_sv": 40.8
+   },
+   "sub|katems|zaislai-katems": {
+    "n": 58,
+    "su_sav": 58,
+    "instock": 49,
+    "vid_kaina": 4.98,
+    "marza_sv": 34.6
+   },
+   "sub|kita|tualetai-kraikai-semtuveliai": {
+    "n": 57,
+    "su_sav": 56,
+    "instock": 38,
+    "vid_kaina": 20.96,
+    "marza_sv": 32.7
+   },
+   "sand|belcor_tofu": {
+    "n": 56,
+    "su_sav": 38,
+    "instock": 42,
+    "vid_kaina": 14.34,
+    "marza_sv": 40
+   },
+   "brand|Ontario": {
+    "n": 54,
+    "su_sav": 48,
+    "instock": 53,
+    "vid_kaina": 13.27,
+    "marza_sv": 32.7
+   },
+   "brand|Happet": {
+    "n": 51,
+    "su_sav": 51,
+    "instock": 45,
+    "vid_kaina": 25.04,
+    "marza_sv": 30.5
+   },
+   "sub|sunims|dubeneliai-sunims": {
+    "n": 50,
+    "su_sav": 50,
+    "instock": 25,
+    "vid_kaina": 10.59,
+    "marza_sv": 30.7
+   },
+   "sub|sunims|higienos-priemones-sunims": {
+    "n": 45,
+    "su_sav": 40,
+    "instock": 32,
+    "vid_kaina": 15.16,
+    "marza_sv": 32.3
+   },
+   "brand|COMFY": {
+    "n": 43,
+    "su_sav": 43,
+    "instock": 34,
+    "vid_kaina": 19.5,
+    "marza_sv": 30
+   },
+   "sub|sunims|guoliai-boksai-sunims": {
+    "n": 42,
+    "su_sav": 42,
+    "instock": 21,
+    "vid_kaina": 25.26,
+    "marza_sv": 30.8
+   },
+   "brand|Hikari": {
+    "n": 40,
+    "su_sav": 37,
+    "instock": 36,
+    "vid_kaina": 22.52,
+    "marza_sv": 40.5
+   },
+   "sub|sunims|apranga-sunims": {
+    "n": 39,
+    "su_sav": 39,
+    "instock": 31,
+    "vid_kaina": 27.36,
+    "marza_sv": 28.7
+   },
+   "sub|katems|draskykles-katems": {
+    "n": 38,
+    "su_sav": 38,
+    "instock": 33,
+    "vid_kaina": 46.67,
+    "marza_sv": 30.4
+   },
+   "sub|sunims|transportavimo-dezes-katems": {
+    "n": 38,
+    "su_sav": 36,
+    "instock": 29,
+    "vid_kaina": 28.5,
+    "marza_sv": 32
+   },
+   "brand|GimCat": {
+    "n": 38,
+    "su_sav": 36,
+    "instock": 30,
+    "vid_kaina": 6.64,
+    "marza_sv": 30.4
+   },
+   "sub|sunims|sampunai-sunims": {
+    "n": 37,
+    "su_sav": 36,
+    "instock": 34,
+    "vid_kaina": 7.15,
+    "marza_sv": 28.7
+   },
+   "brand|Eukanuba": {
+    "n": 36,
+    "su_sav": 36,
+    "instock": 27,
+    "vid_kaina": 58.42,
+    "marza_sv": 23.1
+   },
+   "sub|kita|akvariumo-zuvyciu-maistas": {
+    "n": 36,
+    "su_sav": 34,
+    "instock": 33,
+    "vid_kaina": 16.97,
+    "marza_sv": 41.7
+   },
+   "brand|Sum-Plast": {
+    "n": 34,
+    "su_sav": 32,
+    "instock": 31,
+    "vid_kaina": 3.49,
+    "marza_sv": 33.2
+   },
+   "brand|?": {
+    "n": 32,
+    "su_sav": 17,
+    "instock": 23,
+    "vid_kaina": 16.18,
+    "marza_sv": 29
+   },
+   "brand|Hau&Miau": {
+    "n": 32,
+    "su_sav": 17,
+    "instock": 18,
+    "vid_kaina": 11.72,
+    "marza_sv": 35.9
+   },
+   "sub|katems|dubeneliai-katems": {
+    "n": 31,
+    "su_sav": 31,
+    "instock": 31,
+    "vid_kaina": 16.12,
+    "marza_sv": 34.7
+   },
+   "sub|sunims|sukos-sepeciai-zirkles-katems": {
+    "n": 29,
+    "su_sav": 26,
+    "instock": 25,
+    "vid_kaina": 10.97,
+    "marza_sv": 27.9
+   },
+   "brand|FURMINATOR": {
+    "n": 29,
+    "su_sav": 29,
+    "instock": 26,
+    "vid_kaina": 19.78,
+    "marza_sv": 26.5
+   },
+   "brand|Gnatek": {
+    "n": 28,
+    "su_sav": 24,
+    "instock": 26,
+    "vid_kaina": 5.71,
+    "marza_sv": 41.7
+   },
+   "brand|Romar": {
+    "n": 27,
+    "su_sav": 24,
+    "instock": 22,
+    "vid_kaina": 6.87,
+    "marza_sv": 33.6
+   },
+   "brand|Miamor": {
+    "n": 27,
+    "su_sav": 25,
+    "instock": 26,
+    "vid_kaina": 2.16,
+    "marza_sv": 38.9
+   },
+   "brand|Dingo": {
+    "n": 24,
+    "su_sav": 24,
+    "instock": 23,
+    "vid_kaina": 9.44,
+    "marza_sv": 32.7
+   },
+   "brand|Royal Canin": {
+    "n": 24,
+    "su_sav": 24,
+    "instock": 22,
+    "vid_kaina": 50.37,
+    "marza_sv": 16.4
+   },
+   "brand|LITTLE ONE": {
+    "n": 24,
+    "su_sav": 24,
+    "instock": 20,
+    "vid_kaina": 5.91,
+    "marza_sv": 29.3
+   },
+   "sand|?": {
+    "n": 24,
+    "su_sav": 18,
+    "instock": 24,
+    "vid_kaina": 20.17,
+    "marza_sv": 31.4
+   },
+   "brand|Coockoo": {
+    "n": 23,
+    "su_sav": 23,
+    "instock": 18,
+    "vid_kaina": 13.24,
+    "marza_sv": 33.3
+   },
+   "brand|Pet Nova": {
+    "n": 23,
+    "su_sav": 23,
+    "instock": 22,
+    "vid_kaina": 3.6,
+    "marza_sv": 33
+   },
+   "brand|Prins": {
+    "n": 23,
+    "su_sav": 23,
+    "instock": 23,
+    "vid_kaina": 61.49,
+    "marza_sv": 22.8
+   },
+   "sand|prins": {
+    "n": 23,
+    "su_sav": 23,
+    "instock": 23,
+    "vid_kaina": 61.49,
+    "marza_sv": 22.8
+   },
+   "sub|sunims|sukos-sepeciai-zirkles-sunims": {
+    "n": 22,
+    "su_sav": 20,
+    "instock": 19,
+    "vid_kaina": 16.82,
+    "marza_sv": 26.4
+   },
+   "brand|Zolux": {
+    "n": 22,
+    "su_sav": 15,
+    "instock": 15,
+    "vid_kaina": 7.14,
+    "marza_sv": 28.4
+   },
+   "brand|8in1": {
+    "n": 22,
+    "su_sav": 22,
+    "instock": 21,
+    "vid_kaina": 5.41,
+    "marza_sv": 26.7
+   },
+   "brand|Real Dog": {
+    "n": 21,
+    "su_sav": 21,
+    "instock": 21,
+    "vid_kaina": 56.57,
+    "marza_sv": 24.2
+   },
+   "brand|Chewllagen": {
+    "n": 21,
+    "su_sav": 21,
+    "instock": 19,
+    "vid_kaina": 74.12,
+    "marza_sv": 28.6
+   },
+   "sub|grauzikams|skanestai-grauzikams": {
+    "n": 21,
+    "su_sav": 21,
+    "instock": 17,
+    "vid_kaina": 4.9,
+    "marza_sv": 31.5
+   },
+   "brand|ANTOS": {
+    "n": 21,
+    "su_sav": 21,
+    "instock": 19,
+    "vid_kaina": 15.33,
+    "marza_sv": 26.1
+   },
+   "sub|grauzikams|pasaras-grauzikams": {
+    "n": 20,
+    "su_sav": 20,
+    "instock": 18,
+    "vid_kaina": 25.8,
+    "marza_sv": 24.8
+   },
+   "brand|LAND FLEISCH": {
+    "n": 20,
+    "su_sav": 20,
+    "instock": 17,
+    "vid_kaina": 1.89,
+    "marza_sv": 21
+   },
+   "brand|Dogoteka": {
+    "n": 19,
+    "su_sav": 19,
+    "instock": 16,
+    "vid_kaina": 40.35,
+    "marza_sv": 26
+   },
+   "sub|kita|kelioniu-iranga": {
+    "n": 18,
+    "su_sav": 18,
+    "instock": 15,
+    "vid_kaina": 38.1,
+    "marza_sv": 32.6
+   },
+   "sub|grauzikams|narvai-grauzikams": {
+    "n": 18,
+    "su_sav": 18,
+    "instock": 10,
+    "vid_kaina": 25.39,
+    "marza_sv": 30.9
+   },
+   "brand|WANPY": {
+    "n": 18,
+    "su_sav": 18,
+    "instock": 18,
+    "vid_kaina": 3.98,
+    "marza_sv": 26.9
+   },
+   "brand|Gemon": {
+    "n": 17,
+    "su_sav": 17,
+    "instock": 14,
+    "vid_kaina": 52.25,
+    "marza_sv": 23.1
+   },
+   "brand|HAP": {
+    "n": 16,
+    "su_sav": 16,
+    "instock": 15,
+    "vid_kaina": 12.22,
+    "marza_sv": 28.8
+   },
+   "brand|CANDIOLI": {
+    "n": 16,
+    "su_sav": 16,
+    "instock": 13,
+    "vid_kaina": 12.39,
+    "marza_sv": 26.2
+   },
+   "sub|katems|prieziuros-priemones-katems": {
+    "n": 15,
+    "su_sav": 13,
+    "instock": 13,
+    "vid_kaina": 9.31,
+    "marza_sv": 31.3
+   },
+   "brand|Ambrosia": {
+    "n": 15,
+    "su_sav": 15,
+    "instock": 15,
+    "vid_kaina": 34.9,
+    "marza_sv": 30.2
+   },
+   "sand|ambrosia": {
+    "n": 15,
+    "su_sav": 15,
+    "instock": 15,
+    "vid_kaina": 34.9,
+    "marza_sv": 30.2
+   },
+   "brand|TRULY": {
+    "n": 15,
+    "su_sav": 15,
+    "instock": 14,
+    "vid_kaina": 3.27,
+    "marza_sv": 27.3
+   },
+   "brand|GIGI": {
+    "n": 14,
+    "su_sav": 14,
+    "instock": 14,
+    "vid_kaina": 17.2,
+    "marza_sv": 26.1
+   },
+   "brand|Ebi": {
+    "n": 13,
+    "su_sav": 8,
+    "instock": 6,
+    "vid_kaina": 6.91,
+    "marza_sv": 33.3
+   },
+   "sub|sunims|maistas-sunims": {
+    "n": 13,
+    "su_sav": 13,
+    "instock": 13,
+    "vid_kaina": 5.57,
+    "marza_sv": 18.2
+   },
+   "brand|Deli Nature": {
+    "n": 13,
+    "su_sav": 13,
+    "instock": 10,
+    "vid_kaina": 32.56,
+    "marza_sv": 20.9
+   },
+   "brand|ECOMFY": {
+    "n": 13,
+    "su_sav": 13,
+    "instock": 9,
+    "vid_kaina": 36.57,
+    "marza_sv": 31
+   },
+   "brand|SMART BONES": {
+    "n": 13,
+    "su_sav": 13,
+    "instock": 9,
+    "vid_kaina": 5.01,
+    "marza_sv": 27
+   },
+   "brand|CIAO": {
+    "n": 12,
+    "su_sav": 12,
+    "instock": 8,
+    "vid_kaina": 6.69,
+    "marza_sv": 25.3
+   },
+   "sub|kita|tvenkiniu-zuvu-maistas": {
+    "n": 12,
+    "su_sav": 11,
+    "instock": 7,
+    "vid_kaina": 54.29,
+    "marza_sv": 27.1
+   },
+   "brand|Vetocanis": {
+    "n": 12,
+    "su_sav": 12,
+    "instock": 8,
+    "vid_kaina": 6.96,
+    "marza_sv": 31.9
+   },
+   "brand|Ad Bi": {
+    "n": 12,
+    "su_sav": 7,
+    "instock": 9,
+    "vid_kaina": 5.04,
+    "marza_sv": 28.6
+   },
+   "sub|katems|guoliai-katems": {
+    "n": 11,
+    "su_sav": 11,
+    "instock": 9,
+    "vid_kaina": 28.2,
+    "marza_sv": 28.7
+   },
+   "sub|sunims|prieziuros-priemones-katems": {
+    "n": 11,
+    "su_sav": 11,
+    "instock": 11,
+    "vid_kaina": 6.67,
+    "marza_sv": 29.9
+   },
+   "brand|4Dogs": {
+    "n": 11,
+    "su_sav": 11,
+    "instock": 11,
+    "vid_kaina": 9.75,
+    "marza_sv": 45.6
+   },
+   "brand|Green Petfood": {
+    "n": 11,
+    "su_sav": 11,
+    "instock": 11,
+    "vid_kaina": 26.45,
+    "marza_sv": 18.9
+   },
+   "sub|katems|vitaminai-ir-papildai-katems": {
+    "n": 11,
+    "su_sav": 9,
+    "instock": 10,
+    "vid_kaina": 5.86,
+    "marza_sv": 28.8
+   },
+   "brand|CAT'S_BEST": {
+    "n": 11,
+    "su_sav": 11,
+    "instock": 10,
+    "vid_kaina": 14.87,
+    "marza_sv": 23.3
+   },
+   "brand|MERVUE": {
+    "n": 11,
+    "su_sav": 11,
+    "instock": 9,
+    "vid_kaina": 18.22,
+    "marza_sv": 26.1
+   },
+   "brand|K-9": {
+    "n": 10,
+    "su_sav": 10,
+    "instock": 10,
+    "vid_kaina": 35.41,
+    "marza_sv": 33.4
+   },
+   "brand|SEECURITY": {
+    "n": 10,
+    "su_sav": 10,
+    "instock": 10,
+    "vid_kaina": 13.74,
+    "marza_sv": 27
+   },
+   "brand|Rasco": {
+    "n": 10,
+    "su_sav": 10,
+    "instock": 10,
+    "vid_kaina": 20.94,
+    "marza_sv": 36
+   },
+   "sub|katems|maistas-katems": {
+    "n": 10,
+    "su_sav": 9,
+    "instock": 9,
+    "vid_kaina": 28.2,
+    "marza_sv": 18.3
+   },
+   "brand|NATURE'S MIR": {
+    "n": 10,
+    "su_sav": 10,
+    "instock": 7,
+    "vid_kaina": 12.21,
+    "marza_sv": 26.2
+   },
+   "brand|VETOQUINOL": {
+    "n": 10,
+    "su_sav": 10,
+    "instock": 8,
+    "vid_kaina": 18.42,
+    "marza_sv": 26.2
+   },
+   "sub|sunims|antiparazitines-priemones-sunims": {
+    "n": 9,
+    "su_sav": 9,
+    "instock": 7,
+    "vid_kaina": 5.49,
+    "marza_sv": 42.7
+   },
+   "brand|GENIA": {
+    "n": 8,
+    "su_sav": 8,
+    "instock": 8,
+    "vid_kaina": 13.88,
+    "marza_sv": 30.6
+   },
+   "brand|BOGAR": {
+    "n": 8,
+    "su_sav": 8,
+    "instock": 5,
+    "vid_kaina": 6.37,
+    "marza_sv": 26.4
+   },
+   "sub|kita|lesalas-pauksciams": {
+    "n": 8,
+    "su_sav": 8,
+    "instock": 4,
+    "vid_kaina": 38.12,
+    "marza_sv": 23.6
+   },
+   "brand|Frendi": {
+    "n": 8,
+    "su_sav": 8,
+    "instock": 8,
+    "vid_kaina": 0.85,
+    "marza_sv": 40
+   },
+   "sub|katems|antkakliai-ir-petnesos-katems": {
+    "n": 8,
+    "su_sav": 8,
+    "instock": 3,
+    "vid_kaina": 4.97,
+    "marza_sv": 27.8
+   },
+   "brand|Family Dog": {
+    "n": 7,
+    "su_sav": 7,
+    "instock": 7,
+    "vid_kaina": 26.75,
+    "marza_sv": 23.2
+   },
+   "sub|sunims|vesinantys-kilimeliai-sunims": {
+    "n": 7,
+    "su_sav": 6,
+    "instock": 2,
+    "vid_kaina": 19.03,
+    "marza_sv": 28.7
+   },
+   "sub|kita|narvai": {
+    "n": 7,
+    "su_sav": 7,
+    "instock": 7,
+    "vid_kaina": 87.75,
+    "marza_sv": 28.6
+   },
+   "brand|Nina Ottosson": {
+    "n": 7,
+    "su_sav": 7,
+    "instock": 7,
+    "vid_kaina": 18.95,
+    "marza_sv": 32.9
+   },
+   "brand|Yarro": {
+    "n": 6,
+    "su_sav": 6,
+    "instock": 6,
+    "vid_kaina": 6.02,
+    "marza_sv": 31.9
+   },
+   "brand|Beeztees": {
+    "n": 6,
+    "su_sav": 6,
+    "instock": 5,
+    "vid_kaina": 6.84,
+    "marza_sv": 29.5
+   },
+   "brand|MPS": {
+    "n": 6,
+    "su_sav": 4,
+    "instock": 3,
+    "vid_kaina": 16.71,
+    "marza_sv": 34.6
+   },
+   "brand|Pess": {
+    "n": 6,
+    "su_sav": 6,
+    "instock": 6,
+    "vid_kaina": 3.73,
+    "marza_sv": 42.4
+   },
+   "brand|Family Cat": {
+    "n": 5,
+    "su_sav": 4,
+    "instock": 4,
+    "vid_kaina": 17.94,
+    "marza_sv": 23.2
+   },
+   "sub|sunims|transportavimo-dezes-sunims": {
+    "n": 5,
+    "su_sav": 5,
+    "instock": 5,
+    "vid_kaina": 100.01,
+    "marza_sv": 28.6
+   },
+   "brand|IAMS": {
+    "n": 5,
+    "su_sav": 5,
+    "instock": 2,
+    "vid_kaina": 43.21,
+    "marza_sv": 23.2
+   },
+   "brand|Vitapol": {
+    "n": 5,
+    "su_sav": 5,
+    "instock": 2,
+    "vid_kaina": 68.31,
+    "marza_sv": 28.6
+   },
+   "sub|katems|sukos-sepeciai-zirkles-katems": {
+    "n": 5,
+    "su_sav": 5,
+    "instock": 4,
+    "vid_kaina": 20.13,
+    "marza_sv": 28.7
+   },
+   "brand|Barry King": {
+    "n": 5,
+    "su_sav": 5,
+    "instock": 5,
+    "vid_kaina": 6.21,
+    "marza_sv": 35.5
+   },
+   "brand|Petshop.lt": {
+    "n": 5,
+    "su_sav": 4,
+    "instock": 5,
+    "vid_kaina": 5.65,
+    "marza_sv": 27.1
+   },
+   "sub|sunims|vitaminai-ir-papildai-katems": {
+    "n": 5,
+    "su_sav": 5,
+    "instock": 5,
+    "vid_kaina": 15.29,
+    "marza_sv": 26.5
+   },
+   "brand|bioVETERINARY": {
+    "n": 5,
+    "su_sav": 5,
+    "instock": 5,
+    "vid_kaina": 15.29,
+    "marza_sv": 26.5
+   },
+   "brand|Dolina Noteci": {
+    "n": 5,
+    "su_sav": 5,
+    "instock": 5,
+    "vid_kaina": 1.78,
+    "marza_sv": 18.8
+   },
+   "brand|BIOVETA": {
+    "n": 5,
+    "su_sav": 5,
+    "instock": 5,
+    "vid_kaina": 10.85,
+    "marza_sv": 26.8
+   },
+   "brand|Katrinex": {
+    "n": 4,
+    "su_sav": 4,
+    "instock": 4,
+    "vid_kaina": 11.71,
+    "marza_sv": 53
+   },
+   "brand|GimDog": {
+    "n": 4,
+    "su_sav": 3,
+    "instock": 4,
+    "vid_kaina": 8.41,
+    "marza_sv": 35.6
+   },
+   "brand|Dog Fantasy": {
+    "n": 4,
+    "su_sav": 3,
+    "instock": 2,
+    "vid_kaina": 8.87,
+    "marza_sv": 28.2
+   },
+   "brand|D&D Home": {
+    "n": 4,
+    "su_sav": 4,
+    "instock": 4,
+    "vid_kaina": 10.52,
+    "marza_sv": 33.4
+   },
+   "brand|Catit": {
+    "n": 4,
+    "su_sav": 4,
+    "instock": 4,
+    "vid_kaina": 23.32,
+    "marza_sv": 43.4
+   },
+   "brand|Super Benek": {
+    "n": 4,
+    "su_sav": 4,
+    "instock": 4,
+    "vid_kaina": 5.23,
+    "marza_sv": 38.9
+   },
+   "sub|katems|antiparazitines-priemones-katems": {
+    "n": 4,
+    "su_sav": 4,
+    "instock": 3,
+    "vid_kaina": 6.92,
+    "marza_sv": 45.4
+   },
+   "brand|Aquaris": {
+    "n": 4,
+    "su_sav": 4,
+    "instock": 0,
+    "vid_kaina": 78.7,
+    "marza_sv": 16.7
+   },
+   "brand|EXPERTUS": {
+    "n": 4,
+    "su_sav": 4,
+    "instock": 4,
+    "vid_kaina": 6.94,
+    "marza_sv": 23.7
+   },
+   "brand|CAZO": {
+    "n": 4,
+    "su_sav": 4,
+    "instock": 4,
+    "vid_kaina": 8.09,
+    "marza_sv": 26.3
+   },
+   "brand|Petstages": {
+    "n": 3,
+    "su_sav": 3,
+    "instock": 3,
+    "vid_kaina": 5.48,
+    "marza_sv": 32.1
+   },
+   "brand|One Wish": {
+    "n": 3,
+    "su_sav": 3,
+    "instock": 3,
+    "vid_kaina": 4.69,
+    "marza_sv": 37.4
+   },
+   "brand|Orientale": {
+    "n": 3,
+    "su_sav": 3,
+    "instock": 3,
+    "vid_kaina": 1.99,
+    "marza_sv": 27
+   },
+   "brand|Ziarnko": {
+    "n": 3,
+    "su_sav": 3,
+    "instock": 3,
+    "vid_kaina": 2.92,
+    "marza_sv": 26
+   },
+   "sub|kita|skanestai-pauksciams": {
+    "n": 3,
+    "su_sav": 2,
+    "instock": 2,
+    "vid_kaina": 2.56,
+    "marza_sv": 29.8
+   },
+   "sub|grauzikams|kraikas-ir-sienas-grauzikams": {
+    "n": 3,
+    "su_sav": 3,
+    "instock": 2,
+    "vid_kaina": 7.28,
+    "marza_sv": 28.5
+   },
+   "brand|ALDA": {
+    "n": 3,
+    "su_sav": 2,
+    "instock": 1,
+    "vid_kaina": 1.23,
+    "marza_sv": 41
+   },
+   "sub|sunims|sunims": {
+    "n": 3,
+    "su_sav": 3,
+    "instock": 3,
+    "vid_kaina": 9.77,
+    "marza_sv": 29.1
+   },
+   "brand|BAZYL": {
+    "n": 3,
+    "su_sav": 3,
+    "instock": 2,
+    "vid_kaina": 8.56,
+    "marza_sv": 23.5
+   },
+   "sub|kita|akvariumai-iranga": {
+    "n": 3,
+    "su_sav": 3,
+    "instock": 3,
+    "vid_kaina": 14.52,
+    "marza_sv": 28.8
+   },
+   "brand|KAROO WILD": {
+    "n": 3,
+    "su_sav": 3,
+    "instock": 3,
+    "vid_kaina": 4.69,
+    "marza_sv": 26.5
+   },
+   "sand|AV": {
+    "n": 3,
+    "su_sav": 3,
+    "instock": 3,
+    "vid_kaina": 5.92,
+    "marza_sv": 24.4
+   },
+   "brand|Gimborn": {
+    "n": 2,
+    "su_sav": 2,
+    "instock": 0,
+    "vid_kaina": 21.49,
+    "marza_sv": 28.8
+   },
+   "brand|Plaček": {
+    "n": 2,
+    "su_sav": 2,
+    "instock": 2,
+    "vid_kaina": 2.89,
+    "marza_sv": 33.2
+   },
+   "brand|Noir": {
+    "n": 2,
+    "su_sav": 2,
+    "instock": 2,
+    "vid_kaina": 15.28,
+    "marza_sv": 23
+   },
+   "brand|CHAMP RICHER": {
+    "n": 2,
+    "su_sav": 1,
+    "instock": 2,
+    "vid_kaina": 15.49,
+    "marza_sv": 45.9
+   },
+   "brand|Bosch": {
+    "n": 2,
+    "su_sav": 2,
+    "instock": 2,
+    "vid_kaina": 3.22,
+    "marza_sv": 39.7
+   },
+   "sub|sunims|dubeneliai-katems": {
+    "n": 2,
+    "su_sav": 2,
+    "instock": 2,
+    "vid_kaina": 12.74,
+    "marza_sv": 32.5
+   },
+   "brand|Chuckit!": {
+    "n": 2,
+    "su_sav": 2,
+    "instock": 2,
+    "vid_kaina": 12.05,
+    "marza_sv": 16.9
+   },
+   "brand|Matteo": {
+    "n": 2,
+    "su_sav": 2,
+    "instock": 2,
+    "vid_kaina": 9.68,
+    "marza_sv": 28.4
+   },
+   "sub|sunims|pirmoji-pagalba-sunims": {
+    "n": 2,
+    "su_sav": 2,
+    "instock": 2,
+    "vid_kaina": 22.04,
+    "marza_sv": 28.8
+   },
+   "brand|COSYCAT": {
+    "n": 2,
+    "su_sav": 2,
+    "instock": 2,
+    "vid_kaina": 16.79,
+    "marza_sv": 23.2
+   },
+   "brand|SANTOVITA": {
+    "n": 2,
+    "su_sav": 2,
+    "instock": 2,
+    "vid_kaina": 5.19,
+    "marza_sv": 27.1
+   },
+   "brand|CHIPSI": {
+    "n": 2,
+    "su_sav": 2,
+    "instock": 1,
+    "vid_kaina": 10.04,
+    "marza_sv": 28.9
+   },
+   "brand|JOE'S_CAT": {
+    "n": 2,
+    "su_sav": 2,
+    "instock": 2,
+    "vid_kaina": 13.29,
+    "marza_sv": 23.3
+   },
+   "sub|katems|transportavimo-dezes-katems": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 0,
+    "vid_kaina": 15.19,
+    "marza_sv": 28.7
+   },
+   "sub|sunims|konservu-rinkiniai": {
+    "n": 1,
+    "su_sav": 0,
+    "instock": 1,
+    "vid_kaina": 20.1,
+    "marza_sv": null
+   },
+   "brand|Biokat's": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 19.59,
+    "marza_sv": 26.3
+   },
+   "sub|kita|aksesuarai-pauksciams": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 15.19,
+    "marza_sv": 28.7
+   },
+   "brand|DoggyeBag": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 0,
+    "vid_kaina": 62.39,
+    "marza_sv": 28.6
+   },
+   "brand|ShinyCat": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 1.23,
+    "marza_sv": 33.1
+   },
+   "brand|PET SUPPLIES": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 4.37,
+    "marza_sv": 27.5
+   },
+   "brand|Magic Cat": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 1.99,
+    "marza_sv": 33.1
+   },
+   "brand|My Friend": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 22.86,
+    "marza_sv": 53.7
+   },
+   "brand|SILICA GEL": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 3.7,
+    "marza_sv": 37.9
+   },
+   "brand|Soukal": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 1.96,
+    "marza_sv": 28.4
+   },
+   "brand|Natural Vit": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 3.48,
+    "marza_sv": 25.9
+   },
+   "brand|LORD": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 19.26,
+    "marza_sv": 28.6
+   },
+   "brand|Lessie Land": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 3.74,
+    "marza_sv": 23
+   },
+   "brand|Zoolux": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 4.85,
+    "marza_sv": 26.2
+   },
+   "sub|katems|tualetai-kraikai-semtuveliai": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 0,
+    "vid_kaina": 17.99,
+    "marza_sv": 28.6
+   },
+   "sub|sunims|konservai-katems": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 1.23,
+    "marza_sv": 30.2
+   },
+   "sub|grauzikams|aksesuarai-pauksciams": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 0,
+    "vid_kaina": 12.79,
+    "marza_sv": 31.2
+   },
+   "brand|COSYPET": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 14.09,
+    "marza_sv": 23.6
+   },
+   "brand|DRAKONAPE": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 44.19,
+    "marza_sv": 26.1
+   },
+   "sub|sunims|baseinai-sunims": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 0,
+    "vid_kaina": 14.39,
+    "marza_sv": 28.9
+   },
+   "brand|Frexin": {
+    "n": 1,
+    "su_sav": 1,
+    "instock": 1,
+    "vid_kaina": 6.93,
+    "marza_sv": 25.4
+   }
+  },
+  "prekes_failas": 2639,
+  "fakt_uzs": [
+   {
+    "n": "19",
+    "viso": "551",
+    "marza": "135",
+    "kontrib": "156",
+    "prist_sav": null,
+    "prist_paimta": "29",
+    "mok_mok": "1",
+    "pak_sav": "8",
+    "nauji": "19"
+   }
+  ],
+  "fakt_kanalai": [
+   {
+    "k": "mokamas",
+    "n": "9",
+    "viso": "261",
+    "marza": "67"
+   },
+   {
+    "k": "organika",
+    "n": "5",
+    "viso": "119",
+    "marza": "18"
+   },
+   {
+    "k": "direct",
+    "n": "4",
+    "viso": "171",
+    "marza": "50"
+   },
+   {
+    "k": "",
+    "n": "1",
+    "viso": "1",
+    "marza": "0"
+   }
+  ],
+  "fakt_eil_gyv": [
+   {
+    "gyvunas": "",
+    "sandelis": "vf",
+    "eil": "10",
+    "vnt": "18",
+    "suma": "219",
+    "marza": "-5"
+   },
+   {
+    "gyvunas": "",
+    "sandelis": "legacy",
+    "eil": "23",
+    "vnt": "61",
+    "suma": "163",
+    "marza": "31"
+   },
+   {
+    "gyvunas": "",
+    "sandelis": "belcor_tofu",
+    "eil": "1",
+    "vnt": "1",
+    "suma": "26",
+    "marza": null
+   },
+   {
+    "gyvunas": "",
+    "sandelis": "quattro",
+    "eil": "1",
+    "vnt": "1",
+    "suma": "14",
+    "marza": "0"
+   }
+  ]
+ }
+}
