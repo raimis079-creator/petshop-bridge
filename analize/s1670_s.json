@@ -1,0 +1,91 @@
+{
+ "v": "dep-085122",
+ "kurimas": 200,
+ "sid": 5538,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1670 s",
+  "pastai": {
+   "vf": "ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite@vetfarmas.lt",
+   "belcor_tofu": "lina.sirvele@belacorinvest.lt",
+   "ambrosia": "info@alphazoo.lt",
+   "quattro": "e.panaviene@kaunogrudai.lt",
+   "prins": "irute@faunas.lt"
+  },
+  "laisko_nust": {
+   "tiekejui": false,
+   "man": true
+  },
+  "validacija": {
+   "vf": {
+    "kaip_vienas_elementas": false,
+    "turi_kableli": true
+   },
+   "belcor_tofu": {
+    "kaip_vienas_elementas": true,
+    "turi_kableli": false
+   },
+   "ambrosia": {
+    "kaip_vienas_elementas": true,
+    "turi_kableli": false
+   },
+   "quattro": {
+    "kaip_vienas_elementas": true,
+    "turi_kableli": false
+   },
+   "prins": {
+    "kaip_vienas_elementas": true,
+    "turi_kableli": false
+   }
+  },
+  "kopija": [
+   {
+    "aplankas": "/cur",
+    "h": {
+     "Date": "Thu, 10 Sep 2026 09:47:57 +0000",
+     "From": "\"Petshop.lt\" <uzsakymai@petshop.lt>",
+     "To": "terra@petshop.lt",
+     "Subject": "=?UTF-8?Q?u=C5=BEsakymas_2026-09-10?=",
+     "X-Mailer": "WPMailSMTP/Mailer/smtp 4.9.0",
+     "Subject_dek": "užsakymas 2026-09-10"
+    }
+   },
+   {
+    "aplankas": "/cur",
+    "h": {
+     "Date": "Fri, 11 Sep 2026 06:12:08 +0000",
+     "From": "\"DMARC Aggregate Report\" <dmarcreport@microsoft.com>",
+     "To": "<terra@petshop.lt>",
+     "Subject": "=?utf-8?B?W1ByZXZpZXddIFJlcG9ydCBEb21haW46IHBldHNob3AubHQgU3VibWl0dGVyOiBlbnRlcnByaXNlLnByb3RlY3Rpb24ub3V0bG9vay5jb20gUmVwb3J0LUlEOiA4ZjZmOWYxNGU4M2Y0MzY0OGVjOD",
+     "DKIM-Signature": "v=1; a=rsa-sha256; c=relaxed/relaxed; d=notification.microsoft.com; s=selector1; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderAD",
+     "Subject_dek": false
+    }
+   },
+   {
+    "aplankas": "/./cur",
+    "h": {
+     "Date": "Thu, 10 Sep 2026 09:47:57 +0000",
+     "From": "\"Petshop.lt\" <uzsakymai@petshop.lt>",
+     "To": "terra@petshop.lt",
+     "Subject": "=?UTF-8?Q?u=C5=BEsakymas_2026-09-10?=",
+     "X-Mailer": "WPMailSMTP/Mailer/smtp 4.9.0",
+     "Subject_dek": "užsakymas 2026-09-10"
+    }
+   },
+   {
+    "aplankas": "/./cur",
+    "h": {
+     "Date": "Fri, 11 Sep 2026 06:12:08 +0000",
+     "From": "\"DMARC Aggregate Report\" <dmarcreport@microsoft.com>",
+     "To": "<terra@petshop.lt>",
+     "Subject": "=?utf-8?B?W1ByZXZpZXddIFJlcG9ydCBEb21haW46IHBldHNob3AubHQgU3VibWl0dGVyOiBlbnRlcnByaXNlLnByb3RlY3Rpb24ub3V0bG9vay5jb20gUmVwb3J0LUlEOiA4ZjZmOWYxNGU4M2Y0MzY0OGVjOD",
+     "DKIM-Signature": "v=1; a=rsa-sha256; c=relaxed/relaxed; d=notification.microsoft.com; s=selector1; h=From:Date:Subject:Message-ID:Content-Type:MIME-Version:X-MS-Exchange-SenderAD",
+     "Subject_dek": false
+    }
+   }
+  ]
+ }
+}
