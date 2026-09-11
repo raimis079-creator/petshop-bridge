@@ -1,0 +1,39 @@
+{
+ "v": "dep-083013",
+ "kurimas": 200,
+ "sid": 5530,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1670 l",
+  "dirs": [
+   "wc-venipak-shipping"
+  ],
+  "ver": {
+   "wc-venipak-shipping": "1.26.5"
+  },
+  "h": {
+   "wc-venipak-shipping": {
+    "admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php": [
+     "571: $doc_no = $document->createElement( 'doc_no', $order->get_id() );",
+     "572: $attribute->appendChild($doc_no);"
+    ],
+    "includes/class-woocommerce-shopup-venipak-shipping.php": [
+     "298: * The reference to the class that orchestrates the hooks with the plugin."
+    ],
+    "includes/class-woocommerce-shopup-venipak-shipping-loader.php": [
+     "61: * @param    object               $component        A reference to the instance of the object on which the action is defined.",
+     "75: * @param    object               $component        A reference to the instance of the object on which the filter is defined.",
+     "92: * @param    object               $component        A reference to the instance of the object on which the filter is defined."
+    ]
+   }
+  },
+  "filtras_order_number": true,
+  "nr": [
+   35886,
+   "1006"
+  ]
+ }
+}
