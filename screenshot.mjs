@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjczIHJlY29uIHJlYWQgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKCFpc3NldCgkX0dFVFsncHNfciddKXx8JF9HRVRbJ3BzX3InXSE9PSdHTycpIHJldHVybjsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOyAkcj1nZXRfb3B0aW9uKCdwc19hZHNfcmVjb24nKTsgZWNobyBpc19hcnJheSgkcik/JHJbJ2JvZHknXTpqc29uX2VuY29kZSgkcik7IGV4aXQ7IH0pOwo=';
-const VER='dep-204403';
+const VER='dep-204647';
 const GKEY='ps_r';
 const PHASES=["GO"];
-const OUT='analize/s1673_gtm_v9.json';
+const OUT='analize/s1673_gtm_v9b.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -39,7 +39,7 @@ try{
   if(process.env.GTM_SA_JSON){ try{
     let raw=process.env.GTM_SA_JSON.trim(); if(!raw.startsWith('{')){ raw='{'+raw+'}'; } const sa=JSON.parse(raw); const crypto=await import('crypto');
     const now=Math.floor(Date.now()/1000); const b=s=>Buffer.from(JSON.stringify(s)).toString('base64url');
-    const hdr=b({alg:'RS256',typ:'JWT'}); const clm=b({iss:sa.client_email,scope:'https://www.googleapis.com/auth/tagmanager.edit.containers',aud:'https://oauth2.googleapis.com/token',iat:now,exp:now+3600});
+    const hdr=b({alg:'RS256',typ:'JWT'}); const clm=b({iss:sa.client_email,scope:'https://www.googleapis.com/auth/tagmanager.edit.containers https://www.googleapis.com/auth/tagmanager.publish',aud:'https://oauth2.googleapis.com/token',iat:now,exp:now+3600});
     const sig=crypto.createSign('RSA-SHA256').update(hdr+'.'+clm).sign(sa.private_key,'base64url');
     const tr=await fetch('https://oauth2.googleapis.com/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion='+hdr+'.'+clm+'.'+sig});
     const tj=await tr.json(); out.gtm={token:tr.status};
@@ -50,10 +50,26 @@ try{
       if(cpath){
         const J=async(u,m,b)=>{ const r=await fetch(G+u,{method:m||'GET',headers:Object.assign({'Content-Type':'application/json'},H),body:b?JSON.stringify(b):undefined}); const t=await r.text(); let j; try{j=JSON.parse(t);}catch(e){j={raw:t.slice(0,300)};} return {st:r.status,j}; };
         let ws=(await J(cpath+'/workspaces')).j; let w=(ws.workspace||[]).find(x=>x.name==='S1673 EC'); out.gtm.ws=w&&w.path;
-        if(w){ const v=await J(w.path+'/variables/42'); out.gtm.var42={st:v.st,type:v.j.type,name:v.j.name,param:JSON.stringify(v.j.parameter||[])};
-          const cv=await J(w.path+':create_version','POST',{name:'v9 — EC (user_data)',notes:'S1673: Purchase tag Enhanced Conversions; UPD kintamasis is dataLayer user_data.sha256_email_address (#614)'});
-          out.gtm.create_version={st:cv.st,compiler:cv.j.compilerError,sync:cv.j.syncStatus,ver:cv.j.containerVersion&&cv.j.containerVersion.containerVersionId};
-          if(cv.st===200&&!cv.j.compilerError&&cv.j.containerVersion){ const pb=await J(cv.j.containerVersion.path+':publish','POST'); out.gtm.publish={st:pb.st,compiler:pb.j.compilerError,live:pb.j.containerVersion&&pb.j.containerVersion.containerVersionId,err:pb.j.error?JSON.stringify(pb.j.error).slice(0,300):null}; }
+        if(w){ out.gtm.tipai={}; let found=null;
+          for(const ty of ['upd','ud','gtupd','uid','udv','gtes','gtcs','gt_upd','user_provided_data','userProvidedData','cvt_upd','ec','ecv']){
+            const c=await J(w.path+'/variables','POST',{name:'TEST tipas '+ty,type:ty,parameter:[{type:'template',key:'mode',value:'CODE'},{type:'template',key:'dataSource',value:'{{DLV — user_data}}'}]});
+            const keep=c.st===200&&(c.j.parameter||[]).length>0;
+            out.gtm.tipai[ty]={st:c.st,params:c.st===200?JSON.stringify(c.j.parameter||[]):JSON.stringify(c.j.error&&c.j.error.message).slice(0,120)};
+            if(c.st===200){ if(keep&&!found){ found={ty,path:c.j.path,fp:c.j.fingerprint}; } else { await J(c.j.path,'DELETE'); } }
+          }
+          out.gtm.found=found;
+          if(found){ // pervadinti, prikabinti prie tag 30, istrinti tuscia var42
+            const v=(await J(found.path)).j; v.name='UPD — user_data (EC)'; delete v.fingerprint; const up=await J(found.path,'PUT',v); out.gtm.rename=up.st;
+            const t=(await J(w.path+'/tags/30')).j; for(const k of ['fingerprint','path','accountId','containerId','workspaceId','tagId']) delete t[k];
+            t.parameter=(t.parameter||[]).filter(p=>!['enableEnhancedConversion','cssProvidedEnhancedConversionValue'].includes(p.key));
+            t.parameter.push({type:'boolean',key:'enableEnhancedConversion',value:'true'},{type:'template',key:'cssProvidedEnhancedConversionValue',value:'{{UPD — user_data (EC)}}'});
+            const r=await J(w.path+'/tags/30','PUT',t); out.gtm.tag30={st:r.st,err:r.j.error?JSON.stringify(r.j.error).slice(0,300):null};
+            if(r.st===200){ const dv=await J(w.path+'/variables/42','DELETE'); out.gtm.del42=dv.st; }
+            const st=await J(w.path+'/status'); out.gtm.status=(st.j.workspaceChange||[]).map(c=>c.changeStatus+':'+(c.tag?c.tag.name:c.variable?c.variable.name:'?'));
+            const cv=await J(w.path+':create_version','POST',{name:'v9 — EC (user_data)',notes:'S1673: Purchase tag Enhanced Conversions; UPD kintamasis (Code) is dataLayer user_data.sha256_email_address (#614)'});
+            out.gtm.create_version={st:cv.st,compiler:cv.j.compilerError,ver:cv.j.containerVersion&&cv.j.containerVersion.containerVersionId,err:cv.j.error?JSON.stringify(cv.j.error).slice(0,200):null};
+            if(cv.st===200&&!cv.j.compilerError&&cv.j.containerVersion){ const pb=await J(cv.j.containerVersion.path+':publish','POST'); out.gtm.publish={st:pb.st,err:pb.j.error?JSON.stringify(pb.j.error).slice(0,200):null}; }
+          }
           const live=await J(cpath+'/versions:live'); out.gtm.live={v:live.j.containerVersionId,name:live.j.name}; }
       }
     } else out.gtm.token_body=JSON.stringify(tj).slice(0,300);
