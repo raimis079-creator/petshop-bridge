@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjcyIG1jIG5vb3AgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKGlzc2V0KCRfR0VUWydwc19zMTY3Mm0nXSkpeyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKGFycmF5KCd2Jz0+J1MxNjcybWMnLCdvayc9PjEpKTsgZXhpdDsgfSB9KTsK';
-const VER='dep-174522';
+const VER='dep-175015';
 const GKEY='ps_s1672m';
 const PHASES=["GO"];
-const OUT='analize/s1672_fetch.json';
+const OUT='analize/s1672_img.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -34,27 +34,9 @@ try{
   await miegok(9000);
   if(process.env.GTM_SA_JSON){ try{ const sr=await fx(WP+'/wp-json/ps-seo-temp/v1/sa',{method:'POST',headers:{Authorization:AUTH,'Content-Type':'text/plain'},body:process.env.GTM_SA_JSON},'sa'); out.sa_push={status:sr.status,body:(await sr.text()).slice(0,200)}; }catch(e){ out.sa_push=String(e).slice(0,200);} }
 
-  // S1671 MERCHANT API: data source lt
-  if(process.env.GTM_SA_JSON){ try{
-    let raw=process.env.GTM_SA_JSON.trim(); out.mc_raw={len:raw.length,head:raw.slice(0,12)}; if(!raw.startsWith('{')){ raw='{'+raw+'}'; } const sa=JSON.parse(raw); const crypto=await import('crypto');
-    const now=Math.floor(Date.now()/1000); const b=s=>Buffer.from(JSON.stringify(s)).toString('base64url');
-    const hdr=b({alg:'RS256',typ:'JWT'}); const clm=b({iss:sa.client_email,scope:'https://www.googleapis.com/auth/content',aud:'https://oauth2.googleapis.com/token',iat:now,exp:now+3600});
-    const sig=crypto.createSign('RSA-SHA256').update(hdr+'.'+clm).sign(sa.private_key,'base64url');
-    const tr=await fetch('https://oauth2.googleapis.com/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion='+hdr+'.'+clm+'.'+sig});
-    const tj=await tr.json(); out.mc={sa:sa.client_email,token:tr.status};
-    if(tj.access_token){ const H={Authorization:'Bearer '+tj.access_token};
-      const l=await fetch('https://merchantapi.googleapis.com/datasources/v1/accounts/5321054797/dataSources',{headers:H}); const lj=await l.json();
-      out.mc.sources={status:l.status,items:(lj.dataSources||[]).map(d=>({name:d.name,dn:d.displayName,lang:d.primaryProductDataSource&&d.primaryProductDataSource.contentLanguage,label:d.primaryProductDataSource&&d.primaryProductDataSource.feedLabel,uri:d.fileInput&&d.fileInput.fetchSettings&&d.fileInput.fetchSettings.fetchUri}))};
-      let pt='',n=0,st={},iss={},pages=0,samples={},noStatus=0,full={};
-      let SKIP=1; do{ if(SKIP) break; const r=await fetch('https://merchantapi.googleapis.com/products/v1/accounts/5321054797/products?pageSize=250'+(pt?'&pageToken='+pt:''),{headers:H}); const j=await r.json(); pages++;
-        if(j.error){ out.mc.prod_err=JSON.stringify(j.error).slice(0,400); break; }
-        for(const p of (j.products||[])){ n++; const ps=p.productStatus; if(!ps){noStatus++;continue;}
-          for(const d of (ps.destinationStatuses||[])){ const k=d.reportingContext||'?'; st[k]=st[k]||{ok:0,pend:0,dis:0}; if((d.approvedCountries||[]).length) st[k].ok++; if((d.pendingCountries||[]).length) st[k].pend++; if((d.disapprovedCountries||[]).length) st[k].dis++; }
-          for(const i of (ps.itemLevelIssues||[])){ const k=(i.reportingContext||'?')+'|'+i.severity+'|'+i.code+'|'+(i.attribute||''); iss[k]=(iss[k]||0)+1; if(!samples[k]) samples[k]={desc:i.description,detail:(i.detail||'').slice(0,160),res:i.resolution,ids:[]}; if(samples[k].ids.length<3) samples[k].ids.push(p.offerId); if(/missing_shipping_weight|live_animals|healthcare|personal_hardships|inappropriate|violated_discovery|sexual|image_too_small|invalid_upc|alcohol|illegal_drugs|legal_restr/.test(i.code)&&(i.reportingContext==='SHOPPING_ADS'||i.reportingContext==='DEMAND_GEN_ADS')){ full[i.code]=full[i.code]||{}; full[i.code][p.offerId]=(p.attributes&&p.attributes.title||'').slice(0,70); } } }
-        pt=j.nextPageToken||''; }while(pt&&pages<20);
-      const fr=await fetch('https://merchantapi.googleapis.com/datasources/v1/accounts/5321054797/dataSources/10727325747:fetch',{method:'POST',headers:Object.assign({'Content-Type':'application/json'},H),body:'{}'}); out.mc.fetch_now={status:fr.status,body:(await fr.text()).slice(0,300)}; const ss=await fetch('https://merchantapi.googleapis.com/accounts/v1/accounts/5321054797/shippingSettings',{headers:H}); out.mc.shipping={status:ss.status,body:(await ss.text()).slice(0,2500)}; out.mc.full=full; out.mc.products={n,pages,noStatus,statuses:st,issues:Object.entries(iss).sort((a,b)=>b[1]-a[1]).map(([k,c])=>Object.assign({k,c},samples[k]))};
-    } else out.mc.token_body=JSON.stringify(tj).slice(0,300);
-  }catch(e){ out.mc_klaida=String(e).slice(0,400); } }
+  try{ const U=["https://tpc.googlesyndication.com/simgad/10147788483840868114", "https://tpc.googlesyndication.com/simgad/11171622223127115215", "https://tpc.googlesyndication.com/simgad/11173637857145669586", "https://tpc.googlesyndication.com/simgad/11859676137761369421", "https://tpc.googlesyndication.com/simgad/12152070195478488504", "https://tpc.googlesyndication.com/simgad/12382381375036370354", "https://tpc.googlesyndication.com/simgad/12662954739335037328", "https://tpc.googlesyndication.com/simgad/13185359217531228055", "https://tpc.googlesyndication.com/simgad/13334179599850874768", "https://tpc.googlesyndication.com/simgad/14285139171796621725", "https://tpc.googlesyndication.com/simgad/14286418812958387727", "https://tpc.googlesyndication.com/simgad/14786187412348671112", "https://tpc.googlesyndication.com/simgad/15168088408727874766", "https://tpc.googlesyndication.com/simgad/15266943350947126622", "https://tpc.googlesyndication.com/simgad/15269387432085048600", "https://tpc.googlesyndication.com/simgad/15764600272692756728", "https://tpc.googlesyndication.com/simgad/15838574335205574330", "https://tpc.googlesyndication.com/simgad/16220959323206637166", "https://tpc.googlesyndication.com/simgad/16372470328565995569", "https://tpc.googlesyndication.com/simgad/16474607221461162222", "https://tpc.googlesyndication.com/simgad/16583639811230205560", "https://tpc.googlesyndication.com/simgad/16628338283757801652", "https://tpc.googlesyndication.com/simgad/17140434746695401853", "https://tpc.googlesyndication.com/simgad/17219868766401569331", "https://tpc.googlesyndication.com/simgad/17599204736586228516", "https://tpc.googlesyndication.com/simgad/18276965030353422780", "https://tpc.googlesyndication.com/simgad/2541604692551334988", "https://tpc.googlesyndication.com/simgad/2734802306860112951", "https://tpc.googlesyndication.com/simgad/338404161112524932", "https://tpc.googlesyndication.com/simgad/3938470788774903764", "https://tpc.googlesyndication.com/simgad/4484400127950628611", "https://tpc.googlesyndication.com/simgad/4487641687624858119", "https://tpc.googlesyndication.com/simgad/4502636454494651924", "https://tpc.googlesyndication.com/simgad/4944457755740128784", "https://tpc.googlesyndication.com/simgad/5135102656641887411", "https://tpc.googlesyndication.com/simgad/6357407371722615076", "https://tpc.googlesyndication.com/simgad/6617109305473412811", "https://tpc.googlesyndication.com/simgad/6744018138707754106", "https://tpc.googlesyndication.com/simgad/6745713230118253846", "https://tpc.googlesyndication.com/simgad/7343185120713706516", "https://tpc.googlesyndication.com/simgad/7898911015750675020", "https://tpc.googlesyndication.com/simgad/8017770422296528127", "https://tpc.googlesyndication.com/simgad/8143108499018595029", "https://tpc.googlesyndication.com/simgad/8809031726184388354", "https://tpc.googlesyndication.com/simgad/9044453831737688647", "https://tpc.googlesyndication.com/simgad/9227973892237841823"]; out.img={n:U.length,ok:0,err:[]}; const m={};
+    for(const u of U){ try{ const r=await fetch(u,{headers:{'User-Agent':'Mozilla/5.0'}}); const buf=Buffer.from(await r.arrayBuffer()); const ct=r.headers.get('content-type')||''; if(r.status===200&&buf.length>500){ m[u]={ct,b:buf.toString('base64'),len:buf.length}; out.img.ok++; } else out.img.err.push(u+' '+r.status+' '+buf.length); }catch(e){ out.img.err.push(u+' '+String(e).slice(0,80)); } }
+    await put('analize/pmax_img_s1672.json', Buffer.from(JSON.stringify(m)), VER+' img'); }catch(e){ out.img_klaida=String(e).slice(0,300); }
   for(let i=0;i<PHASES.length;i++){
     const f=PHASES[i];
     if(i>0) await miegok(5000);
