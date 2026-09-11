@@ -2,11 +2,11 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://petshop.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjczIHJlYWQgNjE0ICovCmFkZF9hY3Rpb24oJ2luaXQnLCBmdW5jdGlvbigpeyBpZighaXNzZXQoJF9HRVRbJ3BzXzYxNCddKXx8JF9HRVRbJ3BzXzYxNCddIT09J0dPJykgcmV0dXJuOwogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7IGdsb2JhbCAkd3BkYjsgJGM9JHdwZGItPmdldF92YXIoIlNFTEVDVCBjb2RlIEZST00geyR3cGRiLT5wcmVmaXh9c25pcHBldHMgV0hFUkUgaWQ9NjE0Iik7CiAgZWNobyBqc29uX2VuY29kZShhcnJheSgnbWQ1Jz0+bWQ1KCRjKSwnbGVuJz0+c3RybGVuKCRjKSwnY29kZSc9PiRjKSxKU09OX1VORVNDQVBFRF9VTklDT0RFKTsgZXhpdDsgfSk7Cg==';
-const VER='dep-203852';
-const GKEY='ps_614';
+const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjczIHJlY29uIHJlYWQgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKCFpc3NldCgkX0dFVFsncHNfciddKXx8JF9HRVRbJ3BzX3InXSE9PSdHTycpIHJldHVybjsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOyAkcj1nZXRfb3B0aW9uKCdwc19hZHNfcmVjb24nKTsgZWNobyBpc19hcnJheSgkcik/JHJbJ2JvZHknXTpqc29uX2VuY29kZSgkcik7IGV4aXQ7IH0pOwo=';
+const VER='dep-204033';
+const GKEY='ps_r';
 const PHASES=["GO"];
-const OUT='analize/s1673_614.json';
+const OUT='analize/s1673_gtm_ec.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -49,17 +49,20 @@ try{
       out.gtm.container=cpath;
       if(cpath){
         const J=async(u,m,b)=>{ const r=await fetch(G+u,{method:m||'GET',headers:Object.assign({'Content-Type':'application/json'},H),body:b?JSON.stringify(b):undefined}); const t=await r.text(); let j; try{j=JSON.parse(t);}catch(e){j={raw:t.slice(0,300)};} return {st:r.status,j}; };
-        let ws=(await J(cpath+'/workspaces')).j; let w=(ws.workspace||[]).find(x=>x.name==='S1673 consent + EC');
-        if(!w){ const c=await J(cpath+'/workspaces','POST',{name:'S1673 consent + EC',description:'awct Purchase + Conversion Linker be papildomo consent (advanced CM); EC user_data'}); out.gtm.ws_create=c.st; w=c.j; }
+        let ws=(await J(cpath+'/workspaces')).j; let w=(ws.workspace||[]).find(x=>x.name==='S1673 EC');
+        if(!w){ const c=await J(cpath+'/workspaces','POST',{name:'S1673 EC',description:'Enhanced Conversions: UPD kintamasis (user_data is dataLayer) + Purchase tag EC'}); out.gtm.ws_create=c.st; w=c.j; }
         out.gtm.ws=w.path;
-        const tags=(await J(w.path+'/tags')).j.tag||[]; const vars=(await J(w.path+'/variables')).j.variable||[];
-        let ud=vars.find(v=>v.name==='DLV — user_data');
-        if(!ud){ const c=await J(w.path+'/variables','POST',{name:'DLV — user_data',type:'v',parameter:[{type:'integer',key:'dataLayerVersion',value:'2'},{type:'boolean',key:'setDefaultValue',value:'false'},{type:'template',key:'name',value:'user_data'}]}); out.gtm.ud_create={st:c.st,e:JSON.stringify(c.j).slice(0,200)}; ud=c.j; }
-        for(const id of ['30']){ const t=tags.find(x=>String(x.tagId)===id); if(!t){ out.gtm['tag'+id]='nerastas'; continue; }
-          const b=Object.assign({},t); delete b.fingerprint; delete b.path; delete b.accountId; delete b.containerId; delete b.workspaceId; delete b.tagId;
-          b.consentSettings={consentStatus:'notNeeded'};
-          
-          const r=await J(t.path,'PUT',b); out.gtm['tag'+id]={st:r.st,consent:r.j.consentSettings,param:JSON.stringify(r.j.parameter||[]).slice(0,600),err:r.j.error?JSON.stringify(r.j.error).slice(0,300):null}; }
+        const vars=(await J(w.path+'/variables')).j.variable||[]; const tags=(await J(w.path+'/tags')).j.tag||[];
+        let upd=vars.find(v=>v.name==='UPD — user_data (EC)');
+        if(!upd){ for(const body of [
+            {name:'UPD — user_data (EC)',type:'ud',parameter:[{type:'template',key:'mode',value:'CODE'},{type:'template',key:'dataSource',value:'{{DLV — user_data}}'}]},
+            {name:'UPD — user_data (EC)',type:'gtes',parameter:[{type:'template',key:'mode',value:'CODE'},{type:'template',key:'dataSource',value:'{{DLV — user_data}}'}]}]){
+          const c=await J(w.path+'/variables','POST',body); out.gtm['upd_'+body.type]={st:c.st,e:JSON.stringify(c.j).slice(0,250)}; if(c.st===200){ upd=c.j; break; } } }
+        if(upd){ const t=tags.find(x=>String(x.tagId)==='30');
+          const b=Object.assign({},t); for(const k of ['fingerprint','path','accountId','containerId','workspaceId','tagId']) delete b[k];
+          b.parameter=(b.parameter||[]).filter(p=>!['enableEnhancedConversion','cssProvidedEnhancedConversionValue','userDataVariable'].includes(p.key));
+          b.parameter.push({type:'boolean',key:'enableEnhancedConversion',value:'true'},{type:'template',key:'cssProvidedEnhancedConversionValue',value:'{{UPD — user_data (EC)}}'});
+          const r=await J(t.path,'PUT',b); out.gtm.tag30={st:r.st,param:JSON.stringify(r.j.parameter||[]).slice(0,700),err:r.j.error?JSON.stringify(r.j.error).slice(0,300):null}; }
         const st=await J(w.path+'/status'); out.gtm.status={st:st.st,changes:(st.j.workspaceChange||[]).map(c=>c.changeStatus+':'+(c.tag?c.tag.name:c.variable?c.variable.name:'?'))};
       }
     } else out.gtm.token_body=JSON.stringify(tj).slice(0,300);
