@@ -1,0 +1,1734 @@
+{
+ "v": "dep-151950",
+ "kurimas": 200,
+ "sid": 5554,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "E2": {
+  "v": "S1671e2",
+  "ist_span": {
+   "nuo": "2023-11-20 12:35:03",
+   "iki": "2026-09-08 22:20:17",
+   "n": "10169",
+   "suma": "422033"
+  },
+  "statusai": [
+   {
+    "statusas": "Užsakymas išsiųstas",
+    "ivykdytas": "1",
+    "n": "9554"
+   },
+   {
+    "statusas": "Atšauktas",
+    "ivykdytas": "0",
+    "n": "546"
+   },
+   {
+    "statusas": "+Užsakymas išsiųstas+",
+    "ivykdytas": "1",
+    "n": "51"
+   },
+   {
+    "statusas": "Užsakymas paruoštas",
+    "ivykdytas": "1",
+    "n": "10"
+   },
+   {
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1",
+    "n": "6"
+   },
+   {
+    "statusas": "Laukiama apmokėjimo",
+    "ivykdytas": "0",
+    "n": "2"
+   }
+  ],
+  "12m": {
+   "n": "3615",
+   "suma": "149960",
+   "vid": "41.48",
+   "klientai": "2236"
+  },
+  "12m_menesiai": [
+   {
+    "m": "2025-09",
+    "n": "253",
+    "suma": "10885"
+   },
+   {
+    "m": "2025-10",
+    "n": "269",
+    "suma": "11420"
+   },
+   {
+    "m": "2025-11",
+    "n": "284",
+    "suma": "12191"
+   },
+   {
+    "m": "2025-12",
+    "n": "276",
+    "suma": "11588"
+   },
+   {
+    "m": "2026-01",
+    "n": "349",
+    "suma": "14788"
+   },
+   {
+    "m": "2026-02",
+    "n": "305",
+    "suma": "12715"
+   },
+   {
+    "m": "2026-03",
+    "n": "286",
+    "suma": "11835"
+   },
+   {
+    "m": "2026-04",
+    "n": "338",
+    "suma": "13886"
+   },
+   {
+    "m": "2026-05",
+    "n": "299",
+    "suma": "12260"
+   },
+   {
+    "m": "2026-06",
+    "n": "310",
+    "suma": "12596"
+   },
+   {
+    "m": "2026-07",
+    "n": "307",
+    "suma": "12342"
+   },
+   {
+    "m": "2026-08",
+    "n": "263",
+    "suma": "10209"
+   },
+   {
+    "m": "2026-09",
+    "n": "76",
+    "suma": "3244"
+   }
+  ],
+  "pakartotinumas": {
+   "klientai": "2236",
+   "grize": "594",
+   "vid_uzs": "1.62"
+  },
+  "susietu_prekiu": 953,
+  "nesusieta": {
+   "eil": "286",
+   "suma": "5519"
+  },
+  "agg": {
+   "gyv|sunims": {
+    "suma": 76204,
+    "vnt": 11622,
+    "uzs": 4504,
+    "prekiu": 475,
+    "marza_eur": 15448,
+    "marza_pct": 25
+   },
+   "sub|sunims|sausas-maistas-sunims": {
+    "suma": 53466,
+    "vnt": 1525,
+    "uzs": 1389,
+    "prekiu": 130,
+    "marza_eur": 9247,
+    "marza_pct": 21
+   },
+   "sand|av": {
+    "suma": 49103,
+    "vnt": 19888,
+    "uzs": 5499,
+    "prekiu": 617,
+    "marza_eur": 13449,
+    "marza_pct": 34.4
+   },
+   "sand|vf": {
+    "suma": 43467,
+    "vnt": 1537,
+    "uzs": 1300,
+    "prekiu": 75,
+    "marza_eur": 6880,
+    "marza_pct": 19.2
+   },
+   "brand|Exclusion": {
+    "suma": 25740,
+    "vnt": 1136,
+    "uzs": 755,
+    "prekiu": 36,
+    "marza_eur": 4441,
+    "marza_pct": 20.9
+   },
+   "gyv|katems": {
+    "suma": 24286,
+    "vnt": 9608,
+    "uzs": 2295,
+    "prekiu": 245,
+    "marza_eur": 5528,
+    "marza_pct": 27.7
+   },
+   "brand|Josera": {
+    "suma": 21169,
+    "vnt": 683,
+    "uzs": 601,
+    "prekiu": 46,
+    "marza_eur": 3190,
+    "marza_pct": 18.2
+   },
+   "brand|Animonda": {
+    "suma": 13071,
+    "vnt": 9023,
+    "uzs": 1721,
+    "prekiu": 59,
+    "marza_eur": 3700,
+    "marza_pct": 34.3
+   },
+   "sub|sunims|konservai-sunims": {
+    "suma": 10054,
+    "vnt": 5360,
+    "uzs": 1406,
+    "prekiu": 68,
+    "marza_eur": 2759,
+    "marza_pct": 33.7
+   },
+   "sub|katems|sausas-maistas-katems": {
+    "suma": 9003,
+    "vnt": 358,
+    "uzs": 331,
+    "prekiu": 69,
+    "marza_eur": 1302,
+    "marza_pct": 17.5
+   },
+   "brand|?": {
+    "suma": 8530,
+    "vnt": 877,
+    "uzs": 509,
+    "prekiu": 133,
+    "marza_eur": 42,
+    "marza_pct": 24.8
+   },
+   "gyv|?": {
+    "suma": 8293,
+    "vnt": 846,
+    "uzs": 484,
+    "prekiu": 127,
+    "marza_eur": 0,
+    "marza_pct": null
+   },
+   "sub|?|?": {
+    "suma": 8293,
+    "vnt": 846,
+    "uzs": 484,
+    "prekiu": 127,
+    "marza_eur": 0,
+    "marza_pct": null
+   },
+   "sand|?": {
+    "suma": 8293,
+    "vnt": 846,
+    "uzs": 484,
+    "prekiu": 127,
+    "marza_eur": 0,
+    "marza_pct": null
+   },
+   "sub|sunims|skanestai-sunims": {
+    "suma": 7606,
+    "vnt": 3432,
+    "uzs": 1034,
+    "prekiu": 104,
+    "marza_eur": 2188,
+    "marza_pct": 39.2
+   },
+   "brand|Quattro": {
+    "suma": 7520,
+    "vnt": 314,
+    "uzs": 287,
+    "prekiu": 54,
+    "marza_eur": 1243,
+    "marza_pct": 20
+   },
+   "sand|quattro": {
+    "suma": 7520,
+    "vnt": 314,
+    "uzs": 287,
+    "prekiu": 54,
+    "marza_eur": 1243,
+    "marza_pct": 20
+   },
+   "sub|katems|konservai-katems": {
+    "suma": 7265,
+    "vnt": 6662,
+    "uzs": 1110,
+    "prekiu": 65,
+    "marza_eur": 2211,
+    "marza_pct": 36.8
+   },
+   "gyv|kita": {
+    "suma": 6278,
+    "vnt": 799,
+    "uzs": 505,
+    "prekiu": 96,
+    "marza_eur": 2185,
+    "marza_pct": 43.1
+   },
+   "brand|Royal Canin": {
+    "suma": 4132,
+    "vnt": 92,
+    "uzs": 82,
+    "prekiu": 21,
+    "marza_eur": 530,
+    "marza_pct": 15.5
+   },
+   "brand|Miamor": {
+    "suma": 3759,
+    "vnt": 2429,
+    "uzs": 453,
+    "prekiu": 26,
+    "marza_eur": 1099,
+    "marza_pct": 36.4
+   },
+   "brand|Hikari": {
+    "suma": 3721,
+    "vnt": 381,
+    "uzs": 268,
+    "prekiu": 36,
+    "marza_eur": 1259,
+    "marza_pct": 42.1
+   },
+   "sub|katems|maistas-katems": {
+    "suma": 3663,
+    "vnt": 1268,
+    "uzs": 163,
+    "prekiu": 8,
+    "marza_eur": 674,
+    "marza_pct": 22.3
+   },
+   "brand|Ontario": {
+    "suma": 3524,
+    "vnt": 1766,
+    "uzs": 505,
+    "prekiu": 52,
+    "marza_eur": 954,
+    "marza_pct": 36.5
+   },
+   "brand|Romar": {
+    "suma": 3475,
+    "vnt": 1796,
+    "uzs": 368,
+    "prekiu": 22,
+    "marza_eur": 945,
+    "marza_pct": 34.8
+   },
+   "brand|Ambrosia": {
+    "suma": 3260,
+    "vnt": 81,
+    "uzs": 76,
+    "prekiu": 13,
+    "marza_eur": 795,
+    "marza_pct": 29.5
+   },
+   "sand|ambrosia": {
+    "suma": 3260,
+    "vnt": 81,
+    "uzs": 76,
+    "prekiu": 13,
+    "marza_eur": 795,
+    "marza_pct": 29.5
+   },
+   "sub|kita|akvariumo-zuvyciu-maistas": {
+    "suma": 2757,
+    "vnt": 364,
+    "uzs": 252,
+    "prekiu": 32,
+    "marza_eur": 976,
+    "marza_pct": 43.2
+   },
+   "sub|katems|skanestai-katems": {
+    "suma": 2053,
+    "vnt": 902,
+    "uzs": 397,
+    "prekiu": 29,
+    "marza_eur": 552,
+    "marza_pct": 34.2
+   },
+   "sub|kita|tvenkiniu-zuvu-maistas": {
+    "suma": 1870,
+    "vnt": 101,
+    "uzs": 76,
+    "prekiu": 9,
+    "marza_eur": 609,
+    "marza_pct": 41.1
+   },
+   "brand|Gnatek": {
+    "suma": 1857,
+    "vnt": 1131,
+    "uzs": 332,
+    "prekiu": 25,
+    "marza_eur": 667,
+    "marza_pct": 46.8
+   },
+   "sand|zb": {
+    "suma": 1615,
+    "vnt": 43,
+    "uzs": 41,
+    "prekiu": 29,
+    "marza_eur": 337,
+    "marza_pct": 25.2
+   },
+   "sub|sunims|maistas-sunims": {
+    "suma": 1496,
+    "vnt": 510,
+    "uzs": 167,
+    "prekiu": 12,
+    "marza_eur": 327,
+    "marza_pct": 26.4
+   },
+   "brand|Rasco": {
+    "suma": 1126,
+    "vnt": 198,
+    "uzs": 80,
+    "prekiu": 10,
+    "marza_eur": 333,
+    "marza_pct": 35.8
+   },
+   "sub|katems|dubeneliai-katems": {
+    "suma": 1107,
+    "vnt": 88,
+    "uzs": 76,
+    "prekiu": 14,
+    "marza_eur": 424,
+    "marza_pct": 46.3
+   },
+   "sub|sunims|zaislai-sunims": {
+    "suma": 1083,
+    "vnt": 185,
+    "uzs": 175,
+    "prekiu": 94,
+    "marza_eur": 283,
+    "marza_pct": 33
+   },
+   "brand|Monge": {
+    "suma": 1046,
+    "vnt": 293,
+    "uzs": 83,
+    "prekiu": 18,
+    "marza_eur": 234,
+    "marza_pct": 27.1
+   },
+   "brand|Catit": {
+    "suma": 1015,
+    "vnt": 71,
+    "uzs": 60,
+    "prekiu": 4,
+    "marza_eur": 404,
+    "marza_pct": 48.2
+   },
+   "brand|Pess": {
+    "suma": 967,
+    "vnt": 335,
+    "uzs": 179,
+    "prekiu": 6,
+    "marza_eur": 375,
+    "marza_pct": 46.9
+   },
+   "brand|Prins": {
+    "suma": 927,
+    "vnt": 17,
+    "uzs": 16,
+    "prekiu": 6,
+    "marza_eur": 174,
+    "marza_pct": 22.7
+   },
+   "sand|prins": {
+    "suma": 927,
+    "vnt": 17,
+    "uzs": 16,
+    "prekiu": 6,
+    "marza_eur": 174,
+    "marza_pct": 22.7
+   },
+   "brand|Trixie": {
+    "suma": 907,
+    "vnt": 102,
+    "uzs": 84,
+    "prekiu": 44,
+    "marza_eur": 227,
+    "marza_pct": 31.6
+   },
+   "sub|kita|kraikai-kaciu-tualetams": {
+    "suma": 884,
+    "vnt": 189,
+    "uzs": 94,
+    "prekiu": 30,
+    "marza_eur": 316,
+    "marza_pct": 43.6
+   },
+   "brand|Duvo+": {
+    "suma": 876,
+    "vnt": 140,
+    "uzs": 117,
+    "prekiu": 42,
+    "marza_eur": 230,
+    "marza_pct": 37.1
+   },
+   "sub|sunims|antiparazitines-priemones-sunims": {
+    "suma": 804,
+    "vnt": 257,
+    "uzs": 155,
+    "prekiu": 8,
+    "marza_eur": 290,
+    "marza_pct": 43.6
+   },
+   "brand|GimCat": {
+    "suma": 796,
+    "vnt": 208,
+    "uzs": 134,
+    "prekiu": 23,
+    "marza_eur": 229,
+    "marza_pct": 37.6
+   },
+   "brand|BeloCat": {
+    "suma": 767,
+    "vnt": 155,
+    "uzs": 89,
+    "prekiu": 30,
+    "marza_eur": 258,
+    "marza_pct": 44
+   },
+   "sand|belcor_tofu": {
+    "suma": 739,
+    "vnt": 148,
+    "uzs": 84,
+    "prekiu": 27,
+    "marza_eur": 248,
+    "marza_pct": 44
+   },
+   "brand|Hau&Miau": {
+    "suma": 734,
+    "vnt": 77,
+    "uzs": 72,
+    "prekiu": 17,
+    "marza_eur": 112,
+    "marza_pct": 32.9
+   },
+   "brand|Katrinex": {
+    "suma": 708,
+    "vnt": 81,
+    "uzs": 57,
+    "prekiu": 3,
+    "marza_eur": 299,
+    "marza_pct": 51.1
+   },
+   "sub|katems|vitaminai-ir-papildai-katems": {
+    "suma": 489,
+    "vnt": 90,
+    "uzs": 69,
+    "prekiu": 11,
+    "marza_eur": 124,
+    "marza_pct": 34.8
+   },
+   "brand|Georplast": {
+    "suma": 482,
+    "vnt": 84,
+    "uzs": 68,
+    "prekiu": 24,
+    "marza_eur": 227,
+    "marza_pct": 57.1
+   },
+   "brand|4Dogs": {
+    "suma": 476,
+    "vnt": 83,
+    "uzs": 60,
+    "prekiu": 11,
+    "marza_eur": 196,
+    "marza_pct": 49.9
+   },
+   "sub|kita|tualetai-kraikai-semtuveliai": {
+    "suma": 464,
+    "vnt": 61,
+    "uzs": 52,
+    "prekiu": 18,
+    "marza_eur": 220,
+    "marza_pct": 57.5
+   },
+   "brand|Churu": {
+    "suma": 404,
+    "vnt": 202,
+    "uzs": 130,
+    "prekiu": 8,
+    "marza_eur": 79,
+    "marza_pct": 23.8
+   },
+   "brand|Real Dog": {
+    "suma": 376,
+    "vnt": 9,
+    "uzs": 9,
+    "prekiu": 3,
+    "marza_eur": 72,
+    "marza_pct": 23.1
+   },
+   "brand|Dingo": {
+    "suma": 347,
+    "vnt": 29,
+    "uzs": 29,
+    "prekiu": 16,
+    "marza_eur": 95,
+    "marza_pct": 33.2
+   },
+   "sub|sunims|sampunai-sunims": {
+    "suma": 308,
+    "vnt": 52,
+    "uzs": 48,
+    "prekiu": 7,
+    "marza_eur": 69,
+    "marza_pct": 38.2
+   },
+   "sub|katems|antiparazitines-priemones-katems": {
+    "suma": 292,
+    "vnt": 106,
+    "uzs": 47,
+    "prekiu": 3,
+    "marza_eur": 131,
+    "marza_pct": 54.1
+   },
+   "sub|katems|zaislai-katems": {
+    "suma": 279,
+    "vnt": 115,
+    "uzs": 86,
+    "prekiu": 36,
+    "marza_eur": 80,
+    "marza_pct": 34.8
+   },
+   "sub|sunims|vitaminai-ir-papildai-katems": {
+    "suma": 271,
+    "vnt": 22,
+    "uzs": 22,
+    "prekiu": 5,
+    "marza_eur": 59,
+    "marza_pct": 26.2
+   },
+   "brand|bioVETERINARY": {
+    "suma": 271,
+    "vnt": 22,
+    "uzs": 22,
+    "prekiu": 5,
+    "marza_eur": 59,
+    "marza_pct": 26.2
+   },
+   "brand|Super Benek": {
+    "suma": 227,
+    "vnt": 46,
+    "uzs": 32,
+    "prekiu": 4,
+    "marza_eur": 74,
+    "marza_pct": 39.5
+   },
+   "brand|Dolina Noteci": {
+    "suma": 209,
+    "vnt": 146,
+    "uzs": 54,
+    "prekiu": 5,
+    "marza_eur": 32,
+    "marza_pct": 18.8
+   },
+   "sub|sunims|higienos-priemones-sunims": {
+    "suma": 200,
+    "vnt": 41,
+    "uzs": 20,
+    "prekiu": 10,
+    "marza_eur": 25,
+    "marza_pct": 33.1
+   },
+   "brand|Aquaris": {
+    "suma": 198,
+    "vnt": 3,
+    "uzs": 3,
+    "prekiu": 2,
+    "marza_eur": 27,
+    "marza_pct": 16.7
+   },
+   "brand|Ad Bi": {
+    "suma": 197,
+    "vnt": 73,
+    "uzs": 53,
+    "prekiu": 12,
+    "marza_eur": 32,
+    "marza_pct": 32.3
+   },
+   "brand|Family Dog": {
+    "suma": 194,
+    "vnt": 7,
+    "uzs": 7,
+    "prekiu": 4,
+    "marza_eur": 37,
+    "marza_pct": 23.2
+   },
+   "sub|sunims|transportavimo-dezes-katems": {
+    "suma": 182,
+    "vnt": 9,
+    "uzs": 8,
+    "prekiu": 5,
+    "marza_eur": 38,
+    "marza_pct": 30.3
+   },
+   "sand|": {
+    "suma": 181,
+    "vnt": 14,
+    "uzs": 14,
+    "prekiu": 3,
+    "marza_eur": 40,
+    "marza_pct": 27
+   },
+   "sub|sunims|konservai-katems": {
+    "suma": 164,
+    "vnt": 164,
+    "uzs": 25,
+    "prekiu": 1,
+    "marza_eur": 41,
+    "marza_pct": 30.2
+   },
+   "brand|Sum-Plast": {
+    "suma": 156,
+    "vnt": 52,
+    "uzs": 48,
+    "prekiu": 22,
+    "marza_eur": 40,
+    "marza_pct": 32.9
+   },
+   "brand|ALDA": {
+    "suma": 156,
+    "vnt": 154,
+    "uzs": 66,
+    "prekiu": 3,
+    "marza_eur": 46,
+    "marza_pct": 41
+   },
+   "brand|Frendi": {
+    "suma": 145,
+    "vnt": 226,
+    "uzs": 57,
+    "prekiu": 8,
+    "marza_eur": 47,
+    "marza_pct": 39.4
+   },
+   "sub|kita|skanestai-pauksciams": {
+    "suma": 144,
+    "vnt": 79,
+    "uzs": 27,
+    "prekiu": 3,
+    "marza_eur": 26,
+    "marza_pct": 29.1
+   },
+   "brand|Petshop.lt": {
+    "suma": 136,
+    "vnt": 40,
+    "uzs": 25,
+    "prekiu": 5,
+    "marza_eur": 22,
+    "marza_pct": 27
+   },
+   "brand|Green Petfood": {
+    "suma": 136,
+    "vnt": 3,
+    "uzs": 3,
+    "prekiu": 2,
+    "marza_eur": 20,
+    "marza_pct": 17.4
+   },
+   "brand|Vetocanis": {
+    "suma": 129,
+    "vnt": 28,
+    "uzs": 23,
+    "prekiu": 5,
+    "marza_eur": 45,
+    "marza_pct": 42.4
+   },
+   "sub|sunims|sunims": {
+    "suma": 117,
+    "vnt": 15,
+    "uzs": 8,
+    "prekiu": 2,
+    "marza_eur": 27,
+    "marza_pct": 28.2
+   },
+   "sub|kita|narvai": {
+    "suma": 116,
+    "vnt": 2,
+    "uzs": 2,
+    "prekiu": 2,
+    "marza_eur": 27,
+    "marza_pct": 28.6
+   },
+   "brand|SILICA GEL": {
+    "suma": 116,
+    "vnt": 41,
+    "uzs": 7,
+    "prekiu": 1,
+    "marza_eur": 36,
+    "marza_pct": 37.9
+   },
+   "sub|sunims|transportavimo-dezes-sunims": {
+    "suma": 115,
+    "vnt": 2,
+    "uzs": 2,
+    "prekiu": 2,
+    "marza_eur": 27,
+    "marza_pct": 28.6
+   },
+   "sub|sunims|antkakliai-pavadeliai-sunims": {
+    "suma": 113,
+    "vnt": 8,
+    "uzs": 8,
+    "prekiu": 6,
+    "marza_eur": 27,
+    "marza_pct": 29.4
+   },
+   "brand|Eukanuba": {
+    "suma": 95,
+    "vnt": 2,
+    "uzs": 2,
+    "prekiu": 2,
+    "marza_eur": 18,
+    "marza_pct": 23.1
+   },
+   "brand|CHAMP RICHER": {
+    "suma": 90,
+    "vnt": 7,
+    "uzs": 7,
+    "prekiu": 1,
+    "marza_eur": 0,
+    "marza_pct": null
+   },
+   "gyv|grauzikams": {
+    "suma": 84,
+    "vnt": 23,
+    "uzs": 16,
+    "prekiu": 10,
+    "marza_eur": 16,
+    "marza_pct": 23.1
+   },
+   "brand|Pet Nova": {
+    "suma": 82,
+    "vnt": 29,
+    "uzs": 28,
+    "prekiu": 18,
+    "marza_eur": 22,
+    "marza_pct": 32.4
+   },
+   "sub|katems|guoliai-katems": {
+    "suma": 75,
+    "vnt": 3,
+    "uzs": 3,
+    "prekiu": 2,
+    "marza_eur": 18,
+    "marza_pct": 28.8
+   },
+   "sub|sunims|prieziuros-priemones-katems": {
+    "suma": 74,
+    "vnt": 17,
+    "uzs": 17,
+    "prekiu": 7,
+    "marza_eur": 19,
+    "marza_pct": 31.2
+   },
+   "brand|Zolux": {
+    "suma": 73,
+    "vnt": 26,
+    "uzs": 17,
+    "prekiu": 10,
+    "marza_eur": 12,
+    "marza_pct": 30.8
+   },
+   "brand|MPS": {
+    "suma": 73,
+    "vnt": 5,
+    "uzs": 4,
+    "prekiu": 3,
+    "marza_eur": 13,
+    "marza_pct": 36.7
+   },
+   "sub|grauzikams|pasaras-grauzikams": {
+    "suma": 70,
+    "vnt": 16,
+    "uzs": 11,
+    "prekiu": 6,
+    "marza_eur": 13,
+    "marza_pct": 22.5
+   },
+   "brand|Soukal": {
+    "suma": 69,
+    "vnt": 43,
+    "uzs": 9,
+    "prekiu": 1,
+    "marza_eur": 16,
+    "marza_pct": 28.4
+   },
+   "brand|Beeztees": {
+    "suma": 67,
+    "vnt": 13,
+    "uzs": 12,
+    "prekiu": 4,
+    "marza_eur": 16,
+    "marza_pct": 28.2
+   },
+   "brand|One Wish": {
+    "suma": 65,
+    "vnt": 17,
+    "uzs": 16,
+    "prekiu": 3,
+    "marza_eur": 22,
+    "marza_pct": 41.5
+   },
+   "brand|SEECURITY": {
+    "suma": 59,
+    "vnt": 5,
+    "uzs": 5,
+    "prekiu": 4,
+    "marza_eur": 14,
+    "marza_pct": 28.3
+   },
+   "brand|Bosch": {
+    "suma": 55,
+    "vnt": 34,
+    "uzs": 11,
+    "prekiu": 2,
+    "marza_eur": 16,
+    "marza_pct": 35.9
+   },
+   "brand|Barry King": {
+    "suma": 51,
+    "vnt": 11,
+    "uzs": 7,
+    "prekiu": 5,
+    "marza_eur": 16,
+    "marza_pct": 38.6
+   },
+   "brand|Deli Nature": {
+    "suma": 48,
+    "vnt": 3,
+    "uzs": 2,
+    "prekiu": 2,
+    "marza_eur": 8,
+    "marza_pct": 19.2
+   },
+   "sub|sunims|vesinantys-kilimeliai-sunims": {
+    "suma": 40,
+    "vnt": 3,
+    "uzs": 3,
+    "prekiu": 1,
+    "marza_eur": 0,
+    "marza_pct": null
+   },
+   "sub|sunims|dubeneliai-sunims": {
+    "suma": 40,
+    "vnt": 8,
+    "uzs": 6,
+    "prekiu": 5,
+    "marza_eur": 10,
+    "marza_pct": 29.7
+   },
+   "sand|AV": {
+    "suma": 40,
+    "vnt": 10,
+    "uzs": 3,
+    "prekiu": 2,
+    "marza_eur": 9,
+    "marza_pct": 28.7
+   },
+   "sub|kita|kelioniu-iranga": {
+    "suma": 32,
+    "vnt": 1,
+    "uzs": 1,
+    "prekiu": 1,
+    "marza_eur": 9,
+    "marza_pct": 33.4
+   },
+   "brand|LORD": {
+    "suma": 32,
+    "vnt": 2,
+    "uzs": 2,
+    "prekiu": 1,
+    "marza_eur": 8,
+    "marza_pct": 28.6
+   },
+   "brand|Yarro": {
+    "suma": 31,
+    "vnt": 5,
+    "uzs": 5,
+    "prekiu": 2,
+    "marza_eur": 9,
+    "marza_pct": 33.4
+   },
+   "brand|D&D Home": {
+    "suma": 31,
+    "vnt": 8,
+    "uzs": 6,
+    "prekiu": 2,
+    "marza_eur": 9,
+    "marza_pct": 33.5
+   },
+   "brand|Ziarnko": {
+    "suma": 29,
+    "vnt": 13,
+    "uzs": 8,
+    "prekiu": 3,
+    "marza_eur": 6,
+    "marza_pct": 25.1
+   },
+   "brand|Dog Fantasy": {
+    "suma": 28,
+    "vnt": 3,
+    "uzs": 2,
+    "prekiu": 2,
+    "marza_eur": 2,
+    "marza_pct": 26.6
+   },
+   "brand|Nina Ottosson": {
+    "suma": 27,
+    "vnt": 2,
+    "uzs": 2,
+    "prekiu": 2,
+    "marza_eur": 7,
+    "marza_pct": 31.4
+   },
+   "sub|katems|antkakliai-ir-petnesos-katems": {
+    "suma": 26,
+    "vnt": 13,
+    "uzs": 10,
+    "prekiu": 5,
+    "marza_eur": 6,
+    "marza_pct": 27.8
+   },
+   "sub|sunims|sukos-sepeciai-zirkles-katems": {
+    "suma": 25,
+    "vnt": 6,
+    "uzs": 6,
+    "prekiu": 4,
+    "marza_eur": 3,
+    "marza_pct": 26.3
+   },
+   "sub|sunims|sukos-sepeciai-zirkles-sunims": {
+    "suma": 25,
+    "vnt": 4,
+    "uzs": 4,
+    "prekiu": 3,
+    "marza_eur": 5,
+    "marza_pct": 34.6
+   },
+   "sub|katems|draskykles-katems": {
+    "suma": 24,
+    "vnt": 1,
+    "uzs": 1,
+    "prekiu": 1,
+    "marza_eur": 6,
+    "marza_pct": 28.6
+   },
+   "brand|Happet": {
+    "suma": 21,
+    "vnt": 5,
+    "uzs": 5,
+    "prekiu": 2,
+    "marza_eur": 5,
+    "marza_pct": 29.5
+   },
+   "sub|sunims|dubeneliai-katems": {
+    "suma": 21,
+    "vnt": 2,
+    "uzs": 1,
+    "prekiu": 1,
+    "marza_eur": 4,
+    "marza_pct": 20.2
+   },
+   "brand|Petstages": {
+    "suma": 20,
+    "vnt": 4,
+    "uzs": 4,
+    "prekiu": 2,
+    "marza_eur": 5,
+    "marza_pct": 31
+   },
+   "brand|Zoolux": {
+    "suma": 20,
+    "vnt": 5,
+    "uzs": 5,
+    "prekiu": 1,
+    "marza_eur": 4,
+    "marza_pct": 26.2
+   },
+   "brand|8in1": {
+    "suma": 16,
+    "vnt": 2,
+    "uzs": 1,
+    "prekiu": 1,
+    "marza_eur": 4,
+    "marza_pct": 28.6
+   },
+   "brand|Noir": {
+    "suma": 13,
+    "vnt": 1,
+    "uzs": 1,
+    "prekiu": 1,
+    "marza_eur": 2,
+    "marza_pct": 21.7
+   },
+   "brand|Ebi": {
+    "suma": 12,
+    "vnt": 2,
+    "uzs": 2,
+    "prekiu": 1,
+    "marza_eur": 3,
+    "marza_pct": 33.3
+   },
+   "sub|kita|lesalas-pauksciams": {
+    "suma": 11,
+    "vnt": 2,
+    "uzs": 1,
+    "prekiu": 1,
+    "marza_eur": 2,
+    "marza_pct": 16.7
+   },
+   "sub|katems|prieziuros-priemones-katems": {
+    "suma": 10,
+    "vnt": 2,
+    "uzs": 2,
+    "prekiu": 2,
+    "marza_eur": 3,
+    "marza_pct": 31.3
+   },
+   "brand|Chuckit!": {
+    "suma": 10,
+    "vnt": 1,
+    "uzs": 1,
+    "prekiu": 1,
+    "marza_eur": 1,
+    "marza_pct": 17.8
+   },
+   "sub|grauzikams|narvai-grauzikams": {
+    "suma": 8,
+    "vnt": 3,
+    "uzs": 3,
+    "prekiu": 2,
+    "marza_eur": 2,
+    "marza_pct": 27.9
+   },
+   "brand|Family Cat": {
+    "suma": 8,
+    "vnt": 2,
+    "uzs": 2,
+    "prekiu": 1,
+    "marza_eur": 0,
+    "marza_pct": null
+   },
+   "brand|PET SUPPLIES": {
+    "suma": 7,
+    "vnt": 2,
+    "uzs": 2,
+    "prekiu": 1,
+    "marza_eur": 2,
+    "marza_pct": 27.5
+   },
+   "brand|GimDog": {
+    "suma": 6,
+    "vnt": 2,
+    "uzs": 2,
+    "prekiu": 2,
+    "marza_eur": 1,
+    "marza_pct": 43.3
+   },
+   "brand|Plaček": {
+    "suma": 6,
+    "vnt": 3,
+    "uzs": 3,
+    "prekiu": 2,
+    "marza_eur": 2,
+    "marza_pct": 33.2
+   },
+   "brand|Lessie Land": {
+    "suma": 6,
+    "vnt": 2,
+    "uzs": 2,
+    "prekiu": 1,
+    "marza_eur": 1,
+    "marza_pct": 23
+   },
+   "brand|Natural Vit": {
+    "suma": 5,
+    "vnt": 2,
+    "uzs": 2,
+    "prekiu": 1,
+    "marza_eur": 1,
+    "marza_pct": 25.9
+   },
+   "brand|Orientale": {
+    "suma": 4,
+    "vnt": 2,
+    "uzs": 2,
+    "prekiu": 2,
+    "marza_eur": 1,
+    "marza_pct": 27
+   },
+   "sub|grauzikams|kraikas-ir-sienas-grauzikams": {
+    "suma": 4,
+    "vnt": 3,
+    "uzs": 1,
+    "prekiu": 1,
+    "marza_eur": 1,
+    "marza_pct": 24.4
+   },
+   "brand|Nobby": {
+    "suma": 4,
+    "vnt": 1,
+    "uzs": 1,
+    "prekiu": 1,
+    "marza_eur": 1,
+    "marza_pct": 28.2
+   },
+   "sub|grauzikams|skanestai-grauzikams": {
+    "suma": 2,
+    "vnt": 1,
+    "uzs": 1,
+    "prekiu": 1,
+    "marza_eur": 0,
+    "marza_pct": 23.1
+   }
+  },
+  "top40": [
+   [
+    18587,
+    8563,
+    199,
+    194,
+    20.4,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Exclusion",
+    "vf",
+    "Exclusion Hypoallergenic mažų veislių šunų maistas"
+   ],
+   [
+    18560,
+    5268,
+    89,
+    84,
+    18.5,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Exclusion",
+    "vf",
+    "Exclusion Hypoallergenic sausas šunų maistas su ki"
+   ],
+   [
+    17978,
+    3224,
+    102,
+    80,
+    16.8,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Josera",
+    "vf",
+    "Josera Sensiplus 12,5 kg &#8211; sausas maistas šu"
+   ],
+   [
+    18590,
+    2398,
+    141,
+    132,
+    20.9,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Exclusion",
+    "vf",
+    "Exclusion Hypoallergenic mažų veislių šunų maistas"
+   ],
+   [
+    18149,
+    2171,
+    60,
+    50,
+    16.7,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Josera",
+    "vf",
+    "JOSERA LAMB &#038; RICE pašaras šunims su ėriena, "
+   ],
+   [
+    18572,
+    2072,
+    34,
+    34,
+    21.3,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Exclusion",
+    "vf",
+    "Exclusion Hypoallergenic sausas šuniukų maistas su"
+   ],
+   [
+    19899,
+    1654,
+    49,
+    49,
+    null,
+    "?",
+    "?",
+    "?",
+    "?",
+    ""
+   ],
+   [
+    18154,
+    1554,
+    43,
+    38,
+    16.8,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Josera",
+    "vf",
+    "JOSERA FESTIVAL pašaras šunims su lašiša, 12,5 kg"
+   ],
+   [
+    18018,
+    1514,
+    40,
+    39,
+    16.7,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Josera",
+    "vf",
+    "Josera Mini Lamb begrūdis (Mini Deluxe) 10 kg &#82"
+   ],
+   [
+    17995,
+    1355,
+    30,
+    27,
+    16.7,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Josera",
+    "vf",
+    "Josera Salmon &#038; Potato 12,5 kg &#8211; begrūd"
+   ],
+   [
+    19760,
+    1289,
+    26,
+    24,
+    29.7,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Ambrosia",
+    "ambrosia",
+    "AMBROSIA begrūdis su ėriena ir šviežia elniena sau"
+   ],
+   [
+    18000,
+    1013,
+    28,
+    25,
+    16.8,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Josera",
+    "vf",
+    "Josera Optiness 12,5 kg &#8211; begrūdis sausas ma"
+   ],
+   [
+    16534,
+    997,
+    17,
+    15,
+    15.8,
+    "katems",
+    "maistas-katems",
+    "Royal Canin",
+    "av",
+    "ROYAL CANIN CAT FUSSY EXIGENT &#8211; 10 kg, sausa"
+   ],
+   [
+    18007,
+    967,
+    24,
+    23,
+    null,
+    "?",
+    "?",
+    "?",
+    "?",
+    "Josera Naturelle 10 kg &#8211; sausas maistas ster"
+   ],
+   [
+    18043,
+    957,
+    24,
+    24,
+    16.8,
+    "katems",
+    "sausas-maistas-katems",
+    "Josera",
+    "vf",
+    "Josera Marinesse 10 kg &#8211; sausas maistas katė"
+   ],
+   [
+    16669,
+    900,
+    24,
+    23,
+    20,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Quattro",
+    "quattro",
+    "QUATTRO Extra Salmon su lašiša sausas šunų pašaras"
+   ],
+   [
+    18545,
+    848,
+    14,
+    13,
+    28.1,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Exclusion",
+    "av",
+    "Exclusion Intestinal Monoprotein sausas šunų maist"
+   ],
+   [
+    19582,
+    783,
+    264,
+    64,
+    40.3,
+    "sunims",
+    "konservai-sunims",
+    "Animonda",
+    "av",
+    "Animonda GranCarno Adult Beef + Lamb: konservai šu"
+   ],
+   [
+    18566,
+    778,
+    13,
+    11,
+    16.7,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Exclusion",
+    "vf",
+    "Exclusion Hypoallergenic sausas šunų maistas su ar"
+   ],
+   [
+    18032,
+    776,
+    26,
+    24,
+    33.5,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Josera",
+    "vf",
+    "Josera Mini Chicken&#038;Rice 10 kg &#8211; sausas"
+   ],
+   [
+    16472,
+    764,
+    13,
+    13,
+    15.4,
+    "katems",
+    "maistas-katems",
+    "Royal Canin",
+    "av",
+    "ROYAL CANIN STERILISED 37,  10 kg, sausas pašaras "
+   ],
+   [
+    18599,
+    756,
+    235,
+    60,
+    27.6,
+    "sunims",
+    "maistas-sunims",
+    "Exclusion",
+    "av",
+    "Exclusion Hypoallergenic konservai šunims su kiaul"
+   ],
+   [
+    18112,
+    748,
+    27,
+    22,
+    33.4,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Josera",
+    "vf",
+    "Josera A/S Chicken&#038;Rice 12,5 kg &#8211; sausa"
+   ],
+   [
+    18084,
+    736,
+    18,
+    18,
+    16.7,
+    "katems",
+    "sausas-maistas-katems",
+    "Josera",
+    "vf",
+    "Josera Indoor 10 kg &#8211; sausas maistas naminėm"
+   ],
+   [
+    18128,
+    716,
+    45,
+    36,
+    25.1,
+    "sunims",
+    "skanestai-sunims",
+    "Romar",
+    "av",
+    "Jaučio peniai pjaustyti, 15 cm, 10 vnt."
+   ],
+   [
+    18551,
+    710,
+    15,
+    15,
+    30.1,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Exclusion",
+    "av",
+    "Exclusion Intestinal Monoprotein mažų veislių šunų"
+   ],
+   [
+    18508,
+    624,
+    59,
+    48,
+    54.4,
+    "katems",
+    "dubeneliai-katems",
+    "Catit",
+    "av",
+    "Filtrai automatinei vandens gertuvei fontanui katė"
+   ],
+   [
+    19884,
+    608,
+    32,
+    24,
+    null,
+    "?",
+    "?",
+    "?",
+    "?",
+    ""
+   ],
+   [
+    19570,
+    606,
+    217,
+    51,
+    36.8,
+    "sunims",
+    "konservai-sunims",
+    "Animonda",
+    "av",
+    "Animonda GranCarno Adult Beef: konservai šunims su"
+   ],
+   [
+    17950,
+    601,
+    22,
+    21,
+    16.8,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Josera",
+    "vf",
+    "Josidog Regular 15 kg &#8211; sausas maistas šunim"
+   ],
+   [
+    19590,
+    601,
+    217,
+    50,
+    36.1,
+    "sunims",
+    "konservai-sunims",
+    "Animonda",
+    "av",
+    "Animonda GranCarno Adult Beef + Duck Hearts: konse"
+   ],
+   [
+    19751,
+    585,
+    12,
+    12,
+    28.5,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Ambrosia",
+    "ambrosia",
+    "AMBROSIA begrūdis su ėriena ir šviežia lašiša saus"
+   ],
+   [
+    19770,
+    585,
+    12,
+    12,
+    28.5,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Ambrosia",
+    "ambrosia",
+    "AMBROSIA begrūdis su jautiena ir šviežia lašiša sa"
+   ],
+   [
+    18369,
+    570,
+    489,
+    52,
+    31.6,
+    "katems",
+    "maistas-katems",
+    "Miamor",
+    "av",
+    "Gėrimas katėms &#8211; Miamor Trinkfein Vitaldrink"
+   ],
+   [
+    18159,
+    569,
+    18,
+    16,
+    16.7,
+    "sunims",
+    "sausas-maistas-sunims",
+    "Josera",
+    "vf",
+    "JOSERA BALANCE pašaras šunims su vištiena, 12,5 kg"
+   ],
+   [
+    19496,
+    547,
+    192,
+    66,
+    34.8,
+    "sunims",
+    "konservai-sunims",
+    "Animonda",
+    "av",
+    "Animonda GranCarno Adult: konservai suaugusiems šu"
+   ],
+   [
+    18366,
+    546,
+    468,
+    38,
+    31.6,
+    "katems",
+    "maistas-katems",
+    "Miamor",
+    "av",
+    "Gėrimas katėms &#8211; Miamor Trinkfein Vitaldrink"
+   ],
+   [
+    17986,
+    540,
+    15,
+    14,
+    16.7,
+    "katems",
+    "sausas-maistas-katems",
+    "Josera",
+    "vf",
+    "Josera SensiCat 10 kg &#8211; sausas maistas katėm"
+   ],
+   [
+    19446,
+    532,
+    506,
+    47,
+    32.9,
+    "sunims",
+    "konservai-sunims",
+    "Animonda",
+    "av",
+    "Animonda Vom Feinsten Adult with Beef and Turkey H"
+   ],
+   [
+    18248,
+    522,
+    9,
+    8,
+    41.4,
+    "kita",
+    "tvenkiniu-zuvu-maistas",
+    "Hikari",
+    "av",
+    "Hikari Friend Large, 10 kg, &#8211; Hikari maistas"
+   ]
+  ],
+  "krepselis": [
+   {
+    "g": "<30",
+    "n": "1201",
+    "suma": "20487"
+   },
+   {
+    "g": "30-50",
+    "n": "1399",
+    "suma": "54212"
+   },
+   {
+    "g": "50-80",
+    "n": "775",
+    "suma": "48997"
+   },
+   {
+    "g": "80-120",
+    "n": "184",
+    "suma": "17242"
+   },
+   {
+    "g": "120+",
+    "n": "56",
+    "suma": "9023"
+   }
+  ],
+  "siuntimas": [
+   {
+    "s": "Pristatymas per Venipak paštomatus / ats",
+    "n": "2293"
+   },
+   {
+    "s": "Pristatymas per LP Express siuntų termin",
+    "n": "928"
+   },
+   {
+    "s": "Pristatymas per Venipak kurjerių tarnybą",
+    "n": "337"
+   },
+   {
+    "s": "Pristatymas per LP Express siuntų paštom",
+    "n": "57"
+   }
+  ]
+ }
+}
