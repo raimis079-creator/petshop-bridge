@@ -1,5 +1,58 @@
 {
- "v": "dep-062718",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "v": "dep-063144",
+ "kurimas": 200,
+ "sid": 5521,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1670 c",
+  "meta": {
+   "_ps_publikuota": "2026-09-07 13:32:28",
+   "total_sales": "1",
+   "_tax_status": "taxable",
+   "_tax_class": "",
+   "_manage_stock": "no",
+   "_backorders": "no",
+   "_sold_individually": "no",
+   "_virtual": "no",
+   "_downloadable": "no",
+   "_download_limit": "-1",
+   "_download_expiry": "-1",
+   "_stock": "",
+   "_stock_status": "instock",
+   "_wc_average_rating": "0",
+   "_wc_review_count": "0",
+   "_product_version": "11.0.1",
+   "_ps_sandelis": "belcor_tofu",
+   "_dp_base_product_id": "17659",
+   "_dp_pack_qty": "8",
+   "_ps_sales_30d": "0",
+   "_ps_sales_90d": "0",
+   "_ps_sales_365d": "0",
+   "_ps_revenue_365d": "0",
+   "_ps_orders_365d": "0",
+   "_ps_last_sale": "",
+   "_ps_sales_updated": "2026-09-11 07:50:55"
+  },
+  "kitu_8vnt": 17,
+  "post": {
+   "post_date": "2026-09-07 13:32:28",
+   "post_author": "0",
+   "post_parent": "0"
+  },
+  "rysio_raktai": [
+   "_dp_base_product_id",
+   "_dp_pack_qty"
+  ],
+  "kodas": {
+   "petshop-rinkiniai.php": [
+    "multipack"
+   ],
+   "class-feeding-package-resolver.php": [
+    "multipack"
+   ]
+  }
+ }
 }
