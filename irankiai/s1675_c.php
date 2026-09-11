@@ -1,0 +1,34 @@
+<?php
+/** TEMP PS S1675 run c — AUDITAS 3: fatal log pradžia, ps-backups HTTP prieiga, email_jobs pending, #35902 AVPN, instock0 backorders, wp-config. READ-ONLY. */
+add_action('init', function(){
+  if (!isset($_GET['ps_c5'])) return;
+  global $wpdb; $p=$wpdb->prefix; $wpdb->suppress_errors(true); $o=array('v'=>'S1675 c');
+  $o['temp_istrinta']=(int)$wpdb->query("DELETE FROM {$p}snippets WHERE name LIKE 'TEMP%' AND active=0");
+  $wcl=glob(WP_CONTENT_DIR.'/uploads/wc-logs/*fatal*'); rsort($wcl); foreach(array_slice($wcl,0,3) as $f){ $ls=array_values(array_filter(explode("\n",file_get_contents($f)))); $o['fatal'][basename($f)]=array_map(function($l){return mb_substr($l,0,260);},array_slice($ls,0,4)); }
+  // HTTP prieiga prie backup'ų
+  foreach(array('/wp-content/uploads/ps-backups/','/wp-content/uploads/ps-backups/petshop-feeds.php.bak_s1671','/wp-content/uploads/ps_bak_arch_20260909.json.gz','/wp-content/uploads/pmax-s1672/manifest.json','/wp-content/uploads/wc-logs/','/wp-content/mu-plugins/petshop-legacy-301-map.json','/wp-config.php.bak','/.git/HEAD','/error_log') as $u){ $r=wp_remote_get(home_url($u),array('timeout'=>20,'sslverify'=>false,'redirection'=>0)); $o['http'][$u]=wp_remote_retrieve_response_code($r).' '.round(strlen((string)wp_remote_retrieve_body($r))/1024).'kb'; }
+  $o['htaccess_backups']=file_exists(WP_CONTENT_DIR.'/uploads/ps-backups/.htaccess')?file_get_contents(WP_CONTENT_DIR.'/uploads/ps-backups/.htaccess'):'NERA';
+  $o['uploads_php_failai']=count(glob(WP_CONTENT_DIR.'/uploads/ps-backups/*.php*'));
+  // email_jobs pending
+  $o['ej_pending']=$wpdb->get_results("SELECT id,flow,recipient_email,scheduled_at,next_attempt_at,attempts,last_error,created_at FROM {$p}ps_email_jobs WHERE status='pending'",ARRAY_A);
+  foreach($o['ej_pending'] as &$e){ $e['recipient_email']=substr($e['recipient_email'],0,3).'***'; } unset($e);
+  $o['ej_skipped']=$wpdb->get_results("SELECT flow,skip_reason,COUNT(*) c FROM {$p}ps_email_jobs WHERE status='skipped' GROUP BY flow,skip_reason",ARRAY_A);
+  // #35902
+  $w=wc_get_order(35902); if($w){ $o['o35902']=array('is_paid'=>$w->is_paid(),'status'=>$w->get_status(),'pdf'=>$w->get_meta('_petshop_completed_pdf'),'doc_type'=>function_exists('petshop_get_invoice_document_type')?petshop_get_invoice_document_type($w):'?','wcdn'=>$w->get_meta('_wcdn_invoice_number'),'notes'=>array_map(function($n){return $n->date_created->date('m-d H:i').' '.mb_substr($n->content,0,120);},wc_get_order_notes(array('order_id'=>35902,'limit'=>15)))); $o['avpn_meta_35902']=$wpdb->get_results("SELECT meta_key,meta_value FROM {$p}wc_orders_meta WHERE order_id=35902 AND (meta_key LIKE '%avpn%' OR meta_key LIKE '%iapv%' OR meta_key LIKE '%pdf%' OR meta_key LIKE '%invoice%')",ARRAY_A); }
+  $o['avpn_neapmoketi']=$wpdb->get_results("SELECT m.order_id,o.status,o.payment_method,m.meta_value FROM {$p}wc_orders_meta m JOIN {$p}wc_orders o ON o.id=m.order_id WHERE m.meta_key='_petshop_avpn_number' AND o.status IN ('wc-on-hold','wc-pending','wc-cancelled','wc-failed')",ARRAY_A);
+  $o['avpn_seka']=$wpdb->get_col("SELECT meta_value FROM {$p}wc_orders_meta WHERE meta_key='_petshop_avpn_number' AND meta_value LIKE 'AVPN011%' ORDER BY meta_value");
+  foreach($wpdb->get_results("SELECT option_name n,option_value v FROM {$p}options WHERE option_name LIKE '%avpn%' OR option_name LIKE '%iapv%' OR option_name LIKE 'petshop_%counter%' OR option_name LIKE 'petshop_%serij%'") as $r) $o['skait'][$r->n]=mb_substr($r->v,0,40);
+  // instock0 av — backorders / stock_status detalės
+  $o['instock0_av']=$wpdb->get_results("SELECT s.post_id id,s.meta_value st,IFNULL(ow.meta_value,'-') own,IFNULL(bo.meta_value,'-') backord,po.post_title t FROM {$p}postmeta s JOIN {$p}postmeta st ON st.post_id=s.post_id AND st.meta_key='_stock_status' AND st.meta_value='instock' JOIN {$p}posts po ON po.ID=s.post_id AND po.post_status='publish' AND po.post_type='product' JOIN {$p}postmeta sd ON sd.post_id=s.post_id AND sd.meta_key='_ps_sandelis' AND sd.meta_value='av' JOIN {$p}postmeta ms ON ms.post_id=s.post_id AND ms.meta_key='_manage_stock' AND ms.meta_value='yes' LEFT JOIN {$p}postmeta ow ON ow.post_id=s.post_id AND ow.meta_key='_own_stock_qty' LEFT JOIN {$p}postmeta bo ON bo.post_id=s.post_id AND bo.meta_key='_backorders' WHERE s.meta_key='_stock' AND (s.meta_value+0+IFNULL(ow.meta_value,0))<=0 LIMIT 12",ARRAY_A);
+  foreach(array_slice($o['instock0_av'],0,3) as $x){ $pr=wc_get_product($x['id']); if($pr) $o['instock0_wc'][$x['id']]=array('qty'=>$pr->get_stock_quantity(),'status'=>$pr->get_stock_status(),'purchasable'=>$pr->is_purchasable(),'in_stock'=>$pr->is_in_stock(),'reg'=>$wpdb->get_results("SELECT source,stock_qty,is_active FROM {$p}ps_sources WHERE product_id={$x['id']}",ARRAY_A)); }
+  $o['instock0_av_viso']=(int)$wpdb->get_var("SELECT COUNT(*) FROM {$p}postmeta s JOIN {$p}postmeta st ON st.post_id=s.post_id AND st.meta_key='_stock_status' AND st.meta_value='instock' JOIN {$p}posts po ON po.ID=s.post_id AND po.post_status='publish' AND po.post_type='product' JOIN {$p}postmeta sd ON sd.post_id=s.post_id AND sd.meta_key='_ps_sandelis' AND sd.meta_value='av' JOIN {$p}postmeta ms ON ms.post_id=s.post_id AND ms.meta_key='_manage_stock' AND ms.meta_value='yes' LEFT JOIN {$p}postmeta ow ON ow.post_id=s.post_id AND ow.meta_key='_own_stock_qty' WHERE s.meta_key='_stock' AND (s.meta_value+0+IFNULL(ow.meta_value,0))<=0");
+  $o['outofstock_su_likuciu']=(int)$wpdb->get_var("SELECT COUNT(*) FROM {$p}postmeta s JOIN {$p}postmeta st ON st.post_id=s.post_id AND st.meta_key='_stock_status' AND st.meta_value='outofstock' JOIN {$p}posts po ON po.ID=s.post_id AND po.post_status='publish' AND po.post_type='product' LEFT JOIN {$p}postmeta ow ON ow.post_id=s.post_id AND ow.meta_key='_own_stock_qty' WHERE s.meta_key='_stock' AND (s.meta_value+0+IFNULL(ow.meta_value,0))>0");
+  // wp-config
+  $c=file_get_contents(ABSPATH.'wp-config.php'); preg_match_all("/^\s*(define\s*\(\s*'(WP_DEBUG[A-Z_]*|DISALLOW_FILE_EDIT|WP_MEMORY_LIMIT|WP_MAX_MEMORY_LIMIT|FORCE_SSL_ADMIN|DISABLE_WP_CRON|WP_AUTO_UPDATE_CORE|AUTOMATIC_UPDATER_DISABLED)'[^;]*;|ini_set[^;]*;|@?error_reporting[^;]*;)/m",$c,$m); $o['wpconfig']=$m[1];
+  $o['php_ini_uploads']=array_map('basename',array_merge(glob(ABSPATH.'.user.ini'),glob(ABSPATH.'php.ini'),glob(dirname(ABSPATH).'/.user.ini')));
+  $o['file_edit']=defined('DISALLOW_FILE_EDIT')?DISALLOW_FILE_EDIT:'nedef';
+  $o['adminai']=array_map(function($u){return $u->user_login;},get_users(array('role'=>'administrator','fields'=>array('user_login'))));
+  $o['app_passwords']=(int)$wpdb->get_var("SELECT COUNT(*) FROM {$p}usermeta WHERE meta_key='_application_passwords'");
+  $o['db_klaida']=$wpdb->last_error;
+  header('Content-Type: application/json'); echo json_encode($o,JSON_UNESCAPED_UNICODE|JSON_PARTIAL_OUTPUT_ON_ERROR); exit;
+},99);
