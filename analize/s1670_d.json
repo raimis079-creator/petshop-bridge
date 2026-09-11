@@ -1,93 +1,67 @@
 {
- "v": "dep-174654",
+ "v": "dep-063324",
  "kurimas": 200,
- "sid": 5385,
+ "sid": 5522,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "GO": {
+ "A": {
   "v": "S1670 d",
-  "eil": [
-   "petshop-av-dropship.php:125 * ps_sources (fallback SKU), mygtukas „Kopijuoti\" (kodas TAB kiekis — įklijavimui",
-   "petshop-av-dropship.php:497 /** ZB kodas iš ps_sources (supplier_sku); atsargai — produkto SKU. */",
-   "petshop-av-dropship.php:501 $t = $wpdb->prefix . 'ps_sources';",
-   "petshop-ataskaita-atsargos.php:9 * galiojimas) · `ps_sources` (tiekėjas, tiekėjo likutis) · `ps_fakt_eilutes`",
-   "petshop-ataskaita-atsargos.php:36 private static function src() { global $wpdb; return $wpdb->prefix . 'ps_sources'; }",
-   "petshop-ataskaita-atsargos.php:307 if ( ! $r ) { $UI::tuscia( 'ps_sources tuščia.' ); return; }",
-   "petshop-fakt-atsargos.php:141 * v1.1 — sprende TIK is `ps_sources`. Dar blogiau: ta lentele yra SALTINIU",
-   "petshop-fakt-atsargos.php:183 * v1.1: „su tiekeju\" nustatomas is `ps_sources`, ne is sandelio pavadinimo.",
-   "petshop-fakt-atsargos.php:184 * `ps_sources` lenteles nesant grazinam i sena elgsena (sandelis != av),",
-   "petshop-katalogas.php:420 *   Katalogas eme savikaina TIK is `ps_sources` registro, todel preke, kurios",
-   "petshop-katalogas.php:565 *      kabo ps_sources registras, tiekėjų XML sutapdinimas, užsakymų eilutės",
-   "petshop-katalogas.php:965 * v8.4 (S1669): TIEKEJO sandelis imamas is saltiniu registro `ps_sources`,",
-   "petshop-katalogas.php:977 $t = $wpdb->prefix . 'ps_sources';",
-   "petshop-katalogas.php:3361 /* v4.6: SKU UŽRAKINTAS. Prie jo rišasi ps_sources registras, tiekėjų",
-   "petshop-katalogas.php:5095 Iki siol imta TIK is `ps_sources` registro, todel preke, kurios",
-   "petshop-katalogas.php:5387 $t = $wpdb->prefix . 'ps_sources';",
-   "petshop-katalogas.php:8901 if(!confirm(\"Atrakinti SKU?\\n\\nPrie jo rišasi šaltinių registras (ps_sources), tiekėjų XML sutapdinimas, užsakymų eilutės ir kainų palyginim",
-   "petshop-seseliai.php:14 *   - AV prekės `ps_sources` zb eilutė (stock_qty, cost_net, synced_at)",
-   "petshop-seseliai.php:62 $T = $P . 'ps_sources';"
-  ],
-  "failai": {
-   "petshop-av-dropship.php": 3,
-   "petshop-ataskaita-atsargos.php": 3,
-   "petshop-fakt-atsargos.php": 3,
-   "petshop-katalogas.php": 8,
-   "petshop-seseliai.php": 2
-  },
-  "cron": {
-   "ps_email_dispatch_cron": "2026-09-09 20:48",
-   "ps_cart_abandon_check": "2026-09-09 20:49",
-   "petshop_import_tempas": "2026-09-09 20:49",
-   "ps_webp_batch": "2026-09-09 20:51",
-   "ps_esp_cron_process_pending": "2026-09-09 20:52",
-   "petshop_vf_sync_stock_hourly": "2026-09-09 20:59",
-   "petshop_vf_feed_hourly": "2026-09-09 21:05",
-   "ps_venipak_sekimas": "2026-09-09 21:06",
-   "ps_refill_iv_veidrodis": "2026-09-09 21:06",
-   "ps_akcijos_valanda": "2026-09-09 21:08",
-   "ps_vartai_valanda": "2026-09-09 21:13",
-   "ps_seseliai_valandinis": "2026-09-09 21:13",
-   "ps_dropship_sargas": "2026-09-09 21:13",
-   "ps_juosta_reikia_cron": "2026-09-09 21:28",
-   "ps_browse_abandon_check": "2026-09-09 21:37",
-   "ps_post_purchase_check": "2026-09-09 21:39",
-   "ps_dim_klientu_perskaiciavimas": "2026-09-09 23:40",
-   "ps_fakt_atsargu_snapshot": "2026-09-09 23:55",
-   "ps_stat_valymas": "2026-09-10 00:41",
-   "petshop_attr_engine_run": "2026-09-10 01:57",
-   "woo_lithuaniapost_sync_tracking_data": "2026-09-10 03:00",
-   "ps_fakt_siuntu_sutikrinimas": "2026-09-10 03:05",
-   "ps_web_agregavimas": "2026-09-10 03:10",
-   "ps_ataskaitu_agregavimas": "2026-09-10 03:15",
-   "ps_dl_atsauktu_valymas": "2026-09-10 03:20",
-   "petshop_fbt_copurchase_rebuild": "2026-09-10 04:10",
-   "ps_fakt_reklama_portalai": "2026-09-10 04:20",
-   "ps_feeds_naktinis": "2026-09-10 04:30",
-   "ps_klientai_perskaiciuoti": "2026-09-10 05:30",
-   "ps_pet_drafts_cleanup_daily": "2026-09-10 05:40",
-   "ps_web_valymas": "2026-09-10 05:40",
-   "petshop_vf_sync_reprice_daily": "2026-09-10 06:00",
-   "ps_rytas_sargas": "2026-09-10 06:30",
-   "ps_prognoze_diena": "2026-09-10 06:40",
-   "petshop_vf_sync_publish_daily": "2026-09-10 07:00",
-   "ps_sargas_kasdien": "2026-09-10 07:00",
-   "ps_seo_cwv_diena": "2026-09-10 07:00",
-   "ps_sources_naktinis": "2026-09-10 07:20",
-   "ps_kontrole_diena": "2026-09-10 07:30",
-   "ps_ivykiai_valymas": "2026-09-10 07:40",
-   "ps_pardavimai_naktinis": "2026-09-10 07:50",
-   "ps_pilnumas_naktinis": "2026-09-10 08:00",
-   "ps_seo_qa_diena": "2026-09-10 08:00",
-   "ps_suppression_daily_reconcile": "2026-09-10 08:30",
-   "ps_gsc_diena": "2026-09-10 09:00",
-   "ps_prenumerata_diena": "2026-09-10 09:10",
-   "ps_refill_daily_check": "2026-09-10 11:00",
-   "ps_reminders_daily_check": "2026-09-10 12:00",
-   "ps_velavimo_laiskai": "2026-09-10 14:00",
-   "ps_sargas_savaitinis": "2026-09-15 08:00",
-   "petshop_pragma_monthly_export": "2026-10-05 11:00"
+  "h": {
+   "wp-content/mu-plugins/petshop-ataskaitu-agregavimas.php": [
+    "316: foreach ( (array) $wpdb->get_col( \"SELECT DISTINCT meta_value FROM {$wpdb->postmeta} WHERE meta_key='_dp_base_product_id'\" ) as $x ) {",
+    "402: $baze = (int) get_post_meta( $pid, '_dp_base_product_id', true );",
+    "403: $pqty = (int) get_post_meta( $pid, '_dp_pack_qty', true );"
+   ],
+   "wp-content/mu-plugins/petshop-av-source.php": [
+    "68: 'reason'       => 'grynai AV prekė (be tiekėjo)',",
+    "98: ? 'AV šios prekės neturi'"
+   ],
+   "wp-content/mu-plugins/petshop-av-stock.php": [
+    "28: * SVARBU: tuščias laukas ≠ 0. Tuščias = „AV šios prekės neturi\".",
+    "95: /** AV likutis. NULL = AV šios prekės neturi (laukas tuščias). */",
+    "188: . 'Tuščias laukas reiškia, kad AV šios prekės neturi. '"
+   ],
+   "wp-content/mu-plugins/petshop-faktai.php": [
+    "615: $baze = (int) get_post_meta( $pid, '_dp_base_product_id', true );",
+    "616: $pqty = (int) get_post_meta( $pid, '_dp_pack_qty', true );"
+   ],
+   "wp-content/mu-plugins/petshop-katalogas.php": [
+    "409: * Teisingai. DP pakuote (`_dp_base_product_id`) savo eilutes registre neturi ir",
+    "2929: $dp_baze = (int) ( $mv( '_dp_base_product_id' ) ?: 0 );",
+    "2930: $dp_kiek = max( 1, (int) ( $mv( '_dp_pack_qty' ) ?: 1 ) );",
+    "5042: $dp_b = isset( $m['_dp_base_product_id'] ) ? (int) $m['_dp_base_product_id'] : 0;",
+    "5043: $dp_n = isset( $m['_dp_pack_qty'] ) ? max( 1, (int) $m['_dp_pack_qty'] ) : 1;",
+    "5361: '_dp_base_product_id','_dp_pack_qty',"
+   ],
+   "wp-content/mu-plugins/petshop-paruostu-ataskaita.php": [
+    "42: * dezes — kitas ekranas) + DP pakai (`_dp_base_product_id`).",
+    "64: $dp = $wpdb->get_col( \"SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key='_dp_base_product_id' LIMIT 300\" );",
+    "68: $baze = (int) get_post_meta( $id, '_dp_base_product_id', true );",
+    "69: $qty  = (int) get_post_meta( $id, '_dp_pack_qty', true );"
+   ],
+   "wp-content/mu-plugins/petshop-pilnumas.php": [
+    "313: if ( get_post_meta( $pid, '_dp_base_product_id', true ) ) { return 'DP skelbimas'; }"
+   ],
+   "wp-content/mu-plugins/petshop-rinkiniai.php": [
+    "153: *   B) TA PATI PREKE x N -> „Daugiau=pigiau\" pakas (`simple` + `_dp_base_product_id`",
+    "154: *      + `_dp_pack_qty`). Ne MnM! Priezastis ne likuciai (juos tvarko snippet 567",
+    "401: || ( get_post_meta( $pid, '_dp_base_product_id', true ) !== '' );",
+    "474: || ( get_post_meta( $post->ID, '_dp_base_product_id', true ) !== '' );",
+    "576: if ( get_post_meta( $pid, '_dp_base_product_id', true ) ) { return; }   /* DP tvarko 570 */",
+    "884: if ( get_post_meta( $pid, '_dp_base_product_id', true ) ) { return $kesas[ $pid ] = true; }",
+    "1218: $ids = $wpdb->get_col( \"SELECT post_id FROM {$p}postmeta WHERE meta_key='_dp_base_product_id'\" );",
+    "1225: $bid  = (int) get_post_meta( $pid, '_dp_base_product_id', true );"
+   ],
+   "wp-content/mu-plugins/petshop-rysiai.php": [
+    "150: WHERE meta_key='_dp_base_product_id' AND meta_value=%s\", (string) $pid ) );",
+    "153: $kiek = get_post_meta( $s['id'], '_dp_pack_qty', true );",
+    "398: foreach ( array( '_mnm_data', '_mnm_child_ids', '_mnm_contents', '_children', '_petshop_fbt_ids', '_dp_base_product_id' ) as $k ) {"
+   ],
+   "wp-content/mu-plugins/petshop-statistika.php": [
+    "262: $baze = (int) get_post_meta( $pid, '_dp_base_product_id', true );"
+   ]
   }
  }
 }
