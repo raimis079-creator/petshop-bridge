@@ -1,0 +1,129 @@
+{
+ "v": "dep-155530",
+ "kurimas": 200,
+ "sid": 5556,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1671b2",
+  "faze": "D",
+  "yra": true,
+  "md5_pries": "5eaad2aeda54a42710b81e2b220f7b58",
+  "md5_naujas": "ecd8a18cd6dd89b6bf1121b02e53386d",
+  "md5_tikimasi": "ecd8a18cd6dd89b6bf1121b02e53386d",
+  "tokenu": 8874,
+  "bak_md5": "5eaad2aeda54a42710b81e2b220f7b58",
+  "irasyta": 37964,
+  "md5_po": "ecd8a18cd6dd89b6bf1121b02e53386d",
+  "heartbeat": 200,
+  "feed_http": 200
+ },
+ "G": {
+  "v": "S1671b2",
+  "faze": "G",
+  "versija": "2.4.0",
+  "taisykles": {
+   "pakopos": {
+    "A": 35,
+    "B": 28,
+    "C": 20
+   },
+   "ltv_brand": "Exclusion",
+   "ltv_min_kg": 6.5,
+   "ltv_kg_regex": "/\\b(7|12)\\s*kg\\b/iu",
+   "ne_reklamai": [
+    "Quattro"
+   ]
+  },
+  "bak_google": true,
+  "st": {
+   "versija": "2.4.0",
+   "dry": 0,
+   "kandidatu": 2184,
+   "kanalai": {
+    "google": {
+     "irasyta": 2184,
+     "praleista_isjungta": 0,
+     "be_gtin": 426,
+     "baitai": 5294989
+    }
+   },
+   "praleista": {
+    "nera_kainos": 0,
+    "nera_objekto": 0
+   },
+   "sekundes": 18.9,
+   "atmintis_mb": 136
+  }
+ },
+ "V": {
+  "v": "S1671b2",
+  "faze": "V",
+  "baitai": 5294989,
+  "mtime": "2026-09-11 15:57:04",
+  "c": {
+   "items": 2184,
+   "in_stock": 2115,
+   "out_of_stock": 69,
+   "sale_price": 87,
+   "l0": {
+    "C": 939,
+    "A": 271,
+    "B": 734,
+    "D": 201,
+    "X": 39
+   },
+   "l1": {
+    "ne_reklamai": 62,
+    "reklamuoti_ltv": 22
+   },
+   "l3": {
+    "zb": 492,
+    "av": 717,
+    "belcor_tofu": 42,
+    "quattro": 62,
+    "prins": 23,
+    "vf": 826,
+    "ambrosia": 15,
+    "AV": 3,
+    "-": 4
+   },
+   "be_l0": 0,
+   "be_l2": 0
+  },
+  "pvz": [
+   [
+    "NGCST12",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su tunu, 12 kg",
+    "65.99 EUR",
+    "C",
+    "reklamuoti_ltv"
+   ],
+   [
+    "INPM11",
+    "Exclusion Intestinal Monoprotein sausas šunų maistas su kiauliena ir ryžiais M/L12 kg",
+    "75.80 EUR",
+    "B",
+    "reklamuoti_ltv"
+   ],
+   [
+    "INPA11",
+    "Exclusion Intestinal Monoprotein sausas šuniukų maistas su kiauliena ir ryžiais 12 kg",
+    "80.90 EUR",
+    "C",
+    "reklamuoti_ltv"
+   ],
+   [
+    "INPS06",
+    "Exclusion Intestinal Monoprotein mažų veislių šunų maistas su kiauliena ir ryžiais 7 kg",
+    "58.89 EUR",
+    "B",
+    "reklamuoti_ltv"
+   ]
+  ],
+  "kaina24_http": 200,
+  "md5_gyvas": "ecd8a18cd6dd89b6bf1121b02e53386d"
+ }
+}
