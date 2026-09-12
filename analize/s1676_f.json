@@ -1,0 +1,148 @@
+{
+ "v": "dep-072908",
+ "kurimas": 200,
+ "sid": 5633,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1676 f",
+  "temp_istrinta": 1,
+  "sabl": {
+   "dunning-1": {
+    "md5": "57cc9d13de07d2a09d9da9f071363558",
+    "subj": [],
+    "p": [
+     "Prekes laikome jums",
+     "Jei apmokėjimą jau atlikote arba užsakymo nebereikia — tiesiog atsakykite į šį laišką. Neapmokėtą užsakymą po kelių dienų atšauksime automatiškai, jokių įsipareigojimų neliks."
+    ]
+   },
+   "dunning-2": "NĖRA",
+   "dunning-3": "NĖRA",
+   "order-cancelled": "NĖRA",
+   "bacs-reminder": "NĖRA"
+  },
+  "flows": {
+   "payment_failed": {
+    "class": "transactional",
+    "template": "dunning-1",
+    "delay": 0
+   }
+  },
+  "cancel_kabliai": {
+   "petshop-av-reduce.php": [
+    "add_action( 'woocommerce_order_status_cancelled', [ __CLASS__, 'grazinti' ], 15, 1 );"
+   ],
+   "petshop-darbalaukis.php": [
+    "add_action( 'admin_post_ps_dl_istrinti_atsauktus', array( __CLASS__, 'istrinti_atsauktus_vykdyti' ) ); // v3.36 (3a)",
+    "add_action( 'ps_dl_atsauktu_valymas', array( __CLASS__, 'atsauktu_valymas' ) ); // v3.36 (3b)",
+    "self::d( 'laiskai_off' ); $n->update_status( 'cancelled', 'Darbalaukis: ' . $kodel . ' (pradinis užsakymas #' . $o->get_order_number() . '). Laiškas klientui nesiunčiamas.'",
+    "self::d( 'laiskai_off' ); $o->update_status( 'cancelled', '' ); self::d( 'laiskai_on' );",
+    "eta_tyliai' => array( 'ok', '#%s apmokėtas. Laiškas klientui nesiųstas.' ), 'atsaukta' => array( 'ok', '#%s atšauktas. Prekės grąžintos į likutį. Klientui nepranešta.' ), 'atsaukta_laiskas' => arr"
+   ],
+   "petshop-desk.php": [
+    "$zinute = $su_laisku ? 'atsaukta_laiskas' : 'atsaukta';",
+    "'atsaukta_laiskas'=> array( 'ok', 'Užsakymas #%s atšauktas. Prekės grąžintos į likutį. Klientui išsiųstas pranešimas."
+   ],
+   "petshop-katalogas.php": [
+    "add_action( 'wp_ajax_ps_kat_atsaukti', array( __CLASS__, 'ajax_atsaukti' ) );"
+   ],
+   "petshop-pren-nuorodos.php": [
+    "/** Laisko nuoroda. $veiksmas tik fokusui paskyroje (atsaukti|praleisti|keisti). */"
+   ],
+   "petshop-prenumerata-paskyra.php": [
+    "(int) $user_id, strtolower($u->user_email), 'cancelled'), ARRAY_A);"
+   ]
+  },
+  "bacs_onhold": [
+   {
+    "id": "35902",
+    "date_created_gmt": "2026-09-11 08:19:04",
+    "total_amount": "11.72000000",
+    "billing_email": "i.***@gnail.com",
+    "nr": "1016",
+    "meta_ps": [
+     "_petshop_dl_purchase_sent",
+     "_petshop_iapv_number",
+     "_petshop_invoice_document_type",
+     "_petshop_order_pdf",
+     "_ps_decided_at",
+     "_ps_ga_sutikimas",
+     "_ps_ga4_mp_at",
+     "_ps_ga4_mp_cid",
+     "_ps_ga4_mp_kodas",
+     "_ps_groups",
+     "_ps_irenginys",
+     "_ps_kanalai",
+     "_ps_matyta",
+     "_ps_order_number",
+     "_ps_order_type",
+     "_ps_shipments"
+    ]
+   }
+  ],
+  "wc_onhold_email": {
+   "enabled": "no",
+   "subject": "",
+   "heading": "",
+   "additional_content": "Thanks again! If you need any help with your order, please contact us at {store_email}.",
+   "email_type": "html",
+   "cc": "",
+   "bcc": ""
+  },
+  "cron": {
+   "petshop_import_tempas": "09-12 07:31",
+   "ps_esp_cron_process_pending": "09-12 07:32",
+   "ps_email_dispatch_cron": "09-12 07:33",
+   "ps_webp_batch": "09-12 07:33",
+   "ps_cart_abandon_check": "09-12 07:34",
+   "ps_venipak_sekimas": "09-12 07:36",
+   "ps_browse_abandon_check": "09-12 07:37",
+   "ps_post_purchase_check": "09-12 07:39",
+   "petshop_vf_sync_stock_hourly": "09-12 07:59",
+   "ps_refill_daily_check": "09-12 08:00",
+   "petshop_vf_feed_hourly": "09-12 08:05",
+   "ps_refill_iv_veidrodis": "09-12 08:06",
+   "ps_akcijos_valanda": "09-12 08:08",
+   "ps_vartai_valanda": "09-12 08:13",
+   "ps_seseliai_valandinis": "09-12 08:13",
+   "ps_dropship_sargas": "09-12 08:13",
+   "ps_juosta_reikia_cron": "09-12 08:28",
+   "ps_reminders_daily_check": "09-12 09:00",
+   "petshop_attr_engine_run": "09-12 10:57",
+   "ps_velavimo_laiskai": "09-12 11:00",
+   "ps_dim_klientu_perskaiciavimas": "09-12 20:40",
+   "ps_fakt_atsargu_snapshot": "09-12 20:55",
+   "ps_stat_valymas": "09-12 21:41",
+   "ps_fakt_siuntu_sutikrinimas": "09-13 00:05",
+   "ps_web_agregavimas": "09-13 00:10",
+   "ps_ataskaitu_agregavimas": "09-13 00:15",
+   "ps_dl_atsauktu_valymas": "09-13 00:20",
+   "petshop_fbt_copurchase_rebuild": "09-13 01:10",
+   "ps_fakt_reklama_portalai": "09-13 01:20",
+   "ps_feeds_naktinis": "09-13 01:30",
+   "ps_klientai_perskaiciuoti": "09-13 02:30",
+   "ps_pet_drafts_cleanup_daily": "09-13 02:40",
+   "ps_web_valymas": "09-13 02:40",
+   "petshop_vf_sync_reprice_daily": "09-13 03:00",
+   "ps_rytas_sargas": "09-13 03:30",
+   "ps_prognoze_diena": "09-13 03:40",
+   "petshop_vf_sync_publish_daily": "09-13 04:00",
+   "ps_sargas_kasdien": "09-13 04:00",
+   "ps_seo_cwv_diena": "09-13 04:00",
+   "ps_sources_naktinis": "09-13 04:20",
+   "ps_kontrole_diena": "09-13 04:30",
+   "ps_ivykiai_valymas": "09-13 04:40",
+   "ps_pardavimai_naktinis": "09-13 04:50",
+   "ps_pilnumas_naktinis": "09-13 05:00",
+   "ps_seo_qa_diena": "09-13 05:00",
+   "ps_suppression_daily_reconcile": "09-13 05:30",
+   "ps_gsc_diena": "09-13 06:00",
+   "ps_prenumerata_diena": "09-13 06:10",
+   "ps_sargas_savaitinis": "09-15 05:00",
+   "petshop_pragma_monthly_export": "10-05 08:00"
+  },
+  "hold_stock": "90"
+ }
+}
