@@ -1,8 +1,8 @@
 // petshop_ads_offline_konv_v1_0_RUN.js (S1677) — WC apmokėti užsakymai su gclid → Google Ads offline konversijos.
 // Šaltinis: petshop.lt mu-plugin petshop-ads-offline v1.1 (JSON). Paleisti kasdien (Schedule: Daily, ~06:00).
-// Prieš pirmą paleidimą UI turi būti sukurtas konversijos veiksmas "Import from clicks" pavadinimu KONV (žr. instrukciją).
+// Prieš pirmą paleidimą UI turi būti sukurtas konversijos veiksmas "Import from clicks" pavadinimu KONV.
 var URL  = 'https://petshop.lt/?ps_ads_offline=AiedogHzttJiKz8HZgLFUvMdke546YIc&dienos=3';
-var KONV = 'WC pirkimas (offline)';
+var KONV = 'Įkėlimas neprisijungus'; // UI sukurtas pavadinimas (S1677)
 
 function main() {
   var r = UrlFetchApp.fetch(URL, { muteHttpExceptions: true });
