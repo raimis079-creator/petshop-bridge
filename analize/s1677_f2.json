@@ -1,0 +1,73 @@
+{
+ "v": "dep-144026",
+ "kurimas": 200,
+ "sid": 5683,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1677 f",
+  "faze": "D",
+  "temp_istrinta": 1,
+  "kelias": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-feeds/petshop-feeds.php",
+  "md5": "97626f5e92bdb4439164f0b97761f4b5",
+  "ping": 200
+ },
+ "G": {
+  "v": "S1677 f",
+  "faze": "G",
+  "temp_istrinta": 0,
+  "kelias": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-feeds/petshop-feeds.php",
+  "versija": "2.5.0",
+  "taisykles": {
+   "pakopos": {
+    "A": 35,
+    "B": 28,
+    "C": 20
+   },
+   "ltv_brand": "Exclusion",
+   "ltv_min_kg": 6.5,
+   "ltv_kg_regex": "/\\b(7|12)\\s*kg\\b/iu",
+   "ne_reklamai": [
+    "Quattro"
+   ],
+   "pigu_iki": 12
+  },
+  "gen": {
+   "versija": "2.5.0",
+   "dry": 0,
+   "kandidatu": 2114,
+   "kanalai": {
+    "google": {
+     "irasyta": 2114,
+     "praleista_isjungta": 0,
+     "be_gtin": 390,
+     "baitai": 5217564
+    }
+   },
+   "praleista": {
+    "nera_kainos": 0,
+    "nera_objekto": 0
+   },
+   "pvz": [],
+   "sekundes": 6.2,
+   "atmintis_mb": 128
+  },
+  "baitai": 5217564,
+  "label1": {
+   "pigu": 965,
+   "ne_reklamai": 62,
+   "reklamuoti_ltv": 22
+  },
+  "label0": {
+   "C": 933,
+   "A": 248,
+   "B": 716,
+   "D": 200,
+   "X": 17
+  },
+  "pigu_n": 965,
+  "items": 2114
+ }
+}
