@@ -1,0 +1,116 @@
+{
+ "v": "dep-141802",
+ "kurimas": 200,
+ "sid": 5679,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1677 marža",
+  "katalogas": {
+   "su_kaina": 2880,
+   "kaina_lt10": 1038,
+   "marza_prielaida": "savikaina be PVM, kaina su PVM 21%",
+   "juostos": {
+    "be_sav": 342,
+    "sav_gt_kaina": 0,
+    "<0": 0,
+    "0-10": 2,
+    "10-20": 304,
+    "20-30": 1292,
+    "30-40": 731,
+    "40+": 209
+   },
+   "vid_marza_paprasta": 28.4
+  },
+  "uzsakymai_30d": {
+   "viso": {
+    "uzs": 22,
+    "pajamos_su_pvm": 623.52,
+    "prekes_net": 478.31,
+    "savikaina": 329.43,
+    "siunt_surinkta": 33.04,
+    "be_sav_eil": 1,
+    "nemok_siuntimas": 6,
+    "marza_pct": 31.1,
+    "aov_su_pvm": 28.34,
+    "bruto_marza_uzs": 6.77
+   },
+   "ads": {
+    "uzs": 10,
+    "pajamos_su_pvm": 276.25,
+    "prekes_net": 213.35,
+    "savikaina": 141.24,
+    "siunt_surinkta": 13.98,
+    "be_sav_eil": 0,
+    "nemok_siuntimas": 3,
+    "marza_pct": 33.8,
+    "aov_su_pvm": 27.63,
+    "bruto_marza_uzs": 7.21
+   }
+  },
+  "top_kategorijos": {
+   "Sausas maistas šunims": {
+    "net": 201,
+    "marza_pct": 18.6,
+    "vnt": 7
+   },
+   "Konservai katėms": {
+    "net": 64,
+    "marza_pct": 33.3,
+    "vnt": 43
+   },
+   "Sausas maistas katėms": {
+    "net": 42,
+    "marza_pct": 16.7,
+    "vnt": 1
+   },
+   "Skanėstai šunims": {
+    "net": 40,
+    "marza_pct": 39.2,
+    "vnt": 11
+   },
+   "Akvariumo žuvyčių maistas": {
+    "net": 33,
+    "marza_pct": 43.4,
+    "vnt": 5
+   },
+   "DAUGIAU=PIGIAU": {
+    "net": 26,
+    "marza_pct": 100,
+    "vnt": 1
+   },
+   "Tualetai, semtuvėliai": {
+    "net": 20,
+    "marza_pct": 52.9,
+    "vnt": 2
+   },
+   "Konservai šunims": {
+    "net": 17,
+    "marza_pct": 20.7,
+    "vnt": 6
+   },
+   "Šampūnai šunims": {
+    "net": 11,
+    "marza_pct": 38.8,
+    "vnt": 2
+   },
+   "Žaislai šunims": {
+    "net": 8,
+    "marza_pct": 33.6,
+    "vnt": 3
+   },
+   "Skanėstai paukščiams": {
+    "net": 6,
+    "marza_pct": 30.5,
+    "vnt": 2
+   },
+   "Žaislai katėms": {
+    "net": 4,
+    "marza_pct": 32.9,
+    "vnt": 2
+   }
+  }
+ }
+}
