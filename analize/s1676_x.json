@@ -1,0 +1,141 @@
+{
+ "v": "dep-092749",
+ "kurimas": 200,
+ "sid": 5656,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1676 x",
+  "temp_istrinta": 1,
+  "failai": {
+   "/mu-plugins/petshop-analitika.php": {
+    "md5": "b181d2b49f2750d0a57f77f1c9d3e275",
+    "dydis": 18384
+   },
+   "/mu-plugins/petshop-fakt-siuntos.php": {
+    "md5": "a9be75c3ce78810909bda95e0f3878e9",
+    "dydis": 51189
+   },
+   "/mu-plugins/petshop-faktai.php": {
+    "md5": "a0587d1fac6273083516816a62467105",
+    "dydis": 37122
+   },
+   "/mu-plugins/petshop-islaidos.php": {
+    "md5": "85053c7ab62ab27278c15a8fa98ba9b4",
+    "dydis": 20689
+   },
+   "/mu-plugins/petshop-rytas.php": {
+    "md5": "795bcb04c478cd5edfc17deb887ddac9",
+    "dydis": 44366
+   }
+  },
+  "eil": {
+   "petshop-analitika.php": [
+    "6: * Šaltiniai: ps_carts, ps_email_jobs, ps_fakt_uzsakymai, ps_fakt_reklama, ps_fakt_siuntos. Periodas 30 / 90 d.",
+    "30: public static function init() { add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 30 ); }",
+    "90: $r = $wpdb->get_row( $wpdb->prepare( \"SELECT COUNT(*) n, AVG(dienos_iki_pristatymo) dien, SUM(problema_kodas IS NOT NULL AND problema_kodas<>'') prob, SUM(kaina_vezejo_ct) kaina FROM {$p}ps_fakt_siu",
+    "93: $vez = $wpdb->get_results( $wpdb->prepare( \"SELECT vezejas, COUNT(*) n, AVG(dienos_iki_pristatymo) dien FROM {$p}ps_fakt_siuntos WHERE diena>=%s AND testinis=0 GROUP BY vezejas\", $nuo ), ARRAY_A );"
+   ],
+   "petshop-fakt-siuntos.php": [
+    "4: * Description: Siuntu faktu lentele (ps_fakt_siuntos) + pristatymo tarifai (ps_tarifai) + naktinis ps_shipments sutikrinimas. Master planas v1.4 §4.3/§4.9, etapas E1b.",
+    "46: * `nakties_sutikrinimas()` persuka atgaline data (jis idempotentiskas).",
+    "73: * Butu buve: `ps_fakt_siuntos.sandelis='av'` ir `ps_fakt_eilutes.sandelis='legacy'`",
+    "79: * Sprendimas: `ps_fakt_siuntos` laiko UZRAKINTA 7 sandeliu modeli;",
+    "88: *      -> `ps_tarifai.dydis`, `ps_fakt_siuntos.dydis`, `self::dydis()`.",
+    "148: const SCHEMOS_RAKTAS = 'ps_fakt_siuntos_schema';",
+    "151: const CRON     = 'ps_fakt_siuntu_sutikrinimas';",
+    "165: add_action( 'petshop_siunta_sukurta', array( __CLASS__, 'is_desko' ), 10, 4 );",
+    "166: add_action( self::CRON, array( __CLASS__, 'nakties_sutikrinimas' ) );",
+    "167: add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 20 );",
+    "168: add_action( 'admin_post_ps_tarifai_irasyti', array( __CLASS__, 'issaugoti' ) );",
+    "169: add_action( 'admin_post_ps_tarifai_uzdaryti', array( __CLASS__, 'uzdaryti' ) );",
+    "170: add_action( 'admin_post_ps_priemoka_irasyti', array( __CLASS__, 'priemoka_irasyti' ) );",
+    "171: add_action( 'admin_post_ps_priemoka_uzdaryti', array( __CLASS__, 'priemoka_uzdaryti' ) );",
+    "191: public static function t_siuntos() { global $wpdb; return $wpdb->prefix . 'ps_fakt_siuntos'; }",
+    "221: isvezta_at DATETIME NULL DEFAULT NULL,",
+    "222: pristatyta_at DATETIME NULL DEFAULT NULL,",
+    "227: statusas VARCHAR(32) NULL DEFAULT NULL,",
+    "228: problema_kodas VARCHAR(20) NULL DEFAULT NULL,",
+    "229: dienos_iki_pristatymo SMALLINT NULL DEFAULT NULL,",
+    "620: neturi — uzpildom is taisykles kito sutikrinimo metu. */",
+    "677: 'statusas'             => $order->get_status(),",
+    "722: public static function nakties_sutikrinimas( $dry = false ) {",
+    "780: /** Tas pats sutikrinimas vienam uzsakymui — DoD patikroms. */"
+   ],
+   "petshop-faktai.php": [
+    "27: * **UTC**. Priezastis — E1b `ps_fakt_siuntos` jungiasi su `ps_shipments`, o ta",
+    "86: add_action( 'woocommerce_payment_complete',           array( __CLASS__, 'rasyti' ), 35, 1 );",
+    "87: /* Pavedimas (BACS) `payment_complete` NEKVIECIA — statusas keiciamas",
+    "89: add_action( 'woocommerce_order_status_processing',    array( __CLASS__, 'rasyti' ), 35, 1 );",
+    "90: add_action( 'woocommerce_order_status_completed',     array( __CLASS__, 'rasyti' ), 35, 1 );",
+    "91: add_action( 'woocommerce_order_status_changed',       array( __CLASS__, 'statusas' ), 35, 4 );",
+    "114: statusas_galutinis VARCHAR(32) NOT NULL DEFAULT '',",
+    "115: statusas_at DATETIME NULL DEFAULT NULL,",
+    "455: 'statusas_galutinis'       => (string) $order->get_status(),",
+    "456: 'statusas_at'              => self::dabar(),",
+    "702: public static function statusas( $order_id, $senas, $naujas, $order = null ) {",
+    "707: array( 'statusas_galutinis' => mb_substr( (string) $naujas, 0, 32 ), 'statusas_at' => self::dabar() ),"
+   ],
+   "petshop-islaidos.php": [
+    "79: add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 21 );",
+    "80: add_action( 'admin_post_ps_islaidos_irasyti', array( __CLASS__, 'irasyti' ) );",
+    "81: add_action( 'admin_post_ps_islaidos_trinti', array( __CLASS__, 'trinti' ) );",
+    "82: add_action( 'admin_post_ps_nustatymai_irasyti', array( __CLASS__, 'nustatymai_irasyti' ) );",
+    "134: $st = $wpdb->prefix . 'ps_fakt_siuntos';"
+   ],
+   "petshop-rytas.php": [
+    "45: add_action( 'admin_menu', array( __CLASS__, 'perimti_huba' ), 99 );",
+    "46: add_action( self::CRON, array( __CLASS__, 'sargas_cron' ) );",
+    "47: add_action( 'init', array( __CLASS__, 'planuoti' ) );",
+    "48: add_action( 'admin_post_ps_rytas_ribos', array( __CLASS__, 'issaugoti_ribas' ) );",
+    "49: add_action( 'admin_post_ps_rytas_tikrinti', array( __CLASS__, 'tikrinti_dabar' ) );",
+    "66: add_action( 'toplevel_page_' . self::TEVAS, array( __CLASS__, 'render' ) );",
+    "127: private static function s() { global $wpdb; return $wpdb->prefix . 'ps_fakt_siuntos'; }",
+    "298: AND u.statusas_galutinis NOT IN ('completed','cancelled','refunded','failed')"
+   ]
+  },
+  "meta_1003": {
+   "issiusta": "{\"av\":{\"laikas\":\"2026-09-11 11:07:26\",\"kas\":\"Venipak\",\"kanalas\":\"venipak\",\"laiskas\":\"2026-09-11 11:07:26\"}}",
+   "sek": "{\"V07267E1000068\":{\"k\":2,\"t\":\"At terminal\",\"e\":\"At terminal\",\"d\":\"2026-09-12 00:42:44\",\"v\":\"KAUNAS\",\"n\":4,\"dalis\":\"av\",\"tikr\":\"2026-09-12 01:06:49\"}}",
+   "shipments": "1",
+   "completed": "2026-09-11 11:07"
+  },
+  "fakt_1003": [
+   {
+    "id": "56",
+    "uzsakymas_id": "35883",
+    "shipment_id": "shp_96323010f1f606fe",
+    "sandelis": "av",
+    "vezejas": "venipak",
+    "siuntos_nr": "V07267E1000068",
+    "paketu_sk": "1",
+    "pristatymo_tipas": "pastomatas",
+    "sukurta_at": "2026-09-11 05:28:18",
+    "diena": "2026-09-11",
+    "tiekejui_issiusta_at": null,
+    "registruota_at": "2026-09-11 05:28:18",
+    "isvezta_at": null,
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "svoris_deklaruotas_g": "320",
+    "kaina_vezejo_ct": "158",
+    "tarifo_id": "25",
+    "statusas": "processing",
+    "problema_kodas": null,
+    "dienos_iki_pristatymo": null,
+    "saltinis": "desk",
+    "testinis": "0",
+    "saltinis_aplinka": "prod",
+    "fakt_versija": "2",
+    "sandelio_saltinis": "desk",
+    "dydis": null
+   }
+  ],
+  "cron_cb": [
+   "Petshop_Sargas::cron_atsiskaite",
+   "Petshop_Fakt_Siuntos::nakties_sutikrinimas"
+  ]
+ }
+}
