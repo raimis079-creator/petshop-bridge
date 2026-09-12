@@ -1,0 +1,53 @@
+{
+ "v": "dep-191749",
+ "kurimas": 200,
+ "sid": 5692,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1678 sec-deploy",
+  "faze": "GO",
+  "md5_ok": true,
+  "parse": "ok",
+  "egzistavo": false,
+  "rase": true,
+  "md5_gyvai": "660d768573421a6c1dede45efc44da4f",
+  "ht_bak": true,
+  "ht_rase": true,
+  "psb_perkelta": true,
+  "psb_n": 5,
+  "heartbeat": 200
+ },
+ "TK": {
+  "v": "S1678 sec-deploy",
+  "faze": "TK",
+  "home": 200,
+  "antr": {
+   "strict-transport-security": "max-age=31536000",
+   "x-frame-options": "SAMEORIGIN",
+   "x-content-type-options": "nosniff",
+   "referrer-policy": "strict-origin-when-cross-origin",
+   "x-pingback": "-"
+  },
+  "xmlrpc": "403 uzdaras",
+  "rest_users": "401 uzdaras",
+  "rest_user1": 401,
+  "author1": "404 ",
+  "author_admin": 404,
+  "kelias": {
+   "/": 200,
+   "/kategorija/katems/": 200,
+   "/parduotuve/": 200,
+   "/wp-login.php": 200,
+   "/?rest_route=/wc/store/v1/cart": 200,
+   "/?rest_route=/ps-web/v1/ads": 404,
+   "/feed/google/": 200
+  },
+  "mu_md5": "660d768573421a6c1dede45efc44da4f",
+  "root_psb": false,
+  "wpconfig_bak_arch": true,
+  "fatal_log": "[12-Sep-2026 17:52:41 UTC] Užsakymas patvirtintas: užsakymas 35917, suma: 184.78EUR\n[12-Sep-2026 18:30:48 UTC] Užsakymas patvirtintas: užsakymas 35918, suma: 13.84EUR\n[12-Sep-2026 19:11:13 UTC] PHP Warning:  Attempt to read property \"errors\" on array in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php on line 414\n"
+ }
+}
