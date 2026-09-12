@@ -1,0 +1,85 @@
+{
+ "v": "dep-085537",
+ "kurimas": 200,
+ "sid": 5649,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1676 q",
+  "faze": "D",
+  "temp_istrinta": 1,
+  "md5": {
+   "petshop-av-source.php": "cd5fe3b1315770621d972effe918726b",
+   "petshop-av-reduce.php": "03182a2a3ba3c00d7e80fc5497b466a5"
+  },
+  "ping": 200,
+  "s567": 1
+ },
+ "T": {
+  "v": "S1676 q",
+  "faze": "T",
+  "temp_istrinta": 0,
+  "s567_md5": "1fae1037292cb69aa936e7e9e3baac06",
+  "s567_name": "Petshop Daugiau=Pigiau Stock Sync v1.3",
+  "resolve": {
+   "35840x1": [
+    "av",
+    1,
+    true,
+    "DP pakas ×8 (bazinė #17707): AV turi 10, reikia 8"
+   ],
+   "35840x2": [
+    "belcor_tofu",
+    1,
+    false,
+    "DP pakas ×8 (bazinė #17707): AV turi 10, reikia 16 — neužtenka"
+   ],
+   "35096x1": [
+    "av",
+    1,
+    true,
+    "DP pakas ×20 (bazinė #16302): grynai AV prekė (be tiekėjo)"
+   ],
+   "35096x2": [
+    "av",
+    1,
+    true,
+    "DP pakas ×20 (bazinė #16302): grynai AV prekė (be tiekėjo)"
+   ],
+   "17707x1": [
+    "av",
+    10,
+    true,
+    "AV turi 10, reikia 1"
+   ]
+  },
+  "e2e": {
+   "oid": 35912,
+   "pries": {
+    "own": "10",
+    "stock": "0"
+   },
+   "po_mazinti": {
+    "own": "2",
+    "stock": "0",
+    "rq": "8",
+    "rp": "17707",
+    "zym": "2026-09-12 11:56:51"
+   },
+   "po_grazinti": {
+    "own": "10",
+    "stock": "0",
+    "zym": "2026-09-12 11:56:51"
+   },
+   "pastabos": [
+    "AV grąžinimas: #17707 AV +8 -> 10",
+    "AV nurašymas: #17707 AV 10 -> 2"
+   ],
+   "istrintas": true,
+   "ok": true
+  },
+  "av_log": []
+ }
+}
