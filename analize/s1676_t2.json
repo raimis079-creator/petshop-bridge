@@ -1,0 +1,163 @@
+{
+ "v": "dep-091659",
+ "kurimas": 200,
+ "sid": 5653,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1676 t2",
+  "temp_istrinta": 1,
+  "s117": "    public static function suskaiciuoti($pid) {\n        $sand = get_post_meta($pid, '_ps_sandelis', true);\n        $own  = get_post_meta($pid, '_own_stock_qty', true);\n        $stock= get_post_meta($pid, '_stock', true);\n        $out  = array();\n\n        // 1) AV šaltinis — kai sandėlis av ARBA turime savo likutį\n        $turi_av = ($sand === self::AV) || ($own !== '' && (int)$own > 0);\n        if ($turi_av) {\n            $qty = ($sand === self::AV)\n                 ? (($own !== '') ? (int)$own : (($stock !== '' && $stock !== null) ? (int)$stock : null))\n                 : (int)$own;\n            $out[] = array(\n                'source'       => self::AV,\n                'supplier_sku' => null,\n                'ean'          => null,\n                'stock_qty'    => $qty,\n                'cost_net'     => self::sk(get_post_meta($pid,'_cost_price',true)),\n                'synced_at'    => null,\n                'is_active'    => 1,\n                'is_sellable'  => 1,\n                'priority'     => 1,   // AV visada pirma (TŽ 37.2 v1 taisyklė)\n            );\n        }",
+  "s267": "    public static function sinchronizuoti($pid, $rasyti_kopija = false) {\n        global $wpdb;\n        $pid = (int) $pid;\n        $t   = self::lentele();\n        $rez = array('pid'=>$pid,'prideta'=>0,'atnaujinta'=>0,'isjungta'=>0,'be_saltinio'=>false);\n\n        if ( ! $pid || $wpdb->get_var(\"SHOW TABLES LIKE '{$t}'\") !== $t ) return $rez;\n        if ( get_post_type($pid) !== 'product' ) return $rez;\n\n        /* v2.2: tuščio sandėlio lauko užpildymas pagal registrą (S719) */\n        self::uzpildyti_sandeli($pid);\n\n        $meta = self::suskaiciuoti($pid);\n        $now  = current_time('mysql');\n\n        /* Prekė be jokio šaltinio — pažymim, bet registro NELIEČIAM. */\n        if ( ! $meta ) {\n            $rez['be_saltinio'] = true;\n            update_post_meta($pid, '_ps_be_saltinio', 1);\n            return $rez;\n        }\n        delete_post_meta($pid, '_ps_be_saltinio');\n\n        $esami = array();\n        foreach ( self::registras($pid) as $r ) { $esami[ $r['source'] ] = $r; }\n        $meta_src = array();\n\n        foreach ( $meta as $x ) {\n            $meta_src[] = $x['source'];\n            if ( isset($esami[ $x['source'] ]) ) {\n                $e = $esami[ $x['source'] ];\n                /* NIEKO NEKEIČIAM, jei niekas nepasikeitė — kitaip importas darytų\n                   tūkstančius bereikalingų UPDATE per vieną praėjimą. */\n                $skiriasi = false;\n                if ( $x['supplier_sku'] !== null && (string) $e['supplier_sku'] !== (string) $x['supplier_sku'] ) $skiriasi = true;\n                if ( $x['ean'] !== null && (string) $e['ean'] !== (string) $x['ean'] ) $skiriasi = true;\n                if ( (int) $e['is_active'] === 0 ) $skiriasi = true;\n                if ( ! $skiriasi && ! $rasyti_kopija ) { continue; }\n\n                /* Registro laukai (sku, ean) — atnaujinam TIK jei meta turi reikšmę.\n                   Ranka įvestas tiekėjo kodas neturi dingti dėl tuščio XML lauko. */\n                $set = array(); $arg = array();\n                if ( $x['supplier_sku'] !== null ) { $set[] = 'supplier_sku=%s'; $arg[] = $x['supplier_sku']; }\n                if ( $x['ean'] !== null )          { $set[] = 'ean=%s';          $arg[] = $x['ean']; }\n                $set[] = 'updated_at=%s'; $arg[] = $now;\n                if ( $rasyti_kopija ) {\n                    $set[] = 'stock_qty=' . ( $x['stock_qty'] === null ? 'NULL' : '%d' );\n                    if ( $x['stock_qty'] !== null ) $arg[] = (int) $x['stock_qty'];\n                    $set[] = 'cost_net=' . ( $x['cost_net'] === null ? 'NULL' : '%f' );\n                    if ( $x['cost_net'] !== null ) $arg[] = (float) $x['cost_net'];\n                }\n                /* šaltinis grįžo — vėl įjungiam */\n                if ( (int) $e['is_active'] === 0 ) { $set[] = 'is_active=1'; }\n                $arg[] = $pid; $arg[] = $x['source'];\n                $sql = \"UPDATE {$t} SET \" . implode(',', $set) . \" WHERE product_id=%d AND source=%s\";\n                $wpdb->query( $wpdb->prepare($sql, $arg) );\n                $rez['atnaujinta']++;\n            } else {\n                $wpdb->query( $wpdb->prepare(\n                    \"INSERT INTO {$t} (product_id,source,supplier_sku,ean,stock_qty,cost_net,synced_at,\n                     is_active,is_sellable,priority,created_at,updated_at)\n                     VALUES (%d,%s,%s,%s,NULL,NULL,NULL,1,1,%d,%s,%s)\n                     ON DUPLICATE KEY UPDATE is_active=1, updated_at=VALUES(updated_at)\",\n                    $pid, $x['source'], $x['supplier_sku'], $x['ean'], (int) $x['priority'], $now, $now ) );\n                $rez['prideta']++;\n            }\n        }\n\n        /* Registre yra šaltinis, kurio meta nebeturi → IŠJUNGIAM, netrinam. */\n        foreach ( $esami as $src => $r ) {\n            if ( in_array($src, $meta_src, true) ) continue;\n            if ( (int) $r['is_active'] === 0 ) continue;\n            $wpdb->query( $wpdb->prepare(\n                \"UPDATE {$t} SET is_active=0, updated_at=%s WHERE product_id=%d AND source=%s\",\n                $now, $pid, $src ) );\n            $rez['isjungta']++;\n        }\n        return $rez;\n    }\n",
+  "s392": "    public static function gyvi($pid, $source) {\n        $sand  = get_post_meta($pid, '_ps_sandelis', true);\n        $own   = get_post_meta($pid, '_own_stock_qty', true);\n        $stock = get_post_meta($pid, '_stock', true);\n\n        if ($source === self::AV) {\n            $qty = ($sand === self::AV)\n                 ? (($own !== '') ? (int)$own : (($stock !== '' && $stock !== null) ? (int)$stock : null))\n                 : (int)$own;\n            return array(\n                'stock_qty' => $qty,\n                'cost_net'  => self::sk(get_post_meta($pid,'_cost_price',true)),\n                'synced_at' => null,\n            );\n        }\n        $L    = self::laukai($source);\n        $qty  = $L['qty'] ? get_post_meta($pid,$L['qty'],true) : '';\n        if ($qty === '') $qty = $stock;\n        $cost = $L['cost'] ? get_post_meta($pid,$L['cost'],true) : '';\n        if ($cost === '' || (float)$cost <= 0) $cost = get_post_meta($pid,'_cost_price',true);\n        return array(\n            'stock_qty' => ($qty === '' || $qty === null) ? null : (int)$qty,\n            'cost_net'  => self::sk($cost),\n            'synced_at' => $L['sync'] ? (get_post_meta($pid,$L['sync'],true) ?: null) : null,\n        );\n    }\n\n    /**\n     * Registras + gyvi skaičiai.",
+  "s548": "add_action('woocommerce_update_product', 'ps_sources_sync_saugiai', 20, 1);\nadd_action('woocommerce_new_product',    'ps_sources_sync_saugiai', 20, 1);\n\n/* Sandėlio lauko pakeitimas — svarbiausias registro signalas. */\nadd_action('updated_post_meta', function( $mid, $pid, $key ) {\n    if ( $key === '_ps_sandelis' ) ps_sources_sync_saugiai( $pid );\n}, 20, 3);\nadd_action('added_post_meta', function( $mid, $pid, $key ) {\n    if ( $key === '_ps_sandelis' ) ps_sources_sync_saugiai( $pid );\n}, 20, 3);\n\n/* Naktinis pilnas resync — saugiklis viskam, ką hook'ai praleido. */\nadd_action('ps_sources_naktinis', function () {",
+  "nesut": [
+   {
+    "product_id": "15471",
+    "stock_qty": "1",
+    "own": null,
+    "st": "0",
+    "sand": "av",
+    "updated_at": "2026-09-12 07:20:05"
+   },
+   {
+    "product_id": "15642",
+    "stock_qty": "10",
+    "own": null,
+    "st": "0",
+    "sand": "av",
+    "updated_at": "2026-08-13 07:20:11"
+   },
+   {
+    "product_id": "15671",
+    "stock_qty": "1",
+    "own": null,
+    "st": "0",
+    "sand": "av",
+    "updated_at": "2026-09-12 07:20:05"
+   },
+   {
+    "product_id": "15700",
+    "stock_qty": "1",
+    "own": null,
+    "st": "0",
+    "sand": "av",
+    "updated_at": "2026-09-12 07:20:05"
+   },
+   {
+    "product_id": "16129",
+    "stock_qty": "14",
+    "own": null,
+    "st": "12",
+    "sand": "av",
+    "updated_at": "2026-09-12 07:20:05"
+   },
+   {
+    "product_id": "19863",
+    "stock_qty": "2",
+    "own": null,
+    "st": null,
+    "sand": null,
+    "updated_at": "2026-08-07 13:36:26"
+   },
+   {
+    "product_id": "19866",
+    "stock_qty": "1",
+    "own": null,
+    "st": null,
+    "sand": null,
+    "updated_at": "2026-08-07 13:36:26"
+   },
+   {
+    "product_id": "19869",
+    "stock_qty": "1",
+    "own": null,
+    "st": null,
+    "sand": null,
+    "updated_at": "2026-08-07 13:36:26"
+   },
+   {
+    "product_id": "19872",
+    "stock_qty": "2",
+    "own": null,
+    "st": null,
+    "sand": null,
+    "updated_at": "2026-08-07 13:36:26"
+   },
+   {
+    "product_id": "19875",
+    "stock_qty": "3",
+    "own": null,
+    "st": null,
+    "sand": null,
+    "updated_at": "2026-08-07 13:36:26"
+   },
+   {
+    "product_id": "19878",
+    "stock_qty": "2",
+    "own": null,
+    "st": null,
+    "sand": null,
+    "updated_at": "2026-08-07 13:36:26"
+   },
+   {
+    "product_id": "19881",
+    "stock_qty": "6",
+    "own": null,
+    "st": null,
+    "sand": null,
+    "updated_at": "2026-08-07 13:36:26"
+   },
+   {
+    "product_id": "19884",
+    "stock_qty": "6",
+    "own": null,
+    "st": null,
+    "sand": null,
+    "updated_at": "2026-08-07 13:36:26"
+   },
+   {
+    "product_id": "19887",
+    "stock_qty": "13",
+    "own": null,
+    "st": null,
+    "sand": null,
+    "updated_at": "2026-08-07 13:36:26"
+   },
+   {
+    "product_id": "19890",
+    "stock_qty": "7",
+    "own": null,
+    "st": null,
+    "sand": null,
+    "updated_at": "2026-08-07 13:36:26"
+   },
+   {
+    "product_id": "19893",
+    "stock_qty": "3",
+    "own": null,
+    "st": null,
+    "sand": null,
+    "updated_at": "2026-08-07 13:36:26"
+   },
+   {
+    "product_id": "19899",
+    "stock_qty": "17",
+    "own": null,
+    "st": null,
+    "sand": null,
+    "updated_at": "2026-08-07 13:36:26"
+   },
+   {
+    "product_id": "17659",
+    "stock_qty": "8",
+    "own": "7",
+    "st": "71",
+    "sand": "belcor_tofu",
+    "updated_at": "2026-09-12 07:20:06"
+   }
+  ]
+ }
+}
