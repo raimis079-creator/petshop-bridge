@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNjc2IGNvbnNlbnQgYnJpZGdlIHJlYWQgKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7IGlmKCFpc3NldCgkX0dFVFsncHNfdSddKXx8JF9HRVRbJ3BzX3UnXSE9PSdHTycpIHJldHVybjsKICAkaD13cF9yZW1vdGVfcmV0cmlldmVfYm9keSh3cF9yZW1vdGVfZ2V0KCdodHRwczovL3BldHNob3AubHQvJyxbJ3RpbWVvdXQnPT4yMF0pKTsgcHJlZ19tYXRjaCgnIzxzY3JpcHQgZGF0YS1wZXRzaG9wLWNvbnNlbnQtYnJpZGdlPSIxIj4oLio/KTwvc2NyaXB0PiNzJywkaCwkbSk7CiAgcHJlZ19tYXRjaF9hbGwoJyNHVE0tW0EtWjAtOV0rIycsJGgsJGcpOyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogdGV4dC9wbGFpbicpOyBlY2hvICgkbVsxXT8/J07EllJBJykuIlxuLS1HVE06ICIuaW1wbG9kZSgnLCcsYXJyYXlfdW5pcXVlKCRnWzBdKSk7IGV4aXQ7IH0pOwo=';
-const VER='dep-124840';
+const VER='dep-125000';
 const GKEY='ps_u';
 const PHASES=["GO"];
-const OUT='analize/s1676_c.json';
+const OUT='analize/s1676_c2.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
