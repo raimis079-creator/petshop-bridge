@@ -1,0 +1,103 @@
+{
+ "v": "dep-101242",
+ "kurimas": 200,
+ "sid": 5667,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1676 ah",
+  "faze": "D",
+  "temp_istrinta": 1,
+  "md5": {
+   "petshop-av-source.php": "7d8e67eba194efbdc4ac7bed887303f9",
+   "petshop-av-order.php": "fd7ed33561ce279e6f88618447e1a6eb",
+   "petshop-gavimo-perrusiavimas.php": "d7f60f74a6544ce56d94866c2fac2363"
+  },
+  "ping": 200
+ },
+ "T": {
+  "v": "S1676 ah",
+  "faze": "T",
+  "temp_istrinta": 0,
+  "parinkti": {
+   "27128x1": {
+    "0": "vf",
+    "1": "dropship pirma",
+    "av": null,
+    "tiek": "vf",
+    "tq": 2089
+   },
+   "27128x1 MIX": {
+    "0": "vf",
+    "1": "AV neužtenka → tiekėjas",
+    "av": null,
+    "tiek": "vf",
+    "tq": 2089
+   },
+   "35840x1": {
+    "0": "av",
+    "1": "tiekėjas neturi → AV",
+    "av": 1,
+    "tiek": "belcor_tofu",
+    "tq": 0
+   },
+   "35096x1": {
+    "0": "av",
+    "1": "grynai AV",
+    "av": 1,
+    "tiek": "av",
+    "tq": null
+   },
+   "19545x1": {
+    "0": "av",
+    "1": "grynai AV",
+    "av": 54,
+    "tiek": "av",
+    "tq": null
+   },
+   "16612x1": {
+    "0": "quattro",
+    "1": "dropship pirma (AV turi 2, bet užsakymas ne mišrus)",
+    "av": 2,
+    "tiek": "quattro",
+    "tq": 49
+   },
+   "16612x1 MIX": {
+    "0": "av",
+    "1": "mišrus užsakymas → AV",
+    "av": 2,
+    "tiek": "quattro",
+    "tq": 49
+   }
+  },
+  "misrus_1020": false,
+  "misrus_1009": false,
+  "misrus_1018": false,
+  "e2e_mix": {
+   "tipas": "MIXED",
+   "josera": "vf",
+   "josera_reason": "AV neužtenka → tiekėjas: AV šios prekės neturi",
+   "av_preke": "av"
+  },
+  "e2e_tik_vf": {
+   "tipas": "DS",
+   "josera": "vf",
+   "reason": "dropship pirma: tiekėjas vf turi 2089; AV šios prekės neturi"
+  },
+  "dry_27128": {
+   "pid": 27128,
+   "eil": [
+    {
+     "nr": "1020",
+     "iid": 1855,
+     "pid": 27128,
+     "q": 1,
+     "buvo": "vf",
+     "dry": "vf — dropship pirma: tiekėjas vf turi 2089; AV šios prekės neturi"
+    }
+   ]
+  }
+ }
+}
