@@ -1,30 +1,49 @@
 {
- "v": "dep-092104",
+ "v": "dep-130356",
  "kurimas": 200,
- "sid": 5655,
+ "sid": 5676,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
  "GO": {
-  "v": "S1676 w",
-  "temp_istrinta": 1,
-  "pries": {
-   "own": "",
-   "av_eil": null
+  "09-09": {
+   "viso": 3,
+   "ads": 0,
+   "ads_verte": 0,
+   "ads_id": []
   },
-  "po": {
-   "own": "1",
-   "av_eil": {
-    "id": "4726",
-    "is_active": "1",
-    "stock_qty": null
-   },
-   "saltiniai_av": 1
+  "09-10": {
+   "viso": 10,
+   "ads": 6,
+   "ads_verte": 169.12,
+   "ads_id": [
+    35890,
+    35889,
+    35888,
+    35887,
+    35883,
+    35882
+   ]
   },
-  "atstatyta": {
-   "own": "",
-   "av_eil": null
+  "09-11": {
+   "viso": 7,
+   "ads": 4,
+   "ads_verte": 103.53999999999999,
+   "ads_id": [
+    35904,
+    35903,
+    35902,
+    35901
+   ]
+  },
+  "09-12": {
+   "viso": 2,
+   "ads": 1,
+   "ads_verte": 15.31,
+   "ads_id": [
+    35907
+   ]
   }
  }
 }
