@@ -1,0 +1,137 @@
+{
+ "v": "dep-221333",
+ "kurimas": 200,
+ "sid": 5694,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1678 k",
+  "cols": [
+   "uzsakymas_id",
+   "sukurta_at",
+   "apmoketa_at",
+   "statusas_galutinis",
+   "statusas_at",
+   "klientas_id",
+   "klientas_email_hash",
+   "klientas_naujas",
+   "klientas_uzsakymo_nr",
+   "dienos_nuo_ankstesnio",
+   "prekiu_suma_ct",
+   "nuolaidu_ct",
+   "kuponu_kodai",
+   "tasku_panaudota_ct",
+   "tasku_sukaupta_ct",
+   "pristatymas_paimta_ct",
+   "pristatymas_savikaina_ct",
+   "small_cart_fee_ct",
+   "pvm_ct",
+   "viso_ct",
+   "mokejimo_budas",
+   "mokejimo_mokestis_ct",
+   "pakuotes_savikaina_ct",
+   "savikaina_ct",
+   "dovanu_savikaina_ct",
+   "marza_ct",
+   "kontribucija_ct",
+   "sandeliu_kiekis",
+   "misrus",
+   "sandeliai",
+   "vezejai",
+   "kanalas_pirmas",
+   "kanalas_paskutinis",
+   "utm_source",
+   "utm_medium",
+   "utm_campaign",
+   "gclid",
+   "fbclid",
+   "referer_domenas",
+   "landing_url",
+   "irenginys",
+   "sutikimas_statistika",
+   "salis",
+   "miestas",
+   "pasto_kodas",
+   "anketa_id",
+   "rec_log_id",
+   "is_refill",
+   "prenumerata_id",
+   "eiluciu_sk",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija",
+   "irasyta_at",
+   "diena"
+  ],
+  "kl": "klientas_id",
+  "dt": "apmoketa_at",
+  "sum": "viso_ct",
+  "viso": {
+   "n": "9528",
+   "kl": "5431",
+   "nuo": "2023-11-20 12:35:03",
+   "iki": "2026-08-30 08:13:26",
+   "eur": "393156"
+  },
+  "per12": {
+   "uzs": "3461",
+   "klientai": "2163",
+   "eur": "143635",
+   "aov": "41.5"
+  },
+  "per24": {
+   "uzs": "6986",
+   "klientai": "4018",
+   "eur": "290796",
+   "aov": "41.6"
+  },
+  "per36": {
+   "uzs": "9528",
+   "klientai": "5431",
+   "eur": "393156",
+   "aov": "41.3"
+  },
+  "pakart12": [
+   {
+    "n": "1",
+    "klientai": "1600",
+    "eur": "58359"
+   },
+   {
+    "n": "2",
+    "klientai": "297",
+    "eur": "26404"
+   },
+   {
+    "n": "3",
+    "klientai": "108",
+    "eur": "14166"
+   },
+   {
+    "n": "4",
+    "klientai": "63",
+    "eur": "12655"
+   },
+   {
+    "n": "5",
+    "klientai": "29",
+    "eur": "5738"
+   },
+   {
+    "n": "8",
+    "klientai": "66",
+    "eur": "26312"
+   }
+  ],
+  "interv": "81",
+  "ciklines": [],
+  "top_eur24": [],
+  "sender": {
+   "kontaktai_opcija": "-",
+   "sutikimai_meta": "561",
+   "sutik_raktai": []
+  }
+ }
+}
