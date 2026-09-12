@@ -1,0 +1,44 @@
+{
+ "v": "dep-162115",
+ "kurimas": 200,
+ "sid": 5688,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1677 c",
+  "faze": "D",
+  "temp_istrinta": 1,
+  "pries": {
+   "id": "619",
+   "name": "Petshop Consent Bridge v1.3 (Complianz -> GTM, ads granted)",
+   "scope": "front-end",
+   "active": "1",
+   "m": "afd5c4e078f6b3fc600804496ea6546d",
+   "l": "4663"
+  },
+  "po": {
+   "m": "d4ff85672cf295079a25dad733495036",
+   "l": "5141"
+  }
+ },
+ "T": {
+  "v": "S1677 c",
+  "faze": "T",
+  "temp_istrinta": 0,
+  "pries": {
+   "id": "619",
+   "name": "Petshop Consent Bridge v1.3 (Complianz -> GTM, ads granted)",
+   "scope": "front-end",
+   "active": "1",
+   "m": "d4ff85672cf295079a25dad733495036",
+   "l": "5141"
+  },
+  "http": 200,
+  "v14": false,
+  "default_denied": true,
+  "granted_default": false,
+  "redaction_true": true
+ }
+}
