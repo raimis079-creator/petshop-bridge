@@ -1,0 +1,60 @@
+{
+ "v": "dep-074902",
+ "kurimas": 200,
+ "sid": 5638,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1676 i",
+  "faze": "D",
+  "temp_istrinta": 1,
+  "md5_ok": true,
+  "buvo": true,
+  "irasyta_md5": "f36299268487f16630e1c250e913bfd0",
+  "ping": 200
+ },
+ "T": {
+  "v": "S1676 i",
+  "faze": "T",
+  "temp_istrinta": 0,
+  "klase": true,
+  "cron": "09-12 08:49",
+  "dry": {
+   "v": "1.0.2",
+   "dry": true,
+   "dabar": "2026-09-12 07:50:13",
+   "eil": [
+    {
+     "id": 35902,
+     "nr": "1016",
+     "val": 23.5,
+     "naujesnis": {
+      "yra": false,
+      "apmoketas": false,
+      "ids": []
+     },
+     "veiksmas": "laukia_48"
+    }
+   ]
+  },
+  "rekvizitai": {
+   "gavejas": "UAB Avesa",
+   "iban": "LT127300010124940593",
+   "bankas": "AB Swedbank"
+  },
+  "pastas": "jau @gmail.com",
+  "perziura": {
+   "ok": true,
+   "subj": "Užsakymas Nr. 1016 laukia apmokėjimo",
+   "istrauka": "Užsakymas Nr. 1016 laukia apmokėjimo Mokėjimo dar negavome — prekes laikome jums. Užsakymas Nr. 1016 laukia apmokėjimo Sveiki, Irma, jūsų užsakymą Nr. 1016 gavome, tačiau mokėjimo dar negavome.Suma: 11,72 €Gavėjas: UAB AvesaSąskaita: LT127300010124940593 (AB Swedbank)Mokėjimo paskirtis: 1016Jei jau apmokėjote, nieko daryti nereikia. Jei mokėjimo negausime iki rugsėjo 14 d. 11:19, užsakymą atšauksime.Kilus klausimų, atsakykite į šį laišką.&nbsp;UAB Avesa, Liucionių g. 46, Liucionys, LT-15166Gavot"
+  },
+  "atkurimo_url": "https://petshop.lt/?ps_atkurti=35902&k=5a4529eb651f3086",
+  "naujesnis_35902": {
+   "yra": false,
+   "apmoketas": false,
+   "ids": []
+  }
+ }
+}
