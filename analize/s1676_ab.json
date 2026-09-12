@@ -1,0 +1,86 @@
+{
+ "v": "dep-094326",
+ "kurimas": 200,
+ "sid": 5660,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1676 ab",
+  "temp_istrinta": 1,
+  "log": {
+   "yra": true,
+   "dydis": 6920
+  },
+  "fatal": [],
+  "warn_top": {
+   "PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.": 6,
+   "PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippe": 3,
+   "PHP Warning:  Undefined array key \"Oksana@misiukas.lt\" in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop": 2,
+   "PHP Warning:  Undefined array key \"Roslanalesciute@gmail.com\" in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/": 2,
+   "PHP Warning:  Undefined array key \"Teryte1997120116@gmail.com\" in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins": 2,
+   "PHP Warning:  S1675 testinis warning in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-op": 1,
+   "PHP Warning:  foreach() argument must be of type array|object, string given in /home/gyvunai2/domains/petshop.lt/public_html/wp-conte": 1,
+   "PHP Warning:  preg_match(): Compilation failed: regular expression is too large at offset 70 in /home/gyvunai2/domains/petshop.lt/pub": 1
+  },
+  "snip": [],
+  "snip_istrinta": 0,
+  "p17397": {
+   "pav": "Monge Monoproteico Solo Anatra – Monoproteininiai konservai šunims su gryna antiena, 400 g",
+   "stock": "1340.000000",
+   "own": "1379",
+   "sand": "av",
+   "zb": "1340",
+   "vf": "",
+   "partijos": [
+    {
+     "id": "4221",
+     "gauta": "2026-09-10",
+     "kiekis_gautas": "24",
+     "kiekis_liko": "24",
+     "tiekejas": "av",
+     "pastaba": "SF sask_13 260909 (S1668)"
+    },
+    {
+     "id": "4014",
+     "gauta": "2026-09-07",
+     "kiekis_gautas": "1355",
+     "kiekis_liko": "1355",
+     "tiekejas": "",
+     "pastaba": "Pradinis likutis T-0 (papildymas, S1682)"
+    }
+   ],
+   "ivykiai": [],
+   "src": [
+    {
+     "source": "av",
+     "stock_qty": "1379",
+     "is_active": "1"
+    },
+    {
+     "source": "zb",
+     "stock_qty": "1340",
+     "is_active": "1"
+    }
+   ]
+  },
+  "sargas": {
+   "pastas": "terra@gyvunai.lt",
+   "admin": "terra@gyvunai.lt"
+  },
+  "ivykiai_stulp": [
+   "id",
+   "product_id",
+   "laikas",
+   "tipas",
+   "laukas",
+   "sena",
+   "nauja",
+   "saltinis",
+   "kas",
+   "op_nr",
+   "pastaba"
+  ]
+ }
+}
