@@ -1,0 +1,264 @@
+{
+ "v": "dep-093148",
+ "kurimas": 200,
+ "sid": 5658,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1676 z",
+  "faze": "D",
+  "temp_istrinta": 1,
+  "md5": "0fa55b91cafd3872d1a9f342fc7855b8",
+  "ping": 200
+ },
+ "T": {
+  "v": "S1676 z",
+  "faze": "T",
+  "temp_istrinta": 0,
+  "hooks": [
+   20,
+   40
+  ],
+  "dry": {
+   "uzsakymu": 14,
+   "pakeista": 19,
+   "pvz": {
+    "35872": [
+     {
+      "id": 52,
+      "nr": "V07267E1000064",
+      "upd": {
+       "isvezta_at": "2026-09-11 07:15:32",
+       "statusas": "issiusta"
+      }
+     }
+    ],
+    "35880": [
+     {
+      "id": 53,
+      "nr": "V07267E1000065",
+      "upd": {
+       "isvezta_at": "2026-09-11 16:36:07",
+       "statusas": "issiusta"
+      }
+     }
+    ],
+    "35881": [
+     {
+      "id": 54,
+      "nr": "V07267E1000066",
+      "upd": {
+       "isvezta_at": "2026-09-11 17:36:16",
+       "statusas": "issiusta"
+      }
+     }
+    ]
+   }
+  },
+  "apply": {
+   "uzsakymu": 14,
+   "pakeista": 19
+  },
+  "po": [
+   {
+    "uzsakymas_id": "35872",
+    "siuntos_nr": "V07267E1000064",
+    "pristatymo_tipas": "pastomatas",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 07:15:32",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35880",
+    "siuntos_nr": "V07267E1000065",
+    "pristatymo_tipas": "pastomatas",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 16:36:07",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35881",
+    "siuntos_nr": "V07267E1000066",
+    "pristatymo_tipas": "kurjeris",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 17:36:16",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35882",
+    "siuntos_nr": "V07267E1000067",
+    "pristatymo_tipas": "pastomatas",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 07:15:52",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35883",
+    "siuntos_nr": "V07267E1000068",
+    "pristatymo_tipas": "pastomatas",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 08:07:26",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35886",
+    "siuntos_nr": "V07267E1000075",
+    "pristatymo_tipas": "kurjeris",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 08:09:53",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35886",
+    "siuntos_nr": "V07267E1000076",
+    "pristatymo_tipas": "kurjeris",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 08:09:53",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35886",
+    "siuntos_nr": "V07267E1000077",
+    "pristatymo_tipas": "kurjeris",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 08:09:53",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35886",
+    "siuntos_nr": "V07267E1000078",
+    "pristatymo_tipas": "kurjeris",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 08:09:53",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35886",
+    "siuntos_nr": "V07267E1000074",
+    "pristatymo_tipas": "kurjeris",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 08:09:53",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35886",
+    "siuntos_nr": "V07267E1000073",
+    "pristatymo_tipas": "kurjeris",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 08:09:53",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35887",
+    "siuntos_nr": "V07267E1000079",
+    "pristatymo_tipas": "pastomatas",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 16:06:47",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35888",
+    "siuntos_nr": "V07267E1000069",
+    "pristatymo_tipas": "kurjeris",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 08:07:25",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35891",
+    "siuntos_nr": "V07267E1000070",
+    "pristatymo_tipas": "pastomatas",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 08:07:24",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35892",
+    "siuntos_nr": "V07267E1000071",
+    "pristatymo_tipas": "pastomatas",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 08:07:24",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35893",
+    "siuntos_nr": "V07267E1000080",
+    "pristatymo_tipas": "pastomatas",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 17:36:15",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35894",
+    "siuntos_nr": "V07267E1000081",
+    "pristatymo_tipas": "pastomatas",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 16:36:06",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35901",
+    "siuntos_nr": "V07267E1000072",
+    "pristatymo_tipas": "pastomatas",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 13:06:48",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   },
+   {
+    "uzsakymas_id": "35903",
+    "siuntos_nr": "V07267E1000082",
+    "pristatymo_tipas": "pastomatas",
+    "statusas": "issiusta",
+    "isvezta_at": "2026-09-11 17:36:14",
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "dienos_iki_pristatymo": null
+   }
+  ],
+  "santrauka": [
+   {
+    "statusas": "issiusta",
+    "n": "19",
+    "d": null
+   }
+  ]
+ }
+}
