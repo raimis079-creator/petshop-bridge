@@ -1,0 +1,32 @@
+{
+ "v": "dep-063828",
+ "kurimas": 200,
+ "sid": 5627,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "tax": [
+   "product_brand"
+  ],
+  "product_brand": {
+   "exclusion": [
+    "https://petshop.lt/gamintojas/exclusion/",
+    200
+   ],
+   "josera": [
+    "https://petshop.lt/gamintojas/josera/",
+    200
+   ],
+   "ontario": [
+    "https://petshop.lt/gamintojas/ontario/",
+    200
+   ],
+   "miamor": [
+    "https://petshop.lt/gamintojas/miamor/",
+    200
+   ]
+  }
+ }
+}
