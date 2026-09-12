@@ -1,0 +1,168 @@
+{
+ "v": "dep-131604",
+ "kurimas": 200,
+ "sid": 5677,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "PMAX D v1.1",
+  "dry": false,
+  "kada": "2026-09-12T13:10:19.344Z",
+  "klaidos": [],
+  "zingsniai": [
+   {
+    "k": "kampanija",
+    "ops": 2,
+    "dabar": {
+     "vardas": "P-max| All LT | Šunų maistas",
+     "biudzetas": 20
+    },
+    "rez": {
+     "ok": 0,
+     "kl": [
+      "Cannot find field: urlExpansionOptOut in message google.ads.googleads.v25.resources.Campaign",
+      "Cannot find field: urlExpansionOptOut in message google.ads.googleads.v25.resources.Campaign"
+     ]
+    }
+   },
+   {
+    "k": "D1 Exclusion LTV 7-12 kg",
+    "nuotraukos": 15,
+    "trukstamos": [],
+    "ops": 50,
+    "rez": {
+     "ok": 42,
+     "kl": [
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "'-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName",
+      "'-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-12' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-13' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-14' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter"
+     ]
+    }
+   },
+   {
+    "k": "D2 Exclusion konservai",
+    "nuotraukos": 9,
+    "trukstamos": [],
+    "ops": 44,
+    "rez": {
+     "ok": 36,
+     "kl": [
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "'-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName",
+      "'-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-12' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-13' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-14' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter"
+     ]
+    }
+   },
+   {
+    "k": "D3 Josera sunims",
+    "nuotraukos": 12,
+    "trukstamos": [],
+    "ops": 52,
+    "rez": {
+     "ok": 39,
+     "kl": [
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "'-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName",
+      "'-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-12' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-13' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-12' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-14' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-12' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-15' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-16' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-15' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-17' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-15' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-18' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-19' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter"
+     ]
+    }
+   },
+   {
+    "k": "D4 Ontario konservai sunims",
+    "nuotraukos": 14,
+    "trukstamos": [
+     "ps_03_konservai_sunims_ontario_mono_pt"
+    ],
+    "ops": 49,
+    "rez": {
+     "ok": 41,
+     "kl": [
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "'-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName",
+      "'-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-12' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-13' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-14' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter"
+     ]
+    }
+   },
+   {
+    "k": "D5 Josera katems",
+    "nuotraukos": 12,
+    "trukstamos": [],
+    "ops": 52,
+    "rez": {
+     "ok": 39,
+     "kl": [
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "'-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName",
+      "'-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-12' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-13' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-12' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-14' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-12' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-15' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-16' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-15' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-17' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-15' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-18' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-19' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter"
+     ]
+    }
+   },
+   {
+    "k": "D6 Konservai katems Miamor Ontario",
+    "nuotraukos": 20,
+    "trukstamos": [],
+    "ops": 58,
+    "rez": {
+     "ok": 47,
+     "kl": [
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "The request would cause a limit on the number of allowed resources of this type to be exceeded. At assetGroupAssetOperation",
+      "'-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName",
+      "'-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-12' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-13' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-11' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-14' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-15' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-14' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-16' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-14' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter",
+      "'-17' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.resourceName; '-10' part of the resource name is invalid. At assetGroupListingGroupFilterOperation.create.parentListingGroupFilter"
+     ]
+    }
+   },
+   {
+    "k": "kates PAUSE",
+    "dabar": true
+   }
+  ],
+  "generic": "Generic | Šunų maistas",
+  "kopijuojama": 29,
+  "ps_bibliotekoje": 83
+ }
+}
