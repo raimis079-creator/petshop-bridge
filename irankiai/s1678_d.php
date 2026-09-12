@@ -1,0 +1,37 @@
+<?php
+/** TEMP PS S1678 sec-deploy — mu-plugin petshop-sargas-saugumas v1.0 + .htaccess blokas + root ps-backups perkėlimas; TK fazė — HTTP patikra. */
+add_action('init', function(){
+  if (!isset($_GET['ps_sec8d'])) return; $f=$_GET['ps_sec8d']; $o=array('v'=>'S1678 sec-deploy','faze'=>$f); $r=ABSPATH; $arch=dirname($r).'/ps-archyvas';
+  if ($f==='GO') {
+    $plug=base64_decode('PD9waHAKLyoqCiAqIFBldHNob3AgU2FyZ2FzIFNhdWd1bWFzIHYxLjAgKFMxNjc4KSDigJQgeG1scnBjIHXFvmRhcnltYXMsIHZhcnRvdG9qxbMgbmVhdHNrbGVpZGltYXMsIHNhdWd1bW8gYW50cmHFoXTEl3MsIFN0b3JlIEFQSSBsaW1pdGFzLgogKiBQcmlzaWp1bmdpbW8gKHdwLWxvZ2luKSBpciBwcmlzaWp1bmd1c2nFsyB2YXJ0b3RvasWzIFJFU1QgbmVsaWXEjWlhLiBCcmlkZ2UgKGFwcCBwYXNzd29yZCkgbmVsaWXEjWlhLgogKi8KaWYgKCFkZWZpbmVkKCdBQlNQQVRIJykpIGV4aXQ7CgovLyAxLiBYTUwtUlBDOiBpxaFqdW5ndGFzIHZpc2nFoWthaSArIFgtUGluZ2JhY2sgYW50cmHFoXTElyBudWltdGEKYWRkX2ZpbHRlcigneG1scnBjX2VuYWJsZWQnLCAnX19yZXR1cm5fZmFsc2UnKTsKYWRkX2ZpbHRlcigneG1scnBjX21ldGhvZHMnLCAnX19yZXR1cm5fZW1wdHlfYXJyYXknKTsKYWRkX2ZpbHRlcignd3BfaGVhZGVycycsIGZ1bmN0aW9uKCRoKXsgdW5zZXQoJGhbJ1gtUGluZ2JhY2snXSk7IHJldHVybiAkaDsgfSk7CmlmIChkZWZpbmVkKCdYTUxSUENfUkVRVUVTVCcpICYmIFhNTFJQQ19SRVFVRVNUKSB7IHN0YXR1c19oZWFkZXIoNDAzKTsgaGVhZGVyKCdDb250ZW50LVR5cGU6IHRleHQvcGxhaW4nKTsgZXhpdCgnNDAzJyk7IH0KCi8vIDIuIFZhcnRvdG9qxbMgYXRza2xlaWRpbWFzOiAvd3AvdjIvdXNlcnMgdGlrIHByaXNpanVuZ3VzaWVtczsgP2F1dGhvcj1OIGlyIGF1dG9yaWF1cyBhcmNoeXZhaSDihpIgNDA0IHN2ZcSNaWFtcwphZGRfZmlsdGVyKCdyZXN0X3ByZV9kaXNwYXRjaCcsIGZ1bmN0aW9uKCRyZXN1bHQsICRzZXJ2ZXIsICRyZXF1ZXN0KXsKICBpZiAoaXNfdXNlcl9sb2dnZWRfaW4oKSkgcmV0dXJuICRyZXN1bHQ7CiAgJHIgPSAkcmVxdWVzdC0+Z2V0X3JvdXRlKCk7CiAgaWYgKHByZWdfbWF0Y2goJyNeL3dwL3YyL3VzZXJzKC98JCkjJywgJHIpKSByZXR1cm4gbmV3IFdQX0Vycm9yKCdwc19yZXN0X2ZvcmJpZGRlbicsICdEcmF1ZMW+aWFtYScsIGFycmF5KCdzdGF0dXMnID0+IDQwMSkpOwogIHJldHVybiAkcmVzdWx0Owp9LCA1LCAzKTsKYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKGlzX2FkbWluKCkgfHwgaXNfdXNlcl9sb2dnZWRfaW4oKSkgcmV0dXJuOwogIGlmIChpc3NldCgkX0dFVFsnYXV0aG9yJ10pIHx8IChpc3NldCgkX1NFUlZFUlsnUkVRVUVTVF9VUkknXSkgJiYgcHJlZ19tYXRjaCgnI14vYXV0aG9yLyMnLCAkX1NFUlZFUlsnUkVRVUVTVF9VUkknXSkpKSB7CiAgICBzdGF0dXNfaGVhZGVyKDQwNCk7IG5vY2FjaGVfaGVhZGVycygpOyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogdGV4dC9wbGFpbjsgY2hhcnNldD1VVEYtOCcpOyBleGl0KCc0MDQnKTsKICB9Cn0sIDEpOwphZGRfZmlsdGVyKCdhdXRob3JfcmV3cml0ZV9ydWxlcycsICdfX3JldHVybl9lbXB0eV9hcnJheScpOwovLyBvRW1iZWQgYXV0b3JpYXVzIGxhdWthaQphZGRfZmlsdGVyKCdvZW1iZWRfcmVzcG9uc2VfZGF0YScsIGZ1bmN0aW9uKCRkKXsgdW5zZXQoJGRbJ2F1dGhvcl9uYW1lJ10sICRkWydhdXRob3JfdXJsJ10pOyByZXR1cm4gJGQ7IH0pOwoKLy8gMy4gU2F1Z3VtbyBhbnRyYcWhdMSXcyAoUEhQIGF0c2FreW1hbXM7IHN0YXRpbmlhbXMg4oCUIC5odGFjY2VzcykKYWRkX2FjdGlvbignc2VuZF9oZWFkZXJzJywgZnVuY3Rpb24oKXsKICBpZiAoaGVhZGVyc19zZW50KCkpIHJldHVybjsKICBoZWFkZXIoJ1gtRnJhbWUtT3B0aW9uczogU0FNRU9SSUdJTicpOwogIGhlYWRlcignWC1Db250ZW50LVR5cGUtT3B0aW9uczogbm9zbmlmZicpOwogIGhlYWRlcignUmVmZXJyZXItUG9saWN5OiBzdHJpY3Qtb3JpZ2luLXdoZW4tY3Jvc3Mtb3JpZ2luJyk7CiAgaWYgKGlzX3NzbCgpKSBoZWFkZXIoJ1N0cmljdC1UcmFuc3BvcnQtU2VjdXJpdHk6IG1heC1hZ2U9MzE1MzYwMDAnKTsKfSk7CgovLyA0LiBXb29Db21tZXJjZSBTdG9yZSBBUEkgcmF0ZSBsaW1pdCAoMjUgdcW+a2xhdXNvcyAvIDEwIHMgdmllbmFtIElQKQphZGRfZmlsdGVyKCd3b29jb21tZXJjZV9zdG9yZV9hcGlfcmF0ZV9saW1pdF9vcHRpb25zJywgZnVuY3Rpb24oJG8pewogICRvWydlbmFibGVkJ10gPSB0cnVlOyAkb1snbGltaXQnXSA9IDI1OyAkb1snc2Vjb25kcyddID0gMTA7IHJldHVybiAkbzsKfSk7Cg=='); $exp='660d768573421a6c1dede45efc44da4f';
+    $o['md5_ok']=(md5($plug)===$exp);
+    try { token_get_all($plug, TOKEN_PARSE); $o['parse']='ok'; } catch (Throwable $e) { $o['parse']='FAIL '.$e->getMessage(); }
+    if (!$o['md5_ok'] || $o['parse']!=='ok') { echo json_encode($o); exit; }
+    $dst=WPMU_PLUGIN_DIR.'/petshop-sargas-saugumas.php'; $o['egzistavo']=file_exists($dst);
+    $o['rase']=file_put_contents($dst,$plug)!==false; $o['md5_gyvai']=md5_file($dst);
+    // .htaccess
+    if(!is_dir($arch)) @mkdir($arch,0700);
+    $hp=$r.'.htaccess'; $h=file_get_contents($hp); $o['ht_bak']=copy($hp,$arch.'/.htaccess.bak_s1678');
+    if (strpos($h,'BEGIN Petshop Saugumas')===false) { $o['ht_rase']=file_put_contents($hp,rtrim($h)."\n".base64_decode('CiMgQkVHSU4gUGV0c2hvcCBTYXVndW1hcyAoUzE2NzgpCjxJZk1vZHVsZSBtb2RfaGVhZGVycy5jPgpIZWFkZXIgYWx3YXlzIHNldCBYLUNvbnRlbnQtVHlwZS1PcHRpb25zICJub3NuaWZmIgpIZWFkZXIgYWx3YXlzIHNldCBYLUZyYW1lLU9wdGlvbnMgIlNBTUVPUklHSU4iCkhlYWRlciBhbHdheXMgc2V0IFJlZmVycmVyLVBvbGljeSAic3RyaWN0LW9yaWdpbi13aGVuLWNyb3NzLW9yaWdpbiIKSGVhZGVyIGFsd2F5cyBzZXQgU3RyaWN0LVRyYW5zcG9ydC1TZWN1cml0eSAibWF4LWFnZT0zMTUzNjAwMCIgZW52PUhUVFBTCjwvSWZNb2R1bGU+CjxGaWxlcyB4bWxycGMucGhwPgo8SWZNb2R1bGUgbW9kX2F1dGh6X2NvcmUuYz4KUmVxdWlyZSBhbGwgZGVuaWVkCjwvSWZNb2R1bGU+CjwvRmlsZXM+CiMgRU5EIFBldHNob3AgU2F1Z3VtYXMK'))!==false; } else $o['ht_rase']='jau buvo';
+    // root ps-backups → ps-archyvas
+    if (is_dir($r.'ps-backups')) { $o['psb_perkelta']=rename($r.'ps-backups',$arch.'/webroot-ps-backups-s1678'); $o['psb_n']=count(glob($arch.'/webroot-ps-backups-s1678/*')); }
+    // heartbeat
+    $ua=array('timeout'=>15,'sslverify'=>false); $hb=wp_remote_get('https://petshop.lt/?ps_hb='.time(),$ua); $c=is_wp_error($hb)?0:wp_remote_retrieve_response_code($hb); $o['heartbeat']=$c;
+    if ($c>=500 || $c==0) { @unlink($dst); copy($arch.'/.htaccess.bak_s1678',$hp); $o['ROLLBACK']='taip'; $hb2=wp_remote_get('https://petshop.lt/?ps_hb2='.time(),$ua); $o['po_rollback']=is_wp_error($hb2)?0:wp_remote_retrieve_response_code($hb2); }
+  }
+  if ($f==='TK') {
+    $ua=array('timeout'=>12,'redirection'=>0,'sslverify'=>false);
+    $x=wp_remote_get('https://petshop.lt/?ps_tk='.time(),$ua); $hd=wp_remote_retrieve_headers($x)->getAll();
+    $o['home']=wp_remote_retrieve_response_code($x); foreach(array('strict-transport-security','x-frame-options','x-content-type-options','referrer-policy','x-pingback') as $k) $o['antr'][$k]=$hd[$k]??'-';
+    $x=wp_remote_post('https://petshop.lt/xmlrpc.php',array_merge($ua,array('body'=>'<?xml version="1.0"?><methodCall><methodName>system.listMethods</methodName></methodCall>'))); $o['xmlrpc']=wp_remote_retrieve_response_code($x).' '.(strpos(wp_remote_retrieve_body($x),'getUsersBlogs')!==false?'ATVIRAS':'uzdaras');
+    $x=wp_remote_get('https://petshop.lt/?rest_route=/wp/v2/users',$ua); $o['rest_users']=wp_remote_retrieve_response_code($x).' '.(preg_match('/"slug":"/',wp_remote_retrieve_body($x))?'ATSKLEIDZIA':'uzdaras');
+    $x=wp_remote_get('https://petshop.lt/?rest_route=/wp/v2/users/1',$ua); $o['rest_user1']=wp_remote_retrieve_response_code($x);
+    $x=wp_remote_get('https://petshop.lt/?author=1',$ua); $o['author1']=wp_remote_retrieve_response_code($x).' '.substr((string)wp_remote_retrieve_header($x,'location'),0,50);
+    $x=wp_remote_get('https://petshop.lt/author/admin/',$ua); $o['author_admin']=wp_remote_retrieve_response_code($x);
+    foreach(array('/','/kategorija/katems/','/parduotuve/','/wp-login.php','/?rest_route=/wc/store/v1/cart','/?rest_route=/ps-web/v1/ads','/feed/google/') as $pth){ $x=wp_remote_get('https://petshop.lt'.$pth,$ua); $o['kelias'][$pth]=is_wp_error($x)?'ERR':wp_remote_retrieve_response_code($x); }
+    $o['mu_md5']=md5_file(WPMU_PLUGIN_DIR.'/petshop-sargas-saugumas.php'); $o['root_psb']=is_dir($r.'ps-backups'); $o['wpconfig_bak_arch']=file_exists($arch.'/webroot-ps-backups-s1678/wp-config-BAK-T0-20260908_224013.php');
+    $o['fatal_log']=file_exists(dirname($r).'/logs/php_error.log')?substr(shell_safe_tail(dirname($r).'/logs/php_error.log'),-400):'-';
+  }
+  header('Content-Type: application/json'); echo json_encode($o,JSON_UNESCAPED_UNICODE); exit;
+});
+function shell_safe_tail($p){ $s=filesize($p); $fh=fopen($p,'r'); fseek($fh,max(0,$s-4000)); $t=fread($fh,4000); fclose($fh); return $t; }
