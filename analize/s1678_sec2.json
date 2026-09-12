@@ -1,0 +1,54 @@
+{
+ "v": "dep-191024",
+ "kurimas": 200,
+ "sid": 5691,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1678 sec2",
+  "fail": {
+   "backup-run.php": {
+    "dydis": 200,
+    "mtime": "2026-08-04 06:46",
+    "turinys": "<?php\n/**\n * backup-run.php — paleidiklis DirectAdmin cron'ui (per URL).\n * Jokios logikos: tik perduoda vykdymą skriptui už public_html ribų.\n */\nrequire '/home/gyvunai2/backups/ps-backup.php';\n"
+   },
+   "watch-run.php": {
+    "dydis": 143,
+    "mtime": "2026-08-04 08:08",
+    "turinys": "<?php\n/**\n * watch-run.php — paleidiklis backup sargui (DirectAdmin cron per URL).\n */\nrequire '/home/gyvunai2/backups/ps-backup-watch.php';\n"
+   },
+   "index.html.backup.5a6defd0b6c8b4cd418a970086e2c0b4": {
+    "dydis": 385,
+    "mtime": "2026-05-05 15:40",
+    "turinys": "<html>\n<head>\n<title>\ndev.avesa.lt</title>\n<style>\n* { font-family: verdana; font-size: 10pt; COLOR: gray; }\nb { font-weight: bold; }\ntable { border: 1px solid gray;}\ntd { text-align: center; padding: 25;}\n</style>\n</head>\n<body>\n<center>\n<br><br><br><br>\n<table>\n<tr><td>This is a placeholder for th"
+   }
+  },
+  "root_ps_backups": [
+   "home-popular-products.php.bak_S1583 14KB 09-01",
+   "perkelti-r186-BAK-T0.php 4KB 09-08",
+   "petshop-dev-pastas-BAK-T0.php 6KB 09-08",
+   "petshop-dev-veidrodis-BAK-T0.php 1KB 09-08",
+   "wp-config-BAK-T0-20260908_224013.php 4KB 09-08"
+  ],
+  "upl_ps_backups_n": 435,
+  "upl_ps_backups_pvz": [
+   "base.php.bak_s1675",
+   "cart-abandoned-1.php.bak_s1676",
+   "cart-abandoned-2.php.bak_s1676",
+   "class-cart-abandonment.php.bak_s1675",
+   "class-product-calc.php.bak_s1670"
+  ],
+  "http": {
+   "/wp-content/uploads/ps-backups/petshop-feeds.php.bak_s1677": "403 text/html 403",
+   "/wp-content/uploads/ps-backups/petshop-darbalaukis.php.bak_s1676": "403 text/html 403",
+   "/wp-content/uploads/pmax-s1672/manifest.json": "200 application/json 18100",
+   "/wp-content/mu-plugins/petshop-darbalaukis.php": "200 text/html 0",
+   "/wp-content/debug.log": "404 text/html; charset=UTF-8 172058",
+   "/.git/HEAD": "404 text/html; charset=UTF-8 172047",
+   "/wp-content/uploads/wpallimport/logs/": "200 text/html 0",
+   "/.env": "404 text/html; charset=UTF-8 172042"
+  }
+ }
+}
