@@ -1,0 +1,34 @@
+{
+ "v": "dep-071741",
+ "kurimas": 200,
+ "sid": 5630,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1676 c",
+  "temp_istrinta": 1,
+  "klase_failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laiskai.php",
+  "src": {
+   "renderinti": "\tpublic static function renderinti( $flow, $payload, $flow_class = 'service', $recipient = '' ) {\n\t\t$r = self::paskelbtas( $flow );\n\t\tif ( ! $r ) { return array( 'subject' => '', 'html' => '' ); }\n\n\t\t$subject = self::pakeisti( $r['subject'], $payload );\n\t\t$body    = self::blokai_i_html( $r['blocks'], $payload );\n\t\tif ( trim( $body ) === '' ) { return array( 'subject' => $subject, 'html' => '' ); }\n\n\t\t$html = Petshop_Email_Layout::wrap( array(\n\t\t\t'subject'    => $subject,\n\t\t\t'preheader'  => self::pakeisti( $r['preheader'], $payload ),\n\t\t\t'body'       => $body,\n\t\t\t'flow_class' => $flow_class,\n\t\t\t'email'      => $recipient,\n\t\t\t'reason'     => self::pakeisti( $r['reason'], $payload ),\n\t\t) );\n\t\treturn array( 'subject' => $subject, 'html' => $html );\n\t}",
+   "perziura": "\tpublic static function perziura( $flow, $version = 0, $payload = array() ) {\n\t\tglobal $wpdb;\n\t\t$T = self::lentele();\n\t\tif ( $version ) {\n\t\t\t$r = $wpdb->get_row( $wpdb->prepare( \"SELECT * FROM `$T` WHERE flow=%s AND version=%d\", $flow, (int) $version ), ARRAY_A );\n\t\t} else {\n\t\t\t$r = self::juodrastis( $flow );\n\t\t\tif ( ! $r ) { $r = self::paskelbtas( $flow ); }\n\t\t}\n\t\tif ( ! $r ) {\n\t\t\t/* Nei juodrascio, nei paskelbto — rodom KODO SABLONA, kad perziura\n\t\t\t   veiktu visiems 20 srautu, o ne tik perkeltiems. */\n\t\t\t$fl = class_exists( 'Petshop_Email_Dispatch' ) ? Petshop_Email_Dispatch::flows() : array();\n\t\t\tif ( ! isset( $fl[ $flow ] ) ) { return array( 'ok' => false, 'klaida' => 'Nezinomas srautas' ); }\n\t\t\t$pvz2 = wp_parse_args( $payload, self::pavyzdinis_payload( $flow ) );\n\t\t\t$rf = Petshop_Email_Dispatch::render( $flow, $pvz2, array(\n\t\t\t\t'flow_class' => $fl[ $flow ]['class'], 'recipient_email' => 'pavyzdys@petshop.lt' ) );\n\t\t\tif ( empty( $rf['html'] ) ) { return array( 'ok' => false, 'klaida' => 'Sablonas negrazino turinio' ); }\n\t\t\treturn array( 'ok' => true, 'saltinis' => 'kodo sablonas', 'subject' => $rf['subject'], 'html' => $rf['html'] );\n\t\t}\n\t\t$blocks = isset( $r['blocks'] ) ? $r['blocks'] : json_decode( (string) $r['blocks_json'], true );\n\t\tif ( ! is_array( $blocks ) ) { $blocks = array(); }\n\n\t\t$pvz = wp_parse_args( $payload, self::pavyzdinis_payload( $flow ) );\n\t\t$subject = self::pakeisti( $r['subject'], $pvz );\n\t\t$body    = self::blokai_i_html( $blocks, $pvz );\n\t\t$flows   = class_exists( 'Petshop_Email_Dispatch' ) ? Petshop_Email_Dispatch::flows() : array();\n\t\t$fc      = isset( $flows[ $flow ]['class'] ) ? $flows[ $flow ]['class'] : 'service';\n\n\t\treturn array(\n\t\t\t'ok'      => true,\n\t\t\t'saltinis'=> $version ? ( 'versija v' . (int) $version ) : ( self::juodrastis( $flow ) ? 'juodrastis' : 'paskelbta' ),\n\t\t\t'subject' => $subject,\n\t\t\t'html'    => Petshop_Email_Layout::wrap( array(\n\t\t\t\t'subject'    => $subject,\n\t\t\t\t'preheader'  => self::pakeisti( $r['preheader'], $pvz ),\n\t\t\t\t'body'       => $body,\n\t\t\t\t'flow_class' => $fc,\n\t\t\t\t'email'      => 'pavyzdys@petshop.lt',\n\t\t\t\t'reason'     => self::pakeisti( $r['reason'], $pvz ),\n\t\t\t) ),\n\t\t);\n\t}",
+   "paskelbtas": "\tpublic static function paskelbtas( $flow ) {\n\t\tglobal $wpdb;\n\t\t$T = self::lentele();\n\t\tif ( $wpdb->get_var( \"SHOW TABLES LIKE '$T'\" ) !== $T ) { return null; }\n\t\t$r = $wpdb->get_row( $wpdb->prepare(\n\t\t\t\"SELECT * FROM `$T` WHERE flow=%s AND status='published' ORDER BY version DESC LIMIT 1\", $flow\n\t\t), ARRAY_A );\n\t\tif ( ! $r ) { return null; }\n\t\t$r['blocks'] = json_decode( (string) $r['blocks_json'], true );\n\t\tif ( ! is_array( $r['blocks'] ) ) { $r['blocks'] = array(); }\n\t\treturn $r;\n\t}",
+   "renderio_failas": "\tpublic static function renderio_failas() {\n\t\treturn WPMU_PLUGIN_DIR . '/petshop-laiskai/renderis.php';\n\t}",
+   "uztikrinti_renderi": "\tpublic static function uztikrinti_renderi() {\n\t\t$f = self::renderio_failas();\n\t\t$kodas = \"<?php\\n\"\n\t\t\t. \"/** Petshop laisku universalus renderis. Ikeliamas is Petshop_Email_Dispatch::render(). */\\n\"\n\t\t\t. \"if ( ! defined( 'ABSPATH' ) ) { exit; }\\n\"\n\t\t\t. \"\\$ps_flow = isset( \\$flow ) ? \\$flow : Petshop_Laiskai_Turinys::dabartinis_flow();\\n\"\n\t\t\t. \"\\$ps_out  = Petshop_Laiskai_Turinys::renderinti(\\n\"\n\t\t\t. \"\\t\\$ps_flow,\\n\"\n\t\t\t. \"\\tisset( \\$payload ) ? (array) \\$payload : array(),\\n\"\n\t\t\t. \"\\tisset( \\$flow_class ) ? \\$flow_class : 'service',\\n\"\n\t\t\t. \"\\tisset( \\$recipient ) ? \\$recipient : ''\\n\"\n\t\t\t. \");\\n\"\n\t\t\t. \"\\$subject = \\$ps_out['subject'];\\n\"\n\t\t\t. \"echo \\$ps_out['html'];\\n\";\n\t\tif ( file_exists( $f ) && md5_file( $f ) === md5( $kodas ) ) { return 'jau_yra'; }\n\t\tif ( ! is_dir( dirname( $f ) ) ) { wp_mkdir_p( dirname( $f ) ); }\n\t\tif ( @token_get_all( $kodas, TOKEN_PARSE ) === false ) { return 'SINTAKSE'; }\n\t\tfile_put_contents( $f, $kodas );\n\t\treturn ( md5_file( $f ) === md5( $kodas ) ) ? 'irašyta' : 'KLAIDA';\n\t}",
+   "dabartinis_flow": "\tpublic static function dabartinis_flow() { return self::$dabartinis_flow; }"
+  },
+  "draft_blocks": [
+   {
+    "id": "54",
+    "flow": "cart_abandoned",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"Sveiki, pasteb\\u0117jome, kad krep\\u0161elyje liko preki\\u0173. Jis i\\u0161saugotas \\u2014 galite t\\u0119sti, kai b\\u016bsite pasiruo\\u0161\\u0119.\"},{\"t\":\"items\",\"saltinis\":\"cart_items\",\"stilius\":\"sarasas\",\"kiekis\":true},{\"t\":\"button\",\"url\":\"http:\\/\\/{recovery_url}\",\"label\":\"Gr\\u012f\\u017eti \\u012f krep\\u0161el\\u012f\"},{\"t\":\"muted\",\"text\":\"Kainos ir preki\\u0173 prieinamumas gali b\\u016bti pasikeit\\u0119 \\u2014 krep\\u0161el\\u012f atnaujinsime pagal dabartin\\u012f katalog\\u0105.\"}]"
+   },
+   {
+    "id": "55",
+    "flow": "cart_abandoned_2",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"Krep\\u0161elis vis dar laukia. Jei kilo klausim\\u0173 d\\u0117l pasirinkimo \\u2014 mielai pad\\u0117sime.\"},{\"t\":\"items\",\"saltinis\":\"cart_items\",\"stilius\":\"sarasas\",\"kiekis\":true},{\"t\":\"button\",\"url\":\"http:\\/\\/{recovery_url}\",\"label\":\"Gr\\u012f\\u017eti \\u012f krep\\u0161el\\u012f\"},{\"t\":\"muted\",\"text\":\"Kainos ir preki\\u0173 prieinamumas gali b\\u016bti pasikeit\\u0119 \\u2014 krep\\u0161el\\u012f atnaujinsime pagal dabartin\\u012f katalog\\u0105.\"}]"
+   }
+  ]
+ }
+}
