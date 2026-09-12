@@ -1,0 +1,37 @@
+{
+ "v": "dep-090757",
+ "kurimas": 200,
+ "sid": 5651,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1676 s",
+  "faze": "D",
+  "temp_istrinta": 1,
+  "md5": [
+   "7372f8eebf4218afe9786608b7b05448",
+   "4c8baa2fef2cffb4515686e26040526f"
+  ],
+  "ping": 200
+ },
+ "T": {
+  "v": "S1676 s",
+  "faze": "T",
+  "temp_istrinta": 0,
+  "klases": [
+   true,
+   true
+  ],
+  "dry": {
+   "27128": [
+    "1020 iid1855 pid27128 q1 src=vf"
+   ]
+  },
+  "dry_17707": {
+   "pid": 17707,
+   "eil": []
+  }
+ }
+}
