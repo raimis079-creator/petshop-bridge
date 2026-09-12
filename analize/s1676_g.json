@@ -1,82 +1,16 @@
 {
- "v": "dep-073056",
+ "v": "dep-125831",
  "kurimas": 200,
- "sid": 5634,
+ "sid": 5673,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
  "GO": {
-  "v": "S1676 g",
-  "temp_istrinta": 1,
-  "desk": [
-   "313: protected static function laiskai_off() {",
-   "441: 'vardas' => 'su_laisku',",
-   "480: 'vardas' => 'su_laisku',",
-   "883: if ( $tylus ) { self::laiskai_off(); }",
-   "900: $su_laisku = ! empty( $_GET['su_laisku'] );",
-   "903: $naudotojas, $su_laisku ? 'išsiųstas' : 'NESIŲSTAS' ),",
-   "905: if ( ! $su_laisku ) { self::laiskai_off(); }",
-   "907: if ( ! $su_laisku ) { self::laiskai_on(); }",
-   "909: $zinute = $su_laisku ? 'atsaukta_laiskas' : 'atsaukta';",
-   "917: $su_laisku = ! empty( $_GET['su_laisku'] );",
-   "920: $naudotojas, $su_laisku ? 'išsiųstas' : 'NESIŲSTAS' ),",
-   "922: if ( ! $su_laisku ) { self::laiskai_off(); }",
-   "924: if ( ! $su_laisku ) { self::laiskai_on(); }",
-   "929: $zinute = $su_laisku ? 'issiusta_laiskas' : 'issiusta';",
-   "2264: 'atsaukta_laiskas'=> array( 'ok', 'Užsakymas #%s atšauktas. Prekės grąžintos į likutį. Klientui išsiųstas pranešimas.' ),"
-  ],
-  "dispatch_api": {
-   "flows": "",
-   "table": "",
-   "install": "",
-   "maybe_install": "",
-   "enqueue": "flow,email,?payload,?args",
-   "check_eligibility": "flow_class,email,?flow,?context",
-   "is_suppressed": "email",
-   "is_transactional_only": "email",
-   "suppress": "email,channel,?reason,?source",
-   "process_pending": "?limit,?dry_run",
-   "process_one": "row,?dry_run",
-   "render": "flow,payload,?row",
-   "stats": "",
-   "init": "",
-   "cron_run": ""
-  },
-  "dunning1": "<?php\n/**\n * Sablonas: payment_failed — apmokejimas neivyko (dunning, 1-as laiskas).\n * Gauna: $payload (order_number, total, name, pay_url, order_url, method, expires_at),\n *        $flow_class, $recipient (dispatch::render).\n * Nustato: $subject\n * TZ §4.4.1: \"jus\" mazaja, siuntejas Petshop.lt, fallback be vardo.\n * TONAS: NE kaltinimas. Dazniausia priezastis — nutruko rysys su banku.\n *\n * v2.0 (S1548): perkeltas ant Petshop_Email_Layout — turinys nepakeistas.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$order_no  = isset( $payload['order_number'] ) ? $payload['order_number'] : '';\n$total     = isset( $payload['total'] ) ? $payload['total'] : '';\n$name      = isset( $payload['name'] ) ? trim( (string) $payload['name'] ) : '';\n$pay_url   = isset( $payload['pay_url'] ) ? $payload['pay_url'] : '';\n$order_url = isset( $payload['order_url'] ) ? $payload['order_url'] : wc_get_account_endpoint_url( 'orders' );\n$galioja   = isset( $payload['expires_at'] ) ? (string) $payload['expires_at'] : '';\n$email     = isset( $recipient ) ? $recipient : '';\n$fc        = isset( $flow_class ) ? $flow_class : 'transactional';\n\n$subject = $order_no\n\t? sprintf( 'Užsakymas %s laukia apmokėjimo', $order_no )\n\t: 'Jūsų užsakymas laukia apmokėjimo';\n\n$greet = function_exists( 'ps_sveiki' ) ? ps_sveiki( $name ) : ( $name !== '' ? sprintf( 'Sveiki, %s,', esc_html( $name ) ) : 'Sveiki,' );\n$cta   = $pay_url ? $pay_url : $order_url;\n\n$body  = Petshop_Email_Layout::p(\n\t$greet . ' jūsų užsakymą gavome, bet apmokėjimas nepasiekė mūsų. Dažniausiai taip nutinka, kai mokėjimo lange nutrūksta ryšys su banku — pinigai tokiu atveju nenuskaitomi.'\n);\n$body .= Petshop_Email_Layout::p(\n\t'Prekes laikome jums' . ( $galioja ? ' iki ' . esc_html( $galioja ) : '' ) . '. Apmokėti galite paspaudę mygtuką žemiau' . ( $total ? ' — suma ' . esc_html( $total ) : '' ) . '.'\n);\n$body .= Petshop_Email_Layout::button( $cta, 'Apmokėti užsakymą' );\n$body .= Petshop_Email_Layout::p(\n\t'Jei apmokėjimą jau atlikote arba užsakymo nebereikia — tiesiog atsakykite į šį laišką. Neapmokėtą užsakymą po kelių dienų atšauksime automatiškai, jokių įsipareigojimų neliks.',\n\t14\n);\n\necho Petshop_Email_Layout::wrap( array(\n\t'subject'    => $subject,\n\t'preheader'  => 'Apmokėjimas nepasiekė mūsų — prekes dar laikome jums.',\n\t'body'       => $body,\n\t'flow_class' => $fc,\n\t'email'      => $email,\n\t'reason'     => 'Gavote šį laišką, nes pateikėte užsakymą petshop.lt.',\n) );\n",
-  "payment_failed_kur": {
-   "petshop-laiskai.php": [
-    "'payment_failed'         => array( 'order_number', 'pay_url' ),"
-   ],
-   "petshop-langai-admin.php": [
-    "'payment_failed'         => array( 'Mokėjimas nepavyko', 'Priminimas apmokėti pradėtą užsakymą.' ),"
-   ],
-   "petshop-payment-failed.php": [
-    "$rez = Petshop_Event_Registry::emit( 'payment_failed', $email, $payload, array(",
-    "$job = Petshop_Email_Dispatch::enqueue( 'payment_failed', $email, $payload, array("
-   ],
-   "petshop-prenumerata.php": [
-    "), 'payment_failed', array('order_id' => (int) $oid, 'klaida' => $klaida));",
-    "Petshop_Email_Dispatch::enqueue('payment_failed', self::gauti($sid)['email'],"
-   ],
-   "petshop-rezultatai.php": [
-    "'payment_failed'=>'Mokėjimas nepavyko','shipment_returned'=>'Siunta grįžo',"
-   ],
-   "class-email-dispatch.php": [
-    "'payment_failed'          => array( 'class' => 'transactional', 'template' => 'dunning-1',         'delay' => 0 ),"
-   ],
-   "class-event-registry.php": [
-    "'payment_failed'              => false,  // dalinai"
-   ]
-  },
-  "wc_cancel_email": {
-   "enabled": "yes",
-   "subject": "Jūsų užsakymas Nr. {order_number} atšauktas — Petshop.lt",
-   "heading": "",
-   "additional_content": "Jei turite klausimų — susisiekite: terra@petshop.lt tel. +37068187787",
-   "email_type": "html",
-   "cc": "",
-   "bcc": ""
-  }
+  "pakeitimai": 5,
+  "md5_sena": "2659ec6ffc074e52a32208f8995f0d4c",
+  "md5_nauja": "afd5c4e078f6b3fc600804496ea6546d",
+  "irasyta": 1,
+  "nauja": "/**\n * Petshop Consent Bridge v1.2 (Complianz -> GTM)\n *\n * Vienas inline blokas wp_head'e, PRIES GTM snippet'a (prio 0 < prio 1):\n *   1. Google Consent Mode v2 DEFAULT (visi denied)\n *   2. Jei Complianz cookies jau yra (pakartotinis lankytojas) -> consent UPDATE\n *   3. Listener'iai cmplz_status_change / cmplz_fire_categories -> consent UPDATE + dataLayer event\n *   4. v1.2: po sutikimo pakartoja ecommerce event'a TIK jei consent pasikeite denied -> granted.\n *      BUG v1.1: cmplz_fire_categories fire'ina kiekviename puslapyje, kur sutikimas jau duotas,\n *      todel replay dubliuodavo purchase -> dvigubos konversijos.\n *\n * KODEL cia, o ne GTM tag'e:\n *   consent default privalo buti dataLayer'yje PRIES consent update.\n *   GTM Consent Initialization tag'as fire'ina tik po gtm.js uzsikrovimo,\n *   o sis snippet'as vykdomas sinchroniskai anksciau. Tvarka garantuota tik cia.\n *\n * SVARBU: GTM tag'as \"00 — Consent Mode v2 Default\" turi buti ISTRINTAS/PAUZUOTAS,\n *         kitaip default perrasys update.\n *\n * Kategoriju atitikmenys:\n *   cmplz statistics -> analytics_storage\n *   cmplz marketing  -> ad_storage, ad_user_data, ad_personalization\n *\n * Scope: front-end only\n */\n\nif ( ! defined( 'ABSPATH' ) ) { return; }\n\nif ( ! function_exists( 'petshop_consent_bridge' ) ) {\n\tfunction petshop_consent_bridge() {\n\t\tif ( is_admin() ) { return; }\n\n\t\t$js = <<<'PETSHOPCONSENT'\n<script data-petshop-consent-bridge=\"1\">\n(function () {\n\twindow.dataLayer = window.dataLayer || [];\n\tfunction gtag() { window.dataLayer.push(arguments); }\n\n\t/* ---- 1. CONSENT MODE v2 DEFAULT (privalo buti pirmas) ---- */\n\tgtag('consent', 'default', {\n\t\t'ad_storage': 'granted',\n\t\t'ad_user_data': 'granted',\n\t\t'ad_personalization': 'denied',\n\t\t'analytics_storage': 'denied',\n\t\t'functionality_storage': 'granted',\n\t\t'personalization_storage': 'granted',\n\t\t'security_storage': 'granted',\n\t\t'wait_for_update': 500\n\t});\n\tgtag('set', 'ads_data_redaction', false);\n\tgtag('set', 'url_passthrough', true);\n\n\t/* ---- 2. Pagalbines ---- */\n\tfunction cookieVal(name) {\n\t\tvar m = document.cookie.match(new RegExp('(?:^|;\\\\s*)' + name.replace(/[-]/g, '\\\\-') + '=([^;]*)'));\n\t\treturn m ? decodeURIComponent(m[1]) : null;\n\t}\n\n\tfunction hasConsent(cat) {\n\t\tif (typeof window.cmplz_has_consent === 'function') {\n\t\t\ttry { return !!window.cmplz_has_consent(cat); } catch (e) {}\n\t\t}\n\t\treturn cookieVal('cmplz_' + cat) === 'allow';\n\t}\n\n\tfunction sendConsentUpdate(source) {\n\t\tvar stats = hasConsent('statistics');\n\t\tvar mkt   = hasConsent('marketing');\n\n\t\tgtag('consent', 'update', {\n\t\t\t'analytics_storage':  stats ? 'granted' : 'denied',\n\t\t\t'ad_storage': 'granted',\n\t\t\t'ad_user_data': 'granted',\n\t\t\t'ad_personalization': mkt   ? 'granted' : 'denied'\n\t\t});\n\n\t\twindow.dataLayer.push({\n\t\t\tevent: 'cmplz_consent_update',\n\t\t\tcmplz_statistics: stats ? 'granted' : 'denied',\n\t\t\tcmplz_marketing:  mkt   ? 'granted' : 'denied',\n\t\t\tcmplz_source: source || 'unknown'\n\t\t});\n\t}\n\n\t/* ---- 3. Pakartotinis lankytojas: sutikimas jau issaugotas ---- */\n\tvar hasConsentSnapshot = hasConsent('statistics');\n\tif (cookieVal('cmplz_banner-status') !== null) {\n\t\tsendConsentUpdate('cookie');\n\t}\n\n\t/* ---- 4. Naujas sutikimas arba pakeitimas ---- */\n\tvar timer = null;\n\tfunction schedule() {\n\t\tif (timer) { clearTimeout(timer); }\n\t\ttimer = setTimeout(function () {\n\t\t\tvar wasGranted = hasConsentSnapshot;\n\t\t\tsendConsentUpdate('event');\n\t\t\tvar nowGranted = hasConsent('statistics');\n\n\t\t\t/* Replay TIK jei sutikimas ka tik pasikeite denied -> granted.\n\t\t\t * Kitaip cmplz_fire_categories (fire'ina kas puslapi) dubliuotu ivykius. */\n\t\t\tif (!wasGranted && nowGranted) { replayEcommerce(); }\n\t\t\thasConsentSnapshot = nowGranted;\n\t\t}, 60);\n\t}\n\tdocument.addEventListener('cmplz_status_change', schedule);\n\tdocument.addEventListener('cmplz_fire_categories', schedule);\n\n\t/* ---- 5. Ecommerce replay ----\n\t * view_item / view_cart ivyksta puslapio uzkrovime, pries sutikima.\n\t * Po sutikimo GA4 tag'as jau nebefire'ins, nes trigger'is praejo.\n\t * Todel paskutini ecommerce event'a pakartojam VIENA karta. */\n\tvar replayed = false;\n\tfunction replayEcommerce() {\n\t\tif (replayed) { return; }\n\t\tvar dl = window.dataLayer || [];\n\t\tvar last = null;\n\t\tfor (var i = dl.length - 1; i >= 0; i--) {\n\t\t\tvar x = dl[i];\n\t\t\tif (x && x.event && x.ecommerce && x.event !== 'cmplz_consent_update') { last = x; break; }\n\t\t}\n\t\tif (!last) { return; }\n\t\treplayed = true;\n\t\tvar copy = JSON.parse(JSON.stringify(last));\n\t\tcopy.cmplz_replay = true;\n\t\twindow.dataLayer.push({ ecommerce: null });\n\t\twindow.dataLayer.push(copy);\n\t}\n})();\n</script>\nPETSHOPCONSENT;\n\n\t\techo \"\\n\" . $js . \"\\n\";\n\t}\n}\nadd_action( 'wp_head', 'petshop_consent_bridge', 0 );\n"
  }
 }
