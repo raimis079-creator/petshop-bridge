@@ -1,0 +1,121 @@
+{
+ "v": "dep-081601",
+ "kurimas": 200,
+ "sid": 5641,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1676 l",
+  "faze": "D",
+  "temp_istrinta": 1,
+  "md5_ok": true,
+  "irasyta_md5": "49c76e211b97d9bfb324be2f76e85b64",
+  "ping": 200
+ },
+ "T": {
+  "v": "S1676 l",
+  "faze": "T",
+  "temp_istrinta": 0,
+  "klase": true,
+  "reklama": {
+   "kpi": {
+    "Išlaidos": "857,59 €",
+    "Užsakymai iš Ads (apmokėti)": 12,
+    "Pajamos iš Ads": "367,37 €",
+    "ROAS": "0,43 (lūžis 4.5)",
+    "Marža iš Ads − išlaidos": "-773,40 €",
+    "Paspaudimai / Ads konversijos": "2782 / 79.55"
+   },
+   "verdiktas": [
+    "raudona",
+    "Reklama NUOSTOLINGA: marža iš Ads užsakymų 84,19 € < išlaidos 857,59 € (-773,40 €).",
+    "Mažinti biudžetą arba siaurinti į pelningas grupes (PMax D). Tikrinti, ar konversijos apskritai matomos Ads (S1668 301 pamoka)."
+   ],
+   "papild": [
+    "Kanalas nustatomas iš pirmo/paskutinio prisilietimo arba gclid (48 val. WC sesija — dalis Ads pirkėjų tampa „organic“)."
+   ],
+   "top": null,
+   "sql_err": ""
+  },
+  "krepseliai": {
+   "kpi": {
+    "Apleista": 92,
+    "Virto užsakymais": 24,
+    "Santykis": "3,8 (norma ≤ 4)",
+    "Apleistų su el. paštu": "9 %",
+    "Laiškų išsiųsta / grįžo pirkti": "3 / 0"
+   },
+   "verdiktas": [
+    "zalia",
+    "Santykis 3,8 — normalu.",
+    ""
+   ],
+   "papild": [
+    "Iš 3 laiškų nė vienas nevirto pirkimu — dar mažai laiškų, vertinti vėliau.",
+    "Sutikimą turi 50 % (praleista dėl sutikimo 3)."
+   ],
+   "top": [
+    "7× AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 12 kg 59.99 yra",
+    "7× Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria virškinimo sistema 39.99 yra",
+    "6× Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg 56.99 yra",
+    "6× Ontario troškinys šunims iš antienos ir daržovių sultinyje, 300 g, Pouch Duck with vegetables in broth 2.55 yra",
+    "6× Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 800 g 3.59 yra",
+    "6× GimCat maisto papildas katėms - Malt-Soft Extra Anti-Hairball pasta kačių žarnyno veiklai gerinti, 100 g 9.09 yra",
+    "5× Monge BWild begrūdžiai konservai šunims su ėriena, moliūgu ir cukinija, 400 g 1.99 yra",
+    "5× Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 135 ml 1.45 yra"
+   ],
+   "sql_err": ""
+  },
+  "klientai": {
+   "kpi": {
+    "Apmokėtų užsakymų": 21,
+    "Nauji / grįžtantys": "21 / 0",
+    "Vidutinis krepšelis": "29,14 €",
+    "Vid. dienų tarp grįžtančio pirkimų": "—",
+    "Marža (bendra)": "145,52 € (24 % nuo pajamų)"
+   },
+   "verdiktas": [
+    "pilka",
+    "Dar mažai užsakymų (21).",
+    ""
+   ],
+   "papild": [],
+   "top": null,
+   "sql_err": ""
+  },
+  "pristatymas": {
+   "kpi": {
+    "Siuntų": 19,
+    "Vid. dienų iki pristatymo": "— (dar nepildoma)",
+    "Su problema": 0,
+    "Paimta iš klientų / vežėjams": "31,26 € / 43,97 €"
+   },
+   "verdiktas": [
+    "geltona",
+    "Pristatymas subsidijuojamas: iš klientų paimta 31,26 €, vežėjams 43,97 € (-12,71 €).",
+    "Peržiūrėti nemokamo pristatymo slenkstį / tarifus."
+   ],
+   "papild": [],
+   "top": null,
+   "sql_err": ""
+  },
+  "laiskai": {
+   "kpi": [],
+   "verdiktas": [
+    "zalia",
+    "Siuntimo klaidų nėra.",
+    ""
+   ],
+   "papild": [
+    "Užsakymų laiškai (apmokėta/išsiųsta) eina per WC ir čia nesiskaičiuoja — čia tik srautai per dispatch."
+   ],
+   "top": null,
+   "sql_err": ""
+  },
+  "html_ilgis": 7605,
+  "html_sekcijos": 8,
+  "menu_url": "https://petshop.lt/wp-admin/admin.php?page=ps-analitika"
+ }
+}
