@@ -1,0 +1,531 @@
+{
+ "v": "dep-190817",
+ "kurimas": 200,
+ "sid": 5690,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1678 sec",
+  "laikas": "2026-09-12 22:09",
+  "ver": {
+   "wp": "6.9.4",
+   "php": "8.3.33",
+   "db": "10.6.17",
+   "wc": "11.0.1",
+   "tema": "Flatsome Child 3.0",
+   "parent": "3.20.7"
+  },
+  "plugins": {
+   "code-snippets/code-snippets.php": {
+    "v": "3.9.6",
+    "nauja": "3.10.2"
+   },
+   "complianz-gdpr/complianz-gpdr.php": {
+    "v": "7.5.3.1",
+    "nauja": "7.5.5"
+   },
+   "loco-translate/loco.php": {
+    "v": "2.8.8",
+    "nauja": ""
+   },
+   "petshop-attributes/petshop-attributes.php": {
+    "v": "1.0.0",
+    "nauja": ""
+   },
+   "petshop-core/petshop-core.php": {
+    "v": "0.15.0",
+    "nauja": ""
+   },
+   "petshop-esp/petshop-esp.php": {
+    "v": "0.4.0",
+    "nauja": ""
+   },
+   "petshop-fbt/petshop-fbt.php": {
+    "v": "1.6.3",
+    "nauja": ""
+   },
+   "petshop-feeds/petshop-feeds.php": {
+    "v": "2.5.0",
+    "nauja": ""
+   },
+   "petshop-fonts/petshop-fonts.php": {
+    "v": "1.1",
+    "nauja": ""
+   },
+   "petshop-pragma/petshop-pragma.php": {
+    "v": "1.0.0",
+    "nauja": ""
+   },
+   "petshop-promotions/petshop-promotions.php": {
+    "v": "1.1",
+    "nauja": ""
+   },
+   "petshop-xml/petshop-xml.php": {
+    "v": "1.5.18",
+    "nauja": ""
+   },
+   "seo-by-rank-math/rank-math.php": {
+    "v": "1.0.276",
+    "nauja": "1.0.278"
+   },
+   "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php": {
+    "v": "1.26.5",
+    "nauja": ""
+   },
+   "woo-lithuaniapost-main/woo-lithuaniapost.php": {
+    "v": "4.0.32",
+    "nauja": ""
+   },
+   "woo-payment-gateway-paysera/paysera.php": {
+    "v": "3.12.2",
+    "nauja": ""
+   },
+   "woo-update-manager/woo-update-manager.php": {
+    "v": "1.0.3",
+    "nauja": ""
+   },
+   "woocommerce-delivery-notes/woocommerce-delivery-notes.php": {
+    "v": "7.3.0",
+    "nauja": ""
+   },
+   "woocommerce-mix-and-match-products/woocommerce-mix-and-match-products.php": {
+    "v": "2.8.7",
+    "nauja": "2.9.2"
+   },
+   "woocommerce-xml-csv-product-import/plugin.php": {
+    "v": "1.5.5",
+    "nauja": ""
+   },
+   "woocommerce/woocommerce.php": {
+    "v": "11.0.1",
+    "nauja": ""
+   },
+   "wordpress-importer/wordpress-importer.php": {
+    "v": "0.9.5",
+    "nauja": "0.9.6"
+   },
+   "wp-all-import-pro/wp-all-import-pro.php": {
+    "v": "5.1.0",
+    "nauja": ""
+   },
+   "wp-mail-smtp/wp_mail_smtp.php": {
+    "v": "4.9.0",
+    "nauja": ""
+   },
+   "wp-super-cache/wp-cache.php": {
+    "v": "3.1.3",
+    "nauja": ""
+   },
+   "wpforms-lite/wpforms.php": {
+    "v": "2.0.0.5",
+    "nauja": "2.0.1.1"
+   },
+   "yith-woocommerce-ajax-navigation/init.php": {
+    "v": "5.22.0",
+    "nauja": "5.23.0"
+   }
+  },
+  "core_update": "7.1 upgrade",
+  "theme_update": {
+   "flatsome": "3.20.9"
+  },
+  "auto_update": {
+   "core_const": "nedef",
+   "updater_disabled": "nedef",
+   "auto_plugins": 0
+  },
+  "vart_roles": {
+   "administrator": 1,
+   "customer": 5716,
+   "ps_darbuotojas": 2,
+   "none": 0
+  },
+  "admin": [
+   {
+    "id": "1",
+    "login": "bdz487",
+    "el": "raimundas@gyvunai.lt",
+    "reg": "2026-05-05",
+    "sesijos": 21,
+    "app_pass": 1,
+    "2fa_meta": false
+   }
+  ],
+  "shop_manager": "0",
+  "users_can_register": "0",
+  "default_role": "customer",
+  "login_admin_exists": false,
+  "saug_pluginai": [],
+  "konst": {
+   "DISALLOW_FILE_EDIT": "true",
+   "DISALLOW_FILE_MODS": "nedef",
+   "WP_DEBUG": "false",
+   "WP_DEBUG_DISPLAY": "false",
+   "WP_DEBUG_LOG": "false",
+   "FORCE_SSL_ADMIN": "true",
+   "DISABLE_WP_CRON": "nedef",
+   "WP_MEMORY_LIMIT": "'40M'",
+   "FS_METHOD": "nedef",
+   "WP_ENVIRONMENT_TYPE": "nedef"
+  },
+  "salts_ok": true,
+  "db_user": "gyvunai2_nbpe1",
+  "db_host": "localhost",
+  "prefix": "gaj6_",
+  "db_grants": [
+   "GRANT USAGE ON *.* TO `gyvunai2_nbpe1`@`localhost` ",
+   "GRANT ALL PRIVILEGES ON `gyvunai2\\_nbpe1`.* TO `gyvunai2_nbpe1`@`localhost`"
+  ],
+  "xmlrpc_filter": true,
+  "blog_public": "1",
+  "perms": {
+   "wp-config": "0600",
+   "root": "0755",
+   "uploads": "0755",
+   "htaccess": "0644"
+  },
+  "wpconfig_uz_webroot": false,
+  "readme_html": false,
+  "license_txt": false,
+  "install_php": true,
+  "uploads_htaccess": "# BEGIN Petshop WebP (S1567, 2026-09-01)\n# Narsyklei, priimanciai image/webp, vietoje x.jpg|png atiduodamas salia esantis x.webp (jei yra).\n# Taisykles cia, ne root .htaccess: mod_rewrite NEinherituoja i katalogus su savo .htaccess.\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteCond %{HTTP_ACCEPT",
+  "php_uploads": [
+   "/wpforms/cache/index.php",
+   "/wpallimport/functions.php",
+   "/wpallimport/index.php",
+   "/wpallimport/files/index.php",
+   "/wpallimport/logs/f788b239f03952af61bdd36461979b63/index.php",
+   "/wpallimport/logs/8d76ffb4462cc3aee6f42b83551d9ede/index.php",
+   "/wpallimport/logs/19d20fc851d6c1ba98920d89769a29d8/index.php",
+   "/wpallimport/logs/10da7cd309c99acfb59bc46ea14be63f/index.php",
+   "/wpallimport/logs/b7468e67c19005cac49353456f5320d9/index.php",
+   "/wpallimport/logs/fe17307ab5aa456ff6c96b9181514663/index.php",
+   "/wpallimport/logs/4c4caed00e75ac7412994c459c24f426/index.php",
+   "/wpallimport/logs/0392d5b329fdaff480241617bc43d77c/index.php",
+   "/wpallimport/logs/b5fe3ac89fa0f44aeaa2f6eed3fc841d/index.php",
+   "/wpallimport/logs/1ad9799e87b51948801ef1bfbbbb7d9b/index.php",
+   "/wpallimport/logs/caceeb29fad1413b99b818e1082ac472/index.php",
+   "/wpallimport/logs/2cf4ea21526caf56d83cdd1f0024c629/index.php",
+   "/wpallimport/logs/993c27231686268717b0f69145067b46/index.php",
+   "/wpallimport/logs/2eab829746d0990e02f929aa4f879b24/index.php",
+   "/wpallimport/logs/1f73c908d9b5fc9bae6c0ca980ab1ffb/index.php",
+   "/wpallimport/logs/index.php",
+   "/wpallimport/logs/c728f5b423fb997b18f79f0eb64b01dc/index.php",
+   "/wpallimport/logs/0cf0bb0c7ef84d54930d21a3773e80b0/index.php",
+   "/wpallimport/logs/fb7e7e2398fea3ca6ec8bfd68754ae49/index.php",
+   "/wpallimport/logs/e756d94d8f387de40c6e65c80d82851b/index.php",
+   "/wpallimport/logs/3499f74d00076bb6e4a3a6369d57fa5b/index.php",
+   "/wpallimport/logs/328544e4cd478ddfb6a3f9762659f52d/index.php",
+   "/wpallimport/logs/2202e17dd5657bb61915a5830fa86298/index.php",
+   "/wpallimport/logs/d508bab70764e2da88f4d608e6d74052/index.php",
+   "/wpallimport/temp/d6d526eccba2dd7596197790b63f0fb1/index.php",
+   "/wpallimport/temp/8d083a03ac62e0ca0b801b8f1414c966/index.php",
+   "/wpallimport/temp/index.php"
+  ],
+  "dump_failai": [
+   "wp-config-sample.php 3KB",
+   "wp-config.php 4KB"
+  ],
+  "root_neiprasti": [
+   "backup-run.php 0KB",
+   "index.html.backup.5a6defd0b6c8b4cd418a970086e2c0b4 0KB",
+   "ps-backups/",
+   "watch-run.php 0KB"
+  ],
+  "senas_webroot": true,
+  "ps_archyvas": 2,
+  "php_error_log": {
+   "kelias": "/home/gyvunai2/domains/petshop.lt/logs/php_error.log",
+   "uz_webroot": true,
+   "display": "0",
+   "disable_functions": "link, symlink, exec, passthru, proc_close, proc_get_status, proc_open, shell_exec, system, popen, pclose",
+   "expose_php": ""
+  },
+  "pakeisti_7d": [
+   "09-12 15:01 /mu-plugins/petshop-ads-offline.php",
+   "09-12 14:41 /plugins/petshop-feeds/petshop-feeds.php",
+   "09-12 10:13 /mu-plugins/petshop-gavimo-perrusiavimas.php",
+   "09-12 10:13 /mu-plugins/petshop-av-source.php",
+   "09-12 10:13 /mu-plugins/petshop-av-order.php",
+   "09-12 09:33 /mu-plugins/petshop-fakt-siuntos.php",
+   "09-12 09:09 /mu-plugins/petshop-partijos.php",
+   "09-12 08:56 /mu-plugins/petshop-av-reduce.php",
+   "09-12 08:42 /mu-plugins/petshop-darbalaukis.php",
+   "09-12 08:18 /mu-plugins/petshop-analitika.php",
+   "09-12 07:50 /mu-plugins/petshop-bacs-priminimas.php",
+   "09-12 07:27 /plugins/petshop-core/templates/emails/cart-abandoned-2.php",
+   "09-12 07:27 /plugins/petshop-core/templates/emails/cart-abandoned-1.php",
+   "09-11 22:02 /themes/flatsome-child/woocommerce-delivery-notes/base.php",
+   "09-11 09:52 /plugins/petshop-core/includes/class-product-calc.php",
+   "09-11 09:02 /mu-plugins/petshop-av-dropship.php",
+   "09-11 08:39 /mu-plugins/petshop-venipak-docno.php",
+   "09-10 18:44 /mu-plugins/petshop-ataskaita-lankomumas.php",
+   "09-10 16:11 /mu-plugins/petshop-kanalai.php",
+   "09-10 07:57 /plugins/petshop-core/includes/class-retry-queue.php",
+   "09-10 07:27 /mu-plugins/petshop-legacy-301.php",
+   "09-09 20:25 /plugins/petshop-core/includes/class-cart-abandonment.php",
+   "09-09 19:22 /mu-plugins/petshop-katalogas.php",
+   "09-09 14:04 /plugins/petshop-esp/includes/class-webhook-receiver.php",
+   "09-09 12:21 /themes/flatsome-child/functions.php",
+   "09-08 07:45 /mu-plugins/petshop-vertimai.php",
+   "09-07 16:15 /plugins/petshop-core/includes/class-welcome-modal.php",
+   "09-07 14:12 /plugins/petshop-core/templates/emails/post-purchase-2d.php",
+   "09-06 16:38 /mu-plugins/petshop-juosta.php",
+   "09-06 16:30 /mu-plugins/petshop-klientui.php",
+   "09-06 14:09 /mu-plugins/petshop-av-tiekimas.php"
+  ],
+  "pakeisti_7d_viso": 31,
+  "mu": {
+   "automation-by-installatron.php": "ac2f4186",
+   "petshop-ads-offline.php": "04708b96",
+   "petshop-akcijos.php": "51d8fc86",
+   "petshop-analitika.php": "b181d2b4",
+   "petshop-anketa-ivykiai.php": "e9bb64ce",
+   "petshop-anketos-ataskaita.php": "22c9d08a",
+   "petshop-ataskaita-atsargos.php": "21bc085a",
+   "petshop-ataskaita-klientai.php": "9335e06e",
+   "petshop-ataskaita-lankomumas.php": "2fe886fb",
+   "petshop-ataskaita-menuo.php": "c5e631d6",
+   "petshop-ataskaita-pardavimai.php": "bb0da850",
+   "petshop-ataskaita-prekes.php": "687d7daa",
+   "petshop-ataskaitos-ui.php": "ac3e392f",
+   "petshop-ataskaitu-agregavimas.php": "67933244",
+   "petshop-ataskaitu-eksportas.php": "8a269aac",
+   "petshop-atributai.php": "6b3aa5bc",
+   "petshop-atsargu-laukimas.php": "c7404a5d",
+   "petshop-atsisakymas.php": "22cb8265",
+   "petshop-av-admin.php": "2dfffb3f",
+   "petshop-av-dropship.php": "a16f5a09",
+   "petshop-av-expiry.php": "a9a2b80d",
+   "petshop-av-limit.php": "e2860d11",
+   "petshop-av-order.php": "fd7ed335",
+   "petshop-av-reduce.php": "03182a2a",
+   "petshop-av-sheets.php": "13c793bd",
+   "petshop-av-source.php": "7d8e67eb",
+   "petshop-av-stock.php": "3a1585ed",
+   "petshop-av-tiekimas.php": "cf7677a8",
+   "petshop-bacs-priminimas.php": "f3629926",
+   "petshop-cache.php": "0816cc13",
+   "petshop-code-search.php": "ced828b2",
+   "petshop-darbalaukis.php": "23a911c4",
+   "petshop-desk.php": "33c9b1fe",
+   "petshop-dim-klientai.php": "831d9d46",
+   "petshop-dropship-sargas.php": "561285de",
+   "petshop-dydziai.php": "2bed4cdc",
+   "petshop-fakt-atsargos.php": "c393b8ec",
+   "petshop-fakt-grazinimai.php": "58d3ca7d",
+   "petshop-fakt-kainos.php": "3d93a270",
+   "petshop-fakt-reklama.php": "9834dd5a",
+   "petshop-fakt-siuntos.php": "0fa55b91",
+   "petshop-faktai.php": "a0587d1f",
+   "petshop-feeding-calc-rest.php": "85f45a8c",
+   "petshop-ga4-serveris.php": "136e9be3",
+   "petshop-gavimas.php": "18dcaad4",
+   "petshop-gavimo-perrusiavimas.php": "d7f60f74",
+   "petshop-greitis.php": "53f59123",
+   "petshop-hero-preload.php": "bcd8d4d0",
+   "petshop-higiena.php": "6a54a0fe",
+   "petshop-import-log.php": "29148f6f",
+   "petshop-import-tempas.php": "5461ff5a",
+   "petshop-innodb.php": "3498f9c7",
+   "petshop-islaidos.php": "85053c7a",
+   "petshop-istorijos-adapteris.php": "591a199c",
+   "petshop-ivykiai.php": "0ced1579",
+   "petshop-juosta.php": "1015dea6",
+   "petshop-kalendorius.php": "504cffaa",
+   "petshop-kampaniju-langas.php": "af4c2833",
+   "petshop-kanalai.php": "7830f9c8",
+   "petshop-katalogas.php": "58e5d317",
+   "petshop-kategorijos-aprasymas.php": "840d9207",
+   "petshop-klientai.php": "babf03d4",
+   "petshop-kliento-siuntos.php": "fb5a0c08",
+   "petshop-klientui.php": "ccf9032d",
+   "petshop-kreipinys.php": "f523f448",
+   "petshop-laiskai-importas.php": "70a2eb76",
+   "petshop-laiskai.php": "2c0d6a07",
+   "petshop-langai-admin.php": "ba438ae0",
+   "petshop-laukai.php": "201ceffc",
+   "petshop-legacy-301.php": "46c8948b",
+   "petshop-legacy-importas.php": "e268e729",
+   "petshop-login-sargas.php": "8624aee1",
+   "petshop-m8-food.php": "ebc5701d",
+   "petshop-naujienlaiskiai-admin.php": "4ff31ac2",
+   "petshop-naujienlaiskiai.php": "43615fcf",
+   "petshop-nepamoketi.php": "c4c95492",
+   "petshop-pardavimai.php": "51596425",
+   "petshop-parseris.php": "d0880236",
+   "petshop-partijos.php": "7372f8ee",
+   "petshop-paruostu-ataskaita.php": "5077deb4",
+   "petshop-payment-failed.php": "0d527519",
+   "petshop-perziuru-priminimas.php": "3091c14e",
+   "petshop-pet-claim.php": "e37aa5f2",
+   "petshop-pet-kontraktas.php": "af47f8fd",
+   "petshop-pilnumas.php": "bfea70c3",
+   "petshop-pren-nuorodos.php": "df695184",
+   "petshop-pren-sutikimas.php": "9a5c9281",
+   "petshop-prenumerata-katalogas.php": "d474d546",
+   "petshop-prenumerata-paskyra.php": "d7685fb2",
+   "petshop-prenumerata-veiksmas.php": "dcb7c4c1",
+   "petshop-prenumerata.php": "46657a60",
+   "petshop-prenumeratos-langas.php": "a9ed4c84",
+   "petshop-prenumeratu-prognoze.php": "f3963ad5",
+   "petshop-prieziura.php": "726867ac",
+   "petshop-ps-pets-migration-freeze.php": "bcdbb491",
+   "petshop-rankos.php": "390e9448",
+   "petshop-rec-log.php": "5331ebd7",
+   "petshop-rec-ui.php": "488c471b",
+   "petshop-rec-variklis.php": "ef13c563",
+   "petshop-refill-ivykiai.php": "e9fc492f",
+   "petshop-rezultatai.php": "276d0522",
+   "petshop-rinkiniai.php": "b90c5206",
+   "petshop-rinkiniu-ataskaita.php": "c9e710bf",
+   "petshop-rinkiniu-likuciai.php": "3a97e2a5",
+   "petshop-rinkiniu-rusis.php": "d35fdeb4",
+   "petshop-rysiai.php": "87645fe9",
+   "petshop-rytas.php": "795bcb04",
+   "petshop-sargas.php": "a0a7336c",
+   "petshop-schema.php": "78879f3c",
+   "petshop-seo-aprasymas.php": "dfebb0c0",
+   "petshop-seo.php": "95bca2c4",
+   "petshop-seseliai.php": "4c63fc67",
+   "petshop-siuntu-laiskai.php": "753f8c6c",
+   "petshop-siuntu-valymas.php": "268d0a80",
+   "petshop-statistika-vitrina.php": "8459d0c1",
+   "petshop-statistika.php": "5b20a104",
+   "petshop-teises.php": "5aea88f8",
+   "petshop-uzsakymu-ivykiai.php": "1bd24c70",
+   "petshop-vartai.php": "591c8893",
+   "petshop-venipak-docno.php": "aae977bd",
+   "petshop-vertimai.php": "5806edbf",
+   "petshop-vf-feed.php": "1ee413b1",
+   "petshop-wc-sync.php": "c2df419f",
+   "petshop-webp.php": "f5e1e991"
+  },
+  "htaccess": {
+   "kb": 1.7,
+   "itartina": false,
+   "eilutes": 55
+  },
+  "user_ini": "-",
+  "snip": {
+   "viso": 879,
+   "aktyvus": 77,
+   "get_raktas": [
+    "375 Baltymu Saltinis Dry-Run Konservai v2",
+    "463 Petshop Atributu Auditas v2.0 (read-only, atributu",
+    "464 Petshop Attr Modulis: Dubeneliai v1.0 (parseris + ",
+    "465  Petshop GitHub Rele v1.0 (diagnostika -> GitHub r",
+    "472 Petshop Attr Modulis: Zaislai Katems v1.0 (parseri",
+    "494 Petshop Attr Modulis: Sukos Sepeciai Zirkles Sunim",
+    "502 Higienos Modulis v1.0",
+    "503 Grauziko Rusis Modulis v1.2",
+    "507 Paukscio Rusis Modulis v1.3",
+    "509 Zuvies Rusis Modulis v1.0",
+    "510 Pasaro Forma Modulis v1.1",
+    "512 Petshop Aprasymu Accordion v6 (LIVE, palaikymas se",
+    "513 Petshop Katalogo Auditas v1 (read-only)",
+    "539 Petshop Rinkinių Kūrimo Forma v2",
+    "550 Petshop Susidėjimo Rinkinio Kūrimo Forma v15",
+    "558 Petshop Choice Krepšelio Elgsena",
+    "561 Petshop Rinkinių Gyvūno Filtras v1",
+    "565 Petshop VF Sync v1.1 (reprice+stock+publish)",
+    "566 Petshop Akcijos Shortcode v1.3",
+    "570 Petshop Daugiau=Pigiau Puslapis Shortcode v1.0",
+    "572 Petshop Daugiau=Pigiau Šablono Kūrimo Forma v9",
+    "2403 Petshop Stock Service v1.3 (per registra)",
+    "2515 Petshop Sources v2.3 (registras + palaikymas + san",
+    "2868 PS Masinis Sudeliojimas v6 (tik prekyboje)",
+    "5690 TEMP PS dep-190817"
+   ],
+   "pavojingi": [],
+   "temp_aktyvus": [
+    "5690 TEMP PS dep-190817"
+   ]
+  },
+  "raktu_opcijos": [
+   "ps_ads_offline_raktas",
+   "ps_ads_raktas",
+   "ps_feeds_raktas",
+   "ps_ga4_mp_secret",
+   "ps_pet_kontraktas_schema",
+   "ps_psi_key"
+  ],
+  "rest_ps": [
+   "/petshop/v1",
+   "/petshop/v1/stock-watch",
+   "/ps-web/v1",
+   "/ps-web/v1/ads",
+   "/petshop/v1/feeding-calc",
+   "/petshop/v1/feeding-pet-weight",
+   "/petshop/v1/feeding-pet-activity",
+   "/petshop/v1/feeding-pet-wet-food",
+   "/petshop/v1/feeding-calc-for-pet",
+   "/petshop/v1/pet-food-candidates/(?P<id>\\d+)",
+   "/petshop/v1/pet-food-assign",
+   "/petshop/v1/pet-food-brand",
+   "/petshop/v1/pet-suggestions/(?P<id>\\d+)",
+   "/petshop/v1/wet-food-search",
+   "/petshop/v1/wet-products-info",
+   "/petshop/v1/pet-wet-product",
+   "/petshop/v1/product-search",
+   "/petshop/v1/pet-claim-pending",
+   "/petshop/v1/pet-claim-resolve",
+   "/petshop/v1/pet-recommendations/(?P<id>\\d+)",
+   "/petshop/v1/newsletter-subscribe",
+   "/petshop/v1/feeding/calculate",
+   "/ps-web/v1/ads-recon",
+   "/petshop/v1/pet-draft",
+   "/petshop/v1/magic-login/request",
+   "/petshop/v1/pet-profile",
+   "/petshop/v1/pet-profile/(?P<id>\\d+)",
+   "/petshop/v1/food-search",
+   "/petshop/v1/brands",
+   "/petshop/v1/pet-product-link",
+   "/petshop/v1/pet-dashboard/(?P<id>\\d+)",
+   "/petshop/v1/refill-feedback",
+   "/petshop/v1/pet-photo/(?P<id>\\d+)",
+   "/petshop/v1/pet-content/(?P<id>\\d+)",
+   "/petshop/v1/sender-webhook",
+   "/petshop/v1/reminders",
+   "/petshop/v1/reminders/(?P<id>\\d+)",
+   "/petshop/v1/pet-notes/(?P<pet_id>\\d+)",
+   "/petshop/v1/pet-notes",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)/delete",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)/pin"
+  ],
+  "http": {
+   "home": 200,
+   "antr": {
+    "server": "Apache",
+    "x-powered-by": "-",
+    "strict-transport-security": "-",
+    "x-frame-options": "-",
+    "x-content-type-options": "-",
+    "content-security-policy": "-",
+    "referrer-policy": "-",
+    "permissions-policy": "private-state-token-redemption=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\"), private-state-token-issuance=(self \"https://www.google.com\" \"https://www.gstatic.com\" \"https://recaptcha.net\" \"https://challenges.cloudflare.com\" \"https://hcaptcha.com\")",
+    "cf-ray": "-",
+    "x-litespeed-cache": "-"
+   },
+   "http_redirect": "301 https://petshop.lt/",
+   "xmlrpc": "200 ATVIRAS",
+   "rest_users": "200 ATSKLEIDZIA:inga",
+   "author1": "301 https://petshop.lt/author/admin/",
+   "wp_json": 200,
+   "uploads_listing": "403 ne",
+   "wp_login": 200,
+   "wpconfig_bak": 403,
+   "ps_backups_listing": "403 ne",
+   "readme": 404
+  },
+  "wc": {
+   "klientai": 5716,
+   "store_api_rate": "nedef",
+   "guest_checkout": "yes",
+   "paysera_test": "-"
+  }
+ }
+}
