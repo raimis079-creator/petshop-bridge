@@ -1,0 +1,586 @@
+{
+ "v": "dep-143222",
+ "kurimas": 200,
+ "sid": 5681,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1677 e",
+  "viso": {
+   "n": "22",
+   "viso": "623.52",
+   "prekes": "478.30",
+   "savik": "330.08",
+   "prist_paimta": "33.04",
+   "prist_savik": null,
+   "mok_mok": "1.05",
+   "pakuote": "9.20",
+   "marza": "148.22",
+   "kontrib": "171.01",
+   "kontrib_vid": "7.77",
+   "nauji": "22",
+   "prist_savik_null": "22"
+  },
+  "ads": {
+   "n": "10",
+   "viso": "276.25",
+   "prekes": "213.34",
+   "savik": "141.87",
+   "prist_paimta": "13.98",
+   "prist_savik": null,
+   "mok_mok": "0.50",
+   "pakuote": "4.00",
+   "marza": "71.47",
+   "kontrib": "80.95",
+   "kontrib_vid": "8.10",
+   "nauji": "10",
+   "prist_savik_null": "10"
+  },
+  "statusai": [
+   {
+    "s": "completed",
+    "n": "15"
+   },
+   {
+    "s": "processing",
+    "n": "7"
+   }
+  ],
+  "pagal_vezeja": [
+   {
+    "vezejai": "",
+    "n": "1",
+    "paimta": "0.00",
+    "savik": null
+   },
+   {
+    "vezejai": "lp_express",
+    "n": "2",
+    "paimta": "0.89",
+    "savik": null
+   },
+   {
+    "vezejai": "venipak",
+    "n": "19",
+    "paimta": "1.65",
+    "savik": null
+   }
+  ],
+  "reklama_dienos": [
+   {
+    "diena": "2026-08-24",
+    "sena": "0",
+    "isl": "49.4000",
+    "klik": "157",
+    "konv": "5.01",
+    "kv": "220"
+   },
+   {
+    "diena": "2026-08-25",
+    "sena": "0",
+    "isl": "63.8000",
+    "klik": "214",
+    "konv": "7.50",
+    "kv": "326"
+   },
+   {
+    "diena": "2026-08-26",
+    "sena": "0",
+    "isl": "47.6800",
+    "klik": "144",
+    "konv": "3.98",
+    "kv": "120"
+   },
+   {
+    "diena": "2026-08-27",
+    "sena": "0",
+    "isl": "47.1100",
+    "klik": "156",
+    "konv": "4.31",
+    "kv": "154"
+   },
+   {
+    "diena": "2026-08-28",
+    "sena": "0",
+    "isl": "39.7400",
+    "klik": "129",
+    "konv": "2.01",
+    "kv": "69"
+   },
+   {
+    "diena": "2026-08-29",
+    "sena": "0",
+    "isl": "36.2900",
+    "klik": "142",
+    "konv": "2.01",
+    "kv": "70"
+   },
+   {
+    "diena": "2026-08-30",
+    "sena": "0",
+    "isl": "48.7800",
+    "klik": "154",
+    "konv": "6.58",
+    "kv": "595"
+   },
+   {
+    "diena": "2026-08-31",
+    "sena": "0",
+    "isl": "37.6800",
+    "klik": "129",
+    "konv": "4.36",
+    "kv": "249"
+   },
+   {
+    "diena": "2026-09-01",
+    "sena": "0",
+    "isl": "44.2200",
+    "klik": "146",
+    "konv": "8.20",
+    "kv": "402"
+   },
+   {
+    "diena": "2026-09-02",
+    "sena": "0",
+    "isl": "41.3000",
+    "klik": "99",
+    "konv": "2.00",
+    "kv": "155"
+   },
+   {
+    "diena": "2026-09-03",
+    "sena": "0",
+    "isl": "44.2200",
+    "klik": "129",
+    "konv": "4.59",
+    "kv": "127"
+   },
+   {
+    "diena": "2026-09-04",
+    "sena": "0",
+    "isl": "47.1400",
+    "klik": "156",
+    "konv": "6.99",
+    "kv": "287"
+   },
+   {
+    "diena": "2026-09-05",
+    "sena": "0",
+    "isl": "48.0100",
+    "klik": "167",
+    "konv": "7.00",
+    "kv": "271"
+   },
+   {
+    "diena": "2026-09-06",
+    "sena": "0",
+    "isl": "45.7500",
+    "klik": "165",
+    "konv": "4.00",
+    "kv": "121"
+   },
+   {
+    "diena": "2026-09-07",
+    "sena": "0",
+    "isl": "46.2300",
+    "klik": "172",
+    "konv": "7.09",
+    "kv": "255"
+   },
+   {
+    "diena": "2026-09-08",
+    "sena": "0",
+    "isl": "47.1400",
+    "klik": "144",
+    "konv": "2.00",
+    "kv": "154"
+   },
+   {
+    "diena": "2026-09-09",
+    "sena": "0",
+    "isl": "43.4700",
+    "klik": "111",
+    "konv": "0.00",
+    "kv": "0"
+   },
+   {
+    "diena": "2026-09-10",
+    "sena": "0",
+    "isl": "41.9700",
+    "klik": "147",
+    "konv": "0.92",
+    "kv": "20"
+   },
+   {
+    "diena": "2026-09-11",
+    "sena": "0",
+    "isl": "37.8200",
+    "klik": "123",
+    "konv": "1.00",
+    "kv": "19"
+   }
+  ],
+  "reklama_kamp": [
+   {
+    "kampanija": "",
+    "nuo": "2026-08-27",
+    "iki": "2026-09-11",
+    "isl": "0.1600",
+    "klik": "2",
+    "konv": "0.00"
+   },
+   {
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "nuo": "2026-08-24",
+    "iki": "2026-09-11",
+    "isl": "381.5500",
+    "klik": "1242",
+    "konv": "33.68"
+   },
+   {
+    "kampanija": "P-max| All LT | Šunų maistas",
+    "nuo": "2026-08-24",
+    "iki": "2026-09-11",
+    "isl": "387.9600",
+    "klik": "1111",
+    "konv": "27.52"
+   },
+   {
+    "kampanija": "petshop",
+    "nuo": "2026-08-24",
+    "iki": "2026-09-11",
+    "isl": "64.1100",
+    "klik": "353",
+    "konv": "15.85"
+   },
+   {
+    "kampanija": "Petshop - Search - Prins Puppy",
+    "nuo": "2026-09-05",
+    "iki": "2026-09-05",
+    "isl": "0.1300",
+    "klik": "1",
+    "konv": "0.00"
+   },
+   {
+    "kampanija": "TEST Search LT",
+    "nuo": "2026-08-25",
+    "iki": "2026-08-26",
+    "isl": "23.8400",
+    "klik": "75",
+    "konv": "2.50"
+   }
+  ],
+  "tarifai": [
+   {
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "50",
+    "i": "500",
+    "k": "3.0000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "501",
+    "i": "1000",
+    "k": "3.0000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "1001",
+    "i": "2000",
+    "k": "3.0000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "2001",
+    "i": "3000",
+    "k": "3.5500",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "3001",
+    "i": "5000",
+    "k": "3.5500",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "5001",
+    "i": "10000",
+    "k": "4.4000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "10001",
+    "i": "15000",
+    "k": "5.1000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "15001",
+    "i": "20000",
+    "k": "5.1000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "20001",
+    "i": "30000",
+    "k": "5.1000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "30001",
+    "i": "1500000",
+    "k": "8.0700",
+    "kg": "6.0476",
+    "gi": null
+   },
+   {
+    "vezejas": "lp_express",
+    "tipas": "pastomatas",
+    "dydis": "XS",
+    "n": "0",
+    "i": null,
+    "k": "1.3500",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "lp_express",
+    "tipas": "pastomatas",
+    "dydis": "XL",
+    "n": "0",
+    "i": null,
+    "k": "2.9000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "lp_express",
+    "tipas": "pastomatas",
+    "dydis": "L",
+    "n": "0",
+    "i": null,
+    "k": "1.7500",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "lp_express",
+    "tipas": "pastomatas",
+    "dydis": "M",
+    "n": "0",
+    "i": null,
+    "k": "1.4500",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "lp_express",
+    "tipas": "pastomatas",
+    "dydis": "S",
+    "n": "0",
+    "i": null,
+    "k": "1.4000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "0",
+    "i": "2000",
+    "k": "2.1000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "2001",
+    "i": "5000",
+    "k": "2.3100",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "5001",
+    "i": "10000",
+    "k": "2.8000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "10001",
+    "i": "20000",
+    "k": "3.8500",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "20001",
+    "i": "30000",
+    "k": "4.3400",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "30001",
+    "i": "35000",
+    "k": "5.2700",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "35001",
+    "i": "50000",
+    "k": "6.8000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "50001",
+    "i": "75000",
+    "k": "9.1800",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "75001",
+    "i": "100000",
+    "k": "10.8800",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "100001",
+    "i": "200000",
+    "k": "14.2000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "200001",
+    "i": "300000",
+    "k": "20.4000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "300001",
+    "i": "400000",
+    "k": "23.8000",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "dydis": "",
+    "n": "400001",
+    "i": "500000",
+    "k": "28.0500",
+    "kg": "0.0000",
+    "gi": null
+   },
+   {
+    "vezejas": "venipak",
+    "tipas": "pastomatas",
+    "dydis": "",
+    "n": "0",
+    "i": null,
+    "k": "1.1000",
+    "kg": "0.0000",
+    "gi": null
+   }
+  ],
+  "siuntos": [
+   {
+    "vezejas": "venipak",
+    "t": "kurjeris",
+    "n": "8",
+    "k": "3.32",
+    "nul": "0",
+    "sv": "11620"
+   },
+   {
+    "vezejas": "venipak",
+    "t": "pastomatas",
+    "n": "11",
+    "k": "1.58",
+    "nul": "0",
+    "sv": "3500"
+   }
+  ]
+ }
+}
