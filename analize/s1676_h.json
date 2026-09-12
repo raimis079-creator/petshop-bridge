@@ -1,0 +1,103 @@
+{
+ "v": "dep-073311",
+ "kurimas": 200,
+ "sid": 5635,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1676 h",
+  "temp_istrinta": 1,
+  "cart": [
+   "9: *   active + snapshot netuscias + activity <= dabar-2val + nera converted_order_id",
+   "32: const ABANDON_AFTER = 7200;      // 2 val.",
+   "35: const MAX_AGE_DAYS  = 7;",
+   "38: const EMPTY_HASH    = 'e3b0c44298fc1c149afbf4c8996fb924';",
+   "40: const BATCH         = 50;",
+   "74: WHERE status = 'active'",
+   "75: AND converted_order_id IS NULL",
+   "113: // (status pasikeite arba atsirado converted_order_id) — nepataikysim,",
+   "116: \"UPDATE $T SET status='abandoned', status_changed_at=%s, updated_at=%s",
+   "117: WHERE cart_id=%s AND status='active' AND converted_order_id IS NULL\",",
+   "171: \"UPDATE $T SET status='expired', status_changed_at=%s, updated_at=%s",
+   "172: WHERE status='active' AND converted_order_id IS NULL",
+   "177: \"SELECT COUNT(*) FROM $T WHERE status='active' AND converted_order_id IS NULL",
+   "233: const STAGE2_AFTER = 86400; // 24 val.",
+   "245: *   krepselio status vis dar 'abandoned' (ne converted / expired)",
+   "246: *   converted_order_id NERA",
+   "301: if ( ! empty( $cart['converted_order_id'] ) ) {",
+   "302: $out['skipped'][] = array( $cart_id, 'converted' );",
+   "372: * eventas jau ivyko, bet job'as dispatch etape gaus converted_before_send.",
+   "374: public static function on_order_created( $order_id ) {",
+   "376: if ( ! $order_id || ! class_exists( 'Petshop_Cart_Tracker' ) ) { return; }",
+   "382: \"UPDATE $T SET status='converted', converted_order_id=%d, status_changed_at=%s, updated_at=%s",
+   "383: WHERE cart_id=%s AND ( converted_order_id IS NULL OR converted_order_id=0 )\",",
+   "384: (int) $order_id, $now, $now, $cart_id ) );",
+   "402: \"UPDATE $T SET status='expired', status_changed_at=%s, updated_at=%s",
+   "403: WHERE status='active' AND converted_order_id IS NULL",
+   "415: add_action( 'woocommerce_checkout_order_processed',            array( __CLASS__, 'on_order_created' ), 10, 1 );",
+   "416: add_action( 'woocommerce_store_api_checkout_order_processed',  array( __CLASS__, 'on_store_api_order' ), 10, 1 );",
+   "418: add_action( 'ps_cart_abandon_check', array( __CLASS__, 'cron_run' ) );"
+  ],
+  "pf": [
+   "25: add_action( 'plugins_loaded', function () {",
+   "28: add_action( 'woocommerce_order_status_failed', 'petshop_emit_payment_failed', 20, 1 );",
+   "30: // Paysera grąžina „pending\", kai mokėjimas nepavyko be aiškaus failed —",
+   "32: add_action( 'woocommerce_order_status_pending', function ( $order_id ) {",
+   "41: function petshop_emit_payment_failed( $order_id ) {"
+  ],
+  "pf_head": "<?php\n/**\n * Petshop Payment Failed Emitter v1.1 (S441)\n *\n * TRŪKSTAMAS ĮVYKIS. `Petshop_Email_Dispatch::flows()` turi srautą\n * `payment_failed → dunning-1`, šablonas įdiegtas 2026-08-04, BET įvykio\n * DB nebuvo NĖ VIENO — `Petshop_Event_Emitters` kabinasi tik prie\n * payment_complete / processing / completed / update_order.\n * Prie `woocommerce_order_status_failed` NEBUVO PRIJUNGTA NIEKO.\n *\n * Atskiras mu-plugin, kad nebūtų liečiamas veikiantis petshop-core failas.\n *\n * TAISYKLĖ „VIENAS SRAUTAS — VIENAS SAVININKAS\" (TŽ v1.60):\n * WooCommerce prie `failed` siunčia laišką TIK ADMINUI (WC_Emails::send_transactional_email\n * → „Failed order\"), klientui — NE. Todėl dublikato nebus.\n *\n * SAUGIKLIAI:\n *   - idempotencija: vienas įvykis vienam užsakymui (order meta žymė)\n *   - tik jei yra el. paštas\n *   - tik jei užsakymas turi prekių ir sumą > 0\n *   - testiniai užsakymai (_petshop_test) praleidžiami\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nadd_action( 'plugins_loaded', function () {\n\tif ( ! class_exists( 'Petshop_Event_Registry' ) ) { return; }\n\n\tadd_action( 'woocommerce_order_status_failed', 'petshop_emit_payment_failed', 20, 1 );\n\n\t// Paysera grąžina „pending\", kai mokėjimas nepavyko be aiškaus failed —\n\t// tokį atvejį gaudom atskirai, tik kai užsakymas jau buvo apmokėjimo lauke.\n\tadd_action( 'woocommerce_order_status_pending', function ( $order_id ) {\n\t\t$o = wc_get_order( $order_id );\n\t\tif ( ! $o ) { return; }\n\t\t// tik jei anksčiau buvo bandyta mokėti (yra transactio",
+  "pf_jobs": [
+   {
+    "id": "472",
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "skip_reason": "consent_missing",
+    "created_at": "2026-09-09 14:55:04",
+    "sent_at": null
+   },
+   {
+    "id": "473",
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "skip_reason": "consent_missing",
+    "created_at": "2026-09-10 09:24:42",
+    "sent_at": null
+   },
+   {
+    "id": "475",
+    "flow": "cart_abandoned",
+    "status": "sent",
+    "skip_reason": null,
+    "created_at": "2026-09-10 11:54:40",
+    "sent_at": "2026-09-10 11:58:44"
+   },
+   {
+    "id": "479",
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "skip_reason": "consent_missing",
+    "created_at": "2026-09-11 10:29:45",
+    "sent_at": null
+   },
+   {
+    "id": "480",
+    "flow": "cart_abandoned_2",
+    "status": "sent",
+    "skip_reason": null,
+    "created_at": "2026-09-11 12:00:39",
+    "sent_at": "2026-09-11 12:03:46"
+   },
+   {
+    "id": "481",
+    "flow": "cart_abandoned",
+    "status": "sent",
+    "skip_reason": null,
+    "created_at": "2026-09-11 19:34:45",
+    "sent_at": "2026-09-11 19:39:04"
+   }
+  ],
+  "carts_conv": []
+ }
+}
