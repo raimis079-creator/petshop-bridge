@@ -1,0 +1,52 @@
+{
+ "v": "dep-143035",
+ "kurimas": 200,
+ "sid": 5680,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1677 k",
+  "ps_fakt_uzsakymai": {
+   "stulp": "uzsakymas_id,sukurta_at,apmoketa_at,statusas_galutinis,statusas_at,klientas_id,klientas_email_hash,klientas_naujas,klientas_uzsakymo_nr,dienos_nuo_ankstesnio,prekiu_suma_ct,nuolaidu_ct,kuponu_kodai,tasku_panaudota_ct,tasku_sukaupta_ct,pristatymas_paimta_ct,pristatymas_savikaina_ct,small_cart_fee_ct,pvm_ct,viso_ct,mokejimo_budas,mokejimo_mokestis_ct,pakuotes_savikaina_ct,savikaina_ct,dovanu_savikaina_ct,marza_ct,kontribucija_ct,sandeliu_kiekis,misrus,sandeliai,vezejai,kanalas_pirmas,kanalas_paskutinis,utm_source,utm_medium,utm_campaign,gclid,fbclid,referer_domenas,landing_url,irenginys,sutikimas_statistika,salis,miestas,pasto_kodas,anketa_id,rec_log_id,is_refill,prenumerata_id,eiluciu_sk,testinis,saltinis_aplinka,fakt_versija,irasyta_at,diena",
+   "n": 25,
+   "nuo_iki": {
+    "a": "2026-09-08",
+    "b": "2026-09-12"
+   }
+  },
+  "ps_fakt_siuntos": {
+   "stulp": "id,uzsakymas_id,shipment_id,sandelis,vezejas,siuntos_nr,paketu_sk,pristatymo_tipas,sukurta_at,diena,tiekejui_issiusta_at,registruota_at,isvezta_at,pristatyta_at,atsiimta_at,svoris_deklaruotas_g,kaina_vezejo_ct,tarifo_id,statusas,problema_kodas,dienos_iki_pristatymo,saltinis,testinis,saltinis_aplinka,fakt_versija,sandelio_saltinis,dydis",
+   "n": 19,
+   "nuo_iki": {
+    "a": "2026-09-09",
+    "b": "2026-09-11"
+   }
+  },
+  "ps_tarifai": {
+   "stulp": "id,vezejas,tipas,svoris_nuo_g,svoris_iki_g,kaina_ct,kintamas_pct,galioja_nuo,galioja_iki,pastaba,sukurta_at,dydis,kaina_uz_kg_ct,uz_kg_nuo_g",
+   "n": 29,
+   "nuo_iki": {
+    "a": "2026-07-01",
+    "b": "2026-08-01"
+   }
+  },
+  "ps_fakt_reklama": {
+   "stulp": "id,diena,kanalas,kampanija_id,kampanija,parodymai,paspaudimai,islaidos_ct,valiuta,konversijos,konv_verte_ct,saltinis,saltinis_aplinka,versija,irasyta_at,senoji_svetaine",
+   "n": 92,
+   "nuo_iki": {
+    "a": "2026-08-24",
+    "b": "2026-09-11"
+   }
+  },
+  "ps_fakt_eilutes": {
+   "stulp": "id,uzsakymas_id,eilutes_id,apmoketa_at,preke_id,variacija_id,sku,gtin,pavadinimas_tuo_metu,kategorija_id_giliausia,kategoriju_kelias,brendas_slug,gyvunas,pa_uzsaldymas,sandelis,tiekejas,partija_kodas,kiekis,kaina_ct,pvm_ct,kaina_vnt_ct,kaina_reguliari_ct,savikaina_vnt_ct,savikaina_ct,savikainos_saltinis,nuolaida_ct,akcija_id,kuponas,rinkinys_id,rinkinio_tipas,rinkinio_raktas,dovana,svoris_g,pakuotes_dydis,klientas_naujas,testinis,saltinis_aplinka,diena",
+   "n": 45,
+   "nuo_iki": {
+    "a": "2026-09-08",
+    "b": "2026-09-12"
+   }
+  }
+ }
+}
