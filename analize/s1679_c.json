@@ -1,0 +1,237 @@
+{
+ "v": "dep-160808",
+ "kurimas": 200,
+ "sid": 5699,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1679 c",
+  "dabar": "2026-09-13 19:09:15",
+  "dienos": [
+   {
+    "diena": "2026-09-10",
+    "n": "1028",
+    "pask": "2026-09-10 20:31:29"
+   },
+   {
+    "diena": "2026-09-11",
+    "n": "858",
+    "pask": "2026-09-11 20:50:55"
+   },
+   {
+    "diena": "2026-09-12",
+    "n": "151",
+    "pask": "2026-09-12 08:17:01"
+   }
+  ],
+  "err": "",
+  "cols": [
+   "id",
+   "laikas",
+   "diena",
+   "tipas",
+   "pusl_tipas",
+   "url_kelias",
+   "raktas",
+   "raktas2",
+   "reiksme",
+   "sesija",
+   "lankytojas_d",
+   "lankytojas_30",
+   "saltinis",
+   "medium",
+   "kampanija",
+   "referer_domenas",
+   "kanalas",
+   "landing",
+   "irenginys",
+   "os_seima",
+   "nars_seima",
+   "salis",
+   "prisijunges",
+   "sutikimas",
+   "testinis",
+   "saltinis_aplinka"
+  ],
+  "pask": {
+   "id": "4379",
+   "laikas": "2026-09-12 08:17:01",
+   "diena": "2026-09-12",
+   "tipas": "view_item",
+   "pusl_tipas": null,
+   "url_kelias": "/product/vetoquinol-bezo-pet-savelas-salinanti-pasta-katems-ir-sunims-120g/",
+   "raktas": "23458",
+   "raktas2": "ZOOV025",
+   "reiksme": null,
+   "sesija": "t_a7c851e8617aa0f821e570acec7c28|1789373818|1789287418|63d6e9238",
+   "lankytojas_d": "18dfbcb5a5a4ce1e69142ea6d4f83d64f7191b8f01a81efc81419e721aee029c",
+   "lankytojas_30": null,
+   "saltinis": "kaina24",
+   "medium": null,
+   "kampanija": null,
+   "referer_domenas": "www.kaina24.lt",
+   "kanalas": "mokamas",
+   "landing": "0",
+   "irenginys": "mobile",
+   "os_seima": "iOS",
+   "nars_seima": "Safari",
+   "salis": "US",
+   "prisijunges": "0",
+   "sutikimas": "0",
+   "testinis": "0",
+   "saltinis_aplinka": "prod"
+  },
+  "klase": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-analitika.php",
+  "snippets": [
+   {
+    "id": "5699",
+    "name": "TEMP PS dep-160808",
+    "active": "1"
+   }
+  ],
+  "mu": [
+   "petshop-ataskaita-lankomumas.php",
+   "petshop-fakt-reklama.php",
+   "petshop-islaidos.php",
+   "petshop-rytas.php"
+  ],
+  "htaccess": "# BEGIN Petshop Cache (H089, 2026-08-19)\n<IfModule mod_expires.c>\n  ExpiresActive On\n  ExpiresByType text/css \"access plus 1 year\"\n  ExpiresByType application/javascript \"access plus 1 year\"\n  ExpiresByType text/javascript \"access plus 1 year\"\n  ExpiresByType image/jpeg \"access plus 1 year\"\n  ExpiresByType image/png \"access plus 1 year\"\n  ExpiresByType image/gif \"access plus 1 year\"\n  ExpiresByType image/webp \"access plus 1 year\"\n  ExpiresByType image/svg+xml \"access plus 1 year\"\n  ExpiresByType font/woff2 \"access plus 1 year\"\n</IfModule>\n<IfModule mod_headers.c>\n  <FilesMatch \"\\.(css|js|mjs|woff2?|ttf|otf|eot|svg|jpe?g|png|gif|webp|avif|ico)$\">\n    Header set Cache-Control \"public, max-age=31536000\"\n  </FilesMatch>\n</IfModule>\n# END Petshop Cache\n\n# Block the include-only files.\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteBase /\nRewriteRule ^wp-admin/includes/ - [F,L]\nRewriteRule !^wp-includes/ - [S=3]\nRewriteRule ^wp-includes/[^/]+\\.php$ - [F,L]\nRewriteRule ^wp-includes/js/tinymce/langs/.+\\.php - [F,L]\nRewriteRule ^wp-includes/theme-compat/ - [F,L]\n</IfModule>\n<Files wp-config.php>\n<IfModule !mod_authz_core.c>\norder allow,deny\ndeny from all\n</IfModule>\n<IfModule mod_authz_core.c>\nrequire all denied\n</IfModule>\n</Files>\n\n# BEGIN WordPress\n# Instrukcijos (eilutės) tarp \"BEGIN WordPress\" ir \"END WordPress\" yra \n# generuojamos dinamiškai ir turėtų būti modifikuojamos tik per WordPress filtrus.\n# Bet kokie pakeitimai instrukcijose tarp šių žymiklių bus perrašyti.\n",
+  "log_tail": [
+   "[13-Sep-2026 15:01:57 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 344\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 343\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 344\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 343\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 344\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 343\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 344\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 343\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 344\n",
+   "[13-Sep-2026 16:02:22 UTC] WordPress database error Unknown column 'rodymai' in 'field list' for query SELECT diena,kampanija,islaidos_ct/100 isl,paspaudimai klik,rodymai,konversijos konv,konv_verte_ct/100 kv FROM gaj6_ps_fakt_reklama WHERE diena>=DATE_SUB(CURDATE(),INTERVAL 5 DAY) ORDER BY diena,kampanija made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}\n",
+   "[13-Sep-2026 16:02:22 UTC] WordPress database error Unknown column 'uzsakymo_nr' in 'field list' for query SELECT uzsakymo_nr nr,statusas_galutinis s,viso_ct/100 v,gclid<>'' g,utm_source src,utm_campaign kamp,apmoketa_at FROM gaj6_ps_fakt_uzsakymai WHERE testinis=0 AND sukurta_at>=CURDATE() ORDER BY sukurta_at made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}\n",
+   "[13-Sep-2026 16:02:29 UTC] WordPress database error Unknown column 'rodymai' in 'field list' for query SELECT diena,kampanija,islaidos_ct/100 isl,paspaudimai klik,rodymai,konversijos konv,konv_verte_ct/100 kv FROM gaj6_ps_fakt_reklama WHERE diena>=DATE_SUB(CURDATE(),INTERVAL 5 DAY) ORDER BY diena,kampanija made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}\n",
+   "[13-Sep-2026 16:02:29 UTC] WordPress database error Unknown column 'uzsakymo_nr' in 'field list' for query SELECT uzsakymo_nr nr,statusas_galutinis s,viso_ct/100 v,gclid<>'' g,utm_source src,utm_campaign kamp,apmoketa_at FROM gaj6_ps_fakt_uzsakymai WHERE testinis=0 AND sukurta_at>=CURDATE() ORDER BY sukurta_at made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}\n",
+   "[13-Sep-2026 16:04:20 UTC] WordPress database error Unknown column 'order_id' in 'field list' for query SELECT order_id,statusas_galutinis s,viso_ct/100 v,gclid<>'' g,utm_source src,utm_campaign kamp,sukurta_at FROM gaj6_ps_fakt_uzsakymai WHERE testinis=0 AND sukurta_at>=DATE_SUB(NOW(),INTERVAL 2 DAY) ORDER BY sukurta_at made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}\n",
+   "[13-Sep-2026 16:04:26 UTC] WordPress database error Unknown column 'order_id' in 'field list' for query SELECT order_id,statusas_galutinis s,viso_ct/100 v,gclid<>'' g,utm_source src,utm_campaign kamp,sukurta_at FROM gaj6_ps_fakt_uzsakymai WHERE testinis=0 AND sukurta_at>=DATE_SUB(NOW(),INTERVAL 2 DAY) ORDER BY sukurta_at made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}\n"
+  ],
+  "rest_ivykis": [
+   404,
+   "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+  ]
+ },
+ "CL": {
+  "v": "S1679 c",
+  "dabar": "2026-09-13 19:09:23",
+  "dienos": [
+   {
+    "diena": "2026-09-10",
+    "n": "1028",
+    "pask": "2026-09-10 20:31:29"
+   },
+   {
+    "diena": "2026-09-11",
+    "n": "858",
+    "pask": "2026-09-11 20:50:55"
+   },
+   {
+    "diena": "2026-09-12",
+    "n": "151",
+    "pask": "2026-09-12 08:17:01"
+   }
+  ],
+  "err": "",
+  "cols": [
+   "id",
+   "laikas",
+   "diena",
+   "tipas",
+   "pusl_tipas",
+   "url_kelias",
+   "raktas",
+   "raktas2",
+   "reiksme",
+   "sesija",
+   "lankytojas_d",
+   "lankytojas_30",
+   "saltinis",
+   "medium",
+   "kampanija",
+   "referer_domenas",
+   "kanalas",
+   "landing",
+   "irenginys",
+   "os_seima",
+   "nars_seima",
+   "salis",
+   "prisijunges",
+   "sutikimas",
+   "testinis",
+   "saltinis_aplinka"
+  ],
+  "pask": {
+   "id": "4379",
+   "laikas": "2026-09-12 08:17:01",
+   "diena": "2026-09-12",
+   "tipas": "view_item",
+   "pusl_tipas": null,
+   "url_kelias": "/product/vetoquinol-bezo-pet-savelas-salinanti-pasta-katems-ir-sunims-120g/",
+   "raktas": "23458",
+   "raktas2": "ZOOV025",
+   "reiksme": null,
+   "sesija": "t_a7c851e8617aa0f821e570acec7c28|1789373818|1789287418|63d6e9238",
+   "lankytojas_d": "18dfbcb5a5a4ce1e69142ea6d4f83d64f7191b8f01a81efc81419e721aee029c",
+   "lankytojas_30": null,
+   "saltinis": "kaina24",
+   "medium": null,
+   "kampanija": null,
+   "referer_domenas": "www.kaina24.lt",
+   "kanalas": "mokamas",
+   "landing": "0",
+   "irenginys": "mobile",
+   "os_seima": "iOS",
+   "nars_seima": "Safari",
+   "salis": "US",
+   "prisijunges": "0",
+   "sutikimas": "0",
+   "testinis": "0",
+   "saltinis_aplinka": "prod"
+  },
+  "klase": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-analitika.php",
+  "snippets": [
+   {
+    "id": "5699",
+    "name": "TEMP PS dep-160808",
+    "active": "1"
+   }
+  ],
+  "mu": [
+   "petshop-ataskaita-lankomumas.php",
+   "petshop-fakt-reklama.php",
+   "petshop-islaidos.php",
+   "petshop-rytas.php"
+  ],
+  "htaccess": "# BEGIN Petshop Cache (H089, 2026-08-19)\n<IfModule mod_expires.c>\n  ExpiresActive On\n  ExpiresByType text/css \"access plus 1 year\"\n  ExpiresByType application/javascript \"access plus 1 year\"\n  ExpiresByType text/javascript \"access plus 1 year\"\n  ExpiresByType image/jpeg \"access plus 1 year\"\n  ExpiresByType image/png \"access plus 1 year\"\n  ExpiresByType image/gif \"access plus 1 year\"\n  ExpiresByType image/webp \"access plus 1 year\"\n  ExpiresByType image/svg+xml \"access plus 1 year\"\n  ExpiresByType font/woff2 \"access plus 1 year\"\n</IfModule>\n<IfModule mod_headers.c>\n  <FilesMatch \"\\.(css|js|mjs|woff2?|ttf|otf|eot|svg|jpe?g|png|gif|webp|avif|ico)$\">\n    Header set Cache-Control \"public, max-age=31536000\"\n  </FilesMatch>\n</IfModule>\n# END Petshop Cache\n\n# Block the include-only files.\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteBase /\nRewriteRule ^wp-admin/includes/ - [F,L]\nRewriteRule !^wp-includes/ - [S=3]\nRewriteRule ^wp-includes/[^/]+\\.php$ - [F,L]\nRewriteRule ^wp-includes/js/tinymce/langs/.+\\.php - [F,L]\nRewriteRule ^wp-includes/theme-compat/ - [F,L]\n</IfModule>\n<Files wp-config.php>\n<IfModule !mod_authz_core.c>\norder allow,deny\ndeny from all\n</IfModule>\n<IfModule mod_authz_core.c>\nrequire all denied\n</IfModule>\n</Files>\n\n# BEGIN WordPress\n# Instrukcijos (eilutės) tarp \"BEGIN WordPress\" ir \"END WordPress\" yra \n# generuojamos dinamiškai ir turėtų būti modifikuojamos tik per WordPress filtrus.\n# Bet kokie pakeitimai instrukcijose tarp šių žymiklių bus perrašyti.\n",
+  "log_tail": [
+   "[13-Sep-2026 15:01:57 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 344\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 343\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 344\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 343\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 344\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 343\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 344\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 343\n",
+   "[13-Sep-2026 15:01:58 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 344\n",
+   "[13-Sep-2026 16:02:22 UTC] WordPress database error Unknown column 'rodymai' in 'field list' for query SELECT diena,kampanija,islaidos_ct/100 isl,paspaudimai klik,rodymai,konversijos konv,konv_verte_ct/100 kv FROM gaj6_ps_fakt_reklama WHERE diena>=DATE_SUB(CURDATE(),INTERVAL 5 DAY) ORDER BY diena,kampanija made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}\n",
+   "[13-Sep-2026 16:02:22 UTC] WordPress database error Unknown column 'uzsakymo_nr' in 'field list' for query SELECT uzsakymo_nr nr,statusas_galutinis s,viso_ct/100 v,gclid<>'' g,utm_source src,utm_campaign kamp,apmoketa_at FROM gaj6_ps_fakt_uzsakymai WHERE testinis=0 AND sukurta_at>=CURDATE() ORDER BY sukurta_at made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}\n",
+   "[13-Sep-2026 16:02:29 UTC] WordPress database error Unknown column 'rodymai' in 'field list' for query SELECT diena,kampanija,islaidos_ct/100 isl,paspaudimai klik,rodymai,konversijos konv,konv_verte_ct/100 kv FROM gaj6_ps_fakt_reklama WHERE diena>=DATE_SUB(CURDATE(),INTERVAL 5 DAY) ORDER BY diena,kampanija made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}\n",
+   "[13-Sep-2026 16:02:29 UTC] WordPress database error Unknown column 'uzsakymo_nr' in 'field list' for query SELECT uzsakymo_nr nr,statusas_galutinis s,viso_ct/100 v,gclid<>'' g,utm_source src,utm_campaign kamp,apmoketa_at FROM gaj6_ps_fakt_uzsakymai WHERE testinis=0 AND sukurta_at>=CURDATE() ORDER BY sukurta_at made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}\n",
+   "[13-Sep-2026 16:04:20 UTC] WordPress database error Unknown column 'order_id' in 'field list' for query SELECT order_id,statusas_galutinis s,viso_ct/100 v,gclid<>'' g,utm_source src,utm_campaign kamp,sukurta_at FROM gaj6_ps_fakt_uzsakymai WHERE testinis=0 AND sukurta_at>=DATE_SUB(NOW(),INTERVAL 2 DAY) ORDER BY sukurta_at made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}\n",
+   "[13-Sep-2026 16:04:26 UTC] WordPress database error Unknown column 'order_id' in 'field list' for query SELECT order_id,statusas_galutinis s,viso_ct/100 v,gclid<>'' g,utm_source src,utm_campaign kamp,sukurta_at FROM gaj6_ps_fakt_uzsakymai WHERE testinis=0 AND sukurta_at>=DATE_SUB(NOW(),INTERVAL 2 DAY) ORDER BY sukurta_at made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('init'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}\n"
+  ],
+  "rest_ivykis": [
+   404,
+   "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+  ]
+ }
+}
