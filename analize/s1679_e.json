@@ -1,0 +1,85 @@
+{
+ "v": "dep-161737",
+ "kurimas": 200,
+ "sid": 5702,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1679 e",
+  "dabar": "2026-09-13 19:18:46",
+  "siandien": 2,
+  "pask": [
+   {
+    "laikas": "2026-09-13 16:17:46",
+    "tipas": "pageview",
+    "url_kelias": "/kategorija/rinkiniai/konservu-rinkiniai/",
+    "saltinis": null,
+    "irenginys": "mobile"
+   },
+   {
+    "laikas": "2026-09-13 16:16:55",
+    "tipas": "pageview",
+    "url_kelias": "/kategorija/rinkiniai/konservu-rinkiniai/",
+    "saltinis": null,
+    "irenginys": "mobile"
+   },
+   {
+    "laikas": "2026-09-12 08:17:01",
+    "tipas": "view_item",
+    "url_kelias": "/product/vetoquinol-bezo-pet-savelas-salinanti-pasta-katems-ir-sunims-120g/",
+    "saltinis": "kaina24",
+    "irenginys": "mobile"
+   },
+   {
+    "laikas": "2026-09-12 08:17:01",
+    "tipas": "pageview",
+    "url_kelias": "/product/vetoquinol-bezo-pet-savelas-salinanti-pasta-katems-ir-sunims-120g/?utm_source=kaina24",
+    "saltinis": "kaina24",
+    "irenginys": "mobile"
+   }
+  ],
+  "fatal": [
+   "[13-Sep-2026 16:13:46 UTC] PHP Fatal error:  Uncaught Error: Undefined constant Petshop_Analitika::VERSIJA in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval"
+  ]
+ },
+ "CL": {
+  "v": "S1679 e",
+  "dabar": "2026-09-13 19:18:52",
+  "siandien": 2,
+  "pask": [
+   {
+    "laikas": "2026-09-13 16:17:46",
+    "tipas": "pageview",
+    "url_kelias": "/kategorija/rinkiniai/konservu-rinkiniai/",
+    "saltinis": null,
+    "irenginys": "mobile"
+   },
+   {
+    "laikas": "2026-09-13 16:16:55",
+    "tipas": "pageview",
+    "url_kelias": "/kategorija/rinkiniai/konservu-rinkiniai/",
+    "saltinis": null,
+    "irenginys": "mobile"
+   },
+   {
+    "laikas": "2026-09-12 08:17:01",
+    "tipas": "view_item",
+    "url_kelias": "/product/vetoquinol-bezo-pet-savelas-salinanti-pasta-katems-ir-sunims-120g/",
+    "saltinis": "kaina24",
+    "irenginys": "mobile"
+   },
+   {
+    "laikas": "2026-09-12 08:17:01",
+    "tipas": "pageview",
+    "url_kelias": "/product/vetoquinol-bezo-pet-savelas-salinanti-pasta-katems-ir-sunims-120g/?utm_source=kaina24",
+    "saltinis": "kaina24",
+    "irenginys": "mobile"
+   }
+  ],
+  "fatal": [
+   "[13-Sep-2026 16:13:46 UTC] PHP Fatal error:  Uncaught Error: Undefined constant Petshop_Analitika::VERSIJA in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval"
+  ]
+ }
+}
