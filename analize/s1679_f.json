@@ -1,0 +1,1657 @@
+{
+ "v": "dep-204212",
+ "kurimas": 200,
+ "sid": 5703,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1679 f",
+  "dabar": "2026-09-13 23:43:21",
+  "t0": "2026-09-08 22:24:33",
+  "statusai": [
+   {
+    "s": "completed",
+    "n": "15",
+    "v": "477"
+   },
+   {
+    "s": "processing",
+    "n": "20",
+    "v": "796"
+   }
+  ],
+  "dienos": [
+   {
+    "diena": "2026-09-09",
+    "n": "4",
+    "v": "103",
+    "m": "15",
+    "k": "20",
+    "nauji": "4",
+    "vid": "26"
+   },
+   {
+    "diena": "2026-09-10",
+    "n": "9",
+    "v": "238",
+    "m": "64",
+    "k": "72",
+    "nauji": "9",
+    "vid": "26"
+   },
+   {
+    "diena": "2026-09-11",
+    "n": "7",
+    "v": "256",
+    "m": "62",
+    "k": "69",
+    "nauji": "7",
+    "vid": "37"
+   },
+   {
+    "diena": "2026-09-12",
+    "n": "7",
+    "v": "351",
+    "m": "84",
+    "k": "90",
+    "nauji": "6",
+    "vid": "50"
+   },
+   {
+    "diena": "2026-09-13",
+    "n": "8",
+    "v": "325",
+    "m": "65",
+    "k": "65",
+    "nauji": "8",
+    "vid": "41"
+   }
+  ],
+  "viso": [
+   {
+    "n": "35",
+    "v": "1273",
+    "prekes": "1006",
+    "pvm": "221",
+    "sav": "716",
+    "m": "291",
+    "k": "316",
+    "prist_paimta": "42",
+    "prist_sav": null,
+    "nuol": "0",
+    "taskai": "0",
+    "scf": "4",
+    "aov": "36.4",
+    "nauji": "34",
+    "seni": "1",
+    "eil": "1.8",
+    "d_nuo_ankst": "1",
+    "kuponai": "0",
+    "misrus": "3"
+   }
+  ],
+  "kanalai": [
+   {
+    "k": "mokamas",
+    "n": "15",
+    "v": "461",
+    "nauji": "15"
+   },
+   {
+    "k": "direct",
+    "n": "9",
+    "v": "488",
+    "nauji": "9"
+   },
+   {
+    "k": "organika",
+    "n": "7",
+    "v": "190",
+    "nauji": "7"
+   },
+   {
+    "k": "",
+    "n": "1",
+    "v": "1",
+    "nauji": "1"
+   },
+   {
+    "k": "soc_organika",
+    "n": "1",
+    "v": "46",
+    "nauji": "1"
+   },
+   {
+    "k": "email",
+    "n": "1",
+    "v": "45",
+    "nauji": "0"
+   },
+   {
+    "k": "referral",
+    "n": "1",
+    "v": "41",
+    "nauji": "1"
+   }
+  ],
+  "saltiniai": [
+   {
+    "s": "",
+    "m": "",
+    "n": "32",
+    "v": "1164"
+   },
+   {
+    "s": "newsletter",
+    "m": "email",
+    "n": "1",
+    "v": "45"
+   },
+   {
+    "s": "kaina24",
+    "m": "",
+    "n": "1",
+    "v": "20"
+   },
+   {
+    "s": "kainos",
+    "m": "referral",
+    "n": "1",
+    "v": "44"
+   }
+  ],
+  "mokejimas": [
+   {
+    "b": "paysera",
+    "n": "34",
+    "v": "1189"
+   },
+   {
+    "b": "bacs",
+    "n": "1",
+    "v": "84"
+   }
+  ],
+  "vezejai": [
+   {
+    "b": "venipak",
+    "n": "32"
+   },
+   {
+    "b": "lp_express",
+    "n": "2"
+   },
+   {
+    "b": "",
+    "n": "1"
+   }
+  ],
+  "irenginys": [
+   {
+    "b": "",
+    "n": "1"
+   },
+   {
+    "b": "desktop",
+    "n": "6"
+   },
+   {
+    "b": "mobile",
+    "n": "28"
+   }
+  ],
+  "sandeliai": [
+   {
+    "b": "vf",
+    "n": "17"
+   },
+   {
+    "b": "legacy",
+    "n": "14"
+   },
+   {
+    "b": "vf,belcor_tofu,legacy",
+    "n": "1"
+   },
+   {
+    "b": "quattro",
+    "n": "1"
+   },
+   {
+    "b": "belcor_tofu,legacy",
+    "n": "1"
+   },
+   {
+    "b": "vf,zb,legacy",
+    "n": "1"
+   }
+  ],
+  "miestai": [
+   {
+    "b": "",
+    "n": "6"
+   },
+   {
+    "b": "Vilnius",
+    "n": "6"
+   },
+   {
+    "b": "Skuodas",
+    "n": "2"
+   },
+   {
+    "b": "Kaunas",
+    "n": "2"
+   },
+   {
+    "b": "Mažeikiai",
+    "n": "2"
+   },
+   {
+    "b": "Kloviniai",
+    "n": "1"
+   },
+   {
+    "b": "Naujoji Akmenė",
+    "n": "1"
+   },
+   {
+    "b": "Alytus",
+    "n": "1"
+   }
+  ],
+  "nauji_grizo": [
+   {
+    "nauj": "0",
+    "n": "1",
+    "aov": "45",
+    "marza": "6"
+   },
+   {
+    "nauj": "1",
+    "n": "34",
+    "aov": "36",
+    "marza": "8"
+   }
+  ],
+  "pakartotiniai": [
+   {
+    "klientu": "34",
+    "pirko2": "1"
+   }
+  ],
+  "krepselio_dydis": [
+   {
+    "d": "<20",
+    "n": "14",
+    "m": "41"
+   },
+   {
+    "d": "20-40",
+    "n": "7",
+    "m": "35"
+   },
+   {
+    "d": "40-70",
+    "n": "11",
+    "m": "116"
+   },
+   {
+    "d": "70+",
+    "n": "3",
+    "m": "98"
+   }
+  ],
+  "nepavyke": [],
+  "top_prekes": [
+   {
+    "sku": "HYPS06",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "kk": "2",
+    "v": "94",
+    "m": "19"
+   },
+   {
+    "sku": "JOS1023",
+    "pav": "Josera A/S Lamb + Rice sausas pašaras šunims ",
+    "kk": "2",
+    "v": "75",
+    "m": "13"
+   },
+   {
+    "sku": "HYPS02",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "kk": "4",
+    "v": "73",
+    "m": "15"
+   },
+   {
+    "sku": "JOS0914",
+    "pav": "Josera Sensiplus 12,5 kg - sausas maistas šun",
+    "kk": "2",
+    "v": "66",
+    "m": "11"
+   },
+   {
+    "sku": "650501",
+    "pav": "Ontario Adult Large Lamb and Brown Rice, 12 k",
+    "kk": "1",
+    "v": "53",
+    "m": "21"
+   },
+   {
+    "sku": "48370",
+    "pav": "Ontario Monoproteino konservai šunims su ėrie",
+    "kk": "20",
+    "v": "49",
+    "m": "21"
+   },
+   {
+    "sku": "JOS1004",
+    "pav": "Josera Indoor 10 kg - sausas maistas naminėms",
+    "kk": "1",
+    "v": "42",
+    "m": "7"
+   },
+   {
+    "sku": "JOS0931",
+    "pav": "Josera Mini Lamb begrūdis (Mini Deluxe) 10 kg",
+    "kk": "1",
+    "v": "38",
+    "m": "6"
+   },
+   {
+    "sku": "JOS0913",
+    "pav": "JOSERA FESTIVAL pašaras šunims su lašiša, 12,",
+    "kk": "1",
+    "v": "37",
+    "m": "6"
+   },
+   {
+    "sku": "704001",
+    "pav": "Jaučio peniai pjaustyti, 12,5 cm, 10 vnt.",
+    "kk": "2",
+    "v": "28",
+    "m": "7"
+   },
+   {
+    "sku": "JOS0622",
+    "pav": "Josidog Regular 15 kg - sausas maistas šunims",
+    "kk": "1",
+    "v": "27",
+    "m": "5"
+   },
+   {
+    "sku": "",
+    "pav": "8 VNT. - Kraikas katėms TOFU BeloCat, žaliosi",
+    "kk": "1",
+    "v": "26",
+    "m": null
+   },
+   {
+    "sku": "M14236",
+    "pav": "Monge Monoproteico Solo Agnello – Monoprotein",
+    "kk": "10",
+    "v": "25",
+    "m": "6"
+   },
+   {
+    "sku": "NGALA40",
+    "pav": "Exclusion Mono Protein Mediterraneo konservuo",
+    "kk": "10",
+    "v": "23",
+    "m": "6"
+   },
+   {
+    "sku": "JOS0723",
+    "pav": "JosiCat Crunchy Chicken sausas maistas suaugu",
+    "kk": "1",
+    "v": "22",
+    "m": "4"
+   }
+  ],
+  "gyvunas": [
+   {
+    "g": "",
+    "uzs": "35",
+    "v": "1006",
+    "m": "264"
+   }
+  ],
+  "kategorijos": [
+   {
+    "k": "[\"sunims\",\"maistas-sunims\",\"sausas-maistas-sunims\"]",
+    "eil": "15",
+    "v": "489",
+    "m": "101"
+   },
+   {
+    "k": "[\"sunims\",\"maistas-sunims\",\"konservai-sunims\"]",
+    "eil": "7",
+    "v": "149",
+    "m": "50"
+   },
+   {
+    "k": "[\"sunims\",\"skanestai-sunims\"]",
+    "eil": "7",
+    "v": "68",
+    "m": "23"
+   },
+   {
+    "k": "[\"zuvims\",\"akvariumo-zuvyciu-maistas\"]",
+    "eil": "8",
+    "v": "67",
+    "m": "28"
+   },
+   {
+    "k": "[\"katems\",\"maistas-katems\",\"sausas-maistas-katems\"]",
+    "eil": "2",
+    "v": "65",
+    "m": "11"
+   },
+   {
+    "k": "[\"katems\",\"maistas-katems\",\"konservai-katems\"]",
+    "eil": "10",
+    "v": "64",
+    "m": "21"
+   },
+   {
+    "k": "[\"katems\",\"kraikai-kaciu-tualetams\"]",
+    "eil": "2",
+    "v": "30",
+    "m": "1"
+   },
+   {
+    "k": "[\"katems\",\"tualetai-kraikai-semtuveliai\"]",
+    "eil": "2",
+    "v": "20",
+    "m": "10"
+   },
+   {
+    "k": "[\"sunims\",\"zaislai-sunims\"]",
+    "eil": "3",
+    "v": "18",
+    "m": "6"
+   },
+   {
+    "k": "[\"sunims\",\"vitaminai-ir-papildai-sunims\"]",
+    "eil": "1",
+    "v": "14",
+    "m": "4"
+   },
+   {
+    "k": "[\"sunims\",\"sampunai-sunims\"]",
+    "eil": "2",
+    "v": "11",
+    "m": "4"
+   },
+   {
+    "k": "[\"pauksciams\",\"skanestai-pauksciams\"]",
+    "eil": "1",
+    "v": "6",
+    "m": "2"
+   }
+  ],
+  "brendai": [
+   {
+    "b": "josera",
+    "v": "331",
+    "m": "56"
+   },
+   {
+    "b": "exclusion",
+    "v": "206",
+    "m": "44"
+   },
+   {
+    "b": "ontario",
+    "v": "102",
+    "m": "42"
+   },
+   {
+    "b": "hikari",
+    "v": "67",
+    "m": "28"
+   },
+   {
+    "b": "miamor",
+    "v": "54",
+    "m": "19"
+   },
+   {
+    "b": "romar",
+    "v": "37",
+    "m": "11"
+   },
+   {
+    "b": "animonda",
+    "v": "35",
+    "m": "13"
+   },
+   {
+    "b": "belocat",
+    "v": "30",
+    "m": "1"
+   },
+   {
+    "b": "monge",
+    "v": "25",
+    "m": "6"
+   },
+   {
+    "b": "duvo",
+    "v": "20",
+    "m": "7"
+   }
+  ],
+  "rinkiniai": [],
+  "err_rinkiniai": "Unknown column 'e.rinkinio_tipa' in 'field list'",
+  "dovanos": [
+   {
+    "n": "0",
+    "sav": null
+   }
+  ],
+  "akcijos": [
+   {
+    "akc_eil": null,
+    "nuol": "0.0000",
+    "su_nuol": "1",
+    "viso": "63"
+   }
+  ],
+  "tiekejai": [
+   {
+    "t": "legacy",
+    "s": "legacy",
+    "eil": "37"
+   },
+   {
+    "t": "vf",
+    "s": "vf",
+    "eil": "22"
+   },
+   {
+    "t": "belcor_tofu",
+    "s": "belcor_tofu",
+    "eil": "2"
+   },
+   {
+    "t": "zb",
+    "s": "zb",
+    "eil": "1"
+   },
+   {
+    "t": "quattro",
+    "s": "quattro",
+    "eil": "1"
+   }
+  ],
+  "web_dienos": [
+   {
+    "diena": "2026-09-09",
+    "ses": "156",
+    "lank": "178",
+    "pv": "682",
+    "vi": "141",
+    "atc": "37",
+    "bc": "35",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-10",
+    "ses": "188",
+    "lank": "205",
+    "pv": "664",
+    "vi": "202",
+    "atc": "80",
+    "bc": "20",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-11",
+    "ses": "156",
+    "lank": "169",
+    "pv": "574",
+    "vi": "166",
+    "atc": "39",
+    "bc": "30",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-12",
+    "ses": "47",
+    "lank": "51",
+    "pv": "106",
+    "vi": "34",
+    "atc": "5",
+    "bc": "2",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-13",
+    "ses": "58",
+    "lank": "64",
+    "pv": "248",
+    "vi": "76",
+    "atc": "15",
+    "bc": "9",
+    "pur": "0"
+   }
+  ],
+  "web_tipai": [
+   {
+    "tipas": "pageview",
+    "n": "2274"
+   },
+   {
+    "tipas": "view_item",
+    "n": "619"
+   },
+   {
+    "tipas": "add_to_cart",
+    "n": "176"
+   },
+   {
+    "tipas": "begin_checkout",
+    "n": "96"
+   },
+   {
+    "tipas": "search",
+    "n": "75"
+   },
+   {
+    "tipas": "view_cart",
+    "n": "51"
+   },
+   {
+    "tipas": "error404",
+    "n": "51"
+   }
+  ],
+  "web_kanalai": [
+   {
+    "kanalas": "mokamas",
+    "ses": "326"
+   },
+   {
+    "kanalas": "organika",
+    "ses": "224"
+   },
+   {
+    "kanalas": "referral",
+    "ses": "38"
+   },
+   {
+    "kanalas": "soc_organika",
+    "ses": "4"
+   },
+   {
+    "kanalas": null,
+    "ses": "4"
+   }
+  ],
+  "web_irenginys": [
+   {
+    "irenginys": "desktop",
+    "ses": "142"
+   },
+   {
+    "irenginys": "mobile",
+    "ses": "444"
+   },
+   {
+    "irenginys": "tablet",
+    "ses": "0"
+   }
+  ],
+  "web_landing": [
+   {
+    "url_kelias": "/",
+    "n": "96"
+   },
+   {
+    "url_kelias": "/kategorija/katems/maistas-katems/",
+    "n": "13"
+   },
+   {
+    "url_kelias": "/gamintojas/exclusion/",
+    "n": "11"
+   },
+   {
+    "url_kelias": "/kategorija/sunims/maistas-sunims/",
+    "n": "11"
+   },
+   {
+    "url_kelias": "/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-2-kg/",
+    "n": "8"
+   },
+   {
+    "url_kelias": "/paskyra/pamirstas-slaptazodis/?show-reset-form=true&action",
+    "n": "8"
+   },
+   {
+    "url_kelias": "/product/sepija-mineralas-skanestas-pauksciams-15-cm-1-vnt/",
+    "n": "7"
+   },
+   {
+    "url_kelias": "/suo-nuolat-kasosi-7-priezastys-ir-3-minuciu-planas-ka-daryti-siandien/",
+    "n": "7"
+   },
+   {
+    "url_kelias": "/product/royal-canin-yorkshire-terrier-adult-15-kg-sausas-maistas-suaugusiems-jorksyro-terjerams/?gad_source=1&gad_campaignid=21565466377&gclid=Cj0KCQjwzY7VBhDwARIsAFtPvBTybxI32ClOSpyTlTxEtGkVJnPFPUt-NXUpll1jQeg8BRPJO-_AlzkaAvy4EALw_wcB",
+    "n": "7"
+   },
+   {
+    "url_kelias": "/product/avies-kailio-zaislas-suniui-su-rankena-dingo-agility-130-cm/",
+    "n": "6"
+   }
+  ],
+  "web_sutikimas": [
+   {
+    "sutikimas": "0",
+    "ses": "573"
+   },
+   {
+    "sutikimas": "1",
+    "ses": "127"
+   }
+  ],
+  "carts_cols": [
+   "id",
+   "cart_id",
+   "session_key",
+   "user_id",
+   "email",
+   "email_source",
+   "last_cart_activity_at",
+   "cart_hash",
+   "snapshot_json",
+   "snapshot_version",
+   "status",
+   "status_changed_at",
+   "converted_order_id",
+   "created_at",
+   "updated_at"
+  ],
+  "email_cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "carts": [
+   {
+    "status": "abandoned",
+    "n": "96"
+   },
+   {
+    "status": "active",
+    "n": "2"
+   },
+   {
+    "status": "converted",
+    "n": "38"
+   },
+   {
+    "status": "expired",
+    "n": "16"
+   }
+  ],
+  "emails": [],
+  "err_emails": "Unknown column 'type' in 'field list'",
+  "grazinimai": [
+   {
+    "n": "0"
+   }
+  ]
+ },
+ "CL": {
+  "v": "S1679 f",
+  "dabar": "2026-09-13 23:43:28",
+  "t0": "2026-09-08 22:24:33",
+  "statusai": [
+   {
+    "s": "completed",
+    "n": "15",
+    "v": "477"
+   },
+   {
+    "s": "processing",
+    "n": "20",
+    "v": "796"
+   }
+  ],
+  "dienos": [
+   {
+    "diena": "2026-09-09",
+    "n": "4",
+    "v": "103",
+    "m": "15",
+    "k": "20",
+    "nauji": "4",
+    "vid": "26"
+   },
+   {
+    "diena": "2026-09-10",
+    "n": "9",
+    "v": "238",
+    "m": "64",
+    "k": "72",
+    "nauji": "9",
+    "vid": "26"
+   },
+   {
+    "diena": "2026-09-11",
+    "n": "7",
+    "v": "256",
+    "m": "62",
+    "k": "69",
+    "nauji": "7",
+    "vid": "37"
+   },
+   {
+    "diena": "2026-09-12",
+    "n": "7",
+    "v": "351",
+    "m": "84",
+    "k": "90",
+    "nauji": "6",
+    "vid": "50"
+   },
+   {
+    "diena": "2026-09-13",
+    "n": "8",
+    "v": "325",
+    "m": "65",
+    "k": "65",
+    "nauji": "8",
+    "vid": "41"
+   }
+  ],
+  "viso": [
+   {
+    "n": "35",
+    "v": "1273",
+    "prekes": "1006",
+    "pvm": "221",
+    "sav": "716",
+    "m": "291",
+    "k": "316",
+    "prist_paimta": "42",
+    "prist_sav": null,
+    "nuol": "0",
+    "taskai": "0",
+    "scf": "4",
+    "aov": "36.4",
+    "nauji": "34",
+    "seni": "1",
+    "eil": "1.8",
+    "d_nuo_ankst": "1",
+    "kuponai": "0",
+    "misrus": "3"
+   }
+  ],
+  "kanalai": [
+   {
+    "k": "mokamas",
+    "n": "15",
+    "v": "461",
+    "nauji": "15"
+   },
+   {
+    "k": "direct",
+    "n": "9",
+    "v": "488",
+    "nauji": "9"
+   },
+   {
+    "k": "organika",
+    "n": "7",
+    "v": "190",
+    "nauji": "7"
+   },
+   {
+    "k": "",
+    "n": "1",
+    "v": "1",
+    "nauji": "1"
+   },
+   {
+    "k": "soc_organika",
+    "n": "1",
+    "v": "46",
+    "nauji": "1"
+   },
+   {
+    "k": "email",
+    "n": "1",
+    "v": "45",
+    "nauji": "0"
+   },
+   {
+    "k": "referral",
+    "n": "1",
+    "v": "41",
+    "nauji": "1"
+   }
+  ],
+  "saltiniai": [
+   {
+    "s": "",
+    "m": "",
+    "n": "32",
+    "v": "1164"
+   },
+   {
+    "s": "newsletter",
+    "m": "email",
+    "n": "1",
+    "v": "45"
+   },
+   {
+    "s": "kaina24",
+    "m": "",
+    "n": "1",
+    "v": "20"
+   },
+   {
+    "s": "kainos",
+    "m": "referral",
+    "n": "1",
+    "v": "44"
+   }
+  ],
+  "mokejimas": [
+   {
+    "b": "paysera",
+    "n": "34",
+    "v": "1189"
+   },
+   {
+    "b": "bacs",
+    "n": "1",
+    "v": "84"
+   }
+  ],
+  "vezejai": [
+   {
+    "b": "venipak",
+    "n": "32"
+   },
+   {
+    "b": "lp_express",
+    "n": "2"
+   },
+   {
+    "b": "",
+    "n": "1"
+   }
+  ],
+  "irenginys": [
+   {
+    "b": "",
+    "n": "1"
+   },
+   {
+    "b": "desktop",
+    "n": "6"
+   },
+   {
+    "b": "mobile",
+    "n": "28"
+   }
+  ],
+  "sandeliai": [
+   {
+    "b": "vf",
+    "n": "17"
+   },
+   {
+    "b": "legacy",
+    "n": "14"
+   },
+   {
+    "b": "vf,belcor_tofu,legacy",
+    "n": "1"
+   },
+   {
+    "b": "quattro",
+    "n": "1"
+   },
+   {
+    "b": "belcor_tofu,legacy",
+    "n": "1"
+   },
+   {
+    "b": "vf,zb,legacy",
+    "n": "1"
+   }
+  ],
+  "miestai": [
+   {
+    "b": "",
+    "n": "6"
+   },
+   {
+    "b": "Vilnius",
+    "n": "6"
+   },
+   {
+    "b": "Skuodas",
+    "n": "2"
+   },
+   {
+    "b": "Kaunas",
+    "n": "2"
+   },
+   {
+    "b": "Mažeikiai",
+    "n": "2"
+   },
+   {
+    "b": "Kloviniai",
+    "n": "1"
+   },
+   {
+    "b": "Naujoji Akmenė",
+    "n": "1"
+   },
+   {
+    "b": "Alytus",
+    "n": "1"
+   }
+  ],
+  "nauji_grizo": [
+   {
+    "nauj": "0",
+    "n": "1",
+    "aov": "45",
+    "marza": "6"
+   },
+   {
+    "nauj": "1",
+    "n": "34",
+    "aov": "36",
+    "marza": "8"
+   }
+  ],
+  "pakartotiniai": [
+   {
+    "klientu": "34",
+    "pirko2": "1"
+   }
+  ],
+  "krepselio_dydis": [
+   {
+    "d": "<20",
+    "n": "14",
+    "m": "41"
+   },
+   {
+    "d": "20-40",
+    "n": "7",
+    "m": "35"
+   },
+   {
+    "d": "40-70",
+    "n": "11",
+    "m": "116"
+   },
+   {
+    "d": "70+",
+    "n": "3",
+    "m": "98"
+   }
+  ],
+  "nepavyke": [],
+  "top_prekes": [
+   {
+    "sku": "HYPS06",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "kk": "2",
+    "v": "94",
+    "m": "19"
+   },
+   {
+    "sku": "JOS1023",
+    "pav": "Josera A/S Lamb + Rice sausas pašaras šunims ",
+    "kk": "2",
+    "v": "75",
+    "m": "13"
+   },
+   {
+    "sku": "HYPS02",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "kk": "4",
+    "v": "73",
+    "m": "15"
+   },
+   {
+    "sku": "JOS0914",
+    "pav": "Josera Sensiplus 12,5 kg - sausas maistas šun",
+    "kk": "2",
+    "v": "66",
+    "m": "11"
+   },
+   {
+    "sku": "650501",
+    "pav": "Ontario Adult Large Lamb and Brown Rice, 12 k",
+    "kk": "1",
+    "v": "53",
+    "m": "21"
+   },
+   {
+    "sku": "48370",
+    "pav": "Ontario Monoproteino konservai šunims su ėrie",
+    "kk": "20",
+    "v": "49",
+    "m": "21"
+   },
+   {
+    "sku": "JOS1004",
+    "pav": "Josera Indoor 10 kg - sausas maistas naminėms",
+    "kk": "1",
+    "v": "42",
+    "m": "7"
+   },
+   {
+    "sku": "JOS0931",
+    "pav": "Josera Mini Lamb begrūdis (Mini Deluxe) 10 kg",
+    "kk": "1",
+    "v": "38",
+    "m": "6"
+   },
+   {
+    "sku": "JOS0913",
+    "pav": "JOSERA FESTIVAL pašaras šunims su lašiša, 12,",
+    "kk": "1",
+    "v": "37",
+    "m": "6"
+   },
+   {
+    "sku": "704001",
+    "pav": "Jaučio peniai pjaustyti, 12,5 cm, 10 vnt.",
+    "kk": "2",
+    "v": "28",
+    "m": "7"
+   },
+   {
+    "sku": "JOS0622",
+    "pav": "Josidog Regular 15 kg - sausas maistas šunims",
+    "kk": "1",
+    "v": "27",
+    "m": "5"
+   },
+   {
+    "sku": "",
+    "pav": "8 VNT. - Kraikas katėms TOFU BeloCat, žaliosi",
+    "kk": "1",
+    "v": "26",
+    "m": null
+   },
+   {
+    "sku": "M14236",
+    "pav": "Monge Monoproteico Solo Agnello – Monoprotein",
+    "kk": "10",
+    "v": "25",
+    "m": "6"
+   },
+   {
+    "sku": "NGALA40",
+    "pav": "Exclusion Mono Protein Mediterraneo konservuo",
+    "kk": "10",
+    "v": "23",
+    "m": "6"
+   },
+   {
+    "sku": "JOS0723",
+    "pav": "JosiCat Crunchy Chicken sausas maistas suaugu",
+    "kk": "1",
+    "v": "22",
+    "m": "4"
+   }
+  ],
+  "gyvunas": [
+   {
+    "g": "",
+    "uzs": "35",
+    "v": "1006",
+    "m": "264"
+   }
+  ],
+  "kategorijos": [
+   {
+    "k": "[\"sunims\",\"maistas-sunims\",\"sausas-maistas-sunims\"]",
+    "eil": "15",
+    "v": "489",
+    "m": "101"
+   },
+   {
+    "k": "[\"sunims\",\"maistas-sunims\",\"konservai-sunims\"]",
+    "eil": "7",
+    "v": "149",
+    "m": "50"
+   },
+   {
+    "k": "[\"sunims\",\"skanestai-sunims\"]",
+    "eil": "7",
+    "v": "68",
+    "m": "23"
+   },
+   {
+    "k": "[\"zuvims\",\"akvariumo-zuvyciu-maistas\"]",
+    "eil": "8",
+    "v": "67",
+    "m": "28"
+   },
+   {
+    "k": "[\"katems\",\"maistas-katems\",\"sausas-maistas-katems\"]",
+    "eil": "2",
+    "v": "65",
+    "m": "11"
+   },
+   {
+    "k": "[\"katems\",\"maistas-katems\",\"konservai-katems\"]",
+    "eil": "10",
+    "v": "64",
+    "m": "21"
+   },
+   {
+    "k": "[\"katems\",\"kraikai-kaciu-tualetams\"]",
+    "eil": "2",
+    "v": "30",
+    "m": "1"
+   },
+   {
+    "k": "[\"katems\",\"tualetai-kraikai-semtuveliai\"]",
+    "eil": "2",
+    "v": "20",
+    "m": "10"
+   },
+   {
+    "k": "[\"sunims\",\"zaislai-sunims\"]",
+    "eil": "3",
+    "v": "18",
+    "m": "6"
+   },
+   {
+    "k": "[\"sunims\",\"vitaminai-ir-papildai-sunims\"]",
+    "eil": "1",
+    "v": "14",
+    "m": "4"
+   },
+   {
+    "k": "[\"sunims\",\"sampunai-sunims\"]",
+    "eil": "2",
+    "v": "11",
+    "m": "4"
+   },
+   {
+    "k": "[\"pauksciams\",\"skanestai-pauksciams\"]",
+    "eil": "1",
+    "v": "6",
+    "m": "2"
+   }
+  ],
+  "brendai": [
+   {
+    "b": "josera",
+    "v": "331",
+    "m": "56"
+   },
+   {
+    "b": "exclusion",
+    "v": "206",
+    "m": "44"
+   },
+   {
+    "b": "ontario",
+    "v": "102",
+    "m": "42"
+   },
+   {
+    "b": "hikari",
+    "v": "67",
+    "m": "28"
+   },
+   {
+    "b": "miamor",
+    "v": "54",
+    "m": "19"
+   },
+   {
+    "b": "romar",
+    "v": "37",
+    "m": "11"
+   },
+   {
+    "b": "animonda",
+    "v": "35",
+    "m": "13"
+   },
+   {
+    "b": "belocat",
+    "v": "30",
+    "m": "1"
+   },
+   {
+    "b": "monge",
+    "v": "25",
+    "m": "6"
+   },
+   {
+    "b": "duvo",
+    "v": "20",
+    "m": "7"
+   }
+  ],
+  "rinkiniai": [],
+  "err_rinkiniai": "Unknown column 'e.rinkinio_tipa' in 'field list'",
+  "dovanos": [
+   {
+    "n": "0",
+    "sav": null
+   }
+  ],
+  "akcijos": [
+   {
+    "akc_eil": null,
+    "nuol": "0.0000",
+    "su_nuol": "1",
+    "viso": "63"
+   }
+  ],
+  "tiekejai": [
+   {
+    "t": "legacy",
+    "s": "legacy",
+    "eil": "37"
+   },
+   {
+    "t": "vf",
+    "s": "vf",
+    "eil": "22"
+   },
+   {
+    "t": "belcor_tofu",
+    "s": "belcor_tofu",
+    "eil": "2"
+   },
+   {
+    "t": "zb",
+    "s": "zb",
+    "eil": "1"
+   },
+   {
+    "t": "quattro",
+    "s": "quattro",
+    "eil": "1"
+   }
+  ],
+  "web_dienos": [
+   {
+    "diena": "2026-09-09",
+    "ses": "156",
+    "lank": "178",
+    "pv": "682",
+    "vi": "141",
+    "atc": "37",
+    "bc": "35",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-10",
+    "ses": "188",
+    "lank": "205",
+    "pv": "664",
+    "vi": "202",
+    "atc": "80",
+    "bc": "20",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-11",
+    "ses": "156",
+    "lank": "169",
+    "pv": "574",
+    "vi": "166",
+    "atc": "39",
+    "bc": "30",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-12",
+    "ses": "47",
+    "lank": "51",
+    "pv": "106",
+    "vi": "34",
+    "atc": "5",
+    "bc": "2",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-13",
+    "ses": "58",
+    "lank": "64",
+    "pv": "248",
+    "vi": "76",
+    "atc": "15",
+    "bc": "9",
+    "pur": "0"
+   }
+  ],
+  "web_tipai": [
+   {
+    "tipas": "pageview",
+    "n": "2274"
+   },
+   {
+    "tipas": "view_item",
+    "n": "619"
+   },
+   {
+    "tipas": "add_to_cart",
+    "n": "176"
+   },
+   {
+    "tipas": "begin_checkout",
+    "n": "96"
+   },
+   {
+    "tipas": "search",
+    "n": "75"
+   },
+   {
+    "tipas": "view_cart",
+    "n": "51"
+   },
+   {
+    "tipas": "error404",
+    "n": "51"
+   }
+  ],
+  "web_kanalai": [
+   {
+    "kanalas": "mokamas",
+    "ses": "326"
+   },
+   {
+    "kanalas": "organika",
+    "ses": "224"
+   },
+   {
+    "kanalas": "referral",
+    "ses": "38"
+   },
+   {
+    "kanalas": "soc_organika",
+    "ses": "4"
+   },
+   {
+    "kanalas": null,
+    "ses": "4"
+   }
+  ],
+  "web_irenginys": [
+   {
+    "irenginys": "desktop",
+    "ses": "142"
+   },
+   {
+    "irenginys": "mobile",
+    "ses": "444"
+   },
+   {
+    "irenginys": "tablet",
+    "ses": "0"
+   }
+  ],
+  "web_landing": [
+   {
+    "url_kelias": "/",
+    "n": "96"
+   },
+   {
+    "url_kelias": "/kategorija/katems/maistas-katems/",
+    "n": "13"
+   },
+   {
+    "url_kelias": "/gamintojas/exclusion/",
+    "n": "11"
+   },
+   {
+    "url_kelias": "/kategorija/sunims/maistas-sunims/",
+    "n": "11"
+   },
+   {
+    "url_kelias": "/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-2-kg/",
+    "n": "8"
+   },
+   {
+    "url_kelias": "/paskyra/pamirstas-slaptazodis/?show-reset-form=true&action",
+    "n": "8"
+   },
+   {
+    "url_kelias": "/product/sepija-mineralas-skanestas-pauksciams-15-cm-1-vnt/",
+    "n": "7"
+   },
+   {
+    "url_kelias": "/suo-nuolat-kasosi-7-priezastys-ir-3-minuciu-planas-ka-daryti-siandien/",
+    "n": "7"
+   },
+   {
+    "url_kelias": "/product/royal-canin-yorkshire-terrier-adult-15-kg-sausas-maistas-suaugusiems-jorksyro-terjerams/?gad_source=1&gad_campaignid=21565466377&gclid=Cj0KCQjwzY7VBhDwARIsAFtPvBTybxI32ClOSpyTlTxEtGkVJnPFPUt-NXUpll1jQeg8BRPJO-_AlzkaAvy4EALw_wcB",
+    "n": "7"
+   },
+   {
+    "url_kelias": "/product/avies-kailio-zaislas-suniui-su-rankena-dingo-agility-130-cm/",
+    "n": "6"
+   }
+  ],
+  "web_sutikimas": [
+   {
+    "sutikimas": "0",
+    "ses": "573"
+   },
+   {
+    "sutikimas": "1",
+    "ses": "127"
+   }
+  ],
+  "carts_cols": [
+   "id",
+   "cart_id",
+   "session_key",
+   "user_id",
+   "email",
+   "email_source",
+   "last_cart_activity_at",
+   "cart_hash",
+   "snapshot_json",
+   "snapshot_version",
+   "status",
+   "status_changed_at",
+   "converted_order_id",
+   "created_at",
+   "updated_at"
+  ],
+  "email_cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "carts": [
+   {
+    "status": "abandoned",
+    "n": "96"
+   },
+   {
+    "status": "active",
+    "n": "2"
+   },
+   {
+    "status": "converted",
+    "n": "38"
+   },
+   {
+    "status": "expired",
+    "n": "16"
+   }
+  ],
+  "emails": [],
+  "err_emails": "Unknown column 'type' in 'field list'",
+  "grazinimai": [
+   {
+    "n": "0"
+   }
+  ]
+ }
+}
