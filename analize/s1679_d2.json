@@ -1,0 +1,67 @@
+{
+ "v": "dep-161417",
+ "kurimas": 200,
+ "sid": 5701,
+ "data": {
+  "an_rink_v12.txt": {
+   "id": 35927,
+   "status": 201
+  },
+  "an_langas_v102.txt": {
+   "id": 35928,
+   "status": 201
+  }
+ },
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1679 d",
+  "faze": "D",
+  "temp_istrinta": 1,
+  "bak_esami": [
+   "petshop-analitika.php.bak_20260826_124015",
+   "petshop-analitika.php.bak_20260826_124432",
+   "petshop-analitika.php.bak_20260826_124814"
+  ],
+  "gyvas_md5": "b181d2b49f2750d0a57f77f1c9d3e275",
+  "rink_md5": "fab5e5a8ac9c3ced15fe3a6a80eeb69c",
+  "lang_md5": "f170d2c234ed607123899640e45d1435",
+  "langas_yra": false,
+  "irasyta": [
+   "fab5e5a8ac9c3ced15fe3a6a80eeb69c",
+   "f170d2c234ed607123899640e45d1435"
+  ],
+  "ping": 200
+ },
+ "T": {
+  "v": "S1679 d",
+  "faze": "T",
+  "temp_istrinta": 0,
+  "md5": [
+   "fab5e5a8ac9c3ced15fe3a6a80eeb69c",
+   "f170d2c234ed607123899640e45d1435"
+  ],
+  "klases": {
+   "rink": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-analitika.php v1.2",
+   "lang": "petshop-analitika-langas.php"
+  },
+  "rest": [
+   200,
+   "{\"ok\":0,\"kodas\":\"tuscia\",\"ct\":\"text\\/plain\",\"baitu\":91}"
+  ],
+  "ivykiai_siandien": [
+   0,
+   0
+  ],
+  "pask": {
+   "id": "4379",
+   "laikas": "2026-09-12 08:17:01",
+   "tipas": "view_item",
+   "url_kelias": "/product/vetoquinol-bezo-pet-savelas-salinanti-pasta-katems-ir-sunims-120g/"
+  },
+  "menu": true,
+  "log_fatal": 1
+ }
+}
