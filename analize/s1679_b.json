@@ -1,185 +1,619 @@
 {
- "v": "dep-083830",
+ "v": "dep-160314",
  "kurimas": 200,
- "sid": 5283,
+ "sid": 5698,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "R": {
-  "v": "S1679b",
-  "wp": "2026-09-09 11:39:40",
-  "av_prekiu": 870,
-  "sutampa": 652,
-  "stock_daugiau_sk": 204,
-  "stock_daugiau_vnt": 6651,
-  "be_partiju_visai": 180,
-  "partijose_daugiau_sk": 14,
-  "top15": [
+ "GO": {
+  "v": "S1679 b",
+  "reklama": [
    {
-    "id": "17397",
-    "pav": "Monge Monoproteico Solo Anatra – Monopro",
-    "stock": 1355,
-    "partijose": 0,
-    "skirtumas": 1355
+    "diena": "2026-09-07",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
    },
    {
-    "id": "18599",
-    "pav": "Exclusion Hypoallergenic konservai šunims",
-    "stock": 1106,
-    "partijose": 19,
-    "skirtumas": 1087
+    "diena": "2026-09-07",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
    },
    {
-    "id": "17400",
-    "pav": "Monge Monoproteico Solo Agnello – Monopr",
-    "stock": 874,
-    "partijose": 22,
-    "skirtumas": 852
+    "diena": "2026-09-07",
+    "kampanija": "P-max | LT | petshop.lt",
+    "isl": "22.9900",
+    "klik": "78",
+    "konv": "3.67",
+    "kv": "117.6000"
    },
    {
-    "id": "17406",
-    "pav": "Monge Fresh Pate and chunkies Veal &#8211;",
-    "stock": 420,
-    "partijose": 9,
-    "skirtumas": 411
+    "diena": "2026-09-07",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "isl": "20.2100",
+    "klik": "75",
+    "konv": "2.42",
+    "kv": "118.4500"
    },
    {
-    "id": "17394",
-    "pav": "Monge Monoproteico Solo Tacchino – Monop",
-    "stock": 414,
-    "partijose": 25,
-    "skirtumas": 389
+    "diena": "2026-09-07",
+    "kampanija": "petshop",
+    "isl": "3.0300",
+    "klik": "19",
+    "konv": "1.00",
+    "kv": "19.1500"
    },
    {
-    "id": "17421",
-    "pav": "Monge BWild begrūdžiai konservai šunims",
-    "stock": 359,
-    "partijose": 13,
-    "skirtumas": 346
+    "diena": "2026-09-08",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
    },
    {
-    "id": "17415",
-    "pav": "Monge BWild begrūdžiai konservai šunims",
-    "stock": 273,
-    "partijose": 17,
-    "skirtumas": 256
+    "diena": "2026-09-08",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
    },
    {
-    "id": "17418",
-    "pav": "Monge BWild begrūdžiai konservai šunims",
-    "stock": 216,
-    "partijose": 20,
-    "skirtumas": 196
+    "diena": "2026-09-08",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "isl": "21.0000",
+    "klik": "66",
+    "konv": "0.00",
+    "kv": "0.0000"
    },
    {
-    "id": "17403",
-    "pav": "Monge Fresh Puppy Pate and chunkies Veal w",
-    "stock": 190,
-    "partijose": 9,
-    "skirtumas": 181
+    "diena": "2026-09-08",
+    "kampanija": "P-max| All LT | Šunų maistas",
+    "isl": "23.2000",
+    "klik": "60",
+    "konv": "1.00",
+    "kv": "78.9600"
    },
    {
-    "id": "17412",
-    "pav": "Monge BWild begrūdžiai konservai šuniuk",
-    "stock": 157,
-    "partijose": 7,
-    "skirtumas": 150
+    "diena": "2026-09-08",
+    "kampanija": "petshop",
+    "isl": "2.9400",
+    "klik": "18",
+    "konv": "1.00",
+    "kv": "74.6800"
    },
    {
-    "id": "18605",
-    "pav": "Exclusion Hypoallergenic konservai šunims",
-    "stock": 105,
-    "partijose": 17,
-    "skirtumas": 88
+    "diena": "2026-09-09",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
    },
    {
-    "id": "16956",
-    "pav": "Papildas gyvūnams Bioveterinary Multimine",
-    "stock": 73,
-    "partijose": 2,
-    "skirtumas": 71
+    "diena": "2026-09-09",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
    },
    {
-    "id": "18608",
-    "pav": "Exclusion Hypoallergenic konservai šunims",
-    "stock": 76,
-    "partijose": 12,
-    "skirtumas": 64
+    "diena": "2026-09-09",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "isl": "20.6000",
+    "klik": "51",
+    "konv": "0.00",
+    "kv": "0.0000"
    },
    {
-    "id": "18596",
-    "pav": "Exclusion Hypoallergenic konservai šunims",
-    "stock": 77,
-    "partijose": 17,
-    "skirtumas": 60
+    "diena": "2026-09-09",
+    "kampanija": "P-max| All LT | Šunų maistas",
+    "isl": "20.3400",
+    "klik": "45",
+    "konv": "0.00",
+    "kv": "0.0000"
    },
    {
-    "id": "18611",
-    "pav": "Exclusion Hypoallergenic konservai šunims",
-    "stock": 59,
-    "partijose": 12,
-    "skirtumas": 47
+    "diena": "2026-09-09",
+    "kampanija": "petshop",
+    "isl": "2.5300",
+    "klik": "15",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "P-max | LT | petshop.lt",
+    "isl": "17.4700",
+    "klik": "55",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "isl": "21.6100",
+    "klik": "76",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "petshop",
+    "isl": "2.8200",
+    "klik": "16",
+    "konv": "0.92",
+    "kv": "20.2300"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "",
+    "isl": "0.1600",
+    "klik": "2",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "P-max | LT | petshop.lt",
+    "isl": "16.7900",
+    "klik": "48",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "isl": "19.0900",
+    "klik": "64",
+    "konv": "1.00",
+    "kv": "19.1500"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "petshop",
+    "isl": "1.7800",
+    "klik": "9",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "",
+    "isl": "0.4800",
+    "klik": "6",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "P-max | LT | petshop.lt",
+    "isl": "13.9100",
+    "klik": "45",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "isl": "21.0900",
+    "klik": "64",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "petshop",
+    "isl": "2.4000",
+    "klik": "12",
+    "konv": "0.00",
+    "kv": "0.0000"
    }
   ],
-  "perteklius_top5": [
+  "err1": "",
+  "cols": [
+   "uzsakymas_id",
+   "sukurta_at",
+   "apmoketa_at",
+   "statusas_galutinis",
+   "statusas_at",
+   "klientas_id",
+   "klientas_email_hash",
+   "klientas_naujas",
+   "klientas_uzsakymo_nr",
+   "dienos_nuo_ankstesnio",
+   "prekiu_suma_ct",
+   "nuolaidu_ct",
+   "kuponu_kodai",
+   "tasku_panaudota_ct",
+   "tasku_sukaupta_ct",
+   "pristatymas_paimta_ct",
+   "pristatymas_savikaina_ct",
+   "small_cart_fee_ct",
+   "pvm_ct",
+   "viso_ct",
+   "mokejimo_budas",
+   "mokejimo_mokestis_ct",
+   "pakuotes_savikaina_ct",
+   "savikaina_ct",
+   "dovanu_savikaina_ct",
+   "marza_ct",
+   "kontribucija_ct",
+   "sandeliu_kiekis",
+   "misrus",
+   "sandeliai",
+   "vezejai",
+   "kanalas_pirmas",
+   "kanalas_paskutinis",
+   "utm_source",
+   "utm_medium",
+   "utm_campaign",
+   "gclid",
+   "fbclid",
+   "referer_domenas",
+   "landing_url",
+   "irenginys",
+   "sutikimas_statistika",
+   "salis",
+   "miestas",
+   "pasto_kodas",
+   "anketa_id",
+   "rec_log_id",
+   "is_refill",
+   "prenumerata_id",
+   "eiluciu_sk",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija",
+   "irasyta_at",
+   "diena"
+  ],
+  "siandien": [],
+  "err2": "Unknown column 'order_id' in 'field list'"
+ },
+ "CL": {
+  "v": "S1679 b",
+  "reklama": [
    {
-    "id": "17409",
-    "pav": "Monge Fresh Pate and chunkies Chicken &#82",
-    "stock": 0,
-    "partijose": 13
+    "diena": "2026-09-07",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
    },
    {
-    "id": "19613",
-    "pav": "Animonda Carny Kitten – konservai kačiu",
-    "stock": 24,
-    "partijose": 27
+    "diena": "2026-09-07",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
    },
    {
-    "id": "19685",
-    "pav": "Animonda Carny Adult Beef + Lamb – konse",
-    "stock": 32,
-    "partijose": 35
+    "diena": "2026-09-07",
+    "kampanija": "P-max | LT | petshop.lt",
+    "isl": "22.9900",
+    "klik": "78",
+    "konv": "3.67",
+    "kv": "117.6000"
    },
    {
-    "id": "19708",
-    "pav": "Animonda Carny Adult Beef + Chicken + Duck",
-    "stock": 17,
-    "partijose": 20
+    "diena": "2026-09-07",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "isl": "20.2100",
+    "klik": "75",
+    "konv": "2.42",
+    "kv": "118.4500"
    },
    {
-    "id": "19479",
-    "pav": "Animonda GranCarno Adult: konservai šunim",
-    "stock": 141,
-    "partijose": 143
+    "diena": "2026-09-07",
+    "kampanija": "petshop",
+    "isl": "3.0300",
+    "klik": "19",
+    "konv": "1.00",
+    "kv": "19.1500"
+   },
+   {
+    "diena": "2026-09-08",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-08",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-08",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "isl": "21.0000",
+    "klik": "66",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-08",
+    "kampanija": "P-max| All LT | Šunų maistas",
+    "isl": "23.2000",
+    "klik": "60",
+    "konv": "1.00",
+    "kv": "78.9600"
+   },
+   {
+    "diena": "2026-09-08",
+    "kampanija": "petshop",
+    "isl": "2.9400",
+    "klik": "18",
+    "konv": "1.00",
+    "kv": "74.6800"
+   },
+   {
+    "diena": "2026-09-09",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-09",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-09",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "isl": "20.6000",
+    "klik": "51",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-09",
+    "kampanija": "P-max| All LT | Šunų maistas",
+    "isl": "20.3400",
+    "klik": "45",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-09",
+    "kampanija": "petshop",
+    "isl": "2.5300",
+    "klik": "15",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "P-max | LT | petshop.lt",
+    "isl": "17.4700",
+    "klik": "55",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "isl": "21.6100",
+    "klik": "76",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "petshop",
+    "isl": "2.8200",
+    "klik": "16",
+    "konv": "0.92",
+    "kv": "20.2300"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "",
+    "isl": "0.1600",
+    "klik": "2",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "P-max | LT | petshop.lt",
+    "isl": "16.7900",
+    "klik": "48",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "isl": "19.0900",
+    "klik": "64",
+    "konv": "1.00",
+    "kv": "19.1500"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "petshop",
+    "isl": "1.7800",
+    "klik": "9",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "",
+    "isl": "0.4800",
+    "klik": "6",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "",
+    "isl": "0.0000",
+    "klik": "0",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "P-max | LT | petshop.lt",
+    "isl": "13.9100",
+    "klik": "45",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "isl": "21.0900",
+    "klik": "64",
+    "konv": "0.00",
+    "kv": "0.0000"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "petshop",
+    "isl": "2.4000",
+    "klik": "12",
+    "konv": "0.00",
+    "kv": "0.0000"
    }
   ],
-  "partiju_pastabos": [
-   {
-    "p": "Pradinis likutis T-0",
-    "k": "546"
-   },
-   {
-    "p": "Fizinis likutis (Raimio Excel, S1636)",
-    "k": "73"
-   },
-   {
-    "p": "Faktura vat 5510/T/2026 (S1638)",
-    "k": "39"
-   },
-   {
-    "p": "Fizinis likutis (Tofu i AV, S1637)",
-    "k": "13"
-   },
-   {
-    "p": "Faktura VAT 3656/W/2026 (S1638)",
-    "k": "6"
-   },
-   {
-    "p": "Likučio įvedimas kortelėje",
-    "k": "3"
-   }
+  "err1": "",
+  "cols": [
+   "uzsakymas_id",
+   "sukurta_at",
+   "apmoketa_at",
+   "statusas_galutinis",
+   "statusas_at",
+   "klientas_id",
+   "klientas_email_hash",
+   "klientas_naujas",
+   "klientas_uzsakymo_nr",
+   "dienos_nuo_ankstesnio",
+   "prekiu_suma_ct",
+   "nuolaidu_ct",
+   "kuponu_kodai",
+   "tasku_panaudota_ct",
+   "tasku_sukaupta_ct",
+   "pristatymas_paimta_ct",
+   "pristatymas_savikaina_ct",
+   "small_cart_fee_ct",
+   "pvm_ct",
+   "viso_ct",
+   "mokejimo_budas",
+   "mokejimo_mokestis_ct",
+   "pakuotes_savikaina_ct",
+   "savikaina_ct",
+   "dovanu_savikaina_ct",
+   "marza_ct",
+   "kontribucija_ct",
+   "sandeliu_kiekis",
+   "misrus",
+   "sandeliai",
+   "vezejai",
+   "kanalas_pirmas",
+   "kanalas_paskutinis",
+   "utm_source",
+   "utm_medium",
+   "utm_campaign",
+   "gclid",
+   "fbclid",
+   "referer_domenas",
+   "landing_url",
+   "irenginys",
+   "sutikimas_statistika",
+   "salis",
+   "miestas",
+   "pasto_kodas",
+   "anketa_id",
+   "rec_log_id",
+   "is_refill",
+   "prenumerata_id",
+   "eiluciu_sk",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija",
+   "irasyta_at",
+   "diena"
   ],
-  "nulinio_likucio_prekiu": 711
+  "siandien": [],
+  "err2": "Unknown column 'order_id' in 'field list'"
  }
 }
