@@ -1,7 +1,9 @@
-# STARTAS — Marketingo/verslo planas (atnaujinta 2026-09-14 vakare, po S1682)
+# STARTAS — Marketingo/verslo planas (atnaujinta 2026-09-14 naktį, po S1683)
 
-**Pradėti nuo:** `dokumentai/marketingas/MARKETINGAS_planas_v0_s1682.md` — diagnozė, sutarta, trys blokai (variklis / išlaikymas / sklaida), atmesta, kitas žingsnis. Pagrindas s1678 ir tyrimai — tik istorijai/faktams.
+**Pradėti nuo:** `dokumentai/marketingas/MARKETINGAS_planas_v1_s1683.md` — strategijos karkasas UŽRAKINTAS (N × V12 × 1,25; bazė 250 × €115–120 → €36–38 k; stretch 300 × €133 → €50 k; R60 leading KPI pagal produkto ciklą; šunys spearhead, katės atskirai). §18 — kas neuždaryta.
 
-**Kitas žingsnis (5 skyrius plane):** sklaidos svertų eiliškumas + skaičiai (nauji maisto klientai/mėn. iš kiekvieno sverto → €50 k aritmetika ketvirčiais, pirmi 90 d.) + matavimo lentelė. Video (3.3 d) — tik vienas punktas; personažų negeneruoti, kol nepatvirtintas principas.
+**Analizės (duomenys iš `ps_ist_*`):** `ANALIZE_kohortos_s1683.md`, `ANALIZE_V12_mechanika_s1683.md`, `ANALIZE_R60_verte_s1683.md` (recon `irankiai/s1683_a/b/c.php`, `analize/s1683_a/b/c.json`).
 
-**Formatas:** diskusija; Raimis tiesiai nesako — Claude galvoja pats; pirma „ką", tik paskui „kaip"; duomenys iš serverio (`analize/s1682_gsc_yoy.json`, `irankiai/mjs_template_gsc_yoy_s1682.mjs`), ne klausimai Raimiui.
+**Kitas žingsnis:** 2026 Q4 OPERACINIS planas — konkretūs darbai, savininkas, KPI, stop/go ribos. Pirmiausia: (1) N kanalų biudžetas (+130/mėn. iš kur, prie kokio CAC), (2) retention engine v1 spec „tas pats maišas vienu paspaudimu" (20–50 d. langas, brendo ciklai, 90/10 holdout), (3) dashboard N/R30/R60/V12 ant ps_fakt.
+
+**Formatas:** diskusija; Raimis tiesiai nesako — Claude galvoja pats; pirma „ką", tik paskui „kaip"; duomenys iš serverio, ne klausimai Raimiui; planas ne „iš fantastikos", tvarkingai.
