@@ -1,0 +1,51 @@
+{
+ "v": "dep-154235",
+ "kurimas": 200,
+ "sid": 5756,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 ai",
+  "u": "Raimis #1",
+  "uzs": [
+   {
+    "nr": "1009",
+    "pries": "processing",
+    "issiusta": [
+     "dl_issiusta",
+     "klientui išėjo „Užsakymas išsiųstas“"
+    ],
+    "po": "completed",
+    "dalys": "{\"av\":{\"laikas\":\"2026-09-14 18:43:48\",\"kas\":\"Raimis\",\"kanalas\":\"lp\",\"laiskas\":\"2026-09-14 18:43:49\"}}",
+    "bc": "CC116591776LT",
+    "fs": [],
+    "pastabos": [
+     "18:43 Klientui išsiųsta „Užsakymas išsiųstas“ (1993justinas@gmail.com): CC116591776LT",
+     "18:43 Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+     "18:43 Pažymėta išsiųsta darbalaukyje (Raimis, lp). WC laiškas klientui: NESIŲSTAS.",
+     "18:43 S1681: LP sekimo numeris CC116591776LT įrašytas iš vidinės pastabos (Raimis įdėjo į paštomatą 09-14)."
+    ]
+   },
+   {
+    "nr": "1010",
+    "pries": "processing",
+    "issiusta": [
+     "dl_issiusta",
+     "klientui išėjo „Užsakymas išsiųstas“"
+    ],
+    "po": "completed",
+    "dalys": "{\"av\":{\"laikas\":\"2026-09-14 18:43:49\",\"kas\":\"Raimis\",\"kanalas\":\"lp\",\"laiskas\":\"2026-09-14 18:43:50\"}}",
+    "bc": "CC116525114LT",
+    "fs": [],
+    "pastabos": [
+     "18:43 Klientui išsiųsta „Užsakymas išsiųstas“ (azacharevic@yahoo.com): CC116525114LT",
+     "18:43 Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+     "18:43 Pažymėta išsiųsta darbalaukyje (Raimis, lp). WC laiškas klientui: NESIŲSTAS.",
+     "18:43 S1681: LP sekimo numeris CC116525114LT įrašytas iš vidinės pastabos (Raimis įdėjo į paštomatą 09-14)."
+    ]
+   }
+  ]
+ }
+}
