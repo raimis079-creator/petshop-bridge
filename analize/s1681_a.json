@@ -1,0 +1,527 @@
+{
+ "v": "dep-083844",
+ "kurimas": 200,
+ "sid": 5719,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 a",
+  "dabar": "2026-09-14 11:39:55",
+  "lemp": {
+   "petshop-analitika-langas.php": [
+    "'krep_santykis_ok' => 4.0,  // apleisti/užsakymai — iki 4 normalu, virš 6 raudona",
+    "elseif ( null === $sant || $sant > $S['krep_santykis_bad'] ) { $v = array( 'raudona', 'Apleidžiama ' . ( null === $sant ? '∞' : number_format( $sant, 1, ',', '' ) ) . '× daugiau nei perkama — virš normos.', 'Tikri",
+    "elseif ( $pelnas < 0 ) { $v = array( 'raudona', 'Reklama NUOSTOLINGA: marža iš Ads užsakymų ' . self::eur( $marza ) . ' < išlaidos ' . self::eur( $isl ) . ' (' . self::eur( $pelnas ) . ').', 'Mažinti biudžetą arb",
+    "$sp = array( 'zalia' => '#1f7a3a', 'geltona' => '#b8860b', 'raudona' => '#b32d2e', 'pilka' => '#777' ); $bg = array( 'zalia' => '#eaf5ee', 'geltona' => '#fdf5e6', 'raudona' => '#fbeeee', 'pilka' => '#f3f4f3' );"
+   ],
+   "petshop-analitika.php": [
+    "/** 🔴 NIEKADA nepriimami — nesvarbu, kas ir kaip juos atsiustu. */",
+    "* 🔴 v1.2: dataLayer `item_id` yra SKU, ne prekes ID.",
+    "/* 🔴 v1.1: `navigator.sendBeacon` siuncia `Content-Type: text/plain`",
+    "/* 🔴 TRECIAS atmetimo sluoksnis (JS + gavimas + cia). Skaitiklis auga,",
+    "/* 🔴 purchase NIEKADA neiseina is narsykles — pirmas is triju sluoksniu. */",
+    "* 🔴 `ps_web_dienos` AGREGATAS — AMZINAS. Sis metodas ji liecia TIK per"
+   ],
+   "petshop-ataskaita-atsargos.php": [
+    "echo '<p class=\"psru-pastaba\">Deficitas = laukiama − (AV + tiekėjo likutis). Raudona = tikėtina paklausa, kurios negalėsim patenkinti — kandidatai į „Ką užsakyti\".</p>';"
+   ],
+   "petshop-ataskaita-pardavimai.php": [
+    "/* 🔴 v2.1: grazinimai PRIVALO paklusti tai paciai atrankai."
+   ],
+   "petshop-ataskaita-prekes.php": [
+    "echo '<p class=\"psru-pastaba\">Žalias uplift su raudonu antkainio pokyčiu = akcija pardavė, bet neuždirbo. Kontribucija akcijai nerodoma — pristatymas gyvena užsakyme, ne prekėje.</p>';"
+   ],
+   "petshop-av-dropship.php": [
+    "* Petshop AV Dropship v1.20 (S1670, 2026-09-11) — 🔴 KELI TIEKĖJO ADRESAI PER KABLELĮ NEIŠEIDAVO.",
+    "* Petshop AV Dropship v1.19 (H262) — 🔴 MANIFESTAS NIEKADA NEBUVO PRIKABINAMAS + KELIŲ LIPDUKŲ PDF.",
+    "* v1.8 (H234) — 🔴 PERDAVIMO ŽYMĖ PAGAL SANDĖLĮ."
+   ],
+   "petshop-darbalaukis.php": [
+    "*   ir jau išsiųstos; todėl toks užsakymas IŠSKIRIAMAS: sąraše raudona kairė juosta + pill „⚠ lape ir jau išsiųstos prekės — nepakuok: …“,",
+    "'red' => self::redagavimas( $f ), 'siuntos_klaida' => $f['siuntos_klaida'] ? $f['siuntos_klaida']['t'] : '', // v3.16",
+    "$pastaba = 'Dažniausiai paštomatas nebegalioja arba adresas / pašto kodas neteisingas. „Taisyti adresą“ — pataisyk skydelyje ir išsaugok; klaida nusiims, tada registruok lipduką iš naujo.' . ( ( $sk['red'] &",
+    "$veiksmai = ( ( $sk['red'] && 'tik_el' !== $sk['red']['tipas'] ) ? '<button class=\"v p\" data-atidaryti=\"1\" data-redaguoti=\"1\">Taisyti adresą</button> ' : '<button class=\"v p\" data-atidaryti=\"1\">Atidaryti</button> ' ) . ",
+    ".dl{--fonas:#EEF1EF;--popierius:#fff;--rasalas:#1B2620;--pilka:#66716B;--linija:#D7DDD9;--zalia:#2E7D4F;--zalia-s:#E3F1E8;--melyna:#2B5F8A;--melyna-s:#E2ECF5;--gintaras:#B9731A;--gintaras-s:#FBEFD9;--raudona:#B23A3A;--ra",
+    ".dl .pilkas{color:var(--pilka)}.dl .maz{font-size:12px}.dl .raud{color:var(--raudona)}.dl .nr{font-weight:600}",
+    ".dl .kel.sandelis{background:var(--zalia-s);color:var(--zalia)}.dl .kel.tk{background:var(--melyna-s);color:var(--melyna)}.dl .kel.ts{background:var(--gintaras-s);color:var(--gintaras)}.dl .kel.klaus{background:var(--rau",
+    ".dl .sk.z{background:var(--zalia-s);color:var(--zalia)}.dl .sk.m{background:var(--melyna-s);color:var(--melyna)}.dl .sk.g{background:var(--gintaras-s);color:var(--gintaras)}.dl .sk.r{background:var(--raudona-s);color:var",
+    ".dl-note{margin-top:5px;font-size:12.5px;background:var(--gintaras-s);color:#7a4b00;padding:4px 8px;border-radius:5px}.dl-note-r{background:var(--raudona-s);color:var(--raudona);font-weight:600}tr.eil.dl-demesys td:first",
+    ".dl .v{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--linija);background:var(--popierius);border-radius:6px;padding:6px 12px;font-weight:500;white-space:nowrap;color:var(--rasalas);line-height:1.2}",
+    ".dl-riba{display:inline-block;margin-top:4px;color:var(--pilka)}.dl-riba-skuba{color:var(--raudona);font-weight:600}.dl-riba-praejo{opacity:.6}",
+    ".dl .takelis{margin-top:6px;font-size:12px;display:flex;flex-wrap:wrap;align-items:center;gap:4px}.dl .takelis span{padding:1px 7px;border-radius:9px;background:var(--fonas);color:var(--pilka)}.dl .takelis span.done{back"
+   ],
+   "petshop-desk.php": [
+    "* Petshop Desk v3.43 (H255) — 🔴 DROPSHIP NEBEDINGSTA PO VENIPAK + IŠĖJIMAS IŠ „PARUOŠTA SIŲSTI“.",
+    "* v3.35 (H239) — 🔴 SPRENDIMAS ATSKIRTAS NUO VYKDYMO.",
+    "* v3.29 (H227): 🔴 masinis „Venipak registruoti“ dabar SANDĖLIŲ atžvilgiu: grupuoja pagal šaltinį, kiekvienai grupei savas manifestas; mišrūs praleidžiami. Iki šiol mygtukas viską pylė į vieną manifest"
+   ],
+   "petshop-fakt-atsargos.php": [
+    "* 🔴 RADINYS #37 — DU LIKUCIAI, NE VIENAS (Raimio sprendimas 2026-08-26)",
+    "* 🔴 v1.1: `_ps_sandelis` reiksmese pasitaiko **„AV\" didziosiomis**"
+   ],
+   "petshop-fakt-grazinimai.php": [
+    "* 🔴 v1.2 (Raimio pastaba 2026-08-26): `savikaina_vnt_ct` yra",
+    "/* 🔴 v1.2 (Raimio pastaba 2026-08-26): anksciau buvo"
+   ],
+   "petshop-fakt-kainos.php": [
+    "* 🔴 VIENETAI (radinys #23, ir cia ta pati spasta): `woocommerce_prices_include_tax=yes`,",
+    "* 🔴 Nedalinam is 1,21 — WC pats pritaiko prekes mokesciu klase."
+   ],
+   "petshop-fakt-siuntos.php": [
+    "* 🔴 LP EXPRESS (E1b recon R3): `Petshop_Siuntos::prideti_is_plugino()` yra",
+    "* 🔴 SANDELIU KODU SUVIENODINIMAS (v1.2, rasta uzdarant Q-E1B-1)."
+   ],
+   "petshop-ga4-serveris.php": [
+    "echo '<p class=\"description\" style=\"margin-top:12px\">Riba: ±2 % žalia (TŽ v1.39 priėmimo kriterijus), iki 10 % geltona, daugiau — raudona (matavimas lūžo: Paysera redirect, consent, GTM). Dev aplinkoje eilutės t"
+   ],
+   "petshop-islaidos.php": [
+    "* 🔴 SVARBU: apskaiciuota suma NIEKADA neperrasoma i `ps_islaidos` automatiskai."
+   ],
+   "petshop-katalogas.php": [
+    "*   Savininko pastaba: „matau tik klaidas\". Kataloge kabojo raudona juosta",
+    "*   4. Kai rankinė savikaina nesuvesta — raudona pastaba, ne tylus tuščias",
+    "/* BŪKLĖS TAŠKAS — santrauka. Raudonas tik tada, kai prekė guli",
+    "ir WP rode raudona klaidos juosta per visa ekrano auksti."
+   ],
+   "petshop-rezultatai.php": [
+    "if ($reiksme >= $raud) return array('raudona', 'STOP — virš ' . $raud . '%');",
+    ".psrz .raudona{border-left:5px solid #d63638;background:#fcf0f1}",
+    "<p class=\"mut\">Slenksčiai (TŽ v1.47): bounce &lt;2% / stop &gt;5% · spam &lt;0,1% / stop &gt;0,3% · atsisakymai &lt;3% / stop &gt;5%. Pilka — per mažai išsiųsta, kad procentas ką nors reikštų. Bet kuris raudo"
+   ],
+   "petshop-rinkiniai.php": [
+    "* Petshop Rinkiniai v1.26 (H266) — 🔴 PARDAVIMO KAINA „NEIŠSISAUGO“ (darbuotojo pastaba)."
+   ],
+   "petshop-rytas.php": [
+    "* Description: Savininko ekranas (planas v2.0 §4.1) — 8 skaičiai, 5 lemputės, 3 veiksmai, HUB. + Verslo sargas (§5.1): naktinės patikros, laiškas TIK kai raudona.",
+    "* eventai, 404, beacon, Ads webhook. Laiškas siunčiamas TIK jei bent viena raudona;",
+    "* tas pats raudonųjų rinkinys — vieną kartą per parą. Žalia/geltona — tyla.",
+    "* Rytas viršuje rodo vieną eilutę „Sistema: ✓ / N raudonos\".",
+    "* šaltinio nėra, lemputė pilka su paaiškinimu. Nulis čia nėra teiginys.",
+    "'poas_gelt'      => 3,   /* POAS (pajamos / reklamos islaidos) zemiau -> geltona; kontribucija po reklamos < 0 -> raudona */",
+    "/* ==================== 2. LEMPUTĖS ==================== */",
+    "if ( $pok <= -$r ) { return 'raudona'; }",
+    "if ( $n >= $r ) { return 'raudona'; }",
+    "public static function lemputes() {",
+    "else { $sp = $r7['po'] < 0 ? 'raudona' : ( ( null !== $r7['poas'] && $r7['poas'] < (float) self::riba( 'poas_gelt' ) ) ? 'geltona' : 'zalia' ); $tx = 'išlaidos ' . self::eur( $r7['isl'] ) . ' · po reklamos ' . self::eu",
+    "/** Grąžina patikrų sąrašą: [ ['kodas','lygis'(zalia|geltona|raudona|pilka),'tekstas'] ]. */"
+   ],
+   "petshop-seo.php": [
+    "echo '<p style=\"color:#555;max-width:900px\">Šviesoforas pagal TŽ v1.55. Paspaudimai lyginami <b>7 d. suma prieš bazę (8 sav. vidurkis iki perjungimo)</b> — dieniniai lyginimai neprasmingi (srautas ~25 clicks/d.); Y",
+    "<td>bazė ' . self::n( $c['baze'] ) . '/sav. (<b>' . self::d( $c['delta'] ) . '</b>) · impr ' . self::n( $c['impr_baze'] ) . ' (' . self::d( $c['impr_delta'] ) . ')<br><small style=\"color:#777\">YoY: pernai ' . self::n( ",
+    "<td>blog_public = <b>' . $m['blog_public'] . '</b>' . ( 1 !== $m['blog_public'] ? ' <span style=\"color:#c9302c\">(noindex — dev norma, T-0 → 1, DoD-22)</span>' : '' ) . ' · GSC sitemap\\'ų ' . self::n( $m['gsc_n'] ) "
+   ],
+   "petshop-siuntu-laiskai.php": [
+    "/* 🔴 2026-08-26 (Raimio sprendimas). KOL PLANAS NEPATVIRTINTAS —"
+   ],
+   "petshop-siuntu-valymas.php": [
+    "* butent tokias eilutes ir kelia RAUDONA. Radus 2026-08-29 — 23 naslaites is"
+   ],
+   "petshop-uzsakymu-ivykiai.php": [
+    "'red'   => (string) $it->get_meta( '_ps_av_reduced_qty' ),"
+   ]
+  },
+  "klaidos_cols": [
+   "id",
+   "laikas",
+   "lygis",
+   "parasas",
+   "zinute",
+   "failas",
+   "eilute",
+   "url",
+   "kiek"
+  ],
+  "klaidos_24h": [],
+  "sarg_lent": [
+   "gaj6_ps_sargas_klaidos"
+  ],
+  "opts": [
+   {
+    "n": "ps_ads_paskutinis",
+    "v": "a:3:{s:4:\"kada\";s:19:\"2026-09-14 02:01:31\";s:7:\"eiluciu\";i:43;s:2:\"st\";a:4:{s:3:\"new\";i:3;s:3:\"upd\";i:8;s:4:\"same\";i:32;s:3:\"bad\";i:0;}}"
+   },
+   {
+    "n": "ps_ata_paskutinis_agregavimas",
+    "v": "2026-09-14 03:15:03"
+   },
+   {
+    "n": "ps_ata_paskutinis_perskaiciavimas",
+    "v": "2026-08-26 11:43:27 | 2026-08-01..2026-08-05 | 0 eil."
+   },
+   {
+    "n": "ps_bacs_priminimas_pask",
+    "v": "a:4:{s:1:\"v\";s:5:\"1.0.2\";s:3:\"dry\";b:0;s:5:\"dabar\";s:19:\"2026-09-14 07:49:46\";s:3:\"eil\";a:1:{i:0;a:5:{s:2:\"id\";i:35902;s:2:\"nr\";s:4:\"1016\";s:3:\"val\";d:71.5;s:9:\"naujesnis\";a:3:{s:3:\"yra\";b:0;s:9:\"apmoketas\";b:0;s:3:\"ids\";a:0:{}}s:8:\"veiksmas\";s:9:\"laukia_72\";}}}"
+   },
+   {
+    "n": "ps_dim_klientu_paskutinis",
+    "v": "2026-09-13 20:40:03 | 0"
+   },
+   {
+    "n": "ps_dl_atsauktu_valymas_paskutinis",
+    "v": "a:4:{s:6:\"laikas\";s:19:\"2026-09-14 03:20:09\";s:11:\"i_siuksline\";i:0;s:9:\"galutinai\";i:0;s:7:\"klaidos\";i:0;}"
+   },
+   {
+    "n": "ps_fakt_atsargu_paskutinis",
+    "v": "2026-09-13 | 2639"
+   },
+   {
+    "n": "ps_fakt_siuntu_gyvavimas_pask",
+    "v": "a:4:{s:2:\"ts\";s:19:\"2026-09-14 08:36:07\";s:3:\"dry\";b:0;s:8:\"uzsakymu\";i:25;s:8:\"pakeista\";i:1;}"
+   },
+   {
+    "n": "ps_feeds_paskutinis",
+    "v": "a:2:{s:4:\"kada\";s:19:\"2026-09-14 04:30:17\";s:10:\"statistika\";a:8:{s:7:\"versija\";s:5:\"2.5.0\";s:3:\"dry\";i:0;s:9:\"kandidatu\";i:2110;s:7:\"kanalai\";a:3:{s:7:\"kaina24\";a:4:{s:7:\"irasyta\";i:2110;s:18:\"praleista_isjungta\";i:0;s:7:\"be_gtin\";i:390;s:6:\"baitai\";i:5834090;}s:6:\"kainos\";a:4:{s:7:\"irasyta\";i:2110"
+   },
+   {
+    "n": "ps_gavimo_perrus_pask",
+    "v": "a:2:{s:6:\"laikas\";s:19:\"2026-09-14 11:06:19\";s:3:\"rez\";a:1:{i:15235;a:2:{s:3:\"pid\";i:15235;s:3:\"eil\";a:0:{}}}}"
+   },
+   {
+    "n": "ps_import_tempas_paskutinis",
+    "v": "a:6:{s:6:\"laikas\";s:19:\"2026-09-14 11:05:13\";s:9:\"import_id\";i:3;s:8:\"veiksmas\";s:10:\"processing\";s:6:\"hostas\";s:18:\"https://petshop.lt\";s:3:\"sek\";d:62.7;s:9:\"atsakymas\";s:45:\"{\"status\":200,\"message\":\"Import #3 complete\"}\";}"
+   },
+   {
+    "n": "ps_kontrole_paskutinis",
+    "v": "a:2:{s:4:\"kada\";s:19:\"2026-09-14 04:30:02\";s:3:\"ga4\";s:2:\"ok\";}"
+   },
+   {
+    "n": "ps_pren_paskyra_flush",
+    "v": "1.3"
+   },
+   {
+    "n": "ps_rytas_sargas_pask",
+    "v": "a:5:{s:6:\"laikas\";s:19:\"2026-09-14 03:30:01\";s:8:\"raudonos\";a:1:{i:0;a:3:{s:5:\"kodas\";s:10:\"neissiusti\";s:5:\"lygis\";s:7:\"raudona\";s:7:\"tekstas\";s:30:\"Apmokėti > 2 d. be siuntos: 5\";}}s:8:\"geltonos\";a:0:{}s:6:\"zalios\";i:11;s:4:\"viso\";i:13;}"
+   },
+   {
+    "n": "ps_sargas_cron_laukiam",
+    "v": "a:80:{s:26:\"action_scheduler_run_queue\";s:12:\"every_minute\";s:21:\"petshop_import_tempas\";s:12:\"petshop_2min\";s:27:\"ps_esp_cron_process_pending\";s:11:\"ps_esp_5min\";s:29:\"cmplz_every_five_minutes_hook\";s:18:\"cmplz_five_minutes\";s:22:\"ps_email_dispatch_cron\";s:11:\"ps_esp_5min\";s:34:\"wp_privacy_delete_o"
+   },
+   {
+    "n": "ps_sargas_cron_zinios",
+    "v": "a:80:{s:21:\"ps_cart_abandon_check\";i:1789375179;s:26:\"action_scheduler_run_queue\";i:1789375193;s:27:\"ps_esp_cron_process_pending\";i:1789375077;s:29:\"cmplz_every_five_minutes_hook\";i:1789375077;s:17:\"ps_vartai_valanda\";i:1789373605;s:22:\"ps_email_dispatch_cron\";i:1789375125;s:20:\"jetpack_clean_nonces"
+   },
+   {
+    "n": "ps_sargas_pastas",
+    "v": "terra@gyvunai.lt"
+   },
+   {
+    "n": "ps_sargas_siusta",
+    "v": "a:34:{s:38:\"fatal:bcbdb6dd79f65bc31ebc909b7e4b49ba\";s:10:\"2026-08-17\";s:38:\"fatal:1076f1d971acc8014e8f225793a91a3c\";s:10:\"2026-08-18\";s:38:\"fatal:60704f445e77a72586805717f192bb7f\";s:10:\"2026-08-19\";s:37:\"cron:ebbd115a00f15f56ae4e2583f8b62115\";s:10:\"2026-08-22\";s:37:\"cron:fcd7c13a816a140d9ef6879cb164"
+   },
+   {
+    "n": "ps_sargas_start",
+    "v": "1786994616"
+   },
+   {
+    "n": "ps_sargas_svara",
+    "v": "a:3:{s:6:\"laikas\";s:19:\"2026-09-08 08:02:01\";s:6:\"negyvu\";i:43;s:7:\"eilutes\";a:4:{i:0;s:46:\"  augintinio prekes be prekes:       1 (is 36)\";i:1;s:46:\"  priminimai be augintinio:          4 (is 10)\";i:2;s:47:\"  serimo map be prekes:              3 (is 561)\";i:3;s:48:\"  MnM eilutes be konteinerio:    "
+   },
+   {
+    "n": "ps_seseliai_paskutinis",
+    "v": "a:6:{s:4:\"kada\";s:19:\"2026-09-14 11:13:34\";s:3:\"kas\";s:4:\"cron\";s:4:\"poru\";i:15;s:10:\"atnaujinta\";i:0;s:9:\"praleista\";i:15;s:7:\"klaidos\";a:0:{}}"
+   },
+   {
+    "n": "ps_vartai_paskutinis",
+    "v": "2026-09-01 21:13:36 · 1"
+   },
+   {
+    "n": "ps_velavimo_laiskai_paskutinis",
+    "v": "a:7:{s:6:\"laikas\";s:19:\"2026-09-13 14:00:58\";s:11:\"darbo_diena\";b:0;s:8:\"uzsakymu\";i:0;s:8:\"issiusta\";i:0;s:9:\"praleista\";i:1;s:7:\"klaidos\";i:0;s:1:\"s\";d:0;}"
+   },
+   {
+    "n": "ps_venipak_sekimas_paskutinis",
+    "v": "a:11:{s:6:\"laikas\";s:19:\"2026-09-14 11:36:07\";s:8:\"uzsakymu\";i:34;s:7:\"numeriu\";i:37;s:8:\"uzklausu\";i:35;s:8:\"pakeista\";i:3;s:2:\"lp\";i:0;s:8:\"issiusta\";i:0;s:10:\"pristatyta\";i:1;s:6:\"grizta\";i:0;s:7:\"klaidos\";i:0;s:1:\"s\";d:1.9;}"
+   },
+   {
+    "n": "ps_vf_feed_paskutinis",
+    "v": "a:7:{s:6:\"laikas\";s:19:\"2026-09-14 11:05:11\";s:2:\"ok\";b:1;s:6:\"klaida\";s:0:\"\";s:7:\"eilutes\";i:2364;s:6:\"baitai\";i:8250182;s:3:\"sek\";d:7.5;s:4:\"http\";i:200;}"
+   },
+   {
+    "n": "ps_web_paskutinis_agregavimas",
+    "v": "2026-09-14 00:10:29 | 2026-09-13 | 228"
+   }
+  ],
+  "cron": [
+   {
+    "h": "petshop_import_tempas",
+    "kada": "09-14 08:41",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_esp_cron_process_pending",
+    "kada": "09-14 08:42",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_email_dispatch_cron",
+    "kada": "09-14 08:43",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_webp_batch",
+    "kada": "09-14 08:43",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_cart_abandon_check",
+    "kada": "09-14 08:44",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_bacs_priminimas",
+    "kada": "09-14 08:49",
+    "velavimas_min": 0
+   },
+   {
+    "h": "petshop_vf_sync_stock_hourly",
+    "kada": "09-14 08:59",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_reminders_daily_check",
+    "kada": "09-14 09:00",
+    "velavimas_min": 0
+   },
+   {
+    "h": "petshop_vf_feed_hourly",
+    "kada": "09-14 09:05",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_venipak_sekimas",
+    "kada": "09-14 09:06",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_refill_iv_veidrodis",
+    "kada": "09-14 09:06",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_akcijos_valanda",
+    "kada": "09-14 09:08",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_vartai_valanda",
+    "kada": "09-14 09:13",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_seseliai_valandinis",
+    "kada": "09-14 09:13",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_dropship_sargas",
+    "kada": "09-14 09:13",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_juosta_reikia_cron",
+    "kada": "09-14 09:28",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_browse_abandon_check",
+    "kada": "09-14 09:37",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_post_purchase_check",
+    "kada": "09-14 09:39",
+    "velavimas_min": 0
+   },
+   {
+    "h": "petshop_attr_engine_run",
+    "kada": "09-14 10:57",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_velavimo_laiskai",
+    "kada": "09-14 11:00",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_dim_klientu_perskaiciavimas",
+    "kada": "09-14 20:40",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_fakt_atsargu_snapshot",
+    "kada": "09-14 20:55",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_stat_valymas",
+    "kada": "09-14 21:41",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_atsaukto_krepselio_priminimas",
+    "kada": "09-14 22:17",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_fakt_siuntu_sutikrinimas",
+    "kada": "09-15 00:05",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_web_agregavimas",
+    "kada": "09-15 00:10",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_ataskaitu_agregavimas",
+    "kada": "09-15 00:15",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_dl_atsauktu_valymas",
+    "kada": "09-15 00:20",
+    "velavimas_min": 0
+   },
+   {
+    "h": "petshop_fbt_copurchase_rebuild",
+    "kada": "09-15 01:10",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_fakt_reklama_portalai",
+    "kada": "09-15 01:20",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_feeds_naktinis",
+    "kada": "09-15 01:30",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_klientai_perskaiciuoti",
+    "kada": "09-15 02:30",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_pet_drafts_cleanup_daily",
+    "kada": "09-15 02:40",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_web_valymas",
+    "kada": "09-15 02:40",
+    "velavimas_min": 0
+   },
+   {
+    "h": "petshop_vf_sync_reprice_daily",
+    "kada": "09-15 03:00",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_rytas_sargas",
+    "kada": "09-15 03:30",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_prognoze_diena",
+    "kada": "09-15 03:40",
+    "velavimas_min": 0
+   },
+   {
+    "h": "petshop_vf_sync_publish_daily",
+    "kada": "09-15 04:00",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_sargas_kasdien",
+    "kada": "09-15 04:00",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_seo_cwv_diena",
+    "kada": "09-15 04:00",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_sources_naktinis",
+    "kada": "09-15 04:20",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_kontrole_diena",
+    "kada": "09-15 04:30",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_ivykiai_valymas",
+    "kada": "09-15 04:40",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_pardavimai_naktinis",
+    "kada": "09-15 04:50",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_sargas_savaitinis",
+    "kada": "09-15 05:00",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_pilnumas_naktinis",
+    "kada": "09-15 05:00",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_seo_qa_diena",
+    "kada": "09-15 05:00",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_suppression_daily_reconcile",
+    "kada": "09-15 05:30",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_gsc_diena",
+    "kada": "09-15 06:00",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_prenumerata_diena",
+    "kada": "09-15 06:10",
+    "velavimas_min": 0
+   },
+   {
+    "h": "ps_refill_daily_check",
+    "kada": "09-15 08:00",
+    "velavimas_min": 0
+   },
+   {
+    "h": "petshop_pragma_monthly_export",
+    "kada": "10-05 08:00",
+    "velavimas_min": 0
+   }
+  ],
+  "php_log_tail": [
+   "[14-Sep-2026 07:25:51 UTC] PHP Warning:  Undefined variable $a→ in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 6\n",
+   "[14-Sep-2026 07:25:51 UTC] PHP Warning:  Undefined variable $a→ in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 6\n",
+   "[14-Sep-2026 07:25:51 UTC] PHP Warning:  Undefined variable $a→ in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 6\n",
+   "[14-Sep-2026 07:25:51 UTC] PHP Warning:  Undefined variable $a→ in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 6\n",
+   "[14-Sep-2026 07:25:51 UTC] PHP Warning:  Undefined variable $a→ in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 6\n",
+   "[14-Sep-2026 07:25:51 UTC] PHP Warning:  Undefined variable $a→ in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 6\n",
+   "[14-Sep-2026 07:25:51 UTC] PHP Warning:  Undefined variable $a→ in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 6\n",
+   "[14-Sep-2026 07:25:51 UTC] PHP Warning:  Undefined variable $a→ in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 6\n",
+   "[14-Sep-2026 07:25:51 UTC] PHP Warning:  Undefined variable $a→ in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 6\n",
+   "[14-Sep-2026 07:25:51 UTC] PHP Warning:  Undefined variable $a→ in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 6\n",
+   "[14-Sep-2026 07:25:51 UTC] PHP Warning:  Undefined variable $a→ in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 6\n",
+   "[14-Sep-2026 07:25:51 UTC] PHP Warning:  Undefined variable $a→ in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 6\n",
+   "[14-Sep-2026 07:53:13 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}\n",
+   "[14-Sep-2026 08:00:35 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}\n",
+   "[14-Sep-2026 08:39:55 UTC] WordPress database error Unknown column 'created_at' in 'where clause' for query SELECT * FROM gaj6_ps_sargas_klaidos WHERE created_at>=DATE_SUB(NOW(),INTERVAL 36 HOUR) ORDER BY id DESC LIMIT 40 made by require('wp-blog-hea"
+  ],
+  "e": ""
+ }
+}
