@@ -1,0 +1,101 @@
+{
+ "v": "dep-074933",
+ "kurimas": 200,
+ "sid": 5716,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1680 j",
+  "preke": {
+   "0": 0,
+   "1": null,
+   "svoris": null,
+   "kiekis": null,
+   "st": null,
+   "klase": null
+  },
+  "meta": {
+   "_ps_tik_kurjeriu": false,
+   "_fulfillment_courier_only": false,
+   "_zb_enabled": false,
+   "_ps_saltinis": false,
+   "_ps_sandelis": false,
+   "_ps_tiekejas": false,
+   "_vf_enabled": false,
+   "_ps_kelias": false,
+   "_fulfillment_source": false
+  },
+  "resolve": {
+   "source": "zb",
+   "carrier": "venipak",
+   "courier_only": false,
+   "label": "ZB (Žalioji Banga)",
+   "reason": "ZB meta laukai"
+  },
+  "cart": "FAIL ",
+  "kg": 0,
+  "pries_filtrus": [
+   "shopup_venipak_shipping_courier_method:2",
+   "shopup_venipak_shipping_pickup_method:3",
+   "woo_lithuaniapost_lpexpress_terminal:12",
+   "woo_lithuaniapost_lpexpress_terminal:15"
+  ],
+  "filtrai": [
+   "10 Woocommerce_Shopup_Venipak_Shipping_Public::show_pickup_if_product_included_in_locker → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "10 petshop_hide_parcel_if_courier_only → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "20 closure → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "100 Petshop_Rinkiniai::pastomato_sargas → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "9999 Paysera\\Front\\PayseraDeliveryFrontHtml::filterShippingRatesByCartWeightSuitability → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "9223372036854775807 Paysera\\PayseraInit::applyDeliveryGatewayWeightRestrictionsHint → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15"
+  ],
+  "sargas_src": " public static function pastomato_sargas( $rates, $package ) { if ( is_admin() && ! wp_doing_ajax() ) { return $rates; } $kg = 0.0; $tik_kurjeriu = false; foreach ( (array) ( $package['contents'] ?? array() ) as $eil ) { $p = $eil['data'] ?? null; if ( ! $p || ! is_a( $p, 'WC_Product' ) ) { continue; } /* v1.44 (S1601): varnele „Tik kurjeriu“ — tikrinama VISOMS eilutems, iskaitant MnM vaikus */ if ( get_post_meta( $p->get_id(), '_ps_tik_kurjeriu', true ) === 'yes' ) { $tik_kurjeriu = true; } if ( ! empty( $eil['mnm_child_id'] ) ) { continue; } /* vaikai — svorio nesidubliuoti */ $w = (float) $p->get_weight(); if ( $w > 0 ) { $kg += $w * (int) $eil['quantity']; } } if ( ! $tik_kurjeriu && $kg <= self::PASTOMATO_RIBA ) { return $rates; } $zodziai = array( 'pastomat', 'paštomat', 'terminal', 'locker', 'pickup', 'atsiemim', 'parcel' ); foreach ( $rates as $raktas => $tarifas ) { $tekstas = mb_strtolower( $raktas . ' ' . $tarifas->get_label() ); foreach ( $zodziai as $z ) { if ( mb_strpos( $tekstas, $z ) !== false ) { unset( $rates[ $raktas ] ); break; } } } return $rates; } "
+ },
+ "CL": {
+  "v": "S1680 j",
+  "preke": {
+   "0": 0,
+   "1": null,
+   "svoris": null,
+   "kiekis": null,
+   "st": null,
+   "klase": null
+  },
+  "meta": {
+   "_ps_tik_kurjeriu": false,
+   "_fulfillment_courier_only": false,
+   "_zb_enabled": false,
+   "_ps_saltinis": false,
+   "_ps_sandelis": false,
+   "_ps_tiekejas": false,
+   "_vf_enabled": false,
+   "_ps_kelias": false,
+   "_fulfillment_source": false
+  },
+  "resolve": {
+   "source": "zb",
+   "carrier": "venipak",
+   "courier_only": false,
+   "label": "ZB (Žalioji Banga)",
+   "reason": "ZB meta laukai"
+  },
+  "cart": "FAIL ",
+  "kg": 0,
+  "pries_filtrus": [
+   "shopup_venipak_shipping_courier_method:2",
+   "shopup_venipak_shipping_pickup_method:3",
+   "woo_lithuaniapost_lpexpress_terminal:12",
+   "woo_lithuaniapost_lpexpress_terminal:15"
+  ],
+  "filtrai": [
+   "10 Woocommerce_Shopup_Venipak_Shipping_Public::show_pickup_if_product_included_in_locker → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "10 petshop_hide_parcel_if_courier_only → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "20 closure → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "100 Petshop_Rinkiniai::pastomato_sargas → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "9999 Paysera\\Front\\PayseraDeliveryFrontHtml::filterShippingRatesByCartWeightSuitability → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "9223372036854775807 Paysera\\PayseraInit::applyDeliveryGatewayWeightRestrictionsHint → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15"
+  ],
+  "sargas_src": " public static function pastomato_sargas( $rates, $package ) { if ( is_admin() && ! wp_doing_ajax() ) { return $rates; } $kg = 0.0; $tik_kurjeriu = false; foreach ( (array) ( $package['contents'] ?? array() ) as $eil ) { $p = $eil['data'] ?? null; if ( ! $p || ! is_a( $p, 'WC_Product' ) ) { continue; } /* v1.44 (S1601): varnele „Tik kurjeriu“ — tikrinama VISOMS eilutems, iskaitant MnM vaikus */ if ( get_post_meta( $p->get_id(), '_ps_tik_kurjeriu', true ) === 'yes' ) { $tik_kurjeriu = true; } if ( ! empty( $eil['mnm_child_id'] ) ) { continue; } /* vaikai — svorio nesidubliuoti */ $w = (float) $p->get_weight(); if ( $w > 0 ) { $kg += $w * (int) $eil['quantity']; } } if ( ! $tik_kurjeriu && $kg <= self::PASTOMATO_RIBA ) { return $rates; } $zodziai = array( 'pastomat', 'paštomat', 'terminal', 'locker', 'pickup', 'atsiemim', 'parcel' ); foreach ( $rates as $raktas => $tarifas ) { $tekstas = mb_strtolower( $raktas . ' ' . $tarifas->get_label() ); foreach ( $zodziai as $z ) { if ( mb_strpos( $tekstas, $z ) !== false ) { unset( $rates[ $raktas ] ); break; } } } return $rates; } "
+ }
+}
