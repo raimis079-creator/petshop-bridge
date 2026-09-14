@@ -1,0 +1,67 @@
+{
+ "v": "dep-191301",
+ "kurimas": 200,
+ "sid": 5777,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "ml",
+  "f": [
+   "\t * Skaiciuojama IS FAKTU, ne is `wc_get_orders` — faktai yra kanoninis",
+   "\t * saltinis (planas §0). Q6: eShoprent istorijos nera, kohortos nuo Woo.",
+   "\t * @return array(uzsakymo_nr, naujas, dienos_nuo_ankstesnio)",
+   "\t */",
+   "\tprivate static function kliento_eile( $hash, $apmoketa ) {",
+   "\t\tif ( $hash === '' ) { return array( 1, 1, null ); }",
+   "\t\tglobal $wpdb;",
+   "\t\t$t = self::t_uzsakymai();",
+   "\t\t$n = (int) $wpdb->get_var( $wpdb->prepare(",
+   "\t\t\t\"SELECT COUNT(*) FROM $t WHERE klientas_email_hash=%s AND apmoketa_at<=%s\", $hash, $apmoketa ) );",
+   "\t\t$pask = $wpdb->get_var( $wpdb->prepare(",
+   "\t\t\t\"SELECT MAX(apmoketa_at) FROM $t WHERE klientas_email_hash=%s AND apmoketa_at<=%s\", $hash, $apmoketa ) );",
+   "\t\t$dienos = null;",
+   "\t\tif ( $pask ) {",
+   "\t\t\t$dienos = (int) floor( ( strtotime( $apmoketa ) - strtotime( $pask ) ) / DAY_IN_SECONDS );",
+   "\t\t}",
+   "\t\treturn array( $n + 1, $n === 0 ? 1 : 0, $dienos );",
+   "\t}",
+   "",
+   "\t/** Q3: Paysera 0,05 EUR fiksuota uz surinkta mokejima; pavedimas = 0. */",
+   "\tprivate static function mokejimo_mokestis( $budas, $viso_ct ) {",
+   "\t\t$b = strtolower( (string) $budas );"
+  ],
+  "h": [
+   "\tprivate static function email_hash( $order ) {",
+   "\t\t$e = strtolower( trim( (string) $order->get_billing_email() ) );",
+   "\t\treturn $e === '' ? '' : hash( 'sha256', $e );",
+   "\t}",
+   "",
+   "\t/** Sandelis/tiekejas — vienintelis tiesos saltinis (planas §4.2). */",
+   "\tprivate static function saltinis( $pid ) {",
+   "\t\tif ( $pid && class_exists( 'Petshop_Fulfillment_Source' ) ) {"
+  ],
+  "c": [
+   "\t\t\treturn;",
+   "\t\t}",
+   "",
+   "\t\tforeach ( $eil as $r ) {",
+   "\t\t\t$r['uzsakymas_id']     = $order_id;",
+   "\t\t\t$r['apmoketa_at']      = $apmoketa;",
+   "\t\t\t$r['diena']            = self::verslo_diena( $apmoketa );",
+   "\t\t\t$r['klientas_naujas']  = $naujas;",
+   "\t\t\t$r['testinis']         = $testinis;",
+   "\t\t\t$r['saltinis_aplinka'] = $aplinka;",
+   "\t\t\t$wpdb->insert( self::t_eilutes(), $r );",
+   "\t\t}"
+  ],
+  "ist_hash_cols": [
+   "klientas_id",
+   "klientas_email_hash",
+   "klientas_naujas",
+   "klientas_uzsakymo_nr"
+  ],
+  "fakt_rows": []
+ }
+}
