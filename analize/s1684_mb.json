@@ -1,0 +1,726 @@
+{
+ "v": "dep-174102",
+ "kurimas": 200,
+ "sid": 5763,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1684 mb",
+  "meta_keys": [
+   {
+    "k": "_global_unique_id",
+    "t": "product",
+    "n": "2286",
+    "n_pos": "2283"
+   },
+   {
+    "k": "_vf_personal_cost",
+    "t": "product",
+    "n": "1212",
+    "n_pos": "1212"
+   },
+   {
+    "k": "_vf_cost_xml",
+    "t": "product",
+    "n": "1212",
+    "n_pos": "1212"
+   },
+   {
+    "k": "_vf_cost",
+    "t": "product",
+    "n": "1212",
+    "n_pos": "1212"
+   },
+   {
+    "k": "_zb_cost",
+    "t": "product",
+    "n": "1117",
+    "n_pos": "1112"
+   },
+   {
+    "k": "_cost_price",
+    "t": "product",
+    "n": "1017",
+    "n_pos": "1017"
+   },
+   {
+    "k": "_cost_price_source",
+    "t": "product",
+    "n": "882",
+    "n_pos": "0"
+   },
+   {
+    "k": "_cost_price_imported_at",
+    "t": "product",
+    "n": "661",
+    "n_pos": "661"
+   },
+   {
+    "k": "_cost_price_manual_by",
+    "t": "product",
+    "n": "224",
+    "n_pos": "221"
+   },
+   {
+    "k": "_cost_price_manual_at",
+    "t": "product",
+    "n": "224",
+    "n_pos": "224"
+   },
+   {
+    "k": "_zb_cost_prev",
+    "t": "product",
+    "n": "29",
+    "n_pos": "29"
+   }
+  ],
+  "tables_sav": [
+   "gaj6_ps_action_tokens",
+   "gaj6_ps_akcijos",
+   "gaj6_ps_akciju_prekes",
+   "gaj6_ps_ataskaitu_dienos",
+   "gaj6_ps_av_zurnalas",
+   "gaj6_ps_brand_alias",
+   "gaj6_ps_browse_log",
+   "gaj6_ps_carts",
+   "gaj6_ps_consent_log",
+   "gaj6_ps_dim_klientai",
+   "gaj6_ps_email_content",
+   "gaj6_ps_email_jobs",
+   "gaj6_ps_email_suppression",
+   "gaj6_ps_event_log",
+   "gaj6_ps_fakt_atsargos_d",
+   "gaj6_ps_fakt_eilutes",
+   "gaj6_ps_fakt_grazinimai",
+   "gaj6_ps_fakt_gsc_dienos",
+   "gaj6_ps_fakt_gsc_url_d",
+   "gaj6_ps_fakt_kainos",
+   "gaj6_ps_fakt_reklama",
+   "gaj6_ps_fakt_siuntos",
+   "gaj6_ps_fakt_uzsakymai",
+   "gaj6_ps_feeding_import_log",
+   "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_map",
+   "gaj6_ps_feeding_map_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_map_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows",
+   "gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows_bak_s304",
+   "gaj6_ps_feeding_tables",
+   "gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_islaidos",
+   "gaj6_ps_ist_eilutes",
+   "gaj6_ps_ist_fakt_eilutes",
+   "gaj6_ps_ist_fakt_uzsakymai",
+   "gaj6_ps_ist_uzsakymai",
+   "gaj6_ps_istrintos_prekes_s668",
+   "gaj6_ps_ivykiai",
+   "gaj6_ps_kl_suvestine",
+   "gaj6_ps_kontrole_dienos",
+   "gaj6_ps_laukai_ivykiai",
+   "gaj6_ps_naujienlaiskiai",
+   "gaj6_ps_nl_snapshot",
+   "gaj6_ps_pakuotes",
+   "gaj6_ps_partijos",
+   "gaj6_ps_pet_field_log",
+   "gaj6_ps_pet_notes",
+   "gaj6_ps_pet_products",
+   "gaj6_ps_pet_profile_drafts",
+   "gaj6_ps_pets",
+   "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9",
+   "gaj6_ps_pets_bak_20260722_181456_hint",
+   "gaj6_ps_pets_bak_20260723_prof",
+   "gaj6_ps_pets_bak_20260726",
+   "gaj6_ps_pets_bak_20260726_ft",
+   "gaj6_ps_pets_bak_20260727_wet",
+   "gaj6_ps_pets_bak_20260731_pries_restore",
+   "gaj6_ps_plan_events",
+   "gaj6_ps_rec_log",
+   "gaj6_ps_refill_tracking",
+   "gaj6_ps_reminders",
+   "gaj6_ps_sargas_klaidos",
+   "gaj6_ps_seo_404",
+   "gaj6_ps_seo_qa",
+   "gaj6_ps_seo_url_svoris",
+   "gaj6_ps_shipments",
+   "gaj6_ps_sources",
+   "gaj6_ps_stock_watch",
+   "gaj6_ps_subscription_events",
+   "gaj6_ps_subscription_items",
+   "gaj6_ps_subscriptions",
+   "gaj6_ps_tarifai",
+   "gaj6_ps_tarifu_priemokos",
+   "gaj6_ps_tiekimas",
+   "gaj6_ps_tiekimas_eil",
+   "gaj6_ps_uzsakymu_ivykiai",
+   "gaj6_ps_v_analize_eilutes",
+   "gaj6_ps_v_analize_uzsakymai",
+   "gaj6_ps_web_dienos",
+   "gaj6_ps_web_ivykiai",
+   "gaj6_ps_webhook_log"
+  ],
+  "tables_with_cost": {
+   "gaj6_ps_fakt_atsargos_d": [
+    "savikaina_vnt_ct",
+    "savikainos_saltinis"
+   ],
+   "gaj6_ps_fakt_eilutes": [
+    "savikaina_vnt_ct",
+    "savikaina_ct",
+    "savikainos_saltinis"
+   ],
+   "gaj6_ps_fakt_grazinimai": [
+    "savikaina_ct"
+   ],
+   "gaj6_ps_fakt_kainos": [
+    "savikaina_ct"
+   ],
+   "gaj6_ps_fakt_uzsakymai": [
+    "pristatymas_savikaina_ct",
+    "pakuotes_savikaina_ct",
+    "savikaina_ct",
+    "dovanu_savikaina_ct"
+   ],
+   "gaj6_ps_ist_fakt_eilutes": [
+    "savikaina_vnt_ct",
+    "savikaina_ct",
+    "savikainos_saltinis"
+   ],
+   "gaj6_ps_ist_fakt_uzsakymai": [
+    "pristatymas_savikaina_ct",
+    "pakuotes_savikaina_ct",
+    "savikaina_ct",
+    "dovanu_savikaina_ct"
+   ],
+   "gaj6_ps_partijos": [
+    "savikaina_eur",
+    "savikaina_orig"
+   ],
+   "gaj6_ps_sources": [
+    "cost_net"
+   ],
+   "gaj6_ps_v_analize_eilutes": [
+    "savikaina_vnt_ct",
+    "savikaina_ct",
+    "savikainos_saltinis"
+   ],
+   "gaj6_ps_v_analize_uzsakymai": [
+    "pristatymas_savikaina_ct",
+    "pakuotes_savikaina_ct",
+    "savikaina_ct",
+    "dovanu_savikaina_ct"
+   ]
+  },
+  "ist_sample": [
+   {
+    "preke_id": "19312",
+    "variacija_id": "0",
+    "sku": "83118",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   },
+   {
+    "preke_id": "16162",
+    "variacija_id": "0",
+    "sku": "026122",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   },
+   {
+    "preke_id": "18655",
+    "variacija_id": "0",
+    "sku": "650954",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   },
+   {
+    "preke_id": "17995",
+    "variacija_id": "0",
+    "sku": "JOS0982",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   },
+   {
+    "preke_id": "17115",
+    "variacija_id": "0",
+    "sku": "640149",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   },
+   {
+    "preke_id": "17903",
+    "variacija_id": "0",
+    "sku": "187218",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   },
+   {
+    "preke_id": "16360",
+    "variacija_id": "0",
+    "sku": "2850",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   },
+   {
+    "preke_id": "17159",
+    "variacija_id": "0",
+    "sku": "48381",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   }
+  ],
+  "ist_sav_fill": {
+   "n": "6648",
+   "su_sav": null,
+   "su_pid": "6648",
+   "su_vid": "0",
+   "su_sku": "6648",
+   "su_gtin": "0"
+  },
+  "fakt_sav_fill": {
+   "n": "93",
+   "su_sav": "92",
+   "salt": "nezinoma,pardavimai"
+  },
+  "fakt_cols": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ],
+  "sources_cols": [
+   "id",
+   "product_id",
+   "source",
+   "supplier_sku",
+   "ean",
+   "stock_qty",
+   "cost_net",
+   "synced_at",
+   "is_active",
+   "is_sellable",
+   "priority",
+   "created_at",
+   "updated_at"
+  ],
+  "partijos_cols": [
+   "id",
+   "product_id",
+   "gauta",
+   "kiekis_gautas",
+   "kiekis_liko",
+   "savikaina_eur",
+   "savikaina_orig",
+   "valiuta",
+   "kursas",
+   "geriausia_iki",
+   "tiekejas",
+   "importuota",
+   "tiekimas_id",
+   "pastaba",
+   "sukurta",
+   "user_id",
+   "atsaukta"
+  ],
+  "maps": {
+   "cost_price": 1017,
+   "sources": 3304,
+   "vf_zb": 2324,
+   "partijos": 831
+  },
+  "pid_is_wc": "1327 / 1416",
+  "coverage": {
+   "n": 6648,
+   "eur": 103951,
+   "cost_price": {
+    "n": 4907,
+    "eur": 54652,
+    "pct_eur": 52.6
+   },
+   "sources": {
+    "n": 1379,
+    "eur": 46672,
+    "pct_eur": 44.9
+   },
+   "vf_zb": {
+    "n": 0,
+    "eur": 0,
+    "pct_eur": 0
+   },
+   "partijos": {
+    "n": 0,
+    "eur": 0,
+    "pct_eur": 0
+   },
+   "any": {
+    "n": 6286,
+    "eur": 101324,
+    "pct_eur": 97.5
+   }
+  },
+  "brendai": {
+   "exclusion": {
+    "eur": 27378,
+    "n": 804,
+    "padengta_pct": 100,
+    "marza_pct_net": -0.8
+   },
+   "josera": {
+    "eur": 22848,
+    "n": 643,
+    "padengta_pct": 100,
+    "marza_pct_net": 0.3
+   },
+   "animonda": {
+    "eur": 13065,
+    "n": 1723,
+    "padengta_pct": 100,
+    "marza_pct_net": 19.3
+   },
+   "quattro": {
+    "eur": 7546,
+    "n": 286,
+    "padengta_pct": 100,
+    "marza_pct_net": -8.6
+   },
+   "royal-canin": {
+    "eur": 4430,
+    "n": 88,
+    "padengta_pct": 100,
+    "marza_pct_net": -4.8
+   },
+   "ontario": {
+    "eur": 3825,
+    "n": 533,
+    "padengta_pct": 84,
+    "marza_pct_net": 22.3
+   },
+   "hikari": {
+    "eur": 3643,
+    "n": 266,
+    "padengta_pct": 98,
+    "marza_pct_net": 26.9
+   },
+   "miamor": {
+    "eur": 3642,
+    "n": 453,
+    "padengta_pct": 96,
+    "marza_pct_net": 22.1
+   },
+   "romar": {
+    "eur": 3341,
+    "n": 366,
+    "padengta_pct": 95,
+    "marza_pct_net": 23
+   },
+   "ambrosia": {
+    "eur": 3161,
+    "n": 74,
+    "padengta_pct": 100,
+    "marza_pct_net": 14.7
+   },
+   "gnatek": {
+    "eur": 1749,
+    "n": 333,
+    "padengta_pct": 93,
+    "marza_pct_net": 41.7
+   },
+   "rasco": {
+    "eur": 1160,
+    "n": 89,
+    "padengta_pct": 92,
+    "marza_pct_net": 21.1
+   },
+   "monge": {
+    "eur": 1153,
+    "n": 92,
+    "padengta_pct": 90,
+    "marza_pct_net": 11.3
+   },
+   "prins": {
+    "eur": 1136,
+    "n": 26,
+    "padengta_pct": 58,
+    "marza_pct_net": 6.3
+   },
+   "haumiau": {
+    "eur": 760,
+    "n": 74,
+    "padengta_pct": 54,
+    "marza_pct_net": 17.4
+   },
+   "katrinex": {
+    "eur": 654,
+    "n": 53,
+    "padengta_pct": 100,
+    "marza_pct_net": 46
+   },
+   "-": {
+    "eur": 635,
+    "n": 53,
+    "padengta_pct": 57,
+    "marza_pct_net": 8.2
+   },
+   "duvo": {
+    "eur": 618,
+    "n": 74,
+    "padengta_pct": 64,
+    "marza_pct_net": 36.4
+   },
+   "4dogs": {
+    "eur": 479,
+    "n": 61,
+    "padengta_pct": 100,
+    "marza_pct_net": 39.4
+   },
+   "churu": {
+    "eur": 380,
+    "n": 124,
+    "padengta_pct": 100,
+    "marza_pct_net": 5.4
+   }
+  },
+  "gyvunai": {
+   "suo": {
+    "eur": 75277,
+    "n": 4131,
+    "padengta_pct": 94,
+    "marza_pct_net": 5.5
+   },
+   "kate": {
+    "eur": 24054,
+    "n": 2167,
+    "padengta_pct": 96,
+    "marza_pct_net": 8.4
+   },
+   "-": {
+    "eur": 4620,
+    "n": 350,
+    "padengta_pct": 95,
+    "marza_pct_net": 28.2
+   }
+  },
+  "top_miss": [
+   {
+    "b": "ontario",
+    "sku": "2800",
+    "pid": "17156",
+    "eur": 132
+   },
+   {
+    "b": "",
+    "sku": "6404103",
+    "pid": "17932",
+    "eur": 121
+   },
+   {
+    "b": "",
+    "sku": "6404101",
+    "pid": "17937",
+    "eur": 117
+   },
+   {
+    "b": "",
+    "sku": "6404102",
+    "pid": "17928",
+    "eur": 110
+   },
+   {
+    "b": "ontario",
+    "sku": "651153",
+    "pid": "17213",
+    "eur": 98
+   },
+   {
+    "b": "ontario",
+    "sku": "2809",
+    "pid": "17283",
+    "eur": 91
+   },
+   {
+    "b": "romar",
+    "sku": "AL68",
+    "pid": "16078",
+    "eur": 81
+   },
+   {
+    "b": "haumiau",
+    "sku": "HM-8179",
+    "pid": "19309",
+    "eur": 79
+   },
+   {
+    "b": "romar",
+    "sku": "651117",
+    "pid": "17850",
+    "eur": 76
+   },
+   {
+    "b": "ontario",
+    "sku": "650803",
+    "pid": "17170",
+    "eur": 75
+   },
+   {
+    "b": "prins",
+    "sku": "03075",
+    "pid": "16800",
+    "eur": 71
+   },
+   {
+    "b": "monge",
+    "sku": "m11952",
+    "pid": "16228",
+    "eur": 70
+   },
+   {
+    "b": "prins",
+    "sku": "01046",
+    "pid": "16760",
+    "eur": 70
+   },
+   {
+    "b": "duvo",
+    "sku": "5904181400824",
+    "pid": "35124",
+    "eur": 69
+   },
+   {
+    "b": "haumiau",
+    "sku": "HM-8174",
+    "pid": "15651",
+    "eur": 69
+   },
+   {
+    "b": "ontario",
+    "sku": "650808",
+    "pid": "17182",
+    "eur": 67
+   },
+   {
+    "b": "haumiau",
+    "sku": "HM-8104",
+    "pid": "19277",
+    "eur": 65
+   },
+   {
+    "b": "miamor",
+    "sku": "74270",
+    "pid": "17487",
+    "eur": 65
+   },
+   {
+    "b": "ontario",
+    "sku": "2804",
+    "pid": "17173",
+    "eur": 49
+   },
+   {
+    "b": "hikari",
+    "sku": "hk-01382",
+    "pid": "18215",
+    "eur": 46
+   }
+  ],
+  "cp_vs_price": [
+   {
+    "id": "16311",
+    "cost": "0.61",
+    "price": "1.29",
+    "sku": "723000"
+   },
+   {
+    "id": "15928",
+    "cost": "4.1204",
+    "price": "13.49",
+    "sku": "10528"
+   },
+   {
+    "id": "15069",
+    "cost": "2.98",
+    "price": "5.4",
+    "sku": "5903031441420"
+   },
+   {
+    "id": "17475",
+    "cost": "1.50",
+    "price": "2.85",
+    "sku": "86938"
+   },
+   {
+    "id": "16782",
+    "cost": "54.2",
+    "price": "83.8",
+    "sku": "19215"
+   },
+   {
+    "id": "14970",
+    "cost": "5.9173",
+    "price": "10.74",
+    "sku": "sku167405889365259821"
+   },
+   {
+    "id": "17975",
+    "cost": "36.4490",
+    "price": "52.42",
+    "sku": "JOS0181"
+   },
+   {
+    "id": "18128",
+    "cost": "11.76",
+    "price": "18.99",
+    "sku": "393"
+   }
+  ],
+  "faktai_cost_lines": [
+   "199: savikainos_saltinis VARCHAR(32) NOT NULL DEFAULT '',",
+   "651: 'savikainos_saltinis'     => mb_substr( (string) $it->get_meta( '_ps_savikaina_saltinis', true ), 0, 32 ),"
+  ]
+ }
+}
