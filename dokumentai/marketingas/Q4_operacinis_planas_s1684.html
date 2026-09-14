@@ -51,20 +51,20 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
 <body><main>
 
 <h1>petshop.lt · 2026 Q4 operacinis planas</h1>
-<p class="sub">S1684 · 2026-09-14 · v1.1 (po recenzijos: 6 pataisos + pristatymo patikra) · Q4 vykdymo BASELINE — toliau tik faktų/statusų atnaujinimai · vykdymo dokumentas pagal <code>MARKETINGAS_planas_v1_s1683.md</code> §18 (strategija užrakinta, nebeatidaroma) · duomenys: ANALIZĖ A/B/C s1684 · atnaujinti kas 2 sav.</p>
+<p class="sub">S1684 · 2026-09-14 · v1.2 UŽRAKINTA 2026-09-14 kaip Q4 vykdymo BASELINE (po dviejų recenzijų) — toliau tik faktų/statusų atnaujinimai · vykdymo dokumentas pagal <code>MARKETINGAS_planas_v1_s1683.md</code> §18 (strategija užrakinta, nebeatidaroma) · duomenys: ANALIZĖ A/B/C s1684 · atnaujinti kas 2 sav.</p>
 
 <section class="exec">
   <div class="card">
     <h3>North Star · 2027 Q4</h3>
     <div class="big">€50 k<small>/mėn. apyvarta (stretch)</small></div>
     <div>Bazė €36–38 k = 250 naujų maisto klientų/mėn. × V12 €115–120 × 1,25</div>
-    <div class="note" style="margin-top:6px">Stretch: ~300 × ~€133. KPI: N · R60 (leading) · 2+/3+/4+/5+ per 12 mėn. · V12. Guardrails: antkainis, CAC, AOV (ne target).</div>
+    <div class="note" style="margin-top:6px">Stretch: ~300 × ~€133. KPI: N · R_due (leading, cycle-adjusted; R60 — scorecard) · 2+/3+/4+/5+ per 12 mėn. · V12. Guardrails: antkainis, CAC, AOV (ne target).</div>
   </div>
   <div class="card">
     <h3>Q4 = atstatymas + instrumentai, ne augimas</h3>
     <div class="kpis" style="margin:6px 0 0">
       <div class="kpi"><span>N maisto / mėn.</span><b>~120</b><span>dabar ~75–85 (rugsėjo tempas)</span></div>
-      <div class="kpi"><span>R60 spalio kohorta</span><b>≥ 20 %</b><span>istorija 13 % (10–19 %, be trendo)</span></div>
+      <div class="kpi"><span>R60 spalio kohorta (scorecard)</span><b>≥ 20 %</b><span>istorija 13 %; operacinis KPI = R_due, target po baseline recon</span></div>
       <div class="kpi"><span>Užsakymai / mėn.</span><b>300</b><span>rugsėjo tempas ~230, 2025-09: 322</span></div>
       <div class="kpi"><span>Blended new-food CAC</span><b>≤ €12</b><span>+ brendo CM guardrail (Excl./Jos. €5–7) · dabar ~€19</span></div>
     </div>
@@ -115,14 +115,14 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
       <dt>Tikslas Q4</dt><dd>Spalio kohortos R60 ≥ 20 % (istorija 13 %); lifecycle etapai 1+2 gyvai su 90/10 holdout.</dd>
       <dt>Būsena 09-14</dt><dd>15 srautų (`ps_email_content`) parašyti, visi <b>draft</b>; `ps_email_jobs` tuščia. Naujienlaiškio sutikimai: 561 (eShoprent prenumeratoriai) + 7; kasoje ERĮ 81(2) prieštaravimo galimybės (soft opt-out) <b>nėra</b> → naujiems klientams savo panašių prekių pasiūlymai (refill) neteisėti, kol nėra. Refill = tiesioginė rinkodara.</dd>
       <dt>KPI</dt><dd><b>R_due</b> (cycle-adjusted): dalis klientų, pakartojusių iki savo produkto refill lango + 14 d. tolerancija (holdout vs test) · R30/R60/R90 — diagnostiniai pjūviai · 2-o pirkimo laikas (≤30 d. vertas €209 vs niekada €42).</dd>
-      <dt>Priklausomybės</dt><dd>WS4 (opt-in kasoje) · ciklų lentelė · Sender/WP Mail SMTP kanalas (DKIM neparašo — serverio pusė).</dd>
+      <dt>Priklausomybės</dt><dd>WS4 (soft opt-out kasoje / ERĮ 81(2) eligibility) · ciklų lentelė · Sender/WP Mail SMTP kanalas (DKIM neparašo — serverio pusė).</dd>
     </dl>
     <div class="gate"><div class="g"><b>GO etapas 3</b> — ≥150 klientų lifecycle imtyje ir spalio kohortos R_due ≥ 20 % (test) → win-back 60/90 Q1.</div><div class="s"><b>STOP</b> — atsisakymai &gt; 2 %/laišką arba skundas → langas peržiūrimas, ne kanalas.</div></div>
     </div>
     <div>
       <table>
         <tr><th>Darbas</th><th>Kas</th><th>Kada</th><th>Būsena</th></tr>
-        <tr><td>Produkto ciklų lentelė: brendas × pakuotė → tikėtinas intervalas (iš ps_ist 2-o pirkimo laikų; Exclusion/RC 12–15 kg 60–90 d., Animonda R30, Josera 20–50 d.)</td><td>Claude</td><td>spalio 1 sav.</td><td><span class="tag go">kitas</span></td></tr>
+        <tr><td>Produkto ciklų lentelė: brendas × pakuotė → tikėtinas intervalas (iš ps_ist 2-o pirkimo laikų; Exclusion/RC 12–15 kg 60–90 d., Animonda R30, Josera 20–50 d.) + <b>istorinis R_due baseline 2024–2026</b> → R_due target nustatomas nuo jo, ne nuo R60 13 %</td><td>Claude</td><td>spalio 1 sav.</td><td><span class="tag go">kitas</span></td></tr>
         <tr><td>„Pakartoti tą patį maišą vienu paspaudimu" — post_purchase_14d → refill_due langai ~20 / 30–35 / 45–50 d. pagal ciklą; `?ps_atkurti` tipo nuoroda</td><td>Claude įjungia · Raimis tekstai</td><td>spalio 2–3 sav.</td><td><span class="tag wait">laukia WS4</span></td></tr>
         <tr><td>90/10 holdout nuo pirmo laiško (permanentinis; kohorta prieš/po)</td><td>Claude</td><td>kartu</td><td><span class="tag wait"></span></td></tr>
         <tr><td>Josera fokusas: 39 % naujų, R60 9 % — atskiras Josera 20–50 d. langas su kiekio bonuso pasiūlymu (R_due Josera = 50 d.)</td><td>Claude · Raimis pasiūlymas</td><td>lapkritis</td><td><span class="tag wait"></span></td></tr>
@@ -170,7 +170,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
         <tr><td>Naujienlaiškio (ne panašių prekių) consent — atskira forma (footer/newsletter), ne pre-ticked</td><td>Claude</td><td>yra</td><td><span class="tag ok">veikia</span></td></tr>
         <tr><td>~5 100 istorinių: vienas informacinis laiškas be reklamos (svetainė atsinaujino; dienos norma kg ir €), opt-out, per Sender dalimis po ~500/d, žurnalas; NE pakartoti</td><td>Raimis tekstas · Claude</td><td>spalis</td><td><span class="tag go">nuspręsta 09-14</span></td></tr>
         <tr><td>Privatumo politika (34525) — tiesioginės rinkodaros skyrius atitinka realią praktiką</td><td>Claude juodraštis · Raimis</td><td>spalis</td><td><span class="tag wait"></span></td></tr>
-        <tr><td>Sender kontaktų politika: kas sinchronizuojama (tik consent=true), suppression abipusis</td><td>Claude</td><td>spalis</td><td><span class="tag wait"></span></td></tr>
+        <tr><td>Kontaktų būsenų modelis (Sender + WP): <b>newsletter</b> → `consent=true`; <b>similar-product lifecycle</b> → `soft_optin_eligible=true && opt_out=false` (pirkėjas, neprieštaravęs kasoje); <b>suppression/unsubscribe</b> — bendras, stipresnis už abu. Sender sync pagal abi būsenas, ne tik consent=true</td><td>Claude</td><td>spalis</td><td><span class="tag wait"></span></td></tr>
       </table>
     </div>
   </div>
@@ -201,7 +201,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
     <table>
       <tr><th>Ketvirtis</th><th class="n">N maisto/mėn.</th><th class="n">V12</th><th class="n">Apyvarta/mėn.</th><th>Kas turi įvykti</th></tr>
       <tr><td>2026-09 (faktas, tempas)</td><td class="n">~80</td><td class="n">€78</td><td class="n">€8,5 k</td><td>atskaitos taškas po migracijos</td></tr>
-      <tr><td>2026 Q4</td><td class="n">~120</td><td class="n">—</td><td class="n">€12–13 k</td><td>Ads signalas, feed-only PMax, opt-in kasoje, lifecycle 1+2</td></tr>
+      <tr><td>2026 Q4</td><td class="n">~120</td><td class="n">—</td><td class="n">€12–13 k</td><td>Ads signalas, feed-only PMax, soft opt-out kasoje, lifecycle 1+2</td></tr>
       <tr><td>2027 Q1</td><td class="n">150–170</td><td class="n">€90</td><td class="n">€16–18 k</td><td>CAC ≤ €12, R60 ≥ 20 %, Search exact, prieglaudos</td></tr>
       <tr><td>2027 Q2</td><td class="n">190–210</td><td class="n">€100</td><td class="n">€22–25 k</td><td>faktinis CM12/CAC ≥ 2, apyvartinių modelis, etapas 4</td></tr>
       <tr><td>2027 Q3</td><td class="n">220–240</td><td class="n">€110</td><td class="n">€30–33 k</td><td>R60 ≥ 30 %, video/veislių puslapiai</td></tr>
@@ -232,7 +232,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
   <div>
     <table>
       <tr><th>Brendas</th><th class="n">Pajamos 12 mėn.</th><th class="n">Antkainis</th><th>Vaidmuo</th></tr>
-      <tr><td>Exclusion</td><td class="n">€27,4 k</td><td class="n">20 % (AV 39 %)</td><td>didžiausia pajamų dalis (26 %), R60 aukščiausias (49 % grįžimas — selection effect) — CAC neatsiperka per VF, atsiperka per AV partiją / R60</td></tr>
+      <tr><td>Exclusion</td><td class="n">€27,4 k</td><td class="n">20 % (AV 39 %)</td><td>didžiausia pajamų dalis (26 %), bendras repeat 49 % (ilgas langas, ≠ R60; selection effect), trumpalaikis repeat taip pat stiprus — CAC neatsiperka per VF, atsiperka per AV partiją / R60</td></tr>
       <tr><td>Josera</td><td class="n">€22,8 k</td><td class="n">21 %</td><td>39 % naujų, R60 9 % — didžiausias rezervas; nedeginti CAC, pakeičiamas</td></tr>
       <tr><td>Animonda</td><td class="n">€13,1 k</td><td class="n">50 %</td><td>priority acquisition TEST candidate (istorinis repeat ≠ perstumto kliento repeat); R30 langas</td></tr>
       <tr><td>Quattro / Royal Canin</td><td class="n">€12 k</td><td class="n">11–15 %</td><td>ne PMax kandidatai</td></tr>
@@ -260,7 +260,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
     <table>
       <tr><th>Etapas</th><th class="n">R60</th><th class="n">V12</th><th>Kas veikia</th></tr>
       <tr><td>Istorija 2024–2026</td><td class="n">13 %</td><td class="n">€78</td><td>nieko (be lifecycle)</td></tr>
-      <tr><td>2026 Q4 (spalio kohorta)</td><td class="n">20 %</td><td class="n">—</td><td>opt-in + „pakartoti" + refill 20–50 d.</td></tr>
+      <tr><td>2026 Q4 (spalio kohorta)</td><td class="n">20 %</td><td class="n">—</td><td>soft opt-out kasoje + „pakartoti" + refill 20–50 d.</td></tr>
       <tr><td>2027 Q1</td><td class="n">25 %</td><td class="n">€90</td><td>win-back 60/90, Josera langas</td></tr>
       <tr><td>2027 Q2</td><td class="n">30 %</td><td class="n">€100</td><td>etapas 4, holdout matavimas patvirtintas</td></tr>
       <tr><td>2027 Q3–Q4</td><td class="n">35 %</td><td class="n">€115–120</td><td>grandinės efektas (p3|2 49 %, p4|3 56 %)</td></tr>
@@ -285,7 +285,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
   <tr><th>Recon</th><th>Būsena</th><th>Pagrindinis radinys</th><th>Failai</th></tr>
   <tr><td><b>A</b> kanalai / spend / CAC</td><td><span class="tag ok">atlikta 09-14</span></td><td>Atribucija veikia nuo T-0; nauji 64 % iš Ads; spend €1,3 k/mėn., pusė kačių; CAC ~€19; klientas už pristatymą nemoka (5,4 % subsidija); baseline 270–350 užs./mėn. 2025-09…2026-07.</td><td><code>ANALIZE_A_kanalai_s1684.md</code> · <code>s1684_ma</code></td></tr>
   <tr><td><b>B</b> savikaina / CM12</td><td><span class="tag ok">atlikta 09-14</span></td><td>`_ps_savikaina` nėra — `_cost_price` / `ps_sources.cost_net` / `ps_partijos`; 97,5 % padengimas per preke_id; `kaina_ct` BE PVM; antkainis Exclusion 20 % (AV 39 %), Josera 21 %, maistas ~30 %; CM12 €10–14 lead brendų klientui.</td><td><code>ANALIZE_B_savikaina_CM_s1684.md</code> · <code>s1684_mb/mb2</code></td></tr>
-  <tr><td><b>C</b> sutikimai</td><td><span class="tag ok">atlikta 09-14</span></td><td>561 importuoti prenumeratoriai + 7; kasoje opt-in nėra; 15 lifecycle srautų draft; eShoprent forma neįrodoma.</td><td><code>ANALIZE_C_sutikimai_s1684.md</code> · <code>s1684_mc/mc2</code></td></tr>
+  <tr><td><b>C</b> sutikimai</td><td><span class="tag ok">atlikta 09-14</span></td><td>561 importuoti prenumeratoriai + 7; kasoje ERĮ 81(2) soft opt-out nėra; 15 lifecycle srautų draft; eShoprent forma neįrodoma.</td><td><code>ANALIZE_C_sutikimai_s1684.md</code> · <code>s1684_mc/mc2</code></td></tr>
   <tr><td><b>Kitas recon</b></td><td><span class="tag wait">spalio 3 sav.</span></td><td>D: top-20 SKU VF vs partijos savikaina, apyvarta, AV dalis → apyvartinių lėšų modelis.</td><td>—</td></tr>
 </table>
 
@@ -295,7 +295,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
     <h3>Užrakinta (nebeatidaroma)</h3>
     <table class="lock">
       <tr><td>Formulė</td><td>€50 k = N × V12 × 1,25; bazė 250 × €115–120; stretch ~300 × €133</td></tr>
-      <tr><td>KPI</td><td>N · R60 (leading) · 2+/3+/4+/5+ · V12; guardrails antkainis/CAC/AOV</td></tr>
+      <tr><td>KPI</td><td>N · R_due (leading) · R60 (scorecard) · 2+/3+/4+/5+ · V12; guardrails antkainis/CAC/AOV</td></tr>
       <tr><td>Antkainis, ne marža</td><td>(kaina − sav)/sav, kaina_ct be PVM (Raimis 09-14)</td></tr>
       <tr><td>5 100 istorinių</td><td>vienas informacinis laiškas be reklamos, opt-out, žurnalas — Raimio rizikos sprendimas 09-14; refill/win-back — ne; sutikimo „surinkimo" laiškas — ne</td></tr>
       <tr><td>Reklamos biudžetas</td><td>skirstomas pagal CM12/CAC, ne pagal strateginę etiketę (katės)</td></tr>
@@ -322,7 +322,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
     <ul>
       <li>09-15 02:01 — Ads offline konversijų traukimas (kontrolinis taškas) · Raimis: Ads UI įkėlimų istorija</li>
       <li>09-15 — kačių PMax sprendimas · MC review → feed-only PMax šunys</li>
-      <li>iki 09-21 — Claude: produkto ciklų lentelė + kasos opt-in laukas (spec Raimiui prieš deploy)</li>
+      <li>iki 09-21 — Claude: produkto ciklų lentelė + istorinis R_due baseline 2024–2026 (recon) + kasos soft opt-out laukas (spec Raimiui prieš deploy)</li>
       <li>iki 09-21 — Claude: antkainio formulės peržiūra analitika-langas</li>
     </ul>
   </div>

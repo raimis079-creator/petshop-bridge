@@ -31,7 +31,10 @@ Ads pusės konversijos NEatitinka WC (S1681: ~2 vs 13) — offline įkėlimas da
 - Vartų B riba: avarinė €35 ✓; mastelio 50 % CM12 = €5–7 (Exclusion/Josera) / €10–12 (Animonda/AV) ✗. **Dabartinis PMax CAC 2–3× viršija mastelio ribą.** Mastelis biudžetu (€1,3 k → €4 k/mėn.) tokiu CAC = pinigų deginimas.
 - Kačių PMax ima 50 % spend, o katės — ne 2027 spearhead ir R60 mažesnis → pirmas biudžeto perskirstymo kandidatas.
 
-## 4. Pristatymo subsidija
+## 4. Pristatymo subsidija — PATAISYTA (recon `s1684_md`)
+**Klientas MOKA.** WC nuo T-0: paštomatas vid. €0,96 (44 užs.), kurjeris €3,30 (6), LP €1,19 (3) → €65 už 53 užs.; vežėjo savikaina vid. €2,24 → grynoji subsidija ~€1,3/užs. (~3,5 % pajamų), ne 5,4 %. `ps_fakt_uzsakymai.pristatymas_ct`=0 — mapping'o ypatybė (taisytina WS3). Istorija `pristatymas_paimta_ct` vid. €8,12 (3 591 užs. nuo 2025-09) — vienetai tikrintini. Toliau — sena (klaidinga) versija:
+
+### 4a. (sena)
 - `ps_fakt_uzsakymai.pristatymas_ct` = 0 visuose 46 (klientas nemoka arba laukas nepildomas — patikrinti WC `_shipping_total` vs fakt; free_shipping metodo su min suma nerasta — Venipak/LP tarifai, o ne free_shipping).
 - Vežėjo savikaina `ps_fakt_siuntos.kaina_vezejo_ct`: 41 siuntos, **vid. €2,24**, viso €92 → **~5,4 % pajamų** (AOV €36,9). Per 12 mėn. naujam klientui (~2,7 užs.) ≈ €6 iš CM12.
 
