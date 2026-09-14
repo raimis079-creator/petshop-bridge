@@ -1,0 +1,207 @@
+{
+ "v": "dep-104622",
+ "kurimas": 200,
+ "sid": 5730,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 k",
+  "kan": [
+   {
+    "k": "mokamas",
+    "s": "",
+    "n": "14",
+    "eur": "430"
+   },
+   {
+    "k": "direct",
+    "s": "",
+    "n": "9",
+    "eur": "488"
+   },
+   {
+    "k": "organika",
+    "s": "",
+    "n": "7",
+    "eur": "190"
+   },
+   {
+    "k": "soc_organika",
+    "s": "",
+    "n": "1",
+    "eur": "46"
+   },
+   {
+    "k": "email",
+    "s": "newsletter",
+    "n": "1",
+    "eur": "45"
+   },
+   {
+    "k": "mokamas",
+    "s": "kaina24",
+    "n": "1",
+    "eur": "20"
+   },
+   {
+    "k": "referral",
+    "s": "",
+    "n": "1",
+    "eur": "41"
+   },
+   {
+    "k": "",
+    "s": "",
+    "n": "1",
+    "eur": "1"
+   },
+   {
+    "k": "mokamas",
+    "s": "kainos",
+    "n": "1",
+    "eur": "44"
+   },
+   {
+    "k": "referral",
+    "s": "chatgpt.com",
+    "n": "1",
+    "eur": "16"
+   }
+  ],
+  "mok": [
+   {
+    "m": "bacs",
+    "i": "mobile",
+    "n": "2"
+   },
+   {
+    "m": "paysera",
+    "i": "",
+    "n": "1"
+   },
+   {
+    "m": "paysera",
+    "i": "desktop",
+    "n": "7"
+   },
+   {
+    "m": "paysera",
+    "i": "mobile",
+    "n": "27"
+   }
+  ],
+  "ats": [
+   {
+    "nr": "35871",
+    "st": "cancelled",
+    "sukurta": "09-09 08:49",
+    "mok": "paysera",
+    "suma": "56.99",
+    "src": "(direct)/typein",
+    "past": [
+     "15:21 S1662: AVPN numeris AVPN011001 nuimtas — PVM sąskaitos tik apmokėtiems (Raimio taisyklė). Apmokėju",
+     "11:12 Email \"Atšauktas užsakymas\" sent.",
+     "11:12 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėt",
+     "11:12 Likutis padidintas: Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais "
+    ]
+   },
+   {
+    "nr": "35873",
+    "st": "cancelled",
+    "sukurta": "09-09 12:33",
+    "mok": "bacs",
+    "suma": "13.31",
+    "src": "com.google.android.gm/referral",
+    "past": [
+     "01:26 Email \"Atšauktas užsakymas\" sent.",
+     "01:26 Email \"Atšauktas užsakymas\" sent.",
+     "01:26 S1675: atšaukta tyliai Raimio nurodymu — klientas užsakė iš naujo ir apmokėjo #1003 (Paysera). La",
+     "01:26 Likutis padidintas: Žarnų pagaliukai, 80 g (11&rarr;15)"
+    ]
+   },
+   {
+    "nr": "35874",
+    "st": "cancelled",
+    "sukurta": "09-09 12:42",
+    "mok": "paysera",
+    "suma": "13.31",
+    "src": "com.google.android.gm/referral",
+    "past": [
+     "15:21 S1662: AVPN numeris AVPN011004 nuimtas — PVM sąskaitos tik apmokėtiems (Raimio taisyklė). Apmokėju",
+     "13:59 Likutis padidintas rankiniu būdu S1661: Žarnų pagaliukai, 80 g +4 (10→14). Atšaukimo metu automati",
+     "13:38 Email \"Atšauktas užsakymas\" sent.",
+     "13:38 Atšaukta rankiniu būdu: klientas tam pačiam krepšeliui sukūrė tris užsakymus (#35873 laukia paved"
+    ]
+   },
+   {
+    "nr": "35875",
+    "st": "cancelled",
+    "sukurta": "09-09 12:50",
+    "mok": "paysera",
+    "suma": "13.31",
+    "src": "google/utm",
+    "past": [
+     "15:21 S1662: AVPN numeris AVPN011005 nuimtas — PVM sąskaitos tik apmokėtiems (Raimio taisyklė). Apmokėju",
+     "13:59 Likutis padidintas rankiniu būdu S1661: Žarnų pagaliukai, 80 g +4 (14→18). Atšaukimo metu automati",
+     "13:38 Email \"Atšauktas užsakymas\" sent.",
+     "13:38 Atšaukta rankiniu būdu: klientas tam pačiam krepšeliui sukūrė tris užsakymus (#35873 laukia paved"
+    ]
+   },
+   {
+    "nr": "35876",
+    "st": "cancelled",
+    "sukurta": "09-09 13:27",
+    "mok": "paysera",
+    "suma": "6.15",
+    "src": "(direct)/typein",
+    "past": [
+     "17:14 Email \"Atšauktas užsakymas\" sent.",
+     "17:14 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėt",
+     "17:14 Likutis padidintas: Žarnų pagaliukai, 80 g (18&rarr;19)",
+     "15:21 S1662: AVPN numeris AVPN011006 nuimtas — PVM sąskaitos tik apmokėtiems (Raimio taisyklė). Apmokėju"
+    ]
+   },
+   {
+    "nr": "1004",
+    "st": "cancelled",
+    "sukurta": "09-10 10:25",
+    "mok": "paysera",
+    "suma": "59.99",
+    "src": "/",
+    "past": [
+     "12:51 Email \"Atšauktas užsakymas\" sent.",
+     "12:51 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėt"
+    ]
+   },
+   {
+    "nr": "1005",
+    "st": "cancelled",
+    "sukurta": "09-10 12:34",
+    "mok": "paysera",
+    "suma": "59.99",
+    "src": "/",
+    "past": [
+     "15:51 Email \"Atšauktas užsakymas\" sent.",
+     "15:51 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėt"
+    ]
+   },
+   {
+    "nr": "1016",
+    "st": "cancelled",
+    "sukurta": "09-11 11:19",
+    "mok": "bacs",
+    "suma": "11.72",
+    "src": "google/utm",
+    "past": [
+     "11:49 Email \"Atšauktas užsakymas\" sent.",
+     "11:49 Email \"Atšauktas užsakymas\" sent.",
+     "11:49 Bacs: neapmokėta per 72 val. — atšaukta automatiškai, klientui išsiųstas WC pranešimas (S1676). ",
+     "11:49 ⚠ SARGAS: likutis buvo sumažintas, bet atšaukiant NEGRĮŽO — grąžink rankiniu ir patikrink eilu"
+    ]
+   }
+  ],
+  "e": ""
+ }
+}
