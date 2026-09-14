@@ -26,18 +26,36 @@ add_action('init', function(){
     $e2=date('Y-m-d',strtotime($end.' +92 days'));
     $ch[]=$wpdb->get_row($wpdb->prepare("SELECT %s m, COUNT(*) akt, SUM(EXISTS(SELECT 1 FROM t_mu b WHERE b.kl=a.kl AND b.d>%s AND b.d<=%s)) liko FROM (SELECT DISTINCT kl FROM t_mu WHERE d>DATE_SUB(%s,INTERVAL 90 DAY) AND d<=%s) a",$end,$end,$e2,$end,$end),ARRAY_A); }
   $o['nubyr_ketv']=$ch;
-  // 4. kohortos pagal pirmo maisto pirkimo ketvirtį: grįžo per 90/180/365 d., užs. ir € per 12 mėn.
-  $o['kohortos']=$wpdb->get_results("SELECT CONCAT(YEAR(k.pirmas),'Q',QUARTER(k.pirmas)) q, COUNT(*) kl, SUM(EXISTS(SELECT 1 FROM t_mu b WHERE b.kl=k.kl AND b.d>k.pirmas AND b.d<=DATE_ADD(k.pirmas,INTERVAL 90 DAY))) g90, SUM(EXISTS(SELECT 1 FROM t_mu b WHERE b.kl=k.kl AND b.d>k.pirmas AND b.d<=DATE_ADD(k.pirmas,INTERVAL 180 DAY))) g180, SUM(EXISTS(SELECT 1 FROM t_mu b WHERE b.kl=k.kl AND b.d>k.pirmas AND b.d<=DATE_ADD(k.pirmas,INTERVAL 365 DAY))) g365, ROUND(AVG((SELECT COUNT(*) FROM t_mu b WHERE b.kl=k.kl AND b.d<=DATE_ADD(k.pirmas,INTERVAL 365 DAY))),2) uzs12, ROUND(AVG((SELECT SUM(viso_ct) FROM t_mu b WHERE b.kl=k.kl AND b.d<=DATE_ADD(k.pirmas,INTERVAL 365 DAY)))/100,1) eur12 FROM t_kl k WHERE k.pirmas>='2023-11-01' GROUP BY q ORDER BY q",ARRAY_A);
-  // 5. intervalai tarp maisto užsakymų (grįžtantys), pagal brendą
-  $wpdb->query("DROP TEMPORARY TABLE IF EXISTS t_iv");
-  $wpdb->query("CREATE TEMPORARY TABLE t_iv AS SELECT a.kl, a.brendas, DATEDIFF(a.d,(SELECT MAX(b.d) FROM t_mu b WHERE b.kl=a.kl AND b.d<a.d)) iv FROM t_mu a WHERE a.d>='2024-09-01'");
-  $o['interv']=$wpdb->get_row("SELECT COUNT(*) n, ROUND(AVG(iv)) vid, SUM(iv<=30) d30, SUM(iv BETWEEN 31 AND 60) d60, SUM(iv BETWEEN 61 AND 90) d90, SUM(iv BETWEEN 91 AND 180) d180, SUM(iv>180) d180p FROM t_iv WHERE iv IS NOT NULL",ARRAY_A);
-  $o['interv_brend']=$wpdb->get_results("SELECT brendas b, COUNT(*) n, ROUND(AVG(iv)) vid FROM t_iv WHERE iv IS NOT NULL GROUP BY b HAVING n>=20 ORDER BY n DESC LIMIT 12",ARRAY_A);
-  // 6. negrįžę vs grįžę (pirmas pirkimas 2024-09…2025-08): profilis
-  $o['profilis']=$wpdb->get_results("SELECT (k.uzs>1) grizo, COUNT(*) kl, ROUND(AVG(m.viso_ct)/100,1) pirmo_aov, ROUND(AVG(m.maist_ct/m.viso_ct)*100) maist_pct, ROUND(AVG(m.sku_n),1) sku_n, SUM(m.viso_ct<3000) iki30, SUM(m.viso_ct>=6000) nuo60 FROM t_kl k JOIN t_mu m ON m.kl=k.kl AND m.d=k.pirmas WHERE k.pirmas BETWEEN '2024-09-01' AND '2025-08-31' GROUP BY 1",ARRAY_A);
-  $o['negrizo_brend']=$wpdb->get_results("SELECT m.brendas b, COUNT(*) kl, SUM(k.uzs>1) grizo, ROUND(AVG(m.viso_ct)/100,1) aov FROM t_kl k JOIN t_mu m ON m.kl=k.kl AND m.d=k.pirmas WHERE k.pirmas BETWEEN '2024-09-01' AND '2025-08-31' GROUP BY b HAVING kl>=15 ORDER BY kl DESC LIMIT 15",ARRAY_A);
-  $o['negrizo_gyv']=$wpdb->get_results("SELECT e.gyvunas g, COUNT(DISTINCT k.kl) kl, COUNT(DISTINCT CASE WHEN k.uzs>1 THEN k.kl END) grizo FROM t_kl k JOIN t_mu m ON m.kl=k.kl AND m.d=k.pirmas JOIN $E e ON e.uzsakymas_id=m.uzsakymas_id WHERE k.pirmas BETWEEN '2024-09-01' AND '2025-08-31' AND $FOOD GROUP BY g",ARRAY_A);
-  // 7. kliento vertė: pasiskirstymas pagal užsakymų sk. (visi maisto klientai nuo 2024-09)
-  $o['vertes']=$wpdb->get_results("SELECT CASE WHEN uzs=1 THEN '1' WHEN uzs<=3 THEN '2-3' WHEN uzs<=6 THEN '4-6' WHEN uzs<=12 THEN '7-12' ELSE '13+' END g, COUNT(*) kl, ROUND(SUM(viso_ct)/100) eur, ROUND(AVG(viso_ct)/100) eur_kl FROM t_kl WHERE pirmas>='2024-09-01' GROUP BY g ORDER BY MIN(uzs)",ARRAY_A);
+  // 4–7 PHP pusėje (MariaDB temp lentelės neperatidaromos)
+  $rows=$wpdb->get_results("SELECT kl,d,viso_ct,maist_ct,sku_n,brendas,uzsakymas_id FROM t_mu ORDER BY kl,d",ARRAY_A);
+  $gyv=array(); foreach($wpdb->get_results("SELECT m.uzsakymas_id id, MAX(e.gyvunas) g FROM t_mu m JOIN $E e ON e.uzsakymas_id=m.uzsakymas_id WHERE $FOOD GROUP BY m.uzsakymas_id",ARRAY_A) as $r) $gyv[$r['id']]=$r['g'];
+  $K=array(); foreach($rows as $r){ $K[$r['kl']][]=$r; }
+  $koh=array(); $iv=array('n'=>0,'sum'=>0,'d30'=>0,'d60'=>0,'d90'=>0,'d180'=>0,'d180p'=>0); $ivb=array(); $prof=array(); $nb=array(); $ng=array(); $vert=array();
+  foreach($K as $kl=>$L){ $f=$L[0]; $fd=strtotime($f['d']); $n=count($L); $q=date('Y',$fd).'Q'.ceil(date('n',$fd)/3);
+    // kohortos
+    if($f['d']>='2023-11-01'){ if(!isset($koh[$q])) $koh[$q]=array('kl'=>0,'g90'=>0,'g180'=>0,'g365'=>0,'uzs12'=>0,'eur12'=>0);
+      $c=&$koh[$q]; $c['kl']++; $g90=$g180=$g365=0; $u12=0; $e12=0;
+      foreach($L as $x){ $dd=(strtotime($x['d'])-$fd)/86400; if($dd<=365){$u12++;$e12+=$x['viso_ct'];} if($dd>0){ if($dd<=90)$g90=1; if($dd<=180)$g180=1; if($dd<=365)$g365=1; } }
+      $c['g90']+=$g90;$c['g180']+=$g180;$c['g365']+=$g365;$c['uzs12']+=$u12;$c['eur12']+=$e12; unset($c); }
+    // intervalai
+    for($i=1;$i<$n;$i++){ if($L[$i]['d']<'2024-09-01') continue; $d=(strtotime($L[$i]['d'])-strtotime($L[$i-1]['d']))/86400; $iv['n']++; $iv['sum']+=$d;
+      if($d<=30)$iv['d30']++; elseif($d<=60)$iv['d60']++; elseif($d<=90)$iv['d90']++; elseif($d<=180)$iv['d180']++; else $iv['d180p']++;
+      $b=$L[$i]['brendas']?:'-'; if(!isset($ivb[$b]))$ivb[$b]=array('n'=>0,'sum'=>0); $ivb[$b]['n']++; $ivb[$b]['sum']+=$d; }
+    // profilis pirmo pirkimo 2024-09..2025-08
+    if($f['d']>='2024-09-01' && $f['d']<='2025-08-31'){ $g=$n>1?1:0;
+      if(!isset($prof[$g])) $prof[$g]=array('kl'=>0,'aov'=>0,'maist'=>0,'sku'=>0,'iki30'=>0,'nuo60'=>0,'kraikas'=>0);
+      $prof[$g]['kl']++; $prof[$g]['aov']+=$f['viso_ct']; $prof[$g]['maist']+=$f['maist_ct']/$f['viso_ct']; $prof[$g]['sku']+=$f['sku_n']; if($f['viso_ct']<3000)$prof[$g]['iki30']++; if($f['viso_ct']>=6000)$prof[$g]['nuo60']++;
+      $b=$f['brendas']?:'-'; if(!isset($nb[$b]))$nb[$b]=array('kl'=>0,'grizo'=>0,'aov'=>0); $nb[$b]['kl']++; $nb[$b]['grizo']+=$g; $nb[$b]['aov']+=$f['viso_ct'];
+      $gy=isset($gyv[$f['uzsakymas_id']])?$gyv[$f['uzsakymas_id']]:'-'; if(!isset($ng[$gy]))$ng[$gy]=array('kl'=>0,'grizo'=>0); $ng[$gy]['kl']++; $ng[$gy]['grizo']+=$g; }
+    // vertės
+    if($f['d']>='2024-09-01'){ $g=$n==1?'1':($n<=3?'2-3':($n<=6?'4-6':($n<=12?'7-12':'13+'))); if(!isset($vert[$g]))$vert[$g]=array('kl'=>0,'eur'=>0); $vert[$g]['kl']++; $s=0; foreach($L as $x)$s+=$x['viso_ct']; $vert[$g]['eur']+=$s; }
+  }
+  ksort($koh); foreach($koh as $q=>$c){ $o['kohortos'][]=array('q'=>$q,'kl'=>$c['kl'],'g90'=>$c['g90'],'g180'=>$c['g180'],'g365'=>$c['g365'],'uzs12'=>round($c['uzs12']/$c['kl'],2),'eur12'=>round($c['eur12']/$c['kl']/100,1)); }
+  $o['interv']=$iv; $o['interv']['vid']=$iv['n']?round($iv['sum']/$iv['n']):null;
+  arsort($ivb); foreach(array_slice($ivb,0,12,true) as $b=>$x) if($x['n']>=20) $o['interv_brend'][]=array('b'=>$b,'n'=>$x['n'],'vid'=>round($x['sum']/$x['n']));
+  foreach($prof as $g=>$x) $o['profilis'][]=array('grizo'=>$g,'kl'=>$x['kl'],'pirmo_aov'=>round($x['aov']/$x['kl']/100,1),'maist_pct'=>round($x['maist']/$x['kl']*100),'sku_n'=>round($x['sku']/$x['kl'],1),'iki30'=>$x['iki30'],'nuo60'=>$x['nuo60']);
+  uasort($nb,function($a,$b){return $b['kl']-$a['kl'];}); foreach(array_slice($nb,0,15,true) as $b=>$x) if($x['kl']>=15) $o['negrizo_brend'][]=array('b'=>$b,'kl'=>$x['kl'],'grizo'=>$x['grizo'],'aov'=>round($x['aov']/$x['kl']/100,1));
+  foreach($ng as $g=>$x) $o['negrizo_gyv'][]=array('g'=>$g,'kl'=>$x['kl'],'grizo'=>$x['grizo']);
+  foreach($vert as $g=>$x) $o['vertes'][]=array('g'=>$g,'kl'=>$x['kl'],'eur'=>round($x['eur']/100),'eur_kl'=>round($x['eur']/100/$x['kl']));
   header('Content-Type: application/json'); echo json_encode($o,JSON_UNESCAPED_UNICODE); exit;
 });
