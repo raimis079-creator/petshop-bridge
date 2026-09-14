@@ -1,0 +1,40 @@
+{
+ "v": "dep-105055",
+ "kurimas": 200,
+ "sid": 5731,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 l",
+  "wp-content/mu-plugins/petshop-ga4-serveris.php": [
+   "const PROPERTY = 'properties/346051580';",
+   "return ( is_array( $sa ) && ! empty( $sa['client_email'] ) && ! empty( $sa['private_key'] ) ) ? $sa : null;",
+   "private static function token() {",
+   "if ( ! openssl_sign( $h . '.' . $c, $sig, $sa['private_key'], OPENSSL_ALGO_SHA256 ) ) { return new WP_Error( 'sign', 'openssl_sign' ); }",
+   "public static function ga4_dienos( $nuo, $iki ) {",
+   "$r = wp_remote_post( 'https://analyticsdata.googleapis.com/v1beta/' . self::PROPERTY . ':runReport', array( 'timeout' => 30,"
+  ],
+  "opts": [
+   "ps_dl_atsauktu_valymas_paskutinis | a:4:{s:6:\"laikas\";s:19:\"2026-09-14 03:20:09\";s:11:\"i_siuksline\";i:0;s:9:\"galutin",
+   "ps_fakt_atsargos_schema | 1",
+   "ps_fakt_atsargu_paskutinis | 2026-09-13 | 2639",
+   "ps_gsc_sa | {\"type\": \"service_account\",\n  \"project_id\": \"prefab-envoy-482617-b4\",\n  \"private",
+   "ps_mono_atsaukimas_MONO260828095024 | a:198:{i:0;i:26407;i:1;i:27019;i:2;i:27128;i:3;i:27134;i:4;i:26296;i:5;i:25435;i",
+   "ps_rytas_sargas_pask | a:5:{s:6:\"laikas\";s:19:\"2026-09-14 03:30:01\";s:8:\"raudonos\";a:1:{i:0;a:3:{s:5:\"k",
+   "ps_rytas_sargas_siusta | a:8:{s:32:\"cb1fbc289072998436b890616866e162\";s:10:\"2026-08-28\";s:32:\"9645fd129ac",
+   "ps_s1668_quattro_sand_bak | a:62:{i:16537;a:5:{s:3:\"own\";i:22;s:5:\"stock\";i:0;s:4:\"qrow\";a:13:{s:2:\"id\";s:4:",
+   "ps_s1671_atsargine | a:142:{i:15838;a:4:{s:3:\"own\";s:0:\"\";s:5:\"stock\";s:1:\"6\";s:6:\"status\";s:7:\"insto",
+   "ps_sandelio_uzpildymai | a:443:{i:0;a:3:{s:3:\"pid\";i:14062;s:8:\"sandelis\";s:2:\"zb\";s:6:\"laikas\";s:19:\"202",
+   "ps_sargas_cron_laukiam | a:80:{s:26:\"action_scheduler_run_queue\";s:12:\"every_minute\";s:27:\"ps_esp_cron_pr",
+   "ps_sargas_cron_valandos | 26",
+   "ps_sargas_cron_zinios | a:80:{s:21:\"ps_cart_abandon_check\";i:1789382994;s:26:\"action_scheduler_run_queue",
+   "ps_sargas_pastas | terra@gyvunai.lt",
+   "ps_sargas_siusta | a:34:{s:38:\"fatal:bcbdb6dd79f65bc31ebc909b7e4b49ba\";s:10:\"2026-08-17\";s:38:\"fata",
+   "ps_sargas_start | 1786994616",
+   "ps_sargas_svara | a:3:{s:6:\"laikas\";s:19:\"2026-09-08 08:02:01\";s:6:\"negyvu\";i:43;s:7:\"eilutes\";a:4",
+   "psc_sand_result | {\"_vf_enabled=yes\":1109,\"_zb_enabled=yes\":984,\"related_keys\":[\"_legacy_source\",\""
+  ]
+ }
+}
