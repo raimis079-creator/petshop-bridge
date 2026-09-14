@@ -1,19 +1,23 @@
 {
- "v": "dep-194138",
+ "v": "dep-194614",
  "kurimas": 200,
- "sid": 5789,
+ "sid": 5792,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
  "GO": {
   "v": "S1684 mx",
-  "ver": "1.1.0",
+  "ver": "1.1.1",
   "n": 33,
   "saltiniai": {
-   "ciklai": 30
+   "ciklai": 28,
+   "anketa": 2
   },
-  "pvz": [],
+  "pvz": [
+   "exclusion 7000g ×1 → 50 d.",
+   "ontario 12000g ×1 → 31 d."
+  ],
   "pets_su_svoriu": "73"
  }
 }
