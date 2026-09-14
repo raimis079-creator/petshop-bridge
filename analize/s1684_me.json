@@ -1,0 +1,379 @@
+{
+ "v": "dep-183716",
+ "kurimas": 200,
+ "sid": 5770,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1684 me",
+  "ciklai": {
+   "animonda|1.5-5kg": {
+    "n": 457,
+    "p25": 19,
+    "med": 34,
+    "p75": 57,
+    "due": 34
+   },
+   "josera|11kg+": {
+    "n": 456,
+    "p25": 33,
+    "med": 56,
+    "p75": 100,
+    "due": 56
+   },
+   "animonda|iki1.5kg": {
+    "n": 345,
+    "p25": 28,
+    "med": 41,
+    "p75": 65,
+    "due": 41
+   },
+   "josera|5-11kg": {
+    "n": 292,
+    "p25": 36,
+    "med": 73,
+    "p75": 135,
+    "due": 73
+   },
+   "exclusion|11kg+": {
+    "n": 257,
+    "p25": 39,
+    "med": 62,
+    "p75": 96,
+    "due": 62
+   },
+   "exclusion|5-11kg": {
+    "n": 249,
+    "p25": 55,
+    "med": 76,
+    "p75": 118,
+    "due": 76
+   },
+   "exclusion|1.5-5kg": {
+    "n": 155,
+    "p25": 23,
+    "med": 38,
+    "p75": 66,
+    "due": 38
+   },
+   "ontario|iki1.5kg": {
+    "n": 96,
+    "p25": 26,
+    "med": 40,
+    "p75": 61,
+    "due": 40
+   },
+   "miamor|nezinoma": {
+    "n": 85,
+    "p25": 23,
+    "med": 33,
+    "p75": 80,
+    "due": 33
+   },
+   "animonda|5-11kg": {
+    "n": 65,
+    "p25": 29,
+    "med": 33,
+    "p75": 60,
+    "due": 33
+   },
+   "quattro|1.5-5kg": {
+    "n": 62,
+    "p25": 23,
+    "med": 37,
+    "p75": 72,
+    "due": 37
+   },
+   "hikari|iki1.5kg": {
+    "n": 55,
+    "p25": 96,
+    "med": 137,
+    "p75": 217,
+    "due": 137
+   },
+   "quattro|11kg+": {
+    "n": 49,
+    "p25": 31,
+    "med": 50,
+    "p75": 81,
+    "due": 50
+   },
+   "miamor|iki1.5kg": {
+    "n": 48,
+    "p25": 22,
+    "med": 35,
+    "p75": 84,
+    "due": 35
+   },
+   "ontario|1.5-5kg": {
+    "n": 31,
+    "p25": 20,
+    "med": 43,
+    "p75": 90,
+    "due": 43
+   },
+   "animonda|11kg+": {
+    "n": 30,
+    "p25": 32,
+    "med": 38,
+    "p75": 46,
+    "due": 38
+   },
+   "quattro|5-11kg": {
+    "n": 28,
+    "p25": 51,
+    "med": 91,
+    "p75": 104,
+    "due": 91
+   },
+   "ambrosia|11kg+": {
+    "n": 28,
+    "p25": 23,
+    "med": 30,
+    "p75": 44,
+    "due": 30
+   },
+   "josera|1.5-5kg": {
+    "n": 27,
+    "p25": 34,
+    "med": 56,
+    "p75": 103,
+    "due": 56
+   },
+   "monge|1.5-5kg": {
+    "n": 23,
+    "p25": 25,
+    "med": 39,
+    "p75": 50,
+    "due": 39
+   },
+   "rasco|11kg+": {
+    "n": 23,
+    "p25": 42,
+    "med": 50,
+    "p75": 57,
+    "due": 50
+   },
+   "royal-canin|1.5-5kg": {
+    "n": 22,
+    "p25": 24,
+    "med": 39,
+    "p75": 76,
+    "due": 39
+   },
+   "royal-canin|5-11kg": {
+    "n": 16,
+    "p25": 98,
+    "med": 115,
+    "p75": 197,
+    "due": 115
+   },
+   "katrinex|nezinoma": {
+    "n": 16,
+    "p25": 22,
+    "med": 75,
+    "p75": 139,
+    "due": 75
+   },
+   "prins|1.5-5kg": {
+    "n": 15,
+    "p25": 35,
+    "med": 46,
+    "p75": 83,
+    "due": 46
+   },
+   "apollo|1.5-5kg": {
+    "n": 15,
+    "p25": 29,
+    "med": 46,
+    "p75": 74,
+    "due": 46
+   }
+  },
+  "ciklai_brendas": {
+   "animonda": {
+    "n": 897,
+    "p25": 23,
+    "med": 38,
+    "p75": 60
+   },
+   "josera": {
+    "n": 777,
+    "p25": 33,
+    "med": 61,
+    "p75": 110
+   },
+   "exclusion": {
+    "n": 671,
+    "p25": 41,
+    "med": 62,
+    "p75": 97
+   },
+   "ontario": {
+    "n": 142,
+    "p25": 26,
+    "med": 43,
+    "p75": 79
+   },
+   "quattro": {
+    "n": 140,
+    "p25": 28,
+    "med": 50,
+    "p75": 87
+   },
+   "miamor": {
+    "n": 137,
+    "p25": 23,
+    "med": 34,
+    "p75": 86
+   },
+   "hikari": {
+    "n": 64,
+    "p25": 85,
+    "med": 131,
+    "p75": 217
+   },
+   "royal-canin": {
+    "n": 43,
+    "p25": 37,
+    "med": 64,
+    "p75": 108
+   },
+   "monge": {
+    "n": 42,
+    "p25": 26,
+    "med": 38,
+    "p75": 51
+   },
+   "rasco": {
+    "n": 33,
+    "p25": 40,
+    "med": 48,
+    "p75": 56
+   },
+   "apollo": {
+    "n": 32,
+    "p25": 29,
+    "med": 43,
+    "p75": 71
+   },
+   "ambrosia": {
+    "n": 31,
+    "p25": 26,
+    "med": 30,
+    "p75": 49
+   },
+   "prins": {
+    "n": 30,
+    "p25": 45,
+    "med": 63,
+    "p75": 94
+   }
+  },
+  "R_due_baseline": {
+   "pirmu_uzs": 2818,
+   "R_due": 16.1,
+   "R60": 14.2,
+   "R90": 19.3,
+   "tolerancija_d": 14
+  },
+  "R_due_brendas": {
+   "josera": {
+    "n": 1139,
+    "due_vid": 64,
+    "R_due": 12.1,
+    "R60": 9.1
+   },
+   "animonda": {
+    "n": 369,
+    "due_vid": 37,
+    "R_due": 30.6,
+    "R60": 33.9
+   },
+   "exclusion": {
+    "n": 362,
+    "due_vid": 62,
+    "R_due": 22.1,
+    "R60": 16.3
+   },
+   "quattro": {
+    "n": 161,
+    "due_vid": 52,
+    "R_due": 16.8,
+    "R60": 17.4
+   },
+   "hikari": {
+    "n": 124,
+    "due_vid": 136,
+    "R_due": 10.5,
+    "R60": 2.4
+   },
+   "royal-canin": {
+    "n": 122,
+    "due_vid": 90,
+    "R_due": 6.6,
+    "R60": 4.1
+   },
+   "miamor": {
+    "n": 115,
+    "due_vid": 33,
+    "R_due": 16.5,
+    "R60": 18.3
+   },
+   "ontario": {
+    "n": 105,
+    "due_vid": 41,
+    "R_due": 14.3,
+    "R60": 15.2
+   },
+   "monge": {
+    "n": 56,
+    "due_vid": 38,
+    "R_due": 10.7,
+    "R60": 12.5
+   },
+   "katrinex": {
+    "n": 52,
+    "due_vid": 75,
+    "R_due": 9.6,
+    "R60": 5.8
+   }
+  },
+  "ads_opt": {
+   "ps_ads_paskutinis": {
+    "kada": "2026-09-14 02:01:31",
+    "eiluciu": 43,
+    "st": {
+     "new": 3,
+     "upd": 8,
+     "same": 32,
+     "bad": 0
+    }
+   },
+   "ps_ads_recon": {
+    "kada": "2026-09-12 16:46:59",
+    "dydis": 592,
+    "body": "{\"v\":\"PMAX D BUKLE v1.2\",\"kada\":\"2026-09-12T13:46:56.237Z\",\"grupes\":[{\"id\":\"6506464671\",\"vardas\":\"Generic | Šunų maistas\",\"st\":\"ENABLED\",\"ft\":{\"HEADLINE\":15,\"DESCRIPTION\":7,\"LONG_HEADLINE\":6,\"YOUTUBE_VIDEO\":1,\"AD_IMAGE\":9,\"MARKETING_IMAGE\":3,\"SQUARE_MARKETING_IMAGE\":10,\"PORTRAIT_MARKETING_IMAGE\":7},\"viso\":58,\"lf\":0}],\"kampanijos\":[{\"id\":\"21472017542\",\"vardas\":\"P-max | LT | petshop.lt\",\"st\":\"ENABLED\",\"biudzetas\":\"40000000\",\"mc\":null,\"feed\":null},{\"id\":\"21565450990\",\"vardas\":\"P-max| All LT | Kačių maistas\",\"st\":\"PAUSED\",\"biudzetas\":\"20000000\",\"mc\":null,\"feed\":null}],\"kates\":\"PAUSED\"}"
+   },
+   "ps_ads_offline_paskutinis": null
+  },
+  "ads_order_meta": [
+   {
+    "k": "_ps_gclid",
+    "n": "9",
+    "pask": "EAIaIQobChMIt4PTw43rlgMVPBeiAx2v9DrJEAMYASAAEgJsRvD_BwE"
+   }
+  ],
+  "ads_cron": [
+   {
+    "h": "ps_fakt_reklama_portalai",
+    "kada": "2026-09-15 01:20"
+   }
+  ],
+  "ads_failai": {
+   "petshop-ads-offline.php": "04708b969ac697f2a2eccbfb93b415b2"
+  }
+ }
+}
