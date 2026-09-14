@@ -1,0 +1,95 @@
+{
+ "v": "dep-115015",
+ "kurimas": 200,
+ "sid": 5739,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 t",
+  "buvo": {
+   "title": "VENIPAK paštomatai/atsiėmimo punktai",
+   "description": "Išsiuntimas per 1-3 darbo dienas",
+   "fee": "2.47",
+   "minimum_weight": "",
+   "maximum_weight": "24.90",
+   "min_amount_for_free_shipping": "",
+   "ignore_shipping_classes": ""
+  },
+  "dabar": {
+   "title": "VENIPAK paštomatai/atsiėmimo punktai",
+   "description": "Išsiuntimas per 1-3 darbo dienas",
+   "fee": "3.59",
+   "minimum_weight": "",
+   "maximum_weight": "24.90",
+   "min_amount_for_free_shipping": "",
+   "ignore_shipping_classes": ""
+  },
+  "test": {
+   "LV": {
+    "zona": "Baltijos šalys, be LIetuvos",
+    "tarifai": [
+     {
+      "m": "VENIPAK paštomatai/atsiėmimo punktai",
+      "cost": "3.59",
+      "tax": 0,
+      "viso": 3.59
+     }
+    ],
+    "preke": "Žaislas šuniui - Coockoo Bobble - linksmas oranžinis paukštis, 8.5 cm",
+    "kaina_su_pvm": 10.32,
+    "kaina_be": 10.322314,
+    "kaina_reg": "12.49"
+   },
+   "EE": {
+    "zona": "Baltijos šalys, be LIetuvos",
+    "tarifai": [
+     {
+      "m": "VENIPAK paštomatai/atsiėmimo punktai",
+      "cost": "3.59",
+      "tax": 0,
+      "viso": 3.59
+     }
+    ],
+    "preke": "Žaislas šuniui - Coockoo Bobble - linksmas oranžinis paukštis, 8.5 cm",
+    "kaina_su_pvm": 10.32,
+    "kaina_be": 10.322314,
+    "kaina_reg": "12.49"
+   },
+   "LT": {
+    "zona": "Lietuva",
+    "tarifai": [
+     {
+      "m": "VENIPAK Kurjeris",
+      "cost": "3.30",
+      "tax": 0.693,
+      "viso": 3.99
+     },
+     {
+      "m": "VENIPAK paštomatai/atsiėmimo punktai",
+      "cost": "1.78",
+      "tax": 0.3738,
+      "viso": 2.15
+     },
+     {
+      "m": "LP Express",
+      "cost": "1.78",
+      "tax": 0.3738,
+      "viso": 2.15
+     },
+     {
+      "m": "LP Express kurjeris",
+      "cost": "3.3",
+      "tax": 0.693,
+      "viso": 3.99
+     }
+    ],
+    "preke": "Žaislas šuniui - Coockoo Bobble - linksmas oranžinis paukštis, 8.5 cm",
+    "kaina_su_pvm": 12.49,
+    "kaina_be": 10.322314,
+    "kaina_reg": "12.49"
+   }
+  }
+ }
+}
