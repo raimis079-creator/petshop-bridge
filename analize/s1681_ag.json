@@ -1,0 +1,19 @@
+{
+ "v": "dep-153910",
+ "kurimas": 200,
+ "sid": 5754,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 ag",
+  "fn": "ies su\n\t *  `$u = null`, `$kanalas = 'venipak'`. Grąžina [raktas, tekstas] `pranesimas()` žodynui. */\n\tpublic static function issiusta( $o, $u, $sekimo, $dalis = '', $kanalas = 'web' ) {\n\t\tif ( in_array( $o->get_status(), array( 'completed', 'lp-delivered', 'lp-on-the-way' ), true ) ) { return array( 'dl_info', 'jau išsiųstas' ); }\n\t\t$kas = $u && ! empty( $u->display_name ) ? $u->display_name : ( 'venipak' === $kanalas ? 'Venipak' : ( 'lp' === $kanalas ? 'LP Express' : 'sistema' ) );\n\t\t$f = self::faktai( $o, self::zurnalas( array( $o->get_id() ) ) );\n\t\tif ( $dalis && empty( $f['dalys'][ $dalis ] ) ) { return array( 'dl_klaida', 'tokios dalies nėra' ); }\n\t\t$iss = $f['dalys_issiusta']; $dabar = current_time( 'mysql' );\n\t\t$jau = $dalis && ! empty( $f['dalys'][ $dalis ]['issiusta'] );\n\t\t$visos = true; foreach ( $f['dalys'] as $k => $p ) { if ( $p && empty( $iss[ $k ] ) ) { $visos = false; } }\n\t\tif ( $jau && ! $visos ) { return array( 'dl_info', ( 'av' === $dalis ? 'AV dalis' : self::vardas( $dalis ) ) . ' jau pažymėta išsiųsta' ); }\n\t\tif ( ! $jau && $dalis && ( 'av' === $dalis ? ! $f['dalys']['av']['siunta'] : empty( $f['dalys'][ $dalis ]['perduota'] ) ) ) { return array( 'dl_klaida', ( 'av' === $dalis ? 'AV siunta dar be lipduko' : 'dar neužsakyta iš ' . self::vardas( $dalis ) ) ); }\n\t\t// v3.10.6 (Raimis 09-04): siunta klientui — tik su registruotu numeriu (lipduku); „be lipdukų“ tik į AV.\n\t\tforeach ( $f['dalys'] as $k => $p ) {\n\t\t\tif ( ! $p || ! empty( $iss[ $k ] ) || ( $dalis && $k !== $dalis ) ) { continue; }\n\t\t\tif ( 'av' === $k ? empty( $p['siunta'] ) : empty( $p['nr'] ) ) { return array( 'dl_klaida', 'av' === $k ? 'AV siunta dar be lipduko' : self::vardas( $k ) . ' — siuntos numerio nėra, pirma lipdukas' ); }\n\t\t}\n\t\t// K4: dalies būsena — pažymim šią dalį; kitos dalys — kaip yra. Jei visos jau pažymėtos, o užsakymas ne completed — kartojam užbaigimą (v3.10.1).\n\t\tif ( ! $jau ) {\n\t\t\t$zym = array( $dalis ? $dalis : null ); if ( ! $dalis ) { $zym = array(); foreach ( $f['dalys'] as $k => $p ) { if ( $p ) { $zym[] = $k; } } }\n\t\t\tforeach ( $zym as $k ) { if ( $k ) { $iss[ $k ] = array( 'laikas' => $dabar, 'kas' => $kas, 'kanalas' => $kanalas ); } }\n\t\t\t$o->update_meta_data( '_ps_dalys_issiusta', wp_json_encode( $iss ) ); $o->save();\n\t\t}\n\t\t$truksta = array(); foreach ( $f['dalys'] as $k => $p ) { if ( $p && empty( $iss[ $k ] ) ) { $truksta[] = self::vardas( $k ); } }\n\t\t$kam = 'av' === $dalis ? 'AV siunta' : ( $dalis ? self::vardas( $dalis ) : 'visos dalys' );\n\t\t$laiskas = $sekimo ? '' : 'klientui nepranešta (varnelė nuim",
+  "calls": [
+   "if ( $ids ) { $ok = array(); $ne = array(); foreach ( $ids as $oid ) { $oo = wc_get_order( $oid ); if ( ! $oo ) { continue; } $r = self::issiusta( $oo, $u, ! empty( $_GET['sekimo'] ), $dalis ); if ( in_array( $r[0], array( 'dl_issiusta', 'dl_dalis' ), true ) ) { $ok[] = '#' . $oo->get_order_number()",
+   "else { $rez = self::issiusta( $o, $u, ! empty( $_GET['sekimo'] ), $dalis ); }",
+   "$r = self::issiusta( $oo, null, true, $dalis, 'venipak' );",
+   "$r = self::issiusta( $oo, null, true, 'av', 'lp' );"
+  ]
+ }
+}
