@@ -123,8 +123,8 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
       <table>
         <tr><th>Darbas</th><th>Kas</th><th>Kada</th><th>Būsena</th></tr>
         <tr><td>Produkto ciklų lentelė + istorinis R_due baseline — <b>atlikta 09-14</b>: `CIKLAI_ir_R_due_baseline_s1684.md` (Animonda due 34–41 d., Josera 56–73, Exclusion 38–76, Hikari 137; R_due 16,1 %, Josera 12 %, Exclusion 22 %, Animonda 31 %)</td><td>Claude</td><td>09-14</td><td><span class="tag ok">atlikta</span></td></tr>
-        <tr><td>„Pakartoti tą patį maišą vienu paspaudimu" — post_purchase_14d → refill_due langai ~20 / 30–35 / 45–50 d. pagal ciklą; `?ps_atkurti` tipo nuoroda</td><td>Claude įjungia · Raimis tekstai</td><td>spalio 2–3 sav.</td><td><span class="tag wait">laukia WS4</span></td></tr>
-        <tr><td>90/10 holdout nuo pirmo laiško (permanentinis; kohorta prieš/po)</td><td>Claude</td><td>kartu</td><td><span class="tag wait"></span></td></tr>
+        <tr><td>„Pakartoti tą patį" — <b>pagrindas gyvai 09-14</b>: refill variklis (`ps_refill_tracking`, 38 įrašų, T-5 laiškas su add-to-cart) + `petshop-lifecycle-vartai.php` v1.0.1: ciklai iš istorijos (backfill 33), soft opt-out vartai (atidėta iki kasos lauko), 90/10 holdout. Liko: kasos laukas (WS4) → laiškai pradeda eiti; tekstai `refill_due`/`post_purchase_14d` — Raimis (dabar draft)</td><td>Claude · Raimis tekstai</td><td>09-14 / iki 09-21</td><td><span class="tag go">gyvai, laukia WS4</span></td></tr>
+        <tr><td>90/10 holdout nuo pirmo laiško (permanentinis; kohorta prieš/po) — `Petshop_Lifecycle_Vartai::holdout()`, priežastis `holdout_10` ps_email_jobs</td><td>Claude</td><td>09-14</td><td><span class="tag ok">gyvai</span></td></tr>
         <tr><td>Josera fokusas: 39 % naujų, R60 9 % — atskiras Josera 20–50 d. langas su kiekio bonuso pasiūlymu (R_due Josera = 50 d.)</td><td>Claude · Raimis pasiūlymas</td><td>lapkritis</td><td><span class="tag wait"></span></td></tr>
         <tr><td>win_back_60/90 (>60 d. — win-back, ne refill)</td><td>Claude</td><td>lapkritis–gruodis</td><td><span class="tag dim">etapas 3</span></td></tr>
         <tr><td>legacy_reactivation_l1: 561 prenumeratoriams — įprastas laiškas su opt-out; ~5 100 istorinių be žymos — Raimio sprendimas 09-14: VIENAS informacinis laiškas (svetainė atsinaujino, dienos norma kg ir €), be reklamos, su opt-out, per Sender dalimis, žurnale `legacy_info_l1`; refill/win-back jiems — ne</td><td>Raimis tekstas · Claude siuntimas</td><td>spalis</td><td><span class="tag go">nuspręsta</span></td></tr>
@@ -325,7 +325,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
       <li>09-15–09-20 — MC review → feed-only PMax „Šunų maistas"; biudžetas nekeliamas</li>
       <li>iki 09-21 — soft opt-out kasoje gyvai (Raimio žodžiai → deploy → testas)</li>
       <li>✓ 09-14 — antkainio/CAC matematika analitika-langas v1.1.0 gyvai (CAC €14,20 už naują)</li>
-      <li>09-22–10-05 — „Pakartoti tą patį" + refill langai pagal ciklų lentelę + 90/10 holdout</li>
+      <li>✓ 09-14 — „Pakartoti tą patį" pagrindas: ciklai + vartai + holdout gyvai; laiškai pradės eiti po kasos soft opt-out (WS4)</li>
       <li>Ne dabar: video, SEO, prieglaudos, referral, katės</li>
     </ul>
     <h3 style="margin-top:10px">Artimiausi 7 dienos (sena)</h3>
