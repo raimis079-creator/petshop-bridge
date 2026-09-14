@@ -1,0 +1,33 @@
+{
+ "v": "dep-192903",
+ "kurimas": 200,
+ "sid": 5784,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1684 ms",
+  "md5": "b8a772b71172754b47d1cfd5492bbc02",
+  "heartbeat": 200,
+  "bf": {
+   "n": 33,
+   "keista": 33,
+   "pvz": [
+    "exclusion 2000g: 30→38",
+    "josera 10000g: 60→73",
+    "josera 270g: 14→61",
+    "josera 270g: 14→61",
+    "josera 12500g: 60→56",
+    "exclusion 2000g: 30→38"
+   ]
+  },
+  "po": [
+   {
+    "status": "active",
+    "n": "38",
+    "mn": "2026-09-21"
+   }
+  ]
+ }
+}
