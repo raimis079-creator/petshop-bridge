@@ -1,0 +1,93 @@
+{
+ "v": "dep-072232",
+ "kurimas": 200,
+ "sid": 5711,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1680 g",
+  "preke": [
+   16298,
+   "Ruda stirnos koja, 1 vnt.",
+   "0.11",
+   112,
+   ""
+  ],
+  "cart": "ok",
+  "rates": [
+   "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris 3.30",
+   "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai 1.78",
+   "woo_lithuaniapost_lpexpress_terminal:12 LP Express 1.78",
+   "woo_lithuaniapost_lpexpress_terminal:15 LP Express kurjeris 3.3"
+  ],
+  "zona": "Lietuva",
+  "metodai": [
+   "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris → shopup_venipak_shipping_courier_method:2 3.30",
+   "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai → shopup_venipak_shipping_pickup_method:3 1.78",
+   "shopup_venipak_shipping_courier_method:6 VENIPAK Kurjeris → ",
+   "shopup_venipak_shipping_courier_method:7 VENIPAK Kurjeris → ",
+   "shopup_venipak_shipping_courier_method:8 VENIPAK Kurjeris → ",
+   "woo_lithuaniapost_lpexpress_terminal:12 LP Express → woo_lithuaniapost_lpexpress_terminal:12 1.78",
+   "woo_lithuaniapost_lpexpress_terminal:15 LP Express kurjeris → woo_lithuaniapost_lpexpress_terminal:15 3.3"
+  ],
+  "kg": 0.11,
+  "riba": 25,
+  "hide_fn": [
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/themes/flatsome-child/functions.php",
+   81
+  ],
+  "hide_src": "function petshop_hide_parcel_if_courier_only( $rates, $package ) {\n\n    $venipak_courier = 'shopup_venipak_shipping_courier_method';\n    $venipak_pickup  = 'shopup_venipak_shipping_pickup_method';\n\n    if ( class_exists( 'Petshop_Fulfillment_Source' ) ) {\n\n        $has_venipak_only = false;\n        $has_courier_only = false;\n\n        foreach ( $package['contents'] as $item ) {\n            $pid = $item['product_id'];\n            $res = Petshop_Fulfillment_Source::resolve( (int) $pid );\n\n            if ( ! empty( $res['carrier'] ) && $res['carrier'] === 'venipak' ) {\n                $has_venipak_only = true;\n            }\n            if ( ! empty( $res['courier_only'] ) ) {\n                $has_courier_only = true;\n            }\n            /* DU LAUKAI TAM PACIAM DALYKUI (rasta 2026-08-28).\n               `_fulfillment_courier_only` — senasis, sioje bazeje jo turi 0 prekiu.\n               `_ps_tik_kurjeriu` — ta, kuria RASO katalogo kortele; ja turi 162 prekes.\n               Filtras skaite tik pirmaji, todel varnele kortelėje niekada\n               neveike: preke, netelpanti i pastomata, ji vis tiek siule. */\n            if ( get_post_meta( $pid, '_fulfillment_courier_only', true ) === 'yes'\n                 || get_post_meta( $pid, '_ps_tik_kurjeriu', true ) === 'yes' ) {\n                $has_courier_only = true;\n            }\n        }\n\n        foreach ( $rates as $rate_id => $rate ) {\n            $method_id = $rate->get_method_id();\n\n            if ( $has_venipak_only && $method_id !== $venipak_courier && $method_id !== $venipak_pickup ) {\n                unset( $rates[ $rate_id ] );\n                continue;\n            }\n\n            if ( $has_courier_only && $method_id === $venipak_pickup ) {\n                unset( $rates[ $rate_id ] );\n                continue;\n            }\n        }\n\n        if ( empty( $rates ) ) {\n            return $package['rates'] ?? $rates;\n        }\n\n        return $rates;\n    }\n\n    $has_courier_only = false;\n    $has_zb           = false;\n\n    foreach ( $package['contents'] as $item ) {\n        $product_id = $item['product_id'];\n        if ( get_post_meta( $product_id, '_fulfillment_courier_only', true ) === 'yes'\n             || get_post_meta( $product_id, '_ps_tik_kurjeriu', true ) === 'yes' ) {\n            $has_courier_only = true;\n        }\n        if ( get_post_meta( $product_id, '_zb_enabled', true ) === 'yes' ) {\n            $has_zb = true;\n        }\n    }\n\n    $hide_if_courier = array( $venipak_pickup );\n    $hide_if_zb      = array( 'woo_lithuaniapost_lpexpress_terminal' );\n\n    foreach ( $rates as $rate_id => $rate ) {\n        $method_id = $rate->get_method_id();\n\n        if ( $has_courier_only && in_array( $method_id, $hide_if_courier ) ) {\n            unset( $rates[ $rate_id ] );\n            continue;\n        }\n\n        if ( $has_zb && in_array( $method_id, $hide_if_zb ) ) {\n            unset( $rates[ $rate_id ] );\n        }\n    }\n\n    return $rates;\n}\n",
+  "filtrai": [
+   "10 Woocommerce_Shopup_Venipak_Shipping_Public::show_pickup_if_product_included_in_locker",
+   "10 petshop_hide_parcel_if_courier_only",
+   "20 closure",
+   "100 Petshop_Rinkiniai::pastomato_sargas",
+   "9999 Paysera\\Front\\PayseraDeliveryFrontHtml::filterShippingRatesByCartWeightSuitability",
+   "9223372036854775807 Paysera\\PayseraInit::applyDeliveryGatewayWeightRestrictionsHint"
+  ]
+ },
+ "CL": {
+  "v": "S1680 g",
+  "preke": [
+   16298,
+   "Ruda stirnos koja, 1 vnt.",
+   "0.11",
+   112,
+   ""
+  ],
+  "cart": "ok",
+  "rates": [
+   "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris 3.30",
+   "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai 1.78",
+   "woo_lithuaniapost_lpexpress_terminal:12 LP Express 1.78",
+   "woo_lithuaniapost_lpexpress_terminal:15 LP Express kurjeris 3.3"
+  ],
+  "zona": "Lietuva",
+  "metodai": [
+   "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris → shopup_venipak_shipping_courier_method:2 3.30",
+   "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai → shopup_venipak_shipping_pickup_method:3 1.78",
+   "shopup_venipak_shipping_courier_method:6 VENIPAK Kurjeris → ",
+   "shopup_venipak_shipping_courier_method:7 VENIPAK Kurjeris → ",
+   "shopup_venipak_shipping_courier_method:8 VENIPAK Kurjeris → ",
+   "woo_lithuaniapost_lpexpress_terminal:12 LP Express → woo_lithuaniapost_lpexpress_terminal:12 1.78",
+   "woo_lithuaniapost_lpexpress_terminal:15 LP Express kurjeris → woo_lithuaniapost_lpexpress_terminal:15 3.3"
+  ],
+  "kg": 0.11,
+  "riba": 25,
+  "hide_fn": [
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/themes/flatsome-child/functions.php",
+   81
+  ],
+  "hide_src": "function petshop_hide_parcel_if_courier_only( $rates, $package ) {\n\n    $venipak_courier = 'shopup_venipak_shipping_courier_method';\n    $venipak_pickup  = 'shopup_venipak_shipping_pickup_method';\n\n    if ( class_exists( 'Petshop_Fulfillment_Source' ) ) {\n\n        $has_venipak_only = false;\n        $has_courier_only = false;\n\n        foreach ( $package['contents'] as $item ) {\n            $pid = $item['product_id'];\n            $res = Petshop_Fulfillment_Source::resolve( (int) $pid );\n\n            if ( ! empty( $res['carrier'] ) && $res['carrier'] === 'venipak' ) {\n                $has_venipak_only = true;\n            }\n            if ( ! empty( $res['courier_only'] ) ) {\n                $has_courier_only = true;\n            }\n            /* DU LAUKAI TAM PACIAM DALYKUI (rasta 2026-08-28).\n               `_fulfillment_courier_only` — senasis, sioje bazeje jo turi 0 prekiu.\n               `_ps_tik_kurjeriu` — ta, kuria RASO katalogo kortele; ja turi 162 prekes.\n               Filtras skaite tik pirmaji, todel varnele kortelėje niekada\n               neveike: preke, netelpanti i pastomata, ji vis tiek siule. */\n            if ( get_post_meta( $pid, '_fulfillment_courier_only', true ) === 'yes'\n                 || get_post_meta( $pid, '_ps_tik_kurjeriu', true ) === 'yes' ) {\n                $has_courier_only = true;\n            }\n        }\n\n        foreach ( $rates as $rate_id => $rate ) {\n            $method_id = $rate->get_method_id();\n\n            if ( $has_venipak_only && $method_id !== $venipak_courier && $method_id !== $venipak_pickup ) {\n                unset( $rates[ $rate_id ] );\n                continue;\n            }\n\n            if ( $has_courier_only && $method_id === $venipak_pickup ) {\n                unset( $rates[ $rate_id ] );\n                continue;\n            }\n        }\n\n        if ( empty( $rates ) ) {\n            return $package['rates'] ?? $rates;\n        }\n\n        return $rates;\n    }\n\n    $has_courier_only = false;\n    $has_zb           = false;\n\n    foreach ( $package['contents'] as $item ) {\n        $product_id = $item['product_id'];\n        if ( get_post_meta( $product_id, '_fulfillment_courier_only', true ) === 'yes'\n             || get_post_meta( $product_id, '_ps_tik_kurjeriu', true ) === 'yes' ) {\n            $has_courier_only = true;\n        }\n        if ( get_post_meta( $product_id, '_zb_enabled', true ) === 'yes' ) {\n            $has_zb = true;\n        }\n    }\n\n    $hide_if_courier = array( $venipak_pickup );\n    $hide_if_zb      = array( 'woo_lithuaniapost_lpexpress_terminal' );\n\n    foreach ( $rates as $rate_id => $rate ) {\n        $method_id = $rate->get_method_id();\n\n        if ( $has_courier_only && in_array( $method_id, $hide_if_courier ) ) {\n            unset( $rates[ $rate_id ] );\n            continue;\n        }\n\n        if ( $has_zb && in_array( $method_id, $hide_if_zb ) ) {\n            unset( $rates[ $rate_id ] );\n        }\n    }\n\n    return $rates;\n}\n",
+  "filtrai": [
+   "10 Woocommerce_Shopup_Venipak_Shipping_Public::show_pickup_if_product_included_in_locker",
+   "10 petshop_hide_parcel_if_courier_only",
+   "20 closure",
+   "100 Petshop_Rinkiniai::pastomato_sargas",
+   "9999 Paysera\\Front\\PayseraDeliveryFrontHtml::filterShippingRatesByCartWeightSuitability",
+   "9223372036854775807 Paysera\\PayseraInit::applyDeliveryGatewayWeightRestrictionsHint"
+  ]
+ }
+}
