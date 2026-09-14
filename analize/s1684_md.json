@@ -1,0 +1,168 @@
+{
+ "v": "dep-181748",
+ "kurimas": 200,
+ "sid": 5769,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1684 md",
+  "prist_cols": [
+   "pristatymas_paimta_ct",
+   "pristatymas_savikaina_ct"
+  ],
+  "ist": {
+   "pristatymas_paimta_ct": {
+    "n": "3591",
+    "moka_n": "3591",
+    "eur": "29162",
+    "vid": "8.12"
+   },
+   "pristatymas_savikaina_ct": {
+    "n": "3591",
+    "moka_n": null,
+    "eur": null,
+    "vid": null
+   }
+  },
+  "ist_pagal_men": [],
+  "wc_shipping": null,
+  "wc_shipping_by_method": [
+   {
+    "m": "LP Express",
+    "n": "3",
+    "eur": "3.56"
+   },
+   {
+    "m": "VENIPAK Kurjeris",
+    "n": "6",
+    "eur": "19.80"
+   },
+   {
+    "m": "VENIPAK paštomatai/atsiėmimo punktai",
+    "n": "44",
+    "eur": "42.13"
+   }
+  ],
+  "zones": [
+   {
+    "instance_id": "1",
+    "method_id": "free_shipping",
+    "is_enabled": "0",
+    "zone_name": "Lietuva",
+    "cost": null,
+    "min": "0",
+    "title": "Nemokamas pristatymas"
+   },
+   {
+    "instance_id": "2",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1",
+    "zone_name": "Lietuva",
+    "cost": null,
+    "min": null,
+    "title": "VENIPAK Kurjeris"
+   },
+   {
+    "instance_id": "3",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "is_enabled": "1",
+    "zone_name": "Lietuva",
+    "cost": null,
+    "min": null,
+    "title": "VENIPAK paštomatai/atsiėmimo punktai"
+   },
+   {
+    "instance_id": "5",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "is_enabled": "1",
+    "zone_name": "Baltijos šalys, be LIetuvos",
+    "cost": null,
+    "min": null,
+    "title": "VENIPAK paštomatai/atsiėmimo punktai"
+   },
+   {
+    "instance_id": "6",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1",
+    "zone_name": "Lietuva",
+    "cost": null,
+    "min": null,
+    "title": "VENIPAK Kurjeris"
+   },
+   {
+    "instance_id": "7",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1",
+    "zone_name": "Lietuva",
+    "cost": null,
+    "min": null,
+    "title": "VENIPAK Kurjeris"
+   },
+   {
+    "instance_id": "8",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1",
+    "zone_name": "Lietuva",
+    "cost": null,
+    "min": null,
+    "title": "VENIPAK Kurjeris"
+   },
+   {
+    "instance_id": "9",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "is_enabled": "1",
+    "zone_name": "Neringos savivaldybe",
+    "cost": null,
+    "min": null,
+    "title": "VENIPAK paštomatai/atsiėmimo punktai"
+   },
+   {
+    "instance_id": "10",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1",
+    "zone_name": "Neringos savivaldybe",
+    "cost": null,
+    "min": null,
+    "title": "VENIPAK Kurjeris"
+   },
+   {
+    "instance_id": "12",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "is_enabled": "1",
+    "zone_name": "Lietuva",
+    "cost": "flat",
+    "min": null,
+    "title": "LP Express"
+   },
+   {
+    "instance_id": "13",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "is_enabled": "1",
+    "zone_name": "Neringos savivaldybe",
+    "cost": "flat",
+    "min": null,
+    "title": "LP Express"
+   },
+   {
+    "instance_id": "15",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "is_enabled": "1",
+    "zone_name": "Lietuva",
+    "cost": "weight",
+    "min": null,
+    "title": "LP Express kurjeris"
+   },
+   {
+    "instance_id": "16",
+    "method_id": "local_pickup",
+    "is_enabled": "0",
+    "zone_name": "Lietuva",
+    "cost": "0",
+    "min": null,
+    "title": "Atsiėmimas AV — Liucionių g. 46, Liucionys"
+   }
+  ]
+ }
+}
