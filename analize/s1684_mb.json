@@ -1,7 +1,7 @@
 {
- "v": "dep-174102",
+ "v": "dep-174436",
  "kurimas": 200,
- "sid": 5763,
+ "sid": 5765,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
@@ -58,16 +58,16 @@
     "n_pos": "661"
    },
    {
-    "k": "_cost_price_manual_by",
-    "t": "product",
-    "n": "224",
-    "n_pos": "221"
-   },
-   {
     "k": "_cost_price_manual_at",
     "t": "product",
     "n": "224",
     "n_pos": "224"
+   },
+   {
+    "k": "_cost_price_manual_by",
+    "t": "product",
+    "n": "224",
+    "n_pos": "221"
    },
    {
     "k": "_zb_cost_prev",
@@ -217,65 +217,65 @@
   },
   "ist_sample": [
    {
-    "preke_id": "19312",
+    "preke_id": "19446",
     "variacija_id": "0",
-    "sku": "83118",
+    "sku": "82966",
     "gtin": "",
     "savikainos_saltinis": "",
     "savikaina_ct": null
    },
    {
-    "preke_id": "16162",
+    "preke_id": "35076",
     "variacija_id": "0",
-    "sku": "026122",
+    "sku": "341850-dp",
     "gtin": "",
     "savikainos_saltinis": "",
     "savikaina_ct": null
    },
    {
-    "preke_id": "18655",
+    "preke_id": "19446",
     "variacija_id": "0",
-    "sku": "650954",
+    "sku": "82966",
     "gtin": "",
     "savikainos_saltinis": "",
     "savikaina_ct": null
    },
    {
-    "preke_id": "17995",
+    "preke_id": "19393",
     "variacija_id": "0",
-    "sku": "JOS0982",
+    "sku": "82965",
     "gtin": "",
     "savikainos_saltinis": "",
     "savikaina_ct": null
    },
    {
-    "preke_id": "17115",
+    "preke_id": "18272",
     "variacija_id": "0",
-    "sku": "640149",
+    "sku": "04633",
     "gtin": "",
     "savikainos_saltinis": "",
     "savikaina_ct": null
    },
    {
-    "preke_id": "17903",
+    "preke_id": "18599",
     "variacija_id": "0",
-    "sku": "187218",
+    "sku": "PM37",
     "gtin": "",
     "savikainos_saltinis": "",
     "savikaina_ct": null
    },
    {
-    "preke_id": "16360",
+    "preke_id": "17529",
     "variacija_id": "0",
-    "sku": "2850",
+    "sku": "74074",
     "gtin": "",
     "savikainos_saltinis": "",
     "savikaina_ct": null
    },
    {
-    "preke_id": "17159",
+    "preke_id": "17507",
     "variacija_id": "0",
-    "sku": "48381",
+    "sku": "640366",
     "gtin": "",
     "savikainos_saltinis": "",
     "savikaina_ct": null
@@ -409,121 +409,121 @@
     "eur": 27378,
     "n": 804,
     "padengta_pct": 100,
-    "marza_pct_net": -0.8
+    "marza_pct_net": 16.7
    },
    "josera": {
     "eur": 22848,
     "n": 643,
     "padengta_pct": 100,
-    "marza_pct_net": 0.3
+    "marza_pct_net": 17.6
    },
    "animonda": {
     "eur": 13065,
     "n": 1723,
     "padengta_pct": 100,
-    "marza_pct_net": 19.3
+    "marza_pct_net": 33.3
    },
    "quattro": {
     "eur": 7546,
     "n": 286,
     "padengta_pct": 100,
-    "marza_pct_net": -8.6
+    "marza_pct_net": 10.2
    },
    "royal-canin": {
     "eur": 4430,
     "n": 88,
     "padengta_pct": 100,
-    "marza_pct_net": -4.8
+    "marza_pct_net": 13.4
    },
    "ontario": {
     "eur": 3825,
     "n": 533,
     "padengta_pct": 84,
-    "marza_pct_net": 22.3
+    "marza_pct_net": 35.8
    },
    "hikari": {
     "eur": 3643,
     "n": 266,
     "padengta_pct": 98,
-    "marza_pct_net": 26.9
+    "marza_pct_net": 39.6
    },
    "miamor": {
     "eur": 3642,
     "n": 453,
     "padengta_pct": 96,
-    "marza_pct_net": 22.1
+    "marza_pct_net": 35.6
    },
    "romar": {
     "eur": 3341,
     "n": 366,
     "padengta_pct": 95,
-    "marza_pct_net": 23
+    "marza_pct_net": 36.3
    },
    "ambrosia": {
     "eur": 3161,
     "n": 74,
     "padengta_pct": 100,
-    "marza_pct_net": 14.7
+    "marza_pct_net": 29.5
    },
    "gnatek": {
     "eur": 1749,
     "n": 333,
     "padengta_pct": 93,
-    "marza_pct_net": 41.7
+    "marza_pct_net": 51.8
    },
    "rasco": {
     "eur": 1160,
     "n": 89,
     "padengta_pct": 92,
-    "marza_pct_net": 21.1
+    "marza_pct_net": 34.8
    },
    "monge": {
     "eur": 1153,
     "n": 92,
     "padengta_pct": 90,
-    "marza_pct_net": 11.3
+    "marza_pct_net": 26.7
    },
    "prins": {
     "eur": 1136,
     "n": 26,
     "padengta_pct": 58,
-    "marza_pct_net": 6.3
+    "marza_pct_net": 22.6
    },
    "haumiau": {
     "eur": 760,
     "n": 74,
     "padengta_pct": 54,
-    "marza_pct_net": 17.4
+    "marza_pct_net": 31.7
    },
    "katrinex": {
     "eur": 654,
     "n": 53,
     "padengta_pct": 100,
-    "marza_pct_net": 46
+    "marza_pct_net": 55.4
    },
    "-": {
     "eur": 635,
     "n": 53,
     "padengta_pct": 57,
-    "marza_pct_net": 8.2
+    "marza_pct_net": 24.1
    },
    "duvo": {
     "eur": 618,
     "n": 74,
     "padengta_pct": 64,
-    "marza_pct_net": 36.4
+    "marza_pct_net": 47.5
    },
    "4dogs": {
     "eur": 479,
     "n": 61,
     "padengta_pct": 100,
-    "marza_pct_net": 39.4
+    "marza_pct_net": 49.9
    },
    "churu": {
     "eur": 380,
     "n": 124,
     "padengta_pct": 100,
-    "marza_pct_net": 5.4
+    "marza_pct_net": 21.8
    }
   },
   "gyvunai": {
@@ -531,19 +531,19 @@
     "eur": 75277,
     "n": 4131,
     "padengta_pct": 94,
-    "marza_pct_net": 5.5
+    "marza_pct_net": 21.9
    },
    "kate": {
     "eur": 24054,
     "n": 2167,
     "padengta_pct": 96,
-    "marza_pct_net": 8.4
+    "marza_pct_net": 24.3
    },
    "-": {
     "eur": 4620,
     "n": 350,
     "padengta_pct": 95,
-    "marza_pct_net": 28.2
+    "marza_pct_net": 40.7
    }
   },
   "top_miss": [
@@ -670,52 +670,52 @@
   ],
   "cp_vs_price": [
    {
-    "id": "16311",
-    "cost": "0.61",
-    "price": "1.29",
-    "sku": "723000"
+    "id": "17793",
+    "cost": "0.52",
+    "price": "1.1",
+    "sku": "5904316130114"
    },
    {
-    "id": "15928",
-    "cost": "4.1204",
-    "price": "13.49",
-    "sku": "10528"
+    "id": "17010",
+    "cost": "3.11",
+    "price": "6.82",
+    "sku": "TX-2333"
    },
    {
-    "id": "15069",
-    "cost": "2.98",
-    "price": "5.4",
-    "sku": "5903031441420"
+    "id": "35070",
+    "cost": "7.53",
+    "price": "17.09",
+    "sku": "Rink-skanestai-kojos"
    },
    {
-    "id": "17475",
-    "cost": "1.50",
-    "price": "2.85",
-    "sku": "86938"
+    "id": "18569",
+    "cost": "45.0500",
+    "price": "70.4",
+    "sku": "HYDM11"
    },
    {
-    "id": "16782",
-    "cost": "54.2",
-    "price": "83.8",
-    "sku": "19215"
+    "id": "15116",
+    "cost": "2.3200",
+    "price": "3.72",
+    "sku": "BK-157331"
    },
    {
-    "id": "14970",
-    "cost": "5.9173",
-    "price": "10.74",
-    "sku": "sku167405889365259821"
+    "id": "18804",
+    "cost": "2.9",
+    "price": "4.85",
+    "sku": "100992"
    },
    {
-    "id": "17975",
-    "cost": "36.4490",
-    "price": "52.42",
-    "sku": "JOS0181"
+    "id": "14990",
+    "cost": "6.32",
+    "price": "10.71",
+    "sku": "TX-92576"
    },
    {
-    "id": "18128",
-    "cost": "11.76",
-    "price": "18.99",
-    "sku": "393"
+    "id": "15841",
+    "cost": "1.3600",
+    "price": "2.29",
+    "sku": "711214"
    }
   ],
   "faktai_cost_lines": [
