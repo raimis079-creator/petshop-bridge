@@ -1,0 +1,26 @@
+{
+ "v": "dep-191127",
+ "kurimas": 200,
+ "sid": 5776,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "mk",
+  "md5": "a0587d1fac6273083516816a62467105",
+  "eil": [
+   "118: klientas_naujas TINYINT(1) NOT NULL DEFAULT 1,",
+   "120: dienos_nuo_ankstesnio INT NULL DEFAULT NULL,",
+   "209: klientas_naujas TINYINT(1) NOT NULL DEFAULT 1,",
+   "310: private static function email_hash( $order ) {",
+   "459: 'klientas_naujas'          => $naujas,",
+   "461: 'dienos_nuo_ankstesnio'    => $dienos,",
+   "530: $r['klientas_naujas']  = $naujas;",
+   "673: * @return array(uzsakymo_nr, naujas, dienos_nuo_ankstesnio)",
+   "675: private static function kliento_eile( $hash, $apmoketa ) {",
+   "680: \"SELECT COUNT(*) FROM $t WHERE klientas_email_hash=%s AND apmoketa_at<=%s\", $hash, $apmoketa ) );",
+   "682: \"SELECT MAX(apmoketa_at) FROM $t WHERE klientas_email_hash=%s AND apmoketa_at<=%s\", $hash, $apmoketa ) );"
+  ]
+ }
+}
