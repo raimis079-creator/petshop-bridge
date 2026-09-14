@@ -1,0 +1,166 @@
+{
+ "v": "dep-073423",
+ "kurimas": 200,
+ "sid": 5714,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1680 i",
+  "cookies": [
+   {
+    "name": "wp_woocommerce_session_d446672427955a6d243d454e07bb1b71",
+    "value": "t_3e7bf0671213cb89c720b6c54561dd|1789544154|1789457754|0e2080dfc8471eb061d87aca919e18d0"
+   }
+  ],
+  "checkout_url": "https://petshop.lt/kasa/",
+  "shots": [
+   {
+    "n": "s1680_lp_add",
+    "u": "https://petshop.lt/?add-to-cart=16298",
+    "w": 1440
+   },
+   {
+    "n": "s1680_lp_pries",
+    "u": "https://petshop.lt/kasa/",
+    "w": 1440,
+    "eval": "(()=>{const r=[...document.querySelectorAll('#shipping_method input[type=radio]')].map(i=>i.value+':'+i.checked);const s=document.querySelector('select.woo_lithuaniapost_lpexpress_terminal_id');const s2=document.querySelector('.select2-container');const cs=s?getComputedStyle(s):null;return {radios:r,select:!!s,opts:s?s.options.length:0,disp:cs?cs.display:null,vis:s?(s.offsetWidth>0&&s.offsetHeight>0):null,select2:!!s2,s2vis:s2?(s2.offsetWidth>0):null,jq:typeof jQuery,sel2fn:(typeof jQuery!=='undefined'&&jQuery.fn&&typeof jQuery.fn.select2),li:(()=>{const l=document.querySelector('#shipping_method li.petshop-selected-shipping');return l?l.innerText.slice(0,200):null})()}})()"
+   },
+   {
+    "n": "s1680_lp_po",
+    "u": "https://petshop.lt/kasa/",
+    "w": 1440,
+    "click": "input[value=\"woo_lithuaniapost_lpexpress_terminal:12\"]",
+    "eval": "(()=>{const r=[...document.querySelectorAll('#shipping_method input[type=radio]')].map(i=>i.value+':'+i.checked);const s=document.querySelector('select.woo_lithuaniapost_lpexpress_terminal_id');const s2=document.querySelector('.select2-container');const cs=s?getComputedStyle(s):null;return {radios:r,select:!!s,opts:s?s.options.length:0,disp:cs?cs.display:null,vis:s?(s.offsetWidth>0&&s.offsetHeight>0):null,select2:!!s2,s2vis:s2?(s2.offsetWidth>0):null,jq:typeof jQuery,sel2fn:(typeof jQuery!=='undefined'&&jQuery.fn&&typeof jQuery.fn.select2),li:(()=>{const l=document.querySelector('#shipping_method li.petshop-selected-shipping');return l?l.innerText.slice(0,200):null})()}})()"
+   },
+   {
+    "n": "s1680_lp_mob",
+    "u": "https://petshop.lt/kasa/",
+    "w": 390,
+    "h": 844,
+    "click": "input[value=\"woo_lithuaniapost_lpexpress_terminal:12\"]",
+    "eval": "(()=>{const r=[...document.querySelectorAll('#shipping_method input[type=radio]')].map(i=>i.value+':'+i.checked);const s=document.querySelector('select.woo_lithuaniapost_lpexpress_terminal_id');const s2=document.querySelector('.select2-container');const cs=s?getComputedStyle(s):null;return {radios:r,select:!!s,opts:s?s.options.length:0,disp:cs?cs.display:null,vis:s?(s.offsetWidth>0&&s.offsetHeight>0):null,select2:!!s2,s2vis:s2?(s2.offsetWidth>0):null,jq:typeof jQuery,sel2fn:(typeof jQuery!=='undefined'&&jQuery.fn&&typeof jQuery.fn.select2),li:(()=>{const l=document.querySelector('#shipping_method li.petshop-selected-shipping');return l?l.innerText.slice(0,200):null})()}})()",
+    "full": true
+   }
+  ]
+ },
+ "CL": {
+  "v": "S1680 i",
+  "cookies": [
+   {
+    "name": "wp_woocommerce_session_d446672427955a6d243d454e07bb1b71",
+    "value": "t_e2b52359a48daa18b99565d9256b8f|1789544162|1789457762|6d1031e7d52a4c5bcc7e135c3ab9d02a"
+   }
+  ],
+  "checkout_url": "https://petshop.lt/kasa/",
+  "shots": [
+   {
+    "n": "s1680_lp_add",
+    "u": "https://petshop.lt/?add-to-cart=16298",
+    "w": 1440
+   },
+   {
+    "n": "s1680_lp_pries",
+    "u": "https://petshop.lt/kasa/",
+    "w": 1440,
+    "eval": "(()=>{const r=[...document.querySelectorAll('#shipping_method input[type=radio]')].map(i=>i.value+':'+i.checked);const s=document.querySelector('select.woo_lithuaniapost_lpexpress_terminal_id');const s2=document.querySelector('.select2-container');const cs=s?getComputedStyle(s):null;return {radios:r,select:!!s,opts:s?s.options.length:0,disp:cs?cs.display:null,vis:s?(s.offsetWidth>0&&s.offsetHeight>0):null,select2:!!s2,s2vis:s2?(s2.offsetWidth>0):null,jq:typeof jQuery,sel2fn:(typeof jQuery!=='undefined'&&jQuery.fn&&typeof jQuery.fn.select2),li:(()=>{const l=document.querySelector('#shipping_method li.petshop-selected-shipping');return l?l.innerText.slice(0,200):null})()}})()"
+   },
+   {
+    "n": "s1680_lp_po",
+    "u": "https://petshop.lt/kasa/",
+    "w": 1440,
+    "click": "input[value=\"woo_lithuaniapost_lpexpress_terminal:12\"]",
+    "eval": "(()=>{const r=[...document.querySelectorAll('#shipping_method input[type=radio]')].map(i=>i.value+':'+i.checked);const s=document.querySelector('select.woo_lithuaniapost_lpexpress_terminal_id');const s2=document.querySelector('.select2-container');const cs=s?getComputedStyle(s):null;return {radios:r,select:!!s,opts:s?s.options.length:0,disp:cs?cs.display:null,vis:s?(s.offsetWidth>0&&s.offsetHeight>0):null,select2:!!s2,s2vis:s2?(s2.offsetWidth>0):null,jq:typeof jQuery,sel2fn:(typeof jQuery!=='undefined'&&jQuery.fn&&typeof jQuery.fn.select2),li:(()=>{const l=document.querySelector('#shipping_method li.petshop-selected-shipping');return l?l.innerText.slice(0,200):null})()}})()"
+   },
+   {
+    "n": "s1680_lp_mob",
+    "u": "https://petshop.lt/kasa/",
+    "w": 390,
+    "h": 844,
+    "click": "input[value=\"woo_lithuaniapost_lpexpress_terminal:12\"]",
+    "eval": "(()=>{const r=[...document.querySelectorAll('#shipping_method input[type=radio]')].map(i=>i.value+':'+i.checked);const s=document.querySelector('select.woo_lithuaniapost_lpexpress_terminal_id');const s2=document.querySelector('.select2-container');const cs=s?getComputedStyle(s):null;return {radios:r,select:!!s,opts:s?s.options.length:0,disp:cs?cs.display:null,vis:s?(s.offsetWidth>0&&s.offsetHeight>0):null,select2:!!s2,s2vis:s2?(s2.offsetWidth>0):null,jq:typeof jQuery,sel2fn:(typeof jQuery!=='undefined'&&jQuery.fn&&typeof jQuery.fn.select2),li:(()=>{const l=document.querySelector('#shipping_method li.petshop-selected-shipping');return l?l.innerText.slice(0,200):null})()}})()",
+    "full": true
+   }
+  ]
+ },
+ "shots": {
+  "s1680_lp_add": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=16298",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1680_lp_pries": {
+   "status": 200,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "radios": [
+     "shopup_venipak_shipping_courier_method:2:true",
+     "shopup_venipak_shipping_pickup_method:3:false",
+     "woo_lithuaniapost_lpexpress_terminal:12:false",
+     "woo_lithuaniapost_lpexpress_terminal:15:false"
+    ],
+    "select": false,
+    "opts": 0,
+    "disp": null,
+    "vis": null,
+    "select2": true,
+    "s2vis": true,
+    "jq": "function",
+    "sel2fn": "function",
+    "li": " VENIPAK Kurjeris: 3,99 €"
+   }
+  },
+  "s1680_lp_po": {
+   "status": 200,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [],
+   "clicked": "input[value=\"woo_lithuaniapost_lpexpress_terminal:12\"]",
+   "eval": {
+    "radios": [
+     "shopup_venipak_shipping_courier_method:2:false",
+     "shopup_venipak_shipping_pickup_method:3:false",
+     "woo_lithuaniapost_lpexpress_terminal:12:true",
+     "woo_lithuaniapost_lpexpress_terminal:15:false"
+    ],
+    "select": false,
+    "opts": 0,
+    "disp": null,
+    "vis": null,
+    "select2": true,
+    "s2vis": true,
+    "jq": "function",
+    "sel2fn": "function",
+    "li": "LP Express: 2,15 €"
+   }
+  },
+  "s1680_lp_mob": {
+   "status": 200,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [],
+   "clicked": "input[value=\"woo_lithuaniapost_lpexpress_terminal:12\"]",
+   "eval": {
+    "radios": [
+     "shopup_venipak_shipping_courier_method:2:false",
+     "shopup_venipak_shipping_pickup_method:3:false",
+     "woo_lithuaniapost_lpexpress_terminal:12:true",
+     "woo_lithuaniapost_lpexpress_terminal:15:false"
+    ],
+    "select": true,
+    "opts": 532,
+    "disp": "block",
+    "vis": true,
+    "select2": true,
+    "s2vis": true,
+    "jq": "function",
+    "sel2fn": "function",
+    "li": "LP Express: 2,15 €\n\n\n\nPasirinkti paštomatą\nAibė (Udrop) - Erfurto g. 1\nAkropolis - Ozo g. 25\nAmatų skveras - Švitrigailos g. 13\nBIG - Ukmergės g. 369\nBanginis - P. Lukšio g. 34\nCUP - Upės g. 9\nCircle "
+   }
+  }
+ }
+}
