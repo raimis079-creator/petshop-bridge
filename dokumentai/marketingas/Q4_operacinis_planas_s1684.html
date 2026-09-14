@@ -51,7 +51,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
 <body><main>
 
 <h1>petshop.lt · 2026 Q4 operacinis planas</h1>
-<p class="sub">S1684 · 2026-09-14 · vykdymo dokumentas pagal <code>MARKETINGAS_planas_v1_s1683.md</code> §18 (strategija užrakinta, nebeatidaroma) · duomenys: ANALIZĖ A/B/C s1684 · atnaujinti kas 2 sav.</p>
+<p class="sub">S1684 · 2026-09-14 · v1.1 (po recenzijos: 6 pataisos + pristatymo patikra) · Q4 vykdymo BASELINE — toliau tik faktų/statusų atnaujinimai · vykdymo dokumentas pagal <code>MARKETINGAS_planas_v1_s1683.md</code> §18 (strategija užrakinta, nebeatidaroma) · duomenys: ANALIZĖ A/B/C s1684 · atnaujinti kas 2 sav.</p>
 
 <section class="exec">
   <div class="card">
@@ -66,7 +66,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
       <div class="kpi"><span>N maisto / mėn.</span><b>~120</b><span>dabar ~75–85 (rugsėjo tempas)</span></div>
       <div class="kpi"><span>R60 spalio kohorta</span><b>≥ 20 %</b><span>istorija 13 % (10–19 %, be trendo)</span></div>
       <div class="kpi"><span>Užsakymai / mėn.</span><b>300</b><span>rugsėjo tempas ~230, 2025-09: 322</span></div>
-      <div class="kpi"><span>CAC naujam</span><b>≤ €12</b><span>dabar ~€19 (6 d. imtis)</span></div>
+      <div class="kpi"><span>Blended new-food CAC</span><b>≤ €12</b><span>+ brendo CM guardrail (Excl./Jos. €5–7) · dabar ~€19</span></div>
     </div>
   </div>
   <div class="card">
@@ -74,7 +74,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
     <table style="border:0;font-size:12.5px">
       <tr><td><b>A</b> N ekonomika</td><td><span class="tag go">recon ✓ · vykdyti</span></td></tr>
       <tr><td><b>B</b> CAC ekonomika</td><td><span class="tag stop">CAC 2–3× virš ribos</span></td></tr>
-      <tr><td><b>C</b> Lifecycle</td><td><span class="tag stop">kasoje opt-in nėra</span></td></tr>
+      <tr><td><b>C</b> Lifecycle</td><td><span class="tag stop">kasoje opt-out nėra</span></td></tr>
       <tr><td><b>D</b> Pajėgumas</td><td><span class="tag wait">modelis lapkritį</span></td></tr>
       <tr><td><b>E</b> Dashboard</td><td><span class="tag wait">Claude · spalio 2 sav.</span></td></tr>
     </table>
@@ -92,14 +92,14 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
       <dt>KPI</dt><dd>N maisto/mėn. (kanalas_pirmas · naujas = nėra ps_ist) · CAC = spend / N · Ads konv. ≈ WC ±20 %.</dd>
       <dt>Priklausomybės</dt><dd>MC review (~09-15) · offline konversijų įkėlimas · vartai B riba.</dd>
     </dl>
-    <div class="gate"><div class="g"><b>GO mastelį</b> — CAC ≤ €12 dvi savaites iš eilės IR Ads konv. sutampa su WC → biudžetas +50 %.</div><div class="s"><b>STOP</b> — CAC &gt; €35 tris savaites arba Ads signalo nėra iki 09-30 → PMax pauzė, lieka brand Search + exact testas.</div></div>
+    <div class="gate"><div class="g"><b>GO mastelį</b> — CAC ≤ €12 dvi savaites iš eilės IR Ads konv. sutampa su WC → biudžetas <b>+20–30 %</b> žingsniu, po 1–2 konversijų ciklų naujas vertinimas; +50 % tik kai aiškiai budget-limited ir ekonomika laikosi (naujai PMax ~6 sav. iki išvadų).</div><div class="s"><b>STOP</b> — CAC &gt; €35 tris savaites arba Ads signalo nėra iki 09-30 → PMax pauzė, lieka brand Search + exact testas.</div></div>
     </div>
     <div>
       <table>
         <tr><th>Darbas</th><th>Kas</th><th>Kada</th><th>Būsena</th></tr>
         <tr><td>Offline konversijų patvirtinimas (naktinis 02:01 traukimas 09-15; Ads UI įkėlimų istorija)</td><td>Claude / Raimis</td><td>09-15</td><td><span class="tag wait">kontrolinis taškas</span></td></tr>
         <tr><td>Nauja feed-only retail PMax „Šunų maistas" UI po MC review</td><td>Raimis</td><td>iki 09-20</td><td><span class="tag wait">laukia MC</span></td></tr>
-        <tr><td>Kačių PMax biudžetas → hold, perkelti į šunis (katės ne spearhead, 50 % spend)</td><td>Raimis</td><td>09-15</td><td><span class="tag go">sprendimas</span></td></tr>
+        <tr><td>Kačių PMax — sprendžia ekonomika, ne etiketė: kol offline signalo nėra, biudžeto nedidinti; po spalio CM12/CAC &lt; 2 → stop, ≥ 2 → lieka (net jei katės ne spearhead)</td><td>Raimis</td><td>09-15 / spalis</td><td><span class="tag go">sprendimas</span></td></tr>
         <tr><td>Search exact top prekių pavadinimai (Exclusion Hypo, Josera, Animonda GranCarno) €5/d testas</td><td>Raimis / Claude (raktažodžiai iš ps_ist)</td><td>spalis</td><td><span class="tag wait">test</span></td></tr>
         <tr><td>Prieglaudų/veisėjų sąrašas (LT, šunys) + pasiūlymas prekėmis (skanėstų dėžė naujam šeimininkui)</td><td>Raimis sprendžia formatą · Claude sąrašą</td><td>lapkritis</td><td><span class="tag wait">build</span></td></tr>
         <tr><td>Skanėstų tipų puslapiai + šėrimo skaičiuoklė kaip SEO/N įrankis (pagrindas s1678)</td><td>Claude</td><td>gruodis</td><td><span class="tag dim">later</span></td></tr>
@@ -109,15 +109,15 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
 </div>
 
 <div class="ws">
-  <div class="ws-h"><span class="code">2</span><h3>Retention engine — R60</h3><span class="tag stop">blokuota: sutikimai</span><span class="note">Savininkas: Claude (įjungimas, langai) · Raimis (tekstai, teisinis sprendimas)</span></div>
+  <div class="ws-h"><span class="code">2</span><h3>Retention engine — R60</h3><span class="tag stop">blokuota: opt-out kasoje</span><span class="note">Savininkas: Claude (įjungimas, langai) · Raimis (tekstai, teisinis sprendimas)</span></div>
   <div class="ws-b">
     <div><dl>
       <dt>Tikslas Q4</dt><dd>Spalio kohortos R60 ≥ 20 % (istorija 13 %); lifecycle etapai 1+2 gyvai su 90/10 holdout.</dd>
-      <dt>Būsena 09-14</dt><dd>15 srautų (`ps_email_content`) parašyti, visi <b>draft</b>; `ps_email_jobs` tuščia. Sutikimų: 561 (eShoprent prenumeratoriai) + 7 nauji; kasoje opt-in lauko <b>nėra</b> → nauji klientai neadresuojami. Refill = tiesioginė rinkodara.</dd>
-      <dt>KPI</dt><dd>R60 pagal kohortą (holdout vs test) · sutikimų dalis kasoje · 2-o pirkimo laikas (≤30 d. vertas €209 vs niekada €42).</dd>
+      <dt>Būsena 09-14</dt><dd>15 srautų (`ps_email_content`) parašyti, visi <b>draft</b>; `ps_email_jobs` tuščia. Naujienlaiškio sutikimai: 561 (eShoprent prenumeratoriai) + 7; kasoje ERĮ 81(2) prieštaravimo galimybės (soft opt-out) <b>nėra</b> → naujiems klientams savo panašių prekių pasiūlymai (refill) neteisėti, kol nėra. Refill = tiesioginė rinkodara.</dd>
+      <dt>KPI</dt><dd><b>R_due</b> (cycle-adjusted): dalis klientų, pakartojusių iki savo produkto refill lango + 14 d. tolerancija (holdout vs test) · R30/R60/R90 — diagnostiniai pjūviai · 2-o pirkimo laikas (≤30 d. vertas €209 vs niekada €42).</dd>
       <dt>Priklausomybės</dt><dd>WS4 (opt-in kasoje) · ciklų lentelė · Sender/WP Mail SMTP kanalas (DKIM neparašo — serverio pusė).</dd>
     </dl>
-    <div class="gate"><div class="g"><b>GO etapas 3</b> — ≥150 klientų lifecycle imtyje ir spalio kohortos R30 ≥ 15 % → win-back 60/90 Q1.</div><div class="s"><b>STOP</b> — atsisakymai &gt; 2 %/laišką arba skundas → langas peržiūrimas, ne kanalas.</div></div>
+    <div class="gate"><div class="g"><b>GO etapas 3</b> — ≥150 klientų lifecycle imtyje ir spalio kohortos R_due ≥ 20 % (test) → win-back 60/90 Q1.</div><div class="s"><b>STOP</b> — atsisakymai &gt; 2 %/laišką arba skundas → langas peržiūrimas, ne kanalas.</div></div>
     </div>
     <div>
       <table>
@@ -125,9 +125,9 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
         <tr><td>Produkto ciklų lentelė: brendas × pakuotė → tikėtinas intervalas (iš ps_ist 2-o pirkimo laikų; Exclusion/RC 12–15 kg 60–90 d., Animonda R30, Josera 20–50 d.)</td><td>Claude</td><td>spalio 1 sav.</td><td><span class="tag go">kitas</span></td></tr>
         <tr><td>„Pakartoti tą patį maišą vienu paspaudimu" — post_purchase_14d → refill_due langai ~20 / 30–35 / 45–50 d. pagal ciklą; `?ps_atkurti` tipo nuoroda</td><td>Claude įjungia · Raimis tekstai</td><td>spalio 2–3 sav.</td><td><span class="tag wait">laukia WS4</span></td></tr>
         <tr><td>90/10 holdout nuo pirmo laiško (permanentinis; kohorta prieš/po)</td><td>Claude</td><td>kartu</td><td><span class="tag wait"></span></td></tr>
-        <tr><td>Josera fokusas: 39 % naujų, R60 9 % — atskiras Josera 20–50 d. langas su kiekio bonuso pasiūlymu</td><td>Claude · Raimis pasiūlymas</td><td>lapkritis</td><td><span class="tag wait"></span></td></tr>
+        <tr><td>Josera fokusas: 39 % naujų, R60 9 % — atskiras Josera 20–50 d. langas su kiekio bonuso pasiūlymu (R_due Josera = 50 d.)</td><td>Claude · Raimis pasiūlymas</td><td>lapkritis</td><td><span class="tag wait"></span></td></tr>
         <tr><td>win_back_60/90 (>60 d. — win-back, ne refill)</td><td>Claude</td><td>lapkritis–gruodis</td><td><span class="tag dim">etapas 3</span></td></tr>
-        <tr><td>legacy_reactivation_l1 561 prenumeratoriams (vienas laiškas, aiškus opt-in/out)</td><td>Raimis sprendžia</td><td>spalis</td><td><span class="tag go">sprendimas</span></td></tr>
+        <tr><td>legacy_reactivation_l1: 561 prenumeratoriams — įprastas laiškas su opt-out; ~5 100 istorinių be žymos — Raimio sprendimas 09-14: VIENAS informacinis laiškas (svetainė atsinaujino, dienos norma kg ir €), be reklamos, su opt-out, per Sender dalimis, žurnale `legacy_info_l1`; refill/win-back jiems — ne</td><td>Raimis tekstas · Claude siuntimas</td><td>spalis</td><td><span class="tag go">nuspręsta</span></td></tr>
         <tr><td>Katės — atskiras €1–3 k projektas (konservų dėžė/prenumerata), ne Q4</td><td>—</td><td>2027</td><td><span class="tag dim">later</span></td></tr>
       </table>
     </div>
@@ -159,16 +159,16 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
   <div class="ws-h"><span class="code">4</span><h3>Legal / data — vartai C</h3><span class="tag stop">blokuojantis WS2</span><span class="note">Savininkas: Claude (kasa, žurnalas) · Raimis (rizikos sprendimai)</span></div>
   <div class="ws-b">
     <div><dl>
-      <dt>Tikslas Q4</dt><dd>Kiekvienas naujas klientas kasoje gauna soft opt-in su opt-out; sutikimas žurnale (`ps_consent_log` source `checkout`); Sender kontaktų politika užrakinta.</dd>
-      <dt>Būsena 09-14</dt><dd>eShoprent forma — <b>neįrodoma</b> (nuotraukos nėra, ne DB duomuo). 561 prenumeratoriai — aiški prenumerata, naudotini. ~5 100 istorinių be žymos — konservatyviai: ne refill/win-back.</dd>
-      <dt>KPI</dt><dd>Opt-in dalis kasoje (tikslas ≥ 40 %); 0 skundų.</dd>
+      <dt>Tikslas Q4</dt><dd>ERĮ 81(2) pagrindas: kasoje 100 % klientų aiškiai gali prieštarauti savo panašių prekių pasiūlymams (soft opt-out, ne pre-ticked sutikimas — ESTT pre-ticked atmetė), kiekviename laiške atsisakymas; atskira naujienlaiškio consent mechanika (forma). Žurnalas `ps_consent_log` source `checkout`.</dd>
+      <dt>Būsena 09-14</dt><dd>eShoprent forma — <b>neįrodoma</b> (nuotraukos nėra, ne DB duomuo). 561 prenumeratoriai — aiški prenumerata, naudotini. ~5 100 istorinių — vienas informacinis laiškas (Raimio sprendimas, rizika priimta), toliau ne refill/win-back.</dd>
+      <dt>KPI</dt><dd>Soft opt-out coverage = 100 % kasos klientų; prieštaravusių dalis (stebėti); 0 skundų.</dd>
     </dl></div>
     <div>
       <table>
         <tr><th>Darbas</th><th>Kas</th><th>Kada</th><th>Būsena</th></tr>
-        <tr><td>Opt-in laukas klasikinėje kasoje (ERĮ 81 str. tekstas: savo panašių prekių pasiūlymai, atsisakymas kiekviename laiške) + įrašas į `ps_consent_log`</td><td>Claude</td><td>spalio 1 sav.</td><td><span class="tag stop">#1 blokas</span></td></tr>
-        <tr><td>Sprendimas: laukas iš anksto pažymėtas ar ne (pažymėtas ≈ 40–60 %, nepažymėtas ≈ 15–25 %) — teisinė riba tikrintina</td><td>Raimis</td><td>spalio 1 sav.</td><td><span class="tag go">sprendimas</span></td></tr>
-        <tr><td>Sprendimas: ~5 100 istorinių be žymos — neliesti / vienas reaktyvacijos laiškas su opt-in (rizika)</td><td>Raimis</td><td>spalis</td><td><span class="tag go">sprendimas</span></td></tr>
+        <tr><td>Soft opt-out kasoje: tekstas prie el. pašto „siųsime savo panašių prekių pasiūlymus/priminimus — galite atsisakyti čia ☐ ir kiekviename laiške" (nepažymėtas = sutinka pagal 81(2), pažymėtas = prieštarauja) + įrašas į `ps_consent_log` source `checkout`</td><td>Claude spec → Raimis tekstas → deploy</td><td>spalio 1 sav.</td><td><span class="tag stop">#1 blokas</span></td></tr>
+        <tr><td>Naujienlaiškio (ne panašių prekių) consent — atskira forma (footer/newsletter), ne pre-ticked</td><td>Claude</td><td>yra</td><td><span class="tag ok">veikia</span></td></tr>
+        <tr><td>~5 100 istorinių: vienas informacinis laiškas be reklamos (svetainė atsinaujino; dienos norma kg ir €), opt-out, per Sender dalimis po ~500/d, žurnalas; NE pakartoti</td><td>Raimis tekstas · Claude</td><td>spalis</td><td><span class="tag go">nuspręsta 09-14</span></td></tr>
         <tr><td>Privatumo politika (34525) — tiesioginės rinkodaros skyrius atitinka realią praktiką</td><td>Claude juodraštis · Raimis</td><td>spalis</td><td><span class="tag wait"></span></td></tr>
         <tr><td>Sender kontaktų politika: kas sinchronizuojama (tik consent=true), suppression abipusis</td><td>Claude</td><td>spalis</td><td><span class="tag wait"></span></td></tr>
       </table>
@@ -206,7 +206,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
       <tr><td>2027 Q2</td><td class="n">190–210</td><td class="n">€100</td><td class="n">€22–25 k</td><td>faktinis CM12/CAC ≥ 2, apyvartinių modelis, etapas 4</td></tr>
       <tr><td>2027 Q3</td><td class="n">220–240</td><td class="n">€110</td><td class="n">€30–33 k</td><td>R60 ≥ 30 %, video/veislių puslapiai</td></tr>
       <tr><td>2027 Q4 bazė</td><td class="n">250</td><td class="n">€115–120</td><td class="n">€36–38 k</td><td>—</td></tr>
-      <tr><td>2027 Q4 stretch</td><td class="n">~300</td><td class="n">~€133</td><td class="n">€50 k</td><td>N ≥ 330 arba top (5+) dalis ≥ 25 %</td></tr>
+      <tr><td>2027 Q4 stretch</td><td class="n">~300</td><td class="n">~€133</td><td class="n">€50 k</td><td>N ≈ 300 + V12 ≈ €133 (jautrumas — atskira lentelė, kai bus faktų)</td></tr>
     </table>
     <p class="note">Apyvarta = N × V12 × 1,25 (K perskaičiuoti kas ketvirtį), suminant su egzistuojančia baze. Q4 apyvarta — atstatymas į 2025 lygį, ne formulė.</p>
   </div>
@@ -214,7 +214,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
     <table>
       <tr><th>Kanalas</th><th class="n">N/mėn. dabar</th><th class="n">CAC</th><th>Q4 statusas</th></tr>
       <tr><td>PMax šunų maistas (feed-only, nauja)</td><td class="n">~40</td><td class="n">~€19</td><td><span class="tag go">build → test</span> biudžeto nedidinti be signalo</td></tr>
-      <tr><td>PMax kačių maistas</td><td class="n">~30</td><td class="n">€19+</td><td><span class="tag stop">hold</span> 50 % spend, ne spearhead</td></tr>
+      <tr><td>PMax kačių maistas</td><td class="n">~30</td><td class="n">€19+</td><td><span class="tag wait">pagal ekonomiką</span> 50 % spend; nedidinti iki signalo; spalio CM12/CAC &lt; 2 → stop</td></tr>
       <tr><td>PMax petshop.lt (bendra)</td><td class="n">~10</td><td class="n">?</td><td><span class="tag wait">sujungti / išjungti</span></td></tr>
       <tr><td>Search brand „petshop"</td><td class="n">grįžtantys</td><td class="n">€72/mėn.</td><td><span class="tag ok">keep</span></td></tr>
       <tr><td>Search exact top prekės</td><td class="n">0</td><td class="n">?</td><td><span class="tag wait">test €5/d</span></td></tr>
@@ -232,9 +232,9 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
   <div>
     <table>
       <tr><th>Brendas</th><th class="n">Pajamos 12 mėn.</th><th class="n">Antkainis</th><th>Vaidmuo</th></tr>
-      <tr><td>Exclusion</td><td class="n">€27,4 k</td><td class="n">20 % (AV 39 %)</td><td>49 % naujų — CAC neatsiperka per VF, atsiperka per AV partiją / R60</td></tr>
+      <tr><td>Exclusion</td><td class="n">€27,4 k</td><td class="n">20 % (AV 39 %)</td><td>didžiausia pajamų dalis (26 %), R60 aukščiausias (49 % grįžimas — selection effect) — CAC neatsiperka per VF, atsiperka per AV partiją / R60</td></tr>
       <tr><td>Josera</td><td class="n">€22,8 k</td><td class="n">21 %</td><td>39 % naujų, R60 9 % — didžiausias rezervas; nedeginti CAC, pakeičiamas</td></tr>
-      <tr><td>Animonda</td><td class="n">€13,1 k</td><td class="n">50 %</td><td>kreipti naujus; R30 langas</td></tr>
+      <tr><td>Animonda</td><td class="n">€13,1 k</td><td class="n">50 %</td><td>priority acquisition TEST candidate (istorinis repeat ≠ perstumto kliento repeat); R30 langas</td></tr>
       <tr><td>Quattro / Royal Canin</td><td class="n">€12 k</td><td class="n">11–15 %</td><td>ne PMax kandidatai</td></tr>
       <tr><td>Ontario / Hikari / Miamor / Romar</td><td class="n">€14,5 k</td><td class="n">56–66 %</td><td>PMax kandidatai, AV</td></tr>
       <tr><td>Skanėstai (Gnatek, Katrinex, 4dogs…)</td><td class="n">€4 k</td><td class="n">90–124 %</td><td>priedas užsakyme kelia mišinio antkainį</td></tr>
@@ -250,7 +250,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
       <div class="kpi"><span>Grįžęs ≤60 d. klientas</span><b>CM12 €25–35</b><span>V12 €185–209</span></div>
     </div>
     <p>CM12 = €95 be PVM × antkainis/(1+antkainis) − pristatymas (€2,24 × 2,7 užs. ≈ €6, klientas moka €0) − Paysera ~€1. Dabartinis CAC ~€19 → <b>mastelis biudžetu neleistinas iki spalio pabaigos</b>. Kelias: (1) šunų/AV/50 %+ brendų prioritetas kampanijose, (2) R60 → CM12 dvigubėja, (3) skanėstų priedas. Nuo 2027 Q2 faktinis CM12/CAC iš ps_fakt: ≥3 spaudžiam · 2–3 mastelis · &lt;2 stabdom.</p>
-    <p class="note">Atviras klausimas Raimiui: klientas nemoka už pristatymą nė viename užsakyme (46/46) — 5,4 % pajamų subsidija; slenkstis / mokestis mažiems užsakymams — sprendimas, ne higiena.</p>
+    <p class="note">PATIKSLINTA (s1684_md): klientas MOKA — `ps_fakt_uzsakymai.pristatymas_ct`=0 buvo mapping'o ypatybė. WC nuo T-0: paštomatas vid. €0,96 (44 užs.), kurjeris €3,30 (6), LP €1,19 (3) → €65 už 53 užs.; vežėjo savikaina €2,24 → grynoji subsidija ~€1,3/užs. (~3,5 %). Istorija `pristatymas_paimta_ct` vid. €8,12 (3 591 užs.) — vienetai tikrintini. Pristatymo kainodara — kontribucijos svertas, spręsti su WS5 ant ≥ 300 užs.</p>
   </div>
 </div>
 
@@ -297,6 +297,9 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
       <tr><td>Formulė</td><td>€50 k = N × V12 × 1,25; bazė 250 × €115–120; stretch ~300 × €133</td></tr>
       <tr><td>KPI</td><td>N · R60 (leading) · 2+/3+/4+/5+ · V12; guardrails antkainis/CAC/AOV</td></tr>
       <tr><td>Antkainis, ne marža</td><td>(kaina − sav)/sav, kaina_ct be PVM (Raimis 09-14)</td></tr>
+      <tr><td>5 100 istorinių</td><td>vienas informacinis laiškas be reklamos, opt-out, žurnalas — Raimio rizikos sprendimas 09-14; refill/win-back — ne; sutikimo „surinkimo" laiškas — ne</td></tr>
+      <tr><td>Reklamos biudžetas</td><td>skirstomas pagal CM12/CAC, ne pagal strateginę etiketę (katės)</td></tr>
+      <tr><td>Retention KPI</td><td>R_due (cycle-adjusted) — leading; R30/60/90 diagnostiniai</td></tr>
       <tr><td>Klientas</td><td>maisto IR skanėstų pirkėjas; šunys + ciklinis maistas spearhead; katės atskiras projektas</td></tr>
       <tr><td>Lifecycle</td><td>etapai 1+2 Q4 / 3 Q1 / 4 Q2; 90/10 holdout; refill = tiesioginė rinkodara</td></tr>
       <tr><td>N takas</td><td>Q4 ~120 · Q1 150–170 · Q2 190–210 · Q3 220–240 · Q4 250</td></tr>
@@ -311,7 +314,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
       <tr><td>Kasos opt-in: iš anksto pažymėtas ar ne</td><td><span class="tag go">spalio 1 sav.</span></td></tr>
       <tr><td>~5 100 istorinių be sutikimo: neliesti / vienas reaktyvacijos laiškas</td><td><span class="tag go">spalis</span></td></tr>
       <tr><td>legacy_reactivation_l1 561 prenumeratoriams — siųsti?</td><td><span class="tag go">spalis</span></td></tr>
-      <tr><td>Pristatymo mokestis mažiems užsakymams / slenkstis (dabar 0 visiems)</td><td><span class="tag wait">diskusija</span></td></tr>
+      <tr><td>Pristatymo kainodara (paštomatas €0,96 vs savikaina €2,24) — slenkstis/mokestis</td><td><span class="tag wait">WS5, ant ≥ 300 užs.</span></td></tr>
       <tr><td>Search exact testas €5/d — pradėti?</td><td><span class="tag wait">spalis</span></td></tr>
       <tr><td>Exclusion per AV partiją (+19 pp) — kiek laikyti sandėlyje (apyvartinės)</td><td><span class="tag wait">WS5</span></td></tr>
       <tr><td>Prieglaudų/veisėjų pasiūlymo formatas (skanėstų dėžė prekėmis)</td><td><span class="tag wait">lapkritis</span></td></tr>
