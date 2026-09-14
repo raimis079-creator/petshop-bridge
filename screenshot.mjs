@@ -1,45 +1,57 @@
 process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
-const B64='PD9waHAKLy8gZHVtbXkgUzE2ODIK';
-const VER='dep-143857';
-const GKEY='ps_x';
-const PHASES=["GO"];
-const OUT='analize/s1682_gsc_yoy.json';
+const WP=process.env.WP_URL||'https://dev.avesa.lt';
+const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
+const B64='PD9waHAKLyoqIFRFTVAgUFMgUzE2ODEgYWYg4oCUIHJlYWQtb25seTogIzEwMDkvIzEwMTAgcGFzdGFib3MsIG1ldGEgKF9wc18qLCBMUCksIHBzX2Zha3Rfc2l1bnRvczsgZGFyYmFsYXVraW8gacWhc2l1bnRpbW8vTFAgbWV0b2RhaS4gKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCFpc3NldCgkX0dFVFsncHNfczE2ODFhZiddKSkgcmV0dXJuOyBnbG9iYWwgJHdwZGI7ICRwPSR3cGRiLT5wcmVmaXg7ICRvPWFycmF5KCd2Jz0+J1MxNjgxIGFmJyk7CiAgZm9yZWFjaChhcnJheSgxMDA5LDEwMTApIGFzICRucil7ICRpZD0kd3BkYi0+Z2V0X3Zhcigkd3BkYi0+cHJlcGFyZSgiU0VMRUNUIG9yZGVyX2lkIEZST00geyRwfXdjX29yZGVyc19tZXRhIFdIRVJFIG1ldGFfa2V5PSdfcHNfdXpzYWt5bW9fbnInIEFORCBtZXRhX3ZhbHVlPSVzIiwkbnIpKTsgaWYoISRpZCkgJGlkPSR3cGRiLT5nZXRfdmFyKCR3cGRiLT5wcmVwYXJlKCJTRUxFQ1Qgb3JkZXJfaWQgRlJPTSB7JHB9d2Nfb3JkZXJzX21ldGEgV0hFUkUgbWV0YV9rZXk9J19vcmRlcl9udW1iZXInIEFORCBtZXRhX3ZhbHVlPSVzIiwkbnIpKTsgaWYoISRpZCl7IGZvcmVhY2goJHdwZGItPmdldF9jb2woIlNFTEVDVCBpZCBGUk9NIHskcH13Y19vcmRlcnMgV0hFUkUgdHlwZT0nc2hvcF9vcmRlcicgQU5EIHN0YXR1cz0nd2MtcHJvY2Vzc2luZyciKSBhcyAkaSl7IGlmKHdjX2dldF9vcmRlcigkaSktPmdldF9vcmRlcl9udW1iZXIoKT09JG5yKXsgJGlkPSRpOyBicmVhazsgfSB9IH0KICAgICR3PXdjX2dldF9vcmRlcigkaWQpOyAkbT1hcnJheSgpOyBmb3JlYWNoKCR3LT5nZXRfbWV0YV9kYXRhKCkgYXMgJG1kKSBpZihwcmVnX21hdGNoKCcvXl9wc198bHB8bGl0aHVhbmlhfHRyYWNrfHNla2ltL2knLCRtZC0+a2V5KSkgJG1bJG1kLT5rZXldPWlzX3NjYWxhcigkbWQtPnZhbHVlKT9zdWJzdHIoKHN0cmluZykkbWQtPnZhbHVlLDAsMTIwKTpqc29uX2VuY29kZSgkbWQtPnZhbHVlKTsKICAgICRvWyd1enMnXVskbnJdPWFycmF5KCdpZCc9PiRpZCwnc3RhdHVzJz0+JHctPmdldF9zdGF0dXMoKSwnc20nPT5pbXBsb2RlKCd8JyxhcnJheV9tYXAoZnVuY3Rpb24oJHMpe3JldHVybiAkcy0+Z2V0X21ldGhvZF9pZCgpLicjJy4kcy0+Z2V0X2luc3RhbmNlX2lkKCkuJyAnLiRzLT5nZXRfbmFtZSgpO30sJHctPmdldF9zaGlwcGluZ19tZXRob2RzKCkpKSwnbWV0YSc9PiRtLAogICAgICAncGFzdGFib3MnPT5hcnJheV9tYXAoZnVuY3Rpb24oJG4pe3JldHVybiAkbi0+ZGF0ZV9jcmVhdGVkLT5kYXRlKCdtLWQgSDppJykuJyBbJy4kbi0+YWRkZWRfYnkuJ10gJy5zdWJzdHIoJG4tPmNvbnRlbnQsMCwyMDApO30sd2NfZ2V0X29yZGVyX25vdGVzKGFycmF5KCdvcmRlcl9pZCc9PiRpZCwnbGltaXQnPT4xNSkpKSwKICAgICAgJ2Zha3Rfc2l1bnRvcyc9PiR3cGRiLT5nZXRfcmVzdWx0cygkd3BkYi0+cHJlcGFyZSgiU0VMRUNUICogRlJPTSB7JHB9cHNfZmFrdF9zaXVudG9zIFdIRVJFIG9yZGVyX2lkPSVkIiwkaWQpLEFSUkFZX0EpKTsgfQogICRvWydmc19jb2xzJ109JHdwZGItPmdldF9jb2woIlNIT1cgQ09MVU1OUyBGUk9NIHskcH1wc19mYWt0X3NpdW50b3MiKTsKICAkcz1maWxlX2dldF9jb250ZW50cyhXUE1VX1BMVUdJTl9ESVIuJy9wZXRzaG9wLWRhcmJhbGF1a2lzLnBocCcpOyBwcmVnX21hdGNoKCcvVmVyc2lvbjpccyooW1xkLl0rKS9pJywkcywkbXYpOyAkb1snZGxfdmVyJ109JG12WzFdPz8nJzsgcHJlZ19tYXRjaF9hbGwoJy9mdW5jdGlvblxzKyhcdyooaXNzaXVzdHxscF98bGlwZHVrfHBhZW18c2l1bnR8ZmFrdClcdyopXHMqXCgoW14pXSopXCkvaScsJHMsJG1tKTsgJG9bJ2RsX2ZuJ109YXJyYXlfbWFwKGZ1bmN0aW9uKCRhLCRiKXtyZXR1cm4gJGEuJygnLnN1YnN0cigkYiwwLDYwKS4nKSc7fSwkbW1bMV0sJG1tWzNdKTsKICBwcmVnX21hdGNoX2FsbCgiL2Nhc2UgJyhbYS16X10rKScvIiwkcywkbWMpOyAkb1snZGxfY2FzZXMnXT1hcnJheV92YWx1ZXMoYXJyYXlfdW5pcXVlKCRtY1sxXSkpOwogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7IGVjaG8ganNvbl9lbmNvZGUoJG8sSlNPTl9VTkVTQ0FQRURfVU5JQ09ERXxKU09OX1BBUlRJQUxfT1VUUFVUX09OX0VSUk9SKTsgZXhpdDsKfSk7Cg==';
+const VER='dep-153732';
+const GKEY='ps_s1681af';
+const PHASES=["A"];
+const OUT='analize/s1681_af.json';
 const DATA=[];
 const out={v:VER};
+const miegok=ms=>new Promise(r=>setTimeout(r,ms));
 async function put(p,buf,m){ const u='https://api.github.com/repos/'+REPO+'/contents/'+p; const h={Authorization:'Bearer '+TOK,'Content-Type':'application/json'};
   let sha=null; try{const g=await fetch(u,{headers:h}); if(g.ok){sha=(await g.json()).sha;}}catch(e){}
   const b={message:m,content:buf.toString('base64')}; if(sha)b.sha=sha;
   return (await fetch(u,{method:'PUT',headers:h,body:JSON.stringify(b)})).status; }
-async function token(sa,scope){ const crypto=await import('crypto'); const now=Math.floor(Date.now()/1000); const b=s=>Buffer.from(JSON.stringify(s)).toString('base64url');
-  const hdr=b({alg:'RS256',typ:'JWT'}); const clm=b({iss:sa.client_email,scope,aud:'https://oauth2.googleapis.com/token',iat:now,exp:now+3600});
-  const sig=crypto.createSign('RSA-SHA256').update(hdr+'.'+clm).sign(sa.private_key,'base64url');
-  const tr=await fetch('https://oauth2.googleapis.com/token',{method:'POST',headers:{'Content-Type':'application/x-www-form-urlencoded'},body:'grant_type=urn%3Aietf%3Aparams%3Aoauth%3Agrant-type%3Ajwt-bearer&assertion='+hdr+'.'+clm+'.'+sig});
-  const tj=await tr.json(); return tj.access_token||null; }
-const d=(n)=>{const x=new Date(Date.now()-n*86400000);return x.toISOString().slice(0,10);};
+async function fx(u,o,k){ for(let i=0;i<5;i++){ try{ return await fetch(u,o); }catch(e){ await miegok(8000);} } throw new Error('fx:'+k); }
+const A={Authorization:AUTH,'Content-Type':'application/json'}; const SNIP=WP+'/wp-json/code-snippets/v1/snippets';
+const UA={'Cache-Control':'no-cache','User-Agent':'Mozilla/5.0'};
+let sid=null;
 try{
-  let raw=process.env.GTM_SA_JSON.trim(); if(!raw.startsWith('{')) raw='{'+raw+'}'; const sa=JSON.parse(raw); out.sa=sa.client_email;
-  // GSC
-  const t=await token(sa,'https://www.googleapis.com/auth/webmasters.readonly'); out.gsc={token:!!t};
-  if(t){ const H={Authorization:'Bearer '+t,'Content-Type':'application/json'};
-    const sl=await (await fetch('https://www.googleapis.com/webmasters/v3/sites',{headers:H})).json(); out.gsc.sites=sl;
-    const props=(sl.siteEntry||[]).map(s=>s.siteUrl); const site=props.find(p=>p.includes('petshop.lt'))||'sc-domain:petshop.lt';
-    const q=async(body)=>{ const r=await fetch('https://www.googleapis.com/webmasters/v3/sites/'+encodeURIComponent(site)+'/searchAnalytics/query',{method:'POST',headers:H,body:JSON.stringify(body)}); const j=await r.json(); return r.ok?(j.rows||[]):{err:r.status,body:JSON.stringify(j).slice(0,300)}; };
-    out.gsc.site=site;
-    const M=async(a,b,dim,n)=>q({startDate:a,endDate:b,dimensions:[dim],rowLimit:n});
-    out.gsc.q25=await M('2025-08-01','2025-08-31','query',2500);
-    out.gsc.q26=await M('2026-08-01','2026-08-31','query',2500);
-    out.gsc.p25=await M('2025-08-01','2025-08-31','page',1000);
-    out.gsc.p26=await M('2026-08-01','2026-08-31','page',1000);
-    out.gsc.dienos=await q({startDate:'2025-05-15',endDate:'2026-09-12',dimensions:['date']});
+  try{ const l=await fx(SNIP,{headers:A},'list'); const arr=JSON.parse(await l.text());
+  for(const s of (Array.isArray(arr)?arr:[]).filter(s=>s.active&&/^TEMP/.test(s.name||''))){
+    await fetch(SNIP+'/'+s.id,{method:'POST',headers:A,body:JSON.stringify({id:s.id,active:false})}); } }catch(e){ out.list_praleistas=String(e).slice(0,80); }
+  const c=await fx(SNIP,{method:'POST',headers:A,body:JSON.stringify({name:'TEMP PS '+VER,
+    code:Buffer.from(B64,'base64').toString('utf8'),scope:'global',active:true,priority:5})},'create');
+  const ct=await c.text(); out.kurimas=c.status; try{sid=JSON.parse(ct).id; out.sid=sid;}catch(e){out.kurimo_atsakas=ct.slice(0,400);}
+  let dq='';
+  if(DATA.length){ out.data={}; for(const p of DATA){ const name=p.split('/').pop();
+      const g=await fx('https://api.github.com/repos/'+REPO+'/contents/'+p,{headers:{Authorization:'Bearer '+TOK,Accept:'application/vnd.github.raw+json'}},'gh_'+name);
+      const buf=Buffer.from(await g.arrayBuffer());
+      const m=await fx(WP+'/wp-json/wp/v2/media',{method:'POST',headers:{Authorization:AUTH,'Content-Type':'text/plain','Content-Disposition':'attachment; filename="'+name+'"'},body:buf},'media_'+name);
+      const mt=await m.text(); try{ const j=JSON.parse(mt); out.data[name]={id:j.id,status:m.status}; dq+='&d_'+name.replace(/\W/g,'_')+'='+j.id; }catch(e){ out.data[name]={status:m.status,err:mt.slice(0,200)}; } } }
+  await miegok(9000);
+  if(process.env.GTM_SA_JSON){ try{ const sr=await fx(WP+'/wp-json/ps-seo-temp/v1/sa',{method:'POST',headers:{Authorization:AUTH,'Content-Type':'text/plain'},body:process.env.GTM_SA_JSON},'sa'); out.sa_push={status:sr.status,body:(await sr.text()).slice(0,200)}; }catch(e){ out.sa_push=String(e).slice(0,200);} }
+  for(let i=0;i<PHASES.length;i++){
+    const f=PHASES[i];
+    if(i>0) await miegok(5000);
+    const d=await fx(WP+'/?'+GKEY+'='+encodeURIComponent(f)+dq,{headers:UA},'faze_'+f);
+    const t=await d.text();
+    try{ out[f]=JSON.parse(t); }catch(e){ out['zalias_'+f]=t.slice(0,3000); }
   }
-  // GA4 Data API
-  const t2=await token(sa,'https://www.googleapis.com/auth/analytics.readonly'); out.ga4={token:!!t2};
-  if(t2){ const H={Authorization:'Bearer '+t2,'Content-Type':'application/json'}; const P='properties/346051580';
-    const run=async(body)=>{ const r=await fetch('https://analyticsdata.googleapis.com/v1beta/'+P+':runReport',{method:'POST',headers:H,body:JSON.stringify(body)}); const j=await r.json(); return r.ok?j:{err:r.status,body:JSON.stringify(j).slice(0,300)}; };
-    out.ga4.lp25=await run({dateRanges:[{startDate:'2025-08-01',endDate:'2025-08-31'}],dimensions:[{name:'landingPage'}],metrics:[{name:'sessions'},{name:'transactions'}],limit:300,orderBys:[{metric:{metricName:'sessions'},desc:true}]});
-    out.ga4.lp26=await run({dateRanges:[{startDate:'2026-08-01',endDate:'2026-08-31'}],dimensions:[{name:'landingPage'}],metrics:[{name:'sessions'},{name:'transactions'}],limit:300,orderBys:[{metric:{metricName:'sessions'},desc:true}]});
-    out.ga4.men=await run({dateRanges:[{startDate:'2025-05-01',endDate:'2026-09-12'}],dimensions:[{name:'yearMonth'},{name:'sessionDefaultChannelGroup'}],metrics:[{name:'sessions'},{name:'newUsers'},{name:'transactions'},{name:'purchaseRevenue'}],limit:500});
-  }
-}catch(e){ out.klaida=String(e).slice(0,300); }
-await put(OUT, Buffer.from(JSON.stringify(out)), VER);
+  // EKRANO NUOTRAUKOS (browser=1): fazė grąžina shots:[{n,u,w}], cookies:[{name,value}]
+  const SH=(()=>{ for(const f of PHASES){ if(out[f]&&out[f].shots) return out[f]; } return null; })();
+  if(SH){ try{ const {chromium}=await import('playwright'); const br=await chromium.launch(); const ctx=await br.newContext({viewport:{width:1440,height:900},ignoreHTTPSErrors:true});
+      if(SH.cookies){ await ctx.addCookies(SH.cookies.map(c=>({name:c.name,value:c.value,domain:new URL(WP).hostname,path:'/',secure:true}))); }
+      out.shots={};
+      for(const s of SH.shots){ try{ const pg=await ctx.newPage(); const errs=[]; pg.on('pageerror',e=>errs.push('pageerror: '+String(e).slice(0,300))); pg.on('console',m=>{ if(m.type()==='error'||m.type()==='warning') errs.push(m.type()+': '+m.text().slice(0,300)); }); pg.on('response',r=>{ if(r.status()>=400) errs.push('http '+r.status()+' '+r.url().slice(0,120)); });
+          if(s.w) await pg.setViewportSize({width:s.w,height:s.h||900}); await pg.goto(s.u,{waitUntil:'networkidle',timeout:60000}); await pg.waitForTimeout(800);
+          const res={}; if(s.click){ try{ await pg.click(s.click,{timeout:5000}); await pg.waitForTimeout(600); res.clicked=s.click; }catch(e){ res.click_err=String(e).slice(0,200); } }
+          if(s.eval){ try{ res.eval=await pg.evaluate(s.eval); }catch(e){ res.eval_err=String(e).slice(0,200); } }
+          const buf=await pg.screenshot({fullPage:!!s.full}); const st=await put('screenshots/'+s.n+'.png',buf,VER+' '+s.n); out.shots[s.n]=Object.assign({status:st,url:pg.url(),title:await pg.title(),errors:errs.slice(0,12)},res); await pg.close(); }catch(e){ out.shots[s.n]=String(e).slice(0,200); } }
+      await br.close(); }catch(e){ out.shots_klaida=String(e).slice(0,300); } }
+}catch(e){ out.klaida=String(e).slice(0,500); }
+try{ if(sid) await fetch(SNIP+'/'+sid,{method:'POST',headers:A,body:JSON.stringify({id:sid,active:false})}); }catch(e){}
+await put(OUT, Buffer.from(JSON.stringify(out,null,1)), VER);
+console.log('ok');
