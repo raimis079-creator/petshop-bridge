@@ -1,0 +1,19 @@
+<?php
+/** TEMP PS S1681 x — flatsome-child/functions.php: telefono validacija pagal šalį (LT/LV/EE); bak ps-backups/functions.php.bak_s1681; token_get_all prieš rašant; patikra. */
+add_action('init', function(){
+  if (!isset($_GET['ps_s1681x'])) return; $o=array('v'=>'S1681 x'); $f=get_stylesheet_directory().'/functions.php'; $s=file_get_contents($f); $o['md5_pries']=md5($s);
+  if(md5($s)!=='1dd8e6f66a3960bae4b9a5377abff78e'){ $o['STOP']='md5 nesutampa'; echo json_encode($o); exit; }
+  $u=wp_upload_dir(); $bak=$u['basedir'].'/ps-backups/functions.php.bak_s1681'; if(!file_exists($bak)) file_put_contents($bak,$s); $o['bak']=file_exists($bak)&&md5_file($bak)===md5($s);
+  $old="    \$clean = preg_replace( '/[\\s\\-\\(\\)\\.]+/', '', \$phone );\n    \$valid = preg_match( '/^(\\+3706\\d{7}|86\\d{7}|06\\d{7})$/', \$clean );\n    if ( ! \$valid ) {\n        wc_add_notice( 'Iveskite teisingą Lietuvos telefono numeri (pvz., +370 612 34567 arba 861234567).', 'error' );\n    }\n";
+  $new="    \$clean = preg_replace( '/[\\s\\-\\(\\)\\.]+/', '', \$phone );\n    \$salis = isset( \$_POST['billing_country'] ) ? strtoupper( sanitize_text_field( \$_POST['billing_country'] ) ) : 'LT';\n    // S1681: LV ir EE pirkėjai — jų šalies numeriai; LT kaip buvo.\n    if ( 'LV' === \$salis ) {\n        \$valid = preg_match( '/^(\\+371|00371)?\\d{8}$/', \$clean );\n        if ( ! \$valid ) { wc_add_notice( 'Ievadiet pareizu Latvijas tālruņa numuru (piem., +371 21234567).', 'error' ); }\n    } elseif ( 'EE' === \$salis ) {\n        \$valid = preg_match( '/^(\\+372|00372)?\\d{7,8}$/', \$clean );\n        if ( ! \$valid ) { wc_add_notice( 'Sisestage õige Eesti telefoninumber (nt +372 5123 4567).', 'error' ); }\n    } else {\n        \$valid = preg_match( '/^(\\+3706\\d{7}|86\\d{7}|06\\d{7})$/', \$clean );\n        if ( ! \$valid ) {\n            wc_add_notice( 'Iveskite teisingą Lietuvos telefono numeri (pvz., +370 612 34567 arba 861234567).', 'error' );\n        }\n    }\n";
+  $old2="    if ( preg_match( '/^06(\\d{7})$/', \$clean, \$m ) ) return '+3706' . \$m[1];\n    return \$clean;\n";
+  $new2="    if ( preg_match( '/^06(\\d{7})$/', \$clean, \$m ) ) return '+3706' . \$m[1];\n    \$salis = isset( \$_POST['billing_country'] ) ? strtoupper( sanitize_text_field( \$_POST['billing_country'] ) ) : 'LT';\n    if ( 'LV' === \$salis && preg_match( '/^(00371)?(\\d{8})$/', \$clean, \$m ) ) return '+371' . \$m[2];\n    if ( 'EE' === \$salis && preg_match( '/^(00372)?(\\d{7,8})$/', \$clean, \$m ) ) return '+372' . \$m[2];\n    return \$clean;\n";
+  if(substr_count($s,$old)!==1||substr_count($s,$old2)!==1){ $o['STOP']='old nerastas: '.substr_count($s,$old).'/'.substr_count($s,$old2); echo json_encode($o); exit; }
+  $n=str_replace(array($old,$old2),array($new,$new2),$s);
+  try { token_get_all($n, TOKEN_PARSE); } catch (Throwable $e) { $o['STOP']='ParseError: '.$e->getMessage(); echo json_encode($o); exit; }
+  file_put_contents($f,$n); if(function_exists('opcache_invalidate')) opcache_invalidate($f,true); $o['md5_po']=md5_file($f); $o['dydis']=filesize($f);
+  // patikra: imituojam validaciją
+  $t=function($salis,$tel){ $_POST['billing_country']=$salis; $_POST['billing_phone']=$tel; wc_clear_notices(); do_action('woocommerce_checkout_process'); $n=wc_get_notices('error'); wc_clear_notices(); $norm=apply_filters('woocommerce_process_checkout_field_billing_phone',$tel); return ($n?'KLAIDA':'ok').' → '.$norm; };
+  foreach(array(array('LT','+370 612 34567'),array('LT','861234567'),array('LT','+371 21234567'),array('LV','+371 21234567'),array('LV','21234567'),array('LV','2123456'),array('EE','+372 5123 4567'),array('EE','51234567'),array('EE','+370 61234567')) as $c) $o['test'][$c[0].' '.$c[1]]=$t($c[0],$c[1]);
+  header('Content-Type: application/json; charset=utf-8'); echo json_encode($o,JSON_UNESCAPED_UNICODE); exit;
+});
