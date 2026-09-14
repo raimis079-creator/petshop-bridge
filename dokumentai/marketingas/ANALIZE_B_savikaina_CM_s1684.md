@@ -19,24 +19,24 @@ Gyvai `ps_fakt_eilutes.savikaina_ct` pildoma (92/93, šaltinis `pardavimai`) —
 
 **Svarbu:** `kaina_ct` ir istorijoje, ir `ps_fakt` yra BE PVM (`pvm_ct` atskirai; istorijoje pvm_ct=0). Marža skaičiuojama `1 − sav/kaina_ct`. S1683 ir ankstesni „kaina_ct − pvm_ct" skaičiavimai buvo klaidingi (dvigubas PVM nuėmimas).
 
-## 3. Bendroji marža pagal brendą (dabartinė savikaina × 12 mėn. istorija, be PVM)
-| Brendas | Pajamos 12 mėn. | Dalis | Marža |
+## 3. Antkainis pagal brendą (dabartinė savikaina × 12 mėn. istorija, be PVM; antkainis = (kaina − sav)/sav)
+| Brendas | Pajamos 12 mėn. | Dalis | Antkainis | (marža nuo kainos) |
 |---|---|---|---|
-| Exclusion | €27 378 | 26 % | **16,7 %** (AV partija → ~28 %) |
-| Josera | €22 848 | 22 % | **17,6 %** |
-| Animonda | €13 065 | 13 % | 33,3 % |
-| Quattro | €7 546 | 7 % | 10,2 % |
-| Royal Canin | €4 430 | 4 % | 13,4 % |
-| Ontario / Hikari / Miamor / Romar | €3,3–3,8 k kiekv. | 14 % | 36–40 % |
-| Ambrosia | €3 161 | 3 % | 29,5 % |
-| Gnatek / Katrinex / Duvo / 4dogs (skanėstai) | €0,5–1,7 k | — | 47–55 % |
-| **Šuo iš viso** | €75 277 | 72 % | **21,9 %** |
-| **Katė iš viso** | €24 054 | 23 % | 24,3 % |
-| **Maistas+skanėstai iš viso** | €103 951 | 100 % | **~23 %** |
+| Exclusion | €27 378 | 26 % | **20 %** (AV partija → ~39 %) | 16,7 % |
+| Josera | €22 848 | 22 % | **21 %** | 17,6 % |
+| Animonda | €13 065 | 13 % | 50 % | 33,3 % |
+| Quattro | €7 546 | 7 % | 11 % | 10,2 % |
+| Royal Canin | €4 430 | 4 % | 15 % | 13,4 % |
+| Ontario / Hikari / Miamor / Romar | €3,3–3,8 k kiekv. | 14 % | 56–66 % | 36–40 % |
+| Ambrosia | €3 161 | 3 % | 42 % | 29,5 % |
+| Gnatek / Katrinex / Duvo / 4dogs (skanėstai) | €0,5–1,7 k | — | 90–124 % | 47–55 % |
+| **Šuo iš viso** | €75 277 | 72 % | **28 %** | 21,9 % |
+| **Katė iš viso** | €24 054 | 23 % | 32 % | 24,3 % |
+| **Maistas+skanėstai iš viso** | €103 951 | 100 % | **~30 %** | ~23 % |
 
 ## 4. Proxy CM12 (per naują maisto klientą, bazinis V12 €115 su PVM)
 - Pajamos be PVM: €95.
-- Bendroji marža: naujų klientų mišinys svertas į Exclusion/Josera (49 %/26 % kohortų) → **~19–20 %** (ne 23 %) → **€18–19**.
+- Antkainis naujų klientų mišinyje (Exclusion/Josera 49 %/26 % kohortų) → **~24 %** (bendras ~30 %); bruto pelnas nuo €95 pajamų = 95 × 0,24/1,24 → **€18–19** (tas pats skaičius — antkainis ir marža yra tos pačios sumos dvi išraiškos).
 - Pristatymo subsidija: Venipak paštomatas €1,58 savikaina / užsakymui; ar klientas moka — `ps_fakt_uzsakymai.pristatymas_*` (recon A). ~2,7 užs./12 mėn. → €4–8 jei nemokamas.
 - Paysera ~1–1,5 % → ~€1.
 - **Proxy CM12 ≈ €10–14** (Exclusion/Josera pirkėjas) · **€20–25** (Animonda/Ontario/Hikari pirkėjas) · **€30+** (skanėstų/AV pirkėjas).
@@ -50,3 +50,4 @@ Gyvai `ps_fakt_eilutes.savikaina_ct` pildoma (92/93, šaltinis `pardavimai`) —
 ## 6. Kas taisytina (ne šioje sesijoje)
 - `_cost_price` neturi 6 iš top-20 senų SKU (Ontario/Romar/Prins/Haumiau) — Raimiui pildyti arba imti iš partijų.
 - `petshop-analitika-langas.php` / ankstesni recon'ai su `kaina_ct − pvm_ct` — peržiūrėti (S1683 brendų maržos neteisingos).
+- Raimio patikslinimas (09-14): plane operuojame ANTKAINIU (nuo savikainos), ne marža nuo kainos. CM12 € suma nuo to nesikeičia.
