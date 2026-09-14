@@ -64,7 +64,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
     <h3>Q4 = atstatymas + instrumentai, ne augimas</h3>
     <div class="kpis" style="margin:6px 0 0">
       <div class="kpi"><span>N maisto / mėn.</span><b>~120</b><span>dabar ~75–85 (rugsėjo tempas)</span></div>
-      <div class="kpi"><span>R60 spalio kohorta (scorecard)</span><b>≥ 20 %</b><span>istorija 13 %; operacinis KPI = R_due, target po baseline recon</span></div>
+      <div class="kpi"><span>R_due spalio kohorta (operacinis)</span><b>≥ 22 %</b><span>baseline 16,1 % (2024–25, n 2 818); R60 ≥ 20 % scorecard (baseline 14 %)</span></div>
       <div class="kpi"><span>Užsakymai / mėn.</span><b>300</b><span>rugsėjo tempas ~230, 2025-09: 322</span></div>
       <div class="kpi"><span>Blended new-food CAC</span><b>≤ €12</b><span>+ brendo CM guardrail (Excl./Jos. €5–7) · dabar ~€19</span></div>
     </div>
@@ -99,7 +99,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
         <tr><th>Darbas</th><th>Kas</th><th>Kada</th><th>Būsena</th></tr>
         <tr><td>Offline konversijų patvirtinimas (naktinis 02:01 traukimas 09-15; Ads UI įkėlimų istorija)</td><td>Claude / Raimis</td><td>09-15</td><td><span class="tag wait">kontrolinis taškas</span></td></tr>
         <tr><td>Nauja feed-only retail PMax „Šunų maistas" UI po MC review</td><td>Raimis</td><td>iki 09-20</td><td><span class="tag wait">laukia MC</span></td></tr>
-        <tr><td>Kačių PMax — sprendžia ekonomika, ne etiketė: kol offline signalo nėra, biudžeto nedidinti; po spalio CM12/CAC &lt; 2 → stop, ≥ 2 → lieka (net jei katės ne spearhead)</td><td>Raimis</td><td>09-15 / spalis</td><td><span class="tag go">sprendimas</span></td></tr>
+        <tr><td>Kačių PMax — jau PAUSED nuo 09-12 (ps_ads_recon); grąžinti tik su ekonomikos įrodymu (CM12/CAC ≥ 2), ne pagal etiketę. Likusi: „P-max | LT | petshop.lt" €40/d ENABLED be MC feed'o</td><td>Raimis</td><td>spalis</td><td><span class="tag ok">pauzė</span></td></tr>
         <tr><td>Search exact top prekių pavadinimai (Exclusion Hypo, Josera, Animonda GranCarno) €5/d testas</td><td>Raimis / Claude (raktažodžiai iš ps_ist)</td><td>spalis</td><td><span class="tag wait">test</span></td></tr>
         <tr><td>Prieglaudų/veisėjų sąrašas (LT, šunys) + pasiūlymas prekėmis (skanėstų dėžė naujam šeimininkui)</td><td>Raimis sprendžia formatą · Claude sąrašą</td><td>lapkritis</td><td><span class="tag wait">build</span></td></tr>
         <tr><td>Skanėstų tipų puslapiai + šėrimo skaičiuoklė kaip SEO/N įrankis (pagrindas s1678)</td><td>Claude</td><td>gruodis</td><td><span class="tag dim">later</span></td></tr>
@@ -122,7 +122,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
     <div>
       <table>
         <tr><th>Darbas</th><th>Kas</th><th>Kada</th><th>Būsena</th></tr>
-        <tr><td>Produkto ciklų lentelė: brendas × pakuotė → tikėtinas intervalas (iš ps_ist 2-o pirkimo laikų; Exclusion/RC 12–15 kg 60–90 d., Animonda R30, Josera 20–50 d.) + <b>istorinis R_due baseline 2024–2026</b> → R_due target nustatomas nuo jo, ne nuo R60 13 %</td><td>Claude</td><td>spalio 1 sav.</td><td><span class="tag go">kitas</span></td></tr>
+        <tr><td>Produkto ciklų lentelė + istorinis R_due baseline — <b>atlikta 09-14</b>: `CIKLAI_ir_R_due_baseline_s1684.md` (Animonda due 34–41 d., Josera 56–73, Exclusion 38–76, Hikari 137; R_due 16,1 %, Josera 12 %, Exclusion 22 %, Animonda 31 %)</td><td>Claude</td><td>09-14</td><td><span class="tag ok">atlikta</span></td></tr>
         <tr><td>„Pakartoti tą patį maišą vienu paspaudimu" — post_purchase_14d → refill_due langai ~20 / 30–35 / 45–50 d. pagal ciklą; `?ps_atkurti` tipo nuoroda</td><td>Claude įjungia · Raimis tekstai</td><td>spalio 2–3 sav.</td><td><span class="tag wait">laukia WS4</span></td></tr>
         <tr><td>90/10 holdout nuo pirmo laiško (permanentinis; kohorta prieš/po)</td><td>Claude</td><td>kartu</td><td><span class="tag wait"></span></td></tr>
         <tr><td>Josera fokusas: 39 % naujų, R60 9 % — atskiras Josera 20–50 d. langas su kiekio bonuso pasiūlymu (R_due Josera = 50 d.)</td><td>Claude · Raimis pasiūlymas</td><td>lapkritis</td><td><span class="tag wait"></span></td></tr>
@@ -310,7 +310,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
   <div>
     <h3>Atvira — Raimio sprendimai</h3>
     <table>
-      <tr><td>Kačių PMax: nedidinti iki signalo; stop/keep pagal spalio CM12/CAC</td><td><span class="tag go">09-15 / spalis</span></td></tr>
+      <tr><td>Soft opt-out tekstas kasoje — žodžiai (spec `SPEC_kasos_soft_optout_s1684.md`)</td><td><span class="tag go">09-15</span></td></tr>
       <tr><td>Soft opt-out kasoje — tekstas (Claude spec, Raimis žodžiai)</td><td><span class="tag go">spalio 1 sav.</span></td></tr>
       <tr><td>legacy_reactivation_l1 561 prenumeratoriams — siųsti?</td><td><span class="tag go">spalis</span></td></tr>
       <tr><td>Pristatymo kainodara (paštomatas €0,96 vs savikaina €2,24) — slenkstis/mokestis</td><td><span class="tag wait">WS5, ant ≥ 300 užs.</span></td></tr>
@@ -318,7 +318,17 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
       <tr><td>Exclusion per AV partiją (+19 pp) — kiek laikyti sandėlyje (apyvartinės)</td><td><span class="tag wait">WS5</span></td></tr>
       <tr><td>Prieglaudų/veisėjų pasiūlymo formatas (skanėstų dėžė prekėmis)</td><td><span class="tag wait">lapkritis</span></td></tr>
     </table>
-    <h3 style="margin-top:14px">Artimiausi 7 dienos</h3>
+    <h3 style="margin-top:14px">Sprintas iki 09-21 (tik du varikliai: N ir retention)</h3>
+    <ul>
+      <li>✓ 09-14 — ciklų lentelė + R_due baseline 16,1 % → target 22 %; soft opt-out spec parašyta</li>
+      <li>09-15 — <b>Raimis</b>: Ads UI → Tools → Conversions → Uploads: ar 09-12/09-15 importai atsirado, datos, kiek, dubliai; Claude serveryje: `petshop-ads-offline.php` žurnalas, `_ps_gclid` (9 užs.)</li>
+      <li>09-15–09-20 — MC review → feed-only PMax „Šunų maistas"; biudžetas nekeliamas</li>
+      <li>iki 09-21 — soft opt-out kasoje gyvai (Raimio žodžiai → deploy → testas)</li>
+      <li>iki 09-21 — antkainio/CAC matematika analitika-langas</li>
+      <li>09-22–10-05 — „Pakartoti tą patį" + refill langai pagal ciklų lentelę + 90/10 holdout</li>
+      <li>Ne dabar: video, SEO, prieglaudos, referral, katės</li>
+    </ul>
+    <h3 style="margin-top:10px">Artimiausi 7 dienos (sena)</h3>
     <ul>
       <li>09-15 02:01 — Ads offline konversijų traukimas (kontrolinis taškas) · Raimis: Ads UI įkėlimų istorija</li>
       <li>09-15 — kačių PMax sprendimas · MC review → feed-only PMax šunys</li>
