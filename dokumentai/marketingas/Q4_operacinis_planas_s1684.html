@@ -66,7 +66,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
       <div class="kpi"><span>N maisto / mėn.</span><b>~120</b><span>dabar ~75–85 (rugsėjo tempas)</span></div>
       <div class="kpi"><span>R_due spalio kohorta (operacinis)</span><b>≥ 22 %</b><span>baseline 16,1 % (2024–25, n 2 818); R60 ≥ 20 % scorecard (baseline 14 %)</span></div>
       <div class="kpi"><span>Užsakymai / mėn.</span><b>300</b><span>rugsėjo tempas ~230, 2025-09: 322</span></div>
-      <div class="kpi"><span>Blended new-food CAC</span><b>≤ €12</b><span>+ brendo CM guardrail (Excl./Jos. €5–7) · dabar ~€19</span></div>
+      <div class="kpi"><span>Blended new-food CAC</span><b>≤ €12</b><span>+ brendo CM guardrail (Excl./Jos. €5–7) · dabar €14,20 (09-09…14)</span></div>
     </div>
   </div>
   <div class="card">
@@ -146,7 +146,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
       <table>
         <tr><th>Darbas</th><th>Kas</th><th>Kada</th><th>Būsena</th></tr>
         <tr><td>Dashboard v1 (N/kanalas/CAC/R-kohortos/V/antkainis) ant ps_fakt + ps_ist baseline</td><td>Claude</td><td>10-15</td><td><span class="tag wait">build</span></td></tr>
-        <tr><td>Antkainio formulė visur `(kaina_ct − sav)/sav`, kaina_ct BE PVM (S1683 „kaina − pvm" klaida) — peržiūrėti analitika-langas</td><td>Claude</td><td>spalio 1 sav.</td><td><span class="tag go">kitas</span></td></tr>
+        <tr><td><b>Atlikta 09-14:</b> `petshop-analitika-langas.php` v1.1.0 GYVAI — Reklamos verdiktas pagal CAC naujam klientui (slenksčiai €12 / €35), „naujas" = nėra ps_ist istorijoje (WC `klientas_naujas` istorijos nemato), antkainis vietoj maržos %. Pirmas rodmuo: spend €199, 14 naujų iš Ads, <b>CAC €14,20</b>, antkainis Ads užsakymuose 40 %</td><td>Claude</td><td>09-14</td><td><span class="tag ok">gyvai</span></td></tr>
         <tr><td>GA4 `purchase` dvigubinimas (naršyklė + serverio MP, 49 vs 34) — palikti vieną</td><td>Claude</td><td>po Ads patvirtinimo</td><td><span class="tag wait"></span></td></tr>
         <tr><td>`ps_fakt_uzsakymai.pristatymas_savikaina_ct` ← `ps_fakt_siuntos` (kontribucija dabar pristatymo neatima)</td><td>Claude</td><td>lapkritis (Raimis: kai paaugs imtis)</td><td><span class="tag dim">atidėta</span></td></tr>
         <tr><td>Sava analitika (`petshop-analitika.php` rinkiklis) auditas — sesija, botai, `uzsakymai`=0</td><td>Claude</td><td>lapkritis</td><td><span class="tag dim">later</span></td></tr>
@@ -324,7 +324,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
       <li>09-15 — <b>Raimis</b>: Ads UI → Tools → Conversions → Uploads: ar 09-12/09-15 importai atsirado, datos, kiek, dubliai; Claude serveryje: `petshop-ads-offline.php` žurnalas, `_ps_gclid` (9 užs.)</li>
       <li>09-15–09-20 — MC review → feed-only PMax „Šunų maistas"; biudžetas nekeliamas</li>
       <li>iki 09-21 — soft opt-out kasoje gyvai (Raimio žodžiai → deploy → testas)</li>
-      <li>iki 09-21 — antkainio/CAC matematika analitika-langas</li>
+      <li>✓ 09-14 — antkainio/CAC matematika analitika-langas v1.1.0 gyvai (CAC €14,20 už naują)</li>
       <li>09-22–10-05 — „Pakartoti tą patį" + refill langai pagal ciklų lentelę + 90/10 holdout</li>
       <li>Ne dabar: video, SEO, prieglaudos, referral, katės</li>
     </ul>

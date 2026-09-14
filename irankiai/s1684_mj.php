@@ -1,0 +1,3 @@
+<?php
+/** TEMP PS S1684 mj — READ-ONLY patikra po deploy: analitika-langas reklama()/klientai() rezultatai (atskira užklausa dėl opcache). */
+add_action('init', function(){ if (!isset($_GET['ps_s1684mj'])) return; $o=array('v'=>'mj','md5'=>md5_file(WPMU_PLUGIN_DIR.'/petshop-analitika-langas.php'),'ver'=>Petshop_Analitika_Langas::VER); foreach(array(30,90) as $d){ $o['reklama'.$d]=Petshop_Analitika_Langas::reklama($d); unset($o['reklama'.$d]['kamp']); $o['klientai'.$d]=Petshop_Analitika_Langas::klientai($d); } header('Content-Type: application/json'); echo json_encode($o,JSON_UNESCAPED_UNICODE); exit; });
