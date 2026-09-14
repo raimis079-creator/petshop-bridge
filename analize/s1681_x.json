@@ -1,0 +1,27 @@
+{
+ "v": "dep-122152",
+ "kurimas": 200,
+ "sid": 5744,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 x",
+  "md5_pries": "1dd8e6f66a3960bae4b9a5377abff78e",
+  "bak": true,
+  "md5_po": "0aa0dac67df22d13b421b963d53c5707",
+  "dydis": 72599,
+  "test": {
+   "LT +370 612 34567": "ok → +37061234567",
+   "LT 861234567": "ok → +37061234567",
+   "LT +371 21234567": "KLAIDA → +37121234567",
+   "LV +371 21234567": "KLAIDA → +37121234567",
+   "LV 21234567": "KLAIDA → 21234567",
+   "LV 2123456": "KLAIDA → 2123456",
+   "EE +372 5123 4567": "KLAIDA → +37251234567",
+   "EE 51234567": "KLAIDA → 51234567",
+   "EE +370 61234567": "ok → +37061234567"
+  }
+ }
+}
