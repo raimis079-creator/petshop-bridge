@@ -1,0 +1,293 @@
+{
+ "v": "dep-110744",
+ "kurimas": 200,
+ "sid": 5733,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 n",
+  "lent": [
+   {
+    "t": "gaj6_ps_ivykiai",
+    "n": "29731"
+   },
+   {
+    "t": "gaj6_ps_ist_eilutes",
+    "n": "24516"
+   },
+   {
+    "t": "gaj6_ps_fakt_gsc_url_d",
+    "n": "23197"
+   },
+   {
+    "t": "gaj6_ps_ist_fakt_eilutes",
+    "n": "22393"
+   },
+   {
+    "t": "gaj6_ps_fakt_atsargos_d",
+    "n": "17839"
+   },
+   {
+    "t": "gaj6_ps_ist_uzsakymai",
+    "n": "10098"
+   },
+   {
+    "t": "gaj6_ps_ist_fakt_uzsakymai",
+    "n": "8350"
+   },
+   {
+    "t": "gaj6_ps_kl_suvestine",
+    "n": "5692"
+   },
+   {
+    "t": "gaj6_ps_dim_klientai",
+    "n": "5364"
+   },
+   {
+    "t": "gaj6_ps_feeding_rows",
+    "n": "5336"
+   },
+   {
+    "t": "gaj6_ps_sources",
+    "n": "4207"
+   },
+   {
+    "t": "gaj6_ps_web_ivykiai",
+    "n": "3897"
+   },
+   {
+    "t": "gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f",
+    "n": "3831"
+   },
+   {
+    "t": "gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1",
+    "n": "3831"
+   },
+   {
+    "t": "gaj6_ps_sargas_klaidos",
+    "n": "3415"
+   },
+   {
+    "t": "gaj6_ps_seo_url_svoris",
+    "n": "2511"
+   },
+   {
+    "t": "gaj6_ps_laukai_ivykiai",
+    "n": "2405"
+   },
+   {
+    "t": "gaj6_ps_seo_404",
+    "n": "2131"
+   },
+   {
+    "t": "gaj6_ps_fakt_kainos",
+    "n": "1526"
+   },
+   {
+    "t": "gaj6_ps_web_dienos",
+    "n": "1459"
+   },
+   {
+    "t": "gaj6_ps_av_zurnalas",
+    "n": "1102"
+   },
+   {
+    "t": "gaj6_ps_partijos",
+    "n": "911"
+   },
+   {
+    "t": "gaj6_ps_consent_log",
+    "n": "578"
+   },
+   {
+    "t": "gaj6_ps_feeding_map",
+    "n": "561"
+   },
+   {
+    "t": "gaj6_ps_feeding_rows_bak_s304",
+    "n": "550"
+   }
+  ],
+  "pav": [
+   "gaj6_pmxi_history",
+   "gaj6_pmxi_imports",
+   "gaj6_pmxi_imports_bak_s655",
+   "gaj6_ps_feeding_import_log",
+   "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_fakt_uzsakymai",
+   "gaj6_ps_ist_fakt_uzsakymai",
+   "gaj6_ps_ist_uzsakymai",
+   "gaj6_ps_uzsakymu_ivykiai",
+   "gaj6_ps_v_analize_uzsakymai"
+  ],
+  "uploads": [
+   "/petshop-private-logs/big-sizes-clean-backup.csv 97K",
+   "/petshop-private-logs/octetstream-rename-backup.csv 554K",
+   "/petshop-private-logs/trash-cleanup-backup.csv 343K",
+   "/petshop-legacy/products_v2.xlsx 879K",
+   "/petshop-legacy/articles.json 739K",
+   "/ps-backups/dev-url-valymas-S1643-20260908-184523.json 249K",
+   "/ps-backups/gtin_backup_20260817_204552.json 145K",
+   "/ps-backups/legacy_301_map_pries_20260819_061017.json 122K",
+   "/ps-backups/legacy_301_map_pries_20260819_073120.json 135K",
+   "/ps-backups/legacy_301_map_pries_20260819_073648.json 142K",
+   "/ps-backups/legacy_301_map_pries_taisymo_20260819_062031.json 138K",
+   "/ps-backups/monge-merge-BACKUP-2026-08-20.json 58K",
+   "/ps-backups/nuorodos_pries_20260819_100641.json 126K",
+   "/ps-backups/options_h090.json 55K",
+   "/ps-backups/paskutines_nuorodos_pries_20260819_103217.json 52K",
+   "/ps-backups/prieziuros_pries_20260819_094212.json 246K",
+   "/ps-backups/rankmath_title_kopija_20260818_165421.json 446K",
+   "/ps-backups/rasmenys_pries_20260819_095101.json 63K",
+   "/ps-backups/s1671_istorija_prekes.json 58K",
+   "/ps-backups/s1671_prekes_ekonomika.json 181K",
+   "/ps-backups/straipsniu_turinys_pries_20260819_091906.json 369K",
+   "/ps-backups/temp-snippets-20260821-192445.json 3014K",
+   "/ps-backups/tipu-zurnalas-ARCHYVAS-2026-08-20.json 113K",
+   "/ps-backups/turinys_pries_perrasymo_20260819_100029.json 58K",
+   "/ps-backups/url_replace_r192_20260821_130324.json 643K",
+   "/ps_private/backup_rinkiniai_rink_cleanup_20260721_084044.json 156K",
+   "/venipak/pickups.json 1725K",
+   "/wcdn/fonts/DejaVuSans.ufm.json 267K",
+   "/wcdn/fonts/inter_600_a5b5b7df9ed7cd3ab6d1701dd8ea1813.ufm.json 144K",
+   "/wcdn/fonts/inter_bold_60d5f1b66fb17f19fa1c604ccedd539d.ufm.json 144K",
+   "/wcdn/fonts/inter_bold_a15de4cb7df36039b73b436bde2d6eaf.ufm.json 144K",
+   "/wcdn/fonts/inter_normal_bfe5feac30b9e230636743b11f70b813.ufm.json 144K",
+   "/wcdn/fonts/inter_normal_ec44c9d165c8dcb6980394432d69b854.ufm.json 144K",
+   "/wpforms/cache/addons.json 257K",
+   "/wpforms/cache/templates.json 1849K",
+   "/2026/09/dl_v3411.txt 196K"
+  ],
+  "meniu": [],
+  "mu": [
+   "automation-by-installatron.php",
+   "petshop-ads-offline.php",
+   "petshop-akcijos.php",
+   "petshop-analitika-langas.php",
+   "petshop-analitika.php",
+   "petshop-anketa-ivykiai.php",
+   "petshop-anketos-ataskaita.php",
+   "petshop-ataskaita-atsargos.php",
+   "petshop-ataskaita-klientai.php",
+   "petshop-ataskaita-lankomumas.php",
+   "petshop-ataskaita-menuo.php",
+   "petshop-ataskaita-pardavimai.php",
+   "petshop-ataskaita-prekes.php",
+   "petshop-ataskaitos-ui.php",
+   "petshop-ataskaitu-agregavimas.php",
+   "petshop-ataskaitu-eksportas.php",
+   "petshop-atributai.php",
+   "petshop-atsargu-laukimas.php",
+   "petshop-atsisakymas.php",
+   "petshop-av-admin.php",
+   "petshop-av-dropship.php",
+   "petshop-av-expiry.php",
+   "petshop-av-limit.php",
+   "petshop-av-order.php",
+   "petshop-av-reduce.php",
+   "petshop-av-sheets.php",
+   "petshop-av-source.php",
+   "petshop-av-stock.php",
+   "petshop-av-tiekimas.php",
+   "petshop-bacs-priminimas.php",
+   "petshop-cache.php",
+   "petshop-code-search.php",
+   "petshop-darbalaukis.php",
+   "petshop-desk.php",
+   "petshop-dim-klientai.php",
+   "petshop-dropship-sargas.php",
+   "petshop-dydziai.php",
+   "petshop-fakt-atsargos.php",
+   "petshop-fakt-grazinimai.php",
+   "petshop-fakt-kainos.php",
+   "petshop-fakt-reklama.php",
+   "petshop-fakt-siuntos.php",
+   "petshop-faktai.php",
+   "petshop-feeding-calc-rest.php",
+   "petshop-ga4-serveris.php",
+   "petshop-gavimas.php",
+   "petshop-gavimo-perrusiavimas.php",
+   "petshop-greitis.php",
+   "petshop-hero-preload.php",
+   "petshop-higiena.php",
+   "petshop-import-log.php",
+   "petshop-import-tempas.php",
+   "petshop-innodb.php",
+   "petshop-islaidos.php",
+   "petshop-istorijos-adapteris.php",
+   "petshop-ivykiai.php",
+   "petshop-juosta.php",
+   "petshop-kalendorius.php",
+   "petshop-kampaniju-langas.php",
+   "petshop-kanalai.php",
+   "petshop-katalogas.php",
+   "petshop-kategorijos-aprasymas.php",
+   "petshop-klientai.php",
+   "petshop-kliento-siuntos.php",
+   "petshop-klientui.php",
+   "petshop-kreipinys.php",
+   "petshop-laiskai-importas.php",
+   "petshop-laiskai.php",
+   "petshop-langai-admin.php",
+   "petshop-laukai.php",
+   "petshop-legacy-301.php",
+   "petshop-legacy-importas.php",
+   "petshop-login-sargas.php",
+   "petshop-m8-food.php",
+   "petshop-naujienlaiskiai-admin.php",
+   "petshop-naujienlaiskiai.php",
+   "petshop-nepamoketi.php",
+   "petshop-pardavimai.php",
+   "petshop-parseris.php",
+   "petshop-partijos.php",
+   "petshop-paruostu-ataskaita.php",
+   "petshop-payment-failed.php",
+   "petshop-perziuru-priminimas.php",
+   "petshop-pet-claim.php",
+   "petshop-pet-kontraktas.php",
+   "petshop-pilnumas.php",
+   "petshop-pren-nuorodos.php",
+   "petshop-pren-sutikimas.php",
+   "petshop-prenumerata-katalogas.php",
+   "petshop-prenumerata-paskyra.php",
+   "petshop-prenumerata-veiksmas.php",
+   "petshop-prenumerata.php",
+   "petshop-prenumeratos-langas.php",
+   "petshop-prenumeratu-prognoze.php",
+   "petshop-prieziura.php",
+   "petshop-ps-pets-migration-freeze.php",
+   "petshop-rankos.php",
+   "petshop-rec-log.php",
+   "petshop-rec-ui.php",
+   "petshop-rec-variklis.php",
+   "petshop-refill-ivykiai.php",
+   "petshop-rezultatai.php",
+   "petshop-rinkiniai.php",
+   "petshop-rinkiniu-ataskaita.php",
+   "petshop-rinkiniu-likuciai.php",
+   "petshop-rinkiniu-rusis.php",
+   "petshop-rysiai.php",
+   "petshop-rytas.php",
+   "petshop-sargas-saugumas.php",
+   "petshop-sargas.php",
+   "petshop-schema.php",
+   "petshop-seo-aprasymas.php",
+   "petshop-seo.php",
+   "petshop-seseliai.php",
+   "petshop-siuntu-laiskai.php",
+   "petshop-siuntu-valymas.php",
+   "petshop-statistika-vitrina.php",
+   "petshop-statistika.php",
+   "petshop-teises.php",
+   "petshop-uzsakymu-ivykiai.php",
+   "petshop-vartai.php",
+   "petshop-venipak-docno.php",
+   "petshop-vertimai.php",
+   "petshop-vf-feed.php",
+   "petshop-wc-sync.php",
+   "petshop-webp.php"
+  ]
+ }
+}
