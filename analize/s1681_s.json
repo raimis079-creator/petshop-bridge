@@ -1,0 +1,85 @@
+{
+ "v": "dep-114821",
+ "kurimas": 200,
+ "sid": 5738,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 s",
+  "inst5": {
+   "title": "VENIPAK paštomatai/atsiėmimo punktai",
+   "description": "Išsiuntimas per 1-3 darbo dienas",
+   "fee": "2.47",
+   "minimum_weight": "",
+   "maximum_weight": "24.90",
+   "min_amount_for_free_shipping": "",
+   "ignore_shipping_classes": ""
+  },
+  "inst3": {
+   "title": "VENIPAK paštomatai/atsiėmimo punktai",
+   "description": "Išsiuntimas per 1-3 darbo dienas",
+   "fee": "1.78",
+   "minimum_weight": "",
+   "maximum_weight": "24.90",
+   "min_amount_for_free_shipping": "30",
+   "ignore_shipping_classes": ""
+  },
+  "inst2": {
+   "title": "VENIPAK Kurjeris",
+   "description": "Išsiuntimas per 1-3 darbo dienas",
+   "fee": "3.30",
+   "minimum_weight": "",
+   "maximum_weight": "50",
+   "min_amount_for_free_shipping": "",
+   "ignore_shipping_classes": [
+    "235",
+    "236",
+    "237"
+   ]
+  },
+  "tax": {
+   "prices_include_tax": "yes",
+   "calc_taxes": "yes",
+   "ship_tax_class": "inherit",
+   "display_cart": "incl"
+  },
+  "rates": [
+   {
+    "c": "LT",
+    "r": "21.0000",
+    "cl": "",
+    "s": "1"
+   }
+  ],
+  "calc": "function calculate_shipping( $package = Array() ) {\n    $shipping_tax_class = get_option('woocommerce_shipping_tax_class');\n    $rate = [\n      'id'      => $this->get_rate_id(),\n      'label'   => $this->get_option('title'),\n      'cost'    => $this->get_option('fee'),\n      'package' => $package,\n      'tax_class' => $shipping_tax_class,\n    ];\n\n    $ignored_classes = $this->get_option('ignore_shipping_classes', []);\n    if ( is_array( $ignored_classes ) && ! empty( $ignored_classes ) ) {\n      $found_shipping_classes = $this->find_shipping_classes_for_package($package);\n\n      foreach ($found_shipping_classes as $found_class) {\n        if (in_array($found_class, $ignored_classes)) {\n          return;\n        }\n      }\n    }\n\n    $cart_total_weight = WC()->cart->cart_contents_weight;\n    if (get_option('woocommerce_weight_unit') == 'g') {\n        $cart_total_weight /= 1000;\n    }\n\n    switch (get_option( 'woocommerce_dimension_unit' )) {\n      case 'm':\n        $unit_multiplayer = 0.01;\n        break;\n      case 'mm':\n        $unit_multiplayer = 10;\n        break;\n      default:\n        $unit_multiplayer = 1;\n    }\n\n    $maximum_weight_locker = $this->get_option('maximum_weight') ? $this->get_option('maximum_weight') : 30;\n    $manimum_weight_locker = $this->get_option('minimum_weight') ? $this->get_option('minimum_weight') : 0;\n\t\t$maximum_weight_pickup = min($maximum_weight_locker, 10);\n\t\t$minimum_weight_pickup = $manimum_weight_locker;\n\n    // Locker internal max dimensions (cm by default)\n    $venipak_box_dims = [\n      61 * $unit_multiplayer,\n      39.5 * $unit_multiplayer,\n      41 * $unit_multiplayer,\n    ];\n    sort($venipak_box_dims); // allow any orientation by comparing sorted dims\n    $venipak_max_volume = array_product($venipak_box_dims);\n    \n    $is_vali",
+  "filtrai": {
+   "wp-content/mu-plugins/petshop-analitika-langas.php": [
+    "elseif ( $skirt < 0 && $sav > 0 ) { $v = array( 'geltona', 'Pristatymas subsidijuojamas: iš klientų paimta ' . self::eur( $paimta ) . ', vežėjams ' . self::"
+   ],
+   "wp-content/mu-plugins/petshop-darbalaukis.php": [
+    "if ( 'shopup_venipak_shipping_courier_method' === $m->id ) { $row['fee'] = (float) str_replace( ',', '.', (string) ( $s['fee'] ?? 0 ) ); $row['nemok'] = (float)",
+    "elseif ( 'shopup_venipak_shipping_pickup_method' === $m->id ) { $row['fee'] = (float) str_replace( ',', '.', (string) ( $s['fee'] ?? 0 ) ); $row['nemok'] = (flo",
+    "elseif ( 'woo_lithuaniapost_lpexpress_terminal' === $m->id ) { $row['fee'] = (float) str_replace( ',', '.', (string) ( $s['fixed_cost'] ?? 0 ) ); $row['nemok'] "
+   ],
+   "wp-content/mu-plugins/petshop-laukai.php": [
+    "*   1) nemokamas pristatymas (jau veikia WooCommerce nustatymuose),",
+    "/** Nemokamo pristatymo riba. Vienaskaita — kalbam apie sio kliento siunta. */",
+    "<div class=\"v\"><span class=\"ik\"><svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" ari",
+    "<div class=\"pslk-po\" id=\"pslk-po\">Nemokamas pristatymas į paštomatą nuo <?php echo esc_html( wc_format_decimal( $riba, 0 ) ); ?> €</div>",
+    "? 'Dar <b>'+eur(D.riba-moka)+'</b> iki nemokamo pristatymo į paštomatą'",
+    ": 'Nemokamas pristatymas į paštomatą nuo '+D.riba.toFixed(0)+' €');"
+   ],
+   "wp-content/mu-plugins/petshop-rinkiniai.php": [
+    "add_filter( 'woocommerce_package_rates', array( __CLASS__, 'pastomato_sargas' ), 100, 2 );"
+   ],
+   "wp-content/mu-plugins/petshop-rytas.php": [
+    "$v[] = array( 'poveikis' => abs( (int) $r['s'] ), 'tekstas' => '<b>' . (int) $r['n'] . ' nuostolingi užsakymai</b> per 7 d. (' . self::eur( (int) $r['s'] ) . '"
+   ],
+   "wp-content/plugins/petshop-fbt/petshop-fbt.php": [
+    "* Description: \"Frequently Bought Together\". Kategorijų porų sistema (auto kompanionai) + rankinis override + co-purchase architektūra. Nuolaida pagal kompan"
+   ]
+  }
+ }
+}
