@@ -1,0 +1,1551 @@
+{
+ "v": "dep-070438",
+ "kurimas": 200,
+ "sid": 5707,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1680 c",
+  "files": [
+   "vendor/nawebco/box-packer/src/ContainerLevel.php",
+   "vendor/nawebco/box-packer/src/DescribableTrait.php",
+   "vendor/nawebco/box-packer/src/PackingResult.php",
+   "vendor/nawebco/box-packer/src/GenericPackable.php",
+   "vendor/nawebco/box-packer/src/PackableInterface.php",
+   "vendor/nawebco/box-packer/src/Solid.php",
+   "vendor/nawebco/box-packer/src/InvalidPackingScenarioError.php",
+   "vendor/nawebco/box-packer/src/ObjectReferenceTrait.php",
+   "vendor/nawebco/box-packer/src/ExtensionTrait.php",
+   "vendor/nawebco/box-packer/src/Packer.php",
+   "vendor/nawebco/box-packer/src/SolidInterface.php",
+   "vendor/nawebco/box-packer/src/Container.php",
+   "vendor/nawebco/box-packer/tests/PackerTest.php",
+   "vendor/nawebco/box-packer/tests/PackingResultTest.php",
+   "vendor/nawebco/box-packer/tests/SolidTest.php",
+   "vendor/nawebco/box-packer/tests/ContainerTest.php",
+   "vendor/nawebco/box-packer/tests/ContainerLevelTest.php",
+   "vendor/composer/ClassLoader.php",
+   "vendor/composer/autoload_classmap.php",
+   "vendor/composer/autoload_namespaces.php",
+   "vendor/composer/platform_check.php",
+   "vendor/composer/InstalledVersions.php",
+   "vendor/composer/autoload_psr4.php",
+   "vendor/composer/autoload_static.php",
+   "vendor/composer/autoload_real.php",
+   "vendor/composer/installed.php",
+   "vendor/autoload.php",
+   "vendor/setasign/fpdi/src/FpdiException.php",
+   "vendor/setasign/fpdi/src/FpdfTrait.php",
+   "vendor/setasign/fpdi/src/GraphicsState.php",
+   "vendor/setasign/fpdi/src/Tcpdf/Fpdi.php",
+   "vendor/setasign/fpdi/src/Math/Vector.php",
+   "vendor/setasign/fpdi/src/Math/Matrix.php",
+   "vendor/setasign/fpdi/src/PdfReader/PageBoundaries.php",
+   "vendor/setasign/fpdi/src/PdfReader/PdfReaderException.php",
+   "vendor/setasign/fpdi/src/PdfReader/PdfReader.php",
+   "vendor/setasign/fpdi/src/PdfReader/Page.php",
+   "vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php",
+   "vendor/setasign/fpdi/src/FpdfTpl.php",
+   "vendor/setasign/fpdi/src/TcpdfFpdi.php",
+   "vendor/setasign/fpdi/src/autoload.php",
+   "vendor/setasign/fpdi/src/Fpdi.php",
+   "vendor/setasign/fpdi/src/FpdiTrait.php",
+   "vendor/setasign/fpdi/src/Tfpdf/FpdfTpl.php",
+   "vendor/setasign/fpdi/src/Tfpdf/Fpdi.php",
+   "vendor/setasign/fpdi/src/PdfParser/PdfParser.php",
+   "vendor/setasign/fpdi/src/PdfParser/StreamReader.php",
+   "vendor/setasign/fpdi/src/PdfParser/PdfParserException.php",
+   "vendor/setasign/fpdi/src/PdfParser/Tokenizer.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfType.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfBoolean.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfDictionary.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfHexString.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfIndirectObjectReference.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfNull.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfArray.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfIndirectObject.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfString.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfTypeException.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfName.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfNumeric.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfStream.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfToken.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Ascii85.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/FilterInterface.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Ascii85Exception.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Lzw.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Flate.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/FilterException.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/AsciiHex.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/LzwException.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/FlateException.php",
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReferenceException.php",
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/ReaderInterface.php",
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/AbstractReader.php",
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/LineReader.php",
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReference.php",
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/FixedReader.php",
+   "vendor/setasign/fpdi/src/FpdfTplTrait.php",
+   "vendor/setasign/fpdf/makefont/makefont.php",
+   "vendor/setasign/fpdf/makefont/ttfparser.php",
+   "vendor/setasign/fpdf/fpdf.php",
+   "vendor/setasign/fpdf/font/symbol.php",
+   "vendor/setasign/fpdf/font/courier.php",
+   "vendor/setasign/fpdf/font/timesi.php",
+   "vendor/setasign/fpdf/font/helveticabi.php",
+   "vendor/setasign/fpdf/font/zapfdingbats.php",
+   "vendor/setasign/fpdf/font/timesb.php",
+   "vendor/setasign/fpdf/font/courierbi.php",
+   "vendor/setasign/fpdf/font/timesbi.php",
+   "vendor/setasign/fpdf/font/courieri.php",
+   "vendor/setasign/fpdf/font/times.php",
+   "vendor/setasign/fpdf/font/helvetica.php",
+   "vendor/setasign/fpdf/font/courierb.php",
+   "vendor/setasign/fpdf/font/helveticab.php",
+   "vendor/setasign/fpdf/font/helveticai.php",
+   "vendor/setasign/fpdf/tutorial/calligra.php",
+   "vendor/setasign/fpdf/tutorial/makefont.php",
+   "vendor/setasign/fpdf/tutorial/tuto3.php",
+   "vendor/setasign/fpdf/tutorial/tuto2.php",
+   "vendor/setasign/fpdf/tutorial/tuto6.php",
+   "vendor/setasign/fpdf/tutorial/tuto5.php",
+   "vendor/setasign/fpdf/tutorial/tuto7.php",
+   "vendor/setasign/fpdf/tutorial/tuto1.php",
+   "vendor/setasign/fpdf/tutorial/tuto4.php",
+   "woo-lithuaniapost.php",
+   "admin/class-woo-lithuaniapost-admin-api-hooks.php",
+   "admin/class-woo-lithuaniapost-admin-size-service.php",
+   "admin/class-woo-lithuaniapost-admin-settings.php",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php",
+   "admin/class-woo-lithuaniapost-admin-order-actions.php",
+   "admin/class-woo-lithuaniapost-admin-order-bulk-actions.php",
+   "admin/util/class-woo-lithuaniapost-admin-util.php",
+   "admin/class-woo-lithuaniapost-admin-order-service.php",
+   "admin/index.php",
+   "admin/schedule/class-woo-lithuaniapost-admin-courier-schedule.php",
+   "admin/class-woo-lithuaniapost-admin-error-handler.php",
+   "admin/api/class-woo-lithuaniapost-admin-parcel-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-terminal-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-shipping-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-shipping-plan-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-oauth-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-address-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-estimate-shipping-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-courier-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-sticker-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-tracking-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-eshop-api.php",
+   "admin/partials/woo-lithuaniapost-admin-display.php",
+   "admin/partials/includes/html-shipment-editor-side.php",
+   "admin/partials/includes/html-cn-editor.php",
+   "admin/partials/includes/html-parcel-content-editor.php",
+   "admin/partials/includes/html-tracking-info.php",
+   "admin/partials/html-lithuaniapost-admin-order-settings.php",
+   "admin/class-woo-lithuaniapost-admin-order-settings.php",
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php",
+   "admin/class-woo-lithuaniapost-admin.php",
+   "admin/class-woo-lithuaniapost-admin-order-tracking.php",
+   "index.php",
+   "templates/emails/tracking-email.php",
+   "includes/class-woo-lithuaniapost-activator.php",
+   "includes/class-woo-lithuaniapost-deactivator.php",
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost-size.php",
+   "includes/shipping/lpexpress-terminal/includes/settings-lpexpress-terminal.php",
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost-weight.php",
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost.php",
+   "includes/shipping/lpexpress-terminal/class-woo-lithuaniapost-shipping-lpexpress-terminal.php",
+   "includes/shipping/rates/class-woo-lithuaniapost-country-rates.php",
+   "includes/shipping/rates/includes/html-settings-cost-size-row.php",
+   "includes/shipping/rates/includes/html-settings-cost-weight-row.php",
+   "includes/shipping/rates/includes/html-country-rate-inputs.php",
+   "includes/shipping/rates/includes/html-settings-cost.php",
+   "includes/shipping/rates/class-woo-lithuaniapost-tablerates.php",
+   "includes/index.php",
+   "includes/class-woo-lithuaniapost-loader.php",
+   "includes/woo-lithuaniapost-functions.php",
+   "includes/class-woo-lithuaniapost.php",
+   "includes/class-woo-lithuaniapost-i18n.php",
+   "public/index.php",
+   "public/class-woo-lithuaniapost-public.php",
+   "public/partials/html-delivery-time.php",
+   "public/partials/html-block-lpexpress-terminal.php",
+   "public/partials/html-lpexpress-terminal.php"
+  ],
+  "cls": {
+   "vendor/nawebco/box-packer/src/ContainerLevel.php": [
+    "ContainerLevel"
+   ],
+   "vendor/nawebco/box-packer/src/PackingResult.php": [
+    "PackingResult"
+   ],
+   "vendor/nawebco/box-packer/src/GenericPackable.php": [
+    "GenericPackable"
+   ],
+   "vendor/nawebco/box-packer/src/Solid.php": [
+    "Solid"
+   ],
+   "vendor/nawebco/box-packer/src/InvalidPackingScenarioError.php": [
+    "InvalidPackingScenarioError"
+   ],
+   "vendor/nawebco/box-packer/src/Packer.php": [
+    "Packer"
+   ],
+   "vendor/nawebco/box-packer/src/Container.php": [
+    "Container"
+   ],
+   "vendor/nawebco/box-packer/tests/PackerTest.php": [
+    "PackerTest"
+   ],
+   "vendor/nawebco/box-packer/tests/PackingResultTest.php": [
+    "PackingResultTest"
+   ],
+   "vendor/nawebco/box-packer/tests/SolidTest.php": [
+    "SolidTest"
+   ],
+   "vendor/nawebco/box-packer/tests/ContainerTest.php": [
+    "ContainerTest"
+   ],
+   "vendor/nawebco/box-packer/tests/ContainerLevelTest.php": [
+    "ContainerLevelTest"
+   ],
+   "vendor/composer/ClassLoader.php": [
+    "loader",
+    "in",
+    "under",
+    "is",
+    "ClassLoader",
+    "files"
+   ],
+   "vendor/composer/InstalledVersions.php": [
+    "is",
+    "InstalledVersions",
+    "and",
+    "but",
+    "safely"
+   ],
+   "vendor/composer/autoload_static.php": [
+    "ComposerStaticInit81c0b39c7ccf6033b2c204994f1acbac"
+   ],
+   "vendor/composer/autoload_real.php": [
+    "ComposerAutoloaderInit81c0b39c7ccf6033b2c204994f1acbac"
+   ],
+   "vendor/setasign/fpdi/src/FpdiException.php": [
+    "for",
+    "FpdiException"
+   ],
+   "vendor/setasign/fpdi/src/GraphicsState.php": [
+    "which",
+    "GraphicsState"
+   ],
+   "vendor/setasign/fpdi/src/Tcpdf/Fpdi.php": [
+    "let",
+    "Fpdi"
+   ],
+   "vendor/setasign/fpdi/src/Math/Vector.php": [
+    "Vector"
+   ],
+   "vendor/setasign/fpdi/src/Math/Matrix.php": [
+    "Matrix"
+   ],
+   "vendor/setasign/fpdi/src/PdfReader/PageBoundaries.php": [
+    "for",
+    "PageBoundaries"
+   ],
+   "vendor/setasign/fpdi/src/PdfReader/PdfReaderException.php": [
+    "PdfReaderException"
+   ],
+   "vendor/setasign/fpdi/src/PdfReader/PdfReader.php": [
+    "PdfReader"
+   ],
+   "vendor/setasign/fpdi/src/PdfReader/Page.php": [
+    "Page"
+   ],
+   "vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php": [
+    "Rectangle"
+   ],
+   "vendor/setasign/fpdi/src/FpdfTpl.php": [
+    "adds",
+    "FpdfTpl"
+   ],
+   "vendor/setasign/fpdi/src/TcpdfFpdi.php": [
+    "let",
+    "TcpdfFpdi",
+    "is"
+   ],
+   "vendor/setasign/fpdi/src/Fpdi.php": [
+    "let",
+    "Fpdi"
+   ],
+   "vendor/setasign/fpdi/src/FpdiTrait.php": [
+    "is"
+   ],
+   "vendor/setasign/fpdi/src/Tfpdf/FpdfTpl.php": [
+    "FpdfTpl"
+   ],
+   "vendor/setasign/fpdi/src/Tfpdf/Fpdi.php": [
+    "let",
+    "Fpdi"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/PdfParser.php": [
+    "PdfParser"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/StreamReader.php": [
+    "StreamReader"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/PdfParserException.php": [
+    "PdfParserException"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Tokenizer.php": [
+    "Tokenizer"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfType.php": [
+    "defining",
+    "PdfType"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfBoolean.php": [
+    "PdfBoolean"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfDictionary.php": [
+    "PdfDictionary"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfHexString.php": [
+    "PdfHexString"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfIndirectObjectReference.php": [
+    "PdfIndirectObjectReference"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfNull.php": [
+    "PdfNull"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfArray.php": [
+    "PdfArray"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfIndirectObject.php": [
+    "PdfIndirectObject"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfString.php": [
+    "PdfString"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfTypeException.php": [
+    "for",
+    "PdfTypeException"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfName.php": [
+    "PdfName"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfNumeric.php": [
+    "PdfNumeric"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfStream.php": [
+    "PdfStream"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfToken.php": [
+    "PdfToken"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Ascii85.php": [
+    "Ascii85"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Ascii85Exception.php": [
+    "Ascii85Exception"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Lzw.php": [
+    "Lzw"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Flate.php": [
+    "Flate"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/FilterException.php": [
+    "FilterException"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/AsciiHex.php": [
+    "AsciiHex"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/LzwException.php": [
+    "LzwException"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/FlateException.php": [
+    "FlateException"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReferenceException.php": [
+    "CrossReferenceException"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/AbstractReader.php": [
+    "for",
+    "AbstractReader"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/LineReader.php": [
+    "read",
+    "LineReader"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReference.php": [
+    "processes",
+    "CrossReference"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/FixedReader.php": [
+    "FixedReader"
+   ],
+   "vendor/setasign/fpdf/makefont/ttfparser.php": [
+    "TTFParser"
+   ],
+   "vendor/setasign/fpdf/fpdf.php": [
+    "FPDF"
+   ],
+   "vendor/setasign/fpdf/tutorial/tuto3.php": [
+    "PDF"
+   ],
+   "vendor/setasign/fpdf/tutorial/tuto2.php": [
+    "PDF"
+   ],
+   "vendor/setasign/fpdf/tutorial/tuto6.php": [
+    "PDF"
+   ],
+   "vendor/setasign/fpdf/tutorial/tuto5.php": [
+    "PDF"
+   ],
+   "vendor/setasign/fpdf/tutorial/tuto4.php": [
+    "PDF"
+   ],
+   "woo-lithuaniapost.php": [
+    "that"
+   ],
+   "admin/class-woo-lithuaniapost-admin-api-hooks.php": [
+    "Woo_Lithuaniapost_Admin_Api_Hooks",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin-size-service.php": [
+    "Woo_Lithuaniapost_Admin_Size_Service",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin-settings.php": [
+    "Woo_Lithuaniapost_Admin_Settings",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php": [
+    "Woo_Lithuaniapost_Admin_Terminal_Service",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-actions.php": [
+    "Woo_Lithuaniapost_Admin_Order_Actions",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-bulk-actions.php": [
+    "Woo_Lithuaniapost_Admin_Order_Bulk_Actions",
+    "and"
+   ],
+   "admin/util/class-woo-lithuaniapost-admin-util.php": [
+    "Woo_Lithuaniapost_Admin_Util",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-service.php": [
+    "LpOrderStatus",
+    "LpOrderActionErrorKey",
+    "LpOrderAction",
+    "Woo_Lithuaniapost_Admin_Order_Service",
+    "and"
+   ],
+   "admin/schedule/class-woo-lithuaniapost-admin-courier-schedule.php": [
+    "Woo_Lithuaniapost_Admin_Courier_Schedule",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin-error-handler.php": [
+    "Woo_Lithuaniapost_Admin_Error_Handler",
+    "and",
+    "Error_Handler",
+    "Error_Condition_Value"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-parcel-api.php": [
+    "Woo_Lithuaniapost_Admin_Parcel_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-api.php": [
+    "Woo_Lithuaniapost_Admin_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-terminal-api.php": [
+    "Woo_Lithuaniapost_Admin_Terminal_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-shipping-api.php": [
+    "ShippingStatus",
+    "ShippingItemStatus",
+    "Woo_Lithuaniapost_Admin_Shipping_Api"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-shipping-plan-api.php": [
+    "Woo_Lithuaniapost_Admin_Shipping_Plan_Api"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-oauth-api.php": [
+    "Woo_Lithuaniapost_Admin_OAuth_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-address-api.php": [
+    "Woo_Lithuaniapost_Admin_Address_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-estimate-shipping-api.php": [
+    "Woo_Lithuaniapost_Admin_Estimate_Shipping_Api"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-courier-api.php": [
+    "Woo_Lithuaniapost_Admin_Courier_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-sticker-api.php": [
+    "Woo_Lithuaniapost_Admin_Sticker_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-tracking-api.php": [
+    "Woo_Lithuaniapost_Admin_Tracking_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-eshop-api.php": [
+    "Woo_Lithuaniapost_Admin_Eshop_Api",
+    "and"
+   ],
+   "admin/partials/html-lithuaniapost-admin-order-settings.php": [
+    "Lithuaniapost_Admin_Order_Settings_Table_List"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-settings.php": [
+    "Woo_Lithuaniapost_Admin_Order_Settings"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php": [
+    "Woo_Lithuaniapost_Admin_Order_Meta_Box",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin.php": [
+    "Woo_Lithuaniapost_Admin",
+    "and",
+    "should",
+    "should"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-tracking.php": [
+    "Woo_Lithuaniapost_Admin_Order_Tracking",
+    "and"
+   ],
+   "includes/class-woo-lithuaniapost-activator.php": [
+    "defines",
+    "Woo_Lithuaniapost_Activator"
+   ],
+   "includes/class-woo-lithuaniapost-deactivator.php": [
+    "defines",
+    "Woo_Lithuaniapost_Deactivator"
+   ],
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost-size.php": [
+    "Settings_Plan_Cost_Size"
+   ],
+   "includes/shipping/lpexpress-terminal/includes/settings-lpexpress-terminal.php": [
+    "costs",
+    "name",
+    "cost",
+    "cost",
+    "individually"
+   ],
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost-weight.php": [
+    "Settings_Plan_Cost_Weight"
+   ],
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost.php": [
+    "Settings_Plan_Cost"
+   ],
+   "includes/shipping/lpexpress-terminal/class-woo-lithuaniapost-shipping-lpexpress-terminal.php": [
+    "Woo_Lithuaniapost_Shipping_Lpexpress_Terminal",
+    "costs"
+   ],
+   "includes/shipping/rates/class-woo-lithuaniapost-country-rates.php": [
+    "Woo_Lithuaniapost_Country_Rates"
+   ],
+   "includes/shipping/rates/includes/html-settings-cost.php": [
+    "Woo_Lithuaniapost_Settings_Cost"
+   ],
+   "includes/shipping/rates/class-woo-lithuaniapost-tablerates.php": [
+    "Woo_Lithuaniapost_Table_Rates"
+   ],
+   "includes/class-woo-lithuaniapost-loader.php": [
+    "Woo_Lithuaniapost_Loader"
+   ],
+   "includes/class-woo-lithuaniapost.php": [
+    "definition",
+    "Woo_Lithuaniapost",
+    "responsible",
+    "responsible",
+    "responsible",
+    "responsible"
+   ],
+   "includes/class-woo-lithuaniapost-i18n.php": [
+    "Woo_Lithuaniapost_i18n"
+   ],
+   "public/class-woo-lithuaniapost-public.php": [
+    "Woo_Lithuaniapost_Public",
+    "and",
+    "should",
+    "should"
+   ]
+  },
+  "fn": {
+   "vendor/setasign/fpdf/tutorial/tuto3.php": [
+    "function PrintChapter($num, $title, $file)"
+   ],
+   "vendor/setasign/fpdf/tutorial/tuto4.php": [
+    "function PrintChapter($num, $title, $file)"
+   ],
+   "admin/class-woo-lithuaniapost-admin-api-hooks.php": [
+    "function handle_parcel_validation(array $parcel, callable $error_callback)"
+   ],
+   "admin/class-woo-lithuaniapost-admin-settings.php": [
+    "function generate_call_courier_time_picker_html($value)"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-actions.php": [
+    "function process_create_parcel($order)",
+    "function process_print_label ( $order )",
+    "function process_cancel_label($order)",
+    "function process_print_manifest ( $order )"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-bulk-actions.php": [
+    "function handle_cancel_labels(array $post_ids, $redirect_to)",
+    "function handle_print_labels(array $post_ids, $redirect_to)",
+    "function handle_print_manifests(array $post_ids, $redirect_to)"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-service.php": [
+    "function is_shipping_initiated()",
+    "function is_ready_to_initiated()",
+    "function handle_generate_stickers(array $order_ids)",
+    "function download_labels(array $order_ids)",
+    "function handle_call_courier($order_ids)",
+    "function handle_cancel_labels($order_ids)",
+    "function handle_initiate_shipping($order_ids)",
+    "function handle_create_parcel($order, $overwrite_id_ref)",
+    "function handle_generate_return_stickers(array $order_ids)",
+    "function create_parcel_content_request($order)",
+    "function get_parcel_type_translation($parcel_type)",
+    "function create_parcel_create_request($order, $lp_shipping_method)",
+    "function to_parcel_request($order, $lp_shipping_method, $exclude_cn = false)",
+    "function handle_parcel_save()",
+    "function create_parcel($order, $overwrite_id_ref, $parcel_create_request)",
+    "function on_parcel_save($order, $parcel_request, $save_order = true)",
+    "function on_initiate_success($shipping_response, $orders_to_process)",
+    "function handle_failed_parcel_create_response($error_result, $order)",
+    "function create_parcel_update_request($order)"
+   ],
+   "admin/schedule/class-woo-lithuaniapost-admin-courier-schedule.php": [
+    "function reschedule_call_courier_on_settings_save()",
+    "function schedule_call_courier()",
+    "function lp_call_courier()",
+    "function reschedule_call_courier()"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-parcel-api.php": [
+    "function create_parcel(array $create_parcel_request, callable $error_callback)",
+    "function validate_parcel($validate_parcel_request, callable $error_callback)",
+    "function get_parcel($order_id)",
+    "function update_parcel($order_id, array $update_parcel_request)"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-shipping-api.php": [
+    "function initiate(array $order_ids)"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-sticker-api.php": [
+    "function get_stickers(array $order_ids)",
+    "function download_stickers_pdf(array $order_ids)",
+    "function download_return_stickers_pdf(array $order_ids)"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-tracking-api.php": [
+    "function get_tracking_events_by_barcodes(array $barcodes, $datetime)"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-settings.php": [
+    "function generate_label()",
+    "function create_parcel()",
+    "function generate_return_stickers()"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php": [
+    "function get_parcel ()",
+    "function get_parcel_request()",
+    "function estimate_parcel($parcel)",
+    "function is_parcel_content_required($parcel_response, $estimated_plans)",
+    "function generate_select_parcel_type_html($parcel_response, $estimated_plans)",
+    "function generate_select_parcel_plan_html($parcel_response, $estimated_plans)",
+    "function get_parcel_type_translation($parcel_type)",
+    "function generate_select_parcel_size_html($parcel_response)"
+   ],
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost.php": [
+    "function get_parcel_type_translation($parcel_type)"
+   ],
+   "public/class-woo-lithuaniapost-public.php": [
+    "function validate_parcel($arg)",
+    "function create_parcel_validation_request($order)"
+   ]
+  },
+  "urls": {
+   "woo-lithuaniapost.php": [
+    "https://post.lt"
+   ],
+   "admin/class-woo-lithuaniapost-admin-settings.php": [
+    "https://post.lt"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-actions.php": [
+    "https://post.lt"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-bulk-actions.php": [
+    "https://post.lt"
+   ],
+   "admin/util/class-woo-lithuaniapost-admin-util.php": [
+    "https://post.lt"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-service.php": [
+    "https://post.lt"
+   ],
+   "admin/schedule/class-woo-lithuaniapost-admin-courier-schedule.php": [
+    "https://post.lt"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-api.php": [
+    "https://api-manosiuntostst.post.lt/api/v2",
+    "https://api-manosiuntos.post.lt/api/v2"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-oauth-api.php": [
+    "https://api-manosiuntostst.post.lt/oauth/token",
+    "https://api-manosiuntos.post.lt/oauth/token",
+    "https://www.post.lt/lt/api-verslui"
+   ],
+   "admin/partials/woo-lithuaniapost-admin-display.php": [
+    "https://post.lt"
+   ],
+   "admin/partials/includes/html-shipment-editor-side.php": [
+    "https://post.lt"
+   ],
+   "admin/partials/includes/html-tracking-info.php": [
+    "https://post.lt"
+   ],
+   "admin/class-woo-lithuaniapost-admin.php": [
+    "https://post.lt"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-tracking.php": [
+    "https://post.lt",
+    "https://www.post.lt/siuntu-sekimas?parcels=",
+    "https://www.post.lt/index.php/en/shipments-search?parcels="
+   ],
+   "templates/emails/tracking-email.php": [
+    "https://www.post.lt/siuntu-sekimas?parcels=<?="
+   ],
+   "includes/class-woo-lithuaniapost-activator.php": [
+    "https://post.lt"
+   ],
+   "includes/class-woo-lithuaniapost-deactivator.php": [
+    "https://post.lt"
+   ],
+   "includes/shipping/lpexpress-terminal/includes/settings-lpexpress-terminal.php": [
+    "https://post.lt"
+   ],
+   "includes/class-woo-lithuaniapost-loader.php": [
+    "https://post.lt"
+   ],
+   "includes/woo-lithuaniapost-functions.php": [
+    "https://post.lt"
+   ],
+   "includes/class-woo-lithuaniapost.php": [
+    "https://post.lt"
+   ],
+   "includes/class-woo-lithuaniapost-i18n.php": [
+    "https://post.lt"
+   ],
+   "public/class-woo-lithuaniapost-public.php": [
+    "https://post.lt"
+   ],
+   "public/partials/html-delivery-time.php": [
+    "https://post.lt"
+   ],
+   "public/partials/html-block-lpexpress-terminal.php": [
+    "https://post.lt"
+   ],
+   "public/partials/html-lpexpress-terminal.php": [
+    "https://post.lt"
+   ]
+  },
+  "hooks": {
+   "includes/class-woo-lithuaniapost.php": [
+    "admin_post_woo-ltpost-create-label",
+    "admin_post_woo-ltpost-create-parcel",
+    "admin_post_woo-ltpost-generate-return-stickers",
+    "woocommerce_order_action_woo_lp_create_parcel",
+    "woocommerce_order_action_woo_lp_cancel_label",
+    "woocommerce_order_action_woo_lp_print_label",
+    "bulk_actions-edit-shop_order",
+    "bulk_actions-woocommerce_page_wc-orders",
+    "handle_bulk_actions-edit-shop_order",
+    "handle_bulk_actions-woocommerce_page_wc-orders",
+    "admin_action_print_label",
+    "woo_lithuaniapost_order_action_generate_stickers",
+    "woo_lithuaniapost_order_action_generate_return_stickers",
+    "woo_lithuaniapost_order_action_create_parcel",
+    "woo_lithuaniapost_order_action_download_labels"
+   ]
+  }
+ },
+ "CL": {
+  "v": "S1680 c",
+  "files": [
+   "vendor/nawebco/box-packer/src/ContainerLevel.php",
+   "vendor/nawebco/box-packer/src/DescribableTrait.php",
+   "vendor/nawebco/box-packer/src/PackingResult.php",
+   "vendor/nawebco/box-packer/src/GenericPackable.php",
+   "vendor/nawebco/box-packer/src/PackableInterface.php",
+   "vendor/nawebco/box-packer/src/Solid.php",
+   "vendor/nawebco/box-packer/src/InvalidPackingScenarioError.php",
+   "vendor/nawebco/box-packer/src/ObjectReferenceTrait.php",
+   "vendor/nawebco/box-packer/src/ExtensionTrait.php",
+   "vendor/nawebco/box-packer/src/Packer.php",
+   "vendor/nawebco/box-packer/src/SolidInterface.php",
+   "vendor/nawebco/box-packer/src/Container.php",
+   "vendor/nawebco/box-packer/tests/PackerTest.php",
+   "vendor/nawebco/box-packer/tests/PackingResultTest.php",
+   "vendor/nawebco/box-packer/tests/SolidTest.php",
+   "vendor/nawebco/box-packer/tests/ContainerTest.php",
+   "vendor/nawebco/box-packer/tests/ContainerLevelTest.php",
+   "vendor/composer/ClassLoader.php",
+   "vendor/composer/autoload_classmap.php",
+   "vendor/composer/autoload_namespaces.php",
+   "vendor/composer/platform_check.php",
+   "vendor/composer/InstalledVersions.php",
+   "vendor/composer/autoload_psr4.php",
+   "vendor/composer/autoload_static.php",
+   "vendor/composer/autoload_real.php",
+   "vendor/composer/installed.php",
+   "vendor/autoload.php",
+   "vendor/setasign/fpdi/src/FpdiException.php",
+   "vendor/setasign/fpdi/src/FpdfTrait.php",
+   "vendor/setasign/fpdi/src/GraphicsState.php",
+   "vendor/setasign/fpdi/src/Tcpdf/Fpdi.php",
+   "vendor/setasign/fpdi/src/Math/Vector.php",
+   "vendor/setasign/fpdi/src/Math/Matrix.php",
+   "vendor/setasign/fpdi/src/PdfReader/PageBoundaries.php",
+   "vendor/setasign/fpdi/src/PdfReader/PdfReaderException.php",
+   "vendor/setasign/fpdi/src/PdfReader/PdfReader.php",
+   "vendor/setasign/fpdi/src/PdfReader/Page.php",
+   "vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php",
+   "vendor/setasign/fpdi/src/FpdfTpl.php",
+   "vendor/setasign/fpdi/src/TcpdfFpdi.php",
+   "vendor/setasign/fpdi/src/autoload.php",
+   "vendor/setasign/fpdi/src/Fpdi.php",
+   "vendor/setasign/fpdi/src/FpdiTrait.php",
+   "vendor/setasign/fpdi/src/Tfpdf/FpdfTpl.php",
+   "vendor/setasign/fpdi/src/Tfpdf/Fpdi.php",
+   "vendor/setasign/fpdi/src/PdfParser/PdfParser.php",
+   "vendor/setasign/fpdi/src/PdfParser/StreamReader.php",
+   "vendor/setasign/fpdi/src/PdfParser/PdfParserException.php",
+   "vendor/setasign/fpdi/src/PdfParser/Tokenizer.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfType.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfBoolean.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfDictionary.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfHexString.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfIndirectObjectReference.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfNull.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfArray.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfIndirectObject.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfString.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfTypeException.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfName.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfNumeric.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfStream.php",
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfToken.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Ascii85.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/FilterInterface.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Ascii85Exception.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Lzw.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Flate.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/FilterException.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/AsciiHex.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/LzwException.php",
+   "vendor/setasign/fpdi/src/PdfParser/Filter/FlateException.php",
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReferenceException.php",
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/ReaderInterface.php",
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/AbstractReader.php",
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/LineReader.php",
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReference.php",
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/FixedReader.php",
+   "vendor/setasign/fpdi/src/FpdfTplTrait.php",
+   "vendor/setasign/fpdf/makefont/makefont.php",
+   "vendor/setasign/fpdf/makefont/ttfparser.php",
+   "vendor/setasign/fpdf/fpdf.php",
+   "vendor/setasign/fpdf/font/symbol.php",
+   "vendor/setasign/fpdf/font/courier.php",
+   "vendor/setasign/fpdf/font/timesi.php",
+   "vendor/setasign/fpdf/font/helveticabi.php",
+   "vendor/setasign/fpdf/font/zapfdingbats.php",
+   "vendor/setasign/fpdf/font/timesb.php",
+   "vendor/setasign/fpdf/font/courierbi.php",
+   "vendor/setasign/fpdf/font/timesbi.php",
+   "vendor/setasign/fpdf/font/courieri.php",
+   "vendor/setasign/fpdf/font/times.php",
+   "vendor/setasign/fpdf/font/helvetica.php",
+   "vendor/setasign/fpdf/font/courierb.php",
+   "vendor/setasign/fpdf/font/helveticab.php",
+   "vendor/setasign/fpdf/font/helveticai.php",
+   "vendor/setasign/fpdf/tutorial/calligra.php",
+   "vendor/setasign/fpdf/tutorial/makefont.php",
+   "vendor/setasign/fpdf/tutorial/tuto3.php",
+   "vendor/setasign/fpdf/tutorial/tuto2.php",
+   "vendor/setasign/fpdf/tutorial/tuto6.php",
+   "vendor/setasign/fpdf/tutorial/tuto5.php",
+   "vendor/setasign/fpdf/tutorial/tuto7.php",
+   "vendor/setasign/fpdf/tutorial/tuto1.php",
+   "vendor/setasign/fpdf/tutorial/tuto4.php",
+   "woo-lithuaniapost.php",
+   "admin/class-woo-lithuaniapost-admin-api-hooks.php",
+   "admin/class-woo-lithuaniapost-admin-size-service.php",
+   "admin/class-woo-lithuaniapost-admin-settings.php",
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php",
+   "admin/class-woo-lithuaniapost-admin-order-actions.php",
+   "admin/class-woo-lithuaniapost-admin-order-bulk-actions.php",
+   "admin/util/class-woo-lithuaniapost-admin-util.php",
+   "admin/class-woo-lithuaniapost-admin-order-service.php",
+   "admin/index.php",
+   "admin/schedule/class-woo-lithuaniapost-admin-courier-schedule.php",
+   "admin/class-woo-lithuaniapost-admin-error-handler.php",
+   "admin/api/class-woo-lithuaniapost-admin-parcel-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-terminal-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-shipping-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-shipping-plan-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-oauth-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-address-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-estimate-shipping-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-courier-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-sticker-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-tracking-api.php",
+   "admin/api/class-woo-lithuaniapost-admin-eshop-api.php",
+   "admin/partials/woo-lithuaniapost-admin-display.php",
+   "admin/partials/includes/html-shipment-editor-side.php",
+   "admin/partials/includes/html-cn-editor.php",
+   "admin/partials/includes/html-parcel-content-editor.php",
+   "admin/partials/includes/html-tracking-info.php",
+   "admin/partials/html-lithuaniapost-admin-order-settings.php",
+   "admin/class-woo-lithuaniapost-admin-order-settings.php",
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php",
+   "admin/class-woo-lithuaniapost-admin.php",
+   "admin/class-woo-lithuaniapost-admin-order-tracking.php",
+   "index.php",
+   "templates/emails/tracking-email.php",
+   "includes/class-woo-lithuaniapost-activator.php",
+   "includes/class-woo-lithuaniapost-deactivator.php",
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost-size.php",
+   "includes/shipping/lpexpress-terminal/includes/settings-lpexpress-terminal.php",
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost-weight.php",
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost.php",
+   "includes/shipping/lpexpress-terminal/class-woo-lithuaniapost-shipping-lpexpress-terminal.php",
+   "includes/shipping/rates/class-woo-lithuaniapost-country-rates.php",
+   "includes/shipping/rates/includes/html-settings-cost-size-row.php",
+   "includes/shipping/rates/includes/html-settings-cost-weight-row.php",
+   "includes/shipping/rates/includes/html-country-rate-inputs.php",
+   "includes/shipping/rates/includes/html-settings-cost.php",
+   "includes/shipping/rates/class-woo-lithuaniapost-tablerates.php",
+   "includes/index.php",
+   "includes/class-woo-lithuaniapost-loader.php",
+   "includes/woo-lithuaniapost-functions.php",
+   "includes/class-woo-lithuaniapost.php",
+   "includes/class-woo-lithuaniapost-i18n.php",
+   "public/index.php",
+   "public/class-woo-lithuaniapost-public.php",
+   "public/partials/html-delivery-time.php",
+   "public/partials/html-block-lpexpress-terminal.php",
+   "public/partials/html-lpexpress-terminal.php"
+  ],
+  "cls": {
+   "vendor/nawebco/box-packer/src/ContainerLevel.php": [
+    "ContainerLevel"
+   ],
+   "vendor/nawebco/box-packer/src/PackingResult.php": [
+    "PackingResult"
+   ],
+   "vendor/nawebco/box-packer/src/GenericPackable.php": [
+    "GenericPackable"
+   ],
+   "vendor/nawebco/box-packer/src/Solid.php": [
+    "Solid"
+   ],
+   "vendor/nawebco/box-packer/src/InvalidPackingScenarioError.php": [
+    "InvalidPackingScenarioError"
+   ],
+   "vendor/nawebco/box-packer/src/Packer.php": [
+    "Packer"
+   ],
+   "vendor/nawebco/box-packer/src/Container.php": [
+    "Container"
+   ],
+   "vendor/nawebco/box-packer/tests/PackerTest.php": [
+    "PackerTest"
+   ],
+   "vendor/nawebco/box-packer/tests/PackingResultTest.php": [
+    "PackingResultTest"
+   ],
+   "vendor/nawebco/box-packer/tests/SolidTest.php": [
+    "SolidTest"
+   ],
+   "vendor/nawebco/box-packer/tests/ContainerTest.php": [
+    "ContainerTest"
+   ],
+   "vendor/nawebco/box-packer/tests/ContainerLevelTest.php": [
+    "ContainerLevelTest"
+   ],
+   "vendor/composer/ClassLoader.php": [
+    "loader",
+    "in",
+    "under",
+    "is",
+    "ClassLoader",
+    "files"
+   ],
+   "vendor/composer/InstalledVersions.php": [
+    "is",
+    "InstalledVersions",
+    "and",
+    "but",
+    "safely"
+   ],
+   "vendor/composer/autoload_static.php": [
+    "ComposerStaticInit81c0b39c7ccf6033b2c204994f1acbac"
+   ],
+   "vendor/composer/autoload_real.php": [
+    "ComposerAutoloaderInit81c0b39c7ccf6033b2c204994f1acbac"
+   ],
+   "vendor/setasign/fpdi/src/FpdiException.php": [
+    "for",
+    "FpdiException"
+   ],
+   "vendor/setasign/fpdi/src/GraphicsState.php": [
+    "which",
+    "GraphicsState"
+   ],
+   "vendor/setasign/fpdi/src/Tcpdf/Fpdi.php": [
+    "let",
+    "Fpdi"
+   ],
+   "vendor/setasign/fpdi/src/Math/Vector.php": [
+    "Vector"
+   ],
+   "vendor/setasign/fpdi/src/Math/Matrix.php": [
+    "Matrix"
+   ],
+   "vendor/setasign/fpdi/src/PdfReader/PageBoundaries.php": [
+    "for",
+    "PageBoundaries"
+   ],
+   "vendor/setasign/fpdi/src/PdfReader/PdfReaderException.php": [
+    "PdfReaderException"
+   ],
+   "vendor/setasign/fpdi/src/PdfReader/PdfReader.php": [
+    "PdfReader"
+   ],
+   "vendor/setasign/fpdi/src/PdfReader/Page.php": [
+    "Page"
+   ],
+   "vendor/setasign/fpdi/src/PdfReader/DataStructure/Rectangle.php": [
+    "Rectangle"
+   ],
+   "vendor/setasign/fpdi/src/FpdfTpl.php": [
+    "adds",
+    "FpdfTpl"
+   ],
+   "vendor/setasign/fpdi/src/TcpdfFpdi.php": [
+    "let",
+    "TcpdfFpdi",
+    "is"
+   ],
+   "vendor/setasign/fpdi/src/Fpdi.php": [
+    "let",
+    "Fpdi"
+   ],
+   "vendor/setasign/fpdi/src/FpdiTrait.php": [
+    "is"
+   ],
+   "vendor/setasign/fpdi/src/Tfpdf/FpdfTpl.php": [
+    "FpdfTpl"
+   ],
+   "vendor/setasign/fpdi/src/Tfpdf/Fpdi.php": [
+    "let",
+    "Fpdi"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/PdfParser.php": [
+    "PdfParser"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/StreamReader.php": [
+    "StreamReader"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/PdfParserException.php": [
+    "PdfParserException"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Tokenizer.php": [
+    "Tokenizer"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfType.php": [
+    "defining",
+    "PdfType"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfBoolean.php": [
+    "PdfBoolean"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfDictionary.php": [
+    "PdfDictionary"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfHexString.php": [
+    "PdfHexString"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfIndirectObjectReference.php": [
+    "PdfIndirectObjectReference"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfNull.php": [
+    "PdfNull"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfArray.php": [
+    "PdfArray"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfIndirectObject.php": [
+    "PdfIndirectObject"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfString.php": [
+    "PdfString"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfTypeException.php": [
+    "for",
+    "PdfTypeException"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfName.php": [
+    "PdfName"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfNumeric.php": [
+    "PdfNumeric"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfStream.php": [
+    "PdfStream"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Type/PdfToken.php": [
+    "PdfToken"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Ascii85.php": [
+    "Ascii85"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Ascii85Exception.php": [
+    "Ascii85Exception"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Lzw.php": [
+    "Lzw"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/Flate.php": [
+    "Flate"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/FilterException.php": [
+    "FilterException"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/AsciiHex.php": [
+    "AsciiHex"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/LzwException.php": [
+    "LzwException"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/Filter/FlateException.php": [
+    "FlateException"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReferenceException.php": [
+    "CrossReferenceException"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/AbstractReader.php": [
+    "for",
+    "AbstractReader"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/LineReader.php": [
+    "read",
+    "LineReader"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/CrossReference.php": [
+    "processes",
+    "CrossReference"
+   ],
+   "vendor/setasign/fpdi/src/PdfParser/CrossReference/FixedReader.php": [
+    "FixedReader"
+   ],
+   "vendor/setasign/fpdf/makefont/ttfparser.php": [
+    "TTFParser"
+   ],
+   "vendor/setasign/fpdf/fpdf.php": [
+    "FPDF"
+   ],
+   "vendor/setasign/fpdf/tutorial/tuto3.php": [
+    "PDF"
+   ],
+   "vendor/setasign/fpdf/tutorial/tuto2.php": [
+    "PDF"
+   ],
+   "vendor/setasign/fpdf/tutorial/tuto6.php": [
+    "PDF"
+   ],
+   "vendor/setasign/fpdf/tutorial/tuto5.php": [
+    "PDF"
+   ],
+   "vendor/setasign/fpdf/tutorial/tuto4.php": [
+    "PDF"
+   ],
+   "woo-lithuaniapost.php": [
+    "that"
+   ],
+   "admin/class-woo-lithuaniapost-admin-api-hooks.php": [
+    "Woo_Lithuaniapost_Admin_Api_Hooks",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin-size-service.php": [
+    "Woo_Lithuaniapost_Admin_Size_Service",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin-settings.php": [
+    "Woo_Lithuaniapost_Admin_Settings",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin-terminal-service.php": [
+    "Woo_Lithuaniapost_Admin_Terminal_Service",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-actions.php": [
+    "Woo_Lithuaniapost_Admin_Order_Actions",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-bulk-actions.php": [
+    "Woo_Lithuaniapost_Admin_Order_Bulk_Actions",
+    "and"
+   ],
+   "admin/util/class-woo-lithuaniapost-admin-util.php": [
+    "Woo_Lithuaniapost_Admin_Util",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-service.php": [
+    "LpOrderStatus",
+    "LpOrderActionErrorKey",
+    "LpOrderAction",
+    "Woo_Lithuaniapost_Admin_Order_Service",
+    "and"
+   ],
+   "admin/schedule/class-woo-lithuaniapost-admin-courier-schedule.php": [
+    "Woo_Lithuaniapost_Admin_Courier_Schedule",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin-error-handler.php": [
+    "Woo_Lithuaniapost_Admin_Error_Handler",
+    "and",
+    "Error_Handler",
+    "Error_Condition_Value"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-parcel-api.php": [
+    "Woo_Lithuaniapost_Admin_Parcel_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-api.php": [
+    "Woo_Lithuaniapost_Admin_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-terminal-api.php": [
+    "Woo_Lithuaniapost_Admin_Terminal_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-shipping-api.php": [
+    "ShippingStatus",
+    "ShippingItemStatus",
+    "Woo_Lithuaniapost_Admin_Shipping_Api"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-shipping-plan-api.php": [
+    "Woo_Lithuaniapost_Admin_Shipping_Plan_Api"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-oauth-api.php": [
+    "Woo_Lithuaniapost_Admin_OAuth_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-address-api.php": [
+    "Woo_Lithuaniapost_Admin_Address_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-estimate-shipping-api.php": [
+    "Woo_Lithuaniapost_Admin_Estimate_Shipping_Api"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-courier-api.php": [
+    "Woo_Lithuaniapost_Admin_Courier_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-sticker-api.php": [
+    "Woo_Lithuaniapost_Admin_Sticker_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-tracking-api.php": [
+    "Woo_Lithuaniapost_Admin_Tracking_Api",
+    "and"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-eshop-api.php": [
+    "Woo_Lithuaniapost_Admin_Eshop_Api",
+    "and"
+   ],
+   "admin/partials/html-lithuaniapost-admin-order-settings.php": [
+    "Lithuaniapost_Admin_Order_Settings_Table_List"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-settings.php": [
+    "Woo_Lithuaniapost_Admin_Order_Settings"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php": [
+    "Woo_Lithuaniapost_Admin_Order_Meta_Box",
+    "and"
+   ],
+   "admin/class-woo-lithuaniapost-admin.php": [
+    "Woo_Lithuaniapost_Admin",
+    "and",
+    "should",
+    "should"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-tracking.php": [
+    "Woo_Lithuaniapost_Admin_Order_Tracking",
+    "and"
+   ],
+   "includes/class-woo-lithuaniapost-activator.php": [
+    "defines",
+    "Woo_Lithuaniapost_Activator"
+   ],
+   "includes/class-woo-lithuaniapost-deactivator.php": [
+    "defines",
+    "Woo_Lithuaniapost_Deactivator"
+   ],
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost-size.php": [
+    "Settings_Plan_Cost_Size"
+   ],
+   "includes/shipping/lpexpress-terminal/includes/settings-lpexpress-terminal.php": [
+    "costs",
+    "name",
+    "cost",
+    "cost",
+    "individually"
+   ],
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost-weight.php": [
+    "Settings_Plan_Cost_Weight"
+   ],
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost.php": [
+    "Settings_Plan_Cost"
+   ],
+   "includes/shipping/lpexpress-terminal/class-woo-lithuaniapost-shipping-lpexpress-terminal.php": [
+    "Woo_Lithuaniapost_Shipping_Lpexpress_Terminal",
+    "costs"
+   ],
+   "includes/shipping/rates/class-woo-lithuaniapost-country-rates.php": [
+    "Woo_Lithuaniapost_Country_Rates"
+   ],
+   "includes/shipping/rates/includes/html-settings-cost.php": [
+    "Woo_Lithuaniapost_Settings_Cost"
+   ],
+   "includes/shipping/rates/class-woo-lithuaniapost-tablerates.php": [
+    "Woo_Lithuaniapost_Table_Rates"
+   ],
+   "includes/class-woo-lithuaniapost-loader.php": [
+    "Woo_Lithuaniapost_Loader"
+   ],
+   "includes/class-woo-lithuaniapost.php": [
+    "definition",
+    "Woo_Lithuaniapost",
+    "responsible",
+    "responsible",
+    "responsible",
+    "responsible"
+   ],
+   "includes/class-woo-lithuaniapost-i18n.php": [
+    "Woo_Lithuaniapost_i18n"
+   ],
+   "public/class-woo-lithuaniapost-public.php": [
+    "Woo_Lithuaniapost_Public",
+    "and",
+    "should",
+    "should"
+   ]
+  },
+  "fn": {
+   "vendor/setasign/fpdf/tutorial/tuto3.php": [
+    "function PrintChapter($num, $title, $file)"
+   ],
+   "vendor/setasign/fpdf/tutorial/tuto4.php": [
+    "function PrintChapter($num, $title, $file)"
+   ],
+   "admin/class-woo-lithuaniapost-admin-api-hooks.php": [
+    "function handle_parcel_validation(array $parcel, callable $error_callback)"
+   ],
+   "admin/class-woo-lithuaniapost-admin-settings.php": [
+    "function generate_call_courier_time_picker_html($value)"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-actions.php": [
+    "function process_create_parcel($order)",
+    "function process_print_label ( $order )",
+    "function process_cancel_label($order)",
+    "function process_print_manifest ( $order )"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-bulk-actions.php": [
+    "function handle_cancel_labels(array $post_ids, $redirect_to)",
+    "function handle_print_labels(array $post_ids, $redirect_to)",
+    "function handle_print_manifests(array $post_ids, $redirect_to)"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-service.php": [
+    "function is_shipping_initiated()",
+    "function is_ready_to_initiated()",
+    "function handle_generate_stickers(array $order_ids)",
+    "function download_labels(array $order_ids)",
+    "function handle_call_courier($order_ids)",
+    "function handle_cancel_labels($order_ids)",
+    "function handle_initiate_shipping($order_ids)",
+    "function handle_create_parcel($order, $overwrite_id_ref)",
+    "function handle_generate_return_stickers(array $order_ids)",
+    "function create_parcel_content_request($order)",
+    "function get_parcel_type_translation($parcel_type)",
+    "function create_parcel_create_request($order, $lp_shipping_method)",
+    "function to_parcel_request($order, $lp_shipping_method, $exclude_cn = false)",
+    "function handle_parcel_save()",
+    "function create_parcel($order, $overwrite_id_ref, $parcel_create_request)",
+    "function on_parcel_save($order, $parcel_request, $save_order = true)",
+    "function on_initiate_success($shipping_response, $orders_to_process)",
+    "function handle_failed_parcel_create_response($error_result, $order)",
+    "function create_parcel_update_request($order)"
+   ],
+   "admin/schedule/class-woo-lithuaniapost-admin-courier-schedule.php": [
+    "function reschedule_call_courier_on_settings_save()",
+    "function schedule_call_courier()",
+    "function lp_call_courier()",
+    "function reschedule_call_courier()"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-parcel-api.php": [
+    "function create_parcel(array $create_parcel_request, callable $error_callback)",
+    "function validate_parcel($validate_parcel_request, callable $error_callback)",
+    "function get_parcel($order_id)",
+    "function update_parcel($order_id, array $update_parcel_request)"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-shipping-api.php": [
+    "function initiate(array $order_ids)"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-sticker-api.php": [
+    "function get_stickers(array $order_ids)",
+    "function download_stickers_pdf(array $order_ids)",
+    "function download_return_stickers_pdf(array $order_ids)"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-tracking-api.php": [
+    "function get_tracking_events_by_barcodes(array $barcodes, $datetime)"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-settings.php": [
+    "function generate_label()",
+    "function create_parcel()",
+    "function generate_return_stickers()"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php": [
+    "function get_parcel ()",
+    "function get_parcel_request()",
+    "function estimate_parcel($parcel)",
+    "function is_parcel_content_required($parcel_response, $estimated_plans)",
+    "function generate_select_parcel_type_html($parcel_response, $estimated_plans)",
+    "function generate_select_parcel_plan_html($parcel_response, $estimated_plans)",
+    "function get_parcel_type_translation($parcel_type)",
+    "function generate_select_parcel_size_html($parcel_response)"
+   ],
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost.php": [
+    "function get_parcel_type_translation($parcel_type)"
+   ],
+   "public/class-woo-lithuaniapost-public.php": [
+    "function validate_parcel($arg)",
+    "function create_parcel_validation_request($order)"
+   ]
+  },
+  "urls": {
+   "woo-lithuaniapost.php": [
+    "https://post.lt"
+   ],
+   "admin/class-woo-lithuaniapost-admin-settings.php": [
+    "https://post.lt"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-actions.php": [
+    "https://post.lt"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-bulk-actions.php": [
+    "https://post.lt"
+   ],
+   "admin/util/class-woo-lithuaniapost-admin-util.php": [
+    "https://post.lt"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-service.php": [
+    "https://post.lt"
+   ],
+   "admin/schedule/class-woo-lithuaniapost-admin-courier-schedule.php": [
+    "https://post.lt"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-api.php": [
+    "https://api-manosiuntostst.post.lt/api/v2",
+    "https://api-manosiuntos.post.lt/api/v2"
+   ],
+   "admin/api/class-woo-lithuaniapost-admin-oauth-api.php": [
+    "https://api-manosiuntostst.post.lt/oauth/token",
+    "https://api-manosiuntos.post.lt/oauth/token",
+    "https://www.post.lt/lt/api-verslui"
+   ],
+   "admin/partials/woo-lithuaniapost-admin-display.php": [
+    "https://post.lt"
+   ],
+   "admin/partials/includes/html-shipment-editor-side.php": [
+    "https://post.lt"
+   ],
+   "admin/partials/includes/html-tracking-info.php": [
+    "https://post.lt"
+   ],
+   "admin/class-woo-lithuaniapost-admin.php": [
+    "https://post.lt"
+   ],
+   "admin/class-woo-lithuaniapost-admin-order-tracking.php": [
+    "https://post.lt",
+    "https://www.post.lt/siuntu-sekimas?parcels=",
+    "https://www.post.lt/index.php/en/shipments-search?parcels="
+   ],
+   "templates/emails/tracking-email.php": [
+    "https://www.post.lt/siuntu-sekimas?parcels=<?="
+   ],
+   "includes/class-woo-lithuaniapost-activator.php": [
+    "https://post.lt"
+   ],
+   "includes/class-woo-lithuaniapost-deactivator.php": [
+    "https://post.lt"
+   ],
+   "includes/shipping/lpexpress-terminal/includes/settings-lpexpress-terminal.php": [
+    "https://post.lt"
+   ],
+   "includes/class-woo-lithuaniapost-loader.php": [
+    "https://post.lt"
+   ],
+   "includes/woo-lithuaniapost-functions.php": [
+    "https://post.lt"
+   ],
+   "includes/class-woo-lithuaniapost.php": [
+    "https://post.lt"
+   ],
+   "includes/class-woo-lithuaniapost-i18n.php": [
+    "https://post.lt"
+   ],
+   "public/class-woo-lithuaniapost-public.php": [
+    "https://post.lt"
+   ],
+   "public/partials/html-delivery-time.php": [
+    "https://post.lt"
+   ],
+   "public/partials/html-block-lpexpress-terminal.php": [
+    "https://post.lt"
+   ],
+   "public/partials/html-lpexpress-terminal.php": [
+    "https://post.lt"
+   ]
+  },
+  "hooks": {
+   "includes/class-woo-lithuaniapost.php": [
+    "admin_post_woo-ltpost-create-label",
+    "admin_post_woo-ltpost-create-parcel",
+    "admin_post_woo-ltpost-generate-return-stickers",
+    "woocommerce_order_action_woo_lp_create_parcel",
+    "woocommerce_order_action_woo_lp_cancel_label",
+    "woocommerce_order_action_woo_lp_print_label",
+    "bulk_actions-edit-shop_order",
+    "bulk_actions-woocommerce_page_wc-orders",
+    "handle_bulk_actions-edit-shop_order",
+    "handle_bulk_actions-woocommerce_page_wc-orders",
+    "admin_action_print_label",
+    "woo_lithuaniapost_order_action_generate_stickers",
+    "woo_lithuaniapost_order_action_generate_return_stickers",
+    "woo_lithuaniapost_order_action_create_parcel",
+    "woo_lithuaniapost_order_action_download_labels"
+   ]
+  }
+ }
+}
