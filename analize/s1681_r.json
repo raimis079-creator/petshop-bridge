@@ -1,199 +1,372 @@
 {
- "v": "dep-085424",
+ "v": "dep-114628",
  "kurimas": 200,
- "sid": 5286,
+ "sid": 5737,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "R": {
-  "v": "S1681",
-  "wp": "2026-09-09 11:55:51",
-  "viso": 204,
-  "statistika": {
-   "turi_vf_cost": 8,
-   "turi_zb_cost": 13,
-   "turi_bet_kuri_tiekejo": 21,
-   "tik_cost_price": 183,
-   "turi_vf_qty": 8,
-   "turi_zb_qty": 13
+ "A": {
+  "v": "S1681 r",
+  "salys": {
+   "allowed": "specific",
+   "specific": [
+    "EE",
+    "LV",
+    "LT"
+   ],
+   "ship_to": "",
+   "ship_specific": [],
+   "base": "LT",
+   "tax_based": "shipping"
   },
-  "vienodos_savikainos": 8,
-  "skiriasi_pvz": [
+  "zonos": [
    {
-    "id": 16950,
-    "pav": "Papildas gyvūnams Bioveterinary S",
-    "kortele": 8.42,
-    "tiekejo": 8.415,
-    "is": "zb",
-    "skirtumas": -0.005,
-    "truksta": 32
+    "id": 3,
+    "pav": "Neringos savivaldybe",
+    "loc": [
+     "country:LT",
+     "postcode:931*"
+    ],
+    "met": [
+     {
+      "inst": 9,
+      "id": "shopup_venipak_shipping_pickup_method",
+      "pav": "VENIPAK paštomatai/atsiėmimo punktai",
+      "on": "yes",
+      "set": []
+     },
+     {
+      "inst": 10,
+      "id": "shopup_venipak_shipping_courier_method",
+      "pav": "VENIPAK Kurjeris",
+      "on": "yes",
+      "set": []
+     },
+     {
+      "inst": 13,
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "pav": "LP Express",
+      "on": "yes",
+      "set": {
+       "cost": "flat",
+       "tax_status": "taxable",
+       "type": "class"
+      }
+     }
+    ]
    },
    {
-    "id": 16953,
-    "pav": "Papildas gyvūnams Bioveterinary O",
-    "kortele": 8.42,
-    "tiekejo": 8.415,
-    "is": "zb",
-    "skirtumas": -0.005,
-    "truksta": 37
+    "id": 1,
+    "pav": "Lietuva",
+    "loc": [
+     "country:LT"
+    ],
+    "met": [
+     {
+      "inst": 1,
+      "id": "free_shipping",
+      "pav": "Nemokamas pristatymas",
+      "on": "no",
+      "set": {
+       "requires": "",
+       "min_amount": "0",
+       "ignore_discounts": "no"
+      }
+     },
+     {
+      "inst": 2,
+      "id": "shopup_venipak_shipping_courier_method",
+      "pav": "VENIPAK Kurjeris",
+      "on": "yes",
+      "set": []
+     },
+     {
+      "inst": 3,
+      "id": "shopup_venipak_shipping_pickup_method",
+      "pav": "VENIPAK paštomatai/atsiėmimo punktai",
+      "on": "yes",
+      "set": []
+     },
+     {
+      "inst": 6,
+      "id": "shopup_venipak_shipping_courier_method",
+      "pav": "VENIPAK Kurjeris",
+      "on": "yes",
+      "set": []
+     },
+     {
+      "inst": 7,
+      "id": "shopup_venipak_shipping_courier_method",
+      "pav": "VENIPAK Kurjeris",
+      "on": "yes",
+      "set": []
+     },
+     {
+      "inst": 8,
+      "id": "shopup_venipak_shipping_courier_method",
+      "pav": "VENIPAK Kurjeris",
+      "on": "yes",
+      "set": []
+     },
+     {
+      "inst": 12,
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "pav": "LP Express",
+      "on": "yes",
+      "set": {
+       "cost": "flat",
+       "tax_status": "taxable",
+       "type": "class"
+      }
+     },
+     {
+      "inst": 15,
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "pav": "LP Express kurjeris",
+      "on": "yes",
+      "set": {
+       "cost": "weight",
+       "tax_status": "taxable",
+       "type": "class"
+      }
+     },
+     {
+      "inst": 16,
+      "id": "local_pickup",
+      "pav": "Atsiėmimas AV — Liucionių g. 46, Liucionys",
+      "on": "no",
+      "set": {
+       "tax_status": "none",
+       "cost": "0"
+      }
+     }
+    ]
    },
    {
-    "id": 16956,
-    "pav": "Papildas gyvūnams Bioveterinary M",
-    "kortele": 8.42,
-    "tiekejo": 8.415,
-    "is": "zb",
-    "skirtumas": -0.005,
-    "truksta": 71
-   },
-   {
-    "id": 17400,
-    "pav": null,
-    "kortele": 2.23,
-    "tiekejo": 1.836,
-    "is": "zb",
-    "skirtumas": -0.394,
-    "truksta": 852
-   },
-   {
-    "id": 18593,
-    "pav": "Exclusion Hypoallergenic konservai",
-    "kortele": 2,
-    "tiekejo": 1.649,
-    "is": "vf",
-    "skirtumas": -0.351,
-    "truksta": 39
-   },
-   {
-    "id": 18596,
-    "pav": "Exclusion Hypoallergenic konservai",
-    "kortele": 2.38,
-    "tiekejo": 2.601,
-    "is": "vf",
-    "skirtumas": 0.221,
-    "truksta": 60
-   },
-   {
-    "id": 18599,
-    "pav": "Exclusion Hypoallergenic konservai",
-    "kortele": 2.38,
-    "tiekejo": 2.601,
-    "is": "vf",
-    "skirtumas": 0.221,
-    "truksta": 1087
-   },
-   {
-    "id": 18602,
-    "pav": "Exclusion Hypoallergenic konservai",
-    "kortele": 2,
-    "tiekejo": 1.649,
-    "is": "vf",
-    "skirtumas": -0.351,
-    "truksta": 18
-   },
-   {
-    "id": 18605,
-    "pav": "Exclusion Hypoallergenic konservai",
-    "kortele": 2.38,
-    "tiekejo": 2.601,
-    "is": "vf",
-    "skirtumas": 0.221,
-    "truksta": 88
-   },
-   {
-    "id": 18608,
-    "pav": "Exclusion Hypoallergenic konservai",
-    "kortele": 2.38,
-    "tiekejo": 2.601,
-    "is": "vf",
-    "skirtumas": 0.221,
-    "truksta": 64
-   },
-   {
-    "id": 18611,
-    "pav": "Exclusion Hypoallergenic konservai",
-    "kortele": 2.38,
-    "tiekejo": 2.601,
-    "is": "vf",
-    "skirtumas": 0.221,
-    "truksta": 47
-   },
-   {
-    "id": 18614,
-    "pav": "Exclusion Hypoallergenic konservai",
-    "kortele": 1.9,
-    "tiekejo": 1.5725,
-    "is": "vf",
-    "skirtumas": -0.3275,
-    "truksta": 23
+    "id": 2,
+    "pav": "Baltijos šalys, be LIetuvos",
+    "loc": [
+     "country:EE",
+     "country:LV"
+    ],
+    "met": [
+     {
+      "inst": 5,
+      "id": "shopup_venipak_shipping_pickup_method",
+      "pav": "VENIPAK paštomatai/atsiėmimo punktai",
+      "on": "yes",
+      "set": []
+     }
+    ]
    }
   ],
-  "tik_kortele_pvz": [
+  "zona0": [],
+  "metodai": [
+   "flat_rate",
+   "free_shipping",
+   "local_pickup",
+   "shopup_venipak_shipping_courier_method",
+   "shopup_venipak_shipping_pickup_method",
+   "woo_lithuaniapost_lpexpress_terminal"
+  ],
+  "venipak": {
+   "shopup_venipak_shipping_courier_method": {
+    "cls": "WC_Shopup_Venipak_Shipping_Courier_Method",
+    "supports": [
+     "shipping-zones",
+     "instance-settings",
+     "instance-settings-modal"
+    ],
+    "form": [
+     "title",
+     "description",
+     "fee",
+     "minimum_weight",
+     "maximum_weight",
+     "min_amount_for_free_shipping",
+     "ignore_shipping_classes"
+    ]
+   },
+   "shopup_venipak_shipping_pickup_method": {
+    "cls": "WC_Shopup_Venipak_Shipping_Pickup_Method",
+    "supports": [
+     "shipping-zones",
+     "instance-settings",
+     "instance-settings-modal"
+    ],
+    "form": [
+     "title",
+     "description",
+     "fee",
+     "minimum_weight",
+     "maximum_weight",
+     "min_amount_for_free_shipping",
+     "ignore_shipping_classes"
+    ]
+   }
+  },
+  "venipak_opt": [
    {
-    "id": 14929,
-    "pav": "Žirklės nagams (giljotina), 11 c",
-    "kortele": 3.36,
-    "truksta": 5
+    "n": "venipak_pack_number",
+    "v": "1000104"
    },
    {
-    "id": 14932,
-    "pav": "Žirklės gyvūno kailiui, 16 cm",
-    "kortele": 3.24,
-    "truksta": 5
+    "n": "shopup_venipak_shipping_settings",
+    "v": "a:23:{s:36:\"shopup_venipak_shipping_field_userid\";s:5:\"07267\";s:38:\"shopup_venipak_shipping_field_username\";s:7:\"Avesa97\";s:38:\"shopup_venipak_shipping_field_password\";s:8:\"avesazoo\";s:45:\"shopup_venipak_shipping_field_firstpacknumber\";i:1000104;s:38:\"shopup_venipak_shipping_field_manifest\";s:3:\"001"
    },
    {
-    "id": 14935,
-    "pav": "Žirklės gyvūno kailiui filiruot",
-    "kortele": 3.24,
-    "truksta": 3
+    "n": "woocommerce_shopup_venipak_shipping_courier_method_2_settings",
+    "v": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"3.30\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:2:\"50\";s:28:\"min_amount_for_free_shipping\";s:0:\"\";s:23:\"ignore_shipping_classes\";a:3:{i:0;s:3:\"235\";i:1;s:3:\"236\";i:2;s:3:\"237"
    },
    {
-    "id": 14937,
-    "pav": "Žirklutės gyvūno nagams kirpti,",
-    "kortele": 4.06,
-    "truksta": 2
+    "n": "woocommerce_shopup_venipak_shipping_pickup_method_3_settings",
+    "v": "a:7:{s:5:\"title\";s:38:\"VENIPAK paštomatai/atsiėmimo punktai\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"1.78\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:5:\"24.90\";s:28:\"min_amount_for_free_shipping\";s:2:\"30\";s:23:\"ignore_shipping_classes\";s:0:\"\";}"
    },
    {
-    "id": 14945,
-    "pav": "Žirklutės gyvūno nagams kirpti,",
-    "kortele": 1.93,
-    "truksta": 2
+    "n": "woocommerce_shopup_venipak_shipping_pickup_method_5_settings",
+    "v": "a:7:{s:5:\"title\";s:38:\"VENIPAK paštomatai/atsiėmimo punktai\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"2.47\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:5:\"24.90\";s:28:\"min_amount_for_free_shipping\";s:0:\"\";s:23:\"ignore_shipping_classes\";s:0:\"\";}"
    },
    {
-    "id": 14948,
-    "pav": "Žirklutės gyvūno nagams kirpti,",
-    "kortele": 1.85,
-    "truksta": 3
+    "n": "woocommerce_shopup_venipak_shipping_courier_method_6_settings",
+    "v": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"6.60\";s:14:\"minimum_weight\";s:2:\"50\";s:14:\"maximum_weight\";s:2:\"70\";s:28:\"min_amount_for_free_shipping\";s:0:\"\";s:23:\"ignore_shipping_classes\";a:3:{i:0;s:3:\"234\";i:1;s:3:\"236\";i:2;s:3:\"2"
    },
    {
-    "id": 14990,
-    "pav": "Žaislas šuniui &#8211; Šiaurės",
-    "kortele": 6.32,
-    "truksta": 2
+    "n": "woocommerce_shopup_venipak_shipping_courier_method_7_settings",
+    "v": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"9.90\";s:14:\"minimum_weight\";s:2:\"70\";s:14:\"maximum_weight\";s:3:\"100\";s:28:\"min_amount_for_free_shipping\";s:0:\"\";s:23:\"ignore_shipping_classes\";a:3:{i:0;s:3:\"234\";i:1;s:3:\"235\";i:2;s:3:\""
    },
    {
-    "id": 15021,
-    "pav": "Žaislas šuniui &#8211; Tinginys ",
-    "kortele": 3.83,
-    "truksta": 1
+    "n": "woocommerce_shopup_venipak_shipping_courier_method_8_settings",
+    "v": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:5:\"20.65\";s:14:\"minimum_weight\";s:3:\"100\";s:14:\"maximum_weight\";s:3:\"200\";s:28:\"min_amount_for_free_shipping\";s:0:\"\";s:23:\"ignore_shipping_classes\";a:3:{i:0;s:3:\"234\";i:1;s:3:\"235\";i:2;s:3"
    },
    {
-    "id": 15072,
-    "pav": "Žaislas šuniui &#8211; Pliušini",
-    "kortele": 2.42,
-    "truksta": 2
+    "n": "woocommerce_shopup_venipak_shipping_pickup_method_9_settings",
+    "v": "a:7:{s:5:\"title\";s:38:\"VENIPAK paštomatai/atsiėmimo punktai\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"1.78\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:5:\"24.90\";s:28:\"min_amount_for_free_shipping\";s:0:\"\";s:23:\"ignore_shipping_classes\";s:0:\"\";}"
    },
    {
-    "id": 15084,
-    "pav": "Žaislas šuniui &#8211; Pliušini",
-    "kortele": 1.46,
-    "truksta": 2
+    "n": "woocommerce_shopup_venipak_shipping_courier_method_10_settings",
+    "v": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:5:\"24.79\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:3:\"100\";s:28:\"min_amount_for_free_shipping\";s:0:\"\";s:23:\"ignore_shipping_classes\";s:0:\"\";}"
+   },
+   {
+    "n": "ps_venipak_sekimas_paskutinis",
+    "v": "a:11:{s:6:\"laikas\";s:19:\"2026-09-14 14:36:07\";s:8:\"uzsakymu\";i:34;s:7:\"numeriu\";i:37;s:8:\"uzklausu\";i:30;s:8:\"pakeista\";i:1;s:2:\"lp\";i:0;s:8:\"issiusta\";i:0;s:10:\"pristatyta\";i:0;s:6:\"grizta\";i:0;s:7:\"klaidos\";i:0;s:1:\"s\";d:1.7;}"
    }
   ],
-  "vnt": {
-   "is_tiekejo": 5732,
-   "is_korteles": 919
-  }
+  "venipak_plug": [
+   "Shipping with Venipak for WooCommerce wc-venipak-shipping v1.26.5"
+  ],
+  "venipak_salys": {
+   "woocommerce-shopup-venipak-shipping.php": [
+    "* Description:       Venipak delivery method plugin for WooCommerce. Delivery via courier and pickup points.",
+    "$plugin_description = 'Venipak delivery method plugin for WooCommerce. Delivery via courier and pickup points.';"
+   ],
+   "class-woocommerce-shopup-venipak-shipping-admin-dispatch.php": [
+    "private function missing_pickup_point_message() {",
+    "return __( 'The selected pickup point is no longer available. Choose another one on the order before dispatching.', 'woocommerce-shopup-venipak-shipping' );",
+    "* Keep orders whose pickup point cannot be resolved out of the dispatch entirely.",
+    "* The XML builder treats \"no pickup point\" as \"courier\", so an order for a point that",
+    "* address instead of the locker, with no error anywhere.",
+    "private function reject_orders_with_missing_pickup_point( $order_ids ) {",
+    "// Already dispatched: the XML builder skips it anyway, and its pickup point",
+    "if ( $shipping_method_id === 'shopup_venipak_shipping_pickup_method' && ! venipak_resolve_order_pickup( $order ) ) {"
+   ],
+   "class-woocommerce-shopup-venipak-shipping-admin-order-edit.php": [
+    "private $pickup_type;",
+    "$this->pickup_type = $settings->get_option_by_key('shopup_venipak_shipping_field_pickuptype');",
+    "if (!$this->shopup_venipak_shipping_field_forcedispatch && $shipping_method_id !== 'shopup_venipak_shipping_courier_method' && $shipping_method_id !== 'shopup_v",
+    "$venipak_pickup_point_id = $order->get_meta('venipak_pickup_point', true );",
+    "$venipak_pickup_point_title = $this->get_venipak_point_title($order);",
+    "<?php if ($venipak_pickup_point_title) { ?>",
+    "<p><strong><?php echo __( 'Pickup point', 'woocommerce-shopup-venipak-shipping' ); ?></strong><?php echo $venipak_pickup_point_title ?></p>",
+    "$default_options = $venipak_pickup_point_id ? [$venipak_pickup_point_id => $venipak_pickup_point_title] : [];"
+   ],
+   "class-woocommerce-shopup-venipak-shipping-admin-orders-list.php": [
+    "if (!$this->shopup_venipak_shipping_field_forcedispatch && $shipping_method_id !== 'shopup_venipak_shipping_courier_method' && $shipping_method_id !== 'shopup_v"
+   ],
+   "class-woocommerce-shopup-venipak-shipping-admin-pickup.php": [
+    "if (class_exists( 'WC_Shopup_Venipak_Shipping_Pickup_Method' )) return;",
+    "class WC_Shopup_Venipak_Shipping_Pickup_Method extends WC_Shipping_Method {",
+    "$this->id                 = 'shopup_venipak_shipping_pickup_method';",
+    "$this->title              = __( 'Venipak Pickup Shipping Method', 'woocommerce-shopup-venipak-shipping' );",
+    "$this->method_title       = __( 'Venipak Pickup Shipping Method', 'woocommerce-shopup-venipak-shipping' );",
+    "'default'     => __( 'Venipak Pickup Shipping Method', 'woocommerce-shopup-venipak-shipping' ),",
+    "$maximum_weight_locker = $this->get_option('maximum_weight') ? $this->get_option('maximum_weight') : 30;",
+    "$manimum_weight_locker = $this->get_option('minimum_weight') ? $this->get_option('minimum_weight') : 0;"
+   ],
+   "class-woocommerce-shopup-venipak-shipping-admin-product.php": [
+    "'id'          => 'venipak_is_locker_excluded',",
+    "'label'       => __( 'Venipak Exclude from Lockers', 'woocommerce-shopup-venipak-shipping' ),",
+    "'description' => __( 'Check this box to exclude this product from Venipak lockers.', 'woocommerce' ),",
+    "'checked'     => $product->get_meta('venipak_is_locker_excluded', true ) == 1,",
+    "if (isset($_POST['venipak_is_locker_excluded'])) {",
+    "$product->update_meta_data('venipak_is_locker_excluded', 1);",
+    "$product->update_meta_data('venipak_is_locker_excluded', 0);"
+   ],
+   "class-woocommerce-shopup-venipak-shipping-admin-settings.php": [
+    "'shopup_venipak_shipping_field_pickuptype',",
+    "__( 'Pickup options', 'woocommerce-shopup-venipak-shipping' ),",
+    "'field' => 'shopup_venipak_shipping_field_pickuptype',",
+    "'1' => __( 'Only pickup', 'woocommerce-shopup-venipak-shipping' ), // pickup, using numbers because venipak api use it",
+    "'3' => __( 'Only locker', 'woocommerce-shopup-venipak-shipping' ), // locker",
+    "'shopup_venipak_shipping_field_pickupposition',",
+    "__( 'Pickup selector position', 'woocommerce-shopup-venipak-shipping' ),",
+    "'field' => 'shopup_venipak_shipping_field_pickupposition',"
+   ],
+   "class-woocommerce-shopup-venipak-shipping-admin.php": [
+    "require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-woocommerce-shopup-venipak-shipping-admin-pickup.php';",
+    "$methods['shopup_venipak_shipping_pickup_method'] = 'WC_Shopup_Venipak_Shipping_Pickup_Method';"
+   ],
+   "class-woocommerce-shopup-venipak-shipping.php": [
+    "require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-woocommerce-shopup-venipak-shipping-public-pickup-checkout.php';",
+    "require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/venipak-fetch-pickups.php';",
+    "$plugin_public_pickup_checkout = new Woocommerce_Shopup_Venipak_Shipping_Public_Pickup_Checkout( $this->get_plugin_name(), $this->get_version(), $this->settings",
+    "$this->loader->add_filter( 'woocommerce_package_rates', $plugin_public, 'show_pickup_if_product_included_in_locker', 10, 2 );",
+    "if ( $plugin_public_pickup_checkout->get_pickup_position() === 'inline' ) {",
+    "$this->loader->add_action( 'woocommerce_after_shipping_rate', $plugin_public_pickup_checkout, 'add_venipak_shipping_pickup_options_inline', 20, 2 );",
+    "$this->loader->add_action( 'woocommerce_review_order_after_shipping', $plugin_public_pickup_checkout, 'add_venipak_shipping_pickup_options', 20, 2 );",
+    "$this->loader->add_action( 'woocommerce_checkout_update_order_meta', $plugin_public_pickup_checkout, 'add_venipak_shipping_pickup_update_order_meta' ,10,2);"
+   ],
+   "venipak-fetch-pickups.php": [
+    "* The pickup point feed is ~1.6 MB / 1200+ points, so decoding it once per request and",
+    "function venipak_fetch_pickups($country = null) {",
+    "$collection = _venipak_read_pickups();",
+    "function _venipak_read_pickups() {",
+    "$file_path = $upload_dir['basedir'] . '/venipak/pickups.json';",
+    "_venipak_fetch_pickups_request($file_path);",
+    "function _venipak_fetch_pickups_request($file_path) {",
+    "$response = wp_remote_get( \"https://go.venipak.lt/ws/get_pickup_points\" );"
+   ],
+   "class-woocommerce-shopup-venipak-shipping-public-email.php": [
+    "case \"EE\":",
+    "$domain = 'ee';",
+    "case \"LV\":",
+    "$domain = 'lv';",
+    "public function add_venipak_shipping_selected_pickup_info( $order, $sent_to_admin, $plain_text, $email ) {",
+    "$venipak_pickup = venipak_resolve_order_pickup( $order );",
+    "if ($venipak_pickup) {",
+    "$name = !empty($venipak_pickup['display_name']) ? $venipak_pickup['display_name'] : $venipak_pickup['name'];"
+   ],
+   "class-woocommerce-shopup-venipak-shipping-public-pickup-checkout.php": [
+    "class Woocommerce_Shopup_Venipak_Shipping_Public_Pickup_Checkout {",
+    "private $pickup_type;",
+    "private $pickup_position;",
+    "$this->pickup_type = $settings->get_option_by_key('shopup_venipak_shipping_field_pickuptype');",
+    "$this->pickup_position = $settings->get_option_by_key('shopup_venipak_shipping_field_pickupposition') ?: 'after_shipping';",
+    "* Get the pickup position setting.",
+    "public function get_pickup_position() {",
+    "return $this->pickup_position;"
+   ],
+   "class-woocommerce-shopup-venipak-shipping-public.php": [
+    "if ( $method->method_id === \"shopup_venipak_shipping_pickup_method\" ||  $method->method_id === \"shopup_venipak_shipping_courier_method\") {",
+    "* Functionality to show pickup options if product in cart is not excluded from lockers",
+    "public function show_pickup_if_product_included_in_locker( $rates, $package) {",
+    "$venipak_is_locker_excluded = $product->get_meta('venipak_is_locker_excluded');",
+    "if ($venipak_is_locker_excluded) {",
+    "if ('shopup_venipak_shipping_pickup_method' === $rate->method_id) {",
+    "$pickup_width = $this->settings->get_option_by_key('shopup_venipak_shipping_field_pickupwidth');",
+    "if ( $pickup_width ) {"
+   ]
+  },
+  "e": ""
  }
 }
