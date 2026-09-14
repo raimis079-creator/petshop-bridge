@@ -1,0 +1,32 @@
+{
+ "v": "dep-143517",
+ "kurimas": 200,
+ "sid": 5752,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 ae",
+  "mailer": "smtp",
+  "smtp": {
+   "host": "isopas.serveriai.lt",
+   "port": 465,
+   "enc": "ssl",
+   "auth": true,
+   "user": "uzsakymai@petshop.lt",
+   "pass_len": 80
+  },
+  "test": true,
+  "debug": [
+   {
+    "c": "Mailer: Other SMTP\r\nSMTP Error: Could not authenticate.",
+    "created_at": "2026-09-14 14:34:14"
+   },
+   {
+    "c": "Mailer: Other SMTP\r\nSMTP Error: Could not authenticate.",
+    "created_at": "2026-09-14 14:32:11"
+   }
+  ]
+ }
+}
