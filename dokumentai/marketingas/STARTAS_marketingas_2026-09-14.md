@@ -29,3 +29,14 @@
 - C: soft opt-in auditas (ERĮ 81 str.) iš serverio (WC checkout, Sender); eShoprent senos formos klausimas — NE DB duomuo, Raimis nuotraukos/teksto neturi → žymėti kaip „neįrodoma“, istorinius kontaktus traktuoti konservatyviai.
 
 **Eiga kitame lange:** recon B (bridge, `irankiai/s1684_b.php`) → recon A (`s1684_a.php`) → recon C (`s1684_c.php`) → HTML planas su realiais skaičiais → commit + present_files. Prie strategijos negrįžti.
+
+---
+
+## Būklė S1684 pabaigoje (2026-09-14 vakaras) — VYKDYMAS PRADĖTAS
+
+Recon A/B/C ATLIKTI: `ANALIZE_A_kanalai_s1684.md`, `ANALIZE_B_savikaina_CM_s1684.md`, `ANALIZE_C_sutikimai_s1684.md` (recon `irankiai/s1684_ma/mb/mb2/mc/mc2.php`, `analize/s1684_m*.json`; prefiksas `m` — lygiagretus techninis langas naudoja `s1684_a/b`).
+**Q4 operacinis planas = `Q4_operacinis_planas_s1684.html`** (valdymo ekranas; atnaujinti kas 2 sav., ne perrašyti). Pradėti nuo jo.
+
+Svarbiausi faktai: antkainis Exclusion 20 % (AV 39 %) / Josera 21 % / maistas ~30 %; `kaina_ct` be PVM (S1683 maržos klaidingos); CM12 lead brendų klientui €10–14 → mastelio CAC €5–7, dabartinis ~€19; nauji 64 % iš Ads, spend €1,3 k/mėn. (50 % katės); klientas už pristatymą nemoka (5,4 %); sutikimai 561 importuoti, kasoje opt-in NĖRA (blokuoja lifecycle), 15 srautų draft.
+
+Kitas žingsnis: Raimio sprendimai iš „Atvira" bloko (kačių PMax, opt-in pažymėjimas, 5 100 istorinių, legacy laiškas) → Claude: produkto ciklų lentelė, kasos opt-in spec, antkainio peržiūra analitika-langas, 09-15 Ads kontrolinis taškas.
