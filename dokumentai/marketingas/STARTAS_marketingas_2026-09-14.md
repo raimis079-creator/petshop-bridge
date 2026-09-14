@@ -40,3 +40,6 @@ Recon A/B/C ATLIKTI: `ANALIZE_A_kanalai_s1684.md`, `ANALIZE_B_savikaina_CM_s1684
 Svarbiausi faktai: antkainis Exclusion 20 % (AV 39 %) / Josera 21 % / maistas ~30 %; `kaina_ct` be PVM (S1683 maržos klaidingos); CM12 lead brendų klientui €10–14 → mastelio CAC €5–7, dabartinis ~€19; nauji 64 % iš Ads, spend €1,3 k/mėn. (50 % katės); klientas už pristatymą nemoka (5,4 %); sutikimai 561 importuoti, kasoje opt-in NĖRA (blokuoja lifecycle), 15 srautų draft.
 
 Kitas žingsnis: Raimio sprendimai iš „Atvira" bloko (kačių PMax, opt-in pažymėjimas, 5 100 istorinių, legacy laiškas) → Claude: produkto ciklų lentelė, kasos opt-in spec, antkainio peržiūra analitika-langas, 09-15 Ads kontrolinis taškas.
+
+**UŽRAKINTA v1.2 (09-14 pabaiga):** Q4 planas = vykdymo baseline, konceptualiai nebekeičiamas — tik faktai/statusai/sprendimų žurnalas. Operacinis retention KPI = R_due (cycle-adjusted), R60 ≥ 20 % lieka scorecard; R_due target nustatomas po istorinio R_due baseline recon (2024–2026). Kontaktų būsenos: newsletter `consent=true` / lifecycle `soft_optin_eligible && !opt_out` / suppression bendras. Pristatymas: klientas moka, subsidija ~€1,3/užs.
+Pirmi Claude darbai kitame lange: (1) produkto ciklų lentelė + istorinis R_due baseline (`s1685_*`), (2) kasos soft opt-out spec, (3) antkainio formulės peržiūra analitika-langas, (4) 09-15 Ads kontrolinis taškas.
