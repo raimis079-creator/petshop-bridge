@@ -1,0 +1,51 @@
+{
+ "v": "dep-081640",
+ "kurimas": 200,
+ "sid": 5718,
+ "data": {
+  "dl_v343.txt": {
+   "id": 35938,
+   "status": 201
+  }
+ },
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1676 j",
+  "faze": "D",
+  "temp_istrinta": 9,
+  "media": [
+   35938,
+   "dl_v343.txt"
+  ],
+  "senas_md5": "fc993421845c82eda30dbd4574f8a8dc",
+  "naujas_md5": "8b2f896b2020fe09179e357b6729e264",
+  "irasyta_md5": "8b2f896b2020fe09179e357b6729e264",
+  "ping": 200,
+  "media_istrinta": 1
+ },
+ "T": {
+  "v": "S1676 j",
+  "faze": "T",
+  "temp_istrinta": 0,
+  "gyvas_md5": "8b2f896b2020fe09179e357b6729e264",
+  "versija": "3.43",
+  "busena_35902": [
+   "Neapmokėtas · pavedimu",
+   "b-amber"
+  ],
+  "takelis_35902": [
+   [
+    "apmoketa",
+    "neapmokėtas · pavedimu",
+    "now",
+    "",
+    "apmoketa"
+   ]
+  ],
+  "mok_35902": "pavedimu",
+  "warn": "0"
+ }
+}
