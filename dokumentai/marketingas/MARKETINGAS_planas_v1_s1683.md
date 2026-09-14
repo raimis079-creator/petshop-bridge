@@ -629,17 +629,22 @@ Jei ne — ji nėra prioritetas.
 
 ---
 
-## 18. Claude pastabos prie v1 (2026-09-14, S1683) — kas dar neuždaryta
+## 18. Vykdymo vartai (užrakinta 2026-09-14 naktį, po trečios recenzijos)
 
-Planas priimtas kaip strategijos karkasas. Šie punktai turi būti išspręsti 2026 Q4 operaciniame plane, kitaip v1 lieka be vykdymo mechanikos:
+Strategija nebeatidaroma. Liko penki vykdymo vartai — Q4 operacinio plano workstream'ai:
 
-1. **N neturi kanalų biudžeto.** Plane N 120 → 250, bet nepasakyta, iš kur +130/mėn.: kiek iš PMax (prie kokio CPA ir biudžeto), kiek iš SEO/skaičiuoklės, kiek iš veisėjų/prieglaudų. Be šio skaidymo N tikslas nevaldomas. Q4 operacinio plano pirmas darbas.
-2. **CAC lubos neįvardintos.** „Neperkant augimo nuostolinga reklama" reikalauja skaičiaus. Siūloma: CAC ≤ 30 % V12 (dabar €23, prie V12 €115 — €35); PMax CPA €11–14 tilpsta su atsarga. Nuo 2027 Q2 — CM12/CAC ≥ 2.
-3. **Q1 tikslas N 180–220 per optimistinis.** Rugsėjis — 81 naujų, PMax feed dar nepaleistas. Realus takas: Q4 2026 atstatyti ~120, Q1 150–170, Q2 190–210, Q3 220–240, Q4 250. Front-loaded tikslai Q1 sukels klaidingą „nesiseka" signalą.
-4. **Retention etapų laikas netelpa į horizontą nuosekliai.** 4 etapai × (2 mėn. kohortų + 60 d.) = 16 mėn. > 15,5 mėn. Etapai turi persidengti: 1 ir 2 startuoja kartu Q4 (skirtingiems brendams — commodity vs dideli maišai), 3 — Q1, 4 — Q2. Sprendimas „eiti toliau" pagal kohortą priimamas nelaukiant pilno lango.
-5. **Apyvartinių lėšų / sandėlio ribojimas.** 3× apyvarta = 2–3× AV sandėlis cikliniams brendams (Exclusion po kelis maišus, Hikari kas 1,5 mėn.). Tai ne marketingo, bet plano ribojimas — Raimio įvertinimas reikalingas prieš Q2 mastelį.
-6. **Lifecycle teisinė bazė.** Priminimai esamiems klientams apie tą patį produktą — leidžiami kaip „soft opt-in" su atsisakymo galimybe; Sender kontaktų būklė ir sutikimo žymos WC — patikrinti prieš startą (buvo atviras klausimas nuo S1678).
-7. **Matavimas — jau esama infrastruktūra.** N/R30/R60/R90/V12 dashboard'as statomas ant `ps_fakt_uzsakymai` (klientas_naujas, dienos_nuo_ankstesnio) ir `petshop-analitika-langas.php`, ne naujas įrankis. Istorinė bazė (13 %) — iš `analize/s1683_c.json`. Savininkas — Claude, terminas — Q4 pradžia.
-8. **Kas neįeina į v1 sąmoningai:** video formato principas (Raimio vizija, personažų negeneruoti), skanėstų kainodara/dėžė (žr. pagrindą s1678), EE/LV, B2B — atmesti arba atidėti anksčiau, neteikti iš naujo.
+**A. N ekonomika** — kanalų atribucija → kanalų tikslai → biudžetas. Ribojimas: `ps_ist_*` kanalų stulpeliai tušti, todėl istorinis N pagal kanalą tiesiogiai neišmatuojamas. Proxy: GA4 užsakymų dalis pagal kanalą 13 mėn. (`analize/s1682_gsc_yoy.json`: PMax 50–60 %, organika ~10 %, direct ~20 %) taikoma N; tikslus matavimas — `ps_fakt_uzsakymai.kanalas_pirmas`/`gclid` nuo 09-09 (pirmas patikimas mėnuo — spalis). Mokamų kanalų spend — `ps_fakt_reklama`. Lentelė kiekvienam kanalui: N dabar / N tikslas / CAC / €/mėn. / lead time / statusas (scale/hold/build/test/later).
 
-Susiję dokumentai: `ANALIZE_kohortos_s1683.md`, `ANALIZE_V12_mechanika_s1683.md`, `ANALIZE_R60_verte_s1683.md`, `MARKETINGAS_planas_v0_s1682.md`, `MARKETINGAS_pagrindas_s1678.md`.
+**B. CAC ekonomika** — dvi ribos: avarinė CAC ≤ 30 % revenue V12; mastelio kriterijus CAC ≤ 50 % proxy CM12 (dabartinė WC SKU savikaina + reali kaina + PSP + pristatymo subsidija; ±10 %). Nuo 2027 Q2 faktinis CM12/CAC: ≥3 spaudžiam, 2–3 normalus mastelis, <2 stabdom. Techninė pastaba: SKU→`_ps_savikaina` sujungimas S1683 grąžino 0 — taisyti (savikaina greičiausiai prie variacijos/product_id, ne SKU).
+
+**C. Lifecycle vykdymas** — etapai 1+2 kartu Q4 (trumpi ciklai / commodity / dideli maišai su savo langais), 3 — Q1, 4 — Q2; permanentinis ~10 % holdout, nes persidengiant etapams kitaip lifto neatskirsim. Teisinė bazė: soft opt-in (ERĮ 81 str.) galimas, bet prieš startą audituojama istorinių (eShoprent — ar buvo rodoma atsisakymo galimybė renkant el. paštą; įrodymas) ir naujų (WC checkout, Sender) kontaktų surinkimo/opt-out būklė. Refill priminimas = tiesioginė rinkodara, ne transakcinis laiškas.
+
+**D. Pajėgumas** — AV apyvartinių lėšų modelis pagal brendą prieš Q2 mastelį: pardavimai € → marža → AV/DS dalis → stock days → lead time → MOQ → tiekėjo mokėjimo terminai. Ne „3× apyvarta = 3× sandėlis". Marketingas generuoja N, sandėlis privalo jį aptarnauti.
+
+**E. Dashboard** — vienas operacinis ekranas ant `ps_fakt_uzsakymai` + `petshop-analitika-langas.php`: N → kanalas → CAC → R30/R60/R90 → 2+/3+/4+/5+ → V90/V180/V365 → V12 → marža; filtrai šuo/katė, brendas, pirmas SKU, šaltinis, kohortos mėnuo. Ne 57 KPI. Savininkas — Claude, Q4 pradžia.
+
+**Oficialus base forecast N:** 2026 Q4 ~120 (atstatymo ir instrumentavimo ketvirtis, ne augimo) · 2027 Q1 150–170 · Q2 190–210 · Q3 220–240 · Q4 250 · stretch ~300.
+
+Kas neįeina sąmoningai: video formato principas (personažų negeneruoti), skanėstų kainodara/dėžė (pagrindas s1678), EE/LV, B2B — atmesta/atidėta anksčiau, neteikti iš naujo.
+
+Susiję: `ANALIZE_kohortos_s1683.md`, `ANALIZE_V12_mechanika_s1683.md`, `ANALIZE_R60_verte_s1683.md`, `MARKETINGAS_planas_v0_s1682.md`, `MARKETINGAS_pagrindas_s1678.md`.
