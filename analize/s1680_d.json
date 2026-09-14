@@ -1,0 +1,83 @@
+{
+ "v": "dep-070622",
+ "kurimas": 200,
+ "sid": 5708,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1680 d",
+  "class-woo-lithuaniapost-admin-order-service.php": {
+   "__construct": "__construct($plugin_name, $version)\r\n {\r\n $this->plugin_name = $plugin_name;\r\n $this->version = $version;\r\n $this->courier_api = new Woo_Lithuaniapost_Admin_Courier_Api($plugin_name, $version);\r\n $this->parcel_api = new Woo_Lithuaniapost_Admin_Parcel_Api($plugin_name, $version);\r\n $this->shipping_api = new Woo_Lithuaniapost_Admin_Shipping_Api($plugin_name, $version);\r\n $this->sticker_api = new Woo_Lithuaniapost_Admin_Sticker_Api($plugin_name, $version);\r\n }",
+   "is_shipping_initiated": "is_shipping_initiated(): bool\r\n {\r\n return $this == LpOrderStatus::$SHIPPING_INITIATED || $this == LpOrderStatus::$COURIER_PENDING || $this == LpOrderStatus::$COURIER_CALLED || $this == LpOrderStatus::$PARCEL_DELIVERED || $this == LpOrderStatus::$ON_THE_WAY;\r\n }",
+   "is_ready_to_initiated": "is_ready_to_initiated(): bool\r\n {\r\n return $this == LpOrderStatus::$PARCEL_CREATED;\r\n }",
+   "handle_generate_stickers": "handle_generate_stickers(array $order_ids)\r\n {\r\n if (empty($order_ids)) {\r\n return false;\r\n }\r\n $result['errors'] = [];\r\n $order_ids_to_process = [];\r\n $order_ids_to_initiate = [];\r\n foreach ($order_ids as $order_id) {\r\n $available_actions = $this->get_available_order_actions_by_id($order_id);\r\n $action_available = false;\r\n foreach ($available_actions as $action) {\r\n switch ($action) {\r\n case LpOrderAction::INIT_SHIPPING:\r\n $order_ids_to_initiate[] = $order_id;\r\n $order_ids_to_process[] = $order_id;\r\n $action_available = true;\r\n break;\r\n case LpOrderAction::PRINT_LABEL:\r\n $order_ids_to_process[] = $order_id;\r\n $action_available = true;\r\n break;\r\n }\r\n }\r\n if ($action_available !== true) {\r\n $result['errors'][LpOrderActionErrorKey::ACTION_NOT_AVAILABLE][] = $order_id;\r\n }\r\n }\r\n if (!empty($order_ids_to_initiate)) {\r\n $result['errors'] += $this->handle_initiate_shipping($order_ids_to_initiate);\r\n }\r\n if ($result['errors']) {\r\n $errors = $result['errors'];\r\n $order_ids_to_generate_labels = array_filter($order_ids_to_process, function ($order_id) use ($errors) {\r\n foreach ($errors as $error => $error_order_ids) {\r\n if (in_array($order_id, $error_order_ids)) return false;\r\n }\r\n return true;\r\n });\r\n } else {\r\n $order_ids_to_generate_labels = $order_ids_to_process;\r\n }\r\n if (empty($order_ids_to_generate_labels)) {\r\n return $result;\r\n }\r\n return $this->sticker_api->download_stickers_pdf($order_ids_to_generate_labels);\r\n }",
+   "download_labels": "download_labels(array $order_ids)\r\n {\r\n $this->sticker_api->download_stickers_pdf($order_ids);\r\n }",
+   "handle_initiate_shipping": "handle_initiate_shipping($order_ids)\r\n {\r\n $errors = [];\r\n $shipping_response = $this->shipping_api->initiate($order_ids);\r\n if ($shipping_response) {\r\n $order_statuses = $this->on_initiate_success($shipping_response, $this->get_orders($order_ids));\r\n foreach ($order_statuses as $order_id => $status) {\r\n if (!ShippingItemStatus::is_status_ok($status)) {\r\n $errors[LpOrderActionErrorKey::FAILED_INITIATE][] = $order_id;\r\n }\r\n }\r\n } else {\r\n foreach ($order_ids as $order_id) {\r\n $errors[LpOrderActionErrorKey::FAILED_INITIATE][] = $order_id;\r\n }\r\n }\r\n return $errors;\r\n }",
+   "on_initiate_success": "on_initiate_success($shipping_response, $orders_to_process): array\r\n {\r\n $shipping_request_id = $shipping_response->requestId;\r\n $shipping_status_response = $this->shipping_api->get_status($shipping_request_id);\r\n if ($shipping_status_response) {\r\n $this->save_shipping_request($shipping_request_id, \"OK\");\r\n return $this->process_shipping_status($shipping_status_response, $orders_to_process, $shipping_request_id);\r\n } else {\r\n $this->save_shipping_request($shipping_request_id, \"FAILED\");\r\n }\r\n return [];\r\n }"
+  },
+  "class-woo-lithuaniapost-admin-order-actions.php": {
+   "__construct": "__construct ( $plugin_name, $version )\r\n {\r\n $this->plugin_name = $plugin_name;\r\n $this->version = $version;\r\n $this->error_handler = new Woo_Lithuaniapost_Admin_Error_Handler($plugin_name, $version);\r\n }",
+   "process_create_parcel": "process_create_parcel($order)\r\n {\r\n do_action(\"woo_lithuaniapost_order_action_create_parcel\", $order, false);\r\n }",
+   "process_print_label": "process_print_label ( $order )\r\n {\r\n $result = apply_filters(\"woo_lithuaniapost_order_action_generate_stickers\", [$order->get_id()]);\r\n if ($result === true) {\r\n die();\r\n }\r\n return $this->handle_result($result, $order);\r\n }"
+  },
+  "api/class-woo-lithuaniapost-admin-sticker-api.php": {
+   "get_stickers": "get_stickers(array $order_ids)\r\n {\r\n return $this->get(self::STICKER_LIST_URI, $this->get_params($order_ids));\r\n }",
+   "download_stickers_pdf": "download_stickers_pdf(array $order_ids): bool\r\n {\r\n $stickers_response = $this->get(self::STICKER_PDF_URI, $this->get_params($order_ids), 'application/pdf' . ',' . self::DEFAULT_ACCEPT . ';q=0.9');\r\n if ($stickers_response) {\r\n $filename = sprintf('lp_labels_%s.pdf',\r\n date('Y-m-d H:i:s')\r\n );\r\n header('Content-type: application/pdf');\r\n header(sprintf('Content-Disposition: attachment; filename=\"%s\"', $filename));\r\n echo $stickers_response;\r\n return true;\r\n }\r\n return false;\r\n }"
+  },
+  "svc_class": "class LpOrderStatus\r\n",
+  "svc_props": [
+   "value",
+   "name",
+   "plugin_name",
+   "version",
+   "courier_api",
+   "parcel_api",
+   "shipping_api",
+   "sticker_api"
+  ],
+  "act_class": "class Woo_Lithuaniapost_Admin_Order_Actions\r\n",
+  "new": [
+   "new Woo_Lithuaniapost_Admin_Order_Actions ( $this->get_plugin_name (), $this->get_version () );",
+   "new Woo_Lithuaniapost_Admin_Order_Service($this->get_plugin_name(), $this->get_version());"
+  ]
+ },
+ "CL": {
+  "v": "S1680 d",
+  "class-woo-lithuaniapost-admin-order-service.php": {
+   "__construct": "__construct($plugin_name, $version)\r\n {\r\n $this->plugin_name = $plugin_name;\r\n $this->version = $version;\r\n $this->courier_api = new Woo_Lithuaniapost_Admin_Courier_Api($plugin_name, $version);\r\n $this->parcel_api = new Woo_Lithuaniapost_Admin_Parcel_Api($plugin_name, $version);\r\n $this->shipping_api = new Woo_Lithuaniapost_Admin_Shipping_Api($plugin_name, $version);\r\n $this->sticker_api = new Woo_Lithuaniapost_Admin_Sticker_Api($plugin_name, $version);\r\n }",
+   "is_shipping_initiated": "is_shipping_initiated(): bool\r\n {\r\n return $this == LpOrderStatus::$SHIPPING_INITIATED || $this == LpOrderStatus::$COURIER_PENDING || $this == LpOrderStatus::$COURIER_CALLED || $this == LpOrderStatus::$PARCEL_DELIVERED || $this == LpOrderStatus::$ON_THE_WAY;\r\n }",
+   "is_ready_to_initiated": "is_ready_to_initiated(): bool\r\n {\r\n return $this == LpOrderStatus::$PARCEL_CREATED;\r\n }",
+   "handle_generate_stickers": "handle_generate_stickers(array $order_ids)\r\n {\r\n if (empty($order_ids)) {\r\n return false;\r\n }\r\n $result['errors'] = [];\r\n $order_ids_to_process = [];\r\n $order_ids_to_initiate = [];\r\n foreach ($order_ids as $order_id) {\r\n $available_actions = $this->get_available_order_actions_by_id($order_id);\r\n $action_available = false;\r\n foreach ($available_actions as $action) {\r\n switch ($action) {\r\n case LpOrderAction::INIT_SHIPPING:\r\n $order_ids_to_initiate[] = $order_id;\r\n $order_ids_to_process[] = $order_id;\r\n $action_available = true;\r\n break;\r\n case LpOrderAction::PRINT_LABEL:\r\n $order_ids_to_process[] = $order_id;\r\n $action_available = true;\r\n break;\r\n }\r\n }\r\n if ($action_available !== true) {\r\n $result['errors'][LpOrderActionErrorKey::ACTION_NOT_AVAILABLE][] = $order_id;\r\n }\r\n }\r\n if (!empty($order_ids_to_initiate)) {\r\n $result['errors'] += $this->handle_initiate_shipping($order_ids_to_initiate);\r\n }\r\n if ($result['errors']) {\r\n $errors = $result['errors'];\r\n $order_ids_to_generate_labels = array_filter($order_ids_to_process, function ($order_id) use ($errors) {\r\n foreach ($errors as $error => $error_order_ids) {\r\n if (in_array($order_id, $error_order_ids)) return false;\r\n }\r\n return true;\r\n });\r\n } else {\r\n $order_ids_to_generate_labels = $order_ids_to_process;\r\n }\r\n if (empty($order_ids_to_generate_labels)) {\r\n return $result;\r\n }\r\n return $this->sticker_api->download_stickers_pdf($order_ids_to_generate_labels);\r\n }",
+   "download_labels": "download_labels(array $order_ids)\r\n {\r\n $this->sticker_api->download_stickers_pdf($order_ids);\r\n }",
+   "handle_initiate_shipping": "handle_initiate_shipping($order_ids)\r\n {\r\n $errors = [];\r\n $shipping_response = $this->shipping_api->initiate($order_ids);\r\n if ($shipping_response) {\r\n $order_statuses = $this->on_initiate_success($shipping_response, $this->get_orders($order_ids));\r\n foreach ($order_statuses as $order_id => $status) {\r\n if (!ShippingItemStatus::is_status_ok($status)) {\r\n $errors[LpOrderActionErrorKey::FAILED_INITIATE][] = $order_id;\r\n }\r\n }\r\n } else {\r\n foreach ($order_ids as $order_id) {\r\n $errors[LpOrderActionErrorKey::FAILED_INITIATE][] = $order_id;\r\n }\r\n }\r\n return $errors;\r\n }",
+   "on_initiate_success": "on_initiate_success($shipping_response, $orders_to_process): array\r\n {\r\n $shipping_request_id = $shipping_response->requestId;\r\n $shipping_status_response = $this->shipping_api->get_status($shipping_request_id);\r\n if ($shipping_status_response) {\r\n $this->save_shipping_request($shipping_request_id, \"OK\");\r\n return $this->process_shipping_status($shipping_status_response, $orders_to_process, $shipping_request_id);\r\n } else {\r\n $this->save_shipping_request($shipping_request_id, \"FAILED\");\r\n }\r\n return [];\r\n }"
+  },
+  "class-woo-lithuaniapost-admin-order-actions.php": {
+   "__construct": "__construct ( $plugin_name, $version )\r\n {\r\n $this->plugin_name = $plugin_name;\r\n $this->version = $version;\r\n $this->error_handler = new Woo_Lithuaniapost_Admin_Error_Handler($plugin_name, $version);\r\n }",
+   "process_create_parcel": "process_create_parcel($order)\r\n {\r\n do_action(\"woo_lithuaniapost_order_action_create_parcel\", $order, false);\r\n }",
+   "process_print_label": "process_print_label ( $order )\r\n {\r\n $result = apply_filters(\"woo_lithuaniapost_order_action_generate_stickers\", [$order->get_id()]);\r\n if ($result === true) {\r\n die();\r\n }\r\n return $this->handle_result($result, $order);\r\n }"
+  },
+  "api/class-woo-lithuaniapost-admin-sticker-api.php": {
+   "get_stickers": "get_stickers(array $order_ids)\r\n {\r\n return $this->get(self::STICKER_LIST_URI, $this->get_params($order_ids));\r\n }",
+   "download_stickers_pdf": "download_stickers_pdf(array $order_ids): bool\r\n {\r\n $stickers_response = $this->get(self::STICKER_PDF_URI, $this->get_params($order_ids), 'application/pdf' . ',' . self::DEFAULT_ACCEPT . ';q=0.9');\r\n if ($stickers_response) {\r\n $filename = sprintf('lp_labels_%s.pdf',\r\n date('Y-m-d H:i:s')\r\n );\r\n header('Content-type: application/pdf');\r\n header(sprintf('Content-Disposition: attachment; filename=\"%s\"', $filename));\r\n echo $stickers_response;\r\n return true;\r\n }\r\n return false;\r\n }"
+  },
+  "svc_class": "class LpOrderStatus\r\n",
+  "svc_props": [
+   "value",
+   "name",
+   "plugin_name",
+   "version",
+   "courier_api",
+   "parcel_api",
+   "shipping_api",
+   "sticker_api"
+  ],
+  "act_class": "class Woo_Lithuaniapost_Admin_Order_Actions\r\n",
+  "new": [
+   "new Woo_Lithuaniapost_Admin_Order_Actions ( $this->get_plugin_name (), $this->get_version () );",
+   "new Woo_Lithuaniapost_Admin_Order_Service($this->get_plugin_name(), $this->get_version());"
+  ]
+ }
+}
