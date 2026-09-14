@@ -1,0 +1,201 @@
+{
+ "v": "dep-075113",
+ "kurimas": 200,
+ "sid": 5717,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1680 j",
+  "kandidatai": [
+   [
+    "19471",
+    "Animonda GranCarno Adult: konservai šunims su širdimis, 800 g",
+    "82482",
+    "0.9",
+    128,
+    "instock"
+   ],
+   [
+    "19479",
+    "Animonda GranCarno Adult: konservai šunims su lašiša, praturtinta špinatais, 800 g",
+    "82765",
+    "0.9",
+    141,
+    "instock"
+   ],
+   [
+    "19488",
+    "Animonda GranCarno Adult: konservai šunims su elniena, pagardinta obuoliais, 800 g",
+    "82764",
+    "0.9",
+    18,
+    "instock"
+   ],
+   [
+    "19496",
+    "Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 800 g",
+    "82745",
+    "0.9",
+    134,
+    "instock"
+   ],
+   [
+    "19504",
+    "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 800 g",
+    "82743",
+    "0.9",
+    78,
+    "instock"
+   ],
+   [
+    "19538",
+    "Animonda GranCarno Adult Rumen: konservai suaugusiems šunims su galvijų prieskrandžiais, 800 g",
+    "82806",
+    "0.9",
+    0,
+    "outofstock"
+   ]
+  ],
+  "preke": {
+   "0": 19471,
+   "1": "Animonda GranCarno Adult: konservai šunims su širdimis, 800 g",
+   "svoris": "0.9",
+   "kiekis": 128,
+   "st": "instock",
+   "klase": ""
+  },
+  "meta": {
+   "_ps_tik_kurjeriu": "",
+   "_fulfillment_courier_only": "",
+   "_zb_enabled": "",
+   "_ps_saltinis": "",
+   "_ps_sandelis": "av",
+   "_ps_tiekejas": "",
+   "_vf_enabled": "",
+   "_ps_kelias": "",
+   "_fulfillment_source": ""
+  },
+  "resolve": {
+   "source": "legacy",
+   "carrier": "any",
+   "courier_only": false,
+   "label": "Legacy (savas sandėlis)",
+   "reason": "nera tiekejo / dropship pozymiu"
+  },
+  "cart": "ok",
+  "kg": 0.9,
+  "pries_filtrus": [
+   "shopup_venipak_shipping_courier_method:2",
+   "shopup_venipak_shipping_pickup_method:3",
+   "woo_lithuaniapost_lpexpress_terminal:12",
+   "woo_lithuaniapost_lpexpress_terminal:15"
+  ],
+  "filtrai": [
+   "10 Woocommerce_Shopup_Venipak_Shipping_Public::show_pickup_if_product_included_in_locker → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "10 petshop_hide_parcel_if_courier_only → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "20 closure → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "100 Petshop_Rinkiniai::pastomato_sargas → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "9999 Paysera\\Front\\PayseraDeliveryFrontHtml::filterShippingRatesByCartWeightSuitability → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "9223372036854775807 Paysera\\PayseraInit::applyDeliveryGatewayWeightRestrictionsHint → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15"
+  ],
+  "sargas_src": " public static function pastomato_sargas( $rates, $package ) { if ( is_admin() && ! wp_doing_ajax() ) { return $rates; } $kg = 0.0; $tik_kurjeriu = false; foreach ( (array) ( $package['contents'] ?? array() ) as $eil ) { $p = $eil['data'] ?? null; if ( ! $p || ! is_a( $p, 'WC_Product' ) ) { continue; } /* v1.44 (S1601): varnele „Tik kurjeriu“ — tikrinama VISOMS eilutems, iskaitant MnM vaikus */ if ( get_post_meta( $p->get_id(), '_ps_tik_kurjeriu', true ) === 'yes' ) { $tik_kurjeriu = true; } if ( ! empty( $eil['mnm_child_id'] ) ) { continue; } /* vaikai — svorio nesidubliuoti */ $w = (float) $p->get_weight(); if ( $w > 0 ) { $kg += $w * (int) $eil['quantity']; } } if ( ! $tik_kurjeriu && $kg <= self::PASTOMATO_RIBA ) { return $rates; } $zodziai = array( 'pastomat', 'paštomat', 'terminal', 'locker', 'pickup', 'atsiemim', 'parcel' ); foreach ( $rates as $raktas => $tarifas ) { $tekstas = mb_strtolower( $raktas . ' ' . $tarifas->get_label() ); foreach ( $zodziai as $z ) { if ( mb_strpos( $tekstas, $z ) !== false ) { unset( $rates[ $raktas ] ); break; } } } return $rates; } "
+ },
+ "CL": {
+  "v": "S1680 j",
+  "kandidatai": [
+   [
+    "19471",
+    "Animonda GranCarno Adult: konservai šunims su širdimis, 800 g",
+    "82482",
+    "0.9",
+    128,
+    "instock"
+   ],
+   [
+    "19479",
+    "Animonda GranCarno Adult: konservai šunims su lašiša, praturtinta špinatais, 800 g",
+    "82765",
+    "0.9",
+    141,
+    "instock"
+   ],
+   [
+    "19488",
+    "Animonda GranCarno Adult: konservai šunims su elniena, pagardinta obuoliais, 800 g",
+    "82764",
+    "0.9",
+    18,
+    "instock"
+   ],
+   [
+    "19496",
+    "Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 800 g",
+    "82745",
+    "0.9",
+    134,
+    "instock"
+   ],
+   [
+    "19504",
+    "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 800 g",
+    "82743",
+    "0.9",
+    78,
+    "instock"
+   ],
+   [
+    "19538",
+    "Animonda GranCarno Adult Rumen: konservai suaugusiems šunims su galvijų prieskrandžiais, 800 g",
+    "82806",
+    "0.9",
+    0,
+    "outofstock"
+   ]
+  ],
+  "preke": {
+   "0": 19471,
+   "1": "Animonda GranCarno Adult: konservai šunims su širdimis, 800 g",
+   "svoris": "0.9",
+   "kiekis": 128,
+   "st": "instock",
+   "klase": ""
+  },
+  "meta": {
+   "_ps_tik_kurjeriu": "",
+   "_fulfillment_courier_only": "",
+   "_zb_enabled": "",
+   "_ps_saltinis": "",
+   "_ps_sandelis": "av",
+   "_ps_tiekejas": "",
+   "_vf_enabled": "",
+   "_ps_kelias": "",
+   "_fulfillment_source": ""
+  },
+  "resolve": {
+   "source": "legacy",
+   "carrier": "any",
+   "courier_only": false,
+   "label": "Legacy (savas sandėlis)",
+   "reason": "nera tiekejo / dropship pozymiu"
+  },
+  "cart": "ok",
+  "kg": 0.9,
+  "pries_filtrus": [
+   "shopup_venipak_shipping_courier_method:2",
+   "shopup_venipak_shipping_pickup_method:3",
+   "woo_lithuaniapost_lpexpress_terminal:12",
+   "woo_lithuaniapost_lpexpress_terminal:15"
+  ],
+  "filtrai": [
+   "10 Woocommerce_Shopup_Venipak_Shipping_Public::show_pickup_if_product_included_in_locker → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "10 petshop_hide_parcel_if_courier_only → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "20 closure → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "100 Petshop_Rinkiniai::pastomato_sargas → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "9999 Paysera\\Front\\PayseraDeliveryFrontHtml::filterShippingRatesByCartWeightSuitability → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15",
+   "9223372036854775807 Paysera\\PayseraInit::applyDeliveryGatewayWeightRestrictionsHint → courier_method:2,pickup_method:3,lpexpress_terminal:12,lpexpress_terminal:15"
+  ],
+  "sargas_src": " public static function pastomato_sargas( $rates, $package ) { if ( is_admin() && ! wp_doing_ajax() ) { return $rates; } $kg = 0.0; $tik_kurjeriu = false; foreach ( (array) ( $package['contents'] ?? array() ) as $eil ) { $p = $eil['data'] ?? null; if ( ! $p || ! is_a( $p, 'WC_Product' ) ) { continue; } /* v1.44 (S1601): varnele „Tik kurjeriu“ — tikrinama VISOMS eilutems, iskaitant MnM vaikus */ if ( get_post_meta( $p->get_id(), '_ps_tik_kurjeriu', true ) === 'yes' ) { $tik_kurjeriu = true; } if ( ! empty( $eil['mnm_child_id'] ) ) { continue; } /* vaikai — svorio nesidubliuoti */ $w = (float) $p->get_weight(); if ( $w > 0 ) { $kg += $w * (int) $eil['quantity']; } } if ( ! $tik_kurjeriu && $kg <= self::PASTOMATO_RIBA ) { return $rates; } $zodziai = array( 'pastomat', 'paštomat', 'terminal', 'locker', 'pickup', 'atsiemim', 'parcel' ); foreach ( $rates as $raktas => $tarifas ) { $tekstas = mb_strtolower( $raktas . ' ' . $tarifas->get_label() ); foreach ( $zodziai as $z ) { if ( mb_strpos( $tekstas, $z ) !== false ) { unset( $rates[ $raktas ] ); break; } } } return $rates; } "
+ }
+}
