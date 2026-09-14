@@ -1,0 +1,2 @@
+<?php
+add_action('init', function(){ if (!isset($_GET['ps_s1684mk'])) return; $s=file_get_contents(WPMU_PLUGIN_DIR.'/petshop-faktai.php'); $L=explode("\n",$s); $o=array('v'=>'mk','md5'=>md5($s)); foreach($L as $i=>$l) if(preg_match('/klientas_naujas|dienos_nuo_ankstesnio|ankstesn|email_hash\s*=|function .*hash|ps_ist/i',$l)) $o['eil'][]=($i+1).': '.trim(mb_substr($l,0,260)); header('Content-Type: application/json'); echo json_encode($o,JSON_UNESCAPED_UNICODE); exit; });
