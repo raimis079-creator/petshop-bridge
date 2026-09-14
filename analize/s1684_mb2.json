@@ -1,0 +1,350 @@
+{
+ "v": "dep-174248",
+ "kurimas": 200,
+ "sid": 5764,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1684 mb2",
+  "ist_sample": [
+   {
+    "sku": "HYPS02-2",
+    "kiekis": "1",
+    "kaina_ct": "3512",
+    "pvm_ct": "0",
+    "kaina_vnt_ct": "3512",
+    "kaina_reguliari_ct": null,
+    "nuolaida_ct": "0"
+   },
+   {
+    "sku": "HYPS02",
+    "kiekis": "1",
+    "kaina_ct": "1785",
+    "pvm_ct": "0",
+    "kaina_vnt_ct": "1785",
+    "kaina_reguliari_ct": null,
+    "nuolaida_ct": "0"
+   },
+   {
+    "sku": "NGCST01",
+    "kiekis": "1",
+    "kaina_ct": "1612",
+    "pvm_ct": "0",
+    "kaina_vnt_ct": "1612",
+    "kaina_reguliari_ct": null,
+    "nuolaida_ct": "0"
+   },
+   {
+    "sku": "HYPS06",
+    "kiekis": "1",
+    "kaina_ct": "4397",
+    "pvm_ct": "0",
+    "kaina_vnt_ct": "4397",
+    "kaina_reguliari_ct": null,
+    "nuolaida_ct": "0"
+   },
+   {
+    "sku": "HYPS08",
+    "kiekis": "1",
+    "kaina_ct": "865",
+    "pvm_ct": "0",
+    "kaina_vnt_ct": "865",
+    "kaina_reguliari_ct": null,
+    "nuolaida_ct": "0"
+   },
+   {
+    "sku": "JOS0763",
+    "kiekis": "1",
+    "kaina_ct": "202",
+    "pvm_ct": "0",
+    "kaina_vnt_ct": "202",
+    "kaina_reguliari_ct": null,
+    "nuolaida_ct": "0"
+   }
+  ],
+  "ist_pvm_fill": {
+   "n": "23174",
+   "su_pvm": "0",
+   "pvm_dalis": "0.000"
+  },
+  "cp_source": [
+   {
+    "s": "excel_import_20260610",
+    "n": "272"
+   },
+   {
+    "s": "excel_v78_20260817",
+    "n": "324"
+   },
+   {
+    "s": "manual",
+    "n": "1"
+   },
+   {
+    "s": "quattro_kainorastis_20_20260910",
+    "n": "64"
+   },
+   {
+    "s": "ranka",
+    "n": "221"
+   }
+  ],
+  "pav": {
+   "17978": {
+    "l": "JOS0008 Josera",
+    "_cost_price": "",
+    "_price": "39.99",
+    "_regular_price": "39.99",
+    "_vf_cost": "27.512",
+    "_zb_cost": "",
+    "_cost_price_source": "",
+    "_sku": "JOS0914",
+    "sources": [
+     {
+      "source": "av",
+      "cost_net": null,
+      "stock_qty": "3",
+      "is_active": "1"
+     },
+     {
+      "source": "vf",
+      "cost_net": "27.5120",
+      "stock_qty": "1542",
+      "is_active": "1"
+     }
+    ],
+    "partijos": [
+     {
+      "gauta": "2026-09-07",
+      "kiekis_gautas": "4",
+      "savikaina_eur": "27.1700",
+      "tiekejas": "VF"
+     }
+    ]
+   },
+   "18560": {
+    "l": "HYPM11",
+    "_cost_price": "",
+    "_price": "79.9",
+    "_regular_price": "79.9",
+    "_vf_cost": "53.805",
+    "_zb_cost": "",
+    "_cost_price_source": "",
+    "_sku": "HYPM11",
+    "sources": [
+     {
+      "source": "av",
+      "cost_net": null,
+      "stock_qty": "1",
+      "is_active": "1"
+     },
+     {
+      "source": "vf",
+      "cost_net": "53.8050",
+      "stock_qty": "132",
+      "is_active": "1"
+     }
+    ],
+    "partijos": [
+     {
+      "gauta": "2026-09-07",
+      "kiekis_gautas": "1",
+      "savikaina_eur": "49.3000",
+      "tiekejas": "VF"
+     }
+    ]
+   },
+   "18587": {
+    "l": "HYPS06 Exclusion",
+    "_cost_price": "",
+    "_price": "56.99",
+    "_regular_price": "56.99",
+    "_vf_cost": "37.485",
+    "_zb_cost": "",
+    "_cost_price_source": "",
+    "_sku": "HYPS06",
+    "sources": [
+     {
+      "source": "av",
+      "cost_net": null,
+      "stock_qty": "3",
+      "is_active": "1"
+     },
+     {
+      "source": "vf",
+      "cost_net": "37.4850",
+      "stock_qty": "279",
+      "is_active": "1"
+     }
+    ],
+    "partijos": [
+     {
+      "gauta": "2026-09-07",
+      "kiekis_gautas": "3",
+      "savikaina_eur": "34.0000",
+      "tiekejas": "VF"
+     }
+    ]
+   }
+  },
+  "fakt_live": [
+   {
+    "b": "josera",
+    "n": "13",
+    "eur": "331",
+    "pvm": "69",
+    "sav": "275",
+    "salt": "pardavimai",
+    "marza_net": "-5.3"
+   },
+   {
+    "b": "exclusion",
+    "n": "10",
+    "eur": "277",
+    "pvm": "58",
+    "sav": "219",
+    "salt": "pardavimai",
+    "marza_net": "0.1"
+   },
+   {
+    "b": "animonda",
+    "n": "19",
+    "eur": "113",
+    "pvm": "24",
+    "sav": "72",
+    "salt": "pardavimai",
+    "marza_net": "18.7"
+   },
+   {
+    "b": "ontario",
+    "n": "2",
+    "eur": "102",
+    "pvm": "21",
+    "sav": "60",
+    "salt": "pardavimai",
+    "marza_net": "25.8"
+   },
+   {
+    "b": "vetoquinol",
+    "n": "2",
+    "eur": "99",
+    "pvm": "21",
+    "sav": "73",
+    "salt": "pardavimai",
+    "marza_net": "6.4"
+   },
+   {
+    "b": "miamor",
+    "n": "10",
+    "eur": "89",
+    "pvm": "19",
+    "sav": "53",
+    "salt": "pardavimai",
+    "marza_net": "24.4"
+   },
+   {
+    "b": "hikari",
+    "n": "11",
+    "eur": "81",
+    "pvm": "17",
+    "sav": "47",
+    "salt": "pardavimai",
+    "marza_net": "26.9"
+   },
+   {
+    "b": "prins",
+    "n": "1",
+    "eur": "74",
+    "pvm": "16",
+    "sav": "59",
+    "salt": "pardavimai",
+    "marza_net": "-0.5"
+   },
+   {
+    "b": "romar",
+    "n": "3",
+    "eur": "37",
+    "pvm": "8",
+    "sav": "26",
+    "salt": "pardavimai",
+    "marza_net": "10.6"
+   },
+   {
+    "b": "belocat",
+    "n": "2",
+    "eur": "30",
+    "pvm": "6",
+    "sav": "2",
+    "salt": "nezinoma,pardavimai",
+    "marza_net": "90.3"
+   },
+   {
+    "b": "duvo",
+    "n": "5",
+    "eur": "27",
+    "pvm": "6",
+    "sav": "17",
+    "salt": "pardavimai",
+    "marza_net": "20.4"
+   },
+   {
+    "b": "georplast",
+    "n": "2",
+    "eur": "26",
+    "pvm": "6",
+    "sav": "9",
+    "salt": "pardavimai",
+    "marza_net": "55.9"
+   }
+  ],
+  "fakt_live_sample": [
+   {
+    "sku": "ZOOV149",
+    "kiekis": "3",
+    "kaina_ct": "8427",
+    "pvm_ct": "1770",
+    "savikaina_vnt_ct": "2079",
+    "savikaina_ct": "6237",
+    "savikainos_saltinis": "pardavimai"
+   },
+   {
+    "sku": "HYPS06",
+    "kiekis": "1",
+    "kaina_ct": "4710",
+    "pvm_ct": "989",
+    "savikaina_vnt_ct": "3749",
+    "savikaina_ct": "3749",
+    "savikainos_saltinis": "pardavimai"
+   },
+   {
+    "sku": "2837",
+    "kiekis": "5",
+    "kaina_ct": "847",
+    "pvm_ct": "178",
+    "savikaina_vnt_ct": "90",
+    "savikaina_ct": "450",
+    "savikainos_saltinis": "pardavimai"
+   },
+   {
+    "sku": "2838",
+    "kiekis": "16",
+    "kaina_ct": "2711",
+    "pvm_ct": "569",
+    "savikaina_vnt_ct": "90",
+    "savikaina_ct": "1440",
+    "savikainos_saltinis": "pardavimai"
+   },
+   {
+    "sku": "82742",
+    "kiekis": "1",
+    "kaina_ct": "297",
+    "pvm_ct": "62",
+    "savikaina_vnt_ct": "177",
+    "savikaina_ct": "177",
+    "savikainos_saltinis": "pardavimai"
+   }
+  ]
+ }
+}
