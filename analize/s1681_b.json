@@ -1,0 +1,487 @@
+{
+ "v": "dep-084040",
+ "kurimas": 200,
+ "sid": 5720,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 b",
+  "rytas": {
+   "laikas": "2026-09-14 03:30:01",
+   "raudonos": [
+    {
+     "kodas": "neissiusti",
+     "lygis": "raudona",
+     "tekstas": "Apmokėti > 2 d. be siuntos: 5"
+    }
+   ],
+   "geltonos": [],
+   "zalios": 11,
+   "viso": 13
+  },
+  "rytas_failas": {
+   "petshop-rytas.php": "1.3"
+  },
+  "neiss_eil": {
+   "petshop-rytas.php": [
+    "'neissiusti_gelt'=> 1,   'neissiusti_raud'=> 3,    /* apmokėti >2 d. be siuntos */",
+    "$n = self::neissiusti_sk();",
+    "$out[] = array( 'pav' => 'Neišsiųsti', 'spalva' => self::spalva_kiekis( $n, self::riba( 'neissiusti_gelt' ), self::riba( 'neissiusti_raud' ) ),",
+    "private static function neissiusti_sk() {",
+    "$n = self::neissiusti_sk();",
+    "$add( 'neissiusti', $n >= (int) self::riba( 'neissiusti_raud' ) ? 'raudona' : ( $n ? 'geltona' : 'zalia' ), 'Apmokėti > 2 d. be siuntos: ' . $n );",
+    "'neissiusti_gelt' => 'Neišsiųsti geltona', 'neissiusti_raud' => 'Neišsiųsti raudona',"
+   ]
+  },
+  "klaidos_36h": [
+   {
+    "laikas": "2026-09-14 11:35:52",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/exclusion-hypoallergenic-konservai-sunims-su-triusiena-ir-bulvemis-200-g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:20:37",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/churu-popn-serve-skanestas-katems-su-tunu35g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:20:37",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/churu-popn-serve-skanestas-katems-su-vistiena-ir-sukutemis35g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:20:36",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/churu-terrine-skanestas-mazu-veisliu-sunims-su-lasisa-ir-tunu-n4/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:20:34",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/nobleza-guolis-gyvunui-pilkas-d80x18cm/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:20:22",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/nobleza-automatinis-vandens-fontanas-baltas-su-melynu-1-8l/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:20:09",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/flexi-pavadelis-suniui-new-classic-xs-juostinis-3m-rozinis/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:20:09",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/flexi-pavadelis-suniui-new-neon-m-juostinis-5m-rozinis/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:20:06",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/josicat-finest-mousse-with-liver-pastetas-katems-su-kepenelem-85g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:20:06",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/josicat-finest-mousse-with-beef-pastetas-katems-su-jautiena-85g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:20:04",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/churu-luxury-kreminis-skanestas-katems-su-tunu-ir-karaliskosiomis-krevetemis-n4/): No such file or di",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:20:04",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/churu-luxury-kreminis-skanestas-katems-su-tunu-ir-omarais-n4/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:54",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/josera-mother-and-puppy-sausas-pasaras-sunims-vaikingoms-kalems-ir-suniukams-su-lasisair-ryziais-125-",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:54",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/josera-lamb-rice-a-s-sausas-pasaras-sunims-su-eriena-ir-ryziais-3-kg/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:53",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/josera-mini-lamb-begrudis-sausas-pasaras-mazu-veisliu-sunims-su-eriena-900-g/): No such file or direc",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:53",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/josera-minijunior-duck-salmon-sausas-pasaras-mazu-veisliu-jauniems-sunims-su-antiena-ir-lasisa-900-g/",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:50",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/josera-optiness-125-kg-begrudis-sausas-maistas-sunims-su-eriena/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:49",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/candioli-forbid-papildai-esant-koprofagijai-sunims-ir-katems-250g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:46",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/nobleza-gyvuno-krepsys-45x28x29-juodas-l/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:45",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/gigi-puppy-growth-and-health-visapusiskas-papildas-suniukams-n90/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:41",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/): No such file or direct",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:41",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/josera-mini-chickenrice-10-kg-sausas-maistas-suaugusiems-mazu-veisliu-sunims-su-paukstiena/): No such",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:40",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/wanpy-skanestas-sunims-marmuriniai-jautienos-kasneliai-100-g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:40",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/wanpy-skanestas-sunims-vytintos-jautienos-juosteles-100-g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:25",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/expertus-tofu-kraikas-katems-bekvapis-6l-26kg/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:24",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/expertus-silikoninis-kraikas-katems-10l/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:24",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/vetoquinol-uro-pet-pasta-slapimo-taku-ligoms-sunims-ir-katems-120g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:23",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/truly-skanestas-sunims-kauliukai-su-vistiena-85-g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:22",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/truly-skanestas-sunims-vistienos-file-90-g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-14 11:18:21",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/truly-skanestas-sunims-jautienos-dantu-sepeteliai-90-g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "kiek": "1"
+   }
+  ],
+  "snip_a": [
+   {
+    "id": "2024",
+    "name": "Petshop Anketa→Augintinio profilis 301 v1 (LIVE)",
+    "active": "1",
+    "c": "/**\n * Petshop Anketa→Augintinio profilis 301 v1 (LIVE)\n *\n * /anketa-testas/ (testinis, ID 34676) → /augintinio-profilis/ (ID 34789).\n *\n * KODEL SNIPPET'AS, NE CHILD THEME: visi aktyvus 301 (613 Shop→Parduotuve,\n * 632 Slapuku Politika ES, 634 Brand Slug) gyvena Code Snippets. Iskelus VIENA\n * i child theme, redirectai atsidurtu dviejose sistemose ir migruojant i\n * petshop.lt viena butu lengva pamirsti.\n *\n * home_url() — NE hardcode dev.avesa.lt: po domeno perjungimo veiks be pataisu.\n * Nes"
+   },
+   {
+    "id": "5720",
+    "name": "TEMP PS dep-084040",
+    "active": "1",
+    "c": "\n/** TEMP PS S1681 b — read-only: ryto sargo raudonos, neissiusti taisyklė, ps_sargas_klaidos 36 val., snippetas su \"$a→\". */\nadd_action('init', function(){\n  if (!isset($_GET['ps_s1681b'])) return; global $wpdb; $p=$wpdb->prefix; $o=array('v'=>'S1681 b');\n  $o['rytas']=get_option('ps_rytas_sargas_pask');\n  foreach(glob(WPMU_PLUGIN_DIR.'/*.php') as $f){ $s=file_get_contents($f); if(strpos($s,'neissiusti')!==false){ $n=basename($f); preg_match('/Version:\\s*([\\d.]+)/i',$s,$mv); $o['rytas_failas']["
+   }
+  ],
+  "temp_snips": [
+   {
+    "id": "5720",
+    "name": "TEMP PS dep-084040",
+    "active": "1",
+    "modified": "2026-09-14 08:41:35"
+   },
+   {
+    "id": "5719",
+    "name": "TEMP PS dep-083844",
+    "active": "0",
+    "modified": "2026-09-14 08:39:58"
+   },
+   {
+    "id": "5718",
+    "name": "TEMP PS dep-081640",
+    "active": "0",
+    "modified": "2026-09-14 08:18:01"
+   }
+  ],
+  "processing": [
+   {
+    "nr": "1009",
+    "sukurta": "09-10 18:18",
+    "apmok": "paysera",
+    "sm": "LP Express",
+    "issiusta": "ne",
+    "venipak": "",
+    "pastabos": [
+     "09-10 19:15 Darbalaukis: PVM sąskaitos AVPN011009 PDF sugeneruotas iš naujo (Inga).",
+     "09-10 18:19 Paysera: Naujo užsakymo kūrimo būsena",
+     "09-10 18:19 Email \"Užsakymas vykdomas\" sent."
+    ]
+   },
+   {
+    "nr": "1010",
+    "sukurta": "09-10 19:10",
+    "apmok": "paysera",
+    "sm": "LP Express",
+    "issiusta": "ne",
+    "venipak": "",
+    "pastabos": [
+     "09-10 19:15 Darbalaukis: PVM sąskaitos AVPN011010 PDF sugeneruotas iš naujo (Inga).",
+     "09-10 19:11 Email \"Užsakymas vykdomas\" sent.",
+     "09-10 19:11 Email \"Naujas užsakymas\" sent."
+    ]
+   },
+   {
+    "nr": "1020",
+    "sukurta": "09-11 20:46",
+    "apmok": "paysera",
+    "sm": "VENIPAK paštomatai/atsiėmimo punktai",
+    "issiusta": "ne",
+    "venipak": "yra",
+    "pastabos": [
+     "09-14 08:29 Siuntos numeriai išsaugoti (VF): V07267E1000083",
+     "09-14 08:29 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-14 07:42 Darbalaukis: PVM sąskaitos AVPN011020 PDF sugeneruotas iš naujo (Inga)."
+    ]
+   },
+   {
+    "nr": "1027",
+    "sukurta": "09-12 20:34",
+    "apmok": "paysera",
+    "sm": "VENIPAK paštomatai/atsiėmimo punktai",
+    "issiusta": "ne",
+    "venipak": "yra",
+    "pastabos": [
+     "09-14 08:29 Siuntos numeriai išsaugoti (VF): V07267E1000084",
+     "09-14 08:29 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-12 20:36 Paysera: Naujo užsakymo kūrimo būsena"
+    ]
+   },
+   {
+    "nr": "1029",
+    "sukurta": "09-12 21:29",
+    "apmok": "paysera",
+    "sm": "VENIPAK paštomatai/atsiėmimo punktai",
+    "issiusta": "ne",
+    "venipak": "yra",
+    "pastabos": [
+     "09-14 08:29 Siuntos numeriai išsaugoti (VF): V07267E1000085",
+     "09-14 08:29 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-12 21:30 Email \"Užsakymas vykdomas\" sent."
+    ]
+   },
+   {
+    "nr": "1030",
+    "sukurta": "09-12 23:54",
+    "apmok": "paysera",
+    "sm": "VENIPAK paštomatai/atsiėmimo punktai",
+    "issiusta": "ne",
+    "venipak": "yra",
+    "pastabos": [
+     "09-14 08:29 Siuntos numeriai išsaugoti (VF): V07267E1000086",
+     "09-14 08:29 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-12 23:56 Email \"Užsakymas vykdomas\" sent."
+    ]
+   },
+   {
+    "nr": "1031",
+    "sukurta": "09-13 09:11",
+    "apmok": "paysera",
+    "sm": "VENIPAK paštomatai/atsiėmimo punktai",
+    "issiusta": "ne",
+    "venipak": "yra",
+    "pastabos": [
+     "09-14 08:29 Siuntos numeriai išsaugoti (VF): V07267E1000087",
+     "09-14 08:29 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-13 09:12 Paysera: Naujo užsakymo kūrimo būsena"
+    ]
+   },
+   {
+    "nr": "1032",
+    "sukurta": "09-13 10:39",
+    "apmok": "paysera",
+    "sm": "VENIPAK paštomatai/atsiėmimo punktai",
+    "issiusta": "ne",
+    "venipak": "yra",
+    "pastabos": [
+     "09-14 08:29 Siuntos numeriai išsaugoti (VF): V07267E1000088",
+     "09-14 08:29 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-13 10:41 Email \"Užsakymas vykdomas\" sent."
+    ]
+   },
+   {
+    "nr": "1033",
+    "sukurta": "09-13 10:53",
+    "apmok": "paysera",
+    "sm": "VENIPAK paštomatai/atsiėmimo punktai",
+    "issiusta": "ne",
+    "venipak": "yra",
+    "pastabos": [
+     "09-14 08:29 Siuntos numeriai išsaugoti (VF): V07267E1000089",
+     "09-14 08:29 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-13 10:54 Paysera: Naujo užsakymo kūrimo būsena"
+    ]
+   },
+   {
+    "nr": "1035",
+    "sukurta": "09-13 11:14",
+    "apmok": "paysera",
+    "sm": "VENIPAK paštomatai/atsiėmimo punktai",
+    "issiusta": "ne",
+    "venipak": "yra",
+    "pastabos": [
+     "09-14 08:29 Siuntos numeriai išsaugoti (VF): V07267E1000090",
+     "09-14 08:29 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-13 11:16 Paysera: Naujo užsakymo kūrimo būsena"
+    ]
+   },
+   {
+    "nr": "1036",
+    "sukurta": "09-13 13:03",
+    "apmok": "paysera",
+    "sm": "VENIPAK paštomatai/atsiėmimo punktai",
+    "issiusta": "ne",
+    "venipak": "yra",
+    "pastabos": [
+     "09-14 08:29 Siuntos numeriai išsaugoti (VF): V07267E1000091",
+     "09-14 08:29 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-13 13:04 Paysera: Naujo užsakymo kūrimo būsena"
+    ]
+   },
+   {
+    "nr": "1038",
+    "sukurta": "09-13 22:17",
+    "apmok": "paysera",
+    "sm": "VENIPAK paštomatai/atsiėmimo punktai",
+    "issiusta": "ne",
+    "venipak": "yra",
+    "pastabos": [
+     "09-14 08:29 Siuntos numeriai išsaugoti (VF): V07267E1000092",
+     "09-14 08:29 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-13 22:19 Paysera: Naujo užsakymo kūrimo būsena"
+    ]
+   },
+   {
+    "nr": "1039",
+    "sukurta": "09-13 22:58",
+    "apmok": "bacs",
+    "sm": "VENIPAK Kurjeris",
+    "issiusta": "ne",
+    "venipak": "yra",
+    "pastabos": [
+     "09-14 11:25 Siuntos numeriai išsaugoti (VF): V07267E1000104",
+     "09-14 11:25 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+     "09-14 11:25 Darbalaukis: dėžių skaičius — 1."
+    ]
+   }
+  ],
+  "e": ""
+ }
+}
