@@ -1,0 +1,16 @@
+{
+ "v": "dep-121828",
+ "kurimas": 200,
+ "sid": 5742,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 w",
+  "md5": "1dd8e6f66a3960bae4b9a5377abff78e",
+  "dydis": 71608,
+  "placeholder": "']['shipping_state'] ) ) {\n        $fields['shipping']['shipping_state']['label']       = 'Savivaldyb' . \"\\xC4\\x97\" . ' / Rajonas';\n        $fields['shipping']['shipping_state']['placeholder'] = 'U' . \"\\xC5\\xBE\" . 'pildoma automatiskai';\n        $fields['shipping']['shipping_state']['required']    = false;\n    }\n    if ( isset( $fields['billing']['billing_phone'] ) ) {\n        $fields['billing']['billing_phone']['placeholder'] = '+370 6XX XXXXX';\n    }\n    if ( isset( $fields['billing']['billing_address_2'] ) ) {\n        $fields['billing']['billing_address_2']['placeholder'] = 'Butas, korpusas (nebutinas)';\n        $fields['billing']['billing_address_2']['required']    = false;\n    }\n    ret",
+  "val": "tate}\\n{postcode}\\n{country}\";\n    return $formats;\n} );\n\n// ===============================================================\n// Telefono validacija\n// ===============================================================\nadd_action( 'woocommerce_checkout_process', function() {\n    $phone = isset( $_POST['billing_phone'] ) ? sanitize_text_field( $_POST['billing_phone'] ) : '';\n    if ( empty( $phone ) ) return;\n    $clean = preg_replace( '/[\\s\\-\\(\\)\\.]+/', '', $phone );\n    $valid = preg_match( '/^(\\+3706\\d{7}|86\\d{7}|06\\d{7})$/', $clean );\n    if ( ! $valid ) {\n        wc_add_notice( 'Iveskite teisingą Lietuvos telefono numeri (pvz., +370 612 34567 arba 861234567).', 'error' );\n    }\n} );\n\nadd_filter( 'woocommerce_process_checkout_field_billing_phone', function( $phone ) {\n    $clean = preg_replace( '/[\\s\\-\\(\\)\\.]+/', '', $phone );\n    if ( preg_match( '/^86(\\d{7})$/', $clean, $m ) ) return '"
+ }
+}
