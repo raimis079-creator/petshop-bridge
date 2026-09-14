@@ -1,0 +1,167 @@
+{
+ "v": "dep-103904",
+ "kurimas": 200,
+ "sid": 5727,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 i",
+  "u_cols": [
+   "uzsakymas_id",
+   "sukurta_at",
+   "apmoketa_at",
+   "statusas_galutinis",
+   "statusas_at",
+   "klientas_id",
+   "klientas_email_hash",
+   "klientas_naujas",
+   "klientas_uzsakymo_nr",
+   "dienos_nuo_ankstesnio",
+   "prekiu_suma_ct",
+   "nuolaidu_ct",
+   "kuponu_kodai",
+   "tasku_panaudota_ct",
+   "tasku_sukaupta_ct",
+   "pristatymas_paimta_ct",
+   "pristatymas_savikaina_ct",
+   "small_cart_fee_ct",
+   "pvm_ct",
+   "viso_ct",
+   "mokejimo_budas",
+   "mokejimo_mokestis_ct",
+   "pakuotes_savikaina_ct",
+   "savikaina_ct",
+   "dovanu_savikaina_ct",
+   "marza_ct",
+   "kontribucija_ct",
+   "sandeliu_kiekis",
+   "misrus",
+   "sandeliai",
+   "vezejai",
+   "kanalas_pirmas",
+   "kanalas_paskutinis",
+   "utm_source",
+   "utm_medium",
+   "utm_campaign",
+   "gclid",
+   "fbclid",
+   "referer_domenas",
+   "landing_url",
+   "irenginys",
+   "sutikimas_statistika",
+   "salis",
+   "miestas",
+   "pasto_kodas",
+   "anketa_id",
+   "rec_log_id",
+   "is_refill",
+   "prenumerata_id",
+   "eiluciu_sk",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija",
+   "irasyta_at",
+   "diena"
+  ],
+  "sav": [],
+  "pernai": [],
+  "gsc": [
+   {
+    "sav": "202626",
+    "kl": "110",
+    "impr": "8312",
+    "pos": "12.6"
+   },
+   {
+    "sav": "202627",
+    "kl": "191",
+    "impr": "10921",
+    "pos": "12.6"
+   },
+   {
+    "sav": "202628",
+    "kl": "203",
+    "impr": "10841",
+    "pos": "11.9"
+   },
+   {
+    "sav": "202629",
+    "kl": "168",
+    "impr": "10377",
+    "pos": "11.4"
+   },
+   {
+    "sav": "202630",
+    "kl": "198",
+    "impr": "11031",
+    "pos": "11.0"
+   },
+   {
+    "sav": "202631",
+    "kl": "173",
+    "impr": "11557",
+    "pos": "11.9"
+   },
+   {
+    "sav": "202632",
+    "kl": "145",
+    "impr": "11115",
+    "pos": "12.5"
+   },
+   {
+    "sav": "202633",
+    "kl": "180",
+    "impr": "10931",
+    "pos": "12.0"
+   },
+   {
+    "sav": "202634",
+    "kl": "151",
+    "impr": "10859",
+    "pos": "12.3"
+   },
+   {
+    "sav": "202635",
+    "kl": "176",
+    "impr": "11303",
+    "pos": "11.6"
+   },
+   {
+    "sav": "202636",
+    "kl": "165",
+    "impr": "10772",
+    "pos": "12.1"
+   },
+   {
+    "sav": "202637",
+    "kl": "109",
+    "impr": "7072",
+    "pos": "11.7"
+   }
+  ],
+  "ads": [
+   {
+    "sav": "202635",
+    "eur": "333",
+    "kl": "1096",
+    "konv": "31.4"
+   },
+   {
+    "sav": "202636",
+    "eur": "308",
+    "kl": "991",
+    "konv": "37.1"
+   },
+   {
+    "sav": "202637",
+    "eur": "292",
+    "kl": "965",
+    "konv": "11.0"
+   }
+  ],
+  "dienos": [],
+  "e": "Unknown column 'suma_ct' in 'field list'"
+ }
+}
