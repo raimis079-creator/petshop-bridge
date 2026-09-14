@@ -1,13 +1,13 @@
 <?php
 /**
  * Plugin Name: Petshop Lifecycle Vartai
- * Description: S1684 (Q4 planas, vartai C): (1) refill ciklai pagal brendą × pakuotę iš 2,5 m. istorijos (CIKLAI_ir_R_due_baseline_s1684.md) vietoj grubių 14/30/60 d.; (2) refill_due / post_purchase_14d eligibility = ERĮ 81(2) soft opt-out (ps_soft_optin_eligible && !ps_similar_optout), kol lauko nėra — atidedama; (3) 90/10 holdout (permanentinis, pagal el. pašto hash). Raimio leidimas „taisyk ką reikia" 09-14.
- * Version: 1.0.1
+ * Description: S1684 (Q4 planas, vartai C): (0) refill pagal augintinio anketą (dienos norma × pakuotė, Feeding_Service) kai yra svoris; (1) refill ciklai pagal brendą × pakuotę iš 2,5 m. istorijos (CIKLAI_ir_R_due_baseline_s1684.md) vietoj grubių 14/30/60 d.; (2) refill_due / post_purchase_14d eligibility = ERĮ 81(2) soft opt-out (ps_soft_optin_eligible && !ps_similar_optout), kol lauko nėra — atidedama; (3) 90/10 holdout (permanentinis, pagal el. pašto hash). Raimio leidimas „taisyk ką reikia" 09-14.
+ * Version: 1.1.1
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 class Petshop_Lifecycle_Vartai {
-	const VER = '1.0.1';
+	const VER = '1.1.1';
 	const OPT_VARTAI = 'ps_lifecycle_vartai'; // 'soft' (numatyta: reikia soft opt-out žymos) | 'atvira' (Raimio sprendimas leisti be žymos) | 'uzdaryta'
 	const HOLDOUT_PCT = 10;
 	/** brendas|pakuotė → array(p25, mediana, p75) dienomis. Šaltinis: ps_ist 2024-01…2026-08, recon s1684_me. */
@@ -69,19 +69,42 @@ class Petshop_Lifecycle_Vartai {
 		return null;
 	}
 
-	/** Po Refill_Engine::track_purchase (prio 30): pirmam pirkimui predicted = pirkimo data + mediana (laiškas išeina T-5 → ~„baigiasi"). */
+	/** Augintinio dienos norma: pet iš ps_pet_products (user+product) arba vienintelis šuo/katė; svoris iš ps_pets; Petshop_Feeding_Service::evaluate → duration_days. @return array|null (dienos, pet_id) */
+	public static function pagal_anketa( $uid, $pid, $qty ) {
+		global $wpdb; $p = $wpdb->prefix;
+		if ( ! class_exists( 'Petshop_Feeding_Service' ) ) return null;
+		static $wcol = null; if ( null === $wcol ) { $wcol = ''; foreach ( (array) $wpdb->get_col( "SHOW COLUMNS FROM {$p}ps_pets" ) as $c ) { if ( preg_match( '/^(current_weight_kg|weight_kg|current_weight|weight)$/', $c ) ) { $wcol = $c; break; } } }
+		if ( ! $wcol ) return null;
+		$pet_id = (int) $wpdb->get_var( $wpdb->prepare( "SELECT pet_id FROM {$p}ps_pet_products WHERE user_id=%d AND product_id=%d ORDER BY updated_at DESC LIMIT 1", $uid, $pid ) );
+		if ( ! $pet_id ) { $ids = $wpdb->get_col( $wpdb->prepare( "SELECT id FROM {$p}ps_pets WHERE user_id=%d AND `$wcol`>0", $uid ) ); if ( count( $ids ) !== 1 ) return null; $pet_id = (int) $ids[0]; }
+		$w = (float) $wpdb->get_var( $wpdb->prepare( "SELECT `$wcol` FROM {$p}ps_pets WHERE id=%d", $pet_id ) ); if ( $w <= 0 ) return null;
+		try { $r = Petshop_Feeding_Service::evaluate( array( 'product_id' => (int) $pid, 'quantity' => max( 1, (int) $qty ), 'pet_input' => array( 'current_weight_kg' => $w, 'conditions' => array() ) ) ); } catch ( Throwable $e ) { return null; }
+		$dd = isset( $r['duration_days'] ) ? $r['duration_days'] : 0; $d = is_array( $dd ) ? ( (float) ( $dd['min'] ?? 0 ) + (float) ( $dd['max'] ?? 0 ) ) / 2 : (float) $dd; // v1.1.1: Feeding_Service grąžina intervalą {min,max}
+		if ( $d < 3 || $d > 365 ) return null;
+		return array( (int) round( $d ), $pet_id );
+	}
+
+	/** Po Refill_Engine::track_purchase (prio 30): pirmam pirkimui — 1) anketa (dienos norma × pakuotė), 2) ciklų lentelė (mediana); kalibruotų (2+) neliečia. */
 	public static function pataisyti_ciklus( $order_id ) {
 		global $wpdb; $p = $wpdb->prefix; $t = $p . 'ps_refill_tracking';
 		if ( ! $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $t ) ) ) return;
 		$order = wc_get_order( $order_id ); if ( ! $order ) return;
 		$uid = (int) $order->get_user_id(); if ( ! $uid ) return;
 		$eil = $wpdb->get_results( $wpdb->prepare( "SELECT preke_id, brendas_slug, svoris_g, kiekis FROM {$p}ps_fakt_eilutes WHERE uzsakymas_id=%d", $order_id ), ARRAY_A );
-		foreach ( $eil as $e ) {
-			$c = self::ciklas( $e['brendas_slug'], (int) $e['svoris_g'] * max( 1, (int) $e['kiekis'] ) ); if ( ! $c ) continue;
-			$row = $wpdb->get_row( $wpdb->prepare( "SELECT id, purchase_count, last_purchase_date FROM $t WHERE user_id=%d AND product_id=%d", $uid, $e['preke_id'] ), ARRAY_A );
-			if ( ! $row || (int) $row['purchase_count'] > 1 ) continue; // kalibruotų (2+) neliečiam
-			$wpdb->update( $t, array( 'avg_interval_days' => (int) $c[1], 'predicted_empty_date' => date( 'Y-m-d', strtotime( $row['last_purchase_date'] ) + $c[1] * 86400 ), 'updated_at' => gmdate( 'Y-m-d H:i:s' ) ), array( 'id' => $row['id'] ) );
-		}
+		foreach ( $eil as $e ) { self::pataisyti_eilute( $t, $uid, (int) $e['preke_id'], $e['brendas_slug'], (int) $e['svoris_g'], max( 1, (int) $e['kiekis'] ) ); }
+	}
+
+	public static function pataisyti_eilute( $t, $uid, $pid, $brendas, $svoris_g, $qty ) {
+		global $wpdb;
+		$row = $wpdb->get_row( $wpdb->prepare( "SELECT id, purchase_count, last_purchase_date FROM $t WHERE user_id=%d AND product_id=%d", $uid, $pid ), ARRAY_A );
+		if ( ! $row || (int) $row['purchase_count'] > 1 ) return null;
+		$a = self::pagal_anketa( $uid, $pid, $qty );
+		if ( $a ) { $upd = array( 'avg_interval_days' => $a[0], 'pet_id' => $a[1], 'confidence' => 0.60, 'saltinis' => 'anketa' ); }
+		else { $c = self::ciklas( $brendas, $svoris_g * $qty ); if ( ! $c ) return null; $upd = array( 'avg_interval_days' => (int) $c[1], 'saltinis' => 'ciklai' ); }
+		$sal = $upd['saltinis']; unset( $upd['saltinis'] );
+		$upd['predicted_empty_date'] = date( 'Y-m-d', strtotime( $row['last_purchase_date'] ) + $upd['avg_interval_days'] * 86400 ); $upd['updated_at'] = gmdate( 'Y-m-d H:i:s' );
+		$wpdb->update( $t, $upd, array( 'id' => $row['id'] ) );
+		return array( $sal, $upd['avg_interval_days'] );
 	}
 
 	public static function holdout( $email ) { return ( hexdec( substr( hash( 'sha256', strtolower( trim( $email ) ) ), 0, 8 ) ) % 100 ) < self::HOLDOUT_PCT; }
