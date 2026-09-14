@@ -1,0 +1,470 @@
+{
+ "v": "dep-175159",
+ "kurimas": 200,
+ "sid": 5766,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1684 ma",
+  "u_cols": [
+   "uzsakymas_id",
+   "sukurta_at",
+   "apmoketa_at",
+   "statusas_galutinis",
+   "statusas_at",
+   "klientas_id",
+   "klientas_email_hash",
+   "klientas_naujas",
+   "klientas_uzsakymo_nr",
+   "dienos_nuo_ankstesnio",
+   "prekiu_suma_ct",
+   "nuolaidu_ct",
+   "kuponu_kodai",
+   "tasku_panaudota_ct",
+   "tasku_sukaupta_ct",
+   "pristatymas_paimta_ct",
+   "pristatymas_savikaina_ct",
+   "small_cart_fee_ct",
+   "pvm_ct",
+   "viso_ct",
+   "mokejimo_budas",
+   "mokejimo_mokestis_ct",
+   "pakuotes_savikaina_ct",
+   "savikaina_ct",
+   "dovanu_savikaina_ct",
+   "marza_ct",
+   "kontribucija_ct",
+   "sandeliu_kiekis",
+   "misrus",
+   "sandeliai",
+   "vezejai",
+   "kanalas_pirmas",
+   "kanalas_paskutinis",
+   "utm_source",
+   "utm_medium",
+   "utm_campaign",
+   "gclid",
+   "fbclid",
+   "referer_domenas",
+   "landing_url",
+   "irenginys",
+   "sutikimas_statistika",
+   "salis",
+   "miestas",
+   "pasto_kodas",
+   "anketa_id",
+   "rec_log_id",
+   "is_refill",
+   "prenumerata_id",
+   "eiluciu_sk",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija",
+   "irasyta_at",
+   "diena"
+  ],
+  "r_cols": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ],
+  "kanalo_stulpeliai": [
+   "kanalas_pirmas",
+   "kanalas_paskutinis",
+   "utm_source",
+   "utm_medium",
+   "utm_campaign",
+   "gclid",
+   "referer_domenas",
+   "saltinis_aplinka"
+  ],
+  "ist_klientu": 5431,
+  "uzs_n": 46,
+  "nuo": "2026-09-08",
+  "iki": "2026-09-14",
+  "kanalai": {
+   "mokamas": {
+    "uzs": 25,
+    "eur": 878,
+    "nauji": 14,
+    "nauji_eur": 528,
+    "grize": 11,
+    "gclid": 17
+   },
+   "direct": {
+    "uzs": 9,
+    "eur": 488,
+    "nauji": 2,
+    "nauji_eur": 51,
+    "grize": 7,
+    "gclid": 0
+   },
+   "organika": {
+    "uzs": 6,
+    "eur": 164,
+    "nauji": 3,
+    "nauji_eur": 28,
+    "grize": 3,
+    "gclid": 1
+   },
+   "referral": {
+    "uzs": 4,
+    "eur": 122,
+    "nauji": 1,
+    "nauji_eur": 19,
+    "grize": 3,
+    "gclid": 0
+   },
+   "soc_organika": {
+    "uzs": 1,
+    "eur": 46,
+    "nauji": 1,
+    "nauji_eur": 46,
+    "grize": 0,
+    "gclid": 0
+   },
+   "-": {
+    "uzs": 1,
+    "eur": 1,
+    "nauji": 1,
+    "nauji_eur": 1,
+    "grize": 0,
+    "gclid": 0
+   }
+  },
+  "dienos": {
+   "2026-09-08": {
+    "uzs": 1,
+    "nauji": 1,
+    "eur": 1
+   },
+   "2026-09-09": {
+    "uzs": 3,
+    "nauji": 3,
+    "eur": 102
+   },
+   "2026-09-10": {
+    "uzs": 9,
+    "nauji": 4,
+    "eur": 237
+   },
+   "2026-09-11": {
+    "uzs": 7,
+    "nauji": 2,
+    "eur": 255
+   },
+   "2026-09-12": {
+    "uzs": 7,
+    "nauji": 3,
+    "eur": 350
+   },
+   "2026-09-13": {
+    "uzs": 8,
+    "nauji": 3,
+    "eur": 324
+   },
+   "2026-09-14": {
+    "uzs": 11,
+    "nauji": 6,
+    "eur": 426
+   }
+  },
+  "kan2_sample": [
+   {
+    "a": "mokamas",
+    "b": "mokamas",
+    "n": "22"
+   },
+   {
+    "a": "direct",
+    "b": "direct",
+    "n": "9"
+   },
+   {
+    "a": "organika",
+    "b": "organika",
+    "n": "5"
+   },
+   {
+    "a": "mokamas",
+    "b": "organika",
+    "n": "3"
+   },
+   {
+    "a": "referral",
+    "b": "referral",
+    "n": "3"
+   },
+   {
+    "a": "organika",
+    "b": "mokamas",
+    "n": "1"
+   },
+   {
+    "a": "soc_organika",
+    "b": "soc_organika",
+    "n": "1"
+   },
+   {
+    "a": "referral",
+    "b": "email",
+    "n": "1"
+   },
+   {
+    "a": "",
+    "b": "",
+    "n": "1"
+   }
+  ],
+  "pristatymas": {
+   "n": "46",
+   "eur": "1698.6200",
+   "aov": "36.9",
+   "kl_moka": "0.0000",
+   "moka_n": "0"
+  },
+  "siuntos_savikaina": {
+   "n": "41",
+   "eur": "91.9800",
+   "vid": "2.24"
+  },
+  "nemokamo_slenkstis": null,
+  "reklama_sample": [
+   {
+    "id": "104",
+    "diena": "2026-09-13",
+    "kanalas": "google_ads",
+    "kampanija_id": "23346712074",
+    "kampanija": "petshop",
+    "parodymai": "204",
+    "paspaudimai": "29",
+    "islaidos_ct": "550",
+    "valiuta": "EUR",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0",
+    "saltinis": "ads_script",
+    "saltinis_aplinka": "prod",
+    "versija": "1",
+    "irasyta_at": "2026-09-14 02:01:31",
+    "senoji_svetaine": "0"
+   },
+   {
+    "id": "103",
+    "diena": "2026-09-13",
+    "kanalas": "google_ads",
+    "kampanija_id": "21565450990",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "parodymai": "966",
+    "paspaudimai": "81",
+    "islaidos_ct": "2210",
+    "valiuta": "EUR",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0",
+    "saltinis": "ads_script",
+    "saltinis_aplinka": "prod",
+    "versija": "1",
+    "irasyta_at": "2026-09-14 02:01:31",
+    "senoji_svetaine": "0"
+   },
+   {
+    "id": "102",
+    "diena": "2026-09-13",
+    "kanalas": "google_ads",
+    "kampanija_id": "21472017542",
+    "kampanija": "P-max | LT | petshop.lt",
+    "parodymai": "906",
+    "paspaudimai": "39",
+    "islaidos_ct": "1070",
+    "valiuta": "EUR",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0",
+    "saltinis": "ads_script",
+    "saltinis_aplinka": "prod",
+    "versija": "1",
+    "irasyta_at": "2026-09-14 02:01:31",
+    "senoji_svetaine": "0"
+   },
+   {
+    "id": "101",
+    "diena": "2026-09-13",
+    "kanalas": "kainos",
+    "kampanija_id": "",
+    "kampanija": "",
+    "parodymai": "0",
+    "paspaudimai": "2",
+    "islaidos_ct": "16",
+    "valiuta": "EUR",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0",
+    "saltinis": "skaitiklis",
+    "saltinis_aplinka": "prod",
+    "versija": "1",
+    "irasyta_at": "2026-09-14 01:20:01",
+    "senoji_svetaine": "0"
+   },
+   {
+    "id": "100",
+    "diena": "2026-09-13",
+    "kanalas": "kaina24",
+    "kampanija_id": "",
+    "kampanija": "",
+    "parodymai": "0",
+    "paspaudimai": "3",
+    "islaidos_ct": "24",
+    "valiuta": "EUR",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0",
+    "saltinis": "skaitiklis",
+    "saltinis_aplinka": "prod",
+    "versija": "1",
+    "irasyta_at": "2026-09-14 01:20:01",
+    "senoji_svetaine": "0"
+   }
+  ],
+  "reklama_men": [
+   {
+    "m": "2026-08",
+    "n": "36",
+    "spend": "37048",
+    "konv": "35.8"
+   },
+   {
+    "m": "2026-09",
+    "n": "66",
+    "spend": "56378",
+    "konv": "43.8"
+   }
+  ],
+  "reklama_kampanijos": [
+   {
+    "k": "",
+    "n": "36",
+    "spend": "104"
+   },
+   {
+    "k": "P-max| All LT | Kačių maistas",
+    "n": "21",
+    "spend": "42468"
+   },
+   {
+    "k": "petshop",
+    "n": "21",
+    "spend": "7201"
+   },
+   {
+    "k": "P-max| All LT | Šunų maistas",
+    "n": "14",
+    "spend": "28653"
+   },
+   {
+    "k": "P-max | LT | petshop.lt",
+    "n": "7",
+    "spend": "12603"
+   },
+   {
+    "k": "TEST Search LT",
+    "n": "2",
+    "spend": "2384"
+   },
+   {
+    "k": "Petshop - Search - Prins Puppy",
+    "n": "1",
+    "spend": "13"
+   }
+  ],
+  "ads_opcijos": [
+   "ps_ads_offline_raktas",
+   "ps_ads_paskutinis",
+   "ps_ads_raktas",
+   "ps_ads_recon",
+   "ps_fakt_reklama_schema"
+  ],
+  "ist_men": [
+   {
+    "m": "2025-07",
+    "uzs": "275",
+    "eur": "11331"
+   },
+   {
+    "m": "2025-08",
+    "uzs": "305",
+    "eur": "12468"
+   },
+   {
+    "m": "2025-09",
+    "uzs": "322",
+    "eur": "13982"
+   },
+   {
+    "m": "2025-10",
+    "uzs": "269",
+    "eur": "11420"
+   },
+   {
+    "m": "2025-11",
+    "uzs": "284",
+    "eur": "12191"
+   },
+   {
+    "m": "2025-12",
+    "uzs": "276",
+    "eur": "11588"
+   },
+   {
+    "m": "2026-01",
+    "uzs": "349",
+    "eur": "14788"
+   },
+   {
+    "m": "2026-02",
+    "uzs": "305",
+    "eur": "12715"
+   },
+   {
+    "m": "2026-03",
+    "uzs": "286",
+    "eur": "11835"
+   },
+   {
+    "m": "2026-04",
+    "uzs": "338",
+    "eur": "13886"
+   },
+   {
+    "m": "2026-05",
+    "uzs": "299",
+    "eur": "12260"
+   },
+   {
+    "m": "2026-06",
+    "uzs": "310",
+    "eur": "12596"
+   },
+   {
+    "m": "2026-07",
+    "uzs": "307",
+    "eur": "12342"
+   },
+   {
+    "m": "2026-08",
+    "uzs": "246",
+    "eur": "9505"
+   }
+  ]
+ }
+}
