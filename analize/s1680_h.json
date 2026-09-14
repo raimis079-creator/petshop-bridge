@@ -1,0 +1,145 @@
+{
+ "v": "dep-072435",
+ "kurimas": 200,
+ "sid": 5712,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1680 h",
+  "public_hooks": [
+   "enqueue_styles",
+   "enqueue_scripts",
+   "render_terminal_field",
+   "render_delivery_time",
+   "handle_after_get_rates_for_package",
+   "validate_shipping",
+   "add_placeholder_order_email",
+   "validate_api_shipping",
+   "handle_checkout_order_processed",
+   "handle_update_order_meta_by_id",
+   "handle_update_order_meta",
+   "save_selected_terminal_session",
+   "save_selected_terminal_session",
+   "get_terminal_list_json",
+   "get_terminal_list_json",
+   "ajax_check_plan",
+   "ajax_check_plan",
+   "ajax_get_saved_terminal",
+   "ajax_get_saved_terminal",
+   "filter_shipping_package_name",
+   "add_terminal_field_order_email",
+   "add_terminal_field_order_thankyou"
+  ],
+  "scripts": [
+   "wp_register_script( 'select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array( 'jquery' ), '4.1.0-rc.0', true );",
+   "wp_enqueue_script ( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/woo-lithuaniapost.js', array( 'jquery', 'select2' ), $this->version, true );",
+   "wp_enqueue_script ( $this->plugin_name . '-lpexpress-terminal-block', plugin_dir_url( __FILE__ ) . 'js/woo-lithuaniapost-lpexpress-terminal-block.js', array( 'jquery', 'select2' ), $this->version, false );",
+   "wp_enqueue_script ( $this->plugin_name . '-shipping-logo', plugin_dir_url( __FILE__ ) . 'js/woo-lithuaniapost-shipping-logo.js', array( 'jquery' ), $this->version, false );",
+   "wp_enqueue_script($this->plugin_name . '-delivery-time-block', plugin_dir_url(__FILE__) . 'js/woo-lithuaniapost-delivery-time-block.js', array('jQuery'), $this->version, false);"
+  ],
+  "localize": [
+   "wp_localize_script( $this->plugin_name, 'woo_lithuaniapost', array( 'ajax_url' => admin_url ( 'admin-ajax.php' ), 'shipping_logo_url' => plugins_url( 'images/unisend_shipping_lpexpress_logo_45x25.png', __FILE__ ), 'terminal_dropdown_template' => $this->get_bloc"
+  ],
+  "render_terminal_field": "",
+  "dropdown_fn": "",
+  "js": [
+   "woo-lithuaniapost-delivery-time-block.js 1501",
+   "woo-lithuaniapost-lpexpress-terminal-block.js 8960",
+   "woo-lithuaniapost-shipping-logo.js 3699",
+   "woo-lithuaniapost.js 4938"
+  ],
+  "rate": "LP Express",
+  "html": {
+   "woocommerce_after_shipping_rate": [
+    99684,
+    " <select class=\"woo_lithuaniapost_lpexpress_terminal_id\" name=\"woo_lithuaniapost_lpexpress_terminal_id\" style=\"width: 100%;\"> <option>Pasirinkti paštomatą</option> <option data-value=\"7531\" value=\"7531\">Aibė (Udrop) - Erfurto g. 1</option> <option data-value=\"0101\" value=\"0101\">Akropolis - Ozo g. 25</option> <option data-value=\"0003\" value=\"0003\">Amatų skveras - Švitrigailos g. 13</option> <o",
+    532
+   ],
+   "woocommerce_review_order_after_shipping": [
+    0,
+    "",
+    0
+   ],
+   "woocommerce_checkout_after_order_review": [
+    341,
+    "<div class=\"woocommerce-privacy-policy-text\">Jūsų asmeniniai duomenys bus naudojami patirčiai šioje svetainėje gerinti, prieigai prie paskyros valdyti ir kitiems tikslams, aprašytiems mūsų privatumo politikoje. </div>",
+    0
+   ],
+   "woocommerce_review_order_before_payment": [
+    0,
+    "",
+    0
+   ]
+  }
+ },
+ "CL": {
+  "v": "S1680 h",
+  "public_hooks": [
+   "enqueue_styles",
+   "enqueue_scripts",
+   "render_terminal_field",
+   "render_delivery_time",
+   "handle_after_get_rates_for_package",
+   "validate_shipping",
+   "add_placeholder_order_email",
+   "validate_api_shipping",
+   "handle_checkout_order_processed",
+   "handle_update_order_meta_by_id",
+   "handle_update_order_meta",
+   "save_selected_terminal_session",
+   "save_selected_terminal_session",
+   "get_terminal_list_json",
+   "get_terminal_list_json",
+   "ajax_check_plan",
+   "ajax_check_plan",
+   "ajax_get_saved_terminal",
+   "ajax_get_saved_terminal",
+   "filter_shipping_package_name",
+   "add_terminal_field_order_email",
+   "add_terminal_field_order_thankyou"
+  ],
+  "scripts": [
+   "wp_register_script( 'select2', 'https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js', array( 'jquery' ), '4.1.0-rc.0', true );",
+   "wp_enqueue_script ( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/woo-lithuaniapost.js', array( 'jquery', 'select2' ), $this->version, true );",
+   "wp_enqueue_script ( $this->plugin_name . '-lpexpress-terminal-block', plugin_dir_url( __FILE__ ) . 'js/woo-lithuaniapost-lpexpress-terminal-block.js', array( 'jquery', 'select2' ), $this->version, false );",
+   "wp_enqueue_script ( $this->plugin_name . '-shipping-logo', plugin_dir_url( __FILE__ ) . 'js/woo-lithuaniapost-shipping-logo.js', array( 'jquery' ), $this->version, false );",
+   "wp_enqueue_script($this->plugin_name . '-delivery-time-block', plugin_dir_url(__FILE__) . 'js/woo-lithuaniapost-delivery-time-block.js', array('jQuery'), $this->version, false);"
+  ],
+  "localize": [
+   "wp_localize_script( $this->plugin_name, 'woo_lithuaniapost', array( 'ajax_url' => admin_url ( 'admin-ajax.php' ), 'shipping_logo_url' => plugins_url( 'images/unisend_shipping_lpexpress_logo_45x25.png', __FILE__ ), 'terminal_dropdown_template' => $this->get_bloc"
+  ],
+  "render_terminal_field": "",
+  "dropdown_fn": "",
+  "js": [
+   "woo-lithuaniapost-delivery-time-block.js 1501",
+   "woo-lithuaniapost-lpexpress-terminal-block.js 8960",
+   "woo-lithuaniapost-shipping-logo.js 3699",
+   "woo-lithuaniapost.js 4938"
+  ],
+  "rate": "LP Express",
+  "html": {
+   "woocommerce_after_shipping_rate": [
+    99684,
+    " <select class=\"woo_lithuaniapost_lpexpress_terminal_id\" name=\"woo_lithuaniapost_lpexpress_terminal_id\" style=\"width: 100%;\"> <option>Pasirinkti paštomatą</option> <option data-value=\"7531\" value=\"7531\">Aibė (Udrop) - Erfurto g. 1</option> <option data-value=\"0101\" value=\"0101\">Akropolis - Ozo g. 25</option> <option data-value=\"0003\" value=\"0003\">Amatų skveras - Švitrigailos g. 13</option> <o",
+    532
+   ],
+   "woocommerce_review_order_after_shipping": [
+    0,
+    "",
+    0
+   ],
+   "woocommerce_checkout_after_order_review": [
+    341,
+    "<div class=\"woocommerce-privacy-policy-text\">Jūsų asmeniniai duomenys bus naudojami patirčiai šioje svetainėje gerinti, prieigai prie paskyros valdyti ir kitiems tikslams, aprašytiems mūsų privatumo politikoje. </div>",
+    0
+   ],
+   "woocommerce_review_order_before_payment": [
+    0,
+    "",
+    0
+   ]
+  }
+ }
+}
