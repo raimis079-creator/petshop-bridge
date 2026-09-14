@@ -1,0 +1,90 @@
+{
+ "v": "dep-115454",
+ "kurimas": 200,
+ "sid": 5740,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 u",
+  "lt": {
+   "tax_rate_id": "1",
+   "tax_rate_country": "LT",
+   "tax_rate_state": "",
+   "tax_rate": "21.0000",
+   "tax_rate_name": "PVM",
+   "tax_rate_priority": "1",
+   "tax_rate_compound": "0",
+   "tax_rate_shipping": "1",
+   "tax_rate_order": "0",
+   "tax_rate_class": ""
+  },
+  "tarifas": {
+   "LV": "sukurtas #2",
+   "EE": "sukurtas #3"
+  },
+  "rates": [
+   {
+    "c": "LT",
+    "r": "21.0000",
+    "n": "PVM",
+    "s": "1",
+    "cl": ""
+   },
+   {
+    "c": "LV",
+    "r": "21.0000",
+    "n": "PVM",
+    "s": "1",
+    "cl": ""
+   },
+   {
+    "c": "EE",
+    "r": "21.0000",
+    "n": "PVM",
+    "s": "1",
+    "cl": ""
+   }
+  ],
+  "test": {
+   "LV": {
+    "past": [
+     {
+      "cost": "2.97",
+      "tax": 0.624,
+      "viso": 3.59
+     }
+    ],
+    "preke": "FARMINA VET LIFE - CAT Dry GASTRO INTESTINAL 2 kg",
+    "su_pvm": 33.39,
+    "be_pvm": 27.6
+   },
+   "EE": {
+    "past": [
+     {
+      "cost": "2.97",
+      "tax": 0.624,
+      "viso": 3.59
+     }
+    ],
+    "preke": "FARMINA VET LIFE - CAT Dry GASTRO INTESTINAL 2 kg",
+    "su_pvm": 33.39,
+    "be_pvm": 27.6
+   },
+   "LT": {
+    "past": [
+     {
+      "cost": "1.78",
+      "tax": 0.374,
+      "viso": 2.15
+     }
+    ],
+    "preke": "FARMINA VET LIFE - CAT Dry GASTRO INTESTINAL 2 kg",
+    "su_pvm": 33.39,
+    "be_pvm": 27.6
+   }
+  },
+  "e": ""
+ }
+}
