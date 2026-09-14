@@ -1,0 +1,50 @@
+{
+ "v": "dep-104202",
+ "kurimas": 200,
+ "sid": 5729,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 j",
+  "sav": [
+   {
+    "sav": "202637",
+    "nuo": "2026-09-08",
+    "n": "44",
+    "apm": "36",
+    "eur": "1523",
+    "nuo_id": "35868",
+    "iki_id": "35931"
+   },
+   {
+    "sav": "202638",
+    "nuo": "2026-09-14",
+    "n": "1",
+    "apm": "1",
+    "eur": "33",
+    "nuo_id": "35932",
+    "iki_id": "35932"
+   }
+  ],
+  "seniausias": {
+   "nuo": "2026-09-08 22:24:33",
+   "n": "45"
+  },
+  "stat": [
+   {
+    "status": "wc-cancelled",
+    "n": "8"
+   },
+   {
+    "status": "wc-completed",
+    "n": "24"
+   },
+   {
+    "status": "wc-processing",
+    "n": "13"
+   }
+  ]
+ }
+}
