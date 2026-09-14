@@ -1,0 +1,36 @@
+{
+ "v": "dep-184345",
+ "kurimas": 200,
+ "sid": 5771,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1684 mf",
+  "md5": "f170d2c234ed607123899640e45d1435",
+  "dydis": 18584,
+  "eil": [
+   "7: * Šaltiniai: ps_carts, ps_email_jobs, ps_fakt_uzsakymai, ps_fakt_reklama, ps_fakt_siuntos. Periodas 30 / 90 d.",
+   "8: * Blokai: Krepšeliai · Reklama (Ads) · Klientai · Pristatymas · Laiškai. Kol duomenų mažai (n < riba) — verdiktas „dar mažai duomenų“, ne spėjimas.",
+   "9: * v1.0.1: Reklamos blokas skaičiuoja tik nuo pirmo fakt užsakymo (T-0) — senos svetainės Ads išlaidos neįtraukiamos.",
+   "22: 'ads_roas_lūžis' => 4.5,   // vidutinis lūžio ROAS (PMAX_A: 25–35 % antkainis su fulfillment ≈ 5,3–7,7; sausas maistas lūžis ~4,5 su mišriu krepšeliu)",
+   "23: 'ads_min_spend_ct' => 5000,",
+   "64: public static function reklama( $d ) {",
+   "67: $r = $wpdb->get_row( $wpdb->prepare( \"SELECT SUM(islaidos_ct) isl, SUM(paspaudimai) kl, SUM(konversijos) konv FROM {$p}ps_fakt_reklama WHERE diena>=%s AND kanalas='google_ads'\", $nuo ), ARRAY_A );",
+   "68: $u = $wpdb->get_row( $wpdb->prepare( \"SELECT COUNT(*) n, SUM(viso_ct) viso, SUM(marza_ct) marza, SUM(kontribucija_ct) kontr FROM {$p}ps_fakt_uzsakymai WHERE diena>=%s AND testinis=0 AND apmoketa_at IS NOT NULL AND (kan",
+   "69: $isl = (int) $r['isl']; $viso = (int) $u['viso']; $marza = (int) $u['marza']; $n = (int) $u['n'];",
+   "70: $roas = $isl ? $viso / $isl : null; $pelnas = $marza - $isl;",
+   "71: $kamp = $wpdb->get_results( $wpdb->prepare( \"SELECT kampanija, SUM(islaidos_ct) isl, SUM(paspaudimai) kl, SUM(konversijos) konv FROM {$p}ps_fakt_reklama WHERE diena>=%s AND kanalas='google_ads' GROUP BY kampanija HAVIN",
+   "72: if ( $isl < $S['ads_min_spend_ct'] ) { $v = array( 'pilka', 'Išlaidų per mažai (' . self::eur( $isl ) . ') vertinti.', '' ); }",
+   "73: elseif ( $pelnas < 0 ) { $v = array( 'raudona', 'Reklama NUOSTOLINGA: marža iš Ads užsakymų ' . self::eur( $marza ) . ' < išlaidos ' . self::eur( $isl ) . ' (' . self::eur( $pelnas ) . ').', 'Mažinti biudžetą arba siau",
+   "75: else { $v = array( 'zalia', 'Reklama pelninga: ROAS ' . number_format( $roas, 1, ',', '' ) . ', pelnas po išlaidų ' . self::eur( $pelnas ) . '.', 'Galima svarstyti biudžeto kėlimą pelningoms grupėms.' ); }",
+   "81: $r = $wpdb->get_row( $wpdb->prepare( \"SELECT COUNT(*) n, SUM(klientas_naujas=1) nauji, SUM(klientas_naujas=0) grizt, AVG(viso_ct) vid, AVG(CASE WHEN klientas_naujas=0 THEN dienos_nuo_ankstesnio END) dienos, SUM(marza_c",
+   "86: return array( 'kpi' => array( 'Apmokėtų užsakymų' => $n, 'Nauji / grįžtantys' => (int) $r['nauji'] . ' / ' . $g, 'Vidutinis krepšelis' => self::eur( (int) $r['vid'] ), 'Vid. dienų tarp grįžtančio pirkimų' => $r['dienos",
+   "92: $u = $wpdb->get_row( $wpdb->prepare( \"SELECT SUM(pristatymas_paimta_ct) paimta, SUM(pristatymas_savikaina_ct) sav FROM {$p}ps_fakt_uzsakymai WHERE diena>=%s AND testinis=0 AND apmoketa_at IS NOT NULL\", $nuo ), ARRAY_A",
+   "99: return array( 'kpi' => array( 'Siuntų' => $n, 'Vid. dienų iki pristatymo' => $r['dien'] ? number_format( $r['dien'], 1, ',', '' ) : '— (dar nepildoma)', 'Su problema' => (int) $r['prob'], 'Paimta iš klientų / vežėjams'",
+   "134: self::blokas( 'Reklama (Google Ads)', self::reklama( $d ) );"
+  ],
+  "blokai": []
+ }
+}
