@@ -1,0 +1,795 @@
+{
+ "v": "dep-072000",
+ "kurimas": 200,
+ "sid": 5710,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1680 f",
+  "public_fn": [
+   "__construct",
+   "enqueue_styles",
+   "enqueue_scripts",
+   "get_terminal_list",
+   "get_block_terminal_dropdown_template",
+   "filter_shipping_package_name",
+   "get_terminal_list_json",
+   "ajax_get_saved_terminal",
+   "ajax_check_plan",
+   "get_selected_terminal_id",
+   "render_terminal_field",
+   "render_delivery_time",
+   "handle_after_get_rates_for_package",
+   "handle_generate_terminal_input_html",
+   "handle_generate_terminal_dropdown_html",
+   "handle_render_delivery_time_code_block",
+   "generate_delivery_time_html",
+   "generate_terminal_input_html",
+   "validate_shipping",
+   "str_contains",
+   "validate_api_shipping",
+   "is_json_request",
+   "create_delivery_address_validation_request",
+   "is_terminal_required",
+   "handle_validation_error_response",
+   "collect_validation_error_response_messages",
+   "to_error_message",
+   "handle_update_order_meta_by_id",
+   "handle_update_order_meta",
+   "save_order_meta_info",
+   "save_selected_terminal_session",
+   "add_terminal_field_order_email",
+   "add_placeholder_order_email",
+   "add_terminal_field_order_thankyou",
+   "handle_checkout_order_processed",
+   "get_method_settings_value",
+   "is_selected_method_lp",
+   "is_chosen_method_lp",
+   "get_chosen_method_settings_value",
+   "get_chosen_method_instance_id",
+   "get_shipping_method",
+   "validate_selected_terminal",
+   "get_request_shipping_country",
+   "validate_parcel",
+   "get_order_weight",
+   "create_parcel_validation_request"
+  ],
+  "hooks": [
+   "load_plugin_textdomain",
+   "enqueue_styles",
+   "enqueue_scripts",
+   "order_statuses",
+   "export_table_rates",
+   "export_country_rates",
+   "export_country_weight_rates",
+   "display_terminal_order",
+   "add_allowed_terminal_checkbox",
+   "save_allowed_terminal_checkbox",
+   "register_order_statuses",
+   "register_menu",
+   "handle_woocommerce_screen_ids",
+   "generate_label",
+   "create_parcel",
+   "generate_return_stickers",
+   "join_shipping_method",
+   "where_shipping_method",
+   "handle_custom_query_var",
+   "create_settings_section",
+   "add_settings_section",
+   "generate_call_courier_time_picker_html",
+   "add_order_actions",
+   "process_create_parcel",
+   "process_cancel_label",
+   "process_print_label",
+   "process_print_manifest",
+   "process_generate_return_order",
+   "get_shipment_data",
+   "register_bulk_actions",
+   "register_bulk_actions",
+   "handle_action",
+   "handle_hpos_action",
+   "handle_bulk_action",
+   "handle_bulk_action",
+   "handle_bulk_action",
+   "handle_bulk_action",
+   "handle_bulk_action",
+   "display_error",
+   "convert_to_grams",
+   "get_min_weight",
+   "get_terminals_by_country_code",
+   "get_all_terminals",
+   "get_terminal_by_id",
+   "update_terminal_list",
+   "schedule_update_terminal_list",
+   "resolve_order_size",
+   "resolve_shipping_size",
+   "on_status_changed",
+   "get_lp_order_statuses",
+   "handle_generate_stickers",
+   "handle_generate_return_stickers",
+   "handle_generate_manifests",
+   "handle_call_courier",
+   "handle_create_parcel",
+   "create_cn_request",
+   "download_labels",
+   "get_available_order_actions",
+   "get_available_order_actions_by_id",
+   "get_parcel_type_translation",
+   "get_plan_translation",
+   "handle_parcel_save",
+   "handle_cancel_labels",
+   "get_lp_shipping_method",
+   "create_parcel_create_request",
+   "get_order_weight",
+   "handle_order_query_args",
+   "handle_generate_stickers",
+   "get_manifest",
+   "handle_generate_manifest",
+   "refresh_token",
+   "get_tracking",
+   "get_tracking_list",
+   "handle_is_shipping_available",
+   "handle_address_validation",
+   "handle_parcel_validation",
+   "handle_eshop_activation",
+   "handle_eshop_deactivation",
+   "handle_eshop_uninstall",
+   "handle_eshop_update",
+   "handle_eshop_login",
+   "schedule_refresh_token",
+   "schedule_call_courier",
+   "lp_call_courier",
+   "run_sequence",
+   "reschedule_call_courier_on_settings_save",
+   "save_access_token",
+   "update_sender_address",
+   "add_order_meta_box",
+   "update_tracking_status",
+   "sync_tracking_data",
+   "get_tracking_events",
+   "schedule_tracking_info",
+   "schedule_tracking_data_sync",
+   "send_tracking_email",
+   "register_url_api_endpoint",
+   "shipping_init",
+   "load_shipping_methods",
+   "generate_fixed_cost_html",
+   "generate_weight_cost_html",
+   "generate_size_cost_html",
+   "enqueue_styles",
+   "enqueue_scripts",
+   "render_terminal_field",
+   "render_delivery_time",
+   "handle_after_get_rates_for_package",
+   "validate_shipping",
+   "add_placeholder_order_email",
+   "validate_api_shipping",
+   "handle_checkout_order_processed",
+   "handle_update_order_meta_by_id",
+   "handle_update_order_meta",
+   "save_selected_terminal_session",
+   "save_selected_terminal_session",
+   "get_terminal_list_json",
+   "get_terminal_list_json",
+   "ajax_check_plan",
+   "ajax_check_plan",
+   "ajax_get_saved_terminal",
+   "ajax_get_saved_terminal",
+   "filter_shipping_package_name",
+   "add_terminal_field_order_email",
+   "add_terminal_field_order_thankyou"
+  ],
+  "module_cond": [],
+  "opt": {
+   "woo_lithuaniapost_module_active": "1",
+   "lpsettings_woo_lithuaniapost_address_pickup_id": "32742454",
+   "lpsettings_woo_lithuaniapost_updated_version": "4.0.32"
+  },
+  "lpsettings": [
+   {
+    "n": "lpsettings_api_password",
+    "v": "AvesaPetshop1"
+   },
+   {
+    "n": "lpsettings_api_username",
+    "v": "terra@petshop.lt"
+   },
+   {
+    "n": "lpsettings_dimension_height",
+    "v": "15"
+   },
+   {
+    "n": "lpsettings_dimension_length",
+    "v": "30"
+   },
+   {
+    "n": "lpsettings_dimension_width",
+    "v": "20"
+   },
+   {
+    "n": "lpsettings_event_to_change_status_to_completed",
+    "v": ""
+   },
+   {
+    "n": "lpsettings_event_to_send_tracking_email",
+    "v": ""
+   },
+   {
+    "n": "lpsettings_other_label_format",
+    "v": "LAYOUT_10x15"
+   },
+   {
+    "n": "lpsettings_other_label_orientation",
+    "v": "LANDSCAPE"
+   },
+   {
+    "n": "lpsettings_pickup_apartment",
+    "v": ""
+   },
+   {
+    "n": "lpsettings_pickup_building",
+    "v": "46"
+   },
+   {
+    "n": "lpsettings_pickup_city",
+    "v": "Liucionys"
+   },
+   {
+    "n": "lpsettings_pickup_company_name",
+    "v": "UAB Avesa"
+   },
+   {
+    "n": "lpsettings_pickup_country",
+    "v": "LT"
+   },
+   {
+    "n": "lpsettings_pickup_email",
+    "v": "terra@petshop.lt"
+   },
+   {
+    "n": "lpsettings_pickup_name",
+    "v": "UAB Avesa"
+   },
+   {
+    "n": "lpsettings_pickup_phone",
+    "v": "+37068187787"
+   },
+   {
+    "n": "lpsettings_pickup_postcode",
+    "v": "15166"
+   },
+   {
+    "n": "lpsettings_pickup_street",
+    "v": "Liucionių g."
+   },
+   {
+    "n": "lpsettings_sender_apartment",
+    "v": ""
+   },
+   {
+    "n": "lpsettings_sender_building",
+    "v": "46"
+   },
+   {
+    "n": "lpsettings_sender_city",
+    "v": "Liucionys"
+   },
+   {
+    "n": "lpsettings_sender_company_name",
+    "v": "UAB Avesa"
+   },
+   {
+    "n": "lpsettings_sender_country",
+    "v": "LT"
+   },
+   {
+    "n": "lpsettings_sender_email",
+    "v": "terra@petshop.lt"
+   },
+   {
+    "n": "lpsettings_sender_name",
+    "v": "UAB Avesa"
+   },
+   {
+    "n": "lpsettings_sender_phone",
+    "v": "+37068187787"
+   },
+   {
+    "n": "lpsettings_sender_postcode",
+    "v": "15166"
+   },
+   {
+    "n": "lpsettings_sender_street",
+    "v": "Liucionių g."
+   },
+   {
+    "n": "lpsettings_use_pickup_address",
+    "v": "yes"
+   },
+   {
+    "n": "lpsettings_validate_shipping_before_checkout",
+    "v": "yes"
+   },
+   {
+    "n": "lpsettings_woo_lithuaniapost_address_pickup_id",
+    "v": "32742454"
+   },
+   {
+    "n": "lpsettings_woo_lithuaniapost_updated_version",
+    "v": "4.0.32"
+   },
+   {
+    "n": "woo_lithuaniapost_module_active",
+    "v": "1"
+   },
+   {
+    "n": "woocommerce_woo_lithuaniapost_lpexpress_terminal_12_settings",
+    "v": "a:20:{s:5:\"title\";s:10:\"LP Express\";s:4:\"plan\";s:8:\"TERMINAL"
+   },
+   {
+    "n": "woocommerce_woo_lithuaniapost_lpexpress_terminal_13_settings",
+    "v": "a:20:{s:5:\"title\";s:10:\"LP Express\";s:4:\"plan\";s:8:\"TERMINAL"
+   },
+   {
+    "n": "woocommerce_woo_lithuaniapost_lpexpress_terminal_15_settings",
+    "v": "a:28:{s:5:\"title\";s:19:\"LP Express kurjeris\";s:4:\"plan\";s:5:"
+   }
+  ],
+  "zones": [
+   {
+    "z": "Neringos savivaldybe",
+    "m": {
+     "9": "shopup_venipak_shipping_pickup_method:9 VENIPAK paštomatai/atsiėmimo punktai on",
+     "10": "shopup_venipak_shipping_courier_method:10 VENIPAK Kurjeris on",
+     "13": "woo_lithuaniapost_lpexpress_terminal:13 LP Express on"
+    }
+   },
+   {
+    "z": "Lietuva",
+    "m": {
+     "1": "free_shipping:1 Nemokamas pristatymas OFF",
+     "2": "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris on",
+     "3": "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai on",
+     "6": "shopup_venipak_shipping_courier_method:6 VENIPAK Kurjeris on",
+     "7": "shopup_venipak_shipping_courier_method:7 VENIPAK Kurjeris on",
+     "8": "shopup_venipak_shipping_courier_method:8 VENIPAK Kurjeris on",
+     "12": "woo_lithuaniapost_lpexpress_terminal:12 LP Express on",
+     "15": "woo_lithuaniapost_lpexpress_terminal:15 LP Express kurjeris on",
+     "16": "local_pickup:16 Atsiėmimas AV — Liucionių g. 46, Liucionys OFF"
+    }
+   },
+   {
+    "z": "Baltijos šalys, be LIetuvos",
+    "m": {
+     "5": "shopup_venipak_shipping_pickup_method:5 VENIPAK paštomatai/atsiėmimo punktai on"
+    }
+   }
+  ],
+  "terminalai": null,
+  "e1": "Unknown column 'updated' in 'field list'",
+  "term_cols": [
+   "id",
+   "terminal_id",
+   "name",
+   "address",
+   "city",
+   "country_code"
+  ],
+  "transients": [],
+  "log": [
+   "[14-Sep-2026 07:21:20 UTC] WordPress database error Unknown column 'updated' in 'field list' for query SELECT COUNT(*) n,MAX(updated) upd,SUM(country_code='LT') lt FROM gaj6_woo_lithuaniapost_unisend_terminals made by require('wp-blog-header.php'), require_onc"
+  ],
+  "cron_lp": [
+   "09-14 07:21 woo_lithuaniapost_sync_tracking_data",
+   "09-14 07:56 woo_lithuaniapost_api_oauth_refresh_token",
+   "09-14 07:56 woo_lithuaniapost_update_tracking_status",
+   "09-15 06:56 woo_lithuaniapost_terminal_service_update_terminals"
+  ],
+  "sargas_htaccess": {
+   "24": "RewriteRule ^wp-admin/includes/ - [F,L]\n",
+   "25": "RewriteRule !^wp-includes/ - [S=3]\n",
+   "26": "RewriteRule ^wp-includes/[^/]+\\.php$ - [F,L]\n",
+   "27": "RewriteRule ^wp-includes/js/tinymce/langs/.+\\.php - [F,L]\n",
+   "28": "RewriteRule ^wp-includes/theme-compat/ - [F,L]\n",
+   "46": "RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]\n",
+   "48": "RewriteRule ^index\\.php$ - [L]\n",
+   "51": "RewriteRule . /index.php [L]\n",
+   "65": "Require all denied\n"
+  }
+ },
+ "CL": {
+  "v": "S1680 f",
+  "public_fn": [
+   "__construct",
+   "enqueue_styles",
+   "enqueue_scripts",
+   "get_terminal_list",
+   "get_block_terminal_dropdown_template",
+   "filter_shipping_package_name",
+   "get_terminal_list_json",
+   "ajax_get_saved_terminal",
+   "ajax_check_plan",
+   "get_selected_terminal_id",
+   "render_terminal_field",
+   "render_delivery_time",
+   "handle_after_get_rates_for_package",
+   "handle_generate_terminal_input_html",
+   "handle_generate_terminal_dropdown_html",
+   "handle_render_delivery_time_code_block",
+   "generate_delivery_time_html",
+   "generate_terminal_input_html",
+   "validate_shipping",
+   "str_contains",
+   "validate_api_shipping",
+   "is_json_request",
+   "create_delivery_address_validation_request",
+   "is_terminal_required",
+   "handle_validation_error_response",
+   "collect_validation_error_response_messages",
+   "to_error_message",
+   "handle_update_order_meta_by_id",
+   "handle_update_order_meta",
+   "save_order_meta_info",
+   "save_selected_terminal_session",
+   "add_terminal_field_order_email",
+   "add_placeholder_order_email",
+   "add_terminal_field_order_thankyou",
+   "handle_checkout_order_processed",
+   "get_method_settings_value",
+   "is_selected_method_lp",
+   "is_chosen_method_lp",
+   "get_chosen_method_settings_value",
+   "get_chosen_method_instance_id",
+   "get_shipping_method",
+   "validate_selected_terminal",
+   "get_request_shipping_country",
+   "validate_parcel",
+   "get_order_weight",
+   "create_parcel_validation_request"
+  ],
+  "hooks": [
+   "load_plugin_textdomain",
+   "enqueue_styles",
+   "enqueue_scripts",
+   "order_statuses",
+   "export_table_rates",
+   "export_country_rates",
+   "export_country_weight_rates",
+   "display_terminal_order",
+   "add_allowed_terminal_checkbox",
+   "save_allowed_terminal_checkbox",
+   "register_order_statuses",
+   "register_menu",
+   "handle_woocommerce_screen_ids",
+   "generate_label",
+   "create_parcel",
+   "generate_return_stickers",
+   "join_shipping_method",
+   "where_shipping_method",
+   "handle_custom_query_var",
+   "create_settings_section",
+   "add_settings_section",
+   "generate_call_courier_time_picker_html",
+   "add_order_actions",
+   "process_create_parcel",
+   "process_cancel_label",
+   "process_print_label",
+   "process_print_manifest",
+   "process_generate_return_order",
+   "get_shipment_data",
+   "register_bulk_actions",
+   "register_bulk_actions",
+   "handle_action",
+   "handle_hpos_action",
+   "handle_bulk_action",
+   "handle_bulk_action",
+   "handle_bulk_action",
+   "handle_bulk_action",
+   "handle_bulk_action",
+   "display_error",
+   "convert_to_grams",
+   "get_min_weight",
+   "get_terminals_by_country_code",
+   "get_all_terminals",
+   "get_terminal_by_id",
+   "update_terminal_list",
+   "schedule_update_terminal_list",
+   "resolve_order_size",
+   "resolve_shipping_size",
+   "on_status_changed",
+   "get_lp_order_statuses",
+   "handle_generate_stickers",
+   "handle_generate_return_stickers",
+   "handle_generate_manifests",
+   "handle_call_courier",
+   "handle_create_parcel",
+   "create_cn_request",
+   "download_labels",
+   "get_available_order_actions",
+   "get_available_order_actions_by_id",
+   "get_parcel_type_translation",
+   "get_plan_translation",
+   "handle_parcel_save",
+   "handle_cancel_labels",
+   "get_lp_shipping_method",
+   "create_parcel_create_request",
+   "get_order_weight",
+   "handle_order_query_args",
+   "handle_generate_stickers",
+   "get_manifest",
+   "handle_generate_manifest",
+   "refresh_token",
+   "get_tracking",
+   "get_tracking_list",
+   "handle_is_shipping_available",
+   "handle_address_validation",
+   "handle_parcel_validation",
+   "handle_eshop_activation",
+   "handle_eshop_deactivation",
+   "handle_eshop_uninstall",
+   "handle_eshop_update",
+   "handle_eshop_login",
+   "schedule_refresh_token",
+   "schedule_call_courier",
+   "lp_call_courier",
+   "run_sequence",
+   "reschedule_call_courier_on_settings_save",
+   "save_access_token",
+   "update_sender_address",
+   "add_order_meta_box",
+   "update_tracking_status",
+   "sync_tracking_data",
+   "get_tracking_events",
+   "schedule_tracking_info",
+   "schedule_tracking_data_sync",
+   "send_tracking_email",
+   "register_url_api_endpoint",
+   "shipping_init",
+   "load_shipping_methods",
+   "generate_fixed_cost_html",
+   "generate_weight_cost_html",
+   "generate_size_cost_html",
+   "enqueue_styles",
+   "enqueue_scripts",
+   "render_terminal_field",
+   "render_delivery_time",
+   "handle_after_get_rates_for_package",
+   "validate_shipping",
+   "add_placeholder_order_email",
+   "validate_api_shipping",
+   "handle_checkout_order_processed",
+   "handle_update_order_meta_by_id",
+   "handle_update_order_meta",
+   "save_selected_terminal_session",
+   "save_selected_terminal_session",
+   "get_terminal_list_json",
+   "get_terminal_list_json",
+   "ajax_check_plan",
+   "ajax_check_plan",
+   "ajax_get_saved_terminal",
+   "ajax_get_saved_terminal",
+   "filter_shipping_package_name",
+   "add_terminal_field_order_email",
+   "add_terminal_field_order_thankyou"
+  ],
+  "module_cond": [],
+  "opt": {
+   "woo_lithuaniapost_module_active": "1",
+   "lpsettings_woo_lithuaniapost_address_pickup_id": "32742454",
+   "lpsettings_woo_lithuaniapost_updated_version": "4.0.32"
+  },
+  "lpsettings": [
+   {
+    "n": "lpsettings_api_password",
+    "v": "AvesaPetshop1"
+   },
+   {
+    "n": "lpsettings_api_username",
+    "v": "terra@petshop.lt"
+   },
+   {
+    "n": "lpsettings_dimension_height",
+    "v": "15"
+   },
+   {
+    "n": "lpsettings_dimension_length",
+    "v": "30"
+   },
+   {
+    "n": "lpsettings_dimension_width",
+    "v": "20"
+   },
+   {
+    "n": "lpsettings_event_to_change_status_to_completed",
+    "v": ""
+   },
+   {
+    "n": "lpsettings_event_to_send_tracking_email",
+    "v": ""
+   },
+   {
+    "n": "lpsettings_other_label_format",
+    "v": "LAYOUT_10x15"
+   },
+   {
+    "n": "lpsettings_other_label_orientation",
+    "v": "LANDSCAPE"
+   },
+   {
+    "n": "lpsettings_pickup_apartment",
+    "v": ""
+   },
+   {
+    "n": "lpsettings_pickup_building",
+    "v": "46"
+   },
+   {
+    "n": "lpsettings_pickup_city",
+    "v": "Liucionys"
+   },
+   {
+    "n": "lpsettings_pickup_company_name",
+    "v": "UAB Avesa"
+   },
+   {
+    "n": "lpsettings_pickup_country",
+    "v": "LT"
+   },
+   {
+    "n": "lpsettings_pickup_email",
+    "v": "terra@petshop.lt"
+   },
+   {
+    "n": "lpsettings_pickup_name",
+    "v": "UAB Avesa"
+   },
+   {
+    "n": "lpsettings_pickup_phone",
+    "v": "+37068187787"
+   },
+   {
+    "n": "lpsettings_pickup_postcode",
+    "v": "15166"
+   },
+   {
+    "n": "lpsettings_pickup_street",
+    "v": "Liucionių g."
+   },
+   {
+    "n": "lpsettings_sender_apartment",
+    "v": ""
+   },
+   {
+    "n": "lpsettings_sender_building",
+    "v": "46"
+   },
+   {
+    "n": "lpsettings_sender_city",
+    "v": "Liucionys"
+   },
+   {
+    "n": "lpsettings_sender_company_name",
+    "v": "UAB Avesa"
+   },
+   {
+    "n": "lpsettings_sender_country",
+    "v": "LT"
+   },
+   {
+    "n": "lpsettings_sender_email",
+    "v": "terra@petshop.lt"
+   },
+   {
+    "n": "lpsettings_sender_name",
+    "v": "UAB Avesa"
+   },
+   {
+    "n": "lpsettings_sender_phone",
+    "v": "+37068187787"
+   },
+   {
+    "n": "lpsettings_sender_postcode",
+    "v": "15166"
+   },
+   {
+    "n": "lpsettings_sender_street",
+    "v": "Liucionių g."
+   },
+   {
+    "n": "lpsettings_use_pickup_address",
+    "v": "yes"
+   },
+   {
+    "n": "lpsettings_validate_shipping_before_checkout",
+    "v": "yes"
+   },
+   {
+    "n": "lpsettings_woo_lithuaniapost_address_pickup_id",
+    "v": "32742454"
+   },
+   {
+    "n": "lpsettings_woo_lithuaniapost_updated_version",
+    "v": "4.0.32"
+   },
+   {
+    "n": "woo_lithuaniapost_module_active",
+    "v": "1"
+   },
+   {
+    "n": "woocommerce_woo_lithuaniapost_lpexpress_terminal_12_settings",
+    "v": "a:20:{s:5:\"title\";s:10:\"LP Express\";s:4:\"plan\";s:8:\"TERMINAL"
+   },
+   {
+    "n": "woocommerce_woo_lithuaniapost_lpexpress_terminal_13_settings",
+    "v": "a:20:{s:5:\"title\";s:10:\"LP Express\";s:4:\"plan\";s:8:\"TERMINAL"
+   },
+   {
+    "n": "woocommerce_woo_lithuaniapost_lpexpress_terminal_15_settings",
+    "v": "a:28:{s:5:\"title\";s:19:\"LP Express kurjeris\";s:4:\"plan\";s:5:"
+   }
+  ],
+  "zones": [
+   {
+    "z": "Neringos savivaldybe",
+    "m": {
+     "9": "shopup_venipak_shipping_pickup_method:9 VENIPAK paštomatai/atsiėmimo punktai on",
+     "10": "shopup_venipak_shipping_courier_method:10 VENIPAK Kurjeris on",
+     "13": "woo_lithuaniapost_lpexpress_terminal:13 LP Express on"
+    }
+   },
+   {
+    "z": "Lietuva",
+    "m": {
+     "1": "free_shipping:1 Nemokamas pristatymas OFF",
+     "2": "shopup_venipak_shipping_courier_method:2 VENIPAK Kurjeris on",
+     "3": "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai on",
+     "6": "shopup_venipak_shipping_courier_method:6 VENIPAK Kurjeris on",
+     "7": "shopup_venipak_shipping_courier_method:7 VENIPAK Kurjeris on",
+     "8": "shopup_venipak_shipping_courier_method:8 VENIPAK Kurjeris on",
+     "12": "woo_lithuaniapost_lpexpress_terminal:12 LP Express on",
+     "15": "woo_lithuaniapost_lpexpress_terminal:15 LP Express kurjeris on",
+     "16": "local_pickup:16 Atsiėmimas AV — Liucionių g. 46, Liucionys OFF"
+    }
+   },
+   {
+    "z": "Baltijos šalys, be LIetuvos",
+    "m": {
+     "5": "shopup_venipak_shipping_pickup_method:5 VENIPAK paštomatai/atsiėmimo punktai on"
+    }
+   }
+  ],
+  "terminalai": null,
+  "e1": "Unknown column 'updated' in 'field list'",
+  "term_cols": [
+   "id",
+   "terminal_id",
+   "name",
+   "address",
+   "city",
+   "country_code"
+  ],
+  "transients": [],
+  "log": [
+   "[14-Sep-2026 07:21:28 UTC] WordPress database error Unknown column 'updated' in 'field list' for query SELECT COUNT(*) n,MAX(updated) upd,SUM(country_code='LT') lt FROM gaj6_woo_lithuaniapost_unisend_terminals made by require('wp-blog-header.php'), require_onc"
+  ],
+  "cron_lp": [
+   "09-14 07:21 woo_lithuaniapost_sync_tracking_data",
+   "09-14 07:56 woo_lithuaniapost_api_oauth_refresh_token",
+   "09-14 07:56 woo_lithuaniapost_update_tracking_status",
+   "09-15 06:56 woo_lithuaniapost_terminal_service_update_terminals"
+  ],
+  "sargas_htaccess": {
+   "24": "RewriteRule ^wp-admin/includes/ - [F,L]\n",
+   "25": "RewriteRule !^wp-includes/ - [S=3]\n",
+   "26": "RewriteRule ^wp-includes/[^/]+\\.php$ - [F,L]\n",
+   "27": "RewriteRule ^wp-includes/js/tinymce/langs/.+\\.php - [F,L]\n",
+   "28": "RewriteRule ^wp-includes/theme-compat/ - [F,L]\n",
+   "46": "RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]\n",
+   "48": "RewriteRule ^index\\.php$ - [L]\n",
+   "51": "RewriteRule . /index.php [L]\n",
+   "65": "Require all denied\n"
+  }
+ }
+}
