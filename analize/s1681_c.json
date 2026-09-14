@@ -1,0 +1,14 @@
+{
+ "v": "dep-084230",
+ "kurimas": 200,
+ "sid": 5721,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1681 c",
+  "fn": "function neissiusti_sk() {\n\t\tglobal $wpdb;\n\t\t$u = self::u(); $s = self::s(); $t = self::ts();\n\t\tif ( ! self::lentele_yra( $s ) ) { return 0; }\n\t\treturn (int) $wpdb->get_var(\n\t\t\t\"SELECT COUNT(*) FROM $u u\n\t\t\t WHERE u.apmoketa_at < UTC_TIMESTAMP() - INTERVAL 48 HOUR $t\n\t\t\t   AND u.statusas_galutinis NOT IN ('completed','cancelled','refunded','failed')\n\t\t\t   AND NOT EXISTS (SELECT 1 FROM $s s WHERE s.uzsakymas_id = u.uzsakymas_id)\" );\n\t}\n\n\t/* ==================== 3. KĄ DARYTI ==================== */\n\n\tpublic static function veiksmai() {\n\t\tglobal $wpdb;\n\t\t$on = self::veiksmai_ijungti(); $v = array();\n\n\t\t/* Užsakyti: AV prekės, kur likutis / 30 d. paklausa < lead time */\n\t\tif ( ! empty( $on['uzsakyti'] ) && self::lentele_yra( self::a() ) ) {\n\t\t\t$a = self::a(); $e = self::e(); $lead = (float) self::riba( 'lead_d' );\n\t\t\t$max = $wpdb->get_var( \"SELECT MAX(data) FROM $a\" );\n\t\t\tif ( $max ) {\n\t\t\t\t$r = $wpdb->get_results( $wpdb->prepare(\n\t\t\t\t\t\"SELECT x.preke_id, x.likutis_av, p.k30, p.paj30\n\t\t\t\t\t FROM $a x\n\t\t\t\t\t JOIN (SELECT e.preke_id, SUM(e.kiekis) k30, SUM(e.kaina_ct) paj30 FROM $e e\n\t\t\t\t\t       WHERE e.diena >= %s \" . str_replace( 'u.', 'e.', self::ts() ) . \" GROUP BY e.preke_id) p ON p",
+  "dabar": 2
+ }
+}
