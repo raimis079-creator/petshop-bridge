@@ -1,0 +1,295 @@
+{
+ "v": "dep-175635",
+ "kurimas": 200,
+ "sid": 5768,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1684 mc2",
+  "log_grp": [
+   {
+    "field": "marketing_consent",
+    "source": "eshoprent_newsletter_import",
+    "to_value": "true",
+    "n": "561",
+    "nuo": "2026-08-31 15:28:23",
+    "iki": "2026-08-31 15:35:28"
+   },
+   {
+    "field": "marketing_consent",
+    "source": "footer_form",
+    "to_value": "true",
+    "n": "5",
+    "nuo": "2026-08-31 07:34:04",
+    "iki": "2026-09-14 17:03:01"
+   },
+   {
+    "field": "marketing_consent",
+    "source": "test_setup",
+    "to_value": "true",
+    "n": "2",
+    "nuo": "2026-07-31 08:51:08",
+    "iki": "2026-07-31 08:51:09"
+   },
+   {
+    "field": "marketing_consent",
+    "source": "test_cleanup",
+    "to_value": "false",
+    "n": "2",
+    "nuo": "2026-07-30 20:40:54",
+    "iki": "2026-07-30 20:40:55"
+   },
+   {
+    "field": "marketing_consent",
+    "source": "unsubscribe_link",
+    "to_value": "false",
+    "n": "2",
+    "nuo": "2026-07-31 08:51:08",
+    "iki": "2026-07-31 08:51:09"
+   },
+   {
+    "field": "marketing_consent",
+    "source": "newsletter_form",
+    "to_value": "true",
+    "n": "2",
+    "nuo": "2026-09-12 15:31:09",
+    "iki": "2026-09-13 11:51:27"
+   },
+   {
+    "field": "marketing_consent",
+    "source": "test_verify",
+    "to_value": "true",
+    "n": "2",
+    "nuo": "2026-07-30 20:40:54",
+    "iki": "2026-07-30 20:40:55"
+   },
+   {
+    "field": "marketing_consent",
+    "source": "test_s1548",
+    "to_value": "false",
+    "n": "1",
+    "nuo": "2026-08-31 21:21:19",
+    "iki": "2026-08-31 21:21:19"
+   },
+   {
+    "field": "transactional_only",
+    "source": "webhook",
+    "to_value": "true",
+    "n": "1",
+    "nuo": "2026-09-09 14:06:13",
+    "iki": "2026-09-09 14:06:13"
+   },
+   {
+    "field": "marketing_consent",
+    "source": "test",
+    "to_value": "true",
+    "n": "1",
+    "nuo": "2026-07-31 08:51:08",
+    "iki": "2026-07-31 08:51:08"
+   },
+   {
+    "field": "marketing_consent",
+    "source": "webhook",
+    "to_value": "false",
+    "n": "1",
+    "nuo": "2026-07-14 09:21:32",
+    "iki": "2026-07-14 09:21:32"
+   },
+   {
+    "field": "marketing_consent",
+    "source": "test_s1548",
+    "to_value": "true",
+    "n": "1",
+    "nuo": "2026-08-31 21:21:19",
+    "iki": "2026-08-31 21:21:19"
+   },
+   {
+    "field": "marketing_consent",
+    "source": "checkout",
+    "to_value": "true",
+    "n": "1",
+    "nuo": "2026-07-14 09:21:28",
+    "iki": "2026-07-14 09:21:28"
+   }
+  ],
+  "log_sample": [
+   {
+    "field": "marketing_consent",
+    "from_value": "",
+    "to_value": "true",
+    "source": "footer_form",
+    "changed_at": "2026-09-14 17:03:01"
+   },
+   {
+    "field": "marketing_consent",
+    "from_value": "",
+    "to_value": "true",
+    "source": "footer_form",
+    "changed_at": "2026-09-14 02:43:45"
+   },
+   {
+    "field": "marketing_consent",
+    "from_value": "",
+    "to_value": "true",
+    "source": "footer_form",
+    "changed_at": "2026-09-13 16:17:27"
+   },
+   {
+    "field": "marketing_consent",
+    "from_value": "",
+    "to_value": "true",
+    "source": "newsletter_form",
+    "changed_at": "2026-09-13 11:51:27"
+   },
+   {
+    "field": "marketing_consent",
+    "from_value": "",
+    "to_value": "true",
+    "source": "newsletter_form",
+    "changed_at": "2026-09-12 15:31:09"
+   }
+  ],
+  "consent_users": {
+   "n": "0",
+   "nuo": null,
+   "iki": null,
+   "senu": null
+  },
+  "users_total": {
+   "n": "5729",
+   "senu": "5702"
+  },
+  "ist_email_meta": [
+   {
+    "k": "_ps_ist_n",
+    "n": "5666"
+   },
+   {
+    "k": "_ps_ist_paskutinis",
+    "n": "5589"
+   },
+   {
+    "k": "_ps_ist_pirmas",
+    "n": "5589"
+   },
+   {
+    "k": "_ps_ist_suma",
+    "n": "5666"
+   }
+  ],
+  "suppression": [
+   {
+    "channel": "marketing",
+    "reason": "unsubscribe",
+    "source": "sender_reconcile",
+    "suppressed_at": "2026-07-31 05:30:03"
+   },
+   {
+    "channel": "marketing",
+    "reason": "unsubscribe",
+    "source": "sender_reconcile",
+    "suppressed_at": "2026-09-01 05:30:05"
+   },
+   {
+    "channel": "marketing",
+    "reason": "unsubscribe",
+    "source": "sender_reconcile",
+    "suppressed_at": "2026-09-12 05:30:03"
+   }
+  ],
+  "email_content": [
+   {
+    "flow": "back_in_stock",
+    "version": "1",
+    "status": "draft",
+    "subject": "Prekė vėl prekyboje: {product_name}"
+   },
+   {
+    "flow": "cart_abandoned",
+    "version": "1",
+    "status": "draft",
+    "subject": "Krepšelyje liko jūsų prekės"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "version": "1",
+    "status": "draft",
+    "subject": "Jūsų krepšelis dar laukia"
+   },
+   {
+    "flow": "legacy_reactivation_l1",
+    "version": "1",
+    "status": "draft",
+    "subject": "Petshop.lt atsinaujino"
+   },
+   {
+    "flow": "order_shipped",
+    "version": "1",
+    "status": "draft",
+    "subject": "Jūsų užsakymas {order_number} išsiųstas"
+   },
+   {
+    "flow": "pet_reminder_due",
+    "version": "1",
+    "status": "draft",
+    "subject": "Priminimas: {pet_name} — {reminder_label}"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "version": "1",
+    "status": "draft",
+    "subject": "Ankstesnį užsakymą galite pakartoti"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "version": "1",
+    "status": "draft",
+    "subject": "Ar su užsakymu viskas gerai?"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "version": "1",
+    "status": "draft",
+    "subject": "Kaip tiko jūsų pirkinys?"
+   },
+   {
+    "flow": "refill_due",
+    "version": "1",
+    "status": "draft",
+    "subject": "Jūsų augintinio maisto gali netrukus pritrūkti"
+   },
+   {
+    "flow": "shipment_returned",
+    "version": "1",
+    "status": "draft",
+    "subject": "Jūsų siunta grįžo mums — užsakymas {order_id}"
+   },
+   {
+    "flow": "subscription_t5_notice",
+    "version": "1",
+    "status": "draft",
+    "subject": "Jūsų reguliari siunta — po 5 dienų"
+   },
+   {
+    "flow": "win_back_120",
+    "version": "1",
+    "status": "draft",
+    "subject": "Čia sustojame — jei prireiks, mus rasite"
+   },
+   {
+    "flow": "win_back_60",
+    "version": "1",
+    "status": "draft",
+    "subject": "Gal jau metas papildyti atsargas?"
+   },
+   {
+    "flow": "win_back_90",
+    "version": "1",
+    "status": "draft",
+    "subject": "Maisto rekomendacijos pagal jūsų augintinį"
+   }
+  ]
+ }
+}
