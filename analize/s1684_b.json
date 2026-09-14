@@ -1,63 +1,675 @@
 {
- "v": "dep-093643",
+ "v": "dep-173655",
  "kurimas": 200,
- "sid": 5291,
+ "sid": 5761,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "R": {
-  "v": "S1684b",
-  "kabliai": {
-   "ps_kat_kortele": "ajax_kortele OK",
-   "ps_kat_av": "ajax_av_irasyti OK",
-   "ps_kat_atsaukti": "ajax_atsaukti OK",
-   "ps_kat_kaina": "ajax_kaina_irasyti OK",
-   "ps_kat_sav": "ajax_sav_irasyti OK",
-   "ps_kat_laukas": "ajax_laukas_irasyti OK",
-   "ps_kat_variacija": "ajax_variacija OK",
-   "ps_kat_var_kurti": "ajax_var_kurti OK",
-   "ps_kat_seima": "ajax_seima OK",
-   "ps_kat_aprasymas": "ajax_aprasymas OK",
-   "ps_kat_isimti": "ajax_isimti OK",
-   "ps_kat_masinis": "ajax_masinis OK",
-   "ps_kat_atributas": "ajax_atributas OK",
-   "ps_kat_nuotraukos": "ajax_nuotraukos OK",
-   "ps_kat_pavadinimas": "ajax_pavadinimas OK",
-   "ps_kat_paleidimas": "ajax_paleidimas OK",
-   "ps_kat_partija": "ajax_partija — TRUKSTA",
-   "ps_kat_pakuote": "ajax_pakuote OK",
-   "ps_kat_kategorijos": "ajax_kategorijos OK",
-   "ps_kat_partija_nauja": "ajax_partija_nauja — TRUKSTA",
-   "ps_kat_eilute": "ajax_eilute OK",
-   "ps_kat_tiekejo_likutis": "ajax_tiekejo_likutis OK",
-   "ps_kat_busena": "ajax_busena OK"
-  },
-  "TRUKSTAMI": {
-   "ps_kat_partija": "ajax_partija",
-   "ps_kat_partija_nauja": "ajax_partija_nauja"
-  },
-  "suvestine": {
-   "viso": 23,
-   "OK": 21,
-   "TRUKSTA": 2
-  },
-  "js_nauja": [
-   "ax_atributas' ) ); add_action( 'wp_ajax_ps_kat_nuotraukos', array( __CLASS__, 'ajax_nuotraukos' ) ); add_action( 'wp_ajax_ps_kat_pavadinimas', array( __CLASS__, 'ajax_pavadinimas' ) ); /* v5.2: publikavimo momentas fiksuojamas TADA, kai jis ivyksta. */ add_action( 'transition_post_status', array( __CLASS__, 'sekti_publikavima' ), 10, 3 ); add_action( 'wp_ajax_ps_kat_paleidimas', array( __CLASS__, 'ajax_paleidimas' ) ); add_action( 'wp_ajax_ps_kat_partija', array( __CLASS__, 'ajax_partija' ) ); /* v6.8: GPAIS pakuociu eilutes — pridejimas, keitimas, trynimas. */ add_action( 'wp_ajax_ps_kat_pakuote', array( __CLASS__, 'ajax_pakuote' ) ); /* v7.0: kategorijos — kortelėje, ne WooCommerce lange. */ add_action( 'wp_ajax_ps_kat_kategorijos', array( __CLASS__, 'ajax_kategorijos' ) ); /* v7.3: nauja partija su galiojimu — tiesiai kortelėje. */ add_action( 'wp_ajax_ps_kat_partija_nauja', array( __CLASS__, 'ajax_partija_nauja' ) ); /* v7.5: vienos eilutes atnaujinimas sarase po pakeitimo kortelėje. */ add_action( 'wp_ajax_ps_kat_eilute', array( __CLASS__, 'ajax_eilute' ) ); /* v8.0: tiekejo (ne XML) likutis — atskiras nuo AV. */ add_action( 'wp_ajax_ps_kat_tiekejo_likutis', array( __CLASS__, 'ajax_tiekejo_likutis' ) ); /* v8.3: busenos perjungimas kortelėje. */ add_action( 'wp_ajax_ps_kat_busena', array( __CLASS__, 'ajax_busena' ) ); /* Pakeitus prekę bet kur — WooCommerce, importe, kitur — katalogo kešas turi pasenti iškart, kitaip langas iki 5 min. rodytų senus skaičius. */ add_action( 'woocommerce_update_product', array( __CLASS__, 'kesas_lauk' ), 99 ); add_action( 'woocommerce_new_product', array( __CLASS__, 'kesas_lauk' ), 99 ); add_action( 'trashed_post', array( __CLASS__, 'kesas_lauk' ), 99 ); add_acti"
+ "GO": {
+  "v": "S1684 b",
+  "meta_keys": [
+   {
+    "k": "_global_unique_id",
+    "t": "product",
+    "n": "2286",
+    "n_pos": "2283"
+   },
+   {
+    "k": "_vf_cost_xml",
+    "t": "product",
+    "n": "1212",
+    "n_pos": "1212"
+   },
+   {
+    "k": "_vf_cost",
+    "t": "product",
+    "n": "1212",
+    "n_pos": "1212"
+   },
+   {
+    "k": "_vf_personal_cost",
+    "t": "product",
+    "n": "1212",
+    "n_pos": "1212"
+   },
+   {
+    "k": "_zb_cost",
+    "t": "product",
+    "n": "1117",
+    "n_pos": "1112"
+   },
+   {
+    "k": "_cost_price",
+    "t": "product",
+    "n": "1017",
+    "n_pos": "1017"
+   },
+   {
+    "k": "_cost_price_source",
+    "t": "product",
+    "n": "882",
+    "n_pos": "0"
+   },
+   {
+    "k": "_cost_price_imported_at",
+    "t": "product",
+    "n": "661",
+    "n_pos": "661"
+   },
+   {
+    "k": "_cost_price_manual_at",
+    "t": "product",
+    "n": "224",
+    "n_pos": "224"
+   },
+   {
+    "k": "_cost_price_manual_by",
+    "t": "product",
+    "n": "224",
+    "n_pos": "221"
+   },
+   {
+    "k": "_zb_cost_prev",
+    "t": "product",
+    "n": "29",
+    "n_pos": "29"
+   }
   ],
-  "pt_nauja_html": [],
-  "etalonas_pakuote": "function ajax_pakuote() { if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); } check_ajax_referer( 'ps_kat', 'nonce' ); if ( ! class_exists( 'Petshop_Partijos' ) ) { wp_send_json_error( 'partijų modulis neįdiegtas' ); } $pid = isset( $_POST['id'] ) ? (int) $_POST['id'] : 0; if ( ! $pid || get_post_type( $pid ) !== 'product' ) { wp_send_json_error( 'nėra prekės' ); } $veiksmas = isset( $_POST['veiksmas'] ) ? sanitize_key( wp_unslash( $_POST['veiksmas'] ) ) : ''; $d = isset( $_POST['duomenys'] ) ? json_decode( wp_unslash( $_POST['duomenys'] ), true ) : array(); if ( ! is_array( $d ) ) { $d = array(); } if ( $veiksmas === 'trinti' ) { $r = Petshop_Partijos::trinti_pakuote( isset( $d['id'] ) ? (int) $d['id'] : 0, $pid ); if ( is_wp_error( $r ) ) { wp_send_json_error( $r->get_error_message() ); } } elseif ( $veiksmas === 'irasyti' ) { /* Medziaga ir tipas TIK is saraso — laisvas tekstas suskaldytu deklaracija i „Plastikas\" ir „plastikas\". */ $med = isset( $d['medziaga'] ) ? (string) $d['medziaga'] : ''; $tip = isset( $d['tipas'] ) ? (string) $d['tipas'] : ''; if ( ! array_key_exists( $med, Petshop_Partijos::medziagos() ) ) { wp_send_json_error( 'nežinoma medžiaga' ); } if ( ! array_key_exists( $tip, Petshop_Partijos::tipai() ) ) { wp_send_json_error( 'nežinomas tipas' ); } $r = Petshop_Partijos::irasyti_pakuote( $pid, array( 'id' => isset( $d['id'] ) ? (int) $d['id'] : 0, 'pavadinimas' => isset( $d['pavadinimas'] ) ? sanitize_text_field( $d['pavadinimas'] ) : '', 'tipas' => $tip, 'medziaga' => $med, 'svoris_g' => isset( $d['svoris_g'] ) ? $d['svoris_g'] : 0, 'vienetu_pakuoteje' => isset( $d['vienetu_pakuoteje'] ) ? (int) $d['vienetu_pakuoteje'] : 1, 'tiekiama_su_preke' => ! empty( $d['tiekiama_su_preke'] ), ) ); if ( is_wp_error( $r ) ) { wp_send_json_error( $r->get_error_message() ); } if ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) { try { Petshop_Ivykiai::irasyti( $pid, 'duomenys', array( 'laukas' => 'GPAIS pakuotė', 'buvo' => '', 'tapo' => $med . ' · ' . (string) $d['svoris_g'] . ' g', 'pastaba' => 'Pakuotės eilutė įrašyta kortelėje' ) ); } catch ( Throwable $e ) { /* zurnalas neprivalo blokuoti */ } } } else { wp_send_json_error( 'nežinomas veiksmas' ); } $eil = array(); foreach ( Petshop_Partijos::pakuotes( $pid ) as $x ) { $eil[] = array( 'id' => (int) $x['id'], 'pav' => (string) $x['pavadinimas'], 'tip' => (string) $x['tipas'], 'med' => (string) $x['medziaga'], 'sv' => (float) $x['svoris_g'], 'vnt' => (int) $x['vienetu_pakuoteje'], 'su' => (int) $x['tiekiama_su_preke'], ",
-  "ivykiai_naudojimas": [
-   "tis' => $priez, 'user_id' => $uid, 'sukurta' => $now, ) ); /* v7.7: TAS PATS irasas i `Petshop_Ivykiai` — istorijos skirtukas skaito TIK ji, o `ps_av_zurnalas` lieka atsaukimui. */ if ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) { try { Petshop_Ivykiai::irasyti( $p['pid'], 'likutis', array( 'laukas' => 'likutis', 'buvo' => $p['buvo'] === null ? '' : (string) $p['buvo'], 'tapo' => (string) $p['tapo'], 'pastaba' => self::priezastys()[ $priez ] . ' · kortelėje' . ( ! empty( $p['partija'] ) ? ' · partija #' . (int) $p['partija'] : '' ), ) ); } catch ( Throwable $e ) { /* zurnalas neprivalo blokuoti */ } } $ok[] = array( 'id' => $p['pid'], 'buvo' => $p['buvo'], 'tapo' => $p['tapo",
-   "avadinimo, kuris gali buti pakeistas. */ $raktas = 'seima-' . $pid; } update_post_meta( $pid, '_ps_dydzio_seima', $raktas ); update_post_meta( $kitas, '_ps_dydzio_seima', $raktas ); if ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) { try { Petshop_Ivykiai::irasyti( $pid, 'seima', 'Prijungta prekė #' . $kitas . ' (' . $raktas . ')' ); } catch ( \\Throwable $e ) { /* zurnalas neblokuoja */ } } wp_send_json_success( array( 'raktas' => $raktas ) ); } if ( $v === 'atjungti' ) { $kuri = isset( $_POST['kitas'] ) ? (int) $_POST['kitas'] : $pid; $raktas = (string) get_post_meta( $kuri, '_ps_dydzio_seima', true ); delete_post_meta( $kuri, '_ps_dydzio_seima' ); /* Vienas likes narys — seimos nebera; nuimam ir nuo",
-   " kurio niekas neberodo. */ if ( $raktas !== '' ) { $liko = self::seimos_nariai( $raktas ); if ( count( $liko ) === 1 ) { delete_post_meta( (int) $liko[0], '_ps_dydzio_seima' ); } } if ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) { try { Petshop_Ivykiai::irasyti( $pid, 'seima', 'Atjungta prekė #' . $kuri ); } catch ( \\Throwable $e ) { /* zurnalas neblokuoja */ } } wp_send_json_success( array( 'atjungta' => $kuri ) ); } wp_send_json_error( 'nežinomas veiksmas' ); } public static function ajax_var_kurti() { if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); } check_ajax_referer( 'ps_kat', 'nonce' ); $pid = isset( $_POST['id'] ) ? (int) $_POST['id'] : 0; "
+  "tables_sav": [
+   "gaj6_ps_action_tokens",
+   "gaj6_ps_akcijos",
+   "gaj6_ps_akciju_prekes",
+   "gaj6_ps_ataskaitu_dienos",
+   "gaj6_ps_av_zurnalas",
+   "gaj6_ps_brand_alias",
+   "gaj6_ps_browse_log",
+   "gaj6_ps_carts",
+   "gaj6_ps_consent_log",
+   "gaj6_ps_dim_klientai",
+   "gaj6_ps_email_content",
+   "gaj6_ps_email_jobs",
+   "gaj6_ps_email_suppression",
+   "gaj6_ps_event_log",
+   "gaj6_ps_fakt_atsargos_d",
+   "gaj6_ps_fakt_eilutes",
+   "gaj6_ps_fakt_grazinimai",
+   "gaj6_ps_fakt_gsc_dienos",
+   "gaj6_ps_fakt_gsc_url_d",
+   "gaj6_ps_fakt_kainos",
+   "gaj6_ps_fakt_reklama",
+   "gaj6_ps_fakt_siuntos",
+   "gaj6_ps_fakt_uzsakymai",
+   "gaj6_ps_feeding_import_log",
+   "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_map",
+   "gaj6_ps_feeding_map_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_map_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows",
+   "gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows_bak_s304",
+   "gaj6_ps_feeding_tables",
+   "gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_islaidos",
+   "gaj6_ps_ist_eilutes",
+   "gaj6_ps_ist_fakt_eilutes",
+   "gaj6_ps_ist_fakt_uzsakymai",
+   "gaj6_ps_ist_uzsakymai",
+   "gaj6_ps_istrintos_prekes_s668",
+   "gaj6_ps_ivykiai",
+   "gaj6_ps_kl_suvestine",
+   "gaj6_ps_kontrole_dienos",
+   "gaj6_ps_laukai_ivykiai",
+   "gaj6_ps_naujienlaiskiai",
+   "gaj6_ps_nl_snapshot",
+   "gaj6_ps_pakuotes",
+   "gaj6_ps_partijos",
+   "gaj6_ps_pet_field_log",
+   "gaj6_ps_pet_notes",
+   "gaj6_ps_pet_products",
+   "gaj6_ps_pet_profile_drafts",
+   "gaj6_ps_pets",
+   "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9",
+   "gaj6_ps_pets_bak_20260722_181456_hint",
+   "gaj6_ps_pets_bak_20260723_prof",
+   "gaj6_ps_pets_bak_20260726",
+   "gaj6_ps_pets_bak_20260726_ft",
+   "gaj6_ps_pets_bak_20260727_wet",
+   "gaj6_ps_pets_bak_20260731_pries_restore",
+   "gaj6_ps_plan_events",
+   "gaj6_ps_rec_log",
+   "gaj6_ps_refill_tracking",
+   "gaj6_ps_reminders",
+   "gaj6_ps_sargas_klaidos",
+   "gaj6_ps_seo_404",
+   "gaj6_ps_seo_qa",
+   "gaj6_ps_seo_url_svoris",
+   "gaj6_ps_shipments",
+   "gaj6_ps_sources",
+   "gaj6_ps_stock_watch",
+   "gaj6_ps_subscription_events",
+   "gaj6_ps_subscription_items",
+   "gaj6_ps_subscriptions",
+   "gaj6_ps_tarifai",
+   "gaj6_ps_tarifu_priemokos",
+   "gaj6_ps_tiekimas",
+   "gaj6_ps_tiekimas_eil",
+   "gaj6_ps_uzsakymu_ivykiai",
+   "gaj6_ps_v_analize_eilutes",
+   "gaj6_ps_v_analize_uzsakymai",
+   "gaj6_ps_web_dienos",
+   "gaj6_ps_web_ivykiai",
+   "gaj6_ps_webhook_log"
   ],
-  "lentele": [],
-  "data_sargas": [
-   "id(); $ok = array(); /* v7.7: GAVIMAS KURIA PARTIJA. Likutis, atsiradęs be partijos, neturi nei galiojimo, nei savikainos — o FEFO nurasymas tokio nemato. */ $gal_iki = isset( $_POST['geriausia_iki'] ) ? trim( (string) wp_unslash( $_POST['geriausia_iki'] ) ) : ''; $sav_nauja = isset( $_POST['savikaina'] ) ? trim( (string) wp_unslash( $_POST['savikaina'] ) ) : ''; foreach ( $planas as &$p ) { $pokytis = (int) $p['pokytis']; if ( $priez === 'gavimas' && $pokytis > 0 && class_exists( 'Petshop_Partijos' ) && self::likutis_rankinis( $p['pid'] ) ) { $sav = $sav_na",
-   "JA. Likutis, atsiradęs be partijos, neturi nei galiojimo, nei savikainos — o FEFO nurasymas tokio nemato. */ $gal_iki = isset( $_POST['geriausia_iki'] ) ? trim( (string) wp_unslash( $_POST['geriausia_iki'] ) ) : ''; $sav_nauja = isset( $_POST['savikaina'] ) ? trim( (string) wp_unslash( $_POST['savikaina'] ) ) : ''; foreach ( $planas as &$p ) { $pokytis = (int) $p['pokytis']; if ( $priez === 'gavimas' && $pokytis > 0 && class_exists( 'Petshop_Partijos' ) && self::likutis_rankinis( $p['pid'] ) ) { $sav = $sav_nauja; if ( $sav === '' || (float) str_replace( ',', ",
-   " !== '' ) { $r = Petshop_Partijos::priimti( $p['pid'], array( 'kiekis' => $pokytis, 'savikaina' => $sav, 'valiuta' => 'EUR', 'kursas' => 1, 'geriausia_iki' => $gal_iki, 'tiekejas' => (string) get_post_meta( $p['pid'], '_ps_sandelis', true ), 'gauta' => current_time( 'Y-m-d' ), 'pastaba' => 'Likučio įvedimas kortelėje', ) ); if ( ! is_wp_error( $r ) ) { /* `priimti()` jau pakele likuti — tiesiogiai nebesirasom. */ $p['partija'] = isset( $r['partijos_id'] ) ? (int) $r['parti",
-   ">' . '<td class=\"n\"><b>' . (int) $b['kiekis_liko'] . '</b></td>' . '<td class=\"n\">' . number_format( (float) $b['savikaina_eur'], 2, ',', '' ) . ' €</td>' . '<td>' . esc_html( $b['geriausia_iki'] ? mb_substr( (string) $b['geriausia_iki'], 0, 10 ) : '—' ) . '</td>' . '<td class=\"sml2\">' . esc_html( mb_substr( (string) $b['tiekejas'], 0, 22 ) ) . '</td></tr>'; } echo '</table>'; echo '<div class=\"kort-info-m\">Partijas kuria Gavimo langas. Čia jos rodomos, kad matytum, ' . 'kuri dar guli lentynoje ir kiek ji kainavo.</div>'; } } echo '</div>'; "
-  ]
+  "tables_with_cost": {
+   "gaj6_ps_fakt_atsargos_d": [
+    "savikaina_vnt_ct",
+    "savikainos_saltinis"
+   ],
+   "gaj6_ps_fakt_eilutes": [
+    "savikaina_vnt_ct",
+    "savikaina_ct",
+    "savikainos_saltinis"
+   ],
+   "gaj6_ps_fakt_grazinimai": [
+    "savikaina_ct"
+   ],
+   "gaj6_ps_fakt_kainos": [
+    "savikaina_ct"
+   ],
+   "gaj6_ps_fakt_uzsakymai": [
+    "pristatymas_savikaina_ct",
+    "pakuotes_savikaina_ct",
+    "savikaina_ct",
+    "dovanu_savikaina_ct"
+   ],
+   "gaj6_ps_ist_fakt_eilutes": [
+    "savikaina_vnt_ct",
+    "savikaina_ct",
+    "savikainos_saltinis"
+   ],
+   "gaj6_ps_ist_fakt_uzsakymai": [
+    "pristatymas_savikaina_ct",
+    "pakuotes_savikaina_ct",
+    "savikaina_ct",
+    "dovanu_savikaina_ct"
+   ],
+   "gaj6_ps_partijos": [
+    "savikaina_eur",
+    "savikaina_orig"
+   ],
+   "gaj6_ps_sources": [
+    "cost_net"
+   ],
+   "gaj6_ps_v_analize_eilutes": [
+    "savikaina_vnt_ct",
+    "savikaina_ct",
+    "savikainos_saltinis"
+   ],
+   "gaj6_ps_v_analize_uzsakymai": [
+    "pristatymas_savikaina_ct",
+    "pakuotes_savikaina_ct",
+    "savikaina_ct",
+    "dovanu_savikaina_ct"
+   ]
+  },
+  "ist_sample": [
+   {
+    "preke_id": "16939",
+    "variacija_id": "0",
+    "sku": "42821",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   },
+   {
+    "preke_id": "19609",
+    "variacija_id": "0",
+    "sku": "83969",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   },
+   {
+    "preke_id": "19228",
+    "variacija_id": "0",
+    "sku": "AP202030",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   },
+   {
+    "preke_id": "18578",
+    "variacija_id": "0",
+    "sku": "HYRS02",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   },
+   {
+    "preke_id": "19425",
+    "variacija_id": "0",
+    "sku": "82979",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   },
+   {
+    "preke_id": "16298",
+    "variacija_id": "0",
+    "sku": "650613",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   },
+   {
+    "preke_id": "17472",
+    "variacija_id": "0",
+    "sku": "74271",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   },
+   {
+    "preke_id": "19393",
+    "variacija_id": "0",
+    "sku": "82965",
+    "gtin": "",
+    "savikainos_saltinis": "",
+    "savikaina_ct": null
+   }
+  ],
+  "ist_sav_fill": {
+   "n": "6648",
+   "su_sav": null,
+   "su_pid": "6648",
+   "su_vid": "0",
+   "su_sku": "6648",
+   "su_gtin": "0"
+  },
+  "fakt_sav_fill": {
+   "n": "93",
+   "su_sav": "92",
+   "salt": "nezinoma,pardavimai"
+  },
+  "fakt_cols": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ],
+  "wc_cost": {
+   "rows": 0,
+   "ids": 0,
+   "skus": 0,
+   "gtins": 0,
+   "keys": [],
+   "types": []
+  },
+  "coverage": {
+   "n": 6648,
+   "eur": 103951,
+   "vid": {
+    "n": 0,
+    "eur": 0,
+    "pct_eur": 0
+   },
+   "pid": {
+    "n": 0,
+    "eur": 0,
+    "pct_eur": 0
+   },
+   "sku": {
+    "n": 0,
+    "eur": 0,
+    "pct_eur": 0
+   },
+   "gtin": {
+    "n": 0,
+    "eur": 0,
+    "pct_eur": 0
+   },
+   "parent_avg": {
+    "n": 0,
+    "eur": 0,
+    "pct_eur": 0
+   },
+   "any": {
+    "n": 0,
+    "eur": 0,
+    "pct_eur": 0
+   }
+  },
+  "brendai": {
+   "exclusion": {
+    "eur": 27378,
+    "n": 804,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "josera": {
+    "eur": 22848,
+    "n": 643,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "animonda": {
+    "eur": 13065,
+    "n": 1723,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "quattro": {
+    "eur": 7546,
+    "n": 286,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "royal-canin": {
+    "eur": 4430,
+    "n": 88,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "ontario": {
+    "eur": 3825,
+    "n": 533,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "hikari": {
+    "eur": 3643,
+    "n": 266,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "miamor": {
+    "eur": 3642,
+    "n": 453,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "romar": {
+    "eur": 3341,
+    "n": 366,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "ambrosia": {
+    "eur": 3161,
+    "n": 74,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "gnatek": {
+    "eur": 1749,
+    "n": 333,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "rasco": {
+    "eur": 1160,
+    "n": 89,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "monge": {
+    "eur": 1153,
+    "n": 92,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "prins": {
+    "eur": 1136,
+    "n": 26,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "haumiau": {
+    "eur": 760,
+    "n": 74,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "katrinex": {
+    "eur": 654,
+    "n": 53,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "-": {
+    "eur": 635,
+    "n": 53,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "duvo": {
+    "eur": 618,
+    "n": 74,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "4dogs": {
+    "eur": 479,
+    "n": 61,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   },
+   "churu": {
+    "eur": 380,
+    "n": 124,
+    "padengta_pct": 0,
+    "marza_pct": null,
+    "marza_pct_su_pvm": null
+   }
+  },
+  "top_miss": [
+   {
+    "b": "exclusion",
+    "sku": "HYPS06",
+    "pid": "18587",
+    "eur": 8546.710000000017
+   },
+   {
+    "b": "exclusion",
+    "sku": "HYPM11",
+    "pid": "18560",
+    "eur": 5202.039999999991
+   },
+   {
+    "b": "exclusion",
+    "sku": "HYPS02",
+    "pid": "18590",
+    "eur": 2375.089999999999
+   },
+   {
+    "b": "exclusion",
+    "sku": "HYPA11",
+    "pid": "18572",
+    "eur": 2064.1900000000005
+   },
+   {
+    "b": "josera",
+    "sku": "JOS0008",
+    "pid": "17978",
+    "eur": 1740.8400000000008
+   },
+   {
+    "b": "exclusion",
+    "sku": "HYPS02-2",
+    "pid": "19899",
+    "eur": 1653.759999999999
+   },
+   {
+    "b": "josera",
+    "sku": "JOS0914",
+    "pid": "17978",
+    "eur": 1546.43
+   },
+   {
+    "b": "ambrosia",
+    "sku": "AMLE12",
+    "pid": "19760",
+    "eur": 1239.4999999999998
+   },
+   {
+    "b": "josera",
+    "sku": "JOS0725",
+    "pid": "18149",
+    "eur": 1220.94
+   },
+   {
+    "b": "josera",
+    "sku": "JOS0982",
+    "pid": "17995",
+    "eur": 1121.0599999999997
+   },
+   {
+    "b": "josera",
+    "sku": "JOS0238",
+    "pid": "18007",
+    "eur": 1087.8299999999997
+   },
+   {
+    "b": "josera",
+    "sku": "JOS0167",
+    "pid": "18043",
+    "eur": 1036.38
+   },
+   {
+    "b": "royal-canin",
+    "sku": "149820",
+    "pid": "16534",
+    "eur": 997.0200000000001
+   },
+   {
+    "b": "josera",
+    "sku": "JOS0978",
+    "pid": "18149",
+    "eur": 949.7799999999997
+   },
+   {
+    "b": "josera",
+    "sku": "JOS0724",
+    "pid": "18018",
+    "eur": 944.2499999999998
+   },
+   {
+    "b": "exclusion",
+    "sku": "INPM11",
+    "pid": "18545",
+    "eur": 906.5600000000001
+   },
+   {
+    "b": "quattro",
+    "sku": "2.008879",
+    "pid": "16669",
+    "eur": 857.09
+   },
+   {
+    "b": "josera",
+    "sku": "JOS0727",
+    "pid": "18154",
+    "eur": 797.8199999999998
+   },
+   {
+    "b": "josera",
+    "sku": "JOS0913",
+    "pid": "18154",
+    "eur": 792.9000000000002
+   },
+   {
+    "b": "animonda",
+    "sku": "82742",
+    "pid": "19582",
+    "eur": 782.9100000000004
+   },
+   {
+    "b": "exclusion",
+    "sku": "HYHM11",
+    "pid": "18566",
+    "eur": 777.8499999999998
+   },
+   {
+    "b": "royal-canin",
+    "sku": "122370",
+    "pid": "16472",
+    "eur": 764.24
+   },
+   {
+    "b": "exclusion",
+    "sku": "PM37",
+    "pid": "18599",
+    "eur": 760.5300000000002
+   },
+   {
+    "b": "josera",
+    "sku": "JOS1004",
+    "pid": "18084",
+    "eur": 735.66
+   },
+   {
+    "b": "exclusion",
+    "sku": "INPS06",
+    "pid": "18551",
+    "eur": 710.2099999999998
+   }
+  ],
+  "sav_vs_price": []
  }
 }
