@@ -1,0 +1,21 @@
+{
+ "v": "dep-061441",
+ "kurimas": 200,
+ "sid": 5798,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1683t f",
+  "md5": "8b2f896b2020fe09179e357b6729e264",
+  "dydis": 559240,
+  "ver": "",
+  "eil": [
+   "721: $av_qty = isset( $v['av_qty'] ) ? (int) $v['av_qty'] : null;",
+   "725: $av_ok = null;",
+   "726: if ( 'av' === $k ) { $av_ok = $reduced ? true : ( null !== $av_qty && $av_qty >= $q ); if ( ! $av_ok ) { $av_truksta = true; } }",
+   "739: 'av_ok' => $av_ok, 'av_qty' => $av_qty, 'reduced' => $reduced, 'bukle' => $bukle, 'b' => $b ? array( 'busena' => $b->busena, 'partija' => (int) $b->partija_id ) : null,"
+  ]
+ }
+}
