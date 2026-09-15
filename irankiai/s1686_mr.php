@@ -1,7 +1,7 @@
 <?php
-/** TEMP PS S1686 mr — RELAUNCH 2 etapas: (faze=alter) nauji stulpeliai; (faze=prekes) kandidatinių prekių skaičiavimas 3 svoriams → opcija ps_relaunch_prekes; (faze=klientai&nuo=0&kiek=1500) auditorijos segmentavimas → ps_relaunch_kontaktai; (faze=suvestine) struktūra. Auditorija: WP vartotojai su _ps_ist_n arba ps_marketing_consent; be suppression/transactional_only. Taisyklė: exact = paskutinis maisto pirkimas ≤12 mėn. ARBA tas pats SKU ≥3 užs. ir ≤18 mėn. */
+/** TEMP PS S1686 mr — RELAUNCH 2 etapas: (&alter) nauji stulpeliai; (&prekes) kandidatinių prekių skaičiavimas 3 svoriams → opcija ps_relaunch_prekes; (&klientai&n0&k1500) auditorijos segmentavimas → ps_relaunch_kontaktai; (be parametrų) struktūra. Auditorija: WP vartotojai su _ps_ist_n arba ps_marketing_consent; be suppression/transactional_only. Taisyklė: exact = paskutinis maisto pirkimas ≤12 mėn. ARBA tas pats SKU ≥3 užs. ir ≤18 mėn. */
 add_action('init', function(){
-  if (!isset($_GET['ps_s1686mr'])) return; global $wpdb; $p=$wpdb->prefix; $o=array('v'=>'S1686 mr'); $t=Petshop_Relaunch::t(); $faze=isset($_GET['faze'])?$_GET['faze']:'suvestine';
+  if (!isset($_GET['ps_s1686mr'])) return; global $wpdb; $p=$wpdb->prefix; $o=array('v'=>'S1686 mr'); $t=Petshop_Relaunch::t(); $faze='suvestine'; foreach(array('alter','prekes','klientai') as $fz) if(isset($_GET[$fz])) $faze=$fz; $nuo=0; $kiek=1500; foreach(array_keys($_GET) as $gk){ if(preg_match('/^n(\d+)$/',$gk,$m)) $nuo=(int)$m[1]; if(preg_match('/^k(\d+)$/',$gk,$m)) $kiek=(int)$m[1]; }
   $T0='2026-09-15'; $m12=date('Y-m-d',strtotime("$T0 -12 months")); $m18=date('Y-m-d',strtotime("$T0 -18 months")); $m24=date('Y-m-d',strtotime("$T0 -24 months"));
   $SV=array('suo'=>array(10,20,30),'kate'=>array(3,5,7));
   $rusis=function($kelias,$g){ if($g==='suo'||$g==='kate') return $g; if(stripos($kelias,'ŠUN')===0||stripos($kelias,'SUN')===0) return 'suo'; if(mb_stripos($kelias,'KAT')===0) return 'kate'; return ''; };
@@ -26,7 +26,7 @@ add_action('init', function(){
       $cache[$pid]=$d; $stat[$d['busena']]=($stat[$d['busena']]??0)+1; }
     update_option('ps_relaunch_prekes',$cache,false); $o['prekiu_busenos']=$stat; $o['pvz']=array_slice(array_filter($cache,function($x){return $x['busena']==='calc';}),0,2);
   } elseif($faze==='klientai'){
-    $nuo=(int)($_GET['nuo']??0); $kiek=(int)($_GET['kiek']??1500); $cache=get_option('ps_relaunch_prekes',array()); $users=$wpdb->get_results($auditorija." LIMIT $kiek OFFSET $nuo",ARRAY_A); $o['apdorota']=count($users); $stat=array(); $dabar=current_time('mysql',true);
+    $cache=get_option('ps_relaunch_prekes',array()); $users=$wpdb->get_results($auditorija." LIMIT $kiek OFFSET $nuo",ARRAY_A); $o['apdorota']=count($users); $stat=array(); $dabar=current_time('mysql',true);
     foreach($users as $u){ $uid=(int)$u['ID']; $email=strtolower(trim($u['user_email'])); $h=hash('sha256',$email); $rows=$eiles($h); list($k,$why)=$kandidatas($rows);
       $seg='generic'; $pid=$k?(int)$k['pid']:null; $ru=$k?$rusis($k['kelias'],$k['g']):''; $duom=null;
       if($k && $why!=='old_purchase'){ $d=$cache[$pid]??null; if(!$d||$d['busena']==='gone') $why='product_gone'; elseif($d['busena']==='unavailable'||$d['busena']==='out_of_stock') $why='product_'.$d['busena']; elseif($d['busena']==='product'){ $seg='product'; $why=$ru?'no_feeding_table':'no_species'; } elseif($d['busena']==='calc'){ $seg='calc'; } }
