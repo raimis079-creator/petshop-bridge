@@ -1,0 +1,27 @@
+{
+ "v": "dep-111227",
+ "kurimas": 200,
+ "sid": 5822,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "aa",
+  "eil": [
+   "49: *    (5 etapas) · Sąskaita (5 etapas) · Parašyti klientui · Atšaukti;",
+   "3950: $rasyti = $sk['mail'] ? '<a class=\"v t\" href=\"mailto:' . esc_attr( $sk['mail'] ) . '?subject=' . rawurlencode( 'Užsakymas #' . $o->get_order_number() . ' — petshop.lt' ) . '\">Parašyti klientui</a>' : '';",
+   "4254: f+='<span style=\"margin-left:auto\"></span>'+(o.red?'<button class=\"v t\" id=\"skRed\"'+(o.red.tipas==='tik_el'?' title=\"lipdukas jau užregistruotas / išsiųsta / uždaryta — keičiamas tik kliento el. paštas\"':'')+'>Redaguoti</button>':'<button class=\"v t\" disabled title=\"lipdukas jau užregistruotas / išsiųsta / uždaryta — keisk rankiniu būdu\">Redaguoti</button>')+(o.nesurinkta?'<a class=\"v t\" href=\"'+esc(o.nesurinkta)+'\" title=\"Grąžinti į „Surinkti“\">Atšaukti surinkimą</a>':''"
+  ],
+  "log": [
+   "[15-Sep-2026 10:58:41 UTC] PHP Warning:  Trying to access array offset on null in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1853\n",
+   "[15-Sep-2026 10:58:41 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841\n",
+   "[15-Sep-2026 11:06:09 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841\n",
+   "[15-Sep-2026 11:06:09 UTC] PHP Warning:  Trying to access array offset on null in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1853\n",
+   "[15-Sep-2026 11:06:09 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841\n",
+   "[15-Sep-2026 11:11:14 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841\n",
+   "[15-Sep-2026 11:11:14 UTC] PHP Warning:  Trying to access array offset on null in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1853\n",
+   "[15-Sep-2026 11:11:14 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841\n"
+  ]
+ }
+}
