@@ -52,3 +52,6 @@ md5 2383174ef717abe0e8d74ea3fed265a6, šablonas 97a74a4027976c271357962ea3876c91
 
 ## S1685 (09-15 pabaiga) — petshop-lifecycle-vartai.php v1.2.0 + refill-pakartoti.php v1.4 GYVAI
 vartai md5 5d2ca9ae69f84b353bd03ee3150f5f1b (bak `.bak_s1685`, deploy `irankiai/s1685_nf`, backfill `s1685_ng`: 5/55 eilučių), šablonas md5 e425e6411d3de4a9270cbd7fa19c9a0e (bak `.bak_s1685e`, deploy `s1685_nd`). Logika: per trumpas „išmoktas" intervalas = papildymas, ne ciklas. Recon `s1685_ne`.
+
+## S1685 (09-15 vakaras) — petshop-planas-langas.php v1.0.1 + petshop-pakartoti.php v1.1.5 GYVAI
+planas-langas md5 (v1.0.0 4748765b…; v1.0.1 — žr. serverį), bak `.bak_s1685`; pakartoti v1.1.5 md5 33d4756e…, bak `.bak_s1685g` (`_ps_pakartoti_is` žymė). Bridge: run.sh polling gali viršyti 300 s (runner queued) — deploy vis tiek įvyksta, patikrinti atskira užklausa.
