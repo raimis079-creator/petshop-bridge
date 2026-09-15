@@ -1,0 +1,73 @@
+{
+ "v": "dep-135829",
+ "kurimas": 200,
+ "sid": 5858,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "TEST": {
+  "v": "S1685 mx",
+  "shots": [
+   {
+    "n": "s1685_pak_kasa2",
+    "u": "https://petshop.lt/?ps_pakartoti=35948&z=c2e54d62b0082f941895",
+    "w": 1440,
+    "eval": "(()=>{const err=[...document.querySelectorAll('.woocommerce-error li, .woocommerce-error, .message-container')].map(e=>e.innerText.replace(/\\s+/g,' ').trim().slice(0,200));const rows=[...document.querySelectorAll('tr.cart_item, .cart_item')].map(r=>r.innerText.replace(/\\s+/g,' ').trim().slice(0,80));return {url:location.pathname,err,rows,body:document.querySelector('.woocommerce')?.innerText.replace(/\\s+/g,' ').slice(0,600)}})()"
+   },
+   {
+    "n": "s1685_pak_krepselis",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 1440,
+    "eval": "(()=>{const err=[...document.querySelectorAll('.woocommerce-error li, .woocommerce-error, .message-container')].map(e=>e.innerText.replace(/\\s+/g,' ').trim().slice(0,200));const rows=[...document.querySelectorAll('tr.cart_item, .cart_item')].map(r=>r.innerText.replace(/\\s+/g,' ').trim().slice(0,80));return {url:location.pathname,err,rows,body:document.querySelector('.woocommerce')?.innerText.replace(/\\s+/g,' ').slice(0,600)}})()",
+    "full": true
+   }
+  ]
+ },
+ "shots": {
+  "s1685_pak_kasa2": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "url": "/kasa/",
+    "err": [],
+    "rows": [],
+    "body": "Apmokėjimas kol kas negalimas, grįžkite į krepšelį ir pakeiskite nurodytas prekes ar jų kiekius. GRĮŽTI Į KREPŠELĮ"
+   }
+  },
+  "s1685_pak_krepselis": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "url": "/krepselis/",
+    "err": [
+     "Deja, šiuo metu neturime pakankamo produkto \"Animonda GranCarno Adult Sensitive Beef + Potato: konservai jautriems šunims su gryna jautiena ir bulvėmis, 400 g\" kiekio, kad galėtume įvykdyti Jūsų užsak",
+     "Deja, šiuo metu neturime pakankamo produkto \"Animonda GranCarno Adult Sensitive Beef + Potato: konservai jautriems šunims su gryna jautiena ir bulvėmis, 400 g\" kiekio, kad galėtume įvykdyti Jūsų užsak",
+     "Deja, šiuo metu neturime pakankamo produkto \"Animonda GranCarno Adult Sensitive Beef + Potato: konservai jautriems šunims su gryna jautiena ir bulvėmis, 400 g\" kiekio, kad galėtume įvykdyti Jūsų užsak",
+     "\"Konservų dėžė, 400 g. Be vištienos\" cannot be purchased as configured. The configuration you have selected is not valid since you cannot select more than 1 of \"Animonda GranCarno Adult Sensitive Beef",
+     "\"Konservų dėžė, 400 g. Be vištienos\" cannot be purchased as configured. The configuration you have selected is not valid since you cannot select more than 1 of \"Animonda GranCarno Adult Sensitive Beef"
+    ],
+    "rows": [
+     "× Konservų dėžė, 400 g. Be vištienos KEISTI PASIRINKIMUS 14,75 € produkto kiekis",
+     "Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 400 g 2,20 ",
+     "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėr",
+     "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaugusiems šunims su jau",
+     "Animonda GranCarno Adult Sensitive Beef + Potato: konservai jautriems šunims su ",
+     "Animonda GranCarno Adult: konservai šunims su širdimis, 400 g 2,45 € 1",
+     "× Konservų dėžė, 400 g. Be vištienos KEISTI PASIRINKIMUS 13,84 € produkto kiekis",
+     "Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 400 g 2,20 ",
+     "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėr",
+     "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaugusiems šunims su jau",
+     "Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 400 g 2,36 €",
+     "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 400 g 2,3",
+     "× Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukšt"
+    ],
+    "body": "Deja, šiuo metu neturime pakankamo produkto \"Animonda GranCarno Adult Sensitive Beef + Potato: konservai jautriems šunims su gryna jautiena ir bulvėmis, 400 g\" kiekio, kad galėtume įvykdyti Jūsų užsakymą (turimas kiekis: 1). Atsiprašome. \"Konservų dėžė, 400 g. Be vištienos\" cannot be purchased as configured. The configuration you have selected is not valid since you cannot select more than 1 of \"Animonda GranCarno Adult Sensitive Beef + Potato: konservai jautriems šunims su gryna jautiena ir bulvėmis, 400 g\". PRODUKTAS KAINA KIEKIS SUMA × Konservų dėžė, 400 g. Be vištienos KEISTI PASIRINKIMUS "
+   }
+  }
+ }
+}
