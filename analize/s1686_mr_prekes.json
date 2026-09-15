@@ -1,22 +1,135 @@
 {
- "v": "dep-200737",
+ "v": "dep-201032",
  "kurimas": 200,
- "sid": 5904,
+ "sid": 5906,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
  "RUN": {
   "v": "S1686 mr",
-  "segmentai": [],
-  "rusis": [
+  "auditorija": 5665,
+  "prekes_n": 317,
+  "prekiu_busenos": {
+   "product": 226,
+   "calc": 47,
+   "unavailable": 23,
+   "out_of_stock": 20,
+   "gone": 1
+  },
+  "pvz": [
    {
-    "segmentas": "calc",
-    "rusis": "dog",
-    "n": "1"
+    "pid": 17992,
+    "rusis": "kate",
+    "busena": "calc",
+    "pav": "Josera Senior 10 kg - sausas maistas vyresnio amžiaus katėms",
+    "kaina": 47.09,
+    "url": "https://petshop.lt/product/josera-senior-10-kg-sausas-maistas-vyresnio-amziaus-katems/",
+    "img": "https://petshop.lt/wp-content/uploads/2026/06/josera-senior-sausas-maistas-vyresnems-katems-2-400x400.jpg",
+    "eilutes": [
+     {
+      "kg": 3,
+      "g": {
+       "min": 25,
+       "max": 40
+      },
+      "eur": {
+       "min": 0.12,
+       "max": 0.19
+      },
+      "d": {
+       "min": 250,
+       "max": 400
+      }
+     },
+     {
+      "kg": 5,
+      "g": {
+       "min": 55,
+       "max": 70
+      },
+      "eur": {
+       "min": 0.26,
+       "max": 0.33
+      },
+      "d": {
+       "min": 142,
+       "max": 182
+      }
+     },
+     {
+      "kg": 7,
+      "g": {
+       "min": 70,
+       "max": 95
+      },
+      "eur": {
+       "min": 0.33,
+       "max": 0.45
+      },
+      "d": {
+       "min": 105,
+       "max": 143
+      }
+     }
+    ]
+   },
+   {
+    "pid": 18084,
+    "rusis": "kate",
+    "busena": "calc",
+    "pav": "Josera Indoor 10 kg - sausas maistas naminėms sterilizuotoms katėms",
+    "kaina": 51.09,
+    "url": "https://petshop.lt/product/josera-indoor-10-kg-sausas-maistas-naminems-sterilizuotoms-katems/",
+    "img": "https://petshop.lt/wp-content/uploads/2026/06/josera-indoor-sausas-maistas-katems_1771004721-261x400.jpg",
+    "eilutes": [
+     {
+      "kg": 3,
+      "g": {
+       "min": 30,
+       "max": 45
+      },
+      "eur": {
+       "min": 0.15,
+       "max": 0.23
+      },
+      "d": {
+       "min": 222,
+       "max": 334
+      }
+     },
+     {
+      "kg": 5,
+      "g": {
+       "min": 60,
+       "max": 80
+      },
+      "eur": {
+       "min": 0.31,
+       "max": 0.41
+      },
+      "d": {
+       "min": 125,
+       "max": 167
+      }
+     },
+     {
+      "kg": 7,
+      "g": {
+       "min": 80,
+       "max": 105
+      },
+      "eur": {
+       "min": 0.41,
+       "max": 0.54
+      },
+      "d": {
+       "min": 95,
+       "max": 125
+      }
+     }
+    ]
    }
-  ],
-  "viso": 1,
-  "pvz_calc": null
+  ]
  }
 }
