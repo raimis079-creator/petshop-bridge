@@ -12,8 +12,7 @@ $n = count( $d['prekes'] ); $eur = function( $v ) { return number_format( (float
 
 $subject = 'Gal norite pakartoti ankstesnį užsakymą?';
 
-$body = Petshop_Email_Layout::h1( 'Pakartoti ankstesnį užsakymą?' );
-$body .= Petshop_Email_Layout::p( 'Praėjo šiek tiek laiko nuo ankstesnio pirkimo. Jei augintiniui vis dar tinka tos pačios prekės, jas galite užsisakyti dar kartą vienu paspaudimu. Kiekius prieš apmokėdami galėsite pakeisti.' );
+$body = Petshop_Email_Layout::p( 'Praėjo šiek tiek laiko nuo ankstesnio pirkimo. Jei augintiniui vis dar tinka tos pačios prekės, jas galite užsisakyti dar kartą vienu paspaudimu. Kiekius prieš apmokėdami galėsite pakeisti.' );
 if ( $n ) {
 	$eil = '';
 	foreach ( $d['prekes'] as $pr ) {
@@ -39,7 +38,7 @@ if ( ! empty( $d['optout'] ) ) $antr['Nenoriu tokių priminimų'] = $d['optout']
 if ( $antr ) $body .= Petshop_Email_Layout::secondary( $antr );
 
 echo Petshop_Email_Layout::wrap( array(
-	'subject'    => $subject,
+	'subject'    => 'Pakartoti ankstesnį užsakymą?', // antraštė laiške (open()); el. laiško tema — $subject
 	'preheader'  => 'Ankstesnio užsakymo prekes galite pakartoti vienu paspaudimu.',
 	'body'       => $body,
 	'flow_class' => $fc,
