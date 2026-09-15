@@ -1,0 +1,50 @@
+{
+ "v": "dep-201227",
+ "kurimas": 200,
+ "sid": 5907,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RECON": {
+  "v": "S1686 ms",
+  "stat": {
+   "suo|nomap|unavailable": 80,
+   "kate|nomap|unavailable": 63,
+   "suo|map|unavailable": 29,
+   "suo|map|needs_input": 24,
+   "kate|map|needs_input": 21,
+   "kate|map|unavailable": 5,
+   "-|nomap|-": 2,
+   "-|map|-": 2
+  },
+  "pvz": [
+   "18587 Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg → unavailable",
+   "18159 JOSERA BALANCE pašaras šunims su vištiena, 12,5 kg → needs_input",
+   "17978 Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria virškinimo sistema → needs_input",
+   "18575 Exclusion Hypoallergenic mini sausas mažų veislių šunų maistas su žuvimi ir bulvėmis S 2 kg → unavailable",
+   "18032 Josera Mini Chicken&Rice 10 kg - sausas maistas suaugusiems mažų veislių šunims su paukštiena → needs_input",
+   "18590 Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg → unavailable"
+  ],
+  "needs_input_pvz": [
+   18159,
+   [
+    {
+     "code": "MISSING_CONDITION_DIMENSION",
+     "severity": "info",
+     "layer": "calculator"
+    }
+   ],
+   {
+    "feeding_table_id": 1,
+    "support": "calculator_supported",
+    "package": {
+     "status": "resolved",
+     "sellable_unit_food_g": 12500,
+     "source_value": "12,5 kg",
+     "method": "canonical_term"
+    }
+   }
+  ]
+ }
+}
