@@ -1,4 +1,4 @@
-# SPEC — soft opt-out kasoje (ERĮ 81(2)) · S1684 · laukia Raimio žodžių, tada deploy
+# SPEC — soft opt-out kasoje (ERĮ 81(2)) · S1684 · GYVAI v1.0.1 (S1685, 09-15) — galutinis tekstas STARTAS S1685 skyriuje
 
 **Kur:** klasikinė kasa `[woocommerce_checkout]`, po el. pašto lauku (`woocommerce_after_checkout_billing_form` arba po `billing_email`). Naujas mu-plugin `petshop-sutikimai.php` (patikrinti, ar vardas/klasė laisvi — S1679 pamoka).
 
