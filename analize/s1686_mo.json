@@ -1,0 +1,33 @@
+{
+ "v": "dep-194944",
+ "kurimas": 200,
+ "sid": 5899,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "TEST": {
+  "v": "S1686 mo",
+  "shots": [
+   {
+    "n": "s1686_calc20",
+    "u": "https://petshop.lt/product/eukanuba-veterinary-diets-dermatosis-fp-12kg/?svoris=20&utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc&utm_term=20kg&cid=X5PuZTo6iTwR9o9sOteu",
+    "eval": "new Promise(function(r){setTimeout(function(){var w=document.getElementById('ps-calc-w'),o=document.querySelector('.ps-calc-out');r({w:w?w.value:null,out:o?o.innerText.slice(0,500):null,scrollY:window.scrollY});},4000);})",
+    "full": 0
+   }
+  ]
+ },
+ "shots": {
+  "s1686_calc20": {
+   "status": 201,
+   "url": "https://petshop.lt/product/eukanuba-veterinary-diets-dermatosis-fp-12kg/?svoris=20&utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc&utm_term=20kg&cid=X5PuZTo6iTwR9o9sOteu",
+   "title": "Eukanuba Veterinary Diets Dermatosis FP 12kg - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "w": "20",
+    "out": "Apie 54–60 dienų\nApie 1,10 €–1,21 € per dieną\nGamintojo rekomenduojama šėrimo norma: 200–220 g per dieną\nNorite tikslesnio skaičiavimo?\nNurodę šuns aktyvumą, gausite tikslesnį skaičiavimą. Išsaugosime pasirinktą maistą ir svorį, tad kitą kartą jų vesti nereikės.\nPatikslinti ir išsaugoti",
+    "scrollY": 1300
+   }
+  }
+ }
+}
