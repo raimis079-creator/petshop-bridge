@@ -35,3 +35,6 @@ Dokumentai: `dokumentai/marketingas/Q4_operacinis_planas_s1684.html` (v1.2 basel
 
 ### Atviri Raimio sprendimai
 - Soft opt-out teksto žodžiai (spec) · legacy laiškas 561 prenumeratoriams · 5 100 istorinių informacinis laiškas (nuspręsta „taip, vieną, tyliai" — tekstas ir siuntimas per Sender dalimis, po sprinto) · `ps_lifecycle_vartai`=`atvira` esamiems 38 tracking klientams be žymos (dabar `soft` → jiems laiškų nebus).
+
+## S1685 (2026-09-15) — Ads offline konversijų klaida RASTA ir PATAISYTA
+Ads UI „Įkėlimai": skriptas kas rytą 05:21 kelia, bet 100 % eilučių klaida `The value '2026-09-14 09:39:14+03:00' in column 'Conversion Time' is invalid` (nuo 09-12, 4 įkėlimai, 0 sėkmingų). Priežastis — `petshop-ads-offline.php` formatas `Y-m-d H:i:sP` (+03:00). **Deploy v1.2** (md5 4e5b35c4…, bak `ps-backups/petshop-ads-offline.php.bak_s1685`, `irankiai/s1685_mc.php`): `setTimezone(Europe/Vilnius)->format('Y-m-d H:i:s')` — paskyros laiko juosta be poslinkio. Endpoint'as `?ps_ads_offline=<raktas>&dienos=3` — 12 eilučių, formatas teisingas. Kitas įkėlimas 09-16 05:21; Raimis gali paleisti skriptą rankiniu būdu dabar. Užsakymai iki 09-12 (langas 3 d.) į Ads nebepateks — nebent kartą paleisti su `dienos=7`.
