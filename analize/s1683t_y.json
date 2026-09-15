@@ -1,0 +1,54 @@
+{
+ "v": "dep-104650",
+ "kurimas": 200,
+ "sid": 5820,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "y",
+  "block": [],
+  "block_cols": [
+   "id",
+   "ts",
+   "sku",
+   "brand",
+   "category",
+   "decision",
+   "reason"
+  ],
+  "hooks": {
+   "wp_insert_post_data": [
+    "Petshop_Rankos::vartai @petshop-rankos.php:114"
+   ],
+   "save_post_product": [
+    "Petshop_FBT::save_meta_box @petshop-fbt.php:413",
+    "closure @class-wc-mnm-cache.php:188",
+    "closure @class-wc-mnm-cache.php:188",
+    "Petshop_AV_Stock::quick_edit_save @petshop-av-stock.php:297",
+    "Petshop_Product_Cost_Metabox::save_metabox @class-product-cost-metabox.php:579"
+   ],
+   "woocommerce_before_product_object_save": [
+    "Petshop_WC_Sync::wc_pradeda @petshop-wc-sync.php:82",
+    "Petshop_Rinkiniai::likucio_uzraktas_crud @petshop-rinkiniai.php:913"
+   ],
+   "transition_post_status": [
+    "Petshop_Ivykiai::statusas_pakeistas @petshop-ivykiai.php:313",
+    "Petshop_Katalogas::sekti_publikavima @petshop-katalogas.php:5656",
+    "Petshop_Rankos::busena_pasikeite @petshop-rankos.php:86"
+   ]
+  },
+  "meta": {
+   "pilnumas": "100",
+   "truksta": "",
+   "draft_reason": "",
+   "vf_blocked": "",
+   "vf_stock": "",
+   "vf_status": ""
+  },
+  "meta_keys_vf_ps": [
+   "_wc_review_count"
+  ]
+ }
+}
