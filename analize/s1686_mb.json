@@ -1,0 +1,134 @@
+{
+ "v": "dep-162851",
+ "kurimas": 200,
+ "sid": 5884,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RECON": {
+  "v": "S1686 mb",
+  "tpl": {
+   "win-back-60": "<?php\n/**\n * Sablonas: win_back_60 — pirmas gryzimo laiskas (60 d. be pirkimo).\n * MARKETING: consent tikrina dispatch, atsisakymo nuoroda wrap'e.\n * BE nuolaidu, BE netikros skubos (4.4.3). Tonas ramus.\n * Kintamieji: $payload, $flow_class, $recipient. Nustato: $subject.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$shop  = isset( $payload['shop_url'] ) ? (string) $payload['shop_url'] : home_url( '/parduotuve/' );\n$email = isset( $recipient ) ? $recipient : '';\n$fc    = isset( $flow_class ) ? $flow_class : 'marketing';\n\n$subject = 'Gal jau metas papildyti atsargas?';\n\n$body = Petshop_Email_Layout::p(\n\t'Jei augintinio maisto ar priežiūros priemonių atsargos jau senka, užsukite — viską rasite petshop.lt.'\n);\n$body .= Petshop_Email_Layout::button( $shop, 'Apsilankyti parduotuvėje' );\n\necho Petshop_Email_Layout::wrap( array(\n\t'subject'    => $subject,\n\t'preheader'  => 'Maistas ir augintinio priežiūros prekės — petshop.lt.',\n\t'body'       => $body,\n\t'flow_class' => $fc,\n\t'email'      => $email,\n\t'reason'     => 'Gavote šį laišką, nes esate petshop.lt klientas ir sutikote gauti mūsų naujienas.',\n) );\n",
+   "refill": "<?php\n/**\n * Sablonas: refill_due — maisto gali netrukus pritrukti.\n *\n * TEKSTAS PATVIRTINTAS 2026-07-31 (Raimis). Saltinis\n * `petshop_445_pirmi_sablonai_v1.md` (2026-07-06) SABLONAS 2 numate\n * automatinio papildymo pazadus — jie SAMONINGAI PASALINTI, zr. zemiau.\n *\n * ============================================================\n * M10 recurring replenishment NEIGYVENDINTAS.\n * Automatinio papildymo tekstai ir nuorodos SAMONINGAI NERODOMI,\n * kol nera prenumeratos valdymo ir pasikartojanciu mokejimu.\n *\n * Patikrinta 2026-07-31: ps_subscriptions lenteles NERA · Petshop_Subscriptions\n * klases NERA · subscription plugin'u NERA · prenumeratos puslapiu NERA ·\n * WC `subscription` produkto tipo NERA · Paysera supports=['products'],\n * pasikartojanciu mokejimu NEPALAIKO.\n *\n * PASALINTA is saltinio: „leiskite mums pasirupinti automatiskai\" (preheader),\n * antras teksto sakinys apie regulariu papildyma, antrinis linkas\n * „Nustatyti regulariu papildyma\". Tai butu netikras produkto pazadas.\n * ============================================================\n *\n * Kintamieji: $payload, $flow_class, $recipient. Nustato: $subject.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$reorder = isset( $payload['reorder_url'] ) ? $payload['reorder_url'] : '';\n$fb_url  = isset( $payload['feedback_url'] ) ? $payload['feedback_url'] : '';\n$email   = isset( $recipient ) ? $recipient : '';\n$fc      = isset( $flow_class ) ? $flow_class : 'service';\n\n// AUGINTINIO VARDAS SIAME SABLONE NENAUDOJAMAS (Raimio sprendimas 2026-07-31).\n// Lietuviu kalba reikalauja kilmininko: „Rekso maisto\", ne „Reksas maisto\".\n// Automatinis linksniavimas NEPATIKIMAS — luztu ties uzsienietiskais vardais,\n// trumpiniais, nelinksniuojamais vardais ir neteisingai nustatyta gimine.\n// Atskiro kilmininko prasyti anketoje — per sunku del vieno sakinio.\n// Universali forma visada taisyklinga; 5% maziau personalizacijos geriau\n// nei „Reksas maisto\", kuris primena pigų mail merge, ne rupesti klientu.\n// Varda galima naudoti TIK konstrukcijose, kur linksniuoti nereikia.\n\n$subject = 'Jūsų augintinio maisto gali netrukus pritrūkti';\n\n$body = Petshop_Email_Layout::p(\n\t'Pagal ankstesnį pirkimą apskaičiavome, kad jūsų augintinio maisto gali netrukus pritrūkti.'\n);\n\nif ( $reorder ) {\n\t$body .= Petshop_Email_Layout::button( $reorder, 'Pakartoti dabar' );\n}\n\n// Antrinis TEKSTINIS veiksmas — S323 scanner-safe kalibravimo puslapis.\nif ( $fb_url ) {\n\t$body .= Petshop_Email_Layout::secondary( array( 'Patikslinti priminimą' => $fb_url ) );\n}\n\necho Petshop_Email_Layout::wrap( array(\n\t'subject'    => $subject,\n\t'preheader'  => 'Maisto gali netrukus pritrūkti — pakartokite užsakymą, kai bus patogu.',\n\t'body'       => $body,\n\t'flow_class' => $fc,\n\t'email'      => $email,\n\t'reason'     => 'Gavote šį laišką, nes pirkote šį maistą petshop.lt.',\n) );\n"
+  },
+  "dispatch_grep": [
+   "40: *   service       — su preke/paslauga susijes. Marketingo consent NEREIKIA,",
+   "42: *   marketing     — reikalauja PS_MARKETING_CONSENT = true.",
+   "58: // --- Su preke susije (TZ §4.4.5: rodoma visiems, be marketingo consent) ---",
+   "60: // S317: cart_abandoned = MARKETINGAS (privalomas consent).",
+   "63: 'cart_abandoned'          => array( 'class' => 'marketing', 'template' => 'cart-abandoned-1',  'delay' => 0 ),",
+   "66: 'cart_abandoned_2'        => array( 'class' => 'marketing', 'template' => 'cart-abandoned-2',  'delay' => 0 ),",
+   "73: // --- Marketingas (reikia PS_MARKETING_CONSENT) ---",
+   "74: 'win_back_60'             => array( 'class' => 'marketing', 'template' => 'win-back-60',   'delay' => 0 ),",
+   "75: 'win_back_90'             => array( 'class' => 'marketing', 'template' => 'win-back-90',   'delay' => 0 ),",
+   "76: 'win_back_120'            => array( 'class' => 'marketing', 'template' => 'win-back-120',  'delay' => 0 ),",
+   "77: 'legacy_reactivation_l1'  => array( 'class' => 'marketing', 'template' => 'legacy-l1',     'delay' => 0 ),",
+   "78: 'founding_activation'     => array( 'class' => 'marketing', 'template' => 'founding',      'delay' => 0 ),",
+   "83: return apply_filters( 'petshop_email_flows', $flows );",
+   "158: public static function enqueue( $flow, $email, $payload = array(), $args = array() ) {",
+   "223: //    Sender turi du atskirus kanalus: email=marketingas, temail=transakciniai.",
+   "224: //    Marketingo atsisakymas NEGALI blokuoti uzsakymo/refill/prenumeratos laisku.",
+   "225: $channel = ( 'marketing' === $flow_class )",
+   "226: ? Petshop_Email_Suppression::CH_MARKETING",
+   "249: // 3) Globalus \"tik transakciniai\" pasirinkimas — stabdo service ir marketing.",
+   "254: // 4) Marketingui butinas aiskus sutikimas.",
+   "255: if ( 'marketing' === $flow_class ) {",
+   "256: // S321: BUTINAI per Contact_Policy::has_consent() — ps_get_marketing_consent()",
+   "271: $extra = apply_filters( 'petshop_email_eligibility',",
+   "283: return (bool) apply_filters( 'petshop_email_is_suppressed', false, $email );",
+   "291: return (bool) apply_filters( 'petshop_email_transactional_only', false, $email );",
+   "300: * (marketingo atsisakymas butu uzbloikaves transakcinius).",
+   "385: $prepared = apply_filters( 'petshop_email_prepare_context', $context, $flow, $row );",
+   "420: $provider = apply_filters( 'petshop_email_provider', null );",
+   "481: public static function render( $flow, $payload, $row = array() ) {",
+   "489: $custom = apply_filters( 'petshop_email_template_path', $file, $flow, $slug );"
+  ],
+  "jobs_flow": [
+   {
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "skip_reason": "consent_missing",
+    "n": "2"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "sent",
+    "skip_reason": null,
+    "n": "4"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "skip_reason": "consent_missing",
+    "n": "18"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "sent",
+    "skip_reason": null,
+    "n": "3"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "skip_reason": "consent_missing",
+    "n": "1"
+   },
+   {
+    "flow": "consent_changed",
+    "status": "sent",
+    "skip_reason": null,
+    "n": "6"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "skip_reason": null,
+    "n": "15"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "skip_reason": null,
+    "n": "15"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "skip_reason": null,
+    "n": "15"
+   }
+  ],
+  "refill_status": [
+   {
+    "status": "active",
+    "n": "56",
+    "mn": "2026-09-23",
+    "mx": "2026-11-30"
+   }
+  ],
+  "kand60": [],
+  "kand60_n": "0",
+  "klientai_tbl": [],
+  "klientai_cols": [],
+  "ist_segm": [
+   {
+    "s": "a<=90",
+    "n": "540"
+   },
+   {
+    "s": "b91-180",
+    "n": "611"
+   },
+   {
+    "s": "c181-365",
+    "n": "993"
+   },
+   {
+    "s": "d>365",
+    "n": "3287"
+   }
+  ]
+ }
+}
