@@ -1,0 +1,30 @@
+{
+ "v": "dep-170623",
+ "kurimas": 200,
+ "sid": 5886,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RECON": {
+  "v": "S1686 md",
+  "dispatch": [
+   "105: flow_class VARCHAR(20) NOT NULL DEFAULT 'service',",
+   "190: 'flow_class'        => $cfg['class'],",
+   "215: public static function check_eligibility( $flow_class, $email, $flow = '', $context = array() ) {",
+   "225: $channel = ( 'marketing' === $flow_class )",
+   "245: if ( 'transactional' === $flow_class ) {",
+   "255: if ( 'marketing' === $flow_class ) {",
+   "273: $flow, $flow_class, $email, $context );",
+   "344: $elig = self::check_eligibility( $row['flow_class'], $email, $flow, $context );",
+   "478: * Renderina sablona is repo (templates/emails/{slug}.php).",
+   "487: $file = PETSHOP_CORE_DIR . 'templates/emails/' . $slug . '.php';",
+   "489: $custom = apply_filters( 'petshop_email_template_path', $file, $flow, $slug );",
+   "490: if ( ! file_exists( $custom ) ) {",
+   "495: $flow_class = isset( $row['flow_class'] ) ? $row['flow_class'] : 'service';",
+   "498: include $custom; // sablonas gali nustatyti $subject; mato $payload, $flow_class, $recipient"
+  ],
+  "layout_close": "public static function close( $flow_class = 'service', $email = '', $reason = '' ) {\n$out  = self::divider();\n$out .= '<tr><td style=\"font-size:12px;line-height:1.6;color:' . self::C_MUTED . ';padding-top:16px;\">';\n$out .= 'UAB Avesa, Liucionių g. 46, Liucionys, LT-15166<br>';\n\nif ( $reason ) {\n$out .= esc_html( $reason ) . '<br>';\n}\n\nif ( 'marketing' === $flow_class ) {\n// Teisinis reikalavimas: veikianti atsisakymo nuoroda kiekviename laiske.\n$u = class_exists( 'Petshop_Unsubscribe' ) ? Petshop_Unsubscribe::link( $email ) : '';\nif ( $u ) {\n$out .= '<a href=\"' . esc_url( $u ) . '\" style=\"color:' . self::C_MUTED . ';\">Atsisakyti pranešimų</a>';\n}\n} elseif ( 'service' === $flow_class ) {\n// S320: „Pranesimu nustatymai\" NERODOM kaip nuorodos — tokio puslapio\n// DAR NERA. Negyvas footerio linkas nera geresnis uz negyva CTA.\n// Kai atsiras realus destination — pakeisti i <a href>.\n$out .= 'Šis laiškas susijęs su jūsų užsakymu ar paskyra.';\n}\n\n$out .= '</td></tr>';\n$out .= '</table></td></tr></table></body></html>';\nreturn $out;\n}\n\n/**\n* Patogumo metodas: surenka viska i viena eilute.\n*/\npublic static function wrap( $args ) {\n$a = wp_parse_args( $args, array(",
+  "refill_fire": "if ( ! $row->user_email || ! class_exists( 'Petshop_Event_Registry' ) ) {\ncontinue;\n}\n$product = wc_get_product( $row->product_id );\n$product_name = $product ? $product->get_name() : '(produktas #' . $row->product_id . ')';\n\nPetshop_Event_Registry::emit( 'refill_due', $row->user_email, array(\n'pet_id'               => $row->pet_id ? (int) $row->pet_id : 0,\n'product_id'           => (int) $row->product_id,\n'product_name'         => $product_name,\n'predicted_empty_date' => $row->predicted_empty_date,\n'confidence'           => (float) $row->confidence,\n'last_order_id'        => (int) $row->last_order_id,\n'days_since_last_order' => (int) round( ( time() - strtotime( $row->last_purchase_date ) ) / 86400 ),\n), array(\n'event_id' => 'refill_due_' . $row->user_id . '_' . $row->product_id . '_' . $row->predicted_empty_date,\n) );\n\n// --- S312: laiskas VISADA i outbox'a; sprendimas fiksuojamas ten.\n// Srauto specifines salygos tikrinamos per petshop_email_eligibility\n// filtra (zr. eligibility_filter()), kad praleidimo priezastis butu\n// matoma ataskaitose, o ne dingtu tyliame return'e.\nif ( class_exists( 'Petshop_Email_Dispatch' ) ) {\n$pet_name = '';\nif ( $row->pet_id ) {\n$pet_name = (string) $wpdb->get_var( $wpdb->prepare(\n\"SELECT pet_name FROM {$wpdb->prefix}ps_pets WHERE id = %d\", $row->pet_id ) );\n}\nPetshop_Email_Dispatch::enqueue(\n'refill_due',\n$row->user_email,\narray(\n'pet_name'     => $pet_name,\n'product_id'   => (int) $row->product_id,\n'product_name' => $product_name,\n'product_url'  => $product ? $product->get_permalink() : home_url( '/' ),\n'reorder_url'  => add_query_arg( 'add-to-cart', (int) $row->product_id, wc_get_cart_url() ),\n'confidence'   => (float) $row->confidence,\n),\narray(\n'job_key' => 'refill_due:' . $row->user_id . ':' . $row->product_id . ':' . $row->predicted_empty_date,\n'user_id' => (int) $row->user_id,\n// context — reikalingas eligibility filtrui\n'context' => array(\n'user_id'            => (int) $row->user_id,\n'product_id'         => (int) $row->product_id,\n'last_purchase_date' => $row->last_purchase_date,\n// S323: reikalinga kalibravimo nuorodai (feedback_url)\n'refill_id'          => (int) $row->id,\n'cycle'              => (string) $row->predicted_empty_date,\n),\n)\n);\n}\n\n// Pazymim kad fire'inta (status -> notified), kad nekartotume\n$wpdb->update( $table, array(\n'status'     => 'notified',\n'updated_at' => gmdate( 'Y-m-d H:i:s' ),\n), array( 'id' => $row->id ) );"
+ }
+}
