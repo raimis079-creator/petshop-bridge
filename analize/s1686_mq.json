@@ -1,0 +1,100 @@
+{
+ "v": "dep-200354",
+ "kurimas": 200,
+ "sid": 5902,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RECON": {
+  "v": "S1686 mq",
+  "ist_meta": [
+   {
+    "k": "_ps_ist_n",
+    "n": "5666"
+   },
+   {
+    "k": "_ps_ist_paskutinis",
+    "n": "5589"
+   },
+   {
+    "k": "_ps_ist_pirmas",
+    "n": "5589"
+   },
+   {
+    "k": "_ps_ist_suma",
+    "n": "5666"
+   },
+   {
+    "k": "ps_marketing_consent",
+    "n": "561"
+   },
+   {
+    "k": "ps_similar_optout",
+    "n": "6"
+   },
+   {
+    "k": "ps_soft_optin_eligible",
+    "n": "6"
+   }
+  ],
+  "hash_kodas": [
+   "17: * - klientas_id — per wp_users el. paštą (S1539 importas), klientas_email_hash —",
+   "18: *   SHA2(LOWER(TRIM(email)),256) — identiškas Petshop_Faktai::email_hash().",
+   "116: update_option( self::OPT_RODINIU, md5( $riba . '|1' ), false );",
+   "121: if ( self::paruostas() && get_option( self::OPT_RODINIU ) !== md5( self::riba() . '|1' ) ) { self::atnaujinti_rodinius(); }",
+   "192: 'klientas_email_hash'   => \"SHA2(LOWER(TRIM(x.email)),256)\",",
+   "254: 'klientu' => (int) $wpdb->get_var( \"SELECT COUNT(DISTINCT klientas_email_hash) FROM $IU\" ),",
+   "401: return \" AND EXISTS (SELECT 1 FROM $u psu JOIN $e psf ON psf.uzsakymas_id = psu.uzsakymas_id WHERE psu.klientas_email_hash = $kol \" . self::eil_where( 'psf' ) . ') ';",
+   "440: return \" AND EXISTS (SELECT 1 FROM $d psk WHERE psk.raktas = {$a}.klientas_email_hash \" . self::dim_salygos( 'psk' ) . ') ';"
+  ],
+  "hash_faktai": [
+   "petshop-faktai.php:117: klientas_email_hash CHAR(64) NOT NULL DEFAULT '',",
+   "petshop-faktai.php:168: KEY klientas (klientas_email_hash),",
+   "petshop-faktai.php:310: private static function email_hash( $order ) {",
+   "petshop-faktai.php:312: return $e === '' ? '' : hash( 'sha256', $e );",
+   "petshop-faktai.php:384: $hash     = self::email_hash( $order );",
+   "petshop-faktai.php:458: 'klientas_email_hash'      => $hash,",
+   "petshop-faktai.php:680: \"SELECT COUNT(*) FROM $t WHERE klientas_email_hash=%s AND apmoketa_at<=%s\", $hash, $apmoketa ) );",
+   "petshop-faktai.php:682: \"SELECT MAX(apmoketa_at) FROM $t WHERE klientas_email_hash=%s AND apmoketa_at<=%s\", $hash, $apmoketa ) );",
+   "petshop-faktai.php:686: $ni = (int) $wpdb->get_var( $wpdb->prepare( \"SELECT COUNT(*) FROM $ti WHERE klientas_email_hash=%s AND apmoketa_at IS NOT NULL AND apmoketa_at<=%s\", $hash, $apmoketa ) );",
+   "petshop-faktai.php:689: $paski = $wpdb->get_var( $wpdb->prepare( \"SELECT MAX(apmoketa_at) FROM $ti WHERE klientas_email_hash=%s AND apmoketa_at<=%s\", $hash, $apmoketa ) );"
+  ],
+  "gyvunas": [
+   {
+    "gyvunas": "",
+    "n": "632"
+   },
+   {
+    "gyvunas": "kate",
+    "n": "6301"
+   },
+   {
+    "gyvunas": "suo",
+    "n": "8491"
+   }
+  ],
+  "kelias_pvz": [
+   "ŠUNIMS > Maistas šunims > Konservai šunims",
+   "KATĖMS > Maistas katėms > Konservai katėms",
+   "ŠUNIMS > Maistas šunims > Sausas maistas šunims",
+   "KATĖMS > Maistas katėms > Sausas maistas katėms",
+   "ŽUVIMS > Akvariumo žuvyčių maistas",
+   "ŽUVIMS > Tvenkinių žuvų maistas"
+  ],
+  "terra_meta": [],
+  "hash_test": {
+   "sha256_lower": "56c73d907cbb97befe91aef2e739f0085a420792fdc319945de9ce716e0bfc35",
+   "yra_ist": "0",
+   "hash_pvz": "000e6ef5868cd2409860f0e7543a898d0b0e4cd59d54db7c1f86e2f5abb8ff46"
+  },
+  "suppr_tbl": "gaj6_ps_email_suppression",
+  "suppr_n": [
+   {
+    "channel": "marketing",
+    "n": "3"
+   }
+  ],
+  "wp_users_ist": 5666
+ }
+}
