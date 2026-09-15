@@ -1,0 +1,52 @@
+{
+ "v": "dep-092439",
+ "kurimas": 200,
+ "sid": 5805,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1683t l",
+  "f": {
+   "o": "{\"refunds\":[],\"customer_id\":null}",
+   "id": 35955,
+   "st": "processing",
+   "paid": true,
+   "kl": "Trūksta sandėlyje",
+   "vez": "venipak_pastomatas",
+   "ats": false,
+   "eil": "{\"2049\":{\"iid\":2049,\"q\":1,\"n\":\"Hikari Friend Medium, 10 kg, - Hikari maistas koi karpiams ir kitoms tvenkinių žuvims\",\"sku\":\"hk39389\",\"pid\":18245,\"src\":\"av\",\"k\":\"av\",\"tiek\":\"\",\"img\":\"https:\\/\\/petshop.lt\\/wp-content\\/uploads\\/2026\\/06\\/hk-hk-friend-medium-10-kg-hikari-maistas-koi-karpiams-ir-kitoms-tvenkiniu-zuvims-1-100x100.jpg\",\"av_ok\":true,\"av_qty\":0,\"reduced\":true,\"bukle\":\"\",\"b\":null,\"gauta\"",
+   "dalys": "{\"av\":{\"siunta\":false,\"nr\":[],\"lapas\":false,\"vietoje\":true,\"issiusta\":false}}",
+   "rus": "2026-09-15 11:56:07 | Inga",
+   "eiles": "[\"klausimai\"]",
+   "takelis": "[[\"rus\",\"surūšiuota\",\"done\",\"\",null],[\"surinkti\",\"surinkti\",\"todo\",\"av\",null],[\"lipdukas\",\"lipdukas\",\"todo\",\"av\",\"lipdukas\"],[\"issiusta\",\"kurjeris paėmė\",\"todo\",\"av\",\"issiusta\"],[\"kl\",\"Trūksta sandėlyje\",\"bad\",\"\",\"spresti\"]]",
+   "btn": "[\"Spręsti\",\"#skydelis\",null,\"bad\",0]",
+   "skuba": 81025,
+   "uzdarytas": false,
+   "riba_s": "av",
+   "btn_s": "av",
+   "tiesiai": "[]",
+   "av_side": true,
+   "siuntos_klaida": null,
+   "naujas": false,
+   "dalys_issiusta": "[]",
+   "sek": "[]",
+   "grizta": "[]",
+   "dalys_atsaukta": "[]",
+   "dalys_baigtos": "[]",
+   "senos": "[]",
+   "ats_z": "{\"paruosta\":\"\",\"laiskas\":\"\",\"atsieme\":\"\"}",
+   "nepakuok": "[]",
+   "veluoja": "[]",
+   "grazinti": "[]"
+  },
+  "partijos_meta": {
+   "26": "_ps_partijos_nurasyta=\"2026-09-15 11:06:02\""
+  },
+  "part_lent": [],
+  "part_lentos": [
+   "gaj6_ps_partijos"
+  ]
+ }
+}
