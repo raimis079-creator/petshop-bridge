@@ -1,0 +1,175 @@
+{
+ "v": "dep-160238",
+ "kurimas": 200,
+ "sid": 5878,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RECON": {
+  "v": "S1685 nl",
+  "kan": [
+   {
+    "k": "mokamas",
+    "m": "",
+    "g": "1",
+    "nj": "0",
+    "n": "11",
+    "eur": "357"
+   },
+   {
+    "k": "mokamas",
+    "m": "",
+    "g": "1",
+    "nj": "1",
+    "n": "11",
+    "eur": "327"
+   },
+   {
+    "k": "direct",
+    "m": "",
+    "g": "0",
+    "nj": "0",
+    "n": "10",
+    "eur": "574"
+   },
+   {
+    "k": "organika",
+    "m": "",
+    "g": "0",
+    "nj": "0",
+    "n": "5",
+    "eur": "242"
+   },
+   {
+    "k": "organika",
+    "m": "",
+    "g": "0",
+    "nj": "1",
+    "n": "5",
+    "eur": "119"
+   },
+   {
+    "k": "mokamas",
+    "m": "",
+    "g": "0",
+    "nj": "1",
+    "n": "4",
+    "eur": "157"
+   },
+   {
+    "k": "referral",
+    "m": "",
+    "g": "0",
+    "nj": "0",
+    "n": "4",
+    "eur": "128"
+   },
+   {
+    "k": "mokamas",
+    "m": "referral",
+    "g": "0",
+    "nj": "1",
+    "n": "4",
+    "eur": "180"
+   },
+   {
+    "k": "direct",
+    "m": "",
+    "g": "0",
+    "nj": "1",
+    "n": "3",
+    "eur": "83"
+   },
+   {
+    "k": "referral",
+    "m": "",
+    "g": "0",
+    "nj": "1",
+    "n": "1",
+    "eur": "19"
+   },
+   {
+    "k": "soc_organika",
+    "m": "",
+    "g": "0",
+    "nj": "1",
+    "n": "1",
+    "eur": "46"
+   },
+   {
+    "k": "email",
+    "m": "email",
+    "g": "0",
+    "nj": "0",
+    "n": "1",
+    "eur": "45"
+   }
+  ],
+  "stat": [
+   {
+    "s": "cancelled",
+    "n": "1"
+   },
+   {
+    "s": "completed",
+    "n": "39"
+   },
+   {
+    "s": "processing",
+    "n": "20"
+   }
+  ],
+  "jobs": [
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "block_reason": null,
+    "skip_reason": null,
+    "n": "15"
+   }
+  ],
+  "blokas_public": false,
+  "eur_public": false,
+  "eil_cols": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ]
+ }
+}
