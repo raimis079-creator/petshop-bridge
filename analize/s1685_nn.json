@@ -1,0 +1,15 @@
+{
+ "v": "dep-160717",
+ "kurimas": 200,
+ "sid": 5880,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "TEST": {
+  "v": "S1685 nn",
+  "ver": "1.0.0",
+  "pak": "1.1.5",
+  "tekstas": "Q4 planas — vykdymo matavimasBaseline v1.2 (užrakintas 09-14). North Star €50 k/mėn. = N × V12 × 1,25. Čia tik vykdymo KPI ir verdiktai; planas — repo dokumentai/marketingas.N — nauji maisto klientaiTempas kiek žemiau plano→ Tikrinti Ads signalą ir feed-only PMax startąNauji maisto klientai šį mėn.16Prognozė mėn. pabaigai50Plano norma mėn.61 (Q4 120/ketv.)Nuo T-0 iš viso16Naujas = pirmas užsakymas (tikrinta ir eShoprent istorija) su maisto preke. Plano bazė: Q4 2026 120 → 2027 Q4 250 per ketvirtį.CAC — kiek kainuoja naujas klientasCAC 24 € — virš €12 lubų→ Biudžeto nedidinti; brendų CM guardrail: Exclusion/Josera €5–7, Animonda/AV €10–12Ads išlaidos šį mėn.260 €Nauji maisto klientai iš Ads11CAC (blended new-food)24 €Lubos / stop€12 / €35Iš Ads = gclid arba kanalas „mokamas&quot;. Išlaidos iš Ads skripto (traukimas 02:01). CM12 tikslus tik iš ps_fakt nuo 2027 Q2.Naujų klientų kanalaiNaujų šaltiniai išsidėstęAds11 (69 %)organika2 (13 %)direct1 (6 %)soc_organika1 (6 %)referral1 (6 %)Nuo T-0. Istorinių kanalų (ps_ist_*) nėra — atskaitos taškas nuo rugsėjo.R_due — grįžimas prie terminoR_due dar kaupiasi (0 terminų, reikia ≥ 10)→ Pirmi refill laiškai — spalio pradžiojeTerminai per 30 d. (iki −14 d.)0Grįžo ±14 d. nuo termino0R_due—Tikslas / istorinis22 % / 16 %Terminas = ps_refill_tracking.predicted_empty_date; grįžo = ta pati prekė pirkta nuo −14 iki +14 d. Scorecard R60 ≥ 20 % — atskirai.Refill laiškai „Pakartoti užsakymą&quot;Refill laiškų dar neišsiųsta→ Pirmi — naujiems pirkėjams nuo 09-15, terminai ~spalisUžsakymai per „Pakartoti užsakymą&quot;0Paspaudė nuorodą0Konversija (užs./išsiųsta)—Per 30 d. Atidėta (deferred) = klientas be soft opt-out žymos (pirko iki 09-15) arba prekės nėra sandėlyje; holdout_10 = kontrolinė grupė.Atnaujinta 2026-09-15 19:08 · v1.0.0"
+ }
+}
