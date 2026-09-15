@@ -1,0 +1,39 @@
+{
+ "v": "dep-195146",
+ "kurimas": 200,
+ "sid": 5900,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "TEST": {
+  "v": "S1686 mo",
+  "eilute": {
+   "klik_n": "1",
+   "pask_klik_at": "2026-09-15 19:51:19",
+   "pask_svoris": "20.0"
+  },
+  "usermeta": [
+   {
+    "weight_kg": 20,
+    "source": "email_calc_click",
+    "confidence": "medium",
+    "product_id": 12466,
+    "cid": "X5PuZTo6iTwR9o9sOteu",
+    "at": "2026-09-15 19:51:19"
+   }
+  ],
+  "ivykis": [
+   {
+    "laikas": "2026-09-15 19:51:19",
+    "tipas": "email_calc_click",
+    "raktas": "12466",
+    "raktas2": "20",
+    "reiksme": "0",
+    "kampanija": "relaunch",
+    "kanalas": "email",
+    "prisijunges": "0"
+   }
+  ]
+ }
+}
