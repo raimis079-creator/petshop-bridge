@@ -1,0 +1,52 @@
+{
+ "v": "dep-062301",
+ "kurimas": 200,
+ "sid": 5803,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1683t e",
+  "f": {
+   "o": "{\"refunds\":[],\"customer_id\":null}",
+   "id": 35951,
+   "st": "processing",
+   "paid": true,
+   "kl": "",
+   "vez": "venipak_kurjeris",
+   "ats": false,
+   "eil": "{\"2026\":{\"iid\":2026,\"q\":1,\"n\":\"Kačių tualeto starteris — tualetas aukštu rėmeliu, silikoninis kraikas ir semtuvėlis\",\"sku\":\"RINK-TUALETO-START\",\"pid\":35400,\"src\":\"av\",\"k\":\"av\",\"tiek\":\"\",\"img\":\"https:\\/\\/petshop.lt\\/wp-content\\/uploads\\/2026\\/09\\/rink-kompozicija-35400-1788356181-100x100.jpg\",\"av_ok\":true,\"av_qty\":0,\"reduced\":true,\"bukle\":\"\",\"b\":null,\"gauta\":\"\",\"atsaukta\":\"\",\"issiusta_l\":\"\",",
+   "dalys": "{\"av\":{\"siunta\":false,\"nr\":[],\"lapas\":false,\"vietoje\":true,\"issiusta\":false}}",
+   "rus": "2026-09-15 08:27:35 | Inga",
+   "eiles": "[\"surinkti\"]",
+   "takelis": "[[\"rus\",\"surūšiuota\",\"done\",\"\",null],[\"surinkti\",\"surinkti\",\"now\",\"av\",\"lapai\"],[\"lipdukas\",\"lipdukas\",\"todo\",\"av\",\"lipdukas\"],[\"issiusta\",\"kurjeris paėmė\",\"todo\",\"av\",\"issiusta\"]]",
+   "btn": "[\"Surinkti\",\"https:\\/\\/petshop.lt\\/wp-admin\\/admin-post.php?action=ps_desk_veiksmas&v=lapai&id=35951&g=https%3A%2F%2Fpetshop.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk&_wpnonce=d3a145213c\",null,\"p\",0]",
+   "skuba": 5750,
+   "uzdarytas": false,
+   "riba_s": "av",
+   "btn_s": "av",
+   "tiesiai": "[]",
+   "av_side": true,
+   "siuntos_klaida": null,
+   "naujas": false,
+   "dalys_issiusta": "[]",
+   "sek": "[]",
+   "grizta": "[]",
+   "dalys_atsaukta": "[]",
+   "dalys_baigtos": "[]",
+   "senos": "[]",
+   "ats_z": "{\"paruosta\":\"\",\"laiskas\":\"\",\"atsieme\":\"\"}",
+   "nepakuok": "[]",
+   "veluoja": "[]",
+   "grazinti": "[]"
+  },
+  "partijos_meta": {
+   "26": "_ps_partijos_nurasyta=\"2026-09-15 08:12:13\""
+  },
+  "part_lent": [],
+  "part_lentos": [
+   "gaj6_ps_partijos"
+  ]
+ }
+}
