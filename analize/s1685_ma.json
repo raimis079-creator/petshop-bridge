@@ -1,0 +1,377 @@
+{
+ "v": "dep-115628",
+ "kurimas": 200,
+ "sid": 5826,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1685 ma",
+  "opt": {
+   "ps_ads_paskutinis": {
+    "kada": "2026-09-15 02:01:29",
+    "eiluciu": 43,
+    "st": {
+     "new": 3,
+     "upd": 8,
+     "same": 32,
+     "bad": 0
+    }
+   },
+   "ps_ads_recon": {
+    "kada": "2026-09-12 16:46:59",
+    "dydis": 592,
+    "body": "{\"v\":\"PMAX D BUKLE v1.2\",\"kada\":\"2026-09-12T13:46:56.237Z\",\"grupes\":[{\"id\":\"6506464671\",\"vardas\":\"Generic | Šunų maistas\",\"st\":\"ENABLED\",\"ft\":{\"HEADLINE\":15,\"DESCRIPTION\":7,\"LONG_HEADLINE\":6,\"YOUTUBE_VIDEO\":1,\"AD_IMAGE\":9,\"MARKETING_IMAGE\":3,\"SQUARE_MARKETING_IMAGE\":10,\"PORTRAIT_MARKETING_IMAGE\":7},\"viso\":58,\"lf\":0}],\"kampanijos\":[{\"id\":\"21472017542\",\"vardas\":\"P-max | LT | petshop.lt\",\"st\":\"ENABLED\",\"biudzetas\":\"40000000\",\"mc\":null,\"feed\":null},{\"id\":\"21565450990\",\"vardas\":\"P-max| All LT | Kačių maistas\",\"st\":\"PAUSED\",\"biudzetas\":\"20000000\",\"mc\":null,\"feed\":null}],\"kates\":\"PAUSED\"}"
+   },
+   "ps_ads_offline_paskutinis": null,
+   "ps_ads_offline_log": null,
+   "ps_ads_offline_busena": null
+  },
+  "opcijos_ads": [
+   {
+    "k": "ps_ads_offline_raktas",
+    "v": "AiedogHzttJiKz8HZgLFUvMdke546YIc"
+   },
+   {
+    "k": "ps_ads_paskutinis",
+    "v": "a:3:{s:4:\"kada\";s:19:\"2026-09-15 02:01:29\";s:7:\"eiluciu\";i:43;s:2:\"st\";a:4:{s:3:\"new\";i:3;s:3:\"upd\";i:8;s:4:\"same\";i:32;s:3:\"bad\";i:0;}}"
+   },
+   {
+    "k": "ps_ads_raktas",
+    "v": "FDPFp74rq8G8ceoglCn5sA7YrR1IA8lo"
+   },
+   {
+    "k": "ps_ads_recon",
+    "v": "a:3:{s:4:\"kada\";s:19:\"2026-09-12 16:46:59\";s:5:\"dydis\";i:592;s:4:\"body\";s:592:\"{\"v\":\"PMAX D BUKLE v1.2\",\"kada\":\"2026-09-12T13:46:56.237Z\",\"grupes\":[{\"id\":\"6506464671\",\"vardas\":\"Generic | Šunų maistas\",\"st\":\"ENABLED\",\"ft\":{\"HEADLINE\":15,\"DESCRIPTION\":7,\"LONG_HEADLINE\":6,\"YOUTUBE_VIDEO\":1,\"AD_IMAGE\":9,\"MARKETING_IMAGE\":3,\"SQUARE_MARKETING_IMAGE\":10,\"PORTRAIT_MARKETING_IMAGE\":7},\"viso\":58,\"lf\":0}],\"k"
+   }
+  ],
+  "reklama_dienos": [
+   {
+    "diena": "2026-09-09",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "islaidos_ct": "2060",
+    "paspaudimai": "51",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-09",
+    "kampanija": "P-max| All LT | Šunų maistas",
+    "islaidos_ct": "2034",
+    "paspaudimai": "45",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-09",
+    "kampanija": "petshop",
+    "islaidos_ct": "253",
+    "paspaudimai": "15",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-09",
+    "kampanija": "",
+    "islaidos_ct": "0",
+    "paspaudimai": "0",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-09",
+    "kampanija": "",
+    "islaidos_ct": "0",
+    "paspaudimai": "0",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "islaidos_ct": "2161",
+    "paspaudimai": "76",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "P-max | LT | petshop.lt",
+    "islaidos_ct": "1747",
+    "paspaudimai": "55",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "petshop",
+    "islaidos_ct": "282",
+    "paspaudimai": "16",
+    "konversijos": "0.92",
+    "konv_verte_ct": "2023"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "",
+    "islaidos_ct": "0",
+    "paspaudimai": "0",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-10",
+    "kampanija": "",
+    "islaidos_ct": "0",
+    "paspaudimai": "0",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "islaidos_ct": "1909",
+    "paspaudimai": "64",
+    "konversijos": "1.00",
+    "konv_verte_ct": "1915"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "P-max | LT | petshop.lt",
+    "islaidos_ct": "1679",
+    "paspaudimai": "48",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "petshop",
+    "islaidos_ct": "178",
+    "paspaudimai": "9",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "",
+    "islaidos_ct": "16",
+    "paspaudimai": "2",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-11",
+    "kampanija": "",
+    "islaidos_ct": "0",
+    "paspaudimai": "0",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "islaidos_ct": "2109",
+    "paspaudimai": "64",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "P-max | LT | petshop.lt",
+    "islaidos_ct": "1391",
+    "paspaudimai": "45",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "petshop",
+    "islaidos_ct": "240",
+    "paspaudimai": "12",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "",
+    "islaidos_ct": "48",
+    "paspaudimai": "6",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-12",
+    "kampanija": "",
+    "islaidos_ct": "0",
+    "paspaudimai": "0",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-13",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "islaidos_ct": "2210",
+    "paspaudimai": "81",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-13",
+    "kampanija": "P-max | LT | petshop.lt",
+    "islaidos_ct": "1070",
+    "paspaudimai": "39",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-13",
+    "kampanija": "petshop",
+    "islaidos_ct": "550",
+    "paspaudimai": "29",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-13",
+    "kampanija": "",
+    "islaidos_ct": "24",
+    "paspaudimai": "3",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-13",
+    "kampanija": "",
+    "islaidos_ct": "16",
+    "paspaudimai": "2",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-14",
+    "kampanija": "P-max | LT | petshop.lt",
+    "islaidos_ct": "3908",
+    "paspaudimai": "108",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-14",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "islaidos_ct": "2018",
+    "paspaudimai": "70",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-14",
+    "kampanija": "petshop",
+    "islaidos_ct": "234",
+    "paspaudimai": "15",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-14",
+    "kampanija": "",
+    "islaidos_ct": "80",
+    "paspaudimai": "10",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   },
+   {
+    "diena": "2026-09-14",
+    "kampanija": "",
+    "islaidos_ct": "40",
+    "paspaudimai": "5",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0"
+   }
+  ],
+  "reklama_cols": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ],
+  "wc_ads_dienos": [
+   {
+    "diena": "2026-09-09",
+    "uzs": "2",
+    "su_gclid": "0",
+    "nauji": "2",
+    "eur": "91"
+   },
+   {
+    "diena": "2026-09-10",
+    "uzs": "6",
+    "su_gclid": "6",
+    "nauji": "2",
+    "eur": "169"
+   },
+   {
+    "diena": "2026-09-11",
+    "uzs": "3",
+    "su_gclid": "3",
+    "nauji": "1",
+    "eur": "92"
+   },
+   {
+    "diena": "2026-09-12",
+    "uzs": "2",
+    "su_gclid": "1",
+    "nauji": "1",
+    "eur": "29"
+   },
+   {
+    "diena": "2026-09-13",
+    "uzs": "5",
+    "su_gclid": "3",
+    "nauji": "3",
+    "eur": "185"
+   },
+   {
+    "diena": "2026-09-14",
+    "uzs": "8",
+    "su_gclid": "5",
+    "nauji": "5",
+    "eur": "334"
+   },
+   {
+    "diena": "2026-09-15",
+    "uzs": "7",
+    "su_gclid": "4",
+    "nauji": "7",
+    "eur": "227"
+   }
+  ],
+  "gclid_meta": [
+   {
+    "k": "_ps_gclid",
+    "n": "14",
+    "pask": "EAIaIQobChMIt4PTw43rlgMVPBeiAx2v9DrJEAMYASAAEgJsRvD_BwE"
+   }
+  ],
+  "offline_meta_all": [],
+  "offline_kodas": [
+   "11: * v1.1: faktų gclid = tik žymė '1'; tikras gclid: (1) užsakymo meta _ps_gclid (fiksuojam patys: ?gclid= -> WC sesija -> užsakymas,",
+   "17: $raktas = (string) get_option( 'ps_ads_offline_raktas', '' );",
+   "45: $g = (string) $o->get_meta( '_ps_gclid' );",
+   "60: /** v1.1: sesija -> užsakymo meta _ps_gclid (gclid galioja 90 d.). */",
+   "64: if ( is_array( $s ) && ! empty( $s['g'] ) && time() - (int) $s['t'] < 90 * 86400 ) { $order->update_meta_data( '_ps_gclid', $s['g'] ); }"
+  ],
+  "ads_uzklausos_log": []
+ }
+}
