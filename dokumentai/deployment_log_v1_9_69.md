@@ -49,3 +49,6 @@ refill_due laiškas „Pakartoti tą patį" (šablonas per `petshop_email_templa
 
 ## S1685 (09-15 naktį) — petshop-pakartoti.php v1.1.4 GYVAI (grupavimas pagal užsakymą, MnM, likučiai, endpoint /?ps_pakartoti)
 md5 2383174ef717abe0e8d74ea3fed265a6, šablonas 97a74a4027976c271357962ea3876c91; bak `ps-backups/petshop-pakartoti.php.bak_s1685b–f`, `refill-pakartoti.php.bak_s1685b`; įrankiai `irankiai/s1685_mp–my.php`. Pamokos: MnM užsakymo eilutėse `_mnm_container` = konteinerio cart key (ne item id), konteinerio kaina 0 kai `_per_product_pricing`; krepšelis endpoint'e po `wp_safe_redirect` dingsta be `WC()->session->set_customer_session_cookie(true)+save_data()`. Detalės — STARTAS_marketingas S1685 skyrius.
+
+## S1685 (09-15 pabaiga) — petshop-lifecycle-vartai.php v1.2.0 + refill-pakartoti.php v1.4 GYVAI
+vartai md5 5d2ca9ae69f84b353bd03ee3150f5f1b (bak `.bak_s1685`, deploy `irankiai/s1685_nf`, backfill `s1685_ng`: 5/55 eilučių), šablonas md5 e425e6411d3de4a9270cbd7fa19c9a0e (bak `.bak_s1685e`, deploy `s1685_nd`). Logika: per trumpas „išmoktas" intervalas = papildymas, ne ciklas. Recon `s1685_ne`.
