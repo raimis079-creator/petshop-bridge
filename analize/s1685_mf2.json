@@ -1,0 +1,69 @@
+{
+ "v": "dep-125347",
+ "kurimas": 200,
+ "sid": 5835,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "TEST": {
+  "v": "S1685 mf",
+  "shots": [
+   {
+    "n": "s1685_so2_add",
+    "u": "https://petshop.lt/?add-to-cart=16298",
+    "w": 1440
+   },
+   {
+    "n": "s1685_so2_kasa",
+    "u": "https://petshop.lt/kasa/",
+    "w": 1440,
+    "eval": "(()=>{const c=document.querySelector('#ps_similar_optout');const l=c?c.closest('p,label,.form-row'):null;const p=document.querySelector('.ps-sutikimai-paaisk');const e=document.querySelector('#billing_email');return {cb:!!c,checked:c?c.checked:null,label:l?l.innerText.trim().slice(0,120):null,paaisk:p?p.innerText.trim():null,vis:c?(c.offsetWidth>0||l.offsetHeight>0):null,poEmail:(c&&e)?((e.compareDocumentPosition(c)&Node.DOCUMENT_POSITION_FOLLOWING)>0):null}})()"
+   },
+   {
+    "n": "s1685_so2_mob",
+    "u": "https://petshop.lt/kasa/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{const c=document.querySelector('#ps_similar_optout');const l=c?c.closest('p,label,.form-row'):null;const p=document.querySelector('.ps-sutikimai-paaisk');const e=document.querySelector('#billing_email');return {cb:!!c,checked:c?c.checked:null,label:l?l.innerText.trim().slice(0,120):null,paaisk:p?p.innerText.trim():null,vis:c?(c.offsetWidth>0||l.offsetHeight>0):null,poEmail:(c&&e)?((e.compareDocumentPosition(c)&Node.DOCUMENT_POSITION_FOLLOWING)>0):null}})()",
+    "full": true
+   }
+  ]
+ },
+ "shots": {
+  "s1685_so2_add": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=16298",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1685_so2_kasa": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "cb": true,
+    "checked": false,
+    "label": "Nenoriu priminimų apie pakartotinį užsakymą",
+    "paaisk": "Galime priminti tik apie anksčiau pirktas prekes. Atsisakyti galėsite bet kada.",
+    "vis": true,
+    "poEmail": true
+   }
+  },
+  "s1685_so2_mob": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "cb": true,
+    "checked": false,
+    "label": "Nenoriu priminimų apie pakartotinį užsakymą",
+    "paaisk": "Galime priminti tik apie anksčiau pirktas prekes. Atsisakyti galėsite bet kada.",
+    "vis": true,
+    "poEmail": true
+   }
+  }
+ }
+}
