@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFRFTVAgUFMgUzE2ODUgbm4g4oCUIFRFU1RBUyAoYXRza2lyYSB1xb5rbGF1c2EpOiBRNCBwbGFubyBsYW5nbyByZW5kZXJpcyAodGVrc3RhcykgYmUgYWRtaW4gc2VzaWpvcy4gKi8KYWRkX2FjdGlvbignaW5pdCcsIGZ1bmN0aW9uKCl7CiAgaWYgKCFpc3NldCgkX0dFVFsncHNfczE2ODVubiddKSkgcmV0dXJuOyAkbz1hcnJheSgndic9PidTMTY4NSBubicsJ3Zlcic9PlBldHNob3BfUGxhbmFzX0xhbmdhczo6VkVSLCdwYWsnPT5QZXRzaG9wX1Bha2FydG90aTo6VkVSKTsKICBvYl9zdGFydCgpOyBQZXRzaG9wX1BsYW5hc19MYW5nYXM6OnB1c2xhcGlzKCk7ICRoPW9iX2dldF9jbGVhbigpOyAkb1sndGVrc3RhcyddPXRyaW0ocHJlZ19yZXBsYWNlKCcvXHMrLycsJyAnLHdwX3N0cmlwX2FsbF90YWdzKHByZWdfcmVwbGFjZSgnIzxzdHlsZS4qPzwvc3R5bGU+I3MnLCcnLCRoKSkpKTsKICBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbjsgY2hhcnNldD11dGYtOCcpOyBlY2hvIGpzb25fZW5jb2RlKCRvLEpTT05fVU5FU0NBUEVEX1VOSUNPREUpOyBleGl0Owp9KTsK';
-const VER='dep-161015';
+const VER='dep-161402';
 const GKEY='ps_s1685nn';
 const PHASES=["TEST"];
-const OUT='analize/s1685_nn2.json';
+const OUT='analize/s1685_nn3.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
