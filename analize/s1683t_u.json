@@ -1,0 +1,46 @@
+{
+ "v": "dep-103721",
+ "kurimas": 200,
+ "sid": 5816,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "u",
+  "lent": [
+   "gaj6_vf_block_log",
+   "gaj6_vf_observer"
+  ],
+  "rasta": {
+   "gaj6_vf_observer": [
+    {
+     "id": "258",
+     "ts": "2026-06-13 06:32:13",
+     "post_id": "32975",
+     "sku": "JOS0805",
+     "title": "Josera Leger sausas pašaras katėms su paukštiena, 400 g",
+     "brand": "JOSERA",
+     "decision": "TRASH-DUPLICATE",
+     "reason": "matched_id=18054"
+    }
+   ]
+  },
+  "p21707": {
+   "st": "publish",
+   "vis": "visible",
+   "kaina": "40.89",
+   "stock": 0,
+   "sukurta": "2026-06-06",
+   "slug": "josera-leger-sausas-pasaras-katems-10-kg",
+   "ean": "403225474947",
+   "vf_stock": ""
+  },
+  "p18054": {
+   "slug": "josera-leger-10-kg-sausas-maistas-katems-maziau-kaloriju",
+   "vf_stock": "",
+   "_price_before": "",
+   "sales_ist": "103"
+  }
+ }
+}
