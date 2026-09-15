@@ -1,0 +1,123 @@
+{
+ "v": "dep-203017",
+ "kurimas": 200,
+ "sid": 5917,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RUN": {
+  "v": "S1686 mr",
+  "segmentai": [
+   {
+    "segmentas": "generic",
+    "hero_reason": "no_food",
+    "n": "2318",
+    "su_consent": "206"
+   },
+   {
+    "segmentas": "generic",
+    "hero_reason": "old_purchase",
+    "n": "1117",
+    "su_consent": "99"
+   },
+   {
+    "segmentas": "generic",
+    "hero_reason": "old_purchase_24",
+    "n": "861",
+    "su_consent": "93"
+   },
+   {
+    "segmentas": "calc",
+    "hero_reason": "recent_exact",
+    "n": "652",
+    "su_consent": "62"
+   },
+   {
+    "segmentas": "product",
+    "hero_reason": "no_feeding_table",
+    "n": "518",
+    "su_consent": "69"
+   },
+   {
+    "segmentas": "generic",
+    "hero_reason": "product_out_of_stock",
+    "n": "73",
+    "su_consent": "12"
+   },
+   {
+    "segmentas": "generic",
+    "hero_reason": "product_unavailable",
+    "n": "60",
+    "su_consent": "6"
+   },
+   {
+    "segmentas": "calc",
+    "hero_reason": "repeat_exact",
+    "n": "37",
+    "su_consent": "8"
+   },
+   {
+    "segmentas": "generic",
+    "hero_reason": "product_gone",
+    "n": "21",
+    "su_consent": "2"
+   },
+   {
+    "segmentas": "product",
+    "hero_reason": "no_species",
+    "n": "5",
+    "su_consent": "2"
+   },
+   {
+    "segmentas": "generic",
+    "hero_reason": "similar_optout",
+    "n": "3",
+    "su_consent": "2"
+   },
+   {
+    "segmentas": "calc",
+    "hero_reason": null,
+    "n": "1",
+    "su_consent": "0"
+   }
+  ],
+  "rusis": [
+   {
+    "segmentas": "calc",
+    "rusis": "dog",
+    "n": "1"
+   },
+   {
+    "segmentas": "calc",
+    "rusis": "kate",
+    "n": "116"
+   },
+   {
+    "segmentas": "calc",
+    "rusis": "suo",
+    "n": "573"
+   },
+   {
+    "segmentas": "product",
+    "rusis": null,
+    "n": "5"
+   },
+   {
+    "segmentas": "product",
+    "rusis": "kate",
+    "n": "267"
+   },
+   {
+    "segmentas": "product",
+    "rusis": "suo",
+    "n": "251"
+   }
+  ],
+  "viso": 5666,
+  "pvz_calc": {
+   "email": "77daiva@gmail.com",
+   "duomenys": "{\"pav\":\"Josera Senior 10 kg - sausas maistas vyresnio amžiaus katėms\",\"kaina\":47.09,\"img\":\"https:\\/\\/petshop.lt\\/wp-content\\/uploads\\/2026\\/06\\/josera-senior-sausas-maistas-vyresnems-katems-2-400x400.jpg\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/josera-senior-10-kg-sausas-maistas-vyresnio-amziaus-katems\\/?utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc&cid=dvl3HUOSwWJaNerf63d3\",\"eilutes\":[{\"kg\":3,\"g\":\"25–40\",\"eur_nuo\":\"0,12\",\"d\":\"250–400\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/josera-senior-10-kg-sausas-maistas-vyresnio-amziaus-katems\\/?utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc&cid=dvl3HUOSwWJaNerf63d3&utm_term=3kg&svoris=3\"},{\"kg\":5,\"g\":\"55–70\",\"eur_nuo\":\"0,26\",\"d\":\"142–181\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/josera-senior-10-kg-sausas-maistas-vyresnio-amziaus-katems\\/?utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc&cid=dvl3HUOSwWJaNerf63d3&utm_term=5kg&svoris=5\"},{\"kg\":7,\"g\":\"70–95\",\"eur_nuo\":\"0,33\",\"d\":\"105–142\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/josera-senior-10-kg-sausas-maistas-vyresnio-amziaus-katems\\/?utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc&cid=dvl3HUOSwWJaNerf63d3&utm_term=7kg&svoris=7\"}]}"
+  }
+ }
+}
