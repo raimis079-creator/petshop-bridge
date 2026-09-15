@@ -1,0 +1,24 @@
+{
+ "v": "dep-170920",
+ "kurimas": 200,
+ "sid": 5887,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RECON": {
+  "v": "S1686 me",
+  "met": [
+   "37: public static function logo_url() {",
+   "45: public static function open( $subject, $preheader = '' ) {",
+   "75: public static function p( $html, $size = 15 ) {",
+   "79: public static function muted( $html, $size = 12 ) {",
+   "86: public static function button( $url, $label ) {",
+   "96: public static function secondary( $links ) {",
+   "106: public static function divider() {",
+   "114: public static function close( $flow_class = 'service', $email = '', $reason = '' ) {",
+   "144: public static function wrap( $args ) {"
+  ],
+  "wrap": "public static function wrap( $args ) {\n$a = wp_parse_args( $args, array(\n'subject'    => '',\n'preheader'  => '',\n'body'       => '',\n'flow_class' => 'service',\n'email'      => '',\n'reason'     => '',\n) );\nreturn self::open( $a['subject'], $a['preheader'] )\n. $a['body']\n. self::close( $a['flow_class'], $a['email'], $a['reason'] );\n}\n}"
+ }
+}
