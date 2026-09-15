@@ -1,0 +1,21 @@
+{
+ "v": "dep-061751",
+ "kurimas": 200,
+ "sid": 5800,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1683t h",
+  "petshop-desk.php": {
+   "md5": "33c9b1fea242f87a8ed189e2dfd9290e",
+   "eil": [
+    "1224: protected static function klausimas( $order ) {",
+    "1250: if ( $it->get_meta( '_reduced_stock' ) || $it->get_meta( '_ps_av_reduced' ) ) { continue; }",
+    "1266: return 'Trūksta sandėlyje';",
+    "1280: if ( $it->get_meta( '_reduced_stock' ) || $it->get_meta( '_ps_av_reduced' ) ) { continue; }"
+   ]
+  }
+ }
+}
