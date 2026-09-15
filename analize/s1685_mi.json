@@ -1,0 +1,120 @@
+{
+ "v": "dep-132146",
+ "kurimas": 200,
+ "sid": 5840,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RECON": {
+  "v": "S1685 mi",
+  "content_cols": [
+   "id",
+   "flow",
+   "version",
+   "status",
+   "subject",
+   "preheader",
+   "reason",
+   "blocks_json",
+   "notes",
+   "author_id",
+   "created_at",
+   "published_at"
+  ],
+  "content": [],
+  "tpl": [
+   "back-in-stock.php",
+   "browse-abandoned.php",
+   "cart-abandoned-1.php",
+   "cart-abandoned-1.php.bak_S322",
+   "cart-abandoned-2.php",
+   "cart-abandoned-2.php.bak_S324",
+   "consent-changed.php",
+   "dunning-1.php",
+   "founding.php",
+   "legacy-l1.php",
+   "order-paid.php",
+   "order-paid.php.bak_S329",
+   "order-shipped.php",
+   "pet-reminder.php",
+   "post-purchase-14d.php",
+   "post-purchase-2d.php",
+   "post-purchase-7d.php",
+   "refill.php",
+   "refill.php.bak_S311",
+   "refill.php.bak_S323",
+   "refill.php.bak_S325",
+   "shipment-returned.php",
+   "subscription-t5.php",
+   "subscription-t5.php.bak_S1506",
+   "win-back-120.php",
+   "win-back-60.php",
+   "win-back-90.php"
+  ],
+  "engine_len": 17648,
+  "engine_ctx": "<?php\n/**\n * Petshop_Refill_Engine — self-calibrating refill tracking (M11).\n *\n * LOGIKA: mokosi is KLIENTO REALAUS pirkimo intervalo, ne is teoriniu normu.\n * - 1-as pirkimas: grubus intervalas pagal pakuotes dydi (14/30/60 d., confidence 0.4)\n * - 2+ pirkimas to paties produkto: kalibruojasi is realaus intervalo (confidence->0.9)\n *\n * NAUDOJA: order_paid event (jau veikia), pet profile (M7, nebutina).\n * GENERUOJA: refill_due event (schema jau yra S185).\n *\n * DB: gaj6_ps_refill_tracking (user_id + product_id + pet_id nullable).\n *\n * Srautas:\n *   1. order_paid -> on_order_paid() -> irasoma/atnaujinama refill_tracking\n *   2. Cron (kasdien) -> check_due() -> fire refill_due event (T-5 dienu)\n *   3. Sender mirror: PS_REFILL_CANDIDATE, PS_NEXT_REFILL_DATE\n *\n * S305 (2026-07-30) — SLAPIO MAISTO PATAISA:\n *   is_food_product() tikrino TIK tiesiogiai priskirtas kategorijas.\n *   wp_get_post_terms() NEGRAZINA teviniu kategoriju, todel prekes,\n *   priskirtos tik vaikinei kategorijai (pvz. konservai-katems, kurios\n *   tevine maistas-katems YRA leidziamuju sarase), buvo ATMETAMOS.\n *   Pasekme: 291 maisto preke (konservai-katems 142, konservai-sunims 120,\n *   animonda-konservai-sunims 36 ir kt.) niekada nesukurdavo\n *   ps_refill_tracking irasos -> refill slapiam maistui NEVEIKE.\n *   Dabar tikrinama kategorija IR jos protėviai (get_ancestors).\n *   Skanestai/papildai lieka NEITRAUKTI — ju tevine yra 'sunims'/'katems',\n *   ne 'maistas-*', todel elgsena jiems nesikeicia.\n */\n\nif ( ! defined( 'ABSPATH' ) ) {\n\texit;\n}\n\nclass Petshop_Refill_Engine {\n\n\t// Pakuotes dydzio intervalai (dienos) — MVP default'ai\n\tconst INTERVAL_SMALL  = 14;   // <500g (konservai, skanestai)\n\tconst INTERVAL_MEDIUM = 30;   // 0.5-3 kg\n\tconst INTERVAL_LARGE  = 60;   // 3+ kg (sausi maistai)\n\tconst INTERVAL_DEFAULT = 30;  // jei negalim nustatyti\n\n\tconst CONFIDENCE_FIRST = 0.4;     // pirmas pirkimas\n\tconst CONFIDENCE_SECOND = 0.7;    // antras (pirmas realus intervalas)\n\tconst CONFIDENCE_CALIBRATED = 0.9; // 3+ pirkim (kalibruotas)\n\n\tconst DUE_ADVANCE_DAYS = 5;  // fire refill_due X dienu PRIES predicted_empty_date\n\tconst META_REFILL_PROCESSED = '_ps_refill_tracked'; // order meta (idempotencija)\n\n\t// Maisto kategoriju slug'ai (tik siems produktams sekam refill)\n\tconst FOOD_CATEGORY_SLUGS = array(\n\t\t'sausas-maistas-sunims',\n\t\t'sausas-maistas-katems',\n\t\t'maistas-sunims',\n\t\t'maistas-katems',\n\t\t'hipoalerginis-maistas-sunims',\n\t);\n\n\tpublic static function table_name() {\n\t\tglobal $wpdb;\n\t\treturn $wpdb->prefix . 'ps_refill_tracking';\n\t}\n\n\tpublic static function install() {\n\t\tglobal $wpdb;\n\t\t$table = self::table_name();\n\t\t$charset = $wpdb->get_charset_collate();\n\t\t$sql = \"CREATE TABLE `$table` (\n\t\t\tid BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,\n\t\t\tuser_id BIGINT UNSIGNED NOT NULL,\n\t\t\tproduct_id BIGINT UNSIGNED NOT NULL,\n\t\t\tpet_id BIGINT UNSIGNED NULL,\n\t\t\tlast_order_id BIGINT UNSIGNED NOT NULL,\n\t\t\tlast_purchase_date DATE NOT NULL,\n\t\t\tpurchase_count INT UNSIGNED NOT NULL DEFAULT 1,\n\t\t\tavg_interval_days INT UNSIGNED NULL,\n\t\t\tpredicted_empty_date DATE NULL,\n\t\t\tconfidence DECIMAL(3,2) NOT NULL DEFAULT 0.40,\n\t\t\tstatus VARCHAR(16) NOT NULL DEFAULT 'active',\n\t\t\tcreated_at DATETIME NOT NULL,\n\t\t\tupdated_at DATETIME NOT NULL,\n\t\t\tPRIMARY KEY (id),\n\t\t\tUNIQUE KEY uq_user_product (user_id, product_id),\n\t\t\tKEY idx_status_predicted (status, predicted_empty_date),\n\t\t\tKEY idx_user (user_id)\n\t\t) $charset\";\n\t\trequire_once ABSPATH . 'wp-admin/includes/upgrade.php';\n\t\tdbDelta( $sql );\n\t}",
+  "jobs": [
+   {
+    "flow": "browse_abandoned",
+    "flow_class": "marketing",
+    "status": "skipped",
+    "n": "2"
+   },
+   {
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "status": "sent",
+    "n": "4"
+   },
+   {
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "status": "skipped",
+    "n": "16"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "flow_class": "marketing",
+    "status": "sent",
+    "n": "3"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "flow_class": "marketing",
+    "status": "skipped",
+    "n": "1"
+   },
+   {
+    "flow": "consent_changed",
+    "flow_class": "transactional",
+    "status": "sent",
+    "n": "6"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "flow_class": "service",
+    "status": "pending",
+    "n": "15"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "flow_class": "service",
+    "status": "sent",
+    "n": "15"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "flow_class": "service",
+    "status": "pending",
+    "n": "15"
+   }
+  ],
+  "job_pvz": null,
+  "render": [
+   "Petshop_Email_Dispatch",
+   "Petshop_Email_Suppression",
+   "Petshop_Email_Layout"
+  ]
+ }
+}

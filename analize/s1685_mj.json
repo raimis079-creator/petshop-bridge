@@ -1,0 +1,84 @@
+{
+ "v": "dep-132336",
+ "kurimas": 200,
+ "sid": 5841,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RECON": {
+  "v": "S1685 mj",
+  "refill_tpl": "<?php\n/**\n * Sablonas: refill_due — maisto gali netrukus pritrukti.\n *\n * TEKSTAS PATVIRTINTAS 2026-07-31 (Raimis). Saltinis\n * `petshop_445_pirmi_sablonai_v1.md` (2026-07-06) SABLONAS 2 numate\n * automatinio papildymo pazadus — jie SAMONINGAI PASALINTI, zr. zemiau.\n *\n * ============================================================\n * M10 recurring replenishment NEIGYVENDINTAS.\n * Automatinio papildymo tekstai ir nuorodos SAMONINGAI NERODOMI,\n * kol nera prenumeratos valdymo ir pasikartojanciu mokejimu.\n *\n * Patikrinta 2026-07-31: ps_subscriptions lenteles NERA · Petshop_Subscriptions\n * klases NERA · subscription plugin'u NERA · prenumeratos puslapiu NERA ·\n * WC `subscription` produkto tipo NERA · Paysera supports=['products'],\n * pasikartojanciu mokejimu NEPALAIKO.\n *\n * PASALINTA is saltinio: „leiskite mums pasirupinti automatiskai\" (preheader),\n * antras teksto sakinys apie regulariu papildyma, antrinis linkas\n * „Nustatyti regulariu papildyma\". Tai butu netikras produkto pazadas.\n * ============================================================\n *\n * Kintamieji: $payload, $flow_class, $recipient. Nustato: $subject.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$reorder = isset( $payload['reorder_url'] ) ? $payload['reorder_url'] : '';\n$fb_url  = isset( $payload['feedback_url'] ) ? $payload['feedback_url'] : '';\n$email   = isset( $recipient ) ? $recipient : '';\n$fc      = isset( $flow_class ) ? $flow_class : 'service';\n\n// AUGINTINIO VARDAS SIAME SABLONE NENAUDOJAMAS (Raimio sprendimas 2026-07-31).\n// Lietuviu kalba reikalauja kilmininko: „Rekso maisto\", ne „Reksas maisto\".\n// Automatinis linksniavimas NEPATIKIMAS — luztu ties uzsienietiskais vardais,\n// trumpiniais, nelinksniuojamais vardais ir neteisingai nustatyta gimine.\n// Atskiro kilmininko prasyti anketoje — per sunku del vieno sakinio.\n// Universali forma visada taisyklinga; 5% maziau personalizacijos geriau\n// nei „Reksas maisto\", kuris primena pigų mail merge, ne rupesti klientu.\n// Varda galima naudoti TIK konstrukcijose, kur linksniuoti nereikia.\n\n$subject = 'Jūsų augintinio maisto gali netrukus pritrūkti';\n\n$body = Petshop_Email_Layout::p(\n\t'Pagal ankstesnį pirkimą apskaičiavome, kad jūsų augintinio maisto gali netrukus pritrūkti.'\n);\n\nif ( $reorder ) {\n\t$body .= Petshop_Email_Layout::button( $reorder, 'Pakartoti dabar' );\n}\n\n// Antrinis TEKSTINIS veiksmas — S323 scanner-safe kalibravimo puslapis.\nif ( $fb_url ) {\n\t$body .= Petshop_Email_Layout::secondary( array( 'Patikslinti priminimą' => $fb_url ) );\n}\n\necho Petshop_Email_Layout::wrap( array(\n\t'subject'    => $subject,\n\t'preheader'  => 'Maisto gali netrukus pritrūkti — pakartokite užsakymą, kai bus patogu.',\n\t'body'       => $body,\n\t'flow_class' => $fc,\n\t'email'      => $email,\n\t'reason'     => 'Gavote šį laišką, nes pirkote šį maistą petshop.lt.',\n) );\n",
+  "check_due": "function check_due() {\n\t\tglobal $wpdb;\n\t\t$table = self::table_name();\n\t\t$advance = self::DUE_ADVANCE_DAYS;\n\t\t$target_date = date( 'Y-m-d', time() + $advance * 86400 );\n\n\t\t// Rasam aktyvius irasys kur predicted_empty_date <= today + advance\n\t\t// IR dar nefire'inome refill_due (status = 'active')\n\t\t$rows = $wpdb->get_results( $wpdb->prepare(\n\t\t\t\"SELECT rt.*, u.user_email\n\t\t\t FROM `$table` rt\n\t\t\t JOIN `{$wpdb->users}` u ON u.ID = rt.user_id\n\t\t\t WHERE rt.status = 'active'\n\t\t\t   AND rt.predicted_empty_date <= %s\n\t\t\t ORDER BY rt.predicted_empty_date ASC\n\t\t\t LIMIT 100\",\n\t\t\t$target_date\n\t\t) );\n\n\t\tforeach ( $rows as $row ) {\n\t\t\tif ( ! $row->user_email || ! class_exists( 'Petshop_Event_Registry' ) ) {\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\t$product = wc_get_product( $row->product_id );\n\t\t\t$product_name = $product ? $product->get_name() : '(produktas #' . $row->product_id . ')';\n\n\t\t\tPetshop_Event_Registry::emit( 'refill_due', $row->user_email, array(\n\t\t\t\t'pet_id'               => $row->pet_id ? (int) $row->pet_id : 0,\n\t\t\t\t'product_id'           => (int) $row->product_id,\n\t\t\t\t'product_name'         => $product_name,\n\t\t\t\t'predicted_empty_date' => $row->predicted_empty_date,\n\t\t\t\t'confidence'           => (float) $row->confidence,\n\t\t\t\t'last_order_id'        => (int) $row->last_order_id,\n\t\t\t\t'days_since_last_order' => (int) round( ( time() - strtotime( $row->last_purchase_date ) ) / 86400 ),\n\t\t\t), array(\n\t\t\t\t'event_id' => 'refill_due_' . $row->user_id . '_' . $row->product_id . '_' . $row->predicted_empty_date,\n\t\t\t) );\n\n\t\t\t// --- S312: laiskas VISADA i outbox'a; sprendimas fiksuojamas ten.\n\t\t\t// Srauto specifines salygos tikrinamos per petshop_email_eligibility\n\t\t\t// filtra (zr. eligibility_filter()), kad praleidimo priezastis butu\n\t\t\t// matoma ataskaitose, o ne dingtu tyliame return'e.\n\t\t\tif ( class_exists( 'Petshop_Email_Dispatch' ) ) {\n\t\t\t\t$pet_name = '';\n\t\t\t\tif ( $row->pet_id ) {\n\t\t\t\t\t$pet_name = (string) $wpdb->get_var( $wpdb->prepare(\n\t\t\t\t\t\t\"SELECT pet_name FROM {$wpdb->prefix}ps_pets WHERE id = %d\", $row->pet_id ) );\n\t\t\t\t}\n\t\t\t\tPetshop_Email_Dispatch::enqueue(\n\t\t\t\t\t'refill_due',\n\t\t\t\t\t$row->user_email,\n\t\t\t\t\tarray(\n\t\t\t\t\t\t'pet_name'     => $pet_name,\n\t\t\t\t\t\t'product_id'   => (int) $row->product_id,\n\t\t\t\t\t\t'product_name' => $product_name,\n\t\t\t\t\t\t'product_url'  => $product ? $product->get_permalink() : home_url( '/' ),\n\t\t\t\t\t\t'reorder_url'  => add_query_arg( 'add-to-cart', (int) $row->product_id, wc_get_cart_url() ),\n\t\t\t\t\t\t'confidence'   => (float) $row->confidence,\n\t\t\t\t\t),\n\t\t\t\t\tarray(\n\t\t\t\t\t\t'job_key' => 'refill_due:' . $row->user_id . ':' . $row->product_id . ':' . $row->predicted_empty_date,\n\t\t\t\t\t\t'user_id' => (int) $row->user_id,\n\t\t\t\t\t\t// context — reikalingas eligibility filtrui\n\t\t\t\t\t\t'context' => array(\n\t\t\t\t\t\t\t'user_id'            => (int) $row->user_id,\n\t\t\t\t\t\t\t'product_id'         => (int) $row->product_id,\n\t\t\t\t\t\t\t'last_purchase_date' => $row->last_purchase_date,\n\t\t\t\t\t\t\t// S323: reikalinga kalibravimo nuorodai (feedback_url)\n\t\t\t\t\t\t\t'refill_id'          => (int) $row->id,\n\t\t",
+  "content": [
+   {
+    "id": "53",
+    "flow": "refill_due",
+    "version": "1",
+    "status": "draft",
+    "subject": "Jūsų augintinio maisto gali netrukus pritrūkti",
+    "preheader": "Maisto gali netrukus pritrūkti — pakartokite užsakymą, kai bus patogu.",
+    "b": "[{\"t\":\"p\",\"text\":\"Pagal ankstesn\\u012f pirkim\\u0105 apskai\\u010diavome, kad j\\u016bs\\u0173 augintinio maisto gali netrukus pritr\\u016bkti.\"},{\"t\":\"button\",\"url\":\"http:\\/\\/{reorder_url}\",\"label\":\"Pakartoti dabar\"},{\"t\":\"secondary\",\"items\":[{\"label\":\"Patikslinti priminim\\u0105\",\"url\":\"http:\\/\\/{feedback_url}\"}]}]"
+   }
+  ],
+  "hits": {
+   "petshop-anketos-ataskaita.php": [
+    "\t\t\t'refill'        => array( 'Refill',          'Ar priminimai virsta pirkimais.' ),",
+    "\t\t\tcase 'refill':         self::skiltis_5( $U, $lt ); break;",
+    "\t\t$r = self::ivykiai_intervale( 'refill', $lt['nuo'], $lt['iki'] );",
+    "\t\t$due = self::sk( $r, 'refill_due' );"
+   ],
+   "petshop-laiskai.php": [
+    "\t\t\t'refill_due'             => array( 'reorder_url', 'feedback_url' ),"
+   ],
+   "petshop-langai-admin.php": [
+    "\t\t\t'refill_due'             => array( 'Maisto gali pritrūkti', 'Pagal ankstesnį pirkimą apskaičiuotas laikas.' ),"
+   ],
+   "petshop-lifecycle-vartai.php": [
+    "klai pagal brendą × pakuotę iš 2,5 m. istorijos (CIKLAI_ir_R_due_baseline_s1684.md) vietoj grubių 14/30/60 d.; (2) refill_due / post_purchase_14d eligibility = ERĮ 81(2) soft opt-out (ps_soft_optin_eligible && !ps_similar_optout), kol lauko nėra — atidedama; (3) 90/10 holdout (per",
+    "\t\tif ( ! in_array( $flow, array( 'refill_due', 'post_purchase_14d' ), true ) ) return $result;"
+   ],
+   "petshop-refill-ivykiai.php": [
+    " * KODEL VEIDRODIS: refill_due gimsta Petshop_Refill_Engine::check_due(), kuris",
+    " *   refill_due            <- ps_event_log  (event_type=refill_due)",
+    " *   refill_reminder_sent  <- ps_email_jobs (flow=refill_due, status=sent)",
+    " *                            uzsakyme yra preke su refill_due per 45 d.;",
+    "\t\t\t'sritis' => 'refill', 'verte' => $verte, 'user_id' => (int) $uid,",
+    "\t\t/* --- refill_due is ps_event_log --- */"
+   ],
+   "petshop-rezultatai.php": [
+    "      'subscription_t5_notice'=>'Reguliari siunta po 5 d.','refill_due'=>'Maisto gali pritrūkti',"
+   ],
+   "petshop-rytas.php": [
+    "\t\treturn is_array( $v ) ? $v : array( 'uzsakyti' => 1, 'galiojimas' => 1, 'refill' => 1, 'nuostolingi' => 1 );",
+    "\t\tforeach ( array( 'uzsakyti', 'galiojimas', 'refill', 'nuostolingi' ) as $k ) { $v[ $k ] = empty( $_POST[ 'v_' . $k ] ) ? 0 : 1; }",
+    "\t\tif ( ! empty( $on['refill'] ) && self::lentele_yra( $dk ) ) {",
+    "\t\tforeach ( array( 'uzsakyti' => 'Užsakyti', 'galiojimas' => 'Trumpas galiojimas', 'refill' => 'Refill rizika', 'nuostolingi' => 'Nuostolingi' ) as $k => $v ) {"
+   ],
+   "petshop-statistika.php": [
+    "\tconst SAUGOMOS_SRITYS = array( 'anketa', 'rec', 'refill' );"
+   ],
+   "class-email-dispatch.php": [
+    "\t\t\t'refill_due'              => array( 'class' => 'service', 'template' => 'refill',            'delay' => 0 ),"
+   ],
+   "class-event-registry.php": [
+    " * pet_profile_updated, cart_abandoned, order_paid, order_shipped, refill_due,",
+    "\t\t'refill_due'                  => false,  // M11"
+   ],
+   "class-pet-dashboard.php": [
+    "\t\t\t'refill'       => self::get_refill( $user_id, $pet_id ),"
+   ],
+   "class-refill-engine.php": [
+    " * GENERUOJA: refill_due event (schema jau yra S185).",
+    " *   2. Cron (kasdien) -> check_due() -> fire refill_due event (T-5 dienu)",
+    "\tconst DUE_ADVANCE_DAYS = 5;  // fire refill_due X dienu PRIES predicted_empty_date",
+    "\t * Cron: kasdienine patikra — fire refill_due event kai arteja predicted_empty_date.",
+    "\t\t// IR dar nefire'inome refill_due (status = 'active')",
+    "\t\t\tPetshop_Event_Registry::emit( 'refill_due', $row->user_email, array("
+   ],
+   "class-refill-feedback.php": [
+    "\t\tif ( 'refill_due' !== $flow ) { return $context; }"
+   ]
+  }
+ }
+}

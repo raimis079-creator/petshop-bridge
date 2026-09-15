@@ -1,0 +1,37 @@
+{
+ "v": "dep-133539",
+ "kurimas": 200,
+ "sid": 5848,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "TEST": {
+  "v": "S1685 mm",
+  "eilute": {
+   "pid": "19574",
+   "pred": "2026-09-21",
+   "stock": "instock"
+  },
+  "path": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/ps-sablonai/refill-pakartoti.php",
+  "subject": "Laikas pakartoti: Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 400 g",
+  "len": 2904,
+  "tekstas": "Laikas pakartoti: Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 400 g Tas pats užsakymas vienu paspaudimu. Laikas pakartoti: Animonda GranCarno Adult Beef: konservai šunims su šviežia jautiena, 400 g Pagal ankstesnį pirkimą ši prekė gali baigtis apie rugsėjo 21 d.Tas pats užsakymas vienu paspaudimu — 1 vnt., 2,20 € — pristatysime taip pat greitai, kaip praeitą kartą.Pakartoti tą patįPeržiūrėti prekę · Patikslinti priminimą · Nenoriu tokių priminimų&nbsp;UAB Avesa, Liucionių g. 46, Liucionys, LT-15166Gavote šį laišką, nes pirkote šią prekę petshop.lt. Priminimų galite atsisakyti nuoroda aukščiau.Šis laiškas susijęs su jūsų užsakymu ar paskyra.",
+  "nuorodos": [
+   "https://petshop.lt/kasa/?add-to-cart=19574&#038;quantity=1",
+   "https://petshop.lt/product/animonda-grancarno-adult-beef-konservai-sunims-su-sviezia-jautiena-400-g/",
+   "https://petshop.lt/?fb=test",
+   "https://petshop.lt/?ps_atsisakyti_priminimu=jowita.kropa.2003%40gmail.com&#038;z=…"
+  ],
+  "elig": {
+   "allowed": false,
+   "reason": "soft_optout_nezinomas",
+   "terminal": false
+  },
+  "elig_nera": {
+   "allowed": false,
+   "reason": "product_inactive",
+   "terminal": false
+  }
+ }
+}
