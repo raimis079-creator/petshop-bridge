@@ -1,0 +1,12 @@
+<?php
+/** TEMP PS S1683t r — read-only: Josera Leger 10 kg — prekės kainos/meta/variacijos, užsakymai su ja 3 d., kainų istorija/šaltinis. */
+add_action('init', function(){
+  if (!isset($_GET['ps_s1683tr'])) return; global $wpdb; $p=$wpdb->prefix; $o=array('v'=>'r');
+  $ids=$wpdb->get_col("SELECT ID FROM {$p}posts WHERE post_type IN('product','product_variation') AND post_title LIKE '%Leger%' AND post_status IN('publish','private') LIMIT 10");
+  foreach($ids as $id){ $pr=wc_get_product($id); if(!$pr) continue; $m=array(); foreach($pr->get_meta_data() as $md) if(preg_match('/kain|price|_ps_|savik|vf_|tiek|feed|label/i',$md->key)&&!preg_match('/_ps_ga|desc/i',$md->key)) $m[$md->key]=substr(json_encode($md->value,JSON_UNESCAPED_UNICODE),0,80);
+    $o['prekes'][$id]=array('n'=>$pr->get_name(),'tipas'=>$pr->get_type(),'sku'=>$pr->get_sku(),'reg'=>$pr->get_regular_price(),'sale'=>$pr->get_sale_price(),'price'=>$pr->get_price(),'sale_nuo'=>$pr->get_date_on_sale_from()?$pr->get_date_on_sale_from()->date('m-d'):'','sale_iki'=>$pr->get_date_on_sale_to()?$pr->get_date_on_sale_to()->date('m-d'):'','stock'=>$pr->get_stock_quantity(),'parent'=>$pr->get_parent_id(),'mod'=>$pr->get_date_modified()->date('m-d H:i'),'meta'=>$m); }
+  $items=$wpdb->get_results("SELECT oi.order_id,oi.order_item_id,oi.order_item_name n FROM {$p}woocommerce_order_items oi JOIN {$p}wc_orders o ON o.id=oi.order_id WHERE oi.order_item_name LIKE '%Leger%' AND o.date_created_gmt>=DATE_SUB(NOW(),INTERVAL 4 DAY)",ARRAY_A);
+  foreach($items as $it){ $w=wc_get_order($it['order_id']); $i=$w->get_item($it['order_item_id']); $o['uzs'][]=array('nr'=>$w->get_order_number(),'st'=>$w->get_status(),'sukurta'=>$w->get_date_created()->date('m-d H:i'),'preke'=>$it['n'],'pid'=>$i->get_product_id(),'vid'=>$i->get_variation_id(),'q'=>$i->get_quantity(),'subtotal'=>$i->get_subtotal(),'total'=>$i->get_total(),'viso'=>$w->get_total(),'kuponai'=>$w->get_coupon_codes(),'meta'=>array_filter(array_map(function($m){return preg_match('/_ps_kaina|savik|mnm|rink|nuolaid|bundle/i',$m->key)?$m->key.'='.substr(json_encode($m->value,JSON_UNESCAPED_UNICODE),0,60):null;},$i->get_meta_data()))); }
+  $o['kainu_log']=$wpdb->get_results("SELECT * FROM {$p}ps_kainu_istorija WHERE product_id IN(".(implode(',',array_map('intval',$ids))?:'0').") ORDER BY 1 DESC LIMIT 8",ARRAY_A); $o['e']=$wpdb->last_error;
+  header('Content-Type: application/json; charset=utf-8'); echo json_encode($o,JSON_UNESCAPED_UNICODE|JSON_PARTIAL_OUTPUT_ON_ERROR); exit;
+});
