@@ -1,0 +1,51 @@
+{
+ "v": "dep-095913",
+ "kurimas": 200,
+ "sid": 5812,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "q",
+  "t": "gaj6_ps_tiekimas",
+  "p23": {
+   "id": "23",
+   "tiekejas": "vf",
+   "busena": "kaupiama",
+   "sukurta": "2026-09-15 12:47:30",
+   "uzsakyta": null,
+   "gauta": null,
+   "siuntos_kodas": null,
+   "pastaba": null,
+   "pristatymas": null,
+   "svoris": null,
+   "venipak_pack": null,
+   "venipak_manifest": null,
+   "dezes": "1"
+  },
+  "kaupiamos": [],
+  "eil23": [
+   {
+    "id": "41",
+    "partija_id": "23",
+    "product_id": "18154",
+    "order_id": null,
+    "qty": "1",
+    "qty_gauta": null,
+    "galiojimas": null,
+    "pastaba": null
+   },
+   {
+    "id": "42",
+    "partija_id": "23",
+    "product_id": "18512",
+    "order_id": null,
+    "qty": "10",
+    "qty_gauta": null,
+    "galiojimas": null,
+    "pastaba": null
+   }
+  ]
+ }
+}
