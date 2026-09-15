@@ -1,0 +1,289 @@
+{
+ "v": "dep-201832",
+ "kurimas": 200,
+ "sid": 5910,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RECON": {
+  "v": "S1686 mu",
+  "18159/20": {
+   "status": "ok",
+   "availability": {
+    "norm": true,
+    "duration": true,
+    "cost": true
+   },
+   "reason_codes": [],
+   "message_lt": null,
+   "weight_missing": false,
+   "weight_mode": "exact",
+   "norm_min_g": 150,
+   "norm_max_g": 255,
+   "days_min": 49,
+   "days_max": 83,
+   "cost_day_min": 0.46,
+   "cost_day_max": 0.79,
+   "cost_30d_min": 13.93,
+   "cost_30d_max": 23.68,
+   "basis": "by_weight",
+   "basis_label_lt": "Pagal svorį – patikslinkite aktyvumą",
+   "activity_mode": "optional_refinement",
+   "activity_options": [
+    {
+     "code": "low",
+     "label_lt": "Neaktyvus / senyvas"
+    },
+    {
+     "code": "moderate",
+     "label_lt": "Normaliai aktyvus"
+    },
+    {
+     "code": "high",
+     "label_lt": "Aktyvus"
+    }
+   ],
+   "activity_selected": null,
+   "interval_options": [
+    {
+     "code": "W5_10",
+     "min_kg": 5,
+     "max_kg": 10,
+     "label_lt": "5–10 kg"
+    },
+    {
+     "code": "W10_20",
+     "min_kg": 10,
+     "max_kg": 20,
+     "label_lt": "10–20 kg"
+    },
+    {
+     "code": "W20_30",
+     "min_kg": 20,
+     "max_kg": 30,
+     "label_lt": "20–30 kg"
+    },
+    {
+     "code": "W30_40",
+     "min_kg": 30,
+     "max_kg": 40,
+     "label_lt": "30–40 kg"
+    },
+    {
+     "code": "W40_60",
+     "min_kg": 40,
+     "max_kg": 60,
+     "label_lt": "40–60 kg"
+    },
+    {
+     "code": "W60_80",
+     "min_kg": 60,
+     "max_kg": 80,
+     "label_lt": "60–80 kg"
+    }
+   ],
+   "interval_too_wide": false,
+   "weight_interval_selected": null,
+   "species_required": false,
+   "species_options": [],
+   "sellable_unit_food_g": 12500,
+   "currency": "EUR",
+   "price_source": "product",
+   "price_context": "regular",
+   "price_used": 38.69,
+   "mixed_estimate": null,
+   "narrowing_axes": [
+    "activity"
+   ]
+  },
+  "18587/30": {
+   "status": "unavailable",
+   "availability": {
+    "norm": false,
+    "duration": false,
+    "cost": false
+   },
+   "reason_codes": [
+    "WEIGHT_OUT_OF_RANGE"
+   ],
+   "message_lt": "Gamintojas pateikia šėrimo normas 2–10 kg svorio šunims. Jūsų nurodytam 30 kg svoriui gamintojo normos nėra, todėl jos neskaičiuojame.",
+   "weight_missing": false,
+   "weight_mode": null,
+   "norm_min_g": null,
+   "norm_max_g": null,
+   "days_min": null,
+   "days_max": null,
+   "cost_day_min": null,
+   "cost_day_max": null,
+   "cost_30d_min": null,
+   "cost_30d_max": null,
+   "basis": null,
+   "basis_label_lt": null,
+   "activity_mode": "none",
+   "activity_options": [],
+   "activity_selected": null,
+   "interval_options": [],
+   "interval_too_wide": false,
+   "weight_interval_selected": null,
+   "species_required": false,
+   "species_options": [],
+   "sellable_unit_food_g": null,
+   "currency": null,
+   "price_source": null,
+   "price_context": null,
+   "price_used": null,
+   "mixed_estimate": null,
+   "weight_range_from_kg": 2,
+   "weight_range_to_kg": 10
+  },
+  "18587/8": {
+   "status": "ok",
+   "availability": {
+    "norm": true,
+    "duration": true,
+    "cost": true
+   },
+   "reason_codes": [],
+   "message_lt": null,
+   "weight_missing": false,
+   "weight_mode": "exact",
+   "norm_min_g": 120,
+   "norm_max_g": 140,
+   "days_min": 50,
+   "days_max": 58,
+   "cost_day_min": 0.98,
+   "cost_day_max": 1.14,
+   "cost_30d_min": 29.31,
+   "cost_30d_max": 34.19,
+   "basis": "by_weight",
+   "basis_label_lt": "Pagal svorį",
+   "activity_mode": "none",
+   "activity_options": [],
+   "activity_selected": null,
+   "interval_options": [
+    {
+     "code": "W2_3",
+     "min_kg": 2,
+     "max_kg": 3,
+     "label_lt": "2–3 kg"
+    },
+    {
+     "code": "W3_4",
+     "min_kg": 3,
+     "max_kg": 4,
+     "label_lt": "3–4 kg"
+    },
+    {
+     "code": "W4_5",
+     "min_kg": 4,
+     "max_kg": 5,
+     "label_lt": "4–5 kg"
+    },
+    {
+     "code": "W5_6",
+     "min_kg": 5,
+     "max_kg": 6,
+     "label_lt": "5–6 kg"
+    },
+    {
+     "code": "W6_8",
+     "min_kg": 6,
+     "max_kg": 8,
+     "label_lt": "6–8 kg"
+    },
+    {
+     "code": "W8_10",
+     "min_kg": 8,
+     "max_kg": 10,
+     "label_lt": "8–10 kg"
+    }
+   ],
+   "interval_too_wide": false,
+   "weight_interval_selected": null,
+   "species_required": false,
+   "species_options": [],
+   "sellable_unit_food_g": 7000,
+   "currency": "EUR",
+   "price_source": "product",
+   "price_context": "regular",
+   "price_used": 56.99,
+   "mixed_estimate": null,
+   "activity_would_narrow": true,
+   "narrowing_axes": [
+    "activity"
+   ]
+  },
+  "17992/5": {
+   "status": "ok",
+   "availability": {
+    "norm": true,
+    "duration": true,
+    "cost": true
+   },
+   "reason_codes": [],
+   "message_lt": null,
+   "weight_missing": false,
+   "weight_mode": "exact",
+   "norm_min_g": 55,
+   "norm_max_g": 70,
+   "days_min": 142,
+   "days_max": 181,
+   "cost_day_min": 0.26,
+   "cost_day_max": 0.33,
+   "cost_30d_min": 7.77,
+   "cost_30d_max": 9.89,
+   "basis": "by_weight",
+   "basis_label_lt": "Pagal svorį",
+   "activity_mode": "none",
+   "activity_options": [],
+   "activity_selected": null,
+   "interval_options": [
+    {
+     "code": "W2_3",
+     "min_kg": 2,
+     "max_kg": 3,
+     "label_lt": "2–3 kg"
+    },
+    {
+     "code": "W3_4",
+     "min_kg": 3,
+     "max_kg": 4,
+     "label_lt": "3–4 kg"
+    },
+    {
+     "code": "W4_5",
+     "min_kg": 4,
+     "max_kg": 5,
+     "label_lt": "4–5 kg"
+    },
+    {
+     "code": "W5_7",
+     "min_kg": 5,
+     "max_kg": 7,
+     "label_lt": "5–7 kg"
+    },
+    {
+     "code": "W7_10",
+     "min_kg": 7,
+     "max_kg": 10,
+     "label_lt": "7–10 kg"
+    }
+   ],
+   "interval_too_wide": false,
+   "weight_interval_selected": null,
+   "species_required": false,
+   "species_options": [],
+   "sellable_unit_food_g": 10000,
+   "currency": "EUR",
+   "price_source": "product",
+   "price_context": "regular",
+   "price_used": 47.09,
+   "mixed_estimate": null,
+   "activity_would_narrow": true,
+   "narrowing_axes": [
+    "activity"
+   ]
+  }
+ }
+}
