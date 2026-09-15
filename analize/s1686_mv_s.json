@@ -1,5 +1,182 @@
 {
- "v": "dep-204641",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "v": "dep-205105",
+ "kurimas": 200,
+ "sid": 5922,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RUN": {
+  "v": "S1686 mv",
+  "grupes": [
+   {
+    "grupe": "G3_very_old",
+    "n": "1967",
+    "c": "230"
+   },
+   {
+    "grupe": "G2_old_food",
+    "n": "1226",
+    "c": "111"
+   },
+   {
+    "grupe": "G2_old_nonfood",
+    "n": "566",
+    "c": "33"
+   },
+   {
+    "grupe": "G1_recent_nonfood",
+    "n": "475",
+    "c": "31"
+   },
+   {
+    "grupe": "G4_dead_product",
+    "n": "213",
+    "c": "13"
+   },
+   {
+    "grupe": "G1r_repeat_nonfood",
+    "n": "6",
+    "c": "2"
+   }
+  ],
+  "g1_kat": [
+   {
+    "last_kat": "ŠUNIMS > Skanėstai šunims",
+    "n": "142"
+   },
+   {
+    "last_kat": "ŠUNIMS > Antiparazitinės priemonės šunims",
+    "n": "58"
+   },
+   {
+    "last_kat": "KATĖMS > Dubenėliai katėms",
+    "n": "45"
+   },
+   {
+    "last_kat": "KATĖMS > Skanėstai katėms",
+    "n": "44"
+   },
+   {
+    "last_kat": "ŠUNIMS > Žaislai šunims",
+    "n": "36"
+   },
+   {
+    "last_kat": "KATĖMS > Tualetai, semtuvėliai",
+    "n": "28"
+   },
+   {
+    "last_kat": "KATĖMS > Antiparazitinės priemonės katėms",
+    "n": "23"
+   },
+   {
+    "last_kat": "KATĖMS > Žaislai katėms",
+    "n": "22"
+   },
+   {
+    "last_kat": "KATĖMS > Kraikai kačių tualetams",
+    "n": "17"
+   },
+   {
+    "last_kat": "KATĖMS > Vitaminai ir papildai katėms",
+    "n": "12"
+   },
+   {
+    "last_kat": "ŠUNIMS > Šukos, šepečiai, žirklės šunims",
+    "n": "10"
+   },
+   {
+    "last_kat": "ŠUNIMS > Vitaminai ir papildai šunims",
+    "n": "7"
+   },
+   {
+    "last_kat": "PAUKŠČIAMS > Skanėstai paukščiams",
+    "n": "6"
+   },
+   {
+    "last_kat": "ŠUNIMS > Antkakliai, pavadėliai šunims",
+    "n": "5"
+   },
+   {
+    "last_kat": "ŠUNIMS > Šampūnai šunims",
+    "n": "5"
+   }
+  ],
+  "top_kat_visi_generic": [
+   {
+    "top_kat": "KATĖMS > Kraikai kačių tualetams",
+    "n": "472"
+   },
+   {
+    "top_kat": "ŠUNIMS > Skanėstai šunims",
+    "n": "454"
+   },
+   {
+    "top_kat": "KATĖMS > Skanėstai katėms",
+    "n": "176"
+   },
+   {
+    "top_kat": "ŠUNIMS > Antiparazitinės priemonės šunims",
+    "n": "147"
+   },
+   {
+    "top_kat": "KATĖMS > Tualetai, semtuvėliai",
+    "n": "143"
+   },
+   {
+    "top_kat": "ŠUNIMS > Žaislai šunims",
+    "n": "95"
+   },
+   {
+    "top_kat": "KATĖMS > Dubenėliai katėms",
+    "n": "81"
+   },
+   {
+    "top_kat": "KATĖMS > Žaislai katėms",
+    "n": "81"
+   },
+   {
+    "top_kat": "KATĖMS > Vitaminai ir papildai katėms",
+    "n": "80"
+   },
+   {
+    "top_kat": "ŠUNIMS > Šampūnai šunims",
+    "n": "79"
+   },
+   {
+    "top_kat": "KATĖMS > Antiparazitinės priemonės katėms",
+    "n": "70"
+   },
+   {
+    "top_kat": "PAUKŠČIAMS > Skanėstai paukščiams",
+    "n": "47"
+   },
+   {
+    "top_kat": "ŠUNIMS > Vitaminai ir papildai šunims",
+    "n": "44"
+   },
+   {
+    "top_kat": "KATĖMS > Transportavimo dėžės katėms",
+    "n": "24"
+   },
+   {
+    "top_kat": "ŠUNIMS > Higienos priemonės šunims",
+    "n": "24"
+   }
+  ],
+  "g1_repeat": [
+   {
+    "k": "1",
+    "n": "424"
+   },
+   {
+    "k": "2",
+    "n": "26"
+   },
+   {
+    "k": "3+",
+    "n": "31"
+   }
+  ]
+ }
 }
