@@ -1,7 +1,7 @@
 {
- "v": "dep-201032",
+ "v": "dep-202031",
  "kurimas": 200,
- "sid": 5906,
+ "sid": 5911,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
@@ -11,123 +11,140 @@
   "auditorija": 5665,
   "prekes_n": 317,
   "prekiu_busenos": {
-   "product": 226,
-   "calc": 47,
+   "product": 179,
+   "calc": 94,
    "unavailable": 23,
    "out_of_stock": 20,
    "gone": 1
   },
   "pvz": [
    {
-    "pid": 17992,
-    "rusis": "kate",
+    "pid": 18587,
+    "rusis": "suo",
     "busena": "calc",
-    "pav": "Josera Senior 10 kg - sausas maistas vyresnio amžiaus katėms",
-    "kaina": 47.09,
-    "url": "https://petshop.lt/product/josera-senior-10-kg-sausas-maistas-vyresnio-amziaus-katems/",
-    "img": "https://petshop.lt/wp-content/uploads/2026/06/josera-senior-sausas-maistas-vyresnems-katems-2-400x400.jpg",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    "kaina": 56.99,
+    "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+    "img": "https://petshop.lt/wp-content/uploads/2026/06/exclusion-sausas-edalas-mazu-veisliu-sunims-su-kiauliena-ir-zirniais-2-400x400.png",
+    "calc_issue": "unavailable:WEIGHT_OUT_OF_RANGE",
     "eilutes": [
      {
-      "kg": 3,
+      "kg": 4,
       "g": {
-       "min": 25,
-       "max": 40
+       "min": 80,
+       "max": 90
       },
       "eur": {
-       "min": 0.12,
-       "max": 0.19
+       "min": 0.65,
+       "max": 0.73
       },
       "d": {
-       "min": 250,
-       "max": 400
-      }
+       "min": 77,
+       "max": 87
+      },
+      "kaina": 56.99
      },
      {
-      "kg": 5,
+      "kg": 6,
       "g": {
-       "min": 55,
+       "min": 100,
+       "max": 120
+      },
+      "eur": {
+       "min": 0.81,
+       "max": 0.98
+      },
+      "d": {
+       "min": 58,
        "max": 70
       },
-      "eur": {
-       "min": 0.26,
-       "max": 0.33
-      },
-      "d": {
-       "min": 142,
-       "max": 182
-      }
+      "kaina": 56.99
      },
      {
-      "kg": 7,
+      "kg": 8,
       "g": {
-       "min": 70,
-       "max": 95
+       "min": 120,
+       "max": 140
       },
       "eur": {
-       "min": 0.33,
-       "max": 0.45
+       "min": 0.98,
+       "max": 1.14
       },
       "d": {
-       "min": 105,
-       "max": 143
-      }
+       "min": 50,
+       "max": 58
+      },
+      "kaina": 56.99
      }
+    ],
+    "svoriai": [
+     4,
+     6,
+     8
     ]
    },
    {
-    "pid": 18084,
-    "rusis": "kate",
+    "pid": 18159,
+    "rusis": "suo",
     "busena": "calc",
-    "pav": "Josera Indoor 10 kg - sausas maistas naminėms sterilizuotoms katėms",
-    "kaina": 51.09,
-    "url": "https://petshop.lt/product/josera-indoor-10-kg-sausas-maistas-naminems-sterilizuotoms-katems/",
-    "img": "https://petshop.lt/wp-content/uploads/2026/06/josera-indoor-sausas-maistas-katems_1771004721-261x400.jpg",
+    "pav": "JOSERA BALANCE pašaras šunims su vištiena, 12,5 kg",
+    "kaina": 38.69,
+    "url": "https://petshop.lt/product/josera-balance-pasaras-sunims-su-vistiena-125-kg/",
+    "img": "https://petshop.lt/wp-content/uploads/2026/06/josera-balance-senior-pasaras-sunims_1762339269-400x400.jpg",
     "eilutes": [
      {
-      "kg": 3,
+      "kg": 10,
       "g": {
-       "min": 30,
-       "max": 45
+       "min": 90,
+       "max": 150
       },
       "eur": {
-       "min": 0.15,
-       "max": 0.23
+       "min": 0.28,
+       "max": 0.46
       },
       "d": {
-       "min": 222,
-       "max": 334
-      }
+       "min": 83,
+       "max": 138
+      },
+      "kaina": 38.69
      },
      {
-      "kg": 5,
+      "kg": 20,
       "g": {
-       "min": 60,
-       "max": 80
+       "min": 150,
+       "max": 255
       },
       "eur": {
-       "min": 0.31,
-       "max": 0.41
+       "min": 0.46,
+       "max": 0.79
       },
       "d": {
-       "min": 125,
-       "max": 167
-      }
+       "min": 49,
+       "max": 83
+      },
+      "kaina": 38.69
      },
      {
-      "kg": 7,
+      "kg": 30,
       "g": {
-       "min": 80,
-       "max": 105
+       "min": 200,
+       "max": 345
       },
       "eur": {
-       "min": 0.41,
-       "max": 0.54
+       "min": 0.62,
+       "max": 1.07
       },
       "d": {
-       "min": 95,
-       "max": 125
-      }
+       "min": 36,
+       "max": 62
+      },
+      "kaina": 38.69
      }
+    ],
+    "svoriai": [
+     10,
+     20,
+     30
     ]
    }
   ]
