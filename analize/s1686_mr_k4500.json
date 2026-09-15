@@ -1,0 +1,25 @@
+{
+ "v": "dep-202612",
+ "kurimas": 200,
+ "sid": 5915,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RUN": {
+  "v": "S1686 mr",
+  "apdorota": 1165,
+  "stat": {
+   "generic/old_purchase": 218,
+   "generic/no_food": 487,
+   "generic/old_purchase_24": 183,
+   "generic/product_out_of_stock": 22,
+   "product/no_feeding_table": 94,
+   "calc/recent_exact": 133,
+   "generic/product_gone": 4,
+   "generic/product_unavailable": 17,
+   "calc/repeat_exact": 7
+  },
+  "db_err": ""
+ }
+}
