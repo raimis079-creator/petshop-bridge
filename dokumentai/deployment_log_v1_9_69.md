@@ -43,3 +43,6 @@ Ads UI „Įkėlimai": skriptas kas rytą 05:21 kelia, bet 100 % eilučių klaid
 
 ## S1685 (09-15) — petshop-sutikimai.php v1.0.1 GYVAI (kasos soft opt-out)
 Naujas mu-plugin `petshop-sutikimai.php` v1.0.1 (md5 1f22890ef04a3d1aa669e8a48e5613a4; v1.0.0 e6037933… pakeista, nes `woocommerce_form_field` pridėjo „(nebūtinas)"), bak `ps-backups/petshop-sutikimai.php.bak_s1685`, repo `deploy/petshop-sutikimai-v1.0.1.php`, įrankiai `irankiai/s1685_md–mh.php`. Testai: naršyklė (desktop/mob, be JS klaidų), rašymas (0/1/email_link, consent_log 3 įrašai, vartai similar_ok true/false) ✓. Detalės — `dokumentai/marketingas/STARTAS_marketingas_2026-09-14.md` S1685 skyrius.
+
+## S1685 (09-15 vakaras) — petshop-pakartoti.php v1.0.0 + ps-sablonai/refill-pakartoti.php GYVAI
+refill_due laiškas „Pakartoti tą patį" (šablonas per `petshop_email_template_path`, core neliestas), sandėlio eligibility, opt-out nuoroda. md5 9916c1adef48332df918d7f222e7b93f / e2a0f2387b49b4e5e56fac5abed8f786; bak `ps-backups/*.bak_s1685`; įrankiai `irankiai/s1685_mi–mo.php`. Detalės — STARTAS_marketingas S1685 skyrius. Radinys: refill per prekę, ne per užsakymą (konservai 1 vnt.) — laukia Raimio sprendimo dėl grupavimo.
