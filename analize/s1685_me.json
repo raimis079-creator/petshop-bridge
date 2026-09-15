@@ -1,0 +1,31 @@
+{
+ "v": "dep-124741",
+ "kurimas": 200,
+ "sid": 5832,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DEPLOY": {
+  "v": "S1685 me",
+  "md5": "e60379335f0e1c777c4137276c83689a",
+  "heartbeat": 200,
+  "test_preke": [
+   {
+    "ID": "35002",
+    "post_title": "TESTAS Paysera 1 EUR",
+    "post_status": "trash"
+   },
+   {
+    "ID": "34948",
+    "post_title": "TEST Konservu deze katei Be vistienos",
+    "post_status": "trash"
+   },
+   {
+    "ID": "34943",
+    "post_title": "TEST Konservu deze 800 Visi skoniai",
+    "post_status": "trash"
+   }
+  ]
+ }
+}
