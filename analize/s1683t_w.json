@@ -1,0 +1,42 @@
+{
+ "v": "dep-104323",
+ "kurimas": 200,
+ "sid": 5818,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "18054": {
+   "st": "draft",
+   "price": "40.89",
+   "sku": "JOS0793",
+   "bc": "403225474947",
+   "cost": "22.524",
+   "xml": "28.155",
+   "url": "https://petshop.lt/?post_type=product&p=18054"
+  },
+  "21707": {
+   "st": "draft",
+   "slug": "josera-leger-sausas-pasaras-katems-10-kg"
+  },
+  "v": "w",
+  "redir": {
+   "petshop-legacy-301.php": [
+    "* Petshop Legacy 301 v2.1 (S436, S1668) — senos platformos adresų nukreipimas.",
+    "* v2.1 (S1668): 301 PERKELIA užklausos eilutę (gclid, gad_source, utm_*, _gl).",
+    "* (218 clicks) SPĖJIMU 301-ina į ATSITIKTINĮ SKU. TŽ v1.56 tai įspėjo, ir",
+    "*   - vienas 301 tiesiai į galutinį 200, jokių grandinių",
+    "const PS_LEGACY_301_MAP = __DIR__ . '/petshop-legacy-301-map.json';",
+    "function petshop_legacy_301_map() {"
+   ]
+  },
+  "redir_opt": [
+   "petshop_umbrella_redirects_bak_S450",
+   "woocommerce_cart_redirect_after_add",
+   "woocommerce_downloads_redirect_fallback_allowed",
+   "wp_mail_smtp_activation_prevent_redirect",
+   "wpforms_activation_redirect"
+  ]
+ }
+}
