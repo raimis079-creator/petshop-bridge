@@ -1,0 +1,120 @@
+{
+ "v": "dep-124240",
+ "kurimas": 200,
+ "sid": 5829,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RECON": {
+  "v": "S1685 md",
+  "t": {
+   "ps_consent_log": {
+    "cols": [
+     "id",
+     "customer_id",
+     "email",
+     "field",
+     "from_value",
+     "to_value",
+     "source",
+     "ip",
+     "user_agent",
+     "changed_at"
+    ],
+    "n": 582
+   },
+   "ps_kontaktai": null,
+   "ps_email_suppression": {
+    "cols": [
+     "id",
+     "email",
+     "channel",
+     "reason",
+     "source",
+     "note",
+     "suppressed_at",
+     "released_at"
+    ],
+    "n": 3
+   },
+   "ps_email_jobs": {
+    "cols": [
+     "id",
+     "job_key",
+     "flow",
+     "flow_class",
+     "recipient_email",
+     "recipient_user_id",
+     "subject",
+     "payload",
+     "status",
+     "block_reason",
+     "provider",
+     "provider_message_id",
+     "attempts",
+     "last_error",
+     "scheduled_at",
+     "sent_at",
+     "created_at",
+     "updated_at",
+     "skip_reason",
+     "error_message",
+     "decision_at",
+     "next_attempt_at",
+     "context_json",
+     "delivered_at",
+     "opened_at",
+     "clicked_at"
+    ],
+    "n": 77
+   }
+  },
+  "log_pvz": [
+   {
+    "id": "607",
+    "customer_id": "0",
+    "email": "ulle.seisonen@gnmail.com",
+    "field": "marketing_consent",
+    "from_value": "",
+    "to_value": "true",
+    "source": "footer_form",
+    "ip": "88.162.185.15",
+    "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Safari/537.36",
+    "changed_at": "2026-09-14 17:03:01"
+   },
+   {
+    "id": "606",
+    "customer_id": "0",
+    "email": "romualdas48@gmail.com",
+    "field": "marketing_consent",
+    "from_value": "",
+    "to_value": "true",
+    "source": "footer_form",
+    "ip": "46.36.76.184",
+    "user_agent": "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/152.0.0.0 Mobile Safari/537.36",
+    "changed_at": "2026-09-14 02:43:45"
+   }
+  ],
+  "mu": [],
+  "cls": false,
+  "kasa": {
+   "id": "13",
+   "blocks": false,
+   "shortcode": true
+  },
+  "elig_n": 0,
+  "optout_n": 0,
+  "consent_cls": [
+   "Petshop_Consent_Log",
+   "Petshop_Consent_Sync",
+   "Petshop_Contact_Policy",
+   "Automattic\\WooCommerce\\Internal\\Integrations\\WPConsentAPI",
+   "WPForms\\Education\\WPConsent\\InstallTracker",
+   "WPForms\\Admin\\Settings\\Gdpr\\WPConsentCallout",
+   "cmplz_proof_of_consent",
+   "petshop_esp_consent_log",
+   "petshop_esp_consent_sync"
+  ]
+ }
+}
