@@ -73,7 +73,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
     <h3>Penki vykdymo vartai</h3>
     <table style="border:0;font-size:12.5px">
       <tr><td><b>A</b> N ekonomika</td><td><span class="tag go">recon ✓ · vykdyti</span></td></tr>
-      <tr><td><b>B</b> CAC ekonomika</td><td><span class="tag stop">CAC 2–3× virš ribos</span></td></tr>
+      <tr><td><b>B</b> CAC ekonomika</td><td><span class="tag go">CAC €14 · signalas nuo 09-15</span></td></tr>
       <tr><td><b>C</b> Lifecycle</td><td><span class="tag stop">kasoje opt-out nėra</span></td></tr>
       <tr><td><b>D</b> Pajėgumas</td><td><span class="tag wait">modelis lapkritį</span></td></tr>
       <tr><td><b>E</b> Dashboard</td><td><span class="tag wait">Claude · spalio 2 sav.</span></td></tr>
@@ -97,7 +97,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
     <div>
       <table>
         <tr><th>Darbas</th><th>Kas</th><th>Kada</th><th>Būsena</th></tr>
-        <tr><td>Offline konversijų patvirtinimas (naktinis 02:01 traukimas 09-15; Ads UI įkėlimų istorija)</td><td>Claude / Raimis</td><td>09-15</td><td><span class="tag wait">kontrolinis taškas</span></td></tr>
+        <tr><td>Offline konversijos — <b>09-15 pataisyta ir patvirtinta</b>: klaida buvo laiko formatas (+03:00), `petshop-ads-offline.php` v1.2; įkelta 22 užs. (09-10…15), Ads „Įkėlimai" 0 klaidų; kasdien 05:21, 7 d. langas</td><td>Claude / Raimis</td><td>09-15</td><td><span class="tag ok">veikia</span></td></tr>
         <tr><td>Nauja feed-only retail PMax „Šunų maistas" UI po MC review</td><td>Raimis</td><td>iki 09-20</td><td><span class="tag wait">laukia MC</span></td></tr>
         <tr><td>Kačių PMax — jau PAUSED nuo 09-12 (ps_ads_recon); grąžinti tik su ekonomikos įrodymu (CM12/CAC ≥ 2), ne pagal etiketę. Likusi: „P-max | LT | petshop.lt" €40/d ENABLED be MC feed'o</td><td>Raimis</td><td>spalis</td><td><span class="tag ok">pauzė</span></td></tr>
         <tr><td>Search exact top prekių pavadinimai (Exclusion Hypo, Josera, Animonda GranCarno) €5/d testas</td><td>Raimis / Claude (raktažodžiai iš ps_ist)</td><td>spalis</td><td><span class="tag wait">test</span></td></tr>
@@ -321,7 +321,7 @@ ul{margin:4px 0 0 18px;padding:0}li{margin:2px 0}
     <h3 style="margin-top:14px">Sprintas iki 09-21 (tik du varikliai: N ir retention)</h3>
     <ul>
       <li>✓ 09-14 — ciklų lentelė + R_due baseline 16,1 % → target 22 %; soft opt-out spec parašyta</li>
-      <li>09-15 — <b>Raimis</b>: Ads UI → Tools → Conversions → Uploads: ar 09-12/09-15 importai atsirado, datos, kiek, dubliai; Claude serveryje: `petshop-ads-offline.php` žurnalas, `_ps_gclid` (9 užs.)</li>
+      <li>✓ 09-15 — Ads offline konversijos veikia (0 klaidų, 22 užs.); PMax signalas tikras nuo šiandien</li>
       <li>09-15–09-20 — MC review → feed-only PMax „Šunų maistas"; biudžetas nekeliamas</li>
       <li>iki 09-21 — soft opt-out kasoje gyvai (Raimio žodžiai → deploy → testas)</li>
       <li>✓ 09-14 — antkainio/CAC matematika analitika-langas v1.1.0 gyvai (CAC €14,20 už naują)</li>
