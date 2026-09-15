@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Petshop Relaunch (informacinė kampanija istoriniams klientams)
  * Description: S1686 (Q4 planas, 2 punktas — „Maišas 55 €. O diena?"): (1) prekės puslapyje `?svoris=20` užpildo šėrimo skaičiuoklę ir paspaudžia „Apskaičiuoti" (tik UI, localStorage/profilio logika neliečiama); (2) `cid` — opaque atsitiktinis kampanijos tokenas (ne el. paštas, ne hash) iš `ps_relaunch_kontaktai` → paspaudimas įrašomas kaip signalas: usermeta `ps_weight_signal` (source email_calc_click, confidence medium; Pet Profile NEPERRAŠOMAS), `ps_web_ivykiai` tipas `email_calc_click`, lentelės klik_n/pask_svoris. Lentelę pildo 2 punkto skriptas (segmentai calc/product/generic, exact_product = ≤12 mėn. arba ≥3× ir ≤18 mėn.). Core neliečiamas.
- * Version: 1.0.0
+ * Version: 1.0.1
  */
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
@@ -67,7 +67,7 @@ class Petshop_Relaunch {
 			$wpdb->insert( Petshop_Analitika::t_ivykiai(), array(
 				'laikas' => $dabar, 'diena' => method_exists( 'Petshop_Analitika', 'verslo_diena' ) ? Petshop_Analitika::verslo_diena( $dabar ) : substr( $dabar, 0, 10 ),
 				'tipas' => 'email_calc_click', 'pusl_tipas' => 'product', 'url_kelias' => substr( (string) parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ), 0, 190 ),
-				'raktas' => (string) $pid, 'raktas2' => (string) $kg, 'reiksme' => $k ? $k['segmentas'] : 'login',
+				'raktas' => (string) $pid, 'raktas2' => $k ? $k['segmentas'] : 'login', 'reiksme' => $kg,
 				'saltinis' => 'sender', 'medium' => 'email', 'kampanija' => 'relaunch', 'kanalas' => 'email',
 				'irenginys' => method_exists( 'Petshop_Analitika', 'irenginys' ) ? Petshop_Analitika::irenginys( (string) ( $_SERVER['HTTP_USER_AGENT'] ?? '' ) ) : null,
 				'prisijunges' => get_current_user_id() ? 1 : 0, 'sutikimas' => 0, 'testinis' => 0,
