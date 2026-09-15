@@ -1,0 +1,46 @@
+{
+ "v": "dep-201406",
+ "kurimas": 200,
+ "sid": 5908,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "TEST": {
+  "v": "S1686 mt",
+  "shots": [
+   {
+    "n": "s1686_josera20",
+    "u": "https://petshop.lt/product/josera-balance-pasaras-sunims-su-vistiena-125-kg/?svoris=20",
+    "eval": "new Promise(function(r){setTimeout(function(){var o=document.querySelector('.ps-calc-out');r({out:o?o.innerText.slice(0,400):null});},4000);})",
+    "full": 0
+   },
+   {
+    "n": "s1686_excl30",
+    "u": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?svoris=30",
+    "eval": "new Promise(function(r){setTimeout(function(){var o=document.querySelector('.ps-calc-out');r({out:o?o.innerText.slice(0,400):null});},4000);})",
+    "full": 0
+   }
+  ]
+ },
+ "shots": {
+  "s1686_josera20": {
+   "status": 201,
+   "url": "https://petshop.lt/product/josera-balance-pasaras-sunims-su-vistiena-125-kg/?svoris=20",
+   "title": "JOSERA BALANCE pašaras šunims su vištiena, 12,5 kg - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "out": "Apie 49–83 dienos\nApie 0,46 €–0,79 € per dieną\nGamintojo rekomenduojama šėrimo norma: 150–255 g per dieną\nNorite tikslesnio skaičiavimo?\nNurodę šuns aktyvumą, gausite tikslesnį skaičiavimą. Išsaugosime pasirinktą maistą ir svorį, tad kitą kartą jų vesti nereikės.\nPatikslinti ir išsaugoti"
+   }
+  },
+  "s1686_excl30": {
+   "status": 201,
+   "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?svoris=30",
+   "title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "out": "Gamintojas pateikia šėrimo normas 2–10 kg svorio šunims. Jūsų nurodytam 30 kg svoriui gamintojo normos nėra, todėl jos neskaičiuojame.\nMaistai, kuriems gamintojas pateikia normas šiam svoriui\nRodyti maistus 30 kg šuniui →"
+   }
+  }
+ }
+}
