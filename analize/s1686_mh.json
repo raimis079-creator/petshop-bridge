@@ -1,7 +1,7 @@
 {
- "v": "dep-180706",
+ "v": "dep-180838",
  "kurimas": 200,
- "sid": 5890,
+ "sid": 5891,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
@@ -202,7 +202,24 @@
    "saltinis_aplinka",
    "diena"
   ],
-  "ist_uz_maist": [],
+  "ist_uz_maist": [
+   {
+    "b": "ne_publish",
+    "klientai": "334"
+   },
+   {
+    "b": "nera_wp",
+    "klientai": "31"
+   },
+   {
+    "b": "publish_be_lenteles",
+    "klientai": "1235"
+   },
+   {
+    "b": "publish_su_lentele",
+    "klientai": "2042"
+   }
+  ],
   "ist_be_maisto": 1976,
   "ist_viso": 5431
  }
