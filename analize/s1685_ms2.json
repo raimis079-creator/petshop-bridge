@@ -1,0 +1,41 @@
+{
+ "v": "dep-135556",
+ "kurimas": 200,
+ "sid": 5857,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "TEST": {
+  "v": "S1685 ms",
+  "tekstas": "Laikas pakartoti užsakymą Tas pats užsakymas vienu paspaudimu. Laikas pakartoti užsakymą Pagal ankstesnį pirkimą šios prekės gali baigtis apie rugsėjo 24 d.Konservų dėžė, 400 g. Be vištienos1 vnt.14,75 €Konservų dėžė, 400 g. Be vištienos1 vnt.13,84 €Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g2 vnt.1,92 €Iš viso30,51 €Tas pats užsakymas vienu paspaudimu — pristatysime taip pat greitai, kaip praeitą kartą. Kasoje kiekius galėsite pakeisti.Pakartoti užsakymąNenoriu tokių priminimų&nbsp;UAB Avesa, Liucionių g. 46, Liucionys, LT-15166Gavote šį laišką, nes pirkote šias prekes petshop.lt. Priminimų galite atsisakyti nuoroda aukščiau.Šis laiškas susijęs su jūsų užsakymu ar paskyra.",
+  "prekes": [
+   "[R] Konservų dėžė, 400 g. Be vištienos ×1 14.75",
+   "[R] Konservų dėžė, 400 g. Be vištienos ×1 13.84",
+   "Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g ×2 1.92"
+  ],
+  "nera": [],
+  "shots": [
+   {
+    "n": "s1685_pak_kasa",
+    "u": "https://petshop.lt/?ps_pakartoti=35948&z=c2e54d62b0082f941895",
+    "w": 1440,
+    "eval": "(()=>{const rows=[...document.querySelectorAll('.woocommerce-checkout-review-order-table .cart_item')].map(r=>r.innerText.replace(/\\s+/g,' ').trim().slice(0,90));const tot=document.querySelector('.order-total')?.innerText.replace(/\\s+/g,' ');const err=[...document.querySelectorAll('.woocommerce-error li,.woocommerce-notice,.woocommerce-info')].map(e=>e.innerText.slice(0,120));return {url:location.pathname,rows,tot,err}})()",
+    "full": true
+   }
+  ]
+ },
+ "shots": {
+  "s1685_pak_kasa": {
+   "status": 200,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "url": "/kasa/",
+    "rows": [],
+    "err": []
+   }
+  }
+ }
+}
