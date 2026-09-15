@@ -1,0 +1,40 @@
+{
+ "v": "dep-204027",
+ "kurimas": 200,
+ "sid": 5918,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RUN": {
+  "v": "S1686 mv",
+  "cols": [
+   "id",
+   "cid",
+   "email",
+   "user_id",
+   "segmentas",
+   "product_id",
+   "rusis",
+   "svoriai",
+   "duomenys",
+   "sukurta_at",
+   "klik_n",
+   "pask_klik_at",
+   "pask_svoris",
+   "hero_reason",
+   "last_food_product_id",
+   "last_food_date",
+   "same_sku_orders",
+   "ist_n",
+   "ist_paskutinis",
+   "consent",
+   "last_kat",
+   "last_any_product_id",
+   "last_any_date",
+   "same_any_orders",
+   "grupe",
+   "top_kat"
+  ]
+ }
+}
