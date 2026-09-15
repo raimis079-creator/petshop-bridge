@@ -46,3 +46,6 @@ Naujas mu-plugin `petshop-sutikimai.php` v1.0.1 (md5 1f22890ef04a3d1aa669e8a48e5
 
 ## S1685 (09-15 vakaras) — petshop-pakartoti.php v1.0.0 + ps-sablonai/refill-pakartoti.php GYVAI
 refill_due laiškas „Pakartoti tą patį" (šablonas per `petshop_email_template_path`, core neliestas), sandėlio eligibility, opt-out nuoroda. md5 9916c1adef48332df918d7f222e7b93f / e2a0f2387b49b4e5e56fac5abed8f786; bak `ps-backups/*.bak_s1685`; įrankiai `irankiai/s1685_mi–mo.php`. Detalės — STARTAS_marketingas S1685 skyrius. Radinys: refill per prekę, ne per užsakymą (konservai 1 vnt.) — laukia Raimio sprendimo dėl grupavimo.
+
+## S1685 (09-15 naktį) — petshop-pakartoti.php v1.1.4 GYVAI (grupavimas pagal užsakymą, MnM, likučiai, endpoint /?ps_pakartoti)
+md5 2383174ef717abe0e8d74ea3fed265a6, šablonas 97a74a4027976c271357962ea3876c91; bak `ps-backups/petshop-pakartoti.php.bak_s1685b–f`, `refill-pakartoti.php.bak_s1685b`; įrankiai `irankiai/s1685_mp–my.php`. Pamokos: MnM užsakymo eilutėse `_mnm_container` = konteinerio cart key (ne item id), konteinerio kaina 0 kai `_per_product_pricing`; krepšelis endpoint'e po `wp_safe_redirect` dingsta be `WC()->session->set_customer_session_cookie(true)+save_data()`. Detalės — STARTAS_marketingas S1685 skyrius.
