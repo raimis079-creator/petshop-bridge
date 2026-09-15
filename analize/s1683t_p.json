@@ -1,0 +1,45 @@
+{
+ "v": "dep-095734",
+ "kurimas": 200,
+ "sid": 5811,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "p",
+  "dl": [
+   "34: *   „Kaip atkeliaus į AV“ / svoris / dėžės, VIENAS mygtukas „Užsakyti iš [T] (n užs. + m prek. į AV)“, pilna peržiūra (su AV lentele). Savas `admin_post_ps_dl_uzsakyti`: eilutės į partiją",
+   "1340: if ( isset( Petshop_AV_Tiekimas::PRISTATYMAI[ $b ] ) ) { $upd['pristatymas'] = $b; } elseif ( ! $rank && empty( $kaup['part']->pristatymas ) ) { $klaida( 'pasirink „Kaip atkeliaus į AV“' ); }",
+   "1341: if ( isset( $_POST['svoris'] ) ) { $w = (float) str_replace( ',', '.', sanitize_text_field( wp_unslash( $_POST['svoris'] ) ) ); $upd['svoris'] = $w > 0 ? round( $w, 2 ) : null; }",
+   "1342: if ( isset( $_POST['dezes'] ) ) { $upd['dezes'] = max( 1, min( 20, absint( $_POST['dezes'] ) ) ); }",
+   "3839: echo '<div class=\"dl-tk-prist\"><span class=\"pilkas maz\">Kaip atkeliaus į AV:</span>';",
+   "3841: echo '<label class=\"pilkas maz\">svoris <input type=\"number\" step=\"0.1\" min=\"0\" name=\"svoris\" value=\"' . esc_attr( $part && $part->svoris > 0 ? $part->svoris : '' ) . '\" placeholder=\"' . esc_attr( $kg > 0 ? round( $kg, 1 ) : '' ) . '\"> kg' . ( $be_svorio ? ' <span class=\"raud\">(' . (int) $be_svorio . ' be svorio kataloge)</span>' : '' ) . '</label>';",
+   "3842: echo '<label class=\"pilkas maz\">dėžių <input type=\"number\" min=\"1\" max=\"20\" name=\"dezes\" value=\"' . (int) max( 1, (int) ( $part->dezes ?? 1 ) ) . '\"></label></div>';"
+  ],
+  "tk": [
+   "1063: \t * Grąžina array( ok, klaida, html, priedas, pack, part, eilutes ).",
+   "1064: \t */",
+   "1065: \tpublic static function paruosti( $pid, $dezes = 0 ) {",
+   "1066: \t\tglobal $wpdb;",
+   "1067: \t\t$part = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . self::t_partijos() . ' WHERE id=%d', $pid ) );",
+   "1068: \t\tif ( ! $part || 'kaupiama' !== $part->busena ) { return array( 'ok' => false, 'klaida' => 'partija neatvira' ); }",
+   "1069: \t\t$eil = self::partijos_eilutes( $pid );",
+   "1070: \t\tif ( ! $eil ) { return array( 'ok' => false, 'klaida' => 'partija tuščia' ); }",
+   "1071: \t\tif ( $dezes > 0 && empty( $part->venipak_pack ) ) { // dėžių skaičius iš kortelės — kol siunta neregistruota",
+   "1072: \t\t\t$wpdb->update( self::t_partijos(), array( 'dezes' => max( 1, min( 20, (int) $dezes ) ) ), array( 'id' => $pid ) );",
+   "1073: \t\t\t$part->dezes = max( 1, min( 20, (int) $dezes ) );",
+   "1074: \t\t}",
+   "1075: ",
+   "1076: \t\t$pack = (string) $part->venipak_pack; // jau registruota anksčiau (pvz. nepavykęs laiškas) — nekartojam",
+   "1077: \t\t$reikia_vp = in_array( $part->pristatymas, array( 'kurjeris', 'pastomatas' ), true ) && ! self::rankinis( $part->tiekejas );",
+   "1078: \t\tif ( $reikia_vp && ! $pack ) {",
+   "1079: \t\t\t$vp = self::venipak_registruoti( $part );",
+   "1080: \t\t\tif ( ! $vp['ok'] ) { return array( 'ok' => false, 'klaida' => 'Venipak: ' . $vp['klaida'] ); }",
+   "1081: \t\t\t$wpdb->update( self::t_partijos(), array( 'venipak_pack' => $vp['pack'], 'venipak_manifest' => $vp['manifest'] ), array( 'id' => $pid ) );",
+   "1082: \t\t\t$pack = $vp['pack']; $part->venipak_pack = $pack;",
+   "1083: \t\t}"
+  ],
+  "p23": null
+ }
+}
