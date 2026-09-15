@@ -1,0 +1,48 @@
+{
+ "v": "dep-171240",
+ "kurimas": 200,
+ "sid": 5889,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "TEST": {
+  "v": "S1686 mg",
+  "flows": {
+   "win_back": {
+    "class": "similar_soft_optin",
+    "template": "win-back-60",
+    "delay": 0
+   },
+   "refill_due": {
+    "class": "similar_soft_optin",
+    "template": "refill",
+    "delay": 0
+   }
+  },
+  "cron_next": "2026-09-16 08:30:00",
+  "diena_log": {
+   "laikas": "2026-09-15 20:13:49",
+   "kand": 0,
+   "ikelta": 0,
+   "pirko": 0,
+   "dubl": 0
+  },
+  "test": {
+   "uid": 2530,
+   "pid": 34944
+  },
+  "tpl_path": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/ps-sablonai/win-back-pakartoti.php",
+  "subject": "Gal norite pakartoti ankstesnį užsakymą?",
+  "html_len": 4703,
+  "tekstas": "Pakartoti ankstesnį užsakymą? Ankstesnio užsakymo prekes galite pakartoti vienu paspaudimu. Pakartoti ankstesnį užsakymą? Praėjo šiek tiek laiko nuo ankstesnio pirkimo. Jei augintiniui vis dar tinka tos pačios prekės, jas galite užsisakyti dar kartą vienu paspaudimu. Kiekius prieš apmokėdami galėsite pakeisti. Konservų dėžė, 400 g. Be vištienos 1 vnt. · 13,84 € Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g 2 vnt. · 1,92 € Iš viso: 15,76 € Vienos ankstesnio užsakymo prekės šiuo metu neturime, todėl jos neįtraukėme: Konservų dėžė, 400 g. Be vištienos. Pakartoti užsakymą Nenoriu tokių priminimų &nbsp; UAB Avesa, Liucionių g. 46, Liucionys, LT-15166 Gavote šį laišką, nes pirkote šias prekes petshop.lt. Priminimų galite atsisakyti – nuoroda aukščiau. Šis laiškas susijęs su jūsų užsakymu ar paskyra.",
+  "mygtukas": "https://petshop.lt/?ps_pakartoti=35948&z=c2e54d62b0082f941895",
+  "optout": "yra",
+  "keisti": false,
+  "elig_test": {
+   "allowed": false,
+   "reason": "soft_optout_nezinomas",
+   "terminal": false
+  }
+ }
+}
