@@ -1,0 +1,209 @@
+{
+ "v": "dep-180706",
+ "kurimas": 200,
+ "sid": 5890,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "RECON": {
+  "v": "S1686 mh",
+  "cols": {
+   "ps_feeding_map": [
+    "feeding_table_id",
+    "product_id",
+    "is_active"
+   ],
+   "ps_feeding_rows": [
+    "id",
+    "feeding_table_id",
+    "row_order",
+    "weight_from_kg",
+    "weight_to_kg",
+    "amount_from_g",
+    "amount_to_g",
+    "condition_dimensions",
+    "condition_raw",
+    "cell_type",
+    "redirect_reason",
+    "source_label"
+   ],
+   "ps_feeding_tables": [
+    "id",
+    "checksum",
+    "checksum_algo",
+    "source_hash",
+    "source_hash_algo",
+    "brand",
+    "line",
+    "scope",
+    "species",
+    "weight_basis",
+    "row_dimension",
+    "shape",
+    "status",
+    "reason",
+    "source_url",
+    "source_version",
+    "source_checked_at",
+    "row_count",
+    "parsed_at",
+    "verified_at",
+    "verified_by",
+    "created_at",
+    "updated_at",
+    "rows_backup_json",
+    "lookup_method",
+    "weight_basis_source",
+    "verification_note",
+    "source_structure",
+    "resolution_policy",
+    "axis_resolution_policy",
+    "b_path_status",
+    "value_row_count",
+    "redirect_row_count",
+    "version_no",
+    "supersedes_table_id",
+    "is_active",
+    "activated_at",
+    "retired_at",
+    "import_batch_id",
+    "table_key",
+    "canonical_table_hash",
+    "canonical_hash_version",
+    "classifier_version",
+    "source_kind",
+    "source_verification_status",
+    "source_verified_at",
+    "source_verified_by"
+   ]
+  },
+  "n": {
+   "ps_feeding_map": 561,
+   "ps_feeding_rows": 5549,
+   "ps_feeding_tables": 296
+  },
+  "map_pvz": [
+   {
+    "feeding_table_id": "1",
+    "product_id": "18014",
+    "is_active": "1"
+   },
+   {
+    "feeding_table_id": "1",
+    "product_id": "18159",
+    "is_active": "1"
+   },
+   {
+    "feeding_table_id": "2",
+    "product_id": "12466",
+    "is_active": "1"
+   }
+  ],
+  "kat": [
+   {
+    "kat": "Sausas maistas šunims",
+    "prekes": "509",
+    "su_lentele": "395"
+   },
+   {
+    "kat": "Sausas maistas katėms",
+    "prekes": "201",
+    "su_lentele": "136"
+   },
+   {
+    "kat": "Konservai katėms",
+    "prekes": "138",
+    "su_lentele": "0"
+   },
+   {
+    "kat": "Konservai šunims",
+    "prekes": "131",
+    "su_lentele": "8"
+   },
+   {
+    "kat": "Animonda konservai šunims",
+    "prekes": "38",
+    "su_lentele": "0"
+   },
+   {
+    "kat": "Akvariumo žuvyčių maistas",
+    "prekes": "36",
+    "su_lentele": "0"
+   },
+   {
+    "kat": "Hipoalerginis maistas šunims",
+    "prekes": "33",
+    "su_lentele": "8"
+   },
+   {
+    "kat": "Maistas šunims",
+    "prekes": "13",
+    "su_lentele": "0"
+   },
+   {
+    "kat": "Tvenkinių žuvų maistas",
+    "prekes": "12",
+    "su_lentele": "0"
+   },
+   {
+    "kat": "Maistas katėms",
+    "prekes": "10",
+    "su_lentele": "3"
+   },
+   {
+    "kat": "Konservų rinkiniai",
+    "prekes": "9",
+    "su_lentele": "0"
+   },
+   {
+    "kat": "Super Premium šunų maistas",
+    "prekes": "5",
+    "su_lentele": "0"
+   }
+  ],
+  "ist_eil_cols": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ],
+  "ist_uz_maist": [],
+  "ist_be_maisto": 1976,
+  "ist_viso": 5431
+ }
+}
