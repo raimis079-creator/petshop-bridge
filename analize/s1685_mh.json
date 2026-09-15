@@ -1,0 +1,59 @@
+{
+ "v": "dep-130045",
+ "kurimas": 200,
+ "sid": 5839,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "TEST": {
+  "v": "S1685 mh",
+  "uid": 5824,
+  "t0": {
+   "meta": 0,
+   "basis": "erl81_2_checkout",
+   "elig": "1",
+   "optout": "0",
+   "similar_ok": true
+  },
+  "t1": {
+   "meta": 1,
+   "basis": "erl81_2_checkout",
+   "elig": "1",
+   "optout": "1",
+   "similar_ok": false
+  },
+  "url": "https://petshop.lt/?ps_atsisakyti_priminimu=test-s1685-sutikimai%40petshop.lt&z=f00182eb48520e34d139a014",
+  "po_link": {
+   "optout": "1",
+   "ok": false
+  },
+  "log": [
+   {
+    "customer_id": "5824",
+    "field": "similar_products_optout",
+    "from_value": "",
+    "to_value": "0",
+    "source": "checkout",
+    "changed_at": "2026-09-15 16:01:55"
+   },
+   {
+    "customer_id": "5824",
+    "field": "similar_products_optout",
+    "from_value": "0",
+    "to_value": "1",
+    "source": "checkout",
+    "changed_at": "2026-09-15 16:01:55"
+   },
+   {
+    "customer_id": "5824",
+    "field": "similar_products_optout",
+    "from_value": "1",
+    "to_value": "1",
+    "source": "email_link",
+    "changed_at": "2026-09-15 16:01:55"
+   }
+  ],
+  "isvalyta": true
+ }
+}
