@@ -1,0 +1,50 @@
+{
+ "v": "dep-093138",
+ "kurimas": 200,
+ "sid": 5807,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1683t m",
+  "item": {
+   "2049": {
+    "_ps_savikaina_vnt": "\"38.5500\"",
+    "_ps_savikaina_saltinis": "\"pardavimai\"",
+    "_ps_kaina_atskirai_vnt": "\"73.5000\"",
+    "_ps_source": "\"av\"",
+    "_ps_carrier": "\"any\"",
+    "_ps_source_qty": "\"1\"",
+    "_ps_source_at": "\"2026-09-15 11:06:01\"",
+    "_ps_source_reason": "\"grynai AV prekė (be tiekėjo)\"",
+    "_ps_av_reduced_qty": "\"1\"",
+    "_ps_kelias": "\"av\""
+   }
+  },
+  "preke": {
+   "stock": 0,
+   "mng": true,
+   "status": "outofstock",
+   "own": "",
+   "tiek": ""
+  },
+  "sprend": {
+   "source": "av",
+   "carrier": "any",
+   "courier_only": false,
+   "av_qty": 0,
+   "av_uztenka": true,
+   "tiekejas": "av",
+   "reason": "grynai AV prekė (be tiekėjo)"
+  },
+  "stock_log": [],
+  "e1": "Table 'gyvunai2_nbpe1.gaj6_ps_stock_log' doesn't exist",
+  "be_reduced": [
+   "1050 iid1971 av_red_qty=",
+   "1050 iid1978 av_red_qty=",
+   "1057 iid2049 av_red_qty=1"
+  ],
+  "e": ""
+ }
+}
