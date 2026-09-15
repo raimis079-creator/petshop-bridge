@@ -1,0 +1,55 @@
+{
+ "v": "dep-112950",
+ "kurimas": 200,
+ "sid": 5823,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "ab",
+  "post": {
+   "status": "draft",
+   "mod": "2026-09-15 14:23:24",
+   "vis": "visible",
+   "stock": 3,
+   "st": "instock",
+   "price": "40.89",
+   "own": "1",
+   "sandelis": "vf",
+   "ranka": "taip",
+   "ranka_kada": "2026-09-15 13:27:15",
+   "vf_status": "",
+   "terms_vis": [],
+   "lookup": {
+    "product_id": "18054",
+    "sku": "JOS0805",
+    "global_unique_id": "4032254749479",
+    "virtual": "0",
+    "downloadable": "0",
+    "min_price": "40.8900",
+    "max_price": "40.8900",
+    "onsale": "0",
+    "stock_quantity": "2",
+    "stock_status": "instock",
+    "rating_count": "0",
+    "average_rating": "0.00",
+    "total_sales": "0",
+    "tax_status": "taxable",
+    "tax_class": ""
+   }
+  },
+  "ivykiai": [],
+  "iv_e": "Unknown column 'preke_id' in 'where clause'",
+  "iv_t": [
+   "gaj6_ps_ivykiai"
+  ],
+  "front": {
+   "perm": "https://petshop.lt/?post_type=product&p=18054",
+   "visible": false,
+   "purchasable": false,
+   "in_stock": true
+  },
+  "kat_eil": []
+ }
+}
