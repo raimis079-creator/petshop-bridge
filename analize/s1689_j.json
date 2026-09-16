@@ -1,0 +1,45 @@
+{
+ "v": "dep-160919",
+ "kurimas": 200,
+ "sid": 5990,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689 j",
+  "pvf_md5": "3df53827f9a9be4de0689b921ee5d806",
+  "pvf_fn": [
+   "266:\n\tpublic function apply_supplier_discount( float $cost, string $normalized_brand ): float {\n\t\t$discount = $this->supplier_discounts[ $normalized_brand ] ?? 0.0;\n\t\treturn $cost * ( 1 - $discount );\n\t}\n\n\tpublic function get_supplier_discount( string $normalized_brand ): float {\n\t\treturn $this->supplier_discounts[ $normalized_brand ] ?? 0.0;\n\t}\n\n\t/**\n\t * Nustato markup pagal prioritetus: brand > category > default.\n\t *\n\t * @return array{markup: float, rule: string}\n\t */\n\tpublic function get_markup( string $normalized_brand, array $cat_slugs ): array {\n\t\t// 1. Brand override\n\t\tif ( isset( $this->brand_markups[ $normalized_brand ] ) ) {\n\t\t\treturn [\n\t\t\t\t'markup' => $this->brand_markups[ $normalized_brand ],\n\t\t\t\t'rule'   => 'BRAND:' . $normalized_brand,\n\t\t\t];\n\t\t}\n\t\t// 2. Category markup\n\t\tforeach ( $cat_slugs as $slug ) {\n\t\t\tif ( isset( $this->category_markups[ $slug ] ) ) {\n\t\t\t\treturn [",
+   "271:\n\tpublic function get_supplier_discount( string $normalized_brand ): float {\n\t\treturn $this->supplier_discounts[ $normalized_brand ] ?? 0.0;\n\t}\n\n\t/**\n\t * Nustato markup pagal prioritetus: brand > category > default.\n\t *\n\t * @return array{markup: float, rule: string}\n\t */\n\tpublic function get_markup( string $normalized_brand, array $cat_slugs ): array {\n\t\t// 1. Brand override\n\t\tif ( isset( $this->brand_markups[ $normalized_brand ] ) ) {\n\t\t\treturn [\n\t\t\t\t'markup' => $this->brand_markups[ $normalized_brand ],\n\t\t\t\t'rule'   => 'BRAND:' . $normalized_brand,\n\t\t\t];\n\t\t}\n\t\t// 2. Category markup\n\t\tforeach ( $cat_slugs as $slug ) {\n\t\t\tif ( isset( $this->category_markups[ $slug ] ) ) {\n\t\t\t\treturn [\n\t\t\t\t\t'markup' => $this->category_markups[ $slug ],\n\t\t\t\t\t'rule'   => 'CAT:' . $slug,\n\t\t\t\t];\n\t\t\t}\n\t\t}",
+   "280:\n\tpublic function get_markup( string $normalized_brand, array $cat_slugs ): array {\n\t\t// 1. Brand override\n\t\tif ( isset( $this->brand_markups[ $normalized_brand ] ) ) {\n\t\t\treturn [\n\t\t\t\t'markup' => $this->brand_markups[ $normalized_brand ],\n\t\t\t\t'rule'   => 'BRAND:' . $normalized_brand,\n\t\t\t];\n\t\t}\n\t\t// 2. Category markup\n\t\tforeach ( $cat_slugs as $slug ) {\n\t\t\tif ( isset( $this->category_markups[ $slug ] ) ) {\n\t\t\t\treturn [\n\t\t\t\t\t'markup' => $this->category_markups[ $slug ],\n\t\t\t\t\t'rule'   => 'CAT:' . $slug,\n\t\t\t\t];\n\t\t\t}\n\t\t}\n\t\t// 3. Default\n\t\treturn [ 'markup' => $this->default_markup, 'rule' => 'DEFAULT' ];\n\t}\n\n\t/**\n\t * v1.5.4 (S70): Psichologinis apvalinimas su procentiniu saugikliu.\n\t *\n\t * Algoritmas (zr. klases header'i del pilnu detaliu):\n\t *   1. Konvertuojam i centus (eliminuojam float jitter)",
+   "390:\n\tpublic function calculate_final_price_from_xml( float $base_price, float $personal_price, string $normalized_brand, array $cat_slugs ): array {\n\n\t\t// 1) Pritaikom supplier discount\n\t\t$supplier_discount = $this->get_supplier_discount( $normalized_brand );\n\t\t// v1.7.0: VF akcija ($base_price kai base<personal) JAU YRA supplier discount.\n\t\t//   Antras taikymas cia = dvigubinimas. Tik personal gauna supplier_discount.\n\t\t//   Kai VF neturi akcijos ($base = $personal), rezultatas nepakinta,\n\t\t//   nes real_base tik naudojamas skaiciuojant sale, kuris tampa 0 sale-clear\n\t\t//   saugikliu (real_base >= real_personal reiskia jokios akcijos).\n\t\t$real_base     = $base_price;\n\t\t$real_personal = $personal_price * ( 1 - $supplier_discount );\n\n\t\t// 2) Markup\n\t\t$markup_info = $this->get_markup( $normalized_brand, $cat_slugs );\n\t\t$markup = $markup_info['markup'];\n\t\t$rule = $markup_info['rule'];\n\t\tif ( $supplier_discount > 0 ) {\n\t\t\t$rule .= ' +DISC:' . round( $supplier_discount * 100 ) . '%';\n\t\t}\n\n\t\t// 3) Regular price = personal x markup x VAT\n\t\t// Jei personal nera (0), naudojam base kaip fallback\n\t\t$cost_for_regular = $real_personal > 0 ? $real_personal : $real_base;\n\t\t$regular_calculated = $cost_for_regular * ( 1 + $markup ) * self::VAT;\n\t\t// v1.5.4 (S70): apply_psychological_rounding vietoj round_to_99\n\t\t$regular_price = $this->apply_psychological_rounding( $regular_calculated );",
+   "484:\n\tpublic function get_supplier_discounts(): array { return $this->supplier_discounts; }\n\tpublic function get_default_markup(): float     { return $this->default_markup; }\n}\n"
+  ],
+  "pvf_brand_markups": "\t/**\n\t * Brand-specifiniai antkainiai (laimi pries kategorini).\n\t * Match per KONSOLIDUOTA brand pavadinima.\n\t *\n\t * v1.5.3 (savininko sprendimas): CHURU 40% -> 30%.\n\t */\n\tprivate array $brand_markups = [\n\t\t'Josera'       => 0.20,\n\t\t'Exclusion'    => 0.20,\n\t\t'GreenPetFood' => 0.20,\n\t\t'CHURU'        => 0.30,\n\t];\n\n\t/**\n\t * v1.7.0: Brand'ai, kuriems VF akcija taikoma TYLIAI (be zenkliuko).\n\t * Kai VF turi akcija (base<personal), regular_price = min(reg,sale), sale=0.\n\t * Klientas gauna akcine kaina, bet be \"-XX%\" komunikacijos.\n\t */\n\tprivate array $no_sale_brands = [\n\t\t'Josera',",
+  "rules_md5": "191637c6d58e661f8e7ed0d352c2556a",
+  "rules_96_102": "\t\t'Reguliarus sausas jaunų šunų maistas'     => 'sausas-maistas-sunims',\n\t\t'Reguliarus sausas pagyven. šunų maistas'  => 'sausas-maistas-sunims',\n\t\t'VET sausas hipoalerginis maistas šunims'  => 'sausas-maistas-sunims',\n\t\t'VET kons. hipoalerginis maistas šunims'   => 'konservai-sunims',        // v1.1\n\t\t'Reg. konservuotas suaugusių šunų maistas' => 'konservai-sunims',\n\t\t'Reg. konservuotas jaunų šunų maistas'     => 'konservai-sunims',\n\t\t'Reguliarus konservuotas šuniukų maistas'  => 'konservai-sunims',\n\t\t// ŠUNIMS / SKANĖSTAI",
+  "rules_182_188": "\t\t'Reg. sausas pagyvenusių kačių maistas'    => 'sausas-maistas-katems',\n\t\t'Reg. sausas sterilizuotų kačių maistas'   => 'sausas-maistas-katems',\n\t\t'VET sausas hipoalerginis maistas katėms'  => 'sausas-maistas-katems',\n\t\t'VET kons. hipoalerginis maistas katėms'   => 'konservai-katems',        // v1.1\n\t\t// KATĖMS / SKANĖSTAI\n\t\t'Skysti skanėstai katėms'       => 'skanestai-katems',\n\t\t'Kiti skanėstai katėms'         => 'skanestai-katems',\n\t\t'Funkciniai skanėstai katėms'   => 'skanestai-katems',",
+  "reguliarus": [
+   "94: 'Reguliarus sausas suaugusių šunų maista'  => 'sausas-maistas-sunims',",
+   "95: 'Reguliarus sausas šuniukų maistas'        => 'sausas-maistas-sunims',",
+   "96: 'Reguliarus sausas jaunų šunų maistas'     => 'sausas-maistas-sunims',",
+   "97: 'Reguliarus sausas pagyven. šunų maistas'  => 'sausas-maistas-sunims',",
+   "102: 'Reguliarus konservuotas šuniukų maistas'  => 'konservai-sunims',"
+  ],
+  "vfi_md5": "eed08a9ff69310d1def700d463d2ed8c",
+  "vfi_470_485": "\n\t\t} else {\n\n\t\t\t$cat_slugs = petshop_xml_get_cat_slugs( $post_id );\n\n\t\t\t// SVARBU: calculate_final_price_from_xml PATI taiko supplier discount viduje.\n\t\t\t// Perduodame XML kainas (be discount), klase pati paskaiciuoja real_cost.\n\t\t\t$price_result = $pricing->calculate_final_price_from_xml(\n\t\t\t\t$vf_cost_xml, $vf_personal_xml, $brand_normalized, $cat_slugs\n\t\t\t);\n\n\t\t\t$new_regular = (float) $price_result['regular'];\n\t\t\t$new_sale    = (float) $price_result['sale'];\n\t\t\t$old_regular = (float) get_post_meta( $post_id, '_regular_price', true );\n\t\t\t$old_sale    = (float) ( $existing_sale !== '' ? $existing_sale : 0 );\n\n\t\t\t$price_differs = ( abs( $new_regular - $old_regular ) > 0.001 || abs( $new_sale - $old_sale ) > 0.001 );\n",
+  "cfg": [
+   "19: * VF_API_URL/FETCHER_SECRET_KEY). Šis failas eina į bridge repo — slaptažodžio",
+   "31: defined( 'ABSPATH' ) || exit;",
+   "60: $map = [ 'user' => 'VF_USERNAME', 'pass' => 'VF_PASSWORD', 'url' => 'VF_API_URL', 'key' => 'FETCHER_SECRET_KEY' ];",
+   "81: $cfg = self::cfg();",
+   "83: if ( $cfg['user'] === '' || $cfg['pass'] === '' || $cfg['url'] === '' ) {",
+   "89: CURLOPT_URL            => $cfg['url'],",
+   "91: CURLOPT_USERPWD        => $cfg['user'] . ':' . $cfg['pass'],",
+   "170: $cfg = self::cfg();",
+   "171: if ( $cfg['key'] === '' || ! hash_equals( $cfg['key'], (string) ( $_GET['k'] ?? '' ) ) ) {"
+  ],
+  "vf_url": "https://admin.b2b.vetfarmas.lt/api/products/xml/get/auth"
+ }
+}
