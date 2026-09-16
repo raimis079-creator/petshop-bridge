@@ -1,0 +1,39 @@
+{
+ "v": "dep-173056",
+ "kurimas": 200,
+ "sid": 6006,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689 z",
+  "ilgis": 7596,
+  "eil": [
+   "4: * Naudoja credentials i\\u0161 wp-config.php constant\\u0173:",
+   "5: *   VF_API_USER, VF_API_PASS, VF_API_URL",
+   "8: *   /?vf_helper=ping       - patikrina ar credentials veikia",
+   "9: *   /?vf_helper=download   - atsisiun\\u010dia XML \\u012f /uploads/ (perra\\u0161o sen\\u0105)",
+   "15: if ( ! current_user_can( '***' ) ) wp_die( '***' );",
+   "24: $checks['***'] = defined( '***' ) && ! empty( VF_API_USER );",
+   "25: $checks['***'] = defined( '***' ) && ! empty( VF_API_PASS );",
+   "26: $checks['***']  = defined( '***' )  && ! empty( VF_API_URL );",
+   "51: $response = wp_remote_head( VF_API_URL, [",
+   "53: '***' => 'Basic '***':' . VF_API_PASS ),",
+   "61: $code = wp_remote_retrieve_response_code( $response );",
+   "64: echo '***' . $code . '</p>';",
+   "66: echo '***';",
+   "68: echo '***';",
+   "78: $response = wp_remote_get( VF_API_URL, [",
+   "80: '***' => 'Basic '***':' . VF_API_PASS ),",
+   "92: $code = wp_remote_retrieve_response_code( $response );",
+   "93: $body = wp_remote_retrieve_body( $response );",
+   "97: echo '***' . $code . '</p>';",
+   "103: // I\\u0161saugom \\u012f /uploads/",
+   "108: $written = file_put_contents( $filepath, $body );",
+   "116: if ( basename( $old ) !== $filename ) {",
+   "150: $status = get_option( '***' );",
+   "167: echo '***';"
+  ]
+ }
+}
