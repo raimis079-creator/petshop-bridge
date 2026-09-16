@@ -1,0 +1,27 @@
+{
+ "v": "dep-084315",
+ "kurimas": 200,
+ "sid": 5933,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "siusti": {
+  "v": "S1686 na",
+  "id": "Z68JZJ",
+  "grupe": {
+   "active": 1,
+   "recalc": false
+  },
+  "send": {
+   "code": 403,
+   "msg": [
+    {
+     "title": "Unsubscribe link",
+     "details": "Insert this code <a href=\"{{unsubscribe_link}}\">{{unsubscribe_text}}</a> in your email template",
+     "route": "editor"
+    }
+   ]
+  }
+ }
+}
