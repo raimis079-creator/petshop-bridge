@@ -1,0 +1,220 @@
+{
+ "v": "dep-155154",
+ "kurimas": 200,
+ "sid": 5985,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689 e",
+  "opt_vardai": [
+   "_site_transient_timeout_woocommerce_blocks_patterns",
+   "_site_transient_woocommerce_blocks_patterns",
+   "_transient_timeout_wc_block_product_filter_attribute_default_attribute",
+   "_transient_timeout_woocommerce_blocks_asset_api_script_data",
+   "_transient_timeout_woocommerce_blocks_asset_api_script_data_ssl",
+   "_transient_wc_block_product_filter_attribute_default_attribute",
+   "_transient_woocommerce_blocks_asset_api_script_data",
+   "_transient_woocommerce_blocks_asset_api_script_data_ssl",
+   "_transient_wp_core_block_css_files",
+   "_transient_wp_styles_for_blocks",
+   "block_categories_children",
+   "cmplz_excluded_posts_array",
+   "product_brand_children",
+   "vf_block_allow_count",
+   "wc_blocks_db_schema_version",
+   "widget_block",
+   "widget_block_widget",
+   "widget_wc_brands_brand_description",
+   "widget_wc_brands_brand_thumbnails",
+   "widget_woocommerce_brand_nav",
+   "woocommerce_brand_permalink",
+   "woocommerce_feature_block_email_editor_enabled",
+   "woocommerce_paypal_branded",
+   "wp_calendar_block_has_published_posts",
+   "wpforms_email_summaries_fetch_info_blocks_last_run",
+   "wpforms_email_summaries_info_blocks_sent"
+  ],
+  "opt": {
+   "_site_transient_timeout_woocommerce_blocks_patterns": "1791686169",
+   "_transient_timeout_wc_block_product_filter_attribute_default_attribute": "1789639277",
+   "_transient_timeout_woocommerce_blocks_asset_api_script_data": "1791501848",
+   "_transient_timeout_woocommerce_blocks_asset_api_script_data_ssl": "1792082421",
+   "_transient_wc_block_product_filter_attribute_default_attribute": "{\"attribute_id\":\"12\",\"attribute_name\":\"paskirtis\",\"attribute_label\":\"Paskirtis\",\"attribute_type\":\"select\",\"attribute_orderby\":\"menu_order\",\"attribute_public\":0}",
+   "block_categories_children": "[]",
+   "cmplz_excluded_posts_array": "[]",
+   "product_brand_children": "[]",
+   "vf_block_allow_count": "1",
+   "wc_blocks_db_schema_version": "260",
+   "widget_block_widget": "{\"_multiwidget\":1}",
+   "widget_wc_brands_brand_description": "{\"_multiwidget\":1}",
+   "widget_wc_brands_brand_thumbnails": "{\"_multiwidget\":1}",
+   "widget_woocommerce_brand_nav": "{\"_multiwidget\":1}",
+   "woocommerce_brand_permalink": "",
+   "woocommerce_feature_block_email_editor_enabled": "no",
+   "woocommerce_paypal_branded": "profiler",
+   "wp_calendar_block_has_published_posts": "1",
+   "wpforms_email_summaries_fetch_info_blocks_last_run": "1789032429",
+   "wpforms_email_summaries_info_blocks_sent": "[521223]"
+  },
+  "kodas_vetdiet": [
+   "wp-content/plugins/petshop-xml/includes/class-import-rules-vf.php:42 private array $review_later_brands = [ 'EXCL VETDIET', 'JOSERA HELP' ];"
+  ],
+  "snippetai": [
+   {
+    "id": "51",
+    "name": "ZB brendų priskyrimas brand taksonomijoje1.1",
+    "active": "0",
+    "l": "377"
+   },
+   {
+    "id": "52",
+    "name": "ZB brendų priskyrimas - TEISINGAS taksonomijos pavadinimas",
+    "active": "0",
+    "l": "1832"
+   },
+   {
+    "id": "61",
+    "name": "ZB nuotraukų indekso kūrimas iš brendų puslapių",
+    "active": "0",
+    "l": "5777"
+   },
+   {
+    "id": "62",
+    "name": "Patikrinti brendų puslapio HTML struktūrą",
+    "active": "0",
+    "l": "976"
+   },
+   {
+    "id": "98",
+    "name": "vf_desc_peek",
+    "active": "0",
+    "l": "4844"
+   },
+   {
+    "id": "101",
+    "name": "vf_parser_v3",
+    "active": "0",
+    "l": "25495"
+   },
+   {
+    "id": "158",
+    "name": " WC Categories — pre-VF-mapping cleanup",
+    "active": "0",
+    "l": "7818"
+   },
+   {
+    "id": "161",
+    "name": " VF Brands List",
+    "active": "0",
+    "l": "2530"
+   },
+   {
+    "id": "163",
+    "name": "VF Raw XML Sample",
+    "active": "0",
+    "l": "5646"
+   },
+   {
+    "id": "187",
+    "name": "VF Price Sync",
+    "active": "0",
+    "l": "6175"
+   },
+   {
+    "id": "190",
+    "name": "VF Price Repair v2",
+    "active": "0",
+    "l": "5210"
+   },
+   {
+    "id": "234",
+    "name": "VF Gallery Dup Clean v1",
+    "active": "0",
+    "l": "5990"
+   },
+   {
+    "id": "254",
+    "name": "VF Block Before Create v2.0",
+    "active": "0",
+    "l": "7771"
+   },
+   {
+    "id": "284",
+    "name": "VF Supplier SKU Backfill v1",
+    "active": "0",
+    "l": "7158"
+   },
+   {
+    "id": "286",
+    "name": "VF Dublikatu Valymas v1",
+    "active": "0",
+    "l": "6749"
+   },
+   {
+    "id": "396",
+    "name": "Monoprotein Dry-Run v4 (brendai + riebalu fix)",
+    "active": "0",
+    "l": "12304"
+   },
+   {
+    "id": "397",
+    "name": "Monoprotein Dry-Run v5 (daugiau brendu)",
+    "active": "0",
+    "l": "12400"
+   },
+   {
+    "id": "399",
+    "name": "Monoprotein Dry-Run v7 (Family / Monge kons. / Animonda VF / kt.)",
+    "active": "0",
+    "l": "13371"
+   },
+   {
+    "id": "565",
+    "name": "Petshop VF Sync v1.1 (reprice+stock+publish)",
+    "active": "1",
+    "l": "22047"
+   },
+   {
+    "id": "5982",
+    "name": "TEMP PS dep-153909",
+    "active": "0",
+    "l": "2001"
+   },
+   {
+    "id": "5985",
+    "name": "TEMP PS dep-155154",
+    "active": "1",
+    "l": "2626"
+   }
+  ],
+  "sn_err": "",
+  "sn_vetdiet": [
+   {
+    "id": "5982",
+    "name": "TEMP PS dep-153909",
+    "active": "0",
+    "frag": "s as $d){ if(!is_dir($d)) continue;\n    $it=new RecursiveIteratorIterator(new RecursiveDirectoryIterator($d));\n    foreach($it as $fi){ if(!$fi->isFile()||substr($fi->getFilename(),-4)!=='.php') continue;\n      $c=@file_get_contents($fi->getPathname()); if($c===false) continue;\n      foreach(array('VETDIET','veterinar','BLOK','blokuoj','blacklist','praleisti_brend','skip_brand') as $w){\n        if (stripos($c,$w)!==false){\n          foreach(explode(\"\\n\",$c) as $ln=>$line){ if(stripos($line,$w)!==false){ $hit[]=array('f'=>str_replace(ABSPATH,'',$fi->getPathname()),'ln'=>$ln+1,'t'=>trim(mb_substr($line,0,220))); } }\n        }\n      }\n    }\n  }\n  $o['kodas']=array_slice($hit,0,60); $o['kodas_n'"
+   },
+   {
+    "id": "5985",
+    "name": "TEMP PS dep-155154",
+    "active": "1",
+    "frag": "\n/** TEMP PS S1689 e — read-only: kur blokuojamas brendas EXCL VETDIET (kodas, opcijos, observer, terminai). */\nadd_action('init', function(){\n  if (!isset($_GET['ps_s1689e'])) return; global $wpdb; $p=$wpdb->prefix; $o=array('v'=>'S1689 e');\n  // 1. opcijos su brendu/blokavimo pavadinimais\n  $o['opt_vardai']=$wpdb->get_col(\"SELECT option_name FROM {$p}options WHERE option_name LIKE '%brend%' OR option_name LIKE '%brand%' OR option_name LIKE '%blok%' OR option_name LIKE '%block%' OR option_name LIKE '%exclude%' OR option_name LIKE '%ignor%' LIMIT 60\");\n  foreach((array)$o['opt_vardai'] as $n){ $v=get_option($n); $s=is_scalar($v)?(string)$v:json_encode($v,JSON_UNESCAPED_UNICODE); if(stripos($"
+   }
+  ],
+  "observer_cols": [
+   "id",
+   "ts",
+   "post_id",
+   "sku",
+   "title",
+   "brand",
+   "decision",
+   "reason"
+  ],
+  "observer_vetdiet": [],
+  "terminas": []
+ }
+}
