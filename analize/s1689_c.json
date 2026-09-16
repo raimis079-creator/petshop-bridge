@@ -1,0 +1,68 @@
+{
+ "v": "dep-154101",
+ "kurimas": 200,
+ "sid": 5983,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689 c",
+  "opt": {
+   "vf_block_allow_count": "1",
+   "vf_data_diag": [
+    {
+     "_import_id": "5",
+     "_data_type": "array",
+     "id": "27465",
+     "sku_id": "NOB78551-01",
+     "product_name": "Nobby antkaklis su skarele, raudonas, 42 cm x 20mm",
+     "brand": "NOBBY",
+     "barcode": "403376602272",
+     "category": "Kiti antkakliai šunims",
+     "supply": "[]",
+     "description": "PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5UcnVtcGFzIHByZWvEl3MgYXByYcWheW1hczwvaDQ+PHN0eWxlPi5i ...[truncated]",
+     "qty": "1",
+     "images": "{\"url\":\"https:\\/\\/admin.b2b.vetfarmas.lt\\/storage\\/media\\/36820\\/c86a11c2-6696-4131-a39c-f1ce587aa3fe.bin\"}",
+     "base_price": "3.43",
+     "personal_price": "3.43"
+    }
+   ],
+   "vf_last_download": {
+    "filename": "vetfarmas_response_20260602_142756.xml",
+    "filepath": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/vetfarmas_response_20260602_142756.xml",
+    "size": 8763642,
+    "count": 2222,
+    "duration": 11.57,
+    "time": "2026-06-02 17:27:56"
+   },
+   "ps_vf_feed_paskutinis": {
+    "laikas": "2026-09-16 18:05:04",
+    "ok": true,
+    "klaida": "",
+    "eilutes": 2369,
+    "baitai": 8264077,
+    "sek": 9,
+    "http": 200
+   }
+  },
+  "kodas": [
+   "wp-content/mu-plugins/petshop-vf-feed.php:9 * nuo 2026-08-27, `uploads/petshop-vf-cache.xml` sustingęs 2026-08-21 12:16 —",
+   "wp-content/mu-plugins/petshop-vf-feed.php:14 * `uploads/petshop-vf-cache.xml` (snippet 565). Jokios priklausomybės nuo",
+   "wp-content/mu-plugins/petshop-vf-feed.php:51 return WP_CONTENT_DIR . '/uploads/petshop-vf-cache.xml';",
+   "wp-content/plugins/petshop-xml/petshop-xml.php:371 'action'    => 'ZB-BLOCK-CREATE',",
+   "wp-content/plugins/petshop-xml/petshop-xml.php:399 'action'    => 'ZB-BLOCK-CREATE',",
+   "wp-content/plugins/petshop-xml/petshop-xml.php:414 'action'    => 'ZB-BLOCK-CREATE',",
+   "wp-content/plugins/petshop-xml/petshop-xml.php:486 'action'    => 'ZB-BLOCK-CHEAP-UPDATE',",
+   "wp-content/plugins/petshop-xml/petshop-xml.php:544 'action'      => 'VF-BLOCK-CREATE',",
+   "wp-content/plugins/petshop-xml/petshop-xml.php:564 'action'    => 'VF-BLOCK-CREATE',",
+   "wp-content/plugins/petshop-xml/petshop-xml.php:578 'action'    => 'VF-BLOCK-CREATE',",
+   "wp-content/plugins/petshop-xml/petshop-xml.php:609 'action'    => 'LEGACY-BLOCK-UPDATE',",
+   "wp-content/plugins/petshop-xml/petshop-xml.php:648 'action'     => 'BLOCK-UPDATE',",
+   "wp-content/plugins/petshop-xml/petshop-xml.php:1141 petshop_xml_log( \"AUTO-REPRICE BLOCKED post {$post_id} | new_regular={$new_regular} <= sale={$sale_price}\" );",
+   "wp-content/plugins/petshop-xml/petshop-xml.php:1316 'action'           => 'VF-BLOCK-UPDATE',",
+   "wp-content/plugins/petshop-xml/includes/class-product-cost-metabox.php:666 'action'  => 'COST-PRICE-GUARD-BLOCKED',",
+   "wp-content/plugins/petshop-xml/includes/class-vf-import.php:469 petshop_xml_log( \"VF REPRICE BLOCKED (promo batch '{$promo_batch}') post {$post_id} | sku={$vf_sku}\" );"
+  ]
+ }
+}
