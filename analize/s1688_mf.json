@@ -1,0 +1,51 @@
+{
+ "v": "dep-100656",
+ "kurimas": 200,
+ "sid": 5946,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1688 mf",
+  "vartai_elig": [
+   "128: public static function eligibility( $result, $flow, $flow_class, $email, $context = array() ) {",
+   "129: if ( ! in_array( $flow, array( 'refill_due', 'post_purchase_14d', 'win_back' ), true ) ) return $result;",
+   "130: if ( is_array( $result ) && isset( $result['allowed'] ) && ! $result['allowed'] ) return $result;",
+   "131: $vartai = get_option( self::OPT_VARTAI, 'soft' );",
+   "132: if ( 'uzdaryta' === $vartai ) return array( 'allowed' => false, 'reason' => 'lifecycle_uzdaryta', 'terminal' => false );",
+   "133: if ( self::holdout( $email ) ) return array( 'allowed' => false, 'reason' => 'holdout_10', 'terminal' => true );",
+   "134: if ( 'soft' === $vartai ) {",
+   "135: $ok = self::similar_ok( $email, isset( $context['user_id'] ) ? (int) $context['user_id'] : 0 );",
+   "136: if ( null === $ok ) return array( 'allowed' => false, 'reason' => 'soft_optout_nezinomas', 'terminal' => false );",
+   "137: if ( ! $ok ) return array( 'allowed' => false, 'reason' => 'similar_optout', 'terminal' => true );",
+   "138: }",
+   "139: return $result;",
+   "140: }"
+  ],
+  "vartai_holdout": [
+   "119: public static function holdout( $email ) { return ( hexdec( substr( hash( 'sha256', strtolower( trim( $email ) ) ), 0, 8 ) ) % 100 ) < self::HOLDOUT_PCT; }"
+  ],
+  "pakartoti_vartai": [
+   "69: public static function vartai( $result, $flow, $flow_class, $email, $context = array() ) {",
+   "70: if ( 'refill_due' !== $flow ) return $result;",
+   "71: if ( is_array( $result ) && isset( $result['allowed'] ) && ! $result['allowed'] ) return $result;",
+   "72: global $wpdb; $p = $wpdb->prefix;",
+   "73: $uid = isset( $context['user_id'] ) ? (int) $context['user_id'] : 0; $pid = isset( $context['product_id'] ) ? (int) $context['product_id'] : 0;",
+   "74: if ( ! $uid ) { $u = get_user_by( 'email', $email ); $uid = $u ? (int) $u->ID : 0; }",
+   "75: $g = ( $uid && $pid ) ? self::grupe( $uid, $pid ) : null;",
+   "76: if ( ! $g ) return $result;",
+   "77: if ( empty( $g['prekes'] ) ) return array( 'allowed' => false, 'reason' => 'preke_nera_sandelyje', 'terminal' => false );",
+   "79: $siusti = $wpdb->get_col( $wpdb->prepare( \"SELECT context_json FROM {$p}ps_email_jobs WHERE flow='refill_due' AND status='sent' AND recipient_email=%s AND sent_at >= %s\", $email, gmdate( 'Y-m-d H:i:s', time() - self::LANGAS_D * 86",
+   "80: foreach ( $siusti as $cj ) {",
+   "81: $c = json_decode( (string) $cj, true ); $spid = is_array( $c ) && isset( $c['product_id'] ) ? (int) $c['product_id'] : 0; if ( ! $spid || $spid === $pid ) continue;",
+   "82: $soid = (int) $wpdb->get_var( $wpdb->prepare( \"SELECT last_order_id FROM {$p}ps_refill_tracking WHERE user_id=%d AND product_id=%d\", $uid, $spid ) );",
+   "83: if ( $soid && $soid === (int) $g['order_id'] ) return array( 'allowed' => false, 'reason' => 'pakartoti_jau_siustas', 'terminal' => true );",
+   "84: }",
+   "85: return $result;",
+   "86: }"
+  ],
+  "md5_vartai": "6516bec96ff91f7ec36b8395644310ec",
+  "ver_vartai": "1.2.1"
+ }
+}
