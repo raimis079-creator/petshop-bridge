@@ -1,0 +1,39 @@
+{
+ "v": "dep-141208",
+ "kurimas": 200,
+ "sid": 5976,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "n",
+  "pastabos": [
+   "09-15 11:05 [system] Email \"Užsakymas vykdomas\" sent.",
+   "09-15 11:05 [system] Email \"Naujas užsakymas\" sent.",
+   "09-15 11:05 [system] Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+   "09-15 11:05 [system] Surūšiuota pati: Hikari Cichlid Gold Sinking Mini, 342 g — Iš AV; Hikari Cichlid Gold Medium, 250 g — Iš AV",
+   "09-15 11:05 [system] Faktai irasyti: 2 eilutes · pajamos 15,91 EUR (be PVM, po nuolaidu) · PVM 3,71 EUR · marza 6,65 EUR · kontribucija (be pristatymo) 7,98 EUR",
+   "09-15 11:05 [system] Partijos nurašytos: #18272 −1 vnt. (1 partijos) · #18290 −1 vnt. (1 partijos)",
+   "09-15 11:05 [system] AV nurašymas: #18272 grynai AV 2 -> 1 · #18290 grynai AV 5 -> 4",
+   "09-15 11:05 [system] Vykdymas: MAIN — AV 2 vnt (1 siunta(-os)) · dropship pirma",
+   "09-15 11:05 [system] Paysera: Užsakymo būsena po apmokėjimo",
+   "09-15 11:04 [system] Paysera: Naujo užsakymo kūrimo būsena",
+   "09-15 11:04 [system] Likutis sumažintas: Hikari Cichlid Gold Sinking Mini, 342 g (3&rarr;2), Hikari Cichlid Gold Medium, 250 g (6&rarr;5)",
+   "09-15 11:04 [system] Paysera: Neapmokėto užsakymo būsena",
+   "09-15 11:04 [system] Stock hold of 90 minutes applied to: - Hikari Cichlid Gold Sinking Mini, 342 g (04633) &times; 1- Hikari Cichlid Gold Medium, 250 g (04328) &times; 1"
+  ],
+  "customer_note": "",
+  "meta": {
+   "_ps_vidine_pastaba": "\"Išsiųsta įdedant į paštomatą, sekimo nr CC117086595LT\"",
+   "_ps_vidine_pastaba_kas": "\"2026-09-16 10:22:54|Inga\"",
+   "_woo_lithuaniapost_lpexpress_shipping_method_instance_id": "\"12\"",
+   "_woo_lithuaniapost_lpexpress_terminal": "\"Maxima X - Žaliųjų ežerų g. 207, Vilnius\"",
+   "_woo_lithuaniapost_lpexpress_terminal_id": "\"0171\"",
+   "_woo_lithuaniapost_shipping_item_id": "\"327418369\"",
+   "_woo_lithuaniapost_shipping_item_size": "\"M\"",
+   "_woo_lithuaniapost_shipping_item_weight": "\"593\"",
+   "_woo_lithuaniapost_shipping_status_value": "\"lp-parcel-created\""
+  }
+ }
+}
