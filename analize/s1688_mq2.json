@@ -1,0 +1,51 @@
+{
+ "v": "dep-145656",
+ "kurimas": 200,
+ "sid": 5980,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "nars": {
+  "v": "S1688 mq",
+  "img": {
+   "suo": "https://petshop.lt/wp-content/uploads/ps-relaunch/suo.jpg",
+   "maisas": "https://petshop.lt/wp-content/uploads/ps-relaunch/maisas.jpg"
+  },
+  "puslapiai": [
+   "https://petshop.lt/kontaktai/",
+   "https://petshop.lt/pristatymas/",
+   "https://petshop.lt/grazinimas/"
+  ],
+  "shots": [
+   {
+    "n": "s1688_v10_390",
+    "u": "https://petshop.lt/?ps_s1688mq=html",
+    "w": 390,
+    "h": 900,
+    "full": 1
+   },
+   {
+    "n": "s1688_v10_640",
+    "u": "https://petshop.lt/?ps_s1688mq=html",
+    "w": 640,
+    "h": 900,
+    "full": 1
+   }
+  ]
+ },
+ "shots": {
+  "s1688_v10_390": {
+   "status": 201,
+   "url": "https://petshop.lt/?ps_s1688mq=html",
+   "title": "Kiek kainuoja jūsų augintinio maistas per dieną?",
+   "errors": []
+  },
+  "s1688_v10_640": {
+   "status": 201,
+   "url": "https://petshop.lt/?ps_s1688mq=html",
+   "title": "Kiek kainuoja jūsų augintinio maistas per dieną?",
+   "errors": []
+  }
+ }
+}
