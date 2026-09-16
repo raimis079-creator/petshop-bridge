@@ -1,0 +1,70 @@
+{
+ "v": "dep-120622",
+ "kurimas": 200,
+ "sid": 5959,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "nars": {
+  "v": "S1688 mn",
+  "adr": "Liucionių g. 46, 15166 Liucionių k.",
+  "priv": "https://petshop.lt/privatumo-politika/",
+  "shots": [
+   {
+    "n": "s1688_v07_calc",
+    "u": "https://petshop.lt/?ps_s1688mn=html_calc",
+    "w": 390,
+    "h": 844,
+    "full": 1
+   },
+   {
+    "n": "s1688_v07_product",
+    "u": "https://petshop.lt/?ps_s1688mn=html_product",
+    "w": 390,
+    "h": 844,
+    "full": 1
+   },
+   {
+    "n": "s1688_v07_generic",
+    "u": "https://petshop.lt/?ps_s1688mn=html_generic",
+    "w": 390,
+    "h": 844,
+    "full": 1
+   },
+   {
+    "n": "s1688_v07_genericb",
+    "u": "https://petshop.lt/?ps_s1688mn=html_genericb",
+    "w": 390,
+    "h": 844,
+    "full": 1
+   }
+  ]
+ },
+ "shots": {
+  "s1688_v07_calc": {
+   "status": 201,
+   "url": "https://petshop.lt/?ps_s1688mn=html_calc",
+   "title": "20 kg šuniui – nuo 1,10 € per dieną?",
+   "errors": []
+  },
+  "s1688_v07_product": {
+   "status": 201,
+   "url": "https://petshop.lt/?ps_s1688mn=html_product",
+   "title": "Royal Canin Cat Fussy Exigent – Petshop.lt",
+   "errors": []
+  },
+  "s1688_v07_generic": {
+   "status": 201,
+   "url": "https://petshop.lt/?ps_s1688mn=html_generic",
+   "title": "Petshop.lt persikėlė – jūsų ankstesni užsakymai išsaugoti",
+   "errors": []
+  },
+  "s1688_v07_genericb": {
+   "status": 201,
+   "url": "https://petshop.lt/?ps_s1688mn=html_genericb",
+   "title": "Petshop.lt persikėlė į naują svetainę",
+   "errors": []
+  }
+ }
+}
