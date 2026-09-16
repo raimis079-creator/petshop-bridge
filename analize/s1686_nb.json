@@ -1,0 +1,25 @@
+{
+ "v": "dep-084509",
+ "kurimas": 200,
+ "sid": 5934,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "kurti": {
+  "v": "S1686 nb",
+  "kurti": {
+   "code": 200,
+   "id": "NkOq5z",
+   "msg": "Campaign created",
+   "errors": null,
+   "from": "Petshop.lt",
+   "reply": "terra@petshop.lt"
+  },
+  "grupe_aktyviu": 1,
+  "send": {
+   "code": 200,
+   "msg": "Campaign started to send"
+  }
+ }
+}
