@@ -1,0 +1,37 @@
+{
+ "v": "dep-101846",
+ "kurimas": 200,
+ "sid": 5950,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1688 mi",
+  "md5": "b7bcf6af97626216823332ecfe6db4be",
+  "l": [
+   "13: *   - rodoma 1× per user meta ps_welcome_seen (veikia per įrenginius; cookie — tik svečiams)",
+   "24: *   - vienam žmogui vieną kartą; uždarius — 90 d. tyla (cookie)",
+   "34: const OPT_ENABLED = 'petshop_welcome_modal_enabled';",
+   "35: const COOKIE      = 'psw_seen';",
+   "36: const META_SEEN   = 'ps_welcome_seen';",
+   "37: const TYLA_DIENOS = 90;",
+   "38: const DELSA_SEK   = 12;",
+   "39: const DELSA_B_SEK = 3;",
+   "41: public static function init() {",
+   "42: add_action( 'wp_footer', array( __CLASS__, 'render' ), 40 );",
+   "46: protected static function variantas() {",
+   "62: return apply_filters( 'petshop_welcome_modal_show', true ) ? 'B' : '';",
+   "70: return apply_filters( 'petshop_welcome_modal_show', true ) ? 'A' : '';",
+   "73: public static function render() {",
+   "75: if ( '' === $v ) return;",
+   "140: var ov=document.getElementById('psw'); if(!ov) return;",
+   "142: function cookie(){var d=new Date();d.setTime(d.getTime()+<?php echo (int) self::TYLA_DIENOS; ?>*864e5);",
+   "143: document.cookie='<?php echo esc_js( self::COOKIE ); ?>=1;expires='+d.toUTCString()+';path=/;SameSite=Lax';}",
+   "144: function rodyk(){ if(parodytas) return; parodytas=true;",
+   "150: function uzdaryk(){ if(uzdarytas) return; uzdarytas=true;",
+   "151: ov.classList.remove('on'); cookie();",
+   "154: function exit(e){ if(!e.relatedTarget && e.clientY<10) rodyk(); }"
+  ]
+ }
+}
