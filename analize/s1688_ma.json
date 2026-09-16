@@ -1,0 +1,344 @@
+{
+ "v": "dep-095036",
+ "kurimas": 200,
+ "sid": 5939,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1688 ma",
+  "cls": {
+   "Petshop_Refill_Engine": {
+    "file": "wp-content/plugins/petshop-core/includes/class-refill-engine.php",
+    "m": [
+     "s table_name()",
+     "s install()",
+     "s maybe_install()",
+     "s init()",
+     "s on_order_paid($order_id)",
+     "s check_due()",
+     "s eligibility_filter($result,$flow,$flow_class,$email,?$context)"
+    ]
+   },
+   "Refill_Engine": "nera",
+   "Petshop_Feeding_Service": {
+    "file": "wp-content/plugins/petshop-core/includes/class-feeding-service.php",
+    "m": [
+     "s evaluate($in)",
+     "s calc_enabled()",
+     "s calc($in)"
+    ]
+   },
+   "Feeding_Service": "nera",
+   "Petshop_Magic_Login": {
+    "file": "wp-content/plugins/petshop-core/includes/class-magic-login.php",
+    "m": [
+     "s init()",
+     "s register_routes()",
+     "s handle_request($request)",
+     "s handle_login_page()"
+    ]
+   },
+   "Magic_Login": "nera",
+   "Petshop_Sutikimai": {
+    "file": "wp-content/mu-plugins/petshop-sutikimai.php",
+    "m": [
+     "s init()",
+     "s laukas($checkout)",
+     "s irasyti($order,$data)",
+     "s nustatyti($email,$uid,$optout,$source)",
+     "s raktas()",
+     "s zenklas($email)",
+     "s optout_url($email)",
+     "s nuoroda()"
+    ]
+   },
+   "Petshop_Lifecycle_Vartai": {
+    "file": "wp-content/mu-plugins/petshop-lifecycle-vartai.php",
+    "m": [
+     "s init()",
+     "s bucket($g)",
+     "s ciklas($brendas,$g)",
+     "s pagal_anketa($uid,$pid,$qty)",
+     "s pataisyti_ciklus($order_id)",
+     "s pataisyti_eilute($t,$uid,$pid,$brendas,$svoris_g,$qty)",
+     "s holdout($email)",
+     "s similar_ok($email,?$user_id)",
+     "s eligibility($result,$flow,$flow_class,$email,?$context)"
+    ]
+   },
+   "Petshop_Pet_Profile": {
+    "file": "wp-content/plugins/petshop-core/includes/class-pet-profile.php",
+    "m": [
+     "s table_name()",
+     "s install()",
+     "s maybe_install()",
+     "s init()",
+     "s register_routes()",
+     "s require_login()",
+     "s handle_save($request)",
+     "s handle_patch($request)",
+     "s handle_delete($request)",
+     "s handle_food_search($request)",
+     "s food_search_title_where($where)",
+     "s handle_brands($request)",
+     "s sanitize_payload($payload)",
+     "s create_pet_result($user_id,$input,?$client_ref,?$force_new)",
+     "s handle_list($request)",
+     "s get_pet($pet_id)"
+    ]
+   },
+   "Pet_Profile": "nera",
+   "Petshop_Pakartoti": {
+    "file": "wp-content/mu-plugins/petshop-pakartoti.php",
+    "m": [
+     "s init()",
+     "s sablonas($file,$flow,$slug)",
+     "s grupe($uid,$pid)",
+     "s vartai($result,$flow,$flow_class,$email,?$context)",
+     "s raktas()",
+     "s zenklas($oid)",
+     "s url($oid)",
+     "s endpoint()",
+     "s zyme($order,$data)",
+     "s duomenys($payload,$recipient)"
+    ]
+   }
+  },
+  "refill_cols": [
+   "id bigint(20) unsigned",
+   "user_id bigint(20) unsigned",
+   "product_id bigint(20) unsigned",
+   "pet_id bigint(20) unsigned",
+   "last_order_id bigint(20) unsigned",
+   "last_purchase_date date",
+   "purchase_count int(10) unsigned",
+   "avg_interval_days int(10) unsigned",
+   "predicted_empty_date date",
+   "confidence decimal(3,2)",
+   "status varchar(16)",
+   "created_at datetime",
+   "updated_at datetime",
+   "last_feedback varchar(16)",
+   "last_feedback_at datetime",
+   "feedback_cycle varchar(32)"
+  ],
+  "refill_pvz": {
+   "id": "113",
+   "user_id": "2730",
+   "product_id": "18084",
+   "pet_id": null,
+   "last_order_id": "35981",
+   "last_purchase_date": "2026-09-16",
+   "purchase_count": "1",
+   "avg_interval_days": "73",
+   "predicted_empty_date": "2026-11-28",
+   "confidence": "0.40",
+   "status": "active",
+   "created_at": "2026-09-16 07:49:13",
+   "updated_at": "2026-09-16 07:49:13",
+   "last_feedback": null,
+   "last_feedback_at": null,
+   "feedback_cycle": null
+  },
+  "refill_status": [
+   {
+    "status": "active",
+    "n": "61"
+   }
+  ],
+  "core_files": [
+   "class-account-avatar.php",
+   "class-account-company.php",
+   "class-account-dashboard.php",
+   "class-action-tokens.php",
+   "class-admin-reports.php",
+   "class-cart-abandonment.php",
+   "class-cart-recovery.php",
+   "class-cart-tracker.php",
+   "class-condition-mapper.php",
+   "class-consent-log.php",
+   "class-consent-sync.php",
+   "class-contact-policy.php",
+   "class-email-dispatch.php",
+   "class-email-layout.php",
+   "class-email-suppression.php",
+   "class-event-emitters.php",
+   "class-event-log.php",
+   "class-event-registry.php",
+   "class-feeding-calculator.php",
+   "class-feeding-package-provider.php",
+   "class-feeding-package-resolver.php",
+   "class-feeding-repository.php",
+   "class-feeding-service.php",
+   "class-feeding-ui.php",
+   "class-magic-login.php",
+   "class-mixed-feeding-estimator.php",
+   "class-newsletter-footer.php",
+   "class-newsletter.php",
+   "class-pet-content.php",
+   "class-pet-dashboard.php",
+   "class-pet-drafts.php",
+   "class-pet-notes.php",
+   "class-pet-photo.php",
+   "class-pet-products.php",
+   "class-pet-profile.php",
+   "class-pet-ui.php",
+   "class-plan-attribution.php",
+   "class-post-purchase.php",
+   "class-product-calc.php",
+   "class-refill-engine.php",
+   "class-refill-feedback.php",
+   "class-reminders.php",
+   "class-retry-queue.php",
+   "class-shipments.php",
+   "class-unsubscribe.php",
+   "class-weight-filter.php",
+   "class-welcome-modal.php",
+   "interface-message-provider.php",
+   "tpl-myaccount-dashboard.php",
+   "tpl-myaccount-my-address.php",
+   "calc-handoff.js",
+   "newsletter.js",
+   "pet-form.js",
+   "pet-profile.js",
+   "product-calc.js"
+  ],
+  "calc_php": [
+   "class-product-calc.php"
+  ],
+  "calc_php_l": {
+   "class-product-calc.php": [
+    "33: add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue' ) );",
+    "45: wp_enqueue_script( 'ps-product-calc',",
+    "49: wp_localize_script( 'ps-product-calc', 'PSPetConfig', array(",
+    "183: <button type=\"button\" class=\"ps-calc-go\">Apskaičiuoti →</button>",
+    "198: <button type=\"button\" class=\"ps-calc-go-age\">Apskaičiuoti →</button>",
+    "207: <button type=\"button\" class=\"ps-calc-go-portion\">Apskaičiuoti →</button>",
+    "213: <div class=\"ps-calc-out\" aria-live=\"polite\"></div>",
+    "258: .ps-calc-out{margin-top:2px}"
+   ]
+  },
+  "calc_js": [
+   "product-calc.js 14155"
+  ],
+  "calc_js_l": {
+   "product-calc.js": [
+    "34: var out       = root.querySelector('.ps-calc-out');",
+    "86: b.innerHTML = '<div class=\"ps-calc-saved-t\">Skaičiavimas išsaugotas augintinio profilyje</div>'",
+    "97: return fetch(REST + '/feeding-calc', {",
+    "113: var days = rng(d.days_min, d.days_max);",
+    "114: var cost = rng(d.cost_day_min, d.cost_day_max, eur);",
+    "117: if (days !== null) {",
+    "118: h += '<div class=\"big\">Apie ' + esc(days) + ' ' + dienos(d.days_max || d.days_min) + '</div>';",
+    "139: out.innerHTML = h;",
+    "232: out.innerHTML = h;",
+    "239: box.innerHTML = '<div style=\"font-size:12.5px;color:#8A968C;line-height:1.45\">'",
+    "257: out.innerHTML = '<div class=\"ps-calc-info\">' + esc(txt) + '</div>';",
+    "261: if (!d || !d.status) { out.innerHTML = '<div class=\"ps-calc-err\">Nepavyko apskaičiuoti. Bandykite dar kartą.</div>'; return; }",
+    "288: if (!v || v <= 0) { out.innerHTML = '<div class=\"ps-calc-err\">Įveskite svorį kilogramais.</div>'; i.focus(); return; }",
+    "295: .catch(function () { out.innerHTML = '<div class=\"ps-calc-err\">Nepavyko apskaičiuoti.</div>'; })",
+    "305: if (!v || v <= 0) { out.innerHTML = '<div class=\"ps-calc-err\">Įveskite porciją gramais.</div>'; i.focus(); return; }",
+    "309: .catch(function () { out.innerHTML = '<div class=\"ps-calc-err\">Nepavyko apskaičiuoti.</div>'; })",
+    "319: if (!v || v <= 0) { out.innerHTML = '<div class=\"ps-calc-err\">Įveskite amžių mėnesiais.</div>'; i.focus(); return; }",
+    "325: .catch(function () { out.innerHTML = '<div class=\"ps-calc-err\">Nepavyko apskaičiuoti.</div>'; })"
+   ]
+  },
+  "magic": [
+   "8: * saugo token'o action lauke — redirect po prisijungimo pagal tai, is kur zmogus atejo:",
+   "20: * Taip pat: redirect po login eina i augintinio puslapi, kur gyvena juodrascio perkelimas.",
+   "43: *   4. POST -> consume token -> wp_set_auth_cookie + session regen -> redirect MyAccount.",
+   "68: register_rest_route( 'petshop/v1', '/magic-login/request', array(",
+   "93: * ★ SIS METODAS NIEKADA NEBLOKUOJA login'o ir redirect'o. Bet kokia klaida",
+   "112: delete_user_meta( $user_id, self::META_CLAIM_PENDING );",
+   "123: delete_user_meta( $user_id, self::META_CLAIM_PENDING );",
+   "131: delete_user_meta( $user_id, self::META_CLAIM_PENDING );",
+   "141: delete_user_meta( $user_id, self::META_CLAIM_PENDING );",
+   "152: delete_user_meta( $user_id, self::META_CLAIM_PENDING );",
+   "170: update_user_meta( $user_id, self::META_CLAIM_PENDING, array(",
+   "183: delete_user_meta( $user_id, self::META_CLAIM_PENDING );",
+   "262: $email = sanitize_email( $request->get_param( 'email' ) );",
+   "286: // S209: is kur zmogus atejo — lemia redirect po prisijungimo.",
+   "287: $context = sanitize_key( (string) $request->get_param( 'context' ) );",
+   "295: $draft_id = self::resolve_draft_for_email( $request->get_param( 'draft_id' ), $email );",
+   "317: if ( ! isset( $_GET['ps_magic'] ) && ! self::is_login_path() ) {",
+   "324: $token = isset( $_REQUEST['token'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['token'] ) ) : '';",
+   "374: * POST — consume token, login, session regen, redirect.",
+   "439: update_user_meta( $user_id, self::META_EMAIL_VERIFIED, 'yes' );",
+   "452: // Vieta SAMONINGA: PO login'o (5) ir Sender upsert'o (6), PRIES redirect (7).",
+   "461: // Claim NIEKADA neblokuoja login'o ir redirect'o.",
+   "470: // S209: redirect pagal tai, is kur zmogus atejo (token action laukas).",
+   "474: $redirect = '';",
+   "476: $redirect = wc_get_account_endpoint_url( 'augintinis' );",
+   "478: if ( ! $redirect ) {",
+   "479: $redirect = wc_get_page_permalink( 'myaccount' );",
+   "481: if ( ! $redirect ) {",
+   "482: $redirect = home_url( '/' );",
+   "488: $redirect = add_query_arg( 'pet_claim', $claim_kodas, $redirect );",
+   "490: wp_safe_redirect( $redirect );",
+   "557: // --- Rate limiting (transient pagristas) ---",
+   "562: $email_count = (int) get_transient( $email_key );",
+   "563: $ip_count = (int) get_transient( $ip_key );",
+   "572: set_transient( $email_key, $email_count + 1, self::RATE_LIMIT_WINDOW );",
+   "573: set_transient( $ip_key, $ip_count + 1, self::RATE_LIMIT_WINDOW );"
+  ],
+  "refill_l": [
+   "6: * - 1-as pirkimas: grubus intervalas pagal pakuotes dydi (14/30/60 d., confidence 0.4)",
+   "7: * - 2+ pirkimas to paties produkto: kalibruojasi is realaus intervalo (confidence->0.9)",
+   "48: const DUE_ADVANCE_DAYS = 5;  // fire refill_due X dienu PRIES predicted_empty_date",
+   "60: public static function table_name() {",
+   "65: public static function install() {",
+   "78: predicted_empty_date DATE NULL,",
+   "79: confidence DECIMAL(3,2) NOT NULL DEFAULT 0.40,",
+   "85: KEY idx_status_predicted (status, predicted_empty_date),",
+   "92: public static function maybe_install() {",
+   "99: public static function init() {",
+   "118: public static function on_order_paid( $order_id ) {",
+   "173: private static function track_purchase( $user_id, $product_id, $order_id, $purchase_date, $product ) {",
+   "195: $confidence = ( $new_count >= 3 ) ? self::CONFIDENCE_CALIBRATED : self::CONFIDENCE_SECOND;",
+   "204: 'predicted_empty_date' => $predicted,",
+   "205: 'confidence'          => $confidence,",
+   "214: $wpdb->insert( $table, array(",
+   "222: 'predicted_empty_date' => $predicted,",
+   "223: 'confidence'           => self::CONFIDENCE_FIRST,",
+   "234: private static function estimate_interval( $product ) {",
+   "270: private static function parse_weight_grams( $str ) {",
+   "291: private static function is_food_product( $product_id ) {",
+   "323: * Cron: kasdienine patikra — fire refill_due event kai arteja predicted_empty_date.",
+   "325: public static function check_due() {",
+   "331: // Rasam aktyvius irasys kur predicted_empty_date <= today + advance",
+   "338: AND rt.predicted_empty_date <= %s",
+   "339: ORDER BY rt.predicted_empty_date ASC",
+   "355: 'predicted_empty_date' => $row->predicted_empty_date,",
+   "356: 'confidence'           => (float) $row->confidence,",
+   "360: 'event_id' => 'refill_due_' . $row->user_id . '_' . $row->product_id . '_' . $row->predicted_empty_date,",
+   "382: 'confidence'   => (float) $row->confidence,",
+   "385: 'job_key' => 'refill_due:' . $row->user_id . ':' . $row->product_id . ':' . $row->predicted_empty_date,",
+   "394: 'cycle'              => (string) $row->predicted_empty_date,",
+   "414: public static function eligibility_filter( $result, $flow, $flow_class, $email, $context = array() ) {",
+   "440: private static function has_repurchased( $user_id, $product_id, $since ) {",
+   "465: private static function mirror_to_sender( $user_id ) {",
+   "474: // Artimiausia predicted_empty_date (active)",
+   "476: \"SELECT MIN(predicted_empty_date) FROM `\" . self::table_name() . \"`"
+  ],
+  "optin_meta_pvz": [
+   {
+    "meta_key": "_ps_email_verified",
+    "n": "32"
+   },
+   {
+    "meta_key": "ps_similar_optout",
+    "n": "11"
+   },
+   {
+    "meta_key": "ps_soft_optin_eligible",
+    "n": "11"
+   },
+   {
+    "meta_key": "ps_weight_signal",
+    "n": "2"
+   }
+  ]
+ }
+}
