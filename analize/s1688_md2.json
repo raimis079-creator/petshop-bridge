@@ -1,0 +1,83 @@
+{
+ "v": "dep-100057",
+ "kurimas": 200,
+ "sid": 5943,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "tikrinti": {
+  "v": "S1688 md",
+  "rl_md5": "1cf5614798146b1cdd82d90a1c973a9d",
+  "pk_md5": "d0108a6268e4e499c47140283d84535b",
+  "rl_ver": "1.1.0 — S1688: priminimo registracija prekės puslapyje po skaičiavimo (blokas #ps-primink, REST ps-relaunch/v1/priminti; prisijungęs → iš karto, svečias → patvirtinimo nuoroda el. paštu ?ps_primink=&z=). Registracija = ps_refill_tracking eilutė (feedback_cycle='relaunch', confidence 0.5, terminas pagal calc dienas × maišo būseną), Petshop_Sutikimai::nustatyti(optout=0,'relaunch_calc'), ps_weight_signal confidence high, ps_web_ivykiai `reminder_optin`. Svorio paspaudimas ir priminimas — du skirtingi veiksmai.",
+  "pk_ver": "1.1.6",
+  "metodai": {
+   "registruoti": true,
+   "rest_priminti": true,
+   "grupe_preke": true
+  },
+  "rest": true,
+  "cols": [
+   "id",
+   "cid",
+   "email",
+   "user_id",
+   "segmentas",
+   "product_id",
+   "rusis",
+   "svoriai",
+   "duomenys",
+   "sukurta_at",
+   "klik_n",
+   "pask_klik_at",
+   "pask_svoris",
+   "hero_reason",
+   "last_food_product_id",
+   "last_food_date",
+   "same_sku_orders",
+   "ist_n",
+   "ist_paskutinis",
+   "consent",
+   "last_kat",
+   "last_any_product_id",
+   "last_any_date",
+   "same_any_orders",
+   "grupe",
+   "top_kat",
+   "primink_at",
+   "primink_kg",
+   "primink_busena"
+  ],
+  "v11": "1",
+  "dienos_12466_20": {
+   "min": 54,
+   "max": 60,
+   "vid": 57
+  },
+  "rusis_12466": "dog",
+  "grupe_preke_test": {
+   "order_id": 0,
+   "prekes": [
+    {
+     "pid": 12466,
+     "item_id": 0,
+     "pav": "Eukanuba Veterinary Diets Dermatosis FP 12kg",
+     "kiekis": 1,
+     "kaina": 65.99,
+     "url": "https://petshop.lt/product/eukanuba-veterinary-diets-dermatosis-fp-12kg/",
+     "rinkinys": false
+    }
+   ],
+   "nera": [],
+   "suma": 65.99,
+   "data": "lapkričio 1 d.",
+   "kasa": "https://petshop.lt/kasa/?add-to-cart=12466&quantity=1"
+  },
+  "fatal_log_tail": [
+   "[16-Sep-2026 08:49:24 UTC] PHP Warning:  Trying to access array offset on null in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1853\n",
+   "[16-Sep-2026 08:49:24 UTC] PHP Warning:  Undefined array key 2 in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 1841\n",
+   "[16-Sep-2026 09:20:26 UTC] Užsakymas patvirtintas: užsakymas 35982, suma: 26.05EUR\n"
+  ]
+ }
+}
