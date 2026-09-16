@@ -1,0 +1,83 @@
+{
+ "v": "dep-161200",
+ "kurimas": 200,
+ "sid": 5991,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DEP": {
+  "v": "S1689 k",
+  "f": "DEP",
+  "failai": {
+   "class-import-rules-vf.php": {
+    "md5_pries": "191637c6d58e661f8e7ed0d352c2556a",
+    "pakeit": [
+     1,
+     1,
+     1,
+     1
+    ],
+    "irasyta": true,
+    "md5_po": "11dcc38125fad68d834f6e2db97a74b8"
+   },
+   "class-pricing-vf.php": {
+    "md5_pries": "3df53827f9a9be4de0689b921ee5d806",
+    "pakeit": [
+     1
+    ],
+    "irasyta": true,
+    "md5_po": "eea9fdcc87bf4440a1ebebe1c28002e7"
+   }
+  },
+  "heartbeat": 200
+ },
+ "TIK": {
+  "v": "S1689 k",
+  "f": "TIK",
+  "normalize": "Exclusion Diet",
+  "should_import": {
+   "import": true,
+   "group": "sausas"
+  },
+  "kat": {
+   "VET sausas maistas virškinimui šunims": "sausas-maistas-sunims",
+   "VET kons. maistas virškinimui šunims": "konservai-sunims",
+   "VET sausas maistas inkstams katėms": "sausas-maistas-katems",
+   "VET kons. maistas šlapimo takams katėms": "konservai-katems"
+  },
+  "markup": {
+   "markup": 0.43,
+   "rule": "BRAND:Exclusion Diet"
+  },
+  "disc": 0,
+  "kaina_INPS06": {
+   "regular": 76.69,
+   "sale": 0,
+   "margin_pct": 43.07,
+   "rule": "BRAND:Exclusion Diet",
+   "supplier_discount_pct": 0,
+   "review_reasons": []
+  },
+  "vf_pvz_pid": "17978",
+  "vf_pvz_meta": {
+   "_global_unique_id": "4032254785989",
+   "_ean": "403225477537",
+   "_vf_barcode": "403225478598"
+  },
+  "juodrasciai": {
+   "18545": {
+    "_sku": "INPM11"
+   },
+   "18548": {
+    "_sku": "INPA11"
+   },
+   "18551": {
+    "_sku": "INPS06"
+   },
+   "18623": {
+    "_sku": "HEPM11"
+   }
+  }
+ }
+}
