@@ -1,0 +1,23 @@
+{
+ "v": "dep-163551",
+ "kurimas": 200,
+ "sid": 5997,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689 q",
+  "eil_80_140": "\t\t$t0  = microtime( true );\n\t\t$cfg = self::cfg();\n\t\t$r   = [ 'laikas' => current_time( 'mysql' ), 'ok' => false, 'klaida' => '', 'eilutes' => 0, 'baitai' => 0, 'sek' => 0 ];\n\t\tif ( $cfg['user'] === '' || $cfg['pass'] === '' || $cfg['url'] === '' ) {\n\t\t\t$r['klaida'] = 'nera kredencialu (fetcher failas neperskaitytas)';\n\t\t\treturn self::baigti( $r );\n\t\t}\n\t\t$ch = curl_init();\n\t\tcurl_setopt_array( $ch, [\n\t\t\tCURLOPT_URL            => $cfg['url'],\n\t\t\tCURLOPT_RETURNTRANSFER => true,\n\t\t\tCURLOPT_USERPWD        => $cfg['user'] . ':' . $cfg['pass'],\n\t\t\tCURLOPT_HTTPAUTH       => CURLAUTH_BASIC,\n\t\t\tCURLOPT_TIMEOUT        => 120,\n\t\t\tCURLOPT_CONNECTTIMEOUT => 15,\n\t\t\tCURLOPT_FOLLOWLOCATION => true,\n\t\t\tCURLOPT_MAXREDIRS      => 3,\n\t\t\tCURLOPT_ENCODING       => 'gzip,deflate',\n\t\t\tCURLOPT_USERAGENT      => 'petshop.lt VF feed ' . self::VERSIJA,\n\t\t] );\n\t\t$xml  = curl_exec( $ch );\n\t\t$code = (int) curl_getinfo( $ch, CURLINFO_HTTP_CODE );\n\t\t$err  = curl_error( $ch );\n\t\tcurl_close( $ch );\n\t\t$r['http'] = $code;\n\t\tif ( $err || $code !== 200 || ! is_string( $xml ) || strlen( $xml ) < 10000 ) {\n\t\t\t$r['klaida'] = \"API: HTTP {$code} {$err} baitai=\" . ( is_string( $xml ) ? strlen( $xml ) : 0 );\n\t\t\treturn self::baigti( $r );\n\t\t}\n\t\t$eil = preg_match_all( '/<row>/', $xml );\n\t\t$r['eilutes'] = $eil;\n\t\t$r['baitai']  = strlen( $xml );\n\t\tif ( strpos( $xml, '<data>' ) === false || $eil < self::MIN_EIL ) {\n\t\t\t$r['klaida'] = \"XML nevalidus arba per mazai eiluciu ({$eil})\";\n\t\t\treturn self::baigti( $r );\n\t\t}\n\t\tlibxml_use_internal_errors( true );\n\t\tif ( simplexml_load_string( $xml ) === false ) {\n\t\t\t$r['klaida'] = 'simplexml: XML nesiparsina';\n\t\t\treturn self::baigti( $r );\n\t\t}\n\t\t$sena = (array) get_option( self::OPT, [] );\n\t\tif ( ! empty( $sena['eilutes'] ) && $eil < 0.5 * (int) $sena['eilutes'] ) {\n\t\t\t$r['klaida'] = \"eiluciu krytis {$sena['eilutes']} -> {$eil}, nerasoma\";\n\t\t\treturn self::baigti( $r );\n\t\t}\n\t\tforeach ( [ self::failas(), self::cache() ] as $p ) {\n\t\t\t$dir = dirname( $p );\n\t\t\tif ( ! is_dir( $dir ) ) wp_mkdir_p( $dir );\n\t\t\t$tmp = $p . '.tmp';\n\t\t\tif ( file_put_contents( $tmp, $xml, LOCK_EX ) === false || ! rename( $tmp, $p ) ) {\n\t\t\t\t$r['klaida'] = \"rasymas nepavyko: {$p}\";\n\t\t\t\t@unlink( $tmp );\n\t\t\t\treturn self::baigti( $r );\n\t\t\t}\n\t\t}\n\t\t$r['ok']  = true;\n\t\t$r['sek'] = round( microtime( true ) - $t0, 1 );\n\t\treturn self::baigti( $r );\n\t}\n\n\tprivate static function baigti( array $r ): array {",
+  "tiesiogiai": {
+   "http": 200,
+   "baitai": 8264077,
+   "rows": 2369,
+   "vetdiet": 0,
+   "inps06": 0,
+   "intestinal": 0
+  },
+  "url_host": "admin.b2b.vetfarmas.lt/api/products/xml/get/auth",
+  "user_ilgis": 16
+ }
+}
