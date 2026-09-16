@@ -1,0 +1,32 @@
+{
+ "v": "dep-102222",
+ "kurimas": 200,
+ "sid": 5952,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "nars": {
+  "v": "S1688 mj",
+  "shots": [
+   {
+    "n": "s1688_primink2",
+    "u": "https://petshop.lt/product/eukanuba-veterinary-diets-dermatosis-fp-12kg/?svoris=20&cid=X5PuZTo6iTwR9o9sOteu",
+    "full": 0,
+    "eval": "new Promise(function(r){setTimeout(function(){var ov=document.getElementById('psw');var b=document.getElementById('ps-primink');if(b)b.scrollIntoView({block:'center'});setTimeout(function(){r({modal:ov?ov.className:null,blokas:b?b.innerText.slice(0,300):null});},800);},6000);})"
+   }
+  ]
+ },
+ "shots": {
+  "s1688_primink2": {
+   "status": 201,
+   "url": "https://petshop.lt/product/eukanuba-veterinary-diets-dermatosis-fp-12kg/?svoris=20&cid=X5PuZTo6iTwR9o9sOteu",
+   "title": "Eukanuba Veterinary Diets Dermatosis FP 12kg - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "modal": null,
+    "blokas": "Priminti, kai šis maišas baigsis?\nEukanuba Veterinary Diets Dermatosis FP 12kg · 20 kg augintiniui · užtenka apie 54–60 dienų\nDabartinis maišas:\nką tik atidarytas\nįpusėjęs\nbaigiasi\nTAIP, PRIMINKITE\nVienas laiškas likus ~5 d. iki pabaigos – ir nieko daugiau. Atsisakyti galėsite vienu paspaudimu pačia"
+   }
+  }
+ }
+}
