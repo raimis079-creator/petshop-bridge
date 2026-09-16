@@ -1,0 +1,287 @@
+{
+ "v": "dep-082814",
+ "kurimas": 200,
+ "sid": 5926,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1686 mx",
+  "file": "wp-content/plugins/petshop-esp/includes/class-sender-adapter.php",
+  "met": [
+   "+ get_name()",
+   "- is_blocked_by_dev_allowlist($email)",
+   "- log_dev_blocked($email,$method)",
+   "+ __construct(?$marketing_token,?$transactional_token)",
+   "s + get_stored_token($type)",
+   "s + store_token($type,$token)",
+   "+ is_configured()",
+   "- request($method,$path,?$body,?$token)",
+   "s + is_retriable_code($code)",
+   "+ upsert_contact($email,$attributes)",
+   "+ emit_event($email,$event_id,$event,$payload,?$timestamp)",
+   "+ send_transactional_email($to_email,$subject,$html_body,?$meta)",
+   "+ send_transactional_sms($phone_e164,$message,?$meta)",
+   "+ verify_webhook($raw_payload,$signature)",
+   "+ get_health_status()",
+   "+ is_operational()",
+   "+ get_contact_field($email,$field_title)",
+   "+ get_contact_status($email)"
+  ],
+  "src": [
+   "10: * - Base: https://api.sender.net/v2, Bearer auth",
+   "75: const API_BASE = 'https://api.sender.net/v2';",
+   "134: * Bendras HTTP request per wp_remote_request.",
+   "151: 'Authorization' => 'Bearer ' . $token,",
+   "160: $response = wp_remote_request( self::API_BASE . $path, $args );",
+   "455: 'Authorization' => 'Bearer ' . $this->marketing_token,",
+   "459: $response = wp_remote_request( self::API_BASE . '/groups', $args );"
+  ],
+  "tok_len": 988,
+  "fields_st": 200,
+  "fields": [
+   {
+    "id": null,
+    "title": "Email",
+    "type": "text"
+   },
+   {
+    "id": null,
+    "title": "Phone number",
+    "type": "text"
+   },
+   {
+    "id": "avAlVe",
+    "title": "First name",
+    "type": "text"
+   },
+   {
+    "id": "dwBVJb",
+    "title": "Last name",
+    "type": "text"
+   },
+   {
+    "id": "e9QpJJ",
+    "title": "PS_FEEDING_TYPE",
+    "type": "text"
+   },
+   {
+    "id": "ejqvXy",
+    "title": "PS_REFILL_CANDIDATE",
+    "type": "text"
+   },
+   {
+    "id": "bkZwYJ",
+    "title": "PS_NEXT_REFILL_DATE",
+    "type": "date"
+   },
+   {
+    "id": "enrYL5",
+    "title": "PS_TRANSACTIONAL_ONLY",
+    "type": "text"
+   },
+   {
+    "id": "epQRNQ",
+    "title": "PS_LAST_EVENT_AT",
+    "type": "date"
+   },
+   {
+    "id": "bqYVO7",
+    "title": "PS_LOGIN_METHOD",
+    "type": "text"
+   },
+   {
+    "id": "b2vgyM",
+    "title": "PS_LAST_ORDER_DATE",
+    "type": "date"
+   },
+   {
+    "id": "e32jzA",
+    "title": "PS_LIFETIME_VALUE",
+    "type": "number"
+   },
+   {
+    "id": "b4RkA7",
+    "title": "PS_CUSTOMER_WAVE",
+    "type": "text"
+   },
+   {
+    "id": "e7LnEQ",
+    "title": "PS_PET_LIFE_STAGE",
+    "type": "text"
+   },
+   {
+    "id": "egLxRr",
+    "title": "PS_CURRENT_FOOD_BRAND",
+    "type": "text"
+   },
+   {
+    "id": "bmQ2KR",
+    "title": "PS_PREFERRED_SHIPPING",
+    "type": "text"
+   },
+   {
+    "id": "e1rY0Z",
+    "title": "PS_CUSTOMER_ID",
+    "type": "text"
+   },
+   {
+    "id": "e0V2w5",
+    "title": "PS_PRIMARY_NEED",
+    "type": "text"
+   },
+   {
+    "id": "dwmEXr",
+    "title": "PS_EMAIL_VERIFIED",
+    "type": "text"
+   },
+   {
+    "id": "egLxAk",
+    "title": "PS_IDENTITY_MERGED_AT",
+    "type": "date"
+   },
+   {
+    "id": "e59lBY",
+    "title": "PS_FOUNDING_SCORE",
+    "type": "number"
+   },
+   {
+    "id": "el5vZj",
+    "title": "PS_SUBSCRIPTION_STATUS",
+    "type": "text"
+   },
+   {
+    "id": "boQvMY",
+    "title": "PS_UNSUBSCRIBED_AT",
+    "type": "date"
+   },
+   {
+    "id": "erREP2",
+    "title": "PS_LEGACY_EMAIL_LINKED",
+    "type": "text"
+   },
+   {
+    "id": "avoYW8",
+    "title": "PS_LEGACY_LINK_PROMPT_SHOWN",
+    "type": "text"
+   },
+   {
+    "id": "egLxlj",
+    "title": "PS_ORDER_COUNT",
+    "type": "number"
+   },
+   {
+    "id": "ejqvo4",
+    "title": "PS_PET_SPECIES",
+    "type": "text"
+   },
+   {
+    "id": "bkZwpv",
+    "title": "PS_MARKETING_CONSENT",
+    "type": "text"
+   },
+   {
+    "id": "b86oGj",
+    "title": "PS_DOG_SIZE",
+    "type": "text"
+   },
+   {
+    "id": "b6RmDO",
+    "title": "PS_PET_NAME",
+    "type": "text"
+   }
+  ],
+  "groups_st": 200,
+  "groups": [
+   "bDxp2q PS_TEST (0)",
+   "dPlYRA PS_SUPPRESSED_OR_ARCHIVE (0)",
+   "aOkZQR PS_LEGACY_IMPORT (0)",
+   "dNj8P2 PS_ALL_ACTIVE (0)"
+  ],
+  "sub_st": 200,
+  "sub": {
+   "data": {
+    "bounced_at": null,
+    "bounced_at_utc": null,
+    "columns": [
+     {
+      "id": "enrYL5",
+      "title": "PS_TRANSACTIONAL_ONLY",
+      "type": "text",
+      "value": "true"
+     }
+    ],
+    "created": "2026-01-04 16:07:57",
+    "created_utc": "2026-01-04 16:07:57",
+    "email": "terra@gyvunai.lt",
+    "firstname": null,
+    "id": "AMYvBNl",
+    "ip_address": "",
+    "lastname": null,
+    "location": "",
+    "phone": "",
+    "phone_country": null,
+    "source": "API",
+    "status": {
+     "email": "unsubscribed",
+     "temail": "active"
+    },
+    "subscriber_tags": [
+     {
+      "id": "bDxp2q",
+      "title": "PS_TEST"
+     }
+    ],
+    "unsubscribed_at": "2026-01-04 16:09:58",
+    "unsubscribed_at_utc": "2026-01-04 16:09:58"
+   }
+  },
+  "calc_pvz": {
+   "segmentas": "calc",
+   "product_id": "18587",
+   "rusis": "suo",
+   "svoriai": "4,6,8",
+   "duomenys": {
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    "kaina": 56.99,
+    "img": "https://petshop.lt/wp-content/uploads/2026/06/exclusion-sausas-edalas-mazu-veisliu-sunims-su-kiauliena-ir-zirniais-2-400x400.png",
+    "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc&cid=s2OTsGA5iOBrHZACHqoT",
+    "eilutes": [
+     {
+      "kg": 4,
+      "g": "80–90",
+      "eur_nuo": "0,65",
+      "d": "77–87",
+      "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc&cid=s2OTsGA5iOBrHZACHqoT&utm_term=4kg&svoris=4"
+     },
+     {
+      "kg": 6,
+      "g": "100–120",
+      "eur_nuo": "0,81",
+      "d": "58–70",
+      "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc&cid=s2OTsGA5iOBrHZACHqoT&utm_term=6kg&svoris=6"
+     },
+     {
+      "kg": 8,
+      "g": "120–140",
+      "eur_nuo": "0,98",
+      "d": "50–58",
+      "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc&cid=s2OTsGA5iOBrHZACHqoT&utm_term=8kg&svoris=8"
+     }
+    ]
+   },
+   "hero_reason": "recent_exact",
+   "consent": "1"
+  },
+  "terra": {
+   "cid": "X5PuZTo6iTwR9o9sOteu",
+   "segmentas": "calc",
+   "product_id": "12466",
+   "rusis": "dog",
+   "svoriai": "10,20,30",
+   "hero_reason": null,
+   "d": "0"
+  }
+ }
+}
