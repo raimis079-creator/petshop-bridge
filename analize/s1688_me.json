@@ -1,0 +1,31 @@
+{
+ "v": "dep-100251",
+ "kurimas": 200,
+ "sid": 5944,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "nars": {
+  "v": "S1688 me",
+  "shots": [
+   {
+    "n": "s1688_primink",
+    "u": "https://petshop.lt/product/eukanuba-veterinary-diets-dermatosis-fp-12kg/?svoris=20&cid=X5PuZTo6iTwR9o9sOteu&utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc",
+    "full": 0,
+    "eval": "new Promise(function(r){setTimeout(function(){var b=document.getElementById('ps-primink');if(!b){return r({blokas:null,out:(document.querySelector('.ps-calc-out')||{}).innerText});}var e=document.getElementById('ps-primink-e');if(e){e.value='terra@gyvunai.lt';}document.getElementById('ps-primink-go').click();setTimeout(function(){r({blokas:b.innerText.slice(0,500),err:(document.getElementById('ps-primink-err')||{}).textContent});},5000);},6000);})"
+   }
+  ]
+ },
+ "shots": {
+  "s1688_primink": {
+   "status": 201,
+   "url": "https://petshop.lt/product/eukanuba-veterinary-diets-dermatosis-fp-12kg/?svoris=20&cid=X5PuZTo6iTwR9o9sOteu&utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc",
+   "title": "Eukanuba Veterinary Diets Dermatosis FP 12kg - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "blokas": "Išsiuntėme patvirtinimo nuorodą į terra@gyvunai.lt. Paspauskite ją – ir priminimas įjungtas."
+   }
+  }
+ }
+}
