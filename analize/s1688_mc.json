@@ -1,0 +1,33 @@
+{
+ "v": "dep-095728",
+ "kurimas": 200,
+ "sid": 5941,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1688 mc",
+  "md5_pakartoti": "33d4756e88079996092f8ab767776ea6",
+  "l55": "return array( 'order_id' => $oid, 'prekes' => $prekes, 'nera' => $nera, 'suma' => $suma, 'data' => $ts ? $men[ (int) date( 'n', $ts ) ] . ' ' . (int) date( 'j', $ts ) . ' d.' : '', 'kasa' => self::url( $oid ) );",
+  "l30": "public static function grupe( $uid, $pid ) {",
+  "grupe_naud": [
+   "30: public static function grupe( $uid, $pid ) {",
+   "55: return array( 'order_id' => $oid, 'prekes' => $prekes, 'nera' => $nera, 'suma' => $suma, 'data' => $ts ? $men[ (int) date( 'n', $ts ) ] . ' ' . (int) date( 'j', $ts ) . ' d.' : '', 'kasa' => self::u",
+   "65: $g = ( $uid && $pid ) ? self::grupe( $uid, $pid ) : null;",
+   "89: // grupe() reikia pid iš tracking — imam bet kurią sekamą to užsakymo prekę",
+   "90: if ( ! $g ) { global $wpdb; $pid = (int) $wpdb->get_var( $wpdb->prepare( \"SELECT product_id FROM {$wpdb->prefix}ps_refill_tracking WHERE user_id=%d AND last_order_id=%d LIMIT 1\", $uid, $oid ) ); $g",
+   "111: $g = ( $u && $pid ) ? self::grupe( (int) $u->ID, $pid ) : null;",
+   "112: if ( ! $g ) { $pr = $pid ? wc_get_product( $pid ) : null; $g = array( 'prekes' => $pr ? array( array( 'pid' => $pid, 'pav' => $pr->get_name(), 'kiekis' => 1, 'kaina' => (float) wc_get_price_to_displ"
+  ],
+  "md5_sablonas": "85539fa04aa797dce4434826f10c7fb4",
+  "sablono_raktai": [
+   "prekes",
+   "data",
+   "suma",
+   "nera",
+   "kasa"
+  ],
+  "md5_relaunch": "9e9562780a2ef177f5435c4475f48581"
+ }
+}
