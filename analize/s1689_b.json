@@ -1,0 +1,380 @@
+{
+ "v": "dep-153909",
+ "kurimas": 200,
+ "sid": 5982,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689 b",
+  "brendu_n": 62,
+  "brendai_excl": {
+   "EXCL MEDITER": 47,
+   "EXCL HYPO": 43,
+   "VETOCANIS": 30,
+   "VETOQUINOL": 14,
+   "BIOVETA": 5,
+   "VETFARMAS": 1
+  },
+  "brendai_top": {
+   "NOBBY": 312,
+   "NOBLEZA": 262,
+   "HAPPET": 234,
+   "JOSERA": 177,
+   "HAP": 121,
+   "COMFY": 109,
+   "FLEXI": 83,
+   "GENIA": 82,
+   "CHURU": 79,
+   "LITTLE ONE": 71,
+   "JOSERA JOSI": 71,
+   "ECOMFY": 58,
+   "RIO": 50,
+   "EXCL MEDITER": 47,
+   "EXCL HYPO": 43
+  },
+  "opcijos": [
+   {
+    "option_name": "jetpack_connection_xmlrpc_errors",
+    "v": "a:1:{s:15:\"malformed_token\";a:1:{s:7:\"invalid\";a:7:{s:10:\"error_code\";s:15:\"malformed_token\";s:7:\"user_id\";s:7:\"invalid\";s:13:\"error_message\";s:26:\"Malformed token in request\";s:10:\"error_data\";a:7:{s:5:\"token\";s:40:\"9e230579fe694d7e86a4690a9a6f2ed852de43a6\";s:9:\"timestamp\";s:0:\"\";s:5:\"nonce\";s:0:\"\";s:9:\"body_hash\";s:0:\"\";s:6:\"method\";s:3:\"GET\";s:3:\"url\";s:186:\"petshop.lt/?rest_route=%2Fwccom-site%2Fv3%2Fstatus&ts=1782745056&token=9e230579fe694d7e86a4690a9a6f2ed852de43a6&signature=8d7278fcc9dde6906ec50c361666948e5f36534f5c4247c95d9a3eaeaf3d6c10\";s:9:\"signature\";s:64:\"8d7278fcc9dde6906ec50c3616"
+   },
+   {
+    "option_name": "petshop_vf_publish_last_run",
+    "v": "a:2:{s:4:\"when\";s:19:\"2026-09-16 07:00:55\";s:7:\"applied\";i:5;}"
+   },
+   {
+    "option_name": "petshop_vf_reprice_last_run",
+    "v": "a:2:{s:4:\"when\";s:19:\"2026-09-16 06:01:01\";s:7:\"applied\";i:1;}"
+   },
+   {
+    "option_name": "petshop_vf_stock_last_run",
+    "v": "a:2:{s:4:\"when\";s:19:\"2026-09-16 18:00:43\";s:7:\"applied\";i:1213;}"
+   },
+   {
+    "option_name": "ps_pmxi_vf_backup_20260902",
+    "v": "a:2:{i:0;a:8:{s:2:\"id\";s:1:\"5\";s:4:\"type\";s:3:\"url\";s:4:\"path\";s:127:\"https://petshop.lt/wp-content/petshop-xml-vf-fetcher.php?key=dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz\";s:4:\"name\";s:26:\"petshop-xml-vf-fetcher.php\";s:10:\"processing\";s:1:\"0\";s:9:\"executing\";s:1:\"0\";s:9:\"triggered\";s:1:\"1\";s:18:\"queue_chunk_number\";s:1:\"0\";}i:1;a:8:{s:2:\"id\";s:1:\"7\";s:4:\"type\";s:3:\"url\";s:4:\"path\";s:127:\"https://petshop.lt/wp-content/petshop-xml-vf-fetcher.php?key=dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz\";s:4:\"name\";s:26:\"petshop-xml-vf-fetcher.php\";s:10:\"pr"
+   },
+   {
+    "option_name": "ps_vf_feed_paskutinis",
+    "v": "a:7:{s:6:\"laikas\";s:19:\"2026-09-16 18:05:04\";s:2:\"ok\";b:1;s:6:\"klaida\";s:0:\"\";s:7:\"eilutes\";i:2369;s:6:\"baitai\";i:8264077;s:3:\"sek\";d:9;s:4:\"http\";i:200;}"
+   },
+   {
+    "option_name": "vf_block_allow_count",
+    "v": "1"
+   },
+   {
+    "option_name": "vf_data_diag",
+    "v": "a:1:{i:0;a:14:{s:10:\"_import_id\";s:1:\"5\";s:10:\"_data_type\";s:5:\"array\";s:2:\"id\";s:5:\"27465\";s:6:\"sku_id\";s:11:\"NOB78551-01\";s:12:\"product_name\";s:50:\"Nobby antkaklis su skarele, raudonas, 42 cm x 20mm\";s:5:\"brand\";s:5:\"NOBBY\";s:7:\"barcode\";s:12:\"403376602272\";s:8:\"category\";s:23:\"Kiti antkakliai šunims\";s:6:\"supply\";s:2:\"[]\";s:11:\"description\";s:215:\"PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij48aDQgc3R5bGU9ImNvbG9yOmJsYWNrICFpbXBvcnRhbnQ7Ij5UcnVtcGFzIHByZWvEl3MgYXByYcWheW1hczwvaDQ+PHN0eWxlPi5i ...[truncated]\";s:3:\"qty\";s:1:\"1\";s:6:\"images\""
+   },
+   {
+    "option_name": "vf_last_download",
+    "v": "a:6:{s:8:\"filename\";s:38:\"vetfarmas_response_20260602_142756.xml\";s:8:\"filepath\";s:103:\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/vetfarmas_response_20260602_142756.xml\";s:4:\"size\";i:8763642;s:5:\"count\";i:2222;s:8:\"duration\";d:11.57;s:4:\"time\";s:19:\"2026-06-02 17:27:56\";}"
+   }
+  ],
+  "kodas": [
+   {
+    "f": "wp-content/mu-plugins/petshop-analitika-langas.php",
+    "ln": 6,
+    "t": "* admin.php?page=ps-analitika (po petshop-reports). Ne skaičių lentelė, o blokai: skaičius + norma + VERDIKTAS + ką daryti."
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-analitika-langas.php",
+    "ln": 8,
+    "t": "* Blokai: Krepšeliai · Reklama (Ads) · Klientai · Pristatymas · Laiškai. Kol duomenų mažai (n < riba) — verdiktas „dar mažai duomenų“, ne spėjimas."
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-analitika-langas.php",
+    "ln": 9,
+    "t": "* v1.0.1: Reklamos blokas skaičiuoja tik nuo pirmo fakt užsakymo (T-0) — senos svetainės Ads išlaidos neįtraukiamos."
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-analitika-langas.php",
+    "ln": 116,
+    "t": "protected static function blokas( $pav, $b, $pastaba = '' ) {"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-analitika-langas.php",
+    "ln": 137,
+    "t": "echo '<p class=\"psa-p\">Kiekvienas blokas: skaičiai + norma + verdiktas + ką daryti. Žalia — nieko daryti nereikia. Slenksčiai pradiniai (Claude), taisomi.</p>';"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-analitika-langas.php",
+    "ln": 138,
+    "t": "self::blokas( 'Reklama (Google Ads)', self::reklama( $d ) );"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-analitika-langas.php",
+    "ln": 139,
+    "t": "self::blokas( 'Krepšeliai', self::krepseliai( $d ) );"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-analitika-langas.php",
+    "ln": 140,
+    "t": "self::blokas( 'Klientai ir marža', self::klientai( $d ) );"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-analitika-langas.php",
+    "ln": 141,
+    "t": "self::blokas( 'Pristatymas', self::pristatymas( $d ) );"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-analitika-langas.php",
+    "ln": 142,
+    "t": "self::blokas( 'Laiškų srautai', self::laiskai( $d ) );"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-rinkiniu-ataskaita.php",
+    "ln": 14,
+    "t": "*  - „Ka daryti\" blokai: kandidatai isimti / lyderiai pagal NUSTATYMU ribas;"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-rinkiniu-ataskaita.php",
+    "ln": 517,
+    "t": "echo '<h2>Prekės analizė</h2><div class=\"psru-blokas\">';"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-rinkiniu-ataskaita.php",
+    "ln": 782,
+    "t": "echo '<h2>Nustatymai</h2><div class=\"psru-blokas\">';"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-anketos-ataskaita.php",
+    "ln": 20,
+    "t": "* v2.2: Mitybos plano blokas buvo UZ ankstyvo return'o („duomenu nepakanka\"),"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-anketos-ataskaita.php",
+    "ln": 25,
+    "t": "* v2.1: perimti TRYS blokai is senojo ekrano „Augintiniu anketos izvalgos\""
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-av-dropship.php",
+    "ln": 21,
+    "t": "* Petshop AV Dropship v1.18 (H261) — AV BLOKAS: LIPDUKŲ SKAIČIUS, BE SVORIO, BENDRAS MANIFESTAS."
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-av-dropship.php",
+    "ln": 24,
+    "t": "* vienas su klientais, tik nurodyti kiek lipdukų. DABAR: blokas „Į AV sandėlį\""
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-av-dropship.php",
+    "ln": 32,
+    "t": "* laišku su kitais užsakymais\". DABAR kortelėje blokas „Į AV sandėlį — partija"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-av-dropship.php",
+    "ln": 598,
+    "t": ".ps-av-blokas { margin:12px 0; padding:10px 12px; border:1px dashed #2a5a8a; background:#f3f8fc; }"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-av-dropship.php",
+    "ln": 599,
+    "t": ".ps-av-blokas.ps-av-ne { border-color:#c46a00; background:#fbf3e6; }"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-av-dropship.php",
+    "ln": 752,
+    "t": "<div class=\"ps-av-blokas <?php echo $gali ? '' : 'ps-av-ne'; ?>\">"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-vartai.php",
+    "ln": 9,
+    "t": "*   blokerius (nuotrauka, aprasymas, kaina, EAN, likutis) ir, ju radęs,"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-vartai.php",
+    "ln": 128,
+    "t": "catch ( Throwable $e ) { /* zurnalas neprivalo blokuoti */ }"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-m8-food.php",
+    "ln": 96,
+    "t": "* jokio konkuruojancio pagrindinio maisto; <2 rezultatu -> tuscia (blokas nerodomas)."
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-ataskaitos-ui.php",
+    "ln": 822,
+    "t": ".psru-blokas{background:var(--korta);border:1px solid var(--linija);border-radius:6px;padding:14px 16px}"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-ataskaitos-ui.php",
+    "ln": 823,
+    "t": ".psru-blokas.bad{border-left:4px solid var(--bad)}"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-paruostu-ataskaita.php",
+    "ln": 196,
+    "t": "echo '<div class=\"psru-blokas\"><b>Paruoštų rinkinių ir DP pakų dar nėra.</b><p class=\"psru-pastaba\" style=\"margin-top:6px\">Ekranas pradės pildytis, kai atsiras bent vienas paruoštas MnM rinkinys arba „Daugiau=pigiau\""
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-paruostu-ataskaita.php",
+    "ln": 470,
+    "t": "echo '<h2>Kanibalizacijos analizė</h2><div class=\"psru-blokas bad\">';"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-paruostu-ataskaita.php",
+    "ln": 507,
+    "t": "echo '<div class=\"psru-blokas\" style=\"margin-bottom:10px\">';"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-sargas.php",
+    "ln": 244,
+    "t": "* tampa neskaitoma. <pre> blokas lygiavima apsaugo."
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 12,
+    "t": "*   4. Blokai renderinami is naujo su KIEKVIENU is tu payload'u ir lyginami"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 16,
+    "t": "* bloko tipas „items\", kurio zymejimas sutampa su sablonu byte-tiksliai."
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 131,
+    "t": "/* ================= KUNAS -> BLOKAI ================= */"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 133,
+    "t": "protected static function blokai( $kunas, $flow, $payload ) {"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 270,
+    "t": "$bl_a = self::blokai( $a['kunas'], $flow, $pl_a );"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 280,
+    "t": "$bl = self::blokai( $c['kunas'], $flow, $pl );"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 283,
+    "t": "/* skirtumai tik pastraipose; blokai, kurie dingsta (items,"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 305,
+    "t": "protected static function tekstai( $blokai ) {"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 307,
+    "t": "foreach ( $blokai as $b ) {"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 313,
+    "t": "protected static function ideti( $blokai, $nr, $tekstas ) {"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 315,
+    "t": "foreach ( $blokai as $i => $b ) {"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 317,
+    "t": "if ( $c === $nr ) { $blokai[ $i ]['text'] = $tekstas; return $blokai; }"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 320,
+    "t": "return $blokai;"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 324,
+    "t": "* PILNA saka BLOKUOJA — ji atitinka realu siuntima su pilnu payload'u."
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 326,
+    "t": "* bloku modelis ju neatkuria simbolis i simboli, bet laiskas nuo to"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 334,
+    "t": "$nauja = Petshop_Laiskai_Turinys::blokai_i_html( $isk['blocks'], $s['payload'] );"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 365,
+    "t": "$eil['blokai'] = count( $isk['blocks'] );"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai-importas.php",
+    "ln": 324,
+    "t": "* PILNA saka BLOKUOJA — ji atitinka realu siuntima su pilnu payload'u."
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-kalendorius.php",
+    "ln": 14,
+    "t": "* Akciju lange (S755 blokas „LT KALENDORIUS\"). Antro tokio pat rasymas"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-akcijos.php",
+    "ln": 1195,
+    "t": "echo '<div class=\"blokas\"><div class=\"antr\">Akcija</div>';"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-akcijos.php",
+    "ln": 1201,
+    "t": "echo '<div class=\"blokas\"><div class=\"antr\">Kam taikoma</div>';"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-akcijos.php",
+    "ln": 1300,
+    "t": "echo '<div class=\"blokas\"><div class=\"antr\">Nuolaida</div>';"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-akcijos.php",
+    "ln": 1313,
+    "t": "echo '<div class=\"blokas\"><div class=\"antr\">Laikotarpis</div>';"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-akcijos.php",
+    "ln": 1337,
+    "t": "echo '<div class=\"blokas\"><div class=\"antr\">Pastaba</div>';"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-akcijos.php",
+    "ln": 1476,
+    "t": ".psakc-kaire .blokas{background:#fff;border:1px solid #d3d8d2;border-radius:9px;padding:14px 16px;margin-bottom:12px}"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-uzsakymu-ivykiai.php",
+    "ln": 32,
+    "t": "*       ::html( $order_id )                              → blokas skydeliui"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-uzsakymu-ivykiai.php",
+    "ln": 37,
+    "t": "*     užsakymas / sritis / veiksmas. Skydelio blokas — html()."
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-uzsakymu-ivykiai.php",
+    "ln": 249,
+    "t": "/** Blokas skydeliui: paskutiniai 30 užsakymo įvykių. */"
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai.php",
+    "ln": 4,
+    "t": "* Description: Laisku turinys (antraste, blokai, priezastis) gyvena DB, o ne PHP faile. Maketas lieka kode. Nera irašo — krenta atgal i esama sablona."
+   },
+   {
+    "f": "wp-content/mu-plugins/petshop-laiskai.php",
+    "ln": 168,
+    "t": "$k[] = 'Reikia bent vieno turinio bloko';"
+   }
+  ],
+  "kodas_n": 406,
+  "e": ""
+ }
+}
