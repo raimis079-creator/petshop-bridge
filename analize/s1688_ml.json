@@ -1,0 +1,62 @@
+{
+ "v": "dep-105629",
+ "kurimas": 200,
+ "sid": 5954,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "laukai": {
+  "v": "S1688 ml",
+  "PS_HERO_ANTR": 200,
+  "PS_HERO_KODEL": 200,
+  "patch": 200,
+  "cols_n": 20,
+  "consent_n": 562,
+  "consent_be_istorijos": 86,
+  "consent_seg": [
+   {
+    "segmentas": "calc",
+    "n": "71"
+   },
+   {
+    "segmentas": "generic",
+    "n": "420"
+   },
+   {
+    "segmentas": "product",
+    "n": "71"
+   }
+  ],
+  "consent_prekes": {
+   "ok": 98,
+   "nera_sandelyje": 2,
+   "nepublish": 0,
+   "gone": 0
+  },
+  "consent_prekiu_n": 100,
+  "pamegtos_n": 33
+ },
+ "kurti": {
+  "v": "S1688 ml",
+  "aktyviu": 1,
+  "calc": {
+   "kurti": 200,
+   "id": "yPwEGn",
+   "err": null,
+   "send": "200 \"Campaign started to send\""
+  },
+  "product": {
+   "kurti": 200,
+   "id": "zp6GJy",
+   "err": null,
+   "send": "200 \"Campaign started to send\""
+  },
+  "generic": {
+   "kurti": 200,
+   "id": "AD65Gl",
+   "err": null,
+   "send": "200 \"Campaign started to send\""
+  }
+ }
+}
