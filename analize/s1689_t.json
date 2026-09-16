@@ -1,0 +1,30 @@
+{
+ "v": "dep-165843",
+ "kurimas": 200,
+ "sid": 6000,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689 t",
+  "blocked_now": "\t * Blocked brand'ai — nei vienas vf_should_import nepraeina.\n\t * Medikamentai, akvariumo chemija, veterinariniai.\n\t */\n\tprivate array $blocked_now_brands = [\n\t\t'AQUAEL', 'ARISTA LATIN', 'BAVARO', 'BIOWET DRWAL', 'BIOWET-PULAW',\n\t\t'CLASSEUR', 'COSYFLOCK', 'CP-PHARMA', 'ELANCO',\n\t\t'HUVEPHARMA', 'KRKA', 'MED. EQUIOM.', 'MSD',\n\t\t'MSSCHIPPER', 'PERFECTO', 'RICHTER', 'RIO', 'VETFARMAS',\n\t\t'VETVIVA RICH', 'ZOETIS',\n\t];\n\n\t/**\n\t * Review later — atmesti dabar, peržiūrėti po launch'o.\n\t */\n\tprivate array $review_later_brands = [ 'JOSERA HELP' ];\n",
+  "skip_cat": [
+   "21: *   - vf_should_import() — pilna filter logika (blocked/medication/kainos ribos/etc)",
+   "47: private array $excluded_skus = [ 'VET1400' ];",
+   "52: private array $medication_keywords = [",
+   "91: * 132 įrašai. NEMAPINTI VF cat'ai (medication, terariumai, chemija) → skip importo.",
+   "248: // SKIP (intentionally unmapped):",
+   "250: // 'Inj.pirmuonis veik.spec.paskirties prep.' — medication-adjacent",
+   "297: if ( in_array( $sku, $this->excluded_skus, true ) ) {",
+   "302: foreach ( $this->medication_keywords as $kw ) {",
+   "304: return [ 'import' => false, 'reason' => 'medication_blocked' ];",
+   "312: return [ 'import' => false, 'reason' => 'pauks_blocked' ];",
+   "315: return [ 'import' => false, 'reason' => 'zirg_blocked' ];"
+  ],
+  "liecia_feed_faila": [
+   "wp-content/mu-plugins/petshop-vf-feed.php",
+   "wp-content/petshop-xml-vf-fetcher.php"
+  ]
+ }
+}
