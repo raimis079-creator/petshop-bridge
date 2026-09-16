@@ -1,0 +1,121 @@
+{
+ "v": "dep-165504",
+ "kurimas": 200,
+ "sid": 5999,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689 s",
+  "importai": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "type": "file",
+    "path": "/wpallimport/files/goods_clean.xml",
+    "fn": "",
+    "registered_on": "2026-05-27 11:14:21",
+    "imported": "0",
+    "failed": "0"
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "type": "url",
+    "path": "https://zaliojibanga.lt/integrations/services/products.php?key=bAF0OY6Sz9H3AgAF",
+    "fn": "",
+    "registered_on": "2026-09-16 15:02:03",
+    "imported": "113",
+    "failed": "0"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "type": "url",
+    "path": "https://zaliojibanga.lt/integrations/services/stocks.php?key=bAF0OY6Sz9H3AgAF",
+    "fn": "",
+    "registered_on": "2026-09-16 16:02:50",
+    "imported": "1067",
+    "failed": "0"
+   },
+   {
+    "id": "5",
+    "name": "vf-feed.xml",
+    "type": "file",
+    "path": "/wpallimport/files/vf-feed.xml",
+    "fn": "",
+    "registered_on": "2026-09-16 03:32:00",
+    "imported": "224",
+    "failed": "0"
+   },
+   {
+    "id": "7",
+    "name": "vf-feed.xml",
+    "type": "file",
+    "path": "/wpallimport/files/vf-feed.xml",
+    "fn": "",
+    "registered_on": "2026-09-16 16:20:08",
+    "imported": "0",
+    "failed": "0"
+   }
+  ],
+  "failai": {
+   "petshop-vf-cache.xml": {
+    "MB": 7.88,
+    "laikas": "2026-09-16 16:21",
+    "vetdiet": 0
+   },
+   "vetfarmas_response_20260602_142756.xml": {
+    "MB": 8.36,
+    "laikas": "2026-06-02 14:27",
+    "vetdiet": 46
+   },
+   "goods_clean.xml": {
+    "MB": 3.71,
+    "laikas": "2026-05-27 09:42",
+    "vetdiet": 0
+   },
+   "vf-feed.xml": {
+    "MB": 7.88,
+    "laikas": "2026-09-16 16:21",
+    "vetdiet": 0
+   },
+   "zb_test_products_1_.xml": {
+    "MB": 0,
+    "laikas": "2026-06-03 11:14",
+    "vetdiet": 0
+   }
+  },
+  "konst": {
+   "VF_API_URL": "https://admin.b2b.vetfarmas.lt/api/products/xml/get/auth",
+   "ZB_API_URL": "nera",
+   "VF_USERNAME": "nera"
+  },
+  "fetcher_failai": [
+   "petshop-xml-vf-fetcher.php"
+  ],
+  "fetcher_url": [
+   "*   URL: https://dev.avesa.lt/wp-content/petshop-xml-vf-fetcher.php?key=KEY_HERE",
+   "*   3. WP All Import: pakeisti URL į fetcher URL su ?key=...",
+   "const VF_API_URL  = 'https://admin.b2b.vetfarmas.lt/api/products/xml/get/auth';",
+   "$ch = curl_init();",
+   "curl_setopt( $ch, CURLOPT_URL, VF_API_URL );",
+   "curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );",
+   "curl_setopt( $ch, CURLOPT_USERPWD, VF_USERNAME . ':' . VF_PASSWORD );",
+   "curl_setopt( $ch, CURLOPT_HTTPAUTH, CURLAUTH_BASIC );",
+   "curl_setopt( $ch, CURLOPT_TIMEOUT, API_TIMEOUT );",
+   "curl_setopt( $ch, CURLOPT_CONNECTTIMEOUT, 10 );",
+   "curl_setopt( $ch, CURLOPT_FOLLOWLOCATION, true );",
+   "curl_setopt( $ch, CURLOPT_MAXREDIRS, 3 );",
+   "curl_setopt( $ch, CURLOPT_ENCODING, 'gzip,deflate' );",
+   "$xml = curl_exec( $ch );",
+   "$http_code = curl_getinfo( $ch, CURLINFO_HTTP_CODE );",
+   "$curl_err  = curl_error( $ch );",
+   "curl_close( $ch );",
+   "error_log( \"[VF Fetcher] API failure: HTTP {$http_code}, curl error: {$curl_err}\" );",
+   "if ( $curl_err ) {",
+   "echo \"cURL error: \" . $curl_err . \"\\n\";"
+  ]
+ }
+}
