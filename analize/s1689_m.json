@@ -1,0 +1,80 @@
+{
+ "v": "dep-162218",
+ "kurimas": 200,
+ "sid": 5993,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689 m",
+  "disc": 0.15,
+  "markup": {
+   "markup": 0.43,
+   "rule": "BRAND:Exclusion Diet"
+  },
+  "kainos": {
+   "INPS06": {
+    "savikaina_xml": 44.3,
+    "regular": 65.19,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   },
+   "INPM11": {
+    "savikaina_xml": 53.99,
+    "regular": 79.49,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   },
+   "INPA11": {
+    "savikaina_xml": 65,
+    "regular": 95.69,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   },
+   "HEPM11": {
+    "savikaina_xml": 58.41,
+    "regular": 85.99,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   },
+   "IP37": {
+    "savikaina_xml": 3.06,
+    "regular": 4.59,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   },
+   "INPS02": {
+    "savikaina_xml": 16.89,
+    "regular": 24.89,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   }
+  },
+  "find_by_sku_yra": true,
+  "sku": {
+   "INPS06": {
+    "wc_id": 18551,
+    "statusas": "draft",
+    "pav": "Exclusion Intestinal Monoprotein mažų veislių šunų maistas s",
+    "vf_sku": "",
+    "ranka_isimta": ""
+   },
+   "INPM11": {
+    "wc_id": 18545,
+    "statusas": "draft",
+    "pav": "Exclusion Intestinal Monoprotein sausas šunų maistas su kiau",
+    "vf_sku": "",
+    "ranka_isimta": ""
+   },
+   "INPA11": {
+    "wc_id": 18548,
+    "statusas": "draft",
+    "pav": "Exclusion Intestinal Monoprotein sausas šuniukų maistas su k",
+    "vf_sku": "",
+    "ranka_isimta": ""
+   },
+   "HEPM11": {
+    "wc_id": 18623,
+    "statusas": "draft",
+    "pav": "Exclusion Hepatic dietinis sausas šunų maistas su kiauliena,",
+    "vf_sku": "",
+    "ranka_isimta": ""
+   }
+  }
+ }
+}
