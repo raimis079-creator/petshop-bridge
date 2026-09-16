@@ -1,0 +1,38 @@
+{
+ "v": "dep-103011",
+ "kurimas": 200,
+ "sid": 5953,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "laukas": {
+  "v": "S1688 mk",
+  "gyv": 200,
+  "patch": 200,
+  "cols_n": 18,
+  "status": "active"
+ },
+ "kurti": {
+  "v": "S1688 mk",
+  "aktyviu": 1,
+  "calc": {
+   "kurti": 200,
+   "id": "o2ZqWY",
+   "err": null,
+   "send": "200 \"Campaign started to send\""
+  },
+  "product": {
+   "kurti": 200,
+   "id": "pYZ0WQ",
+   "err": null,
+   "send": "200 \"Campaign started to send\""
+  },
+  "generic": {
+   "kurti": 200,
+   "id": "qxQvW7",
+   "err": null,
+   "send": "200 \"Campaign started to send\""
+  }
+ }
+}
