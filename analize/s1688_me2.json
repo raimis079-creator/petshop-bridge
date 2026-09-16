@@ -1,0 +1,110 @@
+{
+ "v": "dep-100508",
+ "kurimas": 200,
+ "sid": 5945,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "po": {
+  "v": "S1688 me",
+  "transientai": 1,
+  "payload": {
+   "email": "terra@gyvunai.lt",
+   "pid": 12466,
+   "kg": 20,
+   "busena": "puse",
+   "cid": "X5PuZTo6iTwR9o9sOteu",
+   "d": {
+    "min": 54,
+    "max": 60,
+    "vid": 57
+   }
+  },
+  "url": "https://petshop.lt/?ps_primink=Q2SzfqChejr4crqGLby4&z=bbbca74c5b3f647f220f3074",
+  "http": "302 → https://petshop.lt/product/eukanuba-veterinary-diets-dermatosis-fp-12kg/?ps_primink_ok=1",
+  "uid": 44,
+  "refill": {
+   "product_id": "12466",
+   "last_order_id": "0",
+   "last_purchase_date": "2026-09-16",
+   "purchase_count": "0",
+   "avg_interval_days": "57",
+   "predicted_empty_date": "2026-10-15",
+   "confidence": "0.50",
+   "status": "active",
+   "feedback_cycle": "relaunch"
+  },
+  "consent": [
+   {
+    "field": "similar_products_optout",
+    "from_value": "",
+    "to_value": "0",
+    "source": "relaunch_calc_email_link",
+    "changed_at": "2026-09-16 13:06:14"
+   },
+   {
+    "field": "marketing_consent",
+    "from_value": "",
+    "to_value": "true",
+    "source": "footer_form",
+    "changed_at": "2026-08-31 07:34:04"
+   }
+  ],
+  "usermeta": {
+   "eligible": "1",
+   "optout": "0",
+   "weight": [
+    {
+     "weight_kg": 20,
+     "source": "email_calc_click",
+     "confidence": "medium",
+     "product_id": 12466,
+     "cid": "X5PuZTo6iTwR9o9sOteu",
+     "at": "2026-09-16 10:04:35"
+    },
+    {
+     "weight_kg": 20,
+     "source": "reminder_optin",
+     "confidence": "high",
+     "product_id": 12466,
+     "cid": "X5PuZTo6iTwR9o9sOteu",
+     "at": "2026-09-16 10:06:14"
+    }
+   ]
+  },
+  "relaunch": {
+   "klik_n": "5",
+   "pask_svoris": "20.0",
+   "primink_at": "2026-09-16 10:06:14",
+   "primink_kg": "20.0",
+   "primink_busena": "puse"
+  },
+  "ivykiai": [
+   {
+    "laikas": "2026-09-16 10:06:14",
+    "tipas": "reminder_optin",
+    "raktas": "12466",
+    "raktas2": "relaunch",
+    "reiksme": "29",
+    "kampanija": "relaunch"
+   },
+   {
+    "laikas": "2026-09-16 10:04:35",
+    "tipas": "email_calc_click",
+    "raktas": "12466",
+    "raktas2": "calc",
+    "reiksme": "20",
+    "kampanija": "relaunch"
+   },
+   {
+    "laikas": "2026-09-16 09:13:56",
+    "tipas": "email_calc_click",
+    "raktas": "12466",
+    "raktas2": "calc",
+    "reiksme": "10",
+    "kampanija": "relaunch"
+   }
+  ]
+ }
+}
