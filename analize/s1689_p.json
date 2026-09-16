@@ -1,0 +1,82 @@
+{
+ "v": "dep-163306",
+ "kurimas": 200,
+ "sid": 5996,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "DEP": {
+  "v": "S1689 p",
+  "f": "DEP",
+  "ankeris": 1,
+  "irasyta": true,
+  "md5": "4beebfb43f4be77795d307b10e455b09",
+  "hb": 200
+ },
+ "TIK": {
+  "v": "S1689 p",
+  "f": "TIK",
+  "markup": {
+   "markup": 0.35,
+   "rule": "BRAND:Exclusion Diet"
+  },
+  "disc": 0.15,
+  "kainos": {
+   "INPS06": {
+    "xml": 44.3,
+    "savikaina": 37.66,
+    "regular": 61.59,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   },
+   "INPS02": {
+    "xml": 16.89,
+    "savikaina": 14.36,
+    "regular": 23.49,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   },
+   "INPM11": {
+    "xml": 53.99,
+    "savikaina": 45.89,
+    "regular": 74.99,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   },
+   "INPA11": {
+    "xml": 65,
+    "savikaina": 55.25,
+    "regular": 90.29,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   },
+   "HEPM11": {
+    "xml": 58.41,
+    "savikaina": 49.65,
+    "regular": 81.19,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   },
+   "IP37": {
+    "xml": 3.06,
+    "savikaina": 2.6,
+    "regular": 4.29,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   },
+   "IP20": {
+    "xml": 1.94,
+    "savikaina": 1.65,
+    "regular": 2.69,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   },
+   "CINP01": {
+    "xml": 16.77,
+    "savikaina": 14.25,
+    "regular": 23.29,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   },
+   "CINP85": {
+    "xml": 1.22,
+    "savikaina": 1.04,
+    "regular": 1.69,
+    "rule": "BRAND:Exclusion Diet +DISC:15%"
+   }
+  }
+ }
+}
