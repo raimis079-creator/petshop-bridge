@@ -1,0 +1,29 @@
+{
+ "v": "dep-173228",
+ "kurimas": 200,
+ "sid": 6007,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689 aa",
+  "fetcher": {
+   "user": "ter***lt [16]",
+   "pass": "Sla***B* [14]"
+  },
+  "wpconfig": {
+   "user": "ter***lt [16]",
+   "pass": "Sla***B* [14]",
+   "url": "https://admin.b2b.vetfarmas.lt/api/products/xml/get/auth"
+  },
+  "tas_pats_user": true,
+  "tas_pats_pass": true,
+  "curl_wpconfig": {
+   "http": 200,
+   "rows": 2369,
+   "vetdiet": 0,
+   "inps06": 0
+  }
+ }
+}
