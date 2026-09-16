@@ -1,0 +1,42 @@
+{
+ "v": "dep-145521",
+ "kurimas": 200,
+ "sid": 5979,
+ "data": {
+  "img_suo.txt": {
+   "id": 35984,
+   "status": 201
+  },
+  "img_maisas-dubenelis.txt": {
+   "id": 35985,
+   "status": 201
+  }
+ },
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "siusti": {
+  "v": "S1688 mq",
+  "img": {
+   "suo": "https://petshop.lt/wp-content/uploads/ps-relaunch/suo.jpg",
+   "maisas": "https://petshop.lt/wp-content/uploads/ps-relaunch/maisas.jpg"
+  },
+  "puslapiai": [
+   "https://petshop.lt/kontaktai/",
+   "https://petshop.lt/pristatymas/",
+   "https://petshop.lt/grazinimas/"
+  ],
+  "PS_HERO_EUR2N": 200,
+  "PS_HERO_D1": "buvo",
+  "PS_HERO_D3": "buvo",
+  "patch": 200,
+  "kamp": {
+   "kurti": 200,
+   "id": "qxQN6G",
+   "err": null
+  },
+  "send": 200,
+  "html_kb": 8.5
+ }
+}
