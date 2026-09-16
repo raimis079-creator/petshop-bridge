@@ -1,5 +1,30 @@
 {
- "v": "dep-130938",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "v": "dep-131403",
+ "kurimas": 200,
+ "sid": 5965,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "S1688 d",
+  "po": {
+   "18545": "INPM11 stock=0 sand=vf st=outofstock",
+   "18548": "INPA11 stock=0 sand=vf st=outofstock",
+   "18551": "INPS06 stock=0 sand=vf st=outofstock",
+   "18623": "HEPM11 stock=0 sand=vf st=outofstock"
+  },
+  "vf_opts": [
+   "vf_data_diag | a:1:{i:0;a:14:{s:10:\"_import_id\";s:1:\"5\";s:10:\"_data_type\";s:5:\"array\";s:2:\"id\";s:5:\"27465\";s:6:\"sku_id\";s:11:\"NOB78551-",
+   "ps_pmxi_vf_backup_20260902 | a:2:{i:0;a:8:{s:2:\"id\";s:1:\"5\";s:4:\"type\";s:3:\"url\";s:4:\"path\";s:127:\"https://petshop.lt/wp-content/petshop-xml-vf-fetch",
+   "ps_vf_feed_paskutinis | a:7:{s:6:\"laikas\";s:19:\"2026-09-16 16:05:05\";s:2:\"ok\";b:1;s:6:\"klaida\";s:0:\"\";s:7:\"eilutes\";i:2369;s:6:\"baitai\";i:826407"
+  ],
+  "vf_files": [
+   "/petshop-vf-cache.xml 8070K 09-16 13:05",
+   "/vetfarmas_response_20260602_142756.xml 8558K 06-02 14:27",
+   "/petshop-private-logs/vf-dup-clean-backup.csv 0K 06-11 10:39",
+   "/wpallimport/files/vf-feed.xml 8070K 09-16 13:05"
+  ],
+  "obs_intest": []
+ }
 }
