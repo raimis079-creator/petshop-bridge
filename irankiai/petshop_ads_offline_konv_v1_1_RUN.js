@@ -1,7 +1,7 @@
-// petshop_ads_offline_konv_v1_1_RUN.js (S1677) — WC apmokėti užsakymai su gclid → Google Ads offline konversijos.
+// petshop_ads_offline_konv_v1_1_RUN.js (S1687) — PATAISA: laiko juosta Europe/Vilnius (Google atmetė visas eilutes: „Conversion Time requires a timezone“; +03:00 iš JSON įkėlime dingsta) — WC apmokėti užsakymai su gclid → Google Ads offline konversijos.
 // Šaltinis: petshop.lt mu-plugin petshop-ads-offline v1.1 (JSON). Paleisti kasdien (Schedule: Daily, ~06:00).
 // Prieš pirmą paleidimą UI turi būti sukurtas konversijos veiksmas "Import from clicks" pavadinimu KONV.
-var URL  = 'https://petshop.lt/?ps_ads_offline=AiedogHzttJiKz8HZgLFUvMdke546YIc&dienos=7';
+var URL  = 'https://petshop.lt/?ps_ads_offline=AiedogHzttJiKz8HZgLFUvMdke546YIc&dienos=3';
 var KONV = 'Įkėlimas neprisijungus'; // UI sukurtas pavadinimas (S1677)
 
 function main() {
@@ -12,13 +12,13 @@ function main() {
   if (!d.n) { return; }
   var up = AdsApp.bulkUploads().newCsvUpload(
     ['Google Click ID', 'Conversion Name', 'Conversion Time', 'Conversion Value', 'Conversion Currency'],
-    { moneyInMicros: false });
+    { moneyInMicros: false, timeZone: 'Europe/Vilnius' });
   up.forOfflineConversions();
   d.eil.forEach(function (e) {
-    up.append({ 'Google Click ID': e.gclid, 'Conversion Name': KONV, 'Conversion Time': e.laikas,
+    up.append({ 'Google Click ID': e.gclid, 'Conversion Name': KONV, 'Conversion Time': e.laikas.replace(/([+-]\d\d:\d\d|Z)$/, ''),
                 'Conversion Value': e.verte, 'Conversion Currency': e.valiuta });
     Logger.log('#' + e.uzs + '  ' + e.laikas + '  ' + e.verte + ' ' + e.valiuta);
   });
   up.apply();
-  Logger.log('Įkelta eilučių: ' + d.n + '. Rezultatas (dubliai/klaidos): Tools → Bulk actions → Uploads. Ads konversijos rodomos po ~3 val.');
+  Logger.log('Įkelta eilučių: ' + d.n + ' (laiko juosta Europe/Vilnius). Rezultatas: Tikslai → Konversijos → Įkėlimai. Ads konversijos rodomos po ~3 val.');
 }
