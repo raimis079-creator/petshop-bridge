@@ -1,0 +1,78 @@
+{
+ "v": "dep-172150",
+ "kurimas": 200,
+ "sid": 6004,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689 x",
+  "sn": {
+   "92 VetFarmas inventorizacija v3 act=0": [],
+   "94 SKU \\u2192 EAN matching i\\u0161 VetFarmas XML act=0": [
+    "*   /?sku_ean=1                    \\u2014 dry run (parodo k\\u0105 darys, neguta\\u0161o)",
+    "*   /?sku_ean=1&confirm=1          \\u2014 realiai priskirti",
+    "*   /?sku_ean=1&brand=JOSERA       \\u2014 tik vienas brendas",
+    "echo '***'\\u0105, kad atsi\\u0173st\\u0173 fail\\u0105.</p>';",
+    "echo '***' . ( $brand_filter ? '&brand='***'' ) . '***' . count( $matches ) . ' EAN</a></p>';"
+   ],
+   "95 Vetocanis matching pagal pavadinim\\u0105 act=0": [
+    "*   /?vetocanis_match=1                       \\u2014 parodo s\\u0105ra\\u0161\\u0105 su pasirinkimais",
+    "*   /?vetocanis_match=1&apply=ID:VF_SKU,...   \\u2014 pritaiko pasirinkimus",
+    "echo '***';",
+    "window.location.href = \"?vetocanis_match=1&apply=\" + encodeURIComponent(pairs.join(\",\"));"
+   ],
+   "96 VetFarmas API helper act=0": [
+    "*   /?vf_helper=ping       - patikrina ar credentials veikia",
+    "*   /?vf_helper=download   - atsisiun\\u010dia XML \\u012f /uploads/ (perra\\u0161o sen\\u0105)",
+    "*   /?vf_helper=status     - parodo paskutinio download'o info",
+    "echo '***';",
+    "echo '***'o info</li>';"
+   ],
+   "98 vf_desc_peek act=0": [
+    "*   /?vf_desc_peek=1",
+    "*   /?vf_desc_peek=1&count=10   - daugiau prekiu"
+   ],
+   "101 vf_parser_v3 act=0": [
+    "if ( preg_match( '***', $cat ) ) return 'konservai';"
+   ],
+   "105 EAN normalizacija — _global_unique_id 13→12 skaitm. act=0": [
+    "*   /?ean_normalize=1                              — DRY RUN (parodo kas bus daroma)",
+    "*   /?ean_normalize=1&confirm=YES_NORMALIZE        — realiai pritaiko",
+    "*   /?ean_normalize=1&log=1                        — peržiūrėti log'ą po pritaikymo",
+    "*   /?ean_normalize=1&rollback=YES_RESTORE         — atstatyti iš _was_13 backup'o",
+    "$edit_url = admin_url( 'post.php?post=' . $entry['id'] . '&action=edit' );",
+    "$edit_url = admin_url( 'post.php?post=' . $c['ID'] . '&action=edit' );",
+    "echo '***' . $confirm_required . '***' . $total . ' prekės)</a></p>';",
+    "echo '***';",
+    "echo '***'ą</a></li>';",
+    "echo '***'ą iš naujo (turi rodyti 0 prekių su 13 skaitm.)</a></li>';"
+   ],
+   "161  VF Brands List act=0": [
+    "* URL: /?vf_brands_list=1"
+   ],
+   "163 VF Raw XML Sample act=0": [
+    "* URL: /?vf_raw_sample=1"
+   ],
+   "190 VF Price Repair v2 act=0": [
+    "*   ?vf_price_repair=1              -> DRY-RUN",
+    "*   ?vf_price_repair=1&confirm=TAIP -> VYKDYMAS",
+    "$out .= \"<p style='font-size:14px;'><strong>DRY-RUN.</strong> Rasta taisytinu: \" . count( $rows ) . \". Vykdymui: <code>?vf_price_repair=1&amp;confirm=TAIP</co"
+   ],
+   "193 Petshop SKU Supplier Info Lookup v1 (prekiu savikainai ieskoti) act=0": [
+    "*   https://dev.avesa.lt/?petshop_sku_info=2.00914",
+    "wp_die( '***' );",
+    "echo \"Admin URL:     \" . admin_url( \"post.php?post={$post_id}&action=edit\" ) . \"\\n\\n\";"
+   ],
+   "1005 Exclusion HY Feeding v1 (Vetfarmas OCR + PL HTML) act=0": [],
+   "1008 Exclusion NG Feeding v1 (Vetfarmas OCR + IT razioni) act=0": [],
+   "5986 TEMP PS dep-155411 act=0": [],
+   "5987 TEMP PS dep-155551 act=0": [],
+   "5998 TEMP PS dep-164059 act=0": [],
+   "6004 TEMP PS dep-172150 act=1": [
+    "foreach($rows as $r){ $out=array(); foreach(explode(\"\\n\",$r['code'***'~vetfarmas\\.lt|api/|CURLOPT_URL|CURLOPT_POST|CURLOPT_HTTPHEADER|\\?[a-z_]+=~i'***'[^']{20"
+   ]
+  }
+ }
+}
