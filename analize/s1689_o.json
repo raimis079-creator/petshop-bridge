@@ -1,0 +1,49 @@
+{
+ "v": "dep-162846",
+ "kurimas": 200,
+ "sid": 5995,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689 o",
+  "test": {
+   "xml": 44.3,
+   "po_nuolaidos": 37.654999999999994,
+   "disc": 0.15
+  },
+  "vfi": [
+   "24: * v1.5.6 (2026-06-10) pakeitimai (S86 — VF kaina seka savikaina):",
+   "28: *   taisykles; pasikeitus savikainai — persiskaiciuoti.",
+   "31: *     VF naudoja 'kaina = taisykles(savikaina)' patikra KIEKVIENO importo metu:",
+   "33: *     skiriasi nuo esamos kainos (churn guard). Priezastis: _vf_cost_xml",
+   "35: *     savikainu drifta tarp importu. Self-healing modelis atitinka principa",
+   "91: *   _vf_cost                       base_price po supplier discount (BE PVM)",
+   "93: *   _vf_cost_xml                   original base_price is XML",
+   "152: $vf_cost_xml    = (float)  get_post_meta( $post_id, '_vf_cost_xml', true );",
+   "290: $real_cost = $pricing->apply_supplier_discount( $vf_cost_xml, $brand_normalized );",
+   "295: update_post_meta( $matched_id, '_vf_cost', $real_cost );",
+   "297: update_post_meta( $matched_id, '_vf_cost_xml', $vf_cost_xml );",
+   "364: $real_cost = $pricing->apply_supplier_discount( $vf_cost_xml, $brand_normalized );",
+   "369: update_post_meta( $post_id, '_vf_cost', $real_cost );",
+   "371: update_post_meta( $post_id, '_vf_cost_xml', $vf_cost_xml );",
+   "447: // 5. Kainodara (v1.5.6, S86 — kaina seka savikaina, self-healing)",
+   "476: // Perduodame XML kainas (be discount), klase pati paskaiciuoja real_cost.",
+   "525: // else: locked -> kaina nelieciama, atnaujinta tik savikaina (_vf_cost auksciau)."
+  ],
+  "pvz": {
+   "id": "20517",
+   "sku": "NGCKCW85",
+   "xml": "1.1",
+   "personal_xml": "1.1",
+   "vf_cost": "0.935",
+   "vf_personal_cost": "0.935",
+   "disc": "0.15",
+   "cost_price": "",
+   "regular": "1.53",
+   "rule": "BRAND:Exclusion +DISC:15%"
+  },
+  "pvz_sources": []
+ }
+}
