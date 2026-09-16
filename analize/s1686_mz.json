@@ -1,0 +1,149 @@
+{
+ "v": "dep-083548",
+ "kurimas": 200,
+ "sid": 5929,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "laukai": {
+  "v": "S1686 mz",
+  "buvo": [],
+  "sukurta": {
+   "PS_HERO_SEG": "200 \"e59Mzx\"",
+   "PS_HERO_PAV": "200 \"b6RMA7\"",
+   "PS_HERO_KAINA": "200 \"e7LMBw\"",
+   "PS_HERO_IMG": "200 \"b86gDl\"",
+   "PS_HERO_URL": "200 \"e9QjEP\"",
+   "PS_HERO_KG1": "200 \"e0VMr7\"",
+   "PS_HERO_EUR1": "200 \"egLy99\"",
+   "PS_HERO_INFO1": "200 \"ejqB9W\"",
+   "PS_HERO_U1": "200 \"bkZg0x\"",
+   "PS_HERO_KG2": "200 \"el509l\"",
+   "PS_HERO_EUR2": "200 \"bmQk9p\"",
+   "PS_HERO_INFO2": "200 \"enrl94\"",
+   "PS_HERO_U2": "200 \"boQmgz\"",
+   "PS_HERO_KG3": "200 \"epQnj1\"",
+   "PS_HERO_EUR3": "200 \"bqYok3\"",
+   "PS_HERO_INFO3": "200 \"erRplw\"",
+   "PS_HERO_U3": "200 \"avowpV\""
+  },
+  "dabar": [
+   "PS_HERO_SEG=e59Mzx",
+   "PS_HERO_PAV=b6RMA7",
+   "PS_HERO_IMG=b86gDl",
+   "PS_HERO_URL=e9QjEP",
+   "PS_HERO_KG1=e0VMr7",
+   "PS_HERO_EUR1=egLy99",
+   "PS_HERO_INFO1=ejqB9W",
+   "PS_HERO_U2=boQmgz",
+   "PS_HERO_KAINA=e7LMBw",
+   "PS_HERO_EUR2=bmQk9p",
+   "PS_HERO_U1=bkZg0x",
+   "PS_HERO_KG2=el509l",
+   "PS_HERO_INFO2=enrl94",
+   "PS_HERO_EUR3=bqYok3",
+   "PS_HERO_INFO3=erRplw",
+   "PS_HERO_U3=avowpV",
+   "PS_HERO_KG3=epQnj1"
+  ]
+ },
+ "terra": {
+  "v": "S1686 mz",
+  "duomenys": {
+   "pav": "Eukanuba Veterinary Diets Dermatosis FP 12kg",
+   "kaina": 65.99,
+   "img": "https://petshop.lt/wp-content/uploads/2026/06/0006337_e29938-evd-dog-dermatosis-fp-formula-12-kg-400x400.webp",
+   "url": "https://petshop.lt/product/eukanuba-veterinary-diets-dermatosis-fp-12kg/?utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc&cid=X5PuZTo6iTwR9o9sOteu",
+   "eilutes": [
+    {
+     "kg": 10,
+     "g": "125–140",
+     "eur_nuo": "0,69",
+     "d": "85–96",
+     "url": "https://petshop.lt/product/eukanuba-veterinary-diets-dermatosis-fp-12kg/?utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc&cid=X5PuZTo6iTwR9o9sOteu&utm_term=10kg&svoris=10"
+    },
+    {
+     "kg": 20,
+     "g": "200–220",
+     "eur_nuo": "1,10",
+     "d": "54–60",
+     "url": "https://petshop.lt/product/eukanuba-veterinary-diets-dermatosis-fp-12kg/?utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc&cid=X5PuZTo6iTwR9o9sOteu&utm_term=20kg&svoris=20"
+    },
+    {
+     "kg": 30,
+     "g": "265–290",
+     "eur_nuo": "1,46",
+     "d": "41–45",
+     "url": "https://petshop.lt/product/eukanuba-veterinary-diets-dermatosis-fp-12kg/?utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=calc&cid=X5PuZTo6iTwR9o9sOteu&utm_term=30kg&svoris=30"
+    }
+   ]
+  },
+  "db_err": "",
+  "s1_post": {
+   "code": 200,
+   "st": {
+    "email": "unsubscribed",
+    "temail": "active"
+   },
+   "msg": {
+    "text": "Subscriber created"
+   }
+  },
+  "po_post": "unsubscribed",
+  "reakt": [
+   "{\"subscriber_status\":\"ACTIVE\"} → 200 Array / active"
+  ],
+  "fields_patch": {
+   "code": 200,
+   "msg": {
+    "text": "Subscriber created"
+   }
+  },
+  "galutine": {
+   "status": {
+    "email": "active",
+    "temail": "active"
+   },
+   "grupes": [
+    "PS_TEST"
+   ],
+   "cols": {
+    "PS_HERO_EUR1": "nuo 0,69 €",
+    "PS_HERO_INFO1": "125–140 g/d · maišo užtenka 85–96 d.",
+    "PS_HERO_EUR3": "nuo 1,46 €",
+    "PS_HERO_U3": "https://petshop.lt/product/eukanuba-veterinary-diets-dermato",
+    "PS_HERO_KAINA": "65,99 €",
+    "PS_HERO_IMG": "https://petshop.lt/wp-content/uploads/2026/06/0006337_e29938",
+    "PS_HERO_KG3": "30 kg",
+    "PS_HERO_PAV": "Eukanuba Veterinary Diets Dermatosis FP 12kg",
+    "PS_HERO_URL": "https://petshop.lt/product/eukanuba-veterinary-diets-dermato",
+    "PS_HERO_INFO2": "200–220 g/d · maišo užtenka 54–60 d.",
+    "PS_HERO_U2": "https://petshop.lt/product/eukanuba-veterinary-diets-dermato",
+    "PS_HERO_INFO3": "265–290 g/d · maišo užtenka 41–45 d.",
+    "PS_HERO_SEG": "calc",
+    "PS_HERO_KG1": "10 kg",
+    "PS_HERO_U1": "https://petshop.lt/product/eukanuba-veterinary-diets-dermato",
+    "PS_HERO_KG2": "20 kg",
+    "PS_HERO_EUR2": "nuo 1,10 €"
+   }
+  },
+  "ps_test_grupe": {
+   "id": "bDxp2q",
+   "title": "PS_TEST",
+   "recipient_count": 1,
+   "active_subscribers": 0,
+   "unsubscribed_count": 1,
+   "bounced_count": 0,
+   "phone_count": 0,
+   "active_phone_count": 0,
+   "account_id": "azv2GY",
+   "user_id": "aQvN6M",
+   "created": "2026-07-13 23:15:47",
+   "modified": "2026-07-30 14:29:37",
+   "is_recalculating_subscribers": true,
+   "is_favourite": false,
+   "used_in_integration": false
+  }
+ }
+}
