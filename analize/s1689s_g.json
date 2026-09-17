@@ -1,0 +1,53 @@
+{
+ "v": "dep-082359",
+ "kurimas": 200,
+ "sid": 6015,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689s g",
+  "mx": [
+   "isopas.serveriai.lt10"
+  ],
+  "ns": [
+   "ns2.serveriai.lt",
+   "ns4.serveriai.lt",
+   "ns3.serveriai.lt",
+   "ns1.serveriai.lt"
+  ],
+  "txt": [
+   "google-site-verification=XPcuD8vHzqrHuXMrZLXCMHfGieqYGPN5C0iI9uUeEGs",
+   "v=spf1 a mx include:spf.serveriai.lt include:sendersrv.com ~all"
+  ],
+  "dmarc": [
+   "v=DMARC1; p=none; rua=mailto:terra@petshop.lt"
+  ],
+  "dkim": {
+   "x": [
+    [
+     "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDNwhn6JOVQrpXIYAs8KMWNi0i5/q2YLsYv81lTNn/RtEc72sBbFzN9A6UiTgsguY6CQGD1cdsQgvR1dD293eckkRxvicisBI1xQrlvSh"
+    ],
+    []
+   ],
+   "sender": [
+    [
+     "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCtKpwlxyG5fI29ZqyvJHmbB8bcZ5+f7JCpJmvgX54edS1/HCVZhUZD0o8mjmMg35HB1ZedI4MP4+s3qTdSwGEUhPFGNf85KGGvfhqQVF"
+    ],
+    [
+     "dkim.sendersrv.com"
+    ]
+   ]
+  },
+  "isopas_a": [
+   "79.98.29.24"
+  ],
+  "keys": {
+   "/home/gyvunai2/domains/petshop.lt/public.key": null,
+   "/home/gyvunai2/.dkim": null,
+   "/etc/virtual/petshop.lt/dkim.public.key": null
+  },
+  "user": "gyvunai2"
+ }
+}
