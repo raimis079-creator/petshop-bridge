@@ -1,0 +1,658 @@
+{
+ "v": "dep-071245",
+ "kurimas": 200,
+ "sid": 6010,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689s b",
+  "tables": [
+   "gaj6_ps_seo_404"
+  ],
+  "tables2": [
+   "gaj6_ps_fakt_gsc_dienos",
+   "gaj6_ps_fakt_gsc_url_d"
+  ],
+  "cols": {
+   "gaj6_ps_seo_404": [
+    "id",
+    "diena",
+    "kelias",
+    "kelias_hash",
+    "hits",
+    "bot_hits",
+    "referer",
+    "paskutinis_at"
+   ]
+  },
+  "n": {
+   "gaj6_ps_seo_404": "3460"
+  },
+  "top": {
+   "gaj6_ps_seo_404": [
+    {
+     "id": "5210",
+     "diena": "2026-09-16",
+     "kelias": "zuvyts/699-gupija-poecilia-reticulata-mix-.html",
+     "kelias_hash": "cf67ffd5102f24b69ce8cb26bd73fca6",
+     "hits": "1",
+     "bot_hits": "0",
+     "referer": "",
+     "paskutinis_at": "2026-09-16 15:14:44"
+    },
+    {
+     "id": "2339",
+     "diena": "2026-09-12",
+     "kelias": "zuvims/hk-discus-bio-gold-1-kg-pasaras-diskusinems-zuvims",
+     "kelias_hash": "c056128ec72f4f73e246d33f23e53356",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-12 02:53:26"
+    },
+    {
+     "id": "5427",
+     "diena": "2026-09-17",
+     "kelias": "zuvims-2007550667/tvenkiniu-zuvu-maistas/aquaris-sturgeon-6-mm-56-litro-maistas-ersketams",
+     "kelias_hash": "ede7ecf06028c934a5550608aebcd9f6",
+     "hits": "1",
+     "bot_hits": "0",
+     "referer": "petshop.lt",
+     "paskutinis_at": "2026-09-17 01:50:03"
+    },
+    {
+     "id": "5804",
+     "diena": "2026-09-17",
+     "kelias": "zuvims-2007550667/hikari-goldfish-staple-baby-pellet-100-g",
+     "kelias_hash": "6e23c3fe352776820a8c3a052f5bd9c7",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-17 05:44:49"
+    },
+    {
+     "id": "1267",
+     "diena": "2026-09-10",
+     "kelias": "zuvims-2007550667/hikari-cichlid-staple-medium-57-g",
+     "kelias_hash": "92c79923d7de7c3a1d0d2b26dbdcb53a",
+     "hits": "1",
+     "bot_hits": "0",
+     "referer": "",
+     "paskutinis_at": "2026-09-10 12:13:26"
+    },
+    {
+     "id": "2555",
+     "diena": "2026-09-12",
+     "kelias": "zuvims-2007550667/akvariuminiu-zuvu-maistas/hk-cichlid-staple-mini-250-g",
+     "kelias_hash": "d5c3bfc298fdb4af3890d365233f9473",
+     "hits": "1",
+     "bot_hits": "0",
+     "referer": "",
+     "paskutinis_at": "2026-09-12 08:48:53"
+    },
+    {
+     "id": "2695",
+     "diena": "2026-09-12",
+     "kelias": "zuvims-2007550667/akvariuminiu-zuvu-maistas/hk-cichlid-staple-large-250-g",
+     "kelias_hash": "777566f06e6d70f2dccfcda9a97da1e3",
+     "hits": "1",
+     "bot_hits": "0",
+     "referer": "",
+     "paskutinis_at": "2026-09-12 13:53:36"
+    },
+    {
+     "id": "5923",
+     "diena": "2026-09-17",
+     "kelias": "zuvims-2007550667/akvariuminiu-zuvu-maistas/hk-cichlid-gold-baby-250-g",
+     "kelias_hash": "2ba9fc1d8e461e9ea8c1d325792722b6",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-17 06:12:01"
+    },
+    {
+     "id": "4499",
+     "diena": "2026-09-15",
+     "kelias": "zuvims-2/page/24",
+     "kelias_hash": "e8ec8cbbeb59f3268875b4fdf25d66d9",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-15 13:20:14"
+    },
+    {
+     "id": "3214",
+     "diena": "2026-09-13",
+     "kelias": "zuvims-2",
+     "kelias_hash": "e28b2942051b68ea3a14814757faab9e",
+     "hits": "1",
+     "bot_hits": "0",
+     "referer": "",
+     "paskutinis_at": "2026-09-13 11:57:05"
+    },
+    {
+     "id": "1480",
+     "diena": "2026-09-10",
+     "kelias": "zuvims-2",
+     "kelias_hash": "e28b2942051b68ea3a14814757faab9e",
+     "hits": "1",
+     "bot_hits": "0",
+     "referer": "",
+     "paskutinis_at": "2026-09-10 22:32:49"
+    },
+    {
+     "id": "1772",
+     "diena": "2026-09-11",
+     "kelias": "zuvies-juosteles-su-antiena-500-g-naturalus-skanestai-sunims-hau-and-miau",
+     "kelias_hash": "deb76de2214b3500185a29f692a43c19",
+     "hits": "2",
+     "bot_hits": "2",
+     "referer": "",
+     "paskutinis_at": "2026-09-11 12:23:05"
+    },
+    {
+     "id": "908",
+     "diena": "2026-09-10",
+     "kelias": "zaislo-katei-laiminga-kate-papildas",
+     "kelias_hash": "e4c3e33a053dacf54958fd8ed36b3214",
+     "hits": "2",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-10 16:02:35"
+    },
+    {
+     "id": "2750",
+     "diena": "2026-09-12",
+     "kelias": "zaislo-katei-laiminga-kate-papildas",
+     "kelias_hash": "e4c3e33a053dacf54958fd8ed36b3214",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-12 17:14:43"
+    },
+    {
+     "id": "3520",
+     "diena": "2026-09-14",
+     "kelias": "zaislas-suniui-virviu-akrobatas-20-cm-skersmens",
+     "kelias_hash": "d6cde36b6cb8812d0a69b78b075c0463",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-14 05:12:43"
+    },
+    {
+     "id": "3033",
+     "diena": "2026-09-13",
+     "kelias": "zaislas-suniui-virviu-akrobatas-20-cm-skersmens",
+     "kelias_hash": "d6cde36b6cb8812d0a69b78b075c0463",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-13 02:33:24"
+    },
+    {
+     "id": "4327",
+     "diena": "2026-09-15",
+     "kelias": "zaislas-suniui-virviu-akrobatas-20-cm-skersmens",
+     "kelias_hash": "d6cde36b6cb8812d0a69b78b075c0463",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-15 10:53:16"
+    },
+    {
+     "id": "350",
+     "diena": "2026-09-09",
+     "kelias": "zaislas-suniui-viniline-spurga-10-cm",
+     "kelias_hash": "52142d55e5dc46ff09022381c108d608",
+     "hits": "2",
+     "bot_hits": "2",
+     "referer": "",
+     "paskutinis_at": "2026-09-09 09:23:06"
+    },
+    {
+     "id": "5361",
+     "diena": "2026-09-16",
+     "kelias": "zaislas-suniui-viniline-spurga-10-cm",
+     "kelias_hash": "52142d55e5dc46ff09022381c108d608",
+     "hits": "2",
+     "bot_hits": "2",
+     "referer": "",
+     "paskutinis_at": "2026-09-16 23:42:55"
+    },
+    {
+     "id": "1833",
+     "diena": "2026-09-11",
+     "kelias": "zaislas-suniui-tx-33482-kamuoliukas-su-virve",
+     "kelias_hash": "749f584c59694385c9a1808b6348f340",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-11 04:45:11"
+    },
+    {
+     "id": "984",
+     "diena": "2026-09-10",
+     "kelias": "zaislas-suniui-tx-33482-kamuoliukas-su-virve",
+     "kelias_hash": "749f584c59694385c9a1808b6348f340",
+     "hits": "2",
+     "bot_hits": "2",
+     "referer": "",
+     "paskutinis_at": "2026-09-10 16:46:39"
+    },
+    {
+     "id": "5597",
+     "diena": "2026-09-17",
+     "kelias": "zaislas-suniui-tx-33482-kamuoliukas-su-virve",
+     "kelias_hash": "749f584c59694385c9a1808b6348f340",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-17 05:03:13"
+    },
+    {
+     "id": "5364",
+     "diena": "2026-09-16",
+     "kelias": "zaislas-suniui-tx-33482-kamuoliukas-su-virve",
+     "kelias_hash": "749f584c59694385c9a1808b6348f340",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-16 23:52:41"
+    },
+    {
+     "id": "3040",
+     "diena": "2026-09-13",
+     "kelias": "zaislas-suniui-tinginys-lateksas-10x5-5x13-cm",
+     "kelias_hash": "917c40958caf6ca107d6afc25bbf807c",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-13 03:07:09"
+    },
+    {
+     "id": "1015",
+     "diena": "2026-09-10",
+     "kelias": "zaislas-suniui-tinginys-lateksas-10x5-5x13-cm",
+     "kelias_hash": "917c40958caf6ca107d6afc25bbf807c",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-10 06:07:31"
+    },
+    {
+     "id": "910",
+     "diena": "2026-09-10",
+     "kelias": "zaislas-suniui-susukta-virve-14-cm",
+     "kelias_hash": "855ae806105445818194518f4887ade3",
+     "hits": "1",
+     "bot_hits": "0",
+     "referer": "",
+     "paskutinis_at": "2026-09-10 01:13:08"
+    },
+    {
+     "id": "1137",
+     "diena": "2026-09-10",
+     "kelias": "zaislas-suniui-super-kaulas-dantims-12-cm",
+     "kelias_hash": "8e38b0d836c594b56bdeb6ff367cddae",
+     "hits": "2",
+     "bot_hits": "2",
+     "referer": "",
+     "paskutinis_at": "2026-09-10 10:28:05"
+    },
+    {
+     "id": "2620",
+     "diena": "2026-09-12",
+     "kelias": "zaislas-suniui-pliusinis-lapiukas-beeztees-30-cm",
+     "kelias_hash": "86d68c8a944e739bd1a8f029063cce09",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-12 10:52:34"
+    },
+    {
+     "id": "5267",
+     "diena": "2026-09-16",
+     "kelias": "zaislas-suniui-pliusinis-lapiukas-beeztees-30-cm",
+     "kelias_hash": "86d68c8a944e739bd1a8f029063cce09",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-16 19:34:46"
+    },
+    {
+     "id": "3507",
+     "diena": "2026-09-14",
+     "kelias": "zaislas-suniui-pliusinis-lapiukas-beeztees-30-cm",
+     "kelias_hash": "86d68c8a944e739bd1a8f029063cce09",
+     "hits": "2",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-14 10:56:29"
+    },
+    {
+     "id": "4280",
+     "diena": "2026-09-15",
+     "kelias": "zaislas-suniui-pliusinis-lapiukas-beeztees-30-cm",
+     "kelias_hash": "86d68c8a944e739bd1a8f029063cce09",
+     "hits": "2",
+     "bot_hits": "2",
+     "referer": "",
+     "paskutinis_at": "2026-09-15 10:32:17"
+    },
+    {
+     "id": "1770",
+     "diena": "2026-09-11",
+     "kelias": "zaislas-suniui-pliusinis-lapiukas-beeztees-30-cm",
+     "kelias_hash": "86d68c8a944e739bd1a8f029063cce09",
+     "hits": "2",
+     "bot_hits": "2",
+     "referer": "",
+     "paskutinis_at": "2026-09-11 11:23:40"
+    },
+    {
+     "id": "3063",
+     "diena": "2026-09-13",
+     "kelias": "zaislas-suniui-pliusinis-lapiukas-beeztees-30-cm",
+     "kelias_hash": "86d68c8a944e739bd1a8f029063cce09",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-13 04:48:57"
+    },
+    {
+     "id": "4900",
+     "diena": "2026-09-16",
+     "kelias": "zaislas-suniui-pilka-pliusine-svajojanti-koala-12-5-x-15-cm",
+     "kelias_hash": "3148a6effb58e77648158670868d0286",
+     "hits": "2",
+     "bot_hits": "2",
+     "referer": "",
+     "paskutinis_at": "2026-09-16 13:49:09"
+    },
+    {
+     "id": "4491",
+     "diena": "2026-09-15",
+     "kelias": "zaislas-suniui-pilka-pliusine-svajojanti-koala-12-5-x-15-cm",
+     "kelias_hash": "3148a6effb58e77648158670868d0286",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-15 13:08:50"
+    },
+    {
+     "id": "1769",
+     "diena": "2026-09-11",
+     "kelias": "zaislas-suniui-pilka-pliusine-svajojanti-koala-12-5-x-15-cm",
+     "kelias_hash": "3148a6effb58e77648158670868d0286",
+     "hits": "2",
+     "bot_hits": "2",
+     "referer": "",
+     "paskutinis_at": "2026-09-11 12:17:23"
+    },
+    {
+     "id": "3431",
+     "diena": "2026-09-13",
+     "kelias": "zaislas-suniui-kvepiantis-kauliukas-mazas-8-5-cm",
+     "kelias_hash": "aa28965cfe5383db4b7e79f7e20e189f",
+     "hits": "1",
+     "bot_hits": "0",
+     "referer": "",
+     "paskutinis_at": "2026-09-13 23:03:42"
+    },
+    {
+     "id": "1768",
+     "diena": "2026-09-11",
+     "kelias": "zaislas-suniui-kvepiantis-kauliukas-mazas-8-5-cm",
+     "kelias_hash": "aa28965cfe5383db4b7e79f7e20e189f",
+     "hits": "3",
+     "bot_hits": "3",
+     "referer": "",
+     "paskutinis_at": "2026-09-11 13:23:34"
+    },
+    {
+     "id": "1808",
+     "diena": "2026-09-11",
+     "kelias": "zaislas-suniui-kvepiantis-guminis-kamuoliukas-7-cm",
+     "kelias_hash": "c299fedfc14840be06d79545219041a5",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-11 04:31:05"
+    },
+    {
+     "id": "586",
+     "diena": "2026-09-09",
+     "kelias": "zaislas-suniui-koala",
+     "kelias_hash": "f0253f416616984bb0af17613911ba32",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-09 16:59:22"
+    },
+    {
+     "id": "5466",
+     "diena": "2026-09-17",
+     "kelias": "zaislas-suniui-koala",
+     "kelias_hash": "f0253f416616984bb0af17613911ba32",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-17 02:46:50"
+    },
+    {
+     "id": "2723",
+     "diena": "2026-09-12",
+     "kelias": "zaislas-suniui-koala",
+     "kelias_hash": "f0253f416616984bb0af17613911ba32",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-12 15:30:35"
+    },
+    {
+     "id": "4787",
+     "diena": "2026-09-15",
+     "kelias": "zaislas-suniui-koala",
+     "kelias_hash": "f0253f416616984bb0af17613911ba32",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-15 22:48:46"
+    },
+    {
+     "id": "3789",
+     "diena": "2026-09-14",
+     "kelias": "zaislas-suniui-koala",
+     "kelias_hash": "f0253f416616984bb0af17613911ba32",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-14 15:14:49"
+    },
+    {
+     "id": "976",
+     "diena": "2026-09-10",
+     "kelias": "zaislas-suniui-koala",
+     "kelias_hash": "f0253f416616984bb0af17613911ba32",
+     "hits": "2",
+     "bot_hits": "2",
+     "referer": "",
+     "paskutinis_at": "2026-09-10 16:14:28"
+    },
+    {
+     "id": "1762",
+     "diena": "2026-09-11",
+     "kelias": "zaislas-suniui-koala",
+     "kelias_hash": "f0253f416616984bb0af17613911ba32",
+     "hits": "2",
+     "bot_hits": "2",
+     "referer": "",
+     "paskutinis_at": "2026-09-11 10:33:20"
+    },
+    {
+     "id": "3353",
+     "diena": "2026-09-13",
+     "kelias": "zaislas-suniui-kaulas-the-king",
+     "kelias_hash": "02d43aaf82893409968e8cc6bca26419",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-13 21:45:03"
+    },
+    {
+     "id": "370",
+     "diena": "2026-09-09",
+     "kelias": "zaislas-suniui-kaulas-the-king",
+     "kelias_hash": "02d43aaf82893409968e8cc6bca26419",
+     "hits": "2",
+     "bot_hits": "2",
+     "referer": "",
+     "paskutinis_at": "2026-09-09 18:22:17"
+    },
+    {
+     "id": "912",
+     "diena": "2026-09-10",
+     "kelias": "zaislas-suniui-kaulas-the-king",
+     "kelias_hash": "02d43aaf82893409968e8cc6bca26419",
+     "hits": "1",
+     "bot_hits": "0",
+     "referer": "",
+     "paskutinis_at": "2026-09-10 01:13:17"
+    },
+    {
+     "id": "3354",
+     "diena": "2026-09-13",
+     "kelias": "zaislas-suniui-kaulas-t-rex",
+     "kelias_hash": "b06b2f87b453fba05aac46c79087f49b",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-13 21:45:29"
+    },
+    {
+     "id": "5467",
+     "diena": "2026-09-17",
+     "kelias": "zaislas-suniui-kaulas-t-rex",
+     "kelias_hash": "b06b2f87b453fba05aac46c79087f49b",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-17 02:49:56"
+    },
+    {
+     "id": "2425",
+     "diena": "2026-09-12",
+     "kelias": "zaislas-suniui-kaulas-t-rex",
+     "kelias_hash": "b06b2f87b453fba05aac46c79087f49b",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-12 05:38:29"
+    },
+    {
+     "id": "911",
+     "diena": "2026-09-10",
+     "kelias": "zaislas-suniui-kaulas-t-rex",
+     "kelias_hash": "b06b2f87b453fba05aac46c79087f49b",
+     "hits": "1",
+     "bot_hits": "0",
+     "referer": "",
+     "paskutinis_at": "2026-09-10 01:13:12"
+    },
+    {
+     "id": "3546",
+     "diena": "2026-09-14",
+     "kelias": "zaislas-suniui-kaulas-t-rex",
+     "kelias_hash": "b06b2f87b453fba05aac46c79087f49b",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-14 06:55:16"
+    },
+    {
+     "id": "5457",
+     "diena": "2026-09-17",
+     "kelias": "zaislas-suniui-kamuoliukas-sypsena-lateksas-7-2-cm",
+     "kelias_hash": "c78111892802cfd38b6a15936923eaef",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-17 02:31:32"
+    },
+    {
+     "id": "5081",
+     "diena": "2026-09-16",
+     "kelias": "zaislas-suniui-kamuoliukas-sypsena-lateksas-7-2-cm",
+     "kelias_hash": "c78111892802cfd38b6a15936923eaef",
+     "hits": "2",
+     "bot_hits": "2",
+     "referer": "",
+     "paskutinis_at": "2026-09-16 13:42:54"
+    },
+    {
+     "id": "4354",
+     "diena": "2026-09-15",
+     "kelias": "zaislas-suniui-kaledinis-meduoliukas-10-5-cm",
+     "kelias_hash": "70f9a03e396bb048f26110f60d0632ca",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-15 11:50:05"
+    },
+    {
+     "id": "4875",
+     "diena": "2026-09-16",
+     "kelias": "zaislas-suniui-kaledinis-meduoliukas-10-5-cm",
+     "kelias_hash": "70f9a03e396bb048f26110f60d0632ca",
+     "hits": "3",
+     "bot_hits": "3",
+     "referer": "",
+     "paskutinis_at": "2026-09-16 13:27:41"
+    },
+    {
+     "id": "1829",
+     "diena": "2026-09-11",
+     "kelias": "zaislas-suniui-kaledinis-meduoliukas-10-5-cm",
+     "kelias_hash": "70f9a03e396bb048f26110f60d0632ca",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-11 04:39:33"
+    },
+    {
+     "id": "5449",
+     "diena": "2026-09-17",
+     "kelias": "zaislas-suniui-kaledinis-meduoliukas-10-5-cm",
+     "kelias_hash": "70f9a03e396bb048f26110f60d0632ca",
+     "hits": "1",
+     "bot_hits": "1",
+     "referer": "",
+     "paskutinis_at": "2026-09-17 02:10:22"
+    }
+   ]
+  },
+  "legacy_php": "<?php\n/**\n * Petshop Legacy 301 v2.1 (S436, S1668) — senos platformos adresų nukreipimas.\n *\n * v2.1 (S1668): 301 PERKELIA užklausos eilutę (gclid, gad_source, utm_*, _gl).\n *   v2.0 ją numesdavo → PMax/Merchant paspaudimai praradavo gclid, Ads nematė konversijų.\n *\n * Vienas mechanizmas visiems seniems adresams. Žemėlapis laikomas ATSKIRAME\n * JSON faile ir kraunamas TIK tada, kai adresas realiai 404 — kad kiekviena\n * užklausa neparsintų 137 KB PHP masyvo.\n *\n * ŠEŠI SLUOKSNIAI (visi ĮŠALDYTI iš GSC 2 445 URL / 19 735 clicks / 16 mėn.):\n *   1. kategorijos be /kategorija/ priešdėlio          34 · 1 596\n *   2. seni URL su ID uodegomis                        42 ·   666\n *   3. pervadinti slug                                 10 ·    30\n *   4. produktai iš šaknies → /product/                805 · 2 968\n *   5. likusios kategorijos                            24 ·   102\n *   6. brendai → /gamintojas/                          22 ·   501\n *\n * KRITINIS 6 sluoksnis: be jo WordPress redirect_canonical /exclusion\n * (218 clicks) SPĖJIMU 301-ina į ATSITIKTINĮ SKU. TŽ v1.56 tai įspėjo, ir\n * 2026-08-04 tai vis dar vyko.\n *\n * VARTAI:\n *   - TIK tiksliam adresui iš žemėlapio, TIK kai jis DABAR 404\n *   - vienas 301 tiesiai į galutinį 200, jokių grandinių\n *   - JOKIO „panašiausio URL\" spėjimo\n *   - redirect_canonical išjungiamas TIK mūsų atpažintam adresui\n *   - X-Redirect-By: Petshop-Legacy-Category\n *\n * ĮŠALDYTA, NE DINAMINIS. Naujoms kategorijoms/prekėms taisyklės NEKURIAMOS.\n * Naujas įrašas — tik rankiniu būdu su GSC pagrindimu.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nconst PS_LEGACY_301_MAP = __DIR__ . '/petshop-legacy-301-map.json';\n\nfunction petshop_legacy_301_map() {\n\tstatic $m = null;\n\tif ( null !== $m ) { return $m; }\n\t$raw = @file_get_contents( PS_LEGACY_301_MAP );\n\t$m   = ( false === $raw ) ? array() : (array) json_decode( $raw, true );\n\treturn $m;\n}\n\nfunction petshop_legacy_301_path() {\n\t$p = (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH );\n\treturn strtolower( trim( rawurldecode( $p ), '/' ) );\n}\n\nadd_action( 'template_redirect', function () {\n\tif ( is_admin() || wp_doing_ajax() || is_robots() || is_feed() ) { return; }\n\tif ( ! is_404() ) { return; }          // esami puslapiai NELIEČIAMI\n\n\t$kelias = petshop_legacy_301_path();\n\tif ( '' === $kelias ) { return; }\n\n\t$map = petshop_legacy_301_map();\n\tif ( ! isset( $map[ $kelias ] ) ) { return; }   // jokio spėjimo\n\n\t$t = $map[ $kelias ];\n\tif ( 0 === strpos( $t, '__TERM__' ) ) {\n\t\t$term = get_term( (int) substr( $t, 8 ), 'product_cat' );\n\t\tif ( ! $term || is_wp_error( $term ) ) { return; }\n\t\t$url = get_term_link( $term );\n\t\tif ( is_wp_error( $url ) || ! $url ) { return; }\n\t} else {\n\t\t$url = home_url( $t );\n\t}\n\n\t// Apsauga nuo kilpos\n\tif ( strtolower( trim( (string) parse_url( $url, PHP_URL_PATH ), '/' ) ) === $kelias ) { return; }\n\n\t// v2.1: užklausos eilutė keliauja kartu (gclid/utm/gad_source — Ads atribucijai)\n\t$qs = (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_QUERY );\n\tif ( '' !== $qs ) { $url .= ( false === strpos( $url, '?' ) ? '?' : '&' ) . $qs; }\n\n\tremove_action( 'template_redirect', 'redirect_canonical' );\n\twp_redirect( $url, 301, 'Petshop-Legacy-Category' );\n\texit;\n}, 1 );\n",
+  "map_n": 1222,
+  "map_sample": {
+   "sunims/antiparazitines-priemones-sunims": "__TERM__108",
+   "katems/antiparazitines-priemones-katems": "__TERM__109",
+   "hipoalerginis-maistas-sunims": "__TERM__85",
+   "sunims": "__TERM__70",
+   "miamor-katems": "__TERM__80",
+   "sunims/maistas-sunims/sausas-maistas-sunims": "__TERM__72",
+   "sunims/skanestai-sunims": "__TERM__95",
+   "katems/antkakliai-ir-petnesos-katems": "__TERM__117"
+  },
+  "brand_bk": "https://petshop.lt/gamintojas/barry-king/",
+  "brand_base": {
+   "product_base": "/product",
+   "category_base": "kategorija",
+   "tag_base": "product-tag",
+   "attribute_base": "",
+   "use_verbose_page_rules": false
+  }
+ }
+}
