@@ -1,0 +1,152 @@
+{
+ "v": "dep-101135",
+ "kurimas": 200,
+ "sid": 6024,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "cols": {
+   "ps_fakt_uzsakymai": "uzsakymas_id,sukurta_at,apmoketa_at,statusas_galutinis,statusas_at,klientas_id,klientas_email_hash,klientas_naujas,klientas_uzsakymo_nr,dienos_nuo_ankstesnio,prekiu_suma_ct,nuolaidu_ct,kuponu_kodai,tasku_panaudota_ct,tasku_sukaupta_ct,pristatymas_paimta_ct,pristatymas_savikaina_ct,small_cart_fee_ct,pvm_ct,viso_ct,mokejimo_budas,mokejimo_mokestis_ct,pakuotes_savikaina_ct,savikaina_ct,dovanu_savikaina_ct,marza_ct,kontribucija_ct,sandeliu_kiekis,misrus,sandeliai,vezejai,kanalas_pirmas,kanalas_paskutinis,utm_source,utm_medium,utm_campaign,gclid,fbclid,referer_domenas,landing_url,irenginys,sutikimas_statistika,salis,miestas,pasto_kodas,anketa_id,rec_log_id,is_refill,prenumerata_id,eiluciu_sk,testinis,saltinis_aplinka,fakt_versija,irasyta_at,diena",
+   "ps_fakt_eilutes": "id,uzsakymas_id,eilutes_id,apmoketa_at,preke_id,variacija_id,sku,gtin,pavadinimas_tuo_metu,kategorija_id_giliausia,kategoriju_kelias,brendas_slug,gyvunas,pa_uzsaldymas,sandelis,tiekejas,partija_kodas,kiekis,kaina_ct,pvm_ct,kaina_vnt_ct,kaina_reguliari_ct,savikaina_vnt_ct,savikaina_ct,savikainos_saltinis,nuolaida_ct,akcija_id,kuponas,rinkinys_id,rinkinio_tipas,rinkinio_raktas,dovana,svoris_g,pakuotes_dydis,klientas_naujas,testinis,saltinis_aplinka,diena",
+   "ps_ist_fakt_uzsakymai": "uzsakymas_id,sukurta_at,apmoketa_at,statusas_galutinis,statusas_at,klientas_id,klientas_email_hash,klientas_naujas,klientas_uzsakymo_nr,dienos_nuo_ankstesnio,prekiu_suma_ct,nuolaidu_ct,kuponu_kodai,tasku_panaudota_ct,tasku_sukaupta_ct,pristatymas_paimta_ct,pristatymas_savikaina_ct,small_cart_fee_ct,pvm_ct,viso_ct,mokejimo_budas,mokejimo_mokestis_ct,pakuotes_savikaina_ct,savikaina_ct,dovanu_savikaina_ct,marza_ct,kontribucija_ct,sandeliu_kiekis,misrus,sandeliai,vezejai,kanalas_pirmas,kanalas_paskutinis,utm_source,utm_medium,utm_campaign,gclid,fbclid,referer_domenas,landing_url,irenginys,sutikimas_statistika,salis,miestas,pasto_kodas,anketa_id,rec_log_id,is_refill,prenumerata_id,eiluciu_sk,testinis,saltinis_aplinka,fakt_versija,irasyta_at,diena",
+   "ps_web_ivykiai": "id,laikas,diena,tipas,pusl_tipas,url_kelias,raktas,raktas2,reiksme,sesija,lankytojas_d,lankytojas_30,saltinis,medium,kampanija,referer_domenas,kanalas,landing,irenginys,os_seima,nars_seima,salis,prisijunges,sutikimas,testinis,saltinis_aplinka",
+   "ps_fakt_reklama": "id,diena,kanalas,kampanija_id,kampanija,parodymai,paspaudimai,islaidos_ct,valiuta,konversijos,konv_verte_ct,saltinis,saltinis_aplinka,versija,irasyta_at,senoji_svetaine",
+   "ps_sargas_klaidos": "id,laikas,lygis,parasas,zinute,failas,eilute,url,kiek",
+   "ps_email_jobs": "id,job_key,flow,flow_class,recipient_email,recipient_user_id,subject,payload,status,block_reason,provider,provider_message_id,attempts,last_error,scheduled_at,sent_at,created_at,updated_at,skip_reason,error_message,decision_at,next_attempt_at,context_json,delivered_at,opened_at,clicked_at"
+  },
+  "wc_sav": [
+   {
+    "nuo": "2026-09-08",
+    "n": "36",
+    "eur": "1289",
+    "aov": "35.8"
+   },
+   {
+    "nuo": "2026-09-14",
+    "n": "41",
+    "eur": "1839",
+    "aov": "44.8"
+   }
+  ],
+  "wc_status": [
+   {
+    "status": "wc-cancelled",
+    "n": "17"
+   },
+   {
+    "status": "wc-completed",
+    "n": "68"
+   },
+   {
+    "status": "wc-pending",
+    "n": "1"
+   },
+   {
+    "status": "wc-processing",
+    "n": "9"
+   }
+  ],
+  "wc_pay": [
+   {
+    "payment_method": "bacs",
+    "n": "6"
+   },
+   {
+    "payment_method": "paysera",
+    "n": "71"
+   }
+  ],
+  "wc_ship": [
+   {
+    "m": "VENIPAK paštomatai/atsiėmimo punktai",
+    "n": "63"
+   },
+   {
+    "m": "VENIPAK Kurjeris",
+    "n": "10"
+   },
+   {
+    "m": "LP Express",
+    "n": "3"
+   }
+  ],
+  "wc_device": [
+   {
+    "d": "desk",
+    "n": "23"
+   },
+   {
+    "d": "mob",
+    "n": "54"
+   }
+  ],
+  "php_log": {
+   "size_mb": 36.3,
+   "16-17d": {
+    "fatal": 0,
+    "warning": 112,
+    "deprecated": 0,
+    "notice": 0
+   },
+   "top": {
+    "PHP Warning:  Array to string conversion in /home/gyvunai#/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line #": 105,
+    "Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti c": 18,
+    "The WC_Product_Mix_and_Match_Legacy::get_contents() function is deprecated since version #.#.#. Replace with WC_Product_Mix_and_Match_Legacy::get_chil": 4,
+    "PHP Warning:  Undefined array key \"Oksana@misiukas.lt\" in /home/gyvunai#/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-klientai.php on ": 2,
+    "PHP Warning:  Undefined array key \"Roslanalesciute@gmail.com\" in /home/gyvunai#/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-klientai.": 2,
+    "PHP Warning:  Undefined array key \"Teryte#@gmail.com\" in /home/gyvunai#/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-klientai": 2,
+    "WordPress database error Duplicate entry 'ee#c#db#ad#afe#e#f#e#b#acb#ded#eb#ee#e#fc#a#bb#' for key 'PRIMARY' for query INSERT INTO `g": 1,
+    "WordPress database error Duplicate entry 'ee#ab#f#f#f#f#abd#bee#f#f#f#af#b#c#a#c#cad#' for key 'PRIMARY' for query INSERT INTO `g": 1
+   }
+  },
+  "cron_late_1h": 0,
+  "cron_total": 97,
+  "archyvas": [
+   "class-pricing-vf.php.bak_s1689c 09-16 16:34 0MB",
+   "class-pricing-vf.php.bak_s1689b 09-16 16:21 0MB",
+   "class-import-rules-vf.php.bak_s1689 09-16 16:13 0MB",
+   "class-pricing-vf.php.bak_s1689 09-16 16:13 0MB",
+   "wp-config.php.bak_s1675 09-11 22:08 0MB",
+   "ps_bak_arch_20260909.json.gz 09-09 13:23 1.1MB"
+  ],
+  "admins": 1,
+  "users_total": 5745,
+  "disk": {
+   "free_gb": 389.8,
+   "uploads_gb": null
+  },
+  "db_mb": "438",
+  "db_top": [
+   {
+    "t": "gaj6_postmeta",
+    "mb": "77"
+   },
+   {
+    "t": "gaj6_actionscheduler_actions",
+    "mb": "42"
+   },
+   {
+    "t": "gaj6_posts",
+    "mb": "34"
+   },
+   {
+    "t": "gaj6_shortpixel_queue",
+    "mb": "31"
+   },
+   {
+    "t": "gaj6_shortpixel_postmeta",
+    "mb": "23"
+   },
+   {
+    "t": "gaj6_usermeta",
+    "mb": "20"
+   }
+  ],
+  "sessions": "2796",
+  "transients": "2607",
+  "as_pending": "25",
+  "as_failed_7d": "2"
+ }
+}
