@@ -1,0 +1,538 @@
+{
+ "v": "dep-104903",
+ "kurimas": 200,
+ "sid": 6027,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "src_cols": "id,product_id,source,supplier_sku,ean,stock_qty,cost_net,synced_at,is_active,is_sellable,priority,created_at,updated_at",
+  "SensiPlus 12,5": {
+   "pid": 17978,
+   "kaina": 39.99,
+   "reg": "39.99",
+   "akcija": "",
+   "sandelis": "vf",
+   "stock": "1397/instock",
+   "cost_price": "",
+   "vf_sku": "",
+   "vf_base": "",
+   "vf_qty": "1394",
+   "sources": [
+    {
+     "source": "av",
+     "cost_net": null,
+     "updated_at": "2026-09-17 07:20:09"
+    },
+    {
+     "source": "vf",
+     "cost_net": "27.5120",
+     "updated_at": "2026-09-17 07:20:09"
+    }
+   ],
+   "meta_kain": {
+    "_regular_price": "39.99",
+    "_price": "39.99",
+    "_vf_enabled": "yes",
+    "_vf_cost": "27.512",
+    "_vf_personal_cost": "27.512",
+    "_vf_cost_xml": "34.39",
+    "_vf_personal_xml": "34.39",
+    "_vf_supplier_discount": "0.2",
+    "_vf_supplier_sku": "JOS0914",
+    "_vf_barcode": "403225478598",
+    "_vf_brand_raw": "JOSERA",
+    "_vf_brand_normalized": "Josera",
+    "_vf_last_sync": "2026-09-17 13:00:05",
+    "_vf_attached_to_existing": "yes",
+    "_vf_has_supplier": "yes",
+    "_vf_match_type": "ean",
+    "_vf_last_matched_import_post_id": "33014",
+    "_vf_price_rule_used": "BRAND:Josera +DISC:20%",
+    "_vf_reprice_by_snippet_at": "2026-09-03 06:01:59",
+    "_petshop_needs_price_review": "yes",
+    "_petshop_price_review_reason": "competitive_brand",
+    "_vf_qty": "1394"
+   },
+   "ist_12m": {
+    "uzs": "77",
+    "vnt": "99",
+    "vid_kaina": "31.58",
+    "min_k": "29.10",
+    "max_k": "32.48",
+    "vid_savik": null
+   },
+   "ist_ketv": [
+    {
+     "q": "2025Q1",
+     "vnt": "49",
+     "k": "31.18"
+    },
+    {
+     "q": "2025Q2",
+     "vnt": "38",
+     "k": "31.65"
+    },
+    {
+     "q": "2025Q3",
+     "vnt": "33",
+     "k": "31.65"
+    },
+    {
+     "q": "2025Q4",
+     "vnt": "18",
+     "k": "31.65"
+    },
+    {
+     "q": "2026Q1",
+     "vnt": "29",
+     "k": "31.79"
+    },
+    {
+     "q": "2026Q2",
+     "vnt": "38",
+     "k": "31.51"
+    },
+    {
+     "q": "2026Q3",
+     "vnt": "7",
+     "k": "30.79"
+    }
+   ],
+   "po_t0": {
+    "eil": "2",
+    "vnt": "2",
+    "k": "33.05",
+    "sav": "27.51",
+    "ss": "pardavimai"
+   },
+   "perziuros_30d": {
+    "view": "13",
+    "ses": "7",
+    "cart": "4"
+   },
+   "url": "https://petshop.lt/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/"
+  },
+  "Festival 12,5": {
+   "pid": 18154,
+   "kaina": 45.29,
+   "reg": "45.29",
+   "akcija": "",
+   "sandelis": "vf",
+   "stock": "466/instock",
+   "cost_price": "",
+   "vf_sku": "",
+   "vf_base": "",
+   "vf_qty": "465",
+   "sources": [
+    {
+     "source": "av",
+     "cost_net": null,
+     "updated_at": "2026-09-17 07:20:09"
+    },
+    {
+     "source": "vf",
+     "cost_net": "31.1520",
+     "updated_at": "2026-09-17 07:20:09"
+    }
+   ],
+   "meta_kain": {
+    "_regular_price": "45.29",
+    "_price": "45.29",
+    "_vf_enabled": "yes",
+    "_vf_cost": "31.152",
+    "_vf_personal_cost": "31.152",
+    "_vf_cost_xml": "38.94",
+    "_vf_personal_xml": "38.94",
+    "_vf_supplier_discount": "0.2",
+    "_vf_supplier_sku": "JOS0913",
+    "_vf_barcode": "403225478595",
+    "_vf_brand_raw": "JOSERA",
+    "_vf_brand_normalized": "Josera",
+    "_vf_last_sync": "2026-09-17 13:00:08",
+    "_vf_attached_to_existing": "yes",
+    "_vf_has_supplier": "yes",
+    "_vf_match_type": "ean",
+    "_vf_last_matched_import_post_id": "33010",
+    "_vf_price_rule_used": "BRAND:Josera +DISC:20%",
+    "_vf_reprice_by_snippet_at": "2026-07-04 19:12:57",
+    "_petshop_needs_price_review": "yes",
+    "_petshop_price_review_reason": "competitive_brand",
+    "_vf_qty": "465"
+   },
+   "ist_12m": {
+    "uzs": "36",
+    "vnt": "40",
+    "vid_kaina": "36.16",
+    "min_k": "34.67",
+    "max_k": "36.86",
+    "vid_savik": null
+   },
+   "ist_ketv": [
+    {
+     "q": "2025Q1",
+     "vnt": "36",
+     "k": "34.43"
+    },
+    {
+     "q": "2025Q2",
+     "vnt": "12",
+     "k": "36.61"
+    },
+    {
+     "q": "2025Q3",
+     "vnt": "12",
+     "k": "36.61"
+    },
+    {
+     "q": "2025Q4",
+     "vnt": "7",
+     "k": "36.61"
+    },
+    {
+     "q": "2026Q1",
+     "vnt": "12",
+     "k": "36.07"
+    },
+    {
+     "q": "2026Q2",
+     "vnt": "12",
+     "k": "35.47"
+    },
+    {
+     "q": "2026Q3",
+     "vnt": "7",
+     "k": "36.86"
+    }
+   ],
+   "po_t0": {
+    "eil": "1",
+    "vnt": "1",
+    "k": "37.43",
+    "sav": "31.15",
+    "ss": "pardavimai"
+   },
+   "perziuros_30d": {
+    "view": "7",
+    "ses": "4",
+    "cart": "2"
+   },
+   "url": "https://petshop.lt/product/josera-festival-pasaras-sunims-su-lasisa-125-kg/"
+  },
+  "Optiness 12,5": {
+   "pid": 18000,
+   "kaina": 41.79,
+   "reg": "41.79",
+   "akcija": "",
+   "sandelis": "vf",
+   "stock": "350/instock",
+   "cost_price": "",
+   "vf_sku": "",
+   "vf_base": "",
+   "vf_qty": "349",
+   "sources": [
+    {
+     "source": "av",
+     "cost_net": null,
+     "updated_at": "2026-09-17 07:20:09"
+    },
+    {
+     "source": "vf",
+     "cost_net": "28.7280",
+     "updated_at": "2026-09-17 07:20:09"
+    }
+   ],
+   "meta_kain": {
+    "_regular_price": "41.79",
+    "_price": "41.79",
+    "_vf_enabled": "yes",
+    "_vf_cost": "28.728",
+    "_vf_personal_cost": "28.728",
+    "_vf_cost_xml": "35.91",
+    "_vf_personal_xml": "35.91",
+    "_vf_supplier_discount": "0.2",
+    "_vf_supplier_sku": "JOS0910",
+    "_vf_barcode": "403225478642",
+    "_vf_brand_raw": "JOSERA",
+    "_vf_brand_normalized": "Josera",
+    "_vf_last_sync": "2026-09-17 13:00:06",
+    "_vf_attached_to_existing": "yes",
+    "_vf_has_supplier": "yes",
+    "_vf_match_type": "ean",
+    "_vf_last_matched_import_post_id": "33022",
+    "_vf_price_rule_used": "BRAND:Josera +DISC:20%",
+    "_vf_reprice_by_snippet_at": "2026-08-01 06:01:00",
+    "_petshop_needs_price_review": "yes",
+    "_petshop_price_review_reason": "competitive_brand",
+    "_vf_qty": "349"
+   },
+   "ist_12m": {
+    "uzs": "24",
+    "vnt": "27",
+    "vid_kaina": "36.19",
+    "min_k": "35.70",
+    "max_k": "36.61",
+    "vid_savik": null
+   },
+   "ist_ketv": [
+    {
+     "q": "2025Q1",
+     "vnt": "9",
+     "k": "35.04"
+    },
+    {
+     "q": "2025Q2",
+     "vnt": "3",
+     "k": "35.70"
+    },
+    {
+     "q": "2025Q3",
+     "vnt": "11",
+     "k": "35.70"
+    },
+    {
+     "q": "2025Q4",
+     "vnt": "3",
+     "k": "35.70"
+    },
+    {
+     "q": "2026Q1",
+     "vnt": "13",
+     "k": "36.08"
+    },
+    {
+     "q": "2026Q2",
+     "vnt": "7",
+     "k": "36.61"
+    },
+    {
+     "q": "2026Q3",
+     "vnt": "3",
+     "k": "36.61"
+    }
+   ],
+   "po_t0": {
+    "eil": "0",
+    "vnt": null,
+    "k": null,
+    "sav": null,
+    "ss": null
+   },
+   "perziuros_30d": {
+    "view": "5",
+    "ses": "2",
+    "cart": "2"
+   },
+   "url": "https://petshop.lt/product/josera-optiness-125-kg-begrudis-sausas-maistas-sunims-su-eriena/"
+  },
+  "Marinesse 10": {
+   "pid": 18043,
+   "kaina": 49.99,
+   "reg": "49.99",
+   "akcija": "",
+   "sandelis": "vf",
+   "stock": "34/instock",
+   "cost_price": "",
+   "vf_sku": "",
+   "vf_base": "",
+   "vf_qty": "33",
+   "sources": [
+    {
+     "source": "av",
+     "cost_net": null,
+     "updated_at": "2026-09-17 07:20:09"
+    },
+    {
+     "source": "vf",
+     "cost_net": "34.3680",
+     "updated_at": "2026-09-17 07:20:09"
+    }
+   ],
+   "meta_kain": {
+    "_regular_price": "49.99",
+    "_price": "49.99",
+    "_vf_enabled": "yes",
+    "_vf_cost": "34.368",
+    "_vf_personal_cost": "34.368",
+    "_vf_cost_xml": "42.96",
+    "_vf_personal_xml": "42.96",
+    "_vf_supplier_discount": "0.2",
+    "_vf_supplier_sku": "JOS0167",
+    "_vf_barcode": "403225474954",
+    "_vf_brand_raw": "JOSERA",
+    "_vf_brand_normalized": "Josera",
+    "_vf_last_sync": "2026-09-17 13:00:07",
+    "_vf_attached_to_existing": "yes",
+    "_vf_has_supplier": "yes",
+    "_vf_match_type": "ean",
+    "_vf_last_matched_import_post_id": "32884",
+    "_vf_price_rule_used": "BRAND:Josera +DISC:20%",
+    "_vf_reprice_by_snippet_at": "2026-07-04 19:12:56",
+    "_petshop_needs_price_review": "yes",
+    "_petshop_price_review_reason": "competitive_brand",
+    "_vf_qty": "33"
+   },
+   "ist_12m": {
+    "uzs": "21",
+    "vnt": "21",
+    "vid_kaina": "39.91",
+    "min_k": "39.64",
+    "max_k": "40.46",
+    "vid_savik": null
+   },
+   "ist_ketv": [
+    {
+     "q": "2025Q1",
+     "vnt": "4",
+     "k": "39.21"
+    },
+    {
+     "q": "2025Q2",
+     "vnt": "13",
+     "k": "39.64"
+    },
+    {
+     "q": "2025Q3",
+     "vnt": "13",
+     "k": "39.64"
+    },
+    {
+     "q": "2025Q4",
+     "vnt": "7",
+     "k": "39.64"
+    },
+    {
+     "q": "2026Q1",
+     "vnt": "9",
+     "k": "39.91"
+    },
+    {
+     "q": "2026Q2",
+     "vnt": "4",
+     "k": "40.46"
+    }
+   ],
+   "po_t0": {
+    "eil": "0",
+    "vnt": null,
+    "k": null,
+    "sav": null,
+    "ss": null
+   },
+   "perziuros_30d": {
+    "view": "1",
+    "ses": "1",
+    "cart": "0"
+   },
+   "url": "https://petshop.lt/product/josera-marinesse-10-kg-sausas-maistas-katems-su-lasisa/"
+  },
+  "Mini Deluxe 10": {
+   "pid": 18018,
+   "kaina": 46.19,
+   "reg": "46.19",
+   "akcija": "",
+   "sandelis": "vf",
+   "stock": "514/instock",
+   "cost_price": "",
+   "vf_sku": "",
+   "vf_base": "",
+   "vf_qty": "513",
+   "sources": [
+    {
+     "source": "av",
+     "cost_net": null,
+     "updated_at": "2026-09-17 07:20:09"
+    },
+    {
+     "source": "vf",
+     "cost_net": "31.8080",
+     "updated_at": "2026-09-17 07:20:09"
+    }
+   ],
+   "meta_kain": {
+    "_regular_price": "46.19",
+    "_price": "46.19",
+    "_vf_enabled": "yes",
+    "_vf_cost": "31.808",
+    "_vf_personal_cost": "31.808",
+    "_vf_cost_xml": "39.76",
+    "_vf_personal_xml": "39.76",
+    "_vf_supplier_discount": "0.2",
+    "_vf_supplier_sku": "JOS0931",
+    "_vf_barcode": "403225478525",
+    "_vf_brand_raw": "JOSERA",
+    "_vf_brand_normalized": "Josera",
+    "_vf_last_sync": "2026-09-17 13:00:06",
+    "_vf_attached_to_existing": "yes",
+    "_vf_has_supplier": "yes",
+    "_vf_match_type": "ean",
+    "_vf_last_matched_import_post_id": "33026",
+    "_vf_price_rule_used": "BRAND:Josera +DISC:20%",
+    "_vf_reprice_by_snippet_at": "2026-09-03 06:01:59",
+    "_petshop_needs_price_review": "yes",
+    "_petshop_price_review_reason": "competitive_brand",
+    "_vf_qty": "513"
+   },
+   "ist_12m": {
+    "uzs": "36",
+    "vnt": "37",
+    "vid_kaina": "37.83",
+    "min_k": "34.81",
+    "max_k": "38.76",
+    "vid_savik": null
+   },
+   "ist_ketv": [
+    {
+     "q": "2025Q1",
+     "vnt": "5",
+     "k": "37.51"
+    },
+    {
+     "q": "2025Q2",
+     "vnt": "6",
+     "k": "37.77"
+    },
+    {
+     "q": "2025Q3",
+     "vnt": "10",
+     "k": "37.77"
+    },
+    {
+     "q": "2025Q4",
+     "vnt": "6",
+     "k": "37.77"
+    },
+    {
+     "q": "2026Q1",
+     "vnt": "18",
+     "k": "38.00"
+    },
+    {
+     "q": "2026Q2",
+     "vnt": "6",
+     "k": "38.76"
+    },
+    {
+     "q": "2026Q3",
+     "vnt": "4",
+     "k": "35.80"
+    }
+   ],
+   "po_t0": {
+    "eil": "1",
+    "vnt": "1",
+    "k": "38.17",
+    "sav": "31.81",
+    "ss": "pardavimai"
+   },
+   "perziuros_30d": {
+    "view": "6",
+    "ses": "4",
+    "cart": "0"
+   },
+   "url": "https://petshop.lt/product/josera-mini-lamb-begrudis-mini-deluxe-10-kg-sausas-maistas-mazu-veisliu-sunims-su-eriena/"
+  },
+  "vf_taisykle": false
+ }
+}
