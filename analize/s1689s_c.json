@@ -1,0 +1,77 @@
+{
+ "v": "dep-071432",
+ "kurimas": 200,
+ "sid": 6011,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689s c",
+  "uniq": 1591,
+  "legacy_len": 3329,
+  "legacy_hook": "<?php\n/**\n * Petshop Legacy 301 v2.1 (S436, S1668) — senos platformos adresų nukreipimas.\n *\n * v2.1 (S1668): 301 PERKELIA užklausos eilutę (gclid, gad_source, utm_*, _gl).\n *   v2.0 ją numesdavo → PMax/Merchant paspaudimai praradavo gclid, Ads nematė konversijų.\n *\n * Vienas mechanizmas visiems seniems adresams. Žemėlapis laikomas ATSKIRAME\n * JSON faile ir kraunamas TIK tada, kai adresas realiai 404 — kad kiekviena\n * užklausa neparsintų 137 KB PHP masyvo.\n *\n * ŠEŠI SLUOKSNIAI (visi ĮŠALDYTI iš GSC 2 445 URL / 19 735 clicks / 16 mėn.):\n *   1. kategorijos be /kategorija/ priešdėlio          34 · 1 596\n *   2. seni URL su ID uodegomis                        42 ·   666\n *   3. pervadinti slug                                 10 ·    30\n *   4. produktai iš šaknies → /product/                805 · 2 968\n *   5. likusios kategorijos                          ",
+  "stat": {
+   "prod_slug": 40,
+   "prod_trash_draft": 60,
+   "cat": 48,
+   "brand": 16,
+   "asset": 3,
+   "none": 1424
+  },
+  "hit_ex": [
+   [
+    "ontario-konservai-sunims-su-versiena-ir-ciberzole-800-g-veal-pate-flavoured-with-turmeric",
+    "34969"
+   ],
+   [
+    "katems/vitaminai-ir-papildai-katems/gimcat-maisto-papildas-kaciukams-kitten-pasta-su-vitaminais-50-g",
+    "18425"
+   ],
+   [
+    "sausas-maistas-sterilizuotoms-katems-su-vistiena-15-kg-monge-dry-cat-adult-sterilized",
+    "16217"
+   ],
+   [
+    "sampunas-jauniems-jorksyro-terjerams-one-wish-250-ml",
+    "15674"
+   ],
+   [
+    "quattro-begrudis-su-antiena-visu-veisliu-jaunu-sunu-pasaras-3kg",
+    "16606"
+   ],
+   [
+    "animonda-grancarno-adult-konservu-rinkinys-6-x-800-g-2",
+    "35081"
+   ]
+  ],
+  "none_ex": [
+   "paieska [84/12]",
+   "allproducts [79/2]",
+   "ip [50/50]",
+   ".env.save [40/37]",
+   ".env.bak [39/38]",
+   ".env.old [37/37]",
+   ".env.swp [35/35]",
+   "read-document [29/6]",
+   "visos-prekes [28/28]",
+   "login [27/24]",
+   "null [27/0]",
+   "api/designer/v1/file-content [26/3]",
+   ".env.stage [26/21]",
+   ".env.example [26/23]",
+   "sunims/prieziuros-priemones [26/9]",
+   ".env.live [25/22]",
+   ".env.local [25/23]",
+   ".env.prod [24/23]",
+   ".env.backup [24/22]",
+   ".env.production [23/21]",
+   ".env.sample [23/23]",
+   "pagrindinis/2809-ontario-adult-medium-chicken-and-potatoes-12-kg-pasaras-vidutiniu-veisliu-sunims-su-vistiena-ir-bulvemis-.html [23/21]",
+   ".env.development [23/23]",
+   ".env.staging [23/23]",
+   ".env.test [22/22]"
+  ],
+  "hum_total": 2785
+ }
+}
