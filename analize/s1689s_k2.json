@@ -1,0 +1,84 @@
+{
+ "v": "dep-093549",
+ "kurimas": 200,
+ "sid": 6020,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": [
+  {
+   "p": 1,
+   "s": "mobile",
+   "sc": {
+    "performance": 83,
+    "accessibility": 93,
+    "best-practices": 100,
+    "seo": 92
+   },
+   "m": {
+    "first-contentful-paint": "1,7 sek.",
+    "largest-contentful-paint": "4,3 sek.",
+    "total-blocking-time": "30 ms",
+    "cumulative-layout-shift": "0",
+    "speed-index": "4,0 sek.",
+    "server-response-time": "Šakninio dokumento įkėlimas užtruko 40 ms",
+    "total-byte-weight": "Bendras dydis: 770 KiB",
+    "dom-size": ""
+   },
+   "opp": [
+    "unused-css-rules: Numatoma, kad bus sutaupyta 27 KiB",
+    "unused-javascript: Numatoma, kad bus sutaupyta 87 KiB"
+   ],
+   "fail": [
+    "s:meta-description",
+    "a:color-contrast",
+    "a:link-in-text-block"
+   ],
+   "crux": {
+    "CUMULATIVE_LAYOUT_SHIFT_SCORE": "0 FAST",
+    "EXPERIMENTAL_TIME_TO_FIRST_BYTE": "940 AVERAGE",
+    "FIRST_CONTENTFUL_PAINT": "1563 FAST",
+    "INTERACTION_TO_NEXT_PAINT": "113 FAST",
+    "LARGEST_CONTENTFUL_PAINT": "1604 FAST"
+   },
+   "crux_origin": "AVERAGE"
+  },
+  {
+   "p": 0,
+   "s": "desktop",
+   "sc": {
+    "performance": 97,
+    "accessibility": 94,
+    "best-practices": 100,
+    "seo": 100
+   },
+   "m": {
+    "first-contentful-paint": "0,4 sek.",
+    "largest-contentful-paint": "0,8 sek.",
+    "total-blocking-time": "0 ms",
+    "cumulative-layout-shift": "0,001",
+    "speed-index": "1,8 sek.",
+    "server-response-time": "Šakninio dokumento įkėlimas užtruko 40 ms",
+    "total-byte-weight": "Bendras dydis: 725 KiB",
+    "dom-size": ""
+   },
+   "opp": [
+    "unused-javascript: Numatoma, kad bus sutaupyta 87 KiB",
+    "unused-css-rules: Numatoma, kad bus sutaupyta 27 KiB"
+   ],
+   "fail": [
+    "a:color-contrast",
+    "a:link-in-text-block"
+   ],
+   "crux": {
+    "CUMULATIVE_LAYOUT_SHIFT_SCORE": "16 AVERAGE",
+    "EXPERIMENTAL_TIME_TO_FIRST_BYTE": "632 FAST",
+    "FIRST_CONTENTFUL_PAINT": "989 FAST",
+    "INTERACTION_TO_NEXT_PAINT": "53 FAST",
+    "LARGEST_CONTENTFUL_PAINT": "1072 FAST"
+   },
+   "crux_origin": "AVERAGE"
+  }
+ ]
+}
