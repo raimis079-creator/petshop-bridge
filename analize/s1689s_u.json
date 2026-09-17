@@ -1,5 +1,66 @@
 {
- "v": "dep-150950",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "v": "dep-151445",
+ "kurimas": 200,
+ "sid": 6029,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "pod": [
+   "03:17:45 2026-09-17T03:17:45+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"7d284dc8-e5a1-4ebc-b920-06d388a8ab99\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo",
+   "03:18:23 2026-09-17T03:18:23+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"fad470ae-e65d-4b39-98a8-a9a2be2a895f\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo",
+   "07:21:58 2026-09-17T07:21:57+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"76cb33dc-ddc4-43c4-880d-9d01c0b0a4a1\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo",
+   "08:04:27 2026-09-17T08:04:27+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"e88776cd-1d5c-4a2c-aa48-5589e705e063\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo",
+   "08:04:49 2026-09-17T08:04:48+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"83d017d7-aef7-4ac1-9e30-a632ebd9b37e\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo",
+   "08:06:49 2026-09-17T08:06:49+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"da09fc1a-3b19-4a25-be49-45f2795ace67\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo",
+   "08:07:35 2026-09-17T08:07:35+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"fc6b5a56-055f-4bee-bfa2-e031f344fe5d\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo",
+   "08:10:32 2026-09-17T08:10:32+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"19ec7e35-b5ce-40dc-a257-5a92aa20aa70\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo",
+   "08:11:53 2026-09-17T08:11:52+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"2cad6101-c128-4157-bde4-c98df7673ffa\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo",
+   "08:13:01 2026-09-17T08:13:00+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"3f17ecf1-3799-48f4-921a-f08cd7fb79a2\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo",
+   "14:50:27 2026-09-17T14:50:26+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"ed4ea8b6-2add-43c9-b0a4-98081d00c656\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo",
+   "14:52:08 2026-09-17T14:52:08+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"dc8db634-8d48-4a96-96fe-4502aa069550\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo"
+  ],
+  "wp_config_wp_cache": "nėra",
+  "WP_CACHE_const": false,
+  "wp_config_mtime": "2026-09-11 22:08",
+  "adv_cache_mtime": "2026-09-01 09:46",
+  "wpsc_cfg_mtime": "2026-09-01 11:14",
+  "wpsc": {
+   "cache_enabled": "1",
+   "super_cache_enabled": "1",
+   "wp_cache_mod_rewrite": "0",
+   "cache_rejected_uri": "array ( 0 => 'wp-.*\\\\.php', 1 => 'index\\\\.php', 2 => 'krepselis', 3 => 'cart', 4 => 'checkout', 5 => 'atsiskaitymas', 6 => 'my-account', 7 => 'mano-paskyra', 8 => 'augintinis', 9 => 'prenumerata', 10 ",
+   "wp_cache_not_logged_in": "2",
+   "wpsc_rejected_cookies": "array ( 0 => 'wp_woocommerce_session_', 1 => 'woocommerce_items_in_cart', 2 => 'woocommerce_cart_hash', 3 => 'comment_author_', 4 => 'wordpress_logged_in_', )",
+   "cache_max_time": "3600"
+  },
+  "supercache_dirs": 0,
+  "supercache_oldest": null,
+  "kasa_cached": false,
+  "wc_logger_tail": "\"line\":48,\"function\":\"do_action\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/libraries/wp-async-request.php\",\"line\":147,\"function\":\"handle\",\"class\":\"ActionScheduler_AsyncRequest_QueueRunner\",\"type\":\"->\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php\",\"line\":341,\"function\":\"maybe_handle\",\"class\":\"WP_Async_Request\",\"type\":\"->\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php\",\"line\":365,\"function\":\"apply_filters\",\"class\":\"WP_Hook\",\"type\":\"->\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/plugin.php\",\"line\":522,\"function\":\"do_action\",\"class\":\"WP_Hook\",\"type\":\"->\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-admin/admin-ajax.php\",\"line\":192,\"function\":\"do_action\"}]} 2026-09-17T14:52:54+00:00 INFO 2 expired log files were deleted. ",
+  "opt_changes": [
+   {
+    "option_name": "ps_s1689s_sitemap_bak"
+   },
+   {
+    "option_name": "ps_s1689_18551_bak"
+   },
+   {
+    "option_name": "ps_s1688_prins_bak"
+   },
+   {
+    "option_name": "ps_s1688_excl_bak"
+   },
+   {
+    "option_name": "ps_s1683_18054_bak"
+   },
+   {
+    "option_name": "ps_s1681_inst5_bak"
+   },
+   {
+    "option_name": "ps_s1682_planas"
+   }
+  ]
+ }
 }
