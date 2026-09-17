@@ -1,0 +1,449 @@
+{
+ "v": "dep-101529",
+ "kurimas": 200,
+ "sid": 6026,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "atsaukti": [
+   {
+    "id": "35871",
+    "c": "2026-09-09 05:49:01",
+    "t": "56.99000000",
+    "pm": "paysera",
+    "dev": "Mobile",
+    "min": 393,
+    "notes": [
+     "Stock hold of 90 minutes applied to: - Exclusion Hypoallergenic mažų v",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Likutis sumažintas: Exclusion Hypoallergenic mažų veislių šunų maistas",
+     "Likutis padidintas: Exclusion Hypoallergenic mažų veislių šunų maistas",
+     "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo stat",
+     "Email \"Atšauktas užsakymas\" sent.",
+     "S1662: AVPN numeris AVPN011001 nuimtas — PVM sąskaitos tik apmokėtiems"
+    ]
+   },
+   {
+    "id": "35873",
+    "c": "2026-09-09 09:33:57",
+    "t": "13.31000000",
+    "pm": "bacs",
+    "dev": "Mobile",
+    "min": 3652,
+    "notes": [
+     "Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000)",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Likutis sumažintas: Žarnų pagaliukai, 80 g (23&rarr;19)",
+     "Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000)",
+     "Vykdymas: MAIN — AV 4 vnt (1 siunta(-os))",
+     "Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Su",
+     "Email \"Naujas užsakymas\" sent.",
+     "S1661: atstatyta _reduced_stock=4 ir stock_reduced žymė (pay-page keli",
+     "S1662: AVPN numeris AVPN011003 nuimtas — PVM sąskaitos tik apmokėtiems",
+     "Likutis padidintas: Žarnų pagaliukai, 80 g (11&rarr;15)",
+     "S1675: atšaukta tyliai Raimio nurodymu — klientas užsakė iš naujo ir a",
+     "Email \"Atšauktas užsakymas\" sent.",
+     "Email \"Atšauktas užsakymas\" sent."
+    ]
+   },
+   {
+    "id": "35874",
+    "c": "2026-09-09 09:42:37",
+    "t": "13.31000000",
+    "pm": "paysera",
+    "dev": "Mobile",
+    "min": 159,
+    "notes": [
+     "Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000)",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Likutis sumažintas: Žarnų pagaliukai, 80 g (19&rarr;15)",
+     "Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000)",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000)",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000)",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Atšaukta rankiniu būdu: klientas tam pačiam krepšeliui sukūrė tris užs",
+     "Email \"Atšauktas užsakymas\" sent.",
+     "Likutis padidintas rankiniu būdu S1661: Žarnų pagaliukai, 80 g +4 (10→",
+     "S1662: AVPN numeris AVPN011004 nuimtas — PVM sąskaitos tik apmokėtiems"
+    ]
+   },
+   {
+    "id": "35875",
+    "c": "2026-09-09 09:50:07",
+    "t": "13.31000000",
+    "pm": "paysera",
+    "dev": "Mobile",
+    "min": 152,
+    "notes": [
+     "Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000)",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Likutis sumažintas: Žarnų pagaliukai, 80 g (15&rarr;11)",
+     "Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000)",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000)",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000)",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000)",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Atšaukta rankiniu būdu: klientas tam pačiam krepšeliui sukūrė tris užs",
+     "Email \"Atšauktas užsakymas\" sent.",
+     "Likutis padidintas rankiniu būdu S1661: Žarnų pagaliukai, 80 g +4 (14→",
+     "S1662: AVPN numeris AVPN011005 nuimtas — PVM sąskaitos tik apmokėtiems"
+    ]
+   },
+   {
+    "id": "35876",
+    "c": "2026-09-09 10:27:14",
+    "t": "6.15000000",
+    "pm": "paysera",
+    "dev": "Desktop",
+    "min": 228,
+    "notes": [
+     "Stock hold of 90 minutes applied to: - Žarnų pagaliukai, 80 g (720000)",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Likutis sumažintas: Žarnų pagaliukai, 80 g (11&rarr;10)",
+     "S1662: AVPN numeris AVPN011006 nuimtas — PVM sąskaitos tik apmokėtiems",
+     "Likutis padidintas: Žarnų pagaliukai, 80 g (18&rarr;19)",
+     "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo stat",
+     "Email \"Atšauktas užsakymas\" sent."
+    ]
+   },
+   {
+    "id": "35884",
+    "c": "2026-09-10 07:25:13",
+    "t": "59.99000000",
+    "pm": "paysera",
+    "dev": null,
+    "min": 146,
+    "notes": [
+     "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo stat",
+     "Email \"Atšauktas užsakymas\" sent."
+    ]
+   },
+   {
+    "id": "35885",
+    "c": "2026-09-10 09:34:18",
+    "t": "59.99000000",
+    "pm": "paysera",
+    "dev": null,
+    "min": 197,
+    "notes": [
+     "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo stat",
+     "Email \"Atšauktas užsakymas\" sent."
+    ]
+   },
+   {
+    "id": "35902",
+    "c": "2026-09-11 08:19:04",
+    "t": "11.72000000",
+    "pm": "bacs",
+    "dev": "Mobile",
+    "min": 5791,
+    "notes": [
+     "Stock hold of 90 minutes applied to: - Žaislas katei - Kamuoliukas su ",
+     "Vykdymas: MAIN — AV 1 vnt (1 siunta(-os))",
+     "Likutis sumažintas: Žaislas katei - Kamuoliukas su plunksnomis ir gars",
+     "Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Su",
+     "Email \"Naujas užsakymas\" sent.",
+     "S1675: AVPN011016 nuimtas — priskirtas neapmokėtam (base.php v2.12 kla",
+     "El. paštas pataisytas i.belovuene1@gnail.com → i.belovuene1@gmail.com ",
+     "Bacs priminimas (+48 val.) klientui išsiųstas (S1676).",
+     "⚠ SARGAS: likutis buvo sumažintas, bet atšaukiant NEGRĮŽO — grąžink ra",
+     "Bacs: neapmokėta per 72 val. — atšaukta automatiškai, klientui išsiųst",
+     "Email \"Atšauktas užsakymas\" sent.",
+     "Email \"Atšauktas užsakymas\" sent.",
+     "Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\"",
+     "Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"o"
+    ]
+   },
+   {
+    "id": "35949",
+    "c": "2026-09-14 21:27:19",
+    "t": "26.90000000",
+    "pm": "paysera",
+    "dev": "Mobile",
+    "min": 1589,
+    "notes": [
+     "Stock hold of 90 minutes applied to: - Animonda Carny Adult Beef + Chi",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Likutis sumažintas: Animonda Carny Adult Beef + Chicken + Duck Heart –",
+     "Stock hold of 90 minutes applied to: - Animonda Carny Adult Beef + Chi",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "⚠ SARGAS: likutis buvo sumažintas, bet atšaukiant NEGRĮŽO — grąžink ra",
+     "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo stat",
+     "Email \"Atšauktas užsakymas\" sent.",
+     "Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\"",
+     "Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"o"
+    ]
+   },
+   {
+    "id": "35958",
+    "c": "2026-09-15 10:18:42",
+    "t": "10.34000000",
+    "pm": "paysera",
+    "dev": "Mobile",
+    "min": 288,
+    "notes": [
+     "Stock hold of 90 minutes applied to: - Josera Leger 10 kg - sausas mai",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Likutis sumažintas: Josera Leger 10 kg - sausas maistas katėms, mažiau",
+     "Paysera: Užsakymo būsena po apmokėjimo",
+     "Vykdymas: DS — VF 2 vnt (1 siunta(-os)) · dropship pirma",
+     "Paysera: Naujo užsakymo kūrimo būsena",
+     "Faktai irasyti: 1 eilutes · pajamos 5,77 EUR (be PVM, po nuolaidu) · P",
+     "Surūšiuota pati: Josera Leger 10 kg - sausas maistas katė — VF siunčia",
+     "Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pak",
+     "Email \"Naujas užsakymas\" sent.",
+     "Email \"Užsakymas vykdomas\" sent.",
+     "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
+     "Likutis padidintas: Josera Leger 10 kg - sausas maistas katėms, mažiau",
+     "Užsakymo statusas pakeistas iš Vykdomas į Atšauktas."
+    ]
+   },
+   {
+    "id": "35959",
+    "c": "2026-09-15 10:34:06",
+    "t": "31.15000000",
+    "pm": "paysera",
+    "dev": "Mobile",
+    "min": 1708,
+    "notes": [
+     "Stock hold of 90 minutes applied to: - Gėrimas katėms - Miamor Trinkfe",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Likutis sumažintas: Gėrimas katėms - Miamor Trinkfein Vitaldrink su tu",
+     "Likutis padidintas: Gėrimas katėms - Miamor Trinkfein Vitaldrink su tu",
+     "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo stat",
+     "Email \"Atšauktas užsakymas\" sent.",
+     "Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\"",
+     "Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"o"
+    ]
+   },
+   {
+    "id": "35986",
+    "c": "2026-09-16 16:02:54",
+    "t": "83.89000000",
+    "pm": "paysera",
+    "dev": null,
+    "min": 248,
+    "notes": [
+     "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo stat",
+     "Email \"Atšauktas užsakymas\" sent.",
+     "Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\""
+    ]
+   },
+   {
+    "id": "35996",
+    "c": "2026-09-17 08:04:48",
+    "t": "29.49000000",
+    "pm": "paysera",
+    "dev": null,
+    "min": 128,
+    "notes": [
+     "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
+     "Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
+     "Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36001 (S1676)."
+    ]
+   },
+   {
+    "id": "35997",
+    "c": "2026-09-17 08:06:49",
+    "t": "62.98000000",
+    "pm": "paysera",
+    "dev": null,
+    "min": 127,
+    "notes": [
+     "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
+     "Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
+     "Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36001 (S1676)."
+    ]
+   },
+   {
+    "id": "35998",
+    "c": "2026-09-17 08:07:35",
+    "t": "62.98000000",
+    "pm": "paysera",
+    "dev": null,
+    "min": 126,
+    "notes": [
+     "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
+     "Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
+     "Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36001 (S1676)."
+    ]
+   },
+   {
+    "id": "35999",
+    "c": "2026-09-17 08:10:32",
+    "t": "29.49000000",
+    "pm": "paysera",
+    "dev": null,
+    "min": 123,
+    "notes": [
+     "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
+     "Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
+     "Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36001 (S1676)."
+    ]
+   },
+   {
+    "pid": "19417",
+    "u": "43"
+   }
+  ],
+  "top_kainos": [
+   {
+    "id": "18587",
+    "n": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    "kaina": "56.99",
+    "gtin": "8011259002846",
+    "u12": "182"
+   },
+   {
+    "id": "18560",
+    "n": "Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg",
+    "kaina": "79.9",
+    "gtin": "8011259002594",
+    "u12": "82"
+   },
+   {
+    "id": "17978",
+    "n": "Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria virškinimo sistema",
+    "kaina": "39.99",
+    "gtin": "4032254785989",
+    "u12": "77"
+   },
+   {
+    "id": "18590",
+    "n": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg",
+    "kaina": "21.95",
+    "gtin": "8011259000088",
+    "u12": "128"
+   },
+   {
+    "id": "18572",
+    "n": "Exclusion Hypoallergenic sausas šuniukų maistas su kiauliena ir žirneliais 12 kg",
+    "kaina": "84.89",
+    "gtin": "8011259002532",
+    "u12": "32"
+   },
+   {
+    "id": "18154",
+    "n": "JOSERA FESTIVAL pašaras šunims su lašiša, 12,5 kg",
+    "kaina": "45.29",
+    "gtin": "4032254775263",
+    "u12": "36"
+   },
+   {
+    "id": "18018",
+    "n": "Josera Mini Lamb begrūdis (Mini Deluxe) 10 kg - sausas maistas mažų veislių šunims su ėriena",
+    "kaina": "46.19",
+    "gtin": "4032254775522",
+    "u12": "36"
+   },
+   {
+    "id": "17995",
+    "n": "Josera Salmon & Potato 12,5 kg - begrūdis sausas maistas šunims su lašiša",
+    "kaina": "56.79",
+    "gtin": "4032254786054",
+    "u12": "27"
+   },
+   {
+    "id": "19760",
+    "n": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 12 kg",
+    "kaina": "59.99",
+    "gtin": "5214000583967",
+    "u12": "23"
+   },
+   {
+    "id": "16534",
+    "n": "ROYAL CANIN CAT FUSSY EXIGENT - 10 kg, sausas pašaras išrankioms katėms",
+    "kaina": "73.8",
+    "gtin": "3182551065763",
+    "u12": "15"
+   },
+   {
+    "id": "18000",
+    "n": "Josera Optiness 12,5 kg - begrūdis sausas maistas šunims su ėriena",
+    "kaina": "41.79",
+    "gtin": "4032254731641",
+    "u12": "24"
+   },
+   {
+    "id": "18043",
+    "n": "Josera Marinesse 10 kg - sausas maistas katėms su lašiša",
+    "kaina": "49.99",
+    "gtin": "4032254749547",
+    "u12": "21"
+   }
+  ],
+  "nepasiekiami": [
+   {
+    "id": "18149",
+    "n": "JOSERA LAMB & RICE pašaras šunims su ėriena, 12,5 kg",
+    "kaina": "45.39",
+    "gtin": "4032254775294",
+    "u12": "50",
+    "st": "publish/outofstock"
+   },
+   {
+    "id": "18007",
+    "n": "Josera Naturelle 10 kg - sausas maistas sterilizuotoms katėms",
+    "kaina": "48.75",
+    "gtin": "4032254749882",
+    "u12": "23",
+    "st": "draft/outofstock"
+   },
+   {
+    "id": "18545",
+    "n": "Exclusion Intestinal Monoprotein sausas šunų maistas su kiauliena ir ryžiais M/L12 kg",
+    "kaina": "75.8",
+    "gtin": "",
+    "u12": "13",
+    "st": "draft/outofstock"
+   },
+   {
+    "id": "18551",
+    "n": "Exclusion Intestinal Monoprotein mažų veislių šunų maistas su kiauliena ir ryžiais 7 kg",
+    "kaina": "61.59",
+    "gtin": "801125900285",
+    "u12": "13",
+    "st": "draft/outofstock"
+   },
+   {
+    "id": "18623",
+    "n": "Exclusion Hepatic dietinis sausas šunų maistas su kiauliena, ryžiais ir žirneliais M/L 12kg",
+    "kaina": "73.9",
+    "gtin": "",
+    "u12": "6",
+    "st": "draft/outofstock"
+   },
+   {
+    "id": "18248",
+    "n": "Hikari Friend Large, 10 kg, - Hikari maistas koi karpiams ir kitoms tvenkinių žuvims",
+    "kaina": "73.5",
+    "gtin": "",
+    "u12": "7",
+    "st": "publish/outofstock"
+   },
+   {
+    "id": "17965",
+    "n": "Josicat Classic Sterilised 10 kg sausas maistas katėms",
+    "kaina": "29.69",
+    "gtin": "4032254753421",
+    "u12": "16",
+    "st": "publish/outofstock"
+   },
+   {
+    "id": "19393",
+    "n": "Animonda Vom Feinsten Adult with Turkey and Lamb – konservai suaugusiems šunims su kalakutiena ir ėriena, 150 g",
+    "kaina": "1.33",
+    "gtin": "4017721829656",
+    "u12": "45",
+    "st": "publish/outofstock"
+   }
+  ]
+ }
+}
