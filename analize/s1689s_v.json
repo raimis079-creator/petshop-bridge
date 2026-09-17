@@ -1,0 +1,106 @@
+{
+ "v": "dep-151638",
+ "kurimas": 200,
+ "sid": 6030,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "zingsniai": {
+   "place-order-debug-dc8db634-2026-09-17-55b1210a7585fa273f07111630596c34": [
+    "14:52:08 DEBUG Place Order flow initiated CONTEXT:",
+    "14:52:08 DEBUG Session updated with checkout data and totals calculated CONTEXT:",
+    "14:52:08 DEBUG Checkout posted data validated CONTEXT:",
+    "14:52:08 DEBUG Paskyra su tokiu el. pašto adresu jau yra sukurta. <a href=\"#\" class=\"showlogin\">Prisijunkite.</a> CONTEXT:"
+   ],
+   "place-order-debug-ed4ea8b6-2026-09-17-463cb39eb05bf5d05efea3c1da1e0ecf": [
+    "14:50:26 DEBUG Place Order flow initiated CONTEXT:",
+    "14:50:27 DEBUG Session updated with checkout data and totals calculated CONTEXT:"
+   ],
+   "place-order-debug-3f17ecf1-2026-09-17-0de32d05668ba60fac72010949dbc7b7": [
+    "08:13:00 DEBUG Place Order flow initiated CONTEXT:",
+    "08:13:00 DEBUG Session updated with checkout data and totals calculated CONTEXT:",
+    "08:13:00 DEBUG Checkout posted data validated CONTEXT:",
+    "08:13:01 DEBUG Sandėlyje nėra pakankamo produkto „Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg“ kiekio šiam užsakymui įvykdyti. CONTEXT:"
+   ]
+  },
+  "klaidos": {
+   "place-order-debug-dc8db634-2026-09-17-55b1210a7585fa273f07111630596c34": [],
+   "place-order-debug-ed4ea8b6-2026-09-17-463cb39eb05bf5d05efea3c1da1e0ecf": [
+    "message: Return type of NAWebCo\\\\BoxPacker\\\\Solid::jsonSerialize() should either be compatible with JsonSerializable::jsonSerialize(): mixed, or the #[\\\\ReturnTypeWillChange] attribute should be used to tempor"
+   ],
+   "place-order-debug-3f17ecf1-2026-09-17-0de32d05668ba60fac72010949dbc7b7": []
+  },
+  "rytas": {
+   "35996": {
+    "email_hash": "03009c",
+    "dev": "",
+    "src": "",
+    "items": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg",
+    "notes": [
+     "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
+     "Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
+     "Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36001 (S1676)."
+    ]
+   },
+   "35997": {
+    "email_hash": "03009c",
+    "dev": "",
+    "src": "",
+    "items": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg, Natūralus bentonitinis sušokantis kraikas katėms Wonder White Sodium grey 11,8l / 10 kg",
+    "notes": [
+     "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
+     "Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
+     "Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36001 (S1676)."
+    ]
+   },
+   "35998": {
+    "email_hash": "03009c",
+    "dev": "",
+    "src": "",
+    "items": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg, Natūralus bentonitinis sušokantis kraikas katėms Wonder White Sodium grey 11,8l / 10 kg",
+    "notes": [
+     "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
+     "Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
+     "Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36001 (S1676)."
+    ]
+   },
+   "35999": {
+    "email_hash": "03009c",
+    "dev": "",
+    "src": "",
+    "items": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg, Natūralus bentonitinis sušokantis kraikas katėms Wonder White Sodium grey 11,8l / 10 kg",
+    "notes": [
+     "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
+     "Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
+     "Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36001 (S1676)."
+    ]
+   },
+   "36000": {
+    "email_hash": "03009c",
+    "dev": "",
+    "src": "",
+    "items": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Sodium grey 11,8l / 10 kg, Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg",
+    "notes": [
+     "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
+     "Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
+     "Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36001 (S1676)."
+    ]
+   },
+   "36001": {
+    "email_hash": "03009c",
+    "dev": "",
+    "src": "",
+    "items": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg",
+    "notes": [
+     "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Ne",
+     "Email \"Atšauktas užsakymas\" sent.",
+     "Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
+    ]
+   }
+  },
+  "rytas_sekmingas_35995_hash": "f15ab0",
+  "36005_hash": "90fd22"
+ }
+}
