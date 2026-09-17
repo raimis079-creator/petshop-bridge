@@ -1,0 +1,50 @@
+{
+ "v": "dep-151832",
+ "kurimas": 200,
+ "sid": 6031,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "opt": {
+   "woocommerce_enable_guest_checkout": "yes",
+   "woocommerce_enable_checkout_login_reminder": "yes",
+   "woocommerce_enable_signup_and_login_from_checkout": "yes",
+   "woocommerce_enable_myaccount_registration": "yes",
+   "woocommerce_registration_generate_username": "yes",
+   "woocommerce_registration_generate_password": "yes",
+   "woocommerce_hold_stock_minutes": "90",
+   "woocommerce_manage_stock": "yes"
+  },
+  "baigtys_viso": {
+   "Paskyra su tokiu el. pašto adresu jau yra sukurta. Prisijunkite.": 18,
+   "Session updated with checkout data and totals calculated": 8,
+   "Sandėlyje nėra pakankamo produkto „…“ kiekio šiam užsakymui įvykdyti.": 7,
+   "Checkout posted data validated": 1
+  },
+  "pagal_diena": {
+   "2026-09-14": {
+    "Paskyra su tokiu el. pašto adresu jau yra sukurta. Prisijunkite.": 5,
+    "Session updated with checkout data and totals calculated": 1
+   },
+   "2026-09-15": {
+    "Paskyra su tokiu el. pašto adresu jau yra sukurta. Prisijunkite.": 8,
+    "Session updated with checkout data and totals calculated": 1,
+    "Checkout posted data validated": 1
+   },
+   "2026-09-16": {
+    "Session updated with checkout data and totals calculated": 4,
+    "Paskyra su tokiu el. pašto adresu jau yra sukurta. Prisijunkite.": 1,
+    "Sandėlyje nėra pakankamo produkto „…“ kiekio šiam užsakymui įvykdyti.": 1
+   },
+   "2026-09-17": {
+    "Sandėlyje nėra pakankamo produkto „…“ kiekio šiam užsakymui įvykdyti.": 6,
+    "Paskyra su tokiu el. pašto adresu jau yra sukurta. Prisijunkite.": 4,
+    "Session updated with checkout data and totals calculated": 2
+   }
+  },
+  "failu": 34,
+  "vartotoju_su_uzsakymais_istorijoje": "5746"
+ }
+}
