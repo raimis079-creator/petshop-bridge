@@ -1,0 +1,18 @@
+{
+ "v": "dep-071614",
+ "kurimas": 200,
+ "sid": 6012,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "hooks": [
+   "add_action( 'template_redirect', function () {\n\tif ( is_admin() || wp_doing_ajax() || is_robots() || is_feed() ) { return;"
+  ],
+  "tail": "  24 ·   102\n *   6. brendai → /gamintojas/                          22 ·   501\n *\n * KRITINIS 6 sluoksnis: be jo WordPress redirect_canonical /exclusion\n * (218 clicks) SPĖJIMU 301-ina į ATSITIKTINĮ SKU. TŽ v1.56 tai įspėjo, ir\n * 2026-08-04 tai vis dar vyko.\n *\n * VARTAI:\n *   - TIK tiksliam adresui iš žemėlapio, TIK kai jis DABAR 404\n *   - vienas 301 tiesiai į galutinį 200, jokių grandinių\n *   - JOKIO „panašiausio URL\" spėjimo\n *   - redirect_canonical išjungiamas TIK mūsų atpažintam adresui\n *   - X-Redirect-By: Petshop-Legacy-Category\n *\n * ĮŠALDYTA, NE DINAMINIS. Naujoms kategorijoms/prekėms taisyklės NEKURIAMOS.\n * Naujas įrašas — tik rankiniu būdu su GSC pagrindimu.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nconst PS_LEGACY_301_MAP = __DIR__ . '/petshop-legacy-301-map.json';\n\nfunction petshop_legacy_301_map() {\n\tstatic $m = null;\n\tif ( null !== $m ) { return $m; }\n\t$raw = @file_get_contents( PS_LEGACY_301_MAP );\n\t$m   = ( false === $raw ) ? array() : (array) json_decode( $raw, true );\n\treturn $m;\n}\n\nfunction petshop_legacy_301_path() {\n\t$p = (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH );\n\treturn strtolower( trim( rawurldecode( $p ), '/' ) );\n}\n\nadd_action( 'template_redirect', function () {\n\tif ( is_admin() || wp_doing_ajax() || is_robots() || is_feed() ) { return; }\n\tif ( ! is_404() ) { return; }          // esami puslapiai NELIEČIAMI\n\n\t$kelias = petshop_legacy_301_path();\n\tif ( '' === $kelias ) { return; }\n\n\t$map = petshop_legacy_301_map();\n\tif ( ! isset( $map[ $kelias ] ) ) { return; }   // jokio spėjimo\n\n\t$t = $map[ $kelias ];\n\tif ( 0 === strpos( $t, '__TERM__' ) ) {\n\t\t$term = get_term( (int) substr( $t, 8 ), 'product_cat' );\n\t\tif ( ! $term || is_wp_error( $term ) ) { return; }\n\t\t$url = get_term_link( $term );\n\t\tif ( is_wp_error( $url ) || ! $url ) { return; }\n\t} else {\n\t\t$url = home_url( $t );\n\t}\n\n\t// Apsauga nuo kilpos\n\tif ( strtolower( trim( (string) parse_url( $url, PHP_URL_PATH ), '/' ) ) === $kelias ) { return; }\n\n\t// v2.1: užklausos eilutė keliauja kartu (gclid/utm/gad_source — Ads atribucijai)\n\t$qs = (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_QUERY );\n\tif ( '' !== $qs ) { $url .= ( false === strpos( $url, '?' ) ? '?' : '&' ) . $qs; }\n\n\tremove_action( 'template_redirect', 'redirect_canonical' );\n\twp_redirect( $url, 301, 'Petshop-Legacy-Category' );\n\texit;\n}, 1 );\n",
+  "wc_shop": "https://petshop.lt/parduotuve/",
+  "brand_link": "https://petshop.lt/gamintojas/4dogs/",
+  "exists": false
+ }
+}
