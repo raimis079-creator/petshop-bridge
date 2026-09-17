@@ -1,0 +1,52 @@
+{
+ "v": "dep-161052",
+ "kurimas": 200,
+ "sid": 6042,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "d2": {
+  "result": "success",
+  "redirect": "https://petshop.lt/kasa/order-received/36012/?key=wc_order_F1o8b5UdXg2nw",
+  "order_id": 36012
+ },
+ "d3": {
+  "uzs": [
+   {
+    "id": 36012,
+    "st": "on-hold",
+    "uid": 44,
+    "meta": "1",
+    "sukurtas": "09-17 19:11",
+    "pastabos": [
+     "Email \"Naujas užsakymas\" sent.",
+     "Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
+     "Vykdymas: MAIN — AV 1 vnt (1 siunta(-os)) · dropship pirma",
+     "Svečio užsakymas priskirtas esamai paskyrai #44 pagal el. paštą (S1690)."
+    ],
+    "atsaukta": true
+   },
+   {
+    "id": 35871,
+    "st": "cancelled",
+    "uid": 0,
+    "meta": "",
+    "sukurtas": "09-09 08:49",
+    "pastabos": [
+     "S1662: AVPN numeris AVPN011001 nuimtas — PVM sąskaitos tik apmokėtiems (Raimio taisyklė). Apmokėjus ",
+     "Email \"Atšauktas užsakymas\" sent.",
+     "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas ",
+     "Likutis padidintas: Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 ",
+     "Likutis sumažintas: Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 ",
+     "Paysera: Neapmokėto užsakymo būsena"
+    ]
+   }
+  ],
+  "testine_grazinta": "draft",
+  "paskyros_adresas": {
+   "addr": "",
+   "city": ""
+  }
+ }
+}
