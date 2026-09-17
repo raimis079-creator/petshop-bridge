@@ -1,0 +1,33 @@
+{
+ "v": "dep-171809",
+ "kurimas": 200,
+ "sid": 6047,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "ps_s1690h": {
+  "enabled": true,
+  "recipient": "uzsakymai@petshop.lt",
+  "jau_siusta_meta": true,
+  "send": true,
+  "siusta": {
+   "0": {
+    "to": "uzsakymai@petshop.lt",
+    "subject": "Naujas užsakymas Nr. 1098 — 2026-09-17",
+    "headers": "Content-Type: text/html\r\nReply-to: Saulius Saulius <siulyk@gmail.com>\r\n",
+    "attachments": [],
+    "len": 16009
+   },
+   "phpmailer": {
+    "from": "uzsakymai@petshop.lt",
+    "to": [
+     "uzsakymai@petshop.lt"
+    ],
+    "sender": "uzsakymai@petshop.lt",
+    "host": "isopas.serveriai.lt"
+   }
+  },
+  "klaidos": []
+ }
+}
