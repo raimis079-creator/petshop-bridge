@@ -1,0 +1,140 @@
+{
+ "v": "dep-171040",
+ "kurimas": 200,
+ "sid": 6044,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "ps_s1690f": {
+  "dabar": "2026-09-17 20:11:55",
+  "uzs": [
+   {
+    "id": 36016,
+    "st": "processing",
+    "pm": "paysera",
+    "uid": 5833,
+    "sukurtas": "19:56",
+    "priskirta": "",
+    "pastabos": [
+     "19:57 Paysera: Naujo užsakymo kūrimo būsena",
+     "19:57 Email \"Užsakymas vykdomas\" sent.",
+     "19:57 Email \"Naujas užsakymas\" sent.",
+     "19:57 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėta",
+     "19:57 Surūšiuota pati: JosiDog Senior / Light 900 g — VF siunčia klientui",
+     "19:57 Faktai irasyti: 1 eilutes · pajamos 3,79 EUR (be PVM, po nuolaidu) · PVM 1,37 EUR · marza ",
+     "19:57 Vykdymas: DS — VF 2 vnt (1 siunta(-os)) · dropship pirma",
+     "19:57 Paysera: Užsakymo būsena po apmokėjimo",
+     "19:56 Likutis sumažintas: JosiDog Senior / Light 900 g (46&rarr;44)",
+     "19:56 Paysera: Neapmokėto užsakymo būsena"
+    ]
+   },
+   {
+    "id": 36015,
+    "st": "pending",
+    "pm": "paysera",
+    "uid": 5833,
+    "sukurtas": "19:54",
+    "priskirta": "",
+    "pastabos": [
+     "19:54 Likutis sumažintas: JosiDog Senior / Light 900 g (48&rarr;46)",
+     "19:54 Paysera: Neapmokėto užsakymo būsena",
+     "19:54 Stock hold of 90 minutes applied to: <br>- JosiDog Senior / Light 900 g (JOS0869) &times; "
+    ]
+   },
+   {
+    "id": 36012,
+    "st": "cancelled",
+    "pm": "bacs",
+    "uid": 44,
+    "sukurtas": "19:11",
+    "priskirta": "1",
+    "pastabos": [
+     "19:12 Email \"Atšauktas užsakymas\" sent.",
+     "19:12 Email \"Atšauktas užsakymas\" sent.",
+     "19:12 TESTAS S1690 atšauktas automatiškai. Užsakymo statusas pakeistas iš Sustabdytas į Atšaukta",
+     "19:12 Email \"Naujas užsakymas\" sent.",
+     "19:11 Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
+     "19:11 Vykdymas: MAIN — AV 1 vnt (1 siunta(-os)) · dropship pirma",
+     "19:11 Svečio užsakymas priskirtas esamai paskyrai #44 pagal el. paštą (S1690)."
+    ]
+   },
+   {
+    "id": 36005,
+    "st": "processing",
+    "pm": "paysera",
+    "uid": 5832,
+    "sukurtas": "14:21",
+    "priskirta": "",
+    "pastabos": [
+     "14:23 Email \"Užsakymas vykdomas\" sent.",
+     "14:23 Email \"Naujas užsakymas\" sent.",
+     "14:23 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėta",
+     "14:23 Surūšiuota pati: Josera High Protein Junior Sea Fish sau — VF siunčia klientui",
+     "14:23 Faktai irasyti: 1 eilutes · pajamos 46,02 EUR (be PVM, po nuolaidu) · PVM 10,36 EUR · marz",
+     "14:23 Vykdymas: DS — VF 1 vnt (1 siunta(-os)) · dropship pirma",
+     "14:23 Paysera: Užsakymo būsena po apmokėjimo",
+     "14:21 Likutis sumažintas: Josera High Protein Junior Sea Fish sausas pašaras jauniems šunims su ",
+     "14:21 Paysera: Neapmokėto užsakymo būsena",
+     "14:21 Stock hold of 90 minutes applied to: <br>- Josera High Protein Junior Sea Fish sausas paša"
+    ]
+   }
+  ],
+  "admin_email": "terra@gyvunai.lt",
+  "wc_new_order": {
+   "enabled": "yes",
+   "recipient": "uzsakymai@petshop.lt",
+   "subject": "Naujas užsakymas Nr. {order_number} — {order_date}",
+   "heading": "Naujas užsakymas Nr. {order_number}",
+   "additional_content": "Sveikiname gavus užsakymą!",
+   "email_type": "html",
+   "cc": "",
+   "bcc": ""
+  },
+  "smtp": {
+   "mail": {
+    "from_email": "uzsakymai@petshop.lt",
+    "from_name": "Petshop.lt",
+    "mailer": "smtp",
+    "return_path": true,
+    "from_email_force": true,
+    "from_name_force": true
+   },
+   "smtp": {
+    "autotls": true,
+    "auth": true,
+    "host": "isopas.serveriai.lt",
+    "port": 465,
+    "encryption": "ssl",
+    "user": "uzsakymai@petshop.lt",
+    "pass": "***"
+   }
+  },
+  "smtp_debug": [],
+  "smtp_log_lentele": null,
+  "ps_email_jobs": [],
+  "dev_pastas": {
+   "host": "dev.avesa.lt",
+   "transient": false,
+   "mu": []
+  },
+  "mu_naujausi": [
+   "petshop-kasa-paskyra.php 09-17 16:01",
+   "petshop-clarity.php 09-17 07:42",
+   "petshop-404-atitikmuo.php 09-17 07:19",
+   "petshop-relaunch.php 09-16 10:22",
+   "petshop-lifecycle-vartai.php 09-16 10:14",
+   "petshop-pakartoti.php 09-16 10:00"
+  ],
+  "php_log_tail": [
+   "\t\t\t\t\t  product_or_parent_id,\n",
+   "\t\t\t\t\t  taxonomy,\n",
+   "\t\t\t\t\t  term_id,\n",
+   "\t\t\t\t\t  is_variation_attribute,\n",
+   "\t\t\t\t\t  in_stock)\n",
+   "\t\t\t\t\tVALUES\n",
+   "\t\t\t\t\t  ( 34305, 15882, 'pa_spalva', 695, 1, 1 ) made by do_action('wp_ajax_ps_kat_variacija'), WP_Hook->do_action, WP_Hook->apply_filters, Petshop_Katalogas::ajax_variacija, Automattic\\WooCommerce\\Int",
+   "[17-Sep-2026 16:57:25 UTC] Užsakymas patvirtintas: užsakymas 36016, suma: 7.94EUR\n"
+  ]
+ }
+}
