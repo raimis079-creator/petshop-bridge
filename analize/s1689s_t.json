@@ -1,0 +1,389 @@
+{
+ "v": "dep-150756",
+ "kurimas": 200,
+ "sid": 6028,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "dabar": "2026-09-17 18:08:59",
+  "uzs_siandien": [
+   {
+    "id": "35991",
+    "status": "wc-completed",
+    "pm": "bacs",
+    "t": "56.99",
+    "c": "2026-09-17 03:20:21"
+   },
+   {
+    "id": "35995",
+    "status": "wc-processing",
+    "pm": "paysera",
+    "t": "71.39",
+    "c": "2026-09-17 07:23:44"
+   },
+   {
+    "id": "35996",
+    "status": "wc-cancelled",
+    "pm": "paysera",
+    "t": "29.49",
+    "c": "2026-09-17 08:04:48"
+   },
+   {
+    "id": "35997",
+    "status": "wc-cancelled",
+    "pm": "paysera",
+    "t": "62.98",
+    "c": "2026-09-17 08:06:49"
+   },
+   {
+    "id": "35998",
+    "status": "wc-cancelled",
+    "pm": "paysera",
+    "t": "62.98",
+    "c": "2026-09-17 08:07:35"
+   },
+   {
+    "id": "35999",
+    "status": "wc-cancelled",
+    "pm": "paysera",
+    "t": "29.49",
+    "c": "2026-09-17 08:10:32"
+   },
+   {
+    "id": "36000",
+    "status": "wc-cancelled",
+    "pm": "paysera",
+    "t": "20.99",
+    "c": "2026-09-17 08:11:52"
+   },
+   {
+    "id": "36001",
+    "status": "wc-cancelled",
+    "pm": "paysera",
+    "t": "20.99",
+    "c": "2026-09-17 08:13:00"
+   },
+   {
+    "id": "36005",
+    "status": "wc-processing",
+    "pm": "paysera",
+    "t": "59.68",
+    "c": "2026-09-17 11:21:41"
+   }
+  ],
+  "uzs_7d": [
+   {
+    "d": "2026-09-10",
+    "n": "12",
+    "ok": "10"
+   },
+   {
+    "d": "2026-09-11",
+    "n": "7",
+    "ok": "6"
+   },
+   {
+    "d": "2026-09-12",
+    "n": "7",
+    "ok": "7"
+   },
+   {
+    "d": "2026-09-13",
+    "n": "9",
+    "ok": "9"
+   },
+   {
+    "d": "2026-09-14",
+    "n": "11",
+    "ok": "11"
+   },
+   {
+    "d": "2026-09-15",
+    "n": "20",
+    "ok": "17"
+   },
+   {
+    "d": "2026-09-16",
+    "n": "12",
+    "ok": "11"
+   },
+   {
+    "d": "2026-09-17",
+    "n": "9",
+    "ok": "3"
+   }
+  ],
+  "paskutinis_ok": {
+   "id": "36005",
+   "status": "wc-processing",
+   "date_created_gmt": "2026-09-17 11:21:41"
+  },
+  "ivykiai_val": [
+   {
+    "h": "0",
+    "ses": "1",
+    "cart": "0",
+    "chk": "0",
+    "vi": "0"
+   },
+   {
+    "h": "1",
+    "ses": "1",
+    "cart": "0",
+    "chk": "0",
+    "vi": "1"
+   },
+   {
+    "h": "2",
+    "ses": "0",
+    "cart": "0",
+    "chk": "0",
+    "vi": "0"
+   },
+   {
+    "h": "3",
+    "ses": "1",
+    "cart": "1",
+    "chk": "2",
+    "vi": "1"
+   },
+   {
+    "h": "4",
+    "ses": "6",
+    "cart": "2",
+    "chk": "0",
+    "vi": "5"
+   },
+   {
+    "h": "5",
+    "ses": "7",
+    "cart": "2",
+    "chk": "0",
+    "vi": "7"
+   },
+   {
+    "h": "6",
+    "ses": "9",
+    "cart": "2",
+    "chk": "0",
+    "vi": "5"
+   },
+   {
+    "h": "7",
+    "ses": "12",
+    "cart": "23",
+    "chk": "3",
+    "vi": "32"
+   },
+   {
+    "h": "8",
+    "ses": "10",
+    "cart": "14",
+    "chk": "8",
+    "vi": "21"
+   },
+   {
+    "h": "9",
+    "ses": "13",
+    "cart": "0",
+    "chk": "0",
+    "vi": "18"
+   },
+   {
+    "h": "10",
+    "ses": "13",
+    "cart": "1",
+    "chk": "1",
+    "vi": "18"
+   },
+   {
+    "h": "11",
+    "ses": "13",
+    "cart": "2",
+    "chk": "1",
+    "vi": "10"
+   },
+   {
+    "h": "12",
+    "ses": "8",
+    "cart": "2",
+    "chk": "0",
+    "vi": "7"
+   },
+   {
+    "h": "13",
+    "ses": "11",
+    "cart": "1",
+    "chk": "0",
+    "vi": "31"
+   },
+   {
+    "h": "14",
+    "ses": "18",
+    "cart": "8",
+    "chk": "3",
+    "vi": "37"
+   },
+   {
+    "h": "15",
+    "ses": "4",
+    "cart": "0",
+    "chk": "0",
+    "vi": "3"
+   },
+   {
+    "h": "21",
+    "ses": "4",
+    "cart": "0",
+    "chk": "0",
+    "vi": "7"
+   },
+   {
+    "h": "23",
+    "ses": "1",
+    "cart": "0",
+    "chk": "0",
+    "vi": "1"
+   }
+  ],
+  "ivykiai_vakar_iki_dabar": {
+   "ses": "172",
+   "cart": "53",
+   "chk": "15"
+  },
+  "ivykiai_siandien": {
+   "ses": "122",
+   "cart": "58",
+   "chk": "18"
+  },
+  "kanalai_siandien": [
+   {
+    "kanalas": "mokamas",
+    "ses": "86"
+   },
+   {
+    "kanalas": "organika",
+    "ses": "21"
+   },
+   {
+    "kanalas": "referral",
+    "ses": "10"
+   },
+   {
+    "kanalas": null,
+    "ses": "7"
+   },
+   {
+    "kanalas": "email",
+    "ses": "1"
+   }
+  ],
+  "sargas": [
+   {
+    "laikas": "2026-09-17 17:52:45",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/kampinis-tualetas-katems-shuttle/): No such file or directory",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-17 17:52:45",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/kampinis-tualetas-katems-shuttle/): No such file or directory",
+    "kiek": "2"
+   },
+   {
+    "laikas": "2026-09-17 17:50:08",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/semtuvelis-kaciu-kraikui-mazas-georplast-simple/): No such fi",
+    "kiek": "2"
+   },
+   {
+    "laikas": "2026-09-17 17:53:25",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/tualetas-katems-shuttle-57-cm/): No such file or directory",
+    "kiek": "4"
+   },
+   {
+    "laikas": "2026-09-17 17:42:07",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/zaislas-katei-laiminga-kate-happy-cat-georplast/): No such fi",
+    "kiek": "3"
+   },
+   {
+    "laikas": "2026-09-17 17:34:59",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/semtuvelis-kaciu-kraikui-georplast-sonar/): No such file or d",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-17 17:20:06",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/kraikas-katems-kukuruzinis-corn-cat-ultra-certech-susokantis-",
+    "kiek": "1"
+   },
+   {
+    "laikas": "2026-09-17 17:19:02",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/candioli-cystocure-forte-milteliai-sunims-ir-katems-30g/): No",
+    "kiek": "2"
+   },
+   {
+    "laikas": "2026-09-17 17:19:02",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/8in1-flavours-m-trigubo-skonio-kaulas-vidutiniu-veisliu-sunim",
+    "kiek": "2"
+   },
+   {
+    "laikas": "2026-09-17 17:17:04",
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/8in1-delights-pro-dental-xs-kaulas-mazu-veisliu-sunims-7-vnt/",
+    "kiek": "2"
+   }
+  ],
+  "log_svarbu": [
+   "[17-Sep-2026 00:10:41 UTC] WordPress database error Duplicate entry '2026-09-16-puslapis-/kategorija/sunims/maistas-sunims/sausas-...' for key 'vienas' for query INSERT INTO `gaj6_ps_web_dienos` (`data`, `pjuvis`, `rakta"
+  ],
+  "wc_log_paysera": [],
+  "wc_logs": {
+   "place-order-debug-19ec7e35-2026-09-17-b8142e0c353c311e8ed063735d23fca2.log": 3060,
+   "place-order-debug-2cad6101-2026-09-17-b649444922ef230b8955620d0f1ccaaa.log": 3060,
+   "place-order-debug-3f17ecf1-2026-09-17-0de32d05668ba60fac72010949dbc7b7.log": 3056,
+   "place-order-debug-76cb33dc-2026-09-17-f4ef89b2d44d4627b87dd2c6fc3c41c5.log": 2992,
+   "place-order-debug-7d284dc8-2026-09-17-f6ca42a11ae2d4bb98b32e3e3350e0c9.log": 2989,
+   "place-order-debug-83d017d7-2026-09-17-be6b89cbaaa3724aaf8edbc7048bc8da.log": 3468,
+   "place-order-debug-da09fc1a-2026-09-17-16387df992ebf5acfd828edf7c144a3b.log": 3060,
+   "place-order-debug-dc8db634-2026-09-17-55b1210a7585fa273f07111630596c34.log": 2992,
+   "place-order-debug-e88776cd-2026-09-17-c8297c415c815ad3290eb1a5b6929f25.log": 1446,
+   "place-order-debug-ed4ea8b6-2026-09-17-463cb39eb05bf5d05efea3c1da1e0ecf.log": 1858,
+   "place-order-debug-fad470ae-2026-09-17-a3d7d471e588cebbdb4ee1616f5b3966.log": 2989,
+   "place-order-debug-fc6b5a56-2026-09-17-b77daef792deca5a4d91e3a3fd00f7a0.log": 3060,
+   "transactional-emails-2026-09-17-4b3948fae2b5980b9f1799af8a2ef0ac.log": 6153,
+   "wc-analytics-order-import-2026-09-17-d851cf2f30a9b29e796afc720a88c1c4.log": 247,
+   "wc_logger-2026-09-17-2ab5950c1c435cec147162f98b144fb8.log": 13498
+  },
+  "gw": [
+   "paysera",
+   "bacs"
+  ],
+  "shipping_zones": 3,
+  "ads_vakar": [
+   {
+    "diena": "2026-09-14",
+    "isl": "62.80",
+    "cl": "208"
+   },
+   {
+    "diena": "2026-09-15",
+    "isl": "40.97",
+    "cl": "155"
+   },
+   {
+    "diena": "2026-09-16",
+    "isl": "47.71",
+    "cl": "161"
+   }
+  ]
+ }
+}
