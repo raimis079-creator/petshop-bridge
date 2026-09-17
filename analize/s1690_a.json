@@ -1,0 +1,282 @@
+{
+ "v": "dep-153955",
+ "kurimas": 200,
+ "sid": 6034,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "ps_s1690a": {
+  "users_total": "5746",
+  "users_pries_t0": "5704",
+  "pass_formatai": [
+   {
+    "f": "$wp$",
+    "senas": "0",
+    "n": "42"
+   },
+   {
+    "f": "$wp$",
+    "senas": "1",
+    "n": "5704"
+   }
+  ],
+  "pass_tuscias": "0",
+  "reset_raktai_po_t0": "41",
+  "reset_raktai_dienomis": [
+   {
+    "d": "2026-09-09",
+    "n": "3"
+   },
+   {
+    "d": "2026-09-10",
+    "n": "3"
+   },
+   {
+    "d": "2026-09-11",
+    "n": "3"
+   },
+   {
+    "d": "2026-09-12",
+    "n": "4"
+   },
+   {
+    "d": "2026-09-13",
+    "n": "5"
+   },
+   {
+    "d": "2026-09-14",
+    "n": "5"
+   },
+   {
+    "d": "2026-09-15",
+    "n": "9"
+   },
+   {
+    "d": "2026-09-16",
+    "n": "7"
+   },
+   {
+    "d": "2026-09-17",
+    "n": "2"
+   }
+  ],
+  "sesijos_aktyvios": [
+   {
+    "senas": "0",
+    "n": "41"
+   },
+   {
+    "senas": "1",
+    "n": "63"
+   }
+  ],
+  "pask_login_meta": [
+   {
+    "meta_key": "wc_last_active",
+    "n": "107"
+   }
+  ],
+  "wc_last_active_po_t0": [
+   {
+    "senas": "0",
+    "n": "42"
+   },
+   {
+    "senas": "1",
+    "n": "33"
+   }
+  ],
+  "uzs_po_t0_pagal_klienta": [
+   {
+    "k": "naujas_prisijunges",
+    "n": "44",
+    "ok": "33"
+   },
+   {
+    "k": "senas_prisijunges",
+    "n": "28",
+    "ok": "25"
+   },
+   {
+    "k": "svecias",
+    "n": "24",
+    "ok": "20"
+   }
+  ],
+  "sveciai_su_sena_paskyra": "20",
+  "dienos_po_t0": [
+   {
+    "d": "2026-09-09",
+    "n": "9",
+    "ok": "4",
+    "login": "6"
+   },
+   {
+    "d": "2026-09-10",
+    "n": "12",
+    "ok": "10",
+    "login": "7"
+   },
+   {
+    "d": "2026-09-11",
+    "n": "7",
+    "ok": "6",
+    "login": "7"
+   },
+   {
+    "d": "2026-09-12",
+    "n": "7",
+    "ok": "7",
+    "login": "7"
+   },
+   {
+    "d": "2026-09-13",
+    "n": "9",
+    "ok": "9",
+    "login": "5"
+   },
+   {
+    "d": "2026-09-14",
+    "n": "11",
+    "ok": "11",
+    "login": "8"
+   },
+   {
+    "d": "2026-09-15",
+    "n": "20",
+    "ok": "17",
+    "login": "17"
+   },
+   {
+    "d": "2026-09-16",
+    "n": "12",
+    "ok": "11",
+    "login": "7"
+   },
+   {
+    "d": "2026-09-17",
+    "n": "9",
+    "ok": "3",
+    "login": "8"
+   }
+  ],
+  "log": [],
+  "log_sources_siandien": [],
+  "fn": "    </style>\n    <?php\n}\n\n// ===============================================================\n// Checkout: \"Sukurti paskyrą?\" checkbox pažymėtas pagal nutylėjimą\n// ===============================================================\nadd_action( 'wp_footer', 'petshop_account_checkbox_default', 99 );\nfunction petshop_account_checkbox_default() {\n    if ( ! is_checkout() ) return;\n    if ( is_user_logged_in() ) return;\n    ?>\n    <script>\n    jQuery(function($) {\n        function checkAccountBox() {\n            var $cb = $('#createaccount');\n            if ( $cb.length && ! $cb.prop('checked') ) {\n                $cb.prop('checked', true).trigger('change');\n            }\n        }\n        checkAccountBox();\n        $(document.body).on('updated_checkout', checkAccountBox);\n    });\n    </script>\n    <?php\n}\n\n// ===============================================================\n// Checkout: slept shipping laukus kai \"Siusti kitu adresu?\" nepazymeta\n// ===============================================================\nadd_action( 'wp_head', 'petshop_hide_shipping_when_not_needed_css' );\nfunction petshop_hide_shipping_when_not_needed_css() {\n    if ( ! is_checkout() ) return;\n    ?>\n    <style>\n    body:not(.petshop-ship-to-different-selected) .shipping_address,\n    body:not(.petshop-ship-to-different-selected) #shipping_first_name_field,\n    body:not(.petshop-ship-to-different-selected) #sh",
+  "wc_opt": {
+   "guest": "yes",
+   "signup": "yes",
+   "gen_user": "yes",
+   "gen_pass": "yes",
+   "login": "yes",
+   "hold": "90"
+  },
+  "ads_siandien": [
+   {
+    "id": "115",
+    "diena": "2026-09-16",
+    "kanalas": "kaina24",
+    "kampanija_id": "",
+    "kampanija": "",
+    "parodymai": "0",
+    "paspaudimai": "6",
+    "islaidos_ct": "48",
+    "valiuta": "EUR",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0",
+    "saltinis": "skaitiklis",
+    "saltinis_aplinka": "prod",
+    "versija": "1",
+    "irasyta_at": "2026-09-17 01:20:06",
+    "senoji_svetaine": "0"
+   },
+   {
+    "id": "116",
+    "diena": "2026-09-16",
+    "kanalas": "kainos",
+    "kampanija_id": "",
+    "kampanija": "",
+    "parodymai": "0",
+    "paspaudimai": "7",
+    "islaidos_ct": "56",
+    "valiuta": "EUR",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0",
+    "saltinis": "skaitiklis",
+    "saltinis_aplinka": "prod",
+    "versija": "1",
+    "irasyta_at": "2026-09-17 01:20:06",
+    "senoji_svetaine": "0"
+   },
+   {
+    "id": "117",
+    "diena": "2026-09-16",
+    "kanalas": "google_ads",
+    "kampanija_id": "21472017542",
+    "kampanija": "P-max | LT | petshop.lt",
+    "parodymai": "955",
+    "paspaudimai": "78",
+    "islaidos_ct": "2346",
+    "valiuta": "EUR",
+    "konversijos": "0.50",
+    "konv_verte_ct": "2850",
+    "saltinis": "ads_script",
+    "saltinis_aplinka": "prod",
+    "versija": "1",
+    "irasyta_at": "2026-09-17 02:01:31",
+    "senoji_svetaine": "0"
+   }
+  ],
+  "ivykiai_dienos": [
+   {
+    "diena": "2026-09-10",
+    "ses": "188",
+    "chk": "20",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-11",
+    "ses": "156",
+    "chk": "30",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-12",
+    "ses": "47",
+    "chk": "2",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-13",
+    "ses": "60",
+    "chk": "9",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-14",
+    "ses": "236",
+    "chk": "40",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-15",
+    "ses": "209",
+    "chk": "52",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-16",
+    "ses": "202",
+    "chk": "23",
+    "pur": "0"
+   },
+   {
+    "diena": "2026-09-17",
+    "ses": "128",
+    "chk": "18",
+    "pur": "0"
+   }
+  ]
+ }
+}
