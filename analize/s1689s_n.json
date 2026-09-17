@@ -1,0 +1,102 @@
+{
+ "v": "dep-095140",
+ "kurimas": 200,
+ "sid": 6023,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "ms": {
+   "init": 443,
+   "wp_loaded": 798,
+   "wp": 804,
+   "template_redirect": 812,
+   "wp_head": 816,
+   "wp_footer": 947,
+   "viso": 972
+  },
+  "q": {
+   "iki_init": null,
+   "wp_head": 97,
+   "viso": 274
+  },
+  "html_kb": 224,
+  "mem_mb": 132,
+  "files": 2998,
+  "files_kb": 36797,
+  "autoload_kb": 226,
+  "autoload_top": [
+   {
+    "option_name": "rewrite_rules",
+    "kb": "29"
+   },
+   {
+    "option_name": "_transient_wp_core_block_css_files",
+    "kb": "22"
+   },
+   {
+    "option_name": "wcdn_template_settings",
+    "kb": "21"
+   },
+   {
+    "option_name": "cron",
+    "kb": "16"
+   },
+   {
+    "option_name": "gaj6_user_roles",
+    "kb": "10"
+   },
+   {
+    "option_name": "rank-math-options-titles",
+    "kb": "10"
+   },
+   {
+    "option_name": "_transient_wc_attribute_taxonomies",
+    "kb": "6"
+   },
+   {
+    "option_name": "theme_mods_flatsome-child",
+    "kb": "4"
+   }
+  ],
+  "opcache": {
+   "on": true,
+   "hit%": 15,
+   "full": true,
+   "mem_free_mb": 0
+  },
+  "ext": {
+   "redis": false,
+   "memcached": true,
+   "apcu": false,
+   "obj_cache_dropin": null
+  },
+  "load": [
+   1.02,
+   1.22,
+   1.44
+  ],
+  "cpu": 0,
+  "php": "8.3.33 cgi-fcgi",
+  "cron_alt": false,
+  "cpu_bench_ms": 3,
+  "db_ping_ms": 0.2,
+  "mu_n": 134,
+  "mu_kb": 3769,
+  "mu_top": {
+   "petshop-darbalaukis.php": 546,
+   "petshop-katalogas.php": 501,
+   "petshop-rinkiniai.php": 208,
+   "petshop-laukai.php": 184,
+   "petshop-desk.php": 181,
+   "petshop-gavimas.php": 95,
+   "petshop-akcijos.php": 94,
+   "petshop-av-tiekimas.php": 76,
+   "petshop-av-dropship.php": 61,
+   "petshop-ataskaita-pardavimai.php": 59
+  },
+  "plugins_active": 27,
+  "snippets_active": 77
+ }
+}
