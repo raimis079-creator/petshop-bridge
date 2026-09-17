@@ -1,0 +1,137 @@
+{
+ "v": "dep-070958",
+ "kurimas": 200,
+ "sid": 6009,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1689s a",
+  "sitemap_opts": {
+   "items_per_page": 200,
+   "include_images": "on",
+   "include_featured_image": "off",
+   "exclude_roles": [
+    "contributor",
+    "subscriber",
+    "customer",
+    "shop_manager",
+    "translator",
+    "ps_darbuotojas"
+   ],
+   "html_sitemap": "off",
+   "html_sitemap_display": "shortcode",
+   "html_sitemap_sort": "published",
+   "html_sitemap_seo_titles": "titles",
+   "authors_sitemap": "off",
+   "pt_post_sitemap": "on",
+   "pt_page_sitemap": "on",
+   "pt_attachment_sitemap": "off",
+   "pt_blocks_sitemap": "off",
+   "pt_product_sitemap": "on",
+   "pt_featured_item_sitemap": "off",
+   "pt_web-story_sitemap": "off",
+   "tax_category_sitemap": "on",
+   "tax_post_tag_sitemap": "off",
+   "tax_post_format_sitemap": "off",
+   "tax_product_brand_sitemap": "on",
+   "tax_product_cat_sitemap": "on",
+   "tax_product_tag_sitemap": "off",
+   "tax_pa_veisles_dydis_sitemap": "off",
+   "tax_featured_item_category_sitemap": "off",
+   "tax_featured_item_tag_sitemap": "off"
+  },
+  "rm_modules": [
+   "sitemap",
+   "rich-snippet",
+   "woocommerce"
+  ],
+  "titles_keys": [
+   "noindex_empty_taxonomies",
+   "homepage_custom_robots",
+   "author_custom_robots",
+   "author_robots",
+   "date_archive_robots",
+   "noindex_search",
+   "noindex_archive_subpages",
+   "noindex_password_protected",
+   "pt_post_robots",
+   "pt_post_custom_robots",
+   "pt_page_robots",
+   "pt_page_custom_robots",
+   "pt_attachment_robots",
+   "pt_attachment_custom_robots",
+   "pt_blocks_robots",
+   "pt_blocks_custom_robots",
+   "pt_product_robots",
+   "pt_product_custom_robots",
+   "pt_featured_item_robots",
+   "pt_featured_item_custom_robots",
+   "pt_web-story_robots",
+   "pt_web-story_custom_robots",
+   "tax_category_robots",
+   "tax_category_custom_robots",
+   "tax_post_tag_robots",
+   "tax_post_tag_custom_robots",
+   "tax_post_format_robots",
+   "tax_post_format_custom_robots",
+   "tax_product_brand_robots",
+   "tax_product_brand_custom_robots",
+   "tax_product_cat_robots",
+   "tax_product_cat_custom_robots",
+   "tax_product_tag_robots",
+   "tax_product_tag_custom_robots",
+   "tax_pa_veisles_dydis_robots",
+   "tax_pa_veisles_dydis_custom_robots",
+   "tax_featured_item_category_robots",
+   "tax_featured_item_category_custom_robots",
+   "tax_featured_item_tag_robots",
+   "tax_featured_item_tag_custom_robots"
+  ],
+  "pg": {
+   "krepselis": {
+    "id": 12,
+    "st": "publish",
+    "robots": ""
+   },
+   "kasa": {
+    "id": 13,
+    "st": "publish",
+    "robots": ""
+   },
+   "paskyra": {
+    "id": 14,
+    "st": "publish",
+    "robots": ""
+   },
+   "anketa-testas": {
+    "id": 34676,
+    "st": "publish",
+    "robots": ""
+   }
+  },
+  "cat_migruota": {
+   "id": 307,
+   "count": 8
+  },
+  "cat_count": "2",
+  "mu": [
+   "petshop-legacy-301-map.json",
+   "petshop-legacy-301.php",
+   "petshop-legacy-importas.php",
+   "petshop-seo-aprasymas.php",
+   "petshop-seo.php"
+  ],
+  "map_file": {
+   "petshop-legacy-301-map.json": 164781,
+   "petshop-legacy-301.php": 3329
+  },
+  "rm_redirections": null,
+  "rm_404": null,
+  "seo_head": "<?php\n/**\n * Plugin Name: Petshop SEO v1.0 (GSC faktai · 404 su svoriu · redirect QA · sitemap · CWV · šviesoforas)\n * Description: SEO stebėjimas admine (TŽ v1.55 šviesoforas). Skaito Google Search Console API kasdien,\n *   kaupia ps_fakt_gsc_*; registruoja 404 su GSC svoriu; tikrina 301 žemėlapį; sitemap; PageSpeed mobile LCP.\n *   Rodo langą Ataskaitos → SEO. Tik skaito svetainę, nieko nekeičia.\n * Version: 1.3\n *\n * S1549 (2026-09-01). Principai: tik oficialūs Google API, patys skaičiuojam tik deltas; jokių dieninių\n * lyginimų (srautas ~25 clicks/d. — triukšmas) — 7 d. sumos prieš tą pačią savaitę pernai.\n *\n * GSC API: SA JSON option `ps_gsc_sa` (autoload no), scope webmasters.readonly, property sc-domain:petshop.lt.\n * Duomenų vėlavimas ~3 d. — cron traukia paskutines 5 d. ir perrašo (idempotentiška).\n *\n * v1.1: (a) šviesoforo paspaudimų BAZĖ = 8 sav. iki perjungimo datos (`ps_perjungimo_data`; kol nėra — paskutinės 8 sav.),\n *   YoY rodomas šalia informacijai (senos platformos srautas jau krenta ~−30 % YoY, tad YoY nebūtų migracijos signalas);\n *   (b) `atgal_turinys()` — turinio paspaudimų istorija per dieną be URL eilučių saugojimo; (c) REST `ps-seo/v1/map` (GET)\n *   ir `ps-seo/v1/qa` (POST) — pilnas 301 žemėlapio QA iš GitHub runner'io savaitę (loopback WP-side ~2 s/URL, netinka 1 101 adresui);\n *   WP-side kasdien tikrina tik top-40 pagal GSC svorį (kanarėlė).\n */\nif ( ! defined( 'ABSPATH' ) ) { ex",
+  "seo_hooks": [
+   "301"
+  ]
+ }
+}
