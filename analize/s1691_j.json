@@ -1,0 +1,89 @@
+{
+ "1": {
+  "sources_cols": [
+   "id",
+   "product_id",
+   "source",
+   "supplier_sku",
+   "ean",
+   "stock_qty",
+   "cost_net",
+   "synced_at",
+   "is_active",
+   "is_sellable",
+   "priority",
+   "created_at",
+   "updated_at"
+  ],
+  "sources_tipai": [],
+  "viso": 0,
+  "db_err": "Unknown column 'source_type' in 'field list'",
+  "grupes": [],
+  "pvz": [],
+  "xml_qty0": {
+   "75": "*   SEO: buvusi publish preke turi URL/nuorodas (senos platformos SEO persikels",
+   "89": "*   B. ESAMA BUVUSI PUBLISH preke qty=0 (initial_import): -> LIEKA PUBLISH.",
+   "91": "*      \"pranesk kai bus\"). NE draft. WC _stock_status=outofstock (zyma).",
+   "92": "*      _zb_qty_zero_since fiksuoja, nuo kada be likucio.",
+   "95": "*      + _zb_qty_zero_since. 30 d. cleanup (atskiras snippet) -> trash.",
+   "96": "*      Nera SEO, nera paklausos -> galima valyti po 30 d.",
+   "99": "*   (islieka visam). Tai skiria \"buvusi publish\" (B kelias) nuo \"gimusi draft\"",
+   "100": "*   (C kelias). qty>0 -> isvalom _zb_qty_zero_since.",
+   "112": "* v1.5.14 (2026-06-14): ZB ESAMU PIGIU UPDATE BLOKAVIMAS + QTY_ZERO->DRAFT visada (S97)",
+   "116": "*     1. qty_zero -> draft veike TIK naujoms (salyga \"&& ! $is_update\").",
+   "139": "*   B. petshop_xml_initial_import() qty_zero -> draft VISADA (nauja + esama).",
+   "153": "*   KARTELE (8 EUR) NEPAKEISTA. Konservu/qty_zero->draft logika (v1.5.13)",
+   "156": "* v1.5.13 (2026-06-14): ZB SKIP-BEFORE-CREATE + KONSERVAI/QTY_ZERO -> DRAFT (S97)",
+   "162": "*   (476 cost_below_minimum + 27 qty_zero). Tiksli VF S92 problema, tik ZB",
+   "174": "*     3. qty_zero (preke be likucio) — NEISMETAMA, o -> DRAFT. Priezastis:",
+   "184": "*        - qty <= 0                                      -> LEISTI (taps draft)",
+   "196": "*        - qty_zero_on_new -> DRAFT, NE trash.",
+   "201": "*   Kartele (8 EUR) nepakeista — tik konservams ir qty_zero pakeistas",
+   "205": "*     esami 503 trash -> konservai+qty_zero atkurti i draft, aksesuarai istrinti.",
+   "248": "// konservai/qty_zero -> draft. Vienoje vietoje, kad ateity butu lengva keisti.",
+   "322": "*   - qty <= 0                                     -> LEISTI (initial_import -> draft)",
+   "393": "// v1.5.15: NAUJA preke qty <= 0 -> NEKURTI.",
+   "401": "//   ESAMOS prekes qty=0 tvarkomos initial_import() (buvusi publish ->",
+   "402": "//   lieka matoma SEO+paklausai; gimusi draft -> 30 d. cleanup).",
+   "403": "if ( $qty <= 0 ) {",
+   "410": "'reason'    => 'qty_zero_new_no_history',",
+   "650": "$protected_reasons = [ 'cost_below_minimum', 'excluded_brand', 'qty_zero_on_new', 'duplicate_ean', 'konservas_below_minimum' ];",
+   "771": "* v1.5.13: KONSERVAS/QTY_ZERO -> DRAFT (vietoj trash).",
+   "998": "// v1.5.15: qty_zero ESAMAI prekei — SEO + paklausos logika (S98).",
+   "1003": "//   Plius SEO: buvusi publish preke turi URL/nuorodas — draft = 404 = SEO",
+   "1006": "//   - BUVUSI PUBLISH (_zb_was_published=yes) qty=0 -> LIEKA PUBLISH (matoma,",
+   "1009": "//     _zb_qty_zero_since data (30 d. cleanup atskiru snippet).",
+   "1014": "if ( $zb_qty <= 0 ) {",
+   "1024": "// BUVUSI PUBLISH -> LIEKA PUBLISH (SEO + paklausa \"pranesk kai bus\").",
+   "1025": "// Pazymim was_published (jei dar nebuvo) ir qty_zero pradzios data.",
+   "1027": "if ( ! get_post_meta( $post_id, '_zb_qty_zero_since', true ) ) {",
+   "1028": "update_post_meta( $post_id, '_zb_qty_zero_since', current_time( 'mysql' ) );",
+   "1030": "// Statusas lieka publish; WC stock status -> outofstock (zyma)",
+   "1031": "update_post_meta( $post_id, '_stock_status', 'outofstock' );",
+   "1036": "petshop_xml_log( \"QTY_ZERO PUBLISH-KEPT post {$post_id} | was_published, SEO+demand (S98)\" );",
+   "1040": "// GIMUSI DRAFT (niekada nebuvo publish) -> draft + qty_zero_since",
+   "1041": "if ( ! get_post_meta( $post_id, '_zb_qty_zero_since', true ) ) {",
+   "1042": "update_post_meta( $post_id, '_zb_qty_zero_since', current_time( 'mysql' ) );",
+   "1044": "petshop_xml_zb_to_draft( $post_id, 'qty_zero_never_published', false );",
+   "1045": "petshop_xml_log( \"QTY_ZERO DRAFT post {$post_id} | zb_qty={$zb_qty} | never published (30d cleanup, S98)\" );",
+   "1222": "// qty_zero_since (nes vel turi likuti). Sis flagas islieka visam — jei",
+   "1227": "delete_post_meta( $post_id, '_zb_qty_zero_since' );"
+  },
+  "inc_qty0": {
+   "class-import-rules.php": {
+    "103": "if ( $qty <= 0 )           $review_reasons[] = 'qty_zero';"
+   },
+   "class-vf-import.php": {
+    "543": "//   - qty_zero (likutis = 0)",
+    "576": "$auto_publish_blockers[] = 'qty_zero';"
+   }
+  }
+ },
+ "v": "dep-174947",
+ "kurimas": 200,
+ "sid": 6058,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
