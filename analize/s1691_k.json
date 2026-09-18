@@ -1,0 +1,230 @@
+{
+ "1": {
+  "aktyvus_pluginai": [],
+  "visi_pluginai_atitinka": [],
+  "lenteles": [
+   "gaj6_mailpoet_scheduled_task_subscribers",
+   "gaj6_mailpoet_statistics_unsubscribes",
+   "gaj6_mailpoet_stats_notifications",
+   "gaj6_mailpoet_subscriber_custom_field",
+   "gaj6_mailpoet_subscriber_ips",
+   "gaj6_mailpoet_subscriber_segment",
+   "gaj6_mailpoet_subscriber_tag",
+   "gaj6_mailpoet_subscribers",
+   "gaj6_ps_laukai_ivykiai",
+   "gaj6_ps_stock_watch",
+   "gaj6_ps_subscription_events",
+   "gaj6_ps_subscription_items",
+   "gaj6_ps_subscriptions",
+   "gaj6_subscrpt_cancellation_feedback",
+   "gaj6_subscrpt_order_relation",
+   "gaj6_subscrpt_paypal_map",
+   "gaj6_subscrpt_stats_snapshot",
+   "gaj6_wc_email_unsubscribes",
+   "gaj6_wc_reserved_stock"
+  ],
+  "kodo_atitikmenys": {
+   "wp-content/mu-plugins/petshop-atsargu-laukimas.php": {
+    "back-in-stock": 2,
+    "pranesti kai": 1,
+    "back_in_stock": 3
+   },
+   "wp-content/mu-plugins/petshop-laiskai.php": {
+    "back_in_stock": 1
+   },
+   "wp-content/mu-plugins/petshop-rezultatai.php": {
+    "back_in_stock": 1
+   },
+   "wp-content/mu-plugins/petshop-langai-admin.php": {
+    "back_in_stock": 1
+   },
+   "wp-content/mu-plugins/petshop-desk.php": {
+    "kai bus": 1
+   },
+   "wp-content/mu-plugins/petshop-rankos.php": {
+    "kai bus": 1
+   },
+   "wp-content/mu-plugins/petshop-islaidos.php": {
+    "kai bus": 1
+   },
+   "wp-content/mu-plugins/petshop-av-tiekimas.php": {
+    "kai bus": 1
+   },
+   "wp-content/plugins/petshop-core/assets/pet-profile.js": {
+    "kai bus": 1
+   },
+   "wp-content/plugins/petshop-core/templates/emails/refill.php": {
+    "kai bus": 1
+   },
+   "wp-content/plugins/petshop-core/templates/emails/back-in-stock.php": {
+    "back_in_stock": 1,
+    "pranesti kai": 1
+   },
+   "wp-content/plugins/petshop-xml/petshop-xml.php": {
+    "kai bus": 6
+   }
+  },
+  "ivykiai_tipai": [
+   {
+    "tipas": "pageview",
+    "n": "6341"
+   },
+   {
+    "tipas": "view_item",
+    "n": "1966"
+   },
+   {
+    "tipas": "add_to_cart",
+    "n": "609"
+   },
+   {
+    "tipas": "search",
+    "n": "304"
+   },
+   {
+    "tipas": "begin_checkout",
+    "n": "244"
+   },
+   {
+    "tipas": "view_cart",
+    "n": "156"
+   },
+   {
+    "tipas": "error404",
+    "n": "83"
+   },
+   {
+    "tipas": "filter",
+    "n": "26"
+   },
+   {
+    "tipas": "email_calc_click",
+    "n": "7"
+   },
+   {
+    "tipas": "reminder_optin",
+    "n": "1"
+   }
+  ],
+  "ivykiai_cols": [
+   "id",
+   "laikas",
+   "diena",
+   "tipas",
+   "pusl_tipas",
+   "url_kelias",
+   "raktas",
+   "raktas2",
+   "reiksme",
+   "sesija",
+   "lankytojas_d",
+   "lankytojas_30",
+   "saltinis",
+   "medium",
+   "kampanija",
+   "referer_domenas",
+   "kanalas",
+   "landing",
+   "irenginys",
+   "os_seima",
+   "nars_seima",
+   "salis",
+   "prisijunges",
+   "sutikimas",
+   "testinis",
+   "saltinis_aplinka"
+  ],
+  "snippetai": [
+   {
+    "id": "78",
+    "name": "Tikrina naujos prekės meta laukus",
+    "active": "0"
+   },
+   {
+    "id": "281",
+    "name": "ZB Trash Sutvarkymas v2",
+    "active": "0"
+   },
+   {
+    "id": "565",
+    "name": "Petshop VF Sync v1.1 (reprice+stock+publish)",
+    "active": "1"
+   },
+   {
+    "id": "567",
+    "name": "Petshop Daugiau=Pigiau Stock Sync v1.3",
+    "active": "1"
+   },
+   {
+    "id": "2387",
+    "name": "Petshop Stock Service v1.2 (parduodamas kiekis)",
+    "active": "0"
+   },
+   {
+    "id": "2403",
+    "name": "Petshop Stock Service v1.3 (per registra)",
+    "active": "1"
+   },
+   {
+    "id": "3692",
+    "name": "QQ H215 laukai",
+    "active": "0"
+   },
+   {
+    "id": "3693",
+    "name": "QQ H216 laukiantys",
+    "active": "0"
+   },
+   {
+    "id": "3698",
+    "name": "QQ H220 pranesimas",
+    "active": "0"
+   },
+   {
+    "id": "5306",
+    "name": "Petshop Pastas Slaptazodzio pranesimas adminui v1.0 (wp_password_change_notification_email)",
+    "active": "1"
+   },
+   {
+    "id": "5323",
+    "name": "Petshop Sargas Likucio grazinimas v1.0 (atsaukimo patikra)",
+    "active": "1"
+   },
+   {
+    "id": "5339",
+    "name": "Petshop Spastai ReducedStock v1.0 (bt i ps_rs_trap)",
+    "active": "1"
+   },
+   {
+    "id": "6061",
+    "name": "TEMP PS dep-181011",
+    "active": "1"
+   }
+  ],
+  "istorija_cols": [
+   "id",
+   "data",
+   "email",
+   "vardas",
+   "pavarde",
+   "tel",
+   "imone",
+   "siuntimas",
+   "miestas",
+   "apmokejimas",
+   "suma_be",
+   "suma",
+   "statusas",
+   "ivykdytas",
+   "saskaita",
+   "eiluciu"
+  ]
+ },
+ "v": "dep-181011",
+ "kurimas": 200,
+ "sid": 6061,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
