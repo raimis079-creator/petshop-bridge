@@ -49,10 +49,102 @@
     "n": "1113"
    }
   ],
-  "viso": 0,
-  "db_err": "Unknown column 'e.wc_product_id' in 'where clause'",
-  "grupes": [],
-  "pvz": [],
+  "viso": 508,
+  "db_err": "",
+  "grupes": {
+   "VF | sandelis=vf | src=vf": {
+    "n": 197,
+    "pard365": 1,
+    "wc_uzs": 0,
+    "av>0": 0
+   },
+   "be-xml | sandelis=av | src=av": {
+    "n": 190,
+    "pard365": 131,
+    "wc_uzs": 12,
+    "av>0": 0
+   },
+   "ZB | sandelis=zb | src=zb": {
+    "n": 99,
+    "pard365": 4,
+    "wc_uzs": 0,
+    "av>0": 0
+   },
+   "be-xml | sandelis=belcor_tofu | src=belcor_tofu": {
+    "n": 16,
+    "pard365": 6,
+    "wc_uzs": 0,
+    "av>0": 0
+   },
+   "be-xml | sandelis=quattro | src=quattro": {
+    "n": 2,
+    "pard365": 2,
+    "wc_uzs": 0,
+    "av>0": 0
+   },
+   "be-xml | sandelis=belcor_tofu | src=av,belcor_tofu": {
+    "n": 1,
+    "pard365": 1,
+    "wc_uzs": 0,
+    "av>0": 0
+   },
+   "be-xml | sandelis=av | src=av,belcor_tofu": {
+    "n": 1,
+    "pard365": 1,
+    "wc_uzs": 0,
+    "av>0": 0
+   },
+   "VF | sandelis=vf | src=av,vf": {
+    "n": 1,
+    "pard365": 1,
+    "wc_uzs": 0,
+    "av>0": 0
+   },
+   "be-xml | sandelis=av | src=AV": {
+    "n": 1,
+    "pard365": 1,
+    "wc_uzs": 0,
+    "av>0": 0
+   }
+  },
+  "pvz": {
+   "ZB | sandelis=zb | src=zb": [
+    "13121 Trixie Skudo 6 boksas, M-L 63x70x92 cm, smėli stock=0.000000 av= ms=yes ist365=0",
+    "13612 Trixie Premium touring petnešos, M 45-80cm/25 stock=0.000000 av= ms=yes ist365=0",
+    "13966 Trixie Vėsinantis kilimėlis, XL-XXL: 100x60 c stock=0.000000 av= ms=yes ist365=0"
+   ],
+   "VF | sandelis=vf | src=vf": [
+    "27799 Nobleza vėsinamasis kilimėlis gyvūnui, 65x55c stock=0.000000 av= ms=yes ist365=0",
+    "27804 Nobleza vėsinamasis kilimėlis gyvūnui, 56x46c stock=0.000000 av= ms=yes ist365=0",
+    "27832 Nobleza vėsinamasis kilimėlis gyvūnui, mėlyna stock=0.000000 av= ms=yes ist365=0"
+   ],
+   "be-xml | sandelis=av | src=av": [
+    "35102 Žaislas šuniui - Ebi guminis kaulas rožinės s stock=0 av= ms=yes ist365=0",
+    "35104 Žaislas šuniui - Ebi guminis kaulas rožinės s stock=0 av= ms=yes ist365=0",
+    "35108 Žaislas šuniui - Ebi guminis kaulas melsvos s stock=0 av= ms=yes ist365=0"
+   ],
+   "be-xml | sandelis=belcor_tofu | src=belcor_tofu": [
+    "15835 Vienkartinės palutės / paklotai, 80*120 cm, X stock=0 av= ms=yes ist365=4",
+    "15964 Triušio ausys su antiena 500 g, natūralūs ska stock=0 av= ms=yes ist365=0",
+    "15967 Triušienos lazdelės, 500 g, natūralūs skanėst stock=0 av= ms=yes ist365=0"
+   ],
+   "be-xml | sandelis=quattro | src=quattro": [
+    "16543 Quattro SB su balta žuvimi ir kriliu sausas s stock=0 av= ms=yes ist365=2",
+    "16624 QUATTRO Sport su paukštiena sausas aktyvių šu stock=0 av= ms=yes ist365=1"
+   ],
+   "be-xml | sandelis=belcor_tofu | src=av,belcor_tofu": [
+    "17363 Natūralus bentonitinis sušokantis kraikas kat stock=0 av=0 ms=yes ist365=7"
+   ],
+   "be-xml | sandelis=av | src=av,belcor_tofu": [
+    "17714 Kraikas katėms Purrfect Natural, 6 l (2,5 kg) stock=0 av= ms=yes ist365=2"
+   ],
+   "VF | sandelis=vf | src=av,vf": [
+    "17965 Josicat Classic Sterilised 10 kg sausas maist stock=0.000000 av= ms=yes ist365=16"
+   ],
+   "be-xml | sandelis=av | src=AV": [
+    "34913 Natūralių skanėstų šunims rinkinukas, 100 g,  stock=0 av= ms=yes ist365=6"
+   ]
+  },
   "xml_qty0": {
    "75": "*   SEO: buvusi publish preke turi URL/nuorodas (senos platformos SEO persikels",
    "89": "*   B. ESAMA BUVUSI PUBLISH preke qty=0 (initial_import): -> LIEKA PUBLISH.",
@@ -112,9 +204,9 @@
    }
   }
  },
- "v": "dep-175123",
+ "v": "dep-175255",
  "kurimas": 200,
- "sid": 6059,
+ "sid": 6060,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
