@@ -1,0 +1,125 @@
+{
+ "1": {
+  "kur": {
+   "ps_dim_klientai": {
+    "petshop-dim-klientai.php": "(tik paminėta)",
+    "petshop-rytas.php": "(tik paminėta)",
+    "petshop-ataskaita-klientai.php": "(tik paminėta)",
+    "petshop-istorijos-adapteris.php": "(tik paminėta)"
+   },
+   "ps_web_dienos": {
+    "petshop-analitika.php": "(tik paminėta)"
+   }
+  },
+  "klientai_113_135": {
+   "113": "\t\t// 3. istorija per email",
+   "114": "\t\t$ist = array(); foreach ( $wpdb->get_results( \"SELECT email,COUNT(*) n,ROUND(SUM(suma),2) s,MIN(data) mn,MAX(data) mx FROM $TU WHERE ivykdytas=1 AND email IN ($in_e) GROUP BY email\", ARRAY_A ) as $r ) $ist[ $r['email'] ] = $r;",
+   "115": "\t\t// 4. WC užsakymai (HPOS) per customer_id",
+   "116": "\t\t$wc = array(); foreach ( $wpdb->get_results( \"SELECT customer_id,COUNT(*) n,ROUND(SUM(total_amount),2) s,MIN(date_created_gmt) mn,MAX(date_created_gmt) mx FROM {$p}wc_orders WHERE type='shop_order' AND status IN ('wc-completed','wc-processing') AND customer_id IN ($in_i) GROUP BY customer_id\", ARRAY_A ) as $r ) $wc[ (int) $r['customer_id'] ] = $r;",
+   "117": "\t\t// 5. prekių eilutės (istorija + WC) → per klientą: raktas = wc_product_id arba modelis",
+   "118": "\t\t$zem = self::gyvunu_zemelapis();",
+   "119": "\t\t$prek = array(); // uid => key => [n, dates[], pav, pid]",
+   "120": "\t\t$eil = $wpdb->get_results( \"SELECT u.email, e.wc_product_id pid, e.modelis, e.pavadinimas, u.data FROM $TE e JOIN $TU u ON u.id=e.uzsakymo_id WHERE u.ivykdytas=1 AND u.email IN ($in_e)\", ARRAY_A );",
+   "121": "\t\t$gyv = array();",
+   "122": "\t\t$prideti = function( $uid, $pid, $key, $pav, $data ) use ( &$prek, &$gyv, $zem ) {",
+   "123": "\t\t\tif ( ! isset( $prek[ $uid ][ $key ] ) ) $prek[ $uid ][ $key ] = array( 'n' => 0, 'd' => array(), 'pav' => $pav, 'pid' => $pid );",
+   "124": "\t\t\t$prek[ $uid ][ $key ]['n']++; $prek[ $uid ][ $key ]['d'][ substr( $data, 0, 10 ) ] = 1;",
+   "125": "\t\t\tif ( $pid && isset( $zem[ $pid ] ) ) { $a = $zem[ $pid ]; if ( $a === 'abu' ) { $gyv[ $uid ]['suo'] = ( $gyv[ $uid ]['suo'] ?? 0 ) + 0.5; $gyv[ $uid ]['kate'] = ( $gyv[ $uid ]['kate'] ?? 0 ) + 0.5; } else $gyv[ $uid ][ $a ] = ( $gyv[ $uid ][ $a ] ?? 0 ) + 1; }",
+   "126": "\t\t};",
+   "127": "\t\tforeach ( $eil as $r ) { $uid = $emails[ $r['email'] ]; $pid = $r['pid'] ? (int) $r['pid'] : 0; $prideti( $uid, $pid, $pid ? 'p' . $pid : 'm' . $r['modelis'], $r['pavadinimas'], $r['data'] ); }",
+   "128": "\t\tunset( $eil );",
+   "129": "\t\t$wcl = $wpdb->get_results( \"SELECT o.customer_id uid, l.product_id pid, l.variation_id vid, l.date_created d, oi.order_item_name pav FROM {$p}wc_order_product_lookup l JOIN {$p}wc_orders o ON o.id=l.order_id JOIN {$p}woocommerce_order_items oi ON oi.order_item_id=l.order_item_id WHERE o.type='shop_order' AND o.status IN ('wc-completed','wc-processing') AND o.customer_id IN ($in_i)\", ARRAY_A );",
+   "130": "\t\tforeach ( $wcl as $r ) { $pid = (int) $r['pid']; $prideti( (int) $r['uid'], $pid, 'p' . $pid, $r['pav'], $r['d'] ); }",
+   "131": "\t\tunset( $wcl );",
+   "132": "\t\t// 6. sutikimai (paskutinis įrašas) + suppression",
+   "133": "\t\t$cons = array(); foreach ( $wpdb->get_results( \"SELECT c.email,c.to_value,c.source,c.changed_at FROM {$p}ps_consent_log c JOIN (SELECT email,MAX(id) mid FROM {$p}ps_consent_log WHERE field='marketing_consent' AND email IN ($in_e) GROUP BY email) x ON x.mid=c.id\", ARRAY_A ) as $r ) $cons[ strtolower( $r['email'] ) ] = $r;",
+   "134": "\t\t$sup = array(); $st = $p . 'ps_email_suppression'; if ( $wpdb->get_var( \"SHOW TABLES LIKE '$st'\" ) === $st ) foreach ( $wpdb->get_col( \"SELECT LOWER(email) FROM $st WHERE channel='marketing' AND released_at IS NULL AND LOWER(email) IN ($in_e)\" ) as $e ) $sup[ $e ] = 1;",
+   "135": "\t\t// 7. augintiniai"
+  },
+  "klientai_md5": "babf03d44e34a902f37325306baead37",
+  "dim_lentele": {
+   "n": "5431",
+   "min_p": "2026-09-08 20:40:03",
+   "max_p": "2026-09-08 20:40:03",
+   "siandien": "0"
+  },
+  "dim_indeksai": [
+   {
+    "Table": "gaj6_ps_dim_klientai",
+    "Non_unique": "0",
+    "Key_name": "PRIMARY",
+    "Seq_in_index": "1",
+    "Column_name": "raktas",
+    "Collation": "A",
+    "Cardinality": "5364",
+    "Sub_part": null,
+    "Packed": null,
+    "Null": "",
+    "Index_type": "BTREE",
+    "Comment": "",
+    "Index_comment": "",
+    "Ignored": "NO"
+   },
+   {
+    "Table": "gaj6_ps_dim_klientai",
+    "Non_unique": "1",
+    "Key_name": "k",
+    "Seq_in_index": "1",
+    "Column_name": "kohorta",
+    "Collation": "A",
+    "Cardinality": "68",
+    "Sub_part": null,
+    "Packed": null,
+    "Null": "YES",
+    "Index_type": "BTREE",
+    "Comment": "",
+    "Index_comment": "",
+    "Ignored": "NO"
+   },
+   {
+    "Table": "gaj6_ps_dim_klientai",
+    "Non_unique": "1",
+    "Key_name": "s",
+    "Seq_in_index": "1",
+    "Column_name": "segmentas",
+    "Collation": "A",
+    "Cardinality": "12",
+    "Sub_part": null,
+    "Packed": null,
+    "Null": "YES",
+    "Index_type": "BTREE",
+    "Comment": "",
+    "Index_comment": "",
+    "Ignored": "NO"
+   },
+   {
+    "Table": "gaj6_ps_dim_klientai",
+    "Non_unique": "1",
+    "Key_name": "p",
+    "Seq_in_index": "1",
+    "Column_name": "paskutinis_pirkimas_at",
+    "Collation": "A",
+    "Cardinality": "5364",
+    "Sub_part": null,
+    "Packed": null,
+    "Null": "YES",
+    "Index_type": "BTREE",
+    "Comment": "",
+    "Index_comment": "",
+    "Ignored": "NO"
+   }
+  ],
+  "dim_pask_cron": false,
+  "web_dienos_pask": {
+   "max_d": "2026-09-17",
+   "n": "4162"
+  }
+ },
+ "v": "dep-172057",
+ "kurimas": 200,
+ "sid": 6052,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
