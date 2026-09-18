@@ -1,0 +1,25 @@
+{
+ "1": {
+  "md5": "831d9d465aa63aaf41d42c96c36c7436",
+  "dydis": 14968,
+  "eil": 327,
+  "antraste": "<?php\n/**\n * Plugin Name: Petshop Dim — Klientai\n * Description: Kliento busena (ps_dim_klientai) — kohortos, LTV, RFM. Perskaiciuojama kas nakti IS VISOS JUOSTOS (istorija + faktai per Petshop_Ist_Adapteris). Master planas v1.8 §4.8; B1 segmentai — S1546 #1.\n * Version: 1.1\n *\n * KODEL: maistas yra periodinis pirkimas. Be kohortu ir pakartotinio pirkimo\n * rodikliu refill variklis aklas, o „nauji vs grizatantys\" pjuvis neimanomas.\n * Chewy ir zooplus tai laiko PAGRINDINE metrika (planas §2).\n *\n * ══════════════════════════════════════════════════════════════════════\n * SI LENTELE — IsVESTINE, NE FAKTAS\n * ══════════════════════════════════════════════════════════════════════\n * Skirtingai nuo `ps_fakt_*`, ji **perskaiciuojama nuo nulio** kas nakti is\n * `ps_fakt_uzsakymai`. Todel ja galima trinti be nuostoliu — tai tik greitesnis\n * budas atsakyti i klausima, o ne istorijos saltinis. Faktai lieka faktais.\n *\n * RAKTAS: `email_hash`, ne `klientas_id`. Priezastis — dev'e visi 4 uzsakymai\n * turi `klientas_id=0` (sveciai), ir taip bus daugumai realiu pirkimu.\n * `klientas_id` saugomas SALIA, kai jis yra.\n * GDPR (`ps_gdpr_rezimas=anonimizuoti`): `klientas_id` -> NULL, hash lieka.\n * Hash yra vienkryptis, todel anonimizavimas kohortu nesugriauna.\n *\n * RFM — KVINTILIAI, ne fiksuotos ribos. Su mazu klientu skaiciumi kvintiliai\n * issigimsta (visi patenka i ta pati), todel:\n *   < 5 klientai -> visiems `rfm_* = NULL`, `segmentas` skaiciuojamas TIK is\n *   uzsakymu skaiciaus ir senumo. Melagingas „VIP\" is vieno kliento butu\n *   blogiau nei tuscias laukas (§7 taisykle 15).\n *\n * `refill_laukiama_at` — SAMONINGAI NULL. E2b recon (#5010) rado, kad\n",
+  "vietos": {
+   "45": "const CRON           = 'ps_dim_klientu_perskaiciavimas';",
+   "51": "add_action( self::CRON, array( __CLASS__, 'perskaiciuoti' ) );",
+   "58": "wp_schedule_event( strtotime( gmdate( 'Y-m-d' ) . ' 20:40:00 UTC' ) + DAY_IN_SECONDS, 'daily', self::CRON );",
+   "96": "perskaiciuota_at DATETIME NULL DEFAULT NULL,",
+   "203": "'perskaiciuota_at' => $now,",
+   "267": "$wpdb->query( $wpdb->prepare( \"DELETE FROM $t WHERE aplinka=%s\", $a ) );",
+   "268": "foreach ( $duom as $d ) { if ( $wpdb->insert( $t, $d ) ) { $rez['irasyta']++; } }",
+   "269": "update_option( 'ps_dim_klientu_paskutinis', $now . ' | ' . $rez['irasyta'], false );"
+  }
+ },
+ "v": "dep-172238",
+ "kurimas": 200,
+ "sid": 6053,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
