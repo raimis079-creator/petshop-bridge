@@ -1,5 +1,52 @@
 {
- "v": "dep-182850",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "1": {
+  "md5_turinys": "06ca079cd555b61b446b1dcf033744bd",
+  "md5_failas": "06ca079cd555b61b446b1dcf033744bd",
+  "heartbeat": 200
+ },
+ "2": {
+  "klase": true,
+  "cron": 1789758900,
+  "dry": {
+   "laikas": "2026-09-18 21:32:51",
+   "dry": true,
+   "tikrinta": 1581,
+   "paslepta": 291,
+   "atidengta": 0,
+   "pvz": [
+    "13121:paslepta",
+    "13612:paslepta",
+    "13966:paslepta",
+    "14504:paslepta",
+    "14528:paslepta",
+    "14532:paslepta",
+    "14535:paslepta",
+    "14543:paslepta",
+    "14567:paslepta",
+    "14624:paslepta",
+    "14628:paslepta",
+    "14642:paslepta",
+    "14794:paslepta",
+    "27799:paslepta",
+    "27804:paslepta"
+   ]
+  },
+  "isimtys": [
+   "12544:istorija:Monge mini adult sausas pašaras mažų vei",
+   "13734:istorija:Trixie Davin guolis, ovalus, 60x45cm, pi",
+   "17965:istorija:Josicat Classic Sterilised 10 kg sausas ",
+   "18149:istorija:JOSERA LAMB &#038; RICE pašaras šunims s",
+   "33898:istorija:Trixie Metalinis narvas, M 78x62x55 cm",
+   "33904:istorija:Trixie Stovas su dubenėliais, reg. aukšt"
+  ],
+  "isimciu": 6,
+  "outofstock_dropship": 297
+ },
+ "v": "dep-183141",
+ "kurimas": 200,
+ "sid": 6063,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
 }
