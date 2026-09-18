@@ -1,0 +1,103 @@
+{
+ "3": {
+  "rez": {
+   "laikas": "2026-09-18 21:34:26",
+   "dry": false,
+   "tikrinta": 1581,
+   "paslepta": 291,
+   "atidengta": 0,
+   "pvz": [
+    "13121:paslepta",
+    "13612:paslepta",
+    "13966:paslepta",
+    "14504:paslepta",
+    "14528:paslepta",
+    "14532:paslepta",
+    "14535:paslepta",
+    "14543:paslepta",
+    "14567:paslepta",
+    "14624:paslepta",
+    "14628:paslepta",
+    "14642:paslepta",
+    "14794:paslepta",
+    "27799:paslepta",
+    "27804:paslepta"
+   ]
+  },
+  "hidden_dabar": "291",
+  "bak_opcija": true
+ },
+ "4": {
+  "test_pries": {
+   "status": "draft",
+   "stock": "outofstock",
+   "sandelis": "",
+   "vis": "visible"
+  },
+  "e2e_1_nera": {
+   "spresti": "paslepta",
+   "vis": "hidden",
+   "meta": "1"
+  },
+  "e2e_2_grizo_kablys": {
+   "vis": "visible",
+   "meta": "",
+   "zurnalas": {
+    "laikas": "2026-09-18 21:34:48",
+    "dry": false,
+    "tikrinta": 1581,
+    "paslepta": 291,
+    "atidengta": 0,
+    "pvz": [
+     "13121:paslepta",
+     "13612:paslepta",
+     "13966:paslepta",
+     "14504:paslepta",
+     "14528:paslepta",
+     "14532:paslepta",
+     "14535:paslepta",
+     "14543:paslepta",
+     "14567:paslepta",
+     "14624:paslepta",
+     "14628:paslepta",
+     "14642:paslepta",
+     "14794:paslepta",
+     "27799:paslepta",
+     "27804:paslepta"
+    ],
+    "kablys": "34889:atidengta"
+   }
+  },
+  "e2e_3_dingo_kablys": {
+   "vis": "hidden",
+   "meta": "1"
+  },
+  "test_po": {
+   "status": "draft",
+   "stock": "outofstock",
+   "sandelis": "vf",
+   "vis": "visible",
+   "meta": ""
+  },
+  "reali": {
+   "id": "12453",
+   "url": "https://petshop.lt/product/eukanuba-medium-adult-visavertis-pasaras-su-vistiena-3kg/",
+   "http": 200,
+   "forma_pranesti": false,
+   "vis": "hidden",
+   "terminai": [
+    "exclude-from-catalog",
+    "exclude-from-search",
+    "outofstock"
+   ],
+   "kataloge": 1
+  }
+ },
+ "v": "dep-183318",
+ "kurimas": 200,
+ "sid": 6064,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
