@@ -1,0 +1,122 @@
+{
+ "1": {
+  "jobs": [],
+  "jobs_cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "jobs_pending_viso": [
+   {
+    "status": "pending",
+    "n": "116",
+    "min_s": "2026-09-18 17:36:14",
+    "max_s": "2026-09-30 15:06:43"
+   }
+  ],
+  "dispatch_cron": 1789751919,
+  "dispatch_cron_lt": "09-18 20:18",
+  "xml_md5": "ca71af52f52ec41e4cc9f2b9177bbd68",
+  "xml_dydis": 61382,
+  "xml_330_350": {
+   "330": "",
+   "331": "function petshop_xml_block_zb_create( $continue_import, $data, $import_id ) {",
+   "332": "",
+   "333": "    // Saugiklis: tik ZB importas #2",
+   "334": "    if ( ! in_array( (int) $import_id, PETSHOP_XML_ZB_IMPORT_IDS, true ) ) {",
+   "335": "        return $continue_import;",
+   "336": "    }",
+   "337": "    // Saugiklis: $data turi buti masyvas",
+   "338": "    if ( ! is_array( $data ) ) {",
+   "339": "        return $continue_import;",
+   "340": "    }",
+   "341": "",
+   "342": "    $name     = (string) ( $data['name'] ?? '' );",
+   "343": "    $category = (string) ( $data['category'] ?? '' );",
+   "344": "    $brand    = (string) ( $data['brand'] ?? '' );",
+   "345": "    $price    = isset( $data['price'] ) ? (float) str_replace( ',', '.', (string) $data['price'] ) : 0.0;",
+   "346": "    $qty      = isset( $data['qty'] )   ? (int) $data['qty'] : 0;",
+   "347": "",
+   "348": "    // Fail-safe: jei tuscia esmine info -> leisti (neblokuojam aklai)",
+   "349": "    if ( $name === '' && $category === '' ) {",
+   "350": "        return $continue_import;"
+  },
+  "xml_header": "<?php\n\n/**\n\n * Plugin Name: Petshop XML Import\n\n * Plugin URI:  https://petshop.lt\n\n * Description: ZB ir VF XML importo logika — EAN dedup, kainodara (S70), fulfillment source, initial import vs sync atskyrimas, savikainos/marzos meta box.\n\n * Version:     1.5.18\n\n * Author:      petshop.lt\n\n *\n\n * v1.5.18 (2026-06-15): KLASES PAVADINIMO FIX — block_zb_create excluded_brand\n\n *\n\n *   PROBLEMA: v1.5.17 block_zb_create tikrino class_exists('Petshop_Rules') ir\n\n *   new Petshop_Rules() — BET tikra klase vadinasi Petshop_Import_Rules. Todel\n\n *   class_exists() grazindavo FALSE -> visas excluded_brand blokas PRALEIDZIAMAS\n\n *   prie vartu. Hau&Miau (ir kt. excluded) ZB prekes vis tiek BUVO SUKURIAMOS,\n\n *   tik po to (initial_import, eil. 879 — teisinga klase) metamos i trash.\n",
+  "log_pask2mb_tipai": {
+   "Užsakymas patvirtintas: užsakymas #, suma: #.#EUR": 7,
+   "PHP Warning:  Array to string conversion in /home/gyvunai#/domains/petshop.lt/public_html/wp-content/plugins/p": 7,
+   "Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klai": 3,
+   "PHP Warning:  Undefined array key \"Oksana@misiukas.lt\" in /home/gyvunai#/domains/petshop.lt/public_html/wp-con": 2,
+   "PHP Warning:  Undefined array key \"Roslanalesciute@gmail.com\" in /home/gyvunai#/domains/petshop.lt/public_html": 2,
+   "PHP Warning:  Undefined array key \"Teryte#@gmail.com\" in /home/gyvunai#/domains/petshop.lt/public_html/wp-cont": 2,
+   "WordPress database error Duplicate entry 'a#ad#fcfffca#d#ca#e#cd#dc#ee#d#a#da#fe#dcb#' for key 'PRIMARY' for q": 1,
+   "WordPress database error Duplicate entry 'a#ece#e#bf#c#cdc#cef#dbe#d#d#fc#a#f#a#a' for key 'PRIMARY' for query": 1,
+   "WordPress database error Duplicate entry 'a#f#cb#fd#cb#d#ca#cd#b#d#a#a#c#aad#' for key 'PRIMARY' for query INS": 1,
+   "WordPress database error Duplicate entry 'a#d#f#c#e#acb#a#b#dff#a#a#cbd#ffebe#f#ff#' for key 'PRIMARY' for que": 1,
+   "WordPress database error Duplicate entry 'a#ad#acac#c#dec#bb#b#cbae#d#b#c#a#a#c#dcb#c#d#bb' for key 'PRIMARY' ": 1,
+   "WordPress database error Duplicate entry 'a#b#c#e#ef#b#bb#fd#a#dbf#f#edba#cd#d#a#' for key 'PRIMARY' for query": 1,
+   "WordPress database error Duplicate entry 'a#c#a#afbd#fd#c#be#d#f#c#ef#f#eb#aa#a' for key 'PRIMARY' for query I": 1,
+   "WordPress database error Duplicate entry 'a#cf#e#b#e#e#bbf#f#f#c#e#fccb#f#c#c#ac#b' for key 'PRIMARY' for quer": 1,
+   "WordPress database error Duplicate entry 'a#e#d#e#fb#b#dc#c#f#d#fe#f#cee#e#de#b#bdd#' for key 'PRIMARY' for qu": 1
+  },
+  "log_pask2mb_dienos": {
+   "17-Sep-2026": 1949,
+   "18-Sep-2026": 28
+  },
+  "log_dydis": 43645738,
+  "log_pirma_eil": "[11-Sep-2026 22:09:38 UTC] PHP Warning:  S1675 testinis warning in /home/gyvunai2/domains/petshop.lt/public_html/wp-cont",
+  "log_errors_ini": {
+   "log_errors": "1",
+   "error_log": "/home/gyvunai2/domains/petshop.lt/logs/php_error.log",
+   "error_reporting": "4983",
+   "wp_debug": false,
+   "wp_debug_log": false
+  },
+  "archyvas": [
+   "Sep-2026.tar.gz",
+   "Sep-2026.tar.gz.1",
+   "Sep-2026.tar.gz.10",
+   "Sep-2026.tar.gz.11",
+   "Sep-2026.tar.gz.12",
+   "Sep-2026.tar.gz.2",
+   "Sep-2026.tar.gz.3",
+   "Sep-2026.tar.gz.4",
+   "Sep-2026.tar.gz.5",
+   "Sep-2026.tar.gz.6",
+   "Sep-2026.tar.gz.7",
+   "Sep-2026.tar.gz.8",
+   "Sep-2026.tar.gz.9",
+   "php_error.log"
+  ]
+ },
+ "v": "dep-171650",
+ "kurimas": 200,
+ "sid": 6050,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
