@@ -15,9 +15,42 @@
    "created_at",
    "updated_at"
   ],
-  "sources_tipai": [],
+  "sources_tipai": [
+   {
+    "source": "ambrosia",
+    "n": "15"
+   },
+   {
+    "source": "av",
+    "n": "1659"
+   },
+   {
+    "source": "belcor_tofu",
+    "n": "80"
+   },
+   {
+    "source": "paslauga",
+    "n": "2"
+   },
+   {
+    "source": "prins",
+    "n": "43"
+   },
+   {
+    "source": "quattro",
+    "n": "65"
+   },
+   {
+    "source": "vf",
+    "n": "1224"
+   },
+   {
+    "source": "zb",
+    "n": "1113"
+   }
+  ],
   "viso": 0,
-  "db_err": "Unknown column 'source_type' in 'field list'",
+  "db_err": "Unknown column 'e.wc_product_id' in 'where clause'",
   "grupes": [],
   "pvz": [],
   "xml_qty0": {
@@ -79,9 +112,9 @@
    }
   }
  },
- "v": "dep-174947",
+ "v": "dep-175123",
  "kurimas": 200,
- "sid": 6058,
+ "sid": 6059,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
