@@ -1,0 +1,121 @@
+{
+ "1": {
+  "antraste": "<?php\n/**\n * Plugin Name: Petshop Atsargu Laukimas v1.0 (Back-in-stock \"Pranesti kai bus\")\n * Description: Klientas out-of-stock prekes puslapyje palieka el. pasta; prekei grizus i prekyba issiunciamas laiskas per Petshop_Email_Dispatch (flow back_in_stock, transactional).\n * Version: 1.0.0\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Atsargu_Laukimas {\n\n\tconst VERSIJA        = '1.0.0';\n\tconst RATE_PER_IP    = 5;   // uzklausu per valanda is vieno IP\n\tconst RATE_PER_EMAIL = 10;  // uzklausu per para vienam el. pastui\n\n\t/* ---------------------------------------------------------------- */\n\t/* Inicijavimas                                                     */\n\t/* ---------------------------------------------------------------- */\n\n\tpublic static function init() {\n\t\tadd_action( 'init', array( __CLASS__, 'maybe_install' ) );\n\t\tadd_action( 'rest_api_init', array( __CLASS__, 'routes' ) );\n\t\tadd_filter( 'petshop_email_flows', array( __CLASS__, 'registruoti_srauta' ) );\n\t\tadd_action( 'woocommerce_single_product_summary', array( __CLASS__, 'forma' ), 31 );\n\t\t// Prekes lygio likutis (paprastos prekes + tevas)\n\t\tadd_action( 'woocommerce_product_set_stock_status', array( __CLASS__, 'statusas_pasikeite' ), 20, 3 );\n\t\t// Variacijos likutis -> pranesame apie TEVA (klientas uzsisake prekes puslapyje)\n\t\tadd_action( 'woocommerce_variation_set_stock_status', array( __CLASS__, 'variacijos_statusas' ), 20, 3 );\n\t}\n\n\t/* ---------------------------------------------------------------- */\n\t/* Lentele                                                          */\n\t/* ---------------------------------------------------------------- */\n\n\tpublic static function table() {\n\t\tglobal $wpdb;\n\t\treturn $wpdb->prefix . 'ps_stock_watch';\n\t}\n\n\tpublic static function maybe_install() {\n\t\tif ( get_option( 'ps_stock_watch_db' ) === self::VERSIJA ) { return; }\n",
+  "md5": "c7404a5d8ee1ba3700b786611a3b1267",
+  "eil": 267,
+  "kabliai": {
+   "4": "* Description: Klientas out-of-stock prekes puslapyje palieka el. pasta; prekei grizus i prekyba issiunciamas laiskas per Petshop_Email_Dispatch (flow back_in_stock, transactional",
+   "20": "add_action( 'init', array( __CLASS__, 'maybe_install' ) );",
+   "21": "add_action( 'rest_api_init', array( __CLASS__, 'routes' ) );",
+   "22": "add_filter( 'petshop_email_flows', array( __CLASS__, 'registruoti_srauta' ) );",
+   "23": "add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'forma' ), 31 );",
+   "25": "add_action( 'woocommerce_product_set_stock_status', array( __CLASS__, 'statusas_pasikeite' ), 20, 3 );",
+   "27": "add_action( 'woocommerce_variation_set_stock_status', array( __CLASS__, 'variacijos_statusas' ), 20, 3 );",
+   "63": "/* Srauto registracija dispatch registre                            */",
+   "69": "* Marketingo consent nereikia; suppression tikrina pats dispatch.",
+   "87": "if ( $product->is_in_stock() ) { return; }",
+   "88": "if ( 'publish' !== get_post_status( $product->get_id() ) ) { return; }",
+   "181": "if ( ! $product || 'publish' !== get_post_status( $pid ) ) {",
+   "184": "if ( $product->is_in_stock() ) {",
+   "233": "if ( ! class_exists( 'Petshop_Email_Dispatch' ) ) { return; }",
+   "234": "if ( 'publish' !== get_post_status( $product_id ) ) { return; }",
+   "253": "$rez = Petshop_Email_Dispatch::enqueue( 'back_in_stock', $eil['email'], $payload, array("
+  },
+  "cols": [
+   "id",
+   "product_id",
+   "email",
+   "user_id",
+   "status",
+   "source",
+   "created_at",
+   "notified_at"
+  ],
+  "viso": "4",
+  "pagal_status": [
+   {
+    "status": "notified",
+    "n": "3",
+    "nuo": "2026-09-01 08:51:17",
+    "iki": "2026-09-01 09:15:09"
+   },
+   {
+    "status": "waiting",
+    "n": "1",
+    "nuo": "2026-09-14 09:24:40",
+    "iki": "2026-09-14 09:24:40"
+   }
+  ],
+  "pask10": [
+   {
+    "id": "5",
+    "product_id": "18172",
+    "email": "lilijabaciuliene@gmail.com",
+    "user_id": null,
+    "status": "waiting",
+    "source": "product_page",
+    "created_at": "2026-09-14 09:24:40",
+    "notified_at": null
+   },
+   {
+    "id": "4",
+    "product_id": "16534",
+    "email": "gutulis@gmail.com",
+    "user_id": null,
+    "status": "notified",
+    "source": "product_page",
+    "created_at": "2026-09-01 09:15:09",
+    "notified_at": "2026-09-01 09:15:29"
+   },
+   {
+    "id": "3",
+    "product_id": "16340",
+    "email": "gutulis@gmail.com",
+    "user_id": null,
+    "status": "notified",
+    "source": "product_page",
+    "created_at": "2026-09-01 09:05:20",
+    "notified_at": "2026-09-01 09:06:06"
+   },
+   {
+    "id": "2",
+    "product_id": "19231",
+    "email": "terra@petshop.lt",
+    "user_id": null,
+    "status": "notified",
+    "source": "product_page",
+    "created_at": "2026-09-01 08:51:17",
+    "notified_at": "2026-09-01 08:51:48"
+   }
+  ],
+  "top_prekes": [
+   {
+    "product_id": "16340",
+    "post_title": "Rasco konservai katėms su veršiena ir žolelėmis padaže, 85 g",
+    "n": "1"
+   },
+   {
+    "product_id": "16534",
+    "post_title": "ROYAL CANIN CAT FUSSY EXIGENT - 10 kg, sausas pašaras išrankioms katėms",
+    "n": "1"
+   },
+   {
+    "product_id": "18172",
+    "post_title": "Hikari Turtle Sticks, 120 g",
+    "n": "1"
+   },
+   {
+    "product_id": "19231",
+    "post_title": "Apollo Happie Duo kramtomi batonėliai su vištiena ir kalakutiena 200g",
+    "n": "1"
+   }
+  ]
+ },
+ "v": "dep-181140",
+ "kurimas": 200,
+ "sid": 6062,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
