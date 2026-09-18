@@ -1,0 +1,91 @@
+{
+ "1": {
+  "bakdir": true,
+  "petshop-dim-klientai.php_crlf": false,
+  "petshop-dim-klientai.php": {
+   "pakeitimu": 1,
+   "md5_pries": "831d9d465aa63aaf41d42c96c36c7436",
+   "md5_po": "d28f7a30b0ab414ade333c8f47524916",
+   "bak": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/ps-backups/petshop-dim-klientai.php.bak_s1691"
+  },
+  "petshop-klientai.php_crlf": false,
+  "petshop-klientai.php": {
+   "pakeitimu": 1,
+   "md5_pries": "babf03d44e34a902f37325306baead37",
+   "md5_po": "1ef17b74c23adb946c21d8c3e96497ce",
+   "bak": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/ps-backups/petshop-klientai.php.bak_s1691"
+  },
+  "petshop-xml.php_crlf": false,
+  "petshop-xml.php": {
+   "pakeitimu": 4,
+   "md5_pries": "ca71af52f52ec41e4cc9f2b9177bbd68",
+   "md5_po": "20c67db8aa86226b9b25af59a6bf8e27",
+   "bak": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/ps-backups/petshop-xml.php.bak_s1691"
+  },
+  "heartbeat": 200
+ },
+ "2": {
+  "bakdir": true,
+  "pries": {
+   "n": "5431",
+   "max_p": "2026-09-08 20:40:03",
+   "dev": "5431",
+   "prod": "0"
+  },
+  "dev_istrinta": 5431,
+  "hook_kabliai": true,
+  "sek": 19.1,
+  "po": {
+   "n": "5431",
+   "max_p": "2026-09-18 17:33:10",
+   "dev": "0",
+   "prod": "5431",
+   "seg": "5431"
+  },
+  "segmentai": [
+   {
+    "segmentas": "win_back",
+    "n": "4245"
+   },
+   {
+    "segmentas": "pirmas",
+    "n": "637"
+   },
+   {
+    "segmentas": "aktyvus",
+    "n": "254"
+   },
+   {
+    "segmentas": "reaktyvacija",
+    "n": "149"
+   },
+   {
+    "segmentas": "refill_laikas",
+    "n": "118"
+   },
+   {
+    "segmentas": "refill_arteja",
+    "n": "28"
+   }
+  ],
+  "db_err": "",
+  "opcija": "2026-09-18 17:33:10 | 5431"
+ },
+ "3": {
+  "bakdir": true,
+  "pries_dydis": 43646968,
+  "gz": {
+   "dydis": 2945842,
+   "perrasyta_baitu": 43646968
+  },
+  "istustinta": true,
+  "po_dydis": 0
+ },
+ "v": "dep-173158",
+ "kurimas": 200,
+ "sid": 6056,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
