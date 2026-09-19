@@ -1,0 +1,44 @@
+{
+ "1": {
+  "dydis": 191401356,
+  "pask": "09-19 16:09",
+  "siandien_eil": 22376,
+  "reasons": {
+   "brand_blocked_now": 38,
+   "medication_blocked": 31,
+   "aksesuarai_below_": 538,
+   "skanestai_below_": 59,
+   "brand_missing_no_description": 1,
+   "kraikai_below_": 6,
+   "no_category_mapping": 53,
+   "pauks_blocked": 23,
+   "zirg_blocked": 2,
+   "vf_sku_already_exists": 15,
+   "higiena_below_": 9,
+   "qty_zero_new_no_history": 20,
+   "cost_below_minimum_accessory": 182,
+   "konservas_below_minimum": 44,
+   "excluded_brand": 2
+  },
+  "Array_siandien": 0,
+  "excluded_brands": [],
+  "pvz": [
+   "[2026-09-19 15:01:05] [STRUCT] action=ZB-BLOCK-CREATE | name=Good Wood kavamedžio šaka Medium šunims iki 20 kg | category=Šunims / Šunų maistas ir skanėstai / Skanėstai šunims | price=4.347 | qty=0 | reason=qty_zero_new_no_history | import_id=2 | note=ZB create prevented (new qty=0, no SEO/demand) before image download (v1.5.15)",
+   "[2026-09-19 15:01:05] [STRUCT] action=ZB-BLOCK-CREATE | name=Good Wood kavamedžio šaka Large šunims virš 20 kg | category=Šunims / Šunų maistas ir skanėstai / Skanėstai šunims | price=5.229 | qty=0 | reason=qty_zero_new_no_history | import_id=2 | note=ZB create prevented (new qty=0, no SEO/demand) before image download (v1.5.15)",
+   "[2026-09-19 15:01:05] [STRUCT] action=ZB-BLOCK-CREATE | name=Good Wood kavamedžio šakos pusė Small šunims iki 10 kg | category=Šunims / Šunų maistas ir skanėstai / Skanėstai šunims | price=1.854 | qty=80 | reason=cost_below_minimum_accessory | import_id=2 | note=ZB create prevented (accessory below min cost) before image download (v1.5.13)"
+  ],
+  "pask3": [
+   "[2026-09-19 16:09:42] STOCK SYNC post 35860 | zb_qty=7",
+   "[2026-09-19 16:09:42] Import #3 (STOCK) for post 35926",
+   "[2026-09-19 16:09:42] STOCK SYNC post 35926 | zb_qty=23"
+  ],
+  "Array_vakar": 0
+ },
+ "v": "dep-163900",
+ "kurimas": 200,
+ "sid": 6069,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
