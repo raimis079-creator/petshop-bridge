@@ -1,0 +1,38 @@
+{
+ "2": {
+  "pries_dydis": 191656866,
+  "gz": {
+   "kelias": "/home/gyvunai2/domains/petshop.lt/ps-archyvas/zb-import.log.iki_2026-09-19.s1694.gz",
+   "dydis": 15857354,
+   "perrasyta_baitu": 191656866,
+   "sek": 19.7
+  },
+  "istustinta": true,
+  "po_dydis": 0
+ },
+ "3": {
+  "md5": "f3394639ea9dae6235cd5316f2057049",
+  "versija": "1.5.20",
+  "funkcija_rotuoti": true,
+  "log_dydis": 0,
+  "log_gz": [],
+  "archyvas": [
+   "zb-import.log.iki_2026-09-19.s1694.gz 15857354"
+  ],
+  "prev_meta_n": 0,
+  "zb_cron_kitas": null,
+  "php_error_log_dydis": 29023,
+  "php_error_uodega": [
+   "#8 /home/gyvunai2/domains/avesa.lt/public_html/dev/index.php(1): require('...')\n",
+   "#9 {main}\n",
+   "  thrown in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 8\n"
+  ]
+ },
+ "v": "dep-200936",
+ "kurimas": 200,
+ "sid": 6083,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
