@@ -1,0 +1,379 @@
+{
+ "1": {
+  "laikas": "2026-09-19 19:36:29",
+  "ads_dienos": [
+   {
+    "diena": "2026-09-14",
+    "pasp": "208",
+    "eur": "62.80",
+    "konv": "5.00",
+    "kv": "149"
+   },
+   {
+    "diena": "2026-09-15",
+    "pasp": "155",
+    "eur": "40.97",
+    "konv": "5.00",
+    "kv": "162"
+   },
+   {
+    "diena": "2026-09-16",
+    "pasp": "161",
+    "eur": "47.73",
+    "konv": "5.00",
+    "kv": "322"
+   },
+   {
+    "diena": "2026-09-17",
+    "pasp": "142",
+    "eur": "31.15",
+    "konv": "2.00",
+    "kv": "98"
+   },
+   {
+    "diena": "2026-09-18",
+    "pasp": "102",
+    "eur": "24.69",
+    "konv": "0.00",
+    "kv": "0"
+   }
+  ],
+  "ads_pask_irasas": null,
+  "ads_reklama_cols": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ],
+  "gclid_uzs": [
+   {
+    "d": "2026-09-15",
+    "n": "6",
+    "eur": "219"
+   },
+   {
+    "d": "2026-09-16",
+    "n": "5",
+    "eur": "322"
+   },
+   {
+    "d": "2026-09-17",
+    "n": "2",
+    "eur": "98"
+   },
+   {
+    "d": "2026-09-18",
+    "n": "4",
+    "eur": "78"
+   },
+   {
+    "d": "2026-09-19",
+    "n": "4",
+    "eur": "115"
+   }
+  ],
+  "offline_endpoint": {
+   "http": 200,
+   "eiluciu": 4,
+   "pvz": {
+    "v": "1.2",
+    "dienos": 3
+   }
+  },
+  "opc_ps_ads_offline_pask": false,
+  "opc_ps_fakt_reklama_pask": false,
+  "opc_ps_ads_pask_traukimas": false,
+  "cron_ads": {
+   "ps_fakt_reklama_portalai": "09-20 04:20"
+  },
+  "uzs_dienos": [
+   {
+    "d": "2026-09-16",
+    "viso": "2",
+    "ok": "2",
+    "atsaukta": "0",
+    "eur": "184"
+   },
+   {
+    "d": "2026-09-17",
+    "viso": "15",
+    "ok": "7",
+    "atsaukta": "8",
+    "eur": "273"
+   },
+   {
+    "d": "2026-09-18",
+    "viso": "7",
+    "ok": "7",
+    "atsaukta": "0",
+    "eur": "246"
+   },
+   {
+    "d": "2026-09-19",
+    "viso": "8",
+    "ok": "8",
+    "atsaukta": "0",
+    "eur": "243"
+   }
+  ],
+  "processing": "14",
+  "neissiusti_48h": [],
+  "paskyra_priskirta_nauji": [
+   "36083",
+   "36085",
+   "36087",
+   "36090"
+  ],
+  "rytas_sargas": {
+   "laikas": "2026-09-19 03:30:01",
+   "raudonos": [],
+   "geltonos": [],
+   "zalios": 12,
+   "viso": 13
+  },
+  "sargas_klaidos_24h": [
+   {
+    "lygis": "warning",
+    "z": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/",
+    "n": "736"
+   },
+   {
+    "lygis": "warning",
+    "z": "Cannot modify header information - headers already sent by (output started at /h",
+    "n": "2"
+   },
+   {
+    "lygis": "warning",
+    "z": "Undefined variable $u",
+    "n": "1"
+   },
+   {
+    "lygis": "warning",
+    "z": "Array to string conversion",
+    "n": "1"
+   },
+   {
+    "lygis": "fatal",
+    "z": "Uncaught Error: Call to undefined method WP_Error::get_matched_route() in /home/",
+    "n": "1"
+   },
+   {
+    "lygis": "warning",
+    "z": "Trying to access array offset on null",
+    "n": "1"
+   }
+  ],
+  "sargas_cron_laukiam_n": 82,
+  "sargas_neatsiskaite_26h": {
+   "ps_sargas_savaitinis": "107.6 val.",
+   "wp_delete_temp_updater_backups": "96.9 val.",
+   "wp_site_health_scheduled_check": "72.9 val.",
+   "wcdn_ts_tracker_send_event": "32.9 val.",
+   "cmplz_every_week_hook": "32.4 val.",
+   "cmplz_every_month_hook": "272.4 val.",
+   "wp_1_wc_privacy_cleanup_cron": "97.3 val."
+  },
+  "cron_velave": [],
+  "opc_ps_sugrazinimas_pask": {
+   "laikas": "2026-09-19 08:30:03",
+   "kand": 0,
+   "ikelta": 0,
+   "pirko": 0,
+   "dubl": 0
+  },
+  "opc_ps_gavimo_perrus_pask": {
+   "laikas": "2026-09-18 11:14:18",
+   "rez": {
+    "25121": {
+     "pid": 25121,
+     "eil": []
+    },
+    "25177": {
+     "pid": 25177,
+     "eil": []
+    }
+   }
+  },
+  "opc_ps_fakt_siuntu_gyvavimas_pask": {
+   "ts": "2026-09-19 16:36:15",
+   "dry": false,
+   "uzsakymu": 14,
+   "pakeista": 0
+  },
+  "opc_ps_dropship_matomumas_pask": {
+   "laikas": "2026-09-19 19:15:09",
+   "dry": false,
+   "tikrinta": 1589,
+   "paslepta": 0,
+   "atidengta": 0,
+   "pvz": [],
+   "kablys": "14650:paslepta"
+  },
+  "opc_ps_dim_klientu_paskutinis": "2026-09-18 20:40:03 | 5431",
+  "opc_ps_bacs_priminimas_pask": {
+   "v": "1.0.2",
+   "dry": false,
+   "dabar": "2026-09-19 15:49:57",
+   "eil": [
+    {
+     "id": 36088,
+     "nr": "1114",
+     "val": 2.9,
+     "naujesnis": {
+      "yra": false,
+      "apmoketas": false,
+      "ids": []
+     },
+     "veiksmas": "laukia_48"
+    },
+    {
+     "id": 36089,
+     "nr": "1115",
+     "val": 1.6,
+     "naujesnis": {
+      "yra": false,
+      "apmoketas": false,
+      "ids": []
+     },
+     "veiksmas": "laukia_48"
+    }
+   ]
+  },
+  "opc_ps_dropship_sargas_pask": false,
+  "email_jobs_24h": [
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "sr": "",
+    "n": "8"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "sr": "",
+    "n": "8"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "sr": "",
+    "n": "8"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "1"
+   }
+  ],
+  "email_failed_24h": [],
+  "php_log": {
+   "dydis": 24940,
+   "pask": "09-19 15:55",
+   "eiluciu": 209,
+   "tipai": {
+    "## /home/gyvunai#/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(#): W": 45,
+    "PHP Fatal error:  Uncaught Error: Call to undefined method WP_Error::get_matched_route() in /home/gy": 9,
+    "Stack trace:": 9,
+    "## /home/gyvunai#/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(#): rest_send_allow_h": 9,
+    "## /home/gyvunai#/domains/petshop.lt/public_html/wp-includes/plugin.php(#): WP_Hook->apply_filters()": 9,
+    "## /home/gyvunai#/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(#): a": 9,
+    "## /home/gyvunai#/domains/petshop.lt/public_html/wp-includes/rest-api.php(#): WP_REST_Server->serve_": 9,
+    "## /home/gyvunai#/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(#): rest_api_loaded()": 9,
+    "## /home/gyvunai#/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(#): WP_Hook->apply_fi": 9,
+    "## /home/gyvunai#/domains/petshop.lt/public_html/wp-includes/plugin.php(#): WP_Hook->do_action()": 9
+   }
+  },
+  "dim": {
+   "n": "5431",
+   "max_p": "2026-09-18 20:40:03",
+   "prod": "5431"
+  },
+  "hidden_dropship": "292",
+  "hidden_be_zymes": "31",
+  "outofstock_dropship_matomi": "7",
+  "zb_log": [],
+  "zb_opcijos": {
+   "petshop_xml_last_run": false,
+   "zb_last": false
+  },
+  "wpai_imports": [
+   {
+    "id": "1",
+    "n": "",
+    "last_activity": "2026-05-27 11:14:21",
+    "reg": "05-27",
+    "count": "2045",
+    "imported": "0",
+    "created": "0",
+    "updated": "0",
+    "skipped": "2045"
+   },
+   {
+    "id": "2",
+    "n": "",
+    "last_activity": "2026-09-19 15:02:02",
+    "reg": "09-19",
+    "count": "2654",
+    "imported": "0",
+    "created": "0",
+    "updated": "0",
+    "skipped": "2200"
+   },
+   {
+    "id": "3",
+    "n": "",
+    "last_activity": "2026-09-19 16:09:44",
+    "reg": "09-19",
+    "count": "2687",
+    "imported": "1067",
+    "created": "0",
+    "updated": "1067",
+    "skipped": "1620"
+   },
+   {
+    "id": "5",
+    "n": "",
+    "last_activity": "2026-09-19 03:32:22",
+    "reg": "09-19",
+    "count": "2381",
+    "imported": "260",
+    "created": "8",
+    "updated": "252",
+    "skipped": "2121"
+   },
+   {
+    "id": "7",
+    "n": "",
+    "last_activity": "2026-09-19 16:20:03",
+    "reg": "09-19",
+    "count": "2381",
+    "imported": "0",
+    "created": "0",
+    "updated": "0",
+    "skipped": "2381"
+   }
+  ],
+  "vf_feed_amzius_val": 0.5,
+  "db_err": ""
+ },
+ "v": "dep-163524",
+ "kurimas": 200,
+ "sid": 6067,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
