@@ -1,0 +1,98 @@
+{
+ "1": {
+  "fatal_n": 9,
+  "fatal_pvz": [
+   {
+    "laikas": "19-Sep-2026 06:28:48 UTC",
+    "kur": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api.php:863",
+    "stack": "#0 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(341): rest_send_allow_header()\n#1 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters()\n#2 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1866): apply_filters()\n#3 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1292): WP_REST_Server->serve_batch_request_v1()\n#4 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1861): WP_REST_Server->respond_to_request()\n#5 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1292): WP_REST_Server->serve_batch_request_v1()\n#6 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1125): WP_REST_Server->respond_to_request()\n#7 /h"
+   },
+   {
+    "laikas": "19-Sep-2026 06:28:49 UTC",
+    "kur": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api.php:863",
+    "stack": "#0 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(341): rest_send_allow_header()\n#1 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters()\n#2 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1866): apply_filters()\n#3 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1292): WP_REST_Server->serve_batch_request_v1()\n#4 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1861): WP_REST_Server->respond_to_request()\n#5 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1292): WP_REST_Server->serve_batch_request_v1()\n#6 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1125): WP_REST_Server->respond_to_request()\n#7 /h"
+   },
+   {
+    "laikas": "19-Sep-2026 06:29:08 UTC",
+    "kur": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api.php:863",
+    "stack": "#0 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(341): rest_send_allow_header()\n#1 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters()\n#2 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1866): apply_filters()\n#3 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1292): WP_REST_Server->serve_batch_request_v1()\n#4 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1861): WP_REST_Server->respond_to_request()\n#5 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1292): WP_REST_Server->serve_batch_request_v1()\n#6 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1125): WP_REST_Server->respond_to_request()\n#7 /h"
+   }
+  ],
+  "sargas_fatal": [
+   {
+    "laikas": "2026-09-19 18:14:19",
+    "url": "/",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api.php",
+    "eilute": "863"
+   }
+  ],
+  "sargas_headers": [
+   {
+    "laikas": "2026-09-19 14:43:59",
+    "url": "/krepselis/?_gl=1*6dtw7*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjw5bjVBhCiARIsAJzMVnStv7_UCGk_4ZPKRLjcXHHehvqVdZ0zxgb5ilrzCYB2zP5-Ctl1rKsaArp3EALw_wcB&gbraid=0AAAAApaj7XV",
+    "z": "Cannot modify header information - headers already sent by (output started at /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/partials/html-block-lpexpre"
+   },
+   {
+    "laikas": "2026-09-19 14:43:59",
+    "url": "/krepselis/?_gl=1*6dtw7*_up*MQ..*_gs*MQ..&gclid=Cj0KCQjw5bjVBhCiARIsAJzMVnStv7_UCGk_4ZPKRLjcXHHehvqVdZ0zxgb5ilrzCYB2zP5-Ctl1rKsaArp3EALw_wcB&gbraid=0AAAAApaj7XV",
+    "z": "Cannot modify header information - headers already sent by (output started at /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/partials/html-block-lpexpre"
+   }
+  ],
+  "log_fn": {
+   "1278": "function petshop_xml_log_structured( array $data ): void {",
+   "1279": "    $parts = [];",
+   "1280": "    foreach ( $data as $key => $val ) {",
+   "1281": "        $parts[] = $key . '=' . (string) $val;",
+   "1282": "    }",
+   "1283": "    $msg = '[STRUCT] ' . implode( ' | ', $parts );",
+   "1284": "    petshop_xml_log( $msg );",
+   "1285": "}",
+   "1286": "",
+   "1287": "add_action( 'admin_post_petshop_download_log', function() {",
+   "1288": "    if ( ! current_user_can('manage_woocommerce') ) wp_die('Prieiga draudžiama');",
+   "1289": "    check_admin_referer('petshop_download_log');",
+   "1290": "    $f = WP_CONTENT_DIR.'/uploads/petshop-private-logs/zb-import.log';",
+   "1291": "    if ( ! file_exists($f) ) wp_die('Log neegzistuoja');",
+   "1292": "    header('Content-Type: text/plain');",
+   "1293": "    header('Content-Disposition: attachment; filename=\"zb-import.log\"');",
+   "1294": "    readfile($f); exit;",
+   "1295": "});",
+   "1296": "",
+   "1297": "/**",
+   "1298": " * v1.5.0: VF TRASH PROTECTION (update kelias)",
+   "1299": " */",
+   "1300": "add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_vf_trash_update', 10, 4 );",
+   "1301": "",
+   "1302": "function petshop_xml_block_vf_trash_update( $continue_import, $post_id, $data, $import_id ) {"
+  },
+  "zb_log_opc": {
+   "petshop_zb_image_index": "62855",
+   "zb_data_diag_log": "13779"
+  },
+  "zb_lenteles": [
+   "gaj6_ps_feeding_import_log",
+   "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_vf_block_log",
+   "gaj6_vf_observer"
+  ],
+  "wc_logs_naujausi": [
+   "fatal-errors-2026-09-19 20754",
+   "place-order-debug-6d3dabf7-2026-09-19 1446",
+   "place-order-debug-91c6733b-2026-09-19 1446",
+   "place-order-debug-aa4dd3ee-2026-09-19 1446",
+   "place-order-debug-e7af483d-2026-09-19 1446",
+   "place-order-debug-ed22c030-2026-09-19 1446",
+   "transactional-emails-2026-09-19 4718",
+   "wc-analytics-order-import-2026-09-18 494",
+   "wc-analytics-order-import-2026-09-19 245",
+   "wc_logger-2026-09-19 32933"
+  ]
+ },
+ "v": "dep-163713",
+ "kurimas": 200,
+ "sid": 6068,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
