@@ -1,0 +1,88 @@
+{
+ "1": {
+  "kandidatai": [],
+  "jobs_cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "jobs_flows": [],
+  "jobs_5792": [],
+  "tracking_cols": [
+   "id",
+   "user_id",
+   "product_id",
+   "pet_id",
+   "last_order_id",
+   "last_purchase_date",
+   "purchase_count",
+   "avg_interval_days",
+   "predicted_empty_date",
+   "confidence",
+   "status",
+   "created_at",
+   "updated_at",
+   "last_feedback",
+   "last_feedback_at",
+   "feedback_cycle"
+  ],
+  "tracking_55": {
+   "id": "55",
+   "user_id": "5792",
+   "product_id": "21329",
+   "pet_id": null,
+   "last_order_id": "35881",
+   "last_purchase_date": "2026-09-09",
+   "purchase_count": "1",
+   "avg_interval_days": "14",
+   "predicted_empty_date": "2026-09-23",
+   "confidence": "0.40",
+   "status": "notified",
+   "created_at": "2026-09-09 16:59:13",
+   "updated_at": "2026-09-18 08:01:02",
+   "last_feedback": null,
+   "last_feedback_at": null,
+   "feedback_cycle": null
+  },
+  "tracking_status": [
+   {
+    "status": "active",
+    "n": "81"
+   },
+   {
+    "status": "notified",
+    "n": "1"
+   }
+  ]
+ },
+ "v": "dep-195414",
+ "kurimas": 200,
+ "sid": 6077,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
