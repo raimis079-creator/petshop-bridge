@@ -1,0 +1,157 @@
+{
+ "1": {
+  "failai": {
+   "/mu-plugins/petshop-analitika.php": {
+    "magic-login": [
+     " *     (augintiniai, profiliai, magic-login), o beacon'as yra auksto daznio"
+    ]
+   },
+   "/mu-plugins/petshop-laiskai.php": {
+    "feedback_url": [
+     "\t\t\t'refill_due'             => array( 'reorder_url', 'feedback_url' ),",
+     "\t\t\t'feedback_url'    => home_url( '/my-account/augintinis/' ),"
+    ],
+    "feedback": [
+     "\t\t\t'refill_due'             => array( 'reorder_url', 'feedback_url' ),",
+     "\t\t\t'feedback_url'    => home_url( '/my-account/augintinis/' ),"
+    ],
+    "augintinis": [
+     "\t\t\t'feedback_url'    => home_url( '/my-account/augintinis/' ),",
+     "\t\t\t'profile_url'     => home_url( '/my-account/augintinis/' ),"
+    ],
+    "refill_due": [
+     "\t\t\t'refill_due'             => array( 'reorder_url', 'feedback_url' ),"
+    ]
+   },
+   "/mu-plugins/petshop-lifecycle-vartai.php": {
+    "feedback": [
+     "\t/** S1688: klientas pats paprašė priminimo prekės puslapyje (feedback_cycle='relaunch') — holdout netaikomas. */",
+     "\t\treturn 'relaunch' === (string) $wpdb->get_var( $wpdb->prepare( \"SELECT feedback_cycle FROM {$wpdb->prefix}ps_refill_tracking WHERE user_id=%d AND product_id=%d\", $uid, $pid ) );"
+    ],
+    "refill_due": [
+     null,
+     "\t\tif ( ! in_array( $flow, array( 'refill_due', 'post_purchase_14d', 'win_back' ), true ) ) return $result;"
+    ],
+    "kalibr": [
+     " (prio 30): pirmam pirkimui — 1) anketa (dienos norma × pakuotė), 2) ciklų lentelė (mediana); kalibruotų (2+) neliečia. */",
+     "\t\t\t// Kalibruotas intervalas: per trumpas = papildymas, ne suvartojimo ciklas (S1685)."
+    ]
+   },
+   "/mu-plugins/petshop-m8-food.php": {
+    "augintinis": [
+     "\t/** Augintinis + nuosavybes patikra. */",
+     "\t\tif ( ! $pet ) { return new WP_Error( 'not_found', 'Augintinis nerastas.', array( 'status' => 404 ) ); }",
+     "\t\tif ( ! $pet ) return new WP_Error('not_found','Augintinis nerastas.',array('status'=>404));",
+     "\t\tif ( $pet_id && ! $pet ) return new WP_Error('not_found','Augintinis nerastas.',array('status'=>404));"
+    ]
+   },
+   "/mu-plugins/petshop-pet-claim.php": {
+    "augintinis": [
+     " *   POST /petshop/v1/pet-claim-resolve  — sprendimas: new (kitas augintinis) / attach (tas pats)"
+    ]
+   },
+   "/mu-plugins/petshop-rec-ui.php": {
+    "augintinis": [
+     " * Description: Rekomendaciju blokas \"Mano augintinis\" puslapyje + rec_clicked ivykis. M8 neliestas — blokas prisideda pats.",
+     "if(!/\\/augintinis\\//.test(location.pathname))return;"
+    ]
+   },
+   "/mu-plugins/petshop-rec-variklis.php": {
+    "augintinis": [
+     "\t\tif ( ! $pet ) { return new WP_Error( 'not_found', 'Augintinis nerastas.', array( 'status' => 404 ) ); }"
+    ]
+   }
+  },
+  "snippets": [
+   {
+    "id": "587",
+    "name": "Petshop Slepia Footer1 Widgetus Legal Puslapiuose v1",
+    "active": "1",
+    "l": "467"
+   },
+   {
+    "id": "594",
+    "name": "Petshop Turinio Nuorodu Stilius Legal Puslapiuose v1",
+    "active": "1",
+    "l": "890"
+   },
+   {
+    "id": "6076",
+    "name": "TEMP PS dep-195215",
+    "active": "1",
+    "l": "2192"
+   }
+  ],
+  "rewrite": {
+   "augintinis(/(.*))?/?$": "index.php?&augintinis=$matches[2]",
+   "(.?.+?)/augintinis(/(.*))?/?$": "index.php?pagename=$matches[1]&augintinis=$matches[3]"
+  },
+  "puslapis_34789": {
+   "url": "https://petshop.lt/augintinio-profilis/",
+   "turinys": "[petshop_pet_form]\n\n<div class=\"ps-profile-benefits\" style=\"max-width:860px;margin:38px auto 0;padding:0 20px\">\n  <div style=\"flex-wrap:wrap;gap:26px\">\n    <div style=\"flex:1 1 220px\">\n      <h3 style=\"font-size:16px;font-weight:700;margin:0 0 8px\">Kiek maisto reikia</h3>\n      <p style=\"font-size:14px;line-height:1.65;margin:0;color:#4A554C\">Apskaičiuosime dienos normą ir maisto kainą per dieną, "
+  },
+  "refill_artimiausi": [
+   {
+    "id": "55",
+    "user_id": "5792",
+    "product_id": "21329",
+    "status": "notified",
+    "predicted_empty_date": "2026-09-23",
+    "last_order_id": "35881",
+    "confidence": "0.40"
+   },
+   {
+    "id": "124",
+    "user_id": "5108",
+    "product_id": "18602",
+    "status": "active",
+    "predicted_empty_date": "2026-10-02",
+    "last_order_id": "36021",
+    "confidence": "0.40"
+   },
+   {
+    "id": "129",
+    "user_id": "5839",
+    "product_id": "24393",
+    "status": "active",
+    "predicted_empty_date": "2026-10-02",
+    "last_order_id": "36025",
+    "confidence": "0.40"
+   },
+   {
+    "id": "130",
+    "user_id": "5839",
+    "product_id": "17787",
+    "status": "active",
+    "predicted_empty_date": "2026-10-02",
+    "last_order_id": "36025",
+    "confidence": "0.40"
+   },
+   {
+    "id": "56",
+    "user_id": "5792",
+    "product_id": "21671",
+    "status": "active",
+    "predicted_empty_date": "2026-10-09",
+    "last_order_id": "35881",
+    "confidence": "0.40"
+   },
+   {
+    "id": "66",
+    "user_id": "4018",
+    "product_id": "17293",
+    "status": "active",
+    "predicted_empty_date": "2026-10-13",
+    "last_order_id": "35917",
+    "confidence": "0.60"
+   }
+  ]
+ },
+ "v": "dep-195215",
+ "kurimas": 200,
+ "sid": 6076,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
