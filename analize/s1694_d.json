@@ -1,0 +1,120 @@
+{
+ "1": {
+  "url": {
+   "/my-account/augintinis/": {
+    "kodas": 301,
+    "location": "https://petshop.lt/paskyra/augintinis/",
+    "title": null,
+    "tekstas": ""
+   },
+   "/paskyra/augintinis/": {
+    "kodas": 200,
+    "location": "",
+    "title": "Mano paskyra - Petshop.lt",
+    "tekstas": "Mano paskyra - Petshop.lt Skip to content Nemokamas pristatymas į paštomatus nuo 30 € Nemokamas pristatymas į paštomatus nuo 30 € Ieškoti: Prisijungti Krepšelis / 0,00&nbsp;&euro; 0 Krepšelyje nėra produktų. Grįžti į parduotuvę 0 Krepšelis Krepšelyje nėra produktų. Grįžti į parduotuvę ŠUNIMS MAISTAS ŠUNIMS Sausas maistas šunims Konservai šunims SKANĖSTAI IR PAPILDAI Skanėstai šunims Vitaminai ir p"
+   },
+   "/paskyra/augintiniai/": {
+    "kodas": 404,
+    "location": "",
+    "title": "Page Not Found - Petshop.lt",
+    "tekstas": "Page Not Found - Petshop.lt Skip to content Nemokamas pristatymas į paštomatus nuo 30 € Nemokamas pristatymas į paštomatus nuo 30 € Ieškoti: Prisijungti Krepšelis / 0,00&nbsp;&euro; 0 Krepšelyje nėra produktų. Grįžti į parduotuvę 0 Krepšelis Krepšelyje nėra produktų. Grįžti į parduotuvę ŠUNIMS MAISTAS ŠUNIMS Sausas maistas šunims Konservai šunims SKANĖSTAI IR PAPILDAI Skanėstai šunims Vitaminai ir"
+   },
+   "/paskyra/": {
+    "kodas": 200,
+    "location": "",
+    "title": "Mano paskyra - Petshop.lt",
+    "tekstas": "Mano paskyra - Petshop.lt Skip to content Nemokamas pristatymas į paštomatus nuo 30 € Nemokamas pristatymas į paštomatus nuo 30 € Ieškoti: Prisijungti Krepšelis / 0,00&nbsp;&euro; 0 Krepšelyje nėra produktų. Grįžti į parduotuvę 0 Krepšelis Krepšelyje nėra produktų. Grįžti į parduotuvę ŠUNIMS MAISTAS ŠUNIMS Sausas maistas šunims Konservai šunims SKANĖSTAI IR PAPILDAI Skanėstai šunims Vitaminai ir p"
+   }
+  },
+  "laiskai_md5": "2c0d6a074dc6031caa5f79665b2cd954",
+  "laiskai_dydis": 23371,
+  "laiskai_kontekstas": "( $r['blocks'] ) ? $r['blocks'] : json_decode( (string) $r['blocks_json'], true );\n\t\tif ( ! is_array( $blocks ) ) { $blocks = array(); }\n\n\t\t$pvz = wp_parse_args( $payload, self::pavyzdinis_payload( $flow ) );\n\t\t$subject = self::pakeisti( $r['subject'], $pvz );\n\t\t$body    = self::blokai_i_html( $blocks, $pvz );\n\t\t$flows   = class_exists( 'Petshop_Email_Dispatch' ) ? Petshop_Email_Dispatch::flows() : array();\n\t\t$fc      = isset( $flows[ $flow ]['class'] ) ? $flows[ $flow ]['class'] : 'service';\n\n\t\treturn array(\n\t\t\t'ok'      => true,\n\t\t\t'saltinis'=> $version ? ( 'versija v' . (int) $version ) : ( self::juodrastis( $flow ) ? 'juodrastis' : 'paskelbta' ),\n\t\t\t'subject' => $subject,\n\t\t\t'html'    => Petshop_Email_Layout::wrap( array(\n\t\t\t\t'subject'    => $subject,\n\t\t\t\t'preheader'  => self::pakeisti( $r['preheader'], $pvz ),\n\t\t\t\t'body'       => $body,\n\t\t\t\t'flow_class' => $fc,\n\t\t\t\t'email'      => 'pavyzdys@petshop.lt',\n\t\t\t\t'reason'     => self::pakeisti( $r['reason'], $pvz ),\n\t\t\t) ),\n\t\t);\n\t}\n\n\tpublic static function pavyzdinis_payload( $flow ) {\n\t\t$p = array(\n\t\t\t'vardas'          => 'Raimondas',\n\t\t\t'el_pastas'       => 'pavyzdys@petshop.lt',\n\t\t\t'order_number'    => '35012',\n\t\t\t'order_total'     => '48,90 €',\n\t\t\t'order_url'       => home_url( '/my-account/orders/' ),\n\t\t\t'pay_url'         => home_url( '/checkout/' ),\n\t\t\t'carrier'         => 'Venipak',\n\t\t\t'tracking_number' => 'VP123456789LT',\n\t\t\t'tracking_url'    => 'https://venipak.lt/',\n\t\t\t'reorder_url'     => home_url( '/cart/' ),\n\t\t\t'feedback_url'    => home_url( '/my-account/augintinis/' ),\n\t\t\t'cart_url'        => home_url( '/cart/' ),\n\t\t\t'shop_url'        => home_url( '/parduotuve/' ),\n\t\t\t'signup_url'      => home_url( '/' ),\n\t\t\t'profile_url'     => home_url( '/my-account/augintinis/' ),\n\t\t\t'product_name'    => 'Josera Help Sensitive 12,5 kg',\n\t\t\t'product_url'     => home_url( '/parduotuve/' ),\n\t\t\t'pet_name'        => 'Reksas',\n\t\t\t'reminder_label'  => 'Nuo blusų ir erkių',\n\t\t\t'recovery_url'    => home_url( '/cart/' ),\n\t\t\t'first_url'       => home_url( '/parduotuve/' ),\n\t\t\t'cart_items'      => array(\n\t\t\t\tarray( 'name' => 'Josera Help Sensitive 12,5 kg', 'quantity' => 1, 'url' => home_url( '/parduotuve/' ) ),\n\t\t\t\tarra",
+  "myaccount_page": "https://petshop.lt/paskyra/",
+  "endpoints": [
+   "order-pay",
+   "order-received",
+   "orders",
+   "view-order",
+   "downloads",
+   "edit-account",
+   "edit-address",
+   "payment-methods",
+   "lost-password",
+   "customer-logout",
+   "add-payment-method",
+   "delete-payment-method",
+   "set-default-payment-method",
+   "prenumeratos"
+  ],
+  "ps_endpointai": [
+   "woocommerce_myaccount_add_payment_method_endpoint",
+   "woocommerce_myaccount_delete_payment_method_endpoint",
+   "woocommerce_myaccount_downloads_endpoint",
+   "woocommerce_myaccount_edit_account_endpoint",
+   "woocommerce_myaccount_edit_address_endpoint",
+   "woocommerce_myaccount_lost_password_endpoint",
+   "woocommerce_myaccount_orders_endpoint",
+   "woocommerce_myaccount_payment_methods_endpoint",
+   "woocommerce_myaccount_set_default_payment_method_endpoint",
+   "woocommerce_myaccount_view_order_endpoint"
+  ],
+  "augintinio_puslapis_kode": {
+   "/mu-plugins/petshop-laiskai.php": [
+    "\t\t\t'feedback_url'    => home_url( '/my-account/augintinis/' ),",
+    "\t\t\t'profile_url'     => home_url( '/my-account/augintinis/' ),"
+   ],
+   "/mu-plugins/petshop-rec-ui.php": [
+    "if(!/\\/augintinis\\//.test(location.pathname))return;"
+   ]
+  },
+  "puslapiai": [
+   {
+    "ID": "3230",
+    "post_name": "prins-petfoods",
+    "post_status": "draft"
+   },
+   {
+    "ID": "3234",
+    "post_name": "hikari",
+    "post_status": "draft"
+   },
+   {
+    "ID": "34254",
+    "post_name": "isrankus-augintinis",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34261",
+    "post_name": "sterilizuotas-augintinis",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34515",
+    "post_name": "apie-mus",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34538",
+    "post_name": "sunu-veisles",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34570",
+    "post_name": "naujas-augintinis",
+    "post_status": "publish"
+   },
+   {
+    "ID": "34789",
+    "post_name": "augintinio-profilis",
+    "post_status": "publish"
+   }
+  ]
+ },
+ "v": "dep-195022",
+ "kurimas": 200,
+ "sid": 6075,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
