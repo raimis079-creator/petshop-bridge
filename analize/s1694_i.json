@@ -1,0 +1,73 @@
+{
+ "1": {
+  "eil": 493,
+  "md5": "90b8a1c08ac51d6f1a89b073ab75f192",
+  "s323_kontekstas": "\n\t\t\t// --- S312: laiskas VISADA i outbox'a; sprendimas fiksuojamas ten.\n\t\t\t// Srauto specifines salygos tikrinamos per petshop_email_eligibility\n\t\t\t// filtra (zr. eligibility_filter()), kad praleidimo priezastis butu\n\t\t\t// matoma ataskaitose, o ne dingtu tyliame return'e.\n\t\t\tif ( class_exists( 'Petshop_Email_Dispatch' ) ) {\n\t\t\t\t$pet_name = '';\n\t\t\t\tif ( $row->pet_id ) {\n\t\t\t\t\t$pet_name = (string) $wpdb->get_var( $wpdb->prepare(\n\t\t\t\t\t\t\"SELECT pet_name FROM {$wpdb->prefix}ps_pets WHERE id = %d\", $row->pet_id ) );\n\t\t\t\t}\n\t\t\t\tPetshop_Email_Dispatch::enqueue(\n\t\t\t\t\t'refill_due',\n\t\t\t\t\t$row->user_email,\n\t\t\t\t\tarray(\n\t\t\t\t\t\t'pet_name'     => $pet_name,\n\t\t\t\t\t\t'product_id'   => (int) $row->product_id,\n\t\t\t\t\t\t'product_name' => $product_name,\n\t\t\t\t\t\t'product_url'  => $product ? $product->get_permalink() : home_url( '/' ),\n\t\t\t\t\t\t'reorder_url'  => add_query_arg( 'add-to-cart', (int) $row->product_id, wc_get_cart_url() ),\n\t\t\t\t\t\t'confidence'   => (float) $row->confidence,\n\t\t\t\t\t),\n\t\t\t\t\tarray(\n\t\t\t\t\t\t'job_key' => 'refill_due:' . $row->user_id . ':' . $row->product_id . ':' . $row->predicted_empty_date,\n\t\t\t\t\t\t'user_id' => (int) $row->user_id,\n\t\t\t\t\t\t// context — reikalingas eligibility filtrui\n\t\t\t\t\t\t'context' => array(\n\t\t\t\t\t\t\t'user_id'            => (int) $row->user_id,\n\t\t\t\t\t\t\t'product_id'         => (int) $row->product_id,\n\t\t\t\t\t\t\t'last_purchase_date' => $row->last_purchase_date,\n\t\t\t\t\t\t\t// S323: reikalinga kalibravimo nuorodai (feedback_url)\n\t\t\t\t\t\t\t'refill_id'          => (int) $row->id,\n\t\t\t\t\t\t\t'cycle'              => (string) $row->predicted_empty_date,\n\t\t\t\t\t\t),\n\t\t\t\t\t)\n\t\t\t\t);\n\t\t\t}\n\n\t\t\t// Pazymim kad fire'inta (status -> notified), kad nekartotume\n\t\t\t$wpdb->update( $table, array(\n\t\t\t\t'status'     => 'notified',\n\t\t\t\t'updated_at' => gmdate( 'Y-m-d H:i:s' ),\n\t\t\t), array( 'id' => $row->id ) );\n\t\t}\n\t}\n\n\t/**\n\t * S312: refill_due srauto eligibility.\n\t *\n\t * terminal=true  -> 'skipped' (galutinai, sio ciklo nebetikrinam)\n\t * terminal=false -> 'deferred' (kartojam veliau, iki atidejimo lango pabaigos)\n\t */\n\tpublic static function eligibility_filter( $result, $flow, $flow_class, $email, $context = array() ) {\n\t\tif ( 'refill_due' !== $flow ) {\n\t\t\treturn $result;\n\t\t}\n\t\t$product_id = isset( $context['product_id'] ) ? (int) $context['product_id'] : 0;\n\t\t$user_id    = isset( $context['user_id'] ) ? (int) $context['user_id'] : 0;\n\t\t$since      = isset( $context['last_purchase_date'] ) ? $context['last_purchase_date'] : '';\n\n",
+  "feedback_visur": {
+   "/petshop-core.php": [
+    "require_once PETSHOP_CORE_DIR . 'includes/class-refill-feedback.php'; // S323",
+    "\tif ( class_exists( 'Petshop_Refill_Feedback' ) ) {",
+    "\t\tPetshop_Refill_Feedback::init();"
+   ],
+   "/templates/emails/refill.php": [
+    "$fb_url  = isset( $payload['feedback_url'] ) ? $payload['feedback_url'] : '';"
+   ],
+   "/includes/class-pet-dashboard.php": [
+    " *   - refill (zied. dienos, spalva, avg intervalas, feedback)",
+    " *   POST /petshop/v1/refill-feedback           prognozes grizt. rysys (similar/sooner/later)",
+    "\t\tregister_rest_route( 'petshop/v1', '/refill-feedback', array(",
+    "\t\t\t'callback'            => array( __CLASS__, 'handle_refill_feedback' ),",
+    "\t * Refill blokas — dienos iki tuscia, spalva, feedback.",
+    "\t * POST /refill-feedback — koreguoja prognoze pagal grizt. rysi.",
+    "\t * Body: pet_id, product_id, feedback (similar|sooner|later)",
+    "\tpublic static function handle_refill_feedback( $request ) {",
+    "\t\t// S323: logika ISKELTA i domeno paslauga Petshop_Refill_Feedback::submit().",
+    "\t\t// feedback puslapis, todel realizacija turi buti VIENA.",
+    "\t\t$feedback   = sanitize_text_field( (string) $request->get_param( 'feedback' ) );",
+    "\t\tif ( ! class_exists( 'Petshop_Refill_Feedback' ) ) {",
+    "\t\tif ( ! in_array( $feedback, Petshop_Refill_Feedback::VALUES, true ) ) {",
+    "\t\t$res = Petshop_Refill_Feedback::submit( (int) $row->id, $pet_id, $product_id, $feedback, 'pet_dashboard' );"
+   ],
+   "/includes/class-event-registry.php": [
+    "\t\t'refill_feedback_submitted'   => true,   // M8 — YRA"
+   ],
+   "/includes/class-refill-feedback.php": [
+    " * Petshop Refill Feedback — S323.",
+    " * KODEL ATSKIRAI: logika buvo `Petshop_Pet_Dashboard::handle_refill_feedback()`,",
+    " *   - laisko feedback POST puslapis",
+    "class Petshop_Refill_Feedback {",
+    "\tconst PURPOSE  = 'refill_feedback';",
+    "\t\tif ( ! in_array( 'last_feedback', (array) $cols, true ) ) {",
+    "\t\t\t\tADD COLUMN last_feedback VARCHAR(16) NULL DEFAULT NULL,",
+    "\t\t\t\tADD COLUMN last_feedback_at DATETIME NULL DEFAULT NULL,",
+    "\t\t\t\tADD COLUMN feedback_cycle VARCHAR(32) NULL DEFAULT NULL\" );",
+    "\t * @param string $feedback   sooner|later|similar",
+    "\tpublic static function submit( $refill_id, $pet_id, $product_id, $feedback, $source = 'email', $cycle = '' ) {",
+    "\t\t$feedback  = sanitize_text_field( (string) $feedback );",
+    "\t\tif ( ! in_array( $feedback, self::VALUES, true ) ) {",
+    "\t\t\treturn array( 'ok' => false, 'error' => 'invalid_feedback' );",
+    "\t\t// NEGALIMA remtis `predicted_empty_date`: pats feedback ta data PAKEICIA,",
+    "\t\tif ( $row->last_feedback && (string) $row->feedback_cycle === $cycle ) {",
+    "\t\t\t\t'feedback'  => $row->last_feedback,",
+    "\t\tif ( 'sooner' === $feedback ) {",
+    "\t\t} elseif ( 'later' === $feedback ) {",
+    "\t\t\t'last_feedback'        => $feedback,",
+    "\t\t\t'last_feedback_at'     => gmdate( 'Y-m-d H:i:s' ),",
+    "\t\t\t'feedback_cycle'       => $cycle,",
+    "\t\t\t\tPetshop_Event_Registry::emit( 'refill_feedback_submitted', $email, array(",
+    "\t\t\t\t\t'feedback'         => $feedback,",
+    "\t * Ciklo raktas. NEPRIKLAUSO nuo lauku, kuriuos feedback keicia."
+   ],
+   "/includes/class-refill-engine.php": [
+    "\t\t\t\t\t\t\t// S323: reikalinga kalibravimo nuorodai (feedback_url)"
+   ]
+  }
+ },
+ "v": "dep-200205",
+ "kurimas": 200,
+ "sid": 6080,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
