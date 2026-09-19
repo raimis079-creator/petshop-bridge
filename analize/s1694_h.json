@@ -1,0 +1,163 @@
+{
+ "1": {
+  "flows": [
+   {
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "n": "3",
+    "pask": "2026-09-18 08:37:14"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "sent",
+    "n": "5",
+    "pask": "2026-09-15 17:29:41"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "n": "30",
+    "pask": "2026-09-18 21:14:39"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "sent",
+    "n": "4",
+    "pask": "2026-09-16 17:34:39"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "n": "11",
+    "pask": "2026-09-18 16:12:26"
+   },
+   {
+    "flow": "consent_changed",
+    "status": "sent",
+    "n": "12",
+    "pask": "2026-09-17 18:57:22"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "n": "73",
+    "pask": "2026-09-19 16:39:29"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "n": "73",
+    "pask": "2026-09-19 16:39:29"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "n": "58",
+    "pask": "2026-09-19 16:39:29"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "n": "15",
+    "pask": "2026-09-13 17:39:28"
+   },
+   {
+    "flow": "refill_due",
+    "status": "skipped",
+    "n": "1",
+    "pask": "2026-09-18 08:01:02"
+   }
+  ],
+  "refill_jobs": [
+   {
+    "id": "679",
+    "job_key": "refill_due:5792:21329:2026-09-23",
+    "flow": "refill_due",
+    "flow_class": "similar_soft_optin",
+    "uid": "5792",
+    "status": "skipped",
+    "skip_reason": "already_repurchased",
+    "block_reason": "already_repurchased",
+    "scheduled_at": "2026-09-18 08:01:02",
+    "sent_at": null,
+    "created_at": "2026-09-18 08:01:02",
+    "payload": "{\"pet_name\":\"\",\"product_id\":21329,\"product_name\":\"Josera Duck begr\\u016bdis konservuotas pa\\u0161aras kat\\u0117ms su antiena, 200 g\",\"product_url\":\"https:\\/\\/petshop.lt\\/product\\/josera-duck-begrudis-konservuotas-pasaras-katems-su-antiena-200-g\\/\",\"reorder_url\":\"https:\\/\\/petshop.lt\\/krepselis\\/?add-to-cart=21329\",\"confidence\":0.4}"
+   }
+  ],
+  "klases": {
+   "Petshop_Refill_Engine": "/plugins/petshop-core/includes/class-refill-engine.php",
+   "Refill_Engine": false,
+   "PS_Refill_Engine": false,
+   "Petshop_Email_Dispatch": "/plugins/petshop-core/includes/class-email-dispatch.php",
+   "Magic_Login": false,
+   "Petshop_Magic_Login": "/plugins/petshop-core/includes/class-magic-login.php",
+   "Feeding_Service": false,
+   "Pet_Profile": false
+  },
+  "mu_dirs": {
+   "84": "petshop-laiskai",
+   "153": "ps-backup",
+   "154": "ps-sablonai"
+  },
+  "plugins_ps": [
+   "petshop-attributes",
+   "petshop-core",
+   "petshop-esp",
+   "petshop-fbt",
+   "petshop-feeds",
+   "petshop-fonts",
+   "petshop-pragma",
+   "petshop-promotions",
+   "petshop-xml"
+  ],
+  "grep": {
+   "/plugins/petshop-core/includes/class-refill-engine.php": [
+    "\t\t\t\t\t\t'product_url'  => $product ? $product->get_permalink() : home_url( '/' ),",
+    "\t\t\t\t\t\t'reorder_url'  => add_query_arg( 'add-to-cart', (int) $row->product_id, wc_get_cart_url() ),",
+    "\t\t\t\t\t\t\t// S323: reikalinga kalibravimo nuorodai (feedback_url)",
+    "\t\t\t// Pazymim kad fire'inta (status -> notified), kad nekartotume",
+    "\t\t\t\t'status'     => 'notified',"
+   ],
+   "/plugins/petshop-core/includes/class-email-dispatch.php": [],
+   "/plugins/petshop-core/includes/class-magic-login.php": [
+    " * Petshop_Magic_Login — passwordless login per email nuoroda (magic link).",
+    " * Naudoja M6 Petshop_Action_Tokens (purpose=magic_login, TTL 15 min).",
+    " * 7. NEAUTO-KURIA paskyru — magic link tik ESAMIEMS vartotojams.",
+    " *   1. Vartotojas iveda email -> POST /petshop/v1/magic-login/request",
+    "class Petshop_Magic_Login {",
+    "\tconst TOKEN_PURPOSE = 'magic_login';",
+    "\t\t// REST endpoint magic link uzklausai",
+    "\t\tregister_rest_route( 'petshop/v1', '/magic-login/request', array(",
+    "\t *   LIEKA prisijunges, draftas grazinamas i `active`, naujo magic link",
+    "\t * S337: TRIGUBA drafto patikra pries pririsant ji prie magic-login token'o.",
+    "\t *   magic login). NEGRAZINAM klaidos: kitaip atsakymas atskleistu, ar toks",
+    "\t * POST /petshop/v1/magic-login/request",
+    "\t\tif ( ! isset( $_GET['ps_magic'] ) && ! self::is_login_path() ) {",
+    "\t\t// Patikrinam kad tai magic_login purpose",
+    "\t\t$action_url = esc_url( home_url( '/' . self::LOGIN_PATH ) );",
+    "\t\t$nonce = wp_create_nonce( 'ps_magic_login' );",
+    "\t\t\t<form method=\"POST\" action=\"' . $action_url . '\" style=\"margin-top:24px;\">",
+    "\t\tif ( ! wp_verify_nonce( $nonce, 'ps_magic_login' ) ) {",
+    "\t\t\t\t\t'PS_LOGIN_METHOD'   => 'magic_link',",
+    "\t\tif ( $context !== 'account' && function_exists( 'wc_get_account_endpoint_url' ) ) {",
+    "\t\t\t$redirect = wc_get_account_endpoint_url( 'augintinis' );",
+    "\t\t\t$redirect = home_url( '/' );",
+    "\t * Siunciam magic link laiska per WP Mail SMTP.",
+    "\t\t$login_url = add_query_arg( 'token', rawurlencode( $token ), home_url( '/' . self::LOGIN_PATH ) );",
+    "\t\t$body .= '<p style=\"margin:28px 0;\"><a href=\"' . esc_url( $login_url ) . '\" style=\"background:#2D5F3F;color:#fff;text-decoration:none;padding:14px 32px;border-radius:8px;font-weight:600;display:inline-block;\">' . esc_html( $cta ",
+    "\t * zmogus jungiasi per magic link, arba vėliau pasikeicia pats.",
+    "\t\t$path = trim( parse_url( $req, PHP_URL_PATH ), '/' );",
+    "\t\t$rest = esc_url( rest_url( 'petshop/v1/magic-login/request' ) );",
+    "\t\t$html .= '<p style=\"margin-top:20px;font-size:14px;\"><a href=\"' . esc_url( wc_get_page_permalink( 'myaccount' ) ?: home_url( '/' ) ) . '\" style=\"color:#2D5F3F;\">Grįžti į prisijungimo puslapį</a></p>';",
+    "le=\"color:#c0392b;\">Nepavyko prisijungti</h1><p>' . esc_html( $msg ) . '</p><p style=\"margin-top:20px;\"><a href=\"' . esc_url( wc_get_page_permalink( 'myaccount' ) ?: home_url( '/' ) ) . '\" style=\"color:#2D5F3F;\">Grįžti į prisijungimą</a></p>' );"
+   ]
+  }
+ },
+ "v": "dep-200012",
+ "kurimas": 200,
+ "sid": 6079,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
