@@ -1,0 +1,75 @@
+{
+ "1": {
+  "sablonas": [
+   "$fb_url = isset( $payload['feedback_url'] ) ? $payload['feedback_url'] : '';",
+   "if ( $fb_url ) $antr['Keisti priminimą'] = $fb_url;"
+  ],
+  "feedback_url_kode": {
+   "petshop-laiskai.php": [
+    "\t\t\t'refill_due'             => array( 'reorder_url', 'feedback_url' ),",
+    "\t\t\t'feedback_url'    => home_url( '/my-account/augintinis/' ),"
+   ]
+  },
+  "snippets": [
+   {
+    "id": "5844",
+    "name": "TEMP PS dep-132925",
+    "active": "0"
+   },
+   {
+    "id": "5846",
+    "name": "TEMP PS dep-133236",
+    "active": "0"
+   },
+   {
+    "id": "5848",
+    "name": "TEMP PS dep-133539",
+    "active": "0"
+   },
+   {
+    "id": "5850",
+    "name": "TEMP PS dep-134254",
+    "active": "0"
+   },
+   {
+    "id": "5861",
+    "name": "TEMP PS dep-141613",
+    "active": "0"
+   },
+   {
+    "id": "5864",
+    "name": "TEMP PS dep-145650",
+    "active": "0"
+   },
+   {
+    "id": "5866",
+    "name": "TEMP PS dep-150533",
+    "active": "0"
+   },
+   {
+    "id": "5868",
+    "name": "TEMP PS dep-151432",
+    "active": "0"
+   },
+   {
+    "id": "5885",
+    "name": "TEMP PS dep-170424",
+    "active": "0"
+   },
+   {
+    "id": "6074",
+    "name": "TEMP PS dep-194828",
+    "active": "1"
+   }
+  ],
+  "jobs": [],
+  "url": null
+ },
+ "v": "dep-194828",
+ "kurimas": 200,
+ "sid": 6074,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
