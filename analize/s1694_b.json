@@ -1,0 +1,490 @@
+{
+ "1": {
+  "viso": 74,
+  "pagal_status_test": [
+   {
+    "status": "active",
+    "is_test": "0",
+    "istrinta": "0",
+    "n": "12"
+   },
+   {
+    "status": "active",
+    "is_test": "1",
+    "istrinta": "0",
+    "n": "22"
+   },
+   {
+    "status": "deleted",
+    "is_test": "1",
+    "istrinta": "1",
+    "n": "40"
+   }
+  ],
+  "pagal_men": [
+   {
+    "m": "2026-07",
+    "n": "65",
+    "test": "62",
+    "po_t0": "0"
+   },
+   {
+    "m": "2026-08",
+    "n": "4",
+    "test": "0",
+    "po_t0": "0"
+   },
+   {
+    "m": "2026-09",
+    "n": "5",
+    "test": "0",
+    "po_t0": "5"
+   }
+  ],
+  "realios": 12,
+  "realios_po_t0": 5,
+  "unik_vartotoju": 12,
+  "po_t0_sarasas": [
+   {
+    "id": "229",
+    "user_id": "2907",
+    "species": "dog",
+    "species_detail": "Berno zenenhundas",
+    "life_stage": "junior",
+    "dog_size": null,
+    "w": "42.00",
+    "activity_hint": "high",
+    "feeding_type": "dry_only",
+    "primary_need": "joints",
+    "current_food_brand": null,
+    "primary_product_name": null,
+    "qv": "v1",
+    "sukurta": "09-15 10:38"
+   },
+   {
+    "id": "228",
+    "user_id": "5812",
+    "species": "dog",
+    "species_detail": null,
+    "life_stage": null,
+    "dog_size": null,
+    "w": "2.50",
+    "activity_hint": null,
+    "feeding_type": null,
+    "primary_need": null,
+    "current_food_brand": null,
+    "primary_product_name": null,
+    "qv": "v1",
+    "sukurta": "09-14 17:02"
+   },
+   {
+    "id": "227",
+    "user_id": "3795",
+    "species": "dog",
+    "species_detail": null,
+    "life_stage": null,
+    "dog_size": null,
+    "w": "30.00",
+    "activity_hint": null,
+    "feeding_type": null,
+    "primary_need": null,
+    "current_food_brand": null,
+    "primary_product_name": null,
+    "qv": "v1",
+    "sukurta": "09-14 05:25"
+   },
+   {
+    "id": "226",
+    "user_id": "4018",
+    "species": "dog",
+    "species_detail": null,
+    "life_stage": null,
+    "dog_size": null,
+    "w": "31.00",
+    "activity_hint": null,
+    "feeding_type": null,
+    "primary_need": null,
+    "current_food_brand": null,
+    "primary_product_name": null,
+    "qv": "v1",
+    "sukurta": "09-12 17:51"
+   },
+   {
+    "id": "225",
+    "user_id": "4525",
+    "species": "dog",
+    "species_detail": null,
+    "life_stage": "adult",
+    "dog_size": "small",
+    "w": "9.00",
+    "activity_hint": "low",
+    "feeding_type": "dry_only",
+    "primary_need": "weight_control",
+    "current_food_brand": null,
+    "primary_product_name": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    "qv": "v1",
+    "sukurta": "09-11 09:12"
+   }
+  ],
+  "pask": {
+   "species": [
+    {
+     "k": "dog",
+     "n": "11"
+    },
+    {
+     "k": "cat",
+     "n": "1"
+    }
+   ],
+   "species_detail": [
+    {
+     "k": "-",
+     "n": "11"
+    },
+    {
+     "k": "Berno zenenhundas",
+     "n": "1"
+    }
+   ],
+   "life_stage": [
+    {
+     "k": "-",
+     "n": "8"
+    },
+    {
+     "k": "adult",
+     "n": "3"
+    },
+    {
+     "k": "junior",
+     "n": "1"
+    }
+   ],
+   "dog_size": [
+    {
+     "k": "-",
+     "n": "10"
+    },
+    {
+     "k": "small",
+     "n": "1"
+    },
+    {
+     "k": "medium",
+     "n": "1"
+    }
+   ],
+   "is_sterilised": [
+    {
+     "k": "-",
+     "n": "9"
+    },
+    {
+     "k": "yes",
+     "n": "2"
+    },
+    {
+     "k": "no",
+     "n": "1"
+    }
+   ],
+   "feeding_type": [
+    {
+     "k": "-",
+     "n": "9"
+    },
+    {
+     "k": "dry_only",
+     "n": "2"
+    },
+    {
+     "k": "dry_wet",
+     "n": "1"
+    }
+   ],
+   "primary_need": [
+    {
+     "k": "-",
+     "n": "9"
+    },
+    {
+     "k": "weight_control",
+     "n": "2"
+    },
+    {
+     "k": "joints",
+     "n": "1"
+    }
+   ],
+   "sensitivities": [
+    {
+     "k": "-",
+     "n": "9"
+    },
+    {
+     "k": "grains",
+     "n": "1"
+    },
+    {
+     "k": "chicken,beef,grains,dairy,fish",
+     "n": "1"
+    },
+    {
+     "k": "none",
+     "n": "1"
+    }
+   ],
+   "housing": [
+    {
+     "k": "-",
+     "n": "9"
+    },
+    {
+     "k": "indoor",
+     "n": "2"
+    },
+    {
+     "k": "outdoor",
+     "n": "1"
+    }
+   ],
+   "activity_hint": [
+    {
+     "k": "-",
+     "n": "8"
+    },
+    {
+     "k": "low",
+     "n": "2"
+    },
+    {
+     "k": "moderate",
+     "n": "1"
+    },
+    {
+     "k": "high",
+     "n": "1"
+    }
+   ],
+   "current_food_brand": [
+    {
+     "k": "-",
+     "n": "11"
+    },
+    {
+     "k": "Exclusion",
+     "n": "1"
+    }
+   ],
+   "questionnaire_version": [
+    {
+     "k": "-",
+     "n": "7"
+    },
+    {
+     "k": "v1",
+     "n": "5"
+    }
+   ],
+   "source_draft_id IS NOT NULL": [
+    {
+     "k": "-",
+     "n": "12"
+    }
+   ]
+  },
+  "svoris": [
+   {
+    "species": "cat",
+    "n": "1",
+    "su_svoriu": "1",
+    "vid": "4.5",
+    "mn": "4.50",
+    "mx": "4.50",
+    "su_gimimo": "1"
+   },
+   {
+    "species": "dog",
+    "n": "11",
+    "su_svoriu": "8",
+    "vid": "18.5",
+    "mn": "2.50",
+    "mx": "42.00",
+    "su_gimimo": "3"
+   }
+  ],
+  "maistas_top": [
+   {
+    "k": null,
+    "b": null,
+    "n": "8"
+   },
+   {
+    "k": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    "b": null,
+    "n": "2"
+   },
+   {
+    "k": "monge",
+    "b": null,
+    "n": "1"
+   },
+   {
+    "k": "Exclusion Hydrolyzed Hypoallergenic maistas šunims su hidrolizuota žuvimi ir kukurūzų krakmolu M/L 12 kg",
+    "b": "Exclusion",
+    "n": "1"
+   }
+  ],
+  "pet_products": [
+   {
+    "relationship_type": "other",
+    "source": "user_confirmed",
+    "n": "19",
+    "pets": "8"
+   },
+   {
+    "relationship_type": "primary_food",
+    "source": "user_confirmed",
+    "n": "16",
+    "pets": "16"
+   },
+   {
+    "relationship_type": "secondary_food",
+    "source": "user",
+    "n": "2",
+    "pets": "2"
+   }
+  ],
+  "field_log": [
+   {
+    "laukas": "species",
+    "saltinis": "anketa",
+    "n": "8",
+    "pask": "2026-09-18 17:44:23"
+   },
+   {
+    "laukas": "pet_name",
+    "saltinis": "anketa",
+    "n": "8",
+    "pask": "2026-09-18 17:44:23"
+   },
+   {
+    "laukas": "current_weight_kg",
+    "saltinis": "anketa",
+    "n": "7",
+    "pask": "2026-09-18 17:44:23"
+   },
+   {
+    "laukas": "questionnaire_version",
+    "saltinis": "sistema",
+    "n": "5",
+    "pask": "2026-09-15 10:39:02"
+   },
+   {
+    "laukas": "questionnaire_version",
+    "saltinis": "anketa",
+    "n": "3",
+    "pask": "2026-09-18 17:44:23"
+   },
+   {
+    "laukas": "housing",
+    "saltinis": "anketa",
+    "n": "2",
+    "pask": "2026-09-18 17:44:23"
+   },
+   {
+    "laukas": "primary_need",
+    "saltinis": "anketa",
+    "n": "2",
+    "pask": "2026-09-18 17:44:23"
+   },
+   {
+    "laukas": "is_sterilised",
+    "saltinis": "anketa",
+    "n": "2",
+    "pask": "2026-09-18 17:44:23"
+   },
+   {
+    "laukas": "birth_date",
+    "saltinis": "anketa",
+    "n": "2",
+    "pask": "2026-09-18 17:44:23"
+   },
+   {
+    "laukas": "activity_hint",
+    "saltinis": "anketa",
+    "n": "2",
+    "pask": "2026-09-18 17:44:23"
+   },
+   {
+    "laukas": "sensitivities",
+    "saltinis": "anketa",
+    "n": "2",
+    "pask": "2026-09-18 17:44:23"
+   },
+   {
+    "laukas": "feeding_type",
+    "saltinis": "anketa",
+    "n": "2",
+    "pask": "2026-09-18 17:44:23"
+   },
+   {
+    "laukas": "life_stage",
+    "saltinis": "anketa",
+    "n": "2",
+    "pask": "2026-09-18 17:44:23"
+   },
+   {
+    "laukas": "species_detail",
+    "saltinis": "anketa",
+    "n": "1",
+    "pask": "2026-09-15 10:41:33"
+   },
+   {
+    "laukas": "dog_size",
+    "saltinis": "anketa",
+    "n": "1",
+    "pask": "2026-09-18 17:44:23"
+   },
+   {
+    "laukas": "primary_product_id",
+    "saltinis": "sistema",
+    "n": "1",
+    "pask": "2026-09-18 17:45:03"
+   }
+  ],
+  "drafts": [
+   {
+    "status": "active",
+    "n": "1",
+    "pask": "2026-09-13 15:02:52"
+   },
+   {
+    "status": "claimed",
+    "n": "5",
+    "pask": "2026-09-15 10:38:15"
+   }
+  ],
+  "notes": 7,
+  "weight_signal": [
+   {
+    "n": "2"
+   }
+  ],
+  "weight_signal_pvz": [
+   "a:3:{i:0;a:6:{s:9:\"weight_kg\";d:20;s:6:\"source\";s:16:\"email_calc_click\";s:10:\"confidence\";s:6:\"medium\";s:10:\"product_id\";i:12466;s:3:\"cid\";s:20:\"X5PuZTo6iTwR9o9sOteu\";s:2:\"at\";s:19:\"2026-09-15 19:57:11\";}i:1;a:6:{s:9:\"weight_kg\";d:10;s:6:\"source\";s:16:\"email_calc_click\";s:10:\"confidence\";s:6:\"medium\";s:10:\"product_id\";i:12466;s:3:\"cid\";s:20:\"X5PuZTo6iTwR9o9sOteu\";s:2:\"at\";s:19:\"2026-09-16 09:13:56\";}i:2;a:6:{s:9:\"weight_kg\";d:10;s:6:\"source\";s:16:\"email_calc_click\";s:10:\"confidence\";s:6:\"medium\";s:10:\"product_id\";i:12466;s:3:\"cid\";s:20:\"X5PuZTo6iTwR9o9sOteu\";s:2:\"at\";s:19:\"2026-09-16 15:06:40\";}}",
+   "a:5:{i:0;a:6:{s:9:\"weight_kg\";d:20;s:6:\"source\";s:16:\"email_calc_click\";s:10:\"confidence\";s:6:\"medium\";s:10:\"product_id\";i:12466;s:3:\"cid\";s:20:\"X5PuZTo6iTwR9o9sOteu\";s:2:\"at\";s:19:\"2026-09-15 19:51:19\";}i:1;a:6:{s:9:\"weight_kg\";d:20;s:6:\"source\";s:16:\"email_calc_click\";s:10:\"confidence\";s:6:\"medium\";s:10:\"product_id\";i:12466;s:3:\"cid\";s:20:\"X5PuZTo6iTwR9o9sOteu\";s:2:\"at\";s:19:\"2026-09-15 19:59:21\";}i:2;a:6:{s:9:\"weight_kg\";d:20;s:6:\"source\";s:16:\"email_calc_click\";s:10:\"confidence\";s:6:\"medium\";s:10:\"product_id\";i:12466;s:3:\"cid\";s:20:\"X5PuZTo6iTwR9o9sOteu\";s:2:\"at\";s:19:\"2026-09-16 10:04:35\";}i:3;a:6:{s:9:\"weight_kg\";d:20;s:6:\"source\";s:14:\"reminder_optin\";s:10:\"confidence\";s:4:\"high\";s:10:\"product_id\";i:12466;s:3:\"cid\";s:20:\"X5PuZTo6iTwR9o9sOteu\";s:2:\"at\";s:19:\"2026-09-16 10:06:14\";}i:4;a:6:{s:9:\"weight_kg\";d:20;s:6:\"source\";s:16:\"email_calc_click\";s:10:\"confidence\";s:6:\"medium\";s:10:\"product_id\";i:12466;s:3:\"cid\";s:20:\"X5PuZTo6iTwR9o9sOteu\";s:2:\"at\";s:19:\"2026-09-16 10:23:51\";}}"
+  ],
+  "pirko": [],
+  "ivykiai": [],
+  "err": "Unknown column 'ivykis' in 'field list'"
+ },
+ "v": "dep-193841",
+ "kurimas": 200,
+ "sid": 6073,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
