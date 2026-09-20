@@ -80,10 +80,19 @@ Pilna lentelė: `S1697_kainos_lt_top250_marza_v2_zoo.csv` (mūsų vieta tarp zoo
 
 **Galima nuleisti iki zoo min ir likti ≥12 % (29 pozicijos, sprendimas Raimio):** GimCat Malt-Soft 100 g 9,09→7,49 (42→30 %); Josera Mini Chicken&Rice 10 kg 33,29→29,58 (34→25 %); Flexi ONE 5 m 19,19→17,43, Xtreme L 30,79→26,69, Giant M 27,99→23,00, New Comfort L 5 m 30,69→24,63; Trixie laipteliai 33,49→28,88; Animonda Carny Kitten 400 g 1,59→1,33, Vom Feinsten Kitten 100 g 1,12→0,76/0,80, GranCarno širdelės 800 g 3,35→2,58; BeloCat TOFU 6 l 4,90→3,49 ir 4,70→3,30; Exclusion Mediterraneo 12 kg 59,90→49,99–52,99; Furminator M/L katėms 20,09→17,30, L šunims 26,99→23,78; Candioli Renal Combi 13,39→11,90, Forbid 21,09→18,68; Vetoquinol Ipakitine 12,19→10,75; Miamor kremas 2,85→2,18; Churu 56 g 2,49→2,25, Skin&Coat 11,39→10,28, 60 vnt. 34,09→29,99–30,60; RC Sterilised 37 4 kg 36,79→33,20 (21→12 %).
 
+## 3c. v3 — be Baitera ir Bikuva (Raimis 21:32: „ne zoo prekės")
+
+`S1697_kainos_lt_top250_marza_v3_zoo.csv`. Zoo lyderiai lieka: zookaralyste, Pethappy, Ramiosblusos, 1petshop, pet24/Zoobaze, Petplius, Petreon, Mumbo, Animu, fera, E-zoo. Iš 250: pigiausi tarp zoo **32**, ≤10 % brangesni 44, >10 % brangesni 158. Prie zoo min marža ≥20 % — **10**, 12–20 % — **23**, <12 % — **125**. Pokytis daugiausia Trixie (be Bikuvos 11 iš 20 pozicijų tampa „galima": stovai su dubenėliais, automobilinis guolis, laipteliai, pertvara, draskyklės Batres/Baena, Noah guolis, Bagis, narvas M-L, juosmens diržas) ir Flexi (3). Quattro (35, −3 %), Monge (14, 7 %), Farmina (9, 6 %), Josera 10 kg (18, 6 %), Cat's Best, Eukanuba, Nature's Miracle, Expertus — nesikeičia: zookaralyste/Pethappy/Ramiosblusos/pet24 ties mūsų savikaina.
+
+**Galima (33 pozicijos, ≥12 % prie zoo min):** GimCat Malt-Soft 100 g 9,09→7,49; Josera Mini C&R 10 kg 33,29→29,58; Flexi ONE 19,19→17,43, Comfort L 5 m 30,69→24,63, Classic S 8 m 20,39→16,09; Trixie: stovai 15,79→14,03 ir 23,69→20,99, auto guolis 45,69→39,38, laipteliai 33,49→28,88, pertvara 84,89→72,10, Noah 42,69→37,79, Batres 13,69→12,02, Baena 18,99→16,70, Bagis 88,39→75,99, narvas M-L 70,09→59,99, juosmens diržas 24,49→18,92; BeloCat TOFU 4,90→3,59 ir 4,70→3,30; Animonda Carny Kitten 1,59→1,33, GranCarno širdelės 3,35→2,59; Exclusion Mediterraneo 12 kg 59,90→50–53; Miamor 2,85→2,19; Candioli Renal 13,39→11,90, Forbid 21,09→18,68; Vetoquinol Ipakitine 12,19→10,75; Churu 56 g 2,49→2,25 (×2), Skin&Coat 11,39→10,28, 60 vnt. 34,09→29,99; Real Dog 7,5 kg 22,39→19,70.
+
+## 3d. RAIMIO SPRENDIMAS (21:37) — 1.1 UŽDARYTAS
+Kol kas kainų nekeisti. Vėliau kai kurioms **AV** prekėms iš „galima" sąrašo (§3c; Animonda Carny Kitten / GranCarno širdelės, BeloCat TOFU, GimCat Malt-Soft, Miamor, Trixie AV likučiai) — **akcijos**, ne nuolatinis kainos nuleidimas. Josera 10 kg / Quattro / Monge / Farmina / Eukanuba — neliesti (konkurentai ties savikaina; jei kada — derybos dėl pirkimo kainos, ne feed'as). Claude rezumė: kanalas pigus (~€1/d, ~1,2 užs./d), bet mažas ir toks liks — laiką dėti į 1.3 / 1.7 / 1.5 / 2.3.
+
 ## 4. Atviri Raimio sprendimai
 - **R-EAN** Ontario Exigent 1 kg tikras EAN → #16270 (tada feed'ą įjungti).
-- **R-kainos** 29 pozicijos iš §3b „galima" — nuleisti iki zoo min (−1 ct)? Marža lieka 12–30 %.
-- **R-Quattro** Quattro visa linija 20–65 % brangesnė, savikaina neleidžia — palikti, kaip yra (kaina24 „ne_reklamai" jau nuo v2.4.0), ar spręsti su tiekėju?
+- ~~R-kainos~~ išspręsta 21:37: kainų nekeisti; vėliau AV prekėms akcijos (§3d).
+- ~~R-Quattro~~ išspręsta 21:37: palikti kaip yra.
 - 397 prekės be GTIN — kaina24 jų nerodo; daugiausia Georplast 44, BeloCat 37, Duvo+ 32, Sum-Plast 27, Animonda 26 (sąrašas pagal brendą `s1697_md` fazė 3 — užklausa netiksli, perdaryti).
 
 ## 5. Kitas langas
