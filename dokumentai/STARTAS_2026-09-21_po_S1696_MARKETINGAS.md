@@ -13,7 +13,7 @@
 | 1.3 | **404 iš organikos — UŽDARYTA S1698 (09-20)**: `petshop-404-atitikmuo` v1.1 GYVAI (alias checkout/cart/content, draft prekė → kategorija, gamintojas pagal `_legacy_manufacturer`, „artimiausias slug" su skaičių vartais, žurnalas `ps_404_atitikmuo_log`); testas 19/29 → 301. Šaltinis: seni eShoprent URL iš Ads URL plėtros, kaina24/kainos katalogų ir organikos. Dokumentas `S1698_404_organika_1.3_2026-09-20.md` | C | error404 organika+mokamas 68/10 d. → ≤15/7 d.; žurnalo auditas po savaitės | ☑ |
 | 1.4 | **Mėginukas naujam maisto klientui** (jaučio ausis, AV siuntos) + lapelis su QR į skaičiuoklę | R (pakavimas/VMVT sprendimas), C (žymė `_ps_meginukas` + holdout 90/10 + lapelis) | R60 kohortos su/be mėginuko | ☐ laukia R |
 | 1.5 | **Svetainės paieška — UŽDARYTA S1699 (09-20)**: 346 paieškos/14 d., 21 % be rezultatų (rašybos klaidos, galūnės, SKU, brendai kurių neturim). Naujas mu-plugin `petshop-paieska.php` v1.0 GYVAI (sinonimai, kamienai, SKU). Į asortimentą (R): vet dietos (Hill's, RC Renal/Gastro), dovanų kuponas, Josera Leger 10 kg #18054 publikuoti (16 paieškų!). Dokumentas `S1699_paieska_1.5_2026-09-20.md` | C ✓ / R asortimentas | 0 rez. 21 % → ≤8 % per 14 d. | ☑ |
-| 1.6 | **Botų patikra** (`salis` US/GB 700 iš 1 464 ses) — read-only | C | tikras LT ses/d | ☐ |
+| 1.6 | **Botų patikra — UŽDARYTA S1700 (09-20)**: botų nėra. `salis` = naršyklės kalba (Accept-Language), ne geo — „US/GB" sesijos yra lietuviai su angliška telefono kalba (71 checkout, 40 „ačiū" per 8 d., 400 iš LT Ads). Tikras srautas ~165 ses/d, KPI bazė patvirtinta. Kodo nekeisti. `S1700_botai_1.6_2026-09-20.md` | C | — | ☑ |
 | 1.7 | **Skaičiuoklė kaip atskiras puslapis** `/skaiciuokle/` (svoris → 3 maistai su €/d., be prekės konteksto) — landing organikai, AI, kainų palyginimui, laiškams | C | ses, anketos, užs. iš puslapio | ☐ |
 | 1.8 | **Product schema pilna** (GTIN, kaina, pristatymas, grąžinimas, FAQ) + AI botai neblokuojami — AI citavimo pamatas | C | Search Console AI ataskaita | ☐ |
 
@@ -56,7 +56,7 @@ Veisėjai per skelbiu.lt; kinologai/dresūros mokyklos; prieglaudos; podcast'ai/
 
 | KPI | Dabar (09-20) | 10-18 | 11-15 | 12-31 |
 |---|---|---|---|---|
-| Sesijos/d (LT, be botų) | ~170 (tikrinti) | 215 | 280 | 350 |
+| Sesijos/d (LT, be botų) | ~165 (S1700 ✓) | 215 | 280 | 350 |
 | Užsakymai/d | 10 | 12 | 15 | 18 |
 | Nauji maisto klientai/mėn | ~50 | 70 | 90 | 120 |
 | Kainų palyginimas ses/d | 12 | 25 | 35 | 40 |
@@ -77,4 +77,4 @@ Shorts/TikTok kaip kanalas; Google Customer Reviews (LT nėra); CSS partneris (L
 - **S2** R60 tikslas 26–30 % + CM rate 20 % — patvirtinti KPI lentelę
 
 ## Kitas langas
-Pradėti nuo šio failo: Sprintas 1 punktai **1.6**, 1.7, 1.8 — Claude daro be R sprendimų (1.1 — S1697, 1.3 — S1698, 1.5 — S1699). Įrankių prefiksas `s1700_m*`. 1.6 pastaba: kaina24 sesijoje `salis=RU` — geo lauko patikra.
+Pradėti nuo šio failo: Sprintas 1 punktai **1.7**, 1.8 — Claude daro be R sprendimų (1.1 — S1697, 1.3 — S1698, 1.5 — S1699, 1.6 — S1700). Įrankių prefiksas `s1701_m*`. 1.6 pastaba: kaina24 sesijoje `salis=RU` — geo lauko patikra.
