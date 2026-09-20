@@ -1,0 +1,79 @@
+{
+ "1": {
+  "v": "S1697 mf",
+  "faze": "1",
+  "bak": {
+   "16270": {
+    "gtin": "8595091792863",
+    "k24": "",
+    "kn": ""
+   },
+   "18036": {
+    "gtin": "4032254775546",
+    "k24": "",
+    "kn": ""
+   }
+  },
+  "po": {
+   "16270": {
+    "gtin": "",
+    "k24": "yes",
+    "kn": "yes"
+   },
+   "18036": {
+    "gtin": "4032254775546",
+    "k24": "yes",
+    "kn": "yes"
+   }
+  },
+  "stat": {
+   "versija": "2.6.0",
+   "dry": 0,
+   "kandidatu": 2089,
+   "kanalai": {
+    "kaina24": {
+     "irasyta": 2087,
+     "praleista_isjungta": 2,
+     "be_gtin": 397,
+     "baitai": 5701250
+    },
+    "kainos": {
+     "irasyta": 2087,
+     "praleista_isjungta": 2,
+     "be_gtin": 397,
+     "baitai": 5228337
+    }
+   },
+   "praleista": {
+    "nera_kainos": 0,
+    "nera_objekto": 0
+   },
+   "sekundes": 11.9,
+   "atmintis_mb": 138
+  },
+  "sek": 12
+ },
+ "2": {
+  "v": "S1697 mf",
+  "faze": "2",
+  "kaina24": {
+   "16270": 0,
+   "18036": 0,
+   "n": 2087,
+   "mtime": "17:57"
+  },
+  "kainos": {
+   "16270": 0,
+   "18036": 0,
+   "n": 2087,
+   "mtime": "17:57"
+  }
+ },
+ "v": "dep-175600",
+ "kurimas": 200,
+ "sid": 6104,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
