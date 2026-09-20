@@ -1,0 +1,854 @@
+{
+ "1": {
+  "v": "S1697 ma",
+  "faze": "1",
+  "laikas": "2026-09-20 20:24:52",
+  "failai": [
+   {
+    "k": "/plugins/petshop-feeds/petshop-feeds.php",
+    "ver": "2.5.0",
+    "dydis": 39455,
+    "md5": "97626f5e",
+    "mtime": "2026-09-12 14:41",
+    "meta_raktai": [
+     "_ps_feed_off_kaina24",
+     "_ps_feed_off_kainos",
+     "_ps_feed_off_google"
+    ],
+    "opcijos": [
+     "ps_feeds_google_taisykles",
+     "ps_feeds_",
+     "ps_feeds_paskutinis",
+     "ps_feeds_naktinis",
+     "ps_feeds_raktas",
+     "ps_feeds_generuoti",
+     "ps_feeds",
+     "ps_feeds_off_all",
+     "ps_feeds_on_all",
+     "ps_feeds_off_kaina24",
+     "ps_feeds_off_kainos",
+     "ps_feeds_off_google",
+     "ps_feeds_off_",
+     "ps_feeds_pakeista"
+    ],
+    "cron": [
+     "PS_FEEDS_VERSIJA",
+     "PS_FEEDS_PAKETAS",
+     "ps_feeds_google_taisykles",
+     "ps_feeds_",
+     "ps_feeds_paskutinis",
+     "ps_feeds_naktinis",
+     "ps_feeds_raktas",
+     "ps_feeds_generuoti",
+     "ps_feeds",
+     "ps_feeds_off_all",
+     "ps_feeds_on_all",
+     "ps_feeds_off_kaina24",
+     "ps_feeds_off_kainos",
+     "ps_feeds_off_google",
+     "ps_feeds_off_",
+     "ps_feeds_pakeista"
+    ],
+    "get_raktai": [
+     "ps_feeds_google_taisykles",
+     "ps_feeds_",
+     "ps_feeds_paskutinis",
+     "ps_feeds_naktinis",
+     "ps_feeds_raktas",
+     "ps_feeds_generuoti",
+     "ps_feeds",
+     "ps_feeds_off_all",
+     "ps_feeds_on_all",
+     "ps_feeds_off_kaina24",
+     "ps_feeds_off_kainos",
+     "ps_feeds_off_google",
+     "ps_feeds_off_",
+     "ps_feeds_pakeista"
+    ],
+    "funkcijos": [
+     "ps_feeds_kanalai",
+     "ps_feeds_katalogas",
+     "ps_feeds_kelias",
+     "ps_feeds_ids",
+     "ps_feeds_spec_zemelapis",
+     "ps_feeds_giliausia_kategorija",
+     "ps_feeds_google_zemelapis",
+     "ps_feeds_google_kategorija",
+     "ps_feeds_preke",
+     "ps_feeds_utm",
+     "ps_feeds_cdata",
+     "ps_feeds_kaina24_galva",
+     "ps_feeds_kaina24_koja",
+     "ps_feeds_kaina24_eilute",
+     "ps_feeds_kainos_galva",
+     "ps_feeds_kainos_koja",
+     "ps_feeds_kainos_eilute",
+     "ps_feeds_google_galva",
+     "ps_feeds_google_koja",
+     "ps_feeds_google_taisykles",
+     "ps_feeds_google_labels",
+     "ps_feeds_google_svoris",
+     "ps_feeds_google_eilute",
+     "ps_feeds_generuoti",
+     "ps_feeds_raktas"
+    ]
+   },
+   {
+    "k": "/plugins/petshop-feeds/petshop-feeds.php",
+    "ver": "2.5.0",
+    "dydis": 39455,
+    "md5": "97626f5e",
+    "mtime": "2026-09-12 14:41",
+    "meta_raktai": [
+     "_ps_feed_off_kaina24",
+     "_ps_feed_off_kainos",
+     "_ps_feed_off_google"
+    ],
+    "opcijos": [
+     "ps_feeds_google_taisykles",
+     "ps_feeds_",
+     "ps_feeds_paskutinis",
+     "ps_feeds_naktinis",
+     "ps_feeds_raktas",
+     "ps_feeds_generuoti",
+     "ps_feeds",
+     "ps_feeds_off_all",
+     "ps_feeds_on_all",
+     "ps_feeds_off_kaina24",
+     "ps_feeds_off_kainos",
+     "ps_feeds_off_google",
+     "ps_feeds_off_",
+     "ps_feeds_pakeista"
+    ],
+    "cron": [
+     "PS_FEEDS_VERSIJA",
+     "PS_FEEDS_PAKETAS",
+     "ps_feeds_google_taisykles",
+     "ps_feeds_",
+     "ps_feeds_paskutinis",
+     "ps_feeds_naktinis",
+     "ps_feeds_raktas",
+     "ps_feeds_generuoti",
+     "ps_feeds",
+     "ps_feeds_off_all",
+     "ps_feeds_on_all",
+     "ps_feeds_off_kaina24",
+     "ps_feeds_off_kainos",
+     "ps_feeds_off_google",
+     "ps_feeds_off_",
+     "ps_feeds_pakeista"
+    ],
+    "get_raktai": [
+     "ps_feeds_google_taisykles",
+     "ps_feeds_",
+     "ps_feeds_paskutinis",
+     "ps_feeds_naktinis",
+     "ps_feeds_raktas",
+     "ps_feeds_generuoti",
+     "ps_feeds",
+     "ps_feeds_off_all",
+     "ps_feeds_on_all",
+     "ps_feeds_off_kaina24",
+     "ps_feeds_off_kainos",
+     "ps_feeds_off_google",
+     "ps_feeds_off_",
+     "ps_feeds_pakeista"
+    ],
+    "funkcijos": [
+     "ps_feeds_kanalai",
+     "ps_feeds_katalogas",
+     "ps_feeds_kelias",
+     "ps_feeds_ids",
+     "ps_feeds_spec_zemelapis",
+     "ps_feeds_giliausia_kategorija",
+     "ps_feeds_google_zemelapis",
+     "ps_feeds_google_kategorija",
+     "ps_feeds_preke",
+     "ps_feeds_utm",
+     "ps_feeds_cdata",
+     "ps_feeds_kaina24_galva",
+     "ps_feeds_kaina24_koja",
+     "ps_feeds_kaina24_eilute",
+     "ps_feeds_kainos_galva",
+     "ps_feeds_kainos_koja",
+     "ps_feeds_kainos_eilute",
+     "ps_feeds_google_galva",
+     "ps_feeds_google_koja",
+     "ps_feeds_google_taisykles",
+     "ps_feeds_google_labels",
+     "ps_feeds_google_svoris",
+     "ps_feeds_google_eilute",
+     "ps_feeds_generuoti",
+     "ps_feeds_raktas"
+    ]
+   }
+  ],
+  "statiniai": [
+   {
+    "f": "google.xml",
+    "dydis": 5099181,
+    "mtime": "2026-09-20 01:30",
+    "items": 2089,
+    "products": 0
+   },
+   {
+    "f": "kaina24.xml",
+    "dydis": 5713976,
+    "mtime": "2026-09-20 01:30",
+    "items": 0,
+    "products": 0
+   },
+   {
+    "f": "kainos.xml",
+    "dydis": 5240518,
+    "mtime": "2026-09-20 01:30",
+    "items": 0,
+    "products": 0
+   }
+  ],
+  "cron": [
+   {
+    "h": "petshop_vf_feed_hourly",
+    "kada": "2026-09-20 21:05"
+   },
+   {
+    "h": "ps_feeds_naktinis",
+    "kada": "2026-09-21 04:30"
+   }
+  ],
+  "http": {
+   "kaina24": [
+    200,
+    "",
+    "application/xml; charset=utf-8"
+   ],
+   "kainos": [
+    200,
+    "",
+    "application/xml; charset=utf-8"
+   ],
+   "google": [
+    200,
+    "",
+    "application/xml; charset=utf-8"
+   ]
+  },
+  "feed_off": {
+   "kaina24": 0,
+   "kainos": 0,
+   "google": 0
+  },
+  "do_not_export": 0,
+  "opcijos_db": [
+   {
+    "option_name": "petshop_feeding_calc_enabled",
+    "v": "1"
+   },
+   {
+    "option_name": "petshop_feeding_calc_kill",
+    "v": "0"
+   },
+   {
+    "option_name": "ps_feeds_raktas",
+    "v": "UBRp7FXGgIp5eeKqp07uOzuK"
+   },
+   {
+    "option_name": "ps_feeds_paskutinis",
+    "v": "a:2:{s:4:\"kada\";s:19:\"2026-09-20 04:30:16\";s:10:\"statistika\";a:8:{s:7:\"versija\";s:5:\"2.5.0\";s:3:\"dry\";i:0;s:9:\"kandidatu\";i:2089;s:7:\"kanalai\";a:3:{s:7:\"kaina24\";a:4:{s:7:\"irasyta\";i:2089;s:18:\"praleista_isjungta\";i:0;s:7:\"be_gtin\";i:397;s:6:\"baitai\";i:5713976;}s:6:\"kainos\";a:4:{s:7:\"irasyta\";i:2089"
+   }
+  ]
+ },
+ "2": {
+  "v": "S1697 ma",
+  "faze": "2",
+  "laikas": "2026-09-20 20:25:03",
+  "kaina24_n": 0,
+  "brendai": [],
+  "kategorijos_top": [],
+  "pvz": [],
+  "tagai": [],
+  "web_cols": [
+   "id",
+   "laikas",
+   "diena",
+   "tipas",
+   "pusl_tipas",
+   "url_kelias",
+   "raktas",
+   "raktas2",
+   "reiksme",
+   "sesija",
+   "lankytojas_d",
+   "lankytojas_30",
+   "saltinis",
+   "medium",
+   "kampanija",
+   "referer_domenas",
+   "kanalas",
+   "landing",
+   "irenginys",
+   "os_seima",
+   "nars_seima",
+   "salis",
+   "prisijunges",
+   "sutikimas",
+   "testinis",
+   "saltinis_aplinka"
+  ],
+  "ref_kainu": [
+   {
+    "d": "2026-09-09",
+    "h": "www.kaina24.lt",
+    "n": "77"
+   },
+   {
+    "d": "2026-09-09",
+    "h": "www.kainos.lt",
+    "n": "5"
+   },
+   {
+    "d": "2026-09-10",
+    "h": "www.kaina24.lt",
+    "n": "23"
+   },
+   {
+    "d": "2026-09-10",
+    "h": "www.kainos.lt",
+    "n": "4"
+   },
+   {
+    "d": "2026-09-11",
+    "h": "www.kaina24.lt",
+    "n": "2"
+   },
+   {
+    "d": "2026-09-11",
+    "h": "www.kainos.lt",
+    "n": "18"
+   },
+   {
+    "d": "2026-09-12",
+    "h": "www.kaina24.lt",
+    "n": "25"
+   },
+   {
+    "d": "2026-09-12",
+    "h": "www.kainos.lt",
+    "n": "2"
+   },
+   {
+    "d": "2026-09-13",
+    "h": "www.kaina24.lt",
+    "n": "7"
+   },
+   {
+    "d": "2026-09-13",
+    "h": "www.kainos.lt",
+    "n": "7"
+   },
+   {
+    "d": "2026-09-14",
+    "h": "kainoteka.lt",
+    "n": "5"
+   },
+   {
+    "d": "2026-09-14",
+    "h": "www.kaina24.lt",
+    "n": "35"
+   },
+   {
+    "d": "2026-09-14",
+    "h": "www.kainos.lt",
+    "n": "39"
+   },
+   {
+    "d": "2026-09-15",
+    "h": "www.kaina24.lt",
+    "n": "62"
+   },
+   {
+    "d": "2026-09-15",
+    "h": "www.kainos.lt",
+    "n": "21"
+   },
+   {
+    "d": "2026-09-16",
+    "h": "www.kaina24.lt",
+    "n": "55"
+   },
+   {
+    "d": "2026-09-16",
+    "h": "www.kainos.lt",
+    "n": "31"
+   },
+   {
+    "d": "2026-09-17",
+    "h": "www.kaina24.lt",
+    "n": "41"
+   },
+   {
+    "d": "2026-09-17",
+    "h": "www.kainos.lt",
+    "n": "66"
+   },
+   {
+    "d": "2026-09-18",
+    "h": "www.kaina24.lt",
+    "n": "67"
+   },
+   {
+    "d": "2026-09-18",
+    "h": "www.kainos.lt",
+    "n": "47"
+   },
+   {
+    "d": "2026-09-19",
+    "h": "www.kaina24.lt",
+    "n": "137"
+   },
+   {
+    "d": "2026-09-19",
+    "h": "www.kainos.lt",
+    "n": "2"
+   },
+   {
+    "d": "2026-09-20",
+    "h": "www.kaina24.lt",
+    "n": "30"
+   },
+   {
+    "d": "2026-09-20",
+    "h": "www.kainos.lt",
+    "n": "22"
+   }
+  ],
+  "ref_kainu_landing": [
+   {
+    "u": "/kasa/",
+    "n": "57"
+   },
+   {
+    "u": "/krepselis/",
+    "n": "53"
+   },
+   {
+    "u": "/product/hikari-cichlid-gold-sinking-mini-342-g/",
+    "n": "26"
+   },
+   {
+    "u": "/product/josera-leger-10-kg-sausas-maistas-katems-maziau-kaloriju/",
+    "n": "26"
+   },
+   {
+    "u": "/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-2-kg/",
+    "n": "23"
+   },
+   {
+    "u": "/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+    "n": "21"
+   },
+   {
+    "u": "/product/josera-kitten-chicken-begrudis-konservuotas-pasaras-jaunoms-katems-su-vistiena-200-g/",
+    "n": "15"
+   },
+   {
+    "u": null,
+    "n": "14"
+   },
+   {
+    "u": "/product/katrinex-maistas-koi-karpiams-ir-kitoms-tvenkiniu-zuvims-5-litrai/",
+    "n": "12"
+   },
+   {
+    "u": "/kontaktai/",
+    "n": "12"
+   },
+   {
+    "u": "/product/vetoquinol-bezo-pet-savelas-salinanti-pasta-katems-ir-sunims-120g/",
+    "n": "11"
+   },
+   {
+    "u": "/product/naturalus-skanestai-sunims-elnio-rago-kramtukas-kietas-xxl/",
+    "n": "10"
+   },
+   {
+    "u": "/product/hikari-cichlid-gold-sinking-medium-342-g/",
+    "n": "10"
+   },
+   {
+    "u": "/product/lasisu-zuvu-taukai-1l/",
+    "n": "9"
+   },
+   {
+    "u": "/product/josera-high-protein-junior-sea-fish-sausas-pasaras-jauniems-sunims-su-zuvim-125-kg/",
+    "n": "8"
+   },
+   {
+    "u": "/product/hikari-cichlid-gold-medium-250-g/",
+    "n": "8"
+   },
+   {
+    "u": "/",
+    "n": "8"
+   },
+   {
+    "u": "/augintinio-profilis/",
+    "n": "8"
+   },
+   {
+    "u": "/product/trixie-livia-guolis-apvalus-50-cm-smelinis/",
+    "n": "8"
+   },
+   {
+    "u": "/product/katrinex-maistas-koi-karpiams-ir-kitoms-tvenkiniu-zuvims/",
+    "n": "7"
+   },
+   {
+    "u": "/kategorija/zuvims/akvariumo-zuvyciu-maistas/",
+    "n": "7"
+   },
+   {
+    "u": "/product/josera-sensicat-10-kg-sausas-maistas-katems-su-jautria-virskinimo-sistema/",
+    "n": "7"
+   },
+   {
+    "u": "/product/hikari-cichlid-gold-large-250-g/",
+    "n": "7"
+   },
+   {
+    "u": "/product/josera-leger-10-kg-sausas-maistas-katems-maziau-kaloriju/?utm_source=kaina24",
+    "n": "7"
+   },
+   {
+    "u": "/product/quattro-extra-salmon-su-lasisa-sausas-sunu-pasaras-3kg/",
+    "n": "7"
+   },
+   {
+    "u": "/product/royal-canin-sensible-33-10-kg-sausas-pasaras-jautrioms-katems/",
+    "n": "7"
+   },
+   {
+    "u": "/paskyra/",
+    "n": "7"
+   },
+   {
+    "u": "/paskyra/uzsakymai/",
+    "n": "6"
+   },
+   {
+    "u": "/jaucio-ausis-ruda?utm_source=kaina24.lt&utm_medium=referral",
+    "n": "6"
+   },
+   {
+    "u": "/product/candioli-pappylait-pieno-pakaitalas-kaciukams-150g/",
+    "n": "6"
+   },
+   {
+    "u": "/product/exclusion-hypoallergenic-konservai-sunims-su-kiauliena-ir-zirniais-200-g/",
+    "n": "6"
+   },
+   {
+    "u": "/product/royal-canin-sterilised-37-10-kg-sausas-pasaras-sterilizuotoms-katems/",
+    "n": "6"
+   },
+   {
+    "u": "/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?utm_source=kainos&utm_medium=referral",
+    "n": "6"
+   },
+   {
+    "u": "/product/animonda-grancarno-adult-konservai-suaugusiems-sunims-su-kalakutiena-800-g/",
+    "n": "5"
+   },
+   {
+    "u": "/product/josidog-senior-light-900-g/",
+    "n": "5"
+   },
+   {
+    "u": "/product/jaucio-peniai-pjaustyti-125-cm-10-vnt/",
+    "n": "5"
+   },
+   {
+    "u": "/kategorija/zuvims/",
+    "n": "5"
+   },
+   {
+    "u": "/product/naturalus-skanestai-sunims-elnio-rago-kramtukas-kietas/",
+    "n": "4"
+   },
+   {
+    "u": "/product/katrinex-maistas-koi-karpiams-ir-kitoms-tvenkiniu-zuvims-10-litru/",
+    "n": "4"
+   },
+   {
+    "u": "/product/naturalus-skanestai-sunims-elnio-rago-kramtukas-kietas-m/",
+    "n": "4"
+   },
+   {
+    "u": "/product/hikari-cichlid-gold-large-250-g/?utm_source=kaina24",
+    "n": "4"
+   },
+   {
+    "u": "/product/jaucio-peniai-pjaustyti-125-cm-10-vnt/?utm_source=kainos&utm_medium=referral",
+    "n": "4"
+   },
+   {
+    "u": "/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "n": "4"
+   },
+   {
+    "u": "/product/lasisu-zuvu-taukai-1l/?utm_source=kainos&utm_medium=referral",
+    "n": "4"
+   },
+   {
+    "u": "/product/zaislas-suniui-guminis-kvepiantis-kamuoliukas-su-virve-8-cm/",
+    "n": "4"
+   },
+   {
+    "u": "/product/vetoquinol-bezo-pet-savelas-salinanti-pasta-katems-ir-sunims-120g/?utm_source=kainos&utm_medium=referral",
+    "n": "4"
+   },
+   {
+    "u": "/product/naturalus-skanestai-sunims-elnio-rago-kramtukas-kietas-xxl/?utm_source=kainos&utm_medium=referral",
+    "n": "3"
+   },
+   {
+    "u": "/product/vetoquinol-bezo-pet-savelas-salinanti-pasta-katems-ir-sunims-120g/?utm_source=kaina24",
+    "n": "3"
+   },
+   {
+    "u": "/product/josera-kitten-chicken-begrudis-konservuotas-pasaras-jaunoms-katems-su-vistiena-200-g/?utm_source=kaina24",
+    "n": "3"
+   },
+   {
+    "u": "/product/josera-high-protein-junior-sea-fish-sausas-pasaras-jauniems-sunims-su-zuvim-125-kg/?utm_source=kaina24",
+    "n": "3"
+   },
+   {
+    "u": "/paskyra/adresai/",
+    "n": "3"
+   },
+   {
+    "u": "/product/hikari-cichlid-gold-sinking-medium-342-g/?utm_source=kaina24",
+    "n": "3"
+   },
+   {
+    "u": "/paskyra/paskyros-duomenys/",
+    "n": "3"
+   },
+   {
+    "u": "/product/josera-sensicat-10-kg-sausas-maistas-katems-su-jautria-virskinimo-sistema/?utm_source=kaina24",
+    "n": "3"
+   },
+   {
+    "u": "/product/josera-minijunior-duck-salmon-sausas-pasaras-mazu-veisliu-jauniems-sunims-su-antiena-ir-lasisa-3-kg/",
+    "n": "3"
+   },
+   {
+    "u": "/product/filtrai-automatinei-vandens-gertuvei-fontanui-katems-catit-pixi-6-vnt/?utm_source=kainos&utm_medium=referral",
+    "n": "3"
+   },
+   {
+    "u": "/product/filtrai-automatinei-vandens-gertuvei-fontanui-katems-catit-pixi-6-vnt/",
+    "n": "3"
+   },
+   {
+    "u": "/kategorija/sunims/skanestai-sunims/page/2/",
+    "n": "3"
+   },
+   {
+    "u": "/?complianz_scan_token=c55e6092a6&complianz_id=home",
+    "n": "3"
+   },
+   {
+    "u": "/product/hikari-cichlid-staple-large-250-g/",
+    "n": "2"
+   }
+  ],
+  "uzs_kainu": [
+   {
+    "id": "35920",
+    "d": "2026-09-13",
+    "t": "19.53000000",
+    "ref": "https://www.kaina24.lt/",
+    "prekes": "Vetoquinol Calo-Pet pasta šunims ir katėms, 120g"
+   },
+   {
+    "id": "35925",
+    "d": "2026-09-13",
+    "t": "43.90000000",
+    "ref": "https://www.kainos.lt/sausas-sunu-maistas/exclusion-hypoallergenic-adult-small-breed-pork-peas-2-kg-v3913599?q=maistas+exclusion+2+kg",
+    "prekes": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg"
+   },
+   {
+    "id": "35939",
+    "d": "2026-09-14",
+    "t": "22.49000000",
+    "ref": "https://www.kainos.lt/paieska?page=7&q=animonda+sunims&source=search_form",
+    "prekes": "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 800 g"
+   },
+   {
+    "id": "35947",
+    "d": "2026-09-14",
+    "t": "56.99000000",
+    "ref": "https://www.kainos.lt/",
+    "prekes": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg"
+   },
+   {
+    "id": "35953",
+    "d": "2026-09-15",
+    "t": "56.99000000",
+    "ref": "https://www.kainos.lt/sausas-sunu-maistas/exclusion-hypoallergenic-adult-small-breed-pork-peas-7-kg-v3814137?keyword_id=18759489",
+    "prekes": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg"
+   },
+   {
+    "id": "35956",
+    "d": "2026-09-15",
+    "t": "21.40000000",
+    "ref": "https://www.kaina24.lt/",
+    "prekes": "Hikari Cichlid Gold Sinking Mini, 342 g | Hikari Cichlid Gold Medium, 250 g"
+   },
+   {
+    "id": "36005",
+    "d": "2026-09-17",
+    "t": "59.68000000",
+    "ref": "https://www.kaina24.lt/",
+    "prekes": "Josera High Protein Junior Sea Fish  sausas pašaras jauniems šunims su žuvim, 12,5 kg"
+   },
+   {
+    "id": "36016",
+    "d": "2026-09-17",
+    "t": "7.94000000",
+    "ref": "https://www.kainos.lt/sausas-sunu-maistas/sausas-sunu-maistas-josera-josidog-solido-paukstiena-0-9-kg-v3738189?q=josera+josidog+senior",
+    "prekes": "JosiDog Senior / Light 900 g"
+   },
+   {
+    "id": "36017",
+    "d": "2026-09-17",
+    "t": "12.15000000",
+    "ref": "https://www.kainos.lt/paieska/tvenkiniu-zuvu-maistas-kaina?page=3",
+    "prekes": "Katrinex maistas koi karpiams ir kitoms tvenkinių žuvims, 5 litrai"
+   },
+   {
+    "id": "36021",
+    "d": "2026-09-18",
+    "t": "98.17000000",
+    "ref": "https://www.kaina24.lt/",
+    "prekes": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg | Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 200 g | Trixie Livia guolis, apvalus, 50 cm, smėlinis"
+   },
+   {
+    "id": "36023",
+    "d": "2026-09-18",
+    "t": "32.07000000",
+    "ref": "https://www.kaina24.lt/",
+    "prekes": "Vetoquinol Bezo-Pet sąvėlas šalinanti pasta katėms ir šunims, 120g"
+   },
+   {
+    "id": "36026",
+    "d": "2026-09-18",
+    "t": "37.22000000",
+    "ref": "https://www.kainos.lt/",
+    "prekes": "Natūralūs skanėstai šunims - Elnio rago kramtukas, kietas, XXL"
+   },
+   {
+    "id": "36086",
+    "d": "2026-09-19",
+    "t": "31.84000000",
+    "ref": "https://www.kaina24.lt/",
+    "prekes": "Josera Kitten Chicken begrūdis konservuotas pašaras jaunoms katėms su vištiena, 200 g"
+   },
+   {
+    "id": "36089",
+    "d": "2026-09-19",
+    "t": "12.75000000",
+    "ref": "https://www.kaina24.lt/",
+    "prekes": "Hikari Cichlid Gold Sinking Mini, 342 g"
+   },
+   {
+    "id": "36090",
+    "d": "2026-09-19",
+    "t": "21.50000000",
+    "ref": "https://www.kaina24.lt/",
+    "prekes": "Hikari Cichlid Gold Sinking Medium, 342 g | Hikari Cichlid Gold Medium, 250 g"
+   }
+  ],
+  "uzs_utm_kainu": [
+   {
+    "id": "35920",
+    "d": "2026-09-13",
+    "t": "19.53000000",
+    "us": "kaina24",
+    "prekes": "Vetoquinol Calo-Pet pasta šunims ir katėms, 120g"
+   },
+   {
+    "id": "35946",
+    "d": "2026-09-14",
+    "t": "105.56000000",
+    "us": "kaina24",
+    "prekes": "Flexadin Advanced Muscle support šunims, N30"
+   },
+   {
+    "id": "35956",
+    "d": "2026-09-15",
+    "t": "21.40000000",
+    "us": "kaina24",
+    "prekes": "Hikari Cichlid Gold Sinking Mini, 342 g | Hikari Cichlid Gold Medium, 250 g"
+   },
+   {
+    "id": "35987",
+    "d": "2026-09-16",
+    "t": "21.99000000",
+    "us": "kaina24",
+    "prekes": "QUATTRO Extra Salmon su lašiša sausas šunų pašaras, 3kg"
+   },
+   {
+    "id": "36005",
+    "d": "2026-09-17",
+    "t": "59.68000000",
+    "us": "kaina24",
+    "prekes": "Josera High Protein Junior Sea Fish  sausas pašaras jauniems šunims su žuvim, 12,5 kg"
+   },
+   {
+    "id": "36021",
+    "d": "2026-09-18",
+    "t": "98.17000000",
+    "us": "kaina24",
+    "prekes": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg | Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 200 g | Trixie Livia guolis, apvalus, 50 cm, smėlinis"
+   },
+   {
+    "id": "36023",
+    "d": "2026-09-18",
+    "t": "32.07000000",
+    "us": "kaina24",
+    "prekes": "Vetoquinol Bezo-Pet sąvėlas šalinanti pasta katėms ir šunims, 120g"
+   },
+   {
+    "id": "36086",
+    "d": "2026-09-19",
+    "t": "31.84000000",
+    "us": "kaina24",
+    "prekes": "Josera Kitten Chicken begrūdis konservuotas pašaras jaunoms katėms su vištiena, 200 g"
+   },
+   {
+    "id": "36089",
+    "d": "2026-09-19",
+    "t": "12.75000000",
+    "us": "kaina24",
+    "prekes": "Hikari Cichlid Gold Sinking Mini, 342 g"
+   },
+   {
+    "id": "36090",
+    "d": "2026-09-19",
+    "t": "21.50000000",
+    "us": "kaina24",
+    "prekes": "Hikari Cichlid Gold Sinking Medium, 342 g | Hikari Cichlid Gold Medium, 250 g"
+   }
+  ]
+ },
+ "v": "dep-172349",
+ "kurimas": 200,
+ "sid": 6097,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
