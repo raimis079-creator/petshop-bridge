@@ -1,0 +1,209 @@
+{
+ "1": {
+  "zones": [
+   {
+    "name": "Neringos savivaldybe",
+    "loc": [
+     "LT",
+     "931*"
+    ],
+    "methods": [
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "title": "VENIPAK paštomatai/atsiėmimo punktai",
+      "enabled": "yes",
+      "cost": "",
+      "min": "",
+      "req": "",
+      "inst": 9
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "title": "VENIPAK Kurjeris",
+      "enabled": "yes",
+      "cost": "",
+      "min": "",
+      "req": "",
+      "inst": 10
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "title": "LP Express",
+      "enabled": "yes",
+      "cost": "flat",
+      "min": "",
+      "req": "",
+      "inst": 13
+     }
+    ]
+   },
+   {
+    "name": "Lietuva",
+    "loc": [
+     "LT"
+    ],
+    "methods": [
+     {
+      "id": "free_shipping",
+      "title": "Nemokamas pristatymas",
+      "enabled": "no",
+      "cost": "",
+      "min": "0",
+      "req": "",
+      "inst": 1
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "title": "VENIPAK Kurjeris",
+      "enabled": "yes",
+      "cost": "",
+      "min": "",
+      "req": "",
+      "inst": 2
+     },
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "title": "VENIPAK paštomatai/atsiėmimo punktai",
+      "enabled": "yes",
+      "cost": "",
+      "min": "",
+      "req": "",
+      "inst": 3
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "title": "VENIPAK Kurjeris",
+      "enabled": "yes",
+      "cost": "",
+      "min": "",
+      "req": "",
+      "inst": 6
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "title": "VENIPAK Kurjeris",
+      "enabled": "yes",
+      "cost": "",
+      "min": "",
+      "req": "",
+      "inst": 7
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "title": "VENIPAK Kurjeris",
+      "enabled": "yes",
+      "cost": "",
+      "min": "",
+      "req": "",
+      "inst": 8
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "title": "LP Express",
+      "enabled": "yes",
+      "cost": "flat",
+      "min": "",
+      "req": "",
+      "inst": 12
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "title": "LP Express kurjeris",
+      "enabled": "yes",
+      "cost": "weight",
+      "min": "",
+      "req": "",
+      "inst": 15
+     },
+     {
+      "id": "local_pickup",
+      "title": "Atsiėmimas AV — Liucionių g. 46, Liucionys",
+      "enabled": "no",
+      "cost": "0",
+      "min": "",
+      "req": "",
+      "inst": 16
+     }
+    ]
+   },
+   {
+    "name": "Baltijos šalys, be LIetuvos",
+    "loc": [
+     "EE",
+     "LV"
+    ],
+    "methods": [
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "title": "VENIPAK paštomatai/atsiėmimo punktai",
+      "enabled": "yes",
+      "cost": "",
+      "min": "",
+      "req": "",
+      "inst": 5
+     }
+    ]
+   }
+  ],
+  "rest": [],
+  "venipak_opt": {
+   "shopup_venipak_shipping_settings": "a:23:{s:36:\"shopup_venipak_shipping_field_userid\";s:5:\"07267\";s:38:\"shopup_venipak_shipping_field_username\";s:7:\"Avesa97\";s:38:\"shopup_venipak_shipping_field_password\";s:8:\"avesazoo\";s:45:\"shopup_veni",
+   "woocommerce_shopup_venipak_shipping_courier_method_2_settings": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"3.30\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:2:\"50\";s:28:\"min_amount_f",
+   "woocommerce_shopup_venipak_shipping_pickup_method_3_settings": "a:7:{s:5:\"title\";s:38:\"VENIPAK paštomatai/atsiėmimo punktai\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"1.78\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:5:\"",
+   "woocommerce_shopup_venipak_shipping_pickup_method_5_settings": "a:7:{s:5:\"title\";s:38:\"VENIPAK paštomatai/atsiėmimo punktai\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"2.97\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:5:\"",
+   "woocommerce_shopup_venipak_shipping_courier_method_6_settings": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"6.60\";s:14:\"minimum_weight\";s:2:\"50\";s:14:\"maximum_weight\";s:2:\"70\";s:28:\"min_amount",
+   "woocommerce_shopup_venipak_shipping_courier_method_7_settings": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"9.90\";s:14:\"minimum_weight\";s:2:\"70\";s:14:\"maximum_weight\";s:3:\"100\";s:28:\"min_amoun",
+   "woocommerce_shopup_venipak_shipping_courier_method_8_settings": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:5:\"20.65\";s:14:\"minimum_weight\";s:3:\"100\";s:14:\"maximum_weight\";s:3:\"200\";s:28:\"min_amo",
+   "woocommerce_shopup_venipak_shipping_pickup_method_9_settings": "a:7:{s:5:\"title\";s:38:\"VENIPAK paštomatai/atsiėmimo punktai\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:4:\"1.78\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:5:\"",
+   "woocommerce_shopup_venipak_shipping_courier_method_10_settings": "a:7:{s:5:\"title\";s:16:\"VENIPAK Kurjeris\";s:11:\"description\";s:33:\"Išsiuntimas per 1-3 darbo dienas\";s:3:\"fee\";s:5:\"24.79\";s:14:\"minimum_weight\";s:0:\"\";s:14:\"maximum_weight\";s:3:\"100\";s:28:\"min_amount"
+  },
+  "pages": {
+   "pristatymas": [
+    14894,
+    "publish",
+    "Trumpai: LP EXPRESS paštomatai – iki 30 kg, Venipak paštomatai – iki 25 kg. Pristatymas į paštomatus nemokamas nuo 30 Eur, jei neviršijama pasirinkto vežėjo svorio riba. Prekes išsiunčiame per 1–3 darbo dienas.\n\n\nUžsakymai surenkami ir išsiunčiami tik darbo dienomis.\n\nPrekių pristatymo būdai\n\n1. Pristatymas į paštomatus\n\nĮ LP EXPRESS paštomatus pristatomos siuntos iki 30 kg svorio.\n\nĮ Venipak paštomatus pristatomos siuntos iki 25 kg svorio.\n\nViršijus pasirinkto paštomato vežėjo svorio ribą, formuojamos dvi ar daugiau siuntos. Už kiekvienos papildomos siuntos pristatymą taikomas papildomas moke"
+   ],
+   "grazinimas": [
+    34523,
+    "publish",
+    "Prekių grąžinimas\n\n\n  Trumpai: Ne maisto prekes galite grąžinti per 14 dienų, jei jos nenaudotos, nesugadintos ir originalioje pakuotėje. Apie grąžinimą praneškite el. paštu. Pinigus grąžiname ne vėliau kaip per 14 dienų nuo grąžinamos prekės gavimo.\n\n\nTeisė atsisakyti sutarties\nPirkėjas, nenurodydamas priežasties, per 14 (keturiolika) dienų turi teisę atsisakyti prekių pirkimo–pardavimo sutarties, pranešdamas apie tai Pardavėjui.\n\nTeisė atsisakyti sutarties Pirkėjui negalioja Civilinio kodekso 6.228(10) straipsnio 2 dalyje numatytais atvejais, t. y.:\n\n\tsutartims dėl greitai gendančių prekių a"
+   ],
+   "taisykles": [
+    34524,
+    "publish",
+    "Pirkimo sąlygos ir taisyklės\n\n\n  Trumpai: Šios taisyklės nustato Pirkėjo ir Pardavėjo teises bei pareigas perkant petshop.lt el. parduotuvėje. Pateikdami užsakymą sutinkate su šiomis sąlygomis. Turite klausimų? Susisiekite su mumis.\n\n\n1. Bendrosios nuostatos\n\n1.1. Šios prekių pirkimo – pardavimo taisyklės (toliau – Taisyklės) yra Šalims privalomas teisinis dokumentas, kuris nustato Pirkėjo ir Pardavėjo (UAB Avesa, įm.k. 302568442, reg. adresas Liucionių g. 46, Liucionių k., Nemenčinės sen., Vilniaus r., 15166, parduodanti prekes puslapyje petshop.lt, toliau tekste - Pardavėjas) teises, pareiga"
+   ],
+   "privatumo-politika": [
+    34525,
+    "publish",
+    "Privatumo politika\n\n\n  Trumpai: Šioje politikoje paaiškiname, kokius duomenis renkame, kokiais tikslais juos naudojame ir kokias teises turite. Duomenų valdytojas – UAB „Avesa\". Klausimų turite? Susisiekite su mumis.\n\n\n1. Bendrosios nuostatos\n1.1. UAB „Avesa\" (toliau – „Bendrovė\") gerbia visų savo pirkėjų, potencialių klientų bei el. parduotuvės petshop.lt (toliau – „Svetainė\") lankytojų (toliau – „Klientai\") teisę į privatumą ir įsipareigoja užtikrinti pateiktų bei gautų asmens duomenų apsaugą.\n1.2. Ši privatumo politika reglamentuoja pagrindinius Bendrovės Klientų asmens duomenų rinkimo, tva"
+   ],
+   "apie-mus": [
+    34515,
+    "publish",
+    "Petshop.lt – lietuviška gyvūnų prekių e. parduotuvė nuo 2010&nbsp;m.\n  Atrenkame produktus pagal sudėtį, gamintoją ir realų naudojimą, o jums padedame išsirinkti greičiau ir tiksliau.\n  Peržiūrėti prekes →\n\n\n\n  Veikiame nuo 2010&nbsp;m.UAB „Avesa\" – patikimas lietuviškas verslas.\n  Nemokamas pristatymasĮ paštomatą nuo 30 €.\n  Kokybė ir praktikaMažiau „marketingo\", daugiau logikos.\n\n\nMūsų istorija\nPetshop.lt istorija prasidėjo 2010 m., kai UAB „Avesa\" startavo su viena aiškia idėja: padėti šeimininkams rūpintis augintiniais be spėlionių – su aiškiomis rekomendacijomis ir patikrintais produktais"
+   ],
+   "kontaktai": [
+    34521,
+    "publish",
+    "Kontaktai\n    Turite klausimų dėl užsakymo, pristatymo ar prekės pasirinkimo? Parašykite mums – atsakysime el. paštu.\n    \n      +370 681 87787\n      Darbo laikas:I–V 09:00–18:00VI 10:00–15:00\n      Užklausas siųskite per kontaktinę formą – atsakome el. paštu.\n    \n    Rekvizitai\n    \n      Įmonės pavadinimas: UAB „Avesa\"\n      Įmonės kodas: 302568442\n      PVM kodas: LT100005768519\n      Juridinis adresas:Liucionių g. 46, Liucionių k., Nemenčinės sen., Vilniaus r., LT-15166\n    \n  \n  \n    Susisiekite su mumis\n    [wpforms id=\"34520\"]"
+   ]
+  },
+  "rm_llms": [
+   false,
+   null
+  ],
+  "logo": [
+   false,
+   false,
+   null
+  ]
+ },
+ "v": "dep-194922",
+ "kurimas": 200,
+ "sid": 6128,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
