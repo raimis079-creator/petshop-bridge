@@ -1,0 +1,566 @@
+{
+ "1": {
+  "v": "S1698 ma",
+  "tipai": [
+   {
+    "tipas": "pageview",
+    "n": "6882"
+   },
+   {
+    "tipas": "view_item",
+    "n": "2262"
+   },
+   {
+    "tipas": "add_to_cart",
+    "n": "758"
+   },
+   {
+    "tipas": "search",
+    "n": "326"
+   },
+   {
+    "tipas": "begin_checkout",
+    "n": "248"
+   },
+   {
+    "tipas": "view_cart",
+    "n": "169"
+   },
+   {
+    "tipas": "error404",
+    "n": "81"
+   },
+   {
+    "tipas": "filter",
+    "n": "27"
+   },
+   {
+    "tipas": "email_calc_click",
+    "n": "7"
+   },
+   {
+    "tipas": "reminder_optin",
+    "n": "1"
+   }
+  ],
+  "pusl_tipai": [
+   {
+    "pusl_tipas": null,
+    "n": "3871"
+   },
+   {
+    "pusl_tipas": "kategorija",
+    "n": "2413"
+   },
+   {
+    "pusl_tipas": "preke",
+    "n": "2102"
+   },
+   {
+    "pusl_tipas": "info",
+    "n": "617"
+   },
+   {
+    "pusl_tipas": "home",
+    "n": "444"
+   },
+   {
+    "pusl_tipas": "paieska",
+    "n": "326"
+   },
+   {
+    "pusl_tipas": "kita",
+    "n": "321"
+   },
+   {
+    "pusl_tipas": "checkout",
+    "n": "254"
+   },
+   {
+    "pusl_tipas": "krepselis",
+    "n": "183"
+   },
+   {
+    "pusl_tipas": "aciu",
+    "n": "105"
+   },
+   {
+    "pusl_tipas": "404",
+    "n": "81"
+   },
+   {
+    "pusl_tipas": "parduotuve",
+    "n": "30"
+   },
+   {
+    "pusl_tipas": "product",
+    "n": "8"
+   },
+   {
+    "pusl_tipas": "blog",
+    "n": "6"
+   }
+  ],
+  "k404_kanalai": [
+   {
+    "kanalas": null,
+    "saltinis": null,
+    "n": "60",
+    "s": "0"
+   },
+   {
+    "kanalas": "mokamas",
+    "saltinis": null,
+    "n": "38",
+    "s": "15"
+   },
+   {
+    "kanalas": "organika",
+    "saltinis": null,
+    "n": "30",
+    "s": "13"
+   },
+   {
+    "kanalas": "referral",
+    "saltinis": "chatgpt.com",
+    "n": "10",
+    "s": "2"
+   },
+   {
+    "kanalas": "referral",
+    "saltinis": null,
+    "n": "8",
+    "s": "3"
+   },
+   {
+    "kanalas": "mokamas",
+    "saltinis": "kaina24.lt",
+    "n": "8",
+    "s": "2"
+   },
+   {
+    "kanalas": "mokamas",
+    "saltinis": "kainos.lt",
+    "n": "6",
+    "s": "3"
+   },
+   {
+    "kanalas": "referral",
+    "saltinis": "kainoteka.lt",
+    "n": "2",
+    "s": "1"
+   }
+  ],
+  "k404_organika": [
+   {
+    "u": "/product/exclusion-intestinal-monoprotein-sausas-sunu-maistas-su-kiauliena-ir-ryziais-m-l12-kg/?utm_source=chatgpt.com",
+    "r": "",
+    "n": "6",
+    "s": "1",
+    "pask": "2026-09-18 07:10:57"
+   },
+   {
+    "u": "/placek-pet-products-s-r-o",
+    "r": "www.google.com",
+    "n": "4",
+    "s": "2",
+    "pask": "2026-09-15 12:51:28"
+   },
+   {
+    "u": "/product/druska-ziurkenams-ir-kitiems-grauzikams/",
+    "r": "www.google.com",
+    "n": "4",
+    "s": "1",
+    "pask": "2026-09-20 17:23:09"
+   },
+   {
+    "u": "/trixie-kilimelis-purvui-surinkti-120-80-cm",
+    "r": "www.google.com",
+    "n": "4",
+    "s": "1",
+    "pask": "2026-09-14 08:22:18"
+   },
+   {
+    "u": "/automatine-serykla-kateisuniui",
+    "r": "www.google.com",
+    "n": "4",
+    "s": "2",
+    "pask": "2026-09-17 14:26:09"
+   },
+   {
+    "u": "/kraikas-katems-tofu-belocat-levandu-kvapo-6-l-2-5-kg-2-mm-granules",
+    "r": "www.bing.com",
+    "n": "4",
+    "s": "1",
+    "pask": "2026-09-18 12:23:09"
+   },
+   {
+    "u": "/odos-lazdeles-apvyniotos-antiena-500-g-naturalus-skanestai-sunims-hau-and-miau",
+    "r": "www.google.com",
+    "n": "2",
+    "s": "1",
+    "pask": "2026-09-14 04:04:20"
+   },
+   {
+    "u": "/8-vnt-kraikas-katems-tofu-belocat-ledu-kvapo-6-l-2-5-kg-2-mm-granules",
+    "r": "www.bing.com",
+    "n": "2",
+    "s": "1",
+    "pask": "2026-09-10 05:18:20"
+   },
+   {
+    "u": "/8-vnt-kraikas-katems-tofu-belocat-obuoliu-su-cinamonu-kvapo-6-l-2-5-kg-2-mm-granules",
+    "r": "www.google.com",
+    "n": "2",
+    "s": "1",
+    "pask": "2026-09-15 04:53:18"
+   },
+   {
+    "u": "/ambrosia-begrudis-su-sviezia-kalakutiena-ir-antiena-sausas-maistas-sunims-fresh-turkey-and-duck-2kg",
+    "r": "www.google.com",
+    "n": "2",
+    "s": "1",
+    "pask": "2026-09-15 16:27:06"
+   },
+   {
+    "u": "/content/3-nuostatos-ir-salygos",
+    "r": "e.seb.lt",
+    "n": "2",
+    "s": "1",
+    "pask": "2026-09-19 07:49:54"
+   },
+   {
+    "u": "/exclusion-hypoallergenic-dietinis-sausas-pasaras-katems-su-kiauliena-ir-bulvemis-1-5-kg?utm_source=chatgpt.com",
+    "r": "",
+    "n": "2",
+    "s": "1",
+    "pask": "2026-09-10 07:58:06"
+   },
+   {
+    "u": "/exclusion-intestinal-monoprotein-sausas-sun-maistas-su-kiauliena-ir-ryziais-m-l12-kg?utm_source=chatgpt.com",
+    "r": "",
+    "n": "2",
+    "s": "1",
+    "pask": "2026-09-18 07:09:54"
+   },
+   {
+    "u": "/greenpetfood",
+    "r": "www.google.com",
+    "n": "2",
+    "s": "1",
+    "pask": "2026-09-11 04:17:29"
+   },
+   {
+    "u": "/jautienos-griezineliai-500-g-naturalus-skanestai-sunims-hau-and-miau",
+    "r": "www.google.com",
+    "n": "2",
+    "s": "1",
+    "pask": "2026-09-17 06:07:17"
+   },
+   {
+    "u": "/konservai-sunims-super-beno-grain-free-light-su-kalakutiena-415-g",
+    "r": "www.google.com",
+    "n": "2",
+    "s": "1",
+    "pask": "2026-09-15 07:17:27"
+   },
+   {
+    "u": "/kraikas-katems-tofu-belocat-original-bekvapis-6-l-2-5-kg-2-mm-granules",
+    "r": "www.google.com",
+    "n": "2",
+    "s": "1",
+    "pask": "2026-09-10 09:48:27"
+   },
+   {
+    "u": "/mini-ritineliai-is-vistienos-ir-menkes-500-g?utm_source=kainoteka.lt&utm_medium=referral",
+    "r": "",
+    "n": "2",
+    "s": "1",
+    "pask": "2026-09-16 06:24:50"
+   }
+  ],
+  "k404_visi_top": [
+   {
+    "u": "/checkout",
+    "k": null,
+    "n": "14"
+   },
+   {
+    "u": "/jaucio-ausis-ruda?utm_source=kaina24.lt&utm_medium=referral",
+    "k": "mokamas",
+    "n": "6"
+   },
+   {
+    "u": "/product/exclusion-intestinal-monoprotein-sausas-sunu-maistas-su-kiauliena-ir-ryziais-m-l12-kg/?utm_source=chatgpt.com",
+    "k": "referral",
+    "n": "6"
+   },
+   {
+    "u": "/product/exclusion-intestinal-monoprotein-sausas-sunu-maistas-su-kiauliena-ir-ryziais-m-l12-kg/?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XWgBjMW-c0kKhwkv0nSAoOiD&gclid=Cj0KCQjw5bjVBhCiARIsAJzMVnSGVlz8yVwjMrY7_dJFtvAIi4HZ8nEPi6jZ-YL-I8_nFfT",
+    "k": "mokamas",
+    "n": "4"
+   },
+   {
+    "u": "/product/zaislas-suniui-guminis-kvepiantis-kamuoliukas-su-virve-8-cm/",
+    "k": "mokamas",
+    "n": "4"
+   },
+   {
+    "u": "/quattro-sb-su-antiena-sausas-suaugusiu-mazu-veisliu-sunu-pasaras-1-5kg",
+    "k": null,
+    "n": "4"
+   },
+   {
+    "u": "/product/apollo-happie-duo-kramtomos-juosteles-su-jautiena-ir-kepenelemis-200g/",
+    "k": null,
+    "n": "4"
+   },
+   {
+    "u": "/josera-miniwell-10-kg-sausas-maistas-mazu-veisliu-sunims?gad_source=1&gad_campaignid=21472043669&gbraid=0AAAAApaj7XW5ip38tSwYX2hChQIZxsaJQ&gclid=CjwKCAjwwfnUBhAtEiwAfQpAYlhncsZAILPz5koiIMU3LGKGzObrAf9V3tkDvz-xzvfK56tor8s_zBoCXXkQAvD_BwE",
+    "k": "mokamas",
+    "n": "4"
+   },
+   {
+    "u": "/content/3-nuostatos-ir-salygos",
+    "k": null,
+    "n": "4"
+   },
+   {
+    "u": "/cache/images/products/4/48694/super-benek-konservai-katems-415g-antiena-1783681980-625x625_0.png",
+    "k": null,
+    "n": "4"
+   },
+   {
+    "u": "/product/druska-ziurkenams-ir-kitiems-grauzikams/",
+    "k": "organika",
+    "n": "4"
+   },
+   {
+    "u": "/trixie-kilimelis-purvui-surinkti-120-80-cm",
+    "k": "organika",
+    "n": "4"
+   },
+   {
+    "u": "/trixie-kilimelis-purvui-surinkti-120-80-cm?gad_source=1&gad_campaignid=21472043669&gbraid=0AAAAApaj7XU1t9LRr5IJOiQjlrKom-Smo&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3TWZxKciL-KcmJsa5u6W7FR0GmAJOxy0eAryYN8wbRrIFhjrL-quGhoCLtMQAvD_BwE",
+    "k": "mokamas",
+    "n": "4"
+   },
+   {
+    "u": "/placek-pet-products-s-r-o",
+    "k": "organika",
+    "n": "4"
+   },
+   {
+    "u": "/automatine-serykla-kateisuniui",
+    "k": "organika",
+    "n": "4"
+   },
+   {
+    "u": "/jaucio-peniai-pjaustyti-12-5-cm-10-vnt",
+    "k": null,
+    "n": "4"
+   },
+   {
+    "u": "/katems/vitaminai-ir-papildai-katems/gimcat-maisto-papildas-kaciukams-kitten-pasta-su-vitaminais-50-g",
+    "k": null,
+    "n": "4"
+   },
+   {
+    "u": "/kraikas-katems-tofu-belocat-levandu-kvapo-6-l-2-5-kg-2-mm-granules",
+    "k": "referral",
+    "n": "4"
+   },
+   {
+    "u": "/cache/images/products/7/48697/super-benek-konservai-katems-415g-versiena-1784103864-625x625_0.png",
+    "k": null,
+    "n": "4"
+   },
+   {
+    "u": "/odos-lazdeles-apvyniotos-antiena-500-g-naturalus-skanestai-sunims-hau-and-miau",
+    "k": "organika",
+    "n": "2"
+   },
+   {
+    "u": "/exclusion-intestinal-monoprotein-sausas-sun-maistas-su-kiauliena-ir-ryziais-m-l12-kg?utm_source=chatgpt.com",
+    "k": "referral",
+    "n": "2"
+   },
+   {
+    "u": "/exclusion-hypoallergenic-dietinis-sausas-pasaras-katems-su-kiauliena-ir-bulvemis-1-5-kg?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XXHjCrGwnigM2IloRBa33iqr&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3U5fbZFhuXyk4fb88C4EdTGF9Nc8gMSlzJ2Ap6HQPAJgLxB7tsjURh",
+    "k": "mokamas",
+    "n": "2"
+   },
+   {
+    "u": "/mini-ritineliai-is-vistienos-ir-menkes-500-g?utm_source=kainoteka.lt&utm_medium=referral",
+    "k": "referral",
+    "n": "2"
+   },
+   {
+    "u": "/automatine-serykla-kateisuniui?gad_source=1&gad_campaignid=21565466377&gclid=Cj0KCQjw8JPVBhD-ARIsAO691sHMPyKjBoYTTMZ-2XzeEsmg95uFH73RxDS1wr6HPvcn8CJudPDHWvsaAlz_EALw_wcB",
+    "k": "mokamas",
+    "n": "2"
+   },
+   {
+    "u": "/jautienos-griezineliai-500-g-naturalus-skanestai-sunims-hau-and-miau",
+    "k": "organika",
+    "n": "2"
+   },
+   {
+    "u": "/josera-marinesse-10kg-sausas-maistas-katems?utm_source=kaina24.lt&utm_medium=referral",
+    "k": "mokamas",
+    "n": "2"
+   },
+   {
+    "u": "/real-dog-sensitive-15kg-pascaronaras-suaugusiems-scaronunims-su-antiena-48486-1?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XXMWpU4snKhHRGcUN8P2Vz8N&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3a6aU7wb0ST2nwNdDzSrrNph3BrIa-gAMineElvP2zxhGV2c7xNzBRoCTn8QAv",
+    "k": "mokamas",
+    "n": "2"
+   },
+   {
+    "u": "/ambrosia-begrudis-su-sviezia-kalakutiena-ir-antiena-sausas-maistas-sunims-fresh-turkey-and-duck-2kg",
+    "k": "organika",
+    "n": "2"
+   },
+   {
+    "u": "/content/3-nuostatos-ir-salygos",
+    "k": "referral",
+    "n": "2"
+   },
+   {
+    "u": "/trixie-kilimelis-purvui-surinkti-120-80-cm?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XVQSlV2wdCdcnlf9qrcFe_tj&gclid=Cj0KCQjwh4TVBhCWARIsAG0czmpwWDZNI22Ht_dg3uujvruJQ99E0mS9O5ULCIWRLZyQliNkeN7PlIIaAok_EALw_wcB",
+    "k": "mokamas",
+    "n": "2"
+   },
+   {
+    "u": "/cache/images/products/4/48704/super-beno-konservai-sunims-kalakutiena-light-415g-1784192665-625x625_0.jpg",
+    "k": null,
+    "n": "2"
+   },
+   {
+    "u": "/kraikas-katems-tofu-belocat-original-bekvapis-6-l-2-5-kg-2-mm-granules",
+    "k": "organika",
+    "n": "2"
+   },
+   {
+    "u": "/8-vnt-kraikas-katems-tofu-belocat-obuoliu-su-cinamonu-kvapo-6-l-2-5-kg-2-mm-granules",
+    "k": "organika",
+    "n": "2"
+   },
+   {
+    "u": "/exclusion-hypoallergenic-dietinis-sausas-pasaras-katems-su-kiauliena-ir-bulvemis-1-5-kg?utm_source=chatgpt.com",
+    "k": "referral",
+    "n": "2"
+   },
+   {
+    "u": "/konservai-sunims-super-beno-grain-free-light-su-kalakutiena-415-g",
+    "k": null,
+    "n": "2"
+   },
+   {
+    "u": "/cache/images/products/3/48703/super-beno-konservai-sunims-eriena-vistos-kepeneles-415g-1784191986-625x625_0.jpg",
+    "k": null,
+    "n": "2"
+   },
+   {
+    "u": "/belacor?page=3",
+    "k": null,
+    "n": "2"
+   },
+   {
+    "u": "/triusio-ausys-rudos-250-g",
+    "k": null,
+    "n": "2"
+   },
+   {
+    "u": "/naturalus-bentonitinis-susokantis-kraikas-katems-wonder-white-sodium-grey-5-9-l-5-kg?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XXMWpU4snKhHRGcUN8P2Vz8N&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3b9Thf5bxKxslCANygIQWQ7oLp9-aw-STCOH_bzFclDPqrQSV9_ajBoCu",
+    "k": "mokamas",
+    "n": "2"
+   },
+   {
+    "u": "/royal-canin-sensible-33-sausas-pasaras-jautrioms-katems-10-kg?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XWcD7BDdjODAU81dPiTsCBlr&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3aziUeAoEGMe11wwHMZbk2T4Mhx8tdNrpZtoCUBio3xoOyRxx4E4uhoC8bIQAvD_BwE",
+    "k": "mokamas",
+    "n": "2"
+   }
+  ],
+  "seo404_cols": [
+   "id",
+   "diena",
+   "kelias",
+   "kelias_hash",
+   "hits",
+   "bot_hits",
+   "referer",
+   "paskutinis_at"
+  ],
+  "seo404_top": [
+   {
+    "id": "8486",
+    "diena": "2026-09-20",
+    "kelias": "sausas-maistas-sterilizuotoms-katems-su-eriena-1-kg-sveriamas-ontario-sterilized-lamb",
+    "kelias_hash": "12e6f016e59a763d0edcdd340c5ef3f2",
+    "hits": "1",
+    "bot_hits": "1",
+    "referer": "",
+    "paskutinis_at": "2026-09-20 18:39:48"
+   },
+   {
+    "id": "8485",
+    "diena": "2026-09-20",
+    "kelias": "trixie-ratukai-skudo-4-7-boksams-4-vnt-48130-1",
+    "kelias_hash": "25351ce296e0586c2c2ce9545781c56a",
+    "hits": "1",
+    "bot_hits": "1",
+    "referer": "",
+    "paskutinis_at": "2026-09-20 18:30:07"
+   },
+   {
+    "id": "8483",
+    "diena": "2026-09-20",
+    "kelias": "zaislas-suniui-kaulas-t-rex",
+    "kelias_hash": "b06b2f87b453fba05aac46c79087f49b",
+    "hits": "1",
+    "bot_hits": "1",
+    "referer": "",
+    "paskutinis_at": "2026-09-20 18:26:05"
+   },
+   {
+    "id": "8482",
+    "diena": "2026-09-20",
+    "kelias": "new",
+    "kelias_hash": "22af645d1859cb5ca6da0c484f1f37ea",
+    "hits": "1",
+    "bot_hits": "0",
+    "referer": "",
+    "paskutinis_at": "2026-09-20 18:23:03"
+   },
+   {
+    "id": "8481",
+    "diena": "2026-09-20",
+    "kelias": "backup",
+    "kelias_hash": "402051f4be0cc3aad33bcf3ac3d6532b",
+    "hits": "1",
+    "bot_hits": "0",
+    "referer": "",
+    "paskutinis_at": "2026-09-20 18:23:02"
+   }
+  ],
+  "lenteles": [
+   "gaj6_ps_seo_404",
+   "gaj6_ps_seo_qa",
+   "gaj6_ps_seo_url_svoris"
+  ],
+  "legacy_map": "mu-plugins",
+  "mu301": [
+   "petshop-legacy-301.php"
+  ],
+  "mu404": [
+   "petshop-404-atitikmuo.php"
+  ]
+ },
+ "v": "dep-183929",
+ "kurimas": 200,
+ "sid": 6106,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
