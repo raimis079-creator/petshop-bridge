@@ -1,0 +1,625 @@
+{
+ "1": {
+  "v": "S1701 ma",
+  "ld": {
+   "13164": {
+    "kodas": 200,
+    "n": 1,
+    "json": [
+     {
+      "@context": "https://schema.org",
+      "@graph": [
+       {
+        "@type": "Organization",
+        "@id": "https://petshop.lt/#organization",
+        "name": "Petshop.lt"
+       },
+       {
+        "@type": "WebSite",
+        "@id": "https://petshop.lt/#website",
+        "url": "https://petshop.lt",
+        "name": "Petshop.lt",
+        "publisher": {
+         "@id": "https://petshop.lt/#organization"
+        },
+        "inLanguage": "lt-LT"
+       },
+       {
+        "@type": "ImageObject",
+        "@id": "https://petshop.lt/wp-content/uploads/2026/06/0001863_14_39475-trixie-laipteliai-lengvi-34x39x54-cm-sviesiai-pilkai.jpeg",
+        "url": "https://petshop.lt/wp-content/uploads/2026/06/0001863_14_39475-trixie-laipteliai-lengvi-34x39x54-cm-sviesiai-pilkai.jpeg",
+        "width": "679",
+        "height": "577",
+        "caption": "Trixie Laipteliai, lengvi 34x39x54 cm, šviesiai pilkai",
+        "inLanguage": "lt-LT"
+       },
+       {
+        "@type": "ItemPage",
+        "@id": "https://petshop.lt/product/trixie-laipteliai-lengvi-34x39x54-cm-sviesiai-pilkai/#webpage",
+        "url": "https://petshop.lt/product/trixie-laipteliai-lengvi-34x39x54-cm-sviesiai-pilkai/",
+        "name": "Trixie Laipteliai, lengvi 34x39x54 cm, šviesiai pilkai - Petshop.lt",
+        "datePublished": "2026-06-04T12:45:54+03:00",
+        "dateModified": "2026-09-20T20:02:26+03:00",
+        "isPartOf": {
+         "@id": "https://petshop.lt/#website"
+        },
+        "primaryImageOfPage": {
+         "@id": "https://petshop.lt/wp-content/uploads/2026/06/0001863_14_39475-trixie-laipteliai-lengvi-34x39x54-cm-sviesiai-pilkai.jpeg"
+        },
+        "inLanguage": "lt-LT"
+       },
+       {
+        "@type": "Product",
+        "name": "Trixie Laipteliai, lengvi 34x39x54 cm, šviesiai pilkai - Petshop.lt",
+        "description": "&lt;p&gt;Laipteliai augintiniams.&lt;/p&gt;",
+        "sku": "0TR143_39475",
+        "category": "ŠUNIMS &gt; Kelionių įranga",
+        "mainEntityOfPage": {
+         "@id": "https://petshop.lt/product/trixie-laipteliai-lengvi-34x39x54-cm-sviesiai-pilkai/#webpage"
+        },
+        "gtin": "4011905394756",
+        "weight": {
+         "@type": "QuantitativeValue",
+         "unitCode": "KGM",
+         "value": "0.5000"
+        },
+        "height": {
+         "@type": "QuantitativeValue",
+         "unitCode": "CMT",
+         "value": "0.3000"
+        },
+        "width": {
+         "@type": "QuantitativeValue",
+         "unitCode": "CMT",
+         "value": "0.0000"
+        },
+        "depth": {
+         "@type": "QuantitativeValue",
+         "unitCode": "CMT",
+         "value": "0.6000"
+        },
+        "image": [
+         {
+          "@type": "ImageObject",
+          "url": "https://petshop.lt/wp-content/uploads/2026/06/0001863_14_39475-trixie-laipteliai-lengvi-34x39x54-cm-sviesiai-pilkai.jpeg",
+          "height": "577",
+          "width": "679"
+         }
+        ],
+        "offers": {
+         "@type": "Offer",
+         "price": "33.49",
+         "priceCurrency": "EUR",
+         "priceValidUntil": "2027-12-31",
+         "availability": "http://schema.org/InStock",
+         "itemCondition": "NewCondition",
+         "url": "https://petshop.lt/product/trixie-laipteliai-lengvi-34x39x54-cm-sviesiai-pilkai/",
+         "seller": {
+          "@type": "Organization",
+          "@id": "https://petshop.lt/",
+          "name": "Petshop.lt",
+          "url": "https://petshop.lt",
+          "logo": ""
+         },
+         "priceSpecification": {
+          "price": "33.49",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": "true"
+         }
+        },
+        "additionalProperty": [
+         {
+          "@type": "PropertyValue",
+          "name": "pa_gyvuno_rusis",
+          "value": "Šunims"
+         },
+         {
+          "@type": "PropertyValue",
+          "name": "pa_tipas",
+          "value": "Laipteliai"
+         }
+        ],
+        "@id": "https://petshop.lt/product/trixie-laipteliai-lengvi-34x39x54-cm-sviesiai-pilkai/#richSnippet"
+       },
+       {
+        "@type": "BreadcrumbList",
+        "@id": "https://petshop.lt/product/trixie-laipteliai-lengvi-34x39x54-cm-sviesiai-pilkai/#breadcrumb",
+        "itemListElement": [
+         {
+          "@type": "ListItem",
+          "position": "1",
+          "name": "Pradžia",
+          "item": "https://petshop.lt/"
+         },
+         {
+          "@type": "ListItem",
+          "position": "2",
+          "name": "ŠUNIMS",
+          "item": "https://petshop.lt/kategorija/sunims/"
+         },
+         {
+          "@type": "ListItem",
+          "position": "3",
+          "name": "Kelionių įranga",
+          "item": "https://petshop.lt/kategorija/sunims/kelioniu-iranga/"
+         },
+         {
+          "@type": "ListItem",
+          "position": "4",
+          "name": "Trixie Laipteliai, lengvi 34x39x54 cm, šviesiai pilkai"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "18587": {
+    "kodas": 200,
+    "n": 1,
+    "json": [
+     {
+      "@context": "https://schema.org",
+      "@graph": [
+       {
+        "@type": "Organization",
+        "@id": "https://petshop.lt/#organization",
+        "name": "Petshop.lt"
+       },
+       {
+        "@type": "WebSite",
+        "@id": "https://petshop.lt/#website",
+        "url": "https://petshop.lt",
+        "name": "Petshop.lt",
+        "publisher": {
+         "@id": "https://petshop.lt/#organization"
+        },
+        "inLanguage": "lt-LT"
+       },
+       {
+        "@type": "ImageObject",
+        "@id": "https://petshop.lt/wp-content/uploads/2026/06/exclusion-sausas-edalas-mazu-veisliu-sunims-su-kiauliena-ir-zirniais-2.png",
+        "url": "https://petshop.lt/wp-content/uploads/2026/06/exclusion-sausas-edalas-mazu-veisliu-sunims-su-kiauliena-ir-zirniais-2.png",
+        "width": "600",
+        "height": "600",
+        "caption": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+        "inLanguage": "lt-LT"
+       },
+       {
+        "@type": "ItemPage",
+        "@id": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/#webpage",
+        "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+        "name": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg - Petshop.lt",
+        "datePublished": "2026-06-04T21:24:17+03:00",
+        "dateModified": "2026-09-20T21:59:48+03:00",
+        "isPartOf": {
+         "@id": "https://petshop.lt/#website"
+        },
+        "primaryImageOfPage": {
+         "@id": "https://petshop.lt/wp-content/uploads/2026/06/exclusion-sausas-edalas-mazu-veisliu-sunims-su-kiauliena-ir-zirniais-2.png"
+        },
+        "inLanguage": "lt-LT"
+       },
+       {
+        "@type": "Product",
+        "name": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg - Petshop.lt",
+        "description": "Super Premium maistas alergiškiems mažų veislių šunims su kiauliena.",
+        "sku": "HYPS06",
+        "category": "ŠUNIMS &gt; Maistas šunims &gt; Sausas maistas šunims",
+        "mainEntityOfPage": {
+         "@id": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/#webpage"
+        },
+        "gtin": "8011259002846",
+        "weight": {
+         "@type": "QuantitativeValue",
+         "unitCode": "KGM",
+         "value": "7"
+        },
+        "image": [
+         {
+          "@type": "ImageObject",
+          "url": "https://petshop.lt/wp-content/uploads/2026/06/exclusion-sausas-edalas-mazu-veisliu-sunims-su-kiauliena-ir-zirniais-2.png",
+          "height": "600",
+          "width": "600"
+         },
+         {
+          "@type": "ImageObject",
+          "url": "https://petshop.lt/wp-content/uploads/2026/06/exclusion-sausas-edalas-mazu-veisliu-sunims-su-kiauliena-ir-zirniais-3.png",
+          "height": "600",
+          "width": "600"
+         }
+        ],
+        "offers": {
+         "@type": "Offer",
+         "price": "56.99",
+         "priceCurrency": "EUR",
+         "priceValidUntil": "2027-12-31",
+         "availability": "http://schema.org/InStock",
+         "itemCondition": "NewCondition",
+         "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+         "seller": {
+          "@type": "Organization",
+          "@id": "https://petshop.lt/",
+          "name": "Petshop.lt",
+          "url": "https://petshop.lt",
+          "logo": ""
+         },
+         "priceSpecification": {
+          "price": "56.99",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": "true"
+         }
+        },
+        "additionalProperty": [
+         {
+          "@type": "PropertyValue",
+          "name": "pa_baltymu_saltinis",
+          "value": "Kiauliena"
+         },
+         {
+          "@type": "PropertyValue",
+          "name": "pa_monoprotein",
+          "value": "Taip"
+         },
+         {
+          "@type": "PropertyValue",
+          "name": "pa_pakuotes_dydis",
+          "value": "7 kg"
+         },
+         {
+          "@type": "PropertyValue",
+          "name": "pa_gyvuno_rusis",
+          "value": "Šunims"
+         },
+         {
+          "@type": "PropertyValue",
+          "name": "pa_speciali_mityba",
+          "value": "Hipoalerginis"
+         },
+         {
+          "@type": "PropertyValue",
+          "name": "pa_amzius",
+          "value": "Suaugusiems"
+         }
+        ],
+        "@id": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/#richSnippet"
+       },
+       {
+        "@type": "BreadcrumbList",
+        "@id": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/#breadcrumb",
+        "itemListElement": [
+         {
+          "@type": "ListItem",
+          "position": "1",
+          "name": "Pradžia",
+          "item": "https://petshop.lt/"
+         },
+         {
+          "@type": "ListItem",
+          "position": "2",
+          "name": "ŠUNIMS",
+          "item": "https://petshop.lt/kategorija/sunims/"
+         },
+         {
+          "@type": "ListItem",
+          "position": "3",
+          "name": "Maistas šunims",
+          "item": "https://petshop.lt/kategorija/sunims/maistas-sunims/"
+         },
+         {
+          "@type": "ListItem",
+          "position": "4",
+          "name": "Sausas maistas šunims",
+          "item": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/"
+         },
+         {
+          "@type": "ListItem",
+          "position": "5",
+          "name": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   },
+   "19471": {
+    "kodas": 200,
+    "n": 1,
+    "json": [
+     {
+      "@context": "https://schema.org",
+      "@graph": [
+       {
+        "@type": "Organization",
+        "@id": "https://petshop.lt/#organization",
+        "name": "Petshop.lt"
+       },
+       {
+        "@type": "WebSite",
+        "@id": "https://petshop.lt/#website",
+        "url": "https://petshop.lt",
+        "name": "Petshop.lt",
+        "publisher": {
+         "@id": "https://petshop.lt/#organization"
+        },
+        "inLanguage": "lt-LT"
+       },
+       {
+        "@type": "ImageObject",
+        "@id": "https://petshop.lt/wp-content/uploads/2026/06/sirdys-82482-animonda-grancarno-adult_1774536947.jpg",
+        "url": "https://petshop.lt/wp-content/uploads/2026/06/sirdys-82482-animonda-grancarno-adult_1774536947.jpg",
+        "width": "800",
+        "height": "800",
+        "caption": "Animonda GranCarno Adult: konservai šunims su širdimis, 800 g - papildoma nuotrauka 3",
+        "inLanguage": "lt-LT"
+       },
+       {
+        "@type": "ItemPage",
+        "@id": "https://petshop.lt/product/animonda-grancarno-adult-konservai-sunims-su-sirdimis-800-g/#webpage",
+        "url": "https://petshop.lt/product/animonda-grancarno-adult-konservai-sunims-su-sirdimis-800-g/",
+        "name": "Animonda GranCarno Adult: konservai šunims su širdimis, 800 g - Petshop.lt",
+        "datePublished": "2026-06-04T21:33:53+03:00",
+        "dateModified": "2026-09-14T17:59:28+03:00",
+        "isPartOf": {
+         "@id": "https://petshop.lt/#website"
+        },
+        "primaryImageOfPage": {
+         "@id": "https://petshop.lt/wp-content/uploads/2026/06/sirdys-82482-animonda-grancarno-adult_1774536947.jpg"
+        },
+        "inLanguage": "lt-LT"
+       },
+       {
+        "@type": "Product",
+        "name": "Animonda GranCarno Adult: konservai šunims su širdimis, 800 g - Petshop.lt",
+        "description": "Animonda GranCarno - daug mėsos ir didelių jos gabaliukų, be grūdų, sojų, cukraus, dirbtinių dažiklių ir konservantų - puikus pasirinkimas!",
+        "sku": "82482",
+        "category": "Animonda konservai šunims",
+        "mainEntityOfPage": {
+         "@id": "https://petshop.lt/product/animonda-grancarno-adult-konservai-sunims-su-sirdimis-800-g/#webpage"
+        },
+        "gtin": "4017721824828",
+        "weight": {
+         "@type": "QuantitativeValue",
+         "unitCode": "KGM",
+         "value": "0.9"
+        },
+        "image": [
+         {
+          "@type": "ImageObject",
+          "url": "https://petshop.lt/wp-content/uploads/2026/06/sirdys-82482-animonda-grancarno-adult_1774536947.jpg",
+          "height": "800",
+          "width": "800"
+         },
+         {
+          "@type": "ImageObject",
+          "url": "https://petshop.lt/wp-content/uploads/2026/06/82482-animonda-grancarno-adult-su-sirdimis_1754556000.jpg",
+          "height": "1680",
+          "width": "1231"
+         },
+         {
+          "@type": "ImageObject",
+          "url": "https://petshop.lt/wp-content/uploads/2026/06/82482-animonda-grancarno-adult-su-sirdimis_1754556000-1.jpg",
+          "height": "1680",
+          "width": "1231"
+         }
+        ],
+        "offers": {
+         "@type": "Offer",
+         "price": "3.35",
+         "priceCurrency": "EUR",
+         "priceValidUntil": "2027-12-31",
+         "availability": "http://schema.org/InStock",
+         "itemCondition": "NewCondition",
+         "url": "https://petshop.lt/product/animonda-grancarno-adult-konservai-sunims-su-sirdimis-800-g/",
+         "seller": {
+          "@type": "Organization",
+          "@id": "https://petshop.lt/",
+          "name": "Petshop.lt",
+          "url": "https://petshop.lt",
+          "logo": ""
+         },
+         "priceSpecification": {
+          "price": "3.35",
+          "priceCurrency": "EUR",
+          "valueAddedTaxIncluded": "true"
+         }
+        },
+        "additionalProperty": [
+         {
+          "@type": "PropertyValue",
+          "name": "pa_gyvuno_rusis",
+          "value": "Šunims"
+         },
+         {
+          "@type": "PropertyValue",
+          "name": "pa_amzius",
+          "value": "Suaugusiems"
+         },
+         {
+          "@type": "PropertyValue",
+          "name": "pa_pakuotes_dydis",
+          "value": "800 g"
+         },
+         {
+          "@type": "PropertyValue",
+          "name": "pa_be_grudu",
+          "value": "Be grūdų"
+         },
+         {
+          "@type": "PropertyValue",
+          "name": "pa_monoprotein"
+         },
+         {
+          "@type": "PropertyValue",
+          "name": "pa_baltymu_saltinis",
+          "value": "Jautiena, Kiauliena"
+         }
+        ],
+        "@id": "https://petshop.lt/product/animonda-grancarno-adult-konservai-sunims-su-sirdimis-800-g/#richSnippet"
+       },
+       {
+        "@type": "BreadcrumbList",
+        "@id": "https://petshop.lt/product/animonda-grancarno-adult-konservai-sunims-su-sirdimis-800-g/#breadcrumb",
+        "itemListElement": [
+         {
+          "@type": "ListItem",
+          "position": "1",
+          "name": "Pradžia",
+          "item": "https://petshop.lt/"
+         },
+         {
+          "@type": "ListItem",
+          "position": "2",
+          "name": "ŠUNIMS",
+          "item": "https://petshop.lt/kategorija/sunims/"
+         },
+         {
+          "@type": "ListItem",
+          "position": "3",
+          "name": "Maistas šunims",
+          "item": "https://petshop.lt/kategorija/sunims/maistas-sunims/"
+         },
+         {
+          "@type": "ListItem",
+          "position": "4",
+          "name": "Konservai šunims",
+          "item": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/"
+         },
+         {
+          "@type": "ListItem",
+          "position": "5",
+          "name": "Animonda GranCarno Adult: konservai šunims su širdimis, 800 g"
+         }
+        ]
+       }
+      ]
+     }
+    ]
+   }
+  },
+  "meta": {
+   "13164": {
+    "gtin": "4011905394756",
+    "sku": "0TR143_39475",
+    "brand": [
+     "Trixie"
+    ],
+    "weight": "0.5000"
+   },
+   "18587": {
+    "gtin": "8011259002846",
+    "sku": "HYPS06",
+    "brand": [
+     "Exclusion"
+    ],
+    "weight": "7"
+   },
+   "19471": {
+    "gtin": "4017721824828",
+    "sku": "82482",
+    "brand": [
+     "Animonda"
+    ],
+    "weight": "0.9"
+   }
+  },
+  "robots": "User-agent: *\nDisallow: /wp-content/uploads/wc-logs/\nDisallow: /wp-content/uploads/woocommerce_transient_files/\nDisallow: /wp-content/uploads/woocommerce_uploads/\nDisallow: /*?add-to-cart=\nDisallow: /*?*add-to-cart=\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://petshop.lt/sitemap_index.xml\n",
+  "rankmath_titles": {
+   "knowledgegraph_type": "company",
+   "knowledgegraph_name": "Petshop.lt",
+   "homepage_custom_robots": "off",
+   "author_custom_robots": "on",
+   "author_robots": "[\"noindex\"]",
+   "date_archive_robots": "[\"noindex\"]",
+   "pt_post_robots": "[\"index\"]",
+   "pt_post_custom_robots": "off",
+   "pt_page_robots": "[\"index\"]",
+   "pt_page_custom_robots": "off",
+   "pt_attachment_robots": "[\"noindex\"]",
+   "pt_attachment_custom_robots": "on",
+   "pt_blocks_robots": "[\"noindex\"]",
+   "pt_blocks_custom_robots": "[\"on\"]",
+   "pt_product_title": "%title% %sep% %sitename%",
+   "pt_product_description": "%excerpt%",
+   "pt_product_robots": "[\"index\"]",
+   "pt_product_custom_robots": "off",
+   "pt_product_default_rich_snippet": "product",
+   "pt_product_default_article_type": "Article",
+   "pt_product_default_snippet_name": "%seo_title%",
+   "pt_product_default_snippet_desc": "%seo_description%",
+   "pt_product_archive_title": "%title% %page% %sep% %sitename%",
+   "pt_product_slack_enhanced_sharing": "on",
+   "pt_product_ls_use_fk": "titles",
+   "pt_product_add_meta_box": "on",
+   "pt_product_bulk_editing": "editing",
+   "pt_product_link_suggestions": "on",
+   "pt_product_primary_taxonomy": "product_cat",
+   "pt_featured_item_robots": "[\"noindex\"]",
+   "pt_featured_item_custom_robots": "[\"on\"]",
+   "pt_web-story_robots": "[\"index\"]",
+   "pt_web-story_custom_robots": "off",
+   "tax_category_robots": "[\"index\"]",
+   "tax_category_custom_robots": "off",
+   "tax_post_tag_robots": "[\"noindex\"]",
+   "tax_post_tag_custom_robots": "on",
+   "tax_post_format_robots": "[\"noindex\"]",
+   "tax_post_format_custom_robots": "on",
+   "tax_product_brand_title": "%term% %sep% %sitename%",
+   "tax_product_brand_robots": "[\"index\"]",
+   "tax_product_brand_add_meta_box": "on",
+   "tax_product_brand_custom_robots": "off",
+   "tax_product_brand_description": "",
+   "tax_product_brand_slack_enhanced_sharing": "on",
+   "tax_product_brand_bulk_editing": 0,
+   "tax_product_cat_title": "%term% %sep% %sitename%",
+   "tax_product_cat_robots": "[\"index\"]",
+   "tax_product_cat_add_meta_box": "on",
+   "tax_product_cat_custom_robots": "off",
+   "tax_product_cat_description": "",
+   "tax_product_cat_slack_enhanced_sharing": "on",
+   "tax_product_cat_bulk_editing": 0,
+   "tax_product_tag_title": "%term% %sep% %sitename%",
+   "tax_product_tag_robots": "[\"noindex\"]",
+   "tax_product_tag_add_meta_box": "off",
+   "tax_product_tag_custom_robots": "on",
+   "tax_product_tag_description": "",
+   "tax_product_tag_slack_enhanced_sharing": "on",
+   "tax_product_tag_bulk_editing": 0,
+   "tax_pa_veisles_dydis_robots": "[\"noindex\"]",
+   "tax_pa_veisles_dydis_custom_robots": "[\"on\"]",
+   "tax_featured_item_category_robots": "[\"noindex\"]",
+   "tax_featured_item_category_custom_robots": "[\"on\"]",
+   "tax_featured_item_tag_robots": "[\"noindex\"]",
+   "tax_featured_item_tag_custom_robots": "[\"on\"]",
+   "remove_product_cat_snippet_data": "on",
+   "remove_product_tag_snippet_data": "on"
+  },
+  "rankmath_general": {
+   "llms_post_types": "[\"post\",\"page\",\"blocks\",\"product\",\"featured_item\"]"
+  },
+  "rm_modules": [
+   "sitemap",
+   "rich-snippet",
+   "woocommerce"
+  ],
+  "failai": {
+   "/llms.txt": 404,
+   "/ai.txt": 404,
+   "/.well-known/ai-plugin.json": 404
+  },
+  "wc_sd": 10,
+  "headers": {
+   "x-robots": "",
+   "server": "Apache"
+  },
+  "sitemap": 200
+ },
+ "v": "dep-194713",
+ "kurimas": 200,
+ "sid": 6127,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
