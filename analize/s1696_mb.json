@@ -1,0 +1,908 @@
+{
+ "1": {
+  "v": "S1696 mb",
+  "laikas": "2026-09-20 20:02:39",
+  "dienos": [
+   {
+    "diena": "2026-09-11",
+    "ses": "156",
+    "lank": "169",
+    "pv": "574"
+   },
+   {
+    "diena": "2026-09-12",
+    "ses": "47",
+    "lank": "51",
+    "pv": "106"
+   },
+   {
+    "diena": "2026-09-13",
+    "ses": "60",
+    "lank": "66",
+    "pv": "250"
+   },
+   {
+    "diena": "2026-09-14",
+    "ses": "236",
+    "lank": "251",
+    "pv": "938"
+   },
+   {
+    "diena": "2026-09-15",
+    "ses": "209",
+    "lank": "222",
+    "pv": "1042"
+   },
+   {
+    "diena": "2026-09-16",
+    "ses": "202",
+    "lank": "228",
+    "pv": "783"
+   },
+   {
+    "diena": "2026-09-17",
+    "ses": "183",
+    "lank": "197",
+    "pv": "816"
+   },
+   {
+    "diena": "2026-09-18",
+    "ses": "141",
+    "lank": "153",
+    "pv": "580"
+   },
+   {
+    "diena": "2026-09-19",
+    "ses": "163",
+    "lank": "182",
+    "pv": "545"
+   },
+   {
+    "diena": "2026-09-20",
+    "ses": "147",
+    "lank": "162",
+    "pv": "490"
+   }
+  ],
+  "kanalas": [
+   {
+    "kanalas": "mokamas",
+    "ses": "1079",
+    "pv": "3764",
+    "pirk": "0"
+   },
+   {
+    "kanalas": "organika",
+    "ses": "300",
+    "pv": "905",
+    "pirk": "0"
+   },
+   {
+    "kanalas": "referral",
+    "ses": "122",
+    "pv": "344",
+    "pirk": "0"
+   },
+   {
+    "kanalas": null,
+    "ses": "52",
+    "pv": "1024",
+    "pirk": "0"
+   },
+   {
+    "kanalas": "soc_organika",
+    "ses": "6",
+    "pv": "44",
+    "pirk": "0"
+   },
+   {
+    "kanalas": "email",
+    "ses": "5",
+    "pv": "32",
+    "pirk": "0"
+   },
+   {
+    "kanalas": "direct",
+    "ses": "3",
+    "pv": "11",
+    "pirk": "0"
+   }
+  ],
+  "tipai": [
+   {
+    "tipas": "pageview",
+    "n": "6124"
+   },
+   {
+    "tipas": "view_item",
+    "n": "2022"
+   },
+   {
+    "tipas": "add_to_cart",
+    "n": "663"
+   },
+   {
+    "tipas": "search",
+    "n": "295"
+   },
+   {
+    "tipas": "begin_checkout",
+    "n": "226"
+   },
+   {
+    "tipas": "view_cart",
+    "n": "159"
+   },
+   {
+    "tipas": "error404",
+    "n": "52"
+   },
+   {
+    "tipas": "filter",
+    "n": "27"
+   },
+   {
+    "tipas": "email_calc_click",
+    "n": "7"
+   },
+   {
+    "tipas": "reminder_optin",
+    "n": "1"
+   }
+  ],
+  "referer": [
+   {
+    "r": "www.google.com",
+    "ses": "1163"
+   },
+   {
+    "r": "",
+    "ses": "102"
+   },
+   {
+    "r": "bank.paysera.com",
+    "ses": "67"
+   },
+   {
+    "r": "www.kaina24.lt",
+    "ses": "55"
+   },
+   {
+    "r": "www.kainos.lt",
+    "ses": "47"
+   },
+   {
+    "r": null,
+    "ses": "31"
+   },
+   {
+    "r": "youtube.com",
+    "ses": "12"
+   },
+   {
+    "r": "www.bing.com",
+    "ses": "8"
+   },
+   {
+    "r": "m.facebook.com",
+    "ses": "6"
+   },
+   {
+    "r": "googleads.g.doubleclick.net",
+    "ses": "4"
+   },
+   {
+    "r": "m.skelbiu.lt",
+    "ses": "4"
+   },
+   {
+    "r": "www.facebook.com",
+    "ses": "4"
+   },
+   {
+    "r": "chatgpt.com",
+    "ses": "3"
+   },
+   {
+    "r": "yandex.ru",
+    "ses": "1"
+   },
+   {
+    "r": "dev.avesa.lt",
+    "ses": "1"
+   },
+   {
+    "r": "e.seb.lt",
+    "ses": "1"
+   },
+   {
+    "r": "facebook.com",
+    "ses": "1"
+   },
+   {
+    "r": "geedo.lv",
+    "ses": "1"
+   },
+   {
+    "r": "kainoteka.lt",
+    "ses": "1"
+   },
+   {
+    "r": "l.facebook.com",
+    "ses": "1"
+   },
+   {
+    "r": "nuolaidukodas.lt",
+    "ses": "1"
+   },
+   {
+    "r": "psd2.swedbank.lt",
+    "ses": "1"
+   },
+   {
+    "r": "scriblihelp.com",
+    "ses": "1"
+   },
+   {
+    "r": "search.brave.com",
+    "ses": "1"
+   },
+   {
+    "r": "www.google.lt",
+    "ses": "1"
+   },
+   {
+    "r": "www.google.ru",
+    "ses": "1"
+   },
+   {
+    "r": "www.skelbiu.lt",
+    "ses": "1"
+   }
+  ],
+  "saltinis_medium": [
+   {
+    "saltinis": null,
+    "medium": null,
+    "ses": "1328"
+   },
+   {
+    "saltinis": "kaina24",
+    "medium": null,
+    "ses": "61"
+   },
+   {
+    "saltinis": "kainos",
+    "medium": "referral",
+    "ses": "40"
+   },
+   {
+    "saltinis": "chatgpt.com",
+    "medium": null,
+    "ses": "27"
+   },
+   {
+    "saltinis": "kainos.lt",
+    "medium": "referral",
+    "ses": "16"
+   },
+   {
+    "saltinis": "kainoteka.lt",
+    "medium": "referral",
+    "ses": "4"
+   },
+   {
+    "saltinis": "newsletter",
+    "medium": "email",
+    "ses": "3"
+   },
+   {
+    "saltinis": "kaina24.lt",
+    "medium": "referral",
+    "ses": "1"
+   },
+   {
+    "saltinis": "sender",
+    "medium": "email",
+    "ses": "1"
+   }
+  ],
+  "landing_pusl": [
+   {
+    "u": "/",
+    "pusl_tipas": "home",
+    "ses": "199"
+   },
+   {
+    "u": "/kategorija/sunims/maistas-sunims/",
+    "pusl_tipas": "kategorija",
+    "ses": "83"
+   },
+   {
+    "u": "/kategorija/katems/tualetai-kraikai-semtuveliai/",
+    "pusl_tipas": "kategorija",
+    "ses": "49"
+   },
+   {
+    "u": "/kategorija/katems/maistas-katems/",
+    "pusl_tipas": "kategorija",
+    "ses": "48"
+   },
+   {
+    "u": "/gamintojas/exclusion/",
+    "pusl_tipas": "kita",
+    "ses": "46"
+   },
+   {
+    "u": "/gamintojas/quattro/",
+    "pusl_tipas": "kita",
+    "ses": "44"
+   },
+   {
+    "u": "/kategorija/katems/antiparazitines-priemones-katems/",
+    "pusl_tipas": "kategorija",
+    "ses": "38"
+   },
+   {
+    "u": "/product/automatine-vandens-gertuve-fontanas-katems-ir-kitiems-gyvunams-catit-pixi-25-l-zalios-spalvos/",
+    "pusl_tipas": "preke",
+    "ses": "29"
+   },
+   {
+    "u": "/kategorija/sunims/antiparazitines-priemones-sunims/",
+    "pusl_tipas": "kategorija",
+    "ses": "27"
+   },
+   {
+    "u": "/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+    "pusl_tipas": "preke",
+    "ses": "24"
+   },
+   {
+    "u": "/josera-sunu-maistas/",
+    "pusl_tipas": "info",
+    "ses": "20"
+   },
+   {
+    "u": "/kategorija/sunims/skanestai-sunims/",
+    "pusl_tipas": "kategorija",
+    "ses": "19"
+   },
+   {
+    "u": "/product/naturalus-skanestai-sunims-elnio-rago-kramtukas-minkstas/",
+    "pusl_tipas": "preke",
+    "ses": "18"
+   },
+   {
+    "u": "/product/filtrai-automatinei-vandens-gertuvei-fontanui-katems-catit-pixi-6-vnt/",
+    "pusl_tipas": "preke",
+    "ses": "17"
+   },
+   {
+    "u": "/kategorija/zuvims/tvenkiniu-zuvu-maistas/",
+    "pusl_tipas": "kategorija",
+    "ses": "17"
+   },
+   {
+    "u": "/kategorija/miamor-katems/",
+    "pusl_tipas": "kategorija",
+    "ses": "16"
+   },
+   {
+    "u": "/product/gimcat-duo-malt-pasta-salyklo-pasta-katems-nuo-plauku-gumuliuku-su-vistiena-50-g/",
+    "pusl_tipas": "preke",
+    "ses": "15"
+   },
+   {
+    "u": "/product/jaucio-penis-pjaustytas-150-cm-1-vnt/",
+    "pusl_tipas": "preke",
+    "ses": "14"
+   },
+   {
+    "u": "/suo-nuolat-kasosi-7-priezastys-ir-3-minuciu-planas-ka-daryti-siandien/",
+    "pusl_tipas": "info",
+    "ses": "13"
+   },
+   {
+    "u": "/kategorija/katems/zaislai-katems/",
+    "pusl_tipas": "kategorija",
+    "ses": "13"
+   },
+   {
+    "u": "/kategorija/katems/kraikai-kaciu-tualetams/",
+    "pusl_tipas": "kategorija",
+    "ses": "13"
+   },
+   {
+    "u": "/product/kietas-himalaju-surio-skanestas-sunims-4dogs-s-dydis/",
+    "pusl_tipas": "preke",
+    "ses": "12"
+   },
+   {
+    "u": "/taksas/",
+    "pusl_tipas": "info",
+    "ses": "12"
+   },
+   {
+    "u": "/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-kiauliena-ir-zirneliais-m-l-12-kg/",
+    "pusl_tipas": "preke",
+    "ses": "12"
+   },
+   {
+    "u": "/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-arkliena-ir-bulvemis-m-l-12-kg/",
+    "pusl_tipas": "preke",
+    "ses": "9"
+   },
+   {
+    "u": "/gamintojas/hikari/",
+    "pusl_tipas": "kita",
+    "ses": "9"
+   },
+   {
+    "u": "/product/ambrosia-begrudis-su-eriena-ir-sviezia-lasisa-sausas-maistas-sunims-grain-free-lamb-fresh-salmon-2-kg/",
+    "pusl_tipas": "preke",
+    "ses": "9"
+   },
+   {
+    "u": "/product/katrinex-maistas-koi-karpiams-ir-kitoms-tvenkiniu-zuvims/",
+    "pusl_tipas": "preke",
+    "ses": "8"
+   },
+   {
+    "u": "/product/animonda-carny-kitten-konservai-kaciukams-su-paukstiena-ir-jautiena-400-g/",
+    "pusl_tipas": "preke",
+    "ses": "8"
+   },
+   {
+    "u": "/product/sampunas-jorksyro-terjerams-super-beno-york-professional-250-ml/",
+    "pusl_tipas": "preke",
+    "ses": "8"
+   },
+   {
+    "u": "/kategorija/katems/dubeneliai-katems/",
+    "pusl_tipas": "kategorija",
+    "ses": "7"
+   },
+   {
+    "u": "/kategorija/katems/",
+    "pusl_tipas": "kategorija",
+    "ses": "7"
+   },
+   {
+    "u": "/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-triusiena-ir-bulvemis-m-l-12-kg/",
+    "pusl_tipas": "preke",
+    "ses": "7"
+   },
+   {
+    "u": "/product/exclusion-hydrolyzed-hypoallergenic-maistas-sunims-su-hidrolizuota-zuvimi-ir-kukuruzu-krakmolu-m-l-12-kg/",
+    "pusl_tipas": "preke",
+    "ses": "7"
+   },
+   {
+    "u": "/product/josera-festival-pasaras-sunims-su-lasisa-125-kg/",
+    "pusl_tipas": "preke",
+    "ses": "7"
+   },
+   {
+    "u": "/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/",
+    "pusl_tipas": "preke",
+    "ses": "7"
+   },
+   {
+    "u": "/kategorija/katems/skanestai-katems/",
+    "pusl_tipas": "kategorija",
+    "ses": "7"
+   },
+   {
+    "u": "/product/ambrosia-begrudis-su-eriena-ir-sviezia-elniena-sausas-maistas-sunims-grain-free-lamb-fresh-venison-2-kg/",
+    "pusl_tipas": "preke",
+    "ses": "7"
+   },
+   {
+    "u": "/product/kietas-himalaju-surio-skanestas-sunims-4dogs-xxl-dydis/",
+    "pusl_tipas": "preke",
+    "ses": "7"
+   },
+   {
+    "u": "/product/monge-monoproteico-solo-agnello-monoproteininiai-konservai-sunims-su-gryna-eriena-400-g/",
+    "pusl_tipas": "preke",
+    "ses": "6"
+   }
+  ],
+  "landing_tipas": [
+   {
+    "pusl_tipas": "preke",
+    "kanalas": "mokamas",
+    "ses": "440"
+   },
+   {
+    "pusl_tipas": "kategorija",
+    "kanalas": "mokamas",
+    "ses": "349"
+   },
+   {
+    "pusl_tipas": "home",
+    "kanalas": "mokamas",
+    "ses": "153"
+   },
+   {
+    "pusl_tipas": "preke",
+    "kanalas": "organika",
+    "ses": "144"
+   },
+   {
+    "pusl_tipas": "kita",
+    "kanalas": "mokamas",
+    "ses": "106"
+   },
+   {
+    "pusl_tipas": "aciu",
+    "kanalas": "referral",
+    "ses": "67"
+   },
+   {
+    "pusl_tipas": "info",
+    "kanalas": "organika",
+    "ses": "65"
+   },
+   {
+    "pusl_tipas": "kategorija",
+    "kanalas": "organika",
+    "ses": "40"
+   },
+   {
+    "pusl_tipas": "preke",
+    "kanalas": "referral",
+    "ses": "38"
+   },
+   {
+    "pusl_tipas": "home",
+    "kanalas": "organika",
+    "ses": "34"
+   },
+   {
+    "pusl_tipas": "info",
+    "kanalas": "mokamas",
+    "ses": "29"
+   },
+   {
+    "pusl_tipas": "preke",
+    "kanalas": null,
+    "ses": "26"
+   },
+   {
+    "pusl_tipas": "home",
+    "kanalas": "referral",
+    "ses": "10"
+   },
+   {
+    "pusl_tipas": "404",
+    "kanalas": "organika",
+    "ses": "10"
+   },
+   {
+    "pusl_tipas": "kita",
+    "kanalas": "organika",
+    "ses": "9"
+   },
+   {
+    "pusl_tipas": "404",
+    "kanalas": "mokamas",
+    "ses": "6"
+   },
+   {
+    "pusl_tipas": "preke",
+    "kanalas": "soc_organika",
+    "ses": "5"
+   },
+   {
+    "pusl_tipas": "info",
+    "kanalas": "referral",
+    "ses": "4"
+   },
+   {
+    "pusl_tipas": "404",
+    "kanalas": "referral",
+    "ses": "4"
+   },
+   {
+    "pusl_tipas": "checkout",
+    "kanalas": "mokamas",
+    "ses": "3"
+   },
+   {
+    "pusl_tipas": "kategorija",
+    "kanalas": "referral",
+    "ses": "3"
+   },
+   {
+    "pusl_tipas": "info",
+    "kanalas": "email",
+    "ses": "2"
+   },
+   {
+    "pusl_tipas": "blog",
+    "kanalas": "organika",
+    "ses": "2"
+   },
+   {
+    "pusl_tipas": "info",
+    "kanalas": null,
+    "ses": "2"
+   },
+   {
+    "pusl_tipas": "krepselis",
+    "kanalas": "mokamas",
+    "ses": "2"
+   },
+   {
+    "pusl_tipas": "kita",
+    "kanalas": "referral",
+    "ses": "2"
+   },
+   {
+    "pusl_tipas": "home",
+    "kanalas": "email",
+    "ses": "1"
+   },
+   {
+    "pusl_tipas": "paieska",
+    "kanalas": "referral",
+    "ses": "1"
+   },
+   {
+    "pusl_tipas": "kategorija",
+    "kanalas": null,
+    "ses": "1"
+   },
+   {
+    "pusl_tipas": "home",
+    "kanalas": null,
+    "ses": "1"
+   }
+  ],
+  "organika_landing": [
+   {
+    "u": "/",
+    "ses": "34"
+   },
+   {
+    "u": "/taksas/",
+    "ses": "11"
+   },
+   {
+    "u": "/suo-nuolat-kasosi-7-priezastys-ir-3-minuciu-planas-ka-daryti-siandien/",
+    "ses": "8"
+   },
+   {
+    "u": "/kaukazo-aviganis/",
+    "ses": "6"
+   },
+   {
+    "u": "/kategorija/katems/tualetai-kraikai-semtuveliai/",
+    "ses": "5"
+   },
+   {
+    "u": "/cvergsnauceris/",
+    "ses": "5"
+   },
+   {
+    "u": "/gamintojas/exclusion/",
+    "ses": "5"
+   },
+   {
+    "u": "/tibeto-mastifas/",
+    "ses": "5"
+   },
+   {
+    "u": "/product/monge-monoproteico-solo-agnello-monoproteininiai-konservai-sunims-su-gryna-eriena-400-g/",
+    "ses": "5"
+   },
+   {
+    "u": "/kategorija/katems/antiparazitines-priemones-katems/",
+    "ses": "4"
+   },
+   {
+    "u": "/rusu-melynoji/",
+    "ses": "4"
+   },
+   {
+    "u": "/product/exclusion-hydrolyzed-hypoallergenic-maistas-sunims-su-hidrolizuota-zuvimi-ir-kukuruzu-krakmolu-m-l-12-kg/",
+    "ses": "4"
+   },
+   {
+    "u": "/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+    "ses": "4"
+   },
+   {
+    "u": "/josera-kaciu-maistas/",
+    "ses": "4"
+   },
+   {
+    "u": "/product/sepija-mineralas-skanestas-pauksciams-15-cm-1-vnt/",
+    "ses": "4"
+   },
+   {
+    "u": "/kategorija/katems/",
+    "ses": "3"
+   },
+   {
+    "u": "/product/avies-kailio-zaislas-suniui-su-rankena-dingo-agility-130-cm/",
+    "ses": "3"
+   },
+   {
+    "u": "/kategorija/sunims/maistas-sunims/",
+    "ses": "3"
+   },
+   {
+    "u": "/mastifas/",
+    "ses": "3"
+   },
+   {
+    "u": "/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-2-kg/",
+    "ses": "3"
+   },
+   {
+    "u": "/product/ruda-stirnos-koja-1-vnt/",
+    "ses": "3"
+   },
+   {
+    "u": "/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-kiauliena-ir-zirneliais-m-l-12-kg/",
+    "ses": "3"
+   },
+   {
+    "u": "/product/naturalus-skanestai-sunims-elnio-rago-kramtukas-minkstas/",
+    "ses": "2"
+   },
+   {
+    "u": "/product/gimcat-maisto-papildas-katems-gastro-intestinal-pasta-kaciu-virskinimui-gerinti-50-g/",
+    "ses": "2"
+   },
+   {
+    "u": "/product/tualetas-katems-aukstu-remeliu-georplast-sonic-big/",
+    "ses": "2"
+   },
+   {
+    "u": "/kategorija/katems/kraikai-kaciu-tualetams/",
+    "ses": "2"
+   },
+   {
+    "u": "/product/uzdaras-kampinis-tualetas-katems-corner/",
+    "ses": "2"
+   },
+   {
+    "u": "/kategorija/katems/maistas-katems/",
+    "ses": "2"
+   },
+   {
+    "u": "/product/animonda-vom-feinsten-kitten-with-poultry-konservai-kaciukams-su-paukstiena-100-g/",
+    "ses": "2"
+   },
+   {
+    "u": "/product/vetoquinol-ipakitine-milteliai-inkstu-funkcijai-180-g/",
+    "ses": "2"
+   }
+  ],
+  "salis": [
+   {
+    "salis": "LT",
+    "ses": "538"
+   },
+   {
+    "salis": "US",
+    "ses": "394"
+   },
+   {
+    "salis": "GB",
+    "ses": "313"
+   },
+   {
+    "salis": null,
+    "ses": "161"
+   },
+   {
+    "salis": "RU",
+    "ses": "41"
+   },
+   {
+    "salis": "DE",
+    "ses": "5"
+   },
+   {
+    "salis": "PL",
+    "ses": "4"
+   },
+   {
+    "salis": "UA",
+    "ses": "3"
+   }
+  ],
+  "irenginys": [
+   {
+    "irenginys": "desktop",
+    "ses": "401"
+   },
+   {
+    "irenginys": "mobile",
+    "ses": "1063"
+   },
+   {
+    "irenginys": "tablet",
+    "ses": "2"
+   }
+  ],
+  "skaiciuokle": [
+   {
+    "tipas": "email_calc_click",
+    "n": "7",
+    "ses": "0"
+   }
+  ],
+  "grizes_lank": "375",
+  "vidutine_ses_gylis": "4.09",
+  "ist_cols": [
+   "uzsakymas_id",
+   "sukurta_at",
+   "apmoketa_at",
+   "statusas_galutinis",
+   "statusas_at",
+   "klientas_id",
+   "klientas_email_hash",
+   "klientas_naujas",
+   "klientas_uzsakymo_nr",
+   "dienos_nuo_ankstesnio",
+   "prekiu_suma_ct",
+   "nuolaidu_ct",
+   "kuponu_kodai",
+   "tasku_panaudota_ct",
+   "tasku_sukaupta_ct",
+   "pristatymas_paimta_ct",
+   "pristatymas_savikaina_ct",
+   "small_cart_fee_ct",
+   "pvm_ct",
+   "viso_ct",
+   "mokejimo_budas",
+   "mokejimo_mokestis_ct",
+   "pakuotes_savikaina_ct",
+   "savikaina_ct",
+   "dovanu_savikaina_ct",
+   "marza_ct",
+   "kontribucija_ct",
+   "sandeliu_kiekis",
+   "misrus",
+   "sandeliai",
+   "vezejai",
+   "kanalas_pirmas",
+   "kanalas_paskutinis",
+   "utm_source",
+   "utm_medium",
+   "utm_campaign",
+   "gclid",
+   "fbclid",
+   "referer_domenas",
+   "landing_url",
+   "irenginys",
+   "sutikimas_statistika",
+   "salis",
+   "miestas",
+   "pasto_kodas",
+   "anketa_id",
+   "rec_log_id",
+   "is_refill",
+   "prenumerata_id",
+   "eiluciu_sk",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija",
+   "irasyta_at",
+   "diena"
+  ]
+ },
+ "v": "dep-170129",
+ "kurimas": 200,
+ "sid": 6096,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
