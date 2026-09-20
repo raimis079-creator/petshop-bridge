@@ -1,0 +1,23 @@
+{
+ "1": {
+  "md5": "78879f3c211681505dbb3c81c13004f4",
+  "dydis": 3870,
+  "galva": "<?php\n/**\n * Plugin Name: Petshop Schema — prekių naršymo takelis\n * Description: Prideda BreadcrumbList schemą prekių puslapiams. Rank Math ją išveda kategorijoms, bet ne prekėms, nors būtent prekių puslapiuose Google paieškos rezultate rodo takelį vietoj adreso.\n * Version: 1.0.2\n *\n * TŽ §S8 reikalauja: Product schema, BreadcrumbList, Organization.\n * Išmatuota 2026-08-19 (H092): kategorijoje BreadcrumbList yra, prekėje nėra.\n *\n * Takelis statomas iš pirminės kategorijos (Rank Math `rank_math_primary_product_cat`),\n * o jos nesant — iš giliausios priskirtos kategorijos, su visais protėviais.\n */\n\nif (!defined('ABSPATH')) exit;\n\nfinal class Petshop_Schema_Takelis {\n\n\tconst VERSIJA = '1.0.2';\n\n\t/**\n\t * JSON-LD yra duomenys, ne HTML. `get_the_title()` ir termino vardas grąžina\n\t * jau užkoduotas esybes (`&amp;`, `&#8211;`), o įdėtos į JSON jos lieka\n\t * pažodžiui — Google perskaitytų „N&amp;D\". Todėl dekoduojama.\n\t */\n\tprivate static function tekstas($t) {\n\t\t$t = wp_strip_all_tags((string) $t);\n\t\t// Dalis pavadinimų duomenų bazėje užkoduoti DU kartus (`&amp;amp;`),\n\t\t// todėl dekoduojama kartotinai, kol nustoja keistis. Riba — 4 kartai,\n\t\t// kad sugadintas įrašas nesuktų ciklo be pabaigos.\n\t\tfor ($i = 0; $i < 4; $i++) {\n\t\t\t$naujas = html_entity_decode($t, ENT_QUOTES | ENT_HTML5, 'UTF-8');\n\t\t\tif ($naujas === $t) break;\n\t\t\t$t = $naujas;\n\t\t}\n\t\treturn $t;\n\t}\n\n\tpublic static function pradzia() {\n\t\tadd_filter('rank_math/json_ld', [__CLASS__, 'prideti'], 99, 2);\n\t}\n\n\tpublic static function prideti($data, $jsonld) {\n\n\t\tif (!function_exists('is_product') || !is_product()) return $data;\n\t\tif (!is_array($data)) return $data;\n\n\t\t// Jei Rank Math kada nors pradės išvesti pats — nedubliuojam.\n\t\tforeach ((array) $data as $blokas) {\n\t\t\tif (!is_array($blokas) || empty($blokas['@type'])) continue;\n\t\t\t$t = $blokas['@type'];\n\t\t\tif (is_array($t) ? in_array('BreadcrumbList', $t, true) : $t === 'BreadcrumbList') {\n\t\t\t\treturn $data;\n\t\t\t}\n\t\t}\n\n\t\t$id = get_the_ID();\n\t\tif (!$id) return $data;\n\n\t\t$elementai = [];\n\t\t$poz = 1;\n\n\t\t$elementai[] = [\n\t\t\t'@type'    => 'ListItem',\n\t\t\t'position' => $poz++,\n\t\t\t'name'     => __('Pradžia', 'petshop'),\n\t\t\t'item'     => home_url('/'),\n\t\t];\n\n\t\t$terminas = self::pirmine_kategorija($id);\n\n\t\tif ($terminas) {\n\t\t\t$grandine = array_reverse(get_ancestors($terminas->term_id, 'product_cat'));\n\t\t\t$grandine[] = $terminas->term_id;\n\n\t\t\tforeach ($grandine as $tid) {\n\t\t\t\t$t = get_term($tid, 'product_cat');\n\t\t",
+  "hooks": [
+   "rank_math/json_ld"
+  ],
+  "klases": [
+   "Petshop_Schema_Takelis"
+  ],
+  "failai": [
+   "petshop-schema.php"
+  ]
+ },
+ "v": "dep-195346",
+ "kurimas": 200,
+ "sid": 6130,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
