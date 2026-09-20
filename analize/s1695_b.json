@@ -1,0 +1,230 @@
+{
+ "1": {
+  "paskyra_3412": [
+   {
+    "id": "36094",
+    "status": "wc-pending",
+    "total_amount": "56.99000000",
+    "date_created_gmt": "2026-09-20 07:20:07",
+    "billing_email": "marija.kupcinskaite@gmail.com",
+    "payment_method": "paysera"
+   }
+  ],
+  "user_3412": {
+   "ID": "3412",
+   "user_email": "marija.kupcinskaite@gmail.com",
+   "user_registered": "2026-08-31 15:32:37",
+   "display_name": "Marija"
+  },
+  "siandien": [
+   {
+    "id": "36096",
+    "status": "wc-pending",
+    "total_amount": "25.49000000",
+    "date_created_gmt": "2026-09-20 07:38:31",
+    "billing_email": "dianasereikiene@gmail.com",
+    "ip_address": "84.32.72.215",
+    "payment_method": "paysera",
+    "nr": "1122"
+   },
+   {
+    "id": "36095",
+    "status": "wc-processing",
+    "total_amount": "56.99000000",
+    "date_created_gmt": "2026-09-20 07:25:55",
+    "billing_email": "vy.bieliauskas@gmail.com",
+    "ip_address": "88.118.83.210",
+    "payment_method": "paysera",
+    "nr": "1121"
+   },
+   {
+    "id": "36094",
+    "status": "wc-pending",
+    "total_amount": "56.99000000",
+    "date_created_gmt": "2026-09-20 07:20:07",
+    "billing_email": "marija.kupcinskaite@gmail.com",
+    "ip_address": "78.56.133.68",
+    "payment_method": "paysera",
+    "nr": "1120"
+   },
+   {
+    "id": "36093",
+    "status": "wc-processing",
+    "total_amount": "63.45000000",
+    "date_created_gmt": "2026-09-20 04:29:12",
+    "billing_email": "pijuskizerskis@gmail.com",
+    "ip_address": "78.63.108.211",
+    "payment_method": "paysera",
+    "nr": "1119"
+   }
+  ],
+  "su_18587_savaite": [
+   {
+    "order_id": "36095",
+    "status": "wc-processing",
+    "date_created_gmt": "2026-09-20 07:25:55"
+   },
+   {
+    "order_id": "36094",
+    "status": "wc-pending",
+    "date_created_gmt": "2026-09-20 07:20:07"
+   },
+   {
+    "order_id": "36021",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-18 06:41:15"
+   },
+   {
+    "order_id": "35991",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-17 03:20:21"
+   },
+   {
+    "order_id": "35978",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-16 06:36:26"
+   },
+   {
+    "order_id": "35968",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-15 15:42:18"
+   },
+   {
+    "order_id": "35953",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-15 07:16:39"
+   },
+   {
+    "order_id": "35950",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-15 03:41:32"
+   },
+   {
+    "order_id": "35947",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-14 17:44:01"
+   },
+   {
+    "order_id": "35945",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-14 16:56:45"
+   },
+   {
+    "order_id": "35930",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-13 19:17:56"
+   }
+  ],
+  "preke_18587": {
+   "stock": "250",
+   "vf_qty": "252",
+   "own": "2",
+   "manage": "yes",
+   "status": "instock"
+  },
+  "paysera_log": [
+   {
+    "id": "8307",
+    "laikas": "2026-09-20 10:38:32",
+    "lygis": "warning",
+    "parasas": "44a42576f1d8e56266bfe7f0e58c6735",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/exclusion-mediterraneo-monoprotein-sausas-pasaras-sterilizuotoms-katems-su-jautiena-15-kg/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/?wc-ajax=checkout",
+    "kiek": "1"
+   },
+   {
+    "id": "8306",
+    "laikas": "2026-09-20 10:38:32",
+    "lygis": "warning",
+    "parasas": "1274baf54813231e2e45df2626a6270e",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/pess-biologinis-apsauginis-purskiklis-nuo-erkiu-katems-bei-sunims-250-ml/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/?wc-ajax=checkout",
+    "kiek": "1"
+   },
+   {
+    "id": "8305",
+    "laikas": "2026-09-20 10:25:55",
+    "lygis": "warning",
+    "parasas": "70d2831de419ea20495ab876b2a9299c",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/?wc-ajax=checkout",
+    "kiek": "2"
+   },
+   {
+    "id": "8304",
+    "laikas": "2026-09-20 10:36:43",
+    "lygis": "deprecated",
+    "parasas": "9aecde71e7ad0d790b9c94b57fe5b98a",
+    "zinute": "trim(): Passing null to parameter #1 ($string) of type string is deprecated",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-cart.php",
+    "eilute": "1129",
+    "url": "/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+    "kiek": "2"
+   },
+   {
+    "id": "8303",
+    "laikas": "2026-09-20 07:30:57",
+    "lygis": "warning",
+    "parasas": "eb8297cdc76d07cb58b7aec0b4994535",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/animonda-vom-feinsten-adult-with-turkey-and-rabbit-konservai-katems-su-kalakutiena-ir-triusiena-100-g/): No such file or directory",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/?wc-ajax=checkout",
+    "kiek": "2"
+   }
+  ],
+  "pastabos_36094_visos": 5,
+  "darbalaukio_meta": [
+   {
+    "meta_key": "_ps_ga_sutikimas",
+    "v": "--"
+   },
+   {
+    "meta_key": "_ps_gclid",
+    "v": "CjwKCAjwiL7VBhA-EiwAhZi9EGIKu5oIb8cJSrAuGaltzaWSi4QqDCW-fVs-smZY7FDaUIpF_4-5LhoCVvEQAvD_BwE"
+   },
+   {
+    "meta_key": "_ps_irenginys",
+    "v": "mobile"
+   },
+   {
+    "meta_key": "_ps_kanalai",
+    "v": "{\"pirmas\":{\"utm_campaign\":\"21565466377\",\"gclid\":1,\"fbclid\":0,\"referer_domenas\":\"www.google.com\",\"landing_url\":\"https://p"
+   },
+   {
+    "meta_key": "_ps_matyta",
+    "v": "2026-09-20 10:33:33 | Raimis"
+   },
+   {
+    "meta_key": "_ps_order_number",
+    "v": "1120"
+   },
+   {
+    "meta_key": "_ps_paskyra_priskirta",
+    "v": "1"
+   },
+   {
+    "meta_key": "_ps_similar_basis",
+    "v": "erl81_2_checkout"
+   },
+   {
+    "meta_key": "_ps_similar_optout",
+    "v": "0"
+   }
+  ],
+  "db_err": ""
+ },
+ "v": "dep-073738",
+ "kurimas": 200,
+ "sid": 6088,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
