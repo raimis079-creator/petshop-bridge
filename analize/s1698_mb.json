@@ -1,0 +1,708 @@
+{
+ "1": {
+  "v": "S1698 mb",
+  "legacy301_b64": "PD9waHAKLyoqCiAqIFBldHNob3AgTGVnYWN5IDMwMSB2Mi4xIChTNDM2LCBTMTY2OCkg4oCUIHNlbm9zIHBsYXRmb3Jtb3MgYWRyZXPFsyBudWtyZWlwaW1hcy4KICoKICogdjIuMSAoUzE2NjgpOiAzMDEgUEVSS0VMSUEgdcW+a2xhdXNvcyBlaWx1dMSZIChnY2xpZCwgZ2FkX3NvdXJjZSwgdXRtXyosIF9nbCkuCiAqICAgdjIuMCBqxIUgbnVtZXNkYXZvIOKGkiBQTWF4L01lcmNoYW50IHBhc3BhdWRpbWFpIHByYXJhZGF2byBnY2xpZCwgQWRzIG5lbWF0xJcga29udmVyc2lqxbMuCiAqCiAqIFZpZW5hcyBtZWNoYW5pem1hcyB2aXNpZW1zIHNlbmllbXMgYWRyZXNhbXMuIMW9ZW3El2xhcGlzIGxhaWtvbWFzIEFUU0tJUkFNRQogKiBKU09OIGZhaWxlIGlyIGtyYXVuYW1hcyBUSUsgdGFkYSwga2FpIGFkcmVzYXMgcmVhbGlhaSA0MDQg4oCUIGthZCBraWVrdmllbmEKICogdcW+a2xhdXNhIG5lcGFyc2ludMWzIDEzNyBLQiBQSFAgbWFzeXZvLgogKgogKiDFoEXFoEkgU0xVT0tTTklBSSAodmlzaSDErsWgQUxEWVRJIGnFoSBHU0MgMiA0NDUgVVJMIC8gMTkgNzM1IGNsaWNrcyAvIDE2IG3El24uKToKICogICAxLiBrYXRlZ29yaWpvcyBiZSAva2F0ZWdvcmlqYS8gcHJpZcWhZMSXbGlvICAgICAgICAgIDM0IMK3IDEgNTk2CiAqICAgMi4gc2VuaSBVUkwgc3UgSUQgdW9kZWdvbWlzICAgICAgICAgICAgICAgICAgICAgICAgNDIgwrcgICA2NjYKICogICAzLiBwZXJ2YWRpbnRpIHNsdWcgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAgICAxMCDCtyAgICAzMAogKiAgIDQuIHByb2R1a3RhaSBpxaEgxaFha25pZXMg4oaSIC9wcm9kdWN0LyAgICAgICAgICAgICAgICA4MDUgwrcgMiA5NjgKICogICA1LiBsaWt1c2lvcyBrYXRlZ29yaWpvcyAgICAgICAgICAgICAgICAgICAgICAgICAgICAyNCDCtyAgIDEwMgogKiAgIDYuIGJyZW5kYWkg4oaSIC9nYW1pbnRvamFzLyAgICAgICAgICAgICAgICAgICAgICAgICAgMjIgwrcgICA1MDEKICoKICogS1JJVElOSVMgNiBzbHVva3NuaXM6IGJlIGpvIFdvcmRQcmVzcyByZWRpcmVjdF9jYW5vbmljYWwgL2V4Y2x1c2lvbgogKiAoMjE4IGNsaWNrcykgU1DElkpJTVUgMzAxLWluYSDEryBBVFNJVElLVElOxK4gU0tVLiBUxb0gdjEuNTYgdGFpIMSvc3DEl2pvLCBpcgogKiAyMDI2LTA4LTA0IHRhaSB2aXMgZGFyIHZ5a28uCiAqCiAqIFZBUlRBSToKICogICAtIFRJSyB0aWtzbGlhbSBhZHJlc3VpIGnFoSDFvmVtxJdsYXBpbywgVElLIGthaSBqaXMgREFCQVIgNDA0CiAqICAgLSB2aWVuYXMgMzAxIHRpZXNpYWkgxK8gZ2FsdXRpbsSvIDIwMCwgam9racWzIGdyYW5kaW5pxbMKICogICAtIEpPS0lPIOKAnnBhbmHFoWlhdXNpbyBVUkwiIHNwxJdqaW1vCiAqICAgLSByZWRpcmVjdF9jYW5vbmljYWwgacWhanVuZ2lhbWFzIFRJSyBtxatzxbMgYXRwYcW+aW50YW0gYWRyZXN1aQogKiAgIC0gWC1SZWRpcmVjdC1CeTogUGV0c2hvcC1MZWdhY3ktQ2F0ZWdvcnkKICoKICogxK7FoEFMRFlUQSwgTkUgRElOQU1JTklTLiBOYXVqb21zIGthdGVnb3Jpam9tcy9wcmVrxJdtcyB0YWlzeWtsxJdzIE5FS1VSSUFNT1MuCiAqIE5hdWphcyDEr3JhxaFhcyDigJQgdGlrIHJhbmtpbml1IGLFq2R1IHN1IEdTQyBwYWdyaW5kaW11LgogKi8KaWYgKCAhIGRlZmluZWQoICdBQlNQQVRIJyApICkgeyBleGl0OyB9Cgpjb25zdCBQU19MRUdBQ1lfMzAxX01BUCA9IF9fRElSX18gLiAnL3BldHNob3AtbGVnYWN5LTMwMS1tYXAuanNvbic7CgpmdW5jdGlvbiBwZXRzaG9wX2xlZ2FjeV8zMDFfbWFwKCkgewoJc3RhdGljICRtID0gbnVsbDsKCWlmICggbnVsbCAhPT0gJG0gKSB7IHJldHVybiAkbTsgfQoJJHJhdyA9IEBmaWxlX2dldF9jb250ZW50cyggUFNfTEVHQUNZXzMwMV9NQVAgKTsKCSRtICAgPSAoIGZhbHNlID09PSAkcmF3ICkgPyBhcnJheSgpIDogKGFycmF5KSBqc29uX2RlY29kZSggJHJhdywgdHJ1ZSApOwoJcmV0dXJuICRtOwp9CgpmdW5jdGlvbiBwZXRzaG9wX2xlZ2FjeV8zMDFfcGF0aCgpIHsKCSRwID0gKHN0cmluZykgcGFyc2VfdXJsKCAoc3RyaW5nKSAoICRfU0VSVkVSWydSRVFVRVNUX1VSSSddID8/ICcnICksIFBIUF9VUkxfUEFUSCApOwoJcmV0dXJuIHN0cnRvbG93ZXIoIHRyaW0oIHJhd3VybGRlY29kZSggJHAgKSwgJy8nICkgKTsKfQoKYWRkX2FjdGlvbiggJ3RlbXBsYXRlX3JlZGlyZWN0JywgZnVuY3Rpb24gKCkgewoJaWYgKCBpc19hZG1pbigpIHx8IHdwX2RvaW5nX2FqYXgoKSB8fCBpc19yb2JvdHMoKSB8fCBpc19mZWVkKCkgKSB7IHJldHVybjsgfQoJaWYgKCAhIGlzXzQwNCgpICkgeyByZXR1cm47IH0gICAgICAgICAgLy8gZXNhbWkgcHVzbGFwaWFpIE5FTElFxIxJQU1JCgoJJGtlbGlhcyA9IHBldHNob3BfbGVnYWN5XzMwMV9wYXRoKCk7CglpZiAoICcnID09PSAka2VsaWFzICkgeyByZXR1cm47IH0KCgkkbWFwID0gcGV0c2hvcF9sZWdhY3lfMzAxX21hcCgpOwoJaWYgKCAhIGlzc2V0KCAkbWFwWyAka2VsaWFzIF0gKSApIHsgcmV0dXJuOyB9ICAgLy8gam9raW8gc3DEl2ppbW8KCgkkdCA9ICRtYXBbICRrZWxpYXMgXTsKCWlmICggMCA9PT0gc3RycG9zKCAkdCwgJ19fVEVSTV9fJyApICkgewoJCSR0ZXJtID0gZ2V0X3Rlcm0oIChpbnQpIHN1YnN0ciggJHQsIDggKSwgJ3Byb2R1Y3RfY2F0JyApOwoJCWlmICggISAkdGVybSB8fCBpc193cF9lcnJvciggJHRlcm0gKSApIHsgcmV0dXJuOyB9CgkJJHVybCA9IGdldF90ZXJtX2xpbmsoICR0ZXJtICk7CgkJaWYgKCBpc193cF9lcnJvciggJHVybCApIHx8ICEgJHVybCApIHsgcmV0dXJuOyB9Cgl9IGVsc2UgewoJCSR1cmwgPSBob21lX3VybCggJHQgKTsKCX0KCgkvLyBBcHNhdWdhIG51byBraWxwb3MKCWlmICggc3RydG9sb3dlciggdHJpbSggKHN0cmluZykgcGFyc2VfdXJsKCAkdXJsLCBQSFBfVVJMX1BBVEggKSwgJy8nICkgKSA9PT0gJGtlbGlhcyApIHsgcmV0dXJuOyB9CgoJLy8gdjIuMTogdcW+a2xhdXNvcyBlaWx1dMSXIGtlbGlhdWphIGthcnR1IChnY2xpZC91dG0vZ2FkX3NvdXJjZSDigJQgQWRzIGF0cmlidWNpamFpKQoJJHFzID0gKHN0cmluZykgcGFyc2VfdXJsKCAoc3RyaW5nKSAoICRfU0VSVkVSWydSRVFVRVNUX1VSSSddID8/ICcnICksIFBIUF9VUkxfUVVFUlkgKTsKCWlmICggJycgIT09ICRxcyApIHsgJHVybCAuPSAoIGZhbHNlID09PSBzdHJwb3MoICR1cmwsICc/JyApID8gJz8nIDogJyYnICkgLiAkcXM7IH0KCglyZW1vdmVfYWN0aW9uKCAndGVtcGxhdGVfcmVkaXJlY3QnLCAncmVkaXJlY3RfY2Fub25pY2FsJyApOwoJd3BfcmVkaXJlY3QoICR1cmwsIDMwMSwgJ1BldHNob3AtTGVnYWN5LUNhdGVnb3J5JyApOwoJZXhpdDsKfSwgMSApOwo=",
+  "atitikmuo_b64": "PD9waHAKLyoqCiAqIFBsdWdpbiBOYW1lOiBQZXRzaG9wIDQwNCBhdGl0aWttdW8gdjEuMCAoUzE2ODlzKQogKiBEZXNjcmlwdGlvbjogU2Vub3MgcGxhdGZvcm1vcyBhZHJlc2Ftcywga3VyacWzIG7El3JhIGxlZ2FjeS0zMDEgxb5lbcSXbGFweWplOiAzMDEgVElLIGthaSBwYXNrdXRpbmlzIGtlbGlvCiAqICAgc2VnbWVudGFzIChiZSAuaHRtbCBpciBJRCBwcmllxaFkxJdsaW8pIFRJS1NMSUFJIHN1dGFtcGEgc3UgcHVibGlrdW90b3MgcHJla8SXcyAvIHByZWtpxbMga2F0ZWdvcmlqb3MgLwogKiAgIGdhbWludG9qbyBzbHVnLiBKb2tpbyDigJ5wYW5hxaFpYXVzaW8iIHNwxJdqaW1vLiBWZWlraWEgcG8gcGV0c2hvcC1sZWdhY3ktMzAxIChwcmlvIDEpLCB0aWsga2FpIGlzXzQwNCgpLgogKiAgIFBhcGlsZG9tYWkgZmlrc3VvdGkgYWxpYXM6IHBhaWVza2EsIHZpc29zLXByZWtlcywgYWxscHJvZHVjdHMsIGxvZ2luLgogKiAgIFgtUmVkaXJlY3QtQnk6IFBldHNob3AtNDA0LUF0aXRpa211bwogKi8KaWYgKCAhIGRlZmluZWQoICdBQlNQQVRIJyApICkgeyBleGl0OyB9CgphZGRfYWN0aW9uKCAndGVtcGxhdGVfcmVkaXJlY3QnLCBmdW5jdGlvbiAoKSB7CglpZiAoIGlzX2FkbWluKCkgfHwgd3BfZG9pbmdfYWpheCgpIHx8IGlzX3JvYm90cygpIHx8IGlzX2ZlZWQoKSB8fCAhIGlzXzQwNCgpICkgeyByZXR1cm47IH0KCgkkdXJpICAgID0gKHN0cmluZykgKCAkX1NFUlZFUlsnUkVRVUVTVF9VUkknXSA/PyAnJyApOwoJJGtlbGlhcyA9IHN0cnRvbG93ZXIoIHRyaW0oIHJhd3VybGRlY29kZSggKHN0cmluZykgcGFyc2VfdXJsKCAkdXJpLCBQSFBfVVJMX1BBVEggKSApLCAnLycgKSApOwoJaWYgKCAnJyA9PT0gJGtlbGlhcyB8fCBwcmVnX21hdGNoKCAnIyhefC8pKHdwLXxcLil8XC4ocGhwfGNzc3xqc3xwbmd8anBlP2d8d2VicHxnaWZ8eG1sfHR4dHxlbnYpJCNpJywgJGtlbGlhcyApICkgeyByZXR1cm47IH0KCgkkYWxpYXMgPSBhcnJheSgKCQkncGFpZXNrYScgICAgICA9PiAnL3BhcmR1b3R1dmUvJywKCQkndmlzb3MtcHJla2VzJyA9PiAnL3BhcmR1b3R1dmUvJywKCQknYWxscHJvZHVjdHMnICA9PiAnL3BhcmR1b3R1dmUvJywKCQknbG9naW4nICAgICAgICA9PiAnL3Bhc2t5cmEvJywKCSk7CgkkdXJsID0gbnVsbDsKCWlmICggaXNzZXQoICRhbGlhc1sgJGtlbGlhcyBdICkgKSB7CgkJJHVybCA9IGhvbWVfdXJsKCAkYWxpYXNbICRrZWxpYXMgXSApOwoJfSBlbHNlIHsKCQkkc2VnICA9IGFycmF5X3ZhbHVlcyggYXJyYXlfZmlsdGVyKCBleHBsb2RlKCAnLycsICRrZWxpYXMgKSwgJ3N0cmxlbicgKSApOwoJCSRsYXN0ID0gZW5kKCAkc2VnICk7CgkJaWYgKCBjb3VudCggJHNlZyApID49IDMgJiYgJ3BhZ2UnID09PSAkc2VnWyBjb3VudCggJHNlZyApIC0gMiBdICkgeyAkbGFzdCA9ICRzZWdbIGNvdW50KCAkc2VnICkgLSAzIF07IH0KCQkkc2x1ZyA9IHNhbml0aXplX3RpdGxlKCBwcmVnX3JlcGxhY2UoIGFycmF5KCAnI1wuaHRtbD8kIycsICcjXlxkKy0jJyApLCAnJywgJGxhc3QgKSApOwoJCWlmICggJycgPT09ICRzbHVnICkgeyByZXR1cm47IH0KCgkJZ2xvYmFsICR3cGRiOwoJCSRwaWQgPSAoaW50KSAkd3BkYi0+Z2V0X3ZhciggJHdwZGItPnByZXBhcmUoCgkJCSJTRUxFQ1QgSUQgRlJPTSB7JHdwZGItPnBvc3RzfSBXSEVSRSBwb3N0X3R5cGU9J3Byb2R1Y3QnIEFORCBwb3N0X3N0YXR1cz0ncHVibGlzaCcgQU5EIHBvc3RfbmFtZT0lcyBMSU1JVCAxIiwgJHNsdWcgKSApOwoJCWlmICggJHBpZCApIHsKCQkJJHVybCA9IGdldF9wZXJtYWxpbmsoICRwaWQgKTsKCQl9IGVsc2UgewoJCQlmb3JlYWNoICggYXJyYXkoICdwcm9kdWN0X2NhdCcsICdwcm9kdWN0X2JyYW5kJyApIGFzICR0YXggKSB7CgkJCQkkdCA9IGdldF90ZXJtX2J5KCAnc2x1ZycsICRzbHVnLCAkdGF4ICk7CgkJCQlpZiAoICR0ICYmICEgaXNfd3BfZXJyb3IoICR0ICkgKSB7ICRsID0gZ2V0X3Rlcm1fbGluayggJHQgKTsgaWYgKCAhIGlzX3dwX2Vycm9yKCAkbCApICkgeyAkdXJsID0gJGw7IGJyZWFrOyB9IH0KCQkJfQoJCX0KCX0KCWlmICggISAkdXJsICkgeyByZXR1cm47IH0KCWlmICggc3RydG9sb3dlciggdHJpbSggKHN0cmluZykgcGFyc2VfdXJsKCAkdXJsLCBQSFBfVVJMX1BBVEggKSwgJy8nICkgKSA9PT0gJGtlbGlhcyApIHsgcmV0dXJuOyB9CgoJJHFzID0gKHN0cmluZykgcGFyc2VfdXJsKCAkdXJpLCBQSFBfVVJMX1FVRVJZICk7CglpZiAoICcnICE9PSAkcXMgKSB7ICR1cmwgLj0gKCBmYWxzZSA9PT0gc3RycG9zKCAkdXJsLCAnPycgKSA/ICc/JyA6ICcmJyApIC4gJHFzOyB9CgoJcmVtb3ZlX2FjdGlvbiggJ3RlbXBsYXRlX3JlZGlyZWN0JywgJ3JlZGlyZWN0X2Nhbm9uaWNhbCcgKTsKCXdwX3JlZGlyZWN0KCAkdXJsLCAzMDEsICdQZXRzaG9wLTQwNC1BdGl0aWttdW8nICk7CglleGl0Owp9LCAyICk7Cg==",
+  "map_n": 1222,
+  "map_pvz": {
+   "sunims/antiparazitines-priemones-sunims": "__TERM__108",
+   "katems/antiparazitines-priemones-katems": "__TERM__109",
+   "hipoalerginis-maistas-sunims": "__TERM__85",
+   "sunims": "__TERM__70",
+   "miamor-katems": "__TERM__80"
+  },
+  "map_keys_pvz": [
+   "sunims/antiparazitines-priemones-sunims",
+   "katems/antiparazitines-priemones-katems",
+   "hipoalerginis-maistas-sunims",
+   "sunims",
+   "miamor-katems",
+   "sunims/maistas-sunims/sausas-maistas-sunims",
+   "sunims/skanestai-sunims",
+   "katems/antkakliai-ir-petnesos-katems",
+   "super-premium-sunu-maistas",
+   "katems/maistas-katems"
+  ],
+  "map_has": {
+   "trixie-kilimelis-purvui-surinkti-120-80-cm": null,
+   "automatine-serykla-kateisuniui": null,
+   "jaucio-ausis-ruda": null,
+   "checkout": null,
+   "placek-pet-products-s-r-o": null,
+   "josera-marinesse-10kg-sausas-maistas-katems": null
+  },
+  "seo404_10d": [
+   {
+    "keliai": "1776",
+    "hits": "6965",
+    "bot": "3789"
+   }
+  ],
+  "seo404_zmones": [
+   {
+    "kelias": "ip",
+    "zm": "50",
+    "h": "50",
+    "ref": "",
+    "pask": "2026-09-13 11:25:56"
+   },
+   {
+    "kelias": ".env.bak",
+    "zm": "36",
+    "h": "37",
+    "ref": "petshop.lt",
+    "pask": "2026-09-18 15:49:10"
+   },
+   {
+    "kelias": ".env.old",
+    "zm": "33",
+    "h": "33",
+    "ref": "",
+    "pask": "2026-09-18 15:49:16"
+   },
+   {
+    "kelias": ".env.save",
+    "zm": "32",
+    "h": "36",
+    "ref": "",
+    "pask": "2026-09-18 15:49:14"
+   },
+   {
+    "kelias": ".env.swp",
+    "zm": "30",
+    "h": "30",
+    "ref": "",
+    "pask": "2026-09-18 15:49:36"
+   },
+   {
+    "kelias": "prekes-zenklas/exclusion",
+    "zm": "26",
+    "h": "26",
+    "ref": "",
+    "pask": "2026-09-12 06:37:57"
+   },
+   {
+    "kelias": "login",
+    "zm": "23",
+    "h": "26",
+    "ref": "petshop.lt",
+    "pask": "2026-09-17 06:09:23"
+   },
+   {
+    "kelias": ".env.prod",
+    "zm": "23",
+    "h": "24",
+    "ref": "",
+    "pask": "2026-09-18 15:49:23"
+   },
+   {
+    "kelias": ".env.development",
+    "zm": "22",
+    "h": "22",
+    "ref": "",
+    "pask": "2026-09-18 15:49:04"
+   },
+   {
+    "kelias": ".env.docker",
+    "zm": "22",
+    "h": "22",
+    "ref": "",
+    "pask": "2026-09-18 15:49:29"
+   },
+   {
+    "kelias": "_profiler/phpinfo",
+    "zm": "22",
+    "h": "22",
+    "ref": "",
+    "pask": "2026-09-18 15:56:07"
+   },
+   {
+    "kelias": "ipfs/bafkreicyqcbhpicbos7ev4mrxofwqx6hvvge7pahpta6xuspr44crai5by",
+    "zm": "22",
+    "h": "22",
+    "ref": "",
+    "pask": "2026-09-20 16:15:57"
+   },
+   {
+    "kelias": ".env.staging",
+    "zm": "21",
+    "h": "21",
+    "ref": "",
+    "pask": "2026-09-18 15:49:02"
+   },
+   {
+    "kelias": ".env.live",
+    "zm": "21",
+    "h": "25",
+    "ref": "",
+    "pask": "2026-09-18 15:49:30"
+   },
+   {
+    "kelias": "phpinfo",
+    "zm": "21",
+    "h": "21",
+    "ref": "",
+    "pask": "2026-09-18 15:55:36"
+   },
+   {
+    "kelias": ".env.local",
+    "zm": "21",
+    "h": "22",
+    "ref": "",
+    "pask": "2026-09-18 15:48:59"
+   },
+   {
+    "kelias": "checkout",
+    "zm": "21",
+    "h": "21",
+    "ref": "petshop.lt",
+    "pask": "2026-09-19 21:35:27"
+   },
+   {
+    "kelias": ".env.dist",
+    "zm": "20",
+    "h": "20",
+    "ref": "",
+    "pask": "2026-09-18 15:49:35"
+   },
+   {
+    "kelias": "prekes-zenklas/ontario",
+    "zm": "20",
+    "h": "20",
+    "ref": "",
+    "pask": "2026-09-12 06:38:01"
+   },
+   {
+    "kelias": ".env.test",
+    "zm": "20",
+    "h": "20",
+    "ref": "",
+    "pask": "2026-09-18 15:49:06"
+   },
+   {
+    "kelias": ".env.sample",
+    "zm": "20",
+    "h": "20",
+    "ref": "",
+    "pask": "2026-09-18 15:49:18"
+   },
+   {
+    "kelias": ".env.remote",
+    "zm": "20",
+    "h": "20",
+    "ref": "",
+    "pask": "2026-09-18 15:49:08"
+   },
+   {
+    "kelias": ".env.example",
+    "zm": "20",
+    "h": "23",
+    "ref": "",
+    "pask": "2026-09-18 15:49:20"
+   },
+   {
+    "kelias": ".env.production",
+    "zm": "20",
+    "h": "22",
+    "ref": "",
+    "pask": "2026-09-18 15:49:00"
+   },
+   {
+    "kelias": ".env.stage",
+    "zm": "20",
+    "h": "26",
+    "ref": "",
+    "pask": "2026-09-18 15:49:25"
+   },
+   {
+    "kelias": "prekes-zenklas/miamor",
+    "zm": "20",
+    "h": "20",
+    "ref": "",
+    "pask": "2026-09-12 06:38:03"
+   },
+   {
+    "kelias": "prekes-zenklas/josera",
+    "zm": "20",
+    "h": "20",
+    "ref": "",
+    "pask": "2026-09-12 06:37:58"
+   },
+   {
+    "kelias": ".env.dev",
+    "zm": "20",
+    "h": "20",
+    "ref": "",
+    "pask": "2026-09-18 15:49:22"
+   },
+   {
+    "kelias": ".env~",
+    "zm": "19",
+    "h": "19",
+    "ref": "",
+    "pask": "2026-09-18 15:49:38"
+   },
+   {
+    "kelias": "graphql",
+    "zm": "19",
+    "h": "20",
+    "ref": "petshop.lt",
+    "pask": "2026-09-17 08:44:31"
+   },
+   {
+    "kelias": "_environment",
+    "zm": "19",
+    "h": "19",
+    "ref": "",
+    "pask": "2026-09-18 15:56:09"
+   },
+   {
+    "kelias": ".env.preprod",
+    "zm": "19",
+    "h": "19",
+    "ref": "",
+    "pask": "2026-09-18 15:49:32"
+   },
+   {
+    "kelias": ".env.backup",
+    "zm": "19",
+    "h": "21",
+    "ref": "",
+    "pask": "2026-09-18 15:49:12"
+   },
+   {
+    "kelias": ".env.uat",
+    "zm": "19",
+    "h": "19",
+    "ref": "",
+    "pask": "2026-09-18 15:49:33"
+   },
+   {
+    "kelias": "info",
+    "zm": "19",
+    "h": "19",
+    "ref": "",
+    "pask": "2026-09-18 15:55:52"
+   },
+   {
+    "kelias": ".env.ci",
+    "zm": "19",
+    "h": "19",
+    "ref": "",
+    "pask": "2026-09-18 15:49:27"
+   },
+   {
+    "kelias": "api/graphql",
+    "zm": "17",
+    "h": "17",
+    "ref": "petshop.lt",
+    "pask": "2026-09-17 08:44:33"
+   },
+   {
+    "kelias": "signup",
+    "zm": "17",
+    "h": "17",
+    "ref": "",
+    "pask": "2026-09-17 08:45:14"
+   },
+   {
+    "kelias": "register",
+    "zm": "17",
+    "h": "18",
+    "ref": "",
+    "pask": "2026-09-17 08:45:09"
+   },
+   {
+    "kelias": "webroot/index.php/_environment",
+    "zm": "16",
+    "h": "16",
+    "ref": "",
+    "pask": "2026-09-18 15:56:11"
+   },
+   {
+    "kelias": "sunims/prieziuros-priemones",
+    "zm": "15",
+    "h": "33",
+    "ref": "www.google.com",
+    "pask": "2026-09-20 16:23:16"
+   },
+   {
+    "kelias": "kita-446007278/daugiau-pigiau/pauksciams-132251148",
+    "zm": "15",
+    "h": "15",
+    "ref": "petshop.lt",
+    "pask": "2026-09-14 22:28:50"
+   },
+   {
+    "kelias": "pagrindinis/2809-ontario-adult-medium-chicken-and-potatoes-12-kg-pasaras-vidutiniu-veisliu-sunims-su-vistiena-ir-bulvemis-.html",
+    "zm": "15",
+    "h": "17",
+    "ref": "",
+    "pask": "2026-09-20 10:09:22"
+   },
+   {
+    "kelias": "parduotuve/page/108",
+    "zm": "15",
+    "h": "19",
+    "ref": "",
+    "pask": "2026-09-20 08:18:09"
+   },
+   {
+    "kelias": "console",
+    "zm": "14",
+    "h": "14",
+    "ref": "www.petshop.lt",
+    "pask": "2026-09-17 08:45:14"
+   },
+   {
+    "kelias": "v1/graphql",
+    "zm": "14",
+    "h": "14",
+    "ref": "petshop.lt",
+    "pask": "2026-09-17 08:44:35"
+   },
+   {
+    "kelias": "parduotuve/page/109",
+    "zm": "14",
+    "h": "17",
+    "ref": "",
+    "pask": "2026-09-20 07:44:30"
+   },
+   {
+    "kelias": "account/login",
+    "zm": "13",
+    "h": "13",
+    "ref": "",
+    "pask": "2026-09-17 08:45:10"
+   },
+   {
+    "kelias": "user/login",
+    "zm": "13",
+    "h": "13",
+    "ref": "",
+    "pask": "2026-09-17 08:45:09"
+   },
+   {
+    "kelias": "sign-in",
+    "zm": "13",
+    "h": "13",
+    "ref": "",
+    "pask": "2026-09-17 08:45:12"
+   },
+   {
+    "kelias": "auth/login",
+    "zm": "13",
+    "h": "13",
+    "ref": "",
+    "pask": "2026-09-17 08:45:11"
+   },
+   {
+    "kelias": "forgot-password",
+    "zm": "13",
+    "h": "13",
+    "ref": "",
+    "pask": "2026-09-17 08:45:11"
+   },
+   {
+    "kelias": "error_log",
+    "zm": "13",
+    "h": "13",
+    "ref": "",
+    "pask": "2026-09-17 06:47:55"
+   },
+   {
+    "kelias": "signin",
+    "zm": "13",
+    "h": "13",
+    "ref": "",
+    "pask": "2026-09-17 08:45:11"
+   },
+   {
+    "kelias": "secure",
+    "zm": "13",
+    "h": "13",
+    "ref": "",
+    "pask": "2026-09-17 08:45:09"
+   },
+   {
+    "kelias": "users/login",
+    "zm": "13",
+    "h": "13",
+    "ref": "",
+    "pask": "2026-09-17 08:45:10"
+   },
+   {
+    "kelias": "composer.lock",
+    "zm": "13",
+    "h": "13",
+    "ref": "",
+    "pask": "2026-09-16 08:49:49"
+   },
+   {
+    "kelias": "auth",
+    "zm": "13",
+    "h": "13",
+    "ref": "",
+    "pask": "2026-09-17 08:45:11"
+   },
+   {
+    "kelias": "panel",
+    "zm": "12",
+    "h": "12",
+    "ref": "",
+    "pask": "2026-09-17 08:45:15"
+   },
+   {
+    "kelias": "app",
+    "zm": "12",
+    "h": "12",
+    "ref": "",
+    "pask": "2026-09-17 08:45:14"
+   },
+   {
+    "kelias": "v1/models",
+    "zm": "12",
+    "h": "12",
+    "ref": "",
+    "pask": "2026-09-20 13:04:13"
+   },
+   {
+    "kelias": "error.log",
+    "zm": "12",
+    "h": "12",
+    "ref": "",
+    "pask": "2026-09-16 08:50:00"
+   },
+   {
+    "kelias": "backoffice",
+    "zm": "12",
+    "h": "12",
+    "ref": "",
+    "pask": "2026-09-17 08:45:15"
+   },
+   {
+    "kelias": ".hg/store/00manifest.i",
+    "zm": "12",
+    "h": "12",
+    "ref": "",
+    "pask": "2026-09-16 08:49:46"
+   },
+   {
+    "kelias": "account",
+    "zm": "12",
+    "h": "16",
+    "ref": "",
+    "pask": "2026-09-17 08:45:15"
+   },
+   {
+    "kelias": "models",
+    "zm": "12",
+    "h": "12",
+    "ref": "",
+    "pask": "2026-09-20 13:04:11"
+   },
+   {
+    "kelias": "chat/completions",
+    "zm": "12",
+    "h": "12",
+    "ref": "",
+    "pask": "2026-09-20 13:04:15"
+   },
+   {
+    "kelias": "reset-password",
+    "zm": "12",
+    "h": "12",
+    "ref": "",
+    "pask": "2026-09-17 08:45:13"
+   },
+   {
+    "kelias": "portal",
+    "zm": "12",
+    "h": "12",
+    "ref": "",
+    "pask": "2026-09-17 08:45:15"
+   },
+   {
+    "kelias": "parduotuve/page/110",
+    "zm": "12",
+    "h": "14",
+    "ref": "",
+    "pask": "2026-09-20 18:28:41"
+   }
+  ],
+  "seo404_ref_hosts": [
+   {
+    "h": "petshop.lt",
+    "zm": "487"
+   },
+   {
+    "h": "www.google.com",
+    "zm": "56"
+   },
+   {
+    "h": "www.petshop.lt",
+    "zm": "19"
+   },
+   {
+    "h": "www.kainos.lt",
+    "zm": "14"
+   },
+   {
+    "h": "www.bing.com",
+    "zm": "3"
+   },
+   {
+    "h": "com.google.android.googlequicksearchbox",
+    "zm": "3"
+   },
+   {
+    "h": "com.google.android.gm",
+    "zm": "2"
+   },
+   {
+    "h": "bank.paysera.com",
+    "zm": "1"
+   },
+   {
+    "h": "google.com, https",
+    "zm": "1"
+   }
+  ],
+  "ads404": [
+   {
+    "u": "/trixie-kilimelis-purvui-surinkti-120-80-cm?gad_source=1&gad_campaignid=21472043669&gbraid=0AAAAApaj7XU1t9LRr5IJOiQjlrKom-Smo&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3TWZxKciL-KcmJsa5u6W7FR0GmAJOxy0eAryYN8wbRrIFhjrL-quGhoCLtMQAvD_BwE",
+    "n": "2",
+    "pask": "2026-09-10 18:51:00"
+   },
+   {
+    "u": "/product/exclusion-intestinal-monoprotein-sausas-sunu-maistas-su-kiauliena-ir-ryziais-m-l12-kg/?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XWgBjMW-c0kKhwkv0nSAoOiD&gclid=Cj0KCQjw5bjVBhCiARIsAJzMVnSGVlz8yVwjMrY7_dJFtvAIi4HZ8nEPi6jZ-YL-I8_nFfT",
+    "n": "2",
+    "pask": "2026-09-19 11:11:03"
+   },
+   {
+    "u": "/josera-miniwell-10-kg-sausas-maistas-mazu-veisliu-sunims?gad_source=1&gad_campaignid=21472043669&gbraid=0AAAAApaj7XW5ip38tSwYX2hChQIZxsaJQ&gclid=CjwKCAjwwfnUBhAtEiwAfQpAYlhncsZAILPz5koiIMU3LGKGzObrAf9V3tkDvz-xzvfK56tor8s_zBoCXXkQAvD_BwE",
+    "n": "2",
+    "pask": "2026-09-10 17:47:44"
+   },
+   {
+    "u": "/real-dog-sensitive-15kg-pascaronaras-suaugusiems-scaronunims-su-antiena-48486-1?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XXMWpU4snKhHRGcUN8P2Vz8N&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3a6aU7wb0ST2nwNdDzSrrNph3BrIa-gAMineElvP2zxhGV2c7xNzBRoCTn8QAv",
+    "n": "1",
+    "pask": "2026-09-10 17:20:34"
+   },
+   {
+    "u": "/royal-canin-sensible-33-sausas-pasaras-jautrioms-katems-10-kg?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XWcD7BDdjODAU81dPiTsCBlr&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3aziUeAoEGMe11wwHMZbk2T4Mhx8tdNrpZtoCUBio3xoOyRxx4E4uhoC8bIQAvD_BwE",
+    "n": "1",
+    "pask": "2026-09-10 17:52:41"
+   },
+   {
+    "u": "/kraikas-katems-tofu-belocat-vaniles-kvapo-6-l-2-5-kg-2-mm-granules?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XUe17k-ILhqz4RH6WuCx9XvA&gclid=Cj0KCQjwzY7VBhDwARIsAFtPvBRyHXgncBtVxduexrdpW8PF4Q5ddGMq8qJjIxzhZ3Vx6XTV1UgYaSEaAstHEALw_wcB",
+    "n": "1",
+    "pask": "2026-09-12 04:02:31"
+   },
+   {
+    "u": "/automatine-serykla-kateisuniui?gad_source=1&gad_campaignid=21565466377&gclid=Cj0KCQjw8JPVBhD-ARIsAO691sHMPyKjBoYTTMZ-2XzeEsmg95uFH73RxDS1wr6HPvcn8CJudPDHWvsaAlz_EALw_wcB",
+    "n": "1",
+    "pask": "2026-09-12 08:16:38"
+   },
+   {
+    "u": "/automatine-serykla-kateisuniui?gad_source=1&gad_campaignid=21472043669&gbraid=0AAAAApaj7XWEpUrOqrsO9qW2_aPz9Q5Q2&gclid=Cj0KCQjw5P7UBhDaARIsAOSlS1NcAZCDao6jCy_CiGgG6qFkxdedqugVs-6TdGcFQgel9Cve29lYjEQaAsO5EALw_wcB",
+    "n": "1",
+    "pask": "2026-09-09 05:21:15"
+   },
+   {
+    "u": "/product/exclusion-intestinal-monoprotein-sausas-suniuku-maistas-su-kiauliena-ir-ryziais-12-kg/?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XVWJjoUVdE1mxbKU21AI86uJ&gclid=CjwKCAjwiL7VBhA-EiwAhZi9EHTktLKz-vnTOJHnN73S1xxVOBr-5Lj6UNH6Hn7oZMenr1W",
+    "n": "1",
+    "pask": "2026-09-20 10:19:46"
+   },
+   {
+    "u": "/8-vnt-kraikas-katems-tofu-belocat-braskiu-su-pienu-kvapo-6-l-2-5-kg-2-mm-granules?gad_source=1&gad_campaignid=21472043669&gclid=Cj0KCQjw5P7UBhDaARIsAOSlS1PAFkyU0y5bLTBTMhqfe0UT1PI4nuNe4E2ZLOSiKpmy8Sh3Sinr5BgaArUjEALw_wcB",
+    "n": "1",
+    "pask": "2026-09-09 06:26:21"
+   },
+   {
+    "u": "/monge-monoprotein-rabbit-super-premium-pascaronaras-katems-su-triuscaroniena-10kg-48692-1?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XXE6iMjHHYhQFFaZy2R5O4_S&gclid=Cj0KCQjwh4TVBhCWARIsAG0czmqAjTSIzsBxH532h4dJiSYQK1cV1seVHYZi6fCkabfogCtk1jKy",
+    "n": "1",
+    "pask": "2026-09-09 12:49:07"
+   },
+   {
+    "u": "/trixie-kilimelis-purvui-surinkti-120-80-cm?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XVQSlV2wdCdcnlf9qrcFe_tj&gclid=Cj0KCQjwh4TVBhCWARIsAG0czmpwWDZNI22Ht_dg3uujvruJQ99E0mS9O5ULCIWRLZyQliNkeN7PlIIaAok_EALw_wcB",
+    "n": "1",
+    "pask": "2026-09-10 04:49:16"
+   },
+   {
+    "u": "/naturalus-bentonitinis-susokantis-kraikas-katems-wonder-white-sodium-grey-5-9-l-5-kg?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XXMWpU4snKhHRGcUN8P2Vz8N&gclid=Cj0KCQjwh4TVBhCWARIsAG0czmrgtnz5ugrd4KyJCU-04ajsg459BAZtQygX71_MKFwF3yG75WrQpiEaA",
+    "n": "1",
+    "pask": "2026-09-10 06:56:15"
+   },
+   {
+    "u": "/vienkartines-palutes-paklotai-60-90-cm-xl-universal-10-vnt?gad_source=1&gad_campaignid=21565466377&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3RyH3KhLqStb_AE-9GxmKIG2-BAu4pNXpi8MyckjC_XJQtpF1u1yMRoCJpkQAvD_BwE",
+    "n": "1",
+    "pask": "2026-09-10 08:20:15"
+   },
+   {
+    "u": "/real-dog-visavertis-pascaronaras-suaugusiems-scaronunims-su-paukscarontiena-20kg-48108-1?gad_source=1&gad_campaignid=21472043669&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3Z9HjT7KvKBDT5MHkgwU8QzF7_SgKlmjQjp6inE-4xCMquq012sOMxoCjisQAvD_BwE",
+    "n": "1",
+    "pask": "2026-09-10 12:46:36"
+   },
+   {
+    "u": "/naturalus-bentonitinis-susokantis-kraikas-katems-wonder-white-sodium-grey-5-9-l-5-kg?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XXMWpU4snKhHRGcUN8P2Vz8N&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3b9Thf5bxKxslCANygIQWQ7oLp9-aw-STCOH_bzFclDPqrQSV9_ajBoCu",
+    "n": "1",
+    "pask": "2026-09-10 14:49:29"
+   },
+   {
+    "u": "/exclusion-hypoallergenic-dietinis-sausas-pasaras-katems-su-kiauliena-ir-bulvemis-1-5-kg?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XXHjCrGwnigM2IloRBa33iqr&gclid=CjwKCAjwqonVBhA4EiwA9wYJ3U5fbZFhuXyk4fb88C4EdTGF9Nc8gMSlzJ2Ap6HQPAJgLxB7tsjURh",
+    "n": "1",
+    "pask": "2026-09-10 15:43:34"
+   }
+  ],
+  "k24_404": [
+   {
+    "u": "/jaucio-ausis-ruda?utm_source=kaina24.lt&utm_medium=referral",
+    "n": "3",
+    "pask": "2026-09-10 18:26:49"
+   },
+   {
+    "u": "/ambrosia-begrudis-su-jautiena-ir-sviezia-lasisa-sausas-maistas-sunims-grain-free-beef-and-fresh-salmon-12-kg?utm_source=kaina24.lt&utm_medium=referral",
+    "n": "1",
+    "pask": "2026-09-09 10:13:07"
+   },
+   {
+    "u": "/josera-miniwell-10-kg-sausas-maistas-mazu-veisliu-sunims?utm_source=kaina24.lt&utm_medium=referral",
+    "n": "1",
+    "pask": "2026-09-09 13:52:17"
+   },
+   {
+    "u": "/josera-marinesse-10kg-sausas-maistas-katems?utm_source=kaina24.lt&utm_medium=referral",
+    "n": "1",
+    "pask": "2026-09-10 13:56:00"
+   },
+   {
+    "u": "/jaucio-ausis-ruda?utm_source=kainos.lt&utm_medium=referral",
+    "n": "1",
+    "pask": "2026-09-10 17:01:31"
+   },
+   {
+    "u": "/zaislas-suniui-guminis-kvepiantis-dygliuotas-kamuoliukas-4-5-cm?utm_source=kainos.lt&utm_medium=referral",
+    "n": "1",
+    "pask": "2026-09-15 23:32:24"
+   },
+   {
+    "u": "/mini-ritineliai-is-vistienos-ir-menkes-500-g?utm_source=kainoteka.lt&utm_medium=referral",
+    "n": "1",
+    "pask": "2026-09-16 06:24:50"
+   },
+   {
+    "u": "/coockoo-lily-ruber-butterfly-zalias-272075-cm?utm_source=kainos.lt&utm_medium=referral",
+    "n": "1",
+    "pask": "2026-09-18 22:59:50"
+   }
+  ]
+ },
+ "v": "dep-184146",
+ "kurimas": 200,
+ "sid": 6107,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
