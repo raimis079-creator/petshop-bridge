@@ -34,3 +34,13 @@ Feed sukurtas, bet „Your feed file is empty" — MMC dar neparsisiuntė failo.
 
 - STARTAS `STARTAS_2026-09-21_po_S1696_MARKETINGAS.md` — 1.2 eilutė atnaujinta.
 - Įrankis `irankiai/s1702_ma.php` (Bing meta per Rank Math + cache valymas).
+
+## 6. Raimio klausimai po darbo (00:03–00:09)
+
+**Ar Bing LT naudingas?** LT Bing ~2–4 % paieškų (desktop ~5 %, mobile <1 %); mums 1–2 ses/d, 2 užs./10 d. — mažai, bet €0 ir kanalas jau konvertuoja. Tikroji vertė — ChatGPT/Copilot naudoja Bing indeksą/Shopping duomenis. Lūkestis: 5 ses/d ≈ 1–2 užs./sav. Daugiau laiko nededam.
+
+**Ar daryti FB Shop?** Ne dabar. ES FB Shop = katalogas su nuoroda į svetainę (be apmokėjimo FB); vertė tik žymint prekes įrašuose ar catalog ads — abu reikalauja FB veiklos, kurios sąmoningai nedarom. Įrašyta į STARTAS „Galbūt vėliau" su sąlyga.
+
+**Ar be Google nieko nėra?** 10 d. užs.: Google ≈ 55 %, sava bazė (direct/Gmail/el. paštas) ≈ 25 %, kainų palyginimas 17 %, kita ~5 %. Ne-Google kanalai — pigiausi. Marketplace'ai (pigu/Varle) maistui nuostolingi (komisinis 10–15 % > marža), aksesuarams įmanomi — Raimio sprendimas ateičiai. Išvada: nauji per Google, pelnas iš grįžtančių be Google → retention/skaičiuoklė/el. paštas.
+
+Sesija baigta Raimio nurodymu 00:09.
