@@ -8,7 +8,7 @@
 
 | # | Darbas | Kas | Matavimas | Būsena |
 |---|---|---|---|---|
-| 1.1 | **Kainų palyginimo feed'as** — S1697 (09-20): feed'ai sveiki (v2.6.0, manufacturer=brand, 2 klaidingi atitikmenys išimti). Kaina24/kainos CPC €0,08, ~€1/d, ~1,2 užs./d, CPA <€1 → **filtro nereikia**; kainos.lt: Petshop.lt daugiausiai pigiausių (82). Svertas — kainos: prie konkurento kainos marža lieka tik 16 prekių iš 158 (Quattro/Trixie/Flexi/Monge/Josera 10 kg — konkurentai ties mūsų savikaina). Dokumentas `S1697_kainu_palyginimas_1.1_2026-09-20.md` + CSV | C ✓, R: Ontario Exigent 1 kg EAN; 16 prekių kainos; Quattro | ses/d 12 → 25 | ☑ (feed) / ☐ laukia R (kainos) |
+| 1.1 | **Kainų palyginimo feed'as — UŽDARYTA S1697 (09-20)**: feed'ai sveiki (v2.6.0 manufacturer=brand, 2 klaidingi atitikmenys išimti). kaina24+kainos CPC €0,08, ~€1/d, ~1,2 užs./d → filtro nereikia. Maržos analizė (`S1697_kainu_palyginimas_1.1_2026-09-20.md`, CSV v3): zoo konkurentai (zookaralyste, Pethappy, Ramiosblusos, pet24) Josera 10 kg/Quattro/Monge/Farmina parduoda ties mūsų savikaina — kainų nekeisti (Raimio sprendimas 21:37); vėliau AV prekėms iš „galima" sąrašo — akcijos. Liko: Ontario Exigent 1 kg EAN (#16270) | C ✓ / R | — | ☑ |
 | 1.2 | **Bing / Microsoft Merchant Center** nemokami sąrašai (tas pats Google feed'as) | C parengia, R registruoja (Microsoft paskyra) | Bing ses/d 1 → 5 | ☐ |
 | 1.3 | **404 iš organikos** (52 per 10 d.) — redirect'ai | C | 404 organika → 0 | ☐ |
 | 1.4 | **Mėginukas naujam maisto klientui** (jaučio ausis, AV siuntos) + lapelis su QR į skaičiuoklę | R (pakavimas/VMVT sprendimas), C (žymė `_ps_meginukas` + holdout 90/10 + lapelis) | R60 kohortos su/be mėginuko | ☐ laukia R |
