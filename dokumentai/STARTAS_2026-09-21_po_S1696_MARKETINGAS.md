@@ -51,6 +51,9 @@
 
 ## GALBŪT VĖLIAU (nepriklauso nuo mūsų — be terminų, be pastangų dabar)
 Veisėjai per skelbiu.lt; kinologai/dresūros mokyklos; prieglaudos; podcast'ai/YouTuberiai; FB grupės (organiškai). Grįžtam tik jei savi kanalai išsemti arba Raimis pats pamato progą.
+- **FB Shop / Meta katalogas** (Raimio klausimas 09-21 00:06, Claude: ne dabar): ES FB Shop = tik katalogas su nuoroda į svetainę, vertė tik žymint prekes įrašuose arba catalog ads; sąlyga — jei atsiras FB turinio ritmas (Sprintas 2–4 straipsniai/veislės) arba norėsis bandyti krepšelio retargetingą. Feed tas pats `/feed/google`, ~2–3 val. + Meta verifikacija; rizika — Meta atmeta vet prekes.
+- **Marketplace'ai (pigu/Varle/Senukai)**: maistui su 12–17 % marža nuostolinga (komisinis 10–15 %), aksesuarams 30–40 % — galima, bet atskira operacija. Raimio sprendimas, jei kada norės svarstyti.
+- Kanalų vaizdas (Raimio klausimas „ar be Google nieko nėra"): 10 d. užs. — Google (Ads+organika) ≈ 55 %, sava bazė (direct/Gmail/el. paštas) ≈ 25 %, kainų palyginimas 17 %, kita ~5 %. Bing LT ~2–4 % paieškų, mums 1–2 ses/d, 2 užs./10 d.; vertė — €0 ir kelias į ChatGPT/Copilot (Bing indeksas). Išvada: nauji klientai per Google, pelnas — iš grįžtančių be Google → planas lieka retention/skaičiuoklė/el. paštas.
 
 ## KPI lentelė (kas 2 sav. į Q4 HTML)
 
