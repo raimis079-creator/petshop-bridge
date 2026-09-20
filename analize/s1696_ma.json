@@ -1,0 +1,488 @@
+{
+ "1": {
+  "v": "S1696 ma",
+  "faze": "1",
+  "laikas": "2026-09-20 20:00:23",
+  "uzs_n": 102,
+  "atribucija": {
+   "utm|google": {
+    "n": 10,
+    "eur": 276.25
+   },
+   "referral|com.google.android.gm": {
+    "n": 5,
+    "eur": 263.2
+   },
+   "organic|google": {
+    "n": 6,
+    "eur": 236.61
+   },
+   "typein|(direct)": {
+    "n": 20,
+    "eur": 979.3100000000001
+   },
+   "referral|m.facebook.com": {
+    "n": 3,
+    "eur": 123.76
+   },
+   "organic|google|gclid": {
+    "n": 1,
+    "eur": 13.84
+   },
+   "utm|kaina24": {
+    "n": 10,
+    "eur": 424.49
+   },
+   "utm|google|gclid": {
+    "n": 35,
+    "eur": 1355.66
+   },
+   "referral|bing.com": {
+    "n": 2,
+    "eur": 75.53999999999999
+   },
+   "utm|kainos": {
+    "n": 6,
+    "eur": 180.69
+   },
+   "utm|chatgpt.com": {
+    "n": 2,
+    "eur": 35.15
+   },
+   "utm|kainos|gclid": {
+    "n": 1,
+    "eur": 56.99
+   },
+   "referral|com.google.android.googlequicksearchbox": {
+    "n": 1,
+    "eur": 24.39
+   }
+  },
+  "irenginys": {
+   "Mobile": 70,
+   "Desktop": 32
+  },
+  "referrer_host": {
+   "petshop.lt": 32,
+   "www.google.com": 25,
+   "www.kaina24.lt": 8,
+   "www.kainos.lt": 7,
+   "com.google.android.gm": 5,
+   "m.facebook.com": 3,
+   "www.bing.com": 2,
+   "com.google.android.googlequicksearchbox": 1
+  },
+  "fakt_cols": [
+   "uzsakymas_id",
+   "sukurta_at",
+   "apmoketa_at",
+   "statusas_galutinis",
+   "statusas_at",
+   "klientas_id",
+   "klientas_email_hash",
+   "klientas_naujas",
+   "klientas_uzsakymo_nr",
+   "dienos_nuo_ankstesnio",
+   "prekiu_suma_ct",
+   "nuolaidu_ct",
+   "kuponu_kodai",
+   "tasku_panaudota_ct",
+   "tasku_sukaupta_ct",
+   "pristatymas_paimta_ct",
+   "pristatymas_savikaina_ct",
+   "small_cart_fee_ct",
+   "pvm_ct",
+   "viso_ct",
+   "mokejimo_budas",
+   "mokejimo_mokestis_ct",
+   "pakuotes_savikaina_ct",
+   "savikaina_ct",
+   "dovanu_savikaina_ct",
+   "marza_ct",
+   "kontribucija_ct",
+   "sandeliu_kiekis",
+   "misrus",
+   "sandeliai",
+   "vezejai",
+   "kanalas_pirmas",
+   "kanalas_paskutinis",
+   "utm_source",
+   "utm_medium",
+   "utm_campaign",
+   "gclid",
+   "fbclid",
+   "referer_domenas",
+   "landing_url",
+   "irenginys",
+   "sutikimas_statistika",
+   "salis",
+   "miestas",
+   "pasto_kodas",
+   "anketa_id",
+   "rec_log_id",
+   "is_refill",
+   "prenumerata_id",
+   "eiluciu_sk",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija",
+   "irasyta_at",
+   "diena"
+  ],
+  "fakt_klientas_id": [],
+  "fakt_klientas_email_hash": [],
+  "fakt_klientas_naujas": [],
+  "fakt_klientas_uzsakymo_nr": [],
+  "fakt_kanalas_pirmas": [],
+  "fakt_kanalas_paskutinis": [],
+  "web_cols": [
+   "id",
+   "laikas",
+   "diena",
+   "tipas",
+   "pusl_tipas",
+   "url_kelias",
+   "raktas",
+   "raktas2",
+   "reiksme",
+   "sesija",
+   "lankytojas_d",
+   "lankytojas_30",
+   "saltinis",
+   "medium",
+   "kampanija",
+   "referer_domenas",
+   "kanalas",
+   "landing",
+   "irenginys",
+   "os_seima",
+   "nars_seima",
+   "salis",
+   "prisijunges",
+   "sutikimas",
+   "testinis",
+   "saltinis_aplinka"
+  ],
+  "web_n_30d": "11589",
+  "web_sample": [
+   {
+    "id": "12946",
+    "laikas": "2026-09-20 16:53:07",
+    "diena": "2026-09-20",
+    "tipas": "view_item",
+    "pusl_tipas": null,
+    "url_kelias": "/product/gimcat-maisto-papildas-katems-malt-soft-extra-anti-hairball-pasta-kaciu-zarnyno-veiklai-gerinti-100-g/",
+    "raktas": "18458",
+    "raktas2": "640023-n",
+    "reiksme": null,
+    "sesija": "t_81c2e0ddc37ed6b20aff30f20f470f|1790095984|1790009584|a4056188d",
+    "lankytojas_d": "48a5dadd13d4b576eb5e1be594ddcdaaf330d5bc09c1c51adbb604cbaca00342",
+    "lankytojas_30": null,
+    "saltinis": null,
+    "medium": null,
+    "kampanija": "21565466377",
+    "referer_domenas": "www.google.com",
+    "kanalas": "mokamas",
+    "landing": "0",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "RU",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "12945",
+    "laikas": "2026-09-20 16:53:07",
+    "diena": "2026-09-20",
+    "tipas": "pageview",
+    "pusl_tipas": "preke",
+    "url_kelias": "/product/gimcat-maisto-papildas-katems-malt-soft-extra-anti-hairball-pasta-kaciu-zarnyno-veiklai-gerinti-100-g/?gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XVWJjoUVdE1mxbKU21AI86uJ&gclid=CjwKCAjwiL7VBhA-EiwAhZi9EMKTNXrDNF1bZ7oj5DCDu1yXIlq6M1F",
+    "raktas": "18458",
+    "raktas2": null,
+    "reiksme": "0",
+    "sesija": "t_81c2e0ddc37ed6b20aff30f20f470f|1790095984|1790009584|a4056188d",
+    "lankytojas_d": "48a5dadd13d4b576eb5e1be594ddcdaaf330d5bc09c1c51adbb604cbaca00342",
+    "lankytojas_30": null,
+    "saltinis": null,
+    "medium": null,
+    "kampanija": "21565466377",
+    "referer_domenas": "www.google.com",
+    "kanalas": "mokamas",
+    "landing": "1",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "RU",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "12944",
+    "laikas": "2026-09-20 16:52:02",
+    "diena": "2026-09-20",
+    "tipas": "view_item",
+    "pusl_tipas": null,
+    "url_kelias": "/product/gimcat-maisto-papildas-katems-malt-soft-extra-anti-hairball-pasta-kaciu-zarnyno-veiklai-gerinti-100-g/",
+    "raktas": "18458",
+    "raktas2": "640023-n",
+    "reiksme": null,
+    "sesija": "t_c359ed3761016298727a1b238cd582|1790001156|1789914756|c8764cefa",
+    "lankytojas_d": "cc58d296e29c10831ee5d1e05adf55ee4720e50c542c06ce943883da17dfb8a8",
+    "lankytojas_30": null,
+    "saltinis": null,
+    "medium": null,
+    "kampanija": "21565466377",
+    "referer_domenas": "www.google.com",
+    "kanalas": "mokamas",
+    "landing": "0",
+    "irenginys": "mobile",
+    "os_seima": "Android",
+    "nars_seima": "Chrome",
+    "salis": "RU",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   }
+  ]
+ },
+ "2": {
+  "v": "S1696 ma",
+  "faze": "2",
+  "laikas": "2026-09-20 20:00:29",
+  "ist_tables": [
+   "gaj6_ps_ist_eilutes",
+   "gaj6_ps_ist_fakt_eilutes",
+   "gaj6_ps_ist_fakt_uzsakymai",
+   "gaj6_ps_ist_uzsakymai",
+   "gaj6_ps_istrintos_prekes_s668"
+  ],
+  "nauji_pagal_kanala": {
+   "utm|google": {
+    "viso": 45,
+    "nauji": 45
+   },
+   "referral|com.google.android.gm": {
+    "viso": 5,
+    "nauji": 5
+   },
+   "organic|google": {
+    "viso": 7,
+    "nauji": 7
+   },
+   "typein|(direct)": {
+    "viso": 20,
+    "nauji": 18
+   },
+   "referral|m.facebook.com": {
+    "viso": 3,
+    "nauji": 3
+   },
+   "utm|kaina24": {
+    "viso": 10,
+    "nauji": 10
+   },
+   "referral|bing.com": {
+    "viso": 2,
+    "nauji": 2
+   },
+   "utm|kainos": {
+    "viso": 7,
+    "nauji": 7
+   },
+   "utm|chatgpt.com": {
+    "viso": 2,
+    "nauji": 2
+   },
+   "referral|com.google.android.googlequicksearchbox": {
+    "viso": 1,
+    "nauji": 1
+   }
+  },
+  "ist_uzs_lentele": "gaj6_ps_ist_fakt_uzsakymai",
+  "top_prekes": [
+   {
+    "n": "Animonda Vom Feinsten Adult with Deer - konservai suaugusiems šunims su elniena, 150 g",
+    "q": "27"
+   },
+   {
+    "n": "Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g",
+    "q": "22"
+   },
+   {
+    "n": "Ontario Monoproteino konservai šunims su ėriena ir rudaisiais ryžiais, 400 g",
+    "q": "20"
+   },
+   {
+    "n": "Animonda Vom Feinsten Adult with Salmon and Shrimp – konservai katėms su lašiša ir krevetėmis, 100 g",
+    "q": "20"
+   },
+   {
+    "n": "Josera Meat Lovers Pure Lamb konservuotas pašaras šunims su ėriena, 400 g",
+    "q": "20"
+   },
+   {
+    "n": "Miamor Feine Filets konservai katėms, tunas su kalmarais drebučiuose, 100 g",
+    "q": "16"
+   },
+   {
+    "n": "Josera Kitten Chicken begrūdis konservuotas pašaras jaunoms katėms su vištiena, 200 g",
+    "q": "16"
+   },
+   {
+    "n": "Animonda Vom Feinsten Adult Pate Mild Menu with pure Turkey – konservai katėms Švelnusis meniu su gryna kalakutiena, 100 g",
+    "q": "15"
+   },
+   {
+    "n": "Animonda Vom Feinsten Adult with Turkey and Rabbit – konservai katėms su kalakutiena ir triušiena, 100 g",
+    "q": "15"
+   },
+   {
+    "n": "Ruda stirnos koja, 1 vnt.",
+    "q": "13"
+   },
+   {
+    "n": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    "q": "12"
+   },
+   {
+    "n": "Džiovinta kiaulės uodega, 1 vnt.",
+    "q": "12"
+   },
+   {
+    "n": "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 200 g",
+    "q": "12"
+   },
+   {
+    "n": "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena, 800 g",
+    "q": "11"
+   },
+   {
+    "n": "Miamor Super Premium konservai katėms su vištiena ir ryžiais, 100 g",
+    "q": "10"
+   },
+   {
+    "n": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su ėriena, 400 g",
+    "q": "10"
+   },
+   {
+    "n": "Monge Monoproteico Solo Agnello – Monoproteininiai konservai šunims su gryna ėriena, 400 g",
+    "q": "10"
+   },
+   {
+    "n": "Balta stirnos koja, 1 vnt.",
+    "q": "10"
+   },
+   {
+    "n": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 135 ml",
+    "q": "10"
+   },
+   {
+    "n": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 800 g",
+    "q": "9"
+   },
+   {
+    "n": "Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 800 g",
+    "q": "9"
+   },
+   {
+    "n": "Hikari Cichlid Gold Medium, 250 g",
+    "q": "7"
+   },
+   {
+    "n": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia antiena, 800 g",
+    "q": "7"
+   },
+   {
+    "n": "Miamor Feine Filets konservai katėms, tunas su krabais drebučiuose, 100 g",
+    "q": "6"
+   },
+   {
+    "n": "Žarnų pagaliukai, 80 g",
+    "q": "6"
+   },
+   {
+    "n": "Pasta katėms su lašiša - Ontario Salmon Fresh Meat Paste, 90 g",
+    "q": "6"
+   },
+   {
+    "n": "Miamor Fillet Naturelle konservai katėms su tunu ir krabais, 80 g",
+    "q": "5"
+   },
+   {
+    "n": "Miamor Feine Filets konservai katėms, vištiena paukštienos drebučiuose, 100 g",
+    "q": "5"
+   },
+   {
+    "n": "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g",
+    "q": "5"
+   },
+   {
+    "n": "Animonda Vom Feinsten Adult with Beef and Turkey Hearts – konservai suaugusiems šunims su jautiena ir kalakutų širdimis, 150 g",
+    "q": "5"
+   }
+  ],
+  "consent": [
+   {
+    "source": "checkout",
+    "n": "67"
+   },
+   {
+    "source": "eshoprent_newsletter_import",
+    "n": "561"
+   },
+   {
+    "source": "footer_form",
+    "n": "9"
+   },
+   {
+    "source": "newsletter_form",
+    "n": "4"
+   },
+   {
+    "source": "relaunch_calc_email_link",
+    "n": "1"
+   },
+   {
+    "source": "test",
+    "n": "1"
+   },
+   {
+    "source": "test_cleanup",
+    "n": "2"
+   },
+   {
+    "source": "test_s1548",
+    "n": "2"
+   },
+   {
+    "source": "test_setup",
+    "n": "2"
+   },
+   {
+    "source": "test_verify",
+    "n": "2"
+   },
+   {
+    "source": "unsubscribe_link",
+    "n": "2"
+   },
+   {
+    "source": "webhook",
+    "n": "2"
+   }
+  ]
+ },
+ "v": "dep-165917",
+ "kurimas": 200,
+ "sid": 6095,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
