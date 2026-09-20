@@ -77,4 +77,4 @@ Shorts/TikTok kaip kanalas; Google Customer Reviews (LT nėra); CSS partneris (L
 - **S2** R60 tikslas 26–30 % + CM rate 20 % — patvirtinti KPI lentelę
 
 ## Kitas langas
-Pradėti nuo šio failo: **1.7 `/skaiciuokle/` puslapis** (vienintelis likęs C darbas Sprinte 1; 1.1 — S1697, 1.3 — S1698, 1.5 — S1699, 1.6 — S1700, 1.8 — S1701). R: 1.2 Bing — patikrinti MMC parduotuvės patvirtinimą (≤09-24) ir feed statusą (`Merchant Center → Feeds`), 1.4 mėginukas, Josera Leger #18054 publikuoti, Ontario Exigent 1 kg EAN. Įrankių prefiksas `s1702_m*`. 1.6 pastaba: kaina24 sesijoje `salis=RU` — geo lauko patikra.
+Pradėti nuo šio failo: **1.7 `/skaiciuokle/` puslapis** (vienintelis likęs C darbas Sprinte 1; 1.1 — S1697, 1.3 — S1698, 1.5 — S1699, 1.6 — S1700, 1.8 — S1701). R: 1.2 Bing — patikrinti MMC parduotuvės patvirtinimą (≤09-24) ir feed statusą (`Merchant Center → Feeds`), 1.4 mėginukas, Josera Leger #18054 publikuoti, Ontario Exigent 1 kg EAN. Įrankių prefiksas `s1703_m*` (s1702 — Bing). 1.6 pastaba: kaina24 sesijoje `salis=RU` — geo lauko patikra.
