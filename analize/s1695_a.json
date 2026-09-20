@@ -1,0 +1,86 @@
+{
+ "1": {
+  "ids": [
+   "36094"
+  ],
+  "nr": "1120",
+  "id": 36094,
+  "status": "pending",
+  "sukurta": "2026-09-20 10:20",
+  "apmoketa": null,
+  "mokejimas": "paysera / Mokėjimas internetu | txn=",
+  "suma": "56.99 (prekės 47.1, siunta 0, nuolaida 0)",
+  "klientas": {
+   "uid": 3412,
+   "email": "mar***",
+   "vardas": "Marija",
+   "miestas": "Vilnius",
+   "tel": "+370***",
+   "created_via": "checkout",
+   "ip": "78.56.133.68",
+   "ua": "Mozilla/5.0 (iPhone; CPU iPhone OS 26_5_0 like Mac OS X) AppleWebKit/605.1.15 (K"
+  },
+  "pristatymas": [
+   "shopup_venipak_shipping_pickup_method:3 VENIPAK paštomatai/atsiėmimo punktai 0 meta={\"Prekės\":\"Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg &times; 1\"}"
+  ],
+  "eilutes": [
+   {
+    "pid": 18587,
+    "vid": 0,
+    "sku": "HYPS06",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žir",
+    "kiek": 1,
+    "suma": "47.099174",
+    "tipas": "simple",
+    "stock": 252,
+    "own": "2",
+    "sandelis": "vf",
+    "status": "publish",
+    "kaina_dabar": "56.99",
+    "reg": "56.99",
+    "meta": {
+     "_ps_source": "calc_product",
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_reduced_stock": "1"
+    }
+   }
+  ],
+  "meta": {
+   "_billing_address_index": "Marija Bieliauskienė  Priegliaus g. 5 4 Vilnius Vilniaus LT06269 LT marija.kupcinskaite@gmail.com +37068424142",
+   "_dp_stock_reduced": "yes",
+   "_ps_ga_sutikimas": "--",
+   "_ps_gclid": "CjwKCAjwiL7VBhA-EiwAhZi9EGIKu5oIb8cJSrAuGaltzaWSi4QqDCW-fVs-smZY7FDaUIpF_4-5LhoCVvEQAvD_BwE",
+   "_ps_irenginys": "mobile",
+   "_ps_kanalai": "{\"pirmas\":{\"utm_campaign\":\"21565466377\",\"gclid\":1,\"fbclid\":0,\"referer_domenas\":\"www.google.com\",\"landing_url\":\"https://petshop.lt/product/exclusion-hypoallergen",
+   "_ps_matyta": "2026-09-20 10:33:33 | Raimis",
+   "_ps_order_number": "1120",
+   "_ps_paskyra_priskirta": "1",
+   "_ps_similar_basis": "erl81_2_checkout",
+   "_ps_similar_optout": "0",
+   "is_vat_exempt": "no",
+   "venipak_pickup_point": "2556",
+   "venipak_pickup_point_data": "{\"id\":2556,\"code\":\"300906055\",\"name\":\"Venipak locker, MAXIMA Venipak pa\\u0161tomatas\",\"display_name\":\"Vilniaus Pilait\\u0117s MAXIMA Venipak pa\\u0161tomatas\",\"co"
+  },
+  "pastabos": [
+   "09-20 10:20 [vidinė] system: Likutis sumažintas: Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg (254&rarr;253)",
+   "09-20 10:20 [vidinė] system: Paysera: Neapmokėto užsakymo būsena",
+   "09-20 10:20 [vidinė] system: Svečio užsakymas priskirtas esamai paskyrai #3412 pagal el. paštą (S1690).",
+   "09-20 10:20 [vidinė] system: Stock hold of 90 minutes applied to: - Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg (HYPS06) &times; 1"
+  ],
+  "kliento_pastaba": "",
+  "fakt": null,
+  "siuntos": [],
+  "tiekimas": [],
+  "db_err": "Unknown column 'uzsakymas_id' in 'where clause'",
+  "kliento_kiti": []
+ },
+ "v": "dep-073548",
+ "kurimas": 200,
+ "sid": 6087,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
