@@ -1,0 +1,226 @@
+{
+ "1": {
+  "reiksmes": [
+   {
+    "v": "av",
+    "n": "169",
+    "nuo": "35872",
+    "iki": "36096"
+   },
+   {
+    "v": "calc_product",
+    "n": "1",
+    "nuo": "36094",
+    "iki": "36094"
+   },
+   {
+    "v": "quattro",
+    "n": "3",
+    "nuo": "35901",
+    "iki": "35987"
+   },
+   {
+    "v": "vf",
+    "n": "55",
+    "nuo": "35880",
+    "iki": "36096"
+   },
+   {
+    "v": "zb",
+    "n": "3",
+    "nuo": "36021",
+    "iki": "36092"
+   }
+  ],
+  "calc_uzs": [
+   {
+    "order_id": "36094",
+    "status": "wc-pending",
+    "date_created_gmt": "2026-09-20 07:20:07",
+    "order_item_name": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg"
+   },
+   {
+    "order_id": "35987",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-16 16:37:26",
+    "order_item_name": "QUATTRO Extra Salmon su lašiša sausas šunų pašaras, 3kg"
+   },
+   {
+    "order_id": "35970",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-15 18:18:33",
+    "order_item_name": "Quattro SB 7kg su lašiša ir kriliu sausas suaugusių mažų veislių šunų pašaras"
+   },
+   {
+    "order_id": "35901",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-11 06:10:26",
+    "order_item_name": "QUATTRO Extra Lamb su ėriena sausas šunų pašaras, 3kg"
+   }
+  ],
+  "e1121": [
+   {
+    "meta_key": "_ps_savikaina_vnt",
+    "v": "37.4850"
+   },
+   {
+    "meta_key": "_ps_savikaina_saltinis",
+    "v": "pardavimai"
+   },
+   {
+    "meta_key": "_ps_kaina_atskirai_vnt",
+    "v": "56.9900"
+   },
+   {
+    "meta_key": "_ps_source",
+    "v": "vf"
+   },
+   {
+    "meta_key": "_ps_carrier",
+    "v": "venipak"
+   },
+   {
+    "meta_key": "_ps_source_qty",
+    "v": "1"
+   },
+   {
+    "meta_key": "_ps_source_at",
+    "v": "2026-09-20 10:27:18"
+   },
+   {
+    "meta_key": "_ps_source_reason",
+    "v": "dropship pirma (AV turi 2, bet užsakymas ne mišrus): tiekėja"
+   },
+   {
+    "meta_key": "_ps_kelias",
+    "v": "tiesiai"
+   }
+  ],
+  "calc_product_kode": {
+   "/mu-plugins/petshop-anketos-ataskaita.php": [
+    "\t\t\t$lbl = array( 'plan_dry' => 'Sausas maistas', 'plan_wet' => 'Konservai', 'calc_product' => 'Prekės skaičiuoklė' );"
+   ],
+   "/plugins/petshop-core/includes/class-plan-attribution.php": [
+    "\t\t/* S299: calc_product — prekės puslapio skaičiuoklė. Priskiriama TIK tada,",
+    "\t\treturn in_array( (string) $s, array( 'plan_dry', 'plan_wet', 'profile_treat', 'calc_product' ), true ) ? (string) $s : null;"
+   ],
+   "/plugins/petshop-core/assets/product-calc.js": [
+    "\t\t\ta.type = 'hidden'; a.name = 'ps_source'; a.value = 'calc_product';",
+    "\t\t\t\t\tsource: 'calc_product',"
+   ]
+  },
+  "_ps_source_kode": {
+   "/mu-plugins/petshop-av-admin.php": [
+    "\t\t\t\t$src = $item->get_meta( '_ps_source' );"
+   ],
+   "/mu-plugins/petshop-av-dropship.php": [
+    "\t\t\t\t$src = $item->get_meta( '_ps_source' );",
+    "\t\t\t$s = $item->get_meta( '_ps_source' );",
+    "\t\t$src = $item->get_meta( '_ps_source' );"
+   ],
+   "/mu-plugins/petshop-av-order.php": [
+    " *   _ps_source        av|vf|zb|quattro|ambrosia|belcor_tofu|prins",
+    " *   _ps_source_qty    kiek vienetų iš to šaltinio",
+    " *   _ps_source_at     kada nuspręsta",
+    " *   _ps_source_reason kodėl (diagnostikai)",
+    "\t\t// Petshop_AV_Reduce — 15. Jei fiksuotume vėliau, `_ps_source` eilutėse dar",
+    "\t\t\t$item->update_meta_data( '_ps_source',        $x['source'] );",
+    "\t\t\t$item->update_meta_data( '_ps_source_qty',    $qty );",
+    "\t\t\t$item->update_meta_data( '_ps_source_at',     current_time( 'mysql' ) );"
+   ],
+   "/mu-plugins/petshop-av-reduce.php": [
+    " *   _ps_source = av   → mažinam `_own_stock_qty`, WC mažinimą PRALEIDŽIAM",
+    " * PRIKLAUSO nuo 4 sluoksnio: eilutė turi turėti `_ps_source`. Jei jo nėra",
+    "\t\t$src = $item->get_meta( '_ps_source' );",
+    "\t\t\tif ( 'av' !== $item->get_meta( '_ps_source' ) ) { continue; }"
+   ],
+   "/mu-plugins/petshop-av-sheets.php": [
+    " * Į LAPUS PATENKA TIK AV EILUTĖS (`_ps_source = av`) — dropship prekių nerenkam.",
+    "\t\t\t\tif ( 'av' !== $item->get_meta( '_ps_source' ) ) { continue; }   // TIK AV"
+   ],
+   "/mu-plugins/petshop-av-tiekimas.php": [
+    " * K2 (auditas 2026-09-02): po partijos priėmimo užsakymo eilutė liko `_ps_source=quattro`",
+    " * konsoliduotoms eilutėms rašo `_ps_source=av`, `_ps_source_reason='parsivežta partija #N'`,",
+    "\t\t\t$src = $item->get_meta( '_ps_source' );",
+    "\t\t\t$src = (string) $it->get_meta( '_ps_source' );",
+    "\t\t\t\t$it->update_meta_data( '_ps_source', 'av' );",
+    "\t\t\t\t$it->update_meta_data( '_ps_source_reason', sprintf( 'parsivežta iš %s, partija #%d', mb_strtoupper( $src ), (int) $pid ) );",
+    "\t\t\t\t$it->update_meta_data( '_ps_source_at', current_time( 'mysql' ) );",
+    "\t\t\t$s = (string) $it->get_meta( '_ps_source' ); if ( ! $s ) { continue; }"
+   ],
+   "/mu-plugins/petshop-darbalaukis.php": [
+    " *    eilutės lygiu; `_ps_source` = av | tiekėjas, `_ps_kelias`, `_ps_misrus_sprendimas[src]` (kad `kons`/",
+    " iš grįžusių prekių. RIBOTUMAS (variklis, Raimis sutiko): `petshop-av-sheets.php` lapas spausdina VISAS `_ps_source=av` eilutes — jame bus",
+    " *   (`_ps_source=av`, `_ps_av_reduced_qty=q`, planas + grupės perskaičiuojami); likutis dropship eilutėms +q (grįžo) −q (išeina) = 0 per",
+    " * v2.1 (AUDITAS_UZSAKYMU_LANGAS_2026-09-03): K1 — po Gauta (K2 `_ps_source=av`) `_ps_kelias=i_av` nebeblokuoja: rodomas kelias",
+    " *   = f(_ps_source, partija), i_av galioja tik kol source≠av; tiekėjas iš „parsivežta iš X“. K4 — dalies būsena",
+    "\t\t// K1 (auditas 09-03): rodomas kelias = f(_ps_source, partija). „→ Avesa sandėlį“ galioja tik kol prekė dar ne Avesoje;",
+    "\t\t// po Gauta (K2 rašo `_ps_source=av`) eilutė yra Avesos — `_ps_kelias=i_av` tėra istorija (takeliui „✓ gauta“).",
+    "_konsolidacija' ) ) ) { $k = 'av'; $gauta = preg_match( '/parsivežta iš (\\w+)/iu', (string) $it->get_meta( '_ps_source_reason' ), $m ) ? strtolower( $m[1] ) : 'tiekejo'; }"
+   ],
+   "/mu-plugins/petshop-desk.php": [
+    " *   _ps_source · _ps_carrier · _ps_source_qty · _ps_source_at · _ps_source_reason",
+    "\t\t\t\t$item->update_meta_data( '_ps_source', $src );",
+    "\t\t\t\t$item->update_meta_data( '_ps_source_reason', 'darbalaukis: AV neužteko' );",
+    "\t\t\t\t$item->update_meta_data( '_ps_source_at', current_time( 'mysql' ) );",
+    "\t/** Vienos eilutės šaltinis. Fiksuotas _ps_source visada viršesnis. */",
+    "\t\t$s = $item->get_meta( '_ps_source' );",
+    "\t\t\t$fiksuota = (int) $it->get_meta( '_ps_source_qty' );",
+    "\t\t\t$fix = (int) $it->get_meta( '_ps_source_qty' );"
+   ],
+   "/mu-plugins/petshop-gavimo-perrusiavimas.php": [
+    "\t\t\t$src = (string) $it->get_meta( '_ps_source' );"
+   ],
+   "/mu-plugins/petshop-kampaniju-langas.php": [
+    "\t\t\t WHERE m.meta_key='_ps_source' AND m.meta_value='legacy_customer'\");",
+    "\t\t\t\t WHERE m.meta_key='_ps_source' AND m.meta_value='legacy_customer'\");"
+   ],
+   "/mu-plugins/petshop-legacy-importas.php": [
+    "\t\t\t\tupdate_user_meta($uid, '_ps_source', self::SALTINIS);",
+    "\t\t\t\"SELECT COUNT(*) FROM {$wpdb->usermeta} WHERE meta_key='_ps_source' AND meta_value=%s\", self::SALTINIS"
+   ],
+   "/mu-plugins/petshop-uzsakymu-ivykiai.php": [
+    "\t\t\t\t'src'   => (string) $it->get_meta( '_ps_source' ),"
+   ],
+   "/plugins/petshop-core/includes/class-plan-attribution.php": [
+    "\t\t$item->add_meta_data( '_ps_source', $values['ps_source'], true );",
+    "\t\t\tif ( ! $item->get_meta( '_ps_source' ) ) { continue; }"
+   ]
+  },
+  "snippets": [
+   {
+    "id": "567",
+    "name": "Petshop Daugiau=Pigiau Stock Sync v1.3",
+    "active": "1"
+   },
+   {
+    "id": "2515",
+    "name": "Petshop Sources v2.3 (registras + palaikymas + sandelio pildymas + dvieju sandeliu eilutes)",
+    "active": "1"
+   },
+   {
+    "id": "6089",
+    "name": "TEMP PS dep-074122",
+    "active": "1"
+   }
+  ],
+  "siuncia_klientui": {
+   "petshop-darbalaukis.php": [
+    "ekėjo užsakymas (#35823/#35824 VF) būdavo surūšiuojamas pats kaip „veža į AV“ ir dingdavo iš Dropshipping be darbuotojo sprendimo; dabar — „siunčia klientui“ kaip visada.",
+    " *   = trys dalys — „siunčia klientui“ (dropship užsakymai, lipdukai), „veža į AV“ (užsakymų eilutės, varnelės), „į atsargas“ (kaupiamos partijos eilutės + pridėti pagal pavadin",
+    " *   nerodomi (buvo pilki „Tiekėjas siunčia klientui / veža į AV“); variklio pranešimai verčiami į žodyną (AV/VF/ZB, „užsakymas tiekėjui #n“).",
+    " *   keliai „Iš AV · VF siunčia klientui · VF veža į AV“; mygtukai „Užsakyti iš VF (n užs.)“ (laiškas — tik peržiūra),",
+    "\t\t'laiskai'    => array( 'Dropshipping',       'Viena kortelė tiekėjui: siunčia klientui (lipdukai), veža į AV, į atsargas — vienas laiškas „Užsakyti iš [T]“ (laišką gali peržiūrėti).', 'm' ),",
+    "\tconst KELIAI = array( 'av' => 'Iš AV', 'tiesiai' => 'siunčia klientui', 'i_av' => 'veža į AV' );"
+   ],
+   "petshop-desk.php": []
+  }
+ },
+ "v": "dep-074122",
+ "kurimas": 200,
+ "sid": 6089,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
