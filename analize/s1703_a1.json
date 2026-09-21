@@ -1,0 +1,69 @@
+{
+ "1": {
+  "v": "S1703 a",
+  "id": 36022,
+  "bc_is_pastabos": null,
+  "bc_meta": "",
+  "nr": "1104",
+  "status": "processing",
+  "sukurta": "09-18 09:52",
+  "apmoketa": "09-18 09:53",
+  "mok": "paysera",
+  "pristatymas": "woo_lithuaniapost_lpexpress_terminal LP Express",
+  "eilutes": [
+   "1× PESS biologiniai lašiukai nuo parazitų katėms ir š | src=av kelias=av",
+   "2× PESS biologinis antkaklis nuo parazitų katėms, 35  | src=av kelias=av"
+  ],
+  "dalys_issiusta": "",
+  "lp_meta": [
+   {
+    "meta_key": "_woo_lithuaniapost_lpexpress_shipping_method_instance_id",
+    "v": "12"
+   },
+   {
+    "meta_key": "_woo_lithuaniapost_lpexpress_terminal",
+    "v": "Lidl - Respublikos g. 113, Rokiškis"
+   },
+   {
+    "meta_key": "_woo_lithuaniapost_lpexpress_terminal_id",
+    "v": "2301"
+   },
+   {
+    "meta_key": "_woo_lithuaniapost_shipping_item_id",
+    "v": "328659769"
+   },
+   {
+    "meta_key": "_woo_lithuaniapost_shipping_item_size",
+    "v": "M"
+   },
+   {
+    "meta_key": "_woo_lithuaniapost_shipping_item_weight",
+    "v": "52"
+   },
+   {
+    "meta_key": "_woo_lithuaniapost_shipping_status_value",
+    "v": "lp-parcel-created"
+   }
+  ],
+  "pastabos": [
+   "09-18 09:53 system: Paysera: Naujo užsakymo kūrimo būsena",
+   "09-18 09:53 system: Email \"Užsakymas vykdomas\" sent.",
+   "09-18 09:53 system: Email \"Naujas užsakymas\" sent.",
+   "09-18 09:53 system: Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+   "09-18 09:53 system: Surūšiuota pati: PESS biologiniai lašiukai nuo parazitų k — Iš AV; PESS biologinis antkaklis nuo parazitų k — Iš AV",
+   "09-18 09:53 system: Faktai irasyti: 2 eilutes · pajamos 8,81 EUR (be PVM, po nuolaidu) · PVM 2,22 EUR · marza 4,24 EUR · kontribucija (be pristatymo) 5,57 EUR",
+   "09-18 09:53 system: Partijos nurašytos: #16999 −1 vnt. (1 partijos) · #16987 −2 vnt. (1 partijos)",
+   "09-18 09:53 system: AV nurašymas: #16999 grynai AV 33 -> 32 · #16987 grynai AV 51 -> 49",
+   "09-18 09:53 system: Vykdymas: MAIN — AV 3 vnt (1 siunta(-os)) · dropship pirma",
+   "09-18 09:53 system: Paysera: Užsakymo būsena po apmokėjimo"
+  ],
+  "fs": []
+ },
+ "v": "dep-051234",
+ "kurimas": 200,
+ "sid": 6137,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
