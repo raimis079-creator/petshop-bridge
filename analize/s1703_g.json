@@ -1,0 +1,61 @@
+{
+ "1": {
+  "pries": {
+   "stock": 0,
+   "status": "outofstock",
+   "terms": [
+    "outofstock"
+   ]
+  },
+  "vf": 0,
+  "own": 2,
+  "po": {
+   "stock": 2,
+   "status": "instock",
+   "terms": []
+  },
+  "kategorija_yra": false,
+  "brand_yra": true,
+  "kodas": {
+   "petshop-katalogas.php": [
+    " *   AV likutis       (`_own_stock_qty`)  kiek TU parsiveze i Avesos sandeli.",
+    " * butu nugules i `_own_stock_qty`, kurio parduotuve neskaito. Skaicius butu",
+    " * `_own_stock_qty` visoje bazeje yra vos 1 irasas.",
+    " * ISIMTIS: `_own_stock_qty` lieka tiems atvejams, kai TA PACIA preke turim ir",
+    " * `_own_stock_qty`. Ta pati taisyklė, kurią skaitant naudoja gyvi_is_meta().",
+    " * Išimtis: `_own_stock_qty` — tai MŪSŲ laukas, CRUD jo nepažįsta.",
+    "\t * Prekė be tiekėjo laiko likutį `_stock`; prekė su tiekėju — `_own_stock_qty`,",
+    "\t * Avesos lentynos kiekis gyvena `_own_stock_qty` (S590).",
+    "\t\treturn self::tiekejo_sandelis( $pid ) === '' ? '_stock' : '_own_stock_qty';",
+    "\t\treturn self::tiekejo_sandelis( $pid ) === '' ? '' : '_stock';",
+    "\t\t\t\t\t\t'pastaba'       => 'Likučio įvedimas kortelėje',",
+    "\t\t\t} elseif ( $p['laukas'] === '_stock' ) {",
+    "\t\t\t\t\t$prod->set_stock_quantity( $p['tapo'] );",
+    "\t\t\t\t\tupdate_post_meta( $p['pid'], '_stock', $p['tapo'] );"
+   ]
+  },
+  "snippet": [
+   {
+    "id": "6149",
+    "name": "TEMP PS dep-124804"
+   },
+   [
+    "/** TEMP PS S1703 g — HEPM11 (#18623): _stock = VF 0 + AV 2 = 2 per wc_update_product_stock (WC pats nustatys instock); pastaba; cache; patikra kategorijoje/brand. Read: kaip snippet 2515 / gavimo kelias rašo _s",
+    "  $o['pries']=$st(); $vf=(int)get_post_meta($id,'_vf_qty',true); $own=(int)get_post_meta($id,'_own_stock_qty',true); $o['vf']=$vf; $o['own']=$own;",
+    "  wc_update_product_stock($id,$vf+$own,'set'); $o['po']=$st();",
+    "  // priežastis kode: kas rašo _own_stock_qty per „Likučio įvedimas kortelėje\" ir ar liečia _stock",
+    " foreach (glob(WP_CONTENT_DIR.'/mu-plugins/*.php') as $f){ $s=file_get_contents($f); if (strpos($s,'Likučio įvedimas kortelėje')!==false){ preg_match_all('/[^\\n]{0,100}(Likučio įvedimas kortelėje|_stock\\'|wc_update_product_stock|set_stock_quantit",
+    "y|_own_stock_qty)[^\\n]{0,120}/u',$s,$m); $o['kodas'][basename($f)]=array_slice(array_values(array_unique($m[0])),0,14); } }",
+    "  $sn=$wpdb->get_row(\"SELECT id,name FROM {$p}snippets WHERE active=1 AND code LIKE '%Likučio įvedimas kortelėje%' LIMIT 1\",ARRAY_A); if ($sn){ $code=$wpdb->get_var($wpdb->prepare(\"SELECT code FROM {$p}snippets WHERE id=%d\",$sn['id'",
+    "])); preg_match_all('/[^\\n]{0,100}(Likučio įvedimas kortelėje|_stock\\'|wc_update_product_stock|set_stock_quantity|_own_stock_qty)[^\\n]{0,120}/u',$code,$m); $o['snippet']=array($sn,array_slice(array_values(array_unique($m[0])),0,14));"
+   ]
+  ]
+ },
+ "v": "dep-124804",
+ "kurimas": 200,
+ "sid": 6149,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
