@@ -1,0 +1,46 @@
+{
+ "1": {
+  "pries": {
+   "stock": 0,
+   "status": "outofstock",
+   "terms": [
+    "outofstock"
+   ]
+  },
+  "recalc": "ok",
+  "po_recalc": {
+   "stock": 0,
+   "status": "outofstock",
+   "terms": [
+    "outofstock"
+   ]
+  },
+  "rankiniu": "instock",
+  "po": {
+   "stock": 0,
+   "status": "outofstock",
+   "terms": [
+    "outofstock"
+   ]
+  },
+  "cache": "prune",
+  "kategorija_yra": false,
+  "brand_yra": false,
+  "panasios": [
+   {
+    "ID": "18623",
+    "sku": "HEPM11",
+    "own": "2",
+    "sand": "vf",
+    "t": "Exclusion Hepatic dietinis sausas šunų maistas su "
+   }
+  ]
+ },
+ "v": "dep-124607",
+ "kurimas": 200,
+ "sid": 6148,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
