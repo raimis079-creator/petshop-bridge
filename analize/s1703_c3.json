@@ -1,0 +1,34 @@
+{
+ "2": {
+  "v": "S1703 c",
+  "id": 36091,
+  "vp": "Įdėta į paštomatą, siuntos sekimo nr CC118135791LT",
+  "bc_is_pastabos": "CC118135791LT",
+  "bc_meta": "",
+  "u": "Raimis #1",
+  "pries": "processing",
+  "issiusta": [
+   "dl_issiusta",
+   "klientui išėjo „Užsakymas išsiųstas“"
+  ],
+  "po": "completed",
+  "dalys": "{\"av\":{\"laikas\":\"2026-09-21 12:11:09\",\"kas\":\"Raimis\",\"kanalas\":\"lp\",\"laiskas\":\"2026-09-21 12:11:09\"}}",
+  "bc": "CC118135791LT",
+  "fs": [],
+  "pastabos": [
+   "12:11 Klientui išsiųsta „Užsakymas išsiųstas“ (ib19651230@gmai.com): CC118135791LT",
+   "12:11 Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+   "12:11 Pažymėta išsiųsta darbalaukyje (Raimis, lp). WC laiškas klientui: NESIŲSTAS.",
+   "12:11 S1703: LP sekimo numeris CC118135791LT įrašytas iš vidinės pastabos (Raimis įdėjo į paštomatą 09-21 (#1117)).",
+   "21:23 Paysera: Naujo užsakymo kūrimo būsena"
+  ],
+  "laiskas": []
+ },
+ "v": "dep-091006",
+ "kurimas": 200,
+ "sid": 6146,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
