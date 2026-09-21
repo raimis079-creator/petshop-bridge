@@ -1,0 +1,69 @@
+{
+ "1": {
+  "v": "S1703 c",
+  "id": 36091,
+  "vp": "Įdėta į paštomatą, siuntos sekimo nr CC118135791LT",
+  "bc_is_pastabos": "CC118135791LT",
+  "bc_meta": "",
+  "nr": "1117",
+  "status": "processing",
+  "sukurta": "09-19 21:22",
+  "apmoketa": "09-19 21:23",
+  "mok": "paysera",
+  "pristatymas": "woo_lithuaniapost_lpexpress_terminal LP Express",
+  "eilutes": [
+   "5× Animonda Vom Feinsten Junior with Poultry and Turk | src=av kelias=av"
+  ],
+  "dalys_issiusta": "",
+  "lp_meta": [
+   {
+    "meta_key": "_woo_lithuaniapost_lpexpress_shipping_method_instance_id",
+    "v": "12"
+   },
+   {
+    "meta_key": "_woo_lithuaniapost_lpexpress_terminal",
+    "v": "Pašto skyrius - J. Basanavičiaus 6A, Kazlų Rūda"
+   },
+   {
+    "meta_key": "_woo_lithuaniapost_lpexpress_terminal_id",
+    "v": "0606"
+   },
+   {
+    "meta_key": "_woo_lithuaniapost_shipping_item_id",
+    "v": "329155634"
+   },
+   {
+    "meta_key": "_woo_lithuaniapost_shipping_item_size",
+    "v": "L"
+   },
+   {
+    "meta_key": "_woo_lithuaniapost_shipping_item_weight",
+    "v": "750"
+   },
+   {
+    "meta_key": "_woo_lithuaniapost_shipping_status_value",
+    "v": "lp-parcel-created"
+   }
+  ],
+  "pastabos": [
+   "09-19 21:23 system: Paysera: Naujo užsakymo kūrimo būsena",
+   "09-19 21:23 system: Email \"Užsakymas vykdomas\" sent.",
+   "09-19 21:23 system: Email \"Naujas užsakymas\" sent.",
+   "09-19 21:23 system: Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+   "09-19 21:23 system: Surūšiuota pati: Animonda Vom Feinsten Junior with Poultr — Iš AV",
+   "09-19 21:23 system: Faktai irasyti: 1 eilutes · pajamos 5,25 EUR (be PVM, po nuolaidu) · PVM 1,68 EUR · marza 1,80 EUR · kontribucija (be pristatymo) 3,13 EUR",
+   "09-19 21:23 system: Partijos nurašytos: #19366 −5 vnt. (1 partijos)",
+   "09-19 21:23 system: AV nurašymas: #19366 grynai AV 67 -> 62",
+   "09-19 21:23 system: Vykdymas: MAIN — AV 5 vnt (1 siunta(-os)) · dropship pirma",
+   "09-19 21:23 system: Paysera: Užsakymo būsena po apmokėjimo"
+  ],
+  "fs": []
+ },
+ "v": "dep-090846",
+ "kurimas": 200,
+ "sid": 6145,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
