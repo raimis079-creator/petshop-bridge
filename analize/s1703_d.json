@@ -1,0 +1,31 @@
+{
+ "1": {
+  "nr_1117_meta": [
+   {
+    "order_id": "36091",
+    "meta_key": "_ps_order_number",
+    "meta_value": "1117"
+   }
+  ],
+  "uzs": [
+   "36083 #1109 processing shopup_venipak_shipping_pickup_method 09-19 07:59",
+   "36084 #1110 processing shopup_venipak_shipping_pickup_method 09-19 10:44",
+   "36085 #1111 processing shopup_venipak_shipping_pickup_method 09-19 14:48",
+   "36086 #1112 processing shopup_venipak_shipping_pickup_method 09-19 15:23",
+   "36087 #1113 processing shopup_venipak_shipping_pickup_method 09-19 15:45",
+   "36088 #1114 processing shopup_venipak_shipping_courier_method 09-19 15:53",
+   "36089 #1115 processing shopup_venipak_shipping_pickup_method 09-19 17:15",
+   "36090 #1116 processing shopup_venipak_shipping_pickup_method 09-19 18:53",
+   "36091 #1117 processing woo_lithuaniapost_lpexpress_terminal 09-19 21:22",
+   "36092 #1118 processing shopup_venipak_shipping_pickup_method 09-19 21:29",
+   "36093 #1119 processing shopup_venipak_shipping_pickup_method 09-20 07:29"
+  ]
+ },
+ "v": "dep-090717",
+ "kurimas": 200,
+ "sid": 6144,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
