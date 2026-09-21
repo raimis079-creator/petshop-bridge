@@ -1,0 +1,249 @@
+{
+ "1": {
+  "id": 18623,
+  "post": {
+   "status": "publish",
+   "title": "Exclusion Hepatic dietinis sausas šunų maistas su kiauliena, ryžiais i",
+   "modified": "2026-09-21 15:35:28",
+   "type": "product",
+   "parent": 0
+  },
+  "meta": [
+   {
+    "meta_key": "_regular_price",
+    "v": "73.9"
+   },
+   {
+    "meta_key": "_price",
+    "v": "73.9"
+   },
+   {
+    "meta_key": "_manage_stock",
+    "v": "yes"
+   },
+   {
+    "meta_key": "_stock",
+    "v": "0"
+   },
+   {
+    "meta_key": "_stock_status",
+    "v": "outofstock"
+   },
+   {
+    "meta_key": "_visibility",
+    "v": "visible"
+   },
+   {
+    "meta_key": "_ps_sandelis",
+    "v": "vf"
+   },
+   {
+    "meta_key": "_own_stock_qty",
+    "v": "2"
+   }
+  ],
+  "terms": [
+   {
+    "taxonomy": "product_type",
+    "name": "simple",
+    "slug": "simple"
+   },
+   {
+    "taxonomy": "product_visibility",
+    "name": "outofstock",
+    "slug": "outofstock"
+   },
+   {
+    "taxonomy": "product_cat",
+    "name": "Sausas maistas šunims",
+    "slug": "sausas-maistas-sunims"
+   },
+   {
+    "taxonomy": "pa_gyvuno_rusis",
+    "name": "Šunims",
+    "slug": "sunims"
+   },
+   {
+    "taxonomy": "pa_pakuotes_dydis",
+    "name": "12 kg",
+    "slug": "12-kg"
+   },
+   {
+    "taxonomy": "pa_amzius",
+    "name": "Suaugusiems",
+    "slug": "suaugusiems"
+   },
+   {
+    "taxonomy": "pa_baltymu_saltinis",
+    "name": "Kiauliena",
+    "slug": "kiauliena"
+   },
+   {
+    "taxonomy": "product_brand",
+    "name": "Exclusion",
+    "slug": "exclusion"
+   },
+   {
+    "taxonomy": "pa_be_grudu",
+    "name": "Su ryžiais",
+    "slug": "su-ryziais"
+   },
+   {
+    "taxonomy": "pa_speciali_mityba",
+    "name": "Kepenims",
+    "slug": "kepenims"
+   }
+  ],
+  "partijos": [
+   {
+    "id": "4257",
+    "gauta": "2026-09-21",
+    "kiekis_gautas": "2",
+    "kiekis_liko": "2",
+    "tiekejas": "vf",
+    "atsaukta": "0",
+    "sukurta": "2026-09-21 15:36:01",
+    "pastaba": "Likučio įvedimas kortelėje"
+   },
+   {
+    "id": "3692",
+    "gauta": "2026-09-07",
+    "kiekis_gautas": "2",
+    "kiekis_liko": "2",
+    "tiekejas": "eShoprent",
+    "atsaukta": "1",
+    "sukurta": "2026-09-07 22:07:54",
+    "pastaba": "Pradinis likutis T-0 — ATŠAUKTA S1688: VF prekė, ne AV"
+   }
+  ],
+  "sources": [
+   {
+    "source": "av",
+    "stock_qty": "2",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "1",
+    "updated_at": "2026-09-21 15:36:01"
+   },
+   {
+    "source": "vf",
+    "stock_qty": "0",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "updated_at": "2026-09-21 07:20:06"
+   }
+  ],
+  "saltiniai": {
+   "saltiniai": [
+    {
+     "source": "av",
+     "supplier_sku": null,
+     "ean": null,
+     "stock_qty": 2,
+     "cost_net": 49.65,
+     "synced_at": null,
+     "is_active": 1,
+     "is_sellable": 1,
+     "priority": 1
+    },
+    {
+     "source": "vf",
+     "supplier_sku": "",
+     "ean": "",
+     "stock_qty": 0,
+     "cost_net": 49.65,
+     "synced_at": null,
+     "is_active": 1,
+     "is_sellable": 1,
+     "priority": 2
+    }
+   ],
+   "is_lenteles": true
+  },
+  "wc": {
+   "status": "publish",
+   "catalog_visibility": "visible",
+   "stock": 0,
+   "stock_status": "outofstock",
+   "is_visible": true,
+   "is_purchasable": true,
+   "price": "73.9",
+   "url": "https://petshop.lt/product/exclusion-hepatic-dietinis-sausas-sunu-maistas-su-kiauliena-ryziais-ir-zirneliais-m-l-12kg/"
+  },
+  "matomumas_zurnalas": {
+   "laikas": "2026-09-21 15:16:30",
+   "dry": false,
+   "tikrinta": 1589,
+   "paslepta": 0,
+   "atidengta": 0,
+   "pvz": [],
+   "kablys": "21165:atidengta"
+  },
+  "pastabos": [
+   {
+    "comment_date": "2026-09-16 16:15:11",
+    "comment_author": "Claude",
+    "c": "S1688: klaidingas AV likutis iš T-0 importo (2 vnt.) panaikintas, partija atšaukta, sandėlis → VF. Laukia VF susiejimo."
+   }
+  ],
+  "revizijos": [],
+  "puslapis": {
+   "kodas": 200,
+   "i_krepseli": true,
+   "nera": false,
+   "ps_bis": true,
+   "cache": null
+  },
+  "kategorija": {
+   "slug": "sausas-maistas-sunims",
+   "kodas": 200,
+   "yra": false
+  },
+  "paieska": {
+   "kodas": 200,
+   "yra": true
+  },
+  "kitos_s1688": [
+   {
+    "ID": "18545",
+    "post_status": "draft",
+    "sku": "INPM11",
+    "own": null,
+    "sand": "vf",
+    "pasl": null
+   },
+   {
+    "ID": "18548",
+    "post_status": "draft",
+    "sku": "INPA11",
+    "own": null,
+    "sand": "vf",
+    "pasl": null
+   },
+   {
+    "ID": "18551",
+    "post_status": "draft",
+    "sku": "INPS06",
+    "own": null,
+    "sand": "vf",
+    "pasl": null
+   },
+   {
+    "ID": "18623",
+    "post_status": "publish",
+    "sku": "HEPM11",
+    "own": "2",
+    "sand": "vf",
+    "pasl": null
+   }
+  ]
+ },
+ "v": "dep-124349",
+ "kurimas": 200,
+ "sid": 6147,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
