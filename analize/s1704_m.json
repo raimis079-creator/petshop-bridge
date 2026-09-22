@@ -1,0 +1,63 @@
+{
+ "1": {
+  "v": "S1704m",
+  "tipas": "variable",
+  "manage": false,
+  "stock": null,
+  "status": "publish",
+  "meta": [
+   {
+    "meta_key": "_manage_stock",
+    "meta_value": "no"
+   },
+   {
+    "meta_key": "_stock",
+    "meta_value": null
+   },
+   {
+    "meta_key": "_stock_status",
+    "meta_value": "instock"
+   },
+   {
+    "meta_key": "_ps_sandelis",
+    "meta_value": "av"
+   }
+  ],
+  "sources": [
+   {
+    "source": "av",
+    "stock_qty": null,
+    "is_active": "1"
+   }
+  ],
+  "partijos": [
+   {
+    "id": "4033",
+    "gauta": "2026-09-07",
+    "kiekis_gautas": "32",
+    "kiekis_liko": "29",
+    "tiekejas": "",
+    "pastaba": "Pradinis likutis T-0 (papildymas, S1682)"
+   }
+  ],
+  "vaikai": [
+   "16179",
+   "16180",
+   "36007",
+   "36008",
+   "36009",
+   "36010"
+  ],
+  "wc_lookup": {
+   "stock_quantity": null,
+   "stock_status": "instock"
+  }
+ },
+ "v": "dep-083505",
+ "kurimas": 200,
+ "sid": 6177,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
