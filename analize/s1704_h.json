@@ -1,0 +1,24 @@
+{
+ "1": {
+  "v": "S1704h",
+  "eilutes_80_120": "    }\n\n    public function payment_fields(): void\n    {\n        PayseraHTMLHelper::enqueueCSS('paysera-payment-css', PayseraPaths::PAYSERA_PAYMENT_CSS);\n        PayseraHTMLHelper::enqueueJS(\n            'paysera-payment-frontend-js',\n            PayseraPaths::PAYSERA_PAYMENT_FRONTEND_JS,\n            ['jquery']\n        );\n\n        print_r($this->payseraPaymentFieldGenerator->generatePaymentField());\n    }\n\n    public function process_payment($order_id): array\n    {\n        $order = wc_get_order($order_id);\n        $order->add_order_note(\n            __(PayseraPaths::PAYSERA_MESSAGE . 'Order checkout process is started', PayseraPaths::PAYSERA_TRANSLATIONS)\n        );\n        $this->updateOrderStatus($order, $this->payseraPaymentSettings->getPendingPaymentStatus());\n\n        wc_maybe_reduce_stock_levels($order_id);\n\n        $payType = '';\n        if ($this->payseraPaymentSettings->isListOfPaymentsEnabled()) {\n            $rawPayType = $_POST['payment']['pay_type'] ?? $_POST['pay_type'] ?? '';\n\n            $payType = sanitize_text_field($rawPayType);\n\n            if (!preg_match('/^[a-zA-Z0-9_-]*$/', $payType)) {\n                $payType = '';\n            }\n        }\n\n        return [\n            'result' => 'success',\n            'redirect' => $this->payseraPaymentRequestGenerator->buildPaymentRequestUrl(\n                $order,\n                $payType,\n                $this->get_return_url($order)\n            ),\n        ];\n    }\n",
+  "paysera_uzs": 135,
+  "kiti_uzs": [
+   {
+    "payment_method": "bacs",
+    "n": "13"
+   },
+   {
+    "payment_method": "paysera",
+    "n": "135"
+   }
+  ]
+ },
+ "v": "dep-081506",
+ "kurimas": 200,
+ "sid": 6170,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
