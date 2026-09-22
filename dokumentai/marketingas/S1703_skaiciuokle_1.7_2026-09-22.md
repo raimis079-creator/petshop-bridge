@@ -35,6 +35,12 @@ Pastabos: „max" aukštas dėl mažų pakuočių dideliems šunims (2 kg Exclus
 
 `rank_math_robots LIKE '%noindex%'` — 26 iš 60 publikuotų puslapių: **visi veislių puslapiai** (taksas, rusų mėlynoji, cvergšnauceris, kaukazo aviganis, mastifas, tibeto mastifas, amerikiečių buldogas, kinų kuoduotasis, havanų bišonai, kolis, biglis, bokseris, čiau čiau, dalmatinas, Džeko Raselo, jorkšyro terjeras, samojedas, senbernaras, siamo katė, rotveileris, amerikiečių pitbulterjeras), „šuo nuolat kasosi", „geriausias sausas šunų maistas", `josera-sunu-maistas`, `josera-kaciu-maistas`, `pristatymas`. Šaltinis — eShoprent Yoast meta (`_yoast_wpseo_meta-robots-noindex=1`) perkelta į Rank Math. Šie puslapiai per 14 d. davė organikos landing'us (taksas 12 ses., rusų mėlynoji 9, kasosi 8, cvergšnauceris 7, kaukazo aviganis 7…) — Google dar rodo iš seno indekso; perindeksavęs išmes. **Siūlymas: nuimti noindex visiems 26** (viena užklausa, `rank_math_robots` → `index`). Sprintas 2 (2.1 veislių šablonas v2) be to neturi prasmės.
 
+## 4b. NOINDEX NUIMTAS (Raimis „daryk" 09:48 ir 10:14)
+
+- `irankiai/s1703_mf.php` fazė 1: 26 puslapiams `rank_math_robots` → `index`, Yoast `_yoast_wpseo_meta-robots-noindex/nofollow` ištrinti; bak opcija `ps_s1703_noindex_bak` (atstatymas — fazė 9). HTML patikra: /taksas/, /rusu-melynoji/, „kasosi", /josera-sunu-maistas/, /pristatymas/ → `follow, index`.
+- `irankiai/s1703_mg.php`: Rank Math sitemap cache išvalytas (`RankMath\Sitemap\Cache::invalidate_storage()` + transient'ai) — page-sitemap.xml 29 → 56 įrašai (su /taksas/, /skaiciuokle/). Fazė 2: **visi 8 publikuoti tinklaraščio straipsniai** irgi buvo noindex (post-sitemap.xml buvo 404) → `index`, post-sitemap 200/8. Iš viso 34 turinio vienetai grąžinti į indeksą, noindex liko 0.
+- Strateginis Raimio klausimas 09:42 („kosmetinė AI botams ar rimta su daug parametrų?"): Claude atsakymas — nei viena; parametrų nedidinti (anketos duomenys: pildo tik rūšį+svorį), skaičiuoklė = variklis, o ne vieta — skaičių nešti į veislių puslapius/straipsnius/laiškus; puslapis — pigi kabykla SEO/AI; matuoti 30 d., jei <1 % sesijų — daugiau neinvestuoti. Įspėjimas: €/d palyginimas bendrame sąraše perša Josera prieš Exclusion — Exclusion skaičius turi prasmę problemos kontekste, ne šalia Josera.
+
 ## 5. Kitas žingsnis
 
 - R: peržiūrėti puslapį, sprendimas dėl rikiavimo (perkamumas vs €/d) ir dėl noindex (§4).
