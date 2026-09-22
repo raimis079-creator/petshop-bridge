@@ -1,0 +1,600 @@
+{
+ "1": {
+  "v": "S1703 md",
+  "const": {
+   "IS_DATALAYER": " 'view_item', 'add_to_cart', 'view_cart', 'begin_checkout' ",
+   "SAVI": " 'pageview', 'view_category', 'search', 'filter', 'skaiciuokle', 'quiz_start', 'remove_from_cart', 'error404' ",
+   "DRAUDZIAMI": " 'purchase', 'refund' "
+  },
+  "irasyti": "vykiams `raktas` ateina kaip SKU — verciam i prekes ID. */\n\t\t$raktas  = isset( $e['raktas'] ) ? (string) $e['raktas'] : '';\n\t\t$raktas2 = isset( $e['raktas2'] ) ? (string) $e['raktas2'] : '';\n\t\tif ( in_array( $tipas, self::IS_DATALAYER, true ) && '' !== $raktas ) {\n\t\t\tlist( $pid, $sku ) = self::preke_is_dl( $raktas );\n\t\t\t$raktas  = ( null === $pid ) ? '' : $pid;\n\t\t\t$raktas2 = ( null === $sku ) ? $raktas2 : $sku;\n\t\t}\n\n\t\t$eil = array(\n\t\t\t'laikas'           => $laikas,\n\t\t\t'diena'            => self::verslo_diena( $laikas ),\n\t\t\t'tipas'            => $tipas,\n\t\t\t'pusl_tipas'       => isset( $e['pusl'] ) ? mb_substr( sanitize_key( (string) $e['pusl'] ), 0, 24 ) : null,\n\t\t\t'url_kelias'       => isset( $e['url'] ) ? mb_substr( sanitize_text_field( (string) $e['url'] ), 0, 255 ) : null,\n\t\t\t'raktas'           => ( '' === $raktas ) ? null : mb_substr( sanitize_text_field( $raktas ), 0, 190 ),\n\t\t\t'raktas2'          => ( '' === $raktas2 ) ? null : mb_substr( sanitize_text_field( $raktas2 ), 0, 190 ),\n\t\t\t'reiksme'          => isset( $e['reiksme'] ) ? (int) $e['reiksme'] : null,\n\t\t\t'sesija'           => $bendra['sesija'],\n\t\t\t'lankytojas_d'     => $bendra['lank_d'],\n\t\t\t'lankytojas_30'    => $bendra['lank_30'],\n\t\t\t'saltinis'         => $k['saltinis'],\n\t\t\t'medium'           => $k['medium'],\n\t\t\t'kampanija'        => $k['kampanija'],\n\t\t\t'referer_domenas'  => $k['referer_domenas'],\n\t\t\t'kanalas'          => $k['kanalas'],\n\t\t\t'landing'          => ! empty( $e['landing'] ) ? 1 : 0,\n\t\t\t'irenginys'        => self::irenginys( $ua ),\n\t\t\t'os_seima'         => self::os_seima( $ua ),\n\t\t\t'nars_seima'       => self::nars_seima( $ua ),\n\t\t\t'salis'            => self::salis(),\n\t\t\t'prisijunges'      => is_user_logged_in() ? 1 : 0,\n\t\t\t'sutikimas'        => (int) $bendra['sutikimas'],\n\t\t\t'testinis'         => ( 'prod' === self::aplinka() ) ? 0 : 1,\n\t\t\t'saltinis_aplinka' => self::aplinka(),\n\t\t);\n\n\t\t$wpdb->suppress_errors( true );\n\t\t$ok = $wpdb->insert( self::t_ivykiai(), $eil );\n\t\t$wpdb->suppress_errors( false );\n\t\treturn $ok ? 'ok' : 'klaida';\n\t}\n\n\t/* ================================================================== */\n\t/* BEACON (naršyklės pusė)                                            */\n\t/* ================================================================== */\n\n\t/** Puslapio rusis nustatoma SERVERYJE — jis tai zino tiksliai. */\n\tpublic static function puslapio_tipas() {\n\t\tif ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) { return 'aciu'; }\n\t\tif ( is_404() )        { return '404'; }\n\t\tif ( is_search() )     { return 'paieska'; }\n\t\tif ( function_exists( 'is_cart' ) && is_cart() )         { return 'krepselis'; }\n\t\tif ( function_exists( 'is_checkout' ) && is_checkout() ) { return 'checkout'; }\n\t\tif ( function_exists( 'is_product' ) && is_product() )   { return 'preke'; }\n\t\tif ( function_exists( 'is_product_category' ) && is_product_category() ) { return 'kategorija'; }\n\t\tif ( function_exists( 'is_shop' ) && is_shop() )         { return 'parduotuve'; }\n\t\tif ( is_front_page() ) { return 'home'; }\n\t\tif ( is_singular( 'post' ) || is_home() ) { return 'blog'; }\n\t\tif ( is_page() )       { return 'info'; }\n\t\treturn 'kita';\n\t}\n\n\tpublic static function beacon() ",
+  "rest_gavimas": "eiluciu\n\t\t   irasyta (runas #5000).\n\t\t   Todel: pirma bandom standartini kelia, paskui — zalia kuna. */\n\t\t$body = $req->get_json_params();\n\t\tif ( ! is_array( $body ) || ! isset( $body['e'] ) ) {\n\t\t\t$zalias = $req->get_body();\n\t\t\tif ( is_string( $zalias ) && '' !== $zalias ) {\n\t\t\t\t$d = json_decode( $zalias, true );\n\t\t\t\tif ( is_array( $d ) ) { $body = $d; }\n\t\t\t}\n\t\t}\n\t\t$eil  = ( is_array( $body ) && isset( $body['e'] ) && is_array( $body['e'] ) ) ? $body['e'] : array();\n\t\tif ( ! $eil ) {\n\t\t\treturn new WP_REST_Response( array(\n\t\t\t\t'ok' => 0, 'kodas' => 'tuscia',\n\t\t\t\t'ct' => isset( $_SERVER['CONTENT_TYPE'] ) ? mb_substr( sanitize_text_field( wp_unslash( $_SERVER['CONTENT_TYPE'] ) ), 0, 60 ) : '',\n\t\t\t\t'baitu' => strlen( (string) $req->get_body() ),\n\t\t\t), 200 );\n\t\t}\n\t\tif ( count( $eil ) > 40 ) { $eil = array_slice( $eil, 0, 40 ); }\n\n\t\t$bendra = array(\n\t\t\t'ua'        => $ua,\n\t\t\t'sesija'    => self::sesija(),\n\t\t\t'lank_d'    => self::lankytojas_d(),\n\t\t\t'sutikimas' => self::sutikimas() ? 1 : 0,\n\t\t);\n\t\t$bendra['lank_30'] = $bendra['sutikimas'] ? self::lankytojas_30() : null;\n\n\t\t$rez = array( 'priimta' => 0, 'atmesta' => 0 );\n\t\tforeach ( $eil as $e ) {\n\t\t\tif ( ! is_array( $e ) ) { continue; }\n\t\t\t$st = self::irasyti( $e, $bendra );\n\t\t\t$rez[ ( 'ok' === $st ) ? 'priimta' : 'atmesta' ]++;\n\t\t}\n\t\treturn new WP_REST_Response( array( 'ok' => 1 ) + $rez, 200 );\n\t}\n\n\t/**\n\t * 30 d. lankytojo raktas — TIK su sutikimu. Slapukas statomas is serverio\n\t * REST atsakyme; be sutikimo jis neegzistuoja apskritai.\n\t */\n\tpublic static function lankytojas_30() {\n\t\tif ( ! empty( $_COOKIE[ self::COOKIE30 ] ) ) {\n\t\t\t$v = preg_replace( '/[^a-f0-9]/', '', (string) wp_unslash( $_COOKIE[ self::COOKIE30 ] ) );\n\t\t\tif ( strlen( $v ) === 64 ) { return $v; }\n\t\t}\n\t\t$naujas = hash( 'sha256', wp_generate_password( 64, false, false ) . microtime( true ) );\n\t\tif ( ! headers_sent() ) {\n\t\t\tsetcookie( self::COOKIE30, $naujas, array(\n\t\t\t\t'expires'  => time() + 30 * DAY_IN_SECONDS,\n\t\t\t\t'path'     => COOKIEPATH ? COOKIEPATH : '/',\n\t\t\t\t'domain'   => COOKIE_DOMAIN,\n\t\t\t\t'secure'   => is_ssl(),\n\t\t\t\t'httponly' => true,\n\t\t\t\t'samesite' => 'Lax',\n\t\t\t) );\n\t\t\t$_COOKIE[ self::COOKIE30 ] = $naujas;\n\t\t}\n\t\treturn $naujas;\n\t}\n\n\t/* ===",
+  "kategorijos": {
+   "dog sausas-maistas-sunims": 303,
+   "cat sausas-maistas-katems": 119,
+   "dog hipoalerginis-maistas-sunims": 7,
+   "dog konservai-sunims": 4,
+   "cat maistas-katems": 3
+  },
+  "konservai_pagal_pav": 4,
+  "attr_taxonomies": [
+   "amzius",
+   "baltymu_saltinis",
+   "be_grudu",
+   "brendas",
+   "dydis",
+   "forma",
+   "grauziko_rusis",
+   "gyvuno_rusis",
+   "ilgis",
+   "kiekis_pakuoteje",
+   "kraiko_tipas",
+   "kvapas",
+   "medziaga",
+   "monoprotein",
+   "pakuotes_dydis",
+   "pasaro_forma",
+   "paskirtis",
+   "paukscio_rusis",
+   "pavadelio_ilgis",
+   "spalva",
+   "speciali_mityba",
+   "tipas",
+   "veisle",
+   "veisles_dydis",
+   "zaislo_tipas",
+   "zuvies_rusis"
+  ],
+  "attr_sample": {
+   "12466": {
+    "n": "Eukanuba Veterinary Diets Dermatosis FP 12kg",
+    "attrs": {
+     "pa_monoprotein": "pa_monoprotein=",
+     "pa_pakuotes_dydis": "pa_pakuotes_dydis=262",
+     "pa_gyvuno_rusis": "pa_gyvuno_rusis=252",
+     "pa_speciali_mityba": "pa_speciali_mityba=291"
+    },
+    "img": "https://petshop.lt/wp-content/uploads/2026/06/0006337_e29938-evd-dog-dermatosis-fp-formula-12-kg-300x300.webp",
+    "pak": "12 kg",
+    "w": "12.2200",
+    "sale": false
+   },
+   "18159": {
+    "n": "JOSERA BALANCE pašaras šunims su vištiena, 12,5 kg",
+    "attrs": {
+     "pa_gyvuno_rusis": "pa_gyvuno_rusis=252",
+     "pa_baltymu_saltinis": "pa_baltymu_saltinis=272",
+     "pa_pakuotes_dydis": "pa_pakuotes_dydis=451",
+     "pa_amzius": "pa_amzius=736",
+     "pa_be_grudu": "pa_be_grudu=412"
+    },
+    "img": "https://petshop.lt/wp-content/uploads/2026/06/josera-balance-senior-pasaras-sunims_1762339269-300x300.jpg",
+    "pak": "12,5 kg",
+    "w": "12.5",
+    "sale": false
+   },
+   "33452": {
+    "n": "Eukanuba EVD Dog Dermatosis FP Formula 5kg",
+    "attrs": {
+     "pa_gyvuno_rusis": "pa_gyvuno_rusis=252",
+     "pa_pakuotes_dydis": "pa_pakuotes_dydis=420",
+     "pa_speciali_mityba": "pa_speciali_mityba=291"
+    },
+    "img": "https://petshop.lt/wp-content/uploads/2026/06/0006357_e29952-evd-dog-dermatosis-fp-formula-5-kg-1-300x300.webp",
+    "pak": "5 kg",
+    "w": "5",
+    "sale": false
+   }
+  },
+  "pard90": [
+   {
+    "pid": "18587",
+    "k": "14",
+    "u": "14"
+   },
+   {
+    "pid": "18590",
+    "k": "5",
+    "u": "4"
+   },
+   {
+    "pid": "17978",
+    "k": "3",
+    "u": "3"
+   },
+   {
+    "pid": "27128",
+    "k": "3",
+    "u": "3"
+   },
+   {
+    "pid": "18084",
+    "k": "2",
+    "u": "2"
+   },
+   {
+    "pid": "16558",
+    "k": "1",
+    "u": "1"
+   },
+   {
+    "pid": "18154",
+    "k": "1",
+    "u": "1"
+   },
+   {
+    "pid": "26375",
+    "k": "1",
+    "u": "1"
+   },
+   {
+    "pid": "18018",
+    "k": "1",
+    "u": "1"
+   },
+   {
+    "pid": "18620",
+    "k": "1",
+    "u": "1"
+   },
+   {
+    "pid": "16666",
+    "k": "1",
+    "u": "1"
+   },
+   {
+    "pid": "18530",
+    "k": "1",
+    "u": "1"
+   },
+   {
+    "pid": "18022",
+    "k": "1",
+    "u": "1"
+   },
+   {
+    "pid": "21041",
+    "k": "2",
+    "u": "1"
+   },
+   {
+    "pid": "16684",
+    "k": "1",
+    "u": "1"
+   }
+  ],
+  "ist_pard90": [
+   {
+    "pid": "18587",
+    "k": "81",
+    "u": "78"
+   },
+   {
+    "pid": "18590",
+    "k": "64",
+    "u": "59"
+   },
+   {
+    "pid": "17978",
+    "k": "47",
+    "u": "36"
+   },
+   {
+    "pid": "18560",
+    "k": "33",
+    "u": "31"
+   },
+   {
+    "pid": "18154",
+    "k": "20",
+    "u": "19"
+   },
+   {
+    "pid": "18584",
+    "k": "18",
+    "u": "16"
+   },
+   {
+    "pid": "17995",
+    "k": "17",
+    "u": "14"
+   },
+   {
+    "pid": "18084",
+    "k": "13",
+    "u": "13"
+   },
+   {
+    "pid": "18575",
+    "k": "17",
+    "u": "12"
+   },
+   {
+    "pid": "19760",
+    "k": "13",
+    "u": "12"
+   },
+   {
+    "pid": "18018",
+    "k": "11",
+    "u": "11"
+   },
+   {
+    "pid": "18000",
+    "k": "11",
+    "u": "9"
+   },
+   {
+    "pid": "18578",
+    "k": "12",
+    "u": "9"
+   },
+   {
+    "pid": "19751",
+    "k": "8",
+    "u": "8"
+   },
+   {
+    "pid": "17950",
+    "k": "8",
+    "u": "8"
+   }
+  ],
+  "ist_cols": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ],
+  "veisle_meta": [
+   {
+    "meta_key": "_petshop_pre_force_content",
+    "v": "<body>\n<!-- Google Tag Manager (noscript) -->\n<noscript><iframe height=\"0\" src=\"https://www.googletagmanager.com/ns.html"
+   },
+   {
+    "meta_key": "_petshop_pre_force_title",
+    "v": "Taksai: Veislės istorija, charakteristika, elgesys"
+   },
+   {
+    "meta_key": "_petshop_pre_force_at",
+    "v": "2026-06-04 18:05:41"
+   },
+   {
+    "meta_key": "_petshop_legacy_slug",
+    "v": "taksas"
+   },
+   {
+    "meta_key": "_petshop_legacy_url",
+    "v": "https://petshop.lt/taksas"
+   },
+   {
+    "meta_key": "_yoast_wpseo_meta-robots-noindex",
+    "v": "1"
+   },
+   {
+    "meta_key": "rank_math_robots",
+    "v": "a:1:{i:0;s:7:\"noindex\";}"
+   },
+   {
+    "meta_key": "_thumbnail_id",
+    "v": "14871"
+   }
+  ],
+  "veisle_content_head": "<div class=\"page__content page__content--articleDescription\">\n            <p>Taksai - nedidelė šunų veislė, pasižyminti ilgu kūnu ir trumpomis kojomis.<br>\r\nNorint užtikrinti visavertį gyvenimą su taksų veislės šunimi, būtina suprasti jų dresavimo, socializacijos ir sveikatos poreikius.<br>\r\nŠie šunys pasižymi gyvu temperamentu, kuris gali būti ir žavus, ir sudėtingas dėl jų smalsumo.<br>\r\nTinkamas dresavimas ir socializacija yra labai svarbūs siekiant puoselėti harmoningus santykius, o dėmesys jų sveikatai padės palaikyti gerą savijautą.</p>\r\n\r\n<h2>Taksų kilmė</h2>\r\n\r\n<p>Taksai atsirado Vokietijoje, specialiai veisiami barsukams ir kitiems naminiams gyvūnams medžioti, todėl jų pavadinimas išvertus iš vokiečių kalbos reiškia \"barsukų šuo\".<br>\r\nŠi veislė pasižymi ilgu kūnu ir trumpomis kojomis, sukurtomis ropoti ankštose vietose, todėl yra efektyvus medžiotojas. XVII a. taksai dėl savo atkaklumo ir aštraus uoslės pojūčio išpopuliarėjo tiek tarp kilmingųjų, tiek tarp paprastų žmonių, todėl buvo sukurti du pagrindiniai dydžiai: standartinis ir miniatiūrinis.<br>\r\nXIX a. taksai buvo atgabenti į Jungtines Amerikos Valstijas, kur jie tapo mėgstamais šeimos augintiniais, žinomais dėl savo ištikimybės ir žaismingo charakterio.<br>\r\nNepaisant to, kad per Pirmąjį pasaulinį karą dėl savo vokiškos kilmės taksai susidūrė su išankstiniu nusistatymu, jie visame pasaulyje įsitvirtino kaip brangūs kompanionai ir įkūnija turtingą šimtmečių istoriją.</p>\r\n\r\n<h2>Fizinės savybės</h2>\r\n\r\n<p>Taksa",
+  "veisle_title": "Taksai: Veislės istorija, charakteristika, elgesys",
+  "veisle_url": "https://petshop.lt/taksas/",
+  "veisles_visos": [
+   {
+    "ID": "34445",
+    "post_name": "akcijos",
+    "post_title": "Akcijos"
+   },
+   {
+    "ID": "3210",
+    "post_name": "amerikieciu-buldogas",
+    "post_title": "Amerikiečių buldogas (Šunų veislė) Informacija - charakteristika, sveikata ir priežiūra"
+   },
+   {
+    "ID": "3214",
+    "post_name": "amerikieciu-putbulterjeras",
+    "post_title": "Amerikiečių pitbulterjeras: veislės istorija, charakteristika, elgsena ir kt."
+   },
+   {
+    "ID": "34676",
+    "post_name": "anketa-testas",
+    "post_title": "Anketa testas"
+   },
+   {
+    "ID": "34515",
+    "post_name": "apie-mus",
+    "post_title": "Apie mus"
+   },
+   {
+    "ID": "34527",
+    "post_name": "apmokejimas",
+    "post_title": "Apmokėjimas"
+   },
+   {
+    "ID": "34789",
+    "post_name": "augintinio-profilis",
+    "post_title": "Augintinio profilis"
+   },
+   {
+    "ID": "34550",
+    "post_name": "be-grudu-maistas",
+    "post_title": "Maistas be grūdų"
+   },
+   {
+    "ID": "3219",
+    "post_name": "biglis",
+    "post_title": "Bigliai: veislės istorija, charakteristika, elgsena ir dar daugiau"
+   },
+   {
+    "ID": "3222",
+    "post_name": "bokseris",
+    "post_title": "Bokseris (Šunų veislė) Informacija - Charakteristika, sveikata ir priežiūra"
+   },
+   {
+    "ID": "3216",
+    "post_name": "ciau-ciau",
+    "post_title": "Čiau čiau: Veislės istorija, savybės, elgesys ir kt."
+   },
+   {
+    "ID": "3211",
+    "post_name": "cvergsnauceris",
+    "post_title": "Cvergšnauceriai: veislės istorija, charakteristika, elgsena"
+   },
+   {
+    "ID": "3220",
+    "post_name": "dalmantinas",
+    "post_title": "Dalmatinas: informacija apie šią veislę. Sveikata, priežiūra ir daugiau"
+   },
+   {
+    "ID": "34476",
+    "post_name": "daugiau-pigiau",
+    "post_title": "Daugiau = pigiau"
+   },
+   {
+    "ID": "34595",
+    "post_name": "duk",
+    "post_title": "Dažniausiai užduodami klausimai"
+   },
+   {
+    "ID": "3208",
+    "post_name": "dzeko-raselo-terjeras",
+    "post_title": "Džeko Raselo terjeras: Veislės istorija, charakteristika, elgsena ir kt."
+   },
+   {
+    "ID": "3227",
+    "post_name": "geriausias-sausas-sunu-maistas",
+    "post_title": "Geriausias sausas šunų maistas 2024 metais"
+   },
+   {
+    "ID": "34523",
+    "post_name": "grazinimas",
+    "post_title": "Grąžinimas"
+   },
+   {
+    "ID": "3225",
+    "post_name": "havanu-bisonai",
+    "post_title": "Havanų bišonai: veislės istorija, charakteristika, elgesys ir dar daugiau"
+   },
+   {
+    "ID": "34548",
+    "post_name": "hipoalerginis-maistas",
+    "post_title": "Hipoalerginis maistas augintiniui"
+   },
+   {
+    "ID": "3205",
+    "post_name": "jorksyro-terjeras",
+    "post_title": "Jorkšyro terjeras: išvaizda, priežiūra, mityba ir jų ligos"
+   },
+   {
+    "ID": "3233",
+    "post_name": "josera-kaciu-maistas",
+    "post_title": "JOSERA KAČIŲ MAISTAS PIGIAU. 2 KG, 10KG ir kt. 1-3 d.d. išsiuntimas"
+   },
+   {
+    "ID": "3231",
+    "post_name": "josera-sunu-maistas",
+    "post_title": "Josera šunims pigiau - Josera šunų maistas - 1-3 d.d. pristatymu"
+   },
+   {
+    "ID": "13",
+    "post_name": "kasa",
+    "post_title": "Apmokėjimas"
+   },
+   {
+    "ID": "3209",
+    "post_name": "kaukazo-aviganis",
+    "post_title": "Kaukazo aviganis: veislės istorija, charakteristika, elgsena ir dar daugiau"
+   },
+   {
+    "ID": "3224",
+    "post_name": "kinu-kuduotasis-suo",
+    "post_title": "Kinų kuduotasis šuo - informacija apie veislę"
+   },
+   {
+    "ID": "3223",
+    "post_name": "kolis",
+    "post_title": "Kolis, šunų veislė: sveikata, priežiūra ir kt."
+   },
+   {
+    "ID": "34521",
+    "post_name": "kontaktai",
+    "post_title": "Kontaktai"
+   },
+   {
+    "ID": "12",
+    "post_name": "krepselis",
+    "post_title": "Krepšelis"
+   },
+   {
+    "ID": "3217",
+    "post_name": "mastifas",
+    "post_title": "Mastifas: Veislės istorija, charakteristika, elgesys"
+   },
+   {
+    "ID": "34549",
+    "post_name": "monoproteinis-maistas",
+    "post_title": "Monoproteinis maistas"
+   },
+   {
+    "ID": "34570",
+    "post_name": "naujas-augintinis",
+    "post_title": "Naujam augintiniui"
+   },
+   {
+    "ID": "34551",
+    "post_name": "odai-ir-kailiui",
+    "post_title": "Odai ir kailiui"
+   },
+   {
+    "ID": "34543",
+    "post_name": "pagrindinis-test",
+    "post_title": "Pagrindinis (test)"
+   },
+   {
+    "ID": "11",
+    "post_name": "parduotuve",
+    "post_title": "Parduotuvė"
+   },
+   {
+    "ID": "34477",
+    "post_name": "pasiulymai",
+    "post_title": "Pasiūlymai"
+   },
+   {
+    "ID": "14",
+    "post_name": "paskyra",
+    "post_title": "Mano paskyra"
+   },
+   {
+    "ID": "34539",
+    "post_name": "prieziuros-priemones-sunims",
+    "post_title": "Priežiūros priemonės šunims"
+   },
+   {
+    "ID": "14894",
+    "post_name": "pristatymas",
+    "post_title": "Pristatymas"
+   },
+   {
+    "ID": "34525",
+    "post_name": "privatumo-politika",
+    "post_title": "Privatumo politika"
+   },
+   {
+    "ID": "3218",
+    "post_name": "rotveileris-s-v",
+    "post_title": "Rotveileris: veislės istorija, charakteristika, elgesys"
+   },
+   {
+    "ID": "3207",
+    "post_name": "rusu-melynoji",
+    "post_title": "Rusų mėlynoji: išvaizda, priežiūra, temperamentas, ligos"
+   },
+   {
+    "ID": "3213",
+    "post_name": "samojedas",
+    "post_title": "Samojedas: veislės istorija, charakteristika, elgsena ir dar daugiau"
+   },
+   {
+    "ID": "3221",
+    "post_name": "senbernaras",
+    "post_title": "Senbernarai: veislės istorija, charakteristika, elgsena"
+   },
+   {
+    "ID": "3215",
+    "post_name": "siamo-kate",
+    "post_title": "Siamo katė: išvaizda, priežiūra, mityba ir ligos"
+   },
+   {
+    "ID": "34591",
+    "post_name": "slapuku-politika",
+    "post_title": "Slapukų politika"
+   },
+   {
+    "ID": "34253",
+    "post_name": "sprendimai",
+    "post_title": "Sprendimai"
+   },
+   {
+    "ID": "3238",
+    "post_name": "suns-serimo-lentele-gramais",
+    "post_title": "Šuns šėrimo lentelė gramais"
+   },
+   {
+    "ID": "34538",
+    "post_name": "sunu-veisles",
+    "post_title": "Šunų veislės"
+   },
+   {
+    "ID": "3229",
+    "post_name": "suo-nuolat-kasosi-7-priezastys-ir-3-minuciu-planas-ka-daryti-siandien",
+    "post_title": "Šuo nuolat kasosi? 7 priežastys ir 3 minučių planas (ką daryti šiandien)"
+   },
+   {
+    "ID": "34524",
+    "post_name": "taisykles",
+    "post_title": "Pirkimo sąlygos ir taisyklės"
+   },
+   {
+    "ID": "3206",
+    "post_name": "taksas",
+    "post_title": "Taksai: Veislės istorija, charakteristika, elgesys"
+   },
+   {
+    "ID": "3212",
+    "post_name": "tibeto-mastifas",
+    "post_title": "Tibeto mastifai: veislės istorija, charakteristika, elgsena ir dar daugiau"
+   }
+  ],
+  "veisle_parent": 0,
+  "cat_urls": {
+   "sunims": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "katems": "https://petshop.lt/kategorija/katems/maistas-katems/sausas-maistas-katems/"
+  },
+  "kill": "0"
+ },
+ "v": "dep-062400",
+ "kurimas": 200,
+ "sid": 6154,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
