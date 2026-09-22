@@ -52,3 +52,12 @@ Likutis = partijų (25 prekės, pvz. Miamor #17507/17517/17535/17538, Hikari) �
 ## Pamokos
 - Mokėjimo vartai gali nurašyti likutį `process_payment()` viduje — visi „prio 5 prieš WC prio 10" susitarimai galioja tik WC core kabliams; tikrinti vartų kodą.
 - Invarianto skenas (`s1704_e.php`) — paleisti po kiekvieno likučių darbo; 0 nesutapimų nebus dėl rankinių likučių, bet minusai turi būti 0.
+
+---
+
+## Priedas: akcijų puslapis (13:05, Raimis „daryk 1+2")
+
+**Problema:** `/akcijos/` rodė ~25–28 kortelių, antraštė „Visos (102)".
+**Priežastis:** puslapyje #34445 `[psc_akcijos per_page="30" columns="4"]` — snippet #566 „Petshop Akcijos Shortcode v1.3" rodė tik 30 populiariausių (`total_sales`), be puslapiavimo; iš jų dar iškrenta paslėptos (dropship be likučio, S1691). Skaičius 102 = 96 WC akcijinės (visos simple, publish) + prekės su „AKCIJA" pavadinime; iš 96 rodytinos 88 (8 dropship hidden/outofstock — teisingai).
+**Padaryta:** (1) puslapis → `per_page="0"`; (2) snippet #566 → **v1.4** (md5 kodo `f1f2dcc5…`): `$all_ids` filtruojami per `is_visible() && is_in_stock()`, kad „Visos (N)" ir kategorijų skaičiai sutaptų su kortelėmis. Bak opcija `ps_s1704_akcijos_bak` (senas kodas + puslapio turinys); atstatyti `s1704_p3.php` fazė 9. Rezultatas gyvai: „Visos (93)", 93 kortelės, Šunims 76 / Katėms 18 / Graužikams 3.
+**Pamokos:** Code Snippets `clean_snippets_cache()` reikalauja argumento — nekviesti be jo; Super Cache užkešuoja bridge GET su query string, jei fazė grąžino HTML — kartoti su kitu GET raktu; `sed` be `g` keičia tik pirmą įvykį eilutėje.
