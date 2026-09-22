@@ -43,8 +43,8 @@ Pastabos: „max" aukštas dėl mažų pakuočių dideliems šunims (2 kg Exclus
 
 ## 5. Kitas žingsnis
 
-- R: peržiūrėti puslapį, sprendimas dėl rikiavimo (perkamumas vs €/d) ir dėl noindex (§4).
-- C (po „daryk"): noindex nuėmimas; nuoroda į `/skaiciuokle/` iš veislių puslapių (2.1), meniu „Sprendimai", relaunch laiško (3.4) ir 404 puslapio; po savaitės — `ps_web_ivykiai` `skaiciuokle` įvykių ir `_ps_skaiciuokle_puslapis` užsakymų pjūvis.
+- R: sprendimas dėl rikiavimo (perkamumas vs €/d) — neatsakytas; noindex ☑ (§4b).
+- C: nuoroda į `/skaiciuokle/` iš veislių puslapių (2.1), meniu „Sprendimai", relaunch laiško (3.4) ir 404 puslapio; po savaitės — `ps_web_ivykiai` `skaiciuokle` įvykių ir `_ps_skaiciuokle_puslapis` užsakymų pjūvis.
 - Sprintas 1 C darbai visi ☑ (1.1, 1.2, 1.3, 1.5, 1.6, 1.7, 1.8).
 
-Įrankiai: recon `irankiai/s1703_ma–md.php` (read-only), deploy `s1703_me.php`. Prefiksas kitam langui `s1704_m*`.
+Įrankiai: recon `irankiai/s1703_ma–md.php` (read-only), deploy `s1703_me.php`, noindex `s1703_mf.php` (9 = atstatyti), sitemap/straipsniai `s1703_mg.php`. Prefiksas kitam langui `s1704_m*`.
