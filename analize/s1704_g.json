@@ -1,0 +1,65 @@
+{
+ "1": {
+  "v": "S1704g",
+  "radiniai": [
+   "/mu-plugins/petshop-av-reduce.php:21 * Tai švariau nei `can_reduce_order_stock`, kuris veikia VISAM užsakymui.",
+   "/mu-plugins/petshop-av-reduce.php:12 * `wc_maybe_reduce_stock_levels` (payment_complete / processing).",
+   "/mu-plugins/petshop-av-reduce.php:39 // 2) mažinam AV — PO WC (prioritetas 15, wc_maybe_reduce_stock_levels yra 10)",
+   "/mu-plugins/petshop-darbalaukis.php:3042 /** Tas pats saugiklis tiesioginiam `wc_reduce_stock_levels( $order )` (žymės čia WC nerašo). */",
+   "/mu-plugins/petshop-darbalaukis.php:39 * Petshop Darbalaukis v3.36 (S1620, Raimis 09-06 „2 – ok, 3 – a ir b“): FILTRAI „Visi“ lange — Data „Nuo–iki“ (variklio `datos_riba('interv",
+   "/mu-plugins/petshop-darbalaukis.php:397 add_filter( 'woocommerce_payment_complete_reduce_order_stock', array( __CLASS__, 'telefonu_likutis' ), 10, 2 ); // v3.34 (B 6): telefoninio pavedimu — likut",
+   "/mu-plugins/petshop-darbalaukis.php:398 add_filter( 'woocommerce_can_reduce_order_stock', array( __CLASS__, 'telefonu_likutis_wc' ), 10, 2 ); // v3.34 (B 6)",
+   "/mu-plugins/petshop-darbalaukis.php:3035 /** B (6): telefoninio (`_ps_telefonu`) pavedimu užsakymo likutis WC nurašomas TIK apmokėjus (processing), ne on-hold metu. WC `wc_maybe_reduce_stock_levels",
+   "/mu-plugins/petshop-darbalaukis.php:3035 /** B (6): telefoninio (`_ps_telefonu`) pavedimu užsakymo likutis WC nurašomas TIK apmokėjus (processing), ne on-hold metu. WC `wc_maybe_reduce_stock_levels",
+   "/mu-plugins/petshop-rinkiniu-likuciai.php:33 * 2026-08-11: krepselis issiskleide i 6 eilutes, `wc_reduce_stock_levels` nurase",
+   "/mu-plugins/petshop-av-order.php:41 // PRIORITETAS 5 — BŪTINA. `wc_maybe_reduce_stock_levels` yra 10, o",
+   "/plugins/woo-payment-gateway-paysera/src/Entity/class-paysera-payment-gateway.php:102 wc_maybe_reduce_stock_levels($order_id);"
+  ],
+  "kabliai": {
+   "woocommerce_new_order": [
+    "2 closure",
+    "10 Automattic\\WooCommerce\\Caches\\OrderCountCacheService::update_on_new_order",
+    "10 Automattic\\WooCommerce\\Internal\\Admin\\OrderMilestoneEasterEgg::clear_milestone_cache",
+    "10 Automattic\\WooCommerce\\Internal\\PushNotifications\\Triggers\\NewOrderNotificationTrigger::on_new_order",
+    "20 closure",
+    "100 Automattic\\WooCommerce\\Internal\\DataStores\\Orders\\DataSynchronizer::handle_updated_order"
+   ],
+   "woocommerce_checkout_order_created": [
+    "10 wc_reserve_stock_for_order",
+    "10 closure",
+    "20 Petshop_Kasa_Paskyra::pastaba",
+    "20 closure"
+   ],
+   "woocommerce_order_status_pending": [
+    "10 wc_update_coupon_usage_counts",
+    "10 wc_maybe_increase_stock_levels",
+    "20 closure"
+   ],
+   "woocommerce_order_status_on-hold": [
+    "5 Petshop_AV_Order::fiksuoti",
+    "10 wc_update_total_sales_counts",
+    "10 wc_update_coupon_usage_counts",
+    "10 wc_maybe_reduce_stock_levels",
+    "11 wc_release_stock_for_order",
+    "20 Petshop_GA4_Serveris::siusti"
+   ],
+   "woocommerce_checkout_order_processed": [
+    "1 Paysera\\Admin\\PayseraDeliveryAdmin::wcCheckoutOrderProcessed",
+    "10 Petshop_Cart_Abandonment::on_order_created",
+    "20 Petshop_Rec_Log::pirkta",
+    "20 Petshop_Plan_Attribution::link_order",
+    "30 Petshop_Refill_Ivykiai::pirkta"
+   ],
+   "woocommerce_reduce_order_stock": [
+    "10 closure"
+   ]
+  }
+ },
+ "v": "dep-081215",
+ "kurimas": 200,
+ "sid": 6169,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
