@@ -1,0 +1,66 @@
+{
+ "2": {
+  "v": "S1704k",
+  "faze": "2",
+  "klase": true,
+  "kablys_prio": 5,
+  "bak": {
+   "status": "draft",
+   "_stock": "0",
+   "_manage_stock": "yes",
+   "_stock_status": "outofstock",
+   "_ps_sandelis": "vf",
+   "_own_stock_qty": ""
+  },
+  "oid": 36147,
+  "po_kasos": {
+   "_ps_source": "av",
+   "_ps_order_type": "MAIN",
+   "_ps_kelias_kasoje": "2026-09-22 11:30:52",
+   "_stock": "10"
+  },
+  "po_paysera": {
+   "_stock": "10",
+   "_reduced_stock": "0",
+   "_order_stock_reduced": true
+  },
+  "po_apmokejimo": {
+   "_stock": "8",
+   "_ps_av_reduced_qty": "2",
+   "_reduced_stock": "0",
+   "status": "processing"
+  },
+  "po_atsaukimo": {
+   "_stock": "10"
+  },
+  "pastabos": [
+   "Email \"Atšauktas užsakymas\" failed to send.",
+   "Email \"Atšauktas užsakymas\" failed to send.",
+   "TESTAS S1704 Užsakymo statusas pakeistas iš Vykdomas į Atšauktas.",
+   "AV grąžinimas: #34889 grynai AV +2",
+   "Email \"Užsakymas vykdomas\" failed to send.",
+   "Email \"Naujas užsakymas\" failed to send.",
+   "Surūšiuota pati: PS-TEST-001 (testinė prekė, neliesti) — Iš AV",
+   "Faktai irasyti: 1 eilutes · pajamos 16,53 EUR (be PVM, po nuolaidu) · PVM 3,47 EUR · marza -47,05 EUR · kontribucija (be pristatymo) -47,50 EUR",
+   "Partijos nurašytos: #34889 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #34889: Partijose trūksta 2 vnt. — likutis ir partijos nesutampa",
+   "AV nurašymas: #34889 grynai AV 10 -> 8",
+   "Payment complete.",
+   "Likutis sumažintas: PS-TEST-001 (testinė prekė, neliesti) (10&rarr;10)",
+   "Vykdymas: MAIN — AV 2 vnt (1 siunta(-os)) · dropship pirma",
+   "TESTAS S1704 — dvigubo nurasymo E2E, istrinti"
+  ],
+  "VERDIKTAS": "OK",
+  "atstatyta": {
+   "status": "draft",
+   "_stock": "0",
+   "_stock_status": "outofstock"
+  }
+ },
+ "v": "dep-082940",
+ "kurimas": 200,
+ "sid": 6174,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
