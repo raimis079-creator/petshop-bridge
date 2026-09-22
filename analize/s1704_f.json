@@ -1,0 +1,48 @@
+{
+ "1": {
+  "v": "S1704f",
+  "av_order": "<?php\n/**\n * Petshop AV Order v1.2 (S1676) — šaltinio FIKSAVIMAS užsakymo eilutėje.\n *\n * v1.2 (S1676, Raimio taisyklė): dropship prekės pirmiausia iš tiekėjo; AV — kai tiekėjas neturi arba užsakymas\n *   mišrus (yra grynai AV prekių). Sprendimas per Petshop_AV_Source::parinkti($pid,$qty,$misrus) (v1.3);\n *   mišrumas — Petshop_AV_Source::ar_misrus($order). Pastaboje rašoma taisyklė.\n *\n * KETVIRTAS SLUOKSNIS (REGISTRAS §17.7, §18.2).\n *\n * KONSULTANTO PUNKTAS 3 (priimtas): `resolve()` NEGALI būti perskaičiuojamas\n * vėliau pagal DABARTINIUS likučius. Šiandien prekė priskirta AV, rytoj po\n * likučio pasikeitimo sistema nuspręstų VF. Pakuotojas mato viena, sistema kita.\n *\n * TODĖL: sprendimas priimamas VIENĄ kartą — kai užsakymas apmokamas — ir\n * ĮRAŠOMAS į eilutę. Vėliau tik SKAITOMAS.\n *\n * KIEKVIENOJE EILUTĖJE:\n *   _ps_source        av|vf|zb|quattro|ambrosia|belcor_tofu|prins\n *   _ps_carrier       any|venipak\n *   _ps_source_qty    kiek vienetų iš to šaltinio\n *   _ps_source_at     kada nuspręsta\n *   _ps_source_reason kodėl (diagnostikai)\n *\n * UŽSAKYME:\n *   _ps_order_type    MAIN|DS|MIXED|REVIEW\n *   _ps_groups        šaltinių sąrašas\n *   _ps_shipments     kiek siuntų išeis\n *\n * KADA: `woocommerce_payment_complete` + `woocommerce_order_status_processing`,\n * PRIORITETAS 5 — PRIEŠ likučių mažinimą (žr. init()).\n * Idempotentiška — jei jau nuspręsta, antrą kartą neperskaičiuoja.\n *\n * NEMAŽINA likučio — tai 5 sluoksnis.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_AV_Order {\n\n\tpublic static function init() {\n\t\t// PRIORITETAS 5 — BŪTINA. `wc_maybe_reduce_stock_levels` yra 10, o\n\t\t// Petshop_AV_Reduce — 15. Jei fiksuotume vėliau, `_ps_source` eilutėse dar\n\t\t// neegzistuotų ir NEI WC stabdymas, NEI AV nurašymas nesuveiktų (S480 klaida).\n\t\tadd_action( 'woocommerce_payment_complete', [ __CLASS__, 'fiksuoti' ], 5, 1 );\n\t\tadd_action( 'woocommerce_order_status_processing', [ __CLASS__, 'fiksuoti' ], 5, 1 );\n\t\tadd_action( 'woocommerce_order_status_on-hold', [ __CLASS__, 'fiksuoti' ], 5, 1 );\n\t}\n\n\t/** Ar užsakymui jau nuspręsta. */\n\tpublic static function nuspresta( $order ) {\n\t\t$order = is_numeric( $order ) ? wc_get_order( $order ) : $order;\n\t\treturn ( $order && $order->get_meta( '_ps_order_type' ) );\n\t}\n\n\t/**\n\t * Priima sprendimą ir ĮRAŠO. Idempotentiška.\n\t *\n\t * @param bool $priverstinai perskaičiuoti net jei jau nuspręsta\n\t */\n\tpublic static function fiksuoti( $order_id, $priverstinai = false ) {\n\t\t$order = is_numeric( $order_id ) ? wc_get_order( $order_id ) : $order_id;\n\t\tif ( ! $order ) { return; }\n\t\tif ( ! $priverstinai && self::nuspresta( $order ) ) { return; }\n\t\tif ( ! class_exists( 'Petshop_AV_Source' ) ) { return; }\n\n\t\t$grupes = [];\n\t\t$misrus = method_exists( 'Petshop_AV_Source', 'ar_misrus' ) ? Petshop_AV_Source::ar_misrus( $order ) : false; // v1.2\n\t\tforeach ( $order->get_items() as $item_id => $item ) {\n\t\t\t$pid = (int) $item->get_product_id();\n\t\t\tif ( ! $pid ) { continue; }\n\t\t\t$qty = max( 1, (int) $item->get_quantity() );\n\n\t\t\t$x = method_exists( 'Petshop_AV_Source', 'parinkti' ) ? Petshop_AV_Source::parinkti( $pid, $qty, $misrus ) : Petshop_AV_Source::resolve( $pid, $qty ); // v1.2\n\n\t\t\t$item->update_meta_data( '_ps_source',        $x['source'] );\n\t\t\t$item->update_meta_data( '_ps_carrier',       $x['carrier'] );\n\t\t\t$item->update_meta_data( '_ps_source_qty',    $qty );\n\t\t\t$item->update_meta_data( '_ps_source_at',     current_time( 'mysql' ) );\n\t\t\t$item->update_meta_data( '_ps_source_reason', $x['reason'] );\n\t\t\t$item->save();\n\n\t\t\t$s = $x['source'];\n\t\t\tif ( ! isset( $grupes[ $s ] ) ) {\n\t\t\t\t$grupes[ $s ] = [ 'carrier' => $x['carrier'], 'eilutes' => 0, 'vienetai' => 0 ];\n\t\t\t}\n\t\t\t$grupes[ $s ]['eilutes']++;\n\t\t\t$grupes[ $s ]['vienetai'] += $qty;\n\t\t}\n\n\t\t$tipas = Petshop_AV_Source::order_type( $grupes );\n\t\t$order->update_meta_data( '_ps_order_type', $tipas );\n\t\t$order->update_meta_data( '_ps_groups',     wp_json_encode( $grupes ) );\n\t\t$order->update_meta_data( '_ps_shipments',  count( $grupes ) );\n\t\t$order->update_meta_data( '_ps_decided_at', current_time( 'mysql' ) );\n\t\t$order->save();\n\n\t\t$sant = [];\n\t\tforeach ( $grupes as $s => $g ) { $sant[] = strtoupper( $s ) . ' ' . $g['vienetai'] . ' vnt'; }\n\t\t$order->add_order_note( 'Vykdymas: ' . $tipas . ' — ' . implode( ' · ', $sant )\n\t\t\t. ' (' . count( $grupes ) . ' siunta(-os))' . ( $misrus ? ' · mišrus → AV pirmenybė' : ' · dropship pirma' ) );\n\n\t\treturn [ 'tipas' => $tipas, 'grupes' => $grupes ];\n\t}\n\n\t/** Perskaito ĮRAŠYTĄ sprendimą. NEPERSKAIČIUOJA. */\n\tpublic static function skaityti( $order ) {\n\t\t$order = is_numeric( $order ) ? wc_get_order( $order ) : $order;\n\t\tif ( ! $order ) { return null; }\n\t\t$tipas = $order->get_meta( '_ps_order_type' );\n\t\tif ( ! $tipas ) { return null; }\n\n\t\t$eilutes = [];\n\t\tforeach ( $order->get_items() as $item_id => $item ) {\n\t\t\t$eilutes[] = [\n\t\t\t\t'item_id' => $item_id,\n\t\t\t\t'pavadinimas' => $item->get_name(),\n\t\t\t\t'qty'     => (int) $item->get_quantity(),\n\t\t\t\t'source'  => $item->get_meta( '_ps_source' ) ?: '?',\n\t\t\t\t'carrier' => $item->get_meta( '_ps_carrier' ) ?: '?',\n\t\t\t\t'reason'  => $item->get_meta( '_ps_source_reason' ) ?: '',\n\t\t\t];\n\t\t}\n\t\treturn [\n\t\t\t'tipas'      => $tipas,\n\t\t\t'grupes'     => json_decode( (string) $order->get_meta( '_ps_groups' ), true ) ?: [],\n\t\t\t'siuntos'    => (int) $order->get_meta( '_ps_shipments' ),\n\t\t\t'nusprasta'  => $order->get_meta( '_ps_decided_at' ),\n\t\t\t'eilutes'    => $eilutes,\n\t\t];\n\t}\n}\nPetshop_AV_Order::init();\n",
+  "paysera_nurasymas": [],
+  "plugins": [
+   "code-snippets",
+   "complianz-gdpr",
+   "index.php",
+   "loco-translate",
+   "petshop-attributes",
+   "petshop-core",
+   "petshop-esp",
+   "petshop-fbt",
+   "petshop-feeds",
+   "petshop-fonts",
+   "petshop-pragma",
+   "petshop-promotions",
+   "petshop-xml",
+   "postit",
+   "redirection",
+   "seo-by-rank-math",
+   "shortpixel-image-optimiser",
+   "wc-venipak-shipping",
+   "woo-lithuaniapost-main",
+   "woo-payment-gateway-paysera",
+   "woo-update-manager",
+   "woocommerce",
+   "woocommerce-delivery-notes",
+   "woocommerce-mix-and-match-products",
+   "woocommerce-pdf-invoices-packing-slips",
+   "woocommerce-xml-csv-product-import",
+   "wordpress-importer",
+   "wp-all-import-pro",
+   "wp-mail-smtp",
+   "wp-super-cache",
+   "wpforms-lite",
+   "yith-woocommerce-ajax-navigation"
+  ]
+ },
+ "v": "dep-081017",
+ "kurimas": 200,
+ "sid": 6168,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
