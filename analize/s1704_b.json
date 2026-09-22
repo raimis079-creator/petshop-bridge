@@ -1,0 +1,48 @@
+{
+ "2": {
+  "v": "S1704b",
+  "faze": "2",
+  "uzsakymai": [
+   {
+    "id": "36091",
+    "qty": "5",
+    "status": "completed",
+    "data": "2026-09-19 21:22",
+    "_reduced_stock": "5",
+    "_ps_av_reduced_qty": "5",
+    "_ps_source": "av",
+    "nr": ""
+   }
+  ],
+  "ivykiai": [],
+  "partiju_stulp": [
+   "id",
+   "product_id",
+   "gauta",
+   "kiekis_gautas",
+   "kiekis_liko",
+   "savikaina_eur",
+   "savikaina_orig",
+   "valiuta",
+   "kursas",
+   "geriausia_iki",
+   "tiekejas",
+   "importuota",
+   "tiekimas_id",
+   "pastaba",
+   "sukurta",
+   "user_id",
+   "atsaukta"
+  ],
+  "partiju_nurasymai_lentele": [
+   "gaj6_ps_partijos"
+  ]
+ },
+ "v": "dep-080047",
+ "kurimas": 200,
+ "sid": 6163,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
