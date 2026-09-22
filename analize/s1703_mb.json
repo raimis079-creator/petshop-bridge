@@ -1,0 +1,1045 @@
+{
+ "1": {
+  "v": "S1703 mb",
+  "product_calc_php": "<?php\n/**\n * Petshop_Product_Calc — šėrimo skaičiuoklė PREKĖS puslapyje.\n *\n * KAM: naujas klientas skuba ir anketos nekurs. Stiprybė nėra anketa —\n * stiprybė yra ATSAKYMAS: „kiek užteks ir kiek kainuos diena\".\n * MASTER §3.1: nauda rodoma PRIEŠ prašant el. pašto; profilis atsiranda kaip\n * naudingo veiksmo REZULTATAS, ne kaip išankstinė prievolė.\n *\n * PRINCIPAS (užrakinta): skaičiuoklė NEVERTINA, ar maistas tinka. Ji rodo\n * gamintojo pateiktą normą, lentelės ribas arba skaičiuoja pagal vartotojo\n * faktinę porciją. Pirkti galima, šerti galima — mes tik neapsimetam žinantys\n * porcijos, kurios gamintojas nepateikė.\n *\n * VIETA (hibridas): MAŽAS kabliukas pirkimo bloke prie kainos, PILNAS\n * skaičiuotuvas PO „Į krepšelį\". Ne virš CTA (mobiliajame lėtintų pirkimą),\n * ne į tabus (ten funkcija mirtų).\n */\n\nif ( ! defined( 'ABSPATH' ) ) {\n\texit;\n}\n\nclass Petshop_Product_Calc {\n\n\tpublic static function init() {\n\t\t// Kabliukas pirkimo bloke — po kaina, PRIEŠ „Į krepšelį\" formą.\n\t\t/* S293: KABLIUKAS NUIMTAS. Jis buvo reikalingas, kai skaičiuoklė buvo\n\t\t * PASLĖPTA — atidarydavo ją. Dabar ji matoma iš karto, tad kabliukas\n\t\t * tik kartojo tą patį klausimą 300 px aukščiau. Vienas įėjimas. */\n\t\t// Pilnas skaičiuotuvas — PO pirkimo formos.\n\t\tadd_action( 'woocommerce_single_product_summary', array( __CLASS__, 'widget' ), 31 );\n\t\tadd_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue' ) );\n\t}\n\n\tpublic static function enqueue() {\n\t\tif ( ! function_exists( 'is_product' ) || ! is_product() ) { return; }\n\t\t$f = PETSHOP_CORE_DIR . 'assets/product-calc.js';\n\t\tif ( ! file_exists( $f ) ) { return; }\n\t\t/* S282 KLAIDA IŠTAISYTA: buvo plugins_url(..., dirname(__FILE__).'/x'),\n\t\t * kuris duoda .../petshop-core/INCLUDES/assets/... — neegzistuojantį kelią.\n\t\t * Skriptas patekdavo į HTML, bet 404, tad NIEKAD nepasikraudavo, ir joks\n\t\t * skaičiavimas neveikė. Naudojam PETSHOP_CORE_URL — jis apibrėžtas\n\t\t * pagrindiniame plugino faile ir nepalieka vietos klaidai. */\n\t\twp_enqueue_script( 'ps-product-calc',\n\t\t\tPETSHOP_CORE_URL . 'assets/product-calc.js',\n\t\t\tarray(), (string) filemtime( $f ), true );\n\t\t// REST bazė — kad JS nespėliotų kelio.\n\t\twp_localize_script( 'ps-product-calc', 'PSPetConfig', array(\n\t\t\t'restUrl' => esc_url_raw( get_rest_url( null, 'petshop/v1' ) ),\n\t\t) );\n\t}\n\n\t/** Ar produktui apskritai verta rodyti skaičiuoklę. */\n\tprivate static function context( $product ) {\n\t\tif ( ! $product || ! $product->is_type( array( 'simple', 'variable' ) ) ) { return null; }\n\t\t$pid = (int) $product->get_id();\n\n\t\t// Pakuotės dydis BŪTINAS — be jo nei trukmės, nei €/dienai neapskaičiuosim.\n\t\t$pkg = class_exists( 'Petshop_Feeding_Package_Provider' )\n\t\t\t? Petshop_Feeding_Package_Provider::for_product( $pid ) : null;\n\t\tif ( ! is_array( $pkg ) || empty( $pkg['sellable_unit_food_g'] ) ) { return null; }\n\n\t\t/*\n\t\t * S294 (savininko sprendimas 2026-08-25): skanestams ir kramtalams\n\t\t * skaiciuokle netinka — tai ne racionas, o priedas prie maisto, todel\n\t\t * „kiek uzteks\" klausimas klaidina. Rodoma tik maisto kategorijoms.\n\t\t */\n\t\t$slugs = wp_get_object_terms( $pid, 'product_cat', array( 'fields' => 'slugs' ) );\n\t\tif ( ! is_wp_error( $slugs ) ) {\n\t\t\tforeach ( (array) $slugs as $sl ) {\n\t\t\t\tif ( 0 === strpos( $sl, 'skanestai' ) || 0 === strpos( $sl, 'kramtal' ) ) { return null; }\n\t\t\t}\n\t\t}\n\n\t\t/*\n\t\t * S1670 (Raimis 2026-09-11): ŽUVIMS skaičiuoklė netinka — prekės puslapyje\n\t\t * rodė „Kiek šio maisto užteks jūsų šuniui?\". Tikrinama kategorija ir jos tėvai.\n\t\t */\n\t\t$kat_ids = wp_get_object_terms( $pid, 'product_cat', array( 'fields' => 'ids' ) );\n\t\tif ( ! is_wp_error( $kat_ids ) && $kat_ids ) {\n\t\t\t$zuv = get_term_by( 'slug', 'zuvims', 'product_cat' );\n\t\t\tif ( $zuv ) {\n\t\t\t\tforeach ( (array) $kat_ids as $tid ) {\n\t\t\t\t\t$tid = (int) $tid;\n\t\t\t\t\tif ( $tid === (int) $zuv->term_id || in_array( (int) $zuv->term_id, array_map( 'intval', get_ancestors( $tid, 'product_cat' ) ), true ) ) { return null; }\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\tglobal $wpdb;\n\t\t$map = $wpdb->prefix . 'ps_feeding_map';\n\t\t$has_table = (bool) $wpdb->get_var( $wpdb->prepare(\n\t\t\t\"SELECT 1 FROM $map WHERE product_id = %d AND is_active = 1 LIMIT 1\", $pid ) );\n\n\t\t// Rūšis — kad tekstas būtų „šuniui\" ar „katei\", ne beasmenis.\n\t\t$sp = wp_get_object_terms( $pid, 'pa_gyvuno_rusis', array( 'fields' => 'slugs' ) );\n\t\t$species = 'dog';\n\t\tif ( ! is_wp_error( $sp ) && $sp ) {\n\t\t\t$species = in_array( 'katems', $sp, true ) ? 'cat' : 'dog';\n\t\t}\n\t\t/* S288: prisijungęs žmogus su augintiniais NETURI tyliai susikurti antro.\n\t\t * Tokiu atveju vedam į augintinių sąrašą, kur jis pasirenka pats. */\n\t\t$pets = 0;\n\t\tif ( is_user_logged_in() ) {\n\t\t\t$t = $wpdb->prefix . 'ps_pets';\n\t\t\tif ( $wpdb->get_var( \"SHOW TABLES LIKE '$t'\" ) ) {\n\t\t\t\t$pets = (int) $wpdb->get_var( $wpdb->prepare(\n\t\t\t\t\t\"SELECT COUNT(*) FROM $t WHERE user_id = %d AND deleted_at IS NULL\", get_current_user_id() ) );\n\t\t\t}\n\t\t}\n\t\treturn array( 'pid' => $pid, 'has_table' => $has_table, 'species' => $species, 'pets' => $pets );\n\t}\n\n\t/**\n\t * Linksniai atskirai — kad sakiniai būtų taisyklingi.\n\t *  nom  „Kiek sveria jūsų ŠUO?\"        (vardininkas)\n\t *  dat  „...užteks jūsų ŠUNIUI?\"        (naudininkas)\n\t *  gen  „...jūsų ŠUNS aktyvumą\"         (kilmininkas)\n\t */\n\tprivate static function words( $species ) {\n\t\treturn ( $species === 'cat' )\n\t\t\t? array( 'nom' => 'katė', 'dat' => 'katei',  'gen' => 'katės' )\n\t\t\t: array( 'nom' => 'šuo',  'dat' => 'šuniui', 'gen' => 'šuns' );\n\t}\n\n\t/** S293: nebenaudojama (kabliukas nuimtas). Paliekama, jei prireiktų grąžinti. */\n\tpublic static function hook_line() {\n\t\tglobal $product;\n\t\t$c = self::context( $product );\n\t\tif ( ! $c ) { return; }\n\t\t$w = self::words( $c['species'] );\n\n\t\t/* Kabliuko tekstas SKIRIASI pagal produktą — serveris žino, ar yra\n\t\t * lentelė. Kitaip žmogus paspaustų ir nusiviltų „o jie nežino\". */\n\t\t$txt = $c['has_table']\n\t\t\t? 'Kiek šio maisto užteks jūsų ' . $w['dat'] . '?'\n\t\t\t: 'Kiek šio maisto užteks? Įveskite savo porciją';\n\t\t/* S281: TIKRA nuoroda į #ps-calc, ne mygtukas su JS.\n\t\t * Anksčiau atidarymas rėmėsi JS klausytoju — jei jis dėl bet kokios\n\t\t * priežasties nesuveikia, kabliukas tampa negyvas ir žmogus nieko\n\t\t * nesupranta. Nuoroda veikia visada, net JS nepakrovus. */\n\t\techo '<a class=\"ps-calc-hook\" href=\"#ps-calc\">'\n\t\t\t. esc_html( $txt ) . ' <span aria-hidden=\"true\">→</span></a>';\n\t}\n\n\tpublic static function widget() {\n\t\tglobal $product;\n\t\t$c = self::context( $product );\n\t\tif ( ! $c ) { return; }\n\t\t$w = self::words( $c['species'] );\n\t\tself::assets();\n\t\t?>\n\t\t<div class=\"ps-calc\" id=\"ps-calc\"\n\t\t\tdata-pid=\"<?php echo (int) $c['pid']; ?>\"\n\t\t\tdata-species=\"<?php echo esc_attr( $c['species'] ); ?>\"\n\t\t\tdata-has-table=\"<?php echo $c['has_table'] ? '1' : '0'; ?>\"\n\t\t\tdata-gen=\"<?php echo esc_attr( $w['gen'] ); ?>\"\n\t\t\tdata-pet=\"<?php echo esc_attr( $w['dat'] ); ?>\"\n\t\t\t<?php /* S287: produkto TAPATYBĖ perduodama į anketą, kad snapshot'as\n\t\t\t         (name+sku+package) būtų užpildytas be papildomos užklausos. */ ?>\n\t\t\tdata-pname=\"<?php echo esc_attr( $product->get_name() ); ?>\"\n\t\t\tdata-psku=\"<?php echo esc_attr( (string) $product->get_sku() ); ?>\"\n\t\t\tdata-ppkg=\"<?php echo esc_attr( (string) $product->get_attribute( 'pa_pakuotes_dydis' ) ); ?>\"\n\t\t\tdata-pets=\"<?php echo (int) $c['pets']; ?>\"\n\t\t\tdata-account=\"<?php echo esc_attr( wc_get_account_endpoint_url( 'augintinis' ) ); ?>\"\n\t\t\tdata-listurl=\"<?php echo esc_attr( ( class_exists( 'Petshop_Weight_Filter' ) && Petshop_Weight_Filter::enabled() ) ? Petshop_Weight_Filter::target_url( $c['species'] ) : '' ); ?>\">\n\t\t\t<?php /* S281: NESLEPIAM. Paslėptas blokas priklauso nuo JS, o dev\n\t\t\t         aplinkoje viskas turi matytis iš karto (Raimio nurodymas). */ ?>\n\n\t\t\t<div class=\"ps-calc-head\">\n\t\t\t\t<div class=\"ps-calc-h1\">Kiek šio maisto užteks jūsų <?php echo esc_html( $w['dat'] ); ?>?</div>\n\t\t\t\t<div class=\"ps-calc-h2\"><?php echo esc_html( $c['has_table']\n\t\t\t\t\t? 'Sužinokite pakuotės trukmę ir dienos kainą.'\n\t\t\t\t\t: 'Įveskite savo porciją — apskaičiuosime pakuotės trukmę ir dienos kainą.' ); ?></div>\n\t\t\t</div>\n\n\t\t\t<?php if ( $c['has_table'] ) : ?>\n\t\t\t\t<div class=\"ps-calc-row\" data-ps-mode=\"weight\">\n\t\t\t\t\t<label for=\"ps-calc-w\">Kiek sveria jūsų <?php echo esc_html( $w['nom'] ); ?>?</label>\n\t\t\t\t\t<div class=\"ps-calc-in\">\n\t\t\t\t\t\t<span class=\"ps-calc-unit\"><input type=\"number\" id=\"ps-calc-w\" min=\"0.5\" max=\"120\" step=\"0.1\" inputmode=\"decimal\" placeholder=\"0\"><i>kg</i></span>\n\t\t\t\t\t\t<button type=\"button\" class=\"ps-calc-go\">Apskaičiuoti →</button>\n\t\t\t\t\t</div>\n\t\t\t\t</div>\n\t\t\t<?php endif; ?>\n\n\t\t\t<?php /* S286: AMŽIUS. 104 produktai (šuniukų/kačiukų maistai, 62 lentelės)\n\t\t\t         turi normas PAGAL AMŽIŲ — svoriai jose persidengia (3,0–3,5 kg\n\t\t\t         8 mėn. ir 3,0–5,0 kg 10–12 mėn.), tad vien svoris atsakymo\n\t\t\t         neduoda. Be šio lauko anonimas negaudavo NIEKO — o užrakintas\n\t\t\t         principas sako, kad rezultatą jis turi gauti iš karto.\n\t\t\t         Rodom TIK kai variklis grąžina AGE_REQUIRED. */ ?>\n\t\t\t<div class=\"ps-calc-row ps-hide\" data-ps-mode=\"age\">\n\t\t\t\t<label for=\"ps-calc-a\">Kiek mėnesių jūsų augintiniui?</label>\n\t\t\t\t<div class=\"ps-calc-in\">\n\t\t\t\t\t<span class=\"ps-calc-unit\"><input type=\"number\" id=\"ps-calc-a\" min=\"1\" max=\"300\" step=\"1\" inputmode=\"numeric\" placeholder=\"0\"><i>mėn.</i></span>\n\t\t\t\t\t<button type=\"button\" class=\"ps-calc-go-age\">Apskaičiuoti →</button>\n\t\t\t\t</div>\n\t\t\t\t<p class=\"ps-calc-note\">Šio maisto gamintojas normas pateikia pagal amžių.</p>\n\t\t\t</div>\n\n\t\t\t<div class=\"ps-calc-row<?php echo $c['has_table'] ? ' ps-hide' : ''; ?>\" data-ps-mode=\"portion\">\n\t\t\t\t<label for=\"ps-calc-p\">Kiek gramų duodate per dieną?</label>\n\t\t\t\t<div class=\"ps-calc-in\">\n\t\t\t\t\t<span class=\"ps-calc-unit\"><input type=\"number\" id=\"ps-calc-p\" min=\"1\" max=\"5000\" step=\"1\" inputmode=\"numeric\" placeholder=\"0\"><i>g</i></span>\n\t\t\t\t\t<button type=\"button\" class=\"ps-calc-go-portion\">Apskaičiuoti →</button>\n\t\t\t\t</div>\n\t\t\t\t<?php /* S294: paaiškinimas NEBEKARTOJAMAS — nuo S293 jis yra antraštėje.\n\t\t\t\t         Tas pats sakinys dukart viename bloke atrodo kaip klaida. */ ?>\n\t\t\t</div>\n\n\t\t\t<div class=\"ps-calc-out\" aria-live=\"polite\"></div>\n\t\t</div>\n\t\t<?php\n\t}\n\n\tprivate static function assets() {\n\t\tstatic $done = false;\n\t\tif ( $done ) { return; }\n\t\t$done = true;\n\t\t?>\n\t\t<style>\n\t\t/* S293: skaičiuoklė — ANTRINIS sluoksnis. „Į krepšelį\" lieka vienintelis\n\t\t   pilnai užpildytas žalias mygtukas puslapyje.\n\t\t   Smėlio tonas #F3EFE5 (ne oranžinis!) — oranžinė meniu jau reiškia\n\t\t   „Pasiūlymai\", tad skaičiuoklė būtų palaikyta akcija. Smėlis priklauso\n\t\t   „Mano augintinis\" pasauliui — vizualiai tas pats sluoksnis. */\n\t\t.ps-calc{margin:16px 0 6px;background:#F3EFE5;border:1px solid #E5DCCB;\n\t\t\tborder-left:3px solid #2F6B4F;border-radius:14px;padding:16px 18px;scroll-margin-top:110px}\n\t\t@media (max-width:849px){ .ps-calc{scroll-margin-top:80px} }\n\t\t.ps-calc[hidden]{display:none}\n\t\t.ps-calc-head{margin-bottom:13px}\n\t\t.ps-calc-h1{font-size:15px;font-weight:750;color:#1F2A24;line-height:1.3;letter-spacing:-.01em}\n\t\t.ps-calc-h2{font-size:13px;color:#6B7A70;margin-top:4px;line-height:1.45}\n\t\t.ps-calc-row+.ps-calc-row{margin-top:12px;padding-top:12px;border-top:1px solid #E5DCCB}\n\t\t.ps-calc-row.ps-hide{display:none}\n\t\t.ps-calc label{display:block;font-size:13.5px;font-weight:650;color:#2A352E;margin-bottom:7px}\n\t\t.ps-calc-in{display:flex;gap:9px;flex-wrap:wrap;align-items:stretch}\n\t\t/* S298: laukas ir mygtukas turi VIENODĄ aukštį. Įvyniojus lauką į <span>\n\t\t   flex aukščiai išsiderino — dabar fiksuotas 46px abiem, box-sizing\n\t\t   border-box, ir Flatsome margin'ai nunulinti. */\n\t\t.ps-calc-unit{position:relative;flex:1 1 150px;min-width:130px;display:flex}\n\t\t.ps-calc-unit input{width:100%;height:46px;box-sizing:border-box;margin:0;\n\t\t\tborder:1px solid #D8D2C6;border-radius:11px;padding:0 44px 0 13px;\n\t\t\tfont:inherit;font-size:15px;line-height:44px;background:#fff;box-shadow:none}\n\t\t.ps-calc-unit input:focus{border-color:#2F6B4F;outline:none;box-shadow:0 0 0 3px rgba(47,107,79,.12)}\n\t\t.ps-calc-unit i{position:absolute;right:0;top:0;bottom:0;width:38px;\n\t\t\tdisplay:flex;align-items:center;justify-content:flex-start;\n\t\t\tfont-style:normal;font-size:13.5px;font-weight:650;color:#8A968C;pointer-events:none}\n\t\t.ps-calc-in button{flex:0 0 auto;height:46px;box-sizing:border-box;margin:0;\n\t\t\tdisplay:inline-flex;align-items:center;justify-content:center;\n\t\t\tbackground:#fff;color:#2F6B4F;border:1.5px solid #2F6B4F;\n\t\t\tborder-radius:11px;padding:0 20px;font:inherit;font-size:14px;font-weight:650;cursor:pointer;\n\t\t\ttext-transform:none;letter-spacing:normal;line-height:1}\n\t\t.ps-calc-in button:hover{background:#2F6B4F;color:#fff}\n\t\t.ps-calc-note{font-size:12.5px;color:#6B7A70;margin:8px 0 0;line-height:1.45}\n\t\t.ps-calc-out{margin-top:2px}\n\t\t.ps-calc-res{background:#fff;border-radius:13px;padding:15px 16px;margin-top:12px;text-align:center}\n\t\t.ps-calc-res .big{font-size:24px;font-weight:750;color:#1F4E39;letter-spacing:-.02em;line-height:1.15}\n\t\t.ps-calc-res .sub{font-size:13px;color:#5A665C;margin-top:5px;line-height:1.5}\n\t\t.ps-calc-res .src{font-size:12px;color:#8A968C;margin-top:8px;line-height:1.45}\n\t\t.ps-calc-info{background:#fff;border-radius:13px;padding:14px 16px;margin-top:12px;\n\t\t\tfont-size:13.5px;color:#5A665C;line-height:1.55}\n\t\t.ps-calc-cta{display:inline-block;margin-top:10px;border:1px solid #C9D8CD;background:#fff;\n\t\t\tborder-radius:999px;padding:9px 16px;font-size:13px;font-weight:650;color:#2F6B4F;text-decoration:none}\n\t\t.ps-calc-cta:hover{background:#F4F8F5;color:#1F4E39}\n\t\t.ps-calc-err{font-size:13px;color:#B4553F;margin-top:10px}\n\t\t/* S283: ANTRINIS blokas — ramesnis uz rezultata ir uz „I krepseli\". */\n\t\t.ps-calc-save{margin-top:12px;padding-top:12px;border-top:1px solid #E5DCCB}\n\t\t.ps-calc-save-t{font-size:13.5px;font-weight:700;color:#1F2A24}\n\t\t.ps-calc-save-p{font-size:12.5px;color:#6B7A70;line-height:1.5;margin-top:4px}\n\t\t.ps-calc-save-btn{display:inline-block;margin-top:10px;border:1px solid #C9D8CD;background:#fff;\n\t\t\tborder-radius:999px;padding:9px 17px;font-size:13px;font-weight:650;color:#2F6B4F;text-decoration:none}\n\t\t.ps-calc-save-btn:hover{background:#F4F8F5;border-color:#B9D3C1;color:#1F4E39}\n\t\t/* S288: patvirtinimas grįžus iš anketos. */\n\t\t.ps-calc-saved{background:#E8F1EA;border:1px solid #CBE0D2;border-radius:13px;padding:13px 15px;margin-bottom:12px}\n\t\t.ps-calc-saved-t{font-size:14px;font-weight:700;color:#1F4E39}\n\t\t.ps-calc-saved-p{font-size:12.5px;color:#5A665C;margin-top:3px;line-height:1.45}\n\t\t</style>\n\t\t<?php\n\t}\n}\n",
+  "product_calc_js_head": "/**\n * Petshop — šėrimo skaičiuoklė prekės puslapyje.\n *\n * Trys būsenos (užrakinta 2026-07-28):\n *  1. NORMA YRA        → tik rezultatas; svorio intervalo NErodom.\n *  2. UŽ INTERVALO     → gamintojo intervalas + priežastis + DU keliai\n *                        (sava porcija; maistai tam svoriui).\n *  3. LENTELĖS NĖRA    → iš karto porcija, be atsiprašinėjimo.\n *\n * NIEKADA: „netinka\" / „nerekomenduojama\" / „negalima šerti\".\n */\n(function () {\n\t'use strict';\n\n\tvar root = document.getElementById('ps-calc');\n\tif (!root) { return; }\n\n\tvar REST = (window.PSPetConfig && PSPetConfig.restUrl)\n\t\t? PSPetConfig.restUrl\n\t\t: (location.origin + '/wp-json/petshop/v1');\n\n\tvar pid      = parseInt(root.getAttribute('data-pid'), 10) || 0;\n\tvar species  = root.getAttribute('data-species') || 'dog';\n\tvar hasTable = root.getAttribute('data-has-table') === '1';\n\tvar GEN      = root.getAttribute('data-gen') || 'šuns';\n\tvar PET      = root.getAttribute('data-pet') || 'šuniui';\n\tvar PNAME    = root.getAttribute('data-pname') || '';\n\tvar PSKU     = root.getAttribute('data-psku') || '';\n\tvar PPKG     = root.getAttribute('data-ppkg') || '';\n\tvar PETS     = parseInt(root.getAttribute('data-pets'), 10) || 0;\n\tvar ACCOUNT  = root.getAttribute('data-account') || '/paskyra/augintinis/';\n\tvar LISTURL  = root.getAttribute('data-listurl') || '';\n\n\tvar out       = root.querySelector('.ps-calc-out');\n\tvar rowWeight = root.querySelector('[data-ps-mode=\"weight\"]');\n\tvar rowPort   = root.querySelector('[data-ps-mode=\"portion\"]');\n\tvar rowAge    = root.querySelector('[data-ps-mode=\"age\"]');\n\tvar lastWeight = null;\n\tvar lastAge    = null;\n\n\tfunction eur(v) {\n\t\tif (v === null || v === undefined) { return null; }\n\t\treturn Number(v).toFixed(2).replace('.', ',') + ' €';\n\t}\n\tfunction esc(s) {\n\t\treturn String(s === null || s === undefined ? '' : s)\n\t\t\t.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');\n\t}\n\tfunction dienos(n) {\n\t\tvar w = Math.round(n), d = w % 10, dd = w % 100;\n\t\tif (dd >= 11 && dd <= 19) { return 'dienų'; }\n\t\tif (d === 1) { return 'diena'; }\n\t\tif (d >= 2 && d <= 9) { return 'dienos'; }\n\t\treturn 'dienų';\n\t}\n\tfunction rng(a, b, fmt) {\n\t\tif (a === null || a === undefined) { return null; }\n\t\tvar f = fmt || function (x) { return x; };\n\t\treturn (a === b) ? f(a) : (f(a) + '–' + f(b));\n\t}\n\n\t/* S281: kabliukas dabar yra TIKRA nuoroda <a href=\"#ps-calc\"> — naršyklė\n\t * nuveda pati, net jei šis failas nepakrautų. JS tik prideda švelnų\n\t * slinkimą ir fokusą; jei jo nebūtų, funkcija vis tiek veikia. */\n\tdocument.addEventListener('click', function (e) {\n\t\tvar t = e.target.closest && e.target.closest('.ps-calc-hook');\n\t\tif (!t) { return; }\n\t\te.preventDefault();\n\t\troot.hidden = false;\n\t\ttry { root.scrollIntoView({ behavior: 'smooth', block: 'center' }); }\n\t\tcatch (err) { root.scrollIntoView(); }\n\t\tvar f = root.querySelector('input');\n\t\tif (f) { setTimeout(function () { f.focus(); }, 300); }\n\t});\n\n\t/* S288: grįžus iš anketos — patvirtinam, kad veiksmas pavyko.\n\t * Be to žmogus nežino, ar jo darbas išsaugotas. Blokas ANTRINIS ir\n\t * neuždengia nei kainos, nei „Į krepšelį\". */\n\t(function () {\n\t\tvar saved = null;\n\t\ttry { saved = window.sessionStorage.getItem('petshop_calc_saved'); } catch (e) {}\n\t\tif (!saved) { return; }\n\t\ttry { window.sessionStorage.removeItem('petshop_calc_saved'); } catch (e) {}\n\t\tvar b = document.createElement('div');\n\t\tb.className = 'ps-calc-saved';\n\t\tb.innerHTML = '<div class=\"ps-calc-saved-t\">Skaičiavimas išsaugotas augintinio profilyje</div>'\n\t\t\t+ '<div class=\"ps-calc-saved-p\">Svoris ir pasirinktas maistas jau įrašyti.</div>';\n\t\tvar go = document.createElement('a');\n\t\tgo.className = 'ps-calc-save-btn';\n\t\tgo.href = ACCOUNT;\n\t\tgo.textContent = 'Peržiūrėti mitybos planą';\n\t\tb.appendChild(go);\n\t\tif (out) { out.parentNode.insertBefore(b, out); }\n\t})();\n\n\tfunction post(body) {\n\t\treturn fetch(REST + '/feeding-calc', {\n\t\t\tmethod: 'POST',\n\t\t\theaders: { 'Content-Type': 'application/json' },\n\t\t\tbody: JSON.stringify(body)\n\t\t}).then(function (r) { return r.json(); });\n\t}\n\n\tfunction busy(btn, on) {\n\t\tif (!btn) { return; }\n\t\tbtn.disabled = on;\n\t\tif (on) { btn.dataset.t = btn.textContent; btn.textContent = '…'; }\n\t\telse if (btn.dataset.t) { btn.textContent = btn.dataset.t; }\n\t}\n\n\t// ---- Rezultatai ----\n\tfunction showOk(d) {\n\t\tvar days = rng(d.days_min, d.days_max);\n\t\tvar cost = rng(d.cost_day_min, d.cost_day_max, eur);\n\t\tvar norm = rng(d.norm_min_g, d.norm_max_g);\n\t\tvar h = '<div class=\"ps-calc-res\">';\n\t\tif (days !== null) {\n\t\t\th += '<div class=\"big\">Apie ' + esc(days) + ' ' + dienos(d.days_max || d.days_min) + '</div>';\n\t\t}\n\t\tif (cost !== null) {\n\t\t\th += '<div class=\"sub\">Apie <b>' + esc(cost) + '</b> per dieną</div>';\n\t\t}\n\t\tif (norm !== null) {\n\t\t\t// Pagrindas įvardijamas atvirai: gamintojo norma ar paties žmogaus porcija.\n\t\t\t/* S285: šaltinis įvardijamas VISADA ir tiksliai.\n\t\t\t * „Gamintojo REKOMENDUOJAMA\" — gamintojas ne nurodo, o rekomenduoja;\n\t\t\t * sprendimą priima savininkas. Kliento porcija turi savo formuluotę,\n\t\t\t * kad skirtumas tarp dviejų šaltinių būtų matomas. */\n\t\t\tvar one = (d.norm_min_g === d.norm_max_g);\n\t\t\th += '<div class=\"src\">' + (d.basis === 'user_portion'\n\t\t\t\t? 'Pagal jūsų nurodytą porciją: ' + esc(norm) + ' g per dieną'\n\t\t\t\t: 'Gamintojo rekomenduojama šėrimo norma: ' + (one ? 'apie ' : '') + esc(norm) + ' g per dieną')\n\t\t\t\t+ '</div>';\n\t\t}\n\t\tif (d.reason_codes && d.reason_codes.indexOf('PRICE_MISSING') >= 0) {\n\t\t\th += '<div class=\"src\">Kainos šiuo metu neturime, todėl dienos kainos nerodome.</div>';\n\t\t}\n\t\th += '</div>';\n\t\tout.innerHTML = h;\n\t\tout.appendChild(saveBlock(d));\n\t\tmarkCalcUsed();\n\t}\n\n\t/**\n\t * S299: pažymim pirkimo formą, kad žinotume, jog šis pirkimas įvyko PO\n\t * skaičiavimo. Be to nematuotume, ar skaičiuoklė apskritai ką nors duoda.\n\t * Žymim TIK gavus realų rezultatą — ne vien už apsilankymą puslapyje.\n\t * RIBA: tai priskyrimas, ne priežastingumas.\n\t */\n\tfunction markCalcUsed() {\n\t\tvar forms = document.querySelectorAll('form.cart');\n\t\tfor (var i = 0; i < forms.length; i++)"
+ },
+ "2": {
+  "v": "S1703 mb",
+  "fs_head": "<?php\n/**\n * Petshop_Feeding_Service — VIENINTELĖ orkestracija visoms sąsajoms.\n * pet_id/pet_input + product_id → porcija/trukmė/kaina.\n * Naudoja: Petshop_Feeding_Repository (lentelė+eilutės), Petshop_Feeding_Calculator (matematika),\n *          Petshop_Feeding_Package_Provider→Resolver (pakuotė). Jokios atskiros formulės.\n *\n * Įvestis:\n *  [ 'product_id'=>int, 'quantity'=>int, 'usage_context'=>'catalog',\n *    'pet_input'=>[ 'current_weight_kg'=>float|null, 'conditions'=>[] ],\n *    'price_context'=>null | [ 'amount_inc_vat'=>float, 'scope'=>'unit'|'line_total' ] ]\n *\n * Išvestis:\n *  [ 'status'=>ok|partial|needs_input|redirect|unavailable|system_error,\n *    'tier'=>A|B1|B2|D|null, 'method'=>..., 'portion_g'=>['min','max']|null,\n *    'duration_days'=>..., 'eur_per_day'=>..., 'eur_per_month'=>..., 'issues'=>[], 'meta'=>[] ]\n */\nif ( ! class_exists( 'Petshop_Feeding_Service' ) ) {\nclass Petshop_Feeding_Service {\n\n\tpublic static function evaluate( array $in ) {\n\t\t$issues = array(); $meta = array();\n\t\t$pid = isset( $in['product_id'] ) ? (int) $in['product_id'] : 0;\n\t\t$qty = isset( $in['quantity'] ) ? max( 1, (int) $in['quantity'] ) : 1;\n\t\t$w   = isset( $in['pet_input']['current_weight_kg'] ) && $in['pet_input']['current_weight_kg'] !== null\n\t\t\t? (float) $in['pet_input']['current_weight_kg'] : null;\n\t\t$cond = ( isset( $in['pet_input']['conditions'] ) && is_array( $in['pet_input']['conditions'] ) )\n\t\t\t? $in['pet_input']['conditions'] : array();\n\n\t\t$empty = array( 'portion_g' => null, 'duration_days' => null, 'eur_per_day' => null, 'eur_per_month' => null );\n\t\t$out = function( $status, $tier = null, $method = null, $vals = array() ) use ( $empty, &$issues, &$meta ) {\n\t\t\treturn array_merge( array( 'status' => $status, 'tier' => $tier, 'method' => $method ),\n\t\t\t\t$empty, $vals, array( 'issues' => $issues, 'meta' => $meta ) );\n\t\t};\n\n\t\t$product = function_exists( 'wc_get_product' ) ? wc_get_product( $pid ) : null;\n\t\tif ( ! $product ) {\n\t\t\t$issues[] = array( 'code' => 'PRODUCT_NOT_FOUND', 'severity' => 'error', 'layer' => 'product' );\n\t\t\treturn $out( 'unavailable' );\n\t\t}\n\n\t\t// Repository — runtime invariantas (jokio LIMIT 1)\n\t\t$repo = new Petshop_Feeding_Repository();\n\t\t$rt = $repo->get_for_product( $pid );\n\n\t\tswitch ( $rt['status'] ) {\n\t\t\tcase 'DATA_INTEGRITY_ERROR':\n\t\t\t\t$corr = uniqid( 'fcalc_' );\n\t\t\t\t$issues[] = array( 'code' => 'DATA_INTEGRITY_ERROR', 'severity' => 'error', 'layer' => 'repository',\n\t\t\t\t\t'table_ids' => $rt['table_ids'] ?? array(), 'correlation"
+ },
+ "3": {
+  "v": "S1703 mb",
+  "preke": {
+   "18014": null,
+   "18054": {
+    "n": "Josera Leger 10 kg - sausas maistas katėms, mažiau kalorijų",
+    "kaina": "40.89",
+    "svoris": "10",
+    "st": "instock"
+   },
+   "18587": {
+    "n": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    "kaina": "56.99",
+    "svoris": "7",
+    "st": "instock"
+   }
+  },
+  "calc": {
+   "18014": [
+    {
+     "status": "system_error",
+     "availability": {
+      "norm": false,
+      "duration": false,
+      "cost": false
+     },
+     "reason_codes": [
+      "SYSTEM_ERROR"
+     ],
+     "message_lt": "Produktas nerastas.",
+     "weight_missing": false,
+     "weight_mode": null,
+     "norm_min_g": null,
+     "norm_max_g": null,
+     "days_min": null,
+     "days_max": null,
+     "cost_day_min": null,
+     "cost_day_max": null,
+     "cost_30d_min": null,
+     "cost_30d_max": null,
+     "basis": null,
+     "basis_label_lt": null,
+     "activity_mode": "none",
+     "activity_options": [],
+     "activity_selected": null,
+     "interval_options": [],
+     "interval_too_wide": false,
+     "weight_interval_selected": null,
+     "species_required": false,
+     "species_options": [],
+     "sellable_unit_food_g": null,
+     "currency": null,
+     "price_source": null,
+     "price_context": null,
+     "price_used": null,
+     "mixed_estimate": null
+    },
+    {
+     "status": "system_error",
+     "availability": {
+      "norm": false,
+      "duration": false,
+      "cost": false
+     },
+     "reason_codes": [
+      "SYSTEM_ERROR"
+     ],
+     "message_lt": "Produktas nerastas.",
+     "weight_missing": false,
+     "weight_mode": null,
+     "norm_min_g": null,
+     "norm_max_g": null,
+     "days_min": null,
+     "days_max": null,
+     "cost_day_min": null,
+     "cost_day_max": null,
+     "cost_30d_min": null,
+     "cost_30d_max": null,
+     "basis": null,
+     "basis_label_lt": null,
+     "activity_mode": "none",
+     "activity_options": [],
+     "activity_selected": null,
+     "interval_options": [],
+     "interval_too_wide": false,
+     "weight_interval_selected": null,
+     "species_required": false,
+     "species_options": [],
+     "sellable_unit_food_g": null,
+     "currency": null,
+     "price_source": null,
+     "price_context": null,
+     "price_used": null,
+     "mixed_estimate": null
+    },
+    {
+     "status": "system_error",
+     "availability": {
+      "norm": false,
+      "duration": false,
+      "cost": false
+     },
+     "reason_codes": [
+      "SYSTEM_ERROR"
+     ],
+     "message_lt": "Produktas nerastas.",
+     "weight_missing": false,
+     "weight_mode": null,
+     "norm_min_g": null,
+     "norm_max_g": null,
+     "days_min": null,
+     "days_max": null,
+     "cost_day_min": null,
+     "cost_day_max": null,
+     "cost_30d_min": null,
+     "cost_30d_max": null,
+     "basis": null,
+     "basis_label_lt": null,
+     "activity_mode": "none",
+     "activity_options": [],
+     "activity_selected": null,
+     "interval_options": [],
+     "interval_too_wide": false,
+     "weight_interval_selected": null,
+     "species_required": false,
+     "species_options": [],
+     "sellable_unit_food_g": null,
+     "currency": null,
+     "price_source": null,
+     "price_context": null,
+     "price_used": null,
+     "mixed_estimate": null
+    }
+   ],
+   "18054": [
+    {
+     "status": "ok",
+     "availability": {
+      "norm": true,
+      "duration": true,
+      "cost": true
+     },
+     "reason_codes": [],
+     "message_lt": null,
+     "weight_missing": false,
+     "weight_mode": "exact",
+     "norm_min_g": 110,
+     "norm_max_g": 140,
+     "days_min": 71,
+     "days_max": 90,
+     "cost_day_min": 0.45,
+     "cost_day_max": 0.57,
+     "cost_30d_min": 13.49,
+     "cost_30d_max": 17.17,
+     "basis": "by_weight",
+     "basis_label_lt": "Pagal svorį",
+     "activity_mode": "none",
+     "activity_options": [],
+     "activity_selected": null,
+     "interval_options": [
+      {
+       "code": "W2_3",
+       "min_kg": 2,
+       "max_kg": 3,
+       "label_lt": "2–3 kg"
+      },
+      {
+       "code": "W3_4",
+       "min_kg": 3,
+       "max_kg": 4,
+       "label_lt": "3–4 kg"
+      },
+      {
+       "code": "W4_5",
+       "min_kg": 4,
+       "max_kg": 5,
+       "label_lt": "4–5 kg"
+      },
+      {
+       "code": "W5_7",
+       "min_kg": 5,
+       "max_kg": 7,
+       "label_lt": "5–7 kg"
+      },
+      {
+       "code": "W7_10",
+       "min_kg": 7,
+       "max_kg": 10,
+       "label_lt": "7–10 kg"
+      }
+     ],
+     "interval_too_wide": false,
+     "weight_interval_selected": null,
+     "species_required": false,
+     "species_options": [],
+     "sellable_unit_food_g": 10000,
+     "currency": "EUR",
+     "price_source": "product",
+     "price_context": "regular",
+     "price_used": 40.89,
+     "mixed_estimate": null,
+     "activity_would_narrow": true,
+     "narrowing_axes": [
+      "activity"
+     ]
+    },
+    {
+     "status": "ok",
+     "availability": {
+      "norm": true,
+      "duration": true,
+      "cost": true
+     },
+     "reason_codes": [],
+     "message_lt": null,
+     "weight_missing": false,
+     "weight_mode": "exact",
+     "norm_min_g": 110,
+     "norm_max_g": 140,
+     "days_min": 71,
+     "days_max": 90,
+     "cost_day_min": 0.45,
+     "cost_day_max": 0.57,
+     "cost_30d_min": 13.49,
+     "cost_30d_max": 17.17,
+     "basis": "by_weight",
+     "basis_label_lt": "Pagal svorį",
+     "activity_mode": "none",
+     "activity_options": [],
+     "activity_selected": null,
+     "interval_options": [
+      {
+       "code": "W2_3",
+       "min_kg": 2,
+       "max_kg": 3,
+       "label_lt": "2–3 kg"
+      },
+      {
+       "code": "W3_4",
+       "min_kg": 3,
+       "max_kg": 4,
+       "label_lt": "3–4 kg"
+      },
+      {
+       "code": "W4_5",
+       "min_kg": 4,
+       "max_kg": 5,
+       "label_lt": "4–5 kg"
+      },
+      {
+       "code": "W5_7",
+       "min_kg": 5,
+       "max_kg": 7,
+       "label_lt": "5–7 kg"
+      },
+      {
+       "code": "W7_10",
+       "min_kg": 7,
+       "max_kg": 10,
+       "label_lt": "7–10 kg"
+      }
+     ],
+     "interval_too_wide": false,
+     "weight_interval_selected": null,
+     "species_required": false,
+     "species_options": [],
+     "sellable_unit_food_g": 10000,
+     "currency": "EUR",
+     "price_source": "product",
+     "price_context": "regular",
+     "price_used": 40.89,
+     "mixed_estimate": null,
+     "activity_would_narrow": true,
+     "narrowing_axes": [
+      "activity"
+     ]
+    },
+    {
+     "status": "ok",
+     "availability": {
+      "norm": true,
+      "duration": true,
+      "cost": true
+     },
+     "reason_codes": [],
+     "message_lt": null,
+     "weight_missing": false,
+     "weight_mode": "exact",
+     "norm_min_g": 110,
+     "norm_max_g": 140,
+     "days_min": 71,
+     "days_max": 90,
+     "cost_day_min": 0.45,
+     "cost_day_max": 0.57,
+     "cost_30d_min": 13.49,
+     "cost_30d_max": 17.17,
+     "basis": "by_weight",
+     "basis_label_lt": "Pagal svorį",
+     "activity_mode": "none",
+     "activity_options": [],
+     "activity_selected": null,
+     "interval_options": [
+      {
+       "code": "W2_3",
+       "min_kg": 2,
+       "max_kg": 3,
+       "label_lt": "2–3 kg"
+      },
+      {
+       "code": "W3_4",
+       "min_kg": 3,
+       "max_kg": 4,
+       "label_lt": "3–4 kg"
+      },
+      {
+       "code": "W4_5",
+       "min_kg": 4,
+       "max_kg": 5,
+       "label_lt": "4–5 kg"
+      },
+      {
+       "code": "W5_7",
+       "min_kg": 5,
+       "max_kg": 7,
+       "label_lt": "5–7 kg"
+      },
+      {
+       "code": "W7_10",
+       "min_kg": 7,
+       "max_kg": 10,
+       "label_lt": "7–10 kg"
+      }
+     ],
+     "interval_too_wide": false,
+     "weight_interval_selected": null,
+     "species_required": false,
+     "species_options": [],
+     "sellable_unit_food_g": 10000,
+     "currency": "EUR",
+     "price_source": "product",
+     "price_context": "regular",
+     "price_used": 40.89,
+     "mixed_estimate": null,
+     "activity_would_narrow": true,
+     "narrowing_axes": [
+      "activity"
+     ]
+    }
+   ],
+   "18587": [
+    {
+     "status": "ok",
+     "availability": {
+      "norm": true,
+      "duration": true,
+      "cost": true
+     },
+     "reason_codes": [],
+     "message_lt": null,
+     "weight_missing": false,
+     "weight_mode": "exact",
+     "norm_min_g": 140,
+     "norm_max_g": 160,
+     "days_min": 43,
+     "days_max": 50,
+     "cost_day_min": 1.14,
+     "cost_day_max": 1.3,
+     "cost_30d_min": 34.19,
+     "cost_30d_max": 39.08,
+     "basis": "by_weight",
+     "basis_label_lt": "Pagal svorį",
+     "activity_mode": "none",
+     "activity_options": [],
+     "activity_selected": null,
+     "interval_options": [
+      {
+       "code": "W2_3",
+       "min_kg": 2,
+       "max_kg": 3,
+       "label_lt": "2–3 kg"
+      },
+      {
+       "code": "W3_4",
+       "min_kg": 3,
+       "max_kg": 4,
+       "label_lt": "3–4 kg"
+      },
+      {
+       "code": "W4_5",
+       "min_kg": 4,
+       "max_kg": 5,
+       "label_lt": "4–5 kg"
+      },
+      {
+       "code": "W5_6",
+       "min_kg": 5,
+       "max_kg": 6,
+       "label_lt": "5–6 kg"
+      },
+      {
+       "code": "W6_8",
+       "min_kg": 6,
+       "max_kg": 8,
+       "label_lt": "6–8 kg"
+      },
+      {
+       "code": "W8_10",
+       "min_kg": 8,
+       "max_kg": 10,
+       "label_lt": "8–10 kg"
+      }
+     ],
+     "interval_too_wide": false,
+     "weight_interval_selected": null,
+     "species_required": false,
+     "species_options": [],
+     "sellable_unit_food_g": 7000,
+     "currency": "EUR",
+     "price_source": "product",
+     "price_context": "regular",
+     "price_used": 56.99,
+     "mixed_estimate": null,
+     "activity_would_narrow": true,
+     "narrowing_axes": [
+      "activity"
+     ]
+    },
+    {
+     "status": "ok",
+     "availability": {
+      "norm": true,
+      "duration": true,
+      "cost": true
+     },
+     "reason_codes": [],
+     "message_lt": null,
+     "weight_missing": false,
+     "weight_mode": "exact",
+     "norm_min_g": 140,
+     "norm_max_g": 160,
+     "days_min": 43,
+     "days_max": 50,
+     "cost_day_min": 1.14,
+     "cost_day_max": 1.3,
+     "cost_30d_min": 34.19,
+     "cost_30d_max": 39.08,
+     "basis": "by_weight",
+     "basis_label_lt": "Pagal svorį",
+     "activity_mode": "none",
+     "activity_options": [],
+     "activity_selected": null,
+     "interval_options": [
+      {
+       "code": "W2_3",
+       "min_kg": 2,
+       "max_kg": 3,
+       "label_lt": "2–3 kg"
+      },
+      {
+       "code": "W3_4",
+       "min_kg": 3,
+       "max_kg": 4,
+       "label_lt": "3–4 kg"
+      },
+      {
+       "code": "W4_5",
+       "min_kg": 4,
+       "max_kg": 5,
+       "label_lt": "4–5 kg"
+      },
+      {
+       "code": "W5_6",
+       "min_kg": 5,
+       "max_kg": 6,
+       "label_lt": "5–6 kg"
+      },
+      {
+       "code": "W6_8",
+       "min_kg": 6,
+       "max_kg": 8,
+       "label_lt": "6–8 kg"
+      },
+      {
+       "code": "W8_10",
+       "min_kg": 8,
+       "max_kg": 10,
+       "label_lt": "8–10 kg"
+      }
+     ],
+     "interval_too_wide": false,
+     "weight_interval_selected": null,
+     "species_required": false,
+     "species_options": [],
+     "sellable_unit_food_g": 7000,
+     "currency": "EUR",
+     "price_source": "product",
+     "price_context": "regular",
+     "price_used": 56.99,
+     "mixed_estimate": null,
+     "activity_would_narrow": true,
+     "narrowing_axes": [
+      "activity"
+     ]
+    },
+    {
+     "status": "ok",
+     "availability": {
+      "norm": true,
+      "duration": true,
+      "cost": true
+     },
+     "reason_codes": [],
+     "message_lt": null,
+     "weight_missing": false,
+     "weight_mode": "exact",
+     "norm_min_g": 140,
+     "norm_max_g": 160,
+     "days_min": 43,
+     "days_max": 50,
+     "cost_day_min": 1.14,
+     "cost_day_max": 1.3,
+     "cost_30d_min": 34.19,
+     "cost_30d_max": 39.08,
+     "basis": "by_weight",
+     "basis_label_lt": "Pagal svorį",
+     "activity_mode": "none",
+     "activity_options": [],
+     "activity_selected": null,
+     "interval_options": [
+      {
+       "code": "W2_3",
+       "min_kg": 2,
+       "max_kg": 3,
+       "label_lt": "2–3 kg"
+      },
+      {
+       "code": "W3_4",
+       "min_kg": 3,
+       "max_kg": 4,
+       "label_lt": "3–4 kg"
+      },
+      {
+       "code": "W4_5",
+       "min_kg": 4,
+       "max_kg": 5,
+       "label_lt": "4–5 kg"
+      },
+      {
+       "code": "W5_6",
+       "min_kg": 5,
+       "max_kg": 6,
+       "label_lt": "5–6 kg"
+      },
+      {
+       "code": "W6_8",
+       "min_kg": 6,
+       "max_kg": 8,
+       "label_lt": "6–8 kg"
+      },
+      {
+       "code": "W8_10",
+       "min_kg": 8,
+       "max_kg": 10,
+       "label_lt": "8–10 kg"
+      }
+     ],
+     "interval_too_wide": false,
+     "weight_interval_selected": null,
+     "species_required": false,
+     "species_options": [],
+     "sellable_unit_food_g": 7000,
+     "currency": "EUR",
+     "price_source": "product",
+     "price_context": "regular",
+     "price_used": 56.99,
+     "mixed_estimate": null,
+     "activity_would_narrow": true,
+     "narrowing_axes": [
+      "activity"
+     ]
+    }
+   ]
+  },
+  "species": [
+   {
+    "species": "cat",
+    "scope": "adult",
+    "status": "verified",
+    "is_active": "1",
+    "n": "16"
+   },
+   {
+    "species": "cat",
+    "scope": "line",
+    "status": "ambiguous",
+    "is_active": "0",
+    "n": "2"
+   },
+   {
+    "species": "cat",
+    "scope": "line",
+    "status": "verified",
+    "is_active": "1",
+    "n": "37"
+   },
+   {
+    "species": "cat",
+    "scope": "product",
+    "status": "ambiguous",
+    "is_active": "0",
+    "n": "2"
+   },
+   {
+    "species": "cat",
+    "scope": "product",
+    "status": "verified",
+    "is_active": "1",
+    "n": "15"
+   },
+   {
+    "species": "cat",
+    "scope": "senior",
+    "status": "verified",
+    "is_active": "1",
+    "n": "1"
+   },
+   {
+    "species": "dog",
+    "scope": "adult",
+    "status": "verified",
+    "is_active": "1",
+    "n": "38"
+   },
+   {
+    "species": "dog",
+    "scope": "line",
+    "status": "ambiguous",
+    "is_active": "0",
+    "n": "3"
+   },
+   {
+    "species": "dog",
+    "scope": "line",
+    "status": "verified",
+    "is_active": "1",
+    "n": "100"
+   },
+   {
+    "species": "dog",
+    "scope": "product",
+    "status": "ambiguous",
+    "is_active": "0",
+    "n": "3"
+   },
+   {
+    "species": "dog",
+    "scope": "product",
+    "status": "verified",
+    "is_active": "1",
+    "n": "61"
+   },
+   {
+    "species": "dog",
+    "scope": "puppy",
+    "status": "needs_review",
+    "is_active": "1",
+    "n": "1"
+   },
+   {
+    "species": "dog",
+    "scope": "puppy",
+    "status": "verified",
+    "is_active": "1",
+    "n": "14"
+   },
+   {
+    "species": "dog",
+    "scope": "senior",
+    "status": "verified",
+    "is_active": "1",
+    "n": "3"
+   }
+  ],
+  "dims": [
+   {
+    "species": "dog",
+    "d": null,
+    "n": "742"
+   },
+   {
+    "species": "dog",
+    "d": "{\"activity_level\":\"high\"}",
+    "n": "438"
+   },
+   {
+    "species": "dog",
+    "d": "{\"activity_level\":\"moderate\"}",
+    "n": "393"
+   },
+   {
+    "species": "dog",
+    "d": "{\"activity_level\":\"low\"}",
+    "n": "342"
+   },
+   {
+    "species": "cat",
+    "d": null,
+    "n": "206"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":3,\"age_m_to\":3}",
+    "n": "189"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":2,\"age_m_to\":2}",
+    "n": "157"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":6,\"age_m_to\":6}",
+    "n": "152"
+   },
+   {
+    "species": "dog",
+    "d": "{\"body_condition\":\"thin\"}",
+    "n": "138"
+   },
+   {
+    "species": "dog",
+    "d": "{\"body_condition\":\"ideal\"}",
+    "n": "138"
+   },
+   {
+    "species": "dog",
+    "d": "{\"body_condition\":\"heavy\"}",
+    "n": "138"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":4,\"age_m_to\":4}",
+    "n": "137"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":10,\"age_m_to\":10}",
+    "n": "129"
+   },
+   {
+    "species": "dog",
+    "d": "{\"lifestyle\":\"indoor\"}",
+    "n": "122"
+   },
+   {
+    "species": "dog",
+    "d": "{\"lifestyle\":\"outdoor\"}",
+    "n": "122"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":12,\"age_m_to\":12}",
+    "n": "115"
+   },
+   {
+    "species": "cat",
+    "d": "{\"body_condition\":\"ideal\"}",
+    "n": "82"
+   },
+   {
+    "species": "cat",
+    "d": "{\"body_condition\":\"heavy\"}",
+    "n": "80"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":5,\"age_m_to\":6}",
+    "n": "78"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":3,\"age_m_to\":4}",
+    "n": "69"
+   },
+   {
+    "species": "cat",
+    "d": "{\"body_condition\":\"thin\"}",
+    "n": "66"
+   },
+   {
+    "species": "dog",
+    "d": "{\"housing\":\"indoor\"}",
+    "n": "65"
+   },
+   {
+    "species": "dog",
+    "d": "{\"housing\":\"outdoor\"}",
+    "n": "65"
+   },
+   {
+    "species": "dog",
+    "d": "{\"housing\":\"active\"}",
+    "n": "65"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":13,\"age_m_to\":18}",
+    "n": "56"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":5,\"age_m_to\":7}",
+    "n": "55"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":5,\"age_m_to\":5}",
+    "n": "53"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":8,\"age_m_to\":8}",
+    "n": "53"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":8,\"age_m_to\":12}",
+    "n": "47"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":1.5,\"age_m_to\":2}",
+    "n": "45"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":7,\"age_m_to\":12}",
+    "n": "45"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":1,\"age_m_to\":2}",
+    "n": "40"
+   },
+   {
+    "species": "cat",
+    "d": "{\"lifestyle\":\"outdoor\"}",
+    "n": "40"
+   },
+   {
+    "species": "cat",
+    "d": "{\"lifestyle\":\"indoor\"}",
+    "n": "40"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":10,\"age_m_to\":12}",
+    "n": "33"
+   },
+   {
+    "species": "cat",
+    "d": "{\"body_condition\":\"lean\"}",
+    "n": "30"
+   },
+   {
+    "species": "cat",
+    "d": "{\"body_condition\":\"normal\"}",
+    "n": "30"
+   },
+   {
+    "species": "cat",
+    "d": "{\"body_condition\":\"overweight\"}",
+    "n": "30"
+   },
+   {
+    "species": "dog",
+    "d": "{\"age_m_from\":16,\"age_m_to\":16}",
+    "n": "26"
+   },
+   {
+    "species": "cat",
+    "d": "{\"activity_level\":\"low\"}",
+    "n": "26"
+   }
+  ],
+  "top_cats": [
+   {
+    "term_id": "16",
+    "name": "Kita",
+    "slug": "uncategorized",
+    "parent": "0",
+    "count": "0"
+   },
+   {
+    "term_id": "70",
+    "name": "ŠUNIMS",
+    "slug": "sunims",
+    "parent": "0",
+    "count": "15"
+   },
+   {
+    "term_id": "77",
+    "name": "KATĖMS",
+    "slug": "katems",
+    "parent": "0",
+    "count": "0"
+   },
+   {
+    "term_id": "80",
+    "name": "Miamor katėms",
+    "slug": "miamor-katems",
+    "parent": "0",
+    "count": "22"
+   },
+   {
+    "term_id": "83",
+    "name": "Super Premium šunų maistas",
+    "slug": "super-premium-sunu-maistas",
+    "parent": "0",
+    "count": "5"
+   },
+   {
+    "term_id": "84",
+    "name": "Kitos prekes Žalios Bangos",
+    "slug": "kitos-prekes-zalios-bangos",
+    "parent": "0",
+    "count": "0"
+   },
+   {
+    "term_id": "85",
+    "name": "Hipoalerginis maistas šunims",
+    "slug": "hipoalerginis-maistas-sunims",
+    "parent": "0",
+    "count": "33"
+   },
+   {
+    "term_id": "86",
+    "name": "Animonda konservai šunims",
+    "slug": "animonda-konservai-sunims",
+    "parent": "0",
+    "count": "38"
+   },
+   {
+    "term_id": "87",
+    "name": "GRAUŽIKAMS",
+    "slug": "grauzikams",
+    "parent": "0",
+    "count": "0"
+   },
+   {
+    "term_id": "89",
+    "name": "PAUKŠČIAMS",
+    "slug": "pauksciams",
+    "parent": "0",
+    "count": "0"
+   },
+   {
+    "term_id": "91",
+    "name": "DAUGIAU=PIGIAU",
+    "slug": "daugiau-pigiau",
+    "parent": "0",
+    "count": "23"
+   },
+   {
+    "term_id": "93",
+    "name": "ŽUVIMS",
+    "slug": "zuvims",
+    "parent": "0",
+    "count": "0"
+   },
+   {
+    "term_id": "119",
+    "name": "DOVANOS",
+    "slug": "dovanos",
+    "parent": "0",
+    "count": "1"
+   },
+   {
+    "term_id": "120",
+    "name": "Ypatingi pasiūlymai",
+    "slug": "ypatingi-pasiulymai",
+    "parent": "0",
+    "count": "0"
+   },
+   {
+    "term_id": "131",
+    "name": "kita",
+    "slug": "kita",
+    "parent": "0",
+    "count": "0"
+   },
+   {
+    "term_id": "679",
+    "name": "RINKINIAI",
+    "slug": "rinkiniai",
+    "parent": "0",
+    "count": "26"
+   },
+   {
+    "term_id": "680",
+    "name": "SPRENDIMAI",
+    "slug": "sprendimai",
+    "parent": "0",
+    "count": "0"
+   },
+   {
+    "term_id": "681",
+    "name": "PASIŪLYMAI",
+    "slug": "pasiulymai",
+    "parent": "0",
+    "count": "0"
+   }
+  ],
+  "gyvos_pagal_rusi": {
+   "dog": 307,
+   "cat": 119
+  },
+  "gyvos_pagal_pak": {
+   "dog 7+": 153,
+   "dog 3-7": 55,
+   "cat <3": 68,
+   "cat 3-7": 9,
+   "dog <3": 99,
+   "cat 7+": 42
+  },
+  "gyvos_n": 426
+ },
+ "v": "dep-061747",
+ "kurimas": 200,
+ "sid": 6152,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
