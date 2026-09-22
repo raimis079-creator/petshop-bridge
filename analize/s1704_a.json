@@ -1,0 +1,221 @@
+{
+ "1": {
+  "v": "S1704",
+  "faze": "1",
+  "rasta_ids": [
+   "19366"
+  ],
+  "pid": 19366,
+  "preke": {
+   "id": 19366,
+   "pav": "Animonda Vom Feinsten Junior with Poultry and Turkey Hearts - konservai šuniukams/jauniems šunims su paukštiena ir kalakutų širdimis, 150 g",
+   "status": "publish",
+   "sku": "82973"
+  },
+  "meta": {
+   "_ps_sandelis": "av",
+   "_stock": "62",
+   "_own_stock_qty": null,
+   "_manage_stock": "yes",
+   "_stock_status": "instock",
+   "_cost_price": "0.68",
+   "_vf_cost": null,
+   "_zb_cost": null,
+   "_vf_supplier_sku": null,
+   "_zb_sku": null,
+   "_vf_barcode": null,
+   "_ean": "4017721829731",
+   "_price": "1.27",
+   "_regular_price": "1.27",
+   "_ps_dropship_paslepta": null,
+   "_own_stock_qty_log_prev": null,
+   "_zb_qty_log_prev": null,
+   "_ps_ranka_isimta": null
+  },
+  "visos_meta_stock": [
+   {
+    "meta_key": "_manage_stock",
+    "meta_value": "yes"
+   },
+   {
+    "meta_key": "_stock",
+    "meta_value": "62"
+   },
+   {
+    "meta_key": "_stock_status",
+    "meta_value": "instock"
+   },
+   {
+    "meta_key": "_ps_sandelis",
+    "meta_value": "av"
+   },
+   {
+    "meta_key": "_cost_price",
+    "meta_value": "0.68"
+   },
+   {
+    "meta_key": "_cost_price_source",
+    "meta_value": "excel_v78_20260817"
+   },
+   {
+    "meta_key": "_cost_price_imported_at",
+    "meta_value": "2026-08-17 06:50:14"
+   }
+  ],
+  "ps_sources": [
+   {
+    "id": "2577",
+    "product_id": "19366",
+    "source": "av",
+    "supplier_sku": "",
+    "ean": "",
+    "stock_qty": "62",
+    "cost_net": "0.6800",
+    "synced_at": null,
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "1",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-09-22 07:20:11"
+   }
+  ],
+  "ps_partijos": [
+   {
+    "id": "3990",
+    "product_id": "19366",
+    "gauta": "2026-09-08",
+    "kiekis_gautas": "66",
+    "kiekis_liko": "66",
+    "savikaina_eur": "0.6796",
+    "savikaina_orig": "2.8000",
+    "valiuta": "PLN",
+    "kursas": "4.120000",
+    "geriausia_iki": null,
+    "tiekejas": "Animonda",
+    "importuota": "0",
+    "tiekimas_id": null,
+    "pastaba": "Faktura vat 5510/T/2026 (S1638)",
+    "sukurta": "2026-09-08 00:45:24",
+    "user_id": "0",
+    "atsaukta": "0"
+   },
+   {
+    "id": "3475",
+    "product_id": "19366",
+    "gauta": "2026-09-07",
+    "kiekis_gautas": "6",
+    "kiekis_liko": "1",
+    "savikaina_eur": "0.8100",
+    "savikaina_orig": null,
+    "valiuta": "EUR",
+    "kursas": "1.000000",
+    "geriausia_iki": null,
+    "tiekejas": "eShoprent",
+    "importuota": "1",
+    "tiekimas_id": null,
+    "pastaba": "Pradinis likutis T-0",
+    "sukurta": "2026-09-07 22:07:22",
+    "user_id": "0",
+    "atsaukta": "0"
+   }
+  ],
+  "lenteles": [
+   "gaj6_ps_action_tokens",
+   "gaj6_ps_akcijos",
+   "gaj6_ps_akciju_prekes",
+   "gaj6_ps_ataskaitu_dienos",
+   "gaj6_ps_av_zurnalas",
+   "gaj6_ps_brand_alias",
+   "gaj6_ps_browse_log",
+   "gaj6_ps_carts",
+   "gaj6_ps_consent_log",
+   "gaj6_ps_dim_klientai",
+   "gaj6_ps_email_content",
+   "gaj6_ps_email_jobs",
+   "gaj6_ps_email_suppression",
+   "gaj6_ps_event_log",
+   "gaj6_ps_fakt_atsargos_d",
+   "gaj6_ps_fakt_eilutes",
+   "gaj6_ps_fakt_grazinimai",
+   "gaj6_ps_fakt_gsc_dienos",
+   "gaj6_ps_fakt_gsc_url_d",
+   "gaj6_ps_fakt_kainos",
+   "gaj6_ps_fakt_reklama",
+   "gaj6_ps_fakt_siuntos",
+   "gaj6_ps_fakt_uzsakymai",
+   "gaj6_ps_feeding_import_log",
+   "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_map",
+   "gaj6_ps_feeding_map_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_map_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows",
+   "gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_feeding_rows_bak_s304",
+   "gaj6_ps_feeding_tables",
+   "gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1",
+   "gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_islaidos",
+   "gaj6_ps_ist_eilutes",
+   "gaj6_ps_ist_fakt_eilutes",
+   "gaj6_ps_ist_fakt_uzsakymai",
+   "gaj6_ps_ist_uzsakymai",
+   "gaj6_ps_istrintos_prekes_s668",
+   "gaj6_ps_ivykiai",
+   "gaj6_ps_kl_suvestine",
+   "gaj6_ps_kontrole_dienos",
+   "gaj6_ps_laukai_ivykiai",
+   "gaj6_ps_naujienlaiskiai",
+   "gaj6_ps_nl_snapshot",
+   "gaj6_ps_pakuotes",
+   "gaj6_ps_partijos",
+   "gaj6_ps_pet_field_log",
+   "gaj6_ps_pet_notes",
+   "gaj6_ps_pet_products",
+   "gaj6_ps_pet_profile_drafts",
+   "gaj6_ps_pets",
+   "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9",
+   "gaj6_ps_pets_bak_20260722_181456_hint",
+   "gaj6_ps_pets_bak_20260723_prof",
+   "gaj6_ps_pets_bak_20260726",
+   "gaj6_ps_pets_bak_20260726_ft",
+   "gaj6_ps_pets_bak_20260727_wet",
+   "gaj6_ps_pets_bak_20260731_pries_restore",
+   "gaj6_ps_plan_events",
+   "gaj6_ps_rec_log",
+   "gaj6_ps_refill_tracking",
+   "gaj6_ps_relaunch_kontaktai",
+   "gaj6_ps_reminders",
+   "gaj6_ps_sargas_klaidos",
+   "gaj6_ps_seo_404",
+   "gaj6_ps_seo_qa",
+   "gaj6_ps_seo_url_svoris",
+   "gaj6_ps_shipments",
+   "gaj6_ps_sources",
+   "gaj6_ps_stock_watch",
+   "gaj6_ps_subscription_events",
+   "gaj6_ps_subscription_items",
+   "gaj6_ps_subscriptions",
+   "gaj6_ps_tarifai",
+   "gaj6_ps_tarifu_priemokos",
+   "gaj6_ps_tiekimas",
+   "gaj6_ps_tiekimas_eil",
+   "gaj6_ps_uzsakymu_ivykiai",
+   "gaj6_ps_v_analize_eilutes",
+   "gaj6_ps_v_analize_uzsakymai",
+   "gaj6_ps_web_dienos",
+   "gaj6_ps_web_ivykiai",
+   "gaj6_ps_webhook_log"
+  ],
+  "istorijos_failai": [
+   "petshop-katalogas.php"
+  ]
+ },
+ "v": "dep-075844",
+ "kurimas": 200,
+ "sid": 6162,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
