@@ -1,0 +1,110 @@
+{
+ "1": {
+  "v": "S1704d",
+  "av_order_md5": "fd7ed33561ce279e6f88618447e1a6eb",
+  "av_order_dydis": 5545,
+  "av_order_kabliai": [
+   "woocommerce_payment_complete -> fiksuoti prio 5",
+   "woocommerce_order_status_processing -> fiksuoti prio 5"
+  ],
+  "ps_source_failai": {
+   "petshop-av-admin.php": 1,
+   "petshop-av-dropship.php": 4,
+   "petshop-av-order.php": 11,
+   "petshop-av-reduce.php": 4,
+   "petshop-av-sheets.php": 2,
+   "petshop-av-tiekimas.php": 10,
+   "petshop-darbalaukis.php": 21,
+   "petshop-desk.php": 11,
+   "petshop-gavimo-perrusiavimas.php": 1,
+   "petshop-kampaniju-langas.php": 2,
+   "petshop-legacy-importas.php": 2,
+   "petshop-uzsakymu-ivykiai.php": 1
+  },
+  "kabliai": {
+   "woocommerce_payment_complete": [
+    "5 Petshop_AV_Order::fiksuoti",
+    "10 Petshop_Juosta::isvalyti",
+    "10 Petshop_Prenumerata::apmoketa",
+    "10 wc_paying_customer",
+    "10 wc_maybe_reduce_stock_levels",
+    "10 WC_MNM_Order::remove_get_product_from_item_filter",
+    "11 wc_release_stock_for_order",
+    "15 Petshop_AV_Reduce::mazinti",
+    "20 Petshop_GA4_Serveris::siusti",
+    "20 Petshop_Event_Emitters::on_payment_complete",
+    "25 Petshop_Partijos::uzsakymo_nurasymas",
+    "30 Petshop_Prenumerata_Katalogas::is_uzsakymo",
+    "30 Petshop_Refill_Engine::on_order_paid",
+    "35 Petshop_Faktai::rasyti",
+    "99 Petshop_Uzsakymu_Ivykiai::apmokejimas",
+    "100 Petshop_Darbalaukis::auto_rusiuoti",
+    "110 Petshop_Darbalaukis::pakartotinis_apmoketas"
+   ],
+   "woocommerce_order_status_processing": [
+    "5 Petshop_AV_Order::fiksuoti",
+    "10 wc_downloadable_product_permissions",
+    "10 wc_update_total_sales_counts",
+    "10 wc_update_coupon_usage_counts",
+    "10 wc_maybe_reduce_stock_levels",
+    "11 wc_release_stock_for_order",
+    "15 Petshop_AV_Reduce::mazinti",
+    "20 Petshop_GA4_Serveris::siusti",
+    "20 Petshop_Event_Emitters::on_order_paid_status",
+    "25 Petshop_Partijos::uzsakymo_nurasymas",
+    "30 Petshop_Prenumerata_Katalogas::is_uzsakymo",
+    "30 Petshop_Refill_Engine::on_order_paid",
+    "35 Petshop_Faktai::rasyti",
+    "40 Petshop_Lifecycle_Vartai::pataisyti_ciklus",
+    "100 Petshop_Darbalaukis::auto_rusiuoti",
+    "110 Petshop_Darbalaukis::pakartotinis_apmoketas"
+   ],
+   "woocommerce_checkout_order_processed": [
+    "1 Paysera\\Admin\\PayseraDeliveryAdmin::wcCheckoutOrderProcessed",
+    "10 Petshop_Cart_Abandonment::on_order_created",
+    "20 Petshop_Rec_Log::pirkta",
+    "20 Petshop_Plan_Attribution::link_order",
+    "30 Petshop_Refill_Ivykiai::pirkta"
+   ],
+   "woocommerce_order_item_quantity": [
+    "20 Petshop_AV_Reduce::wc_kiekis"
+   ],
+   "woocommerce_can_reduce_order_stock": [
+    "10 Petshop_Darbalaukis::telefonu_likutis_wc"
+   ]
+  },
+  "pastabos_36091": [
+   "2026-09-21 12:11:09 | Klientui išsiųsta „Užsakymas išsiųstas“ (ib19651230@gmai.com): CC118135791LT",
+   "2026-09-21 12:11:09 | Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+   "2026-09-21 12:11:09 | Pažymėta išsiųsta darbalaukyje (Raimis, lp). WC laiškas klientui: NESIŲSTAS.",
+   "2026-09-21 12:11:09 | S1703: LP sekimo numeris CC118135791LT įrašytas iš vidinės pastabos (Raimis įdėjo į paštomatą 09-21 (#1117)).",
+   "2026-09-19 21:23:47 | Paysera: Naujo užsakymo kūrimo būsena",
+   "2026-09-19 21:23:45 | Email \"Užsakymas vykdomas\" sent.",
+   "2026-09-19 21:23:44 | Email \"Naujas užsakymas\" sent.",
+   "2026-09-19 21:23:44 | Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+   "2026-09-19 21:23:44 | Surūšiuota pati: Animonda Vom Feinsten Junior with Poultr — Iš AV",
+   "2026-09-19 21:23:44 | Faktai irasyti: 1 eilutes · pajamos 5,25 EUR (be PVM, po nuolaidu) · PVM 1,68 EUR · marza 1,80 EUR · kontribucija (be pristatymo) 3,13 EUR",
+   "2026-09-19 21:23:43 | Partijos nurašytos: #19366 −5 vnt. (1 partijos)",
+   "2026-09-19 21:23:43 | AV nurašymas: #19366 grynai AV 67 -> 62",
+   "2026-09-19 21:23:43 | Vykdymas: MAIN — AV 5 vnt (1 siunta(-os)) · dropship pirma",
+   "2026-09-19 21:23:43 | Paysera: Užsakymo būsena po apmokėjimo",
+   "2026-09-19 21:22:12 | Likutis sumažintas: Animonda Vom Feinsten Junior with Poultry and Turkey Hearts - konservai šuniukams/jauniems šunims su paukštiena ir kalakutų širdimis, 150 g (72&rarr;67)",
+   "2026-09-19 21:22:12 | Paysera: Neapmokėto užsakymo būsena",
+   "2026-09-19 21:22:12 | Stock hold of 90 minutes applied to: <br>- Animonda Vom Feinsten Junior with Poultry and Turkey Hearts - konservai šuniukams/jauniems šunims su paukštiena ir kalakutų širdimis, 150 g (82973) &times; 5"
+  ],
+  "meta_36091": {
+   "_ps_av_reduced": "2026-09-19 21:23:43",
+   "_ps_av_restored": "",
+   "sukurta": "2026-09-19 21:22:11",
+   "apmoketa": "2026-09-19 21:23:43",
+   "budas": "paysera"
+  }
+ },
+ "v": "dep-080608",
+ "kurimas": 200,
+ "sid": 6166,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
