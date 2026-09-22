@@ -1,0 +1,70 @@
+{
+ "1": {
+  "v": "S1704j",
+  "order_type_naudojimas": [
+   "petshop-av-admin.php:72 $tipas = $order->get_meta( '_ps_order_type' );",
+   "petshop-av-admin.php:123 $mq[] = [ 'key' => '_ps_order_type', 'value' => strtoupper( $t ), 'compare' => '=' ];",
+   "petshop-av-order.php:26 *   _ps_order_type    MAIN|DS|MIXED|REVIEW",
+   "petshop-av-order.php:50 public static function nuspresta( $order ) {",
+   "petshop-av-order.php:52 return ( $order && $order->get_meta( '_ps_order_type' ) );",
+   "petshop-av-order.php:63 if ( ! $priverstinai && self::nuspresta( $order ) ) { return; }",
+   "petshop-av-order.php:91 $order->update_meta_data( '_ps_order_type', $tipas );",
+   "petshop-av-order.php:94 $order->update_meta_data( '_ps_decided_at', current_time( 'mysql' ) );",
+   "petshop-av-order.php:109 $tipas = $order->get_meta( '_ps_order_type' );",
+   "petshop-av-order.php:127 'nusprasta'  => $order->get_meta( '_ps_decided_at' ),",
+   "petshop-av-sheets.php:111 'tipas'     => $o->get_meta( '_ps_order_type' ),",
+   "petshop-av-tiekimas.php:14 * `_ps_av_reduced`), ir perskaičiuoja `_ps_groups` / `_ps_shipments` / `_ps_order_type`.",
+   "petshop-av-tiekimas.php:1364 $oo->update_meta_data( '_ps_order_type', $tipas );",
+   "petshop-darbalaukis.php:57 *    `neperduotos()` gerbtų planą — A7, A10); `_ps_groups/_ps_shipments/_ps_order_type` perskaičiuojami kaip",
+   "petshop-darbalaukis.php:1557 $o->update_meta_data( '_ps_order_type', $tipas ); $o->update_meta_data( '_ps_groups', wp_json_encode( $grupes ) ); $o->update_meta_data( '_ps_shipments', count( $grupes",
+   "petshop-siuntu-laiskai.php:349 if ( 'MIXED' !== $order->get_meta( '_ps_order_type' ) ) { return; }",
+   "petshop-uzsakymu-ivykiai.php:336 'tipas'         => (string) $o->get_meta( '_ps_order_type' ),"
+  ],
+  "onhold_su_keliu": 13,
+  "statusai": [
+   {
+    "status": "wc-cancelled",
+    "payment_method": "bacs",
+    "n": "5"
+   },
+   {
+    "status": "wc-cancelled",
+    "payment_method": "paysera",
+    "n": "23"
+   },
+   {
+    "status": "wc-completed",
+    "payment_method": "bacs",
+    "n": "8"
+   },
+   {
+    "status": "wc-completed",
+    "payment_method": "paysera",
+    "n": "102"
+   },
+   {
+    "status": "wc-processing",
+    "payment_method": "paysera",
+    "n": "10"
+   }
+  ],
+  "p19396": [
+   {
+    "id": "3993",
+    "gauta": "2026-09-08",
+    "kiekis_gautas": "88",
+    "kiekis_liko": "33",
+    "tiekejas": "Animonda",
+    "atsaukta": "0",
+    "pastaba": "Faktura vat 5510/T/2026 (S1638)"
+   }
+  ]
+ },
+ "v": "dep-082229",
+ "kurimas": 200,
+ "sid": 6172,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
