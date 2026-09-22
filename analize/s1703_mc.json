@@ -1,0 +1,398 @@
+{
+ "1": {
+  "v": "S1703 mc",
+  "weight_filter": "<?php\n/**\n * Petshop_Weight_Filter — „Rodyti maistus N kg šuniui\".\n *\n * KAM: kai gamintojo lentelėje nėra normos įvestam svoriui, skaičiuoklė siūlo\n * pažiūrėti maistus, kuriems ta norma YRA. Iki šiol mygtukas vedė į paiešką su\n * parametrais, kurių niekas neapdorojo, ir žmogus gaudavo bendrą sąrašą.\n *\n * RIBA (ta pati kaip visur): filtruojam pagal tai, ar gamintojas PATEIKIA normą\n * tam svoriui — NE pagal tai, ar maistas „tinka\". Tinkamumo mes nevertinam.\n * Todėl ir antraštė kalba apie normas, ne apie tinkamumą.\n */\n\nif ( ! defined( 'ABSPATH' ) ) {\n\texit;\n}\n\nclass Petshop_Weight_Filter {\n\n\tconst PARAM = 'ps_weight';\n\n\t/* S306: ATSKIRO jungiklio NĖRA sąmoningai. Bendras kill switch\n\t * (petshop_feeding_calc_kill per Feeding_Service::calc_enabled) jau išjungia\n\t * VISKĄ, įskaitant šį sluoksnį — antras jungiklis tik pridėtų priežiūros\n\t * naštos, o dev aplinkoje viskas turi matytis be perjungimų. */\n\tpublic static function enabled() {\n\t\treturn ! class_exists( 'Petshop_Feeding_Service' ) || Petshop_Feeding_Service::calc_enabled();\n\t}\n\n\tpublic static function init() {\n\t\tadd_action( 'pre_get_posts', array( __CLASS__, 'filter_query' ) );\n\t\tadd_action( 'woocommerce_before_shop_loop', array( __CLASS__, 'notice' ), 5 );\n\t\t// S302: kategorijos skaičiuoklė — vienas svoris visam sąrašui.\n\t\tadd_action( 'woocommerce_before_shop_loop', array( __CLASS__, 'ask_weight' ), 6 );\n\t\tadd_action( 'woocommerce_after_shop_loop_item_title', array( __CLASS__, 'card_badge' ), 12 );\n\t}\n\n\t/** Ar tai sauso maisto kategorija — tik ten skaičiuoklė turi prasmę. */\n\tprivate static function is_food_archive() {\n\t\tif ( ! function_exists( 'is_product_category' ) || ! is_product_category() ) { return null; }\n\t\t$t = get_queried_object();\n\t\tif ( ! $t || empty( $t->slug ) ) { return null; }\n\t\tif ( strpos( $t->slug, 'sausas-maistas-sunims' ) !== false ) { return 'dog'; }\n\t\tif ( strpos( $t->slug, 'sausas-maistas-katems' ) !== false ) { return 'cat'; }\n\t\treturn null;\n\t}\n\n\t/**\n\t * Klausiam svorio VIENĄ kartą visam sąrašui. Tai ir yra kategorijos vertė:\n\t * žmogus lygina maistus pagal DIENOS kainą, ne pagal maišo kainą.\n\t * MASTER §6.7: NErūšiuojam pagal pigumą — tik parodom skaičių.\n\t */\n\tpublic static function ask_weight() {\n\t\tif ( ! self::enabled() ) { return; }\n\t\t$sp = self::is_food_archive();\n\t\tif ( $sp === null || self::req_weight() !== null ) { return; }\n\t\t$nom = ( $sp === 'cat' ) ? 'katė' : 'šuo';\n\t\t?>\n\t\t<form class=\"ps-wask\" method=\"get\">\n\t\t\t<?php foreach ( $_GET as $k => $v ) {\n\t\t\t\tif ( in_array( $k, array( self::PARAM, 'ps_species' ), true ) || is_array( $v ) ) { continue; }\n\t\t\t\techo '<input type=\"hidden\" name=\"' . esc_attr( $k ) . '\" value=\"' . esc_attr( (string) $v ) . '\">';\n\t\t\t} ?>\n\t\t\t<input type=\"hidden\" name=\"ps_species\" value=\"<?php echo esc_attr( $sp ); ?>\">\n\t\t\t<div class=\"ps-wask-t\">Kiek kainuos diena jūsų augintiniui?</div>\n\t\t\t<div class=\"ps-wask-s\">Nurodykite svorį — prie kiekvieno maisto parodysime, kiek pakuotės užteks ir kiek kainuos viena diena.</div>\n\t\t\t<div class=\"ps-wask-row\">\n\t\t\t\t<span class=\"ps-wask-unit\">\n\t\t\t\t\t<input type=\"number\" name=\"<?php echo esc_attr( self::PARAM ); ?>\" min=\"0.5\" max=\"120\" step=\"0.1\"\n\t\t\t\t\t\tinputmode=\"decimal\" placeholder=\"0\" aria-label=\"<?php echo esc_attr( 'Kiek sveria jūsų ' . $nom . '?' ); ?>\">\n\t\t\t\t\t<i>kg</i>\n\t\t\t\t</span>\n\t\t\t\t<button type=\"submit\">Skaičiuoti →</button>\n\t\t\t</div>\n\t\t</form>\n\t\t<?php\n\t\tself::css();\n\t}\n\n\t/** Vienos prekės kortelės eilutė. Rezultatas kešuojamas 6 val. */\n\tpublic static function card_badge() {\n\t\t$w = self::req_weight();\n\t\tif ( $w === null || ! class_exists( 'Petshop_Feeding_Service' ) ) { return; }\n\t\tglobal $product;\n\t\tif ( ! $product ) { return; }\n\t\t$pid = (int) $product->get_id();\n\t\t$sp  = self::req_species();\n\n\t\t$ck  = 'ps_cb_' . md5( $pid . '|' . $w . '|' . (string) $sp );\n\t\t$out = get_transient( $ck );\n\t\tif ( $out === false ) {\n\t\t\t$r = Petshop_Feeding_Service::calc( array(\n\t\t\t\t'product_id' => $pid, 'weight_kg' => $w,\n\t\t\t\t'species_code' => $sp ? $sp : 'dog',\n\t\t\t) );\n\t\t\t$out = '';\n\t\t\tif ( isset( $r['status'] ) && $r['status'] === 'ok' && isset( $r['days_min'] ) ) {\n\t\t\t\t$d = ( $r['days_min'] === $r['days_max'] )\n\t\t\t\t\t? (int) $r['days_min']\n\t\t\t\t\t: (int) $r['days_min'] . '–' . (int) $r['days_max'];\n\t\t\t\t$c = '';\n\t\t\t\tif ( isset( $r['cost_day_min'] ) && $r['cost_day_min'] !== null ) {\n\t\t\t\t\t$c = ( $r['cost_day_min'] === $r['cost_day_max'] )\n\t\t\t\t\t\t? number_format( (float) $r['cost_day_min'], 2, ',', '' )\n\t\t\t\t\t\t: number_format( (float) $r['cost_day_min'], 2, ',', '' ) . '–' . number_format( (float) $r['cost_day_max'], 2, ',', '' );\n\t\t\t\t}\n\t\t\t\t$out = '<div class=\"ps-cb\">' . ( $c !== '' ? '<b>' . esc_html( $c ) . ' €</b> per dieną · ' : '' )\n\t\t\t\t\t. 'užteks ~' . esc_html( $d ) . ' d.</div>';\n\t\t\t}\n\t\t\tset_transient( $ck, $out, 6 * HOUR_IN_SECONDS );\n\t\t}\n\t\techo $out;\n\t\tself::css();\n\t}\n\n\tprivate static function css() {\n\t\tstatic $done = false;\n\t\tif ( $done ) { return; }\n\t\t$done = true;\n\t\techo '<style>\n\t\t.ps-wfilter{background:#F3EFE5;border:1px solid #E5DCCB;border-left:3px solid #2F6B4F;\n\t\t\tborder-radius:14px;padding:14px 16px;margin:0 0 18px}\n\t\t.ps-wfilter-t{font-size:14.5px;font-weight:700;color:#1F2A24;line-height:1.35}\n\t\t.ps-wfilter-s{font-size:12.5px;color:#6B7A70;margin-top:4px;line-height:1.5}\n\t\t.ps-wfilter-x{display:inline-block;margin-top:10px;border:1px solid #DDD6C8;background:#fff;\n\t\t\tborder-radius:999px;padding:7px 14px;font-size:13px;font-weight:650;color:#2F6B4F;text-decoration:none}\n\t\t.ps-wfilter-x:hover{background:#F4F8F5;border-color:#C7D6CB}\n\t\t.ps-wask{background:#F3EFE5;border:1px solid #E5DCCB;border-left:3px solid #2F6B4F;\n\t\t\tborder-radius:14px;padding:15px 17px;margin:0 0 18px}\n\t\t.ps-wask-t{font-size:15px;font-weight:750;color:#1F2A24;line-height:1.3}\n\t\t.ps-wask-s{font-size:12.5px;color:#6B7A70;margin-top:4px;line-height:1.5;max-width:62ch}\n\t\t.ps-wask-row{display:flex;gap:9px;align-items:stretch;margin-top:11px;flex-wrap:wrap}\n\t\t.ps-wask-unit{position:relative;flex:0 1 150px;display:flex}\n\t\t.ps-wask-unit input{width:100%;height:44px;box-sizing:border-box;margin:0;border:1px solid #D8D2C6;\n\t\t\tborder-radius:11px;padding:0 42px 0 13px;font:inherit;font-size:15px;background:#fff}\n\t\t.ps-wask-unit i{position:absolute;right:0;top:0;bottom:0;width:36px;display:flex;align-items:center;\n\t\t\tfont-style:normal;font-size:13.5px;font-weight:650;color:#8A968C;pointer-events:none}\n\t\t.ps-wask-row button{height:44px;box-sizing:border-box;margin:0;background:#fff;color:#2F6B4F;\n\t\t\tborder:1.5px solid #2F6B4F;border-radius:11px;padding:0 18px;font:inherit;font-size:14px;\n\t\t\tfont-weight:650;cursor:pointer;text-transform:none;letter-spacing:normal}\n\t\t.ps-wask-row button:hover{background:#2F6B4F;color:#fff}\n\t\t.ps-cb{font-size:12.5px;color:#5A665C;margin:3px 0 2px;line-height:1.4}\n\t\t.ps-cb b{color:#1F4E39;font-weight:700}\n\t\t</style>';\n\t}\n\n\n\tprivate static function req_weight() {\n\t\tif ( ! self::enabled() ) { return null; }   // S305: išjungus — parametras ignoruojamas\n\t\tif ( ! isset( $_GET[ self::PARAM ] ) ) { return null; }\n\t\t$w = (float) str_replace( ',', '.', (string) $_GET[ self::PARAM ] );\n\t\treturn ( $w > 0 && $w <= 120 ) ? $w : null;\n\t}\n\n\tprivate static function req_species() {\n\t\t$s = isset( $_GET['ps_species'] ) ? sanitize_text_field( (string) $_GET['ps_species'] ) : '';\n\t\treturn in_array( $s, array( 'dog', 'cat' ), true ) ? $s : null;\n\t}\n\n\t/**\n\t * Produktai, kurių gamintojo lentelė APIMA tą svorį.\n\t * Naudojam lentelės RIBAS (min..max), o ne atskiras eilutes — variklis\n\t * tarp gretimų taškų interpoliuoja, tad 13 kg tinka lentelei 11–70 kg.\n\t * Už ribų — ne, nes ekstrapoliacija draudžiama.\n\t */\n\tprivate static function matching_ids( $weight, $species ) {\n\t\tglobal $wpdb;\n\t\t$map  = $wpdb->prefix . 'ps_feeding_map';\n\t\t$tabs = $wpdb->prefix . 'ps_feeding_tables';\n\t\t$rows = $wpdb->prefix . 'ps_feeding_rows';\n\n\t\t$sp = $species ? $wpdb->prepare( ' AND t.species = %s ', $species ) : '';\n\t\t$sql = \"SELECT DISTINCT m.product_id\n\t\t\tFROM $map m\n\t\t\tJOIN $tabs t ON t.id = m.feeding_table_id\n\t\t\tJOIN $rows r ON r.feeding_table_id = t.id\n\t\t\tWHERE m.is_active = 1 AND t.is_active = 1 AND t.status = 'verified'\n\t\t\t  AND t.canonical_table_hash IS NOT NULL\n\t\t\t  $sp\n\t\t\tGROUP BY m.product_id, t.id\n\t\t\tHAVING MIN(r.weight_from_kg) <= %f AND MAX(r.weight_to_kg) >= %f\";\n\t\t$ids = $wpdb->get_col( $wpdb->prepare( $sql, $weight, $weight ) );\n\t\treturn array_map( 'intval', (array) $ids );\n\t}\n\n\tpublic static function filter_query( $q ) {\n\t\tif ( is_admin() || ! $q->is_main_query() ) { return; }\n\t\t$w = self::req_weight();\n\t\tif ( $w === null ) { return; }\n\t\tif ( ! ( $q->is_post_type_archive( 'product' ) || $q->is_tax( 'product_cat' ) || $q->is_search() ) ) { return; }\n\n\t\t$ids = self::matching_ids( $w, self::req_species() );\n\t\t// Nė vieno atitikmens → rodom TUŠČIA, o ne visą katalogą.\n\t\t// Tylus filtro ignoravimas būtų blogiau: žmogus manytų, kad šie tinka.\n\t\t$q->set( 'post__in', $ids ? $ids : array( 0 ) );\n\t}\n\n\tpublic static function notice() {\n\t\t$w = self::req_weight();\n\t\tif ( $w === null ) { return; }\n\t\t$sp  = self::req_species();\n\t\t$who = ( $sp === 'cat' ) ? 'katei' : ( $sp === 'dog' ? 'šuniui' : 'augintiniui' );\n\t\t$wt  = rtrim( rtrim( number_format( $w, 1, ',', '' ), '0' ), ',' );\n\n\t\techo '<div class=\"ps-wfilter\">'\n\t\t\t. '<div class=\"ps-wfilter-t\">Maistai, kuriems gamintojas pateikia normas ' . esc_html( $wt . ' kg ' . $who ) . '</div>'\n\t\t\t. '<div class=\"ps-wfilter-s\">Tai nereiškia, kad kiti maistai netinka — tik tiek, kad jiems gamintojas šio svorio normos nepateikia.</div>'\n\t\t\t. '<a class=\"ps-wfilter-x\" href=\"' . esc_url( remove_query_arg( array( self::PARAM, 'ps_species' ) ) ) . '\">Rodyti visus</a>'\n\t\t\t. '</div>'\n\t\t\t;\n\t}\n\n\t/** Nuoroda iš skaičiuoklės — kategorija, ne tuščia paieška. */\n\tpublic static function target_url( $species ) {\n\t\t$slug = ( $species === 'cat' ) ? 'sausas-maistas-katems' : 'sausas-maistas-sunims';\n\t\t$term = get_term_by( 'slug', $slug, 'product_cat' );\n\t\tif ( $term && ! is_wp_error( $term ) ) {\n\t\t\t$u = get_term_link( $term );\n\t\t\tif ( ! is_wp_error( $u ) ) { return $u; }\n\t\t}\n\t\treturn get_post_type_archive_link( 'product' );\n\t}\n}\n",
+  "calc_handoff": "/**\n * S289 — PERĖMIMAS IŠ PREKĖS PUSLAPIO ESAMIEMS AUGINTINIAMS.\n *\n * Kelias naujam klientui buvo uždarytas (anketa perima duomenis), o turintis\n * augintinių atsidurdavo sąraše ir jo darbas prapuldavo — mygtukas žadėjo\n * „išsaugoti\", o realiai tik nuvesdavo.\n *\n * PAGRINDINĖ TAISYKLĖ: NIEKO NEPERRAŠOM TYLIAI.\n * Jei profilyje 11 kg, o skaičiuoklėje nurodyta 13 kg — klausiam. Tas pats su\n * maistu. Žmogus pasinaudojo skaičiuokle, o ne paprašė pakeisti profilį.\n *\n * Įterpiama į pet-profile.js kaip savarankiškas modulis.\n */\n(function () {\n\t'use strict';\n\n\tvar HKEY = 'petshop_calc_handoff';\n\n\tfunction read() {\n\t\ttry {\n\t\t\tvar raw = window.localStorage.getItem(HKEY);\n\t\t\tif (!raw) { return null; }\n\t\t\tvar h = JSON.parse(raw);\n\t\t\t// 2 val. — vėliau žmogus greičiausiai jau kitame kontekste.\n\t\t\tif (!h || !h.ts || (Date.now() - h.ts) > 2 * 60 * 60 * 1000) { clear(); return null; }\n\t\t\treturn h;\n\t\t} catch (e) { return null; }\n\t}\n\tfunction clear() {\n\t\ttry { window.localStorage.removeItem(HKEY); } catch (e) {}\n\t}\n\n\twindow.PetshopCalcHandoff = {\n\t\tread: read,\n\t\tclear: clear,\n\n\t\t/**\n\t\t * Ar yra ką rodyti. Grąžinam būseną, o ne sprendimą — piešimas atskirai.\n\t\t *   none        — perėmimo nėra\n\t\t *   no_species  — tos rūšies augintinio paskyroje nėra\n\t\t *   single      — vienas tos rūšies\n\t\t *   choose      — keli\n\t\t */\n\t\tstate: function (pets) {\n\t\t\tvar h = read();\n\t\t\tif (!h) { return { mode: 'none' }; }\n\t\t\tvar same = (pets || []).filter(function (p) {\n\t\t\t\treturn !h.species || p.species === h.species;\n\t\t\t});\n\t\t\tif (!same.length) { return { mode: 'no_species', h: h }; }\n\t\t\tif (same.length === 1) { return { mode: 'single', h: h, pet: same[0] }; }\n\t\t\treturn { mode: 'choose', h: h, pets: same };\n\t\t},\n\n\t\t/**\n\t\t * Konfliktai tarp profilio ir skaičiavimo. Grąžinam FAKTUS —\n\t\t * sprendimą priima žmogus.\n\t\t */\n\t\tconflicts: function (pet, h) {\n\t\t\tvar out = [];\n\t\t\tvar pw = (pet.current_weight_kg !== null && pet.current_weight_kg !== undefined && pet.current_weight_kg !== '')\n\t\t\t\t? parseFloat(pet.current_weight_kg) : null;\n\t\t\tvar hw = h.weight_kg ? parseFloat(h.weight_kg) : null;\n\t\t\tif (pw !== null && hw !== null && Math.abs(pw - hw) > 0.05) {\n\t\t\t\tout.push({ field: 'weight', current: pw, incoming: hw });\n\t\t\t}\n\t\t\tvar pp = pet.primary_product_id ? parseInt(pet.primary_product_id, 10) : null;\n\t\t\tvar hp = h.product_id ? parseInt(h.product_id, 10) : null;\n\t\t\tif (pp && hp && pp !== hp) {\n\t\t\t\tout.push({\n\t\t\t\t\tfield: 'product',\n\t\t\t\t\tcurrent: pet.primary_product_name || ('#' + pp),\n\t\t\t\t\tincoming: h.product_name || ('#' + hp)\n\t\t\t\t});\n\t\t\t}\n\t\t\treturn out;\n\t\t},\n\n\t\t/**\n\t\t * Išsaugojimas. Siunčiam TIK tai, ką žmogus patvirtino.\n\t\t * Svoris — atskiru endpointu (pet-profile jo nepriima), produktas —\n\t\t * per pet-profile merge su pet_id.\n\t\t */\n\t\tsave: function (petId, h, apply, REST, NONCE) {\n\t\t\tvar jobs = [];\n\t\t\tif (apply.weight && h.weight_kg) {\n\t\t\t\tjobs.push(fetch(REST + '/feeding-pet-weight', {\n\t\t\t\t\tmethod: 'POST',\n\t\t\t\t\theaders: { 'Content-Type': 'application/json', 'X-WP-Nonce': NONCE },\n\t\t\t\t\tcredentials: 'same-origin',\n\t\t\t\t\tbody: JSON.stringify({ pet_id: petId, weight_kg: parseFloat(h.weight_kg) })\n\t\t\t\t}));\n\t\t\t}\n\t\t\tif (apply.product && h.product_id) {\n\t\t\t\tjobs.push(fetch(REST + '/pet-profile', {\n\t\t\t\t\tmethod: 'POST',\n\t\t\t\t\theaders: { 'Content-Type': 'application/json', 'X-WP-Nonce': NONCE },\n\t\t\t\t\tcredentials: 'same-origin',\n\t\t\t\t\tbody: JSON.stringify({\n\t\t\t\t\t\tpet_id: petId,\n\t\t\t\t\t\tprimary_product_id: parseInt(h.product_id, 10),\n\t\t\t\t\t\tprimary_product_name: h.product_name || null,\n\t\t\t\t\t\tprimary_product_sku: h.product_sku || null,\n\t\t\t\t\t\tprimary_product_package: h.product_package || null\n\t\t\t\t\t})\n\t\t\t\t}));\n\t\t\t}\n\t\t\tif (!jobs.length) { return Promise.resolve(true); }\n\t\t\treturn Promise.all(jobs).then(function () { return true; });\n\t\t}\n\t};\n})();\n"
+ },
+ "2": {
+  "v": "S1703 mc",
+  "analitika_head": "<?php\n/**\n * Plugin Name: Petshop Analitika\n * Description: Savas „GA4\" — pirmosios salies analitika (ps_web_ivykiai, ps_web_dienos). Master planas v1.7 §4A.1–4A.2, etapas E2.\n * Version: 1.2\n *\n * KODEL (planas §4A): GA4 rodo tai, ka mato Google ir kaip Google skaiciuoja.\n * Sprendimams reikia SAVU duomenu, kur uzsakymas = Woo faktas, o ne pikselio\n * ivykis. GA4/GTM LIEKA — Google Ads algoritmui reikia konversiju signalo —\n * bet sprendimai priimami is musu ekranu.\n *\n * ══════════════════════════════════════════════════════════════════════\n * RAIMIO SPRENDIMAI 2026-08-26 (uzrakinta)\n * ══════════════════════════════════════════════════════════════════════\n *  1. `purchase` is narsykles — ATMETAMAS KIETAI. Vienas `purchase` = serverio\n *     faktas `ps_fakt_uzsakymai`. Dvieju „tiesu\" vienoje lenteleje nebus.\n *     Atmetimas TRIJUOSE sluoksniuose: JS neleidzia i eile, serveris atmeta\n *     gavimo metu, `irasyti()` atmeta dar karta. Kiekvienas atmetimas\n *     SKAICIUOJAMAS (`ps_web_atmesta_purchase`) — jei skaitiklis auga, vadinasi\n *     kazkas bando ji siusti, ir tai matosi, o ne dingsta tyloje.\n *  2. „Aciu\" puslapis NEISMETAMAS: fiksuojamas kaip paprastas `pageview` su\n *     `pusl_tipas='aciu'`, BE SUMU. Tai pigus ad-blocker/sutikimo nuostoliu\n *     matas §5.11 kontroles skirtukui: Woo uzsakymai vs `aciu` perziuros vs\n *     GA4 purchase (rankinis) — trys skaiciai, ir matosi, kuris tikras.\n *  3. `petshop-kanalai.php` PRIJUNGIAMAS, ne perrasomas. Jis jau turi UTM\n * ",
+  "beacon": "function beacon() {\n\t\tif ( is_admin() || is_feed() || is_robots() ) { return; }\n\t\t$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ? (string) wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) : '';\n\t\tif ( self::botas( $ua ) ) { return; }\n\n\t\t/* `?rest_route=` — firewall pamoka (T-0 Q-WPJSON). */\n\t\t$url  = home_url( '/?rest_route=/' . self::NS . self::KELIAS );\n\t\t$pusl = self::puslapio_tipas();\n\n\t\t$raktas = '';\n\t\tif ( 'preke' === $pusl )      { $raktas = (string) get_queried_object_id(); }\n\t\tif ( 'kategorija' === $pusl ) { $raktas = (string) get_queried_object_id(); }\n\t\tif ( 'paieska' === $pusl )    { $raktas = (string) get_search_query(); }\n\n\t\t$rez = 0;\n\t\tif ( 'paieska' === $pusl ) {\n\t\t\tglobal $wp_query;\n\t\t\t$rez = (int) $wp_query->found_posts;\n\t\t}\n\n\t\t/* Landing = pirmas puslapis sesijoje: nera vidinio referer'io. */\n\t\t$ref     = isset( $_SERVER['HTTP_REFERER'] ) ? (string) wp_unslash( $_SERVER['HTTP_REFERER'] ) : '';\n\t\t$savas   = (string) wp_parse_url( home_url(), PHP_URL_HOST );\n\t\t$rh      = $ref ? (string) wp_parse_url( $ref, PHP_URL_HOST ) : '';\n\t\t$landing = ( '' === $rh || $rh !== $savas ) ? 1 : 0;\n\n\t\t$leist = wp_json_encode( array_values( self::IS_DATALAYER ) );\n\t\t?>\n<script id=\"ps-web-beacon\">\n(function(){\n\"use strict\";\nvar U=<?php echo wp_json_encode( $url ); ?>,\n    LEIST=<?php echo $leist; ?>,\n    Q=[],T=null,ATC=0;\n\nfunction siusti(){\n  if(!Q.length)return;\n  var d=JSON.stringify({e:Q});Q=[];\n  try{\n    if(navigator.sendBeacon){navigator.sendBeacon(U,new Blob([d],{type:'text/plain;charset=UTF-8'}));return;}\n  }catch(e){}\n  try{fetch(U,{method:'POST',body:d,headers:{'Content-Type':'application/json'},keepalive:true,credentials:'same-origin'});}catch(e){}\n}\nfunction push(o){\n  /* 🔴 purchase NIEKADA neiseina is narsykles — pirmas is triju sluoksniu. */\n  if(!o||!o.tipas||o.tipas==='purchase'||o.tipas==='refund')return;\n  Q.push(o);\n  if(T)clearTimeout(T);\n  T=setTimeout(siusti,900);\n}\nwindow.psWeb=push;\n\n/* 1) pageview — puslapio rusis atejo is serverio */\npush({tipas:'pageview',pusl:<?php echo wp_json_encode( $pusl ); ?>,\n      url:location.pathname+location.search,\n      raktas:<?php echo wp_json_encode( $raktas ); ?>,\n      reiksme:<?php echo (int) $rez; ?>,\n      landing:<?php echo (int) $landing; ?>});\n\n<?php if ( 'paieska' === $pusl ) : ?>\n/* 2) paieska — atskirai, kad „0 rezultatu\" butu matomas pjuvis */\npush({tipas:'search',raktas:<?php echo wp_json_encode( $raktas ); ?>,reiksme:<?php echo (int) $rez; ?>});\n<?php endif; ?>\n<?php if ( '404' === $pusl ) : ?>\npush({tipas:'error404',url:location.pathname+location.search});\n<?php endif; ?>\n\n/* 3) dataLayer — klausomes esamo (snippet 614), nieko nedubliuojam */\ntry{\n  var dl=window.dataLayer=window.dataLayer||[];\n  function imk(a){\n    if(!a||!a.event)return;\n    if(LEIST.indexOf(a.event)<0)return;   /* purchase cia neipuola */\n    var iid='';\n    try{\n      var it=a.ecommerce&&a.ecommerce.items&&a.ecommerce.items[0];\n      if(it){iid=String(it.item_id||it.id||'');}\n    }catch(e){}\n    /* iid gali buti SKU — serveris ji isvers i prekes ID (v1.2). */\n    push({tipas:a.event,raktas:iid,url:location.pathname});\n  }\n",
+  "rl_svoris": "null;\n\t}\n\n\t/** cid + svoris → signalas. Vieną kartą per užklausą, tik prekės puslapyje. */\n\tpublic static function paspaudimas() {\n\t\tif ( ! function_exists( 'is_product' ) || ! is_product() ) return;\n\t\t$kg = self::svoris(); $cid = isset( $_GET['cid'] ) ? preg_replace( '/[^A-Za-z0-9]/', '', (string) $_GET['cid'] ) : '';\n\t\tif ( null === $kg ) return;\n\t\tglobal $wpdb; $k = null; $uid = get_current_user_id();\n\t\tif ( $cid ) { $k = $wpdb->get_row( $wpdb->prepare( \"SELECT id,email,user_id,segmentas FROM \" . self::t() . \" WHERE cid=%s\", $cid ), ARRAY_A ); if ( $k && ! $uid ) $uid = (int) $k['user_id']; }\n\t\tif ( ! $k && ! $uid ) return;\n\t\t$pid = (int) get_queried_object_id(); $dabar = current_time( 'mysql', true );\n\t\tif ( $k ) $wpdb->query( $wpdb->prepare( \"UPDATE \" . self::t() . \" SET klik_n=klik_n+1, pask_klik_at=%s, pask_svoris=%f WHERE id=%d\", $dabar, $kg, $k['id'] ) );\n\t\tif ( $uid ) {\n\t\t\t$s = get_user_meta( $uid, self::META, true ); $s = is_array( $s ) ? $s : array();\n\t\t\t$s[] = array( 'weight_kg' => $kg, 'source' => 'email_calc_click', 'confidence' => 'medium', 'product_id' => $pid, 'cid' => $cid ?: null, 'at' => $dabar );\n\t\t\tupdate_user_meta( $uid, self::META, array_slice( $s, -5 ) );\n\t\t}\n\t\tif ( class_exists( 'Petshop_Analitika' ) ) {\n\t\t\t$wpdb->insert( Petshop_Analitika::t_ivykiai(), array(\n\t\t\t\t'laikas' => $dabar, 'diena' => method_exists( 'Petshop_Analitika', 'verslo_diena' ) ? Petshop_Analitika::verslo_diena( $dabar ) : substr( $dabar, 0, 10 ),\n\t\t\t\t'tipas' => 'email_calc_click', 'pusl_tipas' => 'product', 'url_kelias' => substr( (string) parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ), 0, 190 ),\n\t\t\t\t'raktas' => (string) $pid, 'raktas2' => $k ? $k['segmentas'] : 'login', 'reiksme' => $kg,\n\t\t\t\t'saltinis' => 'sender', 'medium' => 'email', 'kampanija' => 'relaunch', 'kanalas' => 'email',\n\t\t\t\t'irenginys' => method_exists( 'Petshop_Analitika', 'irenginys' ) ? Petshop_Analitika::irenginys( (string) ( $_SERVER['HTTP_USER_AGENT'] ?? '' ) ) : null,\n\t\t\t\t'prisijunges' => get_current_user_id() ? 1 : 0, 'sutikimas' => 0, 'testinis' => 0,\n\t\t\t\t'saltinis_aplinka' => method_exists( 'Petshop_Analitika', 'aplinka' ) ? Petshop_Analitika::aplinka() : 'prod',\n\t\t\t) );\n\t\t}\n\t}\n\n\t/** Skaičiuoklės užpildymas (?svoris) + priminimo blokas po skaičiavimo (cid / ?svoris / prisijungęs). */\n\tpublic static function js() {\n\t\tif ( ! function_exists( 'is_product' ) || ! is_product() ) return; $kg = self::svoris(); $pid = (int) get_queried_object_id();\n\t\t$cid = isset( $_GET['cid'] ) ? preg_replace( '/[^A-Za-z0-9]/', '', (string) $_GET['cid'] ) : ''; $uid = get_current_user_id();\n\t\tif ( null ",
+  "rl_js": "( '/[^A-Za-z0-9]/', '', (string) $_GET['cid'] ) : ''; $uid = get_current_user_id();\n\t\tif ( null !== $kg ) echo '<script>(function(){var kg=' . json_encode( $kg ) . ',n=0,t=setInterval(function(){var r=document.getElementById(\"ps-calc\"),w=document.getElementById(\"ps-calc-w\"),b=r&&r.querySelector(\".ps-calc-go\");n++;if(w&&b){clearInterval(t);w.value=kg;b.click();setTimeout(function(){r.scrollIntoView({behavior:\"smooth\",block:\"start\"});},250);}else if(n>40){clearInterval(t);}},100);})();</script>';\n\t\tif ( null === $kg && ! $cid && ! $uid ) return;\n\t\t$pr = wc_get_product( $pid ); if ( ! $pr || ! $pr->is_purchasable() ) return;\n\t\t$cfg = array( 'pid' => $pid, 'pav' => $pr->get_name(), 'rest' => esc_url_raw( rest_url( 'ps-relaunch/v1/priminti' ) ), 'nonce' => wp_create_nonce( 'wp_rest' ), 'uid' => $uid ? 1 : 0, 'cid' => $cid, 'ok' => ! empty( $_GET['ps_primink_ok'] ) ? 1 : 0 );\n\t\t?>\n<style>.ps-primink{margin:14px 0 6px;padding:16px 18px;border:1px solid #cfe0d2;border-radius:10px;background:#f4f9f5;font-size:14px;line-height:1.45;color:#1f2a1f}.ps-primink .t{font-weight:700;font-size:16px;margin-bottom:4px}.ps-primink .d{color:#4b5a4d;margin-bottom:10px}.ps-primink .s{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}.ps-primink .s label{border:1px solid #b9cdbd;border-radius:20px;padding:5px 12px;cursor:pointer;background:#fff;font-size:13px}.ps-primink .s input{display:none}.ps-primink .s input:checked+span{font-weight:700;color:#2f6b3a}.ps-primink .s label:has(input:checked){border-color:#2f6b3a;background:#e6f2e8}.ps-primink input[type=email]{width:100%;max-width:320px;padding:9px 10px;border:1px solid #b9cdbd;border-radius:6px;margin:0 0 8px;font-size:14px}.ps-primink button{background:#2f6b3a;color:#fff;border:0;border-radius:6px;padding:11px 20px;font-weight:700;font-size:15px;cursor:pointer}.ps-primink button[disabled]{opacity:.6}.ps-primink .m{margin-top:8px;font-size:12.5px;color:#6b776d}.ps-primink .ok{font-weight:700;color:#2f6b3a;font-size:15px}.ps-primink .err{color:#b3261e;margin-top:6px}</style>\n<script>(function(){var C=<?php echo wp_json_encode( $cfg ); ?>,root=null,done=false;\nfunction esc(s){return String(s).replace(/[&<>\"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c];});}\nfunction blokas(out){if(document.getElementById('ps-primink'))return;var kgEl=document.getElementById('ps-calc-w'),kg=kgEl?parseFloat(String(kgEl.value).replace(',','.')):0;if(!kg)return;var big=out.querySelector('.big'),d=big?big.textContent:'';\nvar el=document.createElement('div');el.id='ps-primink';el.className='ps-primink';\nel.innerHTML='",
+  "rl_rusis": "n_array( $k['rusis'], array( 'kate', 'cat' ), true ) ? 'cat' : 'dog';\n\t\t$slugs = wp_get_post_terms( $pid, 'product_cat', array( 'fields' => 'slugs' ) ); $s = is_array( $slugs ) ? implode( ' ', $slugs ) : '';\n\t\treturn ( strpos( $s, 'katem' ) !== false || strpos( $s, 'kaciu' ) !== false ) ? 'cat' : 'dog';\n\t}\n\n\t/** Dienų vidurkis pagal gamintojo lentelę (tas pats kelias kaip svetainės skaičiuoklė). */\n\tpublic static function dienos( $pid, $kg, $sp ) {\n\t\tif ( ! class_exists( 'Petshop_Feeding_Service' ) ) return null;\n\t\t$r = Petshop_Feeding_Service::calc( array( 'product_id' => $pid, 'weight_kg' => $kg, 'species_code' => $sp ) );\n\t\tif ( ( $r['status'] ?? '' ) !== 'ok' || $r['days_min'] === null ) return null;\n\t\treturn array( 'min' => (int) $r['days_min'], 'max' => (int) $r['days_max'], 'vid' => (int) round( ( (int) $r['days_min'] + (int) $r['days_max'] ) / 2 ) );\n\t}\n\n\tpublic static function rest() {\n\t\tregister_rest_route( 'ps-relaunch/v1', '/priminti', array( 'methods' => 'POST', 'permission_callback' => '__return_true', 'callback' => array( __CLASS__, 'rest_priminti' ) ) );\n\t}\n\n\t/** POST {pid, kg, busena: naujas|puse|baigiasi, email?, cid?} */\n\tpublic static function rest_priminti( $req ) {\n\t\tself::lentele_v11();\n\t\t$pid = (int) $req->get_param( 'pid' ); $kg = (float) str_replace( ',', '.', (string) $req->get_param( 'kg' ) ); $bus = sanitize_key( (string) $req->get_param( 'busena' ) ); if ( ! in_array( $bus, array( 'naujas', 'puse', 'baigiasi' ), true ) ) $bus = 'puse';\n\t\t$cid = preg_replace( '/[^A-Za-z0-9]/', '', (string) $req->get_param( 'cid' ) ); $email = sanitize_email( (string) $req->get_param( 'email' ) );\n\t\t$pr = $pid ? wc_get_product( $pid ) : null;\n\t\tif ( ! $pr || 'publish' !== $pr->get_status() || ! $pr->is_purchasable() ) return new WP_REST_Response( array( 'ok' => false, 'klaida' => 'Šios prekės priminimų kol kas nesiūlome.' ), 400 );\n\t\tif ( $kg < 0.5 || $kg > 120 ) return new WP_REST_Response( array( 'ok' => false, 'klaida' => 'Įveskite augintinio svorį.' ), 400 );\n\t\tglobal $wpdb; $k = $cid ? $wpdb->get_row( $wpdb->prepare( \"SELECT id,email,user_id,rusis FROM \" . self::t() . \" WHERE cid=%s\", $cid ), ARRAY_A ) : null;\n\t\t$d = self::dienos( $pid, $kg, self::rusis( $pid, $k ) );\n\t\tif ( ! $d ) return new WP_REST_Response( array( 'ok' => false, 'klaida' => 'Šiai prekei gamintojo lentelės neturime, todėl termino apskaičiuoti negalime.' ), 400 );\n\t\t$uid = get_current_user_id();\n\t\tif ( $uid ) { $u = get_userdata( $uid ); $r = self::registruoti( $uid, $u->user_email, $pid, $kg, $bus, $d, $cid, $k ); return new WP_REST_Response( $r, 200 ); }\n\t\t// svečias —",
+  "rl_dienos": ") return null;\n\t\t$r = Petshop_Feeding_Service::calc( array( 'product_id' => $pid, 'weight_kg' => $kg, 'species_code' => $sp ) );\n\t\tif ( ( $r['status'] ?? '' ) !== 'ok' || $r['days_min'] === null ) return null;\n\t\treturn array( 'min' => (int) $r['days_min'], 'max' => (int) $r['days_max'], 'vid' => (int) round( ( (int) $r['days_min'] + (int) $r['days_max'] ) / 2 ) );\n\t}\n\n\tpublic static function rest() {\n\t\tregister_rest_route( 'ps-relaunch/v1', '/priminti', array( 'methods' => 'POST', 'permission_callback' => '__return_true', 'callback' => array( __CLASS__, 'rest_priminti' ) ) );\n\t}\n\n\t/** POST {pid, kg, busena: naujas|puse|baigiasi, email?, cid?} */\n\tpublic static function rest_priminti( $req ) {\n\t\tself::lentele_v11();\n\t\t$pid = (int) $req->get_param( 'pid' ); $kg = (float) str_replace( ',', '.', (string) $req->get_param( 'kg' ) ); $bus = sanitize_key( (string) $req->get_param( 'busena' ) ); if ( ! in_array( $bus, array( 'naujas', 'puse', 'baigiasi' ), true ) ) $bus = 'puse';\n\t\t$cid = preg_replace( '/[^A-Za-z0-9]/', '', (string) $req->get_param( 'cid' ) ); $email = sanitize_email( (string) $req->get_param( 'email' ) );\n\t\t$pr = $pid ? wc_get_product( $pid ) : null;\n\t\tif ( ! $pr || 'publish' !== $pr->get_status() || ! $pr->is_purchasable() ) return new WP_REST_Response( array( 'ok' => false, 'klaida' => 'Šios prekės priminimų kol kas nesiūlome.' ), 400 );\n\t\tif ( $kg < 0.5 || $kg > 120 ) return new WP_REST_Response( array( 'ok' => false, 'klaida' => 'Įveskite augintinio svorį.' ), 400 );\n\t\tglobal $wpdb; $k = $cid ? $wpdb->get_row( $wpdb->prepare( \"SELECT id,email,user_id,rusis FROM \" . self::t() . \" WHERE cid=%s\", $cid ), ARRAY_A ) : null;\n\t\t$d = self::dienos( $pid, $kg, self::rusis( $pid, $k ) );\n\t\tif ( ! $d ) return new WP_REST_Response( array( 'ok' => false, 'klaida' => 'Šiai prekei gamintojo lentelės neturime, todėl termino apskaičiuoti negalime.' ), 400 );\n\t\t$uid = get_current_user_id();\n\t\tif ( $uid ) { $u = get_userdata( $uid ); $r = self::registruoti( $uid, $u->user_email, $pid, $kg, $bus, $d, $cid, $k ); return new WP_REST_Response( $r, 200 ); }\n\t\t// svečias — patvirtinimas el. paštu\n\t\tif ( ! $email || ! is_email( $email ) ) return new WP_REST_Response( array( 'ok' => false, 'klaida' => 'Įveskite el. paštą, kuriuo pirkote.' ), 400 );\n\t\t$rk = 'ps_primink_rl_' . md5( strtolower( $email ) ); $n = (int) get_transient( $rk ); if ( $n >= 3 ) return new WP_REST_Response( array( 'ok' => false, 'klaida' => 'Nuorodą jau išsiuntėme – patikrinkite paštą (ir šlamštą).' ), 429 ); set_transient( $rk, $n + 1, 900 );\n\t\t$tok = self::cid(); set_transient( 'ps_primink_' . $",
+  "petshop_v1": [
+   "/petshop/v1",
+   "/petshop/v1/stock-watch",
+   "/petshop/v1/feeding-calc",
+   "/petshop/v1/feeding-pet-weight",
+   "/petshop/v1/feeding-pet-activity",
+   "/petshop/v1/feeding-pet-wet-food",
+   "/petshop/v1/feeding-calc-for-pet",
+   "/petshop/v1/pet-food-candidates/(?P<id>\\d+)",
+   "/petshop/v1/pet-food-assign",
+   "/petshop/v1/pet-food-brand",
+   "/petshop/v1/pet-suggestions/(?P<id>\\d+)",
+   "/petshop/v1/wet-food-search",
+   "/petshop/v1/wet-products-info",
+   "/petshop/v1/pet-wet-product",
+   "/petshop/v1/product-search",
+   "/petshop/v1/pet-claim-pending",
+   "/petshop/v1/pet-claim-resolve",
+   "/petshop/v1/pet-recommendations/(?P<id>\\d+)",
+   "/petshop/v1/newsletter-subscribe",
+   "/petshop/v1/feeding/calculate",
+   "/petshop/v1/pet-draft",
+   "/petshop/v1/magic-login/request",
+   "/petshop/v1/pet-profile",
+   "/petshop/v1/pet-profile/(?P<id>\\d+)",
+   "/petshop/v1/food-search",
+   "/petshop/v1/brands",
+   "/petshop/v1/pet-product-link",
+   "/petshop/v1/pet-dashboard/(?P<id>\\d+)",
+   "/petshop/v1/refill-feedback",
+   "/petshop/v1/pet-photo/(?P<id>\\d+)",
+   "/petshop/v1/pet-content/(?P<id>\\d+)",
+   "/petshop/v1/sender-webhook",
+   "/petshop/v1/reminders",
+   "/petshop/v1/reminders/(?P<id>\\d+)",
+   "/petshop/v1/pet-notes/(?P<pet_id>\\d+)",
+   "/petshop/v1/pet-notes",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)/delete",
+   "/petshop/v1/pet-notes/note/(?P<id>\\d+)/pin"
+  ],
+  "feeding_ui_head": "<?php\n/**\n * Petshop_Feeding_UI — REST endpoint + augintinio puslapio maitinimo vaizdas (F1).\n * VISOS sąsajos kviečia tik Petshop_Feeding_Service. Jokios atskiros formulės čia.\n *\n * REST: POST petshop/v1/feeding/calculate\n *   product_id (privaloma)\n *   pet_id     (prisijungęs; ownership tikrinama serveryje)\n *   weight_kg  (svečias; laikinas, nesaugomas)\n * Rūšies validacija ir nuosavybė — serveryje, ne UI.\n */\nif ( ! class_exists( 'Petshop_Feeding_UI' ) ) {\nclass Petshop_Feeding_UI {\n\n\tpublic static function init() {\n\t\tadd_action( 'rest_api_init', array( __CLASS__, 'register_routes' ) );\n\t\t// F1 vertikalus pjūvis: matomas feeding blokas augintinio puslapyje (server-render, be JS priklausomybės)\n\t\tadd_action( 'woocommerce_account_augintinis_endpoint', array( __CLASS__, 'render_pet_feeding' ), 99 );\n\t\tadd_shortcode( 'petshop_feeding_demo', array( __CLASS__, 'shortcode_feeding' ) );\n\t}\n\n\t/** F1 demo: prisijungusio vartotojo aktyvaus augintinio porcija validuotam ?product_id= produktui, BE rankinio įvedimo. */\n\tpublic static function render_pet_feeding() {\n\t\techo self::build_pet_feeding_html();\n\t}\n\tpublic static function shortcode_feeding() {\n\t\treturn self::build_pet_feeding_html();\n\t}\n\t/**\n\t * F1 demo įjungimas: eksplicitinė konstanta viršesnė; kitaip tik dev hoste (dev.avesa.lt).\n\t * Production (petshop.lt) — OFF automatiškai, net po DB migracijos (gate pagal HTTP host, ne DB/config).\n\t */\n\tprotected static function feeding_demo_enabled() {\n\t\tif ( defined( 'PETSHOP_FEEDING_F1_DEMO' ) ) { return (bool) PETSHOP_FEEDING_F1_DEMO; }\n\t\t// Kanoninis svetainės hostas iš home_url() (ne kliento $_SERVER['HTTP_HOST'] — tas spoofinamas).\n\t\t$host = strtolower( (string) wp_parse_url( home_url(), PHP_URL_HOST ) );\n\t\treturn ( $host === 'dev.avesa.lt' );\n\t}\n\n\tprotected static function build_pet_feeding_html() {\n\t\tif ( ! is_user_logged_in() ) { return ''; }\n\t\t// F1 vertikalus pjūvis: dev-only demo (host-gated), production OFF. Nuolatinė integracija — F3.\n\t\tif ( ! self::feeding_demo_enabled() ) { return ''; }\n\n\t\t// Produktas TIK iš serverio validuoto ?product_id= (jokio hardcode).\n\t\t$product_id = isset( $_GET['product_id'] ) ? absint( $_GET['product_id'] ) : 0;\n\t\tif ( ! $product_id ) { return ''; }\n\t\t$product = wc_get_product( $product_id );\n\t\tif ( ! $product || $product->get_status() !== 'publish' ) { return ''; }\n\t\t// Feeding scope validacija: dog(72) / cat(81).\n\t\t$cats = wp_get_post_terms( $product_id, 'product_cat', array( 'fields' => 'ids' ) );\n\t\tif ( is_wp_error( $cats ) || ! ( in_array( 72, (array) $cats, true ) || in_array( 81, (array) $cats, true ) ) ) { return ''; }\n\n\t\tglobal $wpdb;\n\t\t$uid = get_current_user_id();\n\t\t$pet = $wpdb->get_row( $wpdb->prepare(\n\t\t\t\"SELECT id, pet_name, species, current_weight_kg FROM {$wpdb->prefix}ps_pets\n\t\t\t WHERE user_id = %d AND status = 'active' AND current_weight_kg IS NOT NULL AND current_weight_kg > 0\n\t\t\t ORDER BY id ASC LIMIT 1\", $uid ), ARRAY_A );\n\t\tif ( ! $pet ) { return ''; }\n\n\t\t$res = Petshop_Feeding_Service::eva"
+ },
+ "3": {
+  "v": "S1703 mc",
+  "n": 307,
+  "sek": 1.38,
+  "statusai": {
+   "ok/": 183,
+   "needs_input/AGE_REQUIRED": 45,
+   "unavailable/NO_VERIFIED_TABLE": 44,
+   "unavailable/WEIGHT_OUT_OF_RANGE": 35
+  },
+  "ok_n": 183,
+  "pigiausi": [
+   {
+    "pid": 18112,
+    "cd": 0.22,
+    "cdx": 0.37,
+    "d": 83,
+    "g": 90,
+    "am": "optional_refinement",
+    "wm": "exact",
+    "n": "Josera A/S Chicken&Rice 12,5 kg - sausas maistas šunims",
+    "kaina": "30.69"
+   },
+   {
+    "pid": 18088,
+    "cd": 0.25,
+    "cdx": 0.43,
+    "d": 96,
+    "g": 75,
+    "am": "optional_refinement",
+    "wm": "exact",
+    "n": "Josera High Protein Chicken  sausas pašaras šunims su paukšt",
+    "kaina": "41.39"
+   },
+   {
+    "pid": 17959,
+    "cd": 0.25,
+    "cdx": 0.32,
+    "d": 71,
+    "g": 160,
+    "am": "none",
+    "wm": "exact",
+    "n": "Josidog Economy 15 kg sausas maistas šunims",
+    "kaina": "23.09"
+   },
+   {
+    "pid": 18000,
+    "cd": 0.27,
+    "cdx": 0.48,
+    "d": 86,
+    "g": 80,
+    "am": "optional_refinement",
+    "wm": "exact",
+    "n": "Josera Optiness 12,5 kg - begrūdis sausas maistas šunims su ",
+    "kaina": "41.79"
+   },
+   {
+    "pid": 17978,
+    "cd": 0.27,
+    "cdx": 0.46,
+    "d": 86,
+    "g": 85,
+    "am": "optional_refinement",
+    "wm": "exact",
+    "n": "Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria ",
+    "kaina": "39.99"
+   },
+   {
+    "pid": 21360,
+    "cd": 0.27,
+    "cdx": 0.41,
+    "d": 18,
+    "g": 100,
+    "am": "none",
+    "wm": "exact",
+    "n": "JosiDog Active sausas pašaras šunims, 2,7 kg",
+    "kaina": "7.29"
+   },
+   {
+    "pid": 18159,
+    "cd": 0.28,
+    "cdx": 0.46,
+    "d": 83,
+    "g": 90,
+    "am": "optional_refinement",
+    "wm": "exact",
+    "n": "JOSERA BALANCE pašaras šunims su vištiena, 12,5 kg",
+    "kaina": "38.69"
+   },
+   {
+    "pid": 18032,
+    "cd": 0.28,
+    "cdx": 0.45,
+    "d": 74,
+    "g": 85,
+    "am": "optional_refinement",
+    "wm": "exact",
+    "n": "Josera Mini Chicken&Rice 10 kg - sausas maistas suaugusiems ",
+    "kaina": "33.29"
+   },
+   {
+    "pid": 17962,
+    "cd": 0.28,
+    "cdx": 0.38,
+    "d": 83,
+    "g": 135,
+    "am": "none",
+    "wm": "exact",
+    "n": "Josidog Active 15 kg - sausas maistas aktyviems šunims",
+    "kaina": "31.39"
+   },
+   {
+    "pid": 20393,
+    "cd": 0.28,
+    "cdx": 0.42,
+    "d": 6,
+    "g": 100,
+    "am": "none",
+    "wm": "exact",
+    "n": "JosiDog Active sausas pašaras šunims, 900 g",
+    "kaina": "2.49"
+   },
+   {
+    "pid": 26909,
+    "cd": 0.28,
+    "cdx": 0.4,
+    "d": 13,
+    "g": 140,
+    "am": "none",
+    "wm": "exact",
+    "n": "JosiDog Economy sausas pašaras šunims, 2,7 kg",
+    "kaina": "5.39"
+   },
+   {
+    "pid": 18154,
+    "cd": 0.29,
+    "cdx": 0.49,
+    "d": 92,
+    "g": 80,
+    "am": "optional_refinement",
+    "wm": "exact",
+    "n": "JOSERA FESTIVAL pašaras šunims su lašiša, 12,5 kg",
+    "kaina": "45.29"
+   }
+  ],
+  "brangiausi": [
+   {
+    "pid": 12461,
+    "cd": 1.8,
+    "cdx": 2.09,
+    "d": 41,
+    "g": 370,
+    "am": "none",
+    "wm": "exact",
+    "n": "Eukanuba Puppy & Junior Medium Breed PFB 18kg",
+    "kaina": "87.59"
+   },
+   {
+    "pid": 18584,
+    "cd": 1.85,
+    "cdx": 2.12,
+    "d": 5,
+    "g": 140,
+    "am": "none",
+    "wm": "exact",
+    "n": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauli",
+    "kaina": "10.59"
+   },
+   {
+    "pid": 20941,
+    "cd": 1.89,
+    "cdx": 2.17,
+    "d": 12,
+    "g": 135,
+    "am": "none",
+    "wm": "exact",
+    "n": "Exclusion Hypoallergenic sausas pašaras mažų veislių šunims ",
+    "kaina": "27.99"
+   },
+   {
+    "pid": 17179,
+    "cd": 2.12,
+    "cdx": 3.58,
+    "d": 0,
+    "g": 340,
+    "am": "none",
+    "wm": "exact",
+    "n": "Ontario konservai šunims su jautiena, paskaninta žolelėmis, ",
+    "kaina": "2.49"
+   },
+   {
+    "pid": 17188,
+    "cd": 2.12,
+    "cdx": 3.58,
+    "d": 0,
+    "g": 340,
+    "am": "none",
+    "wm": "exact",
+    "n": "Ontario konservai šunims su antiena, paskaninta spanguolėmis",
+    "kaina": "2.49"
+   }
+  ],
+  "ne_ok": [
+   {
+    "pid": 33253,
+    "st": "needs_input",
+    "rc": [
+     "AGE_REQUIRED"
+    ],
+    "msg": "Nurodykite augintinio gimimo datą — gamintojas normas pateikia pagal amžių.",
+    "sp": false,
+    "io": 0,
+    "ao": []
+   },
+   {
+    "pid": 24644,
+    "st": "needs_input",
+    "rc": [
+     "AGE_REQUIRED"
+    ],
+    "msg": "Nurodykite augintinio gimimo datą — gamintojas normas pateikia pagal amžių.",
+    "sp": false,
+    "io": 0,
+    "ao": []
+   },
+   {
+    "pid": 25471,
+    "st": "needs_input",
+    "rc": [
+     "AGE_REQUIRED"
+    ],
+    "msg": "Nurodykite augintinio gimimo datą — gamintojas normas pateikia pagal amžių.",
+    "sp": false,
+    "io": 0,
+    "ao": []
+   },
+   {
+    "pid": 25475,
+    "st": "needs_input",
+    "rc": [
+     "AGE_REQUIRED"
+    ],
+    "msg": "Nurodykite augintinio gimimo datą — gamintojas normas pateikia pagal amžių.",
+    "sp": false,
+    "io": 0,
+    "ao": []
+   },
+   {
+    "pid": 27130,
+    "st": "needs_input",
+    "rc": [
+     "AGE_REQUIRED"
+    ],
+    "msg": "Nurodykite augintinio gimimo datą — gamintojas normas pateikia pagal amžių.",
+    "sp": false,
+    "io": 0,
+    "ao": []
+   },
+   {
+    "pid": 26375,
+    "st": "needs_input",
+    "rc": [
+     "AGE_REQUIRED"
+    ],
+    "msg": "Nurodykite augintinio gimimo datą — gamintojas normas pateikia pagal amžių.",
+    "sp": false,
+    "io": 0,
+    "ao": []
+   },
+   {
+    "pid": 26383,
+    "st": "needs_input",
+    "rc": [
+     "AGE_REQUIRED"
+    ],
+    "msg": "Nurodykite augintinio gimimo datą — gamintojas normas pateikia pagal amžių.",
+    "sp": false,
+    "io": 0,
+    "ao": []
+   },
+   {
+    "pid": 26441,
+    "st": "needs_input",
+    "rc": [
+     "AGE_REQUIRED"
+    ],
+    "msg": "Nurodykite augintinio gimimo datą — gamintojas normas pateikia pagal amžių.",
+    "sp": false,
+    "io": 0,
+    "ao": []
+   }
+  ],
+  "fakt_eilutes_cols": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ]
+ },
+ "v": "dep-062047",
+ "kurimas": 200,
+ "sid": 6153,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
