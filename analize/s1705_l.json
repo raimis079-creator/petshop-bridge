@@ -1,0 +1,53 @@
+{
+ "2": {
+  "f": "2",
+  "po": {
+   "sand": "ambrosia",
+   "stock": "1",
+   "own": "0",
+   "ss": "instock",
+   "st": "draft",
+   "wcq": 1,
+   "src": [
+    {
+     "source": "AV",
+     "stock_qty": "0",
+     "cost_net": null,
+     "is_active": "0"
+    },
+    {
+     "source": "ambrosia",
+     "stock_qty": "1",
+     "cost_net": "24.9400",
+     "is_active": "1"
+    }
+   ]
+  },
+  "AV_didziosios": [
+   "34969",
+   "34997",
+   "34999",
+   "35074",
+   "36109",
+   "36113",
+   "36152"
+  ],
+  "src_AV_didziosios": "25",
+  "resolve": {
+   "source": "ambrosia",
+   "carrier": "venipak",
+   "courier_only": false,
+   "av_qty": 0,
+   "av_uztenka": false,
+   "tiekejas": "ambrosia",
+   "reason": "AV turi 0, reikia 1 — neužtenka"
+  }
+ },
+ "v": "dep-101843",
+ "kurimas": 200,
+ "sid": 6209,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
