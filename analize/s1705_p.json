@@ -1,0 +1,186 @@
+{
+ "1": {
+  "hit": [
+   "petshop-av-admin.php:28: 'av'          => [ '#2d6a35', 'AV' ],",
+   "petshop-darbalaukis.php:615: $v = array( 'av' => 'AV', 'vf' => 'VF', 'zb' => 'ZB', 'quattro' => 'Quattro', 'prins' => 'Prins', 'ambrosia' => 'Ambrosia', 'belcor_tofu' => 'Belacor', 'lp' => 'LP', 'tiekejo' => 'tiekėjo' );",
+   "petshop-desk.php:232: 'av'          => array( '#2D5F3F', 'AV',  'Savas sandėlis' ),",
+   "petshop-desk.php:2890: $dal[] = ( self::SALTINIAI[ $t ][1] ?? mb_strtoupper( $t ) ) . '→' . ( 'av' === $k ? 'AV' : 'klientui' );",
+   "petshop-gavimas.php:434: update_post_meta( $pid, '_ps_sandelis', 'AV' );",
+   "petshop-katalogas.php:6483: $sand = array( '' => 'visi', 'av' => 'AV', 'vf' => 'VF', 'zb' => 'ZB', 'quattro' => 'Quattro',",
+   "petshop-laukai.php:562: $sandeliai[ $s ? $s : 'AV' ] = 1;",
+   "petshop-laukai.php:2211: $kr_sand = $kr ? ( strtoupper( (string) get_post_meta( $kr[0], '_ps_sandelis', true ) ) ?: 'AV' ) : 'AV';",
+   "petshop-laukai.php:2251: echo '<td class=\"pslka-mut\">' . esc_html( strtoupper( (string) get_post_meta( $cid, '_ps_sandelis', true ) ?: 'AV' ) ) . '</td>';",
+   "petshop-laukai.php:2344: $sand[ strtoupper( (string) get_post_meta( $cid, '_ps_sandelis', true ) ?: 'AV' ) ] = 1;",
+   "petshop-laukai.php:2767: +'<td class=\"pslka-mut\">'+(p.sandelis||'AV')+(p.yra?'':' <span class=\"pslka-z r\">neturime</span>')+'</td>'",
+   "petshop-laukai.php:2906: $dov_s = strtoupper( (string) get_post_meta( $pid, '_ps_sandelis', true ) ) ?: 'AV';",
+   "petshop-laukai.php:2908: $kr_s = $kr ? ( strtoupper( (string) get_post_meta( $kr[0], '_ps_sandelis', true ) ) ?: 'AV' ) : $dov_s;",
+   "petshop-laukai.php:2977: $sand = $kr ? ( strtoupper( (string) get_post_meta( $kr[0], '_ps_sandelis', true ) ) ?: 'AV' ) : 'AV';",
+   "petshop-laukai.php:3003: if ( $sand === 'AV' ) { $args['meta_query'][] = array( 'key' => '_ps_sandelis', 'compare' => 'NOT EXISTS' ); }",
+   "petshop-laukai.php:3073: $naujo = strtoupper( (string) get_post_meta( $pid, '_ps_sandelis', true ) ?: 'AV' );",
+   "petshop-laukai.php:3075: $s = strtoupper( (string) get_post_meta( $cid, '_ps_sandelis', true ) ?: 'AV' );",
+   "petshop-laukai.php:3142: 'sandelis' => strtoupper( (string) get_post_meta( $pid, '_ps_sandelis', true ) ?: 'AV' ),",
+   "petshop-laukai.php:3271: 'sandelis' => strtoupper( (string) get_post_meta( $pid, '_ps_sandelis', true ) ?: 'AV' ),",
+   "petshop-laukai.php:3304: foreach ( $esami as $cid ) { $sand[ strtoupper( (string) get_post_meta( $cid, '_ps_sandelis', true ) ?: 'AV' ) ] = 1; }",
+   "petshop-laukai.php:3312: $s = strtoupper( (string) get_post_meta( $pid, '_ps_sandelis', true ) ?: 'AV' );",
+   "petshop-laukai.php:3390: foreach ( array( '' => 'Visi', 'av' => 'AV', 'vf' => 'VF', 'zb' => 'ZB' ) as $k2 => $v2 ) {",
+   "petshop-rinkiniai.php:1646: 'sand'  => strtoupper( (string) get_post_meta( (int) $cid, '_ps_sandelis', true ) ?: 'AV' ),",
+   "petshop-rinkiniai.php:1724: foreach ( array( '' => 'Visi', 'av' => 'AV', 'vf' => 'VF', 'zb' => 'ZB' ) as $kk => $vv ) {",
+   "petshop-rinkiniai.php:2571: foreach ( array( '' => 'Visi', 'av' => 'AV', 'vf' => 'VF', 'zb' => 'ZB' ) as $k => $v ) {"
+  ],
+  "snip": [
+   "5759 TEMP PS dep-164134 a0:14: $feat=function($L,$n){ $f=$L[0]; $x=array('n'=>1,'gyv_'.($f['gyv']?:'-')=>1,'br_'.($f['brendas']?:'-')=>1,'aov1'=>$f['viso_ct'],'food_pct'=>$f['maist_ct']/$f['viso_ct'],'sku_n'=>$f['sku_n'],'slap'=>",
+   "6209 TEMP PS dep-101843 a0:13: $wpdb->query(\"UPDATE {$p}ps_sources SET is_active=0, stock_qty=0 WHERE product_id=$id AND BINARY source IN ('AV','av')\");",
+   "6209 TEMP PS dep-101843 a0:18: $r['AV_didziosios']=$wpdb->get_col(\"SELECT post_id FROM {$p}postmeta WHERE meta_key='_ps_sandelis' AND BINARY meta_value='AV'\");",
+   "6209 TEMP PS dep-101843 a0:19: $r['src_AV_didziosios']=$wpdb->get_var(\"SELECT COUNT(*) FROM {$p}ps_sources WHERE BINARY source='AV'\");",
+   "6211 TEMP PS dep-103106 a0:6: if($f==='2'){ $r['upd']=$wpdb->query(\"UPDATE {$p}ps_sources SET stock_qty=0 WHERE BINARY source IN('av','AV') AND is_active=0 AND product_id IN (\".implode(',',$ids).\")\"); foreach($ids as $id) wc_del",
+   "6212 TEMP PS dep-103231 a0:6: if($f==='2'){ $r['upd']=$wpdb->query(\"UPDATE {$p}ps_sources SET stock_qty=0 WHERE BINARY source IN('av','AV') AND is_active=0 AND product_id IN (\".implode(',',$ids).\")\"); foreach($ids as $id) wc_del",
+   "6213 TEMP PS dep-103404 a0:6: $r['pries_gyvi_AV']=Petshop_Sources::gyvi($id,'AV'); $r['pries_gyvi_av']=Petshop_Sources::gyvi($id,'av');",
+   "6213 TEMP PS dep-103404 a0:7: $r['upd']=$wpdb->query(\"UPDATE {$p}ps_sources SET source='av', stock_qty=0 WHERE product_id=$id AND BINARY source='AV'\");",
+   "6214 TEMP PS dep-103821 a0:5: $mids=array_map('intval',$wpdb->get_col(\"SELECT post_id FROM {$p}postmeta WHERE meta_key='_ps_sandelis' AND BINARY meta_value='AV'\"));",
+   "6214 TEMP PS dep-103821 a0:6: $srows=$wpdb->get_results(\"SELECT id,product_id,source,stock_qty,is_active FROM {$p}ps_sources WHERE BINARY source='AV'\",ARRAY_A);",
+   "6214 TEMP PS dep-103821 a0:14: $r['dupl']=$wpdb->get_results(\"SELECT a.product_id FROM {$p}ps_sources a JOIN {$p}ps_sources b ON a.product_id=b.product_id AND BINARY a.source='AV' AND BINARY b.source='av'\",ARRAY_A);",
+   "6214 TEMP PS dep-103821 a0:15: $r['upd_meta']=$wpdb->query(\"UPDATE {$p}postmeta SET meta_value='av' WHERE meta_key='_ps_sandelis' AND BINARY meta_value='AV'\");",
+   "6214 TEMP PS dep-103821 a0:16: $r['upd_src']=$wpdb->query(\"UPDATE {$p}ps_sources SET source='av' WHERE BINARY source='AV'\");",
+   "6214 TEMP PS dep-103821 a0:22: $r['liko_meta']=$wpdb->get_var(\"SELECT COUNT(*) FROM {$p}postmeta WHERE meta_key='_ps_sandelis' AND BINARY meta_value='AV'\");",
+   "6214 TEMP PS dep-103821 a0:23: $r['liko_src']=$wpdb->get_var(\"SELECT COUNT(*) FROM {$p}ps_sources WHERE BINARY source='AV'\"); }",
+   "6214 TEMP PS dep-103821 a0:24: // iš kur atsiranda 'AV'",
+   "6214 TEMP PS dep-103821 a0:26: $r['snip']=$wpdb->get_col(\"SELECT CONCAT(id,' ',name) FROM {$p}snippets WHERE active=1 AND code REGEXP '_ps_sandelis' AND BINARY code LIKE '%''AV''%'\");",
+   "6215 TEMP PS dep-103947 a0:5: $mids=array_map('intval',$wpdb->get_col(\"SELECT post_id FROM {$p}postmeta WHERE meta_key='_ps_sandelis' AND BINARY meta_value='AV'\"));",
+   "6215 TEMP PS dep-103947 a0:6: $srows=$wpdb->get_results(\"SELECT id,product_id,source,stock_qty,is_active FROM {$p}ps_sources WHERE BINARY source='AV'\",ARRAY_A);",
+   "6215 TEMP PS dep-103947 a0:14: $r['dupl']=$wpdb->get_results(\"SELECT a.product_id FROM {$p}ps_sources a JOIN {$p}ps_sources b ON a.product_id=b.product_id AND BINARY a.source='AV' AND BINARY b.source='av'\",ARRAY_A);",
+   "6215 TEMP PS dep-103947 a0:15: $r['upd_meta']=$wpdb->query(\"UPDATE {$p}postmeta SET meta_value='av' WHERE meta_key='_ps_sandelis' AND BINARY meta_value='AV'\");",
+   "6215 TEMP PS dep-103947 a0:16: $r['upd_src']=$wpdb->query(\"UPDATE {$p}ps_sources SET source='av' WHERE BINARY source='AV'\");",
+   "6215 TEMP PS dep-103947 a0:22: $r['liko_meta']=$wpdb->get_var(\"SELECT COUNT(*) FROM {$p}postmeta WHERE meta_key='_ps_sandelis' AND BINARY meta_value='AV'\");",
+   "6215 TEMP PS dep-103947 a0:23: $r['liko_src']=$wpdb->get_var(\"SELECT COUNT(*) FROM {$p}ps_sources WHERE BINARY source='AV'\"); }",
+   "6215 TEMP PS dep-103947 a0:24: // iš kur atsiranda 'AV'",
+   "6215 TEMP PS dep-103947 a0:26: $r['snip']=$wpdb->get_col(\"SELECT CONCAT(id,' ',name) FROM {$p}snippets WHERE active=1 AND code REGEXP '_ps_sandelis' AND BINARY code LIKE '%''AV''%'\");",
+   "6216 TEMP PS dep-104437 a1:7: foreach($wpdb->get_results(\"SELECT id,name,active,code FROM {$p}snippets WHERE BINARY code LIKE '%''AV''%' OR BINARY code LIKE '%\\\"AV\\\"%'\",ARRAY_A) as $s){ $L=explode(\"\\n\",$s['code']); foreach($L as"
+  ],
+  "kurta": {
+   "34896": "2026-08-11 21:58:52 | a75 | Jautienos odos pagaliukai su antiena, 50 | _ps_sandelis,_ps_i_juodrasti,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_aprasymo_bak,_ps_aprasymas_uzrakintas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_margin_365d,_ps_sales_updated",
+   "34902": "2026-08-12 12:19:17 | a75 | Jaučio snukis, džiovintas, rudas, 1 vnt. | _ps_sandelis,_ps_i_juodrasti,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_aprasymo_bak,_ps_aprasymas_uzrakintas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_margin_365d,_ps_sales_updated",
+   "34907": "2026-08-12 14:07:30 | a75 | Baltos triušio ausys, 250 g | _ps_sandelis,_ps_publikuota,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_aprasymo_bak,_ps_aprasymas_uzrakintas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated,_ps_margin_365d,_ps_dienu_atsargai,_ps_abc",
+   "34908": "2026-08-12 16:52:20 | a75 | Stirnos ausis, 1 vnt. | _ps_sandelis,_ps_publikuota,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_trumpo_bak,_ps_trumpas_uzrakintas,_ps_aprasymo_bak,_ps_aprasymas_uzrakintas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_margin_365d,_ps_sales_updated",
+   "34913": "2026-08-13 12:56:38 | a75 | Natūralių skanėstų šunims rinkinukas, 10 | _ps_sandelis,_ps_i_juodrasti,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_trumpo_bak,_ps_trumpas_uzrakintas,_ps_aprasymo_bak,_ps_aprasymas_uzrakintas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated,_ps_publikuota,_ps_margin_365d",
+   "34942": "2026-08-15 16:48:58 | a0 | Konservų dėžė, 800 g. Be vištienos | _ps_publikuota,_ps_laukas,_ps_laukas_zodis,_ps_laukas_sandelis,_ps_laukas_seima,_ps_sandelis,_ps_laukas_pakopos,_ps_laukas_dydis,_ps_laukas_dovanos_riba,_ps_laukas_dovanos,_ps_laukas_grupe,_ps_laukas_trumpas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated",
+   "34943": "2026-08-15 16:48:59 | a0 | TEST Konservu deze 800 Visi skoniai | _ps_publikuota,_ps_laukas,_ps_laukas_zodis,_ps_laukas_sandelis,_ps_laukas_seima,_ps_sandelis,_ps_laukas_pakopos,_ps_laukas_dydis,_ps_laukas_dovanos_riba,_ps_laukas_dovanos,_ps_laukas_grupe,_ps_laukas_trumpas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_ranka_isimta,_ps_ranka_isimta_kada,_ps_ranka_isimta_kas",
+   "34944": "2026-08-15 16:48:59 | a0 | Konservų dėžė, 400 g. Be vištienos | _ps_publikuota,_ps_laukas,_ps_laukas_zodis,_ps_laukas_sandelis,_ps_laukas_seima,_ps_sandelis,_ps_laukas_pakopos,_ps_laukas_dydis,_ps_laukas_dovanos_riba,_ps_laukas_dovanos,_ps_laukas_grupe,_ps_laukas_trumpas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_laukas_iejimas",
+   "34945": "2026-08-15 16:48:59 | a0 | Konservų dėžė 300/400 g – Monoproteinas | _ps_publikuota,_ps_laukas,_ps_laukas_zodis,_ps_laukas_sandelis,_ps_laukas_seima,_ps_sandelis,_ps_laukas_pakopos,_ps_laukas_dydis,_ps_laukas_dovanos_riba,_ps_laukas_dovanos,_ps_laukas_grupe,_ps_laukas_trumpas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated",
+   "34946": "2026-08-15 16:48:59 | a0 | Konservų dėžė, 400 g. Įvairovė. | _ps_publikuota,_ps_laukas,_ps_laukas_zodis,_ps_laukas_sandelis,_ps_laukas_seima,_ps_sandelis,_ps_laukas_pakopos,_ps_laukas_dydis,_ps_laukas_dovanos_riba,_ps_laukas_dovanos,_ps_laukas_grupe,_ps_laukas_trumpas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_ranka_isimta,_ps_ranka_isimta_kada,_ps_ranka_isimta_kas",
+   "34947": "2026-08-15 18:23:23 | a0 | Konservų rinkinys katėms | _ps_publikuota,_ps_laukas,_ps_laukas_zodis,_ps_laukas_sandelis,_ps_laukas_seima,_ps_sandelis,_ps_laukas_pakopos,_ps_laukas_dydis,_ps_laukas_dovanos_riba,_ps_laukas_dovanos,_ps_laukas_grupe,_ps_laukas_trumpas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_laukas_iejimas",
+   "34948": "2026-08-15 18:23:23 | a0 | TEST Konservu deze katei Be vistienos | _ps_publikuota,_ps_laukas,_ps_laukas_zodis,_ps_laukas_sandelis,_ps_laukas_seima,_ps_sandelis,_ps_laukas_pakopos,_ps_laukas_dydis,_ps_laukas_dovanos_riba,_ps_laukas_dovanos,_ps_laukas_grupe,_ps_laukas_trumpas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_laukas_iejimas,_ps_ranka_isimta,_ps_ranka_isimta_kada,_ps_ranka_isimta_kas",
+   "34969": "2026-08-18 17:36:50 | a75 | Ontario konservai šunims su veršiena ir  | _ps_sandelis,_ps_i_juodrasti,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_publikuota,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_margin_365d,_ps_sales_updated",
+   "34997": "2026-08-19 12:50:36 | a75 | Šampūnas alergiškiems šunims Dr Seidel,  | _ps_sandelis,_ps_i_juodrasti,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_publikuota,_ps_trumpo_bak,_ps_trumpas_uzrakintas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated,_ps_margin_365d",
+   "34999": "2026-08-19 13:01:02 | a75 | Šampūnas, neutralizuojantis nemalonius k | _ps_sandelis,_ps_i_juodrasti,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_trumpo_bak,_ps_trumpas_uzrakintas,_ps_publikuota,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated,_ps_margin_365d",
+   "35074": "2026-08-24 18:18:38 | a75 | Žaislas šuniui – Medžiaginis kaktusas Fe | _ps_sandelis,_ps_i_juodrasti,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_trumpo_bak,_ps_trumpas_uzrakintas,_ps_aprasymo_bak,_ps_aprasymas_uzrakintas,_ps_publikuota,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated,_ps_ranka_isimta,_ps_ranka_isimta_kada,_ps_ranka_isimta_kas",
+   "36109": "2026-09-21 11:54:10 | a5788 | Hikari Lionhead Sinking Goldfish Mini Pe | _ps_sandelis,_ps_i_juodrasti,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_trumpo_bak,_ps_trumpas_uzrakintas,_ps_aprasymo_bak,_ps_aprasymas_uzrakintas,_ps_publikuota,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated",
+   "36113": "2026-09-21 14:56:26 | a5788 | Antienos dešrelės, 500 g, natūralūs skan | _ps_sandelis,_ps_publikuota,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_aprasymo_bak,_ps_aprasymas_uzrakintas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated",
+   "36152": "2026-09-22 15:50:27 | a5788 | Rudos (natūralios) triušio ausys, 250 g | _ps_sandelis,_ps_publikuota,_ps_pilnumas,_ps_pilnumas_truksta,_ps_pilnumas_kodai,_ps_pilnumas_updated,_ps_aprasymo_bak,_ps_aprasymas_uzrakintas,_ps_sales_30d,_ps_sales_90d,_ps_sales_365d,_ps_revenue_365d,_ps_orders_365d,_ps_last_sale,_ps_sales_updated"
+  },
+  "src_created": [
+   {
+    "product_id": "34892",
+    "created_at": "2026-08-11 20:31:57"
+   },
+   {
+    "product_id": "34895",
+    "created_at": "2026-08-11 21:36:25"
+   },
+   {
+    "product_id": "34896",
+    "created_at": "2026-08-11 21:58:52"
+   },
+   {
+    "product_id": "34902",
+    "created_at": "2026-08-12 12:19:17"
+   },
+   {
+    "product_id": "34905",
+    "created_at": "2026-08-12 12:30:17"
+   },
+   {
+    "product_id": "34907",
+    "created_at": "2026-08-12 14:07:30"
+   },
+   {
+    "product_id": "34908",
+    "created_at": "2026-08-12 16:52:20"
+   },
+   {
+    "product_id": "34913",
+    "created_at": "2026-08-13 12:56:38"
+   },
+   {
+    "product_id": "34940",
+    "created_at": "2026-08-15 15:25:04"
+   },
+   {
+    "product_id": "34941",
+    "created_at": "2026-08-15 15:37:16"
+   },
+   {
+    "product_id": "34942",
+    "created_at": "2026-08-15 16:48:58"
+   },
+   {
+    "product_id": "34943",
+    "created_at": "2026-08-15 16:48:59"
+   },
+   {
+    "product_id": "34944",
+    "created_at": "2026-08-15 16:48:59"
+   },
+   {
+    "product_id": "34945",
+    "created_at": "2026-08-15 16:48:59"
+   },
+   {
+    "product_id": "34946",
+    "created_at": "2026-08-15 16:48:59"
+   },
+   {
+    "product_id": "34947",
+    "created_at": "2026-08-15 18:23:23"
+   },
+   {
+    "product_id": "34948",
+    "created_at": "2026-08-15 18:23:23"
+   },
+   {
+    "product_id": "34969",
+    "created_at": "2026-08-18 17:36:50"
+   },
+   {
+    "product_id": "34997",
+    "created_at": "2026-08-19 12:50:36"
+   },
+   {
+    "product_id": "34999",
+    "created_at": "2026-08-19 13:01:02"
+   },
+   {
+    "product_id": "35074",
+    "created_at": "2026-08-24 18:18:39"
+   },
+   {
+    "product_id": "36109",
+    "created_at": "2026-09-21 11:54:10"
+   },
+   {
+    "product_id": "36113",
+    "created_at": "2026-09-21 14:56:27"
+   },
+   {
+    "product_id": "36152",
+    "created_at": "2026-09-22 15:50:27"
+   }
+  ]
+ },
+ "v": "dep-104437",
+ "kurimas": 200,
+ "sid": 6216,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
