@@ -1,0 +1,1079 @@
+{
+ "v": "dep-114545",
+ "kurimas": 200,
+ "sid": 6221,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "ses_null": [
+   {
+    "sutikimas": "0",
+    "tipas": "add_to_cart",
+    "be_ses": "11",
+    "n": "788"
+   },
+   {
+    "sutikimas": "0",
+    "tipas": "begin_checkout",
+    "be_ses": "0",
+    "n": "171"
+   },
+   {
+    "sutikimas": "0",
+    "tipas": "email_calc_click",
+    "be_ses": "7",
+    "n": "7"
+   },
+   {
+    "sutikimas": "0",
+    "tipas": "error404",
+    "be_ses": "76",
+    "n": "136"
+   },
+   {
+    "sutikimas": "0",
+    "tipas": "filter",
+    "be_ses": "0",
+    "n": "4"
+   },
+   {
+    "sutikimas": "0",
+    "tipas": "pageview",
+    "be_ses": "1121",
+    "n": "6830"
+   },
+   {
+    "sutikimas": "0",
+    "tipas": "search",
+    "be_ses": "154",
+    "n": "357"
+   },
+   {
+    "sutikimas": "0",
+    "tipas": "skaiciuokle",
+    "be_ses": "2",
+    "n": "4"
+   },
+   {
+    "sutikimas": "0",
+    "tipas": "view_cart",
+    "be_ses": "0",
+    "n": "116"
+   },
+   {
+    "sutikimas": "0",
+    "tipas": "view_item",
+    "be_ses": "305",
+    "n": "2196"
+   },
+   {
+    "sutikimas": "1",
+    "tipas": "add_to_cart",
+    "be_ses": "12",
+    "n": "417"
+   },
+   {
+    "sutikimas": "1",
+    "tipas": "begin_checkout",
+    "be_ses": "0",
+    "n": "147"
+   },
+   {
+    "sutikimas": "1",
+    "tipas": "error404",
+    "be_ses": "0",
+    "n": "3"
+   },
+   {
+    "sutikimas": "1",
+    "tipas": "filter",
+    "be_ses": "0",
+    "n": "26"
+   },
+   {
+    "sutikimas": "1",
+    "tipas": "pageview",
+    "be_ses": "183",
+    "n": "2761"
+   },
+   {
+    "sutikimas": "1",
+    "tipas": "reminder_optin",
+    "be_ses": "1",
+    "n": "1"
+   },
+   {
+    "sutikimas": "1",
+    "tipas": "search",
+    "be_ses": "13",
+    "n": "113"
+   },
+   {
+    "sutikimas": "1",
+    "tipas": "view_cart",
+    "be_ses": "0",
+    "n": "110"
+   },
+   {
+    "sutikimas": "1",
+    "tipas": "view_item",
+    "be_ses": "39",
+    "n": "893"
+   }
+  ],
+  "lank": [
+   {
+    "sutikimas": "0",
+    "lank_d": "2592",
+    "ses": "2233",
+    "n": "6830"
+   },
+   {
+    "sutikimas": "1",
+    "lank_d": "432",
+    "ses": "413",
+    "n": "2761"
+   }
+  ],
+  "dienos": [
+   {
+    "diena": "2026-09-09",
+    "lank": "178",
+    "ses": "156",
+    "pv": "682",
+    "bc": "35"
+   },
+   {
+    "diena": "2026-09-10",
+    "lank": "205",
+    "ses": "188",
+    "pv": "664",
+    "bc": "20"
+   },
+   {
+    "diena": "2026-09-11",
+    "lank": "169",
+    "ses": "156",
+    "pv": "574",
+    "bc": "30"
+   },
+   {
+    "diena": "2026-09-12",
+    "lank": "51",
+    "ses": "47",
+    "pv": "106",
+    "bc": "2"
+   },
+   {
+    "diena": "2026-09-13",
+    "lank": "66",
+    "ses": "60",
+    "pv": "250",
+    "bc": "9"
+   },
+   {
+    "diena": "2026-09-14",
+    "lank": "251",
+    "ses": "236",
+    "pv": "938",
+    "bc": "40"
+   },
+   {
+    "diena": "2026-09-15",
+    "lank": "222",
+    "ses": "209",
+    "pv": "1042",
+    "bc": "52"
+   },
+   {
+    "diena": "2026-09-16",
+    "lank": "228",
+    "ses": "202",
+    "pv": "783",
+    "bc": "23"
+   },
+   {
+    "diena": "2026-09-17",
+    "lank": "197",
+    "ses": "183",
+    "pv": "816",
+    "bc": "25"
+   },
+   {
+    "diena": "2026-09-18",
+    "lank": "153",
+    "ses": "141",
+    "pv": "580",
+    "bc": "11"
+   },
+   {
+    "diena": "2026-09-19",
+    "lank": "182",
+    "ses": "163",
+    "pv": "545",
+    "bc": "19"
+   },
+   {
+    "diena": "2026-09-20",
+    "lank": "219",
+    "ses": "199",
+    "pv": "688",
+    "bc": "19"
+   },
+   {
+    "diena": "2026-09-21",
+    "lank": "233",
+    "ses": "200",
+    "pv": "1025",
+    "bc": "16"
+   },
+   {
+    "diena": "2026-09-22",
+    "lank": "315",
+    "ses": "263",
+    "pv": "898",
+    "bc": "17"
+   }
+  ],
+  "salis_kan": [
+   {
+    "salis": "LT",
+    "kan": "mokamas",
+    "lank_d": "606",
+    "pv": "2208",
+    "atc": "205"
+   },
+   {
+    "salis": "US",
+    "kan": "mokamas",
+    "lank_d": "376",
+    "pv": "1287",
+    "atc": "136"
+   },
+   {
+    "salis": "GB",
+    "kan": "mokamas",
+    "lank_d": "323",
+    "pv": "996",
+    "atc": "160"
+   },
+   {
+    "salis": "US",
+    "kan": "NULL",
+    "lank_d": "255",
+    "pv": "1077",
+    "atc": "300"
+   },
+   {
+    "salis": "LT",
+    "kan": "organika",
+    "lank_d": "194",
+    "pv": "526",
+    "atc": "28"
+   },
+   {
+    "salis": null,
+    "kan": "mokamas",
+    "lank_d": "186",
+    "pv": "710",
+    "atc": "70"
+   },
+   {
+    "salis": "US",
+    "kan": "organika",
+    "lank_d": "151",
+    "pv": "394",
+    "atc": "13"
+   },
+   {
+    "salis": "GB",
+    "kan": "organika",
+    "lank_d": "116",
+    "pv": "354",
+    "atc": "37"
+   },
+   {
+    "salis": null,
+    "kan": "organika",
+    "lank_d": "79",
+    "pv": "202",
+    "atc": "12"
+   },
+   {
+    "salis": "US",
+    "kan": "referral",
+    "lank_d": "64",
+    "pv": "181",
+    "atc": "21"
+   },
+   {
+    "salis": "GB",
+    "kan": "referral",
+    "lank_d": "61",
+    "pv": "188",
+    "atc": "33"
+   },
+   {
+    "salis": "LT",
+    "kan": "NULL",
+    "lank_d": "58",
+    "pv": "435",
+    "atc": "78"
+   },
+   {
+    "salis": "LT",
+    "kan": "referral",
+    "lank_d": "56",
+    "pv": "99",
+    "atc": "0"
+   },
+   {
+    "salis": "CN",
+    "kan": "NULL",
+    "lank_d": "51",
+    "pv": "56",
+    "atc": "0"
+   },
+   {
+    "salis": "RU",
+    "kan": "mokamas",
+    "lank_d": "50",
+    "pv": "196",
+    "atc": "27"
+   },
+   {
+    "salis": "GB",
+    "kan": "NULL",
+    "lank_d": "43",
+    "pv": "206",
+    "atc": "31"
+   },
+   {
+    "salis": null,
+    "kan": "NULL",
+    "lank_d": "28",
+    "pv": "43",
+    "atc": "0"
+   },
+   {
+    "salis": null,
+    "kan": "referral",
+    "lank_d": "17",
+    "pv": "25",
+    "atc": "0"
+   },
+   {
+    "salis": "RU",
+    "kan": "organika",
+    "lank_d": "11",
+    "pv": "36",
+    "atc": "9"
+   },
+   {
+    "salis": "RU",
+    "kan": "NULL",
+    "lank_d": "11",
+    "pv": "67",
+    "atc": "14"
+   },
+   {
+    "salis": "RU",
+    "kan": "referral",
+    "lank_d": "8",
+    "pv": "9",
+    "atc": "0"
+   },
+   {
+    "salis": "US",
+    "kan": "email",
+    "lank_d": "6",
+    "pv": "44",
+    "atc": "4"
+   },
+   {
+    "salis": "US",
+    "kan": "soc_organika",
+    "lank_d": "6",
+    "pv": "20",
+    "atc": "4"
+   },
+   {
+    "salis": "DE",
+    "kan": "NULL",
+    "lank_d": "5",
+    "pv": "13",
+    "atc": "0"
+   },
+   {
+    "salis": "UA",
+    "kan": "mokamas",
+    "lank_d": "5",
+    "pv": "18",
+    "atc": "0"
+   }
+  ],
+  "ua": [
+   {
+    "irenginys": "mobile",
+    "os_seima": "Android",
+    "nars_seima": "Chrome",
+    "salis": "LT",
+    "lank_d": "760",
+    "pv": "2778",
+    "veiksm": "1264"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "US",
+    "lank_d": "422",
+    "pv": "1667",
+    "veiksm": "1245"
+   },
+   {
+    "irenginys": "mobile",
+    "os_seima": "iOS",
+    "nars_seima": "Safari",
+    "salis": "GB",
+    "lank_d": "283",
+    "pv": "848",
+    "veiksm": "484"
+   },
+   {
+    "irenginys": "mobile",
+    "os_seima": "Android",
+    "nars_seima": "Chrome",
+    "salis": "US",
+    "lank_d": "200",
+    "pv": "808",
+    "veiksm": "424"
+   },
+   {
+    "irenginys": "mobile",
+    "os_seima": "iOS",
+    "nars_seima": "Safari",
+    "salis": null,
+    "lank_d": "185",
+    "pv": "645",
+    "veiksm": "291"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "LT",
+    "lank_d": "89",
+    "pv": "451",
+    "veiksm": "246"
+   },
+   {
+    "irenginys": "mobile",
+    "os_seima": "iOS",
+    "nars_seima": "Chrome",
+    "salis": null,
+    "lank_d": "68",
+    "pv": "211",
+    "veiksm": "90"
+   },
+   {
+    "irenginys": "mobile",
+    "os_seima": "Android",
+    "nars_seima": "Chrome",
+    "salis": "GB",
+    "lank_d": "66",
+    "pv": "190",
+    "veiksm": "91"
+   },
+   {
+    "irenginys": "mobile",
+    "os_seima": "iOS",
+    "nars_seima": "Chrome",
+    "salis": "GB",
+    "lank_d": "61",
+    "pv": "172",
+    "veiksm": "80"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "CN",
+    "lank_d": "51",
+    "pv": "56",
+    "veiksm": "0"
+   },
+   {
+    "irenginys": "mobile",
+    "os_seima": "Android",
+    "nars_seima": "Chrome",
+    "salis": "RU",
+    "lank_d": "49",
+    "pv": "226",
+    "veiksm": "140"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Edge",
+    "salis": "US",
+    "lank_d": "36",
+    "pv": "99",
+    "veiksm": "37"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Firefox",
+    "salis": "US",
+    "lank_d": "34",
+    "pv": "175",
+    "veiksm": "60"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "Linux",
+    "nars_seima": "Chrome",
+    "salis": "US",
+    "lank_d": "34",
+    "pv": "40",
+    "veiksm": "15"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "macOS",
+    "nars_seima": "Safari",
+    "salis": "GB",
+    "lank_d": "32",
+    "pv": "121",
+    "veiksm": "55"
+   },
+   {
+    "irenginys": "mobile",
+    "os_seima": "iOS",
+    "nars_seima": "Safari",
+    "salis": "US",
+    "lank_d": "28",
+    "pv": "66",
+    "veiksm": "51"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Edge",
+    "salis": "GB",
+    "lank_d": "28",
+    "pv": "141",
+    "veiksm": "63"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "GB",
+    "lank_d": "25",
+    "pv": "194",
+    "veiksm": "152"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "macOS",
+    "nars_seima": "Chrome",
+    "salis": "US",
+    "lank_d": "17",
+    "pv": "53",
+    "veiksm": "17"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "RU",
+    "lank_d": "13",
+    "pv": "43",
+    "veiksm": "20"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Opera",
+    "salis": "US",
+    "lank_d": "13",
+    "pv": "46",
+    "veiksm": "16"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "macOS",
+    "nars_seima": "Chrome",
+    "salis": "GB",
+    "lank_d": "11",
+    "pv": "34",
+    "veiksm": "25"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": null,
+    "lank_d": "10",
+    "pv": "35",
+    "veiksm": "11"
+   },
+   {
+    "irenginys": "desktop",
+    "os_seima": "macOS",
+    "nars_seima": "Safari",
+    "salis": null,
+    "lank_d": "9",
+    "pv": "26",
+    "veiksm": "12"
+   },
+   {
+    "irenginys": "mobile",
+    "os_seima": "Android",
+    "nars_seima": "Firefox",
+    "salis": "LT",
+    "lank_d": "8",
+    "pv": "52",
+    "veiksm": "19"
+   }
+  ],
+  "pv_per_lank": [
+   {
+    "b": "1",
+    "lank": "1526",
+    "pv": "1526"
+   },
+   {
+    "b": "11-50",
+    "lank": "181",
+    "pv": "3580"
+   },
+   {
+    "b": "2-3",
+    "lank": "528",
+    "pv": "1238"
+   },
+   {
+    "b": "4-10",
+    "lank": "426",
+    "pv": "2576"
+   },
+   {
+    "b": "50+",
+    "lank": "8",
+    "pv": "671"
+   }
+  ],
+  "bc_vs_uz": [
+   {
+    "diena": "2026-09-09",
+    "bc": "35",
+    "bc_lank": "9",
+    "aciu": "6"
+   },
+   {
+    "diena": "2026-09-10",
+    "bc": "20",
+    "bc_lank": "13",
+    "aciu": "11"
+   },
+   {
+    "diena": "2026-09-11",
+    "bc": "30",
+    "bc_lank": "12",
+    "aciu": "11"
+   },
+   {
+    "diena": "2026-09-12",
+    "bc": "2",
+    "bc_lank": "2",
+    "aciu": "0"
+   },
+   {
+    "diena": "2026-09-13",
+    "bc": "9",
+    "bc_lank": "3",
+    "aciu": "2"
+   },
+   {
+    "diena": "2026-09-14",
+    "bc": "40",
+    "bc_lank": "20",
+    "aciu": "10"
+   },
+   {
+    "diena": "2026-09-15",
+    "bc": "52",
+    "bc_lank": "25",
+    "aciu": "19"
+   },
+   {
+    "diena": "2026-09-16",
+    "bc": "23",
+    "bc_lank": "18",
+    "aciu": "14"
+   },
+   {
+    "diena": "2026-09-17",
+    "bc": "25",
+    "bc_lank": "13",
+    "aciu": "6"
+   },
+   {
+    "diena": "2026-09-18",
+    "bc": "11",
+    "bc_lank": "9",
+    "aciu": "10"
+   },
+   {
+    "diena": "2026-09-19",
+    "bc": "19",
+    "bc_lank": "15",
+    "aciu": "10"
+   },
+   {
+    "diena": "2026-09-20",
+    "bc": "19",
+    "bc_lank": "13",
+    "aciu": "13"
+   },
+   {
+    "diena": "2026-09-21",
+    "bc": "16",
+    "bc_lank": "14",
+    "aciu": "10"
+   },
+   {
+    "diena": "2026-09-22",
+    "bc": "17",
+    "bc_lank": "11",
+    "aciu": "8"
+   }
+  ],
+  "pusl_tipai": [
+   {
+    "pusl_tipas": "kategorija",
+    "n": "3334"
+   },
+   {
+    "pusl_tipas": "preke",
+    "n": "2884"
+   },
+   {
+    "pusl_tipas": "info",
+    "n": "910"
+   },
+   {
+    "pusl_tipas": "home",
+    "n": "684"
+   },
+   {
+    "pusl_tipas": "paieska",
+    "n": "470"
+   },
+   {
+    "pusl_tipas": "kita",
+    "n": "415"
+   },
+   {
+    "pusl_tipas": "checkout",
+    "n": "331"
+   },
+   {
+    "pusl_tipas": "krepselis",
+    "n": "249"
+   },
+   {
+    "pusl_tipas": "404",
+    "n": "139"
+   },
+   {
+    "pusl_tipas": "aciu",
+    "n": "130"
+   },
+   {
+    "pusl_tipas": "parduotuve",
+    "n": "38"
+   },
+   {
+    "pusl_tipas": "blog",
+    "n": "7"
+   }
+  ],
+  "uz_d": [
+   {
+    "diena": "2026-09-09",
+    "n": "4"
+   },
+   {
+    "diena": "2026-09-10",
+    "n": "9"
+   },
+   {
+    "diena": "2026-09-11",
+    "n": "7"
+   },
+   {
+    "diena": "2026-09-12",
+    "n": "7"
+   },
+   {
+    "diena": "2026-09-13",
+    "n": "8"
+   },
+   {
+    "diena": "2026-09-14",
+    "n": "12"
+   },
+   {
+    "diena": "2026-09-15",
+    "n": "17"
+   },
+   {
+    "diena": "2026-09-16",
+    "n": "11"
+   },
+   {
+    "diena": "2026-09-17",
+    "n": "7"
+   },
+   {
+    "diena": "2026-09-18",
+    "n": "7"
+   },
+   {
+    "diena": "2026-09-19",
+    "n": "10"
+   },
+   {
+    "diena": "2026-09-20",
+    "n": "8"
+   },
+   {
+    "diena": "2026-09-21",
+    "n": "10"
+   },
+   {
+    "diena": "2026-09-22",
+    "n": "7"
+   }
+  ],
+  "dienos_tab_cols": [
+   {
+    "Field": "id",
+    "Type": "bigint(20) unsigned",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": "auto_increment"
+   },
+   {
+    "Field": "data",
+    "Type": "date",
+    "Null": "NO",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "pjuvis",
+    "Type": "varchar(20)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "",
+    "Extra": ""
+   },
+   {
+    "Field": "raktas",
+    "Type": "varchar(190)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "",
+    "Extra": ""
+   },
+   {
+    "Field": "raktas2",
+    "Type": "varchar(190)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "",
+    "Extra": ""
+   },
+   {
+    "Field": "apsilankymai",
+    "Type": "int(10) unsigned",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "lankytojai",
+    "Type": "int(10) unsigned",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "perziuros",
+    "Type": "int(10) unsigned",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "atmetimai",
+    "Type": "int(10) unsigned",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "trukme_s_suma",
+    "Type": "bigint(20) unsigned",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "view_item",
+    "Type": "int(10) unsigned",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "add_to_cart",
+    "Type": "int(10) unsigned",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "begin_checkout",
+    "Type": "int(10) unsigned",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "uzsakymai",
+    "Type": "int(10) unsigned",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "pajamos_ct",
+    "Type": "bigint(20)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "kontribucija_ct",
+    "Type": "bigint(20)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "sutikusiu_dalis",
+    "Type": "decimal(5,2)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0.00",
+    "Extra": ""
+   },
+   {
+    "Field": "aplinka",
+    "Type": "varchar(10)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "dev",
+    "Extra": ""
+   }
+  ],
+  "dienos_tab": [
+   {
+    "id": "7687",
+    "data": "2026-09-22",
+    "pjuvis": "paieska",
+    "raktas": "vabzdys",
+    "raktas2": "",
+    "apsilankymai": "0",
+    "lankytojai": "1",
+    "perziuros": "0",
+    "atmetimai": "0",
+    "trukme_s_suma": "0",
+    "view_item": "0",
+    "add_to_cart": "0",
+    "begin_checkout": "0",
+    "uzsakymai": "0",
+    "pajamos_ct": "0",
+    "kontribucija_ct": "0",
+    "sutikusiu_dalis": "0.00",
+    "aplinka": "prod"
+   },
+   {
+    "id": "7686",
+    "data": "2026-09-22",
+    "pjuvis": "paieska",
+    "raktas": "Uostymo kilimėlis",
+    "raktas2": "",
+    "apsilankymai": "1",
+    "lankytojai": "1",
+    "perziuros": "0",
+    "atmetimai": "0",
+    "trukme_s_suma": "0",
+    "view_item": "0",
+    "add_to_cart": "0",
+    "begin_checkout": "0",
+    "uzsakymai": "0",
+    "pajamos_ct": "0",
+    "kontribucija_ct": "0",
+    "sutikusiu_dalis": "0.00",
+    "aplinka": "prod"
+   },
+   {
+    "id": "7685",
+    "data": "2026-09-22",
+    "pjuvis": "paieska",
+    "raktas": "triušio",
+    "raktas2": "",
+    "apsilankymai": "0",
+    "lankytojai": "1",
+    "perziuros": "0",
+    "atmetimai": "0",
+    "trukme_s_suma": "0",
+    "view_item": "0",
+    "add_to_cart": "0",
+    "begin_checkout": "0",
+    "uzsakymai": "0",
+    "pajamos_ct": "0",
+    "kontribucija_ct": "0",
+    "sutikusiu_dalis": "0.00",
+    "aplinka": "prod"
+   }
+  ],
+  "ivyk_len": 20773,
+  "ivyk_src": [
+   "46: * @version 1.2",
+   "219: $ok = $wpdb->insert( self::lentele(), array("
+  ]
+ }
+}
