@@ -1,0 +1,35 @@
+{
+ "1": {
+  "f": "1",
+  "pries": {
+   "status": "publish",
+   "mod": "2026-09-23 12:16:42",
+   "edit_last": "",
+   "edit_lock": "",
+   "ranka": "",
+   "sku": "JOS0793-dubl-21707"
+  },
+  "opcijos": [
+   "petshop_vf_publish_last_run"
+  ],
+  "cron_vf": [
+   "petshop_vf_sync_stock_hourly @ 2026-09-23 12:59",
+   "petshop_vf_feed_hourly @ 2026-09-23 13:05",
+   "petshop_vf_sync_reprice_daily @ 2026-09-24 06:00",
+   "petshop_vf_sync_publish_daily @ 2026-09-24 07:00"
+  ],
+  "upd": 21707,
+  "po": {
+   "18054": "publish",
+   "status": "draft",
+   "ranka": "taip"
+  }
+ },
+ "v": "dep-092513",
+ "kurimas": 200,
+ "sid": 6201,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
