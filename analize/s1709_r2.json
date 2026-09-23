@@ -1,0 +1,27 @@
+{
+ "2": {
+  "f": "2",
+  "klase": true,
+  "hook_http": [
+   5,
+   10,
+   20
+  ],
+  "diena_dabar": "260924",
+  "laikas_lt": "2026-09-23 21:55",
+  "test_av": [
+   "<manifest title=\"07267260924001\"",
+   "07267260923001",
+   "07267260924001"
+  ],
+  "test_vf": null,
+  "xml_po": "<description type=\"1\"><manifest title=\"07267260924001\"><shipment/></manifest></description>"
+ },
+ "v": "dep-185411",
+ "kurimas": 200,
+ "sid": 6275,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
