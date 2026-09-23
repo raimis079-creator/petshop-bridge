@@ -1,0 +1,584 @@
+{
+ "1": {
+  "f": "1",
+  "cols": {
+   "ps_fakt_eilutes": [
+    "id:bigint(20) unsigned",
+    "uzsakymas_id:bigint(20) unsigned",
+    "eilutes_id:bigint(20) unsigned",
+    "apmoketa_at:datetime",
+    "preke_id:bigint(20) unsigned",
+    "variacija_id:bigint(20) unsigned",
+    "sku:varchar(64)",
+    "gtin:varchar(32)",
+    "pavadinimas_tuo_metu:varchar(255)",
+    "kategorija_id_giliausia:bigint(20) unsigned",
+    "kategoriju_kelias:text",
+    "brendas_slug:varchar(96)",
+    "gyvunas:varchar(48)",
+    "pa_uzsaldymas:text",
+    "sandelis:varchar(24)",
+    "tiekejas:varchar(24)",
+    "partija_kodas:varchar(64)",
+    "kiekis:int(11)",
+    "kaina_ct:bigint(20)",
+    "pvm_ct:bigint(20)",
+    "kaina_vnt_ct:bigint(20)",
+    "kaina_reguliari_ct:bigint(20)",
+    "savikaina_vnt_ct:bigint(20)",
+    "savikaina_ct:bigint(20)",
+    "savikainos_saltinis:varchar(32)",
+    "nuolaida_ct:bigint(20)",
+    "akcija_id:bigint(20) unsigned",
+    "kuponas:varchar(64)",
+    "rinkinys_id:bigint(20) unsigned",
+    "rinkinio_tipas:varchar(8)",
+    "rinkinio_raktas:varchar(48)",
+    "dovana:tinyint(1)",
+    "svoris_g:int(11)",
+    "pakuotes_dydis:varchar(48)",
+    "klientas_naujas:tinyint(1)",
+    "testinis:tinyint(1)",
+    "saltinis_aplinka:varchar(8)",
+    "diena:date"
+   ],
+   "ps_ist_fakt_eilutes": [
+    "id:bigint(20) unsigned",
+    "uzsakymas_id:bigint(20) unsigned",
+    "eilutes_id:bigint(20) unsigned",
+    "apmoketa_at:datetime",
+    "preke_id:bigint(20) unsigned",
+    "variacija_id:bigint(20) unsigned",
+    "sku:varchar(64)",
+    "gtin:varchar(32)",
+    "pavadinimas_tuo_metu:varchar(255)",
+    "kategorija_id_giliausia:bigint(20) unsigned",
+    "kategoriju_kelias:text",
+    "brendas_slug:varchar(96)",
+    "gyvunas:varchar(48)",
+    "pa_uzsaldymas:text",
+    "sandelis:varchar(24)",
+    "tiekejas:varchar(24)",
+    "partija_kodas:varchar(64)",
+    "kiekis:int(11)",
+    "kaina_ct:bigint(20)",
+    "pvm_ct:bigint(20)",
+    "kaina_vnt_ct:bigint(20)",
+    "kaina_reguliari_ct:bigint(20)",
+    "savikaina_vnt_ct:bigint(20)",
+    "savikaina_ct:bigint(20)",
+    "savikainos_saltinis:varchar(32)",
+    "nuolaida_ct:bigint(20)",
+    "akcija_id:bigint(20) unsigned",
+    "kuponas:varchar(64)",
+    "rinkinys_id:bigint(20) unsigned",
+    "rinkinio_tipas:varchar(8)",
+    "rinkinio_raktas:varchar(48)",
+    "dovana:tinyint(1)",
+    "svoris_g:int(11)",
+    "pakuotes_dydis:varchar(48)",
+    "klientas_naujas:tinyint(1)",
+    "testinis:tinyint(1)",
+    "saltinis_aplinka:varchar(8)",
+    "diena:date"
+   ],
+   "ps_sources": [
+    "id:bigint(20) unsigned",
+    "product_id:bigint(20) unsigned",
+    "source:varchar(32)",
+    "supplier_sku:varchar(64)",
+    "ean:varchar(32)",
+    "stock_qty:int(11)",
+    "cost_net:decimal(12,4)",
+    "synced_at:datetime",
+    "is_active:tinyint(1)",
+    "is_sellable:tinyint(1)",
+    "priority:smallint(6)",
+    "created_at:datetime",
+    "updated_at:datetime"
+   ],
+   "ps_partijos": [
+    "id:bigint(20) unsigned",
+    "product_id:bigint(20) unsigned",
+    "gauta:date",
+    "kiekis_gautas:int(11)",
+    "kiekis_liko:int(11)",
+    "savikaina_eur:decimal(12,4)",
+    "savikaina_orig:decimal(12,4)",
+    "valiuta:varchar(3)",
+    "kursas:decimal(12,6)",
+    "geriausia_iki:date",
+    "tiekejas:varchar(96)",
+    "importuota:tinyint(1)",
+    "tiekimas_id:bigint(20) unsigned",
+    "pastaba:varchar(255)",
+    "sukurta:datetime",
+    "user_id:bigint(20) unsigned",
+    "atsaukta:tinyint(1)"
+   ]
+  },
+  "brands": [
+   {
+    "term_id": "314",
+    "name": "Josera",
+    "slug": "josera",
+    "count": "215"
+   }
+  ],
+  "meta": {
+   "34717": [
+    {
+     "meta_key": "_sku",
+     "v": "JOS1064"
+    },
+    {
+     "meta_key": "_stock",
+     "v": "39.000000"
+    },
+    {
+     "meta_key": "_stock_status",
+     "v": "instock"
+    },
+    {
+     "meta_key": "_vf_supplier_sku",
+     "v": "JOS1064"
+    },
+    {
+     "meta_key": "_vf_barcode",
+     "v": "403225479822"
+    },
+    {
+     "meta_key": "_vf_brand_raw",
+     "v": "JOSERA"
+    },
+    {
+     "meta_key": "_vf_category_raw",
+     "v": "Reg. konservuotas suaugusių šunų maistas"
+    },
+    {
+     "meta_key": "_vf_cost_xml",
+     "v": "3.28"
+    },
+    {
+     "meta_key": "_vf_personal_xml",
+     "v": "3.28"
+    },
+    {
+     "meta_key": "_vf_description_base64",
+     "v": "PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5"
+    },
+    {
+     "meta_key": "_vf_enabled",
+     "v": "yes"
+    },
+    {
+     "meta_key": "_vf_cost",
+     "v": "2.624"
+    },
+    {
+     "meta_key": "_vf_personal_cost",
+     "v": "2.624"
+    },
+    {
+     "meta_key": "_vf_supplier_discount",
+     "v": "0.2"
+    },
+    {
+     "meta_key": "_vf_brand_normalized",
+     "v": "Josera"
+    },
+    {
+     "meta_key": "_vf_last_sync",
+     "v": "2026-09-23 20:00:39"
+    },
+    {
+     "meta_key": "_ean",
+     "v": "403225479822"
+    },
+    {
+     "meta_key": "_global_unique_id",
+     "v": "403225479822"
+    },
+    {
+     "meta_key": "_vf_wc_sku",
+     "v": "JOS1064"
+    },
+    {
+     "meta_key": "_regular_price",
+     "v": "3.89"
+    },
+    {
+     "meta_key": "_price",
+     "v": "3.89"
+    },
+    {
+     "meta_key": "_vf_price_initialized",
+     "v": "yes"
+    },
+    {
+     "meta_key": "_vf_price_initialized_at",
+     "v": "2026-07-18 06:32:22"
+    },
+    {
+     "meta_key": "_vf_price_rule_used",
+     "v": "BRAND:Josera +DISC:20%"
+    },
+    {
+     "meta_key": "_ps_sandelis",
+     "v": "vf"
+    },
+    {
+     "meta_key": "_vf_qty",
+     "v": "39"
+    }
+   ],
+   "34718": [
+    {
+     "meta_key": "_sku",
+     "v": "JOS1065"
+    },
+    {
+     "meta_key": "_stock",
+     "v": "39.000000"
+    },
+    {
+     "meta_key": "_stock_status",
+     "v": "instock"
+    },
+    {
+     "meta_key": "_vf_supplier_sku",
+     "v": "JOS1065"
+    },
+    {
+     "meta_key": "_vf_barcode",
+     "v": "403225479819"
+    },
+    {
+     "meta_key": "_vf_brand_raw",
+     "v": "JOSERA"
+    },
+    {
+     "meta_key": "_vf_category_raw",
+     "v": "Reg. konservuotas suaugusių šunų maistas"
+    },
+    {
+     "meta_key": "_vf_cost_xml",
+     "v": "1.93"
+    },
+    {
+     "meta_key": "_vf_personal_xml",
+     "v": "1.93"
+    },
+    {
+     "meta_key": "_vf_description_base64",
+     "v": "PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5"
+    },
+    {
+     "meta_key": "_vf_enabled",
+     "v": "yes"
+    },
+    {
+     "meta_key": "_vf_cost",
+     "v": "1.544"
+    },
+    {
+     "meta_key": "_vf_personal_cost",
+     "v": "1.544"
+    },
+    {
+     "meta_key": "_vf_supplier_discount",
+     "v": "0.2"
+    },
+    {
+     "meta_key": "_vf_brand_normalized",
+     "v": "Josera"
+    },
+    {
+     "meta_key": "_vf_last_sync",
+     "v": "2026-09-23 20:00:39"
+    },
+    {
+     "meta_key": "_ean",
+     "v": "403225479819"
+    },
+    {
+     "meta_key": "_global_unique_id",
+     "v": "403225479819"
+    },
+    {
+     "meta_key": "_vf_wc_sku",
+     "v": "JOS1065"
+    },
+    {
+     "meta_key": "_regular_price",
+     "v": "2.29"
+    },
+    {
+     "meta_key": "_price",
+     "v": "2.29"
+    },
+    {
+     "meta_key": "_vf_price_initialized",
+     "v": "yes"
+    },
+    {
+     "meta_key": "_vf_price_initialized_at",
+     "v": "2026-07-18 06:32:23"
+    },
+    {
+     "meta_key": "_vf_price_rule_used",
+     "v": "BRAND:Josera +DISC:20%"
+    },
+    {
+     "meta_key": "_ps_sandelis",
+     "v": "vf"
+    },
+    {
+     "meta_key": "_vf_qty",
+     "v": "39"
+    }
+   ],
+   "35973": [
+    {
+     "meta_key": "_sku",
+     "v": "JOS0805"
+    },
+    {
+     "meta_key": "_stock",
+     "v": "42.000000"
+    },
+    {
+     "meta_key": "_stock_status",
+     "v": "instock"
+    },
+    {
+     "meta_key": "_vf_supplier_sku",
+     "v": "JOS0805"
+    },
+    {
+     "meta_key": "_vf_barcode",
+     "v": "403225474950"
+    },
+    {
+     "meta_key": "_vf_brand_raw",
+     "v": "JOSERA"
+    },
+    {
+     "meta_key": "_vf_category_raw",
+     "v": "Reg. sausas suaugusių kačių maistas"
+    },
+    {
+     "meta_key": "_vf_cost_xml",
+     "v": "2.93"
+    },
+    {
+     "meta_key": "_vf_personal_xml",
+     "v": "2.93"
+    },
+    {
+     "meta_key": "_vf_description_base64",
+     "v": "PGRpdiBzdHlsZT0iY29sb3I6YmxhY2sgIWltcG9ydGFudDsiPjxkaXYgc3R5"
+    },
+    {
+     "meta_key": "_vf_enabled",
+     "v": "yes"
+    },
+    {
+     "meta_key": "_vf_cost",
+     "v": "2.344"
+    },
+    {
+     "meta_key": "_vf_personal_cost",
+     "v": "2.344"
+    },
+    {
+     "meta_key": "_vf_supplier_discount",
+     "v": "0.2"
+    },
+    {
+     "meta_key": "_vf_brand_normalized",
+     "v": "Josera"
+    },
+    {
+     "meta_key": "_vf_last_sync",
+     "v": "2026-09-23 20:00:42"
+    },
+    {
+     "meta_key": "_ean",
+     "v": "4032254749509"
+    },
+    {
+     "meta_key": "_global_unique_id",
+     "v": "4032254749509"
+    },
+    {
+     "meta_key": "_vf_wc_sku",
+     "v": "JOS0805"
+    },
+    {
+     "meta_key": "_regular_price",
+     "v": "3.49"
+    },
+    {
+     "meta_key": "_price",
+     "v": "3.49"
+    },
+    {
+     "meta_key": "_vf_price_initialized",
+     "v": "yes"
+    },
+    {
+     "meta_key": "_vf_price_initialized_at",
+     "v": "2026-09-16 06:31:22"
+    },
+    {
+     "meta_key": "_vf_price_rule_used",
+     "v": "BRAND:Josera +DISC:20%"
+    },
+    {
+     "meta_key": "_ps_sandelis",
+     "v": "vf"
+    },
+    {
+     "meta_key": "_vf_qty",
+     "v": "42"
+    }
+   ]
+  },
+  "cnt_title": "284",
+  "sample_fe": {
+   "id": "454",
+   "uzsakymas_id": "36278",
+   "eilutes_id": "2517",
+   "apmoketa_at": "2026-09-23 19:04:14",
+   "preke_id": "35312",
+   "variacija_id": "0",
+   "sku": "AM37",
+   "gtin": "8011259163752",
+   "pavadinimas_tuo_metu": "Exclusion Hypo konservuotas pašaras šunims su triušiena ir bulvėmis, 400 g",
+   "kategorija_id_giliausia": "73",
+   "kategoriju_kelias": "[\"sunims\",\"maistas-sunims\",\"konservai-sunims\"]",
+   "brendas_slug": "exclusion",
+   "gyvunas": "",
+   "pa_uzsaldymas": "[]",
+   "sandelis": "vf",
+   "tiekejas": "vf",
+   "partija_kodas": "",
+   "kiekis": "1",
+   "kaina_ct": "329",
+   "pvm_ct": "69",
+   "kaina_vnt_ct": "329",
+   "kaina_reguliari_ct": "329",
+   "savikaina_vnt_ct": "260",
+   "savikaina_ct": "260",
+   "savikainos_saltinis": "pardavimai",
+   "nuolaida_ct": "0",
+   "akcija_id": null,
+   "kuponas": "",
+   "rinkinys_id": "0",
+   "rinkinio_tipas": "",
+   "rinkinio_raktas": "",
+   "dovana": "0",
+   "svoris_g": "0",
+   "pakuotes_dydis": "",
+   "klientas_naujas": "1",
+   "testinis": "0",
+   "saltinis_aplinka": "prod",
+   "diena": "2026-09-23"
+  },
+  "sample_ife": {
+   "id": "23174",
+   "uzsakymas_id": "900012003",
+   "eilutes_id": "1",
+   "apmoketa_at": "2026-08-30 08:13:26",
+   "preke_id": "0",
+   "variacija_id": "0",
+   "sku": "HYPS06-2",
+   "gtin": "",
+   "pavadinimas_tuo_metu": "2 vnt. - Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+   "kategorija_id_giliausia": "0",
+   "kategoriju_kelias": null,
+   "brendas_slug": "",
+   "gyvunas": "",
+   "pa_uzsaldymas": null,
+   "sandelis": "",
+   "tiekejas": "",
+   "partija_kodas": "",
+   "kiekis": "2",
+   "kaina_ct": "18180",
+   "pvm_ct": "0",
+   "kaina_vnt_ct": "9090",
+   "kaina_reguliari_ct": null,
+   "savikaina_vnt_ct": null,
+   "savikaina_ct": null,
+   "savikainos_saltinis": "",
+   "nuolaida_ct": "0",
+   "akcija_id": null,
+   "kuponas": "",
+   "rinkinys_id": "0",
+   "rinkinio_tipas": "",
+   "rinkinio_raktas": "",
+   "dovana": "0",
+   "svoris_g": "0",
+   "pakuotes_dydis": "",
+   "klientas_naujas": "1",
+   "testinis": "0",
+   "saltinis_aplinka": "ist",
+   "diena": "2026-08-30"
+  },
+  "sample_src": [
+   {
+    "id": "1023",
+    "product_id": "34717",
+    "source": "vf",
+    "supplier_sku": "JOS1064",
+    "ean": "403225479822",
+    "stock_qty": "39",
+    "cost_net": "2.6240",
+    "synced_at": "2026-08-07 13:01:12",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-09-23 07:20:13"
+   },
+   {
+    "id": "1024",
+    "product_id": "34718",
+    "source": "vf",
+    "supplier_sku": "JOS1065",
+    "ean": "403225479819",
+    "stock_qty": "39",
+    "cost_net": "1.5440",
+    "synced_at": "2026-08-07 13:01:12",
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-08-07 13:36:26",
+    "updated_at": "2026-09-23 07:20:13"
+   },
+   {
+    "id": "4770",
+    "product_id": "35973",
+    "source": "vf",
+    "supplier_sku": "JOS0805",
+    "ean": "403225474950",
+    "stock_qty": "42",
+    "cost_net": "2.3440",
+    "synced_at": null,
+    "is_active": "1",
+    "is_sellable": "1",
+    "priority": "2",
+    "created_at": "2026-09-16 07:00:31",
+    "updated_at": "2026-09-23 07:20:17"
+   }
+  ]
+ },
+ "v": "dep-191309",
+ "kurimas": 200,
+ "sid": 6276,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
