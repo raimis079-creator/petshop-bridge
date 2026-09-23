@@ -1,0 +1,525 @@
+{
+ "1": {
+  "st_new": [
+   {
+    "s": "cancelled",
+    "n": "2",
+    "paid": "2",
+    "mn": "2026-09-15",
+    "mx": "2026-09-22"
+   },
+   {
+    "s": "completed",
+    "n": "115",
+    "paid": "115",
+    "mn": "2026-09-09",
+    "mx": "2026-09-22"
+   },
+   {
+    "s": "processing",
+    "n": "14",
+    "paid": "14",
+    "mn": "2026-09-18",
+    "mx": "2026-09-23"
+   }
+  ],
+  "st_new_all": [
+   {
+    "saltinis_aplinka": "dev",
+    "testinis": "1",
+    "n": "3",
+    "mn": "2026-09-08"
+   },
+   {
+    "saltinis_aplinka": "prod",
+    "testinis": "0",
+    "n": "131",
+    "mn": "2026-09-09"
+   }
+  ],
+  "st_ist": [
+   {
+    "s": "+Užsakymas išsiųstas+",
+    "n": "47",
+    "paid": "47",
+    "mn": "2026-03-05",
+    "mx": "2026-08-26"
+   },
+   {
+    "s": "Mokėjimas gautas",
+    "n": "7",
+    "paid": "7",
+    "mn": "2026-05-16",
+    "mx": "2026-08-30"
+   },
+   {
+    "s": "Užsakymas išsiųstas",
+    "n": "9467",
+    "paid": "9467",
+    "mn": "2023-11-20",
+    "mx": "2026-08-28"
+   },
+   {
+    "s": "Užsakymas paruoštas",
+    "n": "7",
+    "paid": "7",
+    "mn": "2024-10-10",
+    "mx": "2026-08-28"
+   }
+  ],
+  "ist_ch": [
+   {
+    "kanalas_paskutinis": "",
+    "n": "9528"
+   }
+  ],
+  "cols": {
+   "ps_fakt_gsc_dienos": [
+    "diena:date",
+    "clicks:int(10) unsigned",
+    "impr:int(10) unsigned",
+    "pos:decimal(5,1)",
+    "clicks_mob:int(10) unsigned",
+    "impr_mob:int(10) unsigned",
+    "clicks_turinys:int(10) unsigned",
+    "atnaujinta_at:datetime"
+   ],
+   "ps_fakt_gsc_url_d": [
+    "id:bigint(20) unsigned",
+    "diena:date",
+    "url_hash:char(32)",
+    "url:varchar(700)",
+    "clicks:int(10) unsigned",
+    "impr:int(10) unsigned",
+    "pos:decimal(5,1)"
+   ],
+   "ps_web_dienos": [
+    "id:bigint(20) unsigned",
+    "data:date",
+    "pjuvis:varchar(20)",
+    "raktas:varchar(190)",
+    "raktas2:varchar(190)",
+    "apsilankymai:int(10) unsigned",
+    "lankytojai:int(10) unsigned",
+    "perziuros:int(10) unsigned",
+    "atmetimai:int(10) unsigned",
+    "trukme_s_suma:bigint(20) unsigned",
+    "view_item:int(10) unsigned",
+    "add_to_cart:int(10) unsigned",
+    "begin_checkout:int(10) unsigned",
+    "uzsakymai:int(10) unsigned",
+    "pajamos_ct:bigint(20)",
+    "kontribucija_ct:bigint(20)",
+    "sutikusiu_dalis:decimal(5,2)",
+    "aplinka:varchar(10)"
+   ],
+   "ps_email_jobs": [
+    "id:bigint(20) unsigned",
+    "job_key:varchar(191)",
+    "flow:varchar(64)",
+    "flow_class:varchar(20)",
+    "recipient_email:varchar(191)",
+    "recipient_user_id:bigint(20) unsigned",
+    "subject:varchar(255)",
+    "payload:longtext",
+    "status:varchar(20)",
+    "block_reason:varchar(64)",
+    "provider:varchar(32)",
+    "provider_message_id:varchar(191)",
+    "attempts:smallint(5) unsigned",
+    "last_error:text",
+    "scheduled_at:datetime",
+    "sent_at:datetime",
+    "created_at:datetime",
+    "updated_at:datetime",
+    "skip_reason:varchar(64)",
+    "error_message:text",
+    "decision_at:datetime",
+    "next_attempt_at:datetime",
+    "context_json:longtext",
+    "delivered_at:datetime",
+    "opened_at:datetime",
+    "clicked_at:datetime"
+   ],
+   "ps_seo_404": [
+    "id:bigint(20) unsigned",
+    "diena:date",
+    "kelias:varchar(255)",
+    "kelias_hash:char(32)",
+    "hits:int(10) unsigned",
+    "bot_hits:int(10) unsigned",
+    "referer:varchar(255)",
+    "paskutinis_at:datetime"
+   ],
+   "ps_carts": [
+    "id:bigint(20) unsigned",
+    "cart_id:varchar(64)",
+    "session_key:varchar(191)",
+    "user_id:bigint(20) unsigned",
+    "email:varchar(191)",
+    "email_source:varchar(16)",
+    "last_cart_activity_at:datetime",
+    "cart_hash:varchar(40)",
+    "snapshot_json:longtext",
+    "snapshot_version:smallint(5) unsigned",
+    "status:varchar(16)",
+    "status_changed_at:datetime",
+    "converted_order_id:bigint(20) unsigned",
+    "created_at:datetime",
+    "updated_at:datetime"
+   ],
+   "ps_ist_fakt_eilutes": [
+    "id:bigint(20) unsigned",
+    "uzsakymas_id:bigint(20) unsigned",
+    "eilutes_id:bigint(20) unsigned",
+    "apmoketa_at:datetime",
+    "preke_id:bigint(20) unsigned",
+    "variacija_id:bigint(20) unsigned",
+    "sku:varchar(64)",
+    "gtin:varchar(32)",
+    "pavadinimas_tuo_metu:varchar(255)",
+    "kategorija_id_giliausia:bigint(20) unsigned",
+    "kategoriju_kelias:text",
+    "brendas_slug:varchar(96)",
+    "gyvunas:varchar(48)",
+    "pa_uzsaldymas:text",
+    "sandelis:varchar(24)",
+    "tiekejas:varchar(24)",
+    "partija_kodas:varchar(64)",
+    "kiekis:int(11)",
+    "kaina_ct:bigint(20)",
+    "pvm_ct:bigint(20)",
+    "kaina_vnt_ct:bigint(20)",
+    "kaina_reguliari_ct:bigint(20)",
+    "savikaina_vnt_ct:bigint(20)",
+    "savikaina_ct:bigint(20)",
+    "savikainos_saltinis:varchar(32)",
+    "nuolaida_ct:bigint(20)",
+    "akcija_id:bigint(20) unsigned",
+    "kuponas:varchar(64)",
+    "rinkinys_id:bigint(20) unsigned",
+    "rinkinio_tipas:varchar(8)",
+    "rinkinio_raktas:varchar(48)",
+    "dovana:tinyint(1)",
+    "svoris_g:int(11)",
+    "pakuotes_dydis:varchar(48)",
+    "klientas_naujas:tinyint(1)",
+    "testinis:tinyint(1)",
+    "saltinis_aplinka:varchar(8)",
+    "diena:date"
+   ]
+  },
+  "cnt": {
+   "ps_fakt_gsc_dienos": "510",
+   "ps_fakt_gsc_url_d": "26629",
+   "ps_web_dienos": "7197",
+   "ps_email_jobs": "342",
+   "ps_seo_404": "5698",
+   "ps_carts": "18028",
+   "ps_ist_fakt_eilutes": "23174"
+  },
+  "wi_tipas": [
+   {
+    "tipas": "pageview",
+    "n": "9883",
+    "mn": "2026-09-09"
+   },
+   {
+    "tipas": "view_item",
+    "n": "3206",
+    "mn": "2026-09-09"
+   },
+   {
+    "tipas": "add_to_cart",
+    "n": "1356",
+    "mn": "2026-09-09"
+   },
+   {
+    "tipas": "search",
+    "n": "475",
+    "mn": "2026-09-09"
+   },
+   {
+    "tipas": "begin_checkout",
+    "n": "325",
+    "mn": "2026-09-09"
+   },
+   {
+    "tipas": "view_cart",
+    "n": "241",
+    "mn": "2026-09-09"
+   },
+   {
+    "tipas": "error404",
+    "n": "165",
+    "mn": "2026-09-09"
+   },
+   {
+    "tipas": "filter",
+    "n": "30",
+    "mn": "2026-09-14"
+   },
+   {
+    "tipas": "email_calc_click",
+    "n": "7",
+    "mn": "2026-09-15"
+   },
+   {
+    "tipas": "skaiciuokle",
+    "n": "4",
+    "mn": "2026-09-22"
+   },
+   {
+    "tipas": "reminder_optin",
+    "n": "1",
+    "mn": "2026-09-16"
+   }
+  ],
+  "wi_kanalas": [
+   {
+    "kanalas": "mokamas",
+    "n": "5607"
+   },
+   {
+    "kanalas": null,
+    "n": "2033"
+   },
+   {
+    "kanalas": "organika",
+    "n": "1581"
+   },
+   {
+    "kanalas": "referral",
+    "n": "528"
+   },
+   {
+    "kanalas": "soc_organika",
+    "n": "63"
+   },
+   {
+    "kanalas": "email",
+    "n": "60"
+   },
+   {
+    "kanalas": "direct",
+    "n": "11"
+   }
+  ],
+  "wi_salis": [
+   {
+    "salis": "LT",
+    "n": "3392"
+   },
+   {
+    "salis": "US",
+    "n": "3155"
+   },
+   {
+    "salis": "GB",
+    "n": "1805"
+   },
+   {
+    "salis": null,
+    "n": "999"
+   },
+   {
+    "salis": "RU",
+    "n": "310"
+   },
+   {
+    "salis": "CN",
+    "n": "82"
+   },
+   {
+    "salis": "DE",
+    "n": "41"
+   },
+   {
+    "salis": "PL",
+    "n": "32"
+   },
+   {
+    "salis": "UA",
+    "n": "25"
+   },
+   {
+    "salis": "SE",
+    "n": "14"
+   },
+   {
+    "salis": "CA",
+    "n": "13"
+   },
+   {
+    "salis": "LV",
+    "n": "11"
+   }
+  ],
+  "gsc_s": [
+   {
+    "diena": "2026-09-20",
+    "clicks": "33",
+    "impr": "1573",
+    "pos": "12.8",
+    "clicks_mob": "31",
+    "impr_mob": "1060",
+    "clicks_turinys": "8",
+    "atnaujinta_at": "2026-09-23 06:01:01"
+   },
+   {
+    "diena": "2026-09-19",
+    "clicks": "18",
+    "impr": "1488",
+    "pos": "8.3",
+    "clicks_mob": "15",
+    "impr_mob": "1212",
+    "clicks_turinys": "4",
+    "atnaujinta_at": "2026-09-23 06:01:01"
+   },
+   {
+    "diena": "2026-09-18",
+    "clicks": "29",
+    "impr": "1524",
+    "pos": "8.0",
+    "clicks_mob": "19",
+    "impr_mob": "1156",
+    "clicks_turinys": "13",
+    "atnaujinta_at": "2026-09-23 06:01:01"
+   }
+  ],
+  "wd_s": [
+   {
+    "id": "7687",
+    "data": "2026-09-22",
+    "pjuvis": "paieska",
+    "raktas": "vabzdys",
+    "raktas2": "",
+    "apsilankymai": "0",
+    "lankytojai": "1",
+    "perziuros": "0",
+    "atmetimai": "0",
+    "trukme_s_suma": "0",
+    "view_item": "0",
+    "add_to_cart": "0",
+    "begin_checkout": "0",
+    "uzsakymai": "0",
+    "pajamos_ct": "0",
+    "kontribucija_ct": "0",
+    "sutikusiu_dalis": "0.00",
+    "aplinka": "prod"
+   },
+   {
+    "id": "7686",
+    "data": "2026-09-22",
+    "pjuvis": "paieska",
+    "raktas": "Uostymo kilimėlis",
+    "raktas2": "",
+    "apsilankymai": "1",
+    "lankytojai": "1",
+    "perziuros": "0",
+    "atmetimai": "0",
+    "trukme_s_suma": "0",
+    "view_item": "0",
+    "add_to_cart": "0",
+    "begin_checkout": "0",
+    "uzsakymai": "0",
+    "pajamos_ct": "0",
+    "kontribucija_ct": "0",
+    "sutikusiu_dalis": "0.00",
+    "aplinka": "prod"
+   },
+   {
+    "id": "7685",
+    "data": "2026-09-22",
+    "pjuvis": "paieska",
+    "raktas": "triušio",
+    "raktas2": "",
+    "apsilankymai": "0",
+    "lankytojai": "1",
+    "perziuros": "0",
+    "atmetimai": "0",
+    "trukme_s_suma": "0",
+    "view_item": "0",
+    "add_to_cart": "0",
+    "begin_checkout": "0",
+    "uzsakymai": "0",
+    "pajamos_ct": "0",
+    "kontribucija_ct": "0",
+    "sutikusiu_dalis": "0.00",
+    "aplinka": "prod"
+   }
+  ],
+  "fr_k": [
+   {
+    "kanalas": "google_ads",
+    "kampanija": "P-max | LT | petshop.lt",
+    "mn": "2026-08-30",
+    "mx": "2026-09-22",
+    "n": "16"
+   },
+   {
+    "kanalas": "google_ads",
+    "kampanija": "P-max | LT | Prekės (MC)",
+    "mn": "2026-09-21",
+    "mx": "2026-09-22",
+    "n": "2"
+   },
+   {
+    "kanalas": "google_ads",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "mn": "2026-08-24",
+    "mx": "2026-09-22",
+    "n": "30"
+   },
+   {
+    "kanalas": "google_ads",
+    "kampanija": "P-max| All LT | Šunų maistas",
+    "mn": "2026-08-24",
+    "mx": "2026-09-09",
+    "n": "14"
+   },
+   {
+    "kanalas": "google_ads",
+    "kampanija": "petshop",
+    "mn": "2026-08-24",
+    "mx": "2026-09-22",
+    "n": "30"
+   },
+   {
+    "kanalas": "google_ads",
+    "kampanija": "Petshop - Search - Prins Puppy",
+    "mn": "2026-09-05",
+    "mx": "2026-09-05",
+    "n": "1"
+   },
+   {
+    "kanalas": "google_ads",
+    "kampanija": "TEST Search LT",
+    "mn": "2026-08-25",
+    "mx": "2026-08-26",
+    "n": "2"
+   },
+   {
+    "kanalas": "kaina24",
+    "kampanija": "",
+    "mn": "2026-08-27",
+    "mx": "2026-09-22",
+    "n": "27"
+   },
+   {
+    "kanalas": "kainos",
+    "kampanija": "",
+    "mn": "2026-08-27",
+    "mx": "2026-09-22",
+    "n": "27"
+   }
+  ]
+ },
+ "v": "dep-082659",
+ "kurimas": 200,
+ "sid": 6193,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
