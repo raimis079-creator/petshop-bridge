@@ -3,10 +3,10 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICBpZighaXNzZXQoJF9HRVRbJ3BzX3MxNzA5bCddKSkgcmV0dXJuOwogICRmPVdQX0NPTlRFTlRfRElSLicvbXUtcGx1Z2lucy9wZXRzaG9wLWRhcmJhbGF1a2lzLnBocCc7ICRjPWZpbGVfZ2V0X2NvbnRlbnRzKCRmKTsKICAkcD1XUF9QTFVHSU5fRElSLicvd29vLWxpdGh1YW5pYXBvc3QtbWFpbi9hZG1pbi9jbGFzcy13b28tbGl0aHVhbmlhcG9zdC1hZG1pbi1vcmRlci1zZXJ2aWNlLnBocCc7CiAgJHM9V1BfUExVR0lOX0RJUi4nL3dvby1saXRodWFuaWFwb3N0LW1haW4vYWRtaW4vY2xhc3Mtd29vLWxpdGh1YW5pYXBvc3QtYWRtaW4tc2l6ZS1zZXJ2aWNlLnBocCc7CiAgJG9zPVdQX1BMVUdJTl9ESVIuJy93b28tbGl0aHVhbmlhcG9zdC1tYWluL2FkbWluL2NsYXNzLXdvby1saXRodWFuaWFwb3N0LWFkbWluLW9yZGVyLXNldHRpbmdzLnBocCc7CiAgd3Bfc2VuZF9qc29uKFsnbWQ1Jz0+bWQ1KCRjKSwnbGVuJz0+c3RybGVuKCRjKSwnZGwnPT5iYXNlNjRfZW5jb2RlKGd6ZW5jb2RlKCRjLDkpKSwnb3MnPT5iYXNlNjRfZW5jb2RlKGd6ZW5jb2RlKGZpbGVfZ2V0X2NvbnRlbnRzKCRwKSw5KSksJ3NzJz0+YmFzZTY0X2VuY29kZShnemVuY29kZShmaWxlX2dldF9jb250ZW50cygkcyksOSkpLCdvc3QnPT5iYXNlNjRfZW5jb2RlKGd6ZW5jb2RlKGZpbGVfZ2V0X2NvbnRlbnRzKCRvcyksOSkpXSk7Cn0sIDEpOwo=';
-const VER='dep-180453';
+const VER='dep-180947';
 const GKEY='ps_s1709l';
 const PHASES=["1"];
-const OUT='analize/s1709_l.json';
+const OUT='analize/s1709_l2.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
