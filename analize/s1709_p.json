@@ -1,0 +1,152 @@
+{
+ "1": {
+  "petshop-analitika.php": [
+   "434: if ( self::botas( $ua ) ) { return new WP_REST_Response( array( 'ok' => 0, 'kodas' => 'botas' ), 200 ); }",
+   "455: 'ok' => 0, 'kodas' => 'tuscia',"
+  ],
+  "petshop-anketos-ataskaita.php": [
+   "344: array( 'pav' => 'Kodas', 'kaire' => 1 ), array( 'pav' => 'Kartų' ),"
+  ],
+  "petshop-av-tiekimas.php": [
+   "25: * Petshop AV Tiekimas v1.9 (H261) — LAIŠKO DALIS KAIP KLIENTŲ LENTELĖ, DĖŽIŲ SKAIČIUS, BENDRAS MANIFESTAS.",
+   "28: * lipdukuose; svorio, manifesto Avesai nereikia — eina vienas manifestas kartu",
+   "34: * tiekėjo manifestą (Petshop_Desk::MANIFESTAI kodas), ne atskirą.",
+   "74: *   4. numeris ir manifestas saugomi partijos meta, matomi „Užsakyta · laukiam\"",
+   "161: 'kodas'   => '300906055', // K3: Venipak API company_code paštomatui = jo code, ne id",
+   "199: venipak_manifest VARCHAR(64) DEFAULT NULL,",
+   "896: 'manif'  => $n['shopup_venipak_shipping_field_manifest'] ?? '',",
+   "926: * Grąžina array( 'ok'=>bool, 'pack'=>string, 'manifest'=>string, 'klaida'=>string ).",
+   "936: // H261: į TĄ PATĮ tiekėjo manifestą kaip klientų siuntos (vienas kurjerio paėmimas).",
+   "937: $kodas = ( class_exists( 'Petshop_Desk' ) && isset( Petshop_Desk::MANIFESTAI[ $part->tiekejas ] ) )",
+   "938: ? Petshop_Desk::MANIFESTAI[ $part->tiekejas ] : $n['manif'];",
+   "942: // Paštomatas: Venipak leidžia 1 dėžę siuntai → n siuntų tame pačiame manifeste. Kurjeris: 1 siunta, n pack'ų.",
+   "949: $mf = $d->createElement( 'manifest' );",
+   "978: $co->appendChild( $d->createElement( 'company_code', (string) ( $pst['kodas'] ?? $pst['id'] ) ) );",
+   "1029: return array( 'ok' => true, 'pack' => $pack, 'manifest' => $man, 'klaida' => '' );",
+   "1081: $wpdb->update( self::t_partijos(), array( 'venipak_pack' => $vp['pack'], 'venipak_manifest' => $vp['manifest'] ), array( 'id' => $pid ) );",
+   "1169: array( 'venipak_pack' => $vp['pack'], 'venipak_manifest' => $vp['manifest'] ),"
+  ],
+  "petshop-darbalaukis.php": [
+   "144: *   paėmė, AV manifestas) — (b) variantas, `_ps_dalys_is_naujo`, „Lipdukas [T] iš naujo“ išimti. Kai AV siunta JAU IŠSIŲSTA: jos eilutės gauna",
+   "330: *   šį langą per `wp_redirect` filtrą); Paruošta = kortelės „Avesa — laukia kurjerio“ (Lipdukas PDF, Manifestas, Išsiųsta /",
+   "335: *   Žodynas be AV/dropship/manifesto/perreg/„riba“; laikas „iki 09:00“. Kelias juostoje be pasikartojimų (URL valomas).",
+   "1128: 'laukai' => array( 'vardas' => $o->get_shipping_first_name() ?: $o->get_billing_first_name(), 'pavarde' => $o->get_shipping_last_name() ?: $o->get_billing_last_name(), 'adresas' => $o->get_shipping_address_1(), 'adresas2' => $o->get_shipping_address_2(), 'mies",
+   "1171: $nauji = array( 'vardas' => $g('vardas'), 'pavarde' => $g('pavarde'), 'adresas' => $g('adresas'), 'adresas2' => $g('adresas2'), 'miestas' => $g('miestas'), 'kodas' => $g('kodas') );",
+   "1172: if ( '' === $nauji['adresas'] || '' === $nauji['miestas'] || '' === $nauji['kodas'] ) { $baigti( 'dl_klaida', 'adresas, miestas ir pašto kodas privalomi' ); }",
+   "1173: $set = array( 'vardas' => 'set_shipping_first_name', 'pavarde' => 'set_shipping_last_name', 'adresas' => 'set_shipping_address_1', 'adresas2' => 'set_shipping_address_2', 'miestas' => 'set_shipping_city', 'kodas' => 'set_shipping_postcode' );",
+   "1174: $pav = array( 'vardas' => 'Vardas', 'pavarde' => 'Pavardė', 'adresas' => 'Adresas', 'adresas2' => 'Adresas (2)', 'miestas' => 'Miestas', 'kodas' => 'Pašto kodas' );",
+   "2711: $('nuKlR').onclick=function(e){ var a=e.target.closest('.dl-nu-k'); if(!a) return; e.preventDefault(); var k=$('nuKlR')._d[+a.getAttribute('data-i')]; ['vardas','pavarde','tel','el','imone','adresas','miestas','kodas'].forEach(function(f){ var i=F.querySelecto",
+   "2730: if(!PR.length) err='pridėk bent vieną prekę'; else if(!kl('vardas')) err='įrašyk kliento vardą'; else if(!kl('tel')) err='įrašyk telefoną'; else if(m.tipas==='kurjeris'&&(!kl('adresas')||!kl('miestas')||!kl('kodas'))) err='kurjeriui reikia adreso, mie",
+   "2746: $out[] = array( 'vardas' => $r->first_name, 'pavarde' => $r->last_name, 'imone' => $r->company, 'adresas' => $r->address_1, 'miestas' => $r->city, 'kodas' => $r->postcode, 'el' => $r->email, 'tel' => $r->phone, 'uid' => (int) $r->customer_id, 'pask' => substr(",
+   "2750: $out[] = array( 'vardas' => $c->get_billing_first_name() ? $c->get_billing_first_name() : $c->get_first_name(), 'pavarde' => $c->get_billing_last_name() ? $c->get_billing_last_name() : $c->get_last_name(), 'imone' => $c->get_billing_company(), 'adresas' => $c-",
+   "2809: if ( 'kurjeris' === $tipas && ( '' === ( $kl['adresas'] ?? '' ) || '' === ( $kl['miestas'] ?? '' ) || '' === ( $kl['kodas'] ?? '' ) ) ) { $klaida( 'kurjeriui reikia adreso, miesto ir pašto kodo' ); }",
+   "2825: $adr = array( 'first_name' => $kl['vardas'], 'last_name' => $kl['pavarde'] ?? '', 'company' => $kl['imone'] ?? '', 'address_1' => $kl['adresas'] ?? '', 'address_2' => '', 'city' => $kl['miestas'] ?? '', 'state' => '', 'postcode' => $kl['kodas'] ?? '', 'country",
+   "3887: if ( $uzs ) { echo '<label><input type=\"checkbox\" name=\"su_lipdukais\" value=\"1\" checked> lipdukai</label><label><input type=\"checkbox\" name=\"su_manifestu\" value=\"1\" checked> kurjerio sąrašas</label>'; }",
+   "3961: $man = array(); foreach ( $av as $r ) { foreach ( ( class_exists( 'Petshop_Siuntos' ) ? Petshop_Siuntos::sarasas( $r['id'] ) : array() ) as $s ) { if ( ( 'av' === $s['sandelis'] || '' === $s['sandelis'] ) && ! empty( $s['manifest'] ) ) { $man[ $s['manifest'] ]",
+   "3968: foreach ( array_keys( $man ) as $m ) { echo '<a class=\"v t\" href=\"' . esc_url( wp_nonce_url( admin_url( 'admin-post.php?action=ps_desk_veiksmas&v=vp_manifestas&id=0&kodas=' . rawurlencode( $m ) ), 'ps_desk_vp_manifestas_0' ) ) . '\" target=\"_blank\">Kurjerio są"
+  ],
+  "petshop-desk.php": [
+   "22: * venipak_shipping_order_data → n lipdukų viename PDF, vienas manifestas.",
+   "180: * v3.29 (H227): 🔴 masinis „Venipak registruoti“ dabar SANDĖLIŲ atžvilgiu: grupuoja pagal šaltinį, kiekvienai grupei savas manifestas; mišrūs praleidžiami. Iki šiol mygtukas viską pylė į vieną manifestą 001 (v3.28: auto refresh).",
+   "242: * Manifesto numeris pagal sandėlį. Venipak manifesto pavadinimas =",
+   "243: * kliento ID + data + ŠIS kodas (s544). Vienas manifestas = vienas",
+   "246: const MANIFESTAI = array(",
+   "506: * Registruoja siuntų GRUPĘ vienu XML → vienas manifestas.",
+   "507: * Pluginas manifesto numerį laiko privačioje savybėje ir ima jį iš",
+   "511: protected static function venipak_registruoti( $ids, $manifesto_kodas ) {",
+   "529: $rp = new ReflectionProperty( $cls, 'venipak_manifest' );",
+   "532: $rp->setValue( $obj, $manifesto_kodas );",
+   "534: return array( 'status' => 'error', 'data' => 'Manifesto nustatyti nepavyko: ' . $e->getMessage() );",
+   "579: if ( $visi ) { // sudedam visus nr. į vieną įrašą — lipdukai, manifestas, sekimas mato visas siuntas",
+   "603: /** Manifesto PDF iš Venipak. s549: ws/print_list, laukas „code“. */",
+   "604: protected static function venipak_manifesto_pdf( $kodas ) {",
+   "631: $masinis = in_array( $v, array( 'lapai', 'perduoti', 'vp_reg', 'vp_bulk', 'vp_manifestas' ), true );",
+   "656: grupę registruojam su jos manifestu — kitaip viskas krenta į 001 krūvą.",
+   "671: if ( ! isset( self::MANIFESTAI[ $s ] ) ) { $s = 'av'; }",
+   "683: $kodas = self::MANIFESTAI[ $s ];",
+   "702: $oo->add_order_note( sprintf( 'Venipak registracija darbalaukyje (%s, manifestas %s): %s',",
+   "722: $kodas    = isset( self::MANIFESTAI[ $sandelis ] ) ? self::MANIFESTAI[ $sandelis ] : '001';",
+   "795: $oo->add_order_note( sprintf( 'Venipak registracija darbalaukyje (%s, manifestas %s): %s',",
+   "855: if ( 'vp_manifestas' === $v ) {",
+   "856: $kodas = isset( $_GET['kodas'] ) ? sanitize_text_field( wp_unslash( $_GET['kodas'] ) ) : '';",
+   "857: $pdf   = $kodas ? self::venipak_manifesto_pdf( $kodas ) : new WP_Error( 'nera', 'Manifesto kodas nenurodytas' );",
+   "858: if ( is_wp_error( $pdf ) ) { wp_die( esc_html( 'Manifesto gauti nepavyko: ' . $pdf->get_error_message() ) ); }",
+   "861: header( 'Content-Disposition: inline; filename=\"manifestas-' . $kodas . '.pdf\"' );",
+   "1714: // Venipak grupuojam PAGAL SANDĖLĮ — vienas manifestas vienam paėmimui.",
+   "1935: 'kodas' => $kodas,",
+   "1968: $trukumas = ( $pastomatu_tikrinti && ! $e['kodas'] && false !== mb_stripos( $e['vez'], 'paštomat' ) && ! $e['vieta'] )",
+   "1972: $e['kodas']",
+   "1973: ? '<span class=\"pd-rok\">✓ ' . esc_html( $e['kodas'] ) . ( $e['pak'] > 1 ? ' · ' . (int) $e['pak'] . ' lipdukai' : '' ) . '</span>'",
+   "1989: echo '<p class=\"pd-rnote\">Kiekvienas sandėlis registruojamas <b>atskirai</b> — taip gaunamas savas manifestas",
+   "1997: foreach ( self::MANIFESTAI as $k => $mkod ) {",
+   "2005: printf( '<div class=\"pd-vgrp-h\"><b>%s</b><span class=\"pd-vman\">manifestas %s</span>%s%s%s</div>',",
+   "2007: esc_html( self::manifesto_numeris( $mkod ) ),",
+   "2031: $man = self::grupes_manifestas( $grupe );",
+   "2033: printf( '<a class=\"pd-btn\" target=\"_blank\" rel=\"noopener\" href=\"%s\">Manifestas PDF</a>',",
+   "2034: esc_url( self::veiksmo_url( 'vp_manifestas', 0 ) . '&kodas=' . rawurlencode( $man ) ) );",
+   "2041: if ( ! $e['kodas'] ) {",
+   "2052: $e['kodas'] ? '<span class=\"pd-rok\">✓ ' . esc_html( $e['kodas'] ) . '</span>'"
+  ],
+  "petshop-higiena.php": [
+   "15: remove_action('wp_head', 'wlwmanifest_link');"
+  ],
+  "petshop-katalogas.php": [
+   "1805: '_sku'        => array( 'tipas' => 'kodas', 'vardas' => 'SKU' ),",
+   "1835: if ( $cfg['tipas'] === 'kodas' && $tapo !== '' && ! preg_match( '/^[A-Za-z0-9._\\/-]{1,64}$/', $tapo ) ) {"
+  ],
+  "petshop-rinkiniai.php": [
+   "1160: * preke — taip ji matoma ir uzsakyme, ir manifeste, ir ataskaitose."
+  ],
+  "petshop-rytas.php": [
+   "371: /** Grąžina patikrų sąrašą: [ ['kodas','lygis'(zalia|geltona|raudona|pilka),'tekstas'] ]. */",
+   "374: $add = function ( $k, $l, $t ) use ( &$o ) { $o[] = array( 'kodas' => $k, 'lygis' => $l, 'tekstas' => $t ); };",
+   "472: $par = md5( implode( '|', wp_list_pluck( $raud, 'kodas' ) ) );"
+  ],
+  "petshop-siuntu-laiskai.php": [
+   "58: public static function prideti_is_plugino( $order_id, $sandelis, $manifesto_kodas ) {",
+   "69: 'kodas'     => sanitize_text_field( $manifesto_kodas ),",
+   "70: 'manifest'  => sanitize_text_field( $d['manifest'] ?? '' ),",
+   "110: 'kodas'    => '',",
+   "111: 'manifest' => (string) ( $d['manifest'] ?? '' ),",
+   "274: echo '<table class=\"widefat striped\" style=\"max-width:640px\"><thead><tr><th>Sandėlis</th><th>Manifestas</th><th>Siuntų numeriai</th><th>Registruota</th></tr></thead><tbody>';",
+   "278: esc_html( $s['manifest'] ?: '—' ),"
+  ],
+  "petshop-uzsakymu-ivykiai.php": [
+   "21: *     su pd_ok/pd_nr/msg) — PO ir rezultatą. PDF atsakymai (lipdukai, manifestas)",
+   "79: 'vp_manifestas'   => 'Manifestas PDF',"
+  ],
+  "dispatch_170_190": "     * @param      string    $version    The version of this plugin.\n     */\n    public function __construct( $plugin_name, $version, $settings ) {\n        $this->plugin_name = $plugin_name;\n        $this->version = $version;\n        $this->settings = $settings;\n        $this->venipak_userid = $settings->get_option_by_key('shopup_venipak_shipping_field_userid');\n        $this->venipak_username = $settings->get_option_by_key('shopup_venipak_shipping_field_username');\n        $this->venipak_password = $settings->get_option_by_key('shopup_venipak_shipping_field_password');\n        $this->venipak_manifest = $settings->get_option_by_key('shopup_venipak_shipping_field_manifest') ?: '001';\n        $this->venipak_return_service = intval($settings->get_option_by_key('shopup_venipak_shipping_field_return_service'));\n        $this->venipak_sender_name = $settings->get_option_by_key('shopup_venipak_shipping_field_sendername');\n        $this->venipak_sender_company_code = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercompanycode');\n        $this->venipak_sender_country = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercountry');\n        $this->venipak_sender_city = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercity');\n        $this->venipak_sender_address = $settings->get_option_by_key('shopup_venipak_shipping_field_senderaddress');\n        $this->venipak_sender_post_code = $settings->get_option_by_key('shopup_venipak_shipping_field_senderpostcode');\n        $this->venipak_sender_contact_person = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercontactperson');\n        $this->venipak_sender_contact_tel = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercontacttel');\n        $this->venipak_sender_contact_email = $settings->get_option_by_key('shopup_venipak_shipping_field_sendercontactemail');\n        $this->venipak_is_status_change_disabled = $settings->get_option_by_key('shopup_venipak_shipping_field_isstatuschangedisabled');\n        $this->shopup_venipak_shipping_field_maxpackproducts = intval($settings->get_option_by_key('shopup_venipak_shipping_field_maxpackproducts'));\n",
+  "dispatch_440_455": "        $venipak_return_service =  $this->venipak_return_service;\n        $document = new \\DOMDocument( '1.0', 'utf-8' );\n        // descriotion\n        $description = $document->createElement( 'description' );\n        $description_attr = $document->createAttribute('type');\n        $description_attr->value = \"1\";\n        $description->appendChild($description_attr);\n        $document->appendChild($description);\n        //manifest\n        $manifest = $document->createElement( 'manifest' );\n        $manifest_attr = $document->createAttribute('title');\n        $manifest_value = $client_id . date('ymd') . $this->venipak_manifest;\n        $manifest_attr->value = $manifest_value;\n        $manifest->appendChild($manifest_attr);\n        $description->appendChild($manifest);\n        $xml_not_empty = false;\n\n        foreach ($order_ids as $order_id) {\n",
+  "dispatch_735_750": "                            $pack_description .= $products_without_shipments[$y]->get_title() . PHP_EOL;\n                            $prev_title = $products_without_shipments[$y]->get_title();\n                        }\n                    }\n                    $pack_weight = max(wc_get_weight($pack_weight, 'kg'), 0.1);\n                    $weight = $document->createElement('weight', $pack_weight);\n                    $pack->appendChild($weight);\n                    $description = $document->createElement('description', htmlspecialchars($pack_description));\n                    $pack->appendChild($description);\n                    $shipment->appendChild($pack);\n                    $pack_numbers[] = $pack_nr;\n                    $total_weight += $pack_weight;\n                }\n            }\n\n            // Update venipak_shipping_order_data\n            $venipak_shipping_order_data['manifest'] = $manifest_value;\n            $venipak_shipping_order_data['pack_numbers'] = $pack_numbers;\n            $venipak_shipping_order_data['weight'] = $total_weight;\n            $venipak_shipping_order_data['products_count'] = sizeof($order_products);\n            $order->update_meta_data('venipak_shipping_order_data', json_encode($venipak_shipping_order_data));\n            $order->save();\n",
+  "courier_opts": {
+   "shopup_venipak_shipping_field_userid": "07267",
+   "shopup_venipak_shipping_field_firstpacknumber": 1000205,
+   "shopup_venipak_shipping_field_manifest": "001",
+   "shopup_venipak_shipping_field_labelformat": "sticker",
+   "shopup_venipak_shipping_field_maxpackproducts": "20",
+   "shopup_venipak_shipping_field_return_service": "0",
+   "shopup_venipak_shipping_field_ismapenabled": "on",
+   "shopup_venipak_shipping_field_googlemapapikey": "AIzaSyBsi7bs2XiqmUJ1wFyTg3nCVN2TZAAghko",
+   "shopup_venipak_shipping_field_pickuptype": "all",
+   "shopup_venipak_shipping_field_pickupposition": "after_shipping",
+   "shopup_venipak_shipping_field_pickupwidth": "275",
+   "shopup_venipak_shipping_field_sendername": "UAB Avesa",
+   "shopup_venipak_shipping_field_sendercompanycode": "302568442",
+   "shopup_venipak_shipping_field_sendercountry": "LT",
+   "shopup_venipak_shipping_field_sendercity": "Liucionys",
+   "shopup_venipak_shipping_field_senderaddress": "Liucionių g. 46",
+   "shopup_venipak_shipping_field_senderpostcode": "15166",
+   "shopup_venipak_shipping_field_sendercontactperson": "UAB Avesa",
+   "shopup_venipak_shipping_field_sendercontacttel": "+37068187787",
+   "shopup_venipak_shipping_field_sendercontactemail": "terra@petshop.lt",
+   "shopup_venipak_shipping_field_isstatuschangedisabled": "on"
+  }
+ },
+ "v": "dep-183447",
+ "kurimas": 200,
+ "sid": 6272,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
