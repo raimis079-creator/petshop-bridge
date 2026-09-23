@@ -1,0 +1,31 @@
+{
+ "1": {
+  "len": 8814,
+  "md5": "47805b30c3d945de5c1d5038a8bb37d8",
+  "posts": [
+   [
+    332,
+    "flatsome-child",
+    "2026-09-07 14:54:19"
+   ]
+  ],
+  "eil": [
+   "219:      - out-of-stock nuotrauka LABIAU isblukusi (opacity 0.45 + grayscale 55%)",
+   "302: .products li.product .box-image .out-of-stock-label,",
+   "303: .product-small .box-image .out-of-stock-label {",
+   "328: /* --- 6. Out-of-stock nuotrauka: blankesne (subtilu, preke matosi) --- */",
+   "329: .products li.product.outofstock .box-image img,",
+   "330: .products li.product.out-of-stock .box-image img,",
+   "331: .product-small.outofstock .box-image img,",
+   "332: .product-small.out-of-stock .box-image img {"
+  ],
+  "kontekstas": "x-text .title-wrapper {\n\tmin-height: 16px;\n}\n.products .box-text .name.product-title,\n.products .box-text p.name {\n\tmin-height: 3.6em;\n\toverflow: hidden;\n\tdisplay: -webkit-box;\n\t-webkit-line-clamp: 3;\n\t-webkit-box-orient: vertical;\n\tline-height: 1.2;\n\tmargin-bottom: 6px;\n}\n\n/* --- 5. \"Neturime\" badge: svelnus, sviesiai pilkas, virsuje DESINEJE --- */\n.products li.product .box-image .out-of-stock-label,\n.product-small .box-image .out-of-stock-label {\n\tposition: absolute !important;\n\ttop: 10px !important;\n\tright: 10px !important;\n\tleft: auto !important;\n\tbottom: auto !important;\n\ttransform: none !important;\n\tmargin: 0 !important;\n\twidth: auto !important;\n\tmax-width: calc(100% - 16px) !important;\n\tpadding: 4px 9px !important;\n\tfont-size: 11px !important;\n\tfont-weight: 600 !important;\n\tline-height: 1.3 !important;\n\ttext-transform: none !important;        /* \"Neturime\", ne \"NETURIME\" */\n\tletter-spacing: 0.2px !important;\n\tcolor: #555 !important;\n\tbackground: #f2f2f2 !important;\n\tborder: 1px solid #e2e2e2 !important;\n\tborder-radius: 14px !important;          /* svelniai apvalus */\n\tz-index: 6 !important;\n\twhite-space: nowrap !important;\n\tbox-shadow: 0 1px 2px rgba(0,0,0,0.06) !important;\n}\n\n/* --- 6. Out-of-stock nuotrauka: blankesne (subtilu, preke matosi) --- */\n.products li.product.outofstock .box-image img,\n.products li.product.out-of-stock .box-image img,\n.product-small.outofstock .box-image img,\n.product-small.out-of-stock .box-image img {\n\topacity: 0.45 !important;\n\tfilter: grayscale(55%) !important;\n}\n"
+ },
+ "v": "dep-171505",
+ "kurimas": 200,
+ "sid": 6258,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
