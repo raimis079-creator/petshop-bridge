@@ -1,0 +1,162 @@
+{
+ "3": {
+  "f": "3",
+  "po3": {
+   "19715": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "8"
+   },
+   "19720": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "16"
+   },
+   "19725": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "8"
+   },
+   "19730": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "17"
+   },
+   "19735": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "10"
+   },
+   "19740": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "15"
+   },
+   "19747": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "8"
+   },
+   "19751": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "6"
+   },
+   "19756": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "18"
+   },
+   "19760": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "13"
+   },
+   "19765": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "20"
+   },
+   "19770": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "8"
+   },
+   "19775": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "8"
+   },
+   "19780": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "9"
+   },
+   "19785": {
+    "ms": "yes",
+    "ss": "instock",
+    "stock": "16"
+   }
+  },
+  "wc_qty": {
+   "19715": null,
+   "19720": null,
+   "19725": null,
+   "19730": null,
+   "19735": null,
+   "19740": null,
+   "19747": null,
+   "19751": null,
+   "19756": null,
+   "19760": null,
+   "19765": null,
+   "19770": null,
+   "19775": null,
+   "19780": null,
+   "19785": null
+  },
+  "suma": {
+   "stock": 180,
+   "own": 0,
+   "instock": 0
+  },
+  "n": 15,
+  "bak": 15,
+  "src": [
+   {
+    "source": "ambrosia",
+    "n": "15",
+    "q": "180",
+    "a": "15"
+   },
+   {
+    "source": "av",
+    "n": "15",
+    "q": "180",
+    "a": "0"
+   }
+  ],
+  "src_det": [
+   {
+    "product_id": "19715",
+    "source": "av",
+    "stock_qty": "8",
+    "cost_net": "7.6200",
+    "is_active": "0",
+    "is_sellable": "1"
+   },
+   {
+    "product_id": "19715",
+    "source": "ambrosia",
+    "stock_qty": "8",
+    "cost_net": "7.6200",
+    "is_active": "1",
+    "is_sellable": "1"
+   },
+   {
+    "product_id": "19751",
+    "source": "av",
+    "stock_qty": "6",
+    "cost_net": "34.8600",
+    "is_active": "0",
+    "is_sellable": "1"
+   },
+   {
+    "product_id": "19751",
+    "source": "ambrosia",
+    "stock_qty": "6",
+    "cost_net": "34.8600",
+    "is_active": "1",
+    "is_sellable": "1"
+   }
+  ],
+  "fn": true
+ },
+ "v": "dep-094240",
+ "kurimas": 200,
+ "sid": 6204,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
