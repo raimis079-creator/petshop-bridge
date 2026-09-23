@@ -1,0 +1,644 @@
+{
+ "v": "dep-114358",
+ "kurimas": 200,
+ "sid": 6220,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "cols": [
+   {
+    "Field": "id",
+    "Type": "bigint(20) unsigned",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": "auto_increment"
+   },
+   {
+    "Field": "laikas",
+    "Type": "datetime",
+    "Null": "NO",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "diena",
+    "Type": "date",
+    "Null": "NO",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "tipas",
+    "Type": "varchar(24)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "",
+    "Extra": ""
+   },
+   {
+    "Field": "pusl_tipas",
+    "Type": "varchar(24)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "url_kelias",
+    "Type": "varchar(255)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "raktas",
+    "Type": "varchar(190)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "raktas2",
+    "Type": "varchar(190)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "reiksme",
+    "Type": "bigint(20)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "sesija",
+    "Type": "varchar(64)",
+    "Null": "YES",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "lankytojas_d",
+    "Type": "char(64)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "",
+    "Extra": ""
+   },
+   {
+    "Field": "lankytojas_30",
+    "Type": "char(64)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "saltinis",
+    "Type": "varchar(96)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "medium",
+    "Type": "varchar(96)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "kampanija",
+    "Type": "varchar(96)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "referer_domenas",
+    "Type": "varchar(190)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "kanalas",
+    "Type": "varchar(24)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "landing",
+    "Type": "tinyint(1)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "irenginys",
+    "Type": "varchar(10)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "os_seima",
+    "Type": "varchar(24)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "nars_seima",
+    "Type": "varchar(24)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "salis",
+    "Type": "varchar(8)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "prisijunges",
+    "Type": "tinyint(1)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "sutikimas",
+    "Type": "tinyint(1)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "testinis",
+    "Type": "tinyint(1)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "saltinis_aplinka",
+    "Type": "varchar(10)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "dev",
+    "Extra": ""
+   }
+  ],
+  "idx": [
+   {
+    "Table": "gaj6_ps_web_ivykiai",
+    "Non_unique": "0",
+    "Key_name": "PRIMARY",
+    "Seq_in_index": "1",
+    "Column_name": "id",
+    "Collation": "A",
+    "Cardinality": "15338",
+    "Sub_part": null,
+    "Packed": null,
+    "Null": "",
+    "Index_type": "BTREE",
+    "Comment": "",
+    "Index_comment": "",
+    "Ignored": "NO"
+   },
+   {
+    "Table": "gaj6_ps_web_ivykiai",
+    "Non_unique": "1",
+    "Key_name": "l",
+    "Seq_in_index": "1",
+    "Column_name": "laikas",
+    "Collation": "A",
+    "Cardinality": "15338",
+    "Sub_part": null,
+    "Packed": null,
+    "Null": "",
+    "Index_type": "BTREE",
+    "Comment": "",
+    "Index_comment": "",
+    "Ignored": "NO"
+   },
+   {
+    "Table": "gaj6_ps_web_ivykiai",
+    "Non_unique": "1",
+    "Key_name": "s",
+    "Seq_in_index": "1",
+    "Column_name": "sesija",
+    "Collation": "A",
+    "Cardinality": "5112",
+    "Sub_part": null,
+    "Packed": null,
+    "Null": "YES",
+    "Index_type": "BTREE",
+    "Comment": "",
+    "Index_comment": "",
+    "Ignored": "NO"
+   },
+   {
+    "Table": "gaj6_ps_web_ivykiai",
+    "Non_unique": "1",
+    "Key_name": "dt",
+    "Seq_in_index": "1",
+    "Column_name": "diena",
+    "Collation": "A",
+    "Cardinality": "32",
+    "Sub_part": null,
+    "Packed": null,
+    "Null": "",
+    "Index_type": "BTREE",
+    "Comment": "",
+    "Index_comment": "",
+    "Ignored": "NO"
+   },
+   {
+    "Table": "gaj6_ps_web_ivykiai",
+    "Non_unique": "1",
+    "Key_name": "dt",
+    "Seq_in_index": "2",
+    "Column_name": "tipas",
+    "Collation": "A",
+    "Cardinality": "225",
+    "Sub_part": null,
+    "Packed": null,
+    "Null": "",
+    "Index_type": "BTREE",
+    "Comment": "",
+    "Index_comment": "",
+    "Ignored": "NO"
+   },
+   {
+    "Table": "gaj6_ps_web_ivykiai",
+    "Non_unique": "1",
+    "Key_name": "ld",
+    "Seq_in_index": "1",
+    "Column_name": "diena",
+    "Collation": "A",
+    "Cardinality": "30",
+    "Sub_part": null,
+    "Packed": null,
+    "Null": "",
+    "Index_type": "BTREE",
+    "Comment": "",
+    "Index_comment": "",
+    "Ignored": "NO"
+   },
+   {
+    "Table": "gaj6_ps_web_ivykiai",
+    "Non_unique": "1",
+    "Key_name": "ld",
+    "Seq_in_index": "2",
+    "Column_name": "lankytojas_d",
+    "Collation": "A",
+    "Cardinality": "5112",
+    "Sub_part": null,
+    "Packed": null,
+    "Null": "",
+    "Index_type": "BTREE",
+    "Comment": "",
+    "Index_comment": "",
+    "Ignored": "NO"
+   }
+  ],
+  "tipai": [
+   {
+    "tipas": "pageview",
+    "n": "9591",
+    "ses": "2320"
+   },
+   {
+    "tipas": "view_item",
+    "n": "3089",
+    "ses": "1305"
+   },
+   {
+    "tipas": "add_to_cart",
+    "n": "1205",
+    "ses": "379"
+   },
+   {
+    "tipas": "search",
+    "n": "470",
+    "ses": "131"
+   },
+   {
+    "tipas": "begin_checkout",
+    "n": "318",
+    "ses": "191"
+   },
+   {
+    "tipas": "view_cart",
+    "n": "226",
+    "ses": "119"
+   },
+   {
+    "tipas": "error404",
+    "n": "139",
+    "ses": "49"
+   },
+   {
+    "tipas": "filter",
+    "n": "30",
+    "ses": "7"
+   },
+   {
+    "tipas": "email_calc_click",
+    "n": "7",
+    "ses": "0"
+   },
+   {
+    "tipas": "skaiciuokle",
+    "n": "4",
+    "ses": "1"
+   },
+   {
+    "tipas": "reminder_optin",
+    "n": "1",
+    "ses": "0"
+   }
+  ],
+  "pvz": [
+   {
+    "id": "17527",
+    "laikas": "2026-09-23 11:38:40",
+    "diena": "2026-09-23",
+    "tipas": "view_item",
+    "pusl_tipas": null,
+    "url_kelias": "/product/ambrosia-begrudis-su-sviezia-kalakutiena-ir-antiena-sausas-maistas-sunims-fresh-turkey-duck-12kg/",
+    "raktas": "19720",
+    "raktas2": "AMTD12",
+    "reiksme": null,
+    "sesija": null,
+    "lankytojas_d": "0738183ac4e71577d4622692bb9715527ce89921c1a9f67f2ef8cd887a25b509",
+    "lankytojas_30": null,
+    "saltinis": null,
+    "medium": null,
+    "kampanija": null,
+    "referer_domenas": null,
+    "kanalas": null,
+    "landing": "0",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "US",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "17526",
+    "laikas": "2026-09-23 11:38:40",
+    "diena": "2026-09-23",
+    "tipas": "pageview",
+    "pusl_tipas": "preke",
+    "url_kelias": "/product/ambrosia-begrudis-su-sviezia-kalakutiena-ir-antiena-sausas-maistas-sunims-fresh-turkey-duck-12kg/?_gl=1*1cnqke*_up*MQ..*_ga*NDM1NjQwMTYzLjE3OTAxNjM1MTQ.*_ga_FMTKEGGLMG*czE3OTAxNjM1MTMkbzEkZzAkdDE3OTAxNjM1MTMkajYwJGwwJGgw",
+    "raktas": "19720",
+    "raktas2": null,
+    "reiksme": "0",
+    "sesija": null,
+    "lankytojas_d": "0738183ac4e71577d4622692bb9715527ce89921c1a9f67f2ef8cd887a25b509",
+    "lankytojas_30": null,
+    "saltinis": null,
+    "medium": null,
+    "kampanija": null,
+    "referer_domenas": null,
+    "kanalas": null,
+    "landing": "0",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "US",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "17525",
+    "laikas": "2026-09-23 11:38:35",
+    "diena": "2026-09-23",
+    "tipas": "search",
+    "pusl_tipas": null,
+    "url_kelias": null,
+    "raktas": "ambro",
+    "raktas2": null,
+    "reiksme": "16",
+    "sesija": null,
+    "lankytojas_d": "0738183ac4e71577d4622692bb9715527ce89921c1a9f67f2ef8cd887a25b509",
+    "lankytojas_30": null,
+    "saltinis": null,
+    "medium": null,
+    "kampanija": null,
+    "referer_domenas": null,
+    "kanalas": null,
+    "landing": "0",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "US",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "17524",
+    "laikas": "2026-09-23 11:38:35",
+    "diena": "2026-09-23",
+    "tipas": "pageview",
+    "pusl_tipas": "paieska",
+    "url_kelias": "/?s=ambro&post_type=product&_gl=1*vtepil*_up*MQ..*_ga*NTE2NTk0MzE0LjE3OTAxNjE1Mzk.*_ga_FMTKEGGLMG*czE3OTAxNjE1MzgkbzEkZzAkdDE3OTAxNjE1MzgkajYwJGwwJGgw",
+    "raktas": "ambro",
+    "raktas2": null,
+    "reiksme": "16",
+    "sesija": null,
+    "lankytojas_d": "0738183ac4e71577d4622692bb9715527ce89921c1a9f67f2ef8cd887a25b509",
+    "lankytojas_30": null,
+    "saltinis": null,
+    "medium": null,
+    "kampanija": null,
+    "referer_domenas": null,
+    "kanalas": null,
+    "landing": "0",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "US",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "17523",
+    "laikas": "2026-09-23 11:38:03",
+    "diena": "2026-09-23",
+    "tipas": "view_item",
+    "pusl_tipas": null,
+    "url_kelias": "/product/ambrosia-junior-begrudis-su-sviezia-vistiena-ir-lasisa-sausas-maistas-dideliu-veisliu-jauniems-suniukams-fresh-chicken-salmon-2-kg/",
+    "raktas": "19780",
+    "raktas2": "AMPCS02",
+    "reiksme": null,
+    "sesija": null,
+    "lankytojas_d": "0738183ac4e71577d4622692bb9715527ce89921c1a9f67f2ef8cd887a25b509",
+    "lankytojas_30": null,
+    "saltinis": null,
+    "medium": null,
+    "kampanija": null,
+    "referer_domenas": null,
+    "kanalas": null,
+    "landing": "0",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "US",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "17522",
+    "laikas": "2026-09-23 11:38:03",
+    "diena": "2026-09-23",
+    "tipas": "pageview",
+    "pusl_tipas": "preke",
+    "url_kelias": "/product/ambrosia-junior-begrudis-su-sviezia-vistiena-ir-lasisa-sausas-maistas-dideliu-veisliu-jauniems-suniukams-fresh-chicken-salmon-2-kg/?_gl=1*m1fkwp*_up*MQ..*_ga*MTU3NDQ3ODUyLjE3OTAxNjM0Njg.*_ga_FMTKEGGLMG*czE3OTAxNjM0NjgkbzEkZzAkdDE3OTAxNjM0NjgkajYw",
+    "raktas": "19780",
+    "raktas2": null,
+    "reiksme": "0",
+    "sesija": null,
+    "lankytojas_d": "0738183ac4e71577d4622692bb9715527ce89921c1a9f67f2ef8cd887a25b509",
+    "lankytojas_30": null,
+    "saltinis": null,
+    "medium": null,
+    "kampanija": null,
+    "referer_domenas": null,
+    "kanalas": null,
+    "landing": "0",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "US",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "17521",
+    "laikas": "2026-09-23 11:37:50",
+    "diena": "2026-09-23",
+    "tipas": "search",
+    "pusl_tipas": null,
+    "url_kelias": null,
+    "raktas": "ambro",
+    "raktas2": null,
+    "reiksme": "16",
+    "sesija": null,
+    "lankytojas_d": "0738183ac4e71577d4622692bb9715527ce89921c1a9f67f2ef8cd887a25b509",
+    "lankytojas_30": null,
+    "saltinis": null,
+    "medium": null,
+    "kampanija": null,
+    "referer_domenas": null,
+    "kanalas": null,
+    "landing": "0",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "US",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "17520",
+    "laikas": "2026-09-23 11:37:50",
+    "diena": "2026-09-23",
+    "tipas": "pageview",
+    "pusl_tipas": "paieska",
+    "url_kelias": "/?s=ambro&post_type=product&_gl=1*vtepil*_up*MQ..*_ga*NTE2NTk0MzE0LjE3OTAxNjE1Mzk.*_ga_FMTKEGGLMG*czE3OTAxNjE1MzgkbzEkZzAkdDE3OTAxNjE1MzgkajYwJGwwJGgw",
+    "raktas": "ambro",
+    "raktas2": null,
+    "reiksme": "16",
+    "sesija": null,
+    "lankytojas_d": "0738183ac4e71577d4622692bb9715527ce89921c1a9f67f2ef8cd887a25b509",
+    "lankytojas_30": null,
+    "saltinis": null,
+    "medium": null,
+    "kampanija": null,
+    "referer_domenas": null,
+    "kanalas": null,
+    "landing": "0",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "US",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   }
+  ],
+  "tabs": [
+   {
+    "Tables_in_gyvunai2_nbpe1 (gaj6_ps_web%)": "gaj6_ps_web_dienos"
+   },
+   {
+    "Tables_in_gyvunai2_nbpe1 (gaj6_ps_web%)": "gaj6_ps_web_ivykiai"
+   },
+   {
+    "Tables_in_gyvunai2_nbpe1 (gaj6_ps_web%)": "gaj6_ps_webhook_log"
+   }
+  ],
+  "uz": [
+   {
+    "n": "124"
+   }
+  ],
+  "mu": [
+   "petshop-analitika-langas.php",
+   "petshop-analitika.php",
+   "petshop-analitika.php.bak_prev",
+   "petshop-anketa-ivykiai.php",
+   "petshop-ivykiai.php",
+   "petshop-refill-ivykiai.php",
+   "petshop-uzsakymu-ivykiai.php",
+   "petshop-webp.php"
+  ]
+ }
+}
