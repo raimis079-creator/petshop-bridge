@@ -1,0 +1,103 @@
+{
+ "1": {
+  "hooks": [
+   "/includes/class-woo-lithuaniapost.php:335: $this->loader->add_action( 'posts_join', $plugin_admin_order_settings,'join_shipping_method', 10, 2 );",
+   "/includes/class-woo-lithuaniapost.php:336: $this->loader->add_action( 'posts_where', $plugin_admin_order_settings,'where_shipping_method', 10, 2 );",
+   "/includes/class-woo-lithuaniapost.php:337: $this->loader->add_filter( 'woocommerce_order_data_store_cpt_get_orders_query', $plugin_admin_order_settings,'handle_custom_query_var', 10, 2 );",
+   "/includes/class-woo-lithuaniapost.php:350: $this->loader->add_action('plugin_action_links_' . WOO_LITHUANIAPOST_PLUGIN_BASENAME, $plugin_admin_settings, 'plugin_action_links');",
+   "/includes/class-woo-lithuaniapost.php:378: $this->loader->add_action( 'admin_action_print_label', $plugin_admin_order_settings, 'handle_bulk_action');",
+   "/includes/class-woo-lithuaniapost.php:379: $this->loader->add_action( 'admin_action_print_manifest', $plugin_admin_order_settings, 'handle_bulk_action');",
+   "/includes/class-woo-lithuaniapost.php:380: $this->loader->add_action( 'admin_action_generate_return_orders', $plugin_admin_order_settings, 'handle_bulk_action');",
+   "/includes/class-woo-lithuaniapost.php:381: $this->loader->add_action( 'admin_action_filter_orders', $plugin_admin_order_settings, 'handle_bulk_action');",
+   "/includes/class-woo-lithuaniapost.php:382: $this->loader->add_action( 'admin_action_lp-orders-reset-filter', $plugin_admin_order_settings, 'handle_bulk_action');",
+   "/includes/class-woo-lithuaniapost.php:391: $this->loader->add_action('woo_lithuaniapost_admin_util_convert_to_grams', $plugin_admin_util, 'convert_to_grams');",
+   "/includes/class-woo-lithuaniapost.php:392: $this->loader->add_action('woo_lithuaniapost_admin_util_get_min_weight', $plugin_admin_util, 'get_min_weight');",
+   "/admin/class-woo-lithuaniapost-admin-order-service.php:529: public function create_parcel_content_request($order): array",
+   "/admin/class-woo-lithuaniapost-admin-order-service.php:686: public function create_parcel_create_request($order, $lp_shipping_method)",
+   "/admin/class-woo-lithuaniapost-admin-order-service.php:784: $parcel_save_request = $this->create_parcel_update_request($order);",
+   "/admin/class-woo-lithuaniapost-admin-order-service.php:796: private function create_parcel($order, $overwrite_id_ref, $parcel_create_request): bool",
+   "/admin/class-woo-lithuaniapost-admin-order-service.php:1006: private function create_parcel_update_request($order)",
+   "/admin/class-woo-lithuaniapost-admin-order-settings.php:185: public function create_parcel()"
+  ],
+  "editor": "                                                <?php foreach ($terminals as $terminal_id => $terminal): ?>\r\n                                                    <option\r\n                                                        <?php if (!empty ($parcel->receiver->address->terminalId) && $parcel->receiver->address->terminalId == $terminal_id): ?>selected<?php endif; ?>\r\n                                                        data-value=\"<?php echo $terminal_id ?>\"\r\n                                                        value=\"<?php echo $terminal_id ?>\"><?php echo $terminal ?></option>\r\n                                                <?php endforeach; ?>\r\n                                            </optgroup>\r\n                                        <?php endforeach; ?>\r\n                                    </select>\r\n                                </div>\r\n                            </div>\r\n                        <?php endif; ?>\r\n\r\n                        <div id=\"parcel_size_field\"\r\n                             class=\"admin__field <?php echo $this->is_size_available($parcel) ? '' : 'hidden' ?>\">\r\n                            <label for=\"parcel_size\" class=\"admin__field-label\">\r\n                                <?php _e('Parcel Size', 'woo-lithuaniapost'); ?> <span style=\"color:red\">*</span>\r\n                            </label>\r\n                            <div class=\"admin__field-control\">\r\n                                <select id=\"parcel_size\"\r\n                                        class=\"admin__control-select widefat\"\r\n                                        name=\"lp_parcel_size\"\r\n                                        id=\"lp_parcel_size\">\r\n                                    <?php echo $this->generate_select_parcel_size_html($parcel) ?>\r\n                                </select>\r\n                            </div>\r\n                        </div>\r\n                        <div id=\"parcel_weight_field\"\r\n                             class=\"admin__field <?php echo $this->is_weight_available($parcel) ? '' : 'hidden' ?>\">\r\n                            <label for=\"parcel_weight\" class=\"admin__field-label\">\r\n                                <?php _e('Parcel Weight (g)', 'woo-lithuaniapost'); ?> <span style=\"color:red\">*</span>\r\n                            </label>\r\n                            <div class=\"admin__field-control\">\r\n                                <input id=\"parcel_weight\" type=\"number\" step=\"1\"\r\n                                       value=\"<?php echo $parcel->parcel->weight ?? null; ?>\"\r\n                                       min=\"1\"\r\n                                       class=\"admin__control-text widefat\"\r\n                                       name=\"lp_parcel_weight\"\r\n                                       id=\"lp_parcel_weight\"/>\r\n                            </div>\r\n                        </div>\r\n                        <div id=\"parcel_part_count_field\"\r\n                             class=\"admin__field <?php echo $this->is_multi_part_available($parcel) ? '' : 'hidden' ?>\">\r\n                            <label for=\"parcel_part_count\" class=\"admin__field-label\">\r\n                                <?php _e('Parcel part count', 'woo-lithuaniapost'); ?> <span style=\"color:red\">*</span>\r\n                            </label>\r\n                            <div class=\"admin__field-control\">\r\n                                <input type=\"number\" step=\"1\"\r\n                                       value=\"<?php echo $parcel->parcel->partCount ?? 1; ?>\"\r\n                                       min=\"1\"\r\n",
+  "nust": [],
+  "opts": [],
+  "pastabos_36091": [
+   {
+    "comment_date": "2026-09-19 21:22:12",
+    "c": "Stock hold of 90 minutes applied to: <br>- Animonda Vom Feinsten Junior with Poultry and Turkey Hearts - konservai šuniukams/jauniems šunims su paukštiena ir ka"
+   },
+   {
+    "comment_date": "2026-09-19 21:22:12",
+    "c": "Paysera: Neapmokėto užsakymo būsena"
+   },
+   {
+    "comment_date": "2026-09-19 21:22:12",
+    "c": "Likutis sumažintas: Animonda Vom Feinsten Junior with Poultry and Turkey Hearts - konservai šuniukams/jauniems šunims su paukštiena ir kalakutų širdimis, 150 g "
+   },
+   {
+    "comment_date": "2026-09-19 21:23:43",
+    "c": "Paysera: Užsakymo būsena po apmokėjimo"
+   },
+   {
+    "comment_date": "2026-09-19 21:23:43",
+    "c": "Vykdymas: MAIN — AV 5 vnt (1 siunta(-os)) · dropship pirma"
+   },
+   {
+    "comment_date": "2026-09-19 21:23:43",
+    "c": "AV nurašymas: #19366 grynai AV 67 -> 62"
+   },
+   {
+    "comment_date": "2026-09-19 21:23:43",
+    "c": "Partijos nurašytos: #19366 −5 vnt. (1 partijos)"
+   },
+   {
+    "comment_date": "2026-09-19 21:23:44",
+    "c": "Faktai irasyti: 1 eilutes · pajamos 5,25 EUR (be PVM, po nuolaidu) · PVM 1,68 EUR · marza 1,80 EUR · kontribucija (be pristatymo) 3,13 EUR"
+   },
+   {
+    "comment_date": "2026-09-19 21:23:44",
+    "c": "Surūšiuota pati: Animonda Vom Feinsten Junior with Poultr — Iš AV"
+   },
+   {
+    "comment_date": "2026-09-19 21:23:44",
+    "c": "Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas."
+   },
+   {
+    "comment_date": "2026-09-19 21:23:44",
+    "c": "Email \"Naujas užsakymas\" sent."
+   },
+   {
+    "comment_date": "2026-09-19 21:23:45",
+    "c": "Email \"Užsakymas vykdomas\" sent."
+   },
+   {
+    "comment_date": "2026-09-19 21:23:47",
+    "c": "Paysera: Naujo užsakymo kūrimo būsena"
+   },
+   {
+    "comment_date": "2026-09-21 12:11:09",
+    "c": "S1703: LP sekimo numeris CC118135791LT įrašytas iš vidinės pastabos (Raimis įdėjo į paštomatą 09-21 (#1117))."
+   },
+   {
+    "comment_date": "2026-09-21 12:11:09",
+    "c": "Pažymėta išsiųsta darbalaukyje (Raimis, lp). WC laiškas klientui: NESIŲSTAS."
+   },
+   {
+    "comment_date": "2026-09-21 12:11:09",
+    "c": "Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas."
+   },
+   {
+    "comment_date": "2026-09-21 12:11:09",
+    "c": "Klientui išsiųsta „Užsakymas išsiųstas“ (ib19651230@gmai.com): CC118135791LT"
+   }
+  ]
+ },
+ "v": "dep-175557",
+ "kurimas": 200,
+ "sid": 6266,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
