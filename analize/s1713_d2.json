@@ -1,0 +1,91 @@
+{
+ "2": {
+  "v": "S1713d",
+  "faze": "2",
+  "urls": {
+   "/augintinio-profilis/": [
+    [
+     1054,
+     200,
+     "-",
+     ""
+    ],
+    [
+     956,
+     200,
+     "-",
+     ""
+    ]
+   ],
+   "/refill-feedback/": [
+    [
+     1013,
+     200,
+     "-",
+     "no-cache, must-revalidate, max-age=0, no-store, private"
+    ],
+    [
+     1091,
+     200,
+     "-",
+     "no-cache, must-revalidate, max-age=0, no-store, private"
+    ]
+   ],
+   "/": [
+    [
+     55,
+     200,
+     "CACHED",
+     "max-age=3, must-revalidate"
+    ],
+    [
+     45,
+     200,
+     "CACHED",
+     "max-age=3, must-revalidate"
+    ]
+   ]
+  },
+  "html": {
+   "wc_cart_fragments": 1,
+   "ps_web_analitika": 1,
+   "clarity": 1,
+   "gtm": 1,
+   "nonce_wc": 1,
+   "wpnonce_in_html": 0,
+   "nonce_pvz": []
+  },
+  "cache_dirs": [
+   "gamintojas",
+   "index-https.html",
+   "kategorija",
+   "kolis",
+   "product",
+   "skaiciuokle",
+   "taksas"
+  ],
+  "rejected_dabar": [
+   "wp-.*\\.php",
+   "index\\.php",
+   "krepselis",
+   "cart",
+   "checkout",
+   "atsiskaitymas",
+   "my-account",
+   "mano-paskyra",
+   "augintinis",
+   "prenumerata",
+   "wp-json",
+   "feed",
+   "augintinio-profilis",
+   "refill-feedback"
+  ]
+ },
+ "v": "dep-183113",
+ "kurimas": 200,
+ "sid": 6316,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
