@@ -1,0 +1,116 @@
+{
+ "1": {
+  "robots": "User-agent: *\nDisallow: /wp-content/uploads/wc-logs/\nDisallow: /wp-content/uploads/woocommerce_transient_files/\nDisallow: /wp-content/uploads/woocommerce_uploads/\nDisallow: /*?add-to-cart=\nDisallow: /*?*add-to-cart=\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\n\nSitemap: https://petshop.lt/sitemap_index.xml\n",
+  "ls_logs": [
+   ".",
+   "..",
+   "Sep-2026.tar.gz",
+   "Sep-2026.tar.gz.1",
+   "Sep-2026.tar.gz.10",
+   "Sep-2026.tar.gz.11",
+   "Sep-2026.tar.gz.12",
+   "Sep-2026.tar.gz.2",
+   "Sep-2026.tar.gz.3",
+   "Sep-2026.tar.gz.4",
+   "Sep-2026.tar.gz.5",
+   "Sep-2026.tar.gz.6",
+   "Sep-2026.tar.gz.7",
+   "Sep-2026.tar.gz.8",
+   "Sep-2026.tar.gz.9",
+   "php_error.log"
+  ],
+  "ls_dom": [
+   ".",
+   "..",
+   ".htpasswd",
+   "backups",
+   "logs",
+   "private_html",
+   "ps-archyvas",
+   "public_ftp",
+   "public_html",
+   "public_html-senas2019",
+   "stats",
+   "tmp"
+  ],
+  "logf": [
+   [
+    "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz",
+    1323276,
+    "2026-09-24 01:55"
+   ],
+   [
+    "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.1",
+    4377323,
+    "2026-09-23 21:12"
+   ],
+   [
+    "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.10",
+    268472,
+    "2026-09-19 01:06"
+   ],
+   [
+    "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.11",
+    1762829,
+    "2026-09-18 21:11"
+   ],
+   [
+    "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.12",
+    224301,
+    "2026-09-18 02:26"
+   ],
+   [
+    "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.2",
+    553969,
+    "2026-09-23 01:21"
+   ],
+   [
+    "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.3",
+    3320254,
+    "2026-09-22 21:11"
+   ],
+   [
+    "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.4",
+    322491,
+    "2026-09-22 02:20"
+   ],
+   [
+    "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.5",
+    2377384,
+    "2026-09-21 21:11"
+   ],
+   [
+    "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.6",
+    293900,
+    "2026-09-21 01:25"
+   ],
+   [
+    "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.7",
+    1967458,
+    "2026-09-20 21:11"
+   ],
+   [
+    "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.8",
+    321202,
+    "2026-09-20 01:41"
+   ],
+   [
+    "/home/gyvunai2/domains/petshop.lt/logs/Sep-2026.tar.gz.9",
+    1788384,
+    "2026-09-19 21:11"
+   ],
+   [
+    "/home/gyvunai2/domains/petshop.lt/logs/php_error.log",
+    547439,
+    "2026-09-24 12:42"
+   ]
+  ]
+ },
+ "v": "dep-124815",
+ "kurimas": 200,
+ "sid": 6285,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
