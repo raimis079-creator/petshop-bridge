@@ -1,0 +1,167 @@
+{
+ "1": {
+  "v": "S1716k",
+  "naudoja": {
+   "wp-content/mu-plugins/petshop-darbalaukis.php": [
+    "v3.44 (S1709, Raimis 09-23): siuntos dydis iš dialogo (XS…XL). Pluginas dydį parenka pats pagal matmenis ir siuntą dažnai sukuria jau kasoje —",
+    "sirinkimas „Dydis“ — numatytas: jau sukurtos siuntos dydis arba plugino apskaičiuotas (pagal matmenis/svorį). */"
+   ],
+   "wp-content/mu-plugins/petshop-fakt-siuntos.php": [
+    "* box-packer per prekiu matmenis su atsargine 10x10x10 cm reiksme), bet"
+   ],
+   "wp-content/mu-plugins/petshop-gavimas.php": [
+    "*     3. „uzdaroje\" sekcijoje (Sudetis, Analitines, Priedai, Matmenys,",
+    "*   matmenys, pagrindine nuotrauka ir galerija.",
+    "$matmenys = is_array( $d['matmenys'] ?? null ) ? $d['matmenys'] : array();",
+    "$v = isset( $matmenys[ $r ] ) ? self::skaicius( $matmenys[ $r ] ) : 0;",
+    "'matmenys'       => array(",
+    "'ilgis'   => (string) $p->get_length(),"
+   ],
+   "wp-content/mu-plugins/petshop-katalogas.php": [
+    "*   antkakliui matmenys ir medziaga yra pirkimo sprendima lemianti",
+    "*   3) „TIK KURJERIU\" varnele: automatika sprendzia is svorio ir matmenu, bet",
+    "* v1.2: KRŪVA ir EILĖ atskirti į du nepriklausomus matmenis (savininko pastaba).",
+    "Automatika sprendzia is svorio ir matmenu, bet daliai preku ju nera",
+    "$mt = array( (float) get_post_meta( $pid, '_length', true ),",
+    "(float) get_post_meta( $pid, '_width', true ), (float) get_post_meta( $pid, '_height', true ) );"
+   ],
+   "wp-content/mu-plugins/petshop-pilnumas.php": [
+    "*   ISIMTA del to: matmenys (20% padengimas), prekes svoris aksesuaruose (35%),"
+   ],
+   "wp-content/plugins/petshop-xml/petshop-xml.php": [
+    "if ( $zb_length > 0 ) update_post_meta( $post_id, '_length', $zb_length );",
+    "if ( $zb_width  > 0 ) update_post_meta( $post_id, '_width', $zb_width );",
+    "if ( $zb_height > 0 ) update_post_meta( $post_id, '_height', $zb_height );"
+   ],
+   "wp-content/themes/flatsome-child/functions.php": [
+    "Venipak pluginas paštomatą išmeta ir dėl matmenų (pvz. ZB maišas 80 cm), ko varnelė/svoris nemato,"
+   ]
+  },
+  "lp_naudoja": {
+   "class-woo-lithuaniapost-admin-size-service.php": [
+    "$length = $product->get_length() ? (float)wc_get_dimension($product->get_length(), 'cm', $dimension_unit) : 0;"
+   ]
+  },
+  "pickup_calc": "function calculate_shipping( $package = Array() ) {\n    $shipping_tax_class = get_option('woocommerce_shipping_tax_class');\n    $rate = [\n      'id'      => $this->get_rate_id(),\n      'label'   => $this->get_option('title'),\n      'cost'    => $this->get_option('fee'),\n      'package' => $package,\n      'tax_class' => $shipping_tax_class,\n    ];\n\n    $ignored_classes = $this->get_option('ignore_shipping_classes', []);\n    if ( is_array( $ignored_classes ) && ! empty( $ignored_classes ) ) {\n      $found_shipping_classes = $this->find_shipping_classes_for_package($package);\n\n      foreach ($found_shipping_classes as $found_class) {\n        if (in_array($found_class, $ignored_classes)) {\n          return;\n        }\n      }\n    }\n\n    $cart_total_weight = WC()->cart->cart_contents_weight;\n    if (get_option('woocommerce_weight_unit') == 'g') {\n        $cart_total_weight /= 1000;\n    }\n\n    switch (get_option( 'woocommerce_dimension_unit' )) {\n      case 'm':\n        $unit_multiplayer = 0.01;\n        break;\n      case 'mm':\n        $unit_multiplayer = 10;\n        break;\n      default:\n        $unit_multiplayer = 1;\n    }\n\n    $maximum_weight_locker = $this->get_option('maximum_weight') ? $this->get_option('maximum_weight') : 30;\n    $manimum_weight_locker = $this->get_option('minimum_weight') ? $this->get_option('minimum_weight') : 0;\n\t\t$maximum_weight_pickup = min($maximum_weight_locker, 10);\n\t\t$minimum_weight_pickup = $manimum_weight_locker;\n\n    // Locker internal max dimensions (cm by default)\n    $venipak_box_dims = [\n      61 * $unit_multiplayer,\n      39.5 * $unit_multiplayer,\n      41 * $unit_multiplayer,\n    ];\n    sort($venipak_box_dims); // allow any orientation by comparing sorted dims\n    $venipak_max_volume = array_product($venipak_box_dims);\n    \n    $is_valid_for_locker = true;\n    $is_valid_for_pickup = true;\n    $total_cart_volume = 0;\n    $dedicated_packs = 0;\n    foreach ( WC()->cart->get_cart() as $cart_item ) {\n      $product = $cart_item['data']; // Directly use the product data\n\n\t\t\tif ($product->is_type('variation')) {\n\t\t\t\t$product = new WC_Product_Variation($cart_item['variation_id']);\n\t\t\t}\n      $product_dimensions = [\n        (float)$product->get_length() ?: 0,\n        (float)$product->get_width() ?: 0,\n        (float)$product->get_height() ?: 0,\n      ];\n      sort($product_dimensions);\n      $total_cart_volume += ($product_dimensions[0] * $product_dimensions[1] * $product_dimensions[2]) * $cart_item['quantity'];\n      if (\n        $product_dimensions[0] > $venipak_box_dims[0] ||\n        $product_dimensions[1] > $venipak_box_dims[1] ||\n        $product_dimensions[2] > $venipak_box_dims[2]\n      ) {\n        $is_valid_for_locker = false;\n      }\n      $product_min_age = $product->get_meta('shopup_venipak_shipping_min_age');\n      if ($product_min_age > 0) {\n        $is_valid_for_locker = false;\n        $is_valid_for_pickup = false;\n      }\n      $product_packs = $product->get_meta('_venipak_total_shipments', true) ?: $product->get_meta('_omnivalt_total_shipments', true);\n      $dedicated_packs += $product_packs ?: 0;\n    }\n    if ($dedicated_packs > 1) {\n      $is_valid_for_locker = false;\n      $is_valid_for_pickup = false;\n    }\n    if ($dedicated_packs === 1 && count(WC()->cart->get_cart()) > 1) {\n      $is_valid_for_locker = false;\n      $is_valid_for_pickup = false;\n    }\n    if ($cart_total_weight > $maximum_weight_locker || ($manimum_weight_locker > 0 && $cart_total_weight <= $manimum_weight_locker)) {\n      $is_valid_for_locker = false;\n    }\n    if ($cart_total_weight > $maximum_weight_pickup || ($minimum_weight_pickup > 0 && $cart_total_weight <= $minimum_weight_pickup)) {\n      $is_valid_for_pickup = false;\n    }\n    if ($total_cart_volume > $venipak_max_volume) {\n      $is_valid_for_locker = false;\n    }\n\n    $venipak_shipping_settings = get_option('shopup_venipak_shipping_settings');\n    if ($venipak_shipping_settings) {\n      $pickup_type = $venipak_shipping_settings['shopup_venipak_shipping_field_pickuptype'];\n    } else {\n      $pickup_type = 'all';\n    }\n\n    if (\n      ($pickup_type == 1 && $is_valid_for_pickup) ||\n      ($pickup_type == 3 && $is_valid_for_locker) ||\n      ($pickup_type == 'all' && ($is_valid_for_locker || $is_valid_for_pickup))\n    ) {\n      $this->free_shipping_check( $package, $rate );\n      $this->add_rate( $rate );\n    }\n  }\n\n  /**\n   * \n   *\n   * @since    1.0.0\n   */\n  public function free_shipping_check($package, &$rate) {\n    $order_cost = 0;\n    $min_",
+  "wpai1": {
+   "update_all_data": "no"
+  },
+  "wpai1_raktai": [
+   "_zb_length",
+   "_zb_width",
+   "_zb_height",
+   "length",
+   "width",
+   "height",
+   "single_product_length",
+   "single_product_width",
+   "single_product_height",
+   "variable_length",
+   "variable_width",
+   "variable_height",
+   "is_multiple_product_subscription_length",
+   "multiple_product_subscription_length",
+   "single_product_subscription_length"
+  ],
+  "zb_dims_pagal_kg": [
+   {
+    "d": "0.0000x0.0000x0.0000",
+    "kg_min": "0.0",
+    "kg_max": "20.0",
+    "n": "372"
+   },
+   {
+    "d": "20.0000x40.0000x70.0000",
+    "kg_min": "8.0",
+    "kg_max": "15.1",
+    "n": "33"
+   },
+   {
+    "d": "0.2000x0.3000x0.3000",
+    "kg_min": "0.3",
+    "kg_max": "0.5",
+    "n": "32"
+   },
+   {
+    "d": "20.0000x20.0000x20.0000",
+    "kg_min": "2.0",
+    "kg_max": "12.0",
+    "n": "30"
+   },
+   {
+    "d": "0.2000x0.2000x0.2000",
+    "kg_min": "0.2",
+    "kg_max": "0.3",
+    "n": "17"
+   },
+   {
+    "d": "0.1000x0.3000x0.1000",
+    "kg_min": "0.3",
+    "kg_max": "0.5",
+    "n": "8"
+   },
+   {
+    "d": "14.4000x80.0000x40.0000",
+    "kg_min": "12.2",
+    "kg_max": "12.8",
+    "n": "6"
+   },
+   {
+    "d": "0.4000x0.4000x0.3000",
+    "kg_min": "0.5",
+    "kg_max": "0.5",
+    "n": "5"
+   },
+   {
+    "d": "20.0000x40.0000x80.0000",
+    "kg_min": "20.0",
+    "kg_max": "20.0",
+    "n": "5"
+   },
+   {
+    "d": "20.0000x30.0000x30.0000",
+    "kg_min": "3.0",
+    "kg_max": "7.5",
+    "n": "5"
+   },
+   {
+    "d": "0.6000x0.9000x0.2000",
+    "kg_min": "0.5",
+    "kg_max": "0.5",
+    "n": "4"
+   },
+   {
+    "d": "10.0000x30.0000x30.0000",
+    "kg_min": "0.5",
+    "kg_max": "1.0",
+    "n": "4"
+   },
+   {
+    "d": "0.4000x0.3000x0.2000",
+    "kg_min": "0.5",
+    "kg_max": "0.5",
+    "n": "4"
+   },
+   {
+    "d": "0.8000x0.6000x0.7000",
+    "kg_min": "0.5",
+    "kg_max": "0.5",
+    "n": "3"
+   },
+   {
+    "d": "0.2000x0.3000x0.4000",
+    "kg_min": "0.4",
+    "kg_max": "0.4",
+    "n": "3"
+   }
+  ],
+  "virs_ribu_zb_n": 51
+ },
+ "v": "dep-210236",
+ "kurimas": 200,
+ "sid": 6360,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
