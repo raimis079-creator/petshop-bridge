@@ -1,0 +1,162 @@
+{
+ "1": {
+  "v": "S1715b",
+  "faze": "1",
+  "kabliai": {
+   "woocommerce_product_get_stock_quantity": [
+    "-1000: WC_Deprecated_Filter_Hooks::maybe_handle_deprecated_hook",
+    "20: Petshop_AV_Limit::stock_qty"
+   ],
+   "woocommerce_product_get_stock_status": [
+    "20: Petshop_AV_Limit::stock_status",
+    "30: Petshop_Rinkiniu_Likuciai::busena"
+   ],
+   "woocommerce_product_is_in_stock": [
+    "10: closure @snippet-ops.php(663) : eval()'d code:17",
+    "20: Petshop_Rinkiniu_Likuciai::ar_yra"
+   ],
+   "woocommerce_add_to_cart_validation": [
+    "10: wc_protected_product_add_to_cart",
+    "10: closure @snippet-ops.php(663) : eval()'d code:44",
+    "10: WC_MNM_Cart::add_to_cart_validation",
+    "20: Petshop_Rinkiniu_Likuciai::krepselio_sargas"
+   ]
+  },
+  "p": {
+   "17336": {
+    "stock_status": "instock",
+    "qty": 1,
+    "manage": true,
+    "backorders": "no",
+    "is_in_stock": true,
+    "has_enough_1": true,
+    "raw_status": "instock",
+    "raw_stock": "0",
+    "lookup": {
+     "stock_status": "instock",
+     "stock_quantity": "0",
+     "onsale": "0"
+    },
+    "modified": "2026-09-07 22:07:52"
+   },
+   "17339": {
+    "stock_status": "instock",
+    "qty": 0,
+    "manage": true,
+    "backorders": "no",
+    "is_in_stock": true,
+    "has_enough_1": false,
+    "raw_status": "instock",
+    "raw_stock": "0",
+    "lookup": {
+     "stock_status": "instock",
+     "stock_quantity": "0",
+     "onsale": "0"
+    },
+    "modified": "2026-09-07 22:07:52"
+   },
+   "17345": {
+    "stock_status": "outofstock",
+    "qty": 0,
+    "manage": true,
+    "backorders": "no",
+    "is_in_stock": false,
+    "has_enough_1": false,
+    "raw_status": "outofstock",
+    "raw_stock": "0",
+    "lookup": {
+     "stock_status": "outofstock",
+     "stock_quantity": "0",
+     "onsale": "0"
+    },
+    "modified": "2026-09-12 00:56:27"
+   },
+   "17354": {
+    "stock_status": "instock",
+    "qty": 0,
+    "manage": true,
+    "backorders": "no",
+    "is_in_stock": true,
+    "has_enough_1": false,
+    "raw_status": "instock",
+    "raw_stock": "0",
+    "lookup": {
+     "stock_status": "instock",
+     "stock_quantity": "0",
+     "onsale": "0"
+    },
+    "modified": "2026-09-07 22:07:52"
+   }
+  },
+  "add_17339": {
+   "key": false,
+   "notices": {
+    "error": [
+     {
+      "notice": "Jūs negalite įdėti tokio produkto &quot;Natūralus bentonitinis sušokantis kraikas katėms Wonder White Sodium grey 11,8l / 10 kg&quot; kiekio į krepšelį, nes jo tiek neturime (liko 0).",
+      "data": []
+     }
+    ]
+   }
+  },
+  "cart_n": 0,
+  "check_cart_items_notices": [],
+  "add_17345_outofstock": {
+   "key": false,
+   "notices": {
+    "error": [
+     {
+      "notice": "Jūs negalite įdėti produkto &quot;Natūralus bentonitinis sušokantis kraikas katėms Wonder White Natural 11,8 l / 10 kg&quot; į krepšelį, nes šio produkto šiuo metu neturime.",
+      "data": []
+     }
+    ]
+   }
+  },
+  "zurnalai": [
+   "gaj6_ps_browse_log",
+   "gaj6_ps_consent_log",
+   "gaj6_ps_event_log",
+   "gaj6_ps_feeding_import_log",
+   "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f",
+   "gaj6_ps_pet_field_log",
+   "gaj6_ps_rec_log",
+   "gaj6_ps_webhook_log"
+  ],
+  "ivykiai_wonder": [],
+  "web_cols": [
+   "id",
+   "laikas",
+   "diena",
+   "tipas",
+   "pusl_tipas",
+   "url_kelias",
+   "raktas",
+   "raktas2",
+   "reiksme",
+   "sesija",
+   "lankytojas_d",
+   "lankytojas_30",
+   "saltinis",
+   "medium",
+   "kampanija",
+   "referer_domenas",
+   "kanalas",
+   "landing",
+   "irenginys",
+   "os_seima",
+   "nars_seima",
+   "salis",
+   "prisijunges",
+   "sutikimas",
+   "testinis",
+   "saltinis_aplinka"
+  ]
+ },
+ "v": "dep-195047",
+ "kurimas": 200,
+ "sid": 6340,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
