@@ -1,0 +1,38 @@
+{
+ "3": {
+  "v": "S1716r",
+  "faze": "3",
+  "kesas": {
+   "/kategorija/katems/": [
+    200,
+    "CACHED"
+   ],
+   "/kategorija/katems/?_gl=1*abc*_up*MQ..*_ga*x": [
+    200,
+    "CACHED"
+   ],
+   "/kategorija/katems/?_gl=1*zzz*_ga*y": [
+    200,
+    "CACHED"
+   ],
+   "/kategorija/katems/?utm_source=test": [
+    200,
+    "-"
+   ]
+  },
+  "cfg": {
+   "ignore": 1,
+   "list": [
+    "_gl",
+    "_ga"
+   ]
+  }
+ },
+ "v": "dep-214919",
+ "kurimas": 200,
+ "sid": 6370,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
