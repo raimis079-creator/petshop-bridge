@@ -1,0 +1,74 @@
+{
+ "1": {
+  "v": "S1716o",
+  "snippets": [
+   {
+    "id": "619",
+    "name": "Petshop Consent Bridge v1.4 (Complianz -> GTM, legalus denied default)",
+    "active": "1"
+   },
+   {
+    "id": "6365",
+    "name": "TEMP PS dep-213643",
+    "active": "1"
+   }
+  ],
+  "wpsc_is_get_query": "",
+  "sc_get": {
+   "wp-cache-phase1.php": [
+    "if ( isset( $_SERVER['REQUEST_URI'] ) ) { // Cache this in case any plugin modifies it and filter out tracking parameters.",
+    "$wp_cache_request_uri = wpsc_remove_tracking_params_from_uri( $_SERVER['REQUEST_URI'] ); // phpcs:ignore"
+   ],
+   "wp-cache-phase2.php": [
+    "function wpsc_remove_tracking_params_from_uri( $uri ) {",
+    "global $wpsc_tracking_parameters, $wpsc_ignore_tracking_parameters;",
+    "if ( ! isset( $wpsc_ignore_tracking_parameters ) || ! $wpsc_ignore_tracking_parameters ) {",
+    "if ( ! isset( $wpsc_tracking_parameters ) || empty( $wpsc_tracking_parameters ) ) {",
+    "foreach ( $wpsc_tracking_parameters as $param_name ) {",
+    "wp_cache_debug( 'Removed tracking parameters from URL. Returning ' . $path . $query );"
+   ],
+   "wp-cache.php": [
+    "'boost'       => 'https://jetpack.com/boost/?utm_source=wporg&utm_medium=plugin&utm_campaign=wp-super-cache&utm_id=wp-super-cache',",
+    "'photon'      => 'https://jetpack.com/features/design/content-delivery-network/?utm_source=wporg&utm_medium=plugin&utm_campaign=wp-super-cache&utm_id=wp-super-cache',",
+    "'videopress'  => 'https://jetpack.com/videopress/?utm_source=wporg&utm_medium=plugin&utm_campaign=wp-super-cache&utm_id=wp-super-cache',",
+    "'crowdsignal' => 'https://crowdsignal.com/?utm_source=wporg&utm_medium=plugin&utm_campaign=wp-super-cache&utm_id=wp-super-cache',",
+    "'jetpack'     => 'https://jetpack.com/?utm_source=wporg&utm_medium=plugin&utm_campaign=wp-super-cache&utm_id=wp-super-cache',",
+    "global $wpsc_tracking_parameters, $wpsc_rejected_cookies, $cache_rejected_uri;"
+   ]
+  },
+  "sc_globals": {
+   "wp_cache_no_cache_for_get": 1,
+   "wpsc_ignore_get": null,
+   "wp_cache_tracking_parameters": null
+  },
+  "kesas": {
+   "/kategorija/katems/?_gl=1*abc*_up*MQ..*_ga*x": [
+    200,
+    "-",
+    ""
+   ],
+   "/kategorija/katems/": [
+    200,
+    "CACHED",
+    ""
+   ]
+  },
+  "sutikimai": [
+   {
+    "sutikimas": "0",
+    "ses": "1700"
+   },
+   {
+    "sutikimas": "1",
+    "ses": "268"
+   }
+  ]
+ },
+ "v": "dep-213643",
+ "kurimas": 200,
+ "sid": 6365,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
