@@ -1,0 +1,496 @@
+{
+ "1": {
+  "v": "S1714b",
+  "faze": "1",
+  "mu_src": "<?php\n/**\n * Plugin Name: Petshop Anketa Ivykiai\n * Description: Kontrakto §4.1 anketos ivykiai, §2 lauku istorija ir §3 brand susiejimas per REST kabliukus — M8 kodas NELIECIAMAS.\n * Version: 1.2\n *\n * ARCHITEKTURA (savininko procesas 2026-08-16: i M8 lendama tik §5, visa\n * kita — nauji failai):\n *  - Serverio ivykiai kabinami ant REST per `rest_request_before_callbacks`\n *    (momentine ps_pets kopija) ir `rest_request_after_callbacks`\n *    (skirtumas -> ps_pet_field_log + ivykis). M8 marsrutai:\n *      POST  /petshop/v1/pet-profile        -> anketa_completed (saltinis anketa)\n *      PATCH /petshop/v1/pet-profile/{id}   -> profile_updated  (klientas_profilyje)\n *      POST  /petshop/v1/pet-draft          -> anketa_completed (draft:ID)\n *      POST  /petshop/v1/pet-claim-resolve  -> profile_claimed\n *      pet-food-assign / pet-wet-product / pet-food-brand -> field_log (sistema)\n *  - Narsykles ivykiai (anketa_started, step_started/completed,\n *    anketa_abandoned su lauku busena) — atskiras JS stebetojas wp_footer'yje,\n *    siunciantis i musu AJAX `ps_anketa_ivykis` (sendBeacon — veikia pagehide).\n *  - Rasoma per Petshop_Statistika::irasyti() su sritis='anketa' ir user_id\n *    (statistika v2.2). Dvieju sluoksniu privatumas tas pats: be Complianz\n *    statistikos sutikimo — be sesijos, bet ivykis rasomas anonimiskai.\n *\n * SAZININGOS RIBOS (dokumentuota, ne nutylima):\n *  - pet-form.js NETURI step zymiu DOM'e — step numeracija yra euristika:\n *    kiekvienas .pspet-btn paspaudimas, po kurio persipiese turinys, laikomas\n *    zingsnio pabaiga. Tikslus zingsniu zemelapis atsiras, jei M8 prides\n *    data-step (atskiras savininko sprendimas, ne sio modulio darbas);\n *  - lauko \"uzpildyta\" pill'ams nustatoma pagal aria-pressed/active klase.\n *\n * v1.1 KLAIDOS TAISYMAS (rasta Playwright diagnostika 2026-08-16): fetch\n * apvyniojimas be options objekta GET uzklausa laikė ne-GET — puslapio\n * pet-profile SARASO uzkrovimas pazymedavo anketa \"baigta\" ir abandoned\n * buvo slopinamas visada. Dabar metodas nustatomas is o.method ARBA\n * Request.method, o \"baigta\" zymi tik POST/PATCH/PUT.\n *\n * v1.2: pet-form.js dabar zymi root'a data-step atributu — zingsniu ivykiai\n * imami IS JO (tikslus), o .pspet-btn paspaudimu euristika lieka tik\n * atsarginiu keliu, kai atributo nera. data-step='complete' => baigta.\n *\n * §1.1 pastaba: 'none' siuntima is UI (DoD #5) turi daryti pati anketa —\n * tai vienintelis likes M8 UI pakeitimas, jam reikia atskiro savininko GO.\n */\n\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Anketa_Ivykiai {\n\n\tconst VERSIJA = '1.2';\n\t/** Anketos versija naujiems irasams (is drafts payload_version=1). */\n\tconst QV = 'v1';\n\n\tconst TIPAI = array(\n\t\t'anketa_started', 'step_started', 'step_completed', 'anketa_completed',\n\t\t'anketa_abandoned', 'profile_claimed', 'profile_updated',\n\t);\n\n\t/** ps_pets laukai, kuriu pokyciai rasomi i ps_pet_field_log. */\n\tconst LOG_LAUKAI = array(\n\t\t'pet_name','species','species_detail','birth_date','life_stage','dog_size',\n\t\t'is_sterilised','feeding_type','feeding_type_other','wet_food_g',\n\t\t'primary_need','primary_need_other','sensitivities','housing',\n\t\t'current_food_brand','current_food_brand_id','current_food_line_raw',\n\t\t'current_food_product_id','current_weight_kg','activity_hint',\n\t\t'wet_product_id','primary_product_id','questionnaire_version',\n\t);\n\n\t/** Momentines kopijos siai uzklausai: [pet_id => row]. */\n\tprivate static $foto = array();\n\n\tpublic static function init() {\n\t\tadd_action( 'wp_ajax_ps_anketa_ivykis', array( __CLASS__, 'ajax_ivykis' ) );\n\t\tadd_action( 'wp_ajax_nopriv_ps_anketa_ivykis', array( __CLASS__, 'ajax_ivykis' ) );\n\t\tadd_filter( 'rest_request_before_callbacks', array( __CLASS__, 'pries' ), 10, 3 );\n\t\tadd_filter( 'rest_request_after_callbacks', array( __CLASS__, 'po' ), 10, 3 );\n\t\tadd_action( 'wp_footer', array( __CLASS__, 'js_stebetojas' ), 60 );\n\t}\n\n\tprivate static function galima() {\n\t\treturn class_exists( 'Petshop_Statistika' ) && class_exists( 'Petshop_Pet_Kontraktas' );\n\t}\n\n\tprivate static function ivykis( $tipas, $verte, $user_id = null ) {\n\t\tif ( ! self::galima() ) { return false; }\n\t\treturn Petshop_Statistika::irasyti( $tipas, array(\n\t\t\t'sritis'  => 'anketa',\n\t\t\t'verte'   => $verte,\n\t\t\t'user_id' => ( $user_id === null ) ? get_current_user_id() : (int) $user_id,\n\t\t) );\n\t}\n\n\t/* ==================== AJAX (narsykles ivykiai) ==================== */\n\n\tpublic static function ajax_ivykis() {\n\t\tif ( ! self::galima() ) { wp_send_json_error( 'moduliu nera' ); }\n\t\t$tipas = isset( $_POST['tipas'] ) ? sanitize_key( wp_unslash( $_POST['tipas'] ) ) : '';\n\t\tif ( ! in_array( $tipas, self::TIPAI, true ) ) { wp_send_json_error( 'tipas' ); }\n\t\t$verte = isset( $_POST['verte'] ) ? substr( sanitize_text_field( wp_unslash( $_POST['verte'] ) ), 0, 190 ) : '';\n\n\t\t$sesija = '';\n\t\tif ( Petshop_Statistika::sutikimas() ) {\n\t\t\t$sesija = isset( $_POST['sesija'] ) ? substr( sanitize_key( wp_unslash( $_POST['sesija'] ) ), 0, 32 ) : '';\n\t\t\tif ( strlen( $sesija ) !== 32 ) { $sesija = ''; }\n\t\t}\n\t\t$ireng = isset( $_POST['irenginys'] ) ? sanitize_key( wp_unslash( $_POST['irenginys'] ) ) : '';\n\n\t\t$ok = Petshop_Statistika::irasyti( $tipas, array(\n\t\t\t'sritis'    => 'anketa',\n\t\t\t'verte'     => $verte,\n\t\t\t'sesija'    => $sesija,\n\t\t\t'irenginys' => $ireng,\n\t\t\t'user_id'   => get_current_user_id(),\n\t\t) );\n\t\twp_send_json_success( array( 'irasyta' => (bool) $ok ) );\n\t}\n\n\t/* ==================== REST kabliukai ==================== */\n\n\tprivate static function pet_eilute( $pet_id ) {\n\t\tglobal $wpdb;\n\t\t$t = $wpdb->prefix . 'ps_pets';\n\t\treturn $wpdb->get_row( $wpdb->prepare( \"SELECT * FROM $t WHERE id=%d\", $pet_id ), ARRAY_A );\n\t}\n\n\tprivate static function marsruto_pet_id( $route, $request ) {\n\t\tif ( preg_match( '#/petshop/v1/pet-profile/(\\d+)#', $route, $m ) ) { return (int) $m[1]; }\n\t\t$p = $request->get_param( 'pet_id' );\n\t\tif ( $p ) { return (int) $p; }\n\t\t$p = $request->get_param( 'id' );\n\t\tif ( $p && strpos( $route, '/petshop/v1/pet-' ) !== false ) { return (int) $p; }\n\t\treturn 0;\n\t}\n\n\tpublic static function pries( $response, $handler, $request ) {\n\t\tif ( ! self::galima() ) { return $response; }\n\t\t$route = $request->get_route();\n\t\tif ( strpos( $route, '/petshop/v1/' ) !== 0 || $request->get_method() === 'GET' ) { return $response; }\n\t\t$pid = self::marsruto_pet_id( $route, $request );\n\t\tif ( $pid ) { self::$foto[ $pid ] = self::pet_eilute( $pid ); }\n\t\treturn $response;\n\t}\n\n\tpublic static function po( $response, $handler, $request ) {\n\t\tif ( ! self::galima() ) { return $response; }\n\t\t$route  = $request->get_route();\n\t\t$method = $request->get_method();\n\t\tif ( strpos( $route, '/petshop/v1/' ) !== 0 || $method === 'GET' ) { return $response; }\n\t\tif ( is_wp_error( $response ) ) { return $response; }\n\t\t$st = ( $response instanceof WP_REST_Response ) ? $response->get_status() : 200;\n\t\tif ( $st >= 400 ) { return $response; }\n\t\t$data = ( $response instanceof WP_REST_Response ) ? $response->get_data() : null;\n\n\t\t/* --- 1) ANKETA CREATE: POST /pet-profile --- */\n\t\tif ( $method === 'POST' && preg_match( '#/petshop/v1/pet-profile$#', $route ) ) {\n\t\t\t$pid = self::rasti_id( $data );\n\t\t\tif ( $pid ) { self::po_kurimo( $pid, 'anketa' ); }\n\t\t\treturn $response;\n\t\t}\n\t\t/* --- 2) PROFILIO REDAGAVIMAS: PATCH/PUT/POST /pet-profile/{id} --- */\n\t\tif ( preg_match( '#/petshop/v1/pet-profile/(\\d+)$#', $route, $m ) ) {\n\t\t\tself::po_pakeitimo( (int) $m[1], 'klientas_profilyje', true );\n\t\t\treturn $response;\n\t\t}\n\t\t/* --- 3) ANONIMINE ANKETA: POST /pet-draft --- */\n\t\tif ( $method === 'POST' && preg_match( '#/petshop/v1/pet-draft$#', $route ) ) {\n\t\t\t$did = '';\n\t\t\tif ( is_array( $data ) ) {\n\t\t\t\tforeach ( array( 'draft_id', 'id' ) as $k ) { if ( ! empty( $data[ $k ] ) ) { $did = (string) $data[ $k ]; break; } }\n\t\t\t}\n\t\t\tself::ivykis( 'anketa_completed', 'draft:' . substr( $did, 0, 180 ) );\n\t\t\treturn $response;\n\t\t}\n\t\t/* --- 4) DRAFT -> PASKYRA: /pet-claim-resolve --- */\n\t\tif ( strpos( $route, '/petshop/v1/pet-claim-resolve' ) === 0 ) {\n\t\t\t$pid = self::rasti_id( $data, array( 'pet_id', 'claimed_pet_id', 'id' ) );\n\t\t\tself::ivykis( 'profile_claimed', $pid ? (string) $pid : '' );\n\t\t\tif ( $pid ) { self::po_kurimo( $pid, 'anketa', false ); } /* laukai i log, be antro ivykio */\n\t\t\treturn $response;\n\t\t}\n\t\t/* --- 5) SISTEMINIAI RASYTOJAI: pet-food-assign / pet-wet-product / pet-food-brand --- */\n\t\tif ( preg_match( '#/petshop/v1/(pet-food-assign|pet-wet-product|pet-food-brand)#', $route ) ) {\n\t\t\t$pid = self::marsruto_pet_id( $route, $request );\n\t\t\tif ( $pid ) { self::po_pakeitimo( $pid, 'sistema', false ); }\n\t\t\treturn $response;\n\t\t}\n\t\treturn $response;\n\t}\n\n\tprivate static function rasti_id( $data, $raktai = array( 'pet_id', 'id' ) ) {\n\t\tif ( ! is_array( $data ) ) { return 0; }\n\t\tforeach ( $raktai as $k ) { if ( isset( $data[ $k ] ) && is_numeric( $data[ $k ] ) ) { return (int) $data[ $k ]; } }\n\t\tforeach ( $data as $v ) { if ( is_array( $v ) ) { $r = self::rasti_id( $v, $raktai ); if ( $r ) { return $r; } } }\n\t\treturn 0;\n\t}\n\n\t/** Po anketos sukurto iraso: pradinis field_log, QV, brand susiejimas, ivykis. */\n\tprivate static function po_kurimo( $pet_id, $saltinis, $su_ivykiu = true ) {\n\t\tglobal $wpdb;\n\t\t$e = self::pet_eilute( $pet_id );\n\t\tif ( ! $e ) { return; }\n\t\t$uid = (int) $e['user_id'];\n\t\tforeach ( self::LOG_LAUKAI as $L ) {\n\t\t\tif ( ! array_key_exists( $L, $e ) ) { continue; }\n\t\t\tif ( $e[ $L ] === null || $e[ $L ] === '' ) { continue; }\n\t\t\tPetshop_Pet_Kontraktas::log_lauka( $pet_id, $L, null, $e[ $L ], $saltinis, $uid, self::QV );\n\t\t}\n\t\t/* questionnaire_version — M8 apie stulpeli nezino, pildome mes */\n\t\tif ( empty( $e['questionnaire_version'] ) ) {\n\t\t\t$wpdb->update( $wpdb->prefix . 'ps_pets', array( 'questionnaire_version' => self::QV ), array( 'id' => $pet_id ) );\n\t\t\tPetshop_Pet_Kontraktas::log_lauka( $pet_id, 'questionnaire_version', null, self::QV, 'sistema', $uid, self::QV );\n\t\t}\n\t\tself::brand_susieti( $pet_id, $e, $uid );\n\t\tif ( $su_ivykiu ) { self::ivykis( 'anketa_completed', (string) $pet_id, $uid ?: null ); }\n\t}\n\n\t/** Po redagavimo: skirtumas pries/po -> field_log; brand persiejimas; ivykis. */\n\tprivate static function po_pakeitimo( $pet_id, $saltinis, $su_ivykiu ) {\n\t\t$po = self::pet_eilute( $pet_id );\n\t\tif ( ! $po ) { return; }\n\t\t$pries = isset( self::$foto[ $pet_id ] ) ? self::$foto[ $pet_id ] : null;\n\t\t$uid   = (int) $po['user_id'];\n\t\t$pakeisti = array();\n\t\tif ( $pries ) {\n\t\t\tforeach ( self::LOG_LAUKAI as $L ) {\n\t\t\t\tif ( ! array_key_exists( $L, $po ) ) { continue; }\n\t\t\t\t$b = isset( $pries[ $L ] ) ? $pries[ $L ] : null;\n\t\t\t\tif ( (string) $b === (string) $po[ $L ] ) { continue; }\n\t\t\t\tPetshop_Pet_Kontraktas::log_lauka( $pet_id, $L, $b, $po[ $L ], $saltinis, $uid, null );\n\t\t\t\t$pakeisti[] = $L;\n\t\t\t}\n\t\t\tif ( in_array( 'current_food_brand', $pakeisti, true ) ) { self::brand_susieti( $pet_id, $po, $uid ); }\n\t\t}\n\t\tif ( $su_ivykiu && $pakeisti ) {\n\t\t\tself::ivykis( 'profile_updated', substr( implode( ',', $pakeisti ), 0, 190 ), $uid ?: null );\n\t\t}\n\t}\n\n\t/** §3: raw -> alias -> AUTO atveju current_food_brand_id. */\n\tprivate static function brand_susieti( $pet_id, $eilute, $uid ) {\n\t\tglobal $wpdb;\n\t\t$raw = isset( $eilute['current_food_brand'] ) ? trim( (string) $eilute['current_food_brand'] ) : '';\n\t\tif ( $raw === '' ) { return; }\n\t\t$kl = Petshop_Pet_Kontraktas::klasifikuoti( $raw );\n\t\tPetshop_Pet_Kontraktas::irasyti_alias( $raw, $kl );\n\t\t$naujas_id = ( $kl['busena'] === 'auto' ) ? $kl['canonical_id'] : null;\n\t\t$buvo = isset( $eilute['current_food_brand_id'] ) ? $eilute['current_food_brand_id'] : null;\n\t\tif ( (string) $buvo === (string) $naujas_id ) { return; }\n\t\t$wpdb->update( $wpdb->prefix . 'ps_pets', array( 'current_food_brand_id' => $naujas_id ), array( 'id' => $pet_id ) );\n\t\tPetshop_Pet_Kontraktas::log_lauka( $pet_id, 'current_food_brand_id', $buvo, $naujas_id, 'sistema', $uid, null );\n\t}\n\n\t/* ==================== JS STEBETOJAS ==================== */\n\n\tpublic static function js_stebetojas() {\n\t\tif ( is_admin() ) { return; }\n\t\t$ajax = esc_js( admin_url( 'admin-ajax.php' ) );\n\t\t$qv   = esc_js( self::QV );\n\t\t?>\n<script id=\"ps-anketa-ivykiai\">\n(function(){\n'use strict';\nvar AJAX='<?php echo $ajax; ?>',QV='<?php echo $qv; ?>';\nvar pradeta=false,baigta=false,mesta=false,zingsnis=1;\nfunction sesija(){var m=document.cookie.match(/(?:^|; )ps_stat_s=([a-f0-9]{32})/);return m?m[1]:'';}\nfunction ireng(){return (window.innerWidth<=768)?'mobile':'desktop';}\nfunction siusti(tipas,verte){\n try{\n  var fd=new FormData();\n  fd.append('action','ps_anketa_ivykis');fd.append('tipas',tipas);\n  fd.append('verte',(verte||'').slice(0,190));fd.append('sesija',sesija());fd.append('irenginys',ireng());\n  if(navigator.sendBeacon&&navigator.sendBeacon(AJAX,fd))return;\n  fetch(AJAX,{method:'POST',body:fd,keepalive:true,credentials:'same-origin'}).catch(function(){});\n }catch(e){}\n}\nfunction saknis(){return document.querySelector('#pspet-form-host .pspet-wrap, .pspet-wrap');}\nfunction laukuBusena(r){\n var pilni=[],tusti=[];\n r.querySelectorAll('.pspet-field').forEach(function(f){\n  var lb=f.querySelector('.pspet-label');\n  var v=(lb?lb.textContent:'').trim().toLowerCase().replace(/[^a-z0-9ąčęėįšųūž]+/g,'_').replace(/^_+|_+$/g,'').slice(0,24)||'laukas';\n  var uzp=false;\n  f.querySelectorAll('input,select,textarea').forEach(function(i){\n   if(i.type==='checkbox'||i.type==='radio'){if(i.checked)uzp=true;}\n   else if((i.value||'').trim()!=='')uzp=true;\n  });\n  if(!uzp&&f.querySelector('.pspet-pill[aria-pressed=\"true\"],.pspet-pill.active,.pspet-pill.is-active,.pspet-pill[data-selected=\"1\"]'))uzp=true;\n  (uzp?pilni:tusti).push(v);\n });\n return 's'+zingsnis+'|+'+pilni.join(',')+'|-'+tusti.join(',');\n}\nvar stepHost=null,turiAtr=false;\nfunction stepDabar(){\n var h=stepHost||document.querySelector('#pspet-form-host [data-step], .pspet-wrap[data-step], [data-step].pspet-wrap');\n if(!h){h=document.querySelector('#pspet-form-host, .pspet-wrap');if(h&&!h.getAttribute('data-step'))h=h.closest('[data-step]')||h;}\n return h&&h.getAttribute?h.getAttribute('data-step'):null;\n}\nfunction pradzia(){\n if(pradeta)return;pradeta=true;\n siusti('anketa_started',QV);\n var pr=stepDabar();\n if(pr){turiAtr=true;zingsnis=pr;siusti('step_started',String(pr));}\n else{siusti('step_started','1');}\n /* TIKSLUS kelias: data-step atributo stebejimas (pet-form.js v-data-step) */\n var r0=saknis();\n var tikslas=r0?(r0.getAttribute('data-step')?r0:(r0.closest?r0.closest('[data-step]'):null)):null;\n if(!tikslas&&r0&&r0.parentElement&&r0.parentElement.getAttribute('data-step'))tikslas=r0.parentElement;\n if(tikslas){\n  stepHost=tikslas;turiAtr=true;\n  var mo2=new MutationObserver(function(ms){\n   ms.forEach(function(m){\n    if(m.attributeName!=='data-step')return;\n    var nau=tikslas.getAttribute('data-step');\n    if(nau===null||String(nau)===String(zingsnis))return;\n    if(nau==='complete'){baigta=true;siusti('step_completed',String(zingsnis));zingsnis=nau;return;}\n    siusti('step_completed',String(zingsnis));\n    zingsnis=nau;\n    siusti('step_started',String(nau));\n   });\n  });\n  mo2.observe(tikslas,{attributes:true,attributeFilter:['data-step']});\n }\n /* ATSARGINE euristika — tik kai data-step nera */\n document.addEventListener('click',function(ev){\n  if(turiAtr)return;\n  var b=ev.target&&ev.target.closest?ev.target.closest('.pspet-btn'):null;\n  if(!b)return;var r=saknis();if(!r||!r.contains(b))return;\n  siusti('step_completed',String(zingsnis));zingsnis=(parseInt(zingsnis,10)||1)+1;\n  setTimeout(function(){if(!baigta&&saknis())siusti('step_started',String(zingsnis));},400);\n },true);\n}\n/* fetch apvyniojimas — tik baigtos anketos zymei (abandoned slopinimui) */\nvar of=window.fetch;\nwindow.fetch=function(u,o){\n var url=String(u&&u.url?u.url:u);\n var met=((o&&o.method)||(u&&u.method)||'GET').toUpperCase();\n var p=of.apply(this,arguments);\n if(/\\/petshop\\/v1\\/(pet-profile|pet-draft)(\\/|$|\\?)/.test(url)&&(met==='POST'||met==='PATCH'||met==='PUT')){\n  p=p.then(function(r){if(r&&r.ok)baigta=true;return r;});\n }\n return p;\n};\nfunction mesti(){\n if(!pradeta||baigta||mesta)return;mesta=true;\n var r=saknis();\n siusti('anketa_abandoned',r?laukuBusena(r):('s'+zingsnis+'|+|-'));\n}\nwindow.addEventListener('pagehide',mesti);\ndocument.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')mesti();});\nif(saknis()){pradzia();}\nelse{\n var mo=new MutationObserver(function(){if(saknis()){pradzia();mo.disconnect();}});\n if(document.body)mo.observe(document.body,{childList:true,subtree:true});\n setTimeout(function(){try{mo.disconnect();}catch(e){}},30000);\n}\n})();\n</script>\n\t\t<?php\n\t}\n}\n\nPetshop_Anketa_Ivykiai::init();\n",
+  "poros": [
+   {
+    "s_laikas": "2026-09-24 19:34:16",
+    "a_laikas": "2026-09-24 19:34:18",
+    "sek": "2",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 19:34:09",
+    "a_laikas": "2026-09-24 19:34:10",
+    "sek": "1",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 19:34:09",
+    "a_laikas": "2026-09-24 19:34:18",
+    "sek": "9",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 19:31:47",
+    "a_laikas": "2026-09-24 19:31:53",
+    "sek": "6",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 19:31:47",
+    "a_laikas": "2026-09-24 19:34:10",
+    "sek": "143",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 19:31:47",
+    "a_laikas": "2026-09-24 19:34:18",
+    "sek": "151",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 19:31:00",
+    "a_laikas": "2026-09-24 19:31:27",
+    "sek": "27",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 19:31:00",
+    "a_laikas": "2026-09-24 19:31:53",
+    "sek": "53",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 19:31:00",
+    "a_laikas": "2026-09-24 19:34:10",
+    "sek": "190",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 19:31:00",
+    "a_laikas": "2026-09-24 19:34:18",
+    "sek": "198",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 19:29:07",
+    "a_laikas": "2026-09-24 19:29:22",
+    "sek": "15",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 19:29:07",
+    "a_laikas": "2026-09-24 19:31:27",
+    "sek": "140",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 19:29:07",
+    "a_laikas": "2026-09-24 19:31:53",
+    "sek": "166",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 19:29:07",
+    "a_laikas": "2026-09-24 19:34:10",
+    "sek": "303",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 19:29:07",
+    "a_laikas": "2026-09-24 19:34:18",
+    "sek": "311",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 18:37:35",
+    "a_laikas": "2026-09-24 18:37:43",
+    "sek": "8",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 18:37:35",
+    "a_laikas": "2026-09-24 19:29:22",
+    "sek": "3107",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 18:37:35",
+    "a_laikas": "2026-09-24 19:31:27",
+    "sek": "3232",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 18:37:35",
+    "a_laikas": "2026-09-24 19:31:53",
+    "sek": "3258",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 18:37:35",
+    "a_laikas": "2026-09-24 19:34:10",
+    "sek": "3395",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 18:37:35",
+    "a_laikas": "2026-09-24 19:34:18",
+    "sek": "3403",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 15:45:08",
+    "a_laikas": "2026-09-24 15:45:08",
+    "sek": "0",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 15:45:08",
+    "a_laikas": "2026-09-24 15:45:12",
+    "sek": "4",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 15:45:08",
+    "a_laikas": "2026-09-24 18:37:43",
+    "sek": "10355",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   },
+   {
+    "s_laikas": "2026-09-24 15:45:08",
+    "a_laikas": "2026-09-24 19:29:22",
+    "sek": "13454",
+    "sesija": "",
+    "s_verte": "v1",
+    "a_verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "irenginys": "mobile",
+    "user_id": "0"
+   }
+  ],
+  "sek_pasiskirstymas": [],
+  "started_be_sesijos": 338,
+  "verte_pvz": [
+   {
+    "tipas": "anketa_abandoned",
+    "verte": "s1|+|-kas_jūsų_augintinis,augintinio_vardas",
+    "n": "282"
+   },
+   {
+    "tipas": "anketa_abandoned",
+    "verte": "s3|+|-",
+    "n": "7"
+   },
+   {
+    "tipas": "anketa_abandoned",
+    "verte": "s1|+|-laukas,laukas",
+    "n": "6"
+   },
+   {
+    "tipas": "anketa_abandoned",
+    "verte": "s1|+kas_jūsų_augintinis|-augintinio_vardas,svoris_neprivaloma",
+    "n": "4"
+   },
+   {
+    "tipas": "anketa_abandoned",
+    "verte": "s1|+|-",
+    "n": "4"
+   },
+   {
+    "tipas": "anketa_abandoned",
+    "verte": "s1|+augintinio_vardas|-kas_jūsų_augintinis",
+    "n": "2"
+   },
+   {
+    "tipas": "anketa_abandoned",
+    "verte": "s1|+kas_jūsų_augintinis,augintinio_vardas,svoris_neprivaloma|-",
+    "n": "2"
+   },
+   {
+    "tipas": "anketa_abandoned",
+    "verte": "s1|+laukas|-laukas,laukas",
+    "n": "1"
+   },
+   {
+    "tipas": "anketa_abandoned",
+    "verte": "s1|+kas_jūsų_augintinis|-augintinio_vardas",
+    "n": "1"
+   },
+   {
+    "tipas": "anketa_abandoned",
+    "verte": "s2|+kas_jūsų_augintinis,augintinio_vardas,svoris_neprivaloma|-",
+    "n": "1"
+   },
+   {
+    "tipas": "anketa_abandoned",
+    "verte": "s1|+kas_jūsų_augintinis,augintinio_vardas|-svoris_neprivaloma",
+    "n": "1"
+   },
+   {
+    "tipas": "anketa_completed",
+    "verte": "234",
+    "n": "4"
+   },
+   {
+    "tipas": "anketa_completed",
+    "verte": "235",
+    "n": "3"
+   },
+   {
+    "tipas": "anketa_completed",
+    "verte": "225",
+    "n": "3"
+   },
+   {
+    "tipas": "anketa_completed",
+    "verte": "229",
+    "n": "2"
+   },
+   {
+    "tipas": "anketa_completed",
+    "verte": "draft:4cad30ad-418a-4f1d-98f3-7f0fc14fa58f",
+    "n": "1"
+   },
+   {
+    "tipas": "anketa_completed",
+    "verte": "draft:af4ae40e-59fe-4a24-a82f-c166e0096073",
+    "n": "1"
+   },
+   {
+    "tipas": "anketa_completed",
+    "verte": "228",
+    "n": "1"
+   },
+   {
+    "tipas": "anketa_completed",
+    "verte": "232",
+    "n": "1"
+   },
+   {
+    "tipas": "anketa_completed",
+    "verte": "226",
+    "n": "1"
+   },
+   {
+    "tipas": "anketa_completed",
+    "verte": "227",
+    "n": "1"
+   },
+   {
+    "tipas": "anketa_completed",
+    "verte": "draft:237c50bf-4bb2-485e-830a-e59cd33a457f",
+    "n": "1"
+   },
+   {
+    "tipas": "anketa_completed",
+    "verte": "draft:6acfef54-91fe-4d04-9970-a5e2b14ea533",
+    "n": "1"
+   },
+   {
+    "tipas": "anketa_completed",
+    "verte": "233",
+    "n": "1"
+   },
+   {
+    "tipas": "anketa_completed",
+    "verte": "draft:1171ab76-93cc-402e-8193-1bc5f0bcfb8d",
+    "n": "1"
+   },
+   {
+    "tipas": "anketa_started",
+    "verte": "v1",
+    "n": "338"
+   },
+   {
+    "tipas": "step_completed",
+    "verte": "1",
+    "n": "21"
+   },
+   {
+    "tipas": "step_completed",
+    "verte": "2",
+    "n": "8"
+   },
+   {
+    "tipas": "step_completed",
+    "verte": "complete",
+    "n": "5"
+   },
+   {
+    "tipas": "step_completed",
+    "verte": "6",
+    "n": "1"
+   },
+   {
+    "tipas": "step_completed",
+    "verte": "4",
+    "n": "1"
+   },
+   {
+    "tipas": "step_completed",
+    "verte": "5",
+    "n": "1"
+   },
+   {
+    "tipas": "step_completed",
+    "verte": "3",
+    "n": "1"
+   },
+   {
+    "tipas": "step_started",
+    "verte": "1",
+    "n": "339"
+   },
+   {
+    "tipas": "step_started",
+    "verte": "3",
+    "n": "14"
+   },
+   {
+    "tipas": "step_started",
+    "verte": "2",
+    "n": "8"
+   },
+   {
+    "tipas": "step_started",
+    "verte": "duplicate",
+    "n": "1"
+   }
+  ],
+  "unik_sesijos": [
+   {
+    "tipas": "anketa_abandoned",
+    "ses": "1",
+    "n": "311"
+   },
+   {
+    "tipas": "anketa_completed",
+    "ses": "1",
+    "n": "22"
+   },
+   {
+    "tipas": "anketa_started",
+    "ses": "1",
+    "n": "337"
+   },
+   {
+    "tipas": "step_started",
+    "ses": "1",
+    "n": "361"
+   }
+  ],
+  "ps_pets_po_T0": 11,
+  "drafts": [
+   {
+    "d": "2026-09-21",
+    "n": "2"
+   },
+   {
+    "d": "2026-09-20",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-15",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-13",
+    "n": "1"
+   }
+  ]
+ },
+ "v": "dep-190859",
+ "kurimas": 200,
+ "sid": 6327,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
