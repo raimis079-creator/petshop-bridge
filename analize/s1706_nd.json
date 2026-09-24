@@ -1,0 +1,48 @@
+{
+ "1": {
+  "md5": "6ac5ae7f2cf8ed057d541bd0460efed8",
+  "hb": 200,
+  "css": true,
+  "shots": [
+   {
+    "n": "s1706_kiek_1440b",
+    "u": "https://petshop.lt/suns-mitybos-auditas-skaiciai-kurie-pades-sutaupyti/",
+    "w": 1440,
+    "h": 900,
+    "full": true,
+    "click": ".cmplz-deny"
+   },
+   {
+    "n": "s1706_kiek_390b",
+    "u": "https://petshop.lt/suns-mitybos-auditas-skaiciai-kurie-pades-sutaupyti/",
+    "w": 390,
+    "h": 800,
+    "full": true,
+    "click": ".cmplz-deny"
+   }
+  ]
+ },
+ "v": "dep-132340",
+ "kurimas": 200,
+ "sid": 6291,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1706_kiek_1440b": {
+   "status": 201,
+   "url": "https://petshop.lt/suns-mitybos-auditas-skaiciai-kurie-pades-sutaupyti/",
+   "title": "Kiek maisto duoti šuniui per dieną? Lentelė pagal svorį - Petshop.lt",
+   "errors": [],
+   "clicked": ".cmplz-deny"
+  },
+  "s1706_kiek_390b": {
+   "status": 201,
+   "url": "https://petshop.lt/suns-mitybos-auditas-skaiciai-kurie-pades-sutaupyti/",
+   "title": "Kiek maisto duoti šuniui per dieną? Lentelė pagal svorį - Petshop.lt",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('.cmplz-deny')\n    - locator resolved to <button class=\"cmplz-btn cmplz-deny\">Atmesti</button>\n  - attempting click"
+  }
+ }
+}
