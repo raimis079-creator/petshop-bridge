@@ -1,0 +1,54 @@
+{
+ "3": {
+  "v": "S1716n",
+  "faze": "3",
+  "tarifai": {
+   "12466 Eukanuba 12 kg": {
+    "kg": "12.2200",
+    "dims": "xx",
+    "rates": {
+     "0": "shopup_venipak_shipping_pickup_method:3 0",
+     "1": "shopup_venipak_shipping_courier_method:2 3.30",
+     "default": "shopup_venipak_shipping_pickup_method:3"
+    }
+   },
+   "12673 Gemon Kitten 20 kg": {
+    "kg": "20.0000",
+    "dims": "xx",
+    "rates": {
+     "0": "shopup_venipak_shipping_pickup_method:3 0",
+     "1": "shopup_venipak_shipping_courier_method:2 3.30",
+     "default": "shopup_venipak_shipping_pickup_method:3"
+    }
+   },
+   "12719 Real Dog 15 kg": {
+    "kg": "15.1000",
+    "dims": "xx",
+    "rates": {
+     "0": "shopup_venipak_shipping_pickup_method:3 0",
+     "1": "shopup_venipak_shipping_courier_method:2 3.30",
+     "default": "shopup_venipak_shipping_pickup_method:3"
+    }
+   },
+   "17978 Josera 12,5 kg": {
+    "kg": "12.5",
+    "dims": "xx",
+    "rates": {
+     "0": "shopup_venipak_shipping_pickup_method:3 0",
+     "1": "shopup_venipak_shipping_courier_method:2 3.30",
+     "default": "shopup_venipak_shipping_pickup_method:3"
+    }
+   },
+   "2x Gemon 20 kg = 40 kg": [
+    "shopup_venipak_shipping_courier_method:2"
+   ]
+  }
+ },
+ "v": "dep-211829",
+ "kurimas": 200,
+ "sid": 6364,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
