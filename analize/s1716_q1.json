@@ -1,0 +1,88 @@
+{
+ "1": {
+  "v": "S1716q",
+  "failai": {
+   "wp-content/mu-plugins/petshop-ads-offline.php": [
+    "* Description: Apmokėtų užsakymų su gclid sąrašas Google Ads offline konversijų įkėlimui (Ads Script skaito JSON). Read-only. S1677.",
+    "* KODĖL: naršyklės Ads tag'as praranda konversijas (adblock, atmestas sutikimas), o gclid užsakyme lieka visada.",
+    "* Viena tiesa = WC užsakymas: gclid + apmokėjimo laikas + suma. Google dubliuotus (gclid+laikas+pavadinimas) atmeta pats.",
+    "* Užklausa: /?ps_ads_offline=<raktas>&dienos=3  → JSON {n, eil:[{gclid,laikas,verte,valiuta,uzs}]}",
+    "* v1.1: faktų gclid = tik žymė '1'; tikras gclid: (1) užsakymo meta _ps_gclid (fiksuojam patys: ?gclid= -> WC sesija -> užsakymas,",
+    "\"SELECT uzsakymas_id, landing_url FROM {$p}ps_fakt_uzsakymai WHERE testinis=0 AND gclid<>'' AND apmoketa_at IS NOT NULL AND apmoketa_at >= %s AND statusas_galutinis IN ('processing','completed')\", $nuo ), ARRAY_A );",
+    "$g = ps_ads_offline_gclid( $o, (string) $r['landing_url'] );",
+    "'gclid'   => $g,",
+    "/** v1.1: tikras gclid užsakymui. */",
+    "function ps_ads_offline_gclid( $o, string $landing = '' ): string {"
+   ],
+   "wp-content/mu-plugins/petshop-analitika-langas.php": [
+    "nauji FROM {$p}ps_fakt_uzsakymai u WHERE diena>=%s AND testinis=0 AND apmoketa_at IS NOT NULL AND (kanalas_pirmas='mokamas' OR kanalas_paskutinis='mokamas' OR gclid=1)\", $nuo ), ARRAY_A );",
+    "jama nuo ' . $nuo . ' (naujos svetainės pradžia). Kainos be PVM; antkainis = marža / savikaina.', 'Kanalas nustatomas iš pirmo/paskutinio prisilietimo arba gclid (48 val. WC sesija — dalis Ads pirkėjų tampa „organic“).' ), 'kamp' => $kamp );"
+   ],
+   "wp-content/mu-plugins/petshop-analitika.php": [
+    "*     rinkima, gclid/fbclid kaip 0/1 ir klasifikatoriu su taisyklemis is",
+    "if ( preg_match( '/[?&](gclid|gbraid|wbraid|msclkid)=/i', $url ) || preg_match( '/[?&]utm_medium=(cpc|ppc|paid)/i', $url ) ) { return 'mokamas'; }"
+   ],
+   "wp-content/mu-plugins/petshop-ataskaita-lankomumas.php": [
+    "* gclid. Abiem pusėms — ta pati `grupe()`.",
+    "public static function grupe( $kanalas, $saltinis, $referer, $gclid = 0 ) {",
+    "if ( (int) $gclid === 1 || ( 'mokamas' === $kanalas && ( '' === $s || false !== strpos( $s, 'google' ) ) ) ) { return 'Google Ads'; }",
+    "'SELECT uzsakymas_id, kanalas_paskutinis k, utm_source s, referer_domenas r, gclid g, irenginys ir, (viso_ct - pvm_ct) paj"
+   ],
+   "wp-content/mu-plugins/petshop-fakt-reklama.php": [
+    "* KAM. Pajamos pagal kanalą jau faktuose (gclid/utm -> kanalas=mokamas)."
+   ],
+   "wp-content/mu-plugins/petshop-faktai.php": [
+    "gclid TINYINT(1) NOT NULL DEFAULT 0,",
+    "'gclid'                    => ! empty( $pa['gclid'] ) ? 1 : 0,"
+   ],
+   "wp-content/mu-plugins/petshop-kanalai.php": [
+    "* ka issaugoti (yra utm/gclid/isorinis referer) — ne kiekvienam lankytojui.",
+    "/* gclid/fbclid — TIK faktas 0/1, pati reiksme nesaugoma (planas §4.7). */",
+    "$t['gclid']  = isset( $_GET['gclid'] ) ? 1 : 0;",
+    "if ( ! $turi_utm && ! $t['gclid'] && ! $t['fbclid'] && $rd === '' ) {",
+    "'gclid'      => 1,",
+    "* Eiles tvarka svarbi: mokamas tikrinamas PIRMAS (gclid ant google.com",
+    "if ( ! empty( $r['gclid'] ) && ! empty( $t['gclid'] ) ) { return $kanalas; }",
+    "'gclid'           => 0,"
+   ],
+   "wp-content/mu-plugins/petshop-legacy-301.php": [
+    "* v2.1 (S1668): 301 PERKELIA užklausos eilutę (gclid, gad_source, utm_*, _gl).",
+    "*   v2.0 ją numesdavo → PMax/Merchant paspaudimai praradavo gclid, Ads nematė konversijų.",
+    "// v2.1: užklausos eilutė keliauja kartu (gclid/utm/gad_source — Ads atribucijai)"
+   ],
+   "wp-content/mu-plugins/petshop-planas-langas.php": [
+    "return $wpdb->get_results( $wpdb->prepare( \"SELECT u.uzsakymas_id, u.kanalas_paskutinis kan, (u.gclid<>'' AND u.gclid IS NOT NULL) gc, u.viso_ct, u.marza_ct FROM {$p}ps_fakt_uzsakymai u WHERE u.sukurta_at>=%s AND u.sukurta_at<=%s AND u.testinis=0 AND u.klientas_naujas=1 AND u.",
+    "klientai iš Ads' => $ads, 'CAC (blended new-food)' => $ads ? self::eur( $cac ) : '—', 'Lubos / stop' => '€12 / €35' ), 'papildomai' => array( 'Iš Ads = gclid arba kanalas „mokamas\". Išlaidos iš Ads skripto (traukimas 02:01). CM12 tikslus tik iš ps_fakt nuo 2027 Q2.' ) );"
+   ]
+  },
+  "snippets": [
+   {
+    "id": "619",
+    "name": "Petshop Consent Bridge v1.4 (Complianz -> GTM, legalus denied default)"
+   },
+   {
+    "id": "6367",
+    "name": "TEMP PS dep-214326"
+   }
+  ],
+  "snippet_kodas": {
+   "619": [
+    "*   ads_data_redaction true. Ads konversijos nebepriklauso nuo narsykles: ikeliamos offline is WC pagal gclid",
+    "*   url_passthrough paliktas: gclid keliauja URL'e ir be slapuku (tai ir fiksuoja WC sesija)."
+   ],
+   "6367": [
+    "/** Plugin Name: TEMP PS S1716q gclid fiksavimas read-only */",
+    "/petshop-*/*.php'),glob(WP_PLUGIN_DIR.'/petshop-*/includes/*.php'),glob(get_stylesheet_directory().'/*.php')) as $g){ $s=file_get_contents($g); if(preg_match('#gclid#i',$s)){ preg_match_all('#[^\\n]{0,160}gclid[^\\n]{0,160}#i',$s,$m); $r['failai'][str_replace(ABSPATH,'',$g)]=array_slice(array_values(array_unique(array_map('tr",
+    "$sn=$wpdb->get_results(\"SELECT id, name FROM {$wpdb->prefix}snippets WHERE active=1 AND code LIKE '%gclid%'\",ARRAY_A); $r['snippets']=$sn;",
+    "foreach($sn as $x){ $c=$wpdb->get_var($wpdb->prepare(\"SELECT code FROM {$wpdb->prefix}snippets WHERE id=%d\",$x['id'])); preg_match_all('#[^\\n]{0,160}gclid[^\\n]{0,160}#i',$c,$m); $r['snippet_kodas'][$x['id']]=array_slice(array_values(array_unique(array_map('trim',$m[0]))),0,12); }"
+   ]
+  }
+ },
+ "v": "dep-214326",
+ "kurimas": 200,
+ "sid": 6367,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
