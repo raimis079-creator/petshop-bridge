@@ -1,0 +1,50 @@
+{
+ "1": {
+  "v": "S1716h",
+  "faze": "1",
+  "opcijos": [
+   "PAYSERA_DB_VERSION",
+   "paysera_delivery_extra_settings",
+   "paysera_delivery_settings",
+   "paysera_payment_extra_settings",
+   "paysera_payment_main_settings",
+   "paysera_payment_status_settings",
+   "ps_fakt_paysera_fiks_ct",
+   "woocommerce_paysera_settings"
+  ],
+  "raktai": {
+   "paysera_delivery_extra_settings": [
+    "hide_shipping_methods"
+   ],
+   "paysera_delivery_settings": [
+    "delivery_enabled",
+    "test_mode"
+   ],
+   "paysera_payment_extra_settings": [
+    "title",
+    "description",
+    "list_of_payments",
+    "grid_view",
+    "buyer_consent",
+    "log_level"
+   ],
+   "paysera_payment_main_settings": [
+    "project_id",
+    "test_mode"
+   ],
+   "paysera_payment_status_settings": [
+    "paid_order_status"
+   ],
+   "woocommerce_paysera_settings": [
+    "enabled"
+   ]
+  }
+ },
+ "v": "dep-204556",
+ "kurimas": 200,
+ "sid": 6357,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
