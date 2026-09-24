@@ -1,0 +1,229 @@
+{
+ "1": {
+  "v": "S1716i",
+  "plugin_dir": "wc-venipak-shipping",
+  "matmenu_kodas": {
+   "/admin/class-woocommerce-shopup-venipak-shipping-admin-pickup.php": [
+    "switch (get_option( 'woocommerce_dimension_unit' )) {",
+    "// Locker internal max dimensions (cm by default)",
+    "$product_dimensions = [",
+    "(float)$product->get_length() ?: 0,",
+    "(float)$product->get_width() ?: 0,",
+    "(float)$product->get_height() ?: 0,",
+    "sort($product_dimensions);",
+    "$total_cart_volume += ($product_dimensions[0] * $product_dimensions[1] * $product_dimensions[2]) * $cart_item['quantity'];",
+    "$product_dimensions[0] > $venipak_box_dims[0] ||",
+    "$product_dimensions[1] > $venipak_box_dims[1] ||",
+    "$product_dimensions[2] > $venipak_box_dims[2]"
+   ],
+   "/public/class-woocommerce-shopup-venipak-shipping-public-pickup-checkout.php": [
+    "switch (get_option( 'woocommerce_dimension_unit' )) {",
+    "// Locker internal max dimensions (cm by default)",
+    "$product_dimensions = [",
+    "(float) $product->get_length() ?: 0,",
+    "(float) $product->get_width() ?: 0,",
+    "(float) $product->get_height() ?: 0,",
+    "// Variations often have empty dimensions while the parent product has them.",
+    "$product_dimensions[0] <= 0 &&",
+    "$product_dimensions[1] <= 0 &&",
+    "$product_dimensions[2] <= 0 &&",
+    "$product_dimensions = [",
+    "(float) $parent_product->get_length() ?: 0,"
+   ],
+   "/public/class-woocommerce-shopup-venipak-shipping-public.php": []
+  },
+  "pickup_calc": {
+   "class-woocommerce-shopup-venipak-shipping-admin-pickup.php": "",
+   "venipak-fetch-pickups.php": "",
+   "class-woocommerce-shopup-venipak-shipping-public-pickup-checkout.php": ""
+  },
+  "venipak_opcijos": {
+   "ps_venipak_sekimas_paskutinis": [
+    "laikas",
+    "uzsakymu",
+    "numeriu",
+    "uzklausu",
+    "pakeista",
+    "lp",
+    "issiusta",
+    "pristatyta",
+    "grizta",
+    "klaidos",
+    "s"
+   ],
+   "venipak_pack_number": "1000217"
+  },
+  "shopup_opcijos": [
+   {
+    "option_name": "shopup_venipak_shipping_settings",
+    "v": "a:23:{s:36:\"shopup_venipak_shipping_field_userid\";s:5:\"07267\";s:38:\"shopup_venipak_shipping_field_username\";s:7:\"Avesa97"
+   }
+  ],
+  "su_matmenimis_pagal_sandeli": [
+   {
+    "sand": "av",
+    "n": "10",
+    "virs60": "0",
+    "virs38": "0"
+   },
+   {
+    "sand": "zb",
+    "n": "574",
+    "virs60": "51",
+    "virs38": "57"
+   }
+  ],
+  "zb_matmenu_pvz": [
+   {
+    "ID": "13052",
+    "t": "Monge spec.line monoprotein mini Puppy sausas",
+    "l": "22.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "7.5000"
+   },
+   {
+    "ID": "12544",
+    "t": "Monge mini adult sausas pašaras mažų veislių ",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "8.0000"
+   },
+   {
+    "ID": "12636",
+    "t": "Gemon mini adult visavertis pašaras suaugusie",
+    "l": "20.0000",
+    "w": "20.0000",
+    "h": "20.0000",
+    "kg": "3.0000"
+   },
+   {
+    "ID": "12486",
+    "t": "Family Dog HAYS visavertis sausas pašaras su ",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "15.0800"
+   },
+   {
+    "ID": "13869",
+    "t": "Monge mini puppy sausas pašaras (ėriena ir ry",
+    "l": "20.0000",
+    "w": "30.0000",
+    "h": "30.0000",
+    "kg": "7.5"
+   },
+   {
+    "ID": "12852",
+    "t": "Biokat's Eco Light natūralus kraikas 8l",
+    "l": "20.0000",
+    "w": "25.0000",
+    "h": "45.0000",
+    "kg": "3.5000"
+   },
+   {
+    "ID": "12718",
+    "t": "Real Dog small breeds visavertis pašaras mažų",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "10.0000"
+   },
+   {
+    "ID": "12452",
+    "t": "Eukanuba Active Small Adult (vištiena) 3kg",
+    "l": "20.0000",
+    "w": "20.0000",
+    "h": "20.0000",
+    "kg": "3"
+   },
+   {
+    "ID": "12471",
+    "t": "IAMS Adult Cat (ėriena) 10kg",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "10.0000"
+   },
+   {
+    "ID": "13974",
+    "t": "Trixie Samoa Classic kelioninė antklodė, 120x",
+    "l": "20.0000",
+    "w": "20.0000",
+    "h": "120.0000",
+    "kg": "0.3000"
+   },
+   {
+    "ID": "12583",
+    "t": "Monge Sterilised Adult (antiena) 1,5kg",
+    "l": "20.0000",
+    "w": "20.0000",
+    "h": "20.0000",
+    "kg": "2.0000"
+   },
+   {
+    "ID": "12453",
+    "t": "Eukanuba Medium Adult visavertis pašaras su v",
+    "l": "20.0000",
+    "w": "25.0000",
+    "h": "25.0000",
+    "kg": "3.0000"
+   },
+   {
+    "ID": "12567",
+    "t": "Monge Light adult sausas pašaras (lašiša ir r",
+    "l": "20.0000",
+    "w": "20.0000",
+    "h": "20.0000",
+    "kg": "3.0000"
+   },
+   {
+    "ID": "12485",
+    "t": "Family Dog HAYS visavertis sausas pašaras su ",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "15.0800"
+   },
+   {
+    "ID": "12559",
+    "t": "Monge adult sausas pašaras (antiena, ryžiai, ",
+    "l": "20.0000",
+    "w": "20.0000",
+    "h": "20.0000",
+    "kg": "3.0000"
+   }
+  ],
+  "zb_be_matmenu": 0,
+  "wpai_templates": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml"
+   },
+   {
+    "id": "2",
+    "name": "products.php"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php"
+   },
+   {
+    "id": "5",
+    "name": "vf-feed.xml"
+   },
+   {
+    "id": "7",
+    "name": "vf-feed.xml"
+   }
+  ]
+ },
+ "v": "dep-205758",
+ "kurimas": 200,
+ "sid": 6358,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
