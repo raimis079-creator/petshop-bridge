@@ -1,0 +1,617 @@
+{
+ "1": {
+  "v": "S1714a",
+  "faze": "1",
+  "cols": [
+   "id",
+   "laikas",
+   "sesija",
+   "sritis",
+   "deze_id",
+   "preke_id",
+   "tipas",
+   "verte",
+   "aplinka",
+   "dydis",
+   "skirtukas",
+   "kiek_dezeje",
+   "irenginys",
+   "user_id"
+  ],
+  "n": 4862,
+  "pvz": [
+   {
+    "id": "4948",
+    "laikas": "2026-09-24 21:47:12",
+    "sesija": "",
+    "sritis": "laukai",
+    "deze_id": "34938",
+    "preke_id": "19315",
+    "tipas": "rodyta",
+    "verte": "",
+    "aplinka": "prod",
+    "dydis": "",
+    "skirtukas": "",
+    "kiek_dezeje": "0",
+    "irenginys": "desktop",
+    "user_id": "0"
+   },
+   {
+    "id": "4947",
+    "laikas": "2026-09-24 21:47:12",
+    "sesija": "",
+    "sritis": "laukai",
+    "deze_id": "34938",
+    "preke_id": "18399",
+    "tipas": "rodyta",
+    "verte": "",
+    "aplinka": "prod",
+    "dydis": "",
+    "skirtukas": "",
+    "kiek_dezeje": "0",
+    "irenginys": "desktop",
+    "user_id": "0"
+   },
+   {
+    "id": "4946",
+    "laikas": "2026-09-24 21:47:12",
+    "sesija": "",
+    "sritis": "laukai",
+    "deze_id": "34938",
+    "preke_id": "17115",
+    "tipas": "rodyta",
+    "verte": "",
+    "aplinka": "prod",
+    "dydis": "",
+    "skirtukas": "",
+    "kiek_dezeje": "0",
+    "irenginys": "desktop",
+    "user_id": "0"
+   },
+   {
+    "id": "4945",
+    "laikas": "2026-09-24 21:47:12",
+    "sesija": "",
+    "sritis": "laukai",
+    "deze_id": "34938",
+    "preke_id": "17102",
+    "tipas": "rodyta",
+    "verte": "",
+    "aplinka": "prod",
+    "dydis": "",
+    "skirtukas": "",
+    "kiek_dezeje": "0",
+    "irenginys": "desktop",
+    "user_id": "0"
+   },
+   {
+    "id": "4944",
+    "laikas": "2026-09-24 21:47:12",
+    "sesija": "",
+    "sritis": "laukai",
+    "deze_id": "34938",
+    "preke_id": "19318",
+    "tipas": "rodyta",
+    "verte": "",
+    "aplinka": "prod",
+    "dydis": "",
+    "skirtukas": "",
+    "kiek_dezeje": "0",
+    "irenginys": "desktop",
+    "user_id": "0"
+   },
+   {
+    "id": "4943",
+    "laikas": "2026-09-24 21:47:12",
+    "sesija": "",
+    "sritis": "laukai",
+    "deze_id": "34938",
+    "preke_id": "19312",
+    "tipas": "rodyta",
+    "verte": "",
+    "aplinka": "prod",
+    "dydis": "",
+    "skirtukas": "",
+    "kiek_dezeje": "0",
+    "irenginys": "desktop",
+    "user_id": "0"
+   }
+  ],
+  "ev_col": "tipas",
+  "dt_col": "laikas",
+  "pagal_tipa": [
+   {
+    "e": "rodyta",
+    "n": "2937",
+    "nuo": "2026-08-16 11:09:28",
+    "iki": "2026-09-24 21:47:12"
+   },
+   {
+    "e": "atidare",
+    "n": "389",
+    "nuo": "2026-08-16 11:04:29",
+    "iki": "2026-09-24 21:47:12"
+   },
+   {
+    "e": "step_started",
+    "n": "362",
+    "nuo": "2026-09-07 19:17:48",
+    "iki": "2026-09-24 19:34:16"
+   },
+   {
+    "e": "anketa_started",
+    "n": "338",
+    "nuo": "2026-09-07 19:17:48",
+    "iki": "2026-09-24 19:34:16"
+   },
+   {
+    "e": "anketa_abandoned",
+    "n": "311",
+    "nuo": "2026-09-09 11:08:42",
+    "iki": "2026-09-24 19:34:18"
+   },
+   {
+    "e": "idejo",
+    "n": "261",
+    "nuo": "2026-08-16 11:09:36",
+    "iki": "2026-09-24 16:36:18"
+   },
+   {
+    "e": "iseme",
+    "n": "52",
+    "nuo": "2026-08-16 11:09:36",
+    "iki": "2026-09-11 12:31:08"
+   },
+   {
+    "e": "dovana_rinko",
+    "n": "44",
+    "nuo": "2026-08-16 11:26:16",
+    "iki": "2026-09-21 21:57:07"
+   },
+   {
+    "e": "step_completed",
+    "n": "38",
+    "nuo": "2026-09-11 12:12:39",
+    "iki": "2026-09-24 14:37:15"
+   },
+   {
+    "e": "min_pasiekta",
+    "n": "33",
+    "nuo": "2026-08-16 11:26:16",
+    "iki": "2026-09-24 16:36:23"
+   },
+   {
+    "e": "anketa_completed",
+    "n": "22",
+    "nuo": "2026-09-11 12:12:21",
+    "iki": "2026-09-21 22:44:59"
+   },
+   {
+    "e": "dydis_perjunge",
+    "n": "19",
+    "nuo": "2026-08-16 11:36:03",
+    "iki": "2026-09-21 21:56:30"
+   },
+   {
+    "e": "rec_shown",
+    "n": "19",
+    "nuo": "2026-09-06 12:00:58",
+    "iki": "2026-09-22 10:14:53"
+   },
+   {
+    "e": "refill_due",
+    "n": "11",
+    "nuo": "2026-08-20 11:15:05",
+    "iki": "2026-09-18 11:07:15"
+   },
+   {
+    "e": "dovana_atrakinta",
+    "n": "11",
+    "nuo": "2026-08-16 11:26:16",
+    "iki": "2026-09-23 14:36:55"
+   },
+   {
+    "e": "refill_reminder_sent",
+    "n": "8",
+    "nuo": "2026-08-24 11:15:10",
+    "iki": "2026-09-06 11:07:35"
+   },
+   {
+    "e": "krepselis",
+    "n": "7",
+    "nuo": "2026-08-16 11:26:18",
+    "iki": "2026-09-14 21:50:50"
+   }
+  ],
+  "po_dienas": [
+   {
+    "d": "2026-09-24",
+    "e": "rodyta",
+    "n": "116"
+   },
+   {
+    "d": "2026-09-24",
+    "e": "step_started",
+    "n": "17"
+   },
+   {
+    "d": "2026-09-24",
+    "e": "anketa_abandoned",
+    "n": "16"
+   },
+   {
+    "d": "2026-09-24",
+    "e": "anketa_started",
+    "n": "16"
+   },
+   {
+    "d": "2026-09-24",
+    "e": "atidare",
+    "n": "14"
+   },
+   {
+    "d": "2026-09-24",
+    "e": "idejo",
+    "n": "5"
+   },
+   {
+    "d": "2026-09-24",
+    "e": "min_pasiekta",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-24",
+    "e": "step_completed",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-23",
+    "e": "rodyta",
+    "n": "177"
+   },
+   {
+    "d": "2026-09-23",
+    "e": "idejo",
+    "n": "30"
+   },
+   {
+    "d": "2026-09-23",
+    "e": "anketa_abandoned",
+    "n": "24"
+   },
+   {
+    "d": "2026-09-23",
+    "e": "anketa_started",
+    "n": "24"
+   },
+   {
+    "d": "2026-09-23",
+    "e": "step_started",
+    "n": "24"
+   },
+   {
+    "d": "2026-09-23",
+    "e": "atidare",
+    "n": "21"
+   },
+   {
+    "d": "2026-09-23",
+    "e": "min_pasiekta",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-23",
+    "e": "dovana_atrakinta",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-22",
+    "e": "rodyta",
+    "n": "549"
+   },
+   {
+    "d": "2026-09-22",
+    "e": "atidare",
+    "n": "66"
+   },
+   {
+    "d": "2026-09-22",
+    "e": "step_started",
+    "n": "20"
+   },
+   {
+    "d": "2026-09-22",
+    "e": "anketa_started",
+    "n": "19"
+   },
+   {
+    "d": "2026-09-22",
+    "e": "anketa_abandoned",
+    "n": "18"
+   },
+   {
+    "d": "2026-09-22",
+    "e": "idejo",
+    "n": "6"
+   },
+   {
+    "d": "2026-09-22",
+    "e": "rec_shown",
+    "n": "2"
+   },
+   {
+    "d": "2026-09-22",
+    "e": "min_pasiekta",
+    "n": "2"
+   },
+   {
+    "d": "2026-09-22",
+    "e": "step_completed",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-21",
+    "e": "rodyta",
+    "n": "49"
+   },
+   {
+    "d": "2026-09-21",
+    "e": "step_started",
+    "n": "48"
+   },
+   {
+    "d": "2026-09-21",
+    "e": "anketa_started",
+    "n": "37"
+   },
+   {
+    "d": "2026-09-21",
+    "e": "anketa_abandoned",
+    "n": "32"
+   },
+   {
+    "d": "2026-09-21",
+    "e": "step_completed",
+    "n": "18"
+   },
+   {
+    "d": "2026-09-21",
+    "e": "anketa_completed",
+    "n": "11"
+   },
+   {
+    "d": "2026-09-21",
+    "e": "rec_shown",
+    "n": "10"
+   },
+   {
+    "d": "2026-09-21",
+    "e": "atidare",
+    "n": "9"
+   },
+   {
+    "d": "2026-09-21",
+    "e": "dovana_rinko",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-21",
+    "e": "dydis_perjunge",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-20",
+    "e": "step_started",
+    "n": "33"
+   },
+   {
+    "d": "2026-09-20",
+    "e": "anketa_started",
+    "n": "31"
+   },
+   {
+    "d": "2026-09-20",
+    "e": "anketa_abandoned",
+    "n": "29"
+   },
+   {
+    "d": "2026-09-20",
+    "e": "rodyta",
+    "n": "26"
+   },
+   {
+    "d": "2026-09-20",
+    "e": "atidare",
+    "n": "3"
+   },
+   {
+    "d": "2026-09-20",
+    "e": "step_completed",
+    "n": "2"
+   },
+   {
+    "d": "2026-09-20",
+    "e": "anketa_completed",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-20",
+    "e": "rec_shown",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-19",
+    "e": "rodyta",
+    "n": "94"
+   },
+   {
+    "d": "2026-09-19",
+    "e": "step_started",
+    "n": "20"
+   },
+   {
+    "d": "2026-09-19",
+    "e": "anketa_started",
+    "n": "20"
+   },
+   {
+    "d": "2026-09-19",
+    "e": "anketa_abandoned",
+    "n": "19"
+   },
+   {
+    "d": "2026-09-19",
+    "e": "atidare",
+    "n": "11"
+   },
+   {
+    "d": "2026-09-19",
+    "e": "dydis_perjunge",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-18",
+    "e": "rodyta",
+    "n": "59"
+   },
+   {
+    "d": "2026-09-18",
+    "e": "step_started",
+    "n": "19"
+   },
+   {
+    "d": "2026-09-18",
+    "e": "anketa_started",
+    "n": "17"
+   },
+   {
+    "d": "2026-09-18",
+    "e": "anketa_abandoned",
+    "n": "14"
+   },
+   {
+    "d": "2026-09-18",
+    "e": "atidare",
+    "n": "6"
+   },
+   {
+    "d": "2026-09-18",
+    "e": "step_completed",
+    "n": "3"
+   },
+   {
+    "d": "2026-09-18",
+    "e": "rec_shown",
+    "n": "2"
+   },
+   {
+    "d": "2026-09-18",
+    "e": "refill_due",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-18",
+    "e": "anketa_completed",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-17",
+    "e": "rodyta",
+    "n": "192"
+   },
+   {
+    "d": "2026-09-17",
+    "e": "step_started",
+    "n": "24"
+   }
+  ],
+  "kur": {
+   "welcome": [
+    "wp-content/plugins/petshop-core/petshop-core.php",
+    "wp-content/plugins/petshop-core/includes/class-welcome-modal.php",
+    "wp-content/mu-plugins/petshop-relaunch.php"
+   ],
+   "abandoned": [
+    "wp-content/plugins/petshop-core/templates/emails/cart-abandoned-2.php",
+    "wp-content/plugins/petshop-core/templates/emails/browse-abandoned.php",
+    "wp-content/plugins/petshop-core/templates/emails/cart-abandoned-1.php",
+    "wp-content/plugins/petshop-core/includes/class-cart-recovery.php",
+    "wp-content/plugins/petshop-core/includes/class-email-dispatch.php",
+    "wp-content/plugins/petshop-core/includes/class-cart-abandonment.php",
+    "wp-content/plugins/petshop-core/includes/class-event-registry.php",
+    "wp-content/plugins/petshop-core/includes/class-event-emitters.php",
+    "wp-content/plugins/petshop-core/includes/class-cart-tracker.php",
+    "wp-content/mu-plugins/petshop-analitika-langas.php",
+    "wp-content/mu-plugins/petshop-anketos-ataskaita.php",
+    "wp-content/mu-plugins/petshop-anketa-ivykiai.php",
+    "wp-content/mu-plugins/petshop-laiskai.php",
+    "wp-content/mu-plugins/petshop-bacs-priminimas.php",
+    "wp-content/mu-plugins/petshop-rezultatai.php",
+    "wp-content/mu-plugins/petshop-langai-admin.php",
+    "wp-content/mu-plugins/petshop-perziuru-priminimas.php",
+    "wp-content/mu-plugins/petshop-statistika.php"
+   ],
+   "completed": [
+    "wp-content/plugins/petshop-core/templates/emails/post-purchase-2d.php",
+    "wp-content/plugins/petshop-core/includes/class-email-dispatch.php",
+    "wp-content/plugins/petshop-core/includes/class-pet-dashboard.php",
+    "wp-content/plugins/petshop-core/includes/class-account-dashboard.php",
+    "wp-content/plugins/petshop-core/includes/class-event-emitters.php",
+    "wp-content/plugins/petshop-core/includes/class-reminders.php",
+    "wp-content/plugins/petshop-core/includes/class-post-purchase.php",
+    "wp-content/plugins/petshop-core/includes/class-refill-engine.php",
+    "wp-content/mu-plugins/petshop-partijos.php",
+    "wp-content/mu-plugins/petshop-anketos-ataskaita.php",
+    "wp-content/mu-plugins/petshop-lifecycle-vartai.php",
+    "wp-content/mu-plugins/petshop-ataskaitu-agregavimas.php",
+    "wp-content/mu-plugins/petshop-m8-food.php",
+    "wp-content/mu-plugins/petshop-sugrazinimas.php",
+    "wp-content/mu-plugins/petshop-pardavimai.php",
+    "wp-content/mu-plugins/petshop-klientai.php",
+    "wp-content/mu-plugins/petshop-payment-failed.php",
+    "wp-content/mu-plugins/petshop-anketa-ivykiai.php",
+    "wp-content/mu-plugins/petshop-ga4-serveris.php",
+    "wp-content/mu-plugins/petshop-bacs-priminimas.php",
+    "wp-content/mu-plugins/petshop-siuntu-laiskai.php",
+    "wp-content/mu-plugins/petshop-rezultatai.php",
+    "wp-content/mu-plugins/petshop-rytas.php",
+    "wp-content/mu-plugins/petshop-prenumerata-katalogas.php",
+    "wp-content/mu-plugins/petshop-fakt-siuntos.php",
+    "wp-content/mu-plugins/petshop-prenumerata.php",
+    "wp-content/mu-plugins/petshop-desk.php",
+    "wp-content/mu-plugins/petshop-ads-offline.php",
+    "wp-content/mu-plugins/petshop-darbalaukis.php",
+    "wp-content/mu-plugins/petshop-dropship-matomumas.php",
+    "wp-content/mu-plugins/petshop-faktai.php",
+    "wp-content/mu-plugins/petshop-kliento-siuntos.php",
+    "wp-content/mu-plugins/petshop-relaunch.php",
+    "wp-content/mu-plugins/petshop-planas-langas.php"
+   ],
+   "psw_seen": [
+    "wp-content/plugins/petshop-core/includes/class-welcome-modal.php"
+   ],
+   "psw-b1": [
+    "wp-content/plugins/petshop-core/includes/class-welcome-modal.php"
+   ],
+   "started": [
+    "wp-content/plugins/petshop-core/includes/class-pet-drafts.php",
+    "wp-content/mu-plugins/petshop-anketos-ataskaita.php",
+    "wp-content/mu-plugins/petshop-anketa-ivykiai.php",
+    "wp-content/mu-plugins/petshop-prenumerata-katalogas.php"
+   ],
+   "ps_laukai_ivykiai": [
+    "wp-content/mu-plugins/petshop-anketos-ataskaita.php",
+    "wp-content/mu-plugins/petshop-pet-kontraktas.php",
+    "wp-content/mu-plugins/petshop-statistika.php",
+    "wp-content/mu-plugins/petshop-refill-ivykiai.php"
+   ]
+  }
+ },
+ "v": "dep-190655",
+ "kurimas": 200,
+ "sid": 6326,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
