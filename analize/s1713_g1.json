@@ -1,0 +1,73 @@
+{
+ "1": {
+  "v": "S1713g",
+  "faze": "1",
+  "po": {
+   "preke": [
+    "index-https.html",
+    ".",
+    ".."
+   ],
+   "home": [
+    "index-https.html"
+   ]
+  }
+ },
+ "2": {
+  "v": "S1713g",
+  "faze": "2",
+  "pries": {
+   "preke": [
+    "index-https.html",
+    ".",
+    ".."
+   ],
+   "home": [
+    "index-https.html"
+   ]
+  },
+  "permalink": "https://petshop.lt/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/",
+  "site_url": "https://petshop.lt",
+  "home": "https://petshop.lt",
+  "HTTP_HOST": "dev.avesa.lt",
+  "get_supercache_dir": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/",
+  "get_current_url_supercache_dir": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/dev.avesa.lt/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/",
+  "wp_cache_home_path": "/",
+  "wp_cache_host": "dev.avesa.lt",
+  "writers_entry": true,
+  "post_id_gc_src": "function wp_cache_post_id_gc( $post_id, $all = 'all' ) {\n\n\t$post_id = intval( $post_id );\n\tif ( $post_id == 0 ) {\n\t\treturn true;\n\t}\n\n\t// Normalised so the gc_cache payload below is spelled the same way\n\t// wp_cache_post_change() spells it. Consumers build a supercache path out of\n\t// it, so the two firing sites disagreeing is a bug of its own. See #1081.\n\t$permalink = wpsc_normalize_uri_case( trailingslashit( str_replace( get_option( 'home' ), '', get_permalink( $post_id ) ) ) );\n\tif ( str_contains( $permalink, '?' ) ) {\n\t\twp_cache_debug( 'wp_cache_post_id_gc: NOT CLEARING CACHE. Permalink has a \"?\". ' . $permalink );\n\t\treturn false;\n\t}\n\t$dir = get_current_url_supercache_dir( $post_id );\n\twp_cache_debug( \"wp_cache_post_id_gc post_id: $post_id \" . get_permalink( $post_id ) . \" clearing cache in $dir.\", 4 );\n\tif ( $all ) {\n\t\tprune_super_cache( $dir, true, true );\n\t\tdo_action( 'gc_cache', 'prune', $permalink );\n\t\t@rmdir( $dir );\n\t\t$supercache_home = get_supercache_dir();\n\t\twp_cache_debug( \"wp_cache_post_id_gc clearing cache in {$supercache_home}page/.\" );\n\t\tprune_super_cache( $supercache_home . 'page/', true );\n\t\tdo_action( 'gc_cache', 'prune', 'page/' );\n\t} else {\n\t\twp_cache_debug( \"wp_cache_post_id_gc clearing cached index files in $dir.\", 4 );\n\t\tprune_super_cache( $dir, true, true );\n\t\tdo_action( 'gc_cache', 'prune', $permalink );\n\t}\n\treturn true;\n}",
+  "gcusd_src": "function get_current_url_supercache_dir( $post_id = 0 ) {\n\tglobal $cached_direct_pages, $cache_path, $wp_cache_request_uri, $WPSC_HTTP_HOST, $wp_cache_home_path;\n\tglobal $cache_enabled, $super_cache_enabled;\n\tstatic $saved_supercache_dir = array();\n\n\t// Normalised once so the branch test below and the too-long guard agree on what zero is.\n\t$post_id = (int) $post_id;\n\n\tif ( isset( $saved_supercache_dir[ $post_id ] ) ) {\n\t\treturn $saved_supercache_dir[ $post_id ];\n\t}\n\n\t$DONOTREMEMBER = 0;\n\tif ( $post_id != 0 ) {\n\t\t$site_url  = site_url();\n\t\t$permalink = get_permalink( $post_id );\n\t\tif ( ! str_contains( $permalink, $site_url ) ) {\n\t\t\t/*\n\t\t\t * Sometimes site_url doesn't return the siteurl. See https://wordpress.org/support/topic/wp-super-cache-not-refreshing-post-after-comments-made\n\t\t\t */\n\t\t\t$DONOTREMEMBER = 1;\n\t\t\twp_cache_debug( \"get_current_url_supercache_dir: WARNING! site_url ($site_url) not found in permalink ($permalink).\", 1 );\n\t\t\tif ( preg_match( '`^(https?:)?//([^/]+)(/.*)?$`i', $permalink, $matches ) ) {\n\t\t\t\tif ( $WPSC_HTTP_HOST != $matches[2] ) {\n\t\t\t\t\twp_cache_debug( \"get_current_url_supercache_dir: WARNING! SERVER_NAME ({$WPSC_HTTP_HOST}) not found in permalink ($permalink).\", 1 );\n\t\t\t\t}\n\t\t\t\twp_cache_debug( \"get_current_url_supercache_dir: Removing SERVER_NAME ({$matches[2]}) from permalink ($permalink). Is the url right?\", 1 );\n\t\t\t\t$uri = isset( $matches[3] ) ? $matches[3] : '';\n\t\t\t} elseif ( preg_match( '`^/([^/]+)(/.*)?$`i', $permalink, $matches ) ) {\n\t\t\t\twp_cache_debug( \"get_current_url_supercache_dir: WARNING! Permalink ($permalink) looks as absolute path. Is the url right?\", 1 );\n\t\t\t\t$uri = $permalink;\n\t\t\t} else {\n\t\t\t\twp_cache_debug( \"get_current_url_supercache_dir: WARNING! Permalink ($permalink) could not be understood by parsing url. Using front page.\", 1 );\n\t\t\t\t$uri = '';\n\t\t\t}\n\t\t} else {\n\t\t\t$uri       = str_replace( $site_url, '', $permalink );\n\t\t\t$home_path = $wp_cache_home_path ?? '';\n\t\t\tif ( $home_path !== '' && ! str_starts_with( $uri, $home_path ) ) {\n\t\t\t\t$uri = rtrim( $home_path, '/' ) . $uri;\n\t\t\t}\n\t\t}\n\t} else {\n\t\t$uri = $wp_cache_request_uri;\n\t}\n\n\t$uri      = wpsc_normalize_uri_case( $uri );\n\t$uri      = wpsc_deep_replace( array( '..', '\\\\', 'index.php' ), preg_replace( '/[ <>\\'\\\"\\r\\n\\t\\(\\)]/', '', preg_replace( '/(\\?.*)?(#.*)?$/', '', $uri ) ) );\n\t$hostname = $WPSC_HTTP_HOST;\n\t// Get hostname from wp options for wp-cron, wp-cli and similar requests.\n\t// Lowercased because $WPSC_HTTP_HOST already is, and the two have to name the\n\t// same directory. See #1081.\n\tif ( empty( $hostname ) && function_exists( 'get_option' ) ) {\n\t\t$hostname = (string) parse_url( get_option( 'home' ), PHP_URL_HOST );\n\t\t$hostname = function_exists( 'mb_strtolower' ) ? mb_strtolower( $hostname ) : strtolower( $hostname );\n\t}\n\t$dir = preg_replace( '/:.*$/', '', $hostname ) . $uri; // To avoid XSS attacks\n\tif ( function_exists( 'apply_filters' ) ) {\n\t\t$dir = apply_filters( 'supercache_dir', $dir );\n\t} else {\n\t\t$dir = do_cacheaction( 'supercache_dir', $dir );\n\t}\n\t$dir = $cache_path . 'supercache/' . $dir . '/';\n\tif ( is_array( $cached_direct_pages ) && in_array( $_SERVER['REQUEST_URI'], $cached_direct_pages ) ) {\n\t\t$dir = ABSPATH . $uri . '/';\n\t}\n\t$dir = str_replace( '..', '', str_replace( '//', '/', $dir ) );\n\n\tif ( wpsc_path_is_too_long( $dir ) ) {\n\t\twp_cache_debug( 'get_current_url_supercache_dir: path is ' . strlen( $dir ) . ' bytes, too long for this platform. Not caching this request.' );\n\n\t\t/*\n\t\t * Only the $post_id = 0 branch descri"
+ },
+ "3": {
+  "v": "S1713g",
+  "faze": "3",
+  "pries": {
+   "preke": [
+    "index-https.html",
+    ".",
+    ".."
+   ],
+   "home": [
+    "index-https.html"
+   ]
+  },
+  "gc": true,
+  "po": {
+   "preke": [
+    "index-https.html",
+    ".",
+    ".."
+   ],
+   "home": [
+    "index-https.html"
+   ]
+  }
+ },
+ "v": "dep-184524",
+ "kurimas": 200,
+ "sid": 6320,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
