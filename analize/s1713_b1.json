@@ -1,0 +1,10 @@
+{
+ "v": "dep-182229",
+ "kurimas": 200,
+ "sid": 6312,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "zalias_1": "{\"v\":\"S1713b\",\"faze\":\"1\",\"pries\":[\"<?php\",\"define('WP_CACHE', true); \\/\\/ S1713 2026-09-24 WP Super Cache\\\\n\",\"\\/**\",\" * The base configuration for WordPress\",\" *\",\" * The wp-config.php creation script uses this file during the installation.\"],\"md5_pries\":\"a3dad44bf7b2c85776738aab1aac648a\",\"pakeista\":1,\"po\":[\"<?php\",\"define('WP_CACHE', true); \\/\\/ S1713 2026-09-24 WP Super Cache\",\"\",\"\\/**\",\" * The base configuration for WordPress\",\" *\"],\"md5_po\":\"6b8b73c9381fd81a2ff03a8a964f8dad\",\"skirtumas_nuo_bak_tik_viena_eilute\":true,\"heartbeat\":200}<!-- WP Super Cache is installed but broken. The constant WPCACHEHOME must be set in the file wp-config.php and point at the WP Super Cache plugin directory. -->"
+}
