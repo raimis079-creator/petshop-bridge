@@ -1,0 +1,57 @@
+{
+ "1": {
+  "v": "S1713h",
+  "faze": "1",
+  "host": "dev.avesa.lt",
+  "pries": {
+   "preke": [
+    "index-https.html"
+   ],
+   "home": [
+    "index-https.html"
+   ],
+   "kat_katems": [
+    "index-https.html"
+   ]
+  },
+  "vidine": [
+   200,
+   "{\"v\":\"S1713h\",\"faze\":\"6\",\"host\":\"petshop.lt\",\"pries\":{\"preke\":[\"index-https.html\"],\"home\":[\"index-https.html\"],\"kat_katems\":[\"index-https.html\"]},\"eile\":\"shutdown\",\"gcusd\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-content\\/cache\\/supercache\\/petshop.lt\\/product\\/josera-sensiplus-125-kg"
+  ],
+  "po": {
+   "preke": [
+    "index-https.html.needs-rebuild"
+   ],
+   "home": [
+    "index-https.html.needs-rebuild"
+   ],
+   "kat_katems": [
+    "index-https.html"
+   ]
+  }
+ },
+ "2": {
+  "v": "S1713h",
+  "faze": "2",
+  "host": "dev.avesa.lt",
+  "dabar": {
+   "preke": [
+    "index-https.html.needs-rebuild"
+   ],
+   "home": [
+    "index-https.html.needs-rebuild"
+   ],
+   "kat_katems": [
+    "index-https.html"
+   ]
+  },
+  "dev_dir": "NERA"
+ },
+ "v": "dep-184739",
+ "kurimas": 200,
+ "sid": 6321,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
