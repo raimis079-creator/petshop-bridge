@@ -1,0 +1,1248 @@
+{
+ "v": "dep-161507",
+ "kurimas": 200,
+ "sid": 6308,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "F": {
+  "v": "S1712c",
+  "faze": "F",
+  "sargas_403_kontekstas": "<?php\n/**\n * Petshop Sargas Saugumas v1.0 (S1678) — xmlrpc uždarymas, vartotojų neatskleidimas, saugumo antraštės, Store API limitas.\n * Prisijungimo (wp-login) ir prisijungusių vartotojų REST neliečia. Bridge (app password) neliečia.\n */\nif (!defined('ABSPATH')) exit;\n\n// 1. XML-RPC: išjungtas visiškai + X-Pingback antraštė nuimta\nadd_filter('xmlrpc_enabled', '__return_false');\nadd_filter('xmlrpc_methods', '__return_empty_array');\nadd_filter('wp_headers', function($h){ unset($h['X-Pingback']); return $h; });\nif (defined('XMLRPC_REQUEST') && XMLRPC_REQUEST) { status_header(403); header('Content-Type: text/plain'); exit('403'); }\n\n// 2. Vartotojų atskleidimas: /wp/v2/users tik prisijungusiems; ?author=N ir autoriaus archyvai → 404 svečiams\nadd_filter('rest_pre_dispatch', function($result, $server, $request){\n  if (is_user_logged_in()) return $result;\n  $r = $request->get_route();\n  if (preg_match('#^/wp/v2/users(/|$)#', $r)) return new WP_Error('ps_rest_forbidden', 'Dr",
+  "sargas_bot_zodziai": [],
+  "htaccess": "# BEGIN Petshop Cache (H089, 2026-08-19)\n<IfModule mod_expires.c>\n  ExpiresActive On\n  ExpiresByType text/css \"access plus 1 year\"\n  ExpiresByType application/javascript \"access plus 1 year\"\n  ExpiresByType text/javascript \"access plus 1 year\"\n  ExpiresByType image/jpeg \"access plus 1 year\"\n  ExpiresByType image/png \"access plus 1 year\"\n  ExpiresByType image/gif \"access plus 1 year\"\n  ExpiresByType image/webp \"access plus 1 year\"\n  ExpiresByType image/svg+xml \"access plus 1 year\"\n  ExpiresByType font/woff2 \"access plus 1 year\"\n</IfModule>\n<IfModule mod_headers.c>\n  <FilesMatch \"\\.(css|js|mjs|woff2?|ttf|otf|eot|svg|jpe?g|png|gif|webp|avif|ico)$\">\n    Header set Cache-Control \"public, max-age=31536000\"\n  </FilesMatch>\n</IfModule>\n# END Petshop Cache\n\n# Block the include-only files.\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteBase /\nRewriteRule ^wp-admin/includes/ - [F,L]\nRewriteRule !^wp-includes/ - [S=3]\nRewriteRule ^wp-includes/[^/]+\\.php$ - [F,L]\nRewriteRule ^wp-includes/js/tinymce/langs/.+\\.php - [F,L]\nRewriteRule ^wp-includes/theme-compat/ - [F,L]\n</IfModule>\n<Files wp-config.php>\n<IfModule !mod_authz_core.c>\norder allow,deny\ndeny from all\n</IfModule>\n<IfModule mod_authz_core.c>\nrequire all denied\n</IfModule>\n</Files>\n\n# BEGIN WordPress\n# Instrukcijos (eilutės) tarp \"BEGIN WordPress\" ir \"END WordPress\" yra \n# generuojamos dinamiškai ir turėtų būti modifikuojamos tik per WordPress filtrus.\n# Bet kokie pakeitimai instrukcijose tarp šių žymiklių bus perrašyti.\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]\nRewriteBase /\nRewriteRule ^index\\.php$ - [L]\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\nRewriteRule . /index.php [L]\n</IfModule>\n\n# END WordPress\n\n# BEGIN Petshop Saugumas (S1678)\n<IfModule mod_headers.c>\nHeader always set X-Content-Type-Options \"nosniff\"\nHeader always set X-Frame-Options \"SAMEORIGIN\"\nHeader always set Referrer-Policy \"strict-origin-when-cross-origin\"\nHeader always set Strict-Transport-Security \"max-age=31536000\" env=HTTPS\n</IfModule>\n<Files xmlrpc.php>\n<IfModule mod_authz_core.c>\nRequire all denied\n</IfModule>\n</Files>\n# END Petshop Saugumas\n",
+  "htaccess_parent": "(nera)",
+  "log_kodai": {
+   "ClaudeBot": {
+    "103": 2,
+    "200": 1,
+    "403": 26,
+    "404": 4,
+    "?": 26
+   },
+   "OAI-SearchBot": {
+    "103": 1,
+    "200": 275,
+    "301": 26,
+    "500": 1
+   },
+   "GPTBot": {
+    "403": 10,
+    "?": 10
+   },
+   "ChatGPT-User": {
+    "403": 88,
+    "500": 2,
+    "?": 90
+   },
+   "python-requests": {
+    "403": 5,
+    "?": 5
+   }
+  },
+  "log_pvz": {
+   "ClaudeBot": [
+    "216.73.217.16 - - [23/Sep/2026:05:09:38 +0300] \"GET /robots.txt HTTP/2.0\" 403 403 \"-\" \"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)\"",
+    "216.73.217.31 - - [23/Sep/2026:06:11:12 +0300] \"GET /robots.txt HTTP/1.1\" 403 403 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36; ClaudeBot/1.0; +claudebot@anthropic.com)\"",
+    "216.73.217.16 - - [23/Sep/2026:06:13:46 +0300] \"GET /robots.txt HTTP/2.0\" 403 403 \"-\" \"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; ClaudeBot/1.0; +claudebot@anthropic.com)\""
+   ],
+   "OAI-SearchBot": [
+    "74.7.243.44 - - [23/Sep/2026:05:28:13 +0300] \"GET /pristatymas HTTP/2.0\" 301 - \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36; compatible; OAI-SearchBot/1.4; +https://openai.com/searchbot\"",
+    "74.7.241.183 - - [23/Sep/2026:05:28:14 +0300] \"GET /robots.txt HTTP/2.0\" 200 177 \"-\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36; compatible; OAI-SearchBot/1.4; robots.txt; +https://openai.com/searchbot\"",
+    "74.7.243.44 - - [23/Sep/2026:05:28:14 +0300] \"GET /pristatymas/ HTTP/2.0\" 200 47776 \"https://petshop.lt/pristatymas\" \"Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/131.0.0.0 Safari/537.36; compatible; OAI-SearchBot/1.4; +https://openai.com/searchbot\""
+   ],
+   "GPTBot": [
+    "74.7.243.196 - - [23/Sep/2026:05:52:27 +0300] \"GET /product/natures-miracle-demiu-ir-kvapu-valymo-priemone-so-sunims-melionu-kvapo946ml/ HTTP/2.0\" 403 403 \"https://www.kaina24.lt\" \"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.4; +https://openai.com/gptbot)\"",
+    "74.7.243.196 - - [23/Sep/2026:09:54:27 +0300] \"GET /product/smartbones-peanut-butter-bones-skanestai-su-riesutu-sviestu-vidutinio-dydzio-veisliu-sunims-2-vnt/ HTTP/2.0\" 403 403 \"https://www.kaina24.lt\" \"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.4; +https://openai.com/gptbot)\"",
+    "74.7.243.196 - - [23/Sep/2026:09:54:30 +0300] \"GET /product/smartbones-chicken-bones-kaulai-su-vistiena-vidutinio-dydzio-veisliu-sunims-2-vnt/ HTTP/2.0\" 403 403 \"https://www.kaina24.lt\" \"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; GPTBot/1.4; +https://openai.com/gptbot)\""
+   ],
+   "ChatGPT-User": [
+    "9.129.57.197 - - [23/Sep/2026:06:56:46 +0300] \"GET / HTTP/2.0\" 403 403 \"-\" \"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot\"",
+    "9.129.57.204 - - [23/Sep/2026:06:56:46 +0300] \"GET / HTTP/2.0\" 403 403 \"-\" \"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot\"",
+    "9.129.57.205 - - [23/Sep/2026:06:56:46 +0300] \"GET / HTTP/2.0\" 403 403 \"-\" \"Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko); compatible; ChatGPT-User/1.0; +https://openai.com/bot\""
+   ],
+   "python-requests": [
+    "77.113.38.124 - - [23/Sep/2026:08:23:53 +0300] \"GET /robots.txt HTTP/1.1\" 403 403 \"-\" \"python-requests/2.31.0\"",
+    "77.113.38.124 - - [23/Sep/2026:08:23:53 +0300] \"HEAD / HTTP/1.1\" 403 - \"-\" \"python-requests/2.31.0\"",
+    "77.113.38.124 - - [23/Sep/2026:08:23:53 +0300] \"GET /ads.txt HTTP/1.1\" 403 403 \"-\" \"python-requests/2.31.0\""
+   ]
+  },
+  "cache_koment": {
+   "/": [],
+   "/kategorija/katems/": [],
+   "/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/": []
+  },
+  "cache_hdr": {
+   "/": [
+    "",
+    "",
+    "Accept-Encoding",
+    "Apache",
+    ""
+   ],
+   "/kategorija/katems/": [
+    "",
+    "",
+    "Accept-Encoding",
+    "Apache",
+    ""
+   ],
+   "/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/": [
+    "",
+    "",
+    "Accept-Encoding",
+    "Apache",
+    ""
+   ]
+  },
+  "wpsc_opt": {
+   "cache_enabled": 1,
+   "super_cache_enabled": 1,
+   "wp_cache_not_logged_in": 2,
+   "cache_max_time": 3600,
+   "wp_cache_mod_rewrite": 0,
+   "wp_super_cache_late_init": 0,
+   "cache_rejected_uri": [
+    "wp-.*\\.php",
+    "index\\.php",
+    "krepselis",
+    "cart",
+    "checkout",
+    "atsiskaitymas",
+    "my-account",
+    "mano-paskyra",
+    "augintinis",
+    "prenumerata",
+    "wp-json",
+    "feed"
+   ],
+   "cache_path": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/"
+  },
+  "advanced_cache": "<?php\n// WP SUPER CACHE 1.2\nfunction wpcache_broken_message() {\n\tglobal $wp_cache_config_file;\n\tif ( isset( $wp_cache_config_file ) == false ) {\n\t\treturn '';\n\t}\n\n\t$doing_ajax     = defined( 'DOING_AJAX' ) && DOING_AJAX;\n\t$xmlrpc_request = defined( 'XMLRPC_REQUEST' ) && XMLRPC_REQUEST;\n\t$rest_request",
+  "wpconfig_cache": "NERA WP_CACHE eilutes wp-config.php",
+  "wpconfig_cache_eil": [],
+  "cache_dir": [
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/",
+   true,
+   1,
+   [
+    "index.html"
+   ],
+   0
+  ],
+  "paieskos_top": [
+   {
+    "q": "exclusion",
+    "n": "51",
+    "ses": "12",
+    "rez": "77"
+   },
+   {
+    "q": "animonda",
+    "n": "17",
+    "ses": "4",
+    "rez": "61"
+   },
+   {
+    "q": "leger",
+    "n": "16",
+    "ses": "1",
+    "rez": "2"
+   },
+   {
+    "q": "miamor",
+    "n": "13",
+    "ses": "3",
+    "rez": "28"
+   },
+   {
+    "q": "josera",
+    "n": "12",
+    "ses": "3",
+    "rez": "107"
+   },
+   {
+    "q": "triušio",
+    "n": "12",
+    "ses": "0",
+    "rez": "14"
+   },
+   {
+    "q": "ambro",
+    "n": "11",
+    "ses": "0",
+    "rez": "16"
+   },
+   {
+    "q": "shuttle",
+    "n": "10",
+    "ses": "1",
+    "rez": "4"
+   },
+   {
+    "q": "hikari",
+    "n": "8",
+    "ses": "2",
+    "rez": "40"
+   },
+   {
+    "q": null,
+    "n": "7",
+    "ses": "2",
+    "rez": "2383"
+   },
+   {
+    "q": "kilimėlis",
+    "n": "7",
+    "ses": "1",
+    "rez": "54"
+   },
+   {
+    "q": "hepat",
+    "n": "7",
+    "ses": "1",
+    "rez": "6"
+   },
+   {
+    "q": "palutės",
+    "n": "7",
+    "ses": "3",
+    "rez": "19"
+   },
+   {
+    "q": "kitten",
+    "n": "7",
+    "ses": "1",
+    "rez": "50"
+   },
+   {
+    "q": "katėms shuttle",
+    "n": "5",
+    "ses": "1",
+    "rez": "4"
+   },
+   {
+    "q": "quattro",
+    "n": "5",
+    "ses": "2",
+    "rez": "64"
+   },
+   {
+    "q": "churu katėms",
+    "n": "5",
+    "ses": "0",
+    "rez": "11"
+   },
+   {
+    "q": "cream",
+    "n": "5",
+    "ses": "0",
+    "rez": "8"
+   },
+   {
+    "q": "farmina n&amp;d",
+    "n": "5",
+    "ses": "1",
+    "rez": "110"
+   },
+   {
+    "q": "animonda adult",
+    "n": "5",
+    "ses": "2",
+    "rez": "54"
+   },
+   {
+    "q": "kraikas",
+    "n": "5",
+    "ses": "1",
+    "rez": "90"
+   },
+   {
+    "q": "solo",
+    "n": "4",
+    "ses": "0",
+    "rez": "3"
+   },
+   {
+    "q": "hills",
+    "n": "4",
+    "ses": "2",
+    "rez": "0"
+   },
+   {
+    "q": "eukanuba",
+    "n": "4",
+    "ses": "4",
+    "rez": "24"
+   },
+   {
+    "q": "leger 10",
+    "n": "4",
+    "ses": "1",
+    "rez": "2"
+   },
+   {
+    "q": "lettier",
+    "n": "4",
+    "ses": "1",
+    "rez": "2"
+   },
+   {
+    "q": "ontario katėms",
+    "n": "4",
+    "ses": "1",
+    "rez": "20"
+   },
+   {
+    "q": "suris",
+    "n": "4",
+    "ses": "1",
+    "rez": "50"
+   },
+   {
+    "q": "ambrosia",
+    "n": "4",
+    "ses": "1",
+    "rez": "15"
+   },
+   {
+    "q": "pavadėlis",
+    "n": "4",
+    "ses": "1",
+    "rez": "81"
+   },
+   {
+    "q": "uostymo kilimėlis",
+    "n": "3",
+    "ses": "1",
+    "rez": "12"
+   },
+   {
+    "q": "potato",
+    "n": "3",
+    "ses": "1",
+    "rez": "67"
+   },
+   {
+    "q": "filtras",
+    "n": "3",
+    "ses": "1",
+    "rez": "27"
+   },
+   {
+    "q": "prolivet",
+    "n": "3",
+    "ses": "1",
+    "rez": "0"
+   },
+   {
+    "q": "liūtas",
+    "n": "3",
+    "ses": "2",
+    "rez": "3"
+   },
+   {
+    "q": "aliejus",
+    "n": "3",
+    "ses": "0",
+    "rez": "427"
+   },
+   {
+    "q": "churu",
+    "n": "3",
+    "ses": "1",
+    "rez": "74"
+   },
+   {
+    "q": "ontario",
+    "n": "3",
+    "ses": "2",
+    "rez": "55"
+   },
+   {
+    "q": "guolis",
+    "n": "3",
+    "ses": "1",
+    "rez": "28"
+   },
+   {
+    "q": "surio skanestas",
+    "n": "3",
+    "ses": "1",
+    "rez": "36"
+   },
+   {
+    "q": "rasco",
+    "n": "3",
+    "ses": "0",
+    "rez": "9"
+   },
+   {
+    "q": "sausainiai",
+    "n": "3",
+    "ses": "1",
+    "rez": "30"
+   },
+   {
+    "q": "farmina",
+    "n": "3",
+    "ses": "2",
+    "rez": "22"
+   },
+   {
+    "q": "deluxe",
+    "n": "3",
+    "ses": "1",
+    "rez": "2"
+   },
+   {
+    "q": "semtuvėlis",
+    "n": "3",
+    "ses": "1",
+    "rez": "10"
+   },
+   {
+    "q": "monge",
+    "n": "3",
+    "ses": "1",
+    "rez": "108"
+   },
+   {
+    "q": "animonda carny kitten",
+    "n": "2",
+    "ses": "1",
+    "rez": "3"
+   },
+   {
+    "q": "skrandžiai",
+    "n": "2",
+    "ses": "0",
+    "rez": "14"
+   },
+   {
+    "q": "filet",
+    "n": "2",
+    "ses": "0",
+    "rez": "13"
+   },
+   {
+    "q": "animonda katėms",
+    "n": "2",
+    "ses": "1",
+    "rez": "23"
+   },
+   {
+    "q": "draskyklė",
+    "n": "2",
+    "ses": "0",
+    "rez": "42"
+   },
+   {
+    "q": "uostymo",
+    "n": "2",
+    "ses": "1",
+    "rez": "24"
+   },
+   {
+    "q": "landfleish",
+    "n": "2",
+    "ses": "1",
+    "rez": "16"
+   },
+   {
+    "q": "royal canin sterilised",
+    "n": "2",
+    "ses": "1",
+    "rez": "5"
+   },
+   {
+    "q": "hill&#039;s science plan kitten",
+    "n": "2",
+    "ses": "1",
+    "rez": "0"
+   },
+   {
+    "q": "sonar",
+    "n": "2",
+    "ses": "0",
+    "rez": "2"
+   },
+   {
+    "q": "josera su eriena",
+    "n": "2",
+    "ses": "1",
+    "rez": "18"
+   },
+   {
+    "q": "royal canin sterilised in jelly",
+    "n": "2",
+    "ses": "1",
+    "rez": "0"
+   },
+   {
+    "q": "virbac",
+    "n": "2",
+    "ses": "1",
+    "rez": "0"
+   },
+   {
+    "q": "exclusion hypoallergenic duck and potato",
+    "n": "2",
+    "ses": "1",
+    "rez": "2"
+   }
+  ],
+  "paieskos_0": [
+   {
+    "q": "hills",
+    "n": "4"
+   },
+   {
+    "q": "prolivet",
+    "n": "3"
+   },
+   {
+    "q": "royal canin sterilised in jelly",
+    "n": "2"
+   },
+   {
+    "q": "exclusion pork and peas",
+    "n": "2"
+   },
+   {
+    "q": "19997",
+    "n": "2"
+   },
+   {
+    "q": "hill&#039;s science plan kitten",
+    "n": "2"
+   },
+   {
+    "q": "aladin",
+    "n": "2"
+   },
+   {
+    "q": "virbac",
+    "n": "2"
+   },
+   {
+    "q": "marp",
+    "n": "2"
+   },
+   {
+    "q": "carnilove",
+    "n": "2"
+   },
+   {
+    "q": "nature&#039;s protection",
+    "n": "1"
+   },
+   {
+    "q": "pork and peas",
+    "n": "1"
+   },
+   {
+    "q": "the good stuff",
+    "n": "1"
+   },
+   {
+    "q": "flowers filtrai",
+    "n": "1"
+   },
+   {
+    "q": "sausas kačių maistas royal canin sensible 33, 10 + 2 kg",
+    "n": "1"
+   },
+   {
+    "q": "bravecto",
+    "n": "1"
+   },
+   {
+    "q": "royal canin jorkšyro terjerų veislės suaugusių šunų sausas pašaras",
+    "n": "1"
+   },
+   {
+    "q": "#26093",
+    "n": "1"
+   },
+   {
+    "q": "inps11",
+    "n": "1"
+   },
+   {
+    "q": "30490*",
+    "n": "1"
+   },
+   {
+    "q": "inps",
+    "n": "1"
+   },
+   {
+    "q": "30490",
+    "n": "1"
+   },
+   {
+    "q": "rolivet",
+    "n": "1"
+   },
+   {
+    "q": "royal canin mini adult 8+",
+    "n": "1"
+   },
+   {
+    "q": "kaktusas",
+    "n": "1"
+   },
+   {
+    "q": "kiauliena su zirneis",
+    "n": "1"
+   },
+   {
+    "q": "ktraikas",
+    "n": "1"
+   },
+   {
+    "q": "kiauliena su zirneleis",
+    "n": "1"
+   },
+   {
+    "q": "purskiamas ausu valiklis",
+    "n": "1"
+   },
+   {
+    "q": "zenifel",
+    "n": "1"
+   },
+   {
+    "q": "hyos02",
+    "n": "1"
+   },
+   {
+    "q": "35291",
+    "n": "1"
+   },
+   {
+    "q": "jorsera",
+    "n": "1"
+   },
+   {
+    "q": "applaws",
+    "n": "1"
+   },
+   {
+    "q": "the miracle nipple – maitinimo švirkštas jaunikliams",
+    "n": "1"
+   },
+   {
+    "q": "whimzees",
+    "n": "1"
+   },
+   {
+    "q": "early real šlapias",
+    "n": "1"
+   },
+   {
+    "q": "farmina n&amp;d kitten wet",
+    "n": "1"
+   },
+   {
+    "q": "katės pieno pakaitalas",
+    "n": "1"
+   },
+   {
+    "q": "jesera festivalis",
+    "n": "1"
+   },
+   {
+    "q": "josera sensi adult",
+    "n": "1"
+   },
+   {
+    "q": "brit care",
+    "n": "1"
+   },
+   {
+    "q": "gastrointestinial",
+    "n": "1"
+   },
+   {
+    "q": "batai",
+    "n": "1"
+   },
+   {
+    "q": "orijen",
+    "n": "1"
+   },
+   {
+    "q": "dovanu kuponas",
+    "n": "1"
+   },
+   {
+    "q": "sum palst",
+    "n": "1"
+   },
+   {
+    "q": "samtelis su svarstyklėmis",
+    "n": "1"
+   },
+   {
+    "q": "hikari cichlid gold sinking medium 100g",
+    "n": "1"
+   },
+   {
+    "q": "trovet",
+    "n": "1"
+   }
+  ],
+  "paieskos_viso": {
+   "n": "481",
+   "nulines": "81",
+   "ses": "125"
+  },
+  "gsc_pries_po": [
+   {
+    "url": "https://petshop.lt/cvergsnauceris",
+    "cp": "21",
+    "cpo": "9",
+    "ip": "3151",
+    "ipo": "699"
+   },
+   {
+    "url": "https://petshop.lt/",
+    "cp": "85",
+    "cpo": "26",
+    "ip": "4801",
+    "ipo": "1372"
+   },
+   {
+    "url": "https://petshop.lt/kaukazo-aviganis",
+    "cp": "10",
+    "cpo": "7",
+    "ip": "2790",
+    "ipo": "765"
+   },
+   {
+    "url": "https://petshop.lt/index.php?route=blog/article/prints&blogid=21&view=print",
+    "cp": "2",
+    "cpo": "0",
+    "ip": "795",
+    "ipo": "2"
+   },
+   {
+    "url": "https://petshop.lt/suo-nuolat-kasosi-7-priezastys-ir-3-minuciu-planas-ka-daryti-siandien",
+    "cp": "30",
+    "cpo": "8",
+    "ip": "784",
+    "ipo": "117"
+   },
+   {
+    "url": "https://petshop.lt/sunims",
+    "cp": "0",
+    "cpo": "0",
+    "ip": "672",
+    "ipo": "79"
+   },
+   {
+    "url": "https://petshop.lt/sunims/antkakliai-pavadeliai-sunims",
+    "cp": "1",
+    "cpo": "0",
+    "ip": "872",
+    "ipo": "167"
+   },
+   {
+    "url": "https://petshop.lt/sunims/maistas-sunims",
+    "cp": "1",
+    "cpo": "0",
+    "ip": "541",
+    "ipo": "56"
+   },
+   {
+    "url": "https://petshop.lt/katems/maistas-katems",
+    "cp": "3",
+    "cpo": "0",
+    "ip": "788",
+    "ipo": "168"
+   },
+   {
+    "url": "https://petshop.lt/sunu-veisles",
+    "cp": "1",
+    "cpo": "2",
+    "ip": "485",
+    "ipo": "62"
+   },
+   {
+    "url": "https://petshop.lt/index.php?route=blog/article/prints&blogid=32&view=print",
+    "cp": "3",
+    "cpo": "1",
+    "ip": "410",
+    "ipo": "60"
+   },
+   {
+    "url": "https://petshop.lt/daugiau-pigiau/zuvims",
+    "cp": "0",
+    "cpo": "0",
+    "ip": "316",
+    "ipo": "27"
+   },
+   {
+    "url": "https://petshop.lt/ciau-ciau",
+    "cp": "9",
+    "cpo": "1",
+    "ip": "1428",
+    "ipo": "472"
+   },
+   {
+    "url": "https://petshop.lt/senbernaras",
+    "cp": "2",
+    "cpo": "0",
+    "ip": "1224",
+    "ipo": "404"
+   },
+   {
+    "url": "https://petshop.lt/jorksyro-terjeras",
+    "cp": "18",
+    "cpo": "3",
+    "ip": "838",
+    "ipo": "251"
+   },
+   {
+    "url": "https://petshop.lt/katems",
+    "cp": "1",
+    "cpo": "2",
+    "ip": "479",
+    "ipo": "108"
+   },
+   {
+    "url": "https://petshop.lt/baltos-vistos-kojos-5-vnt",
+    "cp": "2",
+    "cpo": "1",
+    "ip": "315",
+    "ipo": "43"
+   },
+   {
+    "url": "https://petshop.lt/zuvims-2007550667/akvariuminiu-zuvu-maistas",
+    "cp": "0",
+    "cpo": "0",
+    "ip": "373",
+    "ipo": "72"
+   },
+   {
+    "url": "https://petshop.lt/katems/kraikai-kaciu-tualetams",
+    "cp": "1",
+    "cpo": "2",
+    "ip": "405",
+    "ipo": "89"
+   },
+   {
+    "url": "https://petshop.lt/bokseris",
+    "cp": "4",
+    "cpo": "0",
+    "ip": "534",
+    "ipo": "141"
+   },
+   {
+    "url": "https://petshop.lt/lesalas-dekoratyviniams-pauksciams",
+    "cp": "8",
+    "cpo": "0",
+    "ip": "266",
+    "ipo": "35"
+   },
+   {
+    "url": "https://petshop.lt/lesalas-dekoratyviniams-pauksciams/lesalas-pauksciams",
+    "cp": "1",
+    "cpo": "0",
+    "ip": "198",
+    "ipo": "8"
+   },
+   {
+    "url": "https://petshop.lt/kinu-kuduotasis-suo",
+    "cp": "2",
+    "cpo": "4",
+    "ip": "639",
+    "ipo": "194"
+   },
+   {
+    "url": "https://petshop.lt/daugiau-pigiau/pauksciams-132251148",
+    "cp": "0",
+    "cpo": "0",
+    "ip": "247",
+    "ipo": "44"
+   },
+   {
+    "url": "https://petshop.lt/zuvims-2007550667/tvenkiniu-zuvu-maistas",
+    "cp": "11",
+    "cpo": "1",
+    "ip": "547",
+    "ipo": "169"
+   },
+   {
+    "url": "https://petshop.lt/katrinex-maistas-koi-karpiams-ir-kitoms-tvenkiniu-zuvims",
+    "cp": "4",
+    "cpo": "0",
+    "ip": "181",
+    "ipo": "23"
+   },
+   {
+    "url": "https://petshop.lt/josera-sunu-maistas",
+    "cp": "0",
+    "cpo": "0",
+    "ip": "366",
+    "ipo": "97"
+   },
+   {
+    "url": "https://petshop.lt/jaucio-penis-pjaustytas-15-0-cm",
+    "cp": "5",
+    "cpo": "0",
+    "ip": "190",
+    "ipo": "28"
+   },
+   {
+    "url": "https://petshop.lt/uostymo-kilimelis-sunims-duvo-plius-35-x-35-cm",
+    "cp": "3",
+    "cpo": "0",
+    "ip": "182",
+    "ipo": "31"
+   },
+   {
+    "url": "https://petshop.lt/biglis",
+    "cp": "1",
+    "cpo": "0",
+    "ip": "355",
+    "ipo": "108"
+   }
+  ],
+  "gsc_pries_po_suma": {
+   "cp_d": "23.8667",
+   "cpo_d": "26.0000",
+   "ip_d": "1690.9667",
+   "ipo_d": "1625.5000",
+   "url_pries": "1115",
+   "url_po": "1430"
+  },
+  "gsc_url_tipai_po": [
+   {
+    "tipas": "kita",
+    "urls": "749",
+    "c": "203",
+    "i": "15212"
+   },
+   {
+    "tipas": "preke",
+    "urls": "542",
+    "c": "60",
+    "i": "1537"
+   },
+   {
+    "tipas": "home",
+    "urls": "1",
+    "c": "26",
+    "i": "1372"
+   },
+   {
+    "tipas": "kategorija",
+    "urls": "71",
+    "c": "13",
+    "i": "999"
+   },
+   {
+    "tipas": "senas",
+    "urls": "26",
+    "c": "6",
+    "i": "244"
+   },
+   {
+    "tipas": "gamintojas",
+    "urls": "41",
+    "c": "4",
+    "i": "142"
+   }
+  ],
+  "404_dabar": {
+   "/sunims/prieziuros-priemones": "301 → https://petshop.lt/prieziuros-priemones-sunims/",
+   "/prekes-zenklas/exclusion": "301 → https://petshop.lt/gamintojas/exclusion/",
+   "/register": "404 → ",
+   "/special": "301 → https://petshop.lt/product/special-dog-exc-monoprotein-sausas-pasaras-vidut-veisliu-suaug-",
+   "/daugiau-pigiau/katems-741072930": "404 → ",
+   "/exclusion-me-mono-noble-grain-sausas-pasaras-sterilizuotoms-didelems-katems-su-vistiena-1-5-kg": "404 → ",
+   "/konservai-sunims-super-beno-grain-free-jautiena-ir-zveriena-415-g": "404 → ",
+   "/kiaules-snipas-baltas": "301 → https://petshop.lt/kategorija/sunims/skanestai-sunims/",
+   "/maistas-sterilizuotai-katei-su-antsvorio-problema-ka-pirkti-ir-kaip-maitinti": "404 → ",
+   "/ads.txt": "404 → ",
+   "/.well-known/assetlinks.json": "404 → ",
+   "/paieska": "301 → https://petshop.lt/parduotuve/",
+   "/allproducts": "301 → https://petshop.lt/parduotuve/",
+   "/sausas/2648-ontario-adult-large-beef-12kg-pasaras-dideliu-veisliu-sunims-su-jautiena.html": "301 → https://petshop.lt/product/ontario-adult-large-beef-and-brown-rice-12-kg-pasaras-dideliu-v",
+   "/index.php?route=product/search&hashtag=skan%C4%97stai+%C5%A1unims": "301 → https://petshop.lt/?route=product%2Fsearch&hashtag=skan%C4%97stai%20%C5%A1unims",
+   "/josera-indoor-10-kg-sausas-maistas-naminems-sterilizuotoms-katems": "301 → https://petshop.lt/product/josera-indoor-10-kg-sausas-maistas-naminems-sterilizuotoms-kate",
+   "/deli-nature-premium-lesalas-didelems-papugoms-20-kg-30-large-parakeets-basic": "301 → https://petshop.lt/product/deli-nature-premium-lesalas-didelems-papugoms-20-kg-30-large-pa",
+   "/index.php?route=feed/google_sitemap/generate": "301 → https://petshop.lt/?route=feed%2Fgoogle_sitemap%2Fgenerate"
+  },
+  "prenumer_kontekstas": [
+   " Prenumeruoti"
+  ],
+  "atsiliepimai_kontekstas": [
+   "ul.wc-tabs li.reviews_tab a {"
+  ],
+  "pristatymas_kontekstas": [
+   " Nemokamas pristatymas į paštomatus nuo 30 € ",
+   " Pristatymas ",
+   " doneText.textContent = 'Jei nurodėte teisingą adresą, išsiuntėme prisijungimo nuorodą į ' + v + '. Nuoroda galioja 15 minučių.';"
+  ],
+  "preke_tekstas": "Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria virškinimo sistema - Petshop.lt Skip to content Nemokamas pristatymas į paštomatus nuo 30 € Nemokamas pristatymas į paštomatus nuo 30 € Ieškoti: Prisijungti Krepšelis / 0,00&nbsp;&euro; 0 Krepšelyje nėra produktų. Grįžti į parduotuvę 0 Krepšelis Krepšelyje nėra produktų. Grįžti į parduotuvę ŠUNIMS MAISTAS ŠUNIMS Sausas maistas šunims Konservai šunims SKANĖSTAI IR PAPILDAI Skanėstai šunims Vitaminai ir papildai šunims PRIEŽIŪRA IR SVEIKATA Antiparazitinės priemonės šunims Higienos priemonės šunims Šampūnai šunims Šukos, šepečiai, žirklės šunims Pirmoji pagalba šunims AKSESUARAI Dubenėliai šunims Antkakliai, pavadėliai šunims Žaislai šunims Guoliai šunims Vėsinantys kilimėliai šunims Baseinai šunims Transportavimo dėžės šunims Kelionių įranga Narvai Apranga šunims KATĖMS MAISTAS KATĖMS Sausas maistas katėms Konservai katėms SKANĖSTAI IR PAPILDAI Skanėstai katėms Vitaminai ir papildai katėms KRAIKAI IR TUALETAI Kraikai kačių tualetams Tualetai, semtuvėliai PRIEŽIŪRA IR AKSESUARAI Antiparazitinės priemonės katėms Dubenėliai katėms Antkakliai ir petnešos katėms Žaislai katėms Draskyklės katėms Guoliai katėms Transportavimo dėžės katėms Šukos, šepečiai, žirklės GRAUŽIKAMS MAISTAS IR SKANĖSTAI Pašaras graužikams Skanėstai graužikams Narvai ir aksesuarai graužikams Kraikas ir šienas graužikams PAUKŠČIAMS MAISTAS IR SKANĖSTAI Lesalas paukščiams Skanėstai paukščiams Aksesuarai paukščiams ŽUVIMS MAISTAS Akvariumo žuvyčių maistas Tvenkinių žuvų maistas RINKINIAI Paruošti rinkiniai Konservų rinkiniai Skanėstų rinkiniai Kramtalų rinkiniai Susidėk savo rinkinį Susidėk konservų rinkinį šunims Susidėk konservų rinkinį katėms Susidėk skanėstų rinkinį šunims Susidėk skanėstų rinkinį katėms Susidėk kramtalų rinkinį šunims PASIŪLYM",
+  "paskyra_tekstas": "Mano paskyra - Petshop.lt Skip to content Nemokamas pristatymas į paštomatus nuo 30 € Nemokamas pristatymas į paštomatus nuo 30 € Ieškoti: Prisijungti Krepšelis / 0,00&nbsp;&euro; 0 Krepšelyje nėra produktų. Grįžti į parduotuvę 0 Krepšelis Krepšelyje nėra produktų. Grįžti į parduotuvę ŠUNIMS MAISTAS ŠUNIMS Sausas maistas šunims Konservai šunims SKANĖSTAI IR PAPILDAI Skanėstai šunims Vitaminai ir papildai šunims PRIEŽIŪRA IR SVEIKATA Antiparazitinės priemonės šunims Higienos priemonės šunims Šampūnai šunims Šukos, šepečiai, žirklės šunims Pirmoji pagalba šunims AKSESUARAI Dubenėliai šunims Antkakliai, pavadėliai šunims Žaislai šunims Guoliai šunims Vėsinantys kilimėliai šunims Baseinai šunims",
+  "loco": [],
+  "wc_lt_mo": [
+   "woocommerce-lt_LT-04928f3cadfae9e0174101d5c19e28a1.json",
+   "woocommerce-lt_LT-05193a92b2d1838b5259ccc41e459d78.json",
+   "woocommerce-lt_LT-051b948ebeb4e5c14867979a392b0fc3.json",
+   "woocommerce-lt_LT-06430b92a9c3d31960c3fa7daac1670e.json",
+   "woocommerce-lt_LT-077c5bb7545347e905aab54d7eb15734.json",
+   "woocommerce-lt_LT-0a0188c1a49e75d2af172be062aac004.json",
+   "woocommerce-lt_LT-0bb004e3be5093765234741d468c1a6c.json",
+   "woocommerce-lt_LT-0c6d24e76fb42f9c601d7dd21391d326.json",
+   "woocommerce-lt_LT-0cab04d899898b549abdf367e66168ce.json",
+   "woocommerce-lt_LT-0d6604f2b4e5dcbcc7fb3013a9a6d17d.json",
+   "woocommerce-lt_LT-0e111f57f4566f72854dd71ddfa4c3c1.json",
+   "woocommerce-lt_LT-0e46a6f38358aa2ddb3c70deeddaab15.json",
+   "woocommerce-lt_LT-0e8440226802a9e3adb55b2756a72274.json",
+   "woocommerce-lt_LT-11819b527241962c70b08cf35d34a104.json",
+   "woocommerce-lt_LT-12d195cdcdd08cd46e20ff463e2ae83e.json",
+   "woocommerce-lt_LT-1390a5f697e4898461c7919624725417.json",
+   "woocommerce-lt_LT-13b98984f6788c5a905ec4e2e2b9bb86.json",
+   "woocommerce-lt_LT-142f25e38cc45a7a755226f4171fa59f.json",
+   "woocommerce-lt_LT-14572ea42178218f02a7f3d6a88c91ea.json",
+   "woocommerce-lt_LT-1635acaa3eb10c788d39b8dba143ee8d.json",
+   "woocommerce-lt_LT-181ce41a6826e43d33e176d72f1da0dd.json",
+   "woocommerce-lt_LT-18ba3124de7716bce1b888c8d3ac9192.json",
+   "woocommerce-lt_LT-1946967fff98663eed939b1b2e6e3340.json",
+   "woocommerce-lt_LT-199a86b9500aeda9a3fbb9a1c20fd468.json",
+   "woocommerce-lt_LT-1a8f53117c16a3508e6cd4b45fc4c5f7.json",
+   "woocommerce-lt_LT-1aed6581698e804c5de30080895ea91e.json",
+   "woocommerce-lt_LT-1b48a41aeb3290448ede10e6210481e4.json",
+   "woocommerce-lt_LT-1bb96e0bebe36fe6bd94960d3cdcfa7a.json",
+   "woocommerce-lt_LT-1d36dd58e9841b6509a2e3f0d219e98b.json",
+   "woocommerce-lt_LT-1dee949f3bc3eacc1513cb13c32c60bd.json",
+   "woocommerce-lt_LT-202af67c0a3cdb5d8374095542b82c72.json",
+   "woocommerce-lt_LT-21c97cf1edd07c594d1e7952ca60a50e.json",
+   "woocommerce-lt_LT-21db0a202cf860c0d667914e5c3ff04f.json",
+   "woocommerce-lt_LT-222ba99c0ab9979a199b79f82f1a52f9.json",
+   "woocommerce-lt_LT-2445bfbce6188dfc1e617e7506a894ce.json",
+   "woocommerce-lt_LT-25bbc2754ddee320a72967950691df90.json",
+   "woocommerce-lt_LT-268d1111eddac83f6cfa3013b0277955.json",
+   "woocommerce-lt_LT-279fa10060c1cf9b6f0ce3c1488f35ea.json",
+   "woocommerce-lt_LT-29b0e56355106637676f77f1355b72db.json",
+   "woocommerce-lt_LT-2ac87a601295112b7c1db6c968c1d4f9.json",
+   "woocommerce-lt_LT-2b2538420122030cea7c8d36028faff6.json",
+   "woocommerce-lt_LT-2b32bbc4963015931b7c821ff3ac61b9.json",
+   "woocommerce-lt_LT-2b9ad1ee5266e82cfc566a86f6541d13.json",
+   "woocommerce-lt_LT-2c06722f600263a208d0239e1bee3a8d.json",
+   "woocommerce-lt_LT-2c99303d18ce23c3379a94c74d3a5726.json",
+   "woocommerce-lt_LT-2ce1ccfb028a87015cd02b9b1a2b40bc.json",
+   "woocommerce-lt_LT-2f278f06b0f8da97a92d1521751dca84.json",
+   "woocommerce-lt_LT-307deb1043792dd104d07d926bde2852.json",
+   "woocommerce-lt_LT-30c7f6b9e786ba39013f7d90b417e417.json",
+   "woocommerce-lt_LT-30eecad5aa15cff72eb58125ba5d85d7.json",
+   "woocommerce-lt_LT-310aa1f58a8786a5c1345d8318a53e32.json",
+   "woocommerce-lt_LT-31ef9d00b21b6f004ab50657c9191072.json",
+   "woocommerce-lt_LT-33fee46b98094d4804f0362a5aad658d.json",
+   "woocommerce-lt_LT-35badc913c2594f0b9f19d36b58b9cce.json",
+   "woocommerce-lt_LT-35f5d74f2007b126eeef3c73a7c819a6.json",
+   "woocommerce-lt_LT-3819305314c698924728d966720aaca7.json",
+   "woocommerce-lt_LT-3822e084584af73b3534ef184ec8d114.json",
+   "woocommerce-lt_LT-39d4b99786986c8785a60df484b86f21.json",
+   "woocommerce-lt_LT-3d846a67871bcc8383e5c6f1024b8187.json",
+   "woocommerce-lt_LT-3f1e25ac30728e4df6f092b159c47875.json",
+   "woocommerce-lt_LT-403dcd6a366f8d33e75b08cf7779b241.json",
+   "woocommerce-lt_LT-4177fc623b181279c609293ff5085ae0.json",
+   "woocommerce-lt_LT-41c967d2b4e928033877e0063828c441.json",
+   "woocommerce-lt_LT-42f875d1d5f4fc0dc6d5e7f27026c87d.json",
+   "woocommerce-lt_LT-437fd0de081e2abc79b4baa55ec087a4.json",
+   "woocommerce-lt_LT-440e3f94950fd71495d4bcb332ee639f.json",
+   "woocommerce-lt_LT-452ce70241ca22cfa3d369e7eaf12b03.json",
+   "woocommerce-lt_LT-471a3ad765cae270d0a25210d8a53ab8.json",
+   "woocommerce-lt_LT-4722b63f6b580b10ebd10d293a0b6765.json",
+   "woocommerce-lt_LT-47334b38fd482809419fbd389607b05e.json",
+   "woocommerce-lt_LT-48f712bf18d189801e4ae706e0037377.json",
+   "woocommerce-lt_LT-4960ed60135ea5260a9baabe3c0e60bb.json",
+   "woocommerce-lt_LT-4ab6442e99b7c2a178f27791cdd43f56.json",
+   "woocommerce-lt_LT-4d4fa55da406b60dff2c54bd3e1bdf3a.json",
+   "woocommerce-lt_LT-4ead9007ae1ee6237e3aea212bc207d9.json",
+   "woocommerce-lt_LT-4ef3118a4b5a865d0934d771a1a875a5.json",
+   "woocommerce-lt_LT-507f1208a3dc15ee33256209b516fa76.json",
+   "woocommerce-lt_LT-530b01a91640e4b045d957344718894e.json",
+   "woocommerce-lt_LT-5598a099319118a77b5e42860bea0251.json",
+   "woocommerce-lt_LT-561e9f72569a5002eee2e2cedee244ee.json",
+   "woocommerce-lt_LT-56ac046978a89f98fa741a4dc37373f4.json",
+   "woocommerce-lt_LT-57503dbba036114ac402528e83f44b7d.json",
+   "woocommerce-lt_LT-5771b62744bce3727cc7578423dbffc6.json",
+   "woocommerce-lt_LT-58c7172a70cb6d278edebe8468c37490.json",
+   "woocommerce-lt_LT-58eb230d6d2fe31c63044647ca8823cb.json",
+   "woocommerce-lt_LT-5914770a01730d9ad61a73952929876b.json",
+   "woocommerce-lt_LT-5a05849642c703a3ea8822e1e6723d99.json",
+   "woocommerce-lt_LT-5a46c0880461d4dc5eb91cd66679410c.json",
+   "woocommerce-lt_LT-5b86697c659cf20f2923fbcf16d84a91.json",
+   "woocommerce-lt_LT-5d01323fef6997040e0487ea97c888de.json",
+   "woocommerce-lt_LT-5d44b68974722f8f33f1e09db8c8c52a.json",
+   "woocommerce-lt_LT-5d95e88589c1e26aec733d311a5f6208.json",
+   "woocommerce-lt_LT-5f6ee80394b027c1967bb1d1220e0254.json",
+   "woocommerce-lt_LT-61879217cb86dca73d402b4a6834bf23.json",
+   "woocommerce-lt_LT-61ff17b10b4ff22e2725e50533ffc3a5.json",
+   "woocommerce-lt_LT-6296dae5ec247d37f3785f7f81b3e8a4.json",
+   "woocommerce-lt_LT-62d404bf6e393bbb546940dd814b9f26.json",
+   "woocommerce-lt_LT-641fd4df4e377ec54b0d9354f920fbb3.json",
+   "woocommerce-lt_LT-64f0d663cfe62dfbb0c8052400e9d423.json",
+   "woocommerce-lt_LT-65c453b99754c5ecb86a000f47491ca5.json",
+   "woocommerce-lt_LT-662856f1e67ffbd99e3457a4873e2b18.json",
+   "woocommerce-lt_LT-66eb0f8993f9a1f59f27ad5b75ea6077.json",
+   "woocommerce-lt_LT-67623f954247cac6ea1fff3ed1b0b973.json",
+   "woocommerce-lt_LT-68a8734e0fd9c2469e6826be62a31e90.json",
+   "woocommerce-lt_LT-6b163e771738c554beb5fdb549b507c6.json",
+   "woocommerce-lt_LT-6b252174a3e91d81c283352772a134e4.json",
+   "woocommerce-lt_LT-6fc99b8611fe5e1313229f6e3d83494c.json",
+   "woocommerce-lt_LT-7191abc3e5ae6aba1378c2d2b593e25a.json",
+   "woocommerce-lt_LT-73a78fe6884e2ce9cd23e3af73a3b52f.json",
+   "woocommerce-lt_LT-74b6fb60d0b88b06aae7413389f85544.json",
+   "woocommerce-lt_LT-74e5e424bcaed5f7c211729203f471df.json",
+   "woocommerce-lt_LT-750143815c8f43588af17c98ace49c88.json",
+   "woocommerce-lt_LT-753733dacbf958ee7471d7a26d5dd84e.json",
+   "woocommerce-lt_LT-75478d27162f9793b21b8408f1996bf1.json",
+   "woocommerce-lt_LT-762d02a1afb327baad73e17fed1f08e6.json",
+   "woocommerce-lt_LT-76de108c0680bf620d1bde32df485ae5.json",
+   "woocommerce-lt_LT-78028b4b612742fc96407a351e0198e9.json",
+   "woocommerce-lt_LT-7861389540ce30157e63c9452aca49b5.json",
+   "woocommerce-lt_LT-7951b083e84d8324bfbc01920a7950b6.json",
+   "woocommerce-lt_LT-7adf6d6cef2831670666cc53b0643bf7.json",
+   "woocommerce-lt_LT-7d1c83d014474814d1024f6062f40ddc.json",
+   "woocommerce-lt_LT-7db1c7831a17345b259dedf12fa5c4e7.json",
+   "woocommerce-lt_LT-7e7b2d3190060637abf939d03599ae3e.json",
+   "woocommerce-lt_LT-7e9f53f8275f2428f994fbcd6b09f9cb.json",
+   "woocommerce-lt_LT-7fdaf32d435835d6f63f776731e6588f.json",
+   "woocommerce-lt_LT-809dea67f83eb6ab2c3be36b9cb37563.json",
+   "woocommerce-lt_LT-80b8c3927dd55611294f2ed06b21d04f.json",
+   "woocommerce-lt_LT-81207f2e1817637c08b11cae7cc01024.json",
+   "woocommerce-lt_LT-85f8b8cc67d62cedf7d528975a786993.json",
+   "woocommerce-lt_LT-882736e017c8f1454484ee689148c0d3.json",
+   "woocommerce-lt_LT-886530422d9a9bd5cc3f01ca3442c00e.json",
+   "woocommerce-lt_LT-894003414e1a6c46b840c82e2f89f148.json",
+   "woocommerce-lt_LT-8aae233d6340dd7cca1b1cb672956a2f.json",
+   "woocommerce-lt_LT-8ac70ecf9ac8f6c68deba22867d20f3a.json",
+   "woocommerce-lt_LT-8f3de6d4b9b4778f6857ae2496328901.json",
+   "woocommerce-lt_LT-8fce56bf08454a96ec50f1c54fd119f2.json",
+   "woocommerce-lt_LT-908ca6114f28255b8739e92d3bf6c198.json",
+   "woocommerce-lt_LT-916902de3cc8e85044c89d0860103772.json",
+   "woocommerce-lt_LT-921754054d88d50626fa24baf6ec95c0.json",
+   "woocommerce-lt_LT-921db1a8fef5d13b74b5d975c8298175.json",
+   "woocommerce-lt_LT-969f290929cfa89f79981c270405c556.json",
+   "woocommerce-lt_LT-97022ed97b431dec2d18f580612470f8.json",
+   "woocommerce-lt_LT-973a6b59201519d875b78a238c6a67a4.json",
+   "woocommerce-lt_LT-98a8fb20e4e5f75bcfb26995589650e8.json",
+   "woocommerce-lt_LT-98cb3428b01292ea31f2d1e0394acaaa.json",
+   "woocommerce-lt_LT-9a365cfb083caccf7892aee2c1ab5d23.json",
+   "woocommerce-lt_LT-9aa7620f7c09b927ab1e512da142330d.json",
+   "woocommerce-lt_LT-9b585b1dd861f8b980f1e1f4de634039.json",
+   "woocommerce-lt_LT-9c667de5e532bfd0bfb618907fd39d58.json",
+   "woocommerce-lt_LT-9d421988757769ca3732e97df07f78df.json",
+   "woocommerce-lt_LT-9d59fc010f6d8ff895aa009384b04b57.json",
+   "woocommerce-lt_LT-9db63b5c87e9e44dad1d40a287c8036f.json",
+   "woocommerce-lt_LT-9df0c77ff5ef89f72faabf3d50ae98be.json",
+   "woocommerce-lt_LT-a047c3f6dc8ba2aadd1a8f6ef6adc6ac.json",
+   "woocommerce-lt_LT-a0795582e2b29b03e38e7ba1a368ae57.json",
+   "woocommerce-lt_LT-a0fac9bd8e1383f3c9dd13e437167139.json",
+   "woocommerce-lt_LT-a203202ed09c67675354ffb2e6a13401.json",
+   "woocommerce-lt_LT-a39951e43e2c22f8b8575dc64b1adf6d.json",
+   "woocommerce-lt_LT-a4c4feaa7af452f3806490e2597f9014.json",
+   "woocommerce-lt_LT-a5eaf2e219eebf99f469a6a08d0060c5.json",
+   "woocommerce-lt_LT-a6d634ec8301cf8a951a8878c11a934b.json",
+   "woocommerce-lt_LT-a6ff84a2a96718f5931b714ed4385ee4.json",
+   "woocommerce-lt_LT-a774ade9a14e03f8650b90217755c77c.json",
+   "woocommerce-lt_LT-a857888aed6730e8bb4dd6a2d8b3d2ef.json",
+   "woocommerce-lt_LT-a94d296015dbfc58ebdacf6bc560866e.json",
+   "woocommerce-lt_LT-aaab1afd48a07f2ab36bf4f71658d0cb.json",
+   "woocommerce-lt_LT-ac4c75230d29f7a426c9a5dcd8f33102.json",
+   "woocommerce-lt_LT-aecb3c67a29773449e558eff12fa4238.json",
+   "woocommerce-lt_LT-af1de7be2ed0d3aba150f744bf0f82ae.json",
+   "woocommerce-lt_LT-b04131f0c7f4bd0670184286dcea650c.json",
+   "woocommerce-lt_LT-b41bb8ea325e450160deb70026229c62.json",
+   "woocommerce-lt_LT-b5eb9d1d4f5c11dc23eb22d8a5a026ff.json",
+   "woocommerce-lt_LT-b660710d20aa544ac71a551eec7101a4.json",
+   "woocommerce-lt_LT-b78943e8ad17b8ddd6cc226def1e15df.json",
+   "woocommerce-lt_LT-b89a01ddb2b6fc2148a2c4e1828ccb87.json",
+   "woocommerce-lt_LT-b89c99dd4899a73f64f8a831a4d38164.json",
+   "woocommerce-lt_LT-b95e3c9f215868cd25b8c5ad28106861.json",
+   "woocommerce-lt_LT-b96517b2db03f7c61e573a05e38e268c.json",
+   "woocommerce-lt_LT-backup-202605201842010.po~",
+   "woocommerce-lt_LT-backup-202605210919360.po~",
+   "woocommerce-lt_LT-backup-202605210919580.po~",
+   "woocommerce-lt_LT-backup-202605210920320.po~",
+   "woocommerce-lt_LT-backup-202605261422240.po~",
+   "woocommerce-lt_LT-bd132b0816b6a1cf2bd394282b8994c4.json",
+   "woocommerce-lt_LT-bd52b95024f757d0866faaa125f152f2.json",
+   "woocommerce-lt_LT-bd70f86e6c2dbfcc3317fb1031c4a0f0.json",
+   "woocommerce-lt_LT-bfb700819e8a3fe2e606f8b24efe8443.json",
+   "woocommerce-lt_LT-bfbeaf59a94409527195bc83600392b4.json",
+   "woocommerce-lt_LT-c1b3b46ae65d4729f2d14e808ce42d6f.json",
+   "woocommerce-lt_LT-c29610f8145dddacaacc3361e77a1274.json",
+   "woocommerce-lt_LT-c4efd78f874161e4ccd3e4de7b666251.json",
+   "woocommerce-lt_LT-c573e1c09e9366052819287a51fb565d.json",
+   "woocommerce-lt_LT-c58638c50f7298ef6598e7bd0a1ad65c.json",
+   "woocommerce-lt_LT-c606d1fcf4b34848280e720a4971ac27.json",
+   "woocommerce-lt_LT-c65ba3a598d6018a8291ad8bc4225668.json",
+   "woocommerce-lt_LT-c694cf4a44b23f6c531a507792121e9e.json",
+   "woocommerce-lt_LT-c79dfe679b87123eba25f5a0c688b1d5.json",
+   "woocommerce-lt_LT-c82d261e7ee918daf590ebaf0e1b1da4.json",
+   "woocommerce-lt_LT-c9aa30dc38bbe30edca1fe99018864fe.json",
+   "woocommerce-lt_LT-ca1898f29b0927a43fa6ec96bdc2be47.json",
+   "woocommerce-lt_LT-ca84bc373fb564e573f6efc6b94f71f7.json",
+   "woocommerce-lt_LT-cc81f776e921d7763aa7bc30036177f1.json",
+   "woocommerce-lt_LT-ce3d3ec7111282dcdf3cfeb11c558277.json",
+   "woocommerce-lt_LT-ce807318848ea2ecc90a25faf264cb35.json",
+   "woocommerce-lt_LT-ced1cf96a63c0084b9bc30fc7511b78f.json",
+   "woocommerce-lt_LT-cff9e44defb88755b784b7f92a6c4f85.json",
+   "woocommerce-lt_LT-d0258ce98e6189fd6bb704d043ce34fc.json",
+   "woocommerce-lt_LT-d6056d63ae9915b6e6dee9a09b277858.json",
+   "woocommerce-lt_LT-d8234f4b8220bdb74a7d7270633ddaf0.json",
+   "woocommerce-lt_LT-d86a9d2b180b67f45930be95f4bf26a9.json",
+   "woocommerce-lt_LT-daa6202fe25b709061afd2099f4a8eda.json",
+   "woocommerce-lt_LT-db94500835f22877cd6350c589b541b1.json",
+   "woocommerce-lt_LT-ddc852e3baa9cc9f15df8f712b00e24c.json",
+   "woocommerce-lt_LT-de3c7cc410529a47f2ffbea53e330c90.json",
+   "woocommerce-lt_LT-de90ea7046630a8ac03dc3df92869d2e.json",
+   "woocommerce-lt_LT-de92539e8e5af5b3e531b35314479783.json",
+   "woocommerce-lt_LT-e0bc0ec28810dbbc72532e28e7bcc58d.json",
+   "woocommerce-lt_LT-e20617995f4ef68fe7e29c970faab75f.json",
+   "woocommerce-lt_LT-e416b6125c77a248e69f6df5e00abc0e.json",
+   "woocommerce-lt_LT-e9da8c17aa451807d92b07bc51a8029b.json",
+   "woocommerce-lt_LT-ead3615c9f3649630c8776fd33e2f70e.json",
+   "woocommerce-lt_LT-efe0fc0f9943be994639329f2ea6b076.json",
+   "woocommerce-lt_LT-f0956c00c9e045d83f878249d69958bd.json",
+   "woocommerce-lt_LT-f270a6b21bb6983ab88733006933d442.json",
+   "woocommerce-lt_LT-f2df68f6d4d5901de678e60cc278c159.json",
+   "woocommerce-lt_LT-f34beaf9c94fc969fe091bdb0a3d06e7.json",
+   "woocommerce-lt_LT-f3d56d487c73ae81566d748b519628b4.json",
+   "woocommerce-lt_LT-f482645a7f8c477f25067c8a0b1e64d2.json",
+   "woocommerce-lt_LT-f59fc99258fa76f6a00ffa61267dafed.json",
+   "woocommerce-lt_LT-f76aec99021d72e88afb0f04a532f79d.json",
+   "woocommerce-lt_LT-f7b627e82983c90afb41d5218d3681d6.json",
+   "woocommerce-lt_LT-faf42d095a2280fdadded6bcc7f5600b.json",
+   "woocommerce-lt_LT-fbeb96f8164c2403e759d3c4be2d472b.json",
+   "woocommerce-lt_LT-fc7887bbe75b0041310c11444355aabf.json",
+   "woocommerce-lt_LT-fdb6cc3870aada55ace0bee4e4032e85.json",
+   "woocommerce-lt_LT-fdeb81b791b5fb3b71e8060816a37c11.json",
+   "woocommerce-lt_LT-fe5bd46cad4d94d410bb4f072377120f.json",
+   "woocommerce-lt_LT-ff089c9f663fae28db4e4e9a3cd81140.json",
+   "woocommerce-lt_LT-ff1380fa8e9e3d530704e431ea4c7528.json",
+   "woocommerce-lt_LT-ff89c3b4a2ed00af1fe7978dc748be9c.json",
+   "woocommerce-lt_LT-wc-admin-app.json",
+   "woocommerce-lt_LT.l10n.php",
+   "woocommerce-lt_LT.mo",
+   "woocommerce-lt_LT.po"
+  ],
+  "wc_lt_mo_mtime": "2026-05-26",
+  "org_schema_home": {
+   "@type": "Organization",
+   "@id": "https://petshop.lt/#organization",
+   "name": "Petshop.lt"
+  }
+ }
+}
