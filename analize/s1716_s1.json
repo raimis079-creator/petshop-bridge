@@ -1,0 +1,32 @@
+{
+ "1": {
+  "v": "S1716s",
+  "checkout_page": [
+   13,
+   "kasa",
+   "Apmokėjimas",
+   "https://petshop.lt/kasa/"
+  ],
+  "failai": {
+   "wp-content/mu-plugins/petshop-404-atitikmuo.php": 3
+  },
+  "viso_kode": 3,
+  "snippets": [
+   {
+    "id": "6371",
+    "name": "TEMP PS dep-215606",
+    "n": "6.0000"
+   }
+  ],
+  "turinys": [],
+  "gsc_klikai_kasa": null,
+  "noindex": ""
+ },
+ "v": "dep-215606",
+ "kurimas": 200,
+ "sid": 6371,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
