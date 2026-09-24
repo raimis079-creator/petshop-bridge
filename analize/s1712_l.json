@@ -1,0 +1,785 @@
+{
+ "v": "dep-161134",
+ "kurimas": 200,
+ "sid": 6307,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "L": {
+  "v": "S1712b",
+  "faze": "L",
+  "failai": [
+   [
+    "Sep-2026.tar.gz",
+    "1.3MB",
+    "09-24 01:55"
+   ],
+   [
+    "Sep-2026.tar.gz.1",
+    "4.2MB",
+    "09-23 21:12"
+   ],
+   [
+    "Sep-2026.tar.gz.10",
+    "0.3MB",
+    "09-19 01:06"
+   ],
+   [
+    "Sep-2026.tar.gz.11",
+    "1.7MB",
+    "09-18 21:11"
+   ],
+   [
+    "Sep-2026.tar.gz.12",
+    "0.2MB",
+    "09-18 02:26"
+   ],
+   [
+    "Sep-2026.tar.gz.2",
+    "0.5MB",
+    "09-23 01:21"
+   ],
+   [
+    "Sep-2026.tar.gz.3",
+    "3.2MB",
+    "09-22 21:11"
+   ],
+   [
+    "Sep-2026.tar.gz.4",
+    "0.3MB",
+    "09-22 02:20"
+   ],
+   [
+    "Sep-2026.tar.gz.5",
+    "2.3MB",
+    "09-21 21:11"
+   ],
+   [
+    "Sep-2026.tar.gz.6",
+    "0.3MB",
+    "09-21 01:25"
+   ],
+   [
+    "Sep-2026.tar.gz.7",
+    "1.9MB",
+    "09-20 21:11"
+   ],
+   [
+    "Sep-2026.tar.gz.8",
+    "0.3MB",
+    "09-20 01:41"
+   ],
+   [
+    "Sep-2026.tar.gz.9",
+    "1.7MB",
+    "09-19 21:11"
+   ],
+   [
+    "php_error.log",
+    "0.5MB",
+    "09-24 16:05"
+   ]
+  ],
+  "eil": {
+   "Sep-2026.tar.gz": 25075,
+   "Sep-2026.tar.gz.1": 88228,
+   "Sep-2026.tar.gz.10": 6207,
+   "Sep-2026.tar.gz.11": 44001,
+   "Sep-2026.tar.gz.12": 5634,
+   "Sep-2026.tar.gz.2": 11558,
+   "Sep-2026.tar.gz.3": 76559,
+   "Sep-2026.tar.gz.4": 7374,
+   "Sep-2026.tar.gz.5": 60899,
+   "Sep-2026.tar.gz.6": 6797,
+   "Sep-2026.tar.gz.7": 45080,
+   "Sep-2026.tar.gz.8": 8453,
+   "Sep-2026.tar.gz.9": 43891,
+   "php_error.log": 3616
+  },
+  "viso_eil": 433372,
+  "botu_eil": 54792,
+  "botai": {
+   "OAI-SearchBot": {
+    "103": 1,
+    "200": 2099,
+    "301": 134,
+    "302": 2,
+    "404": 30,
+    "500": 1
+   },
+   "Applebot": {
+    "103": 2,
+    "200": 3745,
+    "301": 21,
+    "302": 2,
+    "404": 22
+   },
+   "Kaina24": {
+    "103": 29,
+    "200": 3717,
+    "301": 24,
+    "302": 41,
+    "?": 7
+   },
+   "SemrushBot": {
+    "103": 2,
+    "200": 990,
+    "301": 122,
+    "404": 36,
+    "500": 1
+   },
+   "facebookexternalhit": {
+    "103": 38,
+    "200": 1003,
+    "301": 626,
+    "302": 4,
+    "404": 30
+   },
+   "PetalBot": {
+    "200": 2077,
+    "301": 2,
+    "500": 1
+   },
+   "bingbot": {
+    "103": 2,
+    "200": 2447,
+    "301": 172,
+    "404": 127
+   },
+   "PerplexityBot": {
+    "103": 2,
+    "200": 2417,
+    "301": 128,
+    "404": 30,
+    "500": 2
+   },
+   "ClaudeBot": {
+    "103": 3,
+    "200": 1,
+    "403": 87,
+    "404": 6,
+    "?": 87
+   },
+   "GoogleOther": {
+    "200": 4630,
+    "301": 106,
+    "403": 4,
+    "404": 36,
+    "500": 1
+   },
+   "Googlebot": {
+    "103": 1,
+    "200": 3931,
+    "301": 844,
+    "404": 518
+   },
+   "AdsBot": {
+    "200": 5833,
+    "301": 677,
+    "304": 4,
+    "404": 139
+   },
+   "kainos": {
+    "103": 11,
+    "200": 2997,
+    "301": 1334,
+    "302": 8,
+    "404": 7
+   },
+   "Amazonbot": {
+    "200": 3407,
+    "301": 262,
+    "404": 86
+   },
+   "ChatGPT-User": {
+    "403": 508,
+    "500": 30,
+    "?": 538
+   },
+   "Bytespider": {
+    "103": 3,
+    "200": 382,
+    "206": 1869,
+    "301": 26,
+    "404": 3
+   },
+   "AhrefsBot": {
+    "103": 214,
+    "200": 1967,
+    "301": 837,
+    "500": 2
+   },
+   "Googlebot-Image": {
+    "200": 2171,
+    "301": 21,
+    "304": 1,
+    "404": 245
+   },
+   "YandexBot": {
+    "200": 314,
+    "301": 114,
+    "404": 46
+   },
+   "GPTBot": {
+    "403": 71,
+    "500": 1,
+    "?": 72
+   },
+   "MJ12bot": {
+    "403": 48,
+    "?": 48
+   },
+   "Storebot": {
+    "200": 29
+   },
+   "DuckAssistBot": {
+    "103": 1,
+    "200": 1,
+    "404": 4
+   },
+   "DuckDuckBot": {
+    "200": 13,
+    "301": 8,
+    "302": 6,
+    "404": 2
+   },
+   "Claude-User": {
+    "200": 8,
+    "301": 4
+   },
+   "mistral": {
+    "103": 3,
+    "200": 1
+   },
+   "Google-Extended": {
+    "103": 4,
+    "404": 1
+   },
+   "meta-externalagent": {
+    "103": 2,
+    "200": 4,
+    "301": 3,
+    "404": 3
+   },
+   "CCBot": {
+    "103": 1,
+    "404": 3
+   },
+   "cohere": {
+    "301": 1,
+    "404": 3
+   }
+  },
+  "tipai": {
+   "OAI-SearchBot": {
+    "wp-json": 301,
+    "uploads": 1515,
+    "kita": 161,
+    "preke": 149,
+    "kategorija": 42,
+    "sitemap_robots": 73,
+    "home": 6,
+    "assets": 20
+   },
+   "Applebot": {
+    "preke": 1250,
+    "uploads": 530,
+    "kita": 726,
+    "sitemap_robots": 21,
+    "assets": 1147,
+    "home": 2,
+    "kategorija": 99,
+    "wp-json": 12,
+    "kat_filtras": 4,
+    "feed": 1
+   },
+   "Kaina24": {
+    "feed": 160,
+    "preke": 161,
+    "kita": 258,
+    "assets": 1916,
+    "uploads": 1283,
+    "kategorija": 13,
+    "wp-json": 1,
+    "krepselis_kasa": 3,
+    "admin": 23
+   },
+   "SemrushBot": {
+    "sitemap_robots": 68,
+    "preke": 772,
+    "kategorija": 118,
+    "kita": 163,
+    "uploads": 19,
+    "kat_filtras": 11
+   },
+   "facebookexternalhit": {
+    "kita": 1240,
+    "sitemap_robots": 152,
+    "kat_filtras": 4,
+    "uploads": 241,
+    "home": 29,
+    "preke": 19,
+    "kategorija": 6,
+    "senas_url": 2,
+    "krepselis_kasa": 3,
+    "assets": 5
+   },
+   "PetalBot": {
+    "preke": 1824,
+    "kategorija": 213,
+    "sitemap_robots": 43
+   },
+   "bingbot": {
+    "uploads": 1762,
+    "kita": 363,
+    "preke": 372,
+    "kat_filtras": 7,
+    "kategorija": 79,
+    "sitemap_robots": 25,
+    "feed": 8,
+    "admin": 1,
+    "assets": 119,
+    "home": 7,
+    "wp-json": 3,
+    "krepselis_kasa": 1,
+    "senas_url": 1
+   },
+   "PerplexityBot": {
+    "kategorija": 285,
+    "kita": 195,
+    "preke": 1580,
+    "sitemap_robots": 14,
+    "uploads": 491,
+    "home": 3,
+    "krepselis_kasa": 7,
+    "kat_filtras": 4
+   },
+   "ClaudeBot": {
+    "sitemap_robots": 81,
+    "kita": 103
+   },
+   "GoogleOther": {
+    "kat_filtras": 749,
+    "assets": 1485,
+    "kita": 848,
+    "preke": 105,
+    "uploads": 1558,
+    "home": 16,
+    "kategorija": 14,
+    "admin": 2
+   },
+   "Googlebot": {
+    "kat_filtras": 1813,
+    "kita": 1301,
+    "sitemap_robots": 178,
+    "preke": 747,
+    "assets": 719,
+    "uploads": 258,
+    "kategorija": 214,
+    "admin": 8,
+    "home": 35,
+    "senas_url": 10,
+    "krepselis_kasa": 11
+   },
+   "AdsBot": {
+    "assets": 2130,
+    "uploads": 730,
+    "kita": 2526,
+    "kategorija": 213,
+    "preke": 962,
+    "kat_filtras": 68,
+    "home": 10,
+    "krepselis_kasa": 8,
+    "admin": 6
+   },
+   "kainos": {
+    "preke": 2632,
+    "kita": 624,
+    "uploads": 266,
+    "assets": 835
+   },
+   "Amazonbot": {
+    "wp-json": 376,
+    "uploads": 2513,
+    "preke": 437,
+    "kategorija": 50,
+    "kat_filtras": 32,
+    "kita": 347
+   },
+   "ChatGPT-User": {
+    "home": 303,
+    "kita": 725,
+    "preke": 28,
+    "kategorija": 20
+   },
+   "Bytespider": {
+    "preke": 190,
+    "uploads": 1878,
+    "kat_filtras": 18,
+    "kategorija": 36,
+    "sitemap_robots": 10,
+    "assets": 112,
+    "kita": 31,
+    "home": 8
+   },
+   "AhrefsBot": {
+    "sitemap_robots": 1916,
+    "kita": 1087,
+    "uploads": 11,
+    "home": 6
+   },
+   "Googlebot-Image": {
+    "uploads": 2172,
+    "kita": 266
+   },
+   "YandexBot": {
+    "sitemap_robots": 90,
+    "kita": 195,
+    "preke": 90,
+    "home": 26,
+    "kat_filtras": 15,
+    "kategorija": 56,
+    "wp-json": 1,
+    "krepselis_kasa": 1
+   },
+   "GPTBot": {
+    "preke": 51,
+    "kita": 84,
+    "home": 3,
+    "sitemap_robots": 6
+   },
+   "MJ12bot": {
+    "sitemap_robots": 48,
+    "kita": 48
+   },
+   "Storebot": {
+    "kategorija": 1,
+    "assets": 27,
+    "kita": 1
+   },
+   "DuckAssistBot": {
+    "sitemap_robots": 1,
+    "kita": 5
+   },
+   "DuckDuckBot": {
+    "kita": 9,
+    "preke": 1,
+    "home": 13,
+    "assets": 6
+   },
+   "Claude-User": {
+    "sitemap_robots": 4,
+    "kita": 5,
+    "preke": 2,
+    "kategorija": 1
+   },
+   "mistral": {
+    "kita": 3,
+    "home": 1
+   },
+   "Google-Extended": {
+    "kita": 5
+   },
+   "meta-externalagent": {
+    "kita": 5,
+    "home": 6,
+    "preke": 1
+   },
+   "CCBot": {
+    "kita": 4
+   },
+   "cohere": {
+    "kita": 4
+   }
+  },
+  "keliai": {
+   "OAI-SearchBot": {
+    "/robots.txt": 73,
+    "/?wc-ajax=get_refreshed_fragments": 8,
+    "/wp-content/uploads/2026/06/quattro-visavertis-sausas-dietinis-senstanciu-kaciu-pasaras-su-balta-zuvimi-ir-kri": 8,
+    "/wp-content/uploads/2026/06/quattro-visavertis-sausas-pasaras-visu-veisliu-kaciukams-su-vistiena-iki-12-menesi": 8,
+    "/wp-content/uploads/2026/06/quattro-visavertis-sausas-pasaras-suaugusioms-jautrioms-katems-su-lasisa-ir-kriliu": 8,
+    "/kategorija/katems/maistas-katems/": 7,
+    "/": 6,
+    "/wp-content/uploads/2026/06/quattro-sb-su-lasisa-ir-kriliu-sausas-suaugusiu-mazu-veisliu-sunu-pasaras-15kg_1_0": 6,
+    "/wp-json/oembed/1.0/embed?format=xml&url=https%3A%2F%2Fpetshop.lt%2Fproduct%2Ftrixie-girdykla-grauzikams-plast": 5,
+    "/wp-content/uploads/2026/06/quattro-visavertis-sausas-pasaras-suaugusioms-sterilizuotoms-katems-su-lasisa-7-kg": 4,
+    "/wp-content/uploads/2026/06/quattro-visavertis-sausas-pasaras-suaugusioms-sterilizuotoms-katems-su-vistiena-7-": 4,
+    "/wp-content/uploads/2026/06/quattro-visavertis-sausas-pasaras-suaugusioms-sterilizuotoms-katems-su-vistiena-15": 4
+   },
+   "Applebot": {
+    "/?wc-ajax=get_refreshed_fragments": 690,
+    "/wp-content/plugins/complianz-gdpr/assets/css/cookieblocker.min.css?ver=1787107019": 30,
+    "/wp-content/plugins/woocommerce-mix-and-match-products/assets/css/frontend/mnm-frontend.min.css?ver=2.8.7": 30,
+    "/wp-content/plugins/woocommerce/assets/css/photoswipe/photoswipe.min.css?ver=11.0.1": 30,
+    "/wp-content/plugins/yith-woocommerce-ajax-navigation/assets/css/shortcodes.css?ver=5.22.0": 30,
+    "/wp-content/plugins/woocommerce/assets/css/photoswipe/default-skin/default-skin.min.css?ver=11.0.1": 30,
+    "/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?ver=wc-11.0.1": 30,
+    "/wp-content/plugins/woocommerce/assets/css/brands.css?ver=11.0.1": 30,
+    "/wp-content/plugins/woocommerce-mix-and-match-products/assets/css/frontend/blocks/checkout-blocks.css?ver=2.8.": 30,
+    "/wp-content/themes/flatsome/assets/css/flatsome.css?ver=3.20.7": 30,
+    "/wp-content/themes/flatsome/assets/css/flatsome-shop.css?ver=3.20.7": 30,
+    "/wp-content/themes/flatsome-child/style.css?ver=3.0": 30
+   },
+   "PerplexityBot": {
+    "/robots.txt": 14,
+    "/kategorija/zuvims/akvariumo-zuvyciu-maistas/": 5,
+    "/kategorija/pauksciams/lesalas-pauksciams/": 4,
+    "/taisykles/": 4,
+    "/slapuku-politika/": 4,
+    "/kategorija/sunims/skanestai-sunims/": 4,
+    "/kontaktai/": 4,
+    "/kategorija/sunims/transportavimo-dezes-sunims/": 3,
+    "/kategorija/sunims/antiparazitines-priemones-sunims/": 3,
+    "/kategorija/sunims/sampunai-sunims/": 3,
+    "/gamintojas/nobleza/": 3,
+    "/kategorija/pauksciams/": 3
+   },
+   "ClaudeBot": {
+    "?": 88,
+    "/robots.txt": 81,
+    "/admin/.env": 1,
+    "/secrets.json": 1,
+    "/service-account.json": 1,
+    "/functionRouter": 1,
+    "/@fs/proc/self/cwd/.env?raw??": 1,
+    "/api/uploads/%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2f%2e%2e%2fproc/self/environ": 1,
+    "/@fs/var/task/.env?raw??": 1,
+    "/wp-json": 1,
+    "/api/designer/v1/file-content": 1,
+    "/9h5jedzn2wyhuhf454yc": 1
+   },
+   "Googlebot_kat_filtras": {
+    "/kategorija/sunims/maistas-sunims/?filter_be_grudu=su-ryziais&filter_amzius=suaugusiems%2Csenjorams&query_type": 174,
+    "/kategorija/sunims/maistas-sunims/?filter_amzius=suaugusiems%2Csenjorams&query_type_amzius=or&query_type_pakuo": 61,
+    "/kategorija/sunims/maistas-sunims/?filter_amzius=suaugusiems%2Csenjorams&query_type_amzius=or&filter_baltymu_s": 59,
+    "/kategorija/sunims/maistas-sunims/?filter_be_grudu=su-ryziais&filter_baltymu_saltinis=antiena%2Cvistiena%2Ckia": 56,
+    "/kategorija/sunims/maistas-sunims/?filter_be_grudu=su-ryziais&filter_baltymu_saltinis=antiena%2Ckiauliena%2Cla": 56,
+    "/kategorija/sunims/maistas-sunims/?filter_amzius=suaugusiems%2Csenjorams&query_type_amzius=or&filter_pakuotes_": 44,
+    "/kategorija/sunims/maistas-sunims/?filter_amzius=suaugusiems%2Csenjorams&query_type_amzius=or&query_type_balty": 41,
+    "/kategorija/sunims/maistas-sunims/?filter_be_grudu=su-ryziais&query_type_amzius=or&filter_pakuotes_dydis=12-5-": 40,
+    "/kategorija/sunims/maistas-sunims/?filter_be_grudu=su-ryziais&query_type_baltymu_saltinis=or&filter_amzius=sua": 38,
+    "/kategorija/sunims/maistas-sunims/?filter_baltymu_saltinis=antiena%2Cvistiena%2Ckiauliena%2Clasisa&query_type_": 24,
+    "/kategorija/sunims/maistas-sunims/?filter_baltymu_saltinis=antiena%2Ckiauliena%2Clasisa%2Ctriusiena&query_type": 22,
+    "/kategorija/sunims/maistas-sunims/?filter_be_grudu=su-ryziais&query_type_pakuotes_dydis=or&filter_baltymu_salt": 22
+   },
+   "Googlebot_klaidos": {
+    "404 /ads.txt": 12,
+    "404 /system/cache/feed_google_sitemap_product1.xml": 7,
+    "404 /kiaules-snipas-baltas": 7,
+    "404 /.well-known/assetlinks.json": 6,
+    "404 /odos-lazdeles-apvyniotos-antiena-500-g-naturalus-skanestai-sunims-hau-and-miau": 6,
+    "404 /deli-nature-menu-super-premium-lesalas-banguotosioms-papugelems-800-g": 6,
+    "404 /konservai-sunims-super-beno-grain-free-eriena-ir-vistos-kepeneles-415-g": 6,
+    "404 /trixie-capri-3-boksas-s-40x38x61-cm-tamsiai-pilka-scaronviesiai-pilka-48204-1": 6,
+    "404 /maistas-sterilizuotai-katei-su-antsvorio-problema-ka-pirkti-ir-kaip-maitinti": 6,
+    "404 /konservai-sunims-super-beno-grain-free-antiena-ir-zirniai-415-g": 6,
+    "404 /monge-puppy-sausas-pascaronaras-eriena-ir-ryziai-12kg-48091-1": 6,
+    "404 /sampunas-jautriai-odai-nuo-sudirgimo-frexin-220-g": 6
+   },
+   "Amazonbot": {
+    "/wp-content/uploads/2026/06/pr-prins-procare-grainfree-adult-pro-energy-begrudis-sausas-maistas-aktyviems-suau": 18,
+    "/wp-content/uploads/2026/06/pr-prins-procare-protection-super-active-sausas-maistas-aktyviems-suaugusiems-suni": 15,
+    "/wp-content/uploads/2026/06/quattro-begrudis-visu-veisliu-suaugusiu-sunu-pasaras-weight-loss-su-balta-zuvimi-i": 14,
+    "/wp-content/uploads/2026/06/pr-prins-procare-grainfree-sensible-hypoallergic-begrudis-sausas-maistas-suaugusie": 12,
+    "/wp-content/uploads/2026/06/quattro-sb-su-lasisa-ir-kriliu-sausas-suaugusiu-mazu-veisliu-sunu-pasaras-15kg_1_0": 10,
+    "/wp-content/uploads/2026/06/quattro-sb-su-antiena-sausas-pasaras-mazu-veisliu-suniukams-maitinancioms-kalems-1": 10,
+    "/wp-content/uploads/2026/06/an-animonda-skanestai-katems-nuo-plauku-kamuoliuku-milkies-adult-harmony-anti-hair": 9,
+    "/wp-content/uploads/2026/06/quattro-sb-7kg-su-antiena-sausas-pasaras-mazu-veisliu-suniukams-maitinancioms-kale": 9,
+    "/wp-content/uploads/2026/06/quattro-sb-7kg-su-lasisa-ir-kriliu-sausas-suaugusiu-mazu-veisliu-sunu-pasaras_1_0-": 9,
+    "/wp-content/uploads/2026/06/quattro-begrudis-su-eriena-visu-veisliu-suaugusiu-sunu-pasaras-monoproteinas-3kg_1": 9,
+    "/wp-content/uploads/2026/06/quattro-begrudis-visu-veisliu-senjoru-dietinis-sunu-pasaras-su-balta-zuvimi-ir-kri": 9,
+    "/wp-content/uploads/2026/06/quattro-12kg-begrudis-su-eriena-visu-veisliu-suaugusiu-sunu-pasaras-monoproteinas_": 8
+   },
+   "ChatGPT-User": {
+    "?": 538,
+    "/": 303,
+    "/deli-nature-premium-lesalas-didelems-papugoms-20-kg-30-large-parakeets-basic": 16,
+    "/zaislas-katei-blizgantis-vabalas-skarabejus": 8,
+    "/deli-nature-premium-lesalas-kakadu-papugoms-15-kg-21-parrots-down-under": 8,
+    "/deli-nature-lesalas-amadinams-20-kg-40-foreign-finches-basic": 8,
+    "/deli-nature-premium-lesalas-amadinams-1-kg": 8,
+    "/leto-valgymo-dubenelis-cactus-32-x-32-x-7-cm": 8,
+    "/zaislas-suniui-guminis-kvepiantis-kamuoliukas-6-cm-sum-plast-wielokulek": 8,
+    "/josera-indoor-10-kg-sausas-maistas-naminems-sterilizuotoms-katems": 8,
+    "/tibeto-mastifas": 8,
+    "/product/tualetas-katems-labai-aukstu-remeliu-30-cm-georplast-colosseo/": 4
+   },
+   "Bytespider": {
+    "/wp-content/uploads/2026/06/gi-gimcat-maisto-papildas-katems-malt-soft-extra-anti-hairball-pasta-kaciu-zarnyno": 16,
+    "/wp-content/uploads/2026/06/ambrosia-grain-free-lamb-fresh-salmon-adult-begrudis-eriena-ir-sviezia-lasisa-saus": 12,
+    "/robots.txt": 10,
+    "/wp-content/uploads/2026/06/bi-bioveterinary-stress-control-stresa-mazinantis-pasaro-papildas-augintiniams-n28": 9,
+    "/": 8,
+    "/wp-content/uploads/2026/06/quattro-visavertis-sausas-pasaras-suaugusioms-jautrioms-katems-su-lasisa-ir-kriliu": 8,
+    "/wp-content/uploads/2026/06/on-ontario-troskinys-sunims-is-lasisos-ir-darzoviu-sultinyje-300-g-pouch-salmon-wi": 7,
+    "/gimcat-skanestai-katems-vitaminizuotos-tabletes-su-zole-gras-bits-50-g": 6,
+    "/product/gimcat-skanestai-katems-vitaminizuotos-tabletes-su-zole-gras-bits-40-g/": 6,
+    "/wp-content/uploads/2026/06/0009109_32_40356-trixie-maro-kampinis-tualetas-namelis-katei-su-lopetele-60x43x52-": 5,
+    "/wp-content/plugins/woocommerce/assets/client/blocks/wc-blocks.css?ver=wc-11.0.1": 5,
+    "/wp-content/plugins/woocommerce/assets/css/photoswipe/default-skin/default-skin.min.css?ver=11.0.1": 5
+   },
+   "GPTBot": {
+    "?": 72,
+    "/index.php?route=feed/google_sitemap/generate": 7,
+    "/sitemap_index.xml": 6,
+    "/": 3,
+    "/product/kietas-himalaju-surio-skanestas-su-uogomis-sunims-4dogs-s-dydis/": 2,
+    "/product/kietas-himalaju-surio-skanestas-su-metomis-sunims-4dogs-s-dydis/": 2,
+    "/product/trixie-apsauginis-bodis-m-l-50-cm-pilkas/": 2,
+    "/product/trixie-transportavimo-krepsys-pauksciams-27x32x27-cm/": 1,
+    "/product/natures-miracle-demiu-ir-kvapu-valymo-priemone-so-sunims-melionu-kvapo946ml/": 1,
+    "/product/smartbones-peanut-butter-bones-skanestai-su-riesutu-sviestu-vidutinio-dydzio-veisliu-sunims-2-vnt/": 1,
+    "/product/smartbones-chicken-bones-kaulai-su-vistiena-vidutinio-dydzio-veisliu-sunims-2-vnt/": 1,
+    "/product/smartbones-chicken-bones-kaulai-su-jautiena-vidutinio-dydzio-veisliu-sunims-2-vnt/": 1
+   },
+   "Googlebot_senas_url": {
+    "/konservuotas/2399-ontario-suaugusiom-katem-su-vistiena-ir-lasisa-95g.html": 2,
+    "/skanestai/142-banguotuju-papugeliu-gardesis-su-kivi-2-vnt.html": 2,
+    "/transportavimo-dezes/2296-boksas-gyvunams-skudo-2-iata.html": 2,
+    "/skanestai/2653-athena-pienas-katems-200ml.html": 2,
+    "/lazdeles-pauksciams/145-banguotuju-papugeliu-gardesis-su-kinrozemis-2-vnt.html": 1,
+    "/sausas/2648-ontario-adult-large-beef-12kg-pasaras-dideliu-veisliu-sunims-su-jautiena.html": 1
+   },
+   "DuckAssistBot": {
+    "/robots.txt": 1,
+    "/config/.env": 1,
+    "/frontend/.env": 1,
+    "/credentials.json": 1,
+    "/api/designer/v1/file-content": 1,
+    "/admin%2F.env": 1
+   },
+   "Claude-User": {
+    "/robots.txt": 4,
+    "/?post_type=product&s=royal+canin": 1,
+    "/special": 1,
+    "/product/special-dog-exc-monoprotein-sausas-pasaras-vidut-veisliu-suaug-sunims-su-kiauliena-3kg": 1,
+    "/product/special-dog-exc-monoprotein-sausas-pasaras-vidut-veisliu-suaug-sunims-su-kiauliena-3kg/": 1,
+    "/suns-mitybos-auditas-skaiciai-kurie-pades-sutaupyti": 1,
+    "/suns-mitybos-auditas-skaiciai-kurie-pades-sutaupyti/": 1,
+    "/parduotuve": 1,
+    "/parduotuve/": 1
+   },
+   "meta-externalagent": {
+    "/": 6,
+    "/api/fs/exec": 1,
+    "/mcp": 1,
+    "/api/uploads/%2e%2e%2f%2e%2e%2f%2e%2e%2f.env": 1,
+    "/api/.env/public/.env": 1,
+    "/api/v1/validate/code": 1,
+    "/product/furminator-dvigubos-sukos-nukailinimui/": 1
+   },
+   "CCBot": {
+    "/api/designer/v1/file-content": 1,
+    "/functionRouter": 1,
+    "/build/.env": 1,
+    "/icecoder/lib/terminal-xhr.php": 1
+   }
+  },
+  "dienos": {
+   "OAI-SearchBot": {
+    "24/Sep": 121,
+    "23/Sep": 260,
+    "19/Sep": 210,
+    "18/Sep": 200,
+    "22/Sep": 970,
+    "21/Sep": 489,
+    "20/Sep": 17
+   },
+   "Applebot": {
+    "24/Sep": 122,
+    "23/Sep": 506,
+    "19/Sep": 1020,
+    "18/Sep": 337,
+    "22/Sep": 556,
+    "21/Sep": 233,
+    "20/Sep": 1018
+   },
+   "PerplexityBot": {
+    "24/Sep": 38,
+    "23/Sep": 96,
+    "22/Sep": 1834,
+    "21/Sep": 189,
+    "20/Sep": 180,
+    "19/Sep": 242
+   },
+   "ClaudeBot": {
+    "24/Sep": 6,
+    "?": 87,
+    "23/Sep": 35,
+    "22/Sep": 19,
+    "21/Sep": 21,
+    "20/Sep": 15,
+    "19/Sep": 1
+   },
+   "Googlebot": {
+    "24/Sep": 146,
+    "23/Sep": 605,
+    "19/Sep": 1215,
+    "18/Sep": 1282,
+    "22/Sep": 562,
+    "21/Sep": 702,
+    "20/Sep": 782
+   },
+   "Amazonbot": {
+    "24/Sep": 55,
+    "23/Sep": 358,
+    "19/Sep": 1119,
+    "18/Sep": 566,
+    "22/Sep": 462,
+    "21/Sep": 503,
+    "20/Sep": 692
+   },
+   "ChatGPT-User": {
+    "24/Sep": 4,
+    "?": 538,
+    "23/Sep": 94,
+    "19/Sep": 79,
+    "18/Sep": 104,
+    "22/Sep": 102,
+    "21/Sep": 64,
+    "20/Sep": 91
+   },
+   "Bytespider": {
+    "24/Sep": 89,
+    "23/Sep": 477,
+    "19/Sep": 249,
+    "18/Sep": 320,
+    "22/Sep": 266,
+    "21/Sep": 521,
+    "20/Sep": 361
+   },
+   "GPTBot": {
+    "24/Sep": 2,
+    "?": 72,
+    "23/Sep": 16,
+    "19/Sep": 9,
+    "18/Sep": 17,
+    "22/Sep": 8,
+    "21/Sep": 7,
+    "20/Sep": 13
+   },
+   "DuckAssistBot": {
+    "23/Sep": 6
+   },
+   "Claude-User": {
+    "23/Sep": 2,
+    "21/Sep": 4,
+    "20/Sep": 3,
+    "19/Sep": 3
+   },
+   "meta-externalagent": {
+    "23/Sep": 7,
+    "18/Sep": 1,
+    "21/Sep": 2,
+    "19/Sep": 2
+   },
+   "CCBot": {
+    "23/Sep": 2,
+    "22/Sep": 2
+   }
+  },
+  "trukme_s": 3
+ }
+}
