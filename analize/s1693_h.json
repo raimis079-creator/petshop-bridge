@@ -1,165 +1,619 @@
 {
  "1": {
-  "kanalai": [
+  "kat_kanalas": [
    {
-    "kan": "google_ads",
-    "n": "64",
-    "eur": "2534",
-    "aov": "40",
-    "kontr": "623",
-    "nauji": "30"
+    "kan": "direct",
+    "kat": "sunims>sausas-maistas-sunims",
+    "uzs": "11",
+    "eur": "426"
    },
    {
     "kan": "direct",
-    "n": "28",
-    "eur": "1363",
-    "aov": "49",
-    "kontr": "333",
-    "nauji": "8"
+    "kat": "katems>konservai-katems",
+    "uzs": "5",
+    "eur": "94"
    },
    {
-    "kan": "kaina24/kainos",
-    "n": "20",
-    "eur": "792",
-    "aov": "40",
-    "kontr": "184",
-    "nauji": "17"
+    "kan": "direct",
+    "kat": "sunims>konservai-sunims",
+    "uzs": "5",
+    "eur": "214"
+   },
+   {
+    "kan": "direct",
+    "kat": "sunims>skanestai-sunims",
+    "uzs": "5",
+    "eur": "127"
+   },
+   {
+    "kan": "direct",
+    "kat": "katems>kraikai-kaciu-tualetams",
+    "uzs": "3",
+    "eur": "35"
+   },
+   {
+    "kan": "direct",
+    "kat": "katems>sausas-maistas-katems",
+    "uzs": "3",
+    "eur": "98"
+   },
+   {
+    "kan": "direct",
+    "kat": "katems>tualetai-kraikai-semtuveliai",
+    "uzs": "2",
+    "eur": "8"
+   },
+   {
+    "kan": "direct",
+    "kat": "katems>zaislai-katems",
+    "uzs": "2",
+    "eur": "11"
+   },
+   {
+    "kan": "google_ads",
+    "kat": "sunims>sausas-maistas-sunims",
+    "uzs": "20",
+    "eur": "827"
+   },
+   {
+    "kan": "google_ads",
+    "kat": "sunims>konservai-sunims",
+    "uzs": "15",
+    "eur": "403"
+   },
+   {
+    "kan": "google_ads",
+    "kat": "sunims>skanestai-sunims",
+    "uzs": "10",
+    "eur": "145"
+   },
+   {
+    "kan": "google_ads",
+    "kat": "katems>konservai-katems",
+    "uzs": "8",
+    "eur": "209"
+   },
+   {
+    "kan": "google_ads",
+    "kat": "katems>tualetai-kraikai-semtuveliai",
+    "uzs": "4",
+    "eur": "58"
+   },
+   {
+    "kan": "google_ads",
+    "kat": "katems>dubeneliai-katems",
+    "uzs": "3",
+    "eur": "34"
+   },
+   {
+    "kan": "google_ads",
+    "kat": "katems>sausas-maistas-katems",
+    "uzs": "3",
+    "eur": "113"
+   },
+   {
+    "kan": "google_ads",
+    "kat": "zuvims>akvariumo-zuvyciu-maistas",
+    "uzs": "3",
+    "eur": "62"
+   },
+   {
+    "kan": "google_ads",
+    "kat": "katems>antiparazitines-priemones-katems",
+    "uzs": "2",
+    "eur": "12"
+   },
+   {
+    "kan": "google_ads",
+    "kat": "katems>draskykles-katems",
+    "uzs": "2",
+    "eur": "33"
+   },
+   {
+    "kan": "google_ads",
+    "kat": "zuvims>tvenkiniu-zuvu-maistas",
+    "uzs": "2",
+    "eur": "80"
+   },
+   {
+    "kan": "kaina24",
+    "kat": "sunims>sausas-maistas-sunims",
+    "uzs": "7",
+    "eur": "277"
+   },
+   {
+    "kan": "kaina24",
+    "kat": "sunims>vitaminai-ir-papildai-sunims",
+    "uzs": "4",
+    "eur": "157"
+   },
+   {
+    "kan": "kaina24",
+    "kat": "sunims>skanestai-sunims",
+    "uzs": "3",
+    "eur": "73"
+   },
+   {
+    "kan": "kaina24",
+    "kat": "zuvims>akvariumo-zuvyciu-maistas",
+    "uzs": "3",
+    "eur": "41"
+   },
+   {
+    "kan": "kaina24",
+    "kat": "sunims>konservai-sunims",
+    "uzs": "2",
+    "eur": "22"
    },
    {
     "kan": "organika",
-    "n": "14",
-    "eur": "478",
-    "aov": "34",
-    "kontr": "99",
-    "nauji": "9"
+    "kat": "sunims>sausas-maistas-sunims",
+    "uzs": "5",
+    "eur": "183"
+   },
+   {
+    "kan": "organika",
+    "kat": "sunims>konservai-sunims",
+    "uzs": "3",
+    "eur": "67"
+   },
+   {
+    "kan": "organika",
+    "kat": "sunims>skanestai-sunims",
+    "uzs": "2",
+    "eur": "36"
+   },
+   {
+    "kan": "organika",
+    "kat": "sunims>vitaminai-ir-papildai-sunims",
+    "uzs": "2",
+    "eur": "9"
+   },
+   {
+    "kan": "organika",
+    "kat": "sunims>zaislai-sunims",
+    "uzs": "2",
+    "eur": "15"
    },
    {
     "kan": "referral",
-    "n": "6",
-    "eur": "155",
-    "aov": "26",
-    "kontr": "41",
-    "nauji": "2"
+    "kat": "sunims>konservai-sunims",
+    "uzs": "2",
+    "eur": "38"
    },
    {
     "kan": "soc_organika",
-    "n": "4",
-    "eur": "181",
-    "aov": "45",
-    "kontr": "31",
-    "nauji": "2"
-   },
-   {
-    "kan": "?",
-    "n": "1",
-    "eur": "1",
-    "aov": "1",
-    "kontr": "0",
-    "nauji": "1"
-   },
-   {
-    "kan": "email",
-    "n": "1",
-    "eur": "45",
-    "aov": "45",
-    "kontr": "6",
-    "nauji": "0"
+    "kat": "sunims>sausas-maistas-sunims",
+    "uzs": "3",
+    "eur": "132"
    }
   ],
-  "kat_kanalas": [],
-  "top_prekes": [],
-  "nauji_kanalas": [
+  "brend_kanalas": [
    {
-    "kan": "?",
-    "nauj": "1",
-    "n": "1",
-    "aov": "1"
+    "kan": "direct",
+    "br": "animonda",
+    "uzs": "7",
+    "eur": "171"
    },
    {
     "kan": "direct",
-    "nauj": "0",
-    "n": "20",
-    "aov": "57"
+    "br": "josera",
+    "uzs": "7",
+    "eur": "227"
    },
    {
     "kan": "direct",
-    "nauj": "1",
-    "n": "8",
-    "aov": "29"
+    "br": "exclusion",
+    "uzs": "5",
+    "eur": "206"
    },
    {
-    "kan": "email",
-    "nauj": "0",
-    "n": "1",
-    "aov": "45"
+    "kan": "direct",
+    "br": "romar",
+    "uzs": "4",
+    "eur": "75"
+   },
+   {
+    "kan": "direct",
+    "br": "ontario",
+    "uzs": "3",
+    "eur": "128"
    },
    {
     "kan": "google_ads",
-    "nauj": "0",
-    "n": "34",
-    "aov": "48"
+    "br": "exclusion",
+    "uzs": "14",
+    "eur": "616"
    },
    {
     "kan": "google_ads",
-    "nauj": "1",
-    "n": "30",
-    "aov": "31"
+    "br": "animonda",
+    "uzs": "12",
+    "eur": "383"
    },
    {
-    "kan": "kaina24/kainos",
-    "nauj": "0",
-    "n": "3",
-    "aov": "53"
+    "kan": "google_ads",
+    "br": "josera",
+    "uzs": "8",
+    "eur": "280"
    },
    {
-    "kan": "kaina24/kainos",
-    "nauj": "1",
-    "n": "17",
-    "aov": "37"
+    "kan": "google_ads",
+    "br": "miamor",
+    "uzs": "6",
+    "eur": "145"
+   },
+   {
+    "kan": "google_ads",
+    "br": "gnatek",
+    "uzs": "5",
+    "eur": "46"
+   },
+   {
+    "kan": "google_ads",
+    "br": "hikari",
+    "uzs": "4",
+    "eur": "123"
+   },
+   {
+    "kan": "google_ads",
+    "br": "georplast",
+    "uzs": "3",
+    "eur": "26"
+   },
+   {
+    "kan": "google_ads",
+    "br": "romar",
+    "uzs": "3",
+    "eur": "35"
+   },
+   {
+    "kan": "google_ads",
+    "br": "duvo",
+    "uzs": "3",
+    "eur": "22"
+   },
+   {
+    "kan": "google_ads",
+    "br": "trixie",
+    "uzs": "3",
+    "eur": "35"
+   },
+   {
+    "kan": "kaina24",
+    "br": "exclusion",
+    "uzs": "4",
+    "eur": "182"
+   },
+   {
+    "kan": "kaina24",
+    "br": "vetoquinol",
+    "uzs": "3",
+    "eur": "125"
+   },
+   {
+    "kan": "kaina24",
+    "br": "hikari",
+    "uzs": "3",
+    "eur": "41"
+   },
+   {
+    "kan": "kaina24",
+    "br": "josera",
+    "uzs": "3",
+    "eur": "111"
    },
    {
     "kan": "organika",
-    "nauj": "0",
-    "n": "5",
-    "aov": "47"
-   },
-   {
-    "kan": "organika",
-    "nauj": "1",
-    "n": "9",
-    "aov": "27"
-   },
-   {
-    "kan": "referral",
-    "nauj": "0",
-    "n": "4",
-    "aov": "32"
-   },
-   {
-    "kan": "referral",
-    "nauj": "1",
-    "n": "2",
-    "aov": "14"
-   },
-   {
-    "kan": "soc_organika",
-    "nauj": "0",
-    "n": "2",
-    "aov": "39"
-   },
-   {
-    "kan": "soc_organika",
-    "nauj": "1",
-    "n": "2",
-    "aov": "52"
+    "br": "exclusion",
+    "uzs": "6",
+    "eur": "205"
    }
   ],
-  "gyv_kanalas": [],
-  "brend_kanalas": []
+  "top_prekes": [
+   {
+    "pr": "Exclusion Hypoallergenic mažų veislių šunų",
+    "uzs": "15",
+    "eur": "707",
+    "g": "5",
+    "k": "3"
+   },
+   {
+    "pr": "Animonda GranCarno Adult Beef + Duck Heart",
+    "uzs": "5",
+    "eur": "30",
+    "g": "2",
+    "k": "0"
+   },
+   {
+    "pr": "Animonda GranCarno Adult: konservai suaugu",
+    "uzs": "4",
+    "eur": "31",
+    "g": "2",
+    "k": "0"
+   },
+   {
+    "pr": "Animonda GranCarno Adult Duck: konservai s",
+    "uzs": "4",
+    "eur": "20",
+    "g": "3",
+    "k": "0"
+   },
+   {
+    "pr": "Animonda GranCarno Adult: konservai suaugu",
+    "uzs": "4",
+    "eur": "36",
+    "g": "2",
+    "k": "1"
+   },
+   {
+    "pr": "Exclusion Hypoallergenic mažų veislių šunų",
+    "uzs": "4",
+    "eur": "91",
+    "g": "1",
+    "k": "1"
+   },
+   {
+    "pr": "Animonda Vom Feinsten Adult with Poultry a",
+    "uzs": "4",
+    "eur": "18",
+    "g": "2",
+    "k": "0"
+   },
+   {
+    "pr": "Animonda GranCarno Adult Beef + Rabbit wit",
+    "uzs": "4",
+    "eur": "29",
+    "g": "3",
+    "k": "0"
+   },
+   {
+    "pr": "Hikari Cichlid Gold Medium, 250 g",
+    "uzs": "4",
+    "eur": "50",
+    "g": "2",
+    "k": "2"
+   },
+   {
+    "pr": "Animonda GranCarno Adult Beef + Lamb: kons",
+    "uzs": "4",
+    "eur": "36",
+    "g": "1",
+    "k": "0"
+   },
+   {
+    "pr": "Animonda GranCarno Adult Beef + Lamb: kons",
+    "uzs": "3",
+    "eur": "14",
+    "g": "2",
+    "k": "0"
+   },
+   {
+    "pr": "Žarnų pagaliukai, 80 g",
+    "uzs": "3",
+    "eur": "14",
+    "g": "3",
+    "k": "0"
+   },
+   {
+    "pr": "Animonda Carny Adult Beef + Heart – konser",
+    "uzs": "3",
+    "eur": "17",
+    "g": "1",
+    "k": "0"
+   },
+   {
+    "pr": "Gėrimas katėms - Miamor Trinkfein Vitaldri",
+    "uzs": "3",
+    "eur": "32",
+    "g": "3",
+    "k": "0"
+   },
+   {
+    "pr": "Animonda Vom Feinsten Adult with Salmon an",
+    "uzs": "3",
+    "eur": "20",
+    "g": "1",
+    "k": "0"
+   },
+   {
+    "pr": "Animonda GranCarno Adult Beef + Chicken: k",
+    "uzs": "3",
+    "eur": "17",
+    "g": "2",
+    "k": "0"
+   },
+   {
+    "pr": "Hikari Cichlid Gold Sinking Mini, 342 g",
+    "uzs": "3",
+    "eur": "26",
+    "g": "1",
+    "k": "2"
+   },
+   {
+    "pr": "Josera A/S Lamb + Rice sausas pašaras šuni",
+    "uzs": "3",
+    "eur": "113",
+    "g": "1",
+    "k": "0"
+   },
+   {
+    "pr": "Ruda stirnos koja, 1 vnt.",
+    "uzs": "3",
+    "eur": "16",
+    "g": "2",
+    "k": "0"
+   },
+   {
+    "pr": "Animonda Vom Feinsten Adult with Deer - ko",
+    "uzs": "3",
+    "eur": "52",
+    "g": "3",
+    "k": "0"
+   }
+  ],
+  "pirmas": [
+   {
+    "kan_pask": "?",
+    "kan_pirm": "?",
+    "n": "1"
+   },
+   {
+    "kan_pask": "direct",
+    "kan_pirm": "direct",
+    "n": "28"
+   },
+   {
+    "kan_pask": "email",
+    "kan_pirm": "referral",
+    "n": "1"
+   },
+   {
+    "kan_pask": "google_ads",
+    "kan_pirm": "mokamas",
+    "n": "61"
+   },
+   {
+    "kan_pask": "google_ads",
+    "kan_pirm": "organika",
+    "n": "3"
+   },
+   {
+    "kan_pask": "kaina24",
+    "kan_pirm": "mokamas",
+    "n": "19"
+   },
+   {
+    "kan_pask": "kaina24",
+    "kan_pirm": "organika",
+    "n": "1"
+   },
+   {
+    "kan_pask": "organika",
+    "kan_pirm": "organika",
+    "n": "10"
+   },
+   {
+    "kan_pask": "organika",
+    "kan_pirm": "mokamas",
+    "n": "4"
+   },
+   {
+    "kan_pask": "referral",
+    "kan_pirm": "referral",
+    "n": "5"
+   },
+   {
+    "kan_pask": "referral",
+    "kan_pirm": "mokamas",
+    "n": "1"
+   },
+   {
+    "kan_pask": "soc_organika",
+    "kan_pirm": "soc_organika",
+    "n": "4"
+   }
+  ],
+  "landing_g": [
+   {
+    "l": "/?gad_source=1&gad_campaignid=23346712074&gbraid=0",
+    "n": "10"
+   },
+   {
+    "l": "/sunims/maistas-sunims?gad_source=1&gad_campaignid",
+    "n": "7"
+   },
+   {
+    "l": "/naturalus-skanestai-sunims-elnio-rago-kramtukas-m",
+    "n": "3"
+   },
+   {
+    "l": "/josera-sunu-maistas?gad_source=1&gad_campaignid=2",
+    "n": "3"
+   },
+   {
+    "l": "/product/exclusion-hypoallergenic-mazu-veisliu-sun",
+    "n": "3"
+   },
+   {
+    "l": "/katems/tualetai-kraiku-semtuveliai-kilimeliai?gad",
+    "n": "3"
+   },
+   {
+    "l": "/?gad_source=1&gad_campaignid=23346712074&gclid=Cj",
+    "n": "2"
+   },
+   {
+    "l": "/?utm_source=google&utm_medium=cpc&utm_campaign=23",
+    "n": "2"
+   },
+   {
+    "l": "/exclusion?gad_source=1&gad_campaignid=21565466377",
+    "n": "2"
+   },
+   {
+    "l": "/sunims/skanestai-sunims?gad_source=1&gad_campaign",
+    "n": "2"
+   },
+   {
+    "l": "/kategorija/animonda-konservai-sunims/?gad_source=",
+    "n": "1"
+   },
+   {
+    "l": "/hikari-friend-large-10-kg-hikari-maistas-koi-karp",
+    "n": "1"
+   },
+   {
+    "l": "/",
+    "n": "1"
+   },
+   {
+    "l": "/product/filtrai-automatinei-vandens-gertuvei-font",
+    "n": "1"
+   },
+   {
+    "l": "/katems/antiparazitines-priemones-katems?gad_sourc",
+    "n": "1"
+   }
+  ],
+  "referer": [
+   {
+    "r": "-",
+    "n": "71"
+   },
+   {
+    "r": "www.google.com",
+    "n": "40"
+   },
+   {
+    "r": "www.kaina24.lt",
+    "n": "11"
+   },
+   {
+    "r": "www.kainos.lt",
+    "n": "8"
+   },
+   {
+    "r": "m.facebook.com",
+    "n": "4"
+   },
+   {
+    "r": "www.bing.com",
+    "n": "2"
+   },
+   {
+    "r": "bank.paysera.com",
+    "n": "1"
+   },
+   {
+    "r": "nuolaidukodas.lt",
+    "n": "1"
+   }
+  ]
  },
- "v": "dep-064505",
+ "v": "dep-064806",
  "kurimas": 200,
- "sid": 6281,
+ "sid": 6283,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
