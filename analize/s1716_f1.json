@@ -1,0 +1,29 @@
+{
+ "1": {
+  "v": "S1716f",
+  "md5": "0aa0dac67df22d13b421b963d53c5707",
+  "dydis": 72599,
+  "fn_start_line": 170,
+  "fn": "\nfunction petshop_free_shipping_progress() {\n    if ( ! is_cart() ) return;\n\n    $threshold = 30.00;\n\n    $has_courier_only = false;\n    $total_weight     = 0;\n    foreach ( WC()->cart->get_cart() as $item ) {\n        $product_id = $item['product_id'];\n        /* Ta pati dviejų laukų problema kaip pristatymo filtre (2026-08-28):\n           varnele kortelėje raso `_ps_tik_kurjeriu`, o cia buvo tikrinamas\n           tik senasis `_fulfillment_courier_only`. Del to krepselyje\n           kurjeriui skirta preke vis tiek matydavo „iki nemokamo pristatymo\n           i pastomata\" — pazadas, kurio ivykdyti neimanoma. */\n        if ( get_post_meta( $product_id, '_fulfillment_courier_only', true ) === 'yes'\n             || get_post_meta( $product_id, '_ps_tik_kurjeriu', true ) === 'yes' ) {\n            $has_courier_only = true;\n            break;\n        }\n        $weight       = (float) get_post_meta( $product_id, '_weight', true );\n        $total_weight += $weight * $item['quantity'];\n    }\n    if ( $total_weight > 30 ) {\n        $has_courier_only = true;\n    }\n\n    if ( $has_courier_only ) {\n        echo '<tr><td colspan=\"2\" style=\"padding:0 0 12px;\">';\n        echo '<div style=\"background:#f4f4f2;border-left:3px solid #365a51;padding:10px 14px;font-size:13px;border-radius:0 4px 4px 0;color:#555;\">';\n        echo '🚚 Kai kurios prekės pristatomos tik kurjeriu dėl dydžio arba svorio.';\n        echo '</div></td></tr>';\n        return;\n    }\n\n    $subtotal     = WC()->cart->get_subtotal();\n    $subtotal_tax = WC()->cart->get_subtotal_tax();\n    $discount     = WC()->cart->get_discount_total() + WC()->cart->get_discount_tax();\n    $cart_total   = max( 0, ( $subtotal + $subtotal_tax ) - $discount );\n\n    $percent = min( 100, round( ( $cart_total / $threshold ) * 100 ) );\n    $truksta = max( 0, round( $threshold - $cart_total, 2 ) );\n    $reached = $cart_total >= $threshold;\n\n    echo '<tr><td colspan=\"2\" style=\"padding:0 0 12px;\">';\n    echo '<div style=\"background:#f4f4f2;border-radius:6px;padding:12px 14px;\">';\n\n    if ( $reached ) {\n        echo '<div style=\"font-size:13px;font-weight:600;color:#365a51;margin-bottom:8px;\">🎉 Jums priklauso nemokamas pristatymas į paštomatą!</div>';\n    } else {\n        echo '<div style=\"font-size:13px;color:#333;margin-bottom:8px;\">📦 Dar <strong>€' . number_format( $truksta, 2, ',', '' ) . '</strong> iki nemokamo pristatymo į paštomatą</div>';\n    }\n\n    echo '<div style=\"background:#ddd;border-radius:4px;height:8px;overflow:hidden;\">';\n    echo '<div style=\"width:' . $percent . '%;background:#365a51;height:8px;border-radius:4px;\"></div>';\n    echo '</div>';\n\n    echo '</div>';\n    echo '</td></tr>';\n}",
+  "hook": [
+   "add_action('woocommerce_cart_totals_before_order_total', 'petshop_free_shipping_progress', 5);"
+  ],
+  "pickup_matmenys": [],
+  "pickup_raktai": [
+   "title",
+   "description",
+   "fee",
+   "minimum_weight",
+   "maximum_weight",
+   "min_amount_for_free_shipping",
+   "ignore_shipping_classes"
+  ]
+ },
+ "v": "dep-203122",
+ "kurimas": 200,
+ "sid": 6353,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
