@@ -1,5 +1,58 @@
 {
- "v": "dep-183440",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "1": {
+  "v": "S1713e",
+  "faze": "1",
+  "po": {
+   "preke": [
+    "index-https.html"
+   ],
+   "home": [
+    "index-https.html"
+   ],
+   "kat": 1
+  }
+ },
+ "2": {
+  "v": "S1713e",
+  "faze": "2",
+  "pries": {
+   "preke": [
+    "index-https.html"
+   ],
+   "home": [
+    "index-https.html"
+   ],
+   "kat": 1
+  },
+  "iskart": {
+   "preke": [
+    "index-https.html"
+   ],
+   "home": [
+    "index-https.html"
+   ],
+   "kat": 1
+  },
+  "pastaba": "valymas per shutdown — ziureti faze 3"
+ },
+ "3": {
+  "v": "S1713e",
+  "faze": "3",
+  "dabar": {
+   "preke": [
+    "index-https.html"
+   ],
+   "home": [
+    "index-https.html.needs-rebuild"
+   ],
+   "kat": 1
+  }
+ },
+ "v": "dep-184008",
+ "kurimas": 200,
+ "sid": 6318,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
 }
