@@ -1,0 +1,49 @@
+{
+ "2": {
+  "v": "S1714c",
+  "faze": "2",
+  "html": {
+   "/": {
+    "kodas": 200,
+    "psw": 1,
+    "v14_js": 1,
+    "b1_cookie": 1,
+    "cached": 1
+   },
+   "/augintinio-profilis/": {
+    "kodas": 200,
+    "psw": 0,
+    "v14_js": 0,
+    "b1_cookie": 0,
+    "cached": 0
+   },
+   "/skaiciuokle/": {
+    "kodas": 200,
+    "psw": 0,
+    "v14_js": 0,
+    "b1_cookie": 0,
+    "cached": 1
+   },
+   "/kategorija/katems/": {
+    "kodas": 200,
+    "psw": 1,
+    "v14_js": 1,
+    "b1_cookie": 1,
+    "cached": 1
+   }
+  },
+  "md5": "567d63e2eeea01dbf90fb89a29a9c970",
+  "php_err_tail": [
+   "#27 /home/gyvunai2/domains/petshop.lt/public_html/index.php(17): require('...')\n",
+   "#28 {main}\n",
+   "  thrown in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php on line 1154\n"
+  ]
+ },
+ "v": "dep-191536",
+ "kurimas": 200,
+ "sid": 6330,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
