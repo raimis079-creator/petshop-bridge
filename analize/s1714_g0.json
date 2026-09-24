@@ -1,0 +1,40 @@
+{
+ "0": {
+  "v": "S1714g",
+  "faze": "0",
+  "pries": {
+   "/kategorija/katems/?yith_wcan=1&product_cat=tualetai-kraikai-semtuveliai,kraikai-kaciu-tualetams&query_type_product_cat=or": {
+    "kodas": 200,
+    "h1": "",
+    "prekiu": 48
+   },
+   "/kategorija/katems/?yith_wcan=1&product_cat=tualetai-kraikai-semtuveliai,kraikai-kaciu-tualetams&query_type_product_cat=or&query_type_tipas=or&filter_tipas=atviras": {
+    "kodas": 500,
+    "h1": "",
+    "prekiu": 0
+   },
+   "/kategorija/katems/?product_cat=kraikai-kaciu-tualetams": {
+    "kodas": 200,
+    "h1": "",
+    "prekiu": 48
+   },
+   "/kategorija/katems/": {
+    "kodas": 404,
+    "h1": "Oops! That page can&rsquo;t be found.",
+    "prekiu": 0
+   },
+   "/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?yith_wcan=1&product_cat=sausas-maistas-sunims&query_type_speciali_mityba=or&filter_speciali_mityba=hipoalerginis": {
+    "kodas": 200,
+    "h1": "",
+    "prekiu": 48
+   }
+  }
+ },
+ "v": "dep-192411",
+ "kurimas": 200,
+ "sid": 6334,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
