@@ -1,0 +1,36 @@
+{
+ "1": {
+  "v": "S1713d",
+  "faze": "1",
+  "bak": [
+   "/home/gyvunai2/domains/petshop.lt/ps-archyvas/wp-cache-config.php.bak_s1713",
+   "db7cd66dac6693869a642dec6bdebaa7"
+  ],
+  "pries": [
+   "wp-.*\\.php",
+   "index\\.php",
+   "krepselis",
+   "cart",
+   "checkout",
+   "atsiskaitymas",
+   "my-account",
+   "mano-paskyra",
+   "augintinis",
+   "prenumerata",
+   "wp-json",
+   "feed"
+  ],
+  "irasyta": "wp_cache_setting",
+  "po_eil": "$cache_rejected_uri = array ( 0 => 'wp-.*\\\\.php', 1 => 'index\\\\.php', 2 => 'krepselis', 3 => 'cart', 4 => 'checkout', 5 => 'atsiskaitymas', 6 => 'my-account', 7 => 'mano-paskyra', 8 => 'augintinis', 9 => 'prenumerata', 10 => 'wp-json', 11 => 'feed', 12 => 'augintinio-profilis', 13 => 'refill-feedback', );",
+  "token": true,
+  "aug_dir_po": false,
+  "heartbeat": 200
+ },
+ "v": "dep-182946",
+ "kurimas": 200,
+ "sid": 6315,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
