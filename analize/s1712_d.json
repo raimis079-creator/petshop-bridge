@@ -1,0 +1,213 @@
+{
+ "v": "dep-161819",
+ "kurimas": 200,
+ "sid": 6309,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1712a",
+  "faze": "D",
+  "map_n": 1222,
+  "grandines": [
+   [
+    "exclusion-intestinal-monoprotein-sausas-suniuku-maistas-su-kiauliena-ir-ryziais-12-kg",
+    [
+     301,
+     301,
+     200
+    ]
+   ]
+  ],
+  "hops": {
+   "1": 24,
+   "2": 1
+  },
+  "variantai": {
+   "http://petshop.lt/": "301 https://petshop.lt/",
+   "https://www.petshop.lt/": "301 https://petshop.lt/",
+   "https://petshop.lt/index.php": "301 https://petshop.lt/",
+   "https://petshop.lt/?s=josera": "200 ",
+   "https://petshop.lt/product/": "404 ",
+   "https://petshop.lt/kategorija/": "404 ",
+   "https://petshop.lt/gamintojas/": "404 ",
+   "https://petshop.lt/page/2/": "200 ",
+   "https://petshop.lt/?p=1": "404 ",
+   "https://petshop.lt/feed/": "200 ",
+   "https://petshop.lt/tag/": "404 ",
+   "https://petshop.lt/author/raimis/": "404 ",
+   "https://petshop.lt/wp-json/wp/v2/products?per_page=1": "404 ",
+   "https://petshop.lt/?rest_route=/wp/v2/product": "200 ",
+   "https://petshop.lt/xmlrpc.php": "403 ",
+   "https://petshop.lt/parduotuve/page/50/": "200 ",
+   "https://petshop.lt/kategorija/sunims/page/999/": "301 https://petshop.lt/kategorija/sunims/"
+  },
+  "feed_kb": 5164,
+  "feed_items": 2158,
+  "feed_ok": 0,
+  "feed_nesutapimai": [
+   [
+    "EU888",
+    "nera WP"
+   ],
+   [
+    "hk-01482",
+    "nera WP"
+   ],
+   [
+    "127380228",
+    "nera WP"
+   ],
+   [
+    "F011WH1221",
+    "nera WP"
+   ],
+   [
+    "82801",
+    "nera WP"
+   ],
+   [
+    "715001",
+    "nera WP"
+   ],
+   [
+    "FLEXI001",
+    "nera WP"
+   ],
+   [
+    "0TR103_1987527",
+    "nera WP"
+   ],
+   [
+    "JOS0763",
+    "nera WP"
+   ],
+   [
+    "WP81030/WP",
+    "nera WP"
+   ],
+   [
+    "HYPS08",
+    "nera WP"
+   ],
+   [
+    "0TR1151_680151",
+    "nera WP"
+   ],
+   [
+    "AMTS12",
+    "nera WP"
+   ],
+   [
+    "710002",
+    "nera WP"
+   ],
+   [
+    "2.009364",
+    "nera WP"
+   ],
+   [
+    "400227",
+    "nera WP"
+   ],
+   [
+    "F031VL0112",
+    "nera WP"
+   ],
+   [
+    "03020",
+    "nera WP"
+   ],
+   [
+    "JOS0940",
+    "nera WP"
+   ],
+   [
+    "2.008119",
+    "nera WP"
+   ],
+   [
+    "AQ130368",
+    "nera WP"
+   ],
+   [
+    "FLEXI013",
+    "nera WP"
+   ],
+   [
+    "01M04003001",
+    "nera WP"
+   ],
+   [
+    "32041",
+    "nera WP"
+   ],
+   [
+    "4047059431955",
+    "nera WP"
+   ],
+   [
+    "404842214463",
+    "nera WP"
+   ],
+   [
+    "ZOOV026",
+    "nera WP"
+   ],
+   [
+    "1270015",
+    "nera WP"
+   ],
+   [
+    "JOS0808",
+    "nera WP"
+   ],
+   [
+    "01M0415000",
+    "nera WP"
+   ]
+  ],
+  "feed_gen": "2026-09-24 01:31",
+  "rm_local": {
+   "knowledgegraph_type": "company",
+   "knowledgegraph_name": "Petshop.lt",
+   "local_business_type": "Organization",
+   "opening_hours": [
+    {
+     "day": "Monday",
+     "time": "09:00-17:00"
+    },
+    {
+     "day": "Tuesday",
+     "time": "09:00-17:00"
+    },
+    {
+     "day": "Wednesday",
+     "time": "09:00-17:00"
+    },
+    {
+     "day": "Thursday",
+     "time": "09:00-17:00"
+    },
+    {
+     "day": "Friday",
+     "time": "09:00-17:00"
+    },
+    {
+     "day": "Saturday",
+     "time": "09:00-17:00"
+    },
+    {
+     "day": "Sunday",
+     "time": "09:00-17:00"
+    }
+   ]
+  },
+  "wc_store_addr": [
+   "Liucionių g. 46",
+   "Liucionių k.",
+   "15166"
+  ]
+ }
+}
