@@ -1,0 +1,89 @@
+{
+ "1": {
+  "v": "S1716e",
+  "meta": {
+   "12466": [
+    {
+     "meta_key": "_weight",
+     "v": "12.2200"
+    },
+    {
+     "meta_key": "_length",
+     "v": "14.4000"
+    },
+    {
+     "meta_key": "_width",
+     "v": "80.0000"
+    },
+    {
+     "meta_key": "_height",
+     "v": "40.0000"
+    },
+    {
+     "meta_key": "_zb_enabled",
+     "v": "yes"
+    },
+    {
+     "meta_key": "_ps_sandelis",
+     "v": "zb"
+    }
+   ],
+   "17978": [
+    {
+     "meta_key": "_weight",
+     "v": "12.5"
+    },
+    {
+     "meta_key": "shopup_venipak_shipping_min_age",
+     "v": ""
+    },
+    {
+     "meta_key": "_venipak_total_shipments",
+     "v": ""
+    },
+    {
+     "meta_key": "venipak_is_locker_excluded",
+     "v": "0"
+    },
+    {
+     "meta_key": "woo_lithuaniapost_allowed_terminal_parcel_locker",
+     "v": ""
+    },
+    {
+     "meta_key": "_ps_sandelis",
+     "v": "vf"
+    }
+   ]
+  },
+  "venipak_fn": {
+   "class-woocommerce-shopup-venipak-shipping-public.php": "function show_pickup_if_product_included_in_locker( $rates, $package) {  \n        $exclude_shipping = false;\n        foreach (WC()->cart->get_cart() as $cart_item) {\n            $product = $cart_item['data']; \n    \t\t$product = wc_get_product($product->get_id()); \n            $venipak_is_locker_excluded = $product->get_meta('venipak_is_locker_excluded');\n            if ($venipak_is_locker_excluded) {\n                $exclude_shipping = true;\n                break;\n            }\n        } \n        if ($exclude_shipping) {\n            foreach ($rates as $rate_id => $rate) { \n    \t\t\tif ('shopup_venipak_shipping_pickup_method' === $rate->method_id) {\n                    unset($rates[$rate_id]);  \n                }\n            }\n        } \n        return $rates;\n    }\n    \t\n    \n\t/**\n\t * Register the stylesheets for the public-facing side of the site.\n\t *\n\t * @since    1.0.0\n\t */\n\tpublic function enqueue_styles() {\n\t\t// Load styles only on cart and checkout pages\n\t\tif ( is_cart() || is_checkout() ) {\n\t\t\twp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/woocommerce-shopup-venipak-shipping-public.css', array(), $this->version );\n\t\t\t$pickup_width = $this->settings->get_option_by_key('shopup_venipak_shipping_field_pickupwidth');\n\t\t\tif ( $pickup_width ) {\n\t\t\t\twp_add_inline_style( $this->plugin_name, ':root { --venipak-pickup-width: ' . intval( $pickup_width ) . 'px; }' );\n\t\t\t}\n\t\t}\n\t}"
+  },
+  "pastomato_sargas": "function pastomato_sargas( $rates, $package ) {\n\t\tif ( is_admin() && ! wp_doing_ajax() ) { return $rates; }\n\t\t$kg = 0.0; $tik_kurjeriu = false;\n\t\tforeach ( (array) ( $package['contents'] ?? array() ) as $eil ) {\n\t\t\t$p = $eil['data'] ?? null;\n\t\t\tif ( ! $p || ! is_a( $p, 'WC_Product' ) ) { continue; }\n\t\t\t/* v1.44 (S1601): varnele „Tik kurjeriu“ — tikrinama VISOMS eilutems, iskaitant MnM vaikus */\n\t\t\tif ( get_post_meta( $p->get_id(), '_ps_tik_kurjeriu', true ) === 'yes' ) { $tik_kurjeriu = true; }\n\t\t\tif ( ! empty( $eil['mnm_child_id'] ) ) { continue; }   /* vaikai — svorio nesidubliuoti */\n\t\t\t$w = (float) $p->get_weight();\n\t\t\tif ( $w > 0 ) { $kg += $w * (int) $eil['quantity']; }\n\t\t}\n\t\tif ( ! $tik_kurjeriu && $kg <= self::PASTOMATO_RIBA ) { return $rates; }\n\n\t\t$zodziai = array( 'pastomat', 'paštomat', 'terminal', 'locker', 'pickup', 'atsiemim', 'parcel' );\n\t\tforeach ( $rates as $raktas => $tarifas ) {\n\t\t\t$tekstas = mb_strtolower( $raktas . ' ' . $tarifas->get_label() );\n\t\t\tforeach ( $zodziai as $z ) {\n\t\t\t\tif ( mb_strpos( $tekstas, $z ) !== false ) { unset( $rates[ $raktas ] ); break; }\n\t\t\t}\n\t\t}\n\t\treturn $rates;\n\t}",
+  "zali_tarifai": [
+   "shopup_venipak_shipping_courier_method:2",
+   "woo_lithuaniapost_lpexpress_terminal:12",
+   "woo_lithuaniapost_lpexpress_terminal:15"
+  ],
+  "ismete": [
+   {
+    "0": 10,
+    "1": "petshop_hide_parcel_if_courier_only",
+    "pries": [
+     "shopup_venipak_shipping_courier_method:2",
+     "woo_lithuaniapost_lpexpress_terminal:12",
+     "woo_lithuaniapost_lpexpress_terminal:15"
+    ],
+    "po": [
+     "shopup_venipak_shipping_courier_method:2"
+    ]
+   }
+  ]
+ },
+ "v": "dep-202917",
+ "kurimas": 200,
+ "sid": 6352,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
