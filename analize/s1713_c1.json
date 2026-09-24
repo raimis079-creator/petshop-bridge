@@ -1,0 +1,10 @@
+{
+ "v": "dep-182426",
+ "kurimas": 200,
+ "sid": 6313,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "zalias_1": "{\"v\":\"S1713c\",\"faze\":\"1\",\"dir\":[\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-content\\/plugins\\/wp-super-cache\\/\",true,true,true],\"WPCACHEHOME_dabar\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-content\\/plugins\\/wp-super-cache\\/\",\"WP_CACHE\":true,\"wpcache_cfg\":[\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-content\\/wp-cache-config.php\",true],\"pakeista\":1,\"po\":[\"<?php\",\"define('WP_CACHE', true); \\/\\/ S1713 2026-09-24 WP Super Cache\",\"define('WPCACHEHOME', '\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-content\\/plugins\\/wp-super-cache\\/'); \\/\\/ S1713\",\"\",\"\\/**\"],\"md5_po\":\"43fb96c97fd9b7d12901afd054aeb068\",\"heartbeat\":200,\"koment\":[]}<!-- WP Super Cache is installed but broken. The constant WPCACHEHOME must be set in the file wp-config.php and point at the WP Super Cache plugin directory. -->"
+}
