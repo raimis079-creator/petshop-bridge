@@ -1,0 +1,89 @@
+{
+ "1": {
+  "v": "S1716b",
+  "ps_sources_cols": [
+   "id",
+   "product_id",
+   "source",
+   "supplier_sku",
+   "ean",
+   "stock_qty",
+   "cost_net",
+   "synced_at",
+   "is_active",
+   "is_sellable",
+   "priority",
+   "created_at",
+   "updated_at"
+  ],
+  "courier_only_meta": [
+   {
+    "meta_key": "_ps_tik_kurjeriu",
+    "meta_value": "yes",
+    "n": "163"
+   }
+  ],
+  "paysera_raktai": [
+   "enabled"
+  ],
+  "paysera_delivery_opcijos": [
+   "PAYSERA_DB_VERSION",
+   "ps_fakt_paysera_fiks_ct"
+  ],
+  "venipak_pickup_3": {
+   "title": "VENIPAK paštomatai/atsiėmimo punktai",
+   "description": "Išsiuntimas per 1-3 darbo dienas",
+   "fee": "1.78",
+   "minimum_weight": "",
+   "maximum_weight": "24.90",
+   "min_amount_for_free_shipping": "30",
+   "ignore_shipping_classes": ""
+  },
+  "venipak_courier_2": {
+   "title": "VENIPAK Kurjeris",
+   "description": "Išsiuntimas per 1-3 darbo dienas",
+   "fee": "3.30",
+   "minimum_weight": "",
+   "maximum_weight": "50",
+   "min_amount_for_free_shipping": "",
+   "ignore_shipping_classes": [
+    "235",
+    "236",
+    "237"
+   ]
+  },
+  "venipak_courier_6": {
+   "title": "VENIPAK Kurjeris"
+  },
+  "venipak_courier_7": {
+   "title": "VENIPAK Kurjeris"
+  },
+  "venipak_courier_8": {
+   "title": "VENIPAK Kurjeris"
+  },
+  "snippet20": [
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+   1,
+   18
+  ],
+  "snippet20_kodas": [
+   {
+    "id": "582",
+    "name": "Petshop LP Terminalu Svorio Riba v1 (29.90kg)",
+    "k": "add_filter('woocommerce_package_rates', function($rates, $package){\n  $limit = 29.90; $weight = 0;\n  if (!empty($package['contents'])) {\n    foreach ($package['contents'] as $item) {\n      if (!empty($item['data']) && is_object($item['data'])) {\n        $weight += ((float) $item['data']->get_weight()) * ((int) $item['quantity']);\n      }\n    }\n  }\n  if ($weight <= $limit) { return $rates; }\n  foreach ($rates as $rid => $rate) {\n    if (strpos($rate->get_method_id(), 'lpexpress_terminal') !== false) {\n      $s = get_option('woocommerce_' . $rate->get_method_id() . '_' . $rate->get_instance_id() . '_settings');\n      if (is_array($s) && isset($s['plan']) && $s['plan'] === 'TERMINAL') { unset($rates[$rid]); }\n    }\n  }\n  return $rates;\n}, 20, 2);"
+   },
+   {
+    "id": "6349",
+    "name": "TEMP PS dep-202208",
+    "k": "\n/** Plugin Name: TEMP PS S1716b courier-only kodas + Paysera nustatymu raktai (tik pavadinimai) read-only */\nadd_action('wp_loaded', function(){\n  if(!isset($_GET['ps_s1716b'])) return;\n  @set_time_limit(170); global $wpdb; $r=['v'=>'S1716b']; $P=$wpdb->prefix;\n  try{\n    foreach(glob(WPMU_PLUGIN_DIR.'/*.php') as $g){ $s=file_get_contents($g); if(preg_match('#hide_parcel_if_courier_only#',$s)){ preg_match('#function petshop_hide_parcel_if_courier_only.*?\\n\\}#s',$s,$m); $r['hide_parcel'][basename($g)]=substr($m[0]??'',0,2500); preg_match_all('#/\\*\\*.{0,600}courier.{0,600}\\*/#s',$s,$c); $r['hide_parcel_komentaras']=array_slice(array_map(function($x){return substr($x,0,800);},$c[0]),0,2); } }\n    $r['ps_sources_cols']=$wpdb->get_col(\"SHOW COLUMNS FROM {$P}ps_sources\");\n    $r['courier_only_meta']=$wpdb->get_results(\"SELECT meta_key, meta_value, COUNT(*) n FROM {$wpdb->postmeta} WHERE meta_key IN ('_ps_courier_only','_ps_carrier','_ps_tik_kurjeriu','_courier_only') GROUP BY meta_key, meta_value\",ARRAY_A);\n    foreach(WC()->payment_gateways()->payment_gateways() as $g){ if($g->id!=='paysera') continue; $r['paysera_raktai']=array_keys((array)$g->settings); foreach((array)$g->settings as $k=>$v){ if(preg_match('#countr#i',$k)&&!preg_match('#pass|sign|secret|key|token#i',$k)) $r['paysera_countries'][$k]=is_array($v)?$v:mb_substr((string)$v,0,300); } }\n    $r['paysera_delivery_opcijos']=$wpdb->get_col(\"SELECT option_name FROM {$wpdb->options} WHERE option_name LIKE '%paysera%' AND op"
+   }
+  ]
+ },
+ "v": "dep-202208",
+ "kurimas": 200,
+ "sid": 6349,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
