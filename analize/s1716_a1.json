@@ -1,0 +1,319 @@
+{
+ "1": {
+  "v": "S1716a2",
+  "faze": "1",
+  "zonos": [
+   {
+    "zone_id": "3",
+    "zone_name": "Neringos savivaldybe",
+    "zone_order": "0"
+   },
+   {
+    "zone_id": "1",
+    "zone_name": "Lietuva",
+    "zone_order": "1"
+   },
+   {
+    "zone_id": "2",
+    "zone_name": "Baltijos šalys, be LIetuvos",
+    "zone_order": "2"
+   }
+  ],
+  "zonu_vietos": [
+   {
+    "zone_id": "1",
+    "location_code": "LT",
+    "location_type": "country"
+   },
+   {
+    "zone_id": "2",
+    "location_code": "EE",
+    "location_type": "country"
+   },
+   {
+    "zone_id": "2",
+    "location_code": "LV",
+    "location_type": "country"
+   },
+   {
+    "zone_id": "3",
+    "location_code": "LT",
+    "location_type": "country"
+   },
+   {
+    "zone_id": "3",
+    "location_code": "931*",
+    "location_type": "postcode"
+   }
+  ],
+  "metodai": [
+   {
+    "zone_id": "1",
+    "instance_id": "1",
+    "method_id": "free_shipping",
+    "method_order": "1",
+    "is_enabled": "0"
+   },
+   {
+    "zone_id": "1",
+    "instance_id": "2",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "method_order": "2",
+    "is_enabled": "1"
+   },
+   {
+    "zone_id": "1",
+    "instance_id": "3",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "method_order": "3",
+    "is_enabled": "1"
+   },
+   {
+    "zone_id": "1",
+    "instance_id": "6",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "method_order": "4",
+    "is_enabled": "1"
+   },
+   {
+    "zone_id": "1",
+    "instance_id": "7",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "method_order": "5",
+    "is_enabled": "1"
+   },
+   {
+    "zone_id": "1",
+    "instance_id": "8",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "method_order": "6",
+    "is_enabled": "1"
+   },
+   {
+    "zone_id": "1",
+    "instance_id": "12",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "method_order": "7",
+    "is_enabled": "1"
+   },
+   {
+    "zone_id": "1",
+    "instance_id": "15",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "method_order": "9",
+    "is_enabled": "1"
+   },
+   {
+    "zone_id": "1",
+    "instance_id": "16",
+    "method_id": "local_pickup",
+    "method_order": "9",
+    "is_enabled": "0"
+   },
+   {
+    "zone_id": "2",
+    "instance_id": "5",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "method_order": "1",
+    "is_enabled": "1"
+   },
+   {
+    "zone_id": "3",
+    "instance_id": "9",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "method_order": "1",
+    "is_enabled": "1"
+   },
+   {
+    "zone_id": "3",
+    "instance_id": "10",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "method_order": "2",
+    "is_enabled": "1"
+   },
+   {
+    "zone_id": "3",
+    "instance_id": "13",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "method_order": "3",
+    "is_enabled": "1"
+   }
+  ],
+  "metodu_nust": {
+   "1": {
+    "title": "Nemokamas pristatymas",
+    "requires": "",
+    "min_amount": "0"
+   },
+   "2": {
+    "title": "VENIPAK Kurjeris"
+   },
+   "3": {
+    "title": "VENIPAK paštomatai/atsiėmimo punktai"
+   },
+   "5": {
+    "title": "VENIPAK paštomatai/atsiėmimo punktai"
+   },
+   "6": {
+    "title": "VENIPAK Kurjeris"
+   },
+   "7": {
+    "title": "VENIPAK Kurjeris"
+   },
+   "8": {
+    "title": "VENIPAK Kurjeris"
+   },
+   "9": {
+    "title": "VENIPAK paštomatai/atsiėmimo punktai"
+   },
+   "10": {
+    "title": "VENIPAK Kurjeris"
+   },
+   "12": {
+    "title": "LP Express",
+    "cost": "flat",
+    "tax_status": "taxable",
+    "type": "class"
+   },
+   "13": {
+    "title": "LP Express",
+    "cost": "flat",
+    "tax_status": "taxable",
+    "type": "class"
+   },
+   "15": {
+    "title": "LP Express kurjeris",
+    "cost": "weight",
+    "tax_status": "taxable",
+    "type": "class"
+   },
+   "16": {
+    "title": "Atsiėmimas AV — Liucionių g. 46, Liucionys",
+    "tax_status": "none",
+    "cost": "0"
+   }
+  },
+  "salys": {
+   "allowed": "specific",
+   "specific": [
+    "EE",
+    "LV",
+    "LT"
+   ],
+   "ship_to": "",
+   "specific_ship": [],
+   "default_country": "LT"
+  },
+  "gateways": {
+   "paysera": {
+    "enabled": "yes",
+    "title": "Mokėjimas internetu",
+    "nust": {
+     "enabled": "yes"
+    }
+   },
+   "bacs": {
+    "enabled": "yes",
+    "title": "Bankinis pavedimas",
+    "nust": {
+     "enabled": "yes",
+     "title": "Bankinis pavedimas"
+    }
+   },
+   "cheque": {
+    "enabled": "no",
+    "title": "Apmokėjimas čekiu",
+    "nust": {
+     "enabled": "no",
+     "title": "Apmokėjimas čekiu"
+    }
+   },
+   "cod": {
+    "enabled": "no",
+    "title": "Apmokėjimas grynais atsiimant (COD)",
+    "nust": {
+     "enabled": "no",
+     "title": "Apmokėjimas grynais atsiimant (COD)"
+    }
+   }
+  },
+  "kabliai": {
+   "woocommerce_package_rates": [
+    "10: Woocommerce_Shopup_Venipak_Shipping_Public::show_pickup_if_product_included_in_locker",
+    "10: petshop_hide_parcel_if_courier_only",
+    "20: closure @snippet-ops.php(663) : eval()'d code:1",
+    "100: Petshop_Rinkiniai::pastomato_sargas",
+    "9999: Paysera\\Front\\PayseraDeliveryFrontHtml::filterShippingRatesByCartWeightSuitability",
+    "9223372036854775807: Paysera\\PayseraInit::applyDeliveryGatewayWeightRestrictionsHint"
+   ],
+   "woocommerce_checkout_fields": [
+    "10: Paysera\\Front\\PayseraDeliveryFrontHtml::addRequiredHouseField",
+    "10: closure @functions.php:766",
+    "10: flatsome_move_checkout_fields",
+    "20: petshop_address_optional_for_parcel",
+    "30: petshop_add_company_fields"
+   ],
+   "woocommerce_default_address_fields": [
+    "10: flatsome_override_existing_checkout_fields"
+   ]
+  },
+  "p12466": {
+   "pav": "Eukanuba Veterinary Diets Dermatosis FP 12kg",
+   "sandelis": "zb",
+   "own": null,
+   "svoris": "12.2200",
+   "shipping_class": "",
+   "sources": [
+    {
+     "id": "1042",
+     "product_id": "12466",
+     "source": "zb",
+     "supplier_sku": "01A4A04050",
+     "ean": "",
+     "stock_qty": "24",
+     "cost_net": "41.9490",
+     "synced_at": "2026-08-07 10:02:05",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2",
+     "created_at": "2026-08-07 13:36:26",
+     "updated_at": "2026-09-24 07:20:09"
+    }
+   ],
+   "resolve": {
+    "source": "zb",
+    "carrier": "venipak",
+    "courier_only": false,
+    "av_qty": null,
+    "av_uztenka": false,
+    "tiekejas": "zb",
+    "reason": "AV šios prekės neturi"
+   }
+  },
+  "pranesimo_saltinis": {
+   "wp-content/mu-plugins/petshop-darbalaukis.php": [
+    "paštomatas / LP paštomatas / LP kurjeris; „Atsiėmimas AV“ tik su opcija `ps_dl_atsiemimas_av` — C) su numatyta kaina ir nemokamo riba (taisoma), paštomatai per `ps_dl_vietos`, apmokėjimas pavedimu (bacs + on-hold — WC/temos srautas kaip kasoje) arba „Apmokėta vietoje“ (cod",
+    " * užsakymo pristatymo PVM santykį (0,21 jei nemokamas); kitaip — kaip sumokėta užsakyme; kitaip 2,15 paštomatas / 3,99 kurjeris). `GRAZINIMO_MOKESTIS`"
+   ],
+   "wp-content/mu-plugins/petshop-laukai.php": [
+    "=\"M14 10h4l3 3v3h-7z\"/><circle cx=\"7\" cy=\"18\" r=\"1.8\"/><circle cx=\"17.5\" cy=\"18\" r=\"1.8\"/></svg></span><span class=\"tx\">Nemokamas pristatymas į paštomatą</span><span class=\"liko\"></span></div>",
+    " <div class=\"pslk-po\" id=\"pslk-po\">Nemokamas pristatymas į paštomatą nuo <?php echo esc_html( wc_format_decimal( $riba, 0 ) ); ?> €</div>",
+    " tikslas('pslk-tk-pr', D.riba, 'Pristatymas į paštomatą — nemokamas');"
+   ],
+   "wp-content/mu-plugins/petshop-prenumerata-paskyra.php": [
+    " echo '<div class=\"psn3-pilk\">Pristatymas į paštomatus nemokamas (nuo 30 €)</div>';"
+   ],
+   "wp-content/themes/flatsome-child/functions.php": [
+    " echo '<div style=\"font-size:13px;font-weight:600;color:#365a51;margin-bottom:8px;\">🎉 Jums priklauso nemokamas pristatymas į paštomatą!</div>';",
+    "font-size:13px;color:#333;margin-bottom:8px;\">📦 Dar <strong>€' . number_format( $truksta, 2, ',', '' ) . '</strong> iki nemokamo pristatymo į paštomatą</div>';"
+   ]
+  }
+ },
+ "v": "dep-201941",
+ "kurimas": 200,
+ "sid": 6348,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
