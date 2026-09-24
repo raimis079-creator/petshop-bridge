@@ -1,4 +1,5 @@
 # S1696 — VEIKSMŲ PLANAS (marketingo peržiūra + srauto planas sujungti) — 2026-09-20
+**Atnaujinta 2026-09-24 vakare (S1713): 2.11 WP_CACHE ☑ gyvai (TTFB 1–1,9 s → 40–65 ms, `petshop-cache` v1.1); 2.10 laiškas paruoštas, R užklausa serveriai.lt botui išsiųsta — atsakymo dar nėra.**
 **Atnaujinta 2026-09-24 (S1712): pridėti 2.10–2.17 iš 4 sričių analizės (`S1712_ANALIZE_vartotojas_SEO_turinys_AI_2026-09-24.md`); 1.2 Bing — 1 158 prekių atmestos dėl nuotraukų, patikra ≈10-01; 1.8 — AI botai BLOKUOJAMI hostingo lygmenyje (žr. 2.10).**
 **Atnaujinta 2026-09-23 (S1706): Sprinto 1 statusai; pridėti 2.8, 2.9 iš S1705; 2.8 perduota R; 2.9 analitika v1.3 gyvai; 2.1 veislių blokas gyvai; 2.2 esamų straipsnių sutvarkymas baigtas.**
 
@@ -34,8 +35,8 @@
 | 2.7 | Q4 HTML planas atnaujinti statusais + naujais KPI | C | — | ☐ ~10-05 |
 | 2.8 | Royal Canin / Ambrosia / Rasco: kodėl neperka po migracijos (rugp. ~€500/14 d. → dabar ~€20) | R (kainos) | grąžintos pajamos ~€450/14 d. | ◐ R tikrina pats (09-23). C radinys: RC Sterilised 37 10 kg mūsų €71,98 vs Zookaralyste €54,90 / Kainos.lt min €57,88 (~25–30 % brangiau) |
 | 2.9 | Srauto matavimo pataisa — sesijos, savas srautas, landing, kanalai, piltuvėlis | C | patikimas ses/d ir piltuvėlis | ◐ S1706: `petshop-analitika` v1.3 GYVAI 09-23 (sesija, vidinis srautas → testinis, Paysera ≠ landing, kanalas ne NULL; testas OK). Švari bazė nuo 09-24. Liko: „salis" → „kalba" ataskaitose + piltuvėlis planas-langas (~09-30) |
-| 2.10 | **AI botų atblokavimas hostinge** — serveriai.lt WAF 403/ryšio nutraukimas GPTBot, ChatGPT-User, ClaudeBot (7 d. logai: ChatGPT-User 1 076 užkl., 0×200; OAI-SearchBot/Perplexity praeina); po atblokavimo pakartoti `s1712/b.php` E fazę ir 7 AI užklausas | R (laiškas serveriai.lt / DirectAdmin), C (tekstas, patikra) | ChatGPT-User 200 ≥ 90 %; AI citavimas 2/7 → 5/7 | ☐ S1712 — **KRITINĖ** |
-| 2.11 | **WP_CACHE įjungimas** — `wp-config.php` nėra `define('WP_CACHE', true)` → Super Cache 0 puslapių, TTFB 1,1–2,1 s (žinoma nuo S1689s); + krepšelio/kasos/importo/Complianz patikra | C (R „daryk") | TTFB ≤ 0,3 s svečiui; CrUX FAST | ☐ S1712 |
+| 2.10 | **AI botų atblokavimas hostinge** — serveriai.lt WAF 403/ryšio nutraukimas GPTBot, ChatGPT-User, ClaudeBot (7 d. logai: ChatGPT-User 1 076 užkl., 0×200; OAI-SearchBot/Perplexity praeina); po atblokavimo pakartoti `s1712/b.php` E fazę ir 7 AI užklausas | R (laiškas serveriai.lt / DirectAdmin), C (tekstas, patikra) | ChatGPT-User 200 ≥ 90 %; AI citavimas 2/7 → 5/7 | ◐ S1713: laiškas `S1713_laiskas_serveriai_lt_AI_botai_2026-09-25.md`; R 09-24 21:13 parašė serveriai.lt botui, atsakymo nėra — kartoja 09-25; po atsakymo C patikra E faze — **KRITINĖ** |
+| 2.11 | **WP_CACHE įjungimas** — `wp-config.php` nėra `define('WP_CACHE', true)` → Super Cache 0 puslapių, TTFB 1,1–2,1 s (žinoma nuo S1689s); + krepšelio/kasos/importo/Complianz patikra | C (R „daryk") | TTFB ≤ 0,3 s svečiui; CrUX FAST | ☑ S1713 (09-24): `WP_CACHE`+`WPCACHEHOME` wp-config'e, `cache_rejected_uri` + augintinio-profilis/refill-feedback, `petshop-cache` v1.1 (kategorijų/gamintojo/parduotuvės rebuild); TTFB svečiui 40–65 ms, krepšelis/kasa/paskyra/prisijungę dinaminiai. CrUX patikra ≈10-08 |
 | 2.12 | **Welcome modalas**: CTA „Pridėti augintinį" nenustato `psw_seen` → modalas antrą kartą ant anketos (+ slapukų juosta dengia mobiliajame); nerodyti profilio/skaičiuoklės/kasos puslapiuose; anketos 1 ž. vardas nebūtinas | C | anketa completed/started 22/332 → ≥ 30 % | ☐ S1712 |
 | 2.13 | **Kasa**: paštomatas (0 €, 5 laukai) pirmas vietoj kurjerio 3,99 € (9 laukai); Paysera šalių sąrašas LT/LV/EE; „tik kurjeriu" prekių krepšelio pranešimas suderinti | C (R „daryk") | kasos konversija (2.5), kurjerio dalis ↓ | ☐ S1712 |
 | 2.14 | **SEO šablonai**: kategorijų/gamintojų title+meta (viršutinės 4 kategorijos ir 123 gamintojai be teksto), prekių meta fallback (982 be meta), H1 subkategorijoms/gamintojams/parduotuvei, titulinio Organization/WebPage schema, shippingDetails su PVM (2,15/3,99), darbo laikas, 5 rankiniai 301, Googlebot-Image 404 sąrašas | C | GSC: prekių+kategorijų paspaudimai 73/12 d. → ×2 iki 11-15 | ☐ S1712 |
@@ -96,7 +97,7 @@ Shorts/TikTok kaip kanalas; Google Customer Reviews (LT nėra); CSS partneris (L
 - 2.8 RC/Ambrosia/Rasco kainos — R tikrina pats
 - 2.1 veislių tipiniai svoriai — R patikrina lentelę
 - **2.10** serveriai.lt laiškas dėl AI botų — R siunčia (C tekstas)
-- **2.11 / 2.13** „daryk" WP_CACHE ir kasos metodų eilei
+- ~~2.11~~ ☑ S1713 · **2.13** „daryk" kasos metodų eilei
 - **2.16** atsiliepimų sprendimas (WC atsiliepimai + senų importas?)
 - **2.15** #18054 Leger publikavimas; dovanų kuponas — ar reikia
 - Mobili paieškos ikona antraštėje (Flatsome header); DP „×2 vnt." pakų rikiavimas kategorijoje; Google Business Profile — ar yra; dvi Facebook paskyros (facebook.com/www.Petshop.lt ir /Petshop.lt) — kuri oficiali
