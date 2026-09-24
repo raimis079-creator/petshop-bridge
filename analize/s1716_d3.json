@@ -1,0 +1,137 @@
+{
+ "3": {
+  "v": "S1716d",
+  "faze": "3",
+  "testai": {
+   "17978 Josera SensiPlus 12,5 kg (VF)": {
+    "add": true,
+    "subtotal": 0,
+    "paketai": [
+     {
+      "rates": [
+       [
+        "shopup_venipak_shipping_pickup_method:3",
+        "VENIPAK paštomatai/atsiėmimo punktai",
+        "0"
+       ],
+       [
+        "shopup_venipak_shipping_courier_method:2",
+        "VENIPAK Kurjeris",
+        "3.30"
+       ]
+      ],
+      "default": "shopup_venipak_shipping_pickup_method:3"
+     }
+    ],
+    "fulfillment_resolve": {
+     "source": "vf",
+     "carrier": "venipak",
+     "courier_only": false,
+     "label": "VF (Vetfarmas)",
+     "reason": "VF meta laukai"
+    },
+    "tik_kurjeriu": "",
+    "svoris": "12.5"
+   },
+   "12466 Eukanuba Dermatosis 12 kg (ZB)": {
+    "add": true,
+    "subtotal": 0,
+    "paketai": [
+     {
+      "rates": [
+       [
+        "shopup_venipak_shipping_courier_method:2",
+        "VENIPAK Kurjeris",
+        "3.30"
+       ]
+      ],
+      "default": "shopup_venipak_shipping_courier_method:2"
+     }
+    ],
+    "fulfillment_resolve": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "label": "ZB (Žalioji Banga)",
+     "reason": "ZB meta laukai"
+    },
+    "tik_kurjeriu": "",
+    "svoris": "12.2200"
+   },
+   "15870 Georplast Vicky tualetas (tik kurjeriu)": {
+    "add": false,
+    "notices": {
+     "error": [
+      {
+       "notice": "Please choose product options by visiting <a href=\"https://petshop.lt/product/uzdaras-tualetas-katems-vicky-georplast/\" title=\"Uždaras tualetas katėms, Vicky, Georplast\">Uždaras tualetas katėms, Vicky, Georplast</a>.",
+       "data": []
+      }
+     ]
+    }
+   }
+  },
+  "metodai": [
+   {
+    "instance_id": "3",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "method_order": "0",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "1",
+    "method_id": "free_shipping",
+    "method_order": "1",
+    "is_enabled": "0"
+   },
+   {
+    "instance_id": "2",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "method_order": "2",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "6",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "method_order": "4",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "7",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "method_order": "5",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "8",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "method_order": "6",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "12",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "method_order": "7",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "15",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "method_order": "9",
+    "is_enabled": "1"
+   },
+   {
+    "instance_id": "16",
+    "method_id": "local_pickup",
+    "method_order": "9",
+    "is_enabled": "0"
+   }
+  ]
+ },
+ "v": "dep-203952",
+ "kurimas": 200,
+ "sid": 6355,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
