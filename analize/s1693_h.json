@@ -1,0 +1,205 @@
+{
+ "1": {
+  "kanalai": [
+   {
+    "kan": "google_ads",
+    "n": "64",
+    "eur": "2534",
+    "aov": "40",
+    "kontr": "623",
+    "nauji": "30"
+   },
+   {
+    "kan": "direct",
+    "n": "28",
+    "eur": "1363",
+    "aov": "49",
+    "kontr": "333",
+    "nauji": "8"
+   },
+   {
+    "kan": "kaina24/kainos",
+    "n": "20",
+    "eur": "792",
+    "aov": "40",
+    "kontr": "184",
+    "nauji": "17"
+   },
+   {
+    "kan": "organika",
+    "n": "14",
+    "eur": "478",
+    "aov": "34",
+    "kontr": "99",
+    "nauji": "9"
+   },
+   {
+    "kan": "referral",
+    "n": "6",
+    "eur": "155",
+    "aov": "26",
+    "kontr": "41",
+    "nauji": "2"
+   },
+   {
+    "kan": "soc_organika",
+    "n": "4",
+    "eur": "181",
+    "aov": "45",
+    "kontr": "31",
+    "nauji": "2"
+   },
+   {
+    "kan": "?",
+    "n": "1",
+    "eur": "1",
+    "aov": "1",
+    "kontr": "0",
+    "nauji": "1"
+   },
+   {
+    "kan": "email",
+    "n": "1",
+    "eur": "45",
+    "aov": "45",
+    "kontr": "6",
+    "nauji": "0"
+   }
+  ],
+  "kat_kanalas": [],
+  "top_prekes": [],
+  "nauji_kanalas": [
+   {
+    "kan": "?",
+    "nauj": "1",
+    "n": "1",
+    "aov": "1"
+   },
+   {
+    "kan": "direct",
+    "nauj": "0",
+    "n": "20",
+    "aov": "57"
+   },
+   {
+    "kan": "direct",
+    "nauj": "1",
+    "n": "8",
+    "aov": "29"
+   },
+   {
+    "kan": "email",
+    "nauj": "0",
+    "n": "1",
+    "aov": "45"
+   },
+   {
+    "kan": "google_ads",
+    "nauj": "0",
+    "n": "34",
+    "aov": "48"
+   },
+   {
+    "kan": "google_ads",
+    "nauj": "1",
+    "n": "30",
+    "aov": "31"
+   },
+   {
+    "kan": "kaina24/kainos",
+    "nauj": "0",
+    "n": "3",
+    "aov": "53"
+   },
+   {
+    "kan": "kaina24/kainos",
+    "nauj": "1",
+    "n": "17",
+    "aov": "37"
+   },
+   {
+    "kan": "organika",
+    "nauj": "0",
+    "n": "5",
+    "aov": "47"
+   },
+   {
+    "kan": "organika",
+    "nauj": "1",
+    "n": "9",
+    "aov": "27"
+   },
+   {
+    "kan": "referral",
+    "nauj": "0",
+    "n": "4",
+    "aov": "32"
+   },
+   {
+    "kan": "referral",
+    "nauj": "1",
+    "n": "2",
+    "aov": "14"
+   },
+   {
+    "kan": "soc_organika",
+    "nauj": "0",
+    "n": "2",
+    "aov": "39"
+   },
+   {
+    "kan": "soc_organika",
+    "nauj": "1",
+    "n": "2",
+    "aov": "52"
+   }
+  ],
+  "eil_cols": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ]
+ },
+ "v": "dep-064337",
+ "kurimas": 200,
+ "sid": 6280,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
