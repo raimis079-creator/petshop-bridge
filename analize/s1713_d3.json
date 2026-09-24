@@ -1,0 +1,58 @@
+{
+ "3": {
+  "v": "S1713d",
+  "faze": "3",
+  "pid": 17978,
+  "po_uzklausu": {
+   "0": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/",
+   "1": true,
+   "2": [
+    "index-https.html"
+   ],
+   "home": [
+    "index-https.html"
+   ]
+  },
+  "stock": 1314,
+  "po_set_stock": {
+   "0": true,
+   "1": [
+    "index-https.html"
+   ],
+   "home": [
+    "index-https.html"
+   ]
+  },
+  "po_post_change": [
+   true,
+   [
+    "index-https.html"
+   ]
+  ],
+  "ps_cache_hooks": [],
+  "ps_cache_actions": [
+   "woocommerce_product_set_stock",
+   "woocommerce_variation_set_stock",
+   "woocommerce_product_set_stock_status",
+   "woocommerce_variation_set_stock_status",
+   "woocommerce_product_object_updated_props",
+   "woocommerce_update_product",
+   "woocommerce_update_product_variation",
+   "pmxi_after_xml_import",
+   "edited_product_cat",
+   "created_product_cat",
+   "edited_product_brand",
+   "wp_update_nav_menu",
+   "petshop_cache_isvalyti",
+   "petshop_cache_isvalyti_preke",
+   "shutdown"
+  ]
+ },
+ "v": "dep-183249",
+ "kurimas": 200,
+ "sid": 6317,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
