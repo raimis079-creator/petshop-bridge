@@ -1,0 +1,53 @@
+{
+ "1": {
+  "15886": {
+   "raw_status": "outofstock",
+   "raw_stock": "0",
+   "manage": "yes",
+   "own": null,
+   "sandelis": "av",
+   "lookup": {
+    "stock_status": "outofstock",
+    "stock_quantity": "0"
+   },
+   "modified": "2026-09-24 23:02:50",
+   "be_filtru": "outofstock"
+  },
+  "16178": {
+   "raw_status": "instock",
+   "raw_stock": null,
+   "manage": "no",
+   "own": null,
+   "sandelis": "av",
+   "lookup": {
+    "stock_status": "instock",
+    "stock_quantity": null
+   },
+   "modified": "2026-09-22 11:34:30",
+   "be_filtru": "instock"
+  },
+  "17862": {
+   "raw_status": "outofstock",
+   "raw_stock": "0",
+   "manage": "yes",
+   "own": null,
+   "sandelis": "av",
+   "lookup": {
+    "stock_status": "outofstock",
+    "stock_quantity": "0"
+   },
+   "modified": "2026-09-24 23:02:50",
+   "be_filtru": "outofstock"
+  },
+  "v": "S1715g",
+  "stock_status_src": "function stock_status( $status, $product ) {\n\t\tif ( ! is_a( $product, 'WC_Product' ) ) { return $status; }\n\t\t$pid = $product->get_id();\n\t\tif ( ! self::taikoma( $pid ) ) { return $status; }\n\t\t$av = (int) Petshop_AV_Stock::qty( $pid );\n\t\tif ( $av > 0 ) { return 'instock'; }\n\t\treturn $status;\n\t}",
+  "stock_qty_src": "function stock_qty( $qty, $product ) {\n\t\tif ( ! is_a( $product, 'WC_Product' ) ) { return $qty; }\n\t\t$pid = $product->get_id();\n\t\tif ( ! self::taikoma( $pid ) ) { return $qty; }\n\t\t$av = (int) Petshop_AV_Stock::qty( $pid );\n\t\t$tiek = (int) $qty;                                  // WC `_stock` = tiekėjo kiekis\n\t\treturn $av + max( 0, $tiek );\n\t}"
+ },
+ "v": "dep-200506",
+ "kurimas": 200,
+ "sid": 6345,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
