@@ -1,0 +1,252 @@
+{
+ "1": {
+  "v": "S1716j",
+  "md5": "f6ff37b96bc538d7e0535e22419991a8",
+  "kodas": "ce    1.25.10\n\t */\n\tpublic function add_venipak_shipping_pickup_options_inline( $method, $index ) {\n\t\tif ( ! is_checkout() ) return;\n\n\t\t$chosen_method_id = WC()->session->chosen_shipping_methods[ $index ];\n\n\t\tif ( $chosen_method_id !== $method->id || $method->method_id !== 'shopup_venipak_shipping_pickup_method' ) {\n\t\t\treturn;\n\t\t}\n\n\t\twc_get_template(\n\t\t\t'woocommerce/checkout/venipak-shipping-terminals-inline.php',\n\t\t\tarray(),\n\t\t\t'',\n\t\t\tuntrailingslashit( plugin_dir_path( __FILE__ ) ) . '/' );\n\t}\n\n\t/**\n\t *\n\t *\n\t * @since    1.0.0\n\t */\n\tpublic function add_venipak_shipping_pickup_checkout_process() {\n\t\tif ( isset( $_POST['venipak_pickup_point'] ) && empty( $_POST['venipak_pickup_point'] ) )\n\t\t\twc_add_notice( ( __( 'Select pickup point', 'woocommerce-shopup-venipak-shipping' ) ), \"error\" );\n\t}\n\t \n\t \n\t/**\n\t *\n\t *\n\t * @since    1.0.0\n\t */\n\tpublic function add_venipak_shipping_pickup_update_order_meta($order_id, $data) { \n\t\tif (isset($_POST['venipak_pickup_point'])) {\n\t\t\t$order = wc_get_order($order_id);\n\t\t\tvenipak_store_order_pickup($order, sanitize_text_field($_POST['venipak_pickup_point']));\n\t\t\t$order->save();\n\t\t}\n\t}\n\t\n\n \n\tpublic function add_venipak_shipping_pickup_update_order_meta_block_checkout($order, $request) { \n\t\t$body = $request->get_body();\n\t\t$fields = json_decode($body, true);  \n\t\tif (isset($fields['shipping_address']['venipak_pickup_point'])) {\n\t\t\tvenipak_store_order_pickup($order, sanitize_text_field($fields['shipping_address']['venipak_pickup_point']));\n\t\t\t$order->save();\n\t\t}\n\t}\n\n\t/**\n\t *\n\t *\n\t * @since    1.14.9\n\t */\n\tpublic function validate_cod( $fields, $errors ) {\n\t\t$items = venipak_fetch_pickups();\n\n\t\tif ($fields['payment_method'] === 'cod' && strpos($fields['shipping_method'][0], 'shopup_venipak_shipping_pickup_method') !== false) {\n\t\t\tforeach($items as $point) {\n\t\t\t\tif ($point[\"id\"] == $_POST['venipak_pickup_point'] && $point[\"cod_enabled\"] === 0) {\n\t\t\t\t\t$errors->add( 'validation', __( 'Cod incompatible', 'woocommerce-shopup-venipak-shipping' ) );\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n\t\n\t\n\t/**\n\t *\n\t *\n\t * @since    1.0.0\n\t */\n\tpublic function add_venipak_shipping_pickup_points() {\n\t\t$cart_total_weight = WC()->cart->cart_contents_weight;\n\t\tif (get_option('woocommerce_weight_unit') == 'g') {\n\t\t\t$cart_total_weight /= 1000;\n\t\t}\n\n\t\tswitch (get_option( 'woocommerce_dimension_unit' )) {\n\t\tcase 'm':\n\t\t\t$unit_multiplayer = 0.01;\n\t\t\tbreak;\n\t\tcase 'mm':\n\t\t\t$unit_multiplayer = 10;\n\t\t\tbreak;\n\t\tdefault:\n\t\t\t$unit_multiplayer = 1;\n\t\t}\n\n\t\t$maximum_weight_pickup = 10;\n\n\t\t// Locker internal max dimensions (cm by default)\n\t\t$venipak_box_dims = [\n\t\t\t61 * $unit_multiplayer,\n\t\t\t39.5 * $unit_multiplayer,\n\t\t\t41 * $unit_multiplayer,\n\t\t];\n\t\tsort( $venipak_box_dims ); // allow any orientation by comparing sorted dims\n\t\t$venipak_max_volume = array_product( $venipak_box_dims );\n\t\t\n\t\t$is_valid_for_locker = true;\n\t\t$is_valid_for_pickup = true;\n\t\t$total_cart_volume = 0;\n\t\t\n\t\tforeach ( WC()->cart->get_cart() as $cart_item ) {\n\t\t\t$product = $cart_item['data']; // Directly use the product data\n\n\t\t\tif ($product->is_type('variation')) {\n\t\t\t\t$product = new WC_Product_Variation($cart_item['variation_id']);\n\t\t\t}\n\t\t\t$product_dimensions = [\n\t\t\t\t(float) $product->get_length() ?: 0,\n\t\t\t\t(float) $product->get_width() ?: 0,\n\t\t\t\t(float) $product->get_height() ?: 0,\n\t\t\t];\n\t\t\t// Variations often have empty dimensions while the parent product has them.\n\t\t\tif (\n\t\t\t\t$product->is_type( 'variation' ) &&\n\t\t\t\t$product_dimensions[0] <= 0 &&\n\t\t\t\t$product_dimensions[1] <= 0 &&\n\t\t\t\t$product_dimensions[2] <= 0 &&\n\t\t\t\t! empty( $cart_item['product_id'] )\n\t\t\t) {\n\t\t\t\t$parent_product = wc_get_product( $cart_item['product_id'] );\n\t\t\t\tif ( $parent_product ) {\n\t\t\t\t\t$product_dimensions = [\n\t\t\t\t\t\t(float) $parent_product->get_length() ?: 0,\n\t\t\t\t\t\t(float) $parent_product->get_width() ?: 0,\n\t\t\t\t\t\t(float) $parent_product->get_height() ?: 0,\n\t\t\t\t\t];\n\t\t\t\t}\n\t\t\t}\n\t\t\tsort( $product_dimensions );\n\t\t\t$total_cart_volume += ( $product_dimensions[0] * $product_dimensions[1] * $product_dimensions[2] ) * $cart_item['quantity'];\n\t\t\tif (\n\t\t\t\t$product_dimensions[0] > $venipak_box_dims[0] ||\n\t\t\t\t$product_dimensions[1] > $venipak_box_dims[1] ||\n\t\t\t\t$product_dimensions[2] > $venipak_box_dims[2]\n\t\t\t) {\n\t\t\t\t$is_valid_for_locker = false;\n\t\t\t}\n\t\t\t$product_min_age = $product->get_meta('shopup_venipak_shipping_min_age');\n\t\t\tif ($product_min_age > 0) {\n\t\t\t\t$is_valid_for_locker = false;\n\t\t\t\t$is_valid_for_pickup = false;\n\t\t\t}\n\t\t}\n\t\t// if ($cart_total_weight > $maximum_weight_locker) {\n\t\t//   $is_valid_for_locker = false;\n\t\t// }\n\t\tif ($cart_total_weight > $maximum_weight_pickup) {\n\t\t\t$is_valid_for_pickup = false;\n\t\t}\n\t\tif ($total_cart_volume > $venipak_max_volume) {\n\t\t\t$is_valid_for_locker = false;\n\t\t}\n\n\t\tif ($this->pickup_type === 'all' && !$is_valid_for_locker && $is_valid_for_pickup) {\n\t\t\t$pickup_type = 1; // only pickup\n\t\t} elseif ($this->pickup_type === 'all' && $is_valid_for_locker && !$is_valid_for_pickup) {\n\t\t\t$pickup_type = 3; // only locker\n\t\t} else {\n\t\t\t$pickup_type = $this->pickup_type;\n\t\t}\n\n\n\t\tif (!$is_valid_for_locker && !$is_valid_for_pickup) {\n\t\t\twp_die();\n\t\t}\n\t\t\n\t\t$collection = venipak_fetch_pickups();\n\t\t$result = [];\n\t\t$country = WC()->customer->get_shipping_country();\n\t\tforeach ($collection as $item) {\n\t\t\tif ($country !== $item['country']) continue;\n\t\t\tif ($pickup_type !== 'all' && $pickup_type != $item['type']) continue;\n\n\t\t\t$result[] = $item;\n\t\t}\n\t\techo json_encode($result);\n\t\twp_die();\n\t}\n\n\t/**\n\t *\n\t *\n\t * @since    1.0.0\n\t */\n\tpublic function add_venipak_shipping_checkout_setti",
+  "funkcijos": [
+   "__construct",
+   "get_pickup_position",
+   "add_venipak_shipping_pickup_options",
+   "add_venipak_shipping_pickup_options_inline",
+   "add_venipak_shipping_pickup_checkout_process",
+   "add_venipak_shipping_pickup_update_order_meta",
+   "add_venipak_shipping_pickup_update_order_meta_block_checkout",
+   "validate_cod",
+   "add_venipak_shipping_pickup_points",
+   "add_venipak_shipping_checkout_settings"
+  ],
+  "filtrai": [],
+  "kvieciama": {
+   "class-woocommerce-shopup-venipak-shipping-admin-pickup.php": [
+    "$total_cart_volume = 0;",
+    "$total_cart_volume += ($product_dimensions[0] * $product_dimensions[1] * $product_dimensions[2]) * $cart_item['quantity'];",
+    "if ($total_cart_volume > $venipak_max_volume) {"
+   ]
+  },
+  "zb_krastines": [
+   {
+    "mx": "150.00",
+    "n": "1"
+   },
+   {
+    "mx": "120.00",
+    "n": "1"
+   },
+   {
+    "mx": "85.00",
+    "n": "1"
+   },
+   {
+    "mx": "80.00",
+    "n": "11"
+   },
+   {
+    "mx": "70.00",
+    "n": "37"
+   },
+   {
+    "mx": "50.00",
+    "n": "4"
+   },
+   {
+    "mx": "45.00",
+    "n": "1"
+   },
+   {
+    "mx": "39.00",
+    "n": "1"
+   },
+   {
+    "mx": "35.00",
+    "n": "3"
+   },
+   {
+    "mx": "30.00",
+    "n": "9"
+   },
+   {
+    "mx": "25.00",
+    "n": "1"
+   },
+   {
+    "mx": "22.00",
+    "n": "2"
+   }
+  ],
+  "zb_virs60_pvz": [
+   {
+    "ID": "12673",
+    "t": "Gemon Kitten visavertis pašaras jauniems kačiuka",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "80.0000",
+    "kg": "20.0000"
+   },
+   {
+    "ID": "12674",
+    "t": "Gemon Adult visavertis pašaras suaugusioms katėm",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "80.0000",
+    "kg": "20.0000"
+   },
+   {
+    "ID": "12675",
+    "t": "Gemon Adult visavertis pašaras suaugusioms katėm",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "80.0000",
+    "kg": "20.0000"
+   },
+   {
+    "ID": "12676",
+    "t": "Gemon Sterilised light visavertis pašaras steril",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "80.0000",
+    "kg": "20.0000"
+   },
+   {
+    "ID": "12720",
+    "t": "Real Dog visavertis pašaras suaugusiems šunims s",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "80.0000",
+    "kg": "20.0000"
+   },
+   {
+    "ID": "12719",
+    "t": "Real Dog Sensitive 15kg pašaras suaugusiems šuni",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "15.1000"
+   },
+   {
+    "ID": "12828",
+    "t": "Real Dog Sensitive 15kg pašaras suaugusiems šuni",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "15.1000"
+   },
+   {
+    "ID": "12485",
+    "t": "Family Dog HAYS visavertis sausas pašaras su ant",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "15.0800"
+   },
+   {
+    "ID": "12483",
+    "t": "Family Dog Adult visavertis pašaras suaugusiems ",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "15.0800"
+   },
+   {
+    "ID": "12484",
+    "t": "Family Dog Adult Medium visavertis pašaras suaug",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "15.0800"
+   },
+   {
+    "ID": "12486",
+    "t": "Family Dog HAYS visavertis sausas pašaras su tri",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "15.0800"
+   },
+   {
+    "ID": "12930",
+    "t": "Eukanuba Daily Care Sensitive Joints Adult 12kg",
+    "l": "14.4000",
+    "w": "80.0000",
+    "h": "40.0000",
+    "kg": "12.7500"
+   },
+   {
+    "ID": "12468",
+    "t": "Eukanuba Intestinal Disorders Adult (vištiena) 1",
+    "l": "14.4000",
+    "w": "80.0000",
+    "h": "40.0000",
+    "kg": "12.7200"
+   },
+   {
+    "ID": "12457",
+    "t": "Eukanuba German Shephed Adult (vištiena) 12kg",
+    "l": "14.4000",
+    "w": "80.0000",
+    "h": "40.0000",
+    "kg": "12.2200"
+   },
+   {
+    "ID": "12455",
+    "t": "Eukanuba Daily Care Sensitive Skin Adult (žuvis)",
+    "l": "14.4000",
+    "w": "80.0000",
+    "h": "40.0000",
+    "kg": "12.2200"
+   },
+   {
+    "ID": "12456",
+    "t": "Eukanuba Golden Retriever Adult (vištiena) 12kg",
+    "l": "14.4000",
+    "w": "80.0000",
+    "h": "40.0000",
+    "kg": "12.2200"
+   },
+   {
+    "ID": "12532",
+    "t": "Monge medium adult visavertis sausas pašaras su ",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "12.2200"
+   },
+   {
+    "ID": "12466",
+    "t": "Eukanuba Veterinary Diets Dermatosis FP 12kg",
+    "l": "14.4000",
+    "w": "80.0000",
+    "h": "40.0000",
+    "kg": "12.2200"
+   },
+   {
+    "ID": "12534",
+    "t": "Monge maxi adult visavertis sausas pašaras suaug",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "12.2200"
+   },
+   {
+    "ID": "12531",
+    "t": "Monge medium puppy sausas pašaras (vištiena) 12k",
+    "l": "20.0000",
+    "w": "40.0000",
+    "h": "70.0000",
+    "kg": "12.0000"
+   }
+  ],
+  "zb_xml_tagai": [
+   "length",
+   "width",
+   "height"
+  ],
+  "zb_xml_pvz": "<?xml version=\"1.0\" encoding=\"UTF-8\"?> <catalog> <items> <item> <name> <![CDATA[ Eukanuba Active Small Adult (vištiena) 3kg ]]> </name> <code>01A1B01030</code> <ean>8710255120072</ean> <brand> <![CDATA[ Eukanuba ]]> </brand> <category> <![CDATA[ Prekės šunims,Prekės šunims > Šunų maistas,Prekės šunims > Šunų maistas > Sausas maistas šunims,Prekės šunims > Šunų maistas > Sausas maistas šunims > Sausas maistas suaugusiems šunims,Prekės šunims > Suskirstymas pagal gamintoją > Eukanuba maistas šunims ]]> </category> <price>9.792</price> <rrp>15.89</rrp> <qty>11</qty> <description> <![CDATA[ <p>PAGRINDINIAI PRIVALUMAI</p> <p>L-karnitinas padeda kontroliuoti svorį</p> <p>Juka padeda sumažinti išmatų kvapą</p> <p>Probiotikai FOS ir runkelių minkštimas padeda remti sveiką virškinimą</p> <p>Natūralūs Omega-6 ir Omega-3 šaltiniai, kad oda ir kailis būtų sveiki</p> <p>Antioksidantai vitaminai E ir C padeda palaikyti imunitetą</p> <p style=\"margin:0px 0px 25px;font-size:16px;line-height:1.4;font-family:'Helvetica Neue', Helvetica, Arial, sans-serif;color:#384047;border:none;\"></p> <p>Speciali granulės forma ir unikali DentaDefence dantų apsaugos technolo"
+ },
+ "v": "dep-205953",
+ "kurimas": 200,
+ "sid": 6359,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
