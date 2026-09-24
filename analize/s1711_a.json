@@ -1,0 +1,121 @@
+{
+ "1": {
+  "robots_file": null,
+  "rm_robots": "(nera)",
+  "rm_modules": [
+   "sitemap",
+   "rich-snippet",
+   "woocommerce"
+  ],
+  "404_md5": "7bf691b19366bcd126c19904bbfb0e9e",
+  "404_len": 10371,
+  "404_struct": [
+   "function ps",
+   "function ps",
+   "function ps",
+   "function ps"
+  ],
+  "404_alias_snip": "<?php\n/**\n * Plugin Name: Petshop 404 atitikmuo v1.1 (S1689s, S1698)\n * Description: Senos platformos adresams, kurių nėra legacy-301 žemėlapyje. Veikia po petshop-legacy-301 (prio 1), tik kai is_404().\n *   v1.0: 301 kai paskutinis segmentas (be .html ir ID priešdėlio) TIKSLIAI = publikuotos prekės / kategorijos / gamintojo slug; alias.\n *   v1.1 (S1698, 2026-09-20): (a) alias checkout→/kasa/, cart→/krepselis/, content/*nuostatos* → taisyklių puslapis, parduotuve/page/N → /parduotuve/;\n *     (b) prekė yra, bet NE publish (draft/trash/private, pvz. Exclusion Intestinal po S1688) → 301 į jos giliausią kategoriją;\n *     (c) gamintojas pagal _legacy_manufacturer (placek-pet-products-s-r-o → /gamintojas/placek/, greenpetfood → green-petfood);\n *     (d) ARTIMIAUSIAS slug: senas eShoprent slug be ID (trixie-kilimelis-purvui-surinkti-120-80-cm) → publikuota prekė, kai\n *         VISI seno slug'o skaičiai/pakuotės sutampa ir ≥75 % žodžių randami naujame slug'e, ir geriausias kandidatas vienintelis;\n *     (e) žurnalas opcijoje ps_404_atitikmuo_log (paskutiniai 300: kelias → url, taisyklė) auditui.\n *   Kitaip lieka 404 (jokio nukreipimo į paiešką). X-Redirect-By: Petshop-404-Atitikmuo\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n/** „5kg\" → „5-kg\", „120x80\" → „120-x-80\", „al119\" → „al-119\" — vienodinam seną ir naują slug'ą. */\nfunction ps404_norm( $slug ) {\n\treturn preg_replace( array( '/(\\d)([a-z])/', '/([a-z])(\\d)",
+  "legacy_files": [
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-legacy-301-map.json",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-legacy-301.php",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-legacy-importas.php"
+  ],
+  "legacy_n": {
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-legacy-301-map.json": 1222
+  },
+  "legacy_blog": {
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-legacy-301-map.json": []
+  },
+  "blog": {
+   "/index.php?route=blog/article/prints&blogid=21&view=print": "301 https://petshop.lt/?route=blog%2Farticle%2Fprints&blogid=21&view=print WordPress",
+   "/index.php?route=blog/article&blogid=21": "301 https://petshop.lt/?route=blog%2Farticle&blogid=21 WordPress",
+   "/?route=blog/article&blogid=21": "301 https://petshop.lt/?route=blog%2Farticle&blogid=21 WordPress"
+  },
+  "posts": [],
+  "meta_keys_legacy": [
+   "_petshop_legacy_slug",
+   "_petshop_legacy_url",
+   "_legacy_product_id",
+   "_legacy_source",
+   "_legacy_manufacturer",
+   "_legacy_related_ids",
+   "_legacy_weight_raw",
+   "_legacy_seo_title",
+   "_legacy_origin_country"
+  ],
+  "wc_sd_hooks": {
+   "rank_math/json_ld": [
+    "99 Petshop_Schema_Takelis::prideti",
+    "99 Petshop_Schema_Prekes::json_ld"
+   ],
+   "wp_footer": [
+    "0 RankMath\\Json_Manager::output",
+    "1 wp_enqueue_global_styles",
+    "1 wp_enqueue_stored_styles",
+    "1 wp_maybe_inline_styles",
+    "7 flatsome_mobile_menu",
+    "10 wp_print_speculation_rules",
+    "10 the_block_template_skip_link",
+    "10 WP_Duotone::output_footer_assets",
+    "10 closure",
+    "10 cmplz_banner_loader::cookiebanner_html",
+    "10 flatsome_footer_scripts",
+    "10 flatsome_body_overlay",
+    "10 flatsome_print_faq_schema",
+    "10 flatsome_account_login_lightbox",
+    "10 flatsome_sticky_add_to_cart_template",
+    "10 ux_block_frontend",
+    "10 WP_Script_Modules::print_import_map",
+    "10 WP_Script_Modules::print_enqueued_script_modules",
+    "10 WP_Script_Modules::print_script_module_preloads",
+    "10 WP_Script_Modules::print_script_module_data",
+    "10 WC_Structured_Data::output_structured_data",
+    "10 Evaluation\\Evaluate_Content::load_footer_content",
+    "15 WPForms\\Frontend\\Frontend::assets_footer",
+    "18 petshop_gtm_flush_atc",
+    "19 petshop_gtm_single_item_data",
+    "19 WPForms\\Frontend\\Captcha::recaptcha_noconflict",
+    "20 wp_print_footer_scripts",
+    "20 Petshop_Statistika::irenginio_laukas",
+    "20 petshop_gtm_view_item",
+    "20 WPForms\\Frontend\\Frontend::missing_assets_error_js",
+    "20 WP_Script_Modules::print_a11y_script_module_html",
+    "21 petshop_gtm_atc_listener",
+    "25 wc_print_js",
+    "30 closure",
+    "40 Petshop_Welcome_Modal::render",
+    "60 Petshop_Anketa_Ivykiai::js_stebetojas",
+    "70 Petshop_Rec_UI::blokas",
+    "99 Petshop_Analitika::beacon",
+    "99 Petshop_Relaunch::js",
+    "99 closure",
+    "99 closure",
+    "99 WPForms\\Frontend\\Frontend::footer_end",
+    "99 Petshop_Statistika_Vitrina::skriptas",
+    "99 petshop_checkout_shipping_fix_js",
+    "99 petshop_company_fields_js",
+    "99 petshop_account_checkbox_default",
+    "100 closure",
+    "100 closure",
+    "100 closure",
+    "100 petshop_ship_to_different_toggle_js",
+    "105 closure",
+    "105 closure",
+    "1000 wp_admin_bar_render",
+    "9999 flatsome_before_body_close"
+   ]
+  },
+  "brand_ld": [
+   "{\"@context\":\"https://schema.org\",\"@graph\":[{\"@type\":\"Organization\",\"@id\":\"https://petshop.lt/#organization\",\"name\":\"Petshop.lt\"},{\"@type\":\"WebSite\",\"@id\":\"https://petshop.lt/#website\",\"url\":\"https://petshop.lt\",\"name\":\"Petshop.lt\",\"publisher\":{\"@id\":\"https://petshop.lt/#organization\"},\"inLanguage\":\" ... \\u0161unims su triu\\u0161iena ir bulv\\u0117mis 200 g - kokybi\\u0161ki konservai \\u0161unims\"},{\"@type\":\"Product\",\"name\":\"Exclusion Hypoallergenic ma\\u017e\\u0173 veisli\\u0173 \\u0161un\\u0173 maistas su kiauliena ir \\u017eirneliais 2 kg - Petshop.lt\",\"url\":\"https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-2-kg/\",\"@id\":\"https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-2-kg/\",\"description\":\"Super Premium maistas alergi\\u0161kiems ma\\u017e\\u0173 veisli\\u0173 \\u0161unims su kiauliena.\"}]}]}",
+   "{\"@context\":\"https://schema.org/\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"name\":\"Prad\\u017eia\",\"@id\":\"https://petshop.lt\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"name\":\"Exclusion\",\"@id\":\"https://petshop.lt/gamintojas/exclusion/\"}}]} ... {\"@context\":\"https://schema.org/\",\"@type\":\"BreadcrumbList\",\"itemListElement\":[{\"@type\":\"ListItem\",\"position\":1,\"item\":{\"name\":\"Prad\\u017eia\",\"@id\":\"https://petshop.lt\"}},{\"@type\":\"ListItem\",\"position\":2,\"item\":{\"name\":\"Exclusion\",\"@id\":\"https://petshop.lt/gamintojas/exclusion/\"}}]}"
+  ]
+ },
+ "v": "dep-132653",
+ "kurimas": 200,
+ "sid": 6292,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
