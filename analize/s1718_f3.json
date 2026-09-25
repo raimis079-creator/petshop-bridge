@@ -1,0 +1,771 @@
+{
+ "1": {
+  "v": "S1718f3",
+  "opt": {
+   "yith_wcan_ajax_shop_container": false,
+   "yith_wcan_ajax_shop_pagination": false,
+   "yith_wcan_ajax_shop_result_container": false,
+   "yith_wcan_ajax_filters": false,
+   "yith_wcan_instant_filters": false,
+   "yith_wcan_scroll_top": false,
+   "yith_wcan_options": false
+  },
+  "content_failuose": [
+   "wp-content/themes/flatsome/page-single-page-nav.php",
+   "wp-content/themes/flatsome/page-transparent-header-light.php",
+   "wp-content/themes/flatsome/page-left-sidebar.php",
+   "wp-content/themes/flatsome/inc/admin/advanced/front-end/options.php",
+   "wp-content/themes/flatsome/single.php",
+   "wp-content/themes/flatsome/page-transparent-header.php",
+   "wp-content/themes/flatsome/page-header-on-scroll.php",
+   "wp-content/themes/flatsome/page-blank-sub-nav-vertical.php",
+   "wp-content/themes/flatsome/page-single-page-nav-transparent-light.php",
+   "wp-content/themes/flatsome/index.php",
+   "wp-content/themes/flatsome/page.php",
+   "wp-content/themes/flatsome/template-parts/portfolio/archive-portfolio.php",
+   "wp-content/themes/flatsome/page-right-sidebar.php",
+   "wp-content/themes/flatsome/search.php",
+   "wp-content/themes/flatsome/woocommerce/checkout/layouts/checkout-simple.php",
+   "wp-content/themes/flatsome/woocommerce/checkout/layouts/checkout-focused.php",
+   "wp-content/themes/flatsome/page-blank-featured.php",
+   "wp-content/themes/flatsome/image.php",
+   "wp-content/themes/flatsome/page-blank.php",
+   "wp-content/themes/flatsome/page-single-page-nav-transparent.php",
+   "wp-content/themes/flatsome/page-blank-title-center.php"
+  ],
+  "snippets": [
+   {
+    "id": "6443",
+    "name": "TEMP PS dep-130833",
+    "active": "1",
+    "modified": "2026-09-25 13:09:26"
+   },
+   {
+    "id": "6441",
+    "name": "TEMP PS dep-125959",
+    "active": "0",
+    "modified": "2026-09-25 13:01:21"
+   },
+   {
+    "id": "6336",
+    "name": "TEMP PS dep-192719",
+    "active": "0",
+    "modified": "2026-09-24 19:28:35"
+   },
+   {
+    "id": "6335",
+    "name": "TEMP PS dep-192552",
+    "active": "0",
+    "modified": "2026-09-24 19:27:01"
+   },
+   {
+    "id": "6334",
+    "name": "TEMP PS dep-192411",
+    "active": "0",
+    "modified": "2026-09-24 19:25:35"
+   },
+   {
+    "id": "6309",
+    "name": "TEMP PS dep-161819",
+    "active": "0",
+    "modified": "2026-09-24 16:21:08"
+   },
+   {
+    "id": "6304",
+    "name": "TEMP PS dep-155958",
+    "active": "0",
+    "modified": "2026-09-24 16:01:56"
+   },
+   {
+    "id": "6303",
+    "name": "TEMP PS dep-155821",
+    "active": "0",
+    "modified": "2026-09-24 15:59:35"
+   },
+   {
+    "id": "6018",
+    "name": "TEMP PS dep-091213",
+    "active": "0",
+    "modified": "2026-09-17 09:13:26"
+   },
+   {
+    "id": "332",
+    "name": "Petshop Filtru Kontekstas v20 [VISADA AKTYVUS]",
+    "active": "1",
+    "modified": "2026-09-02 15:23:05"
+   },
+   {
+    "id": "493",
+    "name": "Petshop Filtru Atidarymas v1 (no lazy-load)",
+    "active": "0",
+    "modified": "2026-08-07 13:05:47"
+   },
+   {
+    "id": "2076",
+    "name": "UI Localization Runtime Audit",
+    "active": "0",
+    "modified": "2026-08-02 08:17:36"
+   },
+   {
+    "id": "2051",
+    "name": "Petshop UI Lokalizacija v1 (LIVE)",
+    "active": "1",
+    "modified": "2026-08-02 00:37:18"
+   },
+   {
+    "id": "1053",
+    "name": "Scope Fields Recon v1 (read-only)",
+    "active": "0",
+    "modified": "2026-07-17 09:39:02"
+   },
+   {
+    "id": "1052",
+    "name": "Taxonomy Recon + Golden Tests v1 (read-only)",
+    "active": "0",
+    "modified": "2026-07-17 09:35:29"
+   }
+  ],
+  "snippets_modified_today": [
+   {
+    "id": "6443",
+    "name": "TEMP PS dep-130833",
+    "active": "1",
+    "modified": "2026-09-25 13:09:26"
+   },
+   {
+    "id": "6442",
+    "name": "TEMP PS dep-130228",
+    "active": "0",
+    "modified": "2026-09-25 13:03:49"
+   },
+   {
+    "id": "6441",
+    "name": "TEMP PS dep-125959",
+    "active": "0",
+    "modified": "2026-09-25 13:01:21"
+   },
+   {
+    "id": "6440",
+    "name": "TEMP PS dep-125112",
+    "active": "0",
+    "modified": "2026-09-25 12:52:19"
+   },
+   {
+    "id": "6439",
+    "name": "TEMP PS dep-123934",
+    "active": "0",
+    "modified": "2026-09-25 12:41:07"
+   },
+   {
+    "id": "6438",
+    "name": "TEMP PS dep-123802",
+    "active": "0",
+    "modified": "2026-09-25 12:39:13"
+   },
+   {
+    "id": "6437",
+    "name": "TEMP PS dep-122301",
+    "active": "0",
+    "modified": "2026-09-25 12:24:24"
+   },
+   {
+    "id": "6436",
+    "name": "TEMP PS dep-122123",
+    "active": "0",
+    "modified": "2026-09-25 12:22:43"
+   },
+   {
+    "id": "6435",
+    "name": "TEMP PS dep-121940",
+    "active": "0",
+    "modified": "2026-09-25 12:20:50"
+   },
+   {
+    "id": "6434",
+    "name": "TEMP PS dep-121745",
+    "active": "0",
+    "modified": "2026-09-25 12:18:57"
+   },
+   {
+    "id": "6433",
+    "name": "TEMP PS dep-115953",
+    "active": "0",
+    "modified": "2026-09-25 12:01:07"
+   },
+   {
+    "id": "6432",
+    "name": "TEMP PS dep-115645",
+    "active": "0",
+    "modified": "2026-09-25 11:59:02"
+   },
+   {
+    "id": "6431",
+    "name": "TEMP PS dep-115520",
+    "active": "0",
+    "modified": "2026-09-25 11:56:29"
+   },
+   {
+    "id": "6430",
+    "name": "TEMP PS dep-115317",
+    "active": "0",
+    "modified": "2026-09-25 11:54:26"
+   },
+   {
+    "id": "6429",
+    "name": "TEMP PS dep-114949",
+    "active": "0",
+    "modified": "2026-09-25 11:52:34"
+   },
+   {
+    "id": "6428",
+    "name": "TEMP PS dep-114826",
+    "active": "0",
+    "modified": "2026-09-25 11:49:33"
+   },
+   {
+    "id": "6427",
+    "name": "TEMP PS dep-114655",
+    "active": "0",
+    "modified": "2026-09-25 11:48:13"
+   },
+   {
+    "id": "6426",
+    "name": "TEMP PS dep-114432",
+    "active": "0",
+    "modified": "2026-09-25 11:45:42"
+   },
+   {
+    "id": "6425",
+    "name": "TEMP PS dep-114242",
+    "active": "0",
+    "modified": "2026-09-25 11:43:51"
+   },
+   {
+    "id": "6424",
+    "name": "TEMP PS dep-114029",
+    "active": "0",
+    "modified": "2026-09-25 11:42:12"
+   },
+   {
+    "id": "6423",
+    "name": "TEMP PS dep-113900",
+    "active": "0",
+    "modified": "2026-09-25 11:40:10"
+   },
+   {
+    "id": "6422",
+    "name": "TEMP PS dep-113734",
+    "active": "0",
+    "modified": "2026-09-25 11:38:47"
+   },
+   {
+    "id": "6421",
+    "name": "TEMP PS dep-112146",
+    "active": "0",
+    "modified": "2026-09-25 11:22:56"
+   },
+   {
+    "id": "6420",
+    "name": "TEMP PS dep-111915",
+    "active": "0",
+    "modified": "2026-09-25 11:21:29"
+   },
+   {
+    "id": "6419",
+    "name": "TEMP PS dep-111746",
+    "active": "0",
+    "modified": "2026-09-25 11:19:01"
+   },
+   {
+    "id": "6418",
+    "name": "TEMP PS dep-111627",
+    "active": "0",
+    "modified": "2026-09-25 11:17:32"
+   },
+   {
+    "id": "6417",
+    "name": "TEMP PS dep-111451",
+    "active": "0",
+    "modified": "2026-09-25 11:16:08"
+   },
+   {
+    "id": "6416",
+    "name": "TEMP PS dep-111123",
+    "active": "0",
+    "modified": "2026-09-25 11:12:30"
+   },
+   {
+    "id": "6415",
+    "name": "TEMP PS dep-110941",
+    "active": "0",
+    "modified": "2026-09-25 11:10:52"
+   },
+   {
+    "id": "6414",
+    "name": "TEMP PS dep-110733",
+    "active": "0",
+    "modified": "2026-09-25 11:08:46"
+   },
+   {
+    "id": "6413",
+    "name": "TEMP PS dep-110131",
+    "active": "0",
+    "modified": "2026-09-25 11:02:37"
+   },
+   {
+    "id": "6412",
+    "name": "TEMP PS dep-110000",
+    "active": "0",
+    "modified": "2026-09-25 11:01:14"
+   },
+   {
+    "id": "6411",
+    "name": "TEMP PS dep-105840",
+    "active": "0",
+    "modified": "2026-09-25 10:59:46"
+   },
+   {
+    "id": "6410",
+    "name": "TEMP PS dep-105639",
+    "active": "0",
+    "modified": "2026-09-25 10:57:43"
+   },
+   {
+    "id": "6409",
+    "name": "TEMP PS dep-105504",
+    "active": "0",
+    "modified": "2026-09-25 10:56:21"
+   },
+   {
+    "id": "6408",
+    "name": "TEMP PS dep-105337",
+    "active": "0",
+    "modified": "2026-09-25 10:54:45"
+   },
+   {
+    "id": "6407",
+    "name": "TEMP PS dep-105141",
+    "active": "0",
+    "modified": "2026-09-25 10:52:54"
+   },
+   {
+    "id": "6406",
+    "name": "TEMP PS dep-104924",
+    "active": "0",
+    "modified": "2026-09-25 10:51:12"
+   },
+   {
+    "id": "6405",
+    "name": "TEMP PS dep-104807",
+    "active": "0",
+    "modified": "2026-09-25 10:49:15"
+   },
+   {
+    "id": "6404",
+    "name": "TEMP PS dep-104641",
+    "active": "0",
+    "modified": "2026-09-25 10:47:57"
+   },
+   {
+    "id": "6403",
+    "name": "TEMP PS dep-104510",
+    "active": "0",
+    "modified": "2026-09-25 10:46:21"
+   },
+   {
+    "id": "6402",
+    "name": "TEMP PS dep-090443",
+    "active": "0",
+    "modified": "2026-09-25 09:07:09"
+   },
+   {
+    "id": "6401",
+    "name": "TEMP PS dep-090304",
+    "active": "0",
+    "modified": "2026-09-25 09:04:27"
+   },
+   {
+    "id": "6400",
+    "name": "TEMP PS dep-090138",
+    "active": "0",
+    "modified": "2026-09-25 09:02:45"
+   },
+   {
+    "id": "6399",
+    "name": "TEMP PS dep-085829",
+    "active": "0",
+    "modified": "2026-09-25 08:59:41"
+   },
+   {
+    "id": "6398",
+    "name": "TEMP PS dep-084934",
+    "active": "0",
+    "modified": "2026-09-25 08:50:44"
+   },
+   {
+    "id": "6397",
+    "name": "TEMP PS dep-084708",
+    "active": "0",
+    "modified": "2026-09-25 08:48:13"
+   },
+   {
+    "id": "6396",
+    "name": "TEMP PS dep-084518",
+    "active": "0",
+    "modified": "2026-09-25 08:46:28"
+   },
+   {
+    "id": "6395",
+    "name": "TEMP PS dep-084315",
+    "active": "0",
+    "modified": "2026-09-25 08:44:31"
+   },
+   {
+    "id": "6394",
+    "name": "TEMP PS dep-084115",
+    "active": "0",
+    "modified": "2026-09-25 08:42:28"
+   },
+   {
+    "id": "6393",
+    "name": "TEMP PS dep-083908",
+    "active": "0",
+    "modified": "2026-09-25 08:40:16"
+   },
+   {
+    "id": "6392",
+    "name": "TEMP PS dep-083619",
+    "active": "0",
+    "modified": "2026-09-25 08:37:34"
+   },
+   {
+    "id": "6391",
+    "name": "TEMP PS dep-083422",
+    "active": "0",
+    "modified": "2026-09-25 08:35:45"
+   },
+   {
+    "id": "6390",
+    "name": "TEMP PS dep-083149",
+    "active": "0",
+    "modified": "2026-09-25 08:33:06"
+   },
+   {
+    "id": "6389",
+    "name": "TEMP PS dep-075700",
+    "active": "0",
+    "modified": "2026-09-25 07:58:10"
+   },
+   {
+    "id": "6388",
+    "name": "TEMP PS dep-073738",
+    "active": "0",
+    "modified": "2026-09-25 07:38:44"
+   },
+   {
+    "id": "6387",
+    "name": "TEMP PS dep-073313",
+    "active": "0",
+    "modified": "2026-09-25 07:34:22"
+   },
+   {
+    "id": "6386",
+    "name": "TEMP PS dep-073059",
+    "active": "0",
+    "modified": "2026-09-25 07:32:08"
+   },
+   {
+    "id": "6385",
+    "name": "TEMP PS dep-072828",
+    "active": "0",
+    "modified": "2026-09-25 07:29:48"
+   },
+   {
+    "id": "6384",
+    "name": "TEMP PS dep-072541",
+    "active": "0",
+    "modified": "2026-09-25 07:26:45"
+   },
+   {
+    "id": "6383",
+    "name": "TEMP PS dep-072343",
+    "active": "0",
+    "modified": "2026-09-25 07:25:03"
+   },
+   {
+    "id": "6382",
+    "name": "TEMP PS dep-072137",
+    "active": "0",
+    "modified": "2026-09-25 07:22:45"
+   },
+   {
+    "id": "6381",
+    "name": "TEMP PS dep-071507",
+    "active": "0",
+    "modified": "2026-09-25 07:16:31"
+   },
+   {
+    "id": "6380",
+    "name": "TEMP PS dep-071321",
+    "active": "0",
+    "modified": "2026-09-25 07:14:24"
+   },
+   {
+    "id": "6379",
+    "name": "TEMP PS dep-071126",
+    "active": "0",
+    "modified": "2026-09-25 07:12:39"
+   },
+   {
+    "id": "6378",
+    "name": "TEMP PS dep-070853",
+    "active": "0",
+    "modified": "2026-09-25 07:09:59"
+   },
+   {
+    "id": "6377",
+    "name": "TEMP PS dep-065830",
+    "active": "0",
+    "modified": "2026-09-25 06:59:38"
+   },
+   {
+    "id": "6376",
+    "name": "TEMP PS dep-065612",
+    "active": "0",
+    "modified": "2026-09-25 06:57:15"
+   },
+   {
+    "id": "6375",
+    "name": "TEMP PS dep-065328",
+    "active": "0",
+    "modified": "2026-09-25 06:54:36"
+   },
+   {
+    "id": "6374",
+    "name": "TEMP PS dep-064802",
+    "active": "0",
+    "modified": "2026-09-25 06:49:14"
+   },
+   {
+    "id": "6373",
+    "name": "TEMP PS dep-064434",
+    "active": "0",
+    "modified": "2026-09-25 06:45:42"
+   },
+   {
+    "id": "6372",
+    "name": "TEMP PS dep-064043",
+    "active": "0",
+    "modified": "2026-09-25 06:41:49"
+   },
+   {
+    "id": "6371",
+    "name": "TEMP PS dep-215606",
+    "active": "0",
+    "modified": "2026-09-24 21:57:24"
+   },
+   {
+    "id": "6370",
+    "name": "TEMP PS dep-214919",
+    "active": "0",
+    "modified": "2026-09-24 21:50:24"
+   },
+   {
+    "id": "6369",
+    "name": "TEMP PS dep-214759",
+    "active": "0",
+    "modified": "2026-09-24 21:49:06"
+   },
+   {
+    "id": "6368",
+    "name": "TEMP PS dep-214506",
+    "active": "0",
+    "modified": "2026-09-24 21:46:46"
+   },
+   {
+    "id": "6367",
+    "name": "TEMP PS dep-214326",
+    "active": "0",
+    "modified": "2026-09-24 21:44:36"
+   },
+   {
+    "id": "6366",
+    "name": "TEMP PS dep-214133",
+    "active": "0",
+    "modified": "2026-09-24 21:42:36"
+   },
+   {
+    "id": "6365",
+    "name": "TEMP PS dep-213643",
+    "active": "0",
+    "modified": "2026-09-24 21:37:55"
+   },
+   {
+    "id": "6364",
+    "name": "TEMP PS dep-211829",
+    "active": "0",
+    "modified": "2026-09-24 21:19:37"
+   },
+   {
+    "id": "6363",
+    "name": "TEMP PS dep-211640",
+    "active": "0",
+    "modified": "2026-09-24 21:18:03"
+   },
+   {
+    "id": "6362",
+    "name": "TEMP PS dep-211519",
+    "active": "0",
+    "modified": "2026-09-24 21:16:27"
+   },
+   {
+    "id": "6361",
+    "name": "TEMP PS dep-211052",
+    "active": "0",
+    "modified": "2026-09-24 21:16:11"
+   },
+   {
+    "id": "6360",
+    "name": "TEMP PS dep-210236",
+    "active": "0",
+    "modified": "2026-09-24 21:03:56"
+   },
+   {
+    "id": "6359",
+    "name": "TEMP PS dep-205953",
+    "active": "0",
+    "modified": "2026-09-24 21:01:02"
+   },
+   {
+    "id": "6358",
+    "name": "TEMP PS dep-205758",
+    "active": "0",
+    "modified": "2026-09-24 20:59:07"
+   },
+   {
+    "id": "6357",
+    "name": "TEMP PS dep-204556",
+    "active": "0",
+    "modified": "2026-09-24 20:47:02"
+   },
+   {
+    "id": "6356",
+    "name": "TEMP PS dep-204120",
+    "active": "0",
+    "modified": "2026-09-24 20:42:36"
+   },
+   {
+    "id": "6355",
+    "name": "TEMP PS dep-203952",
+    "active": "0",
+    "modified": "2026-09-24 20:41:01"
+   },
+   {
+    "id": "6354",
+    "name": "TEMP PS dep-203824",
+    "active": "0",
+    "modified": "2026-09-24 20:39:36"
+   },
+   {
+    "id": "6353",
+    "name": "TEMP PS dep-203122",
+    "active": "0",
+    "modified": "2026-09-24 20:32:28"
+   },
+   {
+    "id": "6352",
+    "name": "TEMP PS dep-202917",
+    "active": "0",
+    "modified": "2026-09-24 20:30:28"
+   },
+   {
+    "id": "6351",
+    "name": "TEMP PS dep-202719",
+    "active": "0",
+    "modified": "2026-09-24 20:28:26"
+   },
+   {
+    "id": "6350",
+    "name": "TEMP PS dep-202418",
+    "active": "0",
+    "modified": "2026-09-24 20:25:27"
+   },
+   {
+    "id": "6349",
+    "name": "TEMP PS dep-202208",
+    "active": "0",
+    "modified": "2026-09-24 20:23:18"
+   },
+   {
+    "id": "6348",
+    "name": "TEMP PS dep-201941",
+    "active": "0",
+    "modified": "2026-09-24 20:20:46"
+   },
+   {
+    "id": "6347",
+    "name": "TEMP PS dep-200956",
+    "active": "0",
+    "modified": "2026-09-24 20:11:04"
+   },
+   {
+    "id": "6346",
+    "name": "TEMP PS dep-200809",
+    "active": "0",
+    "modified": "2026-09-24 20:09:16"
+   },
+   {
+    "id": "6345",
+    "name": "TEMP PS dep-200506",
+    "active": "0",
+    "modified": "2026-09-24 20:06:22"
+   },
+   {
+    "id": "6344",
+    "name": "TEMP PS dep-200315",
+    "active": "0",
+    "modified": "2026-09-24 20:04:28"
+   },
+   {
+    "id": "6343",
+    "name": "TEMP PS dep-200145",
+    "active": "0",
+    "modified": "2026-09-24 20:02:52"
+   }
+  ],
+  "mu_modified": {
+   "53": [
+    "petshop-gsc-tvarka.php",
+    "09-25 10:47"
+   ],
+   "69": [
+    "petshop-kelio-fiksavimas.php",
+    "09-25 10:56"
+   ],
+   "123": [
+    "petshop-schema-prekes.php",
+    "09-25 10:47"
+   ],
+   "126": [
+    "petshop-seo-sablonai.php",
+    "09-25 11:48"
+   ],
+   "146": [
+    "petshop-zb-matmenys.php",
+    "09-24 21:16"
+   ]
+  },
+  "plugins_modified": [],
+  "theme_mods_content": [],
+  "yith_ver": "5.22.0",
+  "flatsome_ver": "3.20.7",
+  "wc_yith_flatsome_int": "nera"
+ },
+ "v": "dep-130833",
+ "kurimas": 200,
+ "sid": 6443,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
