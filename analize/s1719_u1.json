@@ -1,0 +1,46 @@
+{
+ "1": {
+  "v": "S1719u",
+  "faze": "1",
+  "name": "Petshop DataLayer v1.1 (GA4 ecommerce)",
+  "len": 15512,
+  "fragmentai": [
+   "190: ",
+   "191: \t\t$pid     = $variation_id ? $variation_id : $product_id;",
+   "192: \t\t$product = wc_get_product( $pid );",
+   "193: \t\t$item    = petshop_gtm_item( $product, $quantity, 0 );",
+   "194: \t\tif ( ! $item ) { return; }",
+   "195: ",
+   "196: \t\t$queue   = WC()->session->get( 'petshop_gtm_atc_queue', array() );",
+   "197: \t\tif ( ! is_array( $queue ) ) { $queue = array(); }",
+   "198: \t\t$queue[] = $item;",
+   "199: \t\tWC()->session->set( 'petshop_gtm_atc_queue', $queue );",
+   "200: \t}",
+   "201: }",
+   "202: add_action( 'woocommerce_add_to_cart', 'petshop_gtm_queue_atc', 10, 6 );",
+   "203: ",
+   "204: if ( ! function_exists( 'petshop_gtm_flush_atc' ) ) {",
+   "205: \tfunction petshop_gtm_flush_atc() {",
+   "206: \t\tif ( is_admin() ) { return; }",
+   "207: \t\tif ( ! function_exists( 'WC' ) || ! WC()->session ) { return; }",
+   "208: ",
+   "209: \t\t$queue = WC()->session->get( 'petshop_gtm_atc_queue', array() );",
+   "210: \t\tif ( empty( $queue ) || ! is_array( $queue ) ) { return; }",
+   "211: ",
+   "212: \t\tWC()->session->set( 'petshop_gtm_atc_queue', array() );",
+   "213: ",
+   "214: \t\tforeach ( $queue as $item ) {",
+   "215: \t\t\tif ( empty( $item['price'] ) && 0 !== $item['price'] ) { continue; }",
+   "216: \t\t\t$value = round( (float) $item['price'] * (int) $item['quantity'], 2 );",
+   "217: \t\t\tpetshop_gtm_push( array(",
+   "218: \t\t\t\t'event'     => 'add_to_cart',"
+  ]
+ },
+ "v": "dep-164512",
+ "kurimas": 200,
+ "sid": 6475,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
