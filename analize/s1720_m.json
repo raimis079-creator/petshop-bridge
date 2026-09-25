@@ -1,0 +1,668 @@
+{
+ "v": "dep-200006",
+ "kurimas": 200,
+ "sid": 6504,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "d": {
+  "v": "S1720m",
+  "faze": "d",
+  "failai": {
+   "dydziai": [
+    "/mu-plugins/petshop-dydziai.php"
+   ],
+   "calc2": [
+    "/mu-plugins/petshop-relaunch.php",
+    "/plugins/petshop-core/includes/class-product-calc.php"
+   ],
+   "calc": [
+    "/plugins/petshop-core/includes/class-product-calc.php"
+   ]
+  },
+  "hooks": {
+   "/mu-plugins/petshop-dydziai.php": [
+    "woocommerce_single_product_summary , array( __CLASS__, 'pieskime' ), 25 )"
+   ],
+   "/mu-plugins/petshop-relaunch.php": [
+    "wp_footer , array( __CLASS__, 'js' ), 99 )"
+   ],
+   "/plugins/petshop-core/includes/class-product-calc.php": [
+    "woocommerce_single_product_summary , array( __CLASS__, 'widget' ), 31 )",
+    "woocommerce_single_product_summary , array( __CLASS__, 'widget' ), 31 )"
+   ]
+  },
+  "skenuota": 4001,
+  "snippetai": [
+   {
+    "id": "6504",
+    "name": "TEMP PS dep-200006",
+    "priority": "5"
+   }
+  ],
+  "registruota": {
+   "woocommerce_single_product_summary": [
+    "0 flatsome_woocommerce_product_breadcrumb",
+    "1 flatsome_product_brands",
+    "5 woocommerce_template_single_title",
+    "7 flatsome_product_mobile_next_prev_nav",
+    "10 woocommerce_template_single_rating",
+    "10 woocommerce_template_single_price",
+    "10 Petshop_Pristatymo_Pazadas::kg",
+    "11 Petshop_Rinkiniai::sutaupote",
+    "11 closure",
+    "11 closure",
+    "20 woocommerce_template_single_excerpt",
+    "20 flatsome_before_add_to_cart_html",
+    "25 Petshop_Dydziai::pieskime",
+    "25 closure",
+    "30 woocommerce_template_single_add_to_cart",
+    "30 flatsome_after_add_to_cart_html",
+    "31 Petshop_Atsargu_Laukimas::forma",
+    "31 Petshop_Product_Calc::widget",
+    "40 woocommerce_template_single_meta",
+    "50 woocommerce_template_single_sharing",
+    "60 WC_Structured_Data::generate_product_data"
+   ],
+   "woocommerce_after_add_to_cart_form": [
+    "20 Petshop_FBT::render_widget"
+   ],
+   "woocommerce_after_add_to_cart_button": [
+    "1 Flatsome\\WooCommerce\\BuyNow::render_buy_now_button"
+   ],
+   "woocommerce_after_single_product_summary": [
+    "-1000 wc_mnm_template_add_to_cart_after_summary",
+    "10 woocommerce_output_product_data_tabs",
+    "15 woocommerce_upsell_display",
+    "20 woocommerce_output_related_products"
+   ],
+   "woocommerce_product_meta_end": [
+    "50 Flatsome\\WooCommerce\\Brands::render_brand_meta"
+   ]
+  }
+ },
+ "e": {
+  "v": "S1720m",
+  "faze": "e",
+  "top": [
+   {
+    "pid": 18587,
+    "n": 15,
+    "eur": 707,
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ",
+    "seima": "-",
+    "pakuote": "7 kg",
+    "broliai": [
+     "18584 na ir žirneliais 800 g",
+     "18590 ena ir žirneliais 2 kg"
+    ]
+   },
+   {
+    "pid": 18018,
+    "n": 3,
+    "eur": 115,
+    "pav": "Josera Mini Lamb begrūdis (Mini Deluxe) 10 kg – sausas maistas m",
+    "seima": "-",
+    "pakuote": "10 kg",
+    "broliai": []
+   },
+   {
+    "pid": 27128,
+    "n": 3,
+    "eur": 113,
+    "pav": "Josera A/S Lamb + Rice sausas pašaras šunims su ėriena ir ryžiai",
+    "seima": "-",
+    "pakuote": "12,5+2,5 kg",
+    "broliai": []
+   },
+   {
+    "pid": 19760,
+    "n": 2,
+    "eur": 99,
+    "pav": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šu",
+    "seima": "-",
+    "pakuote": "12 kg",
+    "broliai": [
+     "19747 mb & Fresh Salmon 2 kg",
+     "19751 b & Fresh Salmon 12 kg",
+     "19756 b & Fresh Venison 2 kg"
+    ]
+   },
+   {
+    "pid": 17978,
+    "n": 3,
+    "eur": 99,
+    "pav": "Josera Sensiplus 12,5 kg – sausas maistas šunims su jautria virš",
+    "seima": "-",
+    "pakuote": "12,5 kg",
+    "broliai": [
+     "19920 unims su antiena, 3 kg",
+     "19921 nims su antiena, 900 g"
+    ]
+   },
+   {
+    "pid": 36003,
+    "n": 1,
+    "eur": 92,
+    "pav": "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kia",
+    "seima": "-",
+    "pakuote": "7 kg × 2",
+    "broliai": []
+   },
+   {
+    "pid": 18590,
+    "n": 5,
+    "eur": 91,
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ",
+    "seima": "-",
+    "pakuote": "2 kg",
+    "broliai": [
+     "18584 na ir žirneliais 800 g",
+     "18587 ena ir žirneliais 7 kg"
+    ]
+   },
+   {
+    "pid": 18084,
+    "n": 2,
+    "eur": 84,
+    "pav": "Josera Indoor 10 kg – sausas maistas naminėms sterilizuotoms kat",
+    "seima": "-",
+    "pakuote": "10 kg",
+    "broliai": [
+     "18080  sterilizuotoms katėms"
+    ]
+   },
+   {
+    "pid": 27126,
+    "n": 2,
+    "eur": 77,
+    "pav": "Pašaras JosiCat Sterilised Classic, 15+3kg AKCIJA",
+    "seima": "-",
+    "pakuote": "15+3 kg",
+    "broliai": []
+   },
+   {
+    "pid": 18154,
+    "n": 2,
+    "eur": 75,
+    "pav": "JOSERA FESTIVAL pašaras šunims su lašiša, 12,5 kg",
+    "seima": "-",
+    "pakuote": "12,5 kg",
+    "broliai": []
+   },
+   {
+    "pid": 16763,
+    "n": 1,
+    "eur": 74,
+    "pav": "Prins ProCare Standard Fit sausas pašaras suaugusiems šunims su ",
+    "seima": "-",
+    "pakuote": "20 kg",
+    "broliai": []
+   },
+   {
+    "pid": 18572,
+    "n": 1,
+    "eur": 70,
+    "pav": "Exclusion Hypoallergenic sausas šuniukų maistas su kiauliena ir ",
+    "seima": "-",
+    "pakuote": "12 kg",
+    "broliai": [
+     "18554 r žirneliais M/L 12 kg",
+     "18557  ir bulvėmis M/L 12 kg",
+     "18560 r žirneliais M/L 12 kg",
+     "18563  ir bulvėmis M/L 12 kg",
+     "18566  ir bulvėmis M/L 12 kg",
+     "18569  ir bulvėmis M/L 12 kg",
+     "18575 imi ir bulvėmis S 2 kg",
+     "18578 ena ir bulvėmis S 2 kg"
+    ]
+   },
+   {
+    "pid": 16463,
+    "n": 1,
+    "eur": 70,
+    "pav": "ROYAL CANIN URINARY CARE 10 KG – sausas maistas suaugusioms katė",
+    "seima": "-",
+    "pakuote": "10 kg",
+    "broliai": [
+     "16460 anų sistemos sveikatai"
+    ]
+   },
+   {
+    "pid": 18620,
+    "n": 1,
+    "eur": 67,
+    "pav": "Exclusion Hydrolyzed Hypoallergenic maistas šunims su hidrolizuo",
+    "seima": "-",
+    "pakuote": "12 kg",
+    "broliai": [
+     "35027 s su žuvimi, M/L, 2 kg"
+    ]
+   },
+   {
+    "pid": 18560,
+    "n": 1,
+    "eur": 66,
+    "pav": "Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žir",
+    "seima": "-",
+    "pakuote": "12 kg",
+    "broliai": [
+     "18554 r žirneliais M/L 12 kg",
+     "18557  ir bulvėmis M/L 12 kg",
+     "18563  ir bulvėmis M/L 12 kg",
+     "18566  ir bulvėmis M/L 12 kg",
+     "18569  ir bulvėmis M/L 12 kg",
+     "18572 na ir žirneliais 12 kg",
+     "18575 imi ir bulvėmis S 2 kg",
+     "18578 ena ir bulvėmis S 2 kg"
+    ]
+   },
+   {
+    "pid": 18566,
+    "n": 1,
+    "eur": 65,
+    "pav": "Exclusion Hypoallergenic sausas šunų maistas su arkliena ir bulv",
+    "seima": "-",
+    "pakuote": "12 kg",
+    "broliai": [
+     "18554 r žirneliais M/L 12 kg",
+     "18557  ir bulvėmis M/L 12 kg",
+     "18560 r žirneliais M/L 12 kg",
+     "18563  ir bulvėmis M/L 12 kg",
+     "18569  ir bulvėmis M/L 12 kg",
+     "18572 na ir žirneliais 12 kg",
+     "18575 imi ir bulvėmis S 2 kg",
+     "18578 ena ir bulvėmis S 2 kg"
+    ]
+   },
+   {
+    "pid": 17293,
+    "n": 1,
+    "eur": 53,
+    "pav": "Ontario Adult Large Lamb and Brown Rice, 12 kg, pašaras didelių ",
+    "seima": "-",
+    "pakuote": "12 kg",
+    "broliai": []
+   },
+   {
+    "pid": 18551,
+    "n": 1,
+    "eur": 49,
+    "pav": "Exclusion Intestinal Monoprotein mažų veislių šunų maistas su ki",
+    "seima": "-",
+    "pakuote": "7 kg",
+    "broliai": []
+   },
+   {
+    "pid": 26375,
+    "n": 1,
+    "eur": 46,
+    "pav": "Josera High Protein Junior Sea Fish  sausas pašaras jauniems šun",
+    "seima": "-",
+    "pakuote": "12,5 kg",
+    "broliai": [
+     "26383 šunims su žuvim, 900 g",
+     "26441  šunims su žuvim, 3 kg"
+    ]
+   },
+   {
+    "pid": 16558,
+    "n": 1,
+    "eur": 43,
+    "pav": "Quattro SB 7kg su lašiša ir kriliu sausas suaugusių mažų veislių",
+    "seima": "-",
+    "pakuote": "7 kg",
+    "broliai": [
+     "16537 ių šunų pašaras, 1,5kg",
+     "16540 ių šunų pašaras, 1,5kg",
+     "16543 ų šunims pašaras 1,5kg",
+     "16546 ių šunų pašaras, 1,5kg",
+     "16549 inančioms kalėms 1,5kg",
+     "16552 ių šunų pašaras, 1,5kg",
+     "16555 ų veislių šunų pašaras",
+     "16561 veislių šunims pašaras"
+    ]
+   },
+   {
+    "pid": 18022,
+    "n": 1,
+    "eur": 40,
+    "pav": "Josera Mini Junior Duck and Salmon sausas pašaras mažų veislių j",
+    "seima": "-",
+    "pakuote": "10 kg",
+    "broliai": []
+   },
+   {
+    "pid": 18109,
+    "n": 1,
+    "eur": 38,
+    "pav": "Josera Catelux 10 kg – sausas maistas katėms nuo plaukų gumuliuk",
+    "seima": "-",
+    "pakuote": "10 kg",
+    "broliai": [
+     "18106 s nuo plaukų gumuliukų"
+    ]
+   },
+   {
+    "pid": 18575,
+    "n": 2,
+    "eur": 36,
+    "pav": "Exclusion Hypoallergenic mini sausas mažų veislių šunų maistas s",
+    "seima": "-",
+    "pakuote": "2 kg",
+    "broliai": [
+     "18578 ena ir bulvėmis S 2 kg",
+     "18581 ena ir bulvėmis S 2 kg"
+    ]
+   },
+   {
+    "pid": 36002,
+    "n": 1,
+    "eur": 35,
+    "pav": "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kia",
+    "seima": "-",
+    "pakuote": "2 kg",
+    "broliai": []
+   },
+   {
+    "pid": 25227,
+    "n": 1,
+    "eur": 34,
+    "pav": "Exclusion Mediterraneo Mono Noble sausas pašaras šunims S, su ėr",
+    "seima": "-",
+    "pakuote": "7 kg",
+    "broliai": [
+     "25265 ukams L, su tunu, 12kg"
+    ]
+   },
+   {
+    "pid": 18046,
+    "n": 1,
+    "eur": 34,
+    "pav": "Josera Light & Vital 12,5 kg – sausas maistas linkusiems tukti š",
+    "seima": "-",
+    "pakuote": "12,5 kg",
+    "broliai": []
+   },
+   {
+    "pid": 21364,
+    "n": 5,
+    "eur": 30,
+    "pav": "JosiDog Junior Sensitive sausas pašaras jautriems jauniems šunim",
+    "seima": "-",
+    "pakuote": "2,7 kg",
+    "broliai": [
+     "21316 as pašaras šunims 15kg"
+    ]
+   },
+   {
+    "pid": 17950,
+    "n": 1,
+    "eur": 27,
+    "pav": "Josidog Regular 15 kg – sausas maistas šunims",
+    "seima": "-",
+    "pakuote": "15 kg",
+    "broliai": [
+     "20397  pašaras šunims, 900 g",
+     "21368 pašaras šunims, 2,7 kg"
+    ]
+   },
+   {
+    "pid": 20941,
+    "n": 1,
+    "eur": 23,
+    "pav": "Exclusion Hypoallergenic sausas pašaras mažų veislių šunims su ž",
+    "seima": "-",
+    "pakuote": "2 kg",
+    "broliai": [
+     "18554 r žirneliais M/L 12 kg",
+     "18557  ir bulvėmis M/L 12 kg",
+     "18560 r žirneliais M/L 12 kg",
+     "18563  ir bulvėmis M/L 12 kg",
+     "18566  ir bulvėmis M/L 12 kg",
+     "18569  ir bulvėmis M/L 12 kg",
+     "18572 na ir žirneliais 12 kg",
+     "18575 imi ir bulvėmis S 2 kg"
+    ]
+   },
+   {
+    "pid": 17969,
+    "n": 1,
+    "eur": 22,
+    "pav": "JosiCat Crunchy Chicken sausas maistas suaugusioms katėms su viš",
+    "seima": "-",
+    "pakuote": "10 kg",
+    "broliai": [
+     "21372 ms su vištiena, 1,9 kg",
+     "21844 as pašaras katėms 650g"
+    ]
+   },
+   {
+    "pid": 16501,
+    "n": 1,
+    "eur": 19,
+    "pav": "ROYAL CANIN KITTEN STERILISED    2 KG – sausas maistas jauniems ",
+    "seima": "-",
+    "pakuote": "2 kg",
+    "broliai": []
+   },
+   {
+    "pid": 16469,
+    "n": 1,
+    "eur": 18,
+    "pav": "ROYAL CANIN STERILISED 37,  2 KG – sausas maistas suaugusioms st",
+    "seima": "-",
+    "pakuote": "2 kg",
+    "broliai": [
+     "16466  sterilizuotoms katėms",
+     "16472  sterilizuotoms katėms",
+     "16475  sterilizuotoms katėms"
+    ]
+   },
+   {
+    "pid": 16666,
+    "n": 1,
+    "eur": 15,
+    "pav": "QUATTRO Extra Salmon su lašiša sausas šunų pašaras, 3kg",
+    "seima": "-",
+    "pakuote": "3 kg",
+    "broliai": [
+     "16669 sas šunų pašaras, 12kg"
+    ]
+   },
+   {
+    "pid": 18530,
+    "n": 1,
+    "eur": 14,
+    "pav": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms",
+    "seima": "-",
+    "pakuote": "1,5 kg",
+    "broliai": [
+     "18524  katėms su tunu, 12 kg",
+     "18527 katėms su tunu, 1,5 kg",
+     "18533 ms su vištiena, 1,5 kg",
+     "18536 ms su vištiena, 1,5 kg",
+     "18539 ms su vištiena, 1,5 kg",
+     "18542 ms su jautiena, 1,5 kg"
+    ]
+   },
+   {
+    "pid": 18542,
+    "n": 1,
+    "eur": 14,
+    "pav": "Exclusion Mediterraneo Monoprotein sausas pašaras katėms su jaut",
+    "seima": "-",
+    "pakuote": "1,5 kg",
+    "broliai": [
+     "18524  katėms su tunu, 12 kg",
+     "18527 katėms su tunu, 1,5 kg",
+     "18530 ms su jautiena, 1,5 kg",
+     "18533 ms su vištiena, 1,5 kg",
+     "18536 ms su vištiena, 1,5 kg",
+     "18539 ms su vištiena, 1,5 kg"
+    ]
+   },
+   {
+    "pid": 16684,
+    "n": 1,
+    "eur": 14,
+    "pav": "QUATTRO Extra Lamb su ėriena sausas šunų pašaras, 3kg",
+    "seima": "-",
+    "pakuote": "3 kg",
+    "broliai": [
+     "16687 sas šunų pašaras, 12kg"
+    ]
+   },
+   {
+    "pid": 21135,
+    "n": 1,
+    "eur": 14,
+    "pav": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių ",
+    "seima": "-",
+    "pakuote": "2 kg",
+    "broliai": [
+     "18512 unims su ėriena, 400 g",
+     "18515 ims su veršiena, 400 g",
+     "18518  su kalakutiena, 400 g",
+     "18521 ims su jautiena, 400 g",
+     "20537 s su jautiena M, 12 kg",
+     "20539 ms su jautiena S, 2 kg",
+     "21115  su jautiena, L, 12 kg",
+     "21119  su jautiena, M, 12 kg"
+    ]
+   },
+   {
+    "pid": 25407,
+    "n": 1,
+    "eur": 12,
+    "pav": "Josera Mini Lamb begrūdis sausas pašaras mažų veislių šunims su ",
+    "seima": "-",
+    "pakuote": "3 kg",
+    "broliai": [
+     "18018 islių šunims su ėriena",
+     "25411 unims su ėriena, 900 g"
+    ]
+   },
+   {
+    "pid": 19725,
+    "n": 1,
+    "eur": 11,
+    "pav": "Ambrosia begrūdis su triušiena ir šviežia  kalakutiena sausas ma",
+    "seima": "-",
+    "pakuote": "2 kg",
+    "broliai": [
+     "19730 t & Fresh Turkey 12 kg"
+    ]
+   },
+   {
+    "pid": 18062,
+    "n": 1,
+    "eur": 10,
+    "pav": "Josera Kitten grainfree 2 kg – begrūdis sausas maistas kačiukams",
+    "seima": "-",
+    "pakuote": "2 kg",
+    "broliai": [
+     "18065 usas maistas kačiukams"
+    ]
+   },
+   {
+    "pid": 18149,
+    "n": 59,
+    "eur": null,
+    "pav": "JOSERA LAMB & RICE pašaras šunims su ėriena, 12,5 kg",
+    "seima": "-",
+    "pakuote": "12,5 kg",
+    "broliai": []
+   },
+   {
+    "pid": 17995,
+    "n": 30,
+    "eur": null,
+    "pav": "Josera Salmon & Potato 12,5 kg – begrūdis sausas maistas šunims ",
+    "seima": "-",
+    "pakuote": "12,5 kg",
+    "broliai": [
+     "21024 iša ir bulvėmis, 900 g"
+    ]
+   },
+   {
+    "pid": 18000,
+    "n": 26,
+    "eur": null,
+    "pav": "Josera Optiness 12,5 kg – begrūdis sausas maistas šunims su ėrie",
+    "seima": "-",
+    "pakuote": "12,5 kg",
+    "broliai": []
+   },
+   {
+    "pid": 18032,
+    "n": 26,
+    "eur": null,
+    "pav": "Josera Mini Chicken&Rice 10 kg – sausas maistas suaugusiems mažų",
+    "seima": "-",
+    "pakuote": "10 kg",
+    "broliai": [
+     "18036 ų šunims su paukštiena"
+    ]
+   },
+   {
+    "pid": 18112,
+    "n": 25,
+    "eur": null,
+    "pav": "Josera A/S Chicken&Rice 12,5 kg – sausas maistas šunims",
+    "seima": "-",
+    "pakuote": "12,5 kg",
+    "broliai": []
+   }
+  ],
+  "seimos_dabar": [
+   {
+    "seima": "ebi-kaulas-baltos",
+    "n": "2"
+   },
+   {
+    "seima": "ebi-kaulas-melsvos",
+    "n": "3"
+   },
+   {
+    "seima": "ebi-kaulas-rozines",
+    "n": "3"
+   },
+   {
+    "seima": "elnio-ragas-kietas",
+    "n": "5"
+   },
+   {
+    "seima": "elnio-ragas-minkstas",
+    "n": "4"
+   },
+   {
+    "seima": "katrinex-koi",
+    "n": "4"
+   },
+   {
+    "seima": "mon-amor-sirdele",
+    "n": "2"
+   },
+   {
+    "seima": "zolux-sepetys-katems",
+    "n": "2"
+   },
+   {
+    "seima": "zolux-sepetys-sunims-minkstas",
+    "n": "2"
+   },
+   {
+    "seima": "zolux-sepetys-sunims-plieniniais",
+    "n": "2"
+   },
+   {
+    "seima": "zolux-zirklutes",
+    "n": "3"
+   }
+  ],
+  "pa_pakuotes": "96",
+  "pa_pakuotes_prekes": "1790"
+ }
+}
