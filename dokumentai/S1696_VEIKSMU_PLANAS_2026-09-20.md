@@ -1,5 +1,5 @@
 # S1696 — VEIKSMŲ PLANAS (marketingo peržiūra + srauto planas sujungti) — 2026-09-20
-**Atnaujinta 2026-09-25 15:40 (S1718): 2.10 ☑ — serveriai.lt atsakė (ModSecurity 999015–999017), `.htaccess` blokas gyvai, ChatGPT-User/GPTBot/ClaudeBot → 200; AI citavimo pakartotinė patikra ~10-02.**
+**Atnaujinta 2026-09-25 16:55 (S1718): DKIM ☑ (serveriai.lt DNS, mail-tester 10/10) — 3.4 Relaunch sąlyga įvykdyta. 2.10 ☑ — serveriai.lt atsakė (ModSecurity 999015–999017), `.htaccess` blokas gyvai, ChatGPT-User/GPTBot/ClaudeBot → 200; AI citavimo pakartotinė patikra ~10-02.**
 **Atnaujinta 2026-09-25 (S1717/S1718): 2.14 SEO ☑ gyvai (RM šablonai, H1, 5 hub'ų + 39 gamintojų tekstai su meta, Brand schema, 25×301 + senos nuotraukos 410); 67 variaciniai tėvai ☑ (`manage_stock=no`, 10 klaidingai „Išparduota" → „Turime"); 2.13 Paysera šalys — R: palikti (uždaryta); 2.10 — serveriai.lt atsakymo vis dar nėra; Shopping 24289581247 0 parodymų — konfigūracija patikrinta, teisinga, laukiam 09-26 ryto.**
 **Atnaujinta 2026-09-24 naktį (S1715/S1716): 2.13 kasa ☑; likučių būsenos po T-0 (Wonder ir kt. 6 → „Neturime“), ATVIRA 67 variaciniai tėvai su tėvo lygmens likučiu — R patikra rytoj.**
 **Atnaujinta 2026-09-24 naktį (S1714): 2.12 modalas ☑ gyvai; anketos „332/306“ = puslapio atidarymai (panika perdėta); YITH filtrų 500 uždarytas `petshop-filtru-sargas`.**
@@ -55,7 +55,7 @@
 | 3.1 | Ads konversijos vertė = bruto marža × brendo koef.; Customer Match + new-customer goal | C, R (S1) | Josera dalis naujų 39 → 30 %; CPA nauji ≤ €10 | ☐ laukia S1 |
 | 3.2 | Search „problemų" kampanija €5/d | C, R tvirtina | CPA ≤ €12 | ☐ |
 | 3.3 | Kainų palyginimo plėtra 2 | C, R | ses/d 25 → 40 | ☐ |
-| 3.4 | Relaunch laiškas 561 → 5 100 | R verdiktas, C | prisijungimai 7 d., užs. 30 d. | ◐ CALC v1.0 laukia R verdikto |
+| 3.4 | Relaunch laiškas 561 → 5 100 | R verdiktas, C | prisijungimai 7 d., užs. 30 d. | ◐ CALC v1.0 laukia R verdikto. **DKIM ☑ 09-25** (serveriai.lt įdėjo `x._domainkey`; mail-tester 10/10, SPF+DKIM pass iš `uzsakymai@petshop.lt`) — sąlyga siuntimui įvykdyta |
 | 3.5 | Dashboard — vienas ekranas | C | — | ☐ |
 | 3.6 | S1712 pakartotinė patikra (~11-15): filtrų Disallow poveikis (Googlebot filtrų dalis 34 % → ?), sitemap indeksuota 1 360/2 284 → ?, anketos pildymas po 2.12, AI citavimas po 2.10, konversija pagal įrenginį iš švarios bazės | C | — | ☐ |
 
