@@ -1,0 +1,162 @@
+{
+ "1": {
+  "v": "S1717i",
+  "EILES": {
+   "siandien": [
+    "Gauti",
+    "Užsakymai, kurių dar neatidarei — nesvarbu, kelių dienų. Atidarei — lieka tik savo darbo eilėje.",
+    "z"
+   ],
+   "nauji": [
+    "Neišrūšiuoti",
+    "Reikia tavo sprendimo: dalis prekių AV, dalis pas tiekėją — siųsti atskirai ar vežti į AV? Aiškius sistema išrūšiuoja pati.",
+    "r"
+   ],
+   "laukiam": [
+    "Laukiam iš tiekėjų",
+    "Užsakyta iš tiekėjo į AV — atvažiavus spausk „Gauta“. AV siunta nerenkama, kol visos jos prekės neatvyko.",
+    "g"
+   ],
+   "surinkti": [
+    "Surinkti AV",
+    "Visos AV siuntos prekės vietoje — Surinkti → Lipdukas → Kurjeris paėmė.",
+    "z"
+   ],
+   "laiskai": [
+    "Dropshipping",
+    "Viena kortelė tiekėjui: siunčia klientui (lipdukai), veža į AV, į atsargas — vienas laiškas „Užsakyti iš [T]“ (laišką gali peržiūrėti).",
+    "m"
+   ],
+   "paruosta": [
+    "Paruošta siųsti",
+    "AV siuntos laukia kurjerio — kai paėmė, spausk „Kurjeris paėmė“. Tiekėjų siuntos — kai tiekėjas praneša, kad išsiuntė.",
+    "z"
+   ],
+   "klausimai": [
+    "Klausimai",
+    "Reikia sprendimo — kortelė sako, ką gali daryti.",
+    "r"
+   ],
+   "neapmoketi": [
+    "Neapmokėti",
+    "Laukia kliento pinigų. Gavus pavedimą — „Pažymėti apmokėtu“.",
+    "g"
+   ],
+   "visi": [
+    "Visi",
+    "Visi užsakymai su būsena — įvykdyti, atšaukti, kelyje — filtrais.",
+    ""
+   ]
+  },
+  "STATUSAI": {
+   "neapmoketi": [
+    "pending",
+    "failed",
+    "on-hold",
+    "lp-parcel-await"
+   ],
+   "paruosta": [
+    "lp-label-created",
+    "lp-parcel-created",
+    "lp-courier-await",
+    "lp-courier-called"
+   ],
+   "atsaukti": [
+    "cancelled",
+    "lp-cancelled",
+    "refunded"
+   ],
+   "kelyje": [
+    "lp-on-the-way"
+   ],
+   "ivykdyti": [
+    "completed",
+    "lp-delivered"
+   ]
+  },
+  "atviri": [
+   [
+    36299,
+    "processing",
+    [
+     "nauji"
+    ],
+    "Neišrūšiuoti · toliau: Rūšiuoti",
+    ""
+   ],
+   [
+    36298,
+    "processing",
+    [
+     "laiskai"
+    ],
+    "Dropshipping (Ambrosia) · toliau: Užsakyti iš Ambrosia",
+    "auto"
+   ],
+   [
+    36296,
+    "processing",
+    [
+     "paruosta",
+     "laiskai"
+    ],
+    "Paruošta siųsti + Dropshipping (Ambrosia) · toliau: Kurjeris paėmė",
+    "2026-09-25 09:00:56 | Inga"
+   ],
+   [
+    36291,
+    "processing",
+    [
+     "paruosta"
+    ],
+    "Paruošta siųsti · toliau: Kurjeris paėmė",
+    "auto"
+   ],
+   [
+    36288,
+    "processing",
+    [
+     "paruosta",
+     "laiskai"
+    ],
+    "Paruošta siųsti + Dropshipping (Ambrosia) · toliau: ZB išsiuntė",
+    "2026-09-24 15:35:23 | Inga"
+   ],
+   [
+    36286,
+    "processing",
+    [
+     "laiskai"
+    ],
+    "Dropshipping (VF) · toliau: Užsakyti iš VF",
+    "auto"
+   ],
+   [
+    36285,
+    "processing",
+    [
+     "paruosta"
+    ],
+    "Paruošta siųsti · toliau: Kurjeris paėmė",
+    "auto"
+   ]
+  ],
+  "c_eilutes": [
+   "foreach ( array_merge( $atviri, $neapm ) as $r ) { foreach ( $r['eiles'] as $e ) { $c[ $e ]++; } if ( ! empty( $r['naujas'] ) ) { $c['siandien']++; } }",
+   "global $wpdb; $c['visi'] = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM {$wpdb->prefix}wc_orders WHERE type='shop_order' AND status<>'wc-checkout-draft'\" );",
+   "$n = (int) ( $c[ $k ] ?? 0 );",
+   "array( 'Išrūšiuoti naujus', $c['nauji'], 'AV + tiekėjas arba trūkumas — iš kur važiuos kiekviena prekė; aiškius sistema išrūšiavo pati.', 'nauji', 'Rūšiuoti' ),",
+   "array( 'Dropshipping — lipdukai ir užsakymai tiekėjams (siunčia klientui · veža į AV · į atsargas)', $c['laiskai'], $tiek_t ? implode( ' · ', $tiek_t ) : 'kortelė per tiekėją: 1 Lipdukai → 2 Užsakyti iš [T] — vienas laiškas', 'laiskai', 'Atidaryti' ),",
+   "array( 'Surinkti AV', $c['surinkti'], 'visos AV siuntos prekės vietoje — lapai (galima visus vienu lapu)', 'surinkti', 'Surinkti' ),",
+   "array( 'Kurjeris paėmė / tiekėjai išsiuntė', $c['paruosta'], 'po kiekvienos siuntos klientui išeina laiškas', 'paruosta', 'Atidaryti' ),",
+   "array( 'Klausimai', $c['klausimai'], 'reikia tavo sprendimo', 'klausimai', 'Atidaryti' ),"
+  ]
+ },
+ "v": "dep-071507",
+ "kurimas": 200,
+ "sid": 6381,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
