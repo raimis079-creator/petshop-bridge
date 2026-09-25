@@ -1,0 +1,123 @@
+{
+ "1": {
+  "v": "S1717n",
+  "kelio_fiksavimas": "<?php\n/**\n * Plugin Name: Petshop Kelio Fiksavimas\n * Description: v1.0 (S1704, 2026-09-22) — eilutės kelią (`_ps_source`) fiksuoja jau KASOJE, ne tik apmokėjus.\n *\n * PROBLEMA (S1704): Paysera pluginas `process_payment()` viduje kviečia `wc_maybe_reduce_stock_levels()`\n * dar neapmokėjus. Tuo momentu `Petshop_AV_Order::fiksuoti()` dar nebuvo suveikęs (jis kabo ant\n * payment_complete / processing / on-hold), eilutės neturėjo `_ps_source=av`, todėl\n * `Petshop_AV_Reduce::wc_kiekis` filtras WC nurašymo nesustabdė → WC nurašė `_stock`, o po apmokėjimo\n * AV variklis nurašė antrą kartą. 124 prekės, 613 vnt. (grynai AV prekės, daugiausia Animonda).\n *\n * SPRENDIMAS: kviečiam tą patį `fiksuoti()` ant `woocommerce_checkout_order_processed` (prio 5) —\n * jis suveikia PRIEŠ vartų `process_payment()`. Variklių failai neliesti; `fiksuoti()` idempotentiškas,\n * todėl vėlesni kabliai antrą kartą neperskaičiuoja. Bacs užsakymams kelias ir anksčiau buvo fiksuojamas\n * prieš apmokėjimą (on-hold) — elgesys suvienodinamas.\n *\n * IŠJUNGTI: opcija `ps_kelio_fiksavimas_isjungta` = 1 (arba ištrinti failą).\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Kelio_Fiksavimas {\n\tconst VERSIJA = '1.0';\n\n\tpublic static function init() {\n\t\tadd_action( 'woocommerce_checkout_order_processed', [ __CLASS__, 'kasoje' ], 5, 1 );\n\t\tadd_action( 'woocommerce_store_api_checkout_order_processed', [ __CLASS__, 'kasoje' ], 5, 1 ); // blokų kasa (atsargai)\n\t}\n\n\t/** @param int|WC_Order $order_id */\n\tpublic static function kasoje( $order_id ) {\n\t\tif ( get_option( 'ps_kelio_fiksavimas_isjungta' ) ) { return; }\n\t\tif ( ! class_exists( 'Petshop_AV_Order' ) || ! method_exists( 'Petshop_AV_Order', 'fiksuoti' ) ) { return; }\n\t\t$order = is_a( $order_id, 'WC_Order' ) ? $order_id : wc_get_order( $order_id );\n\t\tif ( ! $order ) { return; }\n\t\tif ( Petshop_AV_Order::nuspresta( $order ) ) { return; }\n\t\ttry {\n\t\t\tPetshop_AV_Order::fiksuoti( $order );\n\t\t\t$order->update_meta_data( '_ps_kelias_kasoje', current_time( 'mysql' ) );\n\t\t\t$order->save();\n\t\t} catch ( Throwable $e ) {\n\t\t\terror_log( 'petshop-kelio-fiksavimas: ' . $e->getMessage() );\n\t\t}\n\t}\n}\nPetshop_Kelio_Fiksavimas::init();\n",
+  "kf_md5": "069e379ce342987b16de3bd4e69f0299",
+  "av_order_md5": "fd7ed33561ce279e6f88618447e1a6eb",
+  "fiksuoti": "public static function fiksuoti( $order_id, $priverstinai = false ) {\n\t\t$order = is_numeric( $order_id ) ? wc_get_order( $order_id ) : $order_id;\n\t\tif ( ! $order ) { return; }\n\t\tif ( ! $priverstinai && self::nuspresta( $order ) ) { return; }\n\t\tif ( ! class_exists( 'Petshop_AV_Source' ) ) { return; }\n\n\t\t$grupes = [];\n\t\t$misrus = method_exists( 'Petshop_AV_Source', 'ar_misrus' ) ? Petshop_AV_Source::ar_misrus( $order ) : false; // v1.2\n\t\tforeach ( $order->get_items() as $item_id => $item ) {\n\t\t\t$pid = (int) $item->get_product_id();\n\t\t\tif ( ! $pid ) { continue; }\n\t\t\t$qty = max( 1, (int) $item->get_quantity() );\n\n\t\t\t$x = method_exists( 'Petshop_AV_Source', 'parinkti' ) ? Petshop_AV_Source::parinkti( $pid, $qty, $misrus ) : Petshop_AV_Source::resolve( $pid, $qty ); // v1.2\n\n\t\t\t$item->update_meta_data( '_ps_source',        $x['source'] );\n\t\t\t$item->update_meta_data( '_ps_carrier',       $x['carrier'] );\n\t\t\t$item->update_meta_data( '_ps_source_qty',    $qty );\n\t\t\t$item->update_meta_data( '_ps_source_at',     current_time( 'mysql' ) );\n\t\t\t$item->update_meta_data( '_ps_source_reason', $x['reason'] );\n\t\t\t$item->save();\n\n\t\t\t$s = $x['source'];\n\t\t\tif ( ! isset( $grupes[ $s ] ) ) {\n\t\t\t\t$grupes[ $s ] = [ 'carrier' => $x['carrier'], 'eilutes' => 0, 'vienetai' => 0 ];\n\t\t\t}\n\t\t\t$grupes[ $s ]['eilutes']++;\n\t\t\t$grupes[ $s ]['vienetai'] += $qty;\n\t\t}\n\n\t\t$tipas = Petshop_AV_Source::order_type( $grupes );\n\t\t$order->update_meta_data( '_ps_order_type', $tipas );\n\t\t$order->update_meta_data( '_ps_groups',     wp_json_encode( $grupes ) );\n\t\t$order->update_meta_data( '_ps_shipments',  count( $grupes ) );\n\t\t$order->update_meta_data( '_ps_decided_at', current_time( 'mysql' ) );\n\t\t$order->save();\n\n\t\t$sant = [];\n\t\tforeach ( $grupes as $s => $g ) { $sant[] = strtoupper( $s ) . ' ' . $g['vienetai'] . ' vnt'; }\n\t\t$order->add_order_note( 'Vykdymas: ' . $tipas . ' — ' . implode( ' · ', $sant )\n\t\t\t. ' (' . count( $grupes ) . ' siunta(-os))' . ( $misrus ? ' · mišrus → AV pirmenybė' : ' · dropship pirma' ) );\n\n\t\treturn [ 'tipas' => $tipas, 'grupes' => $grupes ];\n\t}",
+  "av_order_hooks": [
+   "add_action( 'woocommerce_payment_complete', [ __CLASS__, 'fiksuoti' ], 5, 1 );",
+   "add_action( 'woocommerce_order_status_processing', [ __CLASS__, 'fiksuoti' ], 5, 1 );",
+   "add_action( 'woocommerce_order_status_on-hold', [ __CLASS__, 'fiksuoti' ], 5, 1 );"
+  ],
+  "prekes": {
+   "15867": {
+    "pav": "Veršiuko ausis, 1 vnt.",
+    "stock": 25,
+    "manage": true,
+    "own": "",
+    "sandelis": "av",
+    "partijos_likutis": null,
+    "partijos_cols": null,
+    "sources": []
+   },
+   "18468": {
+    "pav": "Galvijų trachėjos, pjaustytos, 500 g",
+    "stock": 10,
+    "manage": true,
+    "own": "",
+    "sandelis": "av",
+    "partijos_likutis": null,
+    "partijos_cols": null,
+    "sources": []
+   },
+   "19760": {
+    "pav": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 12 kg",
+    "stock": 11,
+    "manage": true,
+    "own": "0",
+    "sandelis": "ambrosia",
+    "partijos_likutis": null,
+    "partijos_cols": null,
+    "sources": []
+   }
+  },
+  "partijos_cols": [
+   "id",
+   "product_id",
+   "gauta",
+   "kiekis_gautas",
+   "kiekis_liko",
+   "savikaina_eur",
+   "savikaina_orig",
+   "valiuta",
+   "kursas",
+   "geriausia_iki",
+   "tiekejas",
+   "importuota",
+   "tiekimas_id",
+   "pastaba",
+   "sukurta",
+   "user_id",
+   "atsaukta"
+  ],
+  "partijos_18468": [
+   {
+    "id": "3803",
+    "product_id": "18468",
+    "gauta": "2026-09-07",
+    "kiekis_gautas": "10",
+    "kiekis_liko": "9",
+    "savikaina_eur": "3.7600",
+    "savikaina_orig": null,
+    "valiuta": "EUR",
+    "kursas": "1.000000",
+    "geriausia_iki": null,
+    "tiekejas": "eShoprent",
+    "importuota": "1",
+    "tiekimas_id": null,
+    "pastaba": "Pradinis likutis T-0",
+    "sukurta": "2026-09-07 22:08:09",
+    "user_id": "0",
+    "atsaukta": "0"
+   },
+   {
+    "id": "3429",
+    "product_id": "15867",
+    "gauta": "2026-09-07",
+    "kiekis_gautas": "16",
+    "kiekis_liko": "12",
+    "savikaina_eur": "0.6100",
+    "savikaina_orig": null,
+    "valiuta": "EUR",
+    "kursas": "1.000000",
+    "geriausia_iki": null,
+    "tiekejas": "eShoprent",
+    "importuota": "1",
+    "tiekimas_id": null,
+    "pastaba": "Pradinis likutis T-0",
+    "sukurta": "2026-09-07 22:07:19",
+    "user_id": "0",
+    "atsaukta": "0"
+   }
+  ],
+  "partiju_judesiai": null,
+  "o_meta": {
+   "_order_stock_reduced": true,
+   "_cart_hash": "5852c1a12c97b35e12255db343e70152",
+   "_ps_av_reduced": "",
+   "_ps_decided_at": "2026-09-24 17:59:47",
+   "_ps_kelias_kasoje": "2026-09-24 17:59:47",
+   "stock_reduced_ds": true
+  },
+  "likutis_fn": "protected static function likutis( $pid, $delta, $pastaba ) {\n\t\t$pid = (int) $pid;\n\t\tif ( class_exists( 'Petshop_AV_Stock' ) && null !== Petshop_AV_Stock::qty( $pid ) ) {\n\t\t\treturn $delta > 0 ? Petshop_AV_Stock::increase( $pid, $delta, $pastaba ) : Petshop_AV_Stock::decrease( $pid, -$delta, $pastaba );\n\t\t}\n\t\t$p = wc_get_product( $pid );\n\t\tif ( ! $p ) { return new WP_Error( 'nera', 'prekės nėra' ); }\n\t\t$dabar = (int) get_post_meta( $pid, '_stock', true );\n\t\tif ( $dabar + $delta < 0 ) { return new WP_Error( 'nepakanka', 'AV tik ' . $dabar ); }\n\t\tif ( ! $p->managing_stock() ) { return $dabar + $delta; }\n\t\t$naujas = wc_update_product_stock( $p, abs( $delta ), $delta > 0 ? 'increase' : 'decrease' ); // atominis SQL (auditas V2)\n\t\treturn null === $naujas ? new WP_Error( 'klaida', 'likučio įrašyti nepavyko' ) : (int) $naujas;\n\t}",
+  "db_err": ""
+ },
+ "v": "dep-073738",
+ "kurimas": 200,
+ "sid": 6388,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
