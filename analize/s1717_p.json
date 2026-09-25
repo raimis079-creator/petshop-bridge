@@ -1,0 +1,65 @@
+{
+ "1": {
+  "v": "S1717p",
+  "KELIAI": {
+   "av": "Iš AV",
+   "tiesiai": "siunčia klientui",
+   "i_av": "veža į AV"
+  },
+  "eil": {
+   "2578": {
+    "n": "AMBROSIA begrūdis su ėriena ir",
+    "k": "tiesiai",
+    "src": "ambrosia",
+    "tiek": "ambrosia",
+    "lock": "",
+    "galimi": {
+     "av": false,
+     "tiesiai": true,
+     "i_av": true
+    },
+    "av_qty": 0,
+    "reduced": false
+   },
+   "2579": {
+    "n": "Galvijų trachėjos, pjaustytos,",
+    "k": "av",
+    "src": "av",
+    "tiek": "",
+    "lock": "siunta jau užregistruota",
+    "galimi": {
+     "av": true,
+     "tiesiai": false,
+     "i_av": false
+    },
+    "av_qty": 10,
+    "reduced": false
+   },
+   "2580": {
+    "n": "Veršiuko ausis, 1 vnt.",
+    "k": "av",
+    "src": "av",
+    "tiek": "",
+    "lock": "siunta jau užregistruota",
+    "galimi": {
+     "av": true,
+     "tiesiai": false,
+     "i_av": false
+    },
+    "av_qty": 25,
+    "reduced": false
+   }
+  },
+  "ui": [
+   "if ( 'kelias' === $v ) { $rez = self::keisti_kelia( $o, absint( $_GET['iid'] ?? 0 ), sanitize_key( $_GET['k'] ?? '' ), $u ); }",
+   "protected static function keisti_kelia( $o, $iid, $k, $u ) {"
+  ]
+ },
+ "v": "dep-075700",
+ "kurimas": 200,
+ "sid": 6389,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
