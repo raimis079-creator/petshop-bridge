@@ -1,0 +1,111 @@
+{
+ "1": {
+  "v": "S1718f5",
+  "ua": {
+   "ChatGPT-User": {
+    "code": 200,
+    "len": 309017,
+    "filter_item": 2,
+    "titles": [],
+    "widgets": [
+     "Filtruoti pagal kainą",
+     "APIE",
+     "KLIENTAMS",
+     "KATEGORIJOS",
+     "KONTAKTAI"
+    ]
+   },
+   "GPTBot": {
+    "code": 200,
+    "len": 309017,
+    "filter_item": 2,
+    "titles": [],
+    "widgets": [
+     "Filtruoti pagal kainą",
+     "APIE",
+     "KLIENTAMS",
+     "KATEGORIJOS",
+     "KONTAKTAI"
+    ]
+   },
+   "Googlebot": {
+    "code": 200,
+    "len": 309017,
+    "filter_item": 2,
+    "titles": [],
+    "widgets": [
+     "Filtruoti pagal kainą",
+     "APIE",
+     "KLIENTAMS",
+     "KATEGORIJOS",
+     "KONTAKTAI"
+    ]
+   },
+   "python-requests": {
+    "code": 403,
+    "len": 403,
+    "filter_item": 0,
+    "titles": [],
+    "widgets": []
+   },
+   "curl": {
+    "code": 200,
+    "len": 333058,
+    "filter_item": 63,
+    "titles": [
+     "Vienas baltymo šaltinis",
+     "Grūdų tipas",
+     "Speciali mityba",
+     "Baltymų šaltinis",
+     "Amžius",
+     "Pakuotės dydis",
+     "Prekės ženklas"
+    ],
+    "widgets": [
+     "Filtruoti pagal kainą",
+     "APIE",
+     "KLIENTAMS",
+     "KATEGORIJOS",
+     "KONTAKTAI"
+    ]
+   },
+   "Chrome": {
+    "code": 200,
+    "len": 335393,
+    "filter_item": 63,
+    "titles": [
+     "Vienas baltymo šaltinis",
+     "Grūdų tipas",
+     "Speciali mityba",
+     "Baltymų šaltinis",
+     "Amžius",
+     "Pakuotės dydis",
+     "Prekės ženklas"
+    ],
+    "widgets": [
+     "Filtruoti pagal kainą",
+     "APIE",
+     "KLIENTAMS",
+     "KATEGORIJOS",
+     "KONTAKTAI"
+    ]
+   }
+  },
+  "snippet332_len": 8163,
+  "snippet332_head": "/**\n * Petshop Filtru Kontekstas v20 [VISADA AKTYVUS]\n *\n * Code Snippets pavadinimas: Petshop Filtru Kontekstas v20 [VISADA AKTYVUS]\n * Tipas: \"Run snippet everywhere\"\n *\n * Parenka YITH preset pagal kategorija:\n *   - skanestu kategorijos    -> skanestu-filtras\n *   - vitaminu/papildu kat.   -> vitaminu-filtras\n *   - antkakliu/pavadeliu kat -> antkakliu-filtras\n *   - dubeneliu kat           -> dubeneliu-filtras\n *   - guoliu/transp/narvu kat -> guoliu-transporto-filtras  (NAUJA v5)\n *   - zaislu kategorijos      -> zaislu-filtras              (NAUJA v6)\n *   - kraiku kategorija        -> kraiku-filtras              (NAUJA v7)\n *   - apranga sunims           -> apranga-filtras             (NAUJA v8)\n *   - draskykles katems        -> draskykliu-filtras          (NAUJA v9)\n *   - sampunai sunims          -> sampunu-filtras             (NAUJA v10)\n *   - sukos/sepeciai/zirkles   -> suku-filtras                (NAUJA v11)\n *   - higienos priemones sunims-> suku-filtras (pa_tipas reuse)  (NAUJA v12)\n *   - display=subcategories kat-> filtras SLEPIAMAS (return false) (NAUJA v13)\n *   - grauzikams tevine (misri) -> tevine-filtras (tik brand)    (NAUJA v14)\n *   - pasaras grauzikams        -> grauziko-rusis-filtras       (NAUJA v15)\n *   - lesalas pauksciams        -> paukscio-rusis-filtras       (NAUJA v16)\n *   - akvariumo zuvu maistas    -> akvariumo-zuvu-filtras       (NAUJA v17)\n *   - tualetai/kraikai/semtuv.  -> tualetu-filtras (dedikuotas, Tipas+Brand)     (NAUJA v18/v19)\n *   - rinkiniai (679 medis)     -> rinkiniu-filtras (Gyvuno rusis + Brand) (NAUJA v20)\n *   - maisto kategorijos      -> maisto-filtras\n *   - kitos                   -> NEKEICIA (lieka widget numatytasis)\n *\n * Veikia per widget_display_callback: kai renderinamas YITH preset\n * widget, pakeicia preset slug pagal dabartine kategorija.\n *\n * Tvarko maista + skanestus + papildus. Aksesuarai / dp misri -\n * nepaliesta, kol joms bus sukurti atskiri preset'ai.\n *\n * Slug'ai: maisto-filtras, skanestu-filtras, vitaminu-filtras, antkakliu-filtras, dubeneliu-filtras, guoliu-transporto-filtras, zaislu-filtras, kraiku-filtras, apranga-filtras, draskykliu-filtras, sampunu-filtras.\n * ASCII-only PHP komentarai.\n */\n\ndefined( 'ABSPATH' ) || exit;\n\n/**\n * Nustato, kuris preset slug tinka dabartinei kategorijai.\n * Grazina '' jei kategorija netvarkoma (nekeiciam).\n */\nfunction petshop_filter_preset_for_current() {\n\n\tif ( ! is_product_category() && ! is_tax('product_cat') ) {\n\t\treturn '';\n\t}\n\t$term =",
+  "snippet332_raktai": [],
+  "sidebar_widgets": [
+   "woocommerce_layered_nav_filters-10",
+   "woocommerce_layered_nav-11",
+   "yith-woocommerce-ajax-navigation-filters-2",
+   "woocommerce_price_filter-9"
+  ]
+ },
+ "v": "dep-133146",
+ "kurimas": 200,
+ "sid": 6447,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
