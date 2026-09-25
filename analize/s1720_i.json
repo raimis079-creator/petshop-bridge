@@ -1,0 +1,104 @@
+{
+ "1": {
+  "v": "S1720i",
+  "parinkti": "function parinkti( $product_id, $qty = 1, $misrus = false ) {\n\t\t$qty = max( 1, (int) $qty );\n\t\t$r = self::resolve( $product_id, $qty );\n\t\t$tiek = isset( $r['tiekejas'] ) ? $r['tiekejas'] : 'av';\n\t\t$r['tiekejo_qty'] = null; $r['taisykle'] = 'grynai AV';\n\t\tif ( 'av' === $tiek || 'legacy' === $tiek ) { return $r; } // be tiekėjo — tik AV\n\t\t$dp = self::dp( $product_id ); $n = $dp ? $dp['n'] : 1;\n\t\t$tq = self::tiekejo_likutis( $product_id, $tiek ); $r['tiekejo_qty'] = $tq;\n\t\t$tiekejas_turi = ( null === $tq ) ? true : ( $tq >= $qty * $n ); // nežinomas likutis = laikom, kad turi (feed'o nėra → senas elgesys)\n\t\t$av_turi = ! empty( $r['av_uztenka'] ) && null !== $r['av_qty'];\n\t\tif ( $tiekejas_turi && ! $misrus ) {\n\t\t\t$r['source'] = $tiek; $r['carrier'] = 'venipak'; $r['av_uztenka'] = false;\n\t\t\t$r['taisykle'] = 'dropship pirma' . ( $av_turi ? ' (AV turi ' . $r['av_qty'] . ', bet užsakymas ne mišrus)' : '' );\n\t\t\t$r['reason']   = $r['taisykle'] . ': tiekėjas ' . $tiek . ( null === $tq ? '' : ' turi ' . $tq ) . '; ' . $r['reason'];\n\t\t\treturn $r;\n\t\t}\n\t\tif ( $av_turi ) {\n\t\t\t$r['source'] = 'av'; $r['carrier'] = 'any'; $r['av_uztenka'] = true;\n\t\t\t$r['taisykle'] = $misrus ? 'mišrus užsakymas → AV' : 'tiekėjas neturi → AV';\n\t\t\t$r['reason']   = $r['taisykle'] . ': ' . $r['reason'];\n\t\t\treturn $r;\n\t\t}\n\t\t$r['source'] = $tiek; $r['carrier'] = 'venipak'; $r['av_uztenka'] = false;\n\t\t$r['taisykle'] = 'AV neužtenka → tiekėjas'; $r['reason'] = $r['taisykle'] . ': ' . $r['reason'];\n\t\treturn $r;\n\t}\n\n\t/** v1.3: ar užsakymas mišrus — turi bent vieną grynai AV eilutę IR bent vieną tiekėjo prekę. */\n\tpublic static function ar_misrus( $order ) {\n\t\t$av = false; $tiek = false;\n\t\tforeach ( $order->get_items() as $it ) {\n\t\t\t$pid = (int) $it->get_product_id(); if ( ! $pid ) { continue; }\n\t\t\t$r = self::resolve( $pid, max( 1, (int) $it->get_quantity() ) );\n\t\t\t$t = isset( $r['tiekejas'] ) ? $r['tiekejas'] : 'av';\n\t\t\tif ( 'av' === $t || 'legacy' === $t ) { $av = true; } else { $tiek = true; }\n\t\t}\n\t\treturn $av && $tiek;\n\t}\n\n\t/** v1.2: DP pakas? → ['base'=>bazinės ID,'n'=>pako kiekis] arba null. */\n\tpublic static function dp( $product_id ) {\n\t\t$base = (int) get_post_meta( (int) $product_id, '_dp_base_product_id', true );\n\t\t$n    = (int) get_post_meta( (int) $product_id, '_dp_pack_qty', true );\n\t\treturn ( $base > 0 && $n > 0 && $base !== (int) $product_id ) ? array( 'base' => $base, 'n' => $n ) : null;\n\t}\n\n\tpublic static function is_av( $product_id, $qty = 1 ) {\n\t\t$x = self::resolve( $product_id, $qty );\n\t\treturn 'av' === $x['source'];\n\t}\n\n\t/**\n\t * Krepšelio arba užsakymo eilučių sugrupavimas pagal šaltinį.\n\t *\n\t * @param array $eilutes [ ['product_id'=>int, 'qty'=>int, 'raktas'=>mixed], ... ]\n\t * @return array [ 'av' => ['eilutes'=>[...], 'carrier'=>'any'], 'vf' => [...], ... ]\n\t */\n\tpublic static function group( array $eilutes ) {\n\t\t$grupes = [];\n\t\tforeach ( $eilutes as $e ) {\n\t\t\t$pid = (int) ( $e['product_id'] ?? 0 );\n\t\t\tif ( ! $pid ) { continue; }\n\t\t\t$qty = max( 1, (int) ( $e['qty'] ?? 1 ) );\n\t\t\t$x   = self::resolve( $pid, $qty );\n\t\t\t$s   = $x['source'];\n\t\t\tif ( ! isset( $grupes[ $s ] ) ) {\n\t\t\t\t$grupes[ $s ] = [ 'eilutes' => [], 'carrier' => $x['",
+  "resolve": "function resolve( $product_id, $qty = 1 ) {\n\t\t$product_id = (int) $product_id;\n\t\t$qty        = max( 1, (int) $qty );\n\n\t\t// v1.2: DP pakas → bazinė prekė × pako kiekis; likutis grąžinamas pakais.\n\t\t$dp = self::dp( $product_id );\n\t\tif ( $dp ) {\n\t\t\t$r = self::resolve( $dp['base'], $qty * $dp['n'] );\n\t\t\t$r['av_qty'] = ( null === $r['av_qty'] ) ? null : intdiv( (int) $r['av_qty'], $dp['n'] );\n\t\t\t$r['dp']     = $dp;\n\t\t\t$r['reason'] = 'DP pakas ×' . $dp['n'] . ' (bazinė #' . $dp['base'] . '): ' . $r['reason'];\n\t\t\treturn $r;\n\t\t}\n\n\t\t$baze = class_exists( 'Petshop_Fulfillment_Source' )\n\t\t\t? Petshop_Fulfillment_Source::resolve( $product_id )\n\t\t\t: [ 'source' => 'legacy', 'carrier' => 'any', 'courier_only' => false, 'reason' => 'resolverio nėra' ];\n\n\t\t// `legacy` = AV sandėlis (resolverio komentaras: „tikras savas sandelis\").\n\t\t// 959 publish prekės iš _legacy_source=excel_v2_20260604 su REALIAIS likučiais\n\t\t// WooCommerce `_stock` lauke (niekas jų neperrašo — sinchronizacijos nėra).\n\t\t// Joms `_own_stock_qty` NEREIKIA — jos ir taip AV.\n\t\tif ( 'legacy' === $baze['source'] ) {\n\t\t\treturn [\n\t\t\t\t'source'       => 'av',\n\t\t\t\t'carrier'      => 'any',\n\t\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t\t'av_qty'       => (int) get_post_meta( $product_id, '_stock', true ),\n\t\t\t\t'av_uztenka'   => true,\n\t\t\t\t'tiekejas'     => 'av',\n\t\t\t\t'reason'       => 'grynai AV prekė (be tiekėjo)',\n\t\t\t];\n\t\t}\n\n\t\t$av        = class_exists( 'Petshop_AV_Stock' ) ? Petshop_AV_Stock::qty( $product_id ) : null;\n\t\t$uztenka   = ( null !== $av && $av >= $qty );\n\t\t$tiekejas  = $baze['source'];\n\n\t\tif ( $uztenka ) {\n\t\t\treturn [\n\t\t\t\t'source'       => 'av',\n\t\t\t\t'carrier'      => 'any',          // AV gali ir Venipak, ir LP\n\t\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t\t'av_qty'       => $av,\n\t\t\t\t'av_uztenka'   => true,\n\t\t\t\t'tiekejas'     => $tiekejas,\n\t\t\t\t'reason'       => \"AV turi $av, reikia $qty\",\n\t\t\t];\n\t\t}\n\n\t\t// SAUGIKLIS: LP Express galimas TIK iš AV (Raimis §18.1).\n\t\t// Bet kuris dropship šaltinis → venipak, nesvarbu ką grąžino bazinis resolveris.\n\t\treturn [\n\t\t\t'source'       => $tiekejas,\n\t\t\t'carrier'      => 'venipak',\n\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t'av_qty'       => $av,\n\t\t\t'av_uztenka'   => false,\n\t\t\t'tiekejas'     => $tiekejas,\n\t\t\t'reason'       => ( null === $av )\n\t\t\t\t? 'AV šios prekės neturi'\n\t\t\t\t: \"AV turi $av, reikia $qty — neužtenka\",\n\t\t];\n\t}\n\n\t/** Ar prekė šiuo kiekiu eitų iš AV. */\n\t/** v1.3: tiekėjo likutis šiai prekei (DP pakui — bazinės). null = nežinomas. */\n\tpublic static function tiekejo_lik",
+  "dp": "function dp( $product_id ) {\n\t\t$base = (int) get_post_meta( (int) $product_id, '_dp_base_product_id', true );\n\t\t$n    = (int) get_post_meta( (int) $product_id, '_dp_pack_qty', true );\n\t\treturn ( $base > 0 && $n > 0 && $base !== (int) $product_id ) ? array( 'base' => $base, 'n' => $n ) : null;\n\t}\n\n\tpublic static function is_av( $product_id, $qty = 1 ) {\n\t\t$x = self::resolve( $product_id, $qty );\n\t\treturn 'av' === $x['source'];\n\t}\n\n\t/**\n\t * Krepšelio arba užsakymo eilučių sugrupavimas pagal šaltinį.\n\t *\n\t * @param array $eilutes [ ['product_id'=>int, 'qty'=>int, 'raktas'=>mixed], ... ]\n\t * @return array [ 'av' => ['eilutes'=>[...], 'carrier'=>'any'], 'vf' => [...], ... ]\n\t */\n\tpublic static function group( array $eilutes ) {\n\t\t$grupes = [];\n\t\tforeach ( $eilutes as $e ) {\n\t\t\t$pid = (int) ( $e['product_id'] ?? 0 );\n\t\t\tif ( ! $pid ) { continue; }\n\t\t\t$qty = max( 1, (int) ( $e['qty'] ?? 1",
+  "schema_const": {
+   "PASTOMATAS_CT": "215",
+   "KURJERIS_CT": "399",
+   "NEMOKAMAS_NUO_CT": "3000",
+   "TEL": "'+370 681 87787'"
+  },
+  "schema_class": "Petshop_Schema_Prekes",
+  "schema_handling": " => 'LT' ),\n\t\t\t\t'deliveryTime'        => array(\n\t\t\t\t\t'@type'        => 'ShippingDeliveryTime',\n\t\t\t\t\t'handlingTime' => array( '@type' => 'QuantitativeValue', 'minValue' => 0, 'maxValue' => 2, 'unitCode' => 'DAY' ),\n\t\t\t\t\t'transitTime'  => array( '@type' => 'QuantitativeValue', 'minValue' => 1, 'maxValue' => 2, 'unitCode' => 'DAY' ),\n\t\t\t\t),\n\t\t\t);\n\t\t\t$of['hasMerchantReturnPolicy'] = $maistas\n\t\t\t\t? arr",
+  "schema_md5": "f28e9f0d3de63928b0a24944cf318e92",
+  "pastomato_sargas": "function pastomato_sargas( $rates, $package ) {\n\t\tif ( is_admin() && ! wp_doing_ajax() ) { return $rates; }\n\t\t$kg = 0.0; $tik_kurjeriu = false;\n\t\tforeach ( (array) ( $package['contents'] ?? array() ) as $eil ) {\n\t\t\t$p = $eil['data'] ?? null;\n\t\t\tif ( ! $p || ! is_a( $p, 'WC_Product' ) ) { continue; }\n\t\t\t/* v1.44 (S1601): varnele „Tik kurjeriu“ — tikrinama VISOMS eilutems, iskaitant MnM vaikus */\n\t\t\tif ( get_post_meta( $p->get_id(), '_ps_tik_kurjeriu', true ) === 'yes' ) { $tik_kurjeriu = true; }\n\t\t\tif ( ! empty( $eil['mnm_child_id'] ) ) { continue; }   /* vaikai — svorio nesidubliuoti */\n\t\t\t$w = (float) $p->get_weight();\n\t\t\tif ( $w > 0 ) { $kg += $w * (int) $eil['quantity']; }\n\t\t}\n\t\tif ( ! $tik_kurjeriu && $kg <= self::PASTOMATO_RIBA ) { return $rates; }\n\n\t\t$zodziai = array( 'pastomat', 'paštomat', 'terminal', 'locker', 'pickup', 'atsiemim', 'parcel' );\n\t\tforeach ( $rates as $raktas => $tarifas ) {\n\t\t\t$tekstas = mb_strtolower( $raktas . ' ' . $tarifas->get_label() );\n\t\t\tforeach ( $zodziai as $z ) {\n\t\t\t\tif ( mb_strpos( $tekstas, $z ) !== false ) { unset( $rates[ $raktas ] ); break; }\n\t\t\t}\n\t\t}\n\t\treturn $rates;\n\t}\n\n\t/** Ar dabar rodomas rinkinio (arba DP pako) puslapis. Kesuojam — gettext\n\t *  kvieciamas simtus kartu viename uzklausime. */\n\tprivate static function rinkinio_puslapis() {\n\t\tstatic $atsakymas = null;\n\t\tif ( $atsakymas !== null ) { return $atsakymas; }\n\t\tif ( ! function_exists( 'is_product' ) || ! is_product() ) { return $atsakymas = false; }\n\t\tglobal $post;\n\t\tif ( ! $post ) { return $atsakymas = false; }\n\t\t$atsakymas = ( get_post_meta( $post->ID, self::META_KIEKIAI, true ) !== '' )\n\t\t\t|| ( get_post_meta( $post->ID, '_dp_base_product_id', true ) !== '' );\n\t\treturn $atsakymas;\n\t}\n\n\t/**\n\t * Mix and Match vertimai.\n\t *\n\t * Pluginas neisverstas: klientas ",
+  "tik_kurjeriu_meta": [
+   {
+    "meta_key": "_ps_tik_kurjeriu",
+    "n": "163"
+   }
+  ],
+  "cats": [
+   {
+    "term_id": "72",
+    "slug": "sausas-maistas-sunims",
+    "parent": "71",
+    "count": "509"
+   },
+   {
+    "term_id": "106",
+    "slug": "tualetai-kraikai-semtuveliai",
+    "parent": "77",
+    "count": "59"
+   },
+   {
+    "term_id": "107",
+    "slug": "kraikai-kaciu-tualetams",
+    "parent": "77",
+    "count": "86"
+   },
+   {
+    "term_id": "81",
+    "slug": "sausas-maistas-katems",
+    "parent": "78",
+    "count": "201"
+   },
+   {
+    "term_id": "657",
+    "slug": "kraikas-ir-sienas-grauzikams",
+    "parent": "87",
+    "count": "3"
+   },
+   {
+    "term_id": "90",
+    "slug": "lesalas-pauksciams",
+    "parent": "89",
+    "count": "8"
+   }
+  ],
+  "hide_parcel": "function petshop_hide_parcel_if_courier_only( $rates, $package ) {\n\n    $venipak_courier = 'shopup_venipak_shipping_courier_method';\n    $venipak_pickup  = 'shopup_venipak_shipping_pickup_method';\n\n    if ( class_exists( 'Petshop_Fulfillment_Source' ) ) {\n\n        $has_venipak_only = false;\n        $has_courier_only = false;\n\n        foreach ( $package['contents'] as $item ) {\n            $pid = $item['product_id'];\n            $res = Petshop_Fulfillment_Source::resolve( (int) $pid );\n\n            if ( ! empty( $res['carrier'] ) && $res['carrier'] === 'venipak' ) {\n                $has_venipak_only = true;\n            }\n            if ( ! empty( $res['courier_only'] ) ) {\n                $has_courier_only = true;\n            }\n            /* DU LAUKAI TAM PACIAM DALYKUI (rasta 2026-08-28).\n               `_fulfillment_courier_only` — senasis, sioje bazeje jo turi 0 prekiu.\n               `_ps_tik_kurjeriu` — ta, kuria RASO katalogo kortele; ja turi 162 prekes.\n               Filtras skaite tik pirmaji, todel varnele kortelėje niekada\n               neveike: preke, netelpanti i pastomata, ji vis tiek siule. */\n            if ( get_post_meta( $pid, '_fulfillment_courier_only', true ) === 'yes'\n                 || get_post_meta( $pid, '_ps_tik_kurjeriu', true ) === 'yes' ) {\n                $has_courier_only = true;\n            }\n        }\n\n        foreach ( $rates as $rate_id => $rate ) {\n            $method_id = $rate->get_method_id();\n\n            if ( $has_venipak_only && $method_id !== $venipak_courier && $method_id !== $venipak_pickup ) {\n                unset( $rates[ $rate_id ] );\n                continue;\n            }\n\n            if ( $has_courier_only && $method_id === $venipak_pickup ) {\n                unset( $rates[ $rate_id ] );\n                continue;\n            }\n        }\n\n        if ( empty( $rates ) ) {\n            return $package['rates'] ?? $rates;\n        }\n\n        return $rates;\n    }\n\n    $has_courier_only = false;\n    $has_zb           = false;\n\n    foreach ( $package['contents'] as $item ) {\n        $product_id = $item['product_id'];\n        if ( get_post_meta( $product_id, '_fulfillment_courier_only', true ) === 'yes'\n         ",
+  "free_progress": "function petshop_free_shipping_progress() {\n    if ( ! is_cart() ) return;\n\n    $threshold = 30.00;\n\n    $has_courier_only = false;\n    $total_weight     = 0;\n    foreach ( WC()->cart->get_cart() as $item ) {\n        $product_id = $item['product_id'];\n        /* Ta pati dviejų laukų problema kaip pristatymo filtre (2026-08-28):\n           varnele kortelėje raso `_ps_tik_kurjeriu`, o cia buvo tikrinamas\n           tik senasis `_fulfillment_courier_only`. Del to krepselyje\n           kurjeriui skirta preke vis tiek matydavo „iki nemokamo pristatymo\n           i pastomata\" — pazadas, kurio ivykdyti neimanoma. */\n        if ( get_post_meta( $product_id, '_fulfillment_courier_only', true ) === 'yes'\n             || get_post_meta( $product_id, '_ps_tik_kurjeriu', true ) === 'yes' ) {\n            $has_courier_only = true;\n            break;\n        }\n        $weight       = (float) get_post_meta( $product_id, '_weight', true );\n        $total_weight += $weight * $item['quantity'];\n    }\n    if ( $total_weight > 30 ) {\n        $has_courier_only = true;\n    }\n    /* S1716 (2026-09-24): tikroji tiesa — ar jau apskaičiuotuose pristatymo tarifuose yra paštomatas.\n       Venipak pluginas paštomatą išmeta ir dėl matmenų (pvz. ZB maišas 80 cm), ko varnelė/svoris nemato,\n       o krepšelis žadėdavo „nemokamą pristatymą į paštomatą“, kurio kasoje nebūdavo. */\n    if ( ! $has_courier_only && function_exists( 'WC' ) && WC()->shipping() ) {\n        $ps_paketai = WC()->shipping()->get_packages();\n        if ( ! empty( $ps_paketai ) ) {\n            $ps_yra_pastomatas = false;\n            foreach ( $ps_paketai as $ps_pk ) {\n                foreach ( (array) ( $ps_pk['rates'] ?? array() ) as $ps_rate ) {\n                    $ps_mid = (string) $ps_rate->get_method_id();\n                    if ( strpos( $ps_mid, 'pickup' ) !== false || strpos( $ps_mid, 'terminal' ) !== false ) { $ps_yra_pastomatas = true; break 2; }\n                }\n            }\n            if ( ! $ps_yra_pastomatas ) { $has_courier_only = true; }\n        }\n    }\n\n    if ( $has_courier_only ) {\n        echo '<tr><td colspan=\"2\" style=\"padding:0 0 12px;\">';\n        echo '<div style=\"background:#f4f4f2;border-left:3px solid #365a51;padding:10px 14px;font-size:13px;border-radius:0 4px 4px 0;color:#555;\">';\n        echo '🚚 Kai kurios prekės pristatomos tik kurjeriu dėl dydžio arba svorio.';\n        echo '</div></td></tr>';\n        return;\n    }\n\n    $subtotal     = WC()->cart->get_subtotal();\n    $subtotal_tax = WC()->cart->get_subtotal_tax();\n    $discount     = WC()->cart->get_discount_total() + WC()->cart->get_discount_tax();\n    $cart_total   = max( 0, ( $subtotal + $subtotal_tax ) - $discount );\n\n    $percent = min( 100, round( ( $cart_total / $threshold ) * 100 ) );\n    $truksta = max( 0, round( $threshold - $cart_total, 2 ) );\n    $reached = $cart_total >= $threshold;\n\n    echo '<tr><td colspan=\"2\" style=\"padding:0 0 12px;\">';\n    echo '<div style=\"background:#f4f",
+  "mnm_dp_keys": [
+   {
+    "meta_key": "_dp_base_product_id",
+    "n": "25"
+   },
+   {
+    "meta_key": "_dp_pack_qty",
+    "n": "25"
+   },
+   {
+    "meta_key": "_ps_sandelis",
+    "n": "3886"
+   },
+   {
+    "meta_key": "_ps_tik_kurjeriu",
+    "n": "163"
+   }
+  ],
+  "stock_html_fn": "function stock_html( $html, $product ) {\n\t\tif ( is_admin() && ! wp_doing_ajax() ) { return $html; }\n\t\tif ( ! is_a( $product, 'WC_Product' ) || ! $product->is_in_stock() ) { return $html; }\n\t\treturn preg_replace( '/\\s*\\(\\s*\\d+[^)]*\\)/u', '', (string) $html );\n\t}\n}\nPetshop_AV_Limit::init();\n",
+  "titles_sample": [
+   "Trixie Berto Top kačių tualetas namelis, su atskyrimo sistema, 39x42x59cm, rudas/šviesus",
+   "Trixie Maro kampinis Tualetas namelis katei, su lopetėle 60x43x52 cm, šv. pilkas/baltas",
+   "Trixie Automatinis kačių tualetas, plastikas, 53x55,5x52cm, baltas",
+   "Uždaras tualetas katėms, Vicky, Georplast",
+   "Uždaras tualetas katėms, Roto-Toilet, Georplast",
+   "Uždaras tualetas katėms, Galaxy Jumbo, Georplast",
+   "Uždaras tualetas katėms, Galaxy Deluxe, Georplast",
+   "Uždaras tualetas - namelis katėms ir kitiems smulkiems gyvūnams, Georplast Villa",
+   "Uždaras kampinis tualetas katėms CORNER",
+   "Tualetas katėms su rėmeliu vidutinis, Lettiera max (43,5x34x11)",
+   "Tualetas katėms su rėmeliu didelis, Lettiera Big (50x40x14,5)",
+   "Tualetas katėms labai aukštu rėmeliu (30 cm), Georplast Colosseo"
+  ]
+ },
+ "v": "dep-192421",
+ "kurimas": 200,
+ "sid": 6497,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
