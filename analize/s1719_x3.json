@@ -1,0 +1,26 @@
+{
+ "1": {
+  "v": "S1719x3",
+  "rasta_465": true,
+  "tokenai": [
+   {
+    "tipas": "fine-grained",
+    "ilgis": 93,
+    "sha256": "0cc1ca0ffcaabbc80867fbfc96edf080db30c3b30b7fd741c67ca0f9cfe43461"
+   }
+  ],
+  "define": [
+   "define( 'PETSHOP_GH_TOKEN', '***",
+   "define( 'PETSHOP_GH_OWNER', 'raimis079-creator' );",
+   "define( 'PETSHOP_GH_REPO',  'petshop-bridge' );",
+   "define( 'PETSHOP_GH_BRANCH','main' );"
+  ]
+ },
+ "v": "dep-170525",
+ "kurimas": 200,
+ "sid": 6481,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
