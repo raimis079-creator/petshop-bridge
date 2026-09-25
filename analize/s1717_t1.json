@@ -1,0 +1,105 @@
+{
+ "1": {
+  "v": "S1717t",
+  "faze": "1",
+  "failai": {
+   "petshop-schema-prekes.php": {
+    "yra": true,
+    "md5_dabar": "226ed97f02ee64af835721a5c1549603",
+    "md5_naujas": "f28e9f0d3de63928b0a24944cf318e92",
+    "bak_yra": false,
+    "b64_ok": true
+   },
+   "petshop-gsc-tvarka.php": {
+    "yra": true,
+    "md5_dabar": "45ae9aa8c084005cd552269dc158865c",
+    "md5_naujas": "4833a372f3495692dcb99a3c22a58c20",
+    "bak_yra": false,
+    "b64_ok": true
+   },
+   "petshop-seo-sablonai.php": {
+    "yra": false,
+    "md5_dabar": null,
+    "md5_naujas": "231bc27692114acb8441900edc3e5e36",
+    "bak_yra": false,
+    "b64_ok": true
+   }
+  },
+  "rm": {
+   "tax_product_cat_title": {
+    "dabar": "%term% %sep% %sitename%",
+    "bus": "%term% – pirkti internetu | %sitename%"
+   },
+   "tax_product_cat_description": {
+    "dabar": "",
+    "bus": "%term_description%"
+   },
+   "tax_product_brand_title": {
+    "dabar": "%term% %sep% %sitename%",
+    "bus": "%term% – prekės gyvūnams | %sitename%"
+   },
+   "tax_product_brand_description": {
+    "dabar": "",
+    "bus": "%term_description%"
+   }
+  },
+  "hubai": {
+   "70": {
+    "slug": "sunims",
+    "t_dabar": "",
+    "d_dabar": "",
+    "t_bus": "Prekės šunims – maistas, skanėstai, priežiūra ir aksesuarai | Petshop.lt",
+    "d_bus": "Viskas šunims vienoje vietoje: sausas ir šlapias maistas, skanėstai, antkakliai ir pavadėliai, guoliai, žaislai, priežiūros priemonės. Padedame išsirinkti pagal sudėtį. Pristatymas per 1–3 d. d., nemokamai į paštomatą nuo 30 €."
+   },
+   "77": {
+    "slug": "katems",
+    "t_dabar": "",
+    "d_dabar": "",
+    "t_bus": "Prekės katėms – maistas, kraikas, žaislai ir priežiūra | Petshop.lt",
+    "d_bus": "Viskas katėms: sausas ir šlapias maistas, skanėstai, kraikai ir tualetai, draskyklės, žaislai, transportavimo dėžės, priežiūros priemonės. Padedame išsirinkti pagal sudėtį. Pristatymas per 1–3 d. d., nemokamai į paštomatą nuo 30 €."
+   },
+   "87": {
+    "slug": "grauzikams",
+    "t_dabar": "",
+    "d_dabar": "",
+    "t_bus": "Prekės graužikams – pašaras, skanėstai, narvai ir kraikas | Petshop.lt",
+    "d_bus": "Pašarai ir skanėstai graužikams, narvai, kraikas ir šienas, priežiūros priemonės. Pristatymas per 1–3 d. d., nemokamai į paštomatą nuo 30 €."
+   },
+   "89": {
+    "slug": "pauksciams",
+    "t_dabar": "",
+    "d_dabar": "",
+    "t_bus": "Prekės paukščiams – lesalas, skanėstai ir aksesuarai | Petshop.lt",
+    "d_bus": "Lesalai ir skanėstai papūgoms bei kitiems naminiams paukščiams, aksesuarai narvams. Pristatymas per 1–3 d. d., nemokamai į paštomatą nuo 30 €."
+   },
+   "93": {
+    "slug": "zuvims",
+    "t_dabar": "",
+    "d_dabar": "",
+    "t_bus": "Prekės žuvims – maistas akvariumo ir tvenkinių žuvims | Petshop.lt",
+    "d_bus": "Maistas akvariumo ir tvenkinių žuvims, akvariumų įranga ir priežiūra. Pristatymas per 1–3 d. d., nemokamai į paštomatą nuo 30 €."
+   }
+  },
+  "shop": {
+   "dabar": [
+    "",
+    ""
+   ],
+   "bus": [
+    "Visos prekės gyvūnams internetu | Petshop.lt",
+    "Visas Petshop.lt asortimentas: maistas, skanėstai, priežiūra ir aksesuarai šunims, katėms, graužikams, paukščiams ir žuvims. Pristatymas per 1–3 d. d., nemokamai į paštomatą nuo 30 €."
+   ]
+  },
+  "home_rs": "",
+  "bak_yra": false,
+  "category_show_title": 0,
+  "laikas": "13:46:19"
+ },
+ "v": "dep-104510",
+ "kurimas": 200,
+ "sid": 6403,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
