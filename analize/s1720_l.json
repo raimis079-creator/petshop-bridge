@@ -1,0 +1,279 @@
+{
+ "v": "dep-195325",
+ "kurimas": 200,
+ "sid": 6502,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "a": {
+  "v": "S1720l",
+  "faze": "a",
+  "t": "2026-09-25 19:55:16",
+  "wpai3": [
+   {
+    "import_id": "3",
+    "type": "processing",
+    "time_run": null,
+    "summary": "cron processing",
+    "date": "2026-09-25 19:01:19"
+   },
+   {
+    "import_id": "3",
+    "type": "trigger",
+    "time_run": null,
+    "summary": "triggered by cron",
+    "date": "2026-09-25 19:00:03"
+   },
+   {
+    "import_id": "3",
+    "type": "processing",
+    "time_run": "1846",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 1060 updated 1621 skipped",
+    "date": "2026-09-25 18:01:22"
+   },
+   {
+    "import_id": "3",
+    "type": "trigger",
+    "time_run": null,
+    "summary": "triggered by cron",
+    "date": "2026-09-25 18:00:04"
+   },
+   {
+    "import_id": "3",
+    "type": "processing",
+    "time_run": "4035",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 1060 updated 1621 skipped",
+    "date": "2026-09-25 16:01:23"
+   }
+  ],
+  "wpai3_opt": {
+   "id": "3",
+   "name": "stocks.php",
+   "processing": "1",
+   "executing": "0",
+   "last_activity": "2026-09-25 19:00:03",
+   "imported": "0",
+   "skipped": "0",
+   "updated": "0"
+  },
+  "botai": {
+   "2026-09-25": {
+    "atc": 1087,
+    "filtrai": 21509,
+    "ip_unik": 21718
+   }
+  },
+  "log": {
+   "2026-09-25.log": {
+    "eil": 22596,
+    "atc": 1087,
+    "ip": 21718
+   }
+  },
+  "sesijos": "14742",
+  "ps_carts_siandien": "4777",
+  "ps_carts_vakar": "7755",
+  "uzs_siandien": [
+   {
+    "status": "wc-completed",
+    "n": "1"
+   },
+   {
+    "status": "wc-on-hold",
+    "n": "1"
+   },
+   {
+    "status": "wc-processing",
+    "n": "8"
+   }
+  ],
+  "supercache_psl": 168,
+  "pazadas_klaidos": "t IS NOT NULL AND s.sukurta_at>=NOW()-INTERVAL 14 DAY made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}\n[25-Sep-2026 18:39:57 UTC] Užsakymas patvirtintas: užsakymas 36314, suma: 32.89EUR\n[25-Sep-2026 19:31:27 UTC] Cron įvykio perplanavimo klaida kabliui: petshop_import_tempas, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":\"petshop_2min\",\"args\":[],\"interval\":120}\n"
+ },
+ "b": {
+  "v": "S1720l",
+  "faze": "b",
+  "t": "2026-09-25 19:55:29",
+  "tvarka": [
+   [
+    143083,
+    "<div class=\"ps-calc\" id=\"ps-calc\" data-pid=\"18560\" data-species=\"dog\" data-has-table=\"1\" data-gen=\"šuns\" data"
+   ],
+   [
+    143545,
+    "<div class=\"ps-calc-head\">"
+   ],
+   [
+    143576,
+    "<div class=\"ps-calc-h1\">"
+   ],
+   [
+    143651,
+    "<div class=\"ps-calc-h2\">"
+   ],
+   [
+    143747,
+    "<div class=\"ps-calc-row\" data-ps-mode=\"weight\">"
+   ],
+   [
+    143861,
+    "<div class=\"ps-calc-in\">"
+   ],
+   [
+    144146,
+    "<div class=\"ps-calc-row ps-hide\" data-ps-mode=\"age\">"
+   ],
+   [
+    144273,
+    "<div class=\"ps-calc-in\">"
+   ],
+   [
+    144637,
+    "<div class=\"ps-calc-row ps-hide\" data-ps-mode=\"portion\">"
+   ],
+   [
+    144765,
+    "<div class=\"ps-calc-in\">"
+   ],
+   [
+    145048,
+    "<div class=\"ps-calc-out\" aria-live=\"polite\">"
+   ],
+   [
+    149292,
+    "<div class=\"product-footer\">"
+   ],
+   [
+    149350,
+    "<div class=\"woocommerce-tabs wc-tabs-wrapper container tabbed-content\">"
+   ],
+   [
+    150283,
+    "<div class=\"ps-desc-acc\">"
+   ],
+   [
+    156022,
+    "<div class=\"related related-products-wrapper product-section\">"
+   ],
+   [
+    229068,
+    "<h2 class=\"ps-login-title\">Prisijungimas prie Petshop.lt</h2>"
+   ]
+  ],
+  "fbt_kodas": "-",
+  "dydziai": "<?php\n/**\n * Plugin Name: Petshop Dydziai\n * Description: Dydzio pasirinkimas prekes puslapyje. Dydis pas mus NERA variacija —\n *              kiekvienas dydis yra atskira preke (taip veikia maistas, kraikai, DP pakai).\n *              Todel pirkejui reikia matomos jungties tarp broliu; be jos jis,\n *              atsidares M, i L nepatenka niekaip.\n * Version: 1.0\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Dydziai {\n\n\tconst META = '_ps_dydzio_seima';\n\n\t/** Rikiavimo tvarka. Nezinomi dydziai keliauja i gala, abeceles tvarka. */\n\tconst EILE = array( 'xs' => 1, 's' => 2, 'm' => 3, 'l' => 4, 'xl' => 5, 'xxl' => 6 );\n\n\tpublic static function start() {\n\t\tadd_action( 'woocommerce_single_product_summary', array( __CLASS__, 'pieskime' ), 25 );\n\t}\n\n\t/** Seimos nariai: publish arba dabartine preke (kad juodrastyje irgi matytum). */\n\tpublic static function nariai( $seima, $dabartinis ) {\n\t\tglobal $wpdb;\n\t\t$ids = $wpdb->get_col( $wpdb->prepare(\n\t\t\t\"SELECT p.ID FROM {$wpdb->posts} p\n\t\t\t   JOIN {$wpdb->postmeta} m ON m.post_id = p.ID AND m.meta_key = %s\n\t\t\t  WHERE p.post_type = 'product' AND m.meta_value = %s\n\t\t\t    AND ( p.post_status = 'publish' OR p.ID = %d )\",\n\t\t\tself::META, $seima, (int) $dabartinis ) );\n\t\treturn array_map( 'intval', (array) $ids );\n\t}\n\n\t/** Dydzio uzrasas: pirma pa_dydis, po to pa_pakuotes_dydis. */\n\tpublic static function uzrasas( $pid ) {\n\t\tforeach ( array( 'pa_dydis', 'pa_pakuotes_dydis' ) as $tx ) {\n\t\t\tif ( ! taxonomy_exists( $tx ) ) { continue; }\n\t\t\t$n = wp_get_object_terms( $pid, $tx, array( 'fields' => 'names' ) );\n\t\t\tif ( ! is_wp_error( $n ) && $n ) { return (string) $n[0]; }\n\t\t}\n\t\treturn '';\n\t}\n\n\tpublic static function svoris( $u ) {\n\t\t$k = mb_strtolower( trim( $u ) );\n\t\tif ( isset( self::EILE[ $k ] ) ) { return array( 0, self::EILE[ $k ], '' ); }\n\t\t/* „10 l\", „2,5 kg\" — rikiuojam pagal skaiciu, ne pagal teksta */\n\t\tif ( preg_match( '/([\\d]+(?:[.,][\\d]+)?)/u', $k, $m ) ) {\n\t\t\treturn array( 1, (float) str_replace( ',', '.', $m[1] ), $k );\n\t\t}\n\t\treturn array( 2, 0, $k );\n\t}\n\n\tpublic static function pieskime() {\n\t\tglobal $product;\n\t\tif ( ! $product instanceof WC_Product ) { return; }\n\t\t$pid   = $product->get_id();\n\t\t$seima = get_post_meta( $pid, self::META, true );\n\t\tif ( ! $seima ) { return; }\n\n\t\t$ids = self::nariai( $seima, $pid );\n\t\tif ( count( $ids ) < 2 ) { return; }   /* vienas narys — bloko nereikia */\n\n\t\t$eil = array();\n\t\tforeach ( $ids as $id ) {\n\t\t\t$u = self::uzrasas( $id );\n\t\t\tif ( $u === '' ) { continue;"
+ },
+ "c": {
+  "v": "S1720l",
+  "faze": "c",
+  "t": "2026-09-25 19:55:54",
+  "cols_eil": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ],
+  "cols_uzs": [
+   "uzsakymas_id",
+   "sukurta_at",
+   "apmoketa_at",
+   "statusas_galutinis",
+   "statusas_at",
+   "klientas_id",
+   "klientas_email_hash",
+   "klientas_naujas",
+   "klientas_uzsakymo_nr",
+   "dienos_nuo_ankstesnio",
+   "prekiu_suma_ct",
+   "nuolaidu_ct",
+   "kuponu_kodai",
+   "tasku_panaudota_ct",
+   "tasku_sukaupta_ct",
+   "pristatymas_paimta_ct",
+   "pristatymas_savikaina_ct",
+   "small_cart_fee_ct",
+   "pvm_ct",
+   "viso_ct",
+   "mokejimo_budas",
+   "mokejimo_mokestis_ct",
+   "pakuotes_savikaina_ct",
+   "savikaina_ct",
+   "dovanu_savikaina_ct",
+   "marza_ct",
+   "kontribucija_ct",
+   "sandeliu_kiekis",
+   "misrus",
+   "sandeliai",
+   "vezejai",
+   "kanalas_pirmas",
+   "kanalas_paskutinis",
+   "utm_source",
+   "utm_medium",
+   "utm_campaign",
+   "gclid",
+   "fbclid",
+   "referer_domenas",
+   "landing_url",
+   "irenginys",
+   "sutikimas_statistika",
+   "salis",
+   "miestas",
+   "pasto_kodas",
+   "anketa_id",
+   "rec_log_id",
+   "is_refill",
+   "prenumerata_id",
+   "eiluciu_sk",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija",
+   "irasyta_at",
+   "diena"
+  ],
+  "seimos_meta": [
+   {
+    "meta_key": "_ps_dydzio_seima",
+    "n": "32"
+   },
+   {
+    "meta_key": "_ps_laukas_seima",
+    "n": "23"
+   }
+  ]
+ }
+}
