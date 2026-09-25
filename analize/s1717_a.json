@@ -1,0 +1,914 @@
+{
+ "1": {
+  "v": "S1717a",
+  "faze": "1",
+  "ads": [
+   {
+    "d": "2026-09-21",
+    "k": "P-max | LT | petshop.lt",
+    "par": "570",
+    "pasp": "39",
+    "eur": "10.96"
+   },
+   {
+    "d": "2026-09-21",
+    "k": "P-max | LT | Prekės (MC)",
+    "par": "1737",
+    "pasp": "10",
+    "eur": "1.54"
+   },
+   {
+    "d": "2026-09-21",
+    "k": "P-max| All LT | Kačių maista",
+    "par": "762",
+    "pasp": "73",
+    "eur": "23.22"
+   },
+   {
+    "d": "2026-09-21",
+    "k": "petshop",
+    "par": "200",
+    "pasp": "24",
+    "eur": "4.19"
+   },
+   {
+    "d": "2026-09-22",
+    "k": "P-max | LT | petshop.lt",
+    "par": "717",
+    "pasp": "26",
+    "eur": "6.94"
+   },
+   {
+    "d": "2026-09-22",
+    "k": "P-max | LT | Prekės (MC)",
+    "par": "2671",
+    "pasp": "9",
+    "eur": "1.19"
+   },
+   {
+    "d": "2026-09-22",
+    "k": "P-max| All LT | Kačių maista",
+    "par": "1019",
+    "pasp": "49",
+    "eur": "13.40"
+   },
+   {
+    "d": "2026-09-22",
+    "k": "petshop",
+    "par": "126",
+    "pasp": "13",
+    "eur": "2.31"
+   },
+   {
+    "d": "2026-09-23",
+    "k": "P-max | LT | petshop.lt",
+    "par": "441",
+    "pasp": "42",
+    "eur": "13.33"
+   },
+   {
+    "d": "2026-09-23",
+    "k": "P-max | LT | Prekės (MC)",
+    "par": "2026",
+    "pasp": "4",
+    "eur": "0.46"
+   },
+   {
+    "d": "2026-09-23",
+    "k": "P-max| All LT | Kačių maista",
+    "par": "854",
+    "pasp": "68",
+    "eur": "28.62"
+   },
+   {
+    "d": "2026-09-23",
+    "k": "petshop",
+    "par": "133",
+    "pasp": "14",
+    "eur": "2.40"
+   },
+   {
+    "d": "2026-09-24",
+    "k": "P-max | LT | petshop.lt",
+    "par": "455",
+    "pasp": "22",
+    "eur": "5.71"
+   },
+   {
+    "d": "2026-09-24",
+    "k": "P-max| All LT | Kačių maista",
+    "par": "1075",
+    "pasp": "67",
+    "eur": "17.02"
+   },
+   {
+    "d": "2026-09-24",
+    "k": "petshop",
+    "par": "175",
+    "pasp": "21",
+    "eur": "4.03"
+   }
+  ],
+  "reklama_cols": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ],
+  "wc_d": [
+   {
+    "d": "2026-09-18",
+    "n": "7",
+    "eur": "246",
+    "kontr": "62",
+    "nauji": "6",
+    "g_n": "4",
+    "g_eur": "78",
+    "g_kontr": "24",
+    "g_nauji": "4",
+    "k_n": "3"
+   },
+   {
+    "d": "2026-09-19",
+    "n": "10",
+    "eur": "301",
+    "kontr": "81",
+    "nauji": "5",
+    "g_n": "6",
+    "g_eur": "173",
+    "g_kontr": "46",
+    "g_nauji": "3",
+    "k_n": "3"
+   },
+   {
+    "d": "2026-09-20",
+    "n": "9",
+    "eur": "355",
+    "kontr": "82",
+    "nauji": "3",
+    "g_n": "6",
+    "g_eur": "265",
+    "g_kontr": "62",
+    "g_nauji": "2",
+    "k_n": "1"
+   },
+   {
+    "d": "2026-09-21",
+    "n": "9",
+    "eur": "405",
+    "kontr": "77",
+    "nauji": "3",
+    "g_n": "3",
+    "g_eur": "170",
+    "g_kontr": "31",
+    "g_nauji": "0",
+    "k_n": "0"
+   },
+   {
+    "d": "2026-09-22",
+    "n": "7",
+    "eur": "342",
+    "kontr": "94",
+    "nauji": "3",
+    "g_n": "5",
+    "g_eur": "264",
+    "g_kontr": "76",
+    "g_nauji": "1",
+    "k_n": "1"
+   },
+   {
+    "d": "2026-09-23",
+    "n": "11",
+    "eur": "522",
+    "kontr": "112",
+    "nauji": "7",
+    "g_n": "7",
+    "g_eur": "344",
+    "g_kontr": "81",
+    "g_nauji": "4",
+    "k_n": "2"
+   },
+   {
+    "d": "2026-09-24",
+    "n": "8",
+    "eur": "383",
+    "kontr": "95",
+    "nauji": "3",
+    "g_n": "4",
+    "g_eur": "187",
+    "g_kontr": "48",
+    "g_nauji": "1",
+    "k_n": "2"
+   },
+   {
+    "d": "2026-09-25",
+    "n": "1",
+    "eur": "16",
+    "kontr": "5",
+    "nauji": "1",
+    "g_n": "1",
+    "g_eur": "16",
+    "g_kontr": "5",
+    "g_nauji": "1",
+    "k_n": "0"
+   }
+  ],
+  "wc_kamp": [
+   {
+    "d": "2026-09-22",
+    "k": "23346712074",
+    "n": "3",
+    "eur": "108",
+    "kontr": "27",
+    "nauji": "0"
+   },
+   {
+    "d": "2026-09-22",
+    "k": "gclid_be_utm",
+    "n": "2",
+    "eur": "156",
+    "kontr": "49",
+    "nauji": "1"
+   },
+   {
+    "d": "2026-09-23",
+    "k": "23346712074",
+    "n": "1",
+    "eur": "97",
+    "kontr": "16",
+    "nauji": "0"
+   },
+   {
+    "d": "2026-09-23",
+    "k": "gclid_be_utm",
+    "n": "6",
+    "eur": "247",
+    "kontr": "66",
+    "nauji": "4"
+   },
+   {
+    "d": "2026-09-24",
+    "k": "gclid_be_utm",
+    "n": "4",
+    "eur": "187",
+    "kontr": "48",
+    "nauji": "1"
+   },
+   {
+    "d": "2026-09-25",
+    "k": "21472017542",
+    "n": "1",
+    "eur": "16",
+    "kontr": "5",
+    "nauji": "1"
+   }
+  ],
+  "uzs": [
+   [
+    "1167",
+    36280,
+    "09-24 06:14",
+    "completed",
+    41.34,
+    "paysera",
+    "shopup_venipak_shipping_pickup_method:3=0",
+    12,
+    "direct|||gc0|n0|k12.4"
+   ],
+   [
+    "1168",
+    36281,
+    "09-24 06:32",
+    "completed",
+    33.94,
+    "paysera",
+    "shopup_venipak_shipping_pickup_method:3=0",
+    14,
+    "mokamas|||gc1|n0|k7.9"
+   ],
+   [
+    "1169",
+    36282,
+    "09-24 09:25",
+    "completed",
+    30.6,
+    "paysera",
+    "shopup_venipak_shipping_pickup_method:3=0",
+    12,
+    "mokamas|||gc1|n0|k6.8"
+   ],
+   [
+    "1170",
+    36285,
+    "09-24 12:29",
+    "processing",
+    36.34,
+    "paysera",
+    "shopup_venipak_shipping_pickup_method:3=0",
+    5,
+    "mokamas|||gc1|n0|k11.7"
+   ],
+   [
+    "1171",
+    36286,
+    "09-24 12:44",
+    "processing",
+    46.19,
+    "paysera",
+    "shopup_venipak_shipping_pickup_method:3=0",
+    1,
+    "mokamas|kaina24||gc0|n0|k5.9"
+   ],
+   [
+    "1172",
+    36287,
+    "09-24 13:45",
+    "cancelled",
+    16.64,
+    "paysera",
+    "shopup_venipak_shipping_pickup_method:3=2.15",
+    1,
+    "-|||gc|n|k"
+   ],
+   [
+    "1173",
+    36288,
+    "09-24 14:20",
+    "processing",
+    85.97,
+    "paysera",
+    "shopup_venipak_shipping_courier_method:2=3.99",
+    2,
+    "mokamas|||gc1|n1|k21.9"
+   ],
+   [
+    "1174",
+    36289,
+    "09-24 14:51",
+    "cancelled",
+    34.63,
+    "paysera",
+    "shopup_venipak_shipping_pickup_method:3=0",
+    13,
+    "-|||gc|n|k"
+   ],
+   [
+    "1175",
+    36290,
+    "09-24 14:52",
+    "cancelled",
+    34.63,
+    "paysera",
+    "shopup_venipak_shipping_pickup_method:3=0",
+    13,
+    "-|||gc|n|k"
+   ],
+   [
+    "1176",
+    36291,
+    "09-24 14:53",
+    "processing",
+    30.18,
+    "paysera",
+    "shopup_venipak_shipping_pickup_method:3=0",
+    12,
+    "referral|chatgpt.com||gc0|n1|k5.9"
+   ],
+   [
+    "1177",
+    36296,
+    "09-24 17:59",
+    "processing",
+    78.12,
+    "paysera",
+    "shopup_venipak_shipping_courier_method:2=3.99",
+    6,
+    "mokamas|kaina24||gc0|n1|k22.7"
+   ],
+   [
+    "1178",
+    36298,
+    "09-25 08:46",
+    "processing",
+    15.64,
+    "paysera",
+    "shopup_venipak_shipping_pickup_method:3=2.15",
+    1,
+    "mokamas|google|21472017542|gc1|n1|k4.9"
+   ]
+  ],
+  "atviri": [
+   [
+    "1170",
+    36285,
+    "09-24 12:29",
+    "processing",
+    "paysera",
+    36.34
+   ],
+   [
+    "1171",
+    36286,
+    "09-24 12:44",
+    "processing",
+    "paysera",
+    46.19
+   ],
+   [
+    "1173",
+    36288,
+    "09-24 14:20",
+    "processing",
+    "paysera",
+    85.97
+   ],
+   [
+    "1176",
+    36291,
+    "09-24 14:53",
+    "processing",
+    "paysera",
+    30.18
+   ],
+   [
+    "1177",
+    36296,
+    "09-24 17:59",
+    "processing",
+    "paysera",
+    78.12
+   ],
+   [
+    "1178",
+    36298,
+    "09-25 08:46",
+    "processing",
+    "paysera",
+    15.64
+   ]
+  ],
+  "rytas_pask": {
+   "zalios": 12,
+   "viso": 13
+  },
+  "sargo_klaidos": [
+   {
+    "id": "4859",
+    "laikas": "2026-09-25 09:41:45",
+    "lygis": "deprecated",
+    "parasas": "c2f94d93c844e0c3956cd3e28c50645e",
+    "zinute": "Return type of NAWebCo\\BoxPacker\\Solid::jsonSerialize() should either be compatible with JsonSerializable::jsonSerialize(): mixed, or the #[\\ReturnTypeWillChang…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/Solid.php",
+    "eilute": "53",
+    "url": "/?ps_n4=GO",
+    "kiek": "41198"
+   },
+   {
+    "id": "4858",
+    "laikas": "2026-09-25 09:41:45",
+    "lygis": "deprecated",
+    "parasas": "5dad639e69d1b774ec9e97fafdfa08ae",
+    "zinute": "Return type of NAWebCo\\BoxPacker\\Container::jsonSerialize() should either be compatible with JsonSerializable::jsonSerialize(): mixed, or the #[\\ReturnTypeWillC…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/Container.php",
+    "eilute": "259",
+    "url": "/?ps_n4=GO",
+    "kiek": "41198"
+   },
+   {
+    "id": "4857",
+    "laikas": "2026-09-25 09:41:45",
+    "lygis": "deprecated",
+    "parasas": "e7c19658159524ad4e3151240189f5dc",
+    "zinute": "Return type of NAWebCo\\BoxPacker\\GenericPackable::jsonSerialize() should either be compatible with JsonSerializable::jsonSerialize(): mixed, or the #[\\ReturnTyp…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/vendor/nawebco/box-packer/src/GenericPackable.php",
+    "eilute": "49",
+    "url": "/?ps_n4=GO",
+    "kiek": "41198"
+   },
+   {
+    "id": "4024",
+    "laikas": "2026-09-25 09:41:20",
+    "lygis": "deprecated",
+    "parasas": "b8134211401a082b2ab03cd682e13e5b",
+    "zinute": "str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php",
+    "eilute": "2196",
+    "url": "/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "kiek": "16384"
+   },
+   {
+    "id": "4023",
+    "laikas": "2026-09-25 09:41:20",
+    "lygis": "deprecated",
+    "parasas": "1a73efb667af0a27ef119e7873f3ea58",
+    "zinute": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php",
+    "eilute": "7374",
+    "url": "/wp-admin/admin.php?page=ps-desk&eile=klausimai",
+    "kiek": "16384"
+   },
+   {
+    "id": "9146",
+    "laikas": "2026-09-25 09:33:56",
+    "lygis": "warning",
+    "parasas": "b2751091812f9edb190f8e739cf55617",
+    "zinute": "Undefined array key 2",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php",
+    "eilute": "1841",
+    "url": "/",
+    "kiek": "1"
+   },
+   {
+    "id": "8329",
+    "laikas": "2026-09-25 09:23:58",
+    "lygis": "notice",
+    "parasas": "89c632dd2d4d86624135d105120fabb7",
+    "zinute": "Only variables should be passed by reference",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+    "eilute": "457",
+    "url": "/wp-admin/admin-post.php?action=ps_desk_veiksmas&v=vp_reg&id=36092&g=https%3A%2F%2Fpetshop.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26eile%3Dlaiskai%26atidary…",
+    "kiek": "61"
+   },
+   {
+    "id": "8328",
+    "laikas": "2026-09-25 09:23:58",
+    "lygis": "notice",
+    "parasas": "ab229ef9b7aad554d0b2a17e40b16d0f",
+    "zinute": "Only variables should be passed by reference",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php",
+    "eilute": "283",
+    "url": "/wp-admin/admin-post.php?action=ps_desk_veiksmas&v=vp_reg&id=36092&g=https%3A%2F%2Fpetshop.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26eile%3Dlaiskai%26atidary…",
+    "kiek": "61"
+   },
+   {
+    "id": "9145",
+    "laikas": "2026-09-25 09:19:03",
+    "lygis": "warning",
+    "parasas": "f875ae3dff353e713ef34ebffc1689d1",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/8in1-flavours-l-trigubo-skonio-kaulas-dideliu-veisliu-sunims-…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "2"
+   },
+   {
+    "id": "9144",
+    "laikas": "2026-09-25 09:19:03",
+    "lygis": "warning",
+    "parasas": "0cb1da2018e989a9c7d3b0542fb3ab9e",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/8in1-flavours-m-trigubo-skonio-kaulas-vidutiniu-veisliu-sunim…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "2"
+   },
+   {
+    "id": "9143",
+    "laikas": "2026-09-25 09:19:03",
+    "lygis": "warning",
+    "parasas": "ce92c15e7d51f321d949492403b17113",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/natures-miracle-demiu-ir-kvapu-valymo-priemone-ultimate-so-ka…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "2"
+   },
+   {
+    "id": "9142",
+    "laikas": "2026-09-25 09:19:03",
+    "lygis": "warning",
+    "parasas": "9e6962135a1cd4ee6d89b6707bc4f941",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/natures-miracle-demiu-ir-kvapu-valymo-priemone-ultimate-so-su…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "2"
+   },
+   {
+    "id": "9141",
+    "laikas": "2026-09-25 09:19:03",
+    "lygis": "warning",
+    "parasas": "3147ee2fc92c2b754602ca159ab8506a",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/natures-miracle-sunu-slapimo-valymo-priemone-urine-so946-ml/)…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "2"
+   },
+   {
+    "id": "9140",
+    "laikas": "2026-09-25 09:19:03",
+    "lygis": "warning",
+    "parasas": "d54e1226f9fa28abbe6274a1b0d88673",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/natures-miracle-demiu-ir-kvapu-valymo-priemone-so-katems-meli…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "2"
+   },
+   {
+    "id": "8887",
+    "laikas": "2026-09-25 09:19:03",
+    "lygis": "warning",
+    "parasas": "715d35ef2deb67027c2e957c2eb715e6",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/8in1-flavours-trigubo-skonio-skanestas-sunims-mega-skewers-16…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "4"
+   },
+   {
+    "id": "8885",
+    "laikas": "2026-09-25 09:19:03",
+    "lygis": "warning",
+    "parasas": "2a4f821c4b144ec0b650bd47fb6e4b3a",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/natures-miracle-demiu-ir-kvapu-valymo-priemone-set-in-oxy-so-…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "4"
+   },
+   {
+    "id": "8569",
+    "laikas": "2026-09-25 09:19:03",
+    "lygis": "warning",
+    "parasas": "721d2b7879ae572f7a3c6734b3509efe",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/natures-miracle-demiu-ir-kvapu-valymo-priemone-so-katems709ml…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "14"
+   },
+   {
+    "id": "8512",
+    "laikas": "2026-09-25 09:19:03",
+    "lygis": "warning",
+    "parasas": "5b880f7ebddc452250735c121dcae766",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/8in1-flavours-trigubo-skonio-sparneliai-sunims-6-vnt/): No su…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "11"
+   },
+   {
+    "id": "9139",
+    "laikas": "2026-09-25 09:17:04",
+    "lygis": "warning",
+    "parasas": "e1e348dfbcc2b9da516b0fcdccc60d0f",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/natures-miracle-demiu-ir-kvapu-valymo-priemone-so-sunims-709m…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "2"
+   },
+   {
+    "id": "9138",
+    "laikas": "2026-09-25 09:17:04",
+    "lygis": "warning",
+    "parasas": "e395207b9367c186b95c0031302af2cd",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/691756-furminator-deshedding-sampunas-sunims-473-ml/): No suc…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "2"
+   },
+   {
+    "id": "9137",
+    "laikas": "2026-09-25 09:17:04",
+    "lygis": "warning",
+    "parasas": "6a268ba79c79eea5999183b3ab7d7a6b",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/691758-furminator-sensitive-skin-kondicionierius-sunims-473ml…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "2"
+   },
+   {
+    "id": "9136",
+    "laikas": "2026-09-25 09:17:04",
+    "lygis": "warning",
+    "parasas": "b08be6c252a8c0ffd87efce6f99d6138",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/furminator-deshedding-sukos-trumpaplakiams-sunims-m/): No suc…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "2"
+   },
+   {
+    "id": "9135",
+    "laikas": "2026-09-25 09:17:04",
+    "lygis": "warning",
+    "parasas": "cf8c6d9d34ab3f8fa820a68b29dcf652",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/furminator-deshedding-sukos-trumpaplaukems-katems-m-l/): No s…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "2"
+   },
+   {
+    "id": "9134",
+    "laikas": "2026-09-25 09:17:04",
+    "lygis": "warning",
+    "parasas": "9d113e7e8002596271ef53ad472e0438",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/furminator-deshedding-sukos-trumpaplakems-katems-s/): No such…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "2"
+   },
+   {
+    "id": "9133",
+    "laikas": "2026-09-25 09:17:04",
+    "lygis": "warning",
+    "parasas": "4051b38ac6dfda687c48a403da2e0d40",
+    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/8in1-flavours-trigubo-skonio-apsuktos-lazdeles-sunims-113-g/)…",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
+    "eilute": "3624",
+    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "kiek": "2"
+   }
+  ],
+  "av_manifestas_log": [
+   {
+    "l": "2026-09-23 22:03:26",
+    "k": "xml",
+    "s": "07267260923001",
+    "n": "07267260924001"
+   },
+   {
+    "l": "2026-09-23 22:03:25",
+    "k": "uzs#36146",
+    "s": "07267260923001",
+    "n": "07267260924001"
+   },
+   {
+    "l": "2026-09-23 22:03:25",
+    "k": "uzs#36146",
+    "s": "07267260923001",
+    "n": "07267260924001"
+   }
+  ],
+  "email_cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "email_48h": [
+   {
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "1"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "4"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "2"
+   },
+   {
+    "flow": "consent_changed",
+    "status": "sent",
+    "sr": "",
+    "n": "2"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "sr": "",
+    "n": "114"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "sr": "",
+    "n": "29"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "sr": "",
+    "n": "42"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "sr": "",
+    "n": "17"
+   }
+  ],
+  "smtp_debug_n": 0,
+  "smtp_debug_pask": [],
+  "log": {
+   "kelias": "/home/gyvunai2/domains/petshop.lt/logs/php_error.log",
+   "kb": 627,
+   "nuo_0924_tipai": {
+    "Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron ": [
+     431,
+     "09-25 09:41"
+    ],
+    "PHP Fatal error:  Uncaught TypeError: strstr(): Argument #N ($haystack) must be of type string, WP_Error given in /home/gyvunaiN/domains/petshop.lt/pu": [
+     44,
+     "09-24 22:25"
+    ],
+    "WordPress database error Unknown column 'active' in 'field list' for query SELECT source, stock_qty, active, cost_net, updated_at FROM gajN_ps_sources": [
+     10,
+     "09-24 22:49"
+    ],
+    "Užsakymas patvirtintas: užsakymas N, suma: N.NEUR": [
+     9,
+     "09-25 08:48"
+    ],
+    "PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/gyvunaiN/domains/petshop.lt/public_html/wp-content/p": [
+     8,
+     "09-24 19:47"
+    ],
+    "WordPress database error Unknown column 'u.order_id' in 'on clause' for query SELECT CASE WHEN (u.gclid<>'' OR u.utm_campaign REGEXP '^[N-N]+$' OR u.u": [
+     3,
+     "09-24 09:46"
+    ],
+    "WordPress database error Unknown column 'ivyko' in 'field list' for query INSERT INTO `gajN_ps_sargas_klaidos` (`ivyko`, `tipas`, `zinute`) VALUES ('N": [
+     3,
+     "09-24 15:42"
+    ],
+    "WordPress database error Duplicate entry 'N-N-N-puslapis-/kategorija/sunims/maistas-sunims/?utm_so...' for key 'vienas' for query INSERT INTO `gajN_ps": [
+     3,
+     "09-25 03:10"
+    ],
+    "PHP Warning:  Array to string conversion in /home/gyvunaiN/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line N": [
+     2,
+     "09-25 06:31"
+    ],
+    "Cron įvykio perplanavimo klaida kabliui: action_scheduler_run_queue, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių ": [
+     2,
+     "09-24 22:12"
+    ],
+    "Cron įvykio atšaukimo klaida kabliui: ps_atsaukto_krepselio_priminimas, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvyk": [
+     2,
+     "09-24 14:28"
+    ],
+    "WordPress database error Duplicate entry 'N-N-N-puslapis-/product/exclusion-hypoallergenic-mazu-ve...' for key 'vienas' for query INSERT INTO `gajN_ps": [
+     2,
+     "09-25 03:10"
+    ]
+   },
+   "siandien_eil": 205,
+   "fatal_nuo_0924": 44
+  },
+  "zb_su_matmenimis": 0,
+  "zb_log_mtime": "09-25 09:18",
+  "supercache": {
+   "petshop.lt": 28
+  },
+  "wp_cache": true,
+  "laikas": "2026-09-25 09:41:47"
+ },
+ "v": "dep-064043",
+ "kurimas": 200,
+ "sid": 6372,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
