@@ -26,12 +26,12 @@ Testas (`d2.php` 2, 34 frazės): hills 0 (alt ✓), hill's kitten 0→69 su past
 ## 3. Matavimas
 Nulinių dalis 10 % → **< 8 %** (`reiksme='0'` / `tipas='search'` nuo 09-25 21:00). Po savaitės (≈10-02) peržiūrėti naujas nulines frazes → papildyti `SINONIMAI`/`VERTIMAI`/`ALTERNATYVOS`. Stebėti: ar po pastabos „rodome pagal …“ klientai eina toliau (pageview/atc po search).
 
-## 4. Laukia Raimio
-- **A.** Paslėptų dropship prekių blokas nulinių puslapyje — įjungti? (`update_option('ps_paieska_pasleptos',1)`).
-- **B.** Telefonas kontakte — numeris arba paliekam el. paštą + formą.
-- **C.** #18054 Josera Leger 10 kg publikuoti (WP admin, „Rankos vartai“ — tik žmogus); dovanų kuponas — ar reikia (dabar „kol kas neparduodame“).
-- Tekstų peržiūra gyvai: `/?s=hills`, `/?s=hill's+kitten`, `/?s=bravecto`, `/?s=exclusion+pork+and+peas` (+`&post_type=product`).
-- Mobili paieškos ikona antraštėje (Flatsome header) — R sprendimas (S1712).
+## 4. Raimio sprendimai (21:10)
+- Tekstai gyvai — **tinka**.
+- **A.** Paslėptos dropship prekės nulinių puslapyje — **ne, paliekam paslėptas** (opcija `ps_paieska_pasleptos` lieka 0; blokas kode lieka).
+- **B.** Telefonas — **+370 681 87787** (tas pats kaip darbalaukyje/schemoje/LP) → opcija `ps_paieska_kontaktas_tel` (`s1720/e.php` 2); nulinio puslapio kontaktas: el. paštas arba telefonas arba kontaktų forma ✓.
+- **C.** #18054 Josera Leger 10 kg — **jau publikuota** (patikrinta: `publish`); klausimas uždarytas, nebekartoti. Dovanų kuponas — tekstas „kol kas neparduodame“ lieka.
+- Liko: mobili paieškos ikona antraštėje (Flatsome header) — R sprendimas (S1712), neskubu.
 
 ## 5. Įrankiai
-VM `ps-bridge/s1720/`: a (recon: kodas, nulinės, paslėptos, šablonas), b (nulinės per `raktas`, dropship-matomumas kodas, EN/LT žodžių dažnis), c (Flatsome live-search kodas, prekių egzistavimas, paslėptos pagal brendą/kategoriją), d/d2 (deploy 1/2/3/9), `petshop-paieska-v1.1.1.php`, `petshop-paieska-v1_1b.php.txt` (DATA). Repo `irankiai/s1720_a–d2.php`, `deploy/petshop-paieska-v1.1.1.php`, `deploy/petshop-paieska-v1_1b.php.txt`. Pamokos: `ps_web_ivykiai` paieškos frazė — stulpelis `raktas` (ne `tekstas`); TEMP snippet'e raktas `t` konfliktuoja su laiko lauku — nenaudoti; VM bridge ryšys gali nutrūkti laukiant („server draining“) — `brw_c.sh` tęsia iš `rid`/`out`; `device_commit_files` tuo pačiu keliu antrą kartą — naujas failo vardas (v1_1b).
+VM `ps-bridge/s1720/`: a (recon: kodas, nulinės, paslėptos, šablonas), b (nulinės per `raktas`, dropship-matomumas kodas, EN/LT žodžių dažnis), c (Flatsome live-search kodas, prekių egzistavimas, paslėptos pagal brendą/kategoriją), d/d2 (deploy 1/2/3/9), e (telefonas 1/2), `petshop-paieska-v1.1.1.php`, `petshop-paieska-v1_1b.php.txt` (DATA). Repo `irankiai/s1720_a–d2.php`, `deploy/petshop-paieska-v1.1.1.php`, `deploy/petshop-paieska-v1_1b.php.txt`. Pamokos: `ps_web_ivykiai` paieškos frazė — stulpelis `raktas` (ne `tekstas`); TEMP snippet'e raktas `t` konfliktuoja su laiko lauku — nenaudoti; VM bridge ryšys gali nutrūkti laukiant („server draining“) — `brw_c.sh` tęsia iš `rid`/`out`; `device_commit_files` tuo pačiu keliu antrą kartą — naujas failo vardas (v1_1b).
