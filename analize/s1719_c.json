@@ -1,0 +1,446 @@
+{
+ "v": "dep-141613",
+ "kurimas": 200,
+ "sid": 6451,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "h": {
+  "v": "S1719c",
+  "faze": "h",
+  "t": "2026-09-25 14:17:22",
+  "avpn_dubl": [
+   {
+    "avpn": "AVPN011015",
+    "id": "35901",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-11 06:10:26",
+    "total_amount": "19.15000000",
+    "nr": "1015"
+   },
+   {
+    "avpn": "AVPN011017",
+    "id": "35903",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-11 09:14:31",
+    "total_amount": "56.99000000",
+    "nr": "1017"
+   },
+   {
+    "avpn": "AVPN011105",
+    "id": "36020",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-18 06:38:32",
+    "total_amount": "13.66000000",
+    "nr": "1102"
+   },
+   {
+    "avpn": "AVPN011105",
+    "id": "36112",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-21 11:40:39",
+    "total_amount": "60.35000000",
+    "nr": "1136"
+   },
+   {
+    "avpn": "AVPN011105",
+    "id": "36118",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-21 18:11:53",
+    "total_amount": "44.15000000",
+    "nr": "1141"
+   },
+   {
+    "avpn": "AVPN011105",
+    "id": "36141",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-22 04:48:46",
+    "total_amount": "137.90000000",
+    "nr": "1143"
+   },
+   {
+    "avpn": "AVPN011105",
+    "id": "36144",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-22 07:00:43",
+    "total_amount": "18.37000000",
+    "nr": "1145"
+   },
+   {
+    "avpn": "AVPN011107",
+    "id": "36020",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-18 06:38:32",
+    "total_amount": "13.66000000",
+    "nr": "1102"
+   },
+   {
+    "avpn": "AVPN011109",
+    "id": "36116",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-21 15:14:36",
+    "total_amount": "56.99000000",
+    "nr": "1139"
+   },
+   {
+    "avpn": "AVPN011134",
+    "id": "36279",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-23 19:51:53",
+    "total_amount": "50.26000000",
+    "nr": "1166"
+   },
+   {
+    "avpn": "AVPN011134",
+    "id": "36281",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-24 03:32:14",
+    "total_amount": "33.94000000",
+    "nr": "1168"
+   }
+  ],
+  "avpn_notes_11105": [],
+  "av_be_stock_manage": [
+   {
+    "manage": "no",
+    "n": "76",
+    "src_vnt": "692"
+   }
+  ],
+  "ean_vs_gtin_pvz": [
+   {
+    "ID": "15072",
+    "t": "Žaislas šuniui - Pliušinis šuniukas",
+    "ean": "8712695195702",
+    "gtin": "5901436100263"
+   },
+   {
+    "ID": "15474",
+    "t": "Žaislas katei - Prisukama pelytė, 7",
+    "ean": "4011905040929",
+    "gtin": "5904760213357"
+   },
+   {
+    "ID": "15524",
+    "t": "Žaislas katei - Linksmas vasarojant",
+    "ean": "4011905411194",
+    "gtin": "5904760213357"
+   },
+   {
+    "ID": "17241",
+    "t": "Ontario Monoproteino konservai šuni",
+    "ean": "8595681860040",
+    "gtin": "8595681860057"
+   },
+   {
+    "ID": "17245",
+    "t": "Ontario Monoproteino konservai šuni",
+    "ean": "8595681859990",
+    "gtin": "8595681860057"
+   },
+   {
+    "ID": "17572",
+    "t": "Lėto valgymo dubenėlis - Cactus, 32",
+    "ean": "80 16040 10120 3",
+    "gtin": "8016040101203"
+   }
+  ],
+  "ean_vs_gtin_tipai": [
+   {
+    "gtin_skaitinis": "946",
+    "ean_skaitinis": "938",
+    "gtin_trumpas": "0",
+    "n": "946"
+   }
+  ],
+  "gtin_kodas": {
+   "plugins/petshop-feeds/petshop-feeds.php": [
+    "*     2. EAN. Buvo imamas is _zb_ean/_ean; dabar is kanoninio",
+    "*        _global_unique_id (sutvarkytas 2026-08-17, GTIN-13).",
+    "'gtin'        => (string) get_post_meta( $id, '_global_unique_id', true ),",
+    "$x .= '      <g:gtin>' . esc_html( $p['gtin'] ) . '</g:gtin>' . \"\\n\";"
+   ],
+   "plugins/petshop-xml/petshop-xml.php": [
+    "ow_minimum', 'excluded_brand', 'qty_zero_on_new', 'duplicate_ean', 'konservas_below_minimum' ];",
+    "$ean   = (string) get_post_meta( $post_id, '_zb_ean', true )",
+    "?: (string) get_post_meta( $post_id, '_global_unique_id', true );",
+    "$zb_ean    = (string) get_post_meta( $post_id, '_zb_ean', true );",
+    "if ( $zb_ean ) {",
+    "$existing_id = $ean_db->find_by_ean( $zb_ean, $post_id );",
+    "'ean'         => $zb_ean,",
+    "ate_zb_fields( $existing_id, $zb_cost, $zb_qty, $zb_sku, $zb_ean );"
+   ]
+  },
+  "tls_chain": [
+   "petshop.lt <- YR1",
+   "YR1 <- Root YR",
+   "Root YR <- ISRG Root X1"
+  ],
+  "tls_verify_from_server": 200,
+  "tls_verify_home": 200,
+  "cainfo": [
+   "",
+   "",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/certificates/ca-bundle.crt",
+   true
+  ],
+  "snip614_session": [
+   "*     JS push'as dingsta su navigacija. Sprendimas: WC session queue + flush kitame page load.",
+   "* 2b. add_to_cart — WC session queue (NE-AJAX atvejis)",
+   "if ( ! function_exists( 'WC' ) || ! WC()->session ) { return; }",
+   "$queue   = WC()->session->get( 'petshop_gtm_atc_queue', array() );",
+   "WC()->session->set( 'petshop_gtm_atc_queue', $queue );",
+   "if ( ! function_exists( 'WC' ) || ! WC()->session ) { return; }",
+   "$queue = WC()->session->get( 'petshop_gtm_atc_queue', array() );",
+   "WC()->session->set( 'petshop_gtm_atc_queue', array() );"
+  ],
+  "sessions_su_krepseliu": [
+   {
+    "n": "15013",
+    "su_prekem": "12806",
+    "gtm": "12840",
+    "gtm_tuscia": "9170"
+   }
+  ],
+  "sargas_strstr": [
+   {
+    "url": "/kategorija/katems/?yith_wcan=1&product_cat=tualetai-kraikai-semtuveliai,kraikai-kaciu-tualetams&query_type_product_cat=or&query_type_tipas=or&filter_tipas=atviras",
+    "kiek": "70",
+    "laikas": "2026-09-24 22:25:28",
+    "z": "Uncaught TypeError: strstr(): Argument #1 ($haystack) must b"
+   },
+   {
+    "url": "/kategorija/katems?yith_wcan=1&product_cat=tualetai-kraikai-semtuveliai,kraikai-kaciu-tualetams&query_type_product_cat=or&query_type_tipas=or&filter_tipas=semtuvelis",
+    "kiek": "14",
+    "laikas": "2026-09-21 19:34:02",
+    "z": "Uncaught TypeError: strstr(): Argument #1 ($haystack) must b"
+   }
+  ],
+  "sargas_lygiai_7d": [
+   {
+    "lygis": "deprecated",
+    "n": "11",
+    "kiek": "166424"
+   },
+   {
+    "lygis": "fatal",
+    "n": "8",
+    "kiek": "99"
+   },
+   {
+    "lygis": "notice",
+    "n": "2",
+    "kiek": "128"
+   },
+   {
+    "lygis": "warning",
+    "n": "2537",
+    "kiek": "172461"
+   }
+  ],
+  "sargas_fatal_urls": [
+   {
+    "url": "/?ps_s1718f4=1",
+    "z": "Uncaught Error: Call to undefined function shell_exec() in /home/gyvun",
+    "kiek": "2",
+    "laikas": "2026-09-25 16:18:44"
+   },
+   {
+    "url": "/kategorija/katems/?yith_wcan=1&product_cat=tualetai-kraikai-semtuveliai,kraikai-kaciu-tualetams&query_type_product_cat=or&query_type_tipas=or&filter_tipas=atviras",
+    "z": "Uncaught TypeError: strstr(): Argument #1 ($haystack) must be of type ",
+    "kiek": "70",
+    "laikas": "2026-09-24 22:25:28"
+   },
+   {
+    "url": "/?ps_s1706m=GO",
+    "z": "Uncaught TypeError: array_slice(): Argument #1 ($array) must be of typ",
+    "kiek": "1",
+    "laikas": "2026-09-23 16:39:48"
+   },
+   {
+    "url": "/?ps_s1706m=GO",
+    "z": "Uncaught TypeError: preg_match(): Argument #2 ($subject) must be of ty",
+    "kiek": "1",
+    "laikas": "2026-09-23 15:50:03"
+   },
+   {
+    "url": "/?ps_s1705m=1",
+    "z": "Uncaught TypeError: array_slice(): Argument #1 ($array) must be of typ",
+    "kiek": "1",
+    "laikas": "2026-09-23 13:32:10"
+   },
+   {
+    "url": "/kategorija/katems?yith_wcan=1&product_cat=tualetai-kraikai-semtuveliai,kraikai-kaciu-tualetams&query_type_product_cat=or&query_type_tipas=or&filter_tipas=semtuvelis",
+    "z": "Uncaught TypeError: strstr(): Argument #1 ($haystack) must be of type ",
+    "kiek": "14",
+    "laikas": "2026-09-21 19:34:02"
+   },
+   {
+    "url": "/?ps_s1694g=1",
+    "z": "Uncaught UnexpectedValueException: RecursiveDirectoryIterator::__const",
+    "kiek": "1",
+    "laikas": "2026-09-19 22:57:02"
+   },
+   {
+    "url": "/",
+    "z": "Uncaught Error: Call to undefined method WP_Error::get_matched_route()",
+    "kiek": "9",
+    "laikas": "2026-09-19 18:14:19"
+   }
+  ],
+  "login_sargas": [],
+  "login_tr": [
+   {
+    "n": "0"
+   }
+  ],
+  "http": {
+   "https://petshop.lt/wp-content/uploads/ps-backups/petshop-vertimai-v11-BACKUP-2026-09-08.php": "403 text/html 403B 403 Forbidden403You don’t have permission to vie",
+   "https://petshop.lt/wp-content/uploads/ps-lipdukai/lipdukas-V07267E1000043.pdf": "200 application/pdf 102249B %PDF-1.3 %���� 11 0 obj /Annots [ 10 0 R ] /PZ 1 >",
+   "https://petshop.lt/wp-content/uploads/wpallimport/files/vf-feed.xml": "200 text/xml B  2247910039Antos skanėstas šunims jaučių trach",
+   "https://petshop.lt/wp-content/uploads/wpallimport/files/goods_clean.xml": "200 text/xml B  01A1B01030 8710255120072 Šunų maistas,Prekės �",
+   "https://petshop.lt/wp-content/uploads/petshop-legacy/": "403 text/html 403B 403 Forbidden403You don’t have permission to vie",
+   "https://petshop.lt/wp-content/uploads/wpallimport/logs/": "200 text/html B ",
+   "https://petshop.lt/wp-content/petshop-private-logs/attr-engine.log": "200 text/plain 820B [2026-06-19 10:58:02] SKIP: engine isjungtas (prod"
+  },
+  "wpai3": {
+   "update_all_data": "no",
+   "is_update_status": "0",
+   "is_update_content": "0",
+   "is_update_title": "0",
+   "is_update_excerpt": "0",
+   "is_update_images": "0",
+   "is_update_custom_fields": "1",
+   "is_update_categories": "0",
+   "is_update_attributes": "0",
+   "is_update_dates": "0",
+   "is_update_menu_order": "0",
+   "is_update_parent": "0",
+   "create_new_records": "0",
+   "is_delete_missing": "0",
+   "is_selective_hashing": "0",
+   "records_per_request": "20",
+   "is_scheduled": "",
+   "scheduling_enable": "2",
+   "update_custom_fields_logic": "only",
+   "update_images_logic": "full_update",
+   "update_categories_logic": "full_update",
+   "is_update_slug": "0",
+   "is_update_author": "0",
+   "is_update_comment_status": "0",
+   "is_fast_mode": "0",
+   "do_not_remove_images": "1",
+   "is_update_product_type": "0"
+  },
+  "wpai3_custom_fields": [
+   "_zb_qty"
+  ],
+  "wpai3_product_fields": {
+   "duplicate_matching": "manual",
+   "duplicate_indicator": "custom field",
+   "custom_duplicate_name": "_sku",
+   "custom_duplicate_value": "{code[1]}",
+   "single_product_sku": "{code[1]}",
+   "single_product_regular_price": "",
+   "single_product_sale_price": "",
+   "single_product_stock_qty": "{qty[1]}",
+   "single_product_stock_status": ""
+  },
+  "wpai7": {
+   "update_all_data": "no",
+   "is_selective_hashing": "1",
+   "records_per_request": "20",
+   "is_update_images": "0",
+   "is_update_custom_fields": "1",
+   "create_new_records": "0",
+   "is_delete_missing": "0"
+  },
+  "valymo_kodas": [],
+  "carts_dienos": [
+   {
+    "d": "2026-09-21",
+    "n": "12"
+   },
+   {
+    "d": "2026-09-22",
+    "n": "11402"
+   },
+   {
+    "d": "2026-09-23",
+    "n": "3310"
+   },
+   {
+    "d": "2026-09-24",
+    "n": "7755"
+   },
+   {
+    "d": "2026-09-25",
+    "n": "4280"
+   }
+  ],
+  "ivykiai_seniausi": [
+   {
+    "web": "2026-09-07 18:01:00",
+    "web_seni": "2695"
+   }
+  ],
+  "sesiju_valanda": [
+   {
+    "n": "322"
+   }
+  ],
+  "reduced0": [
+   {
+    "uzs": "24",
+    "eil": "61"
+   }
+  ],
+  "reduced0_pvz": [
+   {
+    "order_id": "36309",
+    "status": "wc-processing",
+    "date_created_gmt": "2026-09-25 11:47:15"
+   },
+   {
+    "order_id": "36308",
+    "status": "wc-processing",
+    "date_created_gmt": "2026-09-25 11:08:48"
+   },
+   {
+    "order_id": "36307",
+    "status": "wc-processing",
+    "date_created_gmt": "2026-09-25 10:17:45"
+   },
+   {
+    "order_id": "36299",
+    "status": "wc-processing",
+    "date_created_gmt": "2026-09-25 07:13:11"
+   },
+   {
+    "order_id": "36291",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-24 11:53:52"
+   },
+   {
+    "order_id": "36285",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-24 09:29:34"
+   },
+   {
+    "order_id": "36282",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-24 06:25:57"
+   },
+   {
+    "order_id": "36281",
+    "status": "wc-completed",
+    "date_created_gmt": "2026-09-24 03:32:14"
+   }
+  ],
+  "ivykiai_36250": {
+   "SQL_ERR": "Unknown column 'order_id' in 'where clause'"
+  },
+  "trukme_s": 3.1
+ }
+}
