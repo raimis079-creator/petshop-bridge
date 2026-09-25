@@ -8,7 +8,7 @@
 |---|---|---|
 | PVM sąskaitų numeracija | 🔴 | AVPN011105 išrašytas **5 užsakymams**, AVPN011134 — 2; dvi spragos |
 | Viešai pasiekiami duomenys | 🔴 | Tiekėjų feed'ai su savikaina ir siuntų lipdukai su klientų adresais atsidaro be prisijungimo |
-| Atsarginės kopijos | 🔴 | petshop.lt kopijų serveryje **nerasta** (Installatron kopijuoja tik sushimo.lt) |
+| Atsarginės kopijos | 🟢 | Kasdien 04:00 į Backblaze B2 (šifruota, DB + mu-plugins/core/child), 09-25 OK; nekopijuojama `uploads/` ir `plugins/` |
 | Botų apkrova | 🔴 | 9 725 `?add-to-cart=` ir 56 081 filtrų užklausos per parą — ≥ 2/3 serverio darbo tenka botams |
 | PHP našumas | 🔴 | opcache 32 MB, pilnas: hit rate 16 %, 1,1 mln. perkompiliavimų per valandą |
 | Klaidos | 🟠 | 500 kasdien (~10/d) kelių kategorijų filtro deriniuose; 44 per 09-24 |
@@ -49,14 +49,23 @@ Tvarkinga: `wp-config.php` 0600 + `.htaccess` deny; `ps-backups/*.php*` 403; `mu
 
 **Ką daryti:** `uploads/.htaccess` — `ps-lipdukai/`, `wpallimport/`, `*.xml` prie šaknies → `Require all denied` (lipdukus atiduoti tik per darbalaukio veiksmą su teisių patikra — `lp_pdf` jau taip veikia); `petshop-vf-cache.xml` perkelti į `ps-archyvas/` ar `uploads/ps_private_feed/` su deny (fetcher'is ir WPAI skaito iš disko, ne per HTTP — patikrinti `petshop-xml-vf-fetcher.php` kelią); uploads'e uždrausti `.php` vykdymą (`FilesMatch \.php$ → deny`; `wpallimport/functions.php` įkeliamas iš disko, HTTP jam nereikia); ištrinti `phptest.php`, `index.html.backup…`, `uploads/*_result.json`, `vetfarmas_response_*.xml`; `dev.avesa.lt` — GitHub Actions `WP_URL` → `https://petshop.lt`, po to dev vhost'e 301 viskam arba `X-Robots-Tag: noindex` + auth.
 
-## 3. 🔴 Atsarginės kopijos
+## 3. 🟢 Atsarginės kopijos — YRA, išoriniame serveryje (patikslinta 17:45)
 
-- `~/backups/` — tik skriptai (`ps-backup.php`, `ps-backup-watch.php`), **archyvų nėra**; `~/domains/petshop.lt/backups/` tuščias.
-- `~/application_backups/` — Installatron kasdien daro **sushimo.lt** kopijas (505 MB, 09-15…09-25). **petshop.lt kopijų per 45 d. nerasta** (skenuotas visas `~` iki 3 lygių).
-- `ps-archyvas/` — tik rankiniai `.bak` prieš deploy'us. `ps_bak_arch` 09-09.
-- serveriai.lt serverio lygio kopijos — nematomos iš čia; jų egzistavimas ir atkūrimo laikas nežinomi.
+Pirminė išvada „nerasta" buvo klaidinga — kopijos serveryje nelaikomos, jos keliauja į **Backblaze B2** (EU Central, Amsterdamas, bucket `petshop-backups`, Object Lock 14 d., Lifecycle 30 d.; REGISTRAS §8c–8h, 2026-08-03/04).
 
-**Ką daryti (Raimio sprendimas):** (1) paklausti serveriai.lt: ar daromos kasdienės kopijos, kiek dienų saugoma, kaip atkurti (testuoti atkūrimą!). (2) Installatron → įjungti petshop.lt automatines kopijas (kaip sushimo.lt). (3) Nepriklausomai: naktinis `mysqldump` + `uploads`/`mu-plugins`/`themes` archyvas už webroot ir **kopija ne serveryje** (Proton Drive / S3 / kitas VPS) — Claude gali paruošti skriptą (`ps-backup.php` jau yra — patikrinti, kodėl nieko nesukuria; `backup-run.php` 403 iš išorės, t. y. DirectAdmin cron jo galbūt nepasiekia).
+| | Faktas (iš `~/backups/.ps-backup-state.json` / `.ps-watch-state.json`) |
+|---|---|
+| Skriptas | `~/backups/ps-backup.php` v1.1 (0700), paleidžia DirectAdmin cron `0 4 * * *` per `backup-run.php?ps_backup_key=…` (URL per dev.avesa.lt — todėl dev vhost'o negalima naikinti neperkėlus cron'o) |
+| Paskutinis paleidimas | **2026-09-25 01:00 UTC (04:00 LT) — OK**, 20,6 s |
+| Turinys | DB 232 lentelės / 1 145 634 eil. + 592 kodo failai (mu-plugins, petshop-core, flatsome-child) + manifest → tar.gz → AES-256 + HMAC → B2, SHA-1 patvirtintas; 51,6 MB (`petshop-backups/2026/09/petshop-2026-09-25_010001.tar.gz.enc`) |
+| Sargas | `ps-backup-watch.php` kas dieną 10:00 — 09-25 07:00 UTC verdiktas OK, amžius 6 val.; praneša laišku tik kai negerai (>26 val. arba <5 MB) |
+| Atstatymo testas | 2026-08-04 praėjo (174/174 lentelės, 0 skirtumų) — **dar prieš T-0**, su tuometine DB |
+
+**Spragos (ne kritinės, bet žinotinos):**
+- **Nekopijuojama:** `uploads/` (nuotraukos ~171 tūkst. failų, feed'ai), `wp-content/plugins/` (WPAI Pro, Venipak/LP, Paysera, petshop-feeds/xml/core dalis?), `wp-config.php`, `.htaccess`, Flatsome tėvinė tema. Kodas atsistatytų iš repo/atsiuntus pluginus, bet **nuotraukos — tik iš serveriai.lt serverio kopijų** (jų garantijos nėra — jų pačių formuluotė 08-03). Siūlau: mėnesinį `uploads/` archyvą į B2 (~2–4 GB) arba bent `uploads/2026/` + `wp-config.php`/`.htaccess` į kasdienį.
+- Atstatymo testą pakartoti po T-0 (DB 3× didesnė, 232 lentelės, HPOS) — Raimis kuria tuščią DB DirectAdmin'e, Claude atstato ir sutikrina su manifestu.
+- Šifravimo rakto antra kopija — pas Raimį (patvirtinta 08-04); patikrinti, kad ji tebėra pasiekiama ne serveryje.
+- Installatron `application_backups` kopijuoja tik sushimo.lt (34 GB vietos) — petshop'ui nereikalinga, bet sushimo kopijas galima retinti.
 
 ## 4. 🔴 Botų apkrova (access log 2026-09-24 04:55–00:10, 127 406 užkl.)
 
@@ -129,7 +138,7 @@ Cron 89 įvykių, 0 vėluoja, `ps_*` naktiniai visi suplanuoti; Action Scheduler
 |---|---|---|---|
 | 1 | AVPN dublikatai: buhalterės sprendimas + atominis numeravimas + sargas | R + C | 1 val. |
 | 2 | Viešų failų uždarymas (lipdukai, feed'ai, uploads `.php`, šiukšlės) | C | 30 min |
-| 3 | Kopijos: serveriai.lt/Installatron atsakymas + `ps-backup.php` patikra + kopija už serverio | R + C | 1–2 val. |
+| 3 | Kopijos: `uploads/` + `wp-config`/`.htaccess` į B2, atstatymo testas po T-0 | R + C | 1–2 val. |
 | 4 | Botų sargas `add-to-cart` (JS slapukas) + `DISABLE_WP_CRON` + snippet 614 | C | 1 val. |
 | 5 | Raštas serveriai.lt dėl opcache (arba VPS/Cloudflare sprendimas) | R | 15 min |
 | 6 | WPAI #3 „skip unchanged" (arba ZB lengvas sync) | R (varnelė) / C | 10 min / 2 val. |
