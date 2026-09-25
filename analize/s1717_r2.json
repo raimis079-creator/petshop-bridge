@@ -1,0 +1,103 @@
+{
+ "2": {
+  "v": "S1717r",
+  "faze": "2",
+  "child_woo": [
+   "woocommerce/emails ",
+   "woocommerce/myaccount",
+   "woocommerce/emails /customer-processing-order.php",
+   "woocommerce/myaccount/form-login.php",
+   "woocommerce/myaccount/form-login.php.bak_S292",
+   "inc/home-popular-products.php",
+   "inc/home-popular-products.php.20260712123227.bak",
+   "inc/home-popular-products.php.20260712125257.bak",
+   "inc/home-popular-products.php.20260712134513.bak"
+  ],
+  "kat_apr": {
+   "md5": "840d920760ef8adfd6a5258b355f612a",
+   "dydis": 4950,
+   "antraste": "<?php\n/**\n * Plugin Name: Petshop Kategorijos Aprašymo Vieta v1.1.0 (perkėlimas po prekių + išskleidimas, hub'ams per blokas())\n * Description: WooCommerce kategorijos aprašymą numatytai deda VIRŠ prekių tinklelio.\n *              Išmatuota (2026-08-18): 296 žodžių tekstas nustumia pirmą prekę į\n *              1 284 px desktop ir 2 128 px mobile, kai langas yra 1 100 / 844.\n *              Sename petshop.lt tekstas buvo po prekėmis. Šis modulis grąžina tą\n *              tvarką ir suskleidžia ilgą tekstą.\n *\n *              Originali WooCommerce funkcija NEPERRAŠOMA — tik perkeliama jos\n *              išvestis, todėl išlieka visos jos patikros (taksonomija, antras\n *              puslapis, wp_kses_post, wc_format_content).\n *\n *              Hub kategorijos (ŠUNIMS, KATĖMS ir kt.) naudoja atskirą landing\n *              šabloną, kuris baigiasi exit — ten šie kabliukai nesuveikia.\n * Version: 1.1.0\n * Author: Petshop.lt\n */\n\nif ( ! defined( 'ABSPATH' ) ) {\n\texit;\n}\n\nif ( ! class_exists( 'Petshop_Kategorijos_Aprasymas' ) ) {\n\n\tclass Petshop_Kategorijos_Aprasymas {\n\n\t\tconst VERSIJA = '1.1.0';\n\n\t\t/** Suskleisto bloko aukštis pikseliais. Ilgesnis tekstas gauna „Plačiau\". */\n\t\tconst SUSKLEISTAS_AUKSTIS = 190;\n\n\t\tpublic static function init() {\n\t\t\tadd_action( 'init', array( __CLASS__, 'nuimti_is_virsaus' ), 20 );\n\t\t\tadd_action( 'woocommerce_after_main_content', array( __CLASS__, 'rodyti_apacioje' ), 5 );\n\t\t}\n\n\t\t/**\n\t\t * Nuima numatytąjį ",
+   "kodas": "aprašymą nuo archyvo viršaus.\n\t\t *\n\t\t * Vykdoma per `init`, nes mu-plugin'ai kraunami PRIEŠ WooCommerce —\n\t\t * anksčiau kabliuko dar nebūtų ką nuimti.\n\t\t */\n\t\tpublic static function nuimti_is_virsaus() {\n\t\t\tremove_action( 'woocommerce_archive_description', 'woocommerce_taxonomy_archive_description', 10 );\n\t\t}\n\n\t\t/**\n\t\t * Išveda tą patį aprašymą po prekių tinklelio.\n\t\t */\n\t\tpublic static function rodyti_apacioje() {\n\n\t\t\tif ( ! function_exists( 'woocommerce_taxonomy_archive_description' ) ) {\n\t\t\t\treturn;\n\t\t\t}\n\n\t\t\techo self::blokas(); // phpcs:ignore — turinys jau praėjęs wp_kses_post\n\t\t}\n\n\t\t/**\n\t\t * Surenka bloką ir grąžina kaip eilutę.\n\t\t *\n\t\t * Vieša, nes ją kviečia ir hub'ų landing šablonas (snippet 688), kuriame\n\t\t * WooCommerce archyvo kabliukai nesuveikia. Taip markup ir stilius lieka\n\t\t * aprašyti tik čia.\n\t\t *\n\t\t * @return string Tuščia eilutė, jei kategorija aprašymo neturi.\n\t\t */\n\t\tpublic static function blokas() {\n\n\t\t\tif ( ! function_exists( 'woocommerce_taxonomy_archive_description' ) ) {\n\t\t\t\treturn '';\n\t\t\t}\n\n\t\t\tob_start();\n\t\t\twoocommerce_taxonomy_archive_description();\n\t\t\t$turinys = trim( (string) ob_get_clean() );\n\n\t\t\tif ( '' === $turinys ) {\n\t\t\t\treturn '';\n\t\t\t}\n\n\t\t\tstatic $nr = 0;\n\t\t\t$nr++;\n\t\t\t$id = 'ps-kat-tog-' . $nr;\n\n\t\t\treturn self::stilius()\n\t\t\t\t. '<div class=\"ps-kat\">'\n\t\t\t\t. '<input type=\"checkbox\" id=\"' . esc_attr( $id ) . '\" class=\"ps-kat-tog\">'\n\t\t\t\t. '<div class=\"ps-kat-box\">' . $turinys . '</div>'\n\t\t\t\t. '<label for=\"' . esc_attr( $id ) . '\" class=\"ps-kat-lab\"></label>'\n\t\t\t\t. '</div>';\n\t\t}\n\n\t\t/**\n\t\t * Stilius. Išskleidimas be JS — paslėptas checkbox plius label.\n\t\t * Grąžinamas tik pirmą kartą per užklausą.\n\t\t *\n\t\t * @return string\n\t\t */\n\t\tprotected static function stilius() {\n\n\t\t\tstatic $ispausdinta = false;\n\t\t\tif ( $ispausdinta ) {\n\t\t\t\treturn '';\n\t\t\t}\n\t\t\t$ispausdinta = true;\n\n\t\t\t$h = (int) self::SUSKLEISTAS_AUKSTIS;\n\t\t\tob_start();\n\t\t\t?>\n\t\t\t<style id=\"ps-kat-stilius\">\n\t\t\t.ps-kat{margin:2.2em 0 1em;position:relative}\n\t\t\t/* Jungiklio NEGALIMA slepti per display:none ar [hidden] — Flatsome CSS\n\t\t\t   perrašo ir langelis lieka matomas (patikrinta 2026-08-18). Slepiam\n\t\t\t   iškirpimu: nematomas, bet pasiekiamas klaviatūra. */\n\t\t\t.ps-kat-tog{position:absolute!important;width:1px;height:1px;margin:0;padding:0;border:0;\n\t\t\t\topacity:0;pointer-events:none;clip:rect(0 0 0 0);clip-path:inset(50%);overflow:hidden;appearance:none}\n\t\t\t.ps-kat-box{position:relative;overflow:hidden;max-height:<?php echo $h; ?>px;transition:max-height .35s ease}\n\t\t\t.ps-kat-box::after{content:\"\";position:absolute;left:0;right:0;bottom:0;height:70px;\n\t\t\t\tbackground:linear-gradient(to bottom,rgba(255,255,255,0),rgba(255,255,255,.97));pointer-events:none;transition:opacity .2s}\n\t\t\t.ps-kat-lab{display:inline-block;margin-top:.7em;cursor:pointer;font-weight:600;\n\t\t\t\tfont-size:.95em;letter-spacing:.02em;border-bottom:1px solid currentColor;padding-bottom:1px}\n\t\t\t.ps-kat-lab::after{content:\"Plačiau ▾\"}\n\t\t\t.ps-kat-tog:checked ~ .ps-kat-box{max-height:none}\n\t\t\t.ps-kat-tog:checked ~ .ps-kat-box::after{opacity:0}\n\t\t\t.ps-kat-tog:checked ~ .ps-kat-lab::after{content:\"Suskleisti ▴\"}\n\t\t\t.ps-kat .term-description{margin:0}\n\t\t\t.ps-kat .term-description h2,.ps-kat .term-description h3{margin-top:1.1em}\n\t\t\t.ps-kat .term-description p:last-child{margin-bottom:0}\n\t\t\t</style>\n\t\t\t<?php\n\t\t\treturn (string) ob_get_clean();\n\t\t}\n\t}\n\n\tPetshop_Kategorijos_Aprasymas::init();\n}\n"
+  },
+  "hooks": {
+   "woocommerce_archive_description": [
+    "10: woocommerce_product_archive_description",
+    "10: WC_Brands::brand_description"
+   ],
+   "woocommerce_before_main_content": [
+    "10: woocommerce_output_content_wrapper",
+    "30: WC_Structured_Data::generate_website_data"
+   ],
+   "woocommerce_before_shop_loop": [
+    "4: closure @snippet-ops.php(663) : eval()'d code:9",
+    "5: Petshop_Weight_Filter::notice",
+    "6: Petshop_Weight_Filter::ask_weight",
+    "8: closure @snippet-ops.php(663) : eval()'d code:26",
+    "10: woocommerce_output_all_notices",
+    "10: wc_setup_loop",
+    "15: closure @snippet-ops.php(663) : eval()'d code:8"
+   ],
+   "flatsome_category_title": [
+    "1: flatsome_category_title",
+    "10: flatsome_shop_loop_tools_breadcrumbs",
+    "20: flatsome_add_category_filter_button"
+   ]
+  },
+  "html_pagetitle": "<div class=\"shop-page-title category-page-title page-title \"> <div class=\"page-title-inner flex-row medium-flex-wrap container\"> <div class=\"flex-col flex-grow medium-text-center\"> <div class=\"is-large\"> <nav class=\"woocommerce-breadcrumb breadcrumbs uppercase\" aria-label=\"Breadcrumb\"><a href=\"https://petshop.lt\">Pradžia</a> <span class=\"divider\">&#47;</span> <a href=\"https://petshop.lt/kategorija/sunims/\">ŠUNIMS</a> <span class=\"divider\">&#47;</span> <a href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/\">Maistas šunims</a> <span class=\"divider\">&#47;</span> Sausas maistas šunims</nav></div> <div class=\"category-filtering category-filter-row show-for-medium\"> <a href=\"#\" data-open=\"#shop-sidebar\" data-pos=\"left\" class=\"filter-button uppercase plain\" role=\"button\" aria-controls=\"shop-sidebar\" aria-expanded=\"false\" aria-haspopup=\"dialog\" data-visible-after=\"true\" data-flatsome-role-button> <i class=\"icon-equalizer\" aria-hidden=\"true\"></i> <strong>Filtruoti</strong> </a> <div class=\"inline-block\"> </div> </div> </div> <div class=\"flex-col medium-text-center\"> <p class=\"woocommerce-result-count hide-for-medium\" role=\"status\" aria-relevant=\"all\" > Rodoma 1&ndash;24 iš 435 </p> <form class=\"woocommerce-ordering\" method=\"get\"> <select name=\"orderby\" class=\"orderby\" aria-label=\"Parduotuvės užsakymas\" > <option value=\"menu_order\" selected='selected'>Numatytasis rikiavimas</option> <option value=\"popularity\" >Rikiuoti pagal populiarumą</option> <option value=\"rating\" >Rikiuoti pagal vertinimą</option> <option value=\"date\" >Rikiuoti nuo naujausių</option> <option value=\"price\" >Rikiuoti pagal kainą (min → maks)</option> <option value=\"price-desc\" >Rikiuoti pagal kainą (maks → min)</option> </select> <input type=\"hidden\" name=\"paged\" value=\"1\" /> </form> </div> </div> </div…",
+  "html_termdesc": "<div class=\"term-description\"><p>Sauso maisto pasirinkimas prasideda nuo paties šuns – jo amžiaus, dydžio, aktyvumo ir individualių poreikių. Galima rinktis pašarus be grūdų, su ryžiais, hipoalerginius, jautriam virškinimui ar svorio kontrolei. Jei renkatės specialios paskirties maistą, vertinkite visą sudėtį ir gamintojo rekomendacijas.</p> </div></div><label for=\"ps-kat-tog-1\" class=\"ps-kat-lab\"></label></div></div><!-- shop container --> </div> </div> </main> <footer id=\"footer\" class=\"footer…",
+  "home_ld": [
+   {
+    "type": "Organization",
+    "name": "Petshop.lt"
+   },
+   {
+    "type": "WebSite",
+    "name": "Petshop.lt",
+    "url": "https://petshop.lt"
+   },
+   {
+    "type": "ImageObject",
+    "url": "//petshop.lt/wp-content/uploads/2026/07/upl_cat-zuvims-v2.webp?v=20260709-e5b"
+   },
+   {
+    "type": "WebPage",
+    "name": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+    "url": "https://petshop.lt/",
+    "datePublished": "2026-07-08T19:14:21+03:00"
+   },
+   {
+    "type": "Person",
+    "name": "Raimis",
+    "url": "https://petshop.lt/author/admin/",
+    "sameAs": "[\"https:\\/\\/petshop.lt\"]"
+   },
+   {
+    "type": "Article",
+    "name": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+    "headline": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+    "datePublished": "2026-07-08T19:14:21+03:00"
+   }
+  ],
+  "home_title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+  "home_meta": "Maistas, priežiūra ir sprendimai šunims, katėms ir kitiems augintiniams. Nuo 2010 m. padedame išsirinkti pagal sudėtį, o ne pagal reklamą.",
+  "home_h1": [
+   "Prekės augintiniui pagal realų poreikį"
+  ],
+  "preke_24511_meta": "Wanpy liofilizuotas skanėstas katėms, pagamintas iš vištienos ir katžolės. Gardus, baltymų ir ląstelienos gausus užkandis Jūsų augintiniui!",
+  "preke_24511_title": "Wanpy skanėstas katėms su katžole, šaltyje džiovinta vištiena, 20g - Petshop.lt",
+  "brand_ld": [
+   "{\"@type\":\"Organization\",\"name\":\"Petshop.lt\"}",
+   "{\"@type\":\"WebSite\",\"url\":\"https:\\/\\/petshop.lt\",\"name\":\"Petshop.lt\"}",
+   "{\"@type\":\"CollectionPage\",\"url\":\"https:\\/\\/petshop.lt\\/gamintojas\\/josera\\/\",\"name\":\"Josera - Petshop.lt\"}",
+   "[]",
+   "{\"@type\":\"BreadcrumbList\"}"
+  ]
+ },
+ "v": "dep-084115",
+ "kurimas": 200,
+ "sid": 6394,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
