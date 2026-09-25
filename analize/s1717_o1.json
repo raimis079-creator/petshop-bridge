@@ -1,0 +1,100 @@
+{
+ "1": {
+  "v": "S1717o",
+  "faze": "1",
+  "pries": {
+   "order": {
+    "status": "processing",
+    "_ps_av_reduced": "",
+    "_ps_av_restored": "",
+    "_order_stock_reduced": true
+   },
+   "eil": {
+    "2578": {
+     "_ps_savikaina_vnt": "34.8600",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "59.9900",
+     "_ps_kelias": "tiesiai",
+     "_ps_source": "ambrosia",
+     "_ps_carrier": "venipak",
+     "_ps_source_at": "2026-09-25 11:02:58",
+     "_ps_source_reason": "darbalaukis: Raimis pakeitė Ambrosia veža į AV → Ambrosia siunčia klientui"
+    },
+    "2579": {
+     "_ps_savikaina_vnt": "3.7600",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "8.5800",
+     "_ps_kelias": "av"
+    },
+    "2580": {
+     "_ps_savikaina_vnt": "0.6100",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "1.3900",
+     "_ps_kelias": "av"
+    }
+   },
+   "stock": {
+    "15867": 25,
+    "18468": 10,
+    "19760": 11
+   }
+  },
+  "planas": {
+   "2578": {
+    "src": "ambrosia",
+    "car": "venipak",
+    "pid": 19760,
+    "q": 1,
+    "wc_red": 1,
+    "av": 0
+   },
+   "2579": {
+    "src": "av",
+    "car": "any",
+    "pid": 18468,
+    "q": 1,
+    "wc_red": null,
+    "av": 1
+   },
+   "2580": {
+    "src": "av",
+    "car": "any",
+    "pid": 15867,
+    "q": 4,
+    "wc_red": null,
+    "av": 4
+   }
+  },
+  "tikrinimai": {
+   "2578": {
+    "yra": true,
+    "pid_ok": true,
+    "q_ok": true,
+    "kelias": "tiesiai",
+    "src_tuscias": false
+   },
+   "2579": {
+    "yra": true,
+    "pid_ok": true,
+    "q_ok": true,
+    "kelias": "av",
+    "src_tuscias": true
+   },
+   "2580": {
+    "yra": true,
+    "pid_ok": true,
+    "q_ok": true,
+    "kelias": "av",
+    "src_tuscias": true
+   }
+  },
+  "laikas": "13:57:41"
+ },
+ "v": "dep-105639",
+ "kurimas": 200,
+ "sid": 6410,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
