@@ -1,0 +1,17 @@
+{
+ "1": {
+  "v": "S1719p",
+  "filtru_sargas": "<?php\n/**\n * Plugin Name: Petshop Filtrų sargas v1.0 (500 su keliomis kategorijomis YITH filtre)\n * Description: YITH WooCommerce Ajax Product Filter leidžia pažymėti kelias kategorijas — URL gauna\n *   `product_cat=a,b` (arba `a+b`). WP užklausa tai supranta, bet WooCommerce core filtro mygtukas\n *   (WC_Widget::get_current_page_url → get_term_link('a,b')) gauna WP_Error ir add_query_arg() meta\n *   TypeError → 500 visam kategorijos puslapiui (php_error.log: 09-20…24 po 7–43/d.).\n *   Sargas po pagrindinės užklausos (`wp`, kai rezultatai jau surinkti) pakeičia `product_cat` query var\n *   į pirmos (užklaustos) kategorijos slug'ą — prekių sąrašo tai nekeičia, tik nuorodų generavimą.\n * Version: 1.0\n * S1714 (2026-09-24). Išjungti: opcija `ps_filtru_sargas_isjungta`=1.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nadd_action( 'wp', function () {\n\tif ( get_option( 'ps_filtru_sargas_isjungta' ) ) { return; }\n\tif ( ! function_exists( 'is_product_category' ) || ! is_product_category() ) { return; }\n\tglobal $wp_query;\n\t$v = get_query_var( 'product_cat' );\n\tif ( ! is_string( $v ) || ! preg_match( '/[,+ ]/', $v ) ) { return; }\n\t$q    = get_queried_object();\n\t$slug = ( $q && ! empty( $q->slug ) ) ? $q->slug : preg_split( '/[,+ ]/', $v )[0];\n\tif ( ! $slug ) { return; }\n\t$wp_query->query_vars['product_cat']    = $slug;\n\t$wp_query->query_vars['ps_product_cat_orig'] = $v;\n}, 1 );\n",
+  "test_paprastas": "200  try{if(document.cookie.indexOf('ps_js=')",
+  "test_ajax": "200  try{if(document.cookie.indexOf('ps_js=')",
+  "test_be_filter": 200,
+  "log_tail_strstr": []
+ },
+ "v": "dep-160309",
+ "kurimas": 200,
+ "sid": 6468,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
