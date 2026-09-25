@@ -1,0 +1,178 @@
+{
+ "1": {
+  "v": "S1720k",
+  "shots": [
+   {
+    "n": "s1720k_0",
+    "u": "https://petshop.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-kiauliena-ir-zirneliais-m-l-12-kg/",
+    "w": 1280,
+    "h": 900,
+    "eval": "(()=>{const a=document.querySelector(\".ps-pazadas\");const k=document.querySelector(\".ps-kg\");return {pazadas:a?a.textContent.trim():null,kg:k?k.textContent:null}})()"
+   },
+   {
+    "n": "s1720k_1",
+    "u": "https://petshop.lt/?add-to-cart=18560",
+    "w": 1280,
+    "h": 900
+   },
+   {
+    "n": "s1720k_krepselis1",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 1280,
+    "h": 900,
+    "eval": "(()=>{const e=[...document.querySelectorAll(\".ps-pazadas-krepselis\")].map(x=>x.className+\" | \"+x.textContent.trim());const lp=[...document.querySelectorAll(\"#shipping_method li, .woocommerce-shipping-methods li\")].map(x=>x.textContent.trim().replace(/\\s+/g,\" \").slice(0,60));return {pazadas:e,siuntimas:lp}})()"
+   },
+   {
+    "n": "s1720k_apmok1",
+    "u": "https://petshop.lt/kasa/",
+    "w": 1280,
+    "h": 1100,
+    "eval": "(()=>{const e=[...document.querySelectorAll(\".ps-pazadas-krepselis\")].map(x=>x.className+\" | \"+x.textContent.trim());const lp=[...document.querySelectorAll(\"#shipping_method li, .woocommerce-shipping-methods li\")].map(x=>x.textContent.trim().replace(/\\s+/g,\" \").slice(0,60));return {pazadas:e,siuntimas:lp}})()"
+   },
+   {
+    "n": "s1720k_2",
+    "u": "https://petshop.lt/?add-to-cart=14804",
+    "w": 1280,
+    "h": 900
+   },
+   {
+    "n": "s1720k_krepselis2",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 1280,
+    "h": 900,
+    "eval": "(()=>{const e=[...document.querySelectorAll(\".ps-pazadas-krepselis\")].map(x=>x.className+\" | \"+x.textContent.trim());const lp=[...document.querySelectorAll(\"#shipping_method li, .woocommerce-shipping-methods li\")].map(x=>x.textContent.trim().replace(/\\s+/g,\" \").slice(0,60));return {pazadas:e,siuntimas:lp}})()"
+   },
+   {
+    "n": "s1720k_apmok2",
+    "u": "https://petshop.lt/kasa/",
+    "w": 1280,
+    "h": 1100,
+    "eval": "(()=>{const e=[...document.querySelectorAll(\".ps-pazadas-krepselis\")].map(x=>x.className+\" | \"+x.textContent.trim());const lp=[...document.querySelectorAll(\"#shipping_method li, .woocommerce-shipping-methods li\")].map(x=>x.textContent.trim().replace(/\\s+/g,\" \").slice(0,60));return {pazadas:e,siuntimas:lp}})()"
+   },
+   {
+    "n": "s1720k_mini",
+    "u": "https://petshop.lt/",
+    "w": 1280,
+    "h": 800,
+    "eval": "(()=>{const m=document.querySelector(\".widget_shopping_cart_content, .cart-popup-inner, .header-cart-link + .nav-dropdown\");return m?m.innerText.replace(/\\s+/g,\" \").slice(0,400):\"nera\"})()"
+   },
+   {
+    "n": "s1720k_krepselis_m",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 390,
+    "h": 900,
+    "full": 1
+   }
+  ]
+ },
+ "v": "dep-193325",
+ "kurimas": 200,
+ "sid": 6500,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1720k_0": {
+   "status": 201,
+   "url": "https://petshop.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-kiauliena-ir-zirneliais-m-l-12-kg/",
+   "title": "Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "pazadas": null,
+    "kg": null
+   }
+  },
+  "s1720k_1": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=18560",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1720k_krepselis1": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "pazadas": [
+     "ps-pazadas-krepselis ps-pz-cart | Išsiųsime per 1–2 d. d."
+    ],
+    "siuntimas": [
+     "VENIPAK paštomatai/atsiėmimo punktai",
+     "VENIPAK Kurjeris: 3,99 €"
+    ]
+   }
+  },
+  "s1720k_apmok1": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "http 400 https://www.clarity.ms/tag/n28m0rqx80",
+    "error: Failed to load resource: the server responded with a status of 400 (Bad Request)",
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ],
+   "eval": {
+    "pazadas": [
+     "ps-pazadas-krepselis ps-pz-checkout | Išsiųsime per 1–2 d. d."
+    ],
+    "siuntimas": [
+     "VENIPAK paštomatai/atsiėmimo punktai Pasirinkite Venipak ats",
+     "VENIPAK Kurjeris: 3,99 €"
+    ]
+   }
+  },
+  "s1720k_2": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=14804",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1720k_krepselis2": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "pazadas": [
+     "ps-pazadas-krepselis ps-pz-cart | Išsiųsime per 3 d. d."
+    ],
+    "siuntimas": [
+     "VENIPAK paštomatai/atsiėmimo punktai",
+     "VENIPAK Kurjeris: 3,99 €"
+    ]
+   }
+  },
+  "s1720k_apmok2": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ],
+   "eval": {
+    "pazadas": [
+     "ps-pazadas-krepselis ps-pz-checkout | Išsiųsime per 3 d. d."
+    ],
+    "siuntimas": [
+     "VENIPAK paštomatai/atsiėmimo punktai Pasirinkite Venipak ats",
+     "VENIPAK Kurjeris: 3,99 €"
+    ]
+   }
+  },
+  "s1720k_mini": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "eval": ""
+  },
+  "s1720k_krepselis_m": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": []
+  }
+ }
+}
