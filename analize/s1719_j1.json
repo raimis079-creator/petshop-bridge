@@ -1,0 +1,80 @@
+{
+ "1": {
+  "v": "S1719j",
+  "faze": "1",
+  "t": "2026-09-25 15:20:13",
+  "dirs": {
+   "wp-content/uploads/ps-lipdukai": [
+    true,
+    false
+   ],
+   "wp-content/uploads/wpallimport": [
+    true,
+    false
+   ],
+   "wp-content/uploads/petshop-legacy": [
+    true,
+    false
+   ],
+   "wp-content/uploads/ps-backups": [
+    true,
+    false
+   ],
+   "wp-content/petshop-private-logs": [
+    true,
+    false
+   ]
+  },
+  "uploads_ht_turi_s1719": false,
+  "trash": [
+   "wp-content/uploads/cmp2_result.json",
+   "wp-content/uploads/cmp_result.json",
+   "wp-content/uploads/lookupfix2_result.json",
+   "wp-content/uploads/pdump_result.json",
+   "wp-content/uploads/rawf_result.json",
+   "wp-content/uploads/regen_result.json",
+   "wp-content/uploads/slugfix_result.json",
+   "wp-content/uploads/waxfix_result.json",
+   "wp-content/uploads/ydiag_result.json",
+   "wp-content/uploads/yfix_result.json",
+   "wp-content/uploads/yresave_result.json",
+   "wp-content/uploads/lookupdiag.json",
+   "wp-content/uploads/vetfarmas_response_20260602_142756.xml",
+   "wp-content/phptest.php",
+   "index.html.backup.5a6defd0b6c8b4cd418a970086e2c0b4"
+  ],
+  "snippet465": {
+   "id": "465",
+   "name": " Petshop GitHub Rele v1.0 (diagnostika -> GitHub repo)",
+   "active": "1"
+  },
+  "testuotojas": 75,
+  "deactivate_fn": false,
+  "http_pries": {
+   "/wp-content/uploads/ps-lipdukai/lp/LP-1160-HC039608415LT.pdf": 200,
+   "/wp-content/uploads/ps-lipdukai/lipdukas-V07267E1000043.pdf": 200,
+   "/wp-content/uploads/wpallimport/files/vf-feed.xml": 200,
+   "/wp-content/uploads/wpallimport/files/goods_clean.xml": 200,
+   "/wp-content/uploads/petshop-vf-cache.xml": 200,
+   "/wp-content/uploads/vetfarmas_response_20260602_142756.xml": 200,
+   "/wp-content/uploads/ps-backups/petshop-legacy-301-map.json.bak_s1669": 200,
+   "/wp-content/uploads/ps-backups/google.xml.bak_s1671": 200,
+   "/wp-content/uploads/cmp_result.json": 200,
+   "/wp-content/petshop-private-logs/attr-engine.log": 200,
+   "/wp-content/phptest.php": 200,
+   "/index.html.backup.5a6defd0b6c8b4cd418a970086e2c0b4": 200,
+   "/wp-content/uploads/wpallimport/index.php": 403,
+   "/wp-content/uploads/2026/09/": 403,
+   "/": 200,
+   "/feed/google/": 200,
+   "/wp-content/uploads/pmax-s1672/manifest.json": 200
+  }
+ },
+ "v": "dep-151906",
+ "kurimas": 200,
+ "sid": 6461,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
