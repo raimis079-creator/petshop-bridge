@@ -1,0 +1,746 @@
+{
+ "1": {
+  "v": "S1717u",
+  "faze": "1",
+  "b": {
+   "animonda": {
+    "n": 61,
+    "desc": 0,
+    "name": "Animonda",
+    "kat": [
+     "Konservai šunims 38",
+     "Konservai katėms 19",
+     "Skanėstai katėms 4",
+     "Konservų rinkiniai 2"
+    ],
+    "kaina": [
+     "0.96",
+     "20.40"
+    ],
+    "top": [],
+    "zodziai": {
+     "Animonda": 61,
+     "GranCarno": 31,
+     "suaugusiems": 21,
+     "jautiena": 19,
+     "Vom": 19,
+     "Feinsten": 19,
+     "Beef": 14,
+     "šviežia": 13,
+     "Turkey": 11,
+     "kalakutiena": 11,
+     "Adult:": 10,
+     "Carny": 7,
+     "širdimis": 6,
+     "Kitten": 6,
+     "kačiukams": 6,
+     "Poultry": 6,
+     "širdelėmis": 5,
+     "ėriena": 5,
+     "triušiena": 5,
+     "paukštiena": 5,
+     "vištiena": 4,
+     "Hearts:": 4
+    },
+    "pvz": [
+     "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su šviežia jautiena, vištiena ir ančių širdelėmis, 400 g",
+     "Animonda Carny Adult Beef + Heart – konservai katėms su šviežia jautiena ir širdimis, 400 g",
+     "Animonda Carny Adult Beef + Lamb – konservai katėms su šviežia jautiena ir ėriena, 400 g",
+     "Animonda Carny Adult Beef + Turkey + Shrimp – konservai katėms su šviežia jautiena, kalakutiena ir krevetėmis, 400 g",
+     "Animonda Carny Kitten – konservai kačiukams su jautiena ir kalakutiena, 200 g",
+     "Animonda Carny Kitten – konservai kačiukams su jautiena, vištiena ir triušiena, 200 g",
+     "Animonda Carny Kitten – konservai kačiukams su paukštiena ir jautiena, 400 g",
+     "Animonda GranCarno Adult Beef + Chicken: konservai šunims su šviežia jautiena ir vištiena, 400 g",
+     "Animonda GranCarno Adult Beef + Chicken: konservai šunims su šviežia jautiena ir vištiena, 800 g",
+     "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaugusiems šunims su jautiena ir ančių širdelėmis, 400 g",
+     "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaugusiems šunims su jautiena ir ančių širdelėmis, 800 g",
+     "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 400 g",
+     "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 800 g",
+     "Animonda GranCarno Adult Beef + Rabbit with Herbs: konservai suaugusiems šunims su šviežia jautiena ir triušiena, paskaninta žolelėmis, 800 g"
+    ]
+   },
+   "miamor": {
+    "n": 27,
+    "desc": 0,
+    "name": "Miamor",
+    "kat": [
+     "Konservai katėms 20",
+     "Skanėstai katėms 7",
+     "Maistas katėms 4"
+    ],
+    "kaina": [
+     "1.33",
+     "3.55"
+    ],
+    "top": [],
+    "zodziai": {
+     "Miamor": 34,
+     "tunu": 8,
+     "Feine": 8,
+     "Filets": 8,
+     "drebučiuose": 7,
+     "Cream": 7,
+     "Super": 7,
+     "kremas": 6,
+     "tunas": 5,
+     "Gėrimas": 4,
+     "Trinkfein": 4,
+     "Vitaldrink": 4,
+     "vištiena": 4,
+     "Premium": 4,
+     "vištienos": 3,
+     "premium": 3
+    },
+    "pvz": [
+     "Gėrimas kačiukams - Miamor Trinkfein Vitaldrink Kitten su vištiena, 135 ml",
+     "Gėrimas katėms - Miamor Trinkfein Vitaldrink su antiena, 135 ml",
+     "Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 135 ml",
+     "Gėrimas katėms - Miamor Trinkfein Vitaldrink su vištiena, 135 ml",
+     "Miamor Feine Filets konservai katėms, tunas krabų drebučiuose, 100 g",
+     "Miamor Feine Filets konservai katėms, tunas lašišos drebučiuose, 100 g",
+     "Miamor Feine Filets konservai katėms, tunas su daržovėmis drebučiuose, 100 g",
+     "Miamor Feine Filets konservai katėms, tunas su kalmarais drebučiuose, 100 g",
+     "Miamor Feine Filets konservai katėms, tunas su krabais drebučiuose, 100 g",
+     "Miamor Feine Filets konservai katėms, vištiena paukštienos drebučiuose, 100 g",
+     "Miamor Feine Filets konservai katėms, vištienos ir tuno gabalėliai drebučiuose, 100 g",
+     "Miamor Feine Filets konservai katėms, vištienos ir tuno gabalėliai padaže, 100 g",
+     "Miamor Fillet Naturelle konservai katėms su tunu ir krabais, 80 g",
+     "Miamor skanėstai kačiukams - kreminė pasta su taurinu, 6*15 g, Miamor Junior Pate Cream"
+    ]
+   },
+   "exclusion": {
+    "n": 85,
+    "desc": 0,
+    "name": "Exclusion",
+    "kat": [
+     "Sausas maistas šunims 47",
+     "Konservai šunims 24",
+     "Maistas šunims 12",
+     "Sausas maistas katėms 9",
+     "Konservai katėms 5"
+    ],
+    "kaina": [
+     "1.51",
+     "111.00"
+    ],
+    "top": [],
+    "zodziai": {
+     "Exclusion": 85,
+     "Mediterraneo": 36,
+     "Hypoallergenic": 33,
+     "Mono": 32,
+     "veislių": 31,
+     "Protein": 30,
+     "bulvėmis": 23,
+     "mažų": 19,
+     "konservuotas": 18,
+     "kiauliena": 16,
+     "šunų": 15,
+     "tunu": 13,
+     "jautiena": 12,
+     "žirneliais": 10,
+     "šuniukams": 9,
+     "vidutinių": 9,
+     "Hypo": 8,
+     "ėriena": 7,
+     "Monoprotein": 7,
+     "žuvimi": 6,
+     "didelių": 6,
+     "vištiena": 6
+    },
+    "pvz": [
+     "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg",
+     "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+     "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g",
+     "Exclusion Hepatic dietinis sausas šunų maistas su kiauliena, ryžiais ir žirneliais M/L 12kg",
+     "Exclusion Hydrolyzed Hypoallergenic maistas šunims su hidrolizuota žuvimi ir kukurūzų krakmolu M/L 12 kg",
+     "Exclusion Hydrolyzed Hypoallergenic sausas pašaras vidutinių ir didelių veislių šunims su žuvimi, M/L, 2 kg",
+     "Exclusion Hypo konservai šunims su putpelėmis ir žirniais, 200g",
+     "Exclusion Hypo konservuotas pašaras šunims su arkliena ir bulvėmis, 200 g",
+     "Exclusion Hypo konservuotas pašaras šunims su elniena ir bulvėmis, 200 g",
+     "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 200 g",
+     "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g",
+     "Exclusion Hypo konservuotas pašaras šunims su triušiena ir bulvėmis, 400 g",
+     "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir bulvėmis, 200 g",
+     "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir bulvėmis, 400 g"
+    ]
+   },
+   "romar": {
+    "n": 28,
+    "desc": 0,
+    "name": "Romar",
+    "kat": [
+     "Skanėstai šunims 27",
+     "Žaislai katėms 1"
+    ],
+    "kaina": [
+     "1.00",
+     "25.00"
+    ],
+    "top": [],
+    "zodziai": {
+     "ausys": 9,
+     "jaučio": 5,
+     "koja": 5,
+     "triušio": 5,
+     "Jaučio": 4,
+     "Ruda": 4,
+     "Triušio": 4,
+     "ausis": 3,
+     "Baltos": 3,
+     "vištos": 3,
+     "Rudos": 3,
+     "antiena": 3
+    },
+    "pvz": [
+     "20 vnt. baltų jaučio ausų",
+     "20 vnt. rudų jaučio ausų",
+     "Balta jaučio ausis, 1 vnt.",
+     "Balta stirnos koja, 1 vnt.",
+     "Baltos triušio ausys, 100 g",
+     "Baltos triušio ausys, 250 g",
+     "Baltos vištos kojelės, 5 vnt.",
+     "Džiovinta jaučio uodega, 1 vnt.",
+     "Džiovintos vištos kojos baltos (50vnt)",
+     "Jaučio peniai pjaustyti, 12,5 cm, 10 vnt.",
+     "Jaučio peniai pjaustyti, 15 cm, 10 vnt.",
+     "Jaučio penis pjaustytas, 12,5 cm, 1 vnt.",
+     "Jaučio penis pjaustytas, 15,0 cm, 1 vnt.",
+     "Kiaulės ausies žiedas, 1 vnt."
+    ]
+   },
+   "josera": {
+    "n": 215,
+    "desc": 0,
+    "name": "Josera",
+    "kat": [
+     "Sausas maistas šunims 101",
+     "Konservai katėms 49",
+     "Sausas maistas katėms 47",
+     "Konservai šunims 18"
+    ],
+    "kaina": [
+     "0.70",
+     "71.79"
+    ],
+    "top": [],
+    "zodziai": {
+     "Josera": 151,
+     "konservuotas": 46,
+     "begrūdis": 36,
+     "JosiCat": 34,
+     "lašiša": 30,
+     "antiena": 29,
+     "Chicken": 27,
+     "veislių": 22,
+     "vištiena": 22,
+     "Mini": 22,
+     "mažų": 21,
+     "Duck": 20,
+     "Kitten": 19,
+     "paukštiena": 19,
+     "JosiDog": 19,
+     "Potato": 18,
+     "jauniems": 18,
+     "ėriena": 17,
+     "Meat": 15,
+     "Sauce": 15,
+     "Lamb": 14,
+     "Beef": 14
+    },
+    "pvz": [
+     "Josera A/S Chicken&Rice 12,5 kg - sausas maistas šunims",
+     "Josera A/S Duck + Potato begrūdis sausas pašaras šunims su antiena ir bulvėmis, 900 g",
+     "Josera A/S Lamb + Rice sausas pašaras šunims su ėriena ir ryžiais, 12,5+2,5kg AKCIJA",
+     "Josera Active Nature sausas pašaras šunims su ėriena, 12,5 kg",
+     "Josera Active Nature sausas pašaras šunims su ėriena, 900 g",
+     "Josera Adult Chicken and Rice M/M sausas pašaras vidutinių ir didelių veislių šunims su vištiena ir ryžiais, 12,5 kg",
+     "JOSERA BALANCE pašaras šunims su vištiena, 12,5 kg",
+     "Josera Beef begrūdis konservuotas pašaras katėms su jautiena, 200 g",
+     "Josera Cat 653 Turkey+Zucchini pate, konservai katėms, 85g",
+     "Josera Cat 654 Kitten pate konservai kačiukams, 85g",
+     "Josera Cat 660 Chicken&Beef filet  konservai katėms, 70g",
+     "Josera Cat 662 Chicken+Salmon filet  konservai katėms, 70g",
+     "Josera Cat 663 Chicken+Veal filet  konservai katėms, 70g",
+     "Josera Cat Chicken+Spinach pate konservai katėms,  85g"
+    ]
+   },
+   "ontario": {
+    "n": 56,
+    "desc": 0,
+    "name": "Ontario",
+    "kat": [
+     "Konservai šunims 24",
+     "Sausas maistas šunims 11",
+     "Konservai katėms 10",
+     "Sausas maistas katėms 9",
+     "Skanėstai katėms 2"
+    ],
+    "kaina": [
+     "1.15",
+     "69.99"
+    ],
+    "top": [],
+    "zodziai": {
+     "Ontario": 56,
+     "ėriena": 13,
+     "Lamb": 11,
+     "rudaisiais": 11,
+     "ryžiais": 11,
+     "veislių": 10,
+     "Brown": 9,
+     "Rice": 9,
+     "vištiena": 9,
+     "Monoproteino": 8,
+     "Pate": 7,
+     "aliejumi": 7,
+     "jautiena": 6,
+     "saldžiosiomis": 5,
+     "bulvėmis": 5,
+     "Mini": 5,
+     "mažų": 5,
+     "super": 5,
+     "premium": 5,
+     "troškinys": 5,
+     "daržovių": 5,
+     "sultinyje": 5
+    },
+    "pvz": [
+     "6 vnt. Ontario konservų šunims su ėriena ir šaltalankiu, 400 g, Lamb Pate with Sea Buckthorn",
+     "6 vnt. Ontario konservų šunims su veršiena ir ciberžole, 400 g, Veal Pate flavoured with Turmeric",
+     "Ontario Adult Large Beef and Brown Rice, 12 kg, pašaras didelių veislių šunims su jautiena ir rudaisiais ryžiais",
+     "Ontario Adult Large Chicken and Sweet Potatoes, 12 kg, pašaras suaugusiems šunims su vištiena ir saldžiosiomis bulvėmis",
+     "Ontario Adult Large Lamb and Brown Rice, 12 kg, pašaras didelių veislių šunims su ėriena ir rudaisiais ryžiais",
+     "Ontario Adult Large White Fish and Brown Rice, 12 kg, pašaras didelių veislių šunims su balta žuvimi ir rudaisiais ryžiais",
+     "Ontario Adult Medium Chicken and Sweet Potatoes, 12 kg, pašaras vidutinių veislių šunims su vištiena ir saldžiosiomis bulvėmis",
+     "Ontario Adult Medium Lamb and Brown Rice, 12 kg, pašaras vidutinių veislių šunims su ėriena ir rudaisiais ryžiais",
+     "Ontario Adult Mini Lamb and Brown Rice, 0,75 kg, pašaras mažų veislių šunims su ėriena ir rudaisiais ryžiais",
+     "Ontario Adult Mini Lamb and Brown Rice, 2,25 kg, pašaras mažų veislių šunims su ėriena ir rudaisiais ryžiais",
+     "Ontario Adult Mini Lamb and Brown Rice, 6,5 kg, pašaras mažų veislių šunims su ėriena ir rudaisiais ryžiais",
+     "Ontario konservai šunims su antiena, paskaninta spanguolėmis, 400 g, Duck Pate with Cranberries",
+     "Ontario konservai šunims su ėriena ir šaltalankiu, 400 g, Lamb Pate with Sea Buckthorn",
+     "Ontario konservai šunims su jautiena, cukinijomis ir linų sėmenų aliejumi, 200 g, Adult Beef with Zucchini"
+    ]
+   },
+   "gnatek": {
+    "n": 28,
+    "desc": 0,
+    "name": "Gnatek",
+    "kat": [
+     "Skanėstai šunims 26"
+    ],
+    "kaina": [
+     "0.63",
+     "15.99"
+    ],
+    "top": [],
+    "zodziai": {
+     "galvijų": 6,
+     "Kramtukas": 6,
+     "dydžio": 6,
+     "kiaulės": 5,
+     "Džiovinti": 4,
+     "kavamedžio": 4,
+     "Džiovintos": 3,
+     "Galvijų": 3,
+     "pjaustytos": 3
+    },
+    "pvz": [
+     "20 vnt. baltų kiaulės knyslių",
+     "20 vnt. rudų kiaulės knyslių",
+     "Balta avies koja, 1 vnt.",
+     "Balta kiaulės knyslė, 1 vnt.",
+     "Džiovinta kiaulės uodega, 1 vnt.",
+     "Džiovinti galvijų plaučiai, 100 g",
+     "Džiovinti galvijų plaučiai, 500 g",
+     "Džiovinti galvijų skrandžiai, 100 g",
+     "Džiovinti galvijų skrandžiai, 500 g",
+     "Džiovintos galvijų kepenys, 100 g",
+     "Džiovintos galvijų stemplės, 100 g",
+     "Džiovintos kalakuto kojos šviesios mažos (10 vnt)",
+     "Galvijų odos batukas su antiena, 1 vnt.",
+     "Galvijų širdys, džiovintos, pjaustytos, 100 g"
+    ]
+   },
+   "quattro": {
+    "n": 64,
+    "desc": 0,
+    "name": "Quattro",
+    "kat": [
+     "Sausas maistas šunims 47",
+     "Sausas maistas katėms 17"
+    ],
+    "kaina": [
+     "8.50",
+     "73.00"
+    ],
+    "top": [],
+    "zodziai": {
+     "QUATTRO": 52,
+     "šunų": 43,
+     "veislių": 39,
+     "mažų": 18,
+     "antiena": 16,
+     "begrūdis": 16,
+     "suaugusių": 16,
+     "visų": 14,
+     "paukštiena": 14,
+     "visavertis": 12,
+     "lašiša": 12,
+     "kriliu": 12,
+     "Quattro": 12,
+     "ėriena": 9,
+     "suaugusioms": 8,
+     "balta": 8,
+     "žuvimi": 8,
+     "jaunų": 8,
+     "Extra": 8,
+     "Poultry": 8,
+     "didelių": 7,
+     "Salmon": 6
+    },
+    "pvz": [
+     "QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu,",
+     "QUATTRO 1,5 kg Chicken for Kittens (up to 12 months) visavertis sausas pašaras visų veislių kačiukams su vištiena (iki 12 mėnesių),",
+     "QUATTRO 1,5 kg Chicken for Sterilised Adult Cats visavertis sausas pašaras suaugusioms sterilizuotoms katėms su vištiena",
+     "QUATTRO 1,5 kg Duck for Adult Indoor Cats visavertis sausas pašaras suaugusioms naminėms katėms su antiena, 1,5 kg",
+     "QUATTRO 1,5 kg Salmon for Sterilised Adult visavertis sausas pašaras suaugusioms sterilizuotoms katėms su lašiša,",
+     "QUATTRO 1,5 kg Senior White Fish & Krill visavertis sausas dietinis/senstančių kačių pašaras su balta žuvimi ir kriliu,",
+     "QUATTRO 12kg begrūdis  lašiša ir kriliu visų veislių suaugusių šunų pašaras",
+     "QUATTRO 12kg begrūdis su antiena didelių veislių jaunų šunų pašaras",
+     "QUATTRO 12kg begrūdis su antiena didelių veislių suaugusių šunų pašaras",
+     "QUATTRO 12kg begrūdis su antiena visų veislių jaunų šunų pašaras",
+     "QUATTRO 12kg begrūdis su antiena visų veislių suaugusių šunų pašaras",
+     "QUATTRO 12kg begrūdis su ėriena visų veislių suaugusių šunų pašaras monoproteinas",
+     "QUATTRO 12kg begrūdis visų veislių senjorų/dietinis šunų pašaras su balta žuvimi ir kriliu",
+     "QUATTRO begrūdis  lašiša ir kriliu visų veislių suaugusių šunų pašaras 3kg"
+    ]
+   },
+   "monge": {
+    "n": 116,
+    "desc": 0,
+    "name": "Monge",
+    "kat": [
+     "Sausas maistas šunims 75",
+     "Sausas maistas katėms 31",
+     "Konservai šunims 10"
+    ],
+    "kaina": [
+     "1.99",
+     "97.89"
+    ],
+    "top": [],
+    "zodziai": {
+     "Monge": 113,
+     "VetSolution": 24,
+     "vištiena": 19,
+     "veislių": 18,
+     "ryžiais": 18,
+     "suaugusiems": 17,
+     "ryžiai": 16,
+     "Dry": 16,
+     "BWild": 13,
+     "puppy": 13,
+     "lašiša": 12,
+     "monoprotein": 12,
+     "bulvėmis": 12,
+     "ėriena": 11,
+     "šuniukams": 11,
+     "mini": 11,
+     "spec": 11,
+     "line": 11,
+     "antiena": 10,
+     "jauniems": 10,
+     "bulvės": 9,
+     "visų": 9
+    },
+    "pvz": [
+     "Monge adult sausas pašaras (antiena, ryžiai, bulvės) 12kg",
+     "Monge adult sausas pašaras (antiena, ryžiai, bulvės) 2,5kg",
+     "Monge adult sausas pašaras (ėriena, ryžiai, bulvės) 12kg",
+     "Monge adult sausas pašaras (ėriena, ryžiai, bulvės) 2,5kg",
+     "Monge adult sausas pašaras (lašiša ir ryžiai) 12kg",
+     "Monge adult sausas pašaras (lašiša ir ryžiai) 2,5kg",
+     "Monge adult sausas pašaras (triušiena, ryžiai, bulvės) 2,5kg",
+     "Monge adult sausas pašaras (vištiena, ryžiai, bulvės) 12kg",
+     "Monge BFB BWILD - Adult pašaras katėms su ančiuviais 10 kg",
+     "Monge BWild Adult (kiškiena) 10kg",
+     "Monge BWild adult sausas pašaras (elniena) 2,5kg",
+     "Monge BWild adult sausas pašaras (šerniena) 2,5kg",
+     "Monge BWild adult sausas pašaras (žąsiena) 2,5kg",
+     "Monge BWild adult sausas pašaras suaugusiems šunims su šerniena 12kg"
+    ]
+   },
+   "hikari": {
+    "n": 41,
+    "desc": 0,
+    "name": "Hikari",
+    "kat": [
+     "Akvariumo žuvyčių maistas 37",
+     "Tvenkinių žuvų maistas 4"
+    ],
+    "kaina": [
+     "1.99",
+     "123.99"
+    ],
+    "top": [],
+    "zodziai": {
+     "Hikari": 45,
+     "Cichlid": 18,
+     "Mini": 11,
+     "Gold": 10,
+     "Tropical": 9,
+     "Medium": 8,
+     "Staple": 8,
+     "žuvims": 8,
+     "Wafers": 7,
+     "Sinking": 5,
+     "kitoms": 5,
+     "Large": 4,
+     "koi": 4,
+     "karpiams": 4,
+     "tvenkinių": 4,
+     "Algae": 4,
+     "Excel": 3,
+     "Micro": 3,
+     "Goldfish": 3
+    },
+    "pvz": [
+     "Hikari  Cichlid Bio - Gold Plus Medium, 250 g",
+     "Hikari  Cichlid Bio- Gold Plus Mini, 250 g",
+     "Hikari  Cichlid Excel Medium, 250 g",
+     "Hikari  Cichlid Excel Mini, 250 g",
+     "Hikari  Cichlid Gold Large, 250 g",
+     "Hikari  Cichlid Staple Large, 250 g",
+     "Hikari  Tropical Micro Wafers, 45 g, pašaras tropinėms žuvims",
+     "Hikari Blood-Red Parrot Medium, 333 g",
+     "Hikari Blood-Red Parrot Mini, 333 g",
+     "Hikari Cichlid Excel Mini Sinking, 342 g",
+     "Hikari Cichlid Gold Baby, 250 g",
+     "Hikari Cichlid Gold Medium, 250 g",
+     "Hikari Cichlid Gold Mini, 250 g",
+     "Hikari Cichlid Gold Mini, 57 g"
+    ]
+   },
+   "royal-canin": {
+    "n": 24,
+    "desc": 0,
+    "name": "Royal Canin",
+    "kat": [
+     "Sausas maistas katėms 20",
+     "Maistas katėms 5",
+     "Sausas maistas šunims 4"
+    ],
+    "kaina": [
+     "8.40",
+     "87.98"
+    ],
+    "top": [],
+    "zodziai": {
+     "ROYAL": 22,
+     "CANIN": 22,
+     "suaugusioms": 9,
+     "CARE": 7,
+     "STERILISED": 5,
+     "sterilizuotoms": 4,
+     "INDOOR": 3,
+     "suaugusiems": 3
+    },
+    "pvz": [
+     "ROYAL CANIN CAT FUSSY EXIGENT - 10 kg, sausas pašaras išrankioms katėms",
+     "Royal Canin Fit 32, 10 kg sausas maistas katėms",
+     "ROYAL CANIN GIANT ADULT 15 KG - sausas maistas suagusiems itin didelių veislių šunims",
+     "ROYAL CANIN HAIR&SKIN CARE 10 KG - sausas maistas suaugusioms katėms sveikai odai ir kailiui",
+     "ROYAL CANIN HAIR&SKIN CARE 2 KG - sausas maistas suaugusioms katėms sveikai odai ir kailiui",
+     "ROYAL CANIN HAIRBALL CARE 10 KG - sausas maistas suaugusioms katėms nuo plaukų gumuliukų",
+     "ROYAL CANIN HAIRBALL CARE 2 KG - sausas maistas suaugusioms katėms nuo plaukų gumuliukų",
+     "ROYAL CANIN INDOOR 10 KG - sausas maistas kambarinėms nejudrioms katėms",
+     "ROYAL CANIN INDOOR 2 KG - sausas maistas kambarinėms nejudrioms katėms",
+     "ROYAL CANIN INDOOR 7+, 3,5 KG - sausas maistas vyresnėms namuose gyvenančioms katėms",
+     "ROYAL CANIN KITTEN STERILISED    2 KG - sausas maistas jauniems augantiems sterilizuotiems / kastruotiems kačiukams",
+     "ROYAL CANIN MEDIUM ADULT 15 KG - sausas maistas vidutinių veislių suaugusiems šunims",
+     "ROYAL CANIN ORAL CARE 8 KG - sausas maistas suaugusioms katėms dantų higienai palaikyti",
+     "Royal Canin Persian Adult, 10 kg sausas maistas katėms"
+    ]
+   },
+   "belocat": {
+    "n": 58,
+    "desc": 0,
+    "name": "BeloCat",
+    "kat": [
+     "Kraikai kačių tualetams 53",
+     "Higienos priemonės šunims 3",
+     "Skanėstai šunims 2"
+    ],
+    "kaina": [
+     "2.29",
+     "35.28"
+    ],
+    "top": [],
+    "zodziai": {
+     "BeloCat": 38,
+     "Kraikas": 37,
+     "kvapo": 36,
+     "TOFU": 34,
+     "granulės": 34,
+     "kraikas": 16,
+     "Natūralus": 12,
+     "bentonitinis": 12,
+     "sušokantis": 12,
+     "Wonder": 10,
+     "White": 10,
+     "obuolių": 5,
+     "Silikoninis": 4,
+     "kačių": 4,
+     "levandų": 3,
+     "arbatos": 3,
+     "Purrfect": 3,
+     "nedulkantis": 3,
+     "Natural": 3,
+     "Vienkartinės": 3,
+     "palutės": 3,
+     "paklotai": 3
+    },
+    "pvz": [
+     "8 VNT. - Kraikas katėms TOFU BeloCat, alavijo / aloe vera kvapo, 6 l (2,5 kg), 2 mm granulės",
+     "8 VNT. - Kraikas katėms TOFU BeloCat, arbūzų kvapo, 6 l (2,5 kg), 2 mm granulės",
+     "8 VNT. - Kraikas katėms TOFU BeloCat, citrinų kvapo, 6 l (2,5 kg), 2 mm granulės",
+     "8 VNT. - Kraikas katėms TOFU BeloCat, kavos kvapo, 6 l (2,5 kg), 2 mm granulės",
+     "8 VNT. - Kraikas katėms TOFU BeloCat, kokoso kvapo, 6 l (2,5 kg), 2 mm granulės",
+     "8 VNT. - Kraikas katėms TOFU BeloCat, ledų kvapo, 6 l (2,5 kg), 2 mm granulės",
+     "8 VNT. - Kraikas katėms TOFU BeloCat, levandų kvapo, 6 l (2,5 kg), 2 mm granulės",
+     "8 VNT. - Kraikas katėms TOFU BeloCat, melionų kvapo, 6 l (2,5 kg), 2 mm granulės",
+     "8 VNT. - Kraikas katėms TOFU BeloCat, obuolių kvapo, 6 l (2,5 kg), 2 mm granulės",
+     "8 VNT. - Kraikas katėms TOFU BeloCat, obuolių su cinamonu kvapo, 6 l (2,5 kg), 2 mm granulės",
+     "8 VNT. - Kraikas katėms TOFU BeloCat, persikų kvapo, 6 l (2,5 kg), 2 mm granulės",
+     "8 VNT. - Kraikas katėms TOFU BeloCat, pienelio kvapo, 6 l (2,5 kg), 2 mm granulės",
+     "8 VNT. - Kraikas katėms TOFU BeloCat, pušies kvapo, 6 l (2,5 kg), 2 mm granulės",
+     "8 VNT. - Kraikas katėms TOFU BeloCat, su aktyvuota anglimi, 6 l (2,5 kg), 2 mm granulės"
+    ]
+   },
+   "ambrosia": {
+    "n": 16,
+    "desc": 0,
+    "name": "Ambrosia",
+    "kat": [
+     "Sausas maistas šunims 16"
+    ],
+    "kaina": [
+     "13.49",
+     "59.99"
+    ],
+    "top": [],
+    "zodziai": {
+     "begrūdis": 16,
+     "Fresh": 16,
+     "šviežia": 15,
+     "AMBROSIA": 10,
+     "lašiša": 8,
+     "Salmon": 8,
+     "kalakutiena": 7,
+     "Turkey": 7,
+     "grain-free": 6,
+     "Ambrosia": 6,
+     "Senior": 6,
+     "ėriena": 4,
+     "Lamb": 4,
+     "vištiena": 3,
+     "jauniems": 3,
+     "šuniukams": 3,
+     "Chicken": 3,
+     "&amp;": 3
+    },
+    "pvz": [
+     "AMBROSIA  Junior begrūdis su šviežia vištiena ir lašiša sausas maistas didelių veislių jauniems šuniukams, Fresh Chicken &amp; Salmon 12 kg",
+     "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 12 kg",
+     "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg",
+     "AMBROSIA begrūdis su ėriena ir šviežia lašiša sausas maistas šunims, grain-free Lamb & Fresh Salmon 12 kg",
+     "AMBROSIA begrūdis su ėriena ir šviežia lašiša sausas maistas šunims, grain-free Lamb & Fresh Salmon 2 kg",
+     "AMBROSIA begrūdis su jautiena ir šviežia lašiša sausas maistas šunims, grain-free Beef & Fresh Salmon 12 kg",
+     "AMBROSIA begrūdis su jautiena ir šviežia lašiša sausas maistas šunims, grain-free Beef & Fresh Salmon 2 kg",
+     "Ambrosia begrūdis su šviežia kalakutiena ir antiena sausas maistas šunims, Fresh Turkey & Duck 12kg",
+     "Ambrosia begrūdis su šviežia kalakutiena ir antiena sausas maistas šunims, Fresh Turkey & Duck 2kg",
+     "Ambrosia begrūdis su triušiena ir šviežia  kalakutiena sausas maistas šunims, Rabbit & Fresh Turkey 12 kg",
+     "Ambrosia begrūdis su triušiena ir šviežia  kalakutiena sausas maistas šunims, Rabbit & Fresh Turkey 2 kg",
+     "AMBROSIA Junior begrūdis su šviežia vištiena ir lašiša sausas maistas didelių veislių jauniems šuniukams, Fresh Chicken &amp; Salmon 2 kg",
+     "AMBROSIA Puppy begrūdis su vištiena ir šviežia žuvimi sausas maistas jauniems šuniukams Chicken & Fresh Fish 2 kg",
+     "Ambrosia Senior begrūdis su kalakutiena ir šviežia lašiša sausas maistas vyresnio amžiaus šunims, Turkey & Fresh Salmon Senior & Sterilised 12 kg"
+    ]
+   },
+   "pess": {
+    "n": 6,
+    "desc": 0,
+    "name": "Pess",
+    "kat": [
+     "Antiparazitinės priemonės šunims 5",
+     "Antiparazitinės priemonės katėms 3"
+    ],
+    "kaina": [
+     "2.70",
+     "4.84"
+    ],
+    "top": [],
+    "zodziai": {
+     "PESS": 6,
+     "nuo": 6,
+     "parazitų": 5,
+     "biologinis": 4,
+     "antkaklis": 3
+    },
+    "pvz": [
+     "PESS biologiniai lašiukai nuo parazitų katėms ir šunims, sveriantiems iki 10 kg",
+     "PESS biologiniai lašiukai nuo parazitų šunims, sveriantiems 10-20 kg",
+     "PESS biologinis antkaklis nuo parazitų katėms, 35 cm",
+     "PESS biologinis antkaklis su eteriniais aliejais nuo parazitų šunims, 60 cm",
+     "PESS biologinis antkaklis su pelargonijų ir kedrų aliejais nuo parazitų šunims,  60 cm",
+     "PESS biologinis apsauginis purškiklis nuo erkių katėms bei šunims, 250 ml"
+    ]
+   },
+   "rasco": {
+    "n": 9,
+    "desc": 0,
+    "name": "Rasco",
+    "kat": [
+     "Sausas maistas šunims 5",
+     "Konservai katėms 4"
+    ],
+    "kaina": [
+     "0.67",
+     "42.99"
+    ],
+    "top": [],
+    "zodziai": {
+     "Rasco": 9,
+     "Premium": 5,
+     "padaže": 4,
+     "ryžiais": 4,
+     "veislių": 4,
+     "spanguolėmis": 3,
+     "suaugusiems": 3,
+     "Large": 3,
+     "Breed": 3,
+     "didelių": 3,
+     "vištiena": 3
+    },
+    "pvz": [
+     "Rasco konservai kačiukams Kitten su kalakutiena ir spanguolėmis padaže, 85 g",
+     "Rasco konservai katėms (sterilizuotoms) su antiena ir spanguolėmis padaže, 85 g",
+     "Rasco konservai katėms (sterilizuotoms) su kalakutiena ir spanguolėmis padaže, 85 g",
+     "Rasco konservai katėms su antiena ir šaltalankiu padaže, 85 g",
+     "Rasco Premium Adult Lamb and Rice, 15 kg, pašaras suaugusiems šunims su ėriena ir ryžiais",
+     "Rasco Premium Adult Large Breed, 15 kg, pašaras suaugusiems didelių veislių šunims",
+     "Rasco Premium Adult Medium Breed, 15 kg, pašaras suaugusiems vidutinių veislių šunims su vištiena ir ryžiais",
+     "Rasco Premium Junior Large, 15 kg, pašaras didelių veislių šuniukams su vištiena ir ryžiais",
+     "Rasco Premium Senior Large Breed, 15 kg, pašaras vyresnio amžiaus didelių veislių šunims su vištiena ir ryžiais"
+    ]
+   }
+  }
+ },
+ "v": "dep-090138",
+ "kurimas": 200,
+ "sid": 6400,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
