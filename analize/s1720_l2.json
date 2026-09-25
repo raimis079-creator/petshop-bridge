@@ -1,0 +1,516 @@
+{
+ "v": "dep-195726",
+ "kurimas": 200,
+ "sid": 6503,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "b": {
+  "v": "S1720l",
+  "faze": "b",
+  "t": "2026-09-25 19:58:41",
+  "tvarka": [
+   [
+    142371,
+    "<div class=\"ps-calc\" id=\"ps-calc\" data-pid=\"18560\" data-species=\"dog\" data-has-table=\"1\" data-gen=\"šuns\" data"
+   ],
+   [
+    142833,
+    "<div class=\"ps-calc-head\">"
+   ],
+   [
+    142864,
+    "<div class=\"ps-calc-h1\">"
+   ],
+   [
+    142939,
+    "<div class=\"ps-calc-h2\">"
+   ],
+   [
+    143035,
+    "<div class=\"ps-calc-row\" data-ps-mode=\"weight\">"
+   ],
+   [
+    143149,
+    "<div class=\"ps-calc-in\">"
+   ],
+   [
+    143434,
+    "<div class=\"ps-calc-row ps-hide\" data-ps-mode=\"age\">"
+   ],
+   [
+    143561,
+    "<div class=\"ps-calc-in\">"
+   ],
+   [
+    143925,
+    "<div class=\"ps-calc-row ps-hide\" data-ps-mode=\"portion\">"
+   ],
+   [
+    144053,
+    "<div class=\"ps-calc-in\">"
+   ],
+   [
+    144336,
+    "<div class=\"ps-calc-out\" aria-live=\"polite\">"
+   ],
+   [
+    148580,
+    "<div class=\"product-footer\">"
+   ],
+   [
+    148638,
+    "<div class=\"woocommerce-tabs wc-tabs-wrapper container tabbed-content\">"
+   ],
+   [
+    149571,
+    "<div class=\"ps-desc-acc\">"
+   ],
+   [
+    155310,
+    "<div class=\"related related-products-wrapper product-section\">"
+   ],
+   [
+    229188,
+    "<h2 class=\"ps-login-title\">Prisijungimas prie Petshop.lt</h2>"
+   ]
+  ],
+  "ofs": {
+   "Dažnai perkama kartu": 127408,
+   "class=\"ps-calc\"": 142376,
+   "product-footer": 148592,
+   "related related-products": 155322,
+   "Panašūs produktai": 155490,
+   "ps-dydziai": false,
+   "product-info summary": 120790,
+   "product-gallery": 49705,
+   "ps-pazadas": 52728
+  },
+  "fbt_ctx": "value=\"1\" aria-label=\"Produkto kiekis\" min=\"1\" max=\"69\" step=\"1\" placeholder=\"\" inputmode=\"numeric\" autocomplete=\"off\" /> <input type=\"button\" value=\"+\" class=\"ux-quantity__button ux-quantity__button--plus button plus is-form\" aria-label=\"Padidint kiekį: Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg\"> </div> <button type=\"submit\" name=\"add-to-cart\" value=\"18560\" class=\"single_add_to_cart_button button alt\">Į krepšelį</button> </form> <div class=\"petshop-fbt\" data-nonce=\"b6cbcd39d4\" data-main=\"18560\"> <div class=\"petshop-fbt__head\"> <h3 class=\"petshop-fbt__heading\">Dažnai perkama kartu</h3> <p class=\"petshop-fbt__note\">Perkant kartu – papildomoms prekėms taikoma nuolaida!</p> </div> <div class=\"petshop-fbt__items\"> ",
+  "fbt_snippets": [
+   {
+    "id": "6503",
+    "name": "TEMP PS dep-195726"
+   }
+  ],
+  "dydziai": "<?php\n/**\n * Plugin Name: Petshop Dydziai\n * Description: Dydzio pasirinkimas prekes puslapyje. Dydis pas mus NERA variacija —\n *              kiekvienas dydis yra atskira preke (taip veikia maistas, kraikai, DP pakai).\n *              Todel pirkejui reikia matomos jungties tarp broliu; be jos jis,\n *              atsidares M, i L nepatenka niekaip.\n * Version: 1.0\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Dydziai {\n\n\tconst META = '_ps_dydzio_seima';\n\n\t/** Rikiavimo tvarka. Nezinomi dydziai keliauja i gala, abeceles tvarka. */\n\tconst EILE = array( 'xs' => 1, 's' => 2, 'm' => 3, 'l' => 4, 'xl' => 5, 'xxl' => 6 );\n\n\tpublic static function start() {\n\t\tadd_action( 'woocommerce_single_product_summary', array( __CLASS__, 'pieskime' ), 25 );\n\t}\n\n\t/** Seimos nariai: publish arba dabartine preke (kad juodrastyje irgi matytum). */\n\tpublic static function nariai( $seima, $dabartinis ) {\n\t\tglobal $wpdb;\n\t\t$ids = $wpdb->get_col( $wpdb->prepare(\n\t\t\t\"SELECT p.ID FROM {$wpdb->posts} p\n\t\t\t   JOIN {$wpdb->postmeta} m ON m.post_id = p.ID AND m.meta_key = %s\n\t\t\t  WHERE p.post_type = 'product' AND m.meta_value = %s\n\t\t\t    AND ( p.post_status = 'publish' OR p.ID = %d )\",\n\t\t\tself::META, $seima, (int) $dabartinis ) );\n\t\treturn array_map( 'intval', (array) $ids );\n\t}\n\n\t/** Dydzio uzrasas: pirma pa_dydis, po to pa_pakuotes_dydis. */\n\tpublic static function uzrasas( $pid ) {\n\t\tforeach ( array( 'pa_dydis', 'pa_pakuotes_dydis' ) as $tx ) {\n\t\t\tif ( ! taxonomy_exists( $tx ) ) { continue; }\n\t\t\t$n = wp_get_object_terms( $pid, $tx, array( 'fields' => 'names' ) );\n\t\t\tif ( ! is_wp_error( $n ) && $n ) { return (string) $n[0]; }\n\t\t}\n\t\treturn '';\n\t}\n\n\tpublic static function svoris( $u ) {\n\t\t$k = mb_strtolower( trim( $u ) );\n\t\tif ( isset( self::EILE[ $k ] ) ) { return array( 0, self::EILE[ $k ], '' ); }\n\t\t/* „10 l\", „2,5 kg\" — rikiuojam pagal skaiciu, ne pagal teksta */\n\t\tif ( preg_match( '/([\\d]+(?:[.,][\\d]+)?)/u', $k, $m ) ) {\n\t\t\treturn array( 1, (float) str_replace( ',', '.', $m[1] ), $k );\n\t\t}\n\t\treturn array( 2, 0, $k );\n\t}\n\n\tpublic static function pieskime() {\n\t\tglobal $product;\n\t\tif ( ! $product instanceof WC_Product ) { return; }\n\t\t$pid   = $product->get_id();\n\t\t$seima = get_post_meta( $pid, self::META, true );\n\t\tif ( ! $seima ) { return; }\n\n\t\t$ids = self::nariai( $seima, $pid );\n\t\tif ( count( $ids ) < 2 ) { return; }   /* vienas narys — bloko nereikia */\n\n\t\t$eil = array();\n\t\tforeach ( $ids as $id ) {\n\t\t\t$u = self::uzrasas( $id );\n\t\t\tif ( $u === '' ) { continue;"
+ },
+ "c": {
+  "v": "S1720l",
+  "faze": "c",
+  "t": "2026-09-25 19:58:52",
+  "ist_top": [
+   "19387:511 Animonda Vom Feinsten Adult with Turkey and Rabbit",
+   "19446:464 Animonda Vom Feinsten Adult with Beef and Turkey H",
+   "18366:459 Gėrimas katėms &#8211; Miamor Trinkfein Vitaldrink",
+   "19358:449 Animonda Vom Feinsten Kitten with Lamb – konservai",
+   "18369:445 Gėrimas katėms &#8211; Miamor Trinkfein Vitaldrink",
+   "19417:444 Animonda Vom Feinsten Adult with Poultry and Veal ",
+   "19396:434 Animonda Vom Feinsten Adult with Turkey and Ham – ",
+   "19399:431 Animonda Vom Feinsten Adult with Turkey Hearts – k",
+   "19355:372 Animonda Vom Feinsten Kitten with Poultry – konser",
+   "19440:365 Animonda Vom Feinsten Adult with Chicken Liver – k",
+   "19393:347 Animonda Vom Feinsten Adult with Turkey and Lamb –",
+   "16305:335 Ruda kiaulės ausis, 1 vnt.",
+   "19449:334 Animonda Vom Feinsten Adult Pate Mild Menu with pu",
+   "18125:329 Jaučio penis pjaustytas, 12,5 cm, 1 vnt.",
+   "19411:313 Animonda Vom Feinsten Adult with Rabbit &#8211; ko",
+   "18655:311 Džiovinta kiaulės uodega, 1 vnt.",
+   "16942:266 Pasta katėms su lašiša &#8211; Ontario Salmon Fres",
+   "18372:254 Gėrimas katėms &#8211; Miamor Trinkfein Vitaldrink",
+   "19582:241 Animonda GranCarno Adult Beef + Lamb: konservai šu",
+   "19414:239 Animonda Vom Feinsten Adult with Poultry and Veal ",
+   "16298:226 Ruda stirnos koja, 1 vnt.",
+   "18599:224 Exclusion Hypoallergenic konservai šunims su kiaul",
+   "19570:217 Animonda GranCarno Adult Beef: konservai šunims su",
+   "16311:210 Ruda jaučio ausis, 1 vnt.",
+   "16933:196 Pasta kačiukams su tunu &#8211; Ontario Kitten Tun",
+   "19405:196 Animonda Vom Feinsten Adult with Salmon and Shrimp",
+   "19092:192 Balta stirnos koja, 1 vnt.",
+   "19425:191 Animonda Vom Feinsten Adult with Deer &#8211; kons",
+   "19590:189 Animonda GranCarno Adult Beef + Duck Hearts: konse",
+   "18587:181 Exclusion Hypoallergenic mažų veislių šunų maistas",
+   "19361:181 Animonda Vom Feinsten Kitten with Beef – konservai",
+   "19496:180 Animonda GranCarno Adult: konservai suaugusiems šu",
+   "16302:176 Ruda kiaulės knyslė, 1 vnt.",
+   "16936:165 Pasta katėms su ėriena – Ontario Lamb Fresh Meat P",
+   "19452:164 Animonda Vom Feinsten Adult Pate Mild Menu with Tu",
+   "16945:155 Pasta katėms su antiena &#8211; Ontario Duck Fresh",
+   "19594:150 Animonda GranCarno Adult Beef + Duck Hearts: konse",
+   "18590:139 Exclusion Hypoallergenic mažų veislių šunų maistas",
+   "16939:128 Pasta katėms su vištiena &#8211; Ontario Chicken F",
+   "19095:128 Balta kiaulės knyslė, 1 vnt."
+  ],
+  "top": [
+   {
+    "pid": 19396,
+    "n": 55,
+    "pav": "Animonda Vom Feinsten Adult with Turkey and Ham – konservai suaugusiem",
+    "seima": "",
+    "broliai": [
+     "19381 Animonda Vom Feinsten Adult with Turkey in Yougurt Sauc",
+     "19387 Animonda Vom Feinsten Adult with Turkey and Rabbit – ko",
+     "19393 Animonda Vom Feinsten Adult with Turkey and Lamb – kons",
+     "19399 Animonda Vom Feinsten Adult with Turkey Hearts – konser",
+     "19405 Animonda Vom Feinsten Adult with Salmon and Shrimp – ko",
+     "19408 Animonda Vom Feinsten Adult with Rabbit in Cream Sauce "
+    ]
+   },
+   {
+    "pid": 19425,
+    "n": 47,
+    "pav": "Animonda Vom Feinsten Adult with Deer &#8211; konservai suaugusiems šu",
+    "seima": "",
+    "broliai": [
+     "19381 Animonda Vom Feinsten Adult with Turkey in Yougurt Sauc",
+     "19387 Animonda Vom Feinsten Adult with Turkey and Rabbit – ko",
+     "19393 Animonda Vom Feinsten Adult with Turkey and Lamb – kons",
+     "19396 Animonda Vom Feinsten Adult with Turkey and Ham – konse",
+     "19399 Animonda Vom Feinsten Adult with Turkey Hearts – konser",
+     "19405 Animonda Vom Feinsten Adult with Salmon and Shrimp – ko"
+    ]
+   },
+   {
+    "pid": 19358,
+    "n": 31,
+    "pav": "Animonda Vom Feinsten Kitten with Lamb – konservai kačiukams su ėriena",
+    "seima": "",
+    "broliai": [
+     "19355 Animonda Vom Feinsten Kitten with Poultry – konservai k",
+     "19361 Animonda Vom Feinsten Kitten with Beef – konservai kači"
+    ]
+   },
+   {
+    "pid": 18369,
+    "n": 30,
+    "pav": "Gėrimas katėms &#8211; Miamor Trinkfein Vitaldrink su tunu, 135 ml",
+    "seima": "",
+    "broliai": []
+   },
+   {
+    "pid": 18366,
+    "n": 27,
+    "pav": "Gėrimas katėms &#8211; Miamor Trinkfein Vitaldrink su vištiena, 135 ml",
+    "seima": "",
+    "broliai": []
+   },
+   {
+    "pid": 19405,
+    "n": 25,
+    "pav": "Animonda Vom Feinsten Adult with Salmon and Shrimp – konservai katėms ",
+    "seima": "",
+    "broliai": [
+     "19381 Animonda Vom Feinsten Adult with Turkey in Yougurt Sauc",
+     "19387 Animonda Vom Feinsten Adult with Turkey and Rabbit – ko",
+     "19393 Animonda Vom Feinsten Adult with Turkey and Lamb – kons",
+     "19396 Animonda Vom Feinsten Adult with Turkey and Ham – konse",
+     "19399 Animonda Vom Feinsten Adult with Turkey Hearts – konser",
+     "19408 Animonda Vom Feinsten Adult with Rabbit in Cream Sauce "
+    ]
+   },
+   {
+    "pid": 19411,
+    "n": 25,
+    "pav": "Animonda Vom Feinsten Adult with Rabbit &#8211; konservai suaugusiems ",
+    "seima": "",
+    "broliai": [
+     "19381 Animonda Vom Feinsten Adult with Turkey in Yougurt Sauc",
+     "19387 Animonda Vom Feinsten Adult with Turkey and Rabbit – ko",
+     "19393 Animonda Vom Feinsten Adult with Turkey and Lamb – kons",
+     "19396 Animonda Vom Feinsten Adult with Turkey and Ham – konse",
+     "19399 Animonda Vom Feinsten Adult with Turkey Hearts – konser",
+     "19405 Animonda Vom Feinsten Adult with Salmon and Shrimp – ko"
+    ]
+   },
+   {
+    "pid": 19417,
+    "n": 23,
+    "pav": "Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms s",
+    "seima": "",
+    "broliai": [
+     "19381 Animonda Vom Feinsten Adult with Turkey in Yougurt Sauc",
+     "19387 Animonda Vom Feinsten Adult with Turkey and Rabbit – ko",
+     "19393 Animonda Vom Feinsten Adult with Turkey and Lamb – kons",
+     "19396 Animonda Vom Feinsten Adult with Turkey and Ham – konse",
+     "19399 Animonda Vom Feinsten Adult with Turkey Hearts – konser",
+     "19405 Animonda Vom Feinsten Adult with Salmon and Shrimp – ko"
+    ]
+   },
+   {
+    "pid": 17223,
+    "n": 20,
+    "pav": "Ontario Monoproteino konservai šunims su ėriena ir rudaisiais ryžiais,",
+    "seima": "",
+    "broliai": [
+     "17227 Ontario Monoproteino konservai šunims su ėriena ir ruda",
+     "17232 Ontario Monoproteino konservai šunims su kalakutiena ir",
+     "17236 Ontario Monoproteino konservai šunims su kalakutiena ir",
+     "17241 Ontario Monoproteino konservai šunims su jautiena ir mo",
+     "17245 Ontario Monoproteino konservai šunims su jautiena ir mo",
+     "17250 Ontario Monoproteino konservai šunims su antiena ir mol"
+    ]
+   },
+   {
+    "pid": 20481,
+    "n": 20,
+    "pav": "Josera Meat Lovers Pure Lamb konservuotas pašaras šunims su ėriena, 40",
+    "seima": "",
+    "broliai": []
+   },
+   {
+    "pid": 19446,
+    "n": 20,
+    "pav": "Animonda Vom Feinsten Adult with Beef and Turkey Hearts – konservai su",
+    "seima": "",
+    "broliai": [
+     "19381 Animonda Vom Feinsten Adult with Turkey in Yougurt Sauc",
+     "19387 Animonda Vom Feinsten Adult with Turkey and Rabbit – ko",
+     "19393 Animonda Vom Feinsten Adult with Turkey and Lamb – kons",
+     "19396 Animonda Vom Feinsten Adult with Turkey and Ham – konse",
+     "19399 Animonda Vom Feinsten Adult with Turkey Hearts – konser",
+     "19405 Animonda Vom Feinsten Adult with Salmon and Shrimp – ko"
+    ]
+   },
+   {
+    "pid": 21331,
+    "n": 16,
+    "pav": "Josera Kitten Chicken begrūdis konservuotas pašaras jaunoms katėms su ",
+    "seima": "",
+    "broliai": []
+   },
+   {
+    "pid": 35330,
+    "n": 16,
+    "pav": "Exclusion Hypo konservuotas pašaras šunims su arkliena ir bulvėmis, 20",
+    "seima": "",
+    "broliai": [
+     "35312 Exclusion Hypo konservuotas pašaras šunims su triušiena",
+     "35326 Exclusion Hypo konservuotas pašaras šunims su žuvimi ir",
+     "35328 Exclusion Hypo konservuotas pašaras šunims su žuvimi ir",
+     "35334 Exclusion Hypo konservuotas pašaras šunims su elniena i",
+     "35338 Exclusion Hypo konservuotas pašaras šunims su šerniena ",
+     "35340 Exclusion Hypo konservuotas pašaras šunims su šerniena "
+    ]
+   },
+   {
+    "pid": 17541,
+    "n": 16,
+    "pav": "Miamor Feine Filets konservai katėms, tunas su kalmarais drebučiuose, ",
+    "seima": "",
+    "broliai": [
+     "17526 Miamor Feine Filets konservai katėms, vištienos ir tuno",
+     "17529 Miamor Feine Filets konservai katėms, vištienos ir tuno",
+     "17535 Miamor Feine Filets konservai katėms, vištiena paukštie",
+     "17538 Miamor Feine Filets konservai katėms, tunas su krabais ",
+     "17544 Miamor Feine Filets konservai katėms, tunas su daržovėm",
+     "17547 Miamor Feine Filets konservai katėms, tunas lašišos dre"
+    ]
+   },
+   {
+    "pid": 19449,
+    "n": 15,
+    "pav": "Animonda Vom Feinsten Adult Pate Mild Menu with pure Turkey – konserva",
+    "seima": "",
+    "broliai": [
+     "19381 Animonda Vom Feinsten Adult with Turkey in Yougurt Sauc",
+     "19387 Animonda Vom Feinsten Adult with Turkey and Rabbit – ko",
+     "19393 Animonda Vom Feinsten Adult with Turkey and Lamb – kons",
+     "19396 Animonda Vom Feinsten Adult with Turkey and Ham – konse",
+     "19399 Animonda Vom Feinsten Adult with Turkey Hearts – konser",
+     "19405 Animonda Vom Feinsten Adult with Salmon and Shrimp – ko"
+    ]
+   },
+   {
+    "pid": 18587,
+    "n": 15,
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žir",
+    "seima": "",
+    "broliai": [
+     "18584 Exclusion Hypoallergenic mažų veislių šunų maistas su k",
+     "18590 Exclusion Hypoallergenic mažų veislių šunų maistas su k"
+    ]
+   },
+   {
+    "pid": 19387,
+    "n": 15,
+    "pav": "Animonda Vom Feinsten Adult with Turkey and Rabbit – konservai katėms ",
+    "seima": "",
+    "broliai": [
+     "19381 Animonda Vom Feinsten Adult with Turkey in Yougurt Sauc",
+     "19393 Animonda Vom Feinsten Adult with Turkey and Lamb – kons",
+     "19396 Animonda Vom Feinsten Adult with Turkey and Ham – konse",
+     "19399 Animonda Vom Feinsten Adult with Turkey Hearts – konser",
+     "19405 Animonda Vom Feinsten Adult with Salmon and Shrimp – ko",
+     "19408 Animonda Vom Feinsten Adult with Rabbit in Cream Sauce "
+    ]
+   },
+   {
+    "pid": 18372,
+    "n": 14,
+    "pav": "Gėrimas katėms &#8211; Miamor Trinkfein Vitaldrink su antiena, 135 ml",
+    "seima": "",
+    "broliai": []
+   },
+   {
+    "pid": 19504,
+    "n": 13,
+    "pav": "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena,",
+    "seima": "",
+    "broliai": [
+     "19471 Animonda GranCarno Adult: konservai šunims su širdimis,",
+     "19475 Animonda GranCarno Adult: konservai šunims su širdimis,",
+     "19479 Animonda GranCarno Adult: konservai šunims su lašiša, p",
+     "19483 Animonda GranCarno Adult: konservai šunims su lašiša, p",
+     "19488 Animonda GranCarno Adult: konservai šunims su elniena, ",
+     "19492 Animonda GranCarno Adult: konservai šunims su elniena, "
+    ]
+   },
+   {
+    "pid": 18602,
+    "n": 12,
+    "pav": "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 200",
+    "seima": "",
+    "broliai": [
+     "18593 Exclusion Hypoallergenic konservai šunims su triušiena ",
+     "18596 Exclusion Hypoallergenic konservai šunims su putpelėmis",
+     "18599 Exclusion Hypoallergenic konservai šunims su kiauliena ",
+     "18605 Exclusion Hypoallergenic konservai šunims su elniena ir",
+     "18608 Exclusion Hypoallergenic konservai šunims su arkliena i",
+     "18611 Exclusion Hypoallergenic konservai šunims su antiena ir"
+    ]
+   },
+   {
+    "pid": 19582,
+    "n": 12,
+    "pav": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jaut",
+    "seima": "",
+    "broliai": [
+     "19570 Animonda GranCarno Adult Beef: konservai šunims su švie",
+     "19574 Animonda GranCarno Adult Beef: konservai šunims su švie",
+     "19578 Animonda GranCarno Adult Beef + Rabbit with Herbs: kons",
+     "19586 Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+     "19590 Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+     "19594 Animonda GranCarno Adult Beef + Duck Hearts: konservai "
+    ]
+   },
+   {
+    "pid": 19590,
+    "n": 11,
+    "pav": "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaugusiems šun",
+    "seima": "",
+    "broliai": [
+     "19570 Animonda GranCarno Adult Beef: konservai šunims su švie",
+     "19574 Animonda GranCarno Adult Beef: konservai šunims su švie",
+     "19578 Animonda GranCarno Adult Beef + Rabbit with Herbs: kons",
+     "19582 Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+     "19586 Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+     "19594 Animonda GranCarno Adult Beef + Duck Hearts: konservai "
+    ]
+   },
+   {
+    "pid": 17400,
+    "n": 11,
+    "pav": "Monge Monoproteico Solo Agnello – Monoproteininiai konservai šunims su",
+    "seima": "",
+    "broliai": []
+   },
+   {
+    "pid": 19496,
+    "n": 11,
+    "pav": "Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 80",
+    "seima": "",
+    "broliai": [
+     "19471 Animonda GranCarno Adult: konservai šunims su širdimis,",
+     "19475 Animonda GranCarno Adult: konservai šunims su širdimis,",
+     "19479 Animonda GranCarno Adult: konservai šunims su lašiša, p",
+     "19483 Animonda GranCarno Adult: konservai šunims su lašiša, p",
+     "19488 Animonda GranCarno Adult: konservai šunims su elniena, ",
+     "19492 Animonda GranCarno Adult: konservai šunims su elniena, "
+    ]
+   },
+   {
+    "pid": 35316,
+    "n": 10,
+    "pav": "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400",
+    "seima": "",
+    "broliai": []
+   },
+   {
+    "pid": 18512,
+    "n": 10,
+    "pav": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su ėri",
+    "seima": "",
+    "broliai": [
+     "18515 Exclusion Mono Protein Mediterraneo konservuotas pašara",
+     "18518 Exclusion Mono Protein Mediterraneo konservuotas pašara",
+     "18521 Exclusion Mono Protein Mediterraneo konservuotas pašara",
+     "20537 Exclusion Mono Protein Mediterraneo begrūdis sausas paš",
+     "20539 Exclusion Mono Protein Mediterraneo begrūdis sausas paš",
+     "21115 Exclusion Mono Protein Mediterraneo sausas pašaras dide"
+    ]
+   },
+   {
+    "pid": 19578,
+    "n": 10,
+    "pav": "Animonda GranCarno Adult Beef + Rabbit with Herbs: konservai suaugusie",
+    "seima": "",
+    "broliai": [
+     "19570 Animonda GranCarno Adult Beef: konservai šunims su švie",
+     "19574 Animonda GranCarno Adult Beef: konservai šunims su švie",
+     "19582 Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+     "19586 Animonda GranCarno Adult Beef + Lamb: konservai šunims ",
+     "19590 Animonda GranCarno Adult Beef + Duck Hearts: konservai ",
+     "19594 Animonda GranCarno Adult Beef + Duck Hearts: konservai "
+    ]
+   },
+   {
+    "pid": 17507,
+    "n": 10,
+    "pav": "Miamor Super Premium konservai katėms su vištiena ir ryžiais, 100 g",
+    "seima": "",
+    "broliai": [
+     "17493 Miamor Super premium konservai katėms su tunu ir krevet",
+     "17499 Miamor Super premium konservai katėms su tunu ir kalmar",
+     "17504 Miamor Super premium konservai katėms su tunu ir daržov",
+     "17510 Miamor Super Premium konservai katėms su tunu ir sūriu,",
+     "17517 Miamor Super Premium konservai katėms su tunu ir ryžiai",
+     "17520 Miamor Super Premium konservai katėms su tunu ir putpel"
+    ]
+   },
+   {
+    "pid": 19692,
+    "n": 9,
+    "pav": "Animonda Carny Adult Beef + Heart – konservai katėms su šviežia jautie",
+    "seima": "",
+    "broliai": [
+     "19672 Animonda Carny Adult Beef + Turkey + Shrimp – konservai",
+     "19685 Animonda Carny Adult Beef + Lamb – konservai katėms su ",
+     "19708 Animonda Carny Adult Beef + Chicken + Duck Heart – kons"
+    ]
+   },
+   {
+    "pid": 17032,
+    "n": 8,
+    "pav": "Ontario troškinys šunims iš jautienos ir daržovių sultinyje, 300 g, Po",
+    "seima": "",
+    "broliai": [
+     "17022 Ontario troškinys šunims iš lašišos ir daržovių sultiny",
+     "17026 Ontario troškinys šunims iš karpio ir daržovių sultinyj",
+     "17035 Ontario troškinys šunims iš elnienos ir daržovių sultin",
+     "17038 Ontario troškinys šunims iš antienos ir daržovių sultin"
+    ]
+   }
+  ],
+  "seimos_meta": [
+   {
+    "meta_key": "_ps_dydzio_seima",
+    "n": "32"
+   },
+   {
+    "meta_key": "_ps_laukas_seima",
+    "n": "23"
+   }
+  ]
+ }
+}
