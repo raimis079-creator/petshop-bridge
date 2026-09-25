@@ -1,0 +1,467 @@
+{
+ "1": {
+  "v": "S1717l",
+  "faze": "1",
+  "trina": {
+   "wp-content/mu-plugins/petshop-av-admin.php": [
+    "$src = $item->get_meta( '_ps_source' );"
+   ],
+   "wp-content/mu-plugins/petshop-av-dropship.php": [
+    "$src = $item->get_meta( '_ps_source' );",
+    "$s = $item->get_meta( '_ps_source' );",
+    "$src = $item->get_meta( '_ps_source' );"
+   ],
+   "wp-content/mu-plugins/petshop-av-order.php": [
+    "*   _ps_source_at     kada nuspręsta",
+    "$item->update_meta_data( '_ps_source_at',     current_time( 'mysql' ) );"
+   ],
+   "wp-content/mu-plugins/petshop-av-reduce.php": [
+    "$src = $item->get_meta( '_ps_source' );"
+   ],
+   "wp-content/mu-plugins/petshop-av-tiekimas.php": [
+    "$src = $item->get_meta( '_ps_source' );",
+    "$src = (string) $it->get_meta( '_ps_source' );",
+    "$it->update_meta_data( '_ps_source_at', current_time( 'mysql' ) );",
+    "$s = (string) $it->get_meta( '_ps_source' ); if ( ! $s ) { continue; }",
+    "$src = $it->get_meta( '_ps_source' );"
+   ],
+   "wp-content/mu-plugins/petshop-darbalaukis.php": [
+    "$s = (string) $it->get_meta( '_ps_source' ); if ( ! $s ) { continue; }",
+    "$s = (string) $it->get_meta( '_ps_source' ); $k = (string) $it->get_meta( '_ps_kelias' );",
+    "$it->update_meta_data( '_ps_source_at', current_time( 'mysql' ) );",
+    "$it->update_meta_data( '_ps_source_at', $dabar ); $it->update_meta_data( '_ps_source_reason', 'darbalaukis: ' . $u->display_name . ' — siunta ' . $x['nr'] . ' grįžo, siunčiama iš AV iš naujo' );",
+    "foreach ( $o->get_items() as $it ) { $s = (string) $it->get_meta( '_ps_source' ); if ( ! $s ) { return false; } $src[ $s ] = 1; }"
+   ],
+   "wp-content/mu-plugins/petshop-desk.php": [
+    "*   _ps_source · _ps_carrier · _ps_source_qty · _ps_source_at · _ps_source_reason",
+    "$item->update_meta_data( '_ps_source_at', current_time( 'mysql' ) );",
+    "$s = $item->get_meta( '_ps_source' );"
+   ],
+   "wp-content/mu-plugins/petshop-gavimo-perrusiavimas.php": [
+    "$src = (string) $it->get_meta( '_ps_source' );"
+   ]
+  },
+  "iv_cols": [
+   "id",
+   "laikas",
+   "diena",
+   "uzsakymas",
+   "eilute",
+   "sritis",
+   "veiksmas",
+   "rezultatas",
+   "busena",
+   "kanalas",
+   "kas",
+   "kas_vardas",
+   "pries",
+   "po",
+   "pastaba"
+  ],
+  "ivykiai": [
+   {
+    "id": "1894",
+    "laikas": "2026-09-24 15:01:40",
+    "diena": "2026-09-24",
+    "uzsakymas": "36296",
+    "eilute": "0",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "rezultatas": "ok",
+    "busena": "",
+    "kanalas": "auto",
+    "kas": "0",
+    "kas_vardas": "sistema",
+    "pries": "{\"status\":\"pending\"}",
+    "po": "{\"status\":\"processing\"}",
+    "pastaba": "mokėjimas / svetainė"
+   },
+   {
+    "id": "1911",
+    "laikas": "2026-09-25 06:00:56",
+    "diena": "2026-09-25",
+    "uzsakymas": "36296",
+    "eilute": "0",
+    "sritis": "desk",
+    "veiksmas": "rusiuoti",
+    "rezultatas": "ok",
+    "busena": "",
+    "kanalas": "web",
+    "kas": "5788",
+    "kas_vardas": "Inga",
+    "pries": null,
+    "po": "{\"zinute\":\"AMBROSIA begrūdis su ėriena ir šviežia e — Ambrosia siunčia klientui; Galvijų trachėjos, pjaustytos, 500 g — Iš AV; Veršiuko ausis, 1 vnt. — Iš AV\"}",
+    "pastaba": null
+   },
+   {
+    "id": "1912",
+    "laikas": "2026-09-25 06:07:08",
+    "diena": "2026-09-25",
+    "uzsakymas": "36296",
+    "eilute": "0",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "rezultatas": "ok",
+    "busena": "",
+    "kanalas": "web",
+    "kas": "5788",
+    "kas_vardas": "Inga",
+    "pries": "{\"status\":\"processing\",\"tipas\":\"MIXED\",\"pak\":0,\"siuntos\":[],\"vp\":\"\",\"misrus\":null,\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"\",\"eil\":{\"2578\":{\"pid\":19760,\"q\":1,\"src\":\"\",\"car\":\"\",\"red\":\"\",\"av_q\":\"0\",\"stock\":\"11\"},\"2579\":{\"pid\":18468,\"q\":1,\"src\":\"\",\"car\":\"\",\"red\":\"\",\"av_q\":\"\",\"stock\":\"10\"},\"2580\":{\"pid\":15867,\"q\":4,\"src\":\"\",\"car\":\"\",\"red\":\"\",\"av_q\":\"\",\"stock\":\"25\"}}}",
+    "po": "{\"status\":\"processing\",\"tipas\":\"MIXED\",\"pak\":0,\"siuntos\":[],\"vp\":\"\",\"misrus\":null,\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"\",\"eil\":{\"2578\":{\"pid\":19760,\"q\":1,\"src\":\"\",\"car\":\"\",\"red\":\"\",\"av_q\":\"0\",\"stock\":\"11\"},\"2579\":{\"pid\":18468,\"q\":1,\"src\":\"\",\"car\":\"\",\"red\":\"\",\"av_q\":\"\",\"stock\":\"10\"},\"2580\":{\"pid\":15867,\"q\":4,\"src\":\"\",\"car\":\"\",\"red\":\"\",\"av_q\":\"\",\"stock\":\"25\"}},\"param\":[],\"trukme_ms\":7,\"redirect\":{\"ps_ready\":\"1\",\"page\":\"ps-lapai\"}}",
+    "pastaba": null
+   },
+   {
+    "id": "1913",
+    "laikas": "2026-09-25 06:07:27",
+    "diena": "2026-09-25",
+    "uzsakymas": "36296",
+    "eilute": "0",
+    "sritis": "desk",
+    "veiksmas": "vp_reg",
+    "rezultatas": "ok",
+    "busena": "",
+    "kanalas": "web",
+    "kas": "5788",
+    "kas_vardas": "Inga",
+    "pries": "{\"status\":\"processing\",\"tipas\":\"MIXED\",\"pak\":1,\"siuntos\":[],\"vp\":\"\",\"misrus\":null,\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"\",\"eil\":{\"2578\":{\"pid\":19760,\"q\":1,\"src\":\"\",\"car\":\"\",\"red\":\"\",\"av_q\":\"0\",\"stock\":\"11\"},\"2579\":{\"pid\":18468,\"q\":1,\"src\":\"\",\"car\":\"\",\"red\":\"\",\"av_q\":\"\",\"stock\":\"10\"},\"2580\":{\"pid\":15867,\"q\":4,\"src\":\"\",\"car\":\"\",\"red\":\"\",\"av_q\":\"\",\"stock\":\"25\"}}}",
+    "po": "{\"status\":\"processing\",\"tipas\":\"MIXED\",\"pak\":1,\"siuntos\":\"{\\\"av\\\":{\\\"sandelis\\\":\\\"av\\\",\\\"kodas\\\":\\\"001\\\",\\\"manifest\\\":\\\"07267260925001\\\",\\\"numeriai\\\":[\\\"V07267E1000220\\\"],\\\"data\\\":\\\"2026-09-25 09:07:27\\\"}}\",\"vp\":\"{\\\"manifest\\\":\\\"07267260925001\\\",\\\"pack_numbers\\\":[\\\"V07267E1000220\\\"],\\\"weight\\\":12.700000000000003,\\\"products_count\\\":6,\\\"status\\\":\\\"\",\"misrus\":null,\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"\",\"eil\":{\"2578\":{\"pid\":19760,\"q\":1,\"src\":\"\",\"car\":\"\",\"red\":\"\",\"av_q\":\"0\",\"stock\"…",
+    "pastaba": null
+   }
+  ],
+  "item_meta_db": [
+   {
+    "order_item_id": "2578",
+    "meta_key": "_product_id",
+    "v": "19760",
+    "meta_id": "27350"
+   },
+   {
+    "order_item_id": "2578",
+    "meta_key": "_variation_id",
+    "v": "0",
+    "meta_id": "27351"
+   },
+   {
+    "order_item_id": "2578",
+    "meta_key": "_qty",
+    "v": "1",
+    "meta_id": "27352"
+   },
+   {
+    "order_item_id": "2578",
+    "meta_key": "_tax_class",
+    "v": "",
+    "meta_id": "27353"
+   },
+   {
+    "order_item_id": "2578",
+    "meta_key": "_line_subtotal",
+    "v": "49.578512",
+    "meta_id": "27354"
+   },
+   {
+    "order_item_id": "2578",
+    "meta_key": "_line_subtotal_tax",
+    "v": "10.41",
+    "meta_id": "27355"
+   },
+   {
+    "order_item_id": "2578",
+    "meta_key": "_line_total",
+    "v": "49.578512",
+    "meta_id": "27356"
+   },
+   {
+    "order_item_id": "2578",
+    "meta_key": "_line_tax",
+    "v": "10.41",
+    "meta_id": "27357"
+   },
+   {
+    "order_item_id": "2578",
+    "meta_key": "_line_tax_data",
+    "v": "a:2:{s:5:\"total\";a:1:{i:1;s:9:\"10.411488\";}s:8:\"subtotal\";a:",
+    "meta_id": "27358"
+   },
+   {
+    "order_item_id": "2578",
+    "meta_key": "_ps_savikaina_vnt",
+    "v": "34.8600",
+    "meta_id": "27359"
+   },
+   {
+    "order_item_id": "2578",
+    "meta_key": "_ps_savikaina_saltinis",
+    "v": "pardavimai",
+    "meta_id": "27360"
+   },
+   {
+    "order_item_id": "2578",
+    "meta_key": "_ps_kaina_atskirai_vnt",
+    "v": "59.9900",
+    "meta_id": "27361"
+   },
+   {
+    "order_item_id": "2578",
+    "meta_key": "_ps_kelias",
+    "v": "tiesiai",
+    "meta_id": "27429"
+   },
+   {
+    "order_item_id": "2579",
+    "meta_key": "_product_id",
+    "v": "18468",
+    "meta_id": "27362"
+   },
+   {
+    "order_item_id": "2579",
+    "meta_key": "_variation_id",
+    "v": "0",
+    "meta_id": "27363"
+   },
+   {
+    "order_item_id": "2579",
+    "meta_key": "_qty",
+    "v": "1",
+    "meta_id": "27364"
+   },
+   {
+    "order_item_id": "2579",
+    "meta_key": "_tax_class",
+    "v": "",
+    "meta_id": "27365"
+   },
+   {
+    "order_item_id": "2579",
+    "meta_key": "_line_subtotal",
+    "v": "7.090909",
+    "meta_id": "27366"
+   },
+   {
+    "order_item_id": "2579",
+    "meta_key": "_line_subtotal_tax",
+    "v": "1.49",
+    "meta_id": "27367"
+   },
+   {
+    "order_item_id": "2579",
+    "meta_key": "_line_total",
+    "v": "7.090909",
+    "meta_id": "27368"
+   },
+   {
+    "order_item_id": "2579",
+    "meta_key": "_line_tax",
+    "v": "1.49",
+    "meta_id": "27369"
+   },
+   {
+    "order_item_id": "2579",
+    "meta_key": "_line_tax_data",
+    "v": "a:2:{s:5:\"total\";a:1:{i:1;s:8:\"1.489091\";}s:8:\"subtotal\";a:1",
+    "meta_id": "27370"
+   },
+   {
+    "order_item_id": "2579",
+    "meta_key": "_ps_savikaina_vnt",
+    "v": "3.7600",
+    "meta_id": "27371"
+   },
+   {
+    "order_item_id": "2579",
+    "meta_key": "_ps_savikaina_saltinis",
+    "v": "pardavimai",
+    "meta_id": "27372"
+   },
+   {
+    "order_item_id": "2579",
+    "meta_key": "_ps_kaina_atskirai_vnt",
+    "v": "8.5800",
+    "meta_id": "27373"
+   },
+   {
+    "order_item_id": "2579",
+    "meta_key": "_ps_kelias",
+    "v": "av",
+    "meta_id": "27430"
+   },
+   {
+    "order_item_id": "2580",
+    "meta_key": "_product_id",
+    "v": "15867",
+    "meta_id": "27374"
+   },
+   {
+    "order_item_id": "2580",
+    "meta_key": "_variation_id",
+    "v": "0",
+    "meta_id": "27375"
+   },
+   {
+    "order_item_id": "2580",
+    "meta_key": "_qty",
+    "v": "4",
+    "meta_id": "27376"
+   },
+   {
+    "order_item_id": "2580",
+    "meta_key": "_tax_class",
+    "v": "",
+    "meta_id": "27377"
+   },
+   {
+    "order_item_id": "2580",
+    "meta_key": "_line_subtotal",
+    "v": "4.595041",
+    "meta_id": "27378"
+   },
+   {
+    "order_item_id": "2580",
+    "meta_key": "_line_subtotal_tax",
+    "v": "0.96",
+    "meta_id": "27379"
+   },
+   {
+    "order_item_id": "2580",
+    "meta_key": "_line_total",
+    "v": "4.595041",
+    "meta_id": "27380"
+   },
+   {
+    "order_item_id": "2580",
+    "meta_key": "_line_tax",
+    "v": "0.96",
+    "meta_id": "27381"
+   },
+   {
+    "order_item_id": "2580",
+    "meta_key": "_line_tax_data",
+    "v": "a:2:{s:5:\"total\";a:1:{i:1;s:8:\"0.964959\";}s:8:\"subtotal\";a:1",
+    "meta_id": "27382"
+   },
+   {
+    "order_item_id": "2580",
+    "meta_key": "_ps_savikaina_vnt",
+    "v": "0.6100",
+    "meta_id": "27383"
+   },
+   {
+    "order_item_id": "2580",
+    "meta_key": "_ps_savikaina_saltinis",
+    "v": "pardavimai",
+    "meta_id": "27384"
+   },
+   {
+    "order_item_id": "2580",
+    "meta_key": "_ps_kaina_atskirai_vnt",
+    "v": "1.3900",
+    "meta_id": "27385"
+   },
+   {
+    "order_item_id": "2580",
+    "meta_key": "_ps_kelias",
+    "v": "av",
+    "meta_id": "27431"
+   }
+  ],
+  "item_meta_db_36288": [
+   {
+    "order_item_id": "2552",
+    "meta_key": "_ps_savikaina_vnt",
+    "meta_id": "27051"
+   },
+   {
+    "order_item_id": "2552",
+    "meta_key": "_ps_savikaina_saltinis",
+    "meta_id": "27052"
+   },
+   {
+    "order_item_id": "2552",
+    "meta_key": "_ps_kaina_atskirai_vnt",
+    "meta_id": "27053"
+   },
+   {
+    "order_item_id": "2552",
+    "meta_key": "_ps_source",
+    "meta_id": "27078"
+   },
+   {
+    "order_item_id": "2552",
+    "meta_key": "_ps_carrier",
+    "meta_id": "27079"
+   },
+   {
+    "order_item_id": "2552",
+    "meta_key": "_ps_source_qty",
+    "meta_id": "27080"
+   },
+   {
+    "order_item_id": "2552",
+    "meta_key": "_ps_source_at",
+    "meta_id": "27081"
+   },
+   {
+    "order_item_id": "2552",
+    "meta_key": "_ps_source_reason",
+    "meta_id": "27082"
+   },
+   {
+    "order_item_id": "2552",
+    "meta_key": "_ps_kelias",
+    "meta_id": "27282"
+   },
+   {
+    "order_item_id": "2553",
+    "meta_key": "_ps_savikaina_vnt",
+    "meta_id": "27063"
+   },
+   {
+    "order_item_id": "2553",
+    "meta_key": "_ps_savikaina_saltinis",
+    "meta_id": "27064"
+   },
+   {
+    "order_item_id": "2553",
+    "meta_key": "_ps_kaina_atskirai_vnt",
+    "meta_id": "27065"
+   },
+   {
+    "order_item_id": "2553",
+    "meta_key": "_ps_source",
+    "meta_id": "27083"
+   },
+   {
+    "order_item_id": "2553",
+    "meta_key": "_ps_carrier",
+    "meta_id": "27084"
+   },
+   {
+    "order_item_id": "2553",
+    "meta_key": "_ps_source_qty",
+    "meta_id": "27085"
+   },
+   {
+    "order_item_id": "2553",
+    "meta_key": "_ps_source_at",
+    "meta_id": "27086"
+   },
+   {
+    "order_item_id": "2553",
+    "meta_key": "_ps_source_reason",
+    "meta_id": "27087"
+   },
+   {
+    "order_item_id": "2553",
+    "meta_key": "_ps_kelias",
+    "meta_id": "27283"
+   }
+  ]
+ },
+ "v": "dep-072828",
+ "kurimas": 200,
+ "sid": 6385,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
