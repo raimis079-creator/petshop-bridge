@@ -1,0 +1,106 @@
+{
+ "v": "dep-143901",
+ "kurimas": 200,
+ "sid": 6454,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "k": {
+  "v": "S1719f",
+  "t": "2026-09-25 14:40:12",
+  ".ps-backup-state.json": {
+   "bytes": 317,
+   "mtime": "2026-09-25 01:00",
+   "perm": "0644",
+   "turinys": "{\n    \"last_result\": \"OK\",\n    \"last_run\": \"2026-09-25T01:00:22+00:00\",\n    \"file\": \"petshop-backups\\/2026\\/09\\/petshop-2026-09-25_010001.tar.gz.enc\",\n    \"bytes\": 51653366,\n    \"sha1\": \"ded82c75da42e2d2c651e04d3a7237153ae51879\",\n    \"tables\": 232,\n    \"rows\": 1145634,\n    \"code_files\": 592,\n    \"duration_s\": 20.6\n}"
+  },
+  ".ps-watch-state.json": {
+   "bytes": 205,
+   "mtime": "2026-09-25 07:00",
+   "perm": "0644",
+   "turinys": "{\n    \"last_check\": \"2026-09-25T07:00:01+00:00\",\n    \"verdict\": \"OK\",\n    \"problems\": [],\n    \"backup\": {\n        \"last_run\": \"2026-09-25T01:00:22+00:00\",\n        \"result\": \"OK\",\n        \"age_h\": 6\n    }\n}"
+  },
+  ".b2creds.php": {
+   "bytes": 391,
+   "mtime": "2026-08-04 07:00",
+   "perm": "0600",
+   "turinys": "(neskaitomas)"
+  },
+  "backups_dir": [
+   [
+    "ps-backup-watch.php",
+    "4kb",
+    "08-04 08:08"
+   ],
+   [
+    "ps-backup.php",
+    "19kb",
+    "08-24 17:27"
+   ],
+   [
+    "ps-backup.php.bak_20260804-064640",
+    "18kb",
+    "08-04 06:46"
+   ],
+   [
+    "ps-backup.php.bak_h256",
+    "19kb",
+    "08-24 17:27"
+   ],
+   [
+    ".",
+    "4kb",
+    "09-25 01:00"
+   ],
+   [
+    "..",
+    "4kb",
+    "06-10 11:14"
+   ],
+   [
+    ".b2creds.php",
+    "0kb",
+    "08-04 07:00"
+   ],
+   [
+    ".ps-backup-state.json",
+    "0kb",
+    "09-25 01:00"
+   ],
+   [
+    ".ps-watch-state.json",
+    "0kb",
+    "09-25 07:00"
+   ]
+  ],
+  "skripto_apimtis": [
+   "function ps_fail($zinute, $tmpfiles = array()) {",
+   "foreach ($tmpfiles as $f) { if (is_file($f)) @unlink($f); }",
+   "'mu-plugins'     => PS_WPROOT.'/wp-content/mu-plugins',",
+   "'flatsome-child' => PS_WPROOT.'/wp-content/themes/flatsome-child',",
+   "$tmpTar  = PS_WORKDIR.\"/.tmp-arch-$stamp.tar\";",
+   "$tmpGz   = PS_WORKDIR.\"/.tmp-arch-$stamp.tar.gz\";",
+   "$sqlDydis = filesize($tmpSql);",
+   "$tar = fopen($tmpTar, 'wb');",
+   "if (!$tar) ps_fail('tar sukurti nepavyko', $VISI);",
+   "function tar_hdr($vardas, $dydis, $mtime) {",
+   "$h .= \"ustar\\0\" . '00';",
+   "function tar_add($tar, $vardas, $keliasFaile) {",
+   "$sz = filesize($keliasFaile);",
+   "fwrite($tar, tar_hdr($vardas, $sz, filemtime($keliasFaile)));",
+   "e (!feof($in)) { $c = fread($in, 262144); if ($c==='') break; fwrite($tar, $c); }",
+   "if ($pad) fwrite($tar, str_repeat(\"\\0\", $pad));",
+   "function tar_add_str($tar, $vardas, $turinys) {",
+   "fwrite($tar, tar_hdr($vardas, $sz, time()));",
+   "fwrite($tar, $turinys);",
+   "tar_add($tar, 'db/database.sql.gz', $tmpSql);",
+   "tar_add($tar, $rel, $f->getPathname());",
+   "lg(\"kodas: $kodoFailai failų (mu-plugins, petshop-core, flatsome-child)\");",
+   "'export_started_at'=> $eksportoPradzia,",
+   "'code_files'       => $kodoFailai,",
+   "tar_add_str($tar, 'manifest.json', json_encode($manifestas, JSON_PRETTY_PRINT|JSON_UNE"
+  ],
+  "skripto_v": "v1.1"
+ }
+}
