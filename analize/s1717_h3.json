@@ -1,0 +1,80 @@
+{
+ "3": {
+  "v": "S1717h",
+  "faze": "3",
+  "faktai": {
+   "o": {
+    "refunds": [],
+    "customer_id": null
+   },
+   "id": 36296,
+   "st": "processing",
+   "paid": true,
+   "kl": "",
+   "vez": "venipak_kurjeris",
+   "ats": false,
+   "eil": "{\"2578\":{\"iid\":2578,\"q\":1,\"n\":\"AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 12 kg\",\"sku\":\"AMLE12\",\"pid\":19760,\"src\":\"ambrosia\",\"k\":\"tiesiai\",\"tiek\":\"ambrosia\",\"img\":\"https:\\/\\/petshop.lt\\/wp-content\\/uploads\\/2026\\/06\\/adult-all-breeds-fresh-venison-lamb-12_1731592948-100x100.jpg\",\"av_ok\":null,\"av_qty\":0,\"reduced\":false,\"bukle\":\"\",\"b\":null,\"",
+   "dalys": "{\"av\":{\"siunta\":true,\"nr\":[\"V07267E1000220\"],\"lapas\":true,\"vietoje\":true,\"issiusta\":false},\"ambrosia\":{\"perduota\":false,\"kada\":\"\",\"nr\":[],\"issiusta\":false}}",
+   "rus": "2026-09-25 09:00:56 | Inga",
+   "eiles": "[\"paruosta\",\"laiskai\"]",
+   "takelis": "[[\"rus\",\"surūšiuota\",\"done\",\"\",null],[\"surinkti\",\"surinkta\",\"done\",\"av\",null],[\"lipdukas\",\"lipdukas\",\"done\",\"av\",null],[\"issiusta\",\"kurjeris paėmė\",\"now\",\"av\",\"issiusta\"],[\"vp_ambrosia\",\"lipdukas Ambrosia\",\"todo\",\"ambrosia\",null],[\"laisk_ambrosia\",\"užsakyta iš Ambrosia\",\"now\",\"ambrosia\",\"laiskas\"],[\"iss_ambrosia\",\"Ambrosia išsiuntė\",\"todo\",\"ambrosia\",null]]",
+   "btn": "[\"Kurjeris paėmė\",\"https:\\/\\/petshop.lt\\/wp-admin\\/admin-post.php?action=ps_dl_veiksmas&v=issiusta&id=36296&g=https%3A%2F%2Fpetshop.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26atidaryti%3D36296&dalis=av&_wpnonce=707489f047\",{\"antraste\":\"Užsakymas #1177 · 78,12 €\",\"tekstas\":\"Kurjeris paėmė AV siuntą V07267E1000220? Dar laukiam: Ambrosia — užsakymas lieka atviras. Klientui išeina laiškas „Išsiųsta ",
+   "skuba": 2843,
+   "uzdarytas": false,
+   "riba_s": "av",
+   "btn_s": "av",
+   "tiesiai": "[\"ambrosia\"]",
+   "av_side": true,
+   "siuntos_klaida": null,
+   "naujas": false,
+   "dalys_issiusta": "[]",
+   "sek": "{\"V07267E1000220\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-09-25 09:07:27\",\"v\":\"\",\"n\":1,\"dalis\":\"av\",\"tikr\":\"2026-09-25 09:36:54\"}}",
+   "grizta": "[]",
+   "dalys_atsaukta": "[]",
+   "dalys_baigtos": "[]",
+   "senos": "[]",
+   "ats_z": "{\"paruosta\":\"\",\"laiskas\":\"\",\"atsieme\":\"\"}",
+   "nepakuok": "[]",
+   "veluoja": "[]",
+   "grazinti": "[]"
+  },
+  "kur_dabar": "Paruošta siųsti + Dropshipping (Ambrosia) · toliau: Kurjeris paėmė",
+  "busena": "",
+  "atviri_n": 6,
+  "atviri_yra": true,
+  "atviri_pvz": [
+   36298,
+   36296,
+   36291,
+   36288,
+   36286,
+   36285
+  ],
+  "eilese": {
+   "laiskai": "ERR Cannot access offset of type string on string",
+   "laukiam": "ERR Cannot access offset of type string on string",
+   "uzsakyta": "ERR Cannot access offset of type string on string",
+   "klausimai": "ERR Cannot access offset of type string on string",
+   "visi": "ERR Cannot access offset of type string on string",
+   "apmoketa": "ERR Cannot access offset of type string on string",
+   "rusiuoti": "ERR Cannot access offset of type string on string",
+   "spresti": "ERR Cannot access offset of type string on string",
+   "kons": "ERR Cannot access offset of type string on string",
+   "tiekimas": "ERR Cannot access offset of type string on string",
+   "lapai": "ERR Cannot access offset of type string on string",
+   "lipdukas": "ERR Cannot access offset of type string on string",
+   "laiskas": "ERR Cannot access offset of type string on string",
+   "ats_paruosta": "ERR Cannot access offset of type string on string",
+   "atsieme": "ERR Cannot access offset of type string on string",
+   "issiusta": "ERR Cannot access offset of type string on string"
+  },
+  "laikas": "10:12:37"
+ },
+ "v": "dep-071126",
+ "kurimas": 200,
+ "sid": 6379,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
