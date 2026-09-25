@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="lt"><head><meta charset="utf-8"><title>2.17 maketas v3 — pristatymo pažadas (pagal tikrą krepšelį/apmokėjimą)</title>
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<style>
+:root{--g:#2f5b4c;--gl:#3f8a3f;--t:#333;--m:#777;--b:#e8e8e8}
+body{font-family:Lato,"Open Sans",Arial,sans-serif;color:var(--t);background:#f2f2f2;margin:0;padding:24px;font-size:14px}
+h2.sec{font-size:13px;text-transform:uppercase;letter-spacing:.08em;color:#888;margin:34px 0 10px}
+.row{display:flex;gap:28px;flex-wrap:wrap;align-items:flex-start}
+.new{outline:2px dashed #d9534f;outline-offset:3px;position:relative}
+.new::after{content:"NAUJA";position:absolute;right:-2px;top:-14px;background:#d9534f;color:#fff;font-size:9px;padding:1px 5px;letter-spacing:.1em}
+.lbl{font-size:11px;color:#999;margin:0 0 10px;text-transform:uppercase;letter-spacing:.08em}
+/* KREPŠELIS — dešinė kolona (KREPŠELIO SKAIČIAVIMAS) */
+.kr{background:#fff;padding:20px;width:400px;border:1px solid var(--b)}
+.kr h3{font-size:13px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 6px;padding-bottom:8px;border-bottom:2px solid #ddd;color:#222}
+.kr .it{font-style:italic;color:#666;margin:12px 0 10px;font-size:14px}
+.kr .suma{display:flex;justify-content:space-between;font-size:15px;padding:6px 0 10px;border-bottom:1px solid var(--b)}
+.kr .suma b{font-size:15px}
+.free{background:#f5f6f5;padding:12px 14px;margin:10px 0 0;font-size:13.5px;color:#1e4d3a}
+.free .bar{height:7px;background:var(--g);border-radius:2px;margin-top:10px}
+.pz{display:flex;align-items:center;gap:8px;margin:8px 0 0;padding:9px 14px;background:#f5f6f5;font-size:13.5px;color:#333}
+.pz svg{width:16px;height:16px;stroke:#2f5b4c;fill:none;stroke-width:1.9;flex:none}
+.kr .btn{display:block;background:var(--g);color:#fff;text-align:center;font-weight:700;letter-spacing:.06em;line-height:44px;margin:18px 0 16px;font-size:14px}
+.kr .nuol{font-weight:700;font-size:15px;border-bottom:1px solid var(--b);padding-bottom:10px}
+.kr .in{border:1px solid #ccc;padding:10px 12px;color:#999;margin:14px 0 10px}
+.kr .btn2{display:block;background:var(--g);color:#fff;text-align:center;font-weight:700;line-height:40px}
+/* APMOKĖJIMAS — JŪSŲ UŽSAKYMAS */
+.ap{background:#fff;padding:22px 20px;width:390px;border:2px solid var(--g)}
+.ap h3{font-size:14px;letter-spacing:.06em;text-transform:uppercase;margin:0 0 14px;color:#222}
+.ap .th{display:flex;justify-content:space-between;font-size:11.5px;font-weight:700;letter-spacing:.06em;border-bottom:2px solid #ddd;padding-bottom:6px;margin-bottom:8px}
+.ap .pr{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px solid var(--b);font-size:12.5px;color:#777}
+.ap .pr b{color:#222;font-size:13px;white-space:nowrap}
+.ap .sub{font-weight:700;font-size:13px;margin:12px 0 8px;color:#333}
+.opt{display:flex;gap:8px;align-items:flex-start;padding:6px 0;font-size:12.5px}
+.opt i{width:12px;height:12px;border:2px solid #999;border-radius:50%;display:inline-block;flex:none;margin-top:2px}
+.opt i.on{border-color:#2f6fd6;background:radial-gradient(#2f6fd6 45%,#fff 50%)}
+.vp{color:#1a5fb4;font-weight:800;font-style:italic;margin-right:4px}
+.ap .sel{margin:8px 0 12px 20px;font-size:12px;color:#444}.ap .sel span{display:inline-block;border:1px solid #7a3fb3;padding:6px 10px;color:#666;width:180px}
+.tot{display:flex;justify-content:space-between;padding:6px 0;border-bottom:1px solid var(--b);font-size:13px}
+.tot.v{font-weight:700;font-size:15px;border-bottom:2px solid #ddd}
+.pz.ap-pz{margin:4px 0 8px;padding:8px 10px}
+.note{font-size:12px;color:#888;margin-top:8px;max-width:560px}
+/* PREKĖ */
+.card{background:#fff;border:1px solid var(--b);padding:22px;max-width:480px}
+.crumbs{font-size:12px;color:#999;margin-bottom:6px}
+h1{font-size:21px;margin:0 0 8px;line-height:1.25;color:#222}
+.div{width:30px;height:3px;background:var(--gl);margin:0 0 12px}
+.price{font-size:24px;font-weight:700;margin:0;color:#222}
+.kg{font-size:13px;color:var(--m);margin:2px 0 12px}
+.short{font-size:14px;color:#444;margin:0 0 14px;line-height:1.5}
+.stock{color:#3f8a3f;font-weight:700;margin:0 0 4px;font-size:15px}
+.ship{font-size:13.5px;color:#555;margin:0 0 3px;display:flex;gap:7px;align-items:center}
+.ship svg{width:16px;height:16px;flex:none;stroke:#555;fill:none;stroke-width:1.8}
+.ship.sub{color:#777;padding-left:23px;font-size:13px}
+.cart{display:flex;gap:10px;margin-top:16px}
+.qty{width:90px;border:1px solid #ccc;text-align:center;line-height:40px;color:#555}
+.btnp{background:var(--g);color:#fff;border:0;padding:0 26px;line-height:42px;font-weight:700;letter-spacing:.06em}
+.wait{color:#c33;font-weight:700;margin:0 0 6px}
+.form{background:#fafafa;border:1px dashed #ccc;padding:10px;font-size:13px;color:#777;margin-top:10px}
+/* MINI */
+.mini{width:300px;background:#fff;border:1px solid var(--b);box-shadow:0 6px 24px rgba(0,0,0,.12);padding:16px}
+.mi{display:flex;gap:10px;font-size:12.5px;padding:8px 0;border-bottom:1px solid var(--b)}
+.mi .thm{width:44px;height:44px;background:#eee;flex:none}
+.mini .sum{display:flex;justify-content:space-between;font-weight:700;padding:10px 0 6px;font-size:14px;text-transform:uppercase;letter-spacing:.04em}
+.mini .btns{display:flex;flex-direction:column;gap:8px;margin-top:8px}.mini .btns span{text-align:center;line-height:38px;font-size:13px;font-weight:700;letter-spacing:.05em}
+.b1{background:#444;color:#fff}.b2{background:var(--g);color:#fff}
+</style></head><body>
+
+<h2 class="sec">1 · Krepšelis — dešinė kolona „Krepšelio skaičiavimas“ (kaip gyvai; nauja eilutė po žaliu langeliu)</h2>
+<div class="row">
+<div class="kr">
+<p class="lbl">A. Vienas šaltinis</p>
+<h3>Krepšelio skaičiavimas</h3>
+<div class="it">Pristatymo būdą pasirinksite kitame žingsnyje.</div>
+<div class="suma"><span>Suma</span><b>79,90 €</b></div>
+<div class="free">🎉 Jums priklauso nemokamas pristatymas į paštomatą!<div class="bar"></div></div>
+<div class="pz new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Išsiųsime per 1–2 d. d.</div>
+<span class="btn">TĘSTI ATSISKAITYMĄ</span>
+<div class="nuol">🏷 Nuolaida</div>
+<div class="in">Nuolaidos kodas</div>
+<span class="btn2">Pritaikyti</span>
+</div>
+
+<div class="kr">
+<p class="lbl">B. Mišrus (AV + ZB) — tas pats vaizdas, kitas tekstas</p>
+<h3>Krepšelio skaičiavimas</h3>
+<div class="it">Pristatymo būdą pasirinksite kitame žingsnyje.</div>
+<div class="suma"><span>Suma</span><b>101,19 €</b></div>
+<div class="free">🎉 Jums priklauso nemokamas pristatymas į paštomatą!<div class="bar"></div></div>
+<div class="pz new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Išsiųsime per 3 d. d.</div>
+<span class="btn">TĘSTI ATSISKAITYMĄ</span>
+<div class="nuol">🏷 Nuolaida</div>
+<div class="in">Nuolaidos kodas</div>
+<span class="btn2">Pritaikyti</span>
+</div>
+</div>
+<p class="note">Eilutė tokio pat stiliaus kaip nemokamo pristatymo langelis (pilkas fonas), tik su laikrodžio ikona. Kai krepšelis &lt; 30 €, langelis rodo „Iki nemokamo pristatymo trūksta X €“ — mūsų eilutė lieka po juo.</p>
+
+<h2 class="sec">2 · Apmokėjimas — „Jūsų užsakymas“ (kaip gyvai; nauja eilutė po prekėmis, prieš „Pristatymas“)</h2>
+<div class="row">
+<div class="ap">
+<p class="lbl">A. Vienas šaltinis (tik AV) — rodomi ir LP</p>
+<h3>Jūsų užsakymas</h3>
+<div class="th"><span>PRODUKTAS</span><span>SUMA</span></div>
+<div class="pr"><span>Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg <b style="color:#777">× 1</b></span><b>79,90 €</b></div>
+<div class="pz ap-pz new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Išsiųsime per 1–2 d. d.</div>
+<div class="sub">Pristatymas</div>
+<div class="opt"><i class="on"></i><span><span class="vp">Venipak</span><b>VENIPAK paštomatai/atsiėmimo punktai</b></span></div>
+<div class="sel">Pasirinkite Venipak atsiėmimo tašką:<br><span>Pasirinkite paštomatą/atsiėmimo ...</span></div>
+<div class="opt"><i></i><span><b>LP Express</b> paštomatas</span></div>
+<div class="opt"><i></i><span><span class="vp">Venipak</span>VENIPAK Kurjeris: <b>3,99 €</b></span></div>
+<div class="tot"><span>Suma be PVM</span><b>66,03 €</b></div>
+<div class="tot"><span>Pristatymo mokestis</span><span>0,00 €</span></div>
+<div class="tot"><span>PVM 21%</span><span>13,87 €</span></div>
+<div class="tot v"><span>Viso</span><span>79,90 €</span></div>
+</div>
+
+<div class="ap">
+<p class="lbl">B. Mišrus (AV + ZB) — LP nerodomas (jau dabar)</p>
+<h3>Jūsų užsakymas</h3>
+<div class="th"><span>PRODUKTAS</span><span>SUMA</span></div>
+<div class="pr"><span>Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg <b style="color:#777">× 1</b></span><b>79,90 €</b></div>
+<div class="pr"><span>MONGE VetSolution Dog Struvite 2 kg <b style="color:#777">× 1</b></span><b>21,29 €</b></div>
+<div class="pz ap-pz new"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Išsiųsime per 3 d. d.</div>
+<div class="sub">Pristatymas</div>
+<div class="opt"><i class="on"></i><span><span class="vp">Venipak</span><b>VENIPAK paštomatai/atsiėmimo punktai</b></span></div>
+<div class="sel">Pasirinkite Venipak atsiėmimo tašką:<br><span>Pasirinkite paštomatą/atsiėmimo ...</span></div>
+<div class="opt"><i></i><span><span class="vp">Venipak</span>VENIPAK Kurjeris: <b>3,99 €</b></span></div>
+<div class="tot"><span>Suma be PVM</span><b>83,63 €</b></div>
+<div class="tot"><span>Pristatymo mokestis</span><span>0,00 €</span></div>
+<div class="tot"><span>PVM 21%</span><span>17,56 €</span></div>
+<div class="tot v"><span>Viso</span><span>101,19 €</span></div>
+</div>
+</div>
+
+<h2 class="sec">3 · Prekės puslapis — santrauka po „Turime“</h2>
+<div class="row">
+<div class="card">
+<p class="lbl">A. Sausas maistas 12 kg · ≥ 30 € · su €/kg</p>
+<div class="crumbs">Pradžia / ŠUNIMS / Maistas šunims / Sausas maistas šunims</div>
+<h1>Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg</h1>
+<div class="div"></div>
+<p class="price">79,90 €</p>
+<p class="kg new" style="display:inline-block">6,66 €/kg</p>
+<p class="short">Hipoalerginis, sausas maistas šunims su kiauliena ir žirniais. Subalansuotas suaugusiems, vidutinių ir didelių veislių šunims, kuriems pasireiškė alergijos maistui simptomai.</p>
+<p class="stock">Turime</p>
+<div class="new" style="display:inline-block;padding:2px 0">
+<p class="ship"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg>Išsiunčiame per 1–2 d. d.</p>
+<p class="ship sub">Į paštomatą nemokamai · kurjeriu 3,99 €</p>
+</div>
+<div class="cart"><div class="qty">− &nbsp;1&nbsp; +</div><button class="btnp">Į KREPŠELĮ</button></div>
+</div>
+
+<div class="card">
+<p class="lbl">B. Konservai 400 g · &lt; 30 € · be €/kg</p>
+<h1>Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400 g</h1>
+<div class="div"></div>
+<p class="price">3,98 €</p>
+<p class="stock" style="margin-top:12px">Turime</p>
+<div class="new" style="display:inline-block;padding:2px 0">
+<p class="ship"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg>Išsiunčiame per 1–2 d. d.</p>
+<p class="ship sub">Į paštomatą 2,15 € · nemokamai nuo 30 € · kurjeriu 3,99 €</p>
+</div>
+<div class="cart"><div class="qty">− &nbsp;1&nbsp; +</div><button class="btnp">Į KREPŠELĮ</button></div>
+</div>
+</div>
+<div class="row" style="margin-top:22px">
+<div class="card">
+<p class="lbl">C. &gt; 25 kg arba „tik kurjeriu“</p>
+<h1>Transportavimo dėžė šuniui, XL</h1>
+<div class="div"></div>
+<p class="price">64,90 €</p>
+<p class="stock" style="margin-top:12px">Turime</p>
+<div class="new" style="display:inline-block;padding:2px 0">
+<p class="ship"><svg viewBox="0 0 24 24"><path d="M3 7h11v9H3z"/><path d="M14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.8"/><circle cx="17.5" cy="18" r="1.8"/></svg>Išsiunčiame per 1–2 d. d.</p>
+<p class="ship sub">Pristatymas kurjeriu 3,99 €</p>
+</div>
+<div class="cart"><div class="qty">− &nbsp;1&nbsp; +</div><button class="btnp">Į KREPŠELĮ</button></div>
+</div>
+<div class="card">
+<p class="lbl">D. Neturime — be naujų eilučių</p>
+<h1>Kraikas katėms bentonitinis, 10 kg</h1>
+<div class="div"></div>
+<p class="price">12,49 €</p>
+<p class="kg new" style="display:inline-block">1,25 €/kg</p>
+<p class="wait">Neturime</p>
+<div class="form">[ atsargų laukimo forma — kaip dabar ]</div>
+</div>
+</div>
+
+<h2 class="sec">4 · Mini-krepšelis (iškrentantis iš antraštės)</h2>
+<div class="row">
+<div class="mini">
+<div class="mi"><div class="thm"></div><div>Exclusion Hypoallergenic … 12 kg<br><span style="color:#888">1 × 79,90 €</span></div></div>
+<div class="mi"><div class="thm"></div><div>MONGE VetSolution Dog Struvite 2 kg<br><span style="color:#888">1 × 21,29 €</span></div></div>
+<div class="sum"><span>Suma:</span><span>101,19 €</span></div>
+<div class="pz new" style="margin:0 0 4px"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 8v4l3 2"/></svg>Išsiųsime per 3 d. d.</div>
+<div class="btns"><span class="b1">KREPŠELIS</span><span class="b2">APMOKĖTI</span></div>
+</div>
+</div>
+<p class="note">Mini-krepšelio tikslus dabartinis vaizdas nepatikrintas (Playwright neatidarė iškrentančio lango) — eilutės vieta virš mygtukų, stilius toks pat kaip krepšelyje.</p>
+</body></html>
