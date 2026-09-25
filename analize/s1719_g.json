@@ -1,0 +1,201 @@
+{
+ "v": "dep-144940",
+ "kurimas": 200,
+ "sid": 6455,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "l": {
+  "v": "S1719g",
+  "t": "2026-09-25 14:50:49",
+  "kodas": {
+   "/mu-plugins/petshop-darbalaukis.php": [
+    "s` (inicijuoja siuntimą, barcode į plugino meta, PDF į buferį) → `uploads/ps-lipdukai/lp/`, `_ps_lp_lipdukas_pdf`,",
+    "atsiunčia lipdukų PDF į išvestį). PDF gaudomas buferiu, saugomas `uploads/ps-lipdukai/lp/`,",
+    "$up = wp_upload_dir(); $dir = trailingslashit( $up['basedir'] ) . 'ps-lipdukai/lp/'; wp_mkdir_p( $dir ); if ( ! file_exists( $dir . 'index.html' ) ) { file_pu"
+   ],
+   "/mu-plugins/petshop-vf-feed.php": [
+    "* nuo 2026-08-27, `uploads/petshop-vf-cache.xml` sustingęs 2026-08-21 12:16 —",
+    "* SPRENDIMAS: VF API → lokalus failas `uploads/wpallimport/files/vf-feed.xml`",
+    "* `uploads/petshop-vf-cache.xml` (snippet 565). Jokios priklausomybės nuo",
+    "return WP_CONTENT_DIR . '/uploads/wpallimport/files/vf-feed.xml';",
+    "return WP_CONTENT_DIR . '/uploads/petshop-vf-cache.xml';"
+   ],
+   "/mu-plugins/petshop-av-tiekimas.php": [
+    "$up = wp_upload_dir(); $kel = trailingslashit( $up['basedir'] ) . 'ps-lipdukai'; wp_mkdir_p( $kel );",
+    "$kel  = trailingslashit( $up['basedir'] ) . 'ps-lipdukai';"
+   ]
+  },
+  "snippets": {
+   "565 Petshop VF Sync v1.1 (reprice+stock+publish)": [
+    "$cache = WP_CONTENT_DIR . '/uploads/petshop-vf-cache.xml';"
+   ],
+   "6455 TEMP PS dep-144940": [
+    "$pat='/[^\\n]{0,80}(ps-lipdukai|petshop-vf-cache|vetfarmas_response|wpallimport\\/files|baseurl[^\\n]{0,20}lipduk)[^\\n]{0,80}/';",
+    "foreach(['ps-lipdukai','ps-lipdukai/lp','wpallimport','wpallimport/files','ps-backups','petshop-legacy','pmax-s1672'] as $d){ $r['sub_ht'][$d]=file_exis",
+    "($x),round(filesize($x)/1048576,1).'MB',date('m-d',filemtime($x))];},glob($up.'/wpallimport/files/*')?:[]);",
+    "erge(glob($up.'/*_result.json')?:[],glob($up.'/lookupdiag.json')?:[],glob($up.'/vetfarmas_response_*.xml')?:[],[ABSPATH.'wp-content/phptest.php',ABSPATH.'index.html.backup.5a6def"
+   ]
+  },
+  "uploads_htaccess_full": "# BEGIN Petshop WebP (S1567, 2026-09-01)\n# Narsyklei, priimanciai image/webp, vietoje x.jpg|png atiduodamas salia esantis x.webp (jei yra).\n# Taisykles cia, ne root .htaccess: mod_rewrite NEinherituoja i katalogus su savo .htaccess.\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteCond %{HTTP_ACCEPT} image/webp\nRewriteCond %{REQUEST_FILENAME} ^(.+)\\.(jpe?g|png)$ [NC]\nRewriteCond %1.webp -f\nRewriteRule ^(.+)\\.(jpe?g|png)$ $1.webp [T=image/webp,L]\n</IfModule>\n<IfModule mod_headers.c>\n<FilesMatch \"\\.(jpe?g|png)$\">\nHeader append Vary Accept\n</FilesMatch>\n</IfModule>\nAddType image/webp .webp\n# END Petshop WebP\n",
+  "sub_ht": {
+   "ps-lipdukai": null,
+   "ps-lipdukai/lp": null,
+   "wpallimport": null,
+   "wpallimport/files": null,
+   "ps-backups": null,
+   "petshop-legacy": null,
+   "pmax-s1672": null
+  },
+  "wpai_files": [
+   [
+    "goods_clean.xml",
+    "3.7MB",
+    "05-27"
+   ],
+   [
+    "index.php",
+    "0MB",
+    "05-26"
+   ],
+   [
+    "vf-feed.xml",
+    "8MB",
+    "09-25"
+   ],
+   [
+    "zb_test_products_1_.xml",
+    "0MB",
+    "06-03"
+   ]
+  ],
+  "wpai_paths": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "path": "/wpallimport/files/goods_clean.xml"
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "path": "https://zaliojibanga.lt/integrations/services/products.php?key=bAF0OY6Sz9H3AgAF"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "path": "https://zaliojibanga.lt/integrations/services/stocks.php?key=bAF0OY6Sz9H3AgAF"
+   },
+   {
+    "id": "5",
+    "name": "vf-feed.xml",
+    "path": "/wpallimport/files/vf-feed.xml"
+   },
+   {
+    "id": "7",
+    "name": "vf-feed.xml",
+    "path": "/wpallimport/files/vf-feed.xml"
+   }
+  ],
+  "lipdukai_meta": [
+   {
+    "meta_key": "_ps_lp_lipdukas_pdf",
+    "n": "3",
+    "pvz": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/ps-lipdukai/lp/LP-1163-HC"
+   }
+  ],
+  "trash_kandidatai": [
+   [
+    "wp-content/uploads/cmp2_result.json",
+    943,
+    "07-08"
+   ],
+   [
+    "wp-content/uploads/cmp_result.json",
+    7363,
+    "07-08"
+   ],
+   [
+    "wp-content/uploads/lookupfix2_result.json",
+    93,
+    "07-08"
+   ],
+   [
+    "wp-content/uploads/pdump_result.json",
+    1513,
+    "07-08"
+   ],
+   [
+    "wp-content/uploads/rawf_result.json",
+    2188,
+    "07-08"
+   ],
+   [
+    "wp-content/uploads/regen_result.json",
+    294,
+    "07-08"
+   ],
+   [
+    "wp-content/uploads/slugfix_result.json",
+    333,
+    "07-08"
+   ],
+   [
+    "wp-content/uploads/waxfix_result.json",
+    1324,
+    "07-08"
+   ],
+   [
+    "wp-content/uploads/ydiag_result.json",
+    2210,
+    "07-08"
+   ],
+   [
+    "wp-content/uploads/yfix_result.json",
+    165,
+    "07-08"
+   ],
+   [
+    "wp-content/uploads/yresave_result.json",
+    678,
+    "07-08"
+   ],
+   [
+    "wp-content/uploads/lookupdiag.json",
+    931,
+    "07-08"
+   ],
+   [
+    "wp-content/uploads/vetfarmas_response_20260602_142756.xml",
+    8763642,
+    "06-02"
+   ],
+   [
+    "wp-content/phptest.php",
+    25,
+    "06-05"
+   ],
+   [
+    "index.html.backup.5a6defd0b6c8b4cd418a970086e2c0b4",
+    385,
+    "05-05"
+   ]
+  ],
+  "testuotojas": {
+   "id": 75,
+   "posts": "0",
+   "orders": 0,
+   "comments": 0
+  },
+  "snippet465_hooks": [
+   "init"
+  ],
+  "ps_private_logs": [
+   "attr-engine.log"
+  ],
+  "private_logs_kodas": [
+   "/plugins/petshop-attributes/petshop-attributes.php",
+   "/plugins/petshop-xml/petshop-xml.php"
+  ]
+ }
+}
