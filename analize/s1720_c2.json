@@ -1,0 +1,945 @@
+{
+ "v": "dep-174114",
+ "kurimas": 200,
+ "sid": 6486,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "g": {
+  "v": "S1720c",
+  "faze": "g",
+  "t": "2026-09-25 17:42:43",
+  "filters": {
+   "flatsome-live-search.php": [
+    "flatsome_ajax_search_query",
+    "flatsome_ajax_search_post_type",
+    "flatsome_ajax_search_function",
+    "flatsome_ajax_search_products_search_query",
+    "flatsome_ajax_search_products_by_tag_search_query",
+    "flatsome_ajax_search_products_by_sku_search_query",
+    "flatsome_ajax_search_products_by_sku_search_meta_query_args"
+   ]
+  },
+  "hits": [
+   "/inc/extensions/flatsome-live-search/flatsome-live-search.php",
+   "/inc/integrations/wcml/class-wcml.php"
+  ],
+  "ls_bytes": 8294,
+  "ls_products_fn": "<?php\n\nfunction flatsome_live_search_script() {\n\twp_enqueue_script(\n\t\t'flatsome-live-search',\n\t\tget_template_directory_uri() . '/assets/js/extensions/flatsome-live-search.js',\n\t\t[ 'jquery' ],\n\t\tflatsome()->version(),\n\t\ttrue\n\t);\n}\n\nadd_action( 'wp_enqueue_scripts', 'flatsome_live_search_script' );\n\n/**\n * Search for posts and pages.\n *\n * @param  array $args Query args.\n *\n * @return array Posts.\n */\nfunction flatsome_ajax_search_posts( $args ) {\n\t$defaults = $args;\n\n\t$args['s']         = apply_filters( 'flatsome_ajax_search_query', $args['s'] );\n\t$args['post_type'] = apply_filters( 'flatsome_ajax_search_post_type', array( 'post', 'page' ) );\n\n\t$search_query   = http_build_query( $args );\n\t$query_function = apply_filters( 'flatsome_ajax_search_function', 'get_posts', $search_query, $args, $defaults );\n\n\treturn ( ( $query_function == 'get_posts' ) || ! function_exists( $query_function ) ) ? get_posts( $args ) : $query_function( $search_query, $args, $defaults );\n}\n\n/**\n * Gets products based on the search type specified.\n *\n * @param string $search_type Type of search.\n * @param array  $args        Default query args.\n *\n * @return array Products.\n */\nfunction flatsome_ajax_search_get_products( $search_type, array $args ) {\n\t$order_by      = get_theme_mod( 'search_products_order_by', 'relevance' );\n\t$order         = get_theme_mod( 'search_products_order', 'ASC' );\n\t$ordering_args = WC()->query->get_catalog_ordering_args( $order_by, $order );\n\t$defaults      = $args;\n\n\t$args['post_type']  = 'product';\n\t$args['orderby']    = $ordering_args['orderby'];\n\t$args['order']      = $ordering_args['order'];\n\t$args['meta_query'] = WC()->query->get_meta_query(); // WPCS: slow query ok.\n\t$args['tax_query']  = array(); // WPCS: slow query ok.\n\t$args               = flatsome_ajax_search_catalog_visibility( $args );\n\t$args               = flatsome_ajax_search_query_by_category( $args );\n\n\tswitch ( $search_type ) {\n\t\tcase 'product':\n\t\t\t$args['s'] = apply_filters( 'flatsome_ajax_search_products_search_query', $args['s'] );\n\t\t\tbreak;\n\t\tcase 'tag':\n\t\t\t$args['s']           = '';\n\t\t\t$args['product_tag'] = apply_filters( 'flatsome_ajax_search_products_by_tag_search_query', $args['s'] );\n\t\t\tbreak;\n\t\tcase 'sku':\n\t\t\t$query                = apply_filters( 'flatsome_ajax_search_products_by_sku_search_query', $args['s'] );\n\t\t\t$args['s']            = '';\n\t\t\t$args['post_type']    = array( 'product', 'product_variation' );\n\t\t\t$args['meta_query'][] = apply_filters( 'flatsome_ajax_search_products_by_sku_search_meta_query_args', array(\n\t\t\t\t'key'   => '_sku',\n\t\t\t\t'value' => $query,\n\t\t\t), $query );\n\t\t\tbreak;\n\t}\n\n\t$search_query   = http_build_query( $args );\n\t$query_function = apply_filters( 'flatsome_ajax_search_function', 'get_posts', $search_query, $args, $defaults );\n\n\treturn ( ( $query_function === 'get_posts' ) || ! function_exists( $query_function ) ) ? get_posts( $args ) : $query_function( $search_query, $args, $defaults );\n}\n\n/**\n * Checks product catalog visibility with custom tax_query. (only queries the exclude-from-search term) and checks WC hide out of stock option.\n *\n * @param  array $args Query args.\n *\n * @return array Query args with addition.\n */\nfunction flatsome_ajax_search_catalog_visibility( $args ) {\n\t$product_visibility_term_ids = wc_get_product_visibility_term_ids();\n\n\t// Catalog visibility.\n\t$args['tax_query'][] = array(\n\t\t'taxonomy' => 'product_visibility',\n\t\t'field'    => 'term_taxonomy_id',\n\t\t'terms'    => $product_visibility_term_ids['exclude-from-search'],\n\t\t'operator' => 'NOT IN',\n\t);\n\n\t// Hide out of stock.\n\tif ( 'yes' === get_option( 'woocommerce_hide_out_of_stock_items' ) ) {\n\t\t$args['tax_query'][] = array(\n\t\t\t'taxonomy' => 'product_visibility',\n\t\t\t'field'    => 'term_taxonomy_id',\n\t\t\t'terms'    => $product_visibility_term_ids['outofstock'],\n\t\t\t'operator' => 'NOT IN',\n\t\t);\n\t}\n\n\treturn $args;\n}\n\n/**\n * Query products by category if 'product_cat' is in request.\n *\n * @param array $args Query args.\n *\n * @return array Query args with or without addition.\n */\nfunction flatsome_ajax_search_query_by_category( $args ) {\n\tif ( isset( $_REQUEST['product_cat'] ) ) {\n\t\t$args['tax_query'][] = array(\n\t\t\t'taxonomy' => 'product_cat',\n\t\t\t'field'    => 'slug',\n\t\t\t'terms'    => esc_attr( $_REQUEST['product_cat'] ),\n\t\t);\n\t}\n\n\treturn $args;\n}\n\n/**\n * Search AJAX handler.\n */\nfunction flatsome_ajax_search() {\n\tif ( ! isset( $_REQUEST['query'] ) ) {\n\t\twp_send_json_error( [\n\t\t\t'message' => 'No search query provided',\n\t\t] );\n\t}\n\n\t// The string from search text field.\n\t$query        = apply_filters( 'flatsome_ajax_search_query', sanitize_text_field( wp_unslash( $_REQUEST['query'] ) ) );\n\t$wc_activated = is_woocommerce_activated();\n\t$products     = array();\n\t$posts        = array();\n\t$sku_products = array();\n\t$tag_products = array();\n\t$suggestions  = array();\n\n\t$args = array(\n\t\t's'                   => $query,\n\t\t'orderby'             => '',\n\t\t'post_type'           => array(),\n\t\t'post_status'         => 'publish',\n\t\t'posts_per_page'      => 100,\n\t\t'ignore_sticky_posts' => 1,\n\t\t'post_password'       => '',\n\t\t'suppress_filters'    => false,\n\t);\n\n\tif ( $wc_activated ) {\n\t\t$products     = flatsome_ajax_search_get_products( 'product', $args );\n\t\t$sku_products = get_theme_mod( 'search_by_sku', 0 ) ? flatsome_ajax_search_get_products( 'sku', $args ) : array();\n\t\t$tag_products = get_theme_mod( 'search_by_product_tag', 0 ) ? flatsome_ajax_search_get_products( 'tag', $args ) : array();\n\t}\n\n\tif ( ( ! $wc_activated || get_theme_mod( 'search_result', 1 ) ) && ! isset( $_REQUEST['product_cat'] ) ) {\n\t\t$posts = flatsome_ajax_search_posts( $args );\n\t}\n\n\t$results = array_merge( $products, $sku_products, $tag_products, $posts );\n\n\tforeach ( $results as $key => $post ) {\n\t\tif ( $wc_activated && ( $post->post_type === 'product' || $post->post_type === 'product_variation' ) ) {\n\t\t\t$product = wc_get_product( $post );\n\n\t\t\tif ( $product->get_parent_id() ) {\n\t\t\t\t$parent_product = wc_get_product( $product->get_parent_id() );\n\t\t\t\t$visible        = $parent_product->get_catalog_visibility() === 'visible' || $parent_product->get_catalog_visibility() === 'search';\n\t\t\t\tif ( $parent_product->get_status() !== 'publish' || ! $visible ) {\n\t\t\t\t\tunset( $results[ $key ] );\n\t\t\t\t\tcontinue;\n\t\t\t\t}\n\t\t\t}\n\n\t\t\t$product_image = wp_get_attachment_image_src( get_post_thumbnail_id( $product->get_id() ) );\n\n\t\t\t$suggestions[] = array(\n\t\t\t\t'type'  => 'Product',\n\t\t\t\t'id'    => $product->get_id(),\n\t\t\t\t'value' => $product->get_title(),\n\t\t\t\t'url'   => $product->get",
+  "ls_noresults_ctx": "wc_activated || get_theme_mod( 'search_result', 1 ) ) && ! isset( $_REQUEST['product_cat'] ) ) {\n\t\t$posts = flatsome_ajax_search_posts( $args );\n\t}\n\n\t$results = array_merge( $products, $sku_products, $tag_products, $posts );\n\n\tforeach ( $results as $key => $post ) {\n\t\tif ( $wc_activated && ( $post->post_type === 'product' || $post->post_type === 'product_variation' ) ) {\n\t\t\t$product = wc_get_product( $post );\n\n\t\t\tif ( $product->get_parent_id() ) {\n\t\t\t\t$parent_product = wc_get_product( $product->get_parent_id() );\n\t\t\t\t$visible        = $parent_product->get_catalog_visibility() === 'visible' || $parent_product->get_catalog_visibility() === 'search';\n\t\t\t\tif ( $parent_product->get_status() !== 'publish' || ! $visible ) {\n\t\t\t\t\tunset( $results[ $key ] );\n\t\t\t\t\tcontinue;\n\t\t\t\t}\n\t\t\t}\n\n\t\t\t$product_image = wp_get_attachment_image_src( get_post_thumbnail_id( $product->get_id() ) );\n\n\t\t\t$suggestions[] = array(\n\t\t\t\t'type'  => 'Product',\n\t\t\t\t'id'    => $product->get_id(),\n\t\t\t\t'value' => $product->get_title(),\n\t\t\t\t'url'   => $product->get_permalink(),\n\t\t\t\t'img'   => $product_image ? $product_image[0] : '',\n\t\t\t\t'price' => $product->get_price_html(),\n\t\t\t);\n\t\t} else {\n\t\t\t$suggestions[] = array(\n\t\t\t\t'type'  => 'Page',\n\t\t\t\t'id'    => $post->ID,\n\t\t\t\t'value' => get_the_title( $post->ID ),\n\t\t\t\t'url'   => get_the_permalink( $post->ID ),\n\t\t\t\t'img'   => get_the_post_thumbnail_url( $post->ID, 'thumbnail' ),\n\t\t\t\t'price' => '',\n\t\t\t);\n\t\t}\n\t}\n\n\tif ( empty( $results ) ) {\n\t\t$no_results = $wc_activated ? __( 'No products found.', 'woocommerce' ) : __( 'No matches found', 'flatsome' );\n\n\t\t$suggestions[] = array(\n\t\t\t'id'    => -1,\n\t\t\t'value' => $no_results,\n\t\t\t'url'   => '',\n\t\t);\n\t}\n\n\t$suggestions = flatsome_unique_suggestions( array( $products, $sku_products, $tag_products ), $suggestions );\n\n\twp_send_json( array( 'suggestions' => $suggestions ) );\n}\n\nadd_action( 'wp_ajax_flatsome_ajax_search_products', 'flatsome_ajax_search' );\nadd_action( 'wp_ajax_nopriv_flatsome_ajax_search_products', 'flatsome_ajax_search' );\n\n/**\n * Makes search suggestions unique if multiple raw_results have values.\n *\n * @param array $raw_results Raw search results supplied unmerged.\n * @param array $suggestions Suggestions",
+  "ls_fns": [
+   "flatsome_live_search_script",
+   "flatsome_ajax_search_posts",
+   "flatsome_ajax_search_get_products",
+   "flatsome_ajax_search_catalog_visibility",
+   "flatsome_ajax_search_query_by_category",
+   "flatsome_ajax_search",
+   "flatsome_unique_suggestions"
+  ],
+  "analitika_search": [
+   "\tconst OPT_DRUSKA   = 'ps_web_druska';\n\tconst OPT_ATMESTA  = 'ps_web_atmesta_purchase';\n\tconst OPT_ZALIU_D  = 'ps_stat_zaliu_dienos';   /* esamas, 90 */\n\n\t/** Ivykiai, kuriuos priimam is dataLayer. `purchase` cia NERA ir NEBUS. */\n\tconst IS_DATALAYER = array( 'view_item', 'add_to_cart', 'view_cart', 'begin_checkout' );\n\n\t/** Musu pacio ivykiai. */\n\tconst SAVI = array( 'pageview', 'view_category', 'search', 'filter', 'skaiciuokle', 'quiz_start', 'remove_from_cart', 'error404' );\n\n\t/** 🔴 NIEKADA nepriimami — nesvarbu, kas ir kaip juos atsiustu. */\n\tconst DRAUDZIAMI = array( 'purchase', 'refund' );\n\n\tpublic static function init() {\n\t\tadd_action( 'rest_api_init', array( __CLASS__, 'marsrutai' ) );\n\t\tadd_action( 'wp_footer', array( __CLASS__, 'beacon' ), 99 );\n\t\tadd_action( 'init', array( __CLASS_",
+   "tion.search,\n      raktas:<?php echo wp_json_encode( $raktas ); ?>,\n      reiksme:<?php echo (int) $rez; ?>,\n      landing:<?php echo (int) $landing; ?>,\n      rh:<?php echo wp_json_encode( $rh === $savas ? '' : $rh ); ?>,\n      pr:<?php echo is_user_logged_in() ? 1 : 0; ?>});\n\n<?php if ( 'paieska' === $pusl ) : ?>\n/* 2) paieska — atskirai, kad „0 rezultatu\" butu matomas pjuvis */\npush({tipas:'search',raktas:<?php echo wp_json_encode( $raktas ); ?>,reiksme:<?php echo (int) $rez; ?>});\n<?php endif; ?>\n<?php if ( '404' === $pusl ) : ?>\npush({tipas:'error404',url:location.pathname+location.search});\n<?php endif; ?>\n\n/* 3) dataLayer — klausomes esamo (snippet 614), nieko nedubliuojam */\ntry{\n  var dl=window.dataLayer=window.dataLayer||[];\n  function imk(a){\n    if(!a||!a.event)return;\n    if(LEI",
+   "\t'kanalas'    => 'COALESCE(kanalas, \\'direct\\')',\n\t\t\t'puslapis'   => 'COALESCE(url_kelias, \\'\\')',\n\t\t\t'tipas'      => 'COALESCE(pusl_tipas, \\'\\')',\n\t\t\t'irenginys'  => 'COALESCE(irenginys, \\'\\')',\n\t\t\t'salis'      => 'COALESCE(salis, \\'\\')',\n\t\t\t'paieska'    => 'COALESCE(raktas, \\'\\')',\n\t\t);\n\n\t\t$viso = 0;\n\t\tforeach ( $pjuviai as $pjuvis => $laukas ) {\n\t\t\t$kur = ( 'paieska' === $pjuvis ) ? \"AND tipas='search'\" : '';\n\t\t\t$eil = $wpdb->get_results( $wpdb->prepare(\n\t\t\t\t\"SELECT $laukas AS r,\n\t\t\t\t        COUNT(DISTINCT sesija) apsilankymai,\n\t\t\t\t        COUNT(DISTINCT lankytojas_d) lankytojai,\n\t\t\t\t        SUM(CASE WHEN tipas='pageview' THEN 1 ELSE 0 END) perziuros,\n\t\t\t\t        SUM(CASE WHEN tipas='view_item' THEN 1 ELSE 0 END) vi,\n\t\t\t\t        SUM(CASE WHEN tipas='add_to_cart' THEN 1 ELSE 0 END) atc,\n\t\t\t\t    "
+  ],
+  "flatsome_ver": "3.20.7",
+  "search_opts": {
+   "search_result": 0,
+   "search_placeholder": "Ieškoti prekių ...",
+   "search_ajax": false,
+   "header_search_form_style": "",
+   "search_categories": false
+  },
+  "mods_search": {
+   "header_search_style": "dropdown",
+   "header_search_form_style": "",
+   "search_placeholder": "Ieškoti prekių ...",
+   "header_search_width": "93",
+   "search_result": 0
+  }
+ },
+ "h": {
+  "v": "S1720c",
+  "faze": "h",
+  "t": "2026-09-25 17:42:53",
+  "prekes": {
+   "oasy": [],
+   "prima dog": [],
+   "primadog": [],
+   "rafi": [
+    {
+     "ID": "23705",
+     "post_status": "publish",
+     "t": "Happet bambukinis dubenėlis gyvūnui, grafito spalvos, 1,5l"
+    },
+    {
+     "ID": "13630",
+     "post_status": "publish",
+     "t": "Trixie Premium touring petnešos, L-XL 70-110cm/25mm, grafito"
+    },
+    {
+     "ID": "13626",
+     "post_status": "publish",
+     "t": "Trixie Premium touring petnešos, M 45-80cm/25mm, grafito"
+    },
+    {
+     "ID": "13101",
+     "post_status": "publish",
+     "t": "Trixie Bėgimo pavadėlis, 1,33-1,80 m-20 mm, grafito-papajų"
+    }
+   ],
+   "kitty": [
+    {
+     "ID": "26542",
+     "post_status": "draft",
+     "t": "Happet atviras tualetas katei su borteliu KITTY, tamsiai pilkas, 55x45"
+    },
+    {
+     "ID": "34684",
+     "post_status": "draft",
+     "t": "Beaphar KITTY'S + Taurine + Biotin, 750tab."
+    },
+    {
+     "ID": "34683",
+     "post_status": "draft",
+     "t": "Beaphar KITTY'S MIX, 750tab. (pak6)"
+    }
+   ],
+   "struvite": [
+    {
+     "ID": "14805",
+     "post_status": "publish",
+     "t": "MONGE VetSolution Dog Struvite 12 kg"
+    },
+    {
+     "ID": "14804",
+     "post_status": "publish",
+     "t": "MONGE VetSolution Dog Struvite 2 kg"
+    },
+    {
+     "ID": "14678",
+     "post_status": "publish",
+     "t": "FARMINA VET LIFE - CAT Dry STRUVITE 10 kg"
+    },
+    {
+     "ID": "14677",
+     "post_status": "publish",
+     "t": "FARMINA VET LIFE - CAT Dry STRUVITE 2 kg"
+    }
+   ],
+   "vetsolution": [
+    {
+     "ID": "14805",
+     "post_status": "publish",
+     "t": "MONGE VetSolution Dog Struvite 12 kg"
+    },
+    {
+     "ID": "14804",
+     "post_status": "publish",
+     "t": "MONGE VetSolution Dog Struvite 2 kg"
+    },
+    {
+     "ID": "12708",
+     "post_status": "publish",
+     "t": "Monge VetSolution Dog Diabetic 12kg"
+    },
+    {
+     "ID": "12707",
+     "post_status": "publish",
+     "t": "Monge VetSolution Dog Diabetic 2kg"
+    }
+   ],
+   "pet solution": [],
+   "mini adult 8": [
+    {
+     "ID": "16487",
+     "post_status": "draft",
+     "t": "ROYAL CANIN MINI ADULT 8 KG sausas maistas suaugusiems mažų veislių šu"
+    }
+   ],
+   "8+": [],
+   "mature": [
+    {
+     "ID": "14794",
+     "post_status": "publish",
+     "t": "Eukanuba Mature (6-9 m.) Large Breed 15 kg"
+    }
+   ],
+   "hepatic": [
+    {
+     "ID": "18623",
+     "post_status": "publish",
+     "t": "Exclusion Hepatic dietinis sausas šunų maistas su kiauliena, ryžiais i"
+    },
+    {
+     "ID": "14665",
+     "post_status": "publish",
+     "t": "FARMINA VET LIFE - CAT Dry HEPATIC 10 kg"
+    },
+    {
+     "ID": "14664",
+     "post_status": "publish",
+     "t": "FARMINA VET LIFE - CAT Dry HEPATIC 2 kg"
+    },
+    {
+     "ID": "14638",
+     "post_status": "publish",
+     "t": "FARMINA VET LIFE - DOG Dry HEPATIC 12 kg"
+    }
+   ],
+   "ambrosia": [
+    {
+     "ID": "36252",
+     "post_status": "publish",
+     "t": "AMBROSIA Senior Monoproteininis begrūdis sausas maistas vyresniems / s"
+    },
+    {
+     "ID": "19785",
+     "post_status": "publish",
+     "t": "AMBROSIA  Junior begrūdis su šviežia vištiena ir lašiša sausas maistas"
+    },
+    {
+     "ID": "19780",
+     "post_status": "publish",
+     "t": "AMBROSIA Junior begrūdis su šviežia vištiena ir lašiša sausas maistas "
+    },
+    {
+     "ID": "19775",
+     "post_status": "publish",
+     "t": "AMBROSIA Puppy begrūdis su vištiena ir šviežia žuvimi sausas maistas j"
+    }
+   ],
+   "monge": [
+    {
+     "ID": "17421",
+     "post_status": "publish",
+     "t": "Monge BWild begrūdžiai konservai šunims su antiena, moliūgu ir cukinij"
+    },
+    {
+     "ID": "17418",
+     "post_status": "publish",
+     "t": "Monge BWild begrūdžiai konservai šunims su lašiša, moliūgu ir cukinija"
+    },
+    {
+     "ID": "17415",
+     "post_status": "publish",
+     "t": "Monge BWild begrūdžiai konservai šunims su ėriena, moliūgu ir cukinija"
+    },
+    {
+     "ID": "17412",
+     "post_status": "publish",
+     "t": "Monge BWild begrūdžiai konservai šuniukams su antiena, moliūgu ir cuki"
+    }
+   ],
+   "pavad": [
+    {
+     "ID": "26340",
+     "post_status": "publish",
+     "t": "FLEXI  pavadėlis šuniui New Neon L juostinis 5m, geltonas"
+    },
+    {
+     "ID": "26338",
+     "post_status": "publish",
+     "t": "FLEXI pavadėlis šuniui New Classic L juostinis 5m, juodas"
+    },
+    {
+     "ID": "26336",
+     "post_status": "publish",
+     "t": "FLEXI pavadėlis šuniui New Classic M juostinis 5m, mėlynas"
+    },
+    {
+     "ID": "26334",
+     "post_status": "publish",
+     "t": "FLEXI pavadėlis šuniui New Classic S juostinis 5m, rožinis"
+    }
+   ],
+   "žiurk": [
+    {
+     "ID": "23983",
+     "post_status": "publish",
+     "t": "Nobby namelis žiurkėnui \"Sputnik\", S, 29 x 26 x 19 cm"
+    },
+    {
+     "ID": "18959",
+     "post_status": "publish",
+     "t": "Deli Nature Menu Super Premium pašaras žiurkėms, 750 g"
+    },
+    {
+     "ID": "18955",
+     "post_status": "publish",
+     "t": "Deli Nature Menu Super Premium pašaras žiurkėnams, 750 g"
+    },
+    {
+     "ID": "15774",
+     "post_status": "publish",
+     "t": "Visavertis pašaras žiurkėnams Paco, 500 g"
+    }
+   ],
+   "ziurk": [
+    {
+     "ID": "23983",
+     "post_status": "publish",
+     "t": "Nobby namelis žiurkėnui \"Sputnik\", S, 29 x 26 x 19 cm"
+    },
+    {
+     "ID": "18959",
+     "post_status": "publish",
+     "t": "Deli Nature Menu Super Premium pašaras žiurkėms, 750 g"
+    },
+    {
+     "ID": "18955",
+     "post_status": "publish",
+     "t": "Deli Nature Menu Super Premium pašaras žiurkėnams, 750 g"
+    },
+    {
+     "ID": "15774",
+     "post_status": "publish",
+     "t": "Visavertis pašaras žiurkėnams Paco, 500 g"
+    }
+   ],
+   "bravecto": [],
+   "bio": [
+    {
+     "ID": "26346",
+     "post_status": "publish",
+     "t": "Joe's Cat kraikas katėms, biologiškai suyrantis, popierinis kraikas,32"
+    },
+    {
+     "ID": "26342",
+     "post_status": "publish",
+     "t": "Joe's Cat kraikas katėms, biologiškai suyrantis, popierinis kraikas, 8"
+    },
+    {
+     "ID": "25183",
+     "post_status": "publish",
+     "t": "Mervue Pro-Bio probiotinė pasta katėms/kačiukams, 15ml"
+    },
+    {
+     "ID": "25181",
+     "post_status": "publish",
+     "t": "Mervue Pro-Bio probiotinė pasta šunims,šuniukams, 60ml"
+    }
+   ],
+   "sensible": [
+    {
+     "ID": "16868",
+     "post_status": "publish",
+     "t": "Prins ProCare Grainfree Sensible Hypoallergic begrūdis sausas maistas "
+    },
+    {
+     "ID": "16865",
+     "post_status": "publish",
+     "t": "Prins ProCare Grainfree Sensible Hypoallergic begrūdis sausas maistas "
+    },
+    {
+     "ID": "16481",
+     "post_status": "publish",
+     "t": "ROYAL CANIN SENSIBLE 33,  10 kg, sausas pašaras jautrioms katėms"
+    },
+    {
+     "ID": "16478",
+     "post_status": "publish",
+     "t": "ROYAL CANIN SENSIBLE 33,  2 kg, sausas pašaras jautrioms katėms"
+    }
+   ]
+  },
+  "brand_terms": [
+   {
+    "name": "Monge",
+    "count": "116"
+   },
+   {
+    "name": "Farmina",
+    "count": "154"
+   },
+   {
+    "name": "Exclusion",
+    "count": "85"
+   },
+   {
+    "name": "Royal Canin",
+    "count": "24"
+   },
+   {
+    "name": "Ambrosia",
+    "count": "16"
+   },
+   {
+    "name": "Exclusion Diet",
+    "count": "0"
+   }
+  ],
+  "hidden_by_brand": [
+   {
+    "name": "Josera",
+    "n": "52"
+   },
+   {
+    "name": "Nobby",
+    "n": "46"
+   },
+   {
+    "name": "Trixie",
+    "n": "34"
+   },
+   {
+    "name": "Farmina",
+    "n": "32"
+   },
+   {
+    "name": "NOBLEZA",
+    "n": "18"
+   },
+   {
+    "name": "COMFY",
+    "n": "15"
+   },
+   {
+    "name": "Eukanuba",
+    "n": "14"
+   },
+   {
+    "name": "Happet",
+    "n": "9"
+   },
+   {
+    "name": "FLEXI",
+    "n": "8"
+   },
+   {
+    "name": "Exclusion",
+    "n": "6"
+   },
+   {
+    "name": "SMART BONES",
+    "n": "5"
+   },
+   {
+    "name": "ECOMFY",
+    "n": "5"
+   },
+   {
+    "name": "Churu",
+    "n": "5"
+   },
+   {
+    "name": "IAMS",
+    "n": "4"
+   },
+   {
+    "name": "GimCat",
+    "n": "4"
+   },
+   {
+    "name": "LAND FLEISCH",
+    "n": "4"
+   },
+   {
+    "name": "ANTOS",
+    "n": "3"
+   },
+   {
+    "name": "Dogoteka",
+    "n": "3"
+   },
+   {
+    "name": "BOGAR",
+    "n": "3"
+   },
+   {
+    "name": "CANDIOLI",
+    "n": "3"
+   },
+   {
+    "name": "Chewllagen",
+    "n": "3"
+   },
+   {
+    "name": "Vetocanis",
+    "n": "2"
+   },
+   {
+    "name": "Gimborn",
+    "n": "2"
+   },
+   {
+    "name": "MERVUE",
+    "n": "2"
+   },
+   {
+    "name": "NATURE'S MIR",
+    "n": "1"
+   }
+  ],
+  "hidden_by_cat": [
+   {
+    "name": "Sausas maistas šunims",
+    "n": "74"
+   },
+   {
+    "name": "Antkakliai, pavadėliai šunims",
+    "n": "36"
+   },
+   {
+    "name": "Guoliai šunims",
+    "n": "22"
+   },
+   {
+    "name": "Skanėstai šunims",
+    "n": "16"
+   },
+   {
+    "name": "Sausas maistas katėms",
+    "n": "15"
+   },
+   {
+    "name": "Konservai šunims",
+    "n": "14"
+   },
+   {
+    "name": "Apranga šunims",
+    "n": "12"
+   },
+   {
+    "name": "Narvai ir aksesuarai graužikams",
+    "n": "11"
+   },
+   {
+    "name": "Skanėstai katėms",
+    "n": "11"
+   },
+   {
+    "name": "Konservai katėms",
+    "n": "9"
+   },
+   {
+    "name": "Žaislai šunims",
+    "n": "9"
+   },
+   {
+    "name": "Transportavimo dėžės šunims",
+    "n": "8"
+   },
+   {
+    "name": "Vitaminai ir papildai šunims",
+    "n": "8"
+   },
+   {
+    "name": "Transportavimo dėžės katėms",
+    "n": "8"
+   },
+   {
+    "name": "Draskyklės katėms",
+    "n": "8"
+   },
+   {
+    "name": "Šampūnai šunims",
+    "n": "6"
+   },
+   {
+    "name": "Vėsinantys kilimėliai šunims",
+    "n": "5"
+   },
+   {
+    "name": "Kelionių įranga",
+    "n": "5"
+   },
+   {
+    "name": "Tualetai, semtuvėliai",
+    "n": "4"
+   },
+   {
+    "name": "Dubenėliai šunims",
+    "n": "3"
+   },
+   {
+    "name": "Higienos priemonės šunims",
+    "n": "3"
+   },
+   {
+    "name": "Guoliai katėms",
+    "n": "2"
+   },
+   {
+    "name": "Žaislai katėms",
+    "n": "2"
+   },
+   {
+    "name": "Kraikai kačių tualetams",
+    "n": "2"
+   },
+   {
+    "name": "Šukos, šepečiai, žirklės šunims",
+    "n": "2"
+   }
+  ],
+  "stock_watch": [
+   {
+    "status": "notified",
+    "n": "3"
+   },
+   {
+    "status": "waiting",
+    "n": "3"
+   }
+  ],
+  "top_cats": [
+   {
+    "term_id": "86",
+    "name": "Animonda konservai šunims",
+    "slug": "animonda-konservai-sunims",
+    "count": "38"
+   },
+   {
+    "term_id": "85",
+    "name": "Hipoalerginis maistas šunims",
+    "slug": "hipoalerginis-maistas-sunims",
+    "count": "33"
+   },
+   {
+    "term_id": "679",
+    "name": "RINKINIAI",
+    "slug": "rinkiniai",
+    "count": "27"
+   },
+   {
+    "term_id": "91",
+    "name": "DAUGIAU=PIGIAU",
+    "slug": "daugiau-pigiau",
+    "count": "25"
+   },
+   {
+    "term_id": "80",
+    "name": "Miamor katėms",
+    "slug": "miamor-katems",
+    "count": "22"
+   },
+   {
+    "term_id": "70",
+    "name": "ŠUNIMS",
+    "slug": "sunims",
+    "count": "15"
+   },
+   {
+    "term_id": "83",
+    "name": "Super Premium šunų maistas",
+    "slug": "super-premium-sunu-maistas",
+    "count": "5"
+   },
+   {
+    "term_id": "16",
+    "name": "Kita",
+    "slug": "uncategorized",
+    "count": "1"
+   },
+   {
+    "term_id": "119",
+    "name": "DOVANOS",
+    "slug": "dovanos",
+    "count": "1"
+   }
+  ],
+  "sub_cats": [
+   {
+    "term_id": "95",
+    "name": "Skanėstai šunims",
+    "slug": "skanestai-sunims",
+    "parent": "70",
+    "count": "304"
+   },
+   {
+    "term_id": "115",
+    "name": "Žaislai šunims",
+    "slug": "zaislai-sunims",
+    "parent": "70",
+    "count": "207"
+   },
+   {
+    "term_id": "116",
+    "name": "Antkakliai, pavadėliai šunims",
+    "slug": "antkakliai-pavadeliai-sunims",
+    "parent": "70",
+    "count": "174"
+   },
+   {
+    "term_id": "101",
+    "name": "Vitaminai ir papildai šunims",
+    "slug": "vitaminai-ir-papildai-sunims",
+    "parent": "70",
+    "count": "73"
+   },
+   {
+    "term_id": "75",
+    "name": "Šukos, šepečiai, žirklės šunims",
+    "slug": "sukos-sepeciai-zirkles-sunims",
+    "parent": "70",
+    "count": "62"
+   },
+   {
+    "term_id": "305",
+    "name": "Apranga šunims",
+    "slug": "apranga-sunims",
+    "parent": "70",
+    "count": "61"
+   },
+   {
+    "term_id": "111",
+    "name": "Dubenėliai šunims",
+    "slug": "dubeneliai-sunims",
+    "parent": "70",
+    "count": "52"
+   },
+   {
+    "term_id": "82",
+    "name": "Higienos priemonės šunims",
+    "slug": "higienos-priemones-sunims",
+    "parent": "70",
+    "count": "45"
+   },
+   {
+    "term_id": "233",
+    "name": "Guoliai šunims",
+    "slug": "guoliai-boksai-sunims",
+    "parent": "70",
+    "count": "44"
+   },
+   {
+    "term_id": "122",
+    "name": "Transportavimo dėžės šunims",
+    "slug": "transportavimo-dezes-sunims",
+    "parent": "70",
+    "count": "43"
+   },
+   {
+    "term_id": "76",
+    "name": "Šampūnai šunims",
+    "slug": "sampunai-sunims",
+    "parent": "70",
+    "count": "37"
+   },
+   {
+    "term_id": "123",
+    "name": "Kelionių įranga",
+    "slug": "kelioniu-iranga",
+    "parent": "70",
+    "count": "18"
+   },
+   {
+    "term_id": "71",
+    "name": "Maistas šunims",
+    "slug": "maistas-sunims",
+    "parent": "70",
+    "count": "13"
+   },
+   {
+    "term_id": "108",
+    "name": "Antiparazitinės priemonės šunims",
+    "slug": "antiparazitines-priemones-sunims",
+    "parent": "70",
+    "count": "9"
+   },
+   {
+    "term_id": "654",
+    "name": "Vėsinantys kilimėliai šunims",
+    "slug": "vesinantys-kilimeliai-sunims",
+    "parent": "70",
+    "count": "7"
+   },
+   {
+    "term_id": "125",
+    "name": "Narvai",
+    "slug": "narvai",
+    "parent": "70",
+    "count": "7"
+   },
+   {
+    "term_id": "656",
+    "name": "Pirmoji pagalba šunims",
+    "slug": "pirmoji-pagalba-sunims",
+    "parent": "70",
+    "count": "2"
+   },
+   {
+    "term_id": "655",
+    "name": "Baseinai šunims",
+    "slug": "baseinai-sunims",
+    "parent": "70",
+    "count": "1"
+   },
+   {
+    "term_id": "96",
+    "name": "Skanėstai katėms",
+    "slug": "skanestai-katems",
+    "parent": "77",
+    "count": "88"
+   },
+   {
+    "term_id": "107",
+    "name": "Kraikai kačių tualetams",
+    "slug": "kraikai-kaciu-tualetams",
+    "parent": "77",
+    "count": "86"
+   },
+   {
+    "term_id": "106",
+    "name": "Tualetai, semtuvėliai",
+    "slug": "tualetai-kraikai-semtuveliai",
+    "parent": "77",
+    "count": "59"
+   },
+   {
+    "term_id": "114",
+    "name": "Žaislai katėms",
+    "slug": "zaislai-katems",
+    "parent": "77",
+    "count": "58"
+   },
+   {
+    "term_id": "639",
+    "name": "Šukos, šepečiai, žirklės katėms",
+    "slug": "sukos-sepeciai-zirkles-katems",
+    "parent": "77",
+    "count": "45"
+   },
+   {
+    "term_id": "121",
+    "name": "Transportavimo dėžės katėms",
+    "slug": "transportavimo-dezes-katems",
+    "parent": "77",
+    "count": "39"
+   },
+   {
+    "term_id": "124",
+    "name": "Draskyklės katėms",
+    "slug": "draskykles-katems",
+    "parent": "77",
+    "count": "38"
+   },
+   {
+    "term_id": "112",
+    "name": "Dubenėliai katėms",
+    "slug": "dubeneliai-katems",
+    "parent": "77",
+    "count": "33"
+   },
+   {
+    "term_id": "130",
+    "name": "Priežiūros priemonės katėms",
+    "slug": "prieziuros-priemones-katems",
+    "parent": "77",
+    "count": "26"
+   },
+   {
+    "term_id": "102",
+    "name": "Vitaminai ir papildai katėms",
+    "slug": "vitaminai-ir-papildai-katems",
+    "parent": "77",
+    "count": "16"
+   },
+   {
+    "term_id": "569",
+    "name": "Guoliai katėms",
+    "slug": "guoliai-katems",
+    "parent": "77",
+    "count": "12"
+   },
+   {
+    "term_id": "78",
+    "name": "Maistas katėms",
+    "slug": "maistas-katems",
+    "parent": "77",
+    "count": "10"
+   },
+   {
+    "term_id": "117",
+    "name": "Antkakliai ir petnešos katėms",
+    "slug": "antkakliai-ir-petnesos-katems",
+    "parent": "77",
+    "count": "8"
+   },
+   {
+    "term_id": "109",
+    "name": "Antiparazitinės priemonės katėms",
+    "slug": "antiparazitines-priemones-katems",
+    "parent": "77",
+    "count": "6"
+   },
+   {
+    "term_id": "97",
+    "name": "Skanėstai graužikams",
+    "slug": "skanestai-grauzikams",
+    "parent": "87",
+    "count": "21"
+   },
+   {
+    "term_id": "88",
+    "name": "Pašaras graužikams",
+    "slug": "pasaras-grauzikams",
+    "parent": "87",
+    "count": "20"
+   },
+   {
+    "term_id": "304",
+    "name": "Narvai ir aksesuarai graužikams",
+    "slug": "narvai-grauzikams",
+    "parent": "87",
+    "count": "19"
+   },
+   {
+    "term_id": "657",
+    "name": "Kraikas ir šienas graužikams",
+    "slug": "kraikas-ir-sienas-grauzikams",
+    "parent": "87",
+    "count": "3"
+   },
+   {
+    "term_id": "90",
+    "name": "Lesalas paukščiams",
+    "slug": "lesalas-pauksciams",
+    "parent": "89",
+    "count": "8"
+   },
+   {
+    "term_id": "98",
+    "name": "Skanėstai paukščiams",
+    "slug": "skanestai-pauksciams",
+    "parent": "89",
+    "count": "3"
+   },
+   {
+    "term_id": "666",
+    "name": "Aksesuarai paukščiams",
+    "slug": "aksesuarai-pauksciams",
+    "parent": "89",
+    "count": "2"
+   },
+   {
+    "term_id": "94",
+    "name": "Akvariumo žuvyčių maistas",
+    "slug": "akvariumo-zuvyciu-maistas",
+    "parent": "93",
+    "count": "37"
+   },
+   {
+    "term_id": "100",
+    "name": "Tvenkinių žuvų maistas",
+    "slug": "tvenkiniu-zuvu-maistas",
+    "parent": "93",
+    "count": "12"
+   },
+   {
+    "term_id": "371",
+    "name": "Akvariumų įranga",
+    "slug": "akvariumai-iranga",
+    "parent": "93",
+    "count": "3"
+   }
+  ],
+  "kontaktai": {
+   "tel": false,
+   "email": "uzsakymai@petshop.lt",
+   "admin": "terra@gyvunai.lt"
+  },
+  "ajax_porkpeas": "{\"suggestions\":[{\"id\":-1,\"value\":\"Produkt\\u0173 nerasta.\",\"url\":\"\"}]}"
+ }
+}
