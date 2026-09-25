@@ -1,0 +1,225 @@
+{
+ "1": {
+  "v": "S1717c",
+  "faze": "1",
+  "sc_clear_on_edit": [
+   "@3551: \t\twpsc_delete_url_cache( $post_url );\n\t\twpsc_delete_post_archives( $post );\n\t}\n}\n\n/* check if we want to clear out all cached files on post updates, otherwise call standard wp_cache_post_change() */\nfunction wp_cache_post_edit( $post_id ) {\n\tglobal $wp_cache_clear_on_post_edit, $cache_path, $blog_cache_dir;\n\tstatic $last_post_edited = -1;\n\n\t// Normalize $post_id to always be an integer (handles both int and WP_Post object)\n\tif ( is_object( $post_id ) && isset( $post_id->ID ) ) {\n\t\t$post_id = $post_id->ID;\n\t}\n\t$post_id = (int) $post_id;\n\n\tif ( $post_id === 0 ) {\n\t\treturn $post_id;\n\t}\n\n\tif ( $post_id == $last_post_edited ) {\n\t\t$action = current_filter();\n\t\twp_cache_debug( \"wp_cache_post_edit({",
+   "@3589: , not deleting any cache files. status: ' . $post->post_status, 4 );\n\t\treturn $post_id;\n\t}\n\n\t// we want to process the post again just in case it becomes published before the second time this function is called.\n\t$last_post_edited = $post_id;\n\tif ( $wp_cache_clear_on_post_edit ) {\n\t\twp_cache_debug( \"wp_cache_post_edit: Clearing cache $blog_cache_dir and {$cache_path}supercache/ on post edit per config.\", 2 );\n\t\tprune_super_cache( $blog_cache_dir, true );\n\t\tprune_super_cache( get_supercache_dir(), true );\n\n\t\tdo_action( 'wp_cache_cleared' );\n\t} else {\n\t\t$action = current_filter();\n\t\twp_cache_debug( \"wp_cache_post_edit: Clearing cache for post $post_id on {$action}\", 2 );\n\t\twp_cache_post_change"
+  ],
+  "sc_hooks": {
+   "edit_post": [
+    "0: wp_cache_post_change"
+   ],
+   "save_post": [
+    "10: delete_get_calendar_cache",
+    "10: closure @class-wc-mnm-cache.php:188",
+    "10: closure @class-wc-mnm-cache.php:188",
+    "10: WC_Widget_Cart::flush_widget_cache",
+    "10: WC_Widget_Layered_Nav_Filters::flush_widget_cache",
+    "10: WC_Widget_Layered_Nav::flush_widget_cache",
+    "10: WC_Widget_Price_Filter::flush_widget_cache",
+    "10: WC_Widget_Product_Categories::flush_widget_cache",
+    "10: WC_Widget_Product_Search::flush_widget_cache",
+    "10: WC_Widget_Product_Tag_Cloud::flush_widget_cache",
+    "10: WC_Widget_Products::flush_widget_cache",
+    "10: WC_Widget_Recently_Viewed::flush_widget_cache",
+    "10: WC_Widget_Top_Rated_Products::flush_widget_cache",
+    "10: WC_Widget_Recent_Reviews::flush_widget_cache",
+    "10: WC_Widget_Rating_Filter::flush_widget_cache",
+    "10: WC_Widget_Brand_Nav::flush_widget_cache"
+   ],
+   "clean_post_cache": [
+    "10: WC_Post_Data::invalidate_db_block_templates_cache",
+    "10: wp_cache_post_edit"
+   ],
+   "transition_post_status": [
+    "10: __clear_multi_author_cache",
+    "10: cmplz_invalidate_post_count_cache",
+    "10: wpsc_post_transition"
+   ],
+   "woocommerce_product_set_stock": [
+    "10: Petshop_Cache::preke_obj"
+   ],
+   "woocommerce_variation_set_stock": [
+    "10: Petshop_Cache::preke_obj"
+   ],
+   "wp_trash_post": [
+    "0: wp_cache_post_edit",
+    "10: closure @class-wc-mnm-cache.php:188"
+   ],
+   "delete_post": [
+    "0: wp_cache_post_edit",
+    "10: delete_get_calendar_cache",
+    "10: Automattic\\WooCommerce\\Admin\\ReportsSync::maybe_clear_stock_count_cache_for_post"
+   ]
+  },
+  "prekiu_modif": [
+   {
+    "val": "08",
+    "post_type": "product",
+    "n": "475"
+   },
+   {
+    "val": "09",
+    "post_type": "product",
+    "n": "1825"
+   }
+  ],
+  "login": {
+   "md5": "8624aee11a7929545d6c8fd71f7b01d6",
+   "dydis": 5473,
+   "mtime": "08-19 20:52",
+   "antraste": "<?php\n/**\n * Plugin Name: Petshop Prisijungimo sargas\n * Description: Riboja nesėkmingus prisijungimo bandymus (NF9). 5 bandymai per 15 min. iš to paties adreso — tada 15 min. pauzė. Magic link ir REST NELIEČIAMI.\n * Version: 1.0.0\n *\n * TŽ §5 NF9: „Login attempt limits (5 bandymai / 15 min lockout)\".\n * Išmatuota 2026-08-19 (H085): saugumo pluginų nėra nė vieno, wp-login.php\n * priima neribotai.\n *\n * TRYS SAUGIKLIAI — sąmoningai, nes tai autentifikacijos sluoksnis:\n *\n *  1. IŠJUNGIMO VĖLIAVA  wp-content/uploads/ps-login-sargas.off\n *     Failas yra → sargas nedirba. Sukuriama per DirectAdmin, be WP admin.\n *     Jei kada nors užsirakintum — vienas failas ir viskas atsidaro.\n *\n *  2. NIEKADA NEBLOKUOJAMA:\n *     - REST API (tiltas, programinės sąsajos)\n *     - magic link (M8 P0 kelias — žmogus be slaptažodžio)\n *     - jau prisijungę vartotojai\n *     ",
+   "ivyko_ctx": [
+    "@147: lete_transient(self::raktas());\n\t}\n\n\tpublic static function pranesimas($zinute) {\n\t\tif (!self::veikia()) return $zinute;\n\t\t$b = self::bukle();\n\t\tif (empty($b['iki']) || $b['iki'] <= time()) return $zinute;\n\t\t$liko = (int) ceil(($b['iki'] - time()) / 60);\n\t\treturn $zinute . '<p class=\"message\">' . esc_html(sprintf(\n\t\t\t'Prisijungimas laikinai pristabdytas. Liko apie %d min.', max(1, $liko)\n\t\t)) . '</p>';\n\t}\n\n\t/** Įrašas į petshop-sargas žurnalą, jei jis yra; kitaip tyliai praleidžiama. */\n\tprivate static function zurnalas($ivykis, $login) {\n\t\tglobal $wpdb;\n\t\t$l = $wpdb->prefix . 'ps_sargas_klaidos';\n\t\tif ($wpdb->get_var(\"SHOW TABLES LIKE '{$l}'\") !== $l) return;\n\t\t$wpdb->insert($l, [\n\t\t\t'ivyko'   => current_time('mysql'),\n\t\t\t'tipas'   => 'login',\n\t\t\t'zinute'  => sprintf('%s: %s (bandytas vardas: %s)', $ivykis, self::adresas(), substr((string) $login, 0, 60)),\n\t\t]);\n\t}\n}\n\nPetshop_Prisijungimo_Sargas::pradzia();\n"
+   ],
+   "db": [
+    "$wpdb->insert($l"
+   ]
+  },
+  "rytas_zalios_ctx": [
+   "@468: a. $priverstinai — iš mygtuko, laiško nesiunčia. */\n\tpublic static function sargas_cron( $priverstinai = false ) {\n\t\t$pt = self::patikros();\n\t\t$raud = array(); $gelt = array(); $z = 0;\n\t\tforeach ( $pt as $x ) {\n\t\t\tif ( 'raudona' === $x['lygis'] ) { $raud[] = $x; } elseif ( 'geltona' === $x['lygis'] ) { $gelt[] = $x; } elseif ( 'zalia' === $x['lygis'] ) { $z++; }\n\t\t}\n\t\tupdate_option( self::OPT_PASK, array( 'laikas' => current_time( 'mysql', true ), 'raudonos' => $raud, 'geltonos' => $gelt, 'zalios' => $z, 'viso' => count( $pt ) ), false );\n\t\tif ( $priverstinai || ! $raud || ! (int) self::riba( 'laiskai' ) ) { return array( 'raud' => count( $raud ), 'siusta' => false ); }\n\t\t/* tas pats raudonųjų rinkinys — kartą per parą */\n\t\t$par = md5( implode( '|', wp_list_pluck( $raud, 'kodas'"
+  ],
+  "rytas_fn": [
+   "init",
+   "planuoti",
+   "perimti_huba",
+   "ribos_numatytos",
+   "riba",
+   "veiksmai_ijungti",
+   "issaugoti_ribas",
+   "tikrinti_dabar",
+   "u",
+   "e",
+   "s",
+   "a",
+   "lentele_yra",
+   "testiniai",
+   "ts",
+   "siandien",
+   "pries_d",
+   "stat_pradzia",
+   "apkarpyti",
+   "eur",
+   "url_pard",
+   "laikotarpiai",
+   "skaiciai",
+   "delta_html",
+   "dienos_35",
+   "bazine",
+   "spalva_kritimas",
+   "spalva_kiekis",
+   "lemputes",
+   "reklama",
+   "neissiusti_sk",
+   "veiksmai",
+   "patikros",
+   "sargas_cron",
+   "render",
+   "korteles",
+   "ribos_forma",
+   "css"
+  ],
+  "rytas_opt_like": [
+   {
+    "option_name": "ps_rytas_ribos",
+    "len": "31"
+   },
+   {
+    "option_name": "ps_rytas_sargas_pask",
+    "len": "122"
+   },
+   {
+    "option_name": "ps_rytas_sargas_siusta",
+    "len": "528"
+   }
+  ],
+  "rytas_pask_raw": {
+   "geltonos": [],
+   "zalios": 12,
+   "viso": 13
+  },
+  "krepselio_praleisti": [
+   {
+    "id": "806",
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "jk": "cart_abandoned:c_17edea3b2644377026e641b86e2db94c:stage1",
+    "scheduled_at": "2026-09-22 14:44:43",
+    "skip_reason": "consent_missing",
+    "ctx": ""
+   },
+   {
+    "id": "807",
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "jk": "cart_abandoned:13e0ebe6c72ff5f78d49b6d5311fb2ba",
+    "scheduled_at": "2026-09-22 16:20:30",
+    "skip_reason": "consent_missing",
+    "ctx": ""
+   },
+   {
+    "id": "822",
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "jk": "cart_abandoned:c_bcaba41dc37c9ace7baf0edf7bb0a1df:stage1",
+    "scheduled_at": "2026-09-23 13:14:47",
+    "skip_reason": "consent_missing",
+    "ctx": ""
+   },
+   {
+    "id": "823",
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "jk": "cart_abandoned:e59040fe6c6fb0fad3f694d818d0d3c5",
+    "scheduled_at": "2026-09-23 13:28:07",
+    "skip_reason": "consent_missing",
+    "ctx": ""
+   },
+   {
+    "id": "825",
+    "flow": "cart_abandoned_2",
+    "flow_class": "marketing",
+    "jk": "cart_abandoned_2:13e0ebe6c72ff5f78d49b6d5311fb2ba",
+    "scheduled_at": "2026-09-23 14:20:33",
+    "skip_reason": "consent_missing",
+    "ctx": ""
+   },
+   {
+    "id": "899",
+    "flow": "cart_abandoned_2",
+    "flow_class": "marketing",
+    "jk": "cart_abandoned_2:e59040fe6c6fb0fad3f694d818d0d3c5",
+    "scheduled_at": "2026-09-24 11:28:11",
+    "skip_reason": "consent_missing",
+    "ctx": ""
+   },
+   {
+    "id": "900",
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "jk": "cart_abandoned:83c5e179212c73b4b6e1fd03f132a310",
+    "scheduled_at": "2026-09-24 15:04:20",
+    "skip_reason": "consent_missing",
+    "ctx": ""
+   },
+   {
+    "id": "916",
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "jk": "cart_abandoned:c_cdfb26d58549eb8332171178cc67c9b8:stage1",
+    "scheduled_at": "2026-09-24 19:29:40",
+    "skip_reason": "consent_missing",
+    "ctx": ""
+   }
+  ],
+  "laikas": "2026-09-25 09:49:12"
+ },
+ "v": "dep-064802",
+ "kurimas": 200,
+ "sid": 6374,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
