@@ -1,0 +1,48 @@
+{
+ "2": {
+  "v": "S1718z",
+  "faze": "2",
+  "bak": true,
+  "irasyta": true,
+  "md5_po": "3d01342fbc66c7a313a4ff7a27059865",
+  "heartbeat": {
+   "/?ps_hb=1790340044": 200,
+   "/parduotuve/?ps_hb=1": 200,
+   "/kasa/?ps_hb=1": 200
+  },
+  "ua_po": {
+   "ChatGPT-User": {
+    "/": 200,
+    "/kategorija/sunims/": 200,
+    "/product/josera-optiness-sausas-pasaras-sunims-12-5-kg/": 301
+   },
+   "GPTBot": {
+    "/": 200,
+    "/kategorija/sunims/": 200,
+    "/product/josera-optiness-sausas-pasaras-sunims-12-5-kg/": 301
+   },
+   "ClaudeBot": {
+    "/": 200,
+    "/kategorija/sunims/": 200,
+    "/product/josera-optiness-sausas-pasaras-sunims-12-5-kg/": 301
+   },
+   "OAI-SearchBot": {
+    "/": 200,
+    "/kategorija/sunims/": 200,
+    "/product/josera-optiness-sausas-pasaras-sunims-12-5-kg/": 301
+   },
+   "Chrome": {
+    "/": 200,
+    "/kategorija/sunims/": 200,
+    "/product/josera-optiness-sausas-pasaras-sunims-12-5-kg/": 301
+   }
+  }
+ },
+ "v": "dep-123934",
+ "kurimas": 200,
+ "sid": 6439,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
