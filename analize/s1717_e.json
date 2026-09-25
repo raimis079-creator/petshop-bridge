@@ -1,0 +1,534 @@
+{
+ "1": {
+  "v": "S1717e",
+  "faze": "1",
+  "siuntos_cols": [
+   "id",
+   "uzsakymas_id",
+   "shipment_id",
+   "sandelis",
+   "vezejas",
+   "siuntos_nr",
+   "paketu_sk",
+   "pristatymo_tipas",
+   "sukurta_at",
+   "diena",
+   "tiekejui_issiusta_at",
+   "registruota_at",
+   "isvezta_at",
+   "pristatyta_at",
+   "atsiimta_at",
+   "svoris_deklaruotas_g",
+   "kaina_vezejo_ct",
+   "tarifo_id",
+   "statusas",
+   "problema_kodas",
+   "dienos_iki_pristatymo",
+   "saltinis",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija",
+   "sandelio_saltinis",
+   "dydis"
+  ],
+  "s36281": [
+   {
+    "id": "198",
+    "uzsakymas_id": "36281",
+    "shipment_id": "shp_04f5c4ac8e618b75",
+    "sandelis": "av",
+    "vezejas": "venipak",
+    "siuntos_nr": "V07267E1000209",
+    "paketu_sk": "1",
+    "pristatymo_tipas": "pastomatas",
+    "sukurta_at": "2026-09-24 05:00:51",
+    "diena": "2026-09-24",
+    "tiekejui_issiusta_at": null,
+    "registruota_at": "2026-09-24 05:00:51",
+    "isvezta_at": "2026-09-24 08:36:11",
+    "pristatyta_at": "2026-09-25 06:02:02",
+    "atsiimta_at": null,
+    "svoris_deklaruotas_g": "1755",
+    "kaina_vezejo_ct": "158",
+    "tarifo_id": "25",
+    "statusas": "pristatyta",
+    "problema_kodas": null,
+    "dienos_iki_pristatymo": "1",
+    "saltinis": "desk",
+    "testinis": "0",
+    "saltinis_aplinka": "prod",
+    "fakt_versija": "2",
+    "sandelio_saltinis": "desk",
+    "dydis": null
+   },
+   {
+    "id": "204",
+    "uzsakymas_id": "36281",
+    "shipment_id": "shp_23bf8052335036c5",
+    "sandelis": "vf",
+    "vezejas": "venipak",
+    "siuntos_nr": "V07267E1000215",
+    "paketu_sk": "1",
+    "pristatymo_tipas": "pastomatas",
+    "sukurta_at": "2026-09-24 09:41:22",
+    "diena": "2026-09-24",
+    "tiekejui_issiusta_at": null,
+    "registruota_at": "2026-09-24 09:41:22",
+    "isvezta_at": "2026-09-24 21:36:34",
+    "pristatyta_at": "2026-09-25 06:01:49",
+    "atsiimta_at": null,
+    "svoris_deklaruotas_g": null,
+    "kaina_vezejo_ct": "158",
+    "tarifo_id": "25",
+    "statusas": "pristatyta",
+    "problema_kodas": null,
+    "dienos_iki_pristatymo": "1",
+    "saltinis": "desk",
+    "testinis": "0",
+    "saltinis_aplinka": "prod",
+    "fakt_versija": "2",
+    "sandelio_saltinis": "desk",
+    "dydis": null
+   },
+   {
+    "id": "205",
+    "uzsakymas_id": "36288",
+    "shipment_id": "shp_093e3ec732a5da1e",
+    "sandelis": "zb",
+    "vezejas": "venipak",
+    "siuntos_nr": "V07267E1000216",
+    "paketu_sk": "1",
+    "pristatymo_tipas": "kurjeris",
+    "sukurta_at": "2026-09-24 13:05:55",
+    "diena": "2026-09-24",
+    "tiekejui_issiusta_at": null,
+    "registruota_at": "2026-09-24 13:05:55",
+    "isvezta_at": null,
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "svoris_deklaruotas_g": null,
+    "kaina_vezejo_ct": "301",
+    "tarifo_id": "26",
+    "statusas": "processing",
+    "problema_kodas": null,
+    "dienos_iki_pristatymo": null,
+    "saltinis": "desk",
+    "testinis": "0",
+    "saltinis_aplinka": "prod",
+    "fakt_versija": "2",
+    "sandelio_saltinis": "desk",
+    "dydis": null
+   },
+   {
+    "id": "206",
+    "uzsakymas_id": "36288",
+    "shipment_id": "shp_b0c8652664a2b506",
+    "sandelis": "ambrosia",
+    "vezejas": "venipak",
+    "siuntos_nr": "V07267E1000217",
+    "paketu_sk": "1",
+    "pristatymo_tipas": "kurjeris",
+    "sukurta_at": "2026-09-24 13:08:28",
+    "diena": "2026-09-24",
+    "tiekejui_issiusta_at": null,
+    "registruota_at": "2026-09-24 13:08:28",
+    "isvezta_at": null,
+    "pristatyta_at": null,
+    "atsiimta_at": null,
+    "svoris_deklaruotas_g": "12000",
+    "kaina_vezejo_ct": "552",
+    "tarifo_id": "29",
+    "statusas": "processing",
+    "problema_kodas": null,
+    "dienos_iki_pristatymo": null,
+    "saltinis": "desk",
+    "testinis": "0",
+    "saltinis_aplinka": "prod",
+    "fakt_versija": "2",
+    "sandelio_saltinis": "desk",
+    "dydis": null
+   }
+  ],
+  "diena": [
+   {
+    "d": "2026-09-18",
+    "n": "7",
+    "g_n": "4",
+    "g_eur": "78",
+    "g_kontr": "24.0",
+    "g_siunt": "7.8",
+    "g_be_siuntos": "1",
+    "g_nauji": "4",
+    "eur": "246",
+    "kontr_po_siunt_visi": "44.0"
+   },
+   {
+    "d": "2026-09-19",
+    "n": "10",
+    "g_n": "6",
+    "g_eur": "173",
+    "g_kontr": "45.7",
+    "g_siunt": "12.5",
+    "g_be_siuntos": "1",
+    "g_nauji": "3",
+    "eur": "301",
+    "kontr_po_siunt_visi": "62.6"
+   },
+   {
+    "d": "2026-09-20",
+    "n": "8",
+    "g_n": "5",
+    "g_eur": "253",
+    "g_kontr": "58.1",
+    "g_siunt": "11.8",
+    "g_be_siuntos": "0",
+    "g_nauji": "1",
+    "eur": "343",
+    "kontr_po_siunt_visi": "60.3"
+   },
+   {
+    "d": "2026-09-21",
+    "n": "10",
+    "g_n": "5",
+    "g_eur": "204",
+    "g_kontr": "39.5",
+    "g_siunt": "7.9",
+    "g_be_siuntos": "0",
+    "g_nauji": "2",
+    "eur": "417",
+    "kontr_po_siunt_visi": "64.2"
+   },
+   {
+    "d": "2026-09-22",
+    "n": "7",
+    "g_n": "5",
+    "g_eur": "264",
+    "g_kontr": "76.0",
+    "g_siunt": "9.5",
+    "g_be_siuntos": "0",
+    "g_nauji": "1",
+    "eur": "342",
+    "kontr_po_siunt_visi": "80.9"
+   },
+   {
+    "d": "2026-09-23",
+    "n": "11",
+    "g_n": "7",
+    "g_eur": "344",
+    "g_kontr": "81.4",
+    "g_siunt": "23.5",
+    "g_be_siuntos": "2",
+    "g_nauji": "4",
+    "eur": "522",
+    "kontr_po_siunt_visi": "82.4"
+   },
+   {
+    "d": "2026-09-24",
+    "n": "8",
+    "g_n": "6",
+    "g_eur": "311",
+    "g_kontr": "77.0",
+    "g_siunt": "19.4",
+    "g_be_siuntos": "1",
+    "g_nauji": "2",
+    "eur": "383",
+    "kontr_po_siunt_visi": "72.7"
+   },
+   {
+    "d": "2026-09-25",
+    "n": "1",
+    "g_n": "1",
+    "g_eur": "16",
+    "g_kontr": "4.9",
+    "g_siunt": "1.6",
+    "g_be_siuntos": "0",
+    "g_nauji": "1",
+    "eur": "16",
+    "kontr_po_siunt_visi": "3.3"
+   }
+  ],
+  "kampanija": [
+   {
+    "d": "2026-09-21",
+    "k": "21472043669",
+    "n": "1",
+    "eur": "57",
+    "kontr": "9.2",
+    "siunt": "1.6",
+    "nauji": "0"
+   },
+   {
+    "d": "2026-09-21",
+    "k": "21565466377",
+    "n": "1",
+    "eur": "12",
+    "kontr": "4.0",
+    "siunt": "1.6",
+    "nauji": "1"
+   },
+   {
+    "d": "2026-09-21",
+    "k": "23346712074",
+    "n": "1",
+    "eur": "33",
+    "kontr": "9.8",
+    "siunt": "1.6",
+    "nauji": "0"
+   },
+   {
+    "d": "2026-09-21",
+    "k": "gad:21472043669",
+    "n": "1",
+    "eur": "22",
+    "kontr": "4.8",
+    "siunt": "1.6",
+    "nauji": "1"
+   },
+   {
+    "d": "2026-09-21",
+    "k": "gad:21565466377",
+    "n": "1",
+    "eur": "80",
+    "kontr": "11.8",
+    "siunt": "1.6",
+    "nauji": "0"
+   },
+   {
+    "d": "2026-09-22",
+    "k": "23346712074",
+    "n": "3",
+    "eur": "108",
+    "kontr": "26.9",
+    "siunt": "6.3",
+    "nauji": "0"
+   },
+   {
+    "d": "2026-09-22",
+    "k": "gad:21472043669",
+    "n": "2",
+    "eur": "156",
+    "kontr": "49.1",
+    "siunt": "3.2",
+    "nauji": "1"
+   },
+   {
+    "d": "2026-09-23",
+    "k": "21565450990",
+    "n": "3",
+    "eur": "164",
+    "kontr": "37.0",
+    "siunt": "10.8",
+    "nauji": "2"
+   },
+   {
+    "d": "2026-09-23",
+    "k": "23346712074",
+    "n": "2",
+    "eur": "125",
+    "kontr": "27.7",
+    "siunt": "9.6",
+    "nauji": "0"
+   },
+   {
+    "d": "2026-09-23",
+    "k": "gad:21472043669",
+    "n": "2",
+    "eur": "55",
+    "kontr": "16.7",
+    "siunt": "3.2",
+    "nauji": "2"
+   },
+   {
+    "d": "2026-09-24",
+    "k": "21565450990",
+    "n": "4",
+    "eur": "234",
+    "kontr": "64.2",
+    "siunt": "16.3",
+    "nauji": "2"
+   },
+   {
+    "d": "2026-09-24",
+    "k": "23346712074",
+    "n": "1",
+    "eur": "31",
+    "kontr": "6.8",
+    "siunt": "1.6",
+    "nauji": "0"
+   },
+   {
+    "d": "2026-09-24",
+    "k": "gad:23346712074",
+    "n": "1",
+    "eur": "46",
+    "kontr": "5.9",
+    "siunt": "1.6",
+    "nauji": "0"
+   },
+   {
+    "d": "2026-09-25",
+    "k": "21472017542",
+    "n": "1",
+    "eur": "16",
+    "kontr": "4.9",
+    "siunt": "1.6",
+    "nauji": "1"
+   }
+  ],
+  "ads": [
+   {
+    "d": "2026-09-18",
+    "k": "21472017542",
+    "eur": "4.52",
+    "pasp": "19"
+   },
+   {
+    "d": "2026-09-18",
+    "k": "21565450990",
+    "eur": "17.39",
+    "pasp": "63"
+   },
+   {
+    "d": "2026-09-18",
+    "k": "23346712074",
+    "eur": "1.98",
+    "pasp": "10"
+   },
+   {
+    "d": "2026-09-19",
+    "k": "21472017542",
+    "eur": "7.50",
+    "pasp": "29"
+   },
+   {
+    "d": "2026-09-19",
+    "k": "21565450990",
+    "eur": "17.67",
+    "pasp": "66"
+   },
+   {
+    "d": "2026-09-19",
+    "k": "23346712074",
+    "eur": "2.36",
+    "pasp": "12"
+   },
+   {
+    "d": "2026-09-20",
+    "k": "21472017542",
+    "eur": "12.20",
+    "pasp": "41"
+   },
+   {
+    "d": "2026-09-20",
+    "k": "21565450990",
+    "eur": "24.73",
+    "pasp": "72"
+   },
+   {
+    "d": "2026-09-20",
+    "k": "23346712074",
+    "eur": "4.21",
+    "pasp": "25"
+   },
+   {
+    "d": "2026-09-21",
+    "k": "21472017542",
+    "eur": "10.96",
+    "pasp": "39"
+   },
+   {
+    "d": "2026-09-21",
+    "k": "21565450990",
+    "eur": "23.22",
+    "pasp": "73"
+   },
+   {
+    "d": "2026-09-21",
+    "k": "23346712074",
+    "eur": "4.19",
+    "pasp": "24"
+   },
+   {
+    "d": "2026-09-21",
+    "k": "24274413499",
+    "eur": "1.54",
+    "pasp": "10"
+   },
+   {
+    "d": "2026-09-22",
+    "k": "21472017542",
+    "eur": "6.94",
+    "pasp": "26"
+   },
+   {
+    "d": "2026-09-22",
+    "k": "21565450990",
+    "eur": "13.40",
+    "pasp": "49"
+   },
+   {
+    "d": "2026-09-22",
+    "k": "23346712074",
+    "eur": "2.31",
+    "pasp": "13"
+   },
+   {
+    "d": "2026-09-22",
+    "k": "24274413499",
+    "eur": "1.19",
+    "pasp": "9"
+   },
+   {
+    "d": "2026-09-23",
+    "k": "21472017542",
+    "eur": "13.33",
+    "pasp": "42"
+   },
+   {
+    "d": "2026-09-23",
+    "k": "21565450990",
+    "eur": "28.62",
+    "pasp": "68"
+   },
+   {
+    "d": "2026-09-23",
+    "k": "23346712074",
+    "eur": "2.40",
+    "pasp": "14"
+   },
+   {
+    "d": "2026-09-23",
+    "k": "24274413499",
+    "eur": "0.46",
+    "pasp": "4"
+   },
+   {
+    "d": "2026-09-24",
+    "k": "21472017542",
+    "eur": "5.71",
+    "pasp": "22"
+   },
+   {
+    "d": "2026-09-24",
+    "k": "21565450990",
+    "eur": "17.02",
+    "pasp": "67"
+   },
+   {
+    "d": "2026-09-24",
+    "k": "23346712074",
+    "eur": "4.03",
+    "pasp": "21"
+   }
+  ],
+  "laikas": "2026-09-25 09:57:13",
+  "db_err": ""
+ },
+ "v": "dep-065612",
+ "kurimas": 200,
+ "sid": 6376,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
