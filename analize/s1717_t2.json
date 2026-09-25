@@ -1,0 +1,38 @@
+{
+ "2": {
+  "v": "S1717t",
+  "faze": "2",
+  "deploy": {
+   "petshop-schema-prekes.php": {
+    "bak": true,
+    "irasyta": true,
+    "md5": "f28e9f0d3de63928b0a24944cf318e92"
+   },
+   "petshop-gsc-tvarka.php": {
+    "bak": true,
+    "irasyta": true,
+    "md5": "4833a372f3495692dcb99a3c22a58c20"
+   },
+   "petshop-seo-sablonai.php": {
+    "bak": false,
+    "irasyta": true,
+    "md5": "231bc27692114acb8441900edc3e5e36"
+   }
+  },
+  "heartbeat": {
+   "/?ps_hb=1790333268": 200,
+   "/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?ps_hb=1": 200,
+   "/gamintojas/josera/?ps_hb=1": 200,
+   "/parduotuve/?ps_hb=1": 200,
+   "/?ps_hb=2": 200
+  },
+  "laikas": "13:47:55"
+ },
+ "v": "dep-104641",
+ "kurimas": 200,
+ "sid": 6404,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
