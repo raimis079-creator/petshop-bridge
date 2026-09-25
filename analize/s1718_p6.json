@@ -1,0 +1,40 @@
+{
+ "1": {
+  "v": "S1718p6",
+  "pre_term_description": [
+   "10:wp_filter_kses"
+  ],
+  "pre_product_brand_description": [],
+  "pre_product_cat_description": [],
+  "term_description": [
+   "10:wptexturize",
+   "10:convert_chars",
+   "10:wpautop",
+   "10:shortcode_unautop",
+   "10:do_shortcode"
+  ],
+  "edit_term_description": [],
+  "wp_update_term_data": [],
+  "wp_insert_term_data": [],
+  "edited_term": [
+   "10:WC_Post_Data::edited_term",
+   "10:WC_Post_Data::handle_attribute_term_updated",
+   "10:closure"
+  ],
+  "edit_terms": [
+   "10:WC_Cache_Helper::clean_term_cache"
+  ],
+  "db_su_kses": "Apie X\nPirma <strong>b</strong>.\nKaip\nAntra.",
+  "db_be_kses": "Apie X\nPirma <strong>b</strong>.\nKaip\nAntra.",
+  "wp_kses_post": "<h2>Apie X</h2>\n<p>Pirma <strong>b</strong>.</p>\n<h3>Kaip</h3>\n<p>Antra.</p>",
+  "user": 0,
+  "unfiltered": false
+ },
+ "v": "dep-115317",
+ "kurimas": 200,
+ "sid": 6430,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
