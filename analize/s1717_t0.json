@@ -1,0 +1,66 @@
+{
+ "1": {
+  "v": "S1717t0",
+  "hub_slugs": [],
+  "hub_cfg": "",
+  "hub_kaip": [
+   "if ( ! function_exists( 'is_product_category' ) || ! is_product_category() ) { return; }",
+   "$term = get_queried_object();"
+  ],
+  "rm_desc_pvz": {
+   "konservu-rinkiniai": "Konservų rinkiniai šunims ir katėms – patogu perkant didesnį kiekį. Prieš pirkdami patikrinkite rinkinio sudėtį ir skonius.",
+   "konservai-katems": "Konservai ir šlapias maistas katėms – skirtingos sudėtys, tekstūros ir paskirtys. Rinkitės pagal poreikį ir patikrinkite, ar pašaras visavertis.",
+   "kraikai-kaciu-tualetams": "Kraikai kačių tualetams: molio, bentonitiniai, silikoniniai ir augaliniai. Skiriasi sušokimu, kvapų kontrole ir dulkių kiekiu.",
+   "narvai-grauzikams": "Narvai ir aksesuarai graužikams bei kitiems smulkiems augintiniams. Vertinkite matmenis, konstrukciją, valymą ir tinkamumą konkrečiai rūšiai."
+  },
+  "brand_kat": {
+   "josera": {
+    "n": 215,
+    "kat": {
+     "Sausas maistas šunims": 101,
+     "Konservai katėms": 49,
+     "Sausas maistas katėms": 47,
+     "Konservai šunims": 18
+    }
+   },
+   "trixie": {
+    "n": 208,
+    "kat": {
+     "Antkakliai, pavadėliai šunims": 39,
+     "Apranga šunims": 39,
+     "Transportavimo dėžės šunims": 16,
+     "Kelionių įranga": 14,
+     "Žaislai šunims": 13,
+     "Transportavimo dėžės katėms": 12
+    }
+   },
+   "exclusion": {
+    "n": 85,
+    "kat": {
+     "Sausas maistas šunims": 47,
+     "Konservai šunims": 24,
+     "Maistas šunims": 12,
+     "Sausas maistas katėms": 9,
+     "Konservai katėms": 5
+    }
+   },
+   "farmina": {
+    "n": 154,
+    "kat": {
+     "Sausas maistas šunims": 105,
+     "Sausas maistas katėms": 49
+    }
+   }
+  },
+  "rm_desc_fn": 1,
+  "rm_has_filter": 1,
+  "sep": "-"
+ },
+ "v": "dep-084934",
+ "kurimas": 200,
+ "sid": 6398,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
