@@ -1,0 +1,44 @@
+{
+ "1": {
+  "v": "S1720e",
+  "faze": "1",
+  "leger_18054": {
+   "status": "publish",
+   "title": "Josera Leger 10 kg &#8211; sausas maistas katėms, mažiau kalorijų"
+  },
+  "store_phone": false,
+  "mu": {
+   "petshop-darbalaukis.php": [
+    "+370 681 87787"
+   ],
+   "petshop-schema-prekes.php": [
+    "+370 681 87787"
+   ]
+  },
+  "child_functions": [
+   "+370 681 87787",
+   "+370 612 34567 "
+  ],
+  "opcijos": [
+   {
+    "option_name": "woocommerce_pos_store_phone",
+    "v": ""
+   },
+   {
+    "option_name": "lpsettings_sender_phone",
+    "v": "+37068187787"
+   },
+   {
+    "option_name": "lpsettings_pickup_phone",
+    "v": "+37068187787"
+   }
+  ]
+ },
+ "v": "dep-181015",
+ "kurimas": 200,
+ "sid": 6491,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
