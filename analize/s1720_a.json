@@ -1,0 +1,323 @@
+{
+ "v": "dep-173251",
+ "kurimas": 200,
+ "sid": 6483,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "a": {
+  "v": "S1720a",
+  "faze": "a",
+  "t": "2026-09-25 17:34:21",
+  "md5": "b4f486f31b847685a5d801e8f9642752",
+  "bytes": 4792,
+  "kodas": "<?php\n/**\n * Plugin Name: Petshop paieška v1.0 (S1699)\n * Description: Svetainės paieškos tolerancija (2026-09-20, 1.5 pjūvis: 21 % paieškų grąžino 0 rezultatų).\n *   (1) Sinonimai / rašybos klaidos brendams: jesera, jassera, jorsera → josera; eucanuba → eukanuba; expulsion, exclusive → exclusion;\n *       royal canine → royal canin; anikonds → animonda; sum palst → sum-plast ir kt. (SINONIMAI).\n *   (2) Kamienai: žodžiai ≥ 6 raidžių lyginami pagal pradžią (kiauliena ≈ kiaulienos, zirneis ≈ žirneliais, kačiukams ≈ kačiukas) —\n *       DB collation utf8mb4_unicode_ci jau ignoruoja diakritikus (ž = z), tad problema buvo tik galūnės.\n *   (3) SKU / prekės ID: „inps11\", „hyos02\", „19997\" → prekė pagal _sku (LIKE) arba ID.\n *   Veikia frontend produktų paieškai (WC /?s= ir Flatsome live search) per posts_search; admin neliečiamas.\n *   Išjungti: opcija ps_paieska_isjungta = 1.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nfinal class Petshop_Paieska {\n\tconst SINONIMAI = array(\n\t\t'jesera' => 'josera', 'jassera' => 'josera', 'jorsera' => 'josera', 'josena' => 'josera', 'joseta' => 'josera',\n\t\t'eucanuba' => 'eukanuba', 'eukanuva' => 'eukanuba',\n\t\t'expulsion' => 'exclusion', 'exclusive' => 'exclusion', 'exlusion' => 'exclusion', 'exclusion hypoalergenic' => 'exclusion hypoallergenic',\n\t\t'royal canine' => 'royal canin', 'royalcanin' => 'royal canin', 'royal cani' => 'royal canin',\n\t\t'anikonds' => 'animonda', 'animonda vom feinstein' => 'animonda vom feinsten', 'vom feinstein' => 'vom feinsten',\n\t\t'sum palst' => 'sum-plast', 'sumplast' => 'sum-plast',\n\t\t'gastrointensial' => 'gastrointestinal', 'gastrointestinial' => 'gastrointestinal', 'gastro intestinal' => 'gastrointestinal',\n\t\t'hypoalergenic' => 'hypoallergenic', 'hipoalergenis' => 'hypoallergenic', 'hipoalerginis' => 'hypoallergenic',\n\t\t'churru' => 'churu', 'ciuru' => 'churu',\n\t\t'furminatorius' => 'furminator', 'flexy' => 'flexi',\n\t\t'katės pieno pakaitalas' => 'pieno pakaitalas', 'kačių pieno pakaitalas' => 'pieno pakaitalas',\n\t\t'ausu valiklis' => 'ausų valiklis',\n\t);\n\tconst STOP = array( 'ir', 'su', 'be', 'iš', 'is', 'the', 'and', 'for', 'sausas', 'sausasmaistas', 'maistas', 'pašaras', 'pasaras' );\n\n\tpublic static function init() {\n\t\tif ( is_admin() && ! wp_doing_ajax() ) { return; }\n\t\tif ( get_option( 'ps_paieska_isjungta' ) ) { return; }\n\t\tadd_filter( 'posts_search', array( __CLASS__, 'posts_search' ), 20, 2 );\n\t}\n\n\t/** Ar tai produktų paieška (WC arba Flatsome ajax). */\n\tprivate static function produktu( WP_Query $q ) {\n\t\t$s = trim( (string) $q->get( 's' ) );\n\t\tif ( '' === $s ) { return false; }\n\t\t$pt = $q->get( 'post_type' );\n\t\tif ( is_array( $pt ) ) { return in_array( 'product', $pt, true ); }\n\t\treturn 'product' === $pt || ( '' === $pt && $q->is_main_query() && isset( $_GET['post_type'] ) && 'product' === $_GET['post_type'] );\n\t}\n\n\tpublic static function normalizuoti( $s ) {\n\t\t$s = html_entity_decode( $s, ENT_QUOTES, 'UTF-8' );\n\t\t$s = mb_strtolower( trim( preg_replace( '/\\s+/u', ' ', $s ) ) );\n\t\tforeach ( self::SINONIMAI as $nuo => $i ) {\n\t\t\tif ( false !== mb_strpos( $s, $nuo ) ) { $s = str_replace( $nuo, $i, $s ); }\n\t\t}\n\t\treturn $s;\n\t}\n\n\t/** Žodžio kamienas LIKE'ui: ≥8 raidžių → 6, 6–7 → 5, kitaip visas. Skaičiai ir SKU lieka. */\n\tpublic static function kamienas( $w ) {\n\t\tif ( preg_match( '/\\d/', $w ) ) { return $w; }\n\t\t$n = mb_strlen( $w );\n\t\tif ( $n >= 8 ) { return mb_substr( $w, 0, 6 ); }\n\t\tif ( $n >= 6 ) { return mb_substr( $w, 0, 5 ); }\n\t\treturn $w;\n\t}\n\n\tpublic static function posts_search( $search, $q ) {\n\t\tif ( ! self::produktu( $q ) ) { return $search; }\n\t\tglobal $wpdb;\n\t\t$s = self::normalizuoti( (string) $q->get( 's' ) );\n\t\t$zodziai = array_values( array_filter( preg_split( '/[\\s,\\/]+/u', $s ), function ( $w ) { return '' !== $w && ! in_array( $w, self::STOP, true ); } ) );\n\t\tif ( ! $zodziai ) { return $search; }\n\n\t\t$and = array();\n\t\tforeach ( $zodziai as $w ) {\n\t\t\t$k = '%' . $wpdb->esc_like( self::kamienas( $w ) ) . '%';\n\t\t\t$and[] = $wpdb->prepare( \"({$wpdb->posts}.post_title LIKE %s OR {$wpdb->posts}.post_excerpt LIKE %s OR {$wpdb->posts}.post_content LIKE %s)\", $k, $k, $k );\n\t\t}\n\t\t$where = '(' . implode( ' AND ', $and ) . ')';\n\n\t\t// SKU / ID: visa užklausa be tarpų\n\t\t$sku = preg_replace( '/\\s+/u', '', $s );\n\t\tif ( '' !== $sku && mb_strlen( $sku ) <= 20 && preg_match( '/\\d/', $sku ) ) {\n\t\t\t$where .= $wpdb->prepare( \" OR {$wpdb->posts}.ID IN (SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key='_sku' AND meta_value LIKE %s)\", '%' . $wpdb->esc_like( $sku ) . '%' );\n\t\t\tif ( ctype_digit( $sku ) ) { $where .= $wpdb->prepare( \" OR {$wpdb->posts}.ID = %d\", (int) $sku ); }\n\t\t}\n\t\treturn \" AND ({$where}) \";\n\t}\n}\nadd_action( 'init', array( 'Petshop_Paieska', 'init' ), 5 );\n",
+  "cols": [
+   "id",
+   "laikas",
+   "diena",
+   "tipas",
+   "pusl_tipas",
+   "url_kelias",
+   "raktas",
+   "raktas2",
+   "reiksme",
+   "sesija",
+   "lankytojas_d",
+   "lankytojas_30",
+   "saltinis",
+   "medium",
+   "kampanija",
+   "referer_domenas",
+   "kanalas",
+   "landing",
+   "irenginys",
+   "os_seima",
+   "nars_seima",
+   "salis",
+   "prisijunges",
+   "sutikimas",
+   "testinis",
+   "saltinis_aplinka"
+  ],
+  "nulines_14d": {
+   "SQL_ERR": "Unknown column 'tekstas' in 'field list'"
+  },
+  "viso_14d": [
+   {
+    "n": "528",
+    "nul": "79",
+    "ses": "135"
+   }
+  ],
+  "viso_po_0920": [
+   {
+    "n": "253",
+    "nul": "26"
+   }
+  ],
+  "top_14d": {
+   "SQL_ERR": "Unknown column 'tekstas' in 'field list'"
+  }
+ },
+ "b": {
+  "v": "S1720a",
+  "faze": "b",
+  "t": "2026-09-25 17:34:33",
+  "paslepti": [
+   {
+    "post_status": "draft",
+    "vis": null,
+    "n": "1227"
+   },
+   {
+    "post_status": "private",
+    "vis": null,
+    "n": "2"
+   },
+   {
+    "post_status": "publish",
+    "vis": null,
+    "n": "2676"
+   },
+   {
+    "post_status": "trash",
+    "vis": null,
+    "n": "17"
+   }
+  ],
+  "vis_terms": [
+   {
+    "name": "exclude-from-catalog",
+    "n": "298"
+   },
+   {
+    "name": "exclude-from-search",
+    "n": "298"
+   },
+   {
+    "name": "outofstock",
+    "n": "382"
+   }
+  ],
+  "meta_paslepimo": [
+   {
+    "meta_key": "_ps_dropship_paslepta",
+    "n": "291"
+   },
+   {
+    "meta_key": "_ps_ranka_isimta",
+    "n": "70"
+   },
+   {
+    "meta_key": "_ps_sandelis",
+    "n": "3886"
+   },
+   {
+    "meta_key": "_stock_status",
+    "n": "4168"
+   }
+  ],
+  "stock_status": [
+   {
+    "meta_value": "instock",
+    "post_status": "draft",
+    "n": "590"
+   },
+   {
+    "meta_value": "instock",
+    "post_status": "private",
+    "n": "2"
+   },
+   {
+    "meta_value": "instock",
+    "post_status": "publish",
+    "n": "2200"
+   },
+   {
+    "meta_value": "instock",
+    "post_status": "trash",
+    "n": "17"
+   },
+   {
+    "meta_value": "outofstock",
+    "post_status": "draft",
+    "n": "637"
+   },
+   {
+    "meta_value": "outofstock",
+    "post_status": "publish",
+    "n": "476"
+   }
+  ],
+  "cat_n": [
+   {
+    "n": "58"
+   }
+  ],
+  "brand_n": [
+   {
+    "n": "123"
+   }
+  ],
+  "antiparazit": [
+   {
+    "ID": "19745",
+    "post_title": "AS ANTY INSECT šampūnas šunims antiparazitinis, 250 ml",
+    "post_status": "draft",
+    "ss": "outofstock"
+   },
+   {
+    "ID": "23589",
+    "post_title": "Vetocanis antiparazitinis šampūnas katėms, 300ml",
+    "post_status": "publish",
+    "ss": "instock"
+   },
+   {
+    "ID": "23591",
+    "post_title": "Vetocanis antiparazitinis šampūnas šunims, 300ml",
+    "post_status": "publish",
+    "ss": "outofstock"
+   }
+  ],
+  "hidden_sample": [
+   {
+    "ID": "12453",
+    "post_title": "Eukanuba Medium Adult visavertis pašaras su vištiena 3kg",
+    "post_status": "publish"
+   },
+   {
+    "ID": "12454",
+    "post_title": "Eukanuba Mini & Medium Adult (ėriena ir ryžiai) 2,5kg",
+    "post_status": "publish"
+   },
+   {
+    "ID": "12455",
+    "post_title": "Eukanuba Daily Care Sensitive Skin Adult (žuvis) 12kg",
+    "post_status": "publish"
+   },
+   {
+    "ID": "12456",
+    "post_title": "Eukanuba Golden Retriever Adult (vištiena) 12kg",
+    "post_status": "publish"
+   },
+   {
+    "ID": "12460",
+    "post_title": "Eukanuba Puppy & Junior Small Breed PFB 18kg",
+    "post_status": "publish"
+   },
+   {
+    "ID": "12462",
+    "post_title": "Eukanuba Puppy & Junior Large Breed PFB 18kg",
+    "post_status": "publish"
+   },
+   {
+    "ID": "12463",
+    "post_title": "Eukanuba Adult Small Breed PFB 18kg",
+    "post_status": "publish"
+   },
+   {
+    "ID": "12464",
+    "post_title": "Eukanuba Adult Medium Breed 18kg",
+    "post_status": "publish"
+   },
+   {
+    "ID": "12469",
+    "post_title": "IAMS Kitten (vištiena) 10kg",
+    "post_status": "publish"
+   },
+   {
+    "ID": "12470",
+    "post_title": "IAMS Adult Cat (vištiena) 10kg",
+    "post_status": "publish"
+   }
+  ],
+  "ps_sources_hidden": [
+   {
+    "source": "ambrosia",
+    "n": "16"
+   },
+   {
+    "source": "av",
+    "n": "1672"
+   },
+   {
+    "source": "belcor_tofu",
+    "n": "80"
+   },
+   {
+    "source": "paslauga",
+    "n": "2"
+   },
+   {
+    "source": "prins",
+    "n": "43"
+   },
+   {
+    "source": "quattro",
+    "n": "65"
+   },
+   {
+    "source": "vf",
+    "n": "1249"
+   },
+   {
+    "source": "zb",
+    "n": "1113"
+   }
+  ],
+  "slepia_failai": [
+   "petshop-code-search.php",
+   "petshop-dropship-matomumas.php"
+  ],
+  "snippetai": [
+   {
+    "id": "561",
+    "name": "Petshop Rinkinių Gyvūno Filtras v1"
+   },
+   {
+    "id": "6483",
+    "name": "TEMP PS dep-173251"
+   }
+  ]
+ },
+ "c": {
+  "v": "S1720a",
+  "faze": "c",
+  "t": "2026-09-25 17:34:48",
+  "tema": {
+   "woocommerce/loop/no-products-found.php": [
+    "",
+    ""
+   ],
+   "woocommerce/archive-product.php": [
+    "parent",
+    ""
+   ],
+   "template-parts/posts/archive-none.php": [
+    "",
+    ""
+   ],
+   "search.php": [
+    "parent",
+    ""
+   ]
+  },
+  "wc_no_products": "<?php\n/**\n * Displayed when no products are found matching the current query\n *\n * This template can be overridden by copying it to yourtheme/woocommerce/loop/no-products-found.php.\n *\n * HOWEVER, on occasion WooCommerce will need to update template files and you\n * (the theme developer) will need to copy the new files to your theme to\n * maintain compatibility. We try to do this as little as possible, but it does\n * happen. When this occurs the version of the template file will be bumped and\n * the readme will list any important changes.\n *\n * @see https://woocommerce.com/document/template-structure/\n * @package WooCommerce\\Templates\n * @version 7.8.0\n */\n\ndefined( 'ABSPATH' ) || exit;\n\n?>\n<div class=\"woocommerce-no-products-found\">\n\t<?php wc_print_notice( esc_html__( 'No products were found matching your selection.', 'woocommerce' ), 'notice' ); ?>\n</div>\n",
+  "flatsome_no_products": "-",
+  "header_search": {
+   "ajax": 0,
+   "header_elements": false,
+   "mobile": false,
+   "nav_mobile": false
+  },
+  "flatsome_ajax_fn": "nera",
+  "searchkw": [],
+  "hills_http": 200,
+  "hills_main": " Produktų nerasta. ",
+  "hills_notice": "<div class=\"woocommerce-no-products-found\">\n\t\n\t<div class=\"woocommerce-info message-wrapper\" role=\"status\">\n\t\t<div class=\"message-container container medium-text-center\">\n\t\t\tProduktų nerasta.\t\t</div>",
+  "pork_products": 42,
+  "ajax_hills": "{\"suggestions\":[{\"id\":-1,\"value\":\"Produkt\\u0173 nerasta.\",\"url\":\"\"}]}"
+ }
+}
