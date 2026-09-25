@@ -1,0 +1,1876 @@
+{
+ "v": "dep-173601",
+ "kurimas": 200,
+ "sid": 6484,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "d": {
+  "v": "S1720b",
+  "faze": "d",
+  "t": "2026-09-25 17:37:12",
+  "sample": [
+   {
+    "raktas": "Sensible",
+    "raktas2": null,
+    "reiksme": "4",
+    "url_kelias": null,
+    "pusl_tipas": null
+   },
+   {
+    "raktas": "Monge",
+    "raktas2": null,
+    "reiksme": "116",
+    "url_kelias": null,
+    "pusl_tipas": null
+   },
+   {
+    "raktas": "Monge",
+    "raktas2": null,
+    "reiksme": "116",
+    "url_kelias": null,
+    "pusl_tipas": null
+   },
+   {
+    "raktas": "Monge",
+    "raktas2": null,
+    "reiksme": "116",
+    "url_kelias": null,
+    "pusl_tipas": null
+   },
+   {
+    "raktas": "Monge",
+    "raktas2": null,
+    "reiksme": "116",
+    "url_kelias": null,
+    "pusl_tipas": null
+   }
+  ],
+  "nulines_po_0920": [
+   {
+    "fraze": "hills",
+    "n": "3",
+    "ses": "1"
+   },
+   {
+    "fraze": "exclusion pork and peas",
+    "n": "2",
+    "ses": "1"
+   },
+   {
+    "fraze": "oazy chicken pollo adult sterilised",
+    "n": "2",
+    "ses": "1"
+   },
+   {
+    "fraze": "#26093",
+    "n": "1",
+    "ses": "0"
+   },
+   {
+    "fraze": "30490",
+    "n": "1",
+    "ses": "0"
+   },
+   {
+    "fraze": "30490*",
+    "n": "1",
+    "ses": "0"
+   },
+   {
+    "fraze": "8130",
+    "n": "1",
+    "ses": "0"
+   },
+   {
+    "fraze": "ambrozia",
+    "n": "1",
+    "ses": "1"
+   },
+   {
+    "fraze": "bravecto",
+    "n": "1",
+    "ses": "1"
+   },
+   {
+    "fraze": "flowers filtrai",
+    "n": "1",
+    "ses": "1"
+   },
+   {
+    "fraze": "hepac",
+    "n": "1",
+    "ses": "1"
+   },
+   {
+    "fraze": "kitty time",
+    "n": "1",
+    "ses": "1"
+   },
+   {
+    "fraze": "monge pet solution dog struvite",
+    "n": "1",
+    "ses": "1"
+   },
+   {
+    "fraze": "monhe pet solution mongestruvite",
+    "n": "1",
+    "ses": "1"
+   },
+   {
+    "fraze": "pork and peas",
+    "n": "1",
+    "ses": "1"
+   },
+   {
+    "fraze": "prima dog",
+    "n": "1",
+    "ses": "1"
+   },
+   {
+    "fraze": "prima fog",
+    "n": "1",
+    "ses": "1"
+   },
+   {
+    "fraze": "rafi cat",
+    "n": "1",
+    "ses": "1"
+   },
+   {
+    "fraze": "royal canin mini adult 8+",
+    "n": "1",
+    "ses": "1"
+   },
+   {
+    "fraze": "ziurkėnų pavadėliai",
+    "n": "1",
+    "ses": "1"
+   }
+  ],
+  "nulines_iki_0920": [
+   {
+    "fraze": "prolivet",
+    "n": "3"
+   },
+   {
+    "fraze": "19997",
+    "n": "2"
+   },
+   {
+    "fraze": "animonda vom feinstein",
+    "n": "2"
+   },
+   {
+    "fraze": "hill&#039;s science plan kitten",
+    "n": "2"
+   },
+   {
+    "fraze": "aladin",
+    "n": "2"
+   },
+   {
+    "fraze": "virbac",
+    "n": "2"
+   },
+   {
+    "fraze": "marp",
+    "n": "2"
+   },
+   {
+    "fraze": "carnilove",
+    "n": "2"
+   },
+   {
+    "fraze": "royal canin sterilised in jelly",
+    "n": "2"
+   },
+   {
+    "fraze": "hyos02",
+    "n": "1"
+   },
+   {
+    "fraze": "ideapet",
+    "n": "1"
+   },
+   {
+    "fraze": "35291",
+    "n": "1"
+   },
+   {
+    "fraze": "sam&#039;s field",
+    "n": "1"
+   },
+   {
+    "fraze": "jorsera",
+    "n": "1"
+   },
+   {
+    "fraze": "monoproteinai ėriena",
+    "n": "1"
+   },
+   {
+    "fraze": "applaws",
+    "n": "1"
+   },
+   {
+    "fraze": "royal canin gastro intestinal low fat small dog 1,5kg",
+    "n": "1"
+   },
+   {
+    "fraze": "hills",
+    "n": "1"
+   },
+   {
+    "fraze": "royal canin gastrointensial",
+    "n": "1"
+   },
+   {
+    "fraze": "the miracle nipple – maitinimo švirkštas jaunikliams",
+    "n": "1"
+   },
+   {
+    "fraze": "whimzees",
+    "n": "1"
+   },
+   {
+    "fraze": "ambrosia begrūdis su ėriena ir šviežia elniena sausasmaistas šunims, grain-free lamb &amp; fresh venison 12 k",
+    "n": "1"
+   },
+   {
+    "fraze": "early real šlapias",
+    "n": "1"
+   },
+   {
+    "fraze": "ambrosia begrūdis su ėriena ir šviežia elnlamb &amp; fresh venison",
+    "n": "1"
+   },
+   {
+    "fraze": "eucanuba puppy",
+    "n": "1"
+   },
+   {
+    "fraze": "farmina n&amp;d kitten wet",
+    "n": "1"
+   },
+   {
+    "fraze": "boxy",
+    "n": "1"
+   },
+   {
+    "fraze": "boxby",
+    "n": "1"
+   },
+   {
+    "fraze": "katės pieno pakaitalas",
+    "n": "1"
+   },
+   {
+    "fraze": "šprotai",
+    "n": "1"
+   },
+   {
+    "fraze": "josera sensi adult",
+    "n": "1"
+   },
+   {
+    "fraze": "jesera festivalis",
+    "n": "1"
+   },
+   {
+    "fraze": "gastrointestinial",
+    "n": "1"
+   },
+   {
+    "fraze": "brit care",
+    "n": "1"
+   },
+   {
+    "fraze": "orijen",
+    "n": "1"
+   },
+   {
+    "fraze": "batai",
+    "n": "1"
+   },
+   {
+    "fraze": "sum palst",
+    "n": "1"
+   },
+   {
+    "fraze": "dovanu kuponas",
+    "n": "1"
+   },
+   {
+    "fraze": "hikari cichlid gold sinking medium 100g",
+    "n": "1"
+   },
+   {
+    "fraze": "samtelis su svarstyklėmis",
+    "n": "1"
+   },
+   {
+    "fraze": "josera help weight &amp; diabetic",
+    "n": "1"
+   },
+   {
+    "fraze": "trovet",
+    "n": "1"
+   },
+   {
+    "fraze": "exclusive",
+    "n": "1"
+   },
+   {
+    "fraze": "trainer",
+    "n": "1"
+   },
+   {
+    "fraze": "expulsion",
+    "n": "1"
+   },
+   {
+    "fraze": "hill&#039;s prescription diet food sensitivities z/d",
+    "n": "1"
+   },
+   {
+    "fraze": "17250",
+    "n": "1"
+   },
+   {
+    "fraze": "jassera sensi",
+    "n": "1"
+   },
+   {
+    "fraze": "royal canine renal cat",
+    "n": "1"
+   },
+   {
+    "fraze": "anikonds vom feinstein",
+    "n": "1"
+   },
+   {
+    "fraze": "natures protection",
+    "n": "1"
+   },
+   {
+    "fraze": "zestipaws",
+    "n": "1"
+   },
+   {
+    "fraze": "nature&#039;s protection",
+    "n": "1"
+   },
+   {
+    "fraze": "the good stuff",
+    "n": "1"
+   },
+   {
+    "fraze": "sausas kačių maistas royal canin sensible 33, 10 + 2 kg",
+    "n": "1"
+   },
+   {
+    "fraze": "royal canin jorkšyro terjerų veislės suaugusių šunų sausas pašaras",
+    "n": "1"
+   },
+   {
+    "fraze": "inps11",
+    "n": "1"
+   },
+   {
+    "fraze": "inps",
+    "n": "1"
+   },
+   {
+    "fraze": "rolivet",
+    "n": "1"
+   },
+   {
+    "fraze": "kiauliena su zirneis",
+    "n": "1"
+   },
+   {
+    "fraze": "kiauliena su zirneleis",
+    "n": "1"
+   },
+   {
+    "fraze": "purskiamas ausu valiklis",
+    "n": "1"
+   },
+   {
+    "fraze": "zenifel",
+    "n": "1"
+   }
+  ],
+  "top_po_0920": [
+   {
+    "fraze": "exclusion",
+    "n": "29",
+    "rez": "77"
+   },
+   {
+    "fraze": "animonda",
+    "n": "12",
+    "rez": "61"
+   },
+   {
+    "fraze": "ambro",
+    "n": "11",
+    "rez": "16"
+   },
+   {
+    "fraze": "triušio",
+    "n": "10",
+    "rez": "65"
+   },
+   {
+    "fraze": "monge",
+    "n": "8",
+    "rez": "108"
+   },
+   {
+    "fraze": "šuniukams",
+    "n": "8",
+    "rez": "188"
+   },
+   {
+    "fraze": "hepat",
+    "n": "7",
+    "rez": "6"
+   },
+   {
+    "fraze": "miamor",
+    "n": "6",
+    "rez": "28"
+   },
+   {
+    "fraze": "animonda adult",
+    "n": "5",
+    "rez": "54"
+   },
+   {
+    "fraze": "quattro",
+    "n": "5",
+    "rez": "64"
+   },
+   {
+    "fraze": "kaulas",
+    "n": "4",
+    "rez": "93"
+   },
+   {
+    "fraze": "exclusion hypoallergenic",
+    "n": "4",
+    "rez": "41"
+   },
+   {
+    "fraze": "hikari",
+    "n": "4",
+    "rez": "40"
+   },
+   {
+    "fraze": "ontario katėms",
+    "n": "4",
+    "rez": "20"
+   },
+   {
+    "fraze": "josera",
+    "n": "4",
+    "rez": "107"
+   },
+   {
+    "fraze": "palutės",
+    "n": "4",
+    "rez": "19"
+   },
+   {
+    "fraze": "eukanuba",
+    "n": "3",
+    "rez": "24"
+   },
+   {
+    "fraze": "ambrosia",
+    "n": "3",
+    "rez": "15"
+   },
+   {
+    "fraze": "sausainiai",
+    "n": "3",
+    "rez": "30"
+   },
+   {
+    "fraze": "filtras",
+    "n": "3",
+    "rez": "27"
+   },
+   {
+    "fraze": null,
+    "n": "3",
+    "rez": "2381"
+   },
+   {
+    "fraze": "liūtas",
+    "n": "3",
+    "rez": "3"
+   },
+   {
+    "fraze": "uostymo kilimėlis",
+    "n": "3",
+    "rez": "12"
+   },
+   {
+    "fraze": "veterinarinė dieta",
+    "n": "2",
+    "rez": "12"
+   },
+   {
+    "fraze": "cream",
+    "n": "2",
+    "rez": "8"
+   },
+   {
+    "fraze": "rudos",
+    "n": "2",
+    "rez": "9"
+   },
+   {
+    "fraze": "filet",
+    "n": "2",
+    "rez": "13"
+   },
+   {
+    "fraze": "prins",
+    "n": "2",
+    "rez": "23"
+   },
+   {
+    "fraze": "landfleish",
+    "n": "2",
+    "rez": "16"
+   },
+   {
+    "fraze": "exclusion hypoallergenic duck and potato",
+    "n": "2",
+    "rez": "2"
+   },
+   {
+    "fraze": "hepatic",
+    "n": "2",
+    "rez": "6"
+   },
+   {
+    "fraze": "uostymo",
+    "n": "2",
+    "rez": "24"
+   },
+   {
+    "fraze": "rinkinys",
+    "n": "2",
+    "rez": "49"
+   },
+   {
+    "fraze": "coockoo",
+    "n": "2",
+    "rez": "24"
+   },
+   {
+    "fraze": "royal canin indoor",
+    "n": "1",
+    "rez": "3"
+   },
+   {
+    "fraze": "juodmed",
+    "n": "1",
+    "rez": "2"
+   },
+   {
+    "fraze": "solo",
+    "n": "1",
+    "rez": "3"
+   },
+   {
+    "fraze": "vabzdys",
+    "n": "1",
+    "rez": "25"
+   },
+   {
+    "fraze": "skrandžiai",
+    "n": "1",
+    "rez": "90"
+   },
+   {
+    "fraze": "animonda carny adult",
+    "n": "1",
+    "rez": "4"
+   }
+  ],
+  "dienomis": [
+   {
+    "diena": "2026-09-14",
+    "n": "30",
+    "nul": "3"
+   },
+   {
+    "diena": "2026-09-15",
+    "n": "63",
+    "nul": "6"
+   },
+   {
+    "diena": "2026-09-16",
+    "n": "39",
+    "nul": "11"
+   },
+   {
+    "diena": "2026-09-17",
+    "n": "58",
+    "nul": "12"
+   },
+   {
+    "diena": "2026-09-18",
+    "n": "40",
+    "nul": "10"
+   },
+   {
+    "diena": "2026-09-19",
+    "n": "17",
+    "nul": "6"
+   },
+   {
+    "diena": "2026-09-20",
+    "n": "23",
+    "nul": "6"
+   },
+   {
+    "diena": "2026-09-21",
+    "n": "80",
+    "nul": "10"
+   },
+   {
+    "diena": "2026-09-22",
+    "n": "45",
+    "nul": "5"
+   },
+   {
+    "diena": "2026-09-23",
+    "n": "49",
+    "nul": "3"
+   },
+   {
+    "diena": "2026-09-24",
+    "n": "20",
+    "nul": "0"
+   },
+   {
+    "diena": "2026-09-25",
+    "n": "35",
+    "nul": "4"
+   }
+  ],
+  "irenginys": [
+   {
+    "irenginys": "desktop",
+    "n": "142"
+   },
+   {
+    "irenginys": "mobile",
+    "n": "111"
+   }
+  ],
+  "po_nulines": [
+   {
+    "tipas": "pageview",
+    "n": "20"
+   },
+   {
+    "tipas": "search",
+    "n": "9"
+   }
+  ]
+ },
+ "e": {
+  "v": "S1720b",
+  "faze": "e",
+  "t": "2026-09-25 17:37:19",
+  "petshop-dropship-matomumas.php": {
+   "md5": "06ca079cd555b61b446b1dcf033744bd",
+   "bytes": 7766,
+   "kodas": "<?php\n/**\n * Plugin Name: Petshop Dropship Matomumas\n * Description: Dropship (VF/ZB) prekė be likučio → katalogo matomumas „hidden\" (URL lieka 200, „Pranešti kai bus\" veikia, SEO nepraranda); likučiui grįžus → vėl matoma. Išimtis: prekė su pardavimais per 365 d. arba su laukiančiais ps_stock_watch — lieka matoma. Raimio taisyklė 2026-09-18 (S1691).\n * Version: 1.0.0\n *\n * KODĖL: 2026-06-14 taisyklė (petshop-xml v1.5.15) laikė buvusias publish dropship\n * prekes su qty=0 pilnai matomas (SEO + paklausa). 09-18 kataloge buvo 297 tokios\n * prekės (VF 198, ZB 99), iš jų perkamų per metus — 6. Raimis: dropship publikuojama\n * tik su likučiu, bet turinčios istoriją lieka (klientai spaudžia „Pranešti kai bus\").\n * „hidden\" vietoj draft: draft = 404 = SEO nuostolis ir nėra „Pranešti kai bus\" formos.\n *\n * KAIP: WC product_visibility terminai `exclude-from-catalog` + `exclude-from-search`\n * (kiti terminai — outofstock/featured/rated — neliečiami). Žymė `_ps_dropship_paslepta=1`\n * — atidengiame TIK tai, ką patys paslėpėme (rankiniu būdu paslėptos prekės neliečiamos).\n * Dropship = `_ps_sandelis` IN (vf, zb) ir AV likutis (`_own_stock_qty`) <= 0.\n * Keliai: (1) `woocommerce_product_set_stock_status` kablys; (2) valandinis peržiūrėjimas\n * (importas gali rašyti meta apeidamas kablį). Žurnalas: opcija `ps_dropship_matomumas_pask`.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Dropship_Matomumas {\n\n\tconst VERSIJA   = '1.0.0';\n\tconst META      = '_ps_dropship_paslepta';\n\tconst CRON      = 'ps_dropship_matomumas_valanda';\n\tconst OPCIJA    = 'ps_dropship_matomumas_pask';\n\tconst SANDELIAI = array( 'vf', 'zb' );\n\tconst DIENOS    = 365; // pardavimų langas išimčiai\n\n\tpublic static function init() {\n\t\tadd_action( 'woocommerce_product_set_stock_status', array( __CLASS__, 'statusas_pasikeite' ), 30, 3 );\n\t\tadd_action( self::CRON, array( __CLASS__, 'perziureti' ) );\n\t\tadd_action( 'init', array( __CLASS__, 'planuoti' ) );\n\t}\n\n\tpublic static function planuoti() {\n\t\tif ( ! wp_next_scheduled( self::CRON ) ) {\n\t\t\t// :15 kas valandą — po VF likučių sinchronizacijos (:59) ir ZB importo (03:01)\n\t\t\t$t = strtotime( gmdate( 'Y-m-d H:15:00' ) ); if ( $t <= time() ) { $t += HOUR_IN_SECONDS; }\n\t\t\twp_schedule_event( $t, 'hourly', self::CRON );\n\t\t}\n\t}\n\n\t/* ------------------------------------------------------------------ */\n\t/* Sprendimas vienai prekei                                            */\n\t/* ------------------------------------------------------------------ */\n\n\tpublic static function ar_dropship( $pid ) {\n\t\t$s = (string) get_post_meta( $pid, '_ps_sandelis', true );\n\t\tif ( ! in_array( $s, self::SANDELIAI, true ) ) { return false; }\n\t\tif ( (int) get_post_meta( $pid, '_own_stock_qty', true ) > 0 ) { return false; }\n\t\treturn true;\n\t}\n\n\t/** Išimtis: pardavimai per 365 d. (istorija + WC) arba laukiantys „Pranešti kai bus\". */\n\tpublic static function turi_istorija( $pid ) {\n\t\tglobal $wpdb; $p = $wpdb->prefix; $pid = (int) $pid;\n\t\t$n = (int) $wpdb->get_var( $wpdb->prepare(\n\t\t\t\"SELECT COUNT(*) FROM {$p}ps_ist_eilutes e JOIN {$p}ps_ist_uzsakymai u ON u.id=e.uzsakymo_id\n\t\t\t WHERE e.wc_product_id=%d AND u.ivykdytas=1 AND u.data>=NOW()-INTERVAL %d DAY\", $pid, self::DIENOS ) );\n\t\tif ( $n > 0 ) { return 'istorija'; }\n\t\t$n = (int) $wpdb->get_var( $wpdb->prepare(\n\t\t\t\"SELECT COUNT(*) FROM {$p}wc_order_product_lookup l JOIN {$p}wc_orders o ON o.id=l.order_id\n\t\t\t WHERE l.product_id=%d AND o.status IN ('wc-processing','wc-completed') AND o.date_created_gmt>=NOW()-INTERVAL %d DAY\", $pid, self::DIENOS ) );\n\t\tif ( $n > 0 ) { return 'wc'; }\n\t\t$t = $p . 'ps_stock_watch';\n\t\tif ( $wpdb->get_var( \"SHOW TABLES LIKE '$t'\" ) === $t ) {\n\t\t\t$n = (int) $wpdb->get_var( $wpdb->prepare( \"SELECT COUNT(*) FROM $t WHERE product_id=%d AND status='waiting'\", $pid ) );\n\t\t\tif ( $n > 0 ) { return 'laukia'; }\n\t\t}\n\t\treturn '';\n\t}\n\n\tpublic static function paslepta_musu( $pid ) { return (string) get_post_meta( $pid, self::META, true ) === '1'; }\n\n\tpublic static function paslepti( $pid ) {\n\t\twp_set_object_terms( $pid, array( 'exclude-from-catalog', 'exclude-from-search' ), 'product_visibility', true );\n\t\tupdate_post_meta( $pid, self::META, '1' );\n\t\tupdate_post_meta( $pid, self::META . '_nuo', current_time( 'mysql' ) );\n\t\tself::valyti( $pid );\n\t}\n\n\tpublic static function atidengti( $pid ) {\n\t\twp_remove_object_terms( $pid, array( 'exclude-from-catalog', 'exclude-from-search' ), 'product_visibility' );\n\t\tdelete_post_meta( $pid, self::META );\n\t\tdelete_post_meta( $pid, self::META . '_nuo' );\n\t\tself::valyti( $pid );\n\t}\n\n\tprivate static function valyti( $pid ) {\n\t\tclean_post_cache( $pid );\n\t\tif ( function_exists( 'wc_delete_product_transients' ) ) { wc_delete_product_transients( $pid ); }\n\t}\n\n\t/**\n\t * Vienos prekės sprendimas. Grąžina: 'paslepta' | 'atidengta' | '' (nieko).\n\t * $dry — tik sprendimas, be rašymo.\n\t */\n\tpublic static function spresti( $pid, $dry = false ) {\n\t\t$pid = (int) $pid;\n\t\tif ( 'publish' !== get_post_status( $pid ) || 'product' !== get_post_type( $pid ) ) { return ''; }\n\t\t$product = wc_get_product( $pid ); if ( ! $product ) { return ''; }\n\t\t$musu = self::paslepta_musu( $pid );\n\t\tif ( ! self::ar_dropship( $pid ) ) {\n\t\t\t// nebe dropship (pvz. atsirado AV likutis) — jei slėpėme mes, atidengti\n\t\t\tif ( $musu ) { if ( ! $dry ) { self::atidengti( $pid ); } return 'atidengta'; }\n\t\t\treturn '';\n\t\t}\n\t\t$yra = $product->is_in_stock();\n\t\tif ( $yra ) {\n\t\t\tif ( $musu ) { if ( ! $dry ) { self::atidengti( $pid ); } return 'atidengta'; }\n\t\t\treturn '';\n\t\t}\n\t\t// nėra likučio\n\t\tif ( $musu ) { return ''; }\n\t\tif ( self::turi_istorija( $pid ) ) { return ''; }\n\t\tif ( 'hidden' === $product->get_catalog_visibility() ) { return ''; } // paslėpta rankomis — neliečiam\n\t\tif ( ! $dry ) { self::paslepti( $pid ); }\n\t\treturn 'paslepta';\n\t}\n\n\t/* ------------------------------------------------------------------ */\n\t/* Kabliai                                                             */\n\t/* ------------------------------------------------------------------ */\n\n\tpublic static function statusas_pasikeite( $product_id, $stock_status, $product ) {\n\t\tif ( ! $product_id ) { return; }\n\t\t$pid = $product->is_type( 'variation' ) ? $product->get_parent_id() : (int) $product_id;\n\t\tif ( ! $pid ) { return; }\n\t\t$r = self::spresti( $pid );\n\t\tif ( $r ) { self::zurnalas( array( 'kablys' => $pid . ':' . $r ) ); }\n\t}\n\n\t/** Valandinis peržiūrėjimas visų publish dropship prekių + mūsų paslėptų. */\n\tpublic static function perziureti( $dry = false ) {\n\t\tglobal $wpdb; $p = $wpdb->prefix; @set_time_limit( 280 );\n\t\t$in = \"'\" . implode( \"','\", array_map( 'esc_sql', self::SANDELIAI ) ) . \"'\";\n\t\t$ids = $wpdb->get_col( \"SELECT DISTINCT ps.ID FROM {$p}posts ps\n\t\t\tJOIN {$p}postmeta s ON s.post_id=ps.ID AND s.meta_key='_ps_sandelis' AND s.meta_value IN ($in)\n\t\t\tWHERE ps.post_type='product' AND ps.post_status='publish'\" );\n\t\t$musu = $wpdb->get_col( \"SELECT post_id FROM {$p}postmeta WHERE meta_key='\" . self::META . \"' AND meta_value='1'\" );\n\t\t$ids = array_unique( array_map( 'intval', array_merge( $ids, $musu ) ) );\n\t\t$rez = array( 'laikas' => current_time( 'mysql' ), 'dry' => $dry, 'tikrinta' => count( $ids ), 'paslepta' => 0, 'atidengta' => 0, 'pvz' => array() );\n\t\tforeach ( $ids as $pid ) {\n\t\t\t$r = self::spresti( $pid, $dry );\n\t\t\tif ( $r ) { $rez[ $r ]++; if ( count( $rez['pvz'] ) < 15 ) { $rez['pvz'][] = $pid . ':' . $r; } }\n\t\t}\n\t\tif ( ! $dry ) { self::zurnalas( $rez ); }\n\t\treturn $rez;\n\t}\n\n\tprivate static function zurnalas( $d ) {\n\t\t$o = (array) get_option( self::OPCIJA, array() );\n\t\t$o = array_merge( $o, $d ); $o['laikas'] = current_time( 'mysql' );\n\t\tupdate_option( self::OPCIJA, $o, false );\n\t}\n}\nPetshop_Dropship_Matomumas::init();\n"
+  },
+  "petshop-code-search.php": {
+   "md5": "ced828b2be97aad164a2d912ee7a58f5",
+   "bytes": 5447,
+   "kodas": "<?php\n/**\n * Petshop Code Search v1.0 (S366) — F4: paieska pagal SKU / barkoda\n *\n * PRINCIPAS (Raimis 2026-08-03): NE „uzklausa atrodo kaip kodas\", o\n * „uzklausa TURI TIKSLU SKU/barkodo atitikmeni\". Jokio euristinio\n * klasifikavimo pagal ilgi ar simbolius — „Farmina\" yra 7 simboliai be\n * tarpu ir privalo likti tekstine paieska.\n *\n * EIGA:\n *   1. tik viesa pagrindine WooCommerce prekiu paieska;\n *   2. terminas trimintas, bet laikomas TEKSTU (pradiniai nuliai isliekа);\n *   3. tikslus lookup: wc_get_product_id_by_sku() ·\n *      wc_get_product_id_by_global_unique_id() · legacy _ean/_vf_barcode/_zb_ean\n *      paruosta tikslaus sutapimo uzklausa;\n *   4. NERADUS — standartine tekstine paieska NELIECIAMA VISAI;\n *   5. RADUS — posts_search keiciamas i rastu produktu ID sarasa.\n *\n * REDIRECT: tik per template_redirect, laikinas 302, ir tik kai po\n * deduplikavimo lieka VIENAS publikuotas, paieskoje matomas produktas.\n * Tas pats kodas keliuose produktuose -> jokio redirecto, rodomas sarasas\n * ir registruojama duomenu problema.\n */\nif ( ! defined( 'ABSPATH' ) ) exit;\n\n/** Vienos uzklausos kesas — posts_search ir template_redirect nesikreipia du kartus. */\nfunction ps_cs_cache( $term = null, $val = null ) {\n\tstatic $c = array();\n\tif ( null === $term ) return $c;\n\tif ( null !== $val ) { $c[ $term ] = $val; }\n\treturn isset( $c[ $term ] ) ? $c[ $term ] : null;\n}\n\n/** Variacija -> tevas. Grazina galutini PARDUODAMA produkto ID arba 0. */\nfunction ps_cs_resolve_product( $id ) {\n\t$id = (int) $id;\n\tif ( ! $id ) return 0;\n\t$post = get_post( $id );\n\tif ( ! $post ) return 0;\n\tif ( 'product_variation' === $post->post_type ) {\n\t\t$id   = (int) $post->post_parent;\n\t\t$post = get_post( $id );\n\t\tif ( ! $post ) return 0;\n\t}\n\tif ( 'product' !== $post->post_type )   return 0;\n\tif ( 'publish' !== $post->post_status ) return 0;\n\tif ( has_term( 'exclude-from-search', 'product_visibility', $id ) ) return 0;\n\treturn $id;\n}\n\n/**\n * Tikslus kodo lookup. Grazina array( 'ids' => int[], 'saltiniai' => [] ).\n * TIK tikslus sutapimas — jokio LIKE, jokio dalinio.\n */\nfunction ps_cs_lookup( $term ) {\n\t$term = trim( (string) $term );\n\tif ( '' === $term ) return array( 'ids' => array(), 'saltiniai' => array() );\n\n\t$kesuota = ps_cs_cache( $term );\n\tif ( null !== $kesuota ) return $kesuota;\n\n\tglobal $wpdb;\n\t$rasti = array();\n\t$salt  = array();\n\n\t// 1) SKU — oficialus Woo metodas\n\t$sku_id = wc_get_product_id_by_sku( $term );\n\tif ( $sku_id ) { $rasti[] = (int) $sku_id; $salt['sku'] = (int) $sku_id; }\n\n\t// 2) _global_unique_id — oficialus Woo metodas (WC 9.2+)\n\tif ( function_exists( 'wc_get_product_id_by_global_unique_id' ) ) {\n\t\t$g_id = wc_get_product_id_by_global_unique_id( $term );\n\t\tif ( $g_id ) { $rasti[] = (int) $g_id; $salt['global_unique_id'] = (int) $g_id; }\n\t}\n\n\t// 3) Legacy barkodu laukai — viena paruosta tikslaus sutapimo uzklausa\n\t$legacy = $wpdb->get_results( $wpdb->prepare(\n\t\t\"SELECT post_id, meta_key FROM {$wpdb->postmeta}\n\t\t  WHERE meta_key IN ( '_ean', '_vf_barcode', '_zb_ean' )\n\t\t    AND meta_value = %s\",\n\t\t$term\n\t), ARRAY_A );\n\tforeach ( (array) $legacy as $row ) {\n\t\t$rasti[] = (int) $row['post_id'];\n\t\t$salt[ $row['meta_key'] ][] = (int) $row['post_id'];\n\t}\n\n\t// 4) Variacija -> tevas; filtruojam publish + matomus paieskoje; dedup\n\t$galutiniai = array();\n\tforeach ( array_unique( $rasti ) as $id ) {\n\t\t$p = ps_cs_resolve_product( $id );\n\t\tif ( $p ) { $galutiniai[ $p ] = $p; }\n\t}\n\t$galutiniai = array_values( $galutiniai );\n\n\t// 5) Tas pats kodas keliuose SKIRTINGUOSE produktuose = duomenu problema\n\tif ( count( $galutiniai ) > 1 ) {\n\t\t$log = get_option( 'ps_cs_dublikatai', array() );\n\t\tif ( ! is_array( $log ) ) $log = array();\n\t\t$log[ $term ] = array( 'ids' => $galutiniai, 'kada' => gmdate( 'Y-m-d H:i:s' ) );\n\t\tif ( count( $log ) > 200 ) { $log = array_slice( $log, -200, null, true ); }\n\t\tupdate_option( 'ps_cs_dublikatai', $log, false );\n\t}\n\n\t$rez = array( 'ids' => $galutiniai, 'saltiniai' => $salt );\n\tps_cs_cache( $term, $rez );\n\treturn $rez;\n}\n\n/** Ar tai viesa pagrindine prekiu paieska. */\nfunction ps_cs_taikoma( $q ) {\n\tif ( is_admin() )               return false;\n\tif ( ! $q instanceof WP_Query ) return false;\n\tif ( ! $q->is_main_query() )    return false;\n\tif ( ! $q->is_search() )        return false;\n\t$pt = $q->get( 'post_type' );\n\tif ( is_array( $pt ) ) { return in_array( 'product', $pt, true ); }\n\treturn 'product' === $pt;\n}\n\n/**\n * posts_search: TIK radus tiksliu atitikmenu. Neradus — grazinam $search\n * NEPAKEISTA, kad standartine tekstine paieska liktu visiskai nepaliesta.\n */\nadd_filter( 'posts_search', function ( $search, $q ) {\n\tif ( ! ps_cs_taikoma( $q ) ) return $search;\n\t$term = trim( (string) $q->get( 's' ) );\n\tif ( '' === $term ) return $search;\n\n\t$rez = ps_cs_lookup( $term );\n\tif ( empty( $rez['ids'] ) ) return $search;\n\n\tglobal $wpdb;\n\t$ids = implode( ',', array_map( 'absint', $rez['ids'] ) );\n\treturn \" AND {$wpdb->posts}.ID IN ($ids) \";\n}, 10, 2 );\n\n/** Vienas galutinis produktas -> laikinas 302 i ji. */\nadd_action( 'template_redirect', function () {\n\tif ( is_admin() || ! is_search() ) return;\n\t$q = $GLOBALS['wp_query'];\n\tif ( ! ps_cs_taikoma( $q ) ) return;\n\t$term = trim( (string) get_query_var( 's' ) );\n\tif ( '' === $term ) return;\n\n\t$rez = ps_cs_lookup( $term );\n\tif ( 1 !== count( $rez['ids'] ) ) return;\n\n\t$url = get_permalink( $rez['ids'][0] );\n\tif ( ! $url ) return;\n\twp_safe_redirect( $url, 302 );\n\texit;\n}, 5 );\n"
+  },
+  "kategorijos": [
+   {
+    "term_id": "86",
+    "name": "Animonda konservai šunims",
+    "slug": "animonda-konservai-sunims",
+    "parent": "0",
+    "count": "38"
+   },
+   {
+    "term_id": "85",
+    "name": "Hipoalerginis maistas šunims",
+    "slug": "hipoalerginis-maistas-sunims",
+    "parent": "0",
+    "count": "33"
+   },
+   {
+    "term_id": "679",
+    "name": "RINKINIAI",
+    "slug": "rinkiniai",
+    "parent": "0",
+    "count": "27"
+   },
+   {
+    "term_id": "91",
+    "name": "DAUGIAU=PIGIAU",
+    "slug": "daugiau-pigiau",
+    "parent": "0",
+    "count": "25"
+   },
+   {
+    "term_id": "80",
+    "name": "Miamor katėms",
+    "slug": "miamor-katems",
+    "parent": "0",
+    "count": "22"
+   },
+   {
+    "term_id": "70",
+    "name": "ŠUNIMS",
+    "slug": "sunims",
+    "parent": "0",
+    "count": "15"
+   },
+   {
+    "term_id": "83",
+    "name": "Super Premium šunų maistas",
+    "slug": "super-premium-sunu-maistas",
+    "parent": "0",
+    "count": "5"
+   },
+   {
+    "term_id": "119",
+    "name": "DOVANOS",
+    "slug": "dovanos",
+    "parent": "0",
+    "count": "1"
+   },
+   {
+    "term_id": "16",
+    "name": "Kita",
+    "slug": "uncategorized",
+    "parent": "0",
+    "count": "1"
+   },
+   {
+    "term_id": "95",
+    "name": "Skanėstai šunims",
+    "slug": "skanestai-sunims",
+    "parent": "70",
+    "count": "304"
+   },
+   {
+    "term_id": "115",
+    "name": "Žaislai šunims",
+    "slug": "zaislai-sunims",
+    "parent": "70",
+    "count": "207"
+   },
+   {
+    "term_id": "116",
+    "name": "Antkakliai, pavadėliai šunims",
+    "slug": "antkakliai-pavadeliai-sunims",
+    "parent": "70",
+    "count": "174"
+   },
+   {
+    "term_id": "101",
+    "name": "Vitaminai ir papildai šunims",
+    "slug": "vitaminai-ir-papildai-sunims",
+    "parent": "70",
+    "count": "73"
+   },
+   {
+    "term_id": "75",
+    "name": "Šukos, šepečiai, žirklės šunims",
+    "slug": "sukos-sepeciai-zirkles-sunims",
+    "parent": "70",
+    "count": "62"
+   },
+   {
+    "term_id": "305",
+    "name": "Apranga šunims",
+    "slug": "apranga-sunims",
+    "parent": "70",
+    "count": "61"
+   },
+   {
+    "term_id": "111",
+    "name": "Dubenėliai šunims",
+    "slug": "dubeneliai-sunims",
+    "parent": "70",
+    "count": "52"
+   },
+   {
+    "term_id": "82",
+    "name": "Higienos priemonės šunims",
+    "slug": "higienos-priemones-sunims",
+    "parent": "70",
+    "count": "45"
+   },
+   {
+    "term_id": "233",
+    "name": "Guoliai šunims",
+    "slug": "guoliai-boksai-sunims",
+    "parent": "70",
+    "count": "44"
+   },
+   {
+    "term_id": "122",
+    "name": "Transportavimo dėžės šunims",
+    "slug": "transportavimo-dezes-sunims",
+    "parent": "70",
+    "count": "43"
+   },
+   {
+    "term_id": "76",
+    "name": "Šampūnai šunims",
+    "slug": "sampunai-sunims",
+    "parent": "70",
+    "count": "37"
+   },
+   {
+    "term_id": "123",
+    "name": "Kelionių įranga",
+    "slug": "kelioniu-iranga",
+    "parent": "70",
+    "count": "18"
+   },
+   {
+    "term_id": "71",
+    "name": "Maistas šunims",
+    "slug": "maistas-sunims",
+    "parent": "70",
+    "count": "13"
+   },
+   {
+    "term_id": "108",
+    "name": "Antiparazitinės priemonės šunims",
+    "slug": "antiparazitines-priemones-sunims",
+    "parent": "70",
+    "count": "9"
+   },
+   {
+    "term_id": "125",
+    "name": "Narvai",
+    "slug": "narvai",
+    "parent": "70",
+    "count": "7"
+   },
+   {
+    "term_id": "654",
+    "name": "Vėsinantys kilimėliai šunims",
+    "slug": "vesinantys-kilimeliai-sunims",
+    "parent": "70",
+    "count": "7"
+   },
+   {
+    "term_id": "656",
+    "name": "Pirmoji pagalba šunims",
+    "slug": "pirmoji-pagalba-sunims",
+    "parent": "70",
+    "count": "2"
+   },
+   {
+    "term_id": "655",
+    "name": "Baseinai šunims",
+    "slug": "baseinai-sunims",
+    "parent": "70",
+    "count": "1"
+   },
+   {
+    "term_id": "72",
+    "name": "Sausas maistas šunims",
+    "slug": "sausas-maistas-sunims",
+    "parent": "71",
+    "count": "509"
+   },
+   {
+    "term_id": "73",
+    "name": "Konservai šunims",
+    "slug": "konservai-sunims",
+    "parent": "71",
+    "count": "134"
+   },
+   {
+    "term_id": "96",
+    "name": "Skanėstai katėms",
+    "slug": "skanestai-katems",
+    "parent": "77",
+    "count": "88"
+   },
+   {
+    "term_id": "107",
+    "name": "Kraikai kačių tualetams",
+    "slug": "kraikai-kaciu-tualetams",
+    "parent": "77",
+    "count": "86"
+   },
+   {
+    "term_id": "106",
+    "name": "Tualetai, semtuvėliai",
+    "slug": "tualetai-kraikai-semtuveliai",
+    "parent": "77",
+    "count": "59"
+   },
+   {
+    "term_id": "114",
+    "name": "Žaislai katėms",
+    "slug": "zaislai-katems",
+    "parent": "77",
+    "count": "58"
+   },
+   {
+    "term_id": "639",
+    "name": "Šukos, šepečiai, žirklės katėms",
+    "slug": "sukos-sepeciai-zirkles-katems",
+    "parent": "77",
+    "count": "45"
+   },
+   {
+    "term_id": "121",
+    "name": "Transportavimo dėžės katėms",
+    "slug": "transportavimo-dezes-katems",
+    "parent": "77",
+    "count": "39"
+   },
+   {
+    "term_id": "124",
+    "name": "Draskyklės katėms",
+    "slug": "draskykles-katems",
+    "parent": "77",
+    "count": "38"
+   },
+   {
+    "term_id": "112",
+    "name": "Dubenėliai katėms",
+    "slug": "dubeneliai-katems",
+    "parent": "77",
+    "count": "33"
+   },
+   {
+    "term_id": "130",
+    "name": "Priežiūros priemonės katėms",
+    "slug": "prieziuros-priemones-katems",
+    "parent": "77",
+    "count": "26"
+   },
+   {
+    "term_id": "102",
+    "name": "Vitaminai ir papildai katėms",
+    "slug": "vitaminai-ir-papildai-katems",
+    "parent": "77",
+    "count": "16"
+   },
+   {
+    "term_id": "569",
+    "name": "Guoliai katėms",
+    "slug": "guoliai-katems",
+    "parent": "77",
+    "count": "12"
+   },
+   {
+    "term_id": "78",
+    "name": "Maistas katėms",
+    "slug": "maistas-katems",
+    "parent": "77",
+    "count": "10"
+   },
+   {
+    "term_id": "117",
+    "name": "Antkakliai ir petnešos katėms",
+    "slug": "antkakliai-ir-petnesos-katems",
+    "parent": "77",
+    "count": "8"
+   },
+   {
+    "term_id": "109",
+    "name": "Antiparazitinės priemonės katėms",
+    "slug": "antiparazitines-priemones-katems",
+    "parent": "77",
+    "count": "6"
+   },
+   {
+    "term_id": "81",
+    "name": "Sausas maistas katėms",
+    "slug": "sausas-maistas-katems",
+    "parent": "78",
+    "count": "201"
+   },
+   {
+    "term_id": "79",
+    "name": "Konservai katėms",
+    "slug": "konservai-katems",
+    "parent": "78",
+    "count": "138"
+   },
+   {
+    "term_id": "97",
+    "name": "Skanėstai graužikams",
+    "slug": "skanestai-grauzikams",
+    "parent": "87",
+    "count": "21"
+   },
+   {
+    "term_id": "88",
+    "name": "Pašaras graužikams",
+    "slug": "pasaras-grauzikams",
+    "parent": "87",
+    "count": "20"
+   },
+   {
+    "term_id": "304",
+    "name": "Narvai ir aksesuarai graužikams",
+    "slug": "narvai-grauzikams",
+    "parent": "87",
+    "count": "19"
+   },
+   {
+    "term_id": "657",
+    "name": "Kraikas ir šienas graužikams",
+    "slug": "kraikas-ir-sienas-grauzikams",
+    "parent": "87",
+    "count": "3"
+   },
+   {
+    "term_id": "90",
+    "name": "Lesalas paukščiams",
+    "slug": "lesalas-pauksciams",
+    "parent": "89",
+    "count": "8"
+   },
+   {
+    "term_id": "98",
+    "name": "Skanėstai paukščiams",
+    "slug": "skanestai-pauksciams",
+    "parent": "89",
+    "count": "3"
+   },
+   {
+    "term_id": "666",
+    "name": "Aksesuarai paukščiams",
+    "slug": "aksesuarai-pauksciams",
+    "parent": "89",
+    "count": "2"
+   },
+   {
+    "term_id": "94",
+    "name": "Akvariumo žuvyčių maistas",
+    "slug": "akvariumo-zuvyciu-maistas",
+    "parent": "93",
+    "count": "37"
+   },
+   {
+    "term_id": "100",
+    "name": "Tvenkinių žuvų maistas",
+    "slug": "tvenkiniu-zuvu-maistas",
+    "parent": "93",
+    "count": "12"
+   },
+   {
+    "term_id": "371",
+    "name": "Akvariumų įranga",
+    "slug": "akvariumai-iranga",
+    "parent": "93",
+    "count": "3"
+   },
+   {
+    "term_id": "682",
+    "name": "Konservų rinkiniai",
+    "slug": "konservu-rinkiniai",
+    "parent": "679",
+    "count": "10"
+   },
+   {
+    "term_id": "684",
+    "name": "Kramtalų rinkiniai",
+    "slug": "kramtalu-rinkiniai",
+    "parent": "679",
+    "count": "7"
+   },
+   {
+    "term_id": "683",
+    "name": "Skanėstų rinkiniai",
+    "slug": "skanestu-rinkiniai",
+    "parent": "679",
+    "count": "5"
+   }
+  ],
+  "brandai_top": [
+   {
+    "name": "Josera",
+    "slug": "josera",
+    "count": "215"
+   },
+   {
+    "name": "Trixie",
+    "slug": "trixie",
+    "count": "208"
+   },
+   {
+    "name": "Farmina",
+    "slug": "farmina",
+    "count": "154"
+   },
+   {
+    "name": "Monge",
+    "slug": "monge",
+    "count": "116"
+   },
+   {
+    "name": "NOBLEZA",
+    "slug": "nobleza",
+    "count": "90"
+   },
+   {
+    "name": "Exclusion",
+    "slug": "exclusion",
+    "count": "85"
+   },
+   {
+    "name": "Nobby",
+    "slug": "nobby",
+    "count": "78"
+   },
+   {
+    "name": "FLEXI",
+    "slug": "flexi",
+    "count": "78"
+   },
+   {
+    "name": "Georplast",
+    "slug": "georplast",
+    "count": "72"
+   },
+   {
+    "name": "Churu",
+    "slug": "churu",
+    "count": "72"
+   },
+   {
+    "name": "Duvo+",
+    "slug": "duvo",
+    "count": "65"
+   },
+   {
+    "name": "Quattro",
+    "slug": "quattro",
+    "count": "64"
+   },
+   {
+    "name": "Animonda",
+    "slug": "animonda",
+    "count": "61"
+   },
+   {
+    "name": "BeloCat",
+    "slug": "belocat",
+    "count": "58"
+   },
+   {
+    "name": "Ontario",
+    "slug": "ontario",
+    "count": "56"
+   },
+   {
+    "name": "Happet",
+    "slug": "happet",
+    "count": "51"
+   },
+   {
+    "name": "COMFY",
+    "slug": "comfy",
+    "count": "43"
+   },
+   {
+    "name": "Hikari",
+    "slug": "hikari",
+    "count": "41"
+   },
+   {
+    "name": "GimCat",
+    "slug": "gimcat",
+    "count": "38"
+   },
+   {
+    "name": "Eukanuba",
+    "slug": "eukanuba",
+    "count": "36"
+   },
+   {
+    "name": "Hau&amp;Miau",
+    "slug": "haumiau",
+    "count": "35"
+   },
+   {
+    "name": "Sum-Plast",
+    "slug": "sum-plast",
+    "count": "34"
+   },
+   {
+    "name": "FURMINATOR",
+    "slug": "furminator",
+    "count": "29"
+   },
+   {
+    "name": "Gnatek",
+    "slug": "gnatek",
+    "count": "28"
+   },
+   {
+    "name": "Romar",
+    "slug": "romar",
+    "count": "28"
+   },
+   {
+    "name": "Miamor",
+    "slug": "miamor",
+    "count": "27"
+   },
+   {
+    "name": "Dingo",
+    "slug": "dingo",
+    "count": "25"
+   },
+   {
+    "name": "Royal Canin",
+    "slug": "royal-canin",
+    "count": "24"
+   },
+   {
+    "name": "LITTLE ONE",
+    "slug": "little-one",
+    "count": "24"
+   },
+   {
+    "name": "Pet Nova",
+    "slug": "pet-nova",
+    "count": "23"
+   },
+   {
+    "name": "Coockoo",
+    "slug": "coockoo",
+    "count": "23"
+   },
+   {
+    "name": "Prins",
+    "slug": "prins",
+    "count": "23"
+   },
+   {
+    "name": "8in1",
+    "slug": "8in1",
+    "count": "22"
+   },
+   {
+    "name": "Zolux",
+    "slug": "zolux",
+    "count": "22"
+   },
+   {
+    "name": "Chewllagen",
+    "slug": "chewllagen",
+    "count": "21"
+   },
+   {
+    "name": "Real Dog",
+    "slug": "real-dog",
+    "count": "21"
+   },
+   {
+    "name": "ANTOS",
+    "slug": "antos",
+    "count": "21"
+   },
+   {
+    "name": "LAND FLEISCH",
+    "slug": "land-fleisch",
+    "count": "20"
+   },
+   {
+    "name": "Dogoteka",
+    "slug": "dogoteka",
+    "count": "19"
+   },
+   {
+    "name": "WANPY",
+    "slug": "wanpy",
+    "count": "18"
+   },
+   {
+    "name": "Gemon",
+    "slug": "gemon",
+    "count": "17"
+   },
+   {
+    "name": "HAP",
+    "slug": "hap",
+    "count": "16"
+   },
+   {
+    "name": "CANDIOLI",
+    "slug": "candioli",
+    "count": "16"
+   },
+   {
+    "name": "Ambrosia",
+    "slug": "ambrosia",
+    "count": "16"
+   },
+   {
+    "name": "TRULY",
+    "slug": "truly",
+    "count": "15"
+   },
+   {
+    "name": "GIGI",
+    "slug": "gigi",
+    "count": "14"
+   },
+   {
+    "name": "Deli Nature",
+    "slug": "deli-nature",
+    "count": "13"
+   },
+   {
+    "name": "Ebi",
+    "slug": "ebi",
+    "count": "13"
+   },
+   {
+    "name": "SMART BONES",
+    "slug": "smart-bones",
+    "count": "13"
+   },
+   {
+    "name": "ECOMFY",
+    "slug": "ecomfy",
+    "count": "13"
+   },
+   {
+    "name": "CIAO",
+    "slug": "ciao",
+    "count": "12"
+   },
+   {
+    "name": "Vetocanis",
+    "slug": "vetocanis",
+    "count": "12"
+   },
+   {
+    "name": "Ad Bi",
+    "slug": "ad-bi",
+    "count": "12"
+   },
+   {
+    "name": "MERVUE",
+    "slug": "mervue",
+    "count": "11"
+   },
+   {
+    "name": "CAT'S_BEST",
+    "slug": "cats_best",
+    "count": "11"
+   },
+   {
+    "name": "Green Petfood",
+    "slug": "green-petfood",
+    "count": "11"
+   },
+   {
+    "name": "4Dogs",
+    "slug": "4dogs",
+    "count": "11"
+   },
+   {
+    "name": "VETOQUINOL",
+    "slug": "vetoquinol",
+    "count": "10"
+   },
+   {
+    "name": "NATURE'S MIR",
+    "slug": "natures-mir",
+    "count": "10"
+   },
+   {
+    "name": "SEECURITY",
+    "slug": "seecurity",
+    "count": "10"
+   }
+  ],
+  "analitika_search_hook": "yra",
+  "analitika_search_ctx": [
+   "rchase` cia NERA ir NEBUS. */\n\tconst IS_DATALAYER = array( 'view_item', 'add_to_cart', 'view_cart', 'begin_checkout' );\n\n\t/** Musu pacio ivykiai. */\n\tconst SAVI = array( 'pageview', 'view_category', 'search', 'filter', 'skaiciuokle', 'quiz_start', 'remove_from_cart', 'error404' );\n\n\t/** 🔴 NIEKADA nepriimami — nesvarbu, kas ir kaip juos atsiustu. */\n\tconst DRAUDZIAMI = array( 'purchase', 'refund' );\n\n\tpublic static function init() {\n\t\tadd_action( 'rest_api_init', array( __CLASS__, 'marsrutai' ) );",
+   "', $url ) ) { return 'email'; }\n\t\tif ( '' === $rh ) { return preg_match( '/[?&]utm_source=/i', $url ) ? 'referral' : 'direct'; }\n\t\tif ( preg_match( '/(^|\\.)(google|bing|yahoo|duckduckgo|yandex|ecosia|search\\.brave)\\./i', $rh ) ) { return 'organika'; }\n\t\tif ( preg_match( '/(^|\\.)(facebook|instagram|fb|l\\.facebook|lm\\.facebook|tiktok|youtube|linkedin|t\\.co|pinterest)\\./i', $rh ) ) { return 'soc_organika'; }\n\t\tif ( preg_match( '/(mail\\.|gmail|outlook|yahoo\\.mail)/i', $rh ) ) { return 'email'; }\n\t\treturn ",
+   " */\n\tpublic static function puslapio_tipas() {\n\t\tif ( function_exists( 'is_order_received_page' ) && is_order_received_page() ) { return 'aciu'; }\n\t\tif ( is_404() )        { return '404'; }\n\t\tif ( is_search() )     { return 'paieska'; }\n\t\tif ( function_exists( 'is_cart' ) && is_cart() )         { return 'krepselis'; }\n\t\tif ( function_exists( 'is_checkout' ) && is_checkout() ) { return 'checkout'; }\n\t\tif ( function_exists( 'is_product' ) && is_product() )   { return 'preke'; }\n\t\tif ( function_exists( '",
+   "= $pusl )      { $raktas = (string) get_queried_object_id(); }\n\t\tif ( 'kategorija' === $pusl ) { $raktas = (string) get_queried_object_id(); }\n\t\tif ( 'paieska' === $pusl )    { $raktas = (string) get_search_query(); }\n\n\t\t$rez = 0;\n\t\tif ( 'paieska' === $pusl ) {\n\t\t\tglobal $wp_query;\n\t\t\t$rez = (int) $wp_query->found_posts;\n\t\t}\n\n\t\t/* Landing = pirmas puslapis sesijoje: nera vidinio referer'io. */\n\t\t$ref     = isset( $_SERVER['HTTP_REFERER'] ) ? (string) wp_unslash( $_SERVER['HTTP_REFERER'] ) : '';\n\t\t$sav"
+  ]
+ },
+ "f": {
+  "v": "S1720b",
+  "faze": "f",
+  "t": "2026-09-25 17:37:26",
+  "en": {
+   "pork": 8,
+   "peas": 1,
+   "duck": 49,
+   "lamb": 91,
+   "chicken": 74,
+   "salmon": 42,
+   "rice": 49,
+   "potato": 38,
+   "kitten": 44,
+   "sterilised": 18,
+   "sterilized": 8,
+   "puppy": 60,
+   "senior": 23,
+   "adult": 277,
+   "beef": 41,
+   "turkey": 28,
+   "fish": 18,
+   "tuna": 10,
+   "rabbit": 7,
+   "venison": 9,
+   "grain free": 3,
+   "grainfree": 11,
+   "hypoallergenic": 43,
+   "light": 25,
+   "urinary": 10,
+   "renal": 9,
+   "dental": 6,
+   "hairball": 13,
+   "indoor": 9
+  },
+  "lt": {
+   "kiaulien": 24,
+   "žirn": 17,
+   "antien": 117,
+   "ėrien": 96,
+   "vištien": 205,
+   "lašiš": 113,
+   "ryž": 83,
+   "bulv": 67,
+   "kačiuk": 37,
+   "sterilizuot": 29,
+   "šuniuk": 55,
+   "senjor": 2,
+   "suaug": 111,
+   "jautien": 91,
+   "kalakut": 49,
+   "žuv": 62,
+   "tun": 83,
+   "triuš": 39,
+   "elnien": 17,
+   "be grūd": 0,
+   "begrūd": 89,
+   "hipoalerg": 0,
+   "urinary": 10,
+   "inkst": 42,
+   "dant": 43,
+   "plaukų gumul": 9,
+   "indoor": 9
+  },
+  "exclusion_pork": [
+   {
+    "ID": "35316",
+    "post_title": "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g"
+   },
+   {
+    "ID": "35342",
+    "post_title": "Exclusion Hypoalergenic dietinis konservuotas pašaras katėms su kiauliena ir bulvėm, 85 g"
+   },
+   {
+    "ID": "18560",
+    "post_title": "Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg"
+   },
+   {
+    "ID": "18572",
+    "post_title": "Exclusion Hypoallergenic sausas šuniukų maistas su kiauliena ir žirneliais 12 kg"
+   },
+   {
+    "ID": "18584",
+    "post_title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 800 g"
+   },
+   {
+    "ID": "18587",
+    "post_title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg"
+   },
+   {
+    "ID": "18590",
+    "post_title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg"
+   },
+   {
+    "ID": "18599",
+    "post_title": "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 400 g"
+   },
+   {
+    "ID": "18602",
+    "post_title": "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 200 g"
+   },
+   {
+    "ID": "18617",
+    "post_title": "Exclusion Hypoallergenic dietinis sausas pašaras katėms su kiauliena ir bulvėmis, 1,5 kg"
+   }
+  ],
+  "exclusion_visi": [
+   {
+    "ID": "36002",
+    "post_title": "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg"
+   },
+   {
+    "ID": "36003",
+    "post_title": "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg"
+   },
+   {
+    "ID": "35316",
+    "post_title": "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g"
+   },
+   {
+    "ID": "18623",
+    "post_title": "Exclusion Hepatic dietinis sausas šunų maistas su kiauliena, ryžiais ir žirneliais M/L 12kg"
+   },
+   {
+    "ID": "18620",
+    "post_title": "Exclusion Hydrolyzed Hypoallergenic maistas šunims su hidrolizuota žuvimi ir kukurūzų krakmolu M/L 12 kg"
+   },
+   {
+    "ID": "35027",
+    "post_title": "Exclusion Hydrolyzed Hypoallergenic sausas pašaras vidutinių ir didelių veislių šunims su žuvimi, M/L, 2 kg"
+   },
+   {
+    "ID": "35322",
+    "post_title": "Exclusion Hypo konservai šunims su putpelėmis ir žirniais, 200g"
+   },
+   {
+    "ID": "35330",
+    "post_title": "Exclusion Hypo konservuotas pašaras šunims su arkliena ir bulvėmis, 200 g"
+   },
+   {
+    "ID": "35334",
+    "post_title": "Exclusion Hypo konservuotas pašaras šunims su elniena ir bulvėmis, 200 g"
+   },
+   {
+    "ID": "35338",
+    "post_title": "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 200 g"
+   },
+   {
+    "ID": "35340",
+    "post_title": "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g"
+   },
+   {
+    "ID": "35312",
+    "post_title": "Exclusion Hypo konservuotas pašaras šunims su triušiena ir bulvėmis, 400 g"
+   },
+   {
+    "ID": "35326",
+    "post_title": "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir bulvėmis, 200 g"
+   },
+   {
+    "ID": "35328",
+    "post_title": "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir bulvėmis, 400 g"
+   },
+   {
+    "ID": "35342",
+    "post_title": "Exclusion Hypoalergenic dietinis konservuotas pašaras katėms su kiauliena ir bulvėm, 85 g"
+   },
+   {
+    "ID": "18617",
+    "post_title": "Exclusion Hypoallergenic dietinis sausas pašaras katėms su kiauliena ir bulvėmis, 1,5 kg"
+   },
+   {
+    "ID": "21531",
+    "post_title": "Exclusion Hypoallergenic dietinis sausas pašaras katėms su kiauliena ir bulvėmis, 300 g"
+   },
+   {
+    "ID": "18614",
+    "post_title": "Exclusion Hypoallergenic konservai šunims su antiena ir bulvėmis 200 g"
+   },
+   {
+    "ID": "18611",
+    "post_title": "Exclusion Hypoallergenic konservai šunims su antiena ir bulvėmis 400 g"
+   },
+   {
+    "ID": "18608",
+    "post_title": "Exclusion Hypoallergenic konservai šunims su arkliena ir bulvėmis 400 g"
+   },
+   {
+    "ID": "18605",
+    "post_title": "Exclusion Hypoallergenic konservai šunims su elniena ir bulvėmis 400 g"
+   },
+   {
+    "ID": "18602",
+    "post_title": "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 200 g"
+   },
+   {
+    "ID": "18599",
+    "post_title": "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 400 g"
+   },
+   {
+    "ID": "18596",
+    "post_title": "Exclusion Hypoallergenic konservai šunims su putpelėmis ir žirniais 400 g"
+   },
+   {
+    "ID": "18593",
+    "post_title": "Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200 g"
+   },
+   {
+    "ID": "18590",
+    "post_title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg"
+   },
+   {
+    "ID": "18587",
+    "post_title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg"
+   },
+   {
+    "ID": "18584",
+    "post_title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 800 g"
+   },
+   {
+    "ID": "18581",
+    "post_title": "Exclusion Hypoallergenic mini mažų veislių šunų maistas su arkliena ir bulvėmis S 2 kg"
+   },
+   {
+    "ID": "18578",
+    "post_title": "Exclusion Hypoallergenic mini mažų veislių šunų maistas su triušiena ir bulvėmis S 2 kg"
+   },
+   {
+    "ID": "18575",
+    "post_title": "Exclusion Hypoallergenic mini sausas mažų veislių šunų maistas su žuvimi ir bulvėmis S 2 kg"
+   },
+   {
+    "ID": "20943",
+    "post_title": "Exclusion Hypoallergenic sausas pašaras Duck Potato Small breed 2 kg"
+   },
+   {
+    "ID": "20977",
+    "post_title": "Exclusion Hypoallergenic sausas pašaras mažų veislių šunims su elniena ir bulvėmis, S, 2kg"
+   },
+   {
+    "ID": "20941",
+    "post_title": "Exclusion Hypoallergenic sausas pašaras mažų veislių šunims su žuvimi, S, 2 kg"
+   },
+   {
+    "ID": "20957",
+    "post_title": "Exclusion Hypoallergenic sausas pašaras šuniukams su kiauliena ir žirneliais, 2kg"
+   },
+   {
+    "ID": "20961",
+    "post_title": "Exclusion Hypoallergenic sausas pašaras vidutinių ir didelių veislių šunims  su kiauliena ir žirneliai, M/L, 2kg"
+   },
+   {
+    "ID": "20947",
+    "post_title": "Exclusion Hypoallergenic sausas pašaras vidutinių ir didelių veislių šunims su arkliena ir bulvėmis, M/L, 2kg"
+   },
+   {
+    "ID": "18572",
+    "post_title": "Exclusion Hypoallergenic sausas šuniukų maistas su kiauliena ir žirneliais 12 kg"
+   },
+   {
+    "ID": "18569",
+    "post_title": "Exclusion Hypoallergenic sausas šunų maistas su antiena ir bulvėmis M/L 12 kg"
+   },
+   {
+    "ID": "18566",
+    "post_title": "Exclusion Hypoallergenic sausas šunų maistas su arkliena ir bulvėmis M/L 12 kg"
+   },
+   {
+    "ID": "18563",
+    "post_title": "Exclusion Hypoallergenic sausas šunų maistas su elniena ir bulvėmis M/L 12 kg"
+   },
+   {
+    "ID": "18560",
+    "post_title": "Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg"
+   },
+   {
+    "ID": "18557",
+    "post_title": "Exclusion Hypoallergenic sausas šunų maistas su triušiena ir bulvėmis M/L 12 kg"
+   },
+   {
+    "ID": "18554",
+    "post_title": "Exclusion Hypoallergenic sausas šunų maistas su vabzdžiais ir žirneliais M/L 12 kg"
+   },
+   {
+    "ID": "20545",
+    "post_title": "Exclusion ME MONO NOBLE GRAIN  sausas pašaras šuniukams,su tunu, 500g"
+   },
+   {
+    "ID": "21117",
+    "post_title": "Exclusion ME MONO NOBLE GRAIN sausas pašaras šunims M, su jautiena, 3kg"
+   },
+   {
+    "ID": "25227",
+    "post_title": "Exclusion Mediterraneo Mono Noble sausas pašaras šunims S, su ėriena, 7 kg"
+   },
+   {
+    "ID": "25265",
+    "post_title": "Exclusion Mediterraneo Mono Noble sausas pašaras šuniukams L, su tunu, 12kg"
+   },
+   {
+    "ID": "20517",
+    "post_title": "Exclusion Mediterraneo Mono Protein konservas kačiukams su vištiena, 85 g"
+   },
+   {
+    "ID": "21165",
+    "post_title": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g"
+   },
+   {
+    "ID": "20523",
+    "post_title": "Exclusion Mediterraneo Mono Protein konservuotas pašaras sterilizuotoms katėms su jautiena, 85 g"
+   },
+   {
+    "ID": "20525",
+    "post_title": "Exclusion Mediterraneo Mono Protein konservuotas pašaras sterilizuotoms katėms su vištiena, 85 g"
+   },
+   {
+    "ID": "18536",
+    "post_title": "Exclusion Mediterraneo Monoprotein sausas pašaras kačiukams su vištiena, 1,5 kg"
+   },
+   {
+    "ID": "18542",
+    "post_title": "Exclusion Mediterraneo Monoprotein sausas pašaras katėms su jautiena, 1,5 kg"
+   },
+   {
+    "ID": "18539",
+    "post_title": "Exclusion Mediterraneo Monoprotein sausas pašaras katėms su vištiena, 1,5 kg"
+   },
+   {
+    "ID": "18533",
+    "post_title": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms didelėms katėms su vištiena, 1,5 kg"
+   },
+   {
+    "ID": "18530",
+    "post_title": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su jautiena, 1,5 kg"
+   },
+   {
+    "ID": "18527",
+    "post_title": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su tunu, 1,5 kg"
+   },
+   {
+    "ID": "18524",
+    "post_title": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su tunu, 12 kg"
+   },
+   {
+    "ID": "20541",
+    "post_title": "Exclusion Mono Protein begrūdis sausas pašaras mažų veislių mažiems šuniukams su jautiena S, 7 kg"
+   },
+   {
+    "ID": "20543",
+    "post_title": "Exclusion Mono Protein begrūdis sausas pašaras šuniukams, su tunu, M 3kg      "
+   },
+   {
+    "ID": "20539",
+    "post_title": "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras mažų veislių mažiems šuniukams su jautiena S, 2 kg"
+   },
+   {
+    "ID": "20537",
+    "post_title": "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras vidutinių veislių mažiems šuniukams su jautiena M, 12 kg"
+   },
+   {
+    "ID": "18512",
+    "post_title": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su ėriena, 400 g"
+   },
+   {
+    "ID": "18521",
+    "post_title": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su jautiena, 400 g"
+   },
+   {
+    "ID": "18518",
+    "post_title": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su kalakutiena, 400 g"
+   },
+   {
+    "ID": "21139",
+    "post_title": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su lašiša, 400 g"
+   },
+   {
+    "ID": "21141",
+    "post_title": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su tunu, 400 g"
+   },
+   {
+    "ID": "18515",
+    "post_title": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su veršiena, 400 g"
+   },
+   {
+    "ID": "21125",
+    "post_title": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su vištiena, 400 g"
+   },
+   {
+    "ID": "21129",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras didelių veislių šunims su ėriena, L, 12 kg"
+   },
+   {
+    "ID": "21115",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras didelių veislių šunims su jautiena, L, 12 kg"
+   },
+   {
+    "ID": "21143",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras didelių veislių šunims su tunu, L, 12 kg"
+   },
+   {
+    "ID": "21135",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su ėriena, S, 2 kg"
+   },
+   {
+    "ID": "21137",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su ėriena, S, 500g"
+   },
+   {
+    "ID": "21123",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su jautiena, S, 500g"
+   },
+   {
+    "ID": "21149",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su tunu, S, 2 kg"
+   },
+   {
+    "ID": "21151",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su tunu, S, 500 g"
+   },
+   {
+    "ID": "21153",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su tunu, S, 7 kg"
+   },
+   {
+    "ID": "21133",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su ėriena, M, 12 kg"
+   },
+   {
+    "ID": "21131",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su ėriena, M, 3 kg"
+   },
+   {
+    "ID": "21119",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su jautiena, M, 12 kg"
+   },
+   {
+    "ID": "21147",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su tunu, M, 12 kg"
+   },
+   {
+    "ID": "21145",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su tunu, M, 3 kg"
+   },
+   {
+    "ID": "25165",
+    "post_title": "Exclusion Mono Protein, begrūdis sausas pašaras mažų veislių mažiems šuniukams S, jautiena, 500g"
+   },
+   {
+    "ID": "35392",
+    "post_title": "Jautriam mažam šuniui — Exclusion Hypo Mini kiauliena: 2 kg sausas + 4 konservai"
+   }
+  ]
+ }
+}
