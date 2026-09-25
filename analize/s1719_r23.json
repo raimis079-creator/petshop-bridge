@@ -1,0 +1,45 @@
+{
+ "2": {
+  "v": "S1719r",
+  "faze": "2",
+  "rytas_md5": "95e3a6d10cff0303ccfe970662b9b3ad",
+  "hb": 200,
+  "snip": {
+   "id": "5323",
+   "name": "Petshop Sargas Likucio grazinimas v1.1 (atsaukimo patikra pagal eiluciu meta)",
+   "active": "1",
+   "len": "1155"
+  },
+  "hb2": 200
+ },
+ "3": {
+  "v": "S1719r",
+  "faze": "3",
+  "patikros": [
+   "import_2 | zalia | Importas #2 products.php: paskutinis prieš 1 val.",
+   "import_3 | zalia | Importas #3 stocks.php: paskutinis prieš 0 val.",
+   "feeds | zalia | Feed'ai Kaina24/Kainos: generuoti prieš 12 val.",
+   "faktai | zalia | Faktai: visi apmokėti užsakymai turi faktą",
+   "agregatas | zalia | Agregatas 2026-09-24: 5 eil.",
+   "siuntu_naslaiciai | zalia | ps_shipments našlaičiai: 0",
+   "avpn | zalia | AVPN numeracija: be dublikatų (142)",
+   "neissiusti | zalia | Apmokėti > 2 d. be siuntos: 0",
+   "dropship_sla | zalia | Dropship tiekėjas vėluoja > 24 val.: 0 užsak.",
+   "laiskai | zalia | Laiškai 24 val.: išsiųsta 10, nepavyko 0",
+   "eventai | zalia | Eventai: failed 24 val. 0",
+   "ads | zalia | Google Ads duomenys: paskutinį kartą prieš 14 val. (45 eil.)",
+   "404 | zalia | 404 vakar: 2 (7 d. vid. 13,6)",
+   "beacon | pilka | Web įvykiai vakar: 2480 (iki launch nevertinama)"
+  ],
+  "versija": "1.4",
+  "snip_kodas_pradzia": "/**\n * Petshop Sargas Likucio grazinimas v1.1 (atsaukimo patikra pagal eiluciu meta)\n *\n * v1.0 (S1662) tikrino WC pasta",
+  "snip_hook_uzregistruotas": true
+ },
+ "v": "dep-160943",
+ "kurimas": 200,
+ "sid": 6471,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
