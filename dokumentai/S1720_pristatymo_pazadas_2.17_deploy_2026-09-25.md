@@ -16,10 +16,18 @@ Maketas v3 (`S1720_maketas_2.17_pristatymo_pazadas_2026-09-25.md`, vizualas `S17
 - Naršyklė (`s1720/k.php`, Playwright, `screenshots/s1720k_*.png`): krepšelis tik su Exclusion (AV) → „Išsiųsime per 1–2 d. d.“ krepšelyje ir apmokėjime; pridėjus Monge Struvite 2 kg (ZB) → „Išsiųsime per 3 d. d.“ abiejose vietose, po prekių / prieš „Pristatymas“ — kaip makete. Mini-krepšelio iškrentančio lango Playwright neatidarė (hover) — kodas tas pats hook'as, R patikrina akimis.
 - Svorio parseris: 8/8 pavadinimų teisingai.
 
+## 5. Skaičiuoklė virš „Dažnai perkama kartu“ GYVAI (23:10, R „darom“)
+NAUJAS `mu-plugins/petshop-prekes-tvarka.php` v1.0 (md5 `02087caf…`, repo `deploy/`, `s1720/n.php` 1 deploy / 2 patikra / 9 pašalinti; išjungti `ps_prekes_tvarka_isjungta=1`): `wp` prio 20 nuima `Petshop_FBT::render_widget` nuo `woocommerce_after_add_to_cart_form` 20 ir kabina ant `woocommerce_single_product_summary` 32 (po `Petshop_Product_Calc::widget` 31). Gyvai: „Į krepšelį“ → skaičiuoklė „Kiek šio maisto užteks jūsų šuniui?“ → „Dažnai perkama kartu“. Super Cache išvalytas, heartbeat 200.
+
+## 6. Tarpinė patikra 22:55 (`s1720/l.php`)
+- WPAI #3 po „skip unchanged“: 21:00 paleidimas **1 846 s** (buvo 4 035 s), 22:00 vis dar vyko 22:55 — rytoj `pmxi_history`.
+- Botų sargas 19:00–22:55: **1 087 add-to-cart + 21 509 filtrų** užklausų sustabdyta, 21 718 unikalių IP; `ps_carts` šiandien 4 777 (vakar 7 755); WC sesijos 14 742; užsakymai šiandien 8 processing / 1 on-hold / 1 completed — kasa nenukentėjo. Super Cache 168 psl.
+- 2.17 II recon (`s1720/m.php`): FBT `woocommerce_after_add_to_cart_form` 20, skaičiuoklė summary 31, `Petshop_Dydziai::pieskime` 25; `_ps_dydzio_seima` tik 32 prekės (kaulai/ragai/šepečiai), maistui 0; `pa_pakuotes_dydis` 1 790 prekių. Top sausas maistas 90 d. pagal pajamas: Exclusion small breed 7 kg (707 €), Josera Mini Lamb 10 kg, Josera A/S Lamb 12,5+2,5, Ambrosia 12 kg, SensiPlus 12,5 kg, Josera Indoor 10 kg, JosiCat Sterilised 15+3, Festival 12,5, Prins 20 kg, Exclusion puppy 12 kg, RC Urinary 10 kg… — šeimų kandidatai rytoj (xlsx R peržiūrai).
+
 ## Liko / pastabos
 - Pažado laikymosi matavimas (`ps_fakt_siuntos.isvezta_at − date_paid` ≤ 2 d. d.) — Ryto sargo lemputė „pažadas“, jei R norės (+30 min).
 - Mini-krepšelis — R patikra akimis.
-- 2.17 kiti punktai (skaičiuoklė virš FBT, pakuočių perjungiklis, nuotraukos aukštis mobiliajame) — atskiras maketas.
+- 2.17 liko: pakuočių šeimos top maisto linijoms (`_ps_dydzio_seima`, xlsx kandidatai → R → priskyrimas), nuotraukos aukštis mobiliajame.
 
 ## Įrankiai
-VM `ps-bridge/s1720/`: f (2.17 recon), g („kasa“ recon), h (krepšelio/apmokėjimo ekranai prieš), i (recon prieš kodą), j/j2 (deploy 1 / pristatymas 2 sausas · 4 rašyti / 3 testai / 5 Super Cache / 9 atstatyti), k (ekranai po). Repo `irankiai/s1720_f–k.php`, `deploy/petshop-pristatymo-pazadas-v1.0.1.php`. Pamokos: Playwright bridge — pirmas kadras prekės puslapis (botų sargo slapukas `ps_js`), tik tada `?add-to-cart=`; `wp_remote_get` iškart po Super Cache valymo gali neatsakyti per 25 s — kartoti.
+VM `ps-bridge/s1720/`: f (2.17 recon), g („kasa“ recon), h (krepšelio/apmokėjimo ekranai prieš), i (recon prieš kodą), j/j2 (deploy 1 / pristatymas 2 sausas · 4 rašyti / 3 testai / 5 Super Cache / 9 atstatyti), k (ekranai po), l (tarpinė patikra + 2.17 II recon), m (FBT/calc kabliai, top sausas maistas), n (prekes-tvarka deploy 1/2/9). Repo `irankiai/s1720_f–k.php`, `deploy/petshop-pristatymo-pazadas-v1.0.1.php`. Pamokos: Playwright bridge — pirmas kadras prekės puslapis (botų sargo slapukas `ps_js`), tik tada `?add-to-cart=`; `wp_remote_get` iškart po Super Cache valymo gali neatsakyti per 25 s — kartoti.
