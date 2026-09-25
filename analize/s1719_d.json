@@ -1,0 +1,161 @@
+{
+ "v": "dep-141954",
+ "kurimas": 200,
+ "sid": 6452,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "i": {
+  "v": "S1719d",
+  "t": "2026-09-25 14:21:09",
+  "robots": "User-agent: *\nDisallow: /wp-content/uploads/wc-logs/\nDisallow: /wp-content/uploads/woocommerce_transient_files/\nDisallow: /wp-content/uploads/woocommerce_uploads/\nDisallow: /*?add-to-cart=\nDisallow: /*?*add-to-cart=\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\nDisallow: /*?*yith_wcan=\nDisallow: /*?*filter_\nDisallow: /*?*query_type_\nDisallow: /*?*orderby=\n\nSitemap: https://petshop.lt/sitemap_index.xml\n",
+  "fatal_url": 200,
+  "filter_url_paprastas": 200,
+  "sessions_24h": [
+   {
+    "svečiai": "9046",
+    "svečiai_su_krepšeliu": "8002",
+    "be_email": "605"
+   }
+  ],
+  "web_cols": [
+   "id",
+   "laikas",
+   "diena",
+   "tipas",
+   "pusl_tipas",
+   "url_kelias",
+   "raktas",
+   "raktas2",
+   "reiksme",
+   "sesija",
+   "lankytojas_d",
+   "lankytojas_30",
+   "saltinis",
+   "medium",
+   "kampanija",
+   "referer_domenas",
+   "kanalas",
+   "landing",
+   "irenginys",
+   "os_seima",
+   "nars_seima",
+   "salis",
+   "prisijunges",
+   "sutikimas",
+   "testinis",
+   "saltinis_aplinka"
+  ],
+  "web_tipai_3d": [
+   {
+    "t": "pageview",
+    "n": "3061"
+   },
+   {
+    "t": "add_to_cart",
+    "n": "1634"
+   },
+   {
+    "t": "view_item",
+    "n": "1428"
+   },
+   {
+    "t": "search",
+    "n": "135"
+   },
+   {
+    "t": "view_cart",
+    "n": "75"
+   },
+   {
+    "t": "begin_checkout",
+    "n": "47"
+   },
+   {
+    "t": "error404",
+    "n": "42"
+   },
+   {
+    "t": "skaiciuokle",
+    "n": "2"
+   }
+  ],
+  "carts_cols": [
+   "id",
+   "cart_id",
+   "session_key",
+   "user_id",
+   "email",
+   "email_source",
+   "last_cart_activity_at",
+   "cart_hash",
+   "snapshot_json",
+   "snapshot_version",
+   "status",
+   "status_changed_at",
+   "converted_order_id",
+   "created_at",
+   "updated_at"
+  ],
+  "carts_pvz": [
+   {
+    "id": "30860",
+    "cart_id": "c_68049d35950ad9f4a3a3904a67ae8816",
+    "session_key": "t_a159c433898d3dbeff41de22237946",
+    "user_id": null,
+    "email": null,
+    "email_source": null,
+    "last_cart_activity_at": "2026-09-25 14:20:45",
+    "cart_hash": "690a8bd781e96d2d9370404c2a51df36679cd1aa",
+    "snapshot_json": "[{\"product_id\":23460,\"variation_id\":0,\"quantity\":2,\"variation\":[],\"item_data\":[]}]",
+    "snapshot_version": "1",
+    "status": "active",
+    "status_changed_at": "2026-09-25 14:20:42",
+    "converted_order_id": null,
+    "created_at": "2026-09-25 14:20:42",
+    "updated_at": "2026-09-25 14:20:45"
+   },
+   {
+    "id": "30859",
+    "cart_id": "c_faae49b8c5f9d7b446a5ded2848344a6",
+    "session_key": "t_234250e63cc10d462a1bf06a08c1c1",
+    "user_id": null,
+    "email": null,
+    "email_source": null,
+    "last_cart_activity_at": "2026-09-25 14:20:27",
+    "cart_hash": "d5062234d937033400bfc002464b4142268c0128",
+    "snapshot_json": "[{\"product_id\":13639,\"variation_id\":0,\"quantity\":1,\"variation\":[],\"item_data\":[]}]",
+    "snapshot_version": "1",
+    "status": "active",
+    "status_changed_at": "2026-09-25 14:20:27",
+    "converted_order_id": null,
+    "created_at": "2026-09-25 14:20:27",
+    "updated_at": "2026-09-25 14:20:27"
+   },
+   {
+    "id": "30858",
+    "cart_id": "c_0d8700aed49f920db07e834c4670f382",
+    "session_key": "t_14b6629c2c7cd1a9a6a7acfc7e0716",
+    "user_id": null,
+    "email": null,
+    "email_source": null,
+    "last_cart_activity_at": "2026-09-25 14:20:23",
+    "cart_hash": "9eace78b1a2188d9016494289efd59b7ddffe19d",
+    "snapshot_json": "[{\"product_id\":18903,\"variation_id\":0,\"quantity\":1,\"variation\":[],\"item_data\":[]}]",
+    "snapshot_version": "1",
+    "status": "active",
+    "status_changed_at": "2026-09-25 14:20:23",
+    "converted_order_id": null,
+    "created_at": "2026-09-25 14:20:23",
+    "updated_at": "2026-09-25 14:20:23"
+   }
+  ],
+  "carts_email": [
+   {
+    "su_email": "16",
+    "n": "12300"
+   }
+  ]
+ }
+}
