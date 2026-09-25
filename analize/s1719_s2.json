@@ -1,0 +1,89 @@
+{
+ "1": {
+  "v": "S1719s",
+  "faze": "1",
+  "dabar": {
+   "2": {
+    "name": "products.php",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "1",
+    "chunk": "1181",
+    "last": "2026-09-25 15:02:02",
+    "is_selective_hashing": "1",
+    "records_per_request": "10"
+   },
+   "3": {
+    "name": "stocks.php",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "0",
+    "chunk": "0",
+    "last": "2026-09-25 17:08:38",
+    "is_selective_hashing": "0",
+    "records_per_request": "20"
+   },
+   "7": {
+    "name": "vf-feed.xml",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "0",
+    "chunk": "0",
+    "last": "2026-09-25 16:22:03",
+    "is_selective_hashing": "1",
+    "records_per_request": "20"
+   }
+  },
+  "hash_tbl": "16551"
+ },
+ "2": {
+  "v": "S1719s",
+  "faze": "2",
+  "dabar": {
+   "2": {
+    "name": "products.php",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "1",
+    "chunk": "1181",
+    "last": "2026-09-25 15:02:02",
+    "is_selective_hashing": "1",
+    "records_per_request": "10"
+   },
+   "3": {
+    "name": "stocks.php",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "0",
+    "chunk": "0",
+    "last": "2026-09-25 17:08:38",
+    "is_selective_hashing": "0",
+    "records_per_request": "20"
+   },
+   "7": {
+    "name": "vf-feed.xml",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "0",
+    "chunk": "0",
+    "last": "2026-09-25 16:22:03",
+    "is_selective_hashing": "1",
+    "records_per_request": "20"
+   }
+  },
+  "hash_tbl": "16551",
+  "praleista": {
+   "2": "jau 1"
+  },
+  "ijungta": {
+   "3": "1"
+  }
+ },
+ "v": "dep-170742",
+ "kurimas": 200,
+ "sid": 6482,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
