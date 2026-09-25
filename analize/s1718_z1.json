@@ -1,0 +1,65 @@
+{
+ "1": {
+  "v": "S1718z",
+  "faze": "1",
+  "dydis": 2199,
+  "rasomas": true,
+  "bak_yra": false,
+  "bakdir_yra": true,
+  "jau_yra": false,
+  "modsec_blokai": 0,
+  "pradzia": "# BEGIN Petshop Cache (H089, 2026-08-19)\n<IfModule mod_expires.c>\n  ExpiresActive On\n  ExpiresByType text/css \"access plus 1 year\"\n  ExpiresByType application/javascript \"access plus 1 year\"\n  ExpiresByType text/javascript \"access plus 1 year\"\n  ExpiresByType image/jpeg \"access plus 1 year\"\n  ExpiresByType image/png \"access plus 1 year\"\n  ExpiresByType image/gif \"access plus 1 year\"\n  ExpiresByType image/webp \"access plus 1 year\"\n  ExpiresByType image/svg+xml \"access plus 1 year\"\n  ExpiresByType font/woff2 \"access plus 1 year\"\n</IfModule>\n<IfModule mod_headers.c>\n  <FilesMatch \"\\.(css|js|mjs|w",
+  "ua_pries": {
+   "ChatGPT-User": {
+    "/": "ERR cURL error 56: SSL certificate OpenSSL verify result: unable",
+    "/kategorija/sunims/": "ERR cURL error 56: SSL certificate OpenSSL verify result: unable",
+    "/product/josera-optiness-sausas-pasaras-sunims-12-5-kg/": "ERR cURL error 56: SSL certificate OpenSSL verify result: unable"
+   },
+   "GPTBot": {
+    "/": "ERR cURL error 56: SSL certificate OpenSSL verify result: unable",
+    "/kategorija/sunims/": "ERR cURL error 56: SSL certificate OpenSSL verify result: unable",
+    "/product/josera-optiness-sausas-pasaras-sunims-12-5-kg/": "ERR cURL error 56: SSL certificate OpenSSL verify result: unable"
+   },
+   "ClaudeBot": {
+    "/": "ERR cURL error 56: SSL certificate OpenSSL verify result: unable",
+    "/kategorija/sunims/": "ERR cURL error 56: SSL certificate OpenSSL verify result: unable",
+    "/product/josera-optiness-sausas-pasaras-sunims-12-5-kg/": "ERR cURL error 56: SSL certificate OpenSSL verify result: unable"
+   },
+   "OAI-SearchBot": {
+    "/": 200,
+    "/kategorija/sunims/": 200,
+    "/product/josera-optiness-sausas-pasaras-sunims-12-5-kg/": 301
+   },
+   "Chrome": {
+    "/": 200,
+    "/kategorija/sunims/": 200,
+    "/product/josera-optiness-sausas-pasaras-sunims-12-5-kg/": 301
+   }
+  },
+  "logs_dir": [
+   ".",
+   "..",
+   "Sep-2026.tar.gz",
+   "Sep-2026.tar.gz.1",
+   "Sep-2026.tar.gz.10",
+   "Sep-2026.tar.gz.11",
+   "Sep-2026.tar.gz.12",
+   "Sep-2026.tar.gz.2",
+   "Sep-2026.tar.gz.3",
+   "Sep-2026.tar.gz.4",
+   "Sep-2026.tar.gz.5",
+   "Sep-2026.tar.gz.6",
+   "Sep-2026.tar.gz.7",
+   "Sep-2026.tar.gz.8",
+   "Sep-2026.tar.gz.9",
+   "php_error.log"
+  ]
+ },
+ "v": "dep-123802",
+ "kurimas": 200,
+ "sid": 6438,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
