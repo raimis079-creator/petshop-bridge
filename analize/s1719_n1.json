@@ -1,0 +1,25 @@
+{
+ "1": {
+  "v": "S1719n",
+  "faze": "1",
+  "t": "2026-09-25 15:51:58",
+  "test_pid": 36302,
+  "test_url": "https://petshop.lt/product/6-vnt-ontario-konservu-sunims-su-versiena-ir-ciberzole-400-g-veal-pate-flavoured-with-turmeric/",
+  "parse": "ok",
+  "bytes": 6138,
+  "md5": "d338af8beab35025874d4d77a89b48b0",
+  "yra": false,
+  "log_dir_writable": true,
+  "pries": {
+   "atc_be_slapuko": "200 [set-cookie: woocommerce_items_in_cart=1; path=/|woocommerce_cart_hash=97]",
+   "filtras_be_slapuko": "200"
+  }
+ },
+ "v": "dep-155049",
+ "kurimas": 200,
+ "sid": 6465,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
