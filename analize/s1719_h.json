@@ -1,0 +1,471 @@
+{
+ "v": "dep-145556",
+ "kurimas": 200,
+ "sid": 6456,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "m": {
+  "v": "S1719h",
+  "t": "2026-09-25 14:57:01",
+  "functions_eil": {
+   "249": "//   update_option('petshop_avpn_counter', 101)",
+   "250": "//   update_option('petshop_iapv_counter', 101)",
+   "252": "function petshop_get_avpn_number( $order_id ) {",
+   "254": "$existing = $order ? $order->get_meta( '_petshop_avpn_number' ) : '';",
+   "256": "$counter = (int) get_option( 'petshop_avpn_counter', 101 );",
+   "257": "$number  = 'AVPN' . str_pad( $counter, 6, '0', STR_PAD_LEFT );",
+   "258": "update_option( 'petshop_avpn_counter', $counter + 1 );",
+   "260": "$order->update_meta_data( '_petshop_avpn_number', $number );",
+   "270": "$counter = (int) get_option( 'petshop_iapv_counter', 101 );",
+   "271": "$number  = 'IAPV' . str_pad( $counter, 6, '0', STR_PAD_LEFT );",
+   "272": "update_option( 'petshop_iapv_counter', $counter + 1 );",
+   "280": "function petshop_get_invoice_document_type( $order ) {",
+   "282": "// S1662 (Raimio taisyklė 2026-09-09): PVM sąskaita (AVPN) — TIK apmokėtiems.",
+   "284": "// Anksčiau proforma buvo tik bacs pending/on-hold — Paysera pending degino AVPN numerius.",
+   "291": "// cancelled/refunded be apmokėjimo — sąskaitos nekuriam, bet jei kas pareikalaus, NEdeginam AVPN",
+   "299": "$type     = petshop_get_invoice_document_type( $order );",
+   "309": "'number' => petshop_get_avpn_number( $order_id ),",
+   "385": "// Svarus lietuviskas failo pavadinimas pagal dokumento numeri (base.php nustato $invoice_number ir $doc_title virsuje).",
+   "386": "$doc_num  = isset( $invoice_number ) ? preg_replace( '/[^A-Za-z0-9]/', '', $invoice_number ) : (string) $order_id;",
+   "411": "$doc_type = petshop_get_invoice_document_type( $order );",
+   "412": "$order->update_meta_data( '_petshop_invoice_document_type', $doc_type );",
+   "508": "$doc_type = petshop_get_invoice_document_type( $order );",
+   "509": "$order->update_meta_data( '_petshop_invoice_document_type', $doc_type );"
+  },
+  "fn_avpn": "function petshop_get_avpn_number( $order_id ) {\n    $order    = wc_get_order( $order_id );\n    $existing = $order ? $order->get_meta( '_petshop_avpn_number' ) : '';\n    if ( $existing ) return $existing;\n    $counter = (int) get_option( 'petshop_avpn_counter', 101 );\n    $number  = 'AVPN' . str_pad( $counter, 6, '0', STR_PAD_LEFT );\n    update_option( 'petshop_avpn_counter', $counter + 1 );\n    if ( $order ) {\n        $order->update_meta_data( '_petshop_avpn_number', $number );\n        $order->save();\n    }\n    return $number;\n}",
+  "fn_doctype": "function petshop_get_invoice_document_type( $order ) {\n    if ( ! $order instanceof WC_Order ) return 'invoice';\n    // S1662 (Raimio taisyklė 2026-09-09): PVM sąskaita (AVPN) — TIK apmokėtiems.\n    // Kol neapmokėta (bet kuris mokėjimo būdas) — išankstinė (IAPV).\n    // Anksčiau proforma buvo tik bacs pending/on-hold — Paysera pending degino AVPN numerius.\n    if ( $order->is_paid() ) {\n        return 'invoice';\n    }\n    if ( in_array( $order->get_status(), array( 'pending', 'on-hold', 'failed', 'checkout-draft' ), true ) ) {\n        return 'proforma';\n    }\n    // cancelled/refunded be apmokėjimo — sąskaitos nekuriam, bet jei kas pareikalaus, NEdeginam AVPN\n    if ( in_array( $order->get_status(), array( 'cancelled', 'refunded' ), true ) && ! $order->get_date_paid() ) {\n        return 'proforma';\n    }\n    return 'invoice';\n}",
+  "base_eil": {
+   "5": "* Versija: 2.13 (S1675, 09-12) — AVPN priskiriamas tik 'invoice' dokumentui; tipas nustatomas prieš numerį (neapmokėtiems degė AVPN). 2.12 (S1619, Raimis 09-06 PPK",
+   "6": "*   data iš `_petshop_kravpn_date`, „Originali sąskaita“ = pradinio AVPN. 2.8 — logotipas PDF'e per data URI (dompdf negali per https/URL)",
+   "37": "$original_avpn = $parent_order->get_meta( '_petshop_avpn_number' );",
+   "38": "if ( ! $original_avpn ) {",
+   "39": "$original_avpn = function_exists( 'petshop_get_avpn_number' )",
+   "40": "? petshop_get_avpn_number( $parent_id )",
+   "41": ": 'AVPN' . str_pad( $parent_order->get_order_number(), 6, '0', STR_PAD_LEFT );",
+   "43": "$invoice_number = ( $maybe_parent && $maybe_order && $maybe_order->get_meta( '_petshop_kravpn_number' ) ) ? $maybe_order->get_meta( '_petshop_kravpn_number' ) : '",
+   "45": "$invoice_number = 'KR-AVPN' . ( isset( $order['orderNumber'] ) ? $order['orderNumber'] : '' );",
+   "51": "// v2.13 (S1675): dokumento tipas nustatomas PIRMIAU, AVPN numeris priskiriamas TIK 'invoice' atveju.",
+   "52": "// Anksčiau petshop_get_avpn_number() buvo kviečiama besąlygiškai ir degino AVPN neapmokėtiems (IAPV) — pvz. #35902.",
+   "55": "if ( function_exists( 'petshop_get_invoice_document_type' ) ) {",
+   "56": "$doc_type = petshop_get_invoice_document_type( $wc_order );",
+   "60": "if ( $wc_order->get_meta( '_petshop_invoice_document_type' ) === 'proforma' ) {",
+   "66": "$invoice_number = function_exists( 'petshop_get_iapv_number' ) && $order_id",
+   "71": "$invoice_number = function_exists( 'petshop_get_avpn_number' ) && $order_id",
+   "72": "? petshop_get_avpn_number( $order_id )",
+   "73": ": 'AVPN' . ( isset( $order['orderNumber'] ) ? $order['orderNumber'] : '' );",
+   "381": "<div class=\"ps-title\"><?php echo esc_html( $doc_title ); ?> &ndash; <?php echo esc_html( $invoice_number ); ?></div>",
+   "530": "<strong>Kreditinė data:</strong> <?php echo esc_html( ( $maybe_parent && $maybe_order && $maybe_order->get_meta( '_petshop_kravpn_date' ) ) ? $maybe_order->g",
+   "531": "<strong>Originali sąskaita:</strong> <?php echo esc_html( ! empty( $original_avpn ) ? $original_avpn : str_replace( 'KR-', '', $invoice_number ) ); ?><br>",
+   "587": "<strong>Mokėjimo paskirtis:</strong> Išankstinės sąskaitos Nr. <?php echo esc_html( $invoice_number ); ?><br>"
+  },
+  "mu_naudoja": {
+   "petshop-darbalaukis.php": [
+    "tos()`): visi dokumentai iš meta per HPOS SQL UNION (AVPN `_petshop_avpn_number`",
+    "25: kreditinių KR-AVPN sava eilė — KITAS numeris (kaip `petshop_avpn_counter`; T-0 → 101)",
+    "rder_note( 'Darbalaukis: PVM sąskaita ' . ( $n->get_meta( '_petshop_avpn_number' ) ? $n->get_meta( '_petshop_avpn_number' ) : '(AVPN NEIŠR",
+    "$avpn = (string) $n->get_meta( '_petshop_avpn_number' );",
+    "(float) $n->get_total(), 'avpn' => (string) $n->get_meta( '_petshop_avpn_number' ) ), 'pastaba' => 'pavedimas už pakartotinį užsakymą #",
+    ". ' €) pažymėtas apmokėtu pavedimu' . ( $n->get_meta( '_petshop_avpn_number' ) ? ', PVM sąskaita ' . $n->get_meta( '_petshop_avpn_numb"
+   ],
+   "petshop-desk.php": [
+    "'saskaita'=> $o->get_meta( '_petshop_avpn_number' ) ? $o->get_meta( '_petshop_avpn_number' ) : $o->get_meta("
+   ]
+  },
+  "snip_avpn": {
+   "5330 Petshop Uzsakymu Numeracija v1.0 (woocommerce_order_number filtras)": [
+    "* Counter `petshop_order_counter` = KITAS numeris (kaip AVPN/KR/IAPV/PPK)."
+   ],
+   "6456 TEMP PS dep-145556": [
+    "/** Plugin Name: TEMP PS S1719h — AVPN numeravimo kodo ir istorijos recon, read-only (m) */",
+    "foreach($lines as $i=>$l){ if(preg_match('/avpn|AVPN|invoice_number|invoice_document_type|counter/i',$l)) $r['functions_ei",
+    "if(preg_match('/function petshop_get_avpn_number[\\s\\S]{0,2500}?\\n}/',$c,$m)) $r['fn_avpn']=$m[0];",
+    "t_contents($b); foreach(explode(\"\\n\",$bc) as $i=>$l){ if(preg_match('/avpn|invoice_number|document_type|counter/i',$l)) $r['base_eil'][$i+1]=tri",
+    "c=file_get_contents($fx); if(preg_match_all('/[^\\n]{0,60}(petshop_get_avpn_number|petshop_avpn_counter|_petshop_avpn_number)[^\\n]{0,60}/',$cc,$m",
+    "SELECT id,name,code FROM {$p}snippets WHERE active=1 AND (code LIKE '%avpn%' OR code LIKE '%AVPN%')\",ARRAY_A); foreach($sn as $s){ preg_match_al",
+    "l('/[^\\n]{0,70}(avpn|AVPN)[^\\n]{0,70}/',$s['code'],$m); $r['snip_avpn'][$s['id'].' '.$s['name']]=array_slice(array_unique(array_map('trim',",
+    "$r['uzs'][$oid]=['nr'=>$o->get_order_number(),'avpn'=>$o->get_meta('_petshop_avpn_number',false)?array_map(function($m){r"
+   ]
+  },
+  "uzs": {
+   "36020": {
+    "nr": "1102",
+    "avpn": {
+     "7": "AVPN011105",
+     "8": "AVPN011107"
+    },
+    "doc": "invoice",
+    "wcdn": "AVPN1102",
+    "wcdn_date": "1789713555",
+    "completed": "09-22 11:07:04",
+    "paid": "09-18 09:39:14",
+    "notes": [
+     "09-22 11:07:04 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas kli",
+     "09-22 11:07:04 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas kli",
+     "09-22 11:07:05 Klientui išsiųsta „Užsakymas išsiųstas“ (giedre4445@gmail.com",
+     "09-22 11:07:05 Klientui išsiųsta „Užsakymas išsiųstas“ (giedre4445@gmail.com"
+    ]
+   },
+   "36112": {
+    "nr": "1136",
+    "avpn": {
+     "8": "AVPN011105"
+    },
+    "doc": "invoice",
+    "wcdn": "AVPN1136",
+    "wcdn_date": "1789990920",
+    "completed": "09-22 11:07:02",
+    "paid": "09-21 14:41:59",
+    "notes": [
+     "09-22 11:07:02 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas kli",
+     "09-22 11:07:03 Klientui išsiųsta „Užsakymas išsiųstas“ (dimsiene.diana@gmail"
+    ]
+   },
+   "36118": {
+    "nr": "1141",
+    "avpn": {
+     "8": "AVPN011105"
+    },
+    "doc": "invoice",
+    "wcdn": "AVPN1141",
+    "wcdn_date": "1790014419",
+    "completed": "09-22 11:07:01",
+    "paid": "09-21 21:13:38",
+    "notes": [
+     "09-22 11:07:01 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas kli",
+     "09-22 11:07:02 Klientui išsiųsta „Užsakymas išsiųstas“ (ausrban@gmail.com): "
+    ]
+   },
+   "36141": {
+    "nr": "1143",
+    "avpn": {
+     "7": "AVPN011105"
+    },
+    "doc": "invoice",
+    "wcdn": "AVPN1143",
+    "wcdn_date": "1790052622",
+    "completed": "09-22 11:07:00",
+    "paid": "09-22 07:50:21",
+    "notes": [
+     "09-22 11:07:00 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas kli",
+     "09-22 11:07:01 Klientui išsiųsta „Užsakymas išsiųstas“ (astele72@gmail.com):"
+    ]
+   },
+   "36144": {
+    "nr": "1145",
+    "avpn": {
+     "6": "AVPN011105"
+    },
+    "doc": "invoice",
+    "wcdn": "AVPN1145",
+    "wcdn_date": "1790060597",
+    "completed": "09-22 11:06:59",
+    "paid": "09-22 10:03:15",
+    "notes": [
+     "09-22 11:06:59 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas kli",
+     "09-22 11:07:01 Klientui išsiųsta „Užsakymas išsiųstas“ (karoliscre@gmail.com"
+    ]
+   },
+   "36279": {
+    "nr": "1166",
+    "avpn": {
+     "7": "AVPN011134"
+    },
+    "doc": "invoice",
+    "wcdn": "AVPN1166",
+    "wcdn_date": "1790193191",
+    "completed": "09-25 00:36:35",
+    "paid": "09-23 22:53:10",
+    "notes": [
+     "09-24 11:36:13 Klientui išsiųsta „Išsiųsta 1 iš 2 siuntų“ (roneta505@gmail.",
+     "09-24 11:36:13 Darbalaukis: AV siunta išsiųsta (Venipak, venipak). Dar laukiam: VF.",
+     "09-25 00:36:35 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas kli",
+     "09-25 00:36:35 Klientui išsiųsta „Išsiųsta 2 iš 2 siuntų“ (roneta505@gmail."
+    ]
+   },
+   "36281": {
+    "nr": "1168",
+    "avpn": {
+     "8": "AVPN011134"
+    },
+    "doc": "invoice",
+    "wcdn": "AVPN1168",
+    "wcdn_date": "1790220806",
+    "completed": "09-25 00:36:34",
+    "paid": "09-24 06:33:25",
+    "notes": [
+     "09-24 11:36:11 Klientui išsiųsta „Išsiųsta 1 iš 2 siuntų“ (kasandra035@gmai",
+     "09-24 11:36:11 Darbalaukis: AV siunta išsiųsta (Venipak, venipak). Dar laukiam: VF.",
+     "09-25 00:36:34 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas kli",
+     "09-25 00:36:35 Klientui išsiųsta „Išsiųsta 2 iš 2 siuntų“ (kasandra035@gmai"
+    ]
+   }
+  },
+  "counter_opcija": {
+   "option_name": "petshop_avpn_counter",
+   "option_value": "11139",
+   "autoload": "auto"
+  },
+  "avpn_chronologija": [
+   {
+    "avpn": "AVPN011138",
+    "id": "36306",
+    "date_created_gmt": "2026-09-25 09:11:26",
+    "completed": null
+   },
+   {
+    "avpn": "AVPN011100",
+    "id": "36088",
+    "date_created_gmt": "2026-09-19 12:53:10",
+    "completed": "2026-09-21 16:07:14"
+   },
+   {
+    "avpn": "AVPN011101",
+    "id": "36085",
+    "date_created_gmt": "2026-09-19 11:48:01",
+    "completed": "2026-09-21 16:07:15"
+   },
+   {
+    "avpn": "AVPN011102",
+    "id": "36026",
+    "date_created_gmt": "2026-09-18 18:56:51",
+    "completed": "2026-09-21 16:07:16"
+   },
+   {
+    "avpn": "AVPN011103",
+    "id": "36024",
+    "date_created_gmt": "2026-09-18 09:10:09",
+    "completed": "2026-09-21 16:07:17"
+   },
+   {
+    "avpn": "AVPN011104",
+    "id": "35995",
+    "date_created_gmt": "2026-09-17 07:23:44",
+    "completed": "2026-09-21 16:07:18"
+   },
+   {
+    "avpn": "AVPN011105",
+    "id": "36144",
+    "date_created_gmt": "2026-09-22 07:00:43",
+    "completed": "2026-09-22 08:06:59"
+   },
+   {
+    "avpn": "AVPN011105",
+    "id": "36141",
+    "date_created_gmt": "2026-09-22 04:48:46",
+    "completed": "2026-09-22 08:07:00"
+   },
+   {
+    "avpn": "AVPN011106",
+    "id": "36117",
+    "date_created_gmt": "2026-09-21 17:33:43",
+    "completed": "2026-09-22 08:07:01"
+   },
+   {
+    "avpn": "AVPN011105",
+    "id": "36118",
+    "date_created_gmt": "2026-09-21 18:11:53",
+    "completed": "2026-09-22 08:07:01"
+   },
+   {
+    "avpn": "AVPN011105",
+    "id": "36112",
+    "date_created_gmt": "2026-09-21 11:40:39",
+    "completed": "2026-09-22 08:07:02"
+   },
+   {
+    "avpn": "AVPN011105",
+    "id": "36020",
+    "date_created_gmt": "2026-09-18 06:38:32",
+    "completed": "2026-09-22 08:07:04"
+   },
+   {
+    "avpn": "AVPN011107",
+    "id": "36020",
+    "date_created_gmt": "2026-09-18 06:38:32",
+    "completed": "2026-09-22 08:07:04"
+   },
+   {
+    "avpn": "AVPN011109",
+    "id": "36116",
+    "date_created_gmt": "2026-09-21 15:14:36",
+    "completed": "2026-09-22 15:06:07"
+   },
+   {
+    "avpn": "AVPN011110",
+    "id": "36114",
+    "date_created_gmt": "2026-09-21 13:38:05",
+    "completed": "2026-09-22 15:06:08"
+   },
+   {
+    "avpn": "AVPN011111",
+    "id": "36111",
+    "date_created_gmt": "2026-09-21 10:12:31",
+    "completed": "2026-09-22 15:06:09"
+   },
+   {
+    "avpn": "AVPN011112",
+    "id": "36119",
+    "date_created_gmt": "2026-09-21 18:40:31",
+    "completed": "2026-09-22 18:36:28"
+   },
+   {
+    "avpn": "AVPN011113",
+    "id": "36115",
+    "date_created_gmt": "2026-09-21 15:03:43",
+    "completed": "2026-09-22 18:36:29"
+   },
+   {
+    "avpn": "AVPN011115",
+    "id": "36158",
+    "date_created_gmt": "2026-09-22 19:09:40",
+    "completed": "2026-09-23 08:36:11"
+   },
+   {
+    "avpn": "AVPN011114",
+    "id": "36245",
+    "date_created_gmt": "2026-09-23 05:47:25",
+    "completed": "2026-09-23 08:36:11"
+   },
+   {
+    "avpn": "AVPN011116",
+    "id": "36157",
+    "date_created_gmt": "2026-09-22 17:18:15",
+    "completed": "2026-09-23 08:36:12"
+   },
+   {
+    "avpn": "AVPN011117",
+    "id": "36150",
+    "date_created_gmt": "2026-09-22 11:21:17",
+    "completed": "2026-09-23 08:36:13"
+   },
+   {
+    "avpn": "AVPN011118",
+    "id": "36096",
+    "date_created_gmt": "2026-09-20 07:38:31",
+    "completed": "2026-09-23 08:36:14"
+   },
+   {
+    "avpn": "AVPN011119",
+    "id": "36087",
+    "date_created_gmt": "2026-09-19 12:45:44",
+    "completed": "2026-09-23 08:36:15"
+   },
+   {
+    "avpn": "AVPN011120",
+    "id": "36084",
+    "date_created_gmt": "2026-09-19 07:44:37",
+    "completed": "2026-09-23 08:36:16"
+   },
+   {
+    "avpn": "AVPN011121",
+    "id": "36025",
+    "date_created_gmt": "2026-09-18 11:53:45",
+    "completed": "2026-09-23 08:36:17"
+   },
+   {
+    "avpn": "AVPN011122",
+    "id": "36244",
+    "date_created_gmt": "2026-09-23 03:37:22",
+    "completed": "2026-09-23 16:36:05"
+   },
+   {
+    "avpn": "AVPN011123",
+    "id": "36156",
+    "date_created_gmt": "2026-09-22 16:56:47",
+    "completed": "2026-09-23 16:36:06"
+   },
+   {
+    "avpn": "AVPN011124",
+    "id": "36248",
+    "date_created_gmt": "2026-09-23 07:48:20",
+    "completed": "2026-09-23 18:06:05"
+   },
+   {
+    "avpn": "AVPN011125",
+    "id": "36247",
+    "date_created_gmt": "2026-09-23 06:34:03",
+    "completed": "2026-09-23 18:06:06"
+   },
+   {
+    "avpn": "AVPN011126",
+    "id": "36246",
+    "date_created_gmt": "2026-09-23 06:27:51",
+    "completed": "2026-09-23 18:36:05"
+   },
+   {
+    "avpn": "AVPN011127",
+    "id": "36282",
+    "date_created_gmt": "2026-09-24 06:25:57",
+    "completed": "2026-09-24 08:36:11"
+   },
+   {
+    "avpn": "AVPN011128",
+    "id": "36280",
+    "date_created_gmt": "2026-09-24 03:14:50",
+    "completed": "2026-09-24 08:36:12"
+   },
+   {
+    "avpn": "AVPN011129",
+    "id": "36146",
+    "date_created_gmt": "2026-09-22 07:28:54",
+    "completed": "2026-09-24 08:36:14"
+   },
+   {
+    "avpn": "AVPN011130",
+    "id": "36264",
+    "date_created_gmt": "2026-09-23 14:26:36",
+    "completed": "2026-09-24 11:06:44"
+   },
+   {
+    "avpn": "AVPN011131",
+    "id": "36258",
+    "date_created_gmt": "2026-09-23 13:38:39",
+    "completed": "2026-09-24 13:06:23"
+   },
+   {
+    "avpn": "AVPN011133",
+    "id": "36249",
+    "date_created_gmt": "2026-09-23 08:47:59",
+    "completed": "2026-09-24 13:06:24"
+   },
+   {
+    "avpn": "AVPN011132",
+    "id": "36251",
+    "date_created_gmt": "2026-09-23 08:54:40",
+    "completed": "2026-09-24 13:06:24"
+   },
+   {
+    "avpn": "AVPN011134",
+    "id": "36281",
+    "date_created_gmt": "2026-09-24 03:32:14",
+    "completed": "2026-09-24 21:36:34"
+   },
+   {
+    "avpn": "AVPN011135",
+    "id": "36278",
+    "date_created_gmt": "2026-09-23 19:03:07",
+    "completed": "2026-09-24 21:36:35"
+   },
+   {
+    "avpn": "AVPN011134",
+    "id": "36279",
+    "date_created_gmt": "2026-09-23 19:51:53",
+    "completed": "2026-09-24 21:36:35"
+   },
+   {
+    "avpn": "AVPN011136",
+    "id": "36291",
+    "date_created_gmt": "2026-09-24 11:53:52",
+    "completed": "2026-09-25 08:36:28"
+   },
+   {
+    "avpn": "AVPN011137",
+    "id": "36285",
+    "date_created_gmt": "2026-09-24 09:29:34",
+    "completed": "2026-09-25 08:36:29"
+   }
+  ]
+ }
+}
