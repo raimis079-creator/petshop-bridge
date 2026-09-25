@@ -1,0 +1,51 @@
+{
+ "2": {
+  "v": "S1719n",
+  "faze": "2",
+  "t": "2026-09-25 15:53:27",
+  "test_pid": 36302,
+  "test_url": "https://petshop.lt/product/6-vnt-ontario-konservu-sunims-su-versiena-ir-ciberzole-400-g-veal-pate-flavoured-with-turmeric/",
+  "md5": "d338af8beab35025874d4d77a89b48b0",
+  "hb": 200
+ },
+ "3": {
+  "v": "S1719n",
+  "faze": "3",
+  "t": {
+   "pradinis": "200",
+   "atc_be_slapuko→302_i_preke": "302 → https://petshop.lt/product/6-vnt-ontario-konservu-sunims-su-versiena-ir-ciberzole-400-g-ve [robots:noindex, nofollow]",
+   "atc_su_slapuku→WC": "200 [set-cookie: woocommerce_items_in_cart=1; path=/|woocommerce_cart_hash=97] [js✓]",
+   "atc_kasa_be_slapuko→praleista": "200 [set-cookie: woocommerce_items_in_cart=1; path=/|woocommerce_cart_hash=97] [js✓]",
+   "filtras_be_slapuko→302_svarus": "302 → https://petshop.lt/kategorija/katems/ [robots:noindex, nofollow]",
+   "yith_be_slapuko→302": "302 → https://petshop.lt/kategorija/katems/ [robots:noindex, nofollow]",
+   "filtras_su_slapuku→200": "200 [js✓]",
+   "puslapiavimas_be_slapuko→200": "200 [js✓]",
+   "googlebot_kategorija→200": "200 [js✓]",
+   "gptbot_preke→200": "200 [js✓]",
+   "feed_google→200": "200",
+   "wc_ajax_post": "200 {\"fragments\":{\"div.widget_shopping_cart_content\":\"<div class"
+  },
+  "test_pid": 36302,
+  "test_url": "https://petshop.lt/product/6-vnt-ontario-konservu-sunims-su-versiena-ir-ciberzole-400-g-veal-pate-flavoured-with-turmeric/",
+  "zurnalas": {
+   "2026-09-25": {
+    "atc": 1,
+    "filtrai": 18,
+    "ip_unik": 17
+   }
+  },
+  "log_tail": [
+   "15:53:41\tfiltrai\t79.98.29.24\t/kategorija/katems/?yith_wcan=1&product_cat=tualetai-kraikai-semtuveliai,kraikai-kaciu-tualetams&query_type_product_cat=or&filter_tipas=atviras\tMozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/140 Safari/537.36\n",
+   "15:53:43\tfiltrai\t103.167.17.122\t/parduotuve/?filter_baltymu_saltinis=kiauliena&filter_name=%C5%BEaislas&filter_pakuotes_dydis=100-g%2C105-g%2C200-g&query_type_baltymu_saltinis=or&query_type_pa\tMozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/136.0.0.0 Safari/537.36\n",
+   "15:53:45\tfiltrai\t151.74.167.103\t/kategorija/katems/maistas-katems/konservai-katems?yith_wcan=1&product_cat=konservai-katems&query_type_baltymu_saltinis=or&filter_baltymu_saltinis=vistiena,erie\tMozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36\n",
+   "15:53:45\tfiltrai\t112.201.102.7\t/parduotuve/?filter_baltymu_saltinis=jautiena%2Cbuivoliena&query_type_amzius=or&query_type_baltymu_saltinis=or\tMozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/116.0.0.0 Safari/537.36\n"
+  ]
+ },
+ "v": "dep-155220",
+ "kurimas": 200,
+ "sid": 6466,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
