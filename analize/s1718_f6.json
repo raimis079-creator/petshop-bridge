@@ -1,0 +1,44 @@
+{
+ "1": {
+  "v": "S1718f6",
+  "failai": {
+   "wp-content/mu-plugins/petshop-gsc-tvarka.php": [
+    " * (Googlebot-Image 7 d. ~245 × 404; 410 — Google išmeta greičiau ir nebekartoja)."
+   ],
+   "wp-content/mu-plugins/petshop-analitika.php": [
+    " $ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ? (string) wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) : '';",
+    " $ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ? (string) wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) : '';",
+    " $ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ? (string) wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) : '';",
+    " $ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ? (string) wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) : '';"
+   ],
+   "wp-content/plugins/yith-woocommerce-ajax-navigation/includes/functions-yith-wcan.php": [
+    " * @param string $is_bot Whether current user is a bot (basing on the user agent)."
+   ],
+   "wp-content/plugins/yith-woocommerce-ajax-navigation/plugin-fw/yit-functions.php": [
+    " if ( ! isset( $_SERVER['HTTP_USER_AGENT'] ) ) {",
+    " preg_match( '/MSIE ([0-9]+\\.[0-9])/', $_SERVER['HTTP_USER_AGENT'], $reg );",
+    " preg_match( '/rv:([0-9]+\\.[0-9])/', $_SERVER['HTTP_USER_AGENT'], $reg );"
+   ]
+  },
+  "snippets": [
+   {
+    "id": "6448",
+    "name": "TEMP PS dep-133357",
+    "active": "1"
+   }
+  ],
+  "snippet_6448": [
+   " if(substr($f,-4)!=='.php') continue; $c=@file_get_contents($f); if(!$c) continue; if(preg_match('/(Googlebot|GPTBot|ChatGPT|is_bot|crawler|HTTP_USER_AGENT)/i',$c) && preg_match('/(yith|widget_display_callback|layered_nav|sidebar)/i',$c)){ preg_matc",
+   "h_all('/.{0,80}(Googlebot|GPTBot|ChatGPT|is_bot|crawler|HTTP_USER_AGENT).{0,100}/i',$c,$m); $hits[str_replace(ABSPATH,'',$f)]=array_slice(array_map(function($x){return preg_replace('/\\s+/',' ',$x);},$m[0]),0,4);",
+   "db->get_results(\"SELECT id,name,active FROM {$wpdb->prefix}snippets WHERE active=1 AND (code LIKE '%HTTP_USER_AGENT%' OR code LIKE '%Googlebot%' OR code LIKE '%GPTBot%' OR code LIKE '%is_bot%' OR code LIKE '%crawler%')\",ARRAY_A); $r['snippets']=$sn;",
+   "repare(\"SELECT code FROM {$wpdb->prefix}snippets WHERE id=%d\",$s['id'])); preg_match_all('/.{0,100}(HTTP_USER_AGENT|Googlebot|GPTBot|is_bot|crawler).{0,140}/i',$c,$m); $r['snippet_'.$s['id']]=array_slice(array_map(function($x){return preg_replace('/\\s+/',"
+  ]
+ },
+ "v": "dep-133357",
+ "kurimas": 200,
+ "sid": 6448,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
