@@ -1,0 +1,82 @@
+{
+ "1": {
+  "v": "S1719k",
+  "faze": "1",
+  "kas_turi_11139": [
+   {
+    "order_id": "36141",
+    "meta_value": "AVPN011139",
+    "date_created_gmt": "2026-09-22 04:48:46"
+   },
+   {
+    "order_id": "36286",
+    "meta_value": "AVPN011139",
+    "date_created_gmt": "2026-09-24 09:44:17"
+   },
+   {
+    "order_id": "36144",
+    "meta_value": "AVPN011140",
+    "date_created_gmt": "2026-09-22 07:00:43"
+   },
+   {
+    "order_id": "36281",
+    "meta_value": "AVPN011141",
+    "date_created_gmt": "2026-09-24 03:32:14"
+   }
+  ],
+  "counter": "11142",
+  "dubl": [
+   "AVPN011139"
+  ],
+  "spragos": [
+   11016
+  ],
+  "max": 11141,
+  "counter_po": "11142"
+ },
+ "2": {
+  "1143": [
+   "AVPN011139",
+   "AVPN011142"
+  ],
+  "v": "S1719k",
+  "faze": "2",
+  "kas_turi_11139": [
+   {
+    "order_id": "36141",
+    "meta_value": "AVPN011139",
+    "date_created_gmt": "2026-09-22 04:48:46"
+   },
+   {
+    "order_id": "36286",
+    "meta_value": "AVPN011139",
+    "date_created_gmt": "2026-09-24 09:44:17"
+   },
+   {
+    "order_id": "36144",
+    "meta_value": "AVPN011140",
+    "date_created_gmt": "2026-09-22 07:00:43"
+   },
+   {
+    "order_id": "36281",
+    "meta_value": "AVPN011141",
+    "date_created_gmt": "2026-09-24 03:32:14"
+   }
+  ],
+  "counter": "11142",
+  "paimtas": "AVPN011142",
+  "dubl": [],
+  "spragos": [
+   11016
+  ],
+  "max": 11142,
+  "counter_po": "11143"
+ },
+ "v": "dep-151429",
+ "kurimas": 200,
+ "sid": 6459,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
