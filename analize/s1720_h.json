@@ -1,0 +1,112 @@
+{
+ "1": {
+  "v": "S1720h",
+  "shots": [
+   {
+    "n": "s1720_p1",
+    "u": "https://petshop.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-kiauliena-ir-zirneliais-m-l-12-kg/",
+    "w": 1280,
+    "h": 900
+   },
+   {
+    "n": "s1720_p2",
+    "u": "https://petshop.lt/?add-to-cart=18560",
+    "w": 1280,
+    "h": 900
+   },
+   {
+    "n": "s1720_p3",
+    "u": "https://petshop.lt/?add-to-cart=14804",
+    "w": 1280,
+    "h": 900
+   },
+   {
+    "n": "s1720_krepselis",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 1280,
+    "h": 1000,
+    "full": 1
+   },
+   {
+    "n": "s1720_apmokejimas",
+    "u": "https://petshop.lt/kasa/",
+    "w": 1280,
+    "h": 1400,
+    "full": 1
+   },
+   {
+    "n": "s1720_mini",
+    "u": "https://petshop.lt/",
+    "w": 1280,
+    "h": 800,
+    "click": ".header-cart-link, a.cart-link, .header-cart-icon a",
+    "eval": "(()=>{const a=document.querySelector(\".header-cart-link,a.cart-link\");return a?a.outerHTML.slice(0,200):\"nera\"})()"
+   },
+   {
+    "n": "s1720_krepselis_m",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 390,
+    "h": 844,
+    "full": 1
+   }
+  ]
+ },
+ "v": "dep-191119",
+ "kurimas": 200,
+ "sid": 6496,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1720_p1": {
+   "status": 201,
+   "url": "https://petshop.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-kiauliena-ir-zirneliais-m-l-12-kg/",
+   "title": "Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg - Petshop.lt",
+   "errors": []
+  },
+  "s1720_p2": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=18560",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1720_p3": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=14804",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1720_krepselis": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [
+    "http 400 https://www.clarity.ms/tag/n28m0rqx80",
+    "error: Failed to load resource: the server responded with a status of 400 (Bad Request)"
+   ]
+  },
+  "s1720_apmokejimas": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ]
+  },
+  "s1720_mini": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('.header-cart-link, a.cart-link, .header-cart-icon a')\n    - locator resolved to 2 elements. Proceeding with the fi",
+   "eval": "<a href=\"https://petshop.lt/krepselis/\" class=\"header-cart-link nav-top-link is-small\" title=\"Krepšelis\" aria-label=\"Krepšelis\" aria-expanded=\"false\" aria-haspopup=\"true\" role=\"button\" data-flatsome-r"
+  },
+  "s1720_krepselis_m": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": []
+  }
+ }
+}
