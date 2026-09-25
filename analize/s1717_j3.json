@@ -1,0 +1,246 @@
+{
+ "3": {
+  "v": "S1717j",
+  "faze": "3",
+  "uzs": {
+   "36288": {
+    "meta": {
+     "_ps_groups": "{\"zb\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+     "_ps_order_type": "MIXED",
+     "_ps_siuntos": "{\"zb\":{\"sandelis\":\"zb\",\"kodas\":\"003\",\"manifest\":\"07267260924003\",\"numeriai\":[\"V07267E1000216\"],\"data\":\"2026-09-24 16:05:55\"},\"ambrosia\":{\"sandelis\":\"ambrosia\",\"kodas\":\"006\",\"manifest\":\"07267260924006\",\"numeriai\":[\"V07267E1000217\"],\"data\":\"2026-09-24 16:08:28\"}}",
+     "_ps_matyta": "2026-09-24 15:35:04 | Inga",
+     "_ps_rusiuota": "2026-09-24 15:35:23 | Inga",
+     "_ps_misrus_sprestas": "2026-09-24 15:35:23 | Inga",
+     "_ps_pakuociu": "1"
+    },
+    "visi_ps_raktai": [
+     "_ps_decided_at",
+     "_ps_dropship_sent",
+     "_ps_dropship_sent_src",
+     "_ps_dropship_to",
+     "_ps_faktas_irasytas",
+     "_ps_ga_sutikimas",
+     "_ps_ga4_mp_at",
+     "_ps_ga4_mp_cid",
+     "_ps_ga4_mp_kodas",
+     "_ps_gclid",
+     "_ps_groups",
+     "_ps_irenginys",
+     "_ps_kanalai",
+     "_ps_kelias_kasoje",
+     "_ps_matyta",
+     "_ps_misrus_sprendimas",
+     "_ps_misrus_sprestas",
+     "_ps_order_number",
+     "_ps_order_shipped_emitted",
+     "_ps_order_type",
+     "_ps_pakuociu",
+     "_ps_partijos_nurasyta",
+     "_ps_refill_tracked",
+     "_ps_rusiuota",
+     "_ps_shipments",
+     "_ps_similar_basis",
+     "_ps_similar_optout",
+     "_ps_siuntos",
+     "_ps_venipak_sekimas",
+     "_ps_venipak_sena"
+    ],
+    "eilutes": [
+     [
+      2552,
+      14169,
+      "Trixie Maro kampinis Tualetas ",
+      {
+       "_ps_savikaina_vnt": "13.4550",
+       "_ps_savikaina_saltinis": "pardavimai",
+       "_ps_kaina_atskirai_vnt": "21.9900",
+       "_ps_source": "zb",
+       "_ps_carrier": "venipak",
+       "_ps_source_qty": "1",
+       "_ps_source_at": "2026-09-24 14:20:49",
+       "_ps_source_reason": "dropship pirma: tiekėjas zb turi 15; AV šios prekės neturi",
+       "_reduced_stock": "1",
+       "_ps_kelias": "tiesiai"
+      }
+     ],
+     [
+      2553,
+      19760,
+      "AMBROSIA begrūdis su ėriena ir",
+      {
+       "_ps_savikaina_vnt": "34.8600",
+       "_ps_savikaina_saltinis": "pardavimai",
+       "_ps_kaina_atskirai_vnt": "59.9900",
+       "_ps_source": "ambrosia",
+       "_ps_carrier": "venipak",
+       "_ps_source_qty": "1",
+       "_ps_source_at": "2026-09-24 14:20:49",
+       "_ps_source_reason": "dropship pirma: tiekėjas ambrosia turi 13; AV turi 0, reikia 1 — neužtenka",
+       "_reduced_stock": "1",
+       "_ps_kelias": "tiesiai"
+      }
+     ]
+    ],
+    "status": "processing"
+   },
+   "36296": {
+    "meta": {
+     "_ps_groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"av\":{\"carrier\":\"any\",\"eilutes\":2,\"vienetai\":5}}",
+     "_ps_order_type": "MIXED",
+     "_ps_siuntos": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267260925001\",\"numeriai\":[\"V07267E1000220\"],\"data\":\"2026-09-25 09:07:27\"}}",
+     "_ps_matyta": "2026-09-24 19:33:48 | Inga",
+     "_ps_rusiuota": "2026-09-25 09:00:56 | Inga",
+     "_ps_surinkta": "2026-09-25 09:07:08 | Inga",
+     "_ps_misrus_sprestas": "2026-09-25 09:00:56 | Inga",
+     "_ps_pakuociu": "1"
+    },
+    "visi_ps_raktai": [
+     "_ps_decided_at",
+     "_ps_faktas_irasytas",
+     "_ps_ga_cid",
+     "_ps_ga_sid",
+     "_ps_ga_sutikimas",
+     "_ps_ga4_mp_at",
+     "_ps_ga4_mp_cid",
+     "_ps_ga4_mp_kodas",
+     "_ps_gclid",
+     "_ps_groups",
+     "_ps_irenginys",
+     "_ps_kanalai",
+     "_ps_kelias_kasoje",
+     "_ps_matyta",
+     "_ps_misrus_sprestas",
+     "_ps_order_number",
+     "_ps_order_shipped_emitted",
+     "_ps_order_type",
+     "_ps_pakuociu",
+     "_ps_partijos_nurasyta",
+     "_ps_refill_tracked",
+     "_ps_rusiuota",
+     "_ps_shipments",
+     "_ps_similar_basis",
+     "_ps_similar_optout",
+     "_ps_siuntos",
+     "_ps_surinkta",
+     "_ps_venipak_sekimas"
+    ],
+    "eilutes": [
+     [
+      2578,
+      19760,
+      "AMBROSIA begrūdis su ėriena ir",
+      {
+       "_ps_savikaina_vnt": "34.8600",
+       "_ps_savikaina_saltinis": "pardavimai",
+       "_ps_kaina_atskirai_vnt": "59.9900",
+       "_ps_kelias": "tiesiai"
+      }
+     ],
+     [
+      2579,
+      18468,
+      "Galvijų trachėjos, pjaustytos,",
+      {
+       "_ps_savikaina_vnt": "3.7600",
+       "_ps_savikaina_saltinis": "pardavimai",
+       "_ps_kaina_atskirai_vnt": "8.5800",
+       "_ps_kelias": "av"
+      }
+     ],
+     [
+      2580,
+      15867,
+      "Veršiuko ausis, 1 vnt.",
+      {
+       "_ps_savikaina_vnt": "0.6100",
+       "_ps_savikaina_saltinis": "pardavimai",
+       "_ps_kaina_atskirai_vnt": "1.3900",
+       "_ps_kelias": "av"
+      }
+     ]
+    ],
+    "status": "processing"
+   },
+   "36298": {
+    "meta": {
+     "_ps_groups": "{\"ambrosia\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+     "_ps_order_type": "DS",
+     "_ps_siuntos": "{\"ambrosia\":{\"sandelis\":\"ambrosia\",\"kodas\":\"006\",\"manifest\":\"07267260925006\",\"numeriai\":[\"V07267E1000221\"],\"data\":\"2026-09-25 09:23:58\"}}",
+     "_ps_matyta": "2026-09-25 09:00:37 | Inga",
+     "_ps_rusiuota": "auto",
+     "_ps_misrus_sprestas": "2026-09-25 08:48:19 | auto"
+    },
+    "visi_ps_raktai": [
+     "_ps_decided_at",
+     "_ps_faktas_irasytas",
+     "_ps_ga_sutikimas",
+     "_ps_ga4_mp_at",
+     "_ps_ga4_mp_cid",
+     "_ps_ga4_mp_kodas",
+     "_ps_gclid",
+     "_ps_groups",
+     "_ps_irenginys",
+     "_ps_kanalai",
+     "_ps_kelias_kasoje",
+     "_ps_matyta",
+     "_ps_misrus_sprendimas",
+     "_ps_misrus_sprestas",
+     "_ps_order_number",
+     "_ps_order_shipped_emitted",
+     "_ps_order_type",
+     "_ps_partijos_nurasyta",
+     "_ps_refill_tracked",
+     "_ps_rusiuota",
+     "_ps_shipments",
+     "_ps_similar_basis",
+     "_ps_similar_optout",
+     "_ps_siuntos",
+     "_ps_venipak_sekimas"
+    ],
+    "eilutes": [
+     [
+      2583,
+      19725,
+      "Ambrosia begrūdis su triušiena",
+      {
+       "_ps_savikaina_vnt": "7.6200",
+       "_ps_savikaina_saltinis": "pardavimai",
+       "_ps_kaina_atskirai_vnt": "13.4900",
+       "_ps_source": "ambrosia",
+       "_ps_carrier": "venipak",
+       "_ps_source_qty": "1",
+       "_ps_source_at": "2026-09-25 08:46:59",
+       "_ps_source_reason": "dropship pirma: tiekėjas ambrosia turi 8; AV turi 0, reikia 1 — neužtenka",
+       "_reduced_stock": "1",
+       "_ps_kelias": "tiesiai"
+      }
+     ]
+    ],
+    "status": "processing"
+   }
+  },
+  "tiekimas_ambrosia": [],
+  "tiekimas_cols": [
+   "id",
+   "tiekejas",
+   "busena",
+   "sukurta",
+   "uzsakyta",
+   "gauta",
+   "siuntos_kodas",
+   "pastaba",
+   "pristatymas",
+   "svoris",
+   "venipak_pack",
+   "venipak_manifest",
+   "dezes"
+  ]
+ },
+ "v": "dep-072541",
+ "kurimas": 200,
+ "sid": 6384,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
