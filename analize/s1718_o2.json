@@ -1,0 +1,56 @@
+{
+ "2": {
+  "v": "S1717o",
+  "faze": "2",
+  "judesiai": [
+   "#18468 AV −1 → 9",
+   "#15867 AV −4 → 21"
+  ],
+  "po": {
+   "order": {
+    "status": "processing",
+    "_ps_av_reduced": "2026-09-25 14:01:09",
+    "_ps_av_restored": "",
+    "_order_stock_reduced": true
+   },
+   "eil": {
+    "2579": {
+     "_ps_savikaina_vnt": "3.7600",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "8.5800",
+     "_ps_kelias": "av",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-25 14:01:09",
+     "_ps_source_reason": "S1717: atkurta — WC perkūrė eilutes po pakartotinio kasos pateikimo 18:00:30 (pirmo pateikimo kelias: AV)",
+     "_ps_av_reduced_qty": "1"
+    },
+    "2580": {
+     "_ps_savikaina_vnt": "0.6100",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "1.3900",
+     "_ps_kelias": "av",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "4",
+     "_ps_source_at": "2026-09-25 14:01:09",
+     "_ps_source_reason": "S1717: atkurta — WC perkūrė eilutes po pakartotinio kasos pateikimo 18:00:30 (pirmo pateikimo kelias: AV)",
+     "_ps_av_reduced_qty": "4"
+    }
+   },
+   "stock": {
+    "15867": 21,
+    "18468": 9
+   }
+  },
+  "laikas": "14:01:11"
+ },
+ "v": "dep-110000",
+ "kurimas": 200,
+ "sid": 6412,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
