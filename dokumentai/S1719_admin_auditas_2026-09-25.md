@@ -11,7 +11,7 @@
 | Atsarginės kopijos | 🟢 | Kasdien 04:00 į Backblaze B2 (šifruota, DB + mu-plugins/core/child), 09-25 OK; nekopijuojama `uploads/` ir `plugins/` |
 | Botų apkrova | 🔴 | 9 725 `?add-to-cart=` ir 56 081 filtrų užklausos per parą — ≥ 2/3 serverio darbo tenka botams |
 | PHP našumas | 🔴 | opcache 32 MB, pilnas: hit rate 16 %, 1,1 mln. perkompiliavimų per valandą |
-| Klaidos | 🟠 | 500 kasdien (~10/d) kelių kategorijų filtro deriniuose; 44 per 09-24 |
+| Klaidos | 🟡 | 500 kelių kategorijų filtre išspręsta S1714 (09-24 vakare); liko LP plugino „headers already sent“ ir deprecated triukšmas |
 | Saugumas | 🟠 | Pagrindai tvarkingi; GitHub tokenas aktyviame snippete, nėra 2FA, sena testuotojo paskyra, WP 6.9.4 vs 7.1.2, 6 pluginų atnaujinimai |
 | Likučių knygos | 🟡 | Partijos ≠ AV 119 prekių; 76 AV prekės be `manage_stock`; sargas 5323 kelia klaidingus įspėjimus |
 | Cron / eilės / laiškai | 🟢 | 89 cron įvykių — 0 vėluoja; Action Scheduler 0 vėluoja; laiškų eilė be klaidų |
@@ -95,7 +95,7 @@ Svetainės `robots.txt` šiuos kelius draudžia — botai nepaiso. Kiekvienas bo
 
 | Klaida | Kiek | Kur | Ką daryti |
 |---|---|---|---|
-| `strstr(): Argument #1 must be string, WP_Error given` `functions.php:1154` ← `WC_Widget::get_current_page_url()` ← Flatsome `filter-button.php` | 70/7 d., ~10/d, **500 lankytojui** | `/kategorija/katems/?…&product_cat=tualetai-…,kraikai-…&query_type_product_cat=or&filter_tipas=…` — kai YITH filtre pažymėtos **dvi kategorijos** (`term` = „a,b" → `get_term_link` WP_Error) | mu-plugin: `template_redirect` — jei `is_tax()` ir `term` su kableliu → query var `term` = pirmas slug (WP_Query jau įvykdyta, filtrams neįtakoja); arba Flatsome filtro mygtuke neberodyti `WC_Widget_Layered_Nav_Filters` |
+| `strstr(): Argument #1 must be string, WP_Error given` `functions.php:1154` ← `WC_Widget::get_current_page_url()` ← Flatsome `filter-button.php` | 70/7 d. (09-20…09-24 22:25), **500 lankytojui** | YITH filtre pažymėtos **dvi kategorijos** (`product_cat=a,b`) | **IŠSPRĘSTA S1714** (`petshop-filtru-sargas.php` v1.0, 09-24 vakare) — po deploy 0 pasikartojimų (patikrinta 09-25 19:05); audito pirmoje versijoje klaidingai laikyta atvira |
 | `headers already sent … woo-lithuaniapost-main/public/partials/html-block-lpexpress-terminal.php:31` | 10/7 d. | kasa (LP terminalo blokas išveda HTML prieš redirect) | LP plugino klaida; jei klientas po „Užsakyti" lieka vietoje — čia priežastis; pranešti LP/perrašyti partial per child temą |
 | `open_basedir` `file_exists()` `page-templates/../../..` | 24/7 d. | WP core šablonų skenas | nekenksminga |
 | `petshop-xml.php` „Array to string conversion" | 2 | mūsų importo pluginas | smulki pataisa |
@@ -142,7 +142,7 @@ Cron 89 įvykių, 0 vėluoja, `ps_*` naktiniai visi suplanuoti; Action Scheduler
 | 4 | Botų sargas `add-to-cart` (JS slapukas) + `DISABLE_WP_CRON` + snippet 614 | C | 1 val. |
 | 5 | Raštas serveriai.lt dėl opcache (arba VPS/Cloudflare sprendimas) | R | 15 min |
 | 6 | WPAI #3 „skip unchanged" (arba ZB lengvas sync) | R (varnelė) / C | 10 min / 2 val. |
-| 7 | 500 pataisa (dviejų kategorijų filtras) | C | 30 min |
+| 7 | ~~500 pataisa~~ — jau išspręsta S1714 | — | — |
 | 8 | Snippet 465 + tokenas, `testuotojas`, 2FA, login-sargo žurnalas | R + C | 1 val. |
 | 9 | Atnaujinimai (pluginai → Flatsome → WP 7.1) po kopijos | R + C | 2 val. + testai |
 | 10 | DB higiena: ShortPixel/snippets_bak/inactive snippets/AS logai; `ps_carts`/`ps_web_ivykiai` valymo cron | C | 1 val. |
