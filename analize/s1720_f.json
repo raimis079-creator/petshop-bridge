@@ -1,0 +1,608 @@
+{
+ "v": "dep-182251",
+ "kurimas": 200,
+ "sid": 6494,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "a": {
+  "v": "S1720f",
+  "faze": "a",
+  "turime": {
+   "petshop-av-limit.php": [
+    "CLASS__, 'stock_qty' ], 20, 2 ); add_filter( 'woocommerce_product_variation_get_stock_quantity', [ __CLASS__, 'stock_qty' ], 20, 2 ); // „yra / nėra\" add_filter( 'woocommerce_product_get_stock_status', [ __CLASS__, 'stock_status' ], 20, 2 ); // klientui skaičius NERODOMAS add_filter( 'woocommerce_get_availability_text', [ __CLASS__, 'availability_text' ], 20, 2 ); add_filter( 'woocommerce_get_stock_html', [ __CLASS__, 'stock_html' ], 20, 2 ); } /** Ar šiai prekei taikoma dviejų šaltinių logika. */ protected static function taikoma( $product_id ) { if ( ! class_exists( 'Petshop_AV_Stock' ) ) { re",
+    "s_a( $product, 'WC_Product' ) ) { return $status; } $pid = $product->get_id(); if ( ! self::taikoma( $pid ) ) { return $status; } $av = (int) Petshop_AV_Stock::qty( $pid ); if ( $av > 0 ) { return 'instock'; } return $status; } /** Klientui — be skaičiaus. */ public static function availability_text( $text, $product ) { if ( ! is_a( $product, 'WC_Product' ) ) { return $text; } if ( is_admin() && ! wp_doing_ajax() ) { return $text; } if ( ! $product->is_in_stock() ) { return $text; } // „Turime (127)\" → „Turime\" return preg_replace( '/\\s*\\(\\s*\\d+[^)]*\\)\\s*$/u', '', (string) $tex"
+   ],
+   "petshop-cache.php": [
+    null
+   ],
+   "petshop-darbalaukis.php": [
+    "hipping eilės viršuje „Užsakyti į atsargas iš: VF · ZB · Prins · Belacor · Quattro · Ambrosia“ (`&tiek=src` — tuščia to tiekėjo kortelė); * (2) prekių RINKIKLIS kortelėje vietoj SKU laukelio: „Pridėti prekių iš [T]“ → ženklas (`product_brand`, tik to tiekėjo), „Išparduota (reikia užsakyti)“ jungiklis (katalogo `uzsakyti` = parduodama ≤ 0), * greita paieška sąraše, lentelė (pavadinimas su pakuote · SKU · AV · tiekėjo likutis · paskutinis gavimas · kaina) su varnele ir kiekiu → „Pridėti pažymėtas (n)“ (`ps_dl_tiekimas` `ka=prideti`, `prekes["
+   ],
+   "petshop-paieska.php": [
+    "ntojas/josera/' ), array( 'Monge', '/gamintojas/monge/' ) ), ), 'bravecto|frontline|nexgard|simparica|advantix|advocate|drontal|milbemax|stronghold' => array( 'Receptiniai vaistai', 'Receptinius antiparazitinius vaistus parduoda tik vaistinės ir veterinarijos gydytojai — mes jų neturime. Turime neceptinių priežiūros priemonių:', array( array( 'Antiparazitinės priemonės', '/?s=antiparazit&post_type=product' ), array( 'Šampūnai šunims', '/?s=šampūnas+šunims&post_type=product' ) ), ), 'dovan[uų] kupon|gift card|kuponas' => array( 'Dovanų kuponas', 'Dovanų kuponų int"
+   ],
+   "petshop-rinkiniai.php": [
+    "-gallery__image pseudo-elementai (temos) pridedavo 34 px eilutei → isjungti. * * Petshop Rinkiniai v1.31 (H280) — sudeties eiluciu aukstis (paslepti vidiniai elementai su padding/margin). * * Petshop Rinkiniai v1.30 (H279) — v1.29 patikslinimai: kaina tamsi (ne temos akcijine auksine), „Turime\" eilutese paslepta, eilutes kompaktiskesnes. * * Petshop Rinkiniai v1.29 (H278) — PREKES PUSLAPIO VITRINA PAGAL TEMOS STILIU. * * Savininkas: rinkinio puslapis „ne petshop spalvu, istemptas\". Priezastis — * senas snippetas #524 (auksine #b29051, dideles korteles 3 stulpeliais, 28 px * k",
+    "DUCT\" ir „QUANTITY\". */ add_filter( 'gettext_with_context', array( __CLASS__, 'vertimai_kontekste' ), 20, 4 ); add_filter( 'ngettext', array( __CLASS__, 'vertimai_daugiskaita' ), 20, 5 ); add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'sutaupote' ), 11 ); add_filter( 'woocommerce_get_availability_text', array( __CLASS__, 'komponento_bukle' ), 20, 2 ); add_action( 'wp_ajax_ps_rink_paieska', array( __CLASS__, 'ajax_paieska' ) ); add_action( 'wp_ajax_ps_rink_issaugoti', array( __CLASS__, 'ajax_issaugoti' ) ); add_action( 'wp_ajax_ps_rink_trinti', array( __CLASS__, 'ajax_trinti' ) );",
+    " => 'Aprašymas', 'Select options' => 'Pasirinkti', 'Choose an option' => 'Pasirinkite', 'Clear' => 'Išvalyti', 'Clear selections' => 'Išvalyti pasirinkimus', 'Reset selections' => 'Išvalyti pasirinkimus', 'In stock' => 'Turime', 'Out of stock' => 'Neturime', 'Add to cart to continue&hellip;' => 'Įsidėkite į krepšelį', 'Add to cart to continue…' => 'Įsidėkite į krepšelį', ); if ( isset( $zodynas[ $tekstas ] ) ) { return $zodynas[ $tekstas ]; } /* Frazes su skaiciais — keiciam",
+    " Komponento bukle rinkinio sudetyje — be skaiciu. * * Kiek konkreciai turim vienos prekes, klientui ne tik nesvarbu, bet ir * klaidina: jis perka rinkini, ne ta preke atskirai. „Liko 2 vnt.\" salia * komponento skaitosi kaip rinkinio likutis, nors reiskia visai kita. * Todel cia tik „Turime\" arba „Neturime\". * * Liecia TIK komponentus — pacio rinkinio bukle lieka kaip buvo. */ public static function komponento_bukle( $tekstas, $preke ) { if ( is_admin() || ! self::rinkinio_puslapis() ) { return $tekstas; } global $post; if ( $post && $preke && (int) $preke->get_id() ="
+   ]
+  },
+  "child_turime": [],
+  "hooks_summary": {
+   "petshop-atsargu-laukimas.php": [
+    ", array( __CLASS__, 'maybe_install' ) ); add_action( 'rest_api_init', array( __CLASS__, 'routes' ) ); add_filter( 'petshop_email_flows', array( __CLASS__, 'registruoti_srauta' ) ); add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'forma' ), 31 ); // Prekes lygio likutis (paprastos prekes + tevas) add_action( 'woocommerce_product_set_stock_status', array( __CLASS__, 'statusas_pasikeite' ), 20, 3 ); //"
+   ],
+   "petshop-dydziai.php": [
+    " tvarka. Nezinomi dydziai keliauja i gala, abeceles tvarka. */ const EILE = array( 'xs' => 1, 's' => 2, 'm' => 3, 'l' => 4, 'xl' => 5, 'xxl' => 6 ); public static function start() { add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'pieskime' ), 25 ); } /** Seimos nariai: publish arba dabartine preke (kad juodrastyje irgi matytum). */ public static function nariai( $seima, $dabartinis ) { global $wpdb;"
+   ],
+   "petshop-laukai.php": [
+    ") { return; } /* MnM sarasas ir standartine WC suvestine — salin, statom savo. */ remove_action( 'woocommerce_mix-and-match_add_to_cart', 'woocommerce_mnm_add_to_cart', 30 ); remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_add_to_cart', 30 ); remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_price', 10 ); remove_action( 'woocommerce_single_product_summa",
+    "ry', 'woocommerce_template_single_excerpt', 20 ); remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_meta', 40 ); remove_action( 'woocommerce_single_product_summary', 'woocommerce_template_single_title', 5 ); /* Piesiam PRIES visa produkto sekcija: `before_single_product_summary` yra Flatsome galerijos stulpelio viduje, kuri mes slepiam — blokas butu ",
+    "', array( __CLASS__, 'vitrina' ), 20 ); /* „Sutaupote\" juosta is petshop-rinkiniu laukui netinka — ji skaiciuoja nuo konteinerio kainos, kuri cia 0, todel rodo 100 %. */ remove_action( 'woocommerce_single_product_summary', array( 'Petshop_Rinkiniai', 'sutaupote' ), 11 ); } public static function vitrina_klase( $k ) { if ( is_product() ) { global $post; if ( $post && self::yra_laukas( $post->ID ) ) { $k[] ="
+   ],
+   "petshop-prenumerata-katalogas.php": [
+    "les_blokas')); add_action('wp_ajax_ps_pren_sku', array(__CLASS__, 'ajax_sku')); add_action('admin_footer', array(__CLASS__, 'korteles_js')); /* front: prekės puslapis */ add_action('woocommerce_before_add_to_cart_button', array(__CLASS__, 'pasirinkimas'), 20); add_filter('woocommerce_add_cart_item_data', array(__CLASS__, 'i_krepseli'), 10, 3); add_filter('woocommerce_get_item_data', array(__CLASS__, '"
+   ],
+   "petshop-rinkiniai.php": [
+    "„QUANTITY\". */ add_filter( 'gettext_with_context', array( __CLASS__, 'vertimai_kontekste' ), 20, 4 ); add_filter( 'ngettext', array( __CLASS__, 'vertimai_daugiskaita' ), 20, 5 ); add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'sutaupote' ), 11 ); add_filter( 'woocommerce_get_availability_text', array( __CLASS__, 'komponento_bukle' ), 20, 2 ); add_action( 'wp_ajax_ps_rink_paieska', array( __CLASS_"
+   ]
+  },
+  "fbt": {
+   "petshop-juosta.php": [
+    "iai, kur juosta NErodoma (Raimio analitika turi savą UI). */ const BE = array( 'petshop-reports', 'petshop-langai', 'petshop-naujienlaiskiai', 'petshop-rezultatai', 'ps-ataskaitos', 'ps-prognoze', 'petshop-fbt', 'petshop-pragma', 'petshop-promotions' ); public static function init() { add_action( 'in_admin_header', array( __CLASS__, 'juosta' ), 5 ); add_action( 'admin_head', array( __CLASS__, 'stiliu"
+   ],
+   "petshop-katalogas.php": [
+    "unction ( $v ) { return number_format( (float) $v, 2, ',', ' ' ); }; /* ---------- DALYVAUJA ---------- */ $d = Petshop_Rysiai::dalyvauja( $pid ); $viso = count( $d['rinkiniai'] ) + count( $d['fbt'] ) + count( $d['dp'] ) + count( $d['akcijos'] ); /* v3.4: TUSCIAS BLOKAS NERODOMAS. Anksciau kiekviena preke gaudavo bloka su nuliu ir pastraipa paaiskinimo apie tai, ko nera. */ if ( $vis",
+    "esc_html( $x['busena'] ) . '</span>'; } $d[] = $t; } echo implode( '<br>', $d ) . '</span></div>'; }; $grupe( 'Rinkiniuose', $d['rinkiniai'] ); $grupe( 'Perkama kartu', $d['fbt'] ); $grupe( 'Pakuočių skelbimai', $d['dp'] ); $grupe( 'Akcijose', $d['akcijos'] ); echo '<div class=\"kort-info-m\">Prieš keičiant kainą ar išimant iš prekybos ' . 'verta patikrint"
+   ],
+   "petshop-rysiai.php": [
+    " * ============================================================ */ public static function dalyvauja( $pid ) { $pid = (int) $pid; return array( 'rinkiniai' => self::rinkiniuose( $pid ), 'fbt' => self::fbt_rinkiniuose( $pid ), 'dp' => self::dp_skelbimai( $pid ), 'akcijos' => self::akcijose( $pid ), ); } /** Rinkiniai (Mix&Match), kuriuose si preke yra komponentas",
+    ", (string) $reiksme, -1, PREG_SPLIT_NO_EMPTY ); return in_array( $pid, (array) $dalys, true ); } /** \"Perkama kartu\" (FBT) — kuriose prekese si siuloma kaip priedas. */ public static function fbt_rinkiniuose( $pid ) { global $wpdb; $eil = $wpdb->get_results( $wpdb->prepare( \"SELECT post_id, meta_value FROM {$wpdb->postmeta} WHERE meta_key='_petshop_fbt_ids' AND meta_value LIKE %s\"",
+    "=== */ public static function diagnostika() { global $wpdb; $out = array( 'versija' => self::VERSIJA ); foreach ( array( '_mnm_data', '_mnm_child_ids', '_mnm_contents', '_children', '_petshop_fbt_ids', '_dp_base_product_id' ) as $k ) { $out['raktai'][ $k ] = (int) $wpdb->get_var( $wpdb->prepare( \"SELECT COUNT(*) FROM {$wpdb->postmeta} WHERE meta_key=%s\", $k ) ); } $lent = $wpdb->pr"
+   ],
+   "petshop-sargas.php": [
+    "'ps_akciju_prekes', 'product_id', $p.'posts', 'ID', 'akciju eilutes be prekes' ), array( $p.'ps_feeding_map', 'product_id', $p.'posts', 'ID', 'serimo map be prekes' ), array( $p.'ps_fbt_copirkimai', 'product_id', $p.'posts', 'ID', 'FBT be prekes' ), array( $p.'wc_mnm_child_items','container_id',$p.'posts', 'ID', 'MnM eilutes be konteinerio' ), ); $eil = array(); $viso_"
+   ]
+  },
+  "skaiciuokle_hook": {
+   "petshop-analitika.php": [
+    ", 'add_to_cart', 'view_cart', 'begin_checkout' ); /** Musu pacio ivykiai. */ const SAVI = array( 'pageview', 'view_category', 'search', 'filter', 'skaiciuokle', 'quiz_start', 'remove_from_cart', 'error404' ); /** 🔴 NIEKADA nepriimami — nesvarbu, kas ir kaip juos atsiustu. */ const DRAUDZIAMI = array"
+   ],
+   "petshop-ataskaita-pardavimai.php": [
+    "grazinam CSV su * UTF-8 BOM, kad Excel'is atidarytu teisingai. Tyliai neveikti negalima: * eksportas yra vienintelis kelias duomenims i savininko skaiciuokle. */ public static function xlsx() { if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_die( 'Neturite teisių.' ); } check_admin_referer( "
+   ],
+   "petshop-relaunch.php": [
+    "stinis' => 0, 'saltinis_aplinka' => method_exists( 'Petshop_Analitika', 'aplinka' ) ? Petshop_Analitika::aplinka() : 'prod', ) ); } } /** Skaičiuoklės užpildymas (?svoris) + priminimo blokas po skaičiavimo (cid / ?svoris / prisijungęs). */ public static function js() { if ( ! function_exist"
+   ],
+   "petshop-skaiciuokle.php": [
+    "<?php /** * Plugin Name: Petshop Skaičiuoklė — puslapis /skaiciuokle/ * Description: Atskiras skaičiuoklės puslapis be prekės konteksto: rūšis + svoris → maistai su dienos kaina (S1703, veiksmų plano 1.7). * ",
+    "ja), €/d tik rodomas; * - skanėstai/kramtalai/žuvys/konservai į sąrašą neįtraukiami (dienos kaina nepalyginama). * * MATAVIMAS: įvykis `skaiciuokle` (ps_web_ivykiai: raktas=rūšis, raktas2=puslapis, reiksme=kg), * užsakymo meta `_ps_skaiciuokle_puslapis` iš slapuko (7 d.). * * Išjungimas: ",
+    "opcija `ps_skaiciuokle_isjungta` = 1 (puslapis lieka, shortcode rodo trumpą tekstą). */ if ( ! defined( 'ABSPATH' ) ) { exit; } class Petshop_Skaiciuokle { const VERS",
+    "IJA = '1.0.1'; const SLUG = 'skaiciuokle'; const NS = 'ps-skaiciuokle/v1'; const SLAPUKAS = 'ps_skaiciuokle'; const CRON = 'ps_skaiciuokle_naktinis'; const KANON = array( 'dog' => array( 5, 10, 20, 30 ), 'cat' => array( 4 ) ); public static fun"
+   ],
+   "petshop-veisles.php": [
+    "pių turinys NELIEČIAMAS — išjungus pluginą (ar opcija `ps_veisles_isjungta`=1) viskas grįžta kaip buvo. * SKAIČIAI: tas pats variklis kaip /skaiciuokle/ — `Petshop_Skaiciuokle::rezultatai()` (gamintojo norma × dabartinė kaina, * rikiavimas pagal perkamumą 180 d., MASTER §6.7). Rodoma: 3 populi",
+    "€/d ir €/mėn, dienų norma g, kiek dienų užteks; nuoroda į skaičiuoklę su tuo svoriu. * MATAVIMAS: paspaudimai → `ps_web_ivykiai` tipas `skaiciuokle`, raktas='veisle', raktas2=slug. * SVORIAI: tipinis suaugusio svoris (orientacinis) — Raimis tikrina. * * v1.1.0 (S1706, 2.2): trumpasis kodas [",
+    " (S1706 2.2): tušti/pasenę turinio puslapiai → 301. */ public static function nukreipimai() { $map = array( 'suns-serimo-lentele-gramais' => '/skaiciuokle/?rusis=dog' ); $kel = trim( (string) wp_parse_url( isset( $_SERVER['REQUEST_URI'] ) ? wp_unslash( $_SERVER['REQUEST_URI'] ) : '', PHP_URL_PATH ), '",
+    "ach(function(r){r.addEventListener('click',function(ev){var a=ev.target.closest('[data-ps-vs]');if(!a)return;try{if(window.psWeb)window.psWeb({tipas:'skaiciuokle',raktas:r.classList.contains('ps-vs-str')?'straipsnis':'veisle',raktas2:r.getAttribute('data-slug'),url:a.getAttribute('href')});}catch(e){}});});})("
+   ]
+  },
+  "kg": {
+   "petshop-fakt-siuntos.php": [
+    "bei i `_woo_lithuaniapost_shipping_item_size`. * -> `ps_tarifai.dydis`, `ps_fakt_siuntos.dydis`, `self::dydis()`. * 2) LP „Krovos darbai\" — EUR/kg dedamoji sunkioms siuntoms. * -> `kaina_uz_kg_ct` + `uz_kg_nuo_g`. * Riba (30 kg) ISSKAICIUOTA is saskaitos, ne atspeta: krovos darbu buvo 42 kg; * jei riba butu 20 kg, patektu ir 20-30 kg siunta, tad maziausias galimas * svoris butu 20+30=50",
+    "OT NULL DEFAULT 0, svoris_iki_g INT UNSIGNED NULL DEFAULT NULL, dydis VARCHAR(4) NOT NULL DEFAULT '', kaina_ct INT NOT NULL DEFAULT 0, kintamas_pct DECIMAL(6,3) NOT NULL DEFAULT 0.000, kaina_uz_kg_ct DECIMAL(10,4) NOT NULL DEFAULT 0.0000, uz_kg_nuo_g INT UNSIGNED NULL DEFAULT NULL, galioja_nuo DATE NOT NULL, galioja_iki DATE NULL DEFAULT NULL, pastaba VARCHAR(190) NULL DEFAULT NULL",
+    "SVARBU: kuro priemoka jai NETAIKOMA — patikrinta LP saskaitoje S-2023/363: 170,22 x 5,48 % = 9,33 (nuo 172,76 butu 9,47). Todel pridedama PO procento, ne pries. */ $uz_kg = (float) $tr['kaina_uz_kg_ct']; if ( $uz_kg > 0 ) { $riba = ( null === $tr['uz_kg_nuo_g'] ) ? 0 : (int) $tr['uz_kg_nuo_g']; if ( (int) $svoris_g >= $riba ) { $kaina += (int) round( ( (int) $svoris_g / 1000 ) * $uz",
+    "ntamas_pct\" value=\"0\" placeholder=\"pvz. 5,48\"> <span class=\"description\">kuro priemoka; taikoma TIK bazinei kainai</span></td></tr> <tr><th>Papildomai uz kg (ct)</th><td><input type=\"text\" name=\"kaina_uz_kg_ct\" value=\"0\" placeholder=\"pvz. 6,0476\"> <span class=\"description\">LP „Krovos darbai\"; kuro priemoka jai NETAIKOMA</span></td></tr> <tr><th>… nuo svorio (g)</th><td><input type=\"number\" name"
+   ],
+   "petshop-katalogas.php": [
+    "irtuke. * * v3.0 (S726): kortelėje pridėti trys blokai is `Petshop_Rysiai`: * \"Kur ši prekė dalyvauja\" rinkiniai · FBT · DP skelbimai · akcijos * \"Ta pati prekė kitais dydžiais\" su €/kg ir kainodaros ispejimu * \"Kur prekė matoma\" parduotuve · likutis · paieška · feed sąrašai * * v3.1 (S727) — VIZUALINES PATIKROS ISVADOS. Screenshot'as parode du dalykus, * kuriu HTML ",
+    "del, kad nereiktu perkelineti simtu eiluciu kodo — logika lieka vietoje, keiciasi tik isdestymas. */ ob_start(); self::kort_greitis( $pid, $p ); /* v3.0: kur preke dalyvauja, broliai su €/kg, matomumas (S725). Keisti kaina ar isimti is prekybos nematant \"ji yra trijuose rinkiniuose\" — avarija, laukianti savo dienos. */ if ( class_exists( 'Petshop_Rysiai' ) ) { self::kort_ry",
+    "f::gramai_tekstu( $b['gramai'] ) ) : '—' ) . '</td>'; echo '<td class=\"num\">' . ( $b['kaina'] !== null ? $eur( $b['kaina'] ) . ' €' : '—' ) . '</td>'; echo '<td class=\"num\"><b>' . ( $b['eur_kg'] !== null ? $eur( $b['eur_kg'] ) . ' €/kg' : '—' ) . '</b></td>'; echo '</tr>'; } echo '</table>'; $nes = Petshop_Rysiai::kainos_nesamone( $br ); if ( $nes ) { echo '<div cl",
+    " už kilogramą nei mažesnė:'; foreach ( array_slice( $nes, 0, 3 ) as $n ) { echo '<br>' . esc_html( self::gramai_tekstu( $n['mazesne']['gramai'] ) ) . ' — ' . $eur( $n['mazesne']['eur_kg'] ) . ' €/kg vs ' . esc_html( self::gramai_tekstu( $n['didesne']['gramai'] ) ) . ' — ' . $eur( $n['didesne']['eur_kg'] ) . ' €/kg'; } echo '<div class=\"kort-info-m\">Pirkėja"
+   ],
+   "petshop-rysiai.php": [
+    " * TRYS BLOKAI: * dalyvauja() rinkiniai (Mix&Match) · \"Perkama kartu\" (FBT) · DP skelbimai · * akcijos. Kiekvienas su nuoroda. * broliai() ta pati preke kitais dydziais + €/kg palyginimas. Kainodaros * nesamones (10 kg pigiau uz kilograma nei 12,5 kg) matomos * is karto; pirkejas jas mato visada, savininkas — ne. * matomumas() kur prek",
+    "okio bloko. * * v1.2: MNM stulpeliai — container_id yra TEVAS, product_id VAIKAS (v1.1 * abiem naudojo product_id, todel rysiai tyliai nebuvo randami). Slapias ir * sausas maistas atskirti: €/kg palyginimas tarp ju klaidina. * * v1.1: broliu riba 72 % -> 88 % + reikalavimas, kad pakuotes dydis skirtusi. * Pirmasis paleidimas surišo \"Golden Retriever\" su \"German Shephed\" (78 %). * MN",
+    "ašalinus dydį jie skiriasi tik veislės vardu. Rodyti tai kaip \"ta pati prekė kitu dydžiu\" būtų melas. */ if ( $proc < 88 ) { continue; } /* Slapias ir sausas maistas NERA broliai. €/kg palyginimas tarp konservu ir sauso maisto klaidina: konservuose ~80 % vandens, todel \"brangesnis uz kilograma\" cia nieko nereiskia. Toks palyginimas gali privesti prie blogo kainoda",
+    " 'pav' => html_entity_decode( get_the_title( $k ), ENT_QUOTES, 'UTF-8' ), 'busena' => get_post_status( $k ), 'gramai' => $g, 'kaina' => $kaina === '' ? null : (float) $kaina, 'eur_kg' => ( $g && $kaina !== '' && $g > 0 ) ? round( ( (float) $kaina ) / ( $g / 1000 ), 2 ) : null, 'panasu' => round( $proc ), ); } /* Pati preke — kad butu su kuo lyginti. */ $sg = sel"
+   ],
+   "petshop-schema-prekes.php": [
+    " ) && 'Offer' === $offers['@type']; $list = $vienas ? array( $offers ) : ( is_array( $offers ) ? $offers : array() ); $kaina = (float) $pr->get_price(); $sv = (float) $pr->get_weight(); // kg $maistas = self::maistas( $pid ); foreach ( $list as &$of ) { if ( ! is_array( $of ) ) { continue; } $of['url'] = get_permalink( $pid ); if ( isset( $of['seller'] ) && is_array( $of['sel"
+   ]
+  },
+  "prekes": {
+   "14805": {
+    "t": "MONGE VetSolution Dog Struvite 12 kg",
+    "stock_status": "instock",
+    "av": {
+     "availability": "Turime",
+     "class": "in-stock"
+    },
+    "sandelis": "zb",
+    "own": "",
+    "weight": "12",
+    "price": "93.59",
+    "src": {
+     "source": "zb",
+     "stock_qty": "4"
+    }
+   },
+   "18560": {
+    "t": "Exclusion Hypoallergenic sausas šunų maistas su ki",
+    "stock_status": "instock",
+    "av": {
+     "availability": "Turime",
+     "class": "in-stock"
+    },
+    "sandelis": "vf",
+    "own": "1",
+    "weight": "12",
+    "price": "79.9",
+    "src": {
+     "source": "av",
+     "stock_qty": "1"
+    }
+   },
+   "26340": {
+    "t": "FLEXI  pavadėlis šuniui New Neon L juostinis 5m, g",
+    "stock_status": "instock",
+    "av": {
+     "availability": "Turime",
+     "class": "in-stock"
+    },
+    "sandelis": "vf",
+    "own": "",
+    "weight": "",
+    "price": "20.69",
+    "src": {
+     "source": "vf",
+     "stock_qty": "1"
+    }
+   },
+   "35316": {
+    "t": "Exclusion diet hypo konservai šuniukams, su kiauli",
+    "stock_status": "instock",
+    "av": {
+     "availability": "Turime",
+     "class": "in-stock"
+    },
+    "sandelis": "vf",
+    "own": "",
+    "weight": "",
+    "price": "3.98",
+    "src": {
+     "source": "vf",
+     "stock_qty": "267"
+    }
+   }
+  },
+  "summary_html": " <a href=\"https://petshop.lt\">Pradžia</a> <span class=\"divider\">&#47;</span> <a href=\"https://petshop.lt/kategorija/sunims/\">ŠUNIMS</a> <span class=\"divider\">&#47;</span> <a href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/\">Maistas šunims</a> <span class=\"divider\">&#47;</span> <a href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/\">Sausas maistas šunims</a><h1 class=\"product-title product_title entry-title\"> Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg</h1> <div class=\"is-divider small\"></div> <a href=\"https://petshop.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-elniena-ir-bulvemis-m-l-12-kg/\" rel=\"next\" class=\"button icon is-outline circle\" aria-label=\"Next product\"> </a> <div class=\"nav-dropdown\"> <a title=\"Exclusion Hypoallergenic sausas šunų maistas su elniena ir bulvėmis M/L 12 kg\" href=\"https://petshop.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-elniena-ir-bulvemis-m-l-12-kg/\"> </a> </div> <a href=\"https://petshop.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-triusiena-ir-bulvemis-m-l-12-kg/\" rel=\"previous\" class=\"button icon is-outline circle\" aria-label=\"Previous product\"> </a> <div class=\"nav-dropdown\"> <a title=\"Exclusion Hypoallergenic sausas šunų maistas su triušiena ir bulvėmis M/L 12 kg\" href=\"https://petshop.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-triusiena-ir-bulvemis-m-l-12-kg/\"> </a> </div> <div class=\"price-wrapper\"> <p class=\"price product-page-price \"> <span class=\"woocommerce-Price-amount amount\">79,90&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></span></p> </div> <div class=\"product-short-description\"> <p>Hipoalerginis, sausas maistas šunims su kiauliena ir žirniais. Subalansuotas suaugusiems, vidutinių ir didelių veislių šunims, kuriems pasireiškė alergijos maistui simptomai.</p> </div> <p class=\"stock in-stock\">Turime</p> <form class=\"cart\" action=\"https://petshop.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-kiauliena-ir-zirneliais-m-l-12-kg/\" method=\"post\" enctype='multipart/form-data'> <div class=\"ux-quantity quantity buttons_added\"> <label class=\"screen-reader-text\" for=\"quantity_6ab6bc77effa2\">produkto kiekis: Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg</label> </div> <button type=\"submit\" name=\"add-to-cart\" value=\"18560\" class=\"single_add_to_cart_button button alt\">Į krepšelį</button> </form> <div class=\"petshop-fbt\" data-nonce=\"b6cbcd39d4\" data-main=\"18560\"> <div class=\"petshop-fbt__head\"> Dažnai perkama kartu <p class=\"petshop-fbt__note\">Perkant kartu – papildomoms prekėms taikoma nuolaida!</p> </div> <div class=\"petshop-fbt__items\"> <div class=\"petshop-fbt__item is-main\" title=\"Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg\"> <a class=\"petshop-fbt__thumb petshop-fbt-info\" data-pid=\"18560\" href=\"https://petshop.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-kiauliena-ir-zirneliais-m-l-12-kg/\" tabindex=\"-1\"></a> <span class=\"petshop-fbt__mid\"> <a class=\"petshop-fbt__name petshop-fbt-info\" data-pid=\"18560\" href=\"https://petshop.lt/product/exclusion-hypoallergenic-sausas-sunu-maistas-su-kiauliena-ir-zirneliais-m-l-12-kg/\">Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg</a> <span class=\"petshop-fbt__price\"> <span class=\"petshop-fbt__full\"><span class=\"woocommerce-Price-amount amount\">79,90&nbsp;<span class=\"w",
+  "klases": [
+   "product type-product post-18560 status-publish first instock product_cat-sausas-maistas-sunims has-post-thumbnail taxable shipping-taxable purchasable product-type-simple",
+   "stock in-stock",
+   "ps-calc",
+   "ps-calc-head",
+   "ps-calc-h1",
+   "ps-calc-h2",
+   "ps-calc-row",
+   "ps-calc-in",
+   "ps-calc-unit",
+   "ps-calc-go",
+   "ps-calc-row ps-hide",
+   "ps-calc-go-age",
+   "ps-calc-note",
+   "ps-calc-go-portion",
+   "ps-calc-out",
+   "ps-desc-acc",
+   "ps-desc-body",
+   "product-small col has-hover product type-product post-12486 status-publish instock product_cat-sausas-maistas-sunims has-post-thumbnail taxable shipping-taxable purchasable product-type-simple",
+   "product-small col has-hover product type-product post-12485 status-publish instock product_cat-sausas-maistas-sunims has-post-thumbnail taxable shipping-taxable purchasable product-type-simple",
+   "product-small col has-hover product type-product post-12544 status-publish last instock product_cat-sausas-maistas-sunims has-post-thumbnail taxable shipping-taxable purchasable product-type-simple",
+   "product-small col has-hover product type-product post-12483 status-publish first instock product_cat-sausas-maistas-sunims has-post-thumbnail taxable shipping-taxable purchasable product-type-simple",
+   "product-small col has-hover product type-product post-12458 status-publish instock product_cat-sausas-maistas-sunims has-post-thumbnail taxable shipping-taxable purchasable product-type-simple",
+   "product-small col has-hover product type-product post-12547 status-publish instock product_cat-sausas-maistas-sunims has-post-thumbnail taxable shipping-taxable purchasable product-type-simple",
+   "product-small col has-hover product type-product post-12546 status-publish last instock product_cat-sausas-maistas-sunims has-post-thumbnail taxable shipping-taxable purchasable product-type-simple",
+   "product-small col has-hover product type-product post-12541 status-publish first instock product_cat-sausas-maistas-sunims has-post-thumbnail taxable shipping-taxable purchasable product-type-simple",
+   "ps-login-wrap",
+   "ps-login-main",
+   "ps-login-title",
+   "ps-login-sub",
+   "ps-magic-form",
+   "ps-label",
+   "ps-input",
+   "ps-btn-primary",
+   "ps-hint",
+   "ps-magic-done",
+   "ps-done-title",
+   "ps-done-sub",
+   "ps-link-btn",
+   "ps-pass-toggle-row",
+   "ps-pass-box",
+   "form-row ps-pass-actions",
+   "woocommerce-form-login__rememberme ps-remember",
+   "ps-btn-secondary woocommerce-form-login__submit",
+   "ps-lost",
+   "ps-login-side",
+   "ps-side-title",
+   "ps-side-list",
+   "ps-side-note",
+   "woocommerce-variation-availability"
+  ],
+  "sections": [
+   "psnl-band"
+  ],
+  "h23": [
+   "Dažnai perkama kartu",
+   "Panašūs produktai",
+   "Prisijungimas prie Petshop.lt",
+   "Prisijungę galėsite"
+  ]
+ },
+ "b": {
+  "v": "S1720f",
+  "faze": "b",
+  "cart_hooks": {
+   "petshop-pren-sutikimas.php": [
+    " (!defined('ABSPATH')) exit; class Petshop_Pren_Sutikimas { const VERSIJA = '1.0'; const PSL_SLUG = 'prenumeratos-taisykles'; const META = '_ps_pren_sutikimas'; public static function init() { add_action('woocommerce_review_order_before_submit', array(__CLASS__, 'varnele'), 9); add_action('woocommerce_checkout_process', array(__CLASS__, 'tikrinti')); add_action('woocommerce_checkout_create_order', array(__CLASS__, 'irasyti'), 10, 2); } "
+   ]
+  },
+  "child_cart": {
+   "functions.php": [
+    "subtotal_incl <= $threshold ) { WC()->cart->add_fee( 'Mažo krepšelio mokestis', $fee, true ); } } ); // Pranešimas krepšelio suvestinėje (dešinėje) po mokesčio eilute add_action('woocommerce_cart_totals_after_order_total', function() { $threshold = 9.00; $cart_total = WC()->cart->get_cart_contents_total() * 1.21; if ( $cart_total < $threshold ) { $truksta = round($threshold - $ca",
+    "trong> ir mažo krepšelio mokestis nebus taikomas.', number_format($truksta, 2, ',', '') ); echo '</div></td></tr>'; } }); // Mini krepšelio pranešimas add_action('woocommerce_widget_shopping_cart_before_buttons', function() { $threshold = 9.00; $cart_total = WC()->cart->get_cart_contents_total() * 1.21; if ( $cart_total > 0 && $cart_total < $threshold ) { $truksta = round",
+    "=== add_filter( 'woocommerce_package_rates', 'petshop_hide_parcel_if_courier_only', 10, 2 ); function petshop_hide_parcel_if_courier_only( $rates, $package ) { $venipak_courier = 'shopup_venipak_shipping_courier_method'; $venipak_pickup = 'shopup_venipak_shipping_pickup_method'; if ( class_exists( 'Petshop_Fulfillment_Source' ) ) { $has_venipak_only = false; $has_courier_on",
+    "} // =============================================================== // Nemokamo pristatymo progreso juosta krepšelyje // =============================================================== add_action('woocommerce_cart_totals_before_order_total', 'petshop_free_shipping_progress', 5); function petshop_free_shipping_progress() { if ( ! is_cart() ) return; $threshold = 30.00; $has_courier_only = false; $tota",
+    " cm), ko varnelė/svoris nemato, o krepšelis žadėdavo „nemokamą pristatymą į paštomatą“, kurio kasoje nebūdavo. */ if ( ! $has_courier_only && function_exists( 'WC' ) && WC()->shipping() ) { $ps_paketai = WC()->shipping()->get_packages(); if ( ! empty( $ps_paketai ) ) { $ps_yra_pastomatas = false; foreach ( $ps_paketai as $ps_pk ) { ",
+    "t_billing_last_name() ), 'address' => $billing_lines, 'phone' => $wc_order->get_billing_phone(), 'email' => $wc_order->get_billing_email(), ), 'shipping' => array( 'name' => '', 'address' => array() ), ); $logo_url = ''; $logo_path = ''; $flatsome_logo_id = get_theme_mod( 'site_logo' ); if ( $flatsome_logo_id ) { $l"
+   ]
+  },
+  "zb_matmenys": "<?php\n/**\n * Plugin Name: Petshop ZB matmenys v1.0 (ZB feed'o matmenų nenaudoti)\n * Description: ZB (Žalioji Banga) XML matmenys nepatikimi (0×0×0, metrai vietoj cm, 20×20×20 nuo 2 iki 12 kg, maišai\n *   80 cm), o Venipak pluginas pagal juos atmeta paštomatą (riba 61×41×39,5 cm) — 12–20 kg maišai kasoje gaudavo tik\n *   kurjerį, nors į paštomatą telpa (Raimis, 2026-09-24). Šis modulis ZB prekėms (`_zb_enabled=yes` arba\n *   `_ps_sandelis=zb`) neleidžia išsaugoti WC matmenų `_length/_width/_height`: `petshop-xml` importas juos rašo per\n *   `update_post_meta`, todėl `added/updated_post_meta` kabliai juos iškart ištrina. Žali ZB laukai `_zb_length` ir kt.\n *   lieka. Paštomato galimybę toliau lemia svoris (Venipak inst. riba) ir varnelė „Tik kurjeriu\".\n * Version: 1.0\n * S1716 (2026-09-25). Išjungti: opcija `ps_zb_matmenys_isjungta`=1. Kopija prieš valymą: `ps-archyvas/zb_matmenys_s1716.json`\n *   ir opcija `ps_s1716_zb_matmenys_bak`.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_ZB_Matmenys {\n\tconst RAKTAI = array( '_length', '_width', '_height' );\n\tprivate static $vyksta = false;\n\n\tpublic static function init() {\n\t\tadd_action( 'added_post_meta', array( __CLASS__, 'meta' ), 10, 4 );\n\t\tadd_action( 'updated_post_meta', array( __CLASS__, 'meta' ), 10, 4 );\n\t}\n\n\tpublic static function zb( $pid ) {\n\t\t$pid = (int) $pid; if ( $pid <= 0 ) { return false; }\n\t\tif ( get_post_meta( $pid, '_zb_enabled', true ) === 'yes' ) { return true; }\n\t\treturn strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) ) === 'zb';\n\t}\n\n\tpublic static function meta( $meta_id, $pid, $key, $value ) {\n\t\tif ( self::$vyksta || ! in_array( $key, self::RAKTAI, true ) ) { return; }\n\t\tif ( get_option( 'ps_zb_matmenys_isjungta' ) ) { return; }\n\t\t$tipas = get_post_type( $pid );\n\t\tif ( $tipas !== 'product' && $tipas !== 'product_variation' ) { return; }\n\t\t$pid_t = ( $tipas === 'product_variation' ) ? (int) wp_get_post_parent_id( $pid ) : (int) $pid;\n\t\tif ( ! self::zb( $pid_t ) ) { return; }\n\t\tself::$vyksta = true;\n\t\tdelete_post_meta( $pid, $key );\n\t\tself::$vyksta = false;\n\t}\n\n\t/** ZB prekės su WC matmenimis: [id => [l,w,h]] */\n\tpublic static function sarasas() {\n\t\tglobal $wpdb; $out = array();\n\t\t$ids = $wpdb->get_col( \"SELECT DISTINCT p.ID FROM {$wpdb->posts} p JOIN {$wpdb->postmeta} m ON m.post_id=p.ID AND m.meta_key IN ('_length','_width','_height') AND m.meta_value<>'' WHERE p.post_type IN ('product','product_variation')\" );\n\t\tforeach ( ",
+  "kelias_source": {
+   "petshop-av-admin.php": [
+    "t) ( $g['vienetai'] ?? 0 ) . '</span>'; } echo '</div>'; return; } if ( 'ps_prekes' === $col ) { $eil = []; foreach ( $order->get_items() as $item ) { $src = $item->get_meta( '_ps_source' ); $sp = $src ? ( self::SPALVOS[ $src ] ?? [ '#666', strtoupper( $src ) ] ) : null; $pav = $item->get_name(); if ( mb_strlen( $pav ) > 46 ) { $pav = mb_substr( $pav, 0, 44 ) . '…'; } "
+   ],
+   "petshop-av-dropship.php": [
+    "upuoti( array $ids ) { $g = []; foreach ( $ids as $id ) { $o = wc_get_order( $id ); if ( ! $o ) { continue; } foreach ( $o->get_items() as $iid => $item ) { $src = $item->get_meta( '_ps_source' ); if ( ! $src || 'av' === $src ) { continue; } // AV renkam patys if ( self::konsoliduota( $o, $iid, $item ) ) { continue; } // parsivežam į AV — tiekėjui nerašom if (",
+    "rray(); } $kam = $order->get_meta( self::META_SENT_TO ); if ( $kam ) { return array( $kam => $sena ); } $visi = array(); foreach ( $order->get_items() as $item ) { $s = $item->get_meta( '_ps_source' ); if ( $s && 'av' !== $s ) { $visi[ $s ] = $sena; } } return $visi; } /** Ar perduota konkrečiam sandėliui (arba bent vienam, jei $src tuščias). */ public static function perduota( $",
+    " DAR neperduoti. */ public static function neperduotos( $order ) { $j = self::perduotos( $order ); $liko = array(); foreach ( $order->get_items() as $iid => $item ) { $s = $item->get_meta( '_ps_source' ); if ( ! $s || 'av' === $s ) { continue; } if ( self::konsoliduota( $order, $iid, $item ) ) { continue; } if ( empty( $j[ $s ] ) ) { $liko[ $s ] = 1; } } return array_keys( $liko ); }"
+   ],
+   "petshop-av-order.php": [
+    "tojas mato viena, sistema kita. * * TODĖL: sprendimas priimamas VIENĄ kartą — kai užsakymas apmokamas — ir * ĮRAŠOMAS į eilutę. Vėliau tik SKAITOMAS. * * KIEKVIENOJE EILUTĖJE: * _ps_source av|vf|zb|quattro|ambrosia|belcor_tofu|prins * _ps_carrier any|venipak * _ps_source_qty kiek vienetų iš to šaltinio * _ps_source_at kada nuspręsta * _ps_source_reas",
+    " { exit; } class Petshop_AV_Order { public static function init() { // PRIORITETAS 5 — BŪTINA. `wc_maybe_reduce_stock_levels` yra 10, o // Petshop_AV_Reduce — 15. Jei fiksuotume vėliau, `_ps_source` eilutėse dar // neegzistuotų ir NEI WC stabdymas, NEI AV nurašymas nesuveiktų (S480 klaida). add_action( 'woocommerce_payment_complete', [ __CLASS__, 'fiksuoti' ], 5, 1 ); add_action( 'woo",
+    "_id(); if ( ! $pid ) { continue; } $qty = max( 1, (int) $item->get_quantity() ); $x = method_exists( 'Petshop_AV_Source', 'parinkti' ) ? Petshop_AV_Source::parinkti( $pid, $qty, $misrus ) : Petshop_AV_Source::resolve( $pid, $qty ); // v1.2 $item->update_meta_data( '_ps_source', $x['source'] ); $item->update_meta_data( '_ps_carrier', $x['carrier'] ); $item->update_meta_data( '_ps_source_qty'"
+   ],
+   "petshop-av-reduce.php": [
+    "e_reduce_stock_levels` (payment_complete / processing). * Jei papildomai mažintume `_own_stock_qty`, AV prekei nusirašytų DU kartus. * * SPRENDIMAS — nurašymas pagal EILUTĖS šaltinį: * _ps_source = av → mažinam `_own_stock_qty`, WC mažinimą PRALEIDŽIAM * kiti šaltiniai → paliekam WC elgtis kaip įprasta * * KAIP SUSTABDOM WC eilutei: `woocommerce_order_item_quantity` filtra",
+    "s_av_reduced` žymę užsakyme. * * GRĄŽINIMAS: `woocommerce_order_status_cancelled` ir `..._refunded` — AV likutis * grąžinamas atgal. * * PRIKLAUSO nuo 4 sluoksnio: eilutė turi turėti `_ps_source`. Jei jo nėra * (senas užsakymas) — nieko nedarom, WC elgiasi kaip anksčiau. */ if ( ! defined( 'ABSPATH' ) ) { exit; } class Petshop_AV_Reduce { public static function init() { // 1) sus",
+    null
+   ],
+   "petshop-av-sheets.php": [
+    " krūvelės susidaro atskiros. Lapas eina lygiagrečiai su savo krūvele, * prie stalo nereikia šokinėti. Plius LP siuntoms renkamas DYDIS, Venipak — ne. * * Į LAPUS PATENKA TIK AV EILUTĖS (`_ps_source = av`) — dropship prekių nerenkam. * Užsakymai be AV eilučių praleidžiami. * * GALIOJIMO PASTABA (`_ps_expiry_note`) rodoma prie prekės — tam ji ir daroma. */ if ( ! defined( 'ABSPATH' ",
+    "'kita' => [] ]; foreach ( $ids as $id ) { $o = wc_get_order( $id ); if ( ! $o ) { continue; } $eilutes = []; foreach ( $o->get_items() as $item ) { if ( 'av' !== $item->get_meta( '_ps_source' ) ) { continue; } // TIK AV $pid = (int) $item->get_product_id(); $qty = (int) $item->get_quantity(); $p = $item->get_product(); $sku = $p ? $p->get_sku() : ''; $pav = $item-"
+   ],
+   "petshop-av-source.php": [
+    " AV likutis (null = AV neturi) * av_uztenka: bool, ar AV užtenka prašomam kiekiui * tiekejas: string, koks tiekėjas BŪTŲ be AV * reason: string * } */ public static function resolve( $product_id, $qty = 1 ) { $product_id = (int) $product_id; $qty = max( 1, (int) $qty ); // v1.2: DP pakas → bazinė prekė × pako kiekis; likutis grąžinamas pakais. $dp = self::"
+   ],
+   "petshop-av-tiekimas.php": [
+    "tes_i_av`) nekeista. * Petshop AV Tiekimas v1.9.3 (S1602, K2+K3) — PRIĖMIMAS PERKELIA EILUTĘ Į AV; PAŠTOMATO KODAS. * * K2 (auditas 2026-09-02): po partijos priėmimo užsakymo eilutė liko `_ps_source=quattro` * (+`_ps_konsolidacija`) → surinkimo lape jos NEBUVO, `vykdymas()` rodė „MIŠRUS 3 siuntos“, * `_ps_shipments`=3, nors fiziškai išeina 2. Dabar priimti(), kai užsakymui prekių u",
+    "žteko, * konsoliduotoms eilutėms rašo `_ps_source=av`, `_ps_source_reason='parsivežta partija #N'`, * nurašo gautą kiekį iš AV (AV_Stock::decrease — prekė iš karto rezervuota šiam užsakymui, * `_ps_av_reduced`), ir perskaičiuoja `_ps_groups` / `_ps_shi",
+    "ėjui. */ public static function ideti_eilute( $o, $iid, $src = '' ) { global $wpdb; $item = $o->get_item( $iid ); if ( ! $item ) { return 0; } if ( ! $src ) { $src = $item->get_meta( '_ps_source' ); if ( ! is_string( $src ) || '' === $src ) { $v = class_exists( 'Petshop_AV_Source' ) ? Petshop_AV_Source::resolve( $item->get_product_id(), $item->get_quantity() ) : array(); $src"
+   ],
+   "petshop-darbalaukis.php": [
+    "se`), tiekėjas→Avesa −q (jei Avesoje < q — * neleidžia „Avesoje tik N“), →Avesa sandėlį +q dabar (Gauta daro +q ir −q — K2). Žymė `_ps_av_reduced_qty` * eilutės lygiu; `_ps_source` = av | tiekėjas, `_ps_kelias`, `_ps_misrus_sprendimas[src]` (kad `kons`/ * `neperduotos()` gerbtų planą — A7, A10); `_ps_groups/_ps_shipments/_ps_order_type` perskaičiuojami kaip * K2.",
+    "iš N“ lieka kaip išsiųsta/pristatyta), AV numeriai → senos, AV dalis * iš naujo iš grįžusių prekių. RIBOTUMAS (variklis, Raimis sutiko): `petshop-av-sheets.php` lapas spausdina VISAS `_ps_source=av` eilutes — jame bus * ir jau išsiųstos; todėl toks užsakymas IŠSKIRIAMAS: sąraše raudona kairė juosta + pill „⚠ lape ir jau išsiųstos prekės — nepakuok: …“, * skydelio",
+    "ojas, be sumų. * „Siųsti iš naujo“ (`grizta_is_naujo`): prekės jau AV → siunta ruošiama IŠ AV (net buvusi tiekėjo dropship): grįžusios dalies eilutės → kelias „Iš AV“ * (`_ps_source=av`, `_ps_av_reduced_qty=q`, planas + grupės perskaičiuojami); likutis dropship eilutėms +q (grįžo) −q (išeina) = 0 per * `Petshop_AV_Stock` (prekė tampa AV+tiekėjas su 0; vėlesnis atš"
+   ],
+   "petshop-desk.php": [
+    " · pagal tiekėją * Pristatymas (kas veža) Venipak kurjeris/paštomatas · LP Express * Data greitieji + intervalas * * ŠALTINIS gyvena EILUTĖS meta (s510 patvirtinta): * _ps_source · _ps_carrier · _ps_source_qty · _ps_source_at · _ps_source_reason * * WooCommerce sąrašas NEIŠJUNGIAMAS — lieka atsarginiu keliu. * Užsakymo REDAGAVIMAS lieka WooCommerce (retas, sudėt",
+    "ser()->display_name ), false, true ); $o->save(); $zinute = 'kl_laukti'; } elseif ( $item && $src && in_array( $t, array( 'siusti', 'parsivezti' ), true ) ) { $item->update_meta_data( '_ps_source', $src ); $item->update_meta_data( '_ps_source_reason', 'darbalaukis: AV neužteko' ); $item->update_meta_data( '_ps_source_at', current_time( 'mysql' ) ); $item->save(); $o->delete_",
+    "-bottom:0!important} html.wp-toolbar{padding-top:32px!important} #wpbody{margin:0!important} </style>'; } /* ============================ DUOMENYS ============================ */ /** * Petshop_AV_Source::resolve() rezultatas su kešu. * s513 patvirtinta: grąžina MASYVĄ * [source, carrier, courier_only, av_qty, av_uztenka, tiekejas, reason]. */ protected static function sprendimas( $pid, $qty ) { "
+   ],
+   "petshop-gavimo-perrusiavimas.php": [
+    "c_get_order( $r['order_id'] ); if ( ! $o || $o->get_meta( '_petshop_test' ) ) { continue; } $it = $o->get_item( $r['order_item_id'] ); if ( ! $it ) { continue; } $src = (string) $it->get_meta( '_ps_source' ); if ( 'av' === $src || '' === $src ) { continue; } // AV jau; be šaltinio — dar nerūšiuota, rūšiavimas pats paims AV $out[] = array( 'order' => $o, 'iid' => (int) $r['order_item_id'],",
+    "urce::ar_misrus( $k['order'] ) : false; $r = class_exists( 'Petshop_AV_Source' ) ? ( method_exists( 'Petshop_AV_Source', 'parinkti' ) ? Petshop_AV_Source::parinkti( $k['pid'], $k['q'], $misrus ) : Petshop_AV_Source::resolve( $k['pid'], $k['q'] ) ) : null; if ( ! $r || 'av' !== $r['source'] ) { $e['praleista'] = $r ? $r['reason'] : 'resolverio nėra'; $rez['eil'][] = $e; continue; } try { $o = wc_get_order( $k["
+   ],
+   "petshop-kampaniju-langas.php": [
+    "db; $out = array(); $out['legacy'] = (int) $wpdb->get_var( \"SELECT COUNT(DISTINCT u.user_email) FROM {$wpdb->users} u INNER JOIN {$wpdb->usermeta} m ON m.user_id=u.ID WHERE m.meta_key='_ps_source' AND m.meta_value='legacy_customer'\"); $out['klientai'] = (int) $wpdb->get_var( \"SELECT COUNT(DISTINCT u.user_email) FROM {$wpdb->users} u INNER JOIN {$wpdb->usermeta} m ON m.user_id=u.ID ",
+    "h); } elseif ($saltinis === 'legacy') { $el = $wpdb->get_col( \"SELECT DISTINCT u.user_email FROM {$wpdb->users} u INNER JOIN {$wpdb->usermeta} m ON m.user_id=u.ID WHERE m.meta_key='_ps_source' AND m.meta_value='legacy_customer'\"); } elseif ($saltinis === 'klientai') { $el = $wpdb->get_col( \"SELECT DISTINCT u.user_email FROM {$wpdb->users} u INNER JOIN {$wpdb->usermeta} m ON "
+   ],
+   "petshop-katalogas.php": [
+    "_rankinis = get_post_meta( $pid, '_ps_tik_kurjeriu', true ) === 'yes'; $kurj_auto = false; if ( class_exists( 'Petshop_AV_Source' ) && method_exists( 'Petshop_AV_Source', 'resolve' ) ) { $ff = Petshop_AV_Source::resolve( $pid ); $kurj_auto = is_array( $ff ) && ! empty( $ff['courier_only'] ); } /* VARIACIJU JUNGIKLIS. Skirtukas „Variacijos\" rodomas tik tada, kai zmogus pasako, kad si preke ju turi — k"
+   ],
+   "petshop-kelio-fiksavimas.php": [
+    "<?php /** * Plugin Name: Petshop Kelio Fiksavimas * Description: v1.1 (S1704 → S1717) — eilutės kelią (`_ps_source`) fiksuoja jau KASOJE, ne tik apmokėjus; v1.1 — ir po WC eilučių perkūrimo. * * PROBLEMA (S1704): Paysera pluginas `process_payment()` viduje kviečia `wc_maybe_reduce_stock_levels()` * dar ",
+    null,
+    null
+   ],
+   "petshop-legacy-importas.php": [
+    " 'role' => 'customer', )); if (is_wp_error($uid)) { if (count($klaidos) < 5) $klaidos[] = $em . ': ' . $uid->get_error_message(); continue; } update_user_meta($uid, '_ps_source', self::SALTINIS); update_user_meta($uid, '_ps_legacy_imported_at', $dabar); $tel = self::reiksme($e, $idx, 'phone'); if ($tel !== '') update_user_meta($uid, 'billing_phone', $tel); $",
+    "; } /* ---------- 4. BUSENA ---------- */ public static function busena() { global $wpdb; $n = (int) $wpdb->get_var($wpdb->prepare( \"SELECT COUNT(*) FROM {$wpdb->usermeta} WHERE meta_key='_ps_source' AND meta_value=%s\", self::SALTINIS )); return array( 'importuota_viso' => $n, 'jungiklis' => (int) get_option(self::JUNGIKLIS), 'katalogas' => self::katalogas(), 'failai'"
+   ],
+   "petshop-uzsakymu-ivykiai.php": [
+    "it ) { $pid = $it->get_variation_id() ?: $it->get_product_id(); $s['eil'][ $iid ] = array( 'pid' => $pid, 'q' => (int) $it->get_quantity(), 'src' => (string) $it->get_meta( '_ps_source' ), 'car' => (string) $it->get_meta( '_ps_carrier' ), 'red' => (string) $it->get_meta( '_ps_av_reduced_qty' ), 'av_q' => $pid ? get_post_meta( $pid, '_own_stock_qty', true ) : null, "
+   ]
+  },
+  "mixed": {
+   "petshop-analitika-langas.php": [
+    "na 'krep_santykis_bad' => 6.0, 'krep_min' => 20, 'ads_roas_lūžis' => 4.5, // vidutinis lūžio ROAS (PMAX_A: 25–35 % antkainis su fulfillment ≈ 5,3–7,7; sausas maistas lūžis ~4,5 su mišriu krepšeliu) 'ads_min_spend_ct' => 5000, 'ads_cac_ok_ct' => 1200, // S1684: blended new-food CAC lubos €12 (brendo CM guardrail: Exclusion/Josera €5–7, Animonda/AV €10–12) 'ads_c"
+   ],
+   "petshop-av-admin.php": [
+    "be užrašų · nematyti ką pirko · nematyti pristatymo * nematyti ar apmokėta · „Origin\" angliškai · reklaminis pranešimas viršuje * * KĄ DARO: * - stulpelis VYKDYMAS: MAIN / DS / MIXED + šaltiniai spalvomis * - stulpelis PREKĖS: ką realiai pakuoti (kiekis + pavadinimas) * - filtras pagal vykdymo tipą ir pagal šaltinį * - nuima „Origin\" stulpelį (analitika, ne darb",
+    "} $t = isset( $_GET['ps_tipas'] ) ? sanitize_key( $_GET['ps_tipas'] ) : ''; echo '<select name=\"ps_tipas\"><option value=\"\">Vykdymas — visi</option>'; foreach ( [ 'MAIN' => 'MAIN — tik AV', 'MIXED' => 'MIXED — kelios siuntos', 'DS' => 'DS — tik dropship' ] as $k => $v ) { echo '<option value=\"' . esc_attr( $k ) . '\"' . selected( $t, $k, false ) . '>' . esc_html( $v ) . '</option>'; } "
+   ],
+   "petshop-av-dropship.php": [
+    "rc ); return $j; } /** * Ar ši eilutė paimta į AV (konsoliduojama), o ne siunčiama tiekėjo tiesiai klientui? * * Du požymiai, abu tinka: * 1. `_ps_konsolidacija` ant eilutės — mišraus užsakymo sprendimas; * 2. eilutė guli tiekimo lentelėje (Petshop_AV_Tiekimas) — senesnis kelias * per „Į tiekimo lentelę“ / „Parsivežti į AV“ Klausimuose. * * Bet k",
+    "_id, $item ) { if ( $item->get_meta( '_ps_konsolidacija' ) ) { return true; } // Sprendimas jau priimtas, bet dar neįvykdytas — laiško vis tiek nerašom (H239). $m = $order->get_meta( '_ps_misrus_sprendimas' ); $j = is_array( $m ) ? $m : json_decode( (string) $m, true ); $src = $item->get_meta( '_ps_source' ); if ( is_array( $j ) && $src && isset( $j[ $src ] ) && 'av' === $j[ $src ] ) {",
+    " 'Grįžkite į <a href=\"' . esc_url( admin_url( 'admin.php?page=ps-desk' ) ) . '\">darbalaukį</a>.</p></div>'; return; } $g = self::grupuoti( (array) $ids ); // Vieno sandėlio perdavimas: mišriam užsakymui leidžia paleisti tik VF, // o ZB pasilikti rankoje, kol siuntos iškeliaus kartu (H240). $tik = isset( $_GET['src'] ) ? sanitize_key( wp_unslash( $_GET['src'] ) ) : ''; if ( $tik"
+   ],
+   "petshop-av-order.php": [
+    "op AV Order v1.2 (S1676) — šaltinio FIKSAVIMAS užsakymo eilutėje. * * v1.2 (S1676, Raimio taisyklė): dropship prekės pirmiausia iš tiekėjo; AV — kai tiekėjas neturi arba užsakymas * mišrus (yra grynai AV prekių). Sprendimas per Petshop_AV_Source::parinkti($pid,$qty,$misrus) (v1.3); * mišrumas — Petshop_AV_Source::ar_misrus($order). Pastaboje rašoma taisyklė. * * KETVIRTAS ",
+    " any|venipak * _ps_source_qty kiek vienetų iš to šaltinio * _ps_source_at kada nuspręsta * _ps_source_reason kodėl (diagnostikai) * * UŽSAKYME: * _ps_order_type MAIN|DS|MIXED|REVIEW * _ps_groups šaltinių sąrašas * _ps_shipments kiek siuntų išeis * * KADA: `woocommerce_payment_complete` + `woocommerce_order_status_processing`, * PRIORITETAS 5 — ",
+    "$order_id ) : $order_id; if ( ! $order ) { return; } if ( ! $priverstinai && self::nuspresta( $order ) ) { return; } if ( ! class_exists( 'Petshop_AV_Source' ) ) { return; } $grupes = []; $misrus = method_exists( 'Petshop_AV_Source', 'ar_misrus' ) ? Petshop_AV_Source::ar_misrus( $order ) : false; // v1.2 foreach ( $order->get_items() as $item_id => $item ) { $pid = (int) $item->get_produ",
+    "ct_id(); if ( ! $pid ) { continue; } $qty = max( 1, (int) $item->get_quantity() ); $x = method_exists( 'Petshop_AV_Source', 'parinkti' ) ? Petshop_AV_Source::parinkti( $pid, $qty, $misrus ) : Petshop_AV_Source::resolve( $pid, $qty ); // v1.2 $item->update_meta_data( '_ps_source', $x['source'] ); $item->update_meta_data( '_ps_carrier', $x['carrier'] ); $item->upd"
+   ],
+   "petshop-av-source.php": [
+    " Source v1.3 (S1676) — AV kaip realus tiekimo šaltinis. * * v1.3 (S1676, Raimio taisyklė 09-12): „dropship prekės eina iš dropship sandėlių PIRMIAUSIA; jei jie neturi * arba užsakymas mišrus (yra ir grynai AV prekių) — tada AV.“ resolve() lieka kaip buvo (AV pirma — jį naudoja * katalogas/darbalaukis kaip faktą „ar AV turi“); UŽSAKYMO sprendimą priima parinkti($pid,$q",
+    "ty,$misrus): * tiekėjas turi ≥ qty (Petshop_Sources::gyvi) ir užsakymas ne mišrus → tiekėjas; kitaip → AV, jei užtenka; kitaip → tiekėjas. * * v1.2 (S1676, Raimis: „bendras principas, ne tik Tofu“): DP pakas („Daugiau=pigiau“, * `_dp_base_product_id` + `_dp",
+    " $pid, isset( $m[ $tiekejas ] ) ? $m[ $tiekejas ] : '_stock', true ); return ( '' === $v || null === $v ) ? null : (int) $v; } /** * v1.3: UŽSAKYMO eilutės šaltinis pagal Raimio taisyklę. $misrus — ar užsakyme yra grynai AV prekių. * Grąžina tą pačią struktūrą kaip resolve() + 'tiekejo_qty', 'taisykle'. */ public static function parinkti( $product_id, $qty = 1, $misrus = false",
+    "? true : ( $tq >= $qty * $n ); // nežinomas likutis = laikom, kad turi (feed'o nėra → senas elgesys) $av_turi = ! empty( $r['av_uztenka'] ) && null !== $r['av_qty']; if ( $tiekejas_turi && ! $misrus ) { $r['source'] = $tiek; $r['carrier'] = 'venipak'; $r['av_uztenka'] = false; $r['taisykle'] = 'dropship pirma' . ( $av_turi ? ' (AV turi ' . $r['av_qty'] . ', bet užsakymas ne mišrus)' : ''"
+   ],
+   "petshop-av-tiekimas.php": [
+    "vietą, o `eilutes_veiksmas()` dabar tik apvalkalas su teisėmis. * * v1.2 (S567) — prekių parsivežimas iš tiekėjų sandėlių. * * KODĖL (Raimio aprašytas procesas 2026-08-06): * Ateina mišrus užsakymas — dalis prekių AV, dalis VF. Vietoj to, kad klientas * gautų dvi siuntas, VF eilutė įkrenta į TIEKIMO LENTELĘ. Per dieną tokių * smulkmenų susikaupia; 13:00 jos vienu užsak",
+    "ymu parsivežamos į AV, o iš ten * keliauja klientui viena tvarkinga siunta. * * KELIAS: * 1. mišrus užsakymas apmokamas → tiekėjo eilutės į atvirą partiją, * užsakymas pažymimas „laukia prekių“ * 2. lentelė kaupiasi visą dieną → kiekius",
+    "a', 'sukurta' => current_time( 'mysql' ), ) ); return (int) $wpdb->insert_id; } /** * PUSIAU AUTOMATINIS KAUPIMAS (Raimio sprendimas 2026-08-06). * Sistema NIEKO nesprendžia už tave: mišrus užsakymas guli „Naujuose“ kaip * visi kiti, o šalia kiekvienos tiekėjo eilutės yra mygtukas * „Į tiekimo lentelę“. Nepaspaudei — eilutė lieka dropshipu. * Sprendimas EILUTĖS",
+    "rray( 'pd_ok' => $zinute ), $atgal ) ); exit; } /** * Įdeda užsakymo eilutę į kaupiamą tiekėjo partiją (parsivežam į AV). * * Viena tiesos vieta: naudoja ir mygtukas skydelyje, ir mišrių užsakymų * sprendimo kortelė (H236). Grąžina partijos ID arba 0, jei eilutė netinka. * Jei eilutė jau kaupiamoje partijoje — nieko nedaro ir grąžina tą partiją, * kad pakartotin"
+   ],
+   "petshop-darbalaukis.php": [
+    null,
+    " * neleidžia „Avesoje tik N“), →Avesa sandėlį +q dabar (Gauta daro +q ir −q — K2). Žymė `_ps_av_reduced_qty` * eilutės lygiu; `_ps_source` = av | tiekėjas, `_ps_kelias`, `_ps_misrus_sprendimas[src]` (kad `kons`/ * `neperduotos()` gerbtų planą — A7, A10); `_ps_groups/_ps_shipments/_ps_order_type` perskaičiuojami kaip * K2. Keičiama iki pirmo žingsnio (A8); po lipdu",
+    "erio — NELEIDŽIAMA („siuntos numerio nėra — pirma lipdukas“). * Laiško „be numerio“ tekstas lieka tik tekstiniu saugikliu. * v3.10.5 (S1611, Raimis 09-04, #5b prielaida 4 = B): kol mišrus užsakymas NEsurūšiuotas (`_ps_rusiuota` tuščia, dalių >1, nė viena * neišsiųsta), `kliento_siuntos()` klientui grąžina VIENĄ „Siunta — Ruošiama“ su visomis prekėmis, be numer",
+    " ) && self::atvira_partija( $src ) ) { foreach ( $o->get_items() as $it2 ) { if ( 'av' === self::d( 'eilutes_saltinis', $it2 ) ) { $sug = true; break; } } } // v3.39.1: siūlyti „veža į AV“ tik mišriam (yra AV eilutė) $k = ( $it->get_meta( '_ps_konsolidacija' ) || 'av' === ( $spr[ $src ] ?? '' ) || $b || $sug ) ? 'i_av' : 'tiesiai'; } else { $k = ''; } } if ( 'tiesiai' === $k && self"
+   ],
+   "petshop-desk.php": [
+    ": (1) ryto_partija() grąžindama užrakintą * partiją PERFILTRUOJA ją pagal esamą statusą — atšaukti/įvykdyti/grąžinti dingsta iš * visų sąrašų (visi, av, ds, vp, lp, vp_grupes, vp_misrus, klausimai, eil, tiekejai); * (2) vp_reg/vp_bulk praleidžia ne-processing/on-hold užsakymus su pranešimu „#N atšauktas“; * (3) „Atšaukti“ darbalaukyje iš karto išima ID iš visų var",
+    "r paieškos * rezultatuose; atskirose eilėse nerodomas — ten ir taip aišku. * * Petshop Desk v3.40 (H245) — GEOGRAFIJOS PATAISOS PO RAIMIO TESTO. * * KODĖL (Raimis, H245): „paspaudžiau mišrų į AV ir viskas dingo; Tiekimas ir * Perdavimas tiekėjams neveikia\". Faktai: (1) niekas nedingo — planai įrašyti, * kortelės nusileido į apatinę sekciją, bet tai nepakankamai akivaizdu; ",
+    "tas „Perduoti\"), * ir pranešimas dabar sako, KUR jis nuėjo. * * Petshop Desk v3.36 (H240) — PERDAVIMAS PAGAL SANDĖLĮ (išsiuntimo laikas — žmogaus). * * KODĖL (Raimis H237, H239): „mišriuose užsakymuose rankiniu būdu sprendžiama, * kada bus siuntos siunčiamos klientui — kad visos siuntos klientą pasiektų kartu“. * Iki šiol „Perduoti tiekėjui“ buvo vienas mygtukas v",
+    null
+   ],
+   "petshop-faktai.php": [
+    "LL DEFAULT 0, dovanu_savikaina_ct BIGINT NOT NULL DEFAULT 0, marza_ct BIGINT NOT NULL DEFAULT 0, kontribucija_ct BIGINT NOT NULL DEFAULT 0, sandeliu_kiekis SMALLINT NOT NULL DEFAULT 0, misrus TINYINT(1) NOT NULL DEFAULT 0, sandeliai VARCHAR(190) NOT NULL DEFAULT '', vezejai VARCHAR(96) NOT NULL DEFAULT '', kanalas_pirmas VARCHAR(32) NOT NULL DEFAULT '', kanalas_paskutinis VARC",
+    "> $savikaina, 'dovanu_savikaina_ct' => $dovanu_sav, 'marza_ct' => $marza, 'kontribucija_ct' => $kontr, 'sandeliu_kiekis' => count( $sandeliai ), 'misrus' => count( $sandeliai ) > 1 ? 1 : 0, 'sandeliai' => mb_substr( implode( ',', array_keys( $sandeliai ) ), 0, 190 ), 'vezejai' => mb_substr( impl"
+   ],
+   "petshop-gavimo-perrusiavimas.php": [
+    "k` opcijoje; rankinis DRY: Petshop_Gavimo_Perrusiavimas::perrusiuoti($pid, true). * v1.2: seka Raimio taisyklę (av-source v1.3 `parinkti`): į AV perkeliama TIK jei tiekėjas neturi arba užsakymas mišrus. * v1.1: REGISTRAS IŠ KARTO — po gavimo ir po kiekvieno `_own_stock_qty` pakeitimo (added/updated_post_meta) kviečiamas * `ps_sources_sync_saugiai()` (snippet 2515), kad ps_sources AV eilut",
+    "oreach ( $kand as $k ) { $e = array( 'nr' => $k['nr'], 'iid' => $k['iid'], 'pid' => $k['pid'], 'q' => $k['q'], 'buvo' => $k['src'] ); if ( $dry ) { $mi = method_exists( 'Petshop_AV_Source', 'ar_misrus' ) ? Petshop_AV_Source::ar_misrus( $k['order'] ) : false; $rr = method_exists( 'Petshop_AV_Source', 'parinkti' ) ? Petshop_AV_Source::parinkti( $k['pid'], $k['q'], $mi ) : null; $e['dry'] = $rr ? ( $",
+    "rr['source'] . ' — ' . $rr['reason'] ) : 'kandidatas'; $rez['eil'][] = $e; continue; } // Prieš keičiant — ar AV dar užtenka (ankstesnės eilutės galėjo nurašyti)? $misrus = method_exists( 'Petshop_AV_Source', 'ar_misrus' ) ? Petshop_AV_Source::ar_misrus( $k['order'] ) : false; $r = class_exists( 'Petshop_AV_Source' ) ? ( method_exists( 'Petshop_AV_Source', 'parinkt",
+    "i' ) ? Petshop_AV_Source::parinkti( $k['pid'], $k['q'], $misrus ) : Petshop_AV_Source::resolve( $k['pid'], $k['q'] ) ) : null; if ( ! $r || 'av' !== $r['source'] ) { $e['praleista'] = $r ? $r['reason'] : 'resolverio nėra'; $rez['eil'][] = $e; continue; } t"
+   ],
+   "petshop-parseris.php": [
+    "rniena, ir svieziа vistiena — „šerniena\" tiesiog nebuvo baltymu sarase; · „Family Dog\" gavo „Taip\" is „mėsa ir mėsos perdirbimo produktai (16 % jautienos)\" — misrus baltymai, aprasyti bendrai; · 62 is 401 „Taip\" dar ir turejo glitimo grudu, o savininko taisykle (2026-06-15): monoprotein = vienas baltymas IR be glitimo. Nepilnas baltymu sa"
+   ],
+   "petshop-rinkiniai.php": [
+    "ekiu: * viena grupe = vienas sandelis = viena siunta), todel filtras nustatomas pagal * KOMPONENTUS: visi vienam sandelyje -> tas sandelis pazymimas ir paieska is * karto rodo tik tinkamas prekes; misrus -> „Visi\" ir ispejimas. * * Petshop Rinkiniai v1.27 (H275) — „KUR BUS MATOMAS\" TAISYMAS. * * (1) JS pieštiVieta() naudojo neapibrėžtą `a` → ReferenceError → žymos * nepiešiam",
+    "'<p class=\"description\">Pakas paveldi bazinės prekės kategorijas ir DAUGIAU=PIGIAU.</p>'; else if(a.nezinomas||a.porusis===null) h+='<div class=\"psr-perspejimas y\">Porūšio nustatyti nepavyko (mišrus rinkinys) — kataloge atsiras tik po RINKINIAI. Pridėk vietą ranka, jei nori kitur.</div>'; $('#psr-vieta').innerHTML=h; $('#psr-vieta').querySelectorAll('button').forEach(function(b){ "
+   ],
+   "petshop-siuntu-laiskai.php": [
+    "omis... * kitą kartą reikia kažką asmeniškai klientui prirašyti“. Laiške atsirado laisvo * teksto laukas — tas pats principas kaip tiekėjo laiške (dropship v1.5). * * PILNUMO VARTAI: mišriam užsakymui pagrindinis mygtukas neaktyvus, kol * registruotos ne visos siuntos — kad klientas gautų VIENĄ laišką su VISAIS * numeriais, o ne kelis gabalais. Šalia lieka „Siųsti vis tie",
+    "idurs laiške. * * v1.1 (H204/H206) — kaupiamasis siuntų registras ir sekimo laiškas. * * KODĖL: Venipak pluginas visą registraciją laiko VIENAME rakte * `venipak_shipping_order_data` — mišriam užsakymui antra grupės registracija * PERRAŠO pirmos pack numerius (H202). Šis modulis po kiekvienos sėkmingos * registracijos nusikopijuoja rezultatą į savo kaupiamąjį `_ps_siuntos` *",
+    null,
+    ", pas[pas.length-1]); else p.appendChild(d); } t.addEventListener(\"input\",pieskim); })(); </script></div>'; } /* ------------------------------------------------------------------ */ /* MIXED PASTABA APMOKĖJIMO LAIŠKE */ /* ------------------------------------------------------------------ */ public static function mixed_pastaba( $order, $sent_to_ad"
+   ],
+   "petshop-uzsakymu-ivykiai.php": [
+    "array( 'tiekimas', 'lipdukas_pdf' ), 'ps_siuntu_siusti' => array( 'siuntos', 'sekimo_laiskas' ), ); /** Žodynas žmogui (spec §2): veiksmo raktas → tekstas. */ const ZODYNAS = array( 'misrus' => 'Surūšiuota (mišraus planas)', 'misrus_keisti' => 'Rūšiavimas atidarytas iš naujo', 'kons' => 'Užsakyti iš tiekėjo į Avesą (konsolidacija)', 'lapai' ",
+    " $o->get_meta( '_ps_pakuociu' ), 'siuntos' => $o->get_meta( '_ps_siuntos' ) ?: array(), 'vp' => mb_substr( (string) $o->get_meta( 'venipak_shipping_order_data' ), 0, 120 ), 'misrus' => $o->get_meta( '_ps_misrus_sprendimas' ) ?: null, 'konsolidacija' => $o->get_meta( '_ps_konsolidacija' ) ?: null, 'dropship_sent' => $o->get_meta( '_ps_dropship_sent_src' ) ?: null, "
+   ]
+  },
+  "templates": {
+   "cart/cart.php": [
+    "flatsome",
+    ""
+   ],
+   "cart/cart-totals.php": [
+    "",
+    ""
+   ],
+   "cart/mini-cart.php": [
+    "flatsome",
+    ""
+   ],
+   "checkout/review-order.php": [
+    "",
+    ""
+   ],
+   "checkout/form-checkout.php": [
+    "flatsome",
+    ""
+   ],
+   "single-product/add-to-cart/simple.php": [
+    "",
+    ""
+   ],
+   "single-product/price.php": [
+    "flatsome",
+    ""
+   ],
+   "single-product/stock.php": [
+    "",
+    ""
+   ],
+   "single-product/meta.php": [
+    "",
+    ""
+   ]
+  }
+ },
+ "c": {
+  "v": "S1720f",
+  "faze": "c",
+  "pristatymas": {
+   "id": 14894,
+   "html": " <strong>Trumpai:</strong> LP EXPRESS paštomatai – iki 30 kg, Venipak paštomatai – iki 25 kg. Pristatymas į paštomatus nemokamas nuo 30 Eur, jei neviršijama pasirinkto vežėjo svorio riba. Prekes išsiunčiame per 1–3 darbo dienas. Užsakymai surenkami ir išsiunčiami tik darbo dienomis. <h2>Prekių pristatymo būdai</h2> <h3>1. Pristatymas į paštomatus</h3> Į <strong>LP EXPRESS paštomatus</strong> pristatomos siuntos iki <strong>30 kg</strong> svorio. Į <strong>Venipak paštomatus</strong> pristatomos siuntos iki <strong>25 kg</strong> svorio. Viršijus pasirinkto paštomato vežėjo svorio ribą, formuojamos dvi ar daugiau siuntos. Už kiekvienos papildomos siuntos pristatymą taikomas papildomas mokestis: <li>į Venipak paštomatą – 2,15 Eur;</li> <li>į LP EXPRESS paštomatą – 2,15 Eur.</li> Tokiu atveju su klientu susisiekiama asmeniškai. <h3>2. Pristatymas į Venipak atsiėmimo punktus</h3> Į <strong>Venipak atsiėmimo punktus</strong> pagal Venipak ir atsiėmimo punkto taisykles leidžiama pristatyti tik tas siuntas, kurios sveria <strong>mažiau nei 10 kg</strong>. Jei užsakymą sudarančių prekių svoris viršija 10 kg, Pardavėjas pasilieka teisę prekių pristatymą registruoti į kitą artimiausią atsiėmimo vietą arba paštomatą. <h2>Pristatymo kainos</h2> <h3>Pristatymas į paštomatus Lietuvoje</h3> Jei siuntos vertė yra mažesnė nei <strong>30 Eur</strong>, vienos siuntos pristatymo Lietuvoje kaina: <li>į Venipak paštomatą – 2,15 Eur;</li> <li>į LP EXPRESS paštomatą – 2,15 Eur.</li> Perkant prekių už <strong>30 Eur ir daugiau</strong>, neviršijant pasirinkto paštomato vežėjo svorio ribos, prekių pristatymas į paštomatus yra <strong>nemokamas</strong>. <h3>Pristatymas kurjeriu</h3> Kurjerių tarnyba pristato prekes nurodytu adresu. Prekių pristatymas <strong>Venipak arba LP EXPRESS kurjerių tarnyba</strong> visuomet yra mokamas, nepriklausomai nuo prekių krepšelio vertės. Pristatymo kaina kurjeriu priklauso nuo siuntos svorio: <li>iki 50 kg – 3,99 Eur;</li> <li>nuo 50 kg iki 70 kg – 7,99 Eur;</li> <li>nuo 70 kg iki 100 kg – 11,98 Eur;</li> <li>nuo 100 kg iki 200 kg – 24,99 Eur.</li> Prekių pristatymas į <strong>Kuršių Neriją kurjerių tarnyba</strong> kainuoja <strong>30 Eur</strong>, nepriklausomai nuo prekių krepšelio vertės. <h2>Papildomos pristatymo sąlygos</h2> Jei prekių krepšelio vertė mažesnė nei <strong>9 Eur</strong>, taikomas <strong>1 Eur + PVM</strong> mažo krepšelio mokestis, iš viso <strong>1,21 Eur</strong>. Nestandartinio dydžio, į paštomatus netelpančios didelių matmenų siuntos pristatomos tik kurjeriu. Pavyzdžiui: transportavimo dėžės, boksai, plastikiniai kačių tualetai. Užsakius daugiau nei vieną prekę, jos gali būti pristatytos ne vienu metu, nes gali būti gabenamos iš skirtingų sandėlių. <h2>Pristatymo terminai</h2> <strong>Prekės išsiunčiamos per 1–3 darbo dienas, o pristatomos – per 1 darbo dieną</strong>, jeigu siuntų vežėjo pervežimo paslauga vyksta sklandžiai. Pirkėjui nurodžius neteisingus siuntos pristatymo duomenis, pavyzdžiui, gavėjo vardą, pavardę, adresą, pašto kodą ar telefono numerį, užsakymo pristatymo terminas gali pailgėti. Pristatymo terminas gali kisti ir kitais nuo Pardavėjo nepriklausančiais atvejais: šventiniu laikotarpiu, kai siuntų srautas yra itin didelis, dėl siuntas pristatančių kurjerių darbo, perpildytų paštomatų, labai blogų gamtinių sąlygų ar kitų force majeure aplinkybių. <h2>Pirkėjo atsakomybė priimant siuntą</h2> Pirkėjas, užsakymo metu pasirinkęs prekių pristatymo paslaugą, įsipareigoja nurodyti tikslią prekių pristatymo vietą. Pirkėjas įsipareigoja prekes priimti pats. Jeigu Pirkėjas prekių pats priimti negali, o prekės pristatytos nurodytu adresu, Pirkėjas neturi teisės reikšti Pardavėjui pretenzijų dėl prekių pristatymo netinkamam subjektui. Prekes pristato Pardavėjas arba Pardavėjo įgaliotas atstovas, pavyzdžiui, kurjeris. Jei prekes pristato kurjeris, Pirkėjas įsipareigoja būti nurodytu adresu ir priimti prekes. Jeigu Pirkėjas siuntos neatsiima iš paštomato ar atsiėmimo punkto per vežėjo nust"
+  },
+  "schema_ship": {
+   "petshop-schema-prekes.php": [
+    "<?php /** * Plugin Name: Petshop schema — prekės v1.1 (S1701 → S1717) * Description: (Greta petshop-schema.php — takelis, S8.) Papildo Rank Math Product JSON-LD (filtras rank_math/json_ld) laukais, kurių trūko (2026-09-20 recon, 1.8): * name be „ - Petshop.lt\", description be HTML esybių, brand (product_brand), gtin13, offers.shippingDetails (Venipak/LP paštomatas * €2,15 su PVM, nemokamas nuo €30, kurjeris €3,99 su PVM; išsiuntimas 1–3 d. d.), offers.hasMerchantReturnPolicy (14 d. ne maisto prekėms, * maistui — negalima pagal CK), additionalProperty su atributų pavadinimais (ne pa_* slug), seller/Organization su logo, * telefonu ir adresu. Tikslas — Google Merchant listings be įspėjimų ir AI botų (ChatGP",
+    "seller'] ) && is_array( $of['seller'] ) ) { $of['seller']['@id'] = home_url( '/#organization' ); if ( $logo ) { $of['seller']['logo'] = $logo; } else { unset( $of['seller']['logo'] ); } } $pastomatas = ( $sv <= 25 ); // Venipak paštomatas iki 25 kg (LP iki 30) $rate = $pastomatas ? ( $kaina >= self::NEMOKAMAS_NUO_CT / 100 ? 0 : self::PASTOMATAS_CT / 100 ) : self::KURJERIS_CT / 100; $of['shippingDetails'] = array( '@type' => 'OfferShippingDetails', 'shippingRate' => array( '@type' => 'MonetaryAmount', 'value' => number_format( $rate, 2, '.', '' ), 'currency' => 'EUR' ), 'shippingDestination' => array( '@type' => 'DefinedRegion', 'addressCountry' => 'LT' ), 'deliveryTime' => array( '@type' => 'ShippingDeliveryTime', 'handlingTime' => ar",
+    "ray( '@type' => 'QuantitativeValue', 'minValue' => 0, 'maxValue' => 2, 'unitCode' => 'DAY' ), 'transitTime' => array( '@type' => 'QuantitativeValue', 'minValue' => 1, 'maxValue' => 2, 'unitCode' => 'DAY' ), ), ); $of['hasMerchantReturnPolicy'] = $maistas ? array( '@type' => 'MerchantReturnPolicy', 'applicableCountry' => 'LT', 'returnPolicyCategory' => 'https://schema.org/MerchantReturnNotPermitted' ) : array( '@type' => 'MerchantReturnPolicy', 'applicableCountry' => 'LT', 'returnPol"
+   ]
+  },
+  "zonos": {
+   "Neringos savivaldybe": {
+    "9": "shopup_venipak_shipping_pickup_method VENIPAK paštomatai/atsiėmimo punktai  null min null",
+    "10": "shopup_venipak_shipping_courier_method VENIPAK Kurjeris  null min null",
+    "13": "woo_lithuaniapost_lpexpress_terminal LP Express flat \"flat\" min null"
+   },
+   "Lietuva": {
+    "1": "free_shipping Nemokamas pristatymas  null min \"0\"",
+    "2": "shopup_venipak_shipping_courier_method VENIPAK Kurjeris  null min null",
+    "3": "shopup_venipak_shipping_pickup_method VENIPAK paštomatai/atsiėmimo punktai  null min null",
+    "6": "shopup_venipak_shipping_courier_method VENIPAK Kurjeris  null min null",
+    "7": "shopup_venipak_shipping_courier_method VENIPAK Kurjeris  null min null",
+    "8": "shopup_venipak_shipping_courier_method VENIPAK Kurjeris  null min null",
+    "12": "woo_lithuaniapost_lpexpress_terminal LP Express flat \"flat\" min null",
+    "15": "woo_lithuaniapost_lpexpress_terminal LP Express kurjeris weight \"weight\" min null",
+    "16": "local_pickup Atsiėmimas AV — Liucionių g. 46, Liucionys 0 \"0\" min null"
+   },
+   "Baltijos šalys, be LIetuvos": {
+    "5": "shopup_venipak_shipping_pickup_method VENIPAK paštomatai/atsiėmimo punktai  null min null"
+   }
+  },
+  "free_from": {
+   "petshop-darbalaukis.php": [
+    null,
+    "emok>0&&sub>=inst.nemok) g=0; $('nuPristK').value=g.toFixed(2); $('nuPristN').textContent=inst?('(pagal parduotuvę: '+eur(g)+' €'+(inst.nemok>0?', nemokamas nuo '+eur(inst.nemok)+' €':'')+(sv>0?', svoris '+sv.toFixed(1)+' kg':'')+')'):''; } if(tipas==='pastomatas'||tipas==='lp'){ var vez=tipas; if(VIE"
+   ],
+   "petshop-desk.php": [
+    " => strip_tags( $o->get_formatted_order_total() ), 'siunta' => strip_tags( $o->get_shipping_total() > 0 ? wc_price( $o->get_shipping_total() ) : 'nemokamas' ), 'vezejas' => self::vezejo_vardas( $o ), 'vieta' => $o->get_meta( 'venipak_pickup_point' ), 'kodas' => $kodas, 'pak' => $pak, "
+   ],
+   "petshop-laukai.php": [
+    "026-08-15: * musu kainos nera uzkeltos, tad procentine nuolaida butu arba melas, * arba maržos praradimas. Vietoj jos — DVI paskatos: * 1) nemokamas pristatymas (jau veikia WooCommerce nustatymuose), * 2) DOVANA pasiekus sumos riba — klientas renkasi is triju. * * Pakopos ir dovana yra N",
+    " $sv[] = array( 'nuo' => $nuo, 'd' => $d ); } usort( $sv, function( $a, $b ) { return $a['nuo'] <=> $b['nuo']; } ); /* Pakopos privalo augti: 30 € −2 % po 20 € −3 % butu spastai klientui. */ $pask = 0; foreach ( $sv as $i => $p ) { if ( $p['d'] < $pask ) { $persp[] = sprintf( 'P",
+    "path d=\"M3 7h11v9H3z\"/><path d=\"M14 10h4l3 3v3h-7z\"/><circle cx=\"7\" cy=\"18\" r=\"1.8\"/><circle cx=\"17.5\" cy=\"18\" r=\"1.8\"/></svg></span><span class=\"tx\">Nemokamas pristatymas į paštomatą</span><span class=\"liko\"></span></div> <div class=\"jt\"><i></i></div> </div> <div class=\"pslk-tk dov\" id=\"pslk",
+    "ass=\"pslk-cta\" id=\"pslk-cta\" disabled>Įdėk bent <?php echo (int) $p->get_min_container_size(); ?></button> <div class=\"pslk-po\" id=\"pslk-po\">Nemokamas pristatymas į paštomatą nuo <?php echo esc_html( wc_format_decimal( $riba, 0 ) ); ?> €</div> </div> </div> </aside> </form> </div> <d"
+   ],
+   "petshop-m8-food.php": [
+    "TIK maista, kurio gamintojo serimo // lentele dengia augintinio svori (>= zemiausias tasKas, <= auksciausias). // Ontario Large lentele prasideda nuo 30kg -> 26kg suniui nerodom (gamintojo riba). $weight = isset( $pet->current_weight_kg ) ? (float) $pet->current_weight_kg : 0; $wcov = ( $weight "
+   ],
+   "petshop-partijos.php": [
+    " AV PARTIJOS, SAVIKAINA, PAKUOTES * * KAM: `_cost_price` yra VIENAS skaicius prekei, o realybeje savikaina yra * PARTIJOS savybe. Gavai partija uz 30 €, po menesio kita uz 34 € — antrasis * irasymas uztrindavo pirmaji, ir marza buvo rodoma nuo paskutines, nors * lentynoje dar guli pigiosios. Ak"
+   ],
+   "petshop-prenumerata-paskyra.php": [
+    "ym\">BENDRA SUMA</div><div class=\"psn3-suma\">' . esc_html(self::eur_ct($suma)) . '</div>'; echo '<div class=\"psn3-pilk\">Pristatymas į paštomatus nemokamas (nuo 30 €)</div>'; if (!empty($s['price_locked'])) echo '<div class=\"psn3-pilk\">Kaina užfiksuota 6 mėn.</div>'; echo '</div></div>'; "
+   ],
+   "petshop-schema-prekes.php": [
+    "be „ - Petshop.lt\", description be HTML esybių, brand (product_brand), gtin13, offers.shippingDetails (Venipak/LP paštomatas * €2,15 su PVM, nemokamas nuo €30, kurjeris €3,99 su PVM; išsiuntimas 1–3 d. d.), offers.hasMerchantReturnPolicy (14 d. ne maisto prekėms, * maistui — negalima pa"
+   ],
+   "petshop-seo-sablonai.php": [
+    "UBAI = array( 'sunims', 'katems', 'grauzikams', 'pauksciams', 'zuvims' ); const PRISTATYMAS = 'Pristatymas per 1–3 d. d., nemokamai į paštomatą nuo 30 €.'; public static function init() { if ( get_option( 'ps_seo_sablonai_isjungta' ) ) { return; } add_action( 'flatsome_category_title', array"
+   ],
+   "petshop-veisles.php": [
+    " $a, $b, $f ) { return ( abs( $a - $b ) < 0.005 ) ? $f( $a ) : $f( $a ) . '–' . $f( $b ); } /** Eurų intervalas su vienu € ženklu: „0,27–1,30 €\". */ private static function reur( $a, $b, $dec = 2 ) { $f = function ( $x ) use ( $dec ) { return number_format( $dec ? (float) $x : round( $x ),",
+    ") ? $f( $a ) : $f( $a ) . '–' . $f( $b ) ) . ' €'; } /** „Suaugęs taksas sveria 9–12 kg. Maitinti jį sausu maistu kainuoja nuo 0,27 iki 1,30 € per dieną, arba apie 8–39 € per mėnesį.\" */ public static function sakinys( $v, $d ) { $kat = ( 'cat' === $v[2] ); $n = function ( $x )"
+   ]
+  },
+  "darbo_laikas": {
+   "petshop-akcijos.php": [
+    "o „August 2026\", sekmadieni deda pirma, o formata „08/17/2026\" lietuviui reikia perskaityti du kartus. Cia — LT menesiai, savaite nuo pirmadienio, ISO formatas ir greiti mygtukai. */ echo '<div class=\"eile\">'; echo '<label class=\"l\">Nuo<span class=\"ps-data\" data-laukas=\"f-nuo\">' ."
+   ],
+   "petshop-av-manifestas.php": [
+    "stą. * Version: 1.0 * * v1.0 (2026-09-23, S1709, Raimis: „sandėlys AV užsidaro 15:00, nuo 15:00 jau kita diena; penktadienį nuo 15:00 — į pirmadienį; * šventės neįskaitomos — užsakymai persikelia į sekančią darbo dieną“). * * KODĖL: wc-venipak-shipping (admin-dispatch.php) manife",
+    "uo pačiu keliu, kad lipdukai, „Kurjerio sąrašas“ ir `_ps_siuntos` * rodytų tikrą manifestą. * Paėmimo diena: dabar (Europe/Vilnius) iki 15:00 darbo dieną → šiandien; kitaip → kita darbo diena (be šeštadienių, sekmadienių ir * LR švenčių, įskaitant Velykų pirmadienį). Išjun"
+   ],
+   "petshop-darbalaukis.php": [
+    "rinkti → „Paruošta atsiimti“ (GET `ats_paruosta`, laiškas klientui pagal taisomą šabloną `ps_dl_ats_laiskas` — adresas Liucionių g. 46, darbo laikas iš svetainės; varnelė „nesiųsti“) → „Klientas atsiėmė“ (GET `atsieme` → `_ps_dalys_issiusta.av` kanalas `atsiemimas`, `_ps_uzbaig",
+    "`wp_timezone()`, DST-saugus; `cron_planuoti` `init` 30 užtikrina, kad suplanuotas). * Ne darbo dieną (Sa/Se, LT šventės `LT_SVENTES` + Velykų pirmadienis pagal Grigaliaus algoritmą `velykos()`) — nieko nedaro. Sąlyga užsakymui: * apmokėtas, tarp apmokėjimo dienos ir šiandienos ≥3 PILNOS ",
+    "ų) const VEL_DIENOS = 3; // pilnos darbo dienos nuo apmokėjimo (apmokėjimo diena neskaičiuojama) /** LT šventės (fiksuotos, mm-dd) + Velykų pirmadienis (`velykos()`). Motinos / Tėvo diena — sekmadieniai. */ const LT_SVENTES = array( '01-01', '02-16', '03-11', '05-01', '06-24', '07-06', '08-15',"
+   ],
+   "petshop-katalogas.php": [
+    " * jos pakeisti negali. Todel visi datos laukai pereina i `ps-data`, kuri * aptarnauja `petshop-kalendorius.php`: LT menesiai, savaite nuo * pirmadienio, ISO reiksme, mygtukai „Siandien / +6 men. / +1 metai\". * * Petshop Katalogas v7.3 (S701) — PARTIJOS SU GALIOJIMAIS VISIEMS SAVO SANDELIAMS. "
+   ],
+   "petshop-sargas.php": [
+    "liko -> sis modulis: tylusis sluoksnis * * SIUNTIMO POLITIKA (savininko klausimas „kiek siu pranesimu bus?\"): * gera savaite 1 laiskas (pirmadienio suvestine) * bloga savaite 2-3 * viskas gerai TYLA + savaitine suvestine kaip irodymas, kad sargas gyvas * * - warning'ai NESIUNCIAMI ",
+    " ' . basename( $r['failas'] ) . ':' . $r['eilute'] . \"\\n\"; } } $e .= \"\\n\" . str_repeat( '-', 46 ) . \"\\n\"; $e .= \"Si suvestine ateina kas pirmadieni. Jei ji NEATEJO — sargas\\n\"; $e .= \"neveikia, ir tai pats svarbiausias signalas.\\n\"; self::siusti( 'Savaitine suvestine', $e ); /* valymas"
+   ],
+   "petshop-seo.php": [
+    "$s, count( $s ) . ' sitemap GSC, su klaidomis: ' . count( $err ) ); } if ( 1 === (int) gmdate( 'N' ) || ! get_option( 'ps_seo_svoris_at' ) ) { // pirmadieniais + pirmas kartas $w = self::traukti_svoris(); if ( ! is_wp_error( $w ) ) { update_option( 'ps_seo_svoris_at', current_time( 'mysql', true ),"
+   ]
+  },
+  "siuntos_faktai": [
+   {
+    "d": "2026-09-14",
+    "n": "24"
+   },
+   {
+    "d": "2026-09-15",
+    "n": "14"
+   },
+   {
+    "d": "2026-09-16",
+    "n": "13"
+   },
+   {
+    "d": "2026-09-17",
+    "n": "10"
+   },
+   {
+    "d": "2026-09-18",
+    "n": "11"
+   },
+   {
+    "d": "2026-09-20",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-21",
+    "n": "21"
+   },
+   {
+    "d": "2026-09-22",
+    "n": "11"
+   },
+   {
+    "d": "2026-09-23",
+    "n": "20"
+   },
+   {
+    "d": "2026-09-24",
+    "n": "11"
+   },
+   {
+    "d": "2026-09-25",
+    "n": "7"
+   }
+  ],
+  "cols_siuntos": [
+   "id",
+   "uzsakymas_id",
+   "shipment_id",
+   "sandelis",
+   "vezejas",
+   "siuntos_nr",
+   "paketu_sk",
+   "pristatymo_tipas",
+   "sukurta_at",
+   "diena",
+   "tiekejui_issiusta_at",
+   "registruota_at",
+   "isvezta_at",
+   "pristatyta_at",
+   "atsiimta_at",
+   "svoris_deklaruotas_g",
+   "kaina_vezejo_ct",
+   "tarifo_id",
+   "statusas",
+   "problema_kodas",
+   "dienos_iki_pristatymo",
+   "saltinis",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija",
+   "sandelio_saltinis",
+   "dydis"
+  ],
+  "issiuntimo_greitis": []
+ }
+}
