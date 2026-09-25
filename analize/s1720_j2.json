@@ -1,0 +1,103 @@
+{
+ "3": {
+  "v": "S1720j",
+  "faze": "3",
+  "t": "2026-09-25 19:32:18",
+  "klase": "yra",
+  "plugin_md5": "29fb5f79559cfc8024eb45381b49ed42",
+  "schema_md5": "5a7e763f5306b88219c60dd1405c43f1",
+  "prekes": {
+   "18560 AV Exclusion 12kg": {
+    "http": 200,
+    "stock": "Turime",
+    "pazadas": "Išsiunčiame per 1–2 d. d.Į paštomatą nemokamai · kurjeriu 3,99 €",
+    "kg": "6,66 €/kg",
+    "schema": "\"handlingTime\":{\"@type\":\"QuantitativeValue\",\"minValue\":\"1\",\"maxValue\":\"2\",\"unitCode\":\"DAY\"}"
+   },
+   "26340 VF Flexi": {
+    "http": 200,
+    "stock": "Turime",
+    "pazadas": "Išsiunčiame per 1–2 d. d.Į paštomatą 2,15 € · nemokamai nuo 30,00 € · kurjeriu 3,99 €",
+    "kg": "-",
+    "schema": "\"handlingTime\":{\"@type\":\"QuantitativeValue\",\"minValue\":\"1\",\"maxValue\":\"2\",\"unitCode\":\"DAY\"}"
+   },
+   "14805 ZB Monge 12kg": {
+    "http": 200,
+    "stock": "Turime",
+    "pazadas": "Išsiunčiame per 1–2 d. d.Į paštomatą nemokamai · kurjeriu 3,99 €",
+    "kg": "7,80 €/kg",
+    "schema": "\"handlingTime\":{\"@type\":\"QuantitativeValue\",\"minValue\":\"1\",\"maxValue\":\"2\",\"unitCode\":\"DAY\"}"
+   },
+   "35316 konservai 400g": {
+    "http": 200,
+    "stock": "Turime",
+    "pazadas": "Išsiunčiame per 1–2 d. d.Į paštomatą 2,15 € · nemokamai nuo 30,00 € · kurjeriu 3,99 €",
+    "kg": "-",
+    "schema": "\"handlingTime\":{\"@type\":\"QuantitativeValue\",\"minValue\":\"1\",\"maxValue\":\"2\",\"unitCode\":\"DAY\"}"
+   },
+   "18054 Leger 10kg": {
+    "http": 200,
+    "stock": "Turime",
+    "pazadas": "Išsiunčiame per 1–2 d. d.Į paštomatą nemokamai · kurjeriu 3,99 €",
+    "kg": "4,09 €/kg",
+    "schema": "\"handlingTime\":{\"@type\":\"QuantitativeValue\",\"minValue\":\"1\",\"maxValue\":\"2\",\"unitCode\":\"DAY\"}"
+   },
+   "15938 variable outofstock": {
+    "http": 200,
+    "stock": "-",
+    "pazadas": "-",
+    "kg": "-",
+    "schema": "\"handlingTime\":{\"@type\":\"QuantitativeValue\",\"minValue\":\"1\",\"maxValue\":\"2\",\"unitCode\":\"DAY\"}"
+   }
+  },
+  "svoriai": {
+   "Josera Kitten sausas pašaras kačiukams 10+1kg AKCIJA": 11,
+   "Exclusion Hypoallergenic … M/L 12 kg": 12,
+   "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg": 4,
+   "Kraikas katėms TOFU BeloCat, 6 l": 0,
+   "Josera Leger 10 kg – sausas maistas katėms": 10,
+   "Exclusion diet hypo konservai 400g": 0.4,
+   "Pašaras JosiCat Sterilised Classic, 15+3kg AKCIJA": 18,
+   "Royal Canin Sensible 33, 10 + 2 kg": 12
+  },
+  "kg_kat": {
+   "18560": true,
+   "26340": false,
+   "35316": false
+  },
+  "krepselis_tuscias": "",
+  "php_error_tail": "s.order_id' in 'on clause' for query SELECT ROUND(AVG(TIMESTAMPDIFF(HOUR,o.date_paid_gmt,s.isvezta_at)),1) val_vid, SUM(TIMESTAMPDIFF(HOUR,o.date_paid_gmt,s.isvezta_at)<=48) iki2d, COUNT(*) n FROM gaj6_ps_fakt_siuntos s JOIN gaj6_wc_order_operational_data o ON o.order_id=s.order_id WHERE s.isvezta_at IS NOT NULL AND s.sukurta_at>=NOW()-INTERVAL 14 DAY made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}\n[25-Sep-2026 18:39:57 UTC] Užsakymas patvirtintas: užsakymas 36314, suma: 32.89EUR\n[25-Sep-2026 19:31:27 UTC] Cron įvykio perplanavimo klaida kabliui: petshop_import_tempas, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":\"petshop_2min\",\"args\":[],\"interval\":120}\n",
+  "heartbeat": 200
+ },
+ "4": {
+  "v": "S1720j",
+  "faze": "4",
+  "t": "2026-09-25 19:32:02",
+  "bytes": 7422,
+  "md5": "0ce1f0a0b03535af3ef2c3e8757f826f",
+  "atitikmenys": [
+   "s nuo 30 Eur, jei neviršijama pasirinkto vežėjo svorio riba. Prekes išsiunčiame per 1–3 darbo dienas.</p>",
+   "<p><strong>Prekės išsiunčiamos per 1–3 darbo dienas, o pristatomos – per 1 darbo dieną</strong>, jeigu siuntų vežėjo pervežimo paslauga vyksta sklandžiai.</p>"
+  ],
+  "pakeitimai": [
+   1,
+   1
+  ],
+  "po": [
+   "viršijama pasirinkto vežėjo svorio riba. Prekes išsiunčiame per 1–2 darbo dienas. Jei užsakyme yra prekių iš skirtingų tiekėjų – per 3 darbo dienas.</p>",
+   "<p><strong>Prekės išsiunčiamos per 1–2 darbo dienas (užsakymai su prekėmis iš skirtingų tiekėjų – per 3 darbo dienas), o pristatomos – per 1 darbo dieną</strong>, jeigu siuntų vežėjo pervež"
+  ],
+  "irasyta_md5": "d34e24a4dfde8cda1bd2753380ea73b7",
+  "gyvai": [
+   "viršijama pasirinkto vežėjo svorio riba. Prekes išsiunčiame per 1–2 darbo dienas. Jei užsakyme yra prekių iš skirtingų tiekėjų – per 3 darbo dienas.\n\nUžsakymai surenkami ir išsiunčiami tik darbo dienomis.\nPrekių prista",
+   "skirtingų sandėlių.\nPristatymo terminai\nPrekės išsiunčiamos per 1–2 darbo dienas (užsakymai su prekėmis iš skirtingų tiekėjų – per 3 darbo dienas), o pristatomos – per 1 darbo dieną, jeigu siuntų vežėjo pervežimo pasla"
+  ]
+ },
+ "v": "dep-193047",
+ "kurimas": 200,
+ "sid": 6499,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
