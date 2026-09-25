@@ -1,0 +1,3 @@
+<?php
+/** Plugin Name: TEMP PS S1719w — valymo cron patikra */
+add_action('wp_loaded', function(){ if(!isset($_GET['ps_s1719w'])) return; $n=wp_next_scheduled('ps_lenteliu_valymas'); $r=['v'=>'S1719w','cron'=>$n?date('Y-m-d H:i',$n):null,'klase'=>class_exists('Petshop_Lenteliu_Valymas'),'botu_sargas'=>class_exists('Petshop_Botu_Sargas')?Petshop_Botu_Sargas::suvestine(1):null,'botu_cron'=>wp_next_scheduled('ps_botu_sargas_valymas')?date('Y-m-d H:i',wp_next_scheduled('ps_botu_sargas_valymas')):null]; header('Content-Type: application/json'); echo json_encode($r,JSON_UNESCAPED_UNICODE); exit; },1);
