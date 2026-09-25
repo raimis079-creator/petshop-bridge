@@ -1,0 +1,87 @@
+{
+ "1": {
+  "v": "S1720g",
+  "psl_kasa": {
+   "id": 13,
+   "title": "Apmokėjimas",
+   "slug": "kasa",
+   "wc_checkout_page_id": "13",
+   "rm_title": ""
+  },
+  "endpoints": {
+   "checkout": "order-pay",
+   "received": "order-received"
+  },
+  "kodas": {
+   "wp-content/mu-plugins/petshop-analitika-langas.php": [
+    "' → verta rinkti sutikimą kasoje matomiau.'"
+   ],
+   "wp-content/mu-plugins/petshop-botu-sargas.php": [
+    "'#^/(wp-json|wp-admin|wp-login\\.php|kasa/?(\\?|$)|krepselis|paskyra|feed/)#'"
+   ],
+   "wp-content/mu-plugins/petshop-kelio-fiksavimas.php": [
+    "'kasoje'"
+   ],
+   "wp-content/mu-plugins/petshop-pakartoti.php": [
+    "'kasa'"
+   ],
+   "wp-content/mu-plugins/ps-sablonai/refill-pakartoti.php": [
+    "'kasa'"
+   ],
+   "wp-content/mu-plugins/ps-sablonai/win-back-pakartoti.php": [
+    "'kasa'"
+   ]
+  },
+  "snippets": [
+   {
+    "id": "6495",
+    "name": "TEMP PS dep-184046"
+   }
+  ],
+  "gettext_wc": {
+   "Checkout": "Apmokėjimas",
+   "Proceed to checkout": "Tęsti atsiskaitymą",
+   "Proceed to Checkout": "Proceed to Checkout",
+   "Cart": "Krepšelis",
+   "View cart": "Krepšelis",
+   "Go to checkout": "Apmokėti",
+   "Place order": "Apmokėti",
+   "Return to cart": "Grįžti į krepšelį",
+   "Continue shopping": "Pirkti daugiau",
+   "Your order": "Jūsų užsakymas",
+   "Billing details": "Pirkėjo duomenys",
+   "Ship to a different address?": "Siųsti kitu adresu?",
+   "Have a coupon?": "Turite nuolaidos kodą?",
+   "Update cart": "Atnaujinti krepšelį",
+   "Cart totals": "Krepšelio skaičiavimas"
+  },
+  "html": {
+   "/krepselis/": {
+    "http": 200,
+    "frazes": [],
+    "title": "Krepšelis - Petshop.lt"
+   },
+   "/kasa/": {
+    "http": 200,
+    "frazes": [],
+    "title": "Krepšelis - Petshop.lt"
+   },
+   "/": {
+    "http": 200,
+    "frazes": [],
+    "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt"
+   }
+  },
+  "menu": [],
+  "laiskai": [],
+  "failu_su_kasa_slug": 2,
+  "snippets_su_slug": 1
+ },
+ "v": "dep-184046",
+ "kurimas": 200,
+ "sid": 6495,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
