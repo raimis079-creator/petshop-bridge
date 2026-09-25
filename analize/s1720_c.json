@@ -1,0 +1,55 @@
+{
+ "v": "dep-173905",
+ "kurimas": 200,
+ "sid": 6485,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "g": {
+  "v": "S1720c",
+  "faze": "g",
+  "t": "2026-09-25 17:40:35",
+  "filters": {
+   "flatsome-live-search.php": [
+    "flatsome_ajax_search_query",
+    "flatsome_ajax_search_post_type",
+    "flatsome_ajax_search_function",
+    "flatsome_ajax_search_products_search_query",
+    "flatsome_ajax_search_products_by_tag_search_query",
+    "flatsome_ajax_search_products_by_sku_search_query",
+    "flatsome_ajax_search_products_by_sku_search_meta_query_args"
+   ]
+  },
+  "hits": [
+   "/inc/extensions/flatsome-live-search/flatsome-live-search.php",
+   "/inc/integrations/wcml/class-wcml.php"
+  ],
+  "analitika_search": [
+   "\tconst OPT_DRUSKA   = 'ps_web_druska';\n\tconst OPT_ATMESTA  = 'ps_web_atmesta_purchase';\n\tconst OPT_ZALIU_D  = 'ps_stat_zaliu_dienos';   /* esamas, 90 */\n\n\t/** Ivykiai, kuriuos priimam is dataLayer. `purchase` cia NERA ir NEBUS. */\n\tconst IS_DATALAYER = array( 'view_item', 'add_to_cart', 'view_cart', 'begin_checkout' );\n\n\t/** Musu pacio ivykiai. */\n\tconst SAVI = array( 'pageview', 'view_category', 'search', 'filter', 'skaiciuokle', 'quiz_start', 'remove_from_cart', 'error404' );\n\n\t/** 🔴 NIEKADA nepriimami — nesvarbu, kas ir kaip juos atsiustu. */\n\tconst DRAUDZIAMI = array( 'purchase', 'refund' );\n\n\tpublic static function init() {\n\t\tadd_action( 'rest_api_init', array( __CLASS__, 'marsrutai' ) );\n\t\tadd_action( 'wp_footer', array( __CLASS__, 'beacon' ), 99 );\n\t\tadd_action( 'init', array( __CLASS_",
+   "tion.search,\n      raktas:<?php echo wp_json_encode( $raktas ); ?>,\n      reiksme:<?php echo (int) $rez; ?>,\n      landing:<?php echo (int) $landing; ?>,\n      rh:<?php echo wp_json_encode( $rh === $savas ? '' : $rh ); ?>,\n      pr:<?php echo is_user_logged_in() ? 1 : 0; ?>});\n\n<?php if ( 'paieska' === $pusl ) : ?>\n/* 2) paieska — atskirai, kad „0 rezultatu\" butu matomas pjuvis */\npush({tipas:'search',raktas:<?php echo wp_json_encode( $raktas ); ?>,reiksme:<?php echo (int) $rez; ?>});\n<?php endif; ?>\n<?php if ( '404' === $pusl ) : ?>\npush({tipas:'error404',url:location.pathname+location.search});\n<?php endif; ?>\n\n/* 3) dataLayer — klausomes esamo (snippet 614), nieko nedubliuojam */\ntry{\n  var dl=window.dataLayer=window.dataLayer||[];\n  function imk(a){\n    if(!a||!a.event)return;\n    if(LEI",
+   "\t'kanalas'    => 'COALESCE(kanalas, \\'direct\\')',\n\t\t\t'puslapis'   => 'COALESCE(url_kelias, \\'\\')',\n\t\t\t'tipas'      => 'COALESCE(pusl_tipas, \\'\\')',\n\t\t\t'irenginys'  => 'COALESCE(irenginys, \\'\\')',\n\t\t\t'salis'      => 'COALESCE(salis, \\'\\')',\n\t\t\t'paieska'    => 'COALESCE(raktas, \\'\\')',\n\t\t);\n\n\t\t$viso = 0;\n\t\tforeach ( $pjuviai as $pjuvis => $laukas ) {\n\t\t\t$kur = ( 'paieska' === $pjuvis ) ? \"AND tipas='search'\" : '';\n\t\t\t$eil = $wpdb->get_results( $wpdb->prepare(\n\t\t\t\t\"SELECT $laukas AS r,\n\t\t\t\t        COUNT(DISTINCT sesija) apsilankymai,\n\t\t\t\t        COUNT(DISTINCT lankytojas_d) lankytojai,\n\t\t\t\t        SUM(CASE WHEN tipas='pageview' THEN 1 ELSE 0 END) perziuros,\n\t\t\t\t        SUM(CASE WHEN tipas='view_item' THEN 1 ELSE 0 END) vi,\n\t\t\t\t        SUM(CASE WHEN tipas='add_to_cart' THEN 1 ELSE 0 END) atc,\n\t\t\t\t    "
+  ],
+  "flatsome_ver": "3.20.7",
+  "search_opts": {
+   "search_result": 0,
+   "search_placeholder": "Ieškoti prekių ...",
+   "search_ajax": false,
+   "header_search_form_style": "",
+   "search_categories": false
+  },
+  "mods_search": {
+   "header_search_style": "dropdown",
+   "header_search_form_style": "",
+   "search_placeholder": "Ieškoti prekių ...",
+   "header_search_width": "93",
+   "search_result": 0
+  }
+ },
+ "h": {
+  "v": "S1720c",
+  "faze": "h",
+  "t": "2026-09-25 17:40:44",
+  "ERR": "Cannot access offset of type string on string @19"
+ }
+}
