@@ -1,0 +1,72 @@
+{
+ "2": {
+  "v": "S1721i",
+  "faze": "2",
+  "petshop-dydziai.php": {
+   "md5_ok": true,
+   "md5_gyvas": "2bed4cdc1671cb64ad549e2e81dd386d",
+   "kb": 14.1,
+   "lint": "ok",
+   "irasyta": "17d96cd48f41c32c9460d15a6378406c"
+  },
+  "petshop-dydziai-kortele.php": {
+   "md5_ok": true,
+   "md5_gyvas": "NERA",
+   "kb": 5.7,
+   "lint": "ok",
+   "irasyta": "188c0e674ca1df35b64810afd7715053"
+  },
+  "heartbeat": 200
+ },
+ "3": {
+  "v": "S1721i",
+  "faze": "3",
+  "seima": {
+   "18584": "exclusion-hypo-mazu-kiauliena | 800 g | [0.8,0]",
+   "18587": "exclusion-hypo-mazu-kiauliena | 7 kg | [7,0]",
+   "18590": "exclusion-hypo-mazu-kiauliena | 2 kg | [2,0]",
+   "36002": "exclusion-hypo-mazu-kiauliena | 2 × 2 kg | [4,0]",
+   "36003": "exclusion-hypo-mazu-kiauliena | 7 kg × 2 | [14,0]"
+  },
+  "eilutes": [
+   "18584 800 g 10.59 kg0.8 perkg13.24 sut0 best0 pop0 pard18",
+   "18590 2 kg 21.95 kg2 perkg10.98 sut17 best0 pop0 pard139",
+   "36002 2 × 2 kg 42.5 kg4 perkg10.63 sut20 best0 pop0 pard1",
+   "18587 7 kg 56.99 kg7 perkg8.14 sut38 best0 pop1 pard193",
+   "36003 7 kg × 2 111 kg14 perkg7.93 sut40 best1 pop0 pard1"
+  ],
+  "preke": {
+   "code": 200,
+   "ps_pak": 5,
+   "2x2": true,
+   "pop": true,
+   "best": true,
+   "pos_pak": 126009,
+   "pos_stock": 132996,
+   "pos_excerpt": 72216
+  },
+  "preke_html": "id=\"ps-pak\" data-pid=\"18590\" data-gyv=\"šuniui\"><div class=\"ps-pak__head\"><span class=\"ps-pak__t\">Pakuotė</span><span class=\"ps-pak__sv\"><a href=\"#ps-calc\" class=\"ps-pak__calc\">Kiek užteks jūsų šuniui? → įveskite svorį</a></span></div><div class=\"ps-pak__wrap\"><table class=\"ps-pak__t\"><thead><tr><th>Dydis</th><th class=\"n\">Kaina</th><th class=\"n\">€/kg</th><th class=\"n\">Sutaupai</th><th class=\"n ps-pak__dcol\" hidden>Užtenka</th></tr></thead><tbody><tr class=\"ps-pak__r\" data-id=\"18584\" data-kg=\"0.8\" data-kaina=\"10.59\"><td><a class=\"ps-pak__sz\" href=\"https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-800-g/\">800 g</a></td><td class=\"n\"><span class=\"woocommerce-Price-amount amount\">10,59&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&euro;</span></span></td><td class=\"n ps-pak__kg\">13,24</td><td class=\"n ps-pak__sut\">—</td><td class=\"n ps-pak__d\" hidden></td></tr><tr class=\"ps-pak__r ps-pak__r--cur\" data-id=\"18590\" data-kg=\"2\" data-kaina=\"21.95\"><td><span class=\"ps-pak__sz\">2 kg</span></td><td class=\"n\"><span class=\"woocommerce-Price-amount amount\">21,95&nbsp;<span class=\"woocommerce-Price-currencySymbol\">&euro;</span></span></td><td class=\"n ps-pak__kg\">10,98</td><td class=\"n ps-pak__sut\">−17 % už kg</td><td class=\"n ps-pak__d\" hidden></td></tr><tr class=\"ps-pak__r\" data-id=\"36002\" data-kg=\"4\" data-kaina=\"42.5\"><td><a class=\"ps-pak__sz\" href=\"https://petshop.lt/product/2-vnt-exclusion-2-kg-kiauliena-su-zirneliais/\">2 × 2 kg</a><span class=\"ps-pak__dp\">DP pakas</span></td><td class=\"n\"><span class=\"wo",
+  "kat": {
+   "code": 200,
+   "ps_dk": 2,
+   "chips": 12,
+   "js": true
+  },
+  "kat_html": "price-wrapper\"> <span class=\"price\"><span class=\"woocommerce-Price-amount amount\"><bdi>42,50&nbsp;<span class=\"woocommerce-Price-currencySymbol\" translate=\"no\">&euro;</span></bdi></span></span> <div class=\"ps-dk\" data-cur=\"36002\" data-n=\"[{&quot;id&quot;:18584,&quot;u&quot;:&quot;800 g&quot;,&quot;url&quot;:&quot;https:\\/\\/petshop.lt\\/product\\/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-800-g\\/&quot;,&quot;yra&quot;:1,&quot;ph&quot;:&quot;&lt;span class=\\&quot;woocommerce-Price-amount amount\\&quot;&gt;&lt;bdi&gt;10,59&nbsp;&lt;span class=\\&quot;woocommerce-Price-currencySymbol\\&quot; translate=\\&quot;no\\&quot;&gt;&euro;&lt;\\/span&gt;&lt;\\/bdi&gt;&lt;\\/span&gt;&quot;,&quot;kg&quot;:&quot;13,24 \\u20ac\\/kg&quot;,&quot;best&quot;:0,&quot;img&quot;:&quot;https:\\/\\/petshop.lt\\/wp-content\\/uploads\\/2026\\/06\\/exclusion-sausas-edalas-mazu-veisliu-sunims-su-kiauliena-ir-zirniais-300x300.png&quot;,&quot;ss&quot;:&quot;https:\\/\\/petshop.lt\\/wp-content\\/uploads\\/2026\\/06\\/exclusion-sausas-edalas-mazu-veisliu-sunims-su-kiauliena-ir-zirniais-300x300.png 300w, https:\\/\\/petshop.lt\\/wp-content\\/uploads\\/2026\\/06\\/exclusion-sausas-edalas-mazu-veisliu-sunims-su-kiauliena-ir-zirniais-100x100.png 100w, https:\\/\\/petshop.lt\\/wp-content\\/uploads\\/2026\\/06\\/exclusion-sausas-edalas-mazu-veisliu-sunims-su-kiauliena-ir-zirniais-400x400.png 400w, https:\\/\\/petshop.lt\\/wp",
+  "dienos": "{\"w\":8,\"d\":[]}",
+  "heartbeat": 200,
+  "log_uodega": [
+   "[26-Sep-2026 11:40:26 UTC] WordPress database error Unknown column 'ivyko' in 'INSERT INTO' for query INSERT INTO `gaj6_ps_sargas_klaidos` (`ivyko`, `tipas`, `zinute`) VALUES ('2026-09-26 14:40:26', 'login', 'uzrakinta: 167.172.120.116 (bandytas vardas: Raimis)') made by wp_signon, wp_authenticate, do_action('wp_login_failed'), WP_Hook->do_action, WP_Hook->apply_filters, Petshop_Prisijungimo_Sargas::nesekme, Petshop_Prisijungimo_Sargas::zurnalas",
+   "[26-Sep-2026 12:14:14 UTC] Užsakymas patvirtintas: užsakymas 36321, suma: 39.99EUR",
+   "[26-Sep-2026 12:30:32 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 22",
+   "[26-Sep-2026 12:39:35 UTC] Užsakymas patvirtintas: užsakymas 36322, suma: 30.88EUR"
+  ]
+ },
+ "v": "dep-130020",
+ "kurimas": 200,
+ "sid": 6520,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
