@@ -1,0 +1,127 @@
+{
+ "1": {
+  "v": "S1721w",
+  "faze": "1",
+  "kompozicija_head": "private static function kompozicija( $pid, $komponentai, $priverstinai = false ) { /* * I parasa iskaitom ir algoritmo versija. Kitaip, pakeitus isdestyma, * seni rinkiniai liktu su sena nuotrauka net ir issaugoti is naujo — * juk komponentai nepasikeite, tik piesimo budas. */ $parasas = md5( self::KOMPOZICIJOS_VERSIJA . '|' . implode( ',', $komponentai ) ); if ( ! $priverstinai && get_post_thumbnail_id( $pid ) ) { $sena = (string) get_post_meta( $pid, '_ps_rink_komp_hash', true ); if ( $sena === $parasas ) { return array( 'praleista' => true ); } } update_post_meta( $pid, '_ps_rink_komp_hash', $parasas ); /* * Anksciau cia pirma buvo kviecama snippet 539 funkcija * `petshop_generate_composition()`, o mano isdestymas likdavo atsargine * varianta. Del to nauja kompozicija (herojus + palydovai) taip ir * nepasirodydavo — 539 pieste 3x1 juosta ir grazindavo rezultata pirma. * * Dabar rinkiniu langas piesia pats: isdestymo taisykle (2-3 prekes — * herojus, 4+ — tinklelis) yra sio lango sprendimas, todel ir piesimas * turi likti cia. Snippet 539 forma nepaliesta — ji piesia savo. */ return self::kompozicija_vidine( $pid, $komponentai ); } /** * Kompozicijos nuotrauka. * * Drobe VISADA kvadratine — katalogo miniatiuros kvadratines, o ankstesne * 3x1 juosta ten virsdavo siaura ruozeliu su tusciais pakrasciais. * * Du isdestymai (savininko sprendimas 2026-08-13): * * 2-3 prekes — HEROJUS + ",
+  "image_vietos": [
+   " 'foto' => ( $prod && $prod->get_image_id() ) ? wp_get_attachment_image_url( $prod->get_image_id(), 'thumbnail' ) : '',",
+   " 'foto' => $baze->get_image_id() ? wp_get_attachment_image_url( $baze->get_image_id(), 'thumbnail' ) : '',",
+   " 'foto' => $vp->get_image_id() ? wp_get_attachment_image_url( $vp->get_image_id(), 'thumbnail' ) : '',",
+   " 'foto' => wp_get_attachment_image_url( $p->get_image_id(), 'thumbnail' ) ?: '',",
+   " $img = $cp->get_image_id() ? wp_get_attachment_image( $cp->get_image_id(), 'thumbnail', false, array( 'class' => 'ps-rink-foto' ) ) : '';",
+   " $img = $baze->get_image_id();",
+   " if ( $img ) { set_post_thumbnail( $pid, $img ); }",
+   " 'foto' => ( $prod && $prod->get_image_id() ) ? wp_get_attachment_image_url( $prod->get_image_id(), 'thumbnail' ) : '',",
+   " if ( ! $cp || ! $cp->get_image_id() ) { continue; }",
+   " $f = get_attached_file( $cp->get_image_id() );",
+   " set_post_thumbnail( $pid, $att );"
+  ],
+  "isvalyti_head": "private static function isvalyti_pedsakus( $id ) { global $wpdb; $p = $wpdb->prefix; $wpdb->delete( $p . 'wc_mnm_child_items', array( 'container_id' => (int) $id ), array( '%d' ) ); /* Musu pacio piesta kompozicija. Gamintoju nuotraukos NETRINAMOS: imamos tik tos, kurios yra sio rinkinio vaikai IR musu vardu. */ $att = $wpdb->get_col( $wpdb->prepare( \"SELECT ID FROM {$wpdb->posts} WHERE post_parent=%d AND post_type='attachment' AND post_title LIKE %s\", (int) $id, 'rink-kompozicija-%' ) ); foreach ( (array) $att as $a ) { wp_delete_attachment( (int) $a, true ); } } private static function po_trynimo( $id, $ivykis ) { if ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) { Petshop_Ivykiai::irasyti( $id, $ivykis, array( 'saltinis' => 'Rinkinių langas' ) ); } delete_transient( 'ps_rink_medis' ); } /** * Siuksline ",
+  "isvalyti_kvietimai": [
+   " self::isvalyti_pedsakus( $id );",
+   " private static function isvalyti_pedsakus( $id ) {",
+   " self::isvalyti_pedsakus( $id );"
+  ],
+  "mnm_cols": [
+   "child_item_id",
+   "product_id",
+   "container_id",
+   "menu_order"
+  ],
+  "su_att": {
+   "35392": {
+    "st": "publish",
+    "thumb": 0,
+    "att_st": "publish",
+    "att_parent": 35392,
+    "failas": "yra"
+   },
+   "35396": {
+    "st": "publish",
+    "thumb": 0,
+    "att_st": "publish",
+    "att_parent": 35396,
+    "failas": "yra"
+   },
+   "35404": {
+    "st": "publish",
+    "thumb": 0,
+    "att_st": "publish",
+    "att_parent": 35404,
+    "failas": "yra"
+   },
+   "35406": {
+    "st": "publish",
+    "thumb": 0,
+    "att_st": "publish",
+    "att_parent": 35406,
+    "failas": "yra"
+   },
+   "35408": {
+    "st": "publish",
+    "thumb": 0,
+    "att_st": "publish",
+    "att_parent": 35408,
+    "failas": "yra"
+   }
+  },
+  "be_att": {
+   "35070": {
+    "st": "publish",
+    "thumb": 0,
+    "hash": "9b41354d714f6483e4c27396d6cbd495",
+    "vaikai": [
+     "19104",
+     "19092",
+     "16317",
+     "16298"
+    ],
+    "kiekiai": "{\"19104\":3,\"19092\":3,\"16317\":3,\"16298\":3}"
+   },
+   "35076": {
+    "st": "publish",
+    "thumb": 0,
+    "hash": "72c09a3f1d43fac9d8a743c7369876be",
+    "vaikai": [
+     "18125",
+     "16305",
+     "16302",
+     "14951"
+    ],
+    "kiekiai": "{\"18125\":4,\"16305\":4,\"16302\":4,\"14951\":1}"
+   },
+   "35079": {
+    "st": "publish",
+    "thumb": 0,
+    "hash": "f5a1149c21972cd10a1b615acf887bcb",
+    "vaikai": [
+     "19598",
+     "19582",
+     "19570",
+     "19488",
+     "19479",
+     "19471"
+    ],
+    "kiekiai": "{\"19598\":1,\"19582\":1,\"19570\":1,\"19488\":1,\"19479\":1,\"19471\":1}"
+   },
+   "35085": {
+    "st": "publish",
+    "thumb": 0,
+    "hash": "488de86c6f0457b35568e52a68b8d795",
+    "vaikai": [
+     "19098",
+     "16311",
+     "16305"
+    ],
+    "kiekiai": "{\"19098\":4,\"16311\":4,\"16305\":4}"
+   }
+  }
+ },
+ "v": "dep-163928",
+ "kurimas": 200,
+ "sid": 6547,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
