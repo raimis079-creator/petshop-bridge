@@ -1,0 +1,167 @@
+{
+ "1": {
+  "v": "S1721h",
+  "calc_rest": [
+   "public static function init() {",
+   "public static function enqueue() {",
+   "wp_localize_script( 'ps-product-calc', 'PSPetConfig', array(",
+   "private static function context( $product ) {",
+   "$species = 'dog';",
+   "$species = in_array( 'katems', $sp, true ) ? 'cat' : 'dog';",
+   "return array( 'pid' => $pid, 'has_table' => $has_table, 'species' => $species, 'pets' => $pets );",
+   "private static function words( $species ) {",
+   "return ( $species === 'cat' )",
+   "public static function hook_line() {",
+   "$w = self::words( $c['species'] );",
+   "public static function widget() {",
+   "$w = self::words( $c['species'] );",
+   "data-species=\"<?php echo esc_attr( $c['species'] ); ?>\"",
+   "data-pets=\"<?php echo (int) $c['pets']; ?>\"",
+   "data-listurl=\"<?php echo esc_attr( ( class_exists( 'Petshop_Weight_Filter' ) && Petshop_Weight_Filter::enabled() ) ? Petshop_Weight_Filter::target_url( $c['species'] ) : '' ); ?>\">",
+   "private static function assets() {"
+  ],
+  "fs_file": "class-feeding-service.php",
+  "fs_ns": "",
+  "fs_fns": [
+   "evaluate( array $in )",
+   "apply_axis_defaults( $rt, $in )",
+   "needs_input_age()",
+   "calc_enabled()",
+   "calc( $in )",
+   "table_weight_range( $rows )",
+   "kg( $v )",
+   "calc_one( $rows, $axis_flat, $wb, $w, $conds )",
+   "raw_at_weight( $rows, $axis_flat, $wb, $w, $cat_axis, $act_sel, $act_opts )",
+   "raw_over_interval( $rows, $axis_flat, $wb, $iv, $cat_axis, $act_sel, $act_opts )",
+   "activity_options( $rows, $axis )",
+   "act_label( $c )",
+   "interval_options( $rows )",
+   "iv( $lo, $hi )",
+   "price_ctx( $product )",
+   "money( $v )",
+   "lt( $v )",
+   "basis_label( $basis, $activity_mode, $too_wide )",
+   "msg( $status, $reason )",
+   "shell( $status, $avail, $reason, $message_lt )",
+   "unavailable( $reason, $message_lt )"
+  ],
+  "fs_calc": [
+   "*  [ 'status'=>ok|partial|needs_input|redirect|unavailable|system_error,",
+   "*    'tier'=>A|B1|B2|D|null, 'method'=>..., 'portion_g'=>['min','max']|null,",
+   "public static function evaluate( array $in ) {",
+   "$out = function( $status, $tier = null, $method = null, $vals = array() ) use ( $empty, &$issues, &$meta ) {",
+   "return array_merge( array( 'status' => $status, 'tier' => $tier, 'method' => $method ),",
+   "switch ( $rt['status'] ) {",
+   "$issues[] = array( 'code' => $rt['status'], 'severity' => 'error', 'layer' => 'repository' );",
+   "$issues[] = array( 'code' => 'REPO_' . ( $rt['status'] ?? 'UNKNOWN' ), 'severity' => 'error', 'layer' => 'repository' );",
+   "return $out( 'needs_input' );",
+   "$package_g = ( $pkg['status'] === 'resolved' ) ? $pkg['sellable_unit_food_g'] : null;",
+   "$fmt = function( $p ) { return $p === null ? null : array( 'min' => $p[0], 'max' => $p[1] ); };",
+   "switch ( $calc['status'] ) {",
+   "$issues[] = array( 'code' => $calc['status'], 'severity' => 'info', 'layer' => 'calculator' );",
+   "return $out( 'needs_input' );",
+   "$issues[] = array( 'code' => $calc['status'], 'severity' => 'info', 'layer' => 'calculator', 'notes' => $calc['notes'] ?? array() );",
+   "$issues[] = array( 'code' => $calc['status'], 'severity' => 'info', 'layer' => 'calculator' );",
+   "*   age_range      -> pagal REALU augintinio amzi (age_months); jo nesant -> needs_input.",
+   "protected static function needs_input_age() {",
+   "$o = self::shell( 'needs_input', array( 0, 0, 0 ), array( 'AGE_REQUIRED' ), 'Nurodykite augintinio gimimo datą — gamintojas normas pateikia pagal amžių.' );",
+   "public static function calc( $in ) {",
+   "switch ( $rt['status'] ) {",
+   "if ( $need_age ) { return self::needs_input_age(); }",
+   "* už lentelės ribų → WEIGHT_OUT_OF_RANGE, kaip ir buvo.",
+   "if ( $cur_pol !== 'range_match' ) {",
+   "$o = self::shell( 'needs_input', array( false, false, false ), array( 'ADULT_WEIGHT_REQUIRED' ),",
+   "$o = self::shell( 'needs_input', array( false, false, false ), array( 'WEIGHT_MISSING' ), null );",
+   "$o = self::unavailable( array( 'WEIGHT_OUT_OF_RANGE' ), $msg );",
+   "return self::shell( 'needs_input', array( false, false, false ), array( $rp['need'] ), null );",
+   "$raw_min = (float) $rp['min']; $raw_max = (float) $rp['max'];",
+   "$sellable = ( isset( $pkg['status'] ) && $pkg['status'] === 'resolved' ) ? (int) $pkg['sellable_unit_food_g'] : null;"
+  ],
+  "pet_fns": [
+   "'current_weight_kg',",
+   "case 'current_weight_kg':",
+   "$out['current_weight_kg'] = null;",
+   "$out['current_weight_kg'] = round( $w, 2 );",
+   "$out['current_weight_kg'] = null;",
+   "if ( isset( $data['current_weight_kg'] ) && null !== $data['current_weight_kg'] ) {",
+   "if ( 'current_weight_kg' === $f ) {",
+   "public static function get_pet( $pet_id ) {"
+  ],
+  "pet_ui": [
+   "public static function init() {",
+   "public static function add_endpoint() {",
+   "public static function add_menu_item( $items ) {",
+   "public static function body_class( $classes ) {",
+   "public static function render_account_page() {",
+   "public static function shortcode_form( $atts ) {",
+   "public static function enqueue_assets( $force = false ) {",
+   "public static function flush_rewrite() {"
+  ],
+  "js_result": [
+   "var lastWeight = null;",
+   "var days = rng(d.days_min, d.days_max);",
+   "var h = '<div class=\"ps-calc-res\">';",
+   "if (days !== null) {",
+   "h += '<div class=\"big\">Apie ' + esc(days) + ' ' + dienos(d.days_max || d.days_min) + '</div>';",
+   "lastWeight = v;"
+  ],
+  "katalogas_seima": [
+   "ic static function ajax_seima() {"
+  ],
+  "katalogas_seima_body": "rue );\n\n\t\t\tif ( $mano !== '' && $jo !== '' && $mano !== $jo ) {\n\t\t\t\twp_send_json_error( 'Ta prekė jau priklauso kitai šeimai. Pirma ją atjunk.' );\n\t\t\t}\n\t\t\t$raktas = $mano !== '' ? $mano : ( $jo !== '' ? $jo : '' );\n\t\t\tif ( $raktas === '' ) {\n\t\t\t\t/* Naujas raktas is prekes numerio — jis nesikartos ir nepriklauso\n\t\t\t\t   nuo pavadinimo, kuris gali buti pakeistas. */\n\t\t\t\t$raktas = 'seima-' . $pid;\n\t\t\t}\n\t\t\tupdate_post_meta( $pid, '_ps_dydzio_seima', $raktas );\n\t\t\tupdate_post_meta( $kitas, '_ps_dydzio_seima', $raktas );\n\t\t\tif ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) {\n\t\t\t\ttry { Petshop_Ivykiai::irasyti( $pid, 'seima', 'Prijungta prekė #' . $kitas . ' (' . $raktas . ')' ); }\n\t\t\t\tcatch ( \\Throwable $e ) { /* zurnalas neblokuoja */ }\n\t\t\t}\n\t\t\twp_send_json_success( array( 'raktas' => $raktas ) );\n\t\t}\n\n\t\tif ( $v === 'atjungti' ) {\n\t\t\t$kuri = isset( $_POST['kitas'] ) ? (int) $_POST['kitas'] : $pid;\n\t\t\t$raktas = (string) get_post_meta( $kuri, '_ps_dydzio_seima', true );\n\t\t\tdelete_post_meta( $kuri, '_ps_dydzio_seima' );\n\t\t\t/* Vienas likes narys — seimos nebera; nuimam ir nuo jo, kad\n\t\t\t   nekabotu vienisas raktas, kurio niekas neberodo. */\n\t\t\tif ( $raktas !== '' ) {\n\t\t\t\t$liko = self::seimos_nariai( $raktas );\n\t\t\t\tif ( count( $liko ) === 1 ) { delete_post_meta( (int) $liko[0], '_ps_dydzio_seima' ); }\n\t\t\t}\n\t\t\tif ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) {\n\t\t\t\ttry { Petshop_Ivykiai::irasyti( $pid, 'seima', 'Atjungta prekė #' . $kuri ); }\n\t\t\t\tcatch ( \\Throwable $e ) { /* zurnalas neblokuoja */ }\n\t\t\t}\n\t\t\twp_send_json_success( array( 'atjungta' => $kuri ) );\n\t\t}\n\t\twp_send_json_error( 'nežinomas veiksmas' );\n\t}\n\n\tpublic static function ajax_var_kurti() {\n\t\tif ( ! current_user_can( 'manage_woocommerce' ",
+  "species_meta": [
+   "",
+   [
+    "sunims"
+   ]
+  ],
+  "rest_try": {
+   "status": 200,
+   "data": {
+    "status": "system_error",
+    "availability": {
+     "norm": false,
+     "duration": false,
+     "cost": false
+    },
+    "reason_codes": [
+     "SYSTEM_ERROR"
+    ],
+    "message_lt": "Trūksta produkto.",
+    "weight_missing": false,
+    "weight_mode": null,
+    "norm_min_g": null,
+    "norm_max_g": null,
+    "days_min": null,
+    "days_max": null,
+    "cost_day_min": null,
+    "cost_day_max": null,
+    "cost_30d_min": null,
+    "cost_30d_max": null,
+    "basis": null,
+    "basis_label_lt": null,
+    "activity_mode": "none",
+    "activity_options": [],
+    "activity_selected": null,
+    "interval_options": [],
+    "interval_too_wide": false,
+    "weight_interval_selected": null,
+    "species_required": false,
+    "species_options": [],
+    "sellable_unit_food_g": null,
+    "currency": null,
+    "price_source": null,
+    "price_context": null,
+    "price_used": null,
+    "mixed_estimate": null
+   }
+  }
+ },
+ "v": "dep-125407",
+ "kurimas": 200,
+ "sid": 6518,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
