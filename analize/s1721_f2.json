@@ -1,0 +1,59 @@
+{
+ "2": {
+  "v": "S1721f",
+  "faze": "2",
+  "petshop-botu-sargas.php": {
+   "md5_naujas": "110299ba00ea013e2e131299dc64e02b",
+   "md5_ok": true,
+   "md5_gyvas": "d338af8beab35025874d4d77a89b48b0",
+   "bak": false,
+   "lint": "ok",
+   "kb": 6.7,
+   "irasyta": "110299ba00ea013e2e131299dc64e02b"
+  },
+  "petshop-cache.php": {
+   "md5_naujas": "a0a8b817d57f77126cdeafa884445d39",
+   "md5_ok": true,
+   "md5_gyvas": "eef93f9bf3f10661b8c8be342ea6680e",
+   "bak": false,
+   "lint": "ok",
+   "kb": 8.5,
+   "irasyta": "a0a8b817d57f77126cdeafa884445d39"
+  },
+  "heartbeat": 200
+ },
+ "3": {
+  "v": "S1721f",
+  "faze": "3",
+  "test": {
+   "/kategorija/sunims/maistas-sunims?filter_amzius=jauniems&product_cat=maistas-sunims&yith_wcan=1": "302 -> https://petshop.lt/kategorija/sunims/maistas-sunims/",
+   "/kategorija/sunims/maistas-sunims/page/1/?filter_amzius=jauniems&yith_wcan=1": "302 -> https://petshop.lt/kategorija/sunims/maistas-sunims/",
+   "/parduotuve/?filter_gyvuno_rusis=sunims&yith_wcan=1": "302 -> https://petshop.lt/parduotuve/",
+   "/?add-to-cart=18590": "302 -> https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-2-kg/"
+  },
+  "kanoninis_200": 200,
+  "shortlink_html": false,
+  "shortlink_header": "Array",
+  "prekes_200": 200,
+  "cache_valymai": false,
+  "versijos": {
+   "sargas": "110299ba00ea013e2e131299dc64e02b",
+   "cache": "a0a8b817d57f77126cdeafa884445d39"
+  },
+  "log_uodega": [
+   "[26-Sep-2026 10:26:01 UTC] WordPress database error Unknown column 'sukurta_at' in 'SELECT' for query SELECT DATE(sukurta_at) d, COUNT(*) n, COUNT(DISTINCT sesija) ses FROM gaj6_ps_web_ivykiai WHERE sukurta_at>=CURDATE()-INTERVAL 4 DAY GROUP BY 1 ORDER BY 1 made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}, {closure}",
+   "[26-Sep-2026 10:54:34 UTC] WordPress database error Unknown column 'ivyko' in 'INSERT INTO' for query INSERT INTO `gaj6_ps_sargas_klaidos` (`ivyko`, `tipas`, `zinute`) VALUES ('2026-09-26 13:54:34', 'login', 'uzrakinta: 167.172.120.116 (bandytas vardas: Raimis)') made by wp_signon, wp_authenticate, do_action('wp_login_failed'), WP_Hook->do_action, WP_Hook->apply_filters, Petshop_Prisijungimo_Sargas::nesekme, Petshop_Prisijungimo_Sargas::zurnalas",
+   "[26-Sep-2026 10:58:30 UTC] WordPress database error Unknown column 'ivyko' in 'INSERT INTO' for query INSERT INTO `gaj6_ps_sargas_klaidos` (`ivyko`, `tipas`, `zinute`) VALUES ('2026-09-26 13:58:30', 'login', 'uzrakinta: 104.236.13.164 (bandytas vardas: Raimis)') made by wp_signon, wp_authenticate, do_action('wp_login_failed'), WP_Hook->do_action, WP_Hook->apply_filters, Petshop_Prisijungimo_Sargas::nesekme, Petshop_Prisijungimo_Sargas::zurnalas",
+   "[26-Sep-2026 11:40:26 UTC] WordPress database error Unknown column 'ivyko' in 'INSERT INTO' for query INSERT INTO `gaj6_ps_sargas_klaidos` (`ivyko`, `tipas`, `zinute`) VALUES ('2026-09-26 14:40:26', 'login', 'uzrakinta: 167.172.120.116 (bandytas vardas: Raimis)') made by wp_signon, wp_authenticate, do_action('wp_login_failed'), WP_Hook->do_action, WP_Hook->apply_filters, Petshop_Prisijungimo_Sargas::nesekme, Petshop_Prisijungimo_Sargas::zurnalas",
+   "[26-Sep-2026 12:14:14 UTC] Užsakymas patvirtintas: užsakymas 36321, suma: 39.99EUR",
+   "[26-Sep-2026 12:30:32 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 22"
+  ]
+ },
+ "v": "dep-122858",
+ "kurimas": 200,
+ "sid": 6514,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
