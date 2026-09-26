@@ -1,0 +1,332 @@
+<?php
+/**
+ * Plugin Name: Petshop DP kainos v1.1 (Daugiau=Pigiau pakų kainų sinchronizacija)
+ * Description: S1722 (2026-09-26, Raimio sprendimai 20:30–20:41). DP pako (`_dp_base_product_id` + `_dp_pack_qty`) kaina
+ *   = kiekis × bazinės kaina × (1 − `_dp_nuolaida_proc` / 100), apvalinta iki „…9" centų (42,583 → 42,59). Jei bazinė akcijoje —
+ *   pako akcijos kaina ta pačia formule nuo bazinės akcijos kainos. Persiskaičiuoja iš karto po bazinės kainos pokyčio
+ *   (`updated_post_meta` _regular_price/_sale_price/_price, vykdoma `shutdown`, be dubliavimo per importus), pakeitus
+ *   `_dp_nuolaida_proc`, ir naktiniu cron 05:10 (`ps_dp_kainos_naktinis`, saugiklis). Pakai BE `_dp_nuolaida_proc`
+ *   neliečiami (kaina rankinė). Nuolaidų lentelė pagal kategoriją — opcija `ps_dp_nuolaidos` (sausas 3, Josera 2,5,
+ *   konservai 3,5, skanėstai 10, kraikas 10) — naudoja 572 forma ir generatorius. Žurnalas `ps_dp_kainos_zurnalas` (60),
+ *   v1.0.1: po pakeitimo išvalomas pako puslapio Super Cache (wp_cache_post_change).
+ *   v1.1 (21:15, R „nematau kur reguliuoti"): admin langas Produktai → „DP pakų kainos" (`edit.php?post_type=product&page=ps-dp-kainos`):
+ *   kategorijų nuolaidų lentelė (opcija ps_dp_nuolaidos) ir visų pakų lentelė su % įrašomu vietoje (AJAX ps_dp_proc / ps_dp_lentele) — išsaugo ir perskaičiuoja iš karto.
+ *   naktinio suvestinė `ps_dp_kainos_pask`, Ryto sargo lemputė `dp_kainos` per suvestine(). Išjungti: `ps_dp_kainos_isjungta=1`.
+ * Version: 1.1
+ */
+if ( ! defined( 'ABSPATH' ) ) { exit; }
+
+class Petshop_DP_Kainos {
+
+	const META      = '_dp_nuolaida_proc';
+	const OPT_NUOL  = 'ps_dp_nuolaidos';
+	const OPT_PASK  = 'ps_dp_kainos_pask';
+	const OPT_ZURN  = 'ps_dp_kainos_zurnalas';
+	const T_MAP     = 'ps_dp_zemelapis';
+	const CRON      = 'ps_dp_kainos_naktinis';
+	const KAINU_META = array( '_regular_price', '_sale_price', '_price', '_sale_price_dates_from', '_sale_price_dates_to' );
+
+	private static $eile = array();
+	private static $registruota = false;
+	private static $vykdoma = false;
+
+	public static function init() {
+		if ( get_option( 'ps_dp_kainos_isjungta' ) ) { return; }
+		foreach ( array( 'added_post_meta', 'updated_post_meta', 'deleted_post_meta' ) as $h ) {
+			add_action( $h, array( __CLASS__, 'meta_pokytis' ), 10, 3 );
+		}
+		add_action( self::CRON, array( __CLASS__, 'naktinis' ) );
+		add_action( 'init', array( __CLASS__, 'planuoti' ), 20 );
+		add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 30 );
+		add_action( 'wp_ajax_ps_dp_proc', array( __CLASS__, 'ajax_proc' ) );
+		add_action( 'wp_ajax_ps_dp_lentele', array( __CLASS__, 'ajax_lentele' ) );
+	}
+
+	/* ---------- admin langas ---------- */
+
+	public static function meniu() {
+		add_submenu_page( 'edit.php?post_type=product', 'DP pakų kainos', 'DP pakų kainos', 'manage_woocommerce', 'ps-dp-kainos', array( __CLASS__, 'langas' ) );
+	}
+
+	private static function grupes_pav() {
+		return array( 'sausas' => 'Sausas maistas', 'konservai' => 'Konservai', 'skanestai' => 'Natūralūs skanėstai', 'kraikas' => 'Kraikas', '' => 'Kita (grupė nežinoma)' );
+	}
+
+	public static function ajax_proc() {
+		check_ajax_referer( 'ps_dp_kainos', 'n' );
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'Neturite teisių.' ); }
+		$pid = (int) ( $_POST['pid'] ?? 0 ); $proc = trim( (string) ( $_POST['proc'] ?? '' ) ); $proc = str_replace( ',', '.', $proc );
+		if ( $pid <= 0 || ! get_post_meta( $pid, '_dp_base_product_id', true ) ) { wp_send_json_error( 'Ne DP pakas.' ); }
+		if ( $proc !== '' && ( ! is_numeric( $proc ) || (float) $proc < 0 || (float) $proc > 60 ) ) { wp_send_json_error( 'Procentas 0–60 arba tuščias.' ); }
+		self::$vykdoma = true; /* kad meta kablys neįdėtų į eilę — sinchronizuojam čia pat */
+		if ( $proc === '' ) { delete_post_meta( $pid, self::META ); } else { update_post_meta( $pid, self::META, (string) (float) $proc ); }
+		self::$vykdoma = false;
+		$r = self::sinchronizuoti( $pid, false, 'admin' );
+		$pak = wc_get_product( $pid );
+		wp_send_json_success( array( 'proc' => get_post_meta( $pid, self::META, true ), 'reg' => $pak ? $pak->get_regular_price( 'edit' ) : '', 'sale' => $pak ? $pak->get_sale_price( 'edit' ) : '', 'price' => $pak ? $pak->get_price( 'edit' ) : '', 'sync' => $r ) );
+	}
+
+	public static function ajax_lentele() {
+		check_ajax_referer( 'ps_dp_kainos', 'n' );
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'Neturite teisių.' ); }
+		$n = self::nuolaidos();
+		foreach ( array( 'sausas', 'konservai', 'skanestai', 'kraikas' ) as $k ) { $v = str_replace( ',', '.', trim( (string) ( $_POST[ $k ] ?? '' ) ) ); if ( is_numeric( $v ) ) { $n[ $k ] = (float) $v; } }
+		$j = str_replace( ',', '.', trim( (string) ( $_POST['josera'] ?? '' ) ) ); if ( is_numeric( $j ) ) { $n['brendai']['josera'] = (float) $j; }
+		update_option( self::OPT_NUOL, $n, false );
+		wp_send_json_success( $n );
+	}
+
+	public static function langas() {
+		if ( ! current_user_can( 'manage_woocommerce' ) ) { wp_die( 'Neturite teisių.' ); }
+		$n = self::nuolaidos(); $nonce = wp_create_nonce( 'ps_dp_kainos' ); $gp = self::grupes_pav();
+		$eil = array();
+		foreach ( self::visi_pakai() as $pid ) {
+			$b = (int) get_post_meta( $pid, '_dp_base_product_id', true ); $q = (int) get_post_meta( $pid, '_dp_pack_qty', true );
+			$bp = wc_get_product( $b ); $pk = wc_get_product( $pid ); if ( ! $pk ) { continue; }
+			$g = self::grupe( $b );
+			$eil[ $g ][] = array( 'pid' => $pid, 'pav' => $pk->get_name(), 'status' => $pk->get_status(), 'b' => $b, 'bpav' => $bp ? $bp->get_name() : '(bazinė nerasta)', 'bstatus' => $bp ? $bp->get_status() : '', 'q' => $q,
+				'breg' => $bp ? $bp->get_regular_price( 'edit' ) : '', 'bsale' => ( $bp && $bp->is_on_sale( 'edit' ) ) ? $bp->get_sale_price( 'edit' ) : '',
+				'proc' => get_post_meta( $pid, self::META, true ), 'numat' => self::numatytoji_proc( $b ), 'reg' => $pk->get_regular_price( 'edit' ), 'sale' => $pk->get_sale_price( 'edit' ), 'price' => $pk->get_price( 'edit' ) );
+		}
+		$pask = get_option( self::OPT_PASK ); $zurn = array_slice( (array) get_option( self::OPT_ZURN, array() ), 0, 15 );
+		echo '<div class="wrap"><h1>DP pakų kainos <span style="font-size:13px;color:#666;font-weight:normal">petshop-dp-kainos v1.1</span></h1>';
+		echo '<p>Pako kaina = kiekis × bazinės kaina × (1 − %), apvalinta iki „…9". <strong>Yra % → kainą valdo formulė</strong> (seka bazinę iš karto ir naktį 05:10). <strong>Tuščias % → kaina rankinė</strong> (keičiama prekės kortelėje, sinchronizacija neliečia).</p>';
+		echo '<h2>Kategorijų nuolaidos (numatytos naujiems pakams: 572 forma, generatorius)</h2><table class="widefat" style="max-width:720px"><tr>';
+		foreach ( array( 'sausas' => 'Sausas maistas', 'josera' => 'Sausas — Josera', 'konservai' => 'Konservai', 'skanestai' => 'Natūralūs skanėstai', 'kraikas' => 'Kraikas' ) as $k => $l ) {
+			$v = $k === 'josera' ? ( $n['brendai']['josera'] ?? '' ) : ( $n[ $k ] ?? '' );
+			echo '<td><label>' . esc_html( $l ) . '<br><input type="number" step="0.5" min="0" max="60" class="ps-dp-lent" data-k="' . esc_attr( $k ) . '" value="' . esc_attr( $v ) . '" style="width:70px"> %</label></td>';
+		}
+		echo '<td style="vertical-align:bottom"><button class="button button-primary" id="ps-dp-lent-issaugoti">Išsaugoti lentelę</button> <span id="ps-dp-lent-st"></span></td></tr></table>';
+		echo '<p class="description">Lentelė keičia tik numatytą % naujiems pakams. Esamų pakų % keičiamas žemiau (kiekvienam atskirai).</p>';
+		foreach ( $gp as $g => $gl ) {
+			if ( empty( $eil[ $g ] ) ) { continue; }
+			echo '<h2>' . esc_html( $gl ) . ' <span style="color:#666;font-size:13px;font-weight:normal">(' . count( $eil[ $g ] ) . ')</span></h2>';
+			echo '<table class="widefat striped"><thead><tr><th>Pakas</th><th>Bazinė prekė</th><th style="text-align:right">Kiekis</th><th style="text-align:right">Bazinė kaina</th><th style="text-align:right">Kiekis × bazinė</th><th>Nuolaida %</th><th style="text-align:right">Pako kaina</th><th style="text-align:right">Klientas sutaupo</th><th>Būsena</th></tr></thead><tbody>';
+			foreach ( $eil[ $g ] as $e ) {
+				$viso = (float) $e['breg'] * $e['q']; $sut = $viso - (float) $e['reg'];
+				echo '<tr data-pid="' . (int) $e['pid'] . '"><td><a href="' . esc_url( get_edit_post_link( $e['pid'] ) ) . '">' . esc_html( $e['pav'] ) . '</a>' . ( $e['status'] !== 'publish' ? ' <em>(' . esc_html( $e['status'] ) . ')</em>' : '' ) . '</td>';
+				echo '<td><a href="' . esc_url( get_edit_post_link( $e['b'] ) ) . '">' . esc_html( $e['bpav'] ) . '</a>' . ( $e['bstatus'] !== 'publish' ? ' <em style="color:#c00">(' . esc_html( $e['bstatus'] ) . ')</em>' : '' ) . '</td>';
+				echo '<td style="text-align:right">' . (int) $e['q'] . '</td><td style="text-align:right">' . esc_html( $e['breg'] ) . ( $e['bsale'] !== '' ? ' <span style="color:#c00">akc. ' . esc_html( $e['bsale'] ) . '</span>' : '' ) . '</td><td style="text-align:right">' . number_format( $viso, 2, ',', '' ) . '</td>';
+				echo '<td><input type="number" step="0.5" min="0" max="60" class="ps-dp-proc" value="' . esc_attr( $e['proc'] ) . '" placeholder="rankinė" style="width:70px" title="numatyta: ' . esc_attr( $e['numat'] ) . '"> % <span class="ps-dp-st" style="font-size:11px;color:#666"></span></td>';
+				echo '<td style="text-align:right"><strong class="ps-dp-kaina">' . esc_html( $e['reg'] ) . '</strong>' . ( $e['sale'] !== '' ? ' <span class="ps-dp-sale" style="color:#c00">akc. ' . esc_html( $e['sale'] ) . '</span>' : '<span class="ps-dp-sale"></span>' ) . '</td>';
+				echo '<td style="text-align:right" class="ps-dp-sut">' . number_format( $sut, 2, ',', '' ) . ' € (' . ( $viso > 0 ? round( $sut / $viso * 100, 1 ) : 0 ) . ' %)</td>';
+				echo '<td>' . ( $e['proc'] === '' ? '<span style="color:#996">rankinė</span>' : '<span style="color:#2a8">formulė</span>' ) . '</td></tr>';
+			}
+			echo '</tbody></table>';
+		}
+		echo '<h2>Naktinė patikra</h2>';
+		if ( is_array( $pask ) ) { echo '<p>' . esc_html( $pask['kada'] ) . ': pakų ' . (int) $pask['viso'] . ', su % ' . (int) $pask['su_proc'] . ', rankinių ' . (int) $pask['be_proc'] . ', pakeista ' . count( (array) $pask['pakeista'] ) . ', klaidų ' . count( (array) $pask['klaidos'] ) . ( $pask['klaidos'] ? ': ' . esc_html( implode( '; ', $pask['klaidos'] ) ) : '' ) . '</p>'; } else { echo '<p>Dar nebuvo.</p>'; }
+		if ( $zurn ) { echo '<h2>Paskutiniai pakeitimai</h2><table class="widefat" style="max-width:820px"><thead><tr><th>Laikas</th><th>Pakas</th><th>Buvo</th><th>Tapo</th><th>%</th><th>Kas</th></tr></thead><tbody>';
+			foreach ( $zurn as $z ) { echo '<tr><td>' . esc_html( $z['laikas'] ) . '</td><td><a href="' . esc_url( get_edit_post_link( $z['pid'] ) ) . '">' . esc_html( get_the_title( $z['pid'] ) ) . '</a></td><td>' . esc_html( $z['buvo'] ) . '</td><td>' . esc_html( $z['tapo'] ) . '</td><td>' . esc_html( $z['proc'] ) . '</td><td>' . esc_html( $z['kas'] ) . '</td></tr>'; }
+			echo '</tbody></table>'; }
+		?>
+<script>
+(function(){
+	var nonce = <?php echo wp_json_encode( $nonce ); ?>;
+	function post(data, cb){ var fd = new FormData(); Object.keys(data).forEach(function(k){ fd.append(k, data[k]); }); fd.append('n', nonce);
+		fetch(ajaxurl, {method:'POST', credentials:'same-origin', body:fd}).then(function(r){ return r.json(); }).then(cb).catch(function(e){ cb({success:false, data:String(e)}); }); }
+	document.querySelectorAll('.ps-dp-proc').forEach(function(inp){
+		var t; inp.addEventListener('change', function(){
+			var tr = inp.closest('tr'), st = tr.querySelector('.ps-dp-st'); st.textContent = 'saugoma…';
+			post({action:'ps_dp_proc', pid: tr.dataset.pid, proc: inp.value}, function(res){
+				if (!res.success) { st.textContent = '✗ ' + res.data; st.style.color = '#c00'; return; }
+				var d = res.data; tr.querySelector('.ps-dp-kaina').textContent = d.reg; tr.querySelector('.ps-dp-sale').textContent = d.sale ? 'akc. ' + d.sale : '';
+				var viso = parseFloat(tr.children[4].textContent.replace(',', '.')) || 0, sut = viso - parseFloat(d.reg || 0);
+				tr.querySelector('.ps-dp-sut').textContent = sut.toFixed(2).replace('.', ',') + ' € (' + (viso > 0 ? (sut / viso * 100).toFixed(1) : 0) + ' %)';
+				tr.lastElementChild.innerHTML = d.proc === '' ? '<span style="color:#996">rankinė</span>' : '<span style="color:#2a8">formulė</span>';
+				st.style.color = d.sync && d.sync.klaida ? '#c00' : '#2a8'; st.textContent = d.sync && d.sync.klaida ? '✗ ' + d.sync.klaida : (d.proc === '' ? '✓ rankinė' : '✓ ' + d.reg);
+				clearTimeout(t); t = setTimeout(function(){ st.textContent = ''; }, 4000);
+			});
+		});
+	});
+	var b = document.getElementById('ps-dp-lent-issaugoti'); if (b) b.addEventListener('click', function(){
+		var d = {action:'ps_dp_lentele'}; document.querySelectorAll('.ps-dp-lent').forEach(function(i){ d[i.dataset.k] = i.value; });
+		var st = document.getElementById('ps-dp-lent-st'); st.textContent = 'saugoma…';
+		post(d, function(res){ st.textContent = res.success ? '✓ išsaugota' : '✗ ' + res.data; });
+	});
+})();
+</script>
+		<?php
+		echo '</div>';
+	}
+
+	public static function planuoti() {
+		if ( ! wp_next_scheduled( self::CRON ) ) {
+			$kada = strtotime( 'tomorrow 05:10', current_time( 'timestamp' ) ) - ( (int) get_option( 'gmt_offset' ) * HOUR_IN_SECONDS );
+			wp_schedule_event( $kada, 'daily', self::CRON );
+		}
+	}
+
+	/* ---------- nuolaidų lentelė ---------- */
+
+	public static function nuolaidos() {
+		$num = array( 'kraikas' => 10, 'skanestai' => 10, 'konservai' => 3.5, 'sausas' => 3, 'brendai' => array( 'josera' => 2.5 ) );
+		$o = get_option( self::OPT_NUOL );
+		if ( is_string( $o ) ) { $o = json_decode( $o, true ); }
+		return is_array( $o ) ? array_replace_recursive( $num, $o ) : $num;
+	}
+
+	/** Grupė pagal bazinės kategorijas: kraikas / skanestai / konservai / sausas / '' */
+	public static function grupe( $base_id ) {
+		$slugs = array();
+		$terms = get_the_terms( (int) $base_id, 'product_cat' );
+		if ( $terms && ! is_wp_error( $terms ) ) {
+			foreach ( $terms as $t ) {
+				$slugs[] = $t->slug;
+				foreach ( get_ancestors( $t->term_id, 'product_cat' ) as $a ) { $at = get_term( $a, 'product_cat' ); if ( $at && ! is_wp_error( $at ) ) { $slugs[] = $at->slug; } }
+			}
+		}
+		$s = implode( ' ', $slugs );
+		if ( strpos( $s, 'kraik' ) !== false ) { return 'kraikas'; }
+		if ( strpos( $s, 'skanest' ) !== false ) { return 'skanestai'; }
+		if ( strpos( $s, 'konserv' ) !== false ) { return 'konservai'; }
+		if ( preg_match( '/sausas|hipoalerginis|super-premium/', $s ) ) { return 'sausas'; }
+		return '';
+	}
+
+	/** Numatytoji nuolaida % bazinei prekei ('' kai grupė nežinoma). */
+	public static function numatytoji_proc( $base_id ) {
+		$g = self::grupe( $base_id );
+		if ( $g === '' ) { return ''; }
+		$n = self::nuolaidos();
+		if ( $g === 'sausas' ) {
+			$bt = get_the_terms( (int) $base_id, 'product_brand' );
+			if ( $bt && ! is_wp_error( $bt ) ) {
+				foreach ( $bt as $b ) { if ( isset( $n['brendai'][ $b->slug ] ) ) { return (string) (float) $n['brendai'][ $b->slug ]; } }
+			}
+		}
+		return isset( $n[ $g ] ) ? (string) (float) $n[ $g ] : '';
+	}
+
+	/* ---------- kaina ---------- */
+
+	/** Apvalinimas iki „…9" centų: 42,583 → 42,59; 110,5606 → 110,59; 14,996 → 14,99. */
+	public static function apvalinti( $x ) {
+		$r = round( (float) $x * 10 ) / 10 - 0.01;
+		if ( $r < 0.09 ) { $r = 0.09; }
+		return number_format( $r, 2, '.', '' );
+	}
+
+	public static function kaina( $bazine, $qty, $proc ) {
+		return self::apvalinti( (float) $bazine * (int) $qty * ( 1 - (float) $proc / 100 ) );
+	}
+
+	/* ---------- sinchronizacija ---------- */
+
+	/** Vieno pako sinchronizacija. Grąžina masyvą su rezultatu; $dry — tik skaičiuoja. */
+	public static function sinchronizuoti( $pid, $dry = false, $kvietejas = '' ) {
+		$pid = (int) $pid;
+		$r = array( 'pid' => $pid, 'pakeista' => false );
+		$proc = get_post_meta( $pid, self::META, true );
+		if ( $proc === '' || $proc === null || ! is_numeric( $proc ) ) { $r['praleista'] = 'be_proc'; return $r; }
+		$proc = (float) $proc; $r['proc'] = $proc;
+		$base_id = (int) get_post_meta( $pid, '_dp_base_product_id', true );
+		$qty     = (int) get_post_meta( $pid, '_dp_pack_qty', true );
+		if ( $base_id <= 0 || $qty < 2 ) { $r['klaida'] = 'nera_bazes_ar_kiekio'; return $r; }
+		$base = wc_get_product( $base_id );
+		if ( ! $base ) { $r['klaida'] = 'bazine_nerasta'; return $r; }
+		if ( $base->get_status() !== 'publish' ) { $r['klaida'] = 'bazine_ne_publish'; return $r; }
+		$breg = (float) $base->get_regular_price( 'edit' );
+		if ( $breg <= 0 ) { $r['klaida'] = 'bazine_be_kainos'; return $r; }
+		$bsale = $base->is_on_sale( 'edit' ) ? (float) $base->get_sale_price( 'edit' ) : 0;
+		$nreg  = self::kaina( $breg, $qty, $proc );
+		$nsale = $bsale > 0 ? self::kaina( $bsale, $qty, $proc ) : '';
+		if ( $nsale !== '' && (float) $nsale >= (float) $nreg ) { $nsale = ''; }
+		$pak = wc_get_product( $pid );
+		if ( ! $pak ) { $r['klaida'] = 'pakas_nerastas'; return $r; }
+		$sreg  = (string) $pak->get_regular_price( 'edit' );
+		$ssale = (string) $pak->get_sale_price( 'edit' );
+		$r['buvo'] = array( $sreg, $ssale ); $r['nauja'] = array( $nreg, $nsale );
+		$lygu = ( $sreg !== '' && abs( (float) $sreg - (float) $nreg ) < 0.005 ) && ( ( $ssale === '' && $nsale === '' ) || ( $ssale !== '' && $nsale !== '' && abs( (float) $ssale - (float) $nsale ) < 0.005 ) );
+		if ( $lygu ) { return $r; }
+		$r['pakeista'] = true;
+		if ( $dry ) { return $r; }
+		self::$vykdoma = true;
+		try {
+			$pak->set_regular_price( $nreg );
+			$pak->set_sale_price( $nsale );
+			$pak->save();
+			wc_delete_product_transients( $pid );
+			if ( function_exists( 'wp_cache_post_change' ) ) { wp_cache_post_change( $pid ); } // Super Cache: pako puslapis
+			self::zurnalas( array( 'laikas' => current_time( 'mysql' ), 'pid' => $pid, 'buvo' => $sreg . ( $ssale !== '' ? '/' . $ssale : '' ), 'tapo' => $nreg . ( $nsale !== '' ? '/' . $nsale : '' ), 'proc' => $proc, 'baze' => $base_id, 'kas' => $kvietejas ) );
+		} catch ( \Throwable $e ) { $r['klaida'] = 'irasymas: ' . $e->getMessage(); }
+		self::$vykdoma = false;
+		return $r;
+	}
+
+	/** bazinė → [pakai] */
+	public static function zemelapis() {
+		$m = get_transient( self::T_MAP );
+		if ( is_array( $m ) ) { return $m; }
+		global $wpdb;
+		$m = array();
+		foreach ( (array) $wpdb->get_results( "SELECT post_id, meta_value FROM {$wpdb->postmeta} WHERE meta_key='_dp_base_product_id' AND meta_value<>''", ARRAY_A ) as $x ) {
+			$m[ (int) $x['meta_value'] ][] = (int) $x['post_id'];
+		}
+		set_transient( self::T_MAP, $m, 6 * HOUR_IN_SECONDS );
+		return $m;
+	}
+
+	public static function visi_pakai() {
+		$v = array();
+		foreach ( self::zemelapis() as $pakai ) { foreach ( $pakai as $p ) { $v[] = $p; } }
+		sort( $v );
+		return $v;
+	}
+
+	public static function meta_pokytis( $mid, $pid, $key ) {
+		if ( self::$vykdoma ) { return; }
+		if ( $key === '_dp_base_product_id' || $key === '_dp_pack_qty' ) { delete_transient( self::T_MAP ); }
+		if ( $key === self::META || $key === '_dp_pack_qty' ) { self::i_eile( (int) $pid ); return; }
+		if ( ! in_array( $key, self::KAINU_META, true ) ) { return; }
+		$m = self::zemelapis();
+		if ( empty( $m[ (int) $pid ] ) ) { return; }
+		foreach ( $m[ (int) $pid ] as $pak ) { self::i_eile( $pak ); }
+	}
+
+	private static function i_eile( $pid ) {
+		self::$eile[ $pid ] = 1;
+		if ( ! self::$registruota ) { self::$registruota = true; add_action( 'shutdown', array( __CLASS__, 'vykdyti_eile' ), 5 ); }
+	}
+
+	public static function vykdyti_eile() {
+		$e = array_keys( self::$eile ); self::$eile = array();
+		if ( ! $e || ! function_exists( 'wc_get_product' ) ) { return; }
+		foreach ( $e as $pid ) { if ( get_post_type( $pid ) === 'product' ) { self::sinchronizuoti( $pid, false, 'pokytis' ); } }
+	}
+
+	/** Naktinis: visi pakai; suvestinė į opciją. */
+	public static function naktinis( $dry = false ) {
+		$s = array( 'kada' => current_time( 'mysql' ), 'viso' => 0, 'su_proc' => 0, 'be_proc' => 0, 'pakeista' => array(), 'klaidos' => array() );
+		foreach ( self::visi_pakai() as $pid ) {
+			$s['viso']++;
+			$r = self::sinchronizuoti( $pid, $dry, 'naktinis' );
+			if ( isset( $r['praleista'] ) ) { $s['be_proc']++; continue; }
+			$s['su_proc']++;
+			if ( ! empty( $r['klaida'] ) ) { $s['klaidos'][] = $pid . ':' . $r['klaida']; }
+			if ( ! empty( $r['pakeista'] ) ) { $s['pakeista'][] = $pid . ' ' . implode( '/', array_filter( $r['buvo'] ) ) . '→' . implode( '/', array_filter( $r['nauja'] ) ); }
+		}
+		if ( ! $dry ) { update_option( self::OPT_PASK, $s, false ); }
+		return $s;
+	}
+
+	/** Ryto sargui: [lygis, tekstas]. Gyva patikra (dry) — ar visi pakai su % atitinka formulę. */
+	public static function suvestine() {
+		$s = self::naktinis( true );
+		$drift = count( $s['pakeista'] ); $kl = count( $s['klaidos'] );
+		$lygis = $kl ? 'raudona' : ( $drift ? 'geltona' : 'zalia' );
+		$t = 'DP pakų kainos: su % ' . $s['su_proc'] . ', rankinių ' . $s['be_proc'] . ', neatitinka ' . $drift . ', klaidų ' . $kl;
+		if ( $kl ) { $t .= ' (' . implode( ', ', array_slice( $s['klaidos'], 0, 4 ) ) . ')'; }
+		$p = get_option( self::OPT_PASK );
+		if ( is_array( $p ) && ! empty( $p['kada'] ) ) { $t .= '; naktinis ' . substr( $p['kada'], 5, 11 ) . ' pakeitė ' . count( (array) $p['pakeista'] ); }
+		return array( $lygis, $t );
+	}
+
+	private static function zurnalas( $e ) {
+		$z = get_option( self::OPT_ZURN, array() );
+		if ( ! is_array( $z ) ) { $z = array(); }
+		array_unshift( $z, $e );
+		update_option( self::OPT_ZURN, array_slice( $z, 0, 60 ), false );
+	}
+}
+Petshop_DP_Kainos::init();
