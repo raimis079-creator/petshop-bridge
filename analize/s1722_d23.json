@@ -1,0 +1,710 @@
+{
+ "2": {
+  "v": "S1722d",
+  "faze": "2",
+  "arch": "ok",
+  "md5": "3f6e8e33bee6b76742f452ca250ad482",
+  "heartbeat": 200
+ },
+ "3": {
+  "v": "S1722d",
+  "faze": "3",
+  "arch": "ok",
+  "proc_irasyta": [
+   "35096=10",
+   "35098=10",
+   "35099=10",
+   "35306=10",
+   "35840=10",
+   "35841=10",
+   "35842=10",
+   "35843=10",
+   "35844=10",
+   "35845=10",
+   "35846=10",
+   "35847=10",
+   "35848=10",
+   "35849=10",
+   "35850=10",
+   "35851=10",
+   "35852=10",
+   "35853=10",
+   "35854=10",
+   "35855=10",
+   "35856=10",
+   "36002=3",
+   "36003=3",
+   "36301=3.5",
+   "36302=3.5"
+  ],
+  "sync": {
+   "kada": "2026-09-26 20:52:20",
+   "viso": 25,
+   "su_proc": 25,
+   "be_proc": 0,
+   "pakeista": [
+    "35096 12.99→13.49",
+    "35098 23→23.19",
+    "35099 25→24.99",
+    "35306 12.99→13.49",
+    "35840 32.04→31.99",
+    "35841 35.28→35.29",
+    "35842 32.04→31.99",
+    "35843 32.04→31.99",
+    "35844 35.28→35.29",
+    "35845 32.04→31.99",
+    "35846 33.84→33.79",
+    "35847 32.04→31.99",
+    "35848 32.04→31.99",
+    "35849 35.28→35.29",
+    "35850 32.04→31.99",
+    "35851 32.04→31.99",
+    "35852 32.04→31.99",
+    "35853 32.04→31.99",
+    "35854 32.04→31.99",
+    "35855 32.04→31.99",
+    "35856 32.04→31.99",
+    "36002 42.5→42.59",
+    "36003 111→110.59",
+    "36301 14.98→14.99",
+    "36302 14.98→14.99"
+   ],
+   "klaidos": []
+  },
+  "lentele": [
+   {
+    "pid": 35096,
+    "pav": "20 vnt. rudų kiaulės knyslių",
+    "grupe": "skanestai",
+    "numat": "10",
+    "proc": "10",
+    "q": 20,
+    "baze_reg": "0.75",
+    "baze_sale": "",
+    "pako_reg": "13.49",
+    "pako_price": "13.49",
+    "sync": {
+     "pid": 35096,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "13.49",
+      ""
+     ],
+     "nauja": [
+      "13.49",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35098,
+    "pav": "20 vnt. rudų jaučio ausų",
+    "grupe": "skanestai",
+    "numat": "10",
+    "proc": "10",
+    "q": 20,
+    "baze_reg": "1.29",
+    "baze_sale": "",
+    "pako_reg": "23.19",
+    "pako_price": "23.19",
+    "sync": {
+     "pid": 35098,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "23.19",
+      ""
+     ],
+     "nauja": [
+      "23.19",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35099,
+    "pav": "20 vnt. baltų jaučio ausų",
+    "grupe": "skanestai",
+    "numat": "10",
+    "proc": "10",
+    "q": 20,
+    "baze_reg": "1.39",
+    "baze_sale": "",
+    "pako_reg": "24.99",
+    "pako_price": "24.99",
+    "sync": {
+     "pid": 35099,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "24.99",
+      ""
+     ],
+     "nauja": [
+      "24.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35306,
+    "pav": "20 vnt. baltų kiaulės knyslių",
+    "grupe": "skanestai",
+    "numat": "10",
+    "proc": "10",
+    "q": 20,
+    "baze_reg": "0.75",
+    "baze_sale": "",
+    "pako_reg": "13.49",
+    "pako_price": "13.49",
+    "sync": {
+     "pid": 35306,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "13.49",
+      ""
+     ],
+     "nauja": [
+      "13.49",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35840,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.45",
+    "baze_sale": "",
+    "pako_reg": "31.99",
+    "pako_price": "31.99",
+    "sync": {
+     "pid": 35840,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "31.99",
+      ""
+     ],
+     "nauja": [
+      "31.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35841,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.9",
+    "baze_sale": "",
+    "pako_reg": "35.29",
+    "pako_price": "35.29",
+    "sync": {
+     "pid": 35841,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "35.29",
+      ""
+     ],
+     "nauja": [
+      "35.29",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35842,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.45",
+    "baze_sale": "",
+    "pako_reg": "31.99",
+    "pako_price": "31.99",
+    "sync": {
+     "pid": 35842,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "31.99",
+      ""
+     ],
+     "nauja": [
+      "31.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35843,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.45",
+    "baze_sale": "",
+    "pako_reg": "31.99",
+    "pako_price": "31.99",
+    "sync": {
+     "pid": 35843,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "31.99",
+      ""
+     ],
+     "nauja": [
+      "31.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35844,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.9",
+    "baze_sale": "",
+    "pako_reg": "35.29",
+    "pako_price": "35.29",
+    "sync": {
+     "pid": 35844,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "35.29",
+      ""
+     ],
+     "nauja": [
+      "35.29",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35845,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.45",
+    "baze_sale": "",
+    "pako_reg": "31.99",
+    "pako_price": "31.99",
+    "sync": {
+     "pid": 35845,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "31.99",
+      ""
+     ],
+     "nauja": [
+      "31.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35846,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.7",
+    "baze_sale": "",
+    "pako_reg": "33.79",
+    "pako_price": "33.79",
+    "sync": {
+     "pid": 35846,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "33.79",
+      ""
+     ],
+     "nauja": [
+      "33.79",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35847,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.45",
+    "baze_sale": "",
+    "pako_reg": "31.99",
+    "pako_price": "31.99",
+    "sync": {
+     "pid": 35847,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "31.99",
+      ""
+     ],
+     "nauja": [
+      "31.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35848,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.45",
+    "baze_sale": "",
+    "pako_reg": "31.99",
+    "pako_price": "31.99",
+    "sync": {
+     "pid": 35848,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "31.99",
+      ""
+     ],
+     "nauja": [
+      "31.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35849,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.9",
+    "baze_sale": "",
+    "pako_reg": "35.29",
+    "pako_price": "35.29",
+    "sync": {
+     "pid": 35849,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "35.29",
+      ""
+     ],
+     "nauja": [
+      "35.29",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35850,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.45",
+    "baze_sale": "",
+    "pako_reg": "31.99",
+    "pako_price": "31.99",
+    "sync": {
+     "pid": 35850,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "31.99",
+      ""
+     ],
+     "nauja": [
+      "31.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35851,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.45",
+    "baze_sale": "",
+    "pako_reg": "31.99",
+    "pako_price": "31.99",
+    "sync": {
+     "pid": 35851,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "31.99",
+      ""
+     ],
+     "nauja": [
+      "31.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35852,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.45",
+    "baze_sale": "",
+    "pako_reg": "31.99",
+    "pako_price": "31.99",
+    "sync": {
+     "pid": 35852,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "31.99",
+      ""
+     ],
+     "nauja": [
+      "31.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35853,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.45",
+    "baze_sale": "",
+    "pako_reg": "31.99",
+    "pako_price": "31.99",
+    "sync": {
+     "pid": 35853,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "31.99",
+      ""
+     ],
+     "nauja": [
+      "31.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35854,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.45",
+    "baze_sale": "",
+    "pako_reg": "31.99",
+    "pako_price": "31.99",
+    "sync": {
+     "pid": 35854,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "31.99",
+      ""
+     ],
+     "nauja": [
+      "31.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35855,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.45",
+    "baze_sale": "",
+    "pako_reg": "31.99",
+    "pako_price": "31.99",
+    "sync": {
+     "pid": 35855,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "31.99",
+      ""
+     ],
+     "nauja": [
+      "31.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 35856,
+    "pav": "8 VNT. &#8211; Kraikas katėms TOFU BeloCat",
+    "grupe": "kraikas",
+    "numat": "10",
+    "proc": "10",
+    "q": 8,
+    "baze_reg": "4.45",
+    "baze_sale": "",
+    "pako_reg": "31.99",
+    "pako_price": "31.99",
+    "sync": {
+     "pid": 35856,
+     "pakeista": false,
+     "proc": 10,
+     "buvo": [
+      "31.99",
+      ""
+     ],
+     "nauja": [
+      "31.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 36002,
+    "pav": "2 vnt. Exclusion Hypoallergenic mažų veisl",
+    "grupe": "sausas",
+    "numat": "3",
+    "proc": "3",
+    "q": 2,
+    "baze_reg": "21.95",
+    "baze_sale": "",
+    "pako_reg": "42.59",
+    "pako_price": "42.59",
+    "sync": {
+     "pid": 36002,
+     "pakeista": false,
+     "proc": 3,
+     "buvo": [
+      "42.59",
+      ""
+     ],
+     "nauja": [
+      "42.59",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 36003,
+    "pav": "2 vnt. Exclusion Hypoallergenic mažų veisl",
+    "grupe": "sausas",
+    "numat": "3",
+    "proc": "3",
+    "q": 2,
+    "baze_reg": "56.99",
+    "baze_sale": "",
+    "pako_reg": "110.59",
+    "pako_price": "110.59",
+    "sync": {
+     "pid": 36003,
+     "pakeista": false,
+     "proc": 3,
+     "buvo": [
+      "110.59",
+      ""
+     ],
+     "nauja": [
+      "110.59",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 36301,
+    "pav": "6 vnt. Ontario konservų šunims su ėriena i",
+    "grupe": "konservai",
+    "numat": "3.5",
+    "proc": "3.5",
+    "q": 6,
+    "baze_reg": "2.59",
+    "baze_sale": "",
+    "pako_reg": "14.99",
+    "pako_price": "14.99",
+    "sync": {
+     "pid": 36301,
+     "pakeista": false,
+     "proc": 3.5,
+     "buvo": [
+      "14.99",
+      ""
+     ],
+     "nauja": [
+      "14.99",
+      ""
+     ]
+    }
+   },
+   {
+    "pid": 36302,
+    "pav": "6 vnt. Ontario konservų šunims su veršiena",
+    "grupe": "konservai",
+    "numat": "3.5",
+    "proc": "3.5",
+    "q": 6,
+    "baze_reg": "2.59",
+    "baze_sale": "",
+    "pako_reg": "14.99",
+    "pako_price": "14.99",
+    "sync": {
+     "pid": 36302,
+     "pakeista": false,
+     "proc": 3.5,
+     "buvo": [
+      "14.99",
+      ""
+     ],
+     "nauja": [
+      "14.99",
+      ""
+     ]
+    }
+   }
+  ],
+  "heartbeat": 200
+ },
+ "v": "dep-175037",
+ "kurimas": 200,
+ "sid": 6554,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
