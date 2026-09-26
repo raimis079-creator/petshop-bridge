@@ -1,0 +1,162 @@
+{
+ "2": {
+  "v": "S1721o",
+  "faze": "2",
+  "bak": "95e3a6d10cff0303ccfe970662b9b3ad",
+  "automatas_md5": "0121ca60a19c925475ef3754f63e6389",
+  "rytas_md5": "b5d2005d89a7962ca20c968f5221a277",
+  "rytas_kb": 44.8,
+  "heartbeat": 200
+ },
+ "3": {
+  "v": "S1721o",
+  "faze": "3",
+  "klase": true,
+  "rytas_patch": true,
+  "rytas_md5": "b5d2005d89a7962ca20c968f5221a277",
+  "pilot": {
+   "18584": {
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 800 g",
+    "baze": "exclu hypoa mažų veisl kiaul žirne",
+    "rasti": {
+     "tipas": "tiksli",
+     "seima": "exclusion-hypo-mazu-kiauliena",
+     "narys": 18590,
+     "jac": 1
+    },
+    "kat": [
+     "sausas-maistas-sunims"
+    ]
+   },
+   "18587": {
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    "baze": "exclu hypoa mažų veisl kiaul žirne",
+    "rasti": {
+     "tipas": "tiksli",
+     "seima": "exclusion-hypo-mazu-kiauliena",
+     "narys": 18584,
+     "jac": 1
+    },
+    "kat": [
+     "sausas-maistas-sunims"
+    ]
+   },
+   "18590": {
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg",
+    "baze": "exclu hypoa mažų veisl kiaul žirne",
+    "rasti": {
+     "tipas": "tiksli",
+     "seima": "exclusion-hypo-mazu-kiauliena",
+     "narys": 18584,
+     "jac": 1
+    },
+    "kat": [
+     "sausas-maistas-sunims"
+    ]
+   },
+   "36002": {
+    "pav": "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg",
+    "baze": "exclu hypoa mažų veisl kiaul žirne",
+    "rasti": {
+     "tipas": "dp",
+     "seima": "exclusion-hypo-mazu-kiauliena",
+     "narys": 18590,
+     "jac": 1
+    },
+    "kat": [
+     "daugiau-pigiau",
+     "sausas-maistas-sunims"
+    ]
+   },
+   "36003": {
+    "pav": "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    "baze": "exclu hypoa mažų veisl kiaul žirne",
+    "rasti": {
+     "tipas": "dp",
+     "seima": "exclusion-hypo-mazu-kiauliena",
+     "narys": 18587,
+     "jac": 1
+    },
+    "kat": [
+     "daugiau-pigiau",
+     "sausas-maistas-sunims"
+    ]
+   }
+  },
+  "kiti": {
+   "18560": {
+    "pav": "Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg",
+    "rasti": {
+     "tipas": "ne",
+     "seima": "",
+     "narys": 0,
+     "jac": 0
+    }
+   },
+   "18582": {
+    "pav": "Exclusion Hypoallergenic mini mažų veislių šunų maistas su arkliena ir bulvėmis S 2 kg",
+    "rasti": {
+     "tipas": "ne_kat",
+     "seima": "",
+     "narys": 0,
+     "jac": 0
+    }
+   }
+  },
+  "dry_400": {
+   "tipai": {
+    "ne": 120,
+    "ne_kat": 271,
+    "ne_brendas": 9
+   },
+   "pvz": [],
+   "sek": 0.29
+  },
+  "suvestine": [
+   0,
+   0,
+   0,
+   "Šeimos: priskirta 0, kandidatų 0"
+  ],
+  "dydis_pvz": [
+   "2 × 7 kg",
+   "12,5 kg",
+   "2+1 kg",
+   "400 g",
+   "100 g",
+   "6 × 400 g"
+  ],
+  "rytas_klase": "Petshop_Rytas",
+  "patikros_tipas": "array",
+  "patikros_n": 15,
+  "patikros_keys": [
+   0,
+   1,
+   2,
+   3,
+   4,
+   5,
+   6,
+   7,
+   8,
+   9,
+   10,
+   11,
+   12,
+   13,
+   14
+  ],
+  "log_uodega": [
+   "[26-Sep-2026 13:09:49 UTC] Užsakymas patvirtintas: užsakymas 36323, suma: 36.39EUR",
+   "[26-Sep-2026 13:14:42 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 22",
+   "[26-Sep-2026 13:40:47 UTC] WordPress database error Unknown column 'created_at' in 'SELECT' for query SELECT COUNT(*) n, MIN(created_at) nuo, MAX(created_at) iki FROM gaj6_ps_rec_log made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}"
+  ]
+ },
+ "v": "dep-145606",
+ "kurimas": 200,
+ "sid": 6537,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
