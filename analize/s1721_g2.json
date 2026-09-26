@@ -1,0 +1,139 @@
+{
+ "1": {
+  "v": "S1721g",
+  "faze": "1",
+  "core_files": [],
+  "calc_php": "NERA /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-core/includes/class-product-calc.php",
+  "pet_profile_fns": "NERA /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-core/includes/class-pet-profile.php",
+  "weight_signal": {
+   "petshop-relaunch.php": [
+    "e atsitiktinis kampanijos tokenas (ne el. paštas, ne hash) iš `ps_relaunch_kontaktai` → paspaudimas įrašomas kaip signalas: usermeta `ps_weight_signal` (source email_calc_click, confidence medium; Pet Profile NEPERRAŠOMAS), `ps_web_ivykiai` tipas `email_calc_click`, lentelės klik_n/pask_",
+    "k_cycle='relaunch', confidence 0.5, terminas pagal calc dienas × maišo būseną), Petshop_Sutikimai::nustatyti(optout=0,'relaunch_calc'), ps_weight_signal confidence high, ps_web_ivykiai `reminder_optin`. Svorio paspaudimas ir priminimas — du skirtingi veiksmai.",
+    "const META = 'ps_weight_signal';"
+   ]
+  },
+  "dp": {
+   "18590": {
+    "_dp_base_product_id": "",
+    "_dp_pack_qty": "",
+    "pak": [
+     "2 kg"
+    ],
+    "seima": "",
+    "price_html": "21,95&nbsp;&euro;"
+   },
+   "36002": {
+    "_dp_base_product_id": "18590",
+    "_dp_pack_qty": "2",
+    "pak": [
+     "2 kg"
+    ],
+    "seima": "",
+    "price_html": "42,50&nbsp;&euro;"
+   },
+   "36003": {
+    "_dp_base_product_id": "18587",
+    "_dp_pack_qty": "2",
+    "pak": [
+     "7 kg × 2"
+    ],
+    "seima": "",
+    "price_html": "111,00&nbsp;&euro;"
+   }
+  },
+  "hooks": {
+   "woocommerce_before_shop_loop_item": [
+    "1 closure",
+    "10 woocommerce_show_product_loop_sale_flash"
+   ],
+   "woocommerce_shop_loop_item_title": [
+    "0 flatsome_woocommerce_shop_loop_category",
+    "0 flatsome_woocommerce_shop_loop_ratings",
+    "10 woocommerce_template_loop_product_title"
+   ],
+   "woocommerce_after_shop_loop_item_title": [
+    "5 woocommerce_template_loop_rating",
+    "10 woocommerce_template_loop_price",
+    "12 Petshop_Weight_Filter::card_badge"
+   ],
+   "woocommerce_after_shop_loop_item": [
+    "99 closure"
+   ],
+   "flatsome_product_box_after": [
+    "20 flatsome_woocommerce_shop_loop_excerpt",
+    "100 flatsome_woocommerce_shop_loop_button"
+   ],
+   "flatsome_product_box_actions": [
+    "1 flatsome_product_box_actions_add_to_cart",
+    "50 flatsome_lightbox_button"
+   ],
+   "woocommerce_single_product_summary": [
+    "0 flatsome_woocommerce_product_breadcrumb",
+    "1 flatsome_product_brands",
+    "5 woocommerce_template_single_title",
+    "7 flatsome_product_mobile_next_prev_nav",
+    "10 woocommerce_template_single_rating",
+    "10 woocommerce_template_single_price",
+    "10 Petshop_Pristatymo_Pazadas::kg",
+    "11 Petshop_Rinkiniai::sutaupote",
+    "11 closure",
+    "11 closure",
+    "20 woocommerce_template_single_excerpt",
+    "20 flatsome_before_add_to_cart_html",
+    "25 Petshop_Dydziai::pieskime",
+    "25 closure",
+    "30 woocommerce_template_single_add_to_cart",
+    "30 flatsome_after_add_to_cart_html",
+    "31 Petshop_Atsargu_Laukimas::forma",
+    "31 Petshop_Product_Calc::widget",
+    "40 woocommerce_template_single_meta",
+    "50 woocommerce_template_single_sharing",
+    "60 WC_Structured_Data::generate_product_data"
+   ]
+  },
+  "flatsome_box": [
+   "$classes[] = 'product-small';",
+   "<?php do_action( 'woocommerce_before_shop_loop_item' ); ?>",
+   "<div class=\"product-small box <?php echo flatsome_product_box_class(); ?>\">",
+   "do_action( 'flatsome_woocommerce_shop_loop_images' );",
+   "<?php do_action( 'flatsome_product_box_tools_top' ); ?>",
+   "<?php do_action( 'flatsome_product_box_tools_bottom' ); ?>",
+   "<?php do_action( 'flatsome_product_box_actions' ); ?>",
+   "<div class=\"box-text <?php echo flatsome_product_box_text_class(); ?>\">",
+   "do_action( 'woocommerce_before_shop_loop_item_title' );",
+   "do_action( 'woocommerce_shop_loop_item_title' );",
+   "do_action( 'woocommerce_after_shop_loop_item_title' );",
+   "do_action( 'flatsome_product_box_after' );",
+   "<?php do_action( 'woocommerce_after_shop_loop_item' ); ?>"
+  ],
+  "dydziai_md5": "2bed4cdc1671cb64ad549e2e81dd386d",
+  "dydziai_hooks": [
+   "petshop-dydziai.php",
+   "petshop-katalogas.php"
+  ],
+  "fakt_pvz": [
+   {
+    "preke_id": "18584",
+    "q": "18"
+   },
+   {
+    "preke_id": "18587",
+    "q": "178"
+   },
+   {
+    "preke_id": "18590",
+    "q": "134"
+   }
+  ],
+  "fakt_ms": 0,
+  "ajax_url": "https://petshop.lt/wp-admin/admin-ajax.php",
+  "wc_ajax": "/?wc-ajax=%%endpoint%%"
+ },
+ "v": "dep-125014",
+ "kurimas": 200,
+ "sid": 6516,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
