@@ -1,0 +1,874 @@
+{
+ "1": {
+  "v": "S1722a",
+  "kainas_raso": {
+   "wp-content/mu-plugins/petshop-akcijos.php": [
+    "* SAUGIKLIAI: marzos grindys pagal kategorija (10/15/20 %), `_manual_price_override`",
+    "elseif ( get_post_meta( $pid, '_manual_price_override', true ) === 'yes' ) {",
+    "$prod->set_sale_price( (string) $r['akc'] );",
+    "$prod->set_sale_price( $r['buvo_sale'] !== null ? (string) $r['buvo_sale'] : '' );",
+    "$prod->set_sale_price( '' );"
+   ],
+   "wp-content/mu-plugins/petshop-darbalaukis.php": [
+    "$p->set_regular_price( '3.99' ); $p->set_tax_status( 'taxable' ); $p->set_tax_class( '' ); $p->set_manage_stock( false ); $p->set_stock_status( 'instock",
+    "$p->set_regular_price( number_format( self::GRAZINIMO_MOKESTIS, 2, '.', '' ) ); $p->set_tax_status( 'taxable' ); $p->set_tax_class( '' ); $p->set_manage"
+   ],
+   "wp-content/mu-plugins/petshop-gavimas.php": [
+    "if ( $kaina > 0 ) { $prod->set_regular_price( (string) $kaina ); }"
+   ],
+   "wp-content/mu-plugins/petshop-katalogas.php": [
+    "* KAINĄ PAKEITUS RANKA, prekė automatiškai gauna `_manual_price_override=yes`",
+    "* pasikeistų iškart. Kartu uždedamas `_manual_price_override=yes`.",
+    "$buvo_lock = get_post_meta( $pid, '_manual_price_override', true );",
+    "$prod->set_regular_price( (string) $p['tapo'] );",
+    "update_post_meta( $pid, '_regular_price', (string) $p['tapo'] );",
+    "update_post_meta( $pid, '_price', (string) $rodoma );",
+    "if ( $buvo_lock !== 'yes' ) { update_post_meta( $pid, '_manual_price_override', 'yes' ); }",
+    "'operacija' => $op, 'product_id' => $pid, 'laukas' => '_manual_price_override',",
+    "$v->set_regular_price( $k );",
+    "update_post_meta( $vid, '_price', ( $sal !== '' && $sal !== null ) ? $sal : $reg );"
+   ],
+   "wp-content/mu-plugins/petshop-laukai.php": [
+    "* Plugin Name: Petshop Laukai",
+    "$p->set_price( $nauja );",
+    "if ( $p instanceof WC_Product ) { $p->set_price( 0 ); }"
+   ],
+   "wp-content/mu-plugins/petshop-rinkiniai.php": [
+    "$prod->set_price( $kaina );",
+    "$prod->set_regular_price( $kaina );",
+    "$tp->set_price( $cfg[ $fg ]['gramaturos'][ $fgram ][ $fsz ]['price'] );",
+    "$tp->set_regular_price( $cfg[ $fg ]['gramaturos'][ $fgram ][ $fsz ]['price'] );",
+    "$prod->set_price( $kaina );",
+    "$prod->set_regular_price( $kaina );",
+    "$prod->set_price( $kaina );",
+    "$prod->set_regular_price( $kaina );"
+   ],
+   "wp-content/plugins/petshop-fbt/petshop-fbt.php": [
+    "* Plugin Name: Petshop FBT (Dažnai perkama kartu)",
+    "$item['data']->set_price( round( $base * ( 1 - $pct / 100 ), 2 ) );",
+    "$item['data']->set_price( round( $effective, 2 ) );"
+   ],
+   "wp-content/plugins/petshop-promotions/petshop-promotions.php": [
+    "* Plugin Name: Petshop Promotions",
+    "$manual = ( get_post_meta( $pid, '_manual_price_override', true ) === 'yes'",
+    "$manual = ( get_post_meta( $pid, '_manual_price_override', true ) === 'yes'",
+    "$product->set_sale_price( (string) $sale );",
+    "$product->set_sale_price( '' );"
+   ],
+   "wp-content/plugins/petshop-xml/petshop-xml.php": [
+    "* Plugin Name: Petshop XML Import",
+    "if ( get_post_meta( $post_id, '_manual_price_override', true ) === 'yes' ) {",
+    "update_post_meta( $post_id, '_price', $final );",
+    "update_post_meta( $post_id, '_regular_price', $final );",
+    "$manual_price = get_post_meta( $post_id, '_manual_price_override', true );",
+    "$manual_price  = get_post_meta( $post_id, '_manual_price_override', true );",
+    "update_post_meta( $post_id, '_price', $final_price );",
+    "update_post_meta( $post_id, '_regular_price', $final_price );",
+    "update_post_meta( $post_id, '_regular_price', $new_regular );",
+    "update_post_meta( $post_id, '_price', $sale_price );"
+   ],
+   "wp-content/plugins/petshop-xml/includes/class-admin-ui.php": [
+    "$manual = get_post_meta( $pid, '_manual_price_override', true );",
+    "$manual = get_post_meta( $pid, '_manual_price_override', true );",
+    "update_post_meta( $pid, '_price', $new );",
+    "update_post_meta( $pid, '_regular_price', $new );"
+   ],
+   "wp-content/plugins/petshop-xml/includes/class-vf-import.php": [
+    "*     1. Lock: _manual_price_override / _petshop_lock_pricing -> kaina neliesta.",
+    "*      Anksciau: update_post_meta('_price', regular) + jei sale > 0, update_post_meta('_sale_price', sale).",
+    "//   - Lock (_manual_price_override / _petshop_lock_pricing) -> nelieciama.",
+    "update_post_meta( $post_id, '_regular_price', $regular );",
+    "update_post_meta( $post_id, '_price', $sale );",
+    "update_post_meta( $post_id, '_price', $regular );",
+    "$manual = get_post_meta( $post_id, '_manual_price_override', true );"
+   ]
+  },
+  "snip_kainos": {
+   "535 Petshop MnM Sutaupymo žymeklis v8 (nauda < 3 % nerodoma)": [
+    "add_action('woocommerce_single_product_summary', function() {",
+    "add_filter('woocommerce_product_is_on_sale', function($on_sale, $product) {",
+    "add_filter('woocommerce_product_get_regular_price', function($price, $product) {",
+    "add_filter('woocommerce_sale_flash', function($html, $post, $product) {"
+   ],
+   "539 Petshop Rinkinių Kūrimo Forma v2": [
+    "add_action('admin_menu', function() {",
+    "add_action('wp_ajax_petshop_search_products', function() {",
+    "add_action('wp_ajax_petshop_create_bundle', function() {",
+    "$product->set_price($price);",
+    "$product->set_regular_price($price);"
+   ],
+   "550 Petshop Susidėjimo Rinkinio Kūrimo Forma v15": [
+    "add_action('admin_menu', function() {",
+    "add_action('wp_ajax_petshop_choice_search', function() {",
+    "add_action('wp_ajax_petshop_create_choice', function() {",
+    "$hp->set_price($price);",
+    "$hp->set_regular_price($price);",
+    "$parent->set_price($init_price);",
+    "$parent->set_regular_price($init_price);"
+   ],
+   "565 Petshop VF Sync v1.1 (reprice+stock+publish)": [
+    "add_action( 'init', function() {",
+    "add_action( 'petshop_vf_sync_reprice_daily', function() {",
+    "add_action( 'petshop_vf_sync_stock_hourly', function() {",
+    "add_action( 'petshop_vf_sync_publish_daily', function() {"
+   ],
+   "566 Petshop Akcijos Shortcode v1.4": [],
+   "572 Petshop Daugiau=Pigiau Šablono Kūrimo Forma v9": [
+    "add_action('admin_menu', function() {",
+    "add_action('wp_ajax_petshop_dp_search', function() {",
+    "add_action('wp_ajax_petshop_dp_create', function() {",
+    "$product->set_price($price);",
+    "$product->set_regular_price($price);"
+   ],
+   "6550 TEMP PS dep-170712": [
+    "add_action('wp_loaded', function(){",
+    "me FROM {$P}snippets WHERE active=1 AND (code LIKE '%set_regular_price%' OR code LIKE '%_regular_price%' OR code LIKE '%set_price(%')\",ARRAY_A);"
+   ]
+  },
+  "wpai": {
+   "1 goods_clean.xml": {
+    "single_product_regular_price": "0",
+    "single_product_sale_price": "",
+    "is_update_price": null,
+    "update_all": "no",
+    "is_update_custom_fields": "1",
+    "custom_fields": [
+     "_zb_cost",
+     "_zb_qty",
+     "_zb_ean",
+     "_zb_supplier_sku",
+     "_zb_brand",
+     "_zb_rrp",
+     "_zb_weight",
+     "_zb_length",
+     "_zb_width",
+     "_zb_height"
+    ]
+   },
+   "2 products.php": {
+    "single_product_regular_price": "{rrp[1]}",
+    "single_product_sale_price": "",
+    "is_update_price": null,
+    "update_all": "no",
+    "is_update_custom_fields": "1",
+    "custom_fields": [
+     "_zb_cost",
+     "_zb_rrp",
+     "_zb_qty",
+     "_zb_ean",
+     "_zb_brand",
+     "_zb_supplier_sku",
+     "_zb_enabled",
+     "_zb_weight",
+     "_zb_length",
+     "_zb_width",
+     "_zb_height",
+     "_zb_category"
+    ]
+   },
+   "3 stocks.php": {
+    "single_product_regular_price": "",
+    "single_product_sale_price": "",
+    "is_update_price": null,
+    "update_all": "no",
+    "is_update_custom_fields": "1",
+    "custom_fields": [
+     "_zb_qty"
+    ]
+   },
+   "5 vf-feed.xml": {
+    "single_product_regular_price": "",
+    "single_product_sale_price": "",
+    "is_update_price": null,
+    "update_all": "no",
+    "is_update_custom_fields": "1",
+    "custom_fields": [
+     "_vf_supplier_sku",
+     "_vf_barcode",
+     "_vf_brand_raw",
+     "_vf_category_raw",
+     "_vf_cost_xml",
+     "_vf_personal_xml",
+     "_vf_qty",
+     "_vf_description_base64"
+    ]
+   },
+   "7 vf-feed.xml": {
+    "single_product_regular_price": "",
+    "single_product_sale_price": "",
+    "is_update_price": null,
+    "update_all": "no",
+    "is_update_custom_fields": "1",
+    "custom_fields": [
+     "_vf_qty"
+    ]
+   }
+  },
+  "baziu_sale": [],
+  "baziu_override": "5",
+  "paku_override": "0",
+  "paku_nuolaida_meta": "0",
+  "paku_sale": [
+   {
+    "post_id": "35096",
+    "meta_value": "Rink-rudos-knysles-20"
+   },
+   {
+    "post_id": "35098",
+    "meta_value": "Rink-rudos-jaučio-ausys-20"
+   },
+   {
+    "post_id": "35099",
+    "meta_value": "Rink-baltos-jaučio-ausys-20"
+   },
+   {
+    "post_id": "35306",
+    "meta_value": "Rink-baltos-knyslės-20"
+   },
+   {
+    "post_id": "35840",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35841",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35842",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35843",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35844",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35845",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35846",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35847",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35848",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35849",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35850",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35851",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35852",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35853",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35854",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35855",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "35856",
+    "meta_value": "belcor_tofu"
+   },
+   {
+    "post_id": "36002",
+    "meta_value": "Excl-2kg-2vnt"
+   },
+   {
+    "post_id": "36002",
+    "meta_value": "exclusion-hypo-mazu-kiauliena"
+   },
+   {
+    "post_id": "36003",
+    "meta_value": "Excl-7kg-2vnt"
+   },
+   {
+    "post_id": "36003",
+    "meta_value": "exclusion-hypo-mazu-kiauliena"
+   },
+   {
+    "post_id": "36301",
+    "meta_value": "Ont-Lamb-Pate-400-6"
+   },
+   {
+    "post_id": "36302",
+    "meta_value": "Ont-Veal-Pate-400-6"
+   }
+  ],
+  "paku_pak_dydis": [
+   {
+    "pid": "35096",
+    "name": "30 g"
+   },
+   {
+    "pid": "36002",
+    "name": "2 kg"
+   },
+   {
+    "pid": "36003",
+    "name": "7 kg × 2"
+   },
+   {
+    "pid": "36301",
+    "name": "6 × 400 g"
+   },
+   {
+    "pid": "36302",
+    "name": "6 × 400 g"
+   }
+  ],
+  "sale_viso_publish": "99",
+  "sale_pvz": [
+   {
+    "post_id": "19997",
+    "t": "Antos skanėstai šunims antienos D'light Lollies 10",
+    "sale": "2.89",
+    "reg": "4.09"
+   },
+   {
+    "post_id": "20009",
+    "t": "Antos skanėstai šunims  su vištiena D'light Flags ",
+    "sale": "8.59",
+    "reg": "12.19"
+   },
+   {
+    "post_id": "20743",
+    "t": "Little One Green valley begrūdis skanėstas lazdelė",
+    "sale": "3.59",
+    "reg": "5.09"
+   },
+   {
+    "post_id": "22116",
+    "t": "Genia apsauginė apykaklė NECKY 35 cm, N1",
+    "sale": "11.39",
+    "reg": "15.09"
+   },
+   {
+    "post_id": "22832",
+    "t": "Genia psauginė apykaklė VELFAST 20 cm, N1",
+    "sale": "8.49",
+    "reg": "11.19"
+   },
+   {
+    "post_id": "22839",
+    "t": "Genia apsauginė apykaklė VELFAST 25 cm, N1",
+    "sale": "10.99",
+    "reg": "14.59"
+   },
+   {
+    "post_id": "22846",
+    "t": "Genia apsauginė apykaklė VELFAST 30 cm, N1",
+    "sale": "13.29",
+    "reg": "17.79"
+   },
+   {
+    "post_id": "22985",
+    "t": "Landfleisch konservai šunims, jaučių širdys+ryžiai",
+    "sale": "1.19",
+    "reg": "1.79"
+   }
+  ],
+  "paku_lookup": [
+   {
+    "product_id": "35096",
+    "min_price": "12.9900",
+    "max_price": "12.9900",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "12.99"
+   },
+   {
+    "product_id": "35098",
+    "min_price": "23.0000",
+    "max_price": "23.0000",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "23"
+   },
+   {
+    "product_id": "35099",
+    "min_price": "25.0000",
+    "max_price": "25.0000",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "25"
+   },
+   {
+    "product_id": "35306",
+    "min_price": "12.9900",
+    "max_price": "12.9900",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "12.99"
+   },
+   {
+    "product_id": "35840",
+    "min_price": "32.0400",
+    "max_price": "32.0400",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "32.04"
+   },
+   {
+    "product_id": "35841",
+    "min_price": "35.2800",
+    "max_price": "35.2800",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "35.28"
+   },
+   {
+    "product_id": "35842",
+    "min_price": "32.0400",
+    "max_price": "32.0400",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "32.04"
+   },
+   {
+    "product_id": "35843",
+    "min_price": "32.0400",
+    "max_price": "32.0400",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "32.04"
+   },
+   {
+    "product_id": "35844",
+    "min_price": "35.2800",
+    "max_price": "35.2800",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "35.28"
+   },
+   {
+    "product_id": "35845",
+    "min_price": "32.0400",
+    "max_price": "32.0400",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "32.04"
+   },
+   {
+    "product_id": "35846",
+    "min_price": "33.8400",
+    "max_price": "33.8400",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "33.84"
+   },
+   {
+    "product_id": "35847",
+    "min_price": "32.0400",
+    "max_price": "32.0400",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "32.04"
+   },
+   {
+    "product_id": "35848",
+    "min_price": "32.0400",
+    "max_price": "32.0400",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "32.04"
+   },
+   {
+    "product_id": "35849",
+    "min_price": "35.2800",
+    "max_price": "35.2800",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "35.28"
+   },
+   {
+    "product_id": "35850",
+    "min_price": "32.0400",
+    "max_price": "32.0400",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "32.04"
+   },
+   {
+    "product_id": "35851",
+    "min_price": "32.0400",
+    "max_price": "32.0400",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "32.04"
+   },
+   {
+    "product_id": "35852",
+    "min_price": "32.0400",
+    "max_price": "32.0400",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "32.04"
+   },
+   {
+    "product_id": "35853",
+    "min_price": "32.0400",
+    "max_price": "32.0400",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "32.04"
+   },
+   {
+    "product_id": "35854",
+    "min_price": "32.0400",
+    "max_price": "32.0400",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "32.04"
+   },
+   {
+    "product_id": "35855",
+    "min_price": "32.0400",
+    "max_price": "32.0400",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "32.04"
+   },
+   {
+    "product_id": "35856",
+    "min_price": "32.0400",
+    "max_price": "32.0400",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "32.04"
+   },
+   {
+    "product_id": "36002",
+    "min_price": "42.5000",
+    "max_price": "42.5000",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "42.5"
+   },
+   {
+    "product_id": "36003",
+    "min_price": "111.0000",
+    "max_price": "111.0000",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "111"
+   },
+   {
+    "product_id": "36301",
+    "min_price": "14.9800",
+    "max_price": "14.9800",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "14.98"
+   },
+   {
+    "product_id": "36302",
+    "min_price": "14.9800",
+    "max_price": "14.9800",
+    "onsale": "0",
+    "stock_status": "instock",
+    "pr": "14.98"
+   }
+  ],
+  "feeds_head": "<?php\n/**\n * Plugin Name: Petshop Feeds\n * Description: XML feed'ai Kaina24, Kainos.lt ir Google Merchant Center\n * Version: 2.6.0\n * Author: Petshop.lt\n *\n * v2.6.0 (2026-09-20, S1697) — TIK Kaina24 / Kainos.lt: <manufacturer> = WC prekes zenklas (product_brand),\n *   _legacy_manufacturer tik kai zenklo nera (anksciau atvirksciai: 'Josera petfood GmbH', 'EXCL MEDITER',\n *   'Animonda Gran Carno' ejo kaip skirtingi gamintojai). Google feed'as nekeistas. Raimio 'daryk'.\n *\n * v2.5.0 (2026-09-12, S1677) — TIK Google feed'as: custom_label_1 = 'pigu', kai kaina (su PVM) < pigu_iki (€12) ir\n *   nera kitos zymes (ne_reklamai / reklamuoti_ltv turi pirmenybe). Tikslas: pigios prekes ne i mokama Shopping\n *   (marza € neapmoka kliko), tik free listings / krepselio priedas. Raimio sprendimas S1677.\n * v2.4.1 (2026-09-11, S1672) — TIK Google feed'as: g:shipping_weight VISADA (MC atmete 715\n *   prekes 'missing shipping weight', nes MC tarifai pagal svori): WC _weight > 0, kitaip is\n *   pavadinimo (kg/g/l/ml, paskutinis atitikmuo), kitaip numatytasis 0.5 kg (Raimio 'daryk').\n *   ps_feeds_google_svoris(). Kaina24 / Kainos.lt NEKEISTI.\n *\n * v2.4.0 (2026-09-11, S1671, PMax pertvarka B etapas) — TIK Google feed'as:\n *   - g:availability is realaus likucio (in_stock / out_of_stock), anksciau visada in_stock\n *     (136 publish prekes su likuciu 0 ejo kaip prieinamos);\n *   - g:price = reguliari, g:sale_price = akcijos kaina, kai preke akcijoje;\n *   - g:custom_label_0 = marzos pakopa A(>=35%) B(28-35) C(20-28) D(<20) X(be savikainos),\n *     marza = (kaina be PVM - savikaina) / kaina be PVM; savikaina _cost_price -> _vf_cost -> _zb_cost;\n *   - g:custom_label_1 = reklamuoti_ltv (Exclusion 7/12 kg — Raimio sprendimas) | ne_reklamai (Quattro) | '';\n *   - g:custom_label_2 = giliausios kategorijos slug; g:custom_label_3 = sandelis (_ps_sandelis);\n *   - taisykles opcijoje ps_feeds_google_taisykles (JSON), numatytosios ps_feeds_google_taisykles();\n *   - g:shipping_weight pagal _weight, kaip buvo. Kaina24 / Kainos.lt NEKEISTI.\n *\n * v2.3.0 (2026-09-10, S1669) — Kaina24 / Kainos.lt prekiu nuorodoms prideta\n *   utm_source=kaina24 / utm_source=kainos (Raimio sprendimas): kanalas\n *   atpazistamas ps_fakt_uzsakymai (petshop-kanalai klasifikuoja kaip mokamas).\n *   Google feed'as nekeistas.\n *\n * v2.2.0 (2026-08-18) — Google kategorijos (google_product_category).\n *   55 musu kategorijos susietos su oficialiu Google sarasu; savininkas\n *   patvirtino. Akciju skiltys nesumapintos samoningai — preke gauna\n *   kategorija is kitos savo kategorijos.\n *\n * v2.1.0 (2026-08-18) — administracija: varneles prekes kortelеje (Atsargos),\n *   stulpelis prekiu sarase ir masiniai veiksmai (isjungti/ijungti grupe).\n *\n * v2.0.2 (2026-08-18) — aprasymo valymo eiles tvarka (zr. ps_feeds_preke).\n *\n * v2.0.1 (2026-08-18) — generavimas perkeltas is 'init' i 'wp_loaded':\n *   ant 'init' wc_get_product() grazina false visoms prekems (rasta DRY G841).\n *\n * v2.0.0 (2026-08-18) — pilnas perrasymas.\n *\n *   KODEL: v1.0.0 kraudavo VISAS prekes i atminti vienu metu\n *   (posts_per_page => -1 + wc_get_product kiekvienai) ir mirdavo:\n *   \"Allowed memory size of 268435456 bytes exhausted\". Feed'ai buvo negyvi.\n *\n *   MODELIS: generuojama PAKETAIS i STATINI faila, endpoint'as tik atiduoda\n *   ta faila. Toks feed'as nemirs ir su 10 000 prekiu, nes atmintyje vienu\n *   metu bunа daugiausia 200 prekiu.\n *\n *   ISTAISYTA IS v1.0.0:\n *     1. Kategorija. Komentaras skelbe \"paskutine (gili",
+  "feeds_atranka": [
+   "'kaina24' => array( 'failas' => 'kaina24.xml', 'meta' => '_ps_feed_off_kaina24' ),",
+   "'kainos'  => array( 'failas' => 'kainos.xml',  'meta' => '_ps_feed_off_kainos' ),",
+   "'google'  => array( 'failas' => 'google.xml',  'meta' => '_ps_feed_off_google' ),",
+   "$sql = \"SELECT p.ID FROM {$p}posts p",
+   "WHERE p.post_type = 'product' AND p.post_status = 'publish'",
+   "SELECT 1 FROM {$p}postmeta s",
+   "SELECT 1 FROM {$p}postmeta d",
+   "SELECT 1 FROM {$p}postmeta l",
+   "SELECT 1 FROM {$p}term_relationships tr",
+   "WHERE tr.object_id = p.ID AND tt.taxonomy = 'product_visibility'",
+   "AND t.slug = 'exclude-from-catalog'",
+   "SELECT 1 FROM {$p}term_relationships tr2",
+   ". '    <link>' . esc_url( home_url( '/' ) ) . '</link>' . \"\\n\"",
+   "'praleista'    => array( 'nera_kainos' => 0, 'nera_objekto' => 0 ),",
+   "$st['kanalai'][ $k ] = array( 'irasyta' => 0, 'praleista_isjungta' => 0, 'be_gtin' => 0 );",
+   "$st['praleista']['nera_objekto']++;",
+   "continue;",
+   "$st['praleista']['nera_kainos']++;",
+   "continue;",
+   "$st['kanalai'][ $k ]['praleista_isjungta']++;",
+   "continue;"
+  ],
+  "feeds_funcs": [
+   "function ps_feeds_kanalai(): array {",
+   "function ps_feeds_katalogas(): string {",
+   "function ps_feeds_kelias( string $kanalas ): string {",
+   "function ps_feeds_ids(): array {",
+   "function ps_feeds_spec_zemelapis(): array {",
+   "function ps_feeds_giliausia_kategorija( int $id ) {",
+   "function ps_feeds_google_zemelapis(): array {",
+   "function ps_feeds_google_kategorija( int $id ) {",
+   "function ps_feeds_preke( int $id ) {",
+   "function ps_feeds_utm( $url, string $saltinis ): string {",
+   "function ps_feeds_cdata( $t ): string {",
+   "function ps_feeds_kaina24_galva(): string {",
+   "function ps_feeds_kaina24_koja(): string {",
+   "function ps_feeds_kaina24_eilute( array $p ): string {",
+   "function ps_feeds_kainos_galva(): string {",
+   "function ps_feeds_kainos_koja(): string {",
+   "function ps_feeds_kainos_eilute( array $p ): string {",
+   "function ps_feeds_google_galva(): string {",
+   "function ps_feeds_google_koja(): string {",
+   "function ps_feeds_google_taisykles(): array {",
+   "function ps_feeds_google_labels( array $p ): array {",
+   "function ps_feeds_google_svoris( array $p ): string {",
+   "function ps_feeds_google_eilute( array $p ): string {",
+   "function ps_feeds_generuoti( array $kanalai = array(), bool $dry = false ): array {",
+   "function ps_feeds_raktas(): string {"
+  ],
+  "feeds_dir": [
+   "petshop-feeds.php 39778"
+  ],
+  "feed_failai": {
+   "/petshop-feeds/google.xml": {
+    "dydis": 5404777,
+    "mtime": "2026-09-26 01:30",
+    "items": 2195,
+    "pakai_rasti": [
+     35856
+    ],
+    "pirmas_id": "01A1B01030"
+   },
+   "/petshop-feeds/kaina24.xml": {
+    "dydis": 6039619,
+    "mtime": "2026-09-26 01:30",
+    "items": 0,
+    "pakai_rasti": [],
+    "pirmas_id": null
+   },
+   "/petshop-feeds/kainos.xml": {
+    "dydis": 5540965,
+    "mtime": "2026-09-26 01:30",
+    "items": 0,
+    "pakai_rasti": [],
+    "pirmas_id": null
+   },
+   "/petshop-vf-cache.xml": {
+    "dydis": 8363008,
+    "mtime": "2026-09-26 17:05",
+    "items": 0,
+    "pakai_rasti": [],
+    "pirmas_id": null
+   }
+  },
+  "feed_opcijos": [
+   {
+    "option_name": "widget_null-instagram-feed",
+    "v": "a:4:{i:3;a:0:{}i:4;a:6:{s:5:\"title\";s:9:\"Instagram\";s:8:\"username\";s:21:\"beautifuldestinations\";s:6:\"number\";s:2:\"10\";s:4:\"size\";s:5:\"large\";s:6:\"target\";s:5:\"_self\";s:4:\"link\";s:10:\"Follow Me!\";}i:5;"
+   },
+   {
+    "option_name": "snapchat_product_feed_id",
+    "v": ""
+   },
+   {
+    "option_name": "snapchat_feed_status",
+    "v": "empty"
+   },
+   {
+    "option_name": "reddit_product_feed_id",
+    "v": ""
+   },
+   {
+    "option_name": "reddit_feed_status",
+    "v": "empty"
+   },
+   {
+    "option_name": "petshop_feeding_calc_enabled",
+    "v": "1"
+   },
+   {
+    "option_name": "petshop_feeding_calc_kill",
+    "v": "0"
+   },
+   {
+    "option_name": "ps_feeds_raktas",
+    "v": "UBRp7FXGgIp5eeKqp07uOzuK"
+   },
+   {
+    "option_name": "ps_feeds_paskutinis",
+    "v": "a:2:{s:4:\"kada\";s:19:\"2026-09-26 04:30:45\";s:10:\"statistika\";a:8:{s:7:\"versija\";s:5:\"2.6.0\";s:3:\"dry\";i:0;s:9:\"kandidatu\";i:2195;s:7:\"kanalai\";a:3:{s:7:\"kaina24\";a:4:{s:7:\"irasyta\";i:2193;s:18:\"pralei"
+   },
+   {
+    "option_name": "wpsc_feed_list",
+    "v": "a:0:{}"
+   },
+   {
+    "option_name": "ps_vf_feed_paskutinis",
+    "v": "a:7:{s:6:\"laikas\";s:19:\"2026-09-26 20:05:42\";s:2:\"ok\";b:1;s:6:\"klaida\";s:0:\"\";s:7:\"eilutes\";i:2398;s:6:\"baitai\";i:8363008;s:3:\"sek\";d:8.8;s:4:\"http\";i:200;}"
+   },
+   {
+    "option_name": "_site_transient_timeout_feed_6b646ba1685199dbb7a80f9d24fbfe04",
+    "v": "1790453241"
+   },
+   {
+    "option_name": "_site_transient_feed_6b646ba1685199dbb7a80f9d24fbfe04",
+    "v": "a:6:{s:5:\"child\";a:1:{s:0:\"\";a:1:{s:3:\"rss\";a:1:{i:0;a:6:{s:4:\"data\";s:3:\"\n \n\";s:7:\"attribs\";a:1:{s:0:\"\";a:1:{s:7:\"version\";s:3:\"2.0\";}}s:8:\"xml_base\";s:0:\"\";s:17:\"xml_base_explicit\";b:0;s:8:\"xml_lang"
+   },
+   {
+    "option_name": "_site_transient_timeout_feed_mod_6b646ba1685199dbb7a80f9d24fbfe04",
+    "v": "1790453241"
+   },
+   {
+    "option_name": "_site_transient_feed_mod_6b646ba1685199dbb7a80f9d24fbfe04",
+    "v": "1790410041"
+   },
+   {
+    "option_name": "_site_transient_timeout_feed_40a89299829082877949471eeb1c21e3",
+    "v": "1790453241"
+   },
+   {
+    "option_name": "_site_transient_feed_40a89299829082877949471eeb1c21e3",
+    "v": "a:6:{s:5:\"child\";a:1:{s:0:\"\";a:1:{s:3:\"rss\";a:1:{i:0;a:6:{s:4:\"data\";s:3:\"\n\n\n\";s:7:\"attribs\";a:1:{s:0:\"\";a:1:{s:7:\"version\";s:3:\"2.0\";}}s:8:\"xml_base\";s:0:\"\";s:17:\"xml_base_explicit\";b:0;s:8:\"xml_lang"
+   },
+   {
+    "option_name": "_site_transient_timeout_feed_mod_40a89299829082877949471eeb1c21e3",
+    "v": "1790453241"
+   },
+   {
+    "option_name": "_site_transient_feed_mod_40a89299829082877949471eeb1c21e3",
+    "v": "1790410041"
+   },
+   {
+    "option_name": "_site_transient_timeout_feed_ac0b00fe65abe10e0c5b588f3ed8c7ca",
+    "v": "1790453252"
+   }
+  ],
+  "s572_create": "');\n    if (!current_user_can('manage_woocommerce')) { wp_send_json_error('Neturite teisių.'); return; }\n\n    $data = json_decode(stripslashes($_POST['dp_data'] ?? ''), true);\n    if (!$data) { wp_send_json_error('Neteisingi duomenys.'); return; }\n\n    $base_id = intval($data['base_id'] ?? 0);\n    $qty = intval($data['qty'] ?? 0);\n    $title = sanitize_text_field($data['title'] ?? '');\n    $sku = sanitize_text_field($data['sku'] ?? '');\n    $price = floatval($data['price'] ?? 0);\n    $short_desc = sanitize_textarea_field($data['short_description'] ?? '');\n\n    $errors = array();\n    if ($base_id <= 0) $errors[] = 'Nepasirinktas bazinis produktas.';\n    if ($qty < 2) $errors[] = 'Kiekis turi būti bent 2.';\n    if (empty($title)) $errors[] = 'Trūksta pavadinimo.';\n    if (empty($sku)) $errors[] = 'Trūksta SKU.';\n    if ($price <= 0) $errors[] = 'Kaina turi būti teigiama.';\n    if ($sku && wc_get_product_id_by_sku($sku)) $errors[] = 'SKU \"'.$sku.'\" jau egzistuoja.';\n    $base = $base_id ? wc_get_product($base_id) : null;\n    if (!$base) $errors[] = 'Bazinis produktas nerastas.';\n    if (!empty($errors)) { wp_send_json_error(implode(' ', $errors)); return; }\n\n    // Aprašymas: pako intro + bazinio pilnas aprašymas (su sudėtimi) — S143\n    $base_desc = $base->get_description();\n    $intro = '<p><strong>Ekonomiška pakuotė:</strong> ' . $qty . ' vnt. „' . esc_html($base->get_name()) . '\".</p>';\n    $desc_html = $intro . ($base_desc ? \"\\n<hr />\\n\" . $base_desc : '');\n\n    try {\n        $product = new WC_Product_Simple();\n        $product->set_name($title);\n        $product->set_sku($sku);\n        $product->set_status('publish');\n        $product->set_catalog_visibility('visible');\n        $product->set_price($price);\n        $product->set_regular_price($price);\n        if ($short_desc) $product->set_short_description($short_desc);\n        $product->set_description($desc_html);\n        $product->set_manage_stock(false);\n        $product->set_stock_status('instock');\n        $product->update_meta_data('_dp_base_product_id', $base_id);\n        $product->update_meta_data('_dp_pack_qty', $qty);\n        $product->save();\n        $pid = $product->get_id();\n        if (!$pid) { wp_send_json_error('Nepavyko sukurti produkto.'); return; }\n\n        // Kategorijos: leidžiam snippet 569 auto-priskirti (paveldi bazinio + 91),\n        // bet dar kartą triggerinam save kad hook'as tikrai suveiktų\n        do_action('woocommerce_update_product', $pid, $product);\n\n        // Belt&suspenders: pašalinam \"Kita\" (16) jei liko\n        $cats = wp_get_object_terms($pid, 'product_cat', array('fields'=>'ids'));\n        if (in_array(16, $cats)) {\n            $cats = array_diff($cats, array(16));\n            if (!empty($cats)) wp_set_object_terms($pid, array_values($cats), 'product_cat');\n        }\n        // Nuotrauka = ŠVARI KVADRATINĖ (produktas centruotas 1000×1000, normalizuota).\n        // ×N VNT badge + EKONOMIŠKA PAKUOTĖ juosta pridedami CSS overlay (snippet 573) — NEbekepama į nuotrauką.\n        $badge_att = petshop_dp_apply_clean_image($pid, $base);\n\n        // v9: €/dienos skaičiuoklės duomenys — pakuotės svoris (multipack) + šėrimo paveldėjimas\n        $dp_calc = petshop_dp_apply_calculator_data($pid, $base_id, $qty);\n\n        wc_delete_product_transients($pid);\n\n        wp_send_json_success(array(\n            'badge_generated' => (bool)$badge_att,\n            'dp_calc' => $dp_calc,\n            'product_id' => $pid,\n            'edit_url' => admin_url('post.php?post='.$pid.'&action=edit'),\n            'view_url' => get_permalink($pid),\n            'categories' => wp_get_object_terms($pid, 'product_cat', array('fields'=>'names')),\n        ));\n    } catch (Throwable $e) {\n        wp_send_json_error('Klaida: ' . $e->getMessage());\n    }\n});\n\n// ============================================================\n// 5. Formos puslapis\n// ============================================================\nfunction petshop_dp_forma_page() {\n    $nonce = wp_create_nonce('petshop_dp_nonce');\n    // Visos realios pet-branch subkategorijos (be Kita/specialiu) — \"Rodyti visas\"\n    $all_cat_groups = array();\n    $pet_slugs = array('sunims','katems','grauzikams','pauksciams',",
+  "s567_head": "/**\n * Petshop Daugiau=Pigiau Stock Sync v1.3\n * v1.3 (S1676): eilutes, kurių šaltinis AV (`_ps_source=av`), tvarko AV variklis (petshop-av-reduce v1.2)\n *   per bazinę prekę — čia PRALEIDŽIAMOS (be dvigubo nurašymo / atstatymo).\n * Custom mechanizmas: \"pack\" produktai (fiksuoto kiekio kartotiniai) neturi savo\n * tikro sandelio skaiciaus - jis skaiciuojamas dinamiskai is bazinio produkto,\n * o realus nurasymas/atstatymas vyksta TIK ant bazinio produkto.\n *\n * Meta laukai ant pack produkto:\n *   _dp_base_product_id = bazinio produkto ID\n *   _dp_pack_qty        = kiek bazinio produkto vienetu sudaro 1 pack'a\n *\n * Pack produktas turi buti sukurtas su manage_stock=false.\n */\n\n// 1. Dinamiskas \"yra/nera sandelyje\" statusas pack produktui\nadd_filter('woocommerce_product_is_in_stock', function($in_stock, $product){\n  $base_id = $product->get_meta('_dp_base_product_id');\n  if (!$base_id) return $in_stock;\n  $pack_qty = (int) $product->get_meta('_dp_pack_qty');\n  if ($pack_qty <= 0) return $in_stock;\n  $base = wc_get_product($base_id);\n  if (!$base) return false;\n  $base_stock = (int) $base->get_stock_quantity();\n  return $base_stock >= $pack_qty;\n}, 10, 2);\n\n// 2. Papildoma info - kiek \"dėžučių\" galima sudaryti (rodymui, ne privaloma)\nadd_filter('woocommerce_get_stock_html', function($html, $product){\n  $base_id = $product->get_meta('_dp_base_product_id');\n  if (!$base_id) return $html;\n  $pack_qty = (int) $product->get_meta('_dp_pack_qty');\n  if ($pack_qty <= 0) return $html;\n  $base = wc_get_product($base_id);\n  if (!$base) return $html;\n  $base_stock = (int) $base->get_stock_quantity();\n  if ($base_stock >= $pack_qty) {\n    return '<p class=\"stock in-stock\">Yra sandėlyje</p>';\n  }\n  return '<p class=\"stock out-of-stock\">Šiuo metu nėra sandėlyje</p>';\n}, 10, 2);\n\n// 3. Add-",
+  "s573_grep": [
+   "* ×N VNT. badge + EKONOMIŠKA PAKUOTĖ juosta — CSS overlay ant .box-image (image wrapper).",
+   "* Injekcija per woocommerce_product_get_image filtra (loop kontekste) -> badge lieka box-image viduje.",
+   "if (!function_exists('petshop_dp_ov_size')) {",
+   "function petshop_dp_ov_size($name) {",
+   "add_action('woocommerce_before_shop_loop_item', function(){ $GLOBALS['psc_dp_loop'] = true; }, 1);",
+   "add_action('woocommerce_after_shop_loop_item', function(){ $GLOBALS['psc_dp_loop'] = false; }, 99);",
+   "if (!function_exists('petshop_dp_badge_html')) {",
+   "function petshop_dp_badge_html($pid) {",
+   "$qty = get_post_meta($pid, '_dp_pack_qty', true);",
+   "// Injekcija i loop nuotrauka (box-image viduje)",
+   "add_filter('woocommerce_product_get_image', function($html, $product){",
+   "add_filter('woocommerce_single_product_image_thumbnail_html', function($html, $attachment_id){",
+   "if (!function_exists('is_product') || !is_product()) return $html;",
+   "if (!get_post_meta($pid, '_dp_pack_qty', true)) return $html;"
+  ],
+  "kainodara": {
+   "wp-content/mu-plugins/petshop-katalogas.php": [
+    "*   \"Ta pati prekė kitais dydžiais\"  su €/kg ir kainodaros ispejimu",
+    "add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 8 );",
+    "add_action( 'admin_post_ps_kat_vaizdas', array( __CLASS__, 'vaizdo_veiksmas' ) );",
+    "add_filter( 'admin_body_class', array( __CLASS__, 'body_klase' ) );",
+    "add_action( 'admin_head', array( __CLASS__, 'slepti_wc_prekes' ) );",
+    "add_action( 'wp_ajax_ps_kat_kortele', array( __CLASS__, 'ajax_kortele' ) );",
+    "add_action( 'wp_ajax_ps_kat_av', array( __CLASS__, 'ajax_av_irasyti' ) );",
+    "add_action( 'wp_ajax_ps_kat_atsaukti', array( __CLASS__, 'ajax_atsaukti' ) );",
+    "add_action( 'wp_ajax_ps_kat_kaina', array( __CLASS__, 'ajax_kaina_irasyti' ) );",
+    "add_action( 'wp_ajax_ps_kat_sav', array( __CLASS__, 'ajax_sav_irasyti' ) );",
+    "add_action( 'wp_ajax_ps_kat_laukas', array( __CLASS__, 'ajax_laukas_irasyti' ) );",
+    "add_action( 'wp_ajax_ps_kat_variacija', array( __CLASS__, 'ajax_variacija' ) );",
+    "add_action( 'wp_ajax_ps_kat_var_kurti', array( __CLASS__, 'ajax_var_kurti' ) );",
+    "add_action( 'wp_ajax_ps_kat_seima', array( __CLASS__, 'ajax_seima' ) );"
+   ],
+   "wp-content/mu-plugins/petshop-rinkiniai.php": [
+    "add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 20 );",
+    "add_action( 'wp_head', array( __CLASS__, 'front_stilius' ), 100 ); /* v1.29: po #524 ir temos */",
+    "add_filter( 'body_class', array( __CLASS__, 'front_klase' ) );",
+    "add_filter( 'woocommerce_single_product_image_gallery_classes', array( __CLASS__, 'galerijos_klases' ) );",
+    "add_filter( 'woocommerce_product_tabs', array( __CLASS__, 'tabai' ), 200 );",
+    "add_filter( 'woocommerce_package_rates', array( __CLASS__, 'pastomato_sargas' ), 100, 2 );",
+    "add_filter( 'gettext', array( __CLASS__, 'vertimai' ), 20, 3 );",
+    "add_filter( 'gettext_with_context', array( __CLASS__, 'vertimai_kontekste' ), 20, 4 );",
+    "add_filter( 'ngettext', array( __CLASS__, 'vertimai_daugiskaita' ), 20, 5 );",
+    "add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'sutaupote' ), 11 );",
+    "add_filter( 'woocommerce_get_availability_text', array( __CLASS__, 'komponento_bukle' ), 20, 2 );",
+    "add_action( 'wp_ajax_ps_rink_paieska',   array( __CLASS__, 'ajax_paieska' ) );",
+    "add_action( 'wp_ajax_ps_rink_issaugoti', array( __CLASS__, 'ajax_issaugoti' ) );",
+    "add_action( 'wp_ajax_ps_rink_trinti',    array( __CLASS__, 'ajax_trinti' ) );"
+   ],
+   "wp-content/plugins/petshop-promotions/petshop-promotions.php": [
+    "* Plugin Name: Petshop Promotions",
+    "* Description: Masines akcijos — filtrai, dry-run, apply su batch zyme, remove pagal batch. Atskira nuo ZB/VF kainodaros.",
+    "* Version:     1.1",
+    "add_action( 'admin_menu', [ $this, 'menu' ] );",
+    "add_action( 'admin_post_petshop_sale_apply',          [ $this, 'handle_apply' ] );",
+    "add_action( 'admin_post_petshop_sale_remove_batch',   [ $this, 'handle_remove_batch' ] );",
+    "add_action( 'admin_post_petshop_sale_remove_filters', [ $this, 'handle_remove_filters' ] );",
+    "add_action( 'admin_notices',                          [ $this, 'notices' ] );"
+   ],
+   "wp-content/plugins/petshop-xml/petshop-xml.php": [
+    "* Plugin Name: Petshop XML Import",
+    "* Description: ZB ir VF XML importo logika — EAN dedup, kainodara (S70), fulfillment source, initial import vs sync atskyrimas, savikainos/marzos meta box.",
+    "* Version:     1.5.20",
+    "* v1.5.8  (2026-06-09): ZB kainodaros PVM fix (v1.3.4) + KAINOS FREEZE",
+    "add_filter( 'wp_all_import_is_post_to_create', 'petshop_xml_block_zb_create', 10, 3 );",
+    "add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_zb_cheap_update', 11, 4 );",
+    "add_filter( 'wp_all_import_is_post_to_create', 'petshop_xml_block_vf_create', 10, 3 );",
+    "add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_legacy_update', 9, 4 );",
+    "add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_junk_update', 10, 4 );",
+    "add_action( 'pmxi_saved_post', 'petshop_xml_after_import', 10, 3 );",
+    "\"SELECT import_id FROM {$wpdb->prefix}pmxi_posts",
+    "global $pmxi_import;",
+    "if ( isset( $pmxi_import ) && is_object( $pmxi_import ) && ! empty( $pmxi_import->id ) ) {",
+    "return (int) $pmxi_import->id;"
+   ],
+   "wp-content/plugins/petshop-xml/includes/class-admin-ui.php": [
+    "* v1.3 (2026-06-09): ZB kainu perskaiciavimas — DRY-RUN -> APPLY (v1.3.4 kainodara)",
+    "add_action( 'admin_menu', [ $this, 'add_menu' ] );",
+    "add_action( 'admin_post_petshop_approve_product',    [ $this, 'handle_approve' ] );",
+    "add_action( 'admin_post_petshop_zb_reprice_apply',   [ $this, 'handle_zb_reprice_apply' ] );",
+    "add_filter( 'manage_product_posts_columns',          [ $this, 'add_zb_column' ] );",
+    "add_action( 'manage_product_posts_custom_column',    [ $this, 'render_zb_column' ], 10, 2 );",
+    "add_action( 'admin_notices',                         [ $this, 'show_notices' ] );",
+    "add_action( 'woocommerce_product_options_stock_fields', [ $this, 'render_own_stock_field' ] );",
+    "add_action( 'woocommerce_process_product_meta',         [ $this, 'save_own_stock_field' ] );",
+    "$table   = $pricing->get_markup_table();",
+    "<p style=\"color:#555;\">Formulė: <code>savikaina (BE PVM) × (1 + antkainis) × 1.21</code> → S70 apvalinimas (.x9, max +5%)</p>",
+    "<td><?php echo number_format($pricing->get_default_markup()*100,0); ?>%</td>"
+   ],
+   "wp-content/plugins/petshop-xml/includes/class-product-cost-metabox.php": [
+    "add_action( 'add_meta_boxes_product', [ __CLASS__, 'register_metabox' ] );",
+    "add_action( 'save_post_product', [ __CLASS__, 'save_metabox' ], 20, 2 );",
+    "echo '<span class=\"description\">Pažymėjus — automatinė kainodara (ZB/VF importai, S70 perskaičiavimas) NEKEIS šios prekės kainos. Tiekėjo savikaina, likutis ir kiti meta laukai vis tiek ats"
+   ],
+   "wp-content/plugins/petshop-xml/includes/class-vf-import.php": [
+    "* Pilna logika su filter + match + kainodara.",
+    "// jei kainodaros blokas del kokios nors priezasties nesuveike arba preke buvo locked)"
+   ]
+  },
+  "dp_sausas_kandidatai": "532"
+ },
+ "v": "dep-170712",
+ "kurimas": 200,
+ "sid": 6550,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
