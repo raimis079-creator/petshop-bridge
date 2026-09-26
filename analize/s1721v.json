@@ -1,0 +1,53 @@
+{
+ "1": {
+  "v": "S1721v",
+  "kramtalu": {
+   "link": "https://petshop.lt/kategorija/rinkiniai/kramtalu-rinkiniai/",
+   "code": 200,
+   "cache_hdr": [],
+   "cards": {
+    "35070": "woocommerce-placeholder-300x300.webp",
+    "35076": "woocommerce-placeholder-300x300.webp",
+    "35085": "woocommerce-placeholder-300x300.webp",
+    "35406": "woocommerce-placeholder-300x300.webp",
+    "35408": "woocommerce-placeholder-300x300.webp"
+   },
+   "supercache_komentaras": "nera"
+  },
+  "rinkiniai": {
+   "link": "https://petshop.lt/kategorija/rinkiniai/",
+   "code": 200,
+   "cache_hdr": [],
+   "cards": {
+    "35070": "woocommerce-placeholder-300x300.webp",
+    "35076": "woocommerce-placeholder-300x300.webp",
+    "35079": "woocommerce-placeholder-300x300.webp",
+    "35081": "rink-kompozicija-35081-1788911871-300x300.jpg",
+    "35085": "woocommerce-placeholder-300x300.webp",
+    "35291": "rink-kompozicija-35291-1789642887-300x300.jpg",
+    "35392": "woocommerce-placeholder-300x300.webp",
+    "35396": "woocommerce-placeholder-300x300.webp",
+    "35398": "rink-kompozicija-35398-1788356181-300x300.jpg",
+    "35400": "rink-kompozicija-35400-1788356181-300x300.jpg",
+    "35402": "rink-kompozicija-35402-1788356182-300x300.jpg",
+    "35404": "woocommerce-placeholder-300x300.webp",
+    "35406": "woocommerce-placeholder-300x300.webp",
+    "35408": "woocommerce-placeholder-300x300.webp",
+    "35410": "rink-kompozicija-35410-1788356186-300x300.jpg",
+    "35412": "rink-kompozicija-35412-1788356187-300x300.jpg"
+   },
+   "supercache_komentaras": "nera"
+  },
+  "filter_ctx": "s iprasta kaina yra visu krepsio prekiu suma (32,21 EUR), o aktyvi — 0, kol klientas nieko nepasirinko. Del to krepselyje kabejo „Akcija: -100 %\". */ /* 999, nes MnM savo kabliuka registruoja veliau ir su 20 jis mus perrasydavo — patikrinta gyvai: is_on_sale liko true. */ add_filter( 'woocommerce_product_is_on_sale', array( __CLASS__, 'ne_akcija' ), 999, 2 ); /* Kiekio laukelis: leidziam kelis to paties vienetus. */ add_filter( 'wc_mnm_child_item_quantity_input_args', array( __CLASS__, 'kiekio_laukelis' ), 10, 3 ); /* Nuotrauka parduotuveje. Iki v1.43 `foto_id()` gyveno TIK admin lange, todel rinkinys be savos nuotraukos kataloge rode WooCommerce vietos uzpilda, nors grupes nuotrauka buvo nustatyta. Kabinames ant WC CRUD getterio — per ji eina ir katalogo tinklelis, ir prekes puslapis, ir krepselis, todel uztenka vienos vietos. */ add_filter( 'woocommerce_product_get_image_id', array( __CLASS__, 'foto_atsargine' ), 10, 2 ); /* Vitrina: savas sablonas vietoj MnM saraso. */ add_action( 'wp', array( __CLASS__, 'vitrina_init' ",
+  "has_filter_now": true,
+  "yra_laukas_src": "function yra_laukas( $pid ) { return get_post_meta( (int) $pid, self::META_LAUKAS, true ) === 'yes'; } /** Pakopos, surikiuotos didejant. Blogas JSON grazina tuscia — ne klaida. */ public static function pakopos( $pid ) { $r = json_decode( (string) get_post_meta( (int) $pid, self::META_PAKOPOS, true ), true ); if ( ",
+  "grupe_src": "function grupe( $lid ) { $rankinis = get_post_meta( $lid, '_ps_laukas_grupe', true ); if ( $rankinis ) { /* Meta gali buti irasyta ne raktu, o grupes VARDU (taip nutiko kuriant testines dezes per koda). Filtrai lygina raktus, tad vardas duotu tuscia sarasa. Priimam abu — ir grazinam rakta. */ $vardai = self::grupiu_vardai(); if ( isset( $vardai[ $rankinis ] ) ) { return $rankinis; } foreach "
+ },
+ "v": "dep-163651",
+ "kurimas": 200,
+ "sid": 6546,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
