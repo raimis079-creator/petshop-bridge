@@ -1,0 +1,135 @@
+{
+ "1": {
+  "v": "S1721c",
+  "faze": "1",
+  "dabar": "13:57:32",
+  "supercache": {
+   "psl": 270,
+   "seniausias": "09-26 13:24:35"
+  },
+  "petshop_cache": "<?php\n/**\n * Plugin Name: Petshop Cache v1.1 (WP Super Cache išvalymas po atsargų/kainų/importų pakeitimų)\n * Description: WP Super Cache (Simple režimas, S1555–S1557) laiko puslapius 1 h. Šis modulis išvalo cache iš karto,\n *   kai keičiasi prekės likutis/kaina/statusas, baigiasi WP All Import importas (VF/ZB), keičiasi kategorijos\n *   ar meniu — kad lankytojas nematytų pasenusio likučio/kainos. Nieko nekeičia, tik kviečia Super Cache funkcijas.\n * Version: 1.1\n * S1713 (2026-09-24, WP_CACHE įjungtas): Super Cache `wp_cache_post_change()` valo tik prekę + pradinį + /page/,\n *   bet ne kategorijų/gamintojo/parduotuvės archyvus, kuriuose rodoma kaina ir „Turime\" — v1.1 po prekės pokyčio\n *   pažymi rebuild ir jos kategorijų (su tėvais), gamintojo bei /parduotuve/ katalogus (`wpsc_rebuild_files`).\n *\n * S1557 (2026-09-01). Sąmoningai be savo logikos: `wp_cache_post_change($id)` (prekė + pradinis + archyvai)\n * ir `wp_cache_clear_cache()` (viskas) — tik plugino API. Jei Super Cache išjungtas — funkcijų nėra, nieko nedaro.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Cache {\n\tconst VERSIJA = '1.1';\n\tprivate static $laukia = array();   // prekių id, kurioms išvalyti shutdown'e (dedupe)\n\tprivate static $viskas = false;\n\n\tpublic static function init() {\n\t\t// atsargos / kainos / prekės objektas\n\t\tadd_action( 'woocommerce_product_set_stock', array( __CLASS__, 'preke_obj' ) );\n\t\tadd_action( 'woocommerce_variation_set_stock', array( __CLASS__, 'preke_obj' ) );\n\t\tadd_action( 'woocommerce_product_set_stock_status', array( __CLASS__, 'preke_id' ), 10, 1 );\n\t\tadd_action( 'woocommerce_variation_set_stock_status', array( __CLASS__, 'preke_id' ), 10, 1 );\n\t\tadd_action( 'woocommerce_product_object_updated_props', array( __CLASS__, 'preke_props' ), 10, 2 );\n\t\tadd_action( 'woocommerce_update_product', array( __CLASS__, 'preke_id' ) );\n\t\tadd_action( 'woocommerce_update_product_variation', array( __CLASS__, 'preke_id' ) );\n\t\t// importai (WP All Import: VF/ZB) ir taksonomijos\n\t\tadd_action( 'pmxi_after_xml_import', array( __CLASS__, 'viskas' ) );\n\t\tadd_action( 'edited_product_cat', array( __CLASS__, 'viskas' ) );\n\t\tadd_action( 'created_product_cat', array( __CLASS__, 'viskas' ) );\n\t\tadd_action( 'edited_product_brand', array( __CLASS__, 'viskas' ) );\n\t\tadd_action( 'wp_update_nav_menu', array( __CLASS__, 'viskas' ) );\n\t\t// mūsų moduliams: do_action('petshop_cache_isvalyti') arba do_action('petshop_cache_isvalyti_preke', $id)\n\t\tadd_action( 'petshop_cache_isvalyti', array( __CLASS__, 'viskas' ) );\n\t\tadd_action( 'petshop_cache_isvalyti_preke', array( __CLASS__, 'preke_id' ) );\n\t\tadd_action( 'shutdown', array( __CLASS__, 'vykdyti' ), 5 );\n\t}\n\n\tpublic static function preke_obj( $p ) { if ( is_object( $p ) && method_exists( $p, 'get_id' ) ) { self::preke_id( $p->get_id() ); } }\n\tpublic static function preke_props( $p, $props ) {\n\t\t$svarbu = array( 'stock_quantity', 'stock_status', 'price', 'regular_price', 'sale_price', 'status', 'catalog_visibility', 'name', 'image_id', 'gallery_image_ids' );\n\t\tif ( array_intersect( (array) $props, $svarbu ) ) { self::preke_obj( $p ); }\n\t}\n\tpublic static function preke_id( $id ) {\n\t\t$id = (int) $id; if ( $id <= 0 ) { return; }\n\t\t$post = get_post( $id );\n\t\tif ( $post && 'product_variation' === $post->post_type && $post->post_parent ) { $id = (int) $post->post_parent; }\n\t\tself::$laukia[ $id ] = true;\n\t}\n\tpublic static function viskas() { self::$viskas = true; }\n\n\tpublic static function vykdyti() {\n\t\tif ( self::$viskas ) {\n\t\t\tif ( function_exists( 'wp_cache_clear_cache' ) ) { wp_cache_clear_cache(); }\n\t\t\tself::$viskas = false; self::$laukia = array(); return;\n\t\t}\n\t\tif ( ! self::$laukia || ! function_exists( 'wp_cache_post_change' ) ) { return; }\n\t\tif ( count( self::$laukia ) > 25 ) { if ( function_exists( 'wp_cache_clear_cache' ) ) { wp_cache_clear_cache(); } self::$laukia = array(); return; }\n\t\t$archyvai = array();\n\t\tforeach ( array_keys( self::$laukia ) as $id ) {\n\t\t\twp_cache_post_change( $id ); // prekė + pradinis + /page/ (Super Cache logika)\n\t\t\tforeach ( self::archyvu_keliai( $id ) as $k ) { $archyvai[ $k ] = true; }\n\t\t}\n\t\tself::$laukia = array();\n\t\tself::archyvus_rebuild( array_keys( $archyvai ) );\n\t}\n\n\t/** Prekės kategorijų (su tėvais), gamintojo ir parduotuvės URL keliai, pvz. 'kategorija/sunims/maistas-sunims/'. */\n\tpublic static function archyvu_keliai( $id ) {\n\t\t$keliai = array();\n\t\tforeach ( array( 'product_cat', 'product_brand' ) as $tax ) {\n\t\t\t$terms = get_the_terms( $id, $tax );\n\t\t\tif ( ! is_array( $terms ) ) { continue; }\n\t\t\tforeach ( $terms as $t ) {\n\t\t\t\t$ids = array_merge( array( $t->term_id ), (array) get_ancestors( $t->term_id, $tax ) );\n\t\t\t\tforeach ( $ids as $tid ) { $l = get_term_link( (int) $tid, $tax ); if ( ! is_wp_error( $l ) ) { $keliai[] = $l; } }\n\t\t\t}\n\t\t}\n\t\tif ( function_exists( 'wc_get_page_id' ) && wc_get_page_id( 'shop' ) > 0 ) { $keliai[] = get_permalink( wc_get_page_id( 'shop' ) ); }\n\t\t$out = array();\n\t\tforeach ( $keliai as $l ) { $p = trim( (string) wp_parse_url( $l, PHP_URL_PATH ), '/' ); if ( $p !== '' ) { $out[ $p . '/' ] = true; } }\n\t\treturn array_keys( $out );\n\t}\n\n\t/** Pažymi archyvų cache failus „needs-rebuild\" (Super Cache pats atstato kitam lankytojui). */\n\tpublic static function archyvus_rebuild( $keliai ) {\n\t\tif ( ! $keliai || ! function_exists( 'get_supercache_dir' ) || ! function_exists( 'wpsc_rebuild_files' ) ) { return; }\n\t\t$sc = get_supercache_dir();\n\t\tforeach ( $keliai as $k ) {\n\t\t\t$d = $sc . $k;\n\t\t\tif ( ! is_dir( $d ) ) { continue; }\n\t\t\twpsc_rebuild_files( $d );\n\t\t\tif ( is_dir( $d . 'page/' ) && function_exists( 'prune_super_cache' ) ) { prune_super_cache( $d . 'page/', true ); }\n\t\t}\n\t}\n}\nPetshop_Cache::init();\n",
+  "wpai3_hist": [
+   {
+    "type": "processing",
+    "t": "343",
+    "s": "import finished & cron un-triggered | 0 Produktai created 0 updated 2681 skipped",
+    "date": "2026-09-26 10:02:01"
+   },
+   {
+    "type": "trigger",
+    "t": null,
+    "s": "triggered by cron",
+    "date": "2026-09-26 10:00:02"
+   },
+   {
+    "type": "processing",
+    "t": "7246",
+    "s": "import finished & cron un-triggered | 0 Produktai created 0 updated 2681 skipped",
+    "date": "2026-09-26 07:02:03"
+   },
+   {
+    "type": "trigger",
+    "t": null,
+    "s": "triggered by cron",
+    "date": "2026-09-26 07:00:02"
+   }
+  ],
+  "wpai3": [
+   {
+    "processing": "0",
+    "executing": "0",
+    "triggered": "0",
+    "queue_chunk_number": "0",
+    "last_activity": "2026-09-26 10:07:44"
+   }
+  ],
+  "p301": {
+   "/kategorija/*/maistas-sunims": 2294,
+   "/gamintojas/*": 2189,
+   "/ ?p=": 1086,
+   "/kategorija/*/maistas-sunims/sausas-maistas-sunims": 1033,
+   "/kategorija/*/maistas-katems": 951,
+   "/kategorija/*/maistas-sunims/page/N": 785,
+   "/kategorija/*/skanestai-sunims": 563,
+   "/kategorija/*/maistas-katems/konservai-katems": 458,
+   "/kategorija/*/maistas-katems/sausas-maistas-katems": 400,
+   "/kategorija/*/maistas-sunims/konservai-sunims": 317,
+   "/kategorija/*/skanestai-sunims/page/N": 221,
+   "/kategorija/*/antkakliai-pavadeliai-sunims": 214,
+   "/kategorija/*/skanestai-katems": 177,
+   "/kategorija/*/maistas-sunims/sausas-maistas-sunims/page/N": 174,
+   "/kategorija/*/zaislai-sunims": 118,
+   "/kategorija/*/maistas-katems/page/N": 111
+  },
+  "p301_ref": {
+   "-": 11046,
+   "/product/*/": 937,
+   "/product/*/?": 12,
+   "/": 10,
+   "/gamintojas/*/page/2/": 5,
+   "": 3,
+   "/dalmantinas/": 3,
+   "/amerikieciu-putbulterjeras/": 2,
+   "/kategorija/*/dubeneliai-katems/": 1,
+   "/kategorija/*/page/2/": 1
+  },
+  "p301_ua": {
+   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) Ap": 10753,
+   "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko;": 1111,
+   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWeb": 34,
+   "Mozilla/5.0 (compatible; SERankingBacklinksBot/1.0": 22,
+   "Mozilla/5.0 (Linux; Android 6.0.1; Nexus 5X Build/": 21
+  },
+  "p301_pvz": [
+   "/kategorija/sunims/skanestai-sunims <- -",
+   "/?p=21856 <- https://petshop.lt/product/josera-kitten-duck-konservuotas-pasaras-kaciukams-su-antiena-85g/",
+   "/kategorija/katems/maistas-katems <- -",
+   "/gamintojas/exclusion <- -",
+   "/?p=14644 <- https://petshop.lt/product/farmina-vet-life-dog-dry-ultrahypo-12-kg/",
+   "/kategorija/katems/maistas-katems/konservai-katems <- -"
+  ],
+  "p302": {
+   "/parduotuve/": 7451,
+   "/kategorija/*/maistas-sunims": 2480,
+   "/gamintojas/*": 2364,
+   "/kategorija/*/maistas-sunims/sausas-maistas-sunims": 1099,
+   "/kategorija/*/maistas-katems": 1036,
+   "/kategorija/*/maistas-sunims/page/N": 841,
+   "/product/*": 826,
+   "/kategorija/*/skanestai-sunims": 601,
+   "/kategorija/*/maistas-katems/konservai-katems": 491,
+   "/kategorija/*/maistas-katems/sausas-maistas-katems": 430
+  },
+  "p200": {
+   "/parduotuve/": 6929,
+   "/kategorija/*/maistas-sunims/": 2655,
+   "/gamintojas/*/": 2448,
+   "/product/*/": 2389,
+   "/kategorija/*/maistas-sunims/sausas-maistas-sunims/": 1215,
+   "/wp-json/oembed/1.0/embed ?": 1121,
+   "/kategorija/*/maistas-katems/": 981,
+   "/kategorija/*/maistas-sunims/page/N/": 846,
+   "/kategorija/*/skanestai-sunims/": 685,
+   "/product/*/feed/": 588,
+   "/kategorija/*/maistas-katems/sausas-maistas-katems/": 530,
+   "/kategorija/*/maistas-katems/konservai-katems/": 524,
+   "/kategorija/*/maistas-sunims/konservai-sunims/": 361,
+   "/kategorija/*/antkakliai-pavadeliai-sunims/": 265,
+   "/parduotuve/page/N/": 261,
+   "/kategorija/*/skanestai-sunims/page/N/": 257,
+   "/kategorija/*/maistas-sunims/sausas-maistas-sunims/page/N/": 252,
+   "/kategorija/*/skanestai-katems/": 199,
+   "/kategorija/*/zaislai-sunims/": 151,
+   "/kategorija/*/maistas-katems/page/N/": 140
+  },
+  "trukme_s": 0.4,
+  "mem_mb": 164
+ },
+ "v": "dep-105625",
+ "kurimas": 200,
+ "sid": 6510,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
