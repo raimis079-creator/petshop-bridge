@@ -1,0 +1,73 @@
+{
+ "1": {
+  "v": "S1721r",
+  "faze": "1",
+  "eil": 500,
+  "seimos": 228,
+  "dry": {
+   "nera_prekes": [],
+   "ne_publish": [],
+   "jau_ta_pati": 0,
+   "jau_kita": [
+    [
+     18584,
+     "exclusion-hypo-mazu-kiauliena",
+     "exclusion-hypoallergenic-mazu-veisliu-sunu-kiaul"
+    ],
+    [
+     18590,
+     "exclusion-hypo-mazu-kiauliena",
+     "exclusion-hypoallergenic-mazu-veisliu-sunu-kiaul"
+    ],
+    [
+     36002,
+     "exclusion-hypo-mazu-kiauliena",
+     "exclusion-hypoallergenic-mazu-veisliu-sunu-kiaul"
+    ],
+    [
+     18587,
+     "exclusion-hypo-mazu-kiauliena",
+     "exclusion-hypoallergenic-mazu-veisliu-sunu-kiaul"
+    ],
+    [
+     36003,
+     "exclusion-hypo-mazu-kiauliena",
+     "exclusion-hypoallergenic-mazu-veisliu-sunu-kiaul"
+    ]
+   ],
+   "be_termino": [
+    [
+     35326,
+     "200 g"
+    ],
+    [
+     35328,
+     "400 g"
+    ],
+    [
+     14590,
+     "1,5 kg"
+    ],
+    [
+     35338,
+     "200 g"
+    ],
+    [
+     35340,
+     "400 g"
+    ]
+   ],
+   "rasyti": 495
+  },
+  "seimos_su_esamu_raktu": {
+   "exclusion-hypoallergenic-mazu-veisliu-sunu-kiaul": "exclusion-hypo-mazu-kiauliena"
+  }
+ },
+ "v": "dep-160837",
+ "kurimas": 200,
+ "sid": 6541,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
