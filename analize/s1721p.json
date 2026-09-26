@@ -1,0 +1,91 @@
+{
+ "1": {
+  "v": "S1721p",
+  "irasai": [
+   {
+    "kodas": "import_2",
+    "lygis": "zalia",
+    "tekstas": "Importas #2 products.php: paskutinis prieš 12 val."
+   },
+   {
+    "kodas": "import_3",
+    "lygis": "zalia",
+    "tekstas": "Importas #3 stocks.php: paskutinis prieš 1 val."
+   },
+   {
+    "kodas": "feeds",
+    "lygis": "zalia",
+    "tekstas": "Feed'ai Kaina24/Kainos: generuoti prieš 10 val."
+   },
+   {
+    "kodas": "faktai",
+    "lygis": "zalia",
+    "tekstas": "Faktai: visi apmokėti užsakymai turi faktą"
+   },
+   {
+    "kodas": "agregatas",
+    "lygis": "zalia",
+    "tekstas": "Agregatas 2026-09-25: 12 eil."
+   },
+   {
+    "kodas": "siuntu_naslaiciai",
+    "lygis": "zalia",
+    "tekstas": "ps_shipments našlaičiai: 0"
+   },
+   {
+    "kodas": "avpn",
+    "lygis": "zalia",
+    "tekstas": "AVPN numeracija: be dublikatų (143)"
+   },
+   {
+    "kodas": "seimos",
+    "lygis": "zalia",
+    "tekstas": "Šeimos: priskirta 0, kandidatų 0"
+   },
+   {
+    "kodas": "neissiusti",
+    "lygis": "zalia",
+    "tekstas": "Apmokėti > 2 d. be siuntos: 0"
+   },
+   {
+    "kodas": "dropship_sla",
+    "lygis": "raudona",
+    "tekstas": "Dropship tiekėjas vėluoja > 24 val.: 3 užsak."
+   },
+   {
+    "kodas": "laiskai",
+    "lygis": "zalia",
+    "tekstas": "Laiškai 24 val.: išsiųsta 12, nepavyko 0"
+   },
+   {
+    "kodas": "eventai",
+    "lygis": "zalia",
+    "tekstas": "Eventai: failed 24 val. 0"
+   },
+   {
+    "kodas": "ads",
+    "lygis": "zalia",
+    "tekstas": "Google Ads duomenys: paskutinį kartą prieš 13 val. (45 eil.)"
+   },
+   {
+    "kodas": "404",
+    "lygis": "zalia",
+    "tekstas": "404 vakar: 0 (7 d. vid. 13,1)"
+   },
+   {
+    "kodas": "beacon",
+    "lygis": "pilka",
+    "tekstas": "Web įvykiai vakar: 2291 (iki launch nevertinama)"
+   }
+  ],
+  "auto_log": false,
+  "kandidatai": false
+ },
+ "v": "dep-145757",
+ "kurimas": 200,
+ "sid": 6538,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
