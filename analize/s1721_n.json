@@ -1,0 +1,35 @@
+{
+ "1": {
+  "v": "S1721n",
+  "rytas_kb": 44.4,
+  "rytas_md5": "95e3a6d10cff0303ccfe970662b9b3ad",
+  "avpn_blokas": "as', $agr ? 'zalia' : 'raudona', 'Agregatas ' . $vakar . ': ' . ( $agr ? $agr . ' eil.' : 'TUŠČIAS, nors užsakymų buvo ' . $buvo ) );\n\t\t} else { $add( 'agregatas', 'zalia', 'Agregatas ' . $vakar . ': užsakymų nebuvo' ); }\n\n\t\t/* ps_shipments našlaičiai */\n\t\tif ( self::lentele_yra( $p . 'ps_shipments' ) ) {\n\t\t\t$n = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM {$p}ps_shipments s WHERE NOT EXISTS (SELECT 1 FROM {$p}wc_orders o WHERE o.id = s.order_id)\" );\n\t\t\t$add( 'siuntu_naslaiciai', $n ? 'raudona' : 'zalia', 'ps_shipments našlaičiai: ' . $n );\n\t\t}\n\t\t/* AVPN numeracija (S1719): dublikatai — raudona, spragos (be 011016) — geltona */\n\t\ttry {\n\t\t\t$db_ = $GLOBALS['wpdb'];\n\t\t\t$av_ = $db_->get_col( \"SELECT meta_value FROM {$db_->prefix}wc_orders_meta WHERE meta_key='_petshop_avpn_number' AND meta_value LIKE 'AVPN%'\" );\n\t\t\t$cnt_ = array_count_values( $av_ ); $dubl_ = array_keys( array_filter( $cnt_, function( $n ) { return $n > 1; } ) );\n\t\t\t$nums_ = array(); foreach ( $av_ as $x_ ) { $nums_[] = (int) substr( $x_, 4 ); } $nums_ = array_values( array_unique( $nums_ ) ); sort( $nums_ ); $gaps_ = array();\n\t\t\tfor ( $i_ = 1; $i_ < count( $nums_ ); $i_++ ) { for ( $k_ = $nums_[ $i_ - 1 ] + 1; $k_ < $nums_[ $i_ ]; $k_++ ) { if ( 11016 !== $k_ ) { $gaps_[] = $k_; } } }\n\t\t\t$add( 'avpn', $dubl_ ? 'raudona' : ( $gaps_ ? 'geltona' : 'zalia' ), 'AVPN numeracija: ' . ( $dubl_ ? 'DUBLIKATAI ' . implode( ', ', $dubl_ ) : 'be dublikatų (' . count( $av_ ) . ')' ) . ( $gaps_ ? '; spragos ' . implode( ', ', array_slice( $gaps_, 0, 10 ) ) : '' ) );\n\t\t} catch ( \\Throwable $e_ ) { $add( 'avpn', 'pilka', 'AVPN patikra nepavyko: ' . $e_->getMessage() ); }\n\t\t/* neišsiųsti */\n\t\t$n = self::neissiusti_sk();\n\t\t$add( 'neissiusti', $n >= (int) self::riba( 'neissiusti_raud' ) ? 'raudona' : ( $n ? 'geltona' : 'zalia' ), 'Apmokėti > 2 d. be siuntos: ' . $n );\n\n\t\t/* dropship SLA (petshop-dropship-sargas žymė) */\n\t\t$n = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM {$p}wc_orders_meta m JOIN {$p}wc_orders o ON o.id = m.order_id WHERE m.meta_key = '_ps_sla_velavimas' AND o.status IN ('wc-processing','wc-on-hold')\" );\n\t\t$add( 'dropship_sla', $n ? 'raudona' : 'zalia', 'Dropship tiekėjas vėluoja > 24 val.: ' . $n . ' užsak.' );\n\n\t\t/* laiškai */\n\t\tif ( self::lentele_yra( $p . 'ps_email_jobs' ) ) {\n\t\t\t$r = $wpdb->get_row( \"SELECT SUM(status='sent') s, SUM(status='failed') f FROM {$p}ps_email_jobs WHERE created_at >= UTC_TIMESTAMP() - INTERVAL 1 DAY\", ARRAY_A );\n\t\t\t$s = (int) $r['s']; $f2 = (int) $r['f'];\n\t\t\t$add( 'laiskai', ( $f2 && ( $s + $f2 ) && $f2 / ( $s + $f2 ) > 0.05 ) ? 'raudona' : ( $f2 ? 'geltona' : 'zalia' ), 'Laiškai 24 val.: išsiųsta ' . $s . ', nepavyko ' . $f2 );\n\t\t}\n\t\t/* eventai */\n\t\tif ( self::lentele_yra( $p . 'ps_event_log' ) ) {\n\t\t\t$f3 = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM {$p}ps_event_log WHERE status = 'failed' AND emitted_at >= UTC_TIMESTAMP() - INTERVAL 1 DAY\" );\n\t\t\t$nutilo = $wpdb->get_col( \"SELECT event_name FROM {$p}ps_event_log WHERE emitted_at >= UTC_TIMESTAMP() - INTERVAL 35 DAY GROUP BY event_name\n\t\t\t\tHAVING SUM(emitted_at >= UTC_TIMESTAMP() - INTERVAL 7 DAY) = 0 AND SUM(emitted_at < UTC_TIMESTAMP() - INTERVAL 7 DAY) >= 4\" );\n\t\t\t$add( 'eventai', $f3 ? 'raudona' ",
+  "patikros_pradzia": "val = (int) self::riba( 'import_val' );\n\t\t$launch = get_option( 'ps_paleidimo_data', '' );\n\t\t$po_launch = ( $launch && $launch <= self::siandien() );\n\n\t\t/* importai */\n\t\t$ids = array_filter( array_map( 'intval', explode( ',', (string) self::riba( 'importai' ) ) ) );\n\t\tif ( $ids && self::lentele_yra( $p . 'pmxi_imports' ) ) {\n\t\t\t$r = $wpdb->get_results( \"SELECT id, name, last_activity, failed FROM {$p}pmxi_imports WHERE id IN (\" . implode( ',', $ids ) . ')', ARRAY_A );\n\t\t\t$rasti = array();\n\t\t\tforeach ( (array) $r as $x ) {\n\t\t\t\t$rasti[] = (int) $x['id'];\n\t\t\t\t$val_pr = ( time() - strtotime( $x['last_activity'] . ' UTC' ) ) / 3600;\n\t\t\t\t$l = ( $val_pr > $val ) ? 'raudona' : 'zalia';\n\t\t\t\tif ( (int) $x['failed'] > 0 ) { $l = 'raudona'; }\n\t\t\t\t$add( 'import_' . $x['id'], $l, 'Importas #' . $x['id'] . ' ' . $x['name'] . ': paskutinis prieš ' . number_format( $val_pr, 0, ',', ' ' ) . ' val.' . ( (int) $x['failed'] ? ', failed ' . (int) $x['failed'] : '' ) );\n\t\t\t}\n\t\t\tforeach ( array_diff( $ids, $rasti ) as $id ) { $add( 'import_' . $id, 'raudona', 'Importas #' . $id . ' nerastas pmxi_imports' ); }\n\t\t} else { $add( 'importai', 'pilka', 'Importai: šaltinio nėra' ); }\n\n\t\t/* feed'ai */\n\t\t$f = get_option( 'ps_feeds_paskutinis', array() );\n\t\tif ( is_array( $f ) && ! empty( $f['kada'] ) ) {\n\t\t\t$h = ( time() - strtotime( $f['kada'] ) ) / 3600;\n\t\t\t$add( 'feeds', ( $h > $val ) ? 'raudona' : 'zalia', 'Feed\\'ai Kaina24/Kainos: generuoti prieš ' . number_format( $h, 0, ',', ' ' ) . ' val.' );\n\t\t} els",
+  "lemputes": [],
+  "spalvos": [
+   "private static function spalva_kritimas( $pok, $g, $r ) {",
+   "if ( $pok <= -$r ) { return 'raudona'; }",
+   "if ( $pok <= -$g ) { return 'geltona'; }",
+   "return 'zalia';",
+   "private static function spalva_kiekis( $n, $g, $r ) {",
+   "if ( $n >= $r ) { return 'raudona'; }",
+   "if ( $n >= $g ) { return 'geltona'; }",
+   "public static function lemputes() {",
+   "$out[] = array( 'pav' => 'Pajamos 7 d.', 'spalva' => self::spalva_kritimas( $b ? $b[2] : null, self::riba( 'pajamos_gelt' ), self::riba( 'pajamos_raud' ) ),",
+   "$out[] = array( 'pav' => 'Nauji klientai 7 d.', 'spalva' => self::spalva_kritimas( $b ? $b[2] : null, self::riba( 'nauji_gelt' ), self::riba( 'nauji_raud' ) ),",
+   "$out[] = array( 'pav' => 'Nuostolingi 7 d.', 'spalva' => self::spalva_kiekis( $n, self::riba( 'nuost_gelt' ), self::riba( 'nuost_raud' ) ),",
+   "$sp = self::spalva_kiekis( $n, self::riba( 'stockout_gelt' ), self::riba( 'stockout_raud' ) );"
+  ],
+  "brand_tax": true,
+  "brand_pvz": [
+   "exclusion"
+  ]
+ },
+ "v": "dep-144651",
+ "kurimas": 200,
+ "sid": 6535,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
