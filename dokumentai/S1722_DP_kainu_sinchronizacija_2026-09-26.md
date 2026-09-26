@@ -17,11 +17,11 @@ Langas po STARTAS_2026-09-26_po_S1721; prefiksas `s1722_*`. VM bridge (`ps-bridg
 ## GYVAI (20:50–20:58)
 | Kas | Versija / md5 | Bak / atstatymas |
 |---|---|---|
-| NAUJAS `mu-plugins/petshop-dp-kainos.php` | **v1.1** md5 `f2ca4c6d…` (v1.0.1 31b4b238…) | `s1722/d2.php 9` pašalina; išjungti `ps_dp_kainos_isjungta=1` |
+| NAUJAS `mu-plugins/petshop-dp-kainos.php` | **v1.2.1** md5 `8fe9b0c6…` (v1.0.1 31b4b238…, v1.1 f2ca4c6d… pašalinta, v1.2 5f04dbfa… FATAL) | `s1722/d2.php 9` pašalina; išjungti `ps_dp_kainos_isjungta=1` |
 | `_dp_nuolaida_proc` 25 pakams + sinchronizacija | skanėstai/TOFU 10, Exclusion 3, Ontario 3,5 | opcija `ps_s1722_dp_bak` (senos kainos+proc), `9` atstato |
 | `plugins/petshop-feeds/petshop-feeds.php` | **v2.7.0** md5 `957da141…` (buvo 26a2f74d…) | `ps-archyvas/petshop-feeds.php.bak_s1722` |
 | `mu-plugins/petshop-rytas.php` | **v1.6** md5 `bb897e97…` (buvo b5d2005d… v1.5) | `ps-archyvas/petshop-rytas.php.bak_s1722` |
-| Snippet 572 „Daugiau=Pigiau Šablono Kūrimo Forma" | **v10** md5 `31029006…` (buvo v9 246125cc…) | opcija `ps_s1722_snip572_bak` (gz+b64) |
+| Snippet 572 „Daugiau=Pigiau Šablono Kūrimo Forma" | **v11** md5 `d70356ce…` (v10 31029006…, v9 246125cc…) | opcija `ps_s1722_snip572_bak` (gz+b64) |
 
 ### `petshop-dp-kainos` v1.0.1 (klasė `Petshop_DP_Kainos`)
 - Kaina = kiekis × bazinės **reguliari** × (1 − %/100), `apvalinti()` = `round(x×10)/10 − 0,01`. Bazinė akcijoje (`is_on_sale('edit')`) → pako `_sale_price` ta pačia formule nuo akcijos kainos; be akcijos — sale išvalomas.
@@ -46,7 +46,12 @@ Skanėstai: knyslės 12,99 → **13,49** (×2), rudos ausys 23 → **23,19**, ba
 - Admin 572 formos puslapis 200; heartbeat 200 po kiekvieno rašymo; php_error.log netikrintas atskirai (fatal nebuvo — heartbeat).
 - Super Cache 25 pakų puslapiai išvalyti (`2b`); kategorijų puslapiai su senomis pakų kainomis — iki kešo galiojimo / kito importo valymo.
 
-### v1.1 (21:20) — admin langas „DP pakų kainos“
+### 21:24–23:20 — langas panaikintas, INCIDENTAS, % lentelė 572 formoje
+- R 21:24: „blogai, viską panaikink, užtenka milijoną langų turėti; yra langas Rinkiniai — ten forma, JOKIŲ FANTAZIJŲ“ → v1.2 be admin lango. **KLAIDA**: naikinant bloką ištrinta ir `planuoti()` (v1.1 ją buvo perkėlusi po admin bloko) → `add_action('init', 'planuoti')` → fatal `init` metu **visiems nekešuotiems puslapiams** (prekės su query, kasa, admin, REST, bridge) 21:27–21:44. Pradinis puslapis 200 iš Super Cache → deploy heartbeat nieko nepamatė; php -l trūkstamo metodo nepagauna; bridge nepasiekiamas (WP lūžta prieš Code Snippets). R ištrynė `mu-plugins/petshop-dp-kainos.php` per DirectAdmin → atsigavo 21:44. Tada **v1.2.1** (md5 8fe9b0c6…, `s1722/d5.php` 2) — tik sinchronizacija, patikra nekešuotu URL 200 + atskira užklausa (faze 7) ✓.
+- **Snippet 572 v11** (md5 d70356ce…, bak `ps_s1722_snip572_v10_bak`, `s1722/d6.php` 5 / 5b render): formos apačioje „Esami pakai — nuolaida %“ pagal grupes (pakas, bazinė, kiekis, bazinė kaina, **% vietoje**, pako kaina, sutaupo); AJAX `petshop_dp_proc` (nonce `petshop_dp_nonce`) → `_dp_nuolaida_proc` + `Petshop_DP_Kainos::sinchronizuoti` → nauja kaina iš karto; tuščias = rankinė. Render: 25 eil., 4 grupės ✓. Kategorijų numatytieji % — opcijoje `ps_dp_nuolaidos` (be UI; keisti per Claude).
+- PAMOKOS: (1) po kiekvieno mu-plugin deploy — patikra nekešuotu URL (`/?ps_hb=<laikas>`) IR atskira užklausa; (2) trinant kodo bloką — grep visų `array( __CLASS__, '…' )` kablių, kad callback'ai liktų; (3) v1.1 langas buvo „fantazija“ be R prašymo — neplėsti apimties savo iniciatyva.
+
+### (istorija) v1.1 (21:20) — admin langas „DP pakų kainos“ — PAŠALINTAS 21:44
 R 21:13: „kainas matau, bet nematau per Admin → Rinkiniai, kaip reguliuoti“ (Rinkiniai = MnM). Pridėta **Produktai → DP pakų kainos** (`edit.php?post_type=product&page=ps-dp-kainos`, `manage_woocommerce`): kategorijų nuolaidų lentelė (sausas / Josera / konservai / skanėstai / kraikas → opcija `ps_dp_nuolaidos`, AJAX `ps_dp_lentele`; keičia tik numatytą % naujiems pakams) ir pakų lentelės pagal grupę: pakas, bazinė, kiekis, bazinė kaina (+akc.), kiekis × bazinė, **% įrašomas vietoje** (AJAX `ps_dp_proc` → meta + `sinchronizuoti` iš karto → nauja kaina, sutaupymas, būsena formulė/rankinė), naktinė patikra, 15 paskutinių žurnalo įrašų. Render testas (`d3.php 2c`): 25 eilutės, 4 grupės, 5 lentelės laukai. Repo `deploy/petshop-dp-kainos-v1.1.php`.
 
 ## Liko / kitam langui
