@@ -1,0 +1,36 @@
+{
+ "3": {
+  "v": "S1721f",
+  "faze": "3",
+  "test": {
+   "/kategorija/sunims/maistas-sunims?filter_amzius=jauniems&product_cat=maistas-sunims&yith_wcan=1": "302 -> https://petshop.lt/kategorija/sunims/maistas-sunims/",
+   "/kategorija/sunims/maistas-sunims/page/1/?filter_amzius=jauniems&yith_wcan=1": "302 -> https://petshop.lt/kategorija/sunims/maistas-sunims/",
+   "/parduotuve/?filter_gyvuno_rusis=sunims&yith_wcan=1": "302 -> https://petshop.lt/parduotuve/",
+   "/?add-to-cart=18590": "302 -> https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-2-kg/"
+  },
+  "kanoninis_200": 200,
+  "shortlink_html": false,
+  "shortlink_header": "Array",
+  "prekes_200": 200,
+  "cache_valymai": false,
+  "versijos": {
+   "sargas": "110299ba00ea013e2e131299dc64e02b",
+   "cache": "a0a8b817d57f77126cdeafa884445d39"
+  },
+  "log_uodega": [
+   "[26-Sep-2026 11:40:26 UTC] WordPress database error Unknown column 'ivyko' in 'INSERT INTO' for query INSERT INTO `gaj6_ps_sargas_klaidos` (`ivyko`, `tipas`, `zinute`) VALUES ('2026-09-26 14:40:26', 'login', 'uzrakinta: 167.172.120.116 (bandytas vardas: Raimis)') made by wp_signon, wp_authenticate, do_action('wp_login_failed'), WP_Hook->do_action, WP_Hook->apply_filters, Petshop_Prisijungimo_Sargas::nesekme, Petshop_Prisijungimo_Sargas::zurnalas",
+   "[26-Sep-2026 12:14:14 UTC] Užsakymas patvirtintas: užsakymas 36321, suma: 39.99EUR",
+   "[26-Sep-2026 12:30:32 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 22",
+   "[26-Sep-2026 12:39:35 UTC] Užsakymas patvirtintas: užsakymas 36322, suma: 30.88EUR",
+   "[26-Sep-2026 13:09:49 UTC] Užsakymas patvirtintas: užsakymas 36323, suma: 36.39EUR",
+   "[26-Sep-2026 13:14:42 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 22"
+  ]
+ },
+ "v": "dep-131331",
+ "kurimas": 200,
+ "sid": 6526,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
