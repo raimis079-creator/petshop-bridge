@@ -17,7 +17,7 @@ Langas po STARTAS_2026-09-26_po_S1721; prefiksas `s1722_*`. VM bridge (`ps-bridg
 ## GYVAI (20:50–20:58)
 | Kas | Versija / md5 | Bak / atstatymas |
 |---|---|---|
-| NAUJAS `mu-plugins/petshop-dp-kainos.php` | **v1.0.1** md5 `31b4b238…` | `s1722/d2.php 9` pašalina; išjungti `ps_dp_kainos_isjungta=1` |
+| NAUJAS `mu-plugins/petshop-dp-kainos.php` | **v1.1** md5 `f2ca4c6d…` (v1.0.1 31b4b238…) | `s1722/d2.php 9` pašalina; išjungti `ps_dp_kainos_isjungta=1` |
 | `_dp_nuolaida_proc` 25 pakams + sinchronizacija | skanėstai/TOFU 10, Exclusion 3, Ontario 3,5 | opcija `ps_s1722_dp_bak` (senos kainos+proc), `9` atstato |
 | `plugins/petshop-feeds/petshop-feeds.php` | **v2.7.0** md5 `957da141…` (buvo 26a2f74d…) | `ps-archyvas/petshop-feeds.php.bak_s1722` |
 | `mu-plugins/petshop-rytas.php` | **v1.6** md5 `bb897e97…` (buvo b5d2005d… v1.5) | `ps-archyvas/petshop-rytas.php.bak_s1722` |
@@ -45,6 +45,9 @@ Skanėstai: knyslės 12,99 → **13,49** (×2), rudos ausys 23 → **23,19**, ba
 - Ryto sargas `patikros()` 16 lempučių, `dp_kainos` žalia „su % 25, rankinių 0, neatitinka 0, klaidų 0; naktinis 09-26 20:52 pakeitė 25".
 - Admin 572 formos puslapis 200; heartbeat 200 po kiekvieno rašymo; php_error.log netikrintas atskirai (fatal nebuvo — heartbeat).
 - Super Cache 25 pakų puslapiai išvalyti (`2b`); kategorijų puslapiai su senomis pakų kainomis — iki kešo galiojimo / kito importo valymo.
+
+### v1.1 (21:20) — admin langas „DP pakų kainos“
+R 21:13: „kainas matau, bet nematau per Admin → Rinkiniai, kaip reguliuoti“ (Rinkiniai = MnM). Pridėta **Produktai → DP pakų kainos** (`edit.php?post_type=product&page=ps-dp-kainos`, `manage_woocommerce`): kategorijų nuolaidų lentelė (sausas / Josera / konservai / skanėstai / kraikas → opcija `ps_dp_nuolaidos`, AJAX `ps_dp_lentele`; keičia tik numatytą % naujiems pakams) ir pakų lentelės pagal grupę: pakas, bazinė, kiekis, bazinė kaina (+akc.), kiekis × bazinė, **% įrašomas vietoje** (AJAX `ps_dp_proc` → meta + `sinchronizuoti` iš karto → nauja kaina, sutaupymas, būsena formulė/rankinė), naktinė patikra, 15 paskutinių žurnalo įrašų. Render testas (`d3.php 2c`): 25 eilutės, 4 grupės, 5 lentelės laukai. Repo `deploy/petshop-dp-kainos-v1.1.php`.
 
 ## Liko / kitam langui
 - **Generatorius** 2× 2–10 kg sausam maistui (3 %, Josera 2,5 %): dabar gali naudoti `Petshop_DP_Kainos::numatytoji_proc`/`kaina`, rašyti `_dp_nuolaida_proc` — kaina seks pati. Prieš tai — faktai apie 2+ vnt. užsakymus (per pavadinimą, `svoris_g` tuščias).
