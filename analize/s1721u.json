@@ -1,0 +1,160 @@
+{
+ "1": {
+  "v": "S1721u",
+  "laukai_yra": true,
+  "laukai_v": "1.00",
+  "laukai_md5": "201ceffcf3b8ab16c08eb1237112b107",
+  "laukai_kw": {
+   "woocommerce_product_get_image_id": 1,
+   "foto_atsargine": 2,
+   "ps_laukai_grupiu_foto": 2,
+   "post_thumbnail_id": 2,
+   "wp_get_attachment_image_src": 0
+  },
+  "foto_atsargine_src": "function foto_atsargine( $id, $product ) {\n\t\tif ( $id ) { return $id; }\n\t\tif ( ! is_object( $product ) || ! method_exists( $product, 'get_id' ) ) { return $id; }\n\t\t$pid = (int) $product->get_id();\n\t\tif ( ! $pid || ! self::yra_laukas( $pid ) ) { return $id; }\n\t\t$g = self::grupiu_foto();\n\t\tif ( ! $g ) { return $id; }\n\t\t$grupe = self::grupe( $pid );\n\t\treturn isset( $g[ $grupe ] ) ? (int) $g[ $grupe ] : $id;\n\t}\n\n\tpublic static function ajax_foto() {\n\t\tself::tikrink();\n\t\t$att = (int) ( $_POST['att'] ?? 0 );\n\t\t$lid = (int) ( $_POST['lid'] ?? 0 );\n\t\t$grupe = sanitize_key( $_POST['grupe'] ?? '' );\n\n\t\tif ( $grupe ) {\n\t\t\t$g = self::grupiu_foto();\n\t\t\tif ( $att ) { $g[ $grupe ] = $att; } else { unset( $g[ $grupe ] ); }\n\t\t\tupdate_option( 'ps_laukai_grupiu_foto', $g, false );\n\t\t\twp_send_json_success( array( 'url' => $att ? wp_get_attachment_image_url( $att, 'medium' ) : '' ) );\n\t\t}\n\t\tif ( ! self::yra_laukas( $lid ) ) { wp_send_json_error( 'To",
+  "image_id_filter": [
+   "add_filter( 'woocommerce_product_get_image_id', array( __CLASS__, 'foto_atsargine' ), 10, 2 );"
+  ],
+  "grupiu_foto": {
+   "kates": 35069,
+   "kramtalai": 35006,
+   "sunys": 35004,
+   "kons_sunims": 35030,
+   "kons_kates": 35031
+  },
+  "grupiu_foto_att": {
+   "kates": [
+    35069,
+    false,
+    false,
+    "BE FAILO"
+   ],
+   "kramtalai": [
+    35006,
+    "publish",
+    "attachment",
+    "failas"
+   ],
+   "sunys": [
+    35004,
+    "publish",
+    "attachment",
+    "failas"
+   ],
+   "kons_sunims": [
+    35030,
+    "publish",
+    "attachment",
+    "failas"
+   ],
+   "kons_kates": [
+    35031,
+    "publish",
+    "attachment",
+    "failas"
+   ]
+  },
+  "laukas": {
+   "34938": {
+    "grupe": "kates",
+    "image_id_view": 35069,
+    "image_id_edit": "",
+    "img_html": "<img width=\"300\" height=\"300\" src=\"https://petshop.lt/wp-content/uploads/woocommerce-placeholder-300x300.webp\" class=\"woocommerce-placeholder wp-post-image\" alt"
+   },
+   "34942": {
+    "grupe": "kons_sunims",
+    "image_id_view": 35030,
+    "image_id_edit": "",
+    "img_html": "<img width=\"300\" height=\"300\" src=\"https://petshop.lt/wp-content/uploads/2026/08/sunu-konservai-300x300.jpg\" class=\"attachment-woocommerce_thumbnail size-woocom"
+   },
+   "35782": {
+    "grupe": "kons_sunims",
+    "image_id_view": 35030,
+    "image_id_edit": "",
+    "img_html": "<img width=\"300\" height=\"300\" src=\"https://petshop.lt/wp-content/uploads/2026/08/sunu-konservai-300x300.jpg\" class=\"attachment-woocommerce_thumbnail size-woocom"
+   },
+   "36154": {
+    "grupe": "kramtalai",
+    "image_id_view": 35006,
+    "image_id_edit": "",
+    "img_html": "<img width=\"300\" height=\"252\" src=\"https://petshop.lt/wp-content/uploads/2026/08/kramtalai-sunims-300x252.jpg\" class=\"attachment-woocommerce_thumbnail size-wooc"
+   }
+  },
+  "rink_header": "",
+  "rink_name": "",
+  "rink_fn": {
+   "kompozicija": "private static function kompozicija( $pid, $komponentai, $priverstinai = false )",
+   "kompozicija_vidine": "private static function kompozicija_vidine( $pid, $komponentai )",
+   "isvalyti_pedsakus": "private static function isvalyti_pedsakus( $id )"
+  },
+  "kompozicija_kvietimai": [
+   " $komp_rez = self::kompozicija( $pid, array_keys( $kiekiai ), $priverstinai );"
+  ],
+  "thumb_vietos": [
+   " 'foto' => get_post_thumbnail_id( $pid ) ? wp_get_attachment_image_url( get_post_thumbnail_id( $pid ), 'thumbnail' ) : '',",
+   " if ( ! $priverstinai && get_post_thumbnail_id( $pid ) ) {"
+  ],
+  "hash_vietos": [
+   " $sena = (string) get_post_meta( $pid, '_ps_rink_komp_hash', true );",
+   " update_post_meta( $pid, '_ps_rink_komp_hash', $parasas );"
+  ],
+  "delete_att": [
+   " foreach ( (array) $att as $a ) { wp_delete_attachment( (int) $a, true ); }"
+  ],
+  "klase": "Petshop_Rinkiniai",
+  "paruosti": {
+   "35070": {
+    "hash": "9b41354d714f6483e4c27396d6cbd495",
+    "komp": 1,
+    "mnm_vaikai": 4
+   },
+   "35076": {
+    "hash": "72c09a3f1d43fac9d8a743c7369876be",
+    "komp": 1,
+    "mnm_vaikai": 4
+   },
+   "35079": {
+    "hash": "f5a1149c21972cd10a1b615acf887bcb",
+    "komp": 1,
+    "mnm_vaikai": 6
+   },
+   "35085": {
+    "hash": "488de86c6f0457b35568e52a68b8d795",
+    "komp": 1,
+    "mnm_vaikai": 3
+   },
+   "35392": {
+    "hash": "19422c7e0268f33de558abe104fd5da3",
+    "komp": 1,
+    "mnm_vaikai": 2
+   },
+   "35396": {
+    "hash": "642f7cc65e602b9d32b605a37411ae61",
+    "komp": 1,
+    "mnm_vaikai": 4
+   },
+   "35404": {
+    "hash": "edc38378395ac8a58c79680c5efd3c9c",
+    "komp": 1,
+    "mnm_vaikai": 8
+   },
+   "35406": {
+    "hash": "e2796811eefa5bf3af82a3f7339780a5",
+    "komp": 1,
+    "mnm_vaikai": 7
+   },
+   "35408": {
+    "hash": "ebaf3b047df0d7710c0dbbc0caf66df1",
+    "komp": 1,
+    "mnm_vaikai": 8
+   }
+  }
+ },
+ "v": "dep-163429",
+ "kurimas": 200,
+ "sid": 6545,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
