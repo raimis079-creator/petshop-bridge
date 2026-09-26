@@ -1,0 +1,311 @@
+{
+ "1": {
+  "v": "S1721g",
+  "faze": "1",
+  "core_files": [
+   "petshop-core.php",
+   "class-account-avatar.php",
+   "class-account-company.php",
+   "class-account-dashboard.php",
+   "class-action-tokens.php",
+   "class-admin-reports.php",
+   "class-cart-abandonment.php",
+   "class-cart-recovery.php",
+   "class-cart-tracker.php",
+   "class-condition-mapper.php",
+   "class-consent-log.php",
+   "class-consent-sync.php",
+   "class-contact-policy.php",
+   "class-email-dispatch.php",
+   "class-email-layout.php",
+   "class-email-suppression.php",
+   "class-event-emitters.php",
+   "class-event-log.php",
+   "class-event-registry.php",
+   "class-feeding-calculator.php",
+   "class-feeding-package-provider.php",
+   "class-feeding-package-resolver.php",
+   "class-feeding-repository.php",
+   "class-feeding-service.php",
+   "class-feeding-ui.php",
+   "class-magic-login.php",
+   "class-mixed-feeding-estimator.php",
+   "class-newsletter-footer.php",
+   "class-newsletter.php",
+   "class-pet-content.php",
+   "class-pet-dashboard.php",
+   "class-pet-drafts.php",
+   "class-pet-notes.php",
+   "class-pet-photo.php",
+   "class-pet-products.php",
+   "class-pet-profile.php",
+   "class-pet-ui.php",
+   "class-plan-attribution.php",
+   "class-post-purchase.php",
+   "class-product-calc.php",
+   "class-refill-engine.php",
+   "class-refill-feedback.php",
+   "class-reminders.php",
+   "class-retry-queue.php",
+   "class-shipments.php",
+   "class-unsubscribe.php",
+   "class-weight-filter.php",
+   "class-welcome-modal.php",
+   "interface-message-provider.php",
+   "tpl-myaccount-dashboard.php",
+   "tpl-myaccount-my-address.php",
+   "calc-handoff.js",
+   "newsletter.js",
+   "pet-form.js",
+   "pet-profile.js",
+   "product-calc.js"
+  ],
+  "calc_php": [
+   "add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'widget' ), 31 );",
+   "add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue' ) );",
+   "wp_enqueue_script( 'ps-product-calc',",
+   "wp_localize_script( 'ps-product-calc', 'PSPetConfig', array(",
+   "<div class=\"ps-calc-row\" data-ps-mode=\"weight\">",
+   ".ps-calc-h1{font-size:15px;font-weight:750;color:#1F2A24;line-height:1.3;letter-spacing:-.01em}",
+   ".ps-calc label{display:block;font-size:13.5px;font-weight:650;color:#2A352E;margin-bottom:7px}",
+   "font-style:normal;font-size:13.5px;font-weight:650;color:#8A968C;pointer-events:none}",
+   "border-radius:11px;padding:0 20px;font:inherit;font-size:14px;font-weight:650;cursor:pointer;",
+   ".ps-calc-res .big{font-size:24px;font-weight:750;color:#1F4E39;letter-spacing:-.02em;line-height:1.15}",
+   "border-radius:999px;padding:9px 16px;font-size:13px;font-weight:650;color:#2F6B4F;text-decoration:none}",
+   ".ps-calc-save-t{font-size:13.5px;font-weight:700;color:#1F2A24}",
+   "border-radius:999px;padding:9px 17px;font-size:13px;font-weight:650;color:#2F6B4F;text-decoration:none}",
+   ".ps-calc-saved-t{font-size:14px;font-weight:700;color:#1F4E39}"
+  ],
+  "calc_js": {
+   "calc-handoff.js": [
+    "var raw = window.localStorage.getItem(HKEY);",
+    "try { window.localStorage.removeItem(HKEY); } catch (e) {}",
+    "var pw = (pet.current_weight_kg !== null && pet.current_weight_kg !== undefined && pet.current_weight_kg !== '')",
+    "? parseFloat(pet.current_weight_kg) : null;",
+    "var hw = h.weight_kg ? parseFloat(h.weight_kg) : null;",
+    "out.push({ field: 'weight', current: pw, incoming: hw });",
+    "if (apply.weight && h.weight_kg) {",
+    "jobs.push(fetch(REST + '/feeding-pet-weight', {",
+    "body: JSON.stringify({ pet_id: petId, weight_kg: parseFloat(h.weight_kg) })",
+    "jobs.push(fetch(REST + '/pet-profile', {"
+   ],
+   "product-calc.js": [
+    "var rowWeight = root.querySelector('[data-ps-mode=\"weight\"]');",
+    "try { saved = window.sessionStorage.getItem('petshop_calc_saved'); } catch (e) {}",
+    "try { window.sessionStorage.removeItem('petshop_calc_saved'); } catch (e) {}",
+    "return fetch(REST + '/feeding-calc', {",
+    "a.href = (PETS > 0) ? ACCOUNT : (ACCOUNT + '?action=create');",
+    "window.localStorage.setItem('petshop_calc_handoff', JSON.stringify({",
+    "weight_kg: lastWeight,",
+    "+ 'ps_weight=' + encodeURIComponent(lastWeight)",
+    "var i = root.querySelector('#ps-calc-w');",
+    "var body = { product_id: pid, weight_kg: v, species_code: species };",
+    "post({ product_id: pid, weight_kg: lastWeight, age_months: v, species_code: species })",
+    "if (e.target.id === 'ps-calc-w' && goW) { e.preventDefault(); goW.click(); }"
+   ]
+  },
+  "js_su_calc": [
+   "product-calc.js 14KB"
+  ],
+  "pet_profile_fns": [
+   "*   - primary_need (2026-07-26 canonical): digestion, skin_coat, weight_control,",
+   "const PRIMARY_NEED = array( 'digestion', 'skin_coat', 'weight_control', 'joints', 'picky_eater', 'other', 'none' );",
+   "public static function table_name() {",
+   "public static function install() {",
+   "public static function maybe_install() {",
+   "public static function init() {",
+   "public static function register_routes() {",
+   "public static function require_login() {",
+   "public static function handle_save( $request ) {",
+   "public static function handle_patch( $request ) {",
+   "public static function handle_delete( $request ) {",
+   "public static function handle_food_search( $request ) {",
+   "// Augintinio svoris (neprivalomas). Jei perduotas — filtruojam maista pagal",
+   "$weight_raw = $request->get_param( 'weight_kg' );",
+   "$weight_kg  = ( $weight_raw === null || $weight_raw === '' ) ? null : (float) str_replace( ',', '.', (string) $weight_raw );",
+   "if ( $weight_kg !== null && $weight_kg <= 0 ) {",
+   "$weight_kg = null;",
+   "$weight_ok = null; // product_id => bool",
+   "if ( $weight_kg !== null && ! empty( $wpq->posts ) ) {",
+   "$weight_ok = self::products_cover_weight( $cand_ids, $weight_kg );",
+   "if ( $weight_ok !== null && empty( $weight_ok[ (int) $post->ID ] ) ) {",
+   "public static function food_search_title_where( $where ) {",
+   "* kurios ribose (>= zemiausias tasKas, <= auksciausias) patenka $weight_kg.",
+   "* @param float $weight_kg",
+   "private static function products_cover_weight( $product_ids, $weight_kg ) {"
+  ],
+  "weight_signal": {
+   "petshop-relaunch.php": [
+    "e atsitiktinis kampanijos tokenas (ne el. paštas, ne hash) iš `ps_relaunch_kontaktai` → paspaudimas įrašomas kaip signalas: usermeta `ps_weight_signal` (source email_calc_click, confidence medium; Pet Profile NEPERRAŠOMAS), `ps_web_ivykiai` tipas `email_calc_click`, lentelės klik_n/pask_",
+    "k_cycle='relaunch', confidence 0.5, terminas pagal calc dienas × maišo būseną), Petshop_Sutikimai::nustatyti(optout=0,'relaunch_calc'), ps_weight_signal confidence high, ps_web_ivykiai `reminder_optin`. Svorio paspaudimas ir priminimas — du skirtingi veiksmai.",
+    "const META = 'ps_weight_signal';"
+   ]
+  },
+  "dp": {
+   "18590": {
+    "_dp_base_product_id": "",
+    "_dp_pack_qty": "",
+    "pak": [
+     "2 kg"
+    ],
+    "seima": "",
+    "price_html": "21,95&nbsp;&euro;"
+   },
+   "36002": {
+    "_dp_base_product_id": "18590",
+    "_dp_pack_qty": "2",
+    "pak": [
+     "2 kg"
+    ],
+    "seima": "",
+    "price_html": "42,50&nbsp;&euro;"
+   },
+   "36003": {
+    "_dp_base_product_id": "18587",
+    "_dp_pack_qty": "2",
+    "pak": [
+     "7 kg × 2"
+    ],
+    "seima": "",
+    "price_html": "111,00&nbsp;&euro;"
+   }
+  },
+  "hooks": {
+   "woocommerce_before_shop_loop_item": [
+    "1 closure",
+    "10 woocommerce_show_product_loop_sale_flash"
+   ],
+   "woocommerce_shop_loop_item_title": [
+    "0 flatsome_woocommerce_shop_loop_category",
+    "0 flatsome_woocommerce_shop_loop_ratings",
+    "10 woocommerce_template_loop_product_title"
+   ],
+   "woocommerce_after_shop_loop_item_title": [
+    "5 woocommerce_template_loop_rating",
+    "10 woocommerce_template_loop_price",
+    "12 Petshop_Weight_Filter::card_badge"
+   ],
+   "woocommerce_after_shop_loop_item": [
+    "99 closure"
+   ],
+   "flatsome_product_box_after": [
+    "20 flatsome_woocommerce_shop_loop_excerpt",
+    "100 flatsome_woocommerce_shop_loop_button"
+   ],
+   "flatsome_product_box_actions": [
+    "1 flatsome_product_box_actions_add_to_cart",
+    "50 flatsome_lightbox_button"
+   ],
+   "woocommerce_single_product_summary": [
+    "0 flatsome_woocommerce_product_breadcrumb",
+    "1 flatsome_product_brands",
+    "5 woocommerce_template_single_title",
+    "7 flatsome_product_mobile_next_prev_nav",
+    "10 woocommerce_template_single_rating",
+    "10 woocommerce_template_single_price",
+    "10 Petshop_Pristatymo_Pazadas::kg",
+    "11 Petshop_Rinkiniai::sutaupote",
+    "11 closure",
+    "11 closure",
+    "20 woocommerce_template_single_excerpt",
+    "20 flatsome_before_add_to_cart_html",
+    "25 Petshop_Dydziai::pieskime",
+    "25 closure",
+    "30 woocommerce_template_single_add_to_cart",
+    "30 flatsome_after_add_to_cart_html",
+    "31 Petshop_Atsargu_Laukimas::forma",
+    "31 Petshop_Product_Calc::widget",
+    "40 woocommerce_template_single_meta",
+    "50 woocommerce_template_single_sharing",
+    "60 WC_Structured_Data::generate_product_data"
+   ]
+  },
+  "flatsome_box": [
+   "$classes[] = 'product-small';",
+   "<?php do_action( 'woocommerce_before_shop_loop_item' ); ?>",
+   "<div class=\"product-small box <?php echo flatsome_product_box_class(); ?>\">",
+   "do_action( 'flatsome_woocommerce_shop_loop_images' );",
+   "<?php do_action( 'flatsome_product_box_tools_top' ); ?>",
+   "<?php do_action( 'flatsome_product_box_tools_bottom' ); ?>",
+   "<?php do_action( 'flatsome_product_box_actions' ); ?>",
+   "<div class=\"box-text <?php echo flatsome_product_box_text_class(); ?>\">",
+   "do_action( 'woocommerce_before_shop_loop_item_title' );",
+   "do_action( 'woocommerce_shop_loop_item_title' );",
+   "do_action( 'woocommerce_after_shop_loop_item_title' );",
+   "do_action( 'flatsome_product_box_after' );",
+   "<?php do_action( 'woocommerce_after_shop_loop_item' ); ?>"
+  ],
+  "dydziai_md5": "2bed4cdc1671cb64ad549e2e81dd386d",
+  "katalogas_seima": [
+   "add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 8 );",
+   "add_action( 'admin_post_ps_kat_vaizdas', array( __CLASS__, 'vaizdo_veiksmas' ) );",
+   "add_filter( 'admin_body_class', array( __CLASS__, 'body_klase' ) );",
+   "add_action( 'admin_head', array( __CLASS__, 'slepti_wc_prekes' ) );",
+   "add_action( 'wp_ajax_ps_kat_kortele', array( __CLASS__, 'ajax_kortele' ) );",
+   "add_action( 'wp_ajax_ps_kat_av', array( __CLASS__, 'ajax_av_irasyti' ) );",
+   "add_action( 'wp_ajax_ps_kat_atsaukti', array( __CLASS__, 'ajax_atsaukti' ) );",
+   "add_action( 'wp_ajax_ps_kat_kaina', array( __CLASS__, 'ajax_kaina_irasyti' ) );",
+   "add_action( 'wp_ajax_ps_kat_sav', array( __CLASS__, 'ajax_sav_irasyti' ) );",
+   "add_action( 'wp_ajax_ps_kat_laukas', array( __CLASS__, 'ajax_laukas_irasyti' ) );",
+   "add_action( 'wp_ajax_ps_kat_variacija', array( __CLASS__, 'ajax_variacija' ) );",
+   "add_action( 'wp_ajax_ps_kat_var_kurti', array( __CLASS__, 'ajax_var_kurti' ) );",
+   "add_action( 'wp_ajax_ps_kat_seima', array( __CLASS__, 'ajax_seima' ) );",
+   "add_action( 'wp_ajax_ps_kat_aprasymas', array( __CLASS__, 'ajax_aprasymas' ) );",
+   "add_action( 'wp_ajax_ps_kat_isimti', array( __CLASS__, 'ajax_isimti' ) );",
+   "add_action( 'wp_ajax_ps_kat_masinis', array( __CLASS__, 'ajax_masinis' ) );",
+   "add_action( 'wp_ajax_ps_kat_atributas', array( __CLASS__, 'ajax_atributas' ) );",
+   "add_action( 'wp_ajax_ps_kat_nuotraukos', array( __CLASS__, 'ajax_nuotraukos' ) );",
+   "add_action( 'wp_ajax_ps_kat_pavadinimas', array( __CLASS__, 'ajax_pavadinimas' ) );",
+   "add_action( 'transition_post_status', array( __CLASS__, 'sekti_publikavima' ), 10, 3 );",
+   "add_action( 'wp_ajax_ps_kat_paleidimas', array( __CLASS__, 'ajax_paleidimas' ) );",
+   "add_action( 'wp_ajax_ps_kat_partija', array( __CLASS__, 'ajax_partija' ) );",
+   "add_action( 'wp_ajax_ps_kat_pakuote', array( __CLASS__, 'ajax_pakuote' ) );",
+   "add_action( 'wp_ajax_ps_kat_kategorijos', array( __CLASS__, 'ajax_kategorijos' ) );",
+   "add_action( 'wp_ajax_ps_kat_partija_nauja', array( __CLASS__, 'ajax_partija_nauja' ) );",
+   "add_action( 'wp_ajax_ps_kat_eilute', array( __CLASS__, 'ajax_eilute' ) );",
+   "add_action( 'wp_ajax_ps_kat_tiekejo_likutis', array( __CLASS__, 'ajax_tiekejo_likutis' ) );",
+   "add_action( 'wp_ajax_ps_kat_busena', array( __CLASS__, 'ajax_busena' ) );",
+   "add_action( 'woocommerce_update_product', array( __CLASS__, 'kesas_lauk' ), 99 );",
+   "add_action( 'woocommerce_new_product', array( __CLASS__, 'kesas_lauk' ), 99 );"
+  ],
+  "plugin_dirs": [
+   "petshop-attributes",
+   "petshop-core",
+   "petshop-esp",
+   "petshop-fbt",
+   "petshop-feeds",
+   "petshop-fonts",
+   "petshop-pragma",
+   "petshop-promotions",
+   "petshop-xml"
+  ],
+  "dydziai_hooks": [
+   "petshop-dydziai.php",
+   "petshop-katalogas.php"
+  ],
+  "fakt_pvz": [
+   {
+    "preke_id": "18584",
+    "q": "18"
+   },
+   {
+    "preke_id": "18587",
+    "q": "178"
+   },
+   {
+    "preke_id": "18590",
+    "q": "134"
+   }
+  ],
+  "fakt_ms": 0,
+  "ajax_url": "https://petshop.lt/wp-admin/admin-ajax.php",
+  "wc_ajax": "/?wc-ajax=%%endpoint%%"
+ },
+ "v": "dep-125204",
+ "kurimas": 200,
+ "sid": 6517,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
