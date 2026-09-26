@@ -1,5 +1,1175 @@
 {
- "v": "dep-103122",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "1": {
+  "v": "S1721b",
+  "faze": "1",
+  "dabar": "13:36:59",
+  "supercache": {
+   "psl": 152,
+   "seniausias": "09-26 13:24:35",
+   "naujausias": "09-26 13:36:56",
+   "pagal_min": {
+    "13:24": 14,
+    "13:25": 24,
+    "13:26": 15,
+    "13:27": 8,
+    "13:28": 10,
+    "13:29": 7,
+    "13:30": 19,
+    "13:31": 12,
+    "13:32": 12,
+    "13:33": 6,
+    "13:34": 9,
+    "13:35": 11,
+    "13:36": 5
+   }
+  },
+  "cache_cfg": {
+   "cache_max_time": "3600",
+   "cache_time_interval": "600",
+   "cache_schedule_type": "'interval'",
+   "cache_scheduled_time": "\"00:00\"",
+   "cache_schedule_interval": "'hourly'",
+   "wp_cache_shutdown_gc": "1",
+   "wp_cache_preload_on": "0",
+   "wp_cache_clear_on_post_edit": "0",
+   "wp_cache_refresh_single_only": "0",
+   "wpsc_save_headers": "0",
+   "cache_rebuild_files": "1",
+   "wp_cache_mutex_disabled": "1",
+   "wp_super_cache_late_init": "0",
+   "wp_cache_no_cache_for_get": "1",
+   "wpsc_ignore_tracking_parameters": "1"
+  },
+  "cache_cron": [],
+  "wpsc_last_gc": "1790419016",
+  "cache_kvieteju": {
+   "wp-content/mu-plugins/petshop-cache.php": [
+    "* S1713 (2026-09-24, WP_CACHE įjungtas): Super Cache `wp_cache_post_change()` valo tik prekę + pradinį + /page/,",
+    "*   pažymi rebuild ir jos kategorijų (su tėvais), gamintojo bei /parduotuve/ katalogus (`wpsc_rebuild_files`).",
+    "* S1557 (2026-09-01). Sąmoningai be savo logikos: `wp_cache_post_change($id)` (prekė + pradinis + archyvai)",
+    "* ir `wp_cache_clear_cache()` (viskas) — tik plugino API. Jei Super Cache išjungtas — funkcijų nėra, nieko nedaro.",
+    "if ( function_exists( 'wp_cache_clear_cache' ) ) { wp_cache_clear_cache(); }",
+    "if ( ! self::$laukia || ! function_exists( 'wp_cache_post_change' ) ) { return; }"
+   ],
+   "wp-content/mu-plugins/petshop-skaiciuokle.php": [
+    "if ( $pg && function_exists( 'wp_cache_post_change' ) ) { wp_cache_post_change( $pg->ID ); }"
+   ],
+   "wp-content/mu-plugins/petshop-uzsakymu-ivykiai.php": [
+    "wp_cache_flush();"
+   ],
+   "wp-content/plugins/petshop-feeds/petshop-feeds.php": [
+    "wp_cache_flush();"
+   ],
+   "wp-content/plugins/code-snippets/php/class-upgrade.php": [
+    "clean_snippets_cache( $table_name );",
+    "clean_snippets_cache( $table_name );"
+   ],
+   "wp-content/plugins/code-snippets/php/snippet-ops.php": [
+    "function clean_snippets_cache( string $table_name ) {",
+    "clean_snippets_cache( $table_name );",
+    "clean_snippets_cache( $table_name );",
+    "clean_snippets_cache( $table );",
+    "clean_snippets_cache( $table );",
+    "clean_snippets_cache( $table );"
+   ],
+   "wp-content/plugins/code-snippets/php/admin-menus/class-manage-menu.php": [
+    "clean_snippets_cache( $table );"
+   ],
+   "wp-content/plugins/code-snippets/php/evaluation/class-evaluate-functions.php": [
+    "use function Code_Snippets\\clean_snippets_cache;",
+    "clean_snippets_cache( $table_name );"
+   ],
+   "wp-content/plugins/code-snippets/php/settings/settings.php": [
+    "use function Code_Snippets\\clean_snippets_cache;",
+    "clean_snippets_cache( code_snippets()->db->get_table_name( false ) );",
+    "clean_snippets_cache( code_snippets()->db->get_table_name( true ) );"
+   ]
+  },
+  "cache_snippetai": [
+   {
+    "id": "6507",
+    "name": "TEMP PS dep-103553"
+   }
+  ],
+  "hookai": {
+   "save_post": [
+    "10 delete_get_calendar_cache",
+    "10 WC_Widget_Cart::flush_widget_cache",
+    "10 WC_Widget_Layered_Nav_Filters::flush_widget_cache",
+    "10 WC_Widget_Layered_Nav::flush_widget_cache",
+    "10 WC_Widget_Price_Filter::flush_widget_cache",
+    "10 WC_Widget_Product_Categories::flush_widget_cache",
+    "10 WC_Widget_Product_Search::flush_widget_cache",
+    "10 WC_Widget_Product_Tag_Cloud::flush_widget_cache",
+    "10 WC_Widget_Products::flush_widget_cache",
+    "10 WC_Widget_Recently_Viewed::flush_widget_cache",
+    "10 WC_Widget_Top_Rated_Products::flush_widget_cache",
+    "10 WC_Widget_Recent_Reviews::flush_widget_cache",
+    "10 WC_Widget_Rating_Filter::flush_widget_cache",
+    "10 WC_Widget_Brand_Nav::flush_widget_cache"
+   ],
+   "edit_post": [
+    "0 wp_cache_post_change"
+   ],
+   "woocommerce_product_set_stock": [
+    "10 Petshop_Cache::preke_obj"
+   ],
+   "woocommerce_variation_set_stock": [
+    "10 Petshop_Cache::preke_obj"
+   ],
+   "woocommerce_product_object_updated_props": [
+    "10 Petshop_Cache::preke_props"
+   ],
+   "edit_terms": [
+    "10 WC_Cache_Helper::clean_term_cache"
+   ],
+   "transition_post_status": [
+    "10 __clear_multi_author_cache",
+    "10 cmplz_invalidate_post_count_cache",
+    "10 wpsc_post_transition"
+   ]
+  },
+  "reklama_kodas": {
+   "wp-content/mu-plugins/petshop-analitika-langas.php": [],
+   "wp-content/mu-plugins/petshop-ataskaita-menuo.php": [],
+   "wp-content/mu-plugins/petshop-ataskaita-pardavimai.php": [],
+   "wp-content/mu-plugins/petshop-fakt-reklama.php": [],
+   "wp-content/mu-plugins/petshop-planas-langas.php": [],
+   "wp-content/mu-plugins/petshop-rytas.php": []
+  },
+  "reklama_24289581247": [
+   {
+    "diena": "2026-09-23",
+    "parodymai": "2026",
+    "paspaudimai": "4",
+    "islaidos_ct": "46"
+   },
+   {
+    "diena": "2026-09-22",
+    "parodymai": "2669",
+    "paspaudimai": "9",
+    "islaidos_ct": "119"
+   },
+   {
+    "diena": "2026-09-21",
+    "parodymai": "1737",
+    "paspaudimai": "10",
+    "islaidos_ct": "154"
+   }
+  ],
+  "reklama_zurnalas": false,
+  "reklama_opcijos": [
+   {
+    "option_name": "ps_ads_offline_raktas",
+    "v": "AiedogHzttJiKz8HZgLFUvMdke546YIc"
+   },
+   {
+    "option_name": "ps_ads_paskutinis",
+    "v": "a:3:{s:4:\"kada\";s:19:\"2026-09-26 02:01:30\";s:7:\"eiluciu\";i:45;s:2:\"st\";a:4:{s:3:\"new\";i:3;s:3:\"upd\";i:9;s:4:\"same\";i:33;s:3:\"bad\";i:0;}}"
+   },
+   {
+    "option_name": "ps_ads_raktas",
+    "v": "FDPFp74rq8G8ceoglCn5sA7YrR1IA8lo"
+   },
+   {
+    "option_name": "ps_ads_recon",
+    "v": "a:3:{s:4:\"kada\";s:19:\"2026-09-12 16:46:59\";s:5:\"dydis\";i:592;s:4:\"body\";s:592:\"{\"v\":\"PMAX D BUKLE v1.2\",\"kada\":\"2026-09-12T13:46:56.237Z\",\"grupes\":[{\"id\":\"6506464671\",\"vardas\":\"Generic | Šunų maistas\",\"st\":\"ENABLED\",\"ft\":{\"HEADLINE\":15,\"DESCRIPTION\":7,\"LONG_HEADLINE\":6,\"YOUTUBE_VIDEO\":1,\"AD_IMAGE\":9"
+   },
+   {
+    "option_name": "ps_fakt_reklama_schema",
+    "v": "2"
+   }
+  ],
+  "wpai_hist_24h": [
+   {
+    "i": "7",
+    "type": "processing",
+    "t": "378",
+    "s": "import finished & cron un-triggered | 0 Produktai created 0 updated 2398 skipped",
+    "date": "2026-09-26 10:16:02"
+   },
+   {
+    "i": "7",
+    "type": "trigger",
+    "t": null,
+    "s": "triggered by cron",
+    "date": "2026-09-26 10:15:03"
+   },
+   {
+    "i": "3",
+    "type": "processing",
+    "t": "343",
+    "s": "import finished & cron un-triggered | 0 Produktai created 0 updated 2681 skipped",
+    "date": "2026-09-26 10:02:01"
+   },
+   {
+    "i": "3",
+    "type": "trigger",
+    "t": null,
+    "s": "triggered by cron",
+    "date": "2026-09-26 10:00:02"
+   },
+   {
+    "i": "7",
+    "type": "processing",
+    "t": "364",
+    "s": "import finished & cron un-triggered | 0 Produktai created 18 updated 2380 skipped",
+    "date": "2026-09-26 09:16:07"
+   },
+   {
+    "i": "7",
+    "type": "trigger",
+    "t": null,
+    "s": "triggered by cron",
+    "date": "2026-09-26 09:15:03"
+   },
+   {
+    "i": "3",
+    "type": "processing",
+    "t": "7246",
+    "s": "import finished & cron un-triggered | 0 Produktai created 0 updated 2681 skipped",
+    "date": "2026-09-26 07:02:03"
+   },
+   {
+    "i": "3",
+    "type": "trigger",
+    "t": null,
+    "s": "triggered by cron",
+    "date": "2026-09-26 07:00:02"
+   },
+   {
+    "i": "5",
+    "type": "processing",
+    "t": "118",
+    "s": "import finished & cron un-triggered | 0 Produktai created 333 updated 2065 skipped",
+    "date": "2026-09-26 03:31:02"
+   },
+   {
+    "i": "5",
+    "type": "trigger",
+    "t": null,
+    "s": "triggered by cron",
+    "date": "2026-09-26 03:30:02"
+   }
+  ],
+  "wpai_hist_n": [
+   {
+    "import_id": "1",
+    "n": "2",
+    "nuo": "2026-05-27 10:35:36",
+    "iki": "2026-05-27 11:12:17"
+   },
+   {
+    "import_id": "2",
+    "n": "4",
+    "nuo": "2026-09-20 15:00:02",
+    "iki": "2026-09-24 03:01:03"
+   },
+   {
+    "import_id": "3",
+    "n": "4",
+    "nuo": "2026-09-26 07:00:02",
+    "iki": "2026-09-26 10:02:01"
+   },
+   {
+    "import_id": "5",
+    "n": "5",
+    "nuo": "2026-09-24 03:31:02",
+    "iki": "2026-09-26 03:31:02"
+   },
+   {
+    "import_id": "7",
+    "n": "4",
+    "nuo": "2026-09-26 09:15:03",
+    "iki": "2026-09-26 10:16:02"
+   }
+  ],
+  "wpai2": [
+   {
+    "id": "2",
+    "name": "products.php",
+    "processing": "1",
+    "executing": "0",
+    "triggered": "1",
+    "queue_chunk_number": "1221",
+    "imported": "0",
+    "skipped": "1220",
+    "count": "2190",
+    "last_activity": "2026-09-26 03:01:21",
+    "registered_on": "2026-09-26 03:01:21"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "0",
+    "queue_chunk_number": "0",
+    "imported": "0",
+    "skipped": "2681",
+    "count": "2681",
+    "last_activity": "2026-09-26 10:07:44",
+    "registered_on": "2026-09-26 10:07:44"
+   }
+  ],
+  "wpai_cron_da": [
+   {
+    "option_name": "PMXI_Plugin_Options",
+    "v": "a:36:{s:12:\"info_api_url\";s:27:\"https://www.wpallimport.com\";s:16:\"info_api_url_new\";s:30:\"https://update.wpallimport.com\";s:18:\"history_file_count\";i:10000;s:16:\"history_file_age\";i:365;s:15:\"highlig"
+   },
+   {
+    "option_name": "pmxi_is_migrated",
+    "v": "5.1.0"
+   },
+   {
+    "option_name": "ps_pmxi_vf_backup_20260902",
+    "v": "a:2:{i:0;a:8:{s:2:\"id\";s:1:\"5\";s:4:\"type\";s:3:\"url\";s:4:\"path\";s:127:\"https://petshop.lt/wp-content/petshop-xml-vf-fetcher.php?key=dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz\";s"
+   },
+   {
+    "option_name": "ps_pmxi3_backup_20260902",
+    "v": "s:25012:\"a:475:{s:4:\"type\";s:4:\"post\";s:21:\"is_override_post_type\";i:0;s:15:\"post_type_xpath\";s:0:\"\";s:8:\"deligate\";s:0:\"\";s:11:\"wizard_type\";s:8:\"matching\";s:8:\"ftp_host\";s:0:\"\";s:8:\"ftp_path\";s:0:\"\""
+   }
+  ],
+  "fatal": [
+   "   #2 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1866): apply_filters()",
+   "   #3 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1292): WP_REST_Server->serve_batch_request_v1()",
+   "   #4 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1861): WP_REST_Server->respond_to_request()",
+   "[26-Sep-2026 08:58:04 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method WP_Error::get_matched_route() in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api.php:863",
+   "   Stack trace:",
+   "   #0 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(341): rest_send_allow_header()",
+   "   #1 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters()",
+   "   #2 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1866): apply_filters()",
+   "   #3 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1292): WP_REST_Server->serve_batch_request_v1()",
+   "   #4 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1861): WP_REST_Server->respond_to_request()",
+   "[26-Sep-2026 08:58:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method WP_Error::get_matched_route() in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api.php:863",
+   "   Stack trace:",
+   "   #0 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(341): rest_send_allow_header()",
+   "   #1 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters()",
+   "   #2 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1866): apply_filters()",
+   "   #3 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1292): WP_REST_Server->serve_batch_request_v1()",
+   "   #4 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1861): WP_REST_Server->respond_to_request()",
+   "[26-Sep-2026 08:58:22 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method WP_Error::get_matched_route() in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api.php:863",
+   "   Stack trace:",
+   "   #0 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(341): rest_send_allow_header()",
+   "   #1 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/plugin.php(205): WP_Hook->apply_filters()",
+   "   #2 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1866): apply_filters()",
+   "   #3 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1292): WP_REST_Server->serve_batch_request_v1()",
+   "   #4 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php(1861): WP_REST_Server->respond_to_request()"
+  ],
+  "dydziai_kb": 4,
+  "dydziai": "<?php\n/**\n * Plugin Name: Petshop Dydziai\n * Description: Dydzio pasirinkimas prekes puslapyje. Dydis pas mus NERA variacija —\n *              kiekvienas dydis yra atskira preke (taip veikia maistas, kraikai, DP pakai).\n *              Todel pirkejui reikia matomos jungties tarp broliu; be jos jis,\n *              atsidares M, i L nepatenka niekaip.\n * Version: 1.0\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Dydziai {\n\n\tconst META = '_ps_dydzio_seima';\n\n\t/** Rikiavimo tvarka. Nezinomi dydziai keliauja i gala, abeceles tvarka. */\n\tconst EILE = array( 'xs' => 1, 's' => 2, 'm' => 3, 'l' => 4, 'xl' => 5, 'xxl' => 6 );\n\n\tpublic static function start() {\n\t\tadd_action( 'woocommerce_single_product_summary', array( __CLASS__, 'pieskime' ), 25 );\n\t}\n\n\t/** Seimos nariai: publish arba dabartine preke (kad juodrastyje irgi matytum). */\n\tpublic static function nariai( $seima, $dabartinis ) {\n\t\tglobal $wpdb;\n\t\t$ids = $wpdb->get_col( $wpdb->prepare(\n\t\t\t\"SELECT p.ID FROM {$wpdb->posts} p\n\t\t\t   JOIN {$wpdb->postmeta} m ON m.post_id = p.ID AND m.meta_key = %s\n\t\t\t  WHERE p.post_type = 'product' AND m.meta_value = %s\n\t\t\t    AND ( p.post_status = 'publish' OR p.ID = %d )\",\n\t\t\tself::META, $seima, (int) $dabartinis ) );\n\t\treturn array_map( 'intval', (array) $ids );\n\t}\n\n\t/** Dydzio uzrasas: pirma pa_dydis, po to pa_pakuotes_dydis. */\n\tpublic static function uzrasas( $pid ) {\n\t\tforeach ( array( 'pa_dydis', 'pa_pakuotes_dydis' ) as $tx ) {\n\t\t\tif ( ! taxonomy_exists( $tx ) ) { continue; }\n\t\t\t$n = wp_get_object_terms( $pid, $tx, array( 'fields' => 'names' ) );\n\t\t\tif ( ! is_wp_error( $n ) && $n ) { return (string) $n[0]; }\n\t\t}\n\t\treturn '';\n\t}\n\n\tpublic static function svoris( $u ) {\n\t\t$k = mb_strtolower( trim( $u ) );\n\t\tif ( isset( self::EILE[ $k ] ) ) { return array( 0, self::EILE[ $k ], '' ); }\n\t\t/* „10 l\", „2,5 kg\" — rikiuojam pagal skaiciu, ne pagal teksta */\n\t\tif ( preg_match( '/([\\d]+(?:[.,][\\d]+)?)/u', $k, $m ) ) {\n\t\t\treturn array( 1, (float) str_replace( ',', '.', $m[1] ), $k );\n\t\t}\n\t\treturn array( 2, 0, $k );\n\t}\n\n\tpublic static function pieskime() {\n\t\tglobal $product;\n\t\tif ( ! $product instanceof WC_Product ) { return; }\n\t\t$pid   = $product->get_id();\n\t\t$seima = get_post_meta( $pid, self::META, true );\n\t\tif ( ! $seima ) { return; }\n\n\t\t$ids = self::nariai( $seima, $pid );\n\t\tif ( count( $ids ) < 2 ) { return; }   /* vienas narys — bloko nereikia */\n\n\t\t$eil = array();\n\t\tforeach ( $ids as $id ) {\n\t\t\t$u = self::uzrasas( $id );\n\t\t\tif ( $u === '' ) { continue; }\n\t\t\t$p = wc_get_product( $id );\n\t\t\t$eil[] = array(\n\t\t\t\t'id'    => $id,\n\t\t\t\t'uzr'   => $u,\n\t\t\t\t'url'   => get_permalink( $id ),\n\t\t\t\t'yra'   => $p ? $p->is_in_stock() : false,\n\t\t\t\t'sort'  => self::svoris( $u ),\n\t\t\t);\n\t\t}\n\t\tif ( count( $eil ) < 2 ) { return; }\n\t\tusort( $eil, function ( $a, $b ) { return $a['sort'] <=> $b['sort']; } );\n\n\t\techo '<div class=\"ps-dydziai\"><span class=\"ps-dydziai__et\">Dydis</span><div class=\"ps-dydziai__sar\">';\n\t\tforeach ( $eil as $x ) {\n\t\t\t$kl = 'ps-dydis';\n\t\t\tif ( $x['id'] === $pid ) { $kl .= ' ps-dydis--dabar'; }\n\t\t\tif ( ! $x['yra'] ) { $kl .= ' ps-dydis--nera'; }\n\t\t\tif ( $x['id'] === $pid ) {\n\t\t\t\techo '<span class=\"' . esc_attr( $kl ) . '\">' . esc_html( $x['uzr'] ) . '</span>';\n\t\t\t} else {\n\t\t\t\techo '<a class=\"' . esc_attr( $kl ) . '\" href=\"' . esc_url( $x['url'] ) . '\">'\n\t\t\t\t   . esc_html( $x['uzr'] ) . '</a>';\n\t\t\t}\n\t\t}\n\t\techo '</div></div>';\n\n\t\techo '<style>\n\t\t.ps-dydziai{margin:14px 0 6px}\n\t\t.ps-dydziai__et{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#333}\n\t\t.ps-dydziai__sar{display:flex;flex-wrap:wrap;gap:6px}\n\t\t.ps-dydis{display:inline-block;min-width:42px;text-align:center;padding:7px 12px;\n\t\t\tborder:1px solid #cfd6d2;border-radius:4px;font-size:14px;line-height:1;\n\t\t\tcolor:#1d2422;text-decoration:none;background:#fff}\n\t\ta.ps-dydis:hover{border-color:#1f7a4d;color:#1f7a4d}\n\t\t.ps-dydis--dabar{border-color:#1f7a4d;background:#1f7a4d;color:#fff;font-weight:600}\n\t\t.ps-dydis--nera{opacity:.45;text-decoration:line-through}\n\t\t</style>';\n\t}\n}\nPetshop_Dydziai::start();\n",
+  "seima_reiksmes": [
+   {
+    "v": "elnio-ragas-kietas",
+    "n": "5",
+    "ids": "17312,35126,35128,35130,35132"
+   },
+   {
+    "v": "elnio-ragas-minkstas",
+    "n": "4",
+    "ids": "17309,35134,35136,35138"
+   },
+   {
+    "v": "katrinex-koi",
+    "n": "4",
+    "ids": "17903,35140,35142,35144"
+   },
+   {
+    "v": "ebi-kaulas-melsvos",
+    "n": "3",
+    "ids": "15309,35108,35110"
+   },
+   {
+    "v": "ebi-kaulas-rozines",
+    "n": "3",
+    "ids": "15306,35102,35104"
+   },
+   {
+    "v": "zolux-zirklutes",
+    "n": "3",
+    "ids": "15734,35120,35122"
+   },
+   {
+    "v": "ebi-kaulas-baltos",
+    "n": "2",
+    "ids": "15312,35146"
+   },
+   {
+    "v": "mon-amor-sirdele",
+    "n": "2",
+    "ids": "18743,35147"
+   },
+   {
+    "v": "zolux-sepetys-katems",
+    "n": "2",
+    "ids": "35112,35114"
+   },
+   {
+    "v": "zolux-sepetys-sunims-minkstas",
+    "n": "2",
+    "ids": "15740,35118"
+   },
+   {
+    "v": "zolux-sepetys-sunims-plieniniais",
+    "n": "2",
+    "ids": "15737,35116"
+   }
+  ],
+  "seima_kiti_meta": [
+   {
+    "meta_key": "_ps_dydzio_seima",
+    "n": "32"
+   },
+   {
+    "meta_key": "_ps_pakuociu",
+    "n": "27"
+   }
+  ],
+  "pak_dydis_terms": [
+   {
+    "name": "12 kg",
+    "slug": "12-kg",
+    "count": "125"
+   },
+   {
+    "name": "400 g",
+    "slug": "400-g",
+    "count": "92"
+   },
+   {
+    "name": "10 kg",
+    "slug": "10-kg",
+    "count": "86"
+   },
+   {
+    "name": "2 kg",
+    "slug": "2-kg",
+    "count": "78"
+   },
+   {
+    "name": "1,5 kg",
+    "slug": "1-5-kg",
+    "count": "68"
+   },
+   {
+    "name": "100 g",
+    "slug": "100-g",
+    "count": "68"
+   },
+   {
+    "name": "500 g",
+    "slug": "500-g",
+    "count": "52"
+   },
+   {
+    "name": "2,5 kg",
+    "slug": "25-kg",
+    "count": "49"
+   },
+   {
+    "name": "3 kg",
+    "slug": "3-kg",
+    "count": "48"
+   },
+   {
+    "name": "85 g",
+    "slug": "85-g",
+    "count": "42"
+   },
+   {
+    "name": "7 kg",
+    "slug": "7-kg",
+    "count": "40"
+   },
+   {
+    "name": "800 g",
+    "slug": "800-g",
+    "count": "37"
+   },
+   {
+    "name": "900 g",
+    "slug": "900-g",
+    "count": "36"
+   },
+   {
+    "name": "15 kg",
+    "slug": "15-kg",
+    "count": "31"
+   },
+   {
+    "name": "200 g",
+    "slug": "200-g",
+    "count": "28"
+   },
+   {
+    "name": "5 kg",
+    "slug": "5-kg",
+    "count": "27"
+   },
+   {
+    "name": "12,5 kg",
+    "slug": "125-kg",
+    "count": "26"
+   },
+   {
+    "name": "20 kg",
+    "slug": "20-kg",
+    "count": "22"
+   },
+   {
+    "name": "90 g",
+    "slug": "90-g",
+    "count": "19"
+   },
+   {
+    "name": "250 g",
+    "slug": "250-g",
+    "count": "14"
+   },
+   {
+    "name": "1 kg",
+    "slug": "1-kg",
+    "count": "14"
+   },
+   {
+    "name": "300 g",
+    "slug": "300-g",
+    "count": "13"
+   },
+   {
+    "name": "150 g",
+    "slug": "150-g",
+    "count": "10"
+   },
+   {
+    "name": "15 g",
+    "slug": "15-g",
+    "count": "9"
+   },
+   {
+    "name": "40 g",
+    "slug": "40-g",
+    "count": "8"
+   },
+   {
+    "name": "50 g",
+    "slug": "50-g",
+    "count": "8"
+   },
+   {
+    "name": "14 g",
+    "slug": "14-g",
+    "count": "8"
+   },
+   {
+    "name": "7,5 kg",
+    "slug": "75-kg",
+    "count": "8"
+   },
+   {
+    "name": "18 kg",
+    "slug": "18-kg",
+    "count": "8"
+   },
+   {
+    "name": "415 g",
+    "slug": "415-g",
+    "count": "7"
+   },
+   {
+    "name": "70 g",
+    "slug": "70-g",
+    "count": "7"
+   },
+   {
+    "name": "75 g",
+    "slug": "75-g",
+    "count": "6"
+   },
+   {
+    "name": "30 g",
+    "slug": "30-g",
+    "count": "6"
+   },
+   {
+    "name": "185 g",
+    "slug": "185-g",
+    "count": "5"
+   },
+   {
+    "name": "425 g",
+    "slug": "425-g",
+    "count": "5"
+   },
+   {
+    "name": "650 g",
+    "slug": "650-g",
+    "count": "5"
+   },
+   {
+    "name": "113 g",
+    "slug": "113-g",
+    "count": "5"
+   },
+   {
+    "name": "2,7 kg",
+    "slug": "27-kg",
+    "count": "5"
+   },
+   {
+    "name": "1,9 kg",
+    "slug": "19-kg",
+    "count": "5"
+   },
+   {
+    "name": "60 g",
+    "slug": "60-g",
+    "count": "5"
+   },
+   {
+    "name": "160 g",
+    "slug": "160-g",
+    "count": "4"
+   },
+   {
+    "name": "96 g",
+    "slug": "96-g",
+    "count": "4"
+   },
+   {
+    "name": "80 g",
+    "slug": "80-g",
+    "count": "4"
+   },
+   {
+    "name": "57 g",
+    "slug": "57-g",
+    "count": "4"
+   },
+   {
+    "name": "105 g",
+    "slug": "105-g",
+    "count": "4"
+   },
+   {
+    "name": "6,5 kg",
+    "slug": "65-kg",
+    "count": "4"
+   },
+   {
+    "name": "180 g",
+    "slug": "180-g",
+    "count": "3"
+   },
+   {
+    "name": "120 g",
+    "slug": "120-g",
+    "count": "3"
+   },
+   {
+    "name": "140 g",
+    "slug": "140-g",
+    "count": "3"
+   },
+   {
+    "name": "45 g",
+    "slug": "45-g",
+    "count": "3"
+   },
+   {
+    "name": "342 g",
+    "slug": "342-g",
+    "count": "3"
+   },
+   {
+    "name": "20 g",
+    "slug": "20-g",
+    "count": "2"
+   },
+   {
+    "name": "4+1 kg",
+    "slug": "41-kg",
+    "count": "2"
+   },
+   {
+    "name": "55 g",
+    "slug": "55-g",
+    "count": "2"
+   },
+   {
+    "name": "2,25 kg",
+    "slug": "225-kg",
+    "count": "2"
+   },
+   {
+    "name": "130 g",
+    "slug": "130-g",
+    "count": "2"
+   },
+   {
+    "name": "6 × 400 g",
+    "slug": "6-x-400-g",
+    "count": "2"
+   },
+   {
+    "name": "0,75 kg",
+    "slug": "075-kg",
+    "count": "2"
+   },
+   {
+    "name": "15+3 kg",
+    "slug": "153-kg",
+    "count": "2"
+   },
+   {
+    "name": "333 g",
+    "slug": "333-g",
+    "count": "2"
+   }
+  ],
+  "cols": {
+   "ps_fakt_eilutes": [
+    "id",
+    "uzsakymas_id",
+    "eilutes_id",
+    "apmoketa_at",
+    "preke_id",
+    "variacija_id",
+    "sku",
+    "gtin",
+    "pavadinimas_tuo_metu",
+    "kategorija_id_giliausia",
+    "kategoriju_kelias",
+    "brendas_slug",
+    "gyvunas",
+    "pa_uzsaldymas",
+    "sandelis",
+    "tiekejas",
+    "partija_kodas",
+    "kiekis",
+    "kaina_ct",
+    "pvm_ct",
+    "kaina_vnt_ct",
+    "kaina_reguliari_ct",
+    "savikaina_vnt_ct",
+    "savikaina_ct",
+    "savikainos_saltinis",
+    "nuolaida_ct",
+    "akcija_id",
+    "kuponas",
+    "rinkinys_id",
+    "rinkinio_tipas",
+    "rinkinio_raktas",
+    "dovana",
+    "svoris_g",
+    "pakuotes_dydis",
+    "klientas_naujas",
+    "testinis",
+    "saltinis_aplinka",
+    "diena"
+   ],
+   "ps_fakt_uzsakymai": [
+    "uzsakymas_id",
+    "sukurta_at",
+    "apmoketa_at",
+    "statusas_galutinis",
+    "statusas_at",
+    "klientas_id",
+    "klientas_email_hash",
+    "klientas_naujas",
+    "klientas_uzsakymo_nr",
+    "dienos_nuo_ankstesnio",
+    "prekiu_suma_ct",
+    "nuolaidu_ct",
+    "kuponu_kodai",
+    "tasku_panaudota_ct",
+    "tasku_sukaupta_ct",
+    "pristatymas_paimta_ct",
+    "pristatymas_savikaina_ct",
+    "small_cart_fee_ct",
+    "pvm_ct",
+    "viso_ct",
+    "mokejimo_budas",
+    "mokejimo_mokestis_ct",
+    "pakuotes_savikaina_ct",
+    "savikaina_ct",
+    "dovanu_savikaina_ct",
+    "marza_ct",
+    "kontribucija_ct",
+    "sandeliu_kiekis",
+    "misrus",
+    "sandeliai",
+    "vezejai",
+    "kanalas_pirmas",
+    "kanalas_paskutinis",
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "gclid",
+    "fbclid",
+    "referer_domenas",
+    "landing_url",
+    "irenginys",
+    "sutikimas_statistika",
+    "salis",
+    "miestas",
+    "pasto_kodas",
+    "anketa_id",
+    "rec_log_id",
+    "is_refill",
+    "prenumerata_id",
+    "eiluciu_sk",
+    "testinis",
+    "saltinis_aplinka",
+    "fakt_versija",
+    "irasyta_at",
+    "diena"
+   ],
+   "ps_ist_eilutes": [
+    "id",
+    "uzsakymo_id",
+    "modelis",
+    "pavadinimas",
+    "variantas",
+    "kiekis",
+    "kaina",
+    "suma",
+    "wc_product_id",
+    "susiejimas"
+   ],
+   "ps_ist_uzsakymai": [
+    "id",
+    "data",
+    "email",
+    "vardas",
+    "pavarde",
+    "tel",
+    "imone",
+    "siuntimas",
+    "miestas",
+    "apmokejimas",
+    "suma_be",
+    "suma",
+    "statusas",
+    "ivykdytas",
+    "saskaita",
+    "eiluciu"
+   ],
+   "ps_ist_fakt_eilutes": [
+    "id",
+    "uzsakymas_id",
+    "eilutes_id",
+    "apmoketa_at",
+    "preke_id",
+    "variacija_id",
+    "sku",
+    "gtin",
+    "pavadinimas_tuo_metu",
+    "kategorija_id_giliausia",
+    "kategoriju_kelias",
+    "brendas_slug",
+    "gyvunas",
+    "pa_uzsaldymas",
+    "sandelis",
+    "tiekejas",
+    "partija_kodas",
+    "kiekis",
+    "kaina_ct",
+    "pvm_ct",
+    "kaina_vnt_ct",
+    "kaina_reguliari_ct",
+    "savikaina_vnt_ct",
+    "savikaina_ct",
+    "savikainos_saltinis",
+    "nuolaida_ct",
+    "akcija_id",
+    "kuponas",
+    "rinkinys_id",
+    "rinkinio_tipas",
+    "rinkinio_raktas",
+    "dovana",
+    "svoris_g",
+    "pakuotes_dydis",
+    "klientas_naujas",
+    "testinis",
+    "saltinis_aplinka",
+    "diena"
+   ]
+  },
+  "ist_pvz": [
+   {
+    "id": "24555",
+    "uzsakymo_id": "12004",
+    "modelis": "2568",
+    "pavadinimas": "PESS biologinis antkaklis su eteriniais aliejais nuo parazitų šunims, 60 cm",
+    "variantas": "",
+    "kiekis": "4",
+    "kaina": "2.0579",
+    "suma": "8.23",
+    "wc_product_id": "16984",
+    "susiejimas": "sku"
+   },
+   {
+    "id": "24554",
+    "uzsakymo_id": "12004",
+    "modelis": "2571",
+    "pavadinimas": "PESS biologiniai lašiukai nuo parazitų katėms ir šunims, sveriantiems iki 10 kg",
+    "variantas": "",
+    "kiekis": "1",
+    "kaina": "3.6860",
+    "suma": "3.69",
+    "wc_product_id": "16999",
+    "susiejimas": "sku"
+   }
+  ],
+  "ist_uzs_pvz": [
+   {
+    "id": "12106",
+    "data": "2026-09-08 22:20:17",
+    "email": "talalajevaite@gmail.com",
+    "vardas": "Gabriele",
+    "pavarde": "Talalajevaite",
+    "tel": "37064841254",
+    "imone": "0",
+    "siuntimas": "Pristatymas per Venipak paštomatus / atsiėmimo punktus",
+    "miestas": "Kaunas",
+    "apmokejimas": "Revolut (LT)",
+    "suma_be": "52.03",
+    "suma": "62.95",
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1",
+    "saskaita": "AVP10999",
+    "eiluciu": "3"
+   }
+  ],
+  "fakt_eil_pvz": [
+   {
+    "id": "508",
+    "uzsakymas_id": "36320",
+    "eilutes_id": "2641",
+    "apmoketa_at": "2026-09-26 10:07:56",
+    "preke_id": "15409",
+    "variacija_id": "0",
+    "sku": "5904479151230",
+    "gtin": "5904479151230",
+    "pavadinimas_tuo_metu": "Žaislas šuniui - Asiliukas, 13 cm",
+    "kategorija_id_giliausia": "115",
+    "kategoriju_kelias": "[\"sunims\",\"zaislai-sunims\"]",
+    "brendas_slug": "barry-king",
+    "gyvunas": "",
+    "pa_uzsaldymas": "{\"pa_gyvuno_rusis\":[\"sunims\"]}",
+    "sandelis": "legacy",
+    "tiekejas": "legacy",
+    "partija_kodas": "",
+    "kiekis": "1",
+    "kaina_ct": "369",
+    "pvm_ct": "77",
+    "kaina_vnt_ct": "369",
+    "kaina_reguliari_ct": "369",
+    "savikaina_vnt_ct": "246",
+    "savikaina_ct": "246",
+    "savikainos_saltinis": "pardavimai",
+    "nuolaida_ct": "0",
+    "akcija_id": null,
+    "kuponas": "",
+    "rinkinys_id": "0",
+    "rinkinio_tipas": "",
+    "rinkinio_raktas": "",
+    "dovana": "0",
+    "svoris_g": "0",
+    "pakuotes_dydis": "",
+    "klientas_naujas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod",
+    "diena": "2026-09-26"
+   }
+  ],
+  "laikas": "2026-09-26 13:37:02",
+  "trukme_s": 2.5
+ },
+ "2": {
+  "v": "S1721b",
+  "faze": "2",
+  "Sep-2026.tar.gz.3": {
+   "nariai": [
+    [
+     "petshop.lt.log.1",
+     45543584
+    ],
+    [
+     "petshop.lt.error.log.1",
+     163401
+    ]
+   ],
+   "txt_mb": 43.4,
+   "n": 127406,
+   "st": {
+    "103": 430,
+    "200": 113389,
+    "206": 376,
+    "301": 10755,
+    "302": 509,
+    "304": 8,
+    "400": 1,
+    "401": 6,
+    "403": 237,
+    "404": 1628,
+    "408": 1,
+    "500": 66
+   },
+   "atc": 9725,
+   "atc_302": 0,
+   "filtrai": 56081,
+   "filtrai_302": 0,
+   "cron": 6186,
+   "wcajax": 3046,
+   "yith_ajax": 2634,
+   "val": {
+    "24 04": 514,
+    "24 05": 5368,
+    "24 06": 6626,
+    "24 07": 6386,
+    "24 08": 6710,
+    "24 09": 7341,
+    "24 10": 8899,
+    "24 11": 8674,
+    "24 12": 8878,
+    "24 13": 5033,
+    "24 14": 6921,
+    "24 15": 5936,
+    "24 16": 6786,
+    "24 17": 6254,
+    "24 18": 5624,
+    "24 19": 7336,
+    "24 20": 6383,
+    "24 21": 5254,
+    "24 22": 6457,
+    "24 23": 4973,
+    "25 00": 1053
+   },
+   "ip": 64451,
+   "bot_ua": 11494,
+   "html_200_be_bot": 0,
+   "nuo": "24/Sep/2026:04:54:59",
+   "iki": "25/Sep/2026:00:10:05"
+  },
+  "Sep-2026.tar.gz.1": {
+   "nariai": [
+    [
+     "petshop.lt.log.1",
+     59669297
+    ],
+    [
+     "petshop.lt.error.log.1",
+     215604
+    ]
+   ],
+   "txt_mb": 56.9,
+   "n": 185195,
+   "st": {
+    "103": 2760,
+    "200": 128406,
+    "206": 343,
+    "207": 2,
+    "301": 22473,
+    "302": 29850,
+    "304": 18,
+    "400": 3,
+    "401": 1,
+    "403": 206,
+    "404": 904,
+    "408": 20,
+    "410": 196,
+    "500": 13
+   },
+   "atc": 7868,
+   "atc_302": 1404,
+   "filtrai": 64922,
+   "filtrai_302": 28081,
+   "cron": 7009,
+   "wcajax": 2879,
+   "yith_ajax": 2200,
+   "val": {
+    "25 04": 3110,
+    "25 05": 5511,
+    "25 06": 5370,
+    "25 07": 5578,
+    "25 08": 5969,
+    "25 09": 5972,
+    "25 10": 6623,
+    "25 11": 5779,
+    "25 12": 6655,
+    "25 13": 5067,
+    "25 14": 6273,
+    "25 15": 5069,
+    "25 16": 8364,
+    "25 17": 5677,
+    "25 18": 6084,
+    "25 19": 16037,
+    "25 20": 19715,
+    "25 21": 19193,
+    "25 22": 19421,
+    "25 23": 20726,
+    "26 00": 3002
+   },
+   "ip": 81790,
+   "bot_ua": 27766,
+   "html_200_be_bot": 0,
+   "nuo": "25/Sep/2026:04:23:06",
+   "iki": "26/Sep/2026:00:10:05"
+  },
+  "Sep-2026.tar.gz": {
+   "nariai": [
+    [
+     "petshop.lt.log.1",
+     20459567
+    ],
+    [
+     "petshop.lt.error.log.1",
+     35930
+    ]
+   ],
+   "txt_mb": 19.5,
+   "n": 70483,
+   "st": {
+    "103": 536,
+    "200": 35407,
+    "206": 78,
+    "301": 12046,
+    "302": 22049,
+    "403": 7,
+    "404": 282,
+    "410": 72,
+    "500": 6
+   },
+   "atc": 832,
+   "atc_302": 829,
+   "filtrai": 21499,
+   "filtrai_302": 21183,
+   "cron": 1727,
+   "wcajax": 524,
+   "yith_ajax": 86,
+   "val": {
+    "26 00": 16700,
+    "26 01": 19878,
+    "26 02": 17623,
+    "26 03": 15098,
+    "26 04": 1184
+   },
+   "ip": 23212,
+   "bot_ua": 12183,
+   "html_200_be_bot": 0,
+   "nuo": "26/Sep/2026:00:10:07",
+   "iki": "26/Sep/2026:04:05:30"
+  },
+  "trukme_s": 2.4,
+  "mem_mb": 294
+ },
+ "v": "dep-103553",
+ "kurimas": 200,
+ "sid": 6507,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
 }
