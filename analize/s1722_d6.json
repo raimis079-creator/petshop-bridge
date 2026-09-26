@@ -1,0 +1,37 @@
+{
+ "5": {
+  "v": "S1722d",
+  "faze": "5",
+  "arch": "ok",
+  "snip": {
+   "name": "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v11",
+   "len": "51357",
+   "md5": "d70356ce974ad29c5d41c29df977849c",
+   "active": "1"
+  },
+  "heartbeat": 200,
+  "admin_hb": ""
+ },
+ "v": "dep-200723",
+ "kurimas": 200,
+ "sid": 6562,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "5b": {
+  "v": "S1722d",
+  "faze": "5b",
+  "arch": "ok",
+  "html_len": 45601,
+  "esami_eil": 26,
+  "h3": [
+   "Sausas maistas (2)",
+   "Konservai (2)",
+   "Natūralūs skanėstai (4)",
+   "Kraikas (17)"
+  ],
+  "proc_field": 1,
+  "hb": "ERR cURL error 28: SSL certificate OpenSSL verify result: unable to get local issuer certificate (20)"
+ }
+}
