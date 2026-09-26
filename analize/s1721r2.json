@@ -1,0 +1,195 @@
+{
+ "2": {
+  "v": "S1721r",
+  "faze": "2",
+  "eil": 500,
+  "seimos": 228,
+  "dry": {
+   "nera_prekes": [],
+   "ne_publish": [],
+   "jau_ta_pati": 0,
+   "jau_kita": [
+    [
+     18584,
+     "exclusion-hypo-mazu-kiauliena",
+     "exclusion-hypoallergenic-mazu-veisliu-sunu-kiaul"
+    ],
+    [
+     18590,
+     "exclusion-hypo-mazu-kiauliena",
+     "exclusion-hypoallergenic-mazu-veisliu-sunu-kiaul"
+    ],
+    [
+     36002,
+     "exclusion-hypo-mazu-kiauliena",
+     "exclusion-hypoallergenic-mazu-veisliu-sunu-kiaul"
+    ],
+    [
+     18587,
+     "exclusion-hypo-mazu-kiauliena",
+     "exclusion-hypoallergenic-mazu-veisliu-sunu-kiaul"
+    ],
+    [
+     36003,
+     "exclusion-hypo-mazu-kiauliena",
+     "exclusion-hypoallergenic-mazu-veisliu-sunu-kiaul"
+    ]
+   ],
+   "be_termino": [
+    [
+     35326,
+     "200 g"
+    ],
+    [
+     35328,
+     "400 g"
+    ],
+    [
+     14590,
+     "1,5 kg"
+    ],
+    [
+     35338,
+     "200 g"
+    ],
+    [
+     35340,
+     "400 g"
+    ]
+   ],
+   "rasyti": 495
+  },
+  "seimos_su_esamu_raktu": {
+   "exclusion-hypoallergenic-mazu-veisliu-sunu-kiaul": "exclusion-hypo-mazu-kiauliena"
+  },
+  "irasyta": 495,
+  "terminai_prideti": 5,
+  "terminai_klaidos": [],
+  "bak_irasu": 500,
+  "supercache": "isvalytas"
+ },
+ "3": {
+  "v": "S1721r",
+  "faze": "3",
+  "eil": 500,
+  "seimos": 228,
+  "meta_viso": 531,
+  "seimos_db": 239,
+  "katalogo_seimos": 238,
+  "bak_irasu": 500,
+  "pvz": {
+   "josera-lamb-rice-eriena-ryziais": [
+    [
+     21014,
+     "900 g",
+     "NERA",
+     0,
+     5.32,
+     "0%",
+     "",
+     ""
+    ],
+    [
+     25419,
+     "3 kg",
+     "yra",
+     0,
+     4.73,
+     "11%",
+     "",
+     ""
+    ],
+    [
+     18149,
+     "12,5 kg",
+     "yra",
+     59,
+     3.63,
+     "32%",
+     "",
+     "top"
+    ],
+    [
+     27128,
+     "12,5+2,5 kg",
+     "yra",
+     3,
+     3.03,
+     "43%",
+     "best",
+     ""
+    ]
+   ],
+   "josera-mini-lamb-begrudis-mazu-veisliu": [
+    [
+     25411,
+     "900 g",
+     "yra",
+     1,
+     5.43,
+     "0%",
+     "",
+     ""
+    ],
+    [
+     25407,
+     "3 kg",
+     "yra",
+     1,
+     4.7,
+     "14%",
+     "",
+     ""
+    ],
+    [
+     18018,
+     "10 kg",
+     "yra",
+     39,
+     4.62,
+     "15%",
+     "best",
+     "top"
+    ]
+   ]
+  },
+  "http": {
+   "josera": {
+    "code": 200,
+    "korteliu": 24,
+    "ps_dk": 12,
+    "rezultatu": "200 prekių"
+   },
+   "farmina": {
+    "code": 200,
+    "korteliu": 24,
+    "ps_dk": 10,
+    "rezultatu": "150 prekių"
+   },
+   "sausas_sunims": {
+    "code": 200,
+    "korteliu": 24,
+    "ps_dk": 7,
+    "rezultatu": ""
+   },
+   "konservai_katems": {
+    "code": 200,
+    "korteliu": 24,
+    "ps_dk": 0,
+    "rezultatu": ""
+   }
+  },
+  "log_uodega": [
+   "[26-Sep-2026 13:09:49 UTC] Užsakymas patvirtintas: užsakymas 36323, suma: 36.39EUR",
+   "[26-Sep-2026 13:14:42 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 22",
+   "[26-Sep-2026 13:40:47 UTC] WordPress database error Unknown column 'created_at' in 'SELECT' for query SELECT COUNT(*) n, MIN(created_at) nuo, MAX(created_at) iki FROM gaj6_ps_rec_log made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}"
+  ]
+ },
+ "v": "dep-161011",
+ "kurimas": 200,
+ "sid": 6542,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
