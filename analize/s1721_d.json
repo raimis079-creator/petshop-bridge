@@ -1,0 +1,417 @@
+{
+ "1": {
+  "v": "S1721d",
+  "faze": "1",
+  "dabar": "13:46:52",
+  "wpai_hist_dabar": [
+   {
+    "i": "7",
+    "type": "processing",
+    "t": "378",
+    "date": "2026-09-26 10:16:02"
+   },
+   {
+    "i": "7",
+    "type": "trigger",
+    "t": null,
+    "date": "2026-09-26 10:15:03"
+   },
+   {
+    "i": "3",
+    "type": "processing",
+    "t": "343",
+    "date": "2026-09-26 10:02:01"
+   },
+   {
+    "i": "3",
+    "type": "trigger",
+    "t": null,
+    "date": "2026-09-26 10:00:02"
+   },
+   {
+    "i": "7",
+    "type": "processing",
+    "t": "364",
+    "date": "2026-09-26 09:16:07"
+   },
+   {
+    "i": "7",
+    "type": "trigger",
+    "t": null,
+    "date": "2026-09-26 09:15:03"
+   },
+   {
+    "i": "3",
+    "type": "processing",
+    "t": "7246",
+    "date": "2026-09-26 07:02:03"
+   },
+   {
+    "i": "3",
+    "type": "trigger",
+    "t": null,
+    "date": "2026-09-26 07:00:02"
+   }
+  ],
+  "wpai_imports": [
+   {
+    "id": "2",
+    "processing": "1",
+    "executing": "0",
+    "triggered": "1",
+    "queue_chunk_number": "1221",
+    "last_activity": "2026-09-26 03:01:21"
+   },
+   {
+    "id": "3",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "0",
+    "queue_chunk_number": "0",
+    "last_activity": "2026-09-26 10:07:44"
+   },
+   {
+    "id": "5",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "0",
+    "queue_chunk_number": "0",
+    "last_activity": "2026-09-26 03:33:00"
+   },
+   {
+    "id": "7",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "0",
+    "queue_chunk_number": "0",
+    "last_activity": "2026-09-26 10:22:20"
+   }
+  ],
+  "Sep-2026.tar.gz": {
+   "kiek": {
+    "7 trigger": 4,
+    "7 processing": 88,
+    "3 trigger": 4,
+    "3 processing": 12
+   },
+   "trigger_hitai": [
+    "26 00:15 7 trigger 200",
+    "26 01:00 3 trigger 200",
+    "26 01:15 7 trigger 200",
+    "26 02:00 3 trigger 200",
+    "26 02:15 7 trigger 200",
+    "26 03:00 3 trigger 200",
+    "26 03:15 7 trigger 200",
+    "26 04:00 3 trigger 200"
+   ]
+  },
+  "Sep-2026.tar.gz.1": {
+   "kiek": {
+    "7 processing": 434,
+    "3 trigger": 20,
+    "3 processing": 114,
+    "7 trigger": 19,
+    "2 trigger": 2,
+    "2 processing": 2,
+    "5 trigger": 1,
+    "5 processing": 15
+   },
+   "trigger_hitai": [
+    "25 05:00 3 trigger 200",
+    "25 05:15 7 trigger 200",
+    "25 06:00 2 trigger 200",
+    "25 06:00 3 trigger 200",
+    "25 06:15 7 trigger 200",
+    "25 06:30 5 trigger 200",
+    "25 07:00 3 trigger 200",
+    "25 07:15 7 trigger 200",
+    "25 08:00 3 trigger 200",
+    "25 08:15 7 trigger 200",
+    "25 09:00 3 trigger 200",
+    "25 09:15 7 trigger 200",
+    "25 10:00 3 trigger 200",
+    "25 10:15 7 trigger 200",
+    "25 11:00 3 trigger 200",
+    "25 11:15 7 trigger 200",
+    "25 12:00 3 trigger 200",
+    "25 12:15 7 trigger 200",
+    "25 13:00 3 trigger 200",
+    "25 13:15 7 trigger 200",
+    "25 14:00 3 trigger 200",
+    "25 14:15 7 trigger 200",
+    "25 15:00 3 trigger 200",
+    "25 15:15 7 trigger 200",
+    "25 16:00 3 trigger 200",
+    "25 16:15 7 trigger 200",
+    "25 17:00 3 trigger 200",
+    "25 17:15 7 trigger 200",
+    "25 18:00 3 trigger 200",
+    "25 18:00 2 trigger 200",
+    "25 18:15 7 trigger 200",
+    "25 19:00 3 trigger 200",
+    "25 19:15 7 trigger 200",
+    "25 20:00 3 trigger 200",
+    "25 20:15 7 trigger 200",
+    "25 21:00 3 trigger 200",
+    "25 21:15 7 trigger 200",
+    "25 22:00 3 trigger 200",
+    "25 22:15 7 trigger 200",
+    "25 23:00 3 trigger 200",
+    "25 23:15 7 trigger 200",
+    "26 00:00 3 trigger 200"
+   ]
+  },
+  "rmdir_minutes": [],
+  "rmdir_url": [
+   {
+    "l": "09-26 13:08",
+    "u": "/kategorija/sunims/maistas-sunims",
+    "k": "19",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:07",
+    "u": "/?wc-ajax=checkout",
+    "k": "4",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:07",
+    "u": "/?wc-api=wc_gateway_paysera&data=b3JkZXJpZD0zNjMyMCZhbW91bnQ9NTA4MyZjd",
+    "k": "2",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:06",
+    "u": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "k": "28",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:06",
+    "u": "/?wc-ajax=checkout",
+    "k": "2",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/wp-load.php?import_key=v&import_id=5&action=processing",
+    "k": "43",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/wp-cron.php?doing_wp_cron=1790352019.0133759975433349609375",
+    "k": "2",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/wp-cron.php?doing_wp_cron=1790402372.8417880535125732421875",
+    "k": "2",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/wp-cron.php?doing_wp_cron=1790395172.1720941066741943359375",
+    "k": "2",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/wp-cron.php?doing_wp_cron=1790377173.4199440479278564453125",
+    "k": "7",
+    "n": "3"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/wp-cron.php?doing_wp_cron=1790344774.2798559665679931640625",
+    "k": "2",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/gamintojas/josera",
+    "k": "37",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/?wc-ajax=checkout",
+    "k": "42",
+    "n": "2"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/wp-cron.php?doing_wp_cron=1790337572.1868529319763183593750",
+    "k": "37",
+    "n": "2"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/wp-cron.php?doing_wp_cron=1790416773.1155629158020019531250",
+    "k": "6",
+    "n": "6"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/wp-cron.php?doing_wp_cron=1790373582.1075980663299560546875",
+    "k": "3",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/wp-cron.php?doing_wp_cron=1790359173.1074700355529785156250",
+    "k": "2",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/wp-cron.php?doing_wp_cron=1790366373.0146539211273193359375",
+    "k": "2",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/wp-cron.php?doing_wp_cron=1790333992.2091989517211914062500",
+    "k": "4213",
+    "n": "206"
+   },
+   {
+    "l": "09-26 13:01",
+    "u": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "k": "2484",
+    "n": "98"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/kategorija/katems/maistas-katems/konservai-katems",
+    "k": "15",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790344774.2798559665679931640625",
+    "k": "4",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790398772.3572909832000732421875",
+    "k": "2",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790370023.3117110729217529296875",
+    "k": "2",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790377173.4199440479278564453125",
+    "k": "2",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790391573.2153379917144775390625",
+    "k": "2",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790355573.1403241157531738281250",
+    "k": "20",
+    "n": "5"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790348373.4956951141357421875000",
+    "k": "26",
+    "n": "3"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790352019.0133759975433349609375",
+    "k": "9",
+    "n": "2"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790373582.1075980663299560546875",
+    "k": "12",
+    "n": "4"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790366373.0146539211273193359375",
+    "k": "4",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/?wc-ajax=checkout",
+    "k": "49",
+    "n": "2"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790362784.5240459442138671875000",
+    "k": "8",
+    "n": "2"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790416773.1155629158020019531250",
+    "k": "1",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/kategorija/sunims/maistas-sunims/sausas-maistas-sunims",
+    "k": "46",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790337572.1868529319763183593750",
+    "k": "37",
+    "n": "2"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790359173.1074700355529785156250",
+    "k": "14",
+    "n": "4"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790395172.1720941066741943359375",
+    "k": "2",
+    "n": "1"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-cron.php?doing_wp_cron=1790333992.2091989517211914062500",
+    "k": "5253",
+    "n": "242"
+   },
+   {
+    "l": "09-26 13:00",
+    "u": "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "k": "4686",
+    "n": "162"
+   }
+  ],
+  "trukme_s": 0.8,
+  "mem_mb": 264
+ },
+ "v": "dep-104547",
+ "kurimas": 200,
+ "sid": 6509,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
