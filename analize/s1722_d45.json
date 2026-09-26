@@ -1,0 +1,65 @@
+{
+ "4": {
+  "v": "S1722d",
+  "faze": "4",
+  "arch": "ok",
+  "feeds_md5": "957da141a019b33b739146a8a249bc8f",
+  "feeds_counts": [
+   1,
+   1,
+   1,
+   1
+  ],
+  "rytas_md5": "bb897e97383598e932337dadddd0df6c",
+  "rytas_counts": [
+   1,
+   1
+  ],
+  "heartbeat": 200
+ },
+ "5": {
+  "v": "S1722d",
+  "faze": "5",
+  "arch": "ok",
+  "snip": {
+   "name": "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v10",
+   "len": "45297",
+   "md5": "3102900641cc6aea0d8c28720f49633f",
+   "active": "1"
+  },
+  "heartbeat": 200,
+  "admin_hb": 200
+ },
+ "v": "dep-175252",
+ "kurimas": 200,
+ "sid": 6555,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "4b": {
+  "v": "S1722d",
+  "faze": "4b",
+  "arch": "ok",
+  "feed_ids": 2167,
+  "pakai_feed_ids": 0,
+  "rytas": [
+   {
+    "kodas": "avpn",
+    "lygis": "zalia",
+    "tekstas": "AVPN numeracija: be dublikatų (143)"
+   },
+   {
+    "kodas": "seimos",
+    "lygis": "zalia",
+    "tekstas": "Šeimos: priskirta 0, kandidatų 0"
+   },
+   {
+    "kodas": "dp_kainos",
+    "lygis": "zalia",
+    "tekstas": "DP pakų kainos: su % 25, rankinių 0, neatitinka 0, klaidų 0; naktinis 09-26 20:52 pakeitė 25"
+   }
+  ],
+  "rytas_lempuciu": 16
+ }
+}
