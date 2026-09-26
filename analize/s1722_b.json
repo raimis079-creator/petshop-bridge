@@ -1,0 +1,452 @@
+{
+ "1": {
+  "v": "S1722b",
+  "ids_fn": "function ps_feeds_ids(): array {\n\tglobal $wpdb;\n\t$p = $wpdb->prefix;\n\n\t$sql = \"SELECT p.ID FROM {$p}posts p\n\t\tWHERE p.post_type = 'product' AND p.post_status = 'publish'\n\t\tAND EXISTS (\n\t\t\tSELECT 1 FROM {$p}postmeta s\n\t\t\tWHERE s.post_id = p.ID AND s.meta_key = '_stock_status' AND s.meta_value = 'instock'\n\t\t)\n\t\tAND NOT EXISTS (\n\t\t\tSELECT 1 FROM {$p}postmeta d\n\t\t\tWHERE d.post_id = p.ID AND d.meta_key = '_do_not_export' AND d.meta_value = 'yes'\n\t\t)\n\t\tAND NOT EXISTS (\n\t\t\tSELECT 1 FROM {$p}postmeta l\n\t\t\tWHERE l.post_id = p.ID AND l.meta_key = '_ps_laukas' AND l.meta_value = 'yes'\n\t\t)\n\t\tAND NOT EXISTS (\n\t\t\tSELECT 1 FROM {$p}term_relationships tr\n\t\t\tJOIN {$p}term_taxonomy tt ON tt.term_taxonomy_id = tr.term_taxonomy_id\n\t\t\tJOIN {$p}terms t ON t.term_id = tt.term_id\n\t\t\tWHERE tr.object_id = p.ID AND tt.taxonomy = 'product_visibility'\n\t\t\t  AND t.slug = 'exclude-from-catalog'\n\t\t)\n\t\tAND NOT EXISTS (\n\t\t\tSELECT 1 FROM {$p}term_relationships tr2\n\t\t\tJOIN {$p}term_taxonomy tt2 ON tt2.term_taxonomy_id = tr2.term_taxonomy_id\n\t\t\tJOIN {$p}terms t2 ON t2.term_id = tt2.term_id\n\t\t\tWHERE tr2.object_id = p.ID AND tt2.taxonomy = 'product_type'\n\t\t\t  AND t2.slug IN ('mix-and-match','bundle','grouped','composite')\n\t\t)\n\t\tORDER BY p.ID\";\n\n\treturn array_map( 'intval', $wpdb->get_col( $sql ) );\n}\n\n/**\n * Atributu zemelapis <spec> laukams.\n *\n * Kaireje — vardas, kuri mato palyginimo svetaine (sutampa su senuoju\n * petshop.lt feed'u, kur toks buvo). Desineje — musu taksonomija.\n */\nfunction ps_feeds_spec_zemelapis(): array {\n\treturn array(\n\t\t'Augintinio amžius'  => 'pa_amzius',\n\t\t'Ėdalo paskirtis'    => 'pa_paskirtis',\n\t\t'Veislės dydis'      => 'pa_veisles_dydis',\n\t\t'Šunų žaislai'       => 'pa_zaislo_tipas',\n\t\t'Gyvūno rūšis'       => 'pa_gyvuno_rusis',\n\t\t'Tipas'              => 'pa_tipas',\n\t\t'Baltymų šaltinis'   => 'pa_baltymu_saltinis',\n\t\t'Speciali mityba'    => 'pa_speciali_mityba',\n\t\t'Pakuotės dydis'     => 'pa_pakuotes_dydis',\n\t);\n}\n\n/**\n * Giliausia prekes kategorija.\n *\n * v1.0.0 naudojo end() — tai grazina paskutini ABECELES elementa, ne giliausia.\n */\nfunction ps_feeds_giliausia_kategorija( int $id ) {\n\t$terms = get_the_terms( $id, 'product_cat' );\n\tif ( ! $terms || is_wp_",
+  "gen_fn": "function ps_feeds_generuoti( array $kanalai = array(), bool $dry = false ): array {\n\t@set_time_limit( 900 );\n\tglobal $wpdb;\n\n\t$visi = ps_feeds_kanalai();\n\tif ( ! $kanalai ) {\n\t\t$kanalai = array_keys( $visi );\n\t}\n\t$kanalai = array_values( array_intersect( $kanalai, array_keys( $visi ) ) );\n\n\t$pradzia = microtime( true );\n\t$ids     = ps_feeds_ids();\n\t$st      = array(\n\t\t'versija'      => PS_FEEDS_VERSIJA,\n\t\t'dry'          => $dry ? 1 : 0,\n\t\t'kandidatu'    => count( $ids ),\n\t\t'kanalai'      => array(),\n\t\t'praleista'    => array( 'nera_kainos' => 0, 'nera_objekto' => 0 ),\n\t\t'pvz'          => array(),\n\t);\n\n\t$fh = array();\n\tforeach ( $kanalai as $k ) {\n\t\t$laik = ps_feeds_kelias( $k ) . '.tmp';\n\t\t$fh[ $k ] = fopen( $laik, 'w' );\n\t\tif ( ! $fh[ $k ] ) {\n\t\t\t$st['klaida'] = 'nepavyko atidaryti ' . $laik;\n\t\t\treturn $st;\n\t\t}\n\t\tfwrite( $fh[ $k ], call_user_func( 'ps_feeds_' . $k . '_galva' ) );\n\t\t$st['kanalai'][ $k ] = array( 'irasyta' => 0, 'praleista_isjungta' => 0, 'be_gtin' => 0 );\n\t}\n\n\tforeach ( array_chunk( $ids, PS_FEEDS_PAKETAS ) as $paketas ) {\n\t\tforeach ( $paketas as $id ) {\n\t\t\t$pr_obj = wc_get_product( (int) $id );\n\t\t\tif ( ! $pr_obj ) {\n\t\t\t\t$st['praleista']['nera_objekto']++;\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\t$p = ps_feeds_preke( (int) $id );\n\t\t\tif ( null === $p ) {\n\t\t\t\t$st['praleista']['nera_kainos']++;\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\tforeach ( $kanalai as $k ) {\n\t\t\t\tif ( 'yes' === get_post_meta( $id, $visi[ $k ]['meta'], true ) ) {\n\t\t\t\t\t$st['kanalai'][ $k ]['praleista_isjungta']++;\n\t\t\t\t\tcontinue;\n\t\t\t\t}\n\t\t\t\tif ( ! $p['gtin'] ) {\n\t\t\t\t\t$st['kanalai'][ $k ]['be_gtin']++;\n\t\t\t\t}\n\t\t\t\t$eil = call_user_func( 'ps_feeds_' . $k . '_eilute', $p );\n\t\t\t\tfwrite( $fh[ $k ], $eil );\n\t\t\t\t$st['kanalai'][ $k ]['irasyta']++;\n\t\t\t\tif ( count( $st['pvz'] ) < 3 && 'kaina24' === $k ) {\n\t\t\t\t\t$st['pvz'][] = $eil;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\t// Atminties higiena tarp paketu — be sito v1.0.0 ir mirdavo.\n\t\twp_cache_flush();\n\t\t$wpdb->queries = array();\n\t}\n\n\tforeach ( $kanalai as $k ) {\n\t\tfwrite( $fh[ $k ], call_user_func( 'ps_feeds_' . $k . '_koja' ) );\n\t\tfclose( $fh[ $k ] );\n\t\t$laik = ps_feeds_kelias( $k ) . '.tmp';\n\t\t$st['kanalai'][ $k ]['baitai'] = file_exists( $laik ) ? filesize( $laik ) : 0;\n\t\tif ( $dry ) {\n\t\t\t@unlink( $laik );\n\t\t} else {\n\t\t\t@rename( $laik, ps_feeds_kelias( $k ) ); // atominis pakeitimas\n\t\t}\n\t}\n\n\t$st['sekundes']    = round( microtime( true ) - $pradzia, 1 );\n\t$st['atmintis_mb'] = round( memory_get_peak_usage( true ) / 1048576, 1 );\n\n\tif ( ! $dry ) {\n\t\tupdate_option( 'ps_feeds_paskutinis', array( 'kada' => current_time( 'mysql' ), 'statistika' => $st ), false );\n\t}\n\n\treturn $st;\n}\n\n/* =======================================================================\n * CRON\n * ===================================================================== */\n\nadd_action( 'ps_feeds_naktinis', function () {\n\tif ( ! function_exists( 'wc_get_product' ) ) {\n\t\treturn; // WooCommerce neaktyvus — tyliai praleidziam\n\t}\n\tps_feeds_generuoti();\n} );\n\nadd_action( 'init', function () {\n\tif ( ! wp_next_scheduled( 'ps_feeds_naktinis' ) ) {\n\t\t// 04:30 vietos laiku — po 04:00 backup'o, pries darbo diena\n\t\t$kada = strtotime( 'tomorrow 04:30', current_time( 'timestamp' ) ) - ( (int) get_option( 'gmt_offset' ) * HOUR_IN_SE",
+  "preke_fn": "function ps_feeds_preke( int $id ) {\n\t$pr = wc_get_product( $id );\n\tif ( ! $pr ) {\n\t\treturn null;\n\t}\n\n\t$kaina = $pr->get_price();\n\tif ( '' === $kaina || null === $kaina || (float) $kaina <= 0 ) {\n\t\treturn null;\n\t}\n\n\t// Aprasymas: svarus tekstas (savininko sprendimas 2026-08-18).\n\t$apr = $pr->get_description();\n\tif ( '' === trim( (string) $apr ) ) {\n\t\t$apr = $pr->get_short_description();\n\t}\n\t// EILES TVARKA SVARBI (G842): bazeje aprasymai laikomi su UZKODUOTOMIS\n\t// zymomis (&lt;p&gt;). Jei pirma nuvalytum zymas, o paskui dekoduotum\n\t// esybes — jos atsiverstu atgal i HTML. Todel: dekoduojam, valom, ir tik\n\t// tada tvarkom likusias esybes (&nbsp; ir pan.).\n\t$apr = html_entity_decode( (string) $apr, ENT_QUOTES | ENT_HTML5, 'UTF-8' );\n\t$apr = wp_strip_all_tags( $apr );\n\t$apr = html_entity_decode( $apr, ENT_QUOTES | ENT_HTML5, 'UTF-8' );\n\t$apr = str_replace( \"\\xc2\\xa0\", ' ', $apr ); // nedalomas tarpas\n\t$apr = trim( preg_replace( '/\\s+/u', ' ', $apr ) );\n\tif ( function_exists( 'mb_substr' ) && mb_strlen( $apr ) > 5000 ) {\n\t\t$apr = mb_substr( $apr, 0, 5000 );\n\t}\n\n\t$img_id  = $pr->get_image_id();\n\t$pilna   = $img_id ? wp_get_attachment_image_url( $img_id, 'full' ) : '';\n\t$maza    = $img_id ? wp_get_attachment_image_url( $img_id, 'woocommerce_thumbnail' ) : '';\n\n\t$galerija = array();\n\tforeach ( array_slice( (array) $pr->get_gallery_image_ids(), 0, 5 ) as $gid ) {\n\t\t$u = wp_get_attachment_image_url( $gid, 'full' );\n\t\tif ( $u ) {\n\t\t\t$galerija[] = $u;\n\t\t}\n\t}\n\n\t$brendas = '';\n\t$bt      = get_the_terms( $id, 'product_brand' );\n\tif ( $bt && ! is_wp_error( $bt ) ) {\n\t\t$brendas = $bt[0]->name;\n\t}\n\n\t$gamintojas = (string) get_post_meta( $id, '_legacy_manufacturer', true );\n\n\t$kat = ps_feeds_giliausia_kategorija( $id );\n\n\t$specs = array();\n\tif ( $gamintojas ) {\n\t\t$specs['Gamintojas'] ",
+  "feed_ids_viso": 2192,
+  "pakai_feed_ids": [
+   35096,
+   35098,
+   35099,
+   35306,
+   35856,
+   35855,
+   35854,
+   35853,
+   35852,
+   35851,
+   35850,
+   35849,
+   35848,
+   35847,
+   35846,
+   35845,
+   35844,
+   35843,
+   35842,
+   35841,
+   35840,
+   36002,
+   36003,
+   36301,
+   36302
+  ],
+  "paku_gtin": [
+   {
+    "post_id": "35096",
+    "meta_key": "_weight",
+    "meta_value": "0.6"
+   },
+   {
+    "post_id": "35098",
+    "meta_key": "_weight",
+    "meta_value": "1.9"
+   },
+   {
+    "post_id": "35099",
+    "meta_key": "_weight",
+    "meta_value": "2"
+   },
+   {
+    "post_id": "35306",
+    "meta_key": "_weight",
+    "meta_value": "0.6"
+   },
+   {
+    "post_id": "36002",
+    "meta_key": "_weight",
+    "meta_value": "4"
+   },
+   {
+    "post_id": "36003",
+    "meta_key": "_weight",
+    "meta_value": "14"
+   },
+   {
+    "post_id": "36301",
+    "meta_key": "_weight",
+    "meta_value": "2.4"
+   },
+   {
+    "post_id": "36302",
+    "meta_key": "_weight",
+    "meta_value": "2.4"
+   }
+  ],
+  "feed_off_reiksmes": [
+   {
+    "meta_key": "_ps_feed_off_kaina24",
+    "meta_value": "yes",
+    "n": "2"
+   },
+   {
+    "meta_key": "_ps_feed_off_kainos",
+    "meta_value": "yes",
+    "n": "2"
+   }
+  ],
+  "google_35856_item": "<item>\n      <g:id>35856</g:id>\n      <title><![CDATA[8 VNT. - Kraikas katėms TOFU BeloCat, žaliosios arbatos kvapo, 6 l (2,5 kg), 2 mm granulės]]></title>\n      <description><![CDATA[BeloCat TOFU – sušokantis augalinės kilmės kraikas (2 mm granulės), pagamintas iš sojų pluošto ir kukurūzų krakmolo (pagal produkto aprašą). Aromatas: žaliosios arbatos. Pagrindiniai privalumai Sušoka į tvirtus gumulėlius – greitas ir švarus kasdienis valymas. Augalinė sudėtis – biologiškai suyrantis pasirinkimas. Pavienius gumulėlius galima šalinti į klozetą (po vieną, leidžiant iširti, laikantis vietos taisyklių). Granulės mažiau limpa prie letenėlių – mažiau išnešiojimo. Naudojimas Į švarią dėžutę pripilkite ~4–6 cm kraiko sluoksnį. Kasdien pašalinkite gumulėlius ir kietas išmatas, papildykite trūkstamą kiekį. Šalinimas: gumulėlius į klozetą meskite po vieną, palaukite kol suirs, tada nuleiskite vandenį. Viso dėžutės turinio į klozetą nepilkite.]]></description>\n      <link>https://petshop.lt/product/8-vnt-kraikas-katems-tofu-belocat-zaliosios-arbatos-kvapo-6-l-25-kg-2-mm-granules/</link>\n      <g:image_link>https://petshop.lt/wp-content/uploads/2026/06/tofu-kraikas-zalioji-arbata.jpg</g:image_link>\n      <g:availability>in_stock</g:availability>\n      <g:condition>new</g:condition>\n      <g:price>32.04 EUR</g:price>\n      <g:custom_label_0>X</g:custom_label_0>\n      <g:custom_label_2>kraikai-kaciu-tualetams</g:custom_label_2>\n      <g:custom_label_3>belcor_tofu</g:custom_label_3>\n      <g:br",
+  "google_ids_pakai": [
+   35856,
+   35855,
+   35854,
+   35853,
+   35852,
+   35851,
+   35850,
+   35849,
+   35848,
+   35847,
+   35846,
+   35845,
+   35844,
+   35843,
+   35842,
+   35841,
+   35840
+  ],
+  "google_id_pvz": [
+   "01A1B01030",
+   "01A1E05030",
+   "01A1E08030",
+   "01A1H0105",
+   "01A1H02040"
+  ],
+  "google_id_viso": 2195,
+  "rytas_ver": "1.5",
+  "rytas_md5": "b5d2005d89a7962ca20c968f5221a277",
+  "rytas_seimos_blokas": "e() ); }\n\t\t/* pakuočių šeimų automatas (S1721, petshop-dydziai-automatas) */\n\t\tif ( class_exists( 'Petshop_Dydziu_Automatas' ) ) {\n\t\t\ttry { $sv_ = Petshop_Dydziu_Automatas::suvestine( 26 ); $add( 'seimos', $sv_[2] ? 'raudona' : ( $sv_[1] ? 'geltona' : 'zalia' ), $sv_[3] ); }\n\t\t\tcatch ( \\Throwable $e_ ) { $add( 'seimos', 'pilka', 'Šeimų automatas: ' . $e_->getMessage() ); }\n\t\t}\n\t\t/* neišsiųsti */\n\t\t$n = self::neissiusti_sk();\n\t\t$add( 'neissiusti', $n >= (int) self::riba( 'neissiusti_raud' ) ? 'raudona' : ( $n ? 'geltona' : 'zalia' ), 'Apmokėti > 2 d. be siuntos: ' . $n );\n\n\t\t/* dropship SLA (petshop-dropship-sargas žymė) */\n\t\t$n = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM {$p}wc_orders_meta m JOIN {$p}wc_orders o ON o.id = m.order_id WHERE m.meta_key = '_ps_sla_velavimas' AND o.status IN ('wc-processing','wc-on-hold')\" );\n\t\t$add( 'dropship_sla', $n ? 'raudona' : 'zalia', 'Dropship tiekėjas vėluoja > 24 val.: ' . $n . ' užsak.' );\n\n\t\t/* laiškai */\n\t\tif ( self::lentele_yra( $p . 'ps_email_jobs' ) ) {\n\t\t\t$r = $wpdb->get_row( \"SELECT SUM(status='sent') s, SUM(status='failed') f FROM {$p}ps_email_jobs WHERE created_at >= UTC_TIMESTAMP() - INTERVAL 1 DAY\", ARRAY_A );\n\t\t\t$s = (int) $r['s']; $f2 = (int) $r['f'];\n\t\t\t$add( 'laiskai', ( $f2 && ( $s + $f2 ) && $f2 / ( $s + $f2 ) > 0.05 ) ? 'raudona' : ( $f2 ? 'geltona' : 'zalia' ), 'Laiškai 24 val.: išsiųsta ' . $s . ', nepavyko ' . $f2 );\n\t\t}\n\t\t/* eventai */\n\t\tif ( self::lentele_yra( $p . 'ps_event_log' ) ) {\n\t\t\t$f3 = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM {$p}ps_event_log WHERE status = 'failed' AND emitted_at >= UTC_TIMESTAMP() - INTERVAL 1 DAY\" );\n\t\t\t$nutilo = $wpdb->get_col( \"SELECT event_name FROM {$p}ps_event_log WHERE emitted_at >= UTC_TIMESTAMP() - INTERVAL 35 DAY GROUP BY event_name\n\t\t\t\tHAVING SUM(emitted_at >= UTC_TIMESTAMP() - INTERVAL 7 DAY) = 0 AND SUM(emitted_at < UTC_TIMESTAMP() - INTERVAL ",
+  "rytas_patikros_head": "function patikros() {\n\t\tglobal $wpdb; $p = $wpdb->prefix; $o = array();\n\t\t$add = function ( $k, $l, $t ) use ( &$o ) { $o[] = array( 'kodas' => $k, 'lygis' => $l, 'tekstas' => $t ); };\n\t\t$val = (int) self::riba( 'import_val' );\n\t\t$launch = get_option( 'ps_paleidimo_data', '' );\n\t\t$po_launch = ( $launch && $launch <= self::siandien() );\n\n\t\t/* importai */\n\t\t$ids = array_filter( array_map( 'intval', explode( ',', (string) self::riba( 'importai' ) ) ) );\n\t\tif ( $ids && self::lentele_yra( $p . 'pmxi_imports' ) ) {\n\t\t\t$r = $wpdb->get_results( \"SELECT id, name, last_activity, failed FROM {$p}pmxi_imports WHERE id IN (\" . implode( ',', $ids ) . ')', ARRAY_A );\n\t\t\t$rasti = array();\n\t\t\tforeach ( (array) $r as $x ) {\n\t\t\t\t$rasti[] = (int) $x['id'];\n\t\t\t\t$val_pr = ( time() - strtotime( $x['last_activity'] . ' UTC' ) ) / 3600;\n\t\t\t\t$l = ( $val_pr > $val ) ? 'raudona' : 'zalia';\n\t\t\t\tif ( (int) $x['failed",
+  "kainu_lenteles": [
+   "gaj6_ps_fakt_kainos"
+  ],
+  "kat_kainu_log": [],
+  "pakai": [
+   {
+    "0": 35096,
+    "1": 20,
+    "2": 16302,
+    "3": 0.75,
+    "4": 12.99,
+    "5": 13.4,
+    "mod": "2026-08-26 13:37:34",
+    "base_mod": "2026-09-23 21:08:12",
+    "base_status": "publish"
+   },
+   {
+    "0": 35098,
+    "1": 20,
+    "2": 16311,
+    "3": 1.29,
+    "4": 23,
+    "5": 10.85,
+    "mod": "2026-08-26 13:59:50",
+    "base_mod": "2026-09-24 08:54:18",
+    "base_status": "publish"
+   },
+   {
+    "0": 35099,
+    "1": 20,
+    "2": 19098,
+    "3": 1.39,
+    "4": 25,
+    "5": 10.07,
+    "mod": "2026-08-26 17:52:47",
+    "base_mod": "2026-09-22 11:34:30",
+    "base_status": "publish"
+   },
+   {
+    "0": 35306,
+    "1": 20,
+    "2": 19095,
+    "3": 0.75,
+    "4": 12.99,
+    "5": 13.4,
+    "mod": "2026-09-01 11:36:52",
+    "base_mod": "2026-09-23 11:49:15",
+    "base_status": "publish"
+   },
+   {
+    "0": 35856,
+    "1": 8,
+    "2": 17659,
+    "3": 4.45,
+    "4": 32.04,
+    "5": 10,
+    "mod": "2026-09-07 13:45:33",
+    "base_mod": "2026-09-12 11:46:38",
+    "base_status": "publish"
+   },
+   {
+    "0": 35855,
+    "1": 8,
+    "2": 17662,
+    "3": 4.45,
+    "4": 32.04,
+    "5": 10,
+    "mod": "2026-09-07 13:45:33",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35854,
+    "1": 8,
+    "2": 17665,
+    "3": 4.45,
+    "4": 32.04,
+    "5": 10,
+    "mod": "2026-09-07 13:45:33",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35853,
+    "1": 8,
+    "2": 17668,
+    "3": 4.45,
+    "4": 32.04,
+    "5": 10,
+    "mod": "2026-09-07 13:45:34",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35852,
+    "1": 8,
+    "2": 17671,
+    "3": 4.45,
+    "4": 32.04,
+    "5": 10,
+    "mod": "2026-09-07 13:45:34",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35851,
+    "1": 8,
+    "2": 17674,
+    "3": 4.45,
+    "4": 32.04,
+    "5": 10,
+    "mod": "2026-09-07 13:45:34",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35850,
+    "1": 8,
+    "2": 17677,
+    "3": 4.45,
+    "4": 32.04,
+    "5": 10,
+    "mod": "2026-09-07 13:45:34",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35849,
+    "1": 8,
+    "2": 17680,
+    "3": 4.9,
+    "4": 35.28,
+    "5": 10,
+    "mod": "2026-09-07 13:45:34",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35848,
+    "1": 8,
+    "2": 17683,
+    "3": 4.45,
+    "4": 32.04,
+    "5": 10,
+    "mod": "2026-09-07 13:45:34",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35847,
+    "1": 8,
+    "2": 17686,
+    "3": 4.45,
+    "4": 32.04,
+    "5": 10,
+    "mod": "2026-09-07 13:45:34",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35846,
+    "1": 8,
+    "2": 17689,
+    "3": 4.7,
+    "4": 33.84,
+    "5": 10,
+    "mod": "2026-09-07 13:45:34",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35845,
+    "1": 8,
+    "2": 17692,
+    "3": 4.45,
+    "4": 32.04,
+    "5": 10,
+    "mod": "2026-09-07 13:45:34",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35844,
+    "1": 8,
+    "2": 17695,
+    "3": 4.9,
+    "4": 35.28,
+    "5": 10,
+    "mod": "2026-09-07 13:45:34",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35843,
+    "1": 8,
+    "2": 17698,
+    "3": 4.45,
+    "4": 32.04,
+    "5": 10,
+    "mod": "2026-09-07 13:45:34",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35842,
+    "1": 8,
+    "2": 17701,
+    "3": 4.45,
+    "4": 32.04,
+    "5": 10,
+    "mod": "2026-09-07 13:45:34",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35841,
+    "1": 8,
+    "2": 17704,
+    "3": 4.9,
+    "4": 35.28,
+    "5": 10,
+    "mod": "2026-09-07 13:45:34",
+    "base_mod": "2026-09-07 22:45:23",
+    "base_status": "publish"
+   },
+   {
+    "0": 35840,
+    "1": 8,
+    "2": 17707,
+    "3": 4.45,
+    "4": 32.04,
+    "5": 10,
+    "mod": "2026-09-07 13:45:34",
+    "base_mod": "2026-09-07 22:45:24",
+    "base_status": "publish"
+   },
+   {
+    "0": 36002,
+    "1": 2,
+    "2": 18590,
+    "3": 21.95,
+    "4": 42.5,
+    "5": 3.19,
+    "mod": "2026-09-17 13:43:29",
+    "base_mod": "2026-09-26 19:59:44",
+    "base_status": "publish"
+   },
+   {
+    "0": 36003,
+    "1": 2,
+    "2": 18587,
+    "3": 56.99,
+    "4": 111,
+    "5": 2.61,
+    "mod": "2026-09-17 13:54:31",
+    "base_mod": "2026-09-26 19:59:44",
+    "base_status": "publish"
+   },
+   {
+    "0": 36301,
+    "1": 6,
+    "2": 17159,
+    "3": 2.59,
+    "4": 14.98,
+    "5": 3.6,
+    "mod": "2026-09-25 11:46:59",
+    "base_mod": "2026-09-24 12:56:18",
+    "base_status": "publish"
+   },
+   {
+    "0": 36302,
+    "1": 6,
+    "2": 17176,
+    "3": 2.59,
+    "4": 14.98,
+    "5": 3.6,
+    "mod": "2026-09-25 11:53:03",
+    "base_mod": "2026-09-22 11:34:35",
+    "base_status": "publish"
+   }
+  ],
+  "kainu_galunes": [
+   {
+    "g": ".99",
+    "n": "67"
+   },
+   {
+    "g": ".00",
+    "n": "51"
+   },
+   {
+    "g": ".09",
+    "n": "42"
+   },
+   {
+    "g": ".19",
+    "n": "40"
+   },
+   {
+    "g": ".79",
+    "n": "38"
+   },
+   {
+    "g": ".89",
+    "n": "35"
+   },
+   {
+    "g": ".29",
+    "n": "35"
+   },
+   {
+    "g": ".39",
+    "n": "34"
+   },
+   {
+    "g": ".59",
+    "n": "33"
+   },
+   {
+    "g": ".69",
+    "n": "33"
+   }
+  ]
+ },
+ "v": "dep-170959",
+ "kurimas": 200,
+ "sid": 6551,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
