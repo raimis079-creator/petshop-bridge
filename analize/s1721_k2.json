@@ -1,0 +1,189 @@
+{
+ "1": {
+  "v": "S1721k2",
+  "cols": [
+   "id",
+   "user_id",
+   "pet_id",
+   "reminder_type",
+   "reminder_label",
+   "due_date",
+   "repeat_interval_days",
+   "notify_email",
+   "status",
+   "notified_at",
+   "completed_at",
+   "created_at",
+   "updated_at"
+  ],
+  "rows": [
+   {
+    "id": "24",
+    "user_id": "24",
+    "pet_id": "155",
+    "reminder_type": "vaccination",
+    "reminder_label": null,
+    "due_date": "2026-07-18",
+    "repeat_interval_days": null,
+    "notify_email": "1",
+    "status": "active",
+    "notified_at": "2026-07-30 09:00:59",
+    "completed_at": null,
+    "created_at": "2026-07-29 13:37:31",
+    "updated_at": "2026-07-30 09:00:59"
+   },
+   {
+    "id": "23",
+    "user_id": "1",
+    "pet_id": "147",
+    "reminder_type": "cage_clean",
+    "reminder_label": null,
+    "due_date": "2026-12-01",
+    "repeat_interval_days": null,
+    "notify_email": "1",
+    "status": "active",
+    "notified_at": null,
+    "completed_at": null,
+    "created_at": "2026-07-28 13:06:45",
+    "updated_at": "2026-07-28 13:06:45"
+   },
+   {
+    "id": "22",
+    "user_id": "1",
+    "pet_id": "148",
+    "reminder_type": "water_change",
+    "reminder_label": null,
+    "due_date": "2026-12-01",
+    "repeat_interval_days": null,
+    "notify_email": "1",
+    "status": "active",
+    "notified_at": null,
+    "completed_at": null,
+    "created_at": "2026-07-28 13:06:45",
+    "updated_at": "2026-07-28 13:06:45"
+   },
+   {
+    "id": "21",
+    "user_id": "1",
+    "pet_id": "144",
+    "reminder_type": "deworming",
+    "reminder_label": null,
+    "due_date": "2026-12-01",
+    "repeat_interval_days": null,
+    "notify_email": "1",
+    "status": "active",
+    "notified_at": null,
+    "completed_at": null,
+    "created_at": "2026-07-28 13:06:45",
+    "updated_at": "2026-07-28 13:06:45"
+   },
+   {
+    "id": "20",
+    "user_id": "1",
+    "pet_id": "149",
+    "reminder_type": "vaccination",
+    "reminder_label": null,
+    "due_date": "2026-12-01",
+    "repeat_interval_days": null,
+    "notify_email": "1",
+    "status": "active",
+    "notified_at": null,
+    "completed_at": null,
+    "created_at": "2026-07-28 13:06:45",
+    "updated_at": "2026-07-28 13:06:45"
+   },
+   {
+    "id": "13",
+    "user_id": "1",
+    "pet_id": "86",
+    "reminder_type": "vaccination",
+    "reminder_label": null,
+    "due_date": "2026-09-11",
+    "repeat_interval_days": null,
+    "notify_email": "0",
+    "status": "cancelled",
+    "notified_at": null,
+    "completed_at": null,
+    "created_at": "2026-07-23 22:10:00",
+    "updated_at": "2026-07-24 18:15:05"
+   },
+   {
+    "id": "10",
+    "user_id": "1",
+    "pet_id": "115",
+    "reminder_type": "vet_checkup",
+    "reminder_label": null,
+    "due_date": "2026-08-20",
+    "repeat_interval_days": null,
+    "notify_email": "1",
+    "status": "active",
+    "notified_at": "2026-08-17 09:02:17",
+    "completed_at": null,
+    "created_at": "2026-07-23 18:12:29",
+    "updated_at": "2026-08-17 09:02:17"
+   },
+   {
+    "id": "9",
+    "user_id": "1",
+    "pet_id": "112",
+    "reminder_type": "flea_tick",
+    "reminder_label": null,
+    "due_date": "2026-08-10",
+    "repeat_interval_days": null,
+    "notify_email": "0",
+    "status": "active",
+    "notified_at": "2026-08-07 09:01:15",
+    "completed_at": null,
+    "created_at": "2026-07-23 17:57:50",
+    "updated_at": "2026-08-07 09:01:15"
+   },
+   {
+    "id": "8",
+    "user_id": "1",
+    "pet_id": "110",
+    "reminder_type": "vaccination",
+    "reminder_label": null,
+    "due_date": "2026-09-15",
+    "repeat_interval_days": null,
+    "notify_email": "0",
+    "status": "active",
+    "notified_at": "2026-09-12 09:01:52",
+    "completed_at": null,
+    "created_at": "2026-07-23 17:54:50",
+    "updated_at": "2026-09-12 09:01:52"
+   },
+   {
+    "id": "7",
+    "user_id": "1",
+    "pet_id": "108",
+    "reminder_type": "vaccination",
+    "reminder_label": null,
+    "due_date": "2026-09-15",
+    "repeat_interval_days": null,
+    "notify_email": "0",
+    "status": "active",
+    "notified_at": "2026-09-12 09:01:52",
+    "completed_at": null,
+    "created_at": "2026-07-23 17:52:07",
+    "updated_at": "2026-09-12 09:01:52"
+   }
+  ],
+  "statusai": [
+   {
+    "status": "active",
+    "n": "9"
+   },
+   {
+    "status": "cancelled",
+    "n": "1"
+   }
+  ]
+ },
+ "v": "dep-133638",
+ "kurimas": 200,
+ "sid": 6530,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
