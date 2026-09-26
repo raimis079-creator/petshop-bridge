@@ -1,0 +1,62 @@
+{
+ "1": {
+  "v": "S1721k4",
+  "failai": {
+   "wp-content/mu-plugins/petshop-relaunch.php": [
+    null,
+    "skaičiavimo (blokas #ps-primink, REST ps-relaunch/v1/priminti; prisijungęs → iš karto, svečias → patvirtinimo nuoroda el. paštu ?ps_primink=&z=). Registracija = ps_refill_tracking eilutė (feedback_cycle='relaunch', confidence 0.5, terminas pagal calc dienas × maišo būseną), Petshop_Sutikimai::nustatyti(optout=0,'relaunch_calc'), ps_weight_sig",
+    "nal confidence high, ps_web_ivykiai `reminder_optin`. Svorio paspaudimas ir priminimas — du skirtingi veiksmai.",
+    "add_action( 'init', array( __CLASS__, 'lentele' ), 5 );",
+    "add_action( 'init', array( __CLASS__, 'lentele_v11' ), 6 );",
+    "add_action( 'template_redirect', array( __CLASS__, 'paspaudimas' ), 20 );",
+    "add_action( 'wp_footer', array( __CLASS__, 'js' ), 99 );",
+    "add_action( 'rest_api_init', array( __CLASS__, 'rest' ) );",
+    "add_action( 'template_redirect', array( __CLASS__, 'patvirtinimas' ), 19 );",
+    "register_rest_route( 'ps-relaunch/v1', '/priminti', array( 'methods' => 'POST', 'permission_callback' => '__return_true', 'callback' => array( __CLASS__, 'rest_priminti' ) ) );",
+    "global $wpdb; $p = $wpdb->prefix; $t = $p . 'ps_refill_tracking'; $dabar = current_time( 'mysql', true ); $today = current_time( 'Y-m-d' );",
+    "$wpdb->insert( $t, array( 'user_id' => $uid, 'product_id' => $pid, 'pet_id' => null, 'last_order_id' => $oid, 'last_purchase_date' => $today, 'purchase_count' => 0, 'avg_interval_days'",
+    "$s[] = array( 'weight_kg' => $kg, 'source' => 'reminder_optin', 'confidence' => 'high', 'product_id' => $pid, 'cid' => $cid ?: null, 'at' => $dabar ); update_user_meta( $uid, self::META, array_slice( $s, -5 ) );",
+    "$wpdb->insert( Petshop_Analitika::t_ivykiai(), array( 'laikas' => $dabar, 'diena' => method_exists( 'Petshop_Analitika', 'verslo_diena' ) ? Petshop_Analitika::verslo_diena( $dabar ) :",
+    "substr( $dabar, 0, 10 ), 'tipas' => 'reminder_optin', 'pusl_tipas' => 'product', 'url_kelias' => substr( (string) parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), 0, 190 ), 'raktas' => (string) $pid, 'raktas2' =>",
+    "update_user_meta( $uid, self::META, array_slice( $s, -5 ) );"
+   ]
+  },
+  "snippetai": [
+   {
+    "id": "6532",
+    "name": "TEMP PS dep-133943"
+   }
+  ],
+  "snip_6532": [
+   "/** Plugin Name: TEMP PS S1721k4 read-only: kas rodo „Priminti, kai šis maišas baigsis\" ir kur raso */",
+   "add_action('wp_loaded', function(){",
+   "PLUGIN_DIR.'/petshop-core/*.php')) as $f){ $s=file_get_contents($f); if(stripos($s,'kai šis maišas')!==false||stripos($s,'TAIP, PRIMINKITE')!==false||stripos($s,'Taip, priminkite')!==false){ $r['failai'][str_replace(ABSPATH,'',$f)]=$grep($s,'maišas baigsis|priminkite|register_rest_route|wp_ajax|INSERT|->insert\\(|ps_refill_tracking|ps_reminders|p",
+   "s_web_ivykiai|ps_rec_log|reminder_optin|update_user_meta|add_action'); } }",
+   "$sn=$wpdb->get_results(\"SELECT id,name FROM {$P}snippets WHERE active=1 AND (code LIKE '%maišas baigsis%' OR code LIKE '%priminkite%')\",ARRAY_A); $r['snippetai']=$sn;",
+   "foreach((array)$sn as $x){ $code=$wpdb->get_var($wpdb->prepare(\"SELECT code FROM {$P}snippets WHERE id=%d\",$x['id'])); $r['snip_'.$x['id']]=$grep($code,'maišas baigsis|priminkite|wp_ajax|INSERT|->insert\\(|ps_refill_tracking|ps_reminders|ps_web_ivykiai|ps_rec_log|reminder_optin|update_user_meta|add_action|Plugin Name'); }",
+   "$r['rec_log']=$wpdb->get_results(\"SELECT COUNT(*) n, MIN(created_at) nuo, MAX(created_at) iki FROM {$P}ps_rec_log\",ARRAY_A); $r['rec_cols']=$wpdb->get_col(\"SHOW COLUMNS FROM {$P}ps_rec_log\");"
+  ],
+  "rec_log": [],
+  "rec_cols": [
+   "id",
+   "recommendation_id",
+   "pet_id",
+   "user_id",
+   "laikas",
+   "engine_version",
+   "rezultatas",
+   "reason_code",
+   "kandidatu_sk",
+   "parodyti_ids",
+   "inputs_json",
+   "input_hash"
+  ]
+ },
+ "v": "dep-133943",
+ "kurimas": 200,
+ "sid": 6532,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
