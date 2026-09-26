@@ -1,0 +1,74 @@
+{
+ "1": {
+  "v": "S1722e",
+  "heartbeat": "cURL error 28: SSL certificate OpenSSL verify result: unable to get local issuer certificate (20)",
+  "log_uodega": [
+   "#4 /home/gyvunai2/domains/petshop.lt/public_html/wp-load.php(50): require_once('...')",
+   "#5 /home/gyvunai2/domains/petshop.lt/public_html/wp-blog-header.php(13): require_once('...')",
+   "#6 /home/gyvunai2/domains/petshop.lt/public_html/index.php(17): require('...')",
+   "#7 {main}",
+   "  thrown in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php on line 341",
+   ""
+  ],
+  "dp_kainos_ver": null,
+  "rinkiniai_ver": null,
+  "rinkiniai_md5": "b90c520641336b9db53e8313a8bcd8eb",
+  "rinkiniai_menu": [
+   "add_submenu_page( 'ps-katalogas', 'Rinkiniai', 'Rinkiniai', 'manage_woocommerce', self::SLUG, array( __CLASS__, 'puslapis' ) )"
+  ],
+  "rinkiniai_meniu_fn": "function meniu() {\n\t\tadd_submenu_page(\n\t\t\t'ps-katalogas', 'Rinkiniai', 'Rinkiniai', 'manage_woocommerce',\n\t\t\tself::SLUG, array( __CLASS__, 'puslapis' )\n\t\t);\n\t}\n\n\tpublic static function body_klase( $k ) {\n\t\tif ( isset( $_GET['page'] ) && $_GET['page'] === self::SLUG ) { $k .= ' petshop-rinkiniai'; }\n\t\treturn $k;\n\t}\n\n\t/**\n\t * Vieninga virsutine juosta — TA PATI, kaip Kataloge/Akcijose/Gavime.\n\t * `Petshop_Katalogas::navigacija()` GRAZINA html (ne echo), todel ji reikia\n\t * isvesti pacia — pirmoje versijoje to truko ir juostos nesimate.\n\t * Jei katalogo klases nera (isjungta), rodom savo atsargini sarasa, kad\n\t * langas neliktu be kelio i kitus.\n\t */\n\tprivate static function navigacija() {\n\t\t$nuorodos = '';\n\t\tif ( class_exists( 'Petshop_Katalogas' ) && method_exists( 'Petshop_Katalogas', 'navigacija' ) ) {\n\t\t\t$nuorodos = Petshop_Katalogas::navigacija( self::SLUG );\n\t\t} else {\n\t\t\t$langai = array(\n\t\t\t\t'ps-katalogas' => 'Katalogas', 'ps-rinkiniai' => 'Rinkiniai',\n\t\t\t\t'ps-akcijos' => 'Akcijos', 'ps-gavimas' => 'Gavimas',\n\t\t\t\t'ps-tiekimas' => 'Tiekimas', 'ps-desk' => 'Užsakymai',\n\t\t\t);\n\t\t\tforeach ( $langai as $slug => $vardas ) {\n\t\t\t\t$nuorodos .= '<a class=\"' . ( $slug === self::SLUG ? 'on' : '' ) . '\" href=\"'\n\t\t\t\t\t. esc_url( admin_url( 'admin.php?page=' . $slug ) ) . '\">' . esc_html( $vardas ) . '</a>';\n\t\t\t}\n\t\t}\n\t\techo '<div class=\"pskat-bar\">'\n\t\t\t. '<div class=\"pskat-logo\">PETSHOP</div>'\n\t\t\t. '<nav class=\"pskat-nav\">' . $nuorodos . '</nav>'\n\t\t\t. '<form class=\"pskat-search\" met",
+  "rinkiniai_grep": [
+   "*   B) TA PATI PREKE x N -> „Daugiau=pigiau\" pakas (`simple` + `_dp_base_product_id`",
+   "prioritetu jis perrasytu musu skirtuka atgal i savo psdp_render. */",
+   "* Aprasymo skirtukas rinkiniams.",
+   "* Rinkiniams paliekam paprasta skirtuka su musu strukturuota turiniu.",
+   "|| ( get_post_meta( $pid, '_dp_base_product_id', true ) !== '' );",
+   "|| ( get_post_meta( $post->ID, '_dp_base_product_id', true ) !== '' );",
+   "if ( get_post_meta( $pid, '_dp_base_product_id', true ) ) { return; }   /* DP tvarko 570 */",
+   "if ( get_post_meta( $pid, '_dp_base_product_id', true ) ) { return $kesas[ $pid ] = true; }",
+   "/** „Daugiau=pigiau\" pakai — ta pati preke x N. */",
+   "$ids = $wpdb->get_col( \"SELECT post_id FROM {$p}postmeta WHERE meta_key='_dp_base_product_id'\" );",
+   "$bid  = (int) get_post_meta( $pid, '_dp_base_product_id', true );",
+   "$skirtukas = isset( $_GET['sk'] ) ? sanitize_key( $_GET['sk'] ) : 'paruosti';",
+   "} elseif ( $skirtukas === 'pasirenkami' ) {",
+   "self::skirtukai( 'paruosti' );",
+   "private static function skirtukai( $akt ) {",
+   "echo '<div class=\"psr-skirtukai\">';",
+   "h+='<span class=\"psr-f\"><label>Tipas</label>'+grupe('tipas',[['','Visi'],['mnm','Rinkinys'],['dp','Daugiau=pigiau']])+'</span>';",
+   "if(f.tipas) akt.push(['Tipas: '+(f.tipas==='dp'?'Daugiau=pigiau':'Rinkinys'),'tipas']);",
+   "+'<td>'+(x.tipas==='dp'?'<span class=\"psr-z b\">Daugiau=pigiau</span>':'<span class=\"psr-z gr\">Rinkinys</span>')",
+   "$dp_baze = $saltinis ? (int) get_post_meta( $saltinis, '_dp_base_product_id', true ) : 0;",
+   "h='<div class=\"psr-tipas tuscia\">Tipas nustatomas pagal sudėtį: <b>ta pati prekė × N</b> → Daugiau=pigiau pakas, <b>kelios skirtingos</b> → rinkinys.</div>';",
+   "h='<div class=\"psr-tipas dp\"><b>Daugiau=pigiau pakas</b> — '+esc(K[0].pav.slice(0,40))+' × '+K[0].kiekis+' vnt.'",
+   "/* TA PATI PREKE x N -> „Daugiau=pigiau\" pakas, ne MnM. Priezastis — vitrina:",
+   "* „Daugiau=pigiau\" pakas: `simple` preke be savo likucio. Likutis skaiciuojamas",
+   "if ( $esamas && ! get_post_meta( $id, '_dp_base_product_id', true ) ) {",
+   "$prod->update_meta_data( '_dp_base_product_id', $bid );",
+   "WHERE pm.meta_key='_dp_base_product_id'\" );",
+   "'tipas' => get_post_meta( $pid, '_dp_base_product_id', true ) ? 'dp' : 'mnm',",
+   ".psr-skirtukai{border-bottom:1px solid #c3c4c7;display:flex;gap:4px;margin:14px 0 18px}",
+   ".psr-skirtukai a{padding:9px 15px;text-decoration:none;color:#646970;font-size:14px;border:1px solid transparent"
+  ],
+  "snip_menus": [
+   "539 Petshop Rinkinių Kūrimo Forma v2 → parent edit.php?post_type=product | ➕ Sukurti rinkinį | slug petshop-sukurti-rinkini",
+   "550 Petshop Susidėjimo Rinkinio Kūrimo Forma v15 → parent edit.php?post_type=product | ➕ Susidėjimo rinkinys | slug petshop-susidejimo-rinkinys",
+   "572 Petshop Daugiau=Pigiau Šablono Kūrimo Forma v10 → parent edit.php?post_type=product | ➕ Daugiau=pigiau | slug petshop-dp-forma"
+  ],
+  "mu_menus": [
+   "petshop-akcijos.php → parent ps-katalogas | Akcijos | slug ps-akcijos",
+   "petshop-atributai.php → parent ps-katalogas | Atributai | slug ps-atributai",
+   "petshop-av-dropship.php → parent ps-desk | Laiškai | slug ps-laiskai",
+   "petshop-av-dropship.php → parent woocommerce | Tiekėjų el. paštai | slug ps-dropship-nustatymai",
+   "petshop-gavimas.php → parent ps-katalogas | Gavimas | slug ps-gavimas",
+   "petshop-laukai.php → parent ps-katalogas | Surenkami rinkiniai | slug ps-laukai",
+   "petshop-rezultatai.php → parent petshop-langai | Laiškų rezultatai | slug petshop-rezultatai"
+  ]
+ },
+ "v": "dep-184443",
+ "kurimas": 200,
+ "sid": 6560,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
