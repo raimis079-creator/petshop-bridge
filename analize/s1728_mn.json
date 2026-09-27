@@ -1,0 +1,88 @@
+{
+ "1": {
+  "v": "S1728mn",
+  "functions_md5": "7d8057c5ab4e1a0605ac554e97680d62",
+  "eilutes": [
+   "167: // Nemokamo pristatymo progreso juosta krepšelyje",
+   "169: add_action('woocommerce_cart_totals_before_order_total', 'petshop_free_shipping_progress', 5);",
+   "170: function petshop_free_shipping_progress() {",
+   "182:            kurjeriui skirta preke vis tiek matydavo „iki nemokamo pristatymo",
+   "197:        o krepšelis žadėdavo „nemokamą pristatymą į paštomatą“, kurio kasoje nebūdavo. */",
+   "233:         echo '<div style=\"font-size:13px;font-weight:600;color:#365a51;margin-bottom:8px;\">🎉 Jums priklauso nemokamas pristatymas į paštomatą!</div>';",
+   "235:         echo '<div style=\"font-size:13px;color:#333;margin-bottom:8px;\">📦 Dar <strong>€' . number_format( $truksta, 2, ',', '' ) . '</strong> iki nemokamo pristatymo į paštomatą</div>';"
+  ],
+  "fn": {
+   "nuo": 170,
+   "iki": 244,
+   "kodas": "function petshop_free_shipping_progress() {\n    if ( ! is_cart() ) return;\n\n    $threshold = 30.00;\n\n    $has_courier_only = false;\n    $total_weight     = 0;\n    foreach ( WC()->cart->get_cart() as $item ) {\n        $product_id = $item['product_id'];\n        /* Ta pati dviejų laukų problema kaip pristatymo filtre (2026-08-28):\n           varnele kortelėje raso `_ps_tik_kurjeriu`, o cia buvo tikrinamas\n           tik senasis `_fulfillment_courier_only`. Del to krepselyje\n           kurjeriui skirta preke vis tiek matydavo „iki nemokamo pristatymo\n           i pastomata\" — pazadas, kurio ivykdyti neimanoma. */\n        if ( get_post_meta( $product_id, '_fulfillment_courier_only', true ) === 'yes'\n             || get_post_meta( $product_id, '_ps_tik_kurjeriu', true ) === 'yes' ) {\n            $has_courier_only = true;\n            break;\n        }\n        $weight       = (float) get_post_meta( $product_id, '_weight', true );\n        $total_weight += $weight * $item['quantity'];\n    }\n    if ( $total_weight > 30 ) {\n        $has_courier_only = true;\n    }\n    /* S1716 (2026-09-24): tikroji tiesa — ar jau apskaičiuotuose pristatymo tarifuose yra paštomatas.\n       Venipak pluginas paštomatą išmeta ir dėl matmenų (pvz. ZB maišas 80 cm), ko varnelė/svoris nemato,\n       o krepšelis žadėdavo „nemokamą pristatymą į paštomatą“, kurio kasoje nebūdavo. */\n    if ( ! $has_courier_only && function_exists( 'WC' ) && WC()->shipping() ) {\n        $ps_paketai = WC()->shipping()->get_packages();\n        if ( ! empty( $ps_paketai ) ) {\n            $ps_yra_pastomatas = false;\n            foreach ( $ps_paketai as $ps_pk ) {\n                foreach ( (array) ( $ps_pk['rates'] ?? array() ) as $ps_rate ) {\n                    $ps_mid = (string) $ps_rate->get_method_id();\n                    if ( strpos( $ps_mid, 'pickup' ) !== false || strpos( $ps_mid, 'terminal' ) !== false ) { $ps_yra_pastomatas = true; break 2; }\n                }\n            }\n            if ( ! $ps_yra_pastomatas ) { $has_courier_only = true; }\n        }\n    }\n\n    if ( $has_courier_only ) {\n        echo '<tr><td colspan=\"2\" style=\"padding:0 0 12px;\">';\n        echo '<div style=\"background:#f4f4f2;border-left:3px solid #365a51;padding:10px 14px;font-size:13px;border-radius:0 4px 4px 0;color:#555;\">';\n        echo '🚚 Kai kurios prekės pristatomos tik kurjeriu dėl dydžio arba svorio.';\n        echo '</div></td></tr>';\n        return;\n    }\n\n    $subtotal     = WC()->cart->get_subtotal();\n    $subtotal_tax = WC()->cart->get_subtotal_tax();\n    $discount     = WC()->cart->get_discount_total() + WC()->cart->get_discount_tax();\n    $cart_total   = max( 0, ( $subtotal + $subtotal_tax ) - $discount );\n\n    $percent = min( 100, round( ( $cart_total / $threshold ) * 100 ) );\n    $truksta = max( 0, round( $threshold - $cart_total, 2 ) );\n    $reached = $cart_total >= $threshold;\n\n    echo '<tr><td colspan=\"2\" style=\"padding:0 0 12px;\">';\n    echo '<div style=\"background:#f4f4f2;border-radius:6px;padding:12px 14px;\">';\n\n    if ( $reached ) {\n        echo '<div style=\"font-size:13px;font-weight:600;color:#365a51;margin-bottom:8px;\">🎉 Jums priklauso nemokamas pristatymas į paštomatą!</div>';\n    } else {\n        echo '<div style=\"font-size:13px;color:#333;margin-bottom:8px;\">📦 Dar <strong>€' . number_format( $truksta, 2, ',', '' ) . '</strong> iki nemokamo pristatymo į paštomatą</div>';\n    }\n\n    echo '<div style=\"background:#ddd;border-radius:4px;height:8px;overflow:hidden;\">';\n    echo '<div style=\"width:' . $percent . '%;background:#365a51;height:8px;border-radius:4px;\"></div>';\n    echo '</div>';\n\n    echo '</div>';\n    echo '</td></tr>';\n}\n"
+  },
+  "hooks": [
+   "admin_head:99:Petshop_Juosta::stilius",
+   "in_admin_header:5:Petshop_Juosta::juosta",
+   "admin_footer:10:Petshop_Juosta::skriptas",
+   "woocommerce_payment_complete:10:Petshop_Juosta::isvalyti",
+   "woocommerce_after_shop_loop_item_title:11:Petshop_Dydziu_Kortele::juosta",
+   "woocommerce_order_status_changed:10:Petshop_Juosta::isvalyti",
+   "ps_juosta_isvalyti:10:Petshop_Juosta::isvalyti",
+   "admin_title:10:Petshop_Juosta::pavadinimas",
+   "ps_juosta_reikia_cron:10:Petshop_Juosta::reikia_perskaiciuoti",
+   "ps_uzs_ivykis:10:Petshop_Juosta::isvalyti",
+   "admin_bar_menu:999:Petshop_Prieziura::juostos_zyme",
+   "admin_bar_menu:999:Petshop_Teises::valyti_juosta",
+   "action_scheduler/progress_tick:10:ActionScheduler_DataController::maybe_free_memory",
+   "woocommerce_cart_totals_before_order_total:5:petshop_free_shipping_progress"
+  ],
+  "cart_hooks": {
+   "woocommerce_before_cart": [
+    "10:woocommerce_output_all_notices",
+    "10:petshop_gtm_view_cart",
+    "10:closure@functions.php:1174"
+   ],
+   "woocommerce_before_cart_table": [],
+   "woocommerce_cart_totals_before_order_total": [
+    "5:petshop_free_shipping_progress",
+    "6:Petshop_Pristatymo_Pazadas::krepselyje"
+   ],
+   "woocommerce_proceed_to_checkout": [
+    "10:wc_get_pay_buttons",
+    "20:woocommerce_button_proceed_to_checkout"
+   ],
+   "woocommerce_after_cart_totals": [],
+   "woocommerce_after_cart": [
+    "10:Paysera\\PayseraInit::initQualitySign",
+    "10:Paysera\\Front\\PayseraDeliveryFrontHtml::initDeliveryAssets",
+    "99:flatsome_html_cart_footer"
+   ],
+   "woocommerce_widget_shopping_cart_before_buttons": [
+    "6:Petshop_Pristatymo_Pazadas::mini",
+    "10:closure@functions.php:62"
+   ],
+   "woocommerce_before_mini_cart": [
+    "10:WC_MNM_Display::add_cart_widget_filters"
+   ],
+   "woocommerce_cart_collaterals": [
+    "10:woocommerce_cart_totals"
+   ],
+   "woocommerce_after_cart_table": [
+    "10:woocommerce_cross_sell_display",
+    "15:Petshop_FBT::render_cart_block"
+   ],
+   "woocommerce_before_checkout_form": [
+    "10:woocommerce_checkout_login_form",
+    "10:woocommerce_checkout_coupon_form",
+    "10:woocommerce_output_all_notices",
+    "10:petshop_gtm_begin_checkout"
+   ],
+   "woocommerce_review_order_before_shipping": [
+    "10:Petshop_Pristatymo_Pazadas::apmokejime"
+   ]
+  }
+ },
+ "v": "dep-221029",
+ "kurimas": 200,
+ "sid": 6674,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
