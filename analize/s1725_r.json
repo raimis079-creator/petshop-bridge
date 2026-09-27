@@ -1,0 +1,225 @@
+{
+ "1": {
+  "v": "S1725r",
+  "dabar_utc": "2026-09-27 17:12:19",
+  "imports": {
+   "1": {
+    "name": "goods_clean.xml",
+    "friendly": "",
+    "type": "file",
+    "path": "/wpallimport/files/goods_clean.xml",
+    "triggered": "0",
+    "processing": "0",
+    "executing": "0",
+    "canceled": "0",
+    "failed": "0",
+    "queue_chunk": "0",
+    "count": "2045",
+    "imported": "0",
+    "created": "0",
+    "updated": "0",
+    "skipped": "2045",
+    "deleted": "0",
+    "last_activity": "2026-05-27 11:14:21",
+    "registered_on": "2026-05-27 11:14:21",
+    "iteration": "2",
+    "selective_hashing": "1",
+    "records_per_request": "20",
+    "update_all": "no",
+    "is_update_price": null,
+    "is_update_custom_fields": "1",
+    "create_new": "1"
+   },
+   "2": {
+    "name": "products.php",
+    "friendly": "",
+    "type": "url",
+    "path": "https://zaliojibanga.lt/integrations/services/products.php?key=bAF0OY6Sz9H3AgAF",
+    "triggered": "0",
+    "processing": "0",
+    "executing": "0",
+    "canceled": "0",
+    "failed": "0",
+    "queue_chunk": "0",
+    "count": "2190",
+    "imported": "0",
+    "created": "0",
+    "updated": "0",
+    "skipped": "2190",
+    "deleted": "0",
+    "last_activity": "2026-09-27 15:01:43",
+    "registered_on": "2026-09-27 15:01:43",
+    "iteration": "62",
+    "selective_hashing": "1",
+    "records_per_request": "10",
+    "update_all": "no",
+    "is_update_price": null,
+    "is_update_custom_fields": "1",
+    "create_new": "1"
+   },
+   "3": {
+    "name": "stocks.php",
+    "friendly": "",
+    "type": "url",
+    "path": "https://zaliojibanga.lt/integrations/services/stocks.php?key=bAF0OY6Sz9H3AgAF",
+    "triggered": "0",
+    "processing": "0",
+    "executing": "0",
+    "canceled": "0",
+    "failed": "0",
+    "queue_chunk": "0",
+    "count": "2681",
+    "imported": "0",
+    "created": "0",
+    "updated": "0",
+    "skipped": "2681",
+    "deleted": "0",
+    "last_activity": "2026-09-27 17:06:04",
+    "registered_on": "2026-09-27 17:06:04",
+    "iteration": "1068",
+    "selective_hashing": "1",
+    "records_per_request": "20",
+    "update_all": "no",
+    "is_update_price": null,
+    "is_update_custom_fields": "1",
+    "create_new": "0"
+   },
+   "5": {
+    "name": "vf-feed.xml",
+    "friendly": "",
+    "type": "file",
+    "path": "/wpallimport/files/vf-feed.xml",
+    "triggered": "0",
+    "processing": "0",
+    "executing": "0",
+    "canceled": "0",
+    "failed": "0",
+    "queue_chunk": "0",
+    "count": "2398",
+    "imported": "24",
+    "created": "0",
+    "updated": "24",
+    "skipped": "2374",
+    "deleted": "0",
+    "last_activity": "2026-09-27 03:31:36",
+    "registered_on": "2026-09-27 03:31:36",
+    "iteration": "104",
+    "selective_hashing": "1",
+    "records_per_request": "1",
+    "update_all": "no",
+    "is_update_price": null,
+    "is_update_custom_fields": "1",
+    "create_new": "1"
+   },
+   "7": {
+    "name": "vf-feed.xml",
+    "friendly": "",
+    "type": "file",
+    "path": "/wpallimport/files/vf-feed.xml",
+    "triggered": "0",
+    "processing": "0",
+    "executing": "0",
+    "canceled": "0",
+    "failed": "0",
+    "queue_chunk": "0",
+    "count": "2398",
+    "imported": "0",
+    "created": "0",
+    "updated": "0",
+    "skipped": "2398",
+    "deleted": "0",
+    "last_activity": "2026-09-27 16:20:16",
+    "registered_on": "2026-09-27 16:20:16",
+    "iteration": "2330",
+    "selective_hashing": "1",
+    "records_per_request": "20",
+    "update_all": "no",
+    "is_update_price": null,
+    "is_update_custom_fields": "1",
+    "create_new": "0"
+   }
+  },
+  "hist2": [
+   {
+    "id": "6851",
+    "type": "processing",
+    "time_run": "302440",
+    "date": "2026-09-24 03:01:03",
+    "s": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2190 skipped"
+   },
+   {
+    "id": "6849",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-09-24 03:00:03",
+    "s": "triggered by cron"
+   },
+   {
+    "id": "6565",
+    "type": "processing",
+    "time_run": "259205",
+    "date": "2026-09-20 15:01:02",
+    "s": "import finished & cron un-triggered<br>0 Produktai created 280 updated 1910 skipped"
+   },
+   {
+    "id": "6563",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-09-20 15:00:02",
+    "s": "triggered by cron"
+   }
+  ],
+  "hist2_dienos": [
+   {
+    "d": "2026-09-24",
+    "n": "2",
+    "baigta": "1",
+    "max_s": "302440"
+   },
+   {
+    "d": "2026-09-20",
+    "n": "2",
+    "baigta": "1",
+    "max_s": "259205"
+   }
+  ],
+  "failai": [
+   "goods_clean.xml 3889566 2026-05-27 09:42",
+   "index.php 0 2026-05-26 20:22",
+   "vf-feed.xml 8363003 2026-09-27 17:05",
+   "zb_test_products_1_.xml 3344 2026-06-03 11:14"
+  ],
+  "zb_prekiu": 1092,
+  "zb_atnaujinta_24h": 3,
+  "pmxi_posts_2": 4844,
+  "pmxi_posts_2_iter": [
+   {
+    "iteration": "61",
+    "n": "980"
+   },
+   {
+    "iteration": "59",
+    "n": "131"
+   },
+   {
+    "iteration": "56",
+    "n": "2"
+   },
+   {
+    "iteration": "52",
+    "n": "6"
+   },
+   {
+    "iteration": "51",
+    "n": "10"
+   }
+  ]
+ },
+ "v": "dep-171113",
+ "kurimas": 200,
+ "sid": 6643,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
