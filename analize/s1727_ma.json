@@ -1,0 +1,4341 @@
+{
+ "1": {
+  "v": "S1727ma",
+  "f": "1",
+  "schema": {
+   "ps_sources": [
+    "id",
+    "product_id",
+    "source",
+    "supplier_sku",
+    "ean",
+    "stock_qty",
+    "cost_net",
+    "synced_at",
+    "is_active",
+    "is_sellable",
+    "priority",
+    "created_at",
+    "updated_at"
+   ],
+   "ps_fakt_eilutes": [
+    "id",
+    "uzsakymas_id",
+    "eilutes_id",
+    "apmoketa_at",
+    "preke_id",
+    "variacija_id",
+    "sku",
+    "gtin",
+    "pavadinimas_tuo_metu",
+    "kategorija_id_giliausia",
+    "kategoriju_kelias",
+    "brendas_slug",
+    "gyvunas",
+    "pa_uzsaldymas",
+    "sandelis",
+    "tiekejas",
+    "partija_kodas",
+    "kiekis",
+    "kaina_ct",
+    "pvm_ct",
+    "kaina_vnt_ct",
+    "kaina_reguliari_ct",
+    "savikaina_vnt_ct",
+    "savikaina_ct",
+    "savikainos_saltinis",
+    "nuolaida_ct",
+    "akcija_id",
+    "kuponas",
+    "rinkinys_id",
+    "rinkinio_tipas",
+    "rinkinio_raktas",
+    "dovana",
+    "svoris_g",
+    "pakuotes_dydis",
+    "klientas_naujas",
+    "testinis",
+    "saltinis_aplinka",
+    "diena"
+   ],
+   "ps_fakt_uzsakymai": [
+    "uzsakymas_id",
+    "sukurta_at",
+    "apmoketa_at",
+    "statusas_galutinis",
+    "statusas_at",
+    "klientas_id",
+    "klientas_email_hash",
+    "klientas_naujas",
+    "klientas_uzsakymo_nr",
+    "dienos_nuo_ankstesnio",
+    "prekiu_suma_ct",
+    "nuolaidu_ct",
+    "kuponu_kodai",
+    "tasku_panaudota_ct",
+    "tasku_sukaupta_ct",
+    "pristatymas_paimta_ct",
+    "pristatymas_savikaina_ct",
+    "small_cart_fee_ct",
+    "pvm_ct",
+    "viso_ct",
+    "mokejimo_budas",
+    "mokejimo_mokestis_ct",
+    "pakuotes_savikaina_ct",
+    "savikaina_ct",
+    "dovanu_savikaina_ct",
+    "marza_ct",
+    "kontribucija_ct",
+    "sandeliu_kiekis",
+    "misrus",
+    "sandeliai",
+    "vezejai",
+    "kanalas_pirmas",
+    "kanalas_paskutinis",
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "gclid",
+    "fbclid",
+    "referer_domenas",
+    "landing_url",
+    "irenginys",
+    "sutikimas_statistika",
+    "salis",
+    "miestas",
+    "pasto_kodas",
+    "anketa_id",
+    "rec_log_id",
+    "is_refill",
+    "prenumerata_id",
+    "eiluciu_sk",
+    "testinis",
+    "saltinis_aplinka",
+    "fakt_versija",
+    "irasyta_at",
+    "diena"
+   ],
+   "wc_order_product_lookup": [
+    "order_item_id",
+    "order_id",
+    "product_id",
+    "variation_id",
+    "customer_id",
+    "date_created",
+    "product_qty",
+    "product_net_revenue",
+    "product_gross_revenue",
+    "coupon_amount",
+    "tax_amount",
+    "shipping_amount",
+    "shipping_tax_amount"
+   ]
+  },
+  "n": 86,
+  "prekes": [
+   {
+    "id": 27568,
+    "pav": "Hau&Miau Puzzo Snack, buivolo kojos 140g",
+    "st": "draft",
+    "sku": "HM-8431",
+    "dp": 0,
+    "reg": "2.59",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "573",
+      "product_id": "27568",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:00"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "0.0000",
+     "0.0000",
+     "0.0000"
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Hau&amp;Miau",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 0
+   },
+   {
+    "id": 27570,
+    "pav": "Hau&Miau Puzzo Snack, triušio ausys su kailiu, 20-25 cm, 100g",
+    "st": "draft",
+    "sku": "HM-8433",
+    "dp": 0,
+    "reg": "2.59",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "575",
+      "product_id": "27570",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:00"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "0.0000",
+     "0.0000",
+     "0.0000"
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Hau&amp;Miau",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 0
+   },
+   {
+    "id": 12870,
+    "pav": "Hau&Miau triušių ausys su vištiena 500g",
+    "st": "draft",
+    "sku": "HM-8131-1",
+    "dp": 0,
+    "reg": "12.99",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "21",
+      "product_id": "12870",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:01"
+     }
+    ],
+    "svoris": "0.5280",
+    "lwh": [
+     "10.0000",
+     "10.0000",
+     "10.0000"
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Hau&amp;Miau",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 12895,
+    "pav": "Džiovintas jaučio skrandis 500g",
+    "st": "draft",
+    "sku": "01O8G02002",
+    "dp": 0,
+    "reg": "15.45",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "zb",
+    "src": [
+     {
+      "id": "1127",
+      "product_id": "12895",
+      "source": "zb",
+      "supplier_sku": "01O8G02002",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": "8.9910",
+      "synced_at": "2026-08-07 10:02:58",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:01"
+     }
+    ],
+    "svoris": "0.5000",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Gnatek",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 14833,
+    "pav": "Hau&Miau Puzzo Snack, ėriuko plaučių gabalėliai 1 cm, 100g",
+    "st": "draft",
+    "sku": "HM-8417",
+    "dp": 0,
+    "reg": "1.99",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "56",
+      "product_id": "14833",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "0.0000",
+     "0.0000",
+     "0.0000"
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Hau&amp;Miau",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 0
+   },
+   {
+    "id": 14834,
+    "pav": "Hau&Miau Puzzo Snack, jaučio plaučių gabalėliai 1 cm, 100g",
+    "st": "draft",
+    "sku": "HM-8418",
+    "dp": 0,
+    "reg": "1.99",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "57",
+      "product_id": "14834",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "0.0000",
+     "0.0000",
+     "0.0000"
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Hau&amp;Miau",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 0
+   },
+   {
+    "id": 14835,
+    "pav": "Hau&Miau Puzzo Snack, ėriuko plaučių kubeliai 3-4 cm, 150g",
+    "st": "draft",
+    "sku": "HM-8419",
+    "dp": 0,
+    "reg": "2.89",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "58",
+      "product_id": "14835",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "0.0000",
+     "0.0000",
+     "0.0000"
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Hau&amp;Miau",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 0
+   },
+   {
+    "id": 14836,
+    "pav": "Hau&Miau Puzzo Snack, jaučio plaučių kubeliai 3-4 cm, 150g",
+    "st": "draft",
+    "sku": "HM-8420",
+    "dp": 0,
+    "reg": "2.89",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "59",
+      "product_id": "14836",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "0.0000",
+     "0.0000",
+     "0.0000"
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Hau&amp;Miau",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 0
+   },
+   {
+    "id": 14838,
+    "pav": "Hau&Miau Puzzo Snack, ėriuko kojos baltos, 150g",
+    "st": "draft",
+    "sku": "HM-8422",
+    "dp": 0,
+    "reg": "3.49",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "61",
+      "product_id": "14838",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "0.0000",
+     "0.0000",
+     "0.0000"
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Hau&amp;Miau",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 0
+   },
+   {
+    "id": 14839,
+    "pav": "Hau&Miau Puzzo Snack, ėriuko kojos natūralios 300g",
+    "st": "draft",
+    "sku": "HM-8423",
+    "dp": 0,
+    "reg": "5.59",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "62",
+      "product_id": "14839",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "0.0000",
+     "0.0000",
+     "0.0000"
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Hau&amp;Miau",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 0
+   },
+   {
+    "id": 14840,
+    "pav": "Hau&Miau Puzzo Snack, ėriuko kojos su antiena, 250g",
+    "st": "draft",
+    "sku": "HM-8425",
+    "dp": 0,
+    "reg": "5.89",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "63",
+      "product_id": "14840",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "0.0000",
+     "0.0000",
+     "0.0000"
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Hau&amp;Miau",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 0
+   },
+   {
+    "id": 14842,
+    "pav": "Hau&Miau Puzzo Snack, triušio kojos apsuktos antiena, 300g",
+    "st": "draft",
+    "sku": "HM-8427",
+    "dp": 0,
+    "reg": "7.29",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "65",
+      "product_id": "14842",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "0.0000",
+     "0.0000",
+     "0.0000"
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Hau&amp;Miau",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 0
+   },
+   {
+    "id": 16032,
+    "pav": "Stirnos koja su kailiuku, 1 vnt.",
+    "st": "draft",
+    "sku": "650613536",
+    "dp": 0,
+    "reg": "1.59",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "91",
+      "product_id": "16032",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 16094,
+    "pav": "Skanėstai šunims - Natūralūs kąsneliai iš galvijų prieskrandžių, 150 g, Bult",
+    "st": "draft",
+    "sku": "5903802474947",
+    "dp": 0,
+    "reg": "3.24",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "99",
+      "product_id": "16094",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.15",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Bult",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 16098,
+    "pav": "Skanėstai šunims - Natūralios lazdelės iš galvijų prieskrandžių, 120 g, Bult",
+    "st": "draft",
+    "sku": "5903802470529",
+    "dp": 0,
+    "reg": "4.19",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "101",
+      "product_id": "16098",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.12",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Bult",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17165,
+    "pav": "Ontario konservai šunims su vištiena ir vištienos skrandukais, 200 g, Chicken Pieces and Gizzard",
+    "st": "draft",
+    "sku": "650373",
+    "dp": 0,
+    "reg": "1.45",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "919",
+      "product_id": "17165",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.2",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai šunims"
+    ],
+    "brand": "Ontario",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17390,
+    "pav": "Natūrali jaučio ausis su kailiuku, 1 vnt.",
+    "st": "draft",
+    "sku": "723123",
+    "dp": 0,
+    "reg": "1.59",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "220",
+      "product_id": "17390",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17490,
+    "pav": "Miamor Super premium konservai katėms su tunu ir krevetėmis, 185 g",
+    "st": "draft",
+    "sku": "2627",
+    "dp": 0,
+    "reg": "2.99",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "223",
+      "product_id": "17490",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.185",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17496,
+    "pav": "Miamor Super premium konservai katėms su tunu ir kalmarais, 185 g",
+    "st": "draft",
+    "sku": "2832",
+    "dp": 0,
+    "reg": "2.99",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "224",
+      "product_id": "17496",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.185",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17502,
+    "pav": "Miamor Super premium konservai katėms su tunu ir daržovėmis, 185 g",
+    "st": "draft",
+    "sku": "2831",
+    "dp": 0,
+    "reg": "2.99",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "225",
+      "product_id": "17502",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.185",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17514,
+    "pav": "Miamor Super Premium konservai katėms su tunu ir ryžiais, 185 g",
+    "st": "draft",
+    "sku": "2833",
+    "dp": 0,
+    "reg": "2.99",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "226",
+      "product_id": "17514",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.185",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17532,
+    "pav": "Miamor Feine Filets konservai katėms, vištiena pomidorų drebučiuose, 100 g",
+    "st": "draft",
+    "sku": "72846",
+    "dp": 0,
+    "reg": "2.05",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "227",
+      "product_id": "17532",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:02"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 18645,
+    "pav": "Džiovinti galvijų plaučiai ant penio, \"Šašlykas\", 1 vnt.",
+    "st": "draft",
+    "sku": "707100",
+    "dp": 0,
+    "reg": "2.99",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "293",
+      "product_id": "18645",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:03"
+     }
+    ],
+    "svoris": "",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Gnatek",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 33820,
+    "pav": "Šerno kojos tamsios didelės 10vnt.",
+    "st": "draft",
+    "sku": "01O8B07001",
+    "dp": 0,
+    "reg": "20.79",
+    "sale": "",
+    "cost_price": "",
+    "stock": 27,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "zb",
+    "src": [
+     {
+      "id": "841",
+      "product_id": "33820",
+      "source": "zb",
+      "supplier_sku": "01O8B07001",
+      "ean": "",
+      "stock_qty": "27",
+      "cost_net": "11.4570",
+      "synced_at": "2026-08-07 10:03:04",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:04"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 33874,
+    "pav": "Real Dog triušio ausys natūralios 500g",
+    "st": "draft",
+    "sku": "01O7A04001",
+    "dp": 0,
+    "reg": "15.19",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "zb",
+    "src": [
+     {
+      "id": "854",
+      "product_id": "33874",
+      "source": "zb",
+      "supplier_sku": "01O7A04001",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": "8.3340",
+      "synced_at": "2026-08-07 11:02:10",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:04"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Real Dog",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 13048,
+    "pav": "Real Dog kiaulės ausys vidutinės 100vnt.",
+    "st": "publish",
+    "sku": "01O7A02002",
+    "dp": 0,
+    "reg": "157.09",
+    "sale": "",
+    "cost_price": "",
+    "stock": 52,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "zb",
+    "src": [
+     {
+      "id": "2711",
+      "product_id": "13048",
+      "source": "zb",
+      "supplier_sku": "01O7A02002",
+      "ean": "",
+      "stock_qty": "52",
+      "cost_net": "92.7000",
+      "synced_at": "2026-08-07 11:02:11",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:05"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Real Dog",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 13520,
+    "pav": "Real Dog Kiaulės ausys vidutinės 25vnt.",
+    "st": "publish",
+    "sku": "01O7A020021",
+    "dp": 0,
+    "reg": "44.99",
+    "sale": "",
+    "cost_price": "",
+    "stock": 110,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "zb",
+    "src": [
+     {
+      "id": "2717",
+      "product_id": "13520",
+      "source": "zb",
+      "supplier_sku": "01O7A020021",
+      "ean": "",
+      "stock_qty": "110",
+      "cost_net": "26.5140",
+      "synced_at": "2026-08-07 11:02:40",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:05"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Real Dog",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 12883,
+    "pav": "Džiovintos vištos kojos baltos (50vnt)",
+    "st": "publish",
+    "sku": "01O8B05001",
+    "dp": 0,
+    "reg": "13.79",
+    "sale": "",
+    "cost_price": "",
+    "stock": 26,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "zb",
+    "src": [
+     {
+      "id": "1125",
+      "product_id": "12883",
+      "source": "zb",
+      "supplier_sku": "01O8B05001",
+      "ean": "",
+      "stock_qty": "26",
+      "cost_net": "8.1180",
+      "synced_at": "2026-08-07 10:02:57",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:06"
+     }
+    ],
+    "svoris": "1.0000",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 12886,
+    "pav": "Džiovintos kalakuto kojos šviesios mažos (10 vnt)",
+    "st": "publish",
+    "sku": "01O8B06002",
+    "dp": 0,
+    "reg": "15.99",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "0",
+    "sandelis": "zb",
+    "src": [
+     {
+      "id": "4891",
+      "product_id": "12886",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": null,
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "0",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-09-22 11:03:22",
+      "updated_at": "2026-09-23 07:20:17"
+     },
+     {
+      "id": "1126",
+      "product_id": "12886",
+      "source": "zb",
+      "supplier_sku": "01O8B06002",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": "9.4050",
+      "synced_at": "2026-08-07 10:02:57",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:06"
+     }
+    ],
+    "svoris": "0.5000",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Gnatek",
+    "total_sales": 2,
+    "po_t0": {
+     "u": "1",
+     "q": "2"
+    },
+    "img": 1
+   },
+   {
+    "id": 14795,
+    "pav": "Real Dog Snacks Kiaulės kojos 10vnt",
+    "st": "publish",
+    "sku": "01O7A020072",
+    "dp": 0,
+    "reg": "19.49",
+    "sale": "",
+    "cost_price": "",
+    "stock": 54,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "zb",
+    "src": [
+     {
+      "id": "1532",
+      "product_id": "14795",
+      "source": "zb",
+      "supplier_sku": "01O7A020072",
+      "ean": "",
+      "stock_qty": "54",
+      "cost_net": "11.4570",
+      "synced_at": "2026-08-07 08:03:03",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:07"
+     }
+    ],
+    "svoris": "0.0000",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Real Dog",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 15435,
+    "pav": "Žaislas katei Vištos koja su plunksnomis",
+    "st": "publish",
+    "sku": "453-30413",
+    "dp": 0,
+    "reg": "2.07",
+    "sale": "",
+    "cost_price": "1.14",
+    "stock": 1,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "1698",
+      "product_id": "15435",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "1",
+      "cost_net": "1.1400",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:07"
+     }
+    ],
+    "svoris": "",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Žaislai katėms"
+    ],
+    "brand": "Romar",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 15867,
+    "pav": "Veršiuko ausis, 1 vnt.",
+    "st": "publish",
+    "sku": "341000-v",
+    "dp": 0,
+    "reg": "1.39",
+    "sale": "",
+    "cost_price": "0.61",
+    "stock": 21,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "1805",
+      "product_id": "15867",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "21",
+      "cost_net": "0.6100",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:08"
+     }
+    ],
+    "svoris": "0.05",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Gnatek",
+    "total_sales": 4,
+    "po_t0": {
+     "u": "1",
+     "q": "4"
+    },
+    "img": 1
+   },
+   {
+    "id": 15964,
+    "pav": "Triušio ausys su antiena 500 g, natūralūs skanėstai šunims",
+    "st": "publish",
+    "sku": "H-138-402086",
+    "dp": 0,
+    "reg": "10.95",
+    "sale": "",
+    "cost_price": "6.4600",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "belcor_tofu",
+    "src": [
+     {
+      "id": "1832",
+      "product_id": "15964",
+      "source": "belcor_tofu",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": "6.4600",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:08"
+     }
+    ],
+    "svoris": "0.5",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 16072,
+    "pav": "Skanėstai šunims - Triušio ausys su vištiena, 500 g, AL64",
+    "st": "publish",
+    "sku": "AL64",
+    "dp": 0,
+    "reg": "10.15",
+    "sale": "",
+    "cost_price": "5.99",
+    "stock": 1,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "1856",
+      "product_id": "16072",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "1",
+      "cost_net": "5.9900",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:08"
+     }
+    ],
+    "svoris": "0.5",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 16075,
+    "pav": "Skanėstai šunims - Triušio ausys su jautiena ir antiena, 500 g, AL131",
+    "st": "publish",
+    "sku": "AL131",
+    "dp": 0,
+    "reg": "10.96",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "1857",
+      "product_id": "16075",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:08"
+     }
+    ],
+    "svoris": "0.5",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 16078,
+    "pav": "Skanėstai šunims - Triušio ausys su antiena, 500 g, AL68",
+    "st": "publish",
+    "sku": "AL68",
+    "dp": 0,
+    "reg": "10.95",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "1858",
+      "product_id": "16078",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:08"
+     }
+    ],
+    "svoris": "0.5",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 16295,
+    "pav": "Rudos (natūralios) triušio ausys, 100 g",
+    "st": "publish",
+    "sku": "711002",
+    "dp": 0,
+    "reg": "3.8",
+    "sale": "",
+    "cost_price": "1.89",
+    "stock": 5,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "1903",
+      "product_id": "16295",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "5",
+      "cost_net": "1.8900",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:08"
+     }
+    ],
+    "svoris": "",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": 1,
+    "po_t0": {
+     "u": "1",
+     "q": "1"
+    },
+    "img": 1
+   },
+   {
+    "id": 16305,
+    "pav": "Ruda kiaulės ausis, 1 vnt.",
+    "st": "publish",
+    "sku": "338000",
+    "dp": 0,
+    "reg": "1.39",
+    "sale": "",
+    "cost_price": "0.66",
+    "stock": 190,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "1906",
+      "product_id": "16305",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "190",
+      "cost_net": "0.6600",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:08"
+     }
+    ],
+    "svoris": "0.09",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "1",
+     "q": "1"
+    },
+    "img": 1
+   },
+   {
+    "id": 16311,
+    "pav": "Ruda jaučio ausis, 1 vnt.",
+    "st": "publish",
+    "sku": "723000",
+    "dp": 0,
+    "reg": "1.29",
+    "sale": "",
+    "cost_price": "0.61",
+    "stock": 50,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "1908",
+      "product_id": "16311",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "50",
+      "cost_net": "0.6100",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:08"
+     }
+    ],
+    "svoris": "0.095",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": -2,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17386,
+    "pav": "Natūralios triušio ausys su kailiuku, 100 g",
+    "st": "publish",
+    "sku": "711004",
+    "dp": 0,
+    "reg": "3.9",
+    "sale": "",
+    "cost_price": "1.88",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2121",
+      "product_id": "17386",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": "1.8800",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": 2,
+    "po_t0": {
+     "u": "1",
+     "q": "2"
+    },
+    "img": 1
+   },
+   {
+    "id": 17469,
+    "pav": "Miamor skanėstai kačiukams - kreminė pasta su taurinu, 6*15 g, Miamor Junior Pate Cream",
+    "st": "publish",
+    "sku": "74320",
+    "dp": 0,
+    "reg": "3.55",
+    "sale": "3.18",
+    "cost_price": "2.03",
+    "stock": 14,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2144",
+      "product_id": "17469",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "14",
+      "cost_net": "2.0300",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.015",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 1,
+    "po_t0": {
+     "u": "1",
+     "q": "1"
+    },
+    "img": 1
+   },
+   {
+    "id": 17472,
+    "pav": "Miamor skanėstai katėms - vištienos ir daržovių kremas, 5*15 g, Miamor Cat Cream",
+    "st": "publish",
+    "sku": "74271",
+    "dp": 0,
+    "reg": "3.55",
+    "sale": "2.29",
+    "cost_price": "2.03",
+    "stock": 26,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2145",
+      "product_id": "17472",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "26",
+      "cost_net": "2.0300",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.015",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17475,
+    "pav": "Miamor skanėstai katėms - salyklo ekstrakto kremas, 6*15 g, Miamor Malt Cream",
+    "st": "publish",
+    "sku": "86938",
+    "dp": 0,
+    "reg": "2.85",
+    "sale": "",
+    "cost_price": "1.50",
+    "stock": 28,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2146",
+      "product_id": "17475",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "28",
+      "cost_net": "1.5000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.015",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Miamor katėms",
+     "Skanėstai katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17478,
+    "pav": "Miamor skanėstai katėms - salyklo ekstrakto kremas su sūriu, 6*15 g, Miamor Malt Cream with Cheese",
+    "st": "publish",
+    "sku": "72847",
+    "dp": 0,
+    "reg": "2.85",
+    "sale": "",
+    "cost_price": "1.50",
+    "stock": 72,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2147",
+      "product_id": "17478",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "72",
+      "cost_net": "1.5000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.015",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Miamor katėms",
+     "Skanėstai katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17481,
+    "pav": "Miamor skanėstai katėms - kremas su vitaminais, 6*15 g, Miamor Multi-Vitamin Cream",
+    "st": "publish",
+    "sku": "71693",
+    "dp": 0,
+    "reg": "2.85",
+    "sale": "2.56",
+    "cost_price": "1.50",
+    "stock": 373,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2148",
+      "product_id": "17481",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "373",
+      "cost_net": "1.5000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.015",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17484,
+    "pav": "Miamor skanėstai katėms - kepenų pašteto kremas, 6*15 g, Miamor Liver Pate Cream",
+    "st": "publish",
+    "sku": "41427",
+    "dp": 0,
+    "reg": "2.85",
+    "sale": "",
+    "cost_price": "1.50",
+    "stock": 1,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2149",
+      "product_id": "17484",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "1",
+      "cost_net": "1.5000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.015",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Miamor katėms",
+     "Skanėstai katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17487,
+    "pav": "Miamor skanėstai katėms - jautienos ir daržovių kremas, 5*15 g, Miamor Cat Cream",
+    "st": "publish",
+    "sku": "74270",
+    "dp": 0,
+    "reg": "3.55",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2150",
+      "product_id": "17487",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.015",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17493,
+    "pav": "Miamor Super premium konservai katėms su tunu ir krevetėmis, 100 g",
+    "st": "publish",
+    "sku": "640367",
+    "dp": 0,
+    "reg": "1.79",
+    "sale": "",
+    "cost_price": "0.90",
+    "stock": 39,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2151",
+      "product_id": "17493",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "39",
+      "cost_net": "0.9000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 16,
+    "po_t0": {
+     "u": "3",
+     "q": "16"
+    },
+    "img": 1
+   },
+   {
+    "id": 17499,
+    "pav": "Miamor Super premium konservai katėms su tunu ir kalmarais, 100 g",
+    "st": "publish",
+    "sku": "2632",
+    "dp": 0,
+    "reg": "1.79",
+    "sale": "",
+    "cost_price": "0.90",
+    "stock": 52,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2152",
+      "product_id": "17499",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "52",
+      "cost_net": "0.9000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17504,
+    "pav": "Miamor Super premium konservai katėms su tunu ir daržovėmis, 100 g",
+    "st": "publish",
+    "sku": "2633",
+    "dp": 0,
+    "reg": "1.79",
+    "sale": "",
+    "cost_price": "0.90",
+    "stock": 22,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2153",
+      "product_id": "17504",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "22",
+      "cost_net": "0.9000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 7,
+    "po_t0": {
+     "u": "1",
+     "q": "7"
+    },
+    "img": 1
+   },
+   {
+    "id": 17507,
+    "pav": "Miamor Super Premium konservai katėms su vištiena ir ryžiais, 100 g",
+    "st": "publish",
+    "sku": "640366",
+    "dp": 0,
+    "reg": "1.79",
+    "sale": "",
+    "cost_price": "1.13",
+    "stock": 21,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2154",
+      "product_id": "17507",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "21",
+      "cost_net": "1.1300",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 10,
+    "po_t0": {
+     "u": "1",
+     "q": "10"
+    },
+    "img": 1
+   },
+   {
+    "id": 17510,
+    "pav": "Miamor Super Premium konservai katėms su tunu ir sūriu, 100 g",
+    "st": "publish",
+    "sku": "2629",
+    "dp": 0,
+    "reg": "1.79",
+    "sale": "",
+    "cost_price": "0.90",
+    "stock": 58,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2155",
+      "product_id": "17510",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "58",
+      "cost_net": "0.9000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17517,
+    "pav": "Miamor Super Premium konservai katėms su tunu ir ryžiais, 100 g",
+    "st": "publish",
+    "sku": "2628",
+    "dp": 0,
+    "reg": "1.79",
+    "sale": "",
+    "cost_price": "0.90",
+    "stock": 14,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2156",
+      "product_id": "17517",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "14",
+      "cost_net": "0.9000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 4,
+    "po_t0": {
+     "u": "1",
+     "q": "4"
+    },
+    "img": 1
+   },
+   {
+    "id": 17520,
+    "pav": "Miamor Super Premium konservai katėms su tunu ir putpelių kiaušiniais, 100 g",
+    "st": "publish",
+    "sku": "2630",
+    "dp": 0,
+    "reg": "1.79",
+    "sale": "",
+    "cost_price": "0.90",
+    "stock": 45,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2157",
+      "product_id": "17520",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "45",
+      "cost_net": "0.9000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17523,
+    "pav": "Miamor Fillet Naturelle konservai katėms su tunu ir krabais, 80 g",
+    "st": "publish",
+    "sku": "72850",
+    "dp": 0,
+    "reg": "1.79",
+    "sale": "",
+    "cost_price": "0.80",
+    "stock": 8,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2158",
+      "product_id": "17523",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "8",
+      "cost_net": "0.8000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.08",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 5,
+    "po_t0": {
+     "u": "1",
+     "q": "5"
+    },
+    "img": 1
+   },
+   {
+    "id": 17526,
+    "pav": "Miamor Feine Filets konservai katėms, vištienos ir tuno gabalėliai padaže, 100 g",
+    "st": "publish",
+    "sku": "74821",
+    "dp": 0,
+    "reg": "2.05",
+    "sale": "",
+    "cost_price": "0.90",
+    "stock": 19,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2159",
+      "product_id": "17526",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "19",
+      "cost_net": "0.9000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17529,
+    "pav": "Miamor Feine Filets konservai katėms, vištienos ir tuno gabalėliai drebučiuose, 100 g",
+    "st": "publish",
+    "sku": "74074",
+    "dp": 0,
+    "reg": "2.05",
+    "sale": "",
+    "cost_price": "0.90",
+    "stock": 24,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2160",
+      "product_id": "17529",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "24",
+      "cost_net": "0.9000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17535,
+    "pav": "Miamor Feine Filets konservai katėms, vištiena paukštienos drebučiuose, 100 g",
+    "st": "publish",
+    "sku": "2836",
+    "dp": 0,
+    "reg": "2.05",
+    "sale": "",
+    "cost_price": "0.90",
+    "stock": 14,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2161",
+      "product_id": "17535",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "14",
+      "cost_net": "0.9000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 5,
+    "po_t0": {
+     "u": "1",
+     "q": "5"
+    },
+    "img": 1
+   },
+   {
+    "id": 17538,
+    "pav": "Miamor Feine Filets konservai katėms, tunas su krabais drebučiuose, 100 g",
+    "st": "publish",
+    "sku": "2837",
+    "dp": 0,
+    "reg": "2.05",
+    "sale": "",
+    "cost_price": "0.90",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2162",
+      "product_id": "17538",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": "0.9000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 8,
+    "po_t0": {
+     "u": "3",
+     "q": "8"
+    },
+    "img": 1
+   },
+   {
+    "id": 17541,
+    "pav": "Miamor Feine Filets konservai katėms, tunas su kalmarais drebučiuose, 100 g",
+    "st": "publish",
+    "sku": "2838",
+    "dp": 0,
+    "reg": "2.05",
+    "sale": "",
+    "cost_price": "0.90",
+    "stock": 15,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2163",
+      "product_id": "17541",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "15",
+      "cost_net": "0.9000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 16,
+    "po_t0": {
+     "u": "1",
+     "q": "16"
+    },
+    "img": 1
+   },
+   {
+    "id": 17544,
+    "pav": "Miamor Feine Filets konservai katėms, tunas su daržovėmis drebučiuose, 100 g",
+    "st": "publish",
+    "sku": "2839",
+    "dp": 0,
+    "reg": "2.05",
+    "sale": "",
+    "cost_price": "0.90",
+    "stock": 29,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2164",
+      "product_id": "17544",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "29",
+      "cost_net": "0.9000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 7,
+    "po_t0": {
+     "u": "2",
+     "q": "7"
+    },
+    "img": 1
+   },
+   {
+    "id": 17547,
+    "pav": "Miamor Feine Filets konservai katėms, tunas lašišos drebučiuose, 100 g",
+    "st": "publish",
+    "sku": "2835",
+    "dp": 0,
+    "reg": "2.05",
+    "sale": "",
+    "cost_price": "0.9",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2165",
+      "product_id": "17547",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": "0.9000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 17550,
+    "pav": "Miamor Feine Filets konservai katėms, tunas krabų drebučiuose, 100 g",
+    "st": "publish",
+    "sku": "74080",
+    "dp": 0,
+    "reg": "2.05",
+    "sale": "",
+    "cost_price": "0.9",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2166",
+      "product_id": "17550",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": "0.9000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:09"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 18354,
+    "pav": "Gėrimas kačiukams - Miamor Trinkfein Vitaldrink Kitten su vištiena, 135 ml",
+    "st": "publish",
+    "sku": "46304",
+    "dp": 0,
+    "reg": "1.33",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2361",
+      "product_id": "18354",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:10"
+     }
+    ],
+    "svoris": "0.135",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Maistas katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 18366,
+    "pav": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su vištiena, 135 ml",
+    "st": "publish",
+    "sku": "40828",
+    "dp": 0,
+    "reg": "1.45",
+    "sale": "",
+    "cost_price": "0.82",
+    "stock": 104,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2362",
+      "product_id": "18366",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "104",
+      "cost_net": "0.8200",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:10"
+     }
+    ],
+    "svoris": "0.135",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Maistas katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 27,
+    "po_t0": {
+     "u": "3",
+     "q": "27"
+    },
+    "img": 1
+   },
+   {
+    "id": 18369,
+    "pav": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 135 ml",
+    "st": "publish",
+    "sku": "40829",
+    "dp": 0,
+    "reg": "1.45",
+    "sale": "",
+    "cost_price": "0.82",
+    "stock": 64,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2363",
+      "product_id": "18369",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "64",
+      "cost_net": "0.8200",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:10"
+     }
+    ],
+    "svoris": "0.135",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Maistas katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 30,
+    "po_t0": {
+     "u": "3",
+     "q": "30"
+    },
+    "img": 1
+   },
+   {
+    "id": 18372,
+    "pav": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su antiena, 135 ml",
+    "st": "publish",
+    "sku": "41148",
+    "dp": 0,
+    "reg": "1.45",
+    "sale": "",
+    "cost_price": "0.82",
+    "stock": 120,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2364",
+      "product_id": "18372",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "120",
+      "cost_net": "0.8200",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:10"
+     }
+    ],
+    "svoris": "0.135",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai katėms",
+     "Maistas katėms",
+     "Miamor katėms"
+    ],
+    "brand": "Miamor",
+    "total_sales": 14,
+    "po_t0": {
+     "u": "2",
+     "q": "14"
+    },
+    "img": 1
+   },
+   {
+    "id": 18636,
+    "pav": "Džiovinti galvijų skrandžiai, 500 g",
+    "st": "publish",
+    "sku": "715001",
+    "dp": 0,
+    "reg": "8.99",
+    "sale": "",
+    "cost_price": "4.87",
+    "stock": 10,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "291",
+      "product_id": "18636",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "10",
+      "cost_net": "4.8700",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:10"
+     }
+    ],
+    "svoris": "0.5",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "ŠUNIMS"
+    ],
+    "brand": "Gnatek",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 18639,
+    "pav": "Džiovinti galvijų skrandžiai, 100 g",
+    "st": "publish",
+    "sku": "sku166417363216209651",
+    "dp": 0,
+    "reg": "2.59",
+    "sale": "",
+    "cost_price": "1.09",
+    "stock": 48,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2437",
+      "product_id": "18639",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "48",
+      "cost_net": "1.0900",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:10"
+     }
+    ],
+    "svoris": "",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims",
+     "ŠUNIMS"
+    ],
+    "brand": "Gnatek",
+    "total_sales": 1,
+    "po_t0": {
+     "u": "1",
+     "q": "1"
+    },
+    "img": 1
+   },
+   {
+    "id": 18642,
+    "pav": "Džiovinti galvijų plaučiai, 500 g",
+    "st": "publish",
+    "sku": "716001",
+    "dp": 0,
+    "reg": "7.99",
+    "sale": "",
+    "cost_price": "4.50",
+    "stock": 4,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "292",
+      "product_id": "18642",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "4",
+      "cost_net": "4.5000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:10"
+     }
+    ],
+    "svoris": "0.5",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "ŠUNIMS"
+    ],
+    "brand": "Gnatek",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 18647,
+    "pav": "Džiovinti galvijų plaučiai, 100 g",
+    "st": "publish",
+    "sku": "sku166419888570409491",
+    "dp": 0,
+    "reg": "2.15",
+    "sale": "",
+    "cost_price": "1.01",
+    "stock": 36,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2438",
+      "product_id": "18647",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "36",
+      "cost_net": "1.0100",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:10"
+     }
+    ],
+    "svoris": "",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims",
+     "ŠUNIMS"
+    ],
+    "brand": "Gnatek",
+    "total_sales": 1,
+    "po_t0": {
+     "u": "1",
+     "q": "1"
+    },
+    "img": 1
+   },
+   {
+    "id": 19089,
+    "pav": "Baltos triušio ausys, 100 g",
+    "st": "publish",
+    "sku": "711003",
+    "dp": 0,
+    "reg": "4.65",
+    "sale": "",
+    "cost_price": "2.35",
+    "stock": 14,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2523",
+      "product_id": "19089",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "14",
+      "cost_net": "2.3500",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:10"
+     }
+    ],
+    "svoris": "0.11",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 0
+   },
+   {
+    "id": 19098,
+    "pav": "Balta jaučio ausis, 1 vnt.",
+    "st": "publish",
+    "sku": "341000",
+    "dp": 0,
+    "reg": "1.39",
+    "sale": "",
+    "cost_price": "0.66",
+    "stock": 83,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2526",
+      "product_id": "19098",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "83",
+      "cost_net": "0.6600",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:10"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": 4,
+    "po_t0": {
+     "u": "1",
+     "q": "4"
+    },
+    "img": 1
+   },
+   {
+    "id": 19538,
+    "pav": "Animonda GranCarno Adult Rumen: konservai suaugusiems šunims su galvijų prieskrandžiais, 800 g",
+    "st": "publish",
+    "sku": "82806",
+    "dp": 0,
+    "reg": "3.59",
+    "sale": "",
+    "cost_price": "2.01",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2605",
+      "product_id": "19538",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "0",
+      "cost_net": "2.0100",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:10"
+     }
+    ],
+    "svoris": "0.9",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Animonda konservai šunims",
+     "Konservai šunims"
+    ],
+    "brand": "Animonda",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 19542,
+    "pav": "Animonda GranCarno Adult Rumen: konservai suaugusiems šunims su galvijų prieskrandžiais, 400 g",
+    "st": "publish",
+    "sku": "82803",
+    "dp": 0,
+    "reg": "2.36",
+    "sale": "",
+    "cost_price": "1.30",
+    "stock": 3,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "2606",
+      "product_id": "19542",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "3",
+      "cost_net": "1.3000",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:10"
+     }
+    ],
+    "svoris": "0.4",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Animonda konservai šunims",
+     "Konservai šunims"
+    ],
+    "brand": "Animonda",
+    "total_sales": 1,
+    "po_t0": {
+     "u": "1",
+     "q": "1"
+    },
+    "img": 1
+   },
+   {
+    "id": 19937,
+    "pav": "Antos skanėstas šunims džiovintos triušių ausys 100g",
+    "st": "publish",
+    "sku": "10094",
+    "dp": 0,
+    "reg": "6.99",
+    "sale": "",
+    "cost_price": "",
+    "stock": 68,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "vf",
+    "src": [
+     {
+      "id": "2791",
+      "product_id": "19937",
+      "source": "vf",
+      "supplier_sku": "10094",
+      "ean": "871441418549",
+      "stock_qty": "68",
+      "cost_net": "4.2700",
+      "synced_at": "2026-08-07 13:00:07",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:10"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "ANTOS",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 20327,
+    "pav": "Comfy appetit skanėstas šunims, jaut. prieskrandžiai, 100g",
+    "st": "publish",
+    "sku": "AQ238384",
+    "dp": 0,
+    "reg": "3.59",
+    "sale": "",
+    "cost_price": "",
+    "stock": 33,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "vf",
+    "src": [
+     {
+      "id": "2816",
+      "product_id": "20327",
+      "source": "vf",
+      "supplier_sku": "AQ238384",
+      "ean": "590554614041",
+      "stock_qty": "33",
+      "cost_net": "2.1500",
+      "synced_at": "2026-08-07 13:00:09",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:11"
+     }
+    ],
+    "svoris": "0.1",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "COMFY",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 21220,
+    "pav": "HAP skanėstas šunims, triušių mėsa ir ausys, 500 g",
+    "st": "publish",
+    "sku": "AQ256397",
+    "dp": 0,
+    "reg": "10.69",
+    "sale": "",
+    "cost_price": "",
+    "stock": 56,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "vf",
+    "src": [
+     {
+      "id": "2951",
+      "product_id": "21220",
+      "source": "vf",
+      "supplier_sku": "AQ256397",
+      "ean": "590554633412",
+      "stock_qty": "56",
+      "cost_net": "6.4900",
+      "synced_at": "2026-08-07 13:00:19",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:11"
+     }
+    ],
+    "svoris": "0.5",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "HAP",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 21223,
+    "pav": "HAP skanėstas šunims, triušių kojos su ryžiais, 500 g",
+    "st": "publish",
+    "sku": "AQ256398",
+    "dp": 0,
+    "reg": "10.69",
+    "sale": "",
+    "cost_price": "",
+    "stock": 36,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "vf",
+    "src": [
+     {
+      "id": "2952",
+      "product_id": "21223",
+      "source": "vf",
+      "supplier_sku": "AQ256398",
+      "ean": "590554633413",
+      "stock_qty": "36",
+      "cost_net": "6.4900",
+      "synced_at": "2026-08-07 13:00:19",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:11"
+     }
+    ],
+    "svoris": "0.5",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "HAP",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 23474,
+    "pav": "Landfleisch konservai šunims, prieskrandžiai+ryžiai, 400g",
+    "st": "publish",
+    "sku": "440612",
+    "dp": 0,
+    "reg": "1.79",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "vf",
+    "src": [
+     {
+      "id": "3211",
+      "product_id": "23474",
+      "source": "vf",
+      "supplier_sku": "440612",
+      "ean": "400353700612",
+      "stock_qty": "0",
+      "cost_net": "1.1800",
+      "synced_at": "2026-08-07 13:00:37",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:12"
+     }
+    ],
+    "svoris": "0.47",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai šunims"
+    ],
+    "brand": "LAND FLEISCH",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 23490,
+    "pav": "Landfleisch konservai šunims, prieskrandžiai+ryžiai, 800g",
+    "st": "publish",
+    "sku": "440632",
+    "dp": 0,
+    "reg": "2.79",
+    "sale": "",
+    "cost_price": "",
+    "stock": 0,
+    "ss": "outofstock",
+    "own": "",
+    "sandelis": "vf",
+    "src": [
+     {
+      "id": "3219",
+      "product_id": "23490",
+      "source": "vf",
+      "supplier_sku": "440632",
+      "ean": "400353700632",
+      "stock_qty": "0",
+      "cost_net": "1.8100",
+      "synced_at": "2026-08-07 13:00:38",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:12"
+     }
+    ],
+    "svoris": "0.9",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Konservai šunims"
+    ],
+    "brand": "LAND FLEISCH",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 23792,
+    "pav": "Candioli Gastrik Pet papildas skrandžio rūgštingumui reguliuoti šunims ir katėms, 30 ml",
+    "st": "publish",
+    "sku": "PAE6470",
+    "dp": 0,
+    "reg": "15.49",
+    "sale": "",
+    "cost_price": "",
+    "stock": 40,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "vf",
+    "src": [
+     {
+      "id": "3245",
+      "product_id": "23792",
+      "source": "vf",
+      "supplier_sku": "PAE6470",
+      "ean": "802576766314",
+      "stock_qty": "40",
+      "cost_net": "9.4400",
+      "synced_at": "2026-08-07 13:00:40",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:12"
+     }
+    ],
+    "svoris": "0.03",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Vitaminai ir papildai šunims"
+    ],
+    "brand": "CANDIOLI",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 24421,
+    "pav": "Antos WILD šaltyje džiovinti skanėstai šunims, jaučio plaučiai, 80g",
+    "st": "publish",
+    "sku": "20508",
+    "dp": 0,
+    "reg": "8.69",
+    "sale": "",
+    "cost_price": "",
+    "stock": 16,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "vf",
+    "src": [
+     {
+      "id": "3332",
+      "product_id": "24421",
+      "source": "vf",
+      "supplier_sku": "20508",
+      "ean": "871441420508",
+      "stock_qty": "16",
+      "cost_net": "5.3000",
+      "synced_at": "2026-08-07 13:00:45",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-07 13:36:26",
+      "updated_at": "2026-09-27 07:20:12"
+     }
+    ],
+    "svoris": "0.08",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "ANTOS",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   },
+   {
+    "id": 34907,
+    "pav": "Baltos triušio ausys, 250 g",
+    "st": "publish",
+    "sku": "711003-025",
+    "dp": 0,
+    "reg": "8.29",
+    "sale": "",
+    "cost_price": "4.29",
+    "stock": 10,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "3818",
+      "product_id": "34907",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "10",
+      "cost_net": "4.2900",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-12 14:07:30",
+      "updated_at": "2026-09-27 07:20:13"
+     }
+    ],
+    "svoris": "0.26",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": 4,
+    "po_t0": {
+     "u": "1",
+     "q": "4"
+    },
+    "img": 0
+   },
+   {
+    "id": 34908,
+    "pav": "Stirnos ausis, 1 vnt.",
+    "st": "publish",
+    "sku": "718000428",
+    "dp": 0,
+    "reg": "1.18",
+    "sale": "",
+    "cost_price": "0.73",
+    "stock": null,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "3819",
+      "product_id": "34908",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": null,
+      "cost_net": "0.7300",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-12 16:52:20",
+      "updated_at": "2026-09-27 07:20:13"
+     }
+    ],
+    "svoris": "0.04",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Gnatek",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 0
+   },
+   {
+    "id": 36152,
+    "pav": "Rudos (natūralios) triušio ausys, 250 g",
+    "st": "publish",
+    "sku": "100188",
+    "dp": 0,
+    "reg": "8.93",
+    "sale": "",
+    "cost_price": "",
+    "stock": 8,
+    "ss": "instock",
+    "own": "",
+    "sandelis": "av",
+    "src": [
+     {
+      "id": "4896",
+      "product_id": "36152",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": "8",
+      "cost_net": null,
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-09-22 15:50:27",
+      "updated_at": "2026-09-27 07:20:13"
+     }
+    ],
+    "svoris": "0.255",
+    "lwh": [
+     "",
+     "",
+     ""
+    ],
+    "ship": "",
+    "cats": [
+     "Skanėstai šunims"
+    ],
+    "brand": "Romar",
+    "total_sales": 0,
+    "po_t0": {
+     "u": "0",
+     "q": null
+    },
+    "img": 1
+   }
+  ]
+ },
+ "2": {
+  "v": "S1727ma",
+  "f": "2",
+  "exists": true,
+  "lines": 25,
+  "md5": "02087caf3c323a96204cc4a217138e6f",
+  "hit": [
+   "4:  * Description: „Dažnai perkama kartu“ (Petshop_FBT::render_widget, woocommerce_after_add_to_cart_form prio 20) perkeliamas PO skaičiuoklės",
+   "11: add_action( 'wp', function () {",
+   "20: \t\tif ( 'Petshop_FBT' !== $kl || 'render_widget' !== $fn[1] ) { continue; }",
+   "22: \t\tadd_action( 'woocommerce_single_product_summary', $fn, 32 );"
+  ],
+  "fbt_files": [
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-av-source.php",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-juosta.php",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-katalogas.php",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-prekes-tvarka.php",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-rysiai.php",
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-sargas.php"
+  ]
+ },
+ "v": "dep-181207",
+ "kurimas": 200,
+ "sid": 6644,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
