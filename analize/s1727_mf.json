@@ -1,0 +1,1130 @@
+{
+ "1": {
+  "v": "S1727mf",
+  "f": "1",
+  "zonos": [
+   {
+    "name": "Neringos savivaldybe",
+    "m": [
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "iid": 9,
+      "title": "VENIPAK paštomatai/atsiėmimo punktai",
+      "on": true,
+      "set": []
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "iid": 10,
+      "title": "VENIPAK Kurjeris",
+      "on": true,
+      "set": []
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "iid": 13,
+      "title": "LP Express",
+      "on": true,
+      "set": {
+       "cost": "flat",
+       "class_costs": "",
+       "no_class_cost": ""
+      }
+     }
+    ]
+   },
+   {
+    "name": "Lietuva",
+    "m": [
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "iid": 3,
+      "title": "VENIPAK paštomatai/atsiėmimo punktai",
+      "on": true,
+      "set": []
+     },
+     {
+      "id": "free_shipping",
+      "iid": 1,
+      "title": "Nemokamas pristatymas",
+      "on": false,
+      "set": {
+       "requires": "",
+       "min_amount": "0",
+       "ignore_discounts": "no"
+      }
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "iid": 2,
+      "title": "VENIPAK Kurjeris",
+      "on": true,
+      "set": []
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "iid": 6,
+      "title": "VENIPAK Kurjeris",
+      "on": true,
+      "set": []
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "iid": 7,
+      "title": "VENIPAK Kurjeris",
+      "on": true,
+      "set": []
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "iid": 8,
+      "title": "VENIPAK Kurjeris",
+      "on": true,
+      "set": []
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "iid": 12,
+      "title": "LP Express",
+      "on": true,
+      "set": {
+       "cost": "flat",
+       "class_costs": "",
+       "no_class_cost": ""
+      }
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "iid": 15,
+      "title": "LP Express kurjeris",
+      "on": true,
+      "set": {
+       "cost": "weight",
+       "class_costs": "",
+       "no_class_cost": ""
+      }
+     },
+     {
+      "id": "local_pickup",
+      "iid": 16,
+      "title": "Atsiėmimas AV — Liucionių g. 46, Liucionys",
+      "on": false,
+      "set": {
+       "cost": "0"
+      }
+     }
+    ]
+   },
+   {
+    "name": "Baltijos šalys, be LIetuvos",
+    "m": [
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "iid": 5,
+      "title": "VENIPAK paštomatai/atsiėmimo punktai",
+      "on": true,
+      "set": []
+     }
+    ]
+   }
+  ],
+  "opt": {
+   "redirect": "no",
+   "ajax": "yes"
+  },
+  "theme_cart": {
+   "add_to_cart_icon": "button"
+  },
+  "fs_kodas": [
+   "159:             unset( $rates[ $rate_id ] );",
+   "160:         }",
+   "161:     }",
+   "162: ",
+   "163:     return $rates;",
+   "164: }",
+   "165: ",
+   "166: // ===============================================================",
+   "167: // Nemokamo pristatymo progreso juosta krepšelyje",
+   "168: // ===============================================================",
+   "169: add_action('woocommerce_cart_totals_before_order_total', 'petshop_free_shipping_progress', 5);",
+   "170: function petshop_free_shipping_progress() {",
+   "171:     if ( ! is_cart() ) return;",
+   "172: ",
+   "173:     $threshold = 30.00;",
+   "174: ",
+   "175:     $has_courier_only = false;",
+   "176:     $total_weight     = 0;",
+   "177:     foreach ( WC()->cart->get_cart() as $item ) {",
+   "178:         $product_id = $item['product_id'];",
+   "179:         /* Ta pati dviejų laukų problema kaip pristatymo filtre (2026-08-28):",
+   "180:            varnele kortelėje raso `_ps_tik_kurjeriu`, o cia buvo tikrinamas",
+   "181:            tik senasis `_fulfillment_courier_only`. Del to krepselyje",
+   "182:            kurjeriui skirta preke vis tiek matydavo „iki nemokamo pristatymo",
+   "183:            i pastomata\" — pazadas, kurio ivykdyti neimanoma. */",
+   "184:         if ( get_post_meta( $product_id, '_fulfillment_courier_only', true ) === 'yes'",
+   "185:              || get_post_meta( $product_id, '_ps_tik_kurjeriu', true ) === 'yes' ) {",
+   "186:             $has_courier_only = true;",
+   "187:             break;",
+   "188:         }",
+   "189:         $weight       = (float) get_post_meta( $product_id, '_weight', true );",
+   "190:         $total_weight += $weight * $item['quantity'];",
+   "191:     }",
+   "192:     if ( $total_weight > 30 ) {",
+   "193:         $has_courier_only = true;",
+   "194:     }",
+   "195:     /* S1716 (2026-09-24): tikroji tiesa — ar jau apskaičiuotuose pristatymo tarifuose yra paštomatas.",
+   "196:        Venipak pluginas paštomatą išmeta ir dėl matmenų (pvz. ZB maišas 80 cm), ko varnelė/svoris nemato,",
+   "197:        o krepšelis žadėdavo „nemokamą pristatymą į paštomatą“, kurio kasoje nebūdavo. */",
+   "198:     if ( ! $has_courier_only && function_exists( 'WC' ) && WC()->shipping() ) {",
+   "199:         $ps_paketai = WC()->shipping()->get_packages();",
+   "200:         if ( ! empty( $ps_paketai ) ) {",
+   "201:             $ps_yra_pastomatas = false;",
+   "202:             foreach ( $ps_paketai as $ps_pk ) {",
+   "203:                 foreach ( (array) ( $ps_pk['rates'] ?? array() ) as $ps_rate ) {",
+   "204:                     $ps_mid = (string) $ps_rate->get_method_id();",
+   "205:                     if ( strpos( $ps_mid, 'pickup' ) !== false || strpos( $ps_mid, 'terminal' ) !== false ) { $ps_yra_pastomatas = true; break 2; }",
+   "206:                 }",
+   "207:             }",
+   "208:             if ( ! $ps_yra_pastomatas ) { $has_courier_only = true; }",
+   "209:         }",
+   "210:     }",
+   "211: ",
+   "212:     if ( $has_courier_only ) {",
+   "213:         echo '<tr><td colspan=\"2\" style=\"padding:0 0 12px;\">';",
+   "214:         echo '<div style=\"background:#f4f4f2;border-left:3px solid #365a51;padding:10px 14px;font-size:13px;border-radius:0 4px 4px 0;color:#555;\">';",
+   "215:         echo '🚚 Kai kurios prekės pristatomos tik kurjeriu dėl dydžio arba svorio.';",
+   "216:         echo '</div></td></tr>';",
+   "217:         return;",
+   "218:     }",
+   "219: ",
+   "220:     $subtotal     = WC()->cart->get_subtotal();",
+   "221:     $subtotal_tax = WC()->cart->get_subtotal_tax();",
+   "222:     $discount     = WC()->cart->get_discount_total() + WC()->cart->get_discount_tax();",
+   "223:     $cart_total   = max( 0, ( $subtotal + $subtotal_tax ) - $discount );",
+   "224: ",
+   "225:     $percent = min( 100, round( ( $cart_total / $threshold ) * 100 ) );",
+   "226:     $truksta = max( 0, round( $threshold - $cart_total, 2 ) );",
+   "227:     $reached = $cart_total >= $threshold;",
+   "228: ",
+   "229:     echo '<tr><td colspan=\"2\" style=\"padding:0 0 12px;\">';",
+   "230:     echo '<div style=\"background:#f4f4f2;border-radius:6px;padding:12px 14px;\">';",
+   "231: ",
+   "232:     if ( $reached ) {",
+   "233:         echo '<div style=\"font-size:13px;font-weight:600;color:#365a51;margin-bottom:8px;\">🎉 Jums priklauso nemokamas pristatymas į paštomatą!</div>';",
+   "234:     } else {",
+   "235:         echo '<div style=\"font-size:13px;color:#333;margin-bottom:8px;\">📦 Dar <strong>€' . number_format( $truksta, 2, ',', '' ) . '</strong> iki nemokamo pristatymo į paštomatą</div>';",
+   "236:     }",
+   "237: ",
+   "238:     echo '<div style=\"background:#ddd;border-radius:4px;height:8px;overflow:hidden;\">';",
+   "239:     echo '<div style=\"width:' . $percent . '%;background:#365a51;height:8px;border-radius:4px;\"></div>';",
+   "240:     echo '</div>';",
+   "241: ",
+   "242:     echo '</div>';",
+   "243:     echo '</td></tr>';",
+   "244: }",
+   "245: ",
+   "246: // ===============================================================",
+   "247: // Saskaitu numeracija",
+   "248: // Reset pries launcha:",
+   "249: //   update_option('petshop_avpn_counter', 101)",
+   "250: //   update_option('petshop_iapv_counter', 101)",
+   "251: // ===============================================================",
+   "252: /**",
+   "253:  * S1719 (2026-09-25): atominis numerių skaitiklis. Iki tol get_option → update_option dviem žingsniais —",
+   "254:  * lygiagrečios užklausos (darbalaukio „Kurjeris paėmė\" keliems užsakymams) perskaitydavo tą patį skaitiklį",
+   "255:  * ir 5 sąskaitos gavo AVPN011105. Dabar: DB užraktas + UPDATE … LAST_INSERT_ID + meta patikra tiesiai iš DB.",
+   "256:  */",
+   "257: function petshop_ps_kitas_numeris( $opcija, $prefiksas, $order_id, $meta_key ) {",
+   "258:     global $wpdb;",
+   "259:     $order    = $order_id ? wc_get_order( $order_id ) : null;",
+   "260:     $existing = $order ? (string) $order->get_meta( $meta_key ) : '';",
+   "261:     if ( $existing ) return $existing;",
+   "262:     $lock = 'ps_num_' . $opcija;",
+   "263:     $got  = (int) $wpdb->get_var( $wpdb->prepare( 'SELECT GET_LOCK(%s, 10)', $lock ) );",
+   "264:     try {"
+  ],
+  "petshop_opts": [
+   {
+    "option_name": "woocommerce_free_shipping_1_settings",
+    "v": "a:4:{s:5:\"title\";s:21:\"Nemokamas pristatymas\";s:8:\"requires\";s:0:\"\";s:10:\"min_amount\";s:1:\"0\";s:16:\"ignore_discounts\";s:2:\"no\";}"
+   }
+  ]
+ },
+ "2": {
+  "v": "S1727mf",
+  "f": "2",
+  "n": "166",
+  "suma_buck": [
+   {
+    "nuo": "0",
+    "n": "23",
+    "mokejo_pristatyma": "22",
+    "vid_prist": "1.90"
+   },
+   {
+    "nuo": "10",
+    "n": "32",
+    "mokejo_pristatyma": "31",
+    "vid_prist": "2.01"
+   },
+   {
+    "nuo": "20",
+    "n": "30",
+    "mokejo_pristatyma": "7",
+    "vid_prist": "0.52"
+   },
+   {
+    "nuo": "30",
+    "n": "35",
+    "mokejo_pristatyma": "3",
+    "vid_prist": "0.28"
+   },
+   {
+    "nuo": "40",
+    "n": "19",
+    "mokejo_pristatyma": "3",
+    "vid_prist": "0.52"
+   },
+   {
+    "nuo": "50",
+    "n": "11",
+    "mokejo_pristatyma": "1",
+    "vid_prist": "0.30"
+   },
+   {
+    "nuo": "60",
+    "n": "6",
+    "mokejo_pristatyma": "3",
+    "vid_prist": "1.65"
+   },
+   {
+    "nuo": "70",
+    "n": "3",
+    "mokejo_pristatyma": "2",
+    "vid_prist": "2.20"
+   },
+   {
+    "nuo": "80",
+    "n": "2",
+    "mokejo_pristatyma": "1",
+    "vid_prist": "1.49"
+   },
+   {
+    "nuo": "90",
+    "n": "2",
+    "mokejo_pristatyma": "0",
+    "vid_prist": "0.00"
+   },
+   {
+    "nuo": "100",
+    "n": "3",
+    "mokejo_pristatyma": "1",
+    "vid_prist": "1.10"
+   }
+  ],
+  "prist_kainos": [
+   {
+    "ct": "0",
+    "n": "92"
+   },
+   {
+    "ct": "178",
+    "n": "49"
+   },
+   {
+    "ct": "330",
+    "n": "24"
+   },
+   {
+    "ct": "297",
+    "n": "1"
+   }
+  ],
+  "small_cart": {
+   "n": "10",
+   "vid": "1.00"
+  },
+  "mokejimas": [
+   {
+    "mokejimo_budas": "bacs",
+    "n": "8"
+   },
+   {
+    "mokejimo_budas": "paysera",
+    "n": "158"
+   }
+  ],
+  "irenginys": [
+   {
+    "irenginys": "",
+    "n": "2",
+    "aov": "8.68"
+   },
+   {
+    "irenginys": "desktop",
+    "n": "48",
+    "aov": "33.35"
+   },
+   {
+    "irenginys": "mobile",
+    "n": "116",
+    "aov": "32.97"
+   }
+  ],
+  "naujas": [
+   {
+    "klientas_naujas": "0",
+    "n": "85",
+    "aov": "39.25"
+   },
+   {
+    "klientas_naujas": "1",
+    "n": "81",
+    "aov": "26.00"
+   }
+  ],
+  "refill": [
+   {
+    "status": "active",
+    "n": "189"
+   },
+   {
+    "status": "notified",
+    "n": "4"
+   }
+  ],
+  "refill_menesiai": [
+   {
+    "m": "2026-10",
+    "n": "108"
+   },
+   {
+    "m": "2026-11",
+    "n": "67"
+   },
+   {
+    "m": "2026-12",
+    "n": "13"
+   },
+   {
+    "m": "2027-01",
+    "n": "1"
+   }
+  ],
+  "vezejai": [
+   {
+    "vezejai": "",
+    "n": "2"
+   },
+   {
+    "vezejai": "lp_express",
+    "n": "9"
+   },
+   {
+    "vezejai": "venipak",
+    "n": "155"
+   }
+  ]
+ },
+ "3": {
+  "v": "S1727mf",
+  "f": "3",
+  "cols": [
+   "id",
+   "laikas",
+   "diena",
+   "tipas",
+   "pusl_tipas",
+   "url_kelias",
+   "raktas",
+   "raktas2",
+   "reiksme",
+   "sesija",
+   "lankytojas_d",
+   "lankytojas_30",
+   "saltinis",
+   "medium",
+   "kampanija",
+   "referer_domenas",
+   "kanalas",
+   "landing",
+   "irenginys",
+   "os_seima",
+   "nars_seima",
+   "salis",
+   "prisijunges",
+   "sutikimas",
+   "testinis",
+   "saltinis_aplinka"
+  ],
+  "tc": "tipas",
+  "dc": "laikas",
+  "tipai": [
+   {
+    "t": "pageview",
+    "n": "2956"
+   },
+   {
+    "t": "view_item",
+    "n": "1509"
+   },
+   {
+    "t": "add_to_cart",
+    "n": "1450"
+   },
+   {
+    "t": "search",
+    "n": "80"
+   },
+   {
+    "t": "begin_checkout",
+    "n": "46"
+   },
+   {
+    "t": "view_cart",
+    "n": "40"
+   },
+   {
+    "t": "error404",
+    "n": "5"
+   }
+  ],
+  "pvz": {
+   "id": "24920",
+   "laikas": "2026-09-27 18:47:48",
+   "diena": "2026-09-27",
+   "tipas": "pageview",
+   "pusl_tipas": "kategorija",
+   "url_kelias": "/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/page/2/",
+   "raktas": "72",
+   "raktas2": null,
+   "reiksme": "0",
+   "sesija": "t_d1d9e2cdfbd958d52c58f381527b5a|1790707642|1790621242|29bf56975",
+   "lankytojas_d": "f5b0f87c3ca6e3146dc3a6eb8872e4b95807486c02cb05469707b67c5d314633",
+   "lankytojas_30": null,
+   "saltinis": "google",
+   "medium": "cpc",
+   "kampanija": "21565450990",
+   "referer_domenas": "www.google.com",
+   "kanalas": "mokamas",
+   "landing": "0",
+   "irenginys": "mobile",
+   "os_seima": "Android",
+   "nars_seima": "Chrome",
+   "salis": "LT",
+   "prisijunges": "0",
+   "sutikimas": "0",
+   "testinis": "0",
+   "saltinis_aplinka": "prod"
+  }
+ },
+ "4": {
+  "v": "S1727mf",
+  "f": "4",
+  "cols": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ],
+  "sunys": {
+   "maisto_uzs": 1751,
+   "su_skan": 126,
+   "top": [
+    {
+     "pid": "17644",
+     "pav": "Kramtukai dantų priežiūrai su spirulina, 1 vnt., 50 g",
+     "uzs": "15",
+     "q": "155",
+     "kaina": "1.02"
+    },
+    {
+     "pid": "19297",
+     "pav": "Antienos filė juostelės, 500 g, natūralūs skanėstai šunims, Hau&Miau",
+     "uzs": "9",
+     "q": "20",
+     "kaina": "10.41"
+    },
+    {
+     "pid": "17823",
+     "pav": "Kietas Himalajų sūrio skanėstas šunims, 4Dogs, S dydis",
+     "uzs": "9",
+     "q": "34",
+     "kaina": "3.99"
+    },
+    {
+     "pid": "17641",
+     "pav": "Kramtukai su juka ir ciberžole, 1 vnt., 50 g",
+     "uzs": "9",
+     "q": "57",
+     "kaina": "1.02"
+    },
+    {
+     "pid": "16305",
+     "pav": "Ruda kiaulės ausis, 1 vnt.",
+     "uzs": "8",
+     "q": "33",
+     "kaina": "1.07"
+    },
+    {
+     "pid": "15867",
+     "pav": "Veršiuko ausis, 1 vnt.",
+     "uzs": "8",
+     "q": "59",
+     "kaina": "1.15"
+    },
+    {
+     "pid": "16311",
+     "pav": "Ruda jaučio ausis, 1 vnt.",
+     "uzs": "6",
+     "q": "49",
+     "kaina": "1.07"
+    },
+    {
+     "pid": "16302",
+     "pav": "Ruda kiaulės knyslė, 1 vnt.",
+     "uzs": "5",
+     "q": "19",
+     "kaina": "0.57"
+    },
+    {
+     "pid": "18655",
+     "pav": "Džiovinta kiaulės uodega, 1 vnt.",
+     "uzs": "5",
+     "q": "7",
+     "kaina": "1.28"
+    },
+    {
+     "pid": "16107",
+     "pav": "Skanėstai šunims - Mėsos kąsneliai su vištiena ir ėriena, 300 g, AdBi",
+     "uzs": "5",
+     "q": "17",
+     "kaina": "2.80"
+    },
+    {
+     "pid": "16317",
+     "pav": "Ruda avies koja, 1 vnt.",
+     "uzs": "5",
+     "q": "32",
+     "kaina": "1.31"
+    },
+    {
+     "pid": "16078",
+     "pav": "Skanėstai šunims - Triušio ausys su antiena, 500 g, AL68",
+     "uzs": "4",
+     "q": "12",
+     "kaina": "9.05"
+    },
+    {
+     "pid": "19095",
+     "pav": "Balta kiaulės knyslė, 1 vnt.",
+     "uzs": "4",
+     "q": "16",
+     "kaina": "0.56"
+    },
+    {
+     "pid": "19098",
+     "pav": "Balta jaučio ausis, 1 vnt.",
+     "uzs": "4",
+     "q": "22",
+     "kaina": "1.07"
+    },
+    {
+     "pid": "18125",
+     "pav": "Jaučio penis pjaustytas, 12,5 cm, 1 vnt.",
+     "uzs": "4",
+     "q": "55",
+     "kaina": "1.48"
+    },
+    {
+     "pid": "35124",
+     "pav": "Natūralūs skanėstai šunims - Elnio rago kramtukas, kietas — S",
+     "uzs": "4",
+     "q": "6",
+     "kaina": "4.32"
+    },
+    {
+     "pid": "18468",
+     "pav": "Galvijų trachėjos, pjaustytos, 500 g",
+     "uzs": "4",
+     "q": "5",
+     "kaina": "7.09"
+    },
+    {
+     "pid": "18128",
+     "pav": "Jaučio peniai pjaustyti, 15 cm, 10 vnt.",
+     "uzs": "4",
+     "q": "8",
+     "kaina": "15.69"
+    },
+    {
+     "pid": "16115",
+     "pav": "Skanėstai šunims - Maži minkšti kauliukai, Mini MIX, 300 g, AdBi",
+     "uzs": "4",
+     "q": "12",
+     "kaina": "2.78"
+    },
+    {
+     "pid": "19290",
+     "pav": "Antienos griežinėliai, 500 g, natūralūs skanėstai šunims, Hau&Miau",
+     "uzs": "4",
+     "q": "9",
+     "kaina": "9.94"
+    },
+    {
+     "pid": "17937",
+     "pav": "Kalėdinis skanėstų rinkinys mažų veislių šunims",
+     "uzs": "3",
+     "q": "4",
+     "kaina": "8.39"
+    },
+    {
+     "pid": "19234",
+     "pav": "Apollo Dentinis lazdelės vidutinių ir didelių veislių šunims 180 g",
+     "uzs": "3",
+     "q": "7",
+     "kaina": "1.14"
+    },
+    {
+     "pid": "16273",
+     "pav": "Sausainiai šuniukams, kauliuko formos, Bones Puppy Mix, 100 g",
+     "uzs": "3",
+     "q": "5",
+     "kaina": "0.71"
+    },
+    {
+     "pid": "16104",
+     "pav": "Skanėstai šunims - Mėsos kąsneliai su ėriena ir ryžiais, 300 g, AdBi",
+     "uzs": "3",
+     "q": "3",
+     "kaina": "2.71"
+    },
+    {
+     "pid": "18122",
+     "pav": "Jaučio penis pjaustytas, 15,0 cm, 1 vnt.",
+     "uzs": "3",
+     "q": "7",
+     "kaina": "1.91"
+    }
+   ],
+   "skan_vien": [
+    {
+     "pid": "18655",
+     "pav": "Džiovinta kiaulės uodega, 1 vnt.",
+     "uzs": "51",
+     "q": "312"
+    },
+    {
+     "pid": "16305",
+     "pav": "Ruda kiaulės ausis, 1 vnt.",
+     "uzs": "41",
+     "q": "355"
+    },
+    {
+     "pid": "18125",
+     "pav": "Jaučio penis pjaustytas, 12,5 cm, 1 vnt.",
+     "uzs": "37",
+     "q": "324"
+    },
+    {
+     "pid": "18128",
+     "pav": "Jaučio peniai pjaustyti, 15 cm, 10 vnt.",
+     "uzs": "35",
+     "q": "44"
+    },
+    {
+     "pid": "16298",
+     "pav": "Ruda stirnos koja, 1 vnt.",
+     "uzs": "34",
+     "q": "212"
+    },
+    {
+     "pid": "16302",
+     "pav": "Ruda kiaulės knyslė, 1 vnt.",
+     "uzs": "32",
+     "q": "160"
+    },
+    {
+     "pid": "16311",
+     "pav": "Ruda jaučio ausis, 1 vnt.",
+     "uzs": "30",
+     "q": "224"
+    },
+    {
+     "pid": "18639",
+     "pav": "Džiovinti galvijų skrandžiai — 500 g",
+     "uzs": "29",
+     "q": "46"
+    },
+    {
+     "pid": "17644",
+     "pav": "Kramtukai dantų priežiūrai su spirulina, 1 vnt., 50 g",
+     "uzs": "29",
+     "q": "67"
+    },
+    {
+     "pid": "18122",
+     "pav": "Jaučio penis pjaustytas, 15,0 cm, 1 vnt.",
+     "uzs": "27",
+     "q": "85"
+    },
+    {
+     "pid": "17641",
+     "pav": "Kramtukai su juka ir ciberžole, 1 vnt., 50 g",
+     "uzs": "25",
+     "q": "64"
+    },
+    {
+     "pid": "19092",
+     "pav": "Balta stirnos koja, 1 vnt.",
+     "uzs": "25",
+     "q": "191"
+    },
+    {
+     "pid": "15867",
+     "pav": "Veršiuko ausis, 1 vnt.",
+     "uzs": "24",
+     "q": "39"
+    },
+    {
+     "pid": "16317",
+     "pav": "Ruda avies koja, 1 vnt.",
+     "uzs": "24",
+     "q": "82"
+    },
+    {
+     "pid": "19095",
+     "pav": "Balta kiaulės knyslė, 1 vnt.",
+     "uzs": "22",
+     "q": "142"
+    }
+   ],
+   "kiekis_per_uzs": {
+    "vid_vnt": "7.5",
+    "vid_eur": "22.32"
+   }
+  },
+  "kates": {
+   "maisto_uzs": 736,
+   "su_skan": 83,
+   "top": [
+    {
+     "pid": "19033",
+     "pav": "Churu nuo plaukų gumuliukų susidarymo, su tunu  - kreminis skanėstas katėms, Churu Hairball, 4 x 14 g",
+     "uzs": "12",
+     "q": "55",
+     "kaina": "2.01"
+    },
+    {
+     "pid": "19027",
+     "pav": "Churu su tunu ir lašiša - kreminis skanėstas katėms, 4 x 14 g",
+     "uzs": "10",
+     "q": "62",
+     "kaina": "2.01"
+    },
+    {
+     "pid": "17481",
+     "pav": "Miamor skanėstai katėms - kremas su vitaminais, 6*15 g, Miamor Multi-Vitamin Cream",
+     "uzs": "10",
+     "q": "44",
+     "kaina": "2.36"
+    },
+    {
+     "pid": "19030",
+     "pav": "Churu su tunu ir jautiena - kreminis skanėstas katėms, 4 x 14 g",
+     "uzs": "10",
+     "q": "54",
+     "kaina": "2.01"
+    },
+    {
+     "pid": "19315",
+     "pav": "Animonda skanėstai katėms nuo plaukų kamuoliukų - Milkies Adult Harmony Anti-Hairball, 30 g",
+     "uzs": "9",
+     "q": "47",
+     "kaina": "1.04"
+    },
+    {
+     "pid": "19036",
+     "pav": "Churu Kitten su tunu - kreminis skanėstas kačiukams, 4 x 14 g",
+     "uzs": "8",
+     "q": "53",
+     "kaina": "2.01"
+    },
+    {
+     "pid": "17475",
+     "pav": "Miamor skanėstai katėms - salyklo ekstrakto kremas, 6*15 g, Miamor Malt Cream",
+     "uzs": "8",
+     "q": "51",
+     "kaina": "2.36"
+    },
+    {
+     "pid": "17102",
+     "pav": "Ontario skanėstai kačių dantų priežiūrai, Denta Bits, 75 g",
+     "uzs": "8",
+     "q": "20",
+     "kaina": "2.02"
+    },
+    {
+     "pid": "17115",
+     "pav": "Ontario skanėstai katėms su vitaminais Malt Bits, 75 g",
+     "uzs": "8",
+     "q": "31",
+     "kaina": "2.02"
+    },
+    {
+     "pid": "17469",
+     "pav": "Miamor skanėstai kačiukams - kreminė pasta su taurinu, 6*15 g, Miamor Junior Pate Cream",
+     "uzs": "8",
+     "q": "50",
+     "kaina": "2.82"
+    },
+    {
+     "pid": "19018",
+     "pav": "Churu su vištiena ir sūriu - kreminis skanėstas katėms, 4 x 14 g",
+     "uzs": "7",
+     "q": "29",
+     "kaina": "2.00"
+    },
+    {
+     "pid": "18395",
+     "pav": "GimCat skanėstai katėms - vitaminizuoti sūrio rutuliukai Cheezies, 50 g",
+     "uzs": "6",
+     "q": "16",
+     "kaina": "1.83"
+    },
+    {
+     "pid": "19312",
+     "pav": "Animonda skanėstai katėms su Omega-3 - Milkies Adult Balance, 30 g",
+     "uzs": "6",
+     "q": "31",
+     "kaina": "1.15"
+    },
+    {
+     "pid": "17484",
+     "pav": "Miamor skanėstai katėms - kepenų pašteto kremas, 6*15 g, Miamor Liver Pate Cream",
+     "uzs": "6",
+     "q": "27",
+     "kaina": "2.36"
+    },
+    {
+     "pid": "19021",
+     "pav": "Churu su vištiena ir krabu - kreminis skanėstas katėms, 4 x 14 g",
+     "uzs": "5",
+     "q": "22",
+     "kaina": "2.01"
+    },
+    {
+     "pid": "17478",
+     "pav": "Miamor skanėstai katėms - salyklo ekstrakto kremas su sūriu, 6*15 g, Miamor Malt Cream with Cheese",
+     "uzs": "5",
+     "q": "17",
+     "kaina": "2.36"
+    },
+    {
+     "pid": "18399",
+     "pav": "GimCat skanėstai katėms - dantų priežiūrai - Nutri Pockets Dental Poultry, 60 g",
+     "uzs": "5",
+     "q": "26",
+     "kaina": "1.99"
+    },
+    {
+     "pid": "19318",
+     "pav": "Animonda skanėstai katėms gerai savijautai - Milkies Adult Wellness, 30 g",
+     "uzs": "5",
+     "q": "22",
+     "kaina": "1.11"
+    },
+    {
+     "pid": "19321",
+     "pav": "Animonda skanėstai katėms dantų priežiūrai - Milkies Adult Fresh, 30 g",
+     "uzs": "5",
+     "q": "29",
+     "kaina": "1.15"
+    },
+    {
+     "pid": "19024",
+     "pav": "Churu su tunu ir šukutėmis - kreminis skanėstas katėms, 4 x 14 g",
+     "uzs": "4",
+     "q": "9",
+     "kaina": "2.01"
+    },
+    {
+     "pid": "18420",
+     "pav": "GimCat skanėstai katėms - Nutri Pockets Catnip su multivitaminais ir katžole, 60 g",
+     "uzs": "4",
+     "q": "21",
+     "kaina": "1.98"
+    },
+    {
+     "pid": "17487",
+     "pav": "Miamor skanėstai katėms - jautienos ir daržovių kremas, 5*15 g, Miamor Cat Cream",
+     "uzs": "3",
+     "q": "16",
+     "kaina": "2.93"
+    },
+    {
+     "pid": "18391",
+     "pav": "GimCat skanėstai katėms - vitaminizuotos tabletės su žole Gras-Bits, 40 g",
+     "uzs": "3",
+     "q": "7",
+     "kaina": "2.14"
+    },
+    {
+     "pid": "19149",
+     "pav": "Athena skanėstai katėms - pagaliukai su paukštiena ir kepenėlėmis, 10 vnt.*5 g",
+     "uzs": "3",
+     "q": "9",
+     "kaina": "1.07"
+    },
+    {
+     "pid": "17472",
+     "pav": "Miamor skanėstai katėms - vištienos ir daržovių kremas, 5*15 g, Miamor Cat Cream",
+     "uzs": "2",
+     "q": "4",
+     "kaina": "2.61"
+    }
+   ],
+   "skan_vien": [
+    {
+     "pid": "17481",
+     "pav": "Miamor skanėstai katėms - kremas su vitaminais, 6*15 g, Miamor Multi-Vitamin Cream",
+     "uzs": "30",
+     "q": "141"
+    },
+    {
+     "pid": "17475",
+     "pav": "Miamor skanėstai katėms - salyklo ekstrakto kremas, 6*15 g, Miamor Malt Cream",
+     "uzs": "26",
+     "q": "85"
+    },
+    {
+     "pid": "19033",
+     "pav": "Churu nuo plaukų gumuliukų susidarymo, su tunu  - kreminis skanėstas katėms, Churu Hairball, 4 x 14 g",
+     "uzs": "23",
+     "q": "50"
+    },
+    {
+     "pid": "19027",
+     "pav": "Churu su tunu ir lašiša - kreminis skanėstas katėms, 4 x 14 g",
+     "uzs": "20",
+     "q": "28"
+    },
+    {
+     "pid": "17484",
+     "pav": "Miamor skanėstai katėms - kepenų pašteto kremas, 6*15 g, Miamor Liver Pate Cream",
+     "uzs": "20",
+     "q": "99"
+    },
+    {
+     "pid": "19030",
+     "pav": "Churu su tunu ir jautiena - kreminis skanėstas katėms, 4 x 14 g",
+     "uzs": "19",
+     "q": "23"
+    },
+    {
+     "pid": "17478",
+     "pav": "Miamor skanėstai katėms - salyklo ekstrakto kremas su sūriu, 6*15 g, Miamor Malt Cream with Cheese",
+     "uzs": "18",
+     "q": "55"
+    },
+    {
+     "pid": "19036",
+     "pav": "Churu Kitten su tunu - kreminis skanėstas kačiukams, 4 x 14 g",
+     "uzs": "16",
+     "q": "21"
+    },
+    {
+     "pid": "19018",
+     "pav": "Churu su vištiena ir sūriu - kreminis skanėstas katėms, 4 x 14 g",
+     "uzs": "15",
+     "q": "24"
+    },
+    {
+     "pid": "19024",
+     "pav": "Churu su tunu ir šukutėmis - kreminis skanėstas katėms, 4 x 14 g",
+     "uzs": "14",
+     "q": "23"
+    },
+    {
+     "pid": "17487",
+     "pav": "Miamor skanėstai katėms - jautienos ir daržovių kremas, 5*15 g, Miamor Cat Cream",
+     "uzs": "14",
+     "q": "23"
+    },
+    {
+     "pid": "19315",
+     "pav": "Animonda skanėstai katėms nuo plaukų kamuoliukų - Milkies Adult Harmony Anti-Hairball, 30 g",
+     "uzs": "13",
+     "q": "14"
+    },
+    {
+     "pid": "18411",
+     "pav": "GimCat skanėstai katėms - Nutri Pockets Malt&Multivitamin mix, 150 g",
+     "uzs": "13",
+     "q": "28"
+    },
+    {
+     "pid": "17102",
+     "pav": "Ontario skanėstai kačių dantų priežiūrai, Denta Bits, 75 g",
+     "uzs": "13",
+     "q": "15"
+    },
+    {
+     "pid": "17115",
+     "pav": "Ontario skanėstai katėms su vitaminais Malt Bits, 75 g",
+     "uzs": "13",
+     "q": "17"
+    }
+   ],
+   "kiekis_per_uzs": {
+    "vid_vnt": "9.9",
+    "vid_eur": "20.03"
+   }
+  },
+  "pid_wc": "895",
+  "klientai": {
+   "maisto_klientu": "2226"
+  }
+ },
+ "v": "dep-190625",
+ "kurimas": 200,
+ "sid": 6649,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
