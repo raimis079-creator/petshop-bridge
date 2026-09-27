@@ -1,0 +1,31 @@
+{
+ "1": {
+  "v": "S1728mp",
+  "faze": "1",
+  "laikas": "2026-09-28 01:22:08",
+  "gyvas_md5": "80dc63f500b09381fb05dc3f52bd8c28",
+  "gyvas_sutampa": true,
+  "naujas_ok": true,
+  "lint": "ok",
+  "bak_yra": false,
+  "tema_fn": true
+ },
+ "2": {
+  "v": "S1728mp",
+  "faze": "2",
+  "laikas": "2026-09-28 01:22:14",
+  "bak_md5": "80dc63f500b09381fb05dc3f52bd8c28",
+  "md5": "e31c327440762e0762ac813a42c76472",
+  "hb": {
+   "front": 200,
+   "admin_ajax": 200
+  }
+ },
+ "v": "dep-222107",
+ "kurimas": 200,
+ "sid": 6678,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
