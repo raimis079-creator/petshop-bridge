@@ -1,0 +1,251 @@
+{
+ "1": {
+  "v": "S1724h",
+  "faze": "1",
+  "srv": {
+   "REMOTE_ADDR": "135.232.208.177",
+   "PS_CF_EDGE_IP": null,
+   "HTTP_CF_CONNECTING_IP": null,
+   "HTTP_CF_RAY": null,
+   "HTTP_CF_IPCOUNTRY": null,
+   "HTTP_CF_VISITOR": null,
+   "HTTP_X_FORWARDED_FOR": null,
+   "HTTP_X_FORWARDED_PROTO": null,
+   "SERVER_ADDR": "79.98.29.24",
+   "HTTPS": "on",
+   "HTTP_HOST": "dev.avesa.lt"
+  },
+  "per_cf": false,
+  "cf_ip_plugin": true,
+  "dns_a": [
+   {
+    "host": "petshop.lt",
+    "class": "IN",
+    "ttl": 802,
+    "type": "A",
+    "ip": "79.98.29.24"
+   }
+  ],
+  "dns_ns": [
+   "ns3.serveriai.lt",
+   "ns4.serveriai.lt",
+   "ns1.serveriai.lt",
+   "ns2.serveriai.lt"
+  ],
+  "laikas": "20:01:30"
+ },
+ "2": {
+  "v": "S1724h",
+  "faze": "2",
+  "pradzia": {
+   "kodas": 200,
+   "cf_ray": null,
+   "server": "Apache",
+   "cf_cache": null,
+   "loc": null,
+   "len": 242253
+  },
+  "pradzia_kesuojama": {
+   "kodas": 200,
+   "cf_ray": null,
+   "server": "Apache",
+   "cf_cache": null,
+   "loc": null,
+   "len": 242116
+  },
+  "kategorija": {
+   "kodas": 200,
+   "cf_ray": null,
+   "server": "Apache",
+   "cf_cache": null,
+   "loc": null,
+   "len": 405403
+  },
+  "filtras_be_slapuko": {
+   "kodas": 200,
+   "cf_ray": null,
+   "server": "Apache",
+   "cf_cache": null,
+   "loc": null,
+   "len": 400099
+  },
+  "filtras_be_slapuko_be_ps": {
+   "kodas": 403,
+   "cf_ray": null,
+   "server": "Apache",
+   "cf_cache": null,
+   "loc": null,
+   "len": 403
+  },
+  "filtras_su_slapuku": {
+   "kodas": 200,
+   "cf_ray": null,
+   "server": "Apache",
+   "cf_cache": null,
+   "loc": null,
+   "len": 399625
+  },
+  "kasa": {
+   "kodas": 302,
+   "cf_ray": null,
+   "server": "Apache",
+   "cf_cache": null,
+   "loc": "https://petshop.lt/krepselis/",
+   "len": 0
+  },
+  "rest_be_auth": {
+   "kodas": 200,
+   "cf_ray": null,
+   "server": "Apache",
+   "cf_cache": null,
+   "loc": null,
+   "len": 6599
+  },
+  "wc_api": {
+   "kodas": 200,
+   "cf_ray": null,
+   "server": "Apache",
+   "cf_cache": null,
+   "loc": null,
+   "len": 209707
+  },
+  "statika": {
+   "kodas": 200,
+   "cf_ray": null,
+   "server": "Apache",
+   "cf_cache": null,
+   "loc": null,
+   "len": 87553
+  },
+  "statika2": {
+   "kodas": 200,
+   "cf_ray": null,
+   "server": "Apache",
+   "cf_cache": null,
+   "loc": null,
+   "len": 87553
+  },
+  "sitemap": {
+   "kodas": 200,
+   "cf_ray": null,
+   "server": "Apache",
+   "cf_cache": null,
+   "loc": null,
+   "len": 2495
+  },
+  "robots": {
+   "kodas": 200,
+   "cf_ray": null,
+   "server": "Apache",
+   "cf_cache": null,
+   "loc": null,
+   "len": 412
+  },
+  "laikas": "20:01:47"
+ },
+ "3": {
+  "v": "S1724h",
+  "faze": "3",
+  "wp_mail": true,
+  "smtp_debug_pask": []
+ },
+ "4": {
+  "v": "S1724h",
+  "faze": "4",
+  "wpai_hist": [
+   {
+    "i": "3",
+    "time_run": null,
+    "s": "cron processing",
+    "date": "2026-09-27 17:01:17"
+   },
+   {
+    "i": "3",
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-09-27 17:00:02"
+   },
+   {
+    "i": "7",
+    "time_run": "254",
+    "s": "import finished & cron un-triggered<br>0 Produktai created 0",
+    "date": "2026-09-27 16:16:02"
+   },
+   {
+    "i": "7",
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-09-27 16:15:02"
+   },
+   {
+    "i": "3",
+    "time_run": "281",
+    "s": "import finished & cron un-triggered<br>0 Produktai created 0",
+    "date": "2026-09-27 16:01:16"
+   },
+   {
+    "i": "3",
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-09-27 16:00:02"
+   },
+   {
+    "i": "7",
+    "time_run": "255",
+    "s": "import finished & cron un-triggered<br>0 Produktai created 0",
+    "date": "2026-09-27 15:16:02"
+   },
+   {
+    "i": "7",
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-09-27 15:15:02"
+   }
+  ],
+  "cron_velu": 0,
+  "ps_web_ivykiai_10min": 0,
+  "uzsakymai_1h": 1,
+  "php_log_tail": [
+   "[27-Sep-2026 15:41:39 UTC] PHP Warning:  Undefined array key \"k3\" in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 30",
+   "[27-Sep-2026 15:43:43 UTC] PHP Warning:  Undefined array key \"k4\" in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 30",
+   "[27-Sep-2026 15:45:38 UTC] PHP Warning:  Undefined array key \"k5\" in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 30",
+   "[27-Sep-2026 15:47:38 UTC] PHP Warning:  Undefined array key \"k6\" in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 30",
+   "[27-Sep-2026 16:03:20 UTC] Užsakymas patvirtintas: užsakymas 36544, suma: 31.39EUR",
+   "[27-Sep-2026 17:02:00 UTC] WordPress database error Unknown column 'sukurta_at' in 'WHERE' for query SELECT COUNT(*) FROM gaj6_ps_web_ivykiai WHERE sukurta_at>=NOW()-INTERVAL 10 MINUTE made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}"
+  ],
+  "sargo_klaidos_30min": [
+   {
+    "laikas": "2026-09-27 19:45:38",
+    "z": "strip_tags(): Passing null to parameter #1 ($string) of type string is deprecated"
+   },
+   {
+    "laikas": "2026-09-27 19:55:13",
+    "z": "Return type of NAWebCo\\BoxPacker\\Solid::jsonSerialize() should either be compatible with JsonSerializable::jsonSerialize"
+   },
+   {
+    "laikas": "2026-09-27 19:55:13",
+    "z": "Return type of NAWebCo\\BoxPacker\\Container::jsonSerialize() should either be compatible with JsonSerializable::jsonSeria"
+   },
+   {
+    "laikas": "2026-09-27 19:55:13",
+    "z": "Return type of NAWebCo\\BoxPacker\\GenericPackable::jsonSerialize() should either be compatible with JsonSerializable::jso"
+   },
+   {
+    "laikas": "2026-09-27 20:01:57",
+    "z": "str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated"
+   },
+   {
+    "laikas": "2026-09-27 20:01:57",
+    "z": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated"
+   }
+  ],
+  "laikas": "20:02:00"
+ },
+ "v": "dep-170028",
+ "kurimas": 200,
+ "sid": 6641,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
