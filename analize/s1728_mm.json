@@ -1,0 +1,91 @@
+{
+ "1": {
+  "v": "S1728mm",
+  "faze": "1",
+  "laikas": "2026-09-28 01:00:25",
+  "gyvas_md5": "24c78e5d1d12526197b86802545e93e5",
+  "gyvas_sutampa": true,
+  "naujas_ok": true,
+  "lint": "ok",
+  "bak_yra": false,
+  "tvarka_isjungta": false
+ },
+ "2": {
+  "v": "S1728mm",
+  "faze": "2",
+  "laikas": "2026-09-28 01:00:32",
+  "bak_md5": "24c78e5d1d12526197b86802545e93e5",
+  "md5": "35370264060cb7eab7f9f16928b9e491",
+  "tvarka": "išjungta (FBT po „Į krepšelį\", virš skaičiuoklės)",
+  "hb": {
+   "front": 200,
+   "admin_ajax": 200
+  },
+  "kesas": "išvalytas"
+ },
+ "3": {
+  "v": "S1728mm",
+  "faze": "3",
+  "laikas": "2026-09-28 01:00:43",
+  "md5": "35370264060cb7eab7f9f16928b9e491",
+  "versija": "1.7.1",
+  "hb": {
+   "front": 200,
+   "admin_ajax": 200
+  },
+  "psl": {
+   "17978": {
+    "kodas": 200,
+    "forma_iki": 132774,
+    "fbt": 132792,
+    "calc": 143109,
+    "fbt_po_forma": true,
+    "fbt_virs_calc": true,
+    "eiluciu": 2,
+    "mygtukas": "Pridėti kartu į krepšelį",
+    "tarp": ""
+   },
+   "18587": {
+    "kodas": 200,
+    "forma_iki": 137420,
+    "fbt": 137438,
+    "calc": 147864,
+    "fbt_po_forma": true,
+    "fbt_virs_calc": true,
+    "eiluciu": 2,
+    "mygtukas": "Pridėti kartu į krepšelį",
+    "tarp": ""
+   },
+   "19092": {
+    "kodas": 200,
+    "forma_iki": 124492,
+    "fbt": false,
+    "calc": false,
+    "fbt_po_forma": false,
+    "fbt_virs_calc": true,
+    "eiluciu": 0,
+    "mygtukas": null,
+    "tarp": ""
+   },
+   "26391": {
+    "kodas": 200,
+    "forma_iki": 137785,
+    "fbt": false,
+    "calc": 142093,
+    "fbt_po_forma": false,
+    "fbt_virs_calc": false,
+    "eiluciu": 0,
+    "mygtukas": null,
+    "tarp": ""
+   }
+  },
+  "php_log_fbt": []
+ },
+ "v": "dep-215922",
+ "kurimas": 200,
+ "sid": 6673,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
