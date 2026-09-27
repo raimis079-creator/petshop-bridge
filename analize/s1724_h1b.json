@@ -1,0 +1,44 @@
+{
+ "1": {
+  "v": "S1724h",
+  "faze": "1",
+  "srv": {
+   "REMOTE_ADDR": "52.173.11.71",
+   "PS_CF_EDGE_IP": null,
+   "HTTP_CF_CONNECTING_IP": null,
+   "HTTP_CF_RAY": null,
+   "HTTP_CF_IPCOUNTRY": null,
+   "HTTP_CF_VISITOR": null,
+   "HTTP_X_FORWARDED_FOR": null,
+   "HTTP_X_FORWARDED_PROTO": null,
+   "SERVER_ADDR": "79.98.29.24",
+   "HTTPS": "on",
+   "HTTP_HOST": "dev.avesa.lt"
+  },
+  "per_cf": false,
+  "cf_ip_plugin": true,
+  "dns_a": [
+   {
+    "host": "petshop.lt",
+    "class": "IN",
+    "ttl": 874,
+    "type": "A",
+    "ip": "79.98.29.24"
+   }
+  ],
+  "dns_ns": [
+   "ns3.serveriai.lt",
+   "ns4.serveriai.lt",
+   "ns1.serveriai.lt",
+   "ns2.serveriai.lt"
+  ],
+  "laikas": "15:49:19"
+ },
+ "v": "dep-124816",
+ "kurimas": 200,
+ "sid": 6606,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
