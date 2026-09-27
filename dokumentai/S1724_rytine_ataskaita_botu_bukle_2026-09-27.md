@@ -62,3 +62,18 @@ Atviri: 19 processing/on-hold (#1173…#1196), 1 bacs on-hold #1180 (09-25). #11
 - Access log per bridge pasiekiamas tik iš `logs/Sep-2026.tar.gz*` (gzopen + 512 B tar antraštė praleidžiama, `gzgets`); paskutinis archyvas ~06:02 → rytinė patikra mato tik naktį. Gyvą dieną žiūrėti per DirectAdmin `CMD_SHOW_LOG?domain=petshop.lt&type=log&lines=N`.
 - `/proc/loadavg` — open_basedir, neprieinamas.
 - VM `device_bash` heredoc'ai > ~8 KB → `E2BIG`; didelius failus rašyti debesyje ir `device_commit_files`.
+
+---
+
+## 4. Dropship SLA — darbo dienos (GYVAI 11:30, R „daryk, per 2 darbo dienas")
+
+**Buvo (v1.0):** `petshop-dropship-sargas.php` valandinis cron — > 24 **kalendorinės** val. nuo `_ps_dropship_sent` → žymė `_ps_sla_velavimas` (kodo antraštė: „savaitgalio niuansas sprendžiamas žmogaus"). Ryto sargas skaičiuoja žymes. #1173/#1177/#1178 perduoti Ambrosia **Pn 09-25 11:13**, pažymėti **Šš 11:14** — klaidingas aliarmas (tas pats 09-15 su 13 užsakymų iš savaitgalio).
+
+**Dabar — `petshop-dropship-sargas` v1.1** (md5 `4854a421…`, bak `ps-archyvas/petshop-dropship-sargas.php.bak_s1724` (v1.0 md5 `561285de…`), repo `deploy/petshop-dropship-sargas-v1.1.php`):
+- SLA = **2 darbo dienos** (`RIBA_H` 48, filtras `ps_dropship_sla_valandos` liko).
+- `terminas($sent)`: perduota ne darbo dieną → atskaita nuo kitos darbo dienos 09:00; tada +24 val. × 2, praleidžiant ne darbo dienas. Darbo diena = `Petshop_Darbalaukis::darbo_diena()` (Pr–Pn, LT šventės, Velykų pirmadienis), be klasės — Pr–Pn.
+- Patikra: Pn 11:13 → **An 11:13**; Kt 14:22 → Pr 14:22; Šš 12:00 → Tr 09:00; 11-01 Sk (šventės 11-01/02) → Kt 11-05 09:00.
+- SQL grubus filtras liko (≥ 48 kalendorinių val.), tikslus terminas PHP. `tikrinti(true)` = dry sąrašas testams. Pastaba: „terminas m-d H:i (2 darbo d.) praėjo".
+- Žymės nuimtos #1173/#1177/#1178 (bak opcija `ps_s1724_sla_bak`, pastaba užsakyme); terminas visiems **An 09-29 11:13** — jei Ambrosia neišsiųs, sargas pažymės pats. Atvirų žymių 0.
+- `petshop-rytas.php` v1.6.1 (md5 `ef98d602…`, bak `.bak_s1724`): tekstas „Dropship tiekėjas vėluoja > 2 darbo d." → **žalia**, raudonų 0/16.
+- Deploy `s1724/e.php` (1 dry / 2 / 3 / 4 / 5 patikra atskira užklausa / **9 atstato viską**), heartbeat nekešuotu URL 200 po kiekvieno rašymo.
