@@ -1,0 +1,438 @@
+{
+ "1": {
+  "v": "S1727md",
+  "f": "1",
+  "siuntos_cols": [
+   "id",
+   "uzsakymas_id",
+   "shipment_id",
+   "sandelis",
+   "vezejas",
+   "siuntos_nr",
+   "paketu_sk",
+   "pristatymo_tipas",
+   "sukurta_at",
+   "diena",
+   "tiekejui_issiusta_at",
+   "registruota_at",
+   "isvezta_at",
+   "pristatyta_at",
+   "atsiimta_at",
+   "svoris_deklaruotas_g",
+   "kaina_vezejo_ct",
+   "tarifo_id",
+   "statusas",
+   "problema_kodas",
+   "dienos_iki_pristatymo",
+   "saltinis",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija",
+   "sandelio_saltinis",
+   "dydis"
+  ],
+  "misrus": [
+   {
+    "misrus": "0",
+    "sk": "1",
+    "n": "133",
+    "aov": "36.43",
+    "kontr": "7.89"
+   },
+   {
+    "misrus": "1",
+    "sk": "2",
+    "n": "29",
+    "aov": "55.61",
+    "kontr": "12.35"
+   },
+   {
+    "misrus": "1",
+    "sk": "3",
+    "n": "4",
+    "aov": "85.95",
+    "kontr": "27.11"
+   }
+  ],
+  "siuntu_per_uzs": [
+   {
+    "siuntos": "0",
+    "uzs": "21"
+   },
+   {
+    "siuntos": "1",
+    "uzs": "132"
+   },
+   {
+    "siuntos": "2",
+    "uzs": "11"
+   },
+   {
+    "siuntos": "3",
+    "uzs": "1"
+   },
+   {
+    "siuntos": "6",
+    "uzs": "1"
+   }
+  ],
+  "misrus_pvz": [
+   {
+    "uzsakymas_id": "35886",
+    "sandeliai": "vf,belcor_tofu,legacy",
+    "vezejai": "venipak",
+    "viso_ct": "8388",
+    "siuntos": "av:301,av:301,av:301,av:301,av:301,av:301"
+   },
+   {
+    "uzsakymas_id": "35911",
+    "sandeliai": "belcor_tofu,legacy",
+    "vezejai": "venipak",
+    "viso_ct": "1145",
+    "siuntos": "av:158"
+   },
+   {
+    "uzsakymas_id": "35917",
+    "sandeliai": "vf,zb,legacy",
+    "vezejai": "venipak",
+    "viso_ct": "18478",
+    "siuntos": "av:552,av:552,av:552"
+   },
+   {
+    "uzsakymas_id": "35948",
+    "sandeliai": "legacy,vf",
+    "vezejai": "venipak",
+    "viso_ct": "3420",
+    "siuntos": "av:158"
+   },
+   {
+    "uzsakymas_id": "35950",
+    "sandeliai": "vf,legacy",
+    "vezejai": "venipak",
+    "viso_ct": "6701",
+    "siuntos": "av:158"
+   },
+   {
+    "uzsakymas_id": "35957",
+    "sandeliai": "legacy,vf",
+    "vezejai": "venipak",
+    "viso_ct": "3155",
+    "siuntos": "av:158"
+   },
+   {
+    "uzsakymas_id": "35965",
+    "sandeliai": "legacy,vf",
+    "vezejai": "venipak",
+    "viso_ct": "4529",
+    "siuntos": "av:158"
+   },
+   {
+    "uzsakymas_id": "35972",
+    "sandeliai": "legacy,vf",
+    "vezejai": "venipak",
+    "viso_ct": "3470",
+    "siuntos": "av:158"
+   },
+   {
+    "uzsakymas_id": "35979",
+    "sandeliai": "legacy,vf",
+    "vezejai": "venipak",
+    "viso_ct": "4203",
+    "siuntos": "av:301"
+   },
+   {
+    "uzsakymas_id": "35983",
+    "sandeliai": "legacy,vf",
+    "vezejai": "venipak",
+    "viso_ct": "6388",
+    "siuntos": "vf:158"
+   },
+   {
+    "uzsakymas_id": "35989",
+    "sandeliai": "vf,legacy",
+    "vezejai": "venipak",
+    "viso_ct": "13017",
+    "siuntos": "av:158,vf:158"
+   },
+   {
+    "uzsakymas_id": "35995",
+    "sandeliai": "legacy,vf",
+    "vezejai": "venipak",
+    "viso_ct": "7139",
+    "siuntos": "av:158"
+   },
+   {
+    "uzsakymas_id": "36020",
+    "sandeliai": "legacy,vf",
+    "vezejai": "venipak",
+    "viso_ct": "1366",
+    "siuntos": "av:158"
+   },
+   {
+    "uzsakymas_id": "36021",
+    "sandeliai": "vf,zb",
+    "vezejai": "venipak",
+    "viso_ct": "9817",
+    "siuntos": "zb:301,vf:402"
+   },
+   {
+    "uzsakymas_id": "36025",
+    "sandeliai": "legacy,vf",
+    "vezejai": "venipak",
+    "viso_ct": "1530",
+    "siuntos": "av:158"
+   }
+  ],
+  "kelias_reason": [
+   {
+    "reason": "grynai AV prekė (be tiekėjo)",
+    "n": "247"
+   },
+   {
+    "reason": "AV šios prekės neturi",
+    "n": "5"
+   },
+   {
+    "reason": "darbalaukis: Inga pakeitė Iš AV → VF siunčia klientui",
+    "n": "4"
+   },
+   {
+    "reason": "parsivežta iš VF, partija #25",
+    "n": "4"
+   },
+   {
+    "reason": "AV neužtenka → tiekėjas: AV šios prekės neturi",
+    "n": "4"
+   },
+   {
+    "reason": "parsivežta iš VF, partija #29",
+    "n": "4"
+   },
+   {
+    "reason": "darbalaukis: Inga pakeitė ZB siunčia klientui → Iš AV",
+    "n": "3"
+   },
+   {
+    "reason": "dropship pirma: tiekėjas vf turi 45; AV šios prekės neturi",
+    "n": "2"
+   },
+   {
+    "reason": "dropship pirma (AV turi 3, bet užsakymas ne mišrus): tiekėjas vf turi 277; AV turi 3, reikia 1",
+    "n": "2"
+   },
+   {
+    "reason": "dropship pirma (AV turi 2, bet užsakymas ne mišrus): tiekėjas vf turi 260; AV turi 2, reikia 1",
+    "n": "2"
+   },
+   {
+    "reason": "darbalaukis: Inga pakeitė VF veža į AV → VF siunčia klientui",
+    "n": "2"
+   },
+   {
+    "reason": "dropship pirma: tiekėjas vf turi 76; AV šios prekės neturi",
+    "n": "2"
+   },
+   {
+    "reason": "dropship pirma: tiekėjas vf turi 60; AV šios prekės neturi",
+    "n": "2"
+   },
+   {
+    "reason": "parsivežta iš VF, partija #30",
+    "n": "2"
+   },
+   {
+    "reason": "mišrus užsakymas → AV: AV turi 1, reikia 1",
+    "n": "2"
+   },
+   {
+    "reason": "S1717: atkurta — WC perkūrė eilutes po pakartotinio kasos pateikimo 18:00:30 (pirmo pateikimo kelias: AV)",
+    "n": "2"
+   },
+   {
+    "reason": "darbalaukis: Rai pakeitė Iš AV → VF siunčia klientui",
+    "n": "1"
+   },
+   {
+    "reason": "AV turi 4, reikia 1",
+    "n": "1"
+   },
+   {
+    "reason": "AV: bazinė prekė #17659 ×8 (DP pakas), nurašyta rankiniu būdu S1670",
+    "n": "1"
+   },
+   {
+    "reason": "AV turi 0, reikia 1 — neužtenka",
+    "n": "1"
+   }
+  ]
+ },
+ "2": {
+  "v": "S1727md",
+  "f": "2",
+  "p": [
+   {
+    "pid": 18587,
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauli",
+    "u": "15",
+    "src": "av",
+    "cats": [
+     "sausas-maistas-sunims"
+    ],
+    "comp": [
+     "19095 Balta kiaulės knyslė, 1 vnt. 0.75 src=\"av\" -10%",
+     "15403 Žaislas šuniui - Balta pliušinė avelė, 35 cm 6.55 src=\"av\" -10%",
+     "15158 Žaislas šuniui - Kaulas The King, 27,5 cm 6.99 src=\"av\" -10%"
+    ]
+   },
+   {
+    "pid": 17978,
+    "pav": "Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria ",
+    "u": "4",
+    "src": "av",
+    "cats": [
+     "sausas-maistas-sunims"
+    ],
+    "comp": [
+     "35138 Natūralūs skanėstai šunims - Elnio rago kramt 15.24 src=\"av\" -10%",
+     "15235 Žaislas šuniui - Guminė kvepianti padanga, ma 3.48 src=\"av\" -10%",
+     "17841 Kietas Himalajų sūrio skanėstas su mėtomis šu 9.59 src=\"av\" -10%"
+    ]
+   },
+   {
+    "pid": 18590,
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauli",
+    "u": "4",
+    "src": "av",
+    "cats": [
+     "sausas-maistas-sunims"
+    ],
+    "comp": [
+     "15208 Žaislas šuniui - Juodas kaulas iš virvių, S d 12.45 src=\"av\" -10%",
+     "17605 Lavinamasis žaislas šuniui - Nina Ottoson Dog 23.68 src=\"av\" -10%",
+     "15248 Žaislas šuniui - Guminis kvepiantis kaulas da 4.52 src=\"av\" -10%"
+    ]
+   },
+   {
+    "pid": 18018,
+    "pav": "Josera Mini Lamb begrūdis (Mini Deluxe) 10 kg - sausas maist",
+    "u": "3",
+    "src": "av",
+    "cats": [
+     "sausas-maistas-sunims"
+    ],
+    "comp": [
+     "36283 Liūtas, skanėstų žaislas, šunims, pliušinis,  15.45 src=\"av\" -10%",
+     "15165 Žaislas šuniui - Kaulas 19 cm 3.49 src=\"av\" -10%",
+     "17621 Kramtukas šunims iš juodmedžio, M dydžio 8.96 src=\"av\" -10%"
+    ]
+   },
+   {
+    "pid": 27128,
+    "pav": "Josera A/S Lamb + Rice sausas pašaras šunims su ėriena ir ry",
+    "u": "3",
+    "src": "vf",
+    "cats": [
+     "sausas-maistas-sunims"
+    ],
+    "comp": [
+     "22362 Wanpy skanėstai šunims Assorted Multi Treats  7.39 src=\"vf\" -10%",
+     "19925 Antos skanėstas šunims jaučių trachėjos 5 kg 134.69 src=\"vf\" -10%",
+     "24614 Antos skanėstai šunims su vištiena D`light ma 3.49 src=\"vf\" -10%"
+    ]
+   },
+   {
+    "pid": 18084,
+    "pav": "Josera Indoor 10 kg - sausas maistas naminėms sterilizuotoms",
+    "u": "2",
+    "src": "vf",
+    "cats": [
+     "sausas-maistas-katems"
+    ],
+    "comp": [
+     "22083 Churu kreminis skanėstas katėms,su vištiena,  22.69 src=\"vf\" -10%",
+     "26987 Churu Hairball kreminis skanėstas katėms su v 34.09 src=\"vf\" -10%",
+     "24005 Churu kreminis skanėstas 10+ katėms su vištie 2.49 src=\"vf\" -10%"
+    ]
+   },
+   {
+    "pid": 18154,
+    "pav": "JOSERA FESTIVAL pašaras šunims su lašiša, 12,5 kg",
+    "u": "2",
+    "src": "vf",
+    "cats": [
+     "sausas-maistas-sunims"
+    ],
+    "comp": [
+     "24814 GIGI Calci-Cod Omega kaps. pašaro papildas ka 16.79 src=\"vf\" -10%",
+     "21650 Churu kreminis skanėstas šunims su vištiena i 2.49 src=\"vf\" -10%",
+     "24632 Wanpy skanėstas šunims, marmuriniai jautienos 3.99 src=\"vf\" -10%"
+    ]
+   },
+   {
+    "pid": 19760,
+    "pav": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maista",
+    "u": "2",
+    "src": "ambrosia",
+    "cats": [
+     "sausas-maistas-sunims"
+    ],
+    "comp": []
+   },
+   {
+    "pid": 21041,
+    "pav": "JosiDog Senior / Light 900 g",
+    "u": "2",
+    "src": "vf",
+    "cats": [
+     "sausas-maistas-sunims"
+    ],
+    "comp": [
+     "34809 Churu Terrine skanėstas didelių veislių šunim 6.09 src=\"vf\" -10%",
+     "24151 Nobby žaislas šuniui, pliušinis ančiasnapis,  10.99 src=\"vf\" -10%",
+     "21893 SmartBones Peanut Butter Bones skanėstai su r 5.39 src=\"vf\" -10%"
+    ]
+   },
+   {
+    "pid": 14556,
+    "pav": "FARMINA N&D QUINOA - DOG Dry SKIN&COAT Venison&Coconut ADULT",
+    "u": "1",
+    "src": "zb",
+    "cats": [
+     "sausas-maistas-sunims"
+    ],
+    "comp": [
+     "14158 Chewllagen Jautienos skonio kolageno Maži rit 56.59 src=\"zb\" -10%",
+     "14446 DOGOTEKA DogoRelax 100mg lašai 41.19 src=\"zb\" -10%",
+     "14385 Chewllagen BAR Sūrio 25cm - L dėžė 12x200g 105.89 src=\"zb\" -10%"
+    ]
+   }
+  ],
+  "animonda_cats": [
+   "animonda-konservai-sunims",
+   "konservai-sunims"
+  ],
+  "miamor_drink_cats": [
+   "konservai-katems",
+   "maistas-katems",
+   "miamor-katems"
+  ],
+  "skan_src": {
+   "16298": "av",
+   "16305": "av",
+   "17475": "av",
+   "17478": "av",
+   "17481": "av",
+   "18639": "av",
+   "18647": "av",
+   "18655": "av",
+   "19098": "av"
+  }
+ },
+ "v": "dep-182310",
+ "kurimas": 200,
+ "sid": 6647,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
