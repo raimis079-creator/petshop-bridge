@@ -1,0 +1,53 @@
+{
+ "5": {
+  "v": "S1724e",
+  "faze": "5",
+  "arch": "ok",
+  "plugin_md5": "4854a4210f48e84ff4b523bf5f9ffd93",
+  "plugin_ver": "1.1",
+  "rytas_md5": "ef98d602630b3b72557b9a7ab855ab34",
+  "klase": true,
+  "valandu": 48,
+  "cron_kitas": "09-27 12:13",
+  "tikrinti_dry": [
+   {
+    "id": "36288",
+    "nr": "1173",
+    "sent": "2026-09-25 11:13:30",
+    "terminas": "2026-09-29 11:13 Tue",
+    "veluoja": false
+   },
+   {
+    "id": "36296",
+    "nr": "1177",
+    "sent": "2026-09-25 11:13:31",
+    "terminas": "2026-09-29 11:13 Tue",
+    "veluoja": false
+   },
+   {
+    "id": "36298",
+    "nr": "1178",
+    "sent": "2026-09-25 11:13:31",
+    "terminas": "2026-09-29 11:13 Tue",
+    "veluoja": false
+   }
+  ],
+  "tikrinti_realus": 0,
+  "zymiu_atviru": 0,
+  "rytas_lempute": {
+   "kodas": "dropship_sla",
+   "lygis": "zalia",
+   "tekstas": "Dropship tiekėjas vėluoja > 2 darbo d.: 0 užsak."
+  },
+  "rytas_lempuciu": 16,
+  "rytas_raudonos": [],
+  "heartbeat": 200
+ },
+ "v": "dep-083020",
+ "kurimas": 200,
+ "sid": 6569,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
