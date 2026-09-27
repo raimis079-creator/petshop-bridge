@@ -1,0 +1,56 @@
+{
+ "1": {
+  "v": "S1724e",
+  "faze": "1",
+  "arch": "ok",
+  "lint": "ok",
+  "plugin_md5_dabar": "561285de45f4812186e6105372b89c68",
+  "plugin_ver_dabar": "1.0 (be Version)",
+  "rytas_counts": [
+   1,
+   1
+  ],
+  "lint_rytas": "ok",
+  "rytas_md5_dabar": "bb897e97383598e932337dadddd0df6c",
+  "pvz": {
+   "2026-09-25 11:13:31": "2026-09-29 11:13 Tue laukiam",
+   "2026-09-24 14:22:00": "2026-09-28 14:22 Mon laukiam",
+   "2026-09-26 12:00:00": "2026-09-30 09:00 Wed laukiam",
+   "2026-09-27 10:00:00": "2026-09-30 09:00 Wed laukiam",
+   "2026-11-01 10:00:00": "2026-11-05 09:00 Thu laukiam",
+   "2026-09-21 09:00:00": "2026-09-23 09:00 Wed VELUOJA"
+  },
+  "dry_kandidatai": [],
+  "atviri_su_sent": [
+   [
+    "36288",
+    "2026-09-25 11:13:30",
+    "09-29 11:13 Tue",
+    "ok",
+    "2026-09-26 11:14:03"
+   ],
+   [
+    "36296",
+    "2026-09-25 11:13:31",
+    "09-29 11:13 Tue",
+    "ok",
+    "2026-09-26 11:14:03"
+   ],
+   [
+    "36298",
+    "2026-09-25 11:13:31",
+    "09-29 11:13 Tue",
+    "ok",
+    "2026-09-26 11:14:03"
+   ]
+  ],
+  "darbalaukis_helper": true
+ },
+ "v": "dep-082709",
+ "kurimas": 200,
+ "sid": 6567,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
