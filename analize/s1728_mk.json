@@ -1,0 +1,90 @@
+{
+ "1": {
+  "v": "S1728mk",
+  "Petshop_Product_Calc": {
+   "failas": "wp-content/plugins/petshop-core/includes/class-product-calc.php",
+   "eil": [
+    "32: add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'widget' ), 31 );",
+    "33: add_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue' ) );"
+   ]
+  },
+  "Petshop_Atsargu_Laukimas": {
+   "failas": "wp-content/mu-plugins/petshop-atsargu-laukimas.php",
+   "eil": [
+    "20: add_action( 'init', array( __CLASS__, 'maybe_install' ) );",
+    "21: add_action( 'rest_api_init', array( __CLASS__, 'routes' ) );",
+    "22: add_filter( 'petshop_email_flows', array( __CLASS__, 'registruoti_srauta' ) );",
+    "23: add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'forma' ), 31 );",
+    "25: add_action( 'woocommerce_product_set_stock_status', array( __CLASS__, 'statusas_pasikeite' ), 20, 3 );",
+    "27: add_action( 'woocommerce_variation_set_stock_status', array( __CLASS__, 'variacijos_statusas' ), 20, 3 );"
+   ]
+  },
+  "Petshop_Pristatymo_Pazadas": {
+   "failas": "wp-content/mu-plugins/petshop-pristatymo-pazadas.php",
+   "eil": [
+    "27: add_filter( 'woocommerce_get_stock_html', array( __CLASS__, 'stock_html' ), 30, 2 );",
+    "29: add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'kg' ), 10 ); // iškart po kainos (kaina prio 10, registruota anksčiau)",
+    "31: add_action( 'woocommerce_cart_totals_before_order_total', array( __CLASS__, 'krepselyje' ), 6 );      // po nemokamo pristatymo juostos (prio 5)",
+    "32: add_action( 'woocommerce_review_order_before_shipping', array( __CLASS__, 'apmokejime' ), 10 );",
+    "33: add_action( 'woocommerce_widget_shopping_cart_before_buttons', array( __CLASS__, 'mini' ), 6 );",
+    "34: add_action( 'wp_head', array( __CLASS__, 'css' ), 50 );",
+    "185: add_action( 'init', array( 'Petshop_Pristatymo_Pazadas', 'init' ), 20 );"
+   ]
+  },
+  "Petshop_Prekes_Tvarka": "nėra",
+  "mini": {
+   "wp-content/mu-plugins/petshop-dydziai.php": [
+    "<div class=\"ps-pak__head\"><span class=\"ps-pak__t\">Pakuotė</span><span class=\"ps-pak__sv\"><a href=\"#ps-calc\" class=\"ps-pak__calc\">Kiek užteks jūsų ' . esc_html( $gyv ) . '? → įveskite svorį</a></span>",
+    "den=false;sv.innerHTML=\"„Užtenka“ — \"+String(w).replace(\".\",\",\")+\" kg \"+gyv+\" · <a href=\\\\\"#ps-calc\\\\\" class=\\\\\"ps-pak__calc\\\\\">keisti svorį</a>\"}else{lock=null}}).catch(function(){lock=null})}",
+    "function bind(){var inp=document.getElementById(\"ps-calc-w\"),calc=document.getElementById(\"ps-calc\");if(!inp||!calc)return;var mo=new MutationObserver(function(){var v=parseFloat(String(inp.value).r",
+    "eplace(\",\",\".\"));if(v>0&&calc.querySelector(\".ps-calc-res\")){set(v);fill(v)}});mo.observe(calc,{childList:true,subtree:true})}if(document.readyState===\"l",
+    "ta-url\");return}var a=e.target.closest(\".ps-pak__calc\");if(!a)return;var c=document.getElementById(\"ps-calc\");if(c){e.preventDefault();c.scrollIntoView({behavior:\"smooth\",block:\"center\"});var i=document.getE",
+    "lementById(\"ps-calc-w\");if(i)setTimeout(function(){i.focus()},400)}});"
+   ],
+   "wp-content/mu-plugins/petshop-juosta.php": [
+    "'petshop-langai', 'petshop-naujienlaiskiai', 'petshop-rezultatai', 'ps-ataskaitos', 'ps-prognoze', 'petshop-fbt', 'petshop-pragma', 'petshop-promotions' );"
+   ],
+   "wp-content/mu-plugins/petshop-prekes-tvarka.php": [
+    " * Description: „Dažnai perkama kartu“ (Petshop_FBT::render_widget, woocommerce_after_add_to_cart_form prio 20) perkeliamas PO skaičiuoklės",
+    "\t\tif ( 'Petshop_FBT' !== $kl || 'render_widget' !== $fn[1] ) { continue; }"
+   ],
+   "wp-content/mu-plugins/petshop-relaunch.php": [
+    "ion(){var kg=' . json_encode( $kg ) . ',n=0,t=setInterval(function(){var r=document.getElementById(\"ps-calc\"),w=document.getElementById(\"ps-calc-w\"),b=r&&r.querySelector(\".ps-calc-go\");n++;if(w&&b){clearInte",
+    "ction blokas(out){if(document.getElementById('ps-primink'))return;var kgEl=document.getElementById('ps-calc-w'),kg=kgEl?parseFloat(String(kgEl.value).replace(',','.')):0;if(!kg)return;var big=out.querySelect",
+    "function start(){root=document.getElementById('ps-calc');var out=root&&root.querySelector('.ps-calc-out');if(!out)return false;"
+   ],
+   "wp-content/plugins/petshop-fbt/petshop-fbt.php": [
+    " * Text Domain: petshop-fbt",
+    "class Petshop_FBT {",
+    "        add_action( 'woocommerce_after_add_to_cart_form', [ $this, 'render_widget' ], 20 );",
+    "            'manage_woocommerce', 'petshop-fbt', [ $this, 'settings_html' ] );",
+    "    public function render_widget() {",
+    "        <div class=\"petshop-fbt\" data-nonce=\"<?php echo esc_attr($nonce); ?>\" data-main=\"<?php echo esc_attr($product->get_id()); ?"
+   ],
+   "wp-content/plugins/petshop-core/includes/class-product-calc.php": [
+    "\t\t/* S281: TIKRA nuoroda į #ps-calc, ne mygtukas su JS.",
+    "\t\techo '<a class=\"ps-calc-hook\" href=\"#ps-calc\">'",
+    "\t\t<div class=\"ps-calc\" id=\"ps-calc\"",
+    "\t\t\t<div class=\"ps-calc-head\">",
+    "\t\t\t\t<div class=\"ps-calc-h1\">Kiek šio maisto užteks jūsų <?php echo esc_html( $w['dat'] ); ?>?</div>",
+    "\t\t\t\t<div class=\"ps-calc-h2\"><?php echo esc_html( $c['has_table']"
+   ],
+   "wp-content/themes/flatsome-child/functions.php": [
+    "// + petshop_crosssell_css) perkelta i petshop-fbt v1.5.2 krepselio bloka:"
+   ],
+   "snip6672 TEMP PS dep-215538": [
+    "if(preg_match('/add_action|add_filter|remove_action|woocommerce_after_add_to_cart|after_add_to_cart|petshop-fbt|Petshop_FBT|render_widget/',$l)) $o[]=($i+1).': '.trim($l); } $r[$c]=['failas'=>str_replace(ABSPATH",
+    "    // kas dar mini Petshop_FBT / render_widget",
+    "tylesheet_directory().'/*.php')?:[]) as $f){ $t=file_get_contents($f); if(preg_match_all('/.{0,100}(render_widget|Petshop_FBT|petshop-fbt|ps-calc).{0,100}/',$t,$m)) $hits[str_replace(ABSPATH,'',$f)]=array_slice($m",
+    "ame,code FROM {$wpdb->prefix}snippets WHERE active=1\",ARRAY_A) as $s){ if(preg_match_all('/.{0,100}(render_widget|Petshop_FBT|petshop-fbt|after_add_to_cart_form).{0,100}/',$s['code'],$m)) $hits['snip'.$s['id'].' '"
+   ]
+  }
+ },
+ "v": "dep-215538",
+ "kurimas": 200,
+ "sid": 6672,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
