@@ -1,0 +1,783 @@
+{
+ "1": {
+  "v": "S1728ma",
+  "fbt": {
+   "md5": "6daf15713a587116869e78a6c249bfa7",
+   "dydis": 71210,
+   "mtime": "2026-08-28 08:51:13",
+   "aktyvus": true
+  },
+  "opt": {
+   "settings": {
+    "enabled": "1",
+    "discount": 0,
+    "maxc": 3,
+    "heading": "Dažnai perkama kartu",
+    "note": "Perkant kartu – papildomoms prekėms taikoma nuolaida!",
+    "precheck": "1"
+   },
+   "cat_rules": {
+    "skanestai-sunims": 10,
+    "skanestai-katems": 10,
+    "zaislai-sunims": 10,
+    "zaislai-katems": 10,
+    "higienos-priemones-sunims": 10,
+    "vitaminai-ir-papildai-sunims": 10,
+    "vitaminai-ir-papildai-katems": 10
+   },
+   "pairs": {
+    "sausas-maistas-sunims": [
+     "skanestai-sunims",
+     "zaislai-sunims",
+     "higienos-priemones-sunims",
+     "vitaminai-ir-papildai-sunims"
+    ],
+    "maistas-sunims": [
+     "skanestai-sunims",
+     "zaislai-sunims",
+     "higienos-priemones-sunims",
+     "vitaminai-ir-papildai-sunims"
+    ],
+    "sausas-maistas-katems": [
+     "skanestai-katems",
+     "zaislai-katems",
+     "vitaminai-ir-papildai-katems"
+    ],
+    "maistas-katems": [
+     "skanestai-katems",
+     "zaislai-katems",
+     "vitaminai-ir-papildai-katems"
+    ]
+   },
+   "copurch_info": {
+    "atnaujinta": "2026-09-27 01:10:01",
+    "prekiu": 5,
+    "poru": 6,
+    "laikotarpis_nuo": "2026-03-31",
+    "min": 3,
+    "top": 6
+   },
+   "skanestai": null
+  },
+  "manual": [],
+  "av_source": {
+   "file": "wp-content/mu-plugins/petshop-av-source.php",
+   "md5": "7d8e67eba194efbdc4ac7bed887303f9",
+   "lines": "58-121",
+   "kodas": "\tpublic static function resolve( $product_id, $qty = 1 ) {\n\t\t$product_id = (int) $product_id;\n\t\t$qty        = max( 1, (int) $qty );\n\n\t\t// v1.2: DP pakas → bazinė prekė × pako kiekis; likutis grąžinamas pakais.\n\t\t$dp = self::dp( $product_id );\n\t\tif ( $dp ) {\n\t\t\t$r = self::resolve( $dp['base'], $qty * $dp['n'] );\n\t\t\t$r['av_qty'] = ( null === $r['av_qty'] ) ? null : intdiv( (int) $r['av_qty'], $dp['n'] );\n\t\t\t$r['dp']     = $dp;\n\t\t\t$r['reason'] = 'DP pakas ×' . $dp['n'] . ' (bazinė #' . $dp['base'] . '): ' . $r['reason'];\n\t\t\treturn $r;\n\t\t}\n\n\t\t$baze = class_exists( 'Petshop_Fulfillment_Source' )\n\t\t\t? Petshop_Fulfillment_Source::resolve( $product_id )\n\t\t\t: [ 'source' => 'legacy', 'carrier' => 'any', 'courier_only' => false, 'reason' => 'resolverio nėra' ];\n\n\t\t// `legacy` = AV sandėlis (resolverio komentaras: „tikras savas sandelis\").\n\t\t// 959 publish prekės iš _legacy_source=excel_v2_20260604 su REALIAIS likučiais\n\t\t// WooCommerce `_stock` lauke (niekas jų neperrašo — sinchronizacijos nėra).\n\t\t// Joms `_own_stock_qty` NEREIKIA — jos ir taip AV.\n\t\tif ( 'legacy' === $baze['source'] ) {\n\t\t\treturn [\n\t\t\t\t'source'       => 'av',\n\t\t\t\t'carrier'      => 'any',\n\t\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t\t'av_qty'       => (int) get_post_meta( $product_id, '_stock', true ),\n\t\t\t\t'av_uztenka'   => true,\n\t\t\t\t'tiekejas'     => 'av',\n\t\t\t\t'reason'       => 'grynai AV prekė (be tiekėjo)',\n\t\t\t];\n\t\t}\n\n\t\t$av        = class_exists( 'Petshop_AV_Stock' ) ? Petshop_AV_Stock::qty( $product_id ) : null;\n\t\t$uztenka   = ( null !== $av && $av >= $qty );\n\t\t$tiekejas  = $baze['source'];\n\n\t\tif ( $uztenka ) {\n\t\t\treturn [\n\t\t\t\t'source'       => 'av',\n\t\t\t\t'carrier'      => 'any',          // AV gali ir Venipak, ir LP\n\t\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t\t'av_qty'       => $av,\n\t\t\t\t'av_uztenka'   => true,\n\t\t\t\t'tiekejas'     => $tiekejas,\n\t\t\t\t'reason'       => \"AV turi $av, reikia $qty\",\n\t\t\t];\n\t\t}\n\n\t\t// SAUGIKLIS: LP Express galimas TIK iš AV (Raimis §18.1).\n\t\t// Bet kuris dropship šaltinis → venipak, nesvarbu ką grąžino bazinis resolveris.\n\t\treturn [\n\t\t\t'source'       => $tiekejas,\n\t\t\t'carrier'      => 'venipak',\n\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t'av_qty'       => $av,\n\t\t\t'av_uztenka'   => false,\n\t\t\t'tiekejas'     => $tiekejas,\n\t\t\t'reason'       => ( null === $av )\n\t\t\t\t? 'AV šios prekės neturi'\n\t\t\t\t: \"AV turi $av, reikia $qty — neužtenka\",\n\t\t];\n\t}\n"
+  },
+  "resolve": {
+   "16305": {
+    "r1": {
+     "source": "av",
+     "carrier": "any",
+     "courier_only": false,
+     "av_qty": 190,
+     "av_uztenka": true,
+     "tiekejas": "av",
+     "reason": "grynai AV prekė (be tiekėjo)"
+    },
+    "src": [
+     {
+      "source": "av",
+      "stock_qty": "190",
+      "is_active": "1"
+     }
+    ]
+   },
+   "17481": {
+    "r1": {
+     "source": "av",
+     "carrier": "any",
+     "courier_only": false,
+     "av_qty": 373,
+     "av_uztenka": true,
+     "tiekejas": "av",
+     "reason": "grynai AV prekė (be tiekėjo)"
+    },
+    "src": [
+     {
+      "source": "av",
+      "stock_qty": "373",
+      "is_active": "1"
+     }
+    ]
+   },
+   "17978": {
+    "r1": {
+     "source": "av",
+     "carrier": "any",
+     "courier_only": false,
+     "av_qty": 3,
+     "av_uztenka": true,
+     "tiekejas": "vf",
+     "reason": "AV turi 3, reikia 1"
+    },
+    "src": [
+     {
+      "source": "av",
+      "stock_qty": "3",
+      "is_active": "1"
+     },
+     {
+      "source": "vf",
+      "stock_qty": "983",
+      "is_active": "1"
+     }
+    ]
+   },
+   "18560": {
+    "r1": {
+     "source": "av",
+     "carrier": "any",
+     "courier_only": false,
+     "av_qty": 1,
+     "av_uztenka": true,
+     "tiekejas": "vf",
+     "reason": "AV turi 1, reikia 1"
+    },
+    "src": [
+     {
+      "source": "av",
+      "stock_qty": "1",
+      "is_active": "1"
+     },
+     {
+      "source": "vf",
+      "stock_qty": "68",
+      "is_active": "1"
+     }
+    ]
+   },
+   "18587": {
+    "r1": {
+     "source": "av",
+     "carrier": "any",
+     "courier_only": false,
+     "av_qty": 2,
+     "av_uztenka": true,
+     "tiekejas": "vf",
+     "reason": "AV turi 2, reikia 1"
+    },
+    "src": [
+     {
+      "source": "av",
+      "stock_qty": "2",
+      "is_active": "1"
+     },
+     {
+      "source": "vf",
+      "stock_qty": "208",
+      "is_active": "1"
+     }
+    ]
+   },
+   "18590": {
+    "r1": {
+     "source": "av",
+     "carrier": "any",
+     "courier_only": false,
+     "av_qty": 5,
+     "av_uztenka": true,
+     "tiekejas": "vf",
+     "reason": "AV turi 5, reikia 1"
+    },
+    "src": [
+     {
+      "source": "av",
+      "stock_qty": "5",
+      "is_active": "1"
+     },
+     {
+      "source": "vf",
+      "stock_qty": "399",
+      "is_active": "1"
+     }
+    ]
+   },
+   "23849": {
+    "r1": {
+     "source": "vf",
+     "carrier": "venipak",
+     "courier_only": false,
+     "av_qty": 0,
+     "av_uztenka": false,
+     "tiekejas": "vf",
+     "reason": "AV turi 0, reikia 1 — neužtenka"
+    },
+    "src": [
+     {
+      "source": "av",
+      "stock_qty": null,
+      "is_active": "0"
+     },
+     {
+      "source": "vf",
+      "stock_qty": "84",
+      "is_active": "1"
+     }
+    ]
+   }
+  },
+  "kelias": {
+   "petshop-av-order.php": {
+    "md5": "fd7ed33561ce279e6f88618447e1a6eb",
+    "exclusion_minimu": []
+   },
+   "petshop-av-source.php": {
+    "md5": "7d8e67eba194efbdc4ac7bed887303f9",
+    "exclusion_minimu": []
+   }
+  },
+  "sarasas": {
+   "15867": {
+    "pav": "Veršiuko ausis, 1 vnt.",
+    "st": "publish",
+    "kaina": "1.39",
+    "stock": 21,
+    "src": "av:21",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "16295": {
+    "pav": "Rudos (natūralios) triušio ausys, 100 g",
+    "st": "publish",
+    "kaina": "3.8",
+    "stock": 5,
+    "src": "av:5",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "16298": {
+    "pav": "Ruda stirnos koja, 1 vnt.",
+    "st": "publish",
+    "kaina": "1.49",
+    "stock": 100,
+    "src": "av:100",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "16302": {
+    "pav": "Ruda kiaulės knyslė, 1 vnt.",
+    "st": "publish",
+    "kaina": "0.75",
+    "stock": 12,
+    "src": "av:12",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "16305": {
+    "pav": "Ruda kiaulės ausis, 1 vnt.",
+    "st": "publish",
+    "kaina": "1.39",
+    "stock": 190,
+    "src": "av:190",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "16311": {
+    "pav": "Ruda jaučio ausis, 1 vnt.",
+    "st": "publish",
+    "kaina": "1.29",
+    "stock": 50,
+    "src": "av:50",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "16317": {
+    "pav": "Ruda avies koja, 1 vnt.",
+    "st": "publish",
+    "kaina": "1.59",
+    "stock": 27,
+    "src": "av:27",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "17469": {
+    "pav": "Miamor skanėstai kačiukams - kreminė pasta su taurinu, 6*15 g, Miamor Junior Pate Cream",
+    "st": "publish",
+    "kaina": "3.18",
+    "stock": 14,
+    "src": "av:14",
+    "cats": [
+     "skanestai-katems"
+    ]
+   },
+   "17475": {
+    "pav": "Miamor skanėstai katėms - salyklo ekstrakto kremas, 6*15 g, Miamor Malt Cream",
+    "st": "publish",
+    "kaina": "2.85",
+    "stock": 28,
+    "src": "av:28",
+    "cats": [
+     "miamor-katems",
+     "skanestai-katems"
+    ]
+   },
+   "17478": {
+    "pav": "Miamor skanėstai katėms - salyklo ekstrakto kremas su sūriu, 6*15 g, Miamor Malt Cream with Cheese",
+    "st": "publish",
+    "kaina": "2.85",
+    "stock": 72,
+    "src": "av:72",
+    "cats": [
+     "miamor-katems",
+     "skanestai-katems"
+    ]
+   },
+   "17481": {
+    "pav": "Miamor skanėstai katėms - kremas su vitaminais, 6*15 g, Miamor Multi-Vitamin Cream",
+    "st": "publish",
+    "kaina": "2.56",
+    "stock": 373,
+    "src": "av:373",
+    "cats": [
+     "skanestai-katems"
+    ]
+   },
+   "17641": {
+    "pav": "Kramtukai su juka ir ciberžole, 1 vnt., 50 g",
+    "st": "publish",
+    "kaina": "1.23",
+    "stock": 3,
+    "src": "av:3",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "17644": {
+    "pav": "Kramtukai dantų priežiūrai su spirulina, 1 vnt., 50 g",
+    "st": "publish",
+    "kaina": "1.23",
+    "stock": 0,
+    "src": "av:0",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "18125": {
+    "pav": "Jaučio penis pjaustytas, 12,5 cm, 1 vnt.",
+    "st": "publish",
+    "kaina": "1.78",
+    "stock": 24,
+    "src": "av:24",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "18632": {
+    "pav": "Džiovintos galvijų kepenys, 100 g",
+    "st": "publish",
+    "kaina": "2.15",
+    "stock": 16,
+    "src": "av:16",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "18639": {
+    "pav": "Džiovinti galvijų skrandžiai, 100 g",
+    "st": "publish",
+    "kaina": "2.59",
+    "stock": 48,
+    "src": "av:48",
+    "cats": [
+     "skanestai-sunims",
+     "sunims"
+    ]
+   },
+   "18647": {
+    "pav": "Džiovinti galvijų plaučiai, 100 g",
+    "st": "publish",
+    "kaina": "2.15",
+    "stock": 36,
+    "src": "av:36",
+    "cats": [
+     "skanestai-sunims",
+     "sunims"
+    ]
+   },
+   "18655": {
+    "pav": "Džiovinta kiaulės uodega, 1 vnt.",
+    "st": "publish",
+    "kaina": "1.55",
+    "stock": 191,
+    "src": "av:191",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "19018": {
+    "pav": "Churu su vištiena ir sūriu - kreminis skanėstas katėms, 4 x 14 g",
+    "st": "publish",
+    "kaina": "2.49",
+    "stock": 578,
+    "src": "av:15 vf:575",
+    "cats": [
+     "skanestai-katems"
+    ]
+   },
+   "19024": {
+    "pav": "Churu su tunu ir šukutėmis - kreminis skanėstas katėms, 4 x 14 g",
+    "st": "publish",
+    "kaina": "2.49",
+    "stock": 104,
+    "src": "av:11 vf:105",
+    "cats": [
+     "skanestai-katems"
+    ]
+   },
+   "19027": {
+    "pav": "Churu su tunu ir lašiša - kreminis skanėstas katėms, 4 x 14 g",
+    "st": "publish",
+    "kaina": "2.49",
+    "stock": 412,
+    "src": "av:10 vf:426",
+    "cats": [
+     "skanestai-katems"
+    ]
+   },
+   "19030": {
+    "pav": "Churu su tunu ir jautiena - kreminis skanėstas katėms, 4 x 14 g",
+    "st": "publish",
+    "kaina": "2.49",
+    "stock": 108,
+    "src": "av:17 vf:91",
+    "cats": [
+     "skanestai-katems"
+    ]
+   },
+   "19033": {
+    "pav": "Churu nuo plaukų gumuliukų susidarymo, su tunu  - kreminis skanėstas katėms, Churu Hairball, 4 x 14 g",
+    "st": "publish",
+    "kaina": "2.49",
+    "stock": 1264,
+    "src": "av:21 vf:1255",
+    "cats": [
+     "skanestai-katems"
+    ]
+   },
+   "19036": {
+    "pav": "Churu Kitten su tunu - kreminis skanėstas kačiukams, 4 x 14 g",
+    "st": "publish",
+    "kaina": "2.49",
+    "stock": 405,
+    "src": "av:11 vf:394",
+    "cats": [
+     "skanestai-katems"
+    ]
+   },
+   "19089": {
+    "pav": "Baltos triušio ausys, 100 g",
+    "st": "publish",
+    "kaina": "4.65",
+    "stock": 14,
+    "src": "av:14",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "19092": {
+    "pav": "Balta stirnos koja, 1 vnt.",
+    "st": "publish",
+    "kaina": "1.49",
+    "stock": 25,
+    "src": "av:25",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "19095": {
+    "pav": "Balta kiaulės knyslė, 1 vnt.",
+    "st": "publish",
+    "kaina": "0.75",
+    "stock": 20,
+    "src": "av:20",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "19098": {
+    "pav": "Balta jaučio ausis, 1 vnt.",
+    "st": "publish",
+    "kaina": "1.39",
+    "stock": 83,
+    "src": "av:83",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "19104": {
+    "pav": "Balta avies koja, 1 vnt.",
+    "st": "publish",
+    "kaina": "1.59",
+    "stock": 27,
+    "src": "av:27",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "19991": {
+    "pav": "Antos skanėstai šunims antienos D'light mazgeliai 100g",
+    "st": "publish",
+    "kaina": "3.49",
+    "stock": 111,
+    "src": "vf:111",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "21567": {
+    "pav": "Churu kreminis skanėstas katėms su vištiena, 4vnt",
+    "st": "publish",
+    "kaina": "2.49",
+    "stock": 412,
+    "src": "vf:412",
+    "cats": [
+     "skanestai-katems"
+    ]
+   },
+   "21577": {
+    "pav": "Churu kreminis skanėstas katėms su vištiena ir krevetėmis, 4vnt",
+    "st": "publish",
+    "kaina": "2.49",
+    "stock": 256,
+    "src": "vf:256",
+    "cats": [
+     "skanestai-katems"
+    ]
+   },
+   "21599": {
+    "pav": "Churu kreminis skanėstas kačiukams su vištiena, 4vnt",
+    "st": "publish",
+    "kaina": "2.49",
+    "stock": 586,
+    "src": "vf:586",
+    "cats": [
+     "skanestai-katems"
+    ]
+   },
+   "21647": {
+    "pav": "Churu kreminis skanėstas šunims su vištiena ir sūriu, 4 vnt.",
+    "st": "publish",
+    "kaina": "2.49",
+    "stock": 44,
+    "src": "vf:44",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "22311": {
+    "pav": "Wanpy skanėstas šunims, vytintos ėrienos dešrelės,100g",
+    "st": "publish",
+    "kaina": "2.39",
+    "stock": 231,
+    "src": "vf:231",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "22421": {
+    "pav": "8in1 Meaty Treats šaltyje džiovintos antienos skanėstai šunims, 50 g",
+    "st": "publish",
+    "kaina": "3.59",
+    "stock": 157,
+    "src": "vf:157",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "23825": {
+    "pav": "Truly skanėstas šunims, antienos juostelės, 90 g",
+    "st": "publish",
+    "kaina": "3.49",
+    "stock": 16,
+    "src": "vf:16",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "23834": {
+    "pav": "Truly skanėstas šunims, elnienos juostelės, 85 g",
+    "st": "publish",
+    "kaina": "3.49",
+    "stock": 61,
+    "src": "vf:61",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "23837": {
+    "pav": "Truly skanėstas šunims, vištienos gabalėliai, 85 g",
+    "st": "publish",
+    "kaina": "3.49",
+    "stock": 75,
+    "src": "vf:75",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "23849": {
+    "pav": "Truly skanėstas šunims, antienos gabalėliai, 90 g",
+    "st": "publish",
+    "kaina": "3.49",
+    "stock": 84,
+    "src": "av:(x) vf:84",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "23852": {
+    "pav": "Truly skanėstas šunims, ėrienos gabalėliai, 90 g",
+    "st": "publish",
+    "kaina": "3.49",
+    "stock": 157,
+    "src": "vf:157",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "23858": {
+    "pav": "Wanpy skanėstai šunims, vištienos juostelės, 100g",
+    "st": "publish",
+    "kaina": "3.69",
+    "stock": 53,
+    "src": "vf:53",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "24005": {
+    "pav": "Churu kreminis skanėstas 10+ katėms su vištiena 4vnt",
+    "st": "publish",
+    "kaina": "2.49",
+    "stock": 182,
+    "src": "vf:182",
+    "cats": [
+     "skanestai-katems"
+    ]
+   },
+   "24539": {
+    "pav": "Churu kreminis skanėstas katėms su tunu, moliuskų skonio, 4vnt",
+    "st": "publish",
+    "kaina": "2.39",
+    "stock": 96,
+    "src": "vf:96",
+    "cats": [
+     "skanestai-katems"
+    ]
+   },
+   "26032": {
+    "pav": "Karoo Wild skanėstai šunims su antilope ir raudonėliais, 113g",
+    "st": "publish",
+    "kaina": "4.69",
+    "stock": 72,
+    "src": "vf:72",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "34794": {
+    "pav": "Churu Terrine skanėstas mažų veislių šunims su lašiša, N4",
+    "st": "publish",
+    "kaina": "2.79",
+    "stock": 175,
+    "src": "vf:175",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   },
+   "34797": {
+    "pav": "Churu Terrine skanėstas mažų veislių šunims su lašiša ir tunu, N4",
+    "st": "publish",
+    "kaina": "2.79",
+    "stock": 176,
+    "src": "av:(x) vf:176",
+    "cats": [
+     "skanestai-sunims"
+    ]
+   }
+  },
+  "kat": {
+   "maistas-sunims": {
+    "id": 71,
+    "parent": "sunims",
+    "vaikai": [
+     "konservai-sunims",
+     "sausas-maistas-sunims"
+    ]
+   },
+   "maistas-katems": {
+    "id": 78,
+    "parent": "katems",
+    "vaikai": [
+     "konservai-katems",
+     "sausas-maistas-katems"
+    ]
+   },
+   "skanestai-sunims": {
+    "id": 95,
+    "parent": "sunims",
+    "vaikai": []
+   },
+   "skanestai-katems": {
+    "id": 96,
+    "parent": "katems",
+    "vaikai": []
+   },
+   "zaislai-sunims": {
+    "id": 115,
+    "parent": "sunims",
+    "vaikai": []
+   },
+   "zaislai-katems": {
+    "id": 114,
+    "parent": "katems",
+    "vaikai": []
+   }
+  },
+  "hooks": {
+   "woocommerce_after_add_to_cart_form": [
+    "20:Petshop_FBT::render_widget"
+   ],
+   "woocommerce_after_cart_table": [
+    "10:woocommerce_cross_sell_display",
+    "15:Petshop_FBT::render_cart_block"
+   ],
+   "woocommerce_checkout_create_order_line_item": [
+    "10:Petshop_Laukai::eilutes_zyme",
+    "10:Petshop_Prenumerata_Katalogas::i_uzsakyma",
+    "10:WC_MNM_Order::add_order_item_meta",
+    "10:Petshop_Plan_Attribution::tag_order_item",
+    "11:Petshop_Laukai::dovanos_eilute",
+    "20:Petshop_Statistika::savikaina_i_eilute"
+   ],
+   "woocommerce_add_to_cart_redirect": [
+    "-1000:WC_Deprecated_Filter_Hooks::maybe_handle_deprecated_hook",
+    "20:closure"
+   ],
+   "wc_add_to_cart_message_html": [
+    "10:closure",
+    "20:closure"
+   ]
+  },
+  "dp_pakas_pvz": {
+   "post_id": "36003",
+   "base": "18587"
+  }
+ },
+ "v": "dep-210925",
+ "kurimas": 200,
+ "sid": 6660,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
