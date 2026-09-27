@@ -1,11 +1,532 @@
 {
  "1": {
   "v": "S1724x",
-  "faze": ""
+  "faze": "1",
+  "ist_cols": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ],
+  "fakt_cols": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ],
+  "ist_viso_eil": 6149,
+  "ist_kiekis_pasisk": [
+   {
+    "k": "1",
+    "n": "5274",
+    "uzs": "4550"
+   },
+   {
+    "k": "2",
+    "n": "566",
+    "uzs": "523"
+   },
+   {
+    "k": "3",
+    "n": "121",
+    "uzs": "119"
+   },
+   {
+    "k": "4",
+    "n": "72",
+    "uzs": "69"
+   },
+   {
+    "k": "5",
+    "n": "116",
+    "uzs": "115"
+   }
+  ],
+  "ist_2plus_top": [
+   {
+    "pavadinimas": "Kraikas katėms TOFU BeloCat, žaliosios arbatos kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "n": "108",
+    "vnt": "481"
+   },
+   {
+    "pavadinimas": "Kraikas katėms TOFU BeloCat, su aktyvuota anglimi, 6 l (2,5 kg), 2 mm granulės",
+    "n": "65",
+    "vnt": "288"
+   },
+   {
+    "pavadinimas": "Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria virškinimo sistema",
+    "n": "56",
+    "vnt": "129"
+   },
+   {
+    "pavadinimas": "JOSERA LAMB & RICE pašaras šunims su ėriena, 12,5 kg",
+    "n": "33",
+    "vnt": "70"
+   },
+   {
+    "pavadinimas": "JOSERA FESTIVAL pašaras šunims su lašiša, 12,5 kg",
+    "n": "33",
+    "vnt": "73"
+   },
+   {
+    "pavadinimas": "PESS biologiniai lašiukai nuo parazitų katėms ir šunims, sveriantiems iki 10 kg",
+    "n": "25",
+    "vnt": "63"
+   },
+   {
+    "pavadinimas": "Kraikas katėms TOFU BeloCat, levandų kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "n": "21",
+    "vnt": "101"
+   },
+   {
+    "pavadinimas": "Silikoninis kačių kraikas SILICA GEL 3,8 l / 1,5 kg",
+    "n": "20",
+    "vnt": "127"
+   },
+   {
+    "pavadinimas": "Kraikas katėms TOFU BeloCat, pienelio kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "n": "20",
+    "vnt": "89"
+   },
+   {
+    "pavadinimas": "Kraikas katėms TOFU BeloCat, pušies kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "n": "17",
+    "vnt": "56"
+   },
+   {
+    "pavadinimas": "Josera SensiCat 10 kg - sausas maistas katėms su jautria virškinimo sistema",
+    "n": "12",
+    "vnt": "26"
+   },
+   {
+    "pavadinimas": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Natural 11,8 l / 10 kg",
+    "n": "11",
+    "vnt": "25"
+   },
+   {
+    "pavadinimas": "Josera Poultry-Menu 12,5 kg - sausas maistas šunims",
+    "n": "10",
+    "vnt": "25"
+   },
+   {
+    "pavadinimas": "Josera Culinesse 10 kg - sausas maistas katėms su lašiša",
+    "n": "10",
+    "vnt": "20"
+   },
+   {
+    "pavadinimas": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Aloe Vera 11,8l / 10 kg",
+    "n": "10",
+    "vnt": "24"
+   },
+   {
+    "pavadinimas": "Exclusion Intestinal Monoprotein sausas šunų maistas su kiauliena ir ryžiais M/L12 kg",
+    "n": "9",
+    "vnt": "18"
+   },
+   {
+    "pavadinimas": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg",
+    "n": "9",
+    "vnt": "18"
+   },
+   {
+    "pavadinimas": "Kraikas katėms TOFU BeloCat, vanilės kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "n": "9",
+    "vnt": "36"
+   },
+   {
+    "pavadinimas": "Kraikas katėms TOFU BeloCat, obuolių kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "n": "9",
+    "vnt": "24"
+   },
+   {
+    "pavadinimas": "Kraikas katėms TOFU BeloCat, persikų kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "n": "9",
+    "vnt": "32"
+   },
+   {
+    "pavadinimas": "Josera Leger 10 kg - sausas maistas katėms, mažiau kalorijų",
+    "n": "9",
+    "vnt": "20"
+   },
+   {
+    "pavadinimas": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Sodium grey 11,8l / 10 kg",
+    "n": "8",
+    "vnt": "26"
+   },
+   {
+    "pavadinimas": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Natural 5,9 l / 5 kg",
+    "n": "8",
+    "vnt": "19"
+   },
+   {
+    "pavadinimas": "Kraikas katėms TOFU BeloCat, alavijo / aloe vera kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "n": "8",
+    "vnt": "26"
+   },
+   {
+    "pavadinimas": "QUATTRO Extra Lamb su ėriena sausas šunų pašaras, 3kg",
+    "n": "8",
+    "vnt": "16"
+   }
+  ],
+  "ist_2plus_pagal_kg": [
+   {
+    "kg": "2,5 kg",
+    "n": "312"
+   },
+   {
+    "kg": "12,5 kg",
+    "n": "160"
+   },
+   {
+    "kg": "10 kg",
+    "n": "147"
+   },
+   {
+    "kg": "2 KG",
+    "n": "44"
+   },
+   {
+    "kg": "1,5 kg",
+    "n": "35"
+   },
+   {
+    "kg": "12 kg",
+    "n": "32"
+   },
+   {
+    "kg": "5 kg",
+    "n": "20"
+   },
+   {
+    "kg": "12kg",
+    "n": "18"
+   },
+   {
+    "kg": "15 kg",
+    "n": "16"
+   },
+   {
+    "kg": "1 kg",
+    "n": "15"
+   },
+   {
+    "kg": "3kg",
+    "n": "11"
+   },
+   {
+    "kg": "1,5kg",
+    "n": "11"
+   },
+   {
+    "kg": "20 kg",
+    "n": "10"
+   },
+   {
+    "kg": "7 kg",
+    "n": "9"
+   },
+   {
+    "kg": "4,4 kg",
+    "n": "7"
+   }
+  ],
+  "wc_kiekis_pasisk": [
+   {
+    "k": "1",
+    "n": "89"
+   },
+   {
+    "k": "2",
+    "n": "11"
+   },
+   {
+    "k": "3",
+    "n": "5"
+   },
+   {
+    "k": "4",
+    "n": "1"
+   },
+   {
+    "k": "5",
+    "n": "1"
+   }
+  ],
+  "wc_2plus": [
+   {
+    "nm": "JosiDog Junior Sensitive sausas pašaras jautriems jauniems šunims, 2,7 kg",
+    "q": "5"
+   },
+   {
+    "nm": "Antos didelis kaulas šunims 2,56kg",
+    "q": "4"
+   },
+   {
+    "nm": "Pašaras JosiCat Sterilised Classic, 15+3kg AKCIJA",
+    "q": "2"
+   },
+   {
+    "nm": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg",
+    "q": "2"
+   },
+   {
+    "nm": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg",
+    "q": "2"
+   },
+   {
+    "nm": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg",
+    "q": "2"
+   },
+   {
+    "nm": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Sodium grey 11,8l / 10 kg",
+    "q": "2"
+   },
+   {
+    "nm": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg",
+    "q": "2"
+   },
+   {
+    "nm": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg",
+    "q": "2"
+   },
+   {
+    "nm": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Sodium grey 11,8l / 10 kg",
+    "q": "2"
+   },
+   {
+    "nm": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg",
+    "q": "3"
+   },
+   {
+    "nm": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Sodium grey 11,8l / 10 kg",
+    "q": "3"
+   },
+   {
+    "nm": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg",
+    "q": "3"
+   },
+   {
+    "nm": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Sodium grey 11,8l / 10 kg",
+    "q": "3"
+   },
+   {
+    "nm": "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Levanda 11,8l / 10 kg",
+    "q": "3"
+   },
+   {
+    "nm": "Josera Leger 10 kg - sausas maistas katėms, mažiau kalorijų",
+    "q": "2"
+   },
+   {
+    "nm": "Exclusion Hypoallergenic mini sausas mažų veislių šunų maistas su žuvimi ir bulvėmis S 2 kg",
+    "q": "2"
+   },
+   {
+    "nm": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg",
+    "q": "2"
+   }
+  ],
+  "dp_pakai_pard": [
+   {
+    "ID": "36002",
+    "t": "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su",
+    "pard": "1"
+   },
+   {
+    "ID": "36003",
+    "t": "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su",
+    "pard": "1"
+   },
+   {
+    "ID": "35096",
+    "t": "20 vnt. rudų kiaulės knyslių",
+    "pard": "1"
+   },
+   {
+    "ID": "35098",
+    "t": "20 vnt. rudų jaučio ausų",
+    "pard": "1"
+   },
+   {
+    "ID": "35306",
+    "t": "20 vnt. baltų kiaulės knyslių",
+    "pard": "1"
+   },
+   {
+    "ID": "35856",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, žaliosios arbatos kvap",
+    "pard": "1"
+   },
+   {
+    "ID": "35843",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, kavos kvapo, 6 l (2,5 ",
+    "pard": "0"
+   },
+   {
+    "ID": "35842",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, citrinų kvapo, 6 l (2,",
+    "pard": "0"
+   },
+   {
+    "ID": "35841",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, arbūzų kvapo, 6 l (2,5",
+    "pard": "0"
+   },
+   {
+    "ID": "35840",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, alavijo / aloe vera kv",
+    "pard": "0"
+   },
+   {
+    "ID": "36301",
+    "t": "6 vnt. Ontario konservų šunims su ėriena ir šaltalankiu, 400",
+    "pard": "0"
+   },
+   {
+    "ID": "36302",
+    "t": "6 vnt. Ontario konservų šunims su veršiena ir ciberžole, 400",
+    "pard": "0"
+   },
+   {
+    "ID": "35099",
+    "t": "20 vnt. baltų jaučio ausų",
+    "pard": "0"
+   },
+   {
+    "ID": "35855",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, vyšnių žiedų kvapo, 6 ",
+    "pard": "0"
+   },
+   {
+    "ID": "35854",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, vanilės kvapo, 6 l (2,",
+    "pard": "0"
+   },
+   {
+    "ID": "35853",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, su aktyvuota anglimi, ",
+    "pard": "0"
+   },
+   {
+    "ID": "35852",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, pušies kvapo, 6 l (2,5",
+    "pard": "0"
+   },
+   {
+    "ID": "35851",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, pienelio kvapo, 6 l (2",
+    "pard": "0"
+   },
+   {
+    "ID": "35850",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, persikų kvapo, 6 l (2,",
+    "pard": "0"
+   },
+   {
+    "ID": "35849",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, obuolių su cinamonu kv",
+    "pard": "0"
+   },
+   {
+    "ID": "35848",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, obuolių kvapo, 6 l (2,",
+    "pard": "0"
+   },
+   {
+    "ID": "35847",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, melionų kvapo, 6 l (2,",
+    "pard": "0"
+   },
+   {
+    "ID": "35846",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, levandų kvapo, 6 l (2,",
+    "pard": "0"
+   },
+   {
+    "ID": "35845",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, ledų kvapo, 6 l (2,5 k",
+    "pard": "0"
+   },
+   {
+    "ID": "35844",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, kokoso kvapo, 6 l (2,5",
+    "pard": "0"
+   }
+  ],
+  "kandidatai_n": 239
  },
- "v": "dep-112219",
+ "v": "dep-112347",
  "kurimas": 200,
- "sid": 6598,
+ "sid": 6599,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
