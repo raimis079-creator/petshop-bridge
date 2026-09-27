@@ -93,3 +93,13 @@ Atviri: 19 processing/on-hold (#1173…#1196), 1 bacs on-hold #1180 (09-25). #11
 **R „bandom" (12:03) → GYVAI ~12:22:** kampanijos kainų siūlymas **Neautomatinis MUP → „Maksimaliai padidinti paspaudimų skaičių", lubos €0,40** (sumą įvedė ir varnelę uždėjo Raimis — Claude'ui sumos įvedimą blokuoja; „Išsaugoti" per JS). Būsena „Tinkama (mokymasis)". Biudžetas €20/d, rėmai nesikeičia (iki 10-08, maks. €280, išleista €0).
 **Rytoj 09-28:** Shopping parodymai/paspaudimai už 09-27/28 (`ps_fakt_reklama` 02:01 + Ads UI). Jei vėl 0 → **Google Ads support pokalbis** (Pagalba → Susisiekite; Claude veda per naršyklę, Raimis šalia).
 Pastabos: Ads UI lentelės Claude naršyklėje persipiešia tik po `resize_window` 1500×1000 (po to grąžinti `desktop`); nustatymų „Išsaugoti" mygtukas už siauro lango ribų — spausti per JS `material-button`; neperkrauti puslapio, kol Raimis pildo formą.
+
+---
+
+## 6. Valandinio Super Cache valymo kaltininkas (recon `s1724/f.php` faze 2, read-only, 12:40)
+
+- `ps_cache_valymai` `viskas_25` įrašai kas valandą :00–:01 iš `wp-cron` („1239 prekės: 17947, 17950…") — prekės su `_ps_sandelis=vf` (VF dropship, `_stock` 181 ir pan.).
+- `post_modified` bangos: 11:00 — 515 prekių, 11:59–12:00 — 689 prekių → sutampa su cron **`petshop_vf_sync_stock_hourly`** (kas valandą :59). VF likučių sinchronizacija perrašo `_stock` visoms VF prekėms net kai reikšmė nepasikeitė → `woocommerce_product_set_stock` → `petshop-cache` eilė > 25 → **pilnas Super Cache valymas kas valandą** (kešas gyvena < 1 val., 11:00 keše 37 psl.).
+- Failas su hook'u `petshop_vf_sync_stock_hourly` ne mu-plugins `petshop-*` ir ne `plugins/petshop-*` (tikėtina `petshop-core` arba kitas vardas) — rasti prieš taisant.
+- Pataisa (po Cloudflare, prieš Super Cache Expert): (a) VF sync — `set_stock` tik kai reikšmė skiriasi (tikėtina 95 % nesikeičia); (b) `petshop-cache` v1.3 — vietoj `viskas_25` valyti tik pakeistų prekių puslapius + jų kategorijas/gamintoją + pradžią (be pilno valymo), su viršutine riba. Sprendimas — Raimio.
+- DNS inventorius Cloudflare'ui — `S1724_cloudflare_2026-09-27.md`.
