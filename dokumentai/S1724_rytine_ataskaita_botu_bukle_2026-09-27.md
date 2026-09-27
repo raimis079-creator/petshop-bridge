@@ -77,3 +77,19 @@ Atviri: 19 processing/on-hold (#1173…#1196), 1 bacs on-hold #1180 (09-25). #11
 - Žymės nuimtos #1173/#1177/#1178 (bak opcija `ps_s1724_sla_bak`, pastaba užsakyme); terminas visiems **An 09-29 11:13** — jei Ambrosia neišsiųs, sargas pažymės pats. Atvirų žymių 0.
 - `petshop-rytas.php` v1.6.1 (md5 `ef98d602…`, bak `.bak_s1724`): tekstas „Dropship tiekėjas vėluoja > 2 darbo d." → **žalia**, raudonų 0/16.
 - Deploy `s1724/e.php` (1 dry / 2 / 3 / 4 / 5 patikra atskira užklausa / **9 atstato viską**), heartbeat nekešuotu URL 200 po kiekvieno rašymo.
+
+---
+
+## 5. Shopping 24289581247 — patikra 09-27 ir kainų siūlymo testas (12:00–12:25)
+
+**Faktai (Ads UI + MC UI, Claude naršyklė):**
+- Pakeitimų istorija: CPC €0,20 → **€0,35** įrašytas 09-26 14:11 (3 „Visa kita iš a/b/c"; grupės numatytasis liko €0,20).
+- 09-20…27: **0 parodymų, €0** — 3,5 paros, iš jų ~45 val. su €0,35. Būsena „Tinkama", opt. balas 97,5 %.
+- Diagnostika (kampanija): **tinkamos 993**, netinkamos 1 202 — 1 195 išskirtos pagal medį (pigu/ne_reklamai/d-x), 14 „Sale of live animals", 7 „Missing product image", 3 out of stock, 3 „Unable to show image", 2 „Healthcare claims", 1 drugs, 1 alcohol, 1 „Image not processed".
+- MC 5321054797: Approved 2 170 / Not approved 27 / Under review 3; „prioritized fixes" 0; paskyros lygio tik info „Invalid business name" (Google naudoja „petshop.lt" — neblokuoja). MC „Ad clicks" 28 d.: 23 / €3,19 — vien pristabdytos retail PMax Display.
+- PMax konflikto nėra (šunų/kačių PMax be MC; retail 24274413499 pristabdyta). „Skelbimo peržiūros ir diagnostikos" įrankis Shopping netikrina (tik raktinius žodžius).
+- Išvada: konfigūracija/prekės/MC švaru; **nė viena kampanija su šiuo MC feed'u dar negavo nė vieno Shopping parodymo** (retail PMax rodė tik Display) → aptarnavimo/paskyros lygio problema, ne kaina.
+
+**R „bandom" (12:03) → GYVAI ~12:22:** kampanijos kainų siūlymas **Neautomatinis MUP → „Maksimaliai padidinti paspaudimų skaičių", lubos €0,40** (sumą įvedė ir varnelę uždėjo Raimis — Claude'ui sumos įvedimą blokuoja; „Išsaugoti" per JS). Būsena „Tinkama (mokymasis)". Biudžetas €20/d, rėmai nesikeičia (iki 10-08, maks. €280, išleista €0).
+**Rytoj 09-28:** Shopping parodymai/paspaudimai už 09-27/28 (`ps_fakt_reklama` 02:01 + Ads UI). Jei vėl 0 → **Google Ads support pokalbis** (Pagalba → Susisiekite; Claude veda per naršyklę, Raimis šalia).
+Pastabos: Ads UI lentelės Claude naršyklėje persipiešia tik po `resize_window` 1500×1000 (po to grąžinti `desktop`); nustatymų „Išsaugoti" mygtukas už siauro lango ribų — spausti per JS `material-button`; neperkrauti puslapio, kol Raimis pildo formą.
