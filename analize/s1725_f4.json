@@ -1,0 +1,148 @@
+{
+ "4": {
+  "v": "S1725f",
+  "faze": "4",
+  "laikas": "2026-09-27 17:28:50",
+  "baze": [
+   18590,
+   21.95,
+   ""
+  ],
+  "T1": {
+   "kodas": 200,
+   "j": {
+    "success": true,
+    "data": {
+     "id": 36333,
+     "tipas": "dp",
+     "busena": "draft",
+     "nuoroda": "https://petshop.lt/?post_type=product&p=36333&preview=true"
+    }
+   },
+   "raw": "{\"success\":true,\"data\":{\"id\":36333,\"tipas\":\"dp\",\"busena\":\"draft\",\"nuoroda\":\"https:\\/\\/petshop.lt\\/?post_type=product&p=36333&preview=true\"}}"
+  },
+  "test_id": 36333,
+  "T1_bus": {
+   "reg": "63.89",
+   "sale": "",
+   "_price": "63.89",
+   "proc": "3",
+   "qty": "3",
+   "st": "draft"
+  },
+  "T1_tiketa": "63.89",
+  "T2": {
+   "kodas": 200,
+   "j": {
+    "success": true,
+    "data": {
+     "id": 36333,
+     "tipas": "dp",
+     "busena": "draft",
+     "nuoroda": "https://petshop.lt/?post_type=product&p=36333&preview=true"
+    }
+   },
+   "raw": "{\"success\":true,\"data\":{\"id\":36333,\"tipas\":\"dp\",\"busena\":\"draft\",\"nuoroda\":\"https:\\/\\/petshop.lt\\/?post_type=product&p=36333&preview=true\"}}"
+  },
+  "T2_bus": {
+   "reg": "60",
+   "sale": "",
+   "_price": "60",
+   "proc": "",
+   "qty": "3",
+   "st": "draft"
+  },
+  "T2_sync": {
+   "pid": 36333,
+   "pakeista": false,
+   "praleista": "be_proc"
+  },
+  "T3": {
+   "kodas": 200,
+   "j": {
+    "success": true,
+    "data": {
+     "id": 36333,
+     "tipas": "dp",
+     "busena": "draft",
+     "nuoroda": "https://petshop.lt/?post_type=product&p=36333&preview=true"
+    }
+   },
+   "raw": "{\"success\":true,\"data\":{\"id\":36333,\"tipas\":\"dp\",\"busena\":\"draft\",\"nuoroda\":\"https:\\/\\/petshop.lt\\/?post_type=product&p=36333&preview=true\"}}"
+  },
+  "T3_bus": {
+   "reg": "42.79",
+   "sale": "",
+   "_price": "42.79",
+   "proc": "2.5",
+   "qty": "2",
+   "st": "draft"
+  },
+  "T3_tiketa": "42.79",
+  "T3_sync": {
+   "pid": 36333,
+   "pakeista": false,
+   "proc": 2.5,
+   "buvo": [
+    "42.79",
+    ""
+   ],
+   "nauja": [
+    "42.79",
+    ""
+   ]
+  },
+  "T4": {
+   "success": false,
+   "data": "Nuolaida % turi būti skaičius nuo 0 iki 60 (arba tuščia)."
+  },
+  "R_test_forma": {
+   "kodas": 200,
+   "dp_proc_js": "2,5",
+   "lauko_kodas": 2
+  },
+  "istrinta": "taip",
+  "R_36002": {
+   "kodas": 200,
+   "dp_proc_js": "3",
+   "kaina_js": "42,59",
+   "fatal": 0
+  },
+  "R_sarasas": {
+   "kodas": 200,
+   "dpp3": 2,
+   "dpp10": 21,
+   "dpp35": 2,
+   "fatal": 0
+  },
+  "R_meniu": {
+   "kodas": 200,
+   "petshop-dp-forma": 0,
+   "ps-rinkiniai": 3
+  },
+  "R_senas_langas": {
+   "kodas": 403,
+   "turi_forma": 0
+  },
+  "pakas_36002": {
+   "reg": "42.59",
+   "sale": "",
+   "_price": "42.59",
+   "proc": "3",
+   "qty": "2",
+   "st": "publish"
+  },
+  "dp_suvestine": [
+   "zalia",
+   "DP pakų kainos: su % 25, rankinių 0, neatitinka 0, klaidų 0; naktinis 09-27 05:10 pakeitė 0"
+  ],
+  "sesija": "sunaikinta"
+ },
+ "v": "dep-142744",
+ "kurimas": 200,
+ "sid": 6614,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
