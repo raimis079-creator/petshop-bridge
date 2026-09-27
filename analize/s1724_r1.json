@@ -1,0 +1,25 @@
+{
+ "1": {
+  "v": "S1724r",
+  "faze": "1",
+  "document_root": "/home/gyvunai2/domains/avesa.lt/public_html/dev",
+  "abspath": "/home/gyvunai2/domains/petshop.lt/public_html/",
+  "supercache_dir": false,
+  "pvz_failas": [],
+  "build": "ok",
+  "naujas_len": 4821,
+  "naujas_pradzia_bloko": "# BEGIN WPSuperCache\n# S1724 (2026-09-27): Expert (mod_rewrite) — kesuoti puslapiai atiduodami Apache be PHP. Rasyta ranka (Super Cache generatorius dubliavo kelia ir neturejo WC slapuku). WC slapukai: krepselis/sesija -> ne is keso.\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteBase /\nAddDefau",
+  "bak_yra": false,
+  "arch_rasoma": true,
+  "ht_rasoma": true,
+  "mod_rewrite_dabar": 0,
+  "wp_cache_setting_fn": true
+ },
+ "v": "dep-105011",
+ "kurimas": 200,
+ "sid": 6587,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
