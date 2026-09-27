@@ -1,0 +1,131 @@
+{
+ "1": {
+  "v": "S1724s",
+  "robots": "User-agent: *\nDisallow: /wp-content/uploads/wc-logs/\nDisallow: /wp-content/uploads/woocommerce_transient_files/\nDisallow: /wp-content/uploads/woocommerce_uploads/\nDisallow: /*?add-to-cart=\nDisallow: /*?*add-to-cart=\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\nDisallow: /*?*yith_wcan=\nDisallow: /*?*filter_\nDisallow: /*?*query_type_\nDisallow: /*?*orderby=\n\nSitemap: https://petshop.lt/sitemap_index.xml\n",
+  "robots_failas": "virtualus",
+  "rank_math_robots": null,
+  "kat_len": 392948,
+  "filtru_a_n": 38,
+  "filtru_a_pvz": [
+   "<a href=\"https://petshop.lt/kategorija/sunims/maistas-sunims?yith_wcan=1&#038;product_cat=maistas-sunims&#038;filter_monoprotein=taip\"  role=\"button\" class=\"term-label\"  >",
+   "<a href=\"https://petshop.lt/kategorija/sunims/maistas-sunims?yith_wcan=1&#038;product_cat=maistas-sunims&#038;filter_be_grudu=be-grudu\"  role=\"button\" data-term-id=\"409\" data-term-slug=\"be-grudu\" >",
+   "<a href=\"https://petshop.lt/kategorija/sunims/maistas-sunims?yith_wcan=1&#038;product_cat=maistas-sunims&#038;filter_be_grudu=su-grudais\"  role=\"button\" data-term-id=\"410\" data-term-slug=\"su-grudais\" >",
+   "<a href=\"https://petshop.lt/kategorija/sunims/maistas-sunims?yith_wcan=1&#038;product_cat=maistas-sunims&#038;filter_be_grudu=su-ryziais\"  role=\"button\" data-term-id=\"412\" data-term-slug=\"su-ryziais\" >"
+  ],
+  "filtru_a_rel": 0,
+  "orderby_page_a_n": 7,
+  "orderby_page_pvz": [
+   "<a class=\"page-number\" href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/page/2/?ps_s=1\">",
+   "<a class=\"page-number\" href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/page/3/?ps_s=1\">",
+   "<a class=\"page-number\" href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/page/4/?ps_s=1\">"
+  ],
+  "link_rel": [
+   "<link rel=\"canonical\" href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/\" />",
+   "<link rel=\"next\" href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/page/2/\" />"
+  ],
+  "yith_ver": "5.22.0",
+  "yith_opts": [],
+  "yith_opt_keys": [],
+  "bs_ver": "1.1",
+  "bs_eil": 109,
+  "bs_kodas": [
+   "4: * Description: S1719 (2026-09-25). Access log 09-24: 9 725 `?add-to-cart=` GET/parą iš šimtų Azijos debesų IP (vienas UA) ir 56 081 filtrų (`yith_wcan=`/`filter",
+   "11: const SLAPUKAS = 'ps_js';",
+   "14: public static function init() {",
+   "15: add_action( 'wp_head', array( __CLASS__, 'js' ), 0 );",
+   "16: add_action( 'wp_loaded', array( __CLASS__, 'sargas' ), 1 ); // prieš WC_Form_Handler::add_to_cart_action (wp_loaded 20)",
+   "17: add_action( 'ps_botu_sargas_valymas', array( __CLASS__, 'valymas' ) );",
+   "18: remove_action( 'wp_head', 'wp_shortlink_wp_head', 10 );",
+   "23: public static function js() {",
+   "25: echo \"<script>try{if(document.cookie.indexOf('\" . self::SLAPUKAS . \"=')<0){document.cookie='\" . self::SLAPUKAS . \"=1;path=/;max-age=31536000;SameSite=Lax\" . ( i",
+   "28: private static function praleisti() {",
+   "41: public static function sargas() {",
+   "81: private static function log( $tipas, $kas ) {",
+   "91: public static function valymas() {",
+   "96: public static function suvestine( $dienos = 3 ) {"
+  ],
+  "rytas_eil": [
+   "5: * Version: 1.6.1",
+   "372: public static function patikros() {",
+   "374: $add = function ( $k, $l, $t ) use ( &$o ) { $o[] = array( 'kodas' => $k, 'lygis' => $l, 'tekstas' => $t ); };",
+   "436: try { $dk_ = Petshop_DP_Kainos::suvestine(); $add( 'dp_kainos', $dk_[0], $dk_[1] ); }",
+   "437: catch ( \\Throwable $e_ ) { $add( 'dp_kainos', 'pilka', 'DP kainos: ' . $e_->getMessage() ); }"
+  ],
+  "rytas_md5": "ef98d602630b3b72557b9a7ab855ab34",
+  "logs": [
+   [
+    "Sep-2026.tar.gz",
+    1.3,
+    "09-27 06:02"
+   ],
+   [
+    "Sep-2026.tar.gz.1",
+    12.5,
+    "09-27 00:11"
+   ],
+   [
+    "Sep-2026.tar.gz.10",
+    0.3,
+    "09-22 05:20"
+   ],
+   [
+    "Sep-2026.tar.gz.11",
+    2.3,
+    "09-22 00:11"
+   ],
+   [
+    "Sep-2026.tar.gz.12",
+    0.3,
+    "09-21 04:25"
+   ],
+   [
+    "Sep-2026.tar.gz.2",
+    2.4,
+    "09-26 04:06"
+   ],
+   [
+    "Sep-2026.tar.gz.3",
+    7.6,
+    "09-26 00:11"
+   ],
+   [
+    "Sep-2026.tar.gz.4",
+    1,
+    "09-25 04:23"
+   ],
+   [
+    "Sep-2026.tar.gz.5",
+    6,
+    "09-25 00:11"
+   ],
+   [
+    "Sep-2026.tar.gz.6",
+    1.3,
+    "09-24 04:55"
+   ],
+   [
+    "Sep-2026.tar.gz.7",
+    4.2,
+    "09-24 00:12"
+   ],
+   [
+    "Sep-2026.tar.gz.8",
+    0.5,
+    "09-23 04:21"
+   ],
+   [
+    "Sep-2026.tar.gz.9",
+    3.2,
+    "09-23 00:11"
+   ]
+  ],
+  "gzopen": true
+ },
+ "v": "dep-105706",
+ "kurimas": 200,
+ "sid": 6590,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
