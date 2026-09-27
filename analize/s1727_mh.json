@@ -1,0 +1,894 @@
+{
+ "1": {
+  "v": "S1727mh",
+  "f": "1",
+  "pa_tax": [
+   "amzius",
+   "baltymu_saltinis",
+   "be_grudu",
+   "brendas",
+   "dydis",
+   "forma",
+   "grauziko_rusis",
+   "gyvuno_rusis",
+   "ilgis",
+   "kiekis_pakuoteje",
+   "kraiko_tipas",
+   "kvapas",
+   "medziaga",
+   "monoprotein",
+   "pakuotes_dydis",
+   "pasaro_forma",
+   "paskirtis",
+   "paukscio_rusis",
+   "pavadelio_ilgis",
+   "spalva",
+   "speciali_mityba",
+   "tipas",
+   "veisle",
+   "veisles_dydis",
+   "zaislo_tipas",
+   "zuvies_rusis"
+  ],
+  "sunys": {
+   "n": 548,
+   "pagal_sandeli": {
+    "zb": 231,
+    "vf": 123,
+    "av": 120,
+    "quattro": 37,
+    "prins": 21,
+    "ambrosia": 16
+   },
+   "attr_padengimas": {
+    "gyvuno_rusis": 539,
+    "pakuotes_dydis": 536,
+    "amzius": 493,
+    "baltymu_saltinis": 487,
+    "be_grudu": 435,
+    "monoprotein": 119,
+    "speciali_mityba": 114,
+    "veisles_dydis": 7
+   },
+   "terms": {
+    "amzius": {
+     "suaugusiems": 366,
+     "jauniems": 91,
+     "senyviems": 24,
+     "senjorams": 12
+    },
+    "baltymu_saltinis": {
+     "vistiena": 109,
+     "eriena": 97,
+     "antiena": 60,
+     "lasisa": 59,
+     "jautiena": 48,
+     "zuvis-balta": 45,
+     "kalakutiena": 28,
+     "kiauliena": 28,
+     "zveriena": 28,
+     "triusiena": 10,
+     "paukstiena": 9,
+     "arkliena": 7,
+     "putpeliena": 4,
+     "versiena": 3
+    },
+    "be_grudu": {
+     "su-ryziais": 194,
+     "be-grudu": 169,
+     "su-grudais": 72
+    },
+    "gyvuno_rusis": {
+     "sunims": 539
+    },
+    "monoprotein": {
+     "taip": 81,
+     "ne": 38
+    },
+    "pakuotes_dydis": {
+     "12-kg": 111,
+     "400-g": 58,
+     "2-kg": 50,
+     "25-kg": 46,
+     "3-kg": 39,
+     "800-g": 29,
+     "7-kg": 28,
+     "15-kg": 27,
+     "900-g": 21,
+     "20-kg": 18,
+     "1-5-kg": 17,
+     "10-kg": 17,
+     "125-kg": 16,
+     "5-kg": 11
+    },
+    "speciali_mityba": {
+     "hipoalerginis": 44,
+     "jautriam-virskinimui": 27,
+     "svorio-kontrolei": 13,
+     "sterilizuotiems": 8,
+     "odai-ir-kailiui": 6,
+     "kepenims": 5,
+     "diabetui": 4,
+     "slapimo-takams": 4,
+     "inkstams": 4,
+     "sanariams": 1,
+     "sirdziai": 1
+    },
+    "veisles_dydis": {
+     "visoms-veislems": 7
+    }
+   }
+  },
+  "kates": {
+   "n": 307,
+   "pagal_sandeli": {
+    "av": 111,
+    "vf": 95,
+    "zb": 85,
+    "quattro": 14,
+    "prins": 2
+   },
+   "attr_padengimas": {
+    "gyvuno_rusis": 306,
+    "pakuotes_dydis": 291,
+    "baltymu_saltinis": 272,
+    "amzius": 257,
+    "be_grudu": 256,
+    "speciali_mityba": 97,
+    "monoprotein": 38
+   },
+   "terms": {
+    "gyvuno_rusis": {
+     "katems": 306
+    },
+    "baltymu_saltinis": {
+     "vistiena": 127,
+     "lasisa": 42,
+     "jautiena": 31,
+     "antiena": 31,
+     "zuvis-balta": 22,
+     "kalakutiena": 21,
+     "eriena": 9,
+     "tunas": 8,
+     "triusiena": 6,
+     "zveriena": 3,
+     "kiauliena": 2,
+     "putpeliena": 2,
+     "paukstiena": 1,
+     "zasiena": 1
+    },
+    "be_grudu": {
+     "be-grudu": 120,
+     "su-ryziais": 90,
+     "su-grudais": 46
+    },
+    "amzius": {
+     "suaugusiems": 193,
+     "jauniems": 39,
+     "senyviems": 20,
+     "senjorams": 5
+    },
+    "pakuotes_dydis": {
+     "10-kg": 54,
+     "1-5-kg": 49,
+     "85-g": 31,
+     "100-g": 27,
+     "2-kg": 24,
+     "400-g": 21,
+     "5-kg": 12,
+     "7-kg": 12,
+     "200-g": 11,
+     "1-kg": 7,
+     "70-g": 6,
+     "650-g": 5,
+     "19-kg": 5,
+     "185-g": 4
+    },
+    "speciali_mityba": {
+     "sterilizuotiems": 47,
+     "jautriam-virskinimui": 14,
+     "slapimo-takams": 8,
+     "hipoalerginis": 7,
+     "odai-ir-kailiui": 6,
+     "svorio-kontrolei": 4,
+     "plauku-gumulams": 4,
+     "inkstams": 3,
+     "kepenims": 3,
+     "diabetui": 2,
+     "dantims": 1
+    },
+    "monoprotein": {
+     "taip": 19,
+     "ne": 19
+    }
+   }
+  },
+  "skan_sunys": {
+   "n": 236,
+   "pagal_sandeli": {
+    "vf": 124,
+    "av": 90,
+    "zb": 22
+   },
+   "attr_padengimas": {
+    "gyvuno_rusis": 234,
+    "baltymu_saltinis": 181,
+    "pakuotes_dydis": 107,
+    "monoprotein": 93,
+    "be_grudu": 83,
+    "kiekis_pakuoteje": 63,
+    "amzius": 31,
+    "ilgis": 24,
+    "speciali_mityba": 13,
+    "dydis": 8
+   },
+   "terms": {
+    "gyvuno_rusis": {
+     "sunims": 234
+    },
+    "baltymu_saltinis": {
+     "vistiena": 70,
+     "jautiena": 38,
+     "antiena": 22,
+     "zveriena": 16,
+     "lasisa": 11,
+     "triusiena": 10,
+     "eriena": 9,
+     "kiauliena": 7,
+     "zuvis-balta": 5
+    },
+    "be_grudu": {
+     "be-grudu": 52,
+     "su-grudais": 23,
+     "su-ryziais": 8
+    },
+    "monoprotein": {
+     "taip": 93
+    },
+    "pakuotes_dydis": {
+     "100-g": 25,
+     "500-g": 17,
+     "90-g": 12,
+     "400-g": 7,
+     "113-g": 5,
+     "85-g": 5,
+     "80-g": 3,
+     "50-g": 3,
+     "200-g": 3,
+     "250-g": 2,
+     "40-g": 2,
+     "105-g": 2,
+     "96-g": 2,
+     "140-g": 2
+    },
+    "dydis": {
+     "m": 2,
+     "xl": 2,
+     "s": 2,
+     "xxl": 1,
+     "l": 1
+    },
+    "amzius": {
+     "jauniems": 19,
+     "suaugusiems": 10,
+     "senyviems": 2
+    },
+    "ilgis": {
+     "10-15-cm": 12,
+     "16-25-cm": 7,
+     "iki-10-cm": 5
+    },
+    "speciali_mityba": {
+     "svorio-kontrolei": 13
+    },
+    "kiekis_pakuoteje": {
+     "1-vnt": 22,
+     "6-10-vnt": 16,
+     "2-5-vnt": 15,
+     "11-25-vnt": 6,
+     "26-vnt": 4
+    }
+   }
+  },
+  "skan_kates": {
+   "n": 74,
+   "pagal_sandeli": {
+    "vf": 44,
+    "av": 28,
+    "zb": 2
+   },
+   "attr_padengimas": {
+    "gyvuno_rusis": 74,
+    "baltymu_saltinis": 58,
+    "pakuotes_dydis": 36,
+    "kiekis_pakuoteje": 24,
+    "amzius": 16,
+    "monoprotein": 14,
+    "be_grudu": 8,
+    "speciali_mityba": 7
+   },
+   "terms": {
+    "gyvuno_rusis": {
+     "katems": 74
+    },
+    "baltymu_saltinis": {
+     "vistiena": 35,
+     "lasisa": 10,
+     "tunas": 7,
+     "zuvis-balta": 5,
+     "jautiena": 4,
+     "paukstiena": 1
+    },
+    "be_grudu": {
+     "be-grudu": 5,
+     "su-grudais": 3
+    },
+    "pakuotes_dydis": {
+     "14-g": 8,
+     "15-g": 6,
+     "40-g": 5,
+     "60-g": 3,
+     "36-g": 2,
+     "96-g": 2,
+     "30-g": 2,
+     "150-g": 2,
+     "75-g": 2,
+     "425-g": 2,
+     "20-g": 1,
+     "56-g": 1
+    },
+    "kiekis_pakuoteje": {
+     "2-5-vnt": 14,
+     "11-25-vnt": 6,
+     "26-vnt": 4
+    },
+    "amzius": {
+     "suaugusiems": 9,
+     "jauniems": 5,
+     "senyviems": 2
+    },
+    "speciali_mityba": {
+     "svorio-kontrolei": 2,
+     "odai-ir-kailiui": 2,
+     "dantims": 2,
+     "plauku-gumulams": 1
+    },
+    "monoprotein": {
+     "taip": 13,
+     "ne": 1
+    }
+   }
+  }
+ },
+ "2": {
+  "v": "S1727mh",
+  "f": "2",
+  "kand": {
+   "15867": {
+    "pav": "Veršiuko ausis, 1 vnt.",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "jautiena",
+     "be_grudu": "be-grudu",
+     "gyvuno_rusis": "sunims",
+     "kiekis_pakuoteje": "1-vnt",
+     "monoprotein": "taip"
+    },
+    "cats": "skanestai-sunims"
+   },
+   "16298": {
+    "pav": "Ruda stirnos koja, 1 vnt.",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "zveriena",
+     "be_grudu": "be-grudu",
+     "gyvuno_rusis": "sunims",
+     "kiekis_pakuoteje": "1-vnt",
+     "monoprotein": "taip"
+    },
+    "cats": "skanestai-sunims"
+   },
+   "16305": {
+    "pav": "Ruda kiaulės ausis, 1 vnt.",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "kiauliena",
+     "be_grudu": "be-grudu",
+     "gyvuno_rusis": "sunims",
+     "kiekis_pakuoteje": "1-vnt",
+     "monoprotein": "taip",
+     "pakuotes_dydis": "90-g"
+    },
+    "cats": "skanestai-sunims"
+   },
+   "16311": {
+    "pav": "Ruda jaučio ausis, 1 vnt.",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "jautiena",
+     "be_grudu": "be-grudu",
+     "gyvuno_rusis": "sunims",
+     "kiekis_pakuoteje": "1-vnt",
+     "monoprotein": "taip"
+    },
+    "cats": "skanestai-sunims"
+   },
+   "16317": {
+    "pav": "Ruda avies koja, 1 vnt.",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "eriena",
+     "be_grudu": "be-grudu",
+     "gyvuno_rusis": "sunims",
+     "kiekis_pakuoteje": "1-vnt",
+     "monoprotein": "taip"
+    },
+    "cats": "skanestai-sunims"
+   },
+   "17469": {
+    "pav": "Miamor skanėstai kačiukams &#8211; kreminė pasta su taurinu, 6*15 g, Miamor Junior Pate Cream",
+    "src": "av",
+    "attr": {
+     "amzius": "jauniems",
+     "gyvuno_rusis": "katems",
+     "pakuotes_dydis": "15-g"
+    },
+    "cats": "skanestai-katems"
+   },
+   "17475": {
+    "pav": "Miamor skanėstai katėms &#8211; salyklo ekstrakto kremas, 6*15 g, Miamor Malt Cream",
+    "src": "av",
+    "attr": {
+     "amzius": "suaugusiems",
+     "gyvuno_rusis": "katems",
+     "pakuotes_dydis": "15-g"
+    },
+    "cats": "miamor-katems,skanestai-katems"
+   },
+   "17478": {
+    "pav": "Miamor skanėstai katėms &#8211; salyklo ekstrakto kremas su sūriu, 6*15 g, Miamor Malt Cream with Cheese",
+    "src": "av",
+    "attr": {
+     "amzius": "suaugusiems",
+     "gyvuno_rusis": "katems",
+     "pakuotes_dydis": "15-g"
+    },
+    "cats": "miamor-katems,skanestai-katems"
+   },
+   "17481": {
+    "pav": "Miamor skanėstai katėms &#8211; kremas su vitaminais, 6*15 g, Miamor Multi-Vitamin Cream",
+    "src": "av",
+    "attr": {
+     "amzius": "suaugusiems",
+     "gyvuno_rusis": "katems",
+     "pakuotes_dydis": "15-g"
+    },
+    "cats": "skanestai-katems"
+   },
+   "17641": {
+    "pav": "Kramtukai su juka ir ciberžole, 1 vnt., 50 g",
+    "src": "av",
+    "attr": {
+     "be_grudu": "su-ryziais",
+     "gyvuno_rusis": "sunims",
+     "kiekis_pakuoteje": "1-vnt",
+     "pakuotes_dydis": "50-g"
+    },
+    "cats": "skanestai-sunims"
+   },
+   "17644": {
+    "pav": "Kramtukai dantų priežiūrai su spirulina, 1 vnt., 50 g",
+    "src": "av",
+    "attr": {
+     "be_grudu": "su-ryziais",
+     "gyvuno_rusis": "sunims",
+     "kiekis_pakuoteje": "1-vnt",
+     "pakuotes_dydis": "50-g",
+     "speciali_mityba": "dantims"
+    },
+    "cats": "skanestai-sunims"
+   },
+   "18125": {
+    "pav": "Jaučio penis pjaustytas, 12,5 cm, 1 vnt.",
+    "src": "av",
+    "attr": {
+     "amzius": "jauniems",
+     "baltymu_saltinis": "jautiena",
+     "be_grudu": "be-grudu",
+     "gyvuno_rusis": "sunims",
+     "ilgis": "10-15-cm",
+     "kiekis_pakuoteje": "1-vnt",
+     "monoprotein": "taip",
+     "pakuotes_dydis": "40-g"
+    },
+    "cats": "skanestai-sunims"
+   },
+   "18639": {
+    "pav": "Džiovinti galvijų skrandžiai, 100 g",
+    "src": "av",
+    "attr": {
+     "amzius": "jauniems",
+     "baltymu_saltinis": "jautiena",
+     "be_grudu": "be-grudu",
+     "gyvuno_rusis": "sunims",
+     "monoprotein": "taip"
+    },
+    "cats": "skanestai-sunims,sunims"
+   },
+   "18647": {
+    "pav": "Džiovinti galvijų plaučiai, 100 g",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "jautiena",
+     "be_grudu": "be-grudu",
+     "gyvuno_rusis": "sunims",
+     "monoprotein": "taip"
+    },
+    "cats": "skanestai-sunims,sunims"
+   },
+   "18655": {
+    "pav": "Džiovinta kiaulės uodega, 1 vnt.",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "kiauliena",
+     "be_grudu": "be-grudu",
+     "gyvuno_rusis": "sunims",
+     "kiekis_pakuoteje": "1-vnt",
+     "monoprotein": "taip"
+    },
+    "cats": "skanestai-sunims"
+   },
+   "19027": {
+    "pav": "Churu su tunu ir lašiša &#8211; kreminis skanėstas katėms, 4 x 14 g",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "lasisa",
+     "gyvuno_rusis": "katems",
+     "pakuotes_dydis": "14-g"
+    },
+    "cats": "skanestai-katems"
+   },
+   "19033": {
+    "pav": "Churu nuo plaukų gumuliukų susidarymo, su tunu  &#8211; kreminis skanėstas katėms, Churu Hairball, 4 x 14 g",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "zuvis-balta",
+     "gyvuno_rusis": "katems",
+     "monoprotein": "taip",
+     "pakuotes_dydis": "14-g"
+    },
+    "cats": "skanestai-katems"
+   },
+   "19092": {
+    "pav": "Balta stirnos koja, 1 vnt.",
+    "src": "av",
+    "attr": {
+     "amzius": "suaugusiems",
+     "baltymu_saltinis": "zveriena",
+     "be_grudu": "be-grudu",
+     "gyvuno_rusis": "sunims",
+     "kiekis_pakuoteje": "1-vnt",
+     "monoprotein": "taip"
+    },
+    "cats": "skanestai-sunims"
+   },
+   "19098": {
+    "pav": "Balta jaučio ausis, 1 vnt.",
+    "src": "av",
+    "attr": {
+     "amzius": "jauniems",
+     "baltymu_saltinis": "jautiena",
+     "be_grudu": "be-grudu",
+     "gyvuno_rusis": "sunims",
+     "kiekis_pakuoteje": "1-vnt",
+     "monoprotein": "taip"
+    },
+    "cats": "skanestai-sunims"
+   },
+   "19104": {
+    "pav": "Balta avies koja, 1 vnt.",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "eriena",
+     "be_grudu": "be-grudu",
+     "gyvuno_rusis": "sunims",
+     "kiekis_pakuoteje": "1-vnt",
+     "monoprotein": "taip"
+    },
+    "cats": "skanestai-sunims"
+   }
+  },
+  "top_maistas": [
+   {
+    "pid": 18587,
+    "u": "15",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žir",
+    "src": "av",
+    "attr": {
+     "speciali_mityba": "hipoalerginis",
+     "monoprotein": "taip",
+     "baltymu_saltinis": "kiauliena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "sausas-maistas-sunims"
+   },
+   {
+    "pid": 19582,
+    "u": "5",
+    "pav": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jaut",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "eriena,jautiena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "animonda-konservai-sunims,konservai-sunims"
+   },
+   {
+    "pid": 19590,
+    "u": "5",
+    "pav": "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaugusiems šun",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "antiena,jautiena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "animonda-konservai-sunims,konservai-sunims"
+   },
+   {
+    "pid": 19504,
+    "u": "4",
+    "pav": "Animonda GranCarno Adult: konservai suaugusiems šunims su kalakutiena,",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "kalakutiena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "animonda-konservai-sunims,konservai-sunims"
+   },
+   {
+    "pid": 19578,
+    "u": "4",
+    "pav": "Animonda GranCarno Adult Beef + Rabbit with Herbs: konservai suaugusie",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "jautiena,triusiena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "animonda-konservai-sunims,konservai-sunims"
+   },
+   {
+    "pid": 19692,
+    "u": "4",
+    "pav": "Animonda Carny Adult Beef + Heart – konservai katėms su šviežia jautie",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "jautiena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "konservai-katems"
+   },
+   {
+    "pid": 17978,
+    "u": "4",
+    "pav": "Josera Sensiplus 12,5 kg &#8211; sausas maistas šunims su jautria virš",
+    "src": "av",
+    "attr": {
+     "speciali_mityba": "jautriam-virskinimui",
+     "baltymu_saltinis": "antiena",
+     "amzius": "senyviems"
+    },
+    "cats": "sausas-maistas-sunims"
+   },
+   {
+    "pid": 18590,
+    "u": "4",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žir",
+    "src": "av",
+    "attr": {
+     "speciali_mityba": "hipoalerginis",
+     "monoprotein": "taip",
+     "baltymu_saltinis": "kiauliena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "sausas-maistas-sunims"
+   },
+   {
+    "pid": 19562,
+    "u": "4",
+    "pav": "Animonda GranCarno Adult Duck: konservai suaugusiems šunims su šviežia",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "antiena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "animonda-konservai-sunims,konservai-sunims"
+   },
+   {
+    "pid": 19417,
+    "u": "4",
+    "pav": "Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms s",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "jautiena,vistiena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "konservai-katems"
+   },
+   {
+    "pid": 19496,
+    "u": "4",
+    "pav": "Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 80",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "eriena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "animonda-konservai-sunims,konservai-sunims"
+   },
+   {
+    "pid": 19446,
+    "u": "3",
+    "pav": "Animonda Vom Feinsten Adult with Beef and Turkey Hearts – konservai su",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "jautiena,kalakutiena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "animonda-konservai-sunims,konservai-sunims"
+   },
+   {
+    "pid": 17493,
+    "u": "3",
+    "pav": "Miamor Super premium konservai katėms su tunu ir krevetėmis, 100 g",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "tunas",
+     "amzius": "senyviems"
+    },
+    "cats": "konservai-katems,miamor-katems"
+   },
+   {
+    "pid": 18366,
+    "u": "3",
+    "pav": "Gėrimas katėms &#8211; Miamor Trinkfein Vitaldrink su vištiena, 135 ml",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "vistiena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "konservai-katems,maistas-katems,miamor-katems"
+   },
+   {
+    "pid": 19586,
+    "u": "3",
+    "pav": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jaut",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "eriena,jautiena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "animonda-konservai-sunims,konservai-sunims"
+   },
+   {
+    "pid": 27128,
+    "u": "3",
+    "pav": "Josera A/S Lamb + Rice sausas pašaras šunims su ėriena ir ryžiais, 12,",
+    "src": "vf",
+    "attr": {
+     "baltymu_saltinis": "eriena",
+     "amzius": "senyviems"
+    },
+    "cats": "sausas-maistas-sunims"
+   },
+   {
+    "pid": 18369,
+    "u": "3",
+    "pav": "Gėrimas katėms &#8211; Miamor Trinkfein Vitaldrink su tunu, 135 ml",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "tunas",
+     "amzius": "suaugusiems"
+    },
+    "cats": "konservai-katems,maistas-katems,miamor-katems"
+   },
+   {
+    "pid": 19708,
+    "u": "3",
+    "pav": "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai katėms su",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "antiena,jautiena,vistiena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "konservai-katems"
+   },
+   {
+    "pid": 18018,
+    "u": "3",
+    "pav": "Josera Mini Lamb begrūdis (Mini Deluxe) 10 kg &#8211; sausas maistas m",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "eriena",
+     "amzius": "senyviems"
+    },
+    "cats": "sausas-maistas-sunims"
+   },
+   {
+    "pid": 19405,
+    "u": "3",
+    "pav": "Animonda Vom Feinsten Adult with Salmon and Shrimp – konservai katėms ",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "lasisa",
+     "amzius": "suaugusiems"
+    },
+    "cats": "konservai-katems"
+   },
+   {
+    "pid": 19411,
+    "u": "3",
+    "pav": "Animonda Vom Feinsten Adult with Rabbit &#8211; konservai suaugusiems ",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "triusiena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "animonda-konservai-sunims,konservai-sunims"
+   },
+   {
+    "pid": 19598,
+    "u": "3",
+    "pav": "Animonda GranCarno Adult Beef + Chicken: konservai šunims su šviežia j",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "jautiena,vistiena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "animonda-konservai-sunims,konservai-sunims"
+   },
+   {
+    "pid": 17538,
+    "u": "3",
+    "pav": "Miamor Feine Filets konservai katėms, tunas su krabais drebučiuose, 10",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "tunas",
+     "amzius": "senyviems"
+    },
+    "cats": "konservai-katems,miamor-katems"
+   },
+   {
+    "pid": 35330,
+    "u": "3",
+    "pav": "Exclusion Hypo konservuotas pašaras šunims su arkliena ir bulvėmis, 20",
+    "src": "vf",
+    "attr": {
+     "speciali_mityba": "hipoalerginis",
+     "monoprotein": "taip",
+     "baltymu_saltinis": "arkliena",
+     "veisles_dydis": "visoms-veislems",
+     "amzius": "suaugusiems"
+    },
+    "cats": "konservai-sunims"
+   },
+   {
+    "pid": 19425,
+    "u": "3",
+    "pav": "Animonda Vom Feinsten Adult with Deer &#8211; konservai suaugusiems šu",
+    "src": "av",
+    "attr": {
+     "baltymu_saltinis": "zveriena",
+     "amzius": "suaugusiems"
+    },
+    "cats": "animonda-konservai-sunims,konservai-sunims"
+   }
+  ]
+ },
+ "v": "dep-195228",
+ "kurimas": 200,
+ "sid": 6651,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
