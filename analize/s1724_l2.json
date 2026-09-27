@@ -1,0 +1,21 @@
+{
+ "1": {
+  "v": "S1724l",
+  "file": "wp-content/plugins/petshop-xml/includes/class-fulfillment.php",
+  "kodas": "81:     public function update_vf_qty( int $post_id, int $qty ): void {\n82:         update_post_meta( $post_id, '_vf_qty', $qty );\n83:         $this->recalculate( $post_id );\n84:     }\n",
+  "fn": [
+   "70: private function set_wc_stock( int $post_id, int $qty, string $source ): void {",
+   "76: public function update_zb_qty( int $post_id, int $qty ): void {",
+   "81: public function update_vf_qty( int $post_id, int $qty ): void {",
+   "90: public function update_own_stock( int $post_id, int $qty ): void {"
+  ],
+  "md5": "b0ce22e7739a0515ea1af0ebcf12a2c3"
+ },
+ "v": "dep-102902",
+ "kurimas": 200,
+ "sid": 6578,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
