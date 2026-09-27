@@ -1,0 +1,62 @@
+{
+ "3": {
+  "v": "S1724n",
+  "faze": "3",
+  "md5_dabar": "0a06bd95d0b4e4830a2262a7b455b5e2",
+  "name": "Petshop VF Sync v1.2 (reprice+stock+publish; S1724 stock be pokyčio nerašo)",
+  "dryrun_0_200": {
+   "path": "stock",
+   "mode": "dryrun",
+   "now": "2026-09-27 13:40:39",
+   "cache_mtime": "2026-09-27 10:05:11",
+   "cache_age_h": 0.59,
+   "feed_items": 2398,
+   "products_scanned": 200,
+   "skip_no_feed": 18,
+   "would_zero_out": 0,
+   "would_change_qty": 0,
+   "would_refresh_only": 182,
+   "applied": 0
+  },
+  "apply_0_200": {
+   "path": "stock",
+   "mode": "apply",
+   "now": "2026-09-27 13:40:40",
+   "cache_mtime": "2026-09-27 10:05:11",
+   "cache_age_h": 0.59,
+   "feed_items": 2398,
+   "products_scanned": 200,
+   "skip_no_feed": 18,
+   "would_zero_out": 0,
+   "would_change_qty": 0,
+   "would_refresh_only": 182,
+   "applied": 18,
+   "skipped_same": 182
+  },
+  "cache_valymai_nauji": 0,
+  "cache_pask": [
+   [
+    "09-27 13:05:49",
+    "importas_be_pokyciu",
+    "import #3 skipped 2681",
+    "/wp-load.php?import_key=v&import_id=3&action=processing",
+    "record.php:719 do_action < Import.php:78 execute < wp_loaded_99.php:176 process < wp-settings.php:764 do_action < wp-config.php:124 require_once"
+   ],
+   [
+    "09-27 13:20:17",
+    "importas_be_pokyciu",
+    "import #7 skipped 2398",
+    "/wp-load.php?import_key=v&import_id=7&action=processing",
+    "record.php:719 do_action < Import.php:78 execute < wp_loaded_99.php:176 process < wp-settings.php:764 do_action < wp-config.php:124 require_once"
+   ]
+  ],
+  "laikas": "2026-09-27 13:40:41"
+ },
+ "v": "dep-103936",
+ "kurimas": 200,
+ "sid": 6582,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
