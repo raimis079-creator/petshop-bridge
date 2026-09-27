@@ -1,0 +1,166 @@
+{
+ "1": {
+  "v": "S1725b",
+  "failai": {
+   "wp-content/mu-plugins/petshop-ataskaitu-eksportas.php": {
+    "dydis": 37431,
+    "md5": "8a269aace5105bd0689d353c32fe733e",
+    "eil": [
+     "/* --- 3. Rinkiniai ir dydziai --- */",
+     "'Rinkiniai'   => array( 'eilutes' => $rd, 'placiai' => array( 10, 34, 9, 10, 10, 12, 11, 11, 12, 12, 10 ) ),",
+     "'Rinkiniai'      => array( 'eilutes' => $r,  'placiai' => array( 9, 44, 8, 11, 12, 12, 12, 10 ) ),"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-juosta.php": {
+    "dydis": 23264,
+    "md5": "1015dea6290f7c3486a50f2adc193cc4",
+    "eil": [
+     "* juostą (Katalogas·Akcijos·Gavimas·Tiekimas·Rinkiniai·Užsakymai — `.pskat-bar`,",
+     "*   Tiekimas [kaupiama/laukiam] · Rinkiniai · Akcijos · Laiškai [laukia] · riba ·",
+     "echo $a( 'ps-rinkiniai', 'Rinkiniai', null, in_array( $pg, array( 'ps-rinkiniai', 'ps-laukai' ), true ) );"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-katalogas.php": {
+    "dydis": 513505,
+    "md5": "58e5d317cada5376a0cf9e1a4c860478",
+    "eil": [
+     "/** Ar prekei apskritai taikomos variacijos. Rinkiniai ir DP pakai — ne. */",
+     "add_menu_page(",
+     "'ps-rinkiniai' => 'Rinkiniai',"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-laukai.php": {
+    "dydis": 188853,
+    "md5": "201ceffcf3b8ab16c08eb1237112b107",
+    "eil": [
+     "if ( class_exists( 'Petshop_Rinkiniai' ) && method_exists( 'Petshop_Rinkiniai', 'savikaina' ) ) {",
+     "return Petshop_Rinkiniai::savikaina( $pid );",
+     "remove_action( 'woocommerce_single_product_summary', array( 'Petshop_Rinkiniai', 'sutaupote' ), 11 );",
+     "/* 22, kad atsidurtu is karto po „Rinkiniai\" (jie registruojami ties 20). */",
+     "add_submenu_page(",
+     "echo '<h1 class=\"wp-heading-inline\">Rinkiniai</h1>';"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-paruostu-ataskaita.php": {
+    "dydis": 29816,
+    "md5": "5077deb42af0843cce0a211b4f3b4167",
+    "eil": [
+     "* Description: „Petshop ataskaitos\" → „Rinkiniai\": paruosti MnM rinkiniai ir DP pakai, kanibalizacija, pakopos.",
+     "add_submenu_page(",
+     "self::PARENT, 'Rinkiniai', 'Rinkiniai',",
+     "'Rinkiniai',",
+     "echo '<h2>Rinkiniai ir pakai</h2>';",
+     "echo '<h2>Nuolaidos efektyvumas' . Petshop_Ataskaitu_UI::tt( 'Rinkiniai sugrupuoti pagal „Sutaupote\" gylį. Atsako: koks nuolaidos dydis realiai judina pardavimą.' ) . '</h2>';"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-pristatymo-pazadas.php": {
+    "dydis": 11743,
+    "md5": "f915bc61d6c2e502f9b564906c473cbe",
+    "eil": [
+     "return ( class_exists( 'Petshop_Rinkiniai' ) && defined( 'Petshop_Rinkiniai::PASTOMATO_RIBA' ) ) ? (float) Petshop_Rinkiniai::PASTOMATO_RIBA : self::PASTOMATO_RIBA_KG;"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-rinkiniai.php": {
+    "dydis": 213053,
+    "md5": "b90c520641336b9db53e8313a8bcd8eb",
+    "eil": [
+     "* Petshop Rinkiniai v1.44 (S1601) — „TIK KURJERIU“ galiausiai VEIKIA KASOJE:",
+     "*   Rinkiniai (MnM ir DP pakai) varnele PAVELDI is sudedamuju issaugant (S1601).",
+     "* Petshop Rinkiniai v1.42 (H301) — greita perziura GRAZINTA (savininkas: neisjungti),",
+     "* Petshop Rinkiniai v1.41 (H300) — RADAU: savininkas ziurejo ne prekes puslapi,",
+     "* Petshop Rinkiniai v1.40 (H298) — prekes puslapiai be narsykles keso.",
+     "* Petshop Rinkiniai v1.39 (H295) — nuorodu nuemimas nebepriklauso nuo nuotrauku.",
+     "* Petshop Rinkiniai v1.38 (H294) — VITRINA VEIKIA IR SENIEMS RINKINIAMS.",
+     "* Petshop Rinkiniai v1.37 (H293) — „PRODUCT/QUANTITY\" verciami ir JS'u.",
+     "* Petshop Rinkiniai v1.36 (H290) — DU SAVININKO NURODYMAI (2026-08-25).",
+     "* Petshop Rinkiniai v1.35 (H284) — komponento pavadinimas be nuorodos i preke (savininko nurodymas).",
+     "* Petshop Rinkiniai v1.34 (H283) — savas lightbox (Magnific siame puslapyje nepasiekiamas).",
+     "* Petshop Rinkiniai v1.33 (H282) — komponento nuotrauka atidaroma lightbox'e (Magnific), ne nuvedama i faila/preke.",
+     "* Petshop Rinkiniai v1.32 (H281) — figure.woocommerce-product-gallery__image pseudo-elementai (temos) pridedavo 34 px eilutei → isjungti.",
+     "* Petshop Rinkiniai v1.31 (H280) — sudeties eiluciu aukstis (paslepti vidiniai elementai su padding/margin).",
+     "* Petshop Rinkiniai v1.30 (H279) — v1.29 patikslinimai: kaina tamsi (ne temos akcijine auksine), „Turime\" eilutese paslepta, eilutes kompaktiskesnes.",
+     "* Petshop Rinkiniai v1.29 (H278) — PREKES PUSLAPIO VITRINA PAGAL TEMOS STILIU.",
+     "* Petshop Rinkiniai v1.28 (H276) — SANDELIO FILTRAS PAVELDI RINKINIO SANDELI.",
+     "* Petshop Rinkiniai v1.27 (H275) — „KUR BUS MATOMAS\" TAISYMAS.",
+     "* Petshop Rinkiniai v1.26 (H266) — 🔴 PARDAVIMO KAINA „NEIŠSISAUGO“ (darbuotojo pastaba).",
+     "* Petshop Rinkiniai v1.3 (E4) — PARUOSTU RINKINIU VALDYMAS",
+     "class Petshop_Rinkiniai {",
+     "add_submenu_page(",
+     "'ps-katalogas', 'Rinkiniai', 'Rinkiniai', 'manage_woocommerce',",
+     "'ps-katalogas' => 'Katalogas', 'ps-rinkiniai' => 'Rinkiniai',",
+     "echo '<h1 class=\"wp-heading-inline\">Rinkiniai</h1>';"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-rinkiniu-ataskaita.php": {
+    "dydis": 41305,
+    "md5": "c9e710bfbe32ee988ac6bf23cbd51a07",
+    "eil": [
+     "* Plugin Name: Petshop Statistika — Rinkiniai (ataskaita)",
+     "add_submenu_page(",
+     "echo '<h2>Rinkiniai ir dydžiai</h2>';"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-rinkiniu-rusis.php": {
+    "dydis": 4427,
+    "md5": "d35fdeb48f54f2a63ddb1accec24801e",
+    "eil": [
+     "* filtrą, kai terminų nėra. Rinkiniai kuriami keliose vietose (petshop-laukai,"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-rysiai.php": {
+    "dydis": 16535,
+    "md5": "87645fe9fb461b9537f65f1b2761d4d5",
+    "eil": [
+     "/** Rinkiniai (Mix&Match), kuriuose si preke yra komponentas. */"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-rytas.php": {
+    "dydis": 48000,
+    "md5": "40a95f968a53d596098282813b17e4fe",
+    "eil": [
+     "$add( 'rinkiniai_foto', $be_ ? ( count( $be_ ) >= 3 ? 'raudona' : 'geltona' ) : 'zalia', 'Rinkiniai be nuotraukos: ' . count( $be_ ) . ' iš ' . count( (array) $rk_ ) . ( $be_ ? ' — ' . implode( ', ', array_slice( $be_, 0, 4 ) ) : '' ) );",
+     "} catch ( \\Throwable $e_ ) { $add( 'rinkiniai_foto', 'pilka', 'Rinkiniai be nuotraukos: ' . $e_->getMessage() ); }"
+    ]
+   },
+   "wp-content/plugins/petshop-feeds/petshop-feeds.php": {
+    "dydis": 40156,
+    "md5": "957da141a019b33b739146a8a249bc8f",
+    "eil": [
+     "*     4. Rinkiniai. v1.0.0 ju neatfiltruodavo — butu patekе i feed'a."
+    ]
+   }
+  },
+  "snippetai": {
+   "332 Petshop Filtru Kontekstas v20 [VISADA AKTYVUS] [global]": [],
+   "535 Petshop MnM Sutaupymo žymeklis v8 (nauda < 3 % nerodoma) [global]": [],
+   "539 Petshop Rinkinių Kūrimo Forma v2 [admin]": [
+    "add_submenu_page("
+   ],
+   "550 Petshop Susidėjimo Rinkinio Kūrimo Forma v15 [admin]": [
+    "add_submenu_page("
+   ],
+   "560 Petshop Rinkinio CTA Banneris kategorijose v10 [global]": [],
+   "561 Petshop Rinkinių Gyvūno Filtras v1 [front-end]": [],
+   "562 Petshop Sprendimai Shortcode Variklis v9 [front-end]": [],
+   "569 Petshop Pack/Rinkinys Auto-Categories v1.3 [global]": [
+    "*     + Rinkiniai (679) + atitinkamą rinkinių subkategoriją (682/683/684)"
+   ],
+   "572 Petshop Daugiau=Pigiau Šablono Kūrimo Forma v11 [admin]": [
+    "add_submenu_page("
+   ],
+   "6608 TEMP PS dep-140841 [global]": [
+    "/** Plugin Name: TEMP PS S1725b read-only: kur yra admin langas „Rinkiniai\" (meniu, failas/snippetas, render funkcija), ir ką turi */",
+    "$pat=\"Rinkiniai|add_menu_page|add_submenu_page\";",
+    "foreach($files as $f){ $s=file_get_contents($f); if(preg_match('/Rinkiniai/u',$s)) $r['failai'][str_replace(ABSPATH,'',$f)]=['dydis'=>strlen($s),'md5'=>md5($s),'eil'=>$grep($s,$pat)]; }",
+    "foreach($wpdb->get_results(\"SELECT id,name,scope,active FROM {$P}snippets WHERE active=1 AND code LIKE '%Rinkiniai%'\",ARRAY_A) as $x){ $c=$wpdb->get_var($wpdb->prepare(\"SELECT code FROM {$P}snippets WHERE id=%d\",$x['id'])); $r['snippetai'][$x['id'].' '.$"
+   ]
+  }
+ },
+ "v": "dep-140841",
+ "kurimas": 200,
+ "sid": 6608,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
