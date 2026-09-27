@@ -1,0 +1,20 @@
+{
+ "1": {
+  "v": "S1724q",
+  "htaccess": "# BEGIN PS ModSecurity AI botai (S1718, serveriai.lt 2026-09-25): praleisti ChatGPT-User/GPTBot/ClaudeBot\n<IfModule mod_security2.c>\nSecRuleRemoveById 999015\nSecRuleRemoveById 999016\nSecRuleRemoveById 999017\n</IfModule>\n# END PS ModSecurity AI botai\n# BEGIN Petshop Cache (H089, 2026-08-19)\n<IfModule mod_expires.c>\n  ExpiresActive On\n  ExpiresByType text/css \"access plus 1 year\"\n  ExpiresByType application/javascript \"access plus 1 year\"\n  ExpiresByType text/javascript \"access plus 1 year\"\n  ExpiresByType image/jpeg \"access plus 1 year\"\n  ExpiresByType image/png \"access plus 1 year\"\n  ExpiresByType image/gif \"access plus 1 year\"\n  ExpiresByType image/webp \"access plus 1 year\"\n  ExpiresByType image/svg+xml \"access plus 1 year\"\n  ExpiresByType font/woff2 \"access plus 1 year\"\n</IfModule>\n<IfModule mod_headers.c>\n  <FilesMatch \"\\.(css|js|mjs|woff2?|ttf|otf|eot|svg|jpe?g|png|gif|webp|avif|ico)$\">\n    Header set Cache-Control \"public, max-age=31536000\"\n  </FilesMatch>\n</IfModule>\n# END Petshop Cache\n\n# Block the include-only files.\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteBase /\nRewriteRule ^wp-admin/includes/ - [F,L]\nRewriteRule !^wp-includes/ - [S=3]\nRewriteRule ^wp-includes/[^/]+\\.php$ - [F,L]\nRewriteRule ^wp-includes/js/tinymce/langs/.+\\.php - [F,L]\nRewriteRule ^wp-includes/theme-compat/ - [F,L]\n</IfModule>\n<Files wp-config.php>\n<IfModule !mod_authz_core.c>\norder allow,deny\ndeny from all\n</IfModule>\n<IfModule mod_authz_core.c>\nrequire all denied\n</IfModule>\n</Files>\n\n# BEGIN PS Botu uztvara (S1723, 2026-09-26): filtru/add-to-cart GET be ps_js slapuko -> 403 be PHP (botu sargo taisykle Apache lygyje)\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteCond %{REQUEST_METHOD} ^GET$\nRewriteCond %{QUERY_STRING} (^|&)(yith_wcan|filter_[A-Za-z0-9_-]+|query_type_[A-Za-z0-9_-]+|add-to-cart)= [NC]\nRewriteCond %{QUERY_STRING} !(^|&)ps_[A-Za-z0-9_]+= [NC]\nRewriteCond %{REQUEST_URI} !^/(kasa|krepselis|paskyra|wp-json|wp-admin|wp-login\\.php|feed) [NC]\nRewriteCond %{HTTP_COOKIE} !(^|;\\s*)ps_js=1 [NC]\nRewriteCond %{HTTP_COOKIE} !wordpress_logged_in_ [NC]\nRewriteRule ^ - [F,L]\n</IfModule>\n# END PS Botu uztvara\n\n# BEGIN WordPress\n# Instrukcijos (eilutės) tarp \"BEGIN WordPress\" ir \"END WordPress\" yra \n# generuojamos dinamiškai ir turėtų būti modifikuojamos tik per WordPress filtrus.\n# Bet kokie pakeitimai instrukcijose tarp šių žymiklių bus perrašyti.\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]\nRewriteBase /\nRewriteRule ^index\\.php$ - [L]\nRewriteCond %{REQUEST_FILENAME} !-f\nRewriteCond %{REQUEST_FILENAME} !-d\nRewriteRule . /index.php [L]\n</IfModule>\n\n# END WordPress\n\n# BEGIN Petshop Saugumas (S1678)\n<IfModule mod_headers.c>\nHeader always set X-Content-Type-Options \"nosniff\"\nHeader always set X-Frame-Options \"SAMEORIGIN\"\nHeader always set Referrer-Policy \"strict-origin-when-cross-origin\"\nHeader always set Strict-Transport-Security \"max-age=31536000\" env=HTTPS\n</IfModule>\n<Files xmlrpc.php>\n<IfModule mod_authz_core.c>\nRequire all denied\n</IfModule>\n</Files>\n# END Petshop Saugumas\n",
+  "ht_md5": "57fc0def64a402203a155d7deda39cae",
+  "ht_len": 3086,
+  "wpsc_files": [
+   "htaccess.php",
+   "wp-cache.php"
+  ],
+  "FATAL": "Call to undefined function extract_from_markers() @161"
+ },
+ "v": "dep-104551",
+ "kurimas": 200,
+ "sid": 6585,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
