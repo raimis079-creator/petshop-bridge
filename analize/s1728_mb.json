@@ -1,0 +1,810 @@
+{
+ "1": {
+  "v": "S1728mb",
+  "av_order": {
+   "md5": "fd7ed33561ce279e6f88618447e1a6eb",
+   "eil": 132,
+   "eilutes": [
+    "5:  * v1.2 (S1676, Raimio taisyklė): dropship prekės pirmiausia iš tiekėjo; AV — kai tiekėjas neturi arba užsakymas",
+    "11:  * KONSULTANTO PUNKTAS 3 (priimtas): `resolve()` NEGALI būti perskaičiuojamas",
+    "19:  *   _ps_source        av|vf|zb|quattro|ambrosia|belcor_tofu|prins",
+    "21:  *   _ps_source_qty    kiek vienetų iš to šaltinio",
+    "22:  *   _ps_source_at     kada nuspręsta",
+    "23:  *   _ps_source_reason kodėl (diagnostikai)",
+    "42: \t\t// Petshop_AV_Reduce — 15. Jei fiksuotume vėliau, `_ps_source` eilutėse dar",
+    "73: \t\t\t$x = method_exists( 'Petshop_AV_Source', 'parinkti' ) ? Petshop_AV_Source::parinkti( $pid, $qty, $misrus ) : Petshop_AV_Source::resolve( $pid, $qty ); // v1.2",
+    "75: \t\t\t$item->update_meta_data( '_ps_source',        $x['source'] );",
+    "77: \t\t\t$item->update_meta_data( '_ps_source_qty',    $qty );",
+    "78: \t\t\t$item->update_meta_data( '_ps_source_at',     current_time( 'mysql' ) );",
+    "79: \t\t\t$item->update_meta_data( '_ps_source_reason', $x['reason'] );",
+    "100: \t\t\t. ' (' . count( $grupes ) . ' siunta(-os))' . ( $misrus ? ' · mišrus → AV pirmenybė' : ' · dropship pirma' ) );",
+    "118: \t\t\t\t'source'  => $item->get_meta( '_ps_source' ) ?: '?',",
+    "120: \t\t\t\t'reason'  => $item->get_meta( '_ps_source_reason' ) ?: '',"
+   ]
+  },
+  "rasytojai_ps_source": {
+   "petshop-av-order.php": 1,
+   "petshop-av-tiekimas.php": 1,
+   "petshop-darbalaukis.php": 2,
+   "petshop-desk.php": 1
+  },
+  "mix_eilutes": [
+   {
+    "order_id": "36544",
+    "order_item_id": "2687",
+    "pid": "17962",
+    "src": "vf",
+    "d": "2026-09-27 16:02:14",
+    "pav": "Josidog Active 15 kg – sausas maistas aktyvie",
+    "im": {
+     "_ps_savikaina_vnt": "17.2680",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "31.3900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-27 19:02:15",
+     "_ps_source_reason": "dropship pirma (AV turi 3, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36332",
+    "order_item_id": "2681",
+    "pid": "18518",
+    "src": "av",
+    "d": "2026-09-27 12:29:08",
+    "pav": "Exclusion Mono Protein Mediterraneo konservuo",
+    "im": {
+     "_ps_savikaina_vnt": "1.6830",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.7900",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-27 15:29:09",
+     "_ps_source_reason": "mišrus užsakymas → AV: AV turi 6, reikia",
+     "_ps_av_reduced_qty": "1"
+    }
+   },
+   {
+    "order_id": "36332",
+    "order_item_id": "2684",
+    "pid": "18611",
+    "src": "av",
+    "d": "2026-09-27 12:29:08",
+    "pav": "Exclusion Hypoallergenic konservai šunims su ",
+    "im": {
+     "_ps_savikaina_vnt": "2.3800",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "3.9800",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-27 15:29:09",
+     "_ps_source_reason": "mišrus užsakymas → AV: AV turi 59, reiki",
+     "_ps_av_reduced_qty": "1"
+    }
+   },
+   {
+    "order_id": "36322",
+    "order_item_id": "2656",
+    "pid": "19033",
+    "src": "vf",
+    "d": "2026-09-26 12:38:27",
+    "pav": "Churu nuo plaukų gumuliukų susidarymo, su tun",
+    "im": {
+     "_ps_savikaina_vnt": "1.5700",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.4900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "2",
+     "_ps_source_at": "2026-09-26 15:38:28",
+     "_ps_source_reason": "dropship pirma (AV turi 21, bet užsakyma",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36322",
+    "order_item_id": "2657",
+    "pid": "19027",
+    "src": "vf",
+    "d": "2026-09-26 12:38:27",
+    "pav": "Churu su tunu ir lašiša – kreminis skanėstas ",
+    "im": {
+     "_ps_savikaina_vnt": "1.5700",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.4900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-26 15:38:28",
+     "_ps_source_reason": "dropship pirma (AV turi 10, bet užsakyma",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36322",
+    "order_item_id": "2658",
+    "pid": "19021",
+    "src": "vf",
+    "d": "2026-09-26 12:38:27",
+    "pav": "Churu su vištiena ir krabu – kreminis skanėst",
+    "im": {
+     "_ps_savikaina_vnt": "1.4900",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.3900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-26 15:38:28",
+     "_ps_source_reason": "dropship pirma (AV turi 15, bet užsakyma",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36321",
+    "order_item_id": "2647",
+    "pid": "17978",
+    "src": "vf",
+    "d": "2026-09-26 12:11:10",
+    "pav": "Josera Sensiplus 12,5 kg – sausas maistas šun",
+    "im": {
+     "_ps_savikaina_vnt": "27.5120",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "39.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-26 15:13:07",
+     "_ps_source_reason": "dropship pirma (AV turi 3, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36318",
+    "order_item_id": "2631",
+    "pid": "25177",
+    "src": "vf",
+    "d": "2026-09-26 08:10:31",
+    "pav": "Lašišų žuvų taukai , 500ml",
+    "im": {
+     "_ps_savikaina_vnt": "2.4500",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "4.0900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-26 11:10:32",
+     "_ps_source_reason": "dropship pirma (AV turi 1, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36313",
+    "order_item_id": "2620",
+    "pid": "18566",
+    "src": "vf",
+    "d": "2026-09-25 18:23:46",
+    "pav": "Exclusion Hypoallergenic sausas šunų maistas ",
+    "im": {
+     "_ps_savikaina_vnt": "53.8050",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "78.1900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-25 21:23:49",
+     "_ps_source_reason": "dropship pirma (AV turi 1, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36306",
+    "order_item_id": "2594",
+    "pid": "18599",
+    "src": "vf",
+    "d": "2026-09-25 09:11:26",
+    "pav": "Exclusion Hypoallergenic konservai šunims su ",
+    "im": {
+     "_ps_savikaina_vnt": "2.3800",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "3.9800",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-25 12:11:27",
+     "_ps_source_reason": "dropship pirma (AV turi 19, bet užsakyma",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36286",
+    "order_item_id": "2546",
+    "pid": "18018",
+    "src": "vf",
+    "d": "2026-09-24 09:44:17",
+    "pav": "Josera Mini Lamb begrūdis (Mini Deluxe) 10 kg",
+    "im": {
+     "_ps_savikaina_vnt": "31.8080",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "46.1900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-24 12:44:18",
+     "_ps_source_reason": "dropship pirma (AV turi 1, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36264",
+    "order_item_id": "2510",
+    "pid": "17400",
+    "src": "av",
+    "d": "2026-09-23 14:26:36",
+    "pav": "Monge Monoproteico Solo Agnello – Monoprotein",
+    "im": {
+     "_ps_savikaina_vnt": "1.8400",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.9900",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-24 08:58:55",
+     "_ps_source_reason": "darbalaukis: Inga pakeitė ZB siunčia kli",
+     "_ps_av_reduced_qty": "1",
+     "_ps_kelias": "av"
+    }
+   },
+   {
+    "order_id": "36264",
+    "order_item_id": "2511",
+    "pid": "17397",
+    "src": "av",
+    "d": "2026-09-23 14:26:36",
+    "pav": "Monge Monoproteico Solo Anatra – Monoproteini",
+    "im": {
+     "_ps_savikaina_vnt": "1.8300",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.9900",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-24 08:59:03",
+     "_ps_source_reason": "darbalaukis: Inga pakeitė ZB siunčia kli",
+     "_ps_av_reduced_qty": "1",
+     "_ps_kelias": "av"
+    }
+   },
+   {
+    "order_id": "36264",
+    "order_item_id": "2512",
+    "pid": "17394",
+    "src": "av",
+    "d": "2026-09-23 14:26:36",
+    "pav": "Monge Monoproteico Solo Tacchino – Monoprotei",
+    "im": {
+     "_ps_savikaina_vnt": "1.8400",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.9900",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-24 08:59:12",
+     "_ps_source_reason": "darbalaukis: Inga pakeitė ZB siunčia kli",
+     "_ps_av_reduced_qty": "1",
+     "_ps_kelias": "av"
+    }
+   },
+   {
+    "order_id": "36248",
+    "order_item_id": "2492",
+    "pid": "18587",
+    "src": "vf",
+    "d": "2026-09-23 07:48:20",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-23 10:48:21",
+     "_ps_source_reason": "dropship pirma (AV turi 1, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36246",
+    "order_item_id": "2486",
+    "pid": "18018",
+    "src": "vf",
+    "d": "2026-09-23 06:27:51",
+    "pav": "Josera Mini Lamb begrūdis (Mini Deluxe) 10 kg",
+    "im": {
+     "_ps_savikaina_vnt": "31.8080",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "46.1900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-23 09:27:52",
+     "_ps_source_reason": "dropship pirma (AV turi 1, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36146",
+    "order_item_id": "2438",
+    "pid": "17415",
+    "src": "av",
+    "d": "2026-09-22 07:28:54",
+    "pav": "Monge BWild begrūdžiai konservai šunims su ėr",
+    "im": {
+     "_ps_savikaina_vnt": "1.0500",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "1.9900",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-22 10:29:57",
+     "_ps_source_reason": "mišrus užsakymas → AV: AV turi 17, reiki",
+     "_ps_av_reduced_qty": "1",
+     "_ps_kelias": "av"
+    }
+   },
+   {
+    "order_id": "36116",
+    "order_item_id": "2371",
+    "pid": "18587",
+    "src": "vf",
+    "d": "2026-09-21 15:14:36",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-21 18:16:14",
+     "_ps_source_reason": "dropship pirma (AV turi 1, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36114",
+    "order_item_id": "2364",
+    "pid": "18109",
+    "src": "vf",
+    "d": "2026-09-21 13:38:05",
+    "pav": "Josera Catelux 10 kg – sausas maistas katėms ",
+    "im": {
+     "_ps_savikaina_vnt": "31.6800",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "46.0900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-21 16:41:06",
+     "_ps_source_reason": "dropship pirma (AV turi 1, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36112",
+    "order_item_id": "2360",
+    "pid": "18587",
+    "src": "av",
+    "d": "2026-09-21 11:40:39",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-21 14:41:59",
+     "_ps_source_reason": "mišrus užsakymas → AV: AV turi 2, reikia",
+     "_ps_av_reduced_qty": "1",
+     "_ps_kelias": "av"
+    }
+   },
+   {
+    "order_id": "36111",
+    "order_item_id": "2357",
+    "pid": "18560",
+    "src": "vf",
+    "d": "2026-09-21 10:12:31",
+    "pav": "Exclusion Hypoallergenic sausas šunų maistas ",
+    "im": {
+     "_ps_savikaina_vnt": "53.8050",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "79.9000",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-21 13:13:26",
+     "_ps_source_reason": "dropship pirma (AV turi 1, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36105",
+    "order_item_id": "2338",
+    "pid": "18587",
+    "src": "vf",
+    "d": "2026-09-20 15:58:33",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-20 19:00:10",
+     "_ps_source_reason": "dropship pirma (AV turi 2, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36104",
+    "order_item_id": "2335",
+    "pid": "18602",
+    "src": "vf",
+    "d": "2026-09-20 13:54:05",
+    "pav": "Exclusion Hypoallergenic konservai šunims su ",
+    "im": {
+     "_ps_savikaina_vnt": "1.8600",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.9500",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "10",
+     "_ps_source_at": "2026-09-20 16:55:23",
+     "_ps_source_reason": "dropship pirma (AV turi 46, bet užsakyma",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36095",
+    "order_item_id": "2300",
+    "pid": "18587",
+    "src": "vf",
+    "d": "2026-09-20 07:25:55",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-20 10:27:18",
+     "_ps_source_reason": "dropship pirma (AV turi 2, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36083",
+    "order_item_id": "2246",
+    "pid": "17978",
+    "src": "vf",
+    "d": "2026-09-19 04:59:13",
+    "pav": "Josera Sensiplus 12,5 kg – sausas maistas šun",
+    "im": {
+     "_ps_savikaina_vnt": "27.5120",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "39.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-19 08:01:51",
+     "_ps_source_reason": "dropship pirma (AV turi 3, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36021",
+    "order_item_id": "2220",
+    "pid": "18587",
+    "src": "vf",
+    "d": "2026-09-18 06:41:15",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-18 09:42:17",
+     "_ps_source_reason": "dropship pirma (AV turi 2, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "36021",
+    "order_item_id": "2221",
+    "pid": "18602",
+    "src": "vf",
+    "d": "2026-09-18 06:41:15",
+    "pav": "Exclusion Hypoallergenic konservai šunims su ",
+    "im": {
+     "_ps_savikaina_vnt": "2.0000",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.9500",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "2",
+     "_ps_source_at": "2026-09-18 09:42:17",
+     "_ps_source_reason": "dropship pirma (AV turi 46, bet užsakyma",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "35991",
+    "order_item_id": "2159",
+    "pid": "18587",
+    "src": "vf",
+    "d": "2026-09-17 03:20:21",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-17 06:20:22",
+     "_ps_source_reason": "dropship pirma (AV turi 2, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "35979",
+    "order_item_id": "2125",
+    "pid": "25177",
+    "src": "av",
+    "d": "2026-09-16 07:04:16",
+    "pav": "Lašišų žuvų taukai , 500ml",
+    "im": {
+     "_ps_savikaina_vnt": "2.4500",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "4.0900",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-17 12:00:46",
+     "_ps_source_reason": "parsivežta iš VF, partija #25",
+     "_ps_kelias": "i_av",
+     "_ps_konsolidacija": "1",
+     "_ps_av_reduced": "2026-09-17 12:00:46"
+    }
+   },
+   {
+    "order_id": "35978",
+    "order_item_id": "2118",
+    "pid": "18587",
+    "src": "vf",
+    "d": "2026-09-16 06:36:26",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-16 09:37:34",
+     "_ps_source_reason": "dropship pirma (AV turi 2, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "35969",
+    "order_item_id": "2091",
+    "pid": "18590",
+    "src": "vf",
+    "d": "2026-09-15 17:30:04",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "14.3565",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "21.9500",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-15 20:31:36",
+     "_ps_source_reason": "dropship pirma (AV turi 5, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "35968",
+    "order_item_id": "2088",
+    "pid": "18587",
+    "src": "vf",
+    "d": "2026-09-15 15:42:18",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-15 18:43:38",
+     "_ps_source_reason": "dropship pirma (AV turi 2, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "35954",
+    "order_item_id": "2039",
+    "pid": "18575",
+    "src": "vf",
+    "d": "2026-09-15 07:27:09",
+    "pav": "Exclusion Hypoallergenic mini sausas mažų vei",
+    "im": {
+     "_ps_savikaina_vnt": "14.3565",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "21.9500",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "2",
+     "_ps_source_at": "2026-09-15 10:28:33",
+     "_ps_source_reason": "dropship pirma (AV turi 2, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "35953",
+    "order_item_id": "2035",
+    "pid": "18587",
+    "src": "vf",
+    "d": "2026-09-15 07:16:39",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-15 10:18:16",
+     "_ps_source_reason": "dropship pirma (AV turi 2, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "35950",
+    "order_item_id": "2021",
+    "pid": "18587",
+    "src": "av",
+    "d": "2026-09-15 03:41:32",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-15 06:42:39",
+     "_ps_source_reason": "mišrus užsakymas → AV: AV turi 3, reikia",
+     "_ps_av_reduced_qty": "1",
+     "_ps_kelias": "av"
+    }
+   },
+   {
+    "order_id": "35947",
+    "order_item_id": "1968",
+    "pid": "18587",
+    "src": "vf",
+    "d": "2026-09-14 17:44:01",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-14 20:44:02",
+     "_ps_source_reason": "dropship pirma (AV turi 3, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "35945",
+    "order_item_id": "1962",
+    "pid": "18587",
+    "src": "vf",
+    "d": "2026-09-14 16:56:45",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-14 20:00:46",
+     "_ps_source_reason": "dropship pirma (AV turi 3, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "35930",
+    "order_item_id": "1916",
+    "pid": "18587",
+    "src": "vf",
+    "d": "2026-09-13 19:17:56",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_savikaina_vnt": "37.4850",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "56.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-09-13 22:19:04",
+     "_ps_source_reason": "dropship pirma (AV turi 3, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "35925",
+    "order_item_id": "1909",
+    "pid": "18590",
+    "src": "vf",
+    "d": "2026-09-13 10:03:54",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų ma",
+    "im": {
+     "_ps_source": "vf",
+     "_ps_savikaina_vnt": "14.3565",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "21.9500",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "2",
+     "_ps_source_at": "2026-09-13 13:04:54",
+     "_ps_source_reason": "dropship pirma (AV turi 5, bet užsakymas",
+     "_ps_kelias": "tiesiai"
+    }
+   },
+   {
+    "order_id": "35917",
+    "order_item_id": "1877",
+    "pid": "18512",
+    "src": "av",
+    "d": "2026-09-12 17:51:47",
+    "pav": "Exclusion Mono Protein Mediterraneo konservuo",
+    "im": {
+     "_ps_savikaina_vnt": "1.6830",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.7900",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "10",
+     "_ps_source_at": "2026-09-12 20:52:41",
+     "_ps_source_reason": "mišrus užsakymas → AV: AV turi 10, reiki",
+     "_ps_av_reduced_qty": "10",
+     "_ps_kelias": "av"
+    }
+   }
+  ]
+ },
+ "v": "dep-211141",
+ "kurimas": 200,
+ "sid": 6661,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
