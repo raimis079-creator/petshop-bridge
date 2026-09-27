@@ -1,0 +1,38 @@
+{
+ "2": {
+  "v": "S1724e",
+  "faze": "2",
+  "arch": "ok",
+  "md5": "4854a4210f48e84ff4b523bf5f9ffd93",
+  "heartbeat": 200
+ },
+ "3": {
+  "v": "S1724e",
+  "faze": "3",
+  "arch": "ok",
+  "nuimta": [
+   "36288 (2026-09-26 11:14:03)",
+   "36296 (2026-09-26 11:14:03)",
+   "36298 (2026-09-26 11:14:03)"
+  ],
+  "liko_zymiu": 0
+ },
+ "4": {
+  "v": "S1724e",
+  "faze": "4",
+  "arch": "ok",
+  "rytas_md5": "ef98d602630b3b72557b9a7ab855ab34",
+  "rytas_counts": [
+   1,
+   1
+  ],
+  "heartbeat": 200
+ },
+ "v": "dep-082834",
+ "kurimas": 200,
+ "sid": 6568,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
