@@ -1,5 +1,231 @@
 {
- "v": "dep-181659",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "1": {
+  "v": "S1727mc",
+  "f": "1",
+  "settings": {
+   "enabled": "1",
+   "discount": 0,
+   "maxc": 3,
+   "heading": "Dažnai perkama kartu",
+   "note": "Perkant kartu – papildomoms prekėms taikoma nuolaida!",
+   "precheck": "1"
+  },
+  "cat_rules": {
+   "skanestai-sunims": 10,
+   "skanestai-katems": 10,
+   "zaislai-sunims": 10,
+   "zaislai-katems": 10,
+   "higienos-priemones-sunims": 10,
+   "vitaminai-ir-papildai-sunims": 10,
+   "vitaminai-ir-papildai-katems": 10
+  },
+  "pairs": {
+   "sausas-maistas-sunims": [
+    "skanestai-sunims",
+    "zaislai-sunims",
+    "higienos-priemones-sunims",
+    "vitaminai-ir-papildai-sunims"
+   ],
+   "maistas-sunims": [
+    "skanestai-sunims",
+    "zaislai-sunims",
+    "higienos-priemones-sunims",
+    "vitaminai-ir-papildai-sunims"
+   ],
+   "sausas-maistas-katems": [
+    "skanestai-katems",
+    "zaislai-katems",
+    "vitaminai-ir-papildai-katems"
+   ],
+   "maistas-katems": [
+    "skanestai-katems",
+    "zaislai-katems",
+    "vitaminai-ir-papildai-katems"
+   ]
+  },
+  "copirk_n": 5,
+  "copirk_pvz": {
+   "19496": [
+    19582
+   ],
+   "19578": [
+    19590,
+    19598
+   ],
+   "19582": [
+    19496
+   ],
+   "19590": [
+    19578
+   ],
+   "19598": [
+    19578
+   ]
+  },
+  "manual_n": 0,
+  "cron_next": 1790557800,
+  "fbt_eilutes_po_t0": [],
+  "inst": 1,
+  "pasiulymai": [
+   {
+    "pid": "19396",
+    "pav": "Animonda Vom Feinsten Adult with Turkey and Ham – konservai suaugusiems šunims su kalakutiena ir kumpiu, 150 g",
+    "q": "55",
+    "src": "av",
+    "comp": []
+   },
+   {
+    "pid": "19425",
+    "pav": "Animonda Vom Feinsten Adult with Deer - konservai suaugusiems šunims su elniena, 150 g",
+    "q": "47",
+    "src": "av",
+    "comp": []
+   },
+   {
+    "pid": "19411",
+    "pav": "Animonda Vom Feinsten Adult with Rabbit - konservai suaugusiems šunims su triušiena, 150 g",
+    "q": "35",
+    "src": "av",
+    "comp": []
+   },
+   {
+    "pid": "19358",
+    "pav": "Animonda Vom Feinsten Kitten with Lamb – konservai kačiukams su ėriena, 100 g",
+    "q": "31",
+    "src": "av",
+    "comp": []
+   },
+   {
+    "pid": "18369",
+    "pav": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 135 ml",
+    "q": "30",
+    "src": "av",
+    "comp": [
+     "19027 Churu su tunu ir lašiša - kreminis skanėstas  2.49 src=\"av\" -10%",
+     "19021 Churu su vištiena ir krabu - kreminis skanėst 2.39 src=\"av\" -10%",
+     "15565 Žaislas katei - Du paukščiukai su plunksnomis 4.38 src=\"av\" -10%"
+    ]
+   },
+   {
+    "pid": "19446",
+    "pav": "Animonda Vom Feinsten Adult with Beef and Turkey Hearts – konservai suaugusiems šunims su jautiena ir kalakutų širdimis, 150 g",
+    "q": "30",
+    "src": "av",
+    "comp": []
+   },
+   {
+    "pid": "18366",
+    "pav": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su vištiena, 135 ml",
+    "q": "27",
+    "src": "av",
+    "comp": [
+     "18452 GimCat maisto papildas katėms - Malt-Soft Ext 2.69 src=\"av\" -10%",
+     "17481 Miamor skanėstai katėms - kremas su vitaminai 2.56 src=\"av\" -0%",
+     "15511 Žaislas katei - Matatabi lazdelė dantų prieži 2.34 src=\"av\" -10%"
+    ]
+   },
+   {
+    "pid": "19405",
+    "pav": "Animonda Vom Feinsten Adult with Salmon and Shrimp – konservai katėms su lašiša ir krevetėmis, 100 g",
+    "q": "25",
+    "src": "av",
+    "comp": []
+   }
+  ],
+  "sc_params": [
+   "lines",
+   "max",
+   "debug"
+  ]
+ },
+ "2": {
+  "v": "S1727mc",
+  "f": "2",
+  "meta_keys_pvz": [
+   "_product_id",
+   "_variation_id",
+   "_qty",
+   "_tax_class",
+   "_line_subtotal",
+   "_line_subtotal_tax",
+   "_line_total",
+   "_line_tax",
+   "_line_tax_data",
+   "_ps_savikaina_vnt",
+   "_ps_savikaina_saltinis",
+   "_ps_kaina_atskirai_vnt",
+   "_ps_source",
+   "_ps_carrier",
+   "_ps_source_qty",
+   "_ps_source_at",
+   "_ps_source_reason",
+   "_reduced_stock",
+   "_ps_kelias",
+   "method_id",
+   "instance_id",
+   "cost",
+   "total_tax",
+   "taxes",
+   "Prekės",
+   "rate_id",
+   "label",
+   "compound",
+   "tax_amount",
+   "shipping_tax_amount",
+   "rate_percent"
+  ],
+  "eil": 393,
+  "src_pasiskirstymas": {
+   "": 1,
+   "av": 282,
+   "vf": 96,
+   "quattro": 6,
+   "zb": 4,
+   "prins": 1,
+   "ambrosia": 3
+  },
+  "stat": {
+   "uzs": 165,
+   "be_kelio": 1,
+   "su_maistu": 110,
+   "maistas_ir_skan": 7,
+   "tik_skan": 21,
+   "sunu_maistas": 86,
+   "sunu_maistas_ir_sunu_skan": 6,
+   "kaciu_maistas": 27,
+   "kaciu_maistas_ir_kaciu_skan": 1,
+   "maisto_uzs_src": {
+    "?": 1,
+    "vf": 57,
+    "av": 41,
+    "quattro": 5,
+    "prins+av": 1,
+    "ambrosia": 3,
+    "zb": 1,
+    "av+quattro": 1
+   },
+   "maisto_uzs_yra_av_eilute": 45
+  },
+  "skan_su_maistu": {
+   "Kietas Himalajų sūrio skanėstas šunims, 4Dogs, S dydis": 1,
+   "Kietas Himalajų sūrio skanėstas su ciberžole šunims, 4Dogs, S dydis": 1,
+   "Churu Xmas dovanų dėžutė su tunu, vištiena, vištiena ir sūriu 20 vnt": 1,
+   "Hau&amp;Miau ėrienos žiedai apsukti žuvimi, 500g": 1,
+   "Truly skanėstas šunims, antienos juostelės, 90 g": 1,
+   "Galvijų trachėjos, pjaustytos, 500 g": 1,
+   "Veršiuko ausis, 1 vnt.": 1,
+   "Truly skanėstas šunims jautienos dantų šepetėliai, 90 g": 1,
+   "Balta avies koja, 1 vnt.": 1,
+   "Balta stirnos koja, 1 vnt.": 1,
+   "Ruda avies koja, 1 vnt.": 1,
+   "Ruda stirnos koja, 1 vnt.": 1
+  }
+ },
+ "v": "dep-182100",
+ "kurimas": 200,
+ "sid": 6646,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
 }
