@@ -1,0 +1,112 @@
+{
+ "3": {
+  "v": "S1731q",
+  "faze": "3",
+  "md5": "bfd418fd5d079cade3b66607b2c63745",
+  "hb": 200,
+  "ver": "3.45",
+  "metodai": [
+   true,
+   true
+  ],
+  "hook": true,
+  "1208_eil": [
+   [
+    "Balta avies koja, 1 vnt.",
+    10,
+    true,
+    true,
+    15.9,
+    ""
+   ],
+   [
+    "Balta stirnos koja, 1 vnt.",
+    10,
+    true,
+    true,
+    14.9,
+    ""
+   ],
+   [
+    "Bosch sausainiai šuniukams, kauliuko formos, Mono Bones, 900 g",
+    1,
+    true,
+    true,
+    5.58,
+    ""
+   ],
+   [
+    "Ruda stirnos koja, 1 vnt.",
+    10,
+    true,
+    true,
+    14.9,
+    ""
+   ],
+   [
+    "Ruda kiaulės ausis, 1 vnt.",
+    4,
+    true,
+    true,
+    5.04,
+    ""
+   ],
+   [
+    "Sausainiai šuniukams, kauliuko formos, Bones Puppy Mix, 100 g",
+    1,
+    true,
+    true,
+    0.86,
+    ""
+   ]
+  ],
+  "1208_kk": true
+ },
+ "4": {
+  "v": "S1731q",
+  "faze": "4",
+  "sukurta": {
+   "o": 36565,
+   "a": 36563,
+   "b": 36564
+  },
+  "busena": {
+   "st": "pending",
+   "total": "6.00",
+   "tax": "1.04",
+   "graz": "",
+   "groups": "",
+   "doc_t": "invoice",
+   "pdf": "",
+   "avpn": "",
+   "eil": {
+    "2777": [
+     36563,
+     3,
+     6,
+     {
+      "total": {
+       "1": "1.041322"
+      },
+      "subtotal": {
+       "1": "1.041322"
+      }
+     },
+     {
+      "_ps_source": "av",
+      "_ps_av_reduced_qty": "3",
+      "_ps_savikaina_vnt": "0.5000"
+     }
+    ]
+   },
+   "past": []
+  }
+ },
+ "v": "dep-172229",
+ "kurimas": 200,
+ "sid": 6705,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
