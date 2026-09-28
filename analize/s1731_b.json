@@ -1,0 +1,308 @@
+{
+ "1": {
+  "v": "S1731b",
+  "faze": "1",
+  "eil": [
+   {
+    "order_id": "36555",
+    "order_item_id": "2742",
+    "order_item_name": "Stirnos ausis, 1 vnt.",
+    "status": "wc-processing",
+    "date_created_gmt": "2026-09-28 12:33:22",
+    "payment_method": "paysera"
+   }
+  ],
+  "uzs": {
+   "36555": {
+    "nr": "1208",
+    "st": "processing",
+    "via": "checkout",
+    "sukurta": "2026-09-28 15:33",
+    "apm": "2026-09-28 15:34",
+    "eil": {
+     "2738": {
+      "pid": 19104,
+      "n": "Balta avies koja, 1 vnt.",
+      "q": 10,
+      "meta": {
+       "_ps_savikaina_vnt": "0.5900",
+       "_ps_savikaina_saltinis": "pardavimai",
+       "_ps_kaina_atskirai_vnt": "1.5900",
+       "_ps_source": "av",
+       "_ps_carrier": "any",
+       "_ps_source_qty": "10",
+       "_ps_source_at": "2026-09-28 15:33:23",
+       "_ps_source_reason": "grynai AV prekė (be tiekėjo)",
+       "_reduced_stock": "0",
+       "_ps_av_reduced_qty": "10"
+      }
+     },
+     "2739": {
+      "pid": 19092,
+      "n": "Balta stirnos koja, 1 vnt.",
+      "q": 10,
+      "meta": {
+       "_ps_savikaina_vnt": "0.7100",
+       "_ps_savikaina_saltinis": "pardavimai",
+       "_ps_kaina_atskirai_vnt": "1.4900",
+       "_ps_source": "av",
+       "_ps_carrier": "any",
+       "_ps_source_qty": "10",
+       "_ps_source_at": "2026-09-28 15:33:23",
+       "_ps_source_reason": "grynai AV prekė (be tiekėjo)",
+       "_reduced_stock": "0",
+       "_ps_av_reduced_qty": "10"
+      }
+     },
+     "2740": {
+      "pid": 19054,
+      "n": "Bosch sausainiai šuniukams, kauliuko formos, Mono Bones, 900 g",
+      "q": 1,
+      "meta": {
+       "_ps_savikaina_vnt": "2.6600",
+       "_ps_savikaina_saltinis": "pardavimai",
+       "_ps_kaina_atskirai_vnt": "5.5800",
+       "_ps_source": "av",
+       "_ps_carrier": "any",
+       "_ps_source_qty": "1",
+       "_ps_source_at": "2026-09-28 15:33:23",
+       "_ps_source_reason": "grynai AV prekė (be tiekėjo)",
+       "_reduced_stock": "0",
+       "_ps_av_reduced_qty": "1"
+      }
+     },
+     "2741": {
+      "pid": 16298,
+      "n": "Ruda stirnos koja, 1 vnt.",
+      "q": 10,
+      "meta": {
+       "_ps_savikaina_vnt": "0.7100",
+       "_ps_savikaina_saltinis": "pardavimai",
+       "_ps_kaina_atskirai_vnt": "1.4900",
+       "_ps_source": "av",
+       "_ps_carrier": "any",
+       "_ps_source_qty": "10",
+       "_ps_source_at": "2026-09-28 15:33:23",
+       "_ps_source_reason": "grynai AV prekė (be tiekėjo)",
+       "_reduced_stock": "0",
+       "_ps_av_reduced_qty": "10"
+      }
+     },
+     "2742": {
+      "pid": 34908,
+      "n": "Stirnos ausis, 1 vnt.",
+      "q": 5,
+      "meta": {
+       "_ps_savikaina_vnt": "0.7300",
+       "_ps_savikaina_saltinis": "pardavimai",
+       "_ps_kaina_atskirai_vnt": "1.1800",
+       "_ps_source": "av",
+       "_ps_carrier": "any",
+       "_ps_source_qty": "5",
+       "_ps_source_at": "2026-09-28 15:33:23",
+       "_ps_source_reason": "grynai AV prekė (be tiekėjo)"
+      }
+     }
+    },
+    "past": [
+     [
+      "09-28 15:33",
+      "system",
+      "Stock hold of 90 minutes applied to: - Balta avies koja, 1 vnt. (710002-1) &times; 10- Balta stirnos koja, 1 vnt. (718000) &times; 10- Bosch sausainiai šuniukams, kauliuko formos, Mono Bones, 900 g (5902768731026) &times; 1- Ruda stirnos koja, 1 vnt."
+     ],
+     [
+      "09-28 15:33",
+      "system",
+      "Svečio užsakymas priskirtas esamai paskyrai #268 pagal el. paštą (S1690)."
+     ],
+     [
+      "09-28 15:33",
+      "system",
+      "Vykdymas: MAIN — AV 36 vnt (1 siunta(-os)) · dropship pirma"
+     ],
+     [
+      "09-28 15:33",
+      "system",
+      "Paysera: Neapmokėto užsakymo būsena"
+     ],
+     [
+      "09-28 15:33",
+      "system",
+      "Likutis sumažintas: Balta avies koja, 1 vnt. (27&rarr;27), Balta stirnos koja, 1 vnt. (25&rarr;25), Bosch sausainiai šuniukams, kauliuko formos, Mono Bones, 900 g (4&rarr;4), Ruda stirnos koja, 1 vnt. (100&rarr;100)"
+     ],
+     [
+      "09-28 15:34",
+      "system",
+      "Paysera: Naujo užsakymo kūrimo būsena"
+     ],
+     [
+      "09-28 15:34",
+      "system",
+      "Paysera: Užsakymo būsena po apmokėjimo"
+     ],
+     [
+      "09-28 15:34",
+      "system",
+      "AV nurašymas: #19104 grynai AV 27 -> 17 · #19092 grynai AV 25 -> 15 · #19054 grynai AV 4 -> 3 · #16298 grynai AV 100 -> 90"
+     ],
+     [
+      "09-28 15:34",
+      "system",
+      "Partijos nurašytos: #19104 −10 vnt. (1 partijos) · #19092 −10 vnt. (1 partijos) · #19054 −1 vnt. (1 partijos) · #16298 −10 vnt. (1 partijos) · #34908 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #34908: Partijose trūksta 5 vnt. — likutis ir partijos nesutampa"
+     ],
+     [
+      "09-28 15:34",
+      "system",
+      "Faktai irasyti: 5 eilutes · pajamos 47,25 EUR (be PVM, po nuolaidu) · PVM 9,93 EUR · marza 20,84 EUR · kontribucija (be pristatymo) 20,39 EUR"
+     ],
+     [
+      "09-28 15:34",
+      "system",
+      "Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas."
+     ],
+     [
+      "09-28 15:34",
+      "system",
+      "Email \"Naujas užsakymas\" sent."
+     ],
+     [
+      "09-28 15:34",
+      "system",
+      "Email \"Užsakymas vykdomas\" sent."
+     ]
+    ]
+   }
+  }
+ },
+ "2": {
+  "v": "S1731b",
+  "faze": "2",
+  "suvestine": {
+   "variable_tevai": 70,
+   "tipas_mix-and-match": 28,
+   "dp_pakai": 235
+  },
+  "viso_paprastu": 0,
+  "su_pardavimais": 0,
+  "pagal_saltini": [],
+  "sarasas": []
+ },
+ "3": {
+  "v": "S1731b",
+  "faze": "3",
+  "snippets": [
+   {
+    "id": "565",
+    "name": "Petshop VF Sync v1.2 (reprice+stock+publish; S1724 stock be pokyčio nerašo)",
+    "active": "1",
+    "c": "/**\n * Petshop VF Sync v1.1 (dry-run/apply + WP cron)\n *\n * "
+   },
+   {
+    "id": "567",
+    "name": "Petshop Daugiau=Pigiau Stock Sync v1.3",
+    "active": "1",
+    "c": "/**\n * Petshop Daugiau=Pigiau Stock Sync v1.3\n * v1.3 (S1676"
+   },
+   {
+    "id": "572",
+    "name": "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v11",
+    "active": "0",
+    "c": "/**\n * Petshop Daugiau=Pigiau Šablono Kūrimo Forma v11\n * v1"
+   },
+   {
+    "id": "2403",
+    "name": "Petshop Stock Service v1.3 (per registra)",
+    "active": "1",
+    "c": "/**\n * Petshop Stock Service v1.3 (parduodamo kiekio skaičia"
+   },
+   {
+    "id": "6508",
+    "name": "TEMP PS dep-104204",
+    "active": "0",
+    "c": "\n/** Plugin Name: TEMP PS S1721c recon read-only: 301 keliai"
+   },
+   {
+    "id": "6510",
+    "name": "TEMP PS dep-105625",
+    "active": "0",
+    "c": "\n/** Plugin Name: TEMP PS S1721c recon read-only: 301 keliai"
+   },
+   {
+    "id": "6511",
+    "name": "TEMP PS dep-110251",
+    "active": "0",
+    "c": "\n/** Plugin Name: TEMP PS S1721c recon read-only: 301 keliai"
+   },
+   {
+    "id": "6527",
+    "name": "TEMP PS dep-131509",
+    "active": "0",
+    "c": "\n/** Plugin Name: TEMP PS S1721c recon read-only: 301 keliai"
+   },
+   {
+    "id": "6533",
+    "name": "TEMP PS dep-141833",
+    "active": "0",
+    "c": "\n/** Plugin Name: TEMP PS S1721l read-only: DP paku (daugiau"
+   },
+   {
+    "id": "6580",
+    "name": "TEMP PS dep-103650",
+    "active": "0",
+    "c": "\n/** Plugin Name: TEMP PS S1724n snippet 565 VF Sync patch: "
+   },
+   {
+    "id": "6581",
+    "name": "TEMP PS dep-103820",
+    "active": "0",
+    "c": "\n/** Plugin Name: TEMP PS S1724n snippet 565 VF Sync patch: "
+   },
+   {
+    "id": "6582",
+    "name": "TEMP PS dep-103936",
+    "active": "0",
+    "c": "\n/** Plugin Name: TEMP PS S1724n snippet 565 VF Sync patch: "
+   },
+   {
+    "id": "6683",
+    "name": "TEMP PS dep-154722",
+    "active": "0",
+    "c": "\n/** Plugin Name: TEMP PS S1731a stirnos ausis — pardavimas "
+   },
+   {
+    "id": "6684",
+    "name": "TEMP PS dep-155002",
+    "active": "1",
+    "c": "\n/** Plugin Name: TEMP PS S1731b be likučio valdymo — užsaky"
+   }
+  ],
+  "mu_manage_no": {
+   "petshop-darbalaukis.php": [
+    "_price( '3.99' ); $p->set_tax_status( 'taxable' ); $p->set_tax_class( '' ); $p->set_manage_stock( false ); $p->set_stock_status( 'instock' ); $p->set_sold_individu",
+    ", 2, '.', '' ) ); $p->set_tax_status( 'taxable' ); $p->set_tax_class( '' ); $p->set_manage_stock( false ); $p->set_stock_status( 'instock' ); $p->set_sold_individu"
+   ],
+   "petshop-gavimas.php": [
+    "\t\t$prod->set_manage_stock( false );      /* likuti valdo partijos (FEFO) */"
+   ],
+   "petshop-katalogas.php": [
+    "\t\t\tupdate_post_meta( $pid, '_manage_stock', 'no' );",
+    "\t\t\t\t\t$prod->set_manage_stock( false );"
+   ],
+   "petshop-laukai.php": [
+    "\t\t$prod->set_manage_stock( false ); /* likutis gyvena prekese */",
+    "\t\t$prod->set_manage_stock( false );"
+   ],
+   "petshop-rinkiniai.php": [
+    "\t\t\t$product->set_manage_stock( false );",
+    "\t\t\t$prod->set_manage_stock( false );          /* likutis — is bazines prekes */"
+   ]
+  }
+ },
+ "v": "dep-155002",
+ "kurimas": 200,
+ "sid": 6684,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
