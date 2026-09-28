@@ -1,0 +1,154 @@
+{
+ "1": {
+  "1208": {
+   "st": "processing",
+   "total": "57.18",
+   "ship": "0",
+   "shipping": [
+    "shopup_venipak_shipping_pickup_method VENIPAK paštomatai/atsiėmimo punktai"
+   ],
+   "dl_meta": {
+    "12": "2026-09-28 15:34:20",
+    "13": "2026-09-28 15:33:23",
+    "14": "2026-09-28 12:34:20",
+    "15": "1008817154.1786510234",
+    "16": "1786510234",
+    "17": "--",
+    "18": "2026-09-28 12:34:20",
+    "19": "1008817154.1786510234",
+    "20": "204",
+    "21": "CjwKCAjwoOjVBhArEiwAUwDak-WWj-0iqduoEBuWOVj5nSwxpgNZB1PFPsLkeoARzVpgCPETxvDf-BoCSdgQAvD_BwE",
+    "22": "{\"av\":{\"carrier\":\"any\",\"eilutes\":5,\"vienetai\":36}}",
+    "23": "desktop",
+    "24": "{\"pirmas\":{\"utm_source\":\"google\",\"utm_medium\":\"cpc\",\"utm_campaign\":\"23346712074\",\"gclid\":1,\"fbclid\":0,\"referer_domenas\":",
+    "25": "2026-09-28 15:33:23",
+    "26": "2026-09-28 16:00:55 | Inga",
+    "27": "1208",
+    "28": "MAIN",
+    "29": "2026-09-28 15:34:20",
+    "30": "1",
+    "31": "1",
+    "32": "erl81_2_checkout"
+   }
+  },
+  "v": "S1731g",
+  "f": {
+   "petshop-darbalaukis.php": {
+    "eil": 4365,
+    "hit": [
+     "16: *   nebegalima, „Redaguoti“ lieka aktyvus su `tipas=tik_el` — keičiamas TIK el. paštas (kad išeitų „Išsiųsta“ / sąskaitos laiškai). Adreso taisyklė (v3.18) nep",
+     "29: *   (2) prekių RINKIKLIS kortelėje vietoj SKU laukelio: „Pridėti prekių iš [T]“ → ženklas (`product_brand`, tik to tiekėjo), „Išparduota (reikia užsakyti)“ jun",
+     "42: * Petshop Darbalaukis v3.36 (S1620, Raimis 09-06 „2 – ok, 3 – a ir b“): FILTRAI „Visi“ lange — Data „Nuo–iki“ (variklio `datos_riba('intervalas')`), Apmokėjima",
+     "55: * NAUJI VEIKSMAI (`admin_post_ps_dl_veiksmas`, nonce `ps_dl_{v}_{id}`), variklis (registras A–J) neliestas:",
+     "127: *   `calculate_totals(false)`, pristatymas nekinta) arba išimama (`remove_item`; išimti vienintelę = „Atšaukti“ — neleidžiama);",
+     "128: *   kaupiamos Tiekimo partijos eilutė perdedama (`isimti_eilute` + `ideti_eilute`); grupės/planas perskaičiuojami; `_ps_surinkta`",
+     "131: *   laiško nėra. Partijos — rankomis (pastaba). „Pridėti prekę“ — vėliau per „naujas mažas užsakymas + apmokėjimo nuoroda“ (§12.5).",
+     "133: *   refund'us (`woocommerce_order_item_quantity_html`, `woocommerce_email_order_item_quantity`, `woocommerce_get_order_item_totals`,",
+     "172: *   (statusas „error“ → tuščias; `lp-parcel-failed` → `lp-parcel-await`), klientui laiškas „Jūsų užsakymo Nr. N pristatymo duomenys pakeisti“ — varnelė",
+     "182: *   Veiksmas `admin_post_ps_dl_veiksmas` `v=velavimas` (nonce `ps_dl_velavimas_{id}`, lock). Dialogas su laiško tekstu prieš siuntimą. Automatinis 14:00 nekeis",
+     "337: *   tekstuose nebėra „etapas“/„WC“; „Išsiųsta“ — savas `ps_dl_veiksmas v=issiusta` su sekimo laiško varnele (V3, I1: ON, kai",
+     "372: add_action( 'admin_post_ps_dl_veiksmas', array( __CLASS__, 'vykdyti' ) );",
+     "406: add_filter( 'woocommerce_order_item_quantity_html', array( __CLASS__, 'kiekio_html' ), 20, 2 );",
+     "784: $f['grazinti'] = self::grazinti( $o ); if ( $f['grazinti'] && ! $f['kl'] ) { $f['kl'] = 'Grąžink klientui pinigus'; }",
+     "879: case 'apmoketa':",
+     "881: case 'rusiuoti': return array( 'Rūšiuoti', '#skydelis', null, 'p', 0 );",
+     "882: case 'spresti':  return array( 'Spręsti', '#skydelis', null, 'bad', 0 );",
+     "883: case 'kons':",
+     "887: case 'tiekimas': return array( 'Laukiam iš ' . self::vardas( $s ), self::url( array( 'eile' => 'laukiam', 'view' => null, 'q' => null, 'b' => null ) ), null,",
+     "888: case 'lapai':    return array( 'Surinkti', self::veiksmo_url( 'lapai', $id ), null, 'p', 0 );",
+     "889: case 'lipdukas':",
+     "896: case 'laiskas':  return array( 'zb' === $s ? 'Suvesti į ZB' : 'Užsakyti iš ' . self::vardas( $s ), self::url( array( 'eile' => 'laiskai', 'view' => null, 'q'",
+     "897: case 'ats_paruosta': // v3.35 (C)",
+     "900: case 'atsieme': // v3.35 (C)",
+     "902: case 'issiusta':",
+     "919: return self::dek( wp_nonce_url( admin_url( 'admin-post.php?' . http_build_query( array_merge( array( 'action' => 'ps_dl_veiksmas', 'v' => $v, 'id' => (int) $i",
+     "1036: if ( ( is_array( $cr ) && ! empty( $cr['errors'] ) ) || false === $cr || $o->get_meta( '_woo_lithuaniapost_barcode' ) ) { return array( 'dl_klaida', 'senos",
+     "1205: if ( ! $zin ) { $baigti( 'dl_info', 'nieko nepakeista' ); }",
+     "1212: $o->add_order_note( sprintf( 'Darbalaukis: ' . ( 'tik_el' === $red['tipas'] ? 'kliento el. paštas pakeistas' : 'pristatymo duomenys pakeisti' ) . ' (%s): %s.",
+     "1215: $baigti( 'dl_info', ( 'tik_el' === $red['tipas'] ? 'el. paštas pakeistas: ' : 'pristatymo duomenys pakeisti: ' ) . implode( '; ', $zin ) . ( $nuimta ? ' · '",
+     "1422: /** v3.20 (spec §12.5): „Siunta grįžta“ sumos — [sumoketa, grazinti (− 3,99), baze, ikainis, ikainis_t, pakart (+ 3,99), visa] arba null. */",
+     "1439: $gr = self::grazinti( $o ); $gr[] = array( 'laikas' => current_time( 'mysql' ), 'kas' => $u->display_name, 'suma' => round( (float) $suma, 2 ), 'refund' => 0,",
+     "1448: public static function grazinti( $o ) { $j = json_decode( (string) $o->get_meta( self::GRAZINTI_META ), true ); return is_array( $j ) ? $j : array(); }",
+     "1505: $baigti( 'dl_klaida', 'WC grąžinimo įrašo sukurti nepavyko: ' . $refund->get_error_message() . ' — niekas nepakeista' );",
+     "1511: if ( $part ) { Petshop_AV_Tiekimas::isimti_eilute( $o, $iid ); $o = wc_get_order( $id ); $it = $o->get_item( $iid ); }",
+     "1513: $o->remove_item( $iid );",
+     "1532: $g = self::grazinti( $o ); $g[] = array( 'laikas' => current_time( 'mysql' ), 'kas' => $u->display_name, 'suma' => $suma, 'refund' => $refund->get_id(), 'ka'",
+     "1544: $g = self::grazinti( $o ); if ( ! $g ) { return array( 'dl_info', 'grąžintinų pinigų nėra — Klausimo nebėra' ); }",
+     "1618: if ( $k === $e['k'] ) { return array( 'dl_info', 'kelias nepakeistas — jau ' . self::kelio_vardas( $k, $e['tiek'] ) ); }",
+     "1646: if ( 'i_av' === $buvo && class_exists( 'Petshop_AV_Tiekimas' ) ) { Petshop_AV_Tiekimas::isimti_eilute( $o, (int) $iid ); $it->delete_meta_data( '_ps_konsolida",
+     "1825: $rep = array( 'pradzia' => current_time( 'mysql' ), 'uzsakymu' => 0, 'numeriu' => 0, 'uzklausu' => 0, 'pakeista' => 0, 'lp' => 0, 'issiusta' => array(), 'pris",
+     "1837: update_option( 'ps_venipak_sekimas_paskutinis', array( 'laikas' => $rep['pabaiga'], 'uzsakymu' => $rep['uzsakymu'], 'numeriu' => $rep['numeriu'], 'uzklausu' =",
+     "1846: $dabar = current_time( 'mysql' ); $pakeista = false; $paeme = array(); $naujai_prist = array(); $naujai_griz = array(); $nezinomi = array();",
+     "1857: if ( ! $ev ) { if ( ! $buvo ) { $sek[ $nr ] = array( 'k' => -1, 't' => 'įvykių nėra', 'e' => '', 'd' => '', 'v' => '', 'n' => 0, 'dalis' => $dalis, 'tikr' =",
+     "1863: if ( $kitas ) { $sek[ $nr ] = $nauja; $pakeista = true; $rep['pakeista']++; }",
+     "1868: $sek[ $nr ]['stop'] = 1; $pakeista = true; continue;",
+     "1875: if ( $pakeista ) { $o->update_meta_data( self::SEK_META, wp_json_encode( $sek ) ); }",
+     "1877: if ( $pakeista || $naujai_griz ) { $o->save(); }",
+     "1922: $o->update_meta_data( self::SEK_META, wp_json_encode( $sek ) ); $o->save(); $rep['pakeista']++;",
+     "2275: $g = self::grazinti( $o ); if ( ! isset( $g[ $idx ] ) || ! empty( $g[ $idx ]['kr'] ) ) { return null; }",
+     "2341: $idx = absint( $_POST['e'] ?? 0 ); $g = self::grazinti( $o ); if ( ! isset( $g[ $idx ] ) ) { $baigti( 'dl_klaida', 'grąžinimo įrašo nėra' ); }",
+     "2361: if ( is_wp_error( $refund ) ) { foreach ( $atstatyti as $iid => $q ) { $it = $o->get_item( $iid ); if ( $it ) { $it->update_meta_data( '_restock_refunded_it",
+     "2368: $o = wc_get_order( $id ); $g = self::grazinti( $o );",
+     "2441: $g = self::grazinti( $o ); if ( ! isset( $g[ $idx ] ) || empty( $g[ $idx ]['kr'] ) ) { return array( 'dl_info', 'kreditinės šiam įrašui nėra' ); }",
+     "2455: $g = self::grazinti( $o ); $kr = $g[ $idx ]['kr'] ?? null; $r = $kr ? wc_get_order( (int) $kr['refund'] ) : null; $pdf = $r ? (string) $r->get_meta( '_petshop",
+     "2632: $baigti( 'dl_klaida', 'WC grąžinimo įrašo sukurti nepavyko: ' . $refund->get_error_message() . ' — niekas nepakeista' );",
+     "2639: $g = self::grazinti( $o ); $ka_t = 'Grąžinimas (' . $pz_t[ $pz ] . '): ' . implode( ', ', $ka ) . ( $prist > 0 ? ' + pristatymas' : '' ) . ( $tinkama ? '' :",
+     "2832: $it->set_subtotal( $sub ); $it->set_total( $tot ); $reg_g = round( (float) wc_get_price_including_tax( $p ), 2 ); if ( abs( $reg_g - $x['kaina'] ) > 0.004 )",
+     "3052: echo '<details class=\"dl-sabl\"' . ( isset( $_GET['pd_nr'] ) && 0 === strpos( rawurldecode( (string) $_GET['pd_nr'] ), 'šablonas|„paruošta' ) ? ' open' : '' )",
+     "3181: echo '<details class=\"dl-sabl\"' . ( isset( $_GET['pd_nr'] ) && 0 === strpos( rawurldecode( (string) $_GET['pd_nr'] ), 'šablonas' ) ? ' open' : '' ) . '><summa",
+     "3501: foreach ( (array) $graz as $go ) { if ( empty( $turim[ $go->get_id() ] ) && self::grazinti( $go ) ) { $orders[] = $go; } }",
+     "3575: case 'laikas':   return $laikas( $b ) <=> $laikas( $a );",
+     "3576: case 'seniausi': return $laikas( $a ) <=> $laikas( $b ); // v3.36",
+     "3577: case 'suma':     return (float) $b['o']->get_total() <=> (float) $a['o']->get_total();",
+     "3578: case 'klientas': return strcasecmp( $a['o']->get_billing_last_name() . $a['o']->get_billing_first_name(), $b['o']->get_billing_last_name() . $b['o']->get_bi",
+     "3579: case 'tiekejas': $ta = implode( ',', array_diff( array_unique( array_column( $a['eil'], 'src' ) ), array( 'av' ) ) ); $tb = implode( ',', array_diff( array_",
+     "3649: $t = array( 'dl_kelias' => array( 'ok', '#%s — pakeista: %s' ), 'dl_issiusta' => array( 'ok', '#%s išsiųstas — įvykdytas; %s.' ), 'dl_dalis' => array( 'ok', '",
+     "3860: echo '<div class=\"dl-rink\" data-src=\"' . esc_attr( $src ) . '\" data-n=\"' . esc_attr( $n_ ) . '\"><button type=\"button\" class=\"v t dl-rink-atv\">Pridėti prekių"
+    ]
+   },
+   "petshop-desk.php": {
+    "eil": 3806,
+    "hit": [
+     "829: $o->add_order_note( sprintf( 'Klausimas išspręstas: „%s“ šaltinis pakeistas į %s (%s).',",
+     "992: Petshop_AV_Tiekimas::isimti_eilute( $o, (int) $iid );",
+     "1364: case 'siandien': return array( $d->format( 'Y-m-d' ) . ' 00:00:00', $d->format( 'Y-m-d' ) . ' 23:59:59' );",
+     "1365: case 'vakar':",
+     "1368: case 'savaite':",
+     "1371: case 'menuo':",
+     "1373: case 'praeitas':",
+     "1377: case 'intervalas':",
+     "1640: * nepakeistų to, ką jau atsispausdinai.",
+     "2263: 'jau_apmoketa'    => array( 'info', 'Užsakymas #%s jau buvo apmokėtas — niekas nepakeista.' ),",
+     "2267: 'jau_atsaukta'    => array( 'info', 'Užsakymas #%s jau buvo atšauktas — niekas nepakeista.' ),",
+     "2270: 'jau_issiusta'    => array( 'info', 'Užsakymas #%s jau buvo išsiųstas — niekas nepakeista.' ),",
+     "2285: 'kl_saltinis'     => array( 'ok', 'Užsakymo #%s šaltinis pakeistas — klausimas išspręstas.' ),"
+    ]
+   },
+   "petshop-av-reduce.php": {
+    "eil": 148,
+    "hit": [
+     "19: * KAIP SUSTABDOM WC eilutei: `woocommerce_order_item_quantity` filtras grąžina 0",
+     "38: add_filter( 'woocommerce_order_item_quantity', [ __CLASS__, 'wc_kiekis' ], 20, 3 );",
+     "57: public static function mazinti( $order_id ) {",
+     "112: public static function grazinti( $order_id ) {"
+    ]
+   },
+   "petshop-faktai.php": {
+    "eil": 809
+   },
+   "petshop-partijos.php": {
+    "eil": 713,
+    "hit": [
+     "329: * nepakeistu, nes resolveris ima `_vf_cost` / `_zb_cost`."
+    ]
+   }
+  }
+ },
+ "v": "dep-161918",
+ "kurimas": 200,
+ "sid": 6692,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
