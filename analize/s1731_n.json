@@ -1,0 +1,92 @@
+{
+ "1": {
+  "1208": {
+   "_petshop_dl_purchase_sent": "yes",
+   "_petshop_iapv_number": "IAPV000285",
+   "_petshop_invoice_document_type": "invoice",
+   "_petshop_order_pdf": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/Isankstine-saskaita-IAPV000285.pdf",
+   "_wcdn_invoice_date": "1790598861",
+   "_wcdn_invoice_number": "AVPN1208",
+   "_wcdn_invoice_number_counter": "568",
+   "_wcdn_invoice_pdf": "Invoice -1208-c72d034bcefb614da2c27eb4.pdf",
+   "_wcdn_invoice_pdf_token": "c72d034bcefb614da2c27eb4"
+  },
+  "v": "S1731n",
+  "iapv_pagal_moketi": [
+   {
+    "pm": "bacs",
+    "st": "wc-cancelled",
+    "n": "6",
+    "iapv": "6",
+    "avpn": "0"
+   },
+   {
+    "pm": "bacs",
+    "st": "wc-completed",
+    "n": "9",
+    "iapv": "9",
+    "avpn": "9"
+   },
+   {
+    "pm": "bacs",
+    "st": "wc-processing",
+    "n": "1",
+    "iapv": "1",
+    "avpn": "0"
+   },
+   {
+    "pm": "paysera",
+    "st": "wc-cancelled",
+    "n": "31",
+    "iapv": "10",
+    "avpn": "0"
+   },
+   {
+    "pm": "paysera",
+    "st": "wc-completed",
+    "n": "153",
+    "iapv": "151",
+    "avpn": "153"
+   },
+   {
+    "pm": "paysera",
+    "st": "wc-processing",
+    "n": "14",
+    "iapv": "14",
+    "avpn": "0"
+   }
+  ],
+  "kodas": {
+   "petshop-darbalaukis.php": [
+    "100: *   mygtukas nuimtas (bloką pakeitė — „mažiau, ne daugiau“; Claude prielaida); (2) langas `view=saskaitos` (`saskaitos()`): visi dokumentai iš meta per HPOS SQL UNION (A",
+    "101: *   + `_petshop_completed_pdf`, data — įvykdymo/apmokėjimo; IAPV `_petshop_iapv_number` + `_petshop_order_pdf`, data — užsakymo; KR refund meta `_petshop_kravpn_*`, data",
+    "2206: $n->add_order_note( 'Darbalaukis: PVM sąskaita ' . ( $n->get_meta( '_petshop_avpn_number' ) ? $n->get_meta( '_petshop_avpn_number' ) : '(AVPN NEIŠRAŠYTA)' ) . ' už siu",
+    "2211: $avpn = (string) $n->get_meta( '_petshop_avpn_number' );",
+    "2250: if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_id(), 'sritis' => 'desk', 'veiksmas' => 'pakart_pav",
+    "2251: return array( $ok ? 'dl_info' : 'dl_klaida', $ok ? 'pakartotinis užsakymas #' . $n->get_order_number() . ' (' . self::eur( $n->get_total() ) . ' €) pažymėtas apmokėtu p",
+    "2436: return array( 'id' => $n->get_id(), 'nr' => $n->get_order_number(), 'avpn' => (string) $n->get_meta( '_petshop_avpn_number' ), 'pdf' => (string) $n->get_meta( '_petshop",
+    "2467: if ( $o->get_meta( '_petshop_iapv_number' ) ) { $p = (string) $o->get_meta( '_petshop_order_pdf' ); $d[] = array( 't' => 'iapv', 'z' => 'Išankstinė sąskaita', 'nr' => ("
+   ],
+   "petshop-desk.php": [
+    "3095: 'saskaita'=> $o->get_meta( '_petshop_avpn_number' ) ? $o->get_meta( '_petshop_avpn_number' ) : $o->get_meta( '_wcdn_invoice_number' ),"
+   ],
+   "petshop-rytas.php": [
+    "423: $av_ = $db_->get_col( \"SELECT meta_value FROM {$db_->prefix}wc_orders_meta WHERE meta_key='_petshop_avpn_number' AND meta_value LIKE 'AVPN%'\" );"
+   ],
+   "functions.php": [
+    "289: return petshop_ps_kitas_numeris( 'petshop_avpn_counter', 'AVPN', $order_id, '_petshop_avpn_number' );",
+    "292: return petshop_ps_kitas_numeris( 'petshop_iapv_counter', 'IAPV', $order_id, '_petshop_iapv_number' );"
+   ],
+   "base.php": [
+    "37: $original_avpn = $parent_order->get_meta( '_petshop_avpn_number' );"
+   ]
+  }
+ },
+ "v": "dep-170401",
+ "kurimas": 200,
+ "sid": 6700,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
