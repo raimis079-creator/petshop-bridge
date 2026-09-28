@@ -1,0 +1,313 @@
+{
+ "1": {
+  "v": "S1732d",
+  "faze": "1",
+  "cols": "id,cid,email,user_id,segmentas,product_id,rusis,svoriai,duomenys,sukurta_at,klik_n,pask_klik_at,pask_svoris,hero_reason,last_food_product_id,last_food_date,same_sku_orders,ist_n,ist_paskutinis,consent,last_kat,last_any_product_id,last_any_date,same_any_orders,grupe,top_kat,primink_at,primink_kg,primink_busena",
+  "n": 5666,
+  "consent_log_n": 744,
+  "agg": {
+   "a_0-6men|calc|be|nepirko": [
+    274,
+    80,
+    27312.990000000016
+   ],
+   "a_0-6men|calc|be|pirko_po": [
+    23,
+    16,
+    5236.290000000001
+   ],
+   "a_0-6men|calc|sut|nepirko": [
+    33,
+    26,
+    5666.77
+   ],
+   "a_0-6men|calc|sut|pirko_po": [
+    2,
+    2,
+    652.6700000000001
+   ],
+   "a_0-6men|generic|be|nepirko": [
+    452,
+    56,
+    18923.620000000003
+   ],
+   "a_0-6men|generic|be|pirko_po": [
+    19,
+    13,
+    3458.88
+   ],
+   "a_0-6men|generic|sut|nepirko": [
+    35,
+    14,
+    3265.6100000000006
+   ],
+   "a_0-6men|generic|sut|pirko_po": [
+    4,
+    3,
+    351.42
+   ],
+   "a_0-6men|product|be|nepirko": [
+    203,
+    57,
+    17022.43
+   ],
+   "a_0-6men|product|be|pirko_po": [
+    17,
+    15,
+    4874.17
+   ],
+   "a_0-6men|product|sut|nepirko": [
+    25,
+    15,
+    4216.53
+   ],
+   "a_0-6men|product|sut|pirko_po": [
+    7,
+    6,
+    3166.21
+   ],
+   "b_6-12men|calc|be|nepirko": [
+    269,
+    60,
+    18507.009999999995
+   ],
+   "b_6-12men|calc|be|pirko_po": [
+    3,
+    2,
+    442.96999999999997
+   ],
+   "b_6-12men|calc|sut|nepirko": [
+    24,
+    6,
+    1699.3699999999997
+   ],
+   "b_6-12men|generic|be|nepirko": [
+    426,
+    30,
+    12806.239999999998
+   ],
+   "b_6-12men|generic|be|pirko_po": [
+    2,
+    1,
+    86.28
+   ],
+   "b_6-12men|generic|sut|nepirko": [
+    28,
+    6,
+    1726.04
+   ],
+   "b_6-12men|product|be|nepirko": [
+    201,
+    36,
+    11253.359999999997
+   ],
+   "b_6-12men|product|be|pirko_po": [
+    1,
+    1,
+    58.65
+   ],
+   "b_6-12men|product|sut|nepirko": [
+    33,
+    12,
+    3080.07
+   ],
+   "c_12-24men|calc|be|nepirko": [
+    50,
+    34,
+    1308.78
+   ],
+   "c_12-24men|calc|sut|nepirko": [
+    11,
+    8,
+    184.5
+   ],
+   "c_12-24men|generic|be|nepirko": [
+    1614,
+    105,
+    2108.3600000000006
+   ],
+   "c_12-24men|generic|be|pirko_po": [
+    3,
+    1,
+    0
+   ],
+   "c_12-24men|generic|sut|nepirko": [
+    136,
+    20,
+    174.4
+   ],
+   "c_12-24men|product|be|nepirko": [
+    30,
+    21,
+    429.20000000000005
+   ],
+   "c_12-24men|product|sut|nepirko": [
+    5,
+    5,
+    34.8
+   ],
+   "c_12-24men|product|sut|pirko_po": [
+    1,
+    0,
+    0
+   ],
+   "d_24-36men|generic|be|nepirko": [
+    1366,
+    51,
+    0
+   ],
+   "d_24-36men|generic|be|pirko_po": [
+    2,
+    0,
+    0
+   ],
+   "d_24-36men|generic|sut|nepirko": [
+    132,
+    11,
+    0
+   ],
+   "nera_ist|calc|sut|pirko_po": [
+    1,
+    0,
+    0
+   ],
+   "nera_ist|generic|be|nepirko": [
+    149,
+    0,
+    0
+   ],
+   "nera_ist|generic|sut|nepirko": [
+    85,
+    0,
+    0
+   ]
+  },
+  "dom_top": {
+   "gmail.com": 4992,
+   "yahoo.com": 257,
+   "inbox.lt": 68,
+   "mail.ru": 48,
+   "hotmail.com": 32,
+   "icloud.com": 16,
+   "yahoo.co.uk": 16,
+   "outlook.com": 8,
+   "hotmail.lt": 7,
+   "yandex.ru": 6,
+   "gmai.com": 6,
+   "yahoo.de": 6,
+   "mail.com": 5,
+   "googlemail.com": 4,
+   "splius.lt": 4
+  },
+  "dom_n": 186,
+  "seg": [
+   {
+    "segmentas": "calc",
+    "consent": "0",
+    "n": "619",
+    "klik": "0"
+   },
+   {
+    "segmentas": "calc",
+    "consent": "1",
+    "n": "71",
+    "klik": "1"
+   },
+   {
+    "segmentas": "generic",
+    "consent": "0",
+    "n": "4033",
+    "klik": "0"
+   },
+   {
+    "segmentas": "generic",
+    "consent": "1",
+    "n": "420",
+    "klik": "0"
+   },
+   {
+    "segmentas": "product",
+    "consent": "0",
+    "n": "452",
+    "klik": "0"
+   },
+   {
+    "segmentas": "product",
+    "consent": "1",
+    "n": "71",
+    "klik": "0"
+   }
+  ],
+  "hero": [
+   {
+    "segmentas": "calc",
+    "hr": "recent_exact",
+    "n": "652"
+   },
+   {
+    "segmentas": "calc",
+    "hr": "repeat_exact",
+    "n": "37"
+   },
+   {
+    "segmentas": "calc",
+    "hr": "test",
+    "n": "1"
+   },
+   {
+    "segmentas": "generic",
+    "hr": "no_food",
+    "n": "2318"
+   },
+   {
+    "segmentas": "generic",
+    "hr": "old_purchase",
+    "n": "1117"
+   },
+   {
+    "segmentas": "generic",
+    "hr": "old_purchase_24",
+    "n": "861"
+   },
+   {
+    "segmentas": "generic",
+    "hr": "product_out_of_stock",
+    "n": "73"
+   },
+   {
+    "segmentas": "generic",
+    "hr": "product_unavailable",
+    "n": "60"
+   },
+   {
+    "segmentas": "generic",
+    "hr": "product_gone",
+    "n": "21"
+   },
+   {
+    "segmentas": "generic",
+    "hr": "similar_optout",
+    "n": "3"
+   },
+   {
+    "segmentas": "product",
+    "hr": "no_feeding_table",
+    "n": "518"
+   },
+   {
+    "segmentas": "product",
+    "hr": "no_species",
+    "n": "5"
+   }
+  ],
+  "wc_users_imp": 5666,
+  "trukme_s": 0.2
+ },
+ "v": "dep-185303",
+ "kurimas": 200,
+ "sid": 6719,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
