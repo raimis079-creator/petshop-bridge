@@ -22,3 +22,18 @@ Užsakymas #1208 (36555), 15:33, Paysera, apmokėtas: 5 × „Stirnos ausis, 1 v
 ## Liko / Raimio sprendimas
 - #34908 lieka juodraštyje (Rankos vartai). Grąžinti į prekybą su „Neturime" (SEO, „Pranešti kai bus") ar laukti prekės — Raimio sprendimas.
 - Ryto sargo lemputė „prekė be likučio valdymo" — nedaryta (saugiklis pardavimą blokuoja ir be jos).
+
+## #1208 prekių keitimas (Raimis 19:43, klientas sutiko) — ATLIKTA
+- „Stirnos ausis" ×5 (5,90 €) → 4 × „Ruda kiaulės ausis, 1 vnt." #16305 po 1,26 € (kaina 1,39 → 1,26, žymė `_ps_kaina_pakeista`) + 1 × „Bones Puppy Mix 100 g" #16273 (003339) 0,86 €. Užsakymo suma nepakito: 57,18 € (PVM 9,93 €).
+- Eilutės kaip įprasto užsakymo: `_ps_source=av`, AV nurašyta (#16305 184 → 180, #16273 14 → 13, `_ps_av_reduced_qty`), partijos nurašytos (#3336 −4, #4048 −1), grupės perskaičiuotos (AV 6 eil. / 36 vnt.), faktai perrašyti (6 eil., PVM 9,93, marža 21,30). Pastaba užsakyme, įvykis `keitimas`. Klientui laiškas nesiųstas.
+- Įrankiai `s1731/k.php` (1 dry / 2 / 3 / **9 atstato** — bak opcija `ps_s1731_1208_bak`), `l.php` (PVM naujoms eilutėms — WC `update_taxes()` naujų eilučių mokesčių neskaičiuoja, reikia `set_taxes`), `m.php` (pastabos).
+- Kitą kartą patiems: mygtukas „Pakeisti" kortelės prekės eilutėje (šalia „Išimti") — laukia Raimio „daryk".
+
+## Darbalaukis v3.45 — „Pakeisti“ užsakymo kortelėje (Raimis 20:08 „daryk“) — GYVAI 20:22
+- Raimio sprendimai: suma po keitimo — tokia pati arba mažesnė (brangesnei prekei kaina mažinama ranka); keičia ir kainą — Inga (Inga dirba visą ūkį, Raimiui — strateginiai sprendimai); IAPV perdaroma.
+- Kaip: kortelėje „q×“ → „Pakeisti“ (šalia Kiekis/Išimti; surinktai AV eilutei — tik „Pakeisti“) → paieška (pavadinimas/SKU, rodo AV likutį, tik AV turimos) → kiekis, kaina €/vnt. → suvestinė (sumokėta / naujos / grąžinti) → dialogas → vykdymas.
+- Kada galima: apmokėtas, neuždarytas, eilutė be užrakto arba „jau surinkta“ (AV) — t. y. iki lipduko / perdavimo tiekėjui. Rinkinio (MnM) eilučių — ne.
+- Ką daro (`pakeisti_vykdyti`, POST `ps_dl_pakeisti`, nonce `ps_dl_kiekis_{id}`): senos eilutės likutis grįžta (AV / WC veidrodis) + partijos į naujausią tos prekės partiją; naujos eilutės — šaltinis (`parinkti`, turi būti AV), AV nurašymas (DP pakui — bazinė), partijos FEFO, savikaina, PVM ranka; sumos, grupės; skirtumas → `_ps_grazinti_rankomis` (Klausimas „Grąžink klientui pinigus“); faktai perrašomi; IAPV PDF perdaroma tuo pačiu numeriu (tipas laikinai `proforma`, AVPN nedeginamas); pastaba; įvykis `keitimas`. Klientui laiško nėra.
+- Failas `mu-plugins/petshop-darbalaukis.php` v3.45: md5 f1bdf094… → bfd418fd…, bak `ps-archyvas/petshop-darbalaukis.php.bak_s1731`, repo `deploy/petshop-darbalaukis-v3.45.php`; įrankis `s1731/q.php` (1 dry / 2 deploy / 3 patikra / 4–6 testas / **9 atstato**).
+- Testas (testiniu užsakymu, po to ištrinta): A×3 (6,00 €) → B×2 po 1,99 + A×1 po 1,50 = 5,48 € → PVM 0,95 ✓, likučiai A 7→10→9, B 10→8 ✓, grąžinti 0,52 € ✓, IAPV PDF ✓, dokumento tipas atstatytas ✓, faktai ✓. Šalutinis: testinis užsakymas užėmė numerį **1215** (numeracijoje bus tarpas; sąskaitų numeriai nepaliesti).
+- #1208 IAPV000285 perdaryta: kiaulės ausys + Bones, 57,18 €, PVM 9,93 € (patikrinta PDF tekstu); IAPV/AVPN skaitikliai nepakito.
