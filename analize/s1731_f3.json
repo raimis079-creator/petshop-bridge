@@ -1,0 +1,107 @@
+{
+ "3": {
+  "v": "S1731f",
+  "faze": "3",
+  "av_md5": "80a5bc1cad6e985772335686a61dd244",
+  "gav_md5": "89396be298ff05c2e01868bc42c08dfd",
+  "metodas": true,
+  "hb": 200,
+  "gav_eil": [
+   "414: $prod->set_manage_stock( true );       /* S1731: likutis 0 ir „nėra\", kol nepriimta partija (#1208) */"
+  ],
+  "juodr_filtras": {
+   "20971": {
+    "st": "draft",
+    "ms": "no",
+    "stock": "",
+    "ss_meta": "instock",
+    "ss_view": "outofstock",
+    "is_in_stock": false
+   },
+   "23804": {
+    "st": "draft",
+    "ms": "no",
+    "stock": "",
+    "ss_meta": "instock",
+    "ss_view": "outofstock",
+    "is_in_stock": false
+   },
+   "34896": {
+    "st": "draft",
+    "ms": "no",
+    "stock": "",
+    "ss_meta": "instock",
+    "ss_view": "outofstock",
+    "is_in_stock": false
+   },
+   "34902": {
+    "st": "draft",
+    "ms": "no",
+    "stock": "",
+    "ss_meta": "instock",
+    "ss_view": "outofstock",
+    "is_in_stock": false
+   },
+   "34908": {
+    "st": "draft",
+    "ms": "no",
+    "stock": "",
+    "ss_meta": "instock",
+    "ss_view": "outofstock",
+    "is_in_stock": false
+   }
+  },
+  "paslauga_35790": {
+   "st": "private",
+   "ms": "no",
+   "stock": "",
+   "ss_meta": "instock",
+   "ss_view": "instock",
+   "is_in_stock": true
+  },
+  "dp_pakas": [
+   35096,
+   {
+    "st": "publish",
+    "ms": "no",
+    "stock": "",
+    "ss_meta": "instock",
+    "ss_view": "instock",
+    "is_in_stock": false
+   }
+  ],
+  "poveikis_publikuotoms": [],
+  "test_po_kurimo": {
+   "st": "draft",
+   "ms": "yes",
+   "stock": "0",
+   "ss_meta": "outofstock",
+   "ss_view": "outofstock",
+   "is_in_stock": false
+  },
+  "test_po_partijos_3": {
+   "st": "draft",
+   "ms": "yes",
+   "stock": "3",
+   "ss_meta": "instock",
+   "ss_view": "instock",
+   "is_in_stock": true
+  },
+  "test_be_valdymo": {
+   "st": "draft",
+   "ms": "no",
+   "stock": "",
+   "ss_meta": "instock",
+   "ss_view": "outofstock",
+   "is_in_stock": false
+  },
+  "test_istrinta": true
+ },
+ "v": "dep-161107",
+ "kurimas": 200,
+ "sid": 6690,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
