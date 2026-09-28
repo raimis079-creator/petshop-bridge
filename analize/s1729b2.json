@@ -1,0 +1,56 @@
+{
+ "2": {
+  "v": "S1729b",
+  "faze": "2",
+  "active_plugins": [
+   "code-snippets/code-snippets.php",
+   "complianz-gdpr/complianz-gpdr.php",
+   "loco-translate/loco.php",
+   "petshop-attributes/petshop-attributes.php",
+   "petshop-core/petshop-core.php",
+   "petshop-esp/petshop-esp.php",
+   "petshop-fbt/petshop-fbt.php",
+   "petshop-feeds/petshop-feeds.php",
+   "petshop-fonts/petshop-fonts.php",
+   "petshop-pragma/petshop-pragma.php",
+   "petshop-promotions/petshop-promotions.php",
+   "petshop-xml/petshop-xml.php",
+   "seo-by-rank-math/rank-math.php",
+   "wc-venipak-shipping/woocommerce-shopup-venipak-shipping.php",
+   "woo-lithuaniapost-main/woo-lithuaniapost.php",
+   "woo-payment-gateway-paysera/paysera.php",
+   "woo-update-manager/woo-update-manager.php",
+   "woocommerce-delivery-notes/woocommerce-delivery-notes.php",
+   "woocommerce-mix-and-match-products/woocommerce-mix-and-match-products.php",
+   "woocommerce-xml-csv-product-import/plugin.php",
+   "woocommerce/woocommerce.php",
+   "wordpress-importer/wordpress-importer.php",
+   "wp-all-import-pro/wp-all-import-pro.php",
+   "wp-mail-smtp/wp_mail_smtp.php",
+   "wp-super-cache/wp-cache.php",
+   "wpforms-lite/wpforms.php",
+   "yith-woocommerce-ajax-navigation/init.php"
+  ],
+  "kodai": {
+   "class-helper.php": "\t\t\t}\n\t\t}\n\n\t\treturn $stored;\n\t}\n\n\t/**\n\t * Clear cache from:\n\t *  - WordPress Total Cache\n\t *  - W3 Total Cache\n\t *  - WP Super Cache\n\t *  - SG CachePress\n\t *  - WPEngine\n\t *  - Varnish\n\t *\n\t * @param string $context Context for cache to clear.\n\t */\n\tpublic static function clear_cache( $context = '' ) {\n\n\t\t/**\n\t\t * Filter: 'rank_math/pre_clear_cache' - Allow developers to extend/override cache clearing.\n\t\t * Pass a truthy value to override the cache clearing.\n\t\t */\n\t\tif ( apply_filters( 'rank_math/pre_clear_cache', false, $context ) ) {\n\t\t\treturn;\n\t\t}\n\n\t\t// Clean WordPress cache.\n\t\tif ( function_exists( 'wp_cache_clear_cache' ) ) {\n\t\t\twp_cache_clear_cache();\n\t\t}\n\n\t\t// If W3 Total Cache is being used, clear the cache.\n\t\tif ( function_exists( 'w3tc_pgcache_flush' ) ) {\n\t\t\tw3tc_pgcache_flush();\n\t\t}\n\n\t\t// If WP Super Cache is being used, clear the cache.\n\t\tif ( function_exists( 'wp_cache_clean_cache' ) ) {\n\t\t\tglobal $file_prefix;\n\t\t\twp_cache_clean_cache( $file_prefix );\n\t\t}\n\n\t\t// If SG CachePress is installed, reset its caches.\n\t\tif ( class_exists( 'SG_CachePress_Supercacher' ) && is_callable( [ 'SG_CachePress_Supercacher', 'purge_cache' ] ) ) {\n\t\t\t\\SG_CachePress_Supercacher::purge_cache();\n\t\t}\n\n\t\t// Clear caches on WPEngine-hosted sites.\n\t\tif ( class_exists( 'WpeCommon' ) ) {\n\t\t\t\\WpeCommon::purge_memcached();\n\t\t\t\\WpeCommon::purge_varnish_cache();\n\n\t\t\t// Clear WPEngine CDN cache. Added this condition to avoid PHP error as we are not sure when the new clear_cdn_cache method was added.\n\t\t\tif ( method_exists( 'WpeCommon', 'clear_cdn_cache' ) ) {\n\t\t\t\t\\WpeCommon::clear_cdn_cache();\n\t\t\t} else {\n\t\t\t\t\\WpeCommon::clear_maxcdn_cache();\n\t\t\t}\n\t\t}\n",
+   "modules/sitemap/class-cache-watcher.php": "\t */\n\tprotected static $clear_all = false;\n\n\t/**\n\t * Holds the array of types to clear.\n\t *\n\t * @var array\n\t */\n\tprotected static $clear_types = [];\n\n\t/**\n\t * Holds the array of post types being imported.\n\t *\n\t * @var array\n\t */\n\tprivate $importing_post_types = [];\n\n\t/**\n\t * The constructor.\n\t */\n\tpublic function __construct() {\n\t\t$this->action( 'save_post', 'save_post' );\n\t\t$this->action( 'transition_post_status', 'status_transition', 10, 3 );\n\t\t$this->action( 'admin_footer', 'status_transition_bulk_finished' );\n\n\t\t$this->action( 'edited_terms', 'invalidate_term', 10, 2 );\n\t\t$this->action( 'clean_term_cache', 'invalidate_term', 10, 2 );\n\t\t$this->action( 'clean_object_term_cache', 'invalidate_term', 10, 2 );\n\n\t\t$this->action( 'delete_user', 'invalidate_author' );\n\t\t$this->action( 'user_register', 'invalidate_author' );\n\t\t$this->action( 'profile_update', 'invalidate_author' );\n\n\t\t$this->action( 'rank_math/sitemap/invalidate_object_type', 'invalidate_object_type', 10, 2 );\n\n\t\tadd_action( 'shutdown', [ __CLASS__, 'clear_queued' ] );\n\t\tadd_action( 'update_option', [ __CLASS__, 'clear_on_option_update' ] );\n\t\tadd_action( 'deleted_term_relationships', [ __CLASS__, 'invalidate' ] );\n\n\t\t// Clear cache when user updates any of these options.\n\t\tself::register_clear_on_option_update( 'home' );\n\t\tself::register_clear_on_option_update( 'permalink_structure' );\n\t\tself::register_clear_on_option_update( 'rank_math_modules' );\n\t\tself::register_clear_on_option_update( 'rank-math-options-titles' );\n\t\tself::register_clear_on_option_update( 'rank-math-options-general' );\n\t\tself::register_clear_on_option_update( 'rank-math-options-sitemap' );\n\t\tself::register_clear_on_option_update( 'date_format' );\n\t}\n\n\t/**\n\t * Check for relevant post type before invalidation.\n\t *\n\t * @param int $post_id Post ID to possibly invalidate for.\n\t */\n\tpublic function save_post( $post_id ) {\n\t\t$post = get_post( $post_id );\n\t\tif ( ! empty( $post->post_password ) || 'auto-draft' === $post->post_status ) {\n\t\t\treturn false;\n\t\t}\n\n\t\tupdate_user_meta( $post->post_author, 'last_update', get_post_modified_time( 'U', false, $post ) );\n\t\t$this->invalidate_post( $post_id );\n\t\t$this->invalidate_author( $post->post_author );\n\t}\n\n\t/**\n\t * Hooked into transition_post_status. Will initiate search engine pings\n\t * if the post is being published, is a post type that a sitemap is built for\n\t * and is a post that is included in sitemaps.\n\t *\n\t * @param string   $new_status New post status.\n\t * @param string   $old_status Old post status.\n\t * @param \\WP_Post $post       Post object.\n\t */\n\tpublic function status_transition( $new_status, $old_status, $post ) {\n\t\tif ( 'publish' !== $new_status ) {\n\t\t\treturn;\n\t\t}\n\n\t\tif ( defined( 'WP_IMPORTING' ) ) {\n\t\t\t$this->status_transition_bulk( $new_status, $old_status, $post );\n\t\t\treturn;\n\t\t}\n\n\t\tif ( $this->can_exclude( $post ) ) {\n\t\t\treturn;\n\t\t}\n\n\t\tif ( WP_CACHE ) {\n\t\t\twp_schedule_single_event( ( time() + 300 ), 'rank_math/sitemap/hit_index' );\n\t\t}\n\t}\n\n\t/**\n\t * Can exclude post type.\n\t *\n\t * @param \\WP_Post $post Post object.\n\t *\n\t * @return bool\n\t */\n\tprivate function can_exclude( $post ) {\n\t\t$post_type = get_post_type( $post );\n\t\twp_cache_delete( 'lastpostmodified:gmt:' . $post_type, 'timeinfo' );\n\n\t\t// None of our interest.\n\t\t// If the post type is excluded in options, we can stop.\n\t\treturn 'nav_menu_item' === $post_type || ! Sitemap::is_object_indexable( $post->ID );\n\t}\n\n\t/**\n\t * While bulk importing, just save unique `post_types`.\n\t *\n\t * When importing is done, if we have a `post_type` that is saved in the sitemap\n\t * try to ping the search engines\n\t *\n\t * @param string   $new_status New post status.\n\t * @param string   $old_status Old post status.\n\t * @param \\WP_Post $post       Post object.\n\t */\n\tprivate function status_transition_bulk( $new_status, $old_status, $post ) {\n\t\t$this->importing_post_types[] = get_post_type( $post );\n\t\t$this->importing_post_types   = array_unique( $this->importing_post_types );\n\t}\n\n\t/**\n\t * After import finished, walk through imported `post_types` and update info.\n\t */\n\tpublic function status_transition_bulk_finished() {\n\t\tif ( ! defined( 'WP_IMPORTING' ) || empty( $this->importing_post_types ) ) {\n\t\t\treturn;\n\t\t}\n\n\t\tif ( false === $this->maybe_ping_search_engines() ) {\n\t\t\treturn;\n\t\t}\n\n\t\tif ( WP_CACHE ) {\n\t\t\tdo_action( 'rank_math/sitemap/hit_index' );\n\t\t}\n\t}\n\n\t/**\n\t * Check if we can ping search engines.\n\t *\n\t * @return bool\n\t */\n\tprivate function maybe_ping_search_engines() {\n\t\t$ping                  = false;\n\t\t$accessible_post_types = Helper::get_accessible_post_types();\n\n\t\tforeach ( $this->importing_post_types as $post_type ) {\n\t\t\twp_cache_delete( 'lastpostmodified:gmt:' . $post_type, 'timeinfo' );\n\n\t\t\tif ( in_array( $post_type, $accessible_post_types, true ) ) {\n\t\t\t\t$ping = true;\n\t\t\t}\n\t\t}\n\n\t\treturn $ping;\n\t}\n\n\t/**\n\t * Helper to invalidate in hooks where type is passed as second argument.\n\t *\n\t * @param int    $unused    Unused term ID value.\n\t * @param string $taxonomy  Taxonomy to invalidate.\n\t */\n\tpublic static function invalidate_term( $unused, $taxonomy ) {\n\t\tif ( false !== Helper::get_settings( 'sitemap.tax_' . $taxonomy . '_sitemap' ) ) {\n\t\t\tself::invalidate( $taxonomy );\n\t\t}\n\t}\n\n\t/**\n\t * Delete cache transients for index and specific type.\n\t *\n\t * Always deletes the main index sitemaps cache, as that's always invalidated by any other change.\n\t *\n\t * @param string $type Sitemap type to invalidate.\n\t */\n\tpublic static function invalidate( $type ) {\n\t\tself::clear( [ $type ] );\n\t}\n\n\t/**\n\t * Invalidate sitemap cache for the post type of a post.\n\t * Don't invalidate for revisions.\n\t *\n\t * @param int $post_id Post ID to invalidate type for.\n\t */\n\tpublic static function invalidate_post( $post_id ) {\n\t\tif ( wp_is_post_revision( $post_id ) ) {\n\t\t\treturn;\n\t\t}\n\n\t\tself::invalidate( get_post_type( $post_id ) );\n\t}\n\n\t/**\n\t * Invalidate sitemap cache for authors.\n\t *\n\t * @param int $user_id User ID.\n\t */\n\tpublic static function invalidate_author( $user_id ) {\n\t\t$user = get_user_by( 'id', $user_id );\n\t\tif ( 'user_register' === current_action() || 'profile_update' === current_action() ) {\n\t\t\tupdate_user_meta( $user_id, 'last_update', time() );\n\t\t}\n\n\t\tif ( $user && ! is_null( $user->roles ) && ! in_array( 'subscriber', $user->roles, true ) ) {\n\t\t\tself::invalidate( 'author' );\n\t\t}\n\t}\n\n\t/**\n\t * Function to clear the Sitemap Cache.\n\t *\n\t * @param string $object_type Object type for destination where to save.\n\t * @param int    $object_id   Object id for destination where to save.\n\t *\n"
+  },
+  "rm_sitemap_cache": {
+   "include_images": "on",
+   "include_featured_image": "off"
+  },
+  "rm_ver": "1.0.276",
+  "filtrai": {
+   "rank_math/sitemap/enable_caching": 0,
+   "rank_math/clear_cache": 0,
+   "rank_math/sitemap/invalidated_storage": 0
+  }
+ },
+ "v": "dep-050922",
+ "kurimas": 200,
+ "sid": 6682,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
