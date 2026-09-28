@@ -1,0 +1,194 @@
+{
+ "1": {
+  "v": "S1731k",
+  "faze": "1",
+  "dabar": {
+   "st": "processing",
+   "total": "57.18",
+   "tax": "9.93",
+   "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":5,\"vienetai\":36}}",
+   "surinkta": "",
+   "eil": {
+    "2738": [
+     19104,
+     10,
+     15.9,
+     "av",
+     "10"
+    ],
+    "2739": [
+     19092,
+     10,
+     14.9,
+     "av",
+     "10"
+    ],
+    "2740": [
+     19054,
+     1,
+     5.58,
+     "av",
+     "1"
+    ],
+    "2741": [
+     16298,
+     10,
+     14.9,
+     "av",
+     "10"
+    ],
+    "2742": [
+     34908,
+     5,
+     5.9,
+     "av",
+     ""
+    ]
+   },
+   "stock": {
+    "16273": "14",
+    "16305": "184",
+    "34908": "0"
+   },
+   "fakt_u": {
+    "uzsakymas_id": "36555",
+    "sukurta_at": "2026-09-28 12:33:22",
+    "apmoketa_at": "2026-09-28 12:34:19",
+    "statusas_galutinis": "processing",
+    "statusas_at": "2026-09-28 12:34:22",
+    "klientas_id": "268",
+    "klientas_email_hash": "9720bb17136f09cf279a38c2e1aa788542bd3d62e6077b602092112f2e0688ca",
+    "klientas_naujas": "0",
+    "klientas_uzsakymo_nr": "11",
+    "dienos_nuo_ankstesnio": "47",
+    "prekiu_suma_ct": "4725",
+    "nuolaidu_ct": "0",
+    "kuponu_kodai": "",
+    "tasku_panaudota_ct": "0",
+    "tasku_sukaupta_ct": "0",
+    "pristatymas_paimta_ct": "0",
+    "pristatymas_savikaina_ct": null,
+    "small_cart_fee_ct": "0",
+    "pvm_ct": "993",
+    "viso_ct": "5718",
+    "mokejimo_budas": "paysera",
+    "mokejimo_mokestis_ct": "5",
+    "pakuotes_savikaina_ct": "40",
+    "savikaina_ct": "2641",
+    "dovanu_savikaina_ct": "0",
+    "marza_ct": "2084",
+    "kontribucija_ct": "2039",
+    "sandeliu_kiekis": "1",
+    "misrus": "0",
+    "sandeliai": "legacy",
+    "vezejai": "venipak",
+    "kanalas_pirmas": "mokamas",
+    "kanalas_paskutinis": "mokamas",
+    "utm_source": "google",
+    "utm_medium": "cpc",
+    "utm_campaign": "23346712074",
+    "gclid": "1",
+    "fbclid": "0",
+    "referer_domenas": "www.google.com",
+    "landing_url": "https://petshop.lt/?utm_source=google&utm_medium=cpc&utm_campaign=23346712074&gad_source=1&gad_campaignid=23346712074&gbraid=0AAAAApaj7XVb0eW3fWUTJsy3WGpvCpZTi&gclid=CjwKCAjwoOjVBhArEiwAUwDak-WWj-0iqduoEBuWOVj5nSwxpgNZB1PFPsLkeoARzVpgCPETxvDf-BoCSdgQAvD_B",
+    "irenginys": "desktop",
+    "sutikimas_statistika": "0",
+    "salis": "LT",
+    "miestas": "",
+    "pasto_kodas": "",
+    "anketa_id": null,
+    "rec_log_id": null,
+    "is_refill": "0",
+    "prenumerata_id": null,
+    "eiluciu_sk": "5",
+    "testinis": "0",
+    "saltinis_aplinka": "prod",
+    "fakt_versija": "2",
+    "irasyta_at": "2026-09-28 12:34:20",
+    "diena": "2026-09-28"
+   },
+   "fakt_e_n": 5
+  },
+  "fakt_col": [
+   "uzsakymas_id",
+   "uzsakymas_id"
+  ],
+  "sena": [
+   34908,
+   5,
+   ""
+  ],
+  "naujos": {
+   "16273": {
+    "n": "Sausainiai šuniukams, kauliuko formos, Bones Puppy Mix, 100 g",
+    "stock": 14,
+    "ex": 0.710744,
+    "parinkti": {
+     "source": "av",
+     "carrier": "any",
+     "courier_only": false,
+     "av_qty": 14,
+     "av_uztenka": true,
+     "tiekejas": "av",
+     "reason": "grynai AV prekė (be tiekėjo)",
+     "tiekejo_qty": null,
+     "taisykle": "grynai AV"
+    },
+    "part_dry": {
+     "prasyta": 1,
+     "padengta": 1,
+     "nepadengta": 0,
+     "planas": [
+      {
+       "partijos_id": 4048,
+       "imam": 1,
+       "buvo": 14,
+       "geriausia_iki": null,
+       "savikaina": 0.55
+      }
+     ],
+     "dry": true
+    }
+   },
+   "16305": {
+    "n": "Ruda kiaulės ausis, 1 vnt.",
+    "stock": 184,
+    "ex": 4.165289,
+    "parinkti": {
+     "source": "av",
+     "carrier": "any",
+     "courier_only": false,
+     "av_qty": 184,
+     "av_uztenka": true,
+     "tiekejas": "av",
+     "reason": "grynai AV prekė (be tiekėjo)",
+     "tiekejo_qty": null,
+     "taisykle": "grynai AV"
+    },
+    "part_dry": {
+     "prasyta": 4,
+     "padengta": 4,
+     "nepadengta": 0,
+     "planas": [
+      {
+       "partijos_id": 3336,
+       "imam": 4,
+       "buvo": 184,
+       "geriausia_iki": null,
+       "savikaina": 0.66
+      }
+     ],
+     "dry": true
+    }
+   }
+  },
+  "meta_irasyta": "_ps_faktas_irasytas"
+ },
+ "v": "dep-164853",
+ "kurimas": 200,
+ "sid": 6696,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
