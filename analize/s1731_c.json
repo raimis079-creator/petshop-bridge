@@ -1,0 +1,366 @@
+{
+ "1": {
+  "v": "S1731c",
+  "faze": "1",
+  "kod": {
+   "petshop-katalogas.php": {
+    "md5": "58e5d317",
+    "head": "<?php\n/**\n * Petshop Katalogas v8.7.9 (S1642) - DP pakuotems savikaina ir is bazines META kaskados x N (kai bazine registre neturi eilutes);\n *   v8.7.8 (S1642) - rinkiniams (_ps_rinkinys/DP sablonas/Mix and Match) nerodomas 'be saltinio' (saltinius turi komponentai);\n *   v8.7.5 (S1641) - variacines prekes KAINA saraso eiluteje.\n *\n * SAVININKAS: \"Admin lange nerodo pardavimo kainu\". Variacines prekes tevui\n * WooCommerce `_regular_price` isvalo - kaina gyvena variacijose, o `_price`\n * WC pats sinchronizuoja kaip maziausia variacijos kaina. Sarasas skaite tik\n * `_regular_price`, todel KAINA ir ANTKAINIS variacinems rode brukssni, nors\n * kainos yra. Dabar surinkti() variacinei prekei ima ",
+    "L1650": "\t\t\t\t'tipas'    => $tipas,\n\t\t\t\t'modelis'  => $modelis,\n\t\t\t\t'kaina'    => $kaina,\n\t\t\t\t'kurti'    => array_map( function ( $tid ) use ( $vardas, $det, $kaina, $modelis ) {\n\t\t\t\t\t$k = ( isset( $det[ $tid ] ) && $det[ $tid ]['kaina'] !== '' ) ? $det[ $tid ]['kaina'] : $kaina;\n\t\t\t\t\t$l = ( $modelis === 'variacijos' && isset( $det[ $tid ] ) && $det[ $tid ]['lik'] !== '' ) ? $det[ $tid ]['lik'] : '0';\n\t\t\t\t\treturn $vardas( $tid ) . ' (' . $k . ' €' . ( $modelis === 'variacijos' ? ', ' . $l . ' vnt.' : '' ) . ')';\n\t\t\t\t}, $kurti ),\n\t\t\t\t'isimti'   => array_map( $vardas, $isimti ),\n\t\t\t\t'lieka'    => count( $ids ) - count( $kurti ),\n\t\t\t\t'tevo_lik' => get_post_meta( $pid, '_stock', true ),\n\t\t\t) );\n\t\t}\n\n\t\t/* ---------- VYKDOM ---------- */\n\t\tif ( $tipas === 'simple' ) {\n\t\t\t$reg = get_post_meta( $pid, '_product_attributes', true );\n\t\t\tif ( ! is_array( $reg ) ) { $reg = array(); }\n\t\t\t$reg[ $tax ] = array( 'name' => $tax, 'value' => '', 'position' => count( $reg ),\n\t\t\t\t'is_visible' => 1, 'is_variation' => 1, 'is_taxonomy' => 1 );\n\t\t\tupdate_post_meta( $pid, '_product_attributes', $reg );\n\t\t\twp_set_object_terms( $pid, 'variable', 'product_type' );\n\t\t}\n\t\t/* terminai TIK per term_id — lietuviski slug'ai per pavadinima nepatikimi */\n\t\t$visi_terminai = array_values( array_unique( array_merge( $ids, array_keys( $esamos ) ) ) );\n\t\twp_set_object_terms( $pid, $visi_terminai, $tax, false );\n\n\t\tif ( $modelis === 'tevas' ) {\n\t\t\tupdate_post_meta( $pid, '_manage_stock', 'yes' );\n\t\t} else {\n\t\t\tupdate_post_meta( $pid, '_manage_stock', 'no' );\n\t\t}\n\n\t\t$sukurta = array(); $ismesta = array();\n\t\tforeach ( $kurti as $tid ) {\n\t\t\t$t = get_term( $tid );\n\t\t\t$k = ( isset( $det[ $tid ] ) && $det[ $tid ]['kaina'] !== '' ) ? $det[ $tid ]['kaina'] : $kaina;\n\t\t\t$v = new WC_Product_Variation();\n\t\t\t$v->set_parent_id( $pid );\n\t\t\t$v->set_attributes( array( $tax => $t->slug ) );\n",
+    "L2887": "\n\t/** Visos operacijos atšaukimas — grąžina buvusias reikšmes. */\n\tpublic static function ajax_atsaukti() {\n\t\tif ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'nepakanka teisių', 403 ); }\n\t\tcheck_ajax_referer( 'ps_kat', 'nonce' );\n\t\t$op = isset( $_POST['operacija'] ) ? sanitize_text_field( wp_unslash( $_POST['operacija'] ) ) : '';\n\t\tif ( $op === '' ) { wp_send_json_error( 'nenurodyta operacija' ); }\n\n\t\tglobal $wpdb; $t = self::zurnalo_lentele();\n\t\t$eil = $wpdb->get_results( $wpdb->prepare(\n\t\t\t\"SELECT * FROM {$t} WHERE operacija=%s AND atsaukta=0 ORDER BY id DESC\", $op ), ARRAY_A );\n\t\tif ( ! $eil ) { wp_send_json_error( 'operacija nerasta arba jau atšaukta' ); }\n\n\t\t$n = 0;\n\t\tforeach ( $eil as $r ) {\n\t\t\t$pid = (int) $r['product_id'];\n\t\t\tif ( $r['laukas'] === 'post_status' ) {\n\t\t\t\twp_untrash_post( $pid );\n\t\t\t\twp_update_post( array( 'ID' => $pid, 'post_status' => $r['buvo'] ) );\n\t\t\t\t$wpdb->update( $t, array( 'atsaukta' => 1 ), array( 'id' => (int) $r['id'] ) );\n\t\t\t\t$n++;\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\t$prod = ( in_array( $r['laukas'], array( '_regular_price', '_stock' ), true ) ) ? wc_get_product( $pid ) : null;\n\n\t\t\tif ( $r['laukas'] === '_regular_price' && $prod ) {\n\t\t\t\t$prod->set_regular_price( $r['buvo'] === null ? '' : (string) $r['buvo'] );\n\t\t\t\t$prod->save();\n\t\t\t} elseif ( $r['laukas'] === '_stock' && $prod ) {\n\t\t\t\tif ( $r['buvo'] === null || $r['buvo'] === '' ) {\n\t\t\t\t\t$prod->set_manage_stock( false );\n\t\t\t\t} else {\n\t\t\t\t\t$prod->set_manage_stock( true );\n\t\t\t\t\t$prod->set_stock_quantity( (int) $r['buvo'] );\n\t\t\t\t\t$prod->set_stock_status( (int) $r['buvo'] > 0 ? 'instock' : 'outofstock' );\n\t\t\t\t}\n\t\t\t\t$prod->save();\n\t\t\t} elseif ( $r['buvo'] === null || $r['buvo'] === '' ) {\n\t\t\t\tdelete_post_meta( $pid, $r['laukas'] );\n\t\t\t} else {\n"
+   },
+   "petshop-gavimas.php": {
+    "md5": "e9c48175",
+    "head": "<?php\n/**\n * Petshop Gavimas v1.13 (S710) — SERIMO LENTELE BE ANTRASTES.\n *   Savininkas atsiunte Quattro sterilizuotoms katems teksta, kuriame serimo\n *   norma pateikta LENTELE, o antrastes nera isvis:\n *     „Suaugusios kates svoris, kg  2 3 4 5 6 7 8\n *      Pasaro dienos norma, g  24-35 32-46 38-55 ...\"\n *   v1.12 iesko antrastes (zodis + dvitaskis) — cia jos nera, todel niekas\n *   nesusideliodavo.\n *\n *   SPRENDIMAS: atpazistama pati LENTELE, o ne antraste. Eilute, kurioje yra\n *   „dienos norma\", „paros norma\", „svoris, kg\" ar „kuno svoris\", pradeda\n",
+    "L414": "\t\tforeach ( $sek as $k => $v ) {\n\t\t\t$k = sanitize_text_field( (string) $k );\n\t\t\t$v = trim( (string) $v );\n\t\t\tif ( $k !== '' && $v !== '' ) { $sek_sw[ $k ] = $v; }\n\t\t}\n\t\t$apras = $sek_sw ? self::sekcijos_html( $sek_sw )\n\t\t\t: ( isset( $d['aprasymas'] ) ? wp_kses_post( $d['aprasymas'] ) : '' );\n\t\t$katid  = isset( $d['kategorija'] ) ? (int) $d['kategorija'] : 0;\n\t\t$svoris = isset( $d['svoris'] ) ? self::skaicius( $d['svoris'] ) : 0;\n\t\t$foto   = isset( $d['foto'] ) ? (int) $d['foto'] : 0;\n\n\t\t/* v1.8: kopijos laukai. Kategoriju gali buti kelios — prekes vieta\n\t\t   kataloge yra jos dalis, o viena issaugota kategorija reikstu, kad\n\t\t   kopija dingsta is puses sarasu, kuriuose originalas matomas. */\n\t\t$katai = array();\n\t\tforeach ( (array) ( $d['kategorijos'] ?? array() ) as $k ) {\n\t\t\t$k = (int) $k;\n\t\t\tif ( $k && get_term( $k, 'product_cat' ) && ! is_wp_error( get_term( $k, 'product_cat' ) ) ) { $katai[] = $k; }\n\t\t}\n\t\tif ( $katid && ! in_array( $katid, $katai, true ) ) { $katai[] = $katid; }\n\n\t\t$trumpas  = isset( $d['trumpas'] ) ? wp_kses_post( $d['trumpas'] ) : '';\n\t\t$matmenys = is_array( $d['matmenys'] ?? null ) ? $d['matmenys'] : array();\n\t\t$galerija = array_values( array_filter( array_map( 'intval', (array) ( $d['galerija'] ?? array() ) ) ) );\n\n\t\t$prod = new WC_Product_Simple();\n\t\t$prod->set_name( $pav );\n\t\t$prod->set_sku( $sku );\n\t\t$prod->set_status( 'draft' );          /* busena sprendziama zemiau */\n\t\t$prod->set_catalog_visibility( 'visible' );\n\t\t$prod->set_manage_stock( false );      /* likuti valdo partijos (FEFO) */\n\t\t/* PVM: naujos prekes VISADA `taxable`. S654 pamoka — penki importo\n\t\t   profiliai buvo palike `none`, ir 988 prekes checkout'e ejo be PVM. */\n\t\t$prod->set_tax_status( 'taxable' );\n\t\tif ( $kaina > 0 ) { $prod->set_regular_price( (string) $kaina ); }\n\t\tif ( $apras !== '' ) { $prod->set_description( $apras ); }\n\t\tif ( $trumpas !== '' ) { $prod->set_short_description( $trumpas ); }\n\t\tif ( $svoris > 0 ) { $prod->set_weight( (string) $svoris ); }\n\t\tforeach ( array( 'ilgis' => 'set_length', 'plotis' => 'set_width', 'aukstis' => 'set_height' ) as $r => $m ) {\n\t\t\t$v = isset( $matmenys[ $r ] ) ? self::skaicius( $matmenys[ $r ] ) : 0;\n"
+   },
+   "petshop-laukai.php": {
+    "md5": "201ceffc",
+    "head": "<?php\n/**\n * Plugin Name: Petshop Laukai\n * Description: Pasirenkami rinkiniai naujuoju modeliu — laukas (iki 8 prekiu is vieno sandelio),\n *              laisvas kiekis nuo 3 vnt. ir pakopine nuolaida pagal krepselio verte.\n * Version:     1.00\n * Author:      Petshop\n *\n * KODEL ATSKIRAS FAILAS:\n * `petshop-rinkiniai.php` tvarko paruostus rinkinius ir DP pakus — jie veikia ir ju\n * liesti nereikia. Laukai yra kitas modelis (ne fiksuotas dydis, o laisvas kiekis),\n * todel gyvena atskirai. Jei laukai kada nors bus atmesti, uztenka istrinti si faila.\n",
+    "L593": "\t\t}\n\t\tif ( count( $sandeliai ) > 1 ) {\n\t\t\treturn new WP_Error( 'sandelis', 'Krepsyje kelių sandėlių prekės: ' . implode( ' + ', array_keys( $sandeliai ) )\n\t\t\t\t. '. Vienas krepšys = vienas sandėlis = viena siunta.' );\n\t\t}\n\t\t$sandelis = key( $sandeliai );\n\n\t\t/* Produktas */\n\t\t$prod = $id ? wc_get_product( $id ) : null;\n\t\tif ( ! $prod ) {\n\t\t\t$prod = new WC_Product_Mix_and_Match();\n\t\t} elseif ( $prod->get_type() !== 'mix-and-match' ) {\n\t\t\treturn new WP_Error( 'tipas', 'Preke #' . $id . ' nera MnM konteineris.' );\n\t\t}\n\t\t$prod->set_name( $pav );\n\t\t$prod->set_status( 'publish' );\n\t\t/* Matomuma nustatom PABAIGOJE pagal iejimo taisykle — cia priverstinis\n\t\t   „visible\" panaikindavo slepima ir kataloge vel atsirasdavo visos\n\t\t   grupes dezes (rasta 2026-08-15). */\n\t\tif ( $aprasas !== '' ) { $prod->set_description( $aprasas ); }\n\t\tif ( $kat ) { $prod->set_category_ids( $kat ); }\n\n\t\t/* Esme: kainos atskirai, be virsutines ribos. Min — per-dezes:\n\t\t   skanestams 3, konservams 6 (savininko sprendimas 2026-08-15).\n\t\t   MnM min laiko paciame produkte, papildomo meta nereikia. */\n\t\t$prod->set_priced_per_product( true );\n\t\t$min = isset( $args['min'] ) ? max( 2, (int) $args['min'] ) : (int) ( $prod->get_min_container_size() ?: self::MIN_KIEKIS );\n\t\t$prod->set_min_container_size( $min );\n\t\t$prod->set_max_container_size( 0 );\n\t\t$prod->set_discount( '' );        /* nuolaida tvarkom patys, pakopomis */\n\t\t$prod->set_manage_stock( false ); /* likutis gyvena prekese */\n\t\t$lid = $prod->save();\n\t\tif ( ! $lid ) { return new WP_Error( 'save', 'Nepavyko issaugoti konteinerio.' ); }\n\n\t\tupdate_post_meta( $lid, self::META_LAUKAS, 'yes' );\n\t\tupdate_post_meta( $lid, self::META_ZODIS, $zodis );\n\t\tupdate_post_meta( $lid, self::META_SANDELIS, $sandelis );\n\t\tupdate_post_meta( $lid, self::META_SEIMA, $seima );\n\t\tupdate_post_meta( $lid, '_ps_sandelis', $sandelis );\n\t\tupdate_post_meta( $lid, '_mnm_weight_cumulative', 'yes' );  /* svoris is kliento pasirinkimo */\n",
+    "L2814": "\t\t<?php\n\t}\n\n\t/** Krepsio kainos JS'ui — kiek vienetu reikia pakopai pasiekti. */\n\tpublic static function krepsio_kainos( $lid ) {\n\t\t$k = array();\n\t\tforeach ( self::krepsys( $lid ) as $cid ) {\n\t\t\t$cp = wc_get_product( $cid );\n\t\t\tif ( $cp && (float) $cp->get_price() > 0 ) { $k[] = (float) $cp->get_price(); }\n\t\t}\n\t\treturn $k;\n\t}\n\n\t/* ---------- AJAX ---------- */\n\n\tprivate static function tikrink() {\n\t\tcheck_ajax_referer( 'ps_laukai', 'nonce' );\n\t\tif ( ! current_user_can( 'manage_woocommerce' ) ) { wp_send_json_error( 'Neturite teisių.' ); }\n\t}\n\n\tpublic static function ajax_naujas() {\n\t\tself::tikrink();\n\t\t$pav = sanitize_text_field( wp_unslash( $_POST['pav'] ?? '' ) );\n\t\tif ( $pav === '' ) { wp_send_json_error( 'Pavadinimas būtinas.' ); }\n\t\t$prod = new WC_Product_Mix_and_Match();\n\t\t$prod->set_name( $pav );\n\t\t$prod->set_status( 'draft' );   /* be prekiu publikuoti negalima */\n\t\t$prod->set_priced_per_product( true );\n\t\t$prod->set_min_container_size( self::MIN_KIEKIS );\n\t\t$prod->set_max_container_size( 0 );\n\t\t$prod->set_manage_stock( false );\n\t\t$prod->set_description( wp_kses_post( wp_unslash( $_POST['aprasas'] ?? '' ) ) );\n\t\t$lid = $prod->save();\n\t\tif ( ! $lid ) { wp_send_json_error( 'Nepavyko sukurti.' ); }\n\t\tupdate_post_meta( $lid, self::META_LAUKAS, 'yes' );\n\t\tupdate_post_meta( $lid, self::META_ZODIS, ( $_POST['zodis'] ?? '' ) === 'dezute' ? 'dezute' : 'deze' );\n\t\t/* Pakuote is kurimo formos: su ja rinkinys is karto atsistoja i savo\n\t\t   dydzio eilute vitrinoje ir gauna konservu minimuma. */\n\t\t$n_dydis = sanitize_text_field( wp_unslash( $_POST['dydis'] ?? '' ) );\n\t\tif ( $n_dydis !== '' ) {\n"
+   }
+  }
+ },
+ "2": {
+  "v": "S1731c",
+  "faze": "2",
+  "meta_visi": {
+   "_sku": "718000428",
+   "_regular_price": "1.18",
+   "total_sales": "5",
+   "_tax_status": "taxable",
+   "_tax_class": "",
+   "_manage_stock": "no",
+   "_backorders": "no",
+   "_sold_individually": "no",
+   "_weight": "0.04",
+   "_virtual": "no",
+   "_downloadable": "no",
+   "_download_limit": "-1",
+   "_download_expiry": "-1",
+   "_stock": "",
+   "_stock_status": "instock",
+   "_wc_average_rating": "0",
+   "_wc_review_count": "0",
+   "_product_version": "11.0.1",
+   "_price": "1.18",
+   "_ps_sandelis": "av",
+   "_product_attributes": "a:1:{s:15:\"pa_gyvuno_rusis\";a:6:{s:4:\"name\";s:15:\"pa_gyvuno_rusis\";s:5:\"value\";s:0:\"\";s:8:\"position\";i:0;s:10:\"is_visible\";i:1;s:12:\"is_variation\";i:0;s:11:\"is_taxonomy\";i:1;}}",
+   "_ps_publikuota": "2026-08-12 16:52:20",
+   "_ps_pilnumas": "60",
+   "_ps_pilnumas_truksta": "analitinės sudedamosios dalys, EAN, pakuotės dydis, nuotrauka",
+   "_ps_pilnumas_kodai": "|analitines|ean|pakuotes_dydis|nuotrauka|",
+   "_ps_pilnumas_updated": "2026-09-27 08:01:49",
+   "_cost_price": "0.73",
+   "_ps_trumpo_bak": "a:1:{i:0;a:2:{s:7:\"tekstas\";s:0:\"\";s:6:\"laikas\";s:19:\"2026-08-12 16:56:40\";}}",
+   "_ps_trumpas_uzrakintas": "yes",
+   "_ps_aprasymo_bak": "a:1:{i:0;a:3:{s:7:\"tekstas\";s:2896:\"<p>DŽIOVINTA STIRNOS AUSIS – TRAŠKUS, SVEIKAS IR HIPOALERGINIS SKANĖSTAS MAŽIEMS IR DIDELIEMS ŠUNIMS</p><p>Trumpa apžvalga: Ieškote lengvo, bet ilgiau kramtomo užkandžio, kuris nesukeltų alergijos ir neapkrautų šuns skrandžio? Džiovinta stirnos ausis yra puikus pa",
+   "_ps_aprasymas_uzrakintas": "yes",
+   "_ps_sales_30d": "0",
+   "_ps_sales_90d": "0",
+   "_ps_sales_365d": "0",
+   "_ps_revenue_365d": "0",
+   "_ps_orders_365d": "0",
+   "_ps_last_sale": "",
+   "_ps_margin_365d": "0",
+   "_ps_sales_updated": "2026-09-28 07:50:59",
+   "_product_image_gallery": "",
+   "_thumbnail_id": "36547",
+   "_ps_ranka_isimta": "taip",
+   "_ps_ranka_isimta_kada": "2026-09-28 16:29:58",
+   "_ps_ranka_isimta_kas": "Inga"
+  },
+  "post": {
+   "post_date": "2026-08-12 16:52:20",
+   "post_modified": "2026-09-28 16:29:58",
+   "post_status": "draft",
+   "post_author": "75"
+  },
+  "opt_log": [
+   {
+    "option_name": "ps_gavimo_perrus_pask",
+    "l": "206"
+   },
+   {
+    "option_name": "ps_laukai_grupiu_foto",
+    "l": "123"
+   },
+   {
+    "option_name": "ps_laukai_nauji",
+    "l": "50"
+   },
+   {
+    "option_name": "ps_laukai_testai",
+    "l": "66"
+   }
+  ],
+  "tiekimas": [
+   [
+    "gaj6_ps_action_tokens"
+   ],
+   [
+    "gaj6_ps_akcijos"
+   ],
+   [
+    "gaj6_ps_akciju_prekes"
+   ],
+   [
+    "gaj6_ps_ataskaitu_dienos"
+   ],
+   [
+    "gaj6_ps_av_zurnalas"
+   ],
+   [
+    "gaj6_ps_brand_alias"
+   ],
+   [
+    "gaj6_ps_browse_log"
+   ],
+   [
+    "gaj6_ps_carts"
+   ],
+   [
+    "gaj6_ps_consent_log"
+   ],
+   [
+    "gaj6_ps_dim_klientai"
+   ],
+   [
+    "gaj6_ps_email_content"
+   ],
+   [
+    "gaj6_ps_email_jobs"
+   ],
+   [
+    "gaj6_ps_email_suppression"
+   ],
+   [
+    "gaj6_ps_event_log"
+   ],
+   [
+    "gaj6_ps_fakt_atsargos_d"
+   ],
+   [
+    "gaj6_ps_fakt_eilutes"
+   ],
+   [
+    "gaj6_ps_fakt_grazinimai"
+   ],
+   [
+    "gaj6_ps_fakt_gsc_dienos"
+   ],
+   [
+    "gaj6_ps_fakt_gsc_url_d"
+   ],
+   [
+    "gaj6_ps_fakt_kainos"
+   ],
+   [
+    "gaj6_ps_fakt_reklama"
+   ],
+   [
+    "gaj6_ps_fakt_siuntos"
+   ],
+   [
+    "gaj6_ps_fakt_uzsakymai"
+   ],
+   [
+    "gaj6_ps_feeding_import_log"
+   ],
+   [
+    "gaj6_ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f"
+   ],
+   [
+    "gaj6_ps_feeding_map"
+   ],
+   [
+    "gaj6_ps_feeding_map_bak_s212b_20260717_fb3eeae1"
+   ],
+   [
+    "gaj6_ps_feeding_map_bak_s212b_engine_20260717_c4861c6f"
+   ],
+   [
+    "gaj6_ps_feeding_rows"
+   ],
+   [
+    "gaj6_ps_feeding_rows_bak_s212b_20260717_fb3eeae1"
+   ],
+   [
+    "gaj6_ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f"
+   ],
+   [
+    "gaj6_ps_feeding_rows_bak_s304"
+   ],
+   [
+    "gaj6_ps_feeding_tables"
+   ],
+   [
+    "gaj6_ps_feeding_tables_bak_s212b_20260717_fb3eeae1"
+   ],
+   [
+    "gaj6_ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f"
+   ],
+   [
+    "gaj6_ps_islaidos"
+   ],
+   [
+    "gaj6_ps_ist_eilutes"
+   ],
+   [
+    "gaj6_ps_ist_fakt_eilutes"
+   ],
+   [
+    "gaj6_ps_ist_fakt_uzsakymai"
+   ],
+   [
+    "gaj6_ps_ist_uzsakymai"
+   ],
+   [
+    "gaj6_ps_istrintos_prekes_s668"
+   ],
+   [
+    "gaj6_ps_ivykiai"
+   ],
+   [
+    "gaj6_ps_kl_suvestine"
+   ],
+   [
+    "gaj6_ps_kontrole_dienos"
+   ],
+   [
+    "gaj6_ps_laukai_ivykiai"
+   ],
+   [
+    "gaj6_ps_naujienlaiskiai"
+   ],
+   [
+    "gaj6_ps_nl_snapshot"
+   ],
+   [
+    "gaj6_ps_pakuotes"
+   ],
+   [
+    "gaj6_ps_partijos"
+   ],
+   [
+    "gaj6_ps_pet_field_log"
+   ],
+   [
+    "gaj6_ps_pet_notes"
+   ],
+   [
+    "gaj6_ps_pet_products"
+   ],
+   [
+    "gaj6_ps_pet_profile_drafts"
+   ],
+   [
+    "gaj6_ps_pets"
+   ],
+   [
+    "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9"
+   ],
+   [
+    "gaj6_ps_pets_bak_20260722_181456_hint"
+   ],
+   [
+    "gaj6_ps_pets_bak_20260723_prof"
+   ],
+   [
+    "gaj6_ps_pets_bak_20260726"
+   ],
+   [
+    "gaj6_ps_pets_bak_20260726_ft"
+   ],
+   [
+    "gaj6_ps_pets_bak_20260727_wet"
+   ],
+   [
+    "gaj6_ps_pets_bak_20260731_pries_restore"
+   ],
+   [
+    "gaj6_ps_plan_events"
+   ],
+   [
+    "gaj6_ps_rec_log"
+   ],
+   [
+    "gaj6_ps_refill_tracking"
+   ],
+   [
+    "gaj6_ps_relaunch_kontaktai"
+   ],
+   [
+    "gaj6_ps_reminders"
+   ],
+   [
+    "gaj6_ps_sargas_klaidos"
+   ],
+   [
+    "gaj6_ps_seo_404"
+   ],
+   [
+    "gaj6_ps_seo_qa"
+   ],
+   [
+    "gaj6_ps_seo_url_svoris"
+   ],
+   [
+    "gaj6_ps_shipments"
+   ],
+   [
+    "gaj6_ps_sources"
+   ],
+   [
+    "gaj6_ps_stock_watch"
+   ],
+   [
+    "gaj6_ps_subscription_events"
+   ],
+   [
+    "gaj6_ps_subscription_items"
+   ],
+   [
+    "gaj6_ps_subscriptions"
+   ],
+   [
+    "gaj6_ps_tarifai"
+   ],
+   [
+    "gaj6_ps_tarifu_priemokos"
+   ],
+   [
+    "gaj6_ps_tiekimas"
+   ],
+   [
+    "gaj6_ps_tiekimas_eil"
+   ],
+   [
+    "gaj6_ps_uzsakymu_ivykiai"
+   ],
+   [
+    "gaj6_ps_v_analize_eilutes"
+   ],
+   [
+    "gaj6_ps_v_analize_uzsakymai"
+   ],
+   [
+    "gaj6_ps_web_dienos"
+   ],
+   [
+    "gaj6_ps_web_ivykiai"
+   ],
+   [
+    "gaj6_ps_webhook_log"
+   ]
+  ]
+ },
+ "v": "dep-155209",
+ "kurimas": 200,
+ "sid": 6685,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
