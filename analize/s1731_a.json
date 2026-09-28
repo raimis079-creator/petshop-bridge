@@ -1,5 +1,97 @@
 {
- "v": "dep-154308",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "1": {
+  "v": "S1731a",
+  "faze": "1",
+  "prekes": {
+   "34908": {
+    "t": "Stirnos ausis, 1 vnt.",
+    "st": "draft",
+    "type": "simple",
+    "mod": "2026-09-28 16:29:58",
+    "meta": {
+     "_manage_stock": "no",
+     "_stock_status": "instock",
+     "_backorders": "no",
+     "_ps_sandelis": "av",
+     "_ps_ranka_isimta": "taip",
+     "_sku": "718000428",
+     "_price": "1.18"
+    },
+    "wc_stock_qty": null,
+    "wc_status": "instock",
+    "is_in_stock": true,
+    "managing": false,
+    "enough1": true,
+    "log": "",
+    "sources": [
+     {
+      "id": "3819",
+      "product_id": "34908",
+      "source": "av",
+      "supplier_sku": "",
+      "ean": "",
+      "stock_qty": null,
+      "cost_net": "0.7300",
+      "synced_at": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2",
+      "created_at": "2026-08-12 16:52:20",
+      "updated_at": "2026-09-28 07:20:46"
+     }
+    ],
+    "partijos": [],
+    "uzs": []
+   }
+  }
+ },
+ "2": {
+  "v": "S1731a",
+  "faze": "2"
+ },
+ "3": {
+  "v": "S1731a",
+  "faze": "3",
+  "kl": {
+   "Petshop_AV_Limit": {
+    "f": "/mu-plugins/petshop-av-limit.php",
+    "md5": "e2860d11",
+    "eil": 87
+   },
+   "Petshop_AV_Stock": {
+    "f": "/mu-plugins/petshop-av-stock.php",
+    "md5": "3a1585ed",
+    "eil": 305
+   },
+   "Petshop_AV_Source": {
+    "f": "/mu-plugins/petshop-av-source.php",
+    "md5": "7d8e67eb",
+    "eil": 239
+   }
+  },
+  "av_limit_src": "<?php\n/**\n * Petshop AV Limit v1.0 (S474) — pardavimo riba iš KELIŲ šaltinių.\n *\n * TREČIAS SLUOKSNIS (REGISTRAS §17.7, §19).\n *\n * PROBLEMA: WooCommerce riboja pagal `_stock` — VIENO šaltinio kiekį.\n * Prekė gali turėti AV 2 ir VF 796, o klientas negalės nupirkti 3, nors realiai yra 798.\n *\n * TAISYKLĖ (Raimis §17.4):\n *   „Klientui likučio išvis nereikia rodyti, principas arba prekė yra arba nėra,\n *    o kai jis renkasi, jis negali paimti minusinio likučio.\"\n *\n * KĄ DARO:\n *   - bendra riba = AV + tiekėjas (tik toms, kurios turi ABU)\n *   - klientui skaičius NERODOMAS (tik „yra\" / „nėra\")\n *   - GRYNAI AV prekėms nieko nekeičia — jų `_stock` ir taip teisingas\n *\n * KO NEDARO:\n *   - NEKEIČIA `_stock` reikšmės (sync ją perrašo)\n *   - NEKURIA savo rezervacijų — WooCommerce jau turi (§18.6)\n *\n * SAUGIKLIS: veikia TIK toms prekėms, kurios turi `_own_stock_qty` IR tiekėjo\n * šaltinį. Visoms kitoms — WooCommerce elgiasi kaip anksčiau.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_AV_Limit {\n\n\tpublic static function init() {\n\t\t// bendra riba\n\t\tadd_filter( 'woocommerce_product_get_stock_quantity', [ __CLASS__, 'stock_qty' ], 20, 2 );\n\t\tadd_filter( 'woocommerce_product_variation_get_stock_quantity', [ __CLASS__, 'stock_qty' ], 20, 2 );\n\t\t// „yra / nėra\"\n\t\tadd_filter( 'woocommerce_product_get_stock_status', [ __CLASS__, 'stock_status' ], 20, 2 );\n\t\t// klientui skaičius NERODOMAS\n\t\tadd_filter( 'woocommerce_get_availability_text', [ __CLASS__, 'availability_text' ], 20, 2 );\n\t\tadd_filter( 'woocommerce_get_stock_html', [ __CLASS__, 'stock_html' ], 20, 2 );\n\t}\n\n\t/** Ar šiai prekei taikoma dviejų šaltinių logika. */\n\tprotected static function taikoma( $product_id ) {\n\t\tif ( ! class_exists( 'Petshop_AV_Stock' ) ) { return false; }\n\t\t$av = Petshop_AV_Stock::qty( $product_id );\n\t\tif ( null === $av ) { return false; }               // AV neturi — nieko nekeičiam\n\t\tif ( ! class_exists( 'Petshop_Fulfillment_Source' ) ) { return false; }\n\t\t$s = Petshop_Fulfillment_Source::resolve( (int) $product_id )['source'];\n\t\treturn ( 'legacy' !== $s );                          // grynai AV — nieko nekeičiam\n\t}\n\n\t/** Bendras kiekis = AV + tiekėjas. */\n\tpublic static function stock_qty( $qty, $product ) {\n\t\tif ( ! is_a( $product, 'WC_Product' ) ) { return $qty; }\n\t\t$pid = $product->get_id();\n\t\tif ( ! self::taikoma( $pid ) ) { return $qty; }\n\t\t$av = (int) Petshop_AV_Stock::qty( $pid );\n\t\t$tiek = (int) $qty;                                  // WC `_stock` = tiekėjo kiekis\n\t\treturn $av + max( 0, $tiek );\n\t}\n\n\t/** „yra\", jei bent vienas šaltinis turi. */\n\tpublic static function stock_status( $status, $product ) {\n\t\tif ( ! is_a( $product, 'WC_Product' ) ) { return $status; }\n\t\t$pid = $product->get_id();\n\t\tif ( ! self::taikoma( $pid ) ) { return $status; }\n\t\t$av = (int) Petshop_AV_Stock::qty( $pid );\n\t\tif ( $av > 0 ) { return 'instock'; }\n\t\treturn $status;\n\t}\n\n\t/** Klientui — be skaičiaus. */\n\tpublic static function availability_text( $text, $product ) {\n\t\tif ( ! is_a( $product, 'WC_Product' ) ) { return $text; }\n\t\tif ( is_admin() && ! wp_doing_ajax() ) { return $text; }\n\t\tif ( ! $product->is_in_stock() ) { return $text; }\n\t\t// „Turime (127)\" → „Turime\"\n\t\treturn preg_replace( '/\\s*\\(\\s*\\d+[^)]*\\)\\s*$/u', '', (string) $text );\n\t}\n\n\t/** Tas pats HTML lygmenyje — jei tema rodo savo variantą. */\n\tpublic static function stock_html( $html, $product ) {\n\t\tif ( is_admin() && ! wp_doing_ajax() ) { return $html; }\n\t\tif ( ! is_a( $product, 'WC_Product' ) || ! $product->is_in_stock() ) { return $html; }\n\t\treturn preg_replace( '/\\s*\\(\\s*\\d+[^)]*\\)/u', '', (string) $html );\n\t}\n}\nPetshop_AV_Limit::init();\n",
+  "hooks": {
+   "woocommerce_product_get_stock_quantity": [
+    "-1000:WC_Deprecated_Filter_Hooks::maybe_handle_deprecated_hook",
+    "20:Petshop_AV_Limit::stock_qty"
+   ],
+   "woocommerce_product_get_stock_status": [
+    "20:Petshop_AV_Limit::stock_status",
+    "30:Petshop_Rinkiniu_Likuciai::busena"
+   ],
+   "woocommerce_product_is_in_stock": [
+    "10:closure /plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:17",
+    "20:Petshop_Rinkiniu_Likuciai::ar_yra"
+   ],
+   "woocommerce_product_backorders_allowed": [],
+   "woocommerce_product_get_manage_stock": []
+  }
+ },
+ "v": "dep-154722",
+ "kurimas": 200,
+ "sid": 6683,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
 }
