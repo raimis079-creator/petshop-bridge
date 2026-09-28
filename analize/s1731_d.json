@@ -1,0 +1,126 @@
+{
+ "1": {
+  "v": "S1731d",
+  "faze": "1",
+  "eil": 2018,
+  "nauja_preke": "\t\t$prod->set_manage_stock( false );      /* likuti valdo partijos (FEFO) */\n\t\t/* PVM: naujos prekes VISADA `taxable`. S654 pamoka — penki importo\n\t\t   profiliai buvo palike `none`, ir 988 prekes checkout'e ejo be PVM. */\n\t\t$prod->set_tax_status( 'taxable' );\n\t\tif ( $kaina > 0 ) { $prod->set_regular_price( (string) $kaina ); }\n\t\tif ( $apras !== '' ) { $prod->set_description( $apras ); }\n\t\tif ( $trumpas !== '' ) { $prod->set_short_description( $trumpas ); }\n\t\tif ( $svoris > 0 ) { $prod->set_weight( (string) $svoris ); }\n\t\tforeach ( array( 'ilgis' => 'set_length', 'plotis' => 'set_width', 'aukstis' => 'set_height' ) as $r => $m ) {\n\t\t\t$v = isset( $matmenys[ $r ] ) ? self::skaicius( $matmenys[ $r ] ) : 0;\n\t\t\tif ( $v > 0 ) { $prod->{$m}( (string) $v ); }\n\t\t}\n\t\tif ( $katai ) { $prod->set_category_ids( $katai ); }\n\t\tif ( $galerija ) { $prod->set_gallery_image_ids( $galerija ); }\n\t\t$pid = $prod->save();\n\n\t\tif ( ! $pid ) { wp_send_json_error( 'nepavyko sukurti prekės' ); }\n\n\t\t/* AV sandelis — be sios zymes preke neatsirastu nei partijose, nei\n\t\t   savo eilese, o gavimas butu beprasmis. */\n\t\tupdate_post_meta( $pid, '_ps_sandelis', 'av' ); /* S1705: mazosios — kaip visur sistemoje */\n\t\tif ( $ean !== '' ) {\n\t\t\tupdate_post_meta( $pid, '_ean', $ean );\n\t\t\tupdate_post_meta( $pid, '_global_unique_id', $ean );\n\t\t}\n\t\tif ( $foto > 0 && get_post_type( $foto ) === 'attachment' ) { set_post_thumbnail( $pid, $foto ); }\n\n\t\t/* Taksonomijos — TIK per term_id (slug kolizija: „1,5 kg\" ir „15 kg\"\n\t\t   sanitizuojasi i ta pati „15-kg\"). */\n\t\t$tax_map = array(\n\t\t\t'brendas'       => 'product_brand',\n\t\t\t'gyvuno_rusis'  => 'pa_gyvuno_rusis',\n\t\t\t'pakuotes_dydis'=> 'pa_pakuotes_dydis',\n\t\t);\n\t\tforeach ( $tax_map as $raktas => $tax ) {\n\t\t\t$tid = isset( $d[ $raktas ] ) ? (int) $d[ $raktas ] : 0;\n\t\t\tif ( ! $tid || ! taxonomy_exists( $tax ) ) { continue; }\n\t\t\t$t = get_term( $tid );\n\t\t\tif ( ! $t || is_wp_error( $t ) || $t->taxonomy !== $tax ) { continue; }\n\t\t\twp_set_object_terms( $pid, array( $tid ), $tax, false );\n\t\t\tif ( strpos( $tax, 'pa_' ) === 0 ) {\n\t\t\t\t/* Taksonominis atributas neissilaiko be registracijos\n\t\t\t\t   `_product_attributes` — WC naktį nusalintu orphan rysius. */\n\t\t\t\t$reg = get_post_meta( $pid, '_product_attributes', true );\n\t\t\t\tif ( ! is_array( $reg ) ) { $reg = array(); }\n\t\t\t\t$reg[ $tax ] = array( 'name' => $tax, 'value' => '', 'position' => count( $reg ),\n\t\t\t\t\t'is_visible' => 1, 'is_variation' => 0, 'is_taxonomy' => 1 );\n\t\t\t\tupdate_post_meta( $pid, '_product_attributes', $reg );\n\t\t\t}\n\t\t}\n\n\t\t/* v1.4: patvirtinti atributu pasiulymai. Priskiriami TIK tie, kuriuos\n\t\t   zmogus paliko pazymetus — parseris siulo, sprendzia zmogus. */\n\t\tif ( ! empty( $d['atributai'] ) && is_array( $d['atributai'] ) ) {\n\t\t\tforeach ( $d['atributai'] as $tax => $terminai ) {\n\t\t\t\t$tax = sanitize_key( $tax );\n\t\t\t\tif ( ! taxonomy_exists( $tax ) || strpos( $tax, 'pa_' ) !== 0 ) { continue; }\n\t\t\t\t$ids = array_values( array_filter( array_map( 'intval', (array) $terminai ) ) );\n\t\t\t\tif ( ! $ids ) { continue; }\n\t\t\t\t$ok = array();\n\t\t\t\tforeach ( $ids as $tid ) {\n\t\t\t\t\t$t = get_term( $tid );\n\t\t\t\t\tif ( $t && ! is_wp_error( $t ) && $t->taxonomy === $tax ) { $ok[] = $tid; }\n\t\t\t\t}\n\t\t\t\tif ( ! $ok ) { continue; }\n\t\t\t\twp_set_object_terms( $pid, $ok, $tax, false );\n\t\t\t\t$reg = get_post_meta( $pid, '_product_attributes', true );\n\t\t\t\tif ( ! is_array( $reg ) ) { $reg = array(); }\n\t\t\t\t$reg[ $tax ] = array( 'name' => $tax, 'value' => '', 'position' => count( $reg ),\n\t\t\t\t\t'is_visible' => 1, 'is_variation' => 0, 'is_taxonomy' => 1 );\n\t\t\t\tupdate_post_meta( $pid, '_product_attributes', $reg );\n\t\t\t}\n\t\t}\n\n\t\t/* Busena: pilna preke keliauja i prekyba is karto, nepilna — lieka\n\t\t   juodrastyje su ivardyta priezastimi. Ta pati taisykle, kaip\n\t\t   `petshop-vartai.php` taiko VF ir ZB prekems. */\n\t\t$truksta = array();\n\t\tif ( $kaina <= 0 ) { $truksta[] = 'nėra kainos'; }\n\t\tif ( ! $katai ) { $truksta[] = 'nėra kategorijos'; }\n\t\tif ( $foto <= 0 ) { $truksta[] = 'nėra nuotraukos'; }\n\t\tif ( mb_strlen( trim( wp_strip_all_tags( $apras ) ) ) < 120 ) { $truksta[] = 'nėra aprašymo'; }\n\n\t\tif ( ! $truksta ) {\n\t\t\twp_update_post( array( 'ID' => $pid, 'post_status' => 'publish' ) );\n\t\t\tupdate_post_meta( $pid, '_ps_publikuota', current_time( 'mysql' ) );\n\t\t} else {\n\t\t\tupdate_post_meta( $pid, '_ps_i_juodrasti', implode( ', ', $truksta ) . ' · ' . current_time( 'mysql' ) );\n\t\t}\n\n\t\tif ( class_exists( 'Petshop_Pilnumas' ) ) { Petshop_Pilnumas::perskaiciuoti( $pid ); }\n\t\tif ( function_exists( 'wc_delete_product_transients' ) ) { wc_delete_product_transients( $pid ); }\n\n\t\tif ( class_exists( 'Petshop_Ivykiai' ) && method_exists( 'Petshop_Ivykiai', 'irasyti' ) ) {\n\t\t\ttry { Petshop_Ivykiai::irasyti( $pid, 'sukurta', array(\n\t\t\t\t'laukas' => 'gavimas', 'buvo' => '', 'tapo' => $pav . ' · ' . $sku ) ); }\n\t\t\tcatch ( Throwable $e ) { /* zurnalas neprivalo blokuoti */ }\n\t\t}\n\n\t\twp_send_json_success( array(\n\t\t\t'id'      => (int) $pid,\n\t\t\t'pav'     => $pav,\n\t\t\t'sku'     => $sku,\n\t\t\t'ean'     => $ean,\n\t\t\t'busena'  => $truksta ? 'draft' : 'publish',\n\t\t\t'truksta' => $truksta,\n\t\t\t'av'      => 0,\n\t\t\t'sav'     => '',\n\t\t\t'sand'    => 'av',\n\t\t\t'av_preke'=> true,\n",
+  "grep": {
+   "petshop-gavimas.php": [
+    "414: $prod->set_manage_stock( false );      /* likuti valdo partijos (FEFO) */"
+   ],
+   "petshop-partijos.php": [
+    "290: $prod->set_manage_stock( true );"
+   ],
+   "petshop-katalogas.php": [
+    "1146: $prod->set_manage_stock( true );",
+    "1594: $modelis = ( $pirma && get_post_meta( $pirma, '_manage_stock', true ) === 'yes' ) ? 'variacijos' : 'tevas';",
+    "1648: update_post_meta( $pid, '_manage_stock', 'yes' );",
+    "1650: update_post_meta( $pid, '_manage_stock', 'no' );",
+    "1661: $v->set_manage_stock( $modelis === 'variacijos' );",
+    "1718: if ( get_post_meta( $vid, '_manage_stock', true ) !== 'yes' ) {",
+    "2234: $prod->set_manage_stock( true );",
+    "2887: $prod->set_manage_stock( false );",
+    "2889: $prod->set_manage_stock( true );",
+    "4173: 'valdo'  => ( isset( $mv['_manage_stock'] ) && $mv['_manage_stock'] === 'yes' ),",
+    "5017: (`_manage_stock=yes`). Siandien sukurtos variacijos likucio nevaldo —",
+    "5556: JOIN {$wpdb->postmeta} ms ON ms.post_id = v.ID AND ms.meta_key = '_manage_stock'"
+   ]
+  }
+ },
+ "2": {
+  "18551": {
+   "st": "draft",
+   "ms": "yes",
+   "ss": "outofstock"
+  },
+  "v": "S1731d",
+  "faze": "2",
+  "simple_manage_no_visos_busenos": [
+   [
+    20971,
+    "draft",
+    "Exclusion Hypo sausas pašaras šunims su triušiena ",
+    "2026-06-06 16:56:44",
+    "instock",
+    "av",
+    "",
+    0
+   ],
+   [
+    23804,
+    "draft",
+    "Truly skanėstas šunims \"Sushi\" lašiša, tunas ir kr",
+    "2026-06-06 17:22:36",
+    "instock",
+    "av",
+    "",
+    0
+   ],
+   [
+    34896,
+    "draft",
+    "Jautienos odos pagaliukai su antiena, 500g, Dobre ",
+    "2026-08-11 21:58:52",
+    "instock",
+    "av",
+    "",
+    0
+   ],
+   [
+    34902,
+    "draft",
+    "Jaučio snukis, džiovintas, rudas, 1 vnt.",
+    "2026-08-12 12:19:17",
+    "instock",
+    "av",
+    "",
+    0
+   ],
+   [
+    34908,
+    "draft",
+    "Stirnos ausis, 1 vnt.",
+    "2026-08-12 16:52:20",
+    "instock",
+    "av",
+    "",
+    0
+   ],
+   [
+    35790,
+    "private",
+    "Pakartotinis siuntimas",
+    "2026-09-05 00:52:19",
+    "instock",
+    "paslauga",
+    "",
+    0
+   ],
+   [
+    35796,
+    "private",
+    "Siuntos grąžinimo išlaidos",
+    "2026-09-05 10:25:04",
+    "instock",
+    "paslauga",
+    "",
+    0
+   ]
+  ],
+  "su_ps_publikuota": {
+   "publish|yes": 2551,
+   "draft|yes": 201,
+   "publish|no": 333,
+   "trash|yes": 9,
+   "draft|no": 5,
+   "trash|no": 7
+  }
+ },
+ "v": "dep-155427",
+ "kurimas": 200,
+ "sid": 6686,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
