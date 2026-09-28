@@ -1,0 +1,45 @@
+{
+ "1": {
+  "v": "S1729b",
+  "faze": "1",
+  "failai": [
+   "/plugins/woocommerce-delivery-notes/includes/helpers/class-helper.php",
+   "/plugins/seo-by-rank-math/includes/replace-variables/class-cache.php",
+   "/plugins/seo-by-rank-math/includes/class-helper.php",
+   "/plugins/seo-by-rank-math/includes/traits/class-cache.php",
+   "/plugins/seo-by-rank-math/includes/modules/sitemap/class-cache.php",
+   "/plugins/seo-by-rank-math/includes/modules/sitemap/class-cache-watcher.php",
+   "/plugins/seo-by-rank-math/includes/modules/redirections/class-cache.php",
+   "/plugins/seo-by-rank-math/includes/modules/ai-visibility/class-cache.php",
+   "/plugins/woocommerce/vendor/automattic/jetpack-status/src/class-cache.php"
+  ],
+  "watcher": {
+   "/plugins/seo-by-rank-math/includes/modules/sitemap/class-cache-watcher.php": {
+    "eil": 355,
+    "md5": "8b5c9412",
+    "add_action": [
+     "add_action( 'shutdown', [ __CLASS__, 'clear_queued' ] );",
+     "add_action( 'update_option', [ __CLASS__, 'clear_on_option_update' ] );",
+     "add_action( 'deleted_term_relationships', [ __CLASS__, 'invalidate' ] );"
+    ],
+    "260_330": "\t *\n\t * @param string $object_type Object type for destination where to save.\n\t * @param int    $object_id   Object id for destination where to save.\n\t *\n\t * @return void\n\t */\n\tpublic static function invalidate_object_type( $object_type, $object_id ) {\n\t\tif ( 'post' === $object_type ) {\n\t\t\tself::invalidate_post( $object_id );\n\t\t\treturn;\n\t\t}\n\n\t\tif ( 'user' === $object_type ) {\n\t\t\tself::invalidate_author( $object_id );\n\t\t\treturn;\n\t\t}\n\n\t\tif ( 'term' === $object_type ) {\n\t\t\t$term = get_term( $object_id );\n\t\t\tself::invalidate_term( $object_id, $term->taxonomy );\n\t\t}\n\t}\n\n\t/**\n\t * Delete cache transients for given sitemaps types or all by default.\n\t *\n\t * @param array $types Set of sitemap types to delete cache transients for.\n\t */\n\tpublic static function clear( $types = [] ) {\n\t\tif ( ! Sitemap::is_cache_enabled() ) {\n\t\t\treturn;\n\t\t}\n\n\t\t// No types provided, clear all.\n\t\tif ( empty( $types ) ) {\n\t\t\tself::$clear_all = true;\n\t\t\treturn;\n\t\t}\n\n\t\t// Always invalidate the index sitemap as well.\n\t\tif ( ! in_array( '1', $types, true ) ) {\n\t\t\tarray_unshift( $types, '1' );\n\t\t}\n\n\t\tforeach ( $types as $type ) {\n\t\t\tif ( ! in_array( $type, self::$clear_types, true ) ) {\n\t\t\t\tself::$clear_types[] = $type;\n\t\t\t}\n\t\t}\n\t}\n\n\t/**\n\t * Invalidate storage for cache types queued to clear.\n\t */\n\tpublic static function clear_queued() {\n\t\tif ( self::$clear_all ) {\n\t\t\tCache::invalidate_storage();\n\t\t\tself::$clear_all   = false;\n\t\t\tself::$clear_types = [];\n\t\t\treturn;\n\t\t}\n\n\t\tforeach ( self::$clear_types as $type ) {\n\t\t\tCache::invalidate_storage( $type );\n\t\t}\n\n\t\tself::$clear_types = [];\n\t}\n\n\t/**\n\t * Adds a hook that when given option is updated, the cache is cleared.\n\t *\n\t * @param string $option Option name.\n\t * @param string $type   Sitemap type.\n\t */\n\tpublic static function register_clear_on_option_update( $option, $type = '' ) {\n\t\tself::$cache_clear[ $option ] = $type;\n\t}\n\n\t/**\n",
+    "head": "<?php\n/**\n * The sitemap cache watcher.\n *\n * @since      0.9.0\n * @package    RankMath\n * @subpackage RankMath\\Sitemap\n * @author     Rank Math <support@rankmath.com>\n *\n * @copyright Copyright (C) 2008-2019, Yoast BV\n * The following code is a derivative work of the code from the Yoast(https://github.com/Yoast/wordpress-seo/), which is licensed under GPL v3.\n */\n\nnamespace RankMath\\Sitemap;\n\nuse RankMath\\Helper;\nuse RankMath\\Sitemap\\Sitemap;\nuse RankMath\\Traits\\Hooker;\n\ndefined( 'ABSPATH' ) || exit;\n\n/**\n * Cache_Watcher class.\n */\nclass Cache_Watcher {\n\n\tuse Hooker;\n\n\t/**\n\t * Holds the options that, when updated, should cause the cache to clear.\n\t *\n\t * @var array\n\t */\n\tprotected static $cache_clear = [];\n\n\t/**\n\t * Holds the flag to clear all cache.\n\t *\n\t * @var boolean\n\t */\n"
+   }
+  },
+  "cache_php": {
+   "/plugins/seo-by-rank-math/includes/replace-variables/class-cache.php": "",
+   "/plugins/seo-by-rank-math/includes/traits/class-cache.php": "",
+   "/plugins/seo-by-rank-math/includes/modules/sitemap/class-cache.php": "\t\t\twp_mkdir_p( $directory );\n\t\t\tself::clear_transients();\n\t\t\tself::cached_files( false );\n\t\t\tHelper::clear_cache( 'sitemap' );\n\t\t\treturn;\n\t\t}\n\n\t\t$data  = [];\n\t\t$files = self::cached_files();\n\t\tforeach ( $files as $file => $sitemap_type ) {\n\t\t\tif ( $type !== $sitemap_type ) {\n\t\t\t\t$data[ $file ] = $sitemap_type;\n\t\t\t\tcontinue;\n\t\t\t}\n\n\t\t\t$wp_filesystem->delete( $directory . $file );\n\t\t}\n\n\t\tself::clear_transients( $type );\n\t\tself::cached_files( $data );\n\t\tHelper::clear_cache( 'sitemap/' . $type );\n\n\t\t/**\n\t\t * Action: 'rank_math/sitemap/invalidated_storage' - Runs after sitemap cache invalidation.\n\t\t */\n\t\tdo_action( 'rank_math/sitemap/invalidated_storage', $type );\n\t}\n\n\t/**\n\t * Reset ALL transient caches.\n",
+   "/plugins/seo-by-rank-math/includes/modules/redirections/class-cache.php": "",
+   "/plugins/seo-by-rank-math/includes/modules/ai-visibility/class-cache.php": "\t\t}\n\n\t\treturn null;\n\t}\n\n\t/**\n\t * Whether a brand's full-analysis payload is flagged stale.\n\t *\n\t * @param string $uuid Brand UUID.\n\t *\n\t * @return bool\n\t */\n\tpublic static function is_brand_stale( $uuid ) {\n\t\t$row = self::get_brand_row( $uuid );\n\t\treturn null !== $row && ! empty( $row['stale'] );\n\t}\n\n\t/**\n\t * Clear a brand's stale flag (after its analysis payload was refetched).\n\t *\n\t * @param string $uuid Brand UUID.\n\t *\n\t * @return void\n\t */\n\tpublic static function clear_brand_stale( $uuid ) {\n\t\tself::patch_brand_row( $uuid, [ 'stale' => false ] );\n\t}\n\n\t// -------------------------------------------------------------------------\n\t// Per-brand identity (incl. description).\n",
+   "/plugins/woocommerce/vendor/automattic/jetpack-status/src/class-cache.php": ""
+  }
+ },
+ "v": "dep-050754",
+ "kurimas": 200,
+ "sid": 6681,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
