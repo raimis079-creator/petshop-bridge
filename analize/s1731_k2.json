@@ -1,0 +1,134 @@
+{
+ "2": {
+  "v": "S1731k",
+  "faze": "2",
+  "judesiai": [
+   "#16305 grynai AV 184 -> 180",
+   "#16273 grynai AV 14 -> 13"
+  ],
+  "ispejimai": [
+   "SUMA 56.16 ≠ 57.18"
+  ],
+  "po": {
+   "st": "processing",
+   "total": "56.16",
+   "tax": "8.91",
+   "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":6,\"vienetai\":36}}",
+   "surinkta": "",
+   "eil": {
+    "2738": [
+     19104,
+     10,
+     15.9,
+     "av",
+     "10"
+    ],
+    "2739": [
+     19092,
+     10,
+     14.9,
+     "av",
+     "10"
+    ],
+    "2740": [
+     19054,
+     1,
+     5.58,
+     "av",
+     "1"
+    ],
+    "2741": [
+     16298,
+     10,
+     14.9,
+     "av",
+     "10"
+    ],
+    "2775": [
+     16305,
+     4,
+     4.17,
+     "av",
+     "4"
+    ],
+    "2776": [
+     16273,
+     1,
+     0.71,
+     "av",
+     "1"
+    ]
+   },
+   "stock": {
+    "16273": "13",
+    "16305": "180",
+    "34908": "0"
+   },
+   "fakt_u": {
+    "uzsakymas_id": "36555",
+    "sukurta_at": "2026-09-28 12:33:22",
+    "apmoketa_at": "2026-09-28 12:34:19",
+    "statusas_galutinis": "processing",
+    "statusas_at": "2026-09-28 16:51:22",
+    "klientas_id": "268",
+    "klientas_email_hash": "9720bb17136f09cf279a38c2e1aa788542bd3d62e6077b602092112f2e0688ca",
+    "klientas_naujas": "0",
+    "klientas_uzsakymo_nr": "11",
+    "dienos_nuo_ankstesnio": "47",
+    "prekiu_suma_ct": "4725",
+    "nuolaidu_ct": "0",
+    "kuponu_kodai": "",
+    "tasku_panaudota_ct": "0",
+    "tasku_sukaupta_ct": "0",
+    "pristatymas_paimta_ct": "0",
+    "pristatymas_savikaina_ct": null,
+    "small_cart_fee_ct": "0",
+    "pvm_ct": "891",
+    "viso_ct": "5616",
+    "mokejimo_budas": "paysera",
+    "mokejimo_mokestis_ct": "5",
+    "pakuotes_savikaina_ct": "40",
+    "savikaina_ct": "2595",
+    "dovanu_savikaina_ct": "0",
+    "marza_ct": "2130",
+    "kontribucija_ct": "2085",
+    "sandeliu_kiekis": "1",
+    "misrus": "0",
+    "sandeliai": "legacy",
+    "vezejai": "venipak",
+    "kanalas_pirmas": "mokamas",
+    "kanalas_paskutinis": "mokamas",
+    "utm_source": "google",
+    "utm_medium": "cpc",
+    "utm_campaign": "23346712074",
+    "gclid": "1",
+    "fbclid": "0",
+    "referer_domenas": "www.google.com",
+    "landing_url": "https://petshop.lt/?utm_source=google&utm_medium=cpc&utm_campaign=23346712074&gad_source=1&gad_campaignid=23346712074&gbraid=0AAAAApaj7XVb0eW3fWUTJsy3WGpvCpZTi&gclid=CjwKCAjwoOjVBhArEiwAUwDak-WWj-0iqduoEBuWOVj5nSwxpgNZB1PFPsLkeoARzVpgCPETxvDf-BoCSdgQAvD_B",
+    "irenginys": "desktop",
+    "sutikimas_statistika": "0",
+    "salis": "LT",
+    "miestas": "",
+    "pasto_kodas": "",
+    "anketa_id": null,
+    "rec_log_id": null,
+    "is_refill": "0",
+    "prenumerata_id": null,
+    "eiluciu_sk": "6",
+    "testinis": "0",
+    "saltinis_aplinka": "prod",
+    "fakt_versija": "2",
+    "irasyta_at": "2026-09-28 16:51:22",
+    "diena": "2026-09-28"
+   },
+   "fakt_e_n": 6
+  }
+ },
+ "v": "dep-165012",
+ "kurimas": 200,
+ "sid": 6697,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
