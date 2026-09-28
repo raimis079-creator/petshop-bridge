@@ -1,0 +1,52 @@
+{
+ "1": {
+  "v": "S1731u",
+  "md5": "fb5a0c084731f57eecd2faa069f3ef3b",
+  "src": "<?php\n/**\n * Petshop Kliento siuntos v1.2 (S1612, 2026-09-04; 4 etapas #1 — būsena „Pristatyta“ iš Venipak sekimo) + kliento pusės sargai.\n *\n * v1.2 — trečia būsena **Pristatyta** (`kliento_siuntos()` `busena=pristatyta`, darbalaukis v3.11: visi dalies numeriai Venipak'e „Delivered“).\n *   Žymė žalia kaip „Išsiųsta“, be datos (kaip kitos būsenos); „Sekti siuntą“ lieka. Piešia tik — duomenys vis tas pats vienas šaltinis.\n *\n * KODĖL: paskyros užsakymo puslapyje siuntų nebuvo (S1609 `e8_uzsakymas_35421.png`) — Venipak/LP pluginai kliento pusėje nieko\n * nekabina, klientas po laiško „Išsiųsta 1 iš 2 siuntų“ paskyroje nematė nei siuntų, nei numerių.\n *\n * KĄ DARO: blokas „Siuntos“ paskyros užsakymo puslapyje (`paskyra/uzsakymas/N/`) VIRŠUJE, virš „Užsakymo informacija“ —\n * `woocommerce_order_details_before_order_table` prior. 5 (prieš `petshop-atsisakymas.php` pranešimo closure prior. 10).\n * Kiekvienai siuntai: „Siunta 1 iš 2“ (vienai — „Siunta“) · būsena TIK Ruošiama / Išsiųsta (be datos; „Pristatyta“ — 4 etape iš\n * Venipak API) · prekės × kiekis · siuntos numeris (Venipak / LP Express) + „Sekti siuntą“. Tiekėjų vardų klientui NĖRA —\n * viską siunčia petshop.lt.\n *\n * TIK PIEŠIA: duomenys — `Petshop_Darbalaukis::kliento_siuntos($o)` (darbalaukis v3.10.3) — tas pats šaltinis kaip laiške\n * (vienas tiesos šaltinis; 4 etapo Venipak cron rašys ten pat). Atskiro meniu skirtuko „Siuntos“ NĖRA (Raimis 09-03 naktį).\n * TIK REGISTRUOTIEMS: `customer_id` > 0 ir tai prisijungęs vartotojas; tik `view-order` endpoint'e (ne „ačiū“ puslapyje).\n * Svečiams — laiške „Sekti siuntą“; puslapis be prisijungimo — 5 etapas („Kaip mato klientas“).\n *\n * v1.1 — KLIENTO PUSĖS SARGAI (Raimis 2026-09-04):\n *  - (b) WC 11 „Confirm your email address to check for past orders and link them to your account.“ raginimas paskyros užsakymų\n *    sąraše IŠJUNGTAS (`VerificationController::render_prompt` nuimamas nuo `woocommerce_before_account_orders`; svečio užsakymų\n *    susiejimo funkcija nenaudojama). Rezultato pranešimas (`print_result_notice`, prior. 5) ir pats patvirtinimo apdorojimas lieka —\n *    nieko nerodo, kol raginimo nėra.\n *  - LP Express plugino SAVO sekimo laiškas klientui (`woo_lithuaniapost_send_tracking_email` → `send_tracking_email`) IŠJUNGTAS —\n *    viena sistema: laišką „Išsiųsta n iš N“ / „Užsakymas išsiųstas“ siunčia darbalaukis (`Petshop_Darbalaukis::siuntos_laiskas()`),\n *    LP numeris ten patenka per `_woo_lithuaniapost_barcode` (darbalaukis v3.10.4). Kartu plugino nustatymai\n *    `lpsettings_event_to_send_tracking_email` ir `lpsettings_event_to_change_status_to_completed` = „Never“ (S1610 e12), kad pluginas\n *    nei laiško nesiųstų, nei pats užbaigtų užsakymo aplenkdamas „Kurjeris paėmė“. Šis `remove_action` — saugiklis, jei nustatymas grįžtų.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Kliento_Siuntos {\n\n\tconst VERSIJA = '1.2';\n\n\tpublic static function init() {\n\t\tadd_action( 'woocommerce_order_details_before_order_table', array( __CLASS__, 'blokas' ), 5, 1 );\n\t\tadd_action( 'init', array( __CLASS__, 'sargai' ), 20 );\n\t}\n\n\t/** v1.1: nuima WC el. pašto patvirtinimo raginimą (b) ir LP plugino sekimo laišką (viena sistema). Grąžina, ką nuėmė (patikrai). */\n\tpublic static function sargai() {\n\t\tglobal $wp_filter; $nuimta = array();\n\t\tif ( ! empty( $wp_filter['woocommerce_before_account_orders'] ) ) {\n\t\t\tforeach ( $wp_filter['woocommerce_before_account_orders']->callbacks as $pr => $cbs ) {\n\t\t\t\tforeach ( $cbs as $cb ) {\n\t\t\t\t\t$fn = $cb['function'];\n\t\t\t\t\tif ( is_array( $fn ) && is_object( $fn[0] ) && 'render_prompt' === $fn[1] && false !== strpos( get_class( $fn[0] ), 'CustomerEmailVerification' ) ) {\n\t\t\t\t\t\tremove_action( 'woocommerce_before_account_orders', $fn, $pr ); $nuimta[] = 'wc_render_prompt@' . $pr;\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\tif ( has_action( 'woo_lithuaniapost_send_tracking_email' ) ) { remove_all_actions( 'woo_lithuaniapost_send_tracking_email' ); $nuimta[] = 'lp_send_tracking_email'; }\n\t\treturn $nuimta;\n\t}\n\n\t/** Rodyti tik savininkui, tik paskyros užsakymo puslapyje, tik kai variklis (darbalaukis v3.10.3+) yra. */\n\tpublic static function rodyti( $o ) {\n\t\tif ( ! $o instanceof WC_Order || ! is_user_logged_in() ) { return false; }\n\t\tif ( ! function_exists( 'is_wc_endpoint_url' ) || ! is_wc_endpoint_url( 'view-order' ) ) { return false; }\n\t\t$cid = (int) $o->get_customer_id();\n\t\tif ( $cid <= 0 || $cid !== (int) get_current_user_id() ) { return false; }\n\t\treturn class_exists( 'Petshop_Darbalaukis' ) && method_exists( 'Petshop_Darbalaukis', 'kliento_siuntos' );\n\t}\n\n\tpublic static function blokas( $o ) {\n\t\tif ( ! self::rodyti( $o ) ) { return; }\n\t\t$siuntos = Petshop_Darbalaukis::kliento_siuntos( $o );\n\t\tif ( ! $siuntos ) { return; }\n\t\techo self::html( $siuntos ); // phpcs:ignore WordPress.Security.EscapeOutput -- viskas esc'inama html()\n\t}\n\n\t/** HTML iš `kliento_siuntos()` sąrašo. Vienai siuntai — „Siunta“, kelioms — „Siunta n iš N“. */\n\tpublic static function html( $siuntos ) {\n\t\t$spalva = (string) get_option( 'woocommerce_email_base_color', '#2d6a35' );\n\t\tif ( ! preg_match( '/^#[0-9a-fA-F]{3,6}$/', $spalva ) ) { $spalva = '#2d6a35'; }\n\t\t$h  = '<section class=\"ps-siuntos\" data-n=\"' . (int) count( $siuntos ) . '\">';\n\t\t$h .= '<h2 class=\"woocommerce-order-details__title\">' . esc_html( 'Siuntos' ) . '</h2>';\n\t\tforeach ( $siuntos as $s ) {\n\t\t\t$b = (string) ( $s['busena'] ?? '' ); $iss = in_array( $b, array( 'issiusta', 'pristatyta' ), true );\n\t\t\t$antr = (int) ( $s['viso'] ?? 1 ) > 1 ? sprintf( 'Siunta %d iš %d', (int) $s['n'], (int) $s['viso'] ) : 'Siunta';\n\t\t\t$h .= '<div class=\"ps-siunta ps-siunta--' . ( $iss ? 'issiusta' : 'ruosiama' ) . '\">';\n\t\t\t$h .= '<div class=\"ps-siunta__antr\"><b>' . esc_html( $antr ) . '</b><span class=\"ps-siunta__busena\">' . esc_html( 'pristatyta' === $b ? 'Pristatyta' : ( $iss ? 'Išsiųsta' : 'Ruošiama' ) ) . '</span></div>';\n\t\t\tif ( ! empty( $s['prekes'] ) ) {\n\t\t\t\t$h .= '<ul class=\"ps-siunta__prekes\">';\n\t\t\t\tforeach ( $s['prekes'] as $p ) { $h .= '<li>' . esc_html( (int) $p['q'] . ' × ' . $p['n'] ) . '</li>'; }\n\t\t\t\t$h .= '</ul>';\n\t\t\t}\n\t\t\t$nrs = array_values( array_filter( (array) ( $s['numeriai'] ?? array() ) ) );\n\t\t\tif ( $nrs ) {\n\t\t\t\t$vez = 'lp' === ( $s['vez'] ?? '' ) ? 'LP Express' : 'Venipak';\n\t\t\t\t$h .= '<div class=\"ps-siunta__nr\"><span>' . esc_html( ( count( $nrs ) > 1 ? 'Siuntų numeriai (' . $vez . '): ' : 'Siuntos numeris (' . $vez . '): ' ) ) . '<b>' . esc_html( implode( ', ', $nrs ) ) . '</b></span>';\n\t\t\t\tif ( ! empty( $s['url'] ) ) { $h .= '<a class=\"button ps-siunta__sekti\" href=\"' . esc_url( $s['url'] ) . '\" target=\"_blank\" rel=\"noopener\">' . esc_html( 'Sekti siuntą' ) . '</a>'; }\n\t\t\t\t$h .= '</div>';\n\t\t\t}\n\t\t\t$h .= '</div>';\n\t\t}\n\t\t$h .= '</section>';\n\t\t$h .= '<style>.ps-siuntos{margin:0 0 30px}.ps-siunta{border:1px solid #e2e2e2;border-radius:6px;padding:14px 16px;margin:0 0 12px}'\n\t\t\t. '.ps-siunta__antr{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:1.05em}.ps-siunta__busena{font-size:.8em;font-weight:700;letter-spacing:.3px;padding:2px 10px;border-radius:12px;background:#ececec;color:#555}'\n\t\t\t. '.ps-siunta--issiusta .ps-siunta__busena{background:' . esc_attr( $spalva ) . ';color:#fff}'\n\t\t\t. '.ps-siunta__prekes{margin:8px 0 6px;padding-left:20px;font-size:.95em}.ps-siunta__prekes li{margin:0 0 3px}'\n\t\t\t. '.ps-siunta__nr{display:flex;align-items:center;justify-content:space-between;gap:10px 14px;flex-wrap:wrap;margin-top:8px;font-size:.95em}'\n\t\t\t. '.ps-siunta__nr b{letter-spacing:.4px}.ps-siunta__sekti.button{margin:0;background:' . esc_attr( $spalva ) . ';color:#fff}</style>';\n\t\treturn $h;\n\t}\n}\nPetshop_Kliento_Siuntos::init();\n",
+  "emails": {
+   "WC_Email_Cancelled_Order": {
+    "id": "cancelled_order",
+    "enabled": true,
+    "customer": false,
+    "tpl": "emails/admin-cancelled-order.php"
+   },
+   "WC_Email_Customer_Cancelled_Order": {
+    "id": "customer_cancelled_order",
+    "enabled": true,
+    "customer": true,
+    "tpl": "emails/customer-cancelled-order.php"
+   }
+  },
+  "hooks": {
+   "woocommerce_email_order_meta": [
+    "10:WC_Emails::order_meta"
+   ],
+   "woocommerce_email_after_order_table": [
+    "10:Woocommerce_Shopup_Venipak_Shipping_Public_Email::add_venipak_shipping_selected_pickup_info",
+    "100:Tyche\\WCDN\\Integrations\\Emails::add_email_print_url"
+   ],
+   "woocommerce_email_before_order_table": [
+    "1:closure functions.php:744",
+    "10:Woocommerce_Shopup_Venipak_Shipping_Public_Email::add_venipak_shipping_tracking_number"
+   ],
+   "woocommerce_order_details_after_order_table": [
+    "10:woocommerce_order_again_button",
+    "20:Petshop_Atsisakymas::mygtukas"
+   ],
+   "woocommerce_order_details_before_order_table": [
+    "5:Petshop_Kliento_Siuntos::blokas",
+    "10:closure petshop-atsisakymas.php:145"
+   ],
+   "woocommerce_view_order": [
+    "10:woocommerce_order_details_table"
+   ]
+  }
+ },
+ "v": "dep-173750",
+ "kurimas": 200,
+ "sid": 6711,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
