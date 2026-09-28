@@ -1,0 +1,44 @@
+{
+ "5": {
+  "v": "S1729a",
+  "faze": "5",
+  "h0": "/home/gyvunai2",
+  "backup_state": "{\n    \"last_result\": \"OK\",\n    \"last_run\": \"2026-09-28T01:00:20+00:00\",\n    \"file\": \"petshop-backups\\/2026\\/09\\/petshop-2026-09-28_010002.tar.gz.enc\",\n    \"bytes\": 38586150,\n    \"sha1\": \"6ac9f4248a11dcc7ce4c7a931b2e83c7e2ae0cbe\",\n    \"tables\": 226,\n    \"rows\": 1114772,\n    \"code_files\": 602,\n    \"duration_s\": 18.3\n}",
+  "backup_state_mtime": "09-28 04:00",
+  "backup_naujausi": [
+   [
+    "ps-backup.php",
+    "0MB",
+    "08-24 20:27"
+   ],
+   [
+    "ps-backup.php.bak_h256",
+    "0MB",
+    "08-24 20:27"
+   ],
+   [
+    "ps-backup-watch.php",
+    "0MB",
+    "08-04 11:08"
+   ],
+   [
+    "ps-backup.php.bak_20260804-064640",
+    "0MB",
+    "08-04 09:46"
+   ]
+  ],
+  "fatal": [
+   "[27-Sep-2026 13:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wpdb.php on line 2328",
+   "[27-Sep-2026 13:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-fatal-error-handler.php on line 76"
+  ],
+  "laikas": "2026-09-28 08:03:55",
+  "trukme_s": 0
+ },
+ "v": "dep-050253",
+ "kurimas": 200,
+ "sid": 6680,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
