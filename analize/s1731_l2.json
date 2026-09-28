@@ -1,0 +1,75 @@
+{
+ "2": {
+  "v": "S1731l",
+  "faze": "2",
+  "rate_id": 1,
+  "sena_pastaba": "Prekių keitimas (S1731, Raimio sprendimu, klientas sutiko): „Stirnos ausis, 1 vnt.“ ×5 (5,90 €, prekės nebuvo) pakeista į 4× „Ruda kiaulės ausis, 1 vnt.“ 5,04 € (kaina 1.39 → 1.26) + 1× „Sausainiai šu",
+  "total": "57.18",
+  "tax": "9.93",
+  "eil": {
+   "2738": [
+    "Balta avies koja, 1 vnt.",
+    10,
+    15.9,
+    "av",
+    "10"
+   ],
+   "2739": [
+    "Balta stirnos koja, 1 vnt.",
+    10,
+    14.9,
+    "av",
+    "10"
+   ],
+   "2740": [
+    "Bosch sausainiai šuniukams, kauliuko formos, Mono Bones, 900 g",
+    1,
+    5.58,
+    "av",
+    "1"
+   ],
+   "2741": [
+    "Ruda stirnos koja, 1 vnt.",
+    10,
+    14.9,
+    "av",
+    "10"
+   ],
+   "2775": [
+    "Ruda kiaulės ausis, 1 vnt.",
+    4,
+    5.04,
+    "av",
+    "4"
+   ],
+   "2776": [
+    "Sausainiai šuniukams, kauliuko formos, Bones Puppy Mix, 100 g",
+    1,
+    0.86,
+    "av",
+    "1"
+   ]
+  },
+  "fakt": {
+   "prekiu_suma_ct": "4725",
+   "pvm_ct": "993",
+   "viso_ct": "5718",
+   "savikaina_ct": "2595",
+   "marza_ct": "2130",
+   "kontribucija_ct": "2085",
+   "eiluciu_sk": "6"
+  },
+  "pastabos": [
+   "Prekių keitimas (S1731, Raimio sprendimu, klientas sutiko): „Stirnos ausis, 1 vnt.“ ×5 (5,90 €, prekės nebuvo) pakeista į 4× „Ruda kiaulės ausis, 1 vnt.“ 5,04 € (kaina 1.39 → 1.26) + 1× „Sausainiai šuniukams, kauliuko formos, Bones Puppy Mix, 100 g“ 0,86 €. Užsakymo suma nepakito: 57,18 €. AV nurašymas: #16305 grynai AV 184 -> 180 · #16273 grynai AV 14 -> 13.16 ≠ 57.18. Faktai perrašyti. Klientui laiškas: NESIŲSTAS.",
+   "Faktai irasyti: 6 eilutes · pajamos 47,25 EUR (be PVM, po nuolaidu) · PVM 9,93 EUR · marza 21,30 EUR · kontribucija (be pristatymo) 20,85 EUR",
+   "Faktai irasyti: 6 eilutes · pajamos 47,25 EUR (be PVM, po nuolaidu) · PVM 8,91 EUR · marza 21,30 EUR · kontribucija (be pristatymo) 20,85 EUR"
+  ]
+ },
+ "v": "dep-165206",
+ "kurimas": 200,
+ "sid": 6698,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
