@@ -1,0 +1,713 @@
+{
+ "1": {
+  "v": "S1732a",
+  "faze": "1",
+  "lent": {
+   "ps_fakt_uzsakymai": {
+    "n": 183,
+    "cols": "uzsakymas_id:bigint, sukurta_at:datetime, apmoketa_at:datetime, statusas_galutinis:varchar, statusas_at:datetime, klientas_id:bigint, klientas_email_hash:char, klientas_naujas:tinyint, klientas_uzsakymo_nr:int, dienos_nuo_ankstesnio:int, prekiu_suma_ct:bigint, nuolaidu_ct:bigint, kuponu_kodai:varchar, tasku_panaudota_ct:bigint, tasku_sukaupta_ct:bigint, pristatymas_paimta_ct:bigint, pristatymas_savikaina_ct:bigint, small_cart_fee_ct:bigint, pvm_ct:bigint, viso_ct:bigint, mokejimo_budas:varchar, mokejimo_mokestis_ct:bigint, pakuotes_savikaina_ct:bigint, savikaina_ct:bigint, dovanu_savikaina_ct:bigint, marza_ct:bigint, kontribucija_ct:bigint, sandeliu_kiekis:smallint, misrus:tinyint, sandeliai:varchar, vezejai:varchar, kanalas_pirmas:varchar, kanalas_paskutinis:varchar, utm_source:varchar, utm_medium:varchar, utm_campaign:varchar, gclid:tinyint, fbclid:tinyint, referer_domenas:varchar, landing_url:varchar, irenginys:varchar, sutikimas_statistika:tinyint, salis:varchar, miestas:varchar, pasto_kodas:varchar, anketa_id:bigint, rec_log_id:bigint, is_refill:tinyint, prenumerata_id:bigint, eiluciu_sk:smallint, testinis:tinyint, saltinis_aplinka:varchar, fakt_versija:smallint, irasyta_at:datetime, diena:date"
+   },
+   "ps_fakt_eilutes": {
+    "n": 448,
+    "cols": "id:bigint, uzsakymas_id:bigint, eilutes_id:bigint, apmoketa_at:datetime, preke_id:bigint, variacija_id:bigint, sku:varchar, gtin:varchar, pavadinimas_tuo_metu:varchar, kategorija_id_giliausia:bigint, kategoriju_kelias:text, brendas_slug:varchar, gyvunas:varchar, pa_uzsaldymas:text, sandelis:varchar, tiekejas:varchar, partija_kodas:varchar, kiekis:int, kaina_ct:bigint, pvm_ct:bigint, kaina_vnt_ct:bigint, kaina_reguliari_ct:bigint, savikaina_vnt_ct:bigint, savikaina_ct:bigint, savikainos_saltinis:varchar, nuolaida_ct:bigint, akcija_id:bigint, kuponas:varchar, rinkinys_id:bigint, rinkinio_tipas:varchar, rinkinio_raktas:varchar, dovana:tinyint, svoris_g:int, pakuotes_dydis:varchar, klientas_naujas:tinyint, testinis:tinyint, saltinis_aplinka:varchar, diena:date"
+   },
+   "ps_fakt_siuntos": {
+    "n": 180,
+    "cols": "id:bigint, uzsakymas_id:bigint, shipment_id:varchar, sandelis:varchar, vezejas:varchar, siuntos_nr:varchar, paketu_sk:smallint, pristatymo_tipas:varchar, sukurta_at:datetime, diena:date, tiekejui_issiusta_at:datetime, registruota_at:datetime, isvezta_at:datetime, pristatyta_at:datetime, atsiimta_at:datetime, svoris_deklaruotas_g:int, kaina_vezejo_ct:int, tarifo_id:bigint, statusas:varchar, problema_kodas:varchar, dienos_iki_pristatymo:smallint, saltinis:varchar, testinis:tinyint, saltinis_aplinka:varchar, fakt_versija:smallint, sandelio_saltinis:varchar, dydis:varchar"
+   },
+   "ps_fakt_reklama": {
+    "n": 175,
+    "cols": "id:bigint, diena:date, kanalas:varchar, kampanija_id:varchar, kampanija:varchar, parodymai:int, paspaudimai:int, islaidos_ct:bigint, valiuta:char, konversijos:decimal, konv_verte_ct:bigint, saltinis:varchar, saltinis_aplinka:varchar, versija:int, irasyta_at:datetime, senoji_svetaine:tinyint"
+   },
+   "ps_ist_fakt_uzsakymai": {
+    "n": 9528,
+    "cols": "uzsakymas_id:bigint, sukurta_at:datetime, apmoketa_at:datetime, statusas_galutinis:varchar, statusas_at:datetime, klientas_id:bigint, klientas_email_hash:char, klientas_naujas:tinyint, klientas_uzsakymo_nr:int, dienos_nuo_ankstesnio:int, prekiu_suma_ct:bigint, nuolaidu_ct:bigint, kuponu_kodai:varchar, tasku_panaudota_ct:bigint, tasku_sukaupta_ct:bigint, pristatymas_paimta_ct:bigint, pristatymas_savikaina_ct:bigint, small_cart_fee_ct:bigint, pvm_ct:bigint, viso_ct:bigint, mokejimo_budas:varchar, mokejimo_mokestis_ct:bigint, pakuotes_savikaina_ct:bigint, savikaina_ct:bigint, dovanu_savikaina_ct:bigint, marza_ct:bigint, kontribucija_ct:bigint, sandeliu_kiekis:smallint, misrus:tinyint, sandeliai:varchar, vezejai:varchar, kanalas_pirmas:varchar, kanalas_paskutinis:varchar, utm_source:varchar, utm_medium:varchar, utm_campaign:varchar, gclid:tinyint, fbclid:tinyint, referer_domenas:varchar, landing_url:varchar, irenginys:varchar, sutikimas_statistika:tinyint, salis:varchar, miestas:varchar, pasto_kodas:varchar, anketa_id:bigint, rec_log_id:bigint, is_refill:tinyint, prenumerata_id:bigint, eiluciu_sk:smallint, testinis:tinyint, saltinis_aplinka:varchar, fakt_versija:smallint, irasyta_at:datetime, diena:date"
+   },
+   "ps_ist_fakt_eilutes": {
+    "n": 23174,
+    "cols": "id:bigint, uzsakymas_id:bigint, eilutes_id:bigint, apmoketa_at:datetime, preke_id:bigint, variacija_id:bigint, sku:varchar, gtin:varchar, pavadinimas_tuo_metu:varchar, kategorija_id_giliausia:bigint, kategoriju_kelias:text, brendas_slug:varchar, gyvunas:varchar, pa_uzsaldymas:text, sandelis:varchar, tiekejas:varchar, partija_kodas:varchar, kiekis:int, kaina_ct:bigint, pvm_ct:bigint, kaina_vnt_ct:bigint, kaina_reguliari_ct:bigint, savikaina_vnt_ct:bigint, savikaina_ct:bigint, savikainos_saltinis:varchar, nuolaida_ct:bigint, akcija_id:bigint, kuponas:varchar, rinkinys_id:bigint, rinkinio_tipas:varchar, rinkinio_raktas:varchar, dovana:tinyint, svoris_g:int, pakuotes_dydis:varchar, klientas_naujas:tinyint, testinis:tinyint, saltinis_aplinka:varchar, diena:date"
+   },
+   "ps_ist_uzsakymai": {
+    "n": 10169,
+    "cols": "id:int, data:datetime, email:varchar, vardas:varchar, pavarde:varchar, tel:varchar, imone:tinyint, siuntimas:varchar, miestas:varchar, apmokejimas:varchar, suma_be:decimal, suma:decimal, statusas:varchar, ivykdytas:tinyint, saskaita:varchar, eiluciu:smallint"
+   },
+   "ps_ist_eilutes": {
+    "n": 24555,
+    "cols": "id:int, uzsakymo_id:int, modelis:varchar, pavadinimas:varchar, variantas:varchar, kiekis:int, kaina:decimal, suma:decimal, wc_product_id:bigint, susiejimas:varchar"
+   },
+   "ps_web_ivykiai": {
+    "n": 24967,
+    "cols": "id:bigint, laikas:datetime, diena:date, tipas:varchar, pusl_tipas:varchar, url_kelias:varchar, raktas:varchar, raktas2:varchar, reiksme:bigint, sesija:varchar, lankytojas_d:char, lankytojas_30:char, saltinis:varchar, medium:varchar, kampanija:varchar, referer_domenas:varchar, kanalas:varchar, landing:tinyint, irenginys:varchar, os_seima:varchar, nars_seima:varchar, salis:varchar, prisijunges:tinyint, sutikimas:tinyint, testinis:tinyint, saltinis_aplinka:varchar"
+   },
+   "ps_carts": {
+    "n": 31221,
+    "cols": "id:bigint, cart_id:varchar, session_key:varchar, user_id:bigint, email:varchar, email_source:varchar, last_cart_activity_at:datetime, cart_hash:varchar, snapshot_json:longtext, snapshot_version:smallint, status:varchar, status_changed_at:datetime, converted_order_id:bigint, created_at:datetime, updated_at:datetime"
+   },
+   "ps_tarifai": {
+    "n": 29,
+    "cols": "id:bigint, vezejas:varchar, tipas:varchar, svoris_nuo_g:int, svoris_iki_g:int, kaina_ct:int, kintamas_pct:decimal, galioja_nuo:date, galioja_iki:date, pastaba:varchar, sukurta_at:datetime, dydis:varchar, kaina_uz_kg_ct:decimal, uz_kg_nuo_g:int"
+   }
+  },
+  "fu_pvz": [
+   {
+    "uzsakymas_id": "36562",
+    "sukurta_at": "2026-09-28 16:45:30",
+    "apmoketa_at": "2026-09-28 16:46:30",
+    "statusas_galutinis": "processing",
+    "statusas_at": "2026-09-28 16:46:33",
+    "klientas_id": "5881",
+    "klientas_email_hash": "063d38f593c00758aa8c6f658fba306fe07e22cea5f2a62b33ada2f12024cc19",
+    "klientas_naujas": "1",
+    "klientas_uzsakymo_nr": "1",
+    "dienos_nuo_ankstesnio": null,
+    "prekiu_suma_ct": "2658",
+    "nuolaidu_ct": "0",
+    "kuponu_kodai": "",
+    "tasku_panaudota_ct": "0",
+    "tasku_sukaupta_ct": "0",
+    "pristatymas_paimta_ct": "0",
+    "pristatymas_savikaina_ct": null,
+    "small_cart_fee_ct": "0",
+    "pvm_ct": "560",
+    "viso_ct": "3218",
+    "mokejimo_budas": "paysera",
+    "mokejimo_mokestis_ct": "5",
+    "pakuotes_savikaina_ct": "80",
+    "savikaina_ct": "2072",
+    "dovanu_savikaina_ct": "0",
+    "marza_ct": "586",
+    "kontribucija_ct": "501",
+    "sandeliu_kiekis": "2",
+    "misrus": "1",
+    "sandeliai": "legacy,vf",
+    "vezejai": "venipak",
+    "kanalas_pirmas": "direct",
+    "kanalas_paskutinis": "direct",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "gclid": "0",
+    "fbclid": "0",
+    "referer_domenas": "",
+    "landing_url": "",
+    "irenginys": "desktop",
+    "sutikimas_statistika": "0",
+    "salis": "LT",
+    "miestas": "",
+    "pasto_kodas": "",
+    "anketa_id": null,
+    "rec_log_id": null,
+    "is_refill": "0",
+    "prenumerata_id": null,
+    "eiluciu_sk": "9",
+    "testinis": "0",
+    "saltinis_aplinka": "prod",
+    "fakt_versija": "2",
+    "irasyta_at": "2026-09-28 16:46:31",
+    "diena": "2026-09-28"
+   },
+   {
+    "uzsakymas_id": "36560",
+    "sukurta_at": "2026-09-28 15:49:05",
+    "apmoketa_at": "2026-09-28 15:50:41",
+    "statusas_galutinis": "processing",
+    "statusas_at": "2026-09-28 15:50:43",
+    "klientas_id": "5689",
+    "klientas_email_hash": "7aa6f723eee802d743a536b36cbd84037e665c59f89412b5780d727645e9e4f1",
+    "klientas_naujas": "0",
+    "klientas_uzsakymo_nr": "11",
+    "dienos_nuo_ankstesnio": "14",
+    "prekiu_suma_ct": "4958",
+    "nuolaidu_ct": "0",
+    "kuponu_kodai": "",
+    "tasku_panaudota_ct": "0",
+    "tasku_sukaupta_ct": "0",
+    "pristatymas_paimta_ct": "0",
+    "pristatymas_savikaina_ct": null,
+    "small_cart_fee_ct": "0",
+    "pvm_ct": "1041",
+    "viso_ct": "5999",
+    "mokejimo_budas": "paysera",
+    "mokejimo_mokestis_ct": "5",
+    "pakuotes_savikaina_ct": "40",
+    "savikaina_ct": "3486",
+    "dovanu_savikaina_ct": "0",
+    "marza_ct": "1472",
+    "kontribucija_ct": "1427",
+    "sandeliu_kiekis": "1",
+    "misrus": "0",
+    "sandeliai": "ambrosia",
+    "vezejai": "venipak",
+    "kanalas_pirmas": "direct",
+    "kanalas_paskutinis": "direct",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "gclid": "0",
+    "fbclid": "0",
+    "referer_domenas": "",
+    "landing_url": "",
+    "irenginys": "mobile",
+    "sutikimas_statistika": "0",
+    "salis": "LT",
+    "miestas": "",
+    "pasto_kodas": "",
+    "anketa_id": null,
+    "rec_log_id": null,
+    "is_refill": "0",
+    "prenumerata_id": null,
+    "eiluciu_sk": "1",
+    "testinis": "0",
+    "saltinis_aplinka": "prod",
+    "fakt_versija": "2",
+    "irasyta_at": "2026-09-28 15:50:42",
+    "diena": "2026-09-28"
+   }
+  ],
+  "fe_pvz": [
+   {
+    "id": "594",
+    "uzsakymas_id": "36555",
+    "eilutes_id": "2776",
+    "apmoketa_at": "2026-09-28 12:34:19",
+    "preke_id": "16273",
+    "variacija_id": "0",
+    "sku": "003339",
+    "gtin": "",
+    "pavadinimas_tuo_metu": "Sausainiai šuniukams, kauliuko formos, Bones Puppy Mix, 100 g",
+    "kategorija_id_giliausia": "95",
+    "kategoriju_kelias": "[\"sunims\",\"skanestai-sunims\"]",
+    "brendas_slug": "bosch",
+    "gyvunas": "",
+    "pa_uzsaldymas": "{\"pa_amzius\":[\"jauniems\"],\"pa_gyvuno_rusis\":[\"sunims\"],\"pa_pakuotes_dydis\":[\"100-g\"]}",
+    "sandelis": "legacy",
+    "tiekejas": "legacy",
+    "partija_kodas": "",
+    "kiekis": "1",
+    "kaina_ct": "71",
+    "pvm_ct": "15",
+    "kaina_vnt_ct": "71",
+    "kaina_reguliari_ct": "71",
+    "savikaina_vnt_ct": "55",
+    "savikaina_ct": "55",
+    "savikainos_saltinis": "cost_price",
+    "nuolaida_ct": "0",
+    "akcija_id": null,
+    "kuponas": "",
+    "rinkinys_id": "0",
+    "rinkinio_tipas": "",
+    "rinkinio_raktas": "",
+    "dovana": "0",
+    "svoris_g": "100",
+    "pakuotes_dydis": "100 g",
+    "klientas_naujas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod",
+    "diena": "2026-09-28"
+   },
+   {
+    "id": "593",
+    "uzsakymas_id": "36555",
+    "eilutes_id": "2775",
+    "apmoketa_at": "2026-09-28 12:34:19",
+    "preke_id": "16305",
+    "variacija_id": "0",
+    "sku": "338000",
+    "gtin": "",
+    "pavadinimas_tuo_metu": "Ruda kiaulės ausis, 1 vnt.",
+    "kategorija_id_giliausia": "95",
+    "kategoriju_kelias": "[\"sunims\",\"skanestai-sunims\"]",
+    "brendas_slug": "romar",
+    "gyvunas": "",
+    "pa_uzsaldymas": "{\"pa_baltymu_saltinis\":[\"kiauliena\"],\"pa_be_grudu\":[\"be-grudu\"],\"pa_gyvuno_rusis\":[\"sunims\"],\"pa_kiekis_pakuoteje\":[\"1-vnt\"],\"pa_monoprotein\":[\"taip\"],\"pa_pakuotes_dydis\":[\"90-g\"]}",
+    "sandelis": "legacy",
+    "tiekejas": "legacy",
+    "partija_kodas": "",
+    "kiekis": "4",
+    "kaina_ct": "417",
+    "pvm_ct": "87",
+    "kaina_vnt_ct": "104",
+    "kaina_reguliari_ct": "115",
+    "savikaina_vnt_ct": "66",
+    "savikaina_ct": "264",
+    "savikainos_saltinis": "cost_price",
+    "nuolaida_ct": "0",
+    "akcija_id": null,
+    "kuponas": "",
+    "rinkinys_id": "0",
+    "rinkinio_tipas": "",
+    "rinkinio_raktas": "",
+    "dovana": "0",
+    "svoris_g": "90",
+    "pakuotes_dydis": "90 g",
+    "klientas_naujas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod",
+    "diena": "2026-09-28"
+   }
+  ],
+  "ife_pvz": [
+   {
+    "id": "23174",
+    "uzsakymas_id": "900012003",
+    "eilutes_id": "1",
+    "apmoketa_at": "2026-08-30 08:13:26",
+    "preke_id": "0",
+    "variacija_id": "0",
+    "sku": "HYPS06-2",
+    "gtin": "",
+    "pavadinimas_tuo_metu": "2 vnt. - Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    "kategorija_id_giliausia": "0",
+    "kategoriju_kelias": null,
+    "brendas_slug": "",
+    "gyvunas": "",
+    "pa_uzsaldymas": null,
+    "sandelis": "",
+    "tiekejas": "",
+    "partija_kodas": "",
+    "kiekis": "2",
+    "kaina_ct": "18180",
+    "pvm_ct": "0",
+    "kaina_vnt_ct": "9090",
+    "kaina_reguliari_ct": null,
+    "savikaina_vnt_ct": null,
+    "savikaina_ct": null,
+    "savikainos_saltinis": "",
+    "nuolaida_ct": "0",
+    "akcija_id": null,
+    "kuponas": "",
+    "rinkinys_id": "0",
+    "rinkinio_tipas": "",
+    "rinkinio_raktas": "",
+    "dovana": "0",
+    "svoris_g": "0",
+    "pakuotes_dydis": "",
+    "klientas_naujas": "1",
+    "testinis": "0",
+    "saltinis_aplinka": "ist",
+    "diena": "2026-08-30"
+   },
+   {
+    "id": "23173",
+    "uzsakymas_id": "900012002",
+    "eilutes_id": "2",
+    "apmoketa_at": "2026-08-30 07:20:31",
+    "preke_id": "35094",
+    "variacija_id": "0",
+    "sku": "428000-DP",
+    "gtin": "",
+    "pavadinimas_tuo_metu": "Rinkinys katėms mėsos ir salyklo (malt) pastos",
+    "kategorija_id_giliausia": "79",
+    "kategoriju_kelias": "KATĖMS > Maistas katėms > Konservai katėms",
+    "brendas_slug": "",
+    "gyvunas": "kate",
+    "pa_uzsaldymas": null,
+    "sandelis": "",
+    "tiekejas": "",
+    "partija_kodas": "",
+    "kiekis": "1",
+    "kaina_ct": "796",
+    "pvm_ct": "0",
+    "kaina_vnt_ct": "796",
+    "kaina_reguliari_ct": null,
+    "savikaina_vnt_ct": null,
+    "savikaina_ct": null,
+    "savikainos_saltinis": "",
+    "nuolaida_ct": "0",
+    "akcija_id": null,
+    "kuponas": "",
+    "rinkinys_id": "0",
+    "rinkinio_tipas": "",
+    "rinkinio_raktas": "",
+    "dovana": "0",
+    "svoris_g": "0",
+    "pakuotes_dydis": "",
+    "klientas_naujas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "ist",
+    "diena": "2026-08-30"
+   }
+  ],
+  "ifu_pvz": [
+   {
+    "uzsakymas_id": "900012003",
+    "sukurta_at": "2026-08-30 08:13:26",
+    "apmoketa_at": "2026-08-30 08:13:26",
+    "statusas_galutinis": "Mokėjimas gautas",
+    "statusas_at": "2026-08-30 08:13:26",
+    "klientas_id": "3442",
+    "klientas_email_hash": "c672e64f9ff0549825eba28fd41028744f4d0709ed9c4b55aca5ecaa1e51444f",
+    "klientas_naujas": "1",
+    "klientas_uzsakymo_nr": "1",
+    "dienos_nuo_ankstesnio": null,
+    "prekiu_suma_ct": "18180",
+    "nuolaidu_ct": "0",
+    "kuponu_kodai": "",
+    "tasku_panaudota_ct": "0",
+    "tasku_sukaupta_ct": "0",
+    "pristatymas_paimta_ct": "4217",
+    "pristatymas_savikaina_ct": null,
+    "small_cart_fee_ct": "0",
+    "pvm_ct": "4217",
+    "viso_ct": "22397",
+    "mokejimo_budas": "AB „SEB bankas“",
+    "mokejimo_mokestis_ct": "0",
+    "pakuotes_savikaina_ct": "0",
+    "savikaina_ct": "0",
+    "dovanu_savikaina_ct": "0",
+    "marza_ct": "0",
+    "kontribucija_ct": "0",
+    "sandeliu_kiekis": "0",
+    "misrus": "0",
+    "sandeliai": "",
+    "vezejai": "",
+    "kanalas_pirmas": "",
+    "kanalas_paskutinis": "",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "gclid": "0",
+    "fbclid": "0",
+    "referer_domenas": "",
+    "landing_url": "",
+    "irenginys": "",
+    "sutikimas_statistika": "0",
+    "salis": "",
+    "miestas": "Ukmergės raj",
+    "pasto_kodas": "",
+    "anketa_id": null,
+    "rec_log_id": null,
+    "is_refill": "0",
+    "prenumerata_id": null,
+    "eiluciu_sk": "1",
+    "testinis": "0",
+    "saltinis_aplinka": "ist",
+    "fakt_versija": "1",
+    "irasyta_at": "2026-08-31 19:34:30",
+    "diena": "2026-08-30"
+   },
+   {
+    "uzsakymas_id": "900012002",
+    "sukurta_at": "2026-08-30 07:20:31",
+    "apmoketa_at": "2026-08-30 07:20:31",
+    "statusas_galutinis": "Mokėjimas gautas",
+    "statusas_at": "2026-08-30 07:20:31",
+    "klientas_id": "5160",
+    "klientas_email_hash": "da7e6972cd4b7ff7a9609283827bbda12c71d4af2b52372776c615c62492d1cf",
+    "klientas_naujas": "0",
+    "klientas_uzsakymo_nr": "2",
+    "dienos_nuo_ankstesnio": "35",
+    "prekiu_suma_ct": "796",
+    "nuolaidu_ct": "0",
+    "kuponu_kodai": "",
+    "tasku_panaudota_ct": "0",
+    "tasku_sukaupta_ct": "0",
+    "pristatymas_paimta_ct": "382",
+    "pristatymas_savikaina_ct": null,
+    "small_cart_fee_ct": "0",
+    "pvm_ct": "382",
+    "viso_ct": "1178",
+    "mokejimo_budas": "AB „Swedbank“",
+    "mokejimo_mokestis_ct": "0",
+    "pakuotes_savikaina_ct": "0",
+    "savikaina_ct": "0",
+    "dovanu_savikaina_ct": "0",
+    "marza_ct": "0",
+    "kontribucija_ct": "0",
+    "sandeliu_kiekis": "0",
+    "misrus": "0",
+    "sandeliai": "",
+    "vezejai": "",
+    "kanalas_pirmas": "",
+    "kanalas_paskutinis": "",
+    "utm_source": "",
+    "utm_medium": "",
+    "utm_campaign": "",
+    "gclid": "0",
+    "fbclid": "0",
+    "referer_domenas": "",
+    "landing_url": "",
+    "irenginys": "",
+    "sutikimas_statistika": "0",
+    "salis": "",
+    "miestas": "Mažeikiai",
+    "pasto_kodas": "",
+    "anketa_id": null,
+    "rec_log_id": null,
+    "is_refill": "0",
+    "prenumerata_id": null,
+    "eiluciu_sk": "1",
+    "testinis": "0",
+    "saltinis_aplinka": "ist",
+    "fakt_versija": "1",
+    "irasyta_at": "2026-08-31 19:34:30",
+    "diena": "2026-08-30"
+   }
+  ],
+  "trukme_s": 0.1
+ },
+ "2": {
+  "v": "S1732a",
+  "faze": "2",
+  "fu_status": [
+   {
+    "s": "cancelled",
+    "t": "0",
+    "n": "3",
+    "mn": "2026-09-15 10:18:42",
+    "mx": "2026-09-26 09:00:08"
+   },
+   {
+    "s": "cancelled",
+    "t": "1",
+    "n": "2",
+    "mn": "2026-09-08 06:07:33",
+    "mx": "2026-09-08 07:26:24"
+   },
+   {
+    "s": "completed",
+    "t": "0",
+    "n": "162",
+    "mn": "2026-09-08 22:24:33",
+    "mx": "2026-09-27 19:31:07"
+   },
+   {
+    "s": "completed",
+    "t": "1",
+    "n": "1",
+    "mn": "2026-09-08 07:14:52",
+    "mx": "2026-09-08 07:14:52"
+   },
+   {
+    "s": "processing",
+    "t": "0",
+    "n": "15",
+    "mn": "2026-09-25 07:13:11",
+    "mx": "2026-09-28 16:45:30"
+   }
+  ],
+  "fu_kanalas": [
+   {
+    "k": "mokamas",
+    "us": "",
+    "n": "66"
+   },
+   {
+    "k": "direct",
+    "us": "",
+    "n": "33"
+   },
+   {
+    "k": "mokamas",
+    "us": "google",
+    "n": "23"
+   },
+   {
+    "k": "mokamas",
+    "us": "kaina24",
+    "n": "17"
+   },
+   {
+    "k": "organika",
+    "us": "",
+    "n": "16"
+   },
+   {
+    "k": "mokamas",
+    "us": "kainos",
+    "n": "10"
+   },
+   {
+    "k": "referral",
+    "us": "",
+    "n": "5"
+   },
+   {
+    "k": "soc_organika",
+    "us": "",
+    "n": "4"
+   },
+   {
+    "k": "referral",
+    "us": "chatgpt.com",
+    "n": "3"
+   },
+   {
+    "k": "",
+    "us": "",
+    "n": "2"
+   },
+   {
+    "k": "email",
+    "us": "newsletter",
+    "n": "1"
+   }
+  ],
+  "ist_status": [
+   {
+    "m": "2026-08",
+    "n": "246"
+   },
+   {
+    "m": "2026-07",
+    "n": "307"
+   },
+   {
+    "m": "2026-06",
+    "n": "310"
+   },
+   {
+    "m": "2026-05",
+    "n": "299"
+   },
+   {
+    "m": "2026-04",
+    "n": "338"
+   },
+   {
+    "m": "2026-03",
+    "n": "286"
+   },
+   {
+    "m": "2026-02",
+    "n": "305"
+   },
+   {
+    "m": "2026-01",
+    "n": "349"
+   },
+   {
+    "m": "2025-12",
+    "n": "276"
+   },
+   {
+    "m": "2025-11",
+    "n": "284"
+   },
+   {
+    "m": "2025-10",
+    "n": "269"
+   },
+   {
+    "m": "2025-09",
+    "n": "322"
+   },
+   {
+    "m": "2025-08",
+    "n": "305"
+   },
+   {
+    "m": "2025-07",
+    "n": "275"
+   },
+   {
+    "m": "2025-06",
+    "n": "290"
+   },
+   {
+    "m": "2025-05",
+    "n": "278"
+   },
+   {
+    "m": "2025-04",
+    "n": "273"
+   },
+   {
+    "m": "2025-03",
+    "n": "238"
+   },
+   {
+    "m": "2025-02",
+    "n": "298"
+   },
+   {
+    "m": "2025-01",
+    "n": "323"
+   },
+   {
+    "m": "2024-12",
+    "n": "299"
+   },
+   {
+    "m": "2024-11",
+    "n": "283"
+   },
+   {
+    "m": "2024-10",
+    "n": "337"
+   },
+   {
+    "m": "2024-09",
+    "n": "320"
+   },
+   {
+    "m": "2024-08",
+    "n": "290"
+   },
+   {
+    "m": "2024-07",
+    "n": "255"
+   },
+   {
+    "m": "2024-06",
+    "n": "245"
+   },
+   {
+    "m": "2024-05",
+    "n": "280"
+   },
+   {
+    "m": "2024-04",
+    "n": "354"
+   },
+   {
+    "m": "2024-03",
+    "n": "339"
+   },
+   {
+    "m": "2024-02",
+    "n": "280"
+   },
+   {
+    "m": "2024-01",
+    "n": "203"
+   },
+   {
+    "m": "2023-12",
+    "n": "127"
+   },
+   {
+    "m": "2023-11",
+    "n": "45"
+   }
+  ],
+  "wc_status": [
+   {
+    "status": "wc-cancelled",
+    "n": "37",
+    "mn": "2026-09-09 05:49:01",
+    "mx": "2026-09-28 08:10:44"
+   },
+   {
+    "status": "wc-completed",
+    "n": "162",
+    "mn": "2026-09-08 22:24:33",
+    "mx": "2026-09-27 19:31:07"
+   },
+   {
+    "status": "wc-processing",
+    "n": "15",
+    "mn": "2026-09-25 07:13:11",
+    "mx": "2026-09-28 16:45:30"
+   }
+  ],
+  "trukme_s": 0
+ },
+ "v": "dep-181603",
+ "kurimas": 200,
+ "sid": 6715,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
