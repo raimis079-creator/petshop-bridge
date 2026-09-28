@@ -1,0 +1,85 @@
+{
+ "6": {
+  "v": "S1731q",
+  "faze": "6",
+  "busena": {
+   "st": "pending",
+   "total": "5.48",
+   "tax": "0.95",
+   "graz": "[{\"laikas\":\"2026-09-28 20:25:15\",\"kas\":\"Raimis\",\"suma\":0.52,\"refund\":0,\"ka\":\"keitimas: TEMP S1731 testas A (sena)\"}]",
+   "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":2,\"vienetai\":3}}",
+   "doc_t": "invoice",
+   "pdf": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/Isankstine-saskaita-IAPVTEST1731.pdf",
+   "avpn": "",
+   "eil": {
+    "2779": [
+     36564,
+     2,
+     3.98,
+     {
+      "total": {
+       "1": "0.690744"
+      },
+      "subtotal": {
+       "1": "0.690744"
+      }
+     },
+     {
+      "_ps_source": "av",
+      "_ps_av_reduced_qty": "2",
+      "_ps_kaina_pakeista": "1.5 → 1.99",
+      "_ps_keitimas": "2026-09-28 20:25:14|Raimis|vietoj „TEMP S1731 testas A (sena)“ ×3",
+      "_ps_savikaina_vnt": "0.5000"
+     }
+    ],
+    "2780": [
+     36563,
+     1,
+     1.5,
+     {
+      "total": {
+       "1": "0.260331"
+      },
+      "subtotal": {
+       "1": "0.260331"
+      }
+     },
+     {
+      "_ps_source": "av",
+      "_ps_av_reduced_qty": "1",
+      "_ps_kaina_pakeista": "2 → 1.5",
+      "_ps_keitimas": "2026-09-28 20:25:15|Raimis|vietoj „TEMP S1731 testas A (sena)“ ×3",
+      "_ps_savikaina_vnt": "0.5000"
+     }
+    ]
+   },
+   "past": [
+    "Darbalaukis: prekė pakeista (Raimis): „TEMP S1731 testas A (sena)“ ×3 (6,00 €) → 2× „TEMP S1731 testas B (nauja)“ 3,98 € (kaina 1,50 → 1,99) + 1× „TEMP S1731 testas A (sena)“ 1,50 € (kaina 2,00 → 1,50). Užsakymo suma: 5,48 € — grąžink klientui 0,52 € rankomis (Klausimas primins). Likutis: #36563 AV +3 → 10, #36564 AV −2 → 8, #36563 AV −1 → 9, faktai perrašyti. ĮSPĖJIMAI: #36564: Partijose trūksta ",
+    "Faktai irasyti: 2 eilutes · pajamos 4,53 EUR (be PVM, po nuolaidu) · PVM 0,95 EUR · marza 3,03 EUR · kontribucija (be pristatymo) 2,63 EUR"
+   ]
+  },
+  "stock": [
+   "9",
+   "8"
+  ],
+  "fakt": {
+   "viso_ct": "548",
+   "pvm_ct": "95",
+   "savikaina_ct": "150",
+   "eiluciu_sk": "2"
+  },
+  "pdf_yra": true,
+  "isvalyta": [
+   true,
+   true,
+   true
+  ]
+ },
+ "v": "dep-172535",
+ "kurimas": 200,
+ "sid": 6707,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
