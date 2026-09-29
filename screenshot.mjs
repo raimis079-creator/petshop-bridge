@@ -3,7 +3,7 @@ const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-c
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
 const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxNzM5ayByeXRhcyBzYWx0aW5pcyAocmVhZC1vbmx5KSAqLwphZGRfYWN0aW9uKCd3cF9sb2FkZWQnLCBmdW5jdGlvbigpeyBpZighaXNzZXQoJF9HRVRbJ3BzX3MxNzM5ayddKSkgcmV0dXJuOyAkdD1maWxlX2dldF9jb250ZW50cyhXUE1VX1BMVUdJTl9ESVIuJy9wZXRzaG9wLXJ5dGFzLnBocCcpOyBoZWFkZXIoJ0NvbnRlbnQtVHlwZTogYXBwbGljYXRpb24vanNvbicpOyBlY2hvIGpzb25fZW5jb2RlKFsnbWQ1Jz0+bWQ1KCR0KSwnYjY0Jz0+YmFzZTY0X2VuY29kZSgkdCldKTsgZXhpdDsgfSwgMSk7Cg==';
-const VER='dep-171045';
+const VER='dep-171202';
 const GKEY='ps_s1739k';
 const PHASES=["1"];
 const OUT='analize/s1739_k.json';
