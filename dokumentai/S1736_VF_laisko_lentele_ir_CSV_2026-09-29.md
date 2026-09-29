@@ -37,3 +37,17 @@ Vetfarmas (09-29): (1) užsakymų lentelę siųsti ir prisegtu failu (xls/csv), 
 ## Pastabos
 - Kodas iš skaitmenų (pvz. VF `404842214454`) Excel'yje atidarius CSV gali rodytis kaip 4,04842E+11 — importui tai netrukdo, rankiniam peržiūrėjimui — taip.
 - Kitas žingsnis: Raimis atsako VF (sąskaitos — viena už dieną su užs. nr.); pirmas realus laiškas nauju formatu — šiandien.
+
+---
+
+# S1736 (2) — „DAUGIAU=PIGIAU“ kategorija rodė ne visus pakus (09-29 15:30)
+
+**Raimis:** „daugiau–pigiau katalogo lange nerodo visų prekių“.
+
+**Priežastis (recon `s1736/h.php`, `i.php`):** kategorijoje (term 91, `daugiau-pigiau`) 235 pakai — visi publish, visible, instock. Juos slėpė `petshop-dydziai-katalogas` („viena kortelė šeimai“, S1721): DP kategorijoje šeimos kandidatai — vien pakai, todėl šeimai liko vienas pakas (pvz. Josera Catelux 2×10 kg, 2×2 kg paslėptas). Paslėpta **49 pakai iš 47 šeimų** → rodė 186.
+
+**Sprendimas (R „daryk“):** `mu-plugins/petshop-dydziai-katalogas.php` **v1.3** GYVAI 15:27 (md5 878ff6c4… → f2100534…, bak `ps-archyvas/petshop-dydziai-katalogas.php.bak_s1736`): taksonomijos archyve, kai šeimos kandidatai tik DP pakai, šeima nesujungiama — rodomi visi kandidatai (kiti nariai slepiami kaip anksčiau). Parduotuvė, paieška, gamintojų puslapiai — nepakeisti (ten veidas ne pakas). Išvalytas Super Cache katalogas `kategorija/daugiau-pigiau` (su puslapiais).
+
+**Patikra:** prieš — „Rodoma 1–24 iš 186“, po — **„iš 235“** (nekešuotas URL, atskira užklausa); heartbeat 200. Atstatymas — `s1736/j.php` fazė 9. Repo `deploy/petshop-dydziai-katalogas-v1.3.php`, `irankiai/s1736_h/i/j.php`.
+
+**Pasekmė (R žinojo):** DP kategorijoje ta pati prekė gali būti keliomis kortelėmis (2×2 kg ir 2×10 kg).
