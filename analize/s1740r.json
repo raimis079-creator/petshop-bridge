@@ -1,0 +1,32 @@
+{
+ "1": {
+  "v": "S1740r",
+  "admin_ajax_kontekstai": [
+   "$.post(\"https://petshop.lt/wp-admin/admin-ajax.php\",{action:\"petshop_fbt_cart_add\",nonce:$w.data(\"nonce\"),cid:$b.data(\"cid\"),anchor:$b.data(\"anchor\"),qty:$b.data(\"qty\")||1,vieta:$b.data(\"vieta\")||\"krepselis\"})",
+   "$.post(\"https://petshop.lt/wp-admin/admin-ajax.php\",{action:\"petshop_fbt_info\",pid:pid})",
+   "var wc_add_to_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i18n_view_cart\":\"Krep\\u0161elis\",\"cart_url\":\"https://petshop.lt/krepselis/\",\"is_cart\":\"1\",\"cart_redirect_after_add\":\"no\"};",
+   "var woocommerce_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"i18n_password_show\":\"Rodyti slapta\\u017eod\\u012f\",\"i18n_password_hide\":\"Sl\\u0117pti slapta\\u017eod\\u012f\"};",
+   "var wc_cart_params = {\"ajax_url\":\"/wp-admin/admin-ajax.php\",\"wc_ajax_url\":\"/?wc-ajax=%%endpoint%%\",\"update_shipping_method_nonce\":\"b58e66744f\",\"apply_coupon_nonce\":\"032ce2e556\",\"remove_coupon_nonce\":\"9c698303da\"};",
+   "wp.apiFetch.nonceEndpoint = \"https://petshop.lt/wp-admin/admin-ajax.php?action=rest-nonce\";",
+   "var woo_lithuaniapost = {\"ajax_url\":\"https://petshop.lt/wp-admin/admin-ajax.php\",\"shipping_logo_url\":\"https://petshop.lt/wp-content/plugins/woo-lithuaniapost-main/public/images/unisend_shipping_lpexpress_logo_45x25.png\",\"terminal_dropdown_template\":\"\\u003Clabel for=\\\"woo_blo",
+   "var flatsomeVars = {\"theme\":{\"version\":\"3.20.7\"},\"ajaxurl\":\"https://petshop.lt/wp-admin/admin-ajax.php\",\"rtl\":\"\",\"sticky_height\":\"70\",\"stickyHeaderHeight\":\"0\",\"scrollPaddingTop\":\"0\",\"assets_url\":\"https://petshop.lt/wp-content/themes/flatsome/assets/\",\"lightbox\":{\"close_markup\":\"\\u003Cbutton title="
+  ],
+  "actions": [
+   "petshop_fbt_cart_add",
+   "petshop_fbt_info"
+  ],
+  "log": "php_error.log",
+  "klaidos": [
+   "[29-Sep-2026 18:15:11 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/abstracts/abstract-wc-data.php on line 373",
+   "[29-Sep-2026 18:15:11 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-fatal-error-handler.php on line 76"
+  ],
+  "wc_fatal": []
+ },
+ "v": "dep-191952",
+ "kurimas": 200,
+ "sid": 6792,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
