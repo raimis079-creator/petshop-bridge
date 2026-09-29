@@ -1,0 +1,43 @@
+{
+ "1": {
+  "v": "S1740ee",
+  "shots": [
+   {
+    "n": "ee1",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{const q=s=>document.querySelector(s);const cs=(e,k)=>e?k.map(x=>x+':'+getComputedStyle(e)[x]).join(' '):null;const pti=q('.page-title-inner');const cols=pti?[...pti.children].map(c=>c.className+' | '+cs(c,['display','flexBasis','width'])):null;return {pti:cs(pti,['display','flexWrap','flexDirection']),pti_cls:pti?pti.className:null,has:CSS.supports('selector(:has(a))'),cols:cols,filt:cs(q('.category-filtering'),['display','flex','width','order','marginTop']),filt_parent:q('.category-filtering')?.parentElement?.className,ord:cs(q('.woocommerce-ordering'),['display','flex','width','order']),ord_parent:q('.woocommerce-ordering')?.parentElement?.className,css_yra:!!q('#ps-mobilus-css')&&q('#ps-mobilus-css').textContent.includes('display:contents')}})()"
+   }
+  ]
+ },
+ "v": "dep-204415",
+ "kurimas": 200,
+ "sid": 6805,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "ee1": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "pti": "display:flex flexWrap:wrap flexDirection:column",
+    "pti_cls": "page-title-inner flex-row  medium-flex-wrap container",
+    "has": true,
+    "cols": [
+     "flex-col flex-grow medium-text-center | display:contents flexBasis:0% width:100%",
+     "flex-col medium-text-center | display:contents flexBasis:auto width:100%"
+    ],
+    "filt": "display:block flex:1 1 0px width:356px order:3 marginTop:10px",
+    "filt_parent": "flex-col flex-grow medium-text-center",
+    "ord": "display:block flex:1 1 0px width:356px order:4",
+    "ord_parent": "flex-col medium-text-center",
+    "css_yra": true
+   }
+  }
+ }
+}
