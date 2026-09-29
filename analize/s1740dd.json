@@ -1,0 +1,348 @@
+{
+ "1": {
+  "v": "S1740dd",
+  "faze": "1",
+  "md5": "7c9d834d2783e7a0b9f1465cc8ed5515"
+ },
+ "2": {
+  "v": "S1740dd",
+  "faze": "2",
+  "shots": [
+   {
+    "n": "dd1_kat",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(900);const q=s=>document.querySelector(s);const box=s=>{const e=q(s);if(!e)return null;const r=e.getBoundingClientRect();return {top:Math.round(r.top),h:Math.round(r.height),l:Math.round(r.left),w:Math.round(r.width),vis:e.offsetParent!==null};};const b=q('.category-filtering .filter-button');let hit=null;if(b&&b.offsetParent){const r=b.getBoundingClientRect();const el=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);hit=(el&&(b===el||b.contains(el)))?'OK':(el?(el.className||el.tagName).toString().slice(0,40):null);}const c=q('.ps-fcnt');let ivykis=null,atsidare=null;if(b&&b.offsetParent){const orig=window.psWeb;window.psWeb=function(o){ivykis=o;if(orig)orig(o);};b.click();await w(900);atsidare=!!q('.mfp-ready')||!!(q('#shop-sidebar')&&q('#shop-sidebar').closest('.mfp-content'));}return {mygtukas:box('.category-filtering .filter-button'),rikiavimas:box('.woocommerce-ordering select'),h1:box('h1'),pirma_preke:box('.product-small'),zenklas:c?(c.hidden?'paslepta':c.textContent):'nera',hit:hit,ivykis:ivykis,sonine_atsidare:atsidare,tekstas:b?b.innerText.trim():null}})()"
+   },
+   {
+    "n": "dd2_kat_klik",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844,
+    "click": ".category-filtering .filter-button",
+    "eval": "(()=>({atsidare:!!document.querySelector('.mfp-ready')}))()"
+   },
+   {
+    "n": "dd3_kat_2filtrai",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?yith_wcan=1&product_cat=sausas-maistas-sunims&filter_be_grudu=be-grudu&filter_monoprotein=taip",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(900);const q=s=>document.querySelector(s);const box=s=>{const e=q(s);if(!e)return null;const r=e.getBoundingClientRect();return {top:Math.round(r.top),h:Math.round(r.height),l:Math.round(r.left),w:Math.round(r.width),vis:e.offsetParent!==null};};const b=q('.category-filtering .filter-button');let hit=null;if(b&&b.offsetParent){const r=b.getBoundingClientRect();const el=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);hit=(el&&(b===el||b.contains(el)))?'OK':(el?(el.className||el.tagName).toString().slice(0,40):null);}const c=q('.ps-fcnt');let ivykis=null,atsidare=null;if(b&&b.offsetParent){const orig=window.psWeb;window.psWeb=function(o){ivykis=o;if(orig)orig(o);};b.click();await w(900);atsidare=!!q('.mfp-ready')||!!(q('#shop-sidebar')&&q('#shop-sidebar').closest('.mfp-content'));}return {mygtukas:box('.category-filtering .filter-button'),rikiavimas:box('.woocommerce-ordering select'),h1:box('h1'),pirma_preke:box('.product-small'),zenklas:c?(c.hidden?'paslepta':c.textContent):'nera',hit:hit,ivykis:ivykis,sonine_atsidare:atsidare,tekstas:b?b.innerText.trim():null}})()"
+   },
+   {
+    "n": "dd4_paieska",
+    "u": "https://petshop.lt/?s=josera&post_type=product",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(900);const q=s=>document.querySelector(s);const box=s=>{const e=q(s);if(!e)return null;const r=e.getBoundingClientRect();return {top:Math.round(r.top),h:Math.round(r.height),l:Math.round(r.left),w:Math.round(r.width),vis:e.offsetParent!==null};};const b=q('.category-filtering .filter-button');let hit=null;if(b&&b.offsetParent){const r=b.getBoundingClientRect();const el=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);hit=(el&&(b===el||b.contains(el)))?'OK':(el?(el.className||el.tagName).toString().slice(0,40):null);}const c=q('.ps-fcnt');let ivykis=null,atsidare=null;if(b&&b.offsetParent){const orig=window.psWeb;window.psWeb=function(o){ivykis=o;if(orig)orig(o);};b.click();await w(900);atsidare=!!q('.mfp-ready')||!!(q('#shop-sidebar')&&q('#shop-sidebar').closest('.mfp-content'));}return {mygtukas:box('.category-filtering .filter-button'),rikiavimas:box('.woocommerce-ordering select'),h1:box('h1'),pirma_preke:box('.product-small'),zenklas:c?(c.hidden?'paslepta':c.textContent):'nera',hit:hit,ivykis:ivykis,sonine_atsidare:atsidare,tekstas:b?b.innerText.trim():null}})()"
+   },
+   {
+    "n": "dd5_gamintojas",
+    "u": "https://petshop.lt/gamintojas/josera/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(900);const q=s=>document.querySelector(s);const box=s=>{const e=q(s);if(!e)return null;const r=e.getBoundingClientRect();return {top:Math.round(r.top),h:Math.round(r.height),l:Math.round(r.left),w:Math.round(r.width),vis:e.offsetParent!==null};};const b=q('.category-filtering .filter-button');let hit=null;if(b&&b.offsetParent){const r=b.getBoundingClientRect();const el=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);hit=(el&&(b===el||b.contains(el)))?'OK':(el?(el.className||el.tagName).toString().slice(0,40):null);}const c=q('.ps-fcnt');let ivykis=null,atsidare=null;if(b&&b.offsetParent){const orig=window.psWeb;window.psWeb=function(o){ivykis=o;if(orig)orig(o);};b.click();await w(900);atsidare=!!q('.mfp-ready')||!!(q('#shop-sidebar')&&q('#shop-sidebar').closest('.mfp-content'));}return {mygtukas:box('.category-filtering .filter-button'),rikiavimas:box('.woocommerce-ordering select'),h1:box('h1'),pirma_preke:box('.product-small'),zenklas:c?(c.hidden?'paslepta':c.textContent):'nera',hit:hit,ivykis:ivykis,sonine_atsidare:atsidare,tekstas:b?b.innerText.trim():null}})()"
+   },
+   {
+    "n": "dd6_plansete",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 800,
+    "h": 1000,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(900);const q=s=>document.querySelector(s);const box=s=>{const e=q(s);if(!e)return null;const r=e.getBoundingClientRect();return {top:Math.round(r.top),h:Math.round(r.height),l:Math.round(r.left),w:Math.round(r.width),vis:e.offsetParent!==null};};const b=q('.category-filtering .filter-button');let hit=null;if(b&&b.offsetParent){const r=b.getBoundingClientRect();const el=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);hit=(el&&(b===el||b.contains(el)))?'OK':(el?(el.className||el.tagName).toString().slice(0,40):null);}const c=q('.ps-fcnt');let ivykis=null,atsidare=null;if(b&&b.offsetParent){const orig=window.psWeb;window.psWeb=function(o){ivykis=o;if(orig)orig(o);};b.click();await w(900);atsidare=!!q('.mfp-ready')||!!(q('#shop-sidebar')&&q('#shop-sidebar').closest('.mfp-content'));}return {mygtukas:box('.category-filtering .filter-button'),rikiavimas:box('.woocommerce-ordering select'),h1:box('h1'),pirma_preke:box('.product-small'),zenklas:c?(c.hidden?'paslepta':c.textContent):'nera',hit:hit,ivykis:ivykis,sonine_atsidare:atsidare,tekstas:b?b.innerText.trim():null}})()"
+   },
+   {
+    "n": "dd7_desk",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 1440,
+    "h": 900,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(900);const q=s=>document.querySelector(s);const box=s=>{const e=q(s);if(!e)return null;const r=e.getBoundingClientRect();return {top:Math.round(r.top),h:Math.round(r.height),l:Math.round(r.left),w:Math.round(r.width),vis:e.offsetParent!==null};};const b=q('.category-filtering .filter-button');let hit=null;if(b&&b.offsetParent){const r=b.getBoundingClientRect();const el=document.elementFromPoint(r.left+r.width/2,r.top+r.height/2);hit=(el&&(b===el||b.contains(el)))?'OK':(el?(el.className||el.tagName).toString().slice(0,40):null);}const c=q('.ps-fcnt');let ivykis=null,atsidare=null;if(b&&b.offsetParent){const orig=window.psWeb;window.psWeb=function(o){ivykis=o;if(orig)orig(o);};b.click();await w(900);atsidare=!!q('.mfp-ready')||!!(q('#shop-sidebar')&&q('#shop-sidebar').closest('.mfp-content'));}return {mygtukas:box('.category-filtering .filter-button'),rikiavimas:box('.woocommerce-ordering select'),h1:box('h1'),pirma_preke:box('.product-small'),zenklas:c?(c.hidden?'paslepta':c.textContent):'nera',hit:hit,ivykis:ivykis,sonine_atsidare:atsidare,tekstas:b?b.innerText.trim():null}})()"
+   }
+  ]
+ },
+ "v": "dep-204058",
+ "kurimas": 200,
+ "sid": 6804,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "dd1_kat": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "mygtukas": {
+     "top": 234,
+     "h": 44,
+     "l": 15,
+     "w": 356,
+     "vis": true
+    },
+    "rikiavimas": {
+     "top": 313,
+     "h": 44,
+     "l": 19,
+     "w": 356,
+     "vis": true
+    },
+    "h1": {
+     "top": 126,
+     "h": 37,
+     "l": 15,
+     "w": 360,
+     "vis": true
+    },
+    "pirma_preke": {
+     "top": 553,
+     "h": 476,
+     "l": 5,
+     "w": 190,
+     "vis": true
+    },
+    "zenklas": "paslepta",
+    "hit": "OK",
+    "ivykis": {
+     "tipas": "filter",
+     "raktas": "mygtukas_atidaryta",
+     "url": "/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/"
+    },
+    "sonine_atsidare": true,
+    "tekstas": "Filtruoti"
+   }
+  },
+  "dd2_kat_klik": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "clicked": ".category-filtering .filter-button",
+   "eval": {
+    "atsidare": true
+   }
+  },
+  "dd3_kat_2filtrai": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?yith_wcan=1&product_cat=sausas-maistas-sunims&filter_be_grudu=be-grudu&filter_monoprotein=taip",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "mygtukas": {
+     "top": 234,
+     "h": 44,
+     "l": 15,
+     "w": 356,
+     "vis": true
+    },
+    "rikiavimas": {
+     "top": 313,
+     "h": 44,
+     "l": 19,
+     "w": 356,
+     "vis": true
+    },
+    "h1": {
+     "top": 126,
+     "h": 37,
+     "l": 15,
+     "w": 360,
+     "vis": true
+    },
+    "pirma_preke": {
+     "top": 553,
+     "h": 471,
+     "l": 5,
+     "w": 190,
+     "vis": true
+    },
+    "zenklas": "2",
+    "hit": "OK",
+    "ivykis": {
+     "tipas": "filter",
+     "raktas": "mygtukas_atidaryta",
+     "url": "/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/"
+    },
+    "sonine_atsidare": true,
+    "tekstas": "Filtruoti\n2"
+   }
+  },
+  "dd4_paieska": {
+   "status": 201,
+   "url": "https://petshop.lt/?s=josera&post_type=product",
+   "title": "josera - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "mygtukas": {
+     "top": 234,
+     "h": 44,
+     "l": 15,
+     "w": 356,
+     "vis": true
+    },
+    "rikiavimas": {
+     "top": 313,
+     "h": 44,
+     "l": 19,
+     "w": 356,
+     "vis": true
+    },
+    "h1": {
+     "top": 126,
+     "h": 37,
+     "l": 15,
+     "w": 360,
+     "vis": true
+    },
+    "pirma_preke": {
+     "top": 438,
+     "h": 423,
+     "l": 5,
+     "w": 190,
+     "vis": true
+    },
+    "zenklas": "paslepta",
+    "hit": "OK",
+    "ivykis": {
+     "tipas": "filter",
+     "raktas": "mygtukas_atidaryta",
+     "url": "/"
+    },
+    "sonine_atsidare": true,
+    "tekstas": "Filtruoti"
+   }
+  },
+  "dd5_gamintojas": {
+   "status": 201,
+   "url": "https://petshop.lt/gamintojas/josera/",
+   "title": "Josera – sausas maistas šunims ir katėms | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "mygtukas": {
+     "top": 215,
+     "h": 44,
+     "l": 15,
+     "w": 356,
+     "vis": true
+    },
+    "rikiavimas": {
+     "top": 294,
+     "h": 44,
+     "l": 19,
+     "w": 356,
+     "vis": true
+    },
+    "h1": {
+     "top": 126,
+     "h": 37,
+     "l": 15,
+     "w": 360,
+     "vis": true
+    },
+    "pirma_preke": {
+     "top": 440,
+     "h": 379,
+     "l": 5,
+     "w": 190,
+     "vis": true
+    },
+    "zenklas": "paslepta",
+    "hit": "OK",
+    "ivykis": {
+     "tipas": "filter",
+     "raktas": "mygtukas_atidaryta",
+     "url": "/gamintojas/josera/"
+    },
+    "sonine_atsidare": true,
+    "tekstas": "Filtruoti"
+   }
+  },
+  "dd6_plansete": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "mygtukas": {
+     "top": 211,
+     "h": 44,
+     "l": 15,
+     "w": 766,
+     "vis": true
+    },
+    "rikiavimas": {
+     "top": 290,
+     "h": 44,
+     "l": 19,
+     "w": 766,
+     "vis": true
+    },
+    "h1": {
+     "top": 128,
+     "h": 31,
+     "l": 15,
+     "w": 770,
+     "vis": true
+    },
+    "pirma_preke": {
+     "top": 488,
+     "h": 524,
+     "l": 5,
+     "w": 263,
+     "vis": true
+    },
+    "zenklas": "paslepta",
+    "hit": "OK",
+    "ivykis": {
+     "tipas": "filter",
+     "raktas": "mygtukas_atidaryta",
+     "url": "/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/"
+    },
+    "sonine_atsidare": true,
+    "tekstas": "Filtruoti"
+   }
+  },
+  "dd7_desk": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "mygtukas": {
+     "top": 0,
+     "h": 0,
+     "l": 0,
+     "w": 0,
+     "vis": false
+    },
+    "rikiavimas": {
+     "top": 195,
+     "h": 39,
+     "l": 960,
+     "w": 285,
+     "vis": true
+    },
+    "h1": {
+     "top": 170,
+     "h": 31,
+     "l": 195,
+     "w": 595,
+     "vis": true
+    },
+    "pirma_preke": {
+     "top": 518,
+     "h": 479,
+     "l": 455,
+     "w": 200,
+     "vis": true
+    },
+    "zenklas": "paslepta",
+    "hit": null,
+    "ivykis": null,
+    "sonine_atsidare": null,
+    "tekstas": "Filtruoti\n\t0"
+   }
+  }
+ }
+}
