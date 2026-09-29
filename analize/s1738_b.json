@@ -1,0 +1,279 @@
+{
+ "1": {
+  "v": "S1738b",
+  "faze": "1",
+  "kanalai_md5": "7830f9c8abeab74700cf56f4eeeca760",
+  "kanalai_dydis": 10490,
+  "kanalai_versija": "1.2",
+  "kanalai_kodas": [
+   "23: * atejes is reklamos ir pirkes po 3 dienu, taps „direct\". 30 d. langas su",
+   "31: * bei visas petshop-core sluoksnis (`ps_carts`, `ps_email_jobs`).",
+   "40: const VERSIJA = '1.2';",
+   "41: const SESIJA    = 'ps_kanalai';",
+   "42: const META      = '_ps_kanalai';",
+   "43: const OPT_TAISYKLES = 'ps_fakt_kanalu_taisykles';",
+   "46: const UTM = array( 'utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term' );",
+   "48: public static function init() {",
+   "62: public static function pagauti() {",
+   "88: private static function is_uzklausos() {",
+   "124: $t['kanalas']     = self::klasifikuoti( $t );",
+   "128: private static function dabartinis_url() {",
+   "134: /* 2) KLASIFIKACIJA                                                   */",
+   "138: * Taisykles gyvena NUSTATYME, ne kode (planas §4.7) — Raimis gali keisti",
+   "141: public static function taisykles() {",
+   "142: $j = get_option( self::OPT_TAISYKLES, '' );",
+   "148: public static function numatytosios() {",
+   "151: 'mokamas'      => array(",
+   "158: 'email'        => array(",
+   "159: 'utm_medium' => array( 'email', 'e-mail', 'newsletter' ),",
+   "162: 'organika'     => array(",
+   "166: 'soc_organika' => array(",
+   "174: * Eiles tvarka svarbi: mokamas tikrinamas PIRMAS (gclid ant google.com",
+   "175: * referer'io yra reklama, ne organika).",
+   "177: public static function klasifikuoti( $t ) {",
+   "178: $taisykles = self::taisykles();",
+   "183: foreach ( array( 'mokamas', 'email', 'soc_organika', 'organika' ) as $kanalas ) {",
+   "184: if ( empty( $taisykles[ $kanalas ] ) ) { continue; }",
+   "185: $r = $taisykles[ $kanalas ];",
+   "186: if ( ! empty( $r['gclid'] ) && ! empty( $t['gclid'] ) ) { return $kanalas; }",
+   "187: if ( ! empty( $r['fbclid'] ) && ! empty( $t['fbclid'] ) ) { return $kanalas; }",
+   "188: if ( $med !== '' && ! empty( $r['utm_medium'] ) && in_array( $med, array_map( 'strtolower', (array) $r['utm_medium'] ), true ) ) { return $kanalas; }",
+   "189: if ( $src !== '' && ! empty( $r['utm_source'] ) && in_array( $src, array_map( 'strtolower', (array) $r['utm_source'] ), true ) ) { return $kanalas; }",
+   "190: if ( $ref !== '' && ! empty( $r['referer'] ) && in_array( $ref, array_map( 'strtolower', (array) $r['referer'] ), true ) ) { return $kanalas; }",
+   "193: if ( $med !== '' || $src !== '' ) { return 'referral'; }",
+   "194: if ( $ref !== '' ) { return 'referral'; }",
+   "195: return 'direct';",
+   "202: public static function i_uzsakyma( $order, $duomenys = null ) {",
+   "215: /* Tuscias kanalas irgi FAKTAS — „direct\" turi buti irasytas, ne NULL. */",
+   "218: 'kanalas'         => 'direct',",
+   "230: public static function i_uzsakyma_api( $order ) {",
+   "236: public static function sutikimas() {",
+   "244: public static function is_uzsakymo( $order ) {"
+  ]
+ },
+ "2": {
+  "v": "S1738b",
+  "faze": "2",
+  "ai_referer_30d": [
+   {
+    "host": "www.bing.com",
+    "kanalas": "referral",
+    "lank": "20",
+    "iv": "132"
+   },
+   {
+    "host": "chatgpt.com",
+    "kanalas": "referral",
+    "lank": "14",
+    "iv": "62"
+   }
+  ],
+  "ai_utm_30d": [
+   {
+    "saltinis": "chatgpt.com",
+    "medium": null,
+    "kanalas": "referral",
+    "lank": "88"
+   },
+   {
+    "saltinis": "chatgpt.com",
+    "medium": null,
+    "kanalas": "soc_organika",
+    "lank": "1"
+   }
+  ],
+  "referral_top_30d": [
+   {
+    "host": "bank.paysera.com",
+    "lank": "170"
+   },
+   {
+    "host": "",
+    "lank": "80"
+   },
+   {
+    "host": "www.bing.com",
+    "lank": "20"
+   },
+   {
+    "host": "chatgpt.com",
+    "lank": "14"
+   },
+   {
+    "host": "yandex.ru",
+    "lank": "7"
+   },
+   {
+    "host": "www.petshop.lt",
+    "lank": "6"
+   },
+   {
+    "host": "www.facebook.com",
+    "lank": "4"
+   },
+   {
+    "host": "rekvizitai.vz.lt",
+    "lank": "3"
+   },
+   {
+    "host": "dev.avesa.lt",
+    "lank": "2"
+   },
+   {
+    "host": "e.seb.lt",
+    "lank": "2"
+   },
+   {
+    "host": "geedo.lv",
+    "lank": "2"
+   },
+   {
+    "host": "nuolaidukodas.lt",
+    "lank": "2"
+   },
+   {
+    "host": "psd2.swedbank.lt",
+    "lank": "2"
+   },
+   {
+    "host": "search.brave.com",
+    "lank": "2"
+   },
+   {
+    "host": "www.blog2026.online",
+    "lank": "2"
+   },
+   {
+    "host": "www.skelbiu.lt",
+    "lank": "2"
+   },
+   {
+    "host": "backend-prod.ayolab.com",
+    "lank": "1"
+   },
+   {
+    "host": "email.inbox.lt",
+    "lank": "1"
+   },
+   {
+    "host": "kainoteka.lt",
+    "lank": "1"
+   },
+   {
+    "host": "mail.google.com",
+    "lank": "1"
+   },
+   {
+    "host": "psd2-ui.luminoropenbanking.com",
+    "lank": "1"
+   },
+   {
+    "host": "scriblihelp.com",
+    "lank": "1"
+   },
+   {
+    "host": "teams.public.onecdn.static.microsoft",
+    "lank": "1"
+   },
+   {
+    "host": "www.mojeek.com",
+    "lank": "1"
+   },
+   {
+    "host": "www.webdig.asia",
+    "lank": "1"
+   }
+  ],
+  "fakt_cols": "uzsakymas_id,sukurta_at,apmoketa_at,statusas_galutinis,statusas_at,klientas_id,klientas_email_hash,klientas_naujas,klientas_uzsakymo_nr,dienos_nuo_ankstesnio,prekiu_suma_ct,nuolaidu_ct,kuponu_kodai,tasku_panaudota_ct,tasku_sukaupta_ct,pristatymas_paimta_ct,pristatymas_savikaina_ct,small_cart_fee_ct,pvm_ct,viso_ct,mokejimo_budas,mokejimo_mokestis_ct,pakuotes_savikaina_ct,savikaina_ct,dovanu_savikaina_ct,marza_ct,kontribucija_ct,sandeliu_kiekis,misrus,sandeliai,vezejai,kanalas_pirmas,kanalas_paskutinis,utm_source,utm_medium,utm_campaign,gclid,fbclid,referer_domenas,landing_url,irenginys,sutikimas_statistika,salis,miestas,pasto_kodas,anketa_id,rec_log_id,is_refill,prenumerata_id,eiluciu_sk,testinis,saltinis_aplinka,fakt_versija,irasyta_at,diena",
+  "fakt_kanalai_30d": [
+   {
+    "k": "mokamas",
+    "n": "123"
+   },
+   {
+    "k": "direct",
+    "n": "35"
+   },
+   {
+    "k": "organika",
+    "n": "16"
+   },
+   {
+    "k": "referral",
+    "n": "8"
+   },
+   {
+    "k": "",
+    "n": "5"
+   },
+   {
+    "k": "soc_organika",
+    "n": "5"
+   },
+   {
+    "k": "email",
+    "n": "1"
+   }
+  ],
+  "fakt_ai_30d": [
+   {
+    "uzsakymas_id": "35931",
+    "d": "2026-09-14",
+    "k": "referral",
+    "s": "chatgpt.com",
+    "rd": "",
+    "viso_ct": "1595"
+   },
+   {
+    "uzsakymas_id": "35941",
+    "d": "2026-09-14",
+    "k": "referral",
+    "s": "chatgpt.com",
+    "rd": "",
+    "viso_ct": "1920"
+   },
+   {
+    "uzsakymas_id": "36291",
+    "d": "2026-09-24",
+    "k": "referral",
+    "s": "chatgpt.com",
+    "rd": "",
+    "viso_ct": "3018"
+   },
+   {
+    "uzsakymas_id": "36574",
+    "d": "2026-09-29",
+    "k": "soc_organika",
+    "s": "chatgpt.com",
+    "rd": "m.facebook.com",
+    "viso_ct": "4026"
+   }
+  ],
+  "log_failai": [
+   "Sep-2026.tar.gz",
+   "Sep-2026.tar.gz.1",
+   "Sep-2026.tar.gz.10",
+   "Sep-2026.tar.gz.11",
+   "Sep-2026.tar.gz.12",
+   "Sep-2026.tar.gz.2",
+   "Sep-2026.tar.gz.3",
+   "Sep-2026.tar.gz.4",
+   "Sep-2026.tar.gz.5",
+   "Sep-2026.tar.gz.6",
+   "Sep-2026.tar.gz.7",
+   "Sep-2026.tar.gz.8",
+   "Sep-2026.tar.gz.9",
+   "php_error.log"
+  ],
+  "log_ai_ua": {
+   "GPTBot ?": 1
+  }
+ },
+ "v": "dep-151925",
+ "kurimas": 200,
+ "sid": 6745,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
