@@ -1,0 +1,93 @@
+{
+ "1": {
+  "v": "S1740n",
+  "faze": "1",
+  "p34944": {
+   "status": "publish",
+   "slug": "test-konservu-deze-400-be-vistienos",
+   "naujas": "konservu-deze-400-be-vistienos",
+   "unikalus": true,
+   "nuorodos_turinyje": 0,
+   "meta": 1,
+   "opt": []
+  },
+  "p34947": {
+   "status": "publish",
+   "slug": "test-konservu-deze-katei-isrankioms",
+   "naujas": "konservu-deze-katei-isrankioms",
+   "unikalus": true,
+   "nuorodos_turinyje": 0,
+   "meta": 0,
+   "opt": []
+  },
+  "p34913": {
+   "status": "publish",
+   "t": "Natūralių skanėstų šunims rinkinukas, 100 g, ĮVAIRUS MIX",
+   "url": "/product/naturaliu-skanestu-sunims-rinkinukas-100-g-ivairus-mix/"
+  },
+  "kiti_test_slugai": [
+   {
+    "ID": "34543",
+    "post_type": "page",
+    "post_name": "pagrindinis-test"
+   },
+   {
+    "ID": "34942",
+    "post_type": "product",
+    "post_name": "test-konservu-deze-800-be-vistienos"
+   },
+   {
+    "ID": "34944",
+    "post_type": "product",
+    "post_name": "test-konservu-deze-400-be-vistienos"
+   },
+   {
+    "ID": "34945",
+    "post_type": "product",
+    "post_name": "test-konservu-deze-400-monoproteinas"
+   },
+   {
+    "ID": "34947",
+    "post_type": "product",
+    "post_name": "test-konservu-deze-katei-isrankioms"
+   }
+  ]
+ },
+ "2": {
+  "v": "S1740n",
+  "faze": "2",
+  "p34944": "konservu-deze-400-be-vistienos",
+  "old_slug34944": [
+   "test-konservu-deze-400-be-vistienos"
+  ],
+  "p34947": "konservu-deze-katei-isrankioms",
+  "old_slug34947": [
+   "test-konservu-deze-katei-isrankioms"
+  ],
+  "p34913": "draft"
+ },
+ "3": {
+  "v": "S1740n",
+  "faze": "3",
+  "p34944": {
+   "nauja": "200",
+   "sena": "301 /product/konservu-deze-400-be-vistienos/"
+  },
+  "p34947": {
+   "nauja": "200",
+   "sena": "301 /product/konservu-deze-katei-isrankioms/"
+  },
+  "p34913": {
+   "statusas": "draft",
+   "url": "301 /kategorija/sunims/skanestai-sunims/"
+  },
+  "home": "200"
+ },
+ "v": "dep-190208",
+ "kurimas": 200,
+ "sid": 6788,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
