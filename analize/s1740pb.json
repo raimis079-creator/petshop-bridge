@@ -1,0 +1,1171 @@
+{
+ "1": {
+  "v": "S1740pb",
+  "pets_visi": [
+   {
+    "po_t0": "0",
+    "testas": "0",
+    "status": "active",
+    "n": "7"
+   },
+   {
+    "po_t0": "0",
+    "testas": "1",
+    "status": "active",
+    "n": "22"
+   },
+   {
+    "po_t0": "0",
+    "testas": "1",
+    "status": "deleted",
+    "n": "40"
+   },
+   {
+    "po_t0": "1",
+    "testas": "0",
+    "status": "active",
+    "n": "15"
+   }
+  ],
+  "pets_po_dienom": [
+   {
+    "d": "2026-09-11",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-12",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-14",
+    "n": "2"
+   },
+   {
+    "d": "2026-09-15",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-20",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-21",
+    "n": "5"
+   },
+   {
+    "d": "2026-09-26",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-27",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-28",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-29",
+    "n": "1"
+   }
+  ],
+  "pets_po_statusas": [
+   {
+    "status": "active",
+    "su_paskyra": "1",
+    "is_draft": "0",
+    "qv": null,
+    "n": "5"
+   },
+   {
+    "status": "active",
+    "su_paskyra": "1",
+    "is_draft": "0",
+    "qv": "v1",
+    "n": "10"
+   }
+  ],
+  "lauk_species": [
+   {
+    "v": "dog",
+    "n": "11"
+   },
+   {
+    "v": "cat",
+    "n": "4"
+   }
+  ],
+  "lauk_life_stage": [
+   {
+    "v": "(tuščia)",
+    "n": "10"
+   },
+   {
+    "v": "senior",
+    "n": "2"
+   },
+   {
+    "v": "adult",
+    "n": "2"
+   },
+   {
+    "v": "junior",
+    "n": "1"
+   }
+  ],
+  "lauk_dog_size": [
+   {
+    "v": "(tuščia)",
+    "n": "11"
+   },
+   {
+    "v": "large",
+    "n": "3"
+   },
+   {
+    "v": "small",
+    "n": "1"
+   }
+  ],
+  "lauk_is_sterilised": [
+   {
+    "v": "(tuščia)",
+    "n": "10"
+   },
+   {
+    "v": "yes",
+    "n": "4"
+   },
+   {
+    "v": "no",
+    "n": "1"
+   }
+  ],
+  "lauk_feeding_type": [
+   {
+    "v": "(tuščia)",
+    "n": "10"
+   },
+   {
+    "v": "dry_only",
+    "n": "4"
+   },
+   {
+    "v": "dry_home",
+    "n": "1"
+   }
+  ],
+  "lauk_primary_need": [
+   {
+    "v": "(tuščia)",
+    "n": "10"
+   },
+   {
+    "v": "weight_control",
+    "n": "3"
+   },
+   {
+    "v": "joints",
+    "n": "2"
+   }
+  ],
+  "lauk_housing": [
+   {
+    "v": "(tuščia)",
+    "n": "10"
+   },
+   {
+    "v": "indoor",
+    "n": "4"
+   },
+   {
+    "v": "outdoor",
+    "n": "1"
+   }
+  ],
+  "lauk_activity_hint": [
+   {
+    "v": "(tuščia)",
+    "n": "10"
+   },
+   {
+    "v": "high",
+    "n": "2"
+   },
+   {
+    "v": "low",
+    "n": "2"
+   },
+   {
+    "v": "moderate",
+    "n": "1"
+   }
+  ],
+  "lauk_current_food_brand_id": [
+   {
+    "v": "(tuščia)",
+    "n": "14"
+   },
+   {
+    "v": "natures-mir",
+    "n": "1"
+   }
+  ],
+  "sensitivities": [
+   {
+    "v": "(tuščia)",
+    "n": "10"
+   },
+   {
+    "v": "none",
+    "n": "2"
+   },
+   {
+    "v": "chicken,beef,grains,dairy,fish",
+    "n": "1"
+   },
+   {
+    "v": "chicken,dairy",
+    "n": "1"
+   },
+   {
+    "v": "dairy,chicken",
+    "n": "1"
+   }
+  ],
+  "species_detail": [
+   {
+    "v": "(tuščia)",
+    "n": "11"
+   },
+   {
+    "v": "Berno zenenhundas",
+    "n": "1"
+   },
+   {
+    "v": "Mišrūnas",
+    "n": "1"
+   },
+   {
+    "v": "Amerikiečių stafordšyro terjeras",
+    "n": "1"
+   },
+   {
+    "v": "Labradoro retriveris",
+    "n": "1"
+   }
+  ],
+  "uzpildymas": [
+   {
+    "viso": "15",
+    "vardas": "15",
+    "veisle": "4",
+    "gimimas": "5",
+    "tarpsnis": "5",
+    "svoris": "13",
+    "suaug_svoris": null,
+    "steril": "5",
+    "serimas": "5",
+    "poreikis": "5",
+    "jautrumai": "5",
+    "dab_brendas": "2",
+    "dab_preke": null,
+    "pagr_preke": "2",
+    "slapias": null,
+    "foto": null,
+    "aktyvumas": "5"
+   }
+  ],
+  "svoriai": [
+   {
+    "species": "cat",
+    "b": "(nėra)",
+    "n": "1"
+   },
+   {
+    "species": "cat",
+    "b": "<5",
+    "n": "2"
+   },
+   {
+    "species": "cat",
+    "b": "5-10",
+    "n": "1"
+   },
+   {
+    "species": "dog",
+    "b": "(nėra)",
+    "n": "1"
+   },
+   {
+    "species": "dog",
+    "b": "<5",
+    "n": "2"
+   },
+   {
+    "species": "dog",
+    "b": "30+",
+    "n": "7"
+   },
+   {
+    "species": "dog",
+    "b": "5-10",
+    "n": "1"
+   }
+  ],
+  "baze_visa": [
+   {
+    "species": "cat",
+    "n": "5"
+   },
+   {
+    "species": "dog",
+    "n": "17"
+   }
+  ],
+  "baze_poreikis": [
+   {
+    "v": "(tuščia)",
+    "n": "16"
+   },
+   {
+    "v": "weight_control",
+    "n": "4"
+   },
+   {
+    "v": "joints",
+    "n": "2"
+   }
+  ],
+  "savininkai": [
+   {
+    "savininku": "13",
+    "pirko_pries": "0",
+    "pirko_po": "4",
+    "uzs_po": "4",
+    "suma_po": "485.23",
+    "seni_klientai": "5"
+   }
+  ],
+  "pet_products": [
+   {
+    "relationship_type": "other",
+    "source": "user_confirmed",
+    "n": "19",
+    "pets": "8"
+   },
+   {
+    "relationship_type": "primary_food",
+    "source": "user_confirmed",
+    "n": "17",
+    "pets": "17"
+   },
+   {
+    "relationship_type": "secondary_food",
+    "source": "user",
+    "n": "2",
+    "pets": "2"
+   }
+  ],
+  "ank_tipai": [
+   {
+    "tipas": "anketa_abandoned",
+    "irenginys": "desktop",
+    "n": "21",
+    "ses": "1",
+    "users": "3"
+   },
+   {
+    "tipas": "anketa_abandoned",
+    "irenginys": "mobile",
+    "n": "351",
+    "ses": "1",
+    "users": "10"
+   },
+   {
+    "tipas": "anketa_completed",
+    "irenginys": "",
+    "n": "28",
+    "ses": "1",
+    "users": "9"
+   },
+   {
+    "tipas": "anketa_started",
+    "irenginys": "desktop",
+    "n": "35",
+    "ses": "1",
+    "users": "5"
+   },
+   {
+    "tipas": "anketa_started",
+    "irenginys": "mobile",
+    "n": "369",
+    "ses": "1",
+    "users": "12"
+   },
+   {
+    "tipas": "step_completed",
+    "irenginys": "desktop",
+    "n": "15",
+    "ses": "1",
+    "users": "2"
+   },
+   {
+    "tipas": "step_completed",
+    "irenginys": "mobile",
+    "n": "38",
+    "ses": "1",
+    "users": "3"
+   },
+   {
+    "tipas": "step_started",
+    "irenginys": "desktop",
+    "n": "43",
+    "ses": "1",
+    "users": "5"
+   },
+   {
+    "tipas": "step_started",
+    "irenginys": "mobile",
+    "n": "399",
+    "ses": "1",
+    "users": "12"
+   }
+  ],
+  "ank_step_completed": [
+   {
+    "v": "1",
+    "n": "35"
+   },
+   {
+    "v": "2",
+    "n": "9"
+   },
+   {
+    "v": "complete",
+    "n": "5"
+   },
+   {
+    "v": "3",
+    "n": "1"
+   },
+   {
+    "v": "6",
+    "n": "1"
+   },
+   {
+    "v": "4",
+    "n": "1"
+   },
+   {
+    "v": "5",
+    "n": "1"
+   }
+  ],
+  "ank_abandoned_zingsnis": [
+   {
+    "zingsnis": "s1",
+    "be_lauku": "1",
+    "n": "327"
+   },
+   {
+    "zingsnis": "s1",
+    "be_lauku": "0",
+    "n": "29"
+   },
+   {
+    "zingsnis": "s3",
+    "be_lauku": "1",
+    "n": "15"
+   },
+   {
+    "zingsnis": "s2",
+    "be_lauku": "0",
+    "n": "1"
+   }
+  ],
+  "ank_abandoned_pvz": [
+   {
+    "v": "s1|+kas_jūsų_augintinis|-augintinio_vardas,svoris_neprivaloma",
+    "n": "20"
+   },
+   {
+    "v": "s1|+kas_jūsų_augintinis|-augintinio_vardas",
+    "n": "3"
+   },
+   {
+    "v": "s1|+augintinio_vardas|-kas_jūsų_augintinis",
+    "n": "2"
+   },
+   {
+    "v": "s1|+kas_jūsų_augintinis,augintinio_vardas,svoris_neprivaloma|-",
+    "n": "2"
+   },
+   {
+    "v": "s2|+kas_jūsų_augintinis,augintinio_vardas,svoris_neprivaloma|-",
+    "n": "1"
+   },
+   {
+    "v": "s1|+kas_jūsų_augintinis,augintinio_vardas|-svoris_neprivaloma",
+    "n": "1"
+   },
+   {
+    "v": "s1|+laukas|-laukas,laukas",
+    "n": "1"
+   }
+  ],
+  "ank_dienom": [
+   {
+    "d": "2026-09-09",
+    "st": "10",
+    "sc": "0",
+    "cm": "0",
+    "ab": "9"
+   },
+   {
+    "d": "2026-09-10",
+    "st": "15",
+    "sc": "0",
+    "cm": "0",
+    "ab": "15"
+   },
+   {
+    "d": "2026-09-11",
+    "st": "25",
+    "sc": "1",
+    "cm": "2",
+    "ab": "22"
+   },
+   {
+    "d": "2026-09-12",
+    "st": "18",
+    "sc": "0",
+    "cm": "1",
+    "ab": "17"
+   },
+   {
+    "d": "2026-09-13",
+    "st": "22",
+    "sc": "2",
+    "cm": "1",
+    "ab": "20"
+   },
+   {
+    "d": "2026-09-14",
+    "st": "18",
+    "sc": "0",
+    "cm": "2",
+    "ab": "15"
+   },
+   {
+    "d": "2026-09-15",
+    "st": "22",
+    "sc": "7",
+    "cm": "3",
+    "ab": "20"
+   },
+   {
+    "d": "2026-09-16",
+    "st": "22",
+    "sc": "0",
+    "cm": "0",
+    "ab": "22"
+   },
+   {
+    "d": "2026-09-17",
+    "st": "21",
+    "sc": "3",
+    "cm": "0",
+    "ab": "19"
+   },
+   {
+    "d": "2026-09-18",
+    "st": "17",
+    "sc": "3",
+    "cm": "1",
+    "ab": "14"
+   },
+   {
+    "d": "2026-09-19",
+    "st": "20",
+    "sc": "0",
+    "cm": "0",
+    "ab": "19"
+   },
+   {
+    "d": "2026-09-20",
+    "st": "31",
+    "sc": "2",
+    "cm": "1",
+    "ab": "29"
+   },
+   {
+    "d": "2026-09-21",
+    "st": "37",
+    "sc": "18",
+    "cm": "11",
+    "ab": "32"
+   },
+   {
+    "d": "2026-09-22",
+    "st": "19",
+    "sc": "1",
+    "cm": "0",
+    "ab": "18"
+   },
+   {
+    "d": "2026-09-23",
+    "st": "24",
+    "sc": "0",
+    "cm": "0",
+    "ab": "24"
+   },
+   {
+    "d": "2026-09-24",
+    "st": "18",
+    "sc": "1",
+    "cm": "0",
+    "ab": "18"
+   },
+   {
+    "d": "2026-09-25",
+    "st": "16",
+    "sc": "4",
+    "cm": "0",
+    "ab": "15"
+   },
+   {
+    "d": "2026-09-26",
+    "st": "12",
+    "sc": "3",
+    "cm": "1",
+    "ab": "11"
+   },
+   {
+    "d": "2026-09-27",
+    "st": "10",
+    "sc": "4",
+    "cm": "3",
+    "ab": "8"
+   },
+   {
+    "d": "2026-09-28",
+    "st": "9",
+    "sc": "3",
+    "cm": "1",
+    "ab": "8"
+   },
+   {
+    "d": "2026-09-29",
+    "st": "18",
+    "sc": "1",
+    "cm": "1",
+    "ab": "17"
+   }
+  ],
+  "rec_refill_ivykiai": [
+   {
+    "sritis": "rec",
+    "tipas": "rec_shown",
+    "n": "23"
+   },
+   {
+    "sritis": "refill",
+    "tipas": "refill_due",
+    "n": "4"
+   }
+  ],
+  "ank_pv": [
+   {
+    "irenginys": "desktop",
+    "pv": "24",
+    "lank": "19",
+    "create_param": "0"
+   },
+   {
+    "irenginys": "mobile",
+    "pv": "329",
+    "lank": "210",
+    "create_param": "0"
+   }
+  ],
+  "ank_pv_url": [
+   {
+    "u": "/augintinio-profilis/",
+    "n": "263"
+   },
+   {
+    "u": "/augintinio-profilis/?_gl=1*1jb1jat*_up*MQ..*_gs*MQ..&gclid=",
+    "n": "3"
+   },
+   {
+    "u": "/augintinio-profilis/?_gl=1*1t2uzlx*_up*MQ..*_gs*MQ..&gclid=",
+    "n": "3"
+   },
+   {
+    "u": "/augintinio-profilis/?_gl=1*1154v7k*_up*MQ..*_gs*MQ..&gclid=",
+    "n": "3"
+   },
+   {
+    "u": "/augintinio-profilis/?_gl=1*17mv61d*_up*MQ..*_gs*MQ..&gclid=",
+    "n": "3"
+   },
+   {
+    "u": "/augintinio-profilis/?_gl=1*1smdcfw*_up*MQ..*_gs*MQ..&gclid=",
+    "n": "2"
+   },
+   {
+    "u": "/augintinio-profilis/?_gl=1*tplib6*_up*MQ..*_gs*MQ..&gclid=C",
+    "n": "2"
+   },
+   {
+    "u": "/augintinio-profilis/?_gl=1*nxd47e*_up*MQ..*_gs*MQ..&gclid=E",
+    "n": "2"
+   },
+   {
+    "u": "/augintinio-profilis/?_gl=1*1xp3jl4*_up*MQ..*_gs*MQ..&gclid=",
+    "n": "2"
+   },
+   {
+    "u": "/augintinio-profilis/?_gl=1*152fgwy*_up*MQ..*_gs*MQ..&gclid=",
+    "n": "2"
+   }
+  ],
+  "ank_is_kur": [
+   {
+    "ir": "mobile",
+    "pries_tipas": "preke",
+    "n": "66",
+    "per20s": "55"
+   },
+   {
+    "ir": "mobile",
+    "pries_tipas": "kategorija",
+    "n": "61",
+    "per20s": "44"
+   },
+   {
+    "ir": "mobile",
+    "pries_tipas": "home",
+    "n": "56",
+    "per20s": "49"
+   },
+   {
+    "ir": "mobile",
+    "pries_tipas": "info",
+    "n": "16",
+    "per20s": "6"
+   },
+   {
+    "ir": "mobile",
+    "pries_tipas": "kita",
+    "n": "7",
+    "per20s": "4"
+   },
+   {
+    "ir": "desktop",
+    "pries_tipas": "kategorija",
+    "n": "6",
+    "per20s": "2"
+   },
+   {
+    "ir": "desktop",
+    "pries_tipas": "preke",
+    "n": "6",
+    "per20s": "4"
+   },
+   {
+    "ir": "mobile",
+    "pries_tipas": null,
+    "n": "4",
+    "per20s": "4"
+   },
+   {
+    "ir": "desktop",
+    "pries_tipas": "home",
+    "n": "4",
+    "per20s": "2"
+   },
+   {
+    "ir": "desktop",
+    "pries_tipas": "info",
+    "n": "2",
+    "per20s": "0"
+   },
+   {
+    "ir": "desktop",
+    "pries_tipas": "kita",
+    "n": "1",
+    "per20s": "1"
+   }
+  ],
+  "skaiciuokle": [
+   {
+    "irenginys": "desktop",
+    "n": "6",
+    "lank": "5"
+   },
+   {
+    "irenginys": "mobile",
+    "n": "9",
+    "lank": "5"
+   }
+  ],
+  "field_log": [
+   {
+    "saltinis": "anketa",
+    "laukas": "species",
+    "n": "19",
+    "pets": "10"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "pet_name",
+    "n": "19",
+    "pets": "10"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "current_weight_kg",
+    "n": "17",
+    "pets": "9"
+   },
+   {
+    "saltinis": "sistema",
+    "laukas": "questionnaire_version",
+    "n": "10",
+    "pets": "10"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "questionnaire_version",
+    "n": "9",
+    "pets": "5"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "is_sterilised",
+    "n": "9",
+    "pets": "5"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "feeding_type",
+    "n": "9",
+    "pets": "5"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "activity_hint",
+    "n": "9",
+    "pets": "5"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "sensitivities",
+    "n": "9",
+    "pets": "5"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "primary_need",
+    "n": "9",
+    "pets": "5"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "housing",
+    "n": "9",
+    "pets": "5"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "dog_size",
+    "n": "9",
+    "pets": "4"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "species_detail",
+    "n": "7",
+    "pets": "4"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "life_stage",
+    "n": "7",
+    "pets": "5"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "birth_date",
+    "n": "7",
+    "pets": "5"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "current_food_brand",
+    "n": "3",
+    "pets": "1"
+   },
+   {
+    "saltinis": "anketa",
+    "laukas": "current_food_brand_id",
+    "n": "2",
+    "pets": "1"
+   },
+   {
+    "saltinis": "sistema",
+    "laukas": "primary_product_id",
+    "n": "2",
+    "pets": "2"
+   },
+   {
+    "saltinis": "sistema",
+    "laukas": "current_food_brand_id",
+    "n": "1",
+    "pets": "1"
+   },
+   {
+    "saltinis": "sistema",
+    "laukas": "current_food_brand",
+    "n": "1",
+    "pets": "1"
+   }
+  ],
+  "drafts": [
+   {
+    "d": "2026-09-15",
+    "status": "claimed",
+    "su_pet": "1",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-20",
+    "status": "claimed",
+    "su_pet": "1",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-21",
+    "status": "claimed",
+    "su_pet": "1",
+    "n": "2"
+   },
+   {
+    "d": "2026-09-26",
+    "status": "claimed",
+    "su_pet": "1",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-27",
+    "status": "claimed",
+    "su_pet": "1",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-28",
+    "status": "claimed",
+    "su_pet": "1",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-29",
+    "status": "claimed",
+    "su_pet": "1",
+    "n": "1"
+   }
+  ],
+  "rec_log": [
+   {
+    "rezultatas": "ok",
+    "rc": "(nėra)",
+    "engine_version": "m8food_v1",
+    "n": "1",
+    "pets": "1"
+   },
+   {
+    "rezultatas": "ok",
+    "rc": "(nėra)",
+    "engine_version": "variklis_v1",
+    "n": "1",
+    "pets": "1"
+   },
+   {
+    "rezultatas": "failed",
+    "rc": "missing_life_stage",
+    "engine_version": "variklis_v1",
+    "n": "15",
+    "pets": "11"
+   },
+   {
+    "rezultatas": "failed",
+    "rc": "no_purchase_history",
+    "engine_version": "m8food_v1",
+    "n": "6",
+    "pets": "4"
+   }
+  ],
+  "refill": [
+   {
+    "status": "active",
+    "su_pet": null,
+    "n": "230",
+    "conf": "0.40",
+    "greit14": "25"
+   },
+   {
+    "status": "active",
+    "su_pet": "1",
+    "n": "2",
+    "conf": "0.60",
+    "greit14": "1"
+   },
+   {
+    "status": "notified",
+    "su_pet": null,
+    "n": "4",
+    "conf": "0.40",
+    "greit14": "4"
+   }
+  ],
+  "email_flows": [
+   {
+    "flow": "browse_abandoned",
+    "status": "sent",
+    "n": "1",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "n": "11",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "sent",
+    "n": "7",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "n": "49",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "sent",
+    "n": "6",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "n": "20",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "consent_changed",
+    "status": "sent",
+    "n": "16",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "deferred",
+    "n": "30",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "n": "92",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "n": "2",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "n": "18",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "n": "142",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "n": "27",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "n": "115",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "refill_due",
+    "status": "skipped",
+    "n": "4",
+    "atid": "0",
+    "pasp": "0"
+   }
+  ],
+  "pet_related_flows": [
+   {
+    "flow": "refill_due",
+    "n": "4"
+   }
+  ],
+  "event_log_pet": [
+   {
+    "event_name": "pet_profile_created",
+    "status": "sent",
+    "n": "15"
+   },
+   {
+    "event_name": "pet_profile_updated",
+    "status": "sent",
+    "n": "11"
+   },
+   {
+    "event_name": "pet_reminder_due",
+    "status": "sent",
+    "n": "2"
+   }
+  ]
+ },
+ "v": "dep-215028",
+ "kurimas": 200,
+ "sid": 6818,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
