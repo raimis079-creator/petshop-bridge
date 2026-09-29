@@ -1,0 +1,355 @@
+{
+ "1": {
+  "v": "S1740w",
+  "shots": [
+   {
+    "n": "w01_home_baneris",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{const b=document.querySelector('.cmplz-cookiebanner');const r=b?b.getBoundingClientRect():null;const s=document.querySelector('.mobile-nav.nav-right .header-search');return {baneris:r?Math.round(r.top)+'-'+Math.round(r.bottom)+' h'+Math.round(r.height):null,paieskos_ikona:s?s.className:null,var:getComputedStyle(document.documentElement).getPropertyValue('--ps-cmplz-h')}})()"
+   },
+   {
+    "n": "w02_preke_baneris",
+    "u": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{await new Promise(r=>setTimeout(r,1200));const b=document.querySelector('.cmplz-cookiebanner.cmplz-show');const st=document.querySelector('.psc-sticky-atc');const rb=b&&getComputedStyle(b).display!=='none'?b.getBoundingClientRect():null;const rs=st?st.getBoundingClientRect():null;const btn=st?st.querySelector('button,.button,a'):null;let virs=null;if(btn){const q=btn.getBoundingClientRect();const el=document.elementFromPoint(q.left+q.width/2,q.top+q.height/2);virs=el?(btn.contains(el)||el===btn):false;}return {baneris:rb?Math.round(rb.top)+'-'+Math.round(rb.bottom):'nerodomas',sticky:rs?Math.round(rs.top)+'-'+Math.round(rs.bottom):null,mygtukas_paspaudziamas:virs,innerH:innerHeight,var:getComputedStyle(document.documentElement).getPropertyValue('--ps-cmplz-h')}})()"
+   },
+   {
+    "n": "w03_paieska",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844,
+    "click": ".mobile-nav.nav-right .header-search a",
+    "eval": "(async()=>{await new Promise(r=>setTimeout(r,700));const lb=document.querySelector('#search-lightbox');const inp=lb?lb.querySelector('input[type=search],input.search-field'):null;return {lightbox:lb?(lb.offsetParent!==null||getComputedStyle(lb).display!=='none'):null,matomas:lb?Math.round(lb.getBoundingClientRect().height):0,laukas:!!inp,fokusas:document.activeElement===inp,mfp:!!document.querySelector('.mfp-ready')}})()"
+   },
+   {
+    "n": "w04_atmesti",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844,
+    "click": ".cmplz-btn.cmplz-deny"
+   },
+   {
+    "n": "w05_preke_po",
+    "u": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{await new Promise(r=>setTimeout(r,1200));const b=document.querySelector('.cmplz-cookiebanner.cmplz-show');const st=document.querySelector('.psc-sticky-atc');const rb=b&&getComputedStyle(b).display!=='none'?b.getBoundingClientRect():null;const rs=st?st.getBoundingClientRect():null;const btn=st?st.querySelector('button,.button,a'):null;let virs=null;if(btn){const q=btn.getBoundingClientRect();const el=document.elementFromPoint(q.left+q.width/2,q.top+q.height/2);virs=el?(btn.contains(el)||el===btn):false;}return {baneris:rb?Math.round(rb.top)+'-'+Math.round(rb.bottom):'nerodomas',sticky:rs?Math.round(rs.top)+'-'+Math.round(rs.bottom):null,mygtukas_paspaudziamas:virs,innerH:innerHeight,var:getComputedStyle(document.documentElement).getPropertyValue('--ps-cmplz-h')}})()"
+   },
+   {
+    "n": "w06_kat",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{const f=document.querySelector('form.ps-wask');const c=document.querySelector('.product-small');return {wask_h:f?f.offsetHeight:null,atv:f?f.classList.contains('ps-atv'):null,eilute_matoma:f?getComputedStyle(f.querySelector('.ps-wask-row')).display:null,pirma_preke:c?Math.round(c.getBoundingClientRect().top):null}})()"
+   },
+   {
+    "n": "w07_kat_isskl",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844,
+    "click": "form.ps-wask .ps-wask-t",
+    "eval": "(()=>{const f=document.querySelector('form.ps-wask');const c=document.querySelector('.product-small');return {wask_h:f?f.offsetHeight:null,atv:f?f.classList.contains('ps-atv'):null,eilute_matoma:f?getComputedStyle(f.querySelector('.ps-wask-row')).display:null,pirma_preke:c?Math.round(c.getBoundingClientRect().top):null}})()"
+   },
+   {
+    "n": "w08_krep",
+    "u": "https://petshop.lt/krepselis/?add-to-cart=18587",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{await new Promise(r=>setTimeout(r,900));const k=document.getElementById('ps-ks');const c=document.querySelector('.cart-collaterals .coupon');const inp=document.getElementById('coupon_code');const ot=document.querySelector('.cart_totals .order-total .amount');return {ks:!!k,ks_rodo:k?k.classList.contains('ps-rodo'):null,ks_vieta:k?Math.round(k.getBoundingClientRect().top)+'-'+Math.round(k.getBoundingClientRect().bottom):null,ks_suma:k?k.querySelector('.ps-ks-viso').innerText:null,viso:ot?ot.innerText:null,kupono_nuoroda:c?c.querySelector('.widget-title').innerText.trim():null,kupono_laukas_matomas:inp?inp.offsetParent!==null:null,body_pad:getComputedStyle(document.body).paddingBottom}})()"
+   },
+   {
+    "n": "w09_krep_kupon",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 390,
+    "h": 844,
+    "click": ".cart-collaterals .coupon .widget-title a",
+    "eval": "(async()=>{await new Promise(r=>setTimeout(r,400));const inp=document.getElementById('coupon_code');const b=document.querySelector('button[name=apply_coupon]');return {laukas_matomas:inp?inp.offsetParent!==null:null,mygtukas_matomas:b?b.offsetParent!==null:null,fokusas:document.activeElement===inp}})()"
+   },
+   {
+    "n": "w10_krep_kiekis",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const k=document.getElementById('ps-ks');const w=ms=>new Promise(r=>setTimeout(r,ms));await w(800);scrollTo(0,document.body.scrollHeight);await w(900);const apacioje=k?k.classList.contains('ps-rodo'):null;scrollTo(0,0);await w(700);const virsuje=k?k.classList.contains('ps-rodo'):null;const q=document.querySelector('.cart_item input.qty, .woocommerce-cart-form input.qty');let po=null,viso=null;if(q){q.value='2';q.dispatchEvent(new Event('change',{bubbles:true}));const u=document.querySelector('button[name=update_cart]');if(u){u.disabled=false;u.click();}await w(4500);const k2=document.getElementById('ps-ks');po=k2?k2.querySelector('.ps-ks-viso').innerText:null;const ot=document.querySelector('.cart_totals .order-total .amount');viso=ot?ot.innerText:null;}return {rodo_virsuje:virsuje,rodo_apacioje:apacioje,po_kiekio_ks:po,po_kiekio_viso:viso,kuponas_po_atnaujinimo:(document.querySelector('.cart-collaterals .coupon .widget-title')||{}).innerText}})()"
+   },
+   {
+    "n": "w11_apmok",
+    "u": "https://petshop.lt/kasa/",
+    "w": 390,
+    "h": 844,
+    "full": 1,
+    "eval": "(async()=>{await new Promise(r=>setTimeout(r,1500));const f=document.getElementById('order_comments_field');const l=document.querySelector('.ps-pastaba-nuoroda');const box=[...document.querySelectorAll('.payment_box.payment_method_paysera .payment-countries')].find(x=>getComputedStyle(x).display!=='none');const t=box?[...box.querySelectorAll('.paysera-payment-method')]:[];const tops=t.map(x=>Math.round(x.getBoundingClientRect().top));const po=document.getElementById('place_order');return {pastabos_paslepta:f?getComputedStyle(f).display==='none':null,nuoroda:l?l.innerText:null,bankai:t.length,pirmos_eil_top:tops.slice(0,4),plotis:t[0]?Math.round(t[0].getBoundingClientRect().width):null,apmoketi_top:po?Math.round(po.getBoundingClientRect().top+scrollY):null,h:document.documentElement.scrollHeight}})()"
+   },
+   {
+    "n": "w12_apmok_veiksmai",
+    "u": "https://petshop.lt/kasa/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(1500);const box=[...document.querySelectorAll('.payment_box.payment_method_paysera .payment-countries')].find(x=>getComputedStyle(x).display!=='none');const t=box?[...box.querySelectorAll('.paysera-payment-method')]:[];let pasirinkta=null;if(t[2]){t[2].querySelector('label').click();await w(300);const i=t[2].querySelector('input');pasirinkta=i?i.checked+' '+i.value:null;}const a=document.querySelector('.ps-pastaba-nuoroda a');if(a){a.click();await w(300);}const ta=document.getElementById('order_comments');const tile=t[2];return {bankas_pazymetas:pasirinkta,remelis:tile?getComputedStyle(tile).borderColor:null,pastabos_matomos:ta?ta.offsetParent!==null:null,nuoroda_dingo:!document.querySelector('.ps-pastaba-nuoroda')}})()"
+   },
+   {
+    "n": "w13_desk_home",
+    "u": "https://petshop.lt/",
+    "w": 1440,
+    "h": 900,
+    "eval": "(()=>{const q=s=>document.querySelector(s);const vis=e=>!!e&&e.offsetParent!==null;return {desk_paieskos_laukas:vis(q('.header-main .header-search-form')),mob_ikona_matoma:vis(q('.mobile-nav .header-search')),ks:q('#ps-ks')?getComputedStyle(q('#ps-ks')).display:'nera',kupono_tekstas:(q('.cart-collaterals .coupon .widget-title')||{}).innerText||null,wask_row:q('form.ps-wask .ps-wask-row')?getComputedStyle(q('form.ps-wask .ps-wask-row')).display:null,bankai_grid:(()=>{const w=q('.payment_box.payment_method_paysera .payment-group-wrapper');return w?getComputedStyle(w).display:null})(),pastabos:q('.ps-pastaba-nuoroda')?'nuoroda':(q('#order_comments_field')?getComputedStyle(q('#order_comments_field')).display:null)}})()"
+   },
+   {
+    "n": "w14_desk_krep",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 1440,
+    "h": 900,
+    "eval": "(()=>{const q=s=>document.querySelector(s);const vis=e=>!!e&&e.offsetParent!==null;return {desk_paieskos_laukas:vis(q('.header-main .header-search-form')),mob_ikona_matoma:vis(q('.mobile-nav .header-search')),ks:q('#ps-ks')?getComputedStyle(q('#ps-ks')).display:'nera',kupono_tekstas:(q('.cart-collaterals .coupon .widget-title')||{}).innerText||null,wask_row:q('form.ps-wask .ps-wask-row')?getComputedStyle(q('form.ps-wask .ps-wask-row')).display:null,bankai_grid:(()=>{const w=q('.payment_box.payment_method_paysera .payment-group-wrapper');return w?getComputedStyle(w).display:null})(),pastabos:q('.ps-pastaba-nuoroda')?'nuoroda':(q('#order_comments_field')?getComputedStyle(q('#order_comments_field')).display:null)}})()"
+   },
+   {
+    "n": "w15_desk_apmok",
+    "u": "https://petshop.lt/kasa/",
+    "w": 1440,
+    "h": 900,
+    "full": 1,
+    "eval": "(()=>{const q=s=>document.querySelector(s);const vis=e=>!!e&&e.offsetParent!==null;return {desk_paieskos_laukas:vis(q('.header-main .header-search-form')),mob_ikona_matoma:vis(q('.mobile-nav .header-search')),ks:q('#ps-ks')?getComputedStyle(q('#ps-ks')).display:'nera',kupono_tekstas:(q('.cart-collaterals .coupon .widget-title')||{}).innerText||null,wask_row:q('form.ps-wask .ps-wask-row')?getComputedStyle(q('form.ps-wask .ps-wask-row')).display:null,bankai_grid:(()=>{const w=q('.payment_box.payment_method_paysera .payment-group-wrapper');return w?getComputedStyle(w).display:null})(),pastabos:q('.ps-pastaba-nuoroda')?'nuoroda':(q('#order_comments_field')?getComputedStyle(q('#order_comments_field')).display:null)}})()"
+   },
+   {
+    "n": "w16_desk_kat",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 1440,
+    "h": 900,
+    "eval": "(()=>{const q=s=>document.querySelector(s);const vis=e=>!!e&&e.offsetParent!==null;return {desk_paieskos_laukas:vis(q('.header-main .header-search-form')),mob_ikona_matoma:vis(q('.mobile-nav .header-search')),ks:q('#ps-ks')?getComputedStyle(q('#ps-ks')).display:'nera',kupono_tekstas:(q('.cart-collaterals .coupon .widget-title')||{}).innerText||null,wask_row:q('form.ps-wask .ps-wask-row')?getComputedStyle(q('form.ps-wask .ps-wask-row')).display:null,bankai_grid:(()=>{const w=q('.payment_box.payment_method_paysera .payment-group-wrapper');return w?getComputedStyle(w).display:null})(),pastabos:q('.ps-pastaba-nuoroda')?'nuoroda':(q('#order_comments_field')?getComputedStyle(q('#order_comments_field')).display:null)}})()"
+   }
+  ]
+ },
+ "v": "dep-195340",
+ "kurimas": 200,
+ "sid": 6797,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "w01_home_baneris": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "baneris": "683-844 h161",
+    "paieskos_ikona": "header-search header-search-lightbox has-icon",
+    "var": "161px"
+   }
+  },
+  "w02_preke_baneris": {
+   "status": 201,
+   "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+   "title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "baneris": "683-844",
+    "sticky": "608-683",
+    "mygtukas_paspaudziamas": false,
+    "innerH": 844,
+    "var": "161px"
+   }
+  },
+  "w03_paieska": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('.mobile-nav.nav-right .header-search a')\n    - locator resolved to <a role=\"button\" class=\"is-small\" aria-expanded",
+   "eval": {
+    "lightbox": false,
+    "matomas": 0,
+    "laukas": true,
+    "fokusas": false,
+    "mfp": false
+   }
+  },
+  "w04_atmesti": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "clicked": ".cmplz-btn.cmplz-deny"
+  },
+  "w05_preke_po": {
+   "status": 201,
+   "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+   "title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "baneris": "nerodomas",
+    "sticky": "769-844",
+    "mygtukas_paspaudziamas": false,
+    "innerH": 844,
+    "var": "0px"
+   }
+  },
+  "w06_kat": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "wask_h": 42,
+    "atv": false,
+    "eilute_matoma": "none",
+    "pirma_preke": 534
+   }
+  },
+  "w07_kat_isskl": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('form.ps-wask .ps-wask-t')\n    - locator resolved to <div tabindex=\"0\" role=\"button\" class=\"ps-wask-t\" aria-expande",
+   "eval": {
+    "wask_h": 42,
+    "atv": false,
+    "eilute_matoma": "none",
+    "pirma_preke": 49
+   }
+  },
+  "w08_krep": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/?add-to-cart=18587",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "ks": true,
+    "ks_rodo": true,
+    "ks_vieta": "783-844",
+    "ks_suma": "56,99 €",
+    "viso": "56,99 €",
+    "kupono_nuoroda": "Turite nuolaidos kodą?",
+    "kupono_laukas_matomas": false,
+    "body_pad": "70px"
+   }
+  },
+  "w09_krep_kupon": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "clicked": ".cart-collaterals .coupon .widget-title a",
+   "eval": {
+    "laukas_matomas": true,
+    "mygtukas_matomas": true,
+    "fokusas": true
+   }
+  },
+  "w10_krep_kiekis": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "rodo_virsuje": true,
+    "rodo_apacioje": true,
+    "po_kiekio_ks": "113,98 €",
+    "po_kiekio_viso": "113,98 €",
+    "kuponas_po_atnaujinimo": " Turite nuolaidos kodą?"
+   }
+  },
+  "w11_apmok": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ],
+   "eval": {
+    "pastabos_paslepta": true,
+    "nuoroda": "+ Pridėti pastabą kurjeriui (durų kodas ir pan.)",
+    "bankai": 10,
+    "pirmos_eil_top": [
+     1811,
+     1811,
+     1811,
+     1886
+    ],
+    "plotis": 95,
+    "apmoketi_top": 2572,
+    "h": 4118
+   }
+  },
+  "w12_apmok_veiksmai": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ],
+   "eval": {
+    "bankas_pazymetas": "true vb2",
+    "remelis": "rgb(45, 95, 63)",
+    "pastabos_matomos": true,
+    "nuoroda_dingo": true
+   }
+  },
+  "w13_desk_home": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "desk_paieskos_laukas": true,
+    "mob_ikona_matoma": false,
+    "ks": "nera",
+    "kupono_tekstas": null,
+    "wask_row": null,
+    "bankai_grid": null,
+    "pastabos": null
+   }
+  },
+  "w14_desk_krep": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "desk_paieskos_laukas": true,
+    "mob_ikona_matoma": false,
+    "ks": "none",
+    "kupono_tekstas": " Turite nuolaidos kodą?",
+    "wask_row": null,
+    "bankai_grid": null,
+    "pastabos": null
+   }
+  },
+  "w15_desk_apmok": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ],
+   "eval": {
+    "desk_paieskos_laukas": true,
+    "mob_ikona_matoma": false,
+    "ks": "nera",
+    "kupono_tekstas": null,
+    "wask_row": null,
+    "bankai_grid": "block",
+    "pastabos": "nuoroda"
+   }
+  },
+  "w16_desk_kat": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "desk_paieskos_laukas": true,
+    "mob_ikona_matoma": false,
+    "ks": "nera",
+    "kupono_tekstas": null,
+    "wask_row": "flex",
+    "bankai_grid": null,
+    "pastabos": null
+   }
+  }
+ }
+}
