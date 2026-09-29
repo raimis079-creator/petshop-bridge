@@ -1,37 +1,80 @@
 {
- "2": {
+ "3": {
   "v": "S1736g",
-  "faze": "2",
-  "fail": {
-   "petshop-av-dropship.php": {
-    "live": "a16f5a09742d7a92c96fb49550721fe3",
-    "live_ok": true,
-    "new_md5_ok": true,
-    "tok": true,
-    "len": 68077
+  "faze": "3",
+  "live": {
+   "petshop-av-dropship.php": true,
+   "petshop-av-tiekimas.php": true
+  },
+  "ver": {
+   "tiekejui": true,
+   "csv": true
+  },
+  "csv": "Avesa_uzsakymas_2026-09-29.csv",
+  "csv_turinys": "﻿\"Užsakymo nr.\";Gavėjas;\"Prekės kodas\";Prekė;Kiekis\r\n1185;\"Sigita Krivickiene\";JOS0686;\"JosiDog Junior Sensitive sausas pašaras jautriems jauniems šunims, 2,7 kg\";5\r\n1186;\"Naumantas Norkus\";HYHM11;\"Exclusion Hypoallergenic sausas šunų maistas su arkliena ir bulvėmis M/L 12 kg\";1\r\n1187;\"Nendre Zilinskaite\";HM20;\"Exclusion Hypo konservuotas pašaras šunims su arkliena ir bulvėmis, 200 g\";11\r\n1189;\"Daiva Karklalienė\";V004979;\"Lašišų žuvų taukai , 500ml\";1\r\n1189;\"Daiva Karklalienė\";BIOV1329;\"Bioveta papildas Vitaplastin forte, 1 kg\";1\r\n1189;\"Daiva Karklalienė\";JOS0869;\"JosiDog Senior / Light 900 g\";1\r\n1192;\"Albertas Balevičius\";JOS0914;\"Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria virškinimo sistema\";1\r\n1193;\"Odeta Krikščiūnienė\";EU113;\"Churu kreminis skanėstas katėms su tunu, moliuskų skonio, 4vnt\";1\r\n1193;\"Odeta Krikščiūnienė\";EU108;\"Churu kreminis skanėstas katėms su vištiena ir krevetėmis, 4vnt\";1\r\n1193;\"Odeta Krikščiūnienė\";EU652;\"Churu Luxury kreminis skanėstas katėms su tunu ir karališkosiomis krevetėmis N4\";1\r\n1193;\"Odeta Krikščiūnienė\";EU651;\"Churu Luxury kreminis skanėstas katėms su tunu ir omarais N4\";1\r\n1193;\"Odeta Krikščiūnienė\";EU653;\"Churu Luxury kreminis skanėstas katėms su tunu ir plekšne N4\";1\r\n1193;\"Odeta Krikščiūnienė\";EU654;\"Churu Luxury kreminis skanėstas katėms su vištiena ir japoniška jautiena N4\";1\r\n1193;\"Odeta Krikščiūnienė\";EU675;\"Churu nuo plaukų gumuliukų susidarymo, su tunu  - kreminis skanėstas katėms, Churu Hairball, 4 x 14 g\";2\r\n1193;\"Odeta Krikščiūnienė\";EU106;\"Churu su tunu ir lašiša - kreminis skanėstas katėms, 4 x 14 g\";1\r\n1193;\"Odeta Krikščiūnienė\";EU109;\"Churu su vištiena ir krabu - kreminis skanėstas katėms, 4 x 14 g\";1\r\n1193;\"Odeta Krikščiūnienė\";EU904;\"Churu Meal topper skanėstas katėms maistui gardinti su tunu ir lašiša, 4 vnt.\";1\r\n1193;\"Odeta Krikščiūnienė\";EU671;\"Churu Skin+Coat kreminis skanėstas katėms su tunu, 4vnt\";1\r\n1200;\"Vygantas Marcinkevičius\";JOS0836;\"Josidog Active 15 kg - sausas maistas aktyviems šunims\";1\r\n1180;\"Rasa Ragaišytė\";ZOOV025;\"Vetoquinol Bezo-Pet sąvėlas šalinanti pasta katėms ir šunims, 120g\";4\r\n;\"UAB Avesa (sandėlis)\";JOS0913;\"JOSERA FESTIVAL pašaras šunims su lašiša, 12,5 kg\";1\r\n;\"UAB Avesa (sandėlis)\";AQ113314;\"Ecomfy žaislas gyvūnui snacky strawberry, 7.5 x 6.5cm\";1\r\n;\"UAB Avesa (sandėlis)\";404842214454;\"8in1 Flavours M trigubo skonio kaulas vidutinių veislių šunims, 1 vnt.\";2\r\n;\"UAB Avesa (sandėlis)\";AQ238384;\"Comfy appetit skanėstas šunims, jaut. prieskrandžiai, 100g\";1\r\n;\"UAB Avesa (sandėlis)\";JOS0678;\"Green Petfood Fair Cat Sensitive konservuotas pašaras katėms, 85 g\";1\r\n;\"UAB Avesa (sandėlis)\";JOS0676;\"Green Petfood Fair Cat Balance konservuotas pašaras katėms, 85 g\";2\r\n",
+  "html": "<p>Laba diena,</p><p>šiandienai</p><table border=\"1\" cellpadding=\"6\" cellspacing=\"0\" style=\"border-collapse:collapse;font-family:Arial;font-size:13px;\"><tr><th align=\"left\" style=\"background:#f0f0f0\">Užs. nr.</th><th align=\"left\" style=\"background:#f0f0f0\">Gavėjas</th><th align=\"left\" style=\"background:#f0f0f0\">Prekė</th><th align=\"left\" style=\"background:#f0f0f0\">Kodas</th><th align=\"center\" style=\"background:#f0f0f0\">Kiekis</th></tr><tr><td rowspan=\"1\" valign=\"top\"><b>1185</b></td><td rowspan=\"1\" valign=\"top\">Sigita Krivickiene</td><td>JosiDog Junior Sensitive sausas pašaras jautriems jauniems šunims, 2,7 kg</td><td style=\"white-space:nowrap\">JOS0686</td><td align=\"center\">5</td></tr><tr><td rowspan=\"1\" valign=\"top\"><b>1186</b></td><td rowspan=\"1\" valign=\"top\">Naumantas Norkus</td><td>Exclusion Hypoallergenic sausas šunų maistas su arkliena ir bulvėmis M/L 12 kg</td><td style=\"white-space:nowrap\">HYHM11</td><td align=\"center\">1</td></tr><tr><td rowspan=\"1\" valign=\"top\"><b>1187</b></td><td rowspan=\"1\" valign=\"top\">Nendre Zilinskaite</td><td>Exclusion Hypo konservuotas pašaras šunims su arkliena ir bulvėmis, 200 g</td><td style=\"white-space:nowrap\">HM20</td><td align=\"center\">11</td></tr><tr><td rowspan=\"3\" valign=\"top\"><b>1189</b></td><td rowspan=\"3\" valign=\"top\">Daiva Karklalienė</td><td>Lašišų žuvų taukai , 500ml</td><td style=\"white-space:nowrap\">V004979</td><td align=\"center\">1</td></tr><tr><td>Bioveta papildas Vitaplastin forte, 1 kg</td><td style=\"white-space:nowrap\">BIOV1329</td><td align=\"center\">1</td></tr><tr><td>JosiDog Senior / Light 900 g</td><td style=\"white-space:nowrap\">JOS0869</td><td align=\"center\">1</td></tr><tr><td rowspan=\"1\" valign=\"top\"><b>1192</b></td><td rowspan=\"1\" valign=\"top\">Albertas Balevičius</td><td>Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria virškinimo sistema</td><td style=\"white-space:nowrap\">JOS0914</td><td align=\"center\">1</td></tr><tr><td rowspan=\"11\" valign=\"top\"><b>1193</b></td><td rowspan=\"11\" valign=\"top\">Odeta Krikščiūnienė</td><td>Churu kreminis skanėstas katėms su tunu, moliuskų skonio, 4vnt</td><td style=\"white-space:nowrap\">EU113</td><td align=\"center\">1</td></tr><tr><td>Churu kreminis skanėstas katėms su vištiena ir krevetėmis, 4vnt</td><td style=\"white-space:nowrap\">EU108</td><td align=\"center\">1</td></tr><tr><td>Churu Luxury kreminis skanėstas katėms su tunu ir karališkosiomis krevetėmis N4</td><td style=\"white-space:nowrap\">EU652</td><td align=\"center\">1</td></tr><tr><td>Churu Luxury kreminis skanėstas katėms su tunu ir omarais N4</td><td style=\"white-space:nowrap\">EU651</td><td align=\"center\">1</td></tr><tr><td>Churu Luxury kreminis skanėstas katėms su tunu ir plekšne N4</td><td style=\"white-space:nowrap\">EU653</td><td align=\"center\">1</td></tr><tr><td>Churu Luxury kreminis skanėstas katėms su vištiena ir japoniška jautiena N4</td><td style=\"white-space:nowrap\">EU654</td><td align=\"center\">1</td></tr><tr><td>Churu nuo plaukų gumuliukų susidarymo, su tunu  - kreminis skanėstas katėms, Churu Hairball, 4 x 14 g</td><td style=\"white-space:nowrap\">EU675</td><td align=\"center\">2</td></tr><tr><td>Churu su tunu ir lašiša - kreminis skanėstas katėms, 4 x 14 g</td><td style=\"white-space:nowrap\">EU106</td><td align=\"center\">1</td></tr><tr><td>Churu su vištiena ir krabu - kreminis skanėstas katėms, 4 x 14 g</td><td style=\"white-space:nowrap\">EU109</td><td align=\"center\">1</td></tr><tr><td>Churu Meal topper skanėstas katėms maistui gardinti su tunu ir lašiša, 4 vnt.</td><td style=\"white-space:nowrap\">EU904</td><td align=\"center\">1</td></tr><tr><td>Churu Skin+Coat kreminis skanėstas katėms su tunu, 4vnt</td><td style=\"white-space:nowrap\">EU671</td><td align=\"center\">1</td></tr><tr><td rowspan=\"1\" valign=\"top\"><b>1200</b></td><td rowspan=\"1\" valign=\"top\">Vygantas Marcinkevičius</td><td>Josidog Active 15 kg - sausas maistas aktyviems šunims</td><td style=\"white-space:nowrap\">JOS0836</td><td align=\"center\">1</td></tr><tr><td rowspan=\"1\" valign=\"top\"><b>1180</b></td><td rowspan=\"1\" valign=\"top\">Rasa Ragaišytė</td><td>Vetoquinol Bezo-Pet sąvėlas šalinanti pasta katėms ir šunims, 120g</td><td style=\"white-space:nowrap\">ZOOV025</td><td align=\"center\">4</td></tr></table><p style=\"margin:14px 0\">Ačiū :)</p><p style=\"margin:16px 0 6px\"><b>UAB Avesa, Liucionių g. 46</b></p><table border=\"1\" cellpadding=\"6\" cellspacing=\"0\" style=\"border-collapse:collapse;font-family:Arial;font-size:13px;\"><tr><th align=\"left\" style=\"background:#f0f0f0\">Prekė</th><th align=\"left\" style=\"background:#f0f0f0\">Kodas</th><th align=\"center\" style=\"background:#f0f0f0\">Kiekis</th></tr><tr><td>JOSERA FESTIVAL pašaras šunims su lašiša, 12,5 kg</td><td style=\"white-space:nowrap\">JOS0913</td><td align=\"center\">1</td></tr><tr><td>Ecomfy žaislas gyvūnui snacky strawberry, 7.5 x 6.5cm</td><td style=\"white-space:nowrap\">AQ113314</td><td align=\"center\">1</td></tr><tr><td>8in1 Flavours M trigubo skonio kaulas vidutinių veislių šunims, 1 vnt.</td><td style=\"white-space:nowrap\">404842214454</td><td align=\"center\">2</td></tr><tr><td>Comfy appetit skanėstas šunims, jaut. prieskrandžiai, 100g</td><td style=\"white-space:nowrap\">AQ238384</td><td align=\"center\">1</td></tr><tr><td>Green Petfood Fair Cat Sensitive konservuotas pašaras katėms, 85 g</td><td style=\"white-space:nowrap\">JOS0678</td><td align=\"center\">1</td></tr><tr><td>Green Petfood Fair Cat Balance konservuotas pašaras katėms, 85 g</td><td style=\"white-space:nowrap\">JOS0676</td><td align=\"center\">2</td></tr></table><p style=\"font-size:12px;color:#444\">Kurjeriui — 1 lipdukas priede (V07267E1000244).</p><p>Linkėjimai,<br>UAB Avesa<br>terra@petshop.lt</p>",
+  "dp_kontrole": {
+   "36104": {
+    "nr": "1130",
+    "klientas": "laura Miakisheva",
+    "metodas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "pakuociu": 1,
+    "eilutes": [
+     {
+      "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg",
+      "qty": 2,
+      "sku": "HYPS02",
+      "ean": "8011259000088",
+      "zb": "",
+      "pid": 18590
+     },
+     {
+      "pav": "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 200 g",
+      "qty": 10,
+      "sku": "PM20",
+      "ean": "801125901135",
+      "zb": "",
+      "pid": 18602
+     }
+    ]
    },
-   "petshop-av-tiekimas.php": {
-    "live": "cf7677a8c355c58cc79a489dae4114f1",
-    "live_ok": true,
-    "new_md5_ok": true,
-    "tok": true,
-    "len": 78980
+   "36306": {
+    "nr": "1181",
+    "klientas": "Sandra Jasiūnienė",
+    "metodas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "pakuociu": 1,
+    "eilutes": [
+     {
+      "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+      "qty": 2,
+      "sku": "HYPS06",
+      "ean": "8011259002846",
+      "zb": "",
+      "pid": 18587
+     },
+     {
+      "pav": "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 400 g",
+      "qty": 1,
+      "sku": "PM37",
+      "ean": "8011259193759",
+      "zb": "",
+      "pid": 18599
+     },
+     {
+      "pav": "Truly skanėstas šunims jautienos dantų šepetėliai, 90 g",
+      "qty": 2,
+      "sku": "WP11301/TP",
+      "ean": "872025611301",
+      "zb": "",
+      "pid": 23796
+     }
+    ]
    }
-  },
-  "visi_ok": true,
-  "bak": {
-   "petshop-av-dropship.php": "a16f5a09742d7a92c96fb49550721fe3",
-   "petshop-av-tiekimas.php": "cf7677a8c355c58cc79a489dae4114f1"
-  },
-  "irasyta": {
-   "petshop-av-dropship.php": "b2e49184bb599fd9db8bb4897283455f",
-   "petshop-av-tiekimas.php": "37d1128e5883f0463fec9f48eac6a48f"
-  },
-  "hb": 200
+  }
  },
- "v": "dep-073038",
+ "v": "dep-073230",
  "kurimas": 200,
- "sid": 6728,
+ "sid": 6729,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
