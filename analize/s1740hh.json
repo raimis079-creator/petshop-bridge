@@ -1,0 +1,50 @@
+{
+ "1": {
+  "v": "S1740hh",
+  "u": {
+   "be": {
+    "http": 200,
+    "s": 0.2,
+    "len": 374536,
+    "korteles": 24,
+    "err": ""
+   },
+   "be_grudu": {
+    "http": 403,
+    "s": 0.09,
+    "len": 403,
+    "korteles": 0,
+    "err": ""
+   },
+   "du": {
+    "http": 403,
+    "s": 0.05,
+    "len": 403,
+    "korteles": 0,
+    "err": ""
+   },
+   "mono": {
+    "http": 403,
+    "s": 0.09,
+    "len": 403,
+    "korteles": 0,
+    "err": ""
+   },
+   "be_grudu_be_yith": {
+    "http": 403,
+    "s": 0.03,
+    "len": 403,
+    "korteles": 0,
+    "err": ""
+   }
+  },
+  "klaidos": []
+ },
+ "v": "dep-205735",
+ "kurimas": 200,
+ "sid": 6809,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
