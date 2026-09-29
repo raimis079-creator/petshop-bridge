@@ -1,7 +1,7 @@
 {
- "1": {
+ "2": {
   "v": "S1736g",
-  "faze": "1",
+  "faze": "2",
   "fail": {
    "petshop-av-dropship.php": {
     "live": "a16f5a09742d7a92c96fb49550721fe3",
@@ -19,190 +19,19 @@
    }
   },
   "visi_ok": true,
-  "kiti": {
-   "ambrosia": {
-    "su_kodu": 0,
-    "skiriasi": 0,
-    "pvz": []
-   },
-   "prins": {
-    "su_kodu": 0,
-    "skiriasi": 0,
-    "pvz": []
-   },
-   "quattro": {
-    "su_kodu": 0,
-    "skiriasi": 0,
-    "pvz": []
-   },
-   "belcor_tofu": {
-    "su_kodu": 0,
-    "skiriasi": 0,
-    "pvz": []
-   },
-   "zb": {
-    "su_kodu": 1112,
-    "skiriasi": 15,
-    "pvz": [
-     {
-      "product_id": "17394",
-      "supplier_sku": "01M210202",
-      "sku": "M14229"
-     },
-     {
-      "product_id": "17400",
-      "supplier_sku": "01M210203",
-      "sku": "M14236"
-     },
-     {
-      "product_id": "17397",
-      "supplier_sku": "01M210205",
-      "sku": "M14434"
-     },
-     {
-      "product_id": "17406",
-      "supplier_sku": "01M210630",
-      "sku": "m14458"
-     }
-    ]
-   }
+  "bak": {
+   "petshop-av-dropship.php": "a16f5a09742d7a92c96fb49550721fe3",
+   "petshop-av-tiekimas.php": "cf7677a8c355c58cc79a489dae4114f1"
   },
-  "l0928_nr": [
-   "1185",
-   "1186",
-   "1187",
-   "1189",
-   "1192",
-   "1193",
-   "1200",
-   "1180"
-  ],
-  "l0928_kont": "Perdavimas tiekėjui: Vetfarmas · 8 užsak. + partija #33 į AV",
-  "nr_meta": [
-   {
-    "order_id": "36300",
-    "meta_key": "_ps_order_number",
-    "meta_value": "1180"
-   },
-   {
-    "order_id": "36310",
-    "meta_key": "_ps_order_number",
-    "meta_value": "1185"
-   },
-   {
-    "order_id": "36313",
-    "meta_key": "_ps_order_number",
-    "meta_value": "1186"
-   },
-   {
-    "order_id": "36314",
-    "meta_key": "_ps_order_number",
-    "meta_value": "1187"
-   },
-   {
-    "order_id": "36318",
-    "meta_key": "_ps_order_number",
-    "meta_value": "1189"
-   },
-   {
-    "order_id": "36321",
-    "meta_key": "_ps_order_number",
-    "meta_value": "1192"
-   },
-   {
-    "order_id": "36322",
-    "meta_key": "_ps_order_number",
-    "meta_value": "1193"
-   },
-   {
-    "order_id": "36544",
-    "meta_key": "_ps_order_number",
-    "meta_value": "1200"
-   }
-  ],
-  "p33": {
-   "id": "33",
-   "tiekejas": "vf",
-   "busena": "uzsakyta",
-   "sukurta": "2026-09-28 11:57:05",
-   "uzsakyta": "2026-09-28 11:58:52",
-   "gauta": null,
-   "siuntos_kodas": null,
-   "pastaba": "",
-   "pristatymas": "kurjeris",
-   "svoris": null,
-   "venipak_pack": "V07267E1000244",
-   "venipak_manifest": "07267260928002",
-   "dezes": "1"
+  "irasyta": {
+   "petshop-av-dropship.php": "b2e49184bb599fd9db8bb4897283455f",
+   "petshop-av-tiekimas.php": "37d1128e5883f0463fec9f48eac6a48f"
   },
-  "p33_eil": [
-   {
-    "id": "66",
-    "partija_id": "33",
-    "product_id": "18154",
-    "order_id": null,
-    "qty": "1",
-    "qty_gauta": null,
-    "galiojimas": null,
-    "pastaba": null
-   },
-   {
-    "id": "67",
-    "partija_id": "33",
-    "product_id": "20215",
-    "order_id": "36320",
-    "qty": "1",
-    "qty_gauta": null,
-    "galiojimas": null,
-    "pastaba": "eilutė 2640"
-   },
-   {
-    "id": "68",
-    "partija_id": "33",
-    "product_id": "24374",
-    "order_id": "36549",
-    "qty": "2",
-    "qty_gauta": null,
-    "galiojimas": null,
-    "pastaba": "eilutė 2695"
-   },
-   {
-    "id": "69",
-    "partija_id": "33",
-    "product_id": "20327",
-    "order_id": "36549",
-    "qty": "1",
-    "qty_gauta": null,
-    "galiojimas": null,
-    "pastaba": "eilutė 2698"
-   },
-   {
-    "id": "70",
-    "partija_id": "33",
-    "product_id": "21354",
-    "order_id": "36552",
-    "qty": "1",
-    "qty_gauta": null,
-    "galiojimas": null,
-    "pastaba": "eilutė 2719"
-   },
-   {
-    "id": "71",
-    "partija_id": "33",
-    "product_id": "21351",
-    "order_id": "36552",
-    "qty": "2",
-    "qty_gauta": null,
-    "galiojimas": null,
-    "pastaba": "eilutė 2720"
-   }
-  ],
-  "arch": "/home/gyvunai2/domains/petshop.lt/ps-archyvas",
-  "arch_yra": true
+  "hb": 200
  },
- "v": "dep-072851",
+ "v": "dep-073038",
  "kurimas": 200,
- "sid": 6727,
+ "sid": 6728,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
