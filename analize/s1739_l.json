@@ -1,0 +1,44 @@
+{
+ "1": {
+  "v": "S1739l",
+  "faze": "1",
+  "rytas": "42d8805d26ac2f81b8b0d00c67193c9c",
+  "zurnalas": "b3be12b2c0d8145f54cef83e4d56cd17"
+ },
+ "2": {
+  "v": "S1739l",
+  "faze": "2",
+  "rytas_ok": true,
+  "zur_ok": true,
+  "klase": true,
+  "hooks": [
+   10,
+   10,
+   10
+  ],
+  "rytas_klase": "Petshop_Rytas",
+  "patikros_ms": 2103,
+  "lemput": [
+   {
+    "kodas": "rinkiniai_foto",
+    "lygis": "zalia",
+    "tekstas": "Rinkiniai be nuotraukos: 0 iš 28"
+   },
+   {
+    "kodas": "prekes_foto",
+    "lygis": "geltona",
+    "tekstas": "Prekės be nuotraukos: 16 — 34942, 34944, 34945, 34947, 34938"
+   }
+  ],
+  "patikru_n": 19,
+  "zurnalas_irasu": 0,
+  "heartbeat": 200
+ },
+ "v": "dep-171449",
+ "kurimas": 200,
+ "sid": 6765,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
