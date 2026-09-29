@@ -1,0 +1,73 @@
+{
+ "1": {
+  "v": "S1740o",
+  "faze": "1",
+  "p34942": {
+   "status": "publish",
+   "slug": "test-konservu-deze-800-be-vistienos",
+   "naujas": "konservu-deze-800-be-vistienos",
+   "unikalus": true,
+   "nuorodos_turinyje": 0,
+   "meta": 0,
+   "opt": []
+  },
+  "p34945": {
+   "status": "publish",
+   "slug": "test-konservu-deze-400-monoproteinas",
+   "naujas": "konservu-deze-400-monoproteinas",
+   "unikalus": true,
+   "nuorodos_turinyje": 0,
+   "meta": 0,
+   "opt": []
+  },
+  "kiti_test_slugai": [
+   {
+    "ID": "34543",
+    "post_type": "page",
+    "post_name": "pagrindinis-test"
+   },
+   {
+    "ID": "34942",
+    "post_type": "product",
+    "post_name": "test-konservu-deze-800-be-vistienos"
+   },
+   {
+    "ID": "34945",
+    "post_type": "product",
+    "post_name": "test-konservu-deze-400-monoproteinas"
+   }
+  ]
+ },
+ "2": {
+  "v": "S1740o",
+  "faze": "2",
+  "p34942": "konservu-deze-800-be-vistienos",
+  "old_slug34942": [
+   "test-konservu-deze-800-be-vistienos"
+  ],
+  "p34945": "konservu-deze-400-monoproteinas",
+  "old_slug34945": [
+   "test-konservu-deze-400-monoproteinas"
+  ]
+ },
+ "3": {
+  "v": "S1740o",
+  "faze": "3",
+  "p34942": {
+   "nauja": "200",
+   "sena": "301 /product/konservu-deze-800-be-vistienos/"
+  },
+  "p34945": {
+   "nauja": "200",
+   "sena": "301 /product/konservu-deze-400-monoproteinas/"
+  },
+  "home": "200"
+ },
+ "v": "dep-190412",
+ "kurimas": 200,
+ "sid": 6789,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
