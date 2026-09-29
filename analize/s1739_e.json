@@ -1,0 +1,79 @@
+{
+ "1": {
+  "v": "S1739e",
+  "viso": {
+   "n": "1860",
+   "bot_atc": "643",
+   "be_pv": "0"
+  },
+  "bot_profilis": [
+   {
+    "ir": "desktop",
+    "ns": "Chrome",
+    "os": "Windows",
+    "n": "641"
+   },
+   {
+    "ir": "mobile",
+    "ns": "Chrome",
+    "os": "Android",
+    "n": "1"
+   },
+   {
+    "ir": "mobile",
+    "ns": "Safari",
+    "os": "iOS",
+    "n": "1"
+   }
+  ],
+  "svarus": [
+   {
+    "ir": "desktop",
+    "srautas": "479",
+    "preke": "367",
+    "atc": "24",
+    "krepselis": "15",
+    "kasa": "10",
+    "aciu": "9"
+   },
+   {
+    "ir": "mobile",
+    "srautas": "738",
+    "preke": "385",
+    "atc": "71",
+    "krepselis": "35",
+    "kasa": "53",
+    "aciu": "49"
+   }
+  ],
+  "atc_be_kasos": [
+   {
+    "ir": "desktop",
+    "atc_be_kasos": "15",
+    "kasa_be_aciu": "1"
+   },
+   {
+    "ir": "mobile",
+    "atc_be_kasos": "21",
+    "kasa_be_aciu": "12"
+   }
+  ],
+  "uzs": [
+   {
+    "irenginys": "desktop",
+    "n": "9"
+   },
+   {
+    "irenginys": "mobile",
+    "n": "45"
+   }
+  ]
+ },
+ "v": "dep-165054",
+ "kurimas": 200,
+ "sid": 6756,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
