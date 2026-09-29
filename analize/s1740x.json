@@ -1,0 +1,171 @@
+{
+ "1": {
+  "v": "S1740x",
+  "faze": "1",
+  "md5": "87bd94f8d74032ef832c902643d67fbd"
+ },
+ "2": {
+  "v": "S1740x",
+  "faze": "2",
+  "shots": [
+   {
+    "n": "x1_hit_home",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(1200);const hit=s=>{const e=document.querySelector(s);if(!e)return 'nera';const q=e.getBoundingClientRect();if(!q.width)return 'dydis0';const x=q.left+q.width/2,y=q.top+q.height/2;const el=document.elementFromPoint(x,y);return (el&&(e===el||e.contains(el)))?'OK':('uzdengia: '+(el?(el.tagName+'.'+(el.className||'').toString().slice(0,60)):'null')+' @'+Math.round(y));};return {ikona:hit('.mobile-nav.nav-right .header-search a'),sticky_btn:hit('.psc-sticky-atc button, .psc-sticky-atc .button'),sticky_html:(document.querySelector('.psc-sticky-atc')||{}).innerHTML?.replace(/\\s+/g,' ').slice(0,400),wask:hit('form.ps-wask .ps-wask-t')}})()"
+   },
+   {
+    "n": "x2_hit_preke",
+    "u": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(1200);const hit=s=>{const e=document.querySelector(s);if(!e)return 'nera';const q=e.getBoundingClientRect();if(!q.width)return 'dydis0';const x=q.left+q.width/2,y=q.top+q.height/2;const el=document.elementFromPoint(x,y);return (el&&(e===el||e.contains(el)))?'OK':('uzdengia: '+(el?(el.tagName+'.'+(el.className||'').toString().slice(0,60)):'null')+' @'+Math.round(y));};return {ikona:hit('.mobile-nav.nav-right .header-search a'),sticky_btn:hit('.psc-sticky-atc button, .psc-sticky-atc .button'),sticky_html:(document.querySelector('.psc-sticky-atc')||{}).innerHTML?.replace(/\\s+/g,' ').slice(0,400),wask:hit('form.ps-wask .ps-wask-t')}})()"
+   },
+   {
+    "n": "x3_lightbox",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(800);const a=document.querySelector('.mobile-nav.nav-right .header-search a');if(!a)return 'nera';a.click();await w(900);const lb=document.querySelector('#search-lightbox');const inp=lb?lb.querySelector('input[type=search],input.search-field'):null;const vis=lb?lb.getBoundingClientRect():null;return {atsidare:!!document.querySelector('.mfp-ready'),lb_h:vis?Math.round(vis.height):0,laukas_matomas:inp?inp.offsetParent!==null:null,fokusas:document.activeElement===inp}})()"
+   },
+   {
+    "n": "x4_atmesti",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844,
+    "click": ".cmplz-btn.cmplz-deny"
+   },
+   {
+    "n": "x5_hit_kat",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(1200);const hit=s=>{const e=document.querySelector(s);if(!e)return 'nera';const q=e.getBoundingClientRect();if(!q.width)return 'dydis0';const x=q.left+q.width/2,y=q.top+q.height/2;const el=document.elementFromPoint(x,y);return (el&&(e===el||e.contains(el)))?'OK':('uzdengia: '+(el?(el.tagName+'.'+(el.className||'').toString().slice(0,60)):'null')+' @'+Math.round(y));};return {ikona:hit('.mobile-nav.nav-right .header-search a'),sticky_btn:hit('.psc-sticky-atc button, .psc-sticky-atc .button'),sticky_html:(document.querySelector('.psc-sticky-atc')||{}).innerHTML?.replace(/\\s+/g,' ').slice(0,400),wask:hit('form.ps-wask .ps-wask-t')}})()"
+   },
+   {
+    "n": "x6_kat_toggle",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(600);const f=document.querySelector('form.ps-wask');const t=f.querySelector('.ps-wask-t');const pries=f.offsetHeight;t.click();await w(300);const po=f.offsetHeight;const row=getComputedStyle(f.querySelector('.ps-wask-row')).display;const inp=f.querySelector('input[name=ps_weight]');t.click();await w(300);return {pries:pries,isskleista:po,eilute:row,fokusas:document.activeElement===inp,vel_suskleista:f.offsetHeight,aria:t.getAttribute('aria-expanded')}})()"
+   },
+   {
+    "n": "x7_krep",
+    "u": "https://petshop.lt/krepselis/?add-to-cart=18587",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(1000);const k=document.getElementById('ps-ks');const b=k?k.querySelector('.ps-ks-btn'):null;const o=document.querySelector('.wc-proceed-to-checkout .checkout-button');const cb=b?getComputedStyle(b):null,co=o?getComputedStyle(o):null;const pries=k?k.classList.contains('ps-rodo'):null;o.scrollIntoView({block:'center'});await w(900);const ties=k.classList.contains('ps-rodo');scrollTo(0,0);await w(800);return {spalva_juosta:cb?cb.backgroundColor+' / '+cb.color:null,spalva_tikra:co?co.backgroundColor+' / '+co.color:null,rodo_virsuje:pries,rodo_ties_mygtuku:ties,vel_virsuje:k.classList.contains('ps-rodo'),href:b?b.getAttribute('href'):null}})()"
+   },
+   {
+    "n": "x8_lightbox_po",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(800);const a=document.querySelector('.mobile-nav.nav-right .header-search a');if(!a)return 'nera';a.click();await w(900);const lb=document.querySelector('#search-lightbox');const inp=lb?lb.querySelector('input[type=search],input.search-field'):null;const vis=lb?lb.getBoundingClientRect():null;return {atsidare:!!document.querySelector('.mfp-ready'),lb_h:vis?Math.round(vis.height):0,laukas_matomas:inp?inp.offsetParent!==null:null,fokusas:document.activeElement===inp}})()"
+   }
+  ]
+ },
+ "v": "dep-195946",
+ "kurimas": 200,
+ "sid": 6798,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "x1_hit_home": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "ikona": "uzdengia: DIV.psw-ov @71",
+    "sticky_btn": "nera",
+    "wask": "nera"
+   }
+  },
+  "x2_hit_preke": {
+   "status": 201,
+   "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+   "title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "ikona": "uzdengia: DIV.psw-ov @71",
+    "sticky_btn": "uzdengia: DIV.psw-box @639",
+    "sticky_html": " <span class=\"psc-sticky-price\"><span class=\"woocommerce-Price-amount amount\">56,99&nbsp;<span class=\"woocommerce-Price-currencySymbol\">€</span></span></span> <button type=\"button\" class=\"psc-sticky-btn\" id=\"pscStickyBtn\">Į krepšelį</button> ",
+    "wask": "nera"
+   }
+  },
+  "x3_lightbox": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "atsidare": true,
+    "lb_h": 40,
+    "laukas_matomas": true,
+    "fokusas": true
+   }
+  },
+  "x4_atmesti": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "clicked": ".cmplz-btn.cmplz-deny"
+  },
+  "x5_hit_kat": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "ikona": "uzdengia: DIV.psw-ov @71",
+    "sticky_btn": "nera",
+    "wask": "uzdengia: A.psw-b1 @495"
+   }
+  },
+  "x6_kat_toggle": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "pries": 42,
+    "isskleista": 169,
+    "eilute": "flex",
+    "fokusas": false,
+    "vel_suskleista": 42,
+    "aria": "false"
+   }
+  },
+  "x7_krep": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/?add-to-cart=18587",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "spalva_juosta": "rgb(54, 90, 81) / rgb(255, 255, 255)",
+    "spalva_tikra": "rgb(54, 90, 81) / rgb(255, 255, 255)",
+    "rodo_virsuje": true,
+    "rodo_ties_mygtuku": false,
+    "vel_virsuje": true,
+    "href": "https://petshop.lt/kasa/"
+   }
+  },
+  "x8_lightbox_po": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "atsidare": true,
+    "lb_h": 40,
+    "laukas_matomas": true,
+    "fokusas": true
+   }
+  }
+ }
+}
