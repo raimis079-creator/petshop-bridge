@@ -1,0 +1,206 @@
+{
+ "1": {
+  "v": "S1736c",
+  "faze": "1",
+  "hits": [
+   "petshop-av-dropship.php:27 [laisko_dalis] * manifesto PDF; laiško dalis — Tiekimas::laisko_dalis() (viena tiesos vieta).",
+   "petshop-av-dropship.php:194 [ps_dropship_send] add_action( 'admin_post_ps_dropship_send', [ __CLASS__, 'siusti' ] );",
+   "petshop-av-dropship.php:749 [laisko_dalis] if ( $gali ) { $partija_html = Petshop_AV_Tiekimas::laisko_dalis( $pp, $partija['eilutes'], (string) $pp->venipak_pack ); }",
+   "petshop-av-dropship.php:786 [laisko_html] $html = self::laisko_html( $src, $uzsakymai, $zyme, $partija_html );",
+   "petshop-av-dropship.php:816 [ps_dropship_send] <?php wp_nonce_field( 'ps_dropship_send' ); ?>",
+   "petshop-av-dropship.php:817 [ps_dropship_send] <input type=\"hidden\" name=\"action\" value=\"ps_dropship_send\">",
+   "petshop-av-dropship.php:960 [laisko_html] public static function laisko_html( $src, $uzsakymai, $pastaba = '', $partija_html = '' ) {",
+   "petshop-av-dropship.php:1016 [ps_dropship_send] check_admin_referer( 'ps_dropship_send' );",
+   "petshop-av-dropship.php:1047 [laisko_html] $h = self::laisko_html( $src, $uzsakymai, $pastaba, $partija_html );",
+   "petshop-av-tiekimas.php:1085 [laisko_dalis] $html = self::laisko_dalis( $part, $eil, $pack );",
+   "petshop-av-tiekimas.php:1103 [laisko_dalis] public static function laisko_dalis( $part, $eil, $pack = '' ) {",
+   "petshop-av-tiekimas.php:1175 [laisko_dalis] $body = '<p>Laba diena,</p><p>prašome paruošti šias prekes.</p>' . self::laisko_dalis( $part, $eil, $vp['pack'] )",
+   "petshop-darbalaukis.php:42 [ps_dropship_send] *   (`ideti_eilute`), pristatymas į partiją, tada — yra dropship užs. → variklio `ps_dropship_send` su `su_partija` (vienas laiškas); nėra → variklio `ps_tiekimas` `uzsakyti` (savas laiškas / ZB be la",
+   "petshop-darbalaukis.php:195 [ps_dropship_send] *   „Laukti“ kortelėje nebesiūlomas. „Kartu su Dropshipping iš [T]“ (kons) — tas pats `ps_dropship_send`, `_ps_dropship_sent_src` rašo; „veža į AV“",
+   "petshop-darbalaukis.php:248 [ps_dropship_send] *   `ps_dropship_send` parametras `be_lipduku` lieka — UI jo nebesiūlo); §18.3 sargo apėjimas `_ps_uzbaigti_be_siuntu` (v3.10.1) IŠIMTAS;",
+   "petshop-darbalaukis.php:333 [ps_dropship_send] *   ZB: Kopijuoti · Lipdukas · Perduota) ant esamo dropship variklio (`ps_dropship_send` / `zb_done` / `vp_reg`; grįžimas į",
+   "petshop-darbalaukis.php:1356 [ps_dropship_send] *  tada: yra pažymėtų Dropshipping užs. → variklio `ps_dropship_send` su `su_partija` (VIENAS laiškas); nėra → variklio `ps_tiekimas` `uzsakyti` (savas laiškas; ZB — be laiško). Variklis nekeistas. */",
+   "petshop-darbalaukis.php:1391 [ps_dropship_send] $_POST['_wpnonce'] = wp_create_nonce( 'ps_dropship_send' ); $_REQUEST['_wpnonce'] = $_POST['_wpnonce'];",
+   "petshop-darbalaukis.php:1392 [ps_dropship_send] do_action( 'admin_post_ps_dropship_send' ); // variklis: laiškas + lipdukai + partija (`uzdaryti_po_laisko`), grįžimas per `grizti_cia()`",
+   "petshop-darbalaukis.php:4020 [laisko_dalis] $perz_av = $m_prek && $tk ? Petshop_AV_Tiekimas::laisko_dalis( $prev_part, $prev_eil, '' ) : '';",
+   "petshop-darbalaukis.php:4021 [laisko_html] $perz = $uzs && class_exists( 'Petshop_AV_Dropship' ) ? str_replace( '<p style=\"margin:14px 0\">{{PRIERASAS}}</p>', '<p class=\"dl-perz-pastaba\" style=\"margin:14px 0;display:none\"></p>', Petshop_AV_Drop",
+   "petshop-uzsakymu-ivykiai.php:61 [ps_dropship_send] 'ps_dropship_send'     => array( 'dropship', 'laiskas' ),",
+   "petshop-uzsakymu-ivykiai.php:277 [ps_dropship_send] } elseif ( 'ps_dropship_send' === $a || 'ps_dropship_visi' === $a ) {"
+  ],
+  "cols": [
+   "id",
+   "product_id",
+   "source",
+   "supplier_sku",
+   "ean",
+   "stock_qty",
+   "cost_net",
+   "synced_at",
+   "is_active",
+   "is_sellable",
+   "priority",
+   "created_at",
+   "updated_at"
+  ],
+  "vf": {
+   "viso": 1249,
+   "sutampa": 1217,
+   "tuscias_supplier_sku": 10,
+   "skiriasi_n": 22,
+   "skiriasi": [
+    {
+     "product_id": "21267",
+     "supplier_sku": "AQ257994",
+     "sku": "ac7f43fcf282"
+    },
+    {
+     "product_id": "21316",
+     "supplier_sku": "JOS0616",
+     "sku": "f0895d584535"
+    },
+    {
+     "product_id": "21707",
+     "supplier_sku": "JOS0793",
+     "sku": "JOS0793-dubl-21707"
+    },
+    {
+     "product_id": "22159",
+     "supplier_sku": "G306302",
+     "sku": "e4ca4db507e6"
+    },
+    {
+     "product_id": "22993",
+     "supplier_sku": "871913804825",
+     "sku": "acaed149dcd6"
+    },
+    {
+     "product_id": "24783",
+     "supplier_sku": "JEL33705",
+     "sku": "9a187be50b8c"
+    },
+    {
+     "product_id": "25676",
+     "supplier_sku": "G306315",
+     "sku": "b2d16679400e"
+    },
+    {
+     "product_id": "26358",
+     "supplier_sku": "06-009",
+     "sku": "a811e4d85738"
+    },
+    {
+     "product_id": "27167",
+     "supplier_sku": "NOB61028",
+     "sku": "410544159465"
+    },
+    {
+     "product_id": "29770",
+     "supplier_sku": "Z-Y007PL",
+     "sku": "7fd461b04d84"
+    },
+    {
+     "product_id": "31874",
+     "supplier_sku": "Z-MM40RA",
+     "sku": "28171ac34502"
+    },
+    {
+     "product_id": "31977",
+     "supplier_sku": "Z-GS05HT",
+     "sku": "ecab2e67d19b"
+    },
+    {
+     "product_id": "32455",
+     "supplier_sku": "NOB78502-01",
+     "sku": "5ce9d279007b"
+    },
+    {
+     "product_id": "32457",
+     "supplier_sku": "NOB78551-01",
+     "sku": "c06c46c6d817"
+    },
+    {
+     "product_id": "35310",
+     "supplier_sku": "AM20",
+     "sku": "bc10054f8673"
+    },
+    {
+     "product_id": "35318",
+     "supplier_sku": "PM20",
+     "sku": "91100149f1e2"
+    },
+    {
+     "product_id": "35320",
+     "supplier_sku": "PM37",
+     "sku": "ab28457a0547"
+    },
+    {
+     "product_id": "35324",
+     "supplier_sku": "QM37",
+     "sku": "9c0099347111"
+    },
+    {
+     "product_id": "35332",
+     "supplier_sku": "HM37",
+     "sku": "3d260a09bd97"
+    },
+    {
+     "product_id": "35336",
+     "supplier_sku": "VM37",
+     "sku": "34a1f80539bd"
+    },
+    {
+     "product_id": "35344",
+     "supplier_sku": "DM20",
+     "sku": "fce93bc71b7c"
+    },
+    {
+     "product_id": "35346",
+     "supplier_sku": "DM37",
+     "sku": "2572d421eff9"
+    }
+   ]
+  },
+  "uzs": {
+   "1135": "nerasta",
+   "1137": "nerasta",
+   "1138": "nerasta",
+   "1139": "nerasta",
+   "1142": "nerasta"
+  },
+  "vf_meta_keys": [
+   "_vf_attached_to_existing",
+   "_vf_auto_published_at",
+   "_vf_barcode",
+   "_vf_brand_normalized",
+   "_vf_brand_raw",
+   "_vf_category_raw",
+   "_vf_cost",
+   "_vf_cost_xml",
+   "_vf_description_base64",
+   "_vf_duplicate_of",
+   "_vf_enabled",
+   "_vf_has_supplier",
+   "_vf_last_matched_import_post_id",
+   "_vf_last_sync",
+   "_vf_match_type",
+   "_vf_personal_cost",
+   "_vf_personal_xml",
+   "_vf_price_initialized",
+   "_vf_price_initialized_at",
+   "_vf_price_rule_used",
+   "_vf_qty",
+   "_vf_reprice_by_snippet_at",
+   "_vf_skip_reason",
+   "_vf_supplier_discount",
+   "_vf_supplier_sku",
+   "_vf_wc_sku"
+  ]
+ },
+ "v": "dep-071302",
+ "kurimas": 200,
+ "sid": 6724,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
