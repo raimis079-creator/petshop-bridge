@@ -1,0 +1,37 @@
+{
+ "1": {
+  "v": "S1740z",
+  "js": "<script>\n\t\t(function(){\n\t\t  var ov=document.getElementById('psw'); if(!ov) return;\n\t\t  if(/(?:^|; )<?php echo esc_js( self::COOKIE ); ?>=/.test(document.cookie)){ ov.remove(); return; }\n\t\t  if(/\\/(augintinio-profilis|skaiciuokle|kasa|krepselis)\\//.test(location.pathname)){ ov.remove(); return; }\n\t\t  var box=ov.querySelector('.psw-box'), grazinti=null, parodytas=false;\n\t\t  function cookie(){var d=new Date();d.setTime(d.getTime()+<?php echo (int) self::TYLA_DIENOS; ?>*864e5);\n\t\t\tdocument.cookie='<?php echo esc_js( self::COOKIE ); ?>=1;expires='+d.toUTCString()+';path=/;SameSite=Lax';}\n\t\t  function rodyk(){ if(parodytas) return; parodytas=true;\n\t\t\tgrazinti=document.activeElement; ov.hidden=false;\n\t\t\trequestAnimationFrame(function(){ov.classList.add('on');});\n\t\t\tvar f=box.querySelector('.psw-b1'); if(f) f.focus();\n\t\t\tdocument.removeEventListener('mouseout',exit); }\n\t\t  var uzdarytas=false;\n\t\t  function uzdaryk(){ if(uzdarytas) return; uzdarytas=true;\n\t\t\tov.classList.remove('on'); cookie();\n\t\t\tov.setAttribute('hidden','hidden'); ov.style.display='none';\n\t\t\tif(grazinti&&grazinti.focus) try{grazinti.focus();}catch(e){} }\n\t\t  function exit(e){ if(!e.relatedTarget && e.clientY<10) rodyk(); }\n\t\t  ov.querySelector('.psw-x').addEventListener('click',uzdaryk);\n\t\t  ov.querySelectorAll('.psw-b1').forEach(function(a){ a.addEventListener('click',cookie); });\n\t\t  ov.addEventListener('click',function(e){ if(e.target===ov) uzdaryk(); });\n\t\t  document.addEventListener('keydown',function(e){\n\t\t\tif((e.key==='Escape'||e.key==='Esc'||e.keyCode===27) && !ov.hidden){\n\t\t\t  e.preventDefault(); e.stopPropagation(); uzdaryk(); }\n\t\t  }, true);   // capture — kad laukas viduje neperimtu ESC\n\t\t  var b2=ov.querySelector('button.psw-b2');\n\t\t  if(b2) b2.addEventListener('click',function(){\n\t\t\tthis.hidden=true; ov.querySelector('.psw-nl').hidden=false;\n\t\t\tvar i=ov.querySelector('.psnl-email'); if(i) i.focus(); });\n\t\t  function cmplzOk(){ if(/(?:^|; )cmplz_banner-status=/.test(document.cookie)) return true;\n\t\t\treturn !document.getElementById('cmplz-cookiebanner-js'); /* Complianz yra — laukiam, kol lankytojas uždarys juostą (slapukas) */ }\n\t\t  var bandymai=0;\n\t\t  function planuok(){ if(cmplzOk()){ setTimeout(rodyk, <?php echo (int) $delsa * 1000; ?>);\n\t\t\t<?php if ( ! $b ) : ?>if(window.matchMedia('(min-width:768px)').matches) document.addEventListener('mouseout',exit);<?php endif; ?>\n\t\t\t} else if(++bandymai<300){ setTimeout(planuok,1000); } }\n\t\t  planuok();\n\t\t})();\n\t\t</script>",
+  "anketa_pv": [
+   {
+    "irenginys": "desktop",
+    "n": "6",
+    "l": "6"
+   },
+   {
+    "irenginys": "mobile",
+    "n": "113",
+    "l": "80"
+   }
+  ],
+  "anketa_pirmas_puslapis": [
+   {
+    "ir": "desktop",
+    "n": "5",
+    "per20s": "1"
+   },
+   {
+    "ir": "mobile",
+    "n": "79",
+    "per20s": "58"
+   }
+  ]
+ },
+ "v": "dep-200706",
+ "kurimas": 200,
+ "sid": 6800,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
