@@ -1,0 +1,161 @@
+{
+ "1": {
+  "v": "S1740f",
+  "faze": "1",
+  "atc_vieta": [
+   {
+    "irenginys": "desktop",
+    "vieta": "preke",
+    "lank": "68",
+    "n": "221"
+   },
+   {
+    "irenginys": "desktop",
+    "vieta": "sarasas",
+    "lank": "35",
+    "n": "270"
+   },
+   {
+    "irenginys": "desktop",
+    "vieta": "pradinis",
+    "lank": "10",
+    "n": "16"
+   },
+   {
+    "irenginys": "desktop",
+    "vieta": "kita",
+    "lank": "2",
+    "n": "2"
+   },
+   {
+    "irenginys": "mobile",
+    "vieta": "preke",
+    "lank": "169",
+    "n": "602"
+   },
+   {
+    "irenginys": "mobile",
+    "vieta": "sarasas",
+    "lank": "83",
+    "n": "248"
+   },
+   {
+    "irenginys": "mobile",
+    "vieta": "pradinis",
+    "lank": "19",
+    "n": "26"
+   },
+   {
+    "irenginys": "mobile",
+    "vieta": "kita",
+    "lank": "10",
+    "n": "20"
+   },
+   {
+    "irenginys": "tablet",
+    "vieta": "preke",
+    "lank": "1",
+    "n": "2"
+   },
+   {
+    "irenginys": "tablet",
+    "vieta": "sarasas",
+    "lank": "1",
+    "n": "1"
+   }
+  ],
+  "preke_atc_telefonas": [
+   {
+    "kan": "mokamas",
+    "perziurejo": "904",
+    "idejo_prekeje": "114"
+   },
+   {
+    "kan": "organika",
+    "perziurejo": "256",
+    "idejo_prekeje": "20"
+   },
+   {
+    "kan": "-",
+    "perziurejo": "57",
+    "idejo_prekeje": "17"
+   },
+   {
+    "kan": "ai",
+    "perziurejo": "52",
+    "idejo_prekeje": "7"
+   },
+   {
+    "kan": "direct",
+    "perziurejo": "12",
+    "idejo_prekeje": "4"
+   },
+   {
+    "kan": "soc_organika",
+    "perziurejo": "10",
+    "idejo_prekeje": "5"
+   },
+   {
+    "kan": "referral",
+    "perziurejo": "8",
+    "idejo_prekeje": "2"
+   },
+   {
+    "kan": "email",
+    "perziurejo": "1",
+    "idejo_prekeje": "0"
+   }
+  ],
+  "reklama_stulp": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ]
+ },
+ "2": {
+  "v": "S1740f",
+  "faze": "2",
+  "cols": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ],
+  "nerasta": [
+   "kampanija_id",
+   null
+  ]
+ },
+ "v": "dep-183147",
+ "kurimas": 200,
+ "sid": 6778,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
