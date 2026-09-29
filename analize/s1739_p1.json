@@ -1,0 +1,37 @@
+{
+ "1": {
+  "v": "S1739p",
+  "faze": "1",
+  "ivykiai_kandidatai": 547,
+  "ivykiai_keisti": 547,
+  "ivykiai_is": {
+   "referral": 481,
+   "soc_organika": 66
+  },
+  "uzsakymai_keisti": {
+   "35931": {
+    "pirmas": "referral",
+    "paskutinis": "referral"
+   },
+   "35941": {
+    "pirmas": "referral",
+    "paskutinis": "referral"
+   },
+   "36291": {
+    "pirmas": "referral",
+    "paskutinis": "referral"
+   },
+   "36574": {
+    "pirmas": "soc_organika",
+    "paskutinis": "soc_organika"
+   }
+  }
+ },
+ "v": "dep-174842",
+ "kurimas": 200,
+ "sid": 6771,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
