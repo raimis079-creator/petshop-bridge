@@ -1,0 +1,54 @@
+{
+ "1": {
+  "v": "S1740gg3",
+  "shots": [
+   {
+    "n": "gg0",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844
+   },
+   {
+    "n": "gg1",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?yith_wcan=1&product_cat=sausas-maistas-sunims&filter_be_grudu=be-grudu",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{const q=s=>document.querySelector(s);const f=[...document.querySelectorAll('#shop-sidebar .yith-wcan-filter.label-design .filter-item')];const o=f.map(li=>{const a=li.querySelector('a,label');const c=a?getComputedStyle(a):null;const cl=getComputedStyle(li);return li.className+' | a:'+(a?a.className:'')+' | col:'+(c?c.color:'')+' bg:'+(c?c.backgroundColor:'')+' li_bg:'+cl.backgroundColor+' | '+(li.innerText||'').trim();});const b=q('.category-filtering .filter-button');const cs=b?getComputedStyle(b):null;const fl=q('.category-filtering');return {etiketes:o.slice(0,6),html_aktyvi:(f.find(li=>/active|chosen/.test(li.className))||{outerHTML:''}).outerHTML.replace(/\\s+/g,' ').slice(0,600),btn_margin:cs?cs.marginTop+' '+cs.marginBottom+' '+cs.verticalAlign:null,fl_pad:fl?getComputedStyle(fl).paddingTop+' h'+fl.offsetHeight+' lh'+getComputedStyle(fl).lineHeight:null}})()"
+   }
+  ]
+ },
+ "v": "dep-205917",
+ "kurimas": 200,
+ "sid": 6810,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "gg0": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": []
+  },
+  "gg1": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?yith_wcan=1&product_cat=sausas-maistas-sunims&filter_be_grudu=be-grudu",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "etiketes": [
+     "filter-item label active level-0 no-color label-below | a: | col:rgb(67, 67, 67) bg:rgb(255, 255, 255) li_bg:rgba(0, 0, 0, 0) | Be grūdų",
+     "filter-item label  level-0 no-color label-below | a: | col:rgb(67, 67, 67) bg:rgb(255, 255, 255) li_bg:rgba(0, 0, 0, 0) | Su grūdais",
+     "filter-item label  level-0 no-color label-below | a: | col:rgb(67, 67, 67) bg:rgb(255, 255, 255) li_bg:rgba(0, 0, 0, 0) | Su ryžiais",
+     "filter-item label  level-0 no-color label-below | a: | col:rgb(67, 67, 67) bg:rgb(244, 245, 244) li_bg:rgba(0, 0, 0, 0) | Jauniems",
+     "filter-item label  level-0 no-color label-below | a: | col:rgb(67, 67, 67) bg:rgb(244, 245, 244) li_bg:rgba(0, 0, 0, 0) | Senjorams",
+     "filter-item label  level-0 no-color label-below | a: | col:rgb(67, 67, 67) bg:rgb(244, 245, 244) li_bg:rgba(0, 0, 0, 0) | Senyviems"
+    ],
+    "html_aktyvi": "<li class=\"filter-item label active level-0 no-color label-below\"> <a href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims?yith_wcan=1&amp;product_cat=sausas-maistas-sunims\" role=\"button\" data-term-id=\"409\" data-term-slug=\"be-grudu\" rel=\"nofollow\"> <span class=\"term-label\"> Be grūdų </span> </a> </li>",
+    "btn_margin": "7.5px 0px baseline",
+    "fl_pad": "0px h77 lh25.6px"
+   }
+  }
+ }
+}
