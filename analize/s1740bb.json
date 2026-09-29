@@ -1,0 +1,37 @@
+{
+ "1": {
+  "v": "S1740bb",
+  "md5": [
+   "9a1426b10c69c8ce6005fe2276f59475",
+   "0e984d2342cf3df12a6c29f3fb1a92cb"
+  ],
+  "ivykiai_60min": [],
+  "paskutinis_ivykis": "2026-09-29 20:12:23",
+  "db_now": "2026-09-29 23:14:23",
+  "uzsakymai_siandien": "14",
+  "greitis_ms": {
+   "josera 15 kg": "158 ms / 228",
+   "exclusion hypoallergenic": "135 ms / 49",
+   "kraikas katems": "108 ms / 100"
+  },
+  "klaidos": [
+   "[29-Sep-2026 20:02:18 UTC] PHP Warning:  file_exists(): open_basedir restriction in effect. File(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/themes/flatsome/page-templates/../../../../../../../../wp-links-op",
+   "[29-Sep-2026 20:02:18 UTC] PHP Warning:  file_exists(): open_basedir restriction in effect. File(/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/theme-compat/page-templates/../../../../../../../../wp-links-opml",
+   "[29-Sep-2026 20:02:36 UTC] PHP Warning:  file_exists(): open_basedir restriction in effect. File(/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/theme-compat/page-templates/../../../../../../../wp-links-opml.ph",
+   "[29-Sep-2026 20:02:42 UTC] PHP Warning:  file_exists(): open_basedir restriction in effect. File(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/themes/flatsome-child/page-templates/../../../../../../../../wp-li",
+   "[29-Sep-2026 20:02:42 UTC] PHP Warning:  file_exists(): open_basedir restriction in effect. File(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/themes/flatsome/page-templates/../../../../../../../../wp-links-op",
+   "[29-Sep-2026 20:02:42 UTC] PHP Warning:  file_exists(): open_basedir restriction in effect. File(/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/theme-compat/page-templates/../../../../../../../../wp-links-opml",
+   "[29-Sep-2026 20:03:02 UTC] PHP Warning:  file_exists(): open_basedir restriction in effect. File(/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/theme-compat/page-templates/../../../../../../../wp-links-opml.ph",
+   "[29-Sep-2026 20:03:09 UTC] PHP Warning:  file_exists(): open_basedir restriction in effect. File(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/themes/flatsome-child/page-templates/../../../../../../../../wp-li",
+   "[29-Sep-2026 20:03:09 UTC] PHP Warning:  file_exists(): open_basedir restriction in effect. File(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/themes/flatsome/page-templates/../../../../../../../../wp-links-op",
+   "[29-Sep-2026 20:03:09 UTC] PHP Warning:  file_exists(): open_basedir restriction in effect. File(/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/theme-compat/page-templates/../../../../../../../../wp-links-opml"
+  ]
+ },
+ "v": "dep-201316",
+ "kurimas": 200,
+ "sid": 6802,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
