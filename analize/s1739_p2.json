@@ -1,0 +1,82 @@
+{
+ "2": {
+  "v": "S1739p",
+  "faze": "2",
+  "ivykiai_kandidatai": 547,
+  "ivykiai_keisti": 547,
+  "ivykiai_is": {
+   "referral": 481,
+   "soc_organika": 66
+  },
+  "uzsakymai_keisti": {
+   "35931": {
+    "pirmas": "referral",
+    "paskutinis": "referral"
+   },
+   "35941": {
+    "pirmas": "referral",
+    "paskutinis": "referral"
+   },
+   "36291": {
+    "pirmas": "referral",
+    "paskutinis": "referral"
+   },
+   "36574": {
+    "pirmas": "soc_organika",
+    "paskutinis": "soc_organika"
+   }
+  },
+  "atnaujinta": {
+   "ivykiai": 547,
+   "fakt": 4
+  }
+ },
+ "3": {
+  "v": "S1739p",
+  "faze": "3",
+  "ivykiai_ai": [
+   {
+    "kanalas": "ai",
+    "lank": "89",
+    "iv": "547"
+   }
+  ],
+  "fakt_ai": [
+   {
+    "uzsakymas_id": "35931",
+    "diena": "2026-09-14",
+    "kanalas_pirmas": "ai",
+    "kanalas_paskutinis": "ai",
+    "eur": "15.95"
+   },
+   {
+    "uzsakymas_id": "35941",
+    "diena": "2026-09-14",
+    "kanalas_pirmas": "ai",
+    "kanalas_paskutinis": "ai",
+    "eur": "19.20"
+   },
+   {
+    "uzsakymas_id": "36291",
+    "diena": "2026-09-24",
+    "kanalas_pirmas": "ai",
+    "kanalas_paskutinis": "ai",
+    "eur": "30.18"
+   },
+   {
+    "uzsakymas_id": "36574",
+    "diena": "2026-09-29",
+    "kanalas_pirmas": "ai",
+    "kanalas_paskutinis": "ai",
+    "eur": "40.26"
+   }
+  ]
+ },
+ "v": "dep-175038",
+ "kurimas": 200,
+ "sid": 6772,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
