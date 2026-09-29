@@ -1,35 +1,20 @@
 {
- "2": {
-  "v": "S1736q",
-  "faze": "2",
-  "fail": {
-   "petshop-av-dropship.php": {
-    "live_ok": true,
-    "new_ok": true,
-    "tok": true
-   },
-   "petshop-av-tiekimas.php": {
-    "live_ok": true,
-    "new_ok": true,
-    "tok": true
-   }
-  },
-  "visi_ok": true,
-  "bak": {
-   "petshop-av-dropship.php": "b2e49184bb599fd9db8bb4897283455f",
-   "petshop-av-tiekimas.php": "37d1128e5883f0463fec9f48eac6a48f"
-  },
-  "irasyta": {
-   "petshop-av-dropship.php": "4a6b0b5641880c6bc920c386c7b2c3e7",
-   "petshop-av-tiekimas.php": "59cbf8f9757653a41c732c54280fd094"
-  },
-  "hb": 200
- },
- "v": "dep-163044",
+ "v": "dep-163203",
  "kurimas": 200,
- "sid": 6750,
+ "sid": 6751,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "3s": {
+  "v": "S1736q",
+  "faze": "3s",
+  "live": {
+   "petshop-av-dropship.php": true,
+   "petshop-av-tiekimas.php": true
+  },
+  "csv_turinys": "﻿\"Užsakymo nr.\";Gavėjas;\"Prekės kodas\";Prekė;Kiekis\r\n1210;\"Rasa Bernotaite\";HYPS06;\"Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg\";1\r\n1211;\"Giedrė Čibiraitė\";FLEXI013;\"FLEXI pavadėlis šuniui New Comfort S juostinis 5m, rožinis\";1\r\n1212;\"Raimondas Kereisis\";HYPM11;\"Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg\";1\r\n1217;\"Arūnas Kiršis\";HYPS06;\"Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg\";1\r\n1226;\"Hanna Kostiushka\";JOS0622;\"Josidog Regular 15 kg - sausas maistas šunims\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";20508;\"Antos WILD šaltyje džiovinti skanėstai šunims, jaučio plaučiai, 80g\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";EUD610;\"Churu kreminis skanėstas šunims su lašiša ir daržovėmis N4\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";EUD606;\"Churu kreminis skanėstas šunims su tunu N4\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";NOB51955;\"Nobby silikoninis skanėstų dėklas, pilkas, 12,5x 4x10,5 cm\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";EU692;\"Churu kreminis skanėstas kačiukams su vištiena, 4vnt\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";JOS0767;\"Josera Kitten Turkey begrūdis konservuotas pašaras jaunoms katėms su kalakutiena, 200 g\";2\r\nTIEK-34;\"UAB Avesa (sandėlis)\";JOS0629;\"Josera Kitten Chicken begrūdis konservuotas pašaras jaunoms katėms su vištiena, 200 g\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";JOS0761;\"Josera Kitten Beef begrūdis konservuotas pašaras jaunoms katėms su jautiena, 200 g\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";JOS0853;\"Josera Kitten Duck konservuotas pašaras kačiukams su antiena, 85g\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";JOS0854;\"Josera Kitten Salmon konservuotas pašaras kačiukams su lašiša, 85g\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";JOS0803;\"Josera Kitten sausas pašaras jaunoms katėms su paukštiena, 400 g\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";JOS0442;\"Josera Cat 654 Kitten pate konservai kačiukams, 85g\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";EU692;\"Churu kreminis skanėstas kačiukams su vištiena, 4vnt\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";JOS0528;\"Josera Meat Lovers Pure Lamb konservuotas pašaras šunims su ėriena, 400 g\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";440616;\"Landfleisch konservai šunims Extra mager, jautiena+ryžiai, 400g\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";404842214604;\"8in1 Meaty Treats šaltyje džiovintos antienos skanėstai šunims, 50 g\";1\r\nTIEK-34;\"UAB Avesa (sandėlis)\";AQ238384;\"Comfy appetit skanėstas šunims, jaut. prieskrandžiai, 100g\";1\r\n",
+  "av_antraste": "UAB Avesa, Liucionių g. 46 · užsakymo nr. TIEK-34Prekė",
+  "wp_mail": true
  }
 }
