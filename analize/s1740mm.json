@@ -1,0 +1,149 @@
+{
+ "1": {
+  "v": "S1740mm",
+  "faze": "1",
+  "md5": "6f23c1b077482c90ecfae42a2ce08256"
+ },
+ "2": {
+  "v": "S1740mm",
+  "faze": "2",
+  "shots": [
+   {
+    "n": "ll0",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844
+   },
+   {
+    "n": "ll1_skydas",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844,
+    "click": ".category-filtering .filter-button",
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(1500);const f=document.querySelector('.yith-wcan-filter[data-taxonomy=\"product_brand\"]');const c=f?f.querySelector('.filter-content'):null;const dd=f?f.querySelector('.yith-wcan-dropdown, .dropdown-label'):null;const r=dd?dd.getBoundingClientRect():null;return {klase:f?f.className:null,turinys:c?getComputedStyle(c).display:null,dropdown:dd?dd.className+' | '+(dd.innerText||'').trim().slice(0,40)+' @'+Math.round(r.top)+'-'+Math.round(r.bottom):null,dd_html:f?(f.querySelector('.yith-wcan-dropdown')||{outerHTML:''}).outerHTML.replace(/\\s+/g,' ').slice(0,700):null}})()"
+   },
+   {
+    "n": "ll2_sarasas",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844,
+    "click": ".category-filtering .filter-button",
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(1500);const f=document.querySelector('#shop-sidebar .yith-wcan-filter[data-taxonomy=\"product_brand\"]');if(!f)return 'nera';const lab=f.querySelector('.dropdown-label');if(lab)lab.click();await w(700);const li=[...f.querySelectorAll('.matching-items li, .dropdown-wrapper li')];const opts=li.map(x=>(x.innerText||'').trim()).slice(0,6);const jo=li.find(x=>/^\\s*Josera/i.test(x.innerText||''));return {placeholder:(f.querySelector('.search-field')||{}).placeholder,atidaryta:f.querySelector('.yith-wcan-dropdown')?f.querySelector('.yith-wcan-dropdown').className:null,pirmi:opts,josera:!!jo,paieska:!!f.querySelector('.dropdown-wrapper input[type=search], .dropdown-wrapper input')}})()"
+   },
+   {
+    "n": "ll3_josera",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844,
+    "click": ".category-filtering .filter-button",
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(1500);const f=document.querySelector('#shop-sidebar .yith-wcan-filter[data-taxonomy=\"product_brand\"]');if(!f)return 'nera';const lab=f.querySelector('.dropdown-label');if(lab)lab.click();await w(700);const li=[...f.querySelectorAll('.matching-items li, .dropdown-wrapper li')];const jo=li.find(x=>/^\\s*Josera/i.test(x.innerText||''));if(!jo)return 'josera nerasta';(jo.querySelector('a,label,input')||jo).click();await w(4500);const t=[...document.querySelectorAll('.product-small .product-title, .product-small .name')].slice(0,4).map(x=>x.innerText.trim().slice(0,40));return {url:location.search,prekes:t,zenklas:(document.querySelector('.ps-fcnt')||{}).textContent,aktyvus:[...document.querySelectorAll('.yith-wcan-active-filters a, .active-filter-label')].map(x=>x.innerText.trim()).slice(0,4)}})()"
+   },
+   {
+    "n": "ll5_josera_url",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?yith_wcan=1&product_brand=josera",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>({zenklas:(document.querySelector('.ps-fcnt')||{}).textContent,paslepta:(document.querySelector('.ps-fcnt')||{}).hidden}))()"
+   },
+   {
+    "n": "ll4_desk",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 1440,
+    "h": 900,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));await w(1500);const f=document.querySelector('.yith-wcan-filter[data-taxonomy=\"product_brand\"]');const c=f?f.querySelector('.filter-content'):null;const dd=f?f.querySelector('.yith-wcan-dropdown, .dropdown-label'):null;const r=dd?dd.getBoundingClientRect():null;return {klase:f?f.className:null,turinys:c?getComputedStyle(c).display:null,dropdown:dd?dd.className+' | '+(dd.innerText||'').trim().slice(0,40)+' @'+Math.round(r.top)+'-'+Math.round(r.bottom):null,dd_html:f?(f.querySelector('.yith-wcan-dropdown')||{outerHTML:''}).outerHTML.replace(/\\s+/g,' ').slice(0,700):null}})()"
+   }
+  ]
+ },
+ "v": "dep-213452",
+ "kurimas": 200,
+ "sid": 6815,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "ll0": {
+   "status": 200,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "ll1_skydas": {
+   "status": 200,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "clicked": ".category-filtering .filter-button",
+   "eval": {
+    "klase": "yith-wcan-filter filter-tax select-design",
+    "turinys": "block",
+    "dropdown": "yith-wcan-dropdown closed | Visi prekės ženklai @460-503",
+    "dd_html": "<div class=\"yith-wcan-dropdown closed\" tabindex=\"0\"><div class=\"dropdown-label\">Visi prekės ženklai</div><div class=\"dropdown-wrapper\"><div class=\"search-field-container\"><input name=\"s\" class=\"search-field\" type=\"search\" placeholder=\"Ieškoti prekės ženklo…\" autocomplete=\"off\"></div><ul class=\"matching-items filter-items\"></ul><a class=\"show-more\" style=\"display: none;\">Rodyti daugiau</a></div></div>"
+   }
+  },
+  "ll2_sarasas": {
+   "status": 200,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "clicked": ".category-filtering .filter-button",
+   "eval": {
+    "placeholder": "Ieškoti prekės ženklo…",
+    "atidaryta": "yith-wcan-dropdown open",
+    "pirmi": [
+     "Ambrosia",
+     "Eukanuba",
+     "Exclusion",
+     "Family Dog",
+     "Farmina",
+     "Gemon"
+    ],
+    "josera": true,
+    "paieska": true
+   }
+  },
+  "ll3_josera": {
+   "status": 200,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?yith_wcan=1&product_brand=josera",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [
+    "pageerror: Uncaught NotSupportedError: Failed to execute 'define' on 'CustomElementRegistry': the name \"wc-order-attribution-inputs\" has already been used with this registry",
+    "pageerror: SyntaxError: Failed to execute 'appendChild' on 'Node': Identifier 'cmplz_cookie_data' has already been declared"
+   ],
+   "clicked": ".category-filtering .filter-button",
+   "eval": {
+    "url": "?yith_wcan=1&product_brand=josera",
+    "prekes": [
+     "Josera A/S Chicken&Rice 12,5 kg – sausas",
+     "Josera Adult Chicken and Rice M/M sausas",
+     "JOSERA BALANCE pašaras šunims su vištien",
+     "JOSERA FESTIVAL pašaras šunims su lašiša"
+    ],
+    "zenklas": "1",
+    "aktyvus": []
+   }
+  },
+  "ll5_josera_url": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?yith_wcan=1&product_brand=josera",
+   "title": "Josera – sausas maistas šunims ir katėms | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "zenklas": "1",
+    "paslepta": false
+   }
+  },
+  "ll4_desk": {
+   "status": 200,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "klase": "yith-wcan-filter filter-tax select-design",
+    "turinys": "block",
+    "dropdown": "yith-wcan-dropdown closed | Visi prekės ženklai @980-1024",
+    "dd_html": "<div class=\"yith-wcan-dropdown closed\" tabindex=\"0\"><div class=\"dropdown-label\">Visi prekės ženklai</div><div class=\"dropdown-wrapper\"><div class=\"search-field-container\"><input name=\"s\" class=\"search-field\" type=\"search\" placeholder=\"Ieškoti prekės ženklo…\" autocomplete=\"off\"></div><ul class=\"matching-items filter-items\"></ul><a class=\"show-more\" style=\"display: none;\">Rodyti daugiau</a></div></div>"
+   }
+  }
+ }
+}
