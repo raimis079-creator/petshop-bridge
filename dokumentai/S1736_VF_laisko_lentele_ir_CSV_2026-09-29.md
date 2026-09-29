@@ -51,3 +51,17 @@ Vetfarmas (09-29): (1) užsakymų lentelę siųsti ir prisegtu failu (xls/csv), 
 **Patikra:** prieš — „Rodoma 1–24 iš 186“, po — **„iš 235“** (nekešuotas URL, atskira užklausa); heartbeat 200. Atstatymas — `s1736/j.php` fazė 9. Repo `deploy/petshop-dydziai-katalogas-v1.3.php`, `irankiai/s1736_h/i/j.php`.
 
 **Pasekmė (R žinojo):** DP kategorijoje ta pati prekė gali būti keliomis kortelėmis (2×2 kg ir 2×10 kg).
+
+---
+
+# S1736 (3) — tikroji vieta: meniu puslapis `/daugiau-pigiau/` rodė 48 iš 235 (09-29 15:50)
+
+**Klaida mano:** (2) taisiau kategoriją `/kategorija/daugiau-pigiau/`, bet meniu „Daugiau = pigiau“ (nav item 2971) veda į PUSLAPĮ `/daugiau-pigiau/` (ID 34476, turinys `[psc_daugiau_pigiau]`). Raimis: „meluoji, nieko nepadarei“ — teisingai, jo matomas puslapis nepasikeitė. Pamoka: prieš taisant — patikrinti, kur veda meniu nuoroda, kurią mato Raimis.
+
+**Priežastis:** snippet **570** „Petshop Daugiau=Pigiau Puslapis Shortcode v1.0“ (2026-07-05): `array_slice(..., 0, 48)` be puslapiavimo, o mygtukas rodo „Visos (235)“.
+
+**Sprendimas (R „taip daryk su puslapiais“):** snippet 570 **v1.1** GYVAI 15:48 (md5 8b17aa91… → 436f0a19…, bak opcija `ps_s1736_snip570_bak` gz+b64): nebekarpoma, `[products ids=… limit=48 paginate="true" orderby="post__in"]` → po 48 puslapyje, `?product-page=N`, filtras `?gyvunas=` veikia kartu. Super Cache `/daugiau-pigiau/` išvalytas.
+
+**Patikra (nekešuotas URL, atskira užklausa):** prieš — 48 prekės, puslapių nėra; po — 1–4 psl. po 48, 5 psl. 43 (= 235), puslapiai 1–5; Katėms 48 + 36. Heartbeat 200. Atstatymas — `s1736/o.php` fazė 9. Repo `deploy/snippet-570-v1.1.php`, `irankiai/s1736_k–o.php`.
+
+Kategorijos pataisa (2) palikta — ji teisinga ir nekenkia (kategorija pasiekiama per prekių kategorijų nuorodas).
