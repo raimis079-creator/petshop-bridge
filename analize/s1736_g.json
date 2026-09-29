@@ -1,7 +1,14 @@
 {
- "3": {
+ "v": "dep-073620",
+ "kurimas": 200,
+ "sid": 6730,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "3s": {
   "v": "S1736g",
-  "faze": "3",
+  "faze": "3s",
   "live": {
    "petshop-av-dropship.php": true,
    "petshop-av-tiekimas.php": true
@@ -70,13 +77,8 @@
      }
     ]
    }
-  }
- },
- "v": "dep-073230",
- "kurimas": 200,
- "sid": 6729,
- "sa_push": {
-  "status": 404,
-  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+  },
+  "wp_mail": true,
+  "klaida": ""
  }
 }
