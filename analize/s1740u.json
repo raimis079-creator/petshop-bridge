@@ -1,0 +1,117 @@
+{
+ "1": {
+  "v": "S1740u",
+  "mods": {
+   "topbar_elements_left": [
+    "html",
+    "html-2"
+   ],
+   "topbar_elements_right": [
+    "nav-top"
+   ],
+   "header_elements_left": [
+    "search-form"
+   ],
+   "header_elements_right": [
+    "account",
+    "divider",
+    "cart"
+   ],
+   "header_elements_bottom_left": [
+    "nav"
+   ],
+   "header_elements_bottom_center": [],
+   "header_elements_bottom_right": [],
+   "header_mobile_elements_left": [
+    "menu-icon"
+   ],
+   "header_mobile_elements_right": [
+    "cart"
+   ],
+   "header_mobile_elements_top": [
+    "html"
+   ],
+   "header_search_style": "dropdown",
+   "header_search_form_style": "",
+   "search_placeholder": "Ieškoti prekių ...",
+   "header_search_width": "93",
+   "search_result": 0
+  },
+  "failai": {
+   "ps-wask": [
+    "wp-content/plugins/petshop-core/includes/class-weight-filter.php"
+   ],
+   "cmplz-cookiebanner": [
+    "wp-content/plugins/petshop-core/includes/class-welcome-modal.php"
+   ]
+  },
+  "cmplz_opt": {
+   "cookie_banner_required": "1",
+   "enable_cookie_banner": "yes"
+  },
+  "cmplz_banner": [
+   {
+    "position": "bottom-right",
+    "banner_width": "620",
+    "use_custom_cookie_css": "1",
+    "custom_css": "/* ===== PETSHOP COMPLIANZ BANNER CSS v2 (desktop mygtuku eilute + mobile sticky juosta) ===== */\n\n/* --- Desktop: 3 mygtukai vienoje eiluteje (issaugota is layout_fix) --- */\n.cmplz-cookiebanner .cmplz-buttons {\n\tdisplay: flex !important;\n\tflex-direction: row !important;\n\tflex-wrap: nowrap !important;\n\tgap: 8px !important;\n\twidth: 100% !important;\n\toverflow-x: hidden !important;\n}\n.cmplz-cookieba",
+    "colorpalette_toggles": "a:3:{s:10:\"background\";s:7:\"#2D5F3F\";s:6:\"bullet\";s:7:\"#ffffff\";s:8:\"inactive\";s:4:\"#555\";}",
+    "font_size": "12",
+    "buttons_border_radius": "a:5:{s:3:\"top\";i:6;s:5:\"right\";i:6;s:6:\"bottom\";i:6;s:4:\"left\";i:6;s:4:\"type\";s:2:\"px\";}"
+   }
+  ],
+  "shots": [
+   {
+    "n": "e1_kat",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{const e=document.querySelector('.ps-wask');const c=document.querySelector('.cmplz-cookiebanner');return {wask:e?e.outerHTML.replace(/\\s+/g,' ').slice(0,3000):null,wask_h:e?e.offsetHeight:null,cmplz_vaikai:c?[...c.children].map(x=>x.className+':'+x.offsetHeight+':'+getComputedStyle(x).display).join(' | '):null,cmplz_buttons:c?(c.querySelector('.cmplz-buttons')||{}).outerHTML?.slice(0,900):null,cmplz_docs:c?(c.querySelector('.cmplz-documents, .cmplz-links')||{}).outerHTML?.slice(0,700):null,cmplz_title_disp:c?getComputedStyle(c.querySelector('.cmplz-title')).display:null}})()"
+   },
+   {
+    "n": "e2_desk",
+    "u": "https://petshop.lt/",
+    "w": 1440,
+    "h": 900,
+    "eval": "(()=>({paieska_desk:[...document.querySelectorAll('.header-search, .header-search-form, .searchform')].map(e=>e.className+':'+e.offsetWidth+'x'+e.offsetHeight).slice(0,5)}))()"
+   }
+  ]
+ },
+ "v": "dep-194045",
+ "kurimas": 200,
+ "sid": 6794,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "e1_kat": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "wask": "<form class=\"ps-wask\" method=\"get\"> <input type=\"hidden\" name=\"ps_species\" value=\"dog\"> <div class=\"ps-wask-t\">Kiek kainuos diena jūsų augintiniui?</div> <div class=\"ps-wask-s\">Nurodykite svorį — prie kiekvieno maisto parodysime, kiek pakuotės užteks ir kiek kainuos viena diena.</div> <div class=\"ps-wask-row\"> <span class=\"ps-wask-unit\"> <input type=\"number\" name=\"ps_weight\" min=\"0.5\" max=\"120\" step=\"0.1\" inputmode=\"decimal\" placeholder=\"0\" aria-label=\"Kiek sveria jūsų šuo?\"> <i>kg</i> </span> <button type=\"submit\">Skaičiuoti →</button> </div> </form>",
+    "wask_h": 167,
+    "cmplz_vaikai": "cmplz-header:20:grid | cmplz-divider cmplz-divider-header:0:block | cmplz-body:66:block | cmplz-links cmplz-information:0:none | cmplz-divider cmplz-footer:0:block | cmplz-buttons:45:flex | cmplz-documents cmplz-links:25:flex",
+    "cmplz_buttons": "<div class=\"cmplz-buttons\">\n\t\t<button class=\"cmplz-btn cmplz-accept\">Priimti</button>\n\t\t<button class=\"cmplz-btn cmplz-deny\">Atmesti</button>\n\t\t<button class=\"cmplz-btn cmplz-view-preferences\">Nuostatos</button>\n\t\t<button class=\"cmplz-btn cmplz-save-preferences\">Išsaugoti nuostatas</button>\n\t\t<a class=\"cmplz-btn cmplz-manage-options tcf cookie-statement\" href=\"https://petshop.lt/slapuku-politika/#cmplz-manage-consent-container\" data-relative_url=\"#cmplz-manage-consent-container\">Nuostatos</a>\n\t\t\t</div>",
+    "cmplz_docs": "<div class=\"cmplz-links cmplz-information\">\n\t\t<ul>\n\t\t\t<li><a class=\"cmplz-link cmplz-manage-options cookie-statement\" href=\"https://petshop.lt/slapuku-politika/#cmplz-manage-consent-container\" data-relative_url=\"#cmplz-manage-consent-container\">Tvarkyti parinktis</a></li>\n\t\t\t<li><a class=\"cmplz-link cmplz-manage-third-parties cookie-statement\" href=\"https://petshop.lt/slapuku-politika/#cmplz-cookies-overview\" data-relative_url=\"#cmplz-cookies-overview\">Tvarkyti paslaugas</a></li>\n\t\t\t<li><a class=\"cmplz-link cmplz-manage-vendors tcf cookie-statement\" href=\"https://petshop.lt/slapuku-politika/#cmplz-tcf-wrapper\" data-relative_url=\"#cmplz-tcf-wrapper\">Tvarkyti {vendor_count} pardavėjus</a></li>",
+    "cmplz_title_disp": "none"
+   }
+  },
+  "e2_desk": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "paieska_desk": [
+     "header-search-form search-form html relative has-icon:594x34",
+     "searchform:594x34",
+     "header-search-form search-form html relative has-icon:0x0",
+     "searchform:0x0"
+    ]
+   }
+  }
+ }
+}
