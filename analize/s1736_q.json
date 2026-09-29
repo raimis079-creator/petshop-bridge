@@ -1,7 +1,7 @@
 {
- "1": {
+ "2": {
   "v": "S1736q",
-  "faze": "1",
+  "faze": "2",
   "fail": {
    "petshop-av-dropship.php": {
     "live_ok": true,
@@ -14,11 +14,20 @@
     "tok": true
    }
   },
-  "visi_ok": true
+  "visi_ok": true,
+  "bak": {
+   "petshop-av-dropship.php": "b2e49184bb599fd9db8bb4897283455f",
+   "petshop-av-tiekimas.php": "37d1128e5883f0463fec9f48eac6a48f"
+  },
+  "irasyta": {
+   "petshop-av-dropship.php": "4a6b0b5641880c6bc920c386c7b2c3e7",
+   "petshop-av-tiekimas.php": "59cbf8f9757653a41c732c54280fd094"
+  },
+  "hb": 200
  },
- "v": "dep-162917",
+ "v": "dep-163044",
  "kurimas": 200,
- "sid": 6749,
+ "sid": 6750,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
