@@ -1,0 +1,140 @@
+{
+ "1": {
+  "v": "S1740y",
+  "md5": "fe9d19eb947e3e382d1102a555453baa",
+  "dydis": 10299,
+  "psw_ov_eilutes": [
+   "<div class=\"psw-ov\" id=\"psw\" hidden role=\"dialog\" aria-modal=\"true\" aria-labelledby=\"psw-t\">",
+   ".psw-ov{position:fixed;inset:0;background:rgba(31,42,36,.55);z-index:99990;display:flex;",
+   ".psw-ov.on{opacity:1}"
+  ],
+  "css_eil": [
+   ".psw-ov{position:fixed;inset:0;background:rgba(31,42,36,.55);z-index:99990;display:flex;",
+   "align-items:center;justify-content:center;padding:20px;opacity:0;transition:opacity .25s}",
+   ".psw-ov.on{opacity:1}",
+   ".psw-b1{display:block;text-align:center;background:#2d6a35;color:#fff!important;text-decoration:none;",
+   ".psw-b2{display:block;width:100%;background:none;border:1px solid #d8d2c6;color:#4A554C;"
+  ],
+  "shots": [
+   {
+    "n": "y1_naujas",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));const st=()=>{const o=document.querySelector('.psw-ov');if(!o)return 'nera';const c=getComputedStyle(o);const r=o.getBoundingClientRect();const x=innerWidth/2,y=innerHeight/2;const el=document.elementFromPoint(x,y);return {kl:o.className.toString(),d:c.display,op:c.opacity,vis:c.visibility,pe:c.pointerEvents,z:c.zIndex,h:Math.round(r.height),centre:el?(el.className||el.tagName).toString().slice(0,40):null,cookie:document.cookie.split(';').map(x=>x.trim().split('=')[0]).filter(n=>/cmplz|psw/.test(n)).join(',')};};const a=st();await w(5500);const b=st();await w(9000);const c=st();return {t1_5:a,t7:b,t16:c}})()"
+   },
+   {
+    "n": "y2_atmesti",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844,
+    "click": ".cmplz-btn.cmplz-deny"
+   },
+   {
+    "n": "y3_po_atmetimo",
+    "u": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));const st=()=>{const o=document.querySelector('.psw-ov');if(!o)return 'nera';const c=getComputedStyle(o);const r=o.getBoundingClientRect();const x=innerWidth/2,y=innerHeight/2;const el=document.elementFromPoint(x,y);return {kl:o.className.toString(),d:c.display,op:c.opacity,vis:c.visibility,pe:c.pointerEvents,z:c.zIndex,h:Math.round(r.height),centre:el?(el.className||el.tagName).toString().slice(0,40):null,cookie:document.cookie.split(';').map(x=>x.trim().split('=')[0]).filter(n=>/cmplz|psw/.test(n)).join(',')};};const a=st();await w(5500);const b=st();await w(9000);const c=st();return {t1_5:a,t7:b,t16:c}})()"
+   }
+  ]
+ },
+ "v": "dep-200346",
+ "kurimas": 200,
+ "sid": 6799,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "y1_naujas": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "t1_5": {
+     "kl": "psw-ov",
+     "d": "flex",
+     "op": "0",
+     "vis": "visible",
+     "pe": "auto",
+     "z": "99990",
+     "h": 844,
+     "centre": "psw-p psw-hi",
+     "cookie": ""
+    },
+    "t7": {
+     "kl": "psw-ov",
+     "d": "flex",
+     "op": "0",
+     "vis": "visible",
+     "pe": "auto",
+     "z": "99990",
+     "h": 844,
+     "centre": "psw-p psw-hi",
+     "cookie": ""
+    },
+    "t16": {
+     "kl": "psw-ov",
+     "d": "flex",
+     "op": "0",
+     "vis": "visible",
+     "pe": "auto",
+     "z": "99990",
+     "h": 844,
+     "centre": "psw-p psw-hi",
+     "cookie": ""
+    }
+   }
+  },
+  "y2_atmesti": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "clicked": ".cmplz-btn.cmplz-deny"
+  },
+  "y3_po_atmetimo": {
+   "status": 201,
+   "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+   "title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "t1_5": {
+     "kl": "psw-ov",
+     "d": "flex",
+     "op": "0",
+     "vis": "visible",
+     "pe": "auto",
+     "z": "99990",
+     "h": 844,
+     "centre": "psw-p psw-hi",
+     "cookie": "cmplz_banner-status,cmplz_policy_id,cmplz_marketing,cmplz_statistics,cmplz_preferences,cmplz_functional,cmplz_consented_services"
+    },
+    "t7": {
+     "kl": "psw-ov",
+     "d": "flex",
+     "op": "0",
+     "vis": "visible",
+     "pe": "auto",
+     "z": "99990",
+     "h": 844,
+     "centre": "psw-p psw-hi",
+     "cookie": "cmplz_banner-status,cmplz_policy_id,cmplz_marketing,cmplz_statistics,cmplz_preferences,cmplz_functional,cmplz_consented_services"
+    },
+    "t16": {
+     "kl": "psw-ov on",
+     "d": "flex",
+     "op": "1",
+     "vis": "visible",
+     "pe": "auto",
+     "z": "99990",
+     "h": 844,
+     "centre": "psw-p psw-hi",
+     "cookie": "cmplz_banner-status,cmplz_policy_id,cmplz_marketing,cmplz_statistics,cmplz_preferences,cmplz_functional,cmplz_consented_services"
+    }
+   }
+  }
+ }
+}
