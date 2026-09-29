@@ -1,0 +1,285 @@
+{
+ "1": {
+  "v": "S1740b",
+  "faze": "1",
+  "hooks": {
+   "woocommerce_single_product_summary": [
+    "0 flatsome_woocommerce_product_breadcrumb",
+    "1 flatsome_product_brands",
+    "5 woocommerce_template_single_title",
+    "7 flatsome_product_mobile_next_prev_nav",
+    "10 woocommerce_template_single_rating",
+    "10 woocommerce_template_single_price",
+    "10 Petshop_Pristatymo_Pazadas::kg",
+    "11 Petshop_Rinkiniai::sutaupote",
+    "11 closure@snippet-ops.php(663) : eval()'d code:55",
+    "11 closure@snippet-ops.php(663) : eval()'d code:14",
+    "20 woocommerce_template_single_excerpt",
+    "20 flatsome_before_add_to_cart_html",
+    "25 Petshop_Dydziai::pieskime",
+    "25 closure@snippet-ops.php(663) : eval()'d code:84",
+    "30 woocommerce_template_single_add_to_cart",
+    "30 flatsome_after_add_to_cart_html",
+    "31 Petshop_Atsargu_Laukimas::forma",
+    "31 Petshop_Product_Calc::widget",
+    "40 woocommerce_template_single_meta",
+    "50 woocommerce_template_single_sharing",
+    "60 WC_Structured_Data::generate_product_data"
+   ],
+   "woocommerce_product_meta_start": [],
+   "woocommerce_product_meta_end": [
+    "50 Flatsome\\WooCommerce\\Brands::render_brand_meta"
+   ],
+   "woocommerce_after_single_product_summary": [
+    "-1000 wc_mnm_template_add_to_cart_after_summary",
+    "10 woocommerce_output_product_data_tabs",
+    "15 woocommerce_upsell_display",
+    "20 woocommerce_output_related_products"
+   ],
+   "woocommerce_archive_description": [
+    "10 woocommerce_product_archive_description",
+    "10 WC_Brands::brand_description"
+   ],
+   "woocommerce_before_shop_loop": [
+    "4 closure@snippet-ops.php(663) : eval()'d code:9",
+    "5 Petshop_Weight_Filter::notice",
+    "6 Petshop_Weight_Filter::ask_weight",
+    "8 closure@snippet-ops.php(663) : eval()'d code:26",
+    "10 woocommerce_output_all_notices",
+    "10 wc_setup_loop",
+    "15 closure@snippet-ops.php(663) : eval()'d code:8"
+   ],
+   "woocommerce_after_shop_loop": [
+    "10 woocommerce_pagination",
+    "999 woocommerce_reset_loop"
+   ]
+  },
+  "pr18018": {
+   "http": 200,
+   "len": 305357,
+   "cats": "Sausas maistas šunims",
+   "product_meta": "<span class=\"sku_wrapper\">Produkto kodas: <span class=\"sku\">JOS0931</span></span> <span class=\"posted_in\">Kategorija: <a href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/\" rel=\"tag\">Sausas maistas šunims</a></span> <span class=\"posted_in\">Prekės ženklas: <a href=\"https://petshop.lt/gamintojas/josera/\" rel=\"tag\">Josera</a></span>",
+   "blokai": [
+    "product-info summary col-fit col entry-summary product-summary",
+    "ps-pak",
+    "ps-pak__head",
+    "ps-pak__wrap",
+    "ps-pazadas",
+    "ps-calc",
+    "ps-calc-head",
+    "ps-calc-h1",
+    "ps-calc-h2",
+    "ps-calc-row",
+    "ps-calc-in",
+    "ps-calc-row ps-hide",
+    "ps-calc-out",
+    "product-footer",
+    "woocommerce-tabs wc-tabs-wrapper container tabbed-content",
+    "woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content active",
+    "ps-desc-acc",
+    "ps-desc-body",
+    "woocommerce-Tabs-panel woocommerce-Tabs-panel--additional_information panel entry-content ",
+    "related related-products-wrapper product-section",
+    "ps-dk",
+    "ps-login-wrap",
+    "ps-login-main",
+    "ps-magic-form",
+    "ps-magic-done",
+    "ps-done-title",
+    "ps-pass-toggle-row",
+    "ps-pass-box",
+    "ps-login-side"
+   ],
+   "gamintojo_nuorodos": [
+    "https://petshop.lt/gamintojas/josera/ => Josera"
+   ]
+  },
+  "pr18084": {
+   "http": 200,
+   "len": 298372,
+   "cats": "Sausas maistas katėms",
+   "product_meta": "<span class=\"sku_wrapper\">Produkto kodas: <span class=\"sku\">JOS1004</span></span> <span class=\"posted_in\">Kategorija: <a href=\"https://petshop.lt/kategorija/katems/maistas-katems/sausas-maistas-katems/\" rel=\"tag\">Sausas maistas katėms</a></span> <span class=\"posted_in\">Prekės ženklas: <a href=\"https://petshop.lt/gamintojas/josera/\" rel=\"tag\">Josera</a></span>",
+   "blokai": [
+    "product-info summary col-fit col entry-summary product-summary",
+    "ps-pak",
+    "ps-pak__head",
+    "ps-pak__wrap",
+    "ps-pazadas",
+    "ps-calc",
+    "ps-calc-head",
+    "ps-calc-h1",
+    "ps-calc-h2",
+    "ps-calc-row",
+    "ps-calc-in",
+    "ps-calc-row ps-hide",
+    "ps-calc-out",
+    "product-footer",
+    "woocommerce-tabs wc-tabs-wrapper container tabbed-content",
+    "woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content active",
+    "ps-desc-acc",
+    "ps-desc-body",
+    "woocommerce-Tabs-panel woocommerce-Tabs-panel--additional_information panel entry-content ",
+    "related related-products-wrapper product-section",
+    "ps-dk",
+    "ps-login-wrap",
+    "ps-login-main",
+    "ps-magic-form",
+    "ps-magic-done",
+    "ps-done-title",
+    "ps-pass-toggle-row",
+    "ps-pass-box",
+    "ps-login-side"
+   ],
+   "gamintojo_nuorodos": [
+    "https://petshop.lt/gamintojas/josera/ => Josera"
+   ]
+  },
+  "pr20481": {
+   "http": 200,
+   "len": 308718,
+   "cats": "Konservai šunims",
+   "product_meta": "<span class=\"sku_wrapper\">Produkto kodas: <span class=\"sku\">JOS0528</span></span> <span class=\"posted_in\">Kategorija: <a href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/\" rel=\"tag\">Konservai šunims</a></span> <span class=\"posted_in\">Prekės ženklas: <a href=\"https://petshop.lt/gamintojas/josera/\" rel=\"tag\">Josera</a></span>",
+   "blokai": [
+    "product-info summary col-fit col entry-summary product-summary",
+    "ps-pak",
+    "ps-pak__head",
+    "ps-pak__wrap",
+    "ps-pazadas",
+    "ps-calc",
+    "ps-calc-head",
+    "ps-calc-h1",
+    "ps-calc-h2",
+    "ps-calc-row ps-hide",
+    "ps-calc-in",
+    "ps-calc-row",
+    "ps-calc-out",
+    "product-footer",
+    "woocommerce-tabs wc-tabs-wrapper container tabbed-content",
+    "woocommerce-Tabs-panel woocommerce-Tabs-panel--description panel entry-content active",
+    "ps-desc-acc",
+    "ps-desc-body",
+    "woocommerce-Tabs-panel woocommerce-Tabs-panel--additional_information panel entry-content ",
+    "related related-products-wrapper product-section",
+    "ps-dk",
+    "ps-login-wrap",
+    "ps-login-main",
+    "ps-magic-form",
+    "ps-magic-done",
+    "ps-done-title",
+    "ps-pass-toggle-row",
+    "ps-pass-box",
+    "ps-login-side"
+   ],
+   "gamintojo_nuorodos": [
+    "https://petshop.lt/gamintojas/josera/ => Josera"
+   ]
+  },
+  "brand": {
+   "name": "Josera",
+   "desc_len": 1431,
+   "desc": "<h2>Apie Josera</h2> <p>Josera – vokiečių šeimos įmonės pašarai, viena plačiausių linijų mūsų parduotuvėje: daugiau nei 200 prekių šunims ir katėms. Šunims siūlome sausus pašarus pagal amžių ir poreikį: <strong>Adult</strong> ir <strong>Balance</strong> suaugusiems, <strong>Kids</strong> šuniukams, <strong>Leger</strong> mažiau aktyviems ar linkusiems tukti, <strong>Optiness</strong>, <strong>Active Nature</strong>, taip pat begrūdžiai variantai <strong>Duck + Potato</strong> ir <strong>Salmon + Potato</strong> bei mažų veislių formulės (Mini). Dauguma pakuočių – 900 g išbandymui ir 12,5 kg; d",
+   "meta": {
+    "product_count_product_brand": "207",
+    "rank_math_title": "Josera – sausas maistas šunims ir katėms | Petshop.lt",
+    "rank_math_description": "Josera šunims ir katėms: Adult, Kids, Leger, Optiness, begrūdžiai Duck+Potato ir Salmon+Potato, JosiCat, konservai. 900 g – 12,5 kg. Pristatymas per 1–3 d. d."
+   }
+  },
+  "brand_live": {
+   "http": 200,
+   "title": "Josera – sausas maistas šunims ir katėms | Petshop.lt",
+   "h1": [
+    "Josera"
+   ],
+   "aprasymas_live": "Apie Josera Josera – vokiečių šeimos įmonės pašarai, viena plačiausių linijų mūsų parduotuvėje: daugiau nei 200 prekių šunims ir katėms. Šunims siūlome sausus pašarus pagal amžių ir poreikį: Adult ir Balance suaugusiems, Kids šuniukams, Leger mažiau aktyviems ar linkusiems tukti, Optiness, Active Nature, taip pat begrūdžiai variantai Duck + Potato ir Salmon + Potato bei mažų veislių formulės (Mini",
+   "yra_landing_nuoroda": [
+    0,
+    0
+   ],
+   "main_pradzia": "Grūdų tipas Be grūdų Su grūdais Su ryžiais Speciali mityba Hipoalerginis Jautriam virškinimui Sterilizuotiems Svorio kontrolei Baltymų šaltinis Antiena Ėriena Jautiena Kalakutiena Lašiša Paukštiena Vabzdžiai Vištiena Žuvis (balta) Amžius Jauniems Senjorams Senyviems Suaugusiems Pakuotės dydis 1 kg 1,9 kg 10 kg 10+1 kg 100 g 12,5 kg 12,5+2,5 kg 15 kg 15+3 kg 2 kg Rodyti daugiau"
+  },
+  "irasai_su_josera": [
+   {
+    "ID": "14876",
+    "post_type": "post",
+    "post_title": "Hipoalerginis maistas šunims senjorams: kaip išsirinkti be burtų"
+   },
+   {
+    "ID": "14890",
+    "post_type": "post",
+    "post_title": "Kiek maisto duoti šuniui per dieną? Lentelė pagal svorį"
+   }
+  ],
+  "kat_sausas": [
+   {
+    "term_id": "79",
+    "name": "Konservai katėms",
+    "slug": "konservai-katems",
+    "count": "138"
+   },
+   {
+    "term_id": "73",
+    "name": "Konservai šunims",
+    "slug": "konservai-sunims",
+    "count": "134"
+   },
+   {
+    "term_id": "78",
+    "name": "Maistas katėms",
+    "slug": "maistas-katems",
+    "count": "13"
+   },
+   {
+    "term_id": "71",
+    "name": "Maistas šunims",
+    "slug": "maistas-sunims",
+    "count": "13"
+   },
+   {
+    "term_id": "81",
+    "name": "Sausas maistas katėms",
+    "slug": "sausas-maistas-katems",
+    "count": "267"
+   },
+   {
+    "term_id": "72",
+    "name": "Sausas maistas šunims",
+    "slug": "sausas-maistas-sunims",
+    "count": "652"
+   }
+  ],
+  "josera_pagal_kat": [
+   {
+    "name": "Sausas maistas šunims",
+    "n": "121"
+   },
+   {
+    "name": "Sausas maistas katėms",
+    "n": "71"
+   },
+   {
+    "name": "Konservai katėms",
+    "n": "49"
+   },
+   {
+    "name": "DAUGIAU=PIGIAU",
+    "n": "44"
+   },
+   {
+    "name": "Konservai šunims",
+    "n": "18"
+   }
+  ],
+  "cache": {
+   "WP_CACHE": true,
+   "supercache": true,
+   "wpsc_delete_post_cache": true
+  }
+ },
+ "v": "dep-181936",
+ "kurimas": 200,
+ "sid": 6774,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
