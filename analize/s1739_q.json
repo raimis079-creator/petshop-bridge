@@ -1,0 +1,38 @@
+{
+ "1": {
+  "v": "S1739q",
+  "faze": "1",
+  "ok": "4cd2bec21a843a9256188d86ff8bb805"
+ },
+ "2": {
+  "v": "S1739q",
+  "faze": "2",
+  "md5_ok": true,
+  "ver": "1.1",
+  "ms": 90,
+  "blokas": {
+   "verdiktas": [
+    "zalia",
+    "Telefone užsako 6 % lankytojų",
+    "Srautas — svetainė konvertuoja, trūksta lankytojų"
+   ],
+   "kpi": {
+    "Kompiuteris: lankytojai → prekė → krepšelis → kasa → ačiū → užs.": "628 → 425 → 30 → 15 → 11 → 13 (2 %)",
+    "Telefonas: lankytojai → prekė → krepšelis → kasa → ačiū → užs.": "873 → 464 → 77 → 58 → 53 → 49 (6 %)",
+    "Telefonas: į krepšelį / žiūrėjo prekę": "17 %",
+    "Telefonas: ačiū / pradėjo kasą": "91 %",
+    "Atmesta botų (1 puslapis + „į krepšelį\")": "837 (36 % srauto)"
+   },
+   "papildomai": [
+    "Laikotarpis 2026-09-22 – 2026-09-28. Lankytojas = lankytojas per dieną; be vidinio srauto (ps_vidinis). Botai: vienas puslapis ir iškart „į krepšelį\". Užsakymai — faktai be atšauktų, įrenginys iš užsakymo."
+   ]
+  }
+ },
+ "v": "dep-174710",
+ "kurimas": 200,
+ "sid": 6770,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
