@@ -1,0 +1,107 @@
+{
+ "1": {
+  "v": "S1740cc",
+  "filter_ivykiai": [
+   {
+    "irenginys": "desktop",
+    "raktas": "be_grudu",
+    "n": "11"
+   },
+   {
+    "irenginys": "desktop",
+    "raktas": "amzius",
+    "n": "10"
+   },
+   {
+    "irenginys": "desktop",
+    "raktas": "speciali_mityba",
+    "n": "7"
+   },
+   {
+    "irenginys": "mobile",
+    "raktas": "speciali_mityba",
+    "n": "3"
+   },
+   {
+    "irenginys": "desktop",
+    "raktas": "monoprotein",
+    "n": "2"
+   }
+  ],
+  "filter_kas_raso": [
+   "wp-content/mu-plugins/petshop-analitika.php",
+   "wp-content/plugins/petshop-fbt/petshop-fbt.php"
+  ],
+  "shots": [
+   {
+    "n": "cc1_kat",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{const o=(s,n)=>{const e=document.querySelector(s);return e?e.outerHTML.replace(/\\s+/g,' ').slice(0,n||1500):null};const pos=s=>{const e=document.querySelector(s);if(!e)return null;const r=e.getBoundingClientRect();const c=getComputedStyle(e);return Math.round(r.top)+'-'+Math.round(r.bottom)+' w'+Math.round(r.width)+' disp:'+c.display};const sb=document.querySelector('#shop-sidebar');const links=sb?[...sb.querySelectorAll('a[href*=\"?\"], a[href*=\"filter\"]')].slice(0,3).map(a=>a.getAttribute('href')):[];return {filtering:o('.category-filtering',900),filtering_pos:pos('.category-filtering'),btn_pos:pos('.filter-button'),ordering:o('.woocommerce-ordering',700),ordering_pos:pos('.woocommerce-ordering'),ordering_parent:(document.querySelector('.woocommerce-ordering')||{}).parentElement?.className,title_wrap:o('.shop-page-title .page-title-inner, .category-page-title .page-title-inner',1400),sidebar_pradzia:sb?sb.outerHTML.replace(/\\s+/g,' ').slice(0,1500):null,sidebar_nuorodos:links,aktyvus:[...document.querySelectorAll('.yith-wcan-active-filters .active-filter-label, .yith-wcan-active-filters a, .widget_layered_nav_filters li, .chosen, .yith-wcan-filter .active')].map(e=>e.className.toString().slice(0,40)+':'+(e.innerText||'').trim().slice(0,30)).slice(0,8),url:location.search}})()"
+   },
+   {
+    "n": "cc2_kat_filtras",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?filter_grudu-tipas=be-grudu&query_type_grudu-tipas=or",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{const o=(s,n)=>{const e=document.querySelector(s);return e?e.outerHTML.replace(/\\s+/g,' ').slice(0,n||1500):null};const pos=s=>{const e=document.querySelector(s);if(!e)return null;const r=e.getBoundingClientRect();const c=getComputedStyle(e);return Math.round(r.top)+'-'+Math.round(r.bottom)+' w'+Math.round(r.width)+' disp:'+c.display};const sb=document.querySelector('#shop-sidebar');const links=sb?[...sb.querySelectorAll('a[href*=\"?\"], a[href*=\"filter\"]')].slice(0,3).map(a=>a.getAttribute('href')):[];return {filtering:o('.category-filtering',900),filtering_pos:pos('.category-filtering'),btn_pos:pos('.filter-button'),ordering:o('.woocommerce-ordering',700),ordering_pos:pos('.woocommerce-ordering'),ordering_parent:(document.querySelector('.woocommerce-ordering')||{}).parentElement?.className,title_wrap:o('.shop-page-title .page-title-inner, .category-page-title .page-title-inner',1400),sidebar_pradzia:sb?sb.outerHTML.replace(/\\s+/g,' ').slice(0,1500):null,sidebar_nuorodos:links,aktyvus:[...document.querySelectorAll('.yith-wcan-active-filters .active-filter-label, .yith-wcan-active-filters a, .widget_layered_nav_filters li, .chosen, .yith-wcan-filter .active')].map(e=>e.className.toString().slice(0,40)+':'+(e.innerText||'').trim().slice(0,30)).slice(0,8),url:location.search}})()"
+   }
+  ]
+ },
+ "v": "dep-203727",
+ "kurimas": 200,
+ "sid": 6803,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "cc1_kat": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "filtering": "<div class=\"category-filtering category-filter-row show-for-medium\"> <a href=\"#\" data-open=\"#shop-sidebar\" data-pos=\"left\" class=\"filter-button uppercase plain\" role=\"button\" aria-controls=\"shop-sidebar\" aria-expanded=\"false\" aria-haspopup=\"dialog\" data-visible-after=\"true\" data-flatsome-role-button=\"attached\"> <i class=\"icon-equalizer\" aria-hidden=\"true\"></i> <strong>Filtruoti</strong> </a> <div class=\"inline-block\"> </div> </div>",
+    "filtering_pos": "221-273 w360 disp:block",
+    "btn_pos": "239-259 w111 disp:inline-block",
+    "ordering": "<form class=\"woocommerce-ordering\" method=\"get\"> <select name=\"orderby\" class=\"orderby\" aria-label=\"Parduotuvės užsakymas\"> <option value=\"menu_order\" selected=\"selected\">Numatytasis rikiavimas</option> <option value=\"popularity\">Rikiuoti pagal populiarumą</option> <option value=\"rating\">Rikiuoti pagal vertinimą</option> <option value=\"date\">Rikiuoti nuo naujausių</option> <option value=\"price\">Rikiuoti pagal kainą (min → maks)</option> <option value=\"price-desc\">Rikiuoti pagal kainą (maks → min)</option> </select> <input type=\"hidden\" name=\"paged\" value=\"1\"> </form>",
+    "ordering_pos": "283-333 w286 disp:inline-block",
+    "ordering_parent": "flex-col medium-text-center",
+    "title_wrap": "<div class=\"page-title-inner flex-row medium-flex-wrap container\"> <div class=\"flex-col flex-grow medium-text-center\"> <h1 class=\"shop-page-title is-xlarge ps-seo-h1\">Sausas maistas šunims</h1><div class=\"is-large\"> <nav class=\"woocommerce-breadcrumb breadcrumbs uppercase\" aria-label=\"Breadcrumb\"><a href=\"https://petshop.lt\">Pradžia</a> <span class=\"divider\">/</span> <a href=\"https://petshop.lt/kategorija/sunims/\">ŠUNIMS</a> <span class=\"divider\">/</span> <a href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/\">Maistas šunims</a> <span class=\"divider\">/</span> Sausas maistas šunims</nav></div> <div class=\"category-filtering category-filter-row show-for-medium\"> <a href=\"#\" data-open=\"#shop-sidebar\" data-pos=\"left\" class=\"filter-button uppercase plain\" role=\"button\" aria-controls=\"shop-sidebar\" aria-expanded=\"false\" aria-haspopup=\"dialog\" data-visible-after=\"true\" data-flatsome-role-button=\"attached\"> <i class=\"icon-equalizer\" aria-hidden=\"true\"></i> <strong>Filtruoti</strong> </a> <div class=\"inline-block\"> </div> </div> </div> <div class=\"flex-col medium-text-center\"> <p class=\"woocommerce-result-count hide-for-medium\" role=\"status\" aria-relevant=\"all\"> Rodoma 1–24 iš 306 </p> <form class=\"woocommerce-ordering\" method=\"get\"> <select name=\"orderby\" class=\"orderby\" aria-label=\"Parduotuvės užsakymas\"> <option value=\"menu_order\" selected=\"selected\">Numatytasis rikiavimas</op",
+    "sidebar_pradzia": "<div id=\"shop-sidebar\" class=\"sidebar-inner col-inner\"> <aside id=\"yith-woocommerce-ajax-navigation-filters-2\" class=\"widget widget_yith-woocommerce-ajax-navigation-filters\"> <div class=\"yith-wcan-filters no-title enhanced\" id=\"preset_34063\" data-preset-id=\"34063\" data-target=\"\"> <div class=\"filters-container\"> <form method=\"POST\"> <div class=\"yith-wcan-filter filter-tax checkbox-design ps-niche filter-open opened toggled\" id=\"filter_34063_1\" data-filter-type=\"tax\" data-filter-id=\"1\" data-taxonomy=\"filter_monoprotein\" data-multiple=\"no\" data-relation=\"\" data-ps-init=\"1\"> <h4 class=\"filter-title\" data-ps-bound=\"1\">Vienas baltymo šaltinis</h4> <div class=\"filter-content\" style=\"display: block !important; height: auto !important; max-height: none !important;\"> <ul class=\"filter-items filter-checkbox level-0\"> <li class=\"filter-item checkbox level-0\"> <label for=\"filter_34063_1_295\"> <input type=\"checkbox\" id=\"filter_34063_1_295\" name=\"filter[34063][1]\" value=\"taip\"> <a href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims?yith_wcan=1&amp;product_cat=sausas-maistas-sunims&amp;filter_monoprotein=taip\" role=\"button\" class=\"term-label\" rel=\"nofollow\"> Tik monoprotein </a> </label> </li> </ul><!-- .filter-items --> </div> </div> <div class=\"yith-wcan-filter filter-tax label-design ps-niche\" id=\"filter_34063_3\" data-filter-type=\"tax\" data-filter-id=\"3\" data-taxonomy=\"filter_be_grudu\" data-multiple=\"no\" data-relation=\"\" data-ps-init=\"1\"> <h4 class=\"filter-titl",
+    "sidebar_nuorodos": [
+     "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims?yith_wcan=1&product_cat=sausas-maistas-sunims&filter_monoprotein=taip",
+     "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims?yith_wcan=1&product_cat=sausas-maistas-sunims&filter_be_grudu=be-grudu",
+     "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims?yith_wcan=1&product_cat=sausas-maistas-sunims&filter_be_grudu=su-grudais"
+    ],
+    "aktyvus": [],
+    "url": ""
+   }
+  },
+  "cc2_kat_filtras": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?filter_grudu-tipas=be-grudu&query_type_grudu-tipas=or",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "filtering": "<div class=\"category-filtering category-filter-row show-for-medium\"> <a href=\"#\" data-open=\"#shop-sidebar\" data-pos=\"left\" class=\"filter-button uppercase plain\" role=\"button\" aria-controls=\"shop-sidebar\" aria-expanded=\"false\" aria-haspopup=\"dialog\" data-visible-after=\"true\" data-flatsome-role-button=\"attached\"> <i class=\"icon-equalizer\" aria-hidden=\"true\"></i> <strong>Filtruoti</strong> </a> <div class=\"inline-block\"> </div> </div>",
+    "filtering_pos": "221-273 w360 disp:block",
+    "btn_pos": "239-259 w111 disp:inline-block",
+    "ordering": "<form class=\"woocommerce-ordering\" method=\"get\"> <select name=\"orderby\" class=\"orderby\" aria-label=\"Parduotuvės užsakymas\"> <option value=\"menu_order\" selected=\"selected\">Numatytasis rikiavimas</option> <option value=\"popularity\">Rikiuoti pagal populiarumą</option> <option value=\"rating\">Rikiuoti pagal vertinimą</option> <option value=\"date\">Rikiuoti nuo naujausių</option> <option value=\"price\">Rikiuoti pagal kainą (min → maks)</option> <option value=\"price-desc\">Rikiuoti pagal kainą (maks → min)</option> </select> <input type=\"hidden\" name=\"paged\" value=\"1\"> <input type=\"hidden\" name=\"filter_grudu-tipas\" value=\"be-grudu\"><input type=\"hidden\" name=\"query_type_grudu-tipas\" value=\"or\"></form>",
+    "ordering_pos": "283-333 w286 disp:inline-block",
+    "ordering_parent": "flex-col medium-text-center",
+    "title_wrap": "<div class=\"page-title-inner flex-row medium-flex-wrap container\"> <div class=\"flex-col flex-grow medium-text-center\"> <h1 class=\"shop-page-title is-xlarge ps-seo-h1\">Sausas maistas šunims</h1><div class=\"is-large\"> <nav class=\"woocommerce-breadcrumb breadcrumbs uppercase\" aria-label=\"Breadcrumb\"><a href=\"https://petshop.lt\">Pradžia</a> <span class=\"divider\">/</span> <a href=\"https://petshop.lt/kategorija/sunims/\">ŠUNIMS</a> <span class=\"divider\">/</span> <a href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/\">Maistas šunims</a> <span class=\"divider\">/</span> Sausas maistas šunims</nav></div> <div class=\"category-filtering category-filter-row show-for-medium\"> <a href=\"#\" data-open=\"#shop-sidebar\" data-pos=\"left\" class=\"filter-button uppercase plain\" role=\"button\" aria-controls=\"shop-sidebar\" aria-expanded=\"false\" aria-haspopup=\"dialog\" data-visible-after=\"true\" data-flatsome-role-button=\"attached\"> <i class=\"icon-equalizer\" aria-hidden=\"true\"></i> <strong>Filtruoti</strong> </a> <div class=\"inline-block\"> </div> </div> </div> <div class=\"flex-col medium-text-center\"> <p class=\"woocommerce-result-count hide-for-medium\" role=\"alert\" aria-relevant=\"all\" aria-hidden=\"false\"> Rodoma 1–24 iš 306 </p> <form class=\"woocommerce-ordering\" method=\"get\"> <select name=\"orderby\" class=\"orderby\" aria-label=\"Parduotuvės užsakymas\"> <option value=\"menu_order\" selected=\"selected\">Numatyt",
+    "sidebar_pradzia": "<div id=\"shop-sidebar\" class=\"sidebar-inner col-inner\"> <aside id=\"yith-woocommerce-ajax-navigation-filters-2\" class=\"widget widget_yith-woocommerce-ajax-navigation-filters\"> <div class=\"yith-wcan-filters no-title enhanced\" id=\"preset_34063\" data-preset-id=\"34063\" data-target=\"\"> <div class=\"filters-container\"> <form method=\"POST\"> <div class=\"yith-wcan-filter filter-tax checkbox-design ps-niche filter-open opened toggled\" id=\"filter_34063_1\" data-filter-type=\"tax\" data-filter-id=\"1\" data-taxonomy=\"filter_monoprotein\" data-multiple=\"no\" data-relation=\"\" data-ps-init=\"1\"> <h4 class=\"filter-title\" data-ps-bound=\"1\">Vienas baltymo šaltinis</h4> <div class=\"filter-content\" style=\"display: block !important; height: auto !important; max-height: none !important;\"> <ul class=\"filter-items filter-checkbox level-0\"> <li class=\"filter-item checkbox level-0\"> <label for=\"filter_34063_1_295\"> <input type=\"checkbox\" id=\"filter_34063_1_295\" name=\"filter[34063][1]\" value=\"taip\"> <a href=\"https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims?yith_wcan=1&amp;filter_grudu-tipas=be-grudu&amp;query_type_grudu-tipas=or&amp;product_cat=sausas-maistas-sunims&amp;filter_monoprotein=taip\" role=\"button\" class=\"term-label\" rel=\"nofollow\"> Tik monoprotein </a> </label> </li> </ul><!-- .filter-items --> </div> </div> <div class=\"yith-wcan-filter filter-tax label-design ps-niche\" id=\"filter_34063_3\" data-filter-type=\"tax\" data-filter-id=\"3\" data-taxonomy=\"filter_be_grudu\" data-multiple=",
+    "sidebar_nuorodos": [
+     "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims?yith_wcan=1&filter_grudu-tipas=be-grudu&query_type_grudu-tipas=or&product_cat=sausas-maistas-sunims&filter_monoprotein=taip",
+     "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims?yith_wcan=1&filter_grudu-tipas=be-grudu&query_type_grudu-tipas=or&product_cat=sausas-maistas-sunims&filter_be_grudu=be-grudu",
+     "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims?yith_wcan=1&filter_grudu-tipas=be-grudu&query_type_grudu-tipas=or&product_cat=sausas-maistas-sunims&filter_be_grudu=su-grudais"
+    ],
+    "aktyvus": [],
+    "url": "?filter_grudu-tipas=be-grudu&query_type_grudu-tipas=or"
+   }
+  }
+ }
+}
