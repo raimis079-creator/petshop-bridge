@@ -1,0 +1,494 @@
+{
+ "1": {
+  "v": "S1740j",
+  "faze": "1",
+  "dns": {
+   "spf_root": [
+    "v=spf1 a mx ip4:79.98.29.24 include:spf.serveriai.lt include:sendersrv.com ~all",
+    "google-site-verification=XPcuD8vHzqrHuXMrZLXCMHfGieqYGPN5C0iI9uUeEGs"
+   ],
+   "dmarc": [
+    "v=DMARC1; p=none; rua=mailto:terra@petshop.lt"
+   ],
+   "mx": [
+    "10 isopas.serveriai.lt"
+   ],
+   "dkim": {
+    "sender": {
+     "txt": [
+      "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQCtKp…"
+     ],
+     "cname": [
+      "dkim.sendersrv.com"
+     ]
+    },
+    "x": {
+     "txt": [
+      "v=DKIM1; k=rsa; p=MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDmGb…"
+     ],
+     "cname": []
+    }
+   },
+   "sub": {
+    "news.petshop.lt": [],
+    "mail.petshop.lt": [],
+    "email.petshop.lt": []
+   },
+   "serverio_ptr": [
+    "79.98.29.24",
+    "isopas.serveriai.lt"
+   ]
+  },
+  "mail": {
+   "phpmailer_hooks": true,
+   "wp_mail_smtp": true,
+   "aktyvus_pluginai": [
+    "wp-mail-smtp/wp_mail_smtp.php"
+   ]
+  },
+  "db": {
+   "ps_relaunch_kontaktai": {
+    "n": 5666,
+    "stulp": [
+     "id:bigint(20) unsigned",
+     "cid:varchar(24)",
+     "email:varchar(191)",
+     "user_id:bigint(20) unsigned",
+     "segmentas:varchar(16)",
+     "product_id:bigint(20) unsigned",
+     "rusis:varchar(8)",
+     "svoriai:varchar(32)",
+     "duomenys:text",
+     "sukurta_at:datetime",
+     "klik_n:int(10) unsigned",
+     "pask_klik_at:datetime",
+     "pask_svoris:decimal(5,1)",
+     "hero_reason:varchar(24)",
+     "last_food_product_id:bigint(20) unsigned",
+     "last_food_date:date",
+     "same_sku_orders:int(10) unsigned",
+     "ist_n:int(10) unsigned",
+     "ist_paskutinis:date",
+     "consent:tinyint(1)",
+     "last_kat:varchar(120)",
+     "last_any_product_id:bigint(20) unsigned",
+     "last_any_date:date",
+     "same_any_orders:int(10) unsigned",
+     "grupe:varchar(20)",
+     "top_kat:varchar(120)",
+     "primink_at:datetime",
+     "primink_kg:decimal(5,1)",
+     "primink_busena:varchar(12)"
+    ],
+    "pasisk": {
+     "segmentas": [
+      {
+       "v": "generic",
+       "n": "4453"
+      },
+      {
+       "v": "calc",
+       "n": "690"
+      },
+      {
+       "v": "product",
+       "n": "523"
+      }
+     ],
+     "rusis": [
+      {
+       "v": null,
+       "n": "2326"
+      },
+      {
+       "v": "suo",
+       "n": "1902"
+      },
+      {
+       "v": "kate",
+       "n": "1437"
+      },
+      {
+       "v": "dog",
+       "n": "1"
+      }
+     ],
+     "svoriai": [
+      {
+       "v": null,
+       "n": "4976"
+      },
+      {
+       "v": "10,20,30",
+       "n": "254"
+      },
+      {
+       "v": "4,6,8",
+       "n": "239"
+      },
+      {
+       "v": "3,5,7",
+       "n": "110"
+      },
+      {
+       "v": "26,41,58",
+       "n": "67"
+      },
+      {
+       "v": "3,6,8",
+       "n": "7"
+      },
+      {
+       "v": "3,4,5",
+       "n": "6"
+      },
+      {
+       "v": "14,18,22",
+       "n": "4"
+      },
+      {
+       "v": "43,55,70",
+       "n": "2"
+      },
+      {
+       "v": "6,11,16",
+       "n": "1"
+      }
+     ],
+     "sukurta_at": [
+      {
+       "v": "2026-09-15 20:23:13",
+       "n": "1500"
+      },
+      {
+       "v": "2026-09-15 20:24:38",
+       "n": "1500"
+      },
+      {
+       "v": "2026-09-15 20:25:56",
+       "n": "1500"
+      },
+      {
+       "v": "2026-09-15 20:27:23",
+       "n": "1165"
+      },
+      {
+       "v": "2026-09-15 19:49:13",
+       "n": "1"
+      }
+     ],
+     "klik_n": [
+      {
+       "v": "0",
+       "n": "5665"
+      },
+      {
+       "v": "7",
+       "n": "1"
+      }
+     ],
+     "pask_klik_at": [
+      {
+       "v": null,
+       "n": "5665"
+      },
+      {
+       "v": "2026-09-16 15:06:40",
+       "n": "1"
+      }
+     ],
+     "pask_svoris": [
+      {
+       "v": null,
+       "n": "5665"
+      },
+      {
+       "v": "10.0",
+       "n": "1"
+      }
+     ],
+     "hero_reason": [
+      {
+       "v": "no_food",
+       "n": "2318"
+      },
+      {
+       "v": "old_purchase",
+       "n": "1117"
+      },
+      {
+       "v": "old_purchase_24",
+       "n": "861"
+      },
+      {
+       "v": "recent_exact",
+       "n": "652"
+      },
+      {
+       "v": "no_feeding_table",
+       "n": "518"
+      },
+      {
+       "v": "product_out_of_stock",
+       "n": "73"
+      },
+      {
+       "v": "product_unavailable",
+       "n": "60"
+      },
+      {
+       "v": "repeat_exact",
+       "n": "37"
+      },
+      {
+       "v": "product_gone",
+       "n": "21"
+      },
+      {
+       "v": "no_species",
+       "n": "5"
+      },
+      {
+       "v": "similar_optout",
+       "n": "3"
+      },
+      {
+       "v": "test",
+       "n": "1"
+      }
+     ],
+     "consent": [
+      {
+       "v": "0",
+       "n": "5104"
+      },
+      {
+       "v": "1",
+       "n": "562"
+      }
+     ],
+     "same_any_orders": [
+      {
+       "v": null,
+       "n": "3500"
+      },
+      {
+       "v": "1",
+       "n": "2022"
+      },
+      {
+       "v": "2",
+       "n": "92"
+      },
+      {
+       "v": "3",
+       "n": "26"
+      },
+      {
+       "v": "4",
+       "n": "11"
+      },
+      {
+       "v": "5",
+       "n": "8"
+      },
+      {
+       "v": "7",
+       "n": "2"
+      },
+      {
+       "v": "6",
+       "n": "2"
+      },
+      {
+       "v": "8",
+       "n": "1"
+      },
+      {
+       "v": "10",
+       "n": "1"
+      },
+      {
+       "v": "9",
+       "n": "1"
+      }
+     ],
+     "grupe": [
+      {
+       "v": "G3_very_old",
+       "n": "1967"
+      },
+      {
+       "v": "G2_old_food",
+       "n": "1226"
+      },
+      {
+       "v": null,
+       "n": "1213"
+      },
+      {
+       "v": "G2_old_nonfood",
+       "n": "566"
+      },
+      {
+       "v": "G1_recent_nonfood",
+       "n": "475"
+      },
+      {
+       "v": "G4_dead_product",
+       "n": "213"
+      },
+      {
+       "v": "G1r_repeat_nonfood",
+       "n": "6"
+      }
+     ],
+     "primink_at": [
+      {
+       "v": null,
+       "n": "5665"
+      },
+      {
+       "v": "2026-09-16 10:06:14",
+       "n": "1"
+      }
+     ],
+     "primink_kg": [
+      {
+       "v": null,
+       "n": "5665"
+      },
+      {
+       "v": "20.0",
+       "n": "1"
+      }
+     ],
+     "primink_busena": [
+      {
+       "v": null,
+       "n": "5665"
+      },
+      {
+       "v": "puse",
+       "n": "1"
+      }
+     ]
+    },
+    "intervalas": {
+     "last_food_date": {
+      "mn": "2023-11-22",
+      "mx": "2026-09-15"
+     },
+     "last_any_date": {
+      "mn": "2023-11-20",
+      "mx": "2026-09-14"
+     }
+    }
+   },
+   "ps_ist_uzsakymai": {
+    "n": 10169,
+    "stulp": [
+     "id:int(10) unsigned",
+     "data:datetime",
+     "email:varchar(190)",
+     "vardas:varchar(100)",
+     "pavarde:varchar(100)",
+     "tel:varchar(40)",
+     "imone:tinyint(1)",
+     "siuntimas:varchar(150)",
+     "miestas:varchar(100)",
+     "apmokejimas:varchar(100)",
+     "suma_be:decimal(10,2)",
+     "suma:decimal(10,2)",
+     "statusas:varchar(60)",
+     "ivykdytas:tinyint(1)",
+     "saskaita:varchar(30)",
+     "eiluciu:smallint(5) unsigned"
+    ],
+    "intervalas": {
+     "data": {
+      "mn": "2023-11-20 12:35:03",
+      "mx": "2026-09-08 22:20:17"
+     }
+    },
+    "pasisk": {
+     "imone": [
+      {
+       "v": "0",
+       "n": "10122"
+      },
+      {
+       "v": "1",
+       "n": "47"
+      }
+     ],
+     "siuntimas": [
+      {
+       "v": "Pristatymas per Venipak paštomatus / atsiėmimo punktus",
+       "n": "5959"
+      },
+      {
+       "v": "Pristatymas per LP Express siuntų terminalus",
+       "n": "2701"
+      },
+      {
+       "v": "Pristatymas per Venipak kurjerių tarnybą",
+       "n": "955"
+      },
+      {
+       "v": "Pristatymas per Omniva siuntų terminalus",
+       "n": "496"
+      },
+      {
+       "v": "Pristatymas per LP Express siuntų paštomatus",
+       "n": "58"
+      }
+     ],
+     "statusas": [
+      {
+       "v": "Užsakymas išsiųstas",
+       "n": "9554"
+      },
+      {
+       "v": "Atšauktas",
+       "n": "546"
+      },
+      {
+       "v": "+Užsakymas išsiųstas+",
+       "n": "51"
+      },
+      {
+       "v": "Užsakymas paruoštas",
+       "n": "10"
+      },
+      {
+       "v": "Mokėjimas gautas",
+       "n": "6"
+      },
+      {
+       "v": "Laukiama apmokėjimo",
+       "n": "2"
+      }
+     ],
+     "ivykdytas": [
+      {
+       "v": "1",
+       "n": "9621"
+      },
+      {
+       "v": "0",
+       "n": "548"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "v": "dep-184156",
+ "kurimas": 200,
+ "sid": 6782,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
