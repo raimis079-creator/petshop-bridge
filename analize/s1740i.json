@@ -1,0 +1,56 @@
+{
+ "1": {
+  "v": "S1740i",
+  "faze": "1",
+  "sena": [
+   34942,
+   34944,
+   34945,
+   34947,
+   34938,
+   34913,
+   34997,
+   34999,
+   35074,
+   35309,
+   35390,
+   35781,
+   35782,
+   36153,
+   36154,
+   36155
+  ],
+  "nauja": [
+   34913,
+   34997,
+   34999,
+   35074
+  ],
+  "serverio_md5": "42d8805d26ac2f81b8b0d00c67193c9c"
+ },
+ "2": {
+  "v": "S1740i",
+  "faze": "2",
+  "md5": "aaccd9ffce3237f92e737b1a67df8717",
+  "bak": "42d8805d26ac2f81b8b0d00c67193c9c"
+ },
+ "3": {
+  "v": "S1740i",
+  "faze": "3",
+  "md5": "aaccd9ffce3237f92e737b1a67df8717",
+  "ms": 2437,
+  "foto": [
+   "{\"kodas\":\"rinkiniai_foto\",\"lygis\":\"zalia\",\"tekstas\":\"Rinkiniai be nuotraukos: 0 iš 28\"}",
+   "{\"kodas\":\"prekes_foto\",\"lygis\":\"geltona\",\"tekstas\":\"Prekės be nuotraukos: 4 — 34913, 34997, 34999, 35074\"}"
+  ],
+  "n": 19,
+  "heartbeat": 200
+ },
+ "v": "dep-183900",
+ "kurimas": 200,
+ "sid": 6781,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
