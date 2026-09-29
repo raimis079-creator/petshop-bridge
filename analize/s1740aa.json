@@ -1,0 +1,169 @@
+{
+ "1": {
+  "v": "S1740aa",
+  "faze": "1",
+  "md5": "9a1426b10c69c8ce6005fe2276f59475"
+ },
+ "2": {
+  "v": "S1740aa",
+  "faze": "2",
+  "shots": [
+   {
+    "n": "aa1_naujas",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));const st=()=>{const o=document.querySelector('.psw-ov');const el=document.elementFromPoint(innerWidth/2,innerHeight/2);const ik=document.querySelector('.mobile-nav.nav-right .header-search a');let ikh=null;if(ik){const q=ik.getBoundingClientRect();const e2=document.elementFromPoint(q.left+q.width/2,q.top+q.height/2);ikh=(e2&&(ik===e2||ik.contains(e2)))?'OK':(e2?(e2.className||e2.tagName).toString().slice(0,30):null);}return {ov:o?(getComputedStyle(o).display+' '+o.className+(o.hidden?' hidden':'')):'nera',centras:el?(el.className||el.tagName).toString().slice(0,35):null,ikona:ikh};};const a=st();await w(14500);const b=st();return {t1:a,t15:b}})()"
+   },
+   {
+    "n": "aa2_paieska_klik",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844,
+    "click": ".mobile-nav.nav-right .header-search a",
+    "eval": "(()=>({atsidare:!!document.querySelector('.mfp-ready')}))()"
+   },
+   {
+    "n": "aa3_krepselin_klik",
+    "u": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+    "w": 390,
+    "h": 844,
+    "click": ".psc-sticky-atc .psc-sticky-btn",
+    "eval": "(async()=>{await new Promise(r=>setTimeout(r,2500));return {url:location.pathname,krepselis:(document.querySelector('.cart-icon strong')||{}).innerText}})()"
+   },
+   {
+    "n": "aa4_atmesti",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844,
+    "click": ".cmplz-btn.cmplz-deny"
+   },
+   {
+    "n": "aa5_modalas_po",
+    "u": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+    "w": 390,
+    "h": 844,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));const st=()=>{const o=document.querySelector('.psw-ov');const el=document.elementFromPoint(innerWidth/2,innerHeight/2);const ik=document.querySelector('.mobile-nav.nav-right .header-search a');let ikh=null;if(ik){const q=ik.getBoundingClientRect();const e2=document.elementFromPoint(q.left+q.width/2,q.top+q.height/2);ikh=(e2&&(ik===e2||ik.contains(e2)))?'OK':(e2?(e2.className||e2.tagName).toString().slice(0,30):null);}return {ov:o?(getComputedStyle(o).display+' '+o.className+(o.hidden?' hidden':'')):'nera',centras:el?(el.className||el.tagName).toString().slice(0,35):null,ikona:ikh};};const a=st();await w(14500);const b=st();return {t1:a,t15:b}})()"
+   },
+   {
+    "n": "aa6_kat_klik",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844,
+    "click": "form.ps-wask .ps-wask-t",
+    "eval": "(()=>({atv:document.querySelector('form.ps-wask').classList.contains('ps-atv')}))()"
+   },
+   {
+    "n": "aa7_desk",
+    "u": "https://petshop.lt/",
+    "w": 1440,
+    "h": 900,
+    "eval": "(async()=>{const w=ms=>new Promise(r=>setTimeout(r,ms));const st=()=>{const o=document.querySelector('.psw-ov');const el=document.elementFromPoint(innerWidth/2,innerHeight/2);const ik=document.querySelector('.mobile-nav.nav-right .header-search a');let ikh=null;if(ik){const q=ik.getBoundingClientRect();const e2=document.elementFromPoint(q.left+q.width/2,q.top+q.height/2);ikh=(e2&&(ik===e2||ik.contains(e2)))?'OK':(e2?(e2.className||e2.tagName).toString().slice(0,30):null);}return {ov:o?(getComputedStyle(o).display+' '+o.className+(o.hidden?' hidden':'')):'nera',centras:el?(el.className||el.tagName).toString().slice(0,35):null,ikona:ikh};};const a=st();await w(14500);const b=st();return {t1:a,t15:b}})()"
+   }
+  ]
+ },
+ "v": "dep-200859",
+ "kurimas": 200,
+ "sid": 6801,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "aa1_naujas": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "t1": {
+     "ov": "none psw-ov hidden",
+     "centras": "P",
+     "ikona": "OK"
+    },
+    "t15": {
+     "ov": "none psw-ov hidden",
+     "centras": "P",
+     "ikona": "OK"
+    }
+   }
+  },
+  "aa2_paieska_klik": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "clicked": ".mobile-nav.nav-right .header-search a",
+   "eval": {
+    "atsidare": true
+   }
+  },
+  "aa3_krepselin_klik": {
+   "status": 201,
+   "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+   "title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg - Petshop.lt",
+   "errors": [],
+   "clicked": ".psc-sticky-atc .psc-sticky-btn",
+   "eval": {
+    "url": "/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+    "krepselis": "1"
+   }
+  },
+  "aa4_atmesti": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "clicked": ".cmplz-btn.cmplz-deny"
+  },
+  "aa5_modalas_po": {
+   "status": 201,
+   "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+   "title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "t1": {
+     "ov": "none psw-ov hidden",
+     "centras": "wp-post-image ux-skip-lazy",
+     "ikona": "OK"
+    },
+    "t15": {
+     "ov": "flex psw-ov on",
+     "centras": "psw-p psw-hi",
+     "ikona": "psw-ov on"
+    }
+   }
+  },
+  "aa6_kat_klik": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [
+    "http 400 https://www.clarity.ms/tag/n28m0rqx80",
+    "error: Failed to load resource: the server responded with a status of 400 (Bad Request)"
+   ],
+   "clicked": "form.ps-wask .ps-wask-t",
+   "eval": {
+    "atv": true
+   }
+  },
+  "aa7_desk": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "eval": {
+    "t1": {
+     "ov": "none psw-ov hidden",
+     "centras": "P",
+     "ikona": "header-top hide-for-sticky nav"
+    },
+    "t15": {
+     "ov": "flex psw-ov on",
+     "centras": "psw-p psw-hi",
+     "ikona": "psw-ov on"
+    }
+   }
+  }
+ }
+}
