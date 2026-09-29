@@ -1,0 +1,26 @@
+{
+ "1": {
+  "v": "S1736q",
+  "faze": "1",
+  "fail": {
+   "petshop-av-dropship.php": {
+    "live_ok": true,
+    "new_ok": true,
+    "tok": true
+   },
+   "petshop-av-tiekimas.php": {
+    "live_ok": true,
+    "new_ok": true,
+    "tok": true
+   }
+  },
+  "visi_ok": true
+ },
+ "v": "dep-162917",
+ "kurimas": 200,
+ "sid": 6749,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
