@@ -1,0 +1,200 @@
+{
+ "1": {
+  "v": "S1738a",
+  "faze": "1",
+  "robots_origin": "(nera failo — WP dinaminis)",
+  "robots_cf": {
+   "code": 200,
+   "h": {
+    "server": "cloudflare",
+    "cf-ray": "a42bf53d8bb0b11b-VNO",
+    "cf-cache-status": "EXPIRED",
+    "content-type": "text/plain; charset=utf-8"
+   },
+   "body": "User-agent: *\nDisallow: /wp-content/uploads/wc-logs/\nDisallow: /wp-content/uploads/woocommerce_transient_files/\nDisallow: /wp-content/uploads/woocommerce_uploads/\nDisallow: /*?add-to-cart=\nDisallow: /*?*add-to-cart=\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\nDisallow: /*?*yith_wcan=\nDisallow: /*?*filter_\nDisallow: /*?*query_type_\nDisallow: /*?*orderby=\n\nSitemap: https://petshop.lt/sitemap_index.xml\n"
+  },
+  "ua": {
+   "petshop.lt": {
+    "plain": "200  DYNAMIC len=239790 html-ok",
+    "GPTBot": "200  DYNAMIC len=239790 html-ok",
+    "ChatGPT-User": "200  DYNAMIC len=239790 html-ok",
+    "OAI-SearchBot": "200  DYNAMIC len=239790 html-ok",
+    "PerplexityBot": "200  DYNAMIC len=239790 html-ok",
+    "Perplexity-User": "200  DYNAMIC len=239790 html-ok",
+    "ClaudeBot": "200  DYNAMIC len=239790 html-ok",
+    "Google-Extended": "200  DYNAMIC len=239790 html-ok",
+    "Googlebot": "200  DYNAMIC len=239790 html-ok",
+    "bingbot": "200  DYNAMIC len=239790 html-ok",
+    "Bytespider": "200  DYNAMIC len=239790 html-ok",
+    "meta-external": "200  DYNAMIC len=239790 html-ok"
+   },
+   "skaiciuokle": {
+    "plain": "200  DYNAMIC len=202091 html-ok",
+    "GPTBot": "200  DYNAMIC len=202091 html-ok",
+    "ChatGPT-User": "200  DYNAMIC len=202091 html-ok",
+    "OAI-SearchBot": "200  DYNAMIC len=202091 html-ok",
+    "PerplexityBot": "200  DYNAMIC len=202091 html-ok",
+    "Perplexity-User": "200  DYNAMIC len=202091 html-ok",
+    "ClaudeBot": "200  DYNAMIC len=202091 html-ok",
+    "Google-Extended": "200  DYNAMIC len=202091 html-ok",
+    "Googlebot": "200  DYNAMIC len=202091 html-ok",
+    "bingbot": "200  DYNAMIC len=202091 html-ok",
+    "Bytespider": "200  DYNAMIC len=202091 html-ok",
+    "meta-external": "200  DYNAMIC len=202091 html-ok"
+   }
+  }
+ },
+ "2": {
+  "v": "S1738a",
+  "faze": "2",
+  "analitika_md5": "ac8bdbe79a6637546b312a48ba6ee427",
+  "analitika_dydis": 39051,
+  "analitika_versija": "1.3",
+  "analitika_kanalas": [
+   "15: *  4. KANALAS: kai kanalai() nieko neduoda — klasifikuojam is referer/URL",
+   "16: *     (direct / organika / mokamas / referral), ne NULL.",
+   "36: *  3. `petshop-kanalai.php` PRIJUNGIAMAS, ne perrasomas. Jis jau turi UTM",
+   "37: *     rinkima, gclid/fbclid kaip 0/1 ir klasifikatoriu su taisyklemis is",
+   "38: *     nustatymo. Cia tik SKAITOM `WC()->session->get('ps_kanalai')`.",
+   "89: const SESIJA_K = 'ps_kanalai';           /* Petshop_Kanalai::SESIJA */",
+   "160: referer_domenas VARCHAR(190) NULL DEFAULT NULL,",
+   "161: kanalas VARCHAR(24) NULL DEFAULT NULL,",
+   "255: /** Statistikos sutikimas — TAS PATS saltinis kaip kanaluose. */",
+   "257: if ( class_exists( 'Petshop_Kanalai' ) && method_exists( 'Petshop_Kanalai', 'sutikimas' ) ) {",
+   "258: return (bool) Petshop_Kanalai::sutikimas();",
+   "278: /** Kanalai — SKAITOM is `petshop-kanalai.php`, savo rinkimo nedarom. */",
+   "279: public static function kanalai() {",
+   "280: $out = array( 'saltinis' => null, 'medium' => null, 'kampanija' => null, 'referer_domenas' => null, 'kanalas' => null );",
+   "285: $out['saltinis']        = isset( $p['utm_source'] ) ? mb_substr( $p['utm_source'], 0, 96 ) : null;",
+   "286: $out['medium']          = isset( $p['utm_medium'] ) ? mb_substr( $p['utm_medium'], 0, 96 ) : null;",
+   "287: $out['kampanija']       = isset( $p['utm_campaign'] ) ? mb_substr( $p['utm_campaign'], 0, 96 ) : null;",
+   "288: $out['referer_domenas'] = isset( $p['referer_domenas'] ) ? mb_substr( $p['referer_domenas'], 0, 190 ) : null;",
+   "289: $out['kanalas']         = isset( $p['kanalas'] ) ? mb_substr( $p['kanalas'], 0, 24 ) : null;",
+   "372: /** v1.3: kanalas, kai kanalai() nieko negrazino (WC sesijos dar nera). */",
+   "373: public static function kanalas_atsarginis( $url, $rh ) {",
+   "375: if ( preg_match( '/[?&](gclid|gbraid|wbraid|msclkid)=/i', $url ) || preg_match( '/[?&]utm_medium=(cpc|ppc|paid)/i', $url ) ) { return 'mokamas'; }",
+   "376: if ( preg_match( '/[?&]utm_medium=email/i', $url ) ) { return 'email'; }",
+   "377: if ( '' === $rh ) { return preg_match( '/[?&]utm_source=/i', $url ) ? 'referral' : 'direct'; }",
+   "378: if ( preg_match( '/(^|\\.)(google|bing|yahoo|duckduckgo|yandex|ecosia|search\\.brave)\\./i', $rh ) ) { return 'organika'; }",
+   "379: if ( preg_match( '/(^|\\.)(facebook|instagram|fb|l\\.facebook|lm\\.facebook|tiktok|youtube|linkedin|t\\.co|pinterest)\\./i', $rh ) ) { return 'soc_organika'; }",
+   "529: $k      = self::kanalai();",
+   "531: /* v1.3: referer host is beacon'o (tik pageview) */",
+   "537: if ( empty( $k['kanalas'] ) && ( 'pageview' === $tipas ) ) {",
+   "538: $k['kanalas'] = self::kanalas_atsarginis( isset( $e['url'] ) ? $e['url'] : '', ( '' !== $rh && ! self::mokejimo_domenas( $rh ) ) ? $rh : '' );",
+   "539: if ( empty( $k['referer_domenas'] ) && '' !== $rh ) { $k['referer_domenas'] = $rh; }",
+   "568: 'referer_domenas'  => $k['referer_domenas'],",
+   "569: 'kanalas'          => $k['kanalas'],",
+   "627: /* Landing = pirmas puslapis sesijoje: nera vidinio referer'io. */",
+   "628: $ref     = isset( $_SERVER['HTTP_REFERER'] ) ? (string) wp_unslash( $_SERVER['HTTP_REFERER'] ) : '';",
+   "740: 'kanalas'    => 'COALESCE(kanalas, \\'direct\\')',"
+  ],
+  "fakt_kanalas_failai": [
+   "petshop-analitika-langas.php v?",
+   "petshop-ataskaita-klientai.php v1.1",
+   "petshop-ataskaita-lankomumas.php v1.0",
+   "petshop-ataskaita-menuo.php v1.0",
+   "petshop-ataskaita-pardavimai.php v3.4.1",
+   "petshop-dim-klientai.php v1.1.1",
+   "petshop-faktai.php v1.3",
+   "petshop-planas-langas.php v1.0.1",
+   "petshop-rytas.php v1.8"
+  ],
+  "fakt_kanalas_petshop-analitika-langas.php": [
+   "70: $u = $wpdb->get_row( $wpdb->prepare( \"SELECT COUNT(*) n, SUM(viso_ct) viso, SUM(marza_ct) marza, SUM(kontribucija_ct) kontr, SUM(savikaina_ct) sav, SUM(klientas_naujas=1 AND NOT EXISTS (SELECT 1 FROM {$p}ps_ist_fakt_uz"
+  ],
+  "fakt_kanalas_petshop-ataskaita-klientai.php": [
+   "86: u.prekiu_suma_ct - u.nuolaidu_ct paj, u.kontribucija_ct kontr, u.kanalas_pirmas kan, u.dienos_nuo_ankstesnio dna",
+   "168: check_admin_referer( 'ps_klientai_csv' );",
+   "356: $uz = $wpdb->get_results( $wpdb->prepare( \"SELECT u.uzsakymas_id, u.diena, u.klientas_uzsakymo_nr nr, u.dienos_nuo_ankstesnio dna, u.prekiu_suma_ct - u.nuolaidu_ct paj, u.savikaina_ct sav, u.kontribucija_ct kontr, u.ka"
+  ],
+  "fakt_kanalas_petshop-ataskaita-lankomumas.php": [
+   "21: * praleidžiant Paysera grįžimą. Užsakymo — `kanalas_paskutinis` + UTM/referer/",
+   "49: public static function grupe( $kanalas, $saltinis, $referer, $gclid = 0 ) {",
+   "50: $s = strtolower( trim( (string) $saltinis . ' ' . (string) $referer ) );",
+   "57: if ( preg_match( '/chatgpt|openai|perplexity|claude|gemini|copilot/', $s ) ) { return 'AI asistentai'; }",
+   "61: $d = trim( (string) ( $referer ? $referer : $saltinis ) );",
+   "100: 'SELECT uzsakymas_id, kanalas_paskutinis k, utm_source s, referer_domenas r, gclid g, irenginys ir, (viso_ct - pvm_ct) paj",
+   "266: \"SELECT diena, lankytojas_d v, kanalas, saltinis, referer_domenas r FROM $i"
+  ],
+  "fakt_kanalas_petshop-ataskaita-menuo.php": [
+   "72: check_admin_referer( self::VEIKSMAS );",
+   "129: $rows[] = array( (int) $x['uzsakymas_id'], $x['diena'], $x['statusas_galutinis'], (int) $x['klientas_naujas'], self::ct( $x['prekiu_suma_ct'] - $x['nuolaidu_ct'] ), self::ct( $x['nuolaidu_ct'] ), self::ct( $x['savikai"
+  ],
+  "fakt_kanalas_petshop-ataskaita-pardavimai.php": [
+   "87: 'kanalas'    => array( 'Kanalas',         'u.kanalas_paskutinis', 'uzs', 'Paskutinis prisilietimas prieš pirkimą.' ),",
+   "178: check_admin_referer( 'ps_pard_xlsx' );",
+   "211: (string) $x['mokejimo_budas'], (string) $x['kanalas_paskutinis'],",
+   "293: u.klientas_naujas, u.mokejimo_budas, u.kanalas_paskutinis",
+   "363: 'f_kanalas'   => 'u.kanalas_paskutinis',",
+   "407: 'f_kanalas'    => $imk( \"SELECT DISTINCT u.kanalas_paskutinis FROM $u u WHERE $bu $t ORDER BY 1\" ),",
+   "657: u.klientas_naujas, u.mokejimo_budas, u.kanalas_paskutinis",
+   "702: \"SELECT COALESCE(u.utm_campaign,'') k, COALESCE(u.utm_source,'') src, COUNT(*) n, SUM(u.prekiu_suma_ct - u.nuolaidu_ct) paj, SUM(u.kontribucija_ct) kontr",
+   "703: FROM $u u WHERE u.diena BETWEEN %s AND %s AND u.kanalas_paskutinis = 'mokamas' $t \" . self::atrankos_salyga( 'uzs' ) . ' GROUP BY 1, 2', $nuo, $iki ), ARRAY_A );"
+  ],
+  "fakt_kanalas_petshop-dim-klientai.php": [
+   "93: kanalas_pirmas VARCHAR(24) NULL DEFAULT NULL,",
+   "138: SUBSTRING_INDEX(GROUP_CONCAT(kanalas_pirmas ORDER BY apmoketa_at ASC), ',', 1) kan,",
+   "198: 'kanalas_pirmas' => $r['kan'] ? mb_substr( $r['kan'], 0, 24 ) : null,",
+   "315: 'eilutes'   => $wpdb->get_results( \"SELECT LEFT(raktas,10) r,klientas_id,uzsakymu_sk,pajamos_ct,marza_ct,kontribucija_ct,ltv_90_ct,ltv_365_ct,vid_intervalas_d,kohorta,rfm_r,rfm_f,rfm_m,segmentas,pagrindinis_brendas,ka"
+  ],
+  "fakt_kanalas_petshop-faktai.php": [
+   "142: kanalas_pirmas VARCHAR(32) NOT NULL DEFAULT '',",
+   "143: kanalas_paskutinis VARCHAR(32) NOT NULL DEFAULT '',",
+   "144: utm_source VARCHAR(96) NOT NULL DEFAULT '',",
+   "149: referer_domenas VARCHAR(190) NOT NULL DEFAULT '',",
+   "169: KEY kanalas (kanalas_paskutinis),",
+   "483: 'kanalas_pirmas'           => mb_substr( (string) ( $pi['kanalas'] ?? '' ), 0, 32 ),",
+   "484: 'kanalas_paskutinis'       => mb_substr( (string) ( $pa['kanalas'] ?? '' ), 0, 32 ),",
+   "485: 'utm_source'               => mb_substr( (string) ( $pa['utm_source'] ?? '' ), 0, 96 ),",
+   "490: 'referer_domenas'          => mb_substr( (string) ( $pa['referer_domenas'] ?? '' ), 0, 190 ),"
+  ],
+  "fakt_kanalas_petshop-planas-langas.php": [
+   "30: return $wpdb->get_results( $wpdb->prepare( \"SELECT u.uzsakymas_id, u.kanalas_paskutinis kan, (u.gclid<>'' AND u.gclid IS NOT NULL) gc, u.viso_ct, u.marza_ct FROM {$p}ps_fakt_uzsakymai u WHERE u.sukurta_at>=%s AND u.suk"
+  ],
+  "fakt_kanalas_petshop-rytas.php": [
+   "103: check_admin_referer( 'ps_rytas_ribos' );",
+   "118: check_admin_referer( 'ps_rytas_tikrinti' );",
+   "285: $m = $wpdb->get_row( $wpdb->prepare( \"SELECT COUNT(*) n, COALESCE(SUM(u.prekiu_suma_ct - u.nuolaidu_ct),0) paj, COALESCE(SUM(u.kontribucija_ct),0) kontr FROM $u u WHERE u.diena BETWEEN %s AND %s AND u.kanalas_paskutini"
+  ],
+  "ivykiai_kanalai_30d": [
+   {
+    "kanalas": "mokamas",
+    "n": "2391"
+   },
+   {
+    "kanalas": null,
+    "n": "1503"
+   },
+   {
+    "kanalas": "direct",
+    "n": "980"
+   },
+   {
+    "kanalas": "organika",
+    "n": "761"
+   },
+   {
+    "kanalas": "referral",
+    "n": "322"
+   },
+   {
+    "kanalas": "email",
+    "n": "18"
+   },
+   {
+    "kanalas": "soc_organika",
+    "n": "16"
+   }
+  ],
+  "ivykiai_cols": "id,laikas,diena,tipas,pusl_tipas,url_kelias,raktas,raktas2,reiksme,sesija,lankytojas_d,lankytojas_30,saltinis,medium,kampanija,referer_domenas,kanalas,landing,irenginys,os_seima,nars_seima,salis,prisijunges,sutikimas,testinis,saltinis_aplinka",
+  "fakt_kanalai_30d": [],
+  "ua_log_30d": []
+ },
+ "v": "dep-151653",
+ "kurimas": 200,
+ "sid": 6744,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
