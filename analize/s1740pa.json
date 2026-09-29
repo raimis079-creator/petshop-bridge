@@ -1,0 +1,1698 @@
+{
+ "1": {
+  "v": "S1740pa",
+  "t": {
+   "gaj6__bak_s212c_pets_weight_20260718_01b43648": {
+    "n": 22,
+    "stulp": [
+     "id:bigint",
+     "user_id:bigint",
+     "pet_name:varchar",
+     "species:varchar",
+     "species_detail:varchar",
+     "life_stage:varchar",
+     "dog_size:varchar",
+     "is_sterilised:varchar",
+     "feeding_type:varchar",
+     "primary_need:varchar",
+     "current_food_brand:varchar",
+     "current_food_free_text:varchar",
+     "primary_product_id:bigint",
+     "primary_product_sku:varchar",
+     "primary_product_name:varchar",
+     "primary_product_package:varchar",
+     "photo_file_id:bigint",
+     "is_primary:tinyint",
+     "status:varchar",
+     "client_ref:varchar",
+     "created_at:datetime",
+     "updated_at:datetime",
+     "deleted_at:datetime"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-07-14 22:12:41",
+     "mx": "2026-07-15 17:38:31"
+    },
+    "nuo_0909": 0,
+    "pasisk": {
+     "species": [
+      {
+       "v": "dog",
+       "n": "15"
+      },
+      {
+       "v": "cat",
+       "n": "5"
+      },
+      {
+       "v": "bird",
+       "n": "1"
+      },
+      {
+       "v": "reptile",
+       "n": "1"
+      }
+     ],
+     "is_sterilised": [
+      {
+       "v": null,
+       "n": "21"
+      },
+      {
+       "v": "yes",
+       "n": "1"
+      }
+     ],
+     "primary_need": [
+      {
+       "v": null,
+       "n": "16"
+      },
+      {
+       "v": "digestion",
+       "n": "3"
+      },
+      {
+       "v": "skin_allergy",
+       "n": "2"
+      },
+      {
+       "v": "picky_eater",
+       "n": "1"
+      }
+     ],
+     "status": [
+      {
+       "v": "active",
+       "n": "18"
+      },
+      {
+       "v": "deleted",
+       "n": "4"
+      }
+     ]
+    }
+   },
+   "gaj6_mailpoet_statistics_bounces": {
+    "n": 0,
+    "stulp": [
+     "id:int",
+     "newsletter_id:int",
+     "subscriber_id:int",
+     "queue_id:int",
+     "created_at:timestamp"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": null,
+     "mx": null
+    },
+    "nuo_0909": 0
+   },
+   "gaj6_mailpoet_statistics_clicks": {
+    "n": 0,
+    "stulp": [
+     "id:int",
+     "newsletter_id:int",
+     "subscriber_id:int",
+     "queue_id:int",
+     "link_id:int",
+     "user_agent_id:int",
+     "user_agent_type:tinyint",
+     "count:int",
+     "created_at:timestamp",
+     "updated_at:timestamp"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": null,
+     "mx": null
+    },
+    "nuo_0909": 0
+   },
+   "gaj6_mailpoet_statistics_forms": {
+    "n": 0,
+    "stulp": [
+     "id:int",
+     "form_id:int",
+     "subscriber_id:int",
+     "created_at:timestamp"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": null,
+     "mx": null
+    },
+    "nuo_0909": 0
+   },
+   "gaj6_mailpoet_statistics_newsletters": {
+    "n": 0,
+    "stulp": [
+     "id:int",
+     "newsletter_id:int",
+     "subscriber_id:int",
+     "queue_id:int",
+     "sent_at:timestamp"
+    ]
+   },
+   "gaj6_mailpoet_statistics_opens": {
+    "n": 0,
+    "stulp": [
+     "id:int",
+     "newsletter_id:int",
+     "subscriber_id:int",
+     "queue_id:int",
+     "user_agent_id:int",
+     "user_agent_type:tinyint",
+     "created_at:timestamp"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": null,
+     "mx": null
+    },
+    "nuo_0909": 0
+   },
+   "gaj6_mailpoet_statistics_unsubscribes": {
+    "n": 0,
+    "stulp": [
+     "id:int",
+     "newsletter_id:int",
+     "subscriber_id:int",
+     "queue_id:int",
+     "created_at:timestamp",
+     "source:varchar",
+     "meta:varchar",
+     "method:varchar",
+     "reason:varchar",
+     "reason_text:text",
+     "reason_submitted_at:timestamp"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": null,
+     "mx": null
+    },
+    "nuo_0909": 0,
+    "pasisk": {
+     "source": []
+    }
+   },
+   "gaj6_mailpoet_statistics_woocommerce_purchases": {
+    "n": 0,
+    "stulp": [
+     "id:int",
+     "newsletter_id:int",
+     "subscriber_id:int",
+     "queue_id:int",
+     "click_id:int",
+     "order_id:bigint",
+     "order_currency:char",
+     "order_price_total:float",
+     "created_at:timestamp",
+     "updated_at:timestamp",
+     "status:varchar"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": null,
+     "mx": null
+    },
+    "nuo_0909": 0,
+    "pasisk": {
+     "status": []
+    }
+   },
+   "gaj6_mailpoet_stats_notifications": {
+    "n": 0,
+    "stulp": [
+     "id:int",
+     "newsletter_id:int",
+     "task_id:int",
+     "created_at:timestamp",
+     "updated_at:timestamp"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": null,
+     "mx": null
+    },
+    "nuo_0909": 0
+   },
+   "gaj6_ps_brand_alias": {
+    "n": 143,
+    "stulp": [
+     "id:bigint",
+     "alias:varchar",
+     "canonical_id:varchar",
+     "busena:enum",
+     "confidence:decimal",
+     "patvirtino:bigint",
+     "sukurta:datetime",
+     "atnaujinta:datetime"
+    ],
+    "data_stulp": "sukurta",
+    "intervalas": {
+     "mn": "2026-08-16 16:29:38",
+     "mx": "2026-09-21 13:10:02"
+    },
+    "nuo_0909": 3
+   },
+   "gaj6_ps_email_jobs": {
+    "n": 540,
+    "stulp": [
+     "id:bigint",
+     "job_key:varchar",
+     "flow:varchar",
+     "flow_class:varchar",
+     "recipient_email:varchar",
+     "recipient_user_id:bigint",
+     "subject:varchar",
+     "payload:longtext",
+     "status:varchar",
+     "block_reason:varchar",
+     "provider:varchar",
+     "provider_message_id:varchar",
+     "attempts:smallint",
+     "last_error:text",
+     "scheduled_at:datetime",
+     "sent_at:datetime",
+     "created_at:datetime",
+     "updated_at:datetime",
+     "skip_reason:varchar",
+     "error_message:text",
+     "decision_at:datetime",
+     "next_attempt_at:datetime",
+     "context_json:longtext",
+     "delivered_at:datetime",
+     "opened_at:datetime",
+     "clicked_at:datetime"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-09-09 14:55:04",
+     "mx": "2026-09-29 15:37:14"
+    },
+    "nuo_0909": 540,
+    "pasisk": {
+     "flow": [
+      {
+       "v": "post_purchase_14d",
+       "n": "142"
+      },
+      {
+       "v": "post_purchase_2d",
+       "n": "142"
+      },
+      {
+       "v": "post_purchase_7d",
+       "n": "142"
+      },
+      {
+       "v": "cart_abandoned",
+       "n": "56"
+      },
+      {
+       "v": "cart_abandoned_2",
+       "n": "26"
+      },
+      {
+       "v": "consent_changed",
+       "n": "16"
+      },
+      {
+       "v": "browse_abandoned",
+       "n": "12"
+      },
+      {
+       "v": "refill_due",
+       "n": "4"
+      }
+     ],
+     "status": [
+      {
+       "v": "sent",
+       "n": "289"
+      },
+      {
+       "v": "pending",
+       "n": "119"
+      },
+      {
+       "v": "skipped",
+       "n": "102"
+      },
+      {
+       "v": "deferred",
+       "n": "30"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_event_log": {
+    "n": 494,
+    "stulp": [
+     "id:bigint",
+     "event_id:varchar",
+     "event_name:varchar",
+     "email:varchar",
+     "payload_json:longtext",
+     "emitted_at:datetime",
+     "status:varchar",
+     "adapter_name:varchar",
+     "attempts:tinyint",
+     "next_retry_at:datetime",
+     "last_error:varchar",
+     "esp_response:text"
+    ],
+    "pasisk": {
+     "status": [
+      {
+       "v": "sent",
+       "n": "307"
+      },
+      {
+       "v": "skipped",
+       "n": "147"
+      },
+      {
+       "v": "dead",
+       "n": "40"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_laukai_ivykiai": {
+    "n": 5409,
+    "stulp": [
+     "id:bigint",
+     "laikas:datetime",
+     "sesija:char",
+     "sritis:varchar",
+     "deze_id:bigint",
+     "preke_id:bigint",
+     "tipas:varchar",
+     "verte:varchar",
+     "aplinka:varchar",
+     "dydis:varchar",
+     "skirtukas:varchar",
+     "kiek_dezeje:smallint",
+     "irenginys:varchar",
+     "user_id:bigint"
+    ],
+    "data_stulp": "laikas",
+    "intervalas": {
+     "mn": "2026-08-16 11:04:29",
+     "mx": "2026-09-29 23:08:13"
+    },
+    "nuo_0909": 3387,
+    "pasisk": {
+     "sritis": [
+      {
+       "v": "laukai",
+       "n": "4062"
+      },
+      {
+       "v": "anketa",
+       "n": "1301"
+      },
+      {
+       "v": "rec",
+       "n": "24"
+      },
+      {
+       "v": "refill",
+       "n": "22"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_pet_field_log": {
+    "n": 167,
+    "stulp": [
+     "id:bigint",
+     "pet_id:bigint",
+     "laukas:varchar",
+     "buvo:text",
+     "tapo:text",
+     "saltinis:varchar",
+     "questionnaire_version:varchar",
+     "user_id:bigint",
+     "laikas:datetime"
+    ],
+    "data_stulp": "laikas",
+    "intervalas": {
+     "mn": "2026-09-11 09:12:21",
+     "mx": "2026-09-27 09:50:08"
+    },
+    "nuo_0909": 167,
+    "pasisk": {
+     "saltinis": [
+      {
+       "v": "anketa",
+       "n": "153"
+      },
+      {
+       "v": "sistema",
+       "n": "14"
+      }
+     ],
+     "questionnaire_version": [
+      {
+       "v": "v1",
+       "n": "163"
+      },
+      {
+       "v": null,
+       "n": "4"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_pet_notes": {
+    "n": 7,
+    "stulp": [
+     "id:bigint",
+     "pet_id:bigint",
+     "user_id:bigint",
+     "body:text",
+     "note_date:date",
+     "is_pinned:tinyint",
+     "created_at:datetime",
+     "updated_at:datetime"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-07-25 23:12:08",
+     "mx": "2026-07-29 16:46:50"
+    },
+    "nuo_0909": 0
+   },
+   "gaj6_ps_pet_products": {
+    "n": 38,
+    "stulp": [
+     "id:bigint",
+     "pet_id:bigint",
+     "user_id:bigint",
+     "product_id:bigint",
+     "sku:varchar",
+     "relationship_type:varchar",
+     "source:varchar",
+     "confidence:decimal",
+     "last_order_id:bigint",
+     "last_purchased_at:datetime",
+     "created_at:datetime",
+     "updated_at:datetime"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-07-23 12:44:49",
+     "mx": "2026-09-21 22:45:22"
+    },
+    "nuo_0909": 2,
+    "pasisk": {
+     "source": [
+      {
+       "v": "user_confirmed",
+       "n": "36"
+      },
+      {
+       "v": "user",
+       "n": "2"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_pet_profile_drafts": {
+    "n": 12,
+    "stulp": [
+     "id:bigint",
+     "draft_id:char",
+     "email_hash:char",
+     "payload_json:longtext",
+     "payload_version:smallint",
+     "status:varchar",
+     "created_at:datetime",
+     "updated_at:datetime",
+     "expires_at:datetime",
+     "claim_started_at:datetime",
+     "claimed_at:datetime",
+     "claimed_user_id:bigint",
+     "claimed_pet_id:bigint",
+     "claim_attempt_id:char"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-08-03 08:23:21",
+     "mx": "2026-09-29 06:25:54"
+    },
+    "nuo_0909": 8,
+    "pasisk": {
+     "status": [
+      {
+       "v": "claimed",
+       "n": "12"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_pets": {
+    "n": 84,
+    "stulp": [
+     "id:bigint",
+     "user_id:bigint",
+     "pet_name:varchar",
+     "species:varchar",
+     "species_detail:varchar",
+     "birth_date:date",
+     "life_stage:varchar",
+     "dog_size:varchar",
+     "is_sterilised:varchar",
+     "feeding_type:varchar",
+     "feeding_type_other:varchar",
+     "wet_food_g:smallint",
+     "primary_need:varchar",
+     "primary_need_other:varchar",
+     "sensitivities:varchar",
+     "housing:varchar",
+     "current_food_brand:varchar",
+     "current_food_free_text:varchar",
+     "primary_product_id:bigint",
+     "wet_product_id:bigint",
+     "primary_product_sku:varchar",
+     "primary_product_name:varchar",
+     "primary_product_package:varchar",
+     "photo_file_id:bigint",
+     "is_primary:tinyint",
+     "status:varchar",
+     "client_ref:varchar",
+     "created_at:datetime",
+     "updated_at:datetime",
+     "deleted_at:datetime",
+     "current_weight_kg:decimal",
+     "adult_expected_weight_kg:decimal",
+     "weight_updated_at:datetime",
+     "activity_hint:varchar",
+     "is_test:tinyint",
+     "source_draft_id:char",
+     "questionnaire_version:varchar",
+     "current_food_brand_id:varchar",
+     "current_food_line_raw:varchar",
+     "current_food_product_id:bigint"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-07-14 22:12:41",
+     "mx": "2026-09-29 06:26:14"
+    },
+    "nuo_0909": 15,
+    "pasisk": {
+     "species": [
+      {
+       "v": "dog",
+       "n": "60"
+      },
+      {
+       "v": "cat",
+       "n": "18"
+      },
+      {
+       "v": "fish",
+       "n": "2"
+      },
+      {
+       "v": "bird",
+       "n": "1"
+      },
+      {
+       "v": "other",
+       "n": "1"
+      },
+      {
+       "v": "reptile",
+       "n": "1"
+      },
+      {
+       "v": "rodent",
+       "n": "1"
+      }
+     ],
+     "is_sterilised": [
+      {
+       "v": null,
+       "n": "66"
+      },
+      {
+       "v": "yes",
+       "n": "14"
+      },
+      {
+       "v": "no",
+       "n": "4"
+      }
+     ],
+     "primary_need": [
+      {
+       "v": null,
+       "n": "67"
+      },
+      {
+       "v": "weight_control",
+       "n": "5"
+      },
+      {
+       "v": "digestion",
+       "n": "3"
+      },
+      {
+       "v": "joints",
+       "n": "3"
+      },
+      {
+       "v": "picky_eater",
+       "n": "2"
+      },
+      {
+       "v": "skin_coat",
+       "n": "2"
+      },
+      {
+       "v": "none",
+       "n": "2"
+      }
+     ],
+     "status": [
+      {
+       "v": "active",
+       "n": "44"
+      },
+      {
+       "v": "deleted",
+       "n": "40"
+      }
+     ],
+     "questionnaire_version": [
+      {
+       "v": null,
+       "n": "74"
+      },
+      {
+       "v": "v1",
+       "n": "10"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_pets_bak_20260720_193704_f6d1f3c9": {
+    "n": 23,
+    "stulp": [
+     "id:bigint",
+     "user_id:bigint",
+     "pet_name:varchar",
+     "species:varchar",
+     "species_detail:varchar",
+     "life_stage:varchar",
+     "dog_size:varchar",
+     "is_sterilised:varchar",
+     "feeding_type:varchar",
+     "primary_need:varchar",
+     "current_food_brand:varchar",
+     "current_food_free_text:varchar",
+     "primary_product_id:bigint",
+     "primary_product_sku:varchar",
+     "primary_product_name:varchar",
+     "primary_product_package:varchar",
+     "photo_file_id:bigint",
+     "is_primary:tinyint",
+     "status:varchar",
+     "client_ref:varchar",
+     "created_at:datetime",
+     "updated_at:datetime",
+     "deleted_at:datetime",
+     "current_weight_kg:decimal",
+     "weight_updated_at:datetime"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-07-14 22:12:41",
+     "mx": "2026-07-20 08:56:03"
+    },
+    "nuo_0909": 0,
+    "pasisk": {
+     "species": [
+      {
+       "v": "dog",
+       "n": "15"
+      },
+      {
+       "v": "cat",
+       "n": "6"
+      },
+      {
+       "v": "bird",
+       "n": "1"
+      },
+      {
+       "v": "reptile",
+       "n": "1"
+      }
+     ],
+     "is_sterilised": [
+      {
+       "v": null,
+       "n": "22"
+      },
+      {
+       "v": "yes",
+       "n": "1"
+      }
+     ],
+     "primary_need": [
+      {
+       "v": null,
+       "n": "16"
+      },
+      {
+       "v": "digestion",
+       "n": "3"
+      },
+      {
+       "v": "skin_allergy",
+       "n": "2"
+      },
+      {
+       "v": "picky_eater",
+       "n": "1"
+      },
+      {
+       "v": "daily",
+       "n": "1"
+      }
+     ],
+     "status": [
+      {
+       "v": "active",
+       "n": "19"
+      },
+      {
+       "v": "deleted",
+       "n": "4"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_pets_bak_20260722_181456_hint": {
+    "n": 25,
+    "stulp": [
+     "id:bigint",
+     "user_id:bigint",
+     "pet_name:varchar",
+     "species:varchar",
+     "species_detail:varchar",
+     "life_stage:varchar",
+     "dog_size:varchar",
+     "is_sterilised:varchar",
+     "feeding_type:varchar",
+     "primary_need:varchar",
+     "current_food_brand:varchar",
+     "current_food_free_text:varchar",
+     "primary_product_id:bigint",
+     "primary_product_sku:varchar",
+     "primary_product_name:varchar",
+     "primary_product_package:varchar",
+     "photo_file_id:bigint",
+     "is_primary:tinyint",
+     "status:varchar",
+     "client_ref:varchar",
+     "created_at:datetime",
+     "updated_at:datetime",
+     "deleted_at:datetime",
+     "current_weight_kg:decimal",
+     "weight_updated_at:datetime"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-07-14 22:12:41",
+     "mx": "2026-07-20 21:35:46"
+    },
+    "nuo_0909": 0,
+    "pasisk": {
+     "species": [
+      {
+       "v": "dog",
+       "n": "16"
+      },
+      {
+       "v": "cat",
+       "n": "6"
+      },
+      {
+       "v": "bird",
+       "n": "1"
+      },
+      {
+       "v": "other",
+       "n": "1"
+      },
+      {
+       "v": "reptile",
+       "n": "1"
+      }
+     ],
+     "is_sterilised": [
+      {
+       "v": null,
+       "n": "24"
+      },
+      {
+       "v": "yes",
+       "n": "1"
+      }
+     ],
+     "primary_need": [
+      {
+       "v": null,
+       "n": "17"
+      },
+      {
+       "v": "digestion",
+       "n": "3"
+      },
+      {
+       "v": "picky_eater",
+       "n": "2"
+      },
+      {
+       "v": "skin_allergy",
+       "n": "2"
+      },
+      {
+       "v": "daily",
+       "n": "1"
+      }
+     ],
+     "status": [
+      {
+       "v": "active",
+       "n": "17"
+      },
+      {
+       "v": "deleted",
+       "n": "8"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_pets_bak_20260723_prof": {
+    "n": 39,
+    "stulp": [
+     "id:bigint",
+     "user_id:bigint",
+     "pet_name:varchar",
+     "species:varchar",
+     "species_detail:varchar",
+     "life_stage:varchar",
+     "dog_size:varchar",
+     "is_sterilised:varchar",
+     "feeding_type:varchar",
+     "primary_need:varchar",
+     "current_food_brand:varchar",
+     "current_food_free_text:varchar",
+     "primary_product_id:bigint",
+     "primary_product_sku:varchar",
+     "primary_product_name:varchar",
+     "primary_product_package:varchar",
+     "photo_file_id:bigint",
+     "is_primary:tinyint",
+     "status:varchar",
+     "client_ref:varchar",
+     "created_at:datetime",
+     "updated_at:datetime",
+     "deleted_at:datetime",
+     "current_weight_kg:decimal",
+     "weight_updated_at:datetime",
+     "activity_hint:varchar"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-07-14 22:12:41",
+     "mx": "2026-07-23 13:24:22"
+    },
+    "nuo_0909": 0,
+    "pasisk": {
+     "species": [
+      {
+       "v": "dog",
+       "n": "28"
+      },
+      {
+       "v": "cat",
+       "n": "8"
+      },
+      {
+       "v": "bird",
+       "n": "1"
+      },
+      {
+       "v": "other",
+       "n": "1"
+      },
+      {
+       "v": "reptile",
+       "n": "1"
+      }
+     ],
+     "is_sterilised": [
+      {
+       "v": null,
+       "n": "38"
+      },
+      {
+       "v": "yes",
+       "n": "1"
+      }
+     ],
+     "primary_need": [
+      {
+       "v": null,
+       "n": "29"
+      },
+      {
+       "v": "daily",
+       "n": "3"
+      },
+      {
+       "v": "digestion",
+       "n": "3"
+      },
+      {
+       "v": "picky_eater",
+       "n": "2"
+      },
+      {
+       "v": "skin_allergy",
+       "n": "2"
+      }
+     ],
+     "status": [
+      {
+       "v": "deleted",
+       "n": "20"
+      },
+      {
+       "v": "active",
+       "n": "19"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_pets_bak_20260726": {
+    "n": 61,
+    "stulp": [
+     "id:bigint",
+     "user_id:bigint",
+     "pet_name:varchar",
+     "species:varchar",
+     "species_detail:varchar",
+     "birth_date:date",
+     "life_stage:varchar",
+     "dog_size:varchar",
+     "is_sterilised:varchar",
+     "feeding_type:varchar",
+     "primary_need:varchar",
+     "sensitivities:varchar",
+     "housing:varchar",
+     "current_food_brand:varchar",
+     "current_food_free_text:varchar",
+     "primary_product_id:bigint",
+     "primary_product_sku:varchar",
+     "primary_product_name:varchar",
+     "primary_product_package:varchar",
+     "photo_file_id:bigint",
+     "is_primary:tinyint",
+     "status:varchar",
+     "client_ref:varchar",
+     "created_at:datetime",
+     "updated_at:datetime",
+     "deleted_at:datetime",
+     "current_weight_kg:decimal",
+     "adult_expected_weight_kg:decimal",
+     "weight_updated_at:datetime",
+     "activity_hint:varchar"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-07-14 22:12:41",
+     "mx": "2026-07-25 14:03:02"
+    },
+    "nuo_0909": 0,
+    "pasisk": {
+     "species": [
+      {
+       "v": "dog",
+       "n": "42"
+      },
+      {
+       "v": "cat",
+       "n": "13"
+      },
+      {
+       "v": "fish",
+       "n": "2"
+      },
+      {
+       "v": "bird",
+       "n": "1"
+      },
+      {
+       "v": "other",
+       "n": "1"
+      },
+      {
+       "v": "reptile",
+       "n": "1"
+      },
+      {
+       "v": "rodent",
+       "n": "1"
+      }
+     ],
+     "is_sterilised": [
+      {
+       "v": null,
+       "n": "50"
+      },
+      {
+       "v": "yes",
+       "n": "9"
+      },
+      {
+       "v": "no",
+       "n": "2"
+      }
+     ],
+     "primary_need": [
+      {
+       "v": null,
+       "n": "41"
+      },
+      {
+       "v": "daily",
+       "n": "8"
+      },
+      {
+       "v": "sterilised",
+       "n": "5"
+      },
+      {
+       "v": "digestion",
+       "n": "3"
+      },
+      {
+       "v": "picky_eater",
+       "n": "2"
+      },
+      {
+       "v": "skin_allergy",
+       "n": "2"
+      }
+     ],
+     "status": [
+      {
+       "v": "deleted",
+       "n": "38"
+      },
+      {
+       "v": "active",
+       "n": "23"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_pets_bak_20260726_ft": {
+    "n": 62,
+    "stulp": [
+     "id:bigint",
+     "user_id:bigint",
+     "pet_name:varchar",
+     "species:varchar",
+     "species_detail:varchar",
+     "birth_date:date",
+     "life_stage:varchar",
+     "dog_size:varchar",
+     "is_sterilised:varchar",
+     "feeding_type:varchar",
+     "primary_need:varchar",
+     "primary_need_other:varchar",
+     "sensitivities:varchar",
+     "housing:varchar",
+     "current_food_brand:varchar",
+     "current_food_free_text:varchar",
+     "primary_product_id:bigint",
+     "primary_product_sku:varchar",
+     "primary_product_name:varchar",
+     "primary_product_package:varchar",
+     "photo_file_id:bigint",
+     "is_primary:tinyint",
+     "status:varchar",
+     "client_ref:varchar",
+     "created_at:datetime",
+     "updated_at:datetime",
+     "deleted_at:datetime",
+     "current_weight_kg:decimal",
+     "adult_expected_weight_kg:decimal",
+     "weight_updated_at:datetime",
+     "activity_hint:varchar",
+     "is_test:tinyint"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-07-14 22:12:41",
+     "mx": "2026-07-26 13:14:11"
+    },
+    "nuo_0909": 0,
+    "pasisk": {
+     "species": [
+      {
+       "v": "dog",
+       "n": "43"
+      },
+      {
+       "v": "cat",
+       "n": "13"
+      },
+      {
+       "v": "fish",
+       "n": "2"
+      },
+      {
+       "v": "bird",
+       "n": "1"
+      },
+      {
+       "v": "other",
+       "n": "1"
+      },
+      {
+       "v": "reptile",
+       "n": "1"
+      },
+      {
+       "v": "rodent",
+       "n": "1"
+      }
+     ],
+     "is_sterilised": [
+      {
+       "v": null,
+       "n": "50"
+      },
+      {
+       "v": "yes",
+       "n": "9"
+      },
+      {
+       "v": "no",
+       "n": "3"
+      }
+     ],
+     "primary_need": [
+      {
+       "v": null,
+       "n": "54"
+      },
+      {
+       "v": "digestion",
+       "n": "3"
+      },
+      {
+       "v": "picky_eater",
+       "n": "2"
+      },
+      {
+       "v": "skin_coat",
+       "n": "2"
+      },
+      {
+       "v": "none",
+       "n": "1"
+      }
+     ],
+     "status": [
+      {
+       "v": "deleted",
+       "n": "38"
+      },
+      {
+       "v": "active",
+       "n": "24"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_pets_bak_20260727_wet": {
+    "n": 62,
+    "stulp": [
+     "id:bigint",
+     "user_id:bigint",
+     "pet_name:varchar",
+     "species:varchar",
+     "species_detail:varchar",
+     "birth_date:date",
+     "life_stage:varchar",
+     "dog_size:varchar",
+     "is_sterilised:varchar",
+     "feeding_type:varchar",
+     "feeding_type_other:varchar",
+     "wet_food_g:smallint",
+     "primary_need:varchar",
+     "primary_need_other:varchar",
+     "sensitivities:varchar",
+     "housing:varchar",
+     "current_food_brand:varchar",
+     "current_food_free_text:varchar",
+     "primary_product_id:bigint",
+     "primary_product_sku:varchar",
+     "primary_product_name:varchar",
+     "primary_product_package:varchar",
+     "photo_file_id:bigint",
+     "is_primary:tinyint",
+     "status:varchar",
+     "client_ref:varchar",
+     "created_at:datetime",
+     "updated_at:datetime",
+     "deleted_at:datetime",
+     "current_weight_kg:decimal",
+     "adult_expected_weight_kg:decimal",
+     "weight_updated_at:datetime",
+     "activity_hint:varchar",
+     "is_test:tinyint"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-07-14 22:12:41",
+     "mx": "2026-07-26 13:14:11"
+    },
+    "nuo_0909": 0,
+    "pasisk": {
+     "species": [
+      {
+       "v": "dog",
+       "n": "43"
+      },
+      {
+       "v": "cat",
+       "n": "13"
+      },
+      {
+       "v": "fish",
+       "n": "2"
+      },
+      {
+       "v": "bird",
+       "n": "1"
+      },
+      {
+       "v": "other",
+       "n": "1"
+      },
+      {
+       "v": "reptile",
+       "n": "1"
+      },
+      {
+       "v": "rodent",
+       "n": "1"
+      }
+     ],
+     "is_sterilised": [
+      {
+       "v": null,
+       "n": "50"
+      },
+      {
+       "v": "yes",
+       "n": "9"
+      },
+      {
+       "v": "no",
+       "n": "3"
+      }
+     ],
+     "primary_need": [
+      {
+       "v": null,
+       "n": "54"
+      },
+      {
+       "v": "digestion",
+       "n": "3"
+      },
+      {
+       "v": "picky_eater",
+       "n": "2"
+      },
+      {
+       "v": "skin_coat",
+       "n": "2"
+      },
+      {
+       "v": "none",
+       "n": "1"
+      }
+     ],
+     "status": [
+      {
+       "v": "deleted",
+       "n": "38"
+      },
+      {
+       "v": "active",
+       "n": "24"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_pets_bak_20260731_pries_restore": {
+    "n": 55,
+    "stulp": [
+     "id:bigint",
+     "user_id:bigint",
+     "pet_name:varchar",
+     "species:varchar",
+     "species_detail:varchar",
+     "birth_date:date",
+     "life_stage:varchar",
+     "dog_size:varchar",
+     "is_sterilised:varchar",
+     "feeding_type:varchar",
+     "feeding_type_other:varchar",
+     "wet_food_g:smallint",
+     "primary_need:varchar",
+     "primary_need_other:varchar",
+     "sensitivities:varchar",
+     "housing:varchar",
+     "current_food_brand:varchar",
+     "current_food_free_text:varchar",
+     "primary_product_id:bigint",
+     "wet_product_id:bigint",
+     "primary_product_sku:varchar",
+     "primary_product_name:varchar",
+     "primary_product_package:varchar",
+     "photo_file_id:bigint",
+     "is_primary:tinyint",
+     "status:varchar",
+     "client_ref:varchar",
+     "created_at:datetime",
+     "updated_at:datetime",
+     "deleted_at:datetime",
+     "current_weight_kg:decimal",
+     "adult_expected_weight_kg:decimal",
+     "weight_updated_at:datetime",
+     "activity_hint:varchar",
+     "is_test:tinyint",
+     "source_draft_id:char"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-07-15 05:44:02",
+     "mx": "2026-07-28 19:13:14"
+    },
+    "nuo_0909": 0,
+    "pasisk": {
+     "species": [
+      {
+       "v": "dog",
+       "n": "39"
+      },
+      {
+       "v": "cat",
+       "n": "11"
+      },
+      {
+       "v": "fish",
+       "n": "2"
+      },
+      {
+       "v": "bird",
+       "n": "1"
+      },
+      {
+       "v": "reptile",
+       "n": "1"
+      },
+      {
+       "v": "rodent",
+       "n": "1"
+      }
+     ],
+     "is_sterilised": [
+      {
+       "v": null,
+       "n": "42"
+      },
+      {
+       "v": "yes",
+       "n": "10"
+      },
+      {
+       "v": "no",
+       "n": "3"
+      }
+     ],
+     "primary_need": [
+      {
+       "v": null,
+       "n": "47"
+      },
+      {
+       "v": "digestion",
+       "n": "3"
+      },
+      {
+       "v": "none",
+       "n": "2"
+      },
+      {
+       "v": "weight_control",
+       "n": "2"
+      },
+      {
+       "v": "joints",
+       "n": "1"
+      }
+     ],
+     "status": [
+      {
+       "v": "deleted",
+       "n": "32"
+      },
+      {
+       "v": "active",
+       "n": "23"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_rec_log": {
+    "n": 25,
+    "stulp": [
+     "id:bigint",
+     "recommendation_id:char",
+     "pet_id:bigint",
+     "user_id:bigint",
+     "laikas:datetime",
+     "engine_version:varchar",
+     "rezultatas:enum",
+     "reason_code:varchar",
+     "kandidatu_sk:smallint",
+     "parodyti_ids:text",
+     "inputs_json:text",
+     "input_hash:char"
+    ],
+    "data_stulp": "laikas",
+    "intervalas": {
+     "mn": "2026-08-16 17:57:10",
+     "mx": "2026-09-28 07:55:24"
+    },
+    "nuo_0909": 23,
+    "pasisk": {
+     "reason_code": [
+      {
+       "v": "missing_life_stage",
+       "n": "15"
+      },
+      {
+       "v": "no_purchase_history",
+       "n": "6"
+      },
+      {
+       "v": null,
+       "n": "4"
+      }
+     ]
+    }
+   },
+   "gaj6_ps_refill_tracking": {
+    "n": 236,
+    "stulp": [
+     "id:bigint",
+     "user_id:bigint",
+     "product_id:bigint",
+     "pet_id:bigint",
+     "last_order_id:bigint",
+     "last_purchase_date:date",
+     "purchase_count:int",
+     "avg_interval_days:int",
+     "predicted_empty_date:date",
+     "confidence:decimal",
+     "status:varchar",
+     "created_at:datetime",
+     "updated_at:datetime",
+     "last_feedback:varchar",
+     "last_feedback_at:datetime",
+     "feedback_cycle:varchar"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-09-09 15:49:42",
+     "mx": "2026-09-29 20:15:44"
+    },
+    "nuo_0909": 236,
+    "pasisk": {
+     "status": [
+      {
+       "v": "active",
+       "n": "232"
+      },
+      {
+       "v": "notified",
+       "n": "4"
+      }
+     ]
+    }
+   },
+   "gaj6_snippets": {
+    "n": 419,
+    "stulp": [
+     "id:bigint",
+     "name:tinytext",
+     "description:text",
+     "code:longtext",
+     "tags:longtext",
+     "scope:varchar",
+     "condition_id:bigint",
+     "priority:smallint",
+     "active:tinyint",
+     "modified:datetime",
+     "revision:bigint",
+     "cloud_id:varchar"
+    ]
+   },
+   "gaj6_subscrpt_stats_snapshot": {
+    "n": 1,
+    "stulp": [
+     "id:bigint",
+     "snapshot_date:date",
+     "active_count:int",
+     "pending_count:int",
+     "on_hold_count:int",
+     "cancelled_count:int",
+     "expired_count:int",
+     "pe_cancelled_count:int",
+     "active_mrr:decimal",
+     "created_at:datetime"
+    ],
+    "data_stulp": "created_at",
+    "intervalas": {
+     "mn": "2026-08-29 21:42:17",
+     "mx": "2026-08-29 21:42:17"
+    },
+    "nuo_0909": 0
+   },
+   "gaj6_wc_order_stats": {
+    "n": 225,
+    "stulp": [
+     "order_id:bigint",
+     "parent_id:bigint",
+     "date_created:datetime",
+     "date_created_gmt:datetime",
+     "date_paid:datetime",
+     "date_completed:datetime",
+     "num_items_sold:int",
+     "total_sales:double",
+     "tax_total:double",
+     "shipping_total:double",
+     "net_total:double",
+     "returning_customer:tinyint",
+     "status:varchar",
+     "customer_id:bigint"
+    ],
+    "data_stulp": "date_created",
+    "intervalas": {
+     "mn": "2026-09-09 01:24:33",
+     "mx": "2026-09-29 12:04:16"
+    },
+    "nuo_0909": 225,
+    "pasisk": {
+     "status": [
+      {
+       "v": "wc-completed",
+       "n": "170"
+      },
+      {
+       "v": "wc-cancelled",
+       "n": "40"
+      },
+      {
+       "v": "wc-processing",
+       "n": "15"
+      }
+     ]
+    }
+   },
+   "gaj6_woo_lithuaniapost_country_weight_rates": {
+    "n": 0,
+    "stulp": [
+     "id:int",
+     "method_id:text",
+     "country:varchar",
+     "weight:double",
+     "price:double"
+    ]
+   },
+   "gaj6_woo_lithuaniapost_tracking_status": {
+    "n": 4,
+    "stulp": [
+     "order_id:int",
+     "barcode:varchar",
+     "status:varchar",
+     "created:datetime",
+     "updated:datetime"
+    ],
+    "data_stulp": "created",
+    "intervalas": {
+     "mn": "2026-09-23 17:44:00",
+     "mx": "2026-09-27 16:46:03"
+    },
+    "nuo_0909": 4,
+    "pasisk": {
+     "status": [
+      {
+       "v": "PARCEL_DELIVERED",
+       "n": "4"
+      }
+     ]
+    }
+   }
+  }
+ },
+ "v": "dep-214757",
+ "kurimas": 200,
+ "sid": 6817,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
