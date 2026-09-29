@@ -1,0 +1,169 @@
+{
+ "1": {
+  "v": "S1740q",
+  "shots": [
+   {
+    "n": "a1_slapukai",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844,
+    "click": ".cmplz-btn.cmplz-deny"
+   },
+   {
+    "n": "a2_meniu",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844,
+    "click": "[data-open=\"#main-menu\"]",
+    "eval": "(()=>({paieska_meniu:!!document.querySelector('#main-menu input[type=search], .mobile-sidebar input[type=search], .off-canvas input[type=search]'),meniu_punktai:[...document.querySelectorAll('#main-menu .nav > li > a, .mobile-sidebar .nav > li > a')].map(a=>a.innerText.trim()).filter(Boolean).slice(0,15)}))()"
+   },
+   {
+    "n": "a3_preke",
+    "u": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{const v=s=>{const e=document.querySelector(s);if(!e)return 0;const b=e.getBoundingClientRect();return b.height>0&&getComputedStyle(e).display!=='none'?Math.round(b.top)+'-'+Math.round(b.bottom):0};return {sticky:v('.psc-sticky-atc'),kaina:v('.product-info .price'),h1:v('.product-title, h1'),cookie:v('.cmplz-cookiebanner')}})()"
+   },
+   {
+    "n": "a4_krepselis",
+    "u": "https://petshop.lt/krepselis/?add-to-cart=18587",
+    "w": 390,
+    "h": 844,
+    "full": 1,
+    "eval": "(()=>{const q=s=>document.querySelector(s);const t=e=>e?Math.round(e.getBoundingClientRect().top):null;return {h:document.documentElement.scrollHeight,prekiu:document.querySelectorAll('.cart_item, .woocommerce-cart-form__cart-item').length,mygtukas_apmoketi:t(q('.checkout-button, .wc-proceed-to-checkout a')),suma:(q('.order-total .amount')||{}).innerText||null,kuponas:!!q('#coupon_code'),tekstai:[...document.querySelectorAll('.woocommerce-info, .woocommerce-message, [class*=nemokam], [class*=free]')].map(e=>e.innerText.trim().slice(0,120)).slice(0,6)}})()"
+   },
+   {
+    "n": "a5_apmokejimas",
+    "u": "https://petshop.lt/kasa/",
+    "w": 390,
+    "h": 844,
+    "full": 1,
+    "eval": "(()=>{const q=s=>document.querySelector(s);const t=e=>e?Math.round(e.getBoundingClientRect().top):null;const ins=[...document.querySelectorAll('form.checkout input, form.checkout select, form.checkout textarea')].filter(e=>e.type!=='hidden'&&e.offsetParent);return {h:document.documentElement.scrollHeight,lauku:ins.length,laukai:ins.map(e=>(e.name||e.id)+':'+e.type+(e.required||e.closest('.validate-required')?'*':'')+(e.getAttribute('autocomplete')?'/'+e.getAttribute('autocomplete'):'')+'@'+t(e)).slice(0,45),pristatymo_budai:[...document.querySelectorAll('#shipping_method li, .woocommerce-shipping-methods li')].map(e=>e.innerText.trim().replace(/\\s+/g,' ').slice(0,80)),mokejimo_budai:[...document.querySelectorAll('.wc_payment_methods > li')].map(e=>e.innerText.trim().replace(/\\s+/g,' ').slice(0,90)),mygtukas:t(q('#place_order')),mygtuko_tekstas:(q('#place_order')||{}).innerText||null,taisykles:!!q('#terms'),prisijungimo_blokas:!!q('.woocommerce-form-login-toggle'),kuponas:!!q('.woocommerce-form-coupon-toggle'),paskyra:(q('#createaccount')||{}).checked,uzsakymo_suvestine:t(q('#order_review'))}})()"
+   }
+  ]
+ },
+ "v": "dep-191505",
+ "kurimas": 200,
+ "sid": 6791,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "a1_slapukai": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "clicked": ".cmplz-btn.cmplz-deny"
+  },
+  "a2_meniu": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('[data-open=\"#main-menu\"]')\n    - locator resolved to <a href=\"#\" role=\"button\" data-pos=\"left\" class=\"is-small\" ar",
+   "eval": {
+    "paieska_meniu": true,
+    "meniu_punktai": [
+     "ŠUNIMS",
+     "KATĖMS",
+     "GRAUŽIKAMS",
+     "PAUKŠČIAMS",
+     "ŽUVIMS",
+     "RINKINIAI",
+     "PASIŪLYMAI",
+     "SPRENDIMAI",
+     "Prisijungti"
+    ]
+   }
+  },
+  "a3_preke": {
+   "status": 201,
+   "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/",
+   "title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "sticky": "769-844",
+    "kaina": "811-835",
+    "h1": "641-728",
+    "cookie": 0
+   }
+  },
+  "a4_krepselis": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/?add-to-cart=18587",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [
+    "http 520 https://petshop.lt/wp-admin/admin-ajax.php",
+    "error: Failed to load resource: the server responded with a status of 520 ()"
+   ],
+   "eval": {
+    "h": 2610,
+    "prekiu": 1,
+    "mygtukas_apmoketi": 1081,
+    "suma": "56,99 €",
+    "kuponas": true,
+    "tekstai": [
+     "Skip to content\nNemokamas pristatymas į paštomatus nuo 30 €\n1\n “Exclusion Hypoallergenic mažų veislių šunų maistas su ki",
+     "“Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg” - įdėtas į krepšelį"
+    ]
+   }
+  },
+  "a5_apmokejimas": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ],
+   "eval": {
+    "h": 4604,
+    "lauku": 26,
+    "laukai": [
+     "billing_is_company_check:checkbox@303",
+     "billing_first_name:text*/section-billing billing given-name@361",
+     "billing_last_name:text*/section-billing billing family-name@454",
+     "billing_country:select-one*/section-billing billing country@546",
+     "billing_phone:tel*/section-billing billing tel@635",
+     "billing_email:email*/section-billing billing email@728",
+     "ps_similar_optout:checkbox@798",
+     "createaccount:checkbox@878",
+     "order_comments:textarea@933",
+     "shipping_method[0]:radio@1397",
+     "venipak_pickup_point:select-one@1476",
+     "shipping_method[0]:radio@1583",
+     "payment_method:radio@1797",
+     "paysera_country:select-one@1826",
+     "payment[pay_type]:radio@1947",
+     "payment[pay_type]:radio@2025",
+     "payment[pay_type]:radio@2094",
+     "payment[pay_type]:radio@2172",
+     "payment[pay_type]:radio@2241",
+     "payment[pay_type]:radio@2319",
+     "payment[pay_type]:radio@2388",
+     "payment[pay_type]:radio@2457",
+     "payment[pay_type]:radio@2535",
+     "payment[pay_type]:radio@2639",
+     "payment_method:radio@2947",
+     "terms:checkbox*@3001"
+    ],
+    "pristatymo_budai": [
+     "VENIPAK paštomatai/atsiėmimo punktai Pasirinkite Venipak atsiėmimo tašką: Akadem",
+     "VENIPAK Kurjeris: 3,99 €"
+    ],
+    "mokejimo_budai": [
+     "Mokėjimas internetu ALBANIJA AUSTRIJA BELGIJA BULGARIJA KANADA ČEKIJA VOKIETIJA DANIJA EST",
+     "Bankinis pavedimas"
+    ],
+    "mygtukas": 3058,
+    "mygtuko_tekstas": "APMOKĖTI",
+    "taisykles": true,
+    "prisijungimo_blokas": true,
+    "kuponas": true,
+    "paskyra": true,
+    "uzsakymo_suvestine": 1186
+   }
+  }
+ }
+}
