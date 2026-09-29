@@ -1,0 +1,52 @@
+{
+ "1": {
+  "v": "S1740kk",
+  "ps_niche": [],
+  "shots": [
+   {
+    "n": "kk0",
+    "u": "https://petshop.lt/",
+    "w": 390,
+    "h": 844
+   },
+   {
+    "n": "kk1",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{const f=[...document.querySelectorAll('#shop-sidebar .yith-wcan-filter')];return f.map(x=>{const li=x.querySelectorAll('.filter-item');const c=x.querySelector('.filter-content');return x.getAttribute('data-taxonomy')+' | '+x.className+' | items:'+li.length+' | content:'+(c?getComputedStyle(c).display+' style='+(c.getAttribute('style')||''):'')+' | '+(x.querySelector('.filter-title')||{}).innerText;}).concat([(()=>{const b=[...document.querySelectorAll('#shop-sidebar .yith-wcan-filter')].find(x=>/brand|zenkl/i.test(x.getAttribute('data-taxonomy')||'')||/ženklas/i.test((x.querySelector('.filter-title')||{}).innerText||''));return b?b.outerHTML.replace(/\\s+/g,' ').slice(0,1800):'nera';})()])})()"
+   }
+  ]
+ },
+ "v": "dep-212811",
+ "kurimas": 200,
+ "sid": 6813,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "kk0": {
+   "status": 201,
+   "url": "https://petshop.lt/",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "kk1": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": [
+    "filter_monoprotein | yith-wcan-filter filter-tax checkbox-design ps-niche filter-open opened toggled | items:1 | content:block style=display: block !important; height: auto !important; max-height: none !important; | Vienas baltymo šaltinis",
+    "filter_be_grudu | yith-wcan-filter filter-tax label-design ps-niche | items:3 | content:block style= | Grūdų tipas",
+    "filter_speciali_mityba | yith-wcan-filter filter-tax checkbox-design ps-niche ps-collapsed | items:10 | content:none style= | Speciali mityba",
+    "filter_baltymu_saltinis | yith-wcan-filter filter-tax checkbox-design ps-collapsed | items:10 | content:none style= | Baltymų šaltinis",
+    "filter_amzius | yith-wcan-filter filter-tax label-design ps-collapsed | items:4 | content:none style= | Amžius",
+    "filter_pakuotes_dydis | yith-wcan-filter filter-tax checkbox-design ps-collapsed | items:10 | content:none style= | Pakuotės dydis",
+    "product_brand | yith-wcan-filter filter-tax select-design ps-collapsed | items:10 | content:none style= | Prekės ženklas",
+    "<div class=\"yith-wcan-filter filter-tax select-design ps-collapsed\" id=\"filter_34063_8\" data-filter-type=\"tax\" data-filter-id=\"8\" data-taxonomy=\"product_brand\" data-multiple=\"yes\" data-relation=\"or\" data-ps-init=\"1\"> <h4 class=\"filter-title\" data-ps-bound=\"1\">Prekės ženklas</h4> <div class=\"filter-content\"> <select class=\"filter-items filter-dropdown enhanced\" name=\"filter[34063][8]\" id=\"filter_34063_8_select\" multiple=\"multiple\" data-show_search=\"1\" data-all-label=\"All\" data-has-more=\"34\" style=\"display: none;\"> <option class=\"filter-item select level-0 no-color\" value=\"ambrosia\" data-filter_url=\"https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims?yith_wcan=1&amp;product_cat=sausas-maistas-sunims&amp;product_brand=ambrosia\" data-count=\"\"> Ambrosia</option> <option class=\"filter-item select level-0 no-color\" value=\"eukanuba\" data-filter_url=\"https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims?yith_wcan=1&amp;product_cat=sausas-maistas-sunims&amp;product_brand=eukanuba\" data-count=\"\"> Eukanuba</option> <option class=\"filter-item select level-0 no-color\" value=\"exclusion\" data-filter_url=\"https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims?yith_wcan=1&amp;product_cat=sausas-maistas-sunims&amp;product_brand=exclusion\" data-count=\"\"> Exclusion</option> <option class=\"filter-item select level-0 no-color\" value=\"family-dog\" data-filter_url=\"https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims?yith_wcan=1&amp;product_cat=sausas-maistas-sunims&amp;product_brand=family-dog\" data-count=\"\"> Family Dog</option> <option class=\"filter-item select level-0 no-color\" value=\"farmina\" data-filter_url=\"https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims?yith_wcan=1&amp;product_cat=s"
+   ]
+  }
+ }
+}
