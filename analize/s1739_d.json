@@ -1,0 +1,210 @@
+{
+ "1": {
+  "v": "S1739d",
+  "salis": [
+   "petshop-analitika.php:577: 'salis'            => self::salis(),",
+   "petshop-analitika.php:747: 'salis'      => 'COALESCE(salis, \\'\\')',",
+   "petshop-faktai.php:494: 'salis'                    => mb_substr( (string) ( $order->get_shipping_country() ?: $order->get_billing_country() ), 0, 2 ),",
+   "petshop-rinkiniai.php:312: 'Rekomenduojama', 'Naudojimas', 'Laikymas', 'Gamintojas', 'Šalis',"
+  ],
+  "planas_md5": "31b4aa6fd0e5e56f40ec725cbbd1c2c9",
+  "planas_dydis": 12773,
+  "planas_struktura": [
+   "5: * Version: 1.0.1",
+   "15: public static function init() { add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 30 ); }",
+   "16: public static function meniu() { add_submenu_page( self::TEVAS, 'Q4 planas', 'Q4 planas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' )",
+   "17: private static function eur( $ct ) { return number_format( $ct / 100, 0, ',', ' ' ) . ' €'; }",
+   "18: private static function pct( $a, $b ) { return $b > 0 ? round( 100 * $a / $b ) . ' %' : '—'; }",
+   "21: private static function men_nuo() { $m = date( 'Y-m-01' ); return $m < self::T0 ? self::T0 : $m; }",
+   "22: private static function men_tikslas() { $k = (int) ceil( (int) date( 'n' ) / 3 ); $key = date( 'Y' ) . '-' . $k; $kt = isset( self::N_KETV[ $key ] ) ? self::N_",
+   "24: private static function dienos_praejo() { $nuo = strtotime( self::men_nuo() ); return max( 1, (int) floor( ( time() - $nuo ) / 86400 ) + 1 ); }",
+   "25: private static function dienos_men() { $nuo = strtotime( self::men_nuo() ); $iki = strtotime( date( 'Y-m-t' ) ); return max( 1, (int) round( ( $iki - $nuo ) /",
+   "28: public static function nauji( $nuo, $iki = null ) {",
+   "32: public static function ads_spend( $nuo ) { global $wpdb; $p = $wpdb->prefix; return (int) $wpdb->get_var( $wpdb->prepare( \"SELECT SUM(islaidos_ct) FROM {$p}ps_",
+   "34: public static function blokas_n() {",
+   "39: public static function blokas_cac() {",
+   "47: public static function blokas_kanalai() {",
+   "53: public static function blokas_r_due() {",
+   "64: public static function blokas_laiskai() {",
+   "75: private static function blokas( $pav, $b ) {",
+   "77: echo '<section class=\"psp-b\" style=\"border-left:5px solid ' . $sp[ $k ] . '\"><h2>' . esc_html( $pav ) . '</h2><div class=\"psp-v\" style=\"background:' . $bg[ $k",
+   "81: public static function puslapis() {",
+   "84: foreach ( array( 'N — nauji maisto klientai' => 'blokas_n', 'CAC — kiek kainuoja naujas klientas' => 'blokas_cac', 'Naujų klientų kanalai' => 'blokas_ka"
+  ],
+  "tipai": [
+   {
+    "tipas": "pageview",
+    "lank": "1859",
+    "iv": "4637"
+   },
+   {
+    "tipas": "view_item",
+    "lank": "1391",
+    "iv": "2036"
+   },
+   {
+    "tipas": "add_to_cart",
+    "lank": "738",
+    "iv": "1669"
+   },
+   {
+    "tipas": "search",
+    "lank": "69",
+    "iv": "167"
+   },
+   {
+    "tipas": "begin_checkout",
+    "lank": "63",
+    "iv": "91"
+   },
+   {
+    "tipas": "view_cart",
+    "lank": "48",
+    "iv": "90"
+   },
+   {
+    "tipas": "skaiciuokle",
+    "lank": "5",
+    "iv": "9"
+   },
+   {
+    "tipas": "error404",
+    "lank": "4",
+    "iv": "7"
+   },
+   {
+    "tipas": "filter",
+    "lank": "1",
+    "iv": "3"
+   }
+  ],
+  "pusl_tipai": [
+   {
+    "pusl_tipas": "preke",
+    "lank": "1391"
+   },
+   {
+    "pusl_tipas": "kategorija",
+    "lank": "428"
+   },
+   {
+    "pusl_tipas": "home",
+    "lank": "213"
+   },
+   {
+    "pusl_tipas": "info",
+    "lank": "164"
+   },
+   {
+    "pusl_tipas": "paieska",
+    "lank": "69"
+   },
+   {
+    "pusl_tipas": "checkout",
+    "lank": "63"
+   },
+   {
+    "pusl_tipas": "kita",
+    "lank": "62"
+   },
+   {
+    "pusl_tipas": "aciu",
+    "lank": "58"
+   },
+   {
+    "pusl_tipas": "krepselis",
+    "lank": "50"
+   },
+   {
+    "pusl_tipas": "parduotuve",
+    "lank": "13"
+   },
+   {
+    "pusl_tipas": "404",
+    "lank": "4"
+   },
+   {
+    "pusl_tipas": "blog",
+    "lank": "1"
+   }
+  ],
+  "piltuvelis": {
+   "mobile": {
+    "srautas": 739,
+    "preke": 384,
+    "add_to_cart": 73,
+    "krepselis": 35,
+    "begin_checkout": 260,
+    "aciu": 49
+   },
+   "desktop": {
+    "srautas": 1120,
+    "preke": 1007,
+    "add_to_cart": 665,
+    "krepselis": 15,
+    "begin_checkout": 260,
+    "aciu": 9
+   },
+   "tablet": {
+    "srautas": 0,
+    "preke": 0,
+    "add_to_cart": 0,
+    "krepselis": 0,
+    "begin_checkout": 260,
+    "aciu": 0
+   }
+  },
+  "uzsakymai_fakt": [
+   {
+    "irenginys": "desktop",
+    "n": "9"
+   },
+   {
+    "irenginys": "mobile",
+    "n": "45"
+   }
+  ],
+  "botai_1pusl_atc": 643,
+  "kalba_top": [
+   {
+    "salis": "US",
+    "n": "1005"
+   },
+   {
+    "salis": "LT",
+    "n": "617"
+   },
+   {
+    "salis": "GB",
+    "n": "117"
+   },
+   {
+    "salis": null,
+    "n": "67"
+   },
+   {
+    "salis": "RU",
+    "n": "26"
+   },
+   {
+    "salis": "SE",
+    "n": "4"
+   },
+   {
+    "salis": "PL",
+    "n": "3"
+   },
+   {
+    "salis": "NO",
+    "n": "2"
+   }
+  ]
+ },
+ "v": "dep-164917",
+ "kurimas": 200,
+ "sid": 6755,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
