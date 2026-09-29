@@ -1,0 +1,59 @@
+{
+ "1": {
+  "v": "S1736a",
+  "faze": "1",
+  "n_files": 259,
+  "hits": [
+   "/mu-plugins/petshop-ataskaitu-eksportas.php:4 [atsisiuntimas] * Description: Ataskaitu atsisiuntimas i Excel (.xlsx) — keli lapai, tikri skaiciai, zali duomenys.",
+   "/mu-plugins/petshop-av-dropship.php:5 [vetfarm] * RADINYS: `ps_tiekeju_pastai['vf']` = „ieva…@vetfarmas.lt,karolina…@vetfarmas.lt\" buvo",
+   "/mu-plugins/petshop-av-dropship.php:135 [atsisiuntimas] * į ZB sistemą), lipduko atsisiuntimas po vieną užsakymą (Raimis prikabina ZB",
+   "/mu-plugins/petshop-av-dropship.php:178 [vetfarm] 'vf'          => [ 'Vetfarmas',      'sku' ],",
+   "/mu-plugins/petshop-av-dropship.php:851 [atsisiuntimas] /** Vieno užsakymo lipduko atsisiuntimas (ZB keliui — prikabinimui į jų sistemą). */",
+   "/mu-plugins/petshop-laiskai-importas.php:111 [Liucioni] $adresas = 'UAB Avesa, Liucionių g. 46, Liucionys, LT-15166<br>';",
+   "/mu-plugins/petshop-desk.php:233 [vetfarm] 'vf'          => array( '#2B5C8A', 'VF',  'Vetfarmas' ),",
+   "/mu-plugins/petshop-desk.php:1993 [vetfarm] 'av' => 'Savas sandėlis', 'vf' => 'Vetfarmas', 'zb' => 'Žalioji Banga',",
+   "/mu-plugins/petshop-darbalaukis.php:46 [Liucioni] * Petshop Darbalaukis v3.36 (S1620, Raimis 09-06 „2 – ok, 3 – a ir b“): FILTRAI „Visi“ lange — Data „Nuo–iki“ (variklio `datos_riba('intervalas')`), Apmokėjimas (pavedimu / Paysera / grynais / neapmokėtas), Būsena (vykdo",
+   "/mu-plugins/petshop-darbalaukis.php:314 [vetfarm] *   po kiekvieno veiksmo pranešimas sako, kur užsakymas nukeliavo („→ dabar: Laiškai tiekėjams · Laiškas Vetfarmas“);",
+   "/mu-plugins/petshop-darbalaukis.php:329 [vetfarm] *   Ambrosia ir Vetfarmas (2)“. V6 — atšaukimo dialogas įspėja apie registruotas siuntas / išsiųstus laiškus. V4/S4 — tekstai.",
+   "/mu-plugins/petshop-darbalaukis.php:2583 [atsisiuntimas] /** GET `kr_pdf&e=` — kreditinės PDF atsisiuntimas (be WC lango; failas `uploads/wcdn/creditnote/`). */",
+   "/mu-plugins/petshop-darbalaukis.php:3137 [Liucioni] 'adresas'    => 'Liucionių g. 46, Liucionys (Nemenčinės sen., Vilniaus r.)',",
+   "/mu-plugins/petshop-darbalaukis.php:3778 [vetfarm] if ( 0 !== strpos( $k, 'dl_' ) ) { ob_start(); self::d( 'pranesimas' ); $h = ob_get_clean(); $h = str_replace( array( 'Avesos sandėlį', 'Avesos sandėlyje', 'Avesoje', 'Avesos', 'Avesa', 'Vetfarmas', 'Žalioji Banga', 'Žal",
+   "/mu-plugins/petshop-gavimas.php:1253 [vetfarm] $numatyti = array( 'Vetfarmas', 'Žalioji Banga', 'Quattro / Kauno grūdai', 'Ambrosia',",
+   "/mu-plugins/petshop-schema-prekes.php:50 [Liucioni] $node['address'] = array( '@type' => 'PostalAddress', 'streetAddress' => 'Liucionių g. 46, Liucionių k.', 'addressLocality' => 'Nemenčinės sen., Vilniaus r.', 'postalCode' => 'LT-15166', 'addressCountry' => 'LT' );",
+   "/mu-plugins/petshop-av-tiekimas.php:30 [Liucioni] * klientams lentelėje\". DABAR: laiško dalis = antraštė „UAB Avesa, Liucionių",
+   "/mu-plugins/petshop-av-tiekimas.php:158 [Liucioni] const AV_ADRESAS   = 'UAB Avesa, Liucionių g. 46, Liucionys, Nemenčinės sen., Vilniaus r., LT-15166';",
+   "/mu-plugins/petshop-av-tiekimas.php:180 [atsisiuntimas] add_action( 'admin_post_ps_tiekimas_lipdukas', array( __CLASS__, 'lipduko_atsisiuntimas' ) );",
+   "/mu-plugins/petshop-av-tiekimas.php:419 [vetfarm] 'vf' => 'Vetfarmas', 'zb' => 'Žalioji Banga', 'quattro' => 'Quattro / Kauno grūdai',",
+   "/mu-plugins/petshop-av-tiekimas.php:793 [atsisiuntimas] /** Lipduko PDF atsisiuntimas iš partijos kortelės (H247). */",
+   "/mu-plugins/petshop-av-tiekimas.php:794 [atsisiuntimas] public static function lipduko_atsisiuntimas() {",
+   "/mu-plugins/petshop-av-tiekimas.php:988 [Liucioni] $co->appendChild( $d->createElement( 'address', 'Liucionių g. 46' ) );",
+   "/mu-plugins/petshop-av-tiekimas.php:1104 [Liucioni] $h = '<p style=\"margin:16px 0 6px\"><b>UAB Avesa, Liucionių g. 46</b></p>';",
+   "/mu-plugins/petshop-ataskaita-pardavimai.php:114 [vetfarm] 'legacy' => 'AV (savas)', 'av' => 'AV (savas)', 'zb' => 'ZB (Žalioji banga)', 'vf' => 'Vetfarmas', 'quattro' => 'Quattro',",
+   "/themes/flatsome-child/woocommerce-pip/invoice.php:21 [Liucioni] 'address' => 'Liucionių g. 46, Liucionys, Nemenčinės sen., Vilniaus r., 15166',",
+   "/themes/flatsome-child/woocommerce-delivery-notes/base.php:272 [Liucioni] Liucionių g. 46, Liucionys, Nemenčinės sen., Vilniaus r., LT-15166",
+   "/themes/flatsome-child/woocommerce-delivery-notes/base.php:302 [Liucioni] <div class=\"ps-doc-footer\">UAB Avesa &middot; Įmonės kodas 302568442 &middot; PVM LT100005768519 &middot; Liucionių g. 46, Vilniaus r., LT-15166 &middot; terra@petshop.lt &middot; +370 681 87787</div>",
+   "/themes/flatsome-child/woocommerce-delivery-notes/base.php:404 [Liucioni] Reg. adresas: Liucionių g. 46, Liucionys,<br>",
+   "/themes/flatsome-child/woocommerce-delivery-notes/base.php:597 [Liucioni] UAB Avesa &middot; Įmonės kodas 302568442 &middot; PVM LT100005768519 &middot; Liucionių g. 46, Vilniaus r., LT-15166 &middot; terra@petshop.lt &middot; +370 681 87787",
+   "/plugins/petshop-core/includes/class-email-layout.php:117 [Liucioni] $out .= 'UAB Avesa, Liucionių g. 46, Liucionys, LT-15166<br>';",
+   "/plugins/petshop-xml/petshop-xml.php:233 [vetfarm] * v1.5.0  (2026-06-05): VF (Vetfarmas) integracija",
+   "/plugins/petshop-xml/includes/class-pricing-vf.php:20 [vetfarm] * VF (Vetfarmas) kainodara. ATSKIRA NUO ZB.",
+   "/plugins/petshop-xml/includes/class-vf-import.php:5 [vetfarm] * VF (Vetfarmas) Import Logic v1.5.7",
+   "/plugins/petshop-xml/includes/class-vf-import.php:689 [vetfarm] * VF (Vetfarmas) XML <barcode> lauke visos reiksmes yra 12 simboliu — tai",
+   "/plugins/petshop-xml/includes/class-pricing-vf.v1.5.5.bak.php:7 [vetfarm] * VF (Vetfarmas) kainodara. ATSKIRA NUO ZB.",
+   "/plugins/petshop-xml/includes/class-fulfillment-source.php:21 [vetfarm] *   vf          -> VF (Vetfarmas)             carrier=venipak",
+   "/plugins/petshop-xml/includes/class-fulfillment-source.php:103 [vetfarm] 'label'        => 'VF (Vetfarmas)',",
+   "/plugins/petshop-xml/includes/class-import-rules-vf.php:7 [vetfarm] * VF (Vetfarmas) importo taisyklės. ATSKIRA NUO ZB.",
+   "/plugins/petshop-xml/includes/class-import-rules-vf.php:35 [vetfarm] 'MSSCHIPPER', 'PERFECTO', 'RICHTER', 'RIO', 'VETFARMAS',"
+  ],
+  "snip_hits": [
+   "#6722 TEMP PS dep-070849 (a=1) :7 [Liucioni] $pat=['Liucioni','Ačiū :)','Aciu :)','vetfarm','VetFarm','Vetfarm','atsisiuntimas','Atsisiuntimas'];"
+  ]
+ },
+ "v": "dep-070849",
+ "kurimas": 200,
+ "sid": 6722,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
