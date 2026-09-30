@@ -1,0 +1,79 @@
+{
+ "1": {
+  "files": [
+   "class-woo-lithuaniapost-admin-shipping-plan-api.php"
+  ],
+  "cls": [
+   "Woo_Lithuaniapost_Admin_Estimate_Shipping_Api",
+   "Woo_Lithuaniapost_Admin_Shipping_Plan_Api"
+  ],
+  "plans": {
+   "Woo_Lithuaniapost_Admin_Estimate_Shipping_Api": {
+    "PROCESSES_DOCUMENTS": [
+     "P2H"
+    ],
+    "HANDS": [
+     "T2H",
+     "H2H"
+    ],
+    "UNTRACKED": [
+     "P2H"
+    ],
+    "TERMINAL": [
+     "T2S",
+     "T2T",
+     "H2T"
+    ],
+    "TRACKED_SIGNED": [
+     "H2P"
+    ],
+    "SIGNED": [
+     "P2H"
+    ]
+   },
+   "Woo_Lithuaniapost_Admin_Shipping_Plan_Api": {
+    "PROCESSES_DOCUMENTS": [
+     "P2H"
+    ],
+    "UNTRACKED": [
+     "P2H"
+    ],
+    "TERMINAL": [
+     "T2T",
+     "T2S",
+     "H2T"
+    ],
+    "HANDS": [
+     "T2H",
+     "H2H"
+    ],
+    "TRACKED_SIGNED": [
+     "H2P"
+    ],
+    "SIGNED": [
+     "P2H"
+    ],
+    "PUDO": [
+     "D2D"
+    ],
+    "TRACKED": [
+     "P2H"
+    ],
+    "HANDS_EXPRESS": [
+     "H2F"
+    ]
+   }
+  },
+  "raw1": {
+   "Woo_Lithuaniapost_Admin_Estimate_Shipping_Api": "[{\"code\":\"PROCESSES_DOCUMENTS\",\"shipping\":[{\"options\":[{\"documentsOnly\":false,\"partCountRange\":{\"max\":1,\"min\":1},\"price\":{\"amount\":1.43,\"currency\":\"EUR\"},\"services\":[{\"code\":\"POD\",\"description\":\"Proof Of Delivery (POD)\",\"included\":true},{\"code\":\"STORAGE_7\",\"description\":\"Storage at the post office for 7 days\",\"included\":false,\"price\":{\"amount\":0,\"currency\":\"EUR\"}}],\"weight\":1,\"weightRange\":{\"max\":5000,\"min\":1,\"unit\":\"g\"}}],\"parcelType\":\"P2H\",\"requirements\":{\"cnDocument\":false,\"parcelContent\":false,\"size\":false,\"weight\":true}}]},{\"code\":\"HANDS\",\"shipping\":[{\"deliveryDetails\":{\"time\":\"1\\u20132\",\"timeUnit\":\"DAY\"},\"options\":[{\"documentsOnly\":false,\"partCountRange\":{\"max\":1,\"min\":1},\"price\":{\"amount\":5.32,\"currency\":\"EUR\"},\"services\":[{\"code\":\"POD\",\"description\":\"Proof Of Delivery (POD)\",\"included\":true},{\"code\":\"COD\",\"description\":\"Cash On Delivery (COD)\",\"included\":false,\"price\":{\"amount\":2.42,\"currency\":\"EUR\"},\"valueRequirement\":{\"max\":5000,\"min\":0.01,\"type\":\"AMOUNT\"}},{\"code\":\"DELIVERY_ON_TIME\",\"description\":\"Deliver at your chosen time\",\"included\":false,\"options\":[{\"id\":\"1\",\"price\":{\"amount\":18.15,\"currency\":\"EUR\"},\"value\":\"Until 10h.\"},{\"id\":\"2\",\"price\":{\"amount\":9.69,\"currency\":\"EUR\"},\"value\":\"From 18h.\"}],\"price\":{\"amount\":0,\"currency\":\"EUR\"},\"valueRequirement\":{\"type\":\"OPTION_SELECT\"}},{\"code\":\"PAYEE_PAYS\",\"description\":\"Receiver pays shipping\",\"included\":false,\"price\":{\"amount\":0,\"currency\":\"EUR\"}}],\"size\":{\"code\":\"L\",\"height\":36.5,\"length\":35,\"unit\":\"cm\",\"width\":61}},{\"",
+   "Woo_Lithuaniapost_Admin_Shipping_Plan_Api": "[{\"code\":\"PROCESSES_DOCUMENTS\",\"shipping\":[{\"parcelType\":\"P2H\",\"requirements\":{\"size\":false,\"weight\":true}}]},{\"code\":\"UNTRACKED\",\"shipping\":[{\"options\":[{\"size\":{\"code\":\"L\",\"length\":105,\"width\":105,\"height\":105,\"unit\":\"cm\"}},{\"size\":{\"code\":\"M\",\"length\":60,\"width\":60,\"height\":60,\"unit\":\"cm\"}},{\"size\":{\"code\":\"S\",\"length\":30.5,\"width\":38.1,\"height\":2,\"unit\":\"cm\"}},{\"size\":{\"code\":\"XS\",\"length\":16.2,\"width\":22.9,\"height\":0.5,\"unit\":\"cm\"}}],\"parcelType\":\"P2H\",\"requirements\":{\"size\":true,\"weight\":true}}]},{\"code\":\"TERMINAL\",\"shipping\":[{\"options\":[{\"size\":{\"code\":\"L\",\"length\":35,\"width\":61,\"height\":36.5,\"unit\":\"cm\"}},{\"size\":{\"code\":\"M\",\"length\":35,\"width\":61,\"height\":17.5,\"unit\":\"cm\"}},{\"size\":{\"code\":\"S\",\"length\":35,\"width\":61,\"height\":8,\"unit\":\"cm\"}},{\"size\":{\"code\":\"XL\",\"length\":35,\"width\":61,\"height\":74.5,\"unit\":\"cm\"}},{\"size\":{\"code\":\"XS\",\"length\":18.5,\"width\":61,\"height\":8,\"unit\":\"cm\"}}],\"parcelType\":\"T2T\",\"requirements\":{\"size\":true,\"weight\":false}},{\"options\":[{\"size\":{\"code\":\"L\",\"length\":35,\"width\":61,\"height\":36.5,\"unit\":\"cm\"}},{\"size\":{\"code\":\"M\",\"length\":35,\"width\":61,\"height\":17.5,\"unit\":\"cm\"}},{\"size\":{\"code\":\"S\",\"length\":35,\"width\":61,\"height\":8,\"unit\":\"cm\"}},{\"size\":{\"code\":\"XL\",\"length\":35,\"width\":61,\"height\":74.5,\"unit\":\"cm\"}},{\"size\":{\"code\":\"XS\",\"length\":18.5,\"width\":61,\"height\":8,\"unit\":\"cm\"}}],\"parcelType\":\"T2S\",\"requirements\":{\"size\":true,\"weight\":false}},{\"options\":[{\"size\":{\"code\":\"L\",\"length\":35,\"width\":61,\"height\":36.5,\"unit\":\"cm\"}},{\"size\":{\"code\":\"M"
+  }
+ },
+ "v": "dep-175822",
+ "kurimas": 200,
+ "sid": 6883,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
