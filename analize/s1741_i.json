@@ -1,0 +1,45 @@
+{
+ "1": {
+  "v": "S1741i",
+  "faze": "1",
+  "md5_pries": "8624aee11a7929545d6c8fd71f7b01d6",
+  "senas_blokas": "\t/** Įrašas į petshop-sargas žurnalą, jei jis yra; kitaip tyliai praleidžiama. */\n\tprivate static function zurnalas($ivykis, $login) {\n\t\tglobal $wpdb;\n\t\t$l = $wpdb->prefix . 'ps_sargas_klaidos';\n\t\tif ($wpdb->get_var(\"SHOW TABLES LIKE '{$l}'\") !== $l) return;\n\t\t$wpdb->insert($l, [\n\t\t\t'ivyko'   => current_time('mysql'),\n\t\t\t'tipas'   => 'login',\n\t\t\t'zinute'  => sprintf('%s: %s (bandytas vardas: %s)', $ivykis, self::adresas(), substr((string) $login, 0, 60)),\n\t\t]);\n\t}\n",
+  "tokenai": "ok",
+  "bak": "petshop-login-sargas.php.bak_s1741",
+  "irasyta": 6392,
+  "md5_po": "028dec15cf032b8c6c97dfc058555665",
+  "hb": {
+   "home": 200,
+   "login": 200,
+   "kasa": 200
+  }
+ },
+ "2": {
+  "v": "S1741i",
+  "faze": "2",
+  "md5": "028dec15cf032b8c6c97dfc058555665",
+  "testo_eilute": {
+   "id": "11943",
+   "laikas": "2026-09-30 10:15:25",
+   "lygis": "login",
+   "zinute": "testas_s1741: 57.151.137.134 (bandytas vardas: bandymas2)",
+   "url": "/?ps_s1741i=2",
+   "kiek": "2"
+  },
+  "istrinta_testo": 1,
+  "db_klaida": "",
+  "ivyko_po_deploy": 1,
+  "hb": {
+   "home": 200,
+   "login": 200,
+   "kasa": 200
+  }
+ },
+ "v": "dep-071359",
+ "kurimas": 200,
+ "sid": 6827,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
