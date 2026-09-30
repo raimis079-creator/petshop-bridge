@@ -1,0 +1,59 @@
+{
+ "1": {
+  "g": [
+   "admin/class-woo-lithuaniapost-admin-order-service.php:419 $lp_shipping_method = $this->get_lp_shipping_method($order);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:553 $lp_shipping_method = $this->get_lp_shipping_method($order);",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:617 public function get_parcel_type_translation($parcel_type)",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:622 case 'H2T':",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:624 case 'T2T':",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:628 case 'T2H':",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:630 case 'H2H':",
+   "admin/class-woo-lithuaniapost-admin-order-service.php:663 public function get_lp_shipping_method($order)",
+   "admin/partials/includes/html-shipment-editor-side.php:242 if (parcel_type === 'H2T' || parcel_type === 'T2T' || parcel_type === 'T2H' || parcel_type === 'T2S') {",
+   "admin/partials/includes/html-shipment-editor-side.php:250 if (parcel_type === 'H2H') {",
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php:73 $lp_shipping_method = apply_filters(\"woo_lithuaniapost__order_action_get_lp_shipping_method\", $order);",
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php:96 if ($parcel->type !== 'H2T' && $parcel->type !== 'T2T' && $parcel->type !== 'T2S') return [];",
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php:190 return $plan_code != 'HANDS' || $parcel_type == 'T2H';",
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php:196 return $plan_code!='TERMINAL' && $parcel_type != 'T2H';",
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php:207 return $parcel_type == \"H2H\" || $parcel_type == \"H2T\" || $parcel_type == \"T2H\" || $parcel_type == \"T2T\";",
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php:252 echo sprintf(\"<option value='%s' selected>\" . $this->get_parcel_type_translation($shipping->parcelType) . \"</option>\", $shipping->parcelType);",
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php:254 echo sprintf(\"<option value='%s'>\" . $this->get_parcel_type_translation($shipping->parcelType) . \"</option>\", $shipping->parcelType);",
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php:280 private function get_parcel_type_translation($parcel_type)",
+   "admin/class-woo-lithuaniapost-admin-order-meta-box.php:282 return apply_filters('woo_lithuaniapost_order_action_get_parcel_type_translation', $parcel_type);",
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost.php:69 $shipping->translated_parcel_type = $this->get_parcel_type_translation($shipping->parcelType);",
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost.php:114 private function get_parcel_type_translation($parcel_type)",
+   "includes/shipping/lpexpress-terminal/includes/settings-plan-cost.php:116 return apply_filters('woo_lithuaniapost_order_action_get_parcel_type_translation', $parcel_type);",
+   "includes/class-woo-lithuaniapost.php:423 $this->loader->add_filter ( 'woo_lithuaniapost_order_action_get_parcel_type_translation', $plugin_admin_order_service, 'get_parcel_type_translation', 10, 1 );",
+   "includes/class-woo-lithuaniapost.php:427 $this->loader->add_filter ('woo_lithuaniapost__order_action_get_lp_shipping_method', $plugin_admin_order_service, 'get_lp_shipping_method', 10, 1 );",
+   "public/class-woo-lithuaniapost-public.php:330 $lp_shipping_method = apply_filters('woo_lithuaniapost__order_action_get_lp_shipping_method', $order);"
+  ],
+  "fn": [
+   "417 public function handle_create_parcel($order, $overwrite_id_ref)",
+   "529 public function create_parcel_content_request($order): array",
+   "686 public function create_parcel_create_request($order, $lp_shipping_method)",
+   "796 private function create_parcel($order, $overwrite_id_ref, $parcel_create_request): bool",
+   "1006 private function create_parcel_update_request($order)"
+  ],
+  "lp_uzs_30d": [
+   {
+    "m": "LP Express",
+    "n": "12"
+   },
+   {
+    "m": "VENIPAK Kurjeris",
+    "n": "26"
+   },
+   {
+    "m": "VENIPAK paštomatai/atsiėmimo punktai",
+    "n": "161"
+   }
+  ]
+ },
+ "v": "dep-175501",
+ "kurimas": 200,
+ "sid": 6881,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
