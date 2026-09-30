@@ -1,0 +1,196 @@
+{
+ "1": {
+  "v": "S1741t",
+  "relaunch_file": "wp-content/mu-plugins/petshop-relaunch.php",
+  "metodai": [
+   "init()s",
+   "be_modalo($show)s",
+   "t()s",
+   "lentele()s",
+   "lentele_v11()s",
+   "raktas()s",
+   "zenklas($tok)s",
+   "rusis($pid,$k)s",
+   "dienos($pid,$kg,$sp)s",
+   "rest()s",
+   "rest_priminti($req)s",
+   "patvirtinimas()s",
+   "registruoti($uid,$email,$pid,$kg,$bus,$d,$cid,$k,$saltinis)s",
+   "laiskas_patvirtinti($email,$pr,$kg,$d,$url)s",
+   "cid()s",
+   "svoris()s",
+   "paspaudimas()s",
+   "js()s"
+  ],
+  "vietos": [
+   "71: $r = Petshop_Feeding_Service::calc( array( 'product_id' => $pid, 'weight_kg' => $kg, 'species_code' => $sp ) );",
+   "96: $tok = self::cid(); set_transient( 'ps_primink_' . $tok, array( 'email' => strtolower( $email ), 'pid' => $pid, 'kg' => $kg, 'busena' => $bus, 'cid' => $cid, 'd' => $d ), 7 * DAY_IN_SECONDS );"
+  ],
+  "feeding": "Petshop_Feeding_Service",
+  "tok": "yra",
+  "groups": [
+   [
+    "bDxp2q",
+    "PS_TEST",
+    1,
+    0,
+    0
+   ],
+   [
+    "dPlYRA",
+    "PS_SUPPRESSED_OR_ARCHIVE",
+    0,
+    0,
+    0
+   ],
+   [
+    "aOkZQR",
+    "PS_LEGACY_IMPORT",
+    0,
+    0,
+    0
+   ],
+   [
+    "dNj8P2",
+    "PS_ALL_ACTIVE",
+    0,
+    0,
+    0
+   ]
+  ],
+  "fields": [
+   "Email:text",
+   "Phone number:text",
+   "First name:text",
+   "Last name:text",
+   "PS_FEEDING_TYPE:text",
+   "PS_REFILL_CANDIDATE:text",
+   "PS_NEXT_REFILL_DATE:date",
+   "PS_TRANSACTIONAL_ONLY:text",
+   "PS_LAST_EVENT_AT:date",
+   "PS_LOGIN_METHOD:text",
+   "PS_LAST_ORDER_DATE:date",
+   "PS_LIFETIME_VALUE:number",
+   "PS_CUSTOMER_WAVE:text",
+   "PS_PET_LIFE_STAGE:text",
+   "PS_CURRENT_FOOD_BRAND:text",
+   "PS_PREFERRED_SHIPPING:text",
+   "PS_DOG_SIZE:text",
+   "PS_PRIMARY_NEED:text",
+   "PS_EMAIL_VERIFIED:text",
+   "PS_IDENTITY_MERGED_AT:date",
+   "PS_FOUNDING_SCORE:number",
+   "PS_SUBSCRIPTION_STATUS:text",
+   "PS_UNSUBSCRIBED_AT:date",
+   "PS_LEGACY_EMAIL_LINKED:text",
+   "PS_LEGACY_LINK_PROMPT_SHOWN:text",
+   "PS_ORDER_COUNT:number",
+   "PS_PET_SPECIES:text",
+   "PS_MARKETING_CONSENT:text",
+   "PS_HERO_GYV:text",
+   "PS_HERO_D1:text",
+   "PS_HERO_D3:text",
+   "PS_HERO_EUR2N:text",
+   "PS_HERO_ANTR:text",
+   "PS_HERO_KODEL:text",
+   "PS_HERO_G2:text",
+   "PS_HERO_D2:text",
+   "PS_HERO_PAK:text",
+   "PS_HERO_SEG:text",
+   "PS_HERO_PAV:text",
+   "PS_HERO_IMG:text",
+   "PS_HERO_URL:text",
+   "PS_HERO_KG1:text",
+   "PS_HERO_EUR1:text",
+   "PS_HERO_INFO1:text",
+   "PS_HERO_U2:text",
+   "PS_HERO_KAINA:text",
+   "PS_HERO_EUR2:text",
+   "PS_HERO_U1:text",
+   "PS_HERO_KG2:text",
+   "PS_CUSTOMER_ID:text",
+   "PS_HERO_KG3:text",
+   "PS_HERO_EUR3:text",
+   "PS_HERO_INFO3:text",
+   "PS_HERO_U3:text",
+   "PS_HERO_INFO2:text",
+   "PS_PET_NAME:text"
+  ],
+  "subs_meta": {
+   "current_page": 1,
+   "from": 1,
+   "last_page": 21,
+   "per_page": 10,
+   "to": 10,
+   "total": 209
+  },
+  "campaigns": [
+   [
+    "qxQN6G",
+    "TEST relaunch CALC v1.0 14:56",
+    "SENT",
+    1,
+    "Petshop.lt",
+    "terra@petshop.lt",
+    "2026-09-16 17:56:37"
+   ],
+   [
+    "Z68JZJ",
+    "TEST relaunch CALC v0.1 09-16 08:40",
+    "DRAFT",
+    0,
+    "Petshop.lt",
+    "terra@petshop.lt",
+    "2026-09-16 11:40:02"
+   ],
+   [
+    "NkOq5z",
+    "TEST relaunch CALC v0.2 09-16 08:46",
+    "SENT",
+    1,
+    "Petshop.lt",
+    "terra@petshop.lt",
+    "2026-09-16 11:46:15"
+   ],
+   [
+    "W6PDmg",
+    "TEST relaunch CALC v0.3 09-16 08:56",
+    "SENT",
+    1,
+    "Petshop.lt",
+    "terra@petshop.lt",
+    "2026-09-16 11:56:18"
+   ],
+   [
+    "wp0B2J",
+    "TEST relaunch CALC v0.3b 09-16 09:02",
+    "SENT",
+    1,
+    "Petshop.lt",
+    "terra@petshop.lt",
+    "2026-09-16 12:02:16"
+   ],
+   [
+    "Z68Jrv",
+    "TEST relaunch CALC v0.3c 09-16 09:07",
+    "SENT",
+    1,
+    "Petshop.lt",
+    "terra@petshop.lt",
+    "2026-09-16 12:07:15"
+   ]
+  ],
+  "acc": {
+   "/account": 404,
+   "/users/me": 404,
+   "/me": "{\"id\":\"aQvN6M\",\"comments\":null,\"language\":\"lt\",\"tour\":2,\"active\":1,\"created\":\"2026-01-04 13:41:21\",\"role\":\"Administrator\",\"role_id\":\"Pdy7aQ\",\"is_admin\":false,\"qr_image\":\"\",\"google2fa_enabled\":0,\"accepted_at\":\"2026-01-04 13:44:51\",\"can_resend_invitation\":false}"
+  }
+ },
+ "v": "dep-085611",
+ "kurimas": 200,
+ "sid": 6838,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
