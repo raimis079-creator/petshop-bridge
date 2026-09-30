@@ -1,0 +1,136 @@
+{
+ "1": {
+  "v": "S1741aa",
+  "uploads_htaccess": [
+   "# BEGIN Petshop WebP (S1567, 2026-09-01)",
+   "# Narsyklei, priimanciai image/webp, vietoje x.jpg|png atiduodamas salia esantis x.webp (jei yra).",
+   "# Taisykles cia, ne root .htaccess: mod_rewrite NEinherituoja i katalogus su savo .htaccess.",
+   "<IfModule mod_rewrite.c>",
+   "RewriteEngine On",
+   "RewriteCond %{HTTP_ACCEPT} image/webp",
+   "RewriteCond %{REQUEST_FILENAME} ^(.+)\\.(jpe?g|png)$ [NC]",
+   "RewriteCond %1.webp -f",
+   "RewriteRule ^(.+)\\.(jpe?g|png)$ $1.webp [T=image/webp,L]",
+   "</IfModule>",
+   "<IfModule mod_headers.c>",
+   "<FilesMatch \"\\.(jpe?g|png)$\">",
+   "Header append Vary Accept",
+   "</FilesMatch>",
+   "</IfModule>",
+   "AddType image/webp .webp",
+   "# END Petshop WebP",
+   "",
+   "# BEGIN Petshop Saugumas uploads (S1719, 2026-09-25)",
+   "# PHP uploads'e nevykdomas; tiekeju feed'ai (savikaina) neatiduodami",
+   "<FilesMatch \"\\.(php|phtml|php[0-9]|phar)$\">",
+   "<IfModule mod_authz_core.c>",
+   "Require all denied",
+   "</IfModule>",
+   "</FilesMatch>",
+   "<FilesMatch \"^(petshop-vf-cache\\.xml|vetfarmas_response.*\\.xml)$\">",
+   "<IfModule mod_authz_core.c>",
+   "Require all denied",
+   "</IfModule>",
+   "</FilesMatch>",
+   "# END Petshop Saugumas uploads",
+   ""
+  ],
+  "header_image": "https://petshop.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+  "uzs": "1237",
+  "wc": {
+   "WC_Email_Customer_Processing_Order": {
+    "ijungtas": true,
+    "img": [
+     [
+      "https://petshop.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+      "WEBP_YRA"
+     ],
+     [
+      "https://petshop.lt/wp-content/uploads/2026/06/exclusion-sausas-edalas-mazu-veisliu-sunims-su-kiauliena-ir-zirniais-2-100",
+      "WEBP_YRA"
+     ],
+     [
+      "https://petshop.lt/wp-content/uploads/2026/06/aade44404943456e9cdafc22eb80a8cd-100x100.png",
+      "WEBP_YRA"
+     ],
+     [
+      "https://petshop.lt/wp-content/uploads/2026/06/5257df3d-29a9-4f15-838d-53f417e656fa-100x100.png",
+      "WEBP_YRA"
+     ]
+    ],
+    "dydis": 19417
+   },
+   "WC_Email_Customer_Completed_Order": {
+    "ijungtas": true,
+    "img": [
+     [
+      "https://petshop.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+      "WEBP_YRA"
+     ]
+    ],
+    "dydis": 6410
+   },
+   "WC_Email_New_Order": {
+    "ijungtas": true,
+    "img": [
+     [
+      "https://petshop.lt/wp-content/uploads/2026/06/exclusion-sausas-edalas-mazu-veisliu-sunims-su-kiauliena-ir-zirniais-2-100",
+      "WEBP_YRA"
+     ],
+     [
+      "https://petshop.lt/wp-content/uploads/2026/06/aade44404943456e9cdafc22eb80a8cd-100x100.png",
+      "WEBP_YRA"
+     ],
+     [
+      "https://petshop.lt/wp-content/uploads/2026/06/5257df3d-29a9-4f15-838d-53f417e656fa-100x100.png",
+      "WEBP_YRA"
+     ]
+    ],
+    "dydis": 19781
+   }
+  },
+  "sablonai_su_nuotraukom": {
+   "wp-content/mu-plugins/ps-sablonai/refill-pakartoti.php": 3,
+   "wp-content/mu-plugins/ps-sablonai/win-back-pakartoti.php": 3
+  },
+  "layout_img": [
+   "<img src=\"<?php echo esc_url( $logo ); ?"
+  ],
+  "layout_file": "wp-content/plugins/petshop-core/includes/class-email-layout.php",
+  "wp_mail_filtrai": {
+   "wp_mail": [
+    "-9223372036854775807:WPMailSMTP\\Processor::capture_early_wp_mail_filter_call",
+    "10:wp_staticize_emoji_for_email",
+    "999:Petshop_Uzsakymu_Ivykiai::laiskas",
+    "9223372036854775807:WPMailSMTP\\Processor::capture_late_wp_mail_filter_call"
+   ],
+   "phpmailer_init": [
+    "10:WPMailSMTP\\Processor::phpmailer_init",
+    "10:WC_Email_New_Order::handle_multipart",
+    "10:WC_Email_Cancelled_Order::handle_multipart",
+    "10:WC_Email_Customer_Cancelled_Order::handle_multipart",
+    "10:WC_Email_Failed_Order::handle_multipart",
+    "10:WC_Email_Customer_Failed_Order::handle_multipart",
+    "10:WC_Email_Customer_On_Hold_Order::handle_multipart",
+    "10:WC_Email_Customer_Processing_Order::handle_multipart",
+    "10:WC_Email_Customer_Completed_Order::handle_multipart",
+    "10:WC_Email_Customer_Refunded_Order::handle_multipart",
+    "10:WC_Email_Customer_Invoice::handle_multipart",
+    "10:WC_Email_Customer_Note::handle_multipart",
+    "10:WC_Email_Customer_Reset_Password::handle_multipart",
+    "10:WC_Email_Customer_New_Account::handle_multipart",
+    "10:WC_Email_Admin_Payment_Gateway_Enabled::handle_multipart",
+    "10:WC_Email_Customer_POS_Completed_Order::handle_multipart",
+    "10:WC_Email_Customer_POS_Refunded_Order::handle_multipart",
+    "10:Automattic\\WooCommerce\\Internal\\CustomerEmailVerification\\Emails\\CustomerVerifyEmail::handle_multipart"
+   ]
+  }
+ },
+ "v": "dep-094502",
+ "kurimas": 200,
+ "sid": 6855,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
