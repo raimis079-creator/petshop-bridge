@@ -1,0 +1,61 @@
+{
+ "1": {
+  "v": "S1741f",
+  "faze": "1",
+  "tokenai": "ok",
+  "irasyta": 2290,
+  "md5": "b124aa2591f82bc97cd5dce8c0cb0760",
+  "hb": {
+   "home": 200,
+   "kasa": 200,
+   "ajax": 400
+  }
+ },
+ "2": {
+  "v": "S1741f",
+  "faze": "2",
+  "md5": "b124aa2591f82bc97cd5dce8c0cb0760",
+  "klase": true,
+  "filtras": {
+   "sitemap": true,
+   "sitemap/product": true,
+   "kita": false,
+   "tuscia": false
+  },
+  "pries": {
+   "cv_pask": "09-30 10:06:29",
+   "psl": 1
+  },
+  "rm_invalidate": "kviesta (product + visi)",
+  "po": {
+   "cv_pask": "09-30 10:06:29",
+   "psl": 1
+  },
+  "praleista": {
+   "2026-09-30": 1
+  },
+  "sitemap_index": [
+   200,
+   18,
+   2495
+  ],
+  "sitemap_product": [
+   "Too many redirects",
+   0,
+   0
+  ],
+  "hb": {
+   "home": 200,
+   "kasa": 200,
+   "ajax": 400
+  },
+  "klaidos": []
+ },
+ "v": "dep-070529",
+ "kurimas": 200,
+ "sid": 6824,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
