@@ -1,0 +1,416 @@
+{
+ "1": {
+  "v": "S1742n",
+  "dirs": [
+   "postit",
+   "woo-lithuaniapost-main"
+  ],
+  "g": {
+   "woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTrait.php": [
+    "50: if ($this->currentTemplateId !== null) {"
+   ],
+   "woo-lithuaniapost-main/vendor/setasign/fpdi/src/Tcpdf/Fpdi.php": [
+    "56: protected $templateId = 0;",
+    "76: protected function getNextTemplateId()"
+   ],
+   "woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdiTrait.php": [
+    "414: 'id' => 'TPL' . $this->getNextTemplateId(),"
+   ],
+   "woo-lithuaniapost-main/vendor/setasign/fpdi/src/FpdfTplTrait.php": [
+    "39: protected $templateId = 0;",
+    "50: if ($this->currentTemplateId !== null) {",
+    "200: $templateId = $this->getNextTemplateId();",
+    "223: 'id' => 'TPL' . $templateId,",
+    "273: if ($this->currentTemplateId === null) {",
+    "277: $templateId = $this->currentTemplateId;",
+    "278: $template = $this->templates[$templateId];",
+    "320: protected function getNextTemplateId()",
+    "332: if ($this->currentTemplateId !== null) {",
+    "343: if ($this->currentTemplateId !== null) {",
+    "354: if ($this->currentTemplateId !== null) {",
+    "366: if ($this->page === 0 && $this->currentTemplateId !== null) {",
+    "377: if ($this->page === 0 && $this->currentTemplateId !== null) {",
+    "388: if ($this->page === 0 && $this->currentTemplateId !== null) {",
+    "399: if ($this->page === 0 && $this->currentTemplateId !== null) {",
+    "410: if ($this->page === 0 && $this->currentTemplateId !== null) {",
+    "467: if ($this->currentTemplateId !== null) {"
+   ],
+   "woo-lithuaniapost-main/vendor/setasign/fpdf/font/courier.php": [
+    "3: $name = 'Courier';"
+   ],
+   "woo-lithuaniapost-main/vendor/setasign/fpdf/font/courierbi.php": [
+    "3: $name = 'Courier-BoldOblique';"
+   ],
+   "woo-lithuaniapost-main/vendor/setasign/fpdf/font/courieri.php": [
+    "3: $name = 'Courier-Oblique';"
+   ],
+   "woo-lithuaniapost-main/vendor/setasign/fpdf/font/courierb.php": [
+    "3: $name = 'Courier-Bold';"
+   ],
+   "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-api-hooks.php": [
+    "111: $is_terminals_saved = apply_filters('woo_lithuaniapost_terminal_service_update_terminals', '');",
+    "113: if ($is_terminals_saved === false) {",
+    "119: public function update_sender_address()",
+    "143: $response = $this->courier_api->get_manifest($order_id);"
+   ],
+   "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-size-service.php": [
+    "120: if ($plan_code === 'HANDS' || $plan_code === 'TERMINAL') {"
+   ],
+   "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-settings.php": [
+    "135: $sender_address_response = $this->address_api->get_sender_address();",
+    "142: 'name' => __( 'Sender information', 'woo-lithuaniapost' ),",
+    "144: 'id' => 'lpsettings_sender'",
+    "151: 'id' => 'lpsettings_sender_name',",
+    "153: 'value' => @$sender_address_response->name",
+    "160: 'id' => 'lpsettings_sender_company_name',",
+    "162: 'value' => $sender_address_response->companyName ?? null",
+    "169: 'id' => 'lpsettings_sender_phone',",
+    "171: 'value' => @$sender_address_response->contacts->phone",
+    "178: 'id' => 'lpsettings_sender_email',",
+    "180: 'value' => @$sender_address_response->contacts->email",
+    "186: 'options' => [@$sender_address_response->address->countryCode => @$sender_address_response->address->countryCode],",
+    "187: 'id' => 'lpsettings_sender_country',",
+    "189: 'value' => @$sender_address_response->address->countryCode",
+    "196: 'id' => 'lpsettings_sender_city',",
+    "198: 'value' => @$sender_address_response->address->locality",
+    "205: 'id' => 'lpsettings_sender_street',",
+    "207: 'value' => @$sender_address_response->address->street",
+    "214: 'id' => 'lpsettings_sender_building',",
+    "216: 'value' => $sender_address_response->address->building ?? null",
+    "223: 'id' => 'lpsettings_sender_apartment',",
+    "225: 'value' => $sender_address_response->address->flat ?? null",
+    "231: 'id' => 'lpsettings_sender_postcode',",
+    "233: 'value' => @$sender_address_response->address->postalCode",
+    "245: 'id' => 'lpsettings_sender'",
+    "249: $pickup_address_response = $sender_address_response;",
+    "464: if ($this->courier_api->is_call_required() === true) {",
+    "467: 'type' => 'call_courier_time_picker',",
+    "468: 'id' => 'lpsettings_courier_call_hours',",
+    "472: 'type' => 'call_courier_time_picker',",
+    "473: 'id' => 'lpsettings_courier_call_days',",
+    "477: 'type' => 'call_courier_time_picker',",
+    "598: public function generate_call_courier_time_picker_html($value) {"
+   ],
+   "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-terminal-service.php": [
+    "52: public function update_terminal_list()",
+    "54: $unisend_terminals_saved = $this->save_unisend_terminal_list();",
+    "58: public function save_unisend_terminal_list()",
+    "62: $ee_terminals = $this->terminal_api->get_terminals(\"EE\");",
+    "63: $lv_terminals = $this->terminal_api->get_terminals(\"LV\");",
+    "64: $lt_terminals = $this->terminal_api->get_terminals(\"LT\");",
+    "67: if ($ee_terminals && $lv_terminals && $lt_terminals) {",
+    "68: $terminals = array_merge($lv_terminals, $lt_terminals, $ee_terminals);",
+    "76: 'terminal_id' => $terminal->id,",
+    "77: 'name' => $terminal->name,",
+    "78: 'address' => $terminal->address,",
+    "79: 'city' => $terminal->city,",
+    "80: 'country_code' => $terminal->countryCode",
+    "94: public function schedule_update_terminal_list()",
+    "98: if (!wp_next_scheduled('woo_lithuaniapost_terminal_service_update_terminals')) {",
+    "103: public function get_terminals_by_country_code(string $shipping_country_code): array",
+    "107: $terminals = $wpdb->get_results($wpdb->prepare(\"SELECT terminal_id,name,address,city FROM {$wpdb->woo_lithuaniapost_unisend_terminals} WHERE country_code = %s\", $shipping",
+    "110: if (!$terminals) {",
+    "111: $terminals = $wpdb->get_results(sprintf('SELECT * FROM %s',",
+    "118: public function get_all_terminals(): array",
+    "123: $terminals = $wpdb->get_results($wpdb->prepare(\"SELECT terminal_id,name,address,city, country_code FROM {$wpdb->woo_lithuaniapost_unisend_terminals}\")) ?? [];",
+    "126: if (!$terminals) {",
+    "127: $terminals = $wpdb->get_results(sprintf('SELECT * FROM %s',",
+    "135: private function format_terminals($terminals): array",
+    "154: if (!array_key_exists($terminal->city, $formatted_list)) {",
+    "188: public function get_terminal_by_id(string $terminal_id)",
+    "192: $terminal = $wpdb->get_results($wpdb->prepare(\"SELECT terminal_id,name,address,city FROM {$wpdb->woo_lithuaniapost_lpexpress_terminals} WHERE terminal_id = %s\", $terminal",
+    "193: if (!$terminal) {",
+    "194: $terminal = $wpdb->get_results($wpdb->prepare(\"SELECT terminal_id,name,address,city FROM {$wpdb->woo_lithuaniapost_unisend_terminals} WHERE terminal_id = %s\", $terminal_i"
+   ],
+   "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-actions.php": [
+    "121: case LpOrderAction::CALL_COURIER:"
+   ],
+   "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php": [
+    "66: return $this == LpOrderStatus::$SHIPPING_INITIATED || $this == LpOrderStatus::$COURIER_PENDING || $this == LpOrderStatus::$COURIER_CALLED || $this == LpOrderStatus::$PARC",
+    "86: $all_statuses = [self::$PARCEL_CREATED, self::$PARCEL_FAILED, self::$COURIER_PENDING, self::$COURIER_CALLED, self::$SHIPPING_INITIATED, self::$ON_THE_WAY, self::$PARCEL_D",
+    "98: LpOrderStatus::$COURIER_PENDING = new LpOrderStatus(\"lp-courier-await\", \"COURIER_PENDING\");",
+    "99: LpOrderStatus::$COURIER_CALLED = new LpOrderStatus(\"lp-courier-called\", \"COURIER_CALLED\");",
+    "115: const CALL_COURIER = \"CALL_COURIER\";",
+    "259: $order_ids_to_call_courier = [];",
+    "264: case LpOrderAction::CALL_COURIER:",
+    "279: if (!empty($order_ids_to_call_courier)) {",
+    "288: public function handle_call_courier($order_ids): bool",
+    "290: $call_courier_response = $this->courier_api->call($order_ids);",
+    "291: if (!$call_courier_response) {",
+    "598: if ($lp_order_status == LpOrderStatus::$COURIER_PENDING) {",
+    "600: } else if ($lp_order_status == LpOrderStatus::$COURIER_CALLED || $order->get_meta('_woo_lithuaniapost_lpexpress_courier_called_date')) {",
+    "647: case 'TERMINAL':",
+    "665: if ($order->has_shipping_method(\"woo_lithuaniapost_lpexpress_terminal\")) {",
+    "671: $lp_shipping_method = new $shipping_class_names[\"woo_lithuaniapost_lpexpress_terminal\"]($shipping_method_instance_id);",
+    "715: $terminal_id = $this->is_terminal_required($plan) ? ($_POST['woo_lithuaniapost_lpexpress_terminal_id'] ?? $order->get_meta('_woo_lithuaniapost_lpexpress_terminal_id')) : ",
+    "755: 'terminalId' => $plan == 'TERMINAL' ? $terminal_id : null,",
+    "771: private function is_terminal_required($plan_code) {",
+    "772: return $plan_code == 'TERMINAL';",
+    "832: $saved_terminal_id = $parcel_request['receiver']['address']['terminalId'] ?? null;",
+    "833: if ($saved_terminal_id) {",
+    "835: $terminal_id = sanitize_text_field($saved_terminal_id);",
+    "836: $terminal = apply_filters('woo_lithuaniapost_terminal_service_get_terminal_by_id', $terminal_id);",
+    "838: if ($terminal) {",
+    "951: if ($shipping_item_status->status == ShippingItemStatus::COURIER_PENDING) {",
+    "953: } else if ($shipping_item_status->status == ShippingItemStatus::COURIER_CALLED) {",
+    "1032: $terminal_id = $plan === 'TERMINAL' ? $_POST['woo_lithuaniapost_lpexpress_terminal_id'] ?? $order->get_meta('_woo_lithuaniapost_lpexpress_terminal_id') : null;",
+    "1068: 'terminalId' => $terminal_id,",
+    "1108: if (isset ($_POST ['woo_lithuaniapost_lpexpress_terminal_id'])) {",
+    "1110: $terminal_id = sanitize_text_field($_POST ['woo_lithuaniapost_lpexpress_terminal_id']);",
+    "1112: $terminal = apply_filters('woo_lithuaniapost_terminal_service_get_terminal_by_id', $terminal_id);",
+    "1114: if ($terminal) {"
+   ],
+   "woo-lithuaniapost-main/admin/schedule/class-woo-lithuaniapost-admin-courier-schedule.php": [
+    "46: private $schedule_call_courier_hook_name = 'woo_lithuaniapost_call_courier_schedule_hook';",
+    "65: public function reschedule_call_courier_on_settings_save()",
+    "75: public function schedule_call_courier()",
+    "77: $hook_name = $this->schedule_call_courier_hook_name;",
+    "84: public function lp_call_courier()",
+    "86: $call_courier_response = $this->courier_api->pending_call();",
+    "87: if ($call_courier_response && !empty($call_courier_response)) {",
+    "89: if ($courier_call->idRef) {",
+    "90: $order = wc_get_order($courier_call->idRef);",
+    "102: private function reschedule_call_courier()",
+    "104: $hook_name = $this->schedule_call_courier_hook_name;",
+    "108: $call_courier_days = Woo_Lithuaniapost_Admin_Settings::get_option('courier_call_days');",
+    "109: $call_courier_hours = Woo_Lithuaniapost_Admin_Settings::get_option('courier_call_hours');",
+    "110: if ($call_courier_hours == null || $call_courier_days == null) {",
+    "114: $hour_parts = explode(\":\", $call_courier_hours);",
+    "126: $next_scheduled_time = self::get_next_scheduled_time($call_courier_days, intval($hour_parts[0]), intval($hour_parts[1]));",
+    "166: private function find_day($courier_days, $allow_same_day)",
+    "173: $day_value = $this->get_day_value($call_courier_day);",
+    "181: $next_day = $call_courier_day;",
+    "194: public function get_next_scheduled_time(string $courier_days, int $call_courier_hour, int $call_courier_minute)",
+    "196: $days_arr = explode(\",\", $courier_days);",
+    "201: $allow_same_day = $current_hour < $call_courier_hour || ($current_hour == $call_courier_hour && $current_minute < $call_courier_minute);",
+    "208: $hours_diff = $call_courier_hour - $current_hour;",
+    "210: $minutes_diff = $call_courier_minute - $current_minute;"
+   ],
+   "woo-lithuaniapost-main/admin/api/class-woo-lithuaniapost-admin-terminal-api.php": [
+    "16: const TERMINAL_BY_RECEIVER_COUNTRY_CODE = 'terminal?receiverCountryCode=';",
+    "30: public function get_terminals(string $receiver_country_code)"
+   ],
+   "woo-lithuaniapost-main/admin/api/class-woo-lithuaniapost-admin-shipping-api.php": [
+    "24: const COURIER_PENDING = \"COURIER_PENDING\";",
+    "25: const COURIER_CALLED = \"COURIER_CALLED\";",
+    "28: return $status == ShippingItemStatus::OK || $status == ShippingItemStatus::COURIER_PENDING || $status == ShippingItemStatus::COURIER_CALLED;"
+   ],
+   "woo-lithuaniapost-main/admin/api/class-woo-lithuaniapost-admin-address-api.php": [
+    "19: const ADDRESS_SENDER = 'address/sender';",
+    "20: const ADDRESS_BY_ID_SENDER = 'address/sender/';",
+    "55: public function get_sender_address()",
+    "66: $response = $this->get(self::ADDRESS_BY_ID_SENDER . $address_id);",
+    "73: public function update_sender_address()",
+    "123: public function create_update_sender_address_request(): array"
+   ],
+   "woo-lithuaniapost-main/admin/api/class-woo-lithuaniapost-admin-courier-api.php": [
+    "19: const CALL_REQUIRED_URI = 'courier/call/required';",
+    "20: const PENDING_CALL_URI = 'courier/pending/call';",
+    "21: const CALL_URI = 'courier/call';",
+    "22: const GET_MANIFEST_URI = 'courier/manifest/list';",
+    "23: const GET_MANIFEST_PDF_URI = 'courier/manifest/pdf';",
+    "66: $offset = Woo_Lithuaniapost_Admin_Settings::get_option('courier_call_pending_offset') ?: 1;"
+   ],
+   "woo-lithuaniapost-main/admin/partials/includes/html-shipment-editor-side.php": [
+    "54: <?php $available_terminals = $this->get_available_terminals($parcel) ?>",
+    "83: <?php if (!empty($available_terminals)): ?>",
+    "94: <?php foreach ($available_terminals as $city => $terminals): ?>",
+    "96: <?php foreach ($terminals as $terminal_id => $terminal): ?>",
+    "98: <?php if (!empty ($parcel->receiver->address->terminalId) && $parcel->receiver->address->terminalId == $terminal_id): ?>selected<?php endif; ?>",
+    "215: const terminalMatcher = (params, data) => {"
+   ],
+   "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-settings.php": [
+    "21: 'shipping_method' => 'woo_lithuaniapost_lpexpress_terminal',",
+    "142: if ($item->get_meta('_woo_lithuaniapost_lpexpress_terminal')) {"
+   ],
+   "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-meta-box.php": [
+    "84: if ($parcel->plan->code == 'TERMINAL') {",
+    "92: public function get_available_terminals($parcelResponse)",
+    "201: return $plan_code=='TERMINAL' || $plan_code=='HANDS';"
+   ],
+   "woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin.php": [
+    "138: 'label' => _x('Courier Pending', 'Order status', 'woocommerce'),",
+    "143: 'label_count' => _n_noop('Courier Pending <span class=\"count\">(%s)</span>', 'Courier Pending <span class=\"count\">(%s)</span>', 'woo-lithuaniapost')",
+    "175: 'label' => _x('Courier Called', 'Order status', 'woocommerce'),",
+    "181: 'label_count' => _n_noop('Courier Called <span class=\"count\">(%s)</span>', 'Courier Called <span class=\"count\">(%s)</span>', 'woo-lithuaniapost')",
+    "222: public function display_terminal_order ( $order_id )",
+    "225: if ($terminal = $order->get_meta('_woo_lithuaniapost_lpexpress_terminal')):",
+    "375: public function add_allowed_terminal_checkbox ()",
+    "384: $input_checkbox = get_post_meta ( $post->ID, 'woo_lithuaniapost_allowed_terminal', true );",
+    "387: $parcel_locker_input_checkbox = get_post_meta ( $post->ID, 'woo_lithuaniapost_allowed_terminal_parcel_locker', true );",
+    "391: 'id'            => 'woo_lithuaniapost_allowed_terminal',",
+    "398: 'id'            => 'woo_lithuaniapost_allowed_terminal_parcel_locker',",
+    "410: public function save_allowed_terminal_checkbox ( $post_id )",
+    "412: $_terminal_option = isset ( $_POST [ 'woo_lithuaniapost_allowed_terminal' ] ) ? 'yes' : '';",
+    "414: $_parcel_locker_terminal_option = isset ( $_POST [ 'woo_lithuaniapost_allowed_terminal_parcel_locker' ] ) ? 'yes' : '';"
+   ],
+   "woo-lithuaniapost-main/includes/class-woo-lithuaniapost-activator.php": [
+    "57: if ( $wpdb->get_var( \"SHOW TABLES LIKE '$wpdb->woo_lithuaniapost_lpexpress_terminals'\" )",
+    "60: $sql = \"CREATE TABLE $wpdb->woo_lithuaniapost_lpexpress_terminals (",
+    "75: if ( $wpdb->get_var( \"SHOW TABLES LIKE '$wpdb->woo_lithuaniapost_unisend_terminals'\" )",
+    "78: $sql = \"CREATE TABLE $wpdb->woo_lithuaniapost_unisend_terminals (",
+    "204: if ($wpdb->get_var(\"SHOW TABLES LIKE '$wpdb->woo_lithuaniapost_unisend_terminals'\")",
+    "206: $sql = \"CREATE TABLE $wpdb->woo_lithuaniapost_unisend_terminals ("
+   ],
+   "woo-lithuaniapost-main/includes/shipping/lpexpress-terminal/includes/settings-plan-cost-size.php": [
+    "20: $cost_type = $_POST['woocommerce_woo_lithuaniapost_lpexpress_terminal_cost'] ?? $shipping_method->cost ?? null;",
+    "26: $request_option_key = 'woocommerce_woo_lithuaniapost_lpexpress_terminal_sizes_cost_' . $size;",
+    "65: $option_exists = isset($_POST['woocommerce_woo_lithuaniapost_lpexpress_terminal_' . $option_name]);"
+   ],
+   "woo-lithuaniapost-main/includes/shipping/lpexpress-terminal/includes/settings-plan-cost-weight.php": [
+    "5: $cost_type = $_POST['woocommerce_woo_lithuaniapost_lpexpress_terminal_cost'] ?? $shipping_method->cost ?? null;"
+   ],
+   "woo-lithuaniapost-main/includes/shipping/lpexpress-terminal/class-woo-lithuaniapost-shipping-lpexpress-terminal.php": [
+    "6: const ID = 'woo_lithuaniapost_lpexpress_terminal';",
+    "215: $disable_shipping   = get_post_meta ( $product_id, 'woo_lithuaniapost_allowed_terminal', true );",
+    "216: $disable_shipping_to_parcel_locker   = get_post_meta ( $product_id, 'woo_lithuaniapost_allowed_terminal_parcel_locker', true );",
+    "218: if ( $disable_shipping === 'yes' || ($disable_shipping_to_parcel_locker === 'yes' && $this->plan === 'TERMINAL') ) {"
+   ],
+   "woo-lithuaniapost-main/includes/class-woo-lithuaniapost.php": [
+    "239: if ( ! class_exists ( 'Woo_Lithuaniapost_Shipping_Lpexpress_Terminal' ) ) {",
+    "274: 'woo_lithuaniapost_lpexpress_terminals'     => 'woo_lithuaniapost_lpexpress_terminals',",
+    "275: 'woo_lithuaniapost_unisend_terminals'       => 'woo_lithuaniapost_unisend_terminals',",
+    "308: $plugin_admin_courier_schedule = new Woo_Lithuaniapost_Admin_Courier_Schedule($this->get_plugin_name(), $this->get_version());",
+    "313: $plugin_admin_terminal_service = new Woo_Lithuaniapost_Admin_Terminal_Service($this->get_plugin_name(), $this->get_version());"
+   ],
+   "woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php": [
+    "116: 'terminal_dropdown_template' => $this->get_block_terminal_dropdown_template()",
+    "126: protected function get_terminal_list ()",
+    "132: private function get_block_terminal_dropdown_template()",
+    "158: public function get_terminal_list_json ()",
+    "160: $terminal_list = $this->get_terminal_list();",
+    "164: public function ajax_get_saved_terminal()",
+    "166: $session = WC()->session->get('selected_lpexpress_terminal');",
+    "167: $id = (!empty($session) && isset($session['terminal_id'])) ? $session['terminal_id'] : '';",
+    "181: protected function get_selected_terminal_id()",
+    "183: $request_terminal_id = $_POST['woo_lithuaniapost_lpexpress_terminal_id'] ?? null;",
+    "184: if ($request_terminal_id && is_numeric($request_terminal_id)) {",
+    "187: $selected_terminal_session = WC()->session->get('selected_lpexpress_terminal');",
+    "198: public function render_terminal_field ( $method, $index )",
+    "204: // Check if selected method is UNISEND terminal",
+    "205: if ($this->get_method_settings_value($method->get_instance_id(), 'plan') == 'TERMINAL') {",
+    "224: if (!is_checkout() || $method->get_method_id() != 'woo_lithuaniapost_lpexpress_terminal') {",
+    "235: if ($shipping_method->id != 'woo_lithuaniapost_lpexpress_terminal' || isset($_GET['wc-ajax']) || isset($_GET['remove_item']) || wp_doing_ajax() || (!is_cart() && !is_chec",
+    "247: private function handle_generate_terminal_input_html($shipping_method)",
+    "249: if ($this->get_method_settings_value($shipping_method->get_instance_id(), 'plan') == 'TERMINAL') {",
+    "251: $element_key = 'woo_lithuaniapost_lpexpress_terminal_' . $element_value;",
+    "260: private function handle_generate_terminal_dropdown_html($shipping_method)",
+    "262: if ($this->get_method_settings_value($shipping_method->get_instance_id(), 'plan') == 'TERMINAL') {",
+    "264: $element_key = 'woo_lithuaniapost_lpexpress_terminal_dropdown_' . $element_value;",
+    "301: private function generate_terminal_input_html($element_value)",
+    "314: if ($shipping_plan == 'TERMINAL') {",
+    "315: if (!$this->validate_selected_terminal($arg)) return;",
+    "374: $terminal_id = $this->is_terminal_required($plan_code) ? ($this->get_selected_terminal_id() ?? null) : null;",
+    "388: 'terminalId' => $terminal_id,",
+    "399: private function is_terminal_required($plan_code) {",
+    "400: return $plan_code == 'TERMINAL';",
+    "492: if ($item->get_method_id() === 'woo_lithuaniapost_lpexpress_terminal') {",
+    "499: $saved_terminal_id = $this->get_selected_terminal_id();",
+    "501: if ($order_plan === 'TERMINAL' && isset ($saved_terminal_id)) {",
+    "503: $terminal_id = sanitize_text_field($saved_terminal_id);",
+    "505: $terminal = apply_filters('woo_lithuaniapost_terminal_service_get_terminal_by_id', $terminal_id);",
+    "507: if ($terminal) {",
+    "519: public function save_selected_terminal_session ()",
+    "523: 'terminal' => $_REQUEST ['terminal'] ?? null,",
+    "524: 'terminal_id' => $_REQUEST ['terminal_id'] ?? null",
+    "540: public function add_terminal_field_order_email ( $fields, $sent_to_admin, $order )",
+    "542: if ( $terminal_id = $order->get_meta('_woo_lithuaniapost_lpexpress_terminal_id') ) {",
+    "544: $terminal = apply_filters('woo_lithuaniapost_terminal_service_get_terminal_by_id', $terminal_id);",
+    "548: 'value' => sprintf ( '%s - %s, %s', $terminal [ 0 ]->name, $terminal [ 0 ]->address, $terminal [ 0 ]->city )",
+    "574: public function add_terminal_field_order_thankyou ( $order )",
+    "577: if ( $terminal_id = $order->get_meta('_woo_lithuaniapost_lpexpress_terminal_id') ) {"
+   ],
+   "woo-lithuaniapost-main/public/partials/html-block-lpexpress-terminal.php": [
+    "26: <?php foreach ($this->get_terminal_list() as $city => $terminals): ?>",
+    "28: <?php foreach ($terminals as $terminal_id => $terminal): ?>",
+    "30: <?php if (!empty ($this->get_selected_terminal_id()) && $this->get_selected_terminal_id() == $terminal_id): ?>selected<?php endif; ?>"
+   ],
+   "woo-lithuaniapost-main/public/partials/html-lpexpress-terminal.php": [
+    "24: <?php foreach ($this->get_terminal_list() as $city => $terminals): ?>",
+    "26: <?php foreach ($terminals as $terminal_id => $terminal): ?>",
+    "28: <?php if (!empty ($this->get_selected_terminal_id()) && $this->get_selected_terminal_id() == $terminal_id): ?>selected<?php endif; ?>"
+   ]
+  },
+  "opt": {
+   "_transient__woocommerce_helper_product_usage_notice_rules": "a:3:{s:35:\"wait_in_seconds_after_any_dismisses\";i:259200;s:8:\"products\";a:2:{i:4652610;a:8:{s:4:\"name\";s:11:\"AutomateWoo\";s:13:\"regular_price\";s:3:\"159\";s:14:\"max_dismissals\";i:2;s:29:\"wait_in_seconds_after_dismiss\";i:604800;s:34:\"wait_in_seconds_after_remind_later\";i:1209600;s:7:\"show_as\";s:5:\"moda",
+   "_transient__woocommerce_helper_subscriptions": "a:3:{s:21:\"18734006692174-853021\";a:30:{s:11:\"product_key\";s:35:\"W00-97db9169-433f-9075-2e229a64e2fe\";s:10:\"product_id\";i:853021;s:12:\"product_name\";s:22:\"Mix and Match Products\";s:11:\"product_url\";s:68:\"https://woocommerce.com/products/woocommerce-mix-and-match-products/\";s:12:\"product_icon\";s:83:\"",
+   "_transient__woocommerce_helper_updates": "a:4:{s:4:\"hash\";s:32:\"45fad41f3cf93ef31c2252a577c26dce\";s:7:\"updated\";i:1790788424;s:8:\"products\";a:3:{i:853021;a:8:{s:7:\"version\";s:5:\"2.9.3\";s:4:\"slug\";s:34:\"woocommerce-mix-and-match-products\";s:3:\"url\";s:68:\"https://woocommerce.com/products/woocommerce-mix-and-match-products/\";s:7:\"package\";s:43",
+   "_transient__woocommerce_helper_updates_count": "1",
+   "_transient_timeout__woocommerce_helper_product_usage_notice_rules": "1790873409",
+   "_transient_timeout__woocommerce_helper_subscriptions": "1790799224",
+   "_transient_timeout__woocommerce_helper_updates": "1790831624",
+   "_transient_timeout__woocommerce_helper_updates_count": "1790831689",
+   "lpsettings_woo_lithuaniapost_address_pickup_id": "32742454",
+   "lpsettings_woo_lithuaniapost_updated_version": "4.0.32",
+   "mailpoet_cron_deactivating": "1",
+   "widget_mailpoet_form": "a:1:{s:12:\"_multiwidget\";i:1;}",
+   "woo_lithuaniapost_module_active": "1",
+   "woocommerce_admin-wc-helper-last-refresh": "1790622813",
+   "woocommerce_helper_data": "a:2:{s:4:\"auth\";a:6:{s:12:\"access_token:(slepiama);s:19:\"access_token_secret:(slepiama);s:7:\"site_id\";i:2818993;s:3:\"url\";s:18:\"https://petshop.lt\";s:7:\"user_id\";i:1;s:7:\"updated\";i:1782745048;}s:14:\"auth_user_data\";a:2:{s:4",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_12_settings": "a:20:{s:5:\"title\";s:10:\"LP Express\";s:4:\"plan\";s:8:\"TERMINAL\";s:11:\"parcel_type\";s:3:\"H2T\";s:13:\"delivery_time\";s:0:\"\";s:4:\"cost\";s:4:\"flat\";s:10:\"fixed_cost\";s:4:\"1,78\";s:11:\"weight_cost\";s:0:\"\";s:9:\"size_cost\";s:0:\"\";s:18:\"free_shipping_cost\";s:2:\"30\";s:35:\"apply_free_shipping_before_discount\";s:2",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_13_settings": "a:20:{s:5:\"title\";s:10:\"LP Express\";s:4:\"plan\";s:8:\"TERMINAL\";s:11:\"parcel_type\";s:3:\"H2T\";s:13:\"delivery_time\";s:0:\"\";s:4:\"cost\";s:4:\"flat\";s:10:\"fixed_cost\";s:4:\"1,78\";s:11:\"weight_cost\";s:0:\"\";s:9:\"size_cost\";s:0:\"\";s:18:\"free_shipping_cost\";s:2:\"30\";s:35:\"apply_free_shipping_before_discount\";s:2",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_15_settings": "a:28:{s:5:\"title\";s:19:\"LP Express kurjeris\";s:4:\"plan\";s:5:\"HANDS\";s:11:\"parcel_type\";s:3:\"H2H\";s:13:\"delivery_time\";s:0:\"\";s:4:\"cost\";s:6:\"weight\";s:10:\"fixed_cost\";s:0:\"\";s:11:\"weight_cost\";s:0:\"\";s:9:\"size_cost\";s:0:\"\";s:18:\"free_shipping_cost\";s:0:\"\";s:35:\"apply_free_shipping_before_discount\";s"
+  },
+  "mu": {
+   "petshop-av-source.php": [
+    "*   AV  → venipak ARBA lp_express   (carrier = 'any')"
+   ],
+   "petshop-darbalaukis.php": [
+    "*   (numatytas: sukurtos siuntos arba plugino apskaičiuotas). Pakeitus: be siuntos → kuriama su dydžiu (filtras `woo_lithuaniapost_size_service_resolve_order_si",
+    "*   siunta be numerio → perrašoma (`create_parcel` overwriteIdRef); su numeriu → `woo_lithuaniapost__order_action_cancel_labels`, tada nauja. Dialogas: `opt.tip",
+    "*   LP plugino filtras `woo_lithuaniapost_order_action_generate_stickers` (inicijuoja siuntimą, barcode į plugino meta, PDF į buferį) → `uploads/ps-lipdukai/lp/",
+    "*   LP paštomatas (`_woo_lithuaniapost_lpexpress_terminal_id` + `_woo_lithuaniapost_lpexpress_terminal` plugino formatu, sąrašas plugino lentelė",
+    "*   `woo_lithuaniapost_unisend_terminals` LT) + telefonas (billing ir shipping — abu pluginai skaito billing). Pristatymo BŪDAS nekeičiamas (kaina/PVM — vėliau)",
+    "*   `venipak_shipping_order_data.status=error` (tekstas lietuviškai) arba LP meta `lp-parcel-failed` (`_woo_lithuaniapost_parcel_create_error`);"
+   ],
+   "petshop-desk.php": [
+    "'wc' => $lp ? 'woo_lp_print_label' : 'shopup_venipak_shipping_labels',",
+    "&& ( 'lp' !== $v || ! $o->get_meta( '_woo_lithuaniapost_lpexpress_terminal_id' ) );",
+    "foreach ( array( '_lpexpress_tracking_number', 'lpexpress_tracking_number', '_lp_tracking' ) as $k ) {",
+    "printf( '<button class=\"pd-btn pd-btn-p pd-rbig\" data-wcnew=\"woo_lp_print_label\" data-ids=\"%s\">Spausdinti LP lipdukus</button>',",
+    "printf( '<button class=\"pd-btn pd-rbig\" data-wcnew=\"woo_lp_print_manifest\" data-ids=\"%s\">Kurjeris + manifestas</button>',",
+    "$term = $o->get_meta( '_woo_lithuaniapost_lpexpress_terminal_id' );"
+   ],
+   "petshop-fakt-siuntos.php": [
+    "*      nukeliauja i LP API bei i `_woo_lithuaniapost_shipping_item_size`.",
+    "const VEZEJAI = array( 'venipak', 'lp_express' );",
+    "if ( 'lp_express' !== $vezejas ) { return null; }",
+    "*   woo_lithuaniapost_lpexpress_terminal    -> terminalas",
+    "'woo_lithuaniapost_lpexpress_terminal'   => 'terminalas',",
+    "* SALTINIS — order meta `_woo_lithuaniapost_shipping_item_size`, kuria"
+   ],
+   "petshop-faktai.php": [
+    "elseif ( strpos( $id, 'lithuaniapost' ) !== false || strpos( $id, 'lpexpress' ) !== false ) { $vezejai['lp_express'] = true; }"
+   ],
+   "petshop-greitis.php": [
+    "*   Šis modulis: (1) nuima jquery-migrate (Flatsome/WC 3.7 nereikia); (2) LP Express (woo-lithuaniapost) JS/CSS ir",
+    "if ( false !== strpos( $src, 'woo-lithuaniapost' ) || false !== strpos( $src, 'jsdelivr.net/npm/select2' ) ) { wp_dequeue_script( $h ); }",
+    "if ( false !== strpos( $src, 'woo-lithuaniapost' ) || false !== strpos( $src, 'jsdelivr.net/npm/select2' ) ) { wp_dequeue_style( $h ); }"
+   ],
+   "petshop-kliento-siuntos.php": [
+    "*  - LP Express plugino SAVO sekimo laiškas klientui (`woo_lithuaniapost_send_tracking_email` → `send_tracking_email`) IŠJUNGTAS —",
+    "*    LP numeris ten patenka per `_woo_lithuaniapost_barcode` (darbalaukis v3.10.4). Kartu plugino nustatymai",
+    "if ( has_action( 'woo_lithuaniapost_send_tracking_email' ) ) { remove_all_actions( 'woo_lithuaniapost_send_tracking_email' ); $nuimta[] = 'lp_send_tracking_emai"
+   ]
+  },
+  "meta_keys": [
+   "_woo_lithuaniapost_lpexpress_shipping_method_instance_id",
+   "_woo_lithuaniapost_lpexpress_terminal_id",
+   "_woo_lithuaniapost_lpexpress_terminal",
+   "_woo_lithuaniapost_shipping_status_value",
+   "_woo_lithuaniapost_shipping_item_id",
+   "_woo_lithuaniapost_shipping_item_weight",
+   "_woo_lithuaniapost_shipping_item_size",
+   "_woo_lithuaniapost_barcode",
+   "_woo_lithuaniapost_shipping_request_id",
+   "_ps_lp_lipdukas_pdf"
+  ]
+ },
+ "v": "dep-174922",
+ "kurimas": 200,
+ "sid": 6878,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
