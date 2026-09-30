@@ -1,0 +1,50 @@
+{
+ "6": {
+  "v": "S1741w",
+  "faze": "6",
+  "n": 300,
+  "unikaliu_sarase": 300,
+  "sub_raktai": [
+   "bounced_at",
+   "bounced_at_utc",
+   "columns",
+   "created",
+   "created_utc",
+   "email",
+   "firstname",
+   "id",
+   "ip_address",
+   "lastname",
+   "location",
+   "phone",
+   "phone_country",
+   "source",
+   "status",
+   "subscriber_tags",
+   "unsubscribed_at",
+   "unsubscribed_at_utc"
+  ],
+  "sub_grp_pvz": "{\"columns\":[{\"id\":\"e59Mzx\",\"title\":\"PS_HERO_SEG\",\"type\":\"text\",\"value\":\"std_suo1\"}],\"status\":{\"email\":\"active\",\"temail\":\"active\"},\"subscriber_tags\":[{\"id\":\"dLlm5X\",\"title\":\"RELAUNCH_L1_SUO_STD\"}]}",
+  "sender_viso": 507,
+  "c": {
+   "sarase_ir_sender": 300,
+   "sarase_ne_sender": 0,
+   "calc_grupeje": 193,
+   "std_grupeje": 107,
+   "abiejose": 0,
+   "be_grupes": 0,
+   "aktyvus": 300,
+   "grupeje_ne_sarase": 0
+  },
+  "tvarka_sutampa": 300,
+  "consent_pasikeite": 562,
+  "s": 8.4
+ },
+ "v": "dep-091816",
+ "kurimas": 200,
+ "sid": 6845,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
