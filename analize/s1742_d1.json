@@ -1,0 +1,38 @@
+{
+ "1": {
+  "v": "S1742d",
+  "f": "1",
+  "dry": {
+   "34523": [
+    {
+     "rasta": 1,
+     "laukta": 1,
+     "jau": 0
+    },
+    {
+     "rasta": 1,
+     "laukta": 1,
+     "jau": 0
+    }
+   ],
+   "34524": [
+    {
+     "rasta": 2,
+     "laukta": 2,
+     "jau": 0
+    }
+   ]
+  },
+  "opt_dabar": false,
+  "bus": "Perskaičiau ir sutinku su pirkimo <a href=\"https://petshop.lt/taisykles/\" class=\"woocommerce-terms-and-conditions-link\" target=\"_blank\">sąlygomis ir taisyklėmis</a> bei <a href=\"https://petshop.lt/privatumo-politika/\" class=\"woocommerce-privacy-policy-link\" target=\"_blank\">privatumo politikoje</a>",
+  "ux": "<?php\n\nfunction ux_payment_icons( $atts ) {\n\textract( shortcode_atts( array(\n\t\t'link'       => '',\n\t\t'target'     => '',\n\t\t'rel'        => '',\n\t\t'icons'      => get_theme_mod( 'payment_icons', array( 'visa', 'paypal', 'stripe', 'mastercard', 'cashondelivery' ) ),\n\t\t'custom'     => get_theme_mod( 'payment_icons_custom' ),\n\t\t'class'      => '',\n\t\t'visibility' => '',\n\t), $atts ) );\n\n\t$classes   = array( 'payment-icons', 'inline-block' );\n\t$is_custom = ! empty( $custom );\n\n\tif ( $class ) $classes[] = $class;\n\n\tif ( $visibility ) $classes[] = $visibility;\n\n\t$classes = implode( ' ', $classes );\n\n\t$element_atts = array(\n\t\t'class'      => $classes,\n\t\t'role'       => $is_custom ? null : 'group',\n\t\t'aria-label' => $is_custom || $link ? null : esc_attr__( 'Payment icons', 'flatsome' ),\n\t);\n\n\t$link_atts = array(\n\t\t'href'       => esc_url( $link ),\n\t\t'target'     => esc_attr( $target ),\n\t\t'rel'        => esc_attr( $rel ),\n\t\t'aria-label' => $is_custom ? null : esc_attr__( 'Payment icons', 'flatsome' ), // Use image alt on custom.\n\t);\n\n\t$link_start = $link ? '<a ' . flatsome_html_atts( $link_atts ) . '>' : '';\n\t$link_end   = $link ? '</a>' : '';\n\n\t// Get custom icons if set.\n\tif ( $is_custom ) {\n\t\treturn do_shortcode( '<div class=\"' . esc_attr( $classes ) . '\">' . $link_start . flatsome_get_image( $custom ) . $link_end . '</div>' );\n\t} elseif ( empty( $icons ) ) {\n\t\treturn false;\n\t}\n\n\tif ( ! is_array( $icons ) ) {\n\t\t$icons = explode( ',', $icons );\n\t}\n\n\t$payment_icons = flatsome_get_payment_icons_list();\n\n\tob_start();\n\n\techo '<div ' . flatsome_html_atts( $element_atts ) . '>';\n\techo $link_start; // phpcs:disable WordPress.Security.EscapeOutput\n\tforeach ( $icons as $key => $value ) {\n\t\t$icon_atts = array(\n\t\t\t'class' => 'payment-icon',\n\t\t);\n\t\techo '<div ' . flatsome_html_atts( $icon_atts ) . '>';\n\t\tif ( array_key_exists( $value, $payment_icons ) ) {\n\t\t\techo Flatsome_Icon::get_payment_icon( $value );\n\t\t\techo '<span class=\"screen-reader-text\">' . esc_html( $payment_icons[ $value ] ) . '</span>';\n\t\t}\n\t\techo '</div>';\n\t}\n\techo $link_end; // phpcs:disable WordPress.Security.EscapeOutput\n\techo '</div>';\n\n\t$content = ob_get_contents();\n\tob_end_clean();\n\n\treturn $content;\n}\n\nadd_shortcode( 'ux_payment_icons', 'ux_payment_icons' );\n",
+  "bak_yra": false
+ },
+ "v": "dep-155852",
+ "kurimas": 200,
+ "sid": 6864,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
