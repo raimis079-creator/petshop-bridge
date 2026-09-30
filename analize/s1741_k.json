@@ -1,0 +1,51 @@
+{
+ "1": {
+  "v": "S1741k",
+  "laikas": "10:20:28",
+  "failai": {
+   "rm_kesas": "10:06:48 b124aa25",
+   "login": "10:15:11 028dec15",
+   "darbalaukis": "10:18:04 75d8e143"
+  },
+  "valymai_po_1007": [
+   [
+    "09-30 10:17:02",
+    "viskas_25",
+    "52 prekės: 35312,20206,20260,20280,20285,20327,185",
+    "kt",
+    "/wp-load.php?import_key=v&import_id=7&action=processing"
+   ],
+   [
+    "09-30 10:19:04",
+    "viskas_25",
+    "43 prekės: 21681,18106,21707,17983,18040,21744,217",
+    "kt",
+    "/wp-load.php?import_key=v&import_id=7&action=processing"
+   ]
+  ],
+  "rm_praleista": {
+   "2026-09-30": 1
+  },
+  "supercache": {
+   "psl": 5,
+   "seniausias": "10:19"
+  },
+  "login_eilutes": [],
+  "log": {
+   "ivyko": {
+    "n": 1,
+    "pvz": [
+     "07:14:04  WordPress database error Unknown column 'ivyko' in 'INSERT INTO' for query INSERT INTO `gaj6_ps_sargas_klaidos` (`ivyko`, `tipas`, `zinute`) VALUES ('2026-09-3"
+    ]
+   }
+  },
+  "hb": 200
+ },
+ "v": "dep-071918",
+ "kurimas": 200,
+ "sid": 6829,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
