@@ -1,0 +1,585 @@
+{
+ "1": {
+  "v": "S1741p",
+  "stulp": {
+   "ps_ist_eilutes": [
+    "id",
+    "uzsakymo_id",
+    "modelis",
+    "pavadinimas",
+    "variantas",
+    "kiekis",
+    "kaina",
+    "suma",
+    "wc_product_id",
+    "susiejimas"
+   ],
+   "ps_ist_fakt_eilutes": [
+    "id",
+    "uzsakymas_id",
+    "eilutes_id",
+    "apmoketa_at",
+    "preke_id",
+    "variacija_id",
+    "sku",
+    "gtin",
+    "pavadinimas_tuo_metu",
+    "kategorija_id_giliausia",
+    "kategoriju_kelias",
+    "brendas_slug",
+    "gyvunas",
+    "pa_uzsaldymas",
+    "sandelis",
+    "tiekejas",
+    "partija_kodas",
+    "kiekis",
+    "kaina_ct",
+    "pvm_ct",
+    "kaina_vnt_ct",
+    "kaina_reguliari_ct",
+    "savikaina_vnt_ct",
+    "savikaina_ct",
+    "savikainos_saltinis",
+    "nuolaida_ct",
+    "akcija_id",
+    "kuponas",
+    "rinkinys_id",
+    "rinkinio_tipas",
+    "rinkinio_raktas",
+    "dovana",
+    "svoris_g",
+    "pakuotes_dydis",
+    "klientas_naujas",
+    "testinis",
+    "saltinis_aplinka",
+    "diena"
+   ],
+   "ps_ist_fakt_uzsakymai": [
+    "uzsakymas_id",
+    "sukurta_at",
+    "apmoketa_at",
+    "statusas_galutinis",
+    "statusas_at",
+    "klientas_id",
+    "klientas_email_hash",
+    "klientas_naujas",
+    "klientas_uzsakymo_nr",
+    "dienos_nuo_ankstesnio",
+    "prekiu_suma_ct",
+    "nuolaidu_ct",
+    "kuponu_kodai",
+    "tasku_panaudota_ct",
+    "tasku_sukaupta_ct",
+    "pristatymas_paimta_ct",
+    "pristatymas_savikaina_ct",
+    "small_cart_fee_ct",
+    "pvm_ct",
+    "viso_ct",
+    "mokejimo_budas",
+    "mokejimo_mokestis_ct",
+    "pakuotes_savikaina_ct",
+    "savikaina_ct",
+    "dovanu_savikaina_ct",
+    "marza_ct",
+    "kontribucija_ct",
+    "sandeliu_kiekis",
+    "misrus",
+    "sandeliai",
+    "vezejai",
+    "kanalas_pirmas",
+    "kanalas_paskutinis",
+    "utm_source",
+    "utm_medium",
+    "utm_campaign",
+    "gclid",
+    "fbclid",
+    "referer_domenas",
+    "landing_url",
+    "irenginys",
+    "sutikimas_statistika",
+    "salis",
+    "miestas",
+    "pasto_kodas",
+    "anketa_id",
+    "rec_log_id",
+    "is_refill",
+    "prenumerata_id",
+    "eiluciu_sk",
+    "testinis",
+    "saltinis_aplinka",
+    "fakt_versija",
+    "irasyta_at",
+    "diena"
+   ]
+  },
+  "filtras_viso": 1893,
+  "suo_maistas": {
+   "n": 690,
+   "su_lf": 690,
+   "lfd_lygu_pask": 690
+  },
+  "suo_segmentas": [
+   {
+    "segmentas": "generic",
+    "hero_reason": "old_purchase",
+    "n": "286"
+   },
+   {
+    "segmentas": "calc",
+    "hero_reason": "recent_exact",
+    "n": "254"
+   },
+   {
+    "segmentas": "product",
+    "hero_reason": "no_feeding_table",
+    "n": "108"
+   },
+   {
+    "segmentas": "generic",
+    "hero_reason": "product_out_of_stock",
+    "n": "28"
+   },
+   {
+    "segmentas": "generic",
+    "hero_reason": "product_gone",
+    "n": "7"
+   },
+   {
+    "segmentas": "generic",
+    "hero_reason": "product_unavailable",
+    "n": "7"
+   }
+  ],
+  "suo_last_kat": [
+   {
+    "k": "(nera)",
+    "n": "655"
+   },
+   {
+    "k": "ŠUNIMS > Skanėstai šunims",
+    "n": "17"
+   },
+   {
+    "k": "ŠUNIMS > Antiparazitinės priemonės šunims",
+    "n": "4"
+   },
+   {
+    "k": "ŠUNIMS > Šampūnai šunims",
+    "n": "4"
+   },
+   {
+    "k": "ŠUNIMS > Žaislai šunims",
+    "n": "3"
+   },
+   {
+    "k": "KATĖMS > Kraikai kačių tualetams",
+    "n": "3"
+   },
+   {
+    "k": "KATĖMS > Guoliai katėms",
+    "n": "1"
+   },
+   {
+    "k": "ŠUNIMS > Higienos priemonės šunims",
+    "n": "1"
+   },
+   {
+    "k": "ŠUNIMS",
+    "n": "1"
+   },
+   {
+    "k": "KATĖMS > Tualetai, semtuvėliai",
+    "n": "1"
+   }
+  ],
+  "suo_menuo": [
+   {
+    "m": "2026-08",
+    "n": "31",
+    "calc": "16"
+   },
+   {
+    "m": "2026-07",
+    "n": "27",
+    "calc": "14"
+   },
+   {
+    "m": "2026-06",
+    "n": "37",
+    "calc": "24"
+   },
+   {
+    "m": "2026-05",
+    "n": "29",
+    "calc": "20"
+   },
+   {
+    "m": "2026-04",
+    "n": "50",
+    "calc": "32"
+   },
+   {
+    "m": "2026-03",
+    "n": "34",
+    "calc": "22"
+   },
+   {
+    "m": "2026-02",
+    "n": "38",
+    "calc": "25"
+   },
+   {
+    "m": "2026-01",
+    "n": "36",
+    "calc": "25"
+   },
+   {
+    "m": "2025-12",
+    "n": "39",
+    "calc": "23"
+   },
+   {
+    "m": "2025-11",
+    "n": "32",
+    "calc": "18"
+   },
+   {
+    "m": "2025-10",
+    "n": "27",
+    "calc": "18"
+   },
+   {
+    "m": "2025-09",
+    "n": "40",
+    "calc": "17"
+   },
+   {
+    "m": "2025-08",
+    "n": "35",
+    "calc": "0"
+   },
+   {
+    "m": "2025-07",
+    "n": "28",
+    "calc": "0"
+   },
+   {
+    "m": "2025-06",
+    "n": "34",
+    "calc": "0"
+   },
+   {
+    "m": "2025-05",
+    "n": "29",
+    "calc": "0"
+   },
+   {
+    "m": "2025-04",
+    "n": "35",
+    "calc": "0"
+   },
+   {
+    "m": "2025-03",
+    "n": "24",
+    "calc": "0"
+   },
+   {
+    "m": "2025-02",
+    "n": "40",
+    "calc": "0"
+   },
+   {
+    "m": "2025-01",
+    "n": "45",
+    "calc": "0"
+   }
+  ],
+  "suo_svoriai": [
+   {
+    "s": "(nera)",
+    "n": "436"
+   },
+   {
+    "s": "10,20,30",
+    "n": "127"
+   },
+   {
+    "s": "4,6,8",
+    "n": "99"
+   },
+   {
+    "s": "26,41,58",
+    "n": "21"
+   },
+   {
+    "s": "3,6,8",
+    "n": "5"
+   },
+   {
+    "s": "14,18,22",
+    "n": "2"
+   }
+  ],
+  "maistas_sunims_term": [
+   71,
+   "Maistas šunims"
+  ],
+  "maisto_kat_n": 3,
+  "suo_su_eilutemis": 690,
+  "suo_tipas": [
+   {
+    "t": "tik_sunu_maistas",
+    "n": "600"
+   },
+   {
+    "t": "sunu_maistas_ir_kita",
+    "n": "83"
+   },
+   {
+    "t": "be_sunu_maisto",
+    "n": "7"
+   }
+  ],
+  "tik_maistas_menuo": [
+   {
+    "m": "2026-08",
+    "n": "26",
+    "calc": "13"
+   },
+   {
+    "m": "2026-07",
+    "n": "22",
+    "calc": "12"
+   },
+   {
+    "m": "2026-06",
+    "n": "32",
+    "calc": "22"
+   },
+   {
+    "m": "2026-05",
+    "n": "27",
+    "calc": "19"
+   },
+   {
+    "m": "2026-04",
+    "n": "46",
+    "calc": "31"
+   },
+   {
+    "m": "2026-03",
+    "n": "28",
+    "calc": "20"
+   },
+   {
+    "m": "2026-02",
+    "n": "31",
+    "calc": "25"
+   },
+   {
+    "m": "2026-01",
+    "n": "33",
+    "calc": "23"
+   },
+   {
+    "m": "2025-12",
+    "n": "34",
+    "calc": "20"
+   },
+   {
+    "m": "2025-11",
+    "n": "30",
+    "calc": "17"
+   },
+   {
+    "m": "2025-10",
+    "n": "23",
+    "calc": "16"
+   },
+   {
+    "m": "2025-09",
+    "n": "36",
+    "calc": "16"
+   },
+   {
+    "m": "2025-08",
+    "n": "30",
+    "calc": "0"
+   },
+   {
+    "m": "2025-07",
+    "n": "23",
+    "calc": "0"
+   },
+   {
+    "m": "2025-06",
+    "n": "27",
+    "calc": "0"
+   },
+   {
+    "m": "2025-05",
+    "n": "21",
+    "calc": "0"
+   },
+   {
+    "m": "2025-04",
+    "n": "30",
+    "calc": "0"
+   },
+   {
+    "m": "2025-03",
+    "n": "22",
+    "calc": "0"
+   },
+   {
+    "m": "2025-02",
+    "n": "37",
+    "calc": "0"
+   },
+   {
+    "m": "2025-01",
+    "n": "42",
+    "calc": "0"
+   }
+  ],
+  "ir_kita_menuo": [
+   {
+    "m": "2026-08",
+    "n": "4"
+   },
+   {
+    "m": "2026-07",
+    "n": "4"
+   },
+   {
+    "m": "2026-06",
+    "n": "4"
+   },
+   {
+    "m": "2026-05",
+    "n": "2"
+   },
+   {
+    "m": "2026-04",
+    "n": "4"
+   },
+   {
+    "m": "2026-03",
+    "n": "5"
+   },
+   {
+    "m": "2026-02",
+    "n": "5"
+   },
+   {
+    "m": "2026-01",
+    "n": "2"
+   },
+   {
+    "m": "2025-12",
+    "n": "5"
+   },
+   {
+    "m": "2025-11",
+    "n": "2"
+   },
+   {
+    "m": "2025-10",
+    "n": "4"
+   },
+   {
+    "m": "2025-09",
+    "n": "4"
+   },
+   {
+    "m": "2025-08",
+    "n": "5"
+   },
+   {
+    "m": "2025-07",
+    "n": "5"
+   },
+   {
+    "m": "2025-06",
+    "n": "7"
+   },
+   {
+    "m": "2025-05",
+    "n": "8"
+   },
+   {
+    "m": "2025-04",
+    "n": "5"
+   },
+   {
+    "m": "2025-03",
+    "n": "2"
+   },
+   {
+    "m": "2025-02",
+    "n": "3"
+   },
+   {
+    "m": "2025-01",
+    "n": "3"
+   }
+  ],
+  "kitu_eil_kategorijos": [
+   {
+    "k": "Skanėstai šunims",
+    "n": "74"
+   },
+   {
+    "k": "(nesusieta)",
+    "n": "25"
+   },
+   {
+    "k": "Konservai katėms",
+    "n": "16"
+   },
+   {
+    "k": "Žaislai šunims",
+    "n": "8"
+   },
+   {
+    "k": "Vitaminai ir papildai katėms/Vitaminai ir papildai šunims",
+    "n": "7"
+   },
+   {
+    "k": "Antiparazitinės priemonės katėms/Antiparazitinės priemonės šunims",
+    "n": "6"
+   },
+   {
+    "k": "Kraikai kačių tualetams",
+    "n": "5"
+   },
+   {
+    "k": "Šampūnai šunims",
+    "n": "5"
+   },
+   {
+    "k": "Skanėstai šunims/ŠUNIMS",
+    "n": "5"
+   },
+   {
+    "k": "Sausas maistas katėms",
+    "n": "5"
+   },
+   {
+    "k": "Antiparazitinės priemonės šunims",
+    "n": "4"
+   },
+   {
+    "k": "Skanėstai šunims/Super Premium šunų maistas",
+    "n": "4"
+   }
+  ]
+ },
+ "v": "dep-080324",
+ "kurimas": 200,
+ "sid": 6834,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
