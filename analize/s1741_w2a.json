@@ -1,0 +1,64 @@
+{
+ "v": "dep-091222",
+ "kurimas": 200,
+ "sid": 6842,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "2-0": {
+  "v": "S1741w",
+  "faze": "2-0",
+  "laukas_PS_HERO_G1": 200,
+  "laukas_PS_HERO_G3": 200,
+  "grupe_sukurta_RELAUNCH_L1_SUO_CALC": 200,
+  "grupe_sukurta_RELAUNCH_L1_SUO_STD": 200,
+  "gid": {
+   "calc": "aKkl5M",
+   "std": "dLlm5X"
+  },
+  "st": {
+   "calc": 58,
+   "std": 42,
+   "praleista": 0,
+   "klaida": 0,
+   "kodai": {
+    "201": 100
+   }
+  },
+  "klaidos": [],
+  "sender_grupes": [
+   [
+    "bDxp2q",
+    "PS_TEST",
+    1
+   ],
+   [
+    "dPlYRA",
+    "PS_SUPPRESSED_OR_ARCHIVE",
+    0
+   ],
+   [
+    "aOkZQR",
+    "PS_LEGACY_IMPORT",
+    0
+   ],
+   [
+    "dNj8P2",
+    "PS_ALL_ACTIVE",
+    0
+   ],
+   [
+    "dLlm5X",
+    "RELAUNCH_L1_SUO_STD",
+    0
+   ],
+   [
+    "aKkl5M",
+    "RELAUNCH_L1_SUO_CALC",
+    0
+   ]
+  ],
+  "s": 15.2
+ }
+}
