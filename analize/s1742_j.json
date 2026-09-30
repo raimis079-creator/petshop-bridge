@@ -1,0 +1,50 @@
+{
+ "1": {
+  "wp-content/themes/flatsome/inc/structure/structure-posts.php": [
+   "236: wp_kses_post( _x( '<span class=\"posted-on\">Posted on %1$s</span> <span class=\"byline\">by %2$s</span>', 'post date by post author', 'flatsome' ) ),"
+  ],
+  "wp-content/themes/flatsome/languages/fr_FR.l10n.php": [
+   "3: ','Comments are closed, but you can leave a trackback: <a class=\"trackback-link\" href=\"%s\" title=\"Trackback URL for your post\" rel=\"trackback\">Trackback URL</a>.'=>'Les commentaires sont désactivés mais vous pouvez laiss"
+  ],
+  "wp-content/themes/flatsome/languages/vi.l10n.php": [
+   "2: return ['domain'=>'flatsome','plural-forms'=>'nplurals=1; plural=0;','language'=>'vi_VN','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:00','po-revision-date'=>'2024-12-16 14:00','x-ge"
+  ],
+  "wp-content/themes/flatsome/languages/pl_PL.l10n.php": [
+   "4: %1$s myśli o &ldquo;%2$s&rdquo;' . \"\\0\" . '%1$s myśli o &ldquo;%2$s&rdquo;' . \"\\0\" . '%1$s Myśli o &ldquo;%2$s&rdquo;','Comment navigation'=>'Nawigacja komentarzy','Older Comments'=>'Starsze komentarze','Newer Comments'="
+  ],
+  "wp-content/themes/flatsome/languages/de_DE.l10n.php": [
+   "2: return ['domain'=>'flatsome','plural-forms'=>'nplurals=2; plural=(n != 1);','language'=>'de_DE','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:00','po-revision-date'=>'2024-12-16 13:59"
+  ],
+  "wp-content/themes/flatsome/languages/cs_CZ.l10n.php": [
+   "2: return ['domain'=>'flatsome','plural-forms'=>'nplurals=4; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 3;','language'=>'cs_CZ','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:00','po-revisi"
+  ],
+  "wp-content/themes/flatsome/languages/de_DE_formal.l10n.php": [
+   "2: return ['domain'=>'flatsome','plural-forms'=>'nplurals=2; plural=(n > 1);','language'=>'de_DE_f','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:00','po-revision-date'=>'2024-12-16 14:0"
+  ],
+  "wp-content/themes/flatsome/languages/nl_NL.l10n.php": [
+   "2: return ['domain'=>'flatsome','plural-forms'=>'nplurals=2; plural=(n != 1);','language'=>'nl_NL','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:00','po-revision-date'=>'2024-12-16 14:00"
+  ],
+  "wp-content/themes/flatsome/languages/da_DK.l10n.php": [
+   "2: return ['domain'=>'flatsome','plural-forms'=>'nplurals=2; plural=(n != 1);','language'=>'da_DK','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:00','po-revision-date'=>'2024-12-16 13:59"
+  ],
+  "wp-content/themes/flatsome/languages/it_IT.l10n.php": [
+   "2: return ['domain'=>'flatsome','plural-forms'=>'nplurals=2; plural=(n != 1);','language'=>'it_IT','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:00','po-revision-date'=>'2024-12-16 14:00"
+  ],
+  "wp-content/themes/flatsome/languages/uk.l10n.php": [
+   "2: return ['domain'=>NULL,'plural-forms'=>'nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2);','language'=>'uk','project-id-version'=>'l10n-flatsome','pot-creation-date'=>"
+  ],
+  "wp-content/themes/flatsome/languages/ar.l10n.php": [
+   "2: return ['domain'=>'flatsome','plural-forms'=>'nplurals=6; plural=(n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 && n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5);','language'=>'ar_SA','project-id-version'=>'l10n-flatsome','"
+  ],
+  "wp-content/themes/flatsome/languages/tr_TR.l10n.php": [
+   "2: return ['domain'=>'flatsome','plural-forms'=>'nplurals=2; plural=(n != 1);','language'=>'tr_TR','project-id-version'=>'l10n-flatsome','pot-creation-date'=>'2024-12-16T13:56:13+00:00','po-revision-date'=>'2024-12-16 14:00"
+  ]
+ },
+ "v": "dep-172603",
+ "kurimas": 200,
+ "sid": 6874,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
