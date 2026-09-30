@@ -1,0 +1,59 @@
+{
+ "1": {
+  "v": "S1742m",
+  "f": "1",
+  "term": [
+   307,
+   "Migruota iš petshop.lt",
+   "migruota",
+   9,
+   0
+  ],
+  "perm": "/%postname%/",
+  "default_cat": "1",
+  "kiti": [
+   {
+    "term_id": "1",
+    "name": "Uncategorized",
+    "slug": "uncategorized",
+    "count": "0"
+   },
+   {
+    "term_id": "307",
+    "name": "Migruota iš petshop.lt",
+    "slug": "migruota",
+    "count": "9"
+   }
+  ],
+  "plugin_md5": "3ec0ef9dced7238828f2da854c9177d8"
+ },
+ "2": {
+  "v": "S1742m",
+  "f": "2",
+  "upd": {
+   "term_id": 307,
+   "term_taxonomy_id": 307
+  },
+  "md5": "af2e0d7ca1c122f1cb46a81c76cbbe14",
+  "patikra": {
+   "home": 200,
+   "patarimai": 200,
+   "migruota": [
+    301,
+    "https://petshop.lt/category/patarimai/"
+   ],
+   "str": [
+    200,
+    0,
+    3
+   ]
+  }
+ },
+ "v": "dep-174032",
+ "kurimas": 200,
+ "sid": 6877,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
