@@ -1,0 +1,75 @@
+{
+ "1": {
+  "v": "S1742v",
+  "f": "1",
+  "md5": "75d8e14320c0a6fbce4ad6710210da40",
+  "bak_dir": false
+ },
+ "2": {
+  "v": "S1742v",
+  "f": "2",
+  "tok": "ok",
+  "bak": false,
+  "md5": "f4f975acfe5bf136bb2bd2125cb20aad",
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/wp-admin/admin-ajax.php": [
+    400,
+    0
+   ]
+  }
+ },
+ "3": {
+  "v": "S1742v",
+  "f": "3",
+  "klase": true,
+  "ver": "3.46",
+  "uzs": "1242",
+  "opt2": {
+   "vardas": "perdavimas",
+   "tekstas": "Perdavimas",
+   "def": "kurjeris",
+   "tipas": "sel",
+   "var": [
+    [
+     "kurjeris",
+     "Kurjeris paims"
+    ],
+    [
+     "pastomatas",
+     "Nuvešiu į paštomatą"
+    ]
+   ]
+  },
+  "be_filtro": [
+   12,
+   "TERMINAL",
+   "H2T"
+  ],
+  "su_filtru": {
+   "0": 12,
+   "1": "TERMINAL",
+   "2": "T2T",
+   "suveike": true
+  },
+  "po": "H2T",
+  "inst15": [
+   "HANDS",
+   "T2H"
+  ]
+ },
+ "v": "dep-181022",
+ "kurimas": 200,
+ "sid": 6886,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
