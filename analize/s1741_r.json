@@ -1,0 +1,72 @@
+{
+ "1": {
+  "v": "S1741r",
+  "laikas": "11:38:12",
+  "failai": {
+   "rm_kesas": "10:06:48 b124aa25",
+   "login": "10:15:11 028dec15",
+   "darbalaukis": "10:18:04 75d8e143"
+  },
+  "valymai_po_1007": [
+   [
+    "09-30 11:02:25",
+    "importas_be_pokyciu",
+    "import #3 skipped 2732",
+    "kt",
+    "/wp-load.php?import_key=v&import_id=3&action=processing"
+   ]
+  ],
+  "rm_praleista": {
+   "2026-09-30": 5
+  },
+  "tiksliniai": {
+   "2026-09-30": {
+    "dideli": 3,
+    "prekes": 122,
+    "importai": 1
+   }
+  },
+  "wpai7": [
+   {
+    "time_run": "385",
+    "s": "import finished & cron un-triggered<br>0 Produktai created 125 updated 2274 skipped",
+    "date": "2026-09-30 08:16:02"
+   },
+   {
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-09-30 08:15:03"
+   },
+   {
+    "time_run": "403",
+    "s": "import finished & cron un-triggered<br>0 Produktai created 137 updated 2262 skipped",
+    "date": "2026-09-30 07:16:02"
+   },
+   {
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-09-30 07:15:03"
+   }
+  ],
+  "supercache": {
+   "psl": 193,
+   "seniausias": "10:38"
+  },
+  "login_eilutes": [
+   {
+    "laikas": "2026-09-30 11:17:44",
+    "zinute": "uzrakinta: 207.154.219.49 (bandytas vardas: Raimis)",
+    "kiek": "2"
+   }
+  ],
+  "log": [],
+  "hb": 200
+ },
+ "v": "dep-083701",
+ "kurimas": 200,
+ "sid": 6836,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
