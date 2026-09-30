@@ -1,0 +1,168 @@
+{
+ "1": {
+  "v": "S1742a",
+  "f": "1",
+  "opt": {
+   "woocommerce_terms_page_id": "34524",
+   "wp_page_for_privacy_policy": "34525",
+   "woocommerce_checkout_terms_and_conditions_checkbox_text": false,
+   "woocommerce_checkout_privacy_policy_text": "Jūsų asmeniniai duomenys bus naudojami patirčiai šioje svetainėje gerinti, prieigai prie paskyros valdyti ir kitiems tikslams, aprašytiems mūsų [privacy_policy].",
+   "woocommerce_registration_privacy_policy_text": "Jūsų asmeniniai duomenys bus naudojami užsakymui apdoroti, patirčiai šioje svetainėje gerinti ir kitiems tikslams, aprašytiems mūsų [privacy_policy].",
+   "woocommerce_checkout_highlight_required_fields": "yes",
+   "woocommerce_default_country": "LT"
+  },
+  "terms_page": [
+   "Pirkimo sąlygos ir taisyklės",
+   "https://petshop.lt/taisykles/",
+   "publish"
+  ],
+  "priv_page": [
+   "Privatumo politika",
+   "https://petshop.lt/privatumo-politika/",
+   "publish"
+  ],
+  "checkbox_enabled": true,
+  "show_terms_filter": true,
+  "hooks": {
+   "woocommerce_checkout_terms_and_conditions": [
+    "10 flatsome_terms_and_conditions",
+    "30 wc_terms_and_conditions_page_content",
+    "30 flatsome_terms_and_conditions_lightbox"
+   ],
+   "woocommerce_review_order_before_submit": [
+    "9 Petshop_Pren_Sutikimas::varnele"
+   ],
+   "woocommerce_checkout_process": [
+    "5 Woocommerce_Shopup_Venipak_Shipping_Public_Pickup_Checkout::add_venipak_shipping_pickup_checkout_process",
+    "10 Petshop_Pren_Sutikimas::tikrinti",
+    "10 Woo_Lithuaniapost_Public::validate_shipping",
+    "10 Paysera\\Front\\PayseraDeliveryFrontHtml::checkoutFieldProcess",
+    "10 closure@wp-content/themes/flatsome-child/functions.php:847",
+    "10 petshop_validate_company_fields"
+   ],
+   "woocommerce_after_checkout_validation": [
+    "1 WC_Cart::check_customer_coupons",
+    "9999 Woocommerce_Shopup_Venipak_Shipping_Public_Pickup_Checkout::validate_cod",
+    "9999 Paysera\\Front\\PayseraDeliveryFrontHtml::validateWeight",
+    "9999 Paysera\\Front\\PayseraDeliveryFrontHtml::validateTerminalLocationField"
+   ]
+  },
+  "grep": {
+   "wp-content/mu-plugins/petshop-pren-sutikimas.php": [
+    ".'<span>Sutinku su '.$nuoroda.' — reguliarūs užsakymai pasirinktu dažnumu, kainos fiksavimas, keitimo ir atšaukimo tvarka&nbsp;<abbr class=\"required\" title=\"privaloma\">*</abbr></span>'"
+   ]
+  }
+ },
+ "2": {
+  "v": "S1742a",
+  "f": "2",
+  "code": 200,
+  "len": 258171,
+  "footer_text": "Gaukite naudingus patarimus ir Petshop.lt pasiūlymus Retai, bet iš esmės: maisto naujienos, praktiniai patarimai ir aktualūs pasiūlymai. El. pašto adresas Prenumeruoti Sutinku gauti Petshop.lt naujienas el. paštu. Atsisakyti galėsiu bet kada. Duomenis tvarko UAB Avesa. Daugiau — privatumo politikoje. APIENaminių gyvūnų prekės internetu: maistas, žaislai ir priežiūra. f Apie mus Kontaktai KLIENTAMS Mano paskyra Užsakymų istorija Pristatymas Apmokėjimas GrąžinimasDUK Taisyklės Privatumo politika Slapukų politika KATEGORIJOS Šunims Katėms Graužikams Paukščiams Žuvims Akcijos Pasiūlymai KONTAKTAI +370 681 87787 Parašyti mums I–V 09:00–18:00 VI 10:00–15:00 Visa MasterCard Copyright 2026 © UAB Avesa | petshop.lt Ieškoti: ŠUNIMS MAISTAS ŠUNIMS Sausas maistas šunims Konservai šunims SKANĖSTAI IR PAPILDAI Skanėstai šunims Vitaminai ir papildai šunims PRIEŽIŪRA IR SVEIKATA Antiparazitinės priemonės šunims Higienos priemonės šunims Šampūnai šunims Šukos, šepečiai, žirklės šunims Pirmoji pagalba šunims AKSESUARAI Dubenėliai šunims Antkakliai, pavadėliai šunims Žaislai šunims Guoliai šunims Vėsinantys kilimėliai šunims Baseinai šunims Transportavimo dėžės šunims Kelionių įranga Narvai Apranga šunims KATĖMS MAISTAS KATĖMS Sausas maistas katėms Konservai katėms SKANĖSTAI IR PAPILDAI Skanėstai katėms Vitaminai ir papildai katėms KRAIKAI IR TUALETAI Kraikai kačių tualetams Tualetai, semtuvėliai PRIEŽIŪRA IR AKSESUARAI Antiparazitinės priemonės katėms Dubenėliai katėms Antkakliai ir petnešos katėms Žaislai katėms Draskyklės katėms Guoliai katėms Transportavimo dėžės katėms Šukos, šepečiai, žirklės GRAUŽIKAMS MAISTAS IR SKANĖSTAI Pašaras graužikams Skanėstai graužikams Narvai ir aksesuarai graužikams Kraikas ir šienas graužikams PAUKŠČIAMS MAISTAS IR SKANĖSTAI Lesalas paukščiams Skanėstai paukščiams Aksesuarai paukščiams ŽUVIMS MAISTAS Akvariumo žuvyčių maistas Tvenkinių žuvų maistas RINKINIAI Paruošti rinkiniai Konservų rinkiniai Skanėstų rinkiniai Kramtalų rinkiniai Susidėk savo rinkinį Susidėk konservų rinkinį šunims Susidėk konservų rinkinį katėms Susidėk skanėstų rinkinį šunims Susidėk skanėstų rinkinį katėms Susidėk kramtalų rinkinį šunims PASIŪLYMAI Akcijos Daugiau = pigiau SPRENDIMAI Naujas šuniukas Naujas kačiukas Išrankus augintinis Jautrus virškinimas Sterilizuotas augintinis Kraiko pasirinkimas Prisijungti Slapukai ir privatumas Naudojame slapukus, kad svetainė veiktų sklandžiai, o mūsų rekomendacijos būtų naudingesnės jūsų augintiniui. Būtinieji slapukai veikia ",
+  "footer_imgs": [],
+  "footer_svgs": [
+   "<svg aria-hidden=\"true\" focusable=\"false\" data-prefix=\"fas\" data-icon=\"times\" class=\"svg-inline--fa fa-times fa-w-11\""
+  ],
+  "ctx": {
+   "visa": [
+    "c0.877-2.467 1.096-3 1.096-3 0.592 0 5.875 0 6.624 0 0 0 0.157 0.688 0.624 3h4.813l-4.187-20.061h-4zM53.405 18.938c0 0 0.437-1.157 2.064-5.594-0.032 0.032 0.437-1.157 0.688-1.907l0.374 1.72c0.968 4.781 1.189 5.781 1.189 5.781-0.813 0-3.283 0-4.315 0z\"></path>\n</svg>\n<span class=\"screen-reader-text\">Visa</span></div><div class=\"payment-icon\"><svg aria-hidden=\"true\" viewBox=\"0 0 64 32\" xmlns=\"http://www.w3.org/2000/svg\">\n\t<path d=\"M18.4306 31.9299V29.8062C18.4306 28.9938 17.9382 28.4618 17.0929 28.4618C16.6703 28.4618 16.2107 28.6021 15.8948 29.0639C15.6486 28.6763 15.2957 28.4618 14.7663 28.461",
+    "/div>\n\t</div>\n\n\t<div class=\"cmplz-divider cmplz-divider-header\"></div>\n\t<div class=\"cmplz-body\">\n\t\t<div class=\"cmplz-message\" id=\"cmplz-message-1-optin\">Naudojame slapukus, kad svetainė veiktų sklandžiai, o mūsų rekomendacijos būtų naudingesnės jūsų augintiniui. Būtinieji slapukai veikia visada. Analitikos ir rinkodaros slapukus įjungiame tik jums sutikus.</div>\n\t\t<!-- categories start -->\n\t\t<div class=\"cmplz-categories\">\n\t\t\t<div class=\"cmplz-category cmplz-functional\">\n\t\t\t\t<div class=\"cmplz-category-header\">\n\t\t\t\t\t<span class=\"cmplz-category-title\" id=\"cmplz-title-functional-1-opti",
+    "z-functional-optin\"\n\t\t\t\t\t\t\t\t\tdata-category=\"cmplz_functional\"\n\t\t\t\t\t\t\t\t\tclass=\"cmplz-consent-checkbox cmplz-functional\"\n\t\t\t\t\t\t\t\t\tsize=\"40\"\n\t\t\t\t\t\t\t\t\tvalue=\"1\"/>\n\t\t\t\t\t\t\t<label class=\"cmplz-label\" for=\"cmplz-functional-optin\"><span class=\"screen-reader-text\">Funkcinis</span></label>\n\t\t\t\t\t\t</span>\n\t\t\t\t\t\tVisada aktyvus\t\t\t\t\t</span>\n\t\t\t\t\t<button class=\"cmplz-category-toggle\"\n\t\t\t\t\t\t\taria-expanded=\"false\"\n\t\t\t\t\t\t\taria-controls=\"cmplz-desc-functional-1-optin\"\n\t\t\t\t\t\t\taria-labelledby=\"cmplz-title-functional-1-optin\">\n\t\t\t\t\t\t<span class=\"cmplz-icon cmplz-open\">\n\t\t\t\t\t\t\t<svg aria-hidden=\"true\" focusable=\"false\"",
+    "querySelectorAll('.page-title-inner .woocommerce-ordering select.orderby');for(var i=0;i<ss.length;i++){var o=ss[i].options;for(var j=0;j<o.length;j++){if(T[o[j].value]&&!o[j].getAttribute('data-ps')){o[j].setAttribute('data-ps',o[j].text);o[j].text=T[o[j].value];}}}}\n/* prekės ženklo filtras — visada išskleistas, lietuviškas užrašas */\nvar zkBandymai=0;function zenklas(){if(!ON.zenklas)return;var fs=d.querySelectorAll('.yith-wcan-filter[data-taxonomy=\"product_brand\"]');if(!fs.length)return;var laukti=false;for(var i=0;i<fs.length;i++){var f=fs[i];if(!f.getAttribute('data-ps-init')&&zk"
+   ],
+   "mastercard": [
+    " 46.3293 25.4845 39.3209 25.4845C36.3624 25.4845 33.6501 24.4577 31.5 22.7588C34.4585 20.4206 36.3255 16.8124 36.3255 12.7423C36.3255 8.67216 34.4215 5.05979 31.5 2.72577C33.646 1.0268 36.3583 0 39.3168 0C46.3293 0 52 5.73608 52 12.7423Z\" fill-opacity=\"0.4\"/>\n</svg>\n<span class=\"screen-reader-text\">MasterCard</span></div></div>      </div>\n    \n    <div class=\"footer-primary pull-left\">\n                          <div class=\"copyright-footer\">\n        Copyright 2026 © <strong>UAB Avesa</strong> | petshop.lt      </div>\n          </div>\n  </div>\n</div>\n<button type=\"button\" id=\"top-link\" class="
+   ],
+   "@": [
+    "asiūlymai.</div>\n\t\t\t\n\t\t\t<div class=\"psnl-row\">\n\t\t\t\t<label class=\"screen-reader-text\" for=\"psnl-dySDFi-email\">El. pašto adresas</label>\n\t\t\t\t<input type=\"email\" id=\"psnl-dySDFi-email\" class=\"psnl-email\"\n\t\t\t\t       inputmode=\"email\" autocomplete=\"email\" spellcheck=\"false\"\n\t\t\t\t       placeholder=\"jusu@pastas.lt\">\n\t\t\t\t<button type=\"button\" class=\"psnl-btn\">Prenumeruoti</button>\n\t\t\t</div>\n\n\t\t\t<label class=\"psnl-consent\">\n\t\t\t\t<input type=\"checkbox\" class=\"psnl-check\">\n\t\t\t\t<span>Sutinku gauti Petshop.lt naujienas el. paštu. Atsisakyti galėsiu bet kada.</span>\n\t\t\t</label>\n\n\t\t\t\t\t\t<div class=\"psnl-hp",
+    "e:12px;color:#7A867C}\n\t\t</style>\n\t\t\t\t\t</div>\n\t\t</section>\n\t\t<style>\n\t\t.psnl-band{background:#F3EFE5;padding:44px 20px;width:100%}\n\t\t.psnl-band-in{max-width:1080px;margin:0 auto;display:flex;justify-content:center}\n\t\t.psnl-band .psnl{max-width:640px;width:100%;box-shadow:0 1px 3px rgba(0,0,0,.06)}\n\t\t@media(max-width:768px){.psnl-band{padding:32px 16px}}\n\t\t</style>\n\t\t\n<!-- FOOTER 1 -->\n\n<!-- FOOTER 2 -->\n<div class=\"footer-widgets footer footer-2 dark\">\n\t\t<div class=\"row dark large-columns-4 mb-0\">\n\t   \t\t<div id=\"custom_html-2\" class=\"widget_text col pb-0 widget widget_custom_html\"><span class=\"",
+    "veskite el. paštą — atsiųsime saugią prisijungimo nuorodą. Slaptažodžio nereikės.</p>\n\n\t\t<div class=\"ps-magic-form\" id=\"ps-magic-form\">\n\t\t\t<label class=\"ps-label\" for=\"ps-magic-email\">El. pašto adresas</label>\n\t\t\t<input type=\"email\" id=\"ps-magic-email\" class=\"ps-input\" placeholder=\"vardas@pastas.lt\" autocomplete=\"email\" inputmode=\"email\">\n\t\t\t<button type=\"button\" class=\"ps-btn-primary\" id=\"ps-magic-send\">Gauti prisijungimo nuorodą</button>\n\t\t\t<p class=\"ps-hint\">Jei paskyros dar neturite, ji bus sukurta tik jums paspaudus laiške esančią nuorodą.</p>\n\t\t</div>\n\n\t\t<div class=\"ps-ma",
+    "nt-size: 13.5px; line-height: 1.55; }\n.ps-side-list li { margin-bottom: 7px; }\n.ps-side-note { font-size: 12.5px; color: #8A968C; margin: 0; line-height: 1.5; }\n\n/* Siauriau nei 860 px — vienas stulpelis. Riba pagal TURINIO poreikį\n   (420 + 268 + 40 tarpas + paraštės), ne pagal įrenginį. */\n@media (max-width: 860px) {\n\t#ps-login-wrap { flex-direction: column; gap: 24px; padding: 28px 24px 26px; }\n\t.ps-login-main { max-width: 100%; }\n\t.ps-login-side { flex: 1 1 auto; width: 100%; }\n\t.ps-login-title { font-size: 21px; }\n}\n</style>\n\n<script>\n(function(){\n\tvar REST = \"https:\\/\\/petshop.lt\\"
+   ],
+   "tel:": [
+    "\"color:#fffcec;\">Pasiūlymai</a></li>\r\n</ul></div></div><div id=\"custom_html-5\" class=\"widget_text col pb-0 widget widget_custom_html\"><span class=\"widget-title\">KONTAKTAI</span><div class=\"is-divider small\"></div><div class=\"textwidget custom-html-widget\"><p style=\"margin-bottom:8px;\">\r\n  <a href=\"tel:+37068187787\" style=\"color:#fffcec;text-decoration:none;font-weight:bold;\">+370 681 87787</a>\r\n</p>\r\n<p style=\"margin-bottom:8px;\">\r\n  <a href=\"/kontaktai/\" style=\"color:#fffcec;\">Parašyti mums</a>\r\n</p>\r\n<p style=\"margin-bottom:0;color:#a2bd9d;font-size:13px;\">\r\n  I–V 09:00–18:00<br>\r\n  VI"
+   ],
+   "mailto:": []
+  },
+  "theme_mods_footer": {
+   "payment_icons_placement": "footer",
+   "html_scripts_footer": "",
+   "footer_2_bg_color": "#365a51",
+   "footer_left_text": "Copyright [ux_current_year] © <strong>UAB Avesa</strong> | petshop.lt",
+   "payment_icons": [
+    "visa",
+    "mastercard"
+   ]
+  }
+ },
+ "3": {
+  "v": "S1742a",
+  "f": "3",
+  "pages": {
+   "grazinimas": {
+    "id": 34523,
+    "title": "Grąžinimas",
+    "mod": "2026-09-04 21:53:50",
+    "len": 2486,
+    "hits": [
+     "Prekių grąžinimas Trumpai: Ne maisto prekes galite grąžinti per 14 dienų, jei jos nenaudotos, nesugadintos ir originalioje pakuotėje.",
+     " Apie grąžinimą praneškite el.",
+     " Pinigus grąžiname ne vėliau kaip per 14 dienų nuo grąžinamos prekės gavimo.",
+     " Teisė atsisakyti sutarties Pirkėjas, nenurodydamas priežasties, per 14 (keturiolika) dienų turi teisę atsisakyti prekių pirkimo–pardavimo sutarties, pranešdamas apie tai Pardavėjui.",
+     " Teisė atsisakyti sutarties Pirkėjui negalioja Civilinio kodekso 6.",
+     ": sutartims dėl greitai gendančių prekių ar prekių, kurių galiojimo laikas yra trumpas; sutartims dėl supakuotų prekių, kurios buvo išpakuotos po pristatymo ir kurios yra netinkamos grąžinti dėl sveikatos apsaugos ar higienos priežasčių.",
+     " Kokybiškų prekių grąžinimo sąlygos Tinkamos kokybės ne maisto prekės grąžinamos ar keičiamos tik tuo atveju, jei jos: nebuvo naudotos; yra nesugadintos; išsaugotos jų vartojamosios savybės; nepraradusios prekinės išvaizdos.",
+     " Grąžinama prekė privalo būti nepažeistoje pakuotėje ir pilnos komplektacijos (su etiketėmis, instrukcijomis, papildomomis detalėmis ir kt.",
+     " Nekokybiškos prekės Netinkamos kokybės prekės keičiamos ar grąžinamos vadovaujantis LR Civilinio kodekso nuostatomis.",
+     " Kai grąžinimo priežastis yra netinkama prekės kokybė arba Pirkėjas gavo ne tą prekę, kurią užsakė, Pardavėjas savo lėšomis kaip įmanoma greičiau pakeičia prekę kokybiška arba grąžina už prekę sumokėtus pinigus."
+    ],
+    "head": "Prekių grąžinimas Trumpai: Ne maisto prekes galite grąžinti per 14 dienų, jei jos nenaudotos, nesugadintos ir originalioje pakuotėje. Apie grąžinimą praneškite el. paštu. Pinigus grąžiname ne vėliau kaip per 14 dienų nuo grąžinamos prekės gavimo. Teisė atsisakyti sutarties Pirkėjas, nenurodydamas priežasties, per 14 (keturiolika) dienų turi teisę atsisakyti prekių pirkimo–pardavimo sutarties, pranešdamas apie tai Pardavėjui. Teisė atsisakyti sutarties Pirkėjui negalioja Civilinio kodekso 6.228(10) straipsnio 2 dalyje numatytais atvejais, t. y.: sutartims dėl greitai gendančių prekių ar prekių,"
+   },
+   "pirkimo-taisykles": null,
+   "taisykles": {
+    "id": 34524,
+    "title": "Pirkimo sąlygos ir taisyklės",
+    "mod": "2026-09-04 21:53:49",
+    "len": 16093,
+    "hits": [
+     " nepilnamečiai nuo 14 iki 18 metų amžiaus, tik turėdami tėvų arba rūpintojų sutikimą, išskyrus tuos atvejus, kai jie savarankiškai disponuoja savo pajamomis; 1.",
+     " Pirkėjas turi teisę atsisakyti prekių pirkimo – pardavimo sutarties su el.",
+     " paštu, nurodant pageidaujamą grąžinti prekę ir jos užsakymo numerį) ne vėliau kaip per 14 (keturiolika) dienų nuo prekės gavimo dienos, išskyrus atvejus, kai sutarties negalima atsisakyti pagal LR įstatymus (Lietuvos Respublikos civilinio kodekso 6.",
+     "ės, kurios yra aiškiai pritaikytos vartotojo asmeninėms reikmėms; greitai gendančios prekės ar prekės, kurių galiojimo laikas yra trumpas; supakuotos prekės, kurios buvo išpakuotos po pristatymo ir kurios yra netinkamos grąžinti dėl sveikatos apsaugos ar higienos priežasčių; ir kt.",
+     " Jeigu Pirkėjas siuntos neatsiima iš paštomato ar atsiėmimo punkto per vežėjo nustatytą saugojimo terminą arba nepriima jos iš kurjerio, vežėjas siuntą grąžina Pardavėjui, o Pardavėjas susisiekia su Pirkėju.",
+     " Tokiu atveju Pirkėjas atlygina Pardavėjui tiesiogines siuntos grąžinimo išlaidas – 3,99 Eur (su PVM).",
+     "ntimas atliekamas tik Pirkėjui iš anksto apmokėjus pasirinkto pristatymo būdo kainą pagal galiojančius pristatymo įkainius (nemokamo pristatymo sąlyga pakartotiniam siuntimui netaikoma) ir šiame punkte nurodytas siuntos grąžinimo išlaidas.",
+     " Pirkėjui atsisakius pakartotinio siuntimo arba per 14 (keturiolika) dienų nuo Pardavėjo pranešimo nesusitarus dėl jo, užsakymas atšaukiamas, o Pirkėjui grąžinama už prekes ir pristatymą sumokėta suma, atskaičius 6.",
+     "10 punkte nurodytas siuntos grąžinimo išlaidas.",
+     " Pinigai grąžinami tuo pačiu būdu, kuriuo buvo sumokėta, ne vėliau kaip per 14 (keturiolika) dienų nuo siuntos grąžinimo Pardavėjui."
+    ],
+    "head": "Pirkimo sąlygos ir taisyklės Trumpai: Šios taisyklės nustato Pirkėjo ir Pardavėjo teises bei pareigas perkant petshop.lt el. parduotuvėje. Pateikdami užsakymą sutinkate su šiomis sąlygomis. Turite klausimų? Susisiekite su mumis. 1. Bendrosios nuostatos 1.1. Šios prekių pirkimo – pardavimo taisyklės (toliau – Taisyklės) yra Šalims privalomas teisinis dokumentas, kuris nustato Pirkėjo ir Pardavėjo (UAB Avesa, įm.k. 302568442, reg. adresas Liucionių g. 46, Liucionių k., Nemenčinės sen., Vilniaus r., 15166, parduodanti prekes puslapyje petshop.lt, toliau tekste - Pardavėjas) teises, pareigas ir at"
+   },
+   "privatumo-politika": {
+    "id": 34525,
+    "title": "Privatumo politika",
+    "mod": "2026-08-31 10:15:13",
+    "len": 5717,
+    "hits": [
+     " Atsisakyti galima bet kada, paspaudus atsisakymo nuorodą kiekvieno laiško apačioje."
+    ],
+    "head": "Privatumo politika Trumpai: Šioje politikoje paaiškiname, kokius duomenis renkame, kokiais tikslais juos naudojame ir kokias teises turite. Duomenų valdytojas – UAB „Avesa\". Klausimų turite? Susisiekite su mumis. 1. Bendrosios nuostatos 1.1. UAB „Avesa\" (toliau – „Bendrovė\") gerbia visų savo pirkėjų, potencialių klientų bei el. parduotuvės petshop.lt (toliau – „Svetainė\") lankytojų (toliau – „Klientai\") teisę į privatumą ir įsipareigoja užtikrinti pateiktų bei gautų asmens duomenų apsaugą. 1.2. Ši privatumo politika reglamentuoja pagrindinius Bendrovės Klientų asmens duomenų rinkimo, tvarkymo "
+   },
+   "kontaktai": {
+    "id": 34521,
+    "title": "Kontaktai",
+    "mod": "2026-07-08 14:21:16",
+    "len": 722,
+    "hits": [],
+    "head": "Kontaktai Turite klausimų dėl užsakymo, pristatymo ar prekės pasirinkimo? Parašykite mums – atsakysime el. paštu. +370 681 87787 Darbo laikas:I–V 09:00–18:00VI 10:00–15:00 Užklausas siųskite per kontaktinę formą – atsakome el. paštu. Rekvizitai Įmonės pavadinimas: UAB „Avesa\" Įmonės kodas: 302568442 PVM kodas: LT100005768519 Juridinis adresas:Liucionių g. 46, Liucionių k., Nemenčinės sen., Vilniaus r., LT-15166 Susisiekite su mumis Please enable JavaScript in your browser to complete this form.Please enable JavaScript in your browser to complete this form.Vardas * El. tvarkymas paštas El. pašt"
+   }
+  }
+ },
+ "v": "dep-154319",
+ "kurimas": 200,
+ "sid": 6861,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
