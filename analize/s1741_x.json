@@ -1,0 +1,45 @@
+{
+ "1": {
+  "v": "S1741x",
+  "aktyvus": [],
+  "ht": {
+   ".htaccess": [
+    "1: # BEGIN PS ModSecurity AI botai (S1718, serveriai.lt 2026-09-25): praleisti ChatGPT-User/GPTBot/ClaudeBot",
+    "8: # BEGIN Petshop Cache (H089, 2026-08-19)",
+    "17: ExpiresByType image/webp \"access plus 1 year\"",
+    "22: <FilesMatch \"\\.(css|js|mjs|woff2?|ttf|otf|eot|svg|jpe?g|png|gif|webp|avif|ico)$\">",
+    "48: # BEGIN PS Botu uztvara (S1723, 2026-09-26): filtru/add-to-cart GET be ps_js slapuko -> 403 be PHP (botu sargo taisykle Apache lygyje)",
+    "61: # BEGIN WPSuperCache",
+    "98: # BEGIN WordPress",
+    "114: # BEGIN Petshop Saugumas (S1678)"
+   ],
+   "wp-content/uploads/.htaccess": [
+    "1: # BEGIN Petshop WebP (S1567, 2026-09-01)",
+    "2: # Narsyklei, priimanciai image/webp, vietoje x.jpg|png atiduodamas salia esantis x.webp (jei yra).",
+    "6: RewriteCond %{HTTP_ACCEPT} image/webp",
+    "8: RewriteCond %1.webp -f",
+    "9: RewriteRule ^(.+)\\.(jpe?g|png)$ $1.webp [T=image/webp,L]",
+    "16: AddType image/webp .webp",
+    "17: # END Petshop WebP",
+    "19: # BEGIN Petshop Saugumas uploads (S1719, 2026-09-25)"
+   ]
+  },
+  "logo_webp_failai": [
+   "logo.jpg"
+  ],
+  "wp_content_dirs": [
+   "cache",
+   "uploads"
+  ],
+  "laiskai": [
+   "relaunch-maistas-sunims-v1.jpg"
+  ]
+ },
+ "v": "dep-092441",
+ "kurimas": 200,
+ "sid": 6847,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
