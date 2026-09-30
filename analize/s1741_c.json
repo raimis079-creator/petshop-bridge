@@ -1,0 +1,151 @@
+{
+ "1": {
+  "v": "S1741c",
+  "faze": "1",
+  "funkcija": "1108 laisko_dalis",
+  "eilutes": [
+   "1063: \t}",
+   "1064: ",
+   "1065: \t/**",
+   "1066: \t * PARUOŠIMAS BE LAIŠKO (H260): Venipak registracija (jei reikia ir dar nėra),",
+   "1067: \t * laiško dalis (kelias + lentelė), lipduko failas. Partija NEUŽDAROMA.",
+   "1068: \t * Grąžina array( ok, klaida, html, priedas, pack, part, eilutes ).",
+   "1069: \t */",
+   "1070: \tpublic static function paruosti( $pid, $dezes = 0 ) {",
+   "1071: \t\tglobal $wpdb;",
+   "1072: \t\t$part = $wpdb->get_row( $wpdb->prepare( 'SELECT * FROM ' . self::t_partijos() . ' WHERE id=%d', $pid ) );",
+   "1073: \t\tif ( ! $part || 'kaupiama' !== $part->busena ) { return array( 'ok' => false, 'klaida' => 'partija neatvira' ); }",
+   "1074: \t\t$eil = self::partijos_eilutes( $pid );",
+   "1075: \t\tif ( ! $eil ) { return array( 'ok' => false, 'klaida' => 'partija tuščia' ); }",
+   "1076: \t\tif ( $dezes > 0 && empty( $part->venipak_pack ) ) { // dėžių skaičius iš kortelės — kol siunta neregistruota",
+   "1077: \t\t\t$wpdb->update( self::t_partijos(), array( 'dezes' => max( 1, min( 20, (int) $dezes ) ) ), array( 'id' => $pid ) );",
+   "1078: \t\t\t$part->dezes = max( 1, min( 20, (int) $dezes ) );",
+   "1079: \t\t}",
+   "1080: ",
+   "1081: \t\t$pack = (string) $part->venipak_pack; // jau registruota anksčiau (pvz. nepavykęs laiškas) — nekartojam",
+   "1082: \t\t$reikia_vp = in_array( $part->pristatymas, array( 'kurjeris', 'pastomatas' ), true ) && ! self::rankinis( $part->tiekejas );",
+   "1083: \t\tif ( $reikia_vp && ! $pack ) {",
+   "1084: \t\t\t$vp = self::venipak_registruoti( $part );",
+   "1085: \t\t\tif ( ! $vp['ok'] ) { return array( 'ok' => false, 'klaida' => 'Venipak: ' . $vp['klaida'] ); }",
+   "1086: \t\t\t$wpdb->update( self::t_partijos(), array( 'venipak_pack' => $vp['pack'], 'venipak_manifest' => $vp['manifest'] ), array( 'id' => $pid ) );",
+   "1087: \t\t\t$pack = $vp['pack']; $part->venipak_pack = $pack;",
+   "1088: \t\t}",
+   "1089: ",
+   "1090: \t\t$html = self::laisko_dalis( $part, $eil, $pack );",
+   "1091: ",
+   "1092: \t\t$priedas = '';",
+   "1093: \t\tif ( $pack ) {",
+   "1094: \t\t\t$pdf = self::venipak_lipdukas( $pack );",
+   "1095: \t\t\tif ( $pdf ) {",
+   "1096: \t\t\t\t$up = wp_upload_dir(); $kel = trailingslashit( $up['basedir'] ) . 'ps-lipdukai'; wp_mkdir_p( $kel );",
+   "1097: \t\t\t\t$fail = $kel . '/lipdukas-' . str_replace( ',', '_', $pack ) . '.pdf';",
+   "1098: \t\t\t\tif ( file_put_contents( $fail, $pdf ) ) { $priedas = $fail; }",
+   "1099: \t\t\t}",
+   "1100: \t\t}",
+   "1101: \t\treturn array( 'ok' => true, 'klaida' => '', 'html' => $html, 'priedas' => $priedas, 'pack' => $pack, 'part' => $part, 'eilutes' => $eil );",
+   "1102: \t}",
+   "1103: ",
+   "1104: \t/**",
+   "1105: \t * Laiško dalis „UAB Avesa\" (H261) — antraštė + lentelė kaip klientų + lipdukų eilutė.",
+   "1106: \t * Naudoja ir dropship laiškas, ir savas Tiekimo laiškas — VIENA tiesos vieta.",
+   "1107: \t */",
+   "1108: \tpublic static function laisko_dalis( $part, $eil, $pack = '' ) {",
+   "1109: \t\t$h = '<p style=\"margin:16px 0 6px\"><b>UAB Avesa, Liucionių g. 46</b> · užsakymo nr. <b>TIEK-' . (int) $part->id . '</b></p>'; // v1.11.1: = lipduko Client shipment No.",
+   "1110: \t\t$h .= '<table border=\"1\" cellpadding=\"6\" cellspacing=\"0\" style=\"border-collapse:collapse;font-family:Arial;font-size:13px;\">';",
+   "1111: \t\t// v1.11 (S1736): antraštė, kodas atskirai, kiekis skaičiumi; DP pakas → bazinė × kiekis (Dropship::tiekejui).",
+   "1112: \t\t$h .= '<tr><th align=\"left\" style=\"background:#f0f0f0\">Prekė</th><th align=\"left\" style=\"background:#f0f0f0\">Kodas</th><th align=\"center\" style=\"background:#f0f0f0\">Kiekis</th></tr>';",
+   "1113: \t\t$per_ds = class_exists( 'Petshop_AV_Dropship' ) && method_exists( 'Petshop_AV_Dropship', 'tiekejui' );",
+   "1114: \t\tforeach ( $eil as $e ) {",
+   "1115: \t\t\tif ( $per_ds ) {",
+   "1116: \t\t\t\t$t = Petshop_AV_Dropship::tiekejui( $e->product_id, $e->qty, (string) $part->tiekejas );",
+   "1117: \t\t\t} else {",
+   "1118: \t\t\t\t$pr = wc_get_product( $e->product_id );",
+   "1119: \t\t\t\t$t  = array( 'pav' => $pr ? $pr->get_name() : '#' . $e->product_id, 'kodas' => $pr ? (string) $pr->get_sku() : '', 'qty' => (int) $e->qty );",
+   "1120: \t\t\t}",
+   "1121: \t\t\t$h .= '<tr><td>' . esc_html( $t['pav'] ) . '</td><td style=\"white-space:nowrap\">' . esc_html( $t['kodas'] ) . '</td><td align=\"center\">' . (int) $t['qty'] . '</td></tr>';",
+   "1122: \t\t}"
+  ],
+  "lenteles": [
+   [
+    "gaj6_ps_tiekimas"
+   ],
+   [
+    "gaj6_ps_tiekimas_eil"
+   ]
+  ]
+ },
+ "2": {
+  "v": "S1741c",
+  "faze": "2",
+  "atsaukti": [
+   {
+    "id": "36573",
+    "status": "wc-cancelled",
+    "s": "79.90",
+    "pm": "paysera",
+    "d": "2026-09-29 06:32:43",
+    "nr": "1222",
+    "veliau_apmoketi": [],
+    "pastabos": [
+     "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
+     "Email \"Atšauktas užsakymas\" sent.",
+     "Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
+    ]
+   },
+   {
+    "id": "36576",
+    "status": "wc-cancelled",
+    "s": "32.49",
+    "pm": "bacs",
+    "d": "2026-09-29 08:52:30",
+    "nr": "1225",
+    "veliau_apmoketi": [
+     {
+      "id": "36577",
+      "status": "wc-completed",
+      "s": "32.49",
+      "d": "2026-09-29 09:04:16",
+      "nr": "1226"
+     }
+    ],
+    "pastabos": [
+     "Stock hold of 90 minutes applied to: <br>- Josidog Regular 15 kg - sausas maistas šunims (JOS0622) &times; 1",
+     "Svečio užsakymas priskirtas esamai paskyrai #508 pagal el. paštą (S1690).",
+     "Vykdymas: DS — VF 1 vnt (1 siunta(-os)) · dropship pirma",
+     "Likutis sumažintas: Josidog Regular 15 kg - sausas maistas šunims (81&rarr;80)",
+     "Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
+     "Email \"Naujas užsakymas\" sent.",
+     "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
+     "Likutis padidintas: Josidog Regular 15 kg - sausas maistas šunims (80&rarr;81)",
+     "Užsakymo statusas pakeistas iš Sustabdytas į Atšauktas.",
+     "Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36577 (S1676)."
+    ]
+   },
+   {
+    "id": "36578",
+    "status": "wc-cancelled",
+    "s": "48.02",
+    "pm": "paysera",
+    "d": "2026-09-29 11:49:51",
+    "nr": "1227",
+    "veliau_apmoketi": [],
+    "pastabos": [
+     "Stock hold of 90 minutes applied to: <br>- Džiovinti galvijų skrandžiai, 100 g (sku166417363216209651) &times; 17",
+     "Vykdymas: MAIN — AV 17 vnt (1 siunta(-os)) · dropship pirma",
+     "Paysera: Neapmokėto užsakymo būsena",
+     "Likutis sumažintas: Džiovinti galvijų skrandžiai, 100 g (48&rarr;48)",
+     "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
+     "Email \"Atšauktas užsakymas\" sent.",
+     "Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
+    ]
+   }
+  ]
+ },
+ "v": "dep-065224",
+ "kurimas": 200,
+ "sid": 6821,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
