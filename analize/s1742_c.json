@@ -1,0 +1,98 @@
+{
+ "1": {
+  "v": "S1742c",
+  "g": {
+   "/inc/functions/function-global.php": [
+    "433: function flatsome_get_payment_icons_list() {",
+    "434: return apply_filters( 'flatsome_payment_icons', array("
+   ],
+   "/inc/functions/function-theme-mods.php": [
+    "29: add_filter( 'theme_mod_payment_icons_custom', 'flatsome_theme_mod_fix' );"
+   ],
+   "/inc/functions/function-deprecated.php": [
+    "179: 'payment_icons'                  => array( 'visa', 'paypal', 'stripe', 'mastercard', 'cashondelivery' ),"
+   ],
+   "/inc/functions/function-upgrade.php": [
+    "44: if(!flatsome_is_upgrading()) set_theme_mod('payment_icons_placement', 'footer');"
+   ],
+   "/inc/admin/admin-bar.php": [
+    "269: 'id' => 'options_shop_payment_icons',",
+    "271: 'href' =>  $optionUrl_section.'payment-icons'"
+   ],
+   "/inc/admin/envato_setup/presets/layout-agency.php": [
+    "3: return array('type_headings' => array('font-family'=> 'Raleway'), 'type_texts' => array('font-family'=> 'Open Sans'), 'type_nav' => array('font-family'=> 'Raleway','variant' => 'regular'), \"blog_heade"
+   ],
+   "/inc/admin/envato_setup/presets/header-reset.php": [
+    "3: return array('type_headings' => array('font-family'=> 'Raleway'), 'type_texts' => array('font-family'=> 'Open Sans'), 'type_nav' => array('font-family'=> 'Raleway','variant' => 'regular'), \"blog_heade"
+   ],
+   "/inc/admin/options/shop/options-shop-payments-icons.php": [
+    "4: Flatsome_Option::add_section( 'payment-icons', array(",
+    "6: 'description' => 'Note: This is not where you select payment methods. These are graphical icons that show which payment methods your shop supports. You can add these anywhere by using the shortcode [u",
+    "12: 'settings'  => 'payment_icons',",
+    "14: 'section'   => 'payment-icons',",
+    "18: 'choices'   => flatsome_get_payment_icons_list(),",
+    "23: 'settings'  => 'payment_icons_custom',",
+    "25: 'section'   => 'payment-icons',",
+    "32: 'settings'    => 'payment_icons_placement',",
+    "35: 'section'     => 'payment-icons',"
+   ],
+   "/inc/admin/options/shop/options-shop.php": [
+    "113: $wp_customize->selective_refresh->add_partial( 'payment-icons', array(",
+    "114: 'selector' => '.payment-icons',",
+    "115: 'settings' => array('payment_icons', 'payment_icons_custom'),",
+    "118: return do_shortcode('[ux_payment_icons]');"
+   ],
+   "/inc/classes/class-flatsome-icon.php": [
+    "33: get_template_part( 'assets/img/payment-icons/icon', $icon_name . '.svg' );"
+   ],
+   "/inc/init.php": [
+    "135: require get_template_directory() . '/inc/shortcodes/ux_payment_icons.php';"
+   ],
+   "/inc/shortcodes/ux_payment_icons.php": [
+    "3: function ux_payment_icons( $atts ) {",
+    "8: 'icons'      => get_theme_mod( 'payment_icons', array( 'visa', 'paypal', 'stripe', 'mastercard', 'cashondelivery' ) ),",
+    "9: 'custom'     => get_theme_mod( 'payment_icons_custom' ),",
+    "14: $classes   = array( 'payment-icons', 'inline-block' );",
+    "50: $payment_icons = flatsome_get_payment_icons_list();",
+    "58: 'class' => 'payment-icon',",
+    "61: if ( array_key_exists( $value, $payment_icons ) ) {",
+    "63: echo '<span class=\"screen-reader-text\">' . esc_html( $payment_icons[ $value ] ) . '</span>';",
+    "76: add_shortcode( 'ux_payment_icons', 'ux_payment_icons' );"
+   ],
+   "/inc/builder/shortcodes.php": [
+    "73: require_once __DIR__ . '/shortcodes/ux_payment_icons.php';"
+   ],
+   "/inc/builder/shortcodes/ux_payment_icons.php": [
+    "11: add_ux_builder_shortcode( 'ux_payment_icons', array(",
+    "14: 'thumbnail' => flatsome_ux_builder_thumbnail( 'payment-icons' ),",
+    "21: 'default' => get_theme_mod( 'payment_icons', array( 'visa', 'paypal', 'stripe', 'mastercard', 'cashondelivery' ) ),",
+    "26: 'options'     => flatsome_get_payment_icons_list(),"
+   ],
+   "/inc/woocommerce/structure-wc-global.php": [
+    "490: function flatsome_footer_payment_icons() {",
+    "491: $icons = get_theme_mod( 'payment_icons_placement' );",
+    "493: echo do_shortcode( '[ux_payment_icons]' );",
+    "496: add_action( 'flatsome_absolute_footer_secondary', 'flatsome_footer_payment_icons' );"
+   ],
+   "/inc/woocommerce/structure-wc-cart.php": [
+    "21: $icons = get_theme_mod('payment_icons_placement');",
+    "25: if(is_array($icons) && in_array('cart', $icons)) echo do_shortcode('[ux_payment_icons]');"
+   ]
+  },
+  "mods": {
+   "footer_bottom_style": "(nenust.)",
+   "footer_bottom_color": "(nenust.)",
+   "footer_bottom_text": "(nenust.)",
+   "payment_icons_custom": "(nenust.)",
+   "footer_bottom_align": "(nenust.)"
+  },
+  "custom_css_absolute": []
+ },
+ "v": "dep-155555",
+ "kurimas": 200,
+ "sid": 6863,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
