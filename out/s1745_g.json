@@ -1,74 +1,29 @@
 {
- "1": {
+ "2": {
   "v": "S1745g",
-  "faze": "1",
-  "SENA": {
-   "praleisti_7": {
-    "679": "nesiusti:already_repurchased",
-    "990": "nesiusti:already_repurchased",
-    "991": "nesiusti:already_repurchased",
-    "992": "nesiusti:already_repurchased",
-    "1082": "nesiusti:already_repurchased",
-    "1083": "nesiusti:already_repurchased",
-    "1084": "nesiusti:already_repurchased"
-   },
-   "ateinantys": {
-    "2026-10-07 u3072 p17400": "nesiusti:already_repurchased",
-    "2026-10-07 u3072 p17397": "nesiusti:already_repurchased",
-    "2026-10-07 u3072 p17394": "nesiusti:already_repurchased",
-    "2026-10-07 u5861 p35330": "nesiusti:already_repurchased",
-    "2026-10-09 u5792 p21671": "nesiusti:already_repurchased",
-    "2026-10-09 u4528 p18599": "nesiusti:already_repurchased",
-    "2026-10-12 u5878 p21354": "nesiusti:already_repurchased",
-    "2026-10-12 u5878 p21351": "nesiusti:already_repurchased",
-    "2026-10-12 u5881 p18068": "nesiusti:already_repurchased",
-    "2026-10-12 u5881 p18071": "nesiusti:already_repurchased",
-    "2026-10-12 u5881 p21677": "nesiusti:already_repurchased",
-    "2026-10-12 u5881 p21331": "nesiusti:already_repurchased",
-    "2026-10-12 u5881 p21671": "nesiusti:already_repurchased",
-    "2026-10-12 u5882 p21856": "nesiusti:already_repurchased",
-    "2026-10-12 u5882 p21858": "nesiusti:already_repurchased",
-    "2026-10-12 u5882 p21740": "nesiusti:already_repurchased",
-    "2026-10-12 u5882 p20435": "nesiusti:already_repurchased",
-    "2026-10-12 u5882 p20481": "nesiusti:already_repurchased"
-   },
-   "po_14d_eileje": {
-    "nesiusti:soft_optout_nezinomas": 24,
-    "SIUSTI": 72,
-    "nesiusti:holdout_10": 16,
-    "nesiusti:similar_optout": 7
-   },
-   "po_14d_rytoj": [
-    "1055 2026-09-29 16:06 nesiusti:soft_optout_nezinomas",
-    "1049 2026-09-29 16:06 nesiusti:soft_optout_nezinomas",
-    "1047 2026-09-29 16:06 nesiusti:soft_optout_nezinomas",
-    "1038 2026-09-29 16:06 nesiusti:soft_optout_nezinomas",
-    "1035 2026-09-29 16:06 nesiusti:soft_optout_nezinomas",
-    "1032 2026-09-29 16:06 nesiusti:soft_optout_nezinomas",
-    "1030 2026-09-29 16:06 nesiusti:soft_optout_nezinomas",
-    "1027 2026-09-29 16:06 nesiusti:soft_optout_nezinomas",
-    "1020 2026-09-29 16:06 nesiusti:soft_optout_nezinomas",
-    "1078 2026-09-30 08:06 nesiusti:soft_optout_nezinomas",
-    "1062 2026-09-30 08:06 nesiusti:soft_optout_nezinomas",
-    "1057 2026-09-30 08:06 nesiusti:soft_optout_nezinomas",
-    "1046 2026-09-30 08:06 nesiusti:soft_optout_nezinomas",
-    "1080 2026-10-01 09:06 nesiusti:soft_optout_nezinomas",
-    "1059 2026-10-01 09:06 nesiusti:soft_optout_nezinomas",
-    "1050 2026-10-01 09:06 nesiusti:soft_optout_nezinomas",
-    "1085 2026-10-01 14:36 nesiusti:soft_optout_nezinomas",
-    "1101 2026-10-02 08:06 SIUSTI",
-    "1099 2026-10-02 08:06 nesiusti:soft_optout_nezinomas",
-    "1077 2026-10-02 08:06 SIUSTI",
-    "1074 2026-10-02 08:06 nesiusti:holdout_10",
-    "1067 2026-10-02 08:06 SIUSTI",
-    "1105 2026-10-02 15:06 nesiusti:holdout_10",
-    "1100 2026-10-02 15:06 nesiusti:similar_optout",
-    "1098 2026-10-02 15:06 SIUSTI",
-    "1095 2026-10-02 15:06 nesiusti:holdout_10",
-    "1103 2026-10-02 15:29 SIUSTI"
-   ]
+  "faze": "2",
+  "irasyta": 8630,
+  "md5": "fd6b942dc787ab71807313410ac3ab3d"
+ },
+ "3": {
+  "v": "S1745g",
+  "faze": "3",
+  "failas": "fd6b942dc787ab71807313410ac3ab3d",
+  "busena": {
+   "refill": true,
+   "vartai": true,
+   "v": "1.0.0"
   },
-  "NAUJA": {
+  "filtrai": [
+   "10 Petshop_Post_Purchase::eligibility",
+   "10 Petshop_Pakartojimo_Grandine::refill",
+   "20 Petshop_Pakartojimo_Grandine::vartai",
+   "25 Petshop_Pakartojimo_Grandine::po_14d",
+   "30 Petshop_Pakartoti::vartai",
+   "30 Petshop_Sugrazinimas::vartai"
+  ],
+  "svetaine": 200,
+  "NAUJA_GYVAI": {
    "praleisti_7": {
     "679": "SIUSTI",
     "990": "SIUSTI",
@@ -135,9 +90,9 @@
    ]
   }
  },
- "v": "dep-185451",
+ "v": "dep-185627",
  "kurimas": 200,
- "sid": 6918,
+ "sid": 6919,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
