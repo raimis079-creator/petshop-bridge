@@ -1,35 +1,15 @@
 {
- "8": {
+ "4": {
   "v": "S1745t",
-  "faze": "8",
-  "cron_eileje_pries": 0,
-  "suplanuota": "18:09:46",
-  "uzs": [
-   36612,
-   "1253",
-   "on-hold",
-   "proforma"
-  ],
-  "laiskai": [
-   {
-    "t": "21:09:43",
-    "to": "uzsakymai@petshop.lt",
-    "subject": "Naujas užsakymas Nr. 1253 — 2026-10-01",
-    "priedai": 0,
-    "iban": false
-   },
-   {
-    "t": "21:09:43",
-    "to": "terra@gyvunai.lt",
-    "subject": "Jūsų užsakymas Nr. 1253 gautas - Petshop.lt",
-    "priedai": 1,
-    "iban": true
-   }
+  "faze": "4",
+  "po": [
+   "cancelled",
+   13
   ]
  },
- "v": "dep-180835",
+ "v": "dep-181006",
  "kurimas": 200,
- "sid": 6910,
+ "sid": 6911,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
