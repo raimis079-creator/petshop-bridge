@@ -1,52 +1,17 @@
 {
- "4": {
+ "6": {
   "v": "S1745t",
-  "faze": "4",
-  "po": [
-   "cancelled",
-   13
-  ]
+  "faze": "6",
+  "kontekstas": [
+   "add_action( 'woocommerce_checkout_order_created', function( $order ) {\n    $doc_type = petshop_get_invoice_document_type( $order );",
+   "add_action( 'petshop_send_order_received_email', function( $order_id ) {\n    $order = wc_get_order( $order_id );",
+   "->get_payment_method()"
+  ],
+  "eilute": 473
  },
- "5": {
-  "v": "S1745t",
-  "faze": "5",
-  "iban_vietos": {
-   "mu-plugins/petshop-bacs-priminimas.php": [
-    "*   v1.0.2: Raimio tekstas (S1676): trumpesnis, data lietuviškai, IBAN+bankas viena eilute."
-   ],
-   "mu-plugins/petshop-darbalaukis.php": [
-    "const PAKART_BANKAS = 'UAB Avesa · AB Swedbank · LT127300010124940593'; // v3.23: pavedimo rekvizitai (kaip temos functions.php / I",
-    "iimant grynaisiais arba iš anksto pavedimu: UAB Avesa · AB Swedbank · LT127300010124940593, paskirtis „Užsakymas Nr. {nr}“.',"
-   ],
-   "themes/flatsome-child/woocommerce-pip/invoice.php": [
-    "'vat'     => 'LT100005768519',",
-    "'iban'    => 'LT127300010124940593',"
-   ],
-   "themes/flatsome-child/woocommerce-delivery-notes/base.php": [
-    "PVM kodas: LT100005768519<br>",
-    "ps-doc-footer\">UAB Avesa &middot; Įmonės kodas 302568442 &middot; PVM LT100005768519 &middot; Liucionių g. 46, Vilniaus r., LT-15166 &middot; terra@pe",
-    "PVM kodas: LT100005768519<br>"
-   ],
-   "themes/flatsome-child/functions.php": [
-    "'<tr><td style=\"padding:3px 0;color:#666;\">Šąskaita:</td><td><strong>LT127300010124940593</strong></td></tr>'"
-   ]
-  },
-  "iban_snippetai": [
-   {
-    "id": "6906",
-    "name": "TEMP PS dep-180112",
-    "active": "0"
-   },
-   {
-    "id": "6907",
-    "name": "TEMP PS dep-180252",
-    "active": "1"
-   }
-  ]
- },
- "v": "dep-180252",
+ "v": "dep-180442",
  "kurimas": 200,
- "sid": 6907,
+ "sid": 6908,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
