@@ -1,39 +1,52 @@
 {
- "3": {
+ "4": {
   "v": "S1745t",
-  "faze": "3",
-  "uzs": [
-   "1252",
-   "on-hold"
-  ],
-  "laiskai": [
-   {
-    "t": "21:00:44",
-    "to": "uzsakymai@petshop.lt",
-    "subject": "Naujas užsakymas Nr. 1252 — 2026-10-01",
-    "is": [
-     "class-wc-email.php:1236",
-     "class-wc-email.php:1173",
-     "class-wc-email-new-order.php:127",
-     "class-wc-emails.php:220",
-     "class-wc-order.php:477"
-    ]
-   }
-  ],
-  "pastabos": [
-   "21:00:43 TESTAS S1745 (Raimio prašymu 10-01): tikrinama, kokie laiškai išeina pavedimo užsakymui. NEAPDOROTI — bus atšauktas tyli",
-   "21:00:43 Vykdymas: MAIN — AV 1 vnt (1 siunta(-os)) · dropship pirma",
-   "21:00:43 Likutis sumažintas: Sausainiai šuniukams, kauliuko formos, Bones Puppy Mix, 100 g (13&rarr;13)",
-   "21:00:44 Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
-   "21:00:44 Email \"Naujas užsakymas\" sent."
-  ],
-  "padekos_puslapis": "Užsakymo informacija Produktas Viso Sausainiai šuniukams, kauliuko formos, Bones Puppy Mix, 100 g &times;&nbsp;1 0,86&nbsp;&euro; Suma: 0,86&nbsp;&euro; Viso: 0,86&nbsp;&euro; (įskaičiuota 0,15&nbsp;&euro; PVM) Mokėjimo būdas: Bankinis pavedimas Pirkėjo adresas TESTAS Raimio prašymu S1745Liucionių g. 46Vilnius01100 +37060000000 terra@gyvunai.lt Spausdinti sąskaitą Dėkojame. Jūsų užsakymas priimtas. Užsakymo numeris: 1252 Data: 2026-10-01 Viso: 0,86&nbsp;&euro; Mokėjimo būdas: Bankinis pavedimas",
-  "padekos_yra_iban": false,
-  "jobs": []
+  "faze": "4",
+  "po": [
+   "cancelled",
+   13
+  ]
  },
- "v": "dep-180112",
+ "5": {
+  "v": "S1745t",
+  "faze": "5",
+  "iban_vietos": {
+   "mu-plugins/petshop-bacs-priminimas.php": [
+    "*   v1.0.2: Raimio tekstas (S1676): trumpesnis, data lietuviškai, IBAN+bankas viena eilute."
+   ],
+   "mu-plugins/petshop-darbalaukis.php": [
+    "const PAKART_BANKAS = 'UAB Avesa · AB Swedbank · LT127300010124940593'; // v3.23: pavedimo rekvizitai (kaip temos functions.php / I",
+    "iimant grynaisiais arba iš anksto pavedimu: UAB Avesa · AB Swedbank · LT127300010124940593, paskirtis „Užsakymas Nr. {nr}“.',"
+   ],
+   "themes/flatsome-child/woocommerce-pip/invoice.php": [
+    "'vat'     => 'LT100005768519',",
+    "'iban'    => 'LT127300010124940593',"
+   ],
+   "themes/flatsome-child/woocommerce-delivery-notes/base.php": [
+    "PVM kodas: LT100005768519<br>",
+    "ps-doc-footer\">UAB Avesa &middot; Įmonės kodas 302568442 &middot; PVM LT100005768519 &middot; Liucionių g. 46, Vilniaus r., LT-15166 &middot; terra@pe",
+    "PVM kodas: LT100005768519<br>"
+   ],
+   "themes/flatsome-child/functions.php": [
+    "'<tr><td style=\"padding:3px 0;color:#666;\">Šąskaita:</td><td><strong>LT127300010124940593</strong></td></tr>'"
+   ]
+  },
+  "iban_snippetai": [
+   {
+    "id": "6906",
+    "name": "TEMP PS dep-180112",
+    "active": "0"
+   },
+   {
+    "id": "6907",
+    "name": "TEMP PS dep-180252",
+    "active": "1"
+   }
+  ]
+ },
+ "v": "dep-180252",
  "kurimas": 200,
- "sid": 6906,
+ "sid": 6907,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
