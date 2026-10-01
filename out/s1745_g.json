@@ -1,98 +1,49 @@
 {
- "2": {
+ "4": {
   "v": "S1745g",
-  "faze": "2",
-  "irasyta": 8630,
-  "md5": "fd6b942dc787ab71807313410ac3ab3d"
+  "faze": "4",
+  "grazinta_i_eile": 7,
+  "dabar": [
+   {
+    "id": "679",
+    "status": "pending",
+    "scheduled_at": "2026-10-02 06:00:00"
+   },
+   {
+    "id": "990",
+    "status": "pending",
+    "scheduled_at": "2026-10-02 06:00:00"
+   },
+   {
+    "id": "991",
+    "status": "pending",
+    "scheduled_at": "2026-10-02 06:00:00"
+   },
+   {
+    "id": "992",
+    "status": "pending",
+    "scheduled_at": "2026-10-02 06:00:00"
+   },
+   {
+    "id": "1082",
+    "status": "pending",
+    "scheduled_at": "2026-10-02 06:00:00"
+   },
+   {
+    "id": "1083",
+    "status": "pending",
+    "scheduled_at": "2026-10-02 06:00:00"
+   },
+   {
+    "id": "1084",
+    "status": "pending",
+    "scheduled_at": "2026-10-02 06:00:00"
+   }
+  ]
  },
- "3": {
-  "v": "S1745g",
-  "faze": "3",
-  "failas": "fd6b942dc787ab71807313410ac3ab3d",
-  "busena": {
-   "refill": true,
-   "vartai": true,
-   "v": "1.0.0"
-  },
-  "filtrai": [
-   "10 Petshop_Post_Purchase::eligibility",
-   "10 Petshop_Pakartojimo_Grandine::refill",
-   "20 Petshop_Pakartojimo_Grandine::vartai",
-   "25 Petshop_Pakartojimo_Grandine::po_14d",
-   "30 Petshop_Pakartoti::vartai",
-   "30 Petshop_Sugrazinimas::vartai"
-  ],
-  "svetaine": 200,
-  "NAUJA_GYVAI": {
-   "praleisti_7": {
-    "679": "SIUSTI",
-    "990": "SIUSTI",
-    "991": "SIUSTI",
-    "992": "SIUSTI",
-    "1082": "SIUSTI",
-    "1083": "SIUSTI",
-    "1084": "SIUSTI"
-   },
-   "ateinantys": {
-    "2026-10-07 u3072 p17400": "SIUSTI",
-    "2026-10-07 u3072 p17397": "SIUSTI",
-    "2026-10-07 u3072 p17394": "SIUSTI",
-    "2026-10-07 u5861 p35330": "SIUSTI",
-    "2026-10-09 u5792 p21671": "SIUSTI",
-    "2026-10-09 u4528 p18599": "SIUSTI",
-    "2026-10-12 u5878 p21354": "SIUSTI",
-    "2026-10-12 u5878 p21351": "SIUSTI",
-    "2026-10-12 u5881 p18068": "SIUSTI",
-    "2026-10-12 u5881 p18071": "SIUSTI",
-    "2026-10-12 u5881 p21677": "SIUSTI",
-    "2026-10-12 u5881 p21331": "SIUSTI",
-    "2026-10-12 u5881 p21671": "SIUSTI",
-    "2026-10-12 u5882 p21856": "SIUSTI",
-    "2026-10-12 u5882 p21858": "SIUSTI",
-    "2026-10-12 u5882 p21740": "SIUSTI",
-    "2026-10-12 u5882 p20435": "SIUSTI",
-    "2026-10-12 u5882 p20481": "SIUSTI"
-   },
-   "po_14d_eileje": {
-    "nesiusti:grandine_maistas": 66,
-    "SIUSTI": 41,
-    "nesiusti:jau_pirko_po": 1,
-    "nesiusti:similar_optout": 11
-   },
-   "po_14d_rytoj": [
-    "1055 2026-09-29 16:06 nesiusti:grandine_maistas",
-    "1049 2026-09-29 16:06 nesiusti:grandine_maistas",
-    "1047 2026-09-29 16:06 SIUSTI",
-    "1038 2026-09-29 16:06 nesiusti:grandine_maistas",
-    "1035 2026-09-29 16:06 nesiusti:grandine_maistas",
-    "1032 2026-09-29 16:06 SIUSTI",
-    "1030 2026-09-29 16:06 nesiusti:grandine_maistas",
-    "1027 2026-09-29 16:06 nesiusti:grandine_maistas",
-    "1020 2026-09-29 16:06 nesiusti:grandine_maistas",
-    "1078 2026-09-30 08:06 SIUSTI",
-    "1062 2026-09-30 08:06 SIUSTI",
-    "1057 2026-09-30 08:06 SIUSTI",
-    "1046 2026-09-30 08:06 nesiusti:grandine_maistas",
-    "1080 2026-10-01 09:06 SIUSTI",
-    "1059 2026-10-01 09:06 SIUSTI",
-    "1050 2026-10-01 09:06 nesiusti:grandine_maistas",
-    "1085 2026-10-01 14:36 SIUSTI",
-    "1101 2026-10-02 08:06 SIUSTI",
-    "1099 2026-10-02 08:06 SIUSTI",
-    "1077 2026-10-02 08:06 nesiusti:jau_pirko_po",
-    "1074 2026-10-02 08:06 SIUSTI",
-    "1067 2026-10-02 08:06 nesiusti:grandine_maistas",
-    "1105 2026-10-02 15:06 nesiusti:similar_optout",
-    "1100 2026-10-02 15:06 nesiusti:similar_optout",
-    "1098 2026-10-02 15:06 nesiusti:grandine_maistas",
-    "1095 2026-10-02 15:06 nesiusti:grandine_maistas",
-    "1103 2026-10-02 15:29 nesiusti:grandine_maistas"
-   ]
-  }
- },
- "v": "dep-185627",
+ "v": "dep-185814",
  "kurimas": 200,
- "sid": 6919,
+ "sid": 6920,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
