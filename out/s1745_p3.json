@@ -1,0 +1,110 @@
+{
+ "1": {
+  "v": "S1745p3",
+  "ist_u_cols": [
+   "id",
+   "data",
+   "email",
+   "vardas",
+   "pavarde",
+   "tel",
+   "imone",
+   "siuntimas",
+   "miestas",
+   "apmokejimas",
+   "suma_be",
+   "suma",
+   "statusas",
+   "ivykdytas",
+   "saskaita",
+   "eiluciu"
+  ],
+  "data_col": "data",
+  "ist_u": {
+   "nuo": "2023-11-20 12:35:03",
+   "iki": "2026-09-08 22:20:17",
+   "n": "10169",
+   "po_0830": "93"
+  },
+  "ist_u_pask": [
+   {
+    "id": "12106",
+    "data": "2026-09-08 22:20:17",
+    "email": "***",
+    "vardas": "***",
+    "pavarde": "***",
+    "tel": "***",
+    "imone": "0",
+    "siuntimas": "Pristatymas per Venipak paštomatus / at",
+    "miestas": "Kaunas",
+    "apmokejimas": "Revolut (LT)",
+    "suma_be": "52.03",
+    "suma": "62.95",
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1",
+    "saskaita": "AVP10999",
+    "eiluciu": "3"
+   },
+   {
+    "id": "12104",
+    "data": "2026-09-08 21:31:25",
+    "email": "***",
+    "vardas": "***",
+    "pavarde": "***",
+    "tel": "***",
+    "imone": "0",
+    "siuntimas": "Pristatymas per LP Express siuntų pašt",
+    "miestas": "Druskininkai",
+    "apmokejimas": "AB „Swedbank“",
+    "suma_be": "61.72",
+    "suma": "74.68",
+    "statusas": "Mokėjimas gautas",
+    "ivykdytas": "1",
+    "saskaita": "AVP10998",
+    "eiluciu": "8"
+   }
+  ],
+  "fakt_diena": [
+   {
+    "uzsakymas_id": "35862",
+    "sukurta_at": "2026-09-08 06:07:33",
+    "diena": "2026-09-08",
+    "testinis": "1"
+   },
+   {
+    "uzsakymas_id": "35863",
+    "sukurta_at": "2026-09-08 07:14:52",
+    "diena": "2026-09-08",
+    "testinis": "1"
+   },
+   {
+    "uzsakymas_id": "35865",
+    "sukurta_at": "2026-09-08 07:26:24",
+    "diena": "2026-09-08",
+    "testinis": "1"
+   },
+   {
+    "uzsakymas_id": "35868",
+    "sukurta_at": "2026-09-08 22:24:33",
+    "diena": "2026-09-09",
+    "testinis": "0"
+   },
+   {
+    "uzsakymas_id": "35872",
+    "sukurta_at": "2026-09-09 06:54:44",
+    "diena": "2026-09-09",
+    "testinis": "0"
+   }
+  ],
+  "ist_fakt_diena_max": "2026-08-30",
+  "perstatyti": "public static function perstatyti( $dry = true ) {\n\t\tglobal $wpdb; @set_time_limit( 280 );\n\t\t$p = $wpdb->prefix; $TU = $p . 'ps_ist_uzsakymai'; $TE = $p . 'ps_ist_eilutes';\n\t\t$o = array( 'dry' => (bool) $dry, 'versija' => self::VERSIJA );\n\t\tif ( ! self::yra( $TU ) || ! self::yra( $TE ) ) { return array( 'klaida' => 'nera ps_ist_*' ); }\n\t\tif ( ! self::yra( self::fu() ) || ! self::yra( self::fe() ) ) { return array( 'klaida' => 'nera ps_fakt_*' ); }\n\n\t\t$o['laukiama'] = array(\n\t\t\t'uzsakymai' => (int) $wpdb->get_var( \"SELECT COUNT(*) FROM $TU WHERE ivykdytas=1\" ),\n\t\t\t'eilutes'   => (int) $wpdb->get_var( \"SELECT COUNT(*) FROM $TE e JOIN $TU u ON u.id=e.uzsakymo_id WHERE u.ivykdytas=1\" ),\n\t\t\t'suma_ct'   => (int) $wpdb->get_var( \"SELECT ROUND(SUM(suma)*100) FROM $TU WHERE ivykdytas=1\" ),\n\t\t\t'klientu'   => (int) $wpdb->get_var( \"SELECT COUNT(DISTINCT LOWER(TRIM(email))) FROM $TU WHERE ivykdytas=1\" ),\n\t\t);\n\t\tif ( $dry ) {\n\t\t\t$o['fakt_create'] = $wpdb->get_row( 'SHOW CREATE TABLE ' . self::fu(), ARRAY_N );\n\t\t\t$o['fakt_create'] = isset( $o['fakt_create'][1] ) ? substr( $o['fakt_create'][1], 0, 1200 ) : null;\n\t\t\t$o['brand_tax'] = $wpdb->get_col( \"SELECT DISTINCT taxonomy FROM {$wpdb->term_taxonomy} WHERE taxonomy LIKE '%brand%' OR taxonomy LIKE '%brend%'\" );\n\t\t\treturn $o;\n\t\t}\n\n\t\t$IU = self::iu(); $IE = self::ie();\n\t\t$wpdb->query( \"DROP TABLE IF EXISTS $IU\" );\n\t\t$wpdb->query( \"DROP TABLE IF EXISTS $IE\" );\n\t\t$wpdb->query( 'CREATE TABLE ' . $IU . ' LIKE ' . self::fu() );\n\t\t$wpdb->query( 'CREATE TABLE ' . $IE . ' LIKE ' . self::fe() );\n\n\t\t/* --- užsakymai --- */\n\t\tlist( $un, $ue ) = self::stulpeliu_map( $IU, array(\n\t\t\t'uzsakymas_id'          => self::OFFSET . '+x.id',\n\t\t\t'sukurta_at'            => 'x.data',\n\t\t\t'apmoketa_at'           => 'x.data',\n\t\t\t'statusas_galutinis'    => 'LEFT(x.statusas,32)',\n\t\t\t'statusas_at'           => 'x.data',\n\t\t\t'klientas_id'           => 'COALESCE(us.ID,0)',\n\t\t\t'klientas_email_hash'   => \"SHA2(LOWER(TRIM(x.email)),256)\",\n\t\t\t'klientas_naujas'       => 'IF(x.rn=1,1,0)',\n\t\t\t'klientas_uzsakymo_nr'  => 'x.rn',\n\t\t\t'dienos_nuo_ankstesnio' => 'x.dna',\n\t\t\t'prekiu_suma_ct'        => 'COALESCE(x.eil_ct, ROUND(x.suma*100))',\n\t\t\t'nuolaidu_ct'           => '0',\n\t\t\t'pristatymas_paimta_ct' => 'GREATEST(ROUND(x.suma*100)-COALESCE(x.eil_ct,ROUND(x.suma*100)),0)',\n\t\t\t'pvm_ct'                => 'ROUND((x.suma-x.suma_be)*100)',\n\t\t\t'viso_ct'               => 'ROUND(x.suma*100)',\n\t\t\t'mokejimo_budas'        => 'LEFT(x.apmokejimas,48)',\n\t\t\t'miestas'               => 'LEFT(x.miestas,96)',\n\t\t\t'eiluciu_sk'            => 'x.eiluciu',\n\t\t\t'testinis'              => '0',",
+  "perstatyta_kada": "2026-08-31 19:35:02"
+ },
+ "v": "dep-193816",
+ "kurimas": 200,
+ "sid": 6927,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
