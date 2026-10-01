@@ -1,0 +1,134 @@
+{
+ "v": "dep-062931",
+ "kurimas": 200,
+ "sid": 6889,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "c": {
+  "v": "S1743s",
+  "faze": "c",
+  "opc": {
+   "kada": "2026-09-30 12:39:18",
+   "calc": "n5glV5",
+   "std": "o2jm9Y"
+  },
+  "calc": {
+   "language": "lt",
+   "recipient_count": 193,
+   "last_action": "api",
+   "sent_time": "2026-09-30 12:40:03",
+   "status": "SENT",
+   "created": "2026-09-30 12:39:17",
+   "modified": "2026-09-30 12:40:03",
+   "auto_followup_active": 0,
+   "send_to_all": 0,
+   "sent_count": 193,
+   "ecommerce_tracking_enabled": 0,
+   "opens": 63,
+   "bounces_count": 0,
+   "clicks": 3,
+   "editor": "html"
+  },
+  "std": {
+   "language": "lt",
+   "recipient_count": 107,
+   "last_action": "api",
+   "sent_time": "2026-09-30 12:40:03",
+   "status": "SENT",
+   "created": "2026-09-30 12:39:17",
+   "modified": "2026-09-30 12:40:03",
+   "auto_followup_active": 0,
+   "send_to_all": 0,
+   "sent_count": 107,
+   "ecommerce_tracking_enabled": 0,
+   "opens": 42,
+   "bounces_count": 0,
+   "clicks": 2,
+   "editor": "html"
+  },
+  "uzs": [],
+  "uzs_viso_nuo_1240": 8,
+  "iv_cols": [
+   "id",
+   "laikas",
+   "diena",
+   "tipas",
+   "pusl_tipas",
+   "url_kelias",
+   "raktas",
+   "raktas2",
+   "reiksme",
+   "sesija",
+   "lankytojas_d",
+   "lankytojas_30",
+   "saltinis",
+   "medium",
+   "kampanija",
+   "referer_domenas",
+   "kanalas",
+   "landing",
+   "irenginys",
+   "os_seima",
+   "nars_seima",
+   "salis",
+   "prisijunges",
+   "sutikimas",
+   "testinis",
+   "saltinis_aplinka"
+  ],
+  "iv": [],
+  "s": 4.1
+ },
+ "d": {
+  "v": "S1743s",
+  "faze": "d",
+  "grupe_calc": {
+   "recipient_count": 193,
+   "active_subscribers": 193,
+   "unsubscribed_count": 0,
+   "bounced_count": 0
+  },
+  "grupe_std": {
+   "recipient_count": 107,
+   "active_subscribers": 107,
+   "unsubscribed_count": 0,
+   "bounced_count": 0
+  },
+  "iv": [
+   {
+    "tipas": "pageview",
+    "n": "14",
+    "s": "6"
+   },
+   {
+    "tipas": "view_item",
+    "n": "4",
+    "s": "2"
+   },
+   {
+    "tipas": "skaiciuokle",
+    "n": "2",
+    "s": "2"
+   },
+   {
+    "tipas": "begin_checkout",
+    "n": "1",
+    "s": "1"
+   },
+   {
+    "tipas": "view_cart",
+    "n": "1",
+    "s": "1"
+   },
+   {
+    "tipas": "add_to_cart",
+    "n": "1",
+    "s": "1"
+   }
+  ],
+  "iv_landing": [],
+  "s": 0.3
+ }
+}
