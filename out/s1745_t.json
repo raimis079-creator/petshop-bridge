@@ -1,0 +1,53 @@
+{
+ "1": {
+  "v": "S1745t",
+  "faze": "1",
+  "bacs": {
+   "enabled": "yes",
+   "title": "Bankinis pavedimas",
+   "instructions": "",
+   "description": "Apmokėkite padarydami pavedimą į mūsų banko sąskaitą. Prašome įrašyti Jūsų užsakymo numerį kaip mokėjimo paskirtį. Užsakymas nebus išsiųstas kol pavedimas nepasieks mūsų banko sąskaitos."
+  },
+  "bacs_saskaitos": 0,
+  "on_hold_laiskas": "no",
+  "preke": [
+   "Sausainiai šuniukams, kauliuko formos, Bones Puppy Mix, 100 g",
+   "0.86",
+   13,
+   "instock"
+  ],
+  "defer": false
+ },
+ "2": {
+  "v": "S1745t",
+  "faze": "2",
+  "padekos_bacs_blokas": "",
+  "uzs": [
+   36611,
+   "1252",
+   "on-hold",
+   "0.86"
+  ],
+  "laiskai_iki_siol": [
+   {
+    "t": "21:00:44",
+    "to": "uzsakymai@petshop.lt",
+    "subject": "Naujas užsakymas Nr. 1252 — 2026-10-01",
+    "is": [
+     "class-wc-email.php:1236",
+     "class-wc-email.php:1173",
+     "class-wc-email-new-order.php:127",
+     "class-wc-emails.php:220",
+     "class-wc-order.php:477"
+    ]
+   }
+  ]
+ },
+ "v": "dep-175931",
+ "kurimas": 200,
+ "sid": 6905,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
