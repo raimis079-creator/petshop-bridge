@@ -1,0 +1,101 @@
+{
+ "1": {
+  "v": "S1745y",
+  "refill_elig": "public static function eligibility_filter( $result, $flow, $flow_class, $email, $context = array() ) {\n\t\tif ( 'refill_due' !== $flow ) {\n\t\t\treturn $result;\n\t\t}\n\t\t$product_id = isset( $context['product_id'] ) ? (int) $context['product_id'] : 0;\n\t\t$user_id    = isset( $context['user_id'] ) ? (int) $context['user_id'] : 0;\n\t\t$since      = isset( $context['last_purchase_date'] ) ? $context['last_purchase_date'] : '';\n\n\t\t// (a) Klientas jau pirko pakartotinai — laiskas nebeaktualus VISAM ciklui.\n\t\tif ( $user_id && $product_id && $since && self::has_repurchased( $user_id, $product_id, $since ) ) {\n\t\t\treturn array( 'allowed' => false, 'reason' => 'already_repurchased', 'terminal' => true );\n\t\t}\n\n\t\t// (b) Preke laikinai neparduodama — ATIDEDAM, nes bukle gali pasikeisti.\n\t\t$p = $product_id ? wc_get_product( $product_id ) : null;\n\t\tif ( ! $p || 'publish' !== get_post_status( $product_id ) || ! $p->is_purchasable() ) {\n\t\t\treturn array( 'allowed' => false, 'reason' => 'product_inactive', 'terminal' => false );\n\t\t}\n\n\t\treturn $result;\n\t}\n\n\t/**\n\t * S311: ar klientas jau pirko si produkta PO nurodytos datos.\n\t * Naudojama tam, kad nesiustume refill laisko zmogui, kuris jau pasipildė.\n\t */\n\tprivate static function has_repurchased( $user_id, $product_id, $since ) {\n\t\tif ( ! $user_id || ! $product_id || ! $since ) {\n\t\t\treturn false;\n\t\t}\n\t\t$orders = wc_get_orders( array(\n\t\t\t'customer_id' => (int) $user_id,\n\t\t\t'status'      => array( 'wc-processing', 'wc-completed', 'wc-on-hold' ),\n\t\t\t'date_created' => '>' . strtotime( $since ),\n\t\t\t'limit'       => 20,\n\t\t\t'return'      => 'objects',\n\t\t) );\n\t\tforeach ( (array) $orders as $o ) {\n\t\t\tforeach ( $o->get_items() as $item ) {\n\t\t\t\t$p = $item->get_product();\n\t\t\t\tif ( $p && (int) $p->get_id() === (int) $product_id ) {\n\t\t\t\t\treturn true;\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t\treturn false;\n\t}\n\n\t/**\n\t * Sender mirror: PS_REFILL_CANDIDATE + PS_NEXT_REFILL_DATE.\n\t */\n\tprivate static function mirror_to_sender( $user_id ) {\n\t\tif ( ! function_exists( 'ps_esp_adapter' ) ) {\n\t\t\treturn;\n\t\t}\n\t\t$user = get_user_by( 'id', $user_id );\n\t\tif ( ! $user ) {\n\t\t\treturn;\n\t\t}\n\t\tglobal $wpdb;\n\t\t// Artimiausia predicted_empty_date (active)\n\t\t$nearest = $wpdb->get_var( $wpdb->prepare(\n\t\t\t\"SELECT MIN(predicted_empty_date) FROM `\" . self::table_name() . \"`\n\t\t\t WHERE user_id = %d AND status = 'active'\",\n\t\t\t$user_id\n\t\t) );\n\n\t\t$adapter = ps_esp_adapter();\n\t\tif ( ! $adapter || ! $adapter->is_configured() ) {\n\t\t\treturn;\n\t\t}\n\t\t$attrs = array(\n\t\t\t'PS_REFILL_CANDIDATE' => $nearest ? 'true' : 'false',\n\t\t);\n\t\tif ( $nearest ) {\n\t\t\t$attrs['PS_NEXT_REFILL_DATE'] = $nearest;\n\t\t}\n\t\t$adapter->upsert_contact( $user->user_email, $attrs );\n\t}\n}\n",
+  "refill_md5": "90b8a1c08ac51d6f1a89b073ab75f192",
+  "filtrai": [
+   "10 Petshop_Post_Purchase::eligibility args=5",
+   "10 Petshop_Refill_Engine::eligibility_filter args=5",
+   "20 Petshop_Lifecycle_Vartai::eligibility args=5",
+   "30 Petshop_Pakartoti::vartai args=5",
+   "30 Petshop_Sugrazinimas::vartai args=5"
+  ],
+  "vartai_md5": "41f40c51bdfdb940d7cf1cd00878e253",
+  "vartai_holdout_fn": "function holdout( $email ) { return ( hexdec( substr( hash( 'sha256', strtolower( trim( $email ) ) ), 0, 8 ) ) % 100 ) < self::HOLDOUT_PCT; }\n\n\t/** Soft opt-out žyma (usermeta) — pildoma kasos lauko (spec S1684). null = žymos dar nėra. */\n\tpublic static function similar_ok( $email, $user_id = 0 ) {\n\t\t$u = $user_id ? get_user_by( 'id', $user_id ) : get_user_by( 'email', $email ); if ( ! $u ) return null;\n\t\t$elig = get_user_meta( $u->ID, 'ps_soft_optin_eligible', true ); if ( $elig !== '1' && $elig !== 'yes' ) return null;\n\t\treturn get_user_meta( $u->ID, 'ps_similar_optout', true ) !== '1';\n\t}\n\n\tpublic static function eligibility( $result, $flow, $flow_class, $email, $context = array() ) ",
+  "vartai_prasyta": "function prasyta( $email, $context ) {\n\t\tglobal $wpdb; $uid = isset( $context['user_id'] ) ? (int) $context['user_id'] : 0; $pid = isset( $context['product_id'] ) ? (int) $context['product_id'] : 0;\n\t\tif ( ! $uid ) { $u = get_user_by( 'email', $email ); $uid = $u ? (int) $u->ID : 0; }\n\t\tif ( ! $uid || ! $pid ) return false;\n\t\treturn 'relaunch' === (string) $wpdb->get_var( $wpdb->prepare( \"SELECT feedback_cycle FROM {$wpdb->prefix}ps_refill_tracking WHERE user_id=%d AND product_id=%d\", $uid, $pid ) );\n\t}\n\n\tpublic static function holdout( $email ) { return ( hexdec( substr( hash( 'sha256', strtolower( trim( $email ) ) ), 0, 8 ) ) % 100 ) < self::HOLDOUT_PCT; }\n\n\t/** Soft opt-out žyma (usermeta) — pildoma kasos lauko (spec S1684). null = žymos dar nėra. */\n\tpublic static function similar_ok( $email, $user_id = 0 ) {\n\t\t$u = $user_id ? get_user_by( 'id', $user_id ) : get_user_by( 'email'",
+  "pp_enqueue": "\t$email,\n\t\t\t\tarray(\n\t\t\t\t\t'order_id'     => (int) $order_id,\n\t\t\t\t\t'order_number' => $order->get_order_number(),\n\t\t\t\t\t'first_name'   => $order->get_billing_first_name(),\n\t\t\t\t\t'items'        => $items,\n\t\t\t\t\t'order_url'    => $order->get_view_order_url(),\n\t\t\t\t),\n\t\t\t\tarray(\n\t\t\t\t\t'job_key' => 'post_purchase_2d:' . $order_id,\n\t\t\t\t\t'user_id' => $order->get_customer_id() ? (int) $order->get_customer_id() : null,\n\t\t\t\t\t'context' => array( 'order_id' => (int) $order_id ),\n\t\t\t\t)\n\t\t\t);\n\t\t\tif ( ! empty( $res['ok'] ) && empty( $res['duplicate'] ) ) { $out['queued']++; }\n\n\t\t\t// S1472: 7d ir 14d planuojami CIA PAT, nuo nekintancios zymos.\n\t\t\t// Dispatch delay nenaudojamas (jis skaiciuotu nuo enqueue, t.y. +2 d. veliau).\n\t\t\t$stamp = $order->get_meta( self::META_COMPLETED, true );\n\t\t\t$base  = $stamp ? strtotime( $stamp . ' UTC' ) : time();\n\t\t\tforeach ( array(\n\t\t\t\t'post_purchase_7d'  => self::STAGE_7D,\n\t\t\t\t'post_purchase_14d' => self::STAGE_14D,\n\t\t\t) as $flow => $poslinkis ) {\n\t\t\t\t$r2 = Petshop_Email_Dispatch::enqueue( $flow, $email,\n\t\t\t\t\tarray(\n\t\t\t\t\t\t'order_id'     => (int) $order_id,\n\t\t\t\t\t\t'order_number' => $order->get_order_number(),\n\t\t\t\t\t\t'first_name'   => $order->get_billing_first_name(),\n\t\t\t\t\t\t'items'        => $items,\n\t\t\t\t\t\t'order_url'    => $order->get_view_order_url(),\n\t\t\t\t\t),\n\t\t\t\t\tarray(\n\t\t\t\t\t\t'job_key'      => $flow . ':' . $order_id,\n\t\t\t\t\t\t'user_id'      => $order->get_customer_id() ? (int) $order->get_customer_id() : null,\n\t\t\t\t\t\t'context'      => array( 'order_id' => (int) $order_id ",
+  "pp14_ctx_pvz": "{\"order_id\":36557}",
+  "refill_ctx_pvz": "{\"user_id\":2639,\"product_id\":17415,\"last_purchase_date\":\"2026-09-22\",\"refill_id\":182,\"cycle\":\"2026-10-06\"}",
+  "refill_jobs": [
+   {
+    "id": "679",
+    "job_key": "refill_due:5792:21329:2026-09-23",
+    "status": "skipped",
+    "skip_reason": "already_repurchased",
+    "scheduled_at": "2026-09-18 08:01:02",
+    "decision_at": "2026-09-18 08:04:09",
+    "next_attempt_at": null,
+    "attempts": "0"
+   },
+   {
+    "id": "990",
+    "job_key": "refill_due:5108:18602:2026-10-02",
+    "status": "skipped",
+    "skip_reason": "already_repurchased",
+    "scheduled_at": "2026-09-27 08:00:36",
+    "decision_at": "2026-09-27 08:04:22",
+    "next_attempt_at": null,
+    "attempts": "0"
+   },
+   {
+    "id": "991",
+    "job_key": "refill_due:5839:24393:2026-10-02",
+    "status": "skipped",
+    "skip_reason": "already_repurchased",
+    "scheduled_at": "2026-09-27 08:00:36",
+    "decision_at": "2026-09-27 08:04:22",
+    "next_attempt_at": null,
+    "attempts": "0"
+   },
+   {
+    "id": "992",
+    "job_key": "refill_due:5839:17787:2026-10-02",
+    "status": "skipped",
+    "skip_reason": "already_repurchased",
+    "scheduled_at": "2026-09-27 08:00:36",
+    "decision_at": "2026-09-27 08:04:22",
+    "next_attempt_at": null,
+    "attempts": "0"
+   },
+   {
+    "id": "1082",
+    "job_key": "refill_due:2639:23480:2026-10-06",
+    "status": "skipped",
+    "skip_reason": "already_repurchased",
+    "scheduled_at": "2026-10-01 08:00:04",
+    "decision_at": "2026-10-01 08:04:40",
+    "next_attempt_at": null,
+    "attempts": "0"
+   },
+   {
+    "id": "1083",
+    "job_key": "refill_due:2639:23478:2026-10-06",
+    "status": "skipped",
+    "skip_reason": "already_repurchased",
+    "scheduled_at": "2026-10-01 08:00:04",
+    "decision_at": "2026-10-01 08:04:40",
+    "next_attempt_at": null,
+    "attempts": "0"
+   },
+   {
+    "id": "1084",
+    "job_key": "refill_due:2639:17415:2026-10-06",
+    "status": "skipped",
+    "skip_reason": "already_repurchased",
+    "scheduled_at": "2026-10-01 08:00:04",
+    "decision_at": "2026-10-01 08:04:40",
+    "next_attempt_at": null,
+    "attempts": "0"
+   }
+  ],
+  "dispatch_cron": "18:53",
+  "refill_cron": "10-02 08:00"
+ },
+ "v": "dep-185111",
+ "kurimas": 200,
+ "sid": 6917,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
