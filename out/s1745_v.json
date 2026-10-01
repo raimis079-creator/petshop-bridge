@@ -1,0 +1,1449 @@
+{
+ "1": {
+  "v": "S1745v",
+  "faze": "1",
+  "hooks": {
+   "woocommerce_order_status_pending_to_cancelled_notification": [
+    "WC_Email_Cancelled_Order(cancelled_order)::trigger"
+   ],
+   "woocommerce_order_status_on-hold_to_cancelled_notification": [
+    "WC_Email_Cancelled_Order(cancelled_order)::trigger",
+    "WC_Email_Customer_Cancelled_Order(customer_cancelled_order)::trigger"
+   ],
+   "woocommerce_order_status_processing_to_cancelled_notification": [
+    "WC_Email_Cancelled_Order(cancelled_order)::trigger",
+    "WC_Email_Customer_Cancelled_Order(customer_cancelled_order)::trigger"
+   ],
+   "woocommerce_order_status_pending_to_processing_notification": [
+    "WC_Email_New_Order(new_order)::trigger",
+    "WC_Email_Customer_Processing_Order(customer_processing_order)::trigger"
+   ],
+   "woocommerce_order_status_on-hold_to_processing_notification": [
+    "WC_Email_Customer_Processing_Order(customer_processing_order)::trigger"
+   ],
+   "woocommerce_order_status_completed_notification": [
+    "WC_Email_Customer_Completed_Order(customer_completed_order)::trigger",
+    "WC_Email_Customer_POS_Completed_Order(customer_pos_completed_order)::auto_trigger"
+   ]
+  },
+  "kas_raso_email_sent": {
+   "wc-core": [
+    "* Constructor for the email class hooks in all emails that can be sent.",
+    "* @param bool $send       Whether the backorder notification should be sent."
+   ]
+  },
+  "atsauktas_pastabu_pasiskirstymas": {
+   "1": 26,
+   "2": 4
+  },
+  "atsauktas_uzs": 30,
+  "atsaukti_viso": 43,
+  "vykdomas_pastabu": 208,
+  "vykdomas_uzs": 208,
+  "apmoketi_uzs": 209,
+  "apmoketi_be_vykdomas": 1,
+  "apm_be_vykd_pvz": [
+   [
+    "35868",
+    "completed",
+    "paysera",
+    "",
+    ""
+   ]
+  ],
+  "siuntos_laisku_pastabu": 208,
+  "siuntos_laisku_uzs": 199,
+  "ivykdyti": 200,
+  "ivykdyti_be_siuntos_laisko": 1,
+  "darbalaukis_pastabos_kodas": "( $o->get_id() ); if ( $pdf && file_exists( $pdf ) ) { $o->update_meta_data( '_petshop_completed_pdf', $pdf ); } } catch ( Throwable $e ) { $pdf = ''; } }\n\t\t\tif ( $pdf && file_exists( $pdf ) ) { $pried[] = $pdf; }\n\t\t}\n\t\t$ok = $mailer->send( $el, $tema, $mailer->wrap_message( $vardas_l, $h ), '', $pried );\n\t\tif ( ! $ok ) { return array( false, 'laiško klientui išsiųsti nepavyko' ); }\n\t\t$dabar = current_time( 'mysql' );\n\t\tif ( $dalis ) { $iss[ $dalis ]['laiskas'] = $dabar; } else { foreach ( $iss as $k => $x ) { $iss[ $k ]['laiskas'] = $dabar; } }\n\t\t$o->update_meta_data( '_ps_dalys_issiusta', wp_json_encode( $iss ) ); $o->update_meta_data( '_ps_sekimo_siusta', $dabar );\n\t\t$o->add_order_note( 'Klientui išsiųsta „' . $vardas_l . '“ (' . $el . ')' . ( $nrs ? ': ' . implode( ', ', $nrs ) : ' — be sekimo numerio' ), false, true ); $o->save();\n\t\treturn array( true, 'klientui išėjo „' . $vardas_l"
+ },
+ "2": {
+  "v": "S1745v",
+  "faze": "2",
+  "jobs_sent": [
+   {
+    "flow": "browse_abandoned",
+    "n": "2",
+    "su_provider_id": "2",
+    "gavejai": "2",
+    "delivered": "0",
+    "opened": "0"
+   },
+   {
+    "flow": "cart_abandoned",
+    "n": "7",
+    "su_provider_id": "7",
+    "gavejai": "6",
+    "delivered": "0",
+    "opened": "0"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "n": "6",
+    "su_provider_id": "6",
+    "gavejai": "5",
+    "delivered": "0",
+    "opened": "0"
+   },
+   {
+    "flow": "consent_changed",
+    "n": "17",
+    "su_provider_id": "17",
+    "gavejai": "17",
+    "delivered": "0",
+    "opened": "0"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "n": "14",
+    "su_provider_id": "14",
+    "gavejai": "13",
+    "delivered": "0",
+    "opened": "0"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "n": "175",
+    "su_provider_id": "175",
+    "gavejai": "170",
+    "delivered": "0",
+    "opened": "0"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "n": "135",
+    "su_provider_id": "135",
+    "gavejai": "133",
+    "delivered": "0",
+    "opened": "0"
+   }
+  ],
+  "webhook_log": {
+   "n": 1,
+   "pask": "{\"t\":\"2026-09-09 17:06:13\",\"topic_get\":\"bounces\\/new\",\"headers\":{\"x-sender-signature\":\"58ea28d13f1be4c9f73703aef790e5f56e18f04cac58a0991bf8ce9cd65a62f1\",\"user-agent\":\"WordPress\\/6.9.4; https:\\/\\/petsh"
+  },
+  "cart_jobs": [
+   [
+    "472",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-09 14:55",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "473",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-10 09:24",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "475",
+    1,
+    "sent",
+    "",
+    "09-10 11:58",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "479",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-11 10:29",
+    "krepselis",
+    "",
+    "u|consent=|supp=unsubscribe",
+    ""
+   ],
+   [
+    "480",
+    2,
+    "sent",
+    "",
+    "09-11 12:03",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "481",
+    1,
+    "sent",
+    "",
+    "09-11 19:39",
+    "krepselis",
+    "",
+    "u|consent=true|supp=-",
+    "1030@09-12 23:54"
+   ],
+   [
+    "483",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-12 15:39",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "484",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-12 18:24",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    "1229@09-29 17:56"
+   ],
+   [
+    "485",
+    2,
+    "sent",
+    "",
+    "09-12 19:43",
+    "krepselis",
+    "",
+    "u|consent=true|supp=-",
+    "1030@09-12 23:54"
+   ],
+   [
+    "486",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-12 19:44",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "487",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-12 21:09",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "488",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-12 21:29",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "495",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-13 08:19",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "511",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-13 09:29",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    "1048@09-14 20:08"
+   ],
+   [
+    "516",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-13 13:49",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    "1187@09-25 21:38"
+   ],
+   [
+    "537",
+    1,
+    "sent",
+    "",
+    "09-14 00:18",
+    "krepselis",
+    "",
+    "u|consent=true|supp=-",
+    ""
+   ],
+   [
+    "539",
+    1,
+    "sent",
+    "",
+    "09-14 07:38",
+    "krepselis",
+    "",
+    "u|consent=true|supp=-",
+    ""
+   ],
+   [
+    "540",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-14 10:49",
+    "krepselis",
+    "",
+    "svečias|consent=|supp=-",
+    ""
+   ],
+   [
+    "541",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-14 11:04",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    "1195@09-27 00:08,1154@09-22 22:09"
+   ],
+   [
+    "542",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-14 13:50",
+    "krepselis",
+    "",
+    "svečias|consent=|supp=-",
+    ""
+   ],
+   [
+    "543",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-14 16:30",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "545",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-15 01:56",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "547",
+    2,
+    "sent",
+    "",
+    "09-15 07:43",
+    "krepselis",
+    "",
+    "u|consent=true|supp=-",
+    ""
+   ],
+   [
+    "548",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-15 08:49",
+    "krepselis",
+    "",
+    "svečias|consent=|supp=-",
+    ""
+   ],
+   [
+    "550",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-15 15:19",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "551",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-15 15:49",
+    "krepselis",
+    "",
+    "svečias|consent=|supp=-",
+    ""
+   ],
+   [
+    "552",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-15 17:01",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "553",
+    1,
+    "sent",
+    "",
+    "09-15 17:33",
+    "krepselis",
+    "",
+    "u|consent=true|supp=-",
+    ""
+   ],
+   [
+    "555",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-15 21:45",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "556",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-15 23:55",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "584",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-16 09:00",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    "1179@09-25 10:13"
+   ],
+   [
+    "585",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-16 10:04",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "587",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-16 15:01",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "594",
+    2,
+    "sent",
+    "",
+    "09-16 17:38",
+    "krepselis",
+    "",
+    "u|consent=true|supp=-",
+    ""
+   ],
+   [
+    "595",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-16 18:05",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "598",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-16 20:10",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "620",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-17 10:14",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "621",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-17 14:15",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "643",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-17 15:34",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "674",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-17 16:39",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "676",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-17 18:10",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "677",
+    1,
+    "skipped",
+    "suppressed_marketing_unsubscribe",
+    "09-17 18:12",
+    "krepselis",
+    "",
+    "u|consent=|supp=unsubscribe",
+    ""
+   ],
+   [
+    "680",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-18 08:12",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "681",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-18 08:13",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "682",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-18 08:13",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "683",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-18 08:13",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "684",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-18 08:14",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "704",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-18 12:16",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "729",
+    2,
+    "skipped",
+    "suppressed_marketing_unsubscribe",
+    "09-18 16:12",
+    "krepselis",
+    "",
+    "u|consent=|supp=unsubscribe",
+    ""
+   ],
+   [
+    "730",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-18 21:14",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "773",
+    1,
+    "sent",
+    "",
+    "09-20 08:54",
+    "krepselis",
+    "",
+    "u|consent=true|supp=-",
+    ""
+   ],
+   [
+    "774",
+    1,
+    "sent",
+    "",
+    "09-20 09:03",
+    "krepselis",
+    "",
+    "u|consent=true|supp=-",
+    ""
+   ],
+   [
+    "775",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-20 11:00",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "776",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-20 11:37",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "778",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-20 13:07",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "779",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-20 13:07",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "780",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-20 13:07",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "781",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-20 13:07",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "798",
+    2,
+    "sent",
+    "",
+    "09-21 08:58",
+    "krepselis",
+    "",
+    "u|consent=true|supp=-",
+    ""
+   ],
+   [
+    "799",
+    2,
+    "sent",
+    "",
+    "09-21 09:09",
+    "krepselis",
+    "",
+    "u|consent=true|supp=-",
+    ""
+   ],
+   [
+    "800",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-21 09:37",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "802",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-21 11:07",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "803",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-21 11:07",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "804",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-21 11:07",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "805",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-21 11:07",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "806",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-22 14:44",
+    "krepselis",
+    "",
+    "svečias|consent=|supp=-",
+    ""
+   ],
+   [
+    "807",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-22 16:20",
+    "krepselis",
+    "",
+    "svečias|consent=|supp=-",
+    ""
+   ],
+   [
+    "822",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-23 13:14",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "823",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-23 13:28",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "825",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-23 14:20",
+    "krepselis",
+    "",
+    "svečias|consent=|supp=-",
+    ""
+   ],
+   [
+    "899",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-24 11:28",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "900",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-24 15:04",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    "1211@09-28 17:01"
+   ],
+   [
+    "916",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-24 19:29",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "941",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-25 09:15",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "942",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-25 13:04",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    "1211@09-28 17:01"
+   ],
+   [
+    "1005",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-28 09:59",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "1006",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-28 12:30",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "1007",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-29 00:34",
+    "krepselis",
+    "",
+    "svečias|consent=|supp=-",
+    ""
+   ],
+   [
+    "1009",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-29 07:14",
+    "krepselis",
+    "",
+    "svečias|consent=|supp=-",
+    ""
+   ],
+   [
+    "1010",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-29 10:30",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "1011",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-29 11:06",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "1012",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-29 15:37",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "1013",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-29 22:34",
+    "krepselis",
+    "",
+    "svečias|consent=|supp=-",
+    ""
+   ],
+   [
+    "1029",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-30 09:06",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "1030",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-30 09:44",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "1031",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-30 09:54",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "1041",
+    2,
+    "skipped",
+    "consent_missing",
+    "09-30 13:37",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "1079",
+    1,
+    "skipped",
+    "consent_missing",
+    "09-30 23:13",
+    "krepselis",
+    "",
+    "u|consent=|supp=-",
+    ""
+   ],
+   [
+    "1109",
+    1,
+    "skipped",
+    "suppressed_marketing_unsubscribe",
+    "10-01 12:47",
+    "krepselis",
+    "",
+    "u|consent=|supp=unsubscribe",
+    ""
+   ]
+  ],
+  "consent_meta_keys": [
+   "ps_marketing_consent"
+  ],
+  "bacs_priminta_meta": 2
+ },
+ "3": {
+  "v": "S1745v",
+  "faze": "3",
+  "uzs_0930": [
+   [
+    "1244",
+    "processing",
+    31.99,
+    "organic/google/",
+    ""
+   ],
+   [
+    "1243",
+    "cancelled",
+    31.69,
+    "utm/google/21472017542",
+    "gclid"
+   ],
+   [
+    "1242",
+    "completed",
+    11.6,
+    "organic/google/",
+    ""
+   ],
+   [
+    "1241",
+    "completed",
+    17.58,
+    "utm/google/21565450990",
+    "gclid"
+   ],
+   [
+    "1240",
+    "completed",
+    21.2,
+    "utm/google/21565450990",
+    "gclid"
+   ],
+   [
+    "1239",
+    "completed",
+    55.08,
+    "typein/(direct)/",
+    ""
+   ],
+   [
+    "1238",
+    "completed",
+    56.99,
+    "utm/google/24297462605",
+    "gclid"
+   ],
+   [
+    "1237",
+    "completed",
+    155.27,
+    "utm/kaina24/",
+    "gclid"
+   ],
+   [
+    "1236",
+    "completed",
+    35.96,
+    "utm/google/23346712074",
+    "gclid"
+   ],
+   [
+    "1235",
+    "completed",
+    32.75,
+    "organic/google/",
+    "gclid"
+   ],
+   [
+    "1234",
+    "completed",
+    84.78,
+    "utm/kaina24/",
+    ""
+   ],
+   [
+    "1233",
+    "processing",
+    22.28,
+    "utm/google/21565450990",
+    "gclid"
+   ]
+  ],
+  "uzs_0930_ok": [
+   11,
+   525.48
+  ],
+  "fakt_0930": [
+   {
+    "uzsakymas_id": "36584",
+    "st": "processing",
+    "eur": "22.28",
+    "utm_source": "google",
+    "utm_campaign": "21565450990",
+    "g": "1",
+    "k": "mokamas"
+   },
+   {
+    "uzsakymas_id": "36585",
+    "st": "completed",
+    "eur": "84.78",
+    "utm_source": "kaina24",
+    "utm_campaign": "",
+    "g": "0",
+    "k": "mokamas"
+   },
+   {
+    "uzsakymas_id": "36586",
+    "st": "completed",
+    "eur": "32.75",
+    "utm_source": "",
+    "utm_campaign": "",
+    "g": "0",
+    "k": "organika"
+   },
+   {
+    "uzsakymas_id": "36589",
+    "st": "completed",
+    "eur": "35.96",
+    "utm_source": "google",
+    "utm_campaign": "23346712074",
+    "g": "1",
+    "k": "mokamas"
+   },
+   {
+    "uzsakymas_id": "36590",
+    "st": "completed",
+    "eur": "155.27",
+    "utm_source": "kaina24",
+    "utm_campaign": "",
+    "g": "0",
+    "k": "mokamas"
+   },
+   {
+    "uzsakymas_id": "36591",
+    "st": "completed",
+    "eur": "56.99",
+    "utm_source": "google",
+    "utm_campaign": "24297462605",
+    "g": "1",
+    "k": "mokamas"
+   },
+   {
+    "uzsakymas_id": "36593",
+    "st": "completed",
+    "eur": "55.08",
+    "utm_source": "",
+    "utm_campaign": "",
+    "g": "0",
+    "k": "direct"
+   },
+   {
+    "uzsakymas_id": "36594",
+    "st": "completed",
+    "eur": "21.20",
+    "utm_source": "google",
+    "utm_campaign": "21565450990",
+    "g": "1",
+    "k": "mokamas"
+   },
+   {
+    "uzsakymas_id": "36597",
+    "st": "completed",
+    "eur": "17.58",
+    "utm_source": "google",
+    "utm_campaign": "21565450990",
+    "g": "1",
+    "k": "mokamas"
+   },
+   {
+    "uzsakymas_id": "36598",
+    "st": "completed",
+    "eur": "11.60",
+    "utm_source": "",
+    "utm_campaign": "",
+    "g": "0",
+    "k": "organika"
+   },
+   {
+    "uzsakymas_id": "36600",
+    "st": "processing",
+    "eur": "31.99",
+    "utm_source": "",
+    "utm_campaign": "",
+    "g": "0",
+    "k": "organika"
+   }
+  ],
+  "reklama_cols": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ],
+  "reklama_0930": [
+   {
+    "id": "192",
+    "diena": "2026-09-30",
+    "kanalas": "google_ads",
+    "kampanija_id": "21472017542",
+    "kampanija": "P-max | LT | petshop.lt",
+    "parodymai": "397",
+    "paspaudimai": "34",
+    "islaidos_ct": "840",
+    "valiuta": "EUR",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0",
+    "saltinis": "ads_script",
+    "saltinis_aplinka": "prod",
+    "versija": "1",
+    "irasyta_at": "2026-10-01 02:01:32",
+    "senoji_svetaine": "0"
+   },
+   {
+    "id": "193",
+    "diena": "2026-09-30",
+    "kanalas": "google_ads",
+    "kampanija_id": "21565450990",
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "parodymai": "1261",
+    "paspaudimai": "80",
+    "islaidos_ct": "1753",
+    "valiuta": "EUR",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0",
+    "saltinis": "ads_script",
+    "saltinis_aplinka": "prod",
+    "versija": "1",
+    "irasyta_at": "2026-10-01 02:01:32",
+    "senoji_svetaine": "0"
+   },
+   {
+    "id": "194",
+    "diena": "2026-09-30",
+    "kanalas": "google_ads",
+    "kampanija_id": "23346712074",
+    "kampanija": "petshop",
+    "parodymai": "126",
+    "paspaudimai": "20",
+    "islaidos_ct": "341",
+    "valiuta": "EUR",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0",
+    "saltinis": "ads_script",
+    "saltinis_aplinka": "prod",
+    "versija": "1",
+    "irasyta_at": "2026-10-01 02:01:32",
+    "senoji_svetaine": "0"
+   },
+   {
+    "id": "195",
+    "diena": "2026-09-30",
+    "kanalas": "google_ads",
+    "kampanija_id": "24297462605",
+    "kampanija": "Search | LT | Prekių ženklai",
+    "parodymai": "156",
+    "paspaudimai": "24",
+    "islaidos_ct": "570",
+    "valiuta": "EUR",
+    "konversijos": "0.00",
+    "konv_verte_ct": "0",
+    "saltinis": "ads_script",
+    "saltinis_aplinka": "prod",
+    "versija": "1",
+    "irasyta_at": "2026-10-01 02:01:32",
+    "senoji_svetaine": "0"
+   }
+  ],
+  "vykdomi": [
+   [
+    "1251",
+    "10-01 18:29",
+    2,
+    ""
+   ],
+   [
+    "1250",
+    "10-01 16:12",
+    4,
+    ""
+   ],
+   [
+    "1248",
+    "10-01 11:42",
+    9,
+    ""
+   ],
+   [
+    "1247",
+    "10-01 10:53",
+    9,
+    ""
+   ],
+   [
+    "1244",
+    "09-30 22:12",
+    22,
+    "Siuntos numeriai;Venipak registracija"
+   ],
+   [
+    "1233",
+    "09-30 07:28",
+    37,
+    "partija #35"
+   ],
+   [
+    "1229",
+    "09-29 17:57",
+    50,
+    "partija #35"
+   ]
+  ]
+ },
+ "v": "dep-171301",
+ "kurimas": 200,
+ "sid": 6900,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
