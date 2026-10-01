@@ -1,694 +1,273 @@
 {
- "6": {
+ "7": {
   "v": "S1745a",
-  "faze": "6",
-  "jobs": [
+  "faze": "7",
+  "wc_sent": {
+   "Įvykdytas užsakymas": 1,
+   "Grąžintas užsakymas": 0,
+   "Pirkėjo pastaba": 0,
+   "Nauja paskyra": 0,
+   "Užsakymas vykdomas": 208,
+   "Atšauktas užsakymas": 34
+  },
+  "completed_uzs": 198,
+  "mailpoet_aktyvus": false,
+  "mailpoet_queue": [],
+  "mailpoet_auto": [],
+  "mailpoet_nl": [],
+  "smtp_klaidos": [
    {
-    "flow": "browse_abandoned",
-    "cls": "marketing",
-    "status": "sent",
-    "pr": "",
-    "n": "2",
-    "nuo": "2026-09-22 18:38:40",
-    "iki": "2026-09-30 19:38:47",
-    "atid": "0",
-    "pasp": "0"
+    "d": "2026-09-29",
+    "n": "2"
    },
    {
-    "flow": "browse_abandoned",
-    "cls": "marketing",
-    "status": "skipped",
-    "pr": "consent_missing",
-    "n": "12",
-    "nuo": "2026-09-13 18:37:09",
-    "iki": "2026-10-01 05:37:07",
-    "atid": "0",
-    "pasp": "0"
+    "d": "2026-09-22",
+    "n": "1"
    },
    {
-    "flow": "cart_abandoned",
-    "cls": "marketing",
-    "status": "sent",
-    "pr": "",
-    "n": "7",
-    "nuo": "2026-09-10 11:58:44",
-    "iki": "2026-09-20 09:03:44",
-    "atid": "0",
-    "pasp": "0"
+    "d": "2026-09-15",
+    "n": "5"
    },
    {
-    "flow": "cart_abandoned",
-    "cls": "marketing",
-    "status": "skipped",
-    "pr": "suppressed_marketing_unsubscribe",
-    "n": "2",
-    "nuo": "2026-09-17 18:12:13",
-    "iki": "2026-10-01 12:47:20",
-    "atid": "0",
-    "pasp": "0"
+    "d": "2026-09-14",
+    "n": "3"
    },
    {
-    "flow": "cart_abandoned",
-    "cls": "marketing",
-    "status": "skipped",
-    "pr": "consent_missing",
-    "n": "51",
-    "nuo": "2026-09-09 14:55:04",
-    "iki": "2026-09-30 23:13:06",
-    "atid": "0",
-    "pasp": "0"
+    "d": "2026-09-13",
+    "n": "1"
    },
    {
-    "flow": "cart_abandoned_2",
-    "cls": "marketing",
-    "status": "sent",
-    "pr": "",
-    "n": "6",
-    "nuo": "2026-09-11 12:03:46",
-    "iki": "2026-09-21 09:09:08",
-    "atid": "0",
-    "pasp": "0"
+    "d": "2026-09-12",
+    "n": "3"
    },
    {
-    "flow": "cart_abandoned_2",
-    "cls": "marketing",
-    "status": "skipped",
-    "pr": "suppressed_marketing_unsubscribe",
-    "n": "1",
-    "nuo": "2026-09-18 16:12:26",
-    "iki": "2026-09-18 16:12:26",
-    "atid": "0",
-    "pasp": "0"
+    "d": "2026-09-11",
+    "n": "3"
    },
    {
-    "flow": "cart_abandoned_2",
-    "cls": "marketing",
-    "status": "skipped",
-    "pr": "consent_missing",
-    "n": "22",
-    "nuo": "2026-09-15 08:49:40",
-    "iki": "2026-09-30 13:37:15",
-    "atid": "0",
-    "pasp": "0"
+    "d": "2026-09-10",
+    "n": "1"
+   }
+  ],
+  "turinys": [
+   {
+    "id": "49",
+    "flow": "order_shipped",
+    "version": "1",
+    "status": "draft",
+    "subject": "Jūsų užsakymas {order_number} išsiųstas",
+    "preheader": "Sekimo nuoroda — šiame laiške.",
+    "reason": "Gavote šį laišką, nes pateikėte užsakymą petshop.lt.",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"J\\u016bs\\u0173 u\\u017esakymas [jei tracking_url][jei tracking_number][je…",
+    "notes": "Perkelta is order-shipped.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip atr…",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
    },
    {
-    "flow": "consent_changed",
-    "cls": "transactional",
-    "status": "sent",
-    "pr": "",
-    "n": "17",
-    "nuo": "2026-09-10 09:53:46",
-    "iki": "2026-10-01 04:48:47",
-    "atid": "0",
-    "pasp": "0"
+    "id": "50",
+    "flow": "shipment_returned",
+    "version": "1",
+    "status": "draft",
+    "subject": "Jūsų siunta grįžo mums — užsakymas {order_id}",
+    "preheader": "Parašykite mums ir suderinsime, ką daryti toliau.",
+    "reason": "Gavote šį laišką, nes jūsų petshop.lt užsakymo siunta grįžo siuntėjui.",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"J\\u016bs\\u0173 u\\u017esakymo [jei return_reason][jei tracking_number][je…",
+    "notes": "Perkelta is shipment-returned.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip…",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
    },
    {
-    "flow": "post_purchase_14d",
-    "cls": "service",
-    "status": "deferred",
-    "pr": "soft_optout_nezinomas",
-    "n": "18",
-    "nuo": "2026-09-17 16:39:51",
-    "iki": "2026-09-19 14:39:27",
-    "atid": "0",
-    "pasp": "0"
+    "id": "51",
+    "flow": "pet_reminder_due",
+    "version": "1",
+    "status": "draft",
+    "subject": "Priminimas: {pet_name} — {reminder_label}",
+    "preheader": "Pažymėkite atlikta arba priminkite vėliau.",
+    "reason": "Gavote šį laišką, nes patys nustatėte šį priminimą petshop.lt augintinio skydelyje.",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"Primename: {[jei reschedule_url][jei confirm_url][jei due_date]due_date}…",
+    "notes": "Perkelta is pet-reminder.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip atro…",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
    },
    {
-    "flow": "post_purchase_14d",
-    "cls": "service",
-    "status": "pending",
-    "pr": "",
-    "n": "102",
-    "nuo": "2026-09-20 08:39:38",
-    "iki": "2026-10-01 16:39:35",
-    "atid": "0",
-    "pasp": "0"
+    "id": "52",
+    "flow": "subscription_t5_notice",
+    "version": "1",
+    "status": "draft",
+    "subject": "Jūsų reguliari siunta — po 5 dienų",
+    "preheader": "Jei reikia, galite ją pakeisti arba praleisti.",
+    "reason": "Gavote šį laišką, nes turite aktyvią reguliarių siuntų prenumeratą petshop.lt.",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"[jei cancel_url][jei skip_url][jei confirm_url][jei product_name][jei ne…",
+    "notes": "Perkelta is subscription-t5.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip a…",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
    },
    {
-    "flow": "post_purchase_14d",
-    "cls": "service",
-    "status": "sent",
-    "pr": "",
-    "n": "11",
-    "nuo": "2026-09-29 08:38:43",
-    "iki": "2026-10-01 16:09:19",
-    "atid": "0",
-    "pasp": "0"
-   },
-   {
-    "flow": "post_purchase_14d",
-    "cls": "service",
-    "status": "sent",
-    "pr": "soft_optout_nezinomas",
-    "n": "3",
-    "nuo": "2026-09-29 08:08:46",
-    "iki": "2026-09-30 08:08:47",
-    "atid": "0",
-    "pasp": "0"
-   },
-   {
-    "flow": "post_purchase_14d",
-    "cls": "service",
-    "status": "skipped",
-    "pr": "holdout_10",
-    "n": "5",
-    "nuo": "2026-09-10 23:39:33",
-    "iki": "2026-09-18 14:39:28",
-    "atid": "0",
-    "pasp": "0"
-   },
-   {
-    "flow": "post_purchase_14d",
-    "cls": "service",
-    "status": "skipped",
-    "pr": "similar_optout",
-    "n": "4",
-    "nuo": "2026-09-18 14:39:27",
-    "iki": "2026-09-19 14:39:27",
-    "atid": "0",
-    "pasp": "0"
-   },
-   {
-    "flow": "post_purchase_14d",
-    "cls": "service",
-    "status": "skipped",
-    "pr": "deferral_expired",
-    "n": "32",
-    "nuo": "2026-09-13 07:39:26",
-    "iki": "2026-09-17 14:39:33",
-    "atid": "0",
-    "pasp": "0"
-   },
-   {
-    "flow": "post_purchase_2d",
-    "cls": "service",
-    "status": "pending",
-    "pr": "",
-    "n": "4",
-    "nuo": "2026-10-01 16:39:35",
-    "iki": "2026-10-01 16:39:35",
-    "atid": "0",
-    "pasp": "0"
-   },
-   {
-    "flow": "post_purchase_2d",
-    "cls": "service",
-    "status": "sent",
-    "pr": "",
-    "n": "171",
-    "nuo": "2026-09-10 23:43:41",
-    "iki": "2026-10-01 15:43:42",
-    "atid": "0",
-    "pasp": "0"
-   },
-   {
-    "flow": "post_purchase_7d",
-    "cls": "service",
-    "status": "pending",
-    "pr": "",
-    "n": "40",
-    "nuo": "2026-09-26 21:39:27",
-    "iki": "2026-10-01 16:39:35",
-    "atid": "0",
-    "pasp": "0"
-   },
-   {
-    "flow": "post_purchase_7d",
-    "cls": "service",
-    "status": "sent",
-    "pr": "",
-    "n": "135",
-    "nuo": "2026-09-15 23:33:54",
-    "iki": "2026-10-01 13:08:43",
-    "atid": "0",
-    "pasp": "0"
-   },
-   {
+    "id": "53",
     "flow": "refill_due",
-    "cls": "similar_soft_optin",
-    "status": "skipped",
-    "pr": "already_repurchased",
-    "n": "7",
-    "nuo": "2026-09-18 08:01:02",
-    "iki": "2026-10-01 08:00:04",
-    "atid": "0",
-    "pasp": "0"
+    "version": "1",
+    "status": "draft",
+    "subject": "Jūsų augintinio maisto gali netrukus pritrūkti",
+    "preheader": "Maisto gali netrukus pritrūkti — pakartokite užsakymą, kai bus patogu.",
+    "reason": "Gavote šį laišką, nes pirkote šį maistą petshop.lt.",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"Pagal ankstesn\\u012f pirkim\\u0105 apskai\\u010diavome, kad j\\u016bs\\u0173…",
+    "notes": "Perkelta is refill.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip atrodo be:…",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
+   },
+   {
+    "id": "54",
+    "flow": "cart_abandoned",
+    "version": "1",
+    "status": "draft",
+    "subject": "Krepšelyje liko jūsų prekės",
+    "preheader": "Krepšelis išsaugotas — galite tęsti bet kada.",
+    "reason": "Gavote šį laišką, nes sutikote gauti Petshop.lt pasiūlymus.",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"Sveiki, j\\u016bs\\u0173 krep\\u0161elis i\\u0161saugotas. Jei nor\\u0117site…",
+    "notes": "Perkelta is cart-abandoned-1.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip …",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
+   },
+   {
+    "id": "55",
+    "flow": "cart_abandoned_2",
+    "version": "1",
+    "status": "draft",
+    "subject": "Jūsų krepšelis dar laukia",
+    "preheader": "Krepšelis išsaugotas — galite tęsti bet kada.",
+    "reason": "Gavote šį laišką, nes sutikote gauti Petshop.lt pasiūlymus.",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"Sveiki, j\\u016bs\\u0173 pasirinktos prek\\u0117s vis dar krep\\u0161elyje. …",
+    "notes": "Perkelta is cart-abandoned-2.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip …",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
+   },
+   {
+    "id": "56",
+    "flow": "post_purchase_2d",
+    "version": "1",
+    "status": "draft",
+    "subject": "Ar su užsakymu viskas gerai?",
+    "preheader": "Jei kas nors negerai — atsakykite į šį laišką, padėsime išspręsti.",
+    "reason": "Gavote šį laišką, nes neseniai pirkote petshop.lt.",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"Neseniai i\\u0161siunt\\u0117me j\\u016bs\\u0173 u\\u017esakym\\u0105[jei item…",
+    "notes": "Perkelta is post-purchase-2d.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip …",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
+   },
+   {
+    "id": "57",
+    "flow": "post_purchase_7d",
+    "version": "1",
+    "status": "draft",
+    "subject": "Kaip tiko jūsų pirkinys?",
+    "preheader": "Trumpas atsiliepimas padės kitiems šeimininkams.",
+    "reason": "Gavote šį laišką, nes neseniai pirkote petshop.lt.",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"Tikim\\u0117s, u\\u017esakytas prekes [jei review_url][jei items][jei orde…",
+    "notes": "Perkelta is post-purchase-7d.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip …",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
+   },
+   {
+    "id": "58",
+    "flow": "post_purchase_14d",
+    "version": "1",
+    "status": "draft",
+    "subject": "Ankstesnį užsakymą galite pakartoti",
+    "preheader": "Nereikės prekių ieškoti iš naujo.",
+    "reason": "Gavote šį laišką, nes neseniai pirkote petshop.lt.",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"Jei pirktos prek\\u0117s tiko, ankstesn\\u012f u\\u017esakym\\u0105 galite p…",
+    "notes": "Perkelta is post-purchase-14d.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip…",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
+   },
+   {
+    "id": "59",
+    "flow": "win_back_60",
+    "version": "1",
+    "status": "draft",
+    "subject": "Gal jau metas papildyti atsargas?",
+    "preheader": "Maistas ir augintinio priežiūros prekės — petshop.lt.",
+    "reason": "Gavote šį laišką, nes esate petshop.lt klientas ir sutikote gauti mūsų naujienas.",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"Jei augintinio maisto ar prie\\u017ei\\u016bros priemoni\\u0173 atsargos ja…",
+    "notes": "Perkelta is win-back-60.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip atrod…",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
+   },
+   {
+    "id": "60",
+    "flow": "win_back_90",
+    "version": "1",
+    "status": "draft",
+    "subject": "Maisto rekomendacijos pagal jūsų augintinį",
+    "preheader": "Kartu matysite ir kainą eurais per dieną.",
+    "reason": "Gavote šį laišką, nes esate petshop.lt klientas ir sutikote gauti mūsų naujienas.",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"Trumpa augintinio anketa pad\\u0117s atrinkti jam tinkamesn\\u012f maist\\u…",
+    "notes": "Perkelta is win-back-90.php · pilna saka patikrinta byte-tiksliai",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
+   },
+   {
+    "id": "61",
+    "flow": "win_back_120",
+    "version": "1",
+    "status": "draft",
+    "subject": "Čia sustojame — jei prireiks, mus rasite",
+    "preheader": "Daugiau šios serijos laiškų nesiųsime.",
+    "reason": "Gavote šį laišką, nes esate petshop.lt klientas ir sutikote gauti mūsų naujienas.",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"Nenorime ra\\u0161yti be reikalo, tod\\u0117l tai paskutinis \\u0161ios ser…",
+    "notes": "Perkelta is win-back-120.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip atro…",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
+   },
+   {
+    "id": "62",
+    "flow": "legacy_reactivation_l1",
+    "version": "1",
+    "status": "draft",
+    "subject": "Petshop.lt atsinaujino",
+    "preheader": "Patogesnė paieška, alergenų filtrai ir kaina eurais per dieną.",
+    "reason": "Gavote šį laišką, nes esate ankstesnis petshop.lt klientas ir sutikote gauti mūsų naujiena…",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"Sveiki! Petshop.lt atsinaujino.\"},{\"t\":\"p\",\"text\":\"Dabar prekes lengviau…",
+    "notes": "Perkelta is legacy-l1.php · pilna saka patikrinta byte-tiksliai",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
+   },
+   {
+    "id": "63",
+    "flow": "back_in_stock",
+    "version": "1",
+    "status": "draft",
+    "subject": "Prekė vėl prekyboje: {product_name}",
+    "preheader": "Dabar ją vėl galite užsisakyti.",
+    "reason": "Gavote šį laišką, nes prekės puslapyje paprašėte pranešti, kai ji vėl bus prekyboje. Tai v…",
+    "blocks_json": "[{\"t\":\"p\",\"text\":\"Prek\\u0117[jei price][jei product_url][jei product_name] \\u201e{product_…",
+    "notes": "Perkelta is back-in-stock.php · pilna saka patikrinta byte-tiksliai · PATIKRINTI, kaip atr…",
+    "author_id": "0",
+    "created_at": "2026-08-29 18:30:23",
+    "published_at": null
    }
   ],
-  "pastabos": {
-   "Email \"Naujas užsakymas\" sent.": [
-    217,
-    "2026-09-09 02:30:59",
-    "2026-10-01 18:29:23"
-   ],
-   "Email \"Užsakymas vykdomas\" sent.": [
-    208,
-    "2026-09-09 09:56:01",
-    "2026-10-01 18:29:23"
-   ],
-   "Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS.": [
-    183,
-    "2026-09-11 11:07:24",
-    "2026-10-01 18:06:27"
-   ],
-   "Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskait": [
-    76,
-    "2026-09-11 12:48:56",
-    "2026-10-01 12:48:05"
-   ],
-   "Email \"Atšauktas užsakymas\" sent.": [
-    34,
-    "2026-09-09 11:12:59",
-    "2026-10-01 13:47:14"
-   ],
-   "Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: # (S#).": [
-    26,
-    "2026-09-15 11:49:40",
-    "2026-09-30 16:37:15"
-   ],
-   "Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: # (S#).": [
-    21,
-    "2026-09-14 03:17:27",
-    "2026-10-01 15:47:20"
-   ],
-   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #34, laiške kartu su užsakymais). Kelias ": [
-    17,
-    "2026-09-29 12:36:47",
-    "2026-09-29 12:36:47"
-   ],
-   "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.": [
-    14,
-    "2026-09-15 14:23:24",
-    "2026-09-29 12:46:03"
-   ],
-   "Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas # (S#).": [
-    13,
-    "2026-09-17 13:12:43",
-    "2026-09-29 14:46:03"
-   ],
-   "Krepšelio priminimas 2 nesiųstas — naujesnis užsakymas # (S#).": [
-    10,
-    "2026-09-18 20:15:47",
-    "2026-09-30 12:46:10"
-   ],
-   "Pažymėta išsiųsta darbalaukyje (LP Express, lp). WC laiškas klientui: NESIŲSTAS.": [
-    6,
-    "2026-09-24 16:06:23",
-    "2026-09-30 15:06:39"
-   ],
-   "Perduota tiekėjui Vetfarmas — laiškas: terra@petshop.lt": [
-    5,
-    "2026-09-29 12:36:47",
-    "2026-09-29 12:36:47"
-   ],
-   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #33, laiške kartu su užsakymais). Kelias ": [
-    5,
-    "2026-09-28 11:58:52",
-    "2026-09-28 11:58:53"
-   ],
-   "Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankinis pavedimas. Vartotojas: Raimi": [
-    5,
-    "2026-09-14 20:50:03",
-    "2026-09-28 01:11:30"
-   ],
-   "Pažymėta išsiųsta darbalaukyje (Raimis, lp). WC laiškas klientui: NESIŲSTAS.": [
-    5,
-    "2026-09-14 18:43:48",
-    "2026-09-21 12:11:09"
-   ],
-   "Perduota tiekėjui Ambrosia — laiškas: info@alphazoo.lt, terra@petshop.lt": [
-    4,
-    "2026-09-25 11:13:31",
-    "2026-09-29 09:00:56"
-   ],
-   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #29, laiške kartu su užsakymais). Kelias ": [
-    4,
-    "2026-09-21 12:28:11",
-    "2026-09-21 12:28:11"
-   ],
-   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #25, laiške kartu su užsakymais). Kelias ": [
-    4,
-    "2026-09-16 12:48:18",
-    "2026-09-16 12:48:18"
-   ],
-   "Pažymėta išsiųsta darbalaukyje (Inga, web). WC laiškas klientui: NESIŲSTAS.": [
-    4,
-    "2026-09-11 10:15:33",
-    "2026-09-18 18:29:21"
-   ],
-   "Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankinis pavedimas. Vartotojas: Inga.": [
-    4,
-    "2026-09-11 09:14:46",
-    "2026-09-28 15:26:39"
-   ],
-   "Perduota tiekėjui Quattro / Kauno grūdai — laiškas: terra@petshop.lt": [
-    3,
-    "2026-09-11 10:13:39",
-    "2026-09-28 09:42:48"
-   ],
-   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #35, laiške kartu su užsakymais). Kelias ": [
-    2,
-    "2026-09-30 12:39:23",
-    "2026-09-30 12:39:23"
-   ],
-   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #30, laiške kartu su užsakymais). Kelias ": [
-    2,
-    "2026-09-22 12:28:10",
-    "2026-09-22 12:28:10"
-   ],
-   "Perduota tiekėjui Quattro / Kauno grūdai — laiškas: e.panaviene@kaunogrudai.lt, terra@pets": [
-    2,
-    "2026-09-16 08:55:37",
-    "2026-09-17 09:17:04"
-   ],
-   "Bacs priminimas (+48 val.) klientui išsiųstas (S#).": [
-    2,
-    "2026-09-13 11:50:02",
-    "2026-09-27 11:49:46"
-   ],
-   "Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite": [
-    2,
-    "2026-09-10 12:47:57",
-    "2026-09-10 12:47:57"
-   ],
-   "Atšaukta darbalaukyje. Vartotojas: Raimis. Laiškas klientui: išsiųstas.": [
-    1,
-    "2026-10-01 13:47:14",
-    "2026-10-01 13:47:14"
-   ],
-   "Prekių keitimas (S#, Raimio sprendimu, klientas sutiko): „Stirnos ausis, 1 vnt.“ ×5 (5,": [
-    1,
-    "2026-09-28 19:54:55",
-    "2026-09-28 19:54:55"
-   ],
-   "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: išsiųstas.": [
-    1,
-    "2026-09-28 14:08:05",
-    "2026-09-28 14:08:05"
-   ],
-   "Tiekimas: prekės užsakytos iš Quattro / Kauno grūdai (partija #32, laiške kartu su užsakym": [
-    1,
-    "2026-09-28 09:42:48",
-    "2026-09-28 09:42:48"
-   ],
-   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #31, laiške kartu su užsakymais). Kelias ": [
-    1,
-    "2026-09-25 12:51:22",
-    "2026-09-25 12:51:22"
-   ],
-   "Perduota tiekėjui Prins Petfoods — laiškas: irute@faunas.lt, terra@petshop.lt": [
-    1,
-    "2026-09-24 09:03:03",
-    "2026-09-24 09:03:03"
-   ],
-   "LAUKTI — dublikatas: tą pačią prekę tą pačią dieną apmokėjo # (vy.bieliauskas@). Primi": [
-    1,
-    "2026-09-20 10:47:48",
-    "2026-09-20 10:47:48"
-   ],
-   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #27, laiške kartu su užsakymais). Kelias ": [
-    1,
-    "2026-09-18 12:50:58",
-    "2026-09-18 12:50:58"
-   ],
-   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #26, laiške kartu su užsakymais). Kelias ": [
-    1,
-    "2026-09-17 12:53:40",
-    "2026-09-17 12:53:40"
-   ],
-   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #23, laiške kartu su užsakymais). Kelias ": [
-    1,
-    "2026-09-15 13:02:44",
-    "2026-09-15 13:02:44"
-   ],
-   "S#: atšaukta tyliai Raimio nurodymu — klientas užsakė iš naujo ir apmokėjo # (Payse": [
-    1,
-    "2026-09-12 01:26:26",
-    "2026-09-12 01:26:26"
-   ],
-   "Email \"Įvykdytas užsakymas\" sent.": [
-    1,
-    "2026-09-09 02:30:59",
-    "2026-09-09 02:30:59"
-   ]
-  },
-  "wc_emails": [
-   [
-    "new_order",
-    "Naujas užsakymas",
-    "ON",
-    "adminui"
-   ],
-   [
-    "cancelled_order",
-    "Atšauktas užsakymas",
-    "ON",
-    "adminui"
-   ],
-   [
-    "customer_cancelled_order",
-    "Atšauktas užsakymas",
-    "ON",
-    "klientui"
-   ],
-   [
-    "failed_order",
-    "Nepavykęs užsakymas",
-    "ON",
-    "adminui"
-   ],
-   [
-    "customer_failed_order",
-    "Nepavykęs užsakymas",
-    "off",
-    "klientui"
-   ],
-   [
-    "customer_on_hold_order",
-    "Užsakymas sustabdytas",
-    "off",
-    "klientui"
-   ],
-   [
-    "customer_processing_order",
-    "Užsakymas vykdomas",
-    "ON",
-    "klientui"
-   ],
-   [
-    "customer_completed_order",
-    "Įvykdytas užsakymas",
-    "ON",
-    "klientui"
-   ],
-   [
-    "customer_refunded_order",
-    "Grąžintas užsakymas",
-    "ON",
-    "klientui"
-   ],
-   [
-    "customer_invoice",
-    "Užsakymo informacija",
-    "off",
-    "klientui"
-   ],
-   [
-    "customer_note",
-    "Pirkėjo pastaba",
-    "ON",
-    "klientui"
-   ],
-   [
-    "customer_reset_password",
-    "Atkurti slaptažodį",
-    "ON",
-    "klientui"
-   ],
-   [
-    "customer_new_account",
-    "Nauja paskyra",
-    "ON",
-    "klientui"
-   ],
-   [
-    "admin_payment_gateway_enabled",
-    "Payment gateway enabled",
-    "off",
-    "adminui"
-   ],
-   [
-    "customer_pos_completed_order",
-    "POS completed order",
-    "off",
-    "klientui"
-   ],
-   [
-    "customer_pos_refunded_order",
-    "POS refunded order",
-    "off",
-    "klientui"
-   ],
-   [
-    "customer_verify_email",
-    "Confirm email address",
-    "ON",
-    "klientui"
-   ]
-  ],
-  "dispatch_cls": "Petshop_Email_Dispatch",
-  "flows_def": {
-   "order_paid": {
-    "class": "transactional",
-    "delay": 0
-   },
-   "order_shipped": {
-    "class": "transactional",
-    "delay": 0
-   },
-   "payment_failed": {
-    "class": "transactional",
-    "delay": 0
-   },
-   "shipment_returned": {
-    "class": "transactional",
-    "delay": 0
-   },
-   "consent_changed": {
-    "class": "transactional",
-    "delay": 0
-   },
-   "pet_reminder_due": {
-    "class": "transactional",
-    "delay": 0
-   },
-   "subscription_t5_notice": {
-    "class": "transactional",
-    "delay": 0
-   },
-   "refill_due": {
-    "class": "similar_soft_optin",
-    "delay": 0
-   },
-   "cart_abandoned": {
-    "class": "marketing",
-    "delay": 0
-   },
-   "cart_abandoned_2": {
-    "class": "marketing",
-    "delay": 0
-   },
-   "post_purchase_2d": {
-    "class": "service",
-    "delay": 0
-   },
-   "post_purchase_7d": {
-    "class": "service",
-    "delay": 604800
-   },
-   "post_purchase_14d": {
-    "class": "service",
-    "delay": 1209600
-   },
-   "win_back_60": {
-    "class": "marketing",
-    "delay": 0
-   },
-   "win_back_90": {
-    "class": "marketing",
-    "delay": 0
-   },
-   "win_back_120": {
-    "class": "marketing",
-    "delay": 0
-   },
-   "legacy_reactivation_l1": {
-    "class": "marketing",
-    "delay": 0
-   },
-   "founding_activation": {
-    "class": "marketing",
-    "delay": 0
-   },
-   "back_in_stock": {
-    "class": "transactional",
-    "delay": 0
-   },
-   "newsletter": {
-    "class": "marketing",
-    "delay": 0
-   },
-   "browse_abandoned": {
-    "class": "marketing",
-    "delay": 0
-   },
-   "win_back": {
-    "class": "similar_soft_optin",
-    "delay": 0
-   }
-  },
-  "tbl": [
-   "gaj6_mailpoet_automation_run_logs",
-   "gaj6_mailpoet_automation_run_subjects",
-   "gaj6_mailpoet_automation_runs",
-   "gaj6_mailpoet_automation_triggers",
-   "gaj6_mailpoet_automation_versions",
-   "gaj6_mailpoet_automations",
-   "gaj6_mailpoet_custom_fields",
-   "gaj6_mailpoet_dynamic_segment_filters",
-   "gaj6_mailpoet_feature_flags",
-   "gaj6_mailpoet_forms",
-   "gaj6_mailpoet_log",
-   "gaj6_mailpoet_migrations",
-   "gaj6_mailpoet_newsletter_links",
-   "gaj6_mailpoet_newsletter_option",
-   "gaj6_mailpoet_newsletter_option_fields",
-   "gaj6_mailpoet_newsletter_posts",
-   "gaj6_mailpoet_newsletter_segment",
-   "gaj6_mailpoet_newsletter_templates",
-   "gaj6_mailpoet_newsletters",
-   "gaj6_mailpoet_scheduled_task_subscribers",
-   "gaj6_mailpoet_scheduled_tasks",
-   "gaj6_mailpoet_segments",
-   "gaj6_mailpoet_sending_queues",
-   "gaj6_mailpoet_settings",
-   "gaj6_mailpoet_statistics_bounces",
-   "gaj6_mailpoet_statistics_clicks",
-   "gaj6_mailpoet_statistics_forms",
-   "gaj6_mailpoet_statistics_newsletters",
-   "gaj6_mailpoet_statistics_opens",
-   "gaj6_mailpoet_statistics_unsubscribes",
-   "gaj6_mailpoet_statistics_woocommerce_purchases",
-   "gaj6_mailpoet_stats_notifications",
-   "gaj6_mailpoet_subscriber_custom_field",
-   "gaj6_mailpoet_subscriber_ips",
-   "gaj6_mailpoet_subscriber_segment",
-   "gaj6_mailpoet_subscriber_tag",
-   "gaj6_mailpoet_subscribers",
-   "gaj6_mailpoet_tags",
-   "gaj6_mailpoet_user_agents",
-   "gaj6_mailpoet_user_flags",
-   "gaj6_ps_email_content",
-   "gaj6_ps_email_jobs",
-   "gaj6_ps_email_suppression",
-   "gaj6_wc_email_unsubscribes",
-   "gaj6_wpmailsmtp_debug_events",
-   "gaj6_wpmailsmtp_tasks_meta"
-  ],
-  "cron": {
-   "ps_email_dispatch_cron": "10-01 16:43",
-   "ps_cart_abandon_check": "10-01 16:44",
-   "ps_bacs_priminimas": "10-01 16:49",
-   "ps_refill_iv_veidrodis": "10-01 17:06",
-   "ps_browse_abandon_check": "10-01 17:37",
-   "ps_atsaukto_krepselio_priminimas": "10-02 10:47",
-   "ps_refill_daily_check": "10-02 08:00",
-   "wpforms_email_summaries_cron": "10-04 21:00"
+  "atsaukto": {
+   "petshop-bacs-priminimas.php": "/**\n * Petshop Bacs Priminimas v1.0.2 (S1676, 2026-09-12)\n *   v1.0.2: Raimio tekstas (S1676): trumpesnis, data lietuviškai, IBAN+bankas viena eilute.\n *   v1.0.1: rekvizitai iš Petshop_Darbalaukis::PAKART_BANKAS (WC bacs sąskaitų nėra); suma be HTML entity.\n *\n * 1) Bacs (pavedimu) on-hold užsakymai:\n *    - ≥48 val. nuo sukūrimo, dar nepriminta → laiškas klientui „laukia apmokėjimo\" (rekvizitai, terminas),\n *      pastaba užsakyme, meta _ps_bacs_priminta.\n *    - ≥72 val., vis dar on-hold → cancelled (WC „atšauktas\" laiškas klientui). Likutį grąžina AV variklis.\n * 2) Po BET KOKIO neapmokėto užsakymo atšaukimo (Paysera 90 min., bacs 72 val., rankinis) —\n *    krepšelio priminimai +2 val. (cart_abandoned) ir +24 val. (cart_abandoned_2) per Petshop_Email_Dispatch\n *    (marketingas — consent tikrina dispatch), su nuoroda atkurti krepšelį iš užsakymo prekių.\n * SARGAS (Raimio pastebėjimas: klientai daro kelis užsakymus iš eilės):\n *    - jei tas pats el. paštas turi NAUJESNĮ užsakymą (pending/on-hold/processing/completed) — priminimai NESIUNČIAMI;\n *    - jei naujesnis APMOKĖTAS — senas bacs atšaukiamas TYLIAI (be WC laiško).\n * Rankinis stabdis: užsakymo pastaba, kurioje yra žodis "
   }
  },
- "v": "dep-164219",
+ "v": "dep-164413",
  "kurimas": 200,
- "sid": 6896,
+ "sid": 6897,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
