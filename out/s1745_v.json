@@ -1,86 +1,245 @@
 {
- "7": {
+ "8": {
   "v": "S1745v",
-  "faze": "7",
-  "eligibility_filtrai": {
-   "petshop-lifecycle-vartai.php": [
-    "ps_similar_optout",
-    "holdout_10",
-    "soft_optout_nezinomas",
-    "similar_optout"
+  "faze": "8",
+  "refill_jobs": [
+   [
+    "679",
+    "skipped",
+    "already_repurchased",
+    "2026-09-18 08:01",
+    "prod#21329",
+    "pirkimai_su_preke:1001@09-09",
+    "payload_raktai:pet_name,product_id,product_name,product_url,reorder_url,confidence"
    ],
-   "petshop-sugrazinimas.php": [],
-   "petshop-pakartoti.php": [],
-   "class-post-purchase.php": [],
-   "class-refill-engine.php": [
-    "already_repurchased"
+   [
+    "990",
+    "skipped",
+    "already_repurchased",
+    "2026-09-27 08:00",
+    "prod#18602",
+    "pirkimai_su_preke:1103@09-18",
+    "payload_raktai:pet_name,product_id,product_name,product_url,reorder_url,confidence"
+   ],
+   [
+    "991",
+    "skipped",
+    "already_repurchased",
+    "2026-09-27 08:00",
+    "prod#24393",
+    "pirkimai_su_preke:1107@09-18",
+    "payload_raktai:pet_name,product_id,product_name,product_url,reorder_url,confidence"
+   ],
+   [
+    "992",
+    "skipped",
+    "already_repurchased",
+    "2026-09-27 08:00",
+    "prod#17787",
+    "pirkimai_su_preke:1107@09-18",
+    "payload_raktai:pet_name,product_id,product_name,product_url,reorder_url,confidence"
+   ],
+   [
+    "1082",
+    "skipped",
+    "already_repurchased",
+    "2026-10-01 08:00",
+    "prod#23480",
+    "pirkimai_su_preke:1147@09-22",
+    "payload_raktai:pet_name,product_id,product_name,product_url,reorder_url,confidence"
+   ],
+   [
+    "1083",
+    "skipped",
+    "already_repurchased",
+    "2026-10-01 08:00",
+    "prod#23478",
+    "pirkimai_su_preke:1147@09-22",
+    "payload_raktai:pet_name,product_id,product_name,product_url,reorder_url,confidence"
+   ],
+   [
+    "1084",
+    "skipped",
+    "already_repurchased",
+    "2026-10-01 08:00",
+    "prod#17415",
+    "pirkimai_su_preke:1147@09-22",
+    "payload_raktai:pet_name,product_id,product_name,product_url,reorder_url,confidence"
    ]
-  },
-  "eligibility_antrastes": {
-   "petshop-lifecycle-vartai.php": "/**\n * Plugin Name: Petshop Lifecycle Vartai\n * Description: S1684 (Q4 planas, vartai C): (0) refill pagal augintinio anketą (dienos norma × pakuotė, Feeding_Service) kai yra svoris; (1) refill ciklai pagal brendą × pakuotę iš 2,5 m. istorijos (CIKLAI_ir_R_due_baseline_s1684.md) vietoj grubių 14/30/60 d.; (2) refill_due / post_purchase_14d eligibility = ERĮ 81(2) soft opt-out (ps_soft_optin_eligible && !ps_similar_optout), kol lauko nėra — atidedama; (3) 90/10 holdout (permanentinis, pagal el. pašto hash). Raimio leidimas „taisyk ką reikia\" 09-14.\n * v1.2.0 (S1685, Raimio sprendimas): kliento „išmoktas\" intervalas (2+ pirkimai) trumpesnis už istorinį p25 tam brendui/pakuotei (arba <14 d., ka",
-   "petshop-sugrazinimas.php": "/**\n * Plugin Name: Petshop Sugrąžinimas (win_back laiškas)\n * Description: S1686 (Q4 planas, retention etapas 2, Raimio sprendimai 09-16): vienas win_back laiškas „Pakartoti ankstesnį užsakymą?\" ties refill_due terminu +30 d. (formulė win_back_at = predicted_empty_date + 30), po jo ciklas sustoja iki naujo pirkimo. Teisinis pagrindas ERĮ 81(2) soft opt-out — nauja flow klasė `similar_soft_optin` (refill_due perkeliamas į ją; ne service, ne marketing; opt_out viršesnis); vartai/holdout 90/10 per petshop-lifecycle-vartai. Prekės/kaina/mygtukas — Petshop_Pakartoti::grupe (tas pats užsakymas). Core neliečiamas. Serijos 60/90/120 nedaromos.\n * Version: 1.0.0\n */",
-   "petshop-pakartoti.php": "/**\n * Plugin Name: Petshop Pakartoti tą patį (refill_due laiškas)\n * Description: S1685 (Q4 planas, lifecycle etapas 1): refill_due laiškas „Pakartoti tą patį\" — v1.1.0 GRUPUOJA PAGAL PASKUTINĮ UŽSAKYMĄ (Raimio sprendimas 09-15): laiške visos to užsakymo sekamos maisto prekės su kiekiais ir dabartinėmis kainomis, vienas mygtukas → endpoint'as /?ps_pakartoti=<order>&z=<hmac> sudeda viską į krepšelį ir veda į kasą; kiti to paties užsakymo refill_due laiškai per 45 d. praleidžiami (terminal `pakartoti_jau_siustas`). Šablonas: mu-plugins/ps-sablonai/refill-pakartoti.php (core refill.php neliečiamas). Prekė ne sandėlyje → praleidžiama iš sąrašo; jei nė vienos — laiškas atidedamas.\n * v1.1.1: Mix",
-   "class-post-purchase.php": "/**\n * Petshop Post-Purchase — S326 DETEKTORIUS.\n *\n * SAVININKO AUDITAS (2026-07-31): WooCommerce siuncia 11 laisku, bet VISI\n * apie uzsakymo BUSENA (naujas / apmoketa / issiusta / atsaukta / grazinta).\n * Po „issiusta\" — tyla. Review/follow-up plugin'u NERA, cron'u NERA.\n * Post-purchase srautas savininko NETURI.\n *\n * ★ LAIKMACIO ZYMA — KRITINE ★\n * `+2 d.` skaiciuojama nuo NEKINTANCIOS zymos `_ps_completed_at`, o NE nuo\n * Woo `post_modified` ar dabartinio statuso keitimo laiko. Kitaip bet koks\n * velesnis uzsakymo redagavimas NUKELTU laikmati is naujo.\n *\n * Ta pati taisykle kaip S323 ciklo raktas: laikmatis negali remtis lauku,\n * kuri kiti veiksmai keicia.\n *\n * ISTORINIAI UZSAKYMAI:",
-   "class-refill-engine.php": "/**\n * Petshop_Refill_Engine — self-calibrating refill tracking (M11).\n *\n * LOGIKA: mokosi is KLIENTO REALAUS pirkimo intervalo, ne is teoriniu normu.\n * - 1-as pirkimas: grubus intervalas pagal pakuotes dydi (14/30/60 d., confidence 0.4)\n * - 2+ pirkimas to paties produkto: kalibruojasi is realaus intervalo (confidence->0.9)\n *\n * NAUDOJA: order_paid event (jau veikia), pet profile (M7, nebutina).\n * GENERUOJA: refill_due event (schema jau yra S185).\n *\n * DB: gaj6_ps_refill_tracking (user_id + product_id + pet_id nullable).\n *\n * Srautas:\n *   1. order_paid -> on_order_paid() -> irasoma/atnaujinama refill_tracking\n *   2. Cron (kasdien) -> check_due() -> fire refill_due event (T-5 dienu)\n"
-  },
-  "darbalaukis": [
-   "petshop-darbalaukis.php:27 () | * Petshop Darbalaukis v3.39.3 (S1639, Raimis 09-08): siuntos_laiskas() — pilname laiške (viena siunta arba paskutinė „visas išsiųstas\") prek",
-   "petshop-darbalaukis.php:277 () | *   prekės, „dar keliaus“ prekės. Viena funkcija `siuntos_laiskas()` — ją kvies ir 4 etapo Venipak cron („Picked up“); `issiusta()` vieša su",
-   "petshop-darbalaukis.php:1842 keisti_kelia() | *  #5 (spec §12): laiškas klientui PO KIEKVIENOS siuntos per `siuntos_laiskas()`, kai `$sekimo`. Vieša — 4 etapo Venipak cron kvies su",
-   "petshop-darbalaukis.php:1870 issiusta() | if ( $sekimo ) { list( , $laiskas ) = self::siuntos_laiskas( $o, $f, $dalis, $iss ); }",
-   "petshop-darbalaukis.php:1887 issiusta() | if ( $sekimo ) { list( , $laiskas ) = self::siuntos_laiskas( $o, $f, $dalis, $iss ); }",
-   "petshop-darbalaukis.php:2203 velavimo_laiskas() | $mailer = WC()->mailer(); $ok = $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ) );",
-   "petshop-darbalaukis.php:2318 pakartotinis_sukurti() | $mailer = WC()->mailer(); $ok = (bool) $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ) );",
-   "petshop-darbalaukis.php:2334 pakartotinis_nuoroda() | $mailer = WC()->mailer(); $ok = (bool) $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ) );",
-   "petshop-darbalaukis.php:2380 pakartotinis_apmoketas() | $mailer = WC()->mailer(); $ok = is_email( $el ) ? (bool) $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ), '', ( $pdf && file_e",
-   "petshop-darbalaukis.php:2616 kreditine_laiskas() | $mailer = WC()->mailer(); $ok = (bool) $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ), '', $priedai );",
-   "petshop-darbalaukis.php:3051 atsiemimas_paruosta() | else { list( $tema, $h ) = self::ats_laiskas_sudeti( $o ); $mailer = WC()->mailer(); $ok = (bool) $mailer->send( $el, $tema, $mailer->wrap_m",
-   "petshop-darbalaukis.php:3191 ats_ivykdyta_laiskas() | $tema = strtr( $s['iv_tema'], $z ); $mailer = WC()->mailer(); $ok = (bool) $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ), ''",
-   "petshop-darbalaukis.php:3538 siuntos_laiskas() | public static function siuntos_laiskas( $o, $f, $dalis, $iss ) {",
-   "petshop-darbalaukis.php:3593 siuntos_laiskas() | $ok = $mailer->send( $el, $tema, $mailer->wrap_message( $vardas_l, $h ), '', $pried );"
   ],
-  "darbalaukio_pastabos": [
+  "tracking_cols": [
+   "id",
+   "user_id",
+   "product_id",
+   "pet_id",
+   "last_order_id",
+   "last_purchase_date",
+   "purchase_count",
+   "avg_interval_days",
+   "predicted_empty_date",
+   "confidence",
+   "status",
+   "created_at",
+   "updated_at",
+   "last_feedback",
+   "last_feedback_at",
+   "feedback_cycle"
+  ],
+  "tracking_st": [
    {
-    "c": "Klientui išsiųsta „Užsakymas išsiųstas“ (nastia96@inbox.lt):",
-    "n": "192"
+    "status": "active",
+    "n": "237",
+    "min_d": "2026-10-07"
    },
    {
-    "c": "Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankini",
-    "n": "9"
+    "status": "notified",
+    "n": "7",
+    "min_d": "2026-09-23"
+   }
+  ],
+  "tracking_artimiausi": [
+   {
+    "d": "2026-10-07",
+    "n": "4"
    },
    {
-    "c": "Klientui išsiųsta „Išsiųsta 2 iš 2 siuntų“ (museibm@gmail.co",
-    "n": "8"
-   },
-   {
-    "c": "Klientui išsiųsta „Išsiųsta 1 iš 2 siuntų“ (museibm@gmail.co",
-    "n": "8"
-   },
-   {
-    "c": "S1719: klientui išsiųsta patikslinta PVM sąskaita AVPN011107",
-    "n": "5"
-   },
-   {
-    "c": "Bacs priminimas (+48 val.) klientui išsiųstas (S1676).",
+    "d": "2026-10-09",
     "n": "2"
    },
    {
-    "c": "Bacs: neapmokėta per 72 val. — atšaukta automatiškai, klient",
+    "d": "2026-10-12",
+    "n": "12"
+   },
+   {
+    "d": "2026-10-13",
+    "n": "4"
+   },
+   {
+    "d": "2026-10-14",
     "n": "1"
    },
    {
-    "c": "Atšaukta darbalaukyje. Vartotojas: Raimis. Laiškas klientui:",
+    "d": "2026-10-15",
     "n": "1"
    },
    {
-    "c": "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: i",
+    "d": "2026-10-17",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-18",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-19",
+    "n": "11"
+   },
+   {
+    "d": "2026-10-20",
     "n": "1"
+   },
+   {
+    "d": "2026-10-21",
+    "n": "3"
+   },
+   {
+    "d": "2026-10-22",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-23",
+    "n": "3"
+   },
+   {
+    "d": "2026-10-24",
+    "n": "11"
+   },
+   {
+    "d": "2026-10-25",
+    "n": "12"
    }
-  ]
+  ],
+  "refill_const": [
+   "const INTERVAL_SMALL  = 14;",
+   "const INTERVAL_MEDIUM = 30;",
+   "const INTERVAL_LARGE  = 60;",
+   "const INTERVAL_DEFAULT = 30;",
+   "const CONFIDENCE_FIRST = 0.4;",
+   "const CONFIDENCE_SECOND = 0.7;",
+   "const CONFIDENCE_CALIBRATED = 0.9;",
+   "const DUE_ADVANCE_DAYS = 5;",
+   "const META_REFILL_PROCESSED = '_ps_refill_tracked';",
+   "const FOOD_CATEGORY_SLUGS = array(\n\t\t'sausas-maistas-sunims',\n\t\t'sausas-maistas-katems',\n\t\t'maistas-sunims',\n\t\t'maistas-katems',\n\t\t'hipoalerginis-maistas-sunims',\n\t);"
+  ],
+  "check_due": "function check_due() {\n\t\tglobal $wpdb;\n\t\t$table = self::table_name();\n\t\t$advance = self::DUE_ADVANCE_DAYS;\n\t\t$target_date = date( 'Y-m-d', time() + $advance * 86400 );\n\n\t\t// Rasam aktyvius irasys kur predicted_empty_date <= today + advance\n\t\t// IR dar nefire'inome refill_due (status = 'active')\n\t\t$rows = $wpdb->get_results( $wpdb->prepare(\n\t\t\t\"SELECT rt.*, u.user_email\n\t\t\t FROM `$table` rt\n\t\t\t JOIN `{$wpdb->users}` u ON u.ID = rt.user_id\n\t\t\t WHERE rt.status = 'active'\n\t\t\t   AND rt.predicted_empty_date <= %s\n\t\t\t ORDER BY rt.predicted_empty_date ASC\n\t\t\t LIMIT 100\",\n\t\t\t$target_date\n\t\t) );\n\n\t\tforeach ( $rows as $row ) {\n\t\t\tif ( ! $row->user_email || ! class_exists( 'Petshop_Event_Registry' ) ) {\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\t$product = wc_get_product( $row->product_id );\n\t\t\t$product_name = $product ? $product->get_name() : '(produktas #' . $row->product_id . ')';\n\n\t\t\tPetshop_Event_Registry::emit( 'refill_due', $row->user_email, array(\n\t\t\t\t'pet_id'               => $row->pet_id ? (int) $row->pet_id : 0,\n\t\t\t\t'product_id'           => (int) $row->product_id,\n\t\t\t\t'product_name'         => $product_name,\n\t\t\t\t'predicted_empty_date' => $row->predicted_empty_date,\n\t\t\t\t'confidence'           => (float) $row->confidence,\n\t\t\t\t'last_order_id'        => (int) $row->last_order_id,\n\t\t\t\t'days_since_last_order' => (int) round( ( time() - strtotime( $row->last_purchase_date ) ) / 86400 ),\n\t\t\t), array(\n\t\t\t\t'event_id' => 'refill_due_' . $row->user_id . '_' . $row->product_id . '_' . $row->predicted_empty_date,\n\t\t\t) );\n\n\t\t\t// --- S312: laiskas VISADA i outbox'a; sprendimas fiksuojamas ten.\n\t\t\t// Srauto specifines salygos tikrinamos per petshop_email_eligibility\n\t\t\t// filtra (zr. eligibility_filter()), kad praleidimo priezastis butu\n\t\t\t// matoma ataskaitose, o ne dingtu tyliame return'e.\n\t\t\tif ( class_e",
+  "pp14_pending": [
+   {
+    "d": "2026-10-02",
+    "n": "10"
+   },
+   {
+    "d": "2026-10-05",
+    "n": "21"
+   },
+   {
+    "d": "2026-10-06",
+    "n": "11"
+   },
+   {
+    "d": "2026-10-07",
+    "n": "13"
+   },
+   {
+    "d": "2026-10-08",
+    "n": "10"
+   },
+   {
+    "d": "2026-10-09",
+    "n": "4"
+   },
+   {
+    "d": "2026-10-12",
+    "n": "20"
+   },
+   {
+    "d": "2026-10-13",
+    "n": "13"
+   }
+  ],
+  "vartai": [
+   "const VER = '1.2.0';",
+   "const OPT_VARTAI = 'ps_lifecycle_vartai';",
+   "const HOLDOUT_PCT = 10;",
+   "const CIKLAI = array(\n\t\t'animonda|1.5-5kg' => array( 19, 34, 57 ),\n\t\t'josera|11kg+' => array( 33, 56, 100 ),\n\t\t'animonda|iki1.5kg' => array( 28, 41, 65 ),\n\t\t'josera|5-11kg' => array( 36, 73, 135 ),\n\t\t'exclusion|11kg+' => array( 39, 62, 96 ),\n\t\t'exclusion|5-11kg' => array( 55, 76, 118 ),\n\t\t'exclusion|1.5-5kg' => array( 23, 38, 66 ),\n\t\t'ontario|iki1.5kg' => array( 26, 40, 61 ),\n\t\t'animonda|5-11kg' => array( 29, 33, 60 ),\n\t\t'quattro|1.5-5kg' => array( 23, 37, 72 ),\n\t\t'hikari|iki1.5kg' => array( 96, 137, 217 ),\n\t\t'quattro|11kg+' => array( 31, 50, 81 ),\n\t\t'miamor|iki1.5kg' => array( 22, 35, 84 ),\n\t\t'ontario|1.5-5kg' => array( 20, 43, 90 ),\n\t\t'animonda|11kg+' => array( 32, 38, 46 ),\n\t\t'quattro|5-11kg' => array( 51, 91, 104 ),\n\t\t'ambrosia|11kg+' => array( 23, 30, 44 ),\n\t\t'josera|1.5-5kg' => array( 34, 56, 103 ),\n\t\t'monge|1.5-5kg' => array( 25, 39, 50 ),\n\t\t'rasco|11kg+' => array( 42, 50, 57 ),\n\t\t'royal-canin|1.5-5kg' => array( 24, 39, 76 ),\n\t\t'royal-canin|5-11kg' => array( 98, 115, 197 ),\n\t\t'prins|1.5-5kg' => array( 35, 46, 83 ),\n\t\t'apollo|1.5-5kg' => array( 29, 46, 74 ),\n\t);",
+   "const CIKLAI_BRENDAS = array(\n\t\t'animonda' => array( 23, 38, 60 ),\n\t\t'josera' => array( 33, 61, 110 ),\n\t\t'exclusion' => array( 41, 62, 97 ),\n\t\t'ontario' => array( 26, 43, 79 ),\n\t\t'quattro' => array( 28, 50, 87 ),\n\t\t'miamor' => array( 23, 34, 86 ),\n\t\t'hikari' => array( 85, 131, 217 ),\n\t\t'royal-canin' => array( 37, 64, 108 ),\n\t\t'monge' => array( 26, 38, 51 ),\n\t\t'rasco' => array( 40, 48, 56 ),\n\t\t'apollo' => array( 29, 43, 71 ),\n\t\t'ambrosia' => array( 26, 30, 49 ),\n\t\t'prins' => array( 45, 63, 94 ),\n\t);",
+   "function init",
+   "function bucket",
+   "function ciklas",
+   "function pagal_anketa",
+   "function pataisyti_ciklus",
+   "function pataisyti_eilute",
+   "function prasyta",
+   "function holdout",
+   "function similar_ok",
+   "function eligibility"
+  ],
+  "vartai_holdout": "s1684.md) vietoj grubių 14/30/60 d.; (2) refill_due / post_purchase_14d eligibility = ERĮ 81(2) soft opt-out (ps_soft_optin_eligible && !ps_similar_optout), kol lauko nėra — atidedama; (3) 90/10 holdout (permanentinis, pagal el. pašto hash). Raimio leidimas „taisyk ką reikia\" 09-14.\n * v1.2.0 (S1685, Raimio sprendimas): kliento „išmoktas\" intervalas (2+ pirkimai) trumpesnis už istorinį p25 tam brendui/pakuotei (arba <14 d., kai lentelės nėra) = papildymas, ne ciklas → imama lentelės mediana (arba 30 d.) nuo paskutinio pirkimo, confidence 0.50; kitaip 09-04+09-14 pirkimai duodavo priminimą po 2 d.\n * Version: 1.2.2\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Lifecycle_Vartai {\n\tconst VER = '1.2.0';\n\tconst OPT_VARTAI = 'ps_lifecycle_vartai'; // 'soft' (numatyta: reikia soft opt-out žymos) | 'atvira' (Raimio sprendimas leisti be žymos) | 'uzdaryta'\n\tconst HOLDOUT_PCT = 10;\n\t/** brendas|pakuotė → array(p25, mediana, p75) dienomis. Šaltinis: ps_ist 2024-01…2026-08, recon s1684_me. */\n\tconst CIKLAI = array(\n\t\t'animonda|1.5-5kg' => array( 19, 34, 57 ),\n\t\t'josera|11kg+' => array( 33, 56, 100 ),\n\t\t'animonda|iki1.5kg' => array( 28, 41, 65 ),\n\t\t'josera|5-11kg' => array( 36, 73, 135 ),\n\t\t'exclusion|11kg+' => array( 39, 62, 96 ),\n\t\t'exclusion|5-11kg' => array( 55, 76, 118 ),\n\t\t'exclusion|1.5-5kg' => array( 23, 38, 66 ),\n\t\t'ontario|iki1.5kg' => array( 26, 40, 61 ),\n\t\t'animonda|5-11kg' => array( 29, 33, 60 ),\n\t\t'quattro|1.5-5kg' => array( 23, 37, 7",
+  "winback": [
+   "const KLASE   = 'similar_soft_optin';",
+   "const PO_D    = 30;",
+   "const CRON    = 'ps_sugrazinimas_diena';",
+   "const OPT_LOG = 'ps_sugrazinimas_pask';"
+  ],
+  "cron_lifecycle": {
+   "ps_post_purchase_check": "10-01 18:39",
+   "ps_refill_iv_veidrodis": "10-01 19:06",
+   "ps_sugrazinimas_diena": "10-02 05:30",
+   "ps_refill_daily_check": "10-02 08:00"
+  }
  },
- "v": "dep-175156",
+ "v": "dep-182002",
  "kurimas": 200,
- "sid": 6904,
+ "sid": 6912,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
