@@ -1,110 +1,320 @@
 {
- "1": {
+ "2": {
   "v": "S1745a",
-  "faze": "1",
-  "cols": {
-   "ps_carts": [
-    "id",
-    "cart_id",
-    "session_key",
-    "user_id",
-    "email",
-    "email_source",
-    "last_cart_activity_at",
-    "cart_hash",
-    "snapshot_json",
-    "snapshot_version",
-    "status",
-    "status_changed_at",
-    "converted_order_id",
-    "created_at",
-    "updated_at"
-   ],
-   "ps_email_jobs": [
-    "id",
-    "job_key",
-    "flow",
-    "flow_class",
-    "recipient_email",
-    "recipient_user_id",
-    "subject",
-    "payload",
-    "status",
-    "block_reason",
-    "provider",
-    "provider_message_id",
-    "attempts",
-    "last_error",
-    "scheduled_at",
-    "sent_at",
-    "created_at",
-    "updated_at",
-    "skip_reason",
-    "error_message",
-    "decision_at",
-    "next_attempt_at",
-    "context_json",
-    "delivered_at",
-    "opened_at",
-    "clicked_at"
-   ]
-  },
-  "carts": [
+  "faze": "2",
+  "flows": [
    {
-    "n": "31298",
-    "konv": "220",
-    "nuo": "2026-09-07 19:01:41"
+    "flow": "browse_abandoned",
+    "status": "sent",
+    "n": "2",
+    "nuo": "2026-09-22 18:37:02",
+    "pask": "2026-09-30 19:38:47"
+   },
+   {
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "n": "12",
+    "nuo": "2026-09-13 18:37:09",
+    "pask": null
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "sent",
+    "n": "7",
+    "nuo": "2026-09-10 11:54:40",
+    "pask": "2026-09-20 09:03:44"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "n": "53",
+    "nuo": "2026-09-09 14:55:04",
+    "pask": null
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "sent",
+    "n": "6",
+    "nuo": "2026-09-11 12:00:39",
+    "pask": "2026-09-21 09:09:08"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "n": "23",
+    "nuo": "2026-09-15 08:49:40",
+    "pask": null
+   },
+   {
+    "flow": "consent_changed",
+    "status": "sent",
+    "n": "17",
+    "nuo": "2026-09-10 09:52:54",
+    "pask": "2026-10-01 04:48:47"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "deferred",
+    "n": "18",
+    "nuo": "2026-09-17 16:39:51",
+    "pask": null
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "n": "98",
+    "nuo": "2026-09-20 08:39:38",
+    "pask": null
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "n": "14",
+    "nuo": "2026-09-16 08:39:29",
+    "pask": "2026-10-01 16:09:19"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "n": "41",
+    "nuo": "2026-09-10 23:39:33",
+    "pask": null
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "n": "171",
+    "nuo": "2026-09-10 23:39:33",
+    "pask": "2026-10-01 15:43:42"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "n": "36",
+    "nuo": "2026-09-26 21:39:27",
+    "pask": null
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "n": "135",
+    "nuo": "2026-09-10 23:39:33",
+    "pask": "2026-10-01 13:08:43"
+   },
+   {
+    "flow": "refill_due",
+    "status": "skipped",
+    "n": "7",
+    "nuo": "2026-09-18 08:01:02",
+    "pask": null
    }
   ],
-  "cart_pvz": {
-   "id": "31489",
-   "cart_id": "c_0567902157612fe7122accad680f704e",
-   "session_key": "t_760494d43d2d29330ef271df2d4a84",
-   "user_id": null,
-   "email": "***",
-   "email_source": "***",
-   "last_cart_activity_at": "2026-10-01 15:49:18",
-   "cart_hash": "052a4ba202fd88bab602a8613a5625b614b3a296",
-   "snapshot_json": "[{\"product_id\":21370,\"variation_id\":0,\"quantity\":1,\"variation\":[],\"item_data\":[]},{\"product_id\":21372,\"variation_id\":0,\"…",
-   "snapshot_version": "1",
-   "status": "active",
-   "status_changed_at": "2026-10-01 15:48:58",
-   "converted_order_id": null,
-   "created_at": "2026-10-01 15:48:58",
-   "updated_at": "2026-10-01 15:49:18"
-  },
-  "job_pvz": {
-   "id": "1112",
-   "job_key": "post_purchase_14d:36558",
-   "flow": "post_purchase_14d",
-   "flow_class": "service",
-   "recipient_email": "***",
-   "recipient_user_id": "5880",
-   "subject": null,
-   "payload": "{\"order_id\":36558,\"order_number\":\"1211\",\"first_name\":\"Giedr\\u0117\",\"items\":[{\"name\":\"FLEXI pavad\\u0117lis \\u0161uniui Ne…",
-   "status": "pending",
-   "block_reason": null,
-   "provider": null,
-   "provider_message_id": null,
-   "attempts": "0",
-   "last_error": null,
-   "scheduled_at": "2026-10-13 15:06:21",
-   "sent_at": null,
-   "created_at": "2026-10-01 15:39:27",
-   "updated_at": "2026-10-01 15:39:27",
-   "skip_reason": null,
-   "error_message": null,
-   "decision_at": null,
-   "next_attempt_at": null,
-   "context_json": "{\"order_id\":36558}",
-   "delivered_at": null,
-   "opened_at": null,
-   "clicked_at": null
-  }
+  "pvz_ctx": "{\"cart_id\":\"c_6bf4b44e623d30b5734701f756e5bed4\",\"recovery_url\":\"https:\\/\\/petshop.lt\\/atkurti-krepseli\\/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY2FydF9yZWNvdmVyeSIsInN1YmplY3RfaWQiOjAsInJlc291cmNlX2lkIjoiY",
+  "siusta": [
+   {
+    "job": "475",
+    "flow": "cart_abandoned",
+    "siusta": "2026-09-10 11:58:44",
+    "atid": 0,
+    "pasp": 0,
+    "cart": [
+     "abandoned",
+     null,
+     "2026-09-10 09:50:38"
+    ],
+    "uzs_po": []
+   },
+   {
+    "job": "480",
+    "flow": "cart_abandoned_2",
+    "siusta": "2026-09-11 12:03:46",
+    "atid": 0,
+    "pasp": 0,
+    "cart": [
+     "abandoned",
+     null,
+     "2026-09-10 09:50:38"
+    ],
+    "uzs_po": []
+   },
+   {
+    "job": "481",
+    "flow": "cart_abandoned",
+    "siusta": "2026-09-11 19:39:04",
+    "atid": 0,
+    "pasp": 0,
+    "cart": [
+     "abandoned",
+     null,
+     "2026-09-11 17:32:11"
+    ],
+    "uzs_po": [
+     [
+      "1030",
+      "09-12 23:54",
+      "completed",
+      45.39,
+      ""
+     ]
+    ]
+   },
+   {
+    "job": "485",
+    "flow": "cart_abandoned_2",
+    "siusta": "2026-09-12 19:43:42",
+    "atid": 0,
+    "pasp": 0,
+    "cart": [
+     "abandoned",
+     null,
+     "2026-09-11 17:32:11"
+    ],
+    "uzs_po": [
+     [
+      "1030",
+      "09-12 23:54",
+      "completed",
+      45.39,
+      ""
+     ]
+    ]
+   },
+   {
+    "job": "537",
+    "flow": "cart_abandoned",
+    "siusta": "2026-09-14 00:18:48",
+    "atid": 0,
+    "pasp": 0,
+    "cart": null,
+    "uzs_po": []
+   },
+   {
+    "job": "539",
+    "flow": "cart_abandoned",
+    "siusta": "2026-09-14 07:38:40",
+    "atid": 0,
+    "pasp": 0,
+    "cart": [
+     "abandoned",
+     null,
+     "2026-09-14 05:31:19"
+    ],
+    "uzs_po": []
+   },
+   {
+    "job": "547",
+    "flow": "cart_abandoned_2",
+    "siusta": "2026-09-15 07:43:41",
+    "atid": 0,
+    "pasp": 0,
+    "cart": [
+     "abandoned",
+     null,
+     "2026-09-14 05:31:19"
+    ],
+    "uzs_po": []
+   },
+   {
+    "job": "553",
+    "flow": "cart_abandoned",
+    "siusta": "2026-09-15 17:33:43",
+    "atid": 0,
+    "pasp": 0,
+    "cart": [
+     "abandoned",
+     null,
+     "2026-09-15 15:25:33"
+    ],
+    "uzs_po": []
+   },
+   {
+    "job": "594",
+    "flow": "cart_abandoned_2",
+    "siusta": "2026-09-16 17:38:53",
+    "atid": 0,
+    "pasp": 0,
+    "cart": [
+     "abandoned",
+     null,
+     "2026-09-15 15:25:33"
+    ],
+    "uzs_po": []
+   },
+   {
+    "job": "773",
+    "flow": "cart_abandoned",
+    "siusta": "2026-09-20 08:54:37",
+    "atid": 0,
+    "pasp": 0,
+    "cart": [
+     "abandoned",
+     null,
+     "2026-09-20 06:48:09"
+    ],
+    "uzs_po": []
+   },
+   {
+    "job": "774",
+    "flow": "cart_abandoned",
+    "siusta": "2026-09-20 09:03:44",
+    "atid": 0,
+    "pasp": 0,
+    "cart": [
+     "abandoned",
+     null,
+     "2026-09-20 06:48:55"
+    ],
+    "uzs_po": []
+   },
+   {
+    "job": "798",
+    "flow": "cart_abandoned_2",
+    "siusta": "2026-09-21 08:58:55",
+    "atid": 0,
+    "pasp": 0,
+    "cart": [
+     "abandoned",
+     null,
+     "2026-09-20 06:48:09"
+    ],
+    "uzs_po": []
+   },
+   {
+    "job": "799",
+    "flow": "cart_abandoned_2",
+    "siusta": "2026-09-21 09:09:08",
+    "atid": 0,
+    "pasp": 0,
+    "cart": [
+     "abandoned",
+     null,
+     "2026-09-20 06:48:55"
+    ],
+    "uzs_po": []
+   },
+   {
+    "job": "809",
+    "flow": "browse_abandoned",
+    "siusta": "2026-09-22 18:38:40",
+    "atid": 0,
+    "pasp": 0,
+    "cart": null,
+    "uzs_po": []
+   },
+   {
+    "job": "1078",
+    "flow": "browse_abandoned",
+    "siusta": "2026-09-30 19:38:47",
+    "atid": 0,
+    "pasp": 0,
+    "cart": null,
+    "uzs_po": []
+   }
+  ]
  },
- "v": "dep-161154",
+ "v": "dep-161333",
  "kurimas": 200,
- "sid": 6891,
+ "sid": 6892,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
