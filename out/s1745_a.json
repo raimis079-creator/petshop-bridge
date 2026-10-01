@@ -1,190 +1,64 @@
 {
- "3": {
+ "4": {
   "v": "S1745a",
-  "faze": "3",
-  "skip": [
-   {
-    "flow": "cart_abandoned",
-    "pr": "consent_missing",
-    "n": "51",
-    "pask": "2026-09-30 23:13:06"
-   },
-   {
-    "flow": "cart_abandoned",
-    "pr": "suppressed_marketing_unsubscribe",
-    "n": "2",
-    "pask": "2026-10-01 12:47:20"
-   },
-   {
-    "flow": "cart_abandoned_2",
-    "pr": "consent_missing",
-    "n": "22",
-    "pask": "2026-09-30 13:37:15"
-   },
-   {
-    "flow": "cart_abandoned_2",
-    "pr": "suppressed_marketing_unsubscribe",
-    "n": "1",
-    "pask": "2026-09-18 16:12:26"
-   }
-  ],
-  "jobs_po_0921": [
-   {
-    "flow": "cart_abandoned",
-    "status": "skipped",
-    "n": "17"
-   },
-   {
-    "flow": "cart_abandoned_2",
-    "status": "skipped",
-    "n": "7"
-   }
-  ],
-  "carts_su_email_d": [
-   {
-    "d": "2026-09-18",
-    "n": "455",
-    "su_email": "8",
-    "aband": "445",
-    "aband_email": "1",
-    "konv": "8"
-   },
-   {
-    "d": "2026-09-19",
-    "n": "2296",
-    "su_email": "9",
-    "aband": "2282",
-    "aband_email": "0",
-    "konv": "10"
-   },
-   {
-    "d": "2026-09-20",
-    "n": "410",
-    "su_email": "11",
-    "aband": "393",
-    "aband_email": "3",
-    "konv": "10"
-   },
-   {
-    "d": "2026-09-21",
-    "n": "43",
-    "su_email": "10",
-    "aband": "24",
-    "aband_email": "0",
-    "konv": "10"
-   },
-   {
-    "d": "2026-09-22",
-    "n": "11402",
-    "su_email": "8",
-    "aband": "11390",
-    "aband_email": "1",
-    "konv": "6"
-   },
-   {
-    "d": "2026-09-23",
-    "n": "3310",
-    "su_email": "12",
-    "aband": "3285",
-    "aband_email": "1",
-    "konv": "13"
-   },
-   {
-    "d": "2026-09-24",
-    "n": "7755",
-    "su_email": "11",
-    "aband": "7734",
-    "aband_email": "1",
-    "konv": "10"
-   },
-   {
-    "d": "2026-09-25",
-    "n": "4778",
-    "su_email": "6",
-    "aband": "4760",
-    "aband_email": "1",
-    "konv": "9"
-   },
-   {
-    "d": "2026-09-26",
-    "n": "19",
-    "su_email": "3",
-    "aband": "5",
-    "aband_email": "0",
-    "konv": "6"
-   },
-   {
-    "d": "2026-09-27",
-    "n": "20",
-    "su_email": "2",
-    "aband": "5",
-    "aband_email": "0",
-    "konv": "6"
-   },
-   {
-    "d": "2026-09-28",
-    "n": "32",
-    "su_email": "9",
-    "aband": "5",
-    "aband_email": "1",
-    "konv": "15"
-   },
-   {
-    "d": "2026-09-29",
-    "n": "36",
-    "su_email": "13",
-    "aband": "14",
-    "aband_email": "1",
-    "konv": "13"
-   },
-   {
-    "d": "2026-09-30",
-    "n": "25",
-    "su_email": "9",
-    "aband": "9",
-    "aband_email": "2",
-    "konv": "11"
-   },
-   {
-    "d": "2026-10-01",
-    "n": "12",
-    "su_email": "3",
-    "aband": "3",
-    "aband_email": "0",
-    "konv": "6"
-   }
-  ],
-  "statusai": [
-   {
-    "status": "abandoned",
-    "n": "30924"
-   },
-   {
-    "status": "active",
-    "n": "18"
-   },
-   {
-    "status": "converted",
-    "n": "220"
-   },
-   {
-    "status": "expired",
-    "n": "136"
-   }
-  ],
-  "opc": {
-   "petshop_cart_abandon_seeded": "2026-07-31 10:36:02",
-   "woocommerce_feature_abandoned_cart_recovery_enabled": "no"
+  "faze": "4",
+  "o": {
+   "1222": "nerasta",
+   "1227": "nerasta",
+   "1243": "nerasta"
   },
-  "cron": {
-   "ps_email_dispatch_cron": "10-01 16:18",
-   "ps_cart_abandon_check": "10-01 16:19",
-   "ps_browse_abandon_check": "10-01 16:37"
-  }
+  "kodas": {
+   "wp-content/mu-plugins/petshop-nepamoketi.php": [
+    "* Plugin Name: Petshop Neapmokėtų užsakymų taisyklė",
+    "* filtro `woocommerce_cancel_unpaid_order` (wc-order-functions.php:1141)",
+    "add_filter('woocommerce_cancel_unpaid_order', [__CLASS__, 'ar_atsaukti'], 20, 2);"
+   ],
+   "wp-content/mu-plugins/petshop-kelio-fiksavimas.php": [
+    "* dar neapmokėjus. Tuo momentu `Petshop_AV_Order::fiksuoti()` dar nebuvo",
+    "77 / 36296): kasą pateikus antrą kartą (tas pats krepšelis, neapmokėtas užsakymas)"
+   ],
+   "wp-content/mu-plugins/petshop-bacs-priminimas.php": [
+    "* 2) Po BET KOKIO neapmokėto užsakymo atšaukimo (Paysera 90 min., bacs 72 val., ranki",
+    "$order->update_status( 'cancelled', 'Bacs: neapmokėta per 72 val. — atšaukta automatiškai' . ( $tyliai ? ' tyl"
+   ],
+   "wp-content/mu-plugins/petshop-juosta.php": [
+    "* Petshop Juosta v1.6 (S1617) — „Užsakymai“ / „Neapmokėti“ skaičiai be pakartotinių užsakymų (meta `_ps_pakartotin",
+    "y( $s['uzs'], 'reikia veiksmo', 'a' ), array( $s['neapm'], 'neapmokėti', 'n' ) ), 'ps-desk' === $pg && ! in_array( $view, array"
+   ],
+   "wp-content/mu-plugins/petshop-prenumerata.php": [
+    "return new WP_Error('jau_laukia', 'laukia neapmoketas #' . (int) $s['pending_order_id']);"
+   ],
+   "wp-content/mu-plugins/petshop-desk.php": [
+    "*   Nauji · Neapmokėti · Paruošta siųsti · Klausimai · Atšaukti · Visi",
+    "'neapmoketi' => array( 'Neapmokėti',      'laukia kliento pinigų — tik stebėti',     '#D9A6",
+    "'neapmoketi' => array( 'pending', 'failed', 'on-hold', 'lp-parcel-aw",
+    "foreach ( array( 'neapmoketi', 'paruosta', 'atsaukti' ) as $e ) {"
+   ],
+   "wp-content/mu-plugins/petshop-lenteliu-valymas.php": [
+    "000 — valymo niekur nebuvo. Naktinis cron 03:50: ps_carts — neapmokėti (converted_order_id NULL) senesni nei 90 d.; ps_web_ivyk"
+   ],
+   "wp-content/mu-plugins/petshop-darbalaukis.php": [
+    "* Petshop Darbalaukis v3.43 (S1680, Raimis 09-14): atšaukto NEAPMOKĖTO užsakymo atkūrimas, kai klientas vėliau sumokėjo pavedim",
+    "* Petshop Darbalaukis v3.41 (S1676, Raimis 09-12 „neapmokėtas — nematau mokėjimo būdo“): visur, kur „Neapmokėtas“ — s",
+    "intervalas')`), Apmokėjimas (pavedimu / Paysera / grynais / neapmokėtas), Būsena (vykdomas / sustabdytas / įvykdytas / atšaukta",
+    "s / grąžintas / neapmokėtas), Suma nuo–iki, Rikiuoti „seniausi pirmi“; bet kuris fi"
+   ],
+   "wp-content/mu-plugins/petshop-prenumeratos-langas.php": [
+    "'Neapmokėti ciklo užsakymai > 3 d.',",
+    "'Užsakymas sukurtas, bet neapmokėtas. Filtruojama pagal WC būseną žemiau.'),"
+   ],
+   "wp-content/plugins/petshop-core/templates/emails/dunning-1.php": [
+    "arba užsakymo nebereikia — tiesiog atsakykite į šį laišką. Neapmokėtą užsakymą po kelių dienų atšauksime automatiškai, jokių į"
+   ],
+   "wp-content/plugins/petshop-core/includes/class-plan-attribution.php": [
+    "is sutapo su AV variklio tiekimo kelio raktu (av/vf/zb…) ir neapmokėtuose užsakymuose darbalaukis rodė „CALC_PRODUCT siunčia kl"
+   ]
+  },
+  "wc_pending_cancel_min": "90"
  },
- "v": "dep-161513",
+ "v": "dep-163310",
  "kurimas": 200,
- "sid": 6893,
+ "sid": 6894,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
