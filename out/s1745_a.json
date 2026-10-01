@@ -1,279 +1,35 @@
 {
- "8": {
+ "9": {
   "v": "S1745a",
-  "faze": "8",
-  "kodas": {
-   "wp-content/mu-plugins/petshop-anketos-ataskaita.php": [
-    "array( 'pav' => 'Išsiųstas priminimas', 'sk' => $snt ),"
-   ],
-   "wp-content/mu-plugins/petshop-av-dropship.php": [
-    "* bendras nustatymas su Tiekimu (`ps_tiek_laiskai`), o kiekvienas išsiųstas",
-    "wp_die( 'Laiškas NEIŠSIŲSTAS: ' . esc_html( $vardas ) . ' el. pašto adresas ' . ( $tiek_blogi ? 'neteisingas (' . esc_"
-   ],
-   "wp-content/mu-plugins/petshop-klientai.php": [
-    "tikimas įrašytas (šaltinis: admin, ' . wp_get_current_user()->display_name . '). Klientui išsiųstas patvirtinimas.'; }"
-   ],
-   "wp-content/mu-plugins/petshop-pakartoti.php": [
-    "/** Vartai: (a) to paties užsakymo laiškas jau išsiųstas per LANGAS_D → terminal; (b) nė vienos prekės sandėlyje → deferred. */"
-   ],
-   "wp-content/mu-plugins/petshop-uzsakymu-ivykiai.php": [
-    "'laiskas' => 'Laiškas tiekėjui išsiųstas',"
-   ],
-   "wp-content/mu-plugins/petshop-laiskai.php": [
-    "'order_shipped' => array( 'order_number', 'carrier', 'tracking_number', 'tracking_url' ),"
-   ],
-   "wp-content/mu-plugins/petshop-bacs-priminimas.php": [
-    "$order->add_order_note( 'Bacs priminimas (+48 val.) klientui ' . ( $ok ? 'išsiųstas' : 'NEPAVYKO' ) . ' (S1676).' );",
-    "' tyliai (klientas apmokėjo naujesnį #' . implode( ',#', $n['ids'] ) . ')' : ', klientui išsiųstas WC pranešimas' ) . ' (S1676).' );"
-   ],
-   "wp-content/mu-plugins/petshop-siuntu-laiskai.php": [
-    "$o->add_order_note( 'Sekimo numerių laiškas išsiųstas klientui: ' . $o->get_billing_email()",
-    "$ok ? 'Laiškas išsiųstas.' : 'Laiško išsiųsti nepavyko.' );"
-   ],
-   "wp-content/mu-plugins/petshop-rezultatai.php": [
-    "'order_paid'=>'Užsakymas priimtas','order_shipped'=>'Užsakymas išsiųstas',",
-    "if ($f === 'order_paid' || $f === 'order_shipped') $past[] = 'siunčia WooCommerce';"
-   ],
-   "wp-content/mu-plugins/petshop-langai-admin.php": [
-    "'order_shipped' => array( 'Užsakymas išsiųstas', 'Rezervinis — šiuo metu siunčia WooCommerce.' ),",
-    "'testas_ok' => array( 'success', 'Testinis laiškas išsiųstas jūsų adresu.' ),"
-   ],
-   "wp-content/mu-plugins/petshop-desk.php": [
-    "'customer_processing_order', 'customer_completed_order', 'customer_on_hold_order',",
-    "$naudotojas, $tylus ? 'NESIŲSTAS' : 'išsiųstas' ),",
-    "$naudotojas, $su_laisku ? 'išsiųstas' : 'NESIŲSTAS' ),",
-    "sprintf( 'Pažymėta išsiųsta darbalaukyje. Vartotojas: %s. WC laiškas klientui: %s.',",
-    "$naudotojas, $su_laisku ? 'išsiųstas' : 'NESIŲSTAS' ),",
-    "eta' => array( 'ok', 'Užsakymas #%s pažymėtas apmokėtu. Prekės nurašytos, klientui išsiųstas patvirtinimas.' ),"
-   ],
-   "wp-content/mu-plugins/petshop-kampaniju-langas.php": [
-    "if ($nl['status'] === 'sent') return new WP_Error('jau_issiustas', 'Naujienlaiskis #' . $id . ' jau pazymetas issiustu');"
-   ],
-   "wp-content/mu-plugins/petshop-darbalaukis.php": [
-    "39, Raimis 09-08): siuntos_laiskas() — pilname laiške (viena siunta arba paskutinė „visas išsiųstas\") prekių sąrašo NĖRA (jos sąskaitoje/paskyroje) ir segamas PVM sąskaitos PDF",
-    "„Atsiėmimas AV / kita“; v3.35.1: „Klientas atsiėmė“ — WC „įvykdytas“ laiškas (temos tema „išsiųstas!“) išjungtas, siunčiamas savas laiškas su PVM sąskaitos PDF (šablono laukai `iv_tema` / `",
-    "* naujas užsakymas → `completed` be WC laiškų (tema jį rašytų „išsiųstas“), temos kablys išrašo AVPN, darbalaukio laiškas „apmokėjimas gautas“ su PVM",
-    "* negauna „visas užsakymas išsiųstas“); §18.3 sargo apėjimas `_ps_uzbaigti_be_siuntu=1` rašomas tik kai darbuotojas pažymėjo V",
-    "iuntų“ (kita keliaus atskirai) → „Išsiųsta 2 iš 2“; vienos siuntos užsakymui — „Užsakymas išsiųstas“.",
-    "* Visuose — būsenos žymė (Neapmokėtas · Neišrūšiuotas · Ruošiamas · Paruoštas · Išsiųstas · Įvykdytas · Atšauktas · Klausimas)."
-   ],
-   "wp-content/mu-plugins/petshop-prenumeratos-langas.php": [
-    "style=\"max-width:860px;margin-bottom:24px\"><thead><tr><th>Sukurtas</th><th>Būsena</th><th>Išsiųstas</th><th>Pristatytas</th><th>Atidarytas</th><th>Paspaustas</th><th>Pastaba</th></tr></thea"
-   ],
-   "wp-content/mu-plugins/petshop-kliento-siuntos.php": [
-    "* - LP Express plugino SAVO sekimo laiškas klientui (`woo_lithuaniapost_send_tracking_email` → `send_tracking_email`) IŠJUNGTAS —",
-    "* viena sistema: laišką „Išsiųsta n iš N“ / „Užsakymas išsiųstas“ siunčia darbalaukis (`Petshop_Darbalaukis::siuntos_laiskas()`),",
-    "* `lpsettings_event_to_send_tracking_email` ir `lpsettings_event_to_change_status_to_completed` = „Never“ (S1610 e12), kad pluginas",
-    "if ( has_action( 'woo_lithuaniapost_send_tracking_email' ) ) { remove_all_actions( 'woo_lithuaniapost_send_tracking_email' ); $nuimta[] = 'lp_sen",
-    "d_tracking_email'; }"
-   ],
-   "wp-content/mu-plugins/petshop-av-tiekimas.php": [
-    "'uzsakyta' => array( 'success', 'Užsakymas išsiųstas tiekėjui. Partija uždaryta, atsidarė nauja.' ),",
-    "'uzsakyta_vp' => array( 'success', 'Užsakymas išsiųstas tiekėjui, siunta užregistruota Venipak, lipdukas prisegtas prie laiško. Partija uždaryta.",
-    "'uzsakyta_man' => array( 'success', 'Partija uždaryta. Laiškas su lipduku išsiųstas TAU (terra@petshop.lt) — persiųsk tiekėjui. Tiekėjui sistema nieko nesiuntė.' ),",
-    "'uzsakyta_be_laisko'=> array( 'warning', 'Partija uždaryta, JOKS laiškas neišsiųstas (abi varnelės nuimtos). Lipduką rasi kortelėje.' ),",
-    "=> array( 'error', 'Siuntos užregistruoti nepavyko — partija NEUŽDARYTA, laiškas neišsiųstas.' ),"
-   ],
-   "wp-content/mu-plugins/petshop-naujienlaiskiai-admin.php": [
-    "<td><?php echo $r['status'] === 'sent' ? '<b>išsiųstas</b>' : 'juodraštis'; ?></td>",
-    "$issiustas = ($nl && $nl['status'] === 'sent');",
-    "<?php if ($issiustas): ?><span style=\"color:#2D5F3F\">· išsiųstas</span><?php endif; ?></h1>",
-    "<button class=\"button button-primary\" id=\"ps-irasyti\" <?php disabled($issiustas); ?>>Įrašyti</button>",
-    "<?php if ($id && !$issiustas): ?>"
-   ],
-   "wp-content/plugins/petshop-core/templates/emails/order-shipped.php": [
-    "* Sablonas: order_shipped — REZERVINIS.",
-    "$subject = $nr ? 'Jūsų užsakymas ' . $nr . ' išsiųstas' : 'Jūsų užsakymas išsiųstas';"
-   ],
-   "wp-content/plugins/petshop-core/includes/class-email-dispatch.php": [
-    "'order_shipped' => array( 'class' => 'transactional', 'template' => 'order-shipped', 'dela",
-    "// tyliai — laiskas jau issiustas"
-   ],
-   "wp-content/plugins/petshop-core/includes/class-cart-abandonment.php": [
-    "Kiti emiteriai (order_paid, order_shipped) taip elgiasi nuo pradziu. */"
-   ],
-   "wp-content/plugins/petshop-core/includes/class-event-registry.php": [
-    "* pet_profile_updated, cart_abandoned, order_paid, order_shipped, refill_due,",
-    "'order_shipped' => false, // M12 (Venipak/LP meta-change)"
-   ],
-   "wp-content/plugins/petshop-core/includes/class-event-emitters.php": [
-    "* order_shipped (M12, S192) — Venipak/LP neturi švaraus \"shipment created\" hook'o,",
-    "* tracking kodas. Idempotencija per _ps_order_shipped_emitted meta zyma.",
-    "// order_shipped: HPOS naudoja woocommerce_update_order (NE updated_postmeta).",
-    "add_action( 'woocommerce_update_order', array( __CLASS__, 'maybe_emit_order_shipped' ), 20, 1 );",
-    "// order_shipped (M12) — kabinamas ant woocommerce_update_order (HPOS).",
-    "const SHIPPED_FLAG_META = '_ps_order_shipped_emitted';"
-   ],
-   "wp-content/plugins/petshop-core/includes/class-retry-queue.php": [
-    "$message = \"Event nebus issiustas i Sender.\\n\\n\""
-   ],
-   "wp-content/plugins/petshop-core/includes/class-shipments.php": [
-    "* ar order_shipped eventas jau buvo emit'intas. Kitaip antra siunta"
-   ],
-   "wp-content/plugins/petshop-core/includes/class-refill-engine.php": [
-    "// Apsauga nuo ciklo (kaip order_shipped)"
-   ],
-   "wp-content/plugins/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-settings.php": [
-    "'id' => 'lpsettings_event_to_send_tracking_email',",
-    "> __( 'To include tracking link into already existing WooCommerce email templates add {unisend_tracking_number} text into template content.', 'woo-lithuaniapost' )"
-   ],
-   "wp-content/plugins/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-service.php": [
-    "$event_to_send_tracking_email = Woo_Lithuaniapost_Admin_Settings::get_option('event_to_send_tracking_email');",
-    "if ($event_to_send_tracking_email && $event_to_send_tracking_email === LpOrderStatus::$SHIPPING_INITIATED->to_order_status()) {",
-    "do_action('woo_lithuaniapost_send_tracking_email', $order);"
-   ],
-   "wp-content/plugins/woo-lithuaniapost-main/admin/class-woo-lithuaniapost-admin-order-tracking.php": [
-    "$event_to_send_tracking_email = Woo_Lithuaniapost_Admin_Settings::get_option('event_to_send_tracking_email');",
-    "if ((!$event_to_send_tracking_email === false && $lp_order_status == LpOrderStatus::$ON_THE_WAY) || ($event_to_send_tracking_",
-    "email && $lp_order_status->to_order_status() == $event_to_send_tracking_email)) {",
-    "do_action('woo_lithuaniapost_send_tracking_email', $order);",
-    "public function load_tracking_email_template ( $order )",
-    "public function send_tracking_email ( $order )"
-   ],
-   "wp-content/plugins/woo-lithuaniapost-main/includes/class-woo-lithuaniapost.php": [
-    "$this->loader->add_action ( 'woo_lithuaniapost_send_tracking_email', $plugin_order_tracking, 'send_tracking_email' );"
-   ],
-   "wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php": [
-    "'{unisend_tracking_number}' => '<a href=\"' . get_rest_url(null, '/unisend/tracking/' . $order->get_id()) . '"
-   ]
+  "faze": "9",
+  "klientui": {
+   "Klientui išsiųsta „Užsakymas išsiųstas“ #: #": 161,
+   "Klientui išsiųsta „Išsiųsta # siuntų“ #: #": 14,
+   "Klientui išsiųsta „Užsakymas išsiųstas“ #: V#E": 11,
+   "Klientui išsiųsta „Užsakymas išsiųstas“ #: V#": 10,
+   "Klientui išsiųsta „Užsakymas išsiųstas“ #: HC#": 3,
+   "Bacs priminimas (+48 val.) klientui išsiųstas (S#).": 2,
+   "Klientui išsiųsta „Išsiųsta # siuntų“ #: V#E": 2,
+   "Klientui išsiųsta „Užsakymas išsiųstas“ #: #,": 1,
+   "Bacs: neapmokėta per 72 val. — atšaukta automatiškai, klientui išsiųstas WC pran": 1,
+   "Klientui išsiųsta „Užsakymas išsiųstas“ #: V0": 1,
+   "Klientui išsiųsta „Užsakymas išsiųstas“ #: #, V": 1,
+   "Klientui išsiųsta „Užsakymas išsiųstas“ #: HC03": 1,
+   "S#: klientui išsiųsta patikslinta PVM sąskaita AVPN# (dimsiene.diana@gma": 1,
+   "S#: klientui išsiųsta patikslinta PVM sąskaita AVPN# #": 1,
+   "S#: klientui išsiųsta patikslinta PVM sąskaita AVPN# (astele72@gmail.com": 1,
+   "S#: klientui išsiųsta patikslinta PVM sąskaita AVPN# (karoliscre@gmail.c": 1,
+   "S#: klientui išsiųsta patikslinta PVM sąskaita AVPN# (kasandra#@gmail.": 1,
+   "Klientui išsiųsta „Užsakymas išsiųstas“ (jurgitajanusaityte.janusaityte@gmail.co": 1
   },
-  "snip": [
-   {
-    "id": "653",
-    "name": "Petshop Invoice Completed Attach Fix v3 (LIVE)",
-    "active": "1"
-   },
-   {
-    "id": "6712",
-    "name": "TEMP PS dep-174035",
-    "active": "0"
-   },
-   {
-    "id": "6713",
-    "name": "TEMP PS dep-174205",
-    "active": "0"
-   },
-   {
-    "id": "6714",
-    "name": "TEMP PS dep-174327",
-    "active": "0"
-   },
-   {
-    "id": "6855",
-    "name": "TEMP PS dep-094502",
-    "active": "0"
-   },
-   {
-    "id": "6898",
-    "name": "TEMP PS dep-170236",
-    "active": "1"
-   }
-  ],
-  "hooks": {
-   "woocommerce_email_enabled_customer_completed_order": [
-    "10 Automattic\\WooCommerce\\Internal\\Orders\\PointOfSaleEmailHandler::maybe_suppress_email",
-    "20 Petshop_Darbalaukis::pakartotinis_wc_laiskai"
-   ],
-   "woocommerce_order_status_completed": [
-    "1 closure@snippet-ops.php(663) : eval()'d code:6",
-    "5 closure@functions.php:548",
-    "10 wc_paying_customer",
-    "10 wc_downloadable_product_permissions",
-    "10 wc_update_total_sales_counts",
-    "10 wc_update_coupon_usage_counts",
-    "10 wc_maybe_reduce_stock_levels",
-    "10 Petshop_Post_Purchase::stamp",
-    "10 WC_Emails::send_transactional_email",
-    "11 wc_release_stock_for_order",
-    "20 Petshop_GA4_Serveris::siusti",
-    "20 Petshop_Event_Emitters::on_order_paid_status",
-    "25 Petshop_Partijos::uzsakymo_nurasymas",
-    "30 Petshop_Prenumerata_Katalogas::is_uzsakymo",
-    "30 Petshop_Refill_Engine::on_order_paid",
-    "35 Petshop_Faktai::rasyti",
-    "40 Petshop_Fakt_Siuntos::gyvavimas",
-    "40 Petshop_Lifecycle_Vartai::pataisyti_ciklus"
-   ],
-   "woocommerce_order_status_completed_notification": []
-  },
-  "uzs": {
-   "1240": {
-    "mok": "paysera",
-    "siunta": "VENIPAK paštomatai/atsiėmimo punktai",
-    "pastabos": [
-     "09-30 18:01 Stock hold of 90 minutes applied to: - Animonda Vom Feinsten Junior with Poultry and Turkey Hearts - konservai šuniukams/jauniems šunims su paukštiena",
-     "09-30 18:01 Svečio užsakymas priskirtas esamai paskyrai #2647 pagal el. paštą (S1690).",
-     "09-30 18:01 Vykdymas: MAIN — AV 15 vnt (1 siunta(-os)) · dropship pirma",
-     "09-30 18:01 Paysera: Neapmokėto užsakymo būsena",
-     "09-30 18:01 Likutis sumažintas: Animonda Vom Feinsten Junior with Poultry and Turkey Hearts - konservai šuniukams/jauniems šunims su paukštiena ir kalakutų širdim",
-     "09-30 18:02 Paysera: Užsakymo būsena po apmokėjimo",
-     "09-30 18:02 AV nurašymas: #19366 grynai AV 63 -> 48",
-     "09-30 18:02 Partijos nurašytos: #19366 −15 vnt. (1 partijos)",
-     "09-30 18:02 Faktai irasyti: 1 eilutes · pajamos 15,74 EUR (be PVM, po nuolaidu) · PVM 3,68 EUR · marza 5,54 EUR · kontribucija (be pristatymo) 6,87 EUR",
-     "09-30 18:02 Surūšiuota pati: Animonda Vom Feinsten Junior with Poultr — Iš AV",
-     "09-30 18:02 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
-     "09-30 18:02 Email \"Naujas užsakymas\" sent.",
-     "09-30 18:02 Email \"Užsakymas vykdomas\" sent.",
-     "09-30 18:02 Paysera: Naujo užsakymo kūrimo būsena",
-     "10-01 08:28 Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
-     "10-01 08:28 Siuntos numeriai išsaugoti (AV): V07267E1000276",
-     "10-01 11:36 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS.",
-     "10-01 11:36 Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
-     "10-01 11:36 Klientui išsiųsta „Užsakymas išsiųstas“ (jurgitajanusaityte.janusaityte@gmail.com): V07267E1000276"
-    ]
-   },
-   "1241": {
-    "mok": "paysera",
-    "siunta": "VENIPAK Kurjeris",
-    "pastabos": [
-     "09-30 19:11 Stock hold of 90 minutes applied to: - Comfy uždaras tualetas katei, pilkas, 54x40x40 (AQ115565) &times; 1",
-     "09-30 19:11 Vykdymas: DS — VF 1 vnt (1 siunta(-os)) · dropship pirma",
-     "09-30 19:11 Paysera: Neapmokėto užsakymo būsena",
-     "09-30 19:11 Likutis sumažintas: Comfy uždaras tualetas katei, pilkas, 54x40x40 (7&rarr;6)",
-     "09-30 19:15 Paysera: Užsakymo būsena po apmokėjimo",
-     "09-30 19:15 Faktai irasyti: 1 eilutes · pajamos 11,23 EUR (be PVM, po nuolaidu) · PVM 3,05 EUR · marza 3,21 EUR · kontribucija (be pristatymo) 6,06 EUR",
-     "09-30 19:15 Surūšiuota pati: Comfy uždaras tualetas katei, pilkas, 54 — VF siunčia klientui",
-     "09-30 19:15 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
-     "09-30 19:15 Email \"Naujas užsakymas\" sent.",
-     "09-30 19:15 Email \"Užsakymas vykdomas\" sent.",
-     "09-30 19:15 Paysera: Naujo užsakymo kūrimo būsena",
-     "10-01 12:47 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
-     "10-01 12:47 Siuntos numeriai išsaugoti (VF): V07267E1000280",
-     "10-01 12:48 Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarmas.lt, terra@petshop.lt",
-     "10-01 18:06 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS.",
-     "10-01 18:06 Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
-     "10-01 18:06 Klientui išsiųsta „Užsakymas išsiųstas“ (jolantakeizik@gmail.com): V07267E1000280"
-    ]
-   },
-   "1246": {
-    "mok": "paysera",
-    "siunta": "VENIPAK paštomatai/atsiėmimo punktai",
-    "pastabos": [
-     "10-01 10:34 Stock hold of 90 minutes applied to: - Lašišų  žuvų taukai, 1L (V004978) &times; 1",
-     "10-01 10:34 Vykdymas: DS — VF 1 vnt (1 siunta(-os)) · dropship pirma",
-     "10-01 10:34 Paysera: Neapmokėto užsakymo būsena",
-     "10-01 10:34 Likutis sumažintas: Lašišų  žuvų taukai, 1L (15&rarr;14)",
-     "10-01 10:35 Paysera: Užsakymo būsena po apmokėjimo",
-     "10-01 10:35 Faktai irasyti: 1 eilutes · pajamos 5,20 EUR (be PVM, po nuolaidu) · PVM 1,67 EUR · marza 1,40 EUR · kontribucija (be pristatymo) 2,73 EUR",
-     "10-01 10:35 Surūšiuota pati: Lašišų  žuvų taukai, 1L — VF siunčia klientui",
-     "10-01 10:35 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
-     "10-01 10:35 Email \"Naujas užsakymas\" sent.",
-     "10-01 10:35 Email \"Užsakymas vykdomas\" sent.",
-     "10-01 10:35 Paysera: Naujo užsakymo kūrimo būsena",
-     "10-01 12:47 Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
-     "10-01 12:47 Siuntos numeriai išsaugoti (VF): V07267E1000281",
-     "10-01 12:48 Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarmas.lt, terra@petshop.lt",
-     "10-01 18:06 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS.",
-     "10-01 18:06 Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
-     "10-01 18:06 Klientui išsiųsta „Užsakymas išsiųstas“ (mojapoctairina@gmail.com): V07267E1000281"
-    ]
-   }
-  },
-  "jobs_siunta": []
+  "completed": 198,
+  "completed_be_laisko": [],
+  "be_laisko_n": 0,
+  "be_laisko_pvz": []
  },
- "v": "dep-170236",
+ "v": "dep-170424",
  "kurimas": 200,
- "sid": 6898,
+ "sid": 6899,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
