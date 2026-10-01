@@ -1,0 +1,40 @@
+{
+ "1": {
+  "v": "S1745k3",
+  "input": [
+   "<input type=\"hidden\" name=\"ps_kl_veiksmas\" value=\"perskaiciuoti\">",
+   "<input type=\"hidden\" name=\"page\" value=\"' . self::PSL . '\">",
+   "<input type=\"search\" name=\"q\" value=\"' . esc_attr( $f['q'] ) . '\" placeholder=\"el. paštas, vardas, prekė\">",
+   "<input type=\"hidden\" name=\"ps_kl_veiksmas\" value=\"auditorija\">",
+   "<input type=\"hidden\" name=\"' . $k . '\" value=\"' . esc_attr( $v ) . '\">",
+   "<input type=\"hidden\" name=\"uid\" value=\"' . $uid . '\">",
+   "<input type=\"hidden\" name=\"ps_kl_veiksmas\" value=\"pastaba\">"
+  ],
+  "kortele_param": [
+   "page"
+  ],
+  "get": [
+   "page",
+   "uid",
+   "psl"
+  ],
+  "ps_stat_pradzia": "",
+  "opc": {
+   "ps_ist_perjungimas": "(nera)",
+   "ps_ist_perjungimo_data": "(nera)",
+   "ps_t0": "(nera)",
+   "ps_t0_data": "(nera)"
+  },
+  "ak_opcijos": [
+   "ps_stat_pradzia",
+   "ps_rytas_ribos"
+  ]
+ },
+ "v": "dep-191649",
+ "kurimas": 200,
+ "sid": 6924,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
