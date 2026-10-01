@@ -1,0 +1,1088 @@
+{
+ "1": {
+  "v": "S1744a",
+  "faze": "1",
+  "opc": {
+   "ijungta": "ne",
+   "sku": [
+    "RINK-RUDOS-JAUČIO-AUSYS-20",
+    "RINK-BALTOS-JAUČIO-AUSYS-20",
+    "RINK-RUDOS-KNYSLES-20"
+   ],
+   "lifecycle_vartai": false
+  },
+  "mu": [
+   [
+    "petshop-bacs-priminimas.php",
+    "1.0.2",
+    "12.3KB",
+    "f3629926",
+    "2026-09-12"
+   ],
+   [
+    "petshop-lifecycle-vartai.php",
+    "1.2.2",
+    "10.2KB",
+    "41f40c51",
+    "2026-09-16"
+   ],
+   [
+    "petshop-pakartoti.php",
+    "1.1.6",
+    "11.4KB",
+    "d0108a62",
+    "2026-09-16"
+   ],
+   [
+    "petshop-perziuru-priminimas.php",
+    "1.0.0",
+    "8.2KB",
+    "3091c14e",
+    "2026-08-29"
+   ],
+   [
+    "petshop-pren-nuorodos.php",
+    "1.0",
+    "6.2KB",
+    "df695184",
+    "2026-08-30"
+   ],
+   [
+    "petshop-pren-sutikimas.php",
+    "1.0",
+    "3.1KB",
+    "9a5c9281",
+    "2026-08-30"
+   ],
+   [
+    "petshop-prenumerata-katalogas.php",
+    "4.0",
+    "15.7KB",
+    "d474d546",
+    "2026-08-30"
+   ],
+   [
+    "petshop-prenumerata-paskyra.php",
+    "3.0",
+    "43.9KB",
+    "d7685fb2",
+    "2026-08-30"
+   ],
+   [
+    "petshop-prenumerata-veiksmas.php",
+    "1.0",
+    "4.2KB",
+    "dcb7c4c1",
+    "2026-08-30"
+   ],
+   [
+    "petshop-prenumerata.php",
+    "2.0",
+    "27.6KB",
+    "46657a60",
+    "2026-08-30"
+   ],
+   [
+    "petshop-prenumeratos-langas.php",
+    "2.4",
+    "39.9KB",
+    "a9ed4c84",
+    "2026-08-30"
+   ],
+   [
+    "petshop-prenumeratu-prognoze.php",
+    "1.0",
+    "6.8KB",
+    "f3963ad5",
+    "2026-08-30"
+   ],
+   [
+    "petshop-refill-ivykiai.php",
+    "1.2",
+    "7.4KB",
+    "e9fc492f",
+    "2026-08-16"
+   ],
+   [
+    "petshop-relaunch.php",
+    "1.1.1 — S1688: priminimo registracija prekės puslapyje po skaičiavimo (blokas #ps-primink, REST ps-relaunch/v1/priminti; prisijungęs → iš karto, svečias → patvirtinimo nuoroda el. paštu ?ps_primink=&z=). Registracija = ps_refill_tracking eilutė (feedback_cycle='relaunch', confidence 0.5, terminas pagal calc dienas × maišo būseną), Petshop_Sutikimai::nustatyti(optout=0,'relaunch_calc'), ps_weight_signal confidence high, ps_web_ivykiai `reminder_optin`. Svorio paspaudimas ir priminimas — du skirtingi veiksmai.",
+    "22.9KB",
+    "b9c054c9",
+    "2026-09-16"
+   ],
+   [
+    "petshop-sugrazinimas.php",
+    "1.0.0",
+    "5.3KB",
+    "ef12c9c5",
+    "2026-09-15"
+   ],
+   [
+    "petshop-sutikimai.php",
+    "1.0.1",
+    "4.9KB",
+    "1f22890e",
+    "2026-09-15"
+   ]
+  ],
+  "plugins_subs": [],
+  "lenteles": {
+   "gaj6_ps_action_tokens": 112,
+   "gaj6_ps_email_jobs": 636,
+   "gaj6_ps_pets": 85,
+   "gaj6_ps_plan_events": 10,
+   "gaj6_ps_refill_tracking": 243,
+   "gaj6_ps_reminders": 10,
+   "gaj6_ps_subscription_events": 0,
+   "gaj6_ps_subscription_items": 0,
+   "gaj6_ps_subscriptions": 0
+  },
+  "subs_status": [],
+  "subs_cols": [
+   "id",
+   "user_id",
+   "email",
+   "pet_id",
+   "product_id",
+   "qty",
+   "interval_days",
+   "mode",
+   "status",
+   "next_cycle_date",
+   "cycle_confirmed",
+   "success_cycles",
+   "dunning_attempts",
+   "dunning_next",
+   "pending_order_id",
+   "price_locked",
+   "price_locked_until",
+   "payment_method",
+   "delivery_json",
+   "created_at",
+   "updated_at",
+   "paused_at",
+   "cancelled_at",
+   "discount_pct"
+  ],
+  "SQL_ERR": [
+   "Unknown column 'event_type' in 'SELECT'"
+  ],
+  "sub_ev": [],
+  "ps_plan_events_cols": [
+   "id",
+   "pet_id",
+   "user_id",
+   "product_id",
+   "qty",
+   "unit_price",
+   "source",
+   "session_key",
+   "order_id",
+   "created_at"
+  ],
+  "ps_plan_events_pask": [
+   {
+    "id": "17",
+    "pet_id": null,
+    "user_id": null,
+    "product_id": "20543",
+    "qty": "1",
+    "unit_price": "21.8000",
+    "source": "calc_product",
+    "session_key": "t_413760e4cddf6fcc98a8a3e8014055",
+    "order_id": null,
+    "created_at": "2026-09-29 15:39:48"
+   },
+   {
+    "id": "16",
+    "pet_id": null,
+    "user_id": null,
+    "product_id": "18149",
+    "qty": "1",
+    "unit_price": "45.3900",
+    "source": "calc_product",
+    "session_key": "t_83c7fc19ee81de40d88a55a0025742",
+    "order_id": "36568",
+    "created_at": "2026-09-28 23:41:51"
+   },
+   {
+    "id": "15",
+    "pet_id": null,
+    "user_id": null,
+    "product_id": "18154",
+    "qty": "1",
+    "unit_price": "45.2900",
+    "source": "calc_product",
+    "session_key": "t_83c7fc19ee81de40d88a55a0025742",
+    "order_id": "36568",
+    "created_at": "2026-09-28 23:41:06"
+   },
+   {
+    "id": "14",
+    "pet_id": null,
+    "user_id": null,
+    "product_id": "18557",
+    "qty": "1",
+    "unit_price": "79.9000",
+    "source": "calc_product",
+    "session_key": "t_a307eed113f2b81e8663a97749ed86",
+    "order_id": null,
+    "created_at": "2026-09-26 18:14:01"
+   },
+   {
+    "id": "13",
+    "pet_id": null,
+    "user_id": null,
+    "product_id": "18080",
+    "qty": "1",
+    "unit_price": "11.6900",
+    "source": "calc_product",
+    "session_key": "t_d80324c066e07b9c366725ffe20a30",
+    "order_id": null,
+    "created_at": "2026-09-25 19:18:33"
+   },
+   {
+    "id": "12",
+    "pet_id": null,
+    "user_id": null,
+    "product_id": "18530",
+    "qty": "1",
+    "unit_price": "17.0500",
+    "source": "calc_product",
+    "session_key": "t_7375511ae19370ab7c459da8d80aea",
+    "order_id": null,
+    "created_at": "2026-09-20 10:36:43"
+   },
+   {
+    "id": "11",
+    "pet_id": null,
+    "user_id": null,
+    "product_id": "18587",
+    "qty": "1",
+    "unit_price": "56.9900",
+    "source": "calc_product",
+    "session_key": "t_a714cfaf5e42982abe3f54e55c55c2",
+    "order_id": "36094",
+    "created_at": "2026-09-20 10:16:10"
+   },
+   {
+    "id": "10",
+    "pet_id": null,
+    "user_id": null,
+    "product_id": "20481",
+    "qty": "24",
+    "unit_price": "2.6900",
+    "source": "calc_product",
+    "session_key": "t_8edfda9d2a112703d8d1db70ffd8cc",
+    "order_id": null,
+    "created_at": "2026-09-16 22:49:44"
+   },
+   {
+    "id": "9",
+    "pet_id": null,
+    "user_id": null,
+    "product_id": "18590",
+    "qty": "2",
+    "unit_price": "21.9500",
+    "source": "calc_product",
+    "session_key": "t_041a8318e05b10f72d589ca65f9e1e",
+    "order_id": null,
+    "created_at": "2026-09-13 13:02:14"
+   },
+   {
+    "id": "8",
+    "pet_id": null,
+    "user_id": null,
+    "product_id": "19692",
+    "qty": "7",
+    "unit_price": "2.6000",
+    "source": "calc_product",
+    "session_key": "t_0498240eb655d0f0efeae6ceea6d1d",
+    "order_id": null,
+    "created_at": "2026-09-12 12:48:49"
+   }
+  ],
+  "ps_reminders_cols": [
+   "id",
+   "user_id",
+   "pet_id",
+   "reminder_type",
+   "reminder_label",
+   "due_date",
+   "repeat_interval_days",
+   "notify_email",
+   "status",
+   "notified_at",
+   "completed_at",
+   "created_at",
+   "updated_at"
+  ],
+  "ps_reminders_pask": [
+   {
+    "id": "24",
+    "user_id": "24",
+    "pet_id": "155",
+    "reminder_type": "vaccination",
+    "reminder_label": null,
+    "due_date": "2026-07-18",
+    "repeat_interval_days": null,
+    "notify_email": "1",
+    "status": "active",
+    "notified_at": "2026-07-30 09:00:59",
+    "completed_at": null,
+    "created_at": "2026-07-29 13:37:31",
+    "updated_at": "2026-07-30 09:00:59"
+   },
+   {
+    "id": "23",
+    "user_id": "1",
+    "pet_id": "147",
+    "reminder_type": "cage_clean",
+    "reminder_label": null,
+    "due_date": "2026-12-01",
+    "repeat_interval_days": null,
+    "notify_email": "1",
+    "status": "active",
+    "notified_at": null,
+    "completed_at": null,
+    "created_at": "2026-07-28 13:06:45",
+    "updated_at": "2026-07-28 13:06:45"
+   },
+   {
+    "id": "22",
+    "user_id": "1",
+    "pet_id": "148",
+    "reminder_type": "water_change",
+    "reminder_label": null,
+    "due_date": "2026-12-01",
+    "repeat_interval_days": null,
+    "notify_email": "1",
+    "status": "active",
+    "notified_at": null,
+    "completed_at": null,
+    "created_at": "2026-07-28 13:06:45",
+    "updated_at": "2026-07-28 13:06:45"
+   },
+   {
+    "id": "21",
+    "user_id": "1",
+    "pet_id": "144",
+    "reminder_type": "deworming",
+    "reminder_label": null,
+    "due_date": "2026-12-01",
+    "repeat_interval_days": null,
+    "notify_email": "1",
+    "status": "active",
+    "notified_at": null,
+    "completed_at": null,
+    "created_at": "2026-07-28 13:06:45",
+    "updated_at": "2026-07-28 13:06:45"
+   },
+   {
+    "id": "20",
+    "user_id": "1",
+    "pet_id": "149",
+    "reminder_type": "vaccination",
+    "reminder_label": null,
+    "due_date": "2026-12-01",
+    "repeat_interval_days": null,
+    "notify_email": "1",
+    "status": "active",
+    "notified_at": null,
+    "completed_at": null,
+    "created_at": "2026-07-28 13:06:45",
+    "updated_at": "2026-07-28 13:06:45"
+   },
+   {
+    "id": "13",
+    "user_id": "1",
+    "pet_id": "86",
+    "reminder_type": "vaccination",
+    "reminder_label": null,
+    "due_date": "2026-09-11",
+    "repeat_interval_days": null,
+    "notify_email": "0",
+    "status": "cancelled",
+    "notified_at": null,
+    "completed_at": null,
+    "created_at": "2026-07-23 22:10:00",
+    "updated_at": "2026-07-24 18:15:05"
+   },
+   {
+    "id": "10",
+    "user_id": "1",
+    "pet_id": "115",
+    "reminder_type": "vet_checkup",
+    "reminder_label": null,
+    "due_date": "2026-08-20",
+    "repeat_interval_days": null,
+    "notify_email": "1",
+    "status": "active",
+    "notified_at": "2026-08-17 09:02:17",
+    "completed_at": null,
+    "created_at": "2026-07-23 18:12:29",
+    "updated_at": "2026-08-17 09:02:17"
+   },
+   {
+    "id": "9",
+    "user_id": "1",
+    "pet_id": "112",
+    "reminder_type": "flea_tick",
+    "reminder_label": null,
+    "due_date": "2026-08-10",
+    "repeat_interval_days": null,
+    "notify_email": "0",
+    "status": "active",
+    "notified_at": "2026-08-07 09:01:15",
+    "completed_at": null,
+    "created_at": "2026-07-23 17:57:50",
+    "updated_at": "2026-08-07 09:01:15"
+   },
+   {
+    "id": "8",
+    "user_id": "1",
+    "pet_id": "110",
+    "reminder_type": "vaccination",
+    "reminder_label": null,
+    "due_date": "2026-09-15",
+    "repeat_interval_days": null,
+    "notify_email": "0",
+    "status": "active",
+    "notified_at": "2026-09-12 09:01:52",
+    "completed_at": null,
+    "created_at": "2026-07-23 17:54:50",
+    "updated_at": "2026-09-12 09:01:52"
+   },
+   {
+    "id": "7",
+    "user_id": "1",
+    "pet_id": "108",
+    "reminder_type": "vaccination",
+    "reminder_label": null,
+    "due_date": "2026-09-15",
+    "repeat_interval_days": null,
+    "notify_email": "0",
+    "status": "active",
+    "notified_at": "2026-09-12 09:01:52",
+    "completed_at": null,
+    "created_at": "2026-07-23 17:52:07",
+    "updated_at": "2026-09-12 09:01:52"
+   }
+  ],
+  "refill_cols": [
+   "id",
+   "user_id",
+   "product_id",
+   "pet_id",
+   "last_order_id",
+   "last_purchase_date",
+   "purchase_count",
+   "avg_interval_days",
+   "predicted_empty_date",
+   "confidence",
+   "status",
+   "created_at",
+   "updated_at",
+   "last_feedback",
+   "last_feedback_at",
+   "feedback_cycle"
+  ],
+  "refill_status": [
+   {
+    "status": "active",
+    "n": "236",
+    "klientu": "116",
+    "min_d": "2026-10-07",
+    "max_d": "2027-01-18"
+   },
+   {
+    "status": "notified",
+    "n": "7",
+    "klientu": "4",
+    "min_d": "2026-09-23",
+    "max_d": "2026-10-06"
+   }
+  ],
+  "refill_men": [
+   {
+    "men": "2026-10",
+    "n": "116",
+    "klientu": "51"
+   },
+   {
+    "men": "2026-11",
+    "n": "100",
+    "klientu": "57"
+   },
+   {
+    "men": "2026-12",
+    "n": "19",
+    "klientu": "19"
+   },
+   {
+    "men": "2027-01",
+    "n": "1",
+    "klientu": "1"
+   }
+  ],
+  "refill_top_prekes": [
+   {
+    "product_id": "18587",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauli",
+    "n": "14"
+   },
+   {
+    "product_id": "18590",
+    "pav": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauli",
+    "n": "6"
+   },
+   {
+    "product_id": "19692",
+    "pav": "Animonda Carny Adult Beef + Heart – konservai katėms su švie",
+    "n": "4"
+   },
+   {
+    "product_id": "19708",
+    "pav": "Animonda Carny Adult Beef + Chicken + Duck Heart – konservai",
+    "n": "4"
+   },
+   {
+    "product_id": "19417",
+    "pav": "Animonda Vom Feinsten Adult with Poultry and Veal – konserva",
+    "n": "4"
+   },
+   {
+    "product_id": "17978",
+    "pav": "Josera Sensiplus 12,5 kg - sausas maistas šunims su jautria ",
+    "n": "4"
+   },
+   {
+    "product_id": "19411",
+    "pav": "Animonda Vom Feinsten Adult with Rabbit - konservai suaugusi",
+    "n": "4"
+   },
+   {
+    "product_id": "19446",
+    "pav": "Animonda Vom Feinsten Adult with Beef and Turkey Hearts – ko",
+    "n": "4"
+   },
+   {
+    "product_id": "19613",
+    "pav": "Animonda Carny Kitten – konservai kačiukams su jautiena, viš",
+    "n": "4"
+   },
+   {
+    "product_id": "19620",
+    "pav": "Animonda Carny Kitten – konservai kačiukams su jautiena ir k",
+    "n": "4"
+   },
+   {
+    "product_id": "19405",
+    "pav": "Animonda Vom Feinsten Adult with Salmon and Shrimp – konserv",
+    "n": "3"
+   },
+   {
+    "product_id": "35330",
+    "pav": "Exclusion Hypo konservuotas pašaras šunims su arkliena ir bu",
+    "n": "3"
+   },
+   {
+    "product_id": "18599",
+    "pav": "Exclusion Hypoallergenic konservai šunims su kiauliena ir ži",
+    "n": "3"
+   },
+   {
+    "product_id": "19582",
+    "pav": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šv",
+    "n": "3"
+   },
+   {
+    "product_id": "19590",
+    "pav": "Animonda GranCarno Adult Beef + Duck Hearts: konservai suaug",
+    "n": "3"
+   },
+   {
+    "product_id": "19609",
+    "pav": "Animonda Carny Kitten – konservai kačiukams su paukštiena ir",
+    "n": "3"
+   },
+   {
+    "product_id": "19760",
+    "pav": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maista",
+    "n": "3"
+   },
+   {
+    "product_id": "18369",
+    "pav": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 135 ml",
+    "n": "3"
+   },
+   {
+    "product_id": "21671",
+    "pav": "Josera Kitten Beef begrūdis konservuotas pašaras jaunoms kat",
+    "n": "3"
+   },
+   {
+    "product_id": "19672",
+    "pav": "Animonda Carny Adult Beef + Turkey + Shrimp – konservai katė",
+    "n": "3"
+   },
+   {
+    "product_id": "19508",
+    "pav": "Animonda GranCarno Adult: konservai suaugusiems šunims su ka",
+    "n": "3"
+   },
+   {
+    "product_id": "19586",
+    "pav": "Animonda GranCarno Adult Beef + Lamb: konservai šunims su šv",
+    "n": "3"
+   },
+   {
+    "product_id": "18018",
+    "pav": "Josera Mini Lamb begrūdis (Mini Deluxe) 10 kg - sausas maist",
+    "n": "3"
+   },
+   {
+    "product_id": "19425",
+    "pav": "Animonda Vom Feinsten Adult with Deer - konservai suaugusiem",
+    "n": "3"
+   },
+   {
+    "product_id": "21331",
+    "pav": "Josera Kitten Chicken begrūdis konservuotas pašaras jaunoms ",
+    "n": "3"
+   }
+  ],
+  "jobs": [
+   {
+    "flow": "post_purchase_14d",
+    "status": "deferred",
+    "sr": "soft_optout_nezinomas",
+    "n": "25",
+    "pask": "2026-09-19 09:39:28"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "sr": "",
+    "n": "102",
+    "pask": "2026-10-01 08:39:28"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "sr": "",
+    "n": "8",
+    "pask": "2026-09-19 09:39:28"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "sr": "soft_optout_nezinomas",
+    "n": "3",
+    "pask": "2026-09-16 08:39:29"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sr": "deferral_expired",
+    "n": "24",
+    "pask": "2026-09-17 08:39:33"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sr": "holdout_10",
+    "n": "5",
+    "pask": "2026-09-18 14:39:28"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sr": "similar_optout",
+    "n": "3",
+    "pask": "2026-09-18 15:39:27"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "sr": "",
+    "n": "38",
+    "pask": "2026-10-01 08:39:28"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "sr": "",
+    "n": "132",
+    "pask": "2026-09-26 11:39:42"
+   },
+   {
+    "flow": "refill_due",
+    "status": "skipped",
+    "sr": "already_repurchased",
+    "n": "7",
+    "pask": "2026-10-01 08:00:04"
+   }
+  ],
+  "meta_uzs": [
+   {
+    "meta_key": "_ps_similar_optout",
+    "n": "181"
+   }
+  ],
+  "pakartoti_uzs": [],
+  "item_meta": [],
+  "usermeta": [
+   {
+    "meta_key": "_ps_pren_nuolaida",
+    "n": "1"
+   },
+   {
+    "meta_key": "ps_similar_optout",
+    "n": "144"
+   },
+   {
+    "meta_key": "ps_soft_optin_eligible",
+    "n": "144"
+   }
+  ],
+  "puslapiai": {
+   "35281": [
+    "prenumeratos-taisykles",
+    "draft",
+    "2026-08-30 23:49:35",
+    2863
+   ],
+   "prenumeratos-taisykles": [
+    35281,
+    "draft",
+    "2026-08-30 23:49:35"
+   ],
+   "pren-veiksmas": null,
+   "refill-feedback": null,
+   "taisykles": [
+    34524,
+    "publish",
+    "2026-09-30 19:03:15"
+   ]
+  },
+  "cron": {
+   "ps_prenumerata_diena": "10-02 09:10",
+   "ps_prognoze_diena": "10-02 06:40",
+   "ps_refill_daily_check": "10-02 11:00",
+   "ps_sugrazinimas_diena": "10-02 08:30",
+   "ps_relaunch_diena": null
+  },
+  "ciklas_log": {
+   "kada": "2026-10-01 06:10:13",
+   "diena": "2026-10-01",
+   "rez": {
+    "t5": 0,
+    "uzsakymai": 0,
+    "sulaikyta": 0,
+    "dunning": 0,
+    "klaidos": []
+   }
+  },
+  "gateways": {
+   "paysera": {
+    "enabled": "yes",
+    "title": "Mokėjimas internetu",
+    "supports": [
+     "products"
+    ],
+    "klase": "Paysera_Payment_Gateway"
+   },
+   "bacs": {
+    "enabled": "yes",
+    "title": "Bankinis pavedimas",
+    "supports": [
+     "products"
+    ],
+    "klase": "WC_Gateway_BACS"
+   },
+   "cheque": {
+    "enabled": "no",
+    "title": "Apmokėjimas čekiu",
+    "supports": [
+     "products"
+    ],
+    "klase": "WC_Gateway_Cheque"
+   },
+   "cod": {
+    "enabled": "no",
+    "title": "Apmokėjimas grynais atsiimant (COD)",
+    "supports": [
+     "products"
+    ],
+    "klase": "WC_Gateway_COD"
+   }
+  },
+  "paysera_raktai": [
+   "enabled"
+  ]
+ },
+ "2": {
+  "v": "S1744a",
+  "faze": "2",
+  "kodas": {
+   "petshop-pakartoti.php": [
+    "6: * v1.1.5: matavimui — endpoint'as žymi WC sesiją ps_pakartoti_is=<order>, kasoje užsakymas gauna meta _ps_pakartoti_is (Q4 plano langas skaičiuoja konversiją).",
+    "16: public static function init() {",
+    "17: add_filter( 'petshop_email_template_path', array( __CLASS__, 'sablonas' ), 20, 3 );",
+    "18: add_filter( 'petshop_email_eligibility', array( __CLASS__, 'vartai' ), 30, 5 );",
+    "19: add_action( 'wp_loaded', array( __CLASS__, 'endpoint' ), 20 );",
+    "20: add_action( 'woocommerce_checkout_create_order', array( __CLASS__, 'zyme' ), 30, 2 );",
+    "23: public static function sablonas( $file, $flow, $slug ) {",
+    "31: public static function grupe_preke( $uid, $pid, $r ) {",
+    "40: public static function grupe( $uid, $pid ) {",
+    "69: public static function vartai( $result, $flow, $flow_class, $email, $context = array() ) {",
+    "88: public static function raktas() { $k = get_option( self::OPT_RAKTAS ); if ( ! $k ) { $k = wp_generate_password( 32, false ); update_option( self::OPT_RAKTAS, $k, false );",
+    "89: public static function zenklas( $oid ) { return substr( hash_hmac( 'sha256', 'pakartoti:' . (int) $oid, self::raktas() ), 0, 20 ); }",
+    "90: public static function url( $oid ) { return add_query_arg( array( 'ps_pakartoti' => (int) $oid, 'z' => self::zenklas( $oid ) ), home_url( '/' ) ); }",
+    "93: public static function endpoint() {",
+    "116: public static function zyme( $order, $data ) { if ( WC()->session && WC()->session->get( 'ps_pakartoti_is' ) ) { $order->update_meta_data( '_ps_pakartoti_is', (int) WC()-",
+    "119: public static function duomenys( $payload, $recipient ) {"
+   ],
+   "petshop-pren-nuorodos.php": [
+    "15: public static function init() {",
+    "16: add_action('init', array(__CLASS__, 'gaudyti'), 1);",
+    "20: public static function nuoroda($sid, $veiksmas = '') {",
+    "37: protected static function paskyros_url($sid, $veiksmas = '') {",
+    "44: public static function gaudyti() {",
+    "97: protected static function galioja($r) {",
+    "103: protected static function gal_jau_prisijunges($raw) {",
+    "113: protected static function b64url($s){ return base64_decode(strtr($s,'-_','+/')); }",
+    "115: protected static function klaida($m) {",
+    "121: protected static function puslapis($title, $body) {",
+    "133: function ps_pren_nuoroda($sid, $veiksmas = '') { return Petshop_Pren_Nuorodos::nuoroda($sid, $veiksmas); }"
+   ],
+   "petshop-pren-sutikimas.php": [
+    "14: public static function init() {",
+    "15: add_action('woocommerce_review_order_before_submit', array(__CLASS__, 'varnele'), 9);",
+    "16: add_action('woocommerce_checkout_process', array(__CLASS__, 'tikrinti'));",
+    "17: add_action('woocommerce_checkout_create_order', array(__CLASS__, 'irasyti'), 10, 2);",
+    "21: public static function krepselyje_pren() {",
+    "29: protected static function psl_url() {",
+    "35: protected static function versija() {",
+    "40: public static function varnele() {",
+    "49: .'<span>Sutinku su '.$nuoroda.' — reguliarūs užsakymai pasirinktu dažnumu, kainos fiksavimas, keitimo ir atšaukimo tvarka&nbsp;<abbr class=\"required\" title=\"privaloma\">*<",
+    "53: public static function tikrinti() {",
+    "60: public static function irasyti($order, $data) {"
+   ],
+   "petshop-prenumerata-katalogas.php": [
+    "21: public static function intervalai() {",
+    "26: public static function init() {",
+    "28: add_action('petshop_kortele_blokai', array(__CLASS__, 'korteles_blokas'));",
+    "29: add_action('wp_ajax_ps_pren_sku', array(__CLASS__, 'ajax_sku'));",
+    "30: add_action('admin_footer', array(__CLASS__, 'korteles_js'));",
+    "33: add_action('woocommerce_before_add_to_cart_button', array(__CLASS__, 'pasirinkimas'), 20);",
+    "34: add_filter('woocommerce_add_cart_item_data', array(__CLASS__, 'i_krepseli'), 10, 3);",
+    "35: add_filter('woocommerce_get_item_data', array(__CLASS__, 'krepselyje'), 10, 2);",
+    "36: add_action('woocommerce_checkout_create_order_line_item', array(__CLASS__, 'i_uzsakyma'), 10, 4);",
+    "39: add_action('woocommerce_payment_complete', array(__CLASS__, 'is_uzsakymo'), 30, 1);",
+    "40: add_action('woocommerce_order_status_processing', array(__CLASS__, 'is_uzsakymo'), 30, 1);",
+    "41: add_action('woocommerce_order_status_completed', array(__CLASS__, 'is_uzsakymo'), 30, 1);",
+    "48: public static function ijungta() {",
+    "53: public static function galima($product_id) {",
+    "68: public static function sku_sarasas() {",
+    "80: public static function zemelapis() {",
+    "93: public static function sarasas() {",
+    "98: public static function issaugoti_sku($tekstas) {",
+    "130: public static function korteles_blokas($pid) {",
+    "159: public static function korteles_js() {",
+    "193: public static function ajax_sku() {",
+    "208: public static function pasirinkimas() {",
+    "233: public static function i_krepseli($duom, $product_id, $variation_id) {",
+    "244: public static function krepselyje($items, $cart_item) {",
+    "255: public static function i_uzsakyma($item, $cart_item_key, $values, $order) {",
+    "261: public static function is_uzsakymo($order_id) {",
+    "315: protected static function jau_yra($email, $pid) {"
+   ],
+   "petshop-prenumerata-paskyra.php": [
+    "19: public static function init() {",
+    "20: add_action('init', array(__CLASS__, 'endpointas'));",
+    "21: add_filter('woocommerce_account_menu_items', array(__CLASS__, 'meniu'), 20);",
+    "22: add_action('woocommerce_account_' . self::SLUG . '_endpoint', array(__CLASS__, 'turinys'));",
+    "23: add_filter('woocommerce_get_query_vars', array(__CLASS__, 'query_var'));",
+    "24: add_action('template_redirect', array(__CLASS__, 'veiksmas'), 5);",
+    "27: public static function endpointas() {",
+    "35: public static function query_var($vars) {",
+    "42: protected static function rodyti_meniu() {",
+    "48: public static function meniu($items) {",
+    "66: protected static function mano($user_id) {",
+    "77: protected static function mano_ar($id, $user_id) {",
+    "89: public static function veiksmas() {",
+    "228: protected static function sukurti_is_formos($uid) {",
+    "281: protected static function atgal() {",
+    "286: protected static function pranesimas($t, $tipas = 'gerai') {",
+    "294: protected static function venipak_sarasas() {",
+    "310: protected static function venipak_terminalas($id) {",
+    "315: public static function turinys() {",
+    "339: protected static function lt_data($ymd, $su_metais = true) {",
+    "346: protected static function eur_ct($ct) { return number_format($ct / 100, 2, ',', ' ') . ' €'; }",
+    "349: protected static function hero($naujas) {",
+    "361: protected static function centras($s, $keli) {",
+    "503: protected static function naujas_ekranas() {",
+    "513: protected static function drawer($uid, $turimos, $kurti) {",
+    "555: function psn3Drawer(a){document.getElementById(\"psn3-drawer\").classList.toggle(\"psn3-rod\",a);document.getElementById(\"psn3-uzd\").classList.toggle(\"psn3-rod\",a);}",
+    "556: function psn3Perj(id){var e=document.getElementById(id);if(e)e.classList.toggle(\"psn3-rod\");}",
+    "557: function psn3Red(b){var w=b.closest(\".psn3-panele\").querySelector(\".psn3-prekes\");w.classList.toggle(\"psn3-redag\");b.textContent=w.classList.contains(\"psn3-redag\")?\"Baigt",
+    "566: function psn3Norm(x){var a=\"ąčęėįšųūž\",b=\"aceeisuuz\",r=\"\";x=String(x).toLowerCase();for(var i=0;i<x.length;i++){var j=a.indexOf(x[i]);r+=j>=0?b[j]:x[i];}return r;}",
+    "589: protected static function stilius() {"
+   ],
+   "petshop-prenumerata-veiksmas.php": [
+    "13: public static function init() {",
+    "14: add_action('template_redirect', array(__CLASS__, 'gal'), 1);",
+    "17: public static function gal() {",
+    "58: protected static function psl($antraste, $kunas) {"
+   ],
+   "petshop-prenumerata.php": [
+    "31: public static function intervalo_label($d) {",
+    "38: public static function t()  { global $wpdb; return $wpdb->prefix . 'ps_subscriptions'; }",
+    "39: public static function t_items() {",
+    "43: public static function te() { global $wpdb; return $wpdb->prefix . 'ps_subscription_events'; }",
+    "45: public static function init() {",
+    "46: add_action('init', array(__CLASS__, 'maybe_install'), 5);",
+    "47: add_action('init', function () {",
+    "51: add_action('woocommerce_payment_complete', array(__CLASS__, 'apmoketa'), 10, 1);",
+    "54: public static function maybe_install() {",
+    "119: public static function ivykis($sid, $event, $payload = array()) {",
+    "128: public static function sukurti($d) {",
+    "168: public static function gauti($id) {",
+    "173: protected static function keisti($id, $laukai, $event, $payload = array()) {",
+    "182: public static function pauzuoti($id) {",
+    "185: public static function testi($id) {",
+    "191: public static function praleisti($id) {",
+    "196: public static function keisti_data($id, $data) {",
+    "199: public static function atsaukti($id, $priezastis = '') {",
+    "202: public static function patvirtinti($id) {  // T-5 laiško confirm",
+    "206: public static function perjungti_notify($id) {",
+    "212: public static function keisti_rezima_confirm($id) {",
+    "216: public static function keisti_kieki($id, $qty) {",
+    "225: public static function keisti_dazni($id, $d) {",
+    "231: public static function keisti_pristatyma($id, $arr) {",
+    "243: public static function items($sid) {",
+    "249: protected static function sinchronizuoti_santrauka($sid) {",
+    "259: public static function prideti_preke($sid, $pid, $qty = 1) {",
+    "280: public static function salinti_preke($sid, $item_id) {",
+    "293: public static function keisti_item_kieki($sid, $item_id, $qty) {",
+    "309: protected static function nuolaida_norm($pct) {",
+    "317: public static function kliento_nuolaida($user_id) {",
+    "326: public static function nustatyti_kliento_nuolaida($user_id, $pct) {",
+    "336: public static function nustatyti_sub_nuolaida($sid, $pct) {",
+    "346: public static function nuolaida($s) {",
+    "356: public static function nuolaidos_saltinis($s) {",
+    "363: protected static function pritaikyti_nuolaida_ct($ct, $pct) {",
+    "370: public static function siuntos_suma_bruto_ct($sid) {",
+    "380: public static function siuntos_suma_ct($sid) {",
+    "386: public static function ciklas($siandien = '') {",
+    "458: public static function siusti_t5_dabar($sid) {",
+    "471: public static function admin_paleisti($sid) {",
+    "487: protected static function t5_payload($s) {",
+    "525: protected static function kurti_uzsakyma($s) {",
+    "565: public static function mokejimas_nepavyko($sid, $oid, $klaida = '') {",
+    "578: public static function apmoketa($order_id) {"
+   ],
+   "petshop-prenumeratos-langas.php": [
+    "21: public static function init() {",
+    "22: add_action('admin_menu', array(__CLASS__, 'meniu'), 10);",
+    "23: add_action('admin_init', array(__CLASS__, 'veiksmas'));",
+    "24: add_action('admin_init', array(__CLASS__, 'veiksmas_sku'));",
+    "25: add_action('admin_init', array(__CLASS__, 'veiksmas_flag'));",
+    "28: protected static function tevas() {",
+    "32: public static function meniu() {",
+    "37: protected static function nuoroda($args = array()) {",
+    "42: protected static function pct($v) {",
+    "48: public static function veiksmas() {",
+    "100: public static function veiksmas_sku() {",
+    "112: public static function veiksmas_flag() {",
+    "127: protected static function prekes() {",
+    "187: public static function ekranas() {",
+    "215: protected static function apzvalga() {",
+    "337: protected static function eiles_uzklausos() {",
+    "360: protected static function eiles_kiekis() {",
+    "371: public static function uzstriges($s) {",
+    "377: protected static function eile() {",
+    "408: protected static function mini_forma($sid, $nonce_key, $veiksmas, $tekstas, $grizti_t) {",
+    "418: protected static function sarasas() {",
+    "474: protected static function nuolaidos_santrauka($s) {",
+    "486: protected static function sumos_santrauka($s) {",
+    "497: protected static function nuolaidu_blokas($s, $nonce_key) {",
+    "536: protected static function detale($sid) {"
+   ],
+   "petshop-prenumeratu-prognoze.php": [
+    "14: public static function init() {",
+    "15: add_action('admin_menu', array(__CLASS__, 'menu'), 99);",
+    "25: public static function aktyvus_planai() {",
+    "31: protected static function plano_items($sid, $fallback_pid, $fallback_qty) {",
+    "44: public static function projekcija($dienu = self::HORIZONTAS) {",
+    "73: public static function likutis($pid) {",
+    "85: public static function deficitai() {",
+    "98: public static function kasdien() {",
+    "116: public static function menu() {",
+    "126: public static function puslapis() {"
+   ],
+   "petshop-relaunch.php": [
+    "5: * Version: 1.1.1 — S1688: priminimo registracija prekės puslapyje po skaičiavimo (blokas #ps-primink, REST ps-relaunch/v1/priminti; prisijungęs → iš karto, svečias → patv",
+    "13: public static function init() {",
+    "14: add_action( 'init', array( __CLASS__, 'lentele' ), 5 );",
+    "15: add_action( 'init', array( __CLASS__, 'lentele_v11' ), 6 );",
+    "16: add_action( 'template_redirect', array( __CLASS__, 'paspaudimas' ), 20 );",
+    "17: add_action( 'wp_footer', array( __CLASS__, 'js' ), 99 );",
+    "18: add_action( 'rest_api_init', array( __CLASS__, 'rest' ) );",
+    "19: add_action( 'template_redirect', array( __CLASS__, 'patvirtinimas' ), 19 );",
+    "20: add_filter( 'petshop_welcome_modal_show', array( __CLASS__, 'be_modalo' ) );",
+    "23: /** S1688: atėjus iš laiško (?svoris / cid / ps_primink_ok) „atsinaujino\" modalo nerodyti — laiškas jau tai pasakė, o modalas uždengia skaičiuoklę ir priminimo bloką. */",
+    "24: public static function be_modalo( $show ) { return ( isset( $_GET['svoris'] ) || isset( $_GET['cid'] ) || isset( $_GET['ps_primink_ok'] ) ) ? false : $show; }",
+    "26: public static function t() { global $wpdb; return $wpdb->prefix . self::T; }",
+    "28: public static function lentele() {",
+    "51: public static function lentele_v11() {",
+    "54: if ( ! in_array( 'primink_at', $cols, true ) ) $wpdb->query( \"ALTER TABLE $t ADD primink_at DATETIME NULL, ADD primink_kg DECIMAL(5,1) NULL, ADD primink_busena VARCHAR(12",
+    "58: public static function raktas() { $k = get_option( 'ps_relaunch_raktas' ); if ( ! $k ) { $k = wp_generate_password( 40, false ); update_option( 'ps_relaunch_raktas', $k, ",
+    "59: public static function zenklas( $tok ) { return substr( hash_hmac( 'sha256', 'primink|' . $tok, self::raktas() ), 0, 24 ); }",
+    "62: public static function rusis( $pid, $k = null ) {",
+    "69: public static function dienos( $pid, $kg, $sp ) {",
+    "76: public static function rest() {",
+    "81: public static function rest_priminti( $req ) {",
+    "95: $rk = 'ps_primink_rl_' . md5( strtolower( $email ) ); $n = (int) get_transient( $rk ); if ( $n >= 3 ) return new WP_REST_Response( array( 'ok' => false, 'klaida' => 'Nuor",
+    "96: $tok = self::cid(); set_transient( 'ps_primink_' . $tok, array( 'email' => strtolower( $email ), 'pid' => $pid, 'kg' => $kg, 'busena' => $bus, 'cid' => $cid, 'd' => $d ),",
+    "97: $url = add_query_arg( array( 'ps_primink' => $tok, 'z' => self::zenklas( $tok ) ), home_url( '/' ) );",
+    "102: /** Svečio patvirtinimo nuoroda ?ps_primink=&z= → registracija → prekės puslapis su ?ps_primink_ok=1 */",
+    "103: public static function patvirtinimas() {",
+    "104: if ( empty( $_GET['ps_primink'] ) || empty( $_GET['z'] ) ) return;",
+    "105: $tok = preg_replace( '/[^A-Za-z0-9]/', '', (string) $_GET['ps_primink'] ); $z = preg_replace( '/[^a-f0-9]/', '', (string) $_GET['z'] );",
+    "107: $p = get_transient( 'ps_primink_' . $tok ); if ( ! $p ) { wp_die( 'Nuoroda nebegalioja (7 d.). Prekės puslapyje galite paprašyti priminimo iš naujo.' ); }",
+    "109: if ( ! $u ) { add_filter( 'woocommerce_email_enabled_customer_new_account', '__return_false' ); $nid = wc_create_new_customer( $email, '', wp_generate_password( 24 ) ); i",
+    "112: delete_transient( 'ps_primink_' . $tok );",
+    "113: wp_safe_redirect( add_query_arg( 'ps_primink_ok', '1', get_permalink( (int) $p['pid'] ) ) ); exit;",
+    "117: public static function registruoti( $uid, $email, $pid, $kg, $bus, $d, $cid, $k, $saltinis = 'site' ) {",
+    "131: if ( $k ) $wpdb->update( self::t(), array( 'primink_at' => $dabar, 'primink_kg' => $kg, 'primink_busena' => $bus ), array( 'id' => $k['id'] ) );",
+    "132: elseif ( $email ) $wpdb->query( $wpdb->prepare( \"UPDATE \" . self::t() . \" SET primink_at=%s, primink_kg=%f, primink_busena=%s WHERE email=%s\", $dabar, $kg, $bus, strtolow",
+    "141: public static function laiskas_patvirtinti( $email, $pr, $kg, $d, $url ) {",
+    "151: public static function cid() { return substr( str_replace( array( '+', '/', '=' ), '', base64_encode( random_bytes( 18 ) ) ), 0, 20 ); }",
+    "153: public static function svoris() {",
+    "160: public static function paspaudimas() {",
+    "188: public static function js() {",
+    "194: $cfg = array( 'pid' => $pid, 'pav' => $pr->get_name(), 'rest' => esc_url_raw( rest_url( 'ps-relaunch/v1/priminti' ) ), 'nonce' => wp_create_nonce( 'wp_rest' ), 'uid' => $",
+    "196: <style>.ps-primink{margin:14px 0 6px;padding:16px 18px;border:1px solid #cfe0d2;border-radius:10px;background:#f4f9f5;font-size:14px;line-height:1.45;color:#1f2a1f}.ps-pr",
+    "198: function esc(s){return String(s).replace(/[&<>\"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','\"':'&quot;'}[c];});}",
+    "199: function blokas(out){if(document.getElementById('ps-primink'))return;var kgEl=document.getElementById('ps-calc-w'),kg=kgEl?parseFloat(String(kgEl.value).replace(',','.'))",
+    "200: var el=document.createElement('div');el.id='ps-primink';el.className='ps-primink';",
+    "201: el.innerHTML='<div class=\"t\">Priminti, kai šis maišas baigsis?</div><div class=\"d\">'+esc(C.pav)+' · '+esc(kg)+' kg augintiniui'+(d?' · '+esc(d.replace(/^Apie\\s*/,'užtenka",
+    "203: +(C.uid?'':'<input type=\"email\" id=\"ps-primink-e\" placeholder=\"El. paštas, kuriuo pirkote\" autocomplete=\"email\">')",
+    "204: +'<div><button type=\"button\" id=\"ps-primink-go\">Taip, priminkite</button></div><div class=\"m\">Vienas laiškas likus ~5 d. iki pabaigos – ir nieko daugiau. Atsisakyti galės",
+    "206: document.getElementById('ps-primink-go').addEventListener('click',function(){var b=this,bus=(el.querySelector('input[name=ps-pb]:checked')||{}).value||'puse',e=C.uid?'':(",
+    "209: function start(){root=document.getElementById('ps-calc');var out=root&&root.querySelector('.ps-calc-out');if(!out)return false;",
+    "210: if(C.ok){var okEl=document.createElement('div');okEl.id='ps-primink';okEl.className='ps-primink';okEl.innerHTML='<div class=\"ok\">Priminimas įjungtas. Pirmą laišką išsiųsi"
+   ]
+  }
+ },
+ "v": "dep-115626",
+ "kurimas": 200,
+ "sid": 6890,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
