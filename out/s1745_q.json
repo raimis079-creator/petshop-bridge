@@ -1,0 +1,36 @@
+{
+ "1": {
+  "v": "S1745q",
+  "faze": "1",
+  "klase": "Petshop_Ist_Adapteris",
+  "dabar": {
+   "u": 9528,
+   "e": 23174,
+   "max": "2026-08-30",
+   "suma": 393155.87
+  },
+  "dry": {
+   "dry": true,
+   "versija": "1.2",
+   "laukiama": {
+    "uzsakymai": 9621,
+    "eilutes": 23391,
+    "suma_ct": 39710504,
+    "klientu": 5473
+   },
+   "brand_tax": [
+    "pa_brendas",
+    "product_brand"
+   ]
+  },
+  "perstatyti_kviecia_praturtinti": true,
+  "praturtinti": "t_var( \"SELECT COUNT(*) FROM $IE WHERE gyvunas IS NOT NULL AND gyvunas<>''\" ),\n\t\t\t'nesusieta_eil' => (int) $wpdb->get_var( \"SELECT COUNT(*) FROM $IE WHERE preke_id=0\" ),\n\t\t);\n\t\tupdate_option( 'ps_ist_adapt_perstatyta', current_time( 'mysql', true ), false );\n\t\treturn $o;\n\t}\n\n\t/** Brendas + giliausia kategorija + kelias + gyvūnas (šaknys 70=šuo / 77=katė) susietoms prekėms. */\n\tprivate static function praturtinti() {\n\t\tglobal $wpdb; $IE = self::ie();\n\t\t$pids = $wpdb->get_col( \"SELECT DISTINCT preke_id FROM $IE WHERE preke_id>0\" );\n\t\tif ( ! $pids ) { return array( 'prekiu' => 0 ); }\n\n\t\t/* Renkamės pagal REALŲ užpildymą — WC 9+ registruoja tuščią product_brand šalia gyvos pa_bren"
+ },
+ "v": "dep-194023",
+ "kurimas": 200,
+ "sid": 6928,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
