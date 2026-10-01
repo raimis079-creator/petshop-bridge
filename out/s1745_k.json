@@ -1,0 +1,35 @@
+{
+ "1": {
+  "v": "S1745k",
+  "meniu": [
+   "petshop-ataskaita-atsargos.php |  self::TEVAS, 'Atsargos ir pirkimas', 'Atsargos ir pirkimas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )",
+   "petshop-ataskaita-klientai.php |  self::TEVAS, 'Klientų analizė', 'Klientų analizė', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )",
+   "petshop-ataskaita-pardavimai.php |  self::TEVAS, 'Pardavimai ir pelnas', 'Pardavimai ir pelnas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) )",
+   "petshop-klientai.php |  'Petshop klientai', 'Petshop klientai', self::CAP, self::PSL, array( __CLASS__, 'ekranas' ), 'dashicons-groups', 56 )",
+   "petshop-klientai.php |  self::PSL, 'Klientai', 'Klientai', self::CAP, self::PSL, array( __CLASS__, 'ekranas' ) )"
+  ],
+  "klientai_hd": "/**\n * Plugin Name: Petshop Klientai\n * Description: Petshop langai → Klientai. Vienas žmogus = viena eilutė: banga, sutikimas, pirkimai (eShoprent istorija + WC), segmentas taisyklėmis, kortelė. Auditorija → Kampanijos per CSV.\n * Version: 1.1.1\n *\n * v1.1 (S1544): sava viršutinė šaka „Petshop klientai“ (Klientai · Naujienlaiškiai ir kampanijos ·\n * Laiškų šablonai · Laiškų rezultatai — perkeliami iš „Petshop langai“ perregistruojant callback'us,\n * originalūs failai neliečiami). Kampanijos gyvena Naujienlaiškių lange.\n *\n * S1543 (2026-08-31). TŽ v1.91 (4): valdymas TIK per mūsų langus; segmentas NESAUGOMAS kaip\n * sprendimas — išvedamas taisyklėmis iš ps_ist_* + WC ir perskaičiuojamas kas naktį į\n * suvestinės lentelę ps_kl_suvestine (spartai; šaltinis visada perskaičiuojamas).\n *\n * Segmentų taisyklės (prioritetas 1→7, pirma tinkanti laimi):\n *  1 refill_laikas   — pagrindinės prekės ciklas žinomas (≥3 pirkimai) ir tikėtina data ≤ šiandien (iki 120 d. pradelsimo)\n *  2 refill_arteja   — tikėtina data per artimiausias 14 d.\n *  3 pirmas          — 1 užsakymas, ne senesnis nei 180 d.\n *  4 aktyvus         — ≥2 užsakymai, paskutinis ≤ 90 d.\n *  5 reaktyvacija    — paskutinis 91–180 d.\n *  6 win_back        — paskutinis > 180 d.\n *  7 nepirkes        — 0 įvykdytų užsakymų\n * Gyvūnas — pagal pirktų prekių kategorijų šaknį (ŠUNIMS 70 / KATĖMS 77): Šuo / Katė / Abu (mažuma ≥25 %).\n * Ciklas — dienos tarp pirmo ir paskutinio pagrindinės prekės pirkimo / (pirkimų − 1), tik nuo 3 pirkimų.\n */",
+  "lent": {
+   "wc_customer_lookup": 242,
+   "ps_ist_fakt_uzsakymai": 9528,
+   "ps_ist_fakt_eilutes": 23174,
+   "ps_ist_klientai": "nera",
+   "ps_klientai": "nera",
+   "ps_fakt_uzsakymai": 214
+  },
+  "ist_lent": [
+   "gaj6_ps_ist_eilutes",
+   "gaj6_ps_ist_fakt_eilutes",
+   "gaj6_ps_ist_fakt_uzsakymai",
+   "gaj6_ps_ist_uzsakymai",
+   "gaj6_ps_istrintos_prekes_s668"
+  ]
+ },
+ "v": "dep-191040",
+ "kurimas": 200,
+ "sid": 6921,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
