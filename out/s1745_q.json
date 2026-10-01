@@ -1,16 +1,20 @@
 {
- "1": {
+ "2": {
   "v": "S1745q",
-  "faze": "1",
+  "faze": "2",
   "klase": "Petshop_Ist_Adapteris",
-  "dabar": {
+  "pries": {
    "u": 9528,
    "e": 23174,
    "max": "2026-08-30",
    "suma": 393155.87
   },
-  "dry": {
-   "dry": true,
+  "bak": {
+   "gaj6_ps_ist_fakt_uzsakymai_bak_s1745": 9528,
+   "gaj6_ps_ist_fakt_eilutes_bak_s1745": 23174
+  },
+  "perstatyti": {
+   "dry": false,
    "versija": "1.2",
    "laukiama": {
     "uzsakymai": 9621,
@@ -18,17 +22,71 @@
     "suma_ct": 39710504,
     "klientu": 5473
    },
-   "brand_tax": [
-    "pa_brendas",
-    "product_brand"
-   ]
+   "uzs_irasyta": 9621,
+   "eil_irasyta": 23391,
+   "praturtinta": {
+    "prekiu": 1422,
+    "kateg": 1333,
+    "brand_tax": "product_brand"
+   },
+   "rodiniai": "atnaujinti",
+   "ver": {
+    "uzs": 9621,
+    "eil": 23391,
+    "viso_ct": 39710504,
+    "prekiu_ct": 32024153,
+    "klientu": 5473,
+    "nauji": 5473,
+    "su_paskyra": 9584,
+    "su_brendu_eil": 22118,
+    "su_gyvunu_eil": 21469,
+    "nesusieta_eil": 583
+   }
   },
-  "perstatyti_kviecia_praturtinti": true,
-  "praturtinti": "t_var( \"SELECT COUNT(*) FROM $IE WHERE gyvunas IS NOT NULL AND gyvunas<>''\" ),\n\t\t\t'nesusieta_eil' => (int) $wpdb->get_var( \"SELECT COUNT(*) FROM $IE WHERE preke_id=0\" ),\n\t\t);\n\t\tupdate_option( 'ps_ist_adapt_perstatyta', current_time( 'mysql', true ), false );\n\t\treturn $o;\n\t}\n\n\t/** Brendas + giliausia kategorija + kelias + gyvūnas (šaknys 70=šuo / 77=katė) susietoms prekėms. */\n\tprivate static function praturtinti() {\n\t\tglobal $wpdb; $IE = self::ie();\n\t\t$pids = $wpdb->get_col( \"SELECT DISTINCT preke_id FROM $IE WHERE preke_id>0\" );\n\t\tif ( ! $pids ) { return array( 'prekiu' => 0 ); }\n\n\t\t/* Renkamės pagal REALŲ užpildymą — WC 9+ registruoja tuščią product_brand šalia gyvos pa_bren"
+  "po": {
+   "u": 9621,
+   "e": 23391,
+   "max": "2026-09-08",
+   "suma": 397105.04
+  },
+  "riba": true,
+  "riba_opc": "2026-09-09"
  },
- "v": "dep-194023",
+ "3": {
+  "v": "S1745q",
+  "faze": "3",
+  "klase": "Petshop_Ist_Adapteris",
+  "ist": {
+   "u": 9621,
+   "e": 23391,
+   "max": "2026-09-08",
+   "suma": 397105.04
+  },
+  "riba": "2026-09-09",
+  "rodinys": [
+   {
+    "s": "eShoprent",
+    "nuo": "2023-11-20",
+    "iki": "2026-09-08",
+    "n": "9621"
+   },
+   {
+    "s": "petshop.lt",
+    "nuo": "2026-09-09",
+    "iki": "2026-10-01",
+    "n": "211"
+   }
+  ],
+  "dvigubos_dienos": "0",
+  "puslapis": {
+   "klaida": "",
+   "tekstas": "Skaičiuojama iš faktų tiesiogiai — duomenys šios akimirkosKlientų analizėKas grįžta, kiek klientas atneša per gyvenimą ir ką reikia pasivyti. Pinigai — kontribucija, ne pajamos (eShoprent istorijoje kontribucijos nėra — S1546).Šaltinis:eShoprentpetshop.ltAbuiki 2026-09-09 — eShoprent, toliau — petshop.ltNuo iki 30 d.90 d.202420252026Viskas— brendas —4dogs8in1ad-bialdaambrosiaanimondaantosapolloaquarisbarry-kingbeezteesbelocatbiovetabioveterinarybon-appetitboschbultcatessycatitchamp-richerchuckit"
+  },
+  "saltinio_eilute": "Šaltinis:eShoprentpetshop.ltAbuiki 2026-09-09 — eShoprent, toliau — petshop.ltNuo iki 30 d.90 d.202420252026Viskas— brendas —4dogs8in1ad-bia"
+ },
+ "v": "dep-194148",
  "kurimas": 200,
- "sid": 6928,
+ "sid": 6929,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
