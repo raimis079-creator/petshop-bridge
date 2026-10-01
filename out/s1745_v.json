@@ -1,93 +1,86 @@
 {
- "6": {
+ "7": {
   "v": "S1745v",
-  "faze": "6",
-  "siuntimo_vietos": [
-   "mu/petshop-av-dropship.php:20 () | * perduodamas wp_mail() kaip VIENAS masyvo elementas → PHPMailer adresą atmeta tyliai, | ",
-   "mu/petshop-av-dropship.php:1212 siusti() | $ok   = wp_mail( $gav, $tema, $h, $antraste, $priedai ); | tema, $h, $antraste, $priedai )",
-   "mu/petshop-atsargu-laukimas.php:253 pranesti() | $rez = Petshop_Email_Dispatch::enqueue( 'back_in_stock', $eil['email'], $payload, array( | ",
-   "mu/petshop-sugrazinimas.php:55 diena() | $res = Petshop_Email_Dispatch::enqueue( 'win_back', $r->user_email, array( | ",
-   "mu/petshop-sargas.php:246 galima_siusti() | * Serverio puseje wp_mail() abiem atvejais grazina true — problema | $s = array_slice( $s, -100, null, true )",
-   "mu/petshop-sargas.php:256 siusti() | wp_mail( | tema, $tekstas ) {",
-   "mu/petshop-payment-failed.php:14 () | * WooCommerce prie `failed` siunčia laišką TIK ADMINUI (WC_Emails::send_transactional_email | ",
-   "mu/petshop-payment-failed.php:77 petshop_emit_payment_failed() | $job = Petshop_Email_Dispatch::enqueue( 'payment_failed', $email, $payload, array( | ",
-   "mu/petshop-bacs-priminimas.php:134 priminti() | $ok = wp_mail( $email, $m['subject'], $m['html'], array( 'Content-Type: text/html; charset=UTF-8' ) ); | subject'], $m['html'], array( 'Content-Type: text/html",
-   "mu/petshop-langai-admin.php:223 testinis_siuntimas() | if ( ! is_object( $a ) || ! method_exists( $a, 'send_transactional_email' ) ) { return 'testas_nera_adapterio' | subject'   => trim( sanitize_text_field( wp_unslash( isset( $_POST['subject'] ) ? $_POST['subject",
-   "mu/petshop-langai-admin.php:238 testinis_siuntimas() | $res = $a->send_transactional_email( $u->user_email, '[TESTAS] ' . $subj, $html, array( 'to_name' => $u->displ | subject'    => $subj,",
-   "mu/petshop-rytas.php:523 sargas_cron() | $ok = wp_mail( get_option( 'ps_sargas_pastas', get_option( 'admin_email' ) ), '[Petshop] Rytas: ' . count( $ra | $s = array_slice( $s, -30, null, true )",
-   "mu/petshop-perziuru-priminimas.php:183 detect() | $rez = Petshop_Email_Dispatch::enqueue( 'browse_abandoned', $email, array( | ",
-   "mu/petshop-prenumerata.php:398 ciklas() | $res = Petshop_Email_Dispatch::enqueue('subscription_t5_notice', $s['email'], $p, array( | $s = self::gauti((int) $sid)",
-   "mu/petshop-prenumerata.php:462 siusti_t5_dabar() | $res = Petshop_Email_Dispatch::enqueue('subscription_t5_notice', $s['email'], self::t5_payload($s), array( | $s = self::gauti($sid)",
-   "mu/petshop-prenumerata.php:571 mokejimas_nepavyko() | Petshop_Email_Dispatch::enqueue('payment_failed', self::gauti($sid)['email'], | ",
-   "mu/petshop-laisku-nuotraukos.php:25 wp_mail() | public static function wp_mail( $a ) { | ",
-   "mu/petshop-atsisakymas.php:126 pazymeti() | wp_mail( $gavejas, | ",
-   "mu/petshop-prenumeratu-prognoze.php:108 kasdien() | wp_mail(get_option('admin_email'), | ",
-   "mu/petshop-relaunch.php:148 laiskas_patvirtinti() | return wp_mail( $email, $tema, $html, array( 'Content-Type: text/html; charset=UTF-8' ) ); | tema, $html, array( 'Content-Type: text/html",
-   "mu/petshop-av-tiekimas.php:1222 uzsakyti() | $ok = wp_mail( $gav, $t2, $body, array( | tema",
-   "mu/petshop-naujienlaiskiai-admin.php:106 ajax_testas() | $r = $ad->send_transactional_email($em, '[TESTAS] ' . $d['subject'], $html); | subject'], $html)",
-   "petshop-core/includes/class-email-dispatch.php:424 process_one() | if ( ! $provider || ! is_object( $provider ) || ! method_exists( $provider, 'send_transactional_email' ) ) { | subject' => $rendered['subject'],",
-   "petshop-core/includes/class-email-dispatch.php:436 process_one() | $res = $provider->send_transactional_email( | subject' => $rendered['subject'],",
-   "petshop-core/includes/class-magic-login.php:531 send_login_email() | wp_mail( $email, $subject, $body, $headers ); | subject, $body, $headers )",
-   "petshop-core/includes/interface-message-provider.php:77 send_transactional_email() | public function send_transactional_email( $to_email, $subject, $html_body, array $meta = array() ); | subject, $html_body, array $meta = array() )",
-   "petshop-core/includes/interface-message-provider.php:87 send_transactional_sms() | public function send_transactional_sms( $phone_e164, $message, array $meta = array() ); | subject, $html_body, array $meta = array() )",
-   "petshop-core/includes/class-retry-queue.php:277 maybe_dlq_alert() | wp_mail( self::DLQ_ALERT_EMAIL, $subject, $message ); | subject, $message )",
-   "petshop-core/includes/class-newsletter.php:18 () | *         → Petshop_Email_Dispatch::enqueue('consent_changed', ...) | ",
-   "petshop-core/includes/class-newsletter.php:184 subscribe() | Petshop_Email_Dispatch::enqueue( 'consent_changed', $email, array( | "
+  "faze": "7",
+  "eligibility_filtrai": {
+   "petshop-lifecycle-vartai.php": [
+    "ps_similar_optout",
+    "holdout_10",
+    "soft_optout_nezinomas",
+    "similar_optout"
+   ],
+   "petshop-sugrazinimas.php": [],
+   "petshop-pakartoti.php": [],
+   "class-post-purchase.php": [],
+   "class-refill-engine.php": [
+    "already_repurchased"
+   ]
+  },
+  "eligibility_antrastes": {
+   "petshop-lifecycle-vartai.php": "/**\n * Plugin Name: Petshop Lifecycle Vartai\n * Description: S1684 (Q4 planas, vartai C): (0) refill pagal augintinio anketą (dienos norma × pakuotė, Feeding_Service) kai yra svoris; (1) refill ciklai pagal brendą × pakuotę iš 2,5 m. istorijos (CIKLAI_ir_R_due_baseline_s1684.md) vietoj grubių 14/30/60 d.; (2) refill_due / post_purchase_14d eligibility = ERĮ 81(2) soft opt-out (ps_soft_optin_eligible && !ps_similar_optout), kol lauko nėra — atidedama; (3) 90/10 holdout (permanentinis, pagal el. pašto hash). Raimio leidimas „taisyk ką reikia\" 09-14.\n * v1.2.0 (S1685, Raimio sprendimas): kliento „išmoktas\" intervalas (2+ pirkimai) trumpesnis už istorinį p25 tam brendui/pakuotei (arba <14 d., ka",
+   "petshop-sugrazinimas.php": "/**\n * Plugin Name: Petshop Sugrąžinimas (win_back laiškas)\n * Description: S1686 (Q4 planas, retention etapas 2, Raimio sprendimai 09-16): vienas win_back laiškas „Pakartoti ankstesnį užsakymą?\" ties refill_due terminu +30 d. (formulė win_back_at = predicted_empty_date + 30), po jo ciklas sustoja iki naujo pirkimo. Teisinis pagrindas ERĮ 81(2) soft opt-out — nauja flow klasė `similar_soft_optin` (refill_due perkeliamas į ją; ne service, ne marketing; opt_out viršesnis); vartai/holdout 90/10 per petshop-lifecycle-vartai. Prekės/kaina/mygtukas — Petshop_Pakartoti::grupe (tas pats užsakymas). Core neliečiamas. Serijos 60/90/120 nedaromos.\n * Version: 1.0.0\n */",
+   "petshop-pakartoti.php": "/**\n * Plugin Name: Petshop Pakartoti tą patį (refill_due laiškas)\n * Description: S1685 (Q4 planas, lifecycle etapas 1): refill_due laiškas „Pakartoti tą patį\" — v1.1.0 GRUPUOJA PAGAL PASKUTINĮ UŽSAKYMĄ (Raimio sprendimas 09-15): laiške visos to užsakymo sekamos maisto prekės su kiekiais ir dabartinėmis kainomis, vienas mygtukas → endpoint'as /?ps_pakartoti=<order>&z=<hmac> sudeda viską į krepšelį ir veda į kasą; kiti to paties užsakymo refill_due laiškai per 45 d. praleidžiami (terminal `pakartoti_jau_siustas`). Šablonas: mu-plugins/ps-sablonai/refill-pakartoti.php (core refill.php neliečiamas). Prekė ne sandėlyje → praleidžiama iš sąrašo; jei nė vienos — laiškas atidedamas.\n * v1.1.1: Mix",
+   "class-post-purchase.php": "/**\n * Petshop Post-Purchase — S326 DETEKTORIUS.\n *\n * SAVININKO AUDITAS (2026-07-31): WooCommerce siuncia 11 laisku, bet VISI\n * apie uzsakymo BUSENA (naujas / apmoketa / issiusta / atsaukta / grazinta).\n * Po „issiusta\" — tyla. Review/follow-up plugin'u NERA, cron'u NERA.\n * Post-purchase srautas savininko NETURI.\n *\n * ★ LAIKMACIO ZYMA — KRITINE ★\n * `+2 d.` skaiciuojama nuo NEKINTANCIOS zymos `_ps_completed_at`, o NE nuo\n * Woo `post_modified` ar dabartinio statuso keitimo laiko. Kitaip bet koks\n * velesnis uzsakymo redagavimas NUKELTU laikmati is naujo.\n *\n * Ta pati taisykle kaip S323 ciklo raktas: laikmatis negali remtis lauku,\n * kuri kiti veiksmai keicia.\n *\n * ISTORINIAI UZSAKYMAI:",
+   "class-refill-engine.php": "/**\n * Petshop_Refill_Engine — self-calibrating refill tracking (M11).\n *\n * LOGIKA: mokosi is KLIENTO REALAUS pirkimo intervalo, ne is teoriniu normu.\n * - 1-as pirkimas: grubus intervalas pagal pakuotes dydi (14/30/60 d., confidence 0.4)\n * - 2+ pirkimas to paties produkto: kalibruojasi is realaus intervalo (confidence->0.9)\n *\n * NAUDOJA: order_paid event (jau veikia), pet profile (M7, nebutina).\n * GENERUOJA: refill_due event (schema jau yra S185).\n *\n * DB: gaj6_ps_refill_tracking (user_id + product_id + pet_id nullable).\n *\n * Srautas:\n *   1. order_paid -> on_order_paid() -> irasoma/atnaujinama refill_tracking\n *   2. Cron (kasdien) -> check_due() -> fire refill_due event (T-5 dienu)\n"
+  },
+  "darbalaukis": [
+   "petshop-darbalaukis.php:27 () | * Petshop Darbalaukis v3.39.3 (S1639, Raimis 09-08): siuntos_laiskas() — pilname laiške (viena siunta arba paskutinė „visas išsiųstas\") prek",
+   "petshop-darbalaukis.php:277 () | *   prekės, „dar keliaus“ prekės. Viena funkcija `siuntos_laiskas()` — ją kvies ir 4 etapo Venipak cron („Picked up“); `issiusta()` vieša su",
+   "petshop-darbalaukis.php:1842 keisti_kelia() | *  #5 (spec §12): laiškas klientui PO KIEKVIENOS siuntos per `siuntos_laiskas()`, kai `$sekimo`. Vieša — 4 etapo Venipak cron kvies su",
+   "petshop-darbalaukis.php:1870 issiusta() | if ( $sekimo ) { list( , $laiskas ) = self::siuntos_laiskas( $o, $f, $dalis, $iss ); }",
+   "petshop-darbalaukis.php:1887 issiusta() | if ( $sekimo ) { list( , $laiskas ) = self::siuntos_laiskas( $o, $f, $dalis, $iss ); }",
+   "petshop-darbalaukis.php:2203 velavimo_laiskas() | $mailer = WC()->mailer(); $ok = $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ) );",
+   "petshop-darbalaukis.php:2318 pakartotinis_sukurti() | $mailer = WC()->mailer(); $ok = (bool) $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ) );",
+   "petshop-darbalaukis.php:2334 pakartotinis_nuoroda() | $mailer = WC()->mailer(); $ok = (bool) $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ) );",
+   "petshop-darbalaukis.php:2380 pakartotinis_apmoketas() | $mailer = WC()->mailer(); $ok = is_email( $el ) ? (bool) $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ), '', ( $pdf && file_e",
+   "petshop-darbalaukis.php:2616 kreditine_laiskas() | $mailer = WC()->mailer(); $ok = (bool) $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ), '', $priedai );",
+   "petshop-darbalaukis.php:3051 atsiemimas_paruosta() | else { list( $tema, $h ) = self::ats_laiskas_sudeti( $o ); $mailer = WC()->mailer(); $ok = (bool) $mailer->send( $el, $tema, $mailer->wrap_m",
+   "petshop-darbalaukis.php:3191 ats_ivykdyta_laiskas() | $tema = strtr( $s['iv_tema'], $z ); $mailer = WC()->mailer(); $ok = (bool) $mailer->send( $el, $tema, $mailer->wrap_message( $tema, $h ), ''",
+   "petshop-darbalaukis.php:3538 siuntos_laiskas() | public static function siuntos_laiskas( $o, $f, $dalis, $iss ) {",
+   "petshop-darbalaukis.php:3593 siuntos_laiskas() | $ok = $mailer->send( $el, $tema, $mailer->wrap_message( $vardas_l, $h ), '', $pried );"
   ],
-  "eligibility": "function check_eligibility( $flow_class, $email, $flow = '', $context = array() ) {\n\n\t\t// 0) Netinkamas gavejas\n\t\tif ( ! is_email( $email ) ) {\n\t\t\treturn array( 'allowed' => false, 'reason' => 'invalid_recipient', 'terminal' => true );\n\t\t}\n\n\t\t// 1) KANALINIS suppression (S314).\n\t\t//    Sender turi du atskirus kanalus: email=marketingas, temail=transakciniai.\n\t\t//    Marketingo atsisakymas NEGALI blokuoti uzsakymo/refill/prenumeratos laisku.\n\t\t$channel = ( 'marketing' === $flow_class )\n\t\t\t? Petshop_Email_Suppression::CH_MARKETING\n\t\t\t: Petshop_Email_Suppression::CH_TRANSACTIONAL;\n\n\t\tif ( class_exists( 'Petshop_Email_Suppression' )\n\t\t\t&& Petshop_Email_Suppression::is_suppressed( $email, $channel ) ) {\n\t\t\t$why = Petshop_Email_Suppression::reason_for( $email, $channel );\n\t\t\treturn array(\n\t\t\t\t'allowed'  => false,\n\t\t\t\t'reason'   => 'suppressed_' . $channel . ( $why ? '_' . $why : '' ),\n\t\t\t\t'terminal' => true,\n\t\t\t);\n\t\t}\n\n\t\t// 1b) Senas globalus sarasas (suderinamumui, kol bus perkeltas).\n\t\tif ( self::is_suppressed( $email ) ) {\n\t\t\treturn array( 'allowed' => false, 'reason' => 'suppressed', 'terminal' => true );\n\t\t}\n\n\t\t// 2) Transakciniai toliau netikrinami — sutartinis pagrindas.\n\t\tif ( 'transactional' === $flow_class ) {\n\t\t\treturn array( 'allowed' => true, 'reason' => '' );\n\t\t}\n\n\t\t// 3) Globalus \"tik transakciniai\" pasirinkimas — stabdo service ir marketing.\n\t\tif ( self::is_transactional_only( $email ) ) {\n\t\t\treturn array( 'allowed' => false, 'reason' => 'transactional_only', 'terminal' => true );\n\t\t}\n\n\t\t// 4) Marketingui butinas aiskus sutikimas.\n\t\tif ( 'marketing' === $flow_class ) {\n\t\t\t// S321: BUTINAI per Contact_Policy::has_consent() — ps_get_marketing_consent()\n\t\t\t// grazina STRING, o (bool) 'false' === true. Tiesioginis castas praleisdavo\n\t\t\t// atsisakiusius zmones.\n\t\t\t$ok = class_exists( 'Petshop_Contact_Policy' )\n\t\t\t\t? Petshop_Contact_Policy::has_consent( $email )\n\t\t\t\t: false;\n\t\t\tif ( ! $ok ) {\n\t\t\t\treturn array( 'allowed' => false, 'reason' => 'consent_missing', 'terminal' => true );\n\t\t\t}\n\t\t}\n\n\t\t// 5) Papildomos taisykles per filtra (pvz. stop-rule konkreciam srautui).\n\t\t// 5) Srauto specifines taisykles (registruoja pats srautas).\n\t\t//    Gali grazinti 'terminal' => false — tada sprendimas ATIDEDAMAS (deferred),\n\t\t//    o ne uzdaromas galutinai.\n\t\t$extra = apply_filters( 'petshop_email_eligibility',\n\t\t\tarray( 'allowed' => true, 'reason' => '', 'terminal' => true ),\n\t\t\t$flow, $flow_class, $email, $context );\n\n\t\treturn is_array( $extra ) ? $extra : array( 'allowed' => true, 'reason' => '' );\n\t}\n\n\tpublic static function is_suppressed( $email ) {\n\t\t$list = (array) get_option( 'petshop_email_suppression', array() );\n\t\tif ( in_array( strtolower( $email ), array_map( 'strtolower', $list ), true ) ) {\n\t\t\treturn true;\n\t\t}\n\t\treturn (bool) apply_filters( 'petshop_email_is_suppressed', false, $email );\n\t}\n\n\tpublic static function is_transactional_only( $email ) {\n\t\t$u = get_user_by( 'email', $email );\n\t\tif ( $u && get_user_meta( $u->ID, 'ps_transactional_only', true ) === 'yes' ) {\n\t\t\treturn true;\n\t\t}\n\t\treturn (bool) apply_filters( 'petshop_email_transactional_only', false, $email );\n\t}\n\n\t/**\n\t * Prideda adresa i suppression sarasa (bounce, skundas, istrynimas).\n\t */\n\t/**\n\t * S314: suppression VISADA kanalinis. $channel privalomas.\n\t * Be kanalo kviesti nebegalima — tai buvo klaidos saltinis\n\t * (marketingo atsisakymas butu uzbloikaves transakcinius).\n\t */\n\tpublic static function suppress( $email, $channel, $reason = 'manual', $source = 'local' ) {\n\t\tif ( ! class_exists( 'Petshop_Email_Suppression' ) ) { return false; }\n\t\treturn Petshop_Email_Suppression::suppress( $email, $channel, $reason, $source );\n\t}\n\n\t/* ---------------------------------------------------------------- */\n\t/* Apdorojimas                                                      */\n\t/* ---------------------------------------------------------------- */\n\n\t/**\n\t * Paima ir issiuncia laukiancius laiskus.\n\t *\n\t * @param int  $limit\n\t * @param bool $dry_run Jei true — tik parodo, ka DARYTU, nieko nesiuncia.\n\t */\n\tpublic static function process_pending( $limit = 20, $dry_run = false ) {\n\t\tglobal $wpdb;\n\t\t$now  = current_time( 'mysql', true );\n\t\t$rows = $wpdb->get_results( $wpdb->prepare(\n\t\t\t\"SELECT * FROM \" . self::table() . \"\n\t\t\t WHERE ( status = 'pending' AND ( scheduled_at IS NULL OR scheduled_at <= %s ) )\n\t\t\t    OR ( status = 'deferred' AND next_attempt_at IS NOT NULL AND next_attempt_at <= %s )\n\t\t\t ORDER BY id ASC LIMIT %d\", $now, $now, (int) $limit ), ARRAY_A );\n\n\t\t$out = array( 'dry_run' => (bool) $dry_run, 'picked' => count( (array) $rows ), 'results' => array() );\n\n\t\tforeach ( (array) $rows as $r ) {\n\t\t\t$res = self::process_one( $r, $dry_run );\n\t\t\t$out['results'][] = $res;\n\t\t}\n\t\treturn $out;\n\t}\n\n\tprotected static function process_one( $row, $dry_run = false ) {\n\t\tglobal $wpdb;\n\t\t$id    = (int) $row['id'];\n\t\t$flow  = $row['flow'];\n\t\t$email = $row['recipient_email'];\n\n\t\t$context = json_decode( (string) $row['context_json'], true );\n\t\tif ( ! is_array( $context ) ) { $context = array(); }\n\n\t\t$elig = self::check_eligibility( $row['flow_class'], $email, $flow, $context );\n\t\tif ( ! $elig['allowed'] ) {\n\t\t\t$terminal = ! isset( $elig['termi",
-  "lent": {
-   "ps_stock_watch": 6,
-   "ps_reminders": 10,
-   "ps_refill_tracking": 244,
-   "ps_subscriptions": 0,
-   "ps_prenumeratos": "nera"
-  },
-  "smtp": {
-   "mailer": "smtp",
-   "from": "uzsakymai@petshop.lt",
-   "host": "isopas.serveriai.lt"
-  },
-  "bacs": {
-   "1225 cancelled": [
-    "09-29 11:52 Email \"Naujas užsakymas\" sent.",
-    "09-29 12:46 Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
-    "09-29 14:46 Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36577 (S1676).",
-    "09-30 12:46 Krepšelio priminimas 2 nesiųstas — naujesnis užsakymas #36577 (S1676)."
-   ],
-   "1206 completed": [
-    "09-28 12:50 Email \"Naujas užsakymas\" sent.",
-    "09-28 15:26 Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankinis pavedimas. Vartotojas: Inga. Laiškas klientui: i",
-    "09-28 15:26 Email \"Užsakymas vykdomas\" sent.",
-    "09-29 11:36 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS.",
-    "09-29 11:36 Klientui išsiųsta „Užsakymas išsiųstas“ (jolanta@amzbaltic.lt): V07267E1000247"
-   ],
-   "1188 cancelled": [
-    "09-26 11:07 Email \"Naujas užsakymas\" sent.",
-    "09-26 11:24 Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
-    "09-26 13:24 Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36318 (S1676).",
-    "09-27 11:24 Krepšelio priminimas 2 nesiųstas — naujesnis užsakymas #36318 (S1676)."
-   ]
-  },
-  "atsiemimas": {
-   "1246 VENIPAK paštomatai/atsiėmimo punktai": [
-    "Surūšiuota pati: Lašišų  žuvų taukai, 1L — VF siunčia klientui",
-    "Email \"Naujas užsakymas\" sent.",
-    "Email \"Užsakymas vykdomas\" sent.",
-    "Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarmas.lt, terr",
-    "Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS.",
-    "Klientui išsiųsta „Užsakymas išsiųstas“ (mojapoctairina@gmail.com): V07267E1000281"
-   ],
-   "1240 VENIPAK paštomatai/atsiėmimo punktai": [
-    "Email \"Naujas užsakymas\" sent.",
-    "Email \"Užsakymas vykdomas\" sent.",
-    "Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS.",
-    "Klientui išsiųsta „Užsakymas išsiųstas“ (jurgitajanusaityte.janusaityte@gmail.com): V07267E1000276"
-   ]
-  }
+  "darbalaukio_pastabos": [
+   {
+    "c": "Klientui išsiųsta „Užsakymas išsiųstas“ (nastia96@inbox.lt):",
+    "n": "192"
+   },
+   {
+    "c": "Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankini",
+    "n": "9"
+   },
+   {
+    "c": "Klientui išsiųsta „Išsiųsta 2 iš 2 siuntų“ (museibm@gmail.co",
+    "n": "8"
+   },
+   {
+    "c": "Klientui išsiųsta „Išsiųsta 1 iš 2 siuntų“ (museibm@gmail.co",
+    "n": "8"
+   },
+   {
+    "c": "S1719: klientui išsiųsta patikslinta PVM sąskaita AVPN011107",
+    "n": "5"
+   },
+   {
+    "c": "Bacs priminimas (+48 val.) klientui išsiųstas (S1676).",
+    "n": "2"
+   },
+   {
+    "c": "Bacs: neapmokėta per 72 val. — atšaukta automatiškai, klient",
+    "n": "1"
+   },
+   {
+    "c": "Atšaukta darbalaukyje. Vartotojas: Raimis. Laiškas klientui:",
+    "n": "1"
+   },
+   {
+    "c": "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: i",
+    "n": "1"
+   }
+  ]
  },
- "v": "dep-175004",
+ "v": "dep-175156",
  "kurimas": 200,
- "sid": 6903,
+ "sid": 6904,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
