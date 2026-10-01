@@ -1,404 +1,694 @@
 {
- "5": {
+ "6": {
   "v": "S1745a",
-  "faze": "5",
-  "antraste": "/**\n * Petshop Bacs Priminimas v1.0.2 (S1676, 2026-09-12)\n *   v1.0.2: Raimio tekstas (S1676): trumpesnis, data lietuviškai, IBAN+bankas viena eilute.\n *   v1.0.1: rekvizitai iš Petshop_Darbalaukis::PAKART_BANKAS (WC bacs sąskaitų nėra); suma be HTML entity.\n *\n * 1) Bacs (pavedimu) on-hold užsakymai:\n *    - ≥48 val. nuo sukūrimo, dar nepriminta → laiškas klientui „laukia apmokėjimo\" (rekvizitai, terminas),\n *      pastaba užsakyme, meta _ps_bacs_priminta.\n *    - ≥72 val., vis dar on-hold → cancelled (WC „atšauktas\" laiškas klientui). Likutį grąžina AV variklis.\n * 2) Po BET KOKIO neapmokėto užsakymo atšaukimo (Paysera 90 min., bacs 72 val., rankinis) —\n *    krepšelio priminimai +2 val. (cart_abandoned) ir +24 val. (cart_abandoned_2) per Petshop_Email_Dispatch\n *    (marketingas — consent tikrina dispatch), su nuoroda atkurti krepšelį iš užsakymo prekių.\n * SARGAS (Raimio pastebėjimas: klientai daro kelis užsakymus iš eilės):\n *    - jei tas pats el. paštas turi NAUJESNĮ užsakymą (pending/on-hold/processing/completed) — priminimai NESIUNČIAMI;\n *    - jei naujesnis APMOKĖTAS — senas bacs atšaukiamas TYLIAI (be WC laiško).\n * Rankinis stabdis: užsakymo pastaba, kurioje yra žodis „LAUKTI\" (didžiosiomis) — nieko nedaroma.\n * Testiniai (_petshop_test) praleidžiami. Valandinis cron ps_bacs_priminimas.\n */",
-  "hooks": [
-   "init",
-   "woocommerce_order_status_cancelled",
-   "template_redirect",
-   "woocommerce_email_enabled_customer_cancelled_order"
+  "faze": "6",
+  "jobs": [
+   {
+    "flow": "browse_abandoned",
+    "cls": "marketing",
+    "status": "sent",
+    "pr": "",
+    "n": "2",
+    "nuo": "2026-09-22 18:38:40",
+    "iki": "2026-09-30 19:38:47",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "browse_abandoned",
+    "cls": "marketing",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "n": "12",
+    "nuo": "2026-09-13 18:37:09",
+    "iki": "2026-10-01 05:37:07",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "cart_abandoned",
+    "cls": "marketing",
+    "status": "sent",
+    "pr": "",
+    "n": "7",
+    "nuo": "2026-09-10 11:58:44",
+    "iki": "2026-09-20 09:03:44",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "cart_abandoned",
+    "cls": "marketing",
+    "status": "skipped",
+    "pr": "suppressed_marketing_unsubscribe",
+    "n": "2",
+    "nuo": "2026-09-17 18:12:13",
+    "iki": "2026-10-01 12:47:20",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "cart_abandoned",
+    "cls": "marketing",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "n": "51",
+    "nuo": "2026-09-09 14:55:04",
+    "iki": "2026-09-30 23:13:06",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "cls": "marketing",
+    "status": "sent",
+    "pr": "",
+    "n": "6",
+    "nuo": "2026-09-11 12:03:46",
+    "iki": "2026-09-21 09:09:08",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "cls": "marketing",
+    "status": "skipped",
+    "pr": "suppressed_marketing_unsubscribe",
+    "n": "1",
+    "nuo": "2026-09-18 16:12:26",
+    "iki": "2026-09-18 16:12:26",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "cls": "marketing",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "n": "22",
+    "nuo": "2026-09-15 08:49:40",
+    "iki": "2026-09-30 13:37:15",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "consent_changed",
+    "cls": "transactional",
+    "status": "sent",
+    "pr": "",
+    "n": "17",
+    "nuo": "2026-09-10 09:53:46",
+    "iki": "2026-10-01 04:48:47",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "cls": "service",
+    "status": "deferred",
+    "pr": "soft_optout_nezinomas",
+    "n": "18",
+    "nuo": "2026-09-17 16:39:51",
+    "iki": "2026-09-19 14:39:27",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "cls": "service",
+    "status": "pending",
+    "pr": "",
+    "n": "102",
+    "nuo": "2026-09-20 08:39:38",
+    "iki": "2026-10-01 16:39:35",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "cls": "service",
+    "status": "sent",
+    "pr": "",
+    "n": "11",
+    "nuo": "2026-09-29 08:38:43",
+    "iki": "2026-10-01 16:09:19",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "cls": "service",
+    "status": "sent",
+    "pr": "soft_optout_nezinomas",
+    "n": "3",
+    "nuo": "2026-09-29 08:08:46",
+    "iki": "2026-09-30 08:08:47",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "cls": "service",
+    "status": "skipped",
+    "pr": "holdout_10",
+    "n": "5",
+    "nuo": "2026-09-10 23:39:33",
+    "iki": "2026-09-18 14:39:28",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "cls": "service",
+    "status": "skipped",
+    "pr": "similar_optout",
+    "n": "4",
+    "nuo": "2026-09-18 14:39:27",
+    "iki": "2026-09-19 14:39:27",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "cls": "service",
+    "status": "skipped",
+    "pr": "deferral_expired",
+    "n": "32",
+    "nuo": "2026-09-13 07:39:26",
+    "iki": "2026-09-17 14:39:33",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "cls": "service",
+    "status": "pending",
+    "pr": "",
+    "n": "4",
+    "nuo": "2026-10-01 16:39:35",
+    "iki": "2026-10-01 16:39:35",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "cls": "service",
+    "status": "sent",
+    "pr": "",
+    "n": "171",
+    "nuo": "2026-09-10 23:43:41",
+    "iki": "2026-10-01 15:43:42",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "cls": "service",
+    "status": "pending",
+    "pr": "",
+    "n": "40",
+    "nuo": "2026-09-26 21:39:27",
+    "iki": "2026-10-01 16:39:35",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "cls": "service",
+    "status": "sent",
+    "pr": "",
+    "n": "135",
+    "nuo": "2026-09-15 23:33:54",
+    "iki": "2026-10-01 13:08:43",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "refill_due",
+    "cls": "similar_soft_optin",
+    "status": "skipped",
+    "pr": "already_repurchased",
+    "n": "7",
+    "nuo": "2026-09-18 08:01:02",
+    "iki": "2026-10-01 08:00:04",
+    "atid": "0",
+    "pasp": "0"
+   }
   ],
-  "atsaukti": [
-   [
-    "1249",
-    "cancelled",
-    "paysera",
-    6.95,
-    "10-01 13:45",
-    [
-     "10-01 13:45 Stock hold of 90 minutes applied to: - Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jauti",
-     "10-01 13:45 Vykdymas: MAIN — AV 1 vnt (1 siunta(-os)) · dropship pirma",
-     "10-01 13:45 Paysera: Neapmokėto užsakymo būsena",
-     "10-01 13:45 Likutis sumažintas: Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 800 ",
-     "10-01 13:47 Atšaukta darbalaukyje. Vartotojas: Raimis. Laiškas klientui: išsiųstas.",
-     "10-01 13:47 Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
-     "10-01 13:47 Email \"Atšauktas užsakymas\" sent.",
-     "10-01 15:47 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
-    ]
+  "pastabos": {
+   "Email \"Naujas užsakymas\" sent.": [
+    217,
+    "2026-09-09 02:30:59",
+    "2026-10-01 18:29:23"
    ],
-   [
-    "1243",
-    "cancelled",
-    "paysera",
-    31.69,
-    "09-30 21:17",
-    [
-     "09-30 21:17 Stock hold of 90 minutes applied to: - Jaučio penis pjaustytas, 15,0 cm, 1 vnt. (707000) &times; 12- Baltos tr",
-     "09-30 21:17 Vykdymas: MAIN — AV 13 vnt (1 siunta(-os)) · dropship pirma",
-     "09-30 21:17 Paysera: Neapmokėto užsakymo būsena",
-     "09-30 21:17 Likutis sumažintas: Jaučio penis pjaustytas, 15,0 cm, 1 vnt. (45&rarr;45), Baltos triušio ausys, 250 g (10&rar",
-     "09-30 21:19 Paysera: Naujo užsakymo kūrimo būsena",
-     "10-01 00:12 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
-     "10-01 00:12 Email \"Atšauktas užsakymas\" sent.",
-     "10-01 02:13 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
-    ]
+   "Email \"Užsakymas vykdomas\" sent.": [
+    208,
+    "2026-09-09 09:56:01",
+    "2026-10-01 18:29:23"
    ],
-   [
-    "1227",
-    "cancelled",
-    "paysera",
-    48.02,
-    "09-29 14:49",
-    [
-     "09-29 14:49 Stock hold of 90 minutes applied to: - Džiovinti galvijų skrandžiai, 100 g (sku166417363216209651) &times; 17",
-     "09-29 14:49 Vykdymas: MAIN — AV 17 vnt (1 siunta(-os)) · dropship pirma",
-     "09-29 14:49 Paysera: Neapmokėto užsakymo būsena",
-     "09-29 14:49 Likutis sumažintas: Džiovinti galvijų skrandžiai, 100 g (48&rarr;48)",
-     "09-29 16:37 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
-     "09-29 16:37 Email \"Atšauktas užsakymas\" sent.",
-     "09-29 18:37 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-30 16:37 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
-    ]
+   "Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS.": [
+    183,
+    "2026-09-11 11:07:24",
+    "2026-10-01 18:06:27"
    ],
-   [
-    "1225",
-    "cancelled",
-    "bacs",
-    32.49,
-    "09-29 11:52",
-    [
-     "09-29 11:52 Stock hold of 90 minutes applied to: - Josidog Regular 15 kg - sausas maistas šunims (JOS0622) &times; 1",
-     "09-29 11:52 Svečio užsakymas priskirtas esamai paskyrai #508 pagal el. paštą (S1690).",
-     "09-29 11:52 Vykdymas: DS — VF 1 vnt (1 siunta(-os)) · dropship pirma",
-     "09-29 11:52 Likutis sumažintas: Josidog Regular 15 kg - sausas maistas šunims (81&rarr;80)",
-     "09-29 11:52 Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
-     "09-29 11:52 Email \"Naujas užsakymas\" sent.",
-     "09-29 12:46 Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
-     "09-29 12:46 Likutis padidintas: Josidog Regular 15 kg - sausas maistas šunims (80&rarr;81)",
-     "09-29 12:46 Užsakymo statusas pakeistas iš Sustabdytas į Atšauktas.",
-     "09-29 14:46 Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36577 (S1676).",
-     "09-30 12:46 Krepšelio priminimas 2 nesiųstas — naujesnis užsakymas #36577 (S1676)."
-    ]
+   "Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskait": [
+    76,
+    "2026-09-11 12:48:56",
+    "2026-10-01 12:48:05"
    ],
-   [
-    "1222",
-    "cancelled",
-    "paysera",
-    79.9,
-    "09-29 09:32",
-    [
-     "09-29 12:06 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
-     "09-29 12:06 Email \"Atšauktas užsakymas\" sent.",
-     "09-29 14:06 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-30 12:06 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
-    ]
+   "Email \"Atšauktas užsakymas\" sent.": [
+    34,
+    "2026-09-09 11:12:59",
+    "2026-10-01 13:47:14"
    ],
-   [
-    "1218",
-    "cancelled",
-    "paysera",
-    94.67,
-    "09-28 23:43",
-    [
-     "09-28 23:43 Stock hold of 90 minutes applied to: - JOSERA FESTIVAL pašaras šunims su lašiša, 12,5 kg (JOS0913) &times; 1- ",
-     "09-28 23:43 Vykdymas: DS — VF 2 vnt (1 siunta(-os)) · dropship pirma",
-     "09-28 23:43 Paysera: Neapmokėto užsakymo būsena",
-     "09-28 23:43 Likutis sumažintas: JOSERA FESTIVAL pašaras šunims su lašiša, 12,5 kg (1193&rarr;1192), JOSERA LAMB & RICE paš",
-     "09-29 01:34 Likutis padidintas: JOSERA FESTIVAL pašaras šunims su lašiša, 12,5 kg (1193&rarr;1194), JOSERA LAMB & RICE paš",
-     "09-29 01:34 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
-     "09-29 01:34 Email \"Atšauktas užsakymas\" sent.",
-     "09-29 03:34 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-30 01:34 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
-    ]
+   "Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: # (S#).": [
+    26,
+    "2026-09-15 11:49:40",
+    "2026-09-30 16:37:15"
    ],
-   [
-    "1203",
-    "cancelled",
-    "paysera",
-    25.61,
-    "09-28 11:10",
-    [
-     "09-28 11:10 Stock hold of 90 minutes applied to: - Animonda Vom Feinsten Adult with Beef and Turkey Hearts – konservai sua",
-     "09-28 11:10 Vykdymas: MAIN — AV 18 vnt (1 siunta(-os)) · dropship pirma",
-     "09-28 11:10 Paysera: Neapmokėto užsakymo būsena",
-     "09-28 11:10 Likutis sumažintas: Animonda Vom Feinsten Adult with Beef and Turkey Hearts – konservai suaugusiems šunims su ",
-     "09-28 13:30 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
-     "09-28 13:30 Email \"Atšauktas užsakymas\" sent.",
-     "09-28 15:30 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-29 13:30 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
-    ]
+   "Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: # (S#).": [
+    21,
+    "2026-09-14 03:17:27",
+    "2026-10-01 15:47:20"
    ],
-   [
-    "1190",
-    "cancelled",
-    "paysera",
-    26.15,
-    "09-26 12:00",
-    [
-     "09-26 12:00 Stock hold of 90 minutes applied to: - QUATTRO begrūdis su antiena visų veislių jaunų šunų pašaras, 3kg (2.009",
-     "09-26 12:00 Svečio užsakymas priskirtas esamai paskyrai #2555 pagal el. paštą (S1690).",
-     "09-26 12:00 Vykdymas: DS — QUATTRO 1 vnt (1 siunta(-os)) · dropship pirma",
-     "09-26 12:00 Paysera: Neapmokėto užsakymo būsena",
-     "09-26 12:00 Likutis sumažintas: QUATTRO begrūdis su antiena visų veislių jaunų šunų pašaras, 3kg (41&rarr;40)",
-     "09-26 12:01 Paysera: Užsakymo būsena po apmokėjimo",
-     "09-26 12:01 Faktai irasyti: 1 eilutes · pajamos 19,83 EUR (be PVM, po nuolaidu) · PVM 4,54 EUR · marza 3,96 EUR · kontribu",
-     "09-26 12:01 Surūšiuota pati: QUATTRO begrūdis su antiena visų veislių — Quattro siunčia klientui",
-     "09-26 12:01 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
-     "09-26 12:01 Email \"Naujas užsakymas\" sent.",
-     "09-26 12:01 Paysera: Naujo užsakymo kūrimo būsena",
-     "09-26 12:01 Email \"Užsakymas vykdomas\" sent.",
-     "09-28 09:40 Venipak registracija darbalaukyje (QUATTRO, manifestas 004): sėkminga",
-     "09-28 09:40 Siuntos numeriai išsaugoti (QUATTRO): V07267E1000234",
-     "09-28 14:08 Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: išsiųstas.",
-     "09-28 14:08 Likutis padidintas: QUATTRO begrūdis su antiena visų veislių jaunų šunų pašaras, 3kg (40&rarr;41)",
-     "09-28 14:08 Užsakymo statusas pakeistas iš Vykdomas į Atšauktas.",
-     "09-28 14:08 Email \"Atšauktas užsakymas\" sent.",
-     "09-28 14:08 Email \"Atšauktas užsakymas\" sent."
-    ]
+   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #34, laiške kartu su užsakymais). Kelias ": [
+    17,
+    "2026-09-29 12:36:47",
+    "2026-09-29 12:36:47"
    ],
-   [
-    "1188",
-    "cancelled",
-    "bacs",
-    13.02,
-    "09-26 11:07",
-    [
-     "09-26 11:07 Stock hold of 90 minutes applied to: - Lašišų žuvų taukai , 500ml (V004979) &times; 1- Bioveta papildas Vitapl",
-     "09-26 11:07 Vykdymas: DS — VF 3 vnt (1 siunta(-os)) · dropship pirma",
-     "09-26 11:07 Likutis sumažintas: Lašišų žuvų taukai , 500ml (37&rarr;36), Bioveta papildas Vitaplastin forte, 1 kg (148&rar",
-     "09-26 11:07 Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
-     "09-26 11:07 Email \"Naujas užsakymas\" sent.",
-     "09-26 11:24 Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
-     "09-26 11:24 Likutis padidintas: Lašišų žuvų taukai , 500ml (35&rarr;36), Bioveta papildas Vitaplastin forte, 1 kg (146&rar",
-     "09-26 11:24 Užsakymo statusas pakeistas iš Sustabdytas į Atšauktas.",
-     "09-26 13:24 Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36318 (S1676).",
-     "09-27 11:24 Krepšelio priminimas 2 nesiųstas — naujesnis užsakymas #36318 (S1676)."
-    ]
+   "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.": [
+    14,
+    "2026-09-15 14:23:24",
+    "2026-09-29 12:46:03"
    ],
-   [
-    "1175",
-    "cancelled",
-    "paysera",
-    34.63,
-    "09-24 14:52",
-    [
-     "09-24 16:11 Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
-     "09-24 16:11 Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
-     "09-24 18:12 Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36291 (S1676).",
-     "09-25 16:13 Krepšelio priminimas 2 nesiųstas — naujesnis užsakymas #36291 (S1676)."
-    ]
+   "Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas # (S#).": [
+    13,
+    "2026-09-17 13:12:43",
+    "2026-09-29 14:46:03"
    ],
-   [
-    "1174",
-    "cancelled",
-    "paysera",
-    34.63,
-    "09-24 14:51",
-    [
-     "09-24 16:11 Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
-     "09-24 16:11 Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
-     "09-24 18:11 Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36291 (S1676).",
-     "09-25 16:11 Krepšelio priminimas 2 nesiųstas — naujesnis užsakymas #36291 (S1676).",
-     "09-25 16:11 Krepšelio priminimas 2 nesiųstas — naujesnis užsakymas #36291 (S1676).",
-     "09-25 16:11 Krepšelio priminimas 2 nesiųstas — naujesnis užsakymas #36291 (S1676)."
-    ]
+   "Krepšelio priminimas 2 nesiųstas — naujesnis užsakymas # (S#).": [
+    10,
+    "2026-09-18 20:15:47",
+    "2026-09-30 12:46:10"
    ],
-   [
-    "1172",
-    "cancelled",
-    "paysera",
-    16.64,
-    "09-24 13:45",
-    [
-     "09-24 13:45 Stock hold of 90 minutes applied to: - FLEXI pavadėlis šuniui New Comfort S juostinis 5m, rožinis (FLEXI013) &",
-     "09-24 13:45 Vykdymas: DS — VF 1 vnt (1 siunta(-os)) · dropship pirma",
-     "09-24 13:45 Paysera: Neapmokėto užsakymo būsena",
-     "09-24 13:45 Likutis sumažintas: FLEXI pavadėlis šuniui New Comfort S juostinis 5m, rožinis (8&rarr;7)",
-     "09-24 16:04 Likutis padidintas: FLEXI pavadėlis šuniui New Comfort S juostinis 5m, rožinis (8&rarr;9)",
-     "09-24 16:04 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
-     "09-24 16:04 Email \"Atšauktas užsakymas\" sent.",
-     "09-24 18:04 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-25 16:04 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
-    ]
+   "Pažymėta išsiųsta darbalaukyje (LP Express, lp). WC laiškas klientui: NESIŲSTAS.": [
+    6,
+    "2026-09-24 16:06:23",
+    "2026-09-30 15:06:39"
    ],
-   [
-    "1161",
-    "cancelled",
-    "paysera",
-    26.39,
-    "09-23 11:48",
-    [
-     "09-23 11:48 Stock hold of 90 minutes applied to: - Animonda Vom Feinsten Kitten with Lamb – konservai kačiukams su ėriena,",
-     "09-23 11:48 Vykdymas: MAIN — AV 20 vnt (1 siunta(-os)) · dropship pirma",
-     "09-23 11:48 Paysera: Neapmokėto užsakymo būsena",
-     "09-23 11:48 Likutis sumažintas: Animonda Vom Feinsten Kitten with Lamb – konservai kačiukams su ėriena, 100 g (97&rarr;97)",
-     "09-23 14:27 ⚠ SARGAS: likutis buvo sumažintas, bet atšaukiant NEGRĮŽO — grąžink rankiniu ir patikrink eilutės _reduced_sto",
-     "09-23 14:27 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
-     "09-23 14:27 Email \"Atšauktas užsakymas\" sent.",
-     "09-23 16:28 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-24 14:28 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-24 14:28 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-24 14:28 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-24 14:28 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
-    ]
+   "Perduota tiekėjui Vetfarmas — laiškas: terra@petshop.lt": [
+    5,
+    "2026-09-29 12:36:47",
+    "2026-09-29 12:36:47"
    ],
-   [
-    "1151",
-    "cancelled",
-    "paysera",
-    62.98,
-    "09-22 14:44",
-    [
-     "09-22 17:20 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
-     "09-22 17:20 Email \"Atšauktas užsakymas\" sent.",
-     "09-22 19:20 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-23 17:20 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
-    ]
+   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #33, laiške kartu su užsakymais). Kelias ": [
+    5,
+    "2026-09-28 11:58:52",
+    "2026-09-28 11:58:53"
    ],
-   [
-    "1149",
-    "cancelled",
-    "paysera",
-    29.4,
-    "09-22 14:16",
-    [
-     "09-22 17:20 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
-     "09-22 17:20 Email \"Atšauktas užsakymas\" sent.",
-     "09-22 19:20 Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36150 (S1676).",
-     "09-23 17:20 Krepšelio priminimas 2 nesiųstas — naujesnis užsakymas #36150 (S1676)."
-    ]
+   "Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankinis pavedimas. Vartotojas: Raimi": [
+    5,
+    "2026-09-14 20:50:03",
+    "2026-09-28 01:11:30"
    ],
-   [
-    "1146",
-    "cancelled",
-    "paysera",
-    44.52,
-    "09-22 10:26",
-    [
-     "09-22 10:26 Stock hold of 90 minutes applied to: - Animonda GranCarno Adult Beef + Chicken: konservai šunims su šviežia ja",
-     "09-22 10:26 Svečio užsakymas priskirtas esamai paskyrai #2639 pagal el. paštą (S1690).",
-     "09-22 10:26 Paysera: Neapmokėto užsakymo būsena",
-     "09-22 10:30 Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
-     "09-22 10:30 Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
-     "09-22 12:30 Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36146 (S1676).",
-     "09-23 10:30 Krepšelio priminimas 2 nesiųstas — naujesnis užsakymas #36146 (S1676)."
-    ]
+   "Pažymėta išsiųsta darbalaukyje (Raimis, lp). WC laiškas klientui: NESIŲSTAS.": [
+    5,
+    "2026-09-14 18:43:48",
+    "2026-09-21 12:11:09"
    ],
-   [
-    "1144",
-    "cancelled",
-    "bacs",
-    18.37,
-    "09-22 09:55",
-    [
-     "09-22 09:55 Stock hold of 90 minutes applied to: - Filtrai automatinei vandens gertuvei fontanui katėms, Catit Pixi, 6 vnt",
-     "09-22 09:55 Vykdymas: MAIN — AV 2 vnt (1 siunta(-os)) · dropship pirma",
-     "09-22 09:55 Likutis sumažintas: Filtrai automatinei vandens gertuvei fontanui katėms, Catit Pixi, 6 vnt. (37&rarr;37), Žai",
-     "09-22 09:55 Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
-     "09-22 09:55 Email \"Naujas užsakymas\" sent.",
-     "09-22 10:12 Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
-     "09-22 10:12 ⚠ SARGAS: likutis buvo sumažintas, bet atšaukiant NEGRĮŽO — grąžink rankiniu ir patikrink eilutės _reduced_sto",
-     "09-22 10:12 Užsakymo statusas pakeistas iš Sustabdytas į Atšauktas."
-    ]
+   "Perduota tiekėjui Ambrosia — laiškas: info@alphazoo.lt, terra@petshop.lt": [
+    4,
+    "2026-09-25 11:13:31",
+    "2026-09-29 09:00:56"
    ],
-   [
-    "1128",
-    "cancelled",
-    "bacs",
-    30.81,
-    "09-20 16:37",
-    [
-     "09-20 16:37 Stock hold of 90 minutes applied to: - Animonda GranCarno Adult Poultry Hearts: konservai suaugusiems šunims s",
-     "09-20 16:37 Svečio užsakymas priskirtas esamai paskyrai #662 pagal el. paštą (S1690).",
-     "09-20 16:37 Vykdymas: MAIN — AV 9 vnt (1 siunta(-os)) · dropship pirma",
-     "09-20 16:37 Likutis sumažintas: Animonda GranCarno Adult Poultry Hearts: konservai suaugusiems šunims su paukštienos širde",
-     "09-20 16:37 Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
-     "09-20 16:37 Email \"Naujas užsakymas\" sent.",
-     "09-20 18:52 Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: NESIŲSTAS.",
-     "09-20 18:52 ⚠ SARGAS: likutis buvo sumažintas, bet atšaukiant NEGRĮŽO — grąžink rankiniu ir patikrink eilutės _reduced_sto",
-     "09-20 18:52 Užsakymo statusas pakeistas iš Sustabdytas į Atšauktas.",
-     "09-20 20:52 Krepšelio priminimas 1 nesiųstas — naujesnis užsakymas #36103 (S1676).",
-     "09-21 18:52 Krepšelio priminimas 2 nesiųstas — naujesnis užsakymas #36103 (S1676)."
-    ]
+   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #29, laiške kartu su užsakymais). Kelias ": [
+    4,
+    "2026-09-21 12:28:11",
+    "2026-09-21 12:28:11"
    ],
-   [
-    "1126",
-    "cancelled",
-    "paysera",
-    20.99,
-    "09-20 11:59",
-    [
-     "09-20 14:07 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
-     "09-20 14:07 Email \"Atšauktas užsakymas\" sent.",
-     "09-20 16:07 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-21 14:07 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
-    ]
+   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #25, laiške kartu su užsakymais). Kelias ": [
+    4,
+    "2026-09-16 12:48:18",
+    "2026-09-16 12:48:18"
    ],
-   [
-    "1125",
-    "cancelled",
-    "paysera",
-    20.99,
-    "09-20 11:55",
-    [
-     "09-20 14:07 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
-     "09-20 14:07 Email \"Atšauktas užsakymas\" sent.",
-     "09-20 16:07 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-21 14:07 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
-    ]
+   "Pažymėta išsiųsta darbalaukyje (Inga, web). WC laiškas klientui: NESIŲSTAS.": [
+    4,
+    "2026-09-11 10:15:33",
+    "2026-09-18 18:29:21"
    ],
-   [
-    "1124",
-    "cancelled",
-    "paysera",
-    29.49,
-    "09-20 11:54",
-    [
-     "09-20 14:07 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
-     "09-20 14:07 Email \"Atšauktas užsakymas\" sent.",
-     "09-20 16:07 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-21 14:07 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
-    ]
+   "Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankinis pavedimas. Vartotojas: Inga.": [
+    4,
+    "2026-09-11 09:14:46",
+    "2026-09-28 15:26:39"
    ],
-   [
-    "1123",
-    "cancelled",
-    "paysera",
-    37.99,
-    "09-20 11:53",
-    [
-     "09-20 14:07 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
-     "09-20 14:07 Email \"Atšauktas užsakymas\" sent.",
-     "09-20 16:07 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-21 14:07 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
-    ]
+   "Perduota tiekėjui Quattro / Kauno grūdai — laiškas: terra@petshop.lt": [
+    3,
+    "2026-09-11 10:13:39",
+    "2026-09-28 09:42:48"
    ],
-   [
-    "1120",
-    "cancelled",
-    "paysera",
-    56.99,
-    "09-20 10:20",
-    [
-     "09-20 10:20 Stock hold of 90 minutes applied to: - Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirn",
-     "09-20 10:20 Svečio užsakymas priskirtas esamai paskyrai #3412 pagal el. paštą (S1690).",
-     "09-20 10:20 Paysera: Neapmokėto užsakymo būsena",
-     "09-20 10:20 Likutis sumažintas: Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg (254&ra",
-     "09-20 10:38 Paysera: Naujo užsakymo kūrimo būsena",
-     "09-20 10:47 LAUKTI — dublikatas: tą pačią prekę tą pačią dieną apmokėjo #1121 (vy.bieliauskas@). Priminimų klientei nesiųs",
-     "09-20 12:37 Likutis padidintas: Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg (254&ra",
-     "09-20 12:37 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšaukta",
-     "09-20 12:37 Email \"Atšauktas užsakymas\" sent.",
-     "09-20 14:37 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-     "09-21 12:37 Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676)."
-    ]
+   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #35, laiške kartu su užsakymais). Kelias ": [
+    2,
+    "2026-09-30 12:39:23",
+    "2026-09-30 12:39:23"
+   ],
+   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #30, laiške kartu su užsakymais). Kelias ": [
+    2,
+    "2026-09-22 12:28:10",
+    "2026-09-22 12:28:10"
+   ],
+   "Perduota tiekėjui Quattro / Kauno grūdai — laiškas: e.panaviene@kaunogrudai.lt, terra@pets": [
+    2,
+    "2026-09-16 08:55:37",
+    "2026-09-17 09:17:04"
+   ],
+   "Bacs priminimas (+48 val.) klientui išsiųstas (S#).": [
+    2,
+    "2026-09-13 11:50:02",
+    "2026-09-27 11:49:46"
+   ],
+   "Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt,karolina.kazlauskaite": [
+    2,
+    "2026-09-10 12:47:57",
+    "2026-09-10 12:47:57"
+   ],
+   "Atšaukta darbalaukyje. Vartotojas: Raimis. Laiškas klientui: išsiųstas.": [
+    1,
+    "2026-10-01 13:47:14",
+    "2026-10-01 13:47:14"
+   ],
+   "Prekių keitimas (S#, Raimio sprendimu, klientas sutiko): „Stirnos ausis, 1 vnt.“ ×5 (5,": [
+    1,
+    "2026-09-28 19:54:55",
+    "2026-09-28 19:54:55"
+   ],
+   "Atšaukta darbalaukyje. Vartotojas: Inga. Laiškas klientui: išsiųstas.": [
+    1,
+    "2026-09-28 14:08:05",
+    "2026-09-28 14:08:05"
+   ],
+   "Tiekimas: prekės užsakytos iš Quattro / Kauno grūdai (partija #32, laiške kartu su užsakym": [
+    1,
+    "2026-09-28 09:42:48",
+    "2026-09-28 09:42:48"
+   ],
+   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #31, laiške kartu su užsakymais). Kelias ": [
+    1,
+    "2026-09-25 12:51:22",
+    "2026-09-25 12:51:22"
+   ],
+   "Perduota tiekėjui Prins Petfoods — laiškas: irute@faunas.lt, terra@petshop.lt": [
+    1,
+    "2026-09-24 09:03:03",
+    "2026-09-24 09:03:03"
+   ],
+   "LAUKTI — dublikatas: tą pačią prekę tą pačią dieną apmokėjo # (vy.bieliauskas@). Primi": [
+    1,
+    "2026-09-20 10:47:48",
+    "2026-09-20 10:47:48"
+   ],
+   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #27, laiške kartu su užsakymais). Kelias ": [
+    1,
+    "2026-09-18 12:50:58",
+    "2026-09-18 12:50:58"
+   ],
+   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #26, laiške kartu su užsakymais). Kelias ": [
+    1,
+    "2026-09-17 12:53:40",
+    "2026-09-17 12:53:40"
+   ],
+   "Tiekimas: prekės užsakytos iš Vetfarmas (partija #23, laiške kartu su užsakymais). Kelias ": [
+    1,
+    "2026-09-15 13:02:44",
+    "2026-09-15 13:02:44"
+   ],
+   "S#: atšaukta tyliai Raimio nurodymu — klientas užsakė iš naujo ir apmokėjo # (Payse": [
+    1,
+    "2026-09-12 01:26:26",
+    "2026-09-12 01:26:26"
+   ],
+   "Email \"Įvykdytas užsakymas\" sent.": [
+    1,
+    "2026-09-09 02:30:59",
+    "2026-09-09 02:30:59"
    ]
-  ]
+  },
+  "wc_emails": [
+   [
+    "new_order",
+    "Naujas užsakymas",
+    "ON",
+    "adminui"
+   ],
+   [
+    "cancelled_order",
+    "Atšauktas užsakymas",
+    "ON",
+    "adminui"
+   ],
+   [
+    "customer_cancelled_order",
+    "Atšauktas užsakymas",
+    "ON",
+    "klientui"
+   ],
+   [
+    "failed_order",
+    "Nepavykęs užsakymas",
+    "ON",
+    "adminui"
+   ],
+   [
+    "customer_failed_order",
+    "Nepavykęs užsakymas",
+    "off",
+    "klientui"
+   ],
+   [
+    "customer_on_hold_order",
+    "Užsakymas sustabdytas",
+    "off",
+    "klientui"
+   ],
+   [
+    "customer_processing_order",
+    "Užsakymas vykdomas",
+    "ON",
+    "klientui"
+   ],
+   [
+    "customer_completed_order",
+    "Įvykdytas užsakymas",
+    "ON",
+    "klientui"
+   ],
+   [
+    "customer_refunded_order",
+    "Grąžintas užsakymas",
+    "ON",
+    "klientui"
+   ],
+   [
+    "customer_invoice",
+    "Užsakymo informacija",
+    "off",
+    "klientui"
+   ],
+   [
+    "customer_note",
+    "Pirkėjo pastaba",
+    "ON",
+    "klientui"
+   ],
+   [
+    "customer_reset_password",
+    "Atkurti slaptažodį",
+    "ON",
+    "klientui"
+   ],
+   [
+    "customer_new_account",
+    "Nauja paskyra",
+    "ON",
+    "klientui"
+   ],
+   [
+    "admin_payment_gateway_enabled",
+    "Payment gateway enabled",
+    "off",
+    "adminui"
+   ],
+   [
+    "customer_pos_completed_order",
+    "POS completed order",
+    "off",
+    "klientui"
+   ],
+   [
+    "customer_pos_refunded_order",
+    "POS refunded order",
+    "off",
+    "klientui"
+   ],
+   [
+    "customer_verify_email",
+    "Confirm email address",
+    "ON",
+    "klientui"
+   ]
+  ],
+  "dispatch_cls": "Petshop_Email_Dispatch",
+  "flows_def": {
+   "order_paid": {
+    "class": "transactional",
+    "delay": 0
+   },
+   "order_shipped": {
+    "class": "transactional",
+    "delay": 0
+   },
+   "payment_failed": {
+    "class": "transactional",
+    "delay": 0
+   },
+   "shipment_returned": {
+    "class": "transactional",
+    "delay": 0
+   },
+   "consent_changed": {
+    "class": "transactional",
+    "delay": 0
+   },
+   "pet_reminder_due": {
+    "class": "transactional",
+    "delay": 0
+   },
+   "subscription_t5_notice": {
+    "class": "transactional",
+    "delay": 0
+   },
+   "refill_due": {
+    "class": "similar_soft_optin",
+    "delay": 0
+   },
+   "cart_abandoned": {
+    "class": "marketing",
+    "delay": 0
+   },
+   "cart_abandoned_2": {
+    "class": "marketing",
+    "delay": 0
+   },
+   "post_purchase_2d": {
+    "class": "service",
+    "delay": 0
+   },
+   "post_purchase_7d": {
+    "class": "service",
+    "delay": 604800
+   },
+   "post_purchase_14d": {
+    "class": "service",
+    "delay": 1209600
+   },
+   "win_back_60": {
+    "class": "marketing",
+    "delay": 0
+   },
+   "win_back_90": {
+    "class": "marketing",
+    "delay": 0
+   },
+   "win_back_120": {
+    "class": "marketing",
+    "delay": 0
+   },
+   "legacy_reactivation_l1": {
+    "class": "marketing",
+    "delay": 0
+   },
+   "founding_activation": {
+    "class": "marketing",
+    "delay": 0
+   },
+   "back_in_stock": {
+    "class": "transactional",
+    "delay": 0
+   },
+   "newsletter": {
+    "class": "marketing",
+    "delay": 0
+   },
+   "browse_abandoned": {
+    "class": "marketing",
+    "delay": 0
+   },
+   "win_back": {
+    "class": "similar_soft_optin",
+    "delay": 0
+   }
+  },
+  "tbl": [
+   "gaj6_mailpoet_automation_run_logs",
+   "gaj6_mailpoet_automation_run_subjects",
+   "gaj6_mailpoet_automation_runs",
+   "gaj6_mailpoet_automation_triggers",
+   "gaj6_mailpoet_automation_versions",
+   "gaj6_mailpoet_automations",
+   "gaj6_mailpoet_custom_fields",
+   "gaj6_mailpoet_dynamic_segment_filters",
+   "gaj6_mailpoet_feature_flags",
+   "gaj6_mailpoet_forms",
+   "gaj6_mailpoet_log",
+   "gaj6_mailpoet_migrations",
+   "gaj6_mailpoet_newsletter_links",
+   "gaj6_mailpoet_newsletter_option",
+   "gaj6_mailpoet_newsletter_option_fields",
+   "gaj6_mailpoet_newsletter_posts",
+   "gaj6_mailpoet_newsletter_segment",
+   "gaj6_mailpoet_newsletter_templates",
+   "gaj6_mailpoet_newsletters",
+   "gaj6_mailpoet_scheduled_task_subscribers",
+   "gaj6_mailpoet_scheduled_tasks",
+   "gaj6_mailpoet_segments",
+   "gaj6_mailpoet_sending_queues",
+   "gaj6_mailpoet_settings",
+   "gaj6_mailpoet_statistics_bounces",
+   "gaj6_mailpoet_statistics_clicks",
+   "gaj6_mailpoet_statistics_forms",
+   "gaj6_mailpoet_statistics_newsletters",
+   "gaj6_mailpoet_statistics_opens",
+   "gaj6_mailpoet_statistics_unsubscribes",
+   "gaj6_mailpoet_statistics_woocommerce_purchases",
+   "gaj6_mailpoet_stats_notifications",
+   "gaj6_mailpoet_subscriber_custom_field",
+   "gaj6_mailpoet_subscriber_ips",
+   "gaj6_mailpoet_subscriber_segment",
+   "gaj6_mailpoet_subscriber_tag",
+   "gaj6_mailpoet_subscribers",
+   "gaj6_mailpoet_tags",
+   "gaj6_mailpoet_user_agents",
+   "gaj6_mailpoet_user_flags",
+   "gaj6_ps_email_content",
+   "gaj6_ps_email_jobs",
+   "gaj6_ps_email_suppression",
+   "gaj6_wc_email_unsubscribes",
+   "gaj6_wpmailsmtp_debug_events",
+   "gaj6_wpmailsmtp_tasks_meta"
+  ],
+  "cron": {
+   "ps_email_dispatch_cron": "10-01 16:43",
+   "ps_cart_abandon_check": "10-01 16:44",
+   "ps_bacs_priminimas": "10-01 16:49",
+   "ps_refill_iv_veidrodis": "10-01 17:06",
+   "ps_browse_abandon_check": "10-01 17:37",
+   "ps_atsaukto_krepselio_priminimas": "10-02 10:47",
+   "ps_refill_daily_check": "10-02 08:00",
+   "wpforms_email_summaries_cron": "10-04 21:00"
+  }
  },
- "v": "dep-163509",
+ "v": "dep-164219",
  "kurimas": 200,
- "sid": 6895,
+ "sid": 6896,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
