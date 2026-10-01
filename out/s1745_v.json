@@ -1,734 +1,176 @@
 {
- "4": {
+ "5": {
   "v": "S1745v",
-  "faze": "4",
-  "po_atsaukimo": [
+  "faze": "5",
+  "turinys": [],
+  "jobs": [
    {
-    "uzs": "1039",
-    "pastaba": "09-14 03:17 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "537|cart_abandoned|sent||2026-09-14 00:17:27|cart_abandoned:d69a915152e31334273d8faf22b41448"
-    ],
-    "jobs_pagal_order": [
-     "537|cart_abandoned|sent||2026-09-14 00:17:27|cart_abandoned:d69a915152e31334273d8faf22b41448",
-     "631|post_purchase_2d|sent||2026-09-17 14:39:33|post_purchase_2d:35931",
-     "632|post_purchase_7d|sent||2026-09-17 14:39:33|post_purchase_7d:35931",
-     "633|post_purchase_14d|skipped|deferral_expired|2026-09-17 14:39:33|post_purchase_14d:35931"
-    ]
+    "id": "536",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "subject": null,
+    "payload": "{\"products\":[{\"name\":\"Josera Leger 10 kg - sausas maistas kat\\u0117ms, ma\\u017eiau kalorij\\u0173\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/josera-leger-10-kg-sausas-maistas-katems-maziau-kaloriju\\/\"}],\"first_url\":\"https:\\/\\/petshop.lt\\/product\\/josera-leger-10-kg-sausas-maistas-katems-maziau-kaloriju\\/\"}",
+    "ctx": null,
+    "created_at": "2026-09-13 18:37:09",
+    "sent_at": null
    },
    {
-    "uzs": "1016",
-    "pastaba": "09-14 13:49 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "540|cart_abandoned|skipped|consent_missing|2026-09-14 10:49:53|cart_abandoned:2f7e1ff931a59fe79a3b3581d85fb1f3",
-     "548|cart_abandoned_2|skipped|consent_missing|2026-09-15 08:49:40|cart_abandoned_2:2f7e1ff931a59fe79a3b3581d85fb1f3"
-    ],
-    "jobs_pagal_order": [
-     "540|cart_abandoned|skipped|consent_missing|2026-09-14 10:49:53|cart_abandoned:2f7e1ff931a59fe79a3b3581d85fb1f3",
-     "548|cart_abandoned_2|skipped|consent_missing|2026-09-15 08:49:40|cart_abandoned_2:2f7e1ff931a59fe79a3b3581d85fb1f3"
-    ]
+    "id": "546",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "subject": null,
+    "payload": "{\"products\":[{\"name\":\"Kraikas kat\\u0117ms TOFU BeloCat, citrin\\u0173 kvapo, 6 l (2,5 kg), 2 mm granul\\u0117s\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/kraikas-katems-tofu-belocat-citrinu-kvapo-6-l-25-kg-2-mm-granules\\/\"}],\"first_url\":\"https:\\/\\/petshop.lt\\/product\\/kraikas-katems-tofu-belocat-citrinu-kvapo-6-l-25-kg-2-mm-granules\\/\"}",
+    "ctx": null,
+    "created_at": "2026-09-15 07:37:11",
+    "sent_at": null
    },
    {
-    "uzs": "1051",
-    "pastaba": "09-15 04:56 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "545|cart_abandoned|skipped|consent_missing|2026-09-15 01:56:03|cart_abandoned:141917a7d2eefb781953ac4367dec70a",
-     "556|cart_abandoned_2|skipped|consent_missing|2026-09-15 23:55:49|cart_abandoned_2:141917a7d2eefb781953ac4367dec70a"
-    ],
-    "jobs_pagal_order": [
-     "545|cart_abandoned|skipped|consent_missing|2026-09-15 01:56:03|cart_abandoned:141917a7d2eefb781953ac4367dec70a",
-     "556|cart_abandoned_2|skipped|consent_missing|2026-09-15 23:55:49|cart_abandoned_2:141917a7d2eefb781953ac4367dec70a"
-    ]
+    "id": "685",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "subject": null,
+    "payload": "{\"products\":[{\"name\":\"Kramtal\\u0173 rinkinys \\u0161unims\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/kramtalu-rinkinys-sunims\\/\"}],\"first_url\":\"https:\\/\\/petshop.lt\\/product\\/kramtalu-rinkinys-sunims\\/\"}",
+    "ctx": null,
+    "created_at": "2026-09-18 08:37:14",
+    "sent_at": null
    },
    {
-    "uzs": "1016",
-    "pastaba": "09-15 11:49 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "540|cart_abandoned|skipped|consent_missing|2026-09-14 10:49:53|cart_abandoned:2f7e1ff931a59fe79a3b3581d85fb1f3",
-     "548|cart_abandoned_2|skipped|consent_missing|2026-09-15 08:49:40|cart_abandoned_2:2f7e1ff931a59fe79a3b3581d85fb1f3"
-    ],
-    "jobs_pagal_order": [
-     "540|cart_abandoned|skipped|consent_missing|2026-09-14 10:49:53|cart_abandoned:2f7e1ff931a59fe79a3b3581d85fb1f3",
-     "548|cart_abandoned_2|skipped|consent_missing|2026-09-15 08:49:40|cart_abandoned_2:2f7e1ff931a59fe79a3b3581d85fb1f3"
-    ]
+    "id": "777",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "subject": null,
+    "payload": "{\"products\":[{\"name\":\"Josera Kitten Chicken begr\\u016bdis konservuotas pa\\u0161aras jaunoms kat\\u0117ms su vi\\u0161tiena, 200 g\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/josera-kitten-chicken-begrudis-konservuotas-pasaras-jaunoms-katems-su-vistiena-200-g\\/\"}],\"first_url\":\"https:\\/\\/petshop.lt\\/product\\/josera-kitten-chicken-begrudis-konservuotas-pasaras-jaunoms-katems-su-vistiena-200-g\\/\"}",
+    "ctx": null,
+    "created_at": "2026-09-20 12:37:02",
+    "sent_at": null
    },
    {
-    "uzs": "1061",
-    "pastaba": "09-15 20:01 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "552|cart_abandoned|skipped|consent_missing|2026-09-15 17:01:54|cart_abandoned:8450ef88a36b0f7f5eac9ca918016caf",
-     "587|cart_abandoned_2|skipped|consent_missing|2026-09-16 15:01:51|cart_abandoned_2:8450ef88a36b0f7f5eac9ca918016caf"
-    ],
-    "jobs_pagal_order": [
-     "552|cart_abandoned|skipped|consent_missing|2026-09-15 17:01:54|cart_abandoned:8450ef88a36b0f7f5eac9ca918016caf",
-     "587|cart_abandoned_2|skipped|consent_missing|2026-09-16 15:01:51|cart_abandoned_2:8450ef88a36b0f7f5eac9ca918016caf"
-    ]
+    "id": "797",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "subject": null,
+    "payload": "{\"products\":[{\"name\":\"Euk Adult Large Breed Maintenance 15 kg\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/euk-adult-large-breed-maintenance-15-kg\\/\"}],\"first_url\":\"https:\\/\\/petshop.lt\\/product\\/euk-adult-large-breed-maintenance-15-kg\\/\"}",
+    "ctx": null,
+    "created_at": "2026-09-20 18:37:04",
+    "sent_at": null
    },
    {
-    "uzs": "1051",
-    "pastaba": "09-16 02:55 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "545|cart_abandoned|skipped|consent_missing|2026-09-15 01:56:03|cart_abandoned:141917a7d2eefb781953ac4367dec70a",
-     "556|cart_abandoned_2|skipped|consent_missing|2026-09-15 23:55:49|cart_abandoned_2:141917a7d2eefb781953ac4367dec70a"
-    ],
-    "jobs_pagal_order": [
-     "545|cart_abandoned|skipped|consent_missing|2026-09-15 01:56:03|cart_abandoned:141917a7d2eefb781953ac4367dec70a",
-     "556|cart_abandoned_2|skipped|consent_missing|2026-09-15 23:55:49|cart_abandoned_2:141917a7d2eefb781953ac4367dec70a"
-    ]
+    "id": "801",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "subject": null,
+    "payload": "{\"products\":[{\"name\":\"Comfy u\\u017edaras tualetas katei, kreminis, 54x40x40\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/comfy-uzdaras-tualetas-katei-kreminis-54x40x40\\/\"}],\"first_url\":\"https:\\/\\/petshop.lt\\/product\\/comfy-uzdaras-tualetas-katei-kreminis-54x40x40\\/\"}",
+    "ctx": null,
+    "created_at": "2026-09-21 10:37:02",
+    "sent_at": null
    },
    {
-    "uzs": "1061",
-    "pastaba": "09-16 18:01 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "552|cart_abandoned|skipped|consent_missing|2026-09-15 17:01:54|cart_abandoned:8450ef88a36b0f7f5eac9ca918016caf",
-     "587|cart_abandoned_2|skipped|consent_missing|2026-09-16 15:01:51|cart_abandoned_2:8450ef88a36b0f7f5eac9ca918016caf"
-    ],
-    "jobs_pagal_order": [
-     "552|cart_abandoned|skipped|consent_missing|2026-09-15 17:01:54|cart_abandoned:8450ef88a36b0f7f5eac9ca918016caf",
-     "587|cart_abandoned_2|skipped|consent_missing|2026-09-16 15:01:51|cart_abandoned_2:8450ef88a36b0f7f5eac9ca918016caf"
-    ]
+    "id": "808",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "subject": null,
+    "payload": "{\"products\":[{\"name\":\"Ecomfy u\\u017edaras tualetas kat\\u0117ms eco, pilkas, 54x40x40\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/ecomfy-uzdaras-tualetas-katems-eco-pilkas-54x40x40\\/\"}],\"first_url\":\"https:\\/\\/petshop.lt\\/product\\/ecomfy-uzdaras-tualetas-katems-eco-pilkas-54x40x40\\/\"}",
+    "ctx": null,
+    "created_at": "2026-09-22 16:37:02",
+    "sent_at": null
    },
    {
-    "uzs": "1082",
-    "pastaba": "09-16 23:10 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "595|cart_abandoned|skipped|consent_missing|2026-09-16 18:05:05|cart_abandoned:c_02818cffc7182750f1f0bcb8fb409a60:stage1",
-     "598|cart_abandoned|skipped|consent_missing|2026-09-16 20:10:45|cart_abandoned:6102afd8ed9b40ce9dd28555269b7e5f",
-     "676|cart_abandoned_2|skipped|consent_missing|2026-09-17 18:10:43|cart_abandoned_2:6102afd8ed9b40ce9dd28555269b7e5f"
-    ],
-    "jobs_pagal_order": [
-     "598|cart_abandoned|skipped|consent_missing|2026-09-16 20:10:45|cart_abandoned:6102afd8ed9b40ce9dd28555269b7e5f",
-     "676|cart_abandoned_2|skipped|consent_missing|2026-09-17 18:10:43|cart_abandoned_2:6102afd8ed9b40ce9dd28555269b7e5f"
-    ]
+    "id": "809",
+    "status": "sent",
+    "pr": "",
+    "subject": "Jūsų neseniai žiūrėtos prekės",
+    "payload": "{\"products\":[{\"name\":\"Ontario Monoproteino konservai \\u0161unims su \\u0117riena ir rudaisiais ry\\u017eiais, 400 g\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/ontario-monoproteino-konservai-sunims-su-eriena-ir-rudaisiais-ryziais-400-g\\/\"}],\"first_url\":\"https:\\/\\/petshop.lt\\/product\\/ontario-monoproteino-konservai-sunims-su-eriena-ir-rudaisiais-ryziais-400-g\\/\"}",
+    "ctx": null,
+    "created_at": "2026-09-22 18:37:02",
+    "sent_at": "2026-09-22 18:38:40"
    },
    {
-    "uzs": "1094",
-    "pastaba": "09-17 17:15 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "620|cart_abandoned|skipped|consent_missing|2026-09-17 10:14:41|cart_abandoned:c_d61dd691ddab42869ed52320a8ca9b67:stage1",
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "680|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:12:42|cart_abandoned_2:a9f2cc3a2b85f84328c79243911dec32",
-     "681|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:01|cart_abandoned_2:660d8061a95daf67aa90951fcf4129bc",
-     "682|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:18|cart_abandoned_2:26828e9f0699d0ba7e2b3392f86a6a64",
-     "683|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:37|cart_abandoned_2:b11ad450dc00969b38f1cfb870db696a",
-     "684|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:14:49|cart_abandoned_2:fbac6254558c3e42c7728ce450800353",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7",
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ],
-    "jobs_pagal_order": [
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7"
-    ]
+    "id": "814",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "subject": null,
+    "payload": "{\"products\":[{\"name\":\"Animonda Carny Adult Beef + Chicken + Duck Heart \\u2013 konservai kat\\u0117ms su \\u0161vie\\u017eia jautiena, vi\\u0161tiena ir an\\u010di\\u0173 \\u0161irdel\\u0117mis, 400 g\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/animonda-carny-adult-beef-chicken-duck-heart-konservai-katems-su-sviezia-jautiena-vistiena-ir-anciu-sirdelemis-400-g\\/\"}],\"first_url\":\"https:\\/\\/petshop.lt\\/product\\/ani",
+    "ctx": null,
+    "created_at": "2026-09-23 06:37:03",
+    "sent_at": null
    },
    {
-    "uzs": "1082",
-    "pastaba": "09-17 21:10 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "595|cart_abandoned|skipped|consent_missing|2026-09-16 18:05:05|cart_abandoned:c_02818cffc7182750f1f0bcb8fb409a60:stage1",
-     "598|cart_abandoned|skipped|consent_missing|2026-09-16 20:10:45|cart_abandoned:6102afd8ed9b40ce9dd28555269b7e5f",
-     "676|cart_abandoned_2|skipped|consent_missing|2026-09-17 18:10:43|cart_abandoned_2:6102afd8ed9b40ce9dd28555269b7e5f"
-    ],
-    "jobs_pagal_order": [
-     "598|cart_abandoned|skipped|consent_missing|2026-09-16 20:10:45|cart_abandoned:6102afd8ed9b40ce9dd28555269b7e5f",
-     "676|cart_abandoned_2|skipped|consent_missing|2026-09-17 18:10:43|cart_abandoned_2:6102afd8ed9b40ce9dd28555269b7e5f"
-    ]
+    "id": "821",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "subject": null,
+    "payload": "{\"products\":[{\"name\":\"Exclusion Hypoallergenic konservai \\u0161unims su elniena ir bulv\\u0117mis 400 g\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/exclusion-hypoallergenic-konservai-sunims-su-elniena-ir-bulvemis-400-g\\/\"}],\"first_url\":\"https:\\/\\/petshop.lt\\/product\\/exclusion-hypoallergenic-konservai-sunims-su-elniena-ir-bulvemis-400-g\\/\"}",
+    "ctx": null,
+    "created_at": "2026-09-23 11:37:20",
+    "sent_at": null
    },
    {
-    "uzs": "1096",
-    "pastaba": "09-17 21:12 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "677|cart_abandoned|skipped|suppressed_marketing_unsubscribe|2026-09-17 18:12:13|cart_abandoned:d2561aa7b94a52893a66905c16b2f852",
-     "729|cart_abandoned_2|skipped|suppressed_marketing_unsubscribe|2026-09-18 16:12:26|cart_abandoned_2:d2561aa7b94a52893a66905c16b2f852",
-     "1109|cart_abandoned|skipped|suppressed_marketing_unsubscribe|2026-10-01 12:47:20|cart_abandoned:5d2142ab42dcb61f8f88ffa9178ebb88"
-    ],
-    "jobs_pagal_order": [
-     "677|cart_abandoned|skipped|suppressed_marketing_unsubscribe|2026-09-17 18:12:13|cart_abandoned:d2561aa7b94a52893a66905c16b2f852",
-     "729|cart_abandoned_2|skipped|suppressed_marketing_unsubscribe|2026-09-18 16:12:26|cart_abandoned_2:d2561aa7b94a52893a66905c16b2f852"
-    ]
+    "id": "949",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "subject": null,
+    "payload": "{\"products\":[{\"name\":\"Miamor Feine Filets konservai kat\\u0117ms, tunas su dar\\u017eov\\u0117mis drebu\\u010diuose, 100 g\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/miamor-feine-filets-konservai-katems-tunas-su-darzovemis-drebuciuose-100-g\\/\"}],\"first_url\":\"https:\\/\\/petshop.lt\\/product\\/miamor-feine-filets-konservai-katems-tunas-su-darzovemis-drebuciuose-100-g\\/\"}",
+    "ctx": null,
+    "created_at": "2026-09-25 17:37:04",
+    "sent_at": null
    },
    {
-    "uzs": "1089",
-    "pastaba": "09-18 11:12 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "620|cart_abandoned|skipped|consent_missing|2026-09-17 10:14:41|cart_abandoned:c_d61dd691ddab42869ed52320a8ca9b67:stage1",
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "680|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:12:42|cart_abandoned_2:a9f2cc3a2b85f84328c79243911dec32",
-     "681|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:01|cart_abandoned_2:660d8061a95daf67aa90951fcf4129bc",
-     "682|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:18|cart_abandoned_2:26828e9f0699d0ba7e2b3392f86a6a64",
-     "683|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:37|cart_abandoned_2:b11ad450dc00969b38f1cfb870db696a",
-     "684|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:14:49|cart_abandoned_2:fbac6254558c3e42c7728ce450800353",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7",
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ],
-    "jobs_pagal_order": [
-     "680|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:12:42|cart_abandoned_2:a9f2cc3a2b85f84328c79243911dec32"
-    ]
+    "id": "959",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "subject": null,
+    "payload": "{\"products\":[{\"name\":\"FARMINA N&D PRIME - CAT Dry Chicken&Pomegr KITTEN 1,5 kg\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/farmina-nd-prime-cat-dry-chickenpomegr-kitten-15-kg\\/\"}],\"first_url\":\"https:\\/\\/petshop.lt\\/product\\/farmina-nd-prime-cat-dry-chickenpomegr-kitten-15-kg\\/\"}",
+    "ctx": null,
+    "created_at": "2026-09-25 19:37:03",
+    "sent_at": null
    },
    {
-    "uzs": "1090",
-    "pastaba": "09-18 11:13 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "620|cart_abandoned|skipped|consent_missing|2026-09-17 10:14:41|cart_abandoned:c_d61dd691ddab42869ed52320a8ca9b67:stage1",
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "680|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:12:42|cart_abandoned_2:a9f2cc3a2b85f84328c79243911dec32",
-     "681|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:01|cart_abandoned_2:660d8061a95daf67aa90951fcf4129bc",
-     "682|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:18|cart_abandoned_2:26828e9f0699d0ba7e2b3392f86a6a64",
-     "683|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:37|cart_abandoned_2:b11ad450dc00969b38f1cfb870db696a",
-     "684|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:14:49|cart_abandoned_2:fbac6254558c3e42c7728ce450800353",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7",
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ],
-    "jobs_pagal_order": [
-     "681|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:01|cart_abandoned_2:660d8061a95daf67aa90951fcf4129bc"
-    ]
+    "id": "1078",
+    "status": "sent",
+    "pr": "",
+    "subject": "Jūsų neseniai žiūrėtos prekės",
+    "payload": "{\"products\":[{\"name\":\"Ontario super premium konservai ka\\u010diukams su vi\\u0161tiena, krevet\\u0117mis ir la\\u0161i\\u0161\\u0173 aliejumi, 400 g\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/ontario-super-premium-konservai-kaciukams-su-vistiena-krevetemis-ir-lasisu-aliejumi-400-g\\/\"}],\"first_url\":\"https:\\/\\/petshop.lt\\/product\\/ontario-super-premium-konservai-kaciukams-su-vistiena-krevetemis-ir-lasisu-ali",
+    "ctx": null,
+    "created_at": "2026-09-30 19:37:03",
+    "sent_at": "2026-09-30 19:38:47"
    },
    {
-    "uzs": "1091",
-    "pastaba": "09-18 11:13 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "620|cart_abandoned|skipped|consent_missing|2026-09-17 10:14:41|cart_abandoned:c_d61dd691ddab42869ed52320a8ca9b67:stage1",
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "680|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:12:42|cart_abandoned_2:a9f2cc3a2b85f84328c79243911dec32",
-     "681|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:01|cart_abandoned_2:660d8061a95daf67aa90951fcf4129bc",
-     "682|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:18|cart_abandoned_2:26828e9f0699d0ba7e2b3392f86a6a64",
-     "683|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:37|cart_abandoned_2:b11ad450dc00969b38f1cfb870db696a",
-     "684|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:14:49|cart_abandoned_2:fbac6254558c3e42c7728ce450800353",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7",
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ],
-    "jobs_pagal_order": [
-     "682|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:18|cart_abandoned_2:26828e9f0699d0ba7e2b3392f86a6a64"
-    ]
-   },
-   {
-    "uzs": "1092",
-    "pastaba": "09-18 11:13 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "620|cart_abandoned|skipped|consent_missing|2026-09-17 10:14:41|cart_abandoned:c_d61dd691ddab42869ed52320a8ca9b67:stage1",
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "680|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:12:42|cart_abandoned_2:a9f2cc3a2b85f84328c79243911dec32",
-     "681|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:01|cart_abandoned_2:660d8061a95daf67aa90951fcf4129bc",
-     "682|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:18|cart_abandoned_2:26828e9f0699d0ba7e2b3392f86a6a64",
-     "683|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:37|cart_abandoned_2:b11ad450dc00969b38f1cfb870db696a",
-     "684|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:14:49|cart_abandoned_2:fbac6254558c3e42c7728ce450800353",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7",
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ],
-    "jobs_pagal_order": [
-     "683|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:37|cart_abandoned_2:b11ad450dc00969b38f1cfb870db696a"
-    ]
-   },
-   {
-    "uzs": "1093",
-    "pastaba": "09-18 11:14 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "620|cart_abandoned|skipped|consent_missing|2026-09-17 10:14:41|cart_abandoned:c_d61dd691ddab42869ed52320a8ca9b67:stage1",
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "680|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:12:42|cart_abandoned_2:a9f2cc3a2b85f84328c79243911dec32",
-     "681|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:01|cart_abandoned_2:660d8061a95daf67aa90951fcf4129bc",
-     "682|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:18|cart_abandoned_2:26828e9f0699d0ba7e2b3392f86a6a64",
-     "683|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:37|cart_abandoned_2:b11ad450dc00969b38f1cfb870db696a",
-     "684|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:14:49|cart_abandoned_2:fbac6254558c3e42c7728ce450800353",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7",
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ],
-    "jobs_pagal_order": [
-     "684|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:14:49|cart_abandoned_2:fbac6254558c3e42c7728ce450800353"
-    ]
-   },
-   {
-    "uzs": "1094",
-    "pastaba": "09-18 15:16 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "620|cart_abandoned|skipped|consent_missing|2026-09-17 10:14:41|cart_abandoned:c_d61dd691ddab42869ed52320a8ca9b67:stage1",
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "680|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:12:42|cart_abandoned_2:a9f2cc3a2b85f84328c79243911dec32",
-     "681|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:01|cart_abandoned_2:660d8061a95daf67aa90951fcf4129bc",
-     "682|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:18|cart_abandoned_2:26828e9f0699d0ba7e2b3392f86a6a64",
-     "683|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:37|cart_abandoned_2:b11ad450dc00969b38f1cfb870db696a",
-     "684|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:14:49|cart_abandoned_2:fbac6254558c3e42c7728ce450800353",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7",
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ],
-    "jobs_pagal_order": [
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7"
-    ]
-   },
-   {
-    "uzs": "1096",
-    "pastaba": "09-18 19:12 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "677|cart_abandoned|skipped|suppressed_marketing_unsubscribe|2026-09-17 18:12:13|cart_abandoned:d2561aa7b94a52893a66905c16b2f852",
-     "729|cart_abandoned_2|skipped|suppressed_marketing_unsubscribe|2026-09-18 16:12:26|cart_abandoned_2:d2561aa7b94a52893a66905c16b2f852",
-     "1109|cart_abandoned|skipped|suppressed_marketing_unsubscribe|2026-10-01 12:47:20|cart_abandoned:5d2142ab42dcb61f8f88ffa9178ebb88"
-    ],
-    "jobs_pagal_order": [
-     "677|cart_abandoned|skipped|suppressed_marketing_unsubscribe|2026-09-17 18:12:13|cart_abandoned:d2561aa7b94a52893a66905c16b2f852",
-     "729|cart_abandoned_2|skipped|suppressed_marketing_unsubscribe|2026-09-18 16:12:26|cart_abandoned_2:d2561aa7b94a52893a66905c16b2f852"
-    ]
-   },
-   {
-    "uzs": "1120",
-    "pastaba": "09-20 14:37 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "776|cart_abandoned|skipped|consent_missing|2026-09-20 11:37:58|cart_abandoned:aec3f812046f14667557611c4f6335c5",
-     "800|cart_abandoned_2|skipped|consent_missing|2026-09-21 09:37:26|cart_abandoned_2:aec3f812046f14667557611c4f6335c5"
-    ],
-    "jobs_pagal_order": [
-     "776|cart_abandoned|skipped|consent_missing|2026-09-20 11:37:58|cart_abandoned:aec3f812046f14667557611c4f6335c5",
-     "800|cart_abandoned_2|skipped|consent_missing|2026-09-21 09:37:26|cart_abandoned_2:aec3f812046f14667557611c4f6335c5"
-    ]
-   },
-   {
-    "uzs": "1123",
-    "pastaba": "09-20 16:07 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "620|cart_abandoned|skipped|consent_missing|2026-09-17 10:14:41|cart_abandoned:c_d61dd691ddab42869ed52320a8ca9b67:stage1",
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "680|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:12:42|cart_abandoned_2:a9f2cc3a2b85f84328c79243911dec32",
-     "681|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:01|cart_abandoned_2:660d8061a95daf67aa90951fcf4129bc",
-     "682|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:18|cart_abandoned_2:26828e9f0699d0ba7e2b3392f86a6a64",
-     "683|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:37|cart_abandoned_2:b11ad450dc00969b38f1cfb870db696a",
-     "684|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:14:49|cart_abandoned_2:fbac6254558c3e42c7728ce450800353",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7",
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ],
-    "jobs_pagal_order": [
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768"
-    ]
-   },
-   {
-    "uzs": "1124",
-    "pastaba": "09-20 16:07 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "620|cart_abandoned|skipped|consent_missing|2026-09-17 10:14:41|cart_abandoned:c_d61dd691ddab42869ed52320a8ca9b67:stage1",
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "680|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:12:42|cart_abandoned_2:a9f2cc3a2b85f84328c79243911dec32",
-     "681|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:01|cart_abandoned_2:660d8061a95daf67aa90951fcf4129bc",
-     "682|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:18|cart_abandoned_2:26828e9f0699d0ba7e2b3392f86a6a64",
-     "683|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:37|cart_abandoned_2:b11ad450dc00969b38f1cfb870db696a",
-     "684|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:14:49|cart_abandoned_2:fbac6254558c3e42c7728ce450800353",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7",
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ],
-    "jobs_pagal_order": [
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d"
-    ]
-   },
-   {
-    "uzs": "1125",
-    "pastaba": "09-20 16:07 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "620|cart_abandoned|skipped|consent_missing|2026-09-17 10:14:41|cart_abandoned:c_d61dd691ddab42869ed52320a8ca9b67:stage1",
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "680|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:12:42|cart_abandoned_2:a9f2cc3a2b85f84328c79243911dec32",
-     "681|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:01|cart_abandoned_2:660d8061a95daf67aa90951fcf4129bc",
-     "682|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:18|cart_abandoned_2:26828e9f0699d0ba7e2b3392f86a6a64",
-     "683|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:37|cart_abandoned_2:b11ad450dc00969b38f1cfb870db696a",
-     "684|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:14:49|cart_abandoned_2:fbac6254558c3e42c7728ce450800353",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7",
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ],
-    "jobs_pagal_order": [
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ]
-   },
-   {
-    "uzs": "1126",
-    "pastaba": "09-20 16:07 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "775|cart_abandoned|skipped|consent_missing|2026-09-20 11:00:34|cart_abandoned:c_e589ed2c4a0390f1d4091b170df6be1e:stage1",
-     "781|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:f8708008bb34552743183e931709ff5d",
-     "805|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:f8708008bb34552743183e931709ff5d"
-    ],
-    "jobs_pagal_order": [
-     "781|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:f8708008bb34552743183e931709ff5d",
-     "805|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:f8708008bb34552743183e931709ff5d"
-    ]
-   },
-   {
-    "uzs": "1120",
-    "pastaba": "09-21 12:37 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "776|cart_abandoned|skipped|consent_missing|2026-09-20 11:37:58|cart_abandoned:aec3f812046f14667557611c4f6335c5",
-     "800|cart_abandoned_2|skipped|consent_missing|2026-09-21 09:37:26|cart_abandoned_2:aec3f812046f14667557611c4f6335c5"
-    ],
-    "jobs_pagal_order": [
-     "776|cart_abandoned|skipped|consent_missing|2026-09-20 11:37:58|cart_abandoned:aec3f812046f14667557611c4f6335c5",
-     "800|cart_abandoned_2|skipped|consent_missing|2026-09-21 09:37:26|cart_abandoned_2:aec3f812046f14667557611c4f6335c5"
-    ]
-   },
-   {
-    "uzs": "1123",
-    "pastaba": "09-21 14:07 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "620|cart_abandoned|skipped|consent_missing|2026-09-17 10:14:41|cart_abandoned:c_d61dd691ddab42869ed52320a8ca9b67:stage1",
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "680|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:12:42|cart_abandoned_2:a9f2cc3a2b85f84328c79243911dec32",
-     "681|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:01|cart_abandoned_2:660d8061a95daf67aa90951fcf4129bc",
-     "682|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:18|cart_abandoned_2:26828e9f0699d0ba7e2b3392f86a6a64",
-     "683|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:37|cart_abandoned_2:b11ad450dc00969b38f1cfb870db696a",
-     "684|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:14:49|cart_abandoned_2:fbac6254558c3e42c7728ce450800353",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7",
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ],
-    "jobs_pagal_order": [
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768"
-    ]
-   },
-   {
-    "uzs": "1124",
-    "pastaba": "09-21 14:07 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "620|cart_abandoned|skipped|consent_missing|2026-09-17 10:14:41|cart_abandoned:c_d61dd691ddab42869ed52320a8ca9b67:stage1",
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "680|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:12:42|cart_abandoned_2:a9f2cc3a2b85f84328c79243911dec32",
-     "681|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:01|cart_abandoned_2:660d8061a95daf67aa90951fcf4129bc",
-     "682|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:18|cart_abandoned_2:26828e9f0699d0ba7e2b3392f86a6a64",
-     "683|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:37|cart_abandoned_2:b11ad450dc00969b38f1cfb870db696a",
-     "684|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:14:49|cart_abandoned_2:fbac6254558c3e42c7728ce450800353",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7",
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ],
-    "jobs_pagal_order": [
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d"
-    ]
-   },
-   {
-    "uzs": "1125",
-    "pastaba": "09-21 14:07 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "620|cart_abandoned|skipped|consent_missing|2026-09-17 10:14:41|cart_abandoned:c_d61dd691ddab42869ed52320a8ca9b67:stage1",
-     "621|cart_abandoned|skipped|consent_missing|2026-09-17 14:15:44|cart_abandoned:8139cc760dde282f2b744c49cc8880b7",
-     "680|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:12:42|cart_abandoned_2:a9f2cc3a2b85f84328c79243911dec32",
-     "681|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:01|cart_abandoned_2:660d8061a95daf67aa90951fcf4129bc",
-     "682|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:18|cart_abandoned_2:26828e9f0699d0ba7e2b3392f86a6a64",
-     "683|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:13:37|cart_abandoned_2:b11ad450dc00969b38f1cfb870db696a",
-     "684|cart_abandoned_2|skipped|consent_missing|2026-09-18 08:14:49|cart_abandoned_2:fbac6254558c3e42c7728ce450800353",
-     "704|cart_abandoned_2|skipped|consent_missing|2026-09-18 12:16:33|cart_abandoned_2:8139cc760dde282f2b744c49cc8880b7",
-     "778|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:3b0f207d0cd79d591d81bbdc8e30a768",
-     "779|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "802|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:3b0f207d0cd79d591d81bbdc8e30a768",
-     "803|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:617af2800ff1bfc9b4e0b56e9cea7b9d",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ],
-    "jobs_pagal_order": [
-     "780|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:1bf02457efd01b345ef423a4ee8bad23",
-     "804|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:1bf02457efd01b345ef423a4ee8bad23"
-    ]
-   },
-   {
-    "uzs": "1126",
-    "pastaba": "09-21 14:07 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "775|cart_abandoned|skipped|consent_missing|2026-09-20 11:00:34|cart_abandoned:c_e589ed2c4a0390f1d4091b170df6be1e:stage1",
-     "781|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:f8708008bb34552743183e931709ff5d",
-     "805|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:f8708008bb34552743183e931709ff5d"
-    ],
-    "jobs_pagal_order": [
-     "781|cart_abandoned|skipped|consent_missing|2026-09-20 13:07:29|cart_abandoned:f8708008bb34552743183e931709ff5d",
-     "805|cart_abandoned_2|skipped|consent_missing|2026-09-21 11:07:28|cart_abandoned_2:f8708008bb34552743183e931709ff5d"
-    ]
-   },
-   {
-    "uzs": "1151",
-    "pastaba": "09-22 19:20 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "807|cart_abandoned|skipped|consent_missing|2026-09-22 16:20:30|cart_abandoned:13e0ebe6c72ff5f78d49b6d5311fb2ba",
-     "825|cart_abandoned_2|skipped|consent_missing|2026-09-23 14:20:33|cart_abandoned_2:13e0ebe6c72ff5f78d49b6d5311fb2ba"
-    ],
-    "jobs_pagal_order": [
-     "807|cart_abandoned|skipped|consent_missing|2026-09-22 16:20:30|cart_abandoned:13e0ebe6c72ff5f78d49b6d5311fb2ba",
-     "825|cart_abandoned_2|skipped|consent_missing|2026-09-23 14:20:33|cart_abandoned_2:13e0ebe6c72ff5f78d49b6d5311fb2ba"
-    ]
-   },
-   {
-    "uzs": "1161",
-    "pastaba": "09-23 16:28 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "823|cart_abandoned|skipped|consent_missing|2026-09-23 13:28:07|cart_abandoned:e59040fe6c6fb0fad3f694d818d0d3c5",
-     "899|cart_abandoned_2|skipped|consent_missing|2026-09-24 11:28:11|cart_abandoned_2:e59040fe6c6fb0fad3f694d818d0d3c5"
-    ],
-    "jobs_pagal_order": [
-     "823|cart_abandoned|skipped|consent_missing|2026-09-23 13:28:07|cart_abandoned:e59040fe6c6fb0fad3f694d818d0d3c5",
-     "899|cart_abandoned_2|skipped|consent_missing|2026-09-24 11:28:11|cart_abandoned_2:e59040fe6c6fb0fad3f694d818d0d3c5"
-    ]
-   },
-   {
-    "uzs": "1151",
-    "pastaba": "09-23 17:20 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "807|cart_abandoned|skipped|consent_missing|2026-09-22 16:20:30|cart_abandoned:13e0ebe6c72ff5f78d49b6d5311fb2ba",
-     "825|cart_abandoned_2|skipped|consent_missing|2026-09-23 14:20:33|cart_abandoned_2:13e0ebe6c72ff5f78d49b6d5311fb2ba"
-    ],
-    "jobs_pagal_order": [
-     "807|cart_abandoned|skipped|consent_missing|2026-09-22 16:20:30|cart_abandoned:13e0ebe6c72ff5f78d49b6d5311fb2ba",
-     "825|cart_abandoned_2|skipped|consent_missing|2026-09-23 14:20:33|cart_abandoned_2:13e0ebe6c72ff5f78d49b6d5311fb2ba"
-    ]
-   },
-   {
-    "uzs": "1161",
-    "pastaba": "09-24 14:28 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "823|cart_abandoned|skipped|consent_missing|2026-09-23 13:28:07|cart_abandoned:e59040fe6c6fb0fad3f694d818d0d3c5",
-     "899|cart_abandoned_2|skipped|consent_missing|2026-09-24 11:28:11|cart_abandoned_2:e59040fe6c6fb0fad3f694d818d0d3c5"
-    ],
-    "jobs_pagal_order": [
-     "823|cart_abandoned|skipped|consent_missing|2026-09-23 13:28:07|cart_abandoned:e59040fe6c6fb0fad3f694d818d0d3c5",
-     "899|cart_abandoned_2|skipped|consent_missing|2026-09-24 11:28:11|cart_abandoned_2:e59040fe6c6fb0fad3f694d818d0d3c5"
-    ]
-   },
-   {
-    "uzs": "1161",
-    "pastaba": "09-24 14:28 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "823|cart_abandoned|skipped|consent_missing|2026-09-23 13:28:07|cart_abandoned:e59040fe6c6fb0fad3f694d818d0d3c5",
-     "899|cart_abandoned_2|skipped|consent_missing|2026-09-24 11:28:11|cart_abandoned_2:e59040fe6c6fb0fad3f694d818d0d3c5"
-    ],
-    "jobs_pagal_order": [
-     "823|cart_abandoned|skipped|consent_missing|2026-09-23 13:28:07|cart_abandoned:e59040fe6c6fb0fad3f694d818d0d3c5",
-     "899|cart_abandoned_2|skipped|consent_missing|2026-09-24 11:28:11|cart_abandoned_2:e59040fe6c6fb0fad3f694d818d0d3c5"
-    ]
-   },
-   {
-    "uzs": "1161",
-    "pastaba": "09-24 14:28 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "823|cart_abandoned|skipped|consent_missing|2026-09-23 13:28:07|cart_abandoned:e59040fe6c6fb0fad3f694d818d0d3c5",
-     "899|cart_abandoned_2|skipped|consent_missing|2026-09-24 11:28:11|cart_abandoned_2:e59040fe6c6fb0fad3f694d818d0d3c5"
-    ],
-    "jobs_pagal_order": [
-     "823|cart_abandoned|skipped|consent_missing|2026-09-23 13:28:07|cart_abandoned:e59040fe6c6fb0fad3f694d818d0d3c5",
-     "899|cart_abandoned_2|skipped|consent_missing|2026-09-24 11:28:11|cart_abandoned_2:e59040fe6c6fb0fad3f694d818d0d3c5"
-    ]
-   },
-   {
-    "uzs": "1161",
-    "pastaba": "09-24 14:28 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "823|cart_abandoned|skipped|consent_missing|2026-09-23 13:28:07|cart_abandoned:e59040fe6c6fb0fad3f694d818d0d3c5",
-     "899|cart_abandoned_2|skipped|consent_missing|2026-09-24 11:28:11|cart_abandoned_2:e59040fe6c6fb0fad3f694d818d0d3c5"
-    ],
-    "jobs_pagal_order": [
-     "823|cart_abandoned|skipped|consent_missing|2026-09-23 13:28:07|cart_abandoned:e59040fe6c6fb0fad3f694d818d0d3c5",
-     "899|cart_abandoned_2|skipped|consent_missing|2026-09-24 11:28:11|cart_abandoned_2:e59040fe6c6fb0fad3f694d818d0d3c5"
-    ]
-   },
-   {
-    "uzs": "1172",
-    "pastaba": "09-24 18:04 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "900|cart_abandoned|skipped|consent_missing|2026-09-24 15:04:20|cart_abandoned:83c5e179212c73b4b6e1fd03f132a310",
-     "942|cart_abandoned_2|skipped|consent_missing|2026-09-25 13:04:33|cart_abandoned_2:83c5e179212c73b4b6e1fd03f132a310"
-    ],
-    "jobs_pagal_order": [
-     "900|cart_abandoned|skipped|consent_missing|2026-09-24 15:04:20|cart_abandoned:83c5e179212c73b4b6e1fd03f132a310",
-     "942|cart_abandoned_2|skipped|consent_missing|2026-09-25 13:04:33|cart_abandoned_2:83c5e179212c73b4b6e1fd03f132a310"
-    ]
-   },
-   {
-    "uzs": "1172",
-    "pastaba": "09-25 16:04 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "900|cart_abandoned|skipped|consent_missing|2026-09-24 15:04:20|cart_abandoned:83c5e179212c73b4b6e1fd03f132a310",
-     "942|cart_abandoned_2|skipped|consent_missing|2026-09-25 13:04:33|cart_abandoned_2:83c5e179212c73b4b6e1fd03f132a310"
-    ],
-    "jobs_pagal_order": [
-     "900|cart_abandoned|skipped|consent_missing|2026-09-24 15:04:20|cart_abandoned:83c5e179212c73b4b6e1fd03f132a310",
-     "942|cart_abandoned_2|skipped|consent_missing|2026-09-25 13:04:33|cart_abandoned_2:83c5e179212c73b4b6e1fd03f132a310"
-    ]
-   },
-   {
-    "uzs": "1203",
-    "pastaba": "09-28 15:30 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "1006|cart_abandoned|skipped|consent_missing|2026-09-28 12:30:03|cart_abandoned:e543a979bc0af461bdea4fe14183c135",
-     "1010|cart_abandoned_2|skipped|consent_missing|2026-09-29 10:30:01|cart_abandoned_2:e543a979bc0af461bdea4fe14183c135"
-    ],
-    "jobs_pagal_order": [
-     "1006|cart_abandoned|skipped|consent_missing|2026-09-28 12:30:03|cart_abandoned:e543a979bc0af461bdea4fe14183c135",
-     "1010|cart_abandoned_2|skipped|consent_missing|2026-09-29 10:30:01|cart_abandoned_2:e543a979bc0af461bdea4fe14183c135"
-    ]
-   },
-   {
-    "uzs": "1218",
-    "pastaba": "09-29 03:34 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "1007|cart_abandoned|skipped|consent_missing|2026-09-29 00:34:03|cart_abandoned:429e1cdf395429c37da43276485a150e",
-     "1013|cart_abandoned_2|skipped|consent_missing|2026-09-29 22:34:01|cart_abandoned_2:429e1cdf395429c37da43276485a150e"
-    ],
-    "jobs_pagal_order": [
-     "1007|cart_abandoned|skipped|consent_missing|2026-09-29 00:34:03|cart_abandoned:429e1cdf395429c37da43276485a150e",
-     "1013|cart_abandoned_2|skipped|consent_missing|2026-09-29 22:34:01|cart_abandoned_2:429e1cdf395429c37da43276485a150e"
-    ]
-   },
-   {
-    "uzs": "1203",
-    "pastaba": "09-29 13:30 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "1006|cart_abandoned|skipped|consent_missing|2026-09-28 12:30:03|cart_abandoned:e543a979bc0af461bdea4fe14183c135",
-     "1010|cart_abandoned_2|skipped|consent_missing|2026-09-29 10:30:01|cart_abandoned_2:e543a979bc0af461bdea4fe14183c135"
-    ],
-    "jobs_pagal_order": [
-     "1006|cart_abandoned|skipped|consent_missing|2026-09-28 12:30:03|cart_abandoned:e543a979bc0af461bdea4fe14183c135",
-     "1010|cart_abandoned_2|skipped|consent_missing|2026-09-29 10:30:01|cart_abandoned_2:e543a979bc0af461bdea4fe14183c135"
-    ]
-   },
-   {
-    "uzs": "1222",
-    "pastaba": "09-29 14:06 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "1011|cart_abandoned|skipped|consent_missing|2026-09-29 11:06:57|cart_abandoned:2758b66fede1ff16331ade572964c9eb",
-     "1029|cart_abandoned_2|skipped|consent_missing|2026-09-30 09:06:21|cart_abandoned_2:2758b66fede1ff16331ade572964c9eb"
-    ],
-    "jobs_pagal_order": [
-     "1011|cart_abandoned|skipped|consent_missing|2026-09-29 11:06:57|cart_abandoned:2758b66fede1ff16331ade572964c9eb",
-     "1029|cart_abandoned_2|skipped|consent_missing|2026-09-30 09:06:21|cart_abandoned_2:2758b66fede1ff16331ade572964c9eb"
-    ]
-   },
-   {
-    "uzs": "1227",
-    "pastaba": "09-29 18:37 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "1012|cart_abandoned|skipped|consent_missing|2026-09-29 15:37:14|cart_abandoned:1fcf6c22d58e9d00017f764627aaefde",
-     "1041|cart_abandoned_2|skipped|consent_missing|2026-09-30 13:37:15|cart_abandoned_2:1fcf6c22d58e9d00017f764627aaefde"
-    ],
-    "jobs_pagal_order": [
-     "1012|cart_abandoned|skipped|consent_missing|2026-09-29 15:37:14|cart_abandoned:1fcf6c22d58e9d00017f764627aaefde",
-     "1041|cart_abandoned_2|skipped|consent_missing|2026-09-30 13:37:15|cart_abandoned_2:1fcf6c22d58e9d00017f764627aaefde"
-    ]
-   },
-   {
-    "uzs": "1218",
-    "pastaba": "09-30 01:34 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "1007|cart_abandoned|skipped|consent_missing|2026-09-29 00:34:03|cart_abandoned:429e1cdf395429c37da43276485a150e",
-     "1013|cart_abandoned_2|skipped|consent_missing|2026-09-29 22:34:01|cart_abandoned_2:429e1cdf395429c37da43276485a150e"
-    ],
-    "jobs_pagal_order": [
-     "1007|cart_abandoned|skipped|consent_missing|2026-09-29 00:34:03|cart_abandoned:429e1cdf395429c37da43276485a150e",
-     "1013|cart_abandoned_2|skipped|consent_missing|2026-09-29 22:34:01|cart_abandoned_2:429e1cdf395429c37da43276485a150e"
-    ]
-   },
-   {
-    "uzs": "1222",
-    "pastaba": "09-30 12:06 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "1011|cart_abandoned|skipped|consent_missing|2026-09-29 11:06:57|cart_abandoned:2758b66fede1ff16331ade572964c9eb",
-     "1029|cart_abandoned_2|skipped|consent_missing|2026-09-30 09:06:21|cart_abandoned_2:2758b66fede1ff16331ade572964c9eb"
-    ],
-    "jobs_pagal_order": [
-     "1011|cart_abandoned|skipped|consent_missing|2026-09-29 11:06:57|cart_abandoned:2758b66fede1ff16331ade572964c9eb",
-     "1029|cart_abandoned_2|skipped|consent_missing|2026-09-30 09:06:21|cart_abandoned_2:2758b66fede1ff16331ade572964c9eb"
-    ]
-   },
-   {
-    "uzs": "1227",
-    "pastaba": "09-30 16:37 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "1012|cart_abandoned|skipped|consent_missing|2026-09-29 15:37:14|cart_abandoned:1fcf6c22d58e9d00017f764627aaefde",
-     "1041|cart_abandoned_2|skipped|consent_missing|2026-09-30 13:37:15|cart_abandoned_2:1fcf6c22d58e9d00017f764627aaefde"
-    ],
-    "jobs_pagal_order": [
-     "1012|cart_abandoned|skipped|consent_missing|2026-09-29 15:37:14|cart_abandoned:1fcf6c22d58e9d00017f764627aaefde",
-     "1041|cart_abandoned_2|skipped|consent_missing|2026-09-30 13:37:15|cart_abandoned_2:1fcf6c22d58e9d00017f764627aaefde"
-    ]
-   },
-   {
-    "uzs": "1243",
-    "pastaba": "10-01 02:13 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "1079|cart_abandoned|skipped|consent_missing|2026-09-30 23:13:06|cart_abandoned:d7bb91513e46d6dc37bd211aecdd7ac2"
-    ],
-    "jobs_pagal_order": [
-     "1079|cart_abandoned|skipped|consent_missing|2026-09-30 23:13:06|cart_abandoned:d7bb91513e46d6dc37bd211aecdd7ac2"
-    ]
-   },
-   {
-    "uzs": "1249",
-    "pastaba": "10-01 15:47 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
-    "jobs_pagal_email": [
-     "677|cart_abandoned|skipped|suppressed_marketing_unsubscribe|2026-09-17 18:12:13|cart_abandoned:d2561aa7b94a52893a66905c16b2f852",
-     "729|cart_abandoned_2|skipped|suppressed_marketing_unsubscribe|2026-09-18 16:12:26|cart_abandoned_2:d2561aa7b94a52893a66905c16b2f852",
-     "1109|cart_abandoned|skipped|suppressed_marketing_unsubscribe|2026-10-01 12:47:20|cart_abandoned:5d2142ab42dcb61f8f88ffa9178ebb88"
-    ],
-    "jobs_pagal_order": [
-     "1109|cart_abandoned|skipped|suppressed_marketing_unsubscribe|2026-10-01 12:47:20|cart_abandoned:5d2142ab42dcb61f8f88ffa9178ebb88"
-    ]
+    "id": "1081",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "subject": null,
+    "payload": "{\"products\":[{\"name\":\"Rinkinys Gurmanams - skan\\u0117stai \\u0161unims\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/rinkinys-gurmanams-skanestai-sunims\\/\"},{\"name\":\"Galvij\\u0173 ir kiaul\\u0117s aus\\u0173 rinkinys\",\"url\":\"https:\\/\\/petshop.lt\\/product\\/galviju-ir-kiaules-ausu-rinkinys\\/\"},{\"name\":\"Kramtal\\u0173 d\\u0117\\u017e\\u0117 \\u0161uniui - tvirt\\u0173 dant\\u0173 savininkams\",\"url\":\"https:\\/\\/petshop.",
+    "ctx": null,
+    "created_at": "2026-10-01 05:37:07",
+    "sent_at": null
    }
   ],
-  "enqueue_kodas": "function enqueue( $flow, $email, $payload = array(), $args = array() ) {\n\t\tglobal $wpdb;\n\n\t\t$flows = self::flows();\n\t\tif ( ! isset( $flows[ $flow ] ) ) {\n\t\t\treturn array( 'ok' => false, 'error' => 'unknown_flow: ' . $flow );\n\t\t}\n\t\t$email = sanitize_email( $email );\n\t\tif ( ! is_email( $email ) ) {\n\t\t\treturn array( 'ok' => false, 'error' => 'invalid_email' );\n\t\t}\n\n\t\t$cfg     = $flows[ $flow ];\n\t\t$job_key = isset( $args['job_key'] ) && $args['job_key'] !== ''\n\t\t\t? substr( (string) $args['job_key'], 0, 191 )\n\t\t\t: $flow . ':' . md5( $email . '|' . wp_json_encode( $payload ) );\n\n\t\t$existing = $wpdb->get_var( $wpdb->prepare(\n\t\t\t\"SELECT id FROM \" . self::table() . \" WHERE job_key = %s LIMIT 1\", $job_key ) );\n\t\tif ( $existing ) {\n\t\t\treturn array( 'ok' => true, 'job_id' => (int) $existing, 'duplicate' => true );\n\t\t}\n\n\t\t$delay = isset( $args['delay'] ) ? (int) $args['delay'] : (int) $cfg['delay'];\n\t\t$sched = isset( $args['scheduled_at'] ) && $args['scheduled_at']\n\t\t\t? $args['scheduled_at']\n\t\t\t: gmdate( 'Y-m-d H:i:s', time() + $delay );\n\n\t\t$now = current_time( 'mysql', true );\n\t\t$ok = $wpdb->insert( self::table(), array(\n\t\t\t'job_key'           => $job_key,\n\t\t\t'flow'              => $flow,\n\t\t\t'flow_class'        => $cfg['class'],\n\t\t\t'recipient_email'   => $email,\n\t\t\t'recipient_user_id' => isset( $args['user_id'] ) ? (int) $args['user_id'] : null,\n\t\t\t'subject'           => isset( $args['subject'] ) ? substr( (string) $args['subject'], 0, 255 ) : null,\n\t\t\t'payload'           => wp_json_encode( $payload ),\n\t\t\t'status'            => 'pending',\n\t\t\t'context_json'      => isset( $args['context'] ) ? wp_json_encode( $args['context'] ) : null,\n\t\t\t'scheduled_at'      => $sched,\n\t\t\t'created_at'        => $now,\n\t\t\t'updated_at'        => $now,\n\t\t) );\n\n\t\tif ( ! $ok ) {\n\t\t\treturn array( 'ok' => false, 'error' => 'insert_failed: ' . $wpdb->last_error );\n\t\t}\n\t\treturn array( 'ok' => true, 'job_id' => (int) $wpdb->insert_id, 'duplicate' => false );\n\t}\n\n\t/* ---------------------------------------------------------------- */\n\t/* Eligibility gate — VIENA vieta visoms taisyklems                 */\n\t/* ---------------------------------------------------------------- */\n\n\t/**\n\t * @return array allowed(bool), reason(string)\n\t */\n\tpublic static function check_eligibility( $flow_class, $email, $flow = '', $context = array() ) {\n\n\t\t// 0) Netinkamas gavejas\n\t\tif ( ! is_email( $email ) ) {\n\t\t\treturn array( 'allowed' => false, 'reason' => 'invalid_recipient', 'terminal' => true );\n\t\t}\n\n\t\t// 1) KANALINIS suppression (S314).\n\t\t//    Sender turi du atskirus kanalus: email=marketingas, temail=transak"
+  "kodas": {
+   "wp-content/mu-plugins/petshop-laiskai.php": {
+    "mtime": "2026-08-29 18:14",
+    "antraste": "/**\n * Plugin Name: Petshop Laiskai — turinio sluoksnis\n * Description: Laisku turinys (antraste, blokai, priezastis) gyvena DB, o ne PHP faile. Maketas lieka kode. Nera irašo — krenta atgal i esama sablona.\n * Version: 1.3\n *\n * ARCHITEKTURA\n *   MAKETAS   Petshop_Email_Layout (PHP, keicia tik dev)\n *   TURINYS   gaj6_ps_email_content (DB, keicia Raimis)\n *   JUNGTIS   filtras petshop_email_template_path -> renderis.php\n *   SAUGIKLIS jei srautui NERA paskelbto irašo -> grazinamas ORIGINALUS failas\n *\n * PHP fatal per sablona nebeimanomas: turinys yra duomenys, ne kodas.\n */"
+   },
+   "wp-content/mu-plugins/petshop-rezultatai.php": {
+    "mtime": "2026-08-29 20:35",
+    "antraste": "/**\n * Plugin Name: Petshop Rezultatai v1.1 (laiškų skydelis + stop/go + pajamų priskyrimas)\n * Description: E3 — srautų rezultatai, stop/go šviesoforas, bangos, suppression, email→pajamos (last-click, 7 d.). Tik skaito.\n */"
+   },
+   "wp-content/mu-plugins/petshop-langai-admin.php": {
+    "mtime": "2026-08-29 18:41",
+    "antraste": "/**\n * Plugin Name: Petshop Langai — admin sritis\n * Description: Meniu šaka „Petshop langai\" ir laiškų šablonų redaktorius (blokai, gyva peržiūra, testinis siuntimas, versijos).\n * Version: 1.2\n * Reikalauja: petshop-laiskai.php (Petshop_Laiskai_Turinys) v1.2+\n */"
+   },
+   "wp-content/mu-plugins/petshop-perziuru-priminimas.php": {
+    "mtime": "2026-08-29 09:27",
+    "antraste": "/**\n * Plugin Name: Petshop Perziuru Priminimas v1.0 (Browse abandonment)\n * Description: Prisijungusio kliento perziuretu prekiu sekimas + priminimo laiskas po 24 val., jei nieko neidejo i krepseli ir nepirko. Marketing klase — consent tikrina dispatch.\n * Version: 1.0.0\n */"
+   },
+   "wp-content/plugins/petshop-core/templates/emails/browse-abandoned.php": {
+    "mtime": "2026-08-29 10:13",
+    "antraste": "/**\n * Sablonas: browse_abandoned — perziuretos prekes priminimas.\n *\n * MARKETING klase: siunciamas TIK su marketingo sutikimu (tikrina dispatch),\n * atsisakymo nuoroda pridedama Layout::wrap automatiskai.\n * Daznio riba 14 d. ir laukimas 24 val. — DETEKTORIUJE (S317 modelis).\n * Doktrina 4.4.3: VIENAS pagrindinis CTA (pirma preke), kitos — tekstiniai linkai.\n *\n * Kintamieji: $payload, $flow_class, $recipient. Nustato: $subject.\n */"
+   }
+  }
  },
- "v": "dep-171528",
+ "v": "dep-173035",
  "kurimas": 200,
- "sid": 6901,
+ "sid": 6902,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
