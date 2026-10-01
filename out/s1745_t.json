@@ -1,34 +1,12 @@
 {
- "1": {
+ "3": {
   "v": "S1745t",
-  "faze": "1",
-  "bacs": {
-   "enabled": "yes",
-   "title": "Bankinis pavedimas",
-   "instructions": "",
-   "description": "Apmokėkite padarydami pavedimą į mūsų banko sąskaitą. Prašome įrašyti Jūsų užsakymo numerį kaip mokėjimo paskirtį. Užsakymas nebus išsiųstas kol pavedimas nepasieks mūsų banko sąskaitos."
-  },
-  "bacs_saskaitos": 0,
-  "on_hold_laiskas": "no",
-  "preke": [
-   "Sausainiai šuniukams, kauliuko formos, Bones Puppy Mix, 100 g",
-   "0.86",
-   13,
-   "instock"
-  ],
-  "defer": false
- },
- "2": {
-  "v": "S1745t",
-  "faze": "2",
-  "padekos_bacs_blokas": "",
+  "faze": "3",
   "uzs": [
-   36611,
    "1252",
-   "on-hold",
-   "0.86"
+   "on-hold"
   ],
-  "laiskai_iki_siol": [
+  "laiskai": [
    {
     "t": "21:00:44",
     "to": "uzsakymai@petshop.lt",
@@ -41,11 +19,21 @@
      "class-wc-order.php:477"
     ]
    }
-  ]
+  ],
+  "pastabos": [
+   "21:00:43 TESTAS S1745 (Raimio prašymu 10-01): tikrinama, kokie laiškai išeina pavedimo užsakymui. NEAPDOROTI — bus atšauktas tyli",
+   "21:00:43 Vykdymas: MAIN — AV 1 vnt (1 siunta(-os)) · dropship pirma",
+   "21:00:43 Likutis sumažintas: Sausainiai šuniukams, kauliuko formos, Bones Puppy Mix, 100 g (13&rarr;13)",
+   "21:00:44 Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
+   "21:00:44 Email \"Naujas užsakymas\" sent."
+  ],
+  "padekos_puslapis": "Užsakymo informacija Produktas Viso Sausainiai šuniukams, kauliuko formos, Bones Puppy Mix, 100 g &times;&nbsp;1 0,86&nbsp;&euro; Suma: 0,86&nbsp;&euro; Viso: 0,86&nbsp;&euro; (įskaičiuota 0,15&nbsp;&euro; PVM) Mokėjimo būdas: Bankinis pavedimas Pirkėjo adresas TESTAS Raimio prašymu S1745Liucionių g. 46Vilnius01100 +37060000000 terra@gyvunai.lt Spausdinti sąskaitą Dėkojame. Jūsų užsakymas priimtas. Užsakymo numeris: 1252 Data: 2026-10-01 Viso: 0,86&nbsp;&euro; Mokėjimo būdas: Bankinis pavedimas",
+  "padekos_yra_iban": false,
+  "jobs": []
  },
- "v": "dep-175931",
+ "v": "dep-180112",
  "kurimas": 200,
- "sid": 6905,
+ "sid": 6906,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
