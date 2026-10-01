@@ -1,0 +1,112 @@
+{
+ "1": {
+  "v": "S1745a",
+  "faze": "1",
+  "cols": {
+   "ps_carts": [
+    "id",
+    "cart_id",
+    "session_key",
+    "user_id",
+    "email",
+    "email_source",
+    "last_cart_activity_at",
+    "cart_hash",
+    "snapshot_json",
+    "snapshot_version",
+    "status",
+    "status_changed_at",
+    "converted_order_id",
+    "created_at",
+    "updated_at"
+   ],
+   "ps_email_jobs": [
+    "id",
+    "job_key",
+    "flow",
+    "flow_class",
+    "recipient_email",
+    "recipient_user_id",
+    "subject",
+    "payload",
+    "status",
+    "block_reason",
+    "provider",
+    "provider_message_id",
+    "attempts",
+    "last_error",
+    "scheduled_at",
+    "sent_at",
+    "created_at",
+    "updated_at",
+    "skip_reason",
+    "error_message",
+    "decision_at",
+    "next_attempt_at",
+    "context_json",
+    "delivered_at",
+    "opened_at",
+    "clicked_at"
+   ]
+  },
+  "carts": [
+   {
+    "n": "31298",
+    "konv": "220",
+    "nuo": "2026-09-07 19:01:41"
+   }
+  ],
+  "cart_pvz": {
+   "id": "31489",
+   "cart_id": "c_0567902157612fe7122accad680f704e",
+   "session_key": "t_760494d43d2d29330ef271df2d4a84",
+   "user_id": null,
+   "email": "***",
+   "email_source": "***",
+   "last_cart_activity_at": "2026-10-01 15:49:18",
+   "cart_hash": "052a4ba202fd88bab602a8613a5625b614b3a296",
+   "snapshot_json": "[{\"product_id\":21370,\"variation_id\":0,\"quantity\":1,\"variation\":[],\"item_data\":[]},{\"product_id\":21372,\"variation_id\":0,\"…",
+   "snapshot_version": "1",
+   "status": "active",
+   "status_changed_at": "2026-10-01 15:48:58",
+   "converted_order_id": null,
+   "created_at": "2026-10-01 15:48:58",
+   "updated_at": "2026-10-01 15:49:18"
+  },
+  "job_pvz": {
+   "id": "1112",
+   "job_key": "post_purchase_14d:36558",
+   "flow": "post_purchase_14d",
+   "flow_class": "service",
+   "recipient_email": "***",
+   "recipient_user_id": "5880",
+   "subject": null,
+   "payload": "{\"order_id\":36558,\"order_number\":\"1211\",\"first_name\":\"Giedr\\u0117\",\"items\":[{\"name\":\"FLEXI pavad\\u0117lis \\u0161uniui Ne…",
+   "status": "pending",
+   "block_reason": null,
+   "provider": null,
+   "provider_message_id": null,
+   "attempts": "0",
+   "last_error": null,
+   "scheduled_at": "2026-10-13 15:06:21",
+   "sent_at": null,
+   "created_at": "2026-10-01 15:39:27",
+   "updated_at": "2026-10-01 15:39:27",
+   "skip_reason": null,
+   "error_message": null,
+   "decision_at": null,
+   "next_attempt_at": null,
+   "context_json": "{\"order_id\":36558}",
+   "delivered_at": null,
+   "opened_at": null,
+   "clicked_at": null
+  }
+ },
+ "v": "dep-161154",
+ "kurimas": 200,
+ "sid": 6891,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
