@@ -1,0 +1,50 @@
+{
+ "1": {
+  "v": "S1746d",
+  "dabar": "07:00:20Z",
+  "jobs": [
+   {
+    "id": "1082",
+    "status": "pending",
+    "pr": "",
+    "sent_at": null,
+    "attempts": "12",
+    "er": "cURL error 28: Operation timed out after 15002 milliseconds with 0 byt",
+    "updated_at": "2026-10-02 06:58:54"
+   },
+   {
+    "id": "1083",
+    "status": "pending",
+    "pr": "",
+    "sent_at": null,
+    "attempts": "12",
+    "er": "cURL error 28: Operation timed out after 15002 milliseconds with 0 byt",
+    "updated_at": "2026-10-02 06:59:09"
+   },
+   {
+    "id": "1084",
+    "status": "pending",
+    "pr": "",
+    "sent_at": null,
+    "attempts": "12",
+    "er": "cURL error 28: Operation timed out after 15002 milliseconds with 0 byt",
+    "updated_at": "2026-10-02 06:59:24"
+   }
+  ],
+  "po_siuntimo": "$ok = ! empty( $res['ok'] );\n\t\t$wpdb->update( self::table(), array(\n\t\t\t'status'              => $ok ? 'sent' : ( ! empty( $res['should_retry'] ) ? 'pending' : 'failed' ),\n\t\t\t'provider'            => 'sender',\n\t\t\t'provider_message_id' => isset( $res['esp_message_id'] ) ? substr( (string) $res['esp_message_id'], 0, 191 ) : null,\n\t\t\t'subject'             => substr( $rendered['subject'], 0, 255 ),\n\t\t\t'attempts'            => (int) $row['attempts'] + 1,\n\t\t\t'last_error'          => $ok ? null : ( isset( $res['error'] ) ? substr( (string) $res['error'], 0, 500 ) : 'unknown' ),\n\t\t\t'error_message'       => $ok ? null : ( isset( $res['error'] ) ? substr( (string) $res['error'], 0, 500 ) : 'unknown' ),\n\t\t\t'decision_at'         => current_time( 'mysql', true ),\n\t\t\t'sent_at'             => $ok ? current_time( 'mysql', true ) : null,\n\t\t\t'updated_at'          => current_time( 'mysql', true ),\n\t\t), array( 'id' => $id ) );\n\n\t\t// S315: pranešam, kad kontaktas panaudotas. Politikos reikšmę skaičiuoja\n\t\t// Petshop_Contact_Policy, ne dispatch. Nesekme CIA NEGALI paversti\n\t\t// issiusto laisko failed — todel apgaubta ir rezultatas ignoruojamas.\n\t\tif ( $ok ) {\n\t\t\ttry {\n\t\t\t\tdo_action( 'petshop_contact_used', $email, $flow );\n\t\t\t} catch ( Exception $e ) {\n\t\t\t\t// tyliai — laiskas jau issiustas\n\t\t\t}\n\t\t}\n\n\t\treturn array(\n\t\t\t'id' => $id, 'flow' => $flow, 'action' => $ok ? 'SENT' : 'FAILED',\n\t\t\t'msg_",
+  "siusta_po_0700": [
+   {
+    "flow": "refill_due",
+    "status": "pending",
+    "n": "3"
+   }
+  ]
+ },
+ "v": "dep-065859",
+ "kurimas": 200,
+ "sid": 6933,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
