@@ -1,0 +1,124 @@
+{
+ "1": {
+  "v": "S1747n",
+  "faze": "1",
+  "lentele": "gaj6_ps_stock_watch",
+  "stulpeliai": [
+   "id",
+   "product_id",
+   "email",
+   "user_id",
+   "status",
+   "source",
+   "created_at",
+   "notified_at"
+  ],
+  "statusai": [
+   {
+    "status": "notified",
+    "n": "3",
+    "prekiu": "3",
+    "klientu": "2"
+   },
+   {
+    "status": "waiting",
+    "n": "3",
+    "prekiu": "3",
+    "klientu": "3"
+   }
+  ],
+  "per_men": [
+   {
+    "m": "2026-09",
+    "n": "6",
+    "laukia": "3"
+   }
+  ],
+  "nuo_iki": {
+   "nuo": "2026-09-01 08:51:17",
+   "iki": "2026-09-24 09:01:07"
+  },
+  "suvestine": {
+   "laukia_eil": 3,
+   "prekiu": 3,
+   "jau_instock": 0,
+   "draft": 0
+  },
+  "laukia_cols": [
+   "pid",
+   "klientu",
+   "pavadinimas",
+   "sku",
+   "stock",
+   "kiekis",
+   "post",
+   "saltinis",
+   "kaina",
+   "parduota_365d",
+   "pirmas",
+   "paskutinis"
+  ],
+  "laukia": [
+   [
+    17293,
+    1,
+    "Ontario Adult Large Lamb and Brown Rice, 12 kg, pašaras didelių veisli",
+    "650501",
+    "outofstock",
+    0,
+    "publish",
+    "av",
+    63.99,
+    1,
+    "2026-09-21",
+    "2026-09-21"
+   ],
+   [
+    17345,
+    1,
+    "Natūralus bentonitinis sušokantis kraikas katėms Wonder White Natural ",
+    "WWN4366",
+    "outofstock",
+    0,
+    "publish",
+    "belcor_tofu",
+    8.5,
+    0,
+    "2026-09-24",
+    "2026-09-24"
+   ],
+   [
+    18172,
+    1,
+    "Hikari Turtle Sticks, 120 g",
+    "27121",
+    "outofstock",
+    0,
+    "publish",
+    "av",
+    6.9,
+    1,
+    "2026-09-14",
+    "2026-09-14"
+   ]
+  ],
+  "pranesta": [
+   {
+    "m": "2026-09",
+    "n": "3"
+   }
+  ],
+  "laiskai": [],
+  "SQL_ERR": [
+   "Unknown column 'flow_key' in 'WHERE'"
+  ],
+  "laikas": "2026-10-02 17:02:50"
+ },
+ "v": "dep-140140",
+ "kurimas": 200,
+ "sid": 6938,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
