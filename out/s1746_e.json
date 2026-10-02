@@ -1,0 +1,108 @@
+{
+ "1": {
+  "v": "S1746e",
+  "faze": "1",
+  "pries": [
+   [
+    "1082",
+    "pending",
+    "14",
+    "cURL error 28: Operation timed out after",
+    "2026-10-02 07:08:54"
+   ],
+   [
+    "1083",
+    "pending",
+    "14",
+    "cURL error 28: Operation timed out after",
+    "2026-10-02 07:09:09"
+   ],
+   [
+    "1084",
+    "pending",
+    "14",
+    "cURL error 28: Operation timed out after",
+    "2026-10-02 07:09:24"
+   ]
+  ],
+  "sustabdyta": 3,
+  "po": [
+   {
+    "id": "1082",
+    "status": "deferred",
+    "next_attempt_at": "2027-01-01 00:00:00",
+    "attempts": "14"
+   },
+   {
+    "id": "1083",
+    "status": "deferred",
+    "next_attempt_at": "2027-01-01 00:00:00",
+    "attempts": "14"
+   },
+   {
+    "id": "1084",
+    "status": "deferred",
+    "next_attempt_at": "2027-01-01 00:00:00",
+    "attempts": "14"
+   }
+  ],
+  "kiti": [
+   {
+    "id": "991",
+    "status": "sent",
+    "attempts": "9",
+    "pm": "azv2GY-.eE9p2l-R1XONV0-gkVM7wvz2j4Z-40W7Ns",
+    "sent_at": "2026-10-02 06:43:50",
+    "e": "gintarasd1971@gmail.com"
+   },
+   {
+    "id": "992",
+    "status": "skipped",
+    "attempts": "8",
+    "pm": "",
+    "sent_at": null,
+    "e": "gintarasd1971@gmail.com"
+   },
+   {
+    "id": "1082",
+    "status": "deferred",
+    "attempts": "14",
+    "pm": "",
+    "sent_at": null,
+    "e": "jurgita.tamasauskiene@yahoo.com"
+   }
+  ],
+  "adapteris": [
+   "Petshop_Sender_Adapter",
+   "class-sender-adapter.php"
+  ],
+  "metodai": [
+   "get_name",
+   "__construct",
+   "get_stored_token",
+   "store_token",
+   "is_configured",
+   "is_retriable_code",
+   "upsert_contact",
+   "emit_event",
+   "send_transactional_email",
+   "send_transactional_sms",
+   "verify_webhook",
+   "get_health_status",
+   "is_operational",
+   "get_contact_field",
+   "get_contact_status"
+  ],
+  "endpointai": [
+   "https://api.sender.net/v2"
+  ],
+  "send_kodas": "function send_transactional_email( $to_email, $subject, $html_body, array $meta = array() ) {\n\t\t// S205: dev allowlist — apsauga nuo realaus laisko realiam zmogui is dev aplinkos.\n\t\tif ( $this->is_blocked_by_dev_allowlist( $to_email ) ) {\n\t\t\t$this->log_dev_blocked( $to_email, 'send_transactional_email' );\n\t\t\treturn array(\n\t\t\t\t'ok'             => true,\n\t\t\t\t'esp_message_id' => '',\n\t\t\t\t'error'          => '',\n\t\t\t\t'http_code'      => 0,\n\t\t\t\t'should_retry'   => false,\n\t\t\t\t'skipped'        => 'dev_allowlist',\n\t\t\t);\n\t\t}\n\n\t\tif ( empty( $this->transactional_token ) ) {\n\t\t\treturn array( 'ok' => false, 'error' => 'no_transactional_token' );\n\t\t}\n\n\t\t$from_email = isset( $meta['from_email'] ) ? $meta['from_email'] : 'terra@petshop.lt';\n\t\t$from_name  = isset( $meta['from_name'] ) ? $meta['from_name'] : 'Petshop.lt';\n\t\t$to_name    = isset( $meta['to_name'] ) ? $meta['to_name'] : '';\n\n\t\t$body = array(\n\t\t\t'from'    => array( 'email' => $from_email, 'name' => $from_name ),\n\t\t\t// S308 PATAISA: Sender API reikalauja 'to' kaip OBJEKTO (struct), NE masyvo.\n\t\t\t// Buvo array(array(...)) -> HTTP 422 'field \"to\" should be struct (got array)'.\n\t\t\t// Empiriskai patvirtinta 2026-07-30: struct -> HTTP 200 + emailId.\n\t\t\t'to'      => array( 'email' => $to_email, 'name' => $to_name ),\n\t\t\t// S327: atsakymo adresas. Sender priima `reply_to` (HTTP 200), bet ar\n\t\t\t// REALIAI iraso i MIME — tikrinama atskirai. Jei ignoruoja — zalos nera.\n\t\t\t// Filtras leidzia keisti/isjungti be kodo redagavimo.\n\t\t\t'reply_to' => apply_filters( 'petshop_email_reply_to',\n\t\t\t\tarray( 'email' => 'uzsakymai@petshop.lt', 'name' =>"
+ },
+ "v": "dep-071021",
+ "kurimas": 200,
+ "sid": 6935,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
