@@ -1,0 +1,368 @@
+{
+ "1": {
+  "v": "S1746b",
+  "refill": [
+   [
+    "679",
+    "sent",
+    "",
+    "u5792",
+    "uzs 1001",
+    "p21329",
+    "sched 10-02 06:00",
+    "sent 10-02 06:04",
+    "senderID",
+    "",
+    "att1"
+   ],
+   [
+    "990",
+    "sent",
+    "",
+    "u5108",
+    "uzs 1103",
+    "p18602",
+    "sched 10-02 06:00",
+    "sent 10-02 06:04",
+    "senderID",
+    "",
+    "att1"
+   ],
+   [
+    "991",
+    "sent",
+    "",
+    "u5839",
+    "uzs 1107",
+    "p24393",
+    "sched 10-02 06:00",
+    "sent 10-02 06:43",
+    "senderID",
+    "",
+    "att9"
+   ],
+   [
+    "992",
+    "skipped",
+    "pakartoti_jau_siustas",
+    "u5839",
+    "uzs 1107",
+    "p17787",
+    "sched 10-02 06:00",
+    "sent ",
+    "-",
+    "HTTP 502",
+    "att8"
+   ],
+   [
+    "1082",
+    "pending",
+    "",
+    "u2639",
+    "uzs 1147",
+    "p23480",
+    "sched 10-02 06:00",
+    "sent ",
+    "-",
+    "cURL error 28: Operation timed out after 15002 milliseconds with 0 bytes receive",
+    "att11"
+   ],
+   [
+    "1083",
+    "pending",
+    "",
+    "u2639",
+    "uzs 1147",
+    "p23478",
+    "sched 10-02 06:00",
+    "sent ",
+    "-",
+    "cURL error 28: Operation timed out after 15002 milliseconds with 0 bytes receive",
+    "att11"
+   ],
+   [
+    "1084",
+    "pending",
+    "",
+    "u2639",
+    "uzs 1147",
+    "p17415",
+    "sched 10-02 06:00",
+    "sent ",
+    "-",
+    "cURL error 28: Operation timed out after 15002 milliseconds with 0 bytes receive",
+    "att11"
+   ]
+  ],
+  "laiskai_nuo_1001": [
+   {
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "n": "2",
+    "nuo": "2026-10-01 05:38:42",
+    "iki": "2026-10-01 17:38:40"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "n": "1",
+    "nuo": "2026-10-02 02:23:47",
+    "iki": "2026-10-02 02:23:47"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "pr": "suppressed_marketing_unsubscribe",
+    "n": "1",
+    "nuo": "2026-10-01 12:49:10",
+    "iki": "2026-10-01 12:49:10"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "n": "1",
+    "nuo": "2026-10-01 21:13:45",
+    "iki": "2026-10-01 21:13:45"
+   },
+   {
+    "flow": "consent_changed",
+    "status": "sent",
+    "pr": "",
+    "n": "1",
+    "nuo": "2026-10-01 04:48:47",
+    "iki": "2026-10-01 04:48:47"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "deferred",
+    "pr": "soft_optout_nezinomas",
+    "n": "17",
+    "nuo": "2026-10-01 08:09:03",
+    "iki": "2026-10-01 16:14:18"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "pr": "",
+    "n": "13",
+    "nuo": "2026-10-01 08:39:28",
+    "iki": "2026-10-01 16:39:35"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "pr": "",
+    "n": "4",
+    "nuo": "2026-10-01 09:08:43",
+    "iki": "2026-10-01 16:09:19"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "pr": "deferral_expired",
+    "n": "19",
+    "nuo": "2026-10-01 08:09:03",
+    "iki": "2026-10-01 16:43:50"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "pr": "similar_optout",
+    "n": "1",
+    "nuo": "2026-10-01 14:38:44",
+    "iki": "2026-10-01 14:38:44"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "pr": "",
+    "n": "13",
+    "nuo": "2026-10-01 08:43:45",
+    "iki": "2026-10-01 16:43:54"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "pr": "",
+    "n": "13",
+    "nuo": "2026-10-01 08:39:28",
+    "iki": "2026-10-01 16:39:35"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "pr": "",
+    "n": "10",
+    "nuo": "2026-10-01 08:38:47",
+    "iki": "2026-10-01 21:38:53"
+   },
+   {
+    "flow": "refill_due",
+    "status": "pending",
+    "pr": "",
+    "n": "3",
+    "nuo": "2026-10-02 06:53:56",
+    "iki": "2026-10-02 06:54:26"
+   },
+   {
+    "flow": "refill_due",
+    "status": "sent",
+    "pr": "",
+    "n": "3",
+    "nuo": "2026-10-02 06:04:32",
+    "iki": "2026-10-02 06:43:50"
+   },
+   {
+    "flow": "refill_due",
+    "status": "skipped",
+    "pr": "pakartoti_jau_siustas",
+    "n": "1",
+    "nuo": "2026-10-02 06:43:50",
+    "iki": "2026-10-02 06:43:50"
+   }
+  ],
+  "pending_dabar": [
+   {
+    "flow": "post_purchase_14d",
+    "n": "119",
+    "min_s": "2026-09-29 16:06:48",
+    "jau_laikas": "17"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "n": "37",
+    "min_s": "2026-10-02 08:36:28",
+    "jau_laikas": "0"
+   },
+   {
+    "flow": "refill_due",
+    "n": "3",
+    "min_s": "2026-10-02 06:00:00",
+    "jau_laikas": "3"
+   }
+  ],
+  "dispatch_cron": "06:58Z",
+  "dispatch_pask": "(nera)",
+  "pp14_po_diegimo": [],
+  "atviri": [
+   [
+    "1229",
+    "processing",
+    40.57,
+    "apm 09-29 17:57",
+    "val 64",
+    [
+     "09-30 12:39 partija #35",
+     "10-01 14:24 partija #35",
+     "10-02 08:34 Venipak registracija",
+     "10-02 08:34 Siuntos numeriai"
+    ]
+   ],
+   [
+    "1233",
+    "processing",
+    22.28,
+    "apm 09-30 07:28",
+    "val 50",
+    [
+     "09-30 12:39 partija #35",
+     "10-01 14:24 partija #35",
+     "10-02 08:34 Venipak registracija",
+     "10-02 08:34 Siuntos numeriai"
+    ]
+   ],
+   [
+    "1244",
+    "processing",
+    31.99,
+    "apm 09-30 22:12",
+    "val 36",
+    [
+     "10-01 08:28 Venipak registracija",
+     "10-01 08:28 Siuntos numeriai"
+    ]
+   ],
+   [
+    "1247",
+    "processing",
+    115.99,
+    "apm 10-01 10:53",
+    "val 23",
+    [
+     "10-02 08:37 Venipak registracija",
+     "10-02 08:37 Siuntos numeriai"
+    ]
+   ],
+   [
+    "1248",
+    "processing",
+    137.59,
+    "apm 10-01 11:42",
+    "val 22",
+    [
+     "10-02 08:34 Venipak registracija",
+     "10-02 08:34 Siuntos numeriai"
+    ]
+   ],
+   [
+    "1250",
+    "processing",
+    51.6,
+    "apm 10-01 16:12",
+    "val 18",
+    [
+     "10-01 16:12 Surūšiuota pati: Ruda jaučio ausis, 1 vnt. — Iš AV",
+     "10-02 08:34 Venipak registracija",
+     "10-02 08:34 Siuntos numeriai"
+    ]
+   ],
+   [
+    "1251",
+    "processing",
+    58.99,
+    "apm 10-01 18:29",
+    "val 15",
+    []
+   ],
+   [
+    "1254",
+    "processing",
+    46.09,
+    "apm 10-01 21:28",
+    "val 12",
+    []
+   ],
+   [
+    "1256",
+    "processing",
+    48.59,
+    "apm 10-02 06:17",
+    "val 4",
+    []
+   ]
+  ],
+  "vakar_raudoni": {
+   "1207": "nerastas",
+   "1214": "nerastas",
+   "1216": "nerastas"
+  },
+  "dup_pvz": "[02-Oct-2026 00:10:11 UTC] WordPress database error Duplicate entry '2026-10-01-puslapis-/product/jaucio-penis-pjaustytas-150-cm-1...' for key 'vienas' for query INSERT INTO `gaj6_ps_web_dienos` (`data`, `pjuvis`, `raktas`, `raktas2`, `apsilankymai`, `lankytojai`, `perziuros`, `view_item`, `add_to_cart`, `begin_checkout`, `sutikusiu_dalis`, `aplinka`) VALUES ('2026-10-01', 'puslapis', '/product/jaucio-penis-pjaustytas-150-cm-1-vnt/?utm_source=google&utm_medium=cpc&utm_campaign=21565450990&gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XWUXIHtlc6W9gSLXkSzvr5pl&gcl', '', '1', '1', '1',",
+  "dup_n_pask400kb": 154,
+  "carts_1001": {
+   "n": "19",
+   "su_email": "5",
+   "konv": "8",
+   "aband": "8"
+  }
+ },
+ "v": "dep-065525",
+ "kurimas": 200,
+ "sid": 6931,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
