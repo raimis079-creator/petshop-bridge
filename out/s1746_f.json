@@ -1,0 +1,56 @@
+{
+ "1": {
+  "v": "S1746f",
+  "bandymai": [
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "attempts": "2",
+    "n": "2",
+    "nuo": "2026-09-27 08:39:41",
+    "iki": "2026-09-27 08:48:47"
+   },
+   {
+    "flow": "refill_due",
+    "status": "skipped",
+    "attempts": "8",
+    "n": "1",
+    "nuo": "2026-09-27 08:00:36",
+    "iki": "2026-10-02 06:43:50"
+   },
+   {
+    "flow": "refill_due",
+    "status": "sent",
+    "attempts": "9",
+    "n": "1",
+    "nuo": "2026-09-27 08:00:36",
+    "iki": "2026-10-02 06:43:50"
+   },
+   {
+    "flow": "refill_due",
+    "status": "deferred",
+    "attempts": "14",
+    "n": "3",
+    "nuo": "2026-10-01 08:00:04",
+    "iki": "2026-10-02 07:11:48"
+   }
+  ],
+  "timeout_istorija": [
+   {
+    "d": "2026-10-02",
+    "n": "3"
+   }
+  ],
+  "timeout_nust": [
+   "'timeout' => 3"
+  ],
+  "retriable": "function is_retriable_code( $code ) {\n\t\tif ( $code === 0 ) return true;         // tinklo klaida/timeout\n\t\tif ( $code === 429 ) return true;        // rate limit\n\t\tif ( $code >= 500 && $code < 600 ) return true; // serverio klaida\n\t\treturn false;                            // 4xx (isskyrus 429) = mūsų klaida, nekartojam\n\t}\n\n\t// ======================================================================\n\t// Interface_ESP_Adapter implementacija\n\t// ======================================================================\n\n\t/**\n\t * Sukurti/atnaujinti abonenta.\n\t * Recon patvirtino: POST /subscribers ant egzistuojancio → HTTP 200 (atnaujina).\n\t * Fields atskirai per PATCH (nes POST fields formatas n"
+ },
+ "v": "dep-072109",
+ "kurimas": 200,
+ "sid": 6936,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
