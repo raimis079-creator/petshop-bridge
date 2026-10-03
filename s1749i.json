@@ -1,0 +1,92 @@
+{
+ "1": {
+  "v": "S1749i",
+  "snippet_5306": {
+   "id": "5306",
+   "name": "Petshop Pastas Slaptazodzio pranesimas adminui v1.0 (wp_password_change_notification_email)",
+   "active": "1",
+   "scope": "global",
+   "modified": "2026-09-09 10:38:14",
+   "code": "/**\n * Petshop Pastas Slaptazodzio pranesimas adminui v1.0 (wp_password_change_notification_email)\n *\n * WordPress branduolys kaskart, kai vartotojas pasikeicia slaptazodi,\n * issiuncia laiska admin_email adresu. Su 5 666 importuotais klientais,\n * kurie po vieno atsistatineja slaptazodzius, tai uzkimsta dezute.\n * Klientas savo laiska gauna kaip iprasta — nutildomas TIK pranesimas adminui.\n */\nadd_filter( 'wp_password_change_notification_email', function( $email, $user, $blogname ) {\n\t$email['to'] = '';\n\treturn $email;\n}, 10, 3 );"
+  },
+  "klientai": {
+   "508": {
+    "reg": "2026-08-31 15:28:52",
+    "meta": [
+     "_ps_importas=S1539 2026-08-31"
+    ]
+   },
+   "983": {
+    "reg": "2026-08-31 15:29:27",
+    "meta": [
+     "_ps_importas=S1539 2026-08-31"
+    ]
+   },
+   "2471": {
+    "reg": "2026-08-31 15:31:21",
+    "meta": [
+     "_ps_importas=S1539 2026-08-31"
+    ]
+   },
+   "2763": {
+    "reg": "2026-08-31 15:31:42",
+    "meta": [
+     "_ps_importas=S1539 2026-08-31"
+    ]
+   },
+   "2924": {
+    "reg": "2026-08-31 15:31:54",
+    "meta": [
+     "_ps_importas=S1539 2026-08-31"
+    ]
+   },
+   "3773": {
+    "reg": "2026-08-31 15:33:03",
+    "meta": [
+     "_ps_importas=S1539 2026-08-31"
+    ]
+   },
+   "4018": {
+    "reg": "2026-08-31 15:33:21",
+    "meta": [
+     "_ps_importas=S1539 2026-08-31"
+    ]
+   },
+   "4801": {
+    "reg": "2026-08-31 15:34:17",
+    "meta": [
+     "_ps_importas=S1539 2026-08-31"
+    ]
+   },
+   "4803": {
+    "reg": "2026-08-31 15:34:17",
+    "meta": [
+     "_ps_importas=S1539 2026-08-31"
+    ]
+   },
+   "4823": {
+    "reg": "2026-08-31 15:34:18",
+    "meta": [
+     "_ps_importas=S1539 2026-08-31"
+    ]
+   },
+   "5056": {
+    "reg": "2026-08-31 15:34:36",
+    "meta": [
+     "_ps_importas=S1539 2026-08-31"
+    ]
+   },
+   "5855": {
+    "reg": "2026-09-22 16:56:46",
+    "meta": []
+   }
+  }
+ },
+ "v": "dep-175553",
+ "kurimas": 200,
+ "sid": 6951,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
