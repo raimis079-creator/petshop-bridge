@@ -1,82 +1,20 @@
 {
- "v": "dep-185421",
+ "v": "dep-185631",
  "kurimas": 200,
- "sid": 6960,
+ "sid": 6961,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "e": {
+ "f": {
   "v": "S1749t",
-  "faze": "e",
-  "utc": "2026-10-03 18:55:24",
+  "faze": "f",
+  "utc": "2026-10-03 18:57:36",
   "bak": {
    "class-email-dispatch.php": "4269c246e36e265d8224dece009b8fbe",
    "class-sender-adapter.php": "27a16b8bbd885e26593938464c308c9b",
    "petshop-pakartoti.php": "d0108a6268e4e499c47140283d84535b",
    "petshop-rytas.php": "aaccd9ffce3237f92e737b1a67df8717"
-  },
-  "T5_render": {
-   "kb": 13.5,
-   "img": 0
-  },
-  "T5_proc": {
-   "dry_run": false,
-   "picked": 1,
-   "results": [
-    {
-     "id": 1215,
-     "flow": "ps_s1749_testas",
-     "action": "UNCERTAIN",
-     "msg_id": "",
-     "error": "HTTP 502",
-     "ms": 29647
-    }
-   ]
-  },
-  "T5_id": 1215,
-  "T5_db": {
-   "id": "1215",
-   "status": "uncertain",
-   "attempts": "1",
-   "mid": "",
-   "err": "HTTP 502 [29647 ms]",
-   "scheduled_at": "2026-10-03 18:55:24",
-   "sent_at": null,
-   "skip_reason": null
   }
- },
- "c": {
-  "v": "S1749t",
-  "faze": "c",
-  "utc": "2026-10-03 18:56:00",
-  "bak": {
-   "class-email-dispatch.php": "4269c246e36e265d8224dece009b8fbe",
-   "class-sender-adapter.php": "27a16b8bbd885e26593938464c308c9b",
-   "petshop-pakartoti.php": "d0108a6268e4e499c47140283d84535b",
-   "petshop-rytas.php": "aaccd9ffce3237f92e737b1a67df8717"
-  },
-  "dispatch_cron_kitas": "18:58:39Z",
-  "ps_vartai": "uzdaryta",
-  "nuo_diegimo": [
-   {
-    "status": "sent",
-    "flow": "ps_s1749_testas",
-    "n": "1",
-    "maxa": "1"
-   },
-   {
-    "status": "skipped",
-    "flow": "ps_s1749_testas",
-    "n": "1",
-    "maxa": "1"
-   },
-   {
-    "status": "uncertain",
-    "flow": "ps_s1749_testas",
-    "n": "3",
-    "maxa": "1"
-   }
-  ]
  }
 }
