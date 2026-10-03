@@ -1,8 +1,8 @@
 {
- "1": {
+ "2": {
   "v": "S1749x",
-  "faze": "1",
-  "utc": "2026-10-03 20:27:51",
+  "faze": "2",
+  "utc": "2026-10-03 20:29:09",
   "vartai_pries": "uzdaryta",
   "grazinami": [
    {
@@ -271,11 +271,20 @@
     "status": "deferred",
     "kada": "2027-01-01 00:00"
    }
+  ],
+  "grazinta": 14,
+  "vartai_po": "(nera=atidaryta)",
+  "po": [
+   {
+    "status": "pending",
+    "sched": "2026-10-04 07:00",
+    "n": "14"
+   }
   ]
  },
- "v": "dep-202648",
+ "v": "dep-202805",
  "kurimas": 200,
- "sid": 6969,
+ "sid": 6970,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
