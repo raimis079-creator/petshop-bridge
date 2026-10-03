@@ -1,0 +1,27 @@
+{
+ "1": {
+  "v": "S1749p",
+  "utc": "19:23:29",
+  "kodas": 401,
+  "cf_ray": "a44e525358a0440a-VNO",
+  "server": "cloudflare",
+  "body": "{\"error\":\"invalid_signature\"}",
+  "zurnalo_paskutinis": {
+   "t": "2026-10-03 22:23:30",
+   "topic_get": "s1749-pasiekiamumo-testas",
+   "headers": {
+    "user-agent": "Sender-Webhook-Test/1.0",
+    "content-type": "application/json"
+   },
+   "body": "{\"type\":\"s1749\\/test\",\"data\":{\"email\":\"s1749-test@petshop.lt\"}}"
+  },
+  "zurnalo_kiekis": 2
+ },
+ "v": "dep-192224",
+ "kurimas": 200,
+ "sid": 6964,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
