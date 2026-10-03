@@ -1,0 +1,438 @@
+{
+ "1": {
+  "v": "S1749b",
+  "viso": [
+   {
+    "flow": "browse_abandoned",
+    "cls": "marketing",
+    "status": "sent",
+    "n": "2",
+    "bandymu": "2",
+    "max_band": "1",
+    "nuo": "2026-09-22 18:37:02",
+    "iki": "2026-09-30 19:38:47"
+   },
+   {
+    "flow": "browse_abandoned",
+    "cls": "marketing",
+    "status": "skipped",
+    "n": "14",
+    "bandymu": "0",
+    "max_band": "0",
+    "nuo": "2026-09-13 18:37:09",
+    "iki": "2026-10-03 14:39:17"
+   },
+   {
+    "flow": "cart_abandoned",
+    "cls": "marketing",
+    "status": "sent",
+    "n": "7",
+    "bandymu": "7",
+    "max_band": "1",
+    "nuo": "2026-09-10 11:54:40",
+    "iki": "2026-09-20 09:03:44"
+   },
+   {
+    "flow": "cart_abandoned",
+    "cls": "marketing",
+    "status": "skipped",
+    "n": "55",
+    "bandymu": "0",
+    "max_band": "0",
+    "nuo": "2026-09-09 14:55:04",
+    "iki": "2026-10-02 07:44:14"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "cls": "marketing",
+    "status": "sent",
+    "n": "6",
+    "bandymu": "6",
+    "max_band": "1",
+    "nuo": "2026-09-11 12:00:39",
+    "iki": "2026-09-21 09:09:08"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "cls": "marketing",
+    "status": "skipped",
+    "n": "25",
+    "bandymu": "0",
+    "max_band": "0",
+    "nuo": "2026-09-15 08:49:40",
+    "iki": "2026-10-02 10:49:08"
+   },
+   {
+    "flow": "consent_changed",
+    "cls": "transactional",
+    "status": "sent",
+    "n": "17",
+    "bandymu": "17",
+    "max_band": "1",
+    "nuo": "2026-09-10 09:52:54",
+    "iki": "2026-10-01 04:48:47"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "cls": "service",
+    "status": "deferred",
+    "n": "13",
+    "bandymu": "0",
+    "max_band": "0",
+    "nuo": "2026-09-19 09:39:28",
+    "iki": "2026-10-03 15:33:43"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "cls": "service",
+    "status": "pending",
+    "n": "115",
+    "bandymu": "0",
+    "max_band": "0",
+    "nuo": "2026-09-23 05:39:42",
+    "iki": "2026-10-03 15:39:33"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "cls": "service",
+    "status": "sent",
+    "n": "14",
+    "bandymu": "14",
+    "max_band": "1",
+    "nuo": "2026-09-16 08:39:29",
+    "iki": "2026-10-01 16:09:19"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "cls": "service",
+    "status": "skipped",
+    "n": "56",
+    "bandymu": "0",
+    "max_band": "0",
+    "nuo": "2026-09-10 23:39:33",
+    "iki": "2026-10-03 14:48:41"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "cls": "service",
+    "status": "sent",
+    "n": "198",
+    "bandymu": "200",
+    "max_band": "2",
+    "nuo": "2026-09-10 23:39:33",
+    "iki": "2026-10-03 15:43:57"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "cls": "service",
+    "status": "pending",
+    "n": "56",
+    "bandymu": "0",
+    "max_band": "0",
+    "nuo": "2026-09-30 08:39:26",
+    "iki": "2026-10-03 15:39:33"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "cls": "service",
+    "status": "sent",
+    "n": "142",
+    "bandymu": "142",
+    "max_band": "1",
+    "nuo": "2026-09-10 23:39:33",
+    "iki": "2026-10-02 15:08:44"
+   },
+   {
+    "flow": "refill_due",
+    "cls": "similar_soft_optin",
+    "status": "deferred",
+    "n": "7",
+    "bandymu": "42",
+    "max_band": "14",
+    "nuo": "2026-10-01 08:00:04",
+    "iki": "2026-10-03 08:08:44"
+   },
+   {
+    "flow": "refill_due",
+    "cls": "similar_soft_optin",
+    "status": "sent",
+    "n": "3",
+    "bandymu": "11",
+    "max_band": "9",
+    "nuo": "2026-09-18 08:01:02",
+    "iki": "2026-10-02 06:43:50"
+   },
+   {
+    "flow": "refill_due",
+    "cls": "similar_soft_optin",
+    "status": "skipped",
+    "n": "1",
+    "bandymu": "8",
+    "max_band": "8",
+    "nuo": "2026-09-27 08:00:36",
+    "iki": "2026-10-02 06:43:50"
+   }
+  ],
+  "sent_attempts_gt1": [
+   {
+    "id": "991",
+    "flow": "refill_due",
+    "attempts": "9",
+    "e": "gintarasd1971@gmail.com",
+    "sent_at": "2026-10-02 06:43:50",
+    "er": ""
+   },
+   {
+    "id": "992",
+    "flow": "refill_due",
+    "attempts": "8",
+    "e": "gintarasd1971@gmail.com",
+    "sent_at": null,
+    "er": "HTTP 502"
+   },
+   {
+    "id": "993",
+    "flow": "post_purchase_2d",
+    "attempts": "2",
+    "e": "tamasing@gmail.com",
+    "sent_at": "2026-09-27 08:48:47",
+    "er": ""
+   },
+   {
+    "id": "996",
+    "flow": "post_purchase_2d",
+    "attempts": "2",
+    "e": "giedriusstankuniukas@gmail.com",
+    "sent_at": "2026-09-27 08:48:47",
+    "er": ""
+   },
+   {
+    "id": "1082",
+    "flow": "refill_due",
+    "attempts": "14",
+    "e": "jurgita.tamasauskiene@yahoo.com",
+    "sent_at": null,
+    "er": "cURL error 28: Operation timed out after"
+   },
+   {
+    "id": "1083",
+    "flow": "refill_due",
+    "attempts": "14",
+    "e": "jurgita.tamasauskiene@yahoo.com",
+    "sent_at": null,
+    "er": "cURL error 28: Operation timed out after"
+   },
+   {
+    "id": "1084",
+    "flow": "refill_due",
+    "attempts": "14",
+    "e": "jurgita.tamasauskiene@yahoo.com",
+    "sent_at": null,
+    "er": "cURL error 28: Operation timed out after"
+   }
+  ],
+  "dub_gavejas_diena": [
+   {
+    "e": "nikalux@gmail.com",
+    "flow": "post_purchase_2d",
+    "d": "2026-09-17",
+    "n": "2"
+   },
+   {
+    "e": "kozlova.natalija@gmail.com",
+    "flow": "post_purchase_2d",
+    "d": "2026-09-18",
+    "n": "2"
+   },
+   {
+    "e": "gabija.bandzaite2009@gmail.com",
+    "flow": "cart_abandoned",
+    "d": "2026-09-20",
+    "n": "2"
+   },
+   {
+    "e": "gabija.bandzaite2009@gmail.com",
+    "flow": "cart_abandoned_2",
+    "d": "2026-09-21",
+    "n": "2"
+   },
+   {
+    "e": "nikalux@gmail.com",
+    "flow": "post_purchase_7d",
+    "d": "2026-09-22",
+    "n": "2"
+   },
+   {
+    "e": "kozlova.natalija@gmail.com",
+    "flow": "post_purchase_7d",
+    "d": "2026-09-23",
+    "n": "2"
+   },
+   {
+    "e": "kozlova.natalija@gmail.com",
+    "flow": "post_purchase_14d",
+    "d": "2026-09-30",
+    "n": "2"
+   }
+  ],
+  "dub_jobkey": 0,
+  "sent_per_diena": [
+   {
+    "d": "2026-09-25",
+    "n": "23",
+    "su_id": "23"
+   },
+   {
+    "d": "2026-09-26",
+    "n": "10",
+    "su_id": "10"
+   },
+   {
+    "d": "2026-09-27",
+    "n": "4",
+    "su_id": "4"
+   },
+   {
+    "d": "2026-09-28",
+    "n": "21",
+    "su_id": "21"
+   },
+   {
+    "d": "2026-09-29",
+    "n": "14",
+    "su_id": "14"
+   },
+   {
+    "d": "2026-09-30",
+    "n": "42",
+    "su_id": "42"
+   },
+   {
+    "d": "2026-10-01",
+    "n": "28",
+    "su_id": "28"
+   },
+   {
+    "d": "2026-10-02",
+    "n": "20",
+    "su_id": "20"
+   },
+   {
+    "d": "2026-10-03",
+    "n": "10",
+    "su_id": "10"
+   }
+  ],
+  "render": {
+   "679": {
+    "uzs": "1001",
+    "eiluciu_uzs": 3,
+    "html_kb": 5.6,
+    "img": 4,
+    "data_uri": 0,
+    "tema": "Ar ne laikas papildyti atsargas?"
+   },
+   "990": {
+    "uzs": "1103",
+    "eiluciu_uzs": 3,
+    "html_kb": 4.8,
+    "img": 3,
+    "data_uri": 0,
+    "tema": "Ar ne laikas papildyti atsargas?"
+   },
+   "991": {
+    "uzs": "1107",
+    "eiluciu_uzs": 6,
+    "html_kb": 8.4,
+    "img": 7,
+    "data_uri": 0,
+    "tema": "Ar ne laikas papildyti atsargas?"
+   },
+   "992": {
+    "uzs": "1107",
+    "eiluciu_uzs": 6,
+    "html_kb": 8.4,
+    "img": 7,
+    "data_uri": 0,
+    "tema": "Ar ne laikas papildyti atsargas?"
+   },
+   "1082": {
+    "uzs": "1147",
+    "eiluciu_uzs": 18,
+    "html_kb": 18.3,
+    "img": 19,
+    "data_uri": 0,
+    "tema": "Ar ne laikas papildyti atsargas?"
+   }
+  },
+  "wpmailsmtp": [
+   {
+    "d": "2026-09-10",
+    "n": "1",
+    "pvz": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address."
+   },
+   {
+    "d": "2026-09-11",
+    "n": "3",
+    "pvz": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address."
+   },
+   {
+    "d": "2026-09-12",
+    "n": "3",
+    "pvz": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address."
+   },
+   {
+    "d": "2026-09-13",
+    "n": "1",
+    "pvz": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address."
+   },
+   {
+    "d": "2026-09-14",
+    "n": "3",
+    "pvz": "Mailer: Other SMTP\r\nSMTP Error: Could not authenticate."
+   },
+   {
+    "d": "2026-09-15",
+    "n": "5",
+    "pvz": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address."
+   },
+   {
+    "d": "2026-09-22",
+    "n": "1",
+    "pvz": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address."
+   },
+   {
+    "d": "2026-09-29",
+    "n": "2",
+    "pvz": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address."
+   }
+  ],
+  "uzs_ivykiai_lent": "gaj6_ps_uzsakymu_ivykiai",
+  "uzs_ivykiai_cols": [
+   "id",
+   "laikas",
+   "diena",
+   "uzsakymas",
+   "eilute",
+   "sritis",
+   "veiksmas",
+   "rezultatas",
+   "busena",
+   "kanalas",
+   "kas",
+   "kas_vardas",
+   "pries",
+   "po",
+   "pastaba"
+  ],
+  "laiskas_fn": "function laiskas( $args ) {\n\t\tif ( self::$g && ! self::$g['baigta'] ) {\n\t\t\t$to = $args['to'] ?? '';\n\t\t\tself::$laiskai[] = array( 'kam' => is_array( $to ) ? implode( ',', $to ) : (string) $to, 'tema' => mb_substr( (string) ( $args['subject'] ?? '' ), 0, 120 ), 'priedai' => count( (array) ( $args['attachments'] ?? array() ) ) );\n\t\t}\n\t\treturn $args;\n\t}\n\n\tpublic static function die_handleris( $handler ) {\n\t\tif ( ! self::$g || self::$g['baigta'] ) { return $handler; }\n\t\treturn function ( $message, $title = '', $args = array() ) use ( $handler ) {\n\t\t\t$m = is_wp_error( $message ) ? $message->get_error_message() : ( is_string( $message ) ? wp_strip_all_tags( $message ) : 'wp_die' );\n\t\t\tself::pabaiga( 'klaida', 'wp_die: ' . mb_substr( $m, 0, 300 ) );\n\t\t\tif ( is_callable( $handler ) ) { call_user_func( $handler, $message, $title, $args ); }\n\t\t\telse { _default_wp_die_handler( $message, $title, $args ); }\n\t\t};\n\t}\n\n\t/** Be peradresavimo (PDF, tiesioginis echo) — užrašom shutdown metu. */\n\tpublic static function pabaiga_shutdown() {\n\t\tif ( ! self::$g || self::$g['baigta'] ) { return; }\n\t\t$pdf = false;\n\t\tforeach ( headers_list() as $h ) { if ( stripos( $h, 'content-type:' ) === 0 && stripos( $h, 'pdf' ) !== false ) { $pdf = true; } }\n\t\tself::pabaiga( $pdf ? 'ok' : 'nezinoma', $pdf ? 'PDF' : '' );\n\t}\n\n\tprotected static function pabaiga( $kodas, $zinute = '', $extra = array() ) {\n\t\t$g = self::$g; if ( ! $g || $g['baigta'] ) { return; }\n\t\tself::$g['baigta'] = true;\n\t\twp_cache_flush();\n\t\t$b",
+  "ui_hd": "/**\n * Petshop Užsakymų įvykiai v1.1 (S1606) — zmogui(): būsenos įrašui be dvigubo žodžio; wp_die pastaba su „wp_die:“.\n *\n * Petshop Užsakymų įvykiai v1.0 (S1606, spec §6 / §4.6) — UŽSAKYMŲ ŽURNALAS.\n *\n * KODĖL: naujam darbalaukiui (spec v1.1) reikia vieno tiesos šaltinio „kas, ką, kada\n * padarė su užsakymu, kas buvo prieš ir po“. Iki šiol tai buvo išbarstyta po WC\n * pastabas (add_order_note), transientus ir pašto archyvą. Žurnalas — pagrindas\n * automatikai 6.2 (Venipak sekimas), 6.8 (vėlavimo sargas), SLA ataskaitai ir\n * takeliui eilutėje.\n *\n * KODĖL NE `petshop-ivykiai.php` / `ps_ivykiai` (spec §10.1 vardas): toks failas ir\n * lentelė JAU YRA — prekių auditas (product_id, tipas, lau"
+ },
+ "v": "dep-172958",
+ "kurimas": 200,
+ "sid": 6944,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
