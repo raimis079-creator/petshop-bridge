@@ -1,172 +1,82 @@
 {
- "v": "dep-184800",
+ "v": "dep-185421",
  "kurimas": 200,
- "sid": 6958,
+ "sid": 6960,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "a": {
+ "e": {
   "v": "S1749t",
-  "faze": "a",
-  "utc": "2026-10-03 18:49:04",
+  "faze": "e",
+  "utc": "2026-10-03 18:55:24",
   "bak": {
    "class-email-dispatch.php": "4269c246e36e265d8224dece009b8fbe",
    "class-sender-adapter.php": "27a16b8bbd885e26593938464c308c9b",
    "petshop-pakartoti.php": "d0108a6268e4e499c47140283d84535b",
    "petshop-rytas.php": "aaccd9ffce3237f92e737b1a67df8717"
   },
-  "T1_id": 1211,
-  "T1_trukme_ms": 2163,
-  "T1_procesai": {
-   "0": {
-    "pid": 20080,
-    "ms": 262,
-    "locked": false,
-    "picked": 1,
-    "res": [
-     {
-      "id": 1211,
-      "flow": "ps_s1749_testas",
-      "action": "SENT",
-      "msg_id": "azv2GY-.eE9p2l-AMYvBNl-q2rVxnKEwBp3-4mg8bx",
-      "error": "",
-      "ms": 154
-     }
-    ]
-   },
-   "1": {
-    "pid": 20282,
-    "ms": 0,
-    "locked": true,
-    "picked": 0,
-    "res": []
-   },
-   "2": {
-    "pid": 20334,
-    "ms": 0,
-    "locked": true,
-    "picked": 0,
-    "res": []
-   },
-   "3": {
-    "pid": 4533,
-    "ms": 1,
-    "locked": false,
-    "picked": 0,
-    "res": []
-   }
+  "T5_render": {
+   "kb": 13.5,
+   "img": 0
   },
-  "T1_SENT_kiek": 1,
-  "T1_db": {
-   "id": "1211",
-   "status": "sent",
-   "attempts": "1",
-   "mid": "azv2GY-.eE9p2l-AMYvBNl-q2rVxnKEwBp3-4mg8bx",
-   "err": null,
-   "scheduled_at": "2026-10-03 18:49:04",
-   "sent_at": "2026-10-03 18:49:05",
-   "skip_reason": null
-  },
-  "T1_REZULTATAS": "PAVYKO: 1 siuntimas"
- },
- "b": {
-  "v": "S1749t",
-  "faze": "b",
-  "utc": "2026-10-03 18:49:13",
-  "bak": {
-   "class-email-dispatch.php": "4269c246e36e265d8224dece009b8fbe",
-   "class-sender-adapter.php": "27a16b8bbd885e26593938464c308c9b",
-   "petshop-pakartoti.php": "d0108a6268e4e499c47140283d84535b",
-   "petshop-rytas.php": "aaccd9ffce3237f92e737b1a67df8717"
-  },
-  "T2_proc": {
+  "T5_proc": {
    "dry_run": false,
    "picked": 1,
    "results": [
     {
-     "id": 1212,
-     "flow": "ps_s1749_testas",
-     "action": "UNCERTAIN",
-     "msg_id": "",
-     "error": "cURL error 28: Operation timed out after 60001 milliseconds with 0 bytes received",
-     "ms": 0
-    }
-   ]
-  },
-  "T2_id": 1212,
-  "T2_db": {
-   "id": "1212",
-   "status": "uncertain",
-   "attempts": "1",
-   "mid": "",
-   "err": "cURL error 28: Operation timed out after 60001 milliseconds with 0 bytes received [0 ms]",
-   "scheduled_at": "2026-10-03 18:49:13",
-   "sent_at": null,
-   "skip_reason": null
-  },
-  "T2_REZULTATAS": "PAVYKO: neaisku, nekartojama",
-  "T3_proc": {
-   "dry_run": false,
-   "picked": 1,
-   "results": [
-    {
-     "id": 1213,
-     "flow": "ps_s1749_testas",
-     "action": "PENDING",
-     "msg_id": "",
-     "error": "cURL error 7: Failed to connect to api.sender.net port 443",
-     "ms": 0
-    }
-   ]
-  },
-  "T3_id": 1213,
-  "T3_db": {
-   "id": "1213",
-   "status": "pending",
-   "attempts": "1",
-   "mid": "",
-   "err": "cURL error 7: Failed to connect to api.sender.net port 443 [0 ms]",
-   "scheduled_at": "2026-10-03 19:04:13",
-   "sent_at": null,
-   "skip_reason": null
-  },
-  "T3_REZULTATAS": "PAVYKO: kartos po ~15 min",
-  "ryto_laiskai": {
-   "kodas": "laiskai",
-   "lygis": "raudona",
-   "tekstas": "Laiškai 24 val.: išsiųsta 17, nepavyko 0; NEAIŠKU ar išėjo: 1 (tikrinti Sender žurnale)"
-  },
-  "T4_render": {
-   "kb": 18.3,
-   "img": 19,
-   "tema": "Ar ne laikas papildyti atsargas?"
-  },
-  "T4_proc": {
-   "dry_run": false,
-   "picked": 1,
-   "results": [
-    {
-     "id": 1214,
+     "id": 1215,
      "flow": "ps_s1749_testas",
      "action": "UNCERTAIN",
      "msg_id": "",
      "error": "HTTP 502",
-     "ms": 32511
+     "ms": 29647
     }
    ]
   },
-  "T4_id": 1214,
-  "T4_db": {
-   "id": "1214",
+  "T5_id": 1215,
+  "T5_db": {
+   "id": "1215",
    "status": "uncertain",
    "attempts": "1",
    "mid": "",
-   "err": "HTTP 502 [32511 ms]",
-   "scheduled_at": "2026-10-03 18:49:14",
+   "err": "HTTP 502 [29647 ms]",
+   "scheduled_at": "2026-10-03 18:55:24",
    "sent_at": null,
    "skip_reason": null
+  }
+ },
+ "c": {
+  "v": "S1749t",
+  "faze": "c",
+  "utc": "2026-10-03 18:56:00",
+  "bak": {
+   "class-email-dispatch.php": "4269c246e36e265d8224dece009b8fbe",
+   "class-sender-adapter.php": "27a16b8bbd885e26593938464c308c9b",
+   "petshop-pakartoti.php": "d0108a6268e4e499c47140283d84535b",
+   "petshop-rytas.php": "aaccd9ffce3237f92e737b1a67df8717"
   },
-  "T4_REZULTATAS": "NEPAVYKO / uncertain"
+  "dispatch_cron_kitas": "18:58:39Z",
+  "ps_vartai": "uzdaryta",
+  "nuo_diegimo": [
+   {
+    "status": "sent",
+    "flow": "ps_s1749_testas",
+    "n": "1",
+    "maxa": "1"
+   },
+   {
+    "status": "skipped",
+    "flow": "ps_s1749_testas",
+    "n": "1",
+    "maxa": "1"
+   },
+   {
+    "status": "uncertain",
+    "flow": "ps_s1749_testas",
+    "n": "3",
+    "maxa": "1"
+   }
+  ]
  }
 }
