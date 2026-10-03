@@ -1,0 +1,366 @@
+{
+ "1": {
+  "v": "S1749c",
+  "jobs": {
+   "nikalux@gmail.com": [
+    [
+     "481",
+     "cart_abandoned",
+     "sent",
+     "1",
+     "2026-09-11 19:39",
+     "cart_abandoned:c_47623a0b3726557386d21f86525cf5ef:stage1",
+     "",
+     ""
+    ],
+    [
+     "485",
+     "cart_abandoned_2",
+     "sent",
+     "1",
+     "2026-09-12 19:43",
+     "cart_abandoned:c_47623a0b3726557386d21f86525cf5ef:stage2",
+     "",
+     ""
+    ],
+    [
+     "662",
+     "post_purchase_2d",
+     "sent",
+     "1",
+     "2026-09-17 16:44",
+     "post_purchase_2d:35919",
+     "uzs 1030",
+     ""
+    ],
+    [
+     "663",
+     "post_purchase_7d",
+     "sent",
+     "1",
+     "2026-09-22 16:08",
+     "post_purchase_7d:35919",
+     "uzs 1030",
+     ""
+    ],
+    [
+     "668",
+     "post_purchase_2d",
+     "sent",
+     "1",
+     "2026-09-17 16:44",
+     "post_purchase_2d:35906",
+     "uzs 1020",
+     ""
+    ],
+    [
+     "669",
+     "post_purchase_7d",
+     "sent",
+     "1",
+     "2026-09-22 16:08",
+     "post_purchase_7d:35906",
+     "uzs 1020",
+     ""
+    ]
+   ],
+   "kozlova.natalija@gmail.com": [
+    [
+     "689",
+     "post_purchase_2d",
+     "sent",
+     "1",
+     "2026-09-18 08:43",
+     "post_purchase_2d:35967",
+     "uzs 1069",
+     ""
+    ],
+    [
+     "690",
+     "post_purchase_7d",
+     "sent",
+     "1",
+     "2026-09-23 08:09",
+     "post_purchase_7d:35967",
+     "uzs 1069",
+     ""
+    ],
+    [
+     "691",
+     "post_purchase_14d",
+     "sent",
+     "1",
+     "2026-09-30 08:08",
+     "post_purchase_14d:35967",
+     "uzs 1069",
+     ""
+    ],
+    [
+     "692",
+     "post_purchase_2d",
+     "sent",
+     "1",
+     "2026-09-18 08:43",
+     "post_purchase_2d:35966",
+     "uzs 1068",
+     ""
+    ],
+    [
+     "693",
+     "post_purchase_7d",
+     "sent",
+     "1",
+     "2026-09-23 08:09",
+     "post_purchase_7d:35966",
+     "uzs 1068",
+     ""
+    ],
+    [
+     "694",
+     "post_purchase_14d",
+     "sent",
+     "1",
+     "2026-09-30 08:08",
+     "post_purchase_14d:35966",
+     "uzs 1068",
+     ""
+    ]
+   ],
+   "gabija.bandzaite2009@gmail.com": [
+    [
+     "773",
+     "cart_abandoned",
+     "sent",
+     "1",
+     "2026-09-20 08:54",
+     "cart_abandoned:c_aea645d38246e02210f0a812ba8f2f46:stage1",
+     "",
+     ""
+    ],
+    [
+     "774",
+     "cart_abandoned",
+     "sent",
+     "1",
+     "2026-09-20 09:03",
+     "cart_abandoned:c_91eb46a8b6827d799c571a3304cca025:stage1",
+     "",
+     ""
+    ],
+    [
+     "798",
+     "cart_abandoned_2",
+     "sent",
+     "1",
+     "2026-09-21 08:58",
+     "cart_abandoned:c_aea645d38246e02210f0a812ba8f2f46:stage2",
+     "",
+     ""
+    ],
+    [
+     "799",
+     "cart_abandoned_2",
+     "sent",
+     "1",
+     "2026-09-21 09:09",
+     "cart_abandoned:c_91eb46a8b6827d799c571a3304cca025:stage2",
+     "",
+     ""
+    ]
+   ],
+   "tamasing@gmail.com": [
+    [
+     "993",
+     "post_purchase_2d",
+     "sent",
+     "2",
+     "2026-09-27 08:48",
+     "post_purchase_2d:36291",
+     "uzs 1176",
+     ""
+    ],
+    [
+     "994",
+     "post_purchase_7d",
+     "sent",
+     "1",
+     "2026-10-02 08:38",
+     "post_purchase_7d:36291",
+     "uzs 1176",
+     ""
+    ]
+   ],
+   "giedriusstankuniukas@gmail.com": [
+    [
+     "996",
+     "post_purchase_2d",
+     "sent",
+     "2",
+     "2026-09-27 08:48",
+     "post_purchase_2d:36285",
+     "uzs 1170",
+     ""
+    ],
+    [
+     "997",
+     "post_purchase_7d",
+     "sent",
+     "1",
+     "2026-10-02 08:38",
+     "post_purchase_7d:36285",
+     "uzs 1170",
+     ""
+    ]
+   ]
+  },
+  "smtp_cols": [
+   "id",
+   "content",
+   "initiator",
+   "event_type",
+   "created_at"
+  ],
+  "smtp": [
+   {
+    "id": "6",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-10 09:55:27"
+   },
+   {
+    "id": "7",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-11 03:12:44"
+   },
+   {
+    "id": "8",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-11 06:08:42"
+   },
+   {
+    "id": "9",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-11 17:43:44"
+   },
+   {
+    "id": "10",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-12 16:25:10"
+   },
+   {
+    "id": "11",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-12 17:50:50"
+   },
+   {
+    "id": "12",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-12 18:28:50"
+   },
+   {
+    "id": "13",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-13 19:53:02"
+   },
+   {
+    "id": "14",
+    "content": "Mailer: Other SMTP\r\nSMTP Error: Could not authenticate.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-content\\/plugins\\/code-snippets\\/php\\/snippet-ops.php(663) : eval()'d code\",\"line\":6}",
+    "event_type": "0",
+    "created_at": "2026-09-14 14:31:01"
+   },
+   {
+    "id": "15",
+    "content": "Mailer: Other SMTP\r\nSMTP Error: Could not authenticate.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-content\\/plugins\\/petshop-core\\/includes\\/class-magic-login.php\",\"line\":531}",
+    "event_type": "0",
+    "created_at": "2026-09-14 14:32:11"
+   },
+   {
+    "id": "16",
+    "content": "Mailer: Other SMTP\r\nSMTP Error: Could not authenticate.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-content\\/plugins\\/petshop-core\\/includes\\/class-magic-login.php\",\"line\":531}",
+    "event_type": "0",
+    "created_at": "2026-09-14 14:34:14"
+   },
+   {
+    "id": "17",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-15 03:41:08"
+   },
+   {
+    "id": "18",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-15 15:14:02"
+   },
+   {
+    "id": "19",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-15 15:39:07"
+   },
+   {
+    "id": "20",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-15 17:59:39"
+   },
+   {
+    "id": "21",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-15 18:45:57"
+   },
+   {
+    "id": "22",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-22 16:59:16"
+   },
+   {
+    "id": "23",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-29 05:41:16"
+   },
+   {
+    "id": "24",
+    "content": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "initiator": "{\"file\":\"\\/home\\/gyvunai2\\/domains\\/petshop.lt\\/public_html\\/wp-includes\\/pluggable.php\",\"line\":2236}",
+    "event_type": "0",
+    "created_at": "2026-09-29 08:55:33"
+   }
+  ]
+ },
+ "v": "dep-173140",
+ "kurimas": 200,
+ "sid": 6945,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
