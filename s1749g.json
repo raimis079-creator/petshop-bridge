@@ -1,0 +1,480 @@
+{
+ "1": {
+  "v": "S1749g",
+  "faze": "1",
+  "wp": "6.9.4",
+  "dabar_utc": "2026-10-03 17:52:09",
+  "const": {
+   "DISABLE_WP_CRON": "(nenustatyta)",
+   "ALTERNATE_WP_CRON": "(nenustatyta)",
+   "WP_CRON_LOCK_TIMEOUT": 60
+  },
+  "ext_object_cache": null,
+  "doing_cron_row": null,
+  "core_cron": [
+   "871: function spawn_cron( $gmt_time = 0 ) {",
+   "887: $lock = (float) get_transient( 'doing_cron' );",
+   "894: if ( $lock + WP_CRON_LOCK_TIMEOUT > $gmt_time ) {",
+   "915: set_transient( 'doing_cron', $doing_wp_cron );",
+   "931: set_transient( 'doing_cron', $doing_wp_cron );",
+   "960: 'timeout'   => 0.01,",
+   "961: 'blocking'  => false,",
+   "990: function wp_cron(): void {",
+   "995: add_action( 'wp_loaded', '_wp_cron', 20 );",
+   "1000: add_action( 'shutdown', '_wp_cron' );",
+   "1018: function _wp_cron() {"
+  ],
+  "core_wpcron": [
+   "19: ignore_user_abort( true );",
+   "27: if ( function_exists( 'fastcgi_finish_request' ) ) {",
+   "28: fastcgi_finish_request();",
+   "55: * Returns the uncached `doing_cron` transient.",
+   "62: * @return string|int|false Value of the `doing_cron` transient, 0|false otherwise.",
+   "64: function _get_cron_lock() {",
+   "70: * Skip local cache and force re-fetch of doing_cron transient",
+   "73: $value = wp_cache_get( 'doing_cron', 'transient', true );",
+   "75: $row = $wpdb->get_row( $wpdb->prepare( \"SELECT option_value FROM $wpdb->options WHERE option_name = %s LIMIT 1\", '_transient_doing_cron' ) )",
+   "92: $doing_cron_transient = get_transient( 'doing_cron' );",
+   "98: if ( $doing_cron_transient && ( $doing_cron_transient + WP_CRON_LOCK_TIMEOUT > $gmt_time ) ) {",
+   "102: $doing_cron_transient = $doing_wp_cron;",
+   "103: set_transient( 'doing_cron', $doing_wp_cron );",
+   "113: if ( $doing_cron_transient !== $doing_wp_cron ) {",
+   "129: $result = wp_reschedule_event( $timestamp, $schedule, $hook, $v['args'], true );",
+   "156: $result = wp_unschedule_event( $timestamp, $hook, $v['args'], true );",
+   "191: do_action_ref_array( $hook, $v['args'] );",
+   "194: if ( _get_cron_lock() !== $doing_wp_cron ) {",
+   "201: if ( _get_cron_lock() === $doing_wp_cron ) {",
+   "202: delete_transient( 'doing_cron' );"
+  ],
+  "core_default_filters": [
+   "408: add_action( 'init', 'wp_cron' );"
+  ],
+  "pluggable": [
+   "2156: $notify_message = apply_filters( 'comment_moderation_text', $notify_message, $comment_id );",
+   "2166: $subject = apply_filters( 'comment_moderation_subject', $subject, $comment_id );",
+   "2168: wp_mail( $email, wp_specialchars_decode( $subject ), $notify_message, $message_headers );",
+   "2170: if ( $switched_locale ) {",
+   "2171: restore_previous_locale();",
+   "2172: }",
+   "2173: }",
+   "2175: return true;",
+   "2176: }",
+   "2177: endif;",
+   "2179: if ( ! function_exists( 'wp_password_change_notification' ) ) :",
+   "2187: function wp_password_change_notification( $user ) {",
+   "2192: if ( 0 !== strcasecmp( $user->user_email, get_option( 'admin_email' ) ) ) {",
+   "2194: $admin_user = get_user_by( 'email', get_option( 'admin_email' ) );",
+   "2196: if ( $admin_user ) {",
+   "2197: $switched_locale = switch_to_user_locale( $admin_user->ID );",
+   "2198: } else {",
+   "2199: $switched_locale = switch_to_locale( get_locale() );",
+   "2200: }",
+   "2203: $message = sprintf( __( 'Password changed for user: %s' ), $user->user_login ) . \"\\r\\n\";",
+   "2208: $blogname = wp_specialchars_decode( get_option( 'blogname' ), ENT_QUOTES );",
+   "2210: $wp_password_change_notification_email = array(",
+   "2211: 'to'      => get_option( 'admin_email' ),",
+   "2213: 'subject' => __( '[%s] Password Changed' ),",
+   "2214: 'message' => $message,",
+   "2215: 'headers' => '',",
+   "2216: );",
+   "2234: $wp_password_change_notification_email = apply_filters( 'wp_password_change_notification_email', $wp_password_",
+   "2236: wp_mail(",
+   "2237: $wp_password_change_notification_email['to'],",
+   "2238: wp_specialchars_decode( sprintf( $wp_password_change_notification_email['subject'], $blogname ) ),",
+   "2239: $wp_password_change_notification_email['message'],",
+   "2240: $wp_password_change_notification_email['headers']"
+  ],
+  "php_failu": 16781,
+  "slaptazodzio_kvietimai": [
+   "/mu-plugins/petshop-legacy-importas.php:175 send_password_change_email",
+   "/plugins/woocommerce/src/Internal/CustomerEmailVerification/VerificationEventListener.php:17 after_password_reset",
+   "/plugins/woocommerce/src/Internal/CustomerEmailVerification/VerificationEventListener.php:34 after_password_reset",
+   "/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-my-account.php:381 reset_password(",
+   "/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-my-account.php:390 wp_password_change_notification",
+   "/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-my-account.php:390 after_password_reset",
+   "/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-my-account.php:393 after_password_reset",
+   "/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-my-account.php:393 wp_password_change_notification",
+   "/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-my-account.php:395 after_password_reset",
+   "/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-my-account.php:395 wp_password_change_notification",
+   "/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-my-account.php:402 reset_password(",
+   "/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-my-account.php:408 after_password_reset",
+   "/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-my-account.php:411 after_password_reset",
+   "/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-my-account.php:411 wp_password_change_notification",
+   "/plugins/woocommerce/includes/shortcodes/class-wc-shortcode-my-account.php:420 wp_password_change_notification",
+   "/plugins/woocommerce/includes/class-wc-form-handler.php:1233 :reset_password("
+  ],
+  "smtp": [
+   {
+    "id": "6",
+    "created_at": "2026-09-10 09:55:27",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": []
+   },
+   {
+    "id": "7",
+    "created_at": "2026-09-11 03:12:44",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": [
+     {
+      "id": "35894",
+      "d": "2026-09-11 03:13:24",
+      "pm": "paysera",
+      "status": "wc-completed",
+      "cid": "4803"
+     }
+    ]
+   },
+   {
+    "id": "8",
+    "created_at": "2026-09-11 06:08:42",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": [
+     {
+      "id": "35901",
+      "d": "2026-09-11 06:10:26",
+      "pm": "paysera",
+      "status": "wc-completed",
+      "cid": "4801"
+     }
+    ]
+   },
+   {
+    "id": "9",
+    "created_at": "2026-09-11 17:43:44",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": [
+     {
+      "id": "35906",
+      "d": "2026-09-11 17:46:37",
+      "pm": "paysera",
+      "status": "wc-completed",
+      "cid": "3773"
+     }
+    ]
+   },
+   {
+    "id": "10",
+    "created_at": "2026-09-12 16:25:10",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": []
+   },
+   {
+    "id": "11",
+    "created_at": "2026-09-12 17:50:50",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": [
+     {
+      "id": "35917",
+      "d": "2026-09-12 17:51:47",
+      "pm": "paysera",
+      "status": "wc-completed",
+      "cid": "4018"
+     }
+    ]
+   },
+   {
+    "id": "12",
+    "created_at": "2026-09-12 18:28:50",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": [
+     {
+      "id": "35918",
+      "d": "2026-09-12 18:29:16",
+      "pm": "paysera",
+      "status": "wc-completed",
+      "cid": "2763"
+     }
+    ]
+   },
+   {
+    "id": "13",
+    "created_at": "2026-09-13 19:53:02",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": []
+   },
+   {
+    "id": "14",
+    "created_at": "2026-09-14 14:31:01",
+    "c": "Mailer: Other SMTP\r\nSMTP Error: Could not authenticate.",
+    "uzs": []
+   },
+   {
+    "id": "15",
+    "created_at": "2026-09-14 14:32:11",
+    "c": "Mailer: Other SMTP\r\nSMTP Error: Could not authenticate.",
+    "uzs": [
+     {
+      "id": "35942",
+      "d": "2026-09-14 14:36:12",
+      "pm": "paysera",
+      "status": "wc-completed",
+      "cid": "0"
+     }
+    ]
+   },
+   {
+    "id": "16",
+    "created_at": "2026-09-14 14:34:14",
+    "c": "Mailer: Other SMTP\r\nSMTP Error: Could not authenticate.",
+    "uzs": [
+     {
+      "id": "35942",
+      "d": "2026-09-14 14:36:12",
+      "pm": "paysera",
+      "status": "wc-completed",
+      "cid": "0"
+     }
+    ]
+   },
+   {
+    "id": "17",
+    "created_at": "2026-09-15 03:41:08",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": [
+     {
+      "id": "35950",
+      "d": "2026-09-15 03:41:32",
+      "pm": "paysera",
+      "status": "wc-completed",
+      "cid": "5056"
+     }
+    ]
+   },
+   {
+    "id": "18",
+    "created_at": "2026-09-15 15:14:02",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": [
+     {
+      "id": "35966",
+      "d": "2026-09-15 15:16:57",
+      "pm": "paysera",
+      "status": "wc-completed",
+      "cid": "2924"
+     }
+    ]
+   },
+   {
+    "id": "19",
+    "created_at": "2026-09-15 15:39:07",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": [
+     {
+      "id": "35968",
+      "d": "2026-09-15 15:42:18",
+      "pm": "paysera",
+      "status": "wc-completed",
+      "cid": "2471"
+     }
+    ]
+   },
+   {
+    "id": "20",
+    "created_at": "2026-09-15 17:59:39",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": []
+   },
+   {
+    "id": "21",
+    "created_at": "2026-09-15 18:45:57",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": [
+     {
+      "id": "35971",
+      "d": "2026-09-15 18:50:32",
+      "pm": "paysera",
+      "status": "wc-completed",
+      "cid": "983"
+     }
+    ]
+   },
+   {
+    "id": "22",
+    "created_at": "2026-09-22 16:59:16",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": [
+     {
+      "id": "36156",
+      "d": "2026-09-22 16:56:47",
+      "pm": "paysera",
+      "status": "wc-completed",
+      "cid": "5855"
+     }
+    ]
+   },
+   {
+    "id": "23",
+    "created_at": "2026-09-29 05:41:16",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": [
+     {
+      "id": "36570",
+      "d": "2026-09-29 05:42:39",
+      "pm": "paysera",
+      "status": "wc-completed",
+      "cid": "4823"
+     }
+    ]
+   },
+   {
+    "id": "24",
+    "created_at": "2026-09-29 08:55:33",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email addr",
+    "uzs": [
+     {
+      "id": "36576",
+      "d": "2026-09-29 08:52:30",
+      "pm": "bacs",
+      "status": "wc-cancelled",
+      "cid": "508"
+     }
+    ]
+   }
+  ],
+  "admin_email": "terra@gyvunai.lt",
+  "bukle": [
+   {
+    "flow": "post_purchase_14d",
+    "status": "deferred",
+    "n": "13",
+    "nuo": "2026-10-04 08:14:12",
+    "iki": "2026-10-04 15:33:43"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "n": "117",
+    "nuo": "2026-10-05 05:18:46",
+    "iki": "2026-10-15 17:06:11"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "n": "58",
+    "nuo": "2026-10-05 08:36:06",
+    "iki": "2026-10-08 17:06:11"
+   },
+   {
+    "flow": "refill_due",
+    "status": "deferred",
+    "n": "7",
+    "nuo": "2026-10-04 08:08:44",
+    "iki": "2027-01-01 00:00:00"
+   }
+  ],
+  "praleista_nuo_pauzes": [
+   {
+    "flow": "browse_abandoned",
+    "skip_reason": "consent_missing",
+    "n": "1"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "skip_reason": "suppressed_marketing_unsubscribe",
+    "n": "1"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "skip_reason": "deferral_expired",
+    "n": "14"
+   }
+  ],
+  "issiusta_nuo_pauzes": [
+   {
+    "flow": "post_purchase_2d",
+    "n": "25",
+    "maxa": "1"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "n": "4",
+    "maxa": "1"
+   }
+  ],
+  "vartai": "uzdaryta",
+  "grandine_isjungta": false,
+  "cron_next": {
+   "ps_email_dispatch_cron": "10-03 17:53:39Z",
+   "ps_refill_daily_check": "10-04 08:00:00Z",
+   "ps_post_purchase_check": "10-03 18:39:26Z",
+   "ps_cart_abandon_check": "10-03 17:54:39Z"
+  }
+ },
+ "2": {
+  "v": "S1749g",
+  "faze": "2",
+  "wp": "6.9.4",
+  "dabar_utc": "2026-10-03 17:52:40",
+  "failai": [
+   "Sep-2026.tar.gz",
+   "Sep-2026.tar.gz.1",
+   "Sep-2026.tar.gz.2",
+   "Sep-2026.tar.gz.3",
+   "Sep-2026.tar.gz.4",
+   "Oct-2026.tar.gz",
+   "Oct-2026.tar.gz.1",
+   "Oct-2026.tar.gz.2",
+   "Oct-2026.tar.gz.3",
+   "Oct-2026.tar.gz.4",
+   "Oct-2026.tar.gz.5",
+   "Oct-2026.tar.gz.6",
+   "Oct-2026.tar.gz.7"
+  ],
+  "wpcron_dienos": {
+   "01/Oct/2026": {
+    "uzklausu": 6836,
+    "sekundziu": 6796,
+    "sek_2plus": 37,
+    "sek_3plus": 3,
+    "max_per_sek": 3
+   },
+   "02/Oct/2026": {
+    "uzklausu": 5547,
+    "sekundziu": 5492,
+    "sek_2plus": 41,
+    "sek_3plus": 6,
+    "max_per_sek": 7
+   },
+   "03/Oct/2026": {
+    "uzklausu": 1076,
+    "sekundziu": 1073,
+    "sek_2plus": 2,
+    "sek_3plus": 1,
+    "max_per_sek": 3
+   },
+   "28/Sep/2026": {
+    "uzklausu": 5784,
+    "sekundziu": 5732,
+    "sek_2plus": 45,
+    "sek_3plus": 6,
+    "max_per_sek": 4
+   },
+   "29/Sep/2026": {
+    "uzklausu": 6619,
+    "sekundziu": 6564,
+    "sek_2plus": 50,
+    "sek_3plus": 4,
+    "max_per_sek": 4
+   },
+   "30/Sep/2026": {
+    "uzklausu": 6368,
+    "sekundziu": 6316,
+    "sek_2plus": 44,
+    "sek_3plus": 7,
+    "max_per_sek": 4
+   }
+  },
+  "ip": {
+   "79.98.29.24": 32228,
+   "20.220.217.91": 1,
+   "185.177.72.49": 1
+  }
+ },
+ "v": "dep-175106",
+ "kurimas": 200,
+ "sid": 6949,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
