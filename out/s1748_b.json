@@ -1,0 +1,113 @@
+{
+ "1": {
+  "v": "S1748b",
+  "opc": {
+   "ps_laukai_grupiu_foto": "{\"kates\":36545,\"kramtalai\":35006,\"sunys\":35004,\"kons_sunims\":35030,\"kons_kates\":35031}",
+   "ps_s1721_rink_foto_bak": "{\"35070\":0,\"35076\":0,\"35079\":0,\"35085\":0,\"35392\":0,\"35396\":0,\"35404\":0,\"35406\":0,\"35408\":0}",
+   "ps_s1728_foto_bak": "{\"19089\":{\"t\":\"\",\"g\":\"\"},\"19092\":{\"t\":\"\",\"g\":\"19094\"}}",
+   "thumbnail_crop": "1",
+   "thumbnail_size_h": "280",
+   "thumbnail_size_w": "280",
+   "widget_wc_brands_brand_thumbnails": "{\"_multiwidget\":1}",
+   "woocommerce_thumbnail_cropping": "uncropped",
+   "woocommerce_thumbnail_image_width": "300"
+  },
+  "failai": {
+   "petshop-katalogas.php": [
+    "09-09 19:22",
+    "/**\n * Petshop Katalogas v8.7.9 (S1642) - DP pakuotems savikaina ir is bazines META kaskados x N (kai bazine registre neturi eilutes);\n *   v8.7.8 (S1642) - rinkiniams (_ps_rinkinys/DP sablonas/Mix and Match) nerodomas 'be saltinio' (saltinius turi komponentai);\n *   v8.7.5 (S1641) - variacines prekes KAINA saraso eiluteje.\n *\n * SAVININKAS: \"Admin lange nerodo pardavimo kainu\". Variacines prekes tevui\n * WooCommerce `_regular_price` isvalo - kaina gyvena variacijose, o `_price`\n * WC pats sinchronizuoja kaip maziausia variacijos kaina. Sarasas skaite tik\n * `_regular_price`, todel KAINA ir ANTKAINIS variacinems rode brukssni, nors\n * kainos yra. Dabar surinkti() variacinei prekei ima `_price` kaip atsargini\n * kelia. Kortele nekeista - ten kainos redaguojamos variacijose.\n *\n * Petshop Katalogas v8.7.2 (S1636) - sticky antraste seka juosta scrollinant.\n * v8.7.1 (S903) - STULPELIU ANTRA"
+   ],
+   "petshop-laukai.php": [
+    "09-02 12:39",
+    "/**\n * Plugin Name: Petshop Laukai\n * Description: Pasirenkami rinkiniai naujuoju modeliu — laukas (iki 8 prekiu is vieno sandelio),\n *              laisvas kiekis nuo 3 vnt. ir pakopine nuolaida pagal krepselio verte.\n * Version:     1.00\n * Author:      Petshop\n *\n * KODEL ATSKIRAS FAILAS:\n * `petshop-rinkiniai.php` tvarko paruostus rinkinius ir DP pakus — jie veikia ir ju\n * liesti nereikia. Laukai yra kitas modelis (ne fiksuotas dydis, o laisvas kiekis),\n * todel gyvena atskirai. Jei laukai kada nors bus atmesti, uztenka istrinti si faila.\n *\n * MODELIS:\n * - Vienas laukas = vienas MnM konteineris: kainos atskirai, min 3, maks. neribota.\n * - Krepsys = iki 9 vaikiniu prekiu, visos is TO PACIO sandelio (viena siunta).\n * - Klientas gali imti kelis to paties vienetus — MnM kiekio laukelis.\n * - Nuolaida pakopomis pagal krepselio SUMA, ne pagal kieki. Ji taikoma\n *   VISOMS lauko prekem"
+   ],
+   "petshop-nuotrauku-zurnalas.php": [
+    "09-29 17:15",
+    "/**\n * Plugin Name: Petshop Nuotraukų žurnalas\n * Description: N1 (S1739, R 09-28) — fiksuoja, kas nuima prekės pagrindinę nuotrauką (_thumbnail_id) arba ištrina prekei naudojamą nuotraukos failą. Žurnalas — opcija `ps_nuotr_zurnalas` (paskutiniai 300 įrašų, autoload ne). Ryto sargas (patikra `prekes_foto`) rodo raudoną, jei per parą buvo nuėmimų.\n * Version: 1.0\n *\n * Pakeitimai (keitimas į kitą nuotrauką) NEFIKSUOJAMI sąmoningai — importas (WPAI) juos daro masiškai.\n * Fiksuojama tik: nuotrauka nuimta (tuščia/0) ir trinamas priedas, kurį naudoja prekė.\n *\n * @package Petshop\n */"
+   ],
+   "petshop-rinkiniai.php": [
+    "09-27 14:27",
+    "/**\n * Petshop Rinkiniai v1.45 (S1725) — DP pakų „Nuolaida %\" valdoma ČIA (ne atskirame lange):\n *   formoje DP pakui laukas „Nuolaida %\" — įrašytas → kaina = kiekis × bazinė × (1 − %), seka bazinę\n *   (Petshop_DP_Kainos); tuščias → kaina ranka, sinchronizacija neliečia. Sąraše prie DP „−N %\" / „kaina ranka\".\n *   Senas snippet 572 „➕ Daugiau=pigiau\" išjungtas — pakai kuriami/taisomi tik šiame lange.\n * Petshop Rinkiniai v1.44 (S1601) — „TIK KURJERIU“ galiausiai VEIKIA KASOJE:\n *   varnele `_ps_tik_kurjeriu` (katalogo kortele, 162 prekes) iki siol buvo tik zyma —\n *   pastomato_sargas() slepe pastomatus TIK pagal svori (>25 kg). Dabar: bet kuri krepselio\n *   preke (ar MnM vaikas) su `_ps_tik_kurjeriu=yes` -> pastomatu/terminalu tarifai nerodomi.\n *   Rinkiniai (MnM ir DP pakai) varnele PAVELDI is sudedamuju issaugant (S1601).\n * v1.43 (S1554) — prekes puslapiams NEBEsiunciamas nocache_"
+   ],
+   "petshop-rytas.php": [
+    "09-29 18:40",
+    "/**\n * Plugin Name: Petshop Rytas\n * Description: Savininko ekranas (planas v2.0 §4.1) — 8 skaičiai, 5 lemputės, 3 veiksmai, HUB. + Verslo sargas (§5.1): naktinės patikros, laiškas TIK kai raudona.\n * Version: 1.10\n * v1.10 (S1740, 2026-09-29): `prekes_foto` — be tiesioginės nuotraukos tikrinamas ir WC `get_image_id()` (rinkinių „laukas\" paveikslai per filtrą), kaip `rinkiniai_foto`.\n * v1.9 (S1739, 2026-09-29): patikra `prekes_foto` — prekės be nuotraukos + nuėmimai iš `petshop-nuotrauku-zurnalas` per parą (raudona).\n *\n * KAM. Vienas ekranas kelioms minutėms: kiek uždirbau, ar auga, kas dega, ką\n * daryti. Į gylį — Pardavimų / Klientų / Atsargų analizė. Rytas PATS NIEKO\n * NESKAIČIUOJA IŠ NAUJO: 8 skaičiai eina per `Petshop_Ataskaita_Pardavimai::\n * suvestine()`, todėl visada sutampa su analizės ekranu iki cento.\n *\n * HUB. `class-admin-reports.php` (petshop-core) NELIEČIAMAS: jo `rend"
+   ]
+  },
+  "prekes": {
+   "35310": "nera",
+   "35318": "nera",
+   "35320": "nera"
+  },
+  "pauze": "uzdaryta",
+  "atideti": [
+   {
+    "flow": "post_purchase_14d",
+    "n": "13",
+    "seniausias_sukurtas": "2026-09-19 09:39:28",
+    "max_amzius_d": "14.3",
+    "per_para_pasibaigs": "13"
+   },
+   {
+    "flow": "refill_due",
+    "n": "4",
+    "seniausias_sukurtas": "2026-10-02 08:00:07",
+    "max_amzius_d": "1.3",
+    "per_para_pasibaigs": "0"
+   }
+  ],
+  "pp14_artimi": [
+   {
+    "d": "2026-10-05",
+    "n": "21",
+    "amzius_kai_suplanuota_d": "12.0"
+   },
+   {
+    "d": "2026-10-06",
+    "n": "11",
+    "amzius_kai_suplanuota_d": "12.0"
+   },
+   {
+    "d": "2026-10-07",
+    "n": "13",
+    "amzius_kai_suplanuota_d": "12.0"
+   },
+   {
+    "d": "2026-10-08",
+    "n": "7",
+    "amzius_kai_suplanuota_d": "12.0"
+   }
+  ],
+  "expired_po_pauzes": 14,
+  "klaidos": [],
+  "bandymai_po": [
+   {
+    "flow": "post_purchase_2d",
+    "attempts": "1",
+    "n": "23"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "attempts": "1",
+    "n": "4"
+   }
+  ],
+  "u1243": [
+   "processing",
+   "bacs",
+   [
+    "10-02 13:36 Email \"Užsakymas vykdomas\" sent.",
+    "10-02 13:36 Email \"Naujas užsakymas\" sent.",
+    "10-02 13:36 Surūšiuota pati: Jaučio penis pjaustytas, 15,0 cm, 1 vnt. — Iš AV; Baltos triušio ausys, 2",
+    "10-02 13:36 Faktai irasyti: 2 eilutes · pajamos 26,19 EUR (be PVM, po nuolaidu) · PVM 5,50 EUR · marza"
+   ]
+  ]
+ },
+ "v": "dep-164941",
+ "kurimas": 200,
+ "sid": 6941,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
