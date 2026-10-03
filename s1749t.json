@@ -1,146 +1,25 @@
 {
- "v": "dep-185816",
+ "v": {
+  "v": "S1749t",
+  "faze": "v",
+  "utc": "2026-10-03 19:01:49",
+  "bak": {
+   "class-email-dispatch.php": "4269c246e36e265d8224dece009b8fbe",
+   "class-sender-adapter.php": "27a16b8bbd885e26593938464c308c9b",
+   "petshop-pakartoti.php": "d0108a6268e4e499c47140283d84535b",
+   "petshop-rytas.php": "aaccd9ffce3237f92e737b1a67df8717"
+  },
+  "ryto_laiskai_po_valymo": {
+   "kodas": "laiskai",
+   "lygis": "zalia",
+   "tekstas": "Laiškai 24 val.: išsiųsta 18, nepavyko 0"
+  },
+  "sablonas_istrintas": true
+ },
  "kurimas": 200,
- "sid": 6962,
+ "sid": 6963,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
- },
- "f": {
-  "v": "S1749t",
-  "faze": "f",
-  "utc": "2026-10-03 18:59:20",
-  "bak": {
-   "class-email-dispatch.php": "4269c246e36e265d8224dece009b8fbe",
-   "class-sender-adapter.php": "27a16b8bbd885e26593938464c308c9b",
-   "petshop-pakartoti.php": "d0108a6268e4e499c47140283d84535b",
-   "petshop-rytas.php": "aaccd9ffce3237f92e737b1a67df8717"
-  },
-  "T6_render": {
-   "kb": 7.7,
-   "img": 0,
-   "a": 0
-  },
-  "T6_proc": {
-   "dry_run": false,
-   "picked": 1,
-   "results": [
-    {
-     "id": 1216,
-     "flow": "ps_s1749_testas",
-     "action": "SENT",
-     "msg_id": "azv2GY-.eE9p2l-AMYvBNl-YMnQQwrMx97O-40CcLn",
-     "error": "",
-     "ms": 282
-    }
-   ]
-  },
-  "T6_id": 1216,
-  "T6_db": {
-   "id": "1216",
-   "status": "sent",
-   "attempts": "1",
-   "mid": "azv2GY-.eE9p2l-AMYvBNl-YMnQQwrMx97O-40CcLn",
-   "err": null,
-   "scheduled_at": "2026-10-03 18:59:20",
-   "sent_at": "2026-10-03 18:59:20",
-   "skip_reason": null
-  },
-  "T5_nuorodu_sk": 39
- },
- "c": {
-  "v": "S1749t",
-  "faze": "c",
-  "utc": "2026-10-03 18:59:27",
-  "bak": {
-   "class-email-dispatch.php": "4269c246e36e265d8224dece009b8fbe",
-   "class-sender-adapter.php": "27a16b8bbd885e26593938464c308c9b",
-   "petshop-pakartoti.php": "d0108a6268e4e499c47140283d84535b",
-   "petshop-rytas.php": "aaccd9ffce3237f92e737b1a67df8717"
-  },
-  "db": {
-   "1211": {
-    "id": "1211",
-    "status": "sent",
-    "attempts": "1",
-    "mid": "azv2GY-.eE9p2l-AMYvBNl-q2rVxnKEwBp3-4mg8bx",
-    "err": null,
-    "scheduled_at": "2026-10-03 18:49:04",
-    "sent_at": "2026-10-03 18:49:05",
-    "skip_reason": null
-   },
-   "1212": {
-    "id": "1212",
-    "status": "uncertain",
-    "attempts": "1",
-    "mid": "",
-    "err": "cURL error 28: Operation timed out after 60001 milliseconds with 0 bytes received [0 ms]",
-    "scheduled_at": "2026-10-03 18:49:13",
-    "sent_at": null,
-    "skip_reason": null
-   },
-   "1213": {
-    "id": "1213",
-    "status": "skipped",
-    "attempts": "1",
-    "mid": "",
-    "err": "cURL error 7: Failed to connect to api.sender.net port 443 [0 ms]",
-    "scheduled_at": "2026-10-03 19:04:13",
-    "sent_at": null,
-    "skip_reason": "s1749_testas_baigtas"
-   },
-   "1214": {
-    "id": "1214",
-    "status": "uncertain",
-    "attempts": "1",
-    "mid": "",
-    "err": "HTTP 502 [32511 ms]",
-    "scheduled_at": "2026-10-03 18:49:14",
-    "sent_at": null,
-    "skip_reason": null
-   },
-   "1215": {
-    "id": "1215",
-    "status": "uncertain",
-    "attempts": "1",
-    "mid": "",
-    "err": "HTTP 502 [29647 ms]",
-    "scheduled_at": "2026-10-03 18:55:24",
-    "sent_at": null,
-    "skip_reason": null
-   },
-   "1216": {
-    "id": "1216",
-    "status": "sent",
-    "attempts": "1",
-    "mid": "azv2GY-.eE9p2l-AMYvBNl-YMnQQwrMx97O-40CcLn",
-    "err": null,
-    "scheduled_at": "2026-10-03 18:59:20",
-    "sent_at": "2026-10-03 18:59:20",
-    "skip_reason": null
-   }
-  },
-  "dispatch_cron_kitas": "19:03:39Z",
-  "ps_vartai": "uzdaryta",
-  "nuo_diegimo": [
-   {
-    "status": "sent",
-    "flow": "ps_s1749_testas",
-    "n": "2",
-    "maxa": "1"
-   },
-   {
-    "status": "skipped",
-    "flow": "ps_s1749_testas",
-    "n": "1",
-    "maxa": "1"
-   },
-   {
-    "status": "uncertain",
-    "flow": "ps_s1749_testas",
-    "n": "3",
-    "maxa": "1"
-   }
-  ]
  }
 }
