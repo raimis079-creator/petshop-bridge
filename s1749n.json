@@ -1,0 +1,53 @@
+{
+ "1": {
+  "v": "S1749n",
+  "faze": "1",
+  "utc": "2026-10-03 18:44:54",
+  "failai": [
+   {
+    "failas": "/plugins/petshop-core/includes/class-email-dispatch.php",
+    "dabar": "4269c246e36e265d8224dece009b8fbe",
+    "orig": "4269c246e36e265d8224dece009b8fbe",
+    "naujas": "8d054166a10ece4cf521fbf333f88fd1",
+    "bak": "nera",
+    "naujo_md5_tikr": true,
+    "busena": "ORIGINALAS (galima diegti)"
+   },
+   {
+    "failas": "/plugins/petshop-esp/includes/class-sender-adapter.php",
+    "dabar": "27a16b8bbd885e26593938464c308c9b",
+    "orig": "27a16b8bbd885e26593938464c308c9b",
+    "naujas": "9ae77512fb26b16493cceb8915b36e2f",
+    "bak": "nera",
+    "naujo_md5_tikr": true,
+    "busena": "ORIGINALAS (galima diegti)"
+   },
+   {
+    "failas": "/mu-plugins/petshop-pakartoti.php",
+    "dabar": "d0108a6268e4e499c47140283d84535b",
+    "orig": "d0108a6268e4e499c47140283d84535b",
+    "naujas": "15a183a0fb58c7e0df309ec930a8a677",
+    "bak": "nera",
+    "naujo_md5_tikr": true,
+    "busena": "ORIGINALAS (galima diegti)"
+   },
+   {
+    "failas": "/mu-plugins/petshop-rytas.php",
+    "dabar": "aaccd9ffce3237f92e737b1a67df8717",
+    "orig": "aaccd9ffce3237f92e737b1a67df8717",
+    "naujas": "9e4320f80ad2b8aaa62d6d2078dd799e",
+    "bak": "nera",
+    "naujo_md5_tikr": true,
+    "busena": "ORIGINALAS (galima diegti)"
+   }
+  ],
+  "ok": true
+ },
+ "v": "dep-184348",
+ "kurimas": 200,
+ "sid": 6956,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
