@@ -1,0 +1,348 @@
+{
+ "1": {
+  "v": "S1749h",
+  "dabar_utc": "2026-10-03 17:55:11",
+  "kabliai": {
+   "wp_password_change_notification_email": [
+    "10 closure wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:9"
+   ],
+   "pre_option_admin_email": [],
+   "option_admin_email": [],
+   "wp_mail": [
+    "-9223372036854775807 WPMailSMTP\\Processor::capture_early_wp_mail_filter_call wp-content/plugins/wp-mail-smtp/src/Processor.php:438",
+    "5 Petshop_Laisku_Nuotraukos::wp_mail wp-content/mu-plugins/petshop-laisku-nuotraukos.php:25",
+    "10 wp_staticize_emoji_for_email wp-includes/formatting.php:6132",
+    "999 Petshop_Uzsakymu_Ivykiai::laiskas wp-content/mu-plugins/petshop-uzsakymu-ivykiai.php:378",
+    "9223372036854775807 WPMailSMTP\\Processor::capture_late_wp_mail_filter_call wp-content/plugins/wp-mail-smtp/src/Processor.php:457"
+   ],
+   "pre_wp_mail": [],
+   "after_password_reset": [
+    "10 wp_password_change_notification wp-includes/pluggable.php:2187",
+    "10 Automattic\\WooCommerce\\Internal\\CustomerEmailVerification\\VerificationEventListener::on_password_reset wp-content/plugins/woocommerce/src/Internal/CustomerEmailVerification/VerificationEventListener.php:53"
+   ],
+   "password_reset": [],
+   "wp_mail_failed": [
+    "10 closure wp-content/mu-plugins/petshop-av-dropship.php:213",
+    "10 Automattic\\WooCommerce\\Internal\\Email\\EmailLogger::capture_mail_error wp-content/plugins/woocommerce/src/Internal/Email/EmailLogger.php:65"
+   ]
+  },
+  "snippets": [
+   {
+    "id": "469",
+    "name": "Petshop Dev App Passwords v1",
+    "active": "1",
+    "c": " /**  * Petshop Dev App Passwords v1 (laikinas - leidzia App Passwords dev aplinkoje)  * Code Snippets: Petshop Dev App Passwords v1  * Tipas: Run everywhere  * ASCII-only komentarai.  */ defined( 'ABSPATH' ) || exit;  /"
+   },
+   {
+    "id": "2029",
+    "name": "Petshop MyAccount LT Slug 301 v1 (LIVE)",
+    "active": "1",
+    "c": "/**  * Petshop MyAccount LT Slug 301 v1 (LIVE)  *  * /my-account/... → /paskyra/... su endpoint'u vertimu.  * Sena struktura veike nuo pat pradziu, todel senos nuorodos gali buti  * laiskuose, zymese ir isorese — 301 but"
+   },
+   {
+    "id": "5306",
+    "name": "Petshop Pastas Slaptazodzio pranesimas adminui v1.0 (wp_password_change_notification_email)",
+    "active": "1",
+    "c": "/**  * Petshop Pastas Slaptazodzio pranesimas adminui v1.0 (wp_password_change_notification_email)  *  * WordPress branduolys kaskart, kai vartotojas pasikeicia slaptazodi,  * issiuncia laiska admin_email adresu. Su 5 66"
+   },
+   {
+    "id": "6485",
+    "name": "TEMP PS dep-173905",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1720c — 2.15 recon 3, read-only (g: Flatsome ajax search kodas + analitika search hook; h: prekių egzistavimas) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1720c'])) return; $"
+   },
+   {
+    "id": "6486",
+    "name": "TEMP PS dep-174114",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1720c — 2.15 recon 3, read-only (g: Flatsome ajax search kodas + analitika search hook; h: prekių egzistavimas) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1720c'])) return; $"
+   },
+   {
+    "id": "6506",
+    "name": "TEMP PS dep-102440",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1721a rytine ataskaita 09-26 (Ads is WC faktu, Shopping, botu sargas, WPAI #3, Ryto sargas, cache) read-only */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1721a'])) return;   $f"
+   },
+   {
+    "id": "6570",
+    "name": "TEMP PS dep-093424",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1724f DNS inventorius (Cloudflare) + valandinio Super Cache valymo kaltininkas read-only. Fazes: 1 DNS, 2 cache */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1724f'])) return;  "
+   },
+   {
+    "id": "6573",
+    "name": "TEMP PS dep-101322",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1724h Cloudflare patikros. Fazes: 1 ar uzklausa ateina per CF (antrastes, real IP), 2 heartbeat/filtru 403/kasa/REST per petshop.lt is serverio, 3 SMTP testinis laiskas terra@gyvunai.lt, 4 cron"
+   },
+   {
+    "id": "6603",
+    "name": "TEMP PS dep-120025",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1724h Cloudflare patikros. Fazes: 1 ar uzklausa ateina per CF (antrastes, real IP), 2 heartbeat/filtru 403/kasa/REST per petshop.lt is serverio, 3 SMTP testinis laiskas terra@gyvunai.lt, 4 cron"
+   },
+   {
+    "id": "6606",
+    "name": "TEMP PS dep-124816",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1724h Cloudflare patikros. Fazes: 1 ar uzklausa ateina per CF (antrastes, real IP), 2 heartbeat/filtru 403/kasa/REST per petshop.lt is serverio, 3 SMTP testinis laiskas terra@gyvunai.lt, 4 cron"
+   },
+   {
+    "id": "6607",
+    "name": "TEMP PS dep-135031",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1724h Cloudflare patikros. Fazes: 1 ar uzklausa ateina per CF (antrastes, real IP), 2 heartbeat/filtru 403/kasa/REST per petshop.lt is serverio, 3 SMTP testinis laiskas terra@gyvunai.lt, 4 cron"
+   },
+   {
+    "id": "6628",
+    "name": "TEMP PS dep-152408",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1724h Cloudflare patikros. Fazes: 1 ar uzklausa ateina per CF (antrastes, real IP), 2 heartbeat/filtru 403/kasa/REST per petshop.lt is serverio, 3 SMTP testinis laiskas terra@gyvunai.lt, 4 cron"
+   },
+   {
+    "id": "6641",
+    "name": "TEMP PS dep-170028",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1724h Cloudflare patikros. Fazes: 1 ar uzklausa ateina per CF (antrastes, real IP), 2 heartbeat/filtru 403/kasa/REST per petshop.lt is serverio, 3 SMTP testinis laiskas terra@gyvunai.lt, 4 cron"
+   },
+   {
+    "id": "6727",
+    "name": "TEMP PS dep-072851",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1736g deploy av-dropship v1.21 + av-tiekimas v1.11 (1 dry / 2 deploy / 3 testas terra@gyvunai.lt / 9 atstato) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1736g'])) return;   $"
+   },
+   {
+    "id": "6728",
+    "name": "TEMP PS dep-073038",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1736g deploy av-dropship v1.21 + av-tiekimas v1.11 (1 dry / 2 deploy / 3 testas terra@gyvunai.lt / 9 atstato) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1736g'])) return;   $"
+   },
+   {
+    "id": "6729",
+    "name": "TEMP PS dep-073230",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1736g deploy av-dropship v1.21 + av-tiekimas v1.11 (1 dry / 2 deploy / 3 testas terra@gyvunai.lt / 9 atstato) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1736g'])) return;   $"
+   },
+   {
+    "id": "6730",
+    "name": "TEMP PS dep-073620",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1736g deploy av-dropship v1.21 + av-tiekimas v1.11 (1 dry / 2 deploy / 3 testas terra@gyvunai.lt / 9 atstato) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1736g'])) return;   $"
+   },
+   {
+    "id": "6749",
+    "name": "TEMP PS dep-162917",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1736q av-dropship v1.21.1 + av-tiekimas v1.11.1 — TIEK-nr (1 dry / 2 deploy / 3s testas terra@gyvunai.lt / 9 atstato) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1736q'])) ret"
+   },
+   {
+    "id": "6750",
+    "name": "TEMP PS dep-163044",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1736q av-dropship v1.21.1 + av-tiekimas v1.11.1 — TIEK-nr (1 dry / 2 deploy / 3s testas terra@gyvunai.lt / 9 atstato) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1736q'])) ret"
+   },
+   {
+    "id": "6751",
+    "name": "TEMP PS dep-163203",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1736q av-dropship v1.21.1 + av-tiekimas v1.11.1 — TIEK-nr (1 dry / 2 deploy / 3s testas terra@gyvunai.lt / 9 atstato) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1736q'])) ret"
+   },
+   {
+    "id": "6782",
+    "name": "TEMP PS dep-184156",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1740j relaunch technika recon: DNS + bazes suvestines, BE PII (1 read-only) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1740j'])) return; $f=$_GET['ps_s1740j']; @set_time_limi"
+   },
+   {
+    "id": "6826",
+    "name": "TEMP PS dep-071140",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1741h0 petshop-sargas insert/mail (read-only) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1741h0'])) return; $r=['v'=>'S1741h0'];   try{     $fp=WPMU_PLUGIN_DIR.'/petshop-sarg"
+   },
+   {
+    "id": "6855",
+    "name": "TEMP PS dep-094502",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1741aa WP laisku nuotraukos (read-only, laiskai NESIUNCIAMI) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1741aa'])) return; @set_time_limit(120); global $wpdb; $r=['v'=>'S1741"
+   },
+   {
+    "id": "6856",
+    "name": "TEMP PS dep-094753",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1741bb laisku nuotraukos: uploads/.htaccess ps_mail isimtis + mu-plugin (1 diegti / 2 patikra / 3 test laiskas terra / 9 atstatyti) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_"
+   },
+   {
+    "id": "6857",
+    "name": "TEMP PS dep-094926",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1741bb laisku nuotraukos: uploads/.htaccess ps_mail isimtis + mu-plugin (1 diegti / 2 patikra / 3 test laiskas terra / 9 atstatyti) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_"
+   },
+   {
+    "id": "6858",
+    "name": "TEMP PS dep-095056",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1741bb laisku nuotraukos: uploads/.htaccess ps_mail isimtis + mu-plugin (1 diegti / 2 patikra / 3 test laiskas terra / 9 atstatyti) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_"
+   },
+   {
+    "id": "6878",
+    "name": "TEMP PS dep-174922",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1742n recon LP siuntų formavimas (read-only) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1742n'])) return; @set_time_limit(120); global $wpdb; $r=['v'=>'S1742n'];   try{     $"
+   },
+   {
+    "id": "6903",
+    "name": "TEMP PS dep-175004",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1745v pilna patikra: klientu laiskai + ryto ataskaita (read-only) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1745v'])) return; $f=$_GET['ps_s1745v']; @set_time_limit(170); gl"
+   },
+   {
+    "id": "6904",
+    "name": "TEMP PS dep-175156",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1745v pilna patikra: klientu laiskai + ryto ataskaita (read-only) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1745v'])) return; $f=$_GET['ps_s1745v']; @set_time_limit(170); gl"
+   },
+   {
+    "id": "6905",
+    "name": "TEMP PS dep-175931",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1745t testinis pavedimo uzsakymas Raimio prasymu: 1 nustatymai / 2 sukurti+fiksuoti laiskus / 3 rezultatai / 4 atsaukti tyliai + likutis */ add_action('wp_loaded', function(){   if(!isset($_GET"
+   },
+   {
+    "id": "6906",
+    "name": "TEMP PS dep-180112",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1745t testinis pavedimo uzsakymas Raimio prasymu: 1 nustatymai / 2 sukurti+fiksuoti laiskus / 3 rezultatai / 4 atsaukti tyliai + likutis */ add_action('wp_loaded', function(){   if(!isset($_GET"
+   },
+   {
+    "id": "6907",
+    "name": "TEMP PS dep-180252",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1745t testinis pavedimo uzsakymas Raimio prasymu: 1 nustatymai / 2 sukurti+fiksuoti laiskus / 3 rezultatai / 4 atsaukti tyliai + likutis */ add_action('wp_loaded', function(){   if(!isset($_GET"
+   },
+   {
+    "id": "6908",
+    "name": "TEMP PS dep-180442",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1745t testinis pavedimo uzsakymas Raimio prasymu: 1 nustatymai / 2 sukurti+fiksuoti laiskus / 3 rezultatai / 4 atsaukti tyliai + likutis */ add_action('wp_loaded', function(){   if(!isset($_GET"
+   },
+   {
+    "id": "6909",
+    "name": "TEMP PS dep-180629",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1745t testinis pavedimo uzsakymas Raimio prasymu: 1 nustatymai / 2 sukurti+fiksuoti laiskus / 3 rezultatai / 4 atsaukti tyliai + likutis */ add_action('wp_loaded', function(){   if(!isset($_GET"
+   },
+   {
+    "id": "6910",
+    "name": "TEMP PS dep-180835",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1745t testinis pavedimo uzsakymas Raimio prasymu: 1 nustatymai / 2 sukurti+fiksuoti laiskus / 3 rezultatai / 4 atsaukti tyliai + likutis */ add_action('wp_loaded', function(){   if(!isset($_GET"
+   },
+   {
+    "id": "6911",
+    "name": "TEMP PS dep-181006",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1745t testinis pavedimo uzsakymas Raimio prasymu: 1 nustatymai / 2 sukurti+fiksuoti laiskus / 3 rezultatai / 4 atsaukti tyliai + likutis */ add_action('wp_loaded', function(){   if(!isset($_GET"
+   },
+   {
+    "id": "6912",
+    "name": "TEMP PS dep-182002",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1745v pilna patikra: klientu laiskai + ryto ataskaita (read-only) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1745v'])) return; $f=$_GET['ps_s1745v']; @set_time_limit(170); gl"
+   },
+   {
+    "id": "6913",
+    "name": "TEMP PS dep-182226",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1745v pilna patikra: klientu laiskai + ryto ataskaita (read-only) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1745v'])) return; $f=$_GET['ps_s1745v']; @set_time_limit(170); gl"
+   },
+   {
+    "id": "6943",
+    "name": "TEMP PS dep-172724",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1749a laisku kodo surinkimas (read-only) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1749a'])) return; global $wpdb,$wp_filter; $r=['v'=>'S1749a'];   $klases=['Petshop_Email_D"
+   },
+   {
+    "id": "6944",
+    "name": "TEMP PS dep-172958",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1749b laisku DB tyrimas (read-only) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1749b'])) return; @set_time_limit(170); global $wpdb; $P=$wpdb->prefix; $T=$P.'ps_email_jobs'; "
+   },
+   {
+    "id": "6947",
+    "name": "TEMP PS dep-174032",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1749e issiusti laiskai sarasas palyginimui (read-only) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1749e'])) return; global $wpdb; $P=$wpdb->prefix; $r=['v'=>'S1749e'];   $r['"
+   },
+   {
+    "id": "6949",
+    "name": "TEMP PS dep-175106",
+    "active": "0",
+    "c": " /** Plugin Name: TEMP PS S1749g wp-cron uzraktas, SMTP be gavejo, dabartine bukle (read-only) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1749g'])) return; @set_time_limit(175); @ini_set('memory_limit'"
+   },
+   {
+    "id": "6950",
+    "name": "TEMP PS dep-175402",
+    "active": "1",
+    "c": " /** Plugin Name: TEMP PS S1749h kabliai SMTP be gavejo + kodel wp-cron sukasi nuolat (read-only) */ add_action('wp_loaded', function(){   if(!isset($_GET['ps_s1749h'])) return; @set_time_limit(120); global $wpdb,$wp_fil"
+   }
+  ],
+  "cron_viso": 92,
+  "cron_intervalai": {
+   "0": 6,
+   "60": 1,
+   "120": 1,
+   "300": 4,
+   "1800": 1,
+   "3600": 18,
+   "43200": 7,
+   "86400": 48,
+   "604800": 5,
+   "2592000": 1
+  },
+  "cron_pradelsta": [],
+  "cron_pradelsta_n": 0,
+  "as_pending_due": "0",
+  "as_pending_due_hooks": [],
+  "as_complete_24h": [
+   {
+    "hook": "wc_update_product_lookup_tables_rating_count_batch",
+    "n": "1632"
+   },
+   {
+    "hook": "wc_update_product_lookup_tables_column",
+    "n": "408"
+   },
+   {
+    "hook": "woocommerce_custom_orders_table_background_sync",
+    "n": "24"
+   },
+   {
+    "hook": "woocommerce_delete_legacy_report_transients",
+    "n": "19"
+   },
+   {
+    "hook": "woocommerce_cancel_unpaid_orders",
+    "n": "16"
+   },
+   {
+    "hook": "wc_schedule_pending_batch_processes",
+    "n": "6"
+   },
+   {
+    "hook": "wc_run_batch_process",
+    "n": "6"
+   },
+   {
+    "hook": "ps_esp_process_event",
+    "n": "6"
+   }
+  ]
+ },
+ "v": "dep-175402",
+ "kurimas": 200,
+ "sid": 6950,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
