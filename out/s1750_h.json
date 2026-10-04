@@ -1,0 +1,112 @@
+{
+ "1": {
+  "v": "S1750h",
+  "p18590": {
+   "_stock": "366.000000",
+   "_manage_stock": "yes",
+   "_stock_status": "instock",
+   "_own_stock_qty": "5",
+   "_vf_qty": "366",
+   "_active_fulfillment_source": "vf_dropship",
+   "_ps_sandelis": "vf",
+   "_price": "21.95",
+   "_regular_price": "21.95",
+   "ps_sources": [
+    {
+     "id": "4483",
+     "product_id": "18590",
+     "source": "av",
+     "supplier_sku": "",
+     "ean": "",
+     "stock_qty": "5",
+     "cost_net": null,
+     "synced_at": null,
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "1",
+     "created_at": "2026-09-06 20:59:46",
+     "updated_at": "2026-10-04 07:20:13"
+    },
+    {
+     "id": "2422",
+     "product_id": "18590",
+     "source": "vf",
+     "supplier_sku": "HYPS02",
+     "ean": "801125900008",
+     "stock_qty": "366",
+     "cost_net": "14.3565",
+     "synced_at": "2026-08-07 13:00:07",
+     "is_active": "1",
+     "is_sellable": "1",
+     "priority": "2",
+     "created_at": "2026-08-07 13:36:26",
+     "updated_at": "2026-10-04 07:20:13"
+    }
+   ],
+   "partijos": []
+  },
+  "p36002": {
+   "_manage_stock": "no",
+   "_stock_status": "instock",
+   "_dp_base_product_id": "18590",
+   "_dp_pack_qty": "2",
+   "_dp_nuolaida_proc": "3",
+   "_price": "42.59",
+   "_regular_price": "42.59",
+   "ps_sources": [],
+   "partijos": []
+  },
+  "db_err": "Unknown column 'kiekis' in 'SELECT'",
+  "uzraktas": {
+   "petshop-rinkiniai.php": {
+    "hdr": "/** * Petshop Rinkiniai v1.45 (S1725) — DP pakų „Nuolaida %\" valdoma ČIA (ne atskirame lange): * formoje DP pakui laukas „Nuolaida %\" — įrašytas → kaina = kiekis × bazinė × (1 − %), seka bazinę * (Petshop_DP_Kainos); tuščias → kaina ranka, sinchronizacija neliečia. Sąraše prie DP „−N %\" / „kaina ran",
+    "eil": [
+     "94: * Petshop Rinkiniai v1.28 (H276) — SANDELIO FILTRAS PAVELDI RINKINIO SANDELI.",
+     "97: * pasirinkta kuriant. Rinkinys sandelio atskirai nesaugo (jis kyla is prekiu:",
+     "98: * viena grupe = vienas sandelis = viena siunta), todel filtras nustatomas pagal",
+     "99: * KOMPONENTUS: visi vienam sandelyje -> tas sandelis pazymimas ir paieska is",
+     "136: *   sandelis · savikaina · tekstas.",
+     "146: *   - keliu dropship tiekeju prekes viename rinkinyje (dvi siuntos)",
+     "435: * (venipak pickup point, omniva terminal, DPD locker...).",
+     "950: /** Sandelis rankiniam atrinkimui (kaip 539: pozymiu nebuvimas = AV). */",
+     "951: public static function sandelis( $pid ) {",
+     "1249: 'sandeliai' => $baze ? array( self::sandelis( $bid ) ) : array(),",
+     "1298: $sav = 0; $suma = 0; $truksta = 0; $vnt = 0; $lubos = null; $negalimi = array(); $sandeliai = array();",
+     "1317: $sandeliai[ self::sandelis( $vid ) ] = true;",
+     "1344: 'sandeliai' => array_keys( $sandeliai ),",
+     "1651: 'sand'  => strtoupper( (string) get_post_meta( (int) $cid, '_ps_sandelis', true ) ?: 'AV' ),",
+     "1869: +'<td class=\"psr-mut\">'+((p.sandelis||'av')+'').toUpperCase()+(p.yra?'':' <span class=\"psr-z r\">neturime</span>')+'</td>'",
+     "2004: /* sandelio taisykle: viena grupe = vienas sandelis = viena siunta */",
+     "2005: $naujo = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) ?: 'av' );",
+     "2007: $s = strtolower( (string) get_post_meta( (int) $cid, '_ps_sandelis', true ) ?: 'av' );",
+     "2085: 'sand'  => array_values( (array) $r['sandeliai'] ),",
+     "2652: /* v1.28: pradinis sandelis paveldimas is jau esanciu komponentu */",
+     "2653: var PRAD_SAND=(function(){ var u={}; K.forEach(function(c){ u[(c.sandelis||'av')]=1; });",
+     "2686: sand[c.sandelis]=1;",
+     "2778: +'<div class=\"psr-mut\">'+esc(c.sku||'be SKU')+' · '+c.sandelis.toUpperCase()+' · likutis '+(c.likutis===null?'∞':c.likutis)+'</div></td>'",
+     "2883: if(s.mix) h+='<div class=\"psr-perspejimas y\">Rinkinyje kelių dropship tiekėjų prekės ('+s.sand.join(', ').toUpperCase()+') — klientui išeis kelios siuntos.</div>';",
+     "3011: +'<td>'+esc(p.pav)+'<div class=\"psr-mut\">'+esc(p.sku||'be SKU')+' · '+p.sandelis.toUpperCase()+'</div></td>'",
+     "3154: 'sandelis'  => self::sandelis( $pid ),",
+     "3193: /* Sandelio filtras — tas pats principas kaip 539/550: AV = nei VF, nei ZB. */"
+    ]
+   }
+  },
+  "konfliktai": [
+   [
+    "1268",
+    "processing",
+    "10-04 01:14",
+    "woo_lithuaniapost_lpexpress_terminal",
+    "vf/venipak"
+   ]
+  ],
+  "tikrinta_uzs": 160
+ },
+ "v": "dep-190101",
+ "kurimas": 200,
+ "sid": 6978,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
