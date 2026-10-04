@@ -1,0 +1,57 @@
+{
+ "1": {
+  "v": "S1750l",
+  "failas": "wp-content/mu-plugins/petshop-darbalaukis.php",
+  "md5": "f4f975acfe5b",
+  "mtime": "09-30 18:11",
+  "versija_pirma": "Petshop Darbalaukis v3.46",
+  "sprendimas_pakas_36002_q1": {
+   "source": "av",
+   "carrier": "any",
+   "courier_only": false,
+   "av_qty": 2,
+   "av_uztenka": true,
+   "tiekejas": "vf",
+   "reason": "DP pakas ×2 (bazinė #18590): AV turi 5, reikia 2",
+   "dp": {
+    "base": 18590,
+    "n": 2
+   }
+  },
+  "sprendimas_baze_18590_q2": {
+   "source": "av",
+   "carrier": "any",
+   "courier_only": false,
+   "av_qty": 5,
+   "av_uztenka": true,
+   "tiekejas": "vf",
+   "reason": "AV turi 5, reikia 2"
+  },
+  "vez": "lp",
+  "paid": true,
+  "eil": {
+   "3008": {
+    "q": 1,
+    "pid": 36002,
+    "src": "vf",
+    "k": "tiesiai",
+    "tiek": "vf",
+    "av_qty": 2,
+    "kodel": "dropship pirma (AV turi 2, bet užsakymas ne mišrus): tiekėjas vf turi 366; DP pakas ×2 (bazinė #18590): AV turi 5, reikia 2",
+    "galimi": {
+     "av": true,
+     "tiesiai": false,
+     "i_av": true
+    },
+    "lock": ""
+   }
+  }
+ },
+ "v": "dep-191534",
+ "kurimas": 200,
+ "sid": 6982,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
