@@ -1,0 +1,771 @@
+{
+ "1": {
+  "v": "S1750b",
+  "utc": "2026-10-04 18:42:32",
+  "cols": "id,job_key,flow,flow_class,recipient_email,recipient_user_id,subject,payload,status,block_reason,provider,provider_message_id,attempts,last_error,scheduled_at,sent_at,created_at,updated_at,skip_reason,error_message,decision_at,next_attempt_at,context_json,delivered_at,opened_at,clicked_at",
+  "sent_siandien": [
+   {
+    "id": "652",
+    "flow": "post_purchase_14d",
+    "e": "eli…@gmail.com",
+    "o": "",
+    "t": "10:04",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "661",
+    "flow": "post_purchase_14d",
+    "e": "vid…@gmail.com",
+    "o": "",
+    "t": "10:04",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "688",
+    "flow": "post_purchase_14d",
+    "e": "ass…@outlook.com",
+    "o": "",
+    "t": "10:04",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "697",
+    "flow": "post_purchase_14d",
+    "e": "don…@gmail.com",
+    "o": "",
+    "t": "10:04",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "700",
+    "flow": "post_purchase_14d",
+    "e": "mil…@gmail.com",
+    "o": "",
+    "t": "10:04",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "751",
+    "flow": "post_purchase_14d",
+    "e": "mus…@gmail.com",
+    "o": "",
+    "t": "10:04",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "1219",
+    "flow": "refill_due",
+    "e": "san…@yahoo.com",
+    "o": "",
+    "t": "11:04",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "760",
+    "flow": "post_purchase_14d",
+    "e": "iie…@yahoo.com",
+    "o": "",
+    "t": "11:14",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "763",
+    "flow": "post_purchase_14d",
+    "e": "fot…@gmail.com",
+    "o": "",
+    "t": "11:14",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "769",
+    "flow": "post_purchase_14d",
+    "e": "vio…@gmail.com",
+    "o": "",
+    "t": "11:14",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "1129",
+    "flow": "refill_due",
+    "e": "lau…@gmail.com",
+    "o": "",
+    "t": "11:14",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "1132",
+    "flow": "refill_due",
+    "e": "v.m…@halmarbaltika.lt",
+    "o": "",
+    "t": "11:14",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "1220",
+    "flow": "post_purchase_2d",
+    "e": "ram…@gmail.com",
+    "o": "",
+    "t": "11:43",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "1223",
+    "flow": "post_purchase_2d",
+    "e": "Mis…@gmail.com",
+    "o": "",
+    "t": "11:43",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "1226",
+    "flow": "post_purchase_2d",
+    "e": "tas…@gmail.com",
+    "o": "",
+    "t": "11:43",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "1229",
+    "flow": "post_purchase_2d",
+    "e": "rin…@gmail.com",
+    "o": "",
+    "t": "11:43",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "1232",
+    "flow": "post_purchase_2d",
+    "e": "kam…@gmail.com",
+    "o": "",
+    "t": "11:43",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "736",
+    "flow": "post_purchase_14d",
+    "e": "aud…@gmail.com",
+    "o": "",
+    "t": "12:23",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "739",
+    "flow": "post_purchase_14d",
+    "e": "mar…@gmail.com",
+    "o": "",
+    "t": "12:23",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "1235",
+    "flow": "post_purchase_2d",
+    "e": "ugn…@gmail.com",
+    "o": "",
+    "t": "14:43",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "1241",
+    "flow": "consent_changed",
+    "e": "ull…@gmail.com",
+    "o": "",
+    "t": "21:04",
+    "a": "1",
+    "err": ""
+   }
+  ],
+  "statusai_visi": [
+   {
+    "status": "deferred",
+    "n": "3",
+    "pask": "2026-10-02 07:11:48"
+   },
+   {
+    "status": "pending",
+    "n": "187",
+    "pask": "2026-10-04 11:39:27"
+   },
+   {
+    "status": "sent",
+    "n": "415",
+    "pask": "2026-10-04 18:04:38"
+   },
+   {
+    "status": "skipped",
+    "n": "164",
+    "pask": "2026-10-04 16:08:43"
+   }
+  ],
+  "problem": [],
+  "klaidos_24h": [
+   {
+    "flow": "ps_s1749_testas",
+    "status": "skipped",
+    "e": "cURL error 28: Operation timed out after 60001 milliseconds ",
+    "n": "1"
+   },
+   {
+    "flow": "ps_s1749_testas",
+    "status": "skipped",
+    "e": "cURL error 7: Failed to connect to api.sender.net port 443 [",
+    "n": "1"
+   },
+   {
+    "flow": "ps_s1749_testas",
+    "status": "skipped",
+    "e": "HTTP 502 [29647 ms]",
+    "n": "1"
+   },
+   {
+    "flow": "ps_s1749_testas",
+    "status": "skipped",
+    "e": "HTTP 502 [32511 ms]",
+    "n": "1"
+   }
+  ],
+  "dubl": [
+   {
+    "flow": "ps_s1749_testas",
+    "e": "ter…@gyvunai.lt",
+    "n": "3",
+    "l": "1211@10-03 21:49/o 1216@10-03 21:59/o 1217@10-03 23:07/o"
+   }
+  ],
+  "dubl_jobkey": [],
+  "grazinti14": [
+   {
+    "id": "646",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sr": "grandine_maistas",
+    "e": "vio…@gmail.com",
+    "o": "",
+    "t": "10-04 10:04",
+    "a": "0"
+   },
+   {
+    "id": "649",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sr": "grandine_maistas",
+    "e": "kar…@gmail.com",
+    "o": "",
+    "t": "10-04 10:04",
+    "a": "0"
+   },
+   {
+    "id": "652",
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "sr": "",
+    "e": "eli…@gmail.com",
+    "o": "",
+    "t": "10-04 10:04",
+    "a": "1"
+   },
+   {
+    "id": "655",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sr": "grandine_maistas",
+    "e": "ste…@gmail.com",
+    "o": "",
+    "t": "10-04 10:04",
+    "a": "0"
+   },
+   {
+    "id": "658",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sr": "grandine_maistas",
+    "e": "rem…@gmail.com",
+    "o": "",
+    "t": "10-04 10:04",
+    "a": "0"
+   },
+   {
+    "id": "661",
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "sr": "",
+    "e": "vid…@gmail.com",
+    "o": "",
+    "t": "10-04 10:04",
+    "a": "1"
+   },
+   {
+    "id": "664",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sr": "grandine_maistas",
+    "e": "nik…@gmail.com",
+    "o": "",
+    "t": "10-04 10:04",
+    "a": "0"
+   },
+   {
+    "id": "667",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sr": "grandine_maistas",
+    "e": "vyk…@gmail.com",
+    "o": "",
+    "t": "10-04 10:04",
+    "a": "0"
+   },
+   {
+    "id": "670",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sr": "grandine_maistas",
+    "e": "nik…@gmail.com",
+    "o": "",
+    "t": "10-04 10:04",
+    "a": "0"
+   },
+   {
+    "id": "688",
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "sr": "",
+    "e": "ass…@outlook.com",
+    "o": "",
+    "t": "10-04 10:04",
+    "a": "1"
+   },
+   {
+    "id": "697",
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "sr": "",
+    "e": "don…@gmail.com",
+    "o": "",
+    "t": "10-04 10:04",
+    "a": "1"
+   },
+   {
+    "id": "700",
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "sr": "",
+    "e": "mil…@gmail.com",
+    "o": "",
+    "t": "10-04 10:04",
+    "a": "1"
+   },
+   {
+    "id": "703",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sr": "grandine_maistas",
+    "e": "dov…@yahoo.com",
+    "o": "",
+    "t": "10-04 10:04",
+    "a": "0"
+   },
+   {
+    "id": "751",
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "sr": "",
+    "e": "mus…@gmail.com",
+    "o": "",
+    "t": "10-04 10:04",
+    "a": "1"
+   }
+  ],
+  "skip_siandien": [
+   {
+    "flow": "cart_abandoned",
+    "skip_reason": "consent_missing",
+    "n": "3"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "skip_reason": "grandine_maistas",
+    "n": "13"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "skip_reason": "jau_pirko_po",
+    "n": "1"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "skip_reason": "similar_optout",
+    "n": "2"
+   },
+   {
+    "flow": "refill_due",
+    "skip_reason": "pakartoti_jau_siustas",
+    "n": "3"
+   }
+  ],
+  "refill_siandien": [
+   {
+    "id": "1129",
+    "status": "sent",
+    "sr": "lifecycle_uzdaryta",
+    "e": "lau…@gmail.com",
+    "o": "",
+    "t": "11:14",
+    "job_key": "refill_due:3072:17400:2026-10-07"
+   },
+   {
+    "id": "1130",
+    "status": "skipped",
+    "sr": "pakartoti_jau_siustas",
+    "e": "lau…@gmail.com",
+    "o": "",
+    "t": "11:14",
+    "job_key": "refill_due:3072:17397:2026-10-07"
+   },
+   {
+    "id": "1131",
+    "status": "skipped",
+    "sr": "pakartoti_jau_siustas",
+    "e": "lau…@gmail.com",
+    "o": "",
+    "t": "11:14",
+    "job_key": "refill_due:3072:17394:2026-10-07"
+   },
+   {
+    "id": "1132",
+    "status": "sent",
+    "sr": "lifecycle_uzdaryta",
+    "e": "v.m…@halmarbaltika.lt",
+    "o": "",
+    "t": "11:14",
+    "job_key": "refill_due:5861:35330:2026-10-07"
+   },
+   {
+    "id": "1218",
+    "status": "skipped",
+    "sr": "pakartoti_jau_siustas",
+    "e": "zin…@icloud.com",
+    "o": "",
+    "t": "11:04",
+    "job_key": "refill_due:5792:21671:2026-10-09"
+   },
+   {
+    "id": "1219",
+    "status": "sent",
+    "sr": "",
+    "e": "san…@yahoo.com",
+    "o": "",
+    "t": "11:04",
+    "job_key": "refill_due:4528:18599:2026-10-09"
+   }
+  ],
+  "ateina": [
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "d": "2026-10-05",
+    "n": "21"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "d": "2026-10-05",
+    "n": "20"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "d": "2026-10-06",
+    "n": "11"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "d": "2026-10-06",
+    "n": "13"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "d": "2026-10-07",
+    "n": "13"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "d": "2026-10-07",
+    "n": "9"
+   }
+  ],
+  "pending_pp14_pagal_sukurta": [
+   {
+    "c": "2026-10-04",
+    "n": "6",
+    "s_nuo": "2026-10-16",
+    "s_iki": "2026-10-16"
+   },
+   {
+    "c": "2026-10-03",
+    "n": "12",
+    "s_nuo": "2026-10-15",
+    "s_iki": "2026-10-15"
+   },
+   {
+    "c": "2026-10-02",
+    "n": "13",
+    "s_nuo": "2026-10-14",
+    "s_iki": "2026-10-14"
+   },
+   {
+    "c": "2026-10-01",
+    "n": "13",
+    "s_nuo": "2026-10-13",
+    "s_iki": "2026-10-13"
+   },
+   {
+    "c": "2026-09-30",
+    "n": "20",
+    "s_nuo": "2026-10-12",
+    "s_iki": "2026-10-12"
+   },
+   {
+    "c": "2026-09-27",
+    "n": "4",
+    "s_nuo": "2026-10-09",
+    "s_iki": "2026-10-09"
+   },
+   {
+    "c": "2026-09-26",
+    "n": "10",
+    "s_nuo": "2026-10-08",
+    "s_iki": "2026-10-08"
+   },
+   {
+    "c": "2026-09-25",
+    "n": "13",
+    "s_nuo": "2026-10-07",
+    "s_iki": "2026-10-07"
+   }
+  ],
+  "atidarymai": [
+   {
+    "flow": "consent_changed",
+    "n": "1",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "n": "11",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "n": "31",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "n": "4",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "ps_s1749_testas",
+    "n": "3",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "refill_due",
+    "n": "6",
+    "atid": "0",
+    "pasp": "0"
+   }
+  ],
+  "wh": {
+   "gaj6_ps_webhook_log": {
+    "cols": "id,dedup_key,topic,email,marketing_status,transactional_status,payload_json,processing_result,received_at",
+    "n": 1,
+    "nuo_10_03": 0,
+    "pask": [
+     {
+      "id": "1",
+      "dedup_key": "9f253bdb3ecd37d1ab131d8aca849306",
+      "topic": "subscribers/updated",
+      "email": "…@example.com",
+      "marketing_status": "unsubscribed",
+      "transactional_status": "active",
+      "payload_json": "{\"type\":\"subscribers\\/updated\",\"email\":\"…@example.com\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"}}",
+      "processing_result": "test",
+      "received_at": "2026-07-30 20:24:52"
+     }
+    ]
+   }
+  },
+  "wh_opc_n": 2,
+  "wh_opc_pask": "[{\"t\":\"2026-09-09 17:06:13\",\"topic_get\":\"bounces\\/new\",\"headers\":{\"x-sender-signature\":\"58ea28d13f1be4c9f73703aef790e5f56e18f04cac58a0991bf8ce9cd65a62f1\",\"user-agent\":\"WordPress\\/6.9.4; https:\\/\\/petshop.lt\",\"content-type\":\"application\\/json\"},\"body\":\"{\\\"data\\\":{\\\"email\\\":\\\"…@petshop.lt\\\"}}\"},{\"t\":\"2026-10-03 22:23:30\",\"topic_get\":\"s1749-pasiekiamumo-testas\",\"headers\":{\"user-agent\":\"Sender-Webhook-Test\\/1.0\",\"content-type\":\"application\\/json\"},\"body\":\"{\\\"type\\\":\\\"s1749\\\\\\/test\\\",\\\"data\\\":{\\\"email\\\":\\\"…@petshop.lt\\\"}}\"}]",
+  "relaunch_opc": {
+   "kada": "2026-09-30 12:39:18",
+   "calc": "n5glV5",
+   "std": "o2jm9Y"
+  },
+  "rl_calc": {
+   "recipient_count": 193,
+   "status": "SENT",
+   "sent_count": 193,
+   "opens": 69,
+   "bounces_count": 0,
+   "clicks": 7
+  },
+  "rl_std": {
+   "recipient_count": 107,
+   "status": "SENT",
+   "sent_count": 107,
+   "opens": 43,
+   "bounces_count": 0,
+   "clicks": 2
+  },
+  "sender_uzs": [],
+  "rekl_cols": "id,diena,kanalas,kampanija_id,kampanija,parodymai,paspaudimai,islaidos_ct,valiuta,konversijos,konv_verte_ct,saltinis,saltinis_aplinka,versija,irasyta_at,senoji_svetaine",
+  "kamp": [
+   {
+    "id": "",
+    "k": ""
+   },
+   {
+    "id": "21472017542",
+    "k": "P-max | LT | petshop.lt"
+   },
+   {
+    "id": "21565450990",
+    "k": "P-max| All LT | Kačių maistas"
+   },
+   {
+    "id": "23346712074",
+    "k": "petshop"
+   },
+   {
+    "id": "24297462605",
+    "k": "Search | LT | Prekių ženklai"
+   }
+  ],
+  "atviri_seni": [
+   [
+    "1261",
+    "processing",
+    "paysera",
+    "10-02 22:46",
+    "",
+    [
+     "10-02 22:47 Paysera: Naujo užsakymo kūrimo būsena",
+     "10-02 22:47 Email \"Užsakymas vykdomas\" sent."
+    ]
+   ],
+   [
+    "1260",
+    "processing",
+    "paysera",
+    "10-02 21:48",
+    "",
+    [
+     "10-02 21:49 Paysera: Naujo užsakymo kūrimo būsena",
+     "10-02 21:49 Email \"Užsakymas vykdomas\" sent."
+    ]
+   ],
+   [
+    "1258",
+    "processing",
+    "paysera",
+    "10-02 17:06",
+    "",
+    [
+     "10-02 17:07 Paysera: Naujo užsakymo kūrimo būsena",
+     "10-02 17:07 Paysera: Naujo užsakymo kūrimo būsena"
+    ]
+   ],
+   [
+    "1257",
+    "processing",
+    "paysera",
+    "10-02 11:39",
+    "",
+    [
+     "10-02 12:47 Tiekimas: prekės užsakytos iš Vetfarmas (partija #36, laiške kartu su užsak",
+     "10-02 12:47 Tiekimas: prekės užsakytos iš Vetfarmas (partija #36, laiške kartu su užsak"
+    ]
+   ],
+   [
+    "1256",
+    "processing",
+    "paysera",
+    "10-02 06:15",
+    "",
+    [
+     "10-02 12:47 Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karol",
+     "10-02 12:47 Siuntos numeriai išsaugoti (VF): V07267E1000289"
+    ]
+   ],
+   [
+    "1254",
+    "processing",
+    "paysera",
+    "10-01 21:27",
+    "",
+    [
+     "10-02 12:47 Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karol",
+     "10-02 12:47 Siuntos numeriai išsaugoti (VF): V07267E1000288"
+    ]
+   ],
+   [
+    "1247",
+    "processing",
+    "paysera",
+    "10-01 10:51",
+    "",
+    [
+     "10-02 08:39 Perduota ZB — suvesta į jų sistemą ranka, lipdukas prikabintas (darbalaukio",
+     "10-02 08:37 Siuntos numeriai išsaugoti (ZB): V07267E1000286"
+    ]
+   ],
+   [
+    "1243",
+    "processing",
+    "bacs",
+    "09-30 21:17",
+    "",
+    [
+     "10-02 13:36 Email \"Užsakymas vykdomas\" sent.",
+     "10-02 13:36 Email \"Naujas užsakymas\" sent."
+    ]
+   ]
+  ]
+ },
+ "v": "dep-184124",
+ "kurimas": 200,
+ "sid": 6972,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
