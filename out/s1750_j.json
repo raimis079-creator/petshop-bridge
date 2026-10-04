@@ -1,0 +1,64 @@
+{
+ "1": {
+  "v": "S1750j",
+  "failai": {
+   "/mu-plugins/petshop-rinkiniai.php": [
+    "146: *   - keliu dropship tiekeju prekes viename rinkinyje (dvi siuntos)",
+    "157: *   B) TA PATI PREKE x N -> „Daugiau=pigiau\" pakas (`simple` + `_dp_base_product_id`",
+    "215: add_filter( 'woocommerce_package_rates', array( __CLASS__, 'pastomato_sargas' ), 100, 2 );",
+    "405: || ( get_post_meta( $pid, '_dp_base_product_id', true ) !== '' );",
+    "410: if ( ! in_array( $raktas, $leisti, true ) ) { unset( $tabs[ $raktas ] ); }",
+    "463: if ( mb_strpos( $tekstas, $z ) !== false ) { unset( $rates[ $raktas ] ); break; }",
+    "478: || ( get_post_meta( $post->ID, '_dp_base_product_id', true ) !== '' );",
+    "580: if ( get_post_meta( $pid, '_dp_base_product_id', true ) ) { return; }   /* DP tvarko 570 */",
+    "888: if ( get_post_meta( $pid, '_dp_base_product_id', true ) ) { return $kesas[ $pid ] = true; }",
+    "1222: $ids = $wpdb->get_col( \"SELECT post_id FROM {$p}postmeta WHERE meta_key='_dp_base_product_id'\" );",
+    "1229: $bid  = (int) get_post_meta( $pid, '_dp_base_product_id', true );",
+    "1651: 'sand'  => strtoupper( (string) get_post_meta( (int) $cid, '_ps_sandelis', true ) ?: 'AV' ),",
+    "2005: $naujo = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) ?: 'av' );",
+    "2007: $s = strtolower( (string) get_post_meta( (int) $cid, '_ps_sandelis', true ) ?: 'av' );",
+    "2488: $dp_baze = $saltinis ? (int) get_post_meta( $saltinis, '_dp_base_product_id', true ) : 0;",
+    "2883: if(s.mix) h+='<div class=\"psr-perspejimas y\">Rinkinyje kelių dropship tiekėjų prekės ('+s.sand.join(', ').toUpperCase()+') — klientui išeis kelios siuntos.</div",
+    "3467: if ( $esamas && ! get_post_meta( $id, '_dp_base_product_id', true ) ) {",
+    "3498: $prod->update_meta_data( '_dp_base_product_id', $bid );",
+    "3697: WHERE pm.meta_key='_dp_base_product_id'\" );",
+    "3708: 'tipas' => get_post_meta( $pid, '_dp_base_product_id', true ) ? 'dp' : 'mnm',"
+   ],
+   "/plugins/wc-venipak-shipping/includes/class-woocommerce-shopup-venipak-shipping.php": [],
+   "/plugins/woo-payment-gateway-paysera/src/Entity/abstract-paysera-delivery-gateway.php": [],
+   "/plugins/woo-payment-gateway-paysera/src/Front/PayseraDeliveryFrontHtml.php": [],
+   "/plugins/woo-payment-gateway-paysera/src/PayseraInit.php": [],
+   "/plugins/woocommerce/includes/class-wc-shipping.php": [],
+   "/ps-backups/petshop-rinkiniai-v143-BACKUP-2026-09-02.php": [
+    "137: *   - keliu dropship tiekeju prekes viename rinkinyje (dvi siuntos)",
+    "148: *   B) TA PATI PREKE x N -> „Daugiau=pigiau\" pakas (`simple` + `_dp_base_product_id`",
+    "206: add_filter( 'woocommerce_package_rates', array( __CLASS__, 'pastomato_sargas' ), 100, 2 );",
+    "396: || ( get_post_meta( $pid, '_dp_base_product_id', true ) !== '' );",
+    "401: if ( ! in_array( $raktas, $leisti, true ) ) { unset( $tabs[ $raktas ] ); }",
+    "444: if ( mb_strpos( $tekstas, $z ) !== false ) { unset( $rates[ $raktas ] ); break; }",
+    "459: || ( get_post_meta( $post->ID, '_dp_base_product_id', true ) !== '' );",
+    "561: if ( get_post_meta( $pid, '_dp_base_product_id', true ) ) { return; }   /* DP tvarko 570 */",
+    "869: if ( get_post_meta( $pid, '_dp_base_product_id', true ) ) { return $kesas[ $pid ] = true; }",
+    "1203: $ids = $wpdb->get_col( \"SELECT post_id FROM {$p}postmeta WHERE meta_key='_dp_base_product_id'\" );",
+    "1210: $bid  = (int) get_post_meta( $pid, '_dp_base_product_id', true );",
+    "1631: 'sand'  => strtoupper( (string) get_post_meta( (int) $cid, '_ps_sandelis', true ) ?: 'AV' ),",
+    "1985: $naujo = strtolower( (string) get_post_meta( $pid, '_ps_sandelis', true ) ?: 'av' );",
+    "1987: $s = strtolower( (string) get_post_meta( (int) $cid, '_ps_sandelis', true ) ?: 'av' );",
+    "2467: $dp_baze = $saltinis ? (int) get_post_meta( $saltinis, '_dp_base_product_id', true ) : 0;",
+    "2824: if(s.mix) h+='<div class=\"psr-perspejimas y\">Rinkinyje kelių dropship tiekėjų prekės ('+s.sand.join(', ').toUpperCase()+') — klientui išeis kelios siuntos.</div",
+    "3386: if ( $esamas && ! get_post_meta( $id, '_dp_base_product_id', true ) ) {",
+    "3412: $prod->update_meta_data( '_dp_base_product_id', $bid );",
+    "3610: WHERE pm.meta_key='_dp_base_product_id'\" );",
+    "3621: 'tipas' => get_post_meta( $pid, '_dp_base_product_id', true ) ? 'dp' : 'mnm',"
+   ],
+   "/themes/flatsome-child/functions.php": []
+  }
+ },
+ "v": "dep-190443",
+ "kurimas": 200,
+ "sid": 6980,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
