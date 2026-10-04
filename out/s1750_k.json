@@ -1,0 +1,152 @@
+{
+ "1": {
+  "18590": "",
+  "36002": "iki-50kg",
+  "v": "S1750k",
+  "klases": [
+   {
+    "slug": "iki-50kg",
+    "count": "234"
+   },
+   {
+    "slug": "50-70kg",
+    "count": "0"
+   },
+   {
+    "slug": "70-100kg",
+    "count": "0"
+   },
+   {
+    "slug": "100-200kg",
+    "count": "0"
+   }
+  ],
+  "dp_viso": 235,
+  "dp_skirtumai": {
+   " → pakas 'iki-50kg'": 218
+  },
+  "pvz": [
+   [
+    "35096",
+    "16302"
+   ],
+   [
+    "35098",
+    "16311"
+   ],
+   [
+    "35099",
+    "19098"
+   ]
+  ],
+  "zonos": [
+   [
+    "Neringos savivaldybe",
+    "shopup_venipak_shipping_pickup_method",
+    9,
+    {
+     "ignore_shipping_classes": "[]"
+    }
+   ],
+   [
+    "Neringos savivaldybe",
+    "shopup_venipak_shipping_courier_method",
+    10,
+    {
+     "ignore_shipping_classes": "[]"
+    }
+   ],
+   [
+    "Neringos savivaldybe",
+    "woo_lithuaniapost_lpexpress_terminal",
+    13,
+    {
+     "cost": "flat",
+     "fixed_cost": "1,78",
+     "free_shipping_cost": "30"
+    }
+   ],
+   [
+    "Lietuva",
+    "shopup_venipak_shipping_pickup_method",
+    3,
+    {
+     "min_amount_for_free_shipping": "30",
+     "ignore_shipping_classes": "[]"
+    }
+   ],
+   [
+    "Lietuva",
+    "shopup_venipak_shipping_courier_method",
+    2,
+    {
+     "ignore_shipping_classes": "[\"235\",\"236\",\"237\"]"
+    }
+   ],
+   [
+    "Lietuva",
+    "shopup_venipak_shipping_courier_method",
+    6,
+    {
+     "minimum_weight": "50",
+     "ignore_shipping_classes": "[\"234\",\"236\",\"237\"]"
+    }
+   ],
+   [
+    "Lietuva",
+    "shopup_venipak_shipping_courier_method",
+    7,
+    {
+     "minimum_weight": "70",
+     "ignore_shipping_classes": "[\"234\",\"235\",\"237\"]"
+    }
+   ],
+   [
+    "Lietuva",
+    "shopup_venipak_shipping_courier_method",
+    8,
+    {
+     "minimum_weight": "100",
+     "ignore_shipping_classes": "[\"234\",\"235\",\"236\"]"
+    }
+   ],
+   [
+    "Lietuva",
+    "woo_lithuaniapost_lpexpress_terminal",
+    12,
+    {
+     "cost": "flat",
+     "fixed_cost": "1,78",
+     "free_shipping_cost": "30"
+    }
+   ],
+   [
+    "Lietuva",
+    "woo_lithuaniapost_lpexpress_terminal",
+    15,
+    {
+     "cost": "weight",
+     "weights_costs_0": "3,30",
+     "weights_costs_1": "6,60",
+     "weights_costs_2": "9,90",
+     "weights_costs_3": "20,65"
+    }
+   ],
+   [
+    "Baltijos šalys, be LIetuvos",
+    "shopup_venipak_shipping_pickup_method",
+    5,
+    {
+     "ignore_shipping_classes": "[]"
+    }
+   ]
+  ]
+ },
+ "v": "dep-190651",
+ "kurimas": 200,
+ "sid": 6981,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
