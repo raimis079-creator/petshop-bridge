@@ -1,0 +1,23 @@
+{
+ "1": {
+  "v": "S1750e",
+  "f": "\tpublic static function maisto_uzsakymas( $o ) {\n\t\tglobal $wpdb;\n\t\t$t   = $wpdb->prefix . 'ps_refill_tracking';\n\t\t$ids = array();\n\t\tforeach ( $o->get_items() as $it ) {\n\t\t\t$ids[] = (int) $it->get_product_id();\n\t\t\t$b = (int) get_post_meta( (int) $it->get_product_id(), '_dp_base_product_id', true );\n\t\t\tif ( $b ) { $ids[] = $b; }\n\t\t}\n\t\t$ids = array_values( array_filter( array_unique( $ids ) ) );\n\t\tif ( ! $ids ) { return false; }\n\t\t$uid = (int) $o->get_customer_id();\n\t\t$in  = implode( ',', array_map( 'intval', $ids ) );\n\t\t$n   = $uid\n\t\t\t? (int) $wpdb->get_var( $wpdb->prepare( \"SELECT COUNT(*) FROM $t WHERE user_id=%d AND product_id IN ($in)\", $uid ) )\n\t\t\t: (int) $wpdb->get_var( $wpdb->prepare( \"SELECT COUNT(*) FROM $t WHERE last_order_id=%d\", $o->get_id() ) );\n\t\treturn $n > 0;\n\t}\n}\nPetshop_Pakartojimo_Grandine::init();\n",
+  "rt": [
+   {
+    "id": "93",
+    "user_id": "5817",
+    "product_id": "18587",
+    "last_order_id": "35953",
+    "status": "active",
+    "predicted_empty_date": "2026-11-30"
+   }
+  ]
+ },
+ "v": "dep-184701",
+ "kurimas": 200,
+ "sid": 6975,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
