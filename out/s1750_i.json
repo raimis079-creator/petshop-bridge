@@ -1,0 +1,135 @@
+{
+ "1": {
+  "v": "S1750i",
+  "partijos_cols": "id,product_id,gauta,kiekis_gautas,kiekis_liko,savikaina_eur,savikaina_orig,valiuta,kursas,geriausia_iki,tiekejas,importuota,tiekimas_id,pastaba,sukurta,user_id,atsaukta",
+  "partijos_18590": [
+   {
+    "id": "3897",
+    "product_id": "18590",
+    "gauta": "2026-09-07",
+    "kiekis_gautas": "5",
+    "kiekis_liko": "5",
+    "savikaina_eur": "13.1800",
+    "savikaina_orig": null,
+    "valiuta": "EUR",
+    "kursas": "1.000000",
+    "geriausia_iki": null,
+    "tiekejas": "VF",
+    "importuota": "0",
+    "tiekimas_id": null,
+    "pastaba": "Fizinis likutis (Raimio Excel, S1636)",
+    "sukurta": "2026-09-07 22:09:58",
+    "user_id": "0",
+    "atsaukta": "0"
+   }
+  ],
+  "lent": {
+   "gaj6_ps_av_zurnalas": "id,operacija,product_id,laukas,buvo,tapo,pokytis,priezastis,user_id,sukurta,atsaukta"
+  },
+  "jud": {
+   "gaj6_ps_av_zurnalas": [
+    {
+     "id": "902",
+     "operacija": "KN26090819492724",
+     "product_id": "18590",
+     "laukas": "_manual_price_override",
+     "buvo": null,
+     "tapo": "yes",
+     "pokytis": null,
+     "priezastis": "kaina",
+     "user_id": "1",
+     "sukurta": "2026-09-08 22:49:27",
+     "atsaukta": "0"
+    },
+    {
+     "id": "901",
+     "operacija": "KN26090819492724",
+     "product_id": "18590",
+     "laukas": "_regular_price",
+     "buvo": "20.89",
+     "tapo": "21.95",
+     "pokytis": null,
+     "priezastis": "kaina",
+     "user_id": "1",
+     "sukurta": "2026-09-08 22:49:27",
+     "atsaukta": "0"
+    }
+   ]
+  },
+  "snip567": {
+   "name": "Petshop Daugiau=Pigiau Stock Sync v1.3",
+   "active": "1",
+   "eil": [
+    "3: * v1.3 (S1676): eilutes, kurių šaltinis AV (`_ps_source=av`), tvarko AV variklis (petshop-av-reduce v1.2)",
+    "5: * Custom mechanizmas: \"pack\" produktai (fiksuoto kiekio kartotiniai) neturi savo",
+    "13: * Pack produktas turi buti sukurtas su manage_stock=false.",
+    "17: add_filter('woocommerce_product_is_in_stock', function($in_stock, $product){",
+    "19: if (!$base_id) return $in_stock;",
+    "21: if ($pack_qty <= 0) return $in_stock;",
+    "24: $base_stock = (int) $base->get_stock_quantity();",
+    "25: return $base_stock >= $pack_qty;",
+    "29: add_filter('woocommerce_get_stock_html', function($html, $product){",
+    "36: $base_stock = (int) $base->get_stock_quantity();",
+    "37: if ($base_stock >= $pack_qty) {",
+    "53: $base_stock = (int) $base->get_stock_quantity();",
+    "55: if ($base_stock < $needed) {",
+    "63: add_action('woocommerce_reduce_order_stock', function($order){",
+    "65: if ($order->get_meta('_dp_stock_reduced') === 'yes') return;",
+    "66: $order->update_meta_data('_dp_stock_reduced', 'yes');",
+    "67: $order->save();",
+    "77: if ($item->get_meta('_ps_source') === 'av') continue; // v1.3: AV variklis",
+    "78: $reduce_by = $pack_qty * $item->get_quantity();",
+    "79: wc_update_product_stock($base, $reduce_by, 'decrease');",
+    "82: 'Daugiau=pigiau: pack \"%s\" (x%d) nurašė %d vnt. iš bazinio produkto #%d (%s).',",
+    "83: $product->get_name(), $item->get_quantity(), $reduce_by, $base_id, $base->get_name()",
+    "89: add_action('woocommerce_restore_order_stock', function($order){",
+    "91: if ($order->get_meta('_dp_stock_reduced') !== 'yes') return;",
+    "92: $order->update_meta_data('_dp_stock_reduced', 'no');",
+    "93: $order->save();",
+    "103: if ($item->get_meta('_ps_source') === 'av') continue; // v1.3: AV variklis",
+    "105: wc_update_product_stock($base, $restore_by, 'increase');"
+   ]
+  },
+  "lock_snip": [
+   {
+    "id": "582",
+    "name": "Petshop LP Terminalu Svorio Riba v1 (29.90kg)",
+    "active": "1"
+   },
+   {
+    "id": "6978",
+    "name": "TEMP PS dep-190101",
+    "active": "0"
+   },
+   {
+    "id": "6979",
+    "name": "TEMP PS dep-190256",
+    "active": "1"
+   }
+  ],
+  "lock_failai": [],
+  "lock_kodas_582": [
+   "12: if (strpos($rate->get_method_id(), 'lpexpress_terminal') !== false) {",
+   "14: if (is_array($s) && isset($s['plan']) && $s['plan'] === 'TERMINAL') { unset($rates[$rid]); }"
+  ],
+  "lock_kodas_6978": [
+   "6: $mk=['_stock','_manage_stock','_stock_status','_own_stock_qty','_vf_qty','_zb_qty','_active_fulfillment_source','_ps_sandelis','_dp_base_product_id','_dp_pack_qty','_dp_n",
+   "13: $lns=[]; foreach($L as $i=>$x){ if(preg_match('/dropship|lpexpress|lp_express|omniva|venipak|ar_misrus|_ps_source|parinkti|sandel/i',$x) && strlen(trim($x))>3) $lns[]=($i",
+   "16: // kiti uzsakymai nuo 09-20: dropship saltinis + ne Venipak siuntimas",
+   "19: $src=[]; foreach($o->get_items() as $it){ $s=$it->get_meta('_ps_source'); if($s) $src[]=$s.($it->get_meta('_ps_carrier')?'/'.$it->get_meta('_ps_carrier'):''); }",
+   "20: $ds=false; foreach($src as $s){ if(preg_match('/^(vf|zb|ambrosia|quattro|prins|belcor)/',$s)) $ds=true; }",
+   "21: if($ds && $sm && stripos($sm,'venipak')===false) $r['konfliktai'][]=[$o->get_order_number(),$o->get_status(),$o->get_date_created()->date('m-d H:i'),$sm,implode(',',$src)"
+  ],
+  "lock_kodas_6979": [
+   "11: if($sn){ $L=explode(\"\\n\",$sn['code']); $x=[]; foreach($L as $i=>$l){ if(preg_match('/wc_update_product_stock|_own_stock_qty|_stock|nurash|nurašė|reduce|set_stock|AV|vf|so",
+   "16: foreach($r['lock_snip'] as $s){ $code=$wpdb->get_var($wpdb->prepare(\"SELECT code FROM {$P}snippets WHERE id=%d\",$s['id'])); $L=explode(\"\\n\",$code); $x=[]; foreach($L as $"
+  ]
+ },
+ "v": "dep-190256",
+ "kurimas": 200,
+ "sid": 6979,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
