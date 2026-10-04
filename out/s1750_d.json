@@ -1,0 +1,74 @@
+{
+ "1": {
+  "v": "S1750d",
+  "rt_cols": "id,user_id,product_id,pet_id,last_order_id,last_purchase_date,purchase_count,avg_interval_days,predicted_empty_date,confidence,status,created_at,updated_at,last_feedback,last_feedback_at,feedback_cycle",
+  "rt_5792": [
+   {
+    "id": "54",
+    "u": "5792",
+    "p": "18084",
+    "status": "active",
+    "d": "2026-11-21"
+   },
+   {
+    "id": "55",
+    "u": "5792",
+    "p": "21329",
+    "status": "notified",
+    "d": "2026-09-23"
+   },
+   {
+    "id": "56",
+    "u": "5792",
+    "p": "21671",
+    "status": "notified",
+    "d": "2026-10-09"
+   },
+   {
+    "id": "261",
+    "u": "5881",
+    "p": "21671",
+    "status": "active",
+    "d": "2026-10-12"
+   },
+   {
+    "id": "285",
+    "u": "5890",
+    "p": "21671",
+    "status": "active",
+    "d": "2026-11-24"
+   }
+  ],
+  "o35945": {
+   "cust": 0,
+   "created_via": "checkout",
+   "pm": "paysera"
+  },
+  "o35953": {
+   "cust": 5817,
+   "created_via": "checkout",
+   "pm": "paysera"
+  },
+  "kodas": [
+   [
+    "wp-content/mu-plugins/petshop-pakartojimo-grandine.php",
+    "grandine_maistas",
+    131,
+    "\t\t}\n\t\treturn $result;\n\t}\n\n\t/** (3) post_purchase_14d: ne maisto užsakymui ir tik jei klientas po to dar nepirko. */\n\tpublic static function po_14d( $result, $flow, $flow_class, $email, $context = array() ) {\n\t\tif ( 'post_purchase_14d' !== $flow ) { return $result; }\n\t\tif ( is_array( $result ) && isset( $result['allowed'] ) && ! $result['allowed'] ) { return $result; }\n\t\t$oid = isset( $context['order_id'] ) ? (int) $context['order_id'] : 0;\n\t\tif ( ! $oid ) { return $result; }\n\t\t$o = wc_get_order( $oid );\n\t\tif ( ! $o ) { return $result; }\n\t\tif ( self::maisto_uzsakymas( $o ) ) {\n\t\t\treturn array( 'allowed' => false, 'reason' => 'grandine_maistas', 'terminal' => true );\n\t\t}\n\t\t$ts = $o->get_date_created() ? $o->get_date_created()->getTimestamp() : 0;\n\t\tif ( $ts && self::uzsakymai_po( (int) $o->get_customer_id(), $o->get_billing_email() ?: $email, $ts, $oid ) ) {\n\t\t\treturn array( 'allowed' => false, 'reason' => 'jau_pirko_po', 'terminal' => true );"
+   ],
+   [
+    "wp-content/mu-plugins/petshop-pakartoti.php",
+    "pakartoti_jau_siustas",
+    83,
+    "\t\tif ( 'refill_due' !== $flow ) return $result;\n\t\tif ( is_array( $result ) && isset( $result['allowed'] ) && ! $result['allowed'] ) return $result;\n\t\tglobal $wpdb; $p = $wpdb->prefix;\n\t\t$uid = isset( $context['user_id'] ) ? (int) $context['user_id'] : 0; $pid = isset( $context['product_id'] ) ? (int) $context['product_id'] : 0;\n\t\tif ( ! $uid ) { $u = get_user_by( 'email', $email ); $uid = $u ? (int) $u->ID : 0; }\n\t\t$g = ( $uid && $pid ) ? self::grupe( $uid, $pid ) : null;\n\t\tif ( ! $g ) return $result;\n\t\tif ( empty( $g['prekes'] ) ) return array( 'allowed' => false, 'reason' => 'preke_nera_sandelyje', 'terminal' => false );\n\t\t// jau siųstas to paties užsakymo refill_due?\n\t\t$siusti = $wpdb->get_col( $wpdb->prepare( \"SELECT context_json FROM {$p}ps_email_jobs WHERE flow='refill_due' AND status IN ('sent','sending','uncertain') AND recipient_email=%s AND COALES\n\t\tforeach ( $siusti as $cj ) {\n\t\t\t$c = json_decode( (string) $cj, true ); $spid = is_array( $c ) && isset( $c['product_id'] ) ? (int) $c['product_id'] : 0; if ( ! $spid || $spid === $pid ) continue;\n\t\t\t$soid = (int) $wpdb->get_var( $wpdb->prepare( \"SELECT last_order_id FROM {$p}ps_refill_tracking WHERE user_id=%d AND product_id=%d\", $uid, $spid ) );\n\t\t\tif ( $soid && $soid === (int) $g['order_id'] ) return array( 'allowed' => false, 'reason' => 'pakartoti_jau_siustas', 'terminal' => true );\n\t\t}\n\t\treturn $result;\n\t}\n"
+   ]
+  ]
+ },
+ "v": "dep-184536",
+ "kurimas": 200,
+ "sid": 6974,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
