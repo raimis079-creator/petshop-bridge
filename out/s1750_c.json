@@ -1,0 +1,174 @@
+{
+ "1": {
+  "v": "S1750c",
+  "be_provider_id_siandien": 0,
+  "delivered_siandien": 0,
+  "j652": {
+   "job": {
+    "id": "652",
+    "job_key": "post_purchase_14d:35945",
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "skip_reason": null,
+    "recipient_email": "eli…@gmail.com",
+    "recipient_user_id": null,
+    "subject": "Ankstesnį užsakymą galite pakartoti",
+    "provider": "sender",
+    "provider_message_id": "azv2GY-.eE9p2l-V7VXLOB-RL0DM6wOGWVK-2zKJdo",
+    "attempts": "1",
+    "created_at": "2026-09-17 16:39:51",
+    "scheduled_at": "2026-10-04 07:00:00",
+    "sent_at": "2026-10-04 07:04:17",
+    "decision_at": "2026-10-04 07:04:17",
+    "context_json": "{\"order_id\":35945}"
+   },
+   "uzs": [
+    "1047",
+    "completed",
+    "09-14 19:56",
+    56.99,
+    [
+     "Exclusion Hypoallergenic mažų veislių šunų ma ×1 [Sausas maistas šunims]"
+    ]
+   ],
+   "to_pacio_pirkimai_po": [],
+   "kiti_laiskai_gavejui": [
+    {
+     "id": "650",
+     "flow": "post_purchase_2d",
+     "status": "sent",
+     "sr": "",
+     "t": "09-17 19:44"
+    },
+    {
+     "id": "651",
+     "flow": "post_purchase_7d",
+     "status": "sent",
+     "sr": "",
+     "t": "09-22 19:08"
+    },
+    {
+     "id": "652",
+     "flow": "post_purchase_14d",
+     "status": "sent",
+     "sr": "",
+     "t": "10-04 10:04"
+    }
+   ]
+  },
+  "j646": {
+   "job": {
+    "id": "646",
+    "job_key": "post_purchase_14d:35953",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "skip_reason": "grandine_maistas",
+    "recipient_email": "vio…@gmail.com",
+    "recipient_user_id": "5817",
+    "subject": null,
+    "provider": null,
+    "provider_message_id": null,
+    "attempts": "0",
+    "created_at": "2026-09-17 16:39:51",
+    "scheduled_at": "2026-10-04 07:00:00",
+    "sent_at": null,
+    "decision_at": "2026-10-04 07:04:16",
+    "context_json": "{\"order_id\":35953}"
+   },
+   "uzs": [
+    "1055",
+    "completed",
+    "09-15 10:16",
+    56.99,
+    [
+     "Exclusion Hypoallergenic mažų veislių šunų ma ×1 [Sausas maistas šunims]"
+    ]
+   ],
+   "to_pacio_pirkimai_po": [],
+   "kiti_laiskai_gavejui": [
+    {
+     "id": "644",
+     "flow": "post_purchase_2d",
+     "status": "sent",
+     "sr": "",
+     "t": "09-17 19:44"
+    },
+    {
+     "id": "645",
+     "flow": "post_purchase_7d",
+     "status": "sent",
+     "sr": "",
+     "t": "09-22 19:08"
+    },
+    {
+     "id": "646",
+     "flow": "post_purchase_14d",
+     "status": "skipped",
+     "sr": "grandine_maistas",
+     "t": "10-04 10:04"
+    },
+    {
+     "id": "821",
+     "flow": "browse_abandoned",
+     "status": "skipped",
+     "sr": "consent_missing",
+     "t": "09-23 14:38"
+    }
+   ]
+  },
+  "zin_1218": [
+   {
+    "id": "533",
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "sr": "",
+    "job_key": "post_purchase_2d:35881",
+    "t": "09-13 20:43",
+    "a": "1"
+   },
+   {
+    "id": "534",
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "sr": "",
+    "job_key": "post_purchase_7d:35881",
+    "t": "09-18 20:38",
+    "a": "1"
+   },
+   {
+    "id": "535",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sr": "deferral_expired",
+    "job_key": "post_purchase_14d:35881",
+    "t": "09-27 20:44",
+    "a": "0"
+   },
+   {
+    "id": "679",
+    "flow": "refill_due",
+    "status": "sent",
+    "sr": "",
+    "job_key": "refill_due:5792:21329:2026-09-23",
+    "t": "10-02 09:04",
+    "a": "1"
+   },
+   {
+    "id": "1218",
+    "flow": "refill_due",
+    "status": "skipped",
+    "sr": "pakartoti_jau_siustas",
+    "job_key": "refill_due:5792:21671:2026-10-09",
+    "t": "10-04 11:04",
+    "a": "0"
+   }
+  ]
+ },
+ "v": "dep-184350",
+ "kurimas": 200,
+ "sid": 6973,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
