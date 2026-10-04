@@ -1,5 +1,77 @@
 {
- "v": "dep-192153",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "1": {
+  "v": "S1750n",
+  "petshop-av-reduce.php": {
+   "md5": "03182a2a3ba3",
+   "eil": [
+    "7: *   `_ps_av_reduced_qty` = baziniais vienetais. Snippet 567 v1.3 AV eilutes praleidžia.",
+    "86: $item->update_meta_data( '_ps_av_reduced_qty', $qty );",
+    "97: $item->update_meta_data( '_ps_av_reduced_qty', $qty );",
+    "121: $qty = (int) $item->get_meta( '_ps_av_reduced_qty' );"
+   ]
+  },
+  "petshop-av-stock.php": {
+   "md5": "3a1585edd740",
+   "eil": [
+    "96: public static function qty( $product_id ) {",
+    "109: public static function decrease( $product_id, $by, $priezastis = '' ) {",
+    "122: public static function increase( $product_id, $by, $priezastis = '' ) {"
+   ]
+  },
+  "petshop-av-order.php": {
+   "md5": "fd7ed33561ce",
+   "eil": []
+  },
+  "dp_av_eil": [
+   {
+    "o": "36604",
+    "i": "2926",
+    "pid": "36339",
+    "q": "1",
+    "red": "2"
+   },
+   {
+    "o": "36600",
+    "i": "2912",
+    "pid": "35852",
+    "q": "1",
+    "red": "8"
+   },
+   {
+    "o": "36556",
+    "i": "2745",
+    "pid": "36381",
+    "q": "1",
+    "red": "2"
+   },
+   {
+    "o": "36258",
+    "i": "2505",
+    "pid": "35098",
+    "q": "1",
+    "red": "20"
+   },
+   {
+    "o": "36249",
+    "i": "2495",
+    "pid": "35096",
+    "q": "1",
+    "red": "20"
+   },
+   {
+    "o": "36249",
+    "i": "2496",
+    "pid": "35306",
+    "q": "1",
+    "red": "20"
+   }
+  ]
+ },
+ "v": "dep-192556",
+ "kurimas": 200,
+ "sid": 6984,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
 }
