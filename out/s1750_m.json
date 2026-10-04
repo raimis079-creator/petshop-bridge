@@ -1,0 +1,54 @@
+{
+ "1": {
+  "v": "S1750m",
+  "avs_36002": null,
+  "avs_18590": 5,
+  "iv_lent": "gaj6_ps_uzsakymu_ivykiai",
+  "ivykiai": [
+   {
+    "id": "2501",
+    "laikas": "2026-10-03 22:15:32",
+    "diena": "2026-10-04",
+    "uzsakymas": "36647",
+    "eilute": "0",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "rezultatas": "ok",
+    "busena": "",
+    "kanalas": "auto",
+    "kas": "0",
+    "kas_vardas": "sistema",
+    "pries": "{\"status\":\"pending\"}",
+    "po": "{\"status\":\"processing\"}",
+    "pastaba": "mokėjimas / svetainė"
+   }
+  ],
+  "pastabos": [
+   "10-04 01:15 Paysera: Naujo užsakymo kūrimo būsena",
+   "10-04 01:15 Email \"Užsakymas vykdomas\" sent.",
+   "10-04 01:15 Email \"Naujas užsakymas\" sent.",
+   "10-04 01:15 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas."
+  ],
+  "eil_meta": {
+   "3008": {
+    "_ps_savikaina_vnt": "28.7130",
+    "_ps_savikaina_saltinis": "pardavimai",
+    "_ps_kaina_atskirai_vnt": "21.9500",
+    "_ps_source": "vf",
+    "_ps_carrier": "venipak",
+    "_ps_source_qty": "1",
+    "_ps_source_at": "2026-10-04 01:14:17",
+    "_ps_source_reason": "dropship pirma (AV turi 2, bet užsakymas ne mišrus): tiekėjas vf turi 366; DP pakas ×2 (bazinė #18590): AV turi 5, reiki"
+   }
+  },
+  "own_18590": "5",
+  "stock_36002": ""
+ },
+ "v": "dep-191718",
+ "kurimas": 200,
+ "sid": 6983,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
