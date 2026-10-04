@@ -1,0 +1,116 @@
+{
+ "1": {
+  "v": "S1750f",
+  "jobs": [
+   {
+    "job": "766",
+    "e": "ivo…@gmail.com",
+    "sprendimas": "10-04 11:14",
+    "pirmas": [
+     "1077",
+     "09-16 10:04",
+     42.03
+    ],
+    "veliau": [
+     [
+      "1179",
+      "completed",
+      "09-25 10:13",
+      47.31,
+      "",
+      {
+       "s": "google",
+       "m": "cpc",
+       "c": "23346712074",
+       "k": "mokamas"
+      },
+      [
+       "Antos didelis kaulas šunims 2,56kg ×4",
+       "Žaislas šuniui - Guminis kvepiantis kaul ×1"
+      ]
+     ]
+    ],
+    "pirmo_prekes": [
+     "Balta stirnos koja, 1 vnt. ×10",
+     "Antos didelis kaulas šunims 2,56kg ×1",
+     "Balta jaučio ausis, 1 vnt. ×4",
+     "Baltos vištos kojelės, 5 vnt. ×4",
+     "Lašišų žuvų taukai , 500ml ×1"
+    ],
+    "laiskai": [
+     {
+      "id": "584",
+      "flow": "cart_abandoned",
+      "status": "skipped",
+      "sr": "consent_missing",
+      "t": "09-16 12:03",
+      "subj": ""
+     },
+     {
+      "id": "764",
+      "flow": "post_purchase_2d",
+      "status": "sent",
+      "sr": "",
+      "t": "09-20 11:43",
+      "subj": "Jei ko prireiktų – parašykite mums"
+     },
+     {
+      "id": "765",
+      "flow": "post_purchase_7d",
+      "status": "sent",
+      "sr": "",
+      "t": "09-25 11:08",
+      "subj": "Kaip tiko jūsų pirkinys?"
+     },
+     {
+      "id": "941",
+      "flow": "cart_abandoned",
+      "status": "skipped",
+      "sr": "consent_missing",
+      "t": "09-25 12:18",
+      "subj": ""
+     },
+     {
+      "id": "1106",
+      "flow": "post_purchase_2d",
+      "status": "sent",
+      "sr": "",
+      "t": "10-01 11:43",
+      "subj": "Jei ko prireiktų – parašykite mums"
+     },
+     {
+      "id": "766",
+      "flow": "post_purchase_14d",
+      "status": "skipped",
+      "sr": "jau_pirko_po",
+      "t": "10-04 11:14",
+      "subj": ""
+     },
+     {
+      "id": "1107",
+      "flow": "post_purchase_7d",
+      "status": "pending",
+      "sr": "",
+      "t": "10-06 11:36",
+      "subj": ""
+     },
+     {
+      "id": "1108",
+      "flow": "post_purchase_14d",
+      "status": "pending",
+      "sr": "",
+      "t": "10-13 11:36",
+      "subj": ""
+     }
+    ]
+   }
+  ]
+ },
+ "v": "dep-185522",
+ "kurimas": 200,
+ "sid": 6976,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
