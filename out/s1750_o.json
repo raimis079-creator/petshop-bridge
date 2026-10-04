@@ -1,0 +1,43 @@
+{
+ "1": {
+  "v": "S1750o",
+  "f": "1",
+  "bak_kelias": "~/ps-archyvas/petshop-darbalaukis.php.bak_s1750",
+  "md5_dabar": "f4f975acfe5bf136bb2bd2125cb20aad",
+  "tok": "ok"
+ },
+ "2": {
+  "v": "S1750o",
+  "f": "2",
+  "bak_kelias": "~/ps-archyvas/petshop-darbalaukis.php.bak_s1750",
+  "md5_dabar": "f4f975acfe5bf136bb2bd2125cb20aad",
+  "tok": "ok",
+  "bak_md5": "f4f975acfe5bf136bb2bd2125cb20aad",
+  "md5_po": "4cb216478474ed8a8fffae28703a5cc7",
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/wp-admin/admin-ajax.php": [
+    400,
+    0
+   ],
+   "/wp-json/": [
+    200,
+    0
+   ]
+  }
+ },
+ "v": "dep-192909",
+ "kurimas": 200,
+ "sid": 6985,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
