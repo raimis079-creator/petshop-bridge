@@ -1,0 +1,47 @@
+{
+ "3": {
+  "v": "S1750o",
+  "f": "3",
+  "bak_kelias": "~/ps-archyvas/petshop-darbalaukis.php.bak_s1750",
+  "md5_dabar": "4cb216478474ed8a8fffae28703a5cc7",
+  "ver": "3.47",
+  "dp_baze_36002": [
+   18590,
+   2
+  ],
+  "dp_baze_18590": [
+   18590,
+   1
+  ],
+  "eil": {
+   "3008": {
+    "q": 1,
+    "pid": 36002,
+    "k": "tiesiai",
+    "av_qty": 2,
+    "galimi": {
+     "av": true,
+     "tiesiai": false,
+     "i_av": true
+    },
+    "lock": ""
+   }
+  },
+  "vez": "lp",
+  "paid": true,
+  "av_18590": 5,
+  "own_18590": "5",
+  "eilute_nepakeista": "vf",
+  "hb": {
+   "/": 200,
+   "/kasa/": 302
+  }
+ },
+ "v": "dep-193047",
+ "kurimas": 200,
+ "sid": 6986,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
