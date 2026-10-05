@@ -1,0 +1,271 @@
+{
+ "1": {
+  "v": "S1753a",
+  "meniu": [
+   [
+    "/mu-plugins/petshop-analitika-langas.php",
+    34,
+    "public static function meniu() { add_submenu_page( self::TEVAS, 'Analitika', 'Analitika', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) ); } protected static function d() { $d = isset( $_GET['d'] ) ? (int) $_GET['d'] : 30; return in_array( $d, array( 30, 90 ), true ) ? $d : 30; } protected static function "
+   ],
+   [
+    "/mu-plugins/petshop-rinkiniu-ataskaita.php",
+    40,
+    "add_submenu_page( self::PARENT, 'Surenkami rinkiniai', 'Surenkami rinkiniai', self::CAP, self::SLUG, array( __CLASS__, 'render' ) );"
+   ],
+   [
+    "/mu-plugins/petshop-anketos-ataskaita.php",
+    105,
+    "add_submenu_page( self::PARENT, 'Augintinio anketa', 'Augintinio anketa', self::CAP, self::SLUG, array( __CLASS__, 'render' ) ); }"
+   ],
+   [
+    "/mu-plugins/petshop-av-dropship.php",
+    233,
+    "add_submenu_page( null, 'Perduoti tiekėjams', 'Perduoti tiekėjams', 'edit_shop_orders', 'ps-dropship', [ __CLASS__, 'puslapis' ] ); add_submenu_page( 'ps-desk', 'Laiškai', 'Laiškai', 'edit_shop_orders', 'ps-laiskai', [ __CLASS__, 'archyvo_puslapis' ] );"
+   ],
+   [
+    "/mu-plugins/petshop-av-dropship.php",
+    235,
+    "add_submenu_page( 'ps-desk', 'Laiškai', 'Laiškai', 'edit_shop_orders', 'ps-laiskai', [ __CLASS__, 'archyvo_puslapis' ] ); add_submenu_page( 'woocommerce', 'Tiekėjų el. paštai', 'Tiekėjų el. paštai', 'manage_woocommerce', 'ps-dropship-nustatymai', [ __CLASS__, 'nustatymai' ] );"
+   ],
+   [
+    "/mu-plugins/petshop-av-dropship.php",
+    237,
+    "add_submenu_page( 'woocommerce', 'Tiekėjų el. paštai', 'Tiekėjų el. paštai', 'manage_woocommerce', 'ps-dropship-nustatymai', [ __CLASS__, 'nustatymai' ] ); }"
+   ],
+   [
+    "/mu-plugins/petshop-pet-kontraktas.php",
+    183,
+    "add_submenu_page( 'petshop-reports', 'Brand zodynas', 'Brand zodynas', 'manage_woocommerce', self::ADMIN_SLUG, array( __CLASS__, 'admin_render' ) ); }"
+   ],
+   [
+    "/mu-plugins/petshop-ataskaita-atsargos.php",
+    31,
+    "public static function meniu() { add_submenu_page( self::TEVAS, 'Atsargos ir pirkimas', 'Atsargos ir pirkimas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) ); } private static function a() { global $wpdb; return $wpdb->prefix . 'ps_fakt_atsargos_d'; } private static function e() { global $wpdb; return cl"
+   ],
+   [
+    "/mu-plugins/petshop-paruostu-ataskaita.php",
+    32,
+    "add_submenu_page( self::PARENT, 'Rinkiniai', 'Rinkiniai', self::CAP, self::SLUG, array( __CLASS__, 'render' ) );"
+   ],
+   [
+    "/mu-plugins/petshop-klientai.php",
+    191,
+    "add_menu_page( 'Petshop klientai', 'Petshop klientai', self::CAP, self::PSL, array( __CLASS__, 'ekranas' ), 'dashicons-groups', 56 ); add_submenu_page( self::PSL, 'Klientai', 'Klientai', self::CAP, self::PSL, array( __CLASS__, 'ekranas' ) ); foreach ( array( 'petshop-naujienlaiskiai' => 'Naujienlaiškiai ir kampanijos', 'petshop-"
+   ],
+   [
+    "/mu-plugins/petshop-klientai.php",
+    192,
+    "add_submenu_page( self::PSL, 'Klientai', 'Klientai', self::CAP, self::PSL, array( __CLASS__, 'ekranas' ) ); foreach ( array( 'petshop-naujienlaiskiai' => 'Naujienlaiškiai ir kampanijos', 'petshop-laiskai' => 'Laiškų šablonai', 'petshop-rezultatai' => 'Laiškų rezultatai' ) as $slug => $title ) { self::perkelti( 'petshop-langai', "
+   ],
+   [
+    "/mu-plugins/petshop-klientai.php",
+    208,
+    "add_submenu_page( self::PSL, isset( $it[3] ) ? $it[3] : $title, $title, $it[1], $slug, $cb ); return; } }"
+   ],
+   [
+    "/mu-plugins/petshop-seo.php",
+    496,
+    "add_submenu_page( self::TEVAS, 'SEO', 'SEO', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) ); } private static function lempa( $s ) { $c = array( 'zalia' => '#2e9e5b', 'gelt' => '#e0a800', 'raud' => '#c9302c', 'pilka' => '#9aa0a6' );"
+   ],
+   [
+    "/mu-plugins/petshop-ataskaita-lankomumas.php",
+    40,
+    "add_submenu_page( self::TEVAS, 'Lankomumas', 'Lankomumas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) ); } private static function t( $k ) { global $wpdb; return $wpdb->prefix . $k; }"
+   ],
+   [
+    "/mu-plugins/petshop-ataskaita-menuo.php",
+    29,
+    "public static function meniu() { add_submenu_page( self::TEVAS, 'Mėnesio uždarymas', 'Mėnesio uždarymas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) ); } private static function t( $k ) { global $wpdb; return $wpdb->prefix . $k; } private static function yra( $t ) { global $wpdb; return $wpdb->get_var( "
+   ],
+   [
+    "/mu-plugins/petshop-akcijos.php",
+    116,
+    "add_submenu_page( 'ps-katalogas', 'Akcijos', 'Akcijos', 'manage_woocommerce', 'ps-akcijos', array( __CLASS__, 'puslapis' ) );"
+   ],
+   [
+    "/mu-plugins/petshop-uzsakymu-ivykiai.php",
+    462,
+    "add_submenu_page( '', 'Užsakymų žurnalas', 'Žurnalas', 'edit_shop_orders', self::SLUG, array( __CLASS__, 'puslapis' ) ); } public static function puslapis() {"
+   ],
+   [
+    "/mu-plugins/petshop-ga4-serveris.php",
+    243,
+    "add_submenu_page( $parent, 'Kontrolė', 'Kontrolė', 'manage_options', self::PUSLAPIS, array( __CLASS__, 'langas' ) ); } public static function langas() { global $wpdb; $t = self::lentele();"
+   ],
+   [
+    "/mu-plugins/petshop-siuntu-laiskai.php",
+    233,
+    "add_submenu_page( '', 'Sekimo laiškas', 'Sekimo laiškas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) ); }"
+   ],
+   [
+    "/mu-plugins/petshop-rezultatai.php",
+    17,
+    "add_submenu_page( 'petshop-langai', 'Laiškų rezultatai', 'Laiškų rezultatai',"
+   ],
+   [
+    "/mu-plugins/petshop-ataskaita-prekes.php",
+    33,
+    "public static function meniu() { add_submenu_page( self::TEVAS, 'Prekių analizė', 'Prekių analizė', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) ); } private static function e() { global $wpdb; return class_exists( 'Petshop_Ist_Adapteris' ) ? Petshop_Ist_Adapteris::lentele( 'e' ) : $wpdb->prefix . 'ps_fak"
+   ],
+   [
+    "/mu-plugins/petshop-langai-admin.php",
+    69,
+    "add_menu_page( 'Petshop langai', 'Petshop langai', self::CAP, self::TEVAS, array( __CLASS__, 'ekranas_apzvalga' ), 'dashicons-screenoptions', 56 ); add_submenu_page( self::TEVAS, 'Apžvalga', 'Apžvalga', self::CAP, self::TEVAS, array( __CLASS__, 'ekranas_apzvalga' ) ); add_submenu_page( self::TEVAS, 'Laiškų šablonai', 'Laiškų šab"
+   ],
+   [
+    "/mu-plugins/petshop-langai-admin.php",
+    70,
+    "add_submenu_page( self::TEVAS, 'Apžvalga', 'Apžvalga', self::CAP, self::TEVAS, array( __CLASS__, 'ekranas_apzvalga' ) ); add_submenu_page( self::TEVAS, 'Laiškų šablonai', 'Laiškų šablonai', self::CAP, self::PSL_LAISKAI, array( __CLASS__, 'ekranas_laiskai' ) ); }"
+   ],
+   [
+    "/mu-plugins/petshop-langai-admin.php",
+    71,
+    "add_submenu_page( self::TEVAS, 'Laiškų šablonai', 'Laiškų šablonai', self::CAP, self::PSL_LAISKAI, array( __CLASS__, 'ekranas_laiskai' ) ); } protected static function nuoroda( $args = array() ) {"
+   ],
+   [
+    "/mu-plugins/petshop-av-sheets.php",
+    64,
+    "add_submenu_page( null, 'Surinkimo lapai', 'Surinkimo lapai', 'edit_shop_orders', 'ps-lapai', [ __CLASS__, 'puslapis' ] ); }"
+   ],
+   [
+    "/mu-plugins/petshop-ataskaita-klientai.php",
+    40,
+    "add_submenu_page( self::TEVAS, 'Klientų analizė', 'Klientų analizė', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) ); } /* ---------- pagalbos ---------- */"
+   ],
+   [
+    "/mu-plugins/petshop-fakt-siuntos.php",
+    889,
+    "add_submenu_page( self::TEVAS, 'Pristatymo tarifai', 'Pristatymo tarifai', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) ); }"
+   ],
+   [
+    "/mu-plugins/petshop-katalogas.php",
+    4955,
+    "add_menu_page( 'Petshop prekės', 'Petshop prekės', 'manage_woocommerce', 'ps-katalogas', array( __CLASS__, 'puslapis' ), 'dashicons-products', 3 );"
+   ],
+   [
+    "/mu-plugins/petshop-desk.php",
+    1035,
+    "add_menu_page( 'Petshop užsakymai', 'Petshop užsakymai', 'edit_shop_orders', self::SLUG, array( __CLASS__, 'puslapis' ), 'dashicons-clipboard', 2 ); }"
+   ],
+   [
+    "/mu-plugins/petshop-laukai.php",
+    1725,
+    "add_submenu_page( 'ps-katalogas', 'Surenkami rinkiniai', 'Surenkami rinkiniai', 'manage_woocommerce', 'ps-laukai', array( __CLASS__, 'puslapis' ) );"
+   ],
+   [
+    "/mu-plugins/petshop-prenumeratu-prognoze.php",
+    123,
+    "add_submenu_page($parent, 'Prenumeratu prognoze', 'Prognozes', 'manage_woocommerce', 'ps-prognoze', array(__CLASS__, 'puslapis')); } public static function puslapis() {"
+   ],
+   [
+    "/mu-plugins/petshop-darbalaukis.php",
+    517,
+    "add_menu_page( 'Petshop užsakymai', 'Petshop užsakymai', 'edit_shop_orders', self::SLUG, array( __CLASS__, 'puslapis' ), 'dashicons-clipboard', 2 ); } protected static function musu() { return is_admin() && isset( $_GET['page'] ) && self::SLUG === $_GET['page']; }"
+   ],
+   [
+    "/mu-plugins/petshop-gavimas.php",
+    202,
+    "add_submenu_page( 'ps-katalogas', 'Prekių gavimas', 'Gavimas', 'manage_woocommerce', 'ps-gavimas', array( __CLASS__, 'puslapis' ) );"
+   ],
+   [
+    "/mu-plugins/petshop-prenumeratos-langas.php",
+    34,
+    "add_submenu_page(self::tevas(), 'Prenumeratos', 'Prenumeratos', self::CAP, self::PSL, array(__CLASS__, 'ekranas')); } protected static function nuoroda($args = array()) {"
+   ],
+   [
+    "/mu-plugins/petshop-rinkiniai.php",
+    244,
+    "add_submenu_page( 'ps-katalogas', 'Rinkiniai', 'Rinkiniai', 'manage_woocommerce', self::SLUG, array( __CLASS__, 'puslapis' ) );"
+   ],
+   [
+    "/mu-plugins/petshop-islaidos.php",
+    194,
+    "add_submenu_page( self::TEVAS, 'Išlaidos ir nustatymai', 'Išlaidos ir nustatymai', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) ); }"
+   ],
+   [
+    "/mu-plugins/petshop-av-tiekimas.php",
+    418,
+    "add_submenu_page( 'ps-desk', 'Tiekimas', 'Tiekimas', 'edit_shop_orders', self::SLUG, array( __CLASS__, 'puslapis' ) ); }"
+   ],
+   [
+    "/mu-plugins/petshop-ataskaita-pardavimai.php",
+    300,
+    "add_submenu_page( self::TEVAS, 'Pardavimai ir pelnas', 'Pardavimai ir pelnas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) ); }"
+   ],
+   [
+    "/mu-plugins/petshop-atributai.php",
+    24,
+    "add_submenu_page( 'ps-katalogas', 'Atributai', 'Atributai', 'manage_woocommerce', 'ps-atributai', array( __CLASS__, 'langas' ) ); }"
+   ],
+   [
+    "/mu-plugins/petshop-planas-langas.php",
+    17,
+    "public static function meniu() { add_submenu_page( self::TEVAS, 'Q4 planas', 'Q4 planas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) ); } private static function eur( $ct ) { return number_format( $ct / 100, 0, ',', ' ' ) . ' €'; } private static function pct( $a, $b ) { return $b > 0 ? round( 100 * $a "
+   ],
+   [
+    "/mu-plugins/petshop-naujienlaiskiai-admin.php",
+    23,
+    "add_submenu_page('petshop-langai', 'Naujienlaiškiai', 'Naujienlaiškiai', self::TEISE, 'petshop-naujienlaiskiai', array(__CLASS__, 'puslapis')); }"
+   ],
+   [
+    "/plugins/petshop-core/includes/class-admin-reports.php",
+    40,
+    "* cia kaip nauji add_submenu_page( self::PARENT, ... ), kad viskas butu * vienoje vietoje, o ne issibarste po WP meniu. */ public static function menu() {"
+   ],
+   [
+    "/plugins/petshop-core/includes/class-admin-reports.php",
+    44,
+    "add_menu_page( 'Petshop ataskaitos', 'Petshop ataskaitos', self::CAP, self::PARENT, array( __CLASS__, 'render' ), 'dashicons-chart-bar', 56 );"
+   ],
+   [
+    "/plugins/petshop-core/includes/class-admin-reports.php",
+    48,
+    "add_submenu_page( self::PARENT, 'Ataskaitos', 'Visos ataskaitos', self::CAP, self::PARENT, array( __CLASS__, 'render' ) );"
+   ],
+   [
+    "/plugins/petshop-fbt/petshop-fbt.php",
+    458,
+    "add_submenu_page( 'ps-katalogas', 'Perkame kartu', 'Perkame kartu', 'manage_woocommerce', 'petshop-fbt', [ $this, 'settings_html' ] ); }"
+   ],
+   [
+    "/plugins/petshop-pragma/petshop-pragma.php",
+    380,
+    "add_submenu_page( 'woocommerce', 'Pragma eksportas', 'Pragma eksportas',"
+   ],
+   [
+    "/plugins/petshop-promotions/petshop-promotions.php",
+    65,
+    "add_submenu_page( 'woocommerce', 'Masines akcijos', '🏷️ Masines akcijos', 'manage_woocommerce', 'petshop-promotions', [ $this, 'render' ] ); }"
+   ],
+   [
+    "/plugins/petshop-xml/includes/class-admin-ui.php",
+    38,
+    "add_submenu_page( 'woocommerce', 'Petshop XML', 'Petshop XML', 'manage_woocommerce', 'petshop-xml', [ $this, 'render_main_page' ] ); }"
+   ]
+  ],
+  "snip": [
+   {
+    "id": "539",
+    "name": "Petshop Rinkinių Kūrimo Forma v2",
+    "active": "1"
+   },
+   {
+    "id": "550",
+    "name": "Petshop Susidėjimo Rinkinio Kūrimo Forma v15",
+    "active": "1"
+   },
+   {
+    "id": "7001",
+    "name": "TEMP PS dep-111043",
+    "active": "1"
+   }
+  ]
+ },
+ "v": "dep-111043",
+ "kurimas": 200,
+ "sid": 7001,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
