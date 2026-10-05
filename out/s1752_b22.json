@@ -1,0 +1,101 @@
+{
+ "1": {
+  "v": "S1752b",
+  "f": "1",
+  "md5_p": "843d7e1928cc608e525668ec2ba9b6a5",
+  "md5_d": "4cb216478474ed8a8fffae28703a5cc7",
+  "busena": {
+   "1209": {
+    "part": 4,
+    "av": 2,
+    "pid": 36381,
+    "src": "av",
+    "pq": ""
+   },
+   "1244": {
+    "part": 8,
+    "av": 0,
+    "pid": 35852,
+    "src": "av",
+    "pq": ""
+   },
+   "1248": {
+    "part": 2,
+    "av": 0,
+    "pid": 36339,
+    "src": "av",
+    "pq": ""
+   },
+   "1268": {
+    "part": 5,
+    "av": 3,
+    "pid": 36002,
+    "src": "av",
+    "pq": ""
+   }
+  }
+ },
+ "2": {
+  "v": "S1752b",
+  "f": "2",
+  "md5_p": "843d7e1928cc608e525668ec2ba9b6a5",
+  "md5_d": "4cb216478474ed8a8fffae28703a5cc7",
+  "busena": {
+   "1209": {
+    "part": 4,
+    "av": 2,
+    "pid": 36381,
+    "src": "av",
+    "pq": ""
+   },
+   "1244": {
+    "part": 8,
+    "av": 0,
+    "pid": 35852,
+    "src": "av",
+    "pq": ""
+   },
+   "1248": {
+    "part": 2,
+    "av": 0,
+    "pid": 36339,
+    "src": "av",
+    "pq": ""
+   },
+   "1268": {
+    "part": 5,
+    "av": 3,
+    "pid": 36002,
+    "src": "av",
+    "pq": ""
+   }
+  },
+  "md5_po_p": "fd88b6be01e1d0ef1065d9583aae917b",
+  "md5_po_d": "cf887dea44e76b0b13ae1d85a8b627fc",
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/wp-admin/admin-ajax.php": [
+    400,
+    0
+   ],
+   "/wp-json/": [
+    200,
+    0
+   ]
+  }
+ },
+ "v": "dep-092650",
+ "kurimas": 200,
+ "sid": 6996,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
