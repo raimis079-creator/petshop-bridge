@@ -1,0 +1,235 @@
+{
+ "1": {
+  "v": "S1751c",
+  "partiju_variklis": {
+   "petshop-partijos.php": {
+    "md5": "843d7e1928cc",
+    "eil": [
+     "58: *   Idempotentiskumas per uzsakymo meta `_ps_partijos_nurasyta`.",
+     "77: public static function lentele()          { global $wpdb; return $wpdb->prefix . 'ps_partijos'; }",
+     "78: public static function pakuociu_lentele() { global $wpdb; return $wpdb->prefix . 'ps_pakuotes'; }",
+     "80: public static function uztikrinti_lenteles() {",
+     "137: private static function lentele_yra( $t ) {",
+     "143: public static function av_preke( $pid ) {",
+     "168: public static function priimti( $pid, $a ) {",
+     "263: public static function av_laukas( $pid ) {",
+     "276: public static function av_likutis( $pid ) {",
+     "281: private static function rasyti_av_likuti( $pid, $kiekis ) {",
+     "304: public static function svertine_savikaina( $pid ) {",
+     "316: public static function paskutine_savikaina( $pid ) {",
+     "331: public static function perskaiciuoti_savikaina( $pid ) {",
+     "351: public static function nurasyti( $pid, $kiekis, $dry = false ) {",
+     "405: public static function partijos( $pid, $tik_su_likuciu = false ) {",
+     "416: public static function artimiausias_galiojimas( $pid ) {",
+     "425: public static function santrauka( $pid ) {",
+     "442: public static function pakuotes( $pid ) {",
+     "455: public static function medziagos() {",
+     "469: public static function tipai() {",
+     "478: public static function trinti_pakuote( $id, $pid ) {",
+     "489: public static function irasyti_pakuote( $pid, $a ) {",
+     "520: public static function pakuociu_svoris( $pid, $vienetu ) {",
+     "551: public static function gpais_pagal_metus( $pid ) {",
+     "588: * IDEMPOTENTISKUMAS: uzsakymas pazymimas `_ps_partijos_nurasyta`. Abu",
+     "592: public static function kabinti_uzsakymus() {",
+     "593: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 );",
+     "594: add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 );",
+     "595: add_action( 'woocommerce_order_status_completed', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 );",
+     "598: public static function uzsakymo_nurasymas( $order_id ) {",
+     "605: if ( $order->get_meta( '_ps_partijos_nurasyta' ) ) { return; }",
+     "644: $order->update_meta_data( '_ps_partijos_nurasyta', current_time( 'mysql' ) );",
+     "653: $zinute = 'Partijos nurašytos: ' . ( $t ? implode( ' · ', $t ) : 'nėra' );",
+     "662: public static function grazinti_i_partija( $partijos_id, $kiekis ) {",
+     "679: public static function sutapimo_patikra( $pid ) {",
+     "695: public static function statistika() {"
+    ]
+   }
+  },
+  "dp_av": {
+   "1209": {
+    "eil": [
+     [
+      2745,
+      36381,
+      17265,
+      1,
+      "av",
+      "2"
+     ],
+     [
+      2746,
+      17035,
+      0,
+      3,
+      "av",
+      "3"
+     ]
+    ],
+    "pastabos": [
+     "09-28 15:51 Vykdymas: MAIN — AV 4 vnt (1 siunta(-os)) · dropship pirma",
+     "09-28 15:52 AV nurašymas: #17265 grynai AV 4 -> 2 · #17035 grynai AV 27 -> 24",
+     "09-28 15:52 Partijos nurašytos: #36381 −0 vnt. (0 partijos) · #17035 −3 vnt. (1 partijos)\nĮSPĖJIMAI: #36381: Partijose trūksta 1 vnt. — likutis ir partijos nesutampa",
+     "09-28 15:52 Surūšiuota pati: 2 vnt. Ontario Adult Mini Lamb and Brown — Iš AV; Ontario troškinys šunims iš elnienos ir  — Iš AV",
+     "09-29 08:12 Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+     "09-29 08:12 Siuntos numeriai išsaugoti (AV): V07267E1000249"
+    ]
+   },
+   "1244": {
+    "eil": [
+     [
+      2912,
+      35852,
+      17671,
+      1,
+      "av",
+      "8"
+     ]
+    ],
+    "pastabos": [
+     "09-30 22:11 Vykdymas: MAIN — AV 1 vnt (1 siunta(-os)) · dropship pirma",
+     "09-30 22:12 AV nurašymas: #17671 AV 8 -> 0",
+     "09-30 22:12 Surūšiuota pati: 8 VNT. - Kraikas katėms TOFU BeloCat, pu — Iš AV",
+     "10-01 08:28 Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+     "10-01 08:28 Siuntos numeriai išsaugoti (AV): V07267E1000277"
+    ]
+   },
+   "1248": {
+    "eil": [
+     [
+      2926,
+      36339,
+      16481,
+      1,
+      "av",
+      "2"
+     ]
+    ],
+    "pastabos": [
+     "10-01 11:41 Vykdymas: MAIN — AV 1 vnt (1 siunta(-os)) · dropship pirma",
+     "10-01 11:42 AV nurašymas: #16481 grynai AV 3 -> 1",
+     "10-01 11:42 Partijos nurašytos: #36339 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #36339: Partijose trūksta 1 vnt. — likutis ir partijos nesutampa",
+     "10-01 11:42 Surūšiuota pati: 2 vnt. ROYAL CANIN SENSIBLE 33, 10 kg, s — Iš AV",
+     "10-02 08:34 Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+     "10-02 08:34 Siuntos numeriai išsaugoti (AV): V07267E1000284"
+    ]
+   }
+  },
+  "kelias_av": {
+   "1164": [
+    "09-23 17:26 Likutis sumažintas: Prins ProCare Standard Fit sausas pašaras suaugusiems šunims su vištiena ir kalakutiena 20 kg (16&rarr;15), Monge Monoproteico Solo Agnello – Monoproteininiai konservai šunims su g",
+    "09-23 17:28 Partijos nurašytos: #17400 −0 vnt. (0 partijos) · #17397 −1 vnt. (1 partijos) · #17394 −1 vnt. (1 partijos)\nĮSPĖJIMAI: #17400: Partijose trūksta 1 vnt. — likutis ir partijos nesutampa",
+    "09-24 08:58 Darbalaukis: „Monge Monoproteico Solo Agnello – Monoproteininiai konservai šunims su gryna ėriena, 400 g“ kelias ZB siunčia klientui → Iš AV (Inga). Likutis: AV −1 → 11.",
+    "09-24 08:59 Darbalaukis: „Monge Monoproteico Solo Anatra – Monoproteininiai konservai šunims su gryna antiena, 400 g“ kelias ZB siunčia klientui → Iš AV (Inga). Likutis: AV −1 → 23.",
+    "09-24 08:59 Darbalaukis: „Monge Monoproteico Solo Tacchino – Monoproteininiai konservai šunims su gryna kalakutiena, 400 g“ kelias ZB siunčia klientui → Iš AV (Inga). Likutis: AV −1 → 24."
+   ],
+   "1263": [
+    "10-03 11:13 Likutis sumažintas: Quattro SB su ėriena sausas suaugusių mažų veislių šunų pašaras, 1,5kg (28&rarr;27)",
+    "10-03 16:51 Darbalaukis: „Quattro SB su ėriena sausas suaugusių mažų veislių šunų pašaras, 1,5kg“ kelias Quattro siunčia klientui → Iš AV (Inga). Likutis: AV −1 → 5."
+   ],
+   "1268": [
+    "10-04 01:15 Partijos nurašytos: #36002 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #36002: Partijose trūksta 1 vnt. — likutis ir partijos nesutampa",
+    "10-04 22:52 Darbalaukis: „2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg“ kelias VF siunčia klientui → Iš AV (Raimis). Likutis: AV −2 (bazinė #18590) → 3."
+   ]
+  },
+  "p3897": {
+   "id": "3897",
+   "product_id": "18590",
+   "kiekis_gautas": "5",
+   "kiekis_liko": "5",
+   "atsaukta": "0"
+  },
+  "newsletter": {
+   "uzsakymas_id": "36675",
+   "sukurta_at": "2026-10-05 08:29:15",
+   "utm_source": "newsletter",
+   "utm_medium": "email",
+   "utm_campaign": "",
+   "kanalas_pirmas": "email",
+   "kanalas_paskutinis": "email",
+   "klientas_naujas": "0",
+   "klientas_uzsakymo_nr": "2",
+   "landing_url": "https://petshop.lt/paskyra/uzsakymas/36106/?sender_campaign=negYbw&sender_ctype=automation&sender_customer=69MyQL7&utm_medium=email&utm_source=newsletter",
+   "nr": "1288",
+   "kanalai": "{\"pirmas\":{\"utm_source\":\"newsletter\",\"utm_medium\":\"email\",\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"\",\"landing_url\":\"https://petshop.lt/paskyra/uzsakymas/36106/?sender_campaign=negYbw&sender_ctype=automation&sender_customer=69MyQL7&utm_medium=email&utm_source=newsletter\",\"laikas\":\"2026-10-05 08:20:27\",\"kanalas\":\"email\"},\"paskutinis\":{\"utm_source\":\"newsletter\",\"utm_medium\":\"email\",\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"\",\"landing_url\":\"https://petshop.lt/paskyra/uzsakymas/36106/?sender_campaign=ne",
+   "attr_entry": "https://petshop.lt/paskyra/uzsakymas/36106/?sender_campaign=negYbw&sender_ctype=automation&sender_customer=69MyQL7&utm_medium=email&utm_source=newsletter",
+   "attr_src": "newsletter / email /  / ",
+   "prekes": [
+    "Jaučio peniai pjaustyti, 12,5 cm, 10 vnt. ×1"
+   ],
+   "laiskai": [
+    {
+     "id": "815",
+     "flow": "post_purchase_2d",
+     "status": "sent",
+     "sr": "",
+     "t": "09-23 11:43",
+     "s": "Jei ko prireiktų – parašykite mums"
+    },
+    {
+     "id": "816",
+     "flow": "post_purchase_7d",
+     "status": "sent",
+     "sr": "",
+     "t": "09-28 11:08",
+     "s": "Kaip tiko jūsų pirkinys?"
+    },
+    {
+     "id": "817",
+     "flow": "post_purchase_14d",
+     "status": "sent",
+     "sr": "",
+     "t": "10-05 11:09",
+     "s": "Ankstesnį užsakymą galite pakartoti"
+    }
+   ],
+   "ankstesni": [
+    [
+     "1132",
+     "completed",
+     "09-20"
+    ]
+   ]
+  },
+  "u1243": [
+   "completed",
+   "bacs",
+   "VENIPAK paštomatai/atsiėmimo punktai",
+   [
+    "Jaučio penis pjaustytas, 15,0  [av]",
+    "Baltos triušio ausys, 250 g [av]"
+   ],
+   [
+    "10-02 13:36 Email \"Užsakymas vykdomas\" sent.",
+    "10-05 08:11 Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+    "10-05 08:11 Siuntos numeriai išsaugoti (AV): V07267E1000292",
+    "10-05 11:36 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS.",
+    "10-05 11:36 Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+    "10-05 11:36 Klientui išsiųsta „Užsakymas išsiųstas“ (julija.sadovnikova@gmail.com): V07267E1000292"
+   ]
+  ],
+  "u1258": [
+   "completed",
+   "paysera",
+   "VENIPAK paštomatai/atsiėmimo punktai",
+   [
+    "ROYAL CANIN SENSIBLE 33,  10 k [av]",
+    "GimCat maisto papildas katėms  [av]",
+    "Churu nuo plaukų gumuliukų sus [av]"
+   ],
+   [
+    "10-02 17:07 Paysera: Naujo užsakymo kūrimo būsena",
+    "10-05 08:11 Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+    "10-05 08:11 Siuntos numeriai išsaugoti (AV): V07267E1000293",
+    "10-05 11:36 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS.",
+    "10-05 11:36 Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+    "10-05 11:36 Klientui išsiųsta „Užsakymas išsiųstas“ (zoobaze.epidural310@passmail.net): V07267E1000293"
+   ]
+  ]
+ },
+ "v": "dep-084012",
+ "kurimas": 200,
+ "sid": 6989,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
