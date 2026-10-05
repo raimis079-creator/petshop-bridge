@@ -1,0 +1,374 @@
+{
+ "1": {
+  "v": "S1751b",
+  "utc": "2026-10-05 08:38:37",
+  "cols": "id,job_key,flow,flow_class,recipient_email,recipient_user_id,subject,payload,status,block_reason,provider,provider_message_id,attempts,last_error,scheduled_at,sent_at,created_at,updated_at,skip_reason,error_message,decision_at,next_attempt_at,context_json,delivered_at,opened_at,clicked_at",
+  "sent_siandien": [
+   {
+    "id": "813",
+    "flow": "post_purchase_14d",
+    "e": "sig…@gmail.com",
+    "o": "",
+    "t": "08:23",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "1242",
+    "flow": "consent_changed",
+    "e": "isv…@gmail.com",
+    "o": "",
+    "t": "10:33",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "817",
+    "flow": "post_purchase_14d",
+    "e": "vai…@gmail.com",
+    "o": "",
+    "t": "11:09",
+    "a": "1",
+    "err": ""
+   },
+   {
+    "id": "1243",
+    "flow": "consent_changed",
+    "e": "val…@gmail.com",
+    "o": "",
+    "t": "11:18",
+    "a": "1",
+    "err": ""
+   }
+  ],
+  "statusai_visi": [
+   {
+    "status": "deferred",
+    "n": "3",
+    "pask": "2026-10-02 07:11:48"
+   },
+   {
+    "status": "pending",
+    "n": "185",
+    "pask": "2026-10-04 11:39:27"
+   },
+   {
+    "status": "sent",
+    "n": "419",
+    "pask": "2026-10-05 08:18:42"
+   },
+   {
+    "status": "skipped",
+    "n": "164",
+    "pask": "2026-10-04 16:08:43"
+   }
+  ],
+  "problem": [],
+  "klaidos_24h": [],
+  "dubl": [
+   {
+    "flow": "ps_s1749_testas",
+    "e": "ter…@gyvunai.lt",
+    "n": "3",
+    "l": "1211@10-03 21:49/o 1216@10-03 21:59/o 1217@10-03 23:07/o"
+   }
+  ],
+  "dubl_jobkey": [],
+  "u1268": {
+   "st": "processing",
+   "src": "av",
+   "kelias": "av",
+   "red": "2",
+   "av_18590": 3,
+   "own": "3",
+   "partija": [
+    {
+     "id": "3897",
+     "kiekis_gautas": "5",
+     "kiekis_liko": "5"
+    }
+   ],
+   "pastabos": [
+    "10-05 07:46 Darbalaukis: LP Express siunta HC042483777LT (dydis M) užregistruota, perdavimas: Kurjeris paims, lipdukas suformuotas (Inga).",
+    "10-05 07:45 Surūšiuota (Inga): 2 vnt. Exclusion Hypoallergenic mažų vei — Iš AV",
+    "10-04 22:52 Darbalaukis: „2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg“ kelias VF siunčia klientui → Iš AV (Raimis). Likutis: AV −2 (bazi",
+    "10-04 01:15 Paysera: Naujo užsakymo kūrimo būsena",
+    "10-04 01:15 Email \"Užsakymas vykdomas\" sent."
+   ],
+   "darbalaukis_md5": "4cb216478474"
+  },
+  "skip_siandien": [],
+  "refill_siandien": [],
+  "ateina": [
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "d": "2026-10-05",
+    "n": "19"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "d": "2026-10-05",
+    "n": "20"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "d": "2026-10-06",
+    "n": "11"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "d": "2026-10-06",
+    "n": "13"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "d": "2026-10-07",
+    "n": "13"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "d": "2026-10-07",
+    "n": "13"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "d": "2026-10-08",
+    "n": "3"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "d": "2026-10-08",
+    "n": "6"
+   }
+  ],
+  "pending_pp14_pagal_sukurta": [
+   {
+    "c": "2026-10-04",
+    "n": "6",
+    "s_nuo": "2026-10-16",
+    "s_iki": "2026-10-16"
+   },
+   {
+    "c": "2026-10-03",
+    "n": "12",
+    "s_nuo": "2026-10-15",
+    "s_iki": "2026-10-15"
+   },
+   {
+    "c": "2026-10-02",
+    "n": "13",
+    "s_nuo": "2026-10-14",
+    "s_iki": "2026-10-14"
+   },
+   {
+    "c": "2026-10-01",
+    "n": "13",
+    "s_nuo": "2026-10-13",
+    "s_iki": "2026-10-13"
+   },
+   {
+    "c": "2026-09-30",
+    "n": "20",
+    "s_nuo": "2026-10-12",
+    "s_iki": "2026-10-12"
+   },
+   {
+    "c": "2026-09-27",
+    "n": "4",
+    "s_nuo": "2026-10-09",
+    "s_iki": "2026-10-09"
+   },
+   {
+    "c": "2026-09-26",
+    "n": "10",
+    "s_nuo": "2026-10-08",
+    "s_iki": "2026-10-08"
+   },
+   {
+    "c": "2026-09-25",
+    "n": "13",
+    "s_nuo": "2026-10-07",
+    "s_iki": "2026-10-07"
+   }
+  ],
+  "atidarymai": [
+   {
+    "flow": "consent_changed",
+    "n": "3",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "n": "13",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "n": "31",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "n": "4",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "ps_s1749_testas",
+    "n": "3",
+    "atid": "0",
+    "pasp": "0"
+   },
+   {
+    "flow": "refill_due",
+    "n": "6",
+    "atid": "0",
+    "pasp": "0"
+   }
+  ],
+  "wh": {
+   "gaj6_ps_webhook_log": {
+    "cols": "id,dedup_key,topic,email,marketing_status,transactional_status,payload_json,processing_result,received_at",
+    "n": 1,
+    "nuo_10_03": 0,
+    "pask": [
+     {
+      "id": "1",
+      "dedup_key": "9f253bdb3ecd37d1ab131d8aca849306",
+      "topic": "subscribers/updated",
+      "email": "…@example.com",
+      "marketing_status": "unsubscribed",
+      "transactional_status": "active",
+      "payload_json": "{\"type\":\"subscribers\\/updated\",\"email\":\"…@example.com\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"}}",
+      "processing_result": "test",
+      "received_at": "2026-07-30 20:24:52"
+     }
+    ]
+   }
+  },
+  "wh_opc_n": 2,
+  "wh_opc_pask": "[{\"t\":\"2026-09-09 17:06:13\",\"topic_get\":\"bounces\\/new\",\"headers\":{\"x-sender-signature\":\"58ea28d13f1be4c9f73703aef790e5f56e18f04cac58a0991bf8ce9cd65a62f1\",\"user-agent\":\"WordPress\\/6.9.4; https:\\/\\/petshop.lt\",\"content-type\":\"application\\/json\"},\"body\":\"{\\\"data\\\":{\\\"email\\\":\\\"…@petshop.lt\\\"}}\"},{\"t\":\"2026-10-03 22:23:30\",\"topic_get\":\"s1749-pasiekiamumo-testas\",\"headers\":{\"user-agent\":\"Sender-Webhook-Test\\/1.0\",\"content-type\":\"application\\/json\"},\"body\":\"{\\\"type\\\":\\\"s1749\\\\\\/test\\\",\\\"data\\\":{\\\"email\\\":\\\"…@petshop.lt\\\"}}\"}]",
+  "relaunch_opc": {
+   "kada": "2026-09-30 12:39:18",
+   "calc": "n5glV5",
+   "std": "o2jm9Y"
+  },
+  "rl_calc": {
+   "recipient_count": 193,
+   "status": "SENT",
+   "sent_count": 193,
+   "opens": 69,
+   "bounces_count": 0,
+   "clicks": 7
+  },
+  "rl_std": {
+   "recipient_count": 107,
+   "status": "SENT",
+   "sent_count": 107,
+   "opens": 43,
+   "bounces_count": 0,
+   "clicks": 2
+  },
+  "sender_uzs": [
+   {
+    "id": "36675",
+    "t": "10-05 08:29",
+    "st": "processing",
+    "eur": "19.21",
+    "s": "newsletter",
+    "c": ""
+   }
+  ],
+  "rekl_cols": "id,diena,kanalas,kampanija_id,kampanija,parodymai,paspaudimai,islaidos_ct,valiuta,konversijos,konv_verte_ct,saltinis,saltinis_aplinka,versija,irasyta_at,senoji_svetaine",
+  "kamp": [
+   {
+    "id": "",
+    "k": ""
+   },
+   {
+    "id": "21472017542",
+    "k": "P-max | LT | petshop.lt"
+   },
+   {
+    "id": "21565450990",
+    "k": "P-max| All LT | Kačių maistas"
+   },
+   {
+    "id": "23346712074",
+    "k": "petshop"
+   },
+   {
+    "id": "24297462605",
+    "k": "Search | LT | Prekių ženklai"
+   }
+  ],
+  "atviri_seni": [
+   [
+    "1261",
+    "processing",
+    "paysera",
+    "10-02 22:46",
+    "",
+    [
+     "10-02 22:47 Paysera: Naujo užsakymo kūrimo būsena",
+     "10-02 22:47 Email \"Užsakymas vykdomas\" sent.",
+     "10-02 22:47 Email \"Naujas užsakymas\" sent."
+    ]
+   ],
+   [
+    "1260",
+    "processing",
+    "paysera",
+    "10-02 21:48",
+    "",
+    [
+     "10-02 21:49 Paysera: Naujo užsakymo kūrimo būsena",
+     "10-02 21:49 Email \"Užsakymas vykdomas\" sent.",
+     "10-02 21:49 Email \"Naujas užsakymas\" sent."
+    ]
+   ],
+   [
+    "1257",
+    "processing",
+    "paysera",
+    "10-02 11:39",
+    "",
+    [
+     "10-02 12:47 Tiekimas: prekės užsakytos iš Vetfarmas (partija #36, laiške kartu su užsak",
+     "10-02 12:47 Tiekimas: prekės užsakytos iš Vetfarmas (partija #36, laiške kartu su užsak",
+     "10-02 12:47 Tiekimas: „JosiCat Crunchy Chicken sausas pašaras katėms su vištiena, 1,9 k"
+    ]
+   ],
+   [
+    "1247",
+    "processing",
+    "paysera",
+    "10-01 10:51",
+    "",
+    [
+     "10-02 08:39 Perduota ZB — suvesta į jų sistemą ranka, lipdukas prikabintas (darbalaukio",
+     "10-02 08:37 Siuntos numeriai išsaugoti (ZB): V07267E1000286",
+     "10-02 08:37 Venipak registracija darbalaukyje (ZB, manifestas 003): sėkminga"
+    ]
+   ]
+  ]
+ },
+ "v": "dep-083728",
+ "kurimas": 200,
+ "sid": 6988,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
