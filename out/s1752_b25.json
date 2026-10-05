@@ -1,0 +1,51 @@
+{
+ "5": {
+  "v": "S1752b",
+  "f": "5",
+  "md5_p": "fd88b6be01e1d0ef1065d9583aae917b",
+  "md5_d": "cf887dea44e76b0b13ae1d85a8b627fc",
+  "busena": {
+   "1209": {
+    "part": 2,
+    "av": 2,
+    "pid": 36381,
+    "src": "av",
+    "pq": "2"
+   },
+   "1244": {
+    "part": 0,
+    "av": 0,
+    "pid": 35852,
+    "src": "av",
+    "pq": "8"
+   },
+   "1248": {
+    "part": 0,
+    "av": 0,
+    "pid": 36339,
+    "src": "av",
+    "pq": "2"
+   },
+   "1268": {
+    "part": 3,
+    "av": 3,
+    "pid": 36002,
+    "src": "av",
+    "pq": "2"
+   }
+  },
+  "bak": [
+   1268,
+   1209,
+   1248,
+   1244
+  ]
+ },
+ "v": "dep-093204",
+ "kurimas": 200,
+ "sid": 6999,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
