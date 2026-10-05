@@ -1,0 +1,380 @@
+{
+ "1": {
+  "v": "S1751d",
+  "kodas_nurasymas": "\tpublic static function uzsakymo_nurasymas( $order_id ) {\n\t\t$order_id = (int) $order_id;\n\t\tif ( ! $order_id || ! function_exists( 'wc_get_order' ) ) { return; }\n\t\t$order = wc_get_order( $order_id );\n\t\tif ( ! $order ) { return; }\n\n\t\t/* Jau nurasyta — antras hook'as to paties uzsakymo neliecia. */\n\t\tif ( $order->get_meta( '_ps_partijos_nurasyta' ) ) { return; }\n\n\t\tif ( ! self::lentele_yra( self::lentele() ) ) { return; }\n\n\t\t$rez = array( 'nurasyta' => array(), 'praleista' => array(), 'ispejimai' => array() );\n\n\t\tforeach ( $order->get_items() as $item ) {\n\t\t\tif ( ! method_exists( $item, 'get_product_id' ) ) { continue; }\n\t\t\t/* S1683: rinkinio (Mix-and-Match) konteineris partijų neturi — nurašomi tik komponentai. */\n\t\t\tif ( $item->get_meta( '_mnm_config' ) || $item->get_meta( '_mnm_container_size' ) ) { continue; }\n\t\t\t$pid  = (int) $item->get_product_id();\n\t\t\t$vpid = method_exists( $item, 'get_variation_id' ) ? (int) $item->get_variation_id() : 0;\n\t\t\t$tikras = $vpid ? $vpid : $pid;\n\t\t\t$kiekis = (int) $item->get_quantity();\n\t\t\tif ( ! $tikras || $kiekis <= 0 ) { continue; }\n\n\t\t\t/* Partijos yra TIK AV prekems. Dropship prekiu partiju nera —\n\t\t\t   ju likutis ir savikaina gyvena tiekejo pusėje. */\n\t\t\tif ( ! self::av_preke( $tikras ) ) {\n\t\t\t\t$rez['praleista'][] = $tikras . ' (ne AV)';\n\t\t\t\tcontinue;\n\t\t\t}\n\n\t\t\t$n = self::nurasyti( $tikras, $kiekis );\n\t\t\tif ( is_wp_error( $n ) ) {\n\t\t\t\t$rez['ispejimai'][] = '#' . $tikras . ': ' . $n->get_error_message();\n\t\t\t\tcontinue;\n\t\t\t}\n\t\t\t$rez['nurasyta'][] = array(\n\t\t\t\t'pid'      => $tikras,\n\t\t\t\t'kiekis'   => $kiekis,\n\t\t\t\t'padengta' => $n['padengta'],\n\t\t\t\t'partiju'  => count( $n['planas'] ),\n\t\t\t);\n\t\t\tif ( ! empty( $n['ispejimas'] ) ) {\n\t\t\t\t$rez['ispejimai'][] = '#' . $tikras . ': ' . $n['ispejimas'];\n\t\t\t}\n\t\t}\n\n\t\t$order->update_meta_data( '_ps_partijos_nurasyta', current_time( 'mysql' ) );\n\t\t$order->save();\n\n\t\t/* Pastaba uzsakyme — kad veliau matytusi, is kuriu partiju paimta. */\n\t\tif ( $rez['nurasyta'] || $rez['ispejimai'] ) {\n\t\t\t$t = array();\n\t\t\tforeach ( $rez['nurasyta'] as $x ) {\n\t\t\t\t$t[] = '#' . $x['pid'] . ' −' . $x['padengta'] . ' vnt. (' . $x['partiju'] . ' partijos)';\n\t\t\t}\n\t\t\t$zinute = 'Partijos nurašytos: ' . ( $t ? implode( ' · ', $t ) : 'nėra' );\n            if ( $rez['ispejimai'] ) {\n\t\t\t\t$zinute .= \"\\nĮSPĖJIMAI: \" . implode( ' · ', $rez['ispejimai'] );\n\t\t\t}\n\t\t\t$order->add_order_note( $zinute );\n\t\t}\n\t}",
+  "kodas_av_laukas": "\tpublic static function av_laukas( $pid ) {\n\t\tforeach ( array( '_vf_qty', '_zb_qty' ) as $k ) {\n\t\t\tif ( get_post_meta( $pid, $k, true ) !== '' ) { return '_own_stock_qty'; }\n\t\t}\n\t\t/* S1668: tiekėjo prekės be XML (Quattro, Prins, Ambrosia, Belacor) — AV likutis\n\t\t   yra `_own_stock_qty`, tiekėjo — `_stock` (katalogo v8.0 taisyklė). Iki šiol\n\t\t   čia tikrinti tik _vf/_zb laukai, todėl AV gavimas tokioms prekėms keldavo\n\t\t   TIEKĖJO likutį (S1637 T1 radinys, #16612 atvejis 2026-09-10). */\n\t\t$sand = strtolower( trim( (string) get_post_meta( $pid, '_ps_sandelis', true ) ) );\n\t\tif ( $sand !== '' && $sand !== 'av' && $sand !== 'paslauga' ) { return '_own_stock_qty'; }\n\t\treturn '_stock';\n\t}\n\n\tpublic static function av_likutis( $pid ) {\n\t\t$v = get_post_meta( $pid, self::av_laukas( $pid ), true );\n\t\treturn ( $v === '' || $v === null ) ? 0 : (int) $v;\n\t}\n\n\tprivate static function rasyti_av_likuti( $pid, $kiekis ) {\n\t\t$kiekis = max( 0, (int) $kiekis );\n\t\t$laukas = self::av_laukas( $pid );\n\n\t\tif ( $laukas === '_stock' ) {\n\t\t\t/* Per WC CRUD, kad atsinaujintu lookup lentele ir transientai.\n\t\t\t   `update_post_meta` cia paliktu parduotuve rodancia sena likuti. */\n\t\t\t$prod = wc_get_product( $pid );\n\t\t\tif ( $prod ) {\n\t\t\t\t$prod->set_manage_stock( true );\n\t\t\t\t$prod->set_stock_quantity( $kiekis );\n\t\t\t\t$prod->save();\n\t\t\t\treturn;\n\t\t\t}\n\t\t}\n\t\tupdate_post_meta( $pid, $laukas, $kiekis );\n\t}\n\n\t/* ============================================================\n\t *  SAVIKAINA\n\t * ============================================================ */\n\n\t/** Svertinis vidurkis is partiju, kuriose dar yra likucio. NULL — nera. */\n\tpublic static function svertine_savikaina( $pid ) {\n\t\tglobal $wpdb;\n\t\tif ( ! self::lentele_yra( self::lentele() ) ) { return null; }\n\t\t$t = self::lentele();",
+  "kodas_avstock": "\tpublic static function qty( $product_id ) {\n\t\t$v = get_post_meta( (int) $product_id, self::META, true );\n\t\tif ( '' === $v || null === $v ) { return null; }\n\t\treturn max( 0, (int) $v );\n\t}\n\n\t/** Ar AV turi bent nurodytą kiekį. */\n\tpublic static function has( $product_id, $need = 1 ) {\n\t\t$q = self::qty( $product_id );\n\t\treturn ( null !== $q && $q >= (int) $need );\n\t}\n\n\t/** Sumažina AV likutį. Grąžina naują reikšmę arba WP_Error. */\n\tpublic static function decrease( $product_id, $by, $priezastis = '' ) {\n\t\t$by = (int) $by;\n\t\tif ( $by <= 0 ) { return new WP_Error( 'blogas_kiekis', 'Kiekis turi būti teigiamas' ); }\n\t\t$q = self::qty( $product_id );\n\t\tif ( null === $q ) { return new WP_Error( 'nera_av', 'Prekė neturi AV likučio' ); }\n\t\tif ( $q < $by ) { return new WP_Error( 'nepakanka', \"AV turi $q, prašoma $by\" ); }\n\t\t$naujas = $q - $by;\n\t\tself::apsaugotas_rasymas( $product_id, $naujas );\n\t\tself::log( $product_id, $q, $naujas, $priezastis );\n\t\treturn $naujas;\n\t}\n\n\t/** Padidina AV likutį (papildymas). */\n\tpublic static function increase( $product_id, $by, $priezastis = '' ) {\n\t\t$by = (int) $by;\n\t\tif ( $by <= 0 ) { return new WP_Error( 'blogas_kiekis', 'Kiekis turi būti teigiamas' ); }\n\t\t$q = self::qty( $product_id );\n\t\t$naujas = ( null === $q ? 0 : $q ) + $by;\n\t\tself::apsaugotas_rasymas( $product_id, $naujas );\n\t\tself::log( $product_id, $q, $naujas, $priezastis );\n\t\treturn $naujas;\n\t}\n\n\t/**\n\t * SAUGIKLIS (S477): `_own_stock_qty` rašymas NEGALI paliesti `_stock`.\n\t *\n\t * PRIEŽASTIS: S468 testo metu Josera `_stock` iš 653 tapo 2 — lygiai tiek, kiek",
+  "inv_ok": 115,
+  "inv_nesutampa_n": 679,
+  "inv_nesutampa": [
+   {
+    "pid": 17481,
+    "pav": "Miamor skanėstai katėms &#8211; kremas su vit",
+    "partijos": 372,
+    "av": 0,
+    "skirt": 372,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 16305,
+    "pav": "Ruda kiaulės ausis, 1 vnt.",
+    "partijos": 180,
+    "av": 0,
+    "skirt": 180,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19570,
+    "pav": "Animonda GranCarno Adult Beef: konservai šuni",
+    "partijos": 143,
+    "av": 0,
+    "skirt": 143,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19387,
+    "pav": "Animonda Vom Feinsten Adult with Turkey and R",
+    "partijos": 142,
+    "av": 0,
+    "skirt": 142,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19479,
+    "pav": "Animonda GranCarno Adult: konservai šunims su",
+    "partijos": 141,
+    "av": 0,
+    "skirt": 141,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19590,
+    "pav": "Animonda GranCarno Adult Beef + Duck Hearts: ",
+    "partijos": 139,
+    "av": 0,
+    "skirt": 139,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19496,
+    "pav": "Animonda GranCarno Adult: konservai suaugusie",
+    "partijos": 135,
+    "av": 0,
+    "skirt": 135,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19471,
+    "pav": "Animonda GranCarno Adult: konservai šunims su",
+    "partijos": 127,
+    "av": 0,
+    "skirt": 127,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19582,
+    "pav": "Animonda GranCarno Adult Beef + Lamb: konserv",
+    "partijos": 120,
+    "av": 0,
+    "skirt": 120,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19399,
+    "pav": "Animonda Vom Feinsten Adult with Turkey Heart",
+    "partijos": 114,
+    "av": 0,
+    "skirt": 114,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 18372,
+    "pav": "Gėrimas katėms &#8211; Miamor Trinkfein Vital",
+    "partijos": 113,
+    "av": 0,
+    "skirt": 113,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 16132,
+    "pav": "Silikoninis kačių kraikas SILICA GEL 3,8 l / ",
+    "partijos": 105,
+    "av": 0,
+    "skirt": 105,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 18366,
+    "pav": "Gėrimas katėms &#8211; Miamor Trinkfein Vital",
+    "partijos": 98,
+    "av": 0,
+    "skirt": 98,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19598,
+    "pav": "Animonda GranCarno Adult Beef + Chicken: kons",
+    "partijos": 97,
+    "av": 0,
+    "skirt": 97,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19566,
+    "pav": "Animonda GranCarno Adult Duck: konservai suau",
+    "partijos": 94,
+    "av": 0,
+    "skirt": 94,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19358,
+    "pav": "Animonda Vom Feinsten Kitten with Lamb – kons",
+    "partijos": 93,
+    "av": 0,
+    "skirt": 93,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19361,
+    "pav": "Animonda Vom Feinsten Kitten with Beef – kons",
+    "partijos": 91,
+    "av": 0,
+    "skirt": 91,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 16298,
+    "pav": "Ruda stirnos koja, 1 vnt.",
+    "partijos": 88,
+    "av": 0,
+    "skirt": 88,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19414,
+    "pav": "Animonda Vom Feinsten Adult with Poultry and ",
+    "partijos": 88,
+    "av": 0,
+    "skirt": 88,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19446,
+    "pav": "Animonda Vom Feinsten Adult with Beef and Tur",
+    "partijos": 88,
+    "av": 0,
+    "skirt": 88,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19098,
+    "pav": "Balta jaučio ausis, 1 vnt.",
+    "partijos": 82,
+    "av": 0,
+    "skirt": 82,
+    "dp_pakai": 1
+   },
+   {
+    "pid": 19492,
+    "pav": "Animonda GranCarno Adult: konservai šunims su",
+    "partijos": 79,
+    "av": 0,
+    "skirt": 79,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19408,
+    "pav": "Animonda Vom Feinsten Adult with Rabbit in Cr",
+    "partijos": 77,
+    "av": 0,
+    "skirt": 77,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19449,
+    "pav": "Animonda Vom Feinsten Adult Pate Mild Menu wi",
+    "partijos": 77,
+    "av": 0,
+    "skirt": 77,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19355,
+    "pav": "Animonda Vom Feinsten Kitten with Poultry – k",
+    "partijos": 74,
+    "av": 0,
+    "skirt": 74,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19417,
+    "pav": "Animonda Vom Feinsten Adult with Poultry and ",
+    "partijos": 73,
+    "av": 0,
+    "skirt": 73,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 17478,
+    "pav": "Miamor skanėstai katėms &#8211; salyklo ekstr",
+    "partijos": 72,
+    "av": 0,
+    "skirt": 72,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 18655,
+    "pav": "Džiovinta kiaulės uodega, 1 vnt.",
+    "partijos": 70,
+    "av": 0,
+    "skirt": 70,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19557,
+    "pav": "Animonda GranCarno Adult Multi-Meat Coctail: ",
+    "partijos": 67,
+    "av": 0,
+    "skirt": 67,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19405,
+    "pav": "Animonda Vom Feinsten Adult with Salmon and S",
+    "partijos": 66,
+    "av": 0,
+    "skirt": 66,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19504,
+    "pav": "Animonda GranCarno Adult: konservai suaugusie",
+    "partijos": 65,
+    "av": 0,
+    "skirt": 65,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19440,
+    "pav": "Animonda Vom Feinsten Adult with Chicken Live",
+    "partijos": 64,
+    "av": 0,
+    "skirt": 64,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19425,
+    "pav": "Animonda Vom Feinsten Adult with Deer &#8211;",
+    "partijos": 62,
+    "av": 0,
+    "skirt": 62,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19586,
+    "pav": "Animonda GranCarno Adult Beef + Lamb: konserv",
+    "partijos": 62,
+    "av": 0,
+    "skirt": 62,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 18369,
+    "pav": "Gėrimas katėms &#8211; Miamor Trinkfein Vital",
+    "partijos": 58,
+    "av": 0,
+    "skirt": 58,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19500,
+    "pav": "Animonda GranCarno Adult: konservai suaugusie",
+    "partijos": 54,
+    "av": 0,
+    "skirt": 54,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19553,
+    "pav": "Animonda GranCarno Adult Multi-Meat Coctail: ",
+    "partijos": 53,
+    "av": 0,
+    "skirt": 53,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19578,
+    "pav": "Animonda GranCarno Adult Beef + Rabbit with H",
+    "partijos": 53,
+    "av": 0,
+    "skirt": 53,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 16987,
+    "pav": "PESS biologinis antkaklis nuo parazitų katėms",
+    "partijos": 52,
+    "av": 0,
+    "skirt": 52,
+    "dp_pakai": 0
+   },
+   {
+    "pid": 19549,
+    "pav": "Animonda GranCarno Adult Poultry Hearts: kons",
+    "partijos": 51,
+    "av": 0,
+    "skirt": 51,
+    "dp_pakai": 0
+   }
+  ],
+  "inv_suma_plius": 7899,
+  "inv_suma_minus": -115,
+  "u1261": [
+   "processing",
+   "VENIPAK paštomatai/atsiėmimo punktai",
+   "DS",
+   "2026-10-03 09:12:43 | Inga",
+   [
+    "Karoo Wild skanėstai šunims su antilope  ×2 [vf/tiesiai]"
+   ],
+   [
+    "10-02 22:46 Likutis sumažintas: Karoo Wild skanėstai šunims su antilope ir rozmarinais, 113g (73&rarr;71)",
+    "10-02 22:47 Paysera: Užsakymo būsena po apmokėjimo",
+    "10-02 22:47 Faktai irasyti: 1 eilutes · pajamos 7,75 EUR (be PVM, po nuolaidu) · PVM 2,00 EUR · marza 2,05 EUR · kontribucija (be pristatymo) 3,38 EUR",
+    "10-02 22:47 Surūšiuota pati: Karoo Wild skanėstai šunims su antilope  — VF siunčia klientui",
+    "10-02 22:47 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+    "10-02 22:47 Email \"Naujas užsakymas\" sent.",
+    "10-02 22:47 Email \"Užsakymas vykdomas\" sent.",
+    "10-02 22:47 Paysera: Naujo užsakymo kūrimo būsena"
+   ]
+  ],
+  "u1260": [
+   "processing",
+   "VENIPAK Kurjeris",
+   "DS",
+   "2026-10-03 09:13:28 | Inga",
+   [
+    "Nobleza atviras nerūdijančio plieno tual ×1 [vf/tiesiai]",
+    "Expertus Tofu kraikas katėms, žaliosios  ×1 [vf/tiesiai]"
+   ],
+   [
+    "10-02 21:48 Likutis sumažintas: Nobleza atviras nerūdijančio plieno tualetas katėms, 50x35x19cm (1&rarr;0), Expertus Tofu kraikas katėms, žaliosios arbatos kvapo,",
+    "10-02 21:49 Paysera: Užsakymo būsena po apmokėjimo",
+    "10-02 21:49 Faktai irasyti: 2 eilutes · pajamos 29,32 EUR (be PVM, po nuolaidu) · PVM 6,85 EUR · marza 8,19 EUR · kontribucija (be pristatymo) 11,04 EUR",
+    "10-02 21:49 Surūšiuota pati: Nobleza atviras nerūdijančio plieno tual — VF siunčia klientui; Expertus Tofu kraikas katėms, žaliosios  — VF siunčia klientui",
+    "10-02 21:49 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+    "10-02 21:49 Email \"Naujas užsakymas\" sent.",
+    "10-02 21:49 Email \"Užsakymas vykdomas\" sent.",
+    "10-02 21:49 Paysera: Naujo užsakymo kūrimo būsena"
+   ]
+  ]
+ },
+ "v": "dep-084239",
+ "kurimas": 200,
+ "sid": 6990,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
