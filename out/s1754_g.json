@@ -1,0 +1,50 @@
+{
+ "1": {
+  "v": "S1754g",
+  "failai": {
+   "wp-content/uploads/petshop-feeds/google.xml": {
+    "dydis": 5278830,
+    "atc": 0,
+    "pvz": ""
+   },
+   "wp-content/uploads/petshop-feeds/kaina24.xml": {
+    "dydis": 5903536,
+    "atc": 0,
+    "pvz": ""
+   },
+   "wp-content/uploads/petshop-feeds/kainos.xml": {
+    "dydis": 5415733,
+    "atc": 0,
+    "pvz": ""
+   },
+   "wp-content/uploads/petshop-vf-cache.xml": {
+    "dydis": 8350841,
+    "atc": 0,
+    "pvz": ""
+   }
+  },
+  "log": [
+   "156.243.x.x - - [05/Oct/2026:08:41:03 +0300] \"GET /product/monge-dry-dog-spec-line-suaugusiems-visu-veisliu-sunims-su-jautiena-ir-ryziais-12kg/?add-to-cart=12466 HTTP/2.0\" 403 403 \"https://www.google.com/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36\"\n",
+   "74.125.x.x - - [05/Oct/2026:12:17:13 +0300] \"GET /wp-content/plugins/woocommerce/assets/js/frontend/add-to-cart-variation.min.js?ver=11.0.1 HTTP/2.0\" 200 4364 \"https://petshop.lt/kategorija/sunims/maistas-sunims/\" \"AdsBot-Google (+http://www.google.com/adsbot.html)\"\n",
+   "87.85.x.x - - [05/Oct/2026:14:20:10 +0300] \"GET /favicon.ico HTTP/2.0\" 302 - \"https://petshop.lt/product/saslykas-su-antiena-vistiena-jautiena-500-g-naturalus-skanestai-sunims-haumiau?add-to-cart=18642&utm_medium=referral&utm_source=kainoteka.lt\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\"\n",
+   "87.85.x.x - - [05/Oct/2026:14:20:13 +0300] \"GET /favicon.ico HTTP/2.0\" 302 - \"https://petshop.lt/product/saslykas-su-antiena-vistiena-jautiena-500-g-naturalus-skanestai-sunims-haumiau?add-to-cart=18642&utm_medium=referral&utm_source=kainoteka.lt\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\"\n",
+   "87.85.x.x - - [05/Oct/2026:14:20:23 +0300] \"GET /product/saslykas-su-antiena-vistiena-jautiena-500-g-naturalus-skanestai-sunims-haumiau?add-to-cart=18642&utm_medium=referral&utm_source=kainoteka.lt HTTP/2.0\" 403 403 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\"\n",
+   "85.254.x.x - - [05/Oct/2026:17:53:15 +0300] \"GET /product/farmina-vet-life-dog-dry-hepatic-12-kg/?add-to-cart=12466 HTTP/2.0\" 403 403 \"https://www.google.com/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36\"\n",
+   "100.19.x.x - - [05/Oct/2026:19:53:11 +0300] \"GET /product/monge-dry-cat-kitten-su-vistiena-10kg/?add-to-cart=12674 HTTP/2.0\" 403 403 \"https://www.google.com/\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Safari/537.36\"\n",
+   "87.86.x.x - - [05/Oct/2026:20:51:39 +0300] \"GET /favicon.ico HTTP/2.0\" 302 - \"https://petshop.lt/product/saslykas-su-antiena-vistiena-jautiena-500-g-naturalus-skanestai-sunims-haumiau?add-to-cart=12825&utm_medium=referral&utm_source=kainoteka.lt\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\"\n",
+   "87.86.x.x - - [05/Oct/2026:20:51:54 +0300] \"GET /favicon.ico HTTP/2.0\" 302 - \"https://petshop.lt/product/saslykas-su-antiena-vistiena-jautiena-500-g-naturalus-skanestai-sunims-haumiau?add-to-cart=12825&utm_medium=referral&utm_source=kainoteka.lt\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\"\n",
+   "87.86.x.x - - [05/Oct/2026:20:51:57 +0300] \"GET /favicon.ico HTTP/2.0\" 302 - \"https://petshop.lt/product/saslykas-su-antiena-vistiena-jautiena-500-g-naturalus-skanestai-sunims-haumiau?add-to-cart=12825&utm_medium=referral&utm_source=kainoteka.lt\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\"\n",
+   "87.86.x.x - - [05/Oct/2026:20:52:16 +0300] \"GET /product/saslykas-su-antiena-vistiena-jautiena-500-g-naturalus-skanestai-sunims-haumiau?add-to-cart=12825&utm_medium=referral&utm_source=kainoteka.lt HTTP/2.0\" 403 403 \"https://petshop.lt/product/saslykas-su-antiena-vistiena-jautiena-500-g-naturalus-skanestai-sunims-haumiau?add-to-cart=12825&utm_medium=referral&utm_source=kainoteka.lt\" \"Mozilla/5",
+   "162.141.x.x - - [05/Oct/2026:22:35:13 +0300] \"GET /favicon.ico HTTP/2.0\" 302 - \"https://petshop.lt/product/kraikas-katems-tofu-belocat-citrinu-kvapo-6-l-25-kg-2-mm-granules?add-to-cart=16132&utm_medium=referral&utm_source=kainoteka.lt\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\"\n",
+   "162.141.x.x - - [05/Oct/2026:22:35:16 +0300] \"GET /favicon.ico HTTP/2.0\" 302 - \"https://petshop.lt/product/kraikas-katems-tofu-belocat-citrinu-kvapo-6-l-25-kg-2-mm-granules?add-to-cart=16132&utm_medium=referral&utm_source=kainoteka.lt\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\"\n",
+   "162.141.x.x - - [05/Oct/2026:22:35:32 +0300] \"GET /product/kraikas-katems-tofu-belocat-citrinu-kvapo-6-l-25-kg-2-mm-granules?add-to-cart=16132&utm_medium=referral&utm_source=kainoteka.lt HTTP/2.0\" 403 403 \"-\" \"Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Safari/537.36\"\n"
+  ]
+ },
+ "v": "dep-070012",
+ "kurimas": 200,
+ "sid": 7012,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
