@@ -1,0 +1,37 @@
+{
+ "1": {
+  "v": "S1755a",
+  "failai": {
+   "petshop-404-atitikmuo.php": [
+    "7bf691b1",
+    "/** * Plugin Name: Petshop 404 atitikmuo v1.1 (S1689s, S1698) * Description: Senos platformos adresams, kurių nėra legacy-301 žemėlapyje. Veikia po petshop-legacy-301 (prio 1), tik kai is_404(). * v1.0: 301 kai paskutinis segmentas (be .html ir ID priešdėlio) TIKSLIAI = publikuotos prekės / kategorijos / gamintojo slug; alias. * v1.1 (S1698, 2026-09-20): (a) alias checkout→/kasa/, cart→/krepselis/, content/*nuostatos* → taisyklių puslapis, parduotuve/page/N → /parduotuve/; * (b) prekė yra, bet N"
+   ],
+   "petshop-ataskaita-lankomumas.php": [
+    "2fe886fb",
+    "/** * Plugin Name: Petshop Ataskaita Lankomumas * Description: Lankomumo ekranas — lankytojai per dieną, valandą ir savaitės dieną, piltuvėlis, šaltiniai (Google Ads, Kainos.lt, Kaina24…), įrenginiai, įėjimo puslapiai, paieškos, 404. * Version: 1.0 * * v1.0 (2026-09-10, S1669, Raimio prašymas „daryk\"). Tik skaitymas. * * DUOMENYS. Lankomumas — `ps_web_ivykiai` (Petshop_Analitika, sluoksnis 0: * `lankytojas_d` be slapukų, dienos druska). „Lankytojas\" = unikalus * lankytojas per dieną; laikotarpio"
+   ],
+   "petshop-legacy-301.php": [
+    "46c8948b",
+    "/** * Petshop Legacy 301 v2.1 (S436, S1668) — senos platformos adresų nukreipimas. * * v2.1 (S1668): 301 PERKELIA užklausos eilutę (gclid, gad_source, utm_*, _gl). * v2.0 ją numesdavo → PMax/Merchant paspaudimai praradavo gclid, Ads nematė konversijų. * * Vienas mechanizmas visiems seniems adresams. Žemėlapis laikomas ATSKIRAME * JSON faile ir kraunamas TIK tada, kai adresas realiai 404 — kad kiekviena * užklausa neparsintų 137 KB PHP masyvo. * * ŠEŠI SLUOKSNIAI (visi ĮŠALDYTI iš GSC 2 445 URL /"
+   ],
+   "petshop-seo.php": [
+    "95bca2c4",
+    "/** * Plugin Name: Petshop SEO v1.0 (GSC faktai · 404 su svoriu · redirect QA · sitemap · CWV · šviesoforas) * Description: SEO stebėjimas admine (TŽ v1.55 šviesoforas). Skaito Google Search Console API kasdien, * kaupia ps_fakt_gsc_*; registruoja 404 su GSC svoriu; tikrina 301 žemėlapį; sitemap; PageSpeed mobile LCP. * Rodo langą Ataskaitos → SEO. Tik skaito svetainę, nieko nekeičia. * Version: 1.3 * * S1549 (2026-09-01). Principai: tik oficialūs Google API, patys skaičiuojam tik deltas; jokių "
+   ],
+   "petshop-vf-feed.php": [
+    "1ee413b1",
+    "/** * Petshop VF Feed v1.0 (lokalus failas WP All Import'ui + cache snippet'ui) * * PRIEŽASTIS (S1591, 2026-09-02): po R191→R192 (svetainė perkelta į * petshop.lt/public_html, dev.avesa.lt liko tik router'is) URL * https://dev.avesa.lt/wp-content/petshop-xml-vf-fetcher.php grąžina 404. * Import #5 (VF katalogas) negyvas nuo 2026-08-22, Import #7 (VF likučiai) * nuo 2026-08-27, `uploads/petshop-vf-cache.xml` sustingęs 2026-08-21 12:16 — * snippet 565 „VF Sync\" kas valandą rašė 12 d. senus likučiu"
+   ]
+  },
+  "atitikmuo_hdr": "/**\n * Plugin Name: Petshop 404 atitikmuo v1.1 (S1689s, S1698)\n * Description: Senos platformos adresams, kurių nėra legacy-301 žemėlapyje. Veikia po petshop-legacy-301 (prio 1), tik kai is_404().\n *   v1.0: 301 kai paskutinis segmentas (be .html ir ID priešdėlio) TIKSLIAI = publikuotos prekės / kategorijos / gamintojo slug; alias.\n *   v1.1 (S1698, 2026-09-20): (a) alias checkout→/kasa/, cart→/krepselis/, content/*nuostatos* → taisyklių puslapis, parduotuve/page/N → /parduotuve/;\n *     (b) prekė yra, bet NE publish (draft/trash/private, pvz. Exclusion Intestinal po S1688) → 301 į jos giliausią kategoriją;\n *     (c) gamintojas pagal _legacy_manufacturer (placek-pet-products-s-r-o → /gamintojas/placek/, greenpetfood → green-petfood);\n *     (d) ARTIMIAUSIAS slug: senas eShoprent slug be ID (trixie-kilimelis-purvui-surinkti-120-80-cm) → publikuota prekė, kai\n *         VISI seno slug'o skaičiai/pakuotės sutampa ir ≥75 % žodžių randami naujame slug'e, ir geriausias kandidatas vienintelis;\n *     (e) žurnalas opcijoje ps_404_atitikmuo_log (paskutiniai 300: kelias → url, taisyklė) auditui.\n *   Kitaip lieka 404 (jokio nukreipimo į paiešką). X-Redirect-By: Petshop-404-Atitikmuo\n */",
+  "rankmath_redir": "nera lenteles",
+  "rm_404_monitor": null
+ },
+ "v": "dep-081339",
+ "kurimas": 200,
+ "sid": 7015,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
