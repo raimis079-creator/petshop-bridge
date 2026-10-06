@@ -1,0 +1,220 @@
+{
+ "1": {
+  "v": "S1754b",
+  "sent": [
+   {
+    "d": "2026-10-05",
+    "flow": "consent_changed",
+    "n": "3",
+    "a": "1"
+   },
+   {
+    "d": "2026-10-05",
+    "flow": "post_purchase_14d",
+    "n": "9",
+    "a": "1"
+   },
+   {
+    "d": "2026-10-05",
+    "flow": "post_purchase_7d",
+    "n": "20",
+    "a": "1"
+   },
+   {
+    "d": "2026-10-06",
+    "flow": "cart_abandoned",
+    "n": "1",
+    "a": "1"
+   }
+  ],
+  "statusai": [
+   {
+    "status": "deferred",
+    "n": "3"
+   },
+   {
+    "status": "pending",
+    "n": "146"
+   },
+   {
+    "status": "sent",
+    "n": "448"
+   },
+   {
+    "status": "skipped",
+    "n": "177"
+   }
+  ],
+  "problem": [],
+  "dubl": [],
+  "skip": [
+   {
+    "flow": "browse_abandoned",
+    "skip_reason": "consent_missing",
+    "n": "1"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "skip_reason": "grandine_maistas",
+    "n": "11"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "skip_reason": "similar_optout",
+    "n": "1"
+   }
+  ],
+  "ateina": [
+   {
+    "d": "2026-10-06",
+    "flow": "post_purchase_14d",
+    "n": "11"
+   },
+   {
+    "d": "2026-10-06",
+    "flow": "post_purchase_7d",
+    "n": "13"
+   },
+   {
+    "d": "2026-10-07",
+    "flow": "post_purchase_14d",
+    "n": "13"
+   },
+   {
+    "d": "2026-10-07",
+    "flow": "post_purchase_7d",
+    "n": "13"
+   }
+  ],
+  "email_uzs": [
+   {
+    "id": "36675",
+    "t": "10-05 11:29",
+    "eur": "19.21",
+    "s": "newsletter",
+    "n": "0"
+   }
+  ],
+  "part_uzs": 0,
+  "part_stat": {
+   "eil": 0,
+   "av": 0,
+   "av_ok": 0,
+   "ds": 0,
+   "ds_ok": 0,
+   "be_src": 0,
+   "dp": 0
+  },
+  "part_blogi": [],
+  "inv": {
+   "ok": 0,
+   "ne": []
+  },
+  "ai": [
+   {
+    "d": "2026-10-05",
+    "n": "3",
+    "eur": "73.75",
+    "nauji": "2"
+   }
+  ],
+  "ai_viso": [
+   {
+    "n": "8",
+    "eur": "224"
+   }
+  ],
+  "ai_sesijos": [
+   {
+    "d": "2026-10-05",
+    "s": "10"
+   },
+   {
+    "d": "2026-10-06",
+    "s": "1"
+   }
+  ],
+  "seni": [
+   [
+    "1270",
+    "10-04 10:15",
+    "MIXED",
+    [
+     "Exclusion Mediterraneo Mono  [vf/i_av]",
+     "Antienos filė juostelės, 500 [av/av]"
+    ],
+    [
+     "10-05 12:35 Tiekimas: prekės užsakytos iš Vetfarmas (partija #37, laiške kartu su užsakymais). Kelias į AV: Venipak kurjer",
+     "10-05 12:35 Tiekimas: „Exclusion Mediterraneo Mono Noble sausas pašaras šunims S, su ėriena, 7 kg“ (1 vnt) įtraukta į Vetf"
+    ]
+   ],
+   [
+    "1269",
+    "10-04 07:47",
+    "MIXED",
+    [
+     "Džiovinta kiaulės uodega, 1  [av/av]",
+     "Josera MiniJunior Duck + Sal [vf/i_av]"
+    ],
+    [
+     "10-05 12:35 Tiekimas: prekės užsakytos iš Vetfarmas (partija #37, laiške kartu su užsakymais). Kelias į AV: Venipak kurjer",
+     "10-05 12:35 Tiekimas: „Josera MiniJunior Duck + Salmon sausas pašaras mažų veislių jauniems šunims su antiena ir lašiša, 3"
+    ]
+   ],
+   [
+    "1265",
+    "10-03 20:41",
+    "MIXED",
+    [
+     "Animonda Carny Kitten – kons [av/av]",
+     "Animonda Vom Feinsten Adult  [av/av]",
+     "Animonda Vom Feinsten Adult  [av/av]",
+     "Animonda Vom Feinsten Kitten [av/av]",
+     "Animonda Vom Feinsten Kitten [av/av]",
+     "Animonda Vom Feinsten Adult  [av/av]",
+     "Animonda Vom Feinsten Adult  [av/av]",
+     "Churu kreminis skanėstas kat [vf/i_av]",
+     "Churu Luxury kreminis skanės [vf/i_av]"
+    ],
+    [
+     "10-05 12:35 Tiekimas: prekės užsakytos iš Vetfarmas (partija #37, laiške kartu su užsakymais). Kelias į AV: Venipak kurjer",
+     "10-05 12:35 Tiekimas: prekės užsakytos iš Vetfarmas (partija #37, laiške kartu su užsakymais). Kelias į AV: Venipak kurjer"
+    ]
+   ],
+   [
+    "1262",
+    "10-03 09:39",
+    "MIXED",
+    [
+     "Bazyl Ekonomik bentonitinis  [vf/i_av]",
+     "Miamor Super premium konserv [av/av]"
+    ],
+    [
+     "10-05 12:35 Tiekimas: prekės užsakytos iš Vetfarmas (partija #37, laiške kartu su užsakymais). Kelias į AV: Venipak kurjer",
+     "10-05 12:35 Tiekimas: „Bazyl Ekonomik bentonitinis kraikas katėms“ (1 vnt) įtraukta į Vetfarmas partiją #37 — parsivežam į"
+    ]
+   ],
+   [
+    "1257",
+    "10-02 11:39",
+    "MAIN",
+    [
+     "JosiCat Crispy Duck sausas p [av/i_av]",
+     "JosiCat Crunchy Chicken saus [av/]",
+     "Antkaklis katei su varpeliu  [av/]"
+    ],
+    [
+     "10-06 08:02 Siuntos numeriai išsaugoti (AV): V07267E1000314",
+     "10-06 08:02 Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga"
+    ]
+   ]
+  ]
+ },
+ "v": "dep-062822",
+ "kurimas": 200,
+ "sid": 7007,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
