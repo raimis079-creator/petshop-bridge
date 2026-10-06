@@ -1,0 +1,130 @@
+{
+ "1": {
+  "v": "S1754f",
+  "atc_statusai": {
+   "103": 3,
+   "200": 24,
+   "403": 666
+  },
+  "ip_unik": 596,
+  "ip_daugiausia": [
+   [
+    "144.31.x.x",
+    3
+   ],
+   [
+    "46.18.x.x",
+    3
+   ],
+   [
+    "87.86.x.x",
+    3
+   ],
+   [
+    "87.86.x.x",
+    3
+   ],
+   [
+    "87.85.x.x",
+    2
+   ],
+   [
+    "87.86.x.x",
+    2
+   ]
+  ],
+  "ip_pirmas_baitas_top": {
+   "46": 63,
+   "87": 226,
+   "143": 75,
+   "144": 38,
+   "146": 56,
+   "156": 1,
+   "162": 62,
+   "179": 1,
+   "207": 34,
+   "216": 32
+  },
+  "metodai": {
+   "GET": 666
+  },
+  "formos": {
+   "/product/…?add-to-cart=N": 655,
+   "/product/…?add-to-cart=N&svoris=N": 3,
+   "/product/…?add-to-cart=N&utm_medium=referral&utm_source=kainoteka.lt": 3,
+   "/?add-to-cart=N": 2,
+   "/product/…?add-to-cart=N&utm_medium=cpc&utm_source=kainaN.lt": 1,
+   "/parduotuve/?filter_name=%CN%BEaislas&page=N&add-to-cart=N": 1,
+   "/kategorija/…?add-to-cart=N": 1
+  },
+  "ua_top": {
+   "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/146.0.0.0 Sa": 656,
+   "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/154.0.0.0 Sa": 5,
+   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chr": 3,
+   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/15": 1,
+   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/14": 1
+  },
+  "ua_unik": 5,
+  "valandos": {
+   "10": 25,
+   "11": 30,
+   "12": 23,
+   "13": 13,
+   "14": 28,
+   "15": 27,
+   "16": 18,
+   "17": 24,
+   "18": 13,
+   "19": 23,
+   "20": 27,
+   "21": 30,
+   "22": 24,
+   "23": 30,
+   "00": 33,
+   "01": 44,
+   "02": 43,
+   "03": 29,
+   "04": 36,
+   "05": 37,
+   "06": 37,
+   "07": 31,
+   "08": 19,
+   "09": 22
+  },
+  "referer": {
+   "-": 629,
+   "petshop.lt": 34,
+   "www.google.com": 3
+  },
+  "ip_elgsena": {
+   "tik_atc": 2,
+   "su_kitais": 594,
+   "su_statika": 7
+  },
+  "kita_veikla": {
+   "/favicon.ico 302": 1587,
+   "/ 200": 12,
+   "/exclusion-mono-protein-mediterraneo-sau 301": 1,
+   "/product/quattro-visavertis-sausas-pasar 200": 1,
+   "/product/quattro-sport-su-paukstiena-sau 200": 1,
+   "/product/hikari-cichlid-excel-medium-N 200": 1,
+   "/product/exclusion-mono-protein-mediterr 200": 1,
+   "/wp-json/petshop/vN/feeding-calc 200": 1,
+   "/zaislas-katei-skanestu-dozatorius-gaidz 301": 1,
+   "/sitemap.xml 301": 1
+  },
+  "pvz": [
+   "143.14.x.x GET /product/green-petfood-veggiedog-origin-sausas-pasaras-sunims-10-kg?add-to-cart=12468 | ref -",
+   "144.31.x.x GET /product/josera-lamb-rice-a-s-sausas-pasaras-sunims-su-eriena-ir-ryziais-3-kg?add-to-cart=12540 | ref -",
+   "143.14.x.x GET /product/flexi-pavadelis-suniui-new-classic-xs-virvinis-3m-rozinis?add-to-cart=13630 | ref -",
+   "143.14.x.x GET /product/zaislas-suniui-gumine-kvepianti-zuvis-dantu-prieziurai-16-cm?add-to-cart=14973 | ref -"
+  ]
+ },
+ "v": "dep-064714",
+ "kurimas": 200,
+ "sid": 7011,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
