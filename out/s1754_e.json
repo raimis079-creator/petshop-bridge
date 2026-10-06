@@ -1,0 +1,148 @@
+{
+ "1": {
+  "v": "S1754e",
+  "eil": 44738,
+  "nuo": "05/Oct/2026:00:10:17 +0300",
+  "iki": "06/Oct/2026:00:09:42 +0300",
+  "pvz": [
+   "114.119.x.x - - [05/Oct/2026:00:10:17 +0300] \"GET /product/josicat-classic-sterilised-10-kg-sausas-maistas-katems/ HTTP/2.0\" 200 67155 \"https://petshop.lt/product-sitemap3.xml\" \"Mozilla/5.0 (Linux; Android 7.0;) AppleWebKit/537.36 (HTML",
+   "79.98.x.x - - [05/Oct/2026:00:10:19 +0300] \"POST /wp-cron.php?doing_wp_cron=1791148219.6302659511566162109375 HTTP/2.0\" 103 - \"-\" \"WordPress/6.9.4; https://petshop.lt\"\n"
+  ],
+  "statusai": {
+   "301": 3129,
+   "302": 2101,
+   "403": 973,
+   "404": 3359,
+   "500": 18,
+   "2xx": 30656,
+   "1xx": 3522,
+   "4xx": 980
+  },
+  "tipai": {
+   "statika": 14072,
+   "kiti puslapiai": 8696,
+   "wp-cron": 5818,
+   "preke": 5751,
+   "admin-ajax": 3065,
+   "wc-ajax": 1957,
+   "kategorija/gamintojas": 1669,
+   "admin/login": 850,
+   "importai": 680,
+   "add-to-cart": 665,
+   "wp-json": 544,
+   "sitemap/feed/robots": 513,
+   "kasa/krepselis/paskyra": 225,
+   "paieska": 141,
+   "filtrai": 92
+  },
+  "kas": {
+   "Narsykles (zmones arba apsimetantys)": 20743,
+   "WordPress (pati svetaine)": 7331,
+   "AI/socialiniai robotai": 4561,
+   "Kita": 3223,
+   "SEO/kiti paieskos robotai": 2937,
+   "Google robotai": 2161,
+   "Kiti robotai/skriptai": 1776,
+   "be_UA": 1304,
+   "Bing": 690,
+   "Paslaugos (stebejimas, mokejimai, kurjeriai)": 12
+  },
+  "kas_tipas_top": {
+   "Narsykles (zmones arba apsimetantys) | 200 statika": 6355,
+   "WordPress (pati svetaine) | 200 wp-cron": 4235,
+   "AI/socialiniai robotai | 200 statika": 2278,
+   "Narsykles (zmones arba apsimetantys) | 200 kiti puslapiai": 2056,
+   "Narsykles (zmones arba apsimetantys) | 302 statika": 1995,
+   "Narsykles (zmones arba apsimetantys) | 200 preke": 1761,
+   "Narsykles (zmones arba apsimetantys) | 404 kiti puslapiai": 1682,
+   "Narsykles (zmones arba apsimetantys) | 200 admin-ajax": 1606,
+   "WordPress (pati svetaine) | 103 wp-cron": 1576,
+   "WordPress (pati svetaine) | 103 admin-ajax": 1400,
+   "SEO/kiti paieskos robotai | 200 preke": 1249,
+   "Kita | 301 kiti puslapiai": 1217,
+   "Kita | 200 preke": 993,
+   "be_UA | 404 kiti puslapiai": 942,
+   "Narsykles (zmones arba apsimetantys) | 200 wc-ajax": 926,
+   "SEO/kiti paieskos robotai | 200 statika": 811,
+   "Google robotai | 200 statika": 773,
+   "Narsykles (zmones arba apsimetantys) | 403 add-to-cart": 663,
+   "Narsykles (zmones arba apsimetantys) | 200 kategorija/gamintojas": 625,
+   "Kita | 200 importai": 618,
+   "Narsykles (zmones arba apsimetantys) | 200 admin/login": 587,
+   "Narsykles (zmones arba apsimetantys) | 301 kiti puslapiai": 569,
+   "AI/socialiniai robotai | 200 preke": 565,
+   "Kiti robotai/skriptai | 410 statika": 485,
+   "AI/socialiniai robotai | 301 kiti puslapiai": 446,
+   "Kiti robotai/skriptai | 200 preke": 403,
+   "AI/socialiniai robotai | 200 wc-ajax": 394,
+   "Google robotai | 200 wc-ajax": 380,
+   "Narsykles (zmones arba apsimetantys) | 103 kiti puslapiai": 358,
+   "Google robotai | 200 preke": 353
+  },
+  "ip_unik": 4804,
+  "ip403_unik": 648,
+  "top_ip": [
+   [
+    "79.98.x.x",
+    8012
+   ],
+   [
+    "130.131.x.x",
+    2320
+   ],
+   [
+    "216.128.x.x",
+    1328
+   ],
+   [
+    "45.148.x.x",
+    728
+   ],
+   [
+    "66.249.x.x",
+    500
+   ],
+   [
+    "20.210.x.x",
+    499
+   ],
+   [
+    "2a00:1eb8:c075:fbb8:8973:d99a:1538:445b",
+    454
+   ],
+   [
+    "78.58.x.x",
+    436
+   ]
+  ],
+  "kiti_ua": {
+   "PetshopSEO-QA-runner": 2320,
+   "CronURL": 622,
+   "tphotobot/0.1 (+https://crawler.estidraft.com/bot)": 594,
+   "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Reflect": 339,
+   "Mozilla/5.0 (compatible; ExaSearchBot/1.0; +https://crawler.exa.ai/)": 335,
+   "Mozilla/5.0 (compatible; SERankingBacklinksBot/1.0; +https://seranking": 201,
+   "meta-externalads/1.1 (+https://developers.facebook.com/docs/sharing/we": 107,
+   "Mozilla/5.0 AppleWebKit/537.36 (KHTML, like Gecko; compatible; Keenabl": 92,
+   "webapp-mapper-authorized-probe/0.1": 78,
+   "Mozlila/5.0 (Linux; Android 7.0; SM-G892A Bulid/NRD90M; wv) AppleWebKi": 72
+  },
+  "narsykliu_ua_psl": {
+   "Mozilla/5.0 (Linux; Android 10; K) AppleWebKit/537.36 (KHTML": 1866,
+   "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36": 1029,
+   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/": 465,
+   "Mozilla/5.0 (iPhone; CPU iPhone OS 18_7 like Mac OS X) Apple": 417,
+   "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:151.0) Geck": 86,
+   "Mozilla/5.0 (iPhone; CPU iPhone OS 18_5_0 like Mac OS X) App": 71,
+   "Mozilla/5.0 (Linux; Android 16; SM-S911B Build/BP4A.251205.0": 64,
+   "Mozilla/5.0 (iPhone; CPU iPhone OS 26_5_2 like Mac OS X) App": 58
+  }
+ },
+ "v": "dep-064113",
+ "kurimas": 200,
+ "sid": 7010,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
