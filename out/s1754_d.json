@@ -1,0 +1,85 @@
+{
+ "1": {
+  "v": "S1754d",
+  "kodas": "    public static function uztvara_suvestine() {\n        $dom = dirname( ABSPATH ); $f = null; $fm = 0;\n        foreach ( glob( $dom . '/logs/*.tar.gz*' ) ?: array() as $fx ) { $m = filemtime( $fx ); if ( (int) wp_date( 'G', $m ) <= 1 && $m > $fm ) { $fm = $m; $f = $fx; } }\n        if ( ! $f ) return array( 'pilka', 'Botų užtvara: access log archyvo nėra' );\n        $k = 'ps_uztvara_suvestine'; $c = get_option( $k ); if ( is_array( $c ) && ( $c['mtime'] ?? 0 ) === $fm ) return $c['rez'];\n        $t0 = microtime( true ); $h = @gzopen( $f, 'rb' ); if ( ! $h ) return array( 'pilka', 'Botų užtvara: archyvo neatidaro' );\n        gzread( $h, 512 ); $n = 0; $s403 = 0; $s403f = 0; $s500 = 0; $s302 = 0; $ip = array(); $nutr = false;\n        while ( ( $ln = gzgets( $h, 8192 ) ) !== false ) {\n            if ( ! preg_match( '/^(\\S+) \\S+ \\S+ \\[[^\\]]*\\] \"(\\S+) (\\S+)[^\"]*\" (\\d{3}) /', $ln, $m ) ) continue;\n            $n++; $st = $m[4];\n            if ( $st === '403' ) { $s403++; if ( strpos( $m[3], 'filter_' ) !== false || strpos( $m[3], 'yith_wcan' ) !== false || strpos( $m[3], 'add-to-cart' ) !== false ) { $s403f++; $ip[ $m[1] ] =\n            elseif ( $st === '500' ) $s500++;\n            elseif ( $st === '302' ) $s302++;\n            if ( ( $n & 4095 ) === 0 && microtime( true ) - $t0 > 60 ) { $nutr = true; break; }\n        }\n        gzclose( $h );\n        $lyg = $s500 >= 50 ? 'raudona' : ( ( $s500 >= 10 || $s403f >= 150000 ) ? 'geltona' : 'zalia' );\n        $tx = sprintf( 'Botų užtvara (log %s): 403 %s (filtrai/atc %s, IP %s), 500 %s, 302 %s, viso %s užkl.%s', wp_date( 'm-d', $fm - 6 * 3600 ), number_format( $s403, 0, ',', ' ' ), number_format( $\n        $rez = array( $lyg, $tx ); update_option( $k, array( 'mtime' => $fm, 'rez' => $rez, 'kada' => current_time( 'mysql' ) ), false );\n        return $rez;\n    }\n\n    /** Suvestinė žurnalui/sargams: [diena => [atc => n, filtrai => n, ip_unik => n]] */\n    public static function suvestine( $dienos = 3 ) {\n        $out = array();\n        for ( $i = 0; $i < $dienos; $i++ ) {\n            $d = gmdate( 'Y-m-d', time() - $i * 86400 ); $f = self::LOG_DIR . \"/$d.log\";\n            if ( ! file_exists( $f ) ) continue;\n            $atc = 0; $fl = 0; $ips = array();\n            $h = fopen( $f, 'r' ); while ( ( $ln = fgets( $h ) ) !== false ) { $p = explode( \"\\t\", $ln ); if ( count( $p ) < 3 ) continue; if ( $p[1] === 'atc' ) $atc++; else $fl++; $ips[ $p[2] ] = 1;\n            $out[ $d ] = array( 'atc' => $atc, 'filtrai' => $fl, 'ip_unik' => count( $ips ) );\n        }\n        return $out;\n    }\n}\nPetshop_Botu_Sargas::init();\n",
+  "logs": [
+   [
+    "Oct-2026.tar.gz",
+    383765,
+    "10-06 03:55"
+   ],
+   [
+    "Oct-2026.tar.gz.1",
+    1428858,
+    "10-05 21:10"
+   ],
+   [
+    "Oct-2026.tar.gz.10",
+    128872,
+    "10-01 03:03"
+   ],
+   [
+    "Oct-2026.tar.gz.11",
+    289505,
+    "10-01 01:21"
+   ],
+   [
+    "Oct-2026.tar.gz.12",
+    12365,
+    "09-30 21:10"
+   ],
+   [
+    "Oct-2026.tar.gz.2",
+    268467,
+    "10-05 02:50"
+   ],
+   [
+    "Oct-2026.tar.gz.3",
+    1368215,
+    "10-04 21:10"
+   ],
+   [
+    "Oct-2026.tar.gz.4",
+    425248,
+    "10-04 03:42"
+   ],
+   [
+    "Oct-2026.tar.gz.5",
+    1363402,
+    "10-03 21:11"
+   ],
+   [
+    "Oct-2026.tar.gz.6",
+    222820,
+    "10-03 01:34"
+   ],
+   [
+    "Oct-2026.tar.gz.7",
+    1311429,
+    "10-02 21:10"
+   ],
+   [
+    "Oct-2026.tar.gz.8",
+    338686,
+    "10-02 02:01"
+   ],
+   [
+    "Oct-2026.tar.gz.9",
+    1917264,
+    "10-01 21:10"
+   ],
+   [
+    "php_error.log",
+    6197575,
+    "10-06 06:29"
+   ]
+  ]
+ },
+ "v": "dep-063905",
+ "kurimas": 200,
+ "sid": 7009,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
