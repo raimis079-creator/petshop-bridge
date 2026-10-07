@@ -1,0 +1,131 @@
+{
+ "1": {
+  "v": "S1756b",
+  "failai": [
+   "Oct-2026.tar.gz",
+   "Oct-2026.tar.gz.1",
+   "Oct-2026.tar.gz.2"
+  ],
+  "statusai": {
+   "200": [
+    29760,
+    16497
+   ],
+   "302": [
+    866,
+    307
+   ],
+   "403": [
+    771,
+    405
+   ],
+   "404": [
+    2552,
+    1401
+   ],
+   "500": [
+    10,
+    8
+   ]
+  },
+  "eil": 41186,
+  "po_1110": 21786,
+  "blk_iki_1110": 4818,
+  "blk_po_1110": 0,
+  "blk_po_kas": [],
+  "geri_robotai": {
+   "Bing": 1239,
+   "Googlebot": 783,
+   "FB perziuros": 741,
+   "AdsBot": 640,
+   "Perplexity": 267,
+   "ChatGPT": 124,
+   "GoogleOther": 123,
+   "Claude": 99,
+   "Apple": 53,
+   "Yandex": 23,
+   "DuckDuckGo": 7
+  },
+  "fatal_nuo_1006": 4,
+  "fatal_pvz": [
+   "[06-Oct-2026 11:32:55 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_checkout() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/themes/flatsome-child/functions.php:16",
+   "[06-Oct-2026 17:25:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_checkout() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/themes/flatsome-child/functions.php:16",
+   "[06-Oct-2026 17:25:21 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_checkout() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/themes/flatsome-child/functions.php:16"
+  ],
+  "laiskai": [
+   {
+    "d": "2026-10-06",
+    "n": "20"
+   },
+   {
+    "d": "2026-10-07",
+    "n": "40"
+   }
+  ],
+  "laiskai_problem": 0,
+  "laiskai_dubl": 0,
+  "kanalai": [
+   {
+    "d": "2026-10-06",
+    "k": "mokamas",
+    "n": "8",
+    "eur": "388"
+   },
+   {
+    "d": "2026-10-06",
+    "k": "direct",
+    "n": "3",
+    "eur": "177"
+   },
+   {
+    "d": "2026-10-06",
+    "k": "organika",
+    "n": "2",
+    "eur": "48"
+   },
+   {
+    "d": "2026-10-06",
+    "k": "email",
+    "n": "1",
+    "eur": "34"
+   },
+   {
+    "d": "2026-10-07",
+    "k": "mokamas",
+    "n": "7",
+    "eur": "266"
+   },
+   {
+    "d": "2026-10-07",
+    "k": "direct",
+    "n": "2",
+    "eur": "67"
+   }
+  ],
+  "misrus": {
+   "1262": [
+    "completed",
+    "10-07 11:06 Klientui išsiųsta „Užsakymas išsiųstas“ (beatrice.siaulyte@gmail.com): V07267E1000330"
+   ],
+   "1265": [
+    "completed",
+    "10-07 11:06 Klientui išsiųsta „Užsakymas išsiųstas“ (zitavetroviene@gmail.com): V07267E1000331"
+   ],
+   "1269": [
+    "completed",
+    "10-07 11:06 Klientui išsiųsta „Užsakymas išsiųstas“ (asta.kzk@gmail.com): V07267E1000332"
+   ],
+   "1270": [
+    "completed",
+    "10-07 11:06 Klientui išsiųsta „Užsakymas išsiųstas“ (dainiusposiunas@gmail.com): V07267E1000333"
+   ]
+  }
+ },
+ "v": "dep-171147",
+ "kurimas": 200,
+ "sid": 7017,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
