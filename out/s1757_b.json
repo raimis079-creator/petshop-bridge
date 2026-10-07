@@ -1,5 +1,27 @@
 {
- "v": "dep-174938",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "1": {
+  "v": "S1757b",
+  "fatal": [
+   "[07-Oct-2026 17:49:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_product() in wp-content/mu-plugins/petshop-laukai.php:682",
+   "Stack trace:",
+   "#0 wp-includes/class-wp-hook.php(341): Petshop_Laukai::vitrina_init()",
+   "#1 wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()",
+   "#2 wp-includes/plugin.php(570): WP_Hook->do_action()",
+   "#3 wp-includes/class-wp.php(838): do_action_ref_array()",
+   "#4 wp-includes/functions.php(1343): WP->main()",
+   "#5 wp-blog-header.php(16): wp()",
+   "#6 wp-activate.php(14): require('...')",
+   "#7 {main}",
+   "  thrown in wp-content/mu-plugins/petshop-laukai.php on line 682",
+   "[07-Oct-2026 17:51:26 UTC] Užsakymas patvirtintas: užsakymas 36733, suma: 31.78EUR",
+   ""
+  ]
+ },
+ "v": "dep-175307",
+ "kurimas": 200,
+ "sid": 7023,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
 }
