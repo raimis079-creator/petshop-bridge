@@ -1,0 +1,47 @@
+{
+ "1": {
+  "v": "S1757a",
+  "f": "1",
+  "md5": "7d8057c5ab4e1a0605ac554e97680d62",
+  "sena_n": 1,
+  "nauja_n": 0,
+  "tok": "ok",
+  "naujas_md5": "eef39b6a5f79f23b887bdb0904d45913"
+ },
+ "2": {
+  "v": "S1757a",
+  "f": "2",
+  "md5": "7d8057c5ab4e1a0605ac554e97680d62",
+  "sena_n": 1,
+  "nauja_n": 0,
+  "tok": "ok",
+  "naujas_md5": "eef39b6a5f79f23b887bdb0904d45913",
+  "bak_md5": "7d8057c5ab4e1a0605ac554e97680d62",
+  "md5_po": "eef39b6a5f79f23b887bdb0904d45913",
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/wp-admin/admin-ajax.php": [
+    400,
+    0
+   ],
+   "/wp-json/": [
+    200,
+    0
+   ]
+  }
+ },
+ "v": "dep-174529",
+ "kurimas": 200,
+ "sid": 7021,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
