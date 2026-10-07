@@ -1,0 +1,39 @@
+{
+ "3": {
+  "v": "S1757a",
+  "f": "3",
+  "md5": "eef39b6a5f79f23b887bdb0904d45913",
+  "sena_n": 0,
+  "nauja_n": 1,
+  "wp_activate": [
+   500,
+   0
+  ],
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/wp-admin/admin-ajax.php": [
+    400,
+    0
+   ],
+   "/wp-json/": [
+    200,
+    0
+   ]
+  },
+  "nauji_fatal": 1
+ },
+ "v": "dep-174758",
+ "kurimas": 200,
+ "sid": 7022,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
