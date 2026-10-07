@@ -1,0 +1,53 @@
+{
+ "1": {
+  "v": "S1756c",
+  "dienos": {
+   "19-Sep-2026": 12,
+   "20-Sep-2026": 7,
+   "21-Sep-2026": 7,
+   "23-Sep-2026": 29,
+   "24-Sep-2026": 44,
+   "25-Sep-2026": 2,
+   "26-Sep-2026": 4238,
+   "27-Sep-2026": 2,
+   "29-Sep-2026": 4,
+   "30-Sep-2026": 2,
+   "03-Oct-2026": 5,
+   "04-Oct-2026": 8,
+   "05-Oct-2026": 4,
+   "06-Oct-2026": 4
+  },
+  "kur": {
+   "Uncaught TypeError: call_user_func_array(): Argument #1 ($callback) must be a valid callback, class Petshop_DP_Kainos does not have a method": 4232,
+   "Uncaught TypeError: strstr(): Argument #1 ($haystack) must be of type string, WP_Error given in /home/gyvunai2/domains/petshop.lt/public_htm": 84,
+   "Uncaught Error: Call to undefined function is_checkout() in themes/flatsome-child/f": 20,
+   "Uncaught Error: Call to undefined method WP_Error::get_matched_route() in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api": 13,
+   "Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-include": 7
+  },
+  "fn": [
+   "9:     $brand_taxonomy = get_taxonomy('product_brand');",
+   "10: ",
+   "11:     if ( ! $brand_taxonomy ) {",
+   "12:         return $taxonomies;",
+   "13:     }",
+   "14: ",
+   "15:     if ( empty($brand_taxonomy->labels) ) {",
+   "16:         $brand_taxonomy->labels = get_taxonomy_labels($brand_taxonomy);",
+   "17:     }",
+   "18: ",
+   "19:     if ( empty($brand_taxonomy->labels->singular_name) ) {",
+   "20:         $brand_taxonomy->labels->singular_name = 'Prekių ženklas';",
+   "21:     }",
+   "22: ",
+   "23:     if ( empty($brand_taxonomy->label) ) {",
+   "24:         $brand_taxonomy->label = 'Prekių ženklai';"
+  ]
+ },
+ "v": "dep-171328",
+ "kurimas": 200,
+ "sid": 7018,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
