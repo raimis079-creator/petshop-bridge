@@ -1,0 +1,35 @@
+{
+ "1": {
+  "v": "S1759f",
+  "f": "1",
+  "wp_mail": true,
+  "klaida": null,
+  "sek": 0.1,
+  "laikas_utc": "08:29:41",
+  "wpms_klaidos": []
+ },
+ "2": {
+  "v": "S1759f",
+  "f": "2",
+  "gautas": 1,
+  "aplankas": "/new",
+  "laikas_utc": "08:29:42",
+  "antrastes": [
+   "Return-path: <uzsakymai@petshop.lt>",
+   "Received: from mail by isopas.serveriai.lt with spam-scanned (Exim 4.97.1) (envelope-from <uzsakymai@petshop.lt>) id 1xEjVV-000000004KC-48Jd for terra@gyvunai.lt; Thu, 08 Oct 2026 11:29:42 +0300",
+   "Received: from [79.98.29.24] (helo=dev.avesa.lt) by isopas.serveriai.lt with esmtpsa (TLS1.2) tls TLS_ECDHE_RSA_WITH_AES_128_GCM_SHA256 (Exim 4.97.1) (envelope-from <uzsakymai@petshop.lt>) id 1xEjVV-000000004K7-3zKp for terra@gyvunai.lt; Thu, 08 Oct 2026 11:29:41 +0300",
+   "Date: Thu, 8 Oct 2026 08:29:41 +0000",
+   "To: terra@gyvunai.lt",
+   "From: \"Petshop.lt\" <uzsakymai@petshop.lt>",
+   "Subject: =?UTF-8?Q?petshop.lt_testas:_lai=C5=A1kai_i=C5=A1eina_[S1759-testas]?="
+  ],
+  "nauji_bounce_po_0035": 0
+ },
+ "v": "dep-082835",
+ "kurimas": 200,
+ "sid": 7035,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
