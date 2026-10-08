@@ -1,0 +1,115 @@
+{
+ "1": {
+  "v": "S1759e",
+  "f": "1",
+  "wpms": {
+   "mailer": "smtp",
+   "host": "isopas.serveriai.lt",
+   "user": "uzsakymai@petshop.lt",
+   "pass_yra": true
+  },
+  "options": {
+   "isopas": [
+    {
+     "n": "wp_mail_smtp",
+     "len": "2755",
+     "autoload": "off"
+    }
+   ],
+   "uzsakymai@petshop.lt": [
+    {
+     "n": "woocommerce_email_from_address",
+     "len": "20",
+     "autoload": "off"
+    },
+    {
+     "n": "woocommerce_new_order_settings",
+     "len": "331",
+     "autoload": "on"
+    },
+    {
+     "n": "woocommerce_cancelled_order_settings",
+     "len": "312",
+     "autoload": "on"
+    },
+    {
+     "n": "woocommerce_failed_order_settings",
+     "len": "467",
+     "autoload": "on"
+    },
+    {
+     "n": "woocommerce_admin_payment_gateway_enabled_settings",
+     "len": "280",
+     "autoload": "on"
+    },
+    {
+     "n": "wp_mail_smtp",
+     "len": "2755",
+     "autoload": "off"
+    },
+    {
+     "n": "ps_cc_v2_preview",
+     "len": "2710",
+     "autoload": "off"
+    },
+    {
+     "n": "ps_dev_pastas_zurnalas",
+     "len": "7145",
+     "autoload": "off"
+    },
+    {
+     "n": "ps_s1745t_laiskai",
+     "len": "339",
+     "autoload": "off"
+    }
+   ],
+   "petshop.lt:465": [],
+   "smtp_pass": [],
+   "imap": []
+  },
+  "mailpoet_mta": "",
+  "mailpoet_sender": "raimundas@gyvunai.lt",
+  "mailpoet_aktyvus": false,
+  "konst": {
+   "WPMS_ON": 0,
+   "WPMS_SMTP_PASS": 0,
+   "SMTP_PASS": 0,
+   "SMTP_PASSWORD": 0,
+   "MAIL_PASSWORD": 0
+  },
+  "usermeta_smtp": 0
+ },
+ "2": {
+  "v": "S1759e",
+  "f": "2",
+  "failu": 1266,
+  "rasta": [
+   [
+    "public_html/wp-content/mu-plugins/petshop-av-dropship.php",
+    24,
+    "phpmailer_init",
+    "* (PHPMailer To po phpmailer_init). Jei tiekėjas tarp tikrų gavėjų neatsidūrė → ne „išsiųsta\"."
+   ],
+   [
+    "public_html/wp-content/mu-plugins/petshop-av-dropship.php",
+    1211,
+    "phpmailer_init",
+    "add_action( 'phpmailer_init', $gaudykle, 1 );"
+   ],
+   [
+    "public_html/wp-content/mu-plugins/petshop-av-dropship.php",
+    1213,
+    "phpmailer_init",
+    "remove_action( 'phpmailer_init', $gaudykle, 1 );"
+   ]
+  ],
+  "crontab_failai": []
+ },
+ "v": "dep-081715",
+ "kurimas": 200,
+ "sid": 7033,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
