@@ -1,0 +1,52 @@
+{
+ "3": {
+  "v": "S1759e",
+  "f": "3",
+  "failu": 14733,
+  "rasta": [
+   [
+    "public_html/wp-content/plugins/petshop-esp/includes/class-sender-adapter.php",
+    363,
+    "uzsakymai@petshop.lt",
+    "array( 'email' => 'uzsakymai@petshop.lt', 'name' => 'Petshop.lt' ),"
+   ],
+   [
+    "public_html/wp-content/plugins/petshop-core/templates/emails/post-purchase-7d.php",
+    41,
+    "uzsakymai@petshop.lt",
+    "'Jei kas nors netiko, tiesiog atsakykite į šį laišką (uzsakymai@petshop.lt) — padėsime.', 14"
+   ],
+   [
+    "public_html/wp-content/plugins/petshop-core/templates/emails/post-purchase-2d.php",
+    15,
+    "uzsakymai@petshop.lt",
+    "*   `Reply-To: \"Petshop.lt\" <uzsakymai@petshop.lt>`."
+   ],
+   [
+    "public_html/wp-content/plugins/petshop-core/templates/emails/post-purchase-2d.php",
+    86,
+    "uzsakymai@petshop.lt",
+    "'Taip pat galite rašyti adresu uzsakymai@petshop.lt.'"
+   ],
+   [
+    "public_html/wp-content/plugins/petshop-core/templates/emails/shipment-returned.php",
+    36,
+    "uzsakymai@petshop.lt",
+    "'Jei norite siuntą gauti pakartotinai, atsakykite į šį laišką (uzsakymai@petshop.lt) — suderinsime pristatymą.'"
+   ],
+   [
+    "public_html/wp-content/plugins/petshop-core/templates/emails/consent-changed.php",
+    63,
+    "uzsakymai@petshop.lt",
+    "'Jei šio pakeitimo nedarėte, praneškite mums adresu <a href=\"mailto:uzsakymai@petshop.lt\" style=\"color:#2d6a35;\">uzsakymai@petshop.lt</a>.'"
+   ]
+  ]
+ },
+ "v": "dep-081856",
+ "kurimas": 200,
+ "sid": 7034,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
