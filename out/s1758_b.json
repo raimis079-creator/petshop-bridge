@@ -1,0 +1,111 @@
+{
+ "1": {
+  "v": "S1758b",
+  "failai": [
+   "Oct-2026.tar.gz",
+   "Oct-2026.tar.gz.1",
+   "Oct-2026.tar.gz.2"
+  ],
+  "statusai": {
+   "200": [
+    22406,
+    13189
+   ],
+   "302": [
+    417,
+    289
+   ],
+   "403": [
+    300,
+    279
+   ],
+   "404": [
+    3224,
+    2620
+   ],
+   "500": [
+    8,
+    3
+   ]
+  },
+  "eil": 32342,
+  "po_1110": 19690,
+  "blk_iki_1110": 0,
+  "blk_po_1110": 0,
+  "blk_po_kas": [],
+  "geri_robotai": {
+   "Perplexity": 1013,
+   "Googlebot": 792,
+   "Bing": 757,
+   "AdsBot": 498,
+   "ChatGPT": 291,
+   "FB perziuros": 243,
+   "Claude": 212,
+   "GoogleOther": 187,
+   "Apple": 136,
+   "Yandex": 19,
+   "DuckDuckGo": 11
+  },
+  "fatal_nuo_1007": 1,
+  "fatal_pvz": [
+   "[07-Oct-2026 17:49:08 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_product() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php:682"
+  ],
+  "laiskai": [
+   {
+    "d": "2026-10-07",
+    "n": "48"
+   },
+   {
+    "d": "2026-10-08",
+    "n": "2"
+   }
+  ],
+  "laiskai_problem": 0,
+  "laiskai_dubl": 0,
+  "kanalai": [
+   {
+    "d": "2026-10-07",
+    "k": "mokamas",
+    "n": "8",
+    "eur": "275"
+   },
+   {
+    "d": "2026-10-07",
+    "k": "direct",
+    "n": "3",
+    "eur": "99"
+   },
+   {
+    "d": "2026-10-08",
+    "k": "mokamas",
+    "n": "1",
+    "eur": "12"
+   }
+  ],
+  "misrus": {
+   "1262": [
+    "completed",
+    "10-07 11:06 Klientui išsiųsta „Užsakymas išsiųstas“ (beatrice.siaulyte@gmail.com): V07267E1000330"
+   ],
+   "1265": [
+    "completed",
+    "10-07 11:06 Klientui išsiųsta „Užsakymas išsiųstas“ (zitavetroviene@gmail.com): V07267E1000331"
+   ],
+   "1269": [
+    "completed",
+    "10-07 11:06 Klientui išsiųsta „Užsakymas išsiųstas“ (asta.kzk@gmail.com): V07267E1000332"
+   ],
+   "1270": [
+    "completed",
+    "10-07 11:06 Klientui išsiųsta „Užsakymas išsiųstas“ (dainiusposiunas@gmail.com): V07267E1000333"
+   ]
+  }
+ },
+ "v": "dep-073657",
+ "kurimas": 200,
+ "sid": 7025,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
