@@ -1,0 +1,61 @@
+{
+ "1": {
+  "v": "S1760f",
+  "wpms": [
+   {
+    "d": "2026-09-22",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-29",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-05",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "n": "3"
+   },
+   {
+    "d": "2026-10-08",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address.",
+    "n": "1"
+   }
+  ],
+  "u1339": [
+   "completed",
+   "MAIN",
+   [
+    "Animonda GranCarno Adult Beef  [av]"
+   ],
+   [
+    "10-08 12:17:01 Stock hold of 90 minutes applied to: - Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėri",
+    "10-08 12:17:01 Svečio užsakymas priskirtas esamai paskyrai #2889 pagal el. paštą (S1690).",
+    "10-08 12:17:02 Vykdymas: MAIN — AV 18 vnt (1 siunta(-os)) · dropship pirma",
+    "10-08 12:17:02 Likutis sumažintas: Animonda GranCarno Adult Beef + Lamb: konservai šunims su šviežia jautiena ir ėriena, 400 g (61&rarr",
+    "10-08 12:17:02 Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
+    "10-08 12:17:03 Email \"Naujas užsakymas\" sent.",
+    "10-08 12:39:20 Pažymėta kaip apmokėta darbalaukyje. Mokėjimo būdas: Bankinis pavedimas. Vartotojas: Inga. Laiškas klientui: išsiųstas.",
+    "10-08 12:39:20 Payment complete.",
+    "10-08 12:39:20 AV nurašymas: #19586 grynai AV 61 -> 43",
+    "10-08 12:39:20 Partijos nurašytos: #19586 −18 vnt. (1 partijos)",
+    "10-08 12:39:21 Faktai irasyti: 1 eilutes · pajamos 35,11 EUR (be PVM, po nuolaidu) · PVM 7,37 EUR · marza 11,71 EUR · kontribucija (be ",
+    "10-08 12:39:21 Surūšiuota pati: Animonda GranCarno Adult Beef + Lamb: ko — Iš AV",
+    "10-08 12:39:21 Email \"Užsakymas vykdomas\" sent.",
+    "10-09 08:26:50 Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+    "10-09 08:26:50 Siuntos numeriai išsaugoti (AV): V07267E1000363",
+    "10-09 17:36:16 Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS.",
+    "10-09 17:36:17 Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+    "10-09 17:36:17 Klientui išsiųsta „Užsakymas išsiųstas“ (kneza27@gmail.com): V07267E1000363"
+   ]
+  ]
+ },
+ "v": "dep-204221",
+ "kurimas": 200,
+ "sid": 7041,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
