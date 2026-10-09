@@ -1,0 +1,106 @@
+{
+ "1": {
+  "v": "S1760d",
+  "uzsakymai": {
+   "1339": [
+    "completed",
+    "10-08 12:17"
+   ],
+   "1340": [
+    "completed",
+    "10-08 13:35"
+   ],
+   "1341": [
+    "processing",
+    "10-08 14:00"
+   ],
+   "1342": [
+    "processing",
+    "10-08 15:12"
+   ],
+   "1343": [
+    "completed",
+    "10-08 16:39"
+   ],
+   "1344": [
+    "completed",
+    "10-08 17:35"
+   ],
+   "1345": [
+    "completed",
+    "10-08 22:15"
+   ],
+   "1346": [
+    "completed",
+    "10-08 23:43"
+   ],
+   "1347": [
+    "completed",
+    "10-09 05:26"
+   ],
+   "1348": [
+    "completed",
+    "10-09 10:22"
+   ],
+   "1349": [
+    "processing",
+    "10-09 10:57"
+   ],
+   "1350": [
+    "processing",
+    "10-09 12:24"
+   ],
+   "1351": [
+    "processing",
+    "10-09 13:24"
+   ],
+   "1352": [
+    "cancelled",
+    "10-09 19:22"
+   ],
+   "1353": [
+    "processing",
+    "10-09 20:00"
+   ],
+   "1354": [
+    "processing",
+    "10-09 23:27"
+   ]
+  },
+  "kopijos": {
+   "1352": "2× [Petshop.lt]: Užsakymas #1352 atšauktas"
+  },
+  "be_kopijos": [
+   1339,
+   1340,
+   1341,
+   1342,
+   1343,
+   1344,
+   1345,
+   1346,
+   1347,
+   1348,
+   1349,
+   1350,
+   1351,
+   1353,
+   1354
+  ],
+  "bounce_po_1130": [],
+  "kiti_laiskai": 35,
+  "wpms_klaidos": [
+   {
+    "created_at": "2026-10-08 09:18:41",
+    "c": "Mailer: Other SMTP\r\nYou must provide at least one recipient email address."
+   }
+  ]
+ },
+ "v": "dep-203813",
+ "kurimas": 200,
+ "sid": 7039,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
