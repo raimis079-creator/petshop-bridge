@@ -1,0 +1,68 @@
+{
+ "1": {
+  "v": "S1760e",
+  "wc": {
+   "new_order": {
+    "on": "yes",
+    "gavejas": "uzsakymai@petshop.lt"
+   },
+   "cancelled_order": {
+    "on": "yes",
+    "gavejas": "uzsakymai@petshop.lt"
+   },
+   "failed_order": {
+    "on": "yes",
+    "gavejas": "uzsakymai@petshop.lt"
+   },
+   "customer_processing_order": {
+    "on": "yes",
+    "gavejas": "(klientas)"
+   },
+   "customer_completed_order": {
+    "on": "yes",
+    "gavejas": "(klientas)"
+   }
+  },
+  "dezes": {
+   "petshop.lt/uzsakymai": {
+    "pries_n": 3,
+    "pries_nr": "1301,1314,1324",
+    "po_n": 1,
+    "po": {
+     "1352": "[Petshop.lt]: Užsakymas #1352 atšauktas"
+    },
+    "nuo": {
+     "\"Petshop.lt\" <uzsakymai@petshop.lt>": 8
+    }
+   },
+   "petshop.lt/terra": {
+    "pries_n": 0,
+    "pries_nr": "",
+    "po_n": 0,
+    "po": [],
+    "nuo": []
+   },
+   "gyvunai.lt/terra": {
+    "pries_n": 0,
+    "pries_nr": "",
+    "po_n": 0,
+    "po": [],
+    "nuo": []
+   },
+   "petshop.lt/info": {
+    "pries_n": 0,
+    "pries_nr": "",
+    "po_n": 0,
+    "po": [],
+    "nuo": []
+   }
+  }
+ },
+ "v": "dep-204023",
+ "kurimas": 200,
+ "sid": 7040,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
