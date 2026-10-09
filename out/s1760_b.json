@@ -1,0 +1,124 @@
+{
+ "1": {
+  "v": "S1760b",
+  "failai": [
+   "Oct-2026.tar.gz",
+   "Oct-2026.tar.gz.1",
+   "Oct-2026.tar.gz.2"
+  ],
+  "statusai": {
+   "200": [
+    21604,
+    13373
+   ],
+   "302": [
+    440,
+    269
+   ],
+   "403": [
+    312,
+    253
+   ],
+   "404": [
+    1755,
+    1209
+   ],
+   "500": [
+    16,
+    12
+   ]
+  },
+  "eil": 30187,
+  "po_1110": 18550,
+  "blk_iki_1110": 0,
+  "blk_po_1110": 0,
+  "blk_po_kas": [],
+  "geri_robotai": {
+   "Googlebot": 861,
+   "Bing": 544,
+   "Perplexity": 479,
+   "AdsBot": 472,
+   "FB perziuros": 347,
+   "Claude": 315,
+   "GoogleOther": 247,
+   "Apple": 104,
+   "ChatGPT": 91,
+   "Yandex": 12,
+   "DuckDuckGo": 9
+  },
+  "fatal_nuo_1008": 2,
+  "fatal_pvz": [
+   "[08-Oct-2026 23:47:29 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_product() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php:682",
+   "[09-Oct-2026 19:42:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_product() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php:682"
+  ],
+  "laiskai": [
+   {
+    "d": "2026-10-08",
+    "n": "35"
+   },
+   {
+    "d": "2026-10-09",
+    "n": "27"
+   }
+  ],
+  "laiskai_problem": 0,
+  "laiskai_dubl": 0,
+  "kanalai": [
+   {
+    "d": "2026-10-08",
+    "k": "mokamas",
+    "n": "7",
+    "eur": "380"
+   },
+   {
+    "d": "2026-10-08",
+    "k": "direct",
+    "n": "2",
+    "eur": "62"
+   },
+   {
+    "d": "2026-10-08",
+    "k": "organika",
+    "n": "2",
+    "eur": "56"
+   },
+   {
+    "d": "2026-10-09",
+    "k": "mokamas",
+    "n": "5",
+    "eur": "224"
+   },
+   {
+    "d": "2026-10-09",
+    "k": "direct",
+    "n": "2",
+    "eur": "118"
+   }
+  ],
+  "misrus": {
+   "1262": [
+    "completed",
+    "10-07 11:06 Klientui išsiųsta „Užsakymas išsiųstas“ (beatrice.siaulyte@gmail.com): V07267E1000330"
+   ],
+   "1265": [
+    "completed",
+    "10-08 13:06 Venipak: siunta V07267E1000331 pristatyta (2026-10-08 12:37:25, Klaipėdos PC Studlendas Ve"
+   ],
+   "1269": [
+    "completed",
+    "10-08 12:37 Venipak: siunta V07267E1000332 pristatyta (2026-10-08 12:05:43, Kėdainių stoties MAXIMA Ve"
+   ],
+   "1270": [
+    "completed",
+    "10-08 14:36 Venipak: siunta V07267E1000333 pristatyta (2026-10-08 14:34:01, Panevėžio Udrop KUBAS Knia"
+   ]
+  }
+ },
+ "v": "dep-203458",
+ "kurimas": 200,
+ "sid": 7037,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
