@@ -1,0 +1,259 @@
+{
+ "1": {
+  "v": "S1765a",
+  "f": "1",
+  "lenteles": {
+   "gaj6_mailpoet_statistics_clicks": 0,
+   "gaj6_ps_event_log": 801,
+   "gaj6_ps_plan_events": 15,
+   "gaj6_ps_subscription_events": 0,
+   "gaj6_wpmailsmtp_debug_events": 28
+  },
+  "stulpeliai": {
+   "gaj6_mailpoet_statistics_clicks": [
+    "id",
+    "newsletter_id",
+    "subscriber_id",
+    "queue_id",
+    "link_id",
+    "user_agent_id",
+    "user_agent_type",
+    "count",
+    "created_at",
+    "updated_at"
+   ],
+   "gaj6_ps_event_log": [
+    "id",
+    "event_id",
+    "event_name",
+    "email",
+    "payload_json",
+    "emitted_at",
+    "status",
+    "adapter_name",
+    "attempts",
+    "next_retry_at",
+    "last_error",
+    "esp_response"
+   ],
+   "gaj6_ps_plan_events": [
+    "id",
+    "pet_id",
+    "user_id",
+    "product_id",
+    "qty",
+    "unit_price",
+    "source",
+    "session_key",
+    "order_id",
+    "created_at"
+   ],
+   "gaj6_ps_subscription_events": [
+    "id",
+    "subscription_id",
+    "event",
+    "payload",
+    "created_at"
+   ],
+   "gaj6_wpmailsmtp_debug_events": [
+    "id",
+    "content",
+    "initiator",
+    "event_type",
+    "created_at"
+   ]
+  },
+  "farmina_uzsakymai": [
+   {
+    "id": "36323",
+    "d": "2026-09-26",
+    "status": "wc-completed",
+    "pav": "FARMINA N&D QUINOA - DOG Dry SKIN&COAT Venison&Coconut ADULT MED&MAX 2,5 kg",
+    "qty": "1",
+    "suma": "30.07438"
+   },
+   {
+    "id": "36603",
+    "d": "2026-10-01",
+    "status": "wc-completed",
+    "pav": "2 vnt. FARMINA N&amp;D PUMPKIN - DOG Dry Lamb&amp;Blueberry PUPPY MINI 7 kg",
+    "qty": "1",
+    "suma": "95.859504"
+   },
+   {
+    "id": "36658",
+    "d": "2026-10-04",
+    "status": "wc-completed",
+    "pav": "FARMINA N&D PUMPKIN - DOG Dry Lamb&Blueberry ADULT MINI 7 kg",
+    "qty": "1",
+    "suma": "47.842975"
+   }
+  ],
+  "farmina_prekes": {
+   "viso": "229",
+   "turime": "213"
+  },
+  "bis_lenteles": {
+   "gaj6_ps_stock_watch": 7,
+   "gaj6_wc_reserved_stock": 2
+  }
+ },
+ "2": {
+  "v": "S1765a",
+  "f": "2",
+  "failai": 13,
+  "eil": 235395,
+  "farmina_eil": 1441,
+  "laikotarpis": "04Oct…10Oct",
+  "per_diena": {
+   "04Oct": 164,
+   "05Oct": 108,
+   "06Oct": 369,
+   "07Oct": 296,
+   "08Oct": 217,
+   "09Oct": 273,
+   "10Oct": 14
+  },
+  "prekes": [],
+  "prekiu_viso": 0,
+  "paieskos": {
+   "farmina team br dog n&d pumpkin grain free codfish&orange adult": {
+    "n": 1,
+    "lankytojai": 1
+   },
+   "farmina  n&d pumpkin grain free codfish&orange adult": {
+    "n": 1,
+    "lankytojai": 1
+   },
+   "farmina   codfish&orange adult": {
+    "n": 1,
+    "lankytojai": 1
+   },
+   "vetlife": {
+    "n": 1,
+    "lankytojai": 1
+   },
+   "farmina n&d ocean cod, pumpkin & cantaloupe — puppy medium": {
+    "n": 1,
+    "lankytojai": 1
+   },
+   "vet live": {
+    "n": 2,
+    "lankytojai": 1
+   },
+   "farmina kitten": {
+    "n": 1,
+    "lankytojai": 1
+   }
+  },
+  "kiti_psl": {
+   "/gamintojas/farmina/": {
+    "n": 172,
+    "ads": 146,
+    "lankytojai": 111
+   },
+   "/gamintojas/farmina/page/2/": {
+    "n": 37,
+    "ads": 28,
+    "lankytojai": 32
+   },
+   "/product/farmina-nd-ocean-cat-dry-cod-shrimp-pumpkincantaloupe-kitten-5-kg/": {
+    "n": 28,
+    "ads": 0,
+    "lankytojai": 26
+   },
+   "/product/farmina-matisse-cat-dry-kitten-10-kg/": {
+    "n": 24,
+    "ads": 0,
+    "lankytojai": 22
+   },
+   "/gamintojas/farmina/page/3/": {
+    "n": 26,
+    "ads": 19,
+    "lankytojai": 22
+   },
+   "/product/farmina-matisse-cat-dry-neutered-salmon-10-kg/": {
+    "n": 20,
+    "ads": 0,
+    "lankytojai": 19
+   },
+   "/product/farmina-nd-brown-dog-dry-lamb-spirulinacarrot-puppy-medmax-2-kg/": {
+    "n": 15,
+    "ads": 0,
+    "lankytojai": 15
+   },
+   "/product/farmina-matisse-cat-dry-chickenrice-10-kg/": {
+    "n": 15,
+    "ads": 0,
+    "lankytojai": 15
+   },
+   "/product/farmina-nd-brown-dog-dry-lamb-spirulinacarrot-adult-medmax-7-kg/": {
+    "n": 14,
+    "ads": 0,
+    "lankytojai": 13
+   },
+   "/product/farmina-nd-pumpkin-dog-dry-quailpomegr-adult-medium-maxi-12-kg/": {
+    "n": 12,
+    "ads": 0,
+    "lankytojai": 12
+   },
+   "/product/farmina-nd-ocean-dog-dry-herringorange-adult-medmax-12-kg/": {
+    "n": 12,
+    "ads": 0,
+    "lankytojai": 12
+   },
+   "/gamintojas/farmina/page/4/": {
+    "n": 14,
+    "ads": 8,
+    "lankytojai": 12
+   },
+   "/product/farmina-nd-pumpkin-cat-dry-lambblueberry-neutered-adult-15-kg/": {
+    "n": 13,
+    "ads": 0,
+    "lankytojai": 11
+   },
+   "/product/farmina-nd-ocean-cat-dry-herringorange-neutered-adult-15-kg/": {
+    "n": 13,
+    "ads": 0,
+    "lankytojai": 11
+   },
+   "/product/farmina-nd-prime-cat-dry-chickenpomegr-neutered-adult-15-kg-2/": {
+    "n": 12,
+    "ads": 0,
+    "lankytojai": 11
+   },
+   "/product/farmina-nd-pumpkin-dog-dry-duckcantaloupe-adult-mini-2-kg/": {
+    "n": 11,
+    "ads": 0,
+    "lankytojai": 10
+   },
+   "/product/f38890-farmina-nd-pumpkin-dog-dry-chickenpomegranate-starter-puppy-all-br-25-kg-pak-4/": {
+    "n": 10,
+    "ads": 0,
+    "lankytojai": 10
+   },
+   "/product/farmina-nd-prime-cat-dry-wild-boarapple-adult-5-kg/": {
+    "n": 11,
+    "ads": 0,
+    "lankytojai": 10
+   },
+   "/product/farmina-nd-quinoa-cat-dry-neutered-duck-broccoliasparagus-adult-5-kg/": {
+    "n": 11,
+    "ads": 0,
+    "lankytojai": 9
+   },
+   "/product/farmina-vet-life-cat-dry-renal-10-kg/": {
+    "n": 10,
+    "ads": 0,
+    "lankytojai": 9
+   }
+  }
+ },
+ "v": "dep-172900",
+ "kurimas": 200,
+ "sid": 7067,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
