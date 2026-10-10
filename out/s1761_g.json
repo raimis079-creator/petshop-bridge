@@ -1,0 +1,34 @@
+{
+ "1": {
+  "v": "S1761g",
+  "email_sent": [
+   {
+    "tipas": "Naujas užsakymas",
+    "n": "3",
+    "uzs": "3"
+   },
+   {
+    "tipas": "Užsakymas vykdomas",
+    "n": "3",
+    "uzs": "3"
+   }
+  ],
+  "email_kitos": [],
+  "islaukta_israsyta": "0",
+  "u1295": [
+   "completed",
+   [
+    "10-08 15:06 Klientui išsiųsta „Užsakymas išsiųstas“ (eglekazlausk@gmail.com): HC043146864LT",
+    "10-08 15:06 Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas.",
+    "10-08 15:06 Pažymėta išsiųsta darbalaukyje (LP Express, lp). WC laiškas klientui: NESIŲSTAS."
+   ]
+  ]
+ },
+ "v": "dep-072348",
+ "kurimas": 200,
+ "sid": 7046,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
