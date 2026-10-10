@@ -1,0 +1,95 @@
+{
+ "1": {
+  "v": "S1764d",
+  "provider": "NULL",
+  "interface_metodai": [
+   "get_name",
+   "is_configured",
+   "is_operational",
+   "upsert_contact",
+   "emit_event",
+   "send_transactional_email",
+   "send_transactional_sms",
+   "verify_webhook",
+   "get_health_status"
+  ],
+  "provider_filtrai": [],
+  "gd": {
+   "webp_read": true,
+   "webp": true,
+   "jpeg": true,
+   "ver": "bundled (2.1.0 compatible)"
+  },
+  "sender_nuo_0910": [
+   {
+    "flow": "post_purchase_2d",
+    "n": "274"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "n": "206"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "n": "46"
+   },
+   {
+    "flow": "consent_changed",
+    "n": "33"
+   },
+   {
+    "flow": "refill_due",
+    "n": "13"
+   },
+   {
+    "flow": "cart_abandoned",
+    "n": "9"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "n": "8"
+   },
+   {
+    "flow": "browse_abandoned",
+    "n": "3"
+   },
+   {
+    "flow": "ps_s1749_testas",
+    "n": "3"
+   },
+   {
+    "flow": "back_in_stock",
+    "n": "1"
+   }
+  ],
+  "sender_7d": 111,
+  "domenai": {
+   "unikaliu": 281,
+   "grupes": {
+    "gmail": 251,
+    "outlook/hotmail/live": 3,
+    "yahoo": 12,
+    "icloud/me": 1,
+    "inbox.lt": 2,
+    "kiti (imoniu, one.lt ir kt.)": 12
+   },
+   "top_viesieji": {
+    "gmail.com": 251,
+    "yahoo.com": 12,
+    "inbox.lt": 2,
+    "icloud.com": 1,
+    "mail.ru": 1,
+    "outlook.com": 1,
+    "hotmail.com": 1,
+    "hotmail.lt": 1
+   }
+  }
+ },
+ "v": "dep-164304",
+ "kurimas": 200,
+ "sid": 7062,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
