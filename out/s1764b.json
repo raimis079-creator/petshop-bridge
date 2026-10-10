@@ -1,0 +1,422 @@
+{
+ "1": {
+  "v": "S1764b",
+  "f": "1",
+  "mx": {
+   "logo": {
+    "ol_be_accept": {
+     "kodas": 200,
+     "fmt": "webp",
+     "b": 12230,
+     "h": {
+      "content-type": "image/webp",
+      "cf-cache-status": "HIT",
+      "vary": "Accept",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "12230",
+      "age": "208279"
+     }
+    },
+    "ol_*/*": {
+     "kodas": 200,
+     "fmt": "webp",
+     "b": 12230,
+     "h": {
+      "content-type": "image/webp",
+      "cf-cache-status": "HIT",
+      "vary": "Accept",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "12230",
+      "age": "208279"
+     }
+    },
+    "ol_edge": {
+     "kodas": 200,
+     "fmt": "webp",
+     "b": 12230,
+     "h": {
+      "content-type": "image/webp",
+      "cf-cache-status": "HIT",
+      "vary": "Accept",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "12230",
+      "age": "208279"
+     }
+    },
+    "ol_webp": {
+     "kodas": 200,
+     "fmt": "webp",
+     "b": 12230,
+     "h": {
+      "content-type": "image/webp",
+      "cf-cache-status": "HIT",
+      "vary": "Accept",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "12230",
+      "age": "208279"
+     }
+    },
+    "chrome_be_webp": {
+     "kodas": 200,
+     "fmt": "jpeg",
+     "b": 23740,
+     "h": {
+      "content-type": "image/jpeg",
+      "cf-cache-status": "HIT",
+      "vary": "Accept",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "23740",
+      "age": "201"
+     }
+    },
+    "gproxy_*/*": {
+     "kodas": 200,
+     "fmt": "webp",
+     "b": 12230,
+     "h": {
+      "content-type": "image/webp",
+      "cf-cache-status": "HIT",
+      "vary": "Accept",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "12230",
+      "age": "208279"
+     }
+    }
+   },
+   "preke": {
+    "ol_be_accept": {
+     "kodas": 200,
+     "fmt": "webp",
+     "b": 5968,
+     "h": {
+      "content-type": "image/webp",
+      "cf-cache-status": "HIT",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "5968",
+      "age": "7518"
+     }
+    },
+    "ol_*/*": {
+     "kodas": 200,
+     "fmt": "webp",
+     "b": 5968,
+     "h": {
+      "content-type": "image/webp",
+      "cf-cache-status": "HIT",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "5968",
+      "age": "7518"
+     }
+    },
+    "ol_edge": {
+     "kodas": 200,
+     "fmt": "webp",
+     "b": 5968,
+     "h": {
+      "content-type": "image/webp",
+      "cf-cache-status": "HIT",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "5968",
+      "age": "7518"
+     }
+    },
+    "ol_webp": {
+     "kodas": 200,
+     "fmt": "webp",
+     "b": 5968,
+     "h": {
+      "content-type": "image/webp",
+      "cf-cache-status": "HIT",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "5968",
+      "age": "7518"
+     }
+    },
+    "chrome_be_webp": {
+     "kodas": 200,
+     "fmt": "webp",
+     "b": 5968,
+     "h": {
+      "content-type": "image/webp",
+      "cf-cache-status": "HIT",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "5968",
+      "age": "201"
+     }
+    },
+    "gproxy_*/*": {
+     "kodas": 200,
+     "fmt": "webp",
+     "b": 5968,
+     "h": {
+      "content-type": "image/webp",
+      "cf-cache-status": "HIT",
+      "cache-control": "public, max-age=31536000",
+      "content-length": "5968",
+      "age": "201"
+     }
+    }
+   }
+  },
+  "htaccess_webp": [
+   "14: ExpiresByType image/jpeg \"access plus 1 year\"",
+   "15: ExpiresByType image/png \"access plus 1 year\"",
+   "16: ExpiresByType image/gif \"access plus 1 year\"",
+   "17: ExpiresByType image/webp \"access plus 1 year\"",
+   "18: ExpiresByType image/svg+xml \"access plus 1 year\"",
+   "22: <FilesMatch \"\\.(css|js|mjs|woff2?|ttf|otf|eot|svg|jpe?g|png|gif|webp|avif|ico)$\">",
+   "91: Header set Vary 'Accept-Encoding, Cookie'"
+  ],
+  "uploads_htaccess": "# BEGIN Petshop WebP (S1567, 2026-09-01)\n# Narsyklei, priimanciai image/webp, vietoje x.jpg|png atiduodamas salia esantis x.webp (jei yra).\n# Taisykles cia, ne root .htaccess: mod_rewrite NEinherituoja i katalogus su savo .htaccess.\n# S1741 (2026-09-30): adresui su ?ps_mail=1 (svetaines laiskai) WebP NEatiduodamas - Outlook WebP nerodo (mu-plugin petshop-laisku-nuotraukos).\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteCond %{HTTP_ACCEPT} image/webp\nRewriteCond %{QUERY_STRING} !(^|&)ps_mail=1(&|$)\nRewriteCond %{REQUEST_FILENAME} ^(.+)\\.(jpe?g|png)$ [NC]\nRewriteCond %1.webp -f\nRewriteRule ^(.+)\\.(jpe?g|png)$ $1.webp [T=image/webp,L]\n</IfModule>\n<IfModule mod_headers.c>\n<FilesMatch \"\\.(jpe?g|png)$\">\nHeader append Vary Accept\n</FilesMatch>\n</IfModule>\nAddType image/webp .webp\n# END Petshop WebP\n\n# BEGIN Petshop Saugumas uploads (S1719, 2026-09-25)\n# PHP uploads'e nevykdomas; tiekeju feed'ai (savikaina) neatiduodami\n<FilesMatch \"\\.(php|phtml|php[0-9]|phar)$\">\n<IfModule mod_authz_core.c>\nRequire all denied\n</IfModule>\n</FilesMatch>\n<FilesMatch \"^(petshop-vf-cache\\.xml|vetfarmas_response.*\\.xml)$\">\n<IfModule mod_authz_core.c>\nRequire all denied\n</IfModule>\n</FilesMatch>\n# END Petshop Saugumas uploads\n",
+  "webp_pluginai": [
+   "wp-super-cache/wp-cache.php"
+  ]
+ },
+ "2": {
+  "v": "S1764b",
+  "f": "2",
+  "mime_attach": [
+   {
+    "m": "image/jpeg",
+    "n": "4923"
+   },
+   {
+    "m": "image/png",
+    "n": "3568"
+   },
+   {
+    "m": "image/webp",
+    "n": "196"
+   },
+   {
+    "m": "image/gif",
+    "n": "3"
+   },
+   {
+    "m": "text/plain",
+    "n": "1"
+   }
+  ],
+  "prekiu_pagr_nuotr": [
+   {
+    "m": "image/jpeg",
+    "n": "1402"
+   },
+   {
+    "m": "image/png",
+    "n": "1346"
+   },
+   {
+    "m": "image/webp",
+    "n": "131"
+   }
+  ],
+  "wc_email_header_image": "https://petshop.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+  "kodas": {
+   "<img": [
+    "wp-content/mu-plugins/petshop-laisku-nuotraukos.php ×4",
+    "wp-content/mu-plugins/petshop-naujienlaiskiai-admin.php ×1",
+    "wp-content/mu-plugins/petshop-naujienlaiskiai.php ×1",
+    "wp-content/mu-plugins/ps-sablonai/refill-pakartoti.php ×1",
+    "wp-content/mu-plugins/ps-sablonai/win-back-pakartoti.php ×1",
+    "wp-content/plugins/petshop-core/includes/class-email-layout.php ×1"
+   ],
+   "papildyti atsargas": [
+    "wp-content/mu-plugins/ps-sablonai/refill-pakartoti.php ×1",
+    "wp-content/plugins/petshop-core/templates/emails/win-back-60.php ×1"
+   ],
+   "email_header_image": [
+    "wp-content/themes/flatsome-child/functions.php ×2"
+   ]
+  },
+  "refill_eil": [
+   "refill-pakartoti.php:13 $subject = 'Ar ne laikas papildyti atsargas?';",
+   "refill-pakartoti.php:19 $img = ''; $po = wc_get_product( $pr['pid'] ); $iid = $po ? $po->get_image_id() : 0; $iu = $iid ? wp_get_attachment_image_url( $iid, 'thumbnail' ) : '';",
+   "refill-pakartoti.php:20 if ( $iu ) $img = '<img src=\"' . esc_url( $iu ) . '\" width=\"64\" height=\"64\" alt=\"\" align=\"left\" style=\"width:64px;height:64px;border:0;border-radius:6px;margin:0 12px 0 0;display:block;\">';",
+   "win-back-60.php:14 $subject = 'Gal jau metas papildyti atsargas?';"
+  ]
+ },
+ "3": {
+  "v": "S1764b",
+  "f": "3",
+  "laiskai": {
+   "[Petshop] Rytas: 1 raudonos | \"Petshop.lt\" ": {
+    "n": 7,
+    "ext": []
+   },
+   "Jūsų užsakymas Nr. N gautas - Petshop.lt | \"Petshop.lt\" ": {
+    "n": 2,
+    "ext": {
+     "jpg": 1
+    }
+   },
+   "[Petshop sargas] Fatal error | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": []
+   },
+   "[TESTAS SN] lygiagretumas: 4 procesai vienu metu | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": []
+   },
+   "[TESTAS SN] didelis laiskas (19 nuotr.) — turi ateiti 1 | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": {
+     "jpg": 15,
+     "png": 2,
+     "webp": 2
+    }
+   },
+   "[TESTAS SN] tas pats didelis laiskas BE nuotrauku | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": []
+   },
+   "[TESTAS SN] tas pats laiskas be nuotrauku ir be nuorodu | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": []
+   },
+   "[TESTAS SN] Pakartoti laiskas: 18 prekiu, 3 nuorodos | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": {
+     "jpg": 15,
+     "png": 2,
+     "webp": 2
+    }
+   },
+   "Your Weekly WPForms Summary for petshop.lt | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": {
+     "png": 6
+    }
+   },
+   "Your Weekly WP Mail SMTP Summary for petshop.lt | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": {
+     "png": 7
+    }
+   },
+   "[Petshop sargas] Savaitine suvestine | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": []
+   },
+   "[Petshop sargas] Fatal error | WordPress ": {
+    "n": 2,
+    "ext": []
+   },
+   "petshop.lt testas: laiškai išeina [SN-testas] | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": []
+   },
+   "RE: Klaidingas užsakymas: N | \"UAB Avesa\" ": {
+    "n": 1,
+    "ext": []
+   },
+   "Ar ne laikas papildyti atsargas? | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": {
+     "jpg": 1,
+     "webp": 1
+    }
+   },
+   "[Petshop.lt] Liko nedidelis kiekis | \"Petshop.lt\" ": {
+    "n": 16,
+    "ext": []
+   },
+   "užsakymas N-10-01 | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": []
+   },
+   "Nauja užklausa iš petshop.lt | \"Petshop.lt\" ": {
+    "n": 6,
+    "ext": []
+   },
+   "užsakymas N-10-02 | \"Petshop.lt\" ": {
+    "n": 2,
+    "ext": []
+   },
+   "[Petshop.lt] Produkto neturime | \"Petshop.lt\" ": {
+    "n": 2,
+    "ext": []
+   },
+   "užsakymas N-10-05 | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": []
+   },
+   "[PERSIŲSTI Vetfarmas] užsakymas N-10-05 | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": []
+   },
+   "užsakymas N-10-06 | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": []
+   },
+   "užsakymas N-10-07 | \"Petshop.lt\" ": {
+    "n": 2,
+    "ext": []
+   },
+   "užsakymas N-10-08 | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": []
+   },
+   "užsakymas N-10-09 | \"Petshop.lt\" ": {
+    "n": 1,
+    "ext": []
+   }
+  },
+  "pvz_src": {
+   "[Petshop] Rytas: 1 raudonos | \"Petshop.lt\" ": [],
+   "Jūsų užsakymas Nr. N gautas - Petshop.lt | \"Petshop.lt\" ": [
+    "https://petshop.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg?ps_mail=1"
+   ],
+   "[Petshop sargas] Fatal error | \"Petshop.lt\" ": [],
+   "[TESTAS SN] lygiagretumas: 4 procesai vienu metu | \"Petshop.lt\" ": [],
+   "[TESTAS SN] didelis laiskas (19 nuotr.) — turi ateiti 1 | \"Petshop.lt\" ": [
+    "https://petshop.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+    "https://petshop.lt/wp-content/uploads/2026/06/vistiena-jautiena-82732-animonda-grancarno-adult_1774519709-280x280.jpg",
+    "https://petshop.lt/wp-content/uploads/2026/06/anciu-sirdeles-82746-animonda-grancarno-adult_1774520097-280x280.jpg"
+   ],
+   "[TESTAS SN] tas pats didelis laiskas BE nuotrauku | \"Petshop.lt\" ": [],
+   "[TESTAS SN] tas pats laiskas be nuotrauku ir be nuorodu | \"Petshop.lt\" ": [],
+   "[TESTAS SN] Pakartoti laiskas: 18 prekiu, 3 nuorodos | \"Petshop.lt\" ": [
+    "https://petshop.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+    "https://petshop.lt/wp-content/uploads/2026/06/vistiena-jautiena-82732-animonda-grancarno-adult_1774519709-280x280.jpg",
+    "https://petshop.lt/wp-content/uploads/2026/06/anciu-sirdeles-82746-animonda-grancarno-adult_1774520097-280x280.jpg"
+   ],
+   "Your Weekly WPForms Summary for petshop.lt | \"Petshop.lt\" ": [
+    "https://petshop.lt/wp-content/plugins/wpforms-lite/assets/images/logo-negative.png",
+    "https://petshop.lt/wp-content/plugins/wpforms-lite/assets/images/logo.png",
+    "https://petshop.lt/wp-content/plugins/wpforms-lite/assets/images/email/icon-overview.png"
+   ],
+   "Your Weekly WP Mail SMTP Summary for petshop.lt | \"Petshop.lt\" ": [
+    "https://petshop.lt/wp-content/plugins/wp-mail-smtp/assets/images/reports/email/wp-mail-smtp-logo.png",
+    "https://petshop.lt/wp-content/plugins/wp-mail-smtp/assets/images/reports/email/wp-mail-smtp-logo-dark.png",
+    "https://petshop.lt/wp-content/plugins/wp-mail-smtp/assets/images/reports/email/icon-email.png"
+   ],
+   "[Petshop sargas] Savaitine suvestine | \"Petshop.lt\" ": [],
+   "[Petshop sargas] Fatal error | WordPress ": [],
+   "petshop.lt testas: laiškai išeina [SN-testas] | \"Petshop.lt\" ": [],
+   "RE: Klaidingas užsakymas: N | \"UAB Avesa\" ": [],
+   "Ar ne laikas papildyti atsargas? | \"Petshop.lt\" ": [
+    "https://petshop.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg",
+    "https://petshop.lt/wp-content/uploads/2026/06/0006337_e29938-evd-dog-dermatosis-fp-formula-12-kg-280x280.webp"
+   ],
+   "[Petshop.lt] Liko nedidelis kiekis | \"Petshop.lt\" ": [],
+   "užsakymas N-10-01 | \"Petshop.lt\" ": [],
+   "Nauja užklausa iš petshop.lt | \"Petshop.lt\" ": [],
+   "užsakymas N-10-02 | \"Petshop.lt\" ": [],
+   "[Petshop.lt] Produkto neturime | \"Petshop.lt\" ": [],
+   "užsakymas N-10-05 | \"Petshop.lt\" ": [],
+   "[PERSIŲSTI Vetfarmas] užsakymas N-10-05 | \"Petshop.lt\" ": [],
+   "užsakymas N-10-06 | \"Petshop.lt\" ": [],
+   "užsakymas N-10-07 | \"Petshop.lt\" ": [],
+   "užsakymas N-10-08 | \"Petshop.lt\" ": [],
+   "užsakymas N-10-09 | \"Petshop.lt\" ": []
+  }
+ },
+ "v": "dep-163759",
+ "kurimas": 200,
+ "sid": 7060,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
