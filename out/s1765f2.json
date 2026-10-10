@@ -1,0 +1,53 @@
+{
+ "1": {
+  "v": "S1765f2",
+  "failai": [
+   "/mu-plugins/petshop-ataskaita-pardavimai.php",
+   "/plugins/petshop-feeds/petshop-feeds.php"
+  ],
+  "eil": {
+   "/mu-plugins/petshop-ataskaita-pardavimai.php": [
+    "155: add_action( 'admin_menu', array( __CLASS__, 'meniu' ), 20 );",
+    "156: add_action( 'admin_post_ps_pard_xlsx', array( __CLASS__, 'xlsx' ) );"
+   ],
+   "/plugins/petshop-feeds/petshop-feeds.php": [
+    "25: *   - g:price = reguliari, g:sale_price = akcijos kaina, kai preke akcijoje;",
+    "318: $kaina = $pr->get_price();",
+    "393: $reg      = $pr->get_regular_price();",
+    "450: $x .= '    <price>' . $p['kaina'] . '</price>' . \"\\n\";",
+    "511: $x .= '      <item_price>' . $p['kaina'] . '</item_price>' . \"\\n\";",
+    "639: $x .= '      <g:price>' . $p['reg_kaina'] . ' EUR</g:price>' . \"\\n\";",
+    "640: $x .= '      <g:sale_price>' . $p['kaina'] . ' EUR</g:sale_price>' . \"\\n\";",
+    "642: $x .= '      <g:price>' . $p['kaina'] . ' EUR</g:price>' . \"\\n\";",
+    "776: * CRON",
+    "779: add_action( 'ps_feeds_naktinis', function () {",
+    "786: add_action( 'init', function () {",
+    "790: wp_schedule_event( $kada, 'daily', 'ps_feeds_naktinis' );",
+    "798: add_action( 'init', function () {",
+    "809: add_action( 'template_redirect', function () {",
+    "846: add_action( 'wp_loaded', function () {",
+    "873: add_action( 'woocommerce_product_options_inventory_product_data', function () {",
+    "901: add_action( 'woocommerce_process_product_meta', function ( $post_id ) {",
+    "929: add_action( 'manage_product_posts_custom_column', function ( $stulpelis, $post_id ) {",
+    "994: add_action( 'admin_notices', function () {"
+   ]
+  },
+  "cron": [
+   [
+    "petshop_vf_feed_hourly",
+    "10-10 23:05"
+   ],
+   [
+    "ps_feeds_naktinis",
+    "10-11 04:30"
+   ]
+  ]
+ },
+ "v": "dep-194801",
+ "kurimas": 200,
+ "sid": 7077,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
