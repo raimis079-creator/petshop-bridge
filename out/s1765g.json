@@ -1,0 +1,57 @@
+{
+ "1": {
+  "v": "S1765g",
+  "sek": 16.3,
+  "feed": {
+   "kaina24.xml": {
+    "14642": [
+     "price=96.39"
+    ],
+    "14671": [
+     "price=114.48"
+    ],
+    "14675": [
+     "price=108.98"
+    ],
+    "mtime": "10-10 22:51:31",
+    "kb": 5738
+   },
+   "kainos.xml": {
+    "14642": [
+     "item_price=96.39"
+    ],
+    "14671": [
+     "item_price=114.48"
+    ],
+    "14675": [
+     "item_price=108.98"
+    ],
+    "mtime": "10-10 22:51:31",
+    "kb": 5260
+   },
+   "google.xml": {
+    "14642": [
+     "g:price=113.99 EUR",
+     "g:sale_price=96.39 EUR"
+    ],
+    "14671": [
+     "g:price=135.49 EUR",
+     "g:sale_price=114.48 EUR"
+    ],
+    "14675": [
+     "g:price=128.99 EUR",
+     "g:sale_price=108.98 EUR"
+    ],
+    "mtime": "10-10 22:51:31",
+    "kb": 5131
+   }
+  }
+ },
+ "v": "dep-195012",
+ "kurimas": 200,
+ "sid": 7078,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
