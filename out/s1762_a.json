@@ -1,0 +1,385 @@
+{
+ "1": {
+  "v": "S1762a",
+  "lent": {
+   "gaj6_ps_fakt_atsargos_d": {
+    "n": 87847,
+    "cols": "id,data,preke_id,sandelis,likutis_av,likutis_tiekejo,rezervuota,savikaina_vnt_ct,savikainos_saltinis,verte_ct,pardavimai_vnt_7d,pardavimai_vnt_30d,dienu_atsargu,stockout,partiju_sk,artimiausia_galiojimas,testinis,saltinis_aplinka"
+   },
+   "gaj6_ps_fakt_eilutes": {
+    "n": 778,
+    "cols": "id,uzsakymas_id,eilutes_id,apmoketa_at,preke_id,variacija_id,sku,gtin,pavadinimas_tuo_metu,kategorija_id_giliausia,kategoriju_kelias,brendas_slug,gyvunas,pa_uzsaldymas,sandelis,tiekejas,partija_kodas,kiekis,kaina_ct,pvm_ct,kaina_vnt_ct,kaina_reguliari_ct,savikaina_vnt_ct,savikaina_ct,savikainos_saltinis,nuolaida_ct,akcija_id,kuponas,rinkinys_id,rinkinio_tipas,rinkinio_raktas,dovana,svoris_g,pakuotes_dydis,klientas_naujas,testinis,saltinis_aplinka,diena"
+   },
+   "gaj6_ps_fakt_grazinimai": {
+    "n": 0,
+    "cols": "id,uzsakymas_id,refund_id,eilute_id,wc_eilutes_id,eilute_raktas,preke_id,grazinta_at,diena,kiekis,suma_ct,pvm_ct,savikaina_ct,priezastis_kodas,priezastis_tekstas,atsargos_grizo,sandelis,testinis,saltinis_aplinka,fakt_versija"
+   },
+   "gaj6_ps_fakt_gsc_dienos": {
+    "n": 526,
+    "cols": "diena,clicks,impr,pos,clicks_mob,impr_mob,clicks_turinys,atnaujinta_at"
+   },
+   "gaj6_ps_fakt_gsc_url_d": {
+    "n": 31539,
+    "cols": "id,diena,url_hash,url,clicks,impr,pos"
+   },
+   "gaj6_ps_fakt_kainos": {
+    "n": 1933,
+    "cols": "id,preke_id,nuo_at,diena,kaina_ct,reguliari_ct,savikaina_ct,akcijoje,saltinis,vartotojas_id,testinis,saltinis_aplinka"
+   },
+   "gaj6_ps_fakt_reklama": {
+    "n": 247,
+    "cols": "id,diena,kanalas,kampanija_id,kampanija,parodymai,paspaudimai,islaidos_ct,valiuta,konversijos,konv_verte_ct,saltinis,saltinis_aplinka,versija,irasyta_at,senoji_svetaine"
+   },
+   "gaj6_ps_fakt_siuntos": {
+    "n": 308,
+    "cols": "id,uzsakymas_id,shipment_id,sandelis,vezejas,siuntos_nr,paketu_sk,pristatymo_tipas,sukurta_at,diena,tiekejui_issiusta_at,registruota_at,isvezta_at,pristatyta_at,atsiimta_at,svoris_deklaruotas_g,kaina_vezejo_ct,tarifo_id,statusas,problema_kodas,dienos_iki_pristatymo,saltinis,testinis,saltinis_aplinka,fakt_versija,sandelio_saltinis,dydis"
+   },
+   "gaj6_ps_fakt_uzsakymai": {
+    "n": 305,
+    "cols": "uzsakymas_id,sukurta_at,apmoketa_at,statusas_galutinis,statusas_at,klientas_id,klientas_email_hash,klientas_naujas,klientas_uzsakymo_nr,dienos_nuo_ankstesnio,prekiu_suma_ct,nuolaidu_ct,kuponu_kodai,tasku_panaudota_ct,tasku_sukaupta_ct,pristatymas_paimta_ct,pristatymas_savikaina_ct,small_cart_fee_ct,pvm_ct,viso_ct,mokejimo_budas,mokejimo_mokestis_ct,pakuotes_savikaina_ct,savikaina_ct,dovanu_savikaina_ct,marza_ct,kontribucija_ct,sandeliu_kiekis,misrus,sandeliai,vezejai,kanalas_pirmas,kanalas_paskutinis,utm_source,utm_medium,utm_campaign,gclid,fbclid,referer_domenas,landing_url,irenginys,sutikimas_statistika,salis,miestas,pasto_kodas,anketa_id,rec_log_id,is_refill,prenumerata_id,eiluciu_sk,testinis,saltinis_aplinka,fakt_versija,irasyta_at,diena"
+   },
+   "gaj6_ps_browse_log": {
+    "n": 160,
+    "cols": "id,email,user_id,product_id,views,status,viewed_at,created_at"
+   },
+   "gaj6_ps_consent_log": {
+    "n": 899,
+    "cols": "id,customer_id,email,field,from_value,to_value,source,ip,user_agent,changed_at"
+   }
+  },
+  "reklama_rib": [
+   {
+    "kanalas": "google_ads",
+    "nuo": "2026-08-24",
+    "iki": "2026-10-09",
+    "kamp": "8",
+    "eur": "1882"
+   },
+   {
+    "kanalas": "kaina24",
+    "nuo": "2026-08-27",
+    "iki": "2026-10-09",
+    "kamp": "1",
+    "eur": "18"
+   },
+   {
+    "kanalas": "kainos",
+    "nuo": "2026-08-27",
+    "iki": "2026-10-09",
+    "kamp": "1",
+    "eur": "9"
+   }
+  ],
+  "kampanijos": [
+   {
+    "kampanija": "petshop",
+    "nuo": "2026-08-24",
+    "iki": "2026-10-09",
+    "eur": "150",
+    "pasp": "836",
+    "konv": "49.23"
+   },
+   {
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "nuo": "2026-08-24",
+    "iki": "2026-10-09",
+    "eur": "922",
+    "pasp": "3326",
+    "konv": "95.87"
+   },
+   {
+    "kampanija": "P-max| All LT | Šunų maistas",
+    "nuo": "2026-08-24",
+    "iki": "2026-09-09",
+    "eur": "287",
+    "pasp": "814",
+    "konv": "14.83"
+   },
+   {
+    "kampanija": "TEST Search LT",
+    "nuo": "2026-08-25",
+    "iki": "2026-08-26",
+    "eur": "24",
+    "pasp": "75",
+    "konv": "2.50"
+   },
+   {
+    "kampanija": "P-max | LT | petshop.lt",
+    "nuo": "2026-08-30",
+    "iki": "2026-10-09",
+    "eur": "426",
+    "pasp": "1397",
+    "konv": "46.51"
+   },
+   {
+    "kampanija": "Petshop - Search - Prins Puppy",
+    "nuo": "2026-09-05",
+    "iki": "2026-09-05",
+    "eur": "0",
+    "pasp": "1",
+    "konv": "0.00"
+   },
+   {
+    "kampanija": "P-max | LT | Prekės (MC)",
+    "nuo": "2026-09-21",
+    "iki": "2026-09-23",
+    "eur": "3",
+    "pasp": "23",
+    "konv": "0.00"
+   },
+   {
+    "kampanija": "Search | LT | Prekių ženklai",
+    "nuo": "2026-09-28",
+    "iki": "2026-10-09",
+    "eur": "71",
+    "pasp": "282",
+    "konv": "6.69"
+   }
+  ],
+  "reklama_pvz": {
+   "id": "249",
+   "diena": "2026-10-09",
+   "kanalas": "google_ads",
+   "kampanija_id": "24297462605",
+   "kampanija": "Search | LT | Prekių ženklai",
+   "parodymai": "170",
+   "paspaudimai": "25",
+   "islaidos_ct": "947",
+   "valiuta": "EUR",
+   "konversijos": "0.00",
+   "konv_verte_ct": "0",
+   "saltinis": "ads_script",
+   "saltinis_aplinka": "prod",
+   "versija": "1",
+   "irasyta_at": "2026-10-10 02:01:30",
+   "senoji_svetaine": "0"
+  },
+  "uzs_rib": {
+   "nuo": "2026-09-08 22:24:33",
+   "iki": "2026-10-10 07:17:36",
+   "n": "302"
+  },
+  "uzs_pvz": {
+   "uzsakymas_id": "36779",
+   "sukurta_at": "2026-10-10 07:16:19",
+   "apmoketa_at": "2026-10-10 07:20:32",
+   "statusas_galutinis": "processing",
+   "statusas_at": "2026-10-10 07:20:34",
+   "klientas_id": "5953",
+   "klientas_email_hash": "322299434c06317dcde0986b702d30ba31fbe4db0020a67e16c9d1bcad22e5b4",
+   "klientas_naujas": "1",
+   "klientas_uzsakymo_nr": "1",
+   "dienos_nuo_ankstesnio": null,
+   "prekiu_suma_ct": "2246",
+   "nuolaidu_ct": "0",
+   "kuponu_kodai": "",
+   "tasku_panaudota_ct": "0",
+   "tasku_sukaupta_ct": "0",
+   "pristatymas_paimta_ct": "178",
+   "pristatymas_savikaina_ct": null,
+   "small_cart_fee_ct": "0",
+   "pvm_ct": "509",
+   "viso_ct": "2933",
+   "mokejimo_budas": "paysera",
+   "mokejimo_mokestis_ct": "5",
+   "pakuotes_savikaina_ct": "40",
+   "savikaina_ct": "1868",
+   "dovanu_savikaina_ct": "0",
+   "marza_ct": "378",
+   "kontribucija_ct": "511",
+   "sandeliu_kiekis": "1",
+   "misrus": "0",
+   "sandeliai": "vf",
+   "vezejai": "venipak",
+   "kanalas_pirmas": "mokamas",
+   "kanalas_paskutinis": "mokamas",
+   "utm_source": "google",
+   "utm_medium": "cpc",
+   "utm_campaign": "21565450990",
+   "gclid": "1",
+   "fbclid": "0",
+   "referer_domenas": "www.google.com",
+   "landing_url": "https://petshop.lt/gamintojas/josera/?page=2&utm_source=google&utm_medium=cpc&utm_campaign=21565450990&gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XXhiOCZeaqwjLq37bpz026Q-&gclid=Cj0KCQjwxKfWBhDkARIsAMKwkNa-q601J4EQ3FRl5uG8Ev_7i4IKEG8CiUXGLhzT",
+   "irenginys": "desktop",
+   "sutikimas_statistika": "1",
+   "salis": "LT",
+   "miestas": "",
+   "pasto_kodas": "",
+   "anketa_id": null,
+   "rec_log_id": null,
+   "is_refill": "0",
+   "prenumerata_id": null,
+   "eiluciu_sk": "1",
+   "testinis": "0",
+   "saltinis_aplinka": "prod",
+   "fakt_versija": "2",
+   "irasyta_at": "2026-10-10 07:20:33",
+   "diena": "2026-10-10"
+  },
+  "kanalai_sav": [
+   {
+    "w": "202637",
+    "k": "",
+    "n": "1"
+   },
+   {
+    "w": "202637",
+    "k": "ai",
+    "n": "1"
+   },
+   {
+    "w": "202637",
+    "k": "direct",
+    "n": "9"
+   },
+   {
+    "w": "202637",
+    "k": "email",
+    "n": "1"
+   },
+   {
+    "w": "202637",
+    "k": "mokamas",
+    "n": "15"
+   },
+   {
+    "w": "202637",
+    "k": "organika",
+    "n": "7"
+   },
+   {
+    "w": "202637",
+    "k": "referral",
+    "n": "1"
+   },
+   {
+    "w": "202637",
+    "k": "soc_organika",
+    "n": "1"
+   },
+   {
+    "w": "202638",
+    "k": "ai",
+    "n": "1"
+   },
+   {
+    "w": "202638",
+    "k": "direct",
+    "n": "13"
+   },
+   {
+    "w": "202638",
+    "k": "mokamas",
+    "n": "47"
+   },
+   {
+    "w": "202638",
+    "k": "organika",
+    "n": "5"
+   },
+   {
+    "w": "202638",
+    "k": "referral",
+    "n": "3"
+   },
+   {
+    "w": "202638",
+    "k": "soc_organika",
+    "n": "2"
+   },
+   {
+    "w": "202639",
+    "k": "ai",
+    "n": "1"
+   },
+   {
+    "w": "202639",
+    "k": "direct",
+    "n": "8"
+   },
+   {
+    "w": "202639",
+    "k": "mokamas",
+    "n": "44"
+   },
+   {
+    "w": "202639",
+    "k": "organika",
+    "n": "3"
+   },
+   {
+    "w": "202639",
+    "k": "referral",
+    "n": "1"
+   },
+   {
+    "w": "202639",
+    "k": "soc_organika",
+    "n": "1"
+   },
+   {
+    "w": "202640",
+    "k": "ai",
+    "n": "2"
+   },
+   {
+    "w": "202640",
+    "k": "direct",
+    "n": "10"
+   },
+   {
+    "w": "202640",
+    "k": "mokamas",
+    "n": "47"
+   },
+   {
+    "w": "202640",
+    "k": "organika",
+    "n": "8"
+   },
+   {
+    "w": "202640",
+    "k": "referral",
+    "n": "1"
+   },
+   {
+    "w": "202641",
+    "k": "ai",
+    "n": "3"
+   },
+   {
+    "w": "202641",
+    "k": "direct",
+    "n": "13"
+   },
+   {
+    "w": "202641",
+    "k": "email",
+    "n": "2"
+   },
+   {
+    "w": "202641",
+    "k": "mokamas",
+    "n": "42"
+   },
+   {
+    "w": "202641",
+    "k": "organika",
+    "n": "6"
+   }
+  ],
+  "ads_opc": [
+   "ps_ads_offline_raktas",
+   "ps_ads_paskutinis",
+   "ps_ads_raktas",
+   "ps_ads_recon"
+  ]
+ },
+ "v": "dep-073503",
+ "kurimas": 200,
+ "sid": 7049,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
