@@ -1,0 +1,152 @@
+{
+ "1": {
+  "v": "S1765d",
+  "dp_88_150": "\n\t/* ---------- kaina ---------- */\n\n\t/** Apvalinimas iki „…9\" centų: 42,583 → 42,59; 110,5606 → 110,59; 14,996 → 14,99. */\n\tpublic static function apvalinti( $x ) {\n\t\t$r = round( (float) $x * 10 ) / 10 - 0.01;\n\t\tif ( $r < 0.09 ) { $r = 0.09; }\n\t\treturn number_format( $r, 2, '.', '' );\n\t}\n\n\tpublic static function kaina( $bazine, $qty, $proc ) {\n\t\treturn self::apvalinti( (float) $bazine * (int) $qty * ( 1 - (float) $proc / 100 ) );\n\t}\n\n\t/* ---------- sinchronizacija ---------- */\n\n\t/** Vieno pako sinchronizacija. Grąžina masyvą su rezultatu; $dry — tik skaičiuoja. */\n\tpublic static function sinchronizuoti( $pid, $dry = false, $kvietejas = '' ) {\n\t\t$pid = (int) $pid;\n\t\t$r = array( 'pid' => $pid, 'pakeista' => false );\n\t\t$proc = get_post_meta( $pid, self::META, true );\n\t\tif ( $proc === '' || $proc === null || ! is_numeric( $proc ) ) { $r['praleista'] = 'be_proc'; return $r; }\n\t\t$proc = (float) $proc; $r['proc'] = $proc;\n\t\t$base_id = (int) get_post_meta( $pid, '_dp_base_product_id', true );\n\t\t$qty     = (int) get_post_meta( $pid, '_dp_pack_qty', true );\n\t\tif ( $base_id <= 0 || $qty < 2 ) { $r['klaida'] = 'nera_bazes_ar_kiekio'; return $r; }\n\t\t$base = wc_get_product( $base_id );\n\t\tif ( ! $base ) { $r['klaida'] = 'bazine_nerasta'; return $r; }\n\t\tif ( $base->get_status() !== 'publish' ) { $r['klaida'] = 'bazine_ne_publish'; return $r; }\n\t\t$breg = (float) $base->get_regular_price( 'edit' );\n\t\tif ( $breg <= 0 ) { $r['klaida'] = 'bazine_be_kainos'; return $r; }\n\t\t$bsale = $base->is_on_sale( 'edit' ) ? (float) $base->get_sale_price( 'edit' ) : 0;\n\t\t$nreg  = self::kaina( $breg, $qty, $proc );\n\t\t$nsale = $bsale > 0 ? self::kaina( $bsale, $qty, $proc ) : '';\n\t\tif ( $nsale !== '' && (float) $nsale >= (float) $nreg ) { $nsale = ''; }\n\t\t$pak = wc_get_product( $pid );\n\t\tif ( ! $pak ) { $r['klaida'] = 'pakas_nerastas'; return $r; }\n\t\t$sreg  = (string) $pak->get_regular_price( 'edit' );\n\t\t$ssale = (string) $pak->get_sale_price( 'edit' );\n\t\t$r['buvo'] = array( $sreg, $ssale ); $r['nauja'] = array( $nreg, $nsale );\n\t\t$lygu = ( $sreg !== '' && abs( (float) $sreg - (float) $nreg ) < 0.005 ) && ( ( $ssale === '' && $nsale === '' ) || ( $ssale !== '' && $nsale !== '' && abs( (float) $ssale - (float) $nsale ) < 0.005 ) );\n\t\tif ( $lygu ) { return $r; }\n\t\t$r['pakeista'] = true;\n\t\tif ( $dry ) { return $r; }\n\t\tself::$vykdoma = true;\n\t\ttry {\n\t\t\t$pak->set_regular_price( $nreg );\n\t\t\t$pak->set_sale_price( $nsale );\n\t\t\t$pak->save();\n\t\t\twc_delete_product_transients( $pid );\n\t\t\tif ( function_exists( 'wp_cache_post_change' ) ) { wp_cache_post_change( $pid ); } // Super Cache: pako puslapis\n\t\t\tself::zurnalas( array( 'laikas' => current_time( 'mysql' ), 'pid' => $pid, 'buvo' => $sreg . ( $ssale !== '' ? '/' . $ssale : '' ), 'tapo' => $nreg . ( $nsale !== '' ? '/' . $nsale : '' ), 'proc' => $proc, 'baze' => $base_id, 'kas' => $kvietejas ) );\n\t\t} catch ( \\Throwable $e ) { $r['klaida'] = 'irasymas: ' . $e->getMessage(); }\n\t\tself::$vykdoma = false;\n\t\treturn $r;\n\t}\n\n\t/** bazinė → [pakai] */\n\tpublic static function zemelapis() {\n\t\t$m = get_transient( self::T_MAP );\n\t\tif ( is_array( $m ) ) { return $m; }\n\t\tglobal $wpdb;\n\t\t$m = array();\n",
+  "fakt_lenteles": [
+   "ps_fakt_kainos",
+   "ps_fakt_kainos_schema"
+  ],
+  "cols": {
+   "ps_fakt_kainos": [
+    "id",
+    "preke_id",
+    "nuo_at",
+    "diena",
+    "kaina_ct",
+    "reguliari_ct",
+    "savikaina_ct",
+    "akcijoje",
+    "saltinis",
+    "vartotojas_id",
+    "testinis",
+    "saltinis_aplinka"
+   ]
+  },
+  "eil": {
+   "ps_fakt_kainos": [
+    {
+     "id": "552",
+     "preke_id": "14642",
+     "nuo_at": "2026-08-26 18:38:14",
+     "diena": "2026-08-26",
+     "kaina_ct": "10867",
+     "reguliari_ct": "10867",
+     "savikaina_ct": "7241",
+     "akcijoje": "0",
+     "saltinis": "pries_v140",
+     "vartotojas_id": null,
+     "testinis": "1",
+     "saltinis_aplinka": "dev"
+    },
+    {
+     "id": "1107",
+     "preke_id": "14642",
+     "nuo_at": "2026-08-26 18:38:53",
+     "diena": "2026-08-26",
+     "kaina_ct": "9421",
+     "reguliari_ct": "9421",
+     "savikaina_ct": "7241",
+     "akcijoje": "0",
+     "saltinis": "sistema",
+     "vartotojas_id": null,
+     "testinis": "1",
+     "saltinis_aplinka": "dev"
+    },
+    {
+     "id": "570",
+     "preke_id": "14671",
+     "nuo_at": "2026-08-26 18:38:14",
+     "diena": "2026-08-26",
+     "kaina_ct": "12917",
+     "reguliari_ct": "12917",
+     "savikaina_ct": "8608",
+     "akcijoje": "0",
+     "saltinis": "pries_v140",
+     "vartotojas_id": null,
+     "testinis": "1",
+     "saltinis_aplinka": "dev"
+    },
+    {
+     "id": "1125",
+     "preke_id": "14671",
+     "nuo_at": "2026-08-26 18:38:57",
+     "diena": "2026-08-26",
+     "kaina_ct": "11198",
+     "reguliari_ct": "11198",
+     "savikaina_ct": "8608",
+     "akcijoje": "0",
+     "saltinis": "sistema",
+     "vartotojas_id": null,
+     "testinis": "1",
+     "saltinis_aplinka": "dev"
+    },
+    {
+     "id": "572",
+     "preke_id": "14675",
+     "nuo_at": "2026-08-26 18:38:14",
+     "diena": "2026-08-26",
+     "kaina_ct": "12297",
+     "reguliari_ct": "12297",
+     "savikaina_ct": "8197",
+     "akcijoje": "0",
+     "saltinis": "pries_v140",
+     "vartotojas_id": null,
+     "testinis": "1",
+     "saltinis_aplinka": "dev"
+    },
+    {
+     "id": "1127",
+     "preke_id": "14675",
+     "nuo_at": "2026-08-26 18:38:58",
+     "diena": "2026-08-26",
+     "kaina_ct": "10660",
+     "reguliari_ct": "10660",
+     "savikaina_ct": "8197",
+     "akcijoje": "0",
+     "saltinis": "sistema",
+     "vartotojas_id": null,
+     "testinis": "1",
+     "saltinis_aplinka": "dev"
+    },
+    {
+     "id": "1797",
+     "preke_id": "36477",
+     "nuo_at": "2026-09-27 15:42:19",
+     "diena": "2026-09-27",
+     "kaina_ct": "21726",
+     "reguliari_ct": "21726",
+     "savikaina_ct": null,
+     "akcijoje": "0",
+     "saltinis": "rankinis",
+     "vartotojas_id": "1",
+     "testinis": "0",
+     "saltinis_aplinka": "prod"
+    },
+    {
+     "id": "1799",
+     "preke_id": "36479",
+     "nuo_at": "2026-09-27 15:43:44",
+     "diena": "2026-09-27",
+     "kaina_ct": "20677",
+     "reguliari_ct": "20677",
+     "savikaina_ct": null,
+     "akcijoje": "0",
+     "saltinis": "rankinis",
+     "vartotojas_id": "1",
+     "testinis": "0",
+     "saltinis_aplinka": "prod"
+    }
+   ]
+  },
+  "n": {
+   "ps_fakt_kainos": 1934
+  }
+ },
+ "v": "dep-194051",
+ "kurimas": 200,
+ "sid": 7073,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
