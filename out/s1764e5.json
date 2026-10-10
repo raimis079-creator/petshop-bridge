@@ -1,0 +1,35 @@
+{
+ "5": {
+  "v": "S1764e",
+  "f": "5",
+  "gauti": [
+   {
+    "gautas": "10-10 20:06:30",
+    "via": "SMTP",
+    "subj": "[TESTAS S1764] Užsakymo laiško nuotraukos (WebP ir JPG prekė)",
+    "img": {
+     "https://petshop.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg?ps_mail=1": "200 jpeg 23740B cf:HIT",
+     "https://petshop.lt/wp-content/uploads/laiskai/w/179afdc0-0006346_e20072-euk-adult-small-breed-maintenance-3-kg-280x280.jpg?ps_mail=1": "200 jpeg 13761B cf:HIT",
+     "https://petshop.lt/wp-content/uploads/2026/10/png-5-280x280.jpeg?ps_mail=1": "200 jpeg 8822B cf:HIT"
+    }
+   },
+   {
+    "gautas": "10-10 20:06:32",
+    "via": "Sender",
+    "subj": "[TESTAS S1764] Ar ne laikas papildyti atsargas?",
+    "img": {
+     "https://campaign-statistics.com/trx_open/azv2GY-.eE9p2l-AMYvBNl-JP97m0lYKBql-1EJz39": "pikselis",
+     "https://petshop.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg?ps_mail=1": "200 jpeg 23740B cf:HIT",
+     "https://petshop.lt/wp-content/uploads/laiskai/w/41223b0a-0006337_e29938-evd-dog-dermatosis-fp-formula-12-kg-280x280.jpg?ps_mail=1": "200 jpeg 11104B cf:MISS"
+    }
+   }
+  ]
+ },
+ "v": "dep-170711",
+ "kurimas": 200,
+ "sid": 7066,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
