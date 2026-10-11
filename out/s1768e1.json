@@ -1,0 +1,332 @@
+{
+ "1": {
+  "v": "S1768e",
+  "ph": "1",
+  "files": {
+   "plugin": {
+    "exists": false,
+    "md5_new": "72471d4fc50a1a068fc7d5e406b5b374",
+    "len": 6316
+   },
+   "t1": {
+    "exists": false,
+    "md5_new": "43bcfdbf2c040c2bba53947f673a0b53",
+    "len": 2167
+   },
+   "t2": {
+    "exists": false,
+    "md5_new": "b1b43c3d80297841f06964957992eb0f",
+    "len": 1986
+   }
+  },
+  "sablonai_dir": true,
+  "arch_dir": true,
+  "consent_cols": [
+   "id",
+   "customer_id",
+   "email",
+   "field",
+   "from_value",
+   "to_value",
+   "source",
+   "ip",
+   "user_agent",
+   "changed_at"
+  ],
+  "sim_suvestine": {
+   "cart_abandoned": {
+    "skipped/consent_missing -> SIUSTI": 16,
+    "skipped/suppressed_marketing_unsubscribe -> SIUSTI": 1,
+    "sent -> SIUSTI": 2,
+    "skipped/consent_missing -> ne/similar_optout": 3
+   },
+   "cart_abandoned_2": {
+    "skipped/consent_missing -> SIUSTI": 3,
+    "skipped/suppressed_marketing_unsubscribe -> SIUSTI": 1,
+    "sent -> SIUSTI": 2,
+    "skipped/consent_missing -> ne/similar_optout": 1
+   }
+  },
+  "sim_eilutes": [
+   [
+    "1079",
+    "cart_abandoned",
+    "09-30 23:13",
+    "e08f54",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1109",
+    "cart_abandoned",
+    "10-01 12:47",
+    "1fbd6d",
+    "skipped/suppressed_marketing_unsubscribe",
+    "SIUSTI"
+   ],
+   [
+    "1126",
+    "cart_abandoned_2",
+    "10-01 21:12",
+    "e08f54",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1127",
+    "cart_abandoned",
+    "10-02 02:21",
+    "1caba0",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1128",
+    "cart_abandoned",
+    "10-02 07:39",
+    "e5ce0d",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1148",
+    "cart_abandoned_2",
+    "10-02 10:47",
+    "1fbd6d",
+    "skipped/suppressed_marketing_unsubscribe",
+    "SIUSTI"
+   ],
+   [
+    "1238",
+    "cart_abandoned",
+    "10-04 15:19",
+    "74997b",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1239",
+    "cart_abandoned",
+    "10-04 16:08",
+    "68e0a3",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1240",
+    "cart_abandoned",
+    "10-04 16:08",
+    "68e0a3",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1246",
+    "cart_abandoned",
+    "10-05 22:19",
+    "dbb3ce",
+    "sent",
+    "SIUSTI"
+   ],
+   [
+    "1249",
+    "cart_abandoned",
+    "10-06 16:24",
+    "4a706b",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1250",
+    "cart_abandoned_2",
+    "10-06 20:19",
+    "dbb3ce",
+    "sent",
+    "SIUSTI"
+   ],
+   [
+    "1251",
+    "cart_abandoned",
+    "10-06 23:56",
+    "954727",
+    "skipped/consent_missing",
+    "ne/similar_optout"
+   ],
+   [
+    "1319",
+    "cart_abandoned_2",
+    "10-07 14:23",
+    "4a706b",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1348",
+    "cart_abandoned_2",
+    "10-07 21:56",
+    "954727",
+    "skipped/consent_missing",
+    "ne/similar_optout"
+   ],
+   [
+    "1349",
+    "cart_abandoned",
+    "10-07 22:09",
+    "fda5eb",
+    "sent",
+    "SIUSTI"
+   ],
+   [
+    "1351",
+    "cart_abandoned",
+    "10-08 07:04",
+    "dec5a8",
+    "skipped/consent_missing",
+    "ne/similar_optout"
+   ],
+   [
+    "1403",
+    "cart_abandoned",
+    "10-08 20:30",
+    "b50ab3",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1404",
+    "cart_abandoned",
+    "10-08 21:09",
+    "200adf",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1406",
+    "cart_abandoned_2",
+    "10-08 22:15",
+    "fda5eb",
+    "sent",
+    "SIUSTI"
+   ],
+   [
+    "1455",
+    "cart_abandoned",
+    "10-09 21:21",
+    "5864a1",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1458",
+    "cart_abandoned",
+    "10-10 07:04",
+    "dabf0c",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1459",
+    "cart_abandoned",
+    "10-10 07:34",
+    "5c0a9f",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1501",
+    "cart_abandoned",
+    "10-10 16:44",
+    "0c5d3e",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1502",
+    "cart_abandoned",
+    "10-10 18:27",
+    "0c5d3e",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1503",
+    "cart_abandoned",
+    "10-10 18:27",
+    "0c5d3e",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1504",
+    "cart_abandoned",
+    "10-10 18:27",
+    "0c5d3e",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1511",
+    "cart_abandoned_2",
+    "10-10 19:20",
+    "5864a1",
+    "skipped/consent_missing",
+    "SIUSTI"
+   ],
+   [
+    "1512",
+    "cart_abandoned",
+    "10-10 19:57",
+    "45009a",
+    "skipped/consent_missing",
+    "ne/similar_optout"
+   ]
+  ],
+  "cron_atsaukti": [
+   {
+    "kada_lt": "10-11 19:26",
+    "uzs": "1359",
+    "etapas": 2,
+    "busena": "cancelled",
+    "el": "0c5d3e",
+    "naujesnis": "ne",
+    "suma": "52.07"
+   },
+   {
+    "kada_lt": "10-11 19:26",
+    "uzs": "1360",
+    "etapas": 2,
+    "busena": "cancelled",
+    "el": "0c5d3e",
+    "naujesnis": "ne",
+    "suma": "52.07"
+   },
+   {
+    "kada_lt": "10-11 19:26",
+    "uzs": "1361",
+    "etapas": 2,
+    "busena": "cancelled",
+    "el": "0c5d3e",
+    "naujesnis": "ne",
+    "suma": "30.12"
+   },
+   {
+    "kada_lt": "10-11 20:57",
+    "uzs": "1364",
+    "etapas": 2,
+    "busena": "cancelled",
+    "el": "45009a",
+    "naujesnis": "36795",
+    "suma": "73.80"
+   }
+  ],
+  "laukia_eileje": [],
+  "tracker_abandoned_7d": "31015"
+ },
+ "v": "dep-091334",
+ "kurimas": 200,
+ "sid": 7094,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
