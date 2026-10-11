@@ -1,0 +1,107 @@
+{
+ "1": {
+  "v": "S1768b",
+  "dispatch_md5": "8d054166a10ece4cf521fbf333f88fd1",
+  "flows": {
+   "cart_abandoned": {
+    "class": "marketing",
+    "template": "cart-abandoned-1",
+    "delay": 0
+   },
+   "cart_abandoned_2": {
+    "class": "marketing",
+    "template": "cart-abandoned-2",
+    "delay": 0
+   },
+   "browse_abandoned": {
+    "class": "marketing",
+    "template": "browse-abandoned",
+    "delay": 0
+   },
+   "refill_due": {
+    "class": "similar_soft_optin",
+    "template": "refill",
+    "delay": 0
+   },
+   "post_purchase_14d": {
+    "class": "service",
+    "template": "post-purchase-14d",
+    "delay": 1209600
+   }
+  },
+  "tpl": {
+   "cart_abandoned": {
+    "path": "wp-content/plugins/petshop-core/templates/emails/cart-abandoned-1.php",
+    "md5": "f8bd8dc86046f0c7c89c26802e5d790c",
+    "src": "<?php\n/**\n * Sablonas: cart_abandoned (stage 1, +2 val.)\n *\n * Tekstas pagal petshop_445_pirmi_sablonai_v1.md (SABLONAS 3), TZ §4.4.5.\n *\n * VIENAS pagrindinis CTA — „Grizti i krepseli\". JOKIU antriniu nuorodu,\n * jokio cross-sell: sio srauto tikslas VIENAS (TZ §4.4.3).\n *\n * TEMOS FALLBACK:\n *   1 preke   -> „Dar svarstote del [produkto]?\"\n *   kitaip    -> „Krepselyje liko jusu prekes\" (S1676)\n *\n * Recovery nuoroda ATEINA IS KONTEKSTO (`recovery_url`), sukurta VIENA KARTA\n * po eligibility. Sablonas jos NEGENERUOJA — kitaip retry sukurtu kelias.\n *\n * Kintamieji: $payload, $flow_class, $recipient. Nustato: $subject.\n *\n * @since S322 (2026-07-31)\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$items = isset( $payload['cart_items'] ) && is_array( $payload['cart_items'] ) ? $payload['cart_items'] : array();\n$cta   = ! empty( $payload['recovery_url'] ) ? $payload['recovery_url'] : '';\n$email = isset( $recipient ) ? $recipient : '';\n$fc    = isset( $flow_class ) ? $flow_class : 'marketing';\n\n/* --- Tema pagal prekiu skaiciu --- */\n$count = count( $items );\nif ( 1 === $count ) {\n\t$n = isset( $items[0]['name'] ) ? trim( (string) $items[0]['name'] ) : '';\n\t$subject = $n !== ''\n\t\t? sprintf( 'Dar svarstote dėl %s?', $n )\n\t\t: 'Jūsų krepšelis vis dar laukia';\n} else {\n\t$subject = 'Krepšelyje liko jūsų prekės'; // S1676\n}\n\n/* --- Kunas --- */\n$body = '';\n\n/* S1676 (2026-09-12, Raimio tekstas): vienas tekstas visiems; tema 1 prekei lieka. */\n$body .= Petshop_Email_Layout::p(\n\t'Sveiki, jūsų krepšelis išsaugotas. '\n\t. 'Jei norėsite tęsti, prekių ieškoti iš naujo nereikės.'\n);\n\n/* Prekiu sarasas — be kainu akcentavimo, be nuolaidos tono */\nif ( $items ) {\n\t$li = '';\n\tforeach ( $items as $i ) {\n\t\t$nm = isset( $i['name'] ) ? (string) $i['name'] : '';\n\t\t$q  = isset( $i['quantity'] ) ? (float) $i['quantity'] : 0;\n\t\tif ( '' === $nm ) { continue; }\n\t\t$li .= '<li style=\"margin-bottom:6px;\">' . esc_html( $nm );\n\t\tif ( $q > 0 ) {\n\t\t\t$li .= ' — ' . esc_html( rtrim( rtrim( number_format( $q, 2, ',', '' ), '0' ), ',' ) ) . ' vnt.';\n\t\t}\n\t\t$li .= '</li>';\n\t}\n\tif ( $li ) {\n\t\t$body .= '<tr><td style=\"font-size:14px;line-height:1.6;padding-bottom:18px;\">'\n\t\t\t. '<ul style=\"margin:0;padding-left:18px;\">' . $li . '</ul></td></tr>';\n\t}\n}\n\n/* VIENAS CTA */\nif ( $cta ) {\n\t$body .= Petshop_Email_Layout::button( $cta, 'Grįžti į krepšelį' );\n} else {\n\t// Be veikiancios nuorodos mygtuko NERODOM — geriau nieko, nei negyvas CTA.\n\t$body .= Petshop_Email_Layout::muted( 'Krepšelį rasite prisijungę prie petshop.lt.' );\n}\n\n$body .= Petshop_Email_Layout::muted( 'Kainos ir prekių prieinamumas gali būti pasikeitę — krepšelį atnaujinsime pagal dabartinį katalogą.' );\n\necho Petshop_Email_Layout::wrap( array(\n\t'subject'    => $subject,\n\t'preheader'  => 'Krepšelis išsaugotas — galite tęsti bet kada.',\n\t'body'       => $body,\n\t'flow_class' => $fc,\n\t'email'      => $email,\n\t'reason'     => 'Gavote šį laišką, nes sutikote gauti Petshop.lt pasiūlymus.',\n) );\n"
+   },
+   "cart_abandoned_2": {
+    "path": "wp-content/plugins/petshop-core/templates/emails/cart-abandoned-2.php",
+    "md5": "fe362694f28c4c64e4bb2e0d4266b799",
+    "src": "<?php\n/**\n * Sablonas: cart_abandoned_2 (stage 2, +24 val.)\n *\n * TEKSTAS PAGAL SALTINI: petshop_445_pirmi_sablonai_v1.md, SABLONAS 3.\n *   „+24 val., jei neuzbaigta: Krepselis vis dar laukia.\n *    Jei kilo klausimu del pasirinkimo — mielai padesime.\"\n *\n * Tema — saltinio fallback: „Jusu krepselis vis dar laukia\".\n * Antriniu linku NERA (saltinis: „vienas kelias, be antriniu\").\n *\n * NUKRYPIMAS NUO SALTINIO (dokumentuotas): saltinis rase, kad consent\n * netikrinamas. Raimio sprendimas 2026-07-31: `cart_abandoned` = MARKETING,\n * consent PRIVALOMAS. Saltinis yra 2026-07-06, veliau uzrakinti sprendimai\n * yra virsesni.\n *\n * Kintamieji: $payload, $flow_class, $recipient. Nustato: $subject.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$items = isset( $payload['cart_items'] ) && is_array( $payload['cart_items'] ) ? $payload['cart_items'] : array();\n$cta   = ! empty( $payload['recovery_url'] ) ? $payload['recovery_url'] : '';\n$email = isset( $recipient ) ? $recipient : '';\n$fc    = isset( $flow_class ) ? $flow_class : 'marketing';\n\n$subject = 'Jūsų krepšelis dar laukia'; // S1676\n\n/* S1676 (2026-09-12, Raimio tekstas). Atsakymai krenta i From (uzsakymai@) — Raimis skaito. */\n$body = Petshop_Email_Layout::p(\n\t'Sveiki, jūsų pasirinktos prekės vis dar krepšelyje. '\n\t. 'Jei kyla klausimų ar norite pasitarti dėl pasirinkimo, atsakykite į šį laišką — padėsime.'\n);\n\nif ( $items ) {\n\t$li = '';\n\tforeach ( $items as $i ) {\n\t\t$nm = isset( $i['name'] ) ? (string) $i['name'] : '';\n\t\t$q  = isset( $i['quantity'] ) ? (float) $i['quantity'] : 0;\n\t\tif ( '' === $nm ) { continue; }\n\t\t$li .= '<li style=\"margin-bottom:6px;\">' . esc_html( $nm );\n\t\tif ( $q > 0 ) {\n\t\t\t$li .= ' — ' . esc_html( rtrim( rtrim( number_format( $q, 2, ',', '' ), '0' ), ',' ) ) . ' vnt.';\n\t\t}\n\t\t$li .= '</li>';\n\t}\n\tif ( $li ) {\n\t\t$body .= '<tr><td style=\"font-size:14px;line-height:1.6;padding-bottom:18px;\">'\n\t\t\t. '<ul style=\"margin:0;padding-left:18px;\">' . $li . '</ul></td></tr>';\n\t}\n}\n\n// VIENAS kelias, be antriniu (saltinis).\nif ( $cta ) {\n\t$body .= Petshop_Email_Layout::button( $cta, 'Grįžti į krepšelį' );\n} else {\n\t$body .= Petshop_Email_Layout::muted( 'Krepšelį rasite prisijungę prie petshop.lt.' );\n}\n\n$body .= Petshop_Email_Layout::muted( 'Kainos ir prekių prieinamumas gali būti pasikeitę — krepšelį atnaujinsime pagal dabartinį katalogą.' );\n\necho Petshop_Email_Layout::wrap( array(\n\t'subject'    => $subject,\n\t'preheader'  => 'Krepšelis išsaugotas — galite tęsti bet kada.',\n\t'body'       => $body,\n\t'flow_class' => $fc,\n\t'email'      => $email,\n\t'reason'     => 'Gavote šį laišką, nes sutikote gauti Petshop.lt pasiūlymus.',\n) );\n"
+   }
+  },
+  "sutikimai": {
+   "md5": "1f22890ef04a3d1aa669e8a48e5613a4",
+   "src": "<?php\n/**\n * Plugin Name: Petshop Sutikimai (soft opt-out kasoje)\n * Description: S1685 (Q4 planas, vartai C; spec SPEC_kasos_soft_optout_s1684.md): kasoje ERĮ 81(2) soft opt-out laukas „Nenoriu priminimų apie pakartotinį užsakymą\" (nepažymėtas = neprieštarauja). Įrašo order meta, usermeta (ps_soft_optin_eligible / ps_similar_optout), ps_consent_log (source checkout), atsisakymo nuoroda laiškams (source email_link). Raimio tekstas 09-15.\n * Version: 1.0.1\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nclass Petshop_Sutikimai {\n\tconst VER = '1.0.1';\n\tconst LAUKAS = 'ps_similar_optout';\n\tconst ETIKETE = 'Nenoriu priminimų apie pakartotinį užsakymą';\n\tconst PAAISKINIMAS = 'Galime priminti tik apie anksčiau pirktas prekes. Atsisakyti galėsite bet kada.';\n\tconst OPT_RAKTAS = 'ps_sutikimai_raktas';\n\n\tpublic static function init() {\n\t\tadd_action( 'woocommerce_after_checkout_billing_form', array( __CLASS__, 'laukas' ), 20, 1 );\n\t\tadd_action( 'woocommerce_checkout_create_order', array( __CLASS__, 'irasyti' ), 20, 2 );\n\t\tadd_action( 'init', array( __CLASS__, 'nuoroda' ), 5 );\n\t}\n\n\tpublic static function laukas( $checkout ) {\n\t\t$v = $checkout->get_value( self::LAUKAS ) ? ' checked=\"checked\"' : '';\n\t\techo '<div class=\"ps-sutikimai\" style=\"margin:10px 0 4px\"><p class=\"form-row form-row-wide ps-similar-optout\" id=\"' . self::LAUKAS . '_field\">'\n\t\t\t. '<label class=\"checkbox woocommerce-form__label woocommerce-form__label-for-checkbox\" for=\"' . self::LAUKAS . '\">'\n\t\t\t. '<input type=\"checkbox\" class=\"input-checkbox woocommerce-form__input woocommerce-form__input-checkbox\" name=\"' . self::LAUKAS . '\" id=\"' . self::LAUKAS . '\" value=\"1\"' . $v . '> '\n\t\t\t. '<span>' . esc_html( self::ETIKETE ) . '</span></label></p>'\n\t\t\t. '<p class=\"ps-sutikimai-paaisk\" style=\"font-size:.85em;opacity:.75;margin:-6px 0 10px\">' . esc_html( self::PAAISKINIMAS ) . '</p></div>';\n\t}\n\n\t/** Užsakymo momentu: order meta + usermeta + consent log. */\n\tpublic static function irasyti( $order, $data ) {\n\t\t$optout = ! empty( $_POST[ self::LAUKAS ] ) ? 1 : 0; // phpcs:ignore WordPress.Security.NonceVerification.Missing -- WC checkout nonce\n\t\t$order->update_meta_data( '_ps_similar_optout', $optout );\n\t\t$order->update_meta_data( '_ps_similar_basis', 'erl81_2_checkout' );\n\t\t$email = $order->get_billing_email(); $uid = (int) $order->get_user_id();\n\t\tself::nustatyti( $email, $uid, $optout, 'checkout' );\n\t}\n\n\t/** Bendra būsenos keitimo funkcija (checkout / email_link). */\n\tpublic static function nustatyti( $email, $uid, $optout, $source ) {\n\t\tglobal $wpdb; $p = $wpdb->prefix; $email = strtolower( trim( (string) $email ) ); if ( ! $email ) return;\n\t\tif ( ! $uid ) { $u = get_user_by( 'email', $email ); $uid = $u ? (int) $u->ID : 0; }\n\t\t$nuo = '';\n\t\tif ( $uid ) {\n\t\t\t$nuo = (string) get_user_meta( $uid, 'ps_similar_optout', true );\n\t\t\tupdate_user_meta( $uid, 'ps_soft_optin_eligible', '1' );\n\t\t\tupdate_user_meta( $uid, 'ps_similar_optout', (string) $optout );\n\t\t\tif ( $optout ) update_user_meta( $uid, 'ps_similar_optout_at', gmdate( 'Y-m-d H:i:s' ) );\n\t\t}\n\t\tif ( $wpdb->get_var( $wpdb->prepare( 'SHOW TABLES LIKE %s', $p . 'ps_consent_log' ) ) ) {\n\t\t\t$wpdb->insert( $p . 'ps_consent_log', array(\n\t\t\t\t'customer_id' => $uid, 'email' => $email, 'field' => 'similar_products_optout',\n\t\t\t\t'from_value' => $nuo, 'to_value' => (string) $optout, 'source' => $source,\n\t\t\t\t'ip' => isset( $_SERVER['REMOTE_ADDR'] ) ? substr( (string) $_SERVER['REMOTE_ADDR'], 0, 45 ) : '',\n\t\t\t\t'user_agent' => isset( $_SERVER['HTTP_USER_AGENT'] ) ? substr( (string) $_SERVER['HTTP_USER_AGENT'], 0, 255 ) : '',\n\t\t\t\t'changed_at' => current_time( 'mysql' ),\n\t\t\t) );\n\t\t}\n\t\tdo_action( 'ps_similar_optout_pakeista', $email, $uid, $optout, $source );\n\t}\n\n\tpublic static function raktas() { $k = get_option( self::OPT_RAKTAS ); if ( ! $k ) { $k = wp_generate_password( 32, false ); update_option( self::OPT_RAKTAS, $k, false ); } return $k; }\n\tpublic static function zenklas( $email ) { return substr( hash_hmac( 'sha256', strtolower( trim( (string) $email ) ), self::raktas() ), 0, 24 ); }\n\t/** Atsisakymo nuoroda lifecycle laiškams (refill_due, pakartoti, win-back). */\n\tpublic static function optout_url( $email ) { return add_query_arg( array( 'ps_atsisakyti_priminimu' => rawurlencode( strtolower( trim( (string) $email ) ) ), 'z' => self::zenklas( $email ) ), home_url( '/' ) ); }\n\n\tpublic static function nuoroda() {\n\t\tif ( ! isset( $_GET['ps_atsisakyti_priminimu'], $_GET['z'] ) ) return;\n\t\t$email = strtolower( trim( rawurldecode( (string) $_GET['ps_atsisakyti_priminimu'] ) ) ); // phpcs:ignore\n\t\tif ( ! is_email( $email ) || ! hash_equals( self::zenklas( $email ), (string) $_GET['z'] ) ) { wp_die( 'Nuoroda negalioja.', '', array( 'response' => 403 ) ); }\n\t\tself::nustatyti( $email, 0, 1, 'email_link' );\n\t\twp_die( '<p style=\"font:16px/1.5 sans-serif\">Priminimų apie pakartotinį užsakymą daugiau nesiųsime.</p>', 'petshop.lt', array( 'response' => 200 ) );\n\t}\n}\nPetshop_Sutikimai::init();\n"
+  },
+  "hooks": {
+   "petshop_email_eligibility": [
+    "10 Petshop_Post_Purchase::eligibility",
+    "10 Petshop_Pakartojimo_Grandine::refill",
+    "20 Petshop_Pakartojimo_Grandine::vartai",
+    "25 Petshop_Pakartojimo_Grandine::po_14d",
+    "30 Petshop_Pakartoti::vartai",
+    "30 Petshop_Sugrazinimas::vartai"
+   ],
+   "petshop_email_flows": [
+    "10 Petshop_Atsargu_Laukimas::registruoti_srauta",
+    "10 Petshop_Naujienlaiskiai::flow",
+    "10 Petshop_Perziuru_Priminimas::registruoti_srauta",
+    "20 Petshop_Sugrazinimas::flows"
+   ],
+   "petshop_email_template_path": [
+    "10 Petshop_Laiskai_Turinys::kelias",
+    "10 Petshop_Naujienlaiskiai::kelias",
+    "20 Petshop_Pakartoti::sablonas",
+    "20 Petshop_Sugrazinimas::sablonas"
+   ]
+  },
+  "mu_cart_refs": [
+   "petshop-bacs-priminimas.php",
+   "petshop-laiskai.php",
+   "petshop-langai-admin.php",
+   "petshop-rezultatai.php"
+  ],
+  "unsub_class": true,
+  "sutikimai_class": true,
+  "optout_methods": [
+   "init",
+   "laukas",
+   "irasyti",
+   "nustatyti",
+   "raktas",
+   "zenklas",
+   "optout_url",
+   "nuoroda"
+  ],
+  "similar_optout_users": "39",
+  "optout_opts": [
+   {
+    "option_name": "petshop_email_suppression_db",
+    "l": "5"
+   },
+   {
+    "option_name": "petshop_suppression_last_reconcile",
+    "l": "19"
+   }
+  ]
+ },
+ "v": "dep-090822",
+ "kurimas": 200,
+ "sid": 7093,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
