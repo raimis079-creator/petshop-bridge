@@ -1,0 +1,69 @@
+{
+ "3": {
+  "v": "S1768e",
+  "ph": "3",
+  "md5": {
+   "plugin": "OK",
+   "t1": "OK",
+   "t2": "OK"
+  },
+  "klase": true,
+  "isjungta": false,
+  "klases": {
+   "cart_abandoned": "service",
+   "cart_abandoned_2": "service",
+   "browse_abandoned": "marketing",
+   "post_purchase_2d": "service",
+   "refill_due": "similar_soft_optin"
+  },
+  "sablonas": {
+   "cart_abandoned": "wp-content/mu-plugins/ps-sablonai/krepselis-1.php",
+   "cart_abandoned_2": "wp-content/mu-plugins/ps-sablonai/krepselis-2.php"
+  },
+  "render": {
+   "cart_abandoned": {
+    "subject": "Krepšelyje liko jūsų prekės",
+    "len": 2638,
+    "nebesiusti": 1,
+    "priezastis": 1,
+    "senas_sutikimo_tekstas": 0,
+    "mygtukas": 1,
+    "body_close": 1,
+    "optout_href": "https://petshop.lt/?ps_nebesiusti_priminimu=ter…%40gyvunai.lt&#038;z=3fd0dff310cbf0214c699413"
+   },
+   "cart_abandoned_2": {
+    "subject": "Jūsų krepšelis dar laukia",
+    "len": 2689,
+    "nebesiusti": 1,
+    "priezastis": 1,
+    "senas_sutikimo_tekstas": 0,
+    "mygtukas": 1,
+    "body_close": 1,
+    "optout_href": "https://petshop.lt/?ps_nebesiusti_priminimu=ter…%40gyvunai.lt&#038;z=3fd0dff310cbf0214c699413"
+   }
+  },
+  "elig_terra": {
+   "allowed": true,
+   "reason": "",
+   "terminal": true
+  },
+  "elig_terra_marketing_kaip_buvo": {
+   "allowed": false,
+   "reason": "suppressed_marketing_unsubscribe",
+   "terminal": true
+  },
+  "optout_blogas_parasas": 403,
+  "hooks": [
+   "petshop_email_eligibility 40 eligibility",
+   "petshop_email_flows 30 flows",
+   "petshop_email_template_path 30 kelias"
+  ]
+ },
+ "v": "dep-091641",
+ "kurimas": 200,
+ "sid": 7096,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
