@@ -1,0 +1,1914 @@
+{
+ "1": {
+  "v": "S1775a",
+  "ist_cols": [
+   "id",
+   "data",
+   "email",
+   "vardas",
+   "pavarde",
+   "tel",
+   "imone",
+   "siuntimas",
+   "miestas",
+   "apmokejimas",
+   "suma_be",
+   "suma",
+   "statusas",
+   "ivykdytas",
+   "saskaita",
+   "eiluciu"
+  ],
+  "prekes": [
+   [
+    "18512",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su ėriena, 400 g",
+    2.79,
+    2.79,
+    0,
+    {
+     "_vf_cost": "1.683",
+     "_vf_personal_cost": "1.683",
+     "_vf_cost_xml": "1.98"
+    },
+    "instock",
+    554,
+    "9",
+    "8011259003522",
+    11,
+    "vf",
+    "",
+    "NGALA40"
+   ],
+   [
+    "18515",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su veršiena, 400 g",
+    2.79,
+    2.79,
+    0,
+    {
+     "_vf_cost": "1.683",
+     "_vf_personal_cost": "1.683",
+     "_vf_cost_xml": "1.98"
+    },
+    "instock",
+    206,
+    "38",
+    "8011259003515",
+    0,
+    "vf",
+    "",
+    "NGAVA40"
+   ],
+   [
+    "18518",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su kalakutiena, 400 g",
+    2.79,
+    2.79,
+    0,
+    {
+     "_vf_cost": "1.683",
+     "_vf_personal_cost": "1.683",
+     "_vf_cost_xml": "1.98"
+    },
+    "instock",
+    381,
+    "5",
+    "8011259003553",
+    1,
+    "vf",
+    "",
+    "NGAUA40"
+   ],
+   [
+    "18521",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su jautiena, 400 g",
+    2.79,
+    2.79,
+    0,
+    {
+     "_vf_cost": "1.683",
+     "_vf_personal_cost": "1.683",
+     "_vf_cost_xml": "1.98"
+    },
+    "instock",
+    326,
+    "19",
+    "8011259003508",
+    0,
+    "vf",
+    "",
+    "NGABA40"
+   ],
+   [
+    "18524",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su tunu, 12 kg",
+    65.99,
+    65.99,
+    0,
+    {
+     "_vf_cost": "42.4915",
+     "_vf_personal_cost": "42.4915",
+     "_vf_cost_xml": "49.99"
+    },
+    "outofstock",
+    0,
+    "",
+    "8011259004208",
+    0,
+    "vf",
+    "",
+    "NGCST12"
+   ],
+   [
+    "18527",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su tunu, 1,5 kg",
+    17.05,
+    17.05,
+    0,
+    {
+     "_vf_cost": "11.169",
+     "_vf_personal_cost": "11.169",
+     "_vf_cost_xml": "13.14"
+    },
+    "instock",
+    54,
+    "",
+    "8011259003805",
+    0,
+    "vf",
+    "",
+    "NGCST01"
+   ],
+   [
+    "18530",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su jautiena, 1,5 kg",
+    17.05,
+    17.05,
+    0,
+    {
+     "_vf_cost": "11.169",
+     "_vf_personal_cost": "11.169",
+     "_vf_cost_xml": "13.14"
+    },
+    "instock",
+    53,
+    "0",
+    "8011259003782",
+    1,
+    "vf",
+    "",
+    "NGCSB01"
+   ],
+   [
+    "18533",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms didelėms katėms su vištiena, 1,5 kg",
+    17.05,
+    17.05,
+    0,
+    {
+     "_vf_cost": "11.169",
+     "_vf_personal_cost": "11.169",
+     "_vf_cost_xml": "13.14"
+    },
+    "instock",
+    49,
+    "",
+    "8011259003829",
+    0,
+    "vf",
+    "",
+    "NGCGC01"
+   ],
+   [
+    "18536",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras kačiukams su vištiena, 1,5 kg",
+    18.35,
+    18.35,
+    0,
+    {
+     "_vf_cost": "11.951",
+     "_vf_personal_cost": "11.951",
+     "_vf_cost_xml": "14.06"
+    },
+    "instock",
+    52,
+    "",
+    "8011259003669",
+    0,
+    "vf",
+    "",
+    "NGCKC01"
+   ],
+   [
+    "18539",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras katėms su vištiena, 1,5 kg",
+    17.05,
+    17.05,
+    0,
+    {
+     "_vf_cost": "11.169",
+     "_vf_personal_cost": "11.169",
+     "_vf_cost_xml": "13.14"
+    },
+    "instock",
+    46,
+    "",
+    "8011259003683",
+    0,
+    "vf",
+    "",
+    "NGCAC01"
+   ],
+   [
+    "18542",
+    "Exclusion Mediterraneo Monoprotein sausas pašaras katėms su jautiena, 1,5 kg",
+    17.05,
+    17.05,
+    0,
+    {
+     "_vf_cost": "11.169",
+     "_vf_personal_cost": "11.169",
+     "_vf_cost_xml": "13.14"
+    },
+    "instock",
+    64,
+    "",
+    "8011259003713",
+    3,
+    "vf",
+    "",
+    "NGCAB01"
+   ],
+   [
+    "18554",
+    "Exclusion Hypoallergenic sausas šunų maistas su vabzdžiais ir žirneliais M/L 12 kg",
+    106.6,
+    106.6,
+    0,
+    {
+     "_vf_cost": "65.8835",
+     "_vf_personal_cost": "65.8835",
+     "_vf_cost_xml": "77.51"
+    },
+    "instock",
+    35,
+    "",
+    "8011259002556",
+    1,
+    "vf",
+    "",
+    "HYIM11"
+   ],
+   [
+    "18557",
+    "Exclusion Hypoallergenic sausas šunų maistas su triušiena ir bulvėmis M/L 12 kg",
+    79.9,
+    79.9,
+    0,
+    {
+     "_vf_cost": "53.805",
+     "_vf_personal_cost": "53.805",
+     "_vf_cost_xml": "63.3"
+    },
+    "instock",
+    1,
+    "1",
+    "8011259002631",
+    0,
+    "vf",
+    "",
+    "HYRM11"
+   ],
+   [
+    "18560",
+    "Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg",
+    79.9,
+    79.9,
+    0,
+    {
+     "_vf_cost": "53.805",
+     "_vf_personal_cost": "53.805",
+     "_vf_cost_xml": "63.3"
+    },
+    "instock",
+    54,
+    "1",
+    "8011259002594",
+    4,
+    "vf",
+    "",
+    "HYPM11"
+   ],
+   [
+    "18563",
+    "Exclusion Hypoallergenic sausas šunų maistas su elniena ir bulvėmis M/L 12 kg",
+    74.4,
+    74.4,
+    0,
+    {
+     "_cost_price": "49.3000",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09"
+    },
+    "outofstock",
+    0,
+    "",
+    "",
+    0,
+    "av",
+    "",
+    "HYVM11"
+   ],
+   [
+    "18566",
+    "Exclusion Hypoallergenic sausas šunų maistas su arkliena ir bulvėmis M/L 12 kg",
+    78.19,
+    78.19,
+    0,
+    {
+     "_vf_cost": "53.805",
+     "_vf_personal_cost": "53.805",
+     "_vf_cost_xml": "63.3"
+    },
+    "instock",
+    15,
+    "1",
+    "8011259002570",
+    1,
+    "vf",
+    "",
+    "HYHM11"
+   ],
+   [
+    "18569",
+    "Exclusion Hypoallergenic sausas šunų maistas su antiena ir bulvėmis M/L 12 kg",
+    70.4,
+    70.4,
+    0,
+    {
+     "_cost_price": "45.0500",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09"
+    },
+    "outofstock",
+    0,
+    "",
+    "",
+    0,
+    "av",
+    "",
+    "HYDM11"
+   ],
+   [
+    "18572",
+    "Exclusion Hypoallergenic sausas šuniukų maistas su kiauliena ir žirneliais 12 kg",
+    84.89,
+    84.89,
+    0,
+    {
+     "_vf_cost": "55.2415",
+     "_vf_personal_cost": "55.2415",
+     "_vf_cost_xml": "64.99"
+    },
+    "instock",
+    59,
+    "",
+    "8011259002532",
+    2,
+    "vf",
+    "",
+    "HYPA11"
+   ],
+   [
+    "18575",
+    "Exclusion Hypoallergenic mini sausas mažų veislių šunų maistas su žuvimi ir bulvėmis S 2 kg",
+    21.95,
+    21.95,
+    0,
+    {
+     "_vf_cost": "14.3565",
+     "_vf_personal_cost": "14.3565",
+     "_vf_cost_xml": "16.89"
+    },
+    "instock",
+    15,
+    "2",
+    "8011259000262",
+    2,
+    "vf",
+    "",
+    "HYFS02"
+   ],
+   [
+    "18578",
+    "Exclusion Hypoallergenic mini mažų veislių šunų maistas su triušiena ir bulvėmis S 2 kg",
+    21.95,
+    21.95,
+    0,
+    {
+     "_vf_cost": "14.3565",
+     "_vf_personal_cost": "14.3565",
+     "_vf_cost_xml": "16.89"
+    },
+    "instock",
+    2,
+    "2",
+    "8011259000170",
+    0,
+    "vf",
+    "",
+    "HYRS02"
+   ],
+   [
+    "18581",
+    "Exclusion Hypoallergenic mini mažų veislių šunų maistas su arkliena ir bulvėmis S 2 kg",
+    21.95,
+    21.95,
+    0,
+    {
+     "_vf_cost": "14.3565",
+     "_vf_personal_cost": "14.3565",
+     "_vf_cost_xml": "16.89"
+    },
+    "instock",
+    3,
+    "3",
+    "8011259000040",
+    0,
+    "vf",
+    "",
+    "HYHS02"
+   ],
+   [
+    "18584",
+    "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 800 g",
+    10.59,
+    10.59,
+    0,
+    {
+     "_vf_cost": "6.7745",
+     "_vf_personal_cost": "6.7745",
+     "_vf_cost_xml": "7.97"
+    },
+    "instock",
+    33,
+    "",
+    "8011259000071",
+    0,
+    "vf",
+    "",
+    "HYPS08"
+   ],
+   [
+    "18587",
+    "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    56.99,
+    56.99,
+    0,
+    {
+     "_vf_cost": "37.485",
+     "_vf_personal_cost": "37.485",
+     "_vf_cost_xml": "44.1"
+    },
+    "instock",
+    180,
+    "3",
+    "8011259002846",
+    24,
+    "vf",
+    "",
+    "HYPS06"
+   ],
+   [
+    "18590",
+    "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg",
+    21.95,
+    21.95,
+    0,
+    {
+     "_vf_cost": "14.3565",
+     "_vf_personal_cost": "14.3565",
+     "_vf_cost_xml": "16.89"
+    },
+    "instock",
+    349,
+    "5",
+    "8011259000088",
+    11,
+    "vf",
+    "",
+    "HYPS02"
+   ],
+   [
+    "18593",
+    "Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200 g",
+    2.95,
+    2.95,
+    0,
+    {
+     "_cost_price": "2.00",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_vf_cost": "1.649",
+     "_vf_personal_cost": "1.649",
+     "_vf_cost_xml": "1.94"
+    },
+    "instock",
+    315,
+    "67",
+    "8011259011374",
+    0,
+    "av",
+    "",
+    "AM20"
+   ],
+   [
+    "18596",
+    "Exclusion Hypoallergenic konservai šunims su putpelėmis ir žirniais 400 g",
+    3.98,
+    3.98,
+    0,
+    {
+     "_cost_price": "2.38",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601",
+     "_vf_cost_xml": "3.06"
+    },
+    "instock",
+    207,
+    "77",
+    "8011259213754",
+    0,
+    "av",
+    "",
+    "QM37"
+   ],
+   [
+    "18599",
+    "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 400 g",
+    3.98,
+    3.98,
+    0,
+    {
+     "_cost_price": "2.38",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601",
+     "_vf_cost_xml": "3.06"
+    },
+    "instock",
+    1026,
+    "15",
+    "8011259193759",
+    23,
+    "av",
+    "",
+    "PM37"
+   ],
+   [
+    "18602",
+    "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 200 g",
+    2.95,
+    2.95,
+    0,
+    {
+     "_cost_price": "1.81",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_vf_cost": "1.649",
+     "_vf_personal_cost": "1.649",
+     "_vf_cost_xml": "1.94"
+    },
+    "instock",
+    153,
+    "46",
+    "8011259011350",
+    12,
+    "av",
+    "",
+    "PM20"
+   ],
+   [
+    "18605",
+    "Exclusion Hypoallergenic konservai šunims su elniena ir bulvėmis 400 g",
+    3.98,
+    3.98,
+    0,
+    {
+     "_cost_price": "2.38",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601",
+     "_vf_cost_xml": "3.06"
+    },
+    "instock",
+    187,
+    "105",
+    "8011259153753",
+    0,
+    "av",
+    "",
+    "VM37"
+   ],
+   [
+    "18608",
+    "Exclusion Hypoallergenic konservai šunims su arkliena ir bulvėmis 400 g",
+    3.98,
+    3.98,
+    0,
+    {
+     "_cost_price": "2.38",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601",
+     "_vf_cost_xml": "3.06"
+    },
+    "instock",
+    122,
+    "76",
+    "8011259203755",
+    0,
+    "av",
+    "",
+    "HM37"
+   ],
+   [
+    "18611",
+    "Exclusion Hypoallergenic konservai šunims su antiena ir bulvėmis 400 g",
+    3.98,
+    3.98,
+    0,
+    {
+     "_cost_price": "2.56",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601",
+     "_vf_cost_xml": "3.06"
+    },
+    "instock",
+    247,
+    "58",
+    "8011259173751",
+    1,
+    "av",
+    "",
+    "DM37"
+   ],
+   [
+    "18614",
+    "Exclusion Hypoallergenic konservai šunims su antiena ir bulvėmis 200 g",
+    2.95,
+    2.95,
+    0,
+    {
+     "_cost_price": "1.90",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_vf_cost": "1.5725",
+     "_vf_personal_cost": "1.5725",
+     "_vf_cost_xml": "1.85"
+    },
+    "instock",
+    146,
+    "40",
+    "8011259011381",
+    0,
+    "av",
+    "",
+    "DM20"
+   ],
+   [
+    "18617",
+    "Exclusion Hypoallergenic dietinis sausas pašaras katėms su kiauliena ir bulvėmis, 1,5 kg",
+    20.79,
+    20.79,
+    0,
+    {
+     "_vf_cost": "14.2545",
+     "_vf_personal_cost": "14.2545",
+     "_vf_cost_xml": "16.77"
+    },
+    "instock",
+    39,
+    "",
+    "8011259004277",
+    0,
+    "vf",
+    "",
+    "CHYP01"
+   ],
+   [
+    "18620",
+    "Exclusion Hydrolyzed Hypoallergenic maistas šunims su hidrolizuota žuvimi ir kukurūzų krakmolu M/L 12 kg",
+    80.79,
+    80.79,
+    0,
+    {
+     "_vf_cost": "55.59",
+     "_vf_personal_cost": "55.59",
+     "_vf_cost_xml": "65.4"
+    },
+    "instock",
+    23,
+    "",
+    "8011259003973",
+    1,
+    "vf",
+    "",
+    "HHFM11"
+   ],
+   [
+    "18623",
+    "Exclusion Hepatic dietinis sausas šunų maistas su kiauliena, ryžiais ir žirneliais M/L 12kg",
+    73.9,
+    73.9,
+    0,
+    {
+     "_cost_price": "49.65",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09"
+    },
+    "instock",
+    2,
+    "2",
+    "",
+    0,
+    "vf",
+    "",
+    "HEPM11"
+   ],
+   [
+    "20517",
+    "Exclusion Mediterraneo Mono Protein konservas kačiukams su vištiena, 85 g",
+    1.53,
+    1.53,
+    0,
+    {
+     "_vf_cost_xml": "1.1",
+     "_vf_cost": "0.935",
+     "_vf_personal_cost": "0.935"
+    },
+    "instock",
+    96,
+    "",
+    "8011259004000",
+    0,
+    "vf",
+    "",
+    "NGCKCW85"
+   ],
+   [
+    "20523",
+    "Exclusion Mediterraneo Mono Protein konservuotas pašaras sterilizuotoms katėms su jautiena, 85 g",
+    1.53,
+    1.53,
+    0,
+    {
+     "_vf_cost_xml": "1.1",
+     "_vf_cost": "0.935",
+     "_vf_personal_cost": "0.935"
+    },
+    "instock",
+    262,
+    "",
+    "8011259004055",
+    0,
+    "vf",
+    "",
+    "NGCSBW85"
+   ],
+   [
+    "20525",
+    "Exclusion Mediterraneo Mono Protein konservuotas pašaras sterilizuotoms katėms su vištiena, 85 g",
+    1.53,
+    1.53,
+    0,
+    {
+     "_vf_cost_xml": "1.1",
+     "_vf_cost": "0.935",
+     "_vf_personal_cost": "0.935"
+    },
+    "instock",
+    459,
+    "",
+    "8011259004048",
+    0,
+    "vf",
+    "",
+    "NGCSCW85"
+   ],
+   [
+    "20537",
+    "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras vidutinių veislių mažiems šuniukams su jautiena M, 12 kg",
+    61.8,
+    61.8,
+    0,
+    {
+     "_vf_cost_xml": "45.66",
+     "_vf_cost": "38.811",
+     "_vf_personal_cost": "38.811"
+    },
+    "instock",
+    18,
+    "",
+    "8011259004451",
+    0,
+    "vf",
+    "",
+    "NGPBM12"
+   ],
+   [
+    "20539",
+    "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras mažų veislių mažiems šuniukams su jautiena S, 2 kg",
+    18.9,
+    18.9,
+    0,
+    {
+     "_vf_cost_xml": "13.43",
+     "_vf_cost": "11.4155",
+     "_vf_personal_cost": "11.4155"
+    },
+    "instock",
+    33,
+    "",
+    "8011259004437",
+    0,
+    "vf",
+    "",
+    "NGPBS02"
+   ],
+   [
+    "20541",
+    "Exclusion Mono Protein begrūdis sausas pašaras mažų veislių mažiems šuniukams su jautiena S, 7 kg",
+    46.9,
+    46.9,
+    0,
+    {
+     "_vf_cost_xml": "34.01",
+     "_vf_cost": "28.9085",
+     "_vf_personal_cost": "28.9085"
+    },
+    "instock",
+    16,
+    "",
+    "8011259004482",
+    0,
+    "vf",
+    "",
+    "NGPBS07"
+   ],
+   [
+    "20543",
+    "Exclusion Mono Protein begrūdis sausas pašaras šuniukams, su tunu, M 3kg      ",
+    21.8,
+    21.8,
+    0,
+    {
+     "_vf_cost_xml": "15.7",
+     "_vf_cost": "13.345",
+     "_vf_personal_cost": "13.345"
+    },
+    "instock",
+    8,
+    "",
+    "8011259003065",
+    0,
+    "vf",
+    "",
+    "NGPTM03"
+   ],
+   [
+    "20545",
+    "Exclusion ME MONO NOBLE GRAIN  sausas pašaras šuniukams,su tunu, 500g",
+    4.49,
+    4.49,
+    0,
+    {
+     "_vf_cost_xml": "3.61",
+     "_vf_cost": "3.0685",
+     "_vf_personal_cost": "3.0685"
+    },
+    "outofstock",
+    0,
+    "",
+    "8011259002884",
+    0,
+    "vf",
+    "",
+    "NGPTS05"
+   ],
+   [
+    "20941",
+    "Exclusion Hypoallergenic sausas pašaras mažų veislių šunims su žuvimi, S, 2 kg",
+    27.99,
+    27.99,
+    0,
+    {
+     "_vf_cost_xml": "21.07",
+     "_vf_cost": "17.9095",
+     "_vf_personal_cost": "17.9095"
+    },
+    "instock",
+    33,
+    "",
+    "8011259003959",
+    1,
+    "vf",
+    "",
+    "HHFS02"
+   ],
+   [
+    "20943",
+    "Exclusion Hypoallergenic sausas pašaras Duck Potato Small breed 2 kg",
+    21.95,
+    21.95,
+    0,
+    {
+     "_vf_cost_xml": "16.09",
+     "_vf_cost": "13.6765",
+     "_vf_personal_cost": "13.6765"
+    },
+    "outofstock",
+    0,
+    "",
+    "8011259000224",
+    0,
+    "vf",
+    "",
+    "HYDS02"
+   ],
+   [
+    "20947",
+    "Exclusion Hypoallergenic sausas pašaras vidutinių ir didelių veislių šunims su arkliena ir bulvėmis, M/L, 2kg",
+    21.95,
+    21.95,
+    0,
+    {
+     "_vf_cost_xml": "16.89",
+     "_vf_cost": "14.3565",
+     "_vf_personal_cost": "14.3565"
+    },
+    "outofstock",
+    0,
+    "",
+    "8011259002563",
+    0,
+    "vf",
+    "",
+    "HYHM02"
+   ],
+   [
+    "20957",
+    "Exclusion Hypoallergenic sausas pašaras šuniukams su kiauliena ir žirneliais, 2kg",
+    24.99,
+    24.99,
+    0,
+    {
+     "_vf_cost_xml": "19.14",
+     "_vf_cost": "16.269",
+     "_vf_personal_cost": "16.269"
+    },
+    "instock",
+    21,
+    "",
+    "8011259002525",
+    0,
+    "vf",
+    "",
+    "HYPA02"
+   ],
+   [
+    "20961",
+    "Exclusion Hypoallergenic sausas pašaras vidutinių ir didelių veislių šunims  su kiauliena ir žirneliai, M/L, 2kg",
+    21.95,
+    21.95,
+    0,
+    {
+     "_vf_cost_xml": "16.89",
+     "_vf_cost": "14.3565",
+     "_vf_personal_cost": "14.3565"
+    },
+    "instock",
+    103,
+    "",
+    "8011259002587",
+    1,
+    "vf",
+    "",
+    "HYPM02"
+   ],
+   [
+    "20977",
+    "Exclusion Hypoallergenic sausas pašaras mažų veislių šunims su elniena ir bulvėmis, S, 2kg",
+    21.95,
+    21.95,
+    0,
+    {
+     "_vf_cost_xml": "16.89",
+     "_vf_cost": "14.3565",
+     "_vf_personal_cost": "14.3565"
+    },
+    "instock",
+    17,
+    "",
+    "8011259000132",
+    0,
+    "vf",
+    "",
+    "HYVS02"
+   ],
+   [
+    "21115",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras didelių veislių šunims su jautiena, L, 12 kg",
+    59.9,
+    59.9,
+    0,
+    {
+     "_vf_cost_xml": "41.88",
+     "_vf_cost": "35.598",
+     "_vf_personal_cost": "35.598"
+    },
+    "instock",
+    47,
+    "",
+    "8011259003232",
+    0,
+    "vf",
+    "",
+    "NGABL12"
+   ],
+   [
+    "21117",
+    "Exclusion ME MONO NOBLE GRAIN sausas pašaras šunims M, su jautiena, 3kg",
+    17.89,
+    17.89,
+    0,
+    {
+     "_vf_cost_xml": "14.43",
+     "_vf_cost": "12.2655",
+     "_vf_personal_cost": "12.2655"
+    },
+    "instock",
+    15,
+    "",
+    "8011259003102",
+    2,
+    "vf",
+    "",
+    "NGABM03"
+   ],
+   [
+    "21119",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su jautiena, M, 12 kg",
+    59.9,
+    59.9,
+    0,
+    {
+     "_vf_cost_xml": "41.88",
+     "_vf_cost": "35.598",
+     "_vf_personal_cost": "35.598"
+    },
+    "instock",
+    13,
+    "",
+    "8011259003119",
+    0,
+    "vf",
+    "",
+    "NGABM12"
+   ],
+   [
+    "21123",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su jautiena, S, 500g",
+    4.99,
+    4.99,
+    0,
+    {
+     "_vf_cost_xml": "3.61",
+     "_vf_cost": "3.0685",
+     "_vf_personal_cost": "3.0685"
+    },
+    "instock",
+    30,
+    "",
+    "8011259002938",
+    1,
+    "vf",
+    "",
+    "NGABS05"
+   ],
+   [
+    "21125",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su vištiena, 400 g",
+    2.79,
+    2.79,
+    0,
+    {
+     "_vf_cost_xml": "1.98",
+     "_vf_cost": "1.683",
+     "_vf_personal_cost": "1.683"
+    },
+    "instock",
+    146,
+    "0",
+    "8011259003492",
+    2,
+    "vf",
+    "",
+    "NGACA40"
+   ],
+   [
+    "21129",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras didelių veislių šunims su ėriena, L, 12 kg",
+    59.9,
+    59.9,
+    0,
+    {
+     "_vf_cost_xml": "41.88",
+     "_vf_cost": "35.598",
+     "_vf_personal_cost": "35.598"
+    },
+    "outofstock",
+    0,
+    "",
+    "8011259003249",
+    0,
+    "vf",
+    "",
+    "NGALL12"
+   ],
+   [
+    "21131",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su ėriena, M, 3 kg",
+    19.9,
+    19.9,
+    0,
+    {
+     "_vf_cost_xml": "14.43",
+     "_vf_cost": "12.2655",
+     "_vf_personal_cost": "12.2655"
+    },
+    "instock",
+    154,
+    "",
+    "8011259003126",
+    0,
+    "vf",
+    "",
+    "NGALM03"
+   ],
+   [
+    "21133",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su ėriena, M, 12 kg",
+    59.9,
+    59.9,
+    0,
+    {
+     "_vf_cost_xml": "41.88",
+     "_vf_cost": "35.598",
+     "_vf_personal_cost": "35.598"
+    },
+    "instock",
+    19,
+    "",
+    "8011259003133",
+    0,
+    "vf",
+    "",
+    "NGALM12"
+   ],
+   [
+    "21135",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su ėriena, S, 2 kg",
+    16.9,
+    16.9,
+    0,
+    {
+     "_vf_cost_xml": "11.92",
+     "_vf_cost": "10.132",
+     "_vf_personal_cost": "10.132"
+    },
+    "instock",
+    71,
+    "",
+    "8011259002969",
+    1,
+    "vf",
+    "",
+    "NGALS02"
+   ],
+   [
+    "21137",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su ėriena, S, 500g",
+    4.99,
+    4.99,
+    0,
+    {
+     "_vf_cost_xml": "3.61",
+     "_vf_cost": "3.0685",
+     "_vf_personal_cost": "3.0685"
+    },
+    "instock",
+    35,
+    "",
+    "8011259002952",
+    0,
+    "vf",
+    "",
+    "NGALS05"
+   ],
+   [
+    "21139",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su lašiša, 400 g",
+    2.79,
+    2.79,
+    0,
+    {
+     "_vf_cost_xml": "1.98",
+     "_vf_cost": "1.683",
+     "_vf_personal_cost": "1.683"
+    },
+    "instock",
+    89,
+    "",
+    "8011259003546",
+    0,
+    "vf",
+    "",
+    "NGASA40"
+   ],
+   [
+    "21141",
+    "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su tunu, 400 g",
+    2.79,
+    2.79,
+    0,
+    {
+     "_vf_cost_xml": "1.98",
+     "_vf_cost": "1.683",
+     "_vf_personal_cost": "1.683"
+    },
+    "instock",
+    120,
+    "",
+    "8011259003539",
+    0,
+    "vf",
+    "",
+    "NGATA40"
+   ],
+   [
+    "21143",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras didelių veislių šunims su tunu, L, 12 kg",
+    59.9,
+    59.9,
+    0,
+    {
+     "_vf_cost_xml": "41.88",
+     "_vf_cost": "35.598",
+     "_vf_personal_cost": "35.598"
+    },
+    "instock",
+    27,
+    "",
+    "8011259003256",
+    0,
+    "vf",
+    "",
+    "NGATL12"
+   ],
+   [
+    "21145",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su tunu, M, 3 kg",
+    19.9,
+    19.9,
+    0,
+    {
+     "_vf_cost_xml": "14.43",
+     "_vf_cost": "12.2655",
+     "_vf_personal_cost": "12.2655"
+    },
+    "outofstock",
+    0,
+    "",
+    "8011259003140",
+    0,
+    "vf",
+    "",
+    "NGATM03"
+   ],
+   [
+    "21147",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su tunu, M, 12 kg",
+    59.9,
+    59.9,
+    0,
+    {
+     "_vf_cost_xml": "41.88",
+     "_vf_cost": "35.598",
+     "_vf_personal_cost": "35.598"
+    },
+    "instock",
+    15,
+    "",
+    "8011259003157",
+    0,
+    "vf",
+    "",
+    "NGATM12"
+   ],
+   [
+    "21149",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su tunu, S, 2 kg",
+    16.9,
+    16.9,
+    0,
+    {
+     "_vf_cost_xml": "11.92",
+     "_vf_cost": "10.132",
+     "_vf_personal_cost": "10.132"
+    },
+    "instock",
+    63,
+    "",
+    "8011259002983",
+    0,
+    "vf",
+    "",
+    "NGATS02"
+   ],
+   [
+    "21151",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su tunu, S, 500 g",
+    4.99,
+    4.99,
+    0,
+    {
+     "_vf_cost_xml": "3.61",
+     "_vf_cost": "3.0685",
+     "_vf_personal_cost": "3.0685"
+    },
+    "outofstock",
+    0,
+    "",
+    "8011259002976",
+    0,
+    "vf",
+    "",
+    "NGATS05"
+   ],
+   [
+    "21153",
+    "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su tunu, S, 7 kg",
+    43.8,
+    43.8,
+    0,
+    {
+     "_vf_cost_xml": "30.86",
+     "_vf_cost": "26.231",
+     "_vf_personal_cost": "26.231"
+    },
+    "instock",
+    6,
+    "",
+    "8011259002990",
+    0,
+    "vf",
+    "",
+    "NGATS07"
+   ],
+   [
+    "21165",
+    "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g",
+    1.53,
+    1.53,
+    0,
+    {
+     "_vf_cost_xml": "1.1",
+     "_vf_cost": "0.935",
+     "_vf_personal_cost": "0.935"
+    },
+    "instock",
+    36,
+    "",
+    "8011259004031",
+    5,
+    "vf",
+    "",
+    "NGCATW85"
+   ],
+   [
+    "21531",
+    "Exclusion Hypoallergenic dietinis sausas pašaras katėms su kiauliena ir bulvėmis, 300 g",
+    5.99,
+    5.99,
+    0,
+    {
+     "_vf_cost_xml": "4.85",
+     "_vf_cost": "4.1225",
+     "_vf_personal_cost": "4.1225"
+    },
+    "outofstock",
+    0,
+    "",
+    "8011259004413",
+    0,
+    "vf",
+    "",
+    "CHYP03"
+   ],
+   [
+    "25165",
+    "Exclusion Mono Protein, begrūdis sausas pašaras mažų veislių mažiems šuniukams S, jautiena, 500g",
+    4.99,
+    4.99,
+    0,
+    {
+     "_vf_cost_xml": "3.61",
+     "_vf_cost": "3.0685",
+     "_vf_personal_cost": "3.0685"
+    },
+    "instock",
+    23,
+    "",
+    "8011259004420",
+    0,
+    "vf",
+    "",
+    "NGPBS05"
+   ],
+   [
+    "25227",
+    "Exclusion Mediterraneo Mono Noble sausas pašaras šunims S, su ėriena, 7 kg",
+    40.99,
+    40.99,
+    0,
+    {
+     "_vf_cost_xml": "30.86",
+     "_vf_cost": "26.231",
+     "_vf_personal_cost": "26.231"
+    },
+    "instock",
+    8,
+    "0",
+    "8011259004536",
+    2,
+    "vf",
+    "",
+    "NGALS07"
+   ],
+   [
+    "25265",
+    "Exclusion Mediterraneo Mono Noble sausas pašaras šuniukams L, su tunu, 12kg",
+    53.09,
+    53.09,
+    0,
+    {
+     "_vf_cost_xml": "42.99",
+     "_vf_cost": "36.5415",
+     "_vf_personal_cost": "36.5415"
+    },
+    "outofstock",
+    0,
+    "",
+    "8011259003218",
+    0,
+    "vf",
+    "",
+    "NGPTL12"
+   ],
+   [
+    "35027",
+    "Exclusion Hydrolyzed Hypoallergenic sausas pašaras vidutinių ir didelių veislių šunims su žuvimi, M/L, 2 kg",
+    26.09,
+    26.09,
+    0,
+    {
+     "_vf_cost_xml": "21.07",
+     "_vf_cost": "17.9095",
+     "_vf_personal_cost": "17.9095"
+    },
+    "instock",
+    6,
+    "",
+    "8011259003966",
+    0,
+    "vf",
+    "",
+    "HHFM02"
+   ],
+   [
+    "35312",
+    "Exclusion Hypo konservuotas pašaras šunims su triušiena ir bulvėmis, 400 g",
+    3.98,
+    3.98,
+    0,
+    {
+     "_vf_cost_xml": "3.06",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601"
+    },
+    "instock",
+    267,
+    "",
+    "8011259163752",
+    1,
+    "vf",
+    "",
+    "AM37"
+   ],
+   [
+    "35316",
+    "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g",
+    3.98,
+    3.98,
+    0,
+    {
+     "_vf_cost_xml": "3.06",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601"
+    },
+    "instock",
+    210,
+    "",
+    "8011259002822",
+    10,
+    "vf",
+    "",
+    "PA37"
+   ],
+   [
+    "35322",
+    "Exclusion Hypo konservai šunims su putpelėmis ir žirniais, 200g",
+    2.85,
+    2.85,
+    0,
+    {
+     "_vf_cost_xml": "1.94",
+     "_vf_cost": "1.649",
+     "_vf_personal_cost": "1.649"
+    },
+    "instock",
+    120,
+    "",
+    "8011259011404",
+    0,
+    "vf",
+    "",
+    "QM20"
+   ],
+   [
+    "35326",
+    "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir bulvėmis, 200 g",
+    2.95,
+    2.95,
+    0,
+    {
+     "_vf_cost_xml": "1.85",
+     "_vf_cost": "1.5725",
+     "_vf_personal_cost": "1.5725"
+    },
+    "instock",
+    61,
+    "",
+    "8011259011398",
+    1,
+    "vf",
+    "",
+    "FM20"
+   ],
+   [
+    "35328",
+    "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir bulvėmis, 400 g",
+    3.98,
+    3.98,
+    0,
+    {
+     "_vf_cost_xml": "3.06",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601"
+    },
+    "instock",
+    48,
+    "",
+    "8011259183750",
+    0,
+    "vf",
+    "",
+    "FM37"
+   ],
+   [
+    "35330",
+    "Exclusion Hypo konservuotas pašaras šunims su arkliena ir bulvėmis, 200 g",
+    2.99,
+    2.99,
+    0,
+    {
+     "_vf_cost_xml": "2.38",
+     "_vf_cost": "2.023",
+     "_vf_personal_cost": "2.023"
+    },
+    "instock",
+    14,
+    "",
+    "8011259011343",
+    16,
+    "vf",
+    "",
+    "HM20"
+   ],
+   [
+    "35334",
+    "Exclusion Hypo konservuotas pašaras šunims su elniena ir bulvėmis, 200 g",
+    2.95,
+    2.95,
+    0,
+    {
+     "_vf_cost_xml": "1.94",
+     "_vf_cost": "1.649",
+     "_vf_personal_cost": "1.649"
+    },
+    "instock",
+    43,
+    "",
+    "8011259011367",
+    0,
+    "vf",
+    "",
+    "VM20"
+   ],
+   [
+    "35338",
+    "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 200 g",
+    2.95,
+    2.95,
+    0,
+    {
+     "_vf_cost_xml": "1.94",
+     "_vf_cost": "1.649",
+     "_vf_personal_cost": "1.649"
+    },
+    "instock",
+    147,
+    "",
+    "8011259011411",
+    0,
+    "vf",
+    "",
+    "BM20"
+   ],
+   [
+    "35340",
+    "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g",
+    3.98,
+    3.98,
+    0,
+    {
+     "_vf_cost_xml": "3.06",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601"
+    },
+    "instock",
+    92,
+    "",
+    "8011259223753",
+    0,
+    "vf",
+    "",
+    "BM37"
+   ],
+   [
+    "35342",
+    "Exclusion Hypoalergenic dietinis konservuotas pašaras katėms su kiauliena ir bulvėm, 85 g",
+    1.51,
+    1.51,
+    0,
+    {
+     "_vf_cost_xml": "1.22",
+     "_vf_cost": "1.037",
+     "_vf_personal_cost": "1.037"
+    },
+    "outofstock",
+    0,
+    "",
+    "8011259004345",
+    0,
+    "vf",
+    "",
+    "CHYP85"
+   ],
+   [
+    "35392",
+    "Jautriam mažam šuniui — Exclusion Hypo Mini kiauliena: 2 kg sausas + 4 konservai",
+    32.45,
+    32.45,
+    0,
+    {
+     "_cost_price": "24.3565"
+    },
+    "instock",
+    null,
+    "",
+    "",
+    0,
+    "",
+    "",
+    "RINK-EXCL-MINI-KIAUL"
+   ],
+   [
+    "36002",
+    "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg",
+    42.59,
+    42.59,
+    0,
+    {
+     "_cost_price": "28.713"
+    },
+    "instock",
+    null,
+    "",
+    "",
+    3,
+    "",
+    "3",
+    "Excl-2kg-2vnt"
+   ],
+   [
+    "36003",
+    "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    110.59,
+    110.59,
+    0,
+    {
+     "_cost_price": "74.97"
+    },
+    "instock",
+    null,
+    "",
+    "",
+    2,
+    "",
+    "3",
+    "Excl-7kg-2vnt"
+   ],
+   [
+    "36509",
+    "2 vnt. Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras mažų veislių mažiems šuniukams su jautiena S, 2 kg",
+    36.69,
+    36.69,
+    0,
+    {
+     "_cost_price": "22.831"
+    },
+    "instock",
+    null,
+    "",
+    "",
+    0,
+    "",
+    "3",
+    "DP-NGPBS02-2"
+   ],
+   [
+    "36510",
+    "2 vnt. Exclusion Mono Protein begrūdis sausas pašaras mažų veislių mažiems šuniukams su jautiena S, 7 kg",
+    90.99,
+    90.99,
+    0,
+    {
+     "_cost_price": "57.817"
+    },
+    "instock",
+    null,
+    "",
+    "",
+    0,
+    "",
+    "3",
+    "DP-NGPBS07-2"
+   ],
+   [
+    "36511",
+    "2 vnt. Exclusion Hypoallergenic sausas pašaras šuniukams su kiauliena ir žirneliais, 2kg",
+    48.49,
+    48.49,
+    0,
+    {
+     "_cost_price": "32.538"
+    },
+    "instock",
+    null,
+    "",
+    "",
+    0,
+    "",
+    "3",
+    "DP-HYPA02-2"
+   ],
+   [
+    "36512",
+    "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su ėriena, M, 3 kg",
+    38.59,
+    38.59,
+    0,
+    {
+     "_cost_price": "24.531"
+    },
+    "instock",
+    null,
+    "",
+    "",
+    0,
+    "",
+    "3",
+    "DP-NGALM03-2"
+   ],
+   [
+    "36513",
+    "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su ėriena, S, 2 kg",
+    32.79,
+    32.79,
+    0,
+    {
+     "_cost_price": "20.264"
+    },
+    "instock",
+    null,
+    "",
+    "",
+    0,
+    "",
+    "3",
+    "DP-NGALS02-2"
+   ],
+   [
+    "36514",
+    "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su tunu, M, 3 kg",
+    38.59,
+    38.59,
+    0,
+    {
+     "_cost_price": "24.531"
+    },
+    "instock",
+    null,
+    "",
+    "",
+    0,
+    "",
+    "3",
+    "DP-NGATM03-2"
+   ],
+   [
+    "36515",
+    "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su tunu, S, 2 kg",
+    32.79,
+    32.79,
+    0,
+    {
+     "_cost_price": "20.264"
+    },
+    "instock",
+    null,
+    "",
+    "",
+    0,
+    "",
+    "3",
+    "DP-NGATS02-2"
+   ],
+   [
+    "36516",
+    "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su tunu, S, 7 kg",
+    84.99,
+    84.99,
+    0,
+    {
+     "_cost_price": "52.462"
+    },
+    "instock",
+    null,
+    "",
+    "",
+    0,
+    "",
+    "3",
+    "DP-NGATS07-2"
+   ]
+  ]
+ },
+ "v": "dep-184532",
+ "kurimas": 200,
+ "sid": 7116,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
