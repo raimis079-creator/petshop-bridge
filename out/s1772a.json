@@ -1,0 +1,69 @@
+{
+ "1": {
+  "v": "S1772a",
+  "logai": [
+   [
+    "/logs/php_error.log",
+    6416071,
+    "10-11 13:13"
+   ]
+  ],
+  "logs_dir": [
+   ".",
+   "..",
+   "Oct-2026.tar.gz",
+   "Oct-2026.tar.gz.1",
+   "Oct-2026.tar.gz.10",
+   "Oct-2026.tar.gz.11",
+   "Oct-2026.tar.gz.12",
+   "Oct-2026.tar.gz.2",
+   "Oct-2026.tar.gz.3",
+   "Oct-2026.tar.gz.4",
+   "Oct-2026.tar.gz.5",
+   "Oct-2026.tar.gz.6",
+   "Oct-2026.tar.gz.7",
+   "Oct-2026.tar.gz.8",
+   "Oct-2026.tar.gz.9",
+   "php_error.log"
+  ],
+  "robots": "User-agent: *\nDisallow: /wp-content/uploads/wc-logs/\nDisallow: /wp-content/uploads/woocommerce_transient_files/\nDisallow: /wp-content/uploads/woocommerce_uploads/\nDisallow: /*?add-to-cart=\nDisallow: /*?*add-to-cart=\nDisallow: /wp-admin/\nAllow: /wp-admin/admin-ajax.php\nDisallow: /*?*yith_wcan=\nDisallow: /*?*filter_\nDisallow: /*?*query_type_\nDisallow: /*?*orderby=\n\nSitemap: https://petshop.lt/sitemap_index.xml\n",
+  "feed_n": 2142,
+  "img_pvz": [
+   "https://petshop.lt/wp-content/uploads/2026/06/0006346_e20072-euk-adult-small-breed-maintenance-3-kg.webp",
+   "https://petshop.lt/wp-content/uploads/2026/06/0006309_e20393-euk-adult-for-german-shephed-12-kg.webp",
+   "https://petshop.lt/wp-content/uploads/2026/06/0006301_e20560-euk-adult-for-west-highland-terrier-25-kg.webp",
+   "https://petshop.lt/wp-content/uploads/2026/06/0006341_e54299-euk-adult-large-ckn-edb-165-kg.webp"
+  ],
+  "img_ext": {
+   "webp": 83,
+   "jpeg": 363,
+   "png": 999,
+   "jpg": 649,
+   "octet-stream": 48
+  },
+  "ua_test": {
+   "bingbot": [
+    200,
+    "image/webp",
+    30316
+   ],
+   "msnbot-media": [
+    200,
+    "image/webp",
+    30316
+   ],
+   "BingPreview": [
+    200,
+    "image/webp",
+    30316
+   ]
+  }
+ },
+ "v": "dep-133429",
+ "kurimas": 200,
+ "sid": 7112,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
