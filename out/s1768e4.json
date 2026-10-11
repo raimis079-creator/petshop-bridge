@@ -1,0 +1,71 @@
+{
+ "4": {
+  "v": "S1768e",
+  "ph": "4",
+  "enqueue": {
+   "cart_abandoned": {
+    "ok": true,
+    "job_id": 1513,
+    "duplicate": false
+   },
+   "cart_abandoned_2": {
+    "ok": true,
+    "job_id": 1514,
+    "duplicate": false
+   }
+  },
+  "process": {
+   "dry_run": false,
+   "picked": 2,
+   "results": [
+    {
+     "id": 1513,
+     "flow": "cart_abandoned",
+     "action": "SENT",
+     "msg_id": "azv2GY-.eE9p2l-AMYvBNl-N86A8AgqE5A2-4Yty5",
+     "error": "",
+     "ms": 116
+    },
+    {
+     "id": 1514,
+     "flow": "cart_abandoned_2",
+     "action": "SENT",
+     "msg_id": "azv2GY-.eE9p2l-AMYvBNl-xlr4l4D6LwKE-2jgl0X",
+     "error": "",
+     "ms": 97
+    }
+   ]
+  },
+  "rows": [
+   {
+    "id": "1513",
+    "flow": "cart_abandoned",
+    "flow_class": "service",
+    "status": "sent",
+    "sr": "",
+    "provider_message_id": "azv2GY-.eE9p2l-AMYvBNl-N86A8AgqE5A2-4Yty5",
+    "attempts": "1",
+    "last_error": null,
+    "sent_at": "2026-10-11 09:19:22"
+   },
+   {
+    "id": "1514",
+    "flow": "cart_abandoned_2",
+    "flow_class": "service",
+    "status": "sent",
+    "sr": "",
+    "provider_message_id": "azv2GY-.eE9p2l-AMYvBNl-xlr4l4D6LwKE-2jgl0X",
+    "attempts": "1",
+    "last_error": null,
+    "sent_at": "2026-10-11 09:19:22"
+   }
+  ]
+ },
+ "v": "dep-091811",
+ "kurimas": 200,
+ "sid": 7097,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
