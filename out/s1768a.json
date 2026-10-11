@@ -1,0 +1,348 @@
+{
+ "1": {
+  "v": "S1768a",
+  "cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "dc": "created_at",
+  "diena": [
+   {
+    "d": "2026-10-01",
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-01",
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-01",
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "sr": "suppressed_marketing_unsubscribe",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-02",
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-02",
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-02",
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "sr": "suppressed_marketing_unsubscribe",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-03",
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-04",
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "3"
+   },
+   {
+    "d": "2026-10-05",
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-06",
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-06",
+    "flow": "cart_abandoned",
+    "status": "sent",
+    "sr": "",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-06",
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-06",
+    "flow": "cart_abandoned_2",
+    "status": "sent",
+    "sr": "",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-07",
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-07",
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-07",
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-08",
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-08",
+    "flow": "cart_abandoned",
+    "status": "sent",
+    "sr": "",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-08",
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-08",
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-09",
+    "flow": "browse_abandoned",
+    "status": "sent",
+    "sr": "",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-09",
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-09",
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-09",
+    "flow": "cart_abandoned_2",
+    "status": "sent",
+    "sr": "",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-10",
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "8"
+   },
+   {
+    "d": "2026-10-10",
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "1"
+   }
+  ],
+  "viso": [
+   {
+    "flow": "browse_abandoned",
+    "status": "sent",
+    "sr": "",
+    "n": "1"
+   },
+   {
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "10"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "sent",
+    "sr": "",
+    "n": "2"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "19"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "sr": "suppressed_marketing_unsubscribe",
+    "n": "1"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "sent",
+    "sr": "",
+    "n": "2"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "4"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "sr": "suppressed_marketing_unsubscribe",
+    "n": "1"
+   }
+  ],
+  "n_rows": 19,
+  "sum_vertes": 593.14,
+  "uzsakymai": [
+   "1243:completed:31.69",
+   "1255:cancelled:14.82",
+   "1274:cancelled:30.53",
+   "1275:completed:19.19",
+   "1314:cancelled:65.85",
+   "1324:cancelled:13.28",
+   "1352:cancelled:53.99",
+   "1359:cancelled:52.07",
+   "1360:cancelled:52.07",
+   "1361:cancelled:30.12",
+   "1364:cancelled:73.80"
+  ],
+  "pavyzdys": [
+   {
+    "id": "1079",
+    "job_key": "cart_abandoned:d7bb91513e46d6dc37bd211aecdd7ac2",
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "recipient_email": "***@***",
+    "recipient_user_id": null,
+    "subject": null,
+    "payload": "{\"cart_items\":[{\"name\":\"Jau\\u010dio penis pjaustytas, 15,0 cm, 1 vnt.\",\"quantity\":12},{\"name\":\"Baltos triu\\u0161io ausys, 250 g\",\"quantity\":1}],\"recovery_url\":\"https:\\/\\/petshop.lt\\/?ps_atkurti=36599&k=afbdd7d3cf5e273e\",\"order_id\":36599}",
+    "status": "skipped",
+    "block_reason": "consent_missing",
+    "provider": null,
+    "provider_message_id": null,
+    "attempts": "0",
+    "last_error": null,
+    "scheduled_at": "2026-09-30 23:13:06",
+    "sent_at": null,
+    "created_at": "2026-09-30 23:13:06",
+    "updated_at": "2026-09-30 23:13:42",
+    "skip_reason": "consent_missing",
+    "error_message": null,
+    "decision_at": "2026-09-30 23:13:42",
+    "next_attempt_at": null,
+    "context_json": null,
+    "delivered_at": null,
+    "opened_at": null,
+    "clicked_at": null
+   },
+   {
+    "id": "1127",
+    "job_key": "cart_abandoned:a175de6e20e70b1a47ca293f1294542c",
+    "flow": "cart_abandoned",
+    "flow_class": "marketing",
+    "recipient_email": "***@***",
+    "recipient_user_id": null,
+    "subject": null,
+    "payload": "{\"cart_items\":[{\"name\":\"JosiCat Crispy Duck sausas pa\\u0161aras kat\\u0117ms su antiena, 1,9 kg\",\"quantity\":1},{\"name\":\"JosiCat Crunchy Chicken sausas pa\\u0161aras kat\\u0117ms su vi\\u0161tiena, 1,9 kg\",\"quantity\":1},{\"name\":\"Antkaklis katei su varpeliu - Raudona\",\"quantity\":1}],\"recovery_url\":\"https:…",
+    "status": "skipped",
+    "block_reason": "consent_missing",
+    "provider": null,
+    "provider_message_id": null,
+    "attempts": "0",
+    "last_error": null,
+    "scheduled_at": "2026-10-02 02:21:35",
+    "sent_at": null,
+    "created_at": "2026-10-02 02:21:35",
+    "updated_at": "2026-10-02 02:23:47",
+    "skip_reason": "consent_missing",
+    "error_message": null,
+    "decision_at": "2026-10-02 02:23:47",
+    "next_attempt_at": null,
+    "context_json": null,
+    "delivered_at": null,
+    "opened_at": null,
+    "clicked_at": null
+   }
+  ]
+ },
+ "v": "dep-085645",
+ "kurimas": 200,
+ "sid": 7092,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
