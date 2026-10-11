@@ -1,0 +1,38 @@
+{
+ "1": {
+  "v": "S1769b",
+  "ph": "1",
+  "exists": false,
+  "md5_new": "5cb5f08455d87b449bd0127612af2f64",
+  "sim_nuorodos": [
+   "https://petshop.lt/?ps_atkurti=1&#038;k=x&#038;utm_source=petshop_laiskai&#038;utm_medium=email&#038;utm_campaign=cart_abandoned_2",
+   "https://petshop.lt/?ps_nebesiusti_priminimu=…%40gyvunai.lt&#038;z=3fd0dff310cbf0214c699413"
+  ],
+  "adapter": "Petshop_Sender_Adapter",
+  "adapter_params": [
+   "to_email",
+   "subject",
+   "html_body",
+   "meta"
+  ],
+  "klientai": {
+   "nauji": 157,
+   "nauji_antra": 6,
+   "nauji_pirmas_pries_14d": 77,
+   "nauji_pries_14d_antra": 5,
+   "nauji_pries_30d": 8,
+   "nauji_pries_30d_antra": 1,
+   "seni": 130,
+   "seni_antra": 13,
+   "seni_pries_14d": 78,
+   "seni_pries_14d_antra": 11
+  }
+ },
+ "v": "dep-100914",
+ "kurimas": 200,
+ "sid": 7103,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
