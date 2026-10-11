@@ -1,0 +1,24 @@
+{
+ "3": {
+  "v": "S1769b",
+  "ph": "3",
+  "ok": true,
+  "klase": true,
+  "po_filtro": [
+   "https://petshop.lt/?ps_atkurti=1&#038;k=x&#038;utm_source=petshop_laiskai&#038;utm_medium=email&#038;utm_campaign=cart_abandoned_2",
+   "https://petshop.lt/?ps_nebesiusti_priminimu=…%40gyvunai.lt&#038;z=3fd0dff310cbf0214c699413"
+  ],
+  "kiti_sender_kvietimai_nezymimi": true,
+  "pakartoti_redirect": [
+   302,
+   "https://petshop.lt/krepselis/?utm_source=petshop_laiskai&utm_medium=email&utm_campaign=refill_due"
+  ]
+ },
+ "v": "dep-101215",
+ "kurimas": 200,
+ "sid": 7105,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
