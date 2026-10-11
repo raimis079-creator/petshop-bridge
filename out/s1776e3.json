@@ -1,0 +1,123 @@
+{
+ "3": {
+  "v": "S1776e",
+  "ph": "3",
+  "po": {
+   "20537": [
+    "55.14",
+    "55.14",
+    "OK"
+   ],
+   "21115": [
+    "51.02",
+    "51.02",
+    "OK"
+   ],
+   "21119": [
+    "52.98",
+    "52.98",
+    "OK"
+   ],
+   "21133": [
+    "51.02",
+    "51.02",
+    "OK"
+   ],
+   "21143": [
+    "51.88",
+    "51.88",
+    "OK"
+   ],
+   "21147": [
+    "51.44",
+    "51.44",
+    "OK"
+   ]
+  },
+  "feeds_s": 15.5,
+  "feed": {
+   "kaina24": {
+    "20537": "yra 55.14",
+    "21115": "yra 51.02",
+    "21119": "yra 52.98",
+    "21133": "yra 51.02",
+    "21143": "yra 51.88",
+    "21147": "yra 51.44"
+   },
+   "google": {
+    "20537": "yra 55.14",
+    "21115": "yra 51.02",
+    "21119": "yra 52.98",
+    "21133": "yra 51.02",
+    "21143": "yra 51.88",
+    "21147": "yra 51.44"
+   }
+  },
+  "ist": [
+   {
+    "preke_id": "20537",
+    "nuo_at": "2026-10-11 19:11:08",
+    "kaina_ct": "4557",
+    "reguliari_ct": "4557",
+    "saltinis": "sistema"
+   },
+   {
+    "preke_id": "21143",
+    "nuo_at": "2026-10-11 19:11:08",
+    "kaina_ct": "4288",
+    "reguliari_ct": "4288",
+    "saltinis": "sistema"
+   },
+   {
+    "preke_id": "21115",
+    "nuo_at": "2026-10-11 19:11:08",
+    "kaina_ct": "4217",
+    "reguliari_ct": "4217",
+    "saltinis": "sistema"
+   },
+   {
+    "preke_id": "21147",
+    "nuo_at": "2026-10-11 19:11:08",
+    "kaina_ct": "4251",
+    "reguliari_ct": "4251",
+    "saltinis": "sistema"
+   },
+   {
+    "preke_id": "21119",
+    "nuo_at": "2026-10-11 19:11:08",
+    "kaina_ct": "4379",
+    "reguliari_ct": "4379",
+    "saltinis": "sistema"
+   },
+   {
+    "preke_id": "21133",
+    "nuo_at": "2026-10-11 19:11:08",
+    "kaina_ct": "4217",
+    "reguliari_ct": "4217",
+    "saltinis": "sistema"
+   },
+   {
+    "preke_id": "20537",
+    "nuo_at": "2026-09-09 15:30:23",
+    "kaina_ct": "5107",
+    "reguliari_ct": "5107",
+    "saltinis": "rankinis"
+   },
+   {
+    "preke_id": "21133",
+    "nuo_at": "2026-09-09 15:28:03",
+    "kaina_ct": "4950",
+    "reguliari_ct": "4950",
+    "saltinis": "rankinis"
+   }
+  ],
+  "puslapis_21119": "rodo 52,98"
+ },
+ "v": "dep-191123",
+ "kurimas": 200,
+ "sid": 7120,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
