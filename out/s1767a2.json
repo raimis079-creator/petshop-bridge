@@ -1,0 +1,244 @@
+{
+ "2": {
+  "v": "S1767a",
+  "faze": "2",
+  "htaccess": {
+   "dydis": 4821,
+   "uztvara": true,
+   "mtime": "09-27 13:52",
+   "bak": true,
+   "blokas": "# BEGIN PS Botu uztvara (S1723, 2026-09-26): filtru/add-to-cart GET be ps_js slapuko -> 403 be PHP (botu sargo taisykle Apache lygyje)\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteCond %{REQUEST_METHOD} ^GET$\nRewriteCond %{QUERY_STRING} (^|&)(yith_wcan|filter_[A-Za-z0-9_-]+|query_type_[A-Za-z0-9_-]+|add-to-cart)= [NC]\nRewriteCond %{QUERY_STRING} !(^|&)ps_[A-Za-z0-9_]+= [NC]\nRewriteCond %{REQUEST_URI} !^/(kasa|krepselis|paskyra|wp-json|wp-admin|wp-login\\.php|feed) [NC]\nRewriteCond %{HTTP_COOKIE} !(^|;\\s*)ps_js=1 [NC]\nRewriteCond %{HTTP_COOKIE} !wordpress_logged_in_ [NC]\nRewriteRule ^ - [F,L]\n</IfModule>\n# END PS Botu uztvara"
+  },
+  "logs_dir": [
+   [
+    "Oct-2026.tar.gz",
+    "0.2MB",
+    "10-11 04:24"
+   ],
+   [
+    "Oct-2026.tar.gz.1",
+    "1.2MB",
+    "10-11 00:10"
+   ],
+   [
+    "Oct-2026.tar.gz.10",
+    "0.4MB",
+    "10-06 06:55"
+   ],
+   [
+    "Oct-2026.tar.gz.11",
+    "1.4MB",
+    "10-06 00:10"
+   ],
+   [
+    "Oct-2026.tar.gz.12",
+    "0.3MB",
+    "10-05 05:50"
+   ],
+   [
+    "Oct-2026.tar.gz.2",
+    "0.2MB",
+    "10-10 05:33"
+   ],
+   [
+    "Oct-2026.tar.gz.3",
+    "1.2MB",
+    "10-10 00:11"
+   ],
+   [
+    "Oct-2026.tar.gz.4",
+    "0.2MB",
+    "10-09 04:33"
+   ],
+   [
+    "Oct-2026.tar.gz.5",
+    "1.1MB",
+    "10-09 00:10"
+   ],
+   [
+    "Oct-2026.tar.gz.6",
+    "0.1MB",
+    "10-08 04:04"
+   ],
+   [
+    "Oct-2026.tar.gz.7",
+    "1MB",
+    "10-08 00:10"
+   ],
+   [
+    "Oct-2026.tar.gz.8",
+    "0.2MB",
+    "10-07 05:55"
+   ],
+   [
+    "Oct-2026.tar.gz.9",
+    "1.3MB",
+    "10-07 00:11"
+   ],
+   [
+    "php_error.log",
+    "6.1MB",
+    "10-11 11:19"
+   ]
+  ],
+  "access_src": "Oct-2026.tar.gz",
+  "access_src_mtime": "10-11 04:24",
+  "access": {
+   "eil": 4721,
+   "nuo": "11 00:10",
+   "iki": "11 04:24",
+   "val": {
+    "11 00": {
+     "200": 791,
+     "301": 128,
+     "302": 10,
+     "403": 5,
+     "404": 41,
+     "500": 1,
+     "n": 1093,
+     "kt": 117,
+     "filtr": 10,
+     "ip": 244
+    },
+    "11 01": {
+     "200": 1227,
+     "301": 114,
+     "302": 16,
+     "403": 4,
+     "404": 62,
+     "500": 0,
+     "n": 1575,
+     "kt": 152,
+     "filtr": 11,
+     "ip": 254
+    },
+    "11 02": {
+     "200": 449,
+     "301": 65,
+     "302": 2,
+     "403": 1,
+     "404": 39,
+     "500": 0,
+     "n": 624,
+     "kt": 68,
+     "filtr": 0,
+     "ip": 203
+    },
+    "11 03": {
+     "200": 840,
+     "301": 75,
+     "302": 1,
+     "403": 3,
+     "404": 84,
+     "500": 0,
+     "n": 1079,
+     "kt": 76,
+     "filtr": 0,
+     "ip": 248
+    },
+    "11 04": {
+     "200": 282,
+     "301": 28,
+     "302": 2,
+     "403": 0,
+     "404": 12,
+     "500": 0,
+     "n": 350,
+     "kt": 26,
+     "filtr": 0,
+     "ip": 99
+    }
+   },
+   "tipai": {
+    "filtrai": 21,
+    "atc": 0,
+    "s": 8,
+    "orderby": 36,
+    "page": 48,
+    "preke": 0,
+    "kat": 143,
+    "gam": 33,
+    "wcajax": 181,
+    "adminajax": 216,
+    "wpjson": 31,
+    "cron": 787,
+    "kita": 3217
+   },
+   "k403_top": {
+    "/kategorija/sunims…?yith_wcan=1&filter_baltym": 3,
+    "/kategorija/sunims…?orderby=popularity&yith_w": 3,
+    "/xmlrpc.php": 2,
+    "/wp-json/wp/v2/users": 1,
+    "/inaba/.git/config": 1,
+    "//xmlrpc.php?rsd": 1,
+    "//wp-json/wp/v2/users/": 1,
+    "//xmlrpc.php": 1
+   },
+   "k500_top": {
+    "/product/animonda-carny-adult-beef-turkey-shrimp-konservai-katems-su-s": 1
+   },
+   "macbot_ip_unik": 155,
+   "macbot_ua_top": {
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chr": 222,
+    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) V": 23
+   },
+   "macbot_praeina_top": {
+    "/": 6,
+    "/robots.txt": 4,
+    "/wp-json/oembed…?url=https%3A%2F%2Fpetshop.lt%2": 3,
+    "/wp-json/oembed…?format=xml&url=https%3A%2F%2Fp": 3,
+    "/kategorija/katems/maistas-katems/": 2,
+    "/460-large_default/zirkles-gyvuno-kailiui-16-cm.jpg": 1,
+    "/wp-json/": 1,
+    "/?rest_route=/": 1,
+    "/product/zaislas-suniui-coockoo-huggl-svelnus-cypiantis-zaislas-2418-cm-2/": 1,
+    "/sunims/prieziuros-priemones": 1,
+    "/katems/prieziuros-priemones-katems": 1,
+    "/katems/transportavimo-dezes": 1,
+    "/kategorija/katems/prieziuros-priemones-katems/": 1,
+    "/kategorija/sunims/higienos-priemones-sunims/": 1,
+    "/kategorija/katems/transportavimo-dezes-katems/": 1
+   }
+  },
+  "error_log": {
+   "failas": "php_error.log",
+   "kb": 6264,
+   "pask": "",
+   "tipai": [],
+   "fastcgi_val": []
+  },
+  "sargas_suvestine": [],
+  "sesijos": 1809,
+  "ps_carts_d": [
+   {
+    "d": "2026-10-08",
+    "n": "29",
+    "konv": "9"
+   },
+   {
+    "d": "2026-10-09",
+    "n": "22",
+    "konv": "8"
+   },
+   {
+    "d": "2026-10-10",
+    "n": "26",
+    "konv": "8"
+   },
+   {
+    "d": "2026-10-11",
+    "n": "6",
+    "konv": "2"
+   }
+  ],
+  "load": null,
+  "trukme_s": 0.3
+ },
+ "v": "dep-083035",
+ "kurimas": 200,
+ "sid": 7086,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
