@@ -1,0 +1,99 @@
+{
+ "1": {
+  "v": "S1768f",
+  "atsisake_viso": 49,
+  "saltiniai": {
+   "checkout": 48,
+   "email_link": 1
+  },
+  "su_paskyra": 41,
+  "sveciai": 8,
+  "sveciams_po_atsisakymo": [
+   {
+    "el": "1627f4",
+    "atsisake": "2026-09-28 23:21:11",
+    "saltinis": "checkout",
+    "laiskai": [
+     {
+      "id": "1118",
+      "flow": "post_purchase_14d",
+      "status": "pending",
+      "sent_at": null
+     }
+    ]
+   },
+   {
+    "el": "ee8fa8",
+    "atsisake": "2026-09-16 10:24:03",
+    "saltinis": "checkout",
+    "laiskai": [
+     {
+      "id": "688",
+      "flow": "post_purchase_14d",
+      "status": "sent",
+      "sent_at": "2026-10-04 07:04:19"
+     }
+    ]
+   },
+   {
+    "el": "947f39",
+    "atsisake": "2026-10-07 09:09:41",
+    "saltinis": "checkout",
+    "laiskai": [
+     {
+      "id": "1437",
+      "flow": "post_purchase_14d",
+      "status": "pending",
+      "sent_at": null
+     }
+    ]
+   },
+   {
+    "el": "7921be",
+    "atsisake": "2026-09-19 15:53:10",
+    "saltinis": "checkout",
+    "laiskai": [
+     {
+      "id": "867",
+      "flow": "post_purchase_14d",
+      "status": "sent",
+      "sent_at": "2026-10-05 16:09:17"
+     }
+    ]
+   },
+   {
+    "el": "958347",
+    "atsisake": "2026-09-28 11:20:17",
+    "saltinis": "checkout",
+    "laiskai": [
+     {
+      "id": "1105",
+      "flow": "post_purchase_14d",
+      "status": "pending",
+      "sent_at": null
+     }
+    ]
+   },
+   {
+    "el": "a5dca1",
+    "atsisake": "2026-09-30 22:11:00",
+    "saltinis": "checkout",
+    "laiskai": [
+     {
+      "id": "1228",
+      "flow": "post_purchase_14d",
+      "status": "pending",
+      "sent_at": null
+     }
+    ]
+   }
+  ]
+ },
+ "v": "dep-092004",
+ "kurimas": 200,
+ "sid": 7098,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
