@@ -1,0 +1,110 @@
+{
+ "1": {
+  "v": "S1769a",
+  "pirmas_uzs": "2026-09-08 22:24:33",
+  "uzs_viso": 308,
+  "klientu": 287,
+  "pakartotiniu_klientu": 19,
+  "pakartotiniu_uzs": 21,
+  "pakartotiniu_suma": 1028.72,
+  "tarpas_d_mediana": 13.7,
+  "savaites": {
+   "09-07": {
+    "nauj": 35,
+    "kart": 1
+   },
+   "09-14": {
+    "nauj": 71,
+    "kart": 1
+   },
+   "09-21": {
+    "nauj": 54,
+    "kart": 3
+   },
+   "09-28": {
+    "nauj": 62,
+    "kart": 6
+   },
+   "10-05": {
+    "nauj": 65,
+    "kart": 10
+   }
+  },
+  "ist_lenteles": {
+   "ps_ist_uzsakymai": "email",
+   "ps_relaunch_kontaktai": "email"
+  },
+  "nauja_svetaine_pirko_seni_klientai": 130,
+  "seni_kontaktai": 5630,
+  "laiskai": {
+   "consent_changed": {
+    "issiusta": 33,
+    "uzs_per_7d": 10,
+    "suma": 471.46,
+    "pilnas_langas": 17
+   },
+   "cart_abandoned": {
+    "issiusta": 9,
+    "pilnas_langas": 7,
+    "uzs_per_7d": 1,
+    "suma": 45.39
+   },
+   "cart_abandoned_2": {
+    "issiusta": 8,
+    "pilnas_langas": 6,
+    "uzs_per_7d": 1,
+    "suma": 45.39
+   },
+   "post_purchase_2d": {
+    "issiusta": 275,
+    "pilnas_langas": 204,
+    "uzs_per_7d": 6,
+    "suma": 302.12
+   },
+   "post_purchase_7d": {
+    "issiusta": 205,
+    "pilnas_langas": 141,
+    "uzs_per_7d": 3,
+    "suma": 106.86
+   },
+   "post_purchase_14d": {
+    "issiusta": 46,
+    "pilnas_langas": 25,
+    "uzs_per_7d": 3,
+    "suma": 241.38
+   },
+   "refill_due": {
+    "issiusta": 12,
+    "pilnas_langas": 6
+   },
+   "browse_abandoned": {
+    "issiusta": 3,
+    "pilnas_langas": 2
+   },
+   "back_in_stock": {
+    "issiusta": 1
+   }
+  },
+  "pakartoti_mygtukas": "0",
+  "utm": [
+   {
+    "src": "newsletter",
+    "n": "2",
+    "s": "53.31"
+   }
+  ],
+  "utm_medium_email": [
+   {
+    "med": "email",
+    "n": "2"
+   }
+  ]
+ },
+ "v": "dep-095900",
+ "kurimas": 200,
+ "sid": 7102,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
