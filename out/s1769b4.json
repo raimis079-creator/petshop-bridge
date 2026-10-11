@@ -1,0 +1,22 @@
+{
+ "4": {
+  "v": "S1769b",
+  "ph": "4",
+  "send": {
+   "ok": true,
+   "esp_message_id": "azv2GY-.eE9p2l-AMYvBNl-q2kB26EEwBGR-3s7nKo",
+   "error": "",
+   "http_code": 200,
+   "uncertain": false,
+   "should_retry": false,
+   "ms": 114
+  }
+ },
+ "v": "dep-101334",
+ "kurimas": 200,
+ "sid": 7106,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
