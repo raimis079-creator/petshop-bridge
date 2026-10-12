@@ -1,0 +1,196 @@
+{
+ "1": {
+  "v": "LEADERb",
+  "faze": "1",
+  "st": [
+   {
+    "s": "+Užsakymas išsiųstas+",
+    "n": "51"
+   },
+   {
+    "s": "cancelled",
+    "n": "5"
+   },
+   {
+    "s": "completed",
+    "n": "306"
+   },
+   {
+    "s": "Mokėjimas gautas",
+    "n": "6"
+   },
+   {
+    "s": "processing",
+    "n": "27"
+   },
+   {
+    "s": "Užsakymas išsiųstas",
+    "n": "9554"
+   },
+   {
+    "s": "Užsakymas paruoštas",
+    "n": "10"
+   }
+  ],
+  "ribos": [
+   {
+    "mn": "2023-11-20",
+    "mx": "2026-10-12"
+   }
+  ],
+  "metai": [
+   {
+    "m": "2023",
+    "uzs": "172",
+    "klientai": "153",
+    "eur": "6109"
+   },
+   {
+    "m": "2024",
+    "uzs": "3485",
+    "klientai": "2389",
+    "eur": "142923"
+   },
+   {
+    "m": "2025",
+    "uzs": "3431",
+    "klientai": "2140",
+    "eur": "144198"
+   },
+   {
+    "m": "2026",
+    "uzs": "2865",
+    "klientai": "1859",
+    "eur": "117996"
+   }
+  ],
+  "m12": [
+   {
+    "uzs": "3597",
+    "klientai": "2243",
+    "eur": "148857"
+   }
+  ],
+  "viso": [
+   {
+    "uzs": "9953",
+    "klientai": "5642"
+   }
+  ],
+  "pakart_viso": [
+   {
+    "pakart": "1489",
+    "trys_plius": "739",
+    "visi": "5642",
+    "pakart_uzs": "5800",
+    "uzs": "9953"
+   }
+  ],
+  "pakart_12": [
+   {
+    "pakart": "569",
+    "visi": "2243"
+   }
+  ],
+  "m12_grize": [
+   {
+    "n": "467"
+   }
+  ],
+  "ist_raw_metai": [
+   {
+    "m": "2023",
+    "n": "172",
+    "em": "153",
+    "ivykd": "172"
+   },
+   {
+    "m": "2024",
+    "n": "3651",
+    "em": "2451",
+    "ivykd": "3485"
+   },
+   {
+    "m": "2025",
+    "n": "3750",
+    "em": "2223",
+    "ivykd": "3431"
+   },
+   {
+    "m": "2026",
+    "n": "2596",
+    "em": "1704",
+    "ivykd": "2533"
+   }
+  ],
+  "b2b_ist": [
+   {
+    "imone": "1",
+    "n": "44",
+    "eur": "4356",
+    "nuo": "2024-01-25",
+    "iki": "2026-08-06"
+   }
+  ],
+  "b2b_ist_sk": [
+   {
+    "imoniu": "1",
+    "uzs": "44",
+    "eur": "4356"
+   }
+  ],
+  "b2b_wc": [
+   {
+    "imone": "Biorro UAB",
+    "n": "1",
+    "eur": "85"
+   }
+  ],
+  "stovai_ist": [
+   {
+    "m": "2025",
+    "modelis": "10177",
+    "pav": "Rankų darbo natūralaus medžio stovas su dviem metaliniais dubenėliais ",
+    "vnt": "1",
+    "eur": "32.89",
+    "uzs": "1"
+   },
+   {
+    "m": "2025",
+    "modelis": "10160",
+    "pav": "Rankų darbo natūralaus medžio stovas su dviem metaliniais dubenėliais ",
+    "vnt": "1",
+    "eur": "32.89",
+    "uzs": "1"
+   }
+  ],
+  "stovai_wc": [],
+  "preke": {
+   "16438": {
+    "stock": "0",
+    "own": "",
+    "cost": "",
+    "mod": "2026-06-04 20:55:47",
+    "sukurta": "2026-06-04 20:55:47"
+   },
+   "16442": {
+    "stock": "0",
+    "own": "",
+    "cost": "",
+    "mod": "2026-06-04 20:55:49",
+    "sukurta": "2026-06-04 20:55:49"
+   }
+  },
+  "SQL_ERR": [
+   "Unknown column 'preke_id' in 'WHERE'"
+  ],
+  "partijos": []
+ },
+ "v": "dep-155031",
+ "kurimas": 200,
+ "sid": 7131,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
