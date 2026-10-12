@@ -1,0 +1,130 @@
+{
+ "1": {
+  "v": "LEADERd",
+  "ist_lent": [
+   "gaj6_ps_ist_eilutes",
+   "gaj6_ps_ist_fakt_eilutes",
+   "gaj6_ps_ist_fakt_eilutes_bak_s1745",
+   "gaj6_ps_ist_fakt_uzsakymai",
+   "gaj6_ps_ist_fakt_uzsakymai_bak_s1745",
+   "gaj6_ps_ist_uzsakymai",
+   "gaj6_ps_istrintos_prekes_s668"
+  ],
+  "cols": {
+   "gaj6_ps_ist_eilutes": "id,uzsakymo_id,modelis,pavadinimas,variantas,kiekis,kaina,suma,wc_product_id,susiejimas",
+   "gaj6_ps_ist_fakt_eilutes": "id,uzsakymas_id,eilutes_id,apmoketa_at,preke_id,variacija_id,sku,gtin,pavadinimas_tuo_metu,kategorija_id_giliausia,kategoriju_kelias,brendas_slug,gyvunas,pa_uzsaldymas,sandelis,tiekejas,partija_kodas,kiekis,kaina_ct,pvm_ct,kaina_vnt_ct,kaina_reguliari_ct,savikaina_vnt_ct,savikaina_ct,savikainos_saltinis,nuolaida_ct,akcija_id,kuponas,rinkinys_id,rinkinio_tipas,rinkinio_raktas,dovana,svoris_g,pakuotes_dydis,klientas_naujas,testinis,saltinis_aplinka,diena",
+   "gaj6_ps_ist_fakt_eilutes_bak_s1745": "id,uzsakymas_id,eilutes_id,apmoketa_at,preke_id,variacija_id,sku,gtin,pavadinimas_tuo_metu,kategorija_id_giliausia,kategoriju_kelias,brendas_slug,gyvunas,pa_uzsaldymas,sandelis,tiekejas,partija_kodas,kiekis,kaina_ct,pvm_ct,kaina_vnt_ct,kaina_reguliari_ct,savikaina_vnt_ct,savikaina_ct,savikainos_saltinis,nuolaida_ct,akcija_id,kuponas,rinkinys_id,rinkinio_tipas,rinkinio_raktas,dovana,svoris_g,pakuotes_dydis,klientas_naujas,testinis,saltinis_aplinka,diena",
+   "gaj6_ps_ist_fakt_uzsakymai": "uzsakymas_id,sukurta_at,apmoketa_at,statusas_galutinis,statusas_at,klientas_id,klientas_email_hash,klientas_naujas,klientas_uzsakymo_nr,dienos_nuo_ankstesnio,prekiu_suma_ct,nuolaidu_ct,kuponu_kodai,tasku_panaudota_ct,tasku_sukaupta_ct,pristatymas_paimta_ct,pristatymas_savikaina_ct,small_cart_fee_ct,pvm_ct,viso_ct,mokejimo_budas,mokejimo_mokestis_ct,pakuotes_savikaina_ct,savikaina_ct,dovanu_savikaina_ct,marza_ct,kontribucija_ct,sandeliu_kiekis,misrus,sandeliai,vezejai,kanalas_pirmas,kanalas_paskutinis,utm_source,utm_medium,utm_campaign,gclid,fbclid,referer_domenas,landing_url,irenginys,sutikimas_statistika,salis,miestas,pasto_kodas,anketa_id,rec_log_id,is_refill,prenumerata_id,eiluciu_sk,testinis,saltinis_aplinka,fakt_versija,irasyta_at,diena",
+   "gaj6_ps_ist_fakt_uzsakymai_bak_s1745": "uzsakymas_id,sukurta_at,apmoketa_at,statusas_galutinis,statusas_at,klientas_id,klientas_email_hash,klientas_naujas,klientas_uzsakymo_nr,dienos_nuo_ankstesnio,prekiu_suma_ct,nuolaidu_ct,kuponu_kodai,tasku_panaudota_ct,tasku_sukaupta_ct,pristatymas_paimta_ct,pristatymas_savikaina_ct,small_cart_fee_ct,pvm_ct,viso_ct,mokejimo_budas,mokejimo_mokestis_ct,pakuotes_savikaina_ct,savikaina_ct,dovanu_savikaina_ct,marza_ct,kontribucija_ct,sandeliu_kiekis,misrus,sandeliai,vezejai,kanalas_pirmas,kanalas_paskutinis,utm_source,utm_medium,utm_campaign,gclid,fbclid,referer_domenas,landing_url,irenginys,sutikimas_statistika,salis,miestas,pasto_kodas,anketa_id,rec_log_id,is_refill,prenumerata_id,eiluciu_sk,testinis,saltinis_aplinka,fakt_versija,irasyta_at,diena",
+   "gaj6_ps_ist_uzsakymai": "id,data,email,vardas,pavarde,tel,imone,siuntimas,miestas,apmokejimas,suma_be,suma,statusas,ivykdytas,saskaita,eiluciu",
+   "gaj6_ps_istrintos_prekes_s668": "id,duomenys,istrinta"
+  },
+  "meta_keys": [
+   {
+    "k": "venipak_pickup_point",
+    "n": "316"
+   },
+   {
+    "k": "venipak_pickup_point_data",
+    "n": "316"
+   },
+   {
+    "k": "_ps_venipak_sekimas",
+    "n": "314"
+   },
+   {
+    "k": "venipak_shipping_order_data",
+    "n": "297"
+   },
+   {
+    "k": "_woo_lithuaniapost_lpexpress_shipping_method_instance_id",
+    "n": "19"
+   },
+   {
+    "k": "_woo_lithuaniapost_lpexpress_terminal_id",
+    "n": "19"
+   },
+   {
+    "k": "_woo_lithuaniapost_lpexpress_terminal",
+    "n": "19"
+   },
+   {
+    "k": "_woo_lithuaniapost_shipping_status_value",
+    "n": "18"
+   },
+   {
+    "k": "_woo_lithuaniapost_shipping_item_id",
+    "n": "17"
+   },
+   {
+    "k": "_woo_lithuaniapost_shipping_item_weight",
+    "n": "17"
+   },
+   {
+    "k": "_woo_lithuaniapost_shipping_item_size",
+    "n": "17"
+   },
+   {
+    "k": "_woo_lithuaniapost_barcode",
+    "n": "17"
+   },
+   {
+    "k": "_ps_venipak_sena",
+    "n": "12"
+   },
+   {
+    "k": "_woo_lithuaniapost_shipping_request_id",
+    "n": "12"
+   }
+  ],
+  "ist_pvz": [
+   {
+    "siuntimas": "Pristatymas per Venipak paštomatus / atsiėmimo punktus",
+    "miestas": "Kaunas"
+   },
+   {
+    "siuntimas": "Pristatymas per LP Express siuntų paštomatus",
+    "miestas": "Druskininkai"
+   },
+   {
+    "siuntimas": "Pristatymas per Venipak paštomatus / atsiėmimo punktus",
+    "miestas": "Klaipėda"
+   },
+   {
+    "siuntimas": "Pristatymas per Venipak paštomatus / atsiėmimo punktus",
+    "miestas": "Leliai"
+   },
+   {
+    "siuntimas": "Pristatymas per Venipak paštomatus / atsiėmimo punktus",
+    "miestas": "Šiauliai"
+   },
+   {
+    "siuntimas": "Pristatymas per LP Express siuntų paštomatus",
+    "miestas": "Palanga"
+   },
+   {
+    "siuntimas": "Pristatymas per Venipak paštomatus / atsiėmimo punktus",
+    "miestas": "Druskininkai"
+   },
+   {
+    "siuntimas": "Pristatymas per LP Express siuntų paštomatus",
+    "miestas": "Telšiai"
+   }
+  ],
+  "opt": [
+   "woocommerce_shopup_venipak_shipping_pickup_method_3_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_5_settings",
+   "woocommerce_shopup_venipak_shipping_pickup_method_9_settings",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_12_settings",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_13_settings",
+   "woocommerce_woo_lithuaniapost_lpexpress_terminal_15_settings"
+  ]
+ },
+ "v": "dep-161427",
+ "kurimas": 200,
+ "sid": 7133,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
