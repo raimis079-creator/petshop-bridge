@@ -1,0 +1,219 @@
+{
+ "1": {
+  "v": "LEADERa",
+  "faze": "1",
+  "cols": {
+   "ps_fakt_uzsakymai": "uzsakymas_id,sukurta_at,apmoketa_at,statusas_galutinis,statusas_at,klientas_id,klientas_email_hash,klientas_naujas,klientas_uzsakymo_nr,dienos_nuo_ankstesnio,prekiu_suma_ct,nuolaidu_ct,kuponu_kodai,tasku_panaudota_ct,tasku_sukaupta_ct,pristatymas_paimta_ct,pristatymas_savikaina_ct,small_cart_fee_ct,pvm_ct,viso_ct,mokejimo_budas,mokejimo_mokestis_ct,pakuotes_savikaina_ct,savikaina_ct,dovanu_savikaina_ct,marza_ct,kontribucija_ct,sandeliu_kiekis,misrus,sandeliai,vezejai,kanalas_pirmas,kanalas_paskutinis,utm_source,utm_medium,utm_campaign,gclid,fbclid,referer_domenas,landing_url,irenginys,sutikimas_statistika,salis,miestas,pasto_kodas,anketa_id,rec_log_id,is_refill,prenumerata_id,eiluciu_sk,testinis,saltinis_aplinka,fakt_versija,irasyta_at,diena",
+   "ps_ist_fakt_uzsakymai": "uzsakymas_id,sukurta_at,apmoketa_at,statusas_galutinis,statusas_at,klientas_id,klientas_email_hash,klientas_naujas,klientas_uzsakymo_nr,dienos_nuo_ankstesnio,prekiu_suma_ct,nuolaidu_ct,kuponu_kodai,tasku_panaudota_ct,tasku_sukaupta_ct,pristatymas_paimta_ct,pristatymas_savikaina_ct,small_cart_fee_ct,pvm_ct,viso_ct,mokejimo_budas,mokejimo_mokestis_ct,pakuotes_savikaina_ct,savikaina_ct,dovanu_savikaina_ct,marza_ct,kontribucija_ct,sandeliu_kiekis,misrus,sandeliai,vezejai,kanalas_pirmas,kanalas_paskutinis,utm_source,utm_medium,utm_campaign,gclid,fbclid,referer_domenas,landing_url,irenginys,sutikimas_statistika,salis,miestas,pasto_kodas,anketa_id,rec_log_id,is_refill,prenumerata_id,eiluciu_sk,testinis,saltinis_aplinka,fakt_versija,irasyta_at,diena",
+   "ps_fakt_eilutes": "id,uzsakymas_id,eilutes_id,apmoketa_at,preke_id,variacija_id,sku,gtin,pavadinimas_tuo_metu,kategorija_id_giliausia,kategoriju_kelias,brendas_slug,gyvunas,pa_uzsaldymas,sandelis,tiekejas,partija_kodas,kiekis,kaina_ct,pvm_ct,kaina_vnt_ct,kaina_reguliari_ct,savikaina_vnt_ct,savikaina_ct,savikainos_saltinis,nuolaida_ct,akcija_id,kuponas,rinkinys_id,rinkinio_tipas,rinkinio_raktas,dovana,svoris_g,pakuotes_dydis,klientas_naujas,testinis,saltinis_aplinka,diena",
+   "ps_ist_fakt_eilutes": "id,uzsakymas_id,eilutes_id,apmoketa_at,preke_id,variacija_id,sku,gtin,pavadinimas_tuo_metu,kategorija_id_giliausia,kategoriju_kelias,brendas_slug,gyvunas,pa_uzsaldymas,sandelis,tiekejas,partija_kodas,kiekis,kaina_ct,pvm_ct,kaina_vnt_ct,kaina_reguliari_ct,savikaina_vnt_ct,savikaina_ct,savikainos_saltinis,nuolaida_ct,akcija_id,kuponas,rinkinys_id,rinkinio_tipas,rinkinio_raktas,dovana,svoris_g,pakuotes_dydis,klientas_naujas,testinis,saltinis_aplinka,diena",
+   "ps_ist_uzsakymai": "id,data,email,vardas,pavarde,tel,imone,siuntimas,miestas,apmokejimas,suma_be,suma,statusas,ivykdytas,saskaita,eiluciu",
+   "ps_ist_eilutes": "id,uzsakymo_id,modelis,pavadinimas,variantas,kiekis,kaina,suma,wc_product_id,susiejimas",
+   "ps_dim_klientai": "raktas,klientas_id,pirmas_pirkimas_at,paskutinis_pirkimas_at,uzsakymu_sk,pajamos_ct,marza_ct,kontribucija_ct,ltv_90_ct,ltv_180_ct,ltv_365_ct,vid_intervalas_d,kohorta,rfm_r,rfm_f,rfm_m,segmentas,gyvunu_sk,rusys,pagrindinis_brendas,refill_laukiama_at,kanalas_pirmas,legacy,testinis,perskaiciuota_at,aplinka"
+  },
+  "n": {
+   "ps_fakt_uzsakymai": "338",
+   "ps_ist_fakt_uzsakymai": "9621",
+   "ps_fakt_eilutes": "879",
+   "ps_ist_fakt_eilutes": "23391",
+   "ps_ist_uzsakymai": "10169",
+   "ps_ist_eilutes": "24555",
+   "ps_dim_klientai": "5637"
+  },
+  "prekes": [
+   {
+    "ID": "21401",
+    "st": "publish",
+    "t": "Comfy medinis namelis graužikui, kampinis 3",
+    "sku": "AQ113990",
+    "kaina": "19.39"
+   },
+   {
+    "ID": "18719",
+    "st": "publish",
+    "t": "Dubenėlis katei keraminis ant medinių kojelių, 200 ml",
+    "sku": "1336519",
+    "kaina": "8.87"
+   },
+   {
+    "ID": "23730",
+    "st": "publish",
+    "t": "Happet keramikiniai dubenėliai ant medinio stovo, juodas, 0.81l",
+    "sku": "HAPMC04",
+    "kaina": "29.79"
+   },
+   {
+    "ID": "17862",
+    "st": "publish",
+    "t": "Kačių tualeto priedas - kraiko valymo mentelės stovas, universalus",
+    "sku": "10513",
+    "kaina": "3.49"
+   },
+   {
+    "ID": "23450",
+    "st": "publish",
+    "t": "Nerūdijantis stovas su dubenėliais gyvūnams",
+    "sku": "Z-MM24RA",
+    "kaina": "29.29"
+   },
+   {
+    "ID": "23452",
+    "st": "publish",
+    "t": "Nerūdijantis stovas su dubenėliais gyvūnams",
+    "sku": "Z-MM25RA",
+    "kaina": "32.79"
+   },
+   {
+    "ID": "16442",
+    "st": "draft",
+    "t": "Rankų darbo natūralaus medžio stovas su dviem metaliniais dubenėliais (0,75 l), spalva - p",
+    "sku": "10160",
+    "kaina": "39.8"
+   },
+   {
+    "ID": "16438",
+    "st": "draft",
+    "t": "Rankų darbo natūralaus medžio stovas su dviem metaliniais dubenėliais (0,75 l), spalva - t",
+    "sku": "10177",
+    "kaina": "39.8"
+   },
+   {
+    "ID": "31977",
+    "st": "draft",
+    "t": "Retesnės šukos su medine rankena gyvūnams",
+    "sku": "ecab2e67d19b",
+    "kaina": "2.39"
+   },
+   {
+    "ID": "13168",
+    "st": "publish",
+    "t": "Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas, 2x0.75 l, ø 17 cm",
+    "sku": "0TR163_24920",
+    "kaina": "15.79"
+   },
+   {
+    "ID": "33902",
+    "st": "publish",
+    "t": "Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas, 2x1.8 l, ø 21 cm",
+    "sku": "0TR163_24921",
+    "kaina": "23.69"
+   },
+   {
+    "ID": "33904",
+    "st": "publish",
+    "t": "Trixie Stovas su dubenėliais, reg. aukštis, nerūd. plienas-metalas, 2x2.8 l, ø 24 cm",
+    "sku": "0TR163_24922",
+    "kaina": "29.69"
+   }
+  ],
+  "ist_eil_pvz": [
+   {
+    "id": "7151",
+    "uzsakymas_id": "900004420",
+    "eilutes_id": "17058",
+    "apmoketa_at": "2024-09-30 09:58:51",
+    "preke_id": "18032",
+    "variacija_id": "0",
+    "sku": "JOS0069",
+    "gtin": "",
+    "pavadinimas_tuo_metu": "Josera Miniwell 10 kg - sausas maistas suaugusiems mažų veislių šunims",
+    "kategorija_id_giliausia": "72",
+    "kategoriju_kelias": "ŠUNIMS > Maistas šunims > Sausas maistas šunims",
+    "brendas_slug": "josera",
+    "gyvunas": "suo",
+    "pa_uzsaldymas": null,
+    "sandelis": "",
+    "tiekejas": "",
+    "partija_kodas": "",
+    "kiekis": "1",
+    "kaina_ct": "2748",
+    "pvm_ct": "0",
+    "kaina_vnt_ct": "2748",
+    "kaina_reguliari_ct": null,
+    "savikaina_vnt_ct": null,
+    "savikaina_ct": null,
+    "savikainos_saltinis": "",
+    "nuolaida_ct": "0",
+    "akcija_id": null,
+    "kuponas": "",
+    "rinkinys_id": "0",
+    "rinkinio_tipas": "",
+    "rinkinio_raktas": "",
+    "dovana": "0",
+    "svoris_g": "0",
+    "pakuotes_dydis": "",
+    "klientas_naujas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "ist",
+    "diena": "2024-09-30"
+   },
+   {
+    "id": "20168",
+    "uzsakymas_id": "900010490",
+    "eilutes_id": "3040",
+    "apmoketa_at": "2026-04-13 12:40:44",
+    "preke_id": "16976",
+    "variacija_id": "0",
+    "sku": "2654",
+    "gtin": "",
+    "pavadinimas_tuo_metu": "PESS biologinis apsauginis purškiklis nuo erkių katėms bei šunims, 250 ml",
+    "kategorija_id_giliausia": "108",
+    "kategoriju_kelias": "ŠUNIMS > Antiparazitinės priemonės šunims",
+    "brendas_slug": "pess",
+    "gyvunas": "abu",
+    "pa_uzsaldymas": null,
+    "sandelis": "",
+    "tiekejas": "",
+    "partija_kodas": "",
+    "kiekis": "4",
+    "kaina_ct": "1372",
+    "pvm_ct": "0",
+    "kaina_vnt_ct": "343",
+    "kaina_reguliari_ct": null,
+    "savikaina_vnt_ct": null,
+    "savikaina_ct": null,
+    "savikainos_saltinis": "",
+    "nuolaida_ct": "0",
+    "akcija_id": null,
+    "kuponas": "",
+    "rinkinys_id": "0",
+    "rinkinio_tipas": "",
+    "rinkinio_raktas": "",
+    "dovana": "0",
+    "svoris_g": "0",
+    "pakuotes_dydis": "",
+    "klientas_naujas": "1",
+    "testinis": "0",
+    "saltinis_aplinka": "ist",
+    "diena": "2026-04-13"
+   }
+  ],
+  "ist_uzs_pvz": [
+   {
+    "id": "1364",
+    "data": "2023-11-20 12:35:03",
+    "email": "deivydas.jurciukonis@gmail.com",
+    "vardas": "Deivydas",
+    "pavarde": "Jurčiukonis",
+    "tel": "37062705155",
+    "imone": "0",
+    "siuntimas": "Pristatymas per LP Express siuntų terminalus",
+    "miestas": "Alytus",
+    "apmokejimas": "AB bankas",
+    "suma_be": "13.00",
+    "suma": "14.99",
+    "statusas": "Užsakymas išsiųstas",
+    "ivykdytas": "1",
+    "saskaita": "AVP1361",
+    "eiluciu": "3"
+   }
+  ]
+ },
+ "v": "dep-154843",
+ "kurimas": 200,
+ "sid": 7130,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
