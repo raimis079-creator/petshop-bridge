@@ -8,32 +8,44 @@
   ],
   "statusai": {
    "200": [
-    0,
-    0
+    26805,
+    16418
    ],
    "302": [
-    0,
-    0
+    429,
+    322
    ],
    "403": [
-    0,
-    0
+    105,
+    79
    ],
    "404": [
-    0,
-    0
+    1040,
+    524
    ],
    "500": [
-    0,
-    0
+    8,
+    3
    ]
   },
-  "eil": 0,
-  "po_1110": 0,
+  "eil": 33404,
+  "po_1110": 20355,
   "blk_iki_1110": 0,
   "blk_po_1110": 0,
   "blk_po_kas": [],
-  "geri_robotai": [],
+  "geri_robotai": {
+   "Bing": 970,
+   "Googlebot": 667,
+   "AdsBot": 662,
+   "FB perziuros": 524,
+   "ChatGPT": 173,
+   "Claude": 146,
+   "GoogleOther": 80,
+   "Perplexity": 68,
+   "Apple": 36,
+   "DuckDuckGo": 6,
+   "Yandex": 1
+  },
   "fatal_nuo_1009": 1,
   "fatal_pvz": [
    "[09-Oct-2026 19:42:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_product() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php:682"
@@ -95,9 +107,9 @@
    }
   ]
  },
- "v": "dep-070726",
+ "v": "dep-071106",
  "kurimas": 200,
- "sid": 7122,
+ "sid": 7124,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
