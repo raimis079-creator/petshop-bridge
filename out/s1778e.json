@@ -1,0 +1,54 @@
+{
+ "1": {
+  "v": "S1778e",
+  "opt": [
+   {
+    "option_name": "ps_sargas_pastas",
+    "l": "16"
+   },
+   {
+    "option_name": "ps_sargas_cron_laukiam",
+    "l": "3914"
+   },
+   {
+    "option_name": "ps_sargas_cron_zinios",
+    "l": "3953"
+   },
+   {
+    "option_name": "ps_sargas_start",
+    "l": "10"
+   },
+   {
+    "option_name": "ps_sargas_siusta",
+    "l": "2808"
+   },
+   {
+    "option_name": "ps_rytas_ribos",
+    "l": "31"
+   },
+   {
+    "option_name": "ps_rytas_sargas_pask",
+    "l": "240"
+   },
+   {
+    "option_name": "ps_rytas_sargas_siusta",
+    "l": "703"
+   },
+   {
+    "option_name": "ps_sargas_svara",
+    "l": "320"
+   },
+   {
+    "option_name": "ps_sargas_cron_valandos",
+    "l": "2"
+   }
+  ]
+ },
+ "v": "dep-071724",
+ "kurimas": 200,
+ "sid": 7128,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
