@@ -1,0 +1,84 @@
+{
+ "1": {
+  "v": "S1780a",
+  "wc": "11.0.1",
+  "opt": {
+   "hold_min": "90",
+   "manage": "yes",
+   "notify_no_stock": "0"
+  },
+  "reserve_src": [
+   "30: public function __construct() {",
+   "40: protected function is_enabled() {",
+   "52: public function get_reserved_stock( $product, $exclude_order_id = 0 ) {",
+   "59: return wc_stock_amount(",
+   "61: $wpdb->get_var( $this->get_query_for_reserved_stock( $product->get_stock_managed_by_id(), $exclude_order_id ) )",
+   "73: public function reserve_stock_for_order( $order, $minutes = 60 ) {",
+   "88: $minutes = (int) apply_filters( 'woocommerce_order_hold_stock_minutes', $minutes, $order );",
+   "93: $held_stock_notes = array();",
+   "109: if ( ! $product->is_in_stock() ) {",
+   "110: throw new ReserveStockException(",
+   "111: 'woocommerce_product_out_of_stock',",
+   "122: if ( ! $product->managing_stock() || $product->backorders_allowed() ) {",
+   "126: $managed_by_id = $product->get_stock_managed_by_id();",
+   "136: $item_quantity = apply_filters( 'woocommerce_order_item_quantity', $item->get_quantity(), $order, $item );",
+   "140: if ( count( $held_stock_notes ) < 5 ) {",
+   "142: $held_stock_notes[] = sprintf( _x( '- %1$s &times; %2$d', 'held stock note', 'woocommerce' ), $product->get_formatted_name(), $rows[ $managed_by_id ] );",
+   "150: $this->reserve_stock_for_product( $product_id, $quantity, $order, $minutes );",
+   "154: $this->release_stock_for_order( $order );",
+   "159: if ( ! empty( $held_stock_notes ) ) {",
+   "160: $remaining_count = count( $rows ) - count( $held_stock_notes );",
+   "162: $held_stock_notes[] = sprintf(",
+   "169: $order->add_order_note(",
+   "174: '<br>' . implode( '<br>', $held_stock_notes )",
+   "190: public function release_stock_for_order( $order ) {",
+   "198: $wpdb->wc_reserved_stock,",
+   "215: private function reserve_stock_for_product( $product_id, $stock_quantity, $order, $minutes ) {",
+   "218: $query_for_stock          = \\WC_Data_Store::load( 'product' )->get_query_for_stock( $product_id );",
+   "219: $query_for_reserved_stock = $this->get_query_for_reserved_stock( $product_id, $order->get_id() );",
+   "221: // Performance note: this method uses pessimistic locking and requires InnoDB table types to function correctly.",
+   "225: INSERT INTO {$wpdb->wc_reserved_stock} ( `order_id`, `product_id`, `stock_quantity`, `timestamp`, `expires` )",
+   "227: WHERE ( $query_for_stock FOR UPDATE ) - ( $query_for_reserved_stock LOCK IN SHARE MODE ) >= %d",
+   "250: throw new ReserveStockException(",
+   "251: 'woocommerce_product_not_enough_stock',",
+   "269: private function get_query_for_reserved_stock( $product_id, $exclude_order_id ): string {",
+   "284: SELECT COALESCE( SUM( stock_table.`stock_quantity` ), 0 ) FROM $wpdb->wc_reserved_stock stock_table",
+   "297: * Filter: woocommerce_query_for_reserved_stock",
+   "305: return apply_filters( 'woocommerce_query_for_reserved_stock', $query, $product_id, $exclude_order_id );"
+  ],
+  "stockfn_src": [
+   "424: * Filter: woocommerce_hold_stock_for_checkout",
+   "430: if ( ! apply_filters( 'woocommerce_hold_stock_for_checkout', wc_string_to_bool( get_option( 'woocommerce_manage_stock', 'yes' ) ) ) ) {",
+   "446: function wc_reserve_stock_for_order( $order ) {",
+   "448: * Filter: woocommerce_hold_stock_for_checkout",
+   "454: if ( ! apply_filters( 'woocommerce_hold_stock_for_checkout', wc_string_to_bool( get_option( 'woocommerce_manage_stock', 'yes' ) ) ) ) {",
+   "465: add_action( 'woocommerce_checkout_order_created', 'wc_reserve_stock_for_order' );",
+   "475: * Filter: woocommerce_hold_stock_for_checkout",
+   "481: if ( ! apply_filters( 'woocommerce_hold_stock_for_checkout', wc_string_to_bool( get_option( 'woocommerce_manage_stock', 'yes' ) ) ) ) {"
+  ],
+  "checkout_src": [
+   "479: $order_id = $order->save();",
+   "510: do_action( 'woocommerce_checkout_order_created', $order );",
+   "513: } catch ( Exception $e ) {",
+   "521: do_action( 'woocommerce_checkout_order_exception', $order );",
+   "1386: } catch ( WC_Data_Exception $e ) {",
+   "1450: } catch ( Exception $e ) {",
+   "1453: wc_add_notice( $e->getMessage(), 'error' );"
+  ],
+  "hook_order_created": [
+   "10 wc_reserve_stock_for_order",
+   "10 closure",
+   "20 Petshop_Kasa_Paskyra::pastaba",
+   "20 closure"
+  ],
+  "paveiktu_n": 20,
+  "err": "Method Automattic\\WooCommerce\\Checkout\\Helpers\\ReserveStock::get_query_for_stock() does not exist @18"
+ },
+ "v": "dep-065615",
+ "kurimas": 200,
+ "sid": 7147,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
