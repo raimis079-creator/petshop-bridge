@@ -1,0 +1,440 @@
+{
+ "1": {
+  "v": "S1782f",
+  "src": {
+   "mu-plugins/petshop-rec-log.php": {
+    "hits": [
+     "18: *   no_purchase_history   nera pirkimu istorijos, is kurios rinkti kandidatus",
+     "23: *   rec_purchased    woocommerce_checkout_order_processed (DoD #3)",
+     "111: ? 'species_unsupported' : 'no_purchase_history';",
+     "168: self::ivykis( 'rec_purchased', $t['rid'] . ':' . (int) $order_id, $uid );"
+    ],
+    "n": 4,
+    "ver": "1.2"
+   },
+   "mu-plugins/petshop-analitika-langas.php": {
+    "hits": [
+     "88: elseif ( $dalis < $S['klientai_grizt_ok'] ) { $v = array( 'geltona', 'Grįžtančių tik ' . round( 100 * $dalis ) . ' % (norma ≥ ' . round( 100 * $S['k"
+    ],
+    "n": 1,
+    "ver": ""
+   },
+   "mu-plugins/petshop-anketos-ataskaita.php": {
+    "hits": [
+     "330: 'no_purchase_history'  => 'Nėra pirkimų istorijos, iš kurios rinkti kandidatus.',",
+     "356: array( 'pav' => 'Nupirkta',    'sk' => self::sk( $r, 'rec_purchased' ) ),",
+     "623: $prk = self::sk( $r, 'refill_purchase' );"
+    ],
+    "n": 3,
+    "ver": "2.3"
+   },
+   "mu-plugins/petshop-lifecycle-vartai.php": {
+    "hits": [
+     "4: * Description: S1684 (Q4 planas, vartai C): (0) refill pagal augintinio anketą (dienos norma × pakuotė, Feeding_Service) kai yra svoris; (1) refill c",
+     "88: /** Po Refill_Engine::track_purchase (prio 30): pirmam pirkimui — 1) anketa (dienos norma × pakuotė), 2) ciklų lentelė (mediana); kalibruotų (2+) nel",
+     "100: $row = $wpdb->get_row( $wpdb->prepare( \"SELECT id, purchase_count, last_purchase_date FROM $t WHERE user_id=%d AND product_id=%d\", $uid, $pid ), ARR",
+     "102: if ( (int) $row['purchase_count'] > 1 ) {",
+     "107: $wpdb->update( $t, array( 'avg_interval_days' => $med, 'confidence' => 0.50, 'predicted_empty_date' => date( 'Y-m-d', strtotime( $row['last_purchas",
+     "114: $upd['predicted_empty_date'] = date( 'Y-m-d', strtotime( $row['last_purchase_date'] ) + $upd['avg_interval_days'] * 86400 ); $upd['updated_at'] = gm",
+     "137: if ( ! in_array( $flow, array( 'refill_due', 'post_purchase_14d', 'win_back' ), true ) ) return $result;"
+    ],
+    "n": 7,
+    "ver": "1.2.2"
+   },
+   "mu-plugins/petshop-m8-food.php": {
+    "hits": [
+     "543: $row['last_purchased_at'] = $o->get_date_created() ? $o->get_date_created()->date('Y-m-d') : null;"
+    ],
+    "n": 1,
+    "ver": ""
+   },
+   "mu-plugins/petshop-sugrazinimas.php": {
+    "hits": [
+     "50: $rows = $wpdb->get_results( $wpdb->prepare( \"SELECT r.user_id, r.last_order_id, MIN(r.product_id) product_id, MIN(r.id) refill_id, MAX(r.predicted_e",
+     "59: 'context' => array( 'user_id' => (int) $r->user_id, 'product_id' => (int) $r->product_id, 'order_id' => (int) $r->last_order_id, 'last_purchase_da",
+     "72: if ( $uid && ! empty( $context['last_purchase_date'] ) && self::pirko_po( $uid, substr( (string) $context['last_purchase_date'], 0, 10 ) ) ) return"
+    ],
+    "n": 3,
+    "ver": "1.0.0"
+   },
+   "mu-plugins/petshop-ataskaita-lankomumas.php": {
+    "hits": [
+     "13: * `ps_fakt_uzsakymai` (serverio faktas, ne naršyklės `purchase`)."
+    ],
+    "n": 1,
+    "ver": "1.0"
+   },
+   "mu-plugins/petshop-pakartojimo-grandine.php": {
+    "hits": [
+     "5: *   (1) KLAIDOS TAISYMAS: refill_due „jau nupirko\" — core Petshop_Refill_Engine::has_repurchased() lygino su",
+     "6: *       last_purchase_date 00:00, todėl rasdavo PATĮ pirkimą ir praleisdavo 100 % laiškų (7 iš 7, 09-18…10-01).",
+     "9: *   (2) K1: refill_due / post_purchase_14d / win_back — VISIEMS. Be 10 % kontrolinės grupės, be „soft\" žymos",
+     "11: *   (3) Viena grandinė: post_purchase_14d NESIUNČIAMAS maisto užsakymui (jį veda „Pakartoti tą patį\" + win_back)",
+     "54: return array( 'allowed' => false, 'reason' => 'already_repurchased', 'terminal' => true );",
+     "81: $d   = isset( $context['last_purchase_date'] ) ? substr( (string) $context['last_purchase_date'], 0, 10 ) : '';",
+     "109: if ( ! in_array( $flow, array( 'refill_due', 'post_purchase_14d', 'win_back' ), true ) ) { return $result; }",
+     "122: /** (3) post_purchase_14d: ne maisto užsakymui ir tik jei klientas po to dar nepirko. */",
+     "124: if ( 'post_purchase_14d' !== $flow ) { return $result; }"
+    ],
+    "n": 9,
+    "ver": "1.0.0"
+   },
+   "mu-plugins/petshop-laiskai.php": {
+    "hits": [
+     "266: 'post_purchase_2d'       => array( 'order_number', 'order_url', 'items', 'pirma_preke' ),",
+     "267: 'post_purchase_7d'       => array( 'order_number', 'order_url', 'review_url', 'items' ),"
+    ],
+    "n": 2,
+    "ver": "1.3"
+   },
+   "mu-plugins/petshop-ga4-serveris.php": {
+    "hits": [
+     "3: * Plugin Name: Petshop GA4 serveris v1.0 (purchase iš serverio · Kontrolė Woo/fakt/GA4)",
+     "4: * Description: Siunčia `purchase` į GA4 per Measurement Protocol iš serverio (payment_complete / on-hold / processing),",
+     "6: *   Kasdien lygina: Woo apmokėti · ps_fakt · MP išsiųsta · GA4 purchase — langas Ataskaitos → Kontrolė.",
+     "10: *   Ads algoritmas mokėsi iš pusės signalo. TŽ v1.39 (A) MVP reikalavimas: purchase serverio pusėje, dedup pagal transaction_id.",
+     "13: *   `purchase` su tuo pačiu transaction_id kaip naršyklės dataLayer (snippet 614) — GA4 dubliuotus transaction_id",
+     "16: * Raktas: option `ps_ga4_mp_secret` (GA4 Admin → Data Streams → Web → Measurement Protocol API secrets). Kol nėra — nesiunčia, žymi „laukia rakto“.",
+     "37: add_filter( 'petshop_ataskaitu_aprasai', function ( $a ) { $a[ self::PUSLAPIS ] = 'Woo apmokėti · ps_fakt · GA4 purchase (serveris) · GA4 mato — try",
+     "97: 'transaction_id'       => (string) $order->get_id(),",
+     "114: 'events'               => array( array( 'name' => 'purchase', 'params' => $params ) ),",
+     "135: $r = wp_remote_post( 'https://www.google-analytics.com/mp/collect?measurement_id=' . self::MID . '&api_secret=' . rawurlencode( $secret ), array(",
+     "150: $r = wp_remote_post( 'https://www.google-analytics.com/debug/mp/collect?measurement_id=' . self::MID . '&api_secret=' . rawurlencode( $secret ), arr",
+     "184: /** @return array diena => [purchases, revenue, purchases_serveris] arba WP_Error */",
+     "189: 'metrics' => array( array( 'name' => 'ecommercePurchases' ), array( 'name' => 'purchaseRevenue' ) ) );",
+     "211: ga4_purchase INT NULL, ga4_pajamos_ct INT NULL,",
+     "235: 'ga4_purchase' => $g ? $g[0] : null, 'ga4_pajamos_ct' => $g ? (int) round( $g[1] * 100 ) : null, 'atnaujinta' => current_time( 'mysql', true ) ) )",
+     "251: echo '<p class=\"description\">Vienas užsakymas = vienas <code>purchase</code>. Woo apmokėti (processing/on-hold/completed) turi sutapti su ps_fakt ir",
+     "254: echo '<tr><th>GA4 Measurement Protocol raktas</th><td>' . ( $sec ? '<b style=\"color:#1a7f37\">yra</b> (' . esc_html( substr( $sec, 0, 4 ) ) . '…)' :",
+     "256: echo '<tr><th>Google Ads</th><td>Ads paskyroje konversija <code>purchase</code> importuojama iš GA4 (Tools → Conversions → GA4 key event „purchase“)"
+    ],
+    "n": 20,
+    "ver": "1.0"
+   },
+   "mu-plugins/petshop-rezultatai.php": {
+    "hits": [
+     "35: 'post_purchase_2d'=>'Po pirkimo 2 diena','post_purchase_7d'=>'Po pirkimo 7 diena',",
+     "36: 'post_purchase_14d'=>'Po pirkimo 14 diena','win_back_60'=>'Sugrąžinimas 60 d.',"
+    ],
+    "n": 2,
+    "ver": "1.1"
+   },
+   "mu-plugins/petshop-langai-admin.php": {
+    "hits": [
+     "30: 'post_purchase_2d'       => array( 'Po pirkimo · 2 diena', 'Ar viskas gerai su užsakymu.' ),",
+     "31: 'post_purchase_7d'       => array( 'Po pirkimo · 7 diena', 'Kvietimas palikti atsiliepimą.' ),",
+     "32: 'post_purchase_14d'      => array( 'Po pirkimo · 14 diena', 'Pasiūlymas pakartoti užsakymą.' ),"
+    ],
+    "n": 3,
+    "ver": "1.2"
+   },
+   "mu-plugins/petshop-analitika.php": {
+    "hits": [
+     "26: *  1. `purchase` is narsykles — ATMETAMAS KIETAI. Vienas `purchase` = serverio",
+     "30: *     SKAICIUOJAMAS (`ps_web_atmesta_purchase`) — jei skaitiklis auga, vadinasi",
+     "35: *     GA4 purchase (rankinis) — trys skaiciai, ir matosi, kuris tikras.",
+     "95: const OPT_ATMESTA  = 'ps_web_atmesta_purchase';",
+     "98: /** Ivykiai, kuriuos priimam is dataLayer. `purchase` cia NERA ir NEBUS. */",
+     "105: const DRAUDZIAMI = array( 'purchase', 'refund' );",
+     "654: /* 🔴 purchase NIEKADA neiseina is narsykles — pirmas is triju sluoksniu. */",
+     "655: if(!o||!o.tipas||o.tipas==='purchase'||o.tipas==='refund')return;",
+     "684: if(LEIST.indexOf(a.event)<0)return;   /* purchase cia neipuola */",
+     "834: 'atmesta_purchase' => (int) get_option( self::OPT_ATMESTA, 0 ),",
+     "835: 'purchase_lenteleje' => (int) $wpdb->get_var( \"SELECT COUNT(*) FROM $i WHERE tipas IN ('purchase','refund')\" ),"
+    ],
+    "n": 11,
+    "ver": "1.4"
+   },
+   "mu-plugins/petshop-krepselio-priminimai.php": {
+    "hits": [
+     "4: * Description: S1768 (Raimio sprendimas 10-01, „daryk\" 10-11 12:06): krepšelio priminimai (cart_abandoned +2 val., cart_abandoned_2 +24 val.) siunčia",
+     "6: * v1.1 (S1768b, Raimio „daryk\" 10-11 12:37): tas pats atsisakymo patikrinimas (paskyra + ps_consent_log) ir pakartojimo laiškams refill_due, post_pur",
+     "13: const PAKART = array( 'refill_due', 'post_purchase_14d', 'win_back' );"
+    ],
+    "n": 3,
+    "ver": "1.1"
+   },
+   "mu-plugins/petshop-rec-ui.php": {
+    "hits": [
+     "13: * shown -> clicked -> add_to_cart -> purchased."
+    ],
+    "n": 1,
+    "ver": "1.0"
+   },
+   "mu-plugins/petshop-refill-ivykiai.php": {
+    "hits": [
+     "4: * Description: Kontrakto §4.3 refill sritis — veidrodis is ps_event_log/ps_email_jobs + refill_purchase kabliukas. petshop-core NELIESTAS.",
+     "14: *   refill_purchase       <- woocommerce_checkout_order_processed, kai",
+     "26: *  - IDEMPOTENCIJA: order meta _ps_refill_purchase_logged — hook'as gali",
+     "124: /** refill_purchase: uzsakyme preke, kuriai buvo refill_due per LANGAS_D d. */",
+     "139: if ( $order->get_meta( '_ps_refill_purchase_logged' ) ) { return; } /* idempotencija */",
+     "153: self::ivykis( 'refill_purchase', (int) $order_id . ':+' . $dienos . 'd', $uid );",
+     "154: $order->update_meta_data( '_ps_refill_purchase_logged', current_time( 'mysql', true ) );"
+    ],
+    "n": 7,
+    "ver": "1.2"
+   },
+   "mu-plugins/petshop-faktai.php": {
+    "hits": [
+     "55: * Trys apsaugos sluoksniai (S168 dvigubo purchase pamoka):"
+    ],
+    "n": 1,
+    "ver": "1.3"
+   },
+   "mu-plugins/petshop-relaunch.php": {
+    "hits": [
+     "121: $ex = $wpdb->get_row( $wpdb->prepare( \"SELECT id,last_order_id,purchase_count FROM $t WHERE user_id=%d AND product_id=%d\", $uid, $pid ), ARRAY_A );",
+     "126: $wpdb->insert( $t, array( 'user_id' => $uid, 'product_id' => $pid, 'pet_id' => null, 'last_order_id' => $oid, 'last_purchase_date' => $today, 'purc"
+    ],
+    "n": 2,
+    "ver": "1.1.1"
+   },
+   "mu-plugins/petshop-planas-langas.php": {
+    "hits": [
+     "56: $rows = $wpdb->get_results( $wpdb->prepare( \"SELECT rt.user_id, rt.product_id, rt.predicted_empty_date pd, rt.last_purchase_date lp, rt.purchase_cou"
+    ],
+    "n": 1,
+    "ver": "1.1"
+   },
+   "plugins/petshop-core/petshop-core.php": {
+    "hits": [
+     "114: require_once PETSHOP_CORE_DIR . 'includes/class-post-purchase.php'; // S326",
+     "210: if ( class_exists( 'Petshop_Post_Purchase' ) && function_exists( 'WC' ) ) {",
+     "211: Petshop_Post_Purchase::init();"
+    ],
+    "n": 3,
+    "ver": "0.15.0"
+   },
+   "plugins/petshop-core/assets/pet-profile.js": {
+    "hits": [
+     "1102: (refill.purchase_count ? '<div style=\"font-size:12px;color:#6B7A70;margin-top:2px\">Pirkta ' + refill.purchase_count + ' k.</div>' : '');"
+    ],
+    "n": 1,
+    "ver": ""
+   },
+   "plugins/petshop-core/templates/emails/post-purchase-7d.php": {
+    "hits": [
+     "3: * Sablonas: post_purchase_7d — atsiliepimo kvietimas."
+    ],
+    "n": 1,
+    "ver": ""
+   },
+   "plugins/petshop-core/templates/emails/post-purchase-2d.php": {
+    "hits": [
+     "3: * Sablonas: post_purchase_2d — „Ar su uzsakymu viskas gerai?\""
+    ],
+    "n": 1,
+    "ver": ""
+   },
+   "plugins/petshop-core/templates/emails/post-purchase-14d.php": {
+    "hits": [
+     "3: * Sablonas: post_purchase_14d — patogus pakartojimas."
+    ],
+    "n": 1,
+    "ver": ""
+   },
+   "plugins/petshop-core/includes/class-email-dispatch.php": {
+    "hits": [
+     "75: 'post_purchase_2d'        => array( 'class' => 'service', 'template' => 'post-purchase-2d',  'delay' => 0 ),",
+     "76: 'post_purchase_7d'        => array( 'class' => 'service', 'template' => 'post-purchase-7d',  'delay' => 604800 ),",
+     "77: 'post_purchase_14d'       => array( 'class' => 'service', 'template' => 'post-purchase-14d', 'delay' => 1209600 ),"
+    ],
+    "n": 3,
+    "ver": ""
+   },
+   "plugins/petshop-core/includes/class-pet-dashboard.php": {
+    "hits": [
+     "323: 'purchase_count'    => (int) $row->purchase_count,",
+     "327: 'last_purchase'     => $row->last_purchase_date,",
+     "377: last_purchased_at DESC LIMIT 5\",",
+     "394: 'last_purchased_at' => $row->last_purchased_at,",
+     "402: * Mitybos ritmas — paskutiniu pirkimu intervalai (is refill purchase_count + avg).",
+     "413: \"SELECT avg_interval_days, purchase_count, confidence FROM `$t`",
+     "415: ORDER BY purchase_count DESC LIMIT 1\",",
+     "418: if ( ! $row || (int) $row->purchase_count < 2 ) {",
+     "419: return array( 'has_data' => false, 'purchase_count' => $row ? (int) $row->purchase_count : 0 );",
+     "424: 'purchase_count'    => (int) $row->purchase_count,"
+    ],
+    "n": 10,
+    "ver": ""
+   },
+   "plugins/petshop-core/includes/class-event-emitters.php": {
+    "hits": [
+     "131: // (refill, cart_abandoned, post-purchase, T-5, win-back...).",
+     "133: // post-purchase ir refill logikai."
+    ],
+    "n": 2,
+    "ver": ""
+   },
+   "plugins/petshop-core/includes/class-post-purchase.php": {
+    "hits": [
+     "3: * Petshop Post-Purchase — S326 DETEKTORIUS.",
+     "8: * Post-purchase srautas savininko NETURI.",
+     "22: * post_purchase_7d/14d buvo „sablonai be ivykio\" (payment_failed klase).",
+     "35: class Petshop_Post_Purchase {",
+     "49: add_action( 'ps_post_purchase_check', array( __CLASS__, 'cron_run' ) );",
+     "53: if ( ! wp_next_scheduled( 'ps_post_purchase_check' ) ) {",
+     "54: wp_schedule_event( time() + 600, 'hourly', 'ps_post_purchase_check' );",
+     "124: 'post_purchase_2d',",
+     "134: 'job_key' => 'post_purchase_2d:' . $order_id,",
+     "146: 'post_purchase_7d'  => self::STAGE_7D,",
+     "147: 'post_purchase_14d' => self::STAGE_14D,",
+     "172: * Uzsakymai su zyma senesne nei $cutoff ir BE post_purchase_2d job'o.",
+     "189: WHERE j.flow = 'post_purchase_2d'",
+     "190: AND j.job_key = CONCAT('post_purchase_2d:', m.order_id) )",
+     "202: WHERE j.flow = 'post_purchase_2d'",
+     "203: AND j.job_key = CONCAT('post_purchase_2d:', pm.post_id) )",
+     "214: * S1472: siuntimo momento patikra visai post_purchase serijai.",
+     "219: if ( ! in_array( $flow, array( 'post_purchase_2d', 'post_purchase_7d', 'post_purchase_14d' ), true ) ) {"
+    ],
+    "n": 19,
+    "ver": ""
+   },
+   "plugins/petshop-core/includes/class-refill-feedback.php": {
+    "hits": [
+     "136: if ( $row->last_purchase_date ) {",
+     "137: $lp = new DateTime( $row->last_purchase_date, new DateTimeZone( 'UTC' ) );",
+     "184: * Prioritetas: last_order_id -> last_purchase_date -> iraso sukurimo data.",
+     "190: if ( ! empty( $row->last_purchase_date ) ) {",
+     "191: return 'd' . substr( (string) $row->last_purchase_date, 0, 19 );"
+    ],
+    "n": 5,
+    "ver": ""
+   },
+   "plugins/petshop-core/includes/class-refill-engine.php": {
+    "hits": [
+     "75: last_purchase_date DATE NOT NULL,",
+     "76: purchase_count INT UNSIGNED NOT NULL DEFAULT 1,",
+     "136: $purchase_date = $order->get_date_paid()->format( 'Y-m-d' );",
+     "151: self::track_purchase( $user_id, $product_id, $order->get_id(), $purchase_date, $product );",
+     "173: private static function track_purchase( $user_id, $product_id, $order_id, $purchase_date, $product ) {",
+     "185: $prev_date = $existing->last_purchase_date;",
+     "186: $real_interval = max( 1, (int) round( ( strtotime( $purchase_date ) - strtotime( $prev_date ) ) / 86400 ) );",
+     "187: $new_count = (int) $existing->purchase_count + 1;",
+     "197: $predicted = date( 'Y-m-d', strtotime( $purchase_date ) + $new_avg * 86400 );",
+     "201: 'last_purchase_date'  => $purchase_date,",
+     "202: 'purchase_count'      => $new_count,",
+     "212: $predicted = date( 'Y-m-d', strtotime( $purchase_date ) + $interval * 86400 );",
+     "219: 'last_purchase_date'   => $purchase_date,",
+     "220: 'purchase_count'       => 1,",
+     "358: 'days_since_last_order' => (int) round( ( time() - strtotime( $row->last_purchase_date ) ) / 86400 ),",
+     "391: 'last_purchase_date' => $row->last_purchase_date,",
+     "420: $since      = isset( $context['last_purchase_date'] ) ? $context['last_purchase_date'] : '';",
+     "423: if ( $user_id && $product_id && $since && self::has_repurchased( $user_id, $product_id, $since ) ) {"
+    ],
+    "n": 20,
+    "ver": ""
+   },
+   "plugins/petshop-core/includes/class-pet-products.php": {
+    "hits": [
+     "44: last_purchased_at DATETIME NULL,",
+     "188: FIELD(relationship_type,'primary_food','treat','supplement','care','other'), last_purchased_at DESC\",",
+     "208: 'last_purchased_at' => $row->last_purchased_at,",
+     "244: 'last_order_id' => $order_id, 'last_purchased_at' => $now, 'updated_at' => $now,",
+     "249: 'last_order_id' => $order_id, 'last_purchased_at' => $now, 'updated_at' => $now,",
+     "261: 'last_purchased_at' => $now,"
+    ],
+    "n": 6,
+    "ver": ""
+   },
+   "snippet#614 Petshop DataLayer v1.1 (GA4 ecommerce)": {
+    "hits": [
+     "5: * Ivykiai: view_item, add_to_cart, view_cart, begin_checkout, purchase",
+     "9: * Idempotencija: purchase siunciamas vienakart per uzsakyma (_petshop_dl_purchase_sent + static guard)",
+     "15: *   - purchase: pridetas static guard nuo dvigubo hook kvietimo tame paciame request'e.",
+     "87: * Isveda dataLayer.push. Pries kiekviena ecommerce ivyki isvalo ecommerce objekta",
+     "96: echo \"window.dataLayer.push({ ecommerce: null });\\n\";",
+     "97: echo \"window.dataLayer.push(\" . $json . \");\\n\";",
+     "254: window.dataLayer.push({ ecommerce: null });",
+     "255: window.dataLayer.push({",
+     "387: * 6. purchase — thankyou puslapis (idempotentiskai)",
+     "390: if ( ! function_exists( 'petshop_gtm_purchase' ) ) {",
+     "391: function petshop_gtm_purchase( $order_id ) {",
+     "402: if ( $order->get_meta( '_petshop_dl_purchase_sent' ) === 'yes' ) { return; }",
+     "439: 'transaction_id' => (string) $order->get_order_number(),",
+     "453: 'event'     => 'purchase',",
+     "468: $order->update_meta_data( '_petshop_dl_purchase_sent', 'yes' );",
+     "472: add_action( 'woocommerce_thankyou', 'petshop_gtm_purchase', 10, 1 );"
+    ],
+    "n": 16,
+    "ver": ""
+   },
+   "snippet#619 Petshop Consent Bridge v1.5 (Complianz -> GTM, legalus denied default, be url_passthrough)": {
+    "hits": [
+     "15: *      todel replay dubliuodavo purchase -> dvigubos konversijos.",
+     "42: function gtag() { window.dataLayer.push(arguments); }",
+     "45: gtag('consent', 'default', {",
+     "55: gtag('set', 'ads_data_redaction', true);",
+     "56: gtag('set', 'url_passthrough', false) /* S1716 2026-09-25: true = _gl ant visu vidiniu nuorodu nesutikusiems (86 %), Super Cache ju nekesuoja */;",
+     "75: gtag('consent', 'update', {",
+     "82: window.dataLayer.push({",
+     "131: window.dataLayer.push({ ecommerce: null });",
+     "132: window.dataLayer.push(copy);"
+    ],
+    "n": 9,
+    "ver": ""
+   },
+   "snippet#7182 TEMP PS dep-155955": {
+    "hits": [
+     "2: /** Plugin Name: TEMP PS S1782f GA4 purchase šaltinių inventorius (tik skaitymas) · 1 */",
+     "8: foreach($src as $n=>$c){ if(!preg_match('/purchase/i',$c)) continue; $L=explode(\"\\n\",$c); $hits=[]; foreach($L as $i=>$l){ if(preg_match('/purchas",
+     "12: $r['meta_purchase_flags']=$wpdb->get_results(\"SELECT meta_key,COUNT(*) c FROM {$P}wc_orders_meta WHERE meta_key LIKE '%ga4%' OR meta_key LIKE '%gt"
+    ],
+    "n": 3,
+    "ver": "\\s*(\\S+)|VERSIJA\\s*=\\s*\\'([^\\']+)\\'/',$c,$m)?($m[1]?:($m[2]??'')):''];"
+   }
+  },
+  "ga4s_methods": [
+   "init",
+   "prod",
+   "secret",
+   "isiminti_slapukus",
+   "cid_is_slapuko",
+   "sid_is_slapuko",
+   "payload",
+   "siusti",
+   "validuoti",
+   "debug_get",
+   "sa",
+   "token",
+   "ga4_dienos",
+   "lentele",
+   "cron_reg",
+   "cron",
+   "meniu",
+   "langas"
+  ],
+  "ga4s_file": "petshop-ga4-serveris.php",
+  "opt_like": [
+   {
+    "option_name": "ps_ga4_mp_secret",
+    "v": "5GGbP2GxRMa0LCDPYLSnag"
+   }
+  ],
+  "meta_purchase_flags": [
+   {
+    "meta_key": "_petshop_dl_purchase_sent",
+    "c": "322"
+   },
+   {
+    "meta_key": "_ps_ga4_mp_at",
+    "c": "359"
+   },
+   {
+    "meta_key": "_ps_ga4_mp_cid",
+    "c": "359"
+   },
+   {
+    "meta_key": "_ps_ga4_mp_kodas",
+    "c": "359"
+   }
+  ]
+ },
+ "v": "dep-155955",
+ "kurimas": 200,
+ "sid": 7182,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
