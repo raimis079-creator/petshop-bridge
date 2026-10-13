@@ -1,0 +1,22 @@
+{
+ "1": {
+  "v": "S1779j",
+  "n": 1,
+  "eil": [
+   "[12-Oct-2026 15:51:39 UTC] WordPress database error Unknown column 'preke_id' in 'WHERE' for query SELECT * FROM gaj6_ps_partijos WHERE preke_id IN(16442,16438) LIMIT 10 made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php')"
+  ],
+  "top": {
+   "12 Warning Attempt to read property \"errors\" on array in /home/gyvunai2/domains/petshop.lt/public_htm": 2,
+   "12 Warning Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plu": 1,
+   "13 Fatal Uncaught Error: Call to undefined function is_product() in /home/gyvunai2/domains/petshop.": 1,
+   "13 Warning Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plu": 1
+  }
+ },
+ "v": "dep-061329",
+ "kurimas": 200,
+ "sid": 7140,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
