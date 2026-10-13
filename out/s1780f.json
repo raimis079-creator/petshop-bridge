@@ -1,0 +1,39 @@
+{
+ "1": {
+  "v": "S1780f",
+  "order": [
+   "1409",
+   "cancelled"
+  ],
+  "18557_x1_AV1_tiek0": "OK rezervuota",
+  "18557_x2_AV1_tiek0": "KLAIDA: Automattic\\WooCommerce\\Checkout\\Helpers\\ReserveStockException Sandėlyje nėra pakankamo produkto „Exclusion Hypoallergenic sausas šunų maistas su triušiena ir bulvėmis M/L 12 kg“ kiek",
+  "17671_x1_AV0_tiek0": "KLAIDA: Automattic\\WooCommerce\\Checkout\\Helpers\\ReserveStockException Sandėlyje nėra pakankamo produkto „Kraikas katėms TOFU BeloCat, pušies kvapo, 6 l (2,5 kg), 2 mm granulės“ kiekio šiam u",
+  "20961_x1_tiek101": "OK rezervuota",
+  "irasai": [
+   {
+    "product_id": "18557",
+    "stock_quantity": "1",
+    "expires": "2026-10-13 10:32:10"
+   },
+   {
+    "product_id": "20961",
+    "stock_quantity": "1",
+    "expires": "2026-10-13 10:32:10"
+   }
+  ],
+  "po_isvalymo": 0,
+  "paskutinis": {
+   "product_id": 18557,
+   "av": 1,
+   "order_id": 36843
+  },
+  "pastabu_po": 2
+ },
+ "v": "dep-073001",
+ "kurimas": 200,
+ "sid": 7154,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
