@@ -1,0 +1,94 @@
+{
+ "1": {
+  "v": "S1779b",
+  "failai": [
+   "Oct-2026.tar.gz",
+   "Oct-2026.tar.gz.1",
+   "Oct-2026.tar.gz.2"
+  ],
+  "statusai": {
+   "200": [
+    25820,
+    15431
+   ],
+   "302": [
+    462,
+    270
+   ],
+   "403": [
+    210,
+    179
+   ],
+   "404": [
+    2132,
+    1613
+   ],
+   "500": [
+    14,
+    9
+   ]
+  },
+  "eil": 36626,
+  "po_1110": 22554,
+  "blk_iki_1110": 0,
+  "blk_po_1110": 0,
+  "blk_po_kas": [],
+  "geri_robotai": {
+   "Bing": 1469,
+   "Googlebot": 1124,
+   "FB perziuros": 651,
+   "AdsBot": 440,
+   "GoogleOther": 278,
+   "ChatGPT": 172,
+   "Claude": 102,
+   "Apple": 73,
+   "Perplexity": 66,
+   "DuckDuckGo": 4
+  },
+  "fatal_nuo_1009": 1,
+  "fatal_pvz": [
+   "[09-Oct-2026 19:42:27 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_product() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php:682"
+  ],
+  "laiskai": [
+   {
+    "d": "2026-10-12",
+    "n": "33"
+   }
+  ],
+  "laiskai_problem": 0,
+  "laiskai_dubl": 0,
+  "kanalai": [
+   {
+    "d": "2026-10-12",
+    "k": "mokamas",
+    "n": "11",
+    "eur": "603"
+   },
+   {
+    "d": "2026-10-12",
+    "k": "direct",
+    "n": "5",
+    "eur": "211"
+   },
+   {
+    "d": "2026-10-12",
+    "k": "organika",
+    "n": "2",
+    "eur": "19"
+   },
+   {
+    "d": "2026-10-13",
+    "k": "mokamas",
+    "n": "2",
+    "eur": "58"
+   }
+  ]
+ },
+ "v": "dep-061909",
+ "kurimas": 200,
+ "sid": 7143,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
