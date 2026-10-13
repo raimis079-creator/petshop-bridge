@@ -1,0 +1,237 @@
+{
+ "1": {
+  "v": "S1781l",
+  "oid": 36796,
+  "uzs": {
+   "status": "processing",
+   "sukurta": "2026-10-11 11:54",
+   "pristatymas": "VENIPAK paštomatai/atsiėmimo punktai",
+   "vardas": "Erika"
+  },
+  "meta": {
+   "_ps_av_reduced": "2026-10-11 11:56:22",
+   "_ps_dropship_sent": "2026-10-12 10:26:26",
+   "_ps_dropship_sent_src": "{\"zb\":\"2026-10-12 10:26:26\"}",
+   "_ps_dropship_to": "zb",
+   "_ps_groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":3,\"vienetai\":5},\"zb\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+   "_ps_misrus_sprendimas": "{\"zb\":\"tiesiai\",\"vf\":\"av\"}",
+   "_ps_misrus_sprestas": "2026-10-11 18:03:48 | Inga",
+   "_ps_order_type": "MIXED",
+   "_ps_rusiuota": "2026-10-11 18:03:48 | Inga",
+   "_ps_shipments": "2"
+  },
+  "eilutes": [
+   {
+    "iid": 3501,
+    "pid": 19104,
+    "sku": "710002-1",
+    "pav": "Balta avies koja, 1 vnt.",
+    "qty": 1,
+    "meta": {
+     "_ps_savikaina_vnt": "0.5900",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "1.5900",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-11 11:54:52",
+     "_ps_source_reason": "grynai AV prekė (be tiekėjo)",
+     "_reduced_stock": "0",
+     "_ps_av_reduced_qty": "1",
+     "_ps_partijos_qty": "1",
+     "_ps_kelias": "av"
+    },
+    "bukle": null,
+    "prekes": {
+     "_stock": "16",
+     "_own_stock_qty": "",
+     "_ps_sandelis": "av",
+     "_dp_base": "",
+     "_dp_qty": ""
+    }
+   },
+   {
+    "iid": 3502,
+    "pid": 12883,
+    "sku": "01O8B05001",
+    "pav": "Džiovintos vištos kojos baltos (50vnt)",
+    "qty": 1,
+    "meta": {
+     "_ps_savikaina_vnt": "8.1180",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "13.7900",
+     "_ps_source": "zb",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-11 11:54:52",
+     "_ps_source_reason": "AV neužtenka → tiekėjas: AV šios prekės neturi",
+     "_reduced_stock": "1",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "tiesiai"
+    },
+    "bukle": null,
+    "prekes": {
+     "_stock": "24",
+     "_own_stock_qty": "",
+     "_ps_sandelis": "zb",
+     "_dp_base": "",
+     "_dp_qty": ""
+    },
+    "partijos": [],
+    "sources": [
+     {
+      "source": "zb",
+      "stock_qty": "25",
+      "is_active": "1"
+     }
+    ]
+   },
+   {
+    "iid": 3503,
+    "pid": 25340,
+    "sku": "HAPGH02",
+    "pav": "Happet skanėstas šunims M, Himalajų sūris, 66-74g",
+    "qty": 2,
+    "meta": {
+     "_ps_savikaina_vnt": "4.6500",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "7.6900",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "2",
+     "_ps_source_at": "2026-10-13 11:30:29",
+     "_ps_source_reason": "parsivežta iš VF, partija #43",
+     "_reduced_stock": "2",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "i_av",
+     "_ps_konsolidacija": "1",
+     "_ps_av_reduced": "2026-10-13 11:30:29"
+    },
+    "bukle": {
+     "id": "130",
+     "partija_id": "43",
+     "qty": "2",
+     "qty_gauta": "2",
+     "busena": "gauta",
+     "tiekejas": "vf"
+    },
+    "prekes": {
+     "_stock": "19.000000",
+     "_own_stock_qty": "0",
+     "_ps_sandelis": "vf",
+     "_dp_base": "",
+     "_dp_qty": ""
+    }
+   },
+   {
+    "iid": 3504,
+    "pid": 17826,
+    "sku": "5904181401098",
+    "pav": "Kietas Himalajų sūrio skanėstas šunims, 4Dogs, M dydis",
+    "qty": 2,
+    "meta": {
+     "_ps_savikaina_vnt": "3.3700",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "8.4400",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "2",
+     "_ps_source_at": "2026-10-11 11:54:52",
+     "_ps_source_reason": "grynai AV prekė (be tiekėjo)",
+     "_reduced_stock": "0",
+     "_ps_av_reduced_qty": "2",
+     "_ps_partijos_qty": "2",
+     "_ps_kelias": "av"
+    },
+    "bukle": null,
+    "prekes": {
+     "_stock": "4",
+     "_own_stock_qty": "",
+     "_ps_sandelis": "av",
+     "_dp_base": "",
+     "_dp_qty": ""
+    }
+   }
+  ],
+  "pastabos": [
+   "10-11 11:54 [system] Vykdymas: MIXED — AV 3 vnt · ZB 1 vnt · VF 2 vnt (3 siunta(-os)) · mišrus → AV pirmenybė",
+   "10-11 11:56 [system] AV nurašymas: #19104 grynai AV 17 -> 16 · #17826 grynai AV 6 -> 4",
+   "10-11 11:56 [system] Partijos nurašytos: #19104 −1 vnt. (1 partijos) · #17826 −2 vnt. (1 partijos)",
+   "10-11 18:03 [Inga] Surūšiuota (Inga): Balta avies koja, 1 vnt. — Iš AV; Džiovintos vištos kojos baltos (50vnt) — ZB siunčia klientui; Happet skanėstas šunims M, Himalajų sūri — VF veža į AV; Kietas Himalajų sūrio skanėstas šunims,  — Iš AV",
+   "10-12 10:26 [Inga] Perduota ZB — suvesta į jų sistemą ranka, lipdukas prikabintas (darbalaukio žymė).",
+   "10-12 12:14 [Inga] Tiekimas: „Happet skanėstas šunims M, Himalajų sūris, 66-74g“ (2 vnt) įtraukta į Vetfarmas partiją #43 — parsivežam į AV.",
+   "10-12 12:15 [Inga] Tiekimas: prekės užsakytos iš Vetfarmas (partija #43, laiške kartu su užsakymais). Kelias į AV: Venipak kurjeris į AV. Laukiam.",
+   "10-13 11:30 [Inga] Tiekimas: visos prekės gautos (partija #43). Užsakymas paruoštas surinkimui iš AV. Į AV perkeltos eilutės: Happet skanėstas šunims M, Himalajų sūris, 66-74g."
+  ],
+  "f": {
+   "rus": "2026-10-11 18:03:48 | Inga",
+   "eiles": [
+    "klausimai",
+    "paruosta"
+   ],
+   "tiesiai": [
+    "zb"
+   ],
+   "kl": "ZB vėluoja — užsakyta prieš 27 val., siunta neišėjo. Paskambink ZB.",
+   "dalys": {
+    "av": {
+     "siunta": false,
+     "nr": [],
+     "lapas": false,
+     "vietoje": true,
+     "issiusta": false
+    },
+    "zb": {
+     "perduota": true,
+     "kada": "2026-10-12 10:26:26",
+     "nr": [],
+     "issiusta": false
+    }
+   },
+   "takelis": [
+    "surūšiuota [done]",
+    "užsakyta iš VF [done]",
+    "gauta į AV [done]",
+    "surinkti [todo]",
+    "lipdukas [todo]",
+    "kurjeris paėmė [todo]",
+    "lipdukas ZB [done]",
+    "suvesta į ZB [done]",
+    "ZB išsiuntė [wait]",
+    "ZB vėluoja — užsakyta prieš 27 val., siunta neišėjo. Paskambink ZB. [bad]"
+   ],
+   "eil": [
+    "Balta avies koja, 1 vnt. | av → av | lock:  | galimi: {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Džiovintos vištos kojos baltos | zb → tiesiai | lock: jau užsakyta iš ZB | galimi: {\"av\":false,\"tiesiai\":true,\"i_av\":true}",
+    "Happet skanėstas šunims M, Him | av → av | lock:  | galimi: {\"av\":true,\"tiesiai\":true,\"i_av\":true}",
+    "Kietas Himalajų sūrio skanėsta | av → av | lock:  | galimi: {\"av\":true,\"tiesiai\":false,\"i_av\":false}"
+   ]
+  },
+  "zb_partijos": [
+   {
+    "id": "38",
+    "tiekejas": "zb",
+    "busena": "gauta",
+    "sukurta": "2026-10-06 07:57:50",
+    "uzsakyta": "2026-10-06 07:57:50",
+    "gauta": "2026-10-07 12:43:21"
+   },
+   {
+    "id": "28",
+    "tiekejas": "zb",
+    "busena": "gauta",
+    "sukurta": "2026-09-19 20:37:15",
+    "uzsakyta": "2026-09-19 20:37:16",
+    "gauta": "2026-09-22 11:03:23"
+   }
+  ],
+  "siuntos": []
+ },
+ "v": "dep-112138",
+ "kurimas": 200,
+ "sid": 7170,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
