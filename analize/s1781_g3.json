@@ -1,0 +1,160 @@
+{
+ "3": {
+  "v": "S1781g",
+  "f": "3",
+  "md5": "e974034211f5ac27c8d7593812695841",
+  "ver": "3.49",
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/wp-admin/admin-ajax.php": [
+    400,
+    0
+   ],
+   "/wp-json/": [
+    200,
+    0
+   ]
+  },
+  "u1394": {
+   "spr_db": "{\"quattro\":\"av\",\"vf\":\"tiesiai\"}",
+   "f": {
+    "rus": "planas",
+    "eiles": [
+     "laukiam",
+     "paruosta"
+    ],
+    "tiesiai": [
+     "vf"
+    ],
+    "eil": [
+     "Quattro SB 7kg su anti | quattro → i_av",
+     "Truly skanėstas šunims | vf → tiesiai",
+     "Hau&amp;Miau Jautienos | av → av",
+     "SmartBones Beef Bones  | vf → tiesiai"
+    ]
+   },
+   "planas_perskaiciuotas": {
+    "quattro": "av",
+    "vf": "tiesiai"
+   },
+   "be_plano_atmintyje": {
+    "rus": "",
+    "eiles": [
+     "nauji",
+     "paruosta"
+    ],
+    "tiesiai": [],
+    "eil": [
+     "Quattro SB 7kg su anti | quattro → i_av",
+     "Truly skanėstas šunims | vf → i_av",
+     "Hau&amp;Miau Jautienos | av → av",
+     "SmartBones Beef Bones  | vf → i_av"
+    ]
+   },
+   "be_plano_planas": {
+    "quattro": "av"
+   },
+   "spr_db_po": "{\"quattro\":\"av\"}"
+  },
+  "u1384": {
+   "spr_db": "{\"vf\":\"tiesiai\"}",
+   "f": {
+    "rus": "planas",
+    "eiles": [
+     "paruosta"
+    ],
+    "tiesiai": [
+     "vf"
+    ],
+    "eil": [
+     "Comfy uždaras tualetas | vf → tiesiai",
+     "8 VNT. - Kraikas katėm | av → av",
+     "Dubenėliai katei, su s | av → av",
+     "GimCat maisto papildas | av → av"
+    ]
+   },
+   "planas_perskaiciuotas": {
+    "vf": "tiesiai"
+   },
+   "be_plano_atmintyje": {
+    "rus": "",
+    "eiles": [
+     "nauji",
+     "paruosta"
+    ],
+    "tiesiai": [
+     "vf"
+    ],
+    "eil": [
+     "Comfy uždaras tualetas | vf → tiesiai",
+     "8 VNT. - Kraikas katėm | av → av",
+     "Dubenėliai katei, su s | av → av",
+     "GimCat maisto papildas | av → av"
+    ]
+   },
+   "be_plano_planas": {
+    "vf": "tiesiai"
+   },
+   "spr_db_po": "{\"vf\":\"tiesiai\"}"
+  },
+  "u1412": {
+   "spr_db": "{\"vf\":\"av\"}",
+   "f": {
+    "rus": "2026-10-13 09:46:56 | Inga",
+    "eiles": [
+     "laukiam"
+    ],
+    "tiesiai": [],
+    "eil": [
+     "Comfy kartoninė drasky | vf → i_av",
+     "Ontario super premium  | av → av",
+     "Gėrimas katėms - Miamo | av → av",
+     "Žaislas katei - Laumži | av → av",
+     "GIMCAT DUO MALT-PASTA  | av → av"
+    ]
+   },
+   "planas_perskaiciuotas": {
+    "vf": "av"
+   },
+   "be_plano_atmintyje": {
+    "rus": "",
+    "eiles": [
+     "nauji"
+    ],
+    "tiesiai": [],
+    "eil": [
+     "Comfy kartoninė drasky | vf → i_av",
+     "Ontario super premium  | av → av",
+     "Gėrimas katėms - Miamo | av → av",
+     "Žaislas katei - Laumži | av → av",
+     "GIMCAT DUO MALT-PASTA  | av → av"
+    ]
+   },
+   "be_plano_planas": {
+    "vf": "av"
+   },
+   "spr_db_po": "{\"vf\":\"av\"}"
+  },
+  "php_log": [
+   "[13-Oct-2026 07:21:03 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false",
+   "[13-Oct-2026 07:42:35 UTC] The WC_Product_Mix_and_Match_Legacy::get_contents() function is deprecated since version 2.0.0. Replace with WC_Product_Mix_and_Match_Legacy::get_child_items().",
+   "[13-Oct-2026 07:43:24 UTC] The WC_Product_Mix_and_Match_Legacy::get_contents() function is deprecated since version 2.0.0. Replace with WC_Product_Mix_and_Match_Legacy::get_child_items().",
+   "[13-Oct-2026 07:44:33 UTC] The WC_Product_Mix_and_Match_Legacy::get_contents() function is deprecated since version 2.0.0. Replace with WC_Product_Mix_and_Match_Legacy::get_child_items().",
+   "[13-Oct-2026 07:45:03 UTC] The WC_Product_Mix_and_Match_Legacy::get_contents() function is deprecated since version 2.0.0. Replace with WC_Product_Mix_and_Match_Legacy::get_child_items()."
+  ]
+ },
+ "v": "dep-105947",
+ "kurimas": 200,
+ "sid": 7165,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
