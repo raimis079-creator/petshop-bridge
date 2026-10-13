@@ -1,0 +1,442 @@
+{
+ "1": {
+  "v": "S1781b",
+  "hits": {
+   "petshop-av-dropship.php md5 4a6b0b56": [
+    "138: * lentelė arba _ps_konsolidacija), į tiekėjų laiškus NEBEPATENKA.",
+    "344: *   1. `_ps_konsolidacija` ant eilutės — mišraus užsakymo sprendimas;",
+    "352: if ( $item->get_meta( '_ps_konsolidacija' ) ) { return true; }",
+    "355: $m = $order->get_meta( '_ps_misrus_sprendimas' );"
+   ],
+   "petshop-av-tiekimas.php md5 59cbf8f9": [
+    "15: * (+`_ps_konsolidacija`) → surinkimo lape jos NEBUVO, `vykdymas()` rodė „MIŠRUS 3 siuntos“,",
+    "20: * `_ps_konsolidacija` lieka kaip istorija (dropship ir SLA jos nebeliečia, nes šaltinis jau av).",
+    "1353: if ( $src && 'av' !== $src && $it->get_meta( '_ps_konsolidacija' ) ) {",
+    "1383: // Mišraus planas (`_ps_misrus_sprendimas`) paliekamas kaip įrašytas — kons_laukia() ir"
+   ],
+   "petshop-darbalaukis.php md5 cf887dea": [
+    "75: *    eilutės lygiu; `_ps_source` = av | tiekėjas, `_ps_kelias`, `_ps_misrus_sprendimas[src]` (kad `kons`/",
+    "382: const KELIAI = array( 'av' => 'Iš AV', 'tiesiai' => 'siunčia klientui', 'i_av' => 'veža į AV' );",
+    "569: $e = array(); foreach ( $f['eiles'] as $k ) { $x = self::EILES[ $k ][0]; if ( 'laiskai' === $k && $f['tiesiai'] ) { $t = array(); foreach ( $f['tiesiai'] as $s ) { if ( empty( $f['dalys'][ $s ]['perduota'] ) ) { $t[] = self::vardas( $s ); } } if ( $t ) { $x",
+    "694: $k   = (string) $it->get_meta( '_ps_kelias' );",
+    "700: $k = ( $it->get_meta( '_ps_konsolidacija' ) || 'av' === ( $spr[ $src ] ?? '' ) || $b || $sug ) ? 'i_av' : 'tiesiai'; }",
+    "703: if ( 'tiesiai' === $k && self::atsiemimas( $o ) ) { $k = 'i_av'; } // v3.35 (C): atsiėmimas AV — tiekėjo prekės TIK per AV (tiesiai klientui nėra kam siųsti)",
+    "707: if ( 'av' === $src && ( 'i_av' === $k || $it->get_meta( '_ps_konsolidacija' ) ) ) { $k = 'av'; $gauta = preg_match( '/parsivežta iš (\\w+)/iu', (string) $it->get_meta( '_ps_source_reason' ), $m ) ? strtolower( $m[1] ) : 'tiekejo'; }",
+    "708: if ( 'av' === $src && 'tiesiai' === $k ) { $k = 'av'; }",
+    "723: 'eil' => array(), 'dalys' => array(), 'rus' => '', 'eiles' => array(), 'takelis' => array(), 'btn' => null, 'skuba' => PHP_INT_MAX, 'uzdarytas' => false, 'riba_s' => '', 'btn_s' => '', 'tiesiai' => array(), 'av_side' => false, 'siuntos_klaida' => null );",
+    "732: $spr  = self::d( 'misrus_sprendimas', $o );",
+    "761: 'gauta' => $gauta, 'atsaukta' => $ats, 'issiusta_l' => $iss_l, 'kodel' => (string) $it->get_meta( '_ps_source_reason' ), 'galimi' => array( 'av' => 'av' === $k || '' === $k || ( null !== $av_qty && $av_qty >= $q ), 'tiesiai' => (bool) $tiek && 'lp' !== $f[",
+    "775: foreach ( $f['eil'] as $e ) { if ( 'tiesiai' === $e['k'] && $e['src'] ) { $tiesiai_visos[ $e['src'] ] = 1; } if ( ! empty( $e['atsaukta'] ) || ! empty( $e['issiusta_l'] ) ) { continue; } if ( 'av' === $e['k'] || 'i_av' === $e['k'] ) { $av_side = true; } if (",
+    "777: $tiesiai = array_keys( $tiesiai ); $f['tiesiai'] = $tiesiai; $f['av_side'] = $av_side;",
+    "812: } elseif ( 'tiesiai' === $e['k'] ) {",
+    "947: foreach ( array( 'av', 'tiesiai', 'i_av' ) as $k ) {",
+    "952: 'kodel_ne' => empty( $e['galimi'][ $k ] ) ? ( 'av' === $k ? 'AV tik ' . (int) $e['av_qty'] . ', reikia ' . $e['q'] : ( 'tiesiai' === $k && 'lp' === $f['vez'] ? 'LP Express — tik iš AV' : 'tiekėjo nėra' ) ) : $e['lock'] );",
+    "1377: $spr = self::d( 'misrus_sprendimas', $o );",
+    "1382: $it->update_meta_data( '_ps_konsolidacija', 1 ); $it->save(); $n++; if ( ! $pirmas ) { $pirmas = $oid; }",
+    "1402: /** v3.37: „Užsakyti iš [T]“ iš vienos kortelės — pažymėtos „veža į AV“ eilutės į kaupiamą partiją (`ideti_eilute`, `_ps_konsolidacija`), partijos pristatymas/svoris/dėžės,",
+    "1415: $spr = self::d( 'misrus_sprendimas', $o );",
+    "1420: $it->update_meta_data( '_ps_konsolidacija', 1 ); $it->save(); if ( ! $pirmas ) { $pirmas = $oid; }",
+    "1482: foreach ( $o->get_items() as $iid => $it ) { $e = $f['eil'][ (int) $iid ] ?? null; if ( ! $e || ! empty( $e['atsaukta'] ) || ! empty( $e['issiusta_l'] ) ) { continue; } $ed = ( 'tiesiai' === $e['k'] && $e['src'] ) ? $e['src'] : 'av'; if ( isset( $g[ $ed ] )",
+    "1579: if ( $o->get_meta( '_ps_misrus_sprendimas' ) ) { self::planas_is_eiluciu( $o ); }",
+    "1679: if ( $o->get_meta( '_ps_misrus_sprendimas' ) ) { self::planas_is_eiluciu( $o ); }",
+    "1777: $s = (string) $it->get_meta( '_ps_source' ); $k = (string) $it->get_meta( '_ps_kelias' );",
+    "1779: if ( 'i_av' === $k ) { $spr[ $s ] = 'av'; } elseif ( ! isset( $spr[ $s ] ) ) { $spr[ $s ] = 'tiesiai'; }",
+    "1781: if ( $spr ) { $o->update_meta_data( '_ps_misrus_sprendimas', wp_json_encode( $spr ) ); } else { $o->delete_meta_data( '_ps_misrus_sprendimas' ); }",
+    "1830: if ( empty( $e['galimi'][ $k ] ) ) { return array( 'dl_klaida', 'negalima: ' . ( 'av' === $k ? 'AV tik ' . (int) $e['av_qty'] . ', reikia ' . (int) $e['q'] : ( 'lp' === $f['vez'] && 'tiesiai' === $k ? 'LP Express — tik iš AV' : 'tiekėjo nėra' ) ) ); }",
+    "1873: if ( 'i_av' === $buvo && class_exists( 'Petshop_AV_Tiekimas' ) ) { Petshop_AV_Tiekimas::isimti_eilute( $o, (int) $iid ); $it->delete_meta_data( '_ps_konsolidacija' ); }",
+    "1875: $it->update_meta_data( '_ps_kelias', $k );",
+    "3449: $e = $f['eil'][ (int) $iid ] ?? null; if ( ! $e || ! empty( $e['atsaukta'] ) || 'tiesiai' !== $e['k'] || $e['src'] !== $dalis ) { continue; }",
+    "3456: $it->update_meta_data( '_ps_kelias', 'av' ); $it->update_meta_data( '_ps_source', 'av' ); $it->update_meta_data( '_ps_carrier', 'any' );",
+    "3458: $it->update_meta_data( '_ps_av_reduced_qty', $q ); $it->delete_meta_data( '_ps_konsolidacija' ); $it->save();",
+    "3504: $e = $f['eil'][ (int) $iid ] ?? null; if ( ! $e || ! empty( $e['atsaukta'] ) || ! empty( $e['issiusta_l'] ) || 'tiesiai' !== $e['k'] || $e['src'] !== $dalis ) { continue; }",
+    "3527: $ed = ( 'tiesiai' === $e['k'] && $e['src'] ) ? $e['src'] : 'av'; if ( $ed !== $dalis ) { continue; }",
+    "3574: foreach ( $f['eil'] as $e ) { if ( ! empty( $e['atsaukta'] ) || ! empty( $e['issiusta_l'] ) ) { continue; } $ed = ( 'tiesiai' === $e['k'] && $e['src'] ) ? $e['src'] : 'av'; if ( $ed === $k ) { $prekes[] = array( 'q' => (int) $e['q'], 'n' => (string) $e['n']",
+    "3610: $e_dalis = ( 'tiesiai' === $e['k'] && $e['src'] ) ? $e['src'] : 'av';",
+    "3669: if ( ! $it->get_meta( '_ps_kelias' ) ) { $it->update_meta_data( '_ps_kelias', $e['k'] ); $it->save(); }",
+    "3673: if ( ! $o->get_meta( '_ps_misrus_sprendimas' ) ) { self::planas_is_eiluciu( $o ); $o->update_meta_data( '_ps_misrus_sprestas', current_time( 'mysql' ) . ' | ' . ( $auto ? 'auto' : $u->display_name ) ); }",
+    "3687: if ( ! $o || ! $o->is_paid() || $o->get_meta( '_ps_rusiuota' ) || ! class_exists( 'Petshop_Desk' ) || self::d( 'misrus_sprendimas', $o ) ) { return false; }",
+    "3857: elseif ( 'laukiam' === $eile && '' === $f['q'] ) { $ds = array(); foreach ( $atviri as $r ) { if ( in_array( 'laiskai', $r['eiles'], true ) ) { foreach ( $r['tiesiai'] as $s ) { if ( empty( $r['dalys'][ $s ]['perduota'] ) ) { $ds[ $s ] = ( $ds[ $s ] ?? 0 ) +",
+    "3927: $cls = array( 'av' => 'sandelis', 'tiesiai' => 'tk', 'i_av' => 'ts' );",
+    "3988: $siunt = 0; $tk = array(); foreach ( $r['eil'] as $e ) { if ( 'av' === $e['k'] || 'i_av' === $e['k'] ) { $tk['av'] = 1; } elseif ( 'tiesiai' === $e['k'] ) { $tk[ $e['tiek'] ] = 1; } } $siunt = count( $tk );",
+    "3998: $lap = array(); $lip = array(); foreach ( $rows as $r ) { if ( empty( $r['dalys']['av']['lapas'] ) && empty( $r['dalys']['av']['siunta'] ) ) { $lap[] = $r['id']; } elseif ( ! empty( $r['dalys']['av']['lapas'] ) && empty( $r['dalys']['av']['siunta'] ) && 'lp",
+    "4186: foreach ( $rows as $r ) { if ( ! empty( $r['dalys']['av']['siunta'] ) && empty( $r['dalys']['av']['issiusta'] ) ) { $av[] = $r; } foreach ( $r['tiesiai'] as $s ) { if ( ! empty( $r['dalys'][ $s ]['perduota'] ) && empty( $r['dalys'][ $s ]['issiusta'] ) ) { $t",
+    "4192: foreach ( $av as $r ) { $o = $r['o']; $visi[] = $r['id']; $kitos = array(); foreach ( $r['tiesiai'] as $s ) { if ( empty( $r['dalys'][ $s ]['issiusta'] ) ) { $kitos[] = self::vardas( $s ); } }",
+    "4262: foreach ( $g as $dalis => $x ) { $pr = array(); foreach ( $r['eil'] as $e ) { if ( ! empty( $e['atsaukta'] ) ) { continue; } $ed = ( 'tiesiai' === $e['k'] && $e['src'] ) ? $e['src'] : 'av'; if ( $ed === $dalis ) { $pr[] = $e['q'] . '× ' . $e['n']; } } $d[]",
+    "4327: $tiek = array(); foreach ( $atviri as $r ) { if ( in_array( 'laiskai', $r['eiles'], true ) ) { foreach ( $r['tiesiai'] as $s ) { if ( empty( $r['dalys'][ $s ]['perduota'] ) ) { $tiek[ $s ] = ( $tiek[ $s ] ?? 0 ) + 1; } } } }"
+   ],
+   "petshop-desk.php md5 f54167c6": [
+    "125: * DABAR: „Patvirtinti planą“ tik UŽRAŠO (`_ps_misrus_sprendimas`). Nieko neperkelia,",
+    "410: if ( self::misrus_sprendimas( $o ) ) {",
+    "937: * pažymimos `_ps_konsolidacija`, todėl tiekėjo laiške jų nebelieka (H233).",
+    "949: $spr[ $src ] = ( isset( $pasirinkta[ $src ] ) && 'av' === sanitize_key( $pasirinkta[ $src ] ) ) ? 'av' : 'tiesiai';",
+    "954: $aprasas[] = ( self::SALTINIAI[ $t ][1] ?? mb_strtoupper( $t ) ) . ' — ' . ( 'av' === $k ? 'į AV' : 'tiesiai' );",
+    "956: $o->update_meta_data( '_ps_misrus_sprendimas', wp_json_encode( $spr ) );",
+    "971: $spr = self::misrus_sprendimas( $o );",
+    "978: $it->update_meta_data( '_ps_konsolidacija', 1 );",
+    "994: if ( $it->get_meta( '_ps_konsolidacija' ) ) {",
+    "995: $it->delete_meta_data( '_ps_konsolidacija' );",
+    "1000: $o->delete_meta_data( '_ps_misrus_sprendimas' );",
+    "1211: if ( ! $order->get_meta( '_ps_misrus_sprendimas' ) ) { return 'misrus'; }",
+    "1520: self::misrus_sprendimas( $o ) ? $c['pipe_nepaleisti']++ : $c['pipe_spresti']++;",
+    "2534: * nes žymė guli ant EILUTĖS (`_ps_konsolidacija`), ne ant užsakymo.",
+    "2566: protected static function misrus_grupes( $o ) {",
+    "2589: $spr = self::misrus_sprendimas( $o );",
+    "2603: protected static function misrus_sprendimas( $o ) {",
+    "2604: $m = $o->get_meta( '_ps_misrus_sprendimas' );",
+    "2609: protected static function misriu_korteles( $eilutes ) {",
+    "2614: if ( self::misrus_sprendimas( $row['o'] ) ) { $paleisti[] = $row; } else { $spresti[] = $row; }",
+    "2622: $spr = self::misrus_sprendimas( $o );",
+    "2659: $dabar = $spr[ $src ] ?? 'tiesiai';",
+    "2661: <label class=\"pd-mchk\"><input type=\"radio\" name=\"s[%1$s]\" value=\"tiesiai\"%2$s><span>tiesiai klientui</span></label>",
+    "2693: $spr    = self::misrus_sprendimas( $o );",
+    "2886: $spr_z = self::misrus_sprendimas( $o );",
+    "2900: $spr2  = self::misrus_sprendimas( $o );",
+    "3545: function misrusSuma(f){",
+    "3563: + (tiesiai ? ' · tiesiai' + (kgTiesiai>0 ? ' ' + kg(kgTiesiai) : '') : '');"
+   ],
+   "petshop-siuntu-laiskai.php md5 753f8c6c": [
+    "356: `_ps_misrus_sprendimas` (desk:115: „tik UZRASO... nieko neperkelia\").",
+    "360: if ( ! $order->get_meta( '_ps_misrus_sprendimas' ) ) { return; }"
+   ],
+   "petshop-uzsakymu-ivykiai.php md5 1bd24c70": [
+    "340: 'misrus'        => $o->get_meta( '_ps_misrus_sprendimas' ) ?: null,",
+    "341: 'konsolidacija' => $o->get_meta( '_ps_konsolidacija' ) ?: null,"
+   ]
+  },
+  "snippets": [
+   {
+    "id": "7157",
+    "name": "TEMP PS dep-094922"
+   }
+  ],
+  "kiti": [
+   {
+    "order_id": "36846",
+    "spr": "{\"vf\":\"av\"}",
+    "nr": "1412",
+    "grp": "vf:1,av:4",
+    "d": "2026-10-13 06:42:34",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36845",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1411",
+    "grp": "vf:2",
+    "d": "2026-10-13 06:05:50",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36838",
+    "spr": "{\"zb\":\"tiesiai\"}",
+    "nr": "1404",
+    "grp": "zb:1",
+    "d": "2026-10-12 17:51:24",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36835",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1401",
+    "grp": "vf:5",
+    "d": "2026-10-12 16:39:42",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36834",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1400",
+    "grp": "vf:2",
+    "d": "2026-10-12 16:29:25",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36828",
+    "spr": "{\"quattro\":\"av\",\"vf\":\"tiesiai\"}",
+    "nr": "1394",
+    "grp": "quattro:1,vf:2,av:1",
+    "d": "2026-10-12 15:34:59",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36824",
+    "spr": "{\"ambrosia\":\"tiesiai\"}",
+    "nr": "1393",
+    "grp": "ambrosia:1",
+    "d": "2026-10-12 14:36:34",
+    "status": "wc-cancelled"
+   },
+   {
+    "order_id": "36823",
+    "spr": "{\"vf\":\"av\"}",
+    "nr": "1392",
+    "grp": "av:70,vf:15",
+    "d": "2026-10-12 12:51:42",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36822",
+    "spr": "{\"vf\":\"av\"}",
+    "nr": "1391",
+    "grp": "vf:1,av:1",
+    "d": "2026-10-12 12:41:03",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36821",
+    "spr": "{\"vf\":\"av\"}",
+    "nr": "1390",
+    "grp": "vf:2,av:3",
+    "d": "2026-10-12 10:57:59",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36814",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1387",
+    "grp": "vf:11",
+    "d": "2026-10-12 09:10:12",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36812",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1385",
+    "grp": "vf:3",
+    "d": "2026-10-12 08:22:21",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36811",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1384",
+    "grp": "vf:1,av:3",
+    "d": "2026-10-12 08:15:10",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36808",
+    "spr": "{\"vf\":\"av\"}",
+    "nr": "1381",
+    "grp": "av:13",
+    "d": "2026-10-11 19:31:03",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36806",
+    "spr": "{\"vf\":\"av\"}",
+    "nr": "1379",
+    "grp": "av:4",
+    "d": "2026-10-11 17:49:54",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36804",
+    "spr": "{\"vf\":\"av\"}",
+    "nr": "1377",
+    "grp": "av:12",
+    "d": "2026-10-11 15:13:33",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36803",
+    "spr": "{\"zb\":\"tiesiai\",\"ambrosia\":\"tiesiai\"}",
+    "nr": "1376",
+    "grp": "zb:1,ambrosia:1",
+    "d": "2026-10-11 13:12:28",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36802",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1375",
+    "grp": "vf:1",
+    "d": "2026-10-11 13:09:39",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36801",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1374",
+    "grp": "vf:1",
+    "d": "2026-10-11 13:03:11",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36800",
+    "spr": "{\"zb\":\"tiesiai\"}",
+    "nr": "1373",
+    "grp": "av:1,zb:1",
+    "d": "2026-10-11 12:40:48",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36799",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1372",
+    "grp": "vf:1",
+    "d": "2026-10-11 12:40:34",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36798",
+    "spr": "{\"belcor_tofu\":\"tiesiai\"}",
+    "nr": "1371",
+    "grp": "belcor_tofu:1",
+    "d": "2026-10-11 10:50:40",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36797",
+    "spr": "{\"vf\":\"av\"}",
+    "nr": "1370",
+    "grp": "av:22",
+    "d": "2026-10-11 09:35:09",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36796",
+    "spr": "{\"zb\":\"tiesiai\",\"vf\":\"av\"}",
+    "nr": "1369",
+    "grp": "av:5,zb:1",
+    "d": "2026-10-11 08:54:51",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36793",
+    "spr": "{\"vf\":\"av\"}",
+    "nr": "1366",
+    "grp": "av:2",
+    "d": "2026-10-11 05:32:56",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36786",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1363",
+    "grp": "vf:4",
+    "d": "2026-10-10 15:40:19",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36781",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1358",
+    "grp": "vf:2",
+    "d": "2026-10-10 13:42:23",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36780",
+    "spr": "{\"vf\":\"av\"}",
+    "nr": "1357",
+    "grp": "av:11",
+    "d": "2026-10-10 07:17:36",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36779",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1356",
+    "grp": "vf:2",
+    "d": "2026-10-10 07:16:19",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36778",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1355",
+    "grp": "vf:1",
+    "d": "2026-10-10 05:01:23",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36777",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1354",
+    "grp": "vf:3",
+    "d": "2026-10-09 20:27:56",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36776",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1353",
+    "grp": "vf:4",
+    "d": "2026-10-09 17:00:37",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36769",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1348",
+    "grp": "vf:5",
+    "d": "2026-10-09 07:22:53",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36768",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1347",
+    "grp": "vf:2",
+    "d": "2026-10-09 02:26:33",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36745",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1344",
+    "grp": "vf:1",
+    "d": "2026-10-08 14:35:58",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36742",
+    "spr": "{\"vf\":\"av\"}",
+    "nr": "1341",
+    "grp": "av:15",
+    "d": "2026-10-08 11:00:17",
+    "status": "wc-processing"
+   },
+   {
+    "order_id": "36739",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1338",
+    "grp": "vf:2",
+    "d": "2026-10-08 08:16:01",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36738",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1337",
+    "grp": "vf:1",
+    "d": "2026-10-08 06:52:39",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36732",
+    "spr": "{\"vf\":\"tiesiai\"}",
+    "nr": "1333",
+    "grp": "vf:1",
+    "d": "2026-10-07 16:46:46",
+    "status": "wc-completed"
+   },
+   {
+    "order_id": "36731",
+    "spr": "{\"vf\":\"av\"}",
+    "nr": "1332",
+    "grp": "av:8",
+    "d": "2026-10-07 15:09:10",
+    "status": "wc-completed"
+   }
+  ]
+ },
+ "v": "dep-094922",
+ "kurimas": 200,
+ "sid": 7157,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
