@@ -1,0 +1,57 @@
+{
+ "1": {
+  "v": "S1782o",
+  "f": "1",
+  "kasa_paskyra": [
+   "<?php",
+   "/**",
+   "* Plugin Name: Petshop Kasa: užsakymas esamai paskyrai v1.0 (S1690)",
+   "* Description: Neprisijungęs pirkėjas su el. paštu, kuris jau turi paskyrą, gali užbaigti užsakymą be klaidos",
+   "*   „Paskyra su tokiu el. pašto adresu jau yra sukurta\". Užsakymas priskiriamas esamai paskyrai; paskyros",
+   "*   išsaugotas adresas NEPERRAŠOMAS; pirkėjas neprijungiamas. Užsakymo meta `_ps_paskyra_priskirta`=1 + pastaba.",
+   "*/",
+   "if ( ! defined( 'ABSPATH' ) ) { exit; }",
+   "",
+   "final class Petshop_Kasa_Paskyra {",
+   "/** @var int|null esamo vartotojo ID šiai kasos užklausai */",
+   "private static $uid = null;",
+   "",
+   "public static function init() {"
+  ],
+  "grep": {
+   "petshop-laukai.php": [
+    "1191: gyvai: su cid meta „Product #521 does not exist\". */ ?>"
+   ],
+   "petshop-kasa-paskyra.php": [
+    "31: $data['createaccount'] = 0;"
+   ],
+   "snippet#7209": [
+    "8: $grep=[]; foreach(new DirectoryIterator(WPMU_PLUGIN_DIR) as $x){ if($x->isDir()||substr($x->getFilename(),-4)!=='.",
+    "9: foreach($wpdb->get_results(\"SELECT id,name,code FROM {$P}snippets WHERE active=1\",ARRAY_A) as $s) foreach(explode(",
+    "12: $r['lt']=['dne'=>__('Coupon \"%s\" does not exist!','woocommerce'),'cna'=>__('Coupon \"%s\" cannot be applied because",
+    "18: .'  \\'Coupon \"%s\" cannot be applied because it does not exist.\\'=>\\'Nuolaidos kodas „%s\" neegzistuoja.\\','.\"\\n\"",
+    "19: .'  \\'Coupon \"%s\" does not exist!\\'=>\\'Nuolaidos kodas „%s\" neegzistuoja.\\','.\"\\n\"",
+    "27: .'add_filter(\\'woocommerce_create_account_default_checked\\',\\'__return_false\\',20);'.\"\\n\";"
+   ]
+  },
+  "opt": {
+   "woocommerce_enable_guest_checkout": "yes",
+   "woocommerce_enable_signup_and_login_from_checkout": "yes",
+   "woocommerce_registration_generate_password": "yes",
+   "woocommerce_enable_checkout_login_reminder": "yes"
+  },
+  "lt": {
+   "dne": "Coupon \"%s\" does not exist!",
+   "cna": "Coupon \"%s\" cannot be applied because it does not exist.",
+   "sukurti": "Sukurti paskyrą?"
+  },
+  "save_snippet": false
+ },
+ "v": "dep-174415",
+ "kurimas": 200,
+ "sid": 7209,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
