@@ -1,0 +1,136 @@
+{
+ "1": {
+  "v": "S1782e",
+  "f": "1",
+  "x": {
+   "automation-by-installatron.php": {
+    "n": "WordPress automation by Installatron",
+    "d": "Management of this WordPress site is provided by Installatron.",
+    "hooks": [
+     "automatic_updater_disabled",
+     "site_status_tests"
+    ],
+    "admin_menu": 0,
+    "cron": 0
+   },
+   "petshop-code-search.php": {
+    "n": "",
+    "d": "",
+    "hooks": [
+     "posts_search",
+     "template_redirect"
+    ],
+    "admin_menu": 0,
+    "cron": 0
+   },
+   "petshop-import-log.php": {
+    "n": "",
+    "d": "",
+    "hooks": [
+     "pmxi_after_xml_import"
+    ],
+    "admin_menu": 0,
+    "cron": 0
+   },
+   "petshop-import-tempas.php": {
+    "n": "",
+    "d": "",
+    "hooks": [
+     "cron_schedules",
+     "init"
+    ],
+    "admin_menu": 0,
+    "cron": 1
+   },
+   "petshop-innodb.php": {
+    "n": "",
+    "d": "",
+    "hooks": [
+     "query"
+    ],
+    "admin_menu": 0,
+    "cron": 0
+   },
+   "petshop-laiskai-importas.php": {
+    "n": "Petshop Laiskai — importas is failiniu sablonu",
+    "d": "Perkelia PHP sablonu tekstus i redaktoriu JUODRASCIAIS. Tikrina VISAS saly.gines sakas byte-tiksliai.",
+    "hooks": [],
+    "admin_menu": 0,
+    "cron": 0
+   },
+   "petshop-legacy-importas.php": {
+    "n": "Petshop Legacy Importas",
+    "d": "eShoprent kliento bazes importas i WP vartotojus. TYLUS (jokiu laisku), be sutikimu perkelimo, be Sender sinchronizacijos.",
+    "hooks": [
+     "pre_wp_mail",
+     "send_password_change_email",
+     "send_email_change_email",
+     "woocommerce_email_enabled_customer_new_account"
+    ],
+    "admin_menu": 0,
+    "cron": 0
+   },
+   "petshop-lenteliu-valymas.php": {
+    "n": "Petshop Lentelių valymas v1.0 (ps_carts, ps_web_ivykiai, ps_sargas_klaidos, botų sargo žurnalas)",
+    "d": "S1719 (2026-09-25). Auditas: `ps_carts` +6 000 eil./d (botai), `ps_web_ivykiai` +2 500/d, `ps_sargas_klaidos` 6 000 — valymo niekur nebuvo. ",
+    "hooks": [],
+    "admin_menu": 0,
+    "cron": 1
+   },
+   "petshop-parseris.php": {
+    "n": "",
+    "d": "",
+    "hooks": [],
+    "admin_menu": 0,
+    "cron": 0
+   },
+   "ps-pets-migration-freeze.php": "NĖRA",
+   "petshop-seo-aprasymas.php": {
+    "n": "Petshop SEO Aprašymo Valymas v1.0.0 (esybių dekodavimas)",
+    "d": "Iššifruoja HTML esybes ir pašalina tagus Rank Math meta aprašyme.",
+    "hooks": [
+     "rank_math/frontend/description"
+    ],
+    "admin_menu": 0,
+    "cron": 0
+   },
+   "petshop-siuntu-valymas.php": {
+    "n": "",
+    "d": "",
+    "hooks": [
+     "woocommerce_delete_order",
+     "before_delete_post"
+    ],
+    "admin_menu": 0,
+    "cron": 0
+   },
+   "petshop-wc-sync.php": {
+    "n": "",
+    "d": "",
+    "hooks": [
+     "deleted_post_meta",
+     "woocommerce_before_product_object_save",
+     "woocommerce_after_product_object_save",
+     "shutdown",
+     "wp_loaded"
+    ],
+    "admin_menu": 0,
+    "cron": 0
+   },
+   "petshop-cf-ip.php": {
+    "n": "Petshop CF IP v1.0 (tikras lankytojo IP už Cloudflare)",
+    "d": "",
+    "hooks": [],
+    "admin_menu": 0,
+    "cron": 0
+   }
+  }
+ },
+ "v": "dep-154153",
+ "kurimas": 200,
+ "sid": 7178,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
