@@ -1,0 +1,53 @@
+{
+ "1": {
+  "v": "S1782b",
+  "f": "1",
+  "ctx": [
+   "41: ''           => __( 'CSS (native)', 'flatsome-admin' ),",
+   "42: 'javascript' => __( 'JavaScript (enhanced)', 'flatsome-admin' ),",
+   "43: ),",
+   "44: 'active_callback' => array(",
+   "45: array(",
+   "46: 'setting'  => 'cart_sticky_sidebar',",
+   "47: 'operator' => '==',",
+   "48: 'value'    => true,",
+   "49: ),",
+   "50: ),",
+   "51: ) );",
+   "52: ",
+   "53: Flatsome_Option::add_field( 'option', array(",
+   "54: 'type'     => 'checkbox',",
+   "55: 'settings' => 'cart_auto_refresh',",
+   "56: 'label'    => __( 'Auto update on quantity change', 'flatsome-admin' ),",
+   "57: 'section'  => 'cart-checkout',",
+   "58: 'default'  => 0,",
+   "59: ) );",
+   "60: ",
+   "61: ",
+   "62: Flatsome_Option::add_field( 'option',  array(",
+   "63: 'type'        => 'checkbox',",
+   "64: 'settings'     => 'cart_boxed_shipping_labels',",
+   "65: 'label'       => __( 'Boxed Shipping labels', 'flatsome' ),",
+   "66: 'section'     => 'cart-checkout',",
+   "67: 'default' => 0",
+   "68: ));",
+   "69: ",
+   "70: Flatsome_Option::add_field( 'option',  array("
+  ],
+  "keys": [
+   "cart_auto_refresh",
+   "cart_boxed_shipping_labels"
+  ],
+  "mods_before": {
+   "cart_auto_refresh": "(nėra)",
+   "cart_boxed_shipping_labels": "(nėra)"
+  }
+ },
+ "v": "dep-145705",
+ "kurimas": 200,
+ "sid": 7174,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
