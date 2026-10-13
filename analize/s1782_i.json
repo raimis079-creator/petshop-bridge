@@ -1,0 +1,51 @@
+{
+ "1": {
+  "v": "S1782i",
+  "opt": {
+   "woocommerce_calc_taxes": "yes",
+   "woocommerce_prices_include_tax": "yes",
+   "woocommerce_tax_display_shop": "incl",
+   "woocommerce_tax_display_cart": "incl",
+   "woocommerce_tax_round_at_subtotal": "no",
+   "woocommerce_tax_total_display": "single",
+   "woocommerce_price_num_decimals": "2"
+  },
+  "base_php": {
+   "kb": 31,
+   "tax_display_refs": 0,
+   "kas": []
+  },
+  "base_lines": [
+   "192: $subtotal_excl  = $wc_order->get_subtotal();",
+   "193: $shipping_total = (float) $wc_order->get_shipping_total();",
+   "194: $total_tax      = (float) $wc_order->get_total_tax();",
+   "195: $order_total    = (float) $wc_order->get_total();",
+   "247: .ps-receipt .ps-rows td.suma { font-size: <?php echo $is_pdf ? '21px' : '16px'; ?>; font-weight: 700; color: #2D5F3F; }",
+   "480: $line_tot   = abs( (float) $item->get_total() );",
+   "492: $sh_tot = abs( (float) $sh_item->get_total() ); if ( $sh_tot <= 0 ) continue;",
+   "509: $line_tot   = (float) $item->get_total();",
+   "554: $ref_subtotal  = $latest_refund ? abs( (float) $latest_refund->get_subtotal() ) : 0;",
+   "555: $ref_tax       = $latest_refund ? abs( (float) $latest_refund->get_total_tax() ) : 0;",
+   "556: $ref_total     = $latest_refund ? abs( (float) $latest_refund->get_total() ) : 0;",
+   "557: $ref_ship      = $latest_refund ? abs( (float) $latest_refund->get_shipping_total() ) : 0; // v2.10",
+   "563: <tr><td class=\"lbl\">PVM (21%):</td><td class=\"val\"><?php echo ps_eur( $ref_tax, true ); ?></td></tr>",
+   "572: <tr><td class=\"lbl\">PVM (21%):</td><td class=\"val\"><?php echo ps_eur( $total_tax ); ?></td></tr>"
+  ],
+  "pvz_uzsakymas": {
+   "id": 36838,
+   "eilute_be_pvm": "26.438017",
+   "eilute_pvm": "5.55",
+   "pristatymas_be_pvm": "0",
+   "pristatymo_pvm": "0",
+   "viso_pvm": "5.55",
+   "viso": "31.99"
+  }
+ },
+ "v": "dep-164710",
+ "kurimas": 200,
+ "sid": 7195,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
