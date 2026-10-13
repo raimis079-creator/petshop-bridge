@@ -1,0 +1,17 @@
+{
+ "1": {
+  "v": "S1782p",
+  "name": "Kasa Kupono klaidos LT v1.0 (S1782)",
+  "active": "1",
+  "has_create_account": false,
+  "eil": 15,
+  "test_gettext": "Nuolaidos kodas „%s\" neegzistuoja."
+ },
+ "v": "dep-174721",
+ "kurimas": 200,
+ "sid": 7212,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
