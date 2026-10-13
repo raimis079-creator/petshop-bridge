@@ -1,0 +1,44 @@
+{
+ "1": {
+  "v": "S1782a",
+  "f": "1",
+  "snip": {
+   "id": "7172",
+   "name": "Kasa Telefonu sumos v1.0 (šoninis blokas 390 px)",
+   "active": "1",
+   "scope": "front-end",
+   "priority": "10",
+   "len": "893"
+  },
+  "kasa": {
+   "code": 200,
+   "len": 232432,
+   "style": 0,
+   "checkout_sidebar": 0
+  },
+  "home_style": 0,
+  "flatsome_grep": [
+   "woocommerce/class-mini-cart.php:89: $cart_updated = false;",
+   "woocommerce/class-mini-cart.php:95: $passed_validation = apply_filters( 'woocommerce_update_cart_validation', true, $cart_item_key, $values, $quantity );",
+   "woocommerce/class-mini-cart.php:99: $cart_updated = true;",
+   "woocommerce/class-mini-cart.php:104: // Trigger action - let 3rd parties update the cart if they need to and update the $cart_updated variable.",
+   "woocommerce/class-mini-cart.php:105: $cart_updated = apply_filters( 'woocommerce_update_cart_action_cart_updated', $cart_updated );",
+   "woocommerce/class-mini-cart.php:107: if ( $cart_updated ) {",
+   "shop/options-shop-cart-checkout.php:56: 'label'    => __( 'Auto update on quantity change', 'flatsome-admin' ),"
+  ],
+  "theme": "flatsome",
+  "mods": {
+   "cart_auto_update": "(nėra)",
+   "auto_update_cart": "(nėra)",
+   "woocommerce_cart_auto_update": "(nėra)",
+   "cart_update_auto": "(nėra)"
+  }
+ },
+ "v": "dep-145302",
+ "kurimas": 200,
+ "sid": 7173,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
