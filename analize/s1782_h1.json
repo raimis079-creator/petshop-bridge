@@ -1,0 +1,217 @@
+{
+ "1": {
+  "v": "S1782h",
+  "f": "1",
+  "ws": [
+   "Default Workspace",
+   "S1673 consent + EC"
+  ],
+  "tags_n": 13,
+  "live": {
+   "id": "10",
+   "name": "S1693 Google tag Initialization (consent mode advanced)",
+   "tags": 13
+  },
+  "tags": [
+   {
+    "id": "15",
+    "name": "00 — Consent Mode v2 Default",
+    "type": "html",
+    "paused": true,
+    "p": [],
+    "fire": [
+     "2147479573"
+    ]
+   },
+   {
+    "id": "24",
+    "name": "02 — GA4 Config",
+    "type": "googtag",
+    "paused": false,
+    "p": [],
+    "fire": [
+     "2147479573"
+    ]
+   },
+   {
+    "id": "30",
+    "name": "03 — Google Ads Conversion (Purchase)",
+    "type": "awct",
+    "paused": false,
+    "p": {
+     "conversionId": "{{Const — Ads Conversion ID}}",
+     "conversionLabel": "{{Const — Ads Label}}"
+    },
+    "fire": [
+     "CE — purchase [customEvent]"
+    ]
+   },
+   {
+    "id": "16",
+    "name": "01 — Conversion Linker",
+    "type": "gclidw",
+    "paused": false,
+    "p": [],
+    "fire": [
+     "CE — marketing granted [customEvent]"
+    ]
+   },
+   {
+    "id": "31",
+    "name": "04 — Meta Pixel Base + PageView",
+    "type": "html",
+    "paused": false,
+    "p": [],
+    "fire": [
+     "CE — marketing granted [customEvent]"
+    ]
+   },
+   {
+    "id": "32",
+    "name": "Meta — add_to_cart",
+    "type": "html",
+    "paused": false,
+    "p": [],
+    "fire": [
+     "CE — add_to_cart [customEvent]"
+    ]
+   },
+   {
+    "id": "33",
+    "name": "Meta — begin_checkout",
+    "type": "html",
+    "paused": false,
+    "p": [],
+    "fire": [
+     "CE — begin_checkout [customEvent]"
+    ]
+   },
+   {
+    "id": "34",
+    "name": "Meta — purchase",
+    "type": "html",
+    "paused": false,
+    "p": [],
+    "fire": [
+     "CE — purchase [customEvent]"
+    ]
+   },
+   {
+    "id": "25",
+    "name": "GA4 — view_item",
+    "type": "gaawe",
+    "paused": false,
+    "p": {
+     "sendEcommerceData": "true",
+     "eventName": "view_item",
+     "measurementIdOverride": "{{Const — GA4 ID}}"
+    },
+    "fire": [
+     "CE — view_item [customEvent]"
+    ]
+   },
+   {
+    "id": "26",
+    "name": "GA4 — add_to_cart",
+    "type": "gaawe",
+    "paused": false,
+    "p": {
+     "sendEcommerceData": "true",
+     "eventName": "add_to_cart",
+     "measurementIdOverride": "{{Const — GA4 ID}}"
+    },
+    "fire": [
+     "CE — add_to_cart [customEvent]"
+    ]
+   },
+   {
+    "id": "27",
+    "name": "GA4 — view_cart",
+    "type": "gaawe",
+    "paused": false,
+    "p": {
+     "sendEcommerceData": "true",
+     "eventName": "view_cart",
+     "measurementIdOverride": "{{Const — GA4 ID}}"
+    },
+    "fire": [
+     "CE — view_cart [customEvent]"
+    ]
+   },
+   {
+    "id": "28",
+    "name": "GA4 — begin_checkout",
+    "type": "gaawe",
+    "paused": false,
+    "p": {
+     "sendEcommerceData": "true",
+     "eventName": "begin_checkout",
+     "measurementIdOverride": "{{Const — GA4 ID}}"
+    },
+    "fire": [
+     "CE — begin_checkout [customEvent]"
+    ]
+   },
+   {
+    "id": "29",
+    "name": "GA4 — purchase",
+    "type": "gaawe",
+    "paused": false,
+    "p": {
+     "sendEcommerceData": "true",
+     "eventName": "purchase",
+     "measurementIdOverride": "{{Const — GA4 ID}}"
+    },
+    "fire": [
+     "CE — purchase [customEvent]"
+    ]
+   }
+  ],
+  "purchase_tags": [
+   {
+    "id": "30",
+    "name": "03 — Google Ads Conversion (Purchase)",
+    "type": "awct",
+    "paused": false,
+    "p": {
+     "conversionId": "{{Const — Ads Conversion ID}}",
+     "conversionLabel": "{{Const — Ads Label}}"
+    },
+    "fire": [
+     "CE — purchase [customEvent]"
+    ]
+   },
+   {
+    "id": "34",
+    "name": "Meta — purchase",
+    "type": "html",
+    "paused": false,
+    "p": [],
+    "fire": [
+     "CE — purchase [customEvent]"
+    ]
+   },
+   {
+    "id": "29",
+    "name": "GA4 — purchase",
+    "type": "gaawe",
+    "paused": false,
+    "p": {
+     "sendEcommerceData": "true",
+     "eventName": "purchase",
+     "measurementIdOverride": "{{Const — GA4 ID}}"
+    },
+    "fire": [
+     "CE — purchase [customEvent]"
+    ]
+   }
+  ]
+ },
+ "v": "dep-162439",
+ "kurimas": 200,
+ "sid": 7189,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
