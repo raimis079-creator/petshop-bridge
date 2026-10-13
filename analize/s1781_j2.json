@@ -1,0 +1,188 @@
+{
+ "2": {
+  "v": "S1781j",
+  "f": "2",
+  "ver": "3.49",
+  "planas": {
+   "quattro": "av",
+   "vf": "av"
+  },
+  "ok": 1,
+  "eil_ids": [
+   148,
+   149
+  ]
+ },
+ "3": {
+  "v": "S1781j",
+  "f": {
+   "rus": "planas",
+   "eiles": [
+    "laukiam"
+   ],
+   "tiesiai": [],
+   "dalys": {
+    "av": {
+     "siunta": false,
+     "nr": [],
+     "vietoje": false,
+     "issiusta": false
+    }
+   },
+   "eil": [
+    "Quattro SB 7kg su anti | quattro → i_av | jau užsakyta iš Quattro (užsakymas tiekėjui #44)",
+    "Truly skanėstas šunims | vf → i_av | jau užsakyta iš VF (užsakymas tiekėjui #45)",
+    "Hau&amp;Miau Jautienos | av → av | ",
+    "SmartBones Beef Bones  | vf → i_av | jau užsakyta iš VF (užsakymas tiekėjui #45)"
+   ]
+  },
+  "ver": "3.49",
+  "bukle": {
+   "status": "processing",
+   "om": {
+    "_ps_misrus_sprendimas": "{\"quattro\":\"av\",\"vf\":\"av\"}",
+    "_ps_dropship_sent": "",
+    "_ps_dropship_sent_src": "",
+    "_ps_dropship_to": "",
+    "_ps_siuntos": "",
+    "_ps_siuntos_senos": "[\"V07267E1000419\"]",
+    "_ps_venipak_sekimas": "",
+    "venipak_shipping_order_data": "{\"manifest\":\"07267261013002\",\"pack_numbers\":[],\"weight\":7.6129999999999995,\"products_count\":4,\"status\":\"\",\"error_message\":\"\"}",
+    "_ps_venipak_sena": "{\"manifest\":\"07267261013002\",\"pack_numbers\":[\"V07267E1000419\"],\"weight\":7.6129999999999995,\"products_count\":4,\"status\":\"sent\",\"error_message\":\"\"}",
+    "_ps_tiekimas_laukia": "1",
+    "_ps_groups": "{\"quattro\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1},\"vf\":{\"carrier\":\"venipak\",\"eilutes\":2,\"vienetai\":2},\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1}}",
+    "_ps_order_type": "MIXED",
+    "_ps_shipments": "3"
+   },
+   "im": {
+    "3639": {
+     "_ps_kelias": "i_av",
+     "_ps_konsolidacija": "1",
+     "_ps_source": "vf",
+     "_ps_source_at": "2026-10-13 14:08:47",
+     "_ps_source_reason": "S1781: VF siunčia klientui → VF veža į AV (Raimis suderino su VF, partija #45)",
+     "_ps_carrier": "venipak",
+     "pid": 23834,
+     "q": 1
+    },
+    "3641": {
+     "_ps_kelias": "i_av",
+     "_ps_konsolidacija": "1",
+     "_ps_source": "vf",
+     "_ps_source_at": "2026-10-13 14:08:47",
+     "_ps_source_reason": "S1781: VF siunčia klientui → VF veža į AV (Raimis suderino su VF, partija #45)",
+     "_ps_carrier": "venipak",
+     "pid": 21908,
+     "q": 1
+    }
+   },
+   "partija": {
+    "id": "45",
+    "tiekejas": "vf",
+    "busena": "uzsakyta",
+    "uzsakyta": "2026-10-13 12:33:52",
+    "pristatymas": "kurjeris"
+   },
+   "partijos_eil": [
+    {
+     "id": "141",
+     "product_id": "20957",
+     "order_id": "36821",
+     "qty": "1",
+     "qty_gauta": null,
+     "pastaba": "eilutė 3616"
+    },
+    {
+     "id": "142",
+     "product_id": "23914",
+     "order_id": "36821",
+     "qty": "1",
+     "qty_gauta": null,
+     "pastaba": "eilutė 3619"
+    },
+    {
+     "id": "143",
+     "product_id": "26077",
+     "order_id": "36823",
+     "qty": "5",
+     "qty_gauta": null,
+     "pastaba": "eilutė 3630"
+    },
+    {
+     "id": "144",
+     "product_id": "26074",
+     "order_id": "36823",
+     "qty": "5",
+     "qty_gauta": null,
+     "pastaba": "eilutė 3631"
+    },
+    {
+     "id": "145",
+     "product_id": "21577",
+     "order_id": "36823",
+     "qty": "5",
+     "qty_gauta": null,
+     "pastaba": "eilutė 3632"
+    },
+    {
+     "id": "146",
+     "product_id": "18572",
+     "order_id": "36822",
+     "qty": "1",
+     "qty_gauta": null,
+     "pastaba": "eilutė 3622"
+    },
+    {
+     "id": "147",
+     "product_id": "20369",
+     "order_id": "36846",
+     "qty": "1",
+     "qty_gauta": null,
+     "pastaba": "eilutė 3699"
+    },
+    {
+     "id": "148",
+     "product_id": "23834",
+     "order_id": "36828",
+     "qty": "1",
+     "qty_gauta": null,
+     "pastaba": "eilutė 3639"
+    },
+    {
+     "id": "149",
+     "product_id": "21908",
+     "order_id": "36828",
+     "qty": "1",
+     "qty_gauta": null,
+     "pastaba": "eilutė 3641"
+    }
+   ],
+   "musu_eil": [
+    {
+     "id": "140",
+     "partija_id": "44",
+     "pastaba": "eilutė 3638"
+    },
+    {
+     "id": "148",
+     "partija_id": "45",
+     "pastaba": "eilutė 3639"
+    },
+    {
+     "id": "149",
+     "partija_id": "45",
+     "pastaba": "eilutė 3641"
+    }
+   ]
+  },
+  "neperduotos": [],
+  "siuntu_registras": []
+ },
+ "v": "dep-110743",
+ "kurimas": 200,
+ "sid": 7168,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
