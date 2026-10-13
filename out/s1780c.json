@@ -1,0 +1,86 @@
+{
+ "1": {
+  "v": "S1780c",
+  "av_nurasymas_viso": 199,
+  "ne_grynai_n": 5,
+  "ne_grynai_pvz": [
+   {
+    "oid": "36600",
+    "d": "2026-09-30 19:12:26",
+    "c": "AV nurašymas: #17671 AV 8 -> 0",
+    "nr": "1244",
+    "vykdymas": "Vykdymas: MAIN — AV 1 vnt (1 siunta(-os)) · dropship pirma"
+   },
+   {
+    "oid": "35903",
+    "d": "2026-09-11 09:16:15",
+    "c": "AV nurašymas: #18587 AV 3 -> 2",
+    "nr": "1017",
+    "vykdymas": "Vykdymas: MAIN — AV 1 vnt (1 siunta(-os))"
+   },
+   {
+    "oid": "35894",
+    "d": "2026-09-11 03:14:26",
+    "c": "AV nurašymas: #18590 AV 5 -> 4",
+    "nr": "1014",
+    "vykdymas": "Vykdymas: MAIN — AV 1 vnt (1 siunta(-os))"
+   },
+   {
+    "oid": "35893",
+    "d": "2026-09-10 18:23:09",
+    "c": "AV nurašymas: #17978 AV 4 -> 3",
+    "nr": "1013",
+    "vykdymas": "Vykdymas: MAIN — AV 1 vnt (1 siunta(-os))"
+   },
+   {
+    "oid": "35880",
+    "d": "2026-09-09 15:49:41",
+    "c": "AV nurašymas: #18590 AV 5 -> 4",
+    "nr": "1000",
+    "vykdymas": "Vykdymas: MAIN — AV 1 vnt (1 siunta(-os))"
+   }
+  ],
+  "klaidos_n": 0,
+  "klaidos_pvz": [],
+  "tiekejas_neturi_av_n": 0,
+  "tiekejas_neturi_av_pvz": [],
+  "av_stock_metodai": [
+   "init",
+   "sortable",
+   "sort_query",
+   "filter_dropdown",
+   "filter_query",
+   "qty",
+   "has",
+   "decrease",
+   "increase",
+   "apsaugotas_rasymas",
+   "log",
+   "field",
+   "save",
+   "column",
+   "column_value",
+   "quick_edit",
+   "quick_edit_js",
+   "quick_edit_save"
+  ],
+  "resolve_18557": {
+   "source": "av",
+   "carrier": "any",
+   "courier_only": false,
+   "av_qty": 1,
+   "av_uztenka": true,
+   "tiekejas": "vf",
+   "reason": "tiekėjas neturi → AV: AV turi 1, reikia 1",
+   "tiekejo_qty": 0,
+   "taisykle": "tiekėjas neturi → AV"
+  }
+ },
+ "v": "dep-071057",
+ "kurimas": 200,
+ "sid": 7151,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
