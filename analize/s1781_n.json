@@ -1,0 +1,208 @@
+{
+ "1": {
+  "v": "S1781n",
+  "oid": 36838,
+  "uzs": {
+   "status": "processing",
+   "sukurta": "2026-10-12 20:51",
+   "pristatymas": "VENIPAK paštomatai/atsiėmimo punktai",
+   "vardas": "egle"
+  },
+  "meta": {
+   "_ps_dropship_sent": "2026-10-13 08:31:09",
+   "_ps_dropship_sent_src": "{\"zb\":\"2026-10-13 08:31:09\"}",
+   "_ps_dropship_to": "zb",
+   "_ps_groups": "{\"zb\":{\"carrier\":\"venipak\",\"eilutes\":1,\"vienetai\":1}}",
+   "_ps_misrus_sprendimas": "{\"zb\":\"tiesiai\"}",
+   "_ps_misrus_sprestas": "2026-10-12 20:51:46 | auto",
+   "_ps_order_shipped_emitted": "yes",
+   "_ps_order_type": "DS",
+   "_ps_rusiuota": "auto",
+   "_ps_shipments": "1",
+   "venipak_pickup_point": "3608",
+   "venipak_pickup_point_data": "{\"id\":3608,\"code\":\"300906055\",\"name\":\"Venipak locker, IKI Visoriai Venipak pa\\u0161tomatas\",\"display_name\":\"Vilniaus IKI Visoriai Venipak pa\\u0161tomatas\",\"country\":\"LT\",\"city\":\"Vilnius\",\"address\":\"Bajor\\u0173 kelias 4\",\"zip\":\"08466\"}",
+   "venipak_shipping_order_data": "{\"manifest\":\"07267261013003\",\"pack_numbers\":[\"V07267E1000411\"],\"weight\":2.5,\"products_count\":1,\"status\":\"error\",\"error_message\":\"Could not connect to database!\"}"
+  },
+  "eil": [
+   "3674 | FARMINA N&D PUMPKIN - DOG Dry Lamb&Blueberry PUPPY ×1 | src=zb kelias=tiesiai issiusta="
+  ],
+  "pastabos": [
+   "10-12 20:51:25 [system] Vykdymas: DS — ZB 1 vnt (1 siunta(-os)) · dropship pirma",
+   "10-12 20:51:25 [system] Likutis sumažintas: FARMINA N&D PUMPKIN - DOG Dry Lamb&Blueberry PUPPY MINI 2,5 kg (6&rarr;5)",
+   "10-12 20:51:46 [system] Surūšiuota pati: FARMINA N&D PUMPKIN - DOG Dry Lamb&Blueb — ZB siunčia klientui",
+   "10-12 20:51:47 [system] Email \"Naujas užsakymas\" sent.",
+   "10-12 20:51:47 [system] Email \"Užsakymas vykdomas\" sent.",
+   "10-13 08:22:04 [Inga] Darbalaukis: dėžių skaičius — 1.",
+   "10-13 08:22:07 [Inga] Venipak registracija darbalaukyje (ZB, manifestas 003): KLAIDA — Could not connect to database!",
+   "10-13 08:26:24 [Inga] Darbalaukis: pakuočių skaičius nustatytas — 1.",
+   "10-13 08:31:09 [Inga] Perduota ZB — suvesta į jų sistemą ranka, lipdukas prikabintas (darbalaukio žymė)."
+  ],
+  "f": {
+   "rus": "auto",
+   "eiles": [
+    "paruosta"
+   ],
+   "tiesiai": [
+    "zb"
+   ],
+   "kl": "",
+   "dalys": {
+    "av": null,
+    "zb": {
+     "perduota": true,
+     "kada": "2026-10-13 08:31:09",
+     "nr": [
+      "V07267E1000411"
+     ],
+     "issiusta": false
+    }
+   },
+   "takelis": [
+    "surūšiuota pati [done]",
+    "lipdukas ZB [done]",
+    "suvesta į ZB [done]",
+    "ZB išsiuntė [wait]"
+   ]
+  },
+  "siuntu_registras": [
+   {
+    "sandelis": "",
+    "kodas": "",
+    "manifest": "07267261013003",
+    "numeriai": [
+     "V07267E1000411"
+    ],
+    "data": ""
+   }
+  ],
+  "kliento_siuntos": [
+   {
+    "dalis": "zb",
+    "busena": "ruosiama",
+    "laikas": "",
+    "pristatyta": "",
+    "vez": "venipak",
+    "numeriai": [
+     "V07267E1000411"
+    ],
+    "url": "https://venipak.com/lt/tracking/track/V07267E1000411",
+    "prekes": [
+     {
+      "q": 1,
+      "n": "FARMINA N&D PUMPKIN - DOG Dry Lamb&Blueberry PUPPY MINI 2,5 kg"
+     }
+    ],
+    "n": 1,
+    "viso": 1
+   }
+  ],
+  "fakt_siuntos": [],
+  "email_jobs": [],
+  "ivykiai": [
+   {
+    "id": "3358",
+    "laikas": "2026-10-12 17:51:46",
+    "sritis": "desk",
+    "veiksmas": "rusiuoti",
+    "rezultatas": "ok",
+    "kas_vardas": "sistema",
+    "pastaba": "auto: visos prekės vienu keliu",
+    "po": "{\"zinute\":\"FARMINA N&D PUMPKIN - DOG Dry Lamb&Blueb — ZB siunčia klientui\"}"
+   },
+   {
+    "id": "3359",
+    "laikas": "2026-10-12 17:51:47",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "rezultatas": "ok",
+    "kas_vardas": "sistema",
+    "pastaba": "mokėjimas / svetainė",
+    "po": "{\"status\":\"processing\"}"
+   },
+   {
+    "id": "3402",
+    "laikas": "2026-10-13 05:22:07",
+    "sritis": "desk",
+    "veiksmas": "vp_reg",
+    "rezultatas": "klaida",
+    "kas_vardas": "Inga",
+    "pastaba": null,
+    "po": "{\"status\":\"processing\",\"tipas\":\"DS\",\"pak\":1,\"siuntos\":[],\"vp\":\"{\\\"manifest\\\":\\\"07267261013003\\\",\\\"pack_numbers\\\":[\\\"V07267E1000411\\\"],\\\"weight\\\":2.5,\\\"products_count\\\":1,\\\"status\\\":\\\"error\\\",\\\"error_m\",\"misrus\":\"{\\\"zb\\\":\\\"tiesiai\\\"}\",\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"\",\"eil\":{\""
+   },
+   {
+    "id": "3403",
+    "laikas": "2026-10-13 05:23:28",
+    "sritis": "dropship",
+    "veiksmas": "lipdukas_pdf",
+    "rezultatas": "klaida",
+    "kas_vardas": "Inga",
+    "pastaba": null,
+    "po": "{\"status\":\"processing\",\"tipas\":\"DS\",\"pak\":1,\"siuntos\":[],\"vp\":\"{\\\"manifest\\\":\\\"07267261013003\\\",\\\"pack_numbers\\\":[\\\"V07267E1000411\\\"],\\\"weight\\\":2.5,\\\"products_count\\\":1,\\\"status\\\":\\\"error\\\",\\\"error_m\",\"misrus\":\"{\\\"zb\\\":\\\"tiesiai\\\"}\",\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"\",\"eil\":{\""
+   },
+   {
+    "id": "3404",
+    "laikas": "2026-10-13 05:24:55",
+    "sritis": "dropship",
+    "veiksmas": "lipdukas_pdf",
+    "rezultatas": "klaida",
+    "kas_vardas": "Inga",
+    "pastaba": null,
+    "po": "{\"status\":\"processing\",\"tipas\":\"DS\",\"pak\":1,\"siuntos\":[],\"vp\":\"{\\\"manifest\\\":\\\"07267261013003\\\",\\\"pack_numbers\\\":[\\\"V07267E1000411\\\"],\\\"weight\\\":2.5,\\\"products_count\\\":1,\\\"status\\\":\\\"error\\\",\\\"error_m\",\"misrus\":\"{\\\"zb\\\":\\\"tiesiai\\\"}\",\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"\",\"eil\":{\""
+   },
+   {
+    "id": "3405",
+    "laikas": "2026-10-13 05:26:24",
+    "sritis": "desk",
+    "veiksmas": "pakuotes",
+    "rezultatas": "ok",
+    "kas_vardas": "Inga",
+    "pastaba": null,
+    "po": "{\"status\":\"processing\",\"tipas\":\"DS\",\"pak\":1,\"siuntos\":[],\"vp\":\"{\\\"manifest\\\":\\\"07267261013003\\\",\\\"pack_numbers\\\":[\\\"V07267E1000411\\\"],\\\"weight\\\":2.5,\\\"products_count\\\":1,\\\"status\\\":\\\"error\\\",\\\"error_m\",\"misrus\":\"{\\\"zb\\\":\\\"tiesiai\\\"}\",\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"\",\"eil\":{\""
+   },
+   {
+    "id": "3406",
+    "laikas": "2026-10-13 05:27:18",
+    "sritis": "dropship",
+    "veiksmas": "lipdukas_pdf",
+    "rezultatas": "klaida",
+    "kas_vardas": "Inga",
+    "pastaba": null,
+    "po": "{\"status\":\"processing\",\"tipas\":\"DS\",\"pak\":1,\"siuntos\":[],\"vp\":\"{\\\"manifest\\\":\\\"07267261013003\\\",\\\"pack_numbers\\\":[\\\"V07267E1000411\\\"],\\\"weight\\\":2.5,\\\"products_count\\\":1,\\\"status\\\":\\\"error\\\",\\\"error_m\",\"misrus\":\"{\\\"zb\\\":\\\"tiesiai\\\"}\",\"konsolidacija\":null,\"dropship_sent\":null,\"av_reduced\":\"\",\"eil\":{\""
+   },
+   {
+    "id": "3407",
+    "laikas": "2026-10-13 05:28:43",
+    "sritis": "desk",
+    "veiksmas": "vidine_pastaba",
+    "rezultatas": "ok",
+    "kas_vardas": "Inga",
+    "pastaba": "vidinė pastaba: Siuntos sekimo numeris 109451198",
+    "po": "{\"tekstas\":\"Siuntos sekimo numeris 109451198\"}"
+   },
+   {
+    "id": "3408",
+    "laikas": "2026-10-13 05:31:09",
+    "sritis": "dropship",
+    "veiksmas": "perduota_zb",
+    "rezultatas": "ok",
+    "kas_vardas": "Inga",
+    "pastaba": null,
+    "po": "{\"status\":\"processing\",\"tipas\":\"DS\",\"pak\":1,\"siuntos\":[],\"vp\":\"{\\\"manifest\\\":\\\"07267261013003\\\",\\\"pack_numbers\\\":[\\\"V07267E1000411\\\"],\\\"weight\\\":2.5,\\\"products_count\\\":1,\\\"status\\\":\\\"error\\\",\\\"error_m\",\"misrus\":\"{\\\"zb\\\":\\\"tiesiai\\\"}\",\"konsolidacija\":null,\"dropship_sent\":\"{\\\"zb\\\":\\\"2026-10-13 08:31:0"
+   }
+  ],
+  "dl_grep": [
+   "273: *   „Siuntos numeris (LP Express)“ + „Sekti siuntą“ (post.lt) kaip Venipak. Registras `_ps_siuntos` NErašomas (variklis neliestas).",
+   "1911: public static function issiusta( $o, $u, $sekimo, $dalis = '', $kanalas = 'web' ) {",
+   "1963: public static function sekimo_url( $vez, $nr ) {",
+   "3605: public static function siuntos_laiskas( $o, $f, $dalis, $iss ) {",
+   "3635: $h .= '<p style=\"margin:0 0 4px;font-size:13px;color:#666\">' . esc_html( count( $nrs ) > 1 ? 'Siuntų numeriai (' . $vez_v . ')' : 'Siuntos numeris (' . $vez_v . ')' ) . '</p>';"
+  ]
+ },
+ "v": "dep-155432",
+ "kurimas": 200,
+ "sid": 7180,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
