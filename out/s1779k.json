@@ -1,0 +1,60 @@
+{
+ "1": {
+  "v": "S1779k",
+  "reserved": [],
+  "held": 0,
+  "drafts": [
+   {
+    "id": "36829",
+    "status": "wc-cancelled",
+    "date_created_gmt": "2026-10-12 15:45:24",
+    "date_updated_gmt": "2026-10-12 20:12:14"
+   },
+   {
+    "id": "36830",
+    "status": "wc-cancelled",
+    "date_created_gmt": "2026-10-12 15:47:00",
+    "date_updated_gmt": "2026-10-12 20:12:26"
+   },
+   {
+    "id": "36831",
+    "status": "wc-cancelled",
+    "date_created_gmt": "2026-10-12 15:54:22",
+    "date_updated_gmt": "2026-10-12 20:12:26"
+   },
+   {
+    "id": "36841",
+    "status": "wc-cancelled",
+    "date_created_gmt": "2026-10-12 18:24:36",
+    "date_updated_gmt": "2026-10-12 23:12:29"
+   },
+   {
+    "id": "36843",
+    "status": "wc-cancelled",
+    "date_created_gmt": "2026-10-13 04:28:23",
+    "date_updated_gmt": "2026-10-13 06:15:23"
+   }
+  ],
+  "ps_limit": [
+   "init",
+   "stock_qty",
+   "stock_status",
+   "be_valdymo",
+   "availability_text",
+   "stock_html"
+  ],
+  "purchasable": [
+   true,
+   true,
+   true,
+   1
+  ]
+ },
+ "v": "dep-061532",
+ "kurimas": 200,
+ "sid": 7141,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
