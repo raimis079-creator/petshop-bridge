@@ -1,0 +1,90 @@
+{
+ "1": {
+  "v": "S1782g",
+  "hdr": [
+   "* Plugin Name: Petshop GA4 serveris v1.0 (purchase iš serverio · Kontrolė Woo/fakt/GA4)",
+   "* Description: Siunčia `purchase` į GA4 per Measurement Protocol iš serverio (payment_complete / on-hold / processing),",
+   "*   kad GA4 ir Google Ads matytų 100 % užsakymų, ne tik tuos, kurių „ačiū“ puslapis užsikrovė su sutikimu.",
+   "*   Kasdien lygina: Woo apmokėti · ps_fakt · MP išsiųsta · GA4 purchase — langas Ataskaitos → Kontrolė.",
+   "* Version: 1.0",
+   "*",
+   "* S1587 (2026-09-01). Kontekstas: senoje svetainėje GA4 2026-08 matė 58 % užsakymų (sav. 32: 0 iš 69) —",
+   "*   Ads algoritmas mokėsi iš pusės signalo. TŽ v1.39 (A) MVP reikalavimas: purchase serverio pusėje, dedup pagal transaction_id.",
+   "*",
+   "* Kaip: kasoje įsimenam `_ga` (client_id) ir `_ga_<MID>` (session_id) slapukus į užsakymo meta; apmokėjus siunčiam MP",
+   "*   `purchase` su tuo pačiu transaction_id kaip naršyklės dataLayer (snippet 614) — GA4 dubliuotus transaction_id",
+   "*   to paties client_id sujungia. Be slapuko (sutikimo nėra) — sintetinis client_id `ps.<hash>`, jokių PII, non_personalized_ads.",
+   "* Aplinka: siunčia TIK iš petshop.lt hosto; dev'e — tik debug/validacija (option `ps_ga4_mp_dev=1` leidžia realiai siųsti iš dev).",
+   "* Raktas: option `ps_ga4_mp_secret` (GA4 Admin → Data Streams → Web → Measurement Protocol API secrets). Kol nėra — nesiunčia, žymi „laukia rakto“.",
+   "* GA4 skaitymas Kontrolei: SA iš `ps_gsc_sa` (tas pats kaip petshop-seo), scope analytics.readonly, property 346051580.",
+   "*/",
+   "if ( ! defined( 'ABSPATH' ) ) { exit; }",
+   ""
+  ],
+  "cid_lines": [
+   "12: * Kaip: kasoje įsimenam `_ga` (client_id) ir `_ga_<MID>` (session_id) slapukus į užsakymo meta; apmokėjus siunčiam MP",
+   "14: *   to paties client_id sujungia. Be slapuko (sutikimo nėra) — sintetinis client_id `ps.<hash>`, jokių PII, non_personalized_ads.",
+   "52: $cid = self::cid_is_slapuko();",
+   "60: private static function cid_is_slapuko() {",
+   "110: if ( '' !== $sid ) { $params['session_id'] = $sid; }",
+   "112: 'client_id'            => $cid,",
+   "113: 'non_personalized_ads' => ( strpos( $sut, 'M' ) === false ),",
+   "116: /* timestamp_micros — leidžiama iki 72 val. atgal; užsakymo sukūrimo laikas sujungia su sesija */",
+   "118: if ( time() - $ts < 71 * HOUR_IN_SECONDS ) { $body['timestamp_micros'] = $ts * 1000000; }",
+   "140: $order->update_meta_data( '_ps_ga4_mp_cid', $body['client_id'] );",
+   "271: echo '<p class=\"description\" style=\"margin-top:12px\">Riba: ±2 % žalia (TŽ v1.39 priėmimo kriterijus), iki 10 % geltona, daugiau — raudona (matavimas lūžo: Pay"
+  ],
+  "s614": {
+   "name": "Petshop DataLayer v1.1 (GA4 ecommerce)",
+   "lines": [
+    "4: * Siuncia GA4 e-commerce ivykius i dataLayer, kuriuos pagauna GTM-MF3GZGT.",
+    "5: * Ivykiai: view_item, add_to_cart, view_cart, begin_checkout, purchase",
+    "9: * Idempotencija: purchase siunciamas vienakart per uzsakyma (_petshop_dl_purchase_sent + static guard)",
+    "15: *   - purchase: pridetas static guard nuo dvigubo hook kvietimo tame paciame request'e.",
+    "87: * Isveda dataLayer.push. Pries kiekviena ecommerce ivyki isvalo ecommerce objekta",
+    "95: echo \"window.dataLayer = window.dataLayer || [];\\n\";",
+    "96: echo \"window.dataLayer.push({ ecommerce: null });\\n\";",
+    "97: echo \"window.dataLayer.push(\" . $json . \");\\n\";",
+    "243: window.dataLayer = window.dataLayer || [];",
+    "254: window.dataLayer.push({ ecommerce: null });",
+    "255: window.dataLayer.push({",
+    "387: * 6. purchase — thankyou puslapis (idempotentiskai)",
+    "390: if ( ! function_exists( 'petshop_gtm_purchase' ) ) {",
+    "391: function petshop_gtm_purchase( $order_id ) {",
+    "395: static $already_sent = array();",
+    "396: if ( isset( $already_sent[ $order_id ] ) ) { return; }",
+    "402: if ( $order->get_meta( '_petshop_dl_purchase_sent' ) === 'yes' ) { return; }",
+    "404: $already_sent[ $order_id ] = true;",
+    "439: 'transaction_id' => (string) $order->get_order_number(),",
+    "453: 'event'     => 'purchase',",
+    "468: $order->update_meta_data( '_petshop_dl_purchase_sent', 'yes' );",
+    "472: add_action( 'woocommerce_thankyou', 'petshop_gtm_purchase', 10, 1 );"
+   ]
+  },
+  "ga4": {
+   "unique_tid": 164,
+   "events": 221,
+   "eventCount_dist": {
+    "1": 163,
+    "58": 1
+   },
+   "dup_tids": [
+    "(not set)×58"
+   ],
+   "tid_not_in_woo": [
+    "(not set)"
+   ],
+   "not_in_woo_n": 1
+  },
+  "woo_paid_14d": 0,
+  "mp_14d": 172,
+  "dl_14d": 156
+ },
+ "v": "dep-160242",
+ "kurimas": 200,
+ "sid": 7183,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
