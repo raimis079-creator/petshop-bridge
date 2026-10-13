@@ -1,0 +1,74 @@
+{
+ "3": {
+  "v": "S1781r",
+  "f": "3",
+  "md5": "6978b56b7502e002f0f08fc1956c1eb8",
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/wp-admin/admin-ajax.php": [
+    400,
+    0
+   ],
+   "/wp-json/": [
+    200,
+    0
+   ]
+  },
+  "metodai": [
+   true,
+   true
+  ],
+  "testas": {
+   "1404": {
+    "status": "",
+    "packs": [],
+    "nr": [
+     "V07267E1000411"
+    ],
+    "duom": false
+   },
+   "grupes_antras": {
+    "status": "",
+    "packs": [],
+    "nr": [
+     "V1"
+    ],
+    "duom": false
+   },
+   "pastas": {
+    "status": "error",
+    "packs": [],
+    "nr": [
+     "V2"
+    ],
+    "duom": true
+   },
+   "sent": null,
+   "be_nr": null
+  },
+  "klases": [
+   true,
+   true,
+   true
+  ],
+  "php_log": [
+   "[13-Oct-2026 15:46:33 UTC] Užsakymas patvirtintas: užsakymas 36855, suma: 72.19EUR",
+   "[13-Oct-2026 16:03:52 UTC] WordPress database error Unknown column 'date_paid_gmt' in 'WHERE' for query SELECT COUNT(*) FROM gaj6_wc_orders WHERE date_paid_gmt>=DATE_SUB(UTC_DATE(),INTERVAL 14 DAY) AN",
+   "[13-Oct-2026 16:08:36 UTC] WordPress database error Unknown column 'date_paid_gmt' in 'WHERE' for query SELECT COUNT(*) FROM gaj6_wc_orders WHERE date_paid_gmt>=DATE_SUB(UTC_DATE(),INTERVAL 14 DAY) AN"
+  ]
+ },
+ "v": "dep-163630",
+ "kurimas": 200,
+ "sid": 7194,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
