@@ -1,0 +1,44 @@
+{
+ "1": {
+  "v": "S1781h",
+  "md5": "cf887dea44e76b0b13ae1d85a8b627fc",
+  "ver": "3.48",
+  "tikrinta": 50,
+  "sargas_A_planas_be_surusiuota": [
+   "1384 processing planas {\"vf\":\"tiesiai\"}",
+   "1394 processing planas {\"quattro\":\"av\",\"vf\":\"tiesiai\"}"
+  ],
+  "sargas_B_klientui_be_sprendimo": [
+   "1394 processing [vf] Truly skanėstas šunims, elnienos j — PERDUOTA 2026-10-13 12:33:52",
+   "1394 processing [vf] SmartBones Beef Bones skanėstai su — PERDUOTA 2026-10-13 12:33:52"
+  ],
+  "po_pataisos_rodymas_keistusi": [
+   "1394 [vf] Truly skanėstas šunims, elnien i_av → tiesiai (planas {\"quattro\":\"av\",\"vf\":\"tiesiai\"})",
+   "1394 [vf] SmartBones Beef Bones skanėsta i_av → tiesiai (planas {\"quattro\":\"av\",\"vf\":\"tiesiai\"})"
+  ],
+  "nesurusiuoti_misrus_dabar": [],
+  "u1394": {
+   "spr": "{\"quattro\":\"av\",\"vf\":\"tiesiai\"}",
+   "eil": [
+    "Quattro SB 7kg su antiena  | src=quattro kelias=i_av kons=1",
+    "Truly skanėstas šunims, el | src=vf kelias= kons=",
+    "Hau&amp;Miau Jautienos čip | src=av kelias= kons=",
+    "SmartBones Beef Bones skan | src=vf kelias= kons="
+   ],
+   "pastabos": [
+    "10-13 12:33:52 [system] Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarmas.lt, terra@petshop.lt",
+    "10-13 12:30:31 [Inga] Siuntos numeriai išsaugoti (VF): V07267E1000419",
+    "10-13 12:30:31 [Inga] Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga",
+    "10-13 08:35:32 [Inga] Tiekimas: prekės užsakytos iš Quattro / Kauno grūdai (partija #44). Kelias į AV: Venipak kurjeris į AV. Laukiam.",
+    "10-13 08:35:28 [Inga] Tiekimas: „Quattro SB 7kg su antiena sausas pašaras mažų veislių šuniukams/maitinančioms kalėms“ (1 vnt) įtraukta į Quattro / Kauno grūdai partiją #44 — parsivežam į AV."
+   ]
+  }
+ },
+ "v": "dep-102727",
+ "kurimas": 200,
+ "sid": 7162,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
