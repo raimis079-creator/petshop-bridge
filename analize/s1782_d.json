@@ -1,0 +1,2680 @@
+{
+ "1": {
+  "v": "S1782d",
+  "f": "1",
+  "rasta": 702,
+  "bak": [
+   "/home/gyvunai2/domains/petshop.lt/ps-archyvas/snippets_temp_bak_s1782_20261013_1523.json.gz",
+   5021500
+  ],
+  "istrinta": 702,
+  "liko": "77"
+ },
+ "2": {
+  "v": "S1782d",
+  "f": "2",
+  "tbl_cnt": {
+   "ps_action_tokens": 210,
+   "ps_akcijos": 0,
+   "ps_akciju_prekes": 0,
+   "ps_ataskaitu_dienos": 2429,
+   "ps_av_zurnalas": 1612,
+   "ps_brand_alias": 143,
+   "ps_browse_log": 186,
+   "ps_carts": 31626,
+   "ps_consent_log": 963,
+   "ps_dim_klientai": 5646,
+   "ps_email_content": 15,
+   "ps_email_jobs": 1098,
+   "ps_email_suppression": 5,
+   "ps_event_log": 907,
+   "ps_fakt_atsargos_d": 96523,
+   "ps_fakt_eilutes": 911,
+   "ps_fakt_grazinimai": 0,
+   "ps_fakt_gsc_dienos": 530,
+   "ps_fakt_gsc_url_d": 32785,
+   "ps_fakt_kainos": 1955,
+   "ps_fakt_reklama": 265,
+   "ps_fakt_siuntos": 357,
+   "ps_fakt_uzsakymai": 351,
+   "ps_feeding_import_log": 5,
+   "ps_feeding_import_log_bak_s212b_engine_20260717_c4861c6f": 8,
+   "ps_feeding_map": 561,
+   "ps_feeding_map_bak_s212b_20260717_fb3eeae1": 451,
+   "ps_feeding_map_bak_s212b_engine_20260717_c4861c6f": 451,
+   "ps_feeding_rows": 5549,
+   "ps_feeding_rows_bak_s212b_20260717_fb3eeae1": 3825,
+   "ps_feeding_rows_bak_s212b_engine_20260717_c4861c6f": 3825,
+   "ps_feeding_rows_bak_s304": 550,
+   "ps_feeding_tables": 296,
+   "ps_feeding_tables_bak_s212b_20260717_fb3eeae1": 223,
+   "ps_feeding_tables_bak_s212b_engine_20260717_c4861c6f": 223,
+   "ps_islaidos": 0,
+   "ps_ist_eilutes": 24555,
+   "ps_ist_fakt_eilutes": 23391,
+   "ps_ist_fakt_eilutes_bak_s1745": 23174,
+   "ps_ist_fakt_uzsakymai": 9621,
+   "ps_ist_fakt_uzsakymai_bak_s1745": 9528,
+   "ps_ist_uzsakymai": 10169,
+   "ps_istrintos_prekes_s668": 32,
+   "ps_ivykiai": 36861,
+   "ps_kl_suvestine": 5883,
+   "ps_kontrole_dienos": 39,
+   "ps_laukai_ivykiai": 6486,
+   "ps_naujienlaiskiai": 0,
+   "ps_nl_snapshot": 562,
+   "ps_pakuotes": 4,
+   "ps_partijos": 1091,
+   "ps_pet_field_log": 491,
+   "ps_pet_notes": 7,
+   "ps_pet_products": 38,
+   "ps_pet_profile_drafts": 20,
+   "ps_pets": 105,
+   "ps_pets_bak_20260720_193704_f6d1f3c9": 23,
+   "ps_pets_bak_20260722_181456_hint": 25,
+   "ps_pets_bak_20260723_prof": 39,
+   "ps_pets_bak_20260726": 61,
+   "ps_pets_bak_20260726_ft": 62,
+   "ps_pets_bak_20260727_wet": 62,
+   "ps_pets_bak_20260731_pries_restore": 55,
+   "ps_plan_events": 15,
+   "ps_rec_log": 40,
+   "ps_refill_tracking": 447,
+   "ps_relaunch_kontaktai": 5666,
+   "ps_reminders": 10,
+   "ps_sargas_klaidos": 11725,
+   "ps_seo_404": 15889,
+   "ps_seo_qa": 222,
+   "ps_seo_url_svoris": 3911,
+   "ps_shipments": 358,
+   "ps_sources": 4332,
+   "ps_stock_watch": 8,
+   "ps_subscription_events": 0,
+   "ps_subscription_items": 0,
+   "ps_subscriptions": 0,
+   "ps_tarifai": 29,
+   "ps_tarifu_priemokos": 4,
+   "ps_tiekimas": 23,
+   "ps_tiekimas_eil": 109,
+   "ps_uzsakymu_ivykiai": 2724,
+   "ps_v_analize_eilutes": 24298,
+   "ps_v_analize_uzsakymai": 9969,
+   "ps_web_dienos": 20275,
+   "ps_web_ivykiai": 44787,
+   "ps_webhook_log": 1
+  },
+  "mu": {
+   "petshop-rec-log.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_rec_log": 40,
+     "ps_pets": 105
+    },
+    "opt": [],
+    "kb": 7,
+    "m": "08-16",
+    "n": "Petshop Rec Log"
+   },
+   "petshop-ataskaitu-eksportas.php": {
+    "refs": 5,
+    "by": [
+     "petshop-ataskaitos-ui.php",
+     "petshop-ataskaita-menuo.php"
+    ],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 37,
+    "m": "08-16",
+    "n": "Petshop Ataskaitu Eksportas"
+   },
+   "petshop-parseris.php": {
+    "refs": 3,
+    "by": [
+     "petshop-gavimas.php"
+    ],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 25,
+    "m": "08-10",
+    "n": ""
+   },
+   "petshop-partijos.php": {
+    "refs": 80,
+    "by": [
+     "petshop-fakt-atsargos.php",
+     "petshop-katalogas.php",
+     "petshop-darbalaukis.php",
+     "petshop-gavimas.php",
+     "petshop-av-tiekimas.php"
+    ],
+    "hooks": 3,
+    "cron": [],
+    "tbl": {
+     "ps_partijos": 1091,
+     "ps_pakuotes": 4
+    },
+    "opt": [],
+    "kb": 31,
+    "m": "10-05",
+    "n": ""
+   },
+   "petshop-sutikimai.php": {
+    "refs": 10,
+    "by": [
+     "petshop-pakartoti.php",
+     "petshop-krepselio-priminimai.php",
+     "petshop-relaunch.php"
+    ],
+    "hooks": 3,
+    "cron": [],
+    "tbl": {
+     "ps_consent_log": 963
+    },
+    "opt": [],
+    "kb": 5,
+    "m": "09-15",
+    "n": "Petshop Sutikimai (soft opt-out kasoje)"
+   },
+   "petshop-analitika-langas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_carts": 31626,
+     "ps_email_jobs": 1098,
+     "ps_fakt_uzsakymai": 351,
+     "ps_fakt_reklama": 265,
+     "ps_fakt_siuntos": 357,
+     "ps_ist_fakt_uzsakymai": 9621
+    },
+    "opt": [],
+    "kb": 20,
+    "m": "09-14",
+    "n": ""
+   },
+   "petshop-rinkiniu-ataskaita.php": {
+    "refs": 1,
+    "by": [
+     "petshop-ataskaitu-eksportas.php"
+    ],
+    "hooks": 3,
+    "cron": [],
+    "tbl": {
+     "ps_ataskaitu_dienos": 2429
+    },
+    "opt": {
+     "ps_stat_pradzia": ""
+    },
+    "kb": 40,
+    "m": "08-16",
+    "n": "Petshop Statistika — Rinkiniai (ataskaita)"
+   },
+   "petshop-anketos-ataskaita.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_pets": 105,
+     "ps_pet_field_log": 491,
+     "ps_laukai_ivykiai": 6486,
+     "ps_rec_log": 40,
+     "ps_brand_alias": 143,
+     "ps_event_log": 907,
+     "ps_email_jobs": 1098
+    },
+    "opt": [],
+    "kb": 36,
+    "m": "08-16",
+    "n": "Petshop Anketos Ataskaita"
+   },
+   "petshop-av-dropship.php": {
+    "refs": 46,
+    "by": [
+     "petshop-juosta.php",
+     "petshop-desk.php",
+     "petshop-darbalaukis.php",
+     "petshop-av-tiekimas.php"
+    ],
+    "hooks": 9,
+    "cron": [],
+    "tbl": {
+     "ps_sources": 4332,
+     "ps_tiekimas": 23,
+     "ps_tiekimas_eil": 109
+    },
+    "opt": {
+     "ps_tiek_laiskai": "[2]",
+     "ps_laisku_archyvas": "[38]"
+    },
+    "kb": 67,
+    "m": "09-29",
+    "n": ""
+   },
+   "petshop-rinkiniu-rusis.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 3,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 4,
+    "m": "09-02",
+    "n": ""
+   },
+   "petshop-lifecycle-vartai.php": {
+    "refs": 2,
+    "by": [
+     "petshop-pakartojimo-grandine.php"
+    ],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_pet_products": 38,
+     "ps_pets": 105,
+     "ps_refill_tracking": 447,
+     "ps_fakt_eilutes": 911
+    },
+    "opt": [],
+    "kb": 10,
+    "m": "09-16",
+    "n": "Petshop Lifecycle Vartai"
+   },
+   "petshop-ataskaitu-agregavimas.php": {
+    "refs": 7,
+    "by": [
+     "petshop-ataskaitu-eksportas.php",
+     "petshop-rinkiniu-ataskaita.php",
+     "petshop-ataskaitos-ui.php",
+     "petshop-paruostu-ataskaita.php"
+    ],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_ataskaitu_dienos": 2429
+    },
+    "opt": {
+     "ps_ata_paskutinis_agregavimas": "2026-10-13 03:15:01",
+     "ps_ata_paskutinis_perskaiciavimas": "2026-08-26 11:43:27 | 202",
+     "ps_ata_siandien_laikas": "2026-09-01 20:40:20"
+    },
+    "kb": 23,
+    "m": "08-26",
+    "n": "Petshop Ataskaitu Agregavimas"
+   },
+   "petshop-pet-kontraktas.php": {
+    "refs": 8,
+    "by": [
+     "petshop-rec-log.php",
+     "petshop-anketa-ivykiai.php"
+    ],
+    "hooks": 6,
+    "cron": [],
+    "tbl": {
+     "ps_pets": 105,
+     "ps_laukai_ivykiai": 6486,
+     "ps_pet_field_log": 491,
+     "ps_brand_alias": 143,
+     "ps_rec_log": 40
+    },
+    "opt": [],
+    "kb": 23,
+    "m": "08-16",
+    "n": "Petshop Pet Kontraktas"
+   },
+   "petshop-atsargu-laukimas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 5,
+    "cron": [],
+    "tbl": {
+     "ps_stock_watch": 8
+    },
+    "opt": {
+     "ps_stock_watch_db": "1.0.0"
+    },
+    "kb": 11,
+    "m": "08-29",
+    "n": "Petshop Atsargu Laukimas v1.0 (Back-in-stock \"Pranesti kai bus\")"
+   },
+   "petshop-skaiciuokle.php": {
+    "refs": 220,
+    "by": [
+     "petshop-veisles.php"
+    ],
+    "hooks": 3,
+    "cron": [],
+    "tbl": {
+     "ps_web_ivykiai": 44787,
+     "ps_feeding_map": 561,
+     "ps_feeding_tables": 296,
+     "ps_fakt_eilutes": 911,
+     "ps_ist_fakt_eilutes": 23391
+    },
+    "opt": {
+     "ps_skaiciuokle_pask": "2026-10-13 05:10:14"
+    },
+    "kb": 28,
+    "m": "09-23",
+    "n": "Petshop Skaičiuoklė — puslapis /skaiciuokle/"
+   },
+   "petshop-vartai.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": {
+     "ps_vartai_paskutinis": "2026-09-22 20:13:21 · 1"
+    },
+    "kb": 7,
+    "m": "08-11",
+    "n": ""
+   },
+   "petshop-import-tempas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": {
+     "ps_import_tempas_host": "https://petshop.lt"
+    },
+    "kb": 4,
+    "m": "09-02",
+    "n": ""
+   },
+   "petshop-m8-food.php": {
+    "refs": 2,
+    "by": [
+     "class-pet-dashboard.php"
+    ],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_feeding_map": 561,
+     "ps_pets": 105,
+     "ps_feeding_tables": 296,
+     "ps_pet_products": 38,
+     "ps_feeding_rows": 5549
+    },
+    "opt": [],
+    "kb": 35,
+    "m": "07-28",
+    "n": "Petshop M8 Food Linking"
+   },
+   "petshop-sugrazinimas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_refill_tracking": 447
+    },
+    "opt": [],
+    "kb": 5,
+    "m": "09-15",
+    "n": "Petshop Sugrąžinimas (win_back laiškas)"
+   },
+   "petshop-ataskaitos-ui.php": {
+    "refs": 179,
+    "by": [
+     "petshop-ataskaitu-eksportas.php",
+     "petshop-rinkiniu-ataskaita.php",
+     "petshop-anketos-ataskaita.php",
+     "petshop-ataskaita-atsargos.php",
+     "petshop-paruostu-ataskaita.php",
+     "petshop-ataskaita-lankomumas.php",
+     "petshop-ataskaita-menuo.php",
+     "petshop-ataskaita-prekes.php",
+     "petshop-rytas.php",
+     "petshop-ataskaita-klientai.php",
+     "petshop-ataskaita-pardavimai.php"
+    ],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 44,
+    "m": "08-27",
+    "n": "Petshop Ataskaitu UI"
+   },
+   "petshop-pren-sutikimas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 3,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 3,
+    "m": "08-30",
+    "n": "Petshop pren sutikimas v1.0 (MVP #8 checkout varnele)"
+   },
+   "petshop-seo-aprasymas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 2,
+    "m": "08-18",
+    "n": "Petshop SEO Aprašymo Valymas v1.0.0 (esybių dekodavimas)"
+   },
+   "petshop-pren-nuorodos.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_subscriptions": 0
+    },
+    "opt": [],
+    "kb": 6,
+    "m": "08-30",
+    "n": "Petshop pren nuorodos v1.0 (laisku veiksmai be slaptazodzio)"
+   },
+   "petshop-laisku-utm.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": {
+     "ps_email_jobs": 1098
+    },
+    "opt": [],
+    "kb": 4,
+    "m": "10-11",
+    "n": "Petshop Laiškų UTM žymos"
+   },
+   "petshop-filtru-sargas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 1,
+    "m": "09-24",
+    "n": "Petshop Filtrų sargas v1.0 (500 su keliomis kategorijomis YITH filtre)"
+   },
+   "petshop-ataskaita-atsargos.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_fakt_atsargos_d": 96523,
+     "ps_partijos": 1091,
+     "ps_sources": 4332,
+     "ps_fakt_eilutes": 911,
+     "ps_kl_suvestine": 5883
+    },
+    "opt": {
+     "ps_rytas_ribos": "[1]"
+    },
+    "kb": 29,
+    "m": "08-31",
+    "n": "Petshop Ataskaita Atsargos"
+   },
+   "petshop-import-log.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 3,
+    "m": "08-04",
+    "n": ""
+   },
+   "petshop-dim-klientai.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": {
+     "ps_dim_klientai": 5646,
+     "ps_fakt_uzsakymai": 351,
+     "ps_refill_tracking": 447,
+     "ps_fakt_eilutes": 911,
+     "ps_pets": 105,
+     "ps_kl_suvestine": 5883
+    },
+    "opt": {
+     "ps_dim_klientu_paskutinis": "2026-10-12 20:40:03 | 564"
+    },
+    "kb": 15,
+    "m": "09-18",
+    "n": "Petshop Dim — Klientai"
+   },
+   "petshop-paruostu-ataskaita.php": {
+    "refs": 1,
+    "by": [
+     "petshop-ataskaitu-eksportas.php"
+    ],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 29,
+    "m": "08-16",
+    "n": "Petshop Statistika — Paruosti rinkiniai (ataskaita)"
+   },
+   "petshop-dydziai-katalogas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_ist_fakt_eilutes": 23391,
+     "ps_fakt_eilutes": 911
+    },
+    "opt": [],
+    "kb": 8,
+    "m": "09-29",
+    "n": "Petshop Dydžių katalogas v1.3 (viena kortelė šeimai)"
+   },
+   "petshop-pardavimai.php": {
+    "refs": 9,
+    "by": [
+     "petshop-katalogas.php",
+     "petshop-statistika.php",
+     "petshop-pilnumas.php"
+    ],
+    "hooks": 2,
+    "cron": {
+     "ps_pardavimai_naktinis": "10-14 04:50"
+    },
+    "tbl": [],
+    "opt": {
+     "ps_pardavimai_naktinis_rez": "[2]"
+    },
+    "kb": 14,
+    "m": "08-09",
+    "n": ""
+   },
+   "petshop-nepamoketi.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 3,
+    "m": "08-19",
+    "n": "Petshop Neapmokėtų užsakymų taisyklė"
+   },
+   "petshop-dropship-sargas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 6,
+    "m": "09-27",
+    "n": "Petshop Dropship Sargas v1.1 (H210) — tiekėjo vėlavimo (SLA) stebėjimas darbo di"
+   },
+   "petshop-klientai.php": {
+    "refs": 2,
+    "by": [
+     "petshop-dim-klientai.php"
+    ],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_kl_suvestine": 5883,
+     "ps_ist_uzsakymai": 10169,
+     "ps_ist_eilutes": 24555,
+     "ps_consent_log": 963,
+     "ps_email_suppression": 5,
+     "ps_pets": 105,
+     "ps_email_jobs": 1098,
+     "ps_nl_snapshot": 562
+    },
+    "opt": {
+     "ps_klientai_perskaiciuota": "2026-10-13 02:30:03"
+    },
+    "kb": 41,
+    "m": "09-18",
+    "n": "Petshop Klientai"
+   },
+   "petshop-seo.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 5,
+    "cron": [],
+    "tbl": {
+     "ps_fakt_gsc_dienos": 530,
+     "ps_fakt_gsc_url_d": 32785,
+     "ps_seo_url_svoris": 3911,
+     "ps_seo_404": 15889,
+     "ps_seo_qa": 222
+    },
+    "opt": {
+     "ps_seo_schema": "1.3",
+     "ps_seo_svoris_at": "2026-10-12 06:00:04",
+     "ps_seo_qa_offset": "670",
+     "ps_psi_key": "AIzaSyCakG-XDV9pclsenqPvp",
+     "ps_perjungimo_data": "2026-09-09"
+    },
+    "kb": 42,
+    "m": "09-01",
+    "n": "Petshop SEO v1.0 (GSC faktai · 404 su svoriu · redirect QA · sitemap · CWV · švi"
+   },
+   "petshop-ataskaita-lankomumas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_web_ivykiai": 44787,
+     "ps_fakt_uzsakymai": 351
+    },
+    "opt": [],
+    "kb": 21,
+    "m": "09-10",
+    "n": "Petshop Ataskaita Lankomumas"
+   },
+   "petshop-sargas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 4,
+    "cron": {
+     "ps_sargas_kasdien": "10-14 04:00",
+     "ps_sargas_savaitinis": "10-20 05:00"
+    },
+    "tbl": {
+     "ps_sargas_klaidos": 11725,
+     "ps_shipments": 358,
+     "ps_pet_products": 38,
+     "ps_pets": 105,
+     "ps_reminders": 10,
+     "ps_stock_watch": 8,
+     "ps_browse_log": 186,
+     "ps_akciju_prekes": 0,
+     "ps_feeding_map": 561
+    },
+    "opt": {
+     "ps_sargas_start": "1786994616",
+     "ps_sargas_pastas": "terra@gyvunai.lt",
+     "ps_sargas_cron_valandos": "26",
+     "ps_sargas_svara": "[3]"
+    },
+    "kb": 19,
+    "m": "08-29",
+    "n": ""
+   },
+   "petshop-ivykiai.php": {
+    "refs": 88,
+    "by": [
+     "petshop-parseris.php",
+     "petshop-partijos.php",
+     "petshop-vartai.php",
+     "petshop-pardavimai.php",
+     "petshop-katalogas.php",
+     "petshop-rankos.php",
+     "petshop-gavimas.php",
+     "petshop-rinkiniai.php"
+    ],
+    "hooks": 5,
+    "cron": {
+     "ps_ivykiai_valymas": "10-14 04:40"
+    },
+    "tbl": {
+     "ps_av_zurnalas": 1612,
+     "ps_ivykiai": 36861
+    },
+    "opt": {
+     "ps_ivykiai_av_perkelta": "2026-08-09 15:08:14"
+    },
+    "kb": 20,
+    "m": "08-09",
+    "n": ""
+   },
+   "petshop-laiskai-importas.php": {
+    "refs": 2,
+    "by": [
+     "petshop-langai-admin.php"
+    ],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 16,
+    "m": "08-29",
+    "n": "Petshop Laiskai — importas is failiniu sablonu"
+   },
+   "petshop-cache.php": {
+    "refs": 3,
+    "by": [
+     "petshop-dydziai-automatas.php"
+    ],
+    "hooks": 17,
+    "cron": [],
+    "tbl": [],
+    "opt": {
+     "ps_cache_tiksliniai": "[14]",
+     "ps_cache_valymai": "[30]"
+    },
+    "kb": 11,
+    "m": "09-30",
+    "n": "Petshop Cache v1.3 (WP Super Cache išvalymas po atsargų/kainų/importų pakeitimų)"
+   },
+   "petshop-botu-sargas.php": {
+    "refs": 3,
+    "by": [
+     "petshop-rytas.php"
+    ],
+    "hooks": 4,
+    "cron": {
+     "ps_botu_sargas_valymas": "10-14 04:45"
+    },
+    "tbl": {
+     "ps_carts": 31626
+    },
+    "opt": [],
+    "kb": 10,
+    "m": "09-27",
+    "n": "Petshop Botų sargas v1.2 (add-to-cart ir filtrų GET be JS slapuko; nofollow; užt"
+   },
+   "petshop-pakartojimo-grandine.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_refill_tracking": 447
+    },
+    "opt": [],
+    "kb": 8,
+    "m": "10-01",
+    "n": "Petshop Pakartojimo grandinė v1.0 (S1745)"
+   },
+   "petshop-gsc-tvarka.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_seo_404": 15889
+    },
+    "opt": [],
+    "kb": 11,
+    "m": "09-25",
+    "n": "Petshop GSC tvarka v1.2 (S1711 → S1717)"
+   },
+   "petshop-code-search.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": {
+     "ps_cs_dublikatai": "[1]"
+    },
+    "kb": 5,
+    "m": "08-03",
+    "n": ""
+   },
+   "petshop-fakt-grazinimai.php": {
+    "refs": 1,
+    "by": [
+     "petshop-darbalaukis.php"
+    ],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_fakt_grazinimai": 0,
+     "ps_fakt_uzsakymai": 351,
+     "ps_fakt_eilutes": 911
+    },
+    "opt": [],
+    "kb": 17,
+    "m": "08-26",
+    "n": "Petshop Faktai — Grazinimai"
+   },
+   "petshop-dp-kainos.php": {
+    "refs": 9,
+    "by": [
+     "petshop-rytas.php",
+     "petshop-rinkiniai.php"
+    ],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 10,
+    "m": "09-26",
+    "n": "Petshop DP kainos v1.2.1 (Daugiau=Pigiau pakų kainų sinchronizacija)"
+   },
+   "petshop-kalendorius.php": {
+    "refs": 12,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 8,
+    "m": "08-12",
+    "n": ""
+   },
+   "petshop-ataskaita-menuo.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_fakt_reklama": 265,
+     "ps_islaidos": 0,
+     "ps_fakt_uzsakymai": 351,
+     "ps_fakt_grazinimai": 0,
+     "ps_fakt_eilutes": 911
+    },
+    "opt": [],
+    "kb": 14,
+    "m": "08-27",
+    "n": "Petshop Ataskaita Menuo"
+   },
+   "petshop-pakartoti.php": {
+    "refs": 9,
+    "by": [
+     "petshop-sugrazinimas.php",
+     "win-back-pakartoti.php",
+     "refill-pakartoti.php"
+    ],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_refill_tracking": 447,
+     "ps_email_jobs": 1098
+    },
+    "opt": [],
+    "kb": 11,
+    "m": "10-03",
+    "n": "Petshop Pakartoti tą patį (refill_due laiškas)"
+   },
+   "petshop-zb-matmenys.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 3,
+    "m": "09-24",
+    "n": "Petshop ZB matmenys v1.0 (ZB feed'o matmenų nenaudoti)"
+   },
+   "petshop-legacy-301.php": {
+    "refs": 6,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 3,
+    "m": "09-10",
+    "n": ""
+   },
+   "petshop-payment-failed.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 3,
+    "cron": [],
+    "tbl": {
+     "ps_event_log": 907,
+     "ps_email_jobs": 1098
+    },
+    "opt": [],
+    "kb": 4,
+    "m": "08-04",
+    "n": ""
+   },
+   "petshop-akcijos.php": {
+    "refs": 336,
+    "by": [
+     "petshop-katalogas.php"
+    ],
+    "hooks": 9,
+    "cron": [],
+    "tbl": {
+     "ps_partijos": 1091,
+     "ps_akcijos": 0,
+     "ps_akciju_prekes": 0
+    },
+    "opt": {
+     "ps_akciju_zurnalas": "[7]"
+    },
+    "kb": 94,
+    "m": "08-11",
+    "n": ""
+   },
+   "petshop-uzsakymu-ivykiai.php": {
+    "refs": 72,
+    "by": [
+     "petshop-darbalaukis.php"
+    ],
+    "hooks": 6,
+    "cron": [],
+    "tbl": {
+     "ps_ivykiai": 36861,
+     "ps_uzsakymu_ivykiai": 2724,
+     "ps_tiekimas": 23,
+     "ps_tiekimas_eil": 109
+    },
+    "opt": [],
+    "kb": 27,
+    "m": "09-02",
+    "n": ""
+   },
+   "petshop-anketa-ivykiai.php": {
+    "refs": 190,
+    "by": [],
+    "hooks": 3,
+    "cron": [],
+    "tbl": {
+     "ps_pets": 105,
+     "ps_pet_field_log": 491
+    },
+    "opt": [],
+    "kb": 16,
+    "m": "08-16",
+    "n": "Petshop Anketa Ivykiai"
+   },
+   "petshop-kelio-fiksavimas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 4,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 6,
+    "m": "09-25",
+    "n": "Petshop Kelio Fiksavimas"
+   },
+   "petshop-laiskai.php": {
+    "refs": 31,
+    "by": [
+     "petshop-laiskai-importas.php",
+     "petshop-langai-admin.php",
+     "renderis.php"
+    ],
+    "hooks": 0,
+    "cron": [],
+    "tbl": {
+     "ps_email_content": 15
+    },
+    "opt": [],
+    "kb": 23,
+    "m": "08-29",
+    "n": "Petshop Laiskai — turinio sluoksnis"
+   },
+   "petshop-prieziura.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 3,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 6,
+    "m": "08-19",
+    "n": "Petshop Priežiūros režimas"
+   },
+   "petshop-ga4-serveris.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 4,
+    "cron": [],
+    "tbl": {
+     "ps_kontrole_dienos": 39,
+     "ps_fakt_uzsakymai": 351
+    },
+    "opt": {
+     "ps_ga4_mp_secret": "5GGbP2GxRMa0LCDPYLSnag",
+     "ps_gsc_sa": "{\"type\": \"service_account",
+     "ps_kontrole_paskutinis": "[2]"
+    },
+    "kb": 19,
+    "m": "09-01",
+    "n": "Petshop GA4 serveris v1.0 (purchase iš serverio · Kontrolė Woo/fakt/GA4)"
+   },
+   "petshop-bacs-priminimas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 3,
+    "cron": [],
+    "tbl": [],
+    "opt": {
+     "ps_bacs_priminimas_pask": "[4]"
+    },
+    "kb": 12,
+    "m": "09-12",
+    "n": ""
+   },
+   "petshop-siuntu-laiskai.php": {
+    "refs": 19,
+    "by": [
+     "petshop-fakt-siuntos.php",
+     "petshop-desk.php",
+     "petshop-darbalaukis.php"
+    ],
+    "hooks": 4,
+    "cron": [],
+    "tbl": {
+     "ps_shipments": 358
+    },
+    "opt": [],
+    "kb": 17,
+    "m": "08-26",
+    "n": ""
+   },
+   "petshop-dydziai-automatas.php": {
+    "refs": 2,
+    "by": [
+     "petshop-rytas.php"
+    ],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": {
+     "ps_dydziai_auto_log": "[60]"
+    },
+    "kb": 11,
+    "m": "09-26",
+    "n": "Petshop Dydžių automatas v1.0 (nauja prekė → pakuočių šeima)"
+   },
+   "petshop-rezultatai.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_email_jobs": 1098,
+     "ps_email_suppression": 5
+    },
+    "opt": [],
+    "kb": 17,
+    "m": "08-29",
+    "n": "Petshop Rezultatai v1.1 (laiškų skydelis + stop/go + pajamų priskyrimas)"
+   },
+   "petshop-ataskaita-prekes.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_fakt_kainos": 1955,
+     "ps_akcijos": 0,
+     "ps_akciju_prekes": 0,
+     "ps_fakt_atsargos_d": 96523,
+     "ps_fakt_eilutes": 911
+    },
+    "opt": [],
+    "kb": 19,
+    "m": "08-31",
+    "n": "Petshop Ataskaita Prekes"
+   },
+   "petshop-kanalai.php": {
+    "refs": 6,
+    "by": [
+     "petshop-analitika.php",
+     "petshop-faktai.php"
+    ],
+    "hooks": 3,
+    "cron": [],
+    "tbl": {
+     "ps_carts": 31626,
+     "ps_email_jobs": 1098
+    },
+    "opt": [],
+    "kb": 12,
+    "m": "09-29",
+    "n": "Petshop Kanalai"
+   },
+   "petshop-langai-admin.php": {
+    "refs": 43,
+    "by": [
+     "petshop-prenumeratos-langas.php"
+    ],
+    "hooks": 3,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 34,
+    "m": "08-29",
+    "n": "Petshop Langai — admin sritis"
+   },
+   "petshop-rytas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 5,
+    "cron": [],
+    "tbl": {
+     "ps_fakt_uzsakymai": 351,
+     "ps_fakt_eilutes": 911,
+     "ps_fakt_siuntos": 357,
+     "ps_fakt_atsargos_d": 96523,
+     "ps_fakt_reklama": 265,
+     "ps_partijos": 1091,
+     "ps_dim_klientai": 5646,
+     "ps_ataskaitu_dienos": 2429,
+     "ps_shipments": 358,
+     "ps_email_jobs": 1098,
+     "ps_event_log": 907,
+     "ps_web_ivykiai": 44787
+    },
+    "opt": {
+     "ps_paleidimo_data": "2026-10-01",
+     "ps_feeds_paskutinis": "[2]",
+     "ps_ads_paskutinis": "[3]",
+     "ps_sargas_pastas": "terra@gyvunai.lt",
+     "ps_ads_raktas": "FDPFp74rq8G8ceoglCn5sA7Yr"
+    },
+    "kb": 49,
+    "m": "10-03",
+    "n": "Petshop Rytas"
+   },
+   "petshop-perziuru-priminimas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 3,
+    "cron": {
+     "ps_browse_abandon_check": "10-13 15:37"
+    },
+    "tbl": {
+     "ps_browse_log": 186,
+     "ps_carts": 31626,
+     "ps_email_jobs": 1098
+    },
+    "opt": {
+     "ps_browse_log_db": "1.0.0"
+    },
+    "kb": 8,
+    "m": "08-29",
+    "n": "Petshop Perziuru Priminimas v1.0 (Browse abandonment)"
+   },
+   "petshop-juosta.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 5,
+    "cron": {
+     "ps_juosta_reikia_cron": "10-13 15:28"
+    },
+    "tbl": {
+     "ps_tiekimas": 23
+    },
+    "opt": {
+     "ps_juosta_reikia": "[3]"
+    },
+    "kb": 23,
+    "m": "09-06",
+    "n": ""
+   },
+   "petshop-av-reduce.php": {
+    "refs": 9,
+    "by": [
+     "petshop-partijos.php",
+     "petshop-kelio-fiksavimas.php",
+     "petshop-darbalaukis.php",
+     "petshop-av-order.php"
+    ],
+    "hooks": 4,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 6,
+    "m": "09-12",
+    "n": ""
+   },
+   "petshop-gavimo-perrusiavimas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 4,
+    "cron": [],
+    "tbl": {
+     "ps_sources": 4332
+    },
+    "opt": {
+     "ps_gavimo_perrus_pask": "[2]"
+    },
+    "kb": 6,
+    "m": "09-12",
+    "n": ""
+   },
+   "petshop-prenumerata-katalogas.php": {
+    "refs": 14,
+    "by": [
+     "petshop-prenumerata-paskyra.php",
+     "petshop-prenumeratos-langas.php"
+    ],
+    "hooks": 8,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 16,
+    "m": "08-30",
+    "n": "Petshop Prenumerata Katalogas v4.0"
+   },
+   "petshop-av-sheets.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_shipments": 358
+    },
+    "opt": [],
+    "kb": 10,
+    "m": "09-14",
+    "n": ""
+   },
+   "petshop-prenumerata-paskyra.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 3,
+    "cron": [],
+    "tbl": [],
+    "opt": {
+     "ps_pren_paskyra_flush": "1.3"
+    },
+    "kb": 44,
+    "m": "08-30",
+    "n": "Petshop Prenumerata Paskyra v3.0 (dizaino etalonas S1520)"
+   },
+   "petshop-feeding-calc-rest.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_feeding_map": 561,
+     "ps_feeding_tables": 296,
+     "ps_feeding_rows": 5549,
+     "ps_pets": 105
+    },
+    "opt": [],
+    "kb": 19,
+    "m": "08-03",
+    "n": "Petshop Feeding Calc REST"
+   },
+   "petshop-ataskaita-klientai.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_fakt_uzsakymai": 351,
+     "ps_dim_klientai": 5646,
+     "ps_fakt_eilutes": 911,
+     "ps_ist_fakt_uzsakymai": 9621,
+     "ps_ist_uzsakymai": 10169
+    },
+    "opt": {
+     "ps_stat_pradzia": "",
+     "ps_rytas_ribos": "[1]"
+    },
+    "kb": 32,
+    "m": "08-31",
+    "n": "Petshop Ataskaita Klientai"
+   },
+   "petshop-fakt-siuntos.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 8,
+    "cron": {
+     "ps_venipak_sekimas": "10-13 15:36"
+    },
+    "tbl": {
+     "ps_fakt_siuntos": 357,
+     "ps_tarifai": 29,
+     "ps_shipments": 358,
+     "ps_fakt_eilutes": 911,
+     "ps_tarifu_priemokos": 4
+    },
+    "opt": {
+     "ps_fakt_siuntu_gyvavimas_pask": "[4]"
+    },
+    "kb": 55,
+    "m": "09-12",
+    "n": "Petshop Faktai — Siuntos"
+   },
+   "petshop-prenumerata-veiksmas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 4,
+    "m": "08-29",
+    "n": "Petshop Prenumerata Veiksmas v1.0"
+   },
+   "petshop-fakt-atsargos.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": {
+     "ps_fakt_atsargos_d": 96523,
+     "ps_partijos": 1091,
+     "ps_sources": 4332,
+     "ps_fakt_eilutes": 911
+    },
+    "opt": {
+     "ps_fakt_atsargu_paskutinis": "2026-10-12 | 2894"
+    },
+    "kb": 16,
+    "m": "08-26",
+    "n": "Petshop Faktai — Atsargos"
+   },
+   "petshop-rezervacija-av.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 3,
+    "m": "10-13",
+    "n": "Petshop Kasos rezervacija su AV likučiu"
+   },
+   "petshop-venipak-docno.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 2,
+    "m": "09-11",
+    "n": "Petshop Venipak dokumento Nr."
+   },
+   "petshop-webp.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 8,
+    "m": "09-01",
+    "n": "Petshop WebP v1.0 (paveikslėlių konversija į WebP + automatinis naujų failų apdo"
+   },
+   "petshop-dydziai-kortele.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 6,
+    "m": "09-26",
+    "n": "Petshop Dydžių kortelė v1.0 (dydžių juosta katalogo kortelėje)"
+   },
+   "petshop-nuotrauku-zurnalas.php": {
+    "refs": 2,
+    "by": [
+     "petshop-rytas.php"
+    ],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 4,
+    "m": "09-29",
+    "n": "Petshop Nuotraukų žurnalas"
+   },
+   "petshop-login-sargas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_sargas_klaidos": 11725
+    },
+    "opt": [],
+    "kb": 6,
+    "m": "09-30",
+    "n": "Petshop Prisijungimo sargas"
+   },
+   "petshop-prenumerata.php": {
+    "refs": 74,
+    "by": [
+     "petshop-prenumerata-katalogas.php",
+     "petshop-prenumerata-paskyra.php",
+     "petshop-prenumerata-veiksmas.php",
+     "petshop-prenumeratos-langas.php"
+    ],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_subscriptions": 0,
+     "ps_subscription_events": 0,
+     "ps_subscription_items": 0
+    },
+    "opt": {
+     "ps_prenumerata_db": "4",
+     "ps_pren_ciklas_log": "[3]"
+    },
+    "kb": 28,
+    "m": "08-30",
+    "n": "Petshop Prenumerata v2.0 (variklis)"
+   },
+   "petshop-siuntu-valymas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_shipments": 358
+    },
+    "opt": [],
+    "kb": 2,
+    "m": "08-29",
+    "n": ""
+   },
+   "automation-by-installatron.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 1,
+    "m": "05-05",
+    "n": "WordPress automation by Installatron"
+   },
+   "petshop-analitika.php": {
+    "refs": 86,
+    "by": [
+     "petshop-analitika-langas.php",
+     "petshop-ataskaita-lankomumas.php",
+     "petshop-relaunch.php"
+    ],
+    "hooks": 3,
+    "cron": [],
+    "tbl": {
+     "ps_web_ivykiai": 44787,
+     "ps_web_dienos": 20275,
+     "ps_fakt_uzsakymai": 351,
+     "ps_fakt_eilutes": 911
+    },
+    "opt": {
+     "ps_web_paskutinis_agregavimas": "2026-10-13 00:10:03 | 202"
+    },
+    "kb": 39,
+    "m": "09-29",
+    "n": "Petshop Analitika"
+   },
+   "petshop-krepselio-priminimai.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_consent_log": 963,
+     "ps_email_jobs": 1098
+    },
+    "opt": [],
+    "kb": 7,
+    "m": "10-11",
+    "n": "Petshop Krepšelio priminimai visiems"
+   },
+   "petshop-cf-ip.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": {
+     "ps_web_ivykiai": 44787
+    },
+    "opt": [],
+    "kb": 3,
+    "m": "09-27",
+    "n": "Petshop CF IP v1.0 (tikras lankytojo IP už Cloudflare)"
+   },
+   "petshop-autorius.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 3,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 5,
+    "m": "09-30",
+    "n": "Petshop Autorius (S1742)"
+   },
+   "petshop-katalogas.php": {
+    "refs": 1937,
+    "by": [
+     "petshop-akcijos.php",
+     "petshop-juosta.php",
+     "petshop-gavimas.php",
+     "petshop-rinkiniai.php"
+    ],
+    "hooks": 31,
+    "cron": [],
+    "tbl": {
+     "ps_av_zurnalas": 1612,
+     "ps_sources": 4332,
+     "ps_partijos": 1091,
+     "ps_istrintos_prekes_s668": 32,
+     "ps_feeding_map": 561
+    },
+    "opt": {
+     "ps_paleidimo_data": "2026-10-01",
+     "ps_publikuota_backfill": "ok"
+    },
+    "kb": 501,
+    "m": "09-09",
+    "n": ""
+   },
+   "petshop-desk.php": {
+    "refs": 113,
+    "by": [
+     "petshop-av-dropship.php",
+     "petshop-juosta.php",
+     "petshop-darbalaukis.php",
+     "petshop-av-manifestas.php",
+     "petshop-av-tiekimas.php"
+    ],
+    "hooks": 3,
+    "cron": [],
+    "tbl": {
+     "ps_tiekimas": 23,
+     "ps_tiekimas_eil": 109
+    },
+    "opt": [],
+    "kb": 181,
+    "m": "09-15",
+    "n": ""
+   },
+   "petshop-statistika.php": {
+    "refs": 43,
+    "by": [
+     "petshop-rec-log.php",
+     "petshop-rinkiniu-ataskaita.php",
+     "petshop-ataskaitu-agregavimas.php",
+     "petshop-ataskaitos-ui.php",
+     "petshop-paruostu-ataskaita.php",
+     "petshop-anketa-ivykiai.php",
+     "petshop-kanalai.php",
+     "petshop-rec-ui.php",
+     "petshop-refill-ivykiai.php",
+     "petshop-faktai.php",
+     "petshop-statistika-vitrina.php",
+     "petshop-ataskaita-pardavimai.php"
+    ],
+    "hooks": 8,
+    "cron": {
+     "ps_stat_valymas": "10-13 21:41"
+    },
+    "tbl": {
+     "ps_laukai_ivykiai": 6486,
+     "ps_ivykiai": 36861,
+     "ps_ataskaitu_dienos": 2429
+    },
+    "opt": [],
+    "kb": 22,
+    "m": "08-16",
+    "n": "Petshop Statistika"
+   },
+   "petshop-clarity.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 1,
+    "m": "09-17",
+    "n": "Petshop Clarity v1.0 (S1689s)"
+   },
+   "petshop-laisku-nuotraukos.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 6,
+    "m": "10-10",
+    "n": "Petshop laiškų nuotraukos"
+   },
+   "petshop-gidu-nuorodos.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 4,
+    "m": "09-29",
+    "n": "Petshop gamintojų gidų nuorodos"
+   },
+   "petshop-atsisakymas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 4,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 7,
+    "m": "08-22",
+    "n": ""
+   },
+   "petshop-mobilus.php": {
+    "refs": 325,
+    "by": [],
+    "hooks": 3,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 19,
+    "m": "09-29",
+    "n": "Petshop mobilus patogumas"
+   },
+   "petshop-kampaniju-langas.php": {
+    "refs": 9,
+    "by": [
+     "petshop-klientai.php",
+     "petshop-naujienlaiskiai-admin.php"
+    ],
+    "hooks": 0,
+    "cron": [],
+    "tbl": {
+     "ps_consent_log": 963
+    },
+    "opt": [],
+    "kb": 11,
+    "m": "08-29",
+    "n": "Petshop Kampaniju Langas v1.1"
+   },
+   "petshop-dydziai.php": {
+    "refs": 10,
+    "by": [
+     "petshop-dydziai-katalogas.php",
+     "petshop-dydziai-kortele.php"
+    ],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_ist_fakt_eilutes": 23391,
+     "ps_fakt_eilutes": 911
+    },
+    "opt": [],
+    "kb": 16,
+    "m": "09-26",
+    "n": "Petshop Dydziai v2.0 (pakuočių lentelė prekės puslapyje)"
+   },
+   "petshop-lenteliu-valymas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": {
+     "ps_carts": 31626,
+     "ps_web_ivykiai": 44787,
+     "ps_sargas_klaidos": 11725,
+     "ps_web_dienos": 20275
+    },
+    "opt": {
+     "ps_lenteliu_valymas_pask": "[6]"
+    },
+    "kb": 3,
+    "m": "09-25",
+    "n": "Petshop Lentelių valymas v1.0 (ps_carts, ps_web_ivykiai, ps_sargas_klaidos, botų"
+   },
+   "petshop-rec-ui.php": {
+    "refs": 14,
+    "by": [],
+    "hooks": 3,
+    "cron": [],
+    "tbl": {
+     "ps_rec_log": 40
+    },
+    "opt": [],
+    "kb": 5,
+    "m": "08-16",
+    "n": "Petshop Rec UI"
+   },
+   "petshop-schema.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 4,
+    "m": "08-19",
+    "n": "Petshop Schema — prekių naršymo takelis"
+   },
+   "petshop-seseliai.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": {
+     "ps_seseliai_valandinis": "10-13 16:13"
+    },
+    "tbl": {
+     "ps_sources": 4332
+    },
+    "opt": {
+     "ps_seseliai_paskutinis": "[6]"
+    },
+    "kb": 4,
+    "m": "08-20",
+    "n": ""
+   },
+   "petshop-pilnumas.php": {
+    "refs": 18,
+    "by": [
+     "petshop-parseris.php",
+     "petshop-katalogas.php",
+     "petshop-gavimas.php"
+    ],
+    "hooks": 2,
+    "cron": {
+     "ps_pilnumas_naktinis": "10-14 05:00"
+    },
+    "tbl": {
+     "ps_feeding_map": 561
+    },
+    "opt": {
+     "ps_pilnumas_naktinis_rez": "[2]"
+    },
+    "kb": 19,
+    "m": "08-18",
+    "n": ""
+   },
+   "petshop-laukai.php": {
+    "refs": 325,
+    "by": [
+     "petshop-pristatymo-pazadas.php"
+    ],
+    "hooks": 22,
+    "cron": [],
+    "tbl": [],
+    "opt": {
+     "ps_laukai_grupiu_foto": "[5]"
+    },
+    "kb": 184,
+    "m": "09-02",
+    "n": "Petshop Laukai"
+   },
+   "petshop-ads-offline.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 3,
+    "cron": [],
+    "tbl": {
+     "ps_fakt_uzsakymai": 351
+    },
+    "opt": {
+     "ps_ads_offline_raktas": "AiedogHzttJiKz8HZgLFUvMdk"
+    },
+    "kb": 4,
+    "m": "09-15",
+    "n": "Petshop Ads Offline"
+   },
+   "petshop-prenumeratu-prognoze.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_subscriptions": 0,
+     "ps_subscription_items": 0
+    },
+    "opt": [],
+    "kb": 7,
+    "m": "08-30",
+    "n": "Petshop prenumeratu prognoze v1.0 (likuciu poreikis 60 d.)"
+   },
+   "petshop-teises.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 7,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 11,
+    "m": "08-10",
+    "n": ""
+   },
+   "petshop-darbalaukis.php": {
+    "refs": 163,
+    "by": [
+     "petshop-dropship-sargas.php",
+     "petshop-bacs-priminimas.php",
+     "petshop-gavimo-perrusiavimas.php",
+     "petshop-kliento-siuntos.php"
+    ],
+    "hooks": 32,
+    "cron": {
+     "ps_venipak_sekimas": "10-13 15:36",
+     "ps_velavimo_laiskai": "10-14 11:00",
+     "ps_dl_atsauktu_valymas": "10-14 00:20"
+    },
+    "tbl": {
+     "ps_tiekimas": 23,
+     "ps_partijos": 1091,
+     "ps_shipments": 358,
+     "ps_tiekimas_eil": 109,
+     "ps_fakt_grazinimai": 0
+    },
+    "opt": {
+     "ps_tiekeju_pastai": "[5]",
+     "ps_venipak_sekimas_paskutinis": "[11]",
+     "ps_velavimo_laiskai_paskutinis": "[7]",
+     "ps_dl_atsauktu_valymas_paskutinis": "[4]",
+     "ps_laisku_archyvas": "[38]"
+    },
+    "kb": 583,
+    "m": "10-13",
+    "n": ""
+   },
+   "petshop-av-limit.php": {
+    "refs": 6,
+    "by": [
+     "petshop-rezervacija-av.php",
+     "petshop-seseliai.php",
+     "class-fulfillment.php"
+    ],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 5,
+    "m": "09-28",
+    "n": ""
+   },
+   "petshop-rec-variklis.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_rec_log": 40,
+     "ps_pets": 105,
+     "ps_feeding_map": 561,
+     "ps_feeding_tables": 296
+    },
+    "opt": [],
+    "kb": 12,
+    "m": "08-26",
+    "n": "Petshop Rec Variklis"
+   },
+   "petshop-av-admin.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 4,
+    "cron": [],
+    "tbl": {
+     "ps_shipments": 358
+    },
+    "opt": [],
+    "kb": 7,
+    "m": "08-05",
+    "n": ""
+   },
+   "petshop-rankos.php": {
+    "refs": 10,
+    "by": [
+     "petshop-katalogas.php"
+    ],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 7,
+    "m": "08-12",
+    "n": ""
+   },
+   "petshop-av-expiry.php": {
+    "refs": 9,
+    "by": [
+     "petshop-av-sheets.php",
+     "petshop-desk.php",
+     "petshop-av-tiekimas.php"
+    ],
+    "hooks": 6,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 8,
+    "m": "08-05",
+    "n": ""
+   },
+   "petshop-wc-sync.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 5,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 10,
+    "m": "08-08",
+    "n": ""
+   },
+   "petshop-kasa-paskyra.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 2,
+    "m": "09-17",
+    "n": "Petshop Kasa: užsakymas esamai paskyrai v1.0 (S1690)"
+   },
+   "petshop-klientui.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 2,
+    "m": "09-06",
+    "n": ""
+   },
+   "petshop-hero-preload.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 1,
+    "m": "09-01",
+    "n": "Petshop Hero Preload v1.0 (pradinio LCP paveikslėlio preload + fetchpriority)"
+   },
+   "petshop-fakt-kainos.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_fakt_kainos": 1955
+    },
+    "opt": [],
+    "kb": 9,
+    "m": "08-26",
+    "n": "Petshop Faktai — Kainos"
+   },
+   "petshop-gavimas.php": {
+    "refs": 245,
+    "by": [
+     "petshop-katalogas.php"
+    ],
+    "hooks": 9,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 96,
+    "m": "09-28",
+    "n": ""
+   },
+   "petshop-vf-feed.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 7,
+    "m": "09-02",
+    "n": ""
+   },
+   "petshop-dropship-matomumas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_stock_watch": 8,
+     "ps_ist_eilutes": 24555,
+     "ps_ist_uzsakymai": 10169
+    },
+    "opt": [],
+    "kb": 8,
+    "m": "09-18",
+    "n": "Petshop Dropship Matomumas"
+   },
+   "petshop-vertimai.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 2,
+    "m": "09-08",
+    "n": "Petshop vertimai"
+   },
+   "petshop-ps-pets-migration-freeze.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": {
+     "ps_pets": 105
+    },
+    "opt": [],
+    "kb": 7,
+    "m": "07-20",
+    "n": "Petshop ps_pets Migration Freeze (TEMP)"
+   },
+   "petshop-rysiai.php": {
+    "refs": 6,
+    "by": [
+     "petshop-katalogas.php"
+    ],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 16,
+    "m": "08-09",
+    "n": ""
+   },
+   "petshop-innodb.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 2,
+    "m": "08-17",
+    "n": ""
+   },
+   "petshop-paieska.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 4,
+    "cron": [],
+    "tbl": [],
+    "opt": {
+     "ps_paieska_kontaktas_tel": "+370 681 87787"
+    },
+    "kb": 27,
+    "m": "09-29",
+    "n": "Petshop paieška v1.2 (S1699 → S1720 → S1740)"
+   },
+   "petshop-fakt-reklama.php": {
+    "refs": 8,
+    "by": [
+     "petshop-ataskaita-menuo.php",
+     "petshop-rytas.php",
+     "petshop-ataskaita-pardavimai.php"
+    ],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_fakt_reklama": 265,
+     "ps_web_ivykiai": 44787
+    },
+    "opt": {
+     "ps_stat_pradzia": ""
+    },
+    "kb": 10,
+    "m": "08-27",
+    "n": "Petshop Fakt Reklama"
+   },
+   "petshop-prenumeratos-langas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_email_jobs": 1098
+    },
+    "opt": {
+     "ps_pren_ciklas_log": "[3]"
+    },
+    "kb": 40,
+    "m": "08-30",
+    "n": "Petshop Prenumeratos Langas v2.4"
+   },
+   "petshop-refill-ivykiai.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": {
+     "ps_refill_iv_veidrodis": "10-13 16:06"
+    },
+    "tbl": {
+     "ps_event_log": 907,
+     "ps_email_jobs": 1098,
+     "ps_laukai_ivykiai": 6486
+    },
+    "opt": [],
+    "kb": 7,
+    "m": "08-16",
+    "n": "Petshop Refill Ivykiai"
+   },
+   "petshop-sargas-saugumas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 2,
+    "m": "09-12",
+    "n": ""
+   },
+   "petshop-faktai.php": {
+    "refs": 60,
+    "by": [
+     "petshop-dim-klientai.php",
+     "petshop-fakt-grazinimai.php",
+     "petshop-fakt-siuntos.php",
+     "petshop-fakt-atsargos.php",
+     "petshop-analitika.php",
+     "petshop-darbalaukis.php",
+     "petshop-fakt-kainos.php",
+     "petshop-fakt-reklama.php",
+     "petshop-istorijos-adapteris.php",
+     "petshop-islaidos.php",
+     "petshop-ataskaita-pardavimai.php"
+    ],
+    "hooks": 4,
+    "cron": [],
+    "tbl": {
+     "ps_fakt_uzsakymai": 351,
+     "ps_fakt_eilutes": 911,
+     "ps_fakt_siuntos": 357,
+     "ps_shipments": 358,
+     "ps_carts": 31626,
+     "ps_email_jobs": 1098,
+     "ps_event_log": 907,
+     "ps_ataskaitu_dienos": 2429,
+     "ps_ist_fakt_uzsakymai": 9621
+    },
+    "opt": [],
+    "kb": 37,
+    "m": "09-14",
+    "n": "Petshop Faktai"
+   },
+   "petshop-kliento-siuntos.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 4,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 10,
+    "m": "09-28",
+    "n": ""
+   },
+   "petshop-schema-prekes.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 8,
+    "m": "09-25",
+    "n": "Petshop schema — prekės v1.2 (S1701 → S1720: handlingTime 1–2 d.)"
+   },
+   "petshop-naujienlaiskiai.php": {
+    "refs": 13,
+    "by": [
+     "petshop-kampaniju-langas.php",
+     "nl-renderis.php",
+     "petshop-naujienlaiskiai-admin.php"
+    ],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_naujienlaiskiai": 0
+    },
+    "opt": {
+     "ps_naujienlaiskiai_db": "1"
+    },
+    "kb": 8,
+    "m": "08-29",
+    "n": "Petshop Naujienlaiskiai v1.0 (variklis)"
+   },
+   "petshop-rinkiniai.php": {
+    "refs": 873,
+    "by": [
+     "petshop-laukai.php",
+     "petshop-pristatymo-pazadas.php"
+    ],
+    "hooks": 10,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 213,
+    "m": "09-27",
+    "n": ""
+   },
+   "petshop-higiena.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 1,
+    "m": "08-29",
+    "n": "Petshop Higiena"
+   },
+   "petshop-rinkiniu-likuciai.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 9,
+    "m": "08-12",
+    "n": ""
+   },
+   "petshop-pet-claim.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_pets": 105
+    },
+    "opt": [],
+    "kb": 7,
+    "m": "08-03",
+    "n": ""
+   },
+   "petshop-relaunch.php": {
+    "refs": 203,
+    "by": [],
+    "hooks": 4,
+    "cron": [],
+    "tbl": {
+     "ps_relaunch_kontaktai": 5666,
+     "ps_web_ivykiai": 44787,
+     "ps_refill_tracking": 447
+    },
+    "opt": {
+     "ps_relaunch_lentele_v": "1",
+     "ps_relaunch_lentele_v11": "1",
+     "ps_relaunch_raktas": "xJaS4DtkFVVUPtR9EKVh0sVtj"
+    },
+    "kb": 23,
+    "m": "09-16",
+    "n": "Petshop Relaunch (informacinė kampanija istoriniams klientams)"
+   },
+   "petshop-seo-sablonai.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 3,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 8,
+    "m": "09-25",
+    "n": "Petshop SEO šablonai v1.3 (S1717/S1718, 2.14)"
+   },
+   "petshop-av-manifestas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": {
+     "ps_av_manifestas_log": "[3]"
+    },
+    "kb": 7,
+    "m": "09-23",
+    "n": "Petshop AV manifestas (paėmimo diena)"
+   },
+   "petshop-istorijos-adapteris.php": {
+    "refs": 72,
+    "by": [
+     "petshop-ataskaita-atsargos.php",
+     "petshop-dim-klientai.php",
+     "petshop-ataskaita-prekes.php",
+     "petshop-ataskaita-klientai.php"
+    ],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_ist_fakt_uzsakymai": 9621,
+     "ps_ist_fakt_eilutes": 23391,
+     "ps_v_analize_uzsakymai": 9969,
+     "ps_fakt_uzsakymai": 351,
+     "ps_fakt_eilutes": 911,
+     "ps_v_analize_eilutes": 24298,
+     "ps_ist_uzsakymai": 10169,
+     "ps_ist_eilutes": 24555,
+     "ps_dim_klientai": 5646
+    },
+    "opt": {
+     "ps_ist_adapt_perstatyta": "2026-10-01 19:43:37"
+    },
+    "kb": 32,
+    "m": "08-31",
+    "n": "Petshop Istorijos Adapteris"
+   },
+   "petshop-kreipinys.php": {
+    "refs": 11,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 2,
+    "m": "08-31",
+    "n": "Petshop Kreipinys"
+   },
+   "petshop-pristatymo-pazadas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 6,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 11,
+    "m": "09-25",
+    "n": "Petshop pristatymo pažadas v1.0 (S1720, planas 2.17)"
+   },
+   "petshop-islaidos.php": {
+    "refs": 6,
+    "by": [
+     "petshop-ataskaita-menuo.php",
+     "petshop-fakt-reklama.php"
+    ],
+    "hooks": 4,
+    "cron": [],
+    "tbl": {
+     "ps_islaidos": 0,
+     "ps_web_ivykiai": 44787,
+     "ps_fakt_siuntos": 357
+    },
+    "opt": {
+     "ps_stat_pradzia": "",
+     "ps_fakt_paysera_fiks_ct": "5",
+     "ps_fakt_pakuote_vid_ct": "40",
+     "ps_fakt_testiniai_emailai": "",
+     "ps_stat_zaliu_dienos": "180"
+    },
+    "kb": 20,
+    "m": "08-26",
+    "n": "Petshop Islaidos"
+   },
+   "petshop-straipsniai.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 3,
+    "m": "09-24",
+    "n": "Petshop Straipsniai — tinklaraščio įrašų išvaizda"
+   },
+   "petshop-av-tiekimas.php": {
+    "refs": 69,
+    "by": [
+     "petshop-av-dropship.php",
+     "petshop-desk.php",
+     "petshop-darbalaukis.php"
+    ],
+    "hooks": 5,
+    "cron": [],
+    "tbl": {
+     "ps_sources": 4332,
+     "ps_tiekimas": 23,
+     "ps_shipments": 358,
+     "ps_tiekimas_eil": 109
+    },
+    "opt": {
+     "ps_tiek_laiskai": "[2]",
+     "ps_tiekeju_pastai": "[5]"
+    },
+    "kb": 77,
+    "m": "09-29",
+    "n": ""
+   },
+   "petshop-statistika-vitrina.php": {
+    "refs": 237,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 12,
+    "m": "08-16",
+    "n": "Petshop Statistika — Vitrina"
+   },
+   "petshop-av-source.php": {
+    "refs": 52,
+    "by": [
+     "petshop-partijos.php",
+     "petshop-av-reduce.php",
+     "petshop-gavimo-perrusiavimas.php",
+     "petshop-katalogas.php",
+     "petshop-desk.php",
+     "petshop-darbalaukis.php",
+     "petshop-pristatymo-pazadas.php",
+     "petshop-av-tiekimas.php",
+     "petshop-av-order.php"
+    ],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 10,
+    "m": "09-12",
+    "n": ""
+   },
+   "petshop-av-order.php": {
+    "refs": 10,
+    "by": [
+     "petshop-kelio-fiksavimas.php",
+     "petshop-darbalaukis.php",
+     "petshop-pristatymo-pazadas.php",
+     "petshop-av-tiekimas.php"
+    ],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_shipments": 358
+    },
+    "opt": [],
+    "kb": 5,
+    "m": "09-12",
+    "n": ""
+   },
+   "petshop-ataskaita-pardavimai.php": {
+    "refs": 18,
+    "by": [
+     "petshop-ataskaitos-ui.php",
+     "petshop-ataskaita-atsargos.php",
+     "petshop-ataskaita-menuo.php",
+     "petshop-ataskaita-prekes.php",
+     "petshop-rytas.php",
+     "petshop-ataskaita-klientai.php"
+    ],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_ataskaitu_dienos": 2429,
+     "ps_fakt_uzsakymai": 351,
+     "ps_fakt_eilutes": 911,
+     "ps_fakt_grazinimai": 0,
+     "ps_fakt_reklama": 265
+    },
+    "opt": {
+     "ps_stat_pradzia": ""
+    },
+    "kb": 59,
+    "m": "08-27",
+    "n": "Petshop Ataskaita — Pardavimai"
+   },
+   "petshop-greitis.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 3,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 4,
+    "m": "09-01",
+    "n": "Petshop Greitis v1.0 (front-end dieta: HEAD skriptai, šriftai, emoji, migrate)"
+   },
+   "petshop-av-stock.php": {
+    "refs": 43,
+    "by": [
+     "petshop-av-reduce.php",
+     "petshop-rezervacija-av.php",
+     "petshop-darbalaukis.php",
+     "petshop-av-limit.php",
+     "petshop-av-tiekimas.php",
+     "petshop-av-source.php"
+    ],
+    "hooks": 7,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 12,
+    "m": "08-05",
+    "n": ""
+   },
+   "petshop-kategorijos-aprasymas.php": {
+    "refs": 2,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 5,
+    "m": "08-18",
+    "n": "Petshop Kategorijos Aprašymo Vieta v1.1.0 (perkėlimas po prekių + išskleidimas, "
+   },
+   "petshop-legacy-importas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 10,
+    "m": "08-29",
+    "n": "Petshop Legacy Importas"
+   },
+   "petshop-rm-kesas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 0,
+    "cron": [],
+    "tbl": [],
+    "opt": {
+     "ps_rm_kesas_praleista": "[14]"
+    },
+    "kb": 2,
+    "m": "09-30",
+    "n": "Petshop RM kešas"
+   },
+   "petshop-prekes-tvarka.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": {
+     "ps_prekes_tvarka_isjungta": "1"
+    },
+    "kb": 1,
+    "m": "09-25",
+    "n": "Petshop prekės puslapio tvarka v1.0 (S1720, planas 2.17)"
+   },
+   "petshop-atributai.php": {
+    "refs": 68,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 13,
+    "m": "08-28",
+    "n": "Petshop Atributai"
+   },
+   "petshop-veisles.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": {
+     "ps_web_ivykiai": 44787
+    },
+    "opt": [],
+    "kb": 18,
+    "m": "09-23",
+    "n": "Petshop Veislės — maisto kaina veislės puslapyje"
+   },
+   "petshop-planas-langas.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": {
+     "ps_fakt_uzsakymai": 351,
+     "ps_fakt_eilutes": 911,
+     "ps_fakt_reklama": 265,
+     "ps_refill_tracking": 447,
+     "ps_email_jobs": 1098,
+     "ps_web_ivykiai": 44787
+    },
+    "opt": [],
+    "kb": 16,
+    "m": "09-29",
+    "n": "Petshop Q4 plano langas (vartai E)"
+   },
+   "petshop-404-atitikmuo.php": {
+    "refs": 0,
+    "by": [],
+    "hooks": 1,
+    "cron": [],
+    "tbl": [],
+    "opt": {
+     "ps_404_atitikmuo_log": "[300]"
+    },
+    "kb": 10,
+    "m": "09-20",
+    "n": "Petshop 404 atitikmuo v1.1 (S1689s, S1698)"
+   },
+   "petshop-naujienlaiskiai-admin.php": {
+    "refs": 114,
+    "by": [],
+    "hooks": 2,
+    "cron": [],
+    "tbl": [],
+    "opt": [],
+    "kb": 21,
+    "m": "08-29",
+    "n": "Petshop Naujienlaiskiai Admin v1.0"
+   }
+  }
+ },
+ "v": "dep-152151",
+ "kurimas": 200,
+ "sid": 7177,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
