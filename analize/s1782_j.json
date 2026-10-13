@@ -1,0 +1,341 @@
+{
+ "1": {
+  "v": "S1782j",
+  "pagal_sav": [
+   {
+    "sav": "202637",
+    "metodas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "n": "28"
+   },
+   {
+    "sav": "202637",
+    "metodas": "VENIPAK Kurjeris",
+    "n": "5"
+   },
+   {
+    "sav": "202637",
+    "metodas": "LP Express",
+    "n": "2"
+   },
+   {
+    "sav": "202638",
+    "metodas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "n": "56"
+   },
+   {
+    "sav": "202638",
+    "metodas": "VENIPAK Kurjeris",
+    "n": "13"
+   },
+   {
+    "sav": "202638",
+    "metodas": "LP Express",
+    "n": "3"
+   },
+   {
+    "sav": "202639",
+    "metodas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "n": "47"
+   },
+   {
+    "sav": "202639",
+    "metodas": "VENIPAK Kurjeris",
+    "n": "6"
+   },
+   {
+    "sav": "202639",
+    "metodas": "LP Express",
+    "n": "4"
+   },
+   {
+    "sav": "202640",
+    "metodas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "n": "58"
+   },
+   {
+    "sav": "202640",
+    "metodas": "LP Express",
+    "n": "6"
+   },
+   {
+    "sav": "202640",
+    "metodas": "VENIPAK Kurjeris",
+    "n": "4"
+   },
+   {
+    "sav": "202641",
+    "metodas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "n": "73"
+   },
+   {
+    "sav": "202641",
+    "metodas": "VENIPAK Kurjeris",
+    "n": "11"
+   },
+   {
+    "sav": "202641",
+    "metodas": "LP Express",
+    "n": "2"
+   },
+   {
+    "sav": "202642",
+    "metodas": "VENIPAK paštomatai/atsiėmimo punktai",
+    "n": "21"
+   },
+   {
+    "sav": "202642",
+    "metodas": "VENIPAK Kurjeris",
+    "n": "6"
+   },
+   {
+    "sav": "202642",
+    "metodas": "LP Express",
+    "n": "2"
+   }
+  ],
+  "lp_pask": [
+   {
+    "id": "36850",
+    "d": "2026-10-13"
+   },
+   {
+    "id": "36836",
+    "d": "2026-10-12"
+   },
+   {
+    "id": "36743",
+    "d": "2026-10-08"
+   },
+   {
+    "id": "36682",
+    "d": "2026-10-05"
+   },
+   {
+    "id": "36666",
+    "d": "2026-10-04"
+   }
+  ],
+  "ist_lp": [],
+  "ist_stulp": [
+   "uzsakymas_id",
+   "sukurta_at",
+   "apmoketa_at",
+   "statusas_galutinis",
+   "statusas_at",
+   "klientas_id",
+   "klientas_email_hash",
+   "klientas_naujas",
+   "klientas_uzsakymo_nr",
+   "dienos_nuo_ankstesnio",
+   "prekiu_suma_ct",
+   "nuolaidu_ct",
+   "kuponu_kodai",
+   "tasku_panaudota_ct",
+   "tasku_sukaupta_ct",
+   "pristatymas_paimta_ct",
+   "pristatymas_savikaina_ct",
+   "small_cart_fee_ct",
+   "pvm_ct",
+   "viso_ct",
+   "mokejimo_budas",
+   "mokejimo_mokestis_ct",
+   "pakuotes_savikaina_ct",
+   "savikaina_ct",
+   "dovanu_savikaina_ct",
+   "marza_ct",
+   "kontribucija_ct",
+   "sandeliu_kiekis",
+   "misrus",
+   "sandeliai",
+   "vezejai",
+   "kanalas_pirmas",
+   "kanalas_paskutinis",
+   "utm_source",
+   "utm_medium",
+   "utm_campaign",
+   "gclid",
+   "fbclid",
+   "referer_domenas",
+   "landing_url"
+  ],
+  "lp_kodas": {
+   "petshop-fakt-siuntos.php": [
+    "53: * `(order_id, carrier, tracking_number)`, t.y. viena eilute vienam numeriui.",
+    "80: * `sandelio_kodas()` verca `legacy` -> `av`; `svoris_g()` sandeliui `av` ima",
+    "93: * svoris butu 20+30=50 kg > 42; jei 15 kg — 95 kg. Telpa tik viena versija:",
+    "96: * Kaina = baze x (1 + kintamas %) + svoris_kg x (ct/kg).",
+    "119: * Kaina = baze x (1 + priemokos − nuolaida + kintamas_pct) + svoris_kg x ct/kg.",
+    "125: * `ps-backups/petshop-fakt-siuntos.php.bak_lp_20260826_101258`.",
+    "235: svoris_deklaruotas_g INT UNSIGNED NULL DEFAULT NULL,",
+    "257: svoris_nuo_g INT UNSIGNED NOT NULL DEFAULT 0,",
+    "258: svoris_iki_g INT UNSIGNED NULL DEFAULT NULL,",
+    "270: KEY sv (svoris_nuo_g, svoris_iki_g)"
+   ],
+   "petshop-desk.php": [
+    "22: * Petshop Desk v3.46 (H259) — PAŠTOMATAS: KELIOS DĖŽĖS = KELIOS SIUNTOS TAM PAČIAM KLIENTUI.",
+    "24: * KODĖL (Raimis, H259): „jei į paštomatą — formuojamos kelios siuntos tam pačiam",
+    "28: * po 1 dėžę (svoris dalinamas), visi siuntų nr. sudedami į vieną",
+    "31: * Petshop Desk v3.45 (H258) — VENIPAK PERREGISTRAVIMAS SU KITU DĖŽIŲ SKAIČIUMI.",
+    "33: * KODĖL (Raimis, H258): „o jei man reikia ne vieno lipduko tam pačiam klientui?\"",
+    "39: * Petshop Desk v3.44 (H257) — Įrankių nuoroda „Išsiųsti laiškai\" → „Laiškai tiekėjams\"",
+    "42: * Petshop Desk v3.43 (H255) — 🔴 DROPSHIP NEBEDINGSTA PO VENIPAK + IŠĖJIMAS IŠ „PARUOŠTA SIŲSTI“.",
+    "44: * KODĖL (H253 E2E testas, Raimis: „sistema neveikia“): užregistravus Venipak",
+    "58: * Petshop Desk v3.42 (H250) — Įrankiuose nuoroda „Išsiųsti laiškai\" (archyvas).",
+    "140: * SVORIS PAGAL SANDĖLĮ rytinėje eigoje."
+   ],
+   "petshop-darbalaukis.php": [
+    "43: * Petshop Darbalaukis v3.39.1 (S1625, radinys Venipak teste): pasiūlymas „[T] veža į AV“, kai to tiekėjo užsakymas į AV atviras (v3.2 taisy",
+    "45: * Petshop Darbalaukis v3.39 (S1625, darbuotojo prašymas per Raimį): skydelyje **„Pastabos (vidinės — mato tik darbuotojai)“** — laisvas tek",
+    "58: *   „Kaip atkeliaus į AV“ / svoris / dėžės, VIENAS mygtukas „Užsakyti iš [T] (n užs. + m prek. į AV)“, pilna peržiūra (su AV lentele). Sava",
+    "63: * Petshop Darbalaukis v3.36 (S1620, Raimis 09-06 „2 – ok, 3 – a ir b“): FILTRAI „Visi“ lange — Data „Nuo–iki“ (variklio `datos_riba('interv",
+    "108: * v3.25 (S1617 — KREDITINĖ pusiau automatinė; Raimis 09-05: K1 sava KR-AVPN eilė (temos base.php v2.9 — 5 eil.), K2 A — 3,99 € atskira pasl",
+    "306: *   kaupiama partija + dar nesudėtos „veža į AV“ eilutės, pristatymas/svoris/dėžės, adresatai, „Peržiūrėti laišką“; „Kartu su",
+    "312: *   svoris) — savas `lipdukas` veiksmas su sandelis=tiekėjas; jei pristatymas ne Venipak (pvz. flat_rate) — įspėjimas vietoj",
+    "344: *   + sekimo laiškas — kai visos dalys. K3+V7 — „Lipdukas“ per dialogą (dėžės, paštomatas/adresas, svoris) → savas",
+    "417: add_action( 'admin_post_ps_dl_kreditine', array( __CLASS__, 'kreditine_vykdyti' ) ); // v3.25",
+    "426: add_filter( 'woocommerce_order_fully_refunded_status', array( __CLASS__, 'kr_be_statuso' ), 20, 3 ); // v3.25"
+   ],
+   "petshop-faktai.php": [
+    "22: *   p25 petshop-partijos      — nurabo partijas (savikaina tampa galutine)",
+    "123: kuponu_kodai VARCHAR(255) NOT NULL DEFAULT '',",
+    "150: landing_url VARCHAR(255) NOT NULL DEFAULT '',",
+    "183: pavadinimas_tuo_metu VARCHAR(255) NOT NULL DEFAULT '',",
+    "207: svoris_g INT NOT NULL DEFAULT 0,",
+    "312: return $e === '' ? '' : hash( 'sha256', $e );",
+    "321: return array( 'source' => '', 'carrier' => '', 'label' => '', 'reason' => 'resolve nepasiekiamas' );",
+    "464: 'kuponu_kodai'             => mb_substr( implode( ',', $kup ), 0, 255 ),",
+    "491: 'landing_url'              => mb_substr( (string) ( $pi['landing_url'] ?? '' ), 0, 255 ),",
+    "621: $svoris = 0;"
+   ],
+   "petshop-kliento-siuntos.php": [
+    "142: . '.ps-siunta__antr{display:flex;align-items:center;gap:10px;flex-wrap:wrap;font-size:1.05em}.ps-siunta__busena{font-size:.8em;font-weigh"
+   ],
+   "petshop-rinkiniai.php": [
+    "3: * Petshop Rinkiniai v1.45 (S1725) — DP pakų „Nuolaida %\" valdoma ČIA (ne atskirame lange):",
+    "9: *   pastomato_sargas() slepe pastomatus TIK pagal svori (>25 kg). Dabar: bet kuri krepselio",
+    "63: * Petshop Rinkiniai v1.36 (H290) — DU SAVININKO NURODYMAI (2026-08-25).",
+    "135: *   filtrais: kategorija (medis su palikuonimis) · svoris (pa_pakuotes_dydis) ·",
+    "202: const PASTOMATO_RIBA = 25.0;",
+    "215: add_filter( 'woocommerce_package_rates', array( __CLASS__, 'pastomato_sargas' ), 100, 2 );",
+    "232: /* v1.25: LIKUCIO UZRAKTAS. Rinkinys ir DP pakas savo likucio NETURI —",
+    "445: public static function pastomato_sargas( $rates, $package ) {",
+    "454: $w = (float) $p->get_weight();",
+    "463: if ( mb_strpos( $tekstas, $z ) !== false ) { unset( $rates[ $raktas ] ); break; }"
+   ],
+   "petshop-av-source.php": [
+    "29: *   AV  → venipak ARBA lp_express   (carrier = 'any')",
+    "50: *   carrier: string,       any|venipak",
+    "74: : [ 'source' => 'legacy', 'carrier' => 'any', 'courier_only' => false, 'reason' => 'resolverio nėra' ];",
+    "83: 'carrier'      => 'any',",
+    "99: 'carrier'      => 'any',          // AV gali ir Venipak, ir LP",
+    "112: 'carrier'      => 'venipak',",
+    "152: $r['source'] = $tiek; $r['carrier'] = 'venipak'; $r['av_uztenka'] = false;",
+    "158: $r['source'] = 'av'; $r['carrier'] = 'any'; $r['av_uztenka'] = true;",
+    "163: $r['source'] = $tiek; $r['carrier'] = 'venipak'; $r['av_uztenka'] = false;",
+    "196: * @return array [ 'av' => ['eilutes'=>[...], 'carrier'=>'any'], 'vf' => [...], ... ]"
+   ],
+   "functions.php": [
+    "52: echo '<div style=\"background:#fff8e1;border-left:3px solid #f9a825;padding:10px 14px;font-size:13px;border-radius:0 4px 4px 0;\">';",
+    "67: echo '<div style=\"margin:8px 0;padding:10px 14px;background:#fff8e1;border-left:3px solid #f9a825;font-size:13px;border-radius:0 4px",
+    "80: add_filter( 'woocommerce_package_rates', 'petshop_hide_parcel_if_courier_only', 10, 2 );",
+    "81: function petshop_hide_parcel_if_courier_only( $rates, $package ) {",
+    "95: if ( ! empty( $res['carrier'] ) && $res['carrier'] === 'venipak' ) {",
+    "116: unset( $rates[ $rate_id ] );",
+    "121: unset( $rates[ $rate_id ] );",
+    "154: unset( $rates[ $rate_id ] );",
+    "159: unset( $rates[ $rate_id ] );",
+    "176: $total_weight     = 0;"
+   ],
+   "snippet#7196 TEMP PS dep-170157": [
+    "11: foreach($src as $n=>$c){ if(!preg_match('/lithuaniapost|lp_express|hide_parcel|pastomato_sargas|woo_lithuaniapost/i',$c)) continue; $L=exp"
+   ]
+  },
+  "zonos": [
+   {
+    "zone_name": "Neringos savivaldybe",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "is_enabled": "1",
+    "instance_id": "9"
+   },
+   {
+    "zone_name": "Neringos savivaldybe",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "is_enabled": "1",
+    "instance_id": "13"
+   },
+   {
+    "zone_name": "Neringos savivaldybe",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1",
+    "instance_id": "10"
+   },
+   {
+    "zone_name": "Lietuva",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "is_enabled": "1",
+    "instance_id": "15"
+   },
+   {
+    "zone_name": "Lietuva",
+    "method_id": "free_shipping",
+    "is_enabled": "0",
+    "instance_id": "1"
+   },
+   {
+    "zone_name": "Lietuva",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1",
+    "instance_id": "8"
+   },
+   {
+    "zone_name": "Lietuva",
+    "method_id": "woo_lithuaniapost_lpexpress_terminal",
+    "is_enabled": "1",
+    "instance_id": "12"
+   },
+   {
+    "zone_name": "Lietuva",
+    "method_id": "local_pickup",
+    "is_enabled": "0",
+    "instance_id": "16"
+   },
+   {
+    "zone_name": "Lietuva",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1",
+    "instance_id": "2"
+   },
+   {
+    "zone_name": "Lietuva",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1",
+    "instance_id": "6"
+   },
+   {
+    "zone_name": "Lietuva",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "is_enabled": "1",
+    "instance_id": "3"
+   },
+   {
+    "zone_name": "Lietuva",
+    "method_id": "shopup_venipak_shipping_courier_method",
+    "is_enabled": "1",
+    "instance_id": "7"
+   },
+   {
+    "zone_name": "Baltijos šalys, be LIetuvos",
+    "method_id": "shopup_venipak_shipping_pickup_method",
+    "is_enabled": "1",
+    "instance_id": "5"
+   }
+  ]
+ },
+ "v": "dep-170157",
+ "kurimas": 200,
+ "sid": 7196,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
