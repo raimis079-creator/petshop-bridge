@@ -1,0 +1,71 @@
+{
+ "1": {
+  "v": "S1781k",
+  "emitter": [
+   "9: * order_shipped (M12, S192) — Venipak/LP neturi švaraus \"shipment created\" hook'o,",
+   "11: * tracking kodas. Idempotencija per _ps_order_shipped_emitted meta zyma.",
+   "28: public static function init() {",
+   "30: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'on_payment_complete' ), 20, 1 );",
+   "35: add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'on_order_paid_status' ), 20, 1 );",
+   "36: add_action( 'woocommerce_order_status_completed', array( __CLASS__, 'on_order_paid_status' ), 20, 1 );",
+   "38: // order_shipped: HPOS naudoja woocommerce_update_order (NE updated_postmeta).",
+   "40: add_action( 'woocommerce_update_order', array( __CLASS__, 'maybe_emit_order_shipped' ), 20, 1 );",
+   "46: public static function on_payment_complete( $order_id ) {",
+   "53: public static function on_order_paid_status( $order_id ) {",
+   "69: private static function emit_order_paid( $order_id ) {",
+   "137: // order_shipped (M12) — kabinamas ant woocommerce_update_order (HPOS).",
+   "139: const SHIPPED_FLAG_META = '_ps_order_shipped_emitted';",
+   "142: * Tikrina ar order igijo tracking koda; jei taip ir dar nefire'inta — emit order_shipped.",
+   "144: public static function maybe_emit_order_shipped( $order_id ) {",
+   "146: // order_shipped eventas jau emit'intas. Venipak plugin'as perraso",
+   "161: if ( $order->get_meta( self::SHIPPED_FLAG_META ) === 'yes' ) {",
+   "186: $result = Petshop_Event_Registry::emit( 'order_shipped', $email, $payload, array(",
+   "187: 'event_id' => 'order_shipped_' . $oid,",
+   "194: remove_action( 'woocommerce_update_order', array( __CLASS__, 'maybe_emit_order_shipped' ), 20 );",
+   "195: $order->update_meta_data( self::SHIPPED_FLAG_META, 'yes' );",
+   "197: add_action( 'woocommerce_update_order', array( __CLASS__, 'maybe_emit_order_shipped' ), 20, 1 );",
+   "224: public static function resolve_tracking( $order ) {",
+   "304: private static function guess_delivery_type( $order ) {"
+  ],
+  "cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "email_jobs": [],
+  "ev_lenteles": [
+   "gaj6_ps_event_log"
+  ]
+ },
+ "v": "dep-111011",
+ "list_praleistas": "SyntaxError: Unexpected end of JSON input",
+ "kurimas": 200,
+ "sid": 7169,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
