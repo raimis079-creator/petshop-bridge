@@ -1,0 +1,147 @@
+{
+ "1": {
+  "v": "S1783e",
+  "rekl_cols": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ],
+  "kamp": [
+   {
+    "id": "",
+    "k": ""
+   },
+   {
+    "id": "21472017542",
+    "k": "P-max | LT | petshop.lt"
+   },
+   {
+    "id": "21565450990",
+    "k": "P-max| All LT | Kačių maistas"
+   },
+   {
+    "id": "23346712074",
+    "k": "petshop"
+   },
+   {
+    "id": "24297462605",
+    "k": "Search | LT | Prekių ženklai"
+   }
+  ],
+  "ga4": {
+   "2026-10-12": [
+    26,
+    925.719999
+   ],
+   "2026-10-11": [
+    24,
+    756.79
+   ],
+   "2026-10-13": [
+    21,
+    701.850001
+   ],
+   "2026-10-10": [
+    10,
+    372.650001
+   ]
+  },
+  "woo": [],
+  "mp": [
+   {
+    "d": "2026-10-10",
+    "n": "7"
+   },
+   {
+    "d": "2026-10-11",
+    "n": "16"
+   },
+   {
+    "d": "2026-10-12",
+    "n": "20"
+   },
+   {
+    "d": "2026-10-13",
+    "n": "16"
+   },
+   {
+    "d": "2026-10-14",
+    "n": "1"
+   }
+  ],
+  "neapm": [
+   [
+    "1419",
+    "10-13 19:48",
+    "on-hold",
+    "28.94",
+    "bacs",
+    "994519",
+    [
+     "Email \"Naujas užsakymas\" sent.",
+     "Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Su",
+     "Likutis sumažintas: Churu kreminis skanėstas katėms su vištiena ir tun"
+    ]
+   ],
+   [
+    "1417",
+    "10-13 18:03",
+    "cancelled",
+    "20.33",
+    "paysera",
+    "d332a6",
+    [
+     "Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\"",
+     "Email \"Atšauktas užsakymas\" sent.",
+     "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo stat"
+    ]
+   ],
+   [
+    "1409",
+    "10-13 07:28",
+    "cancelled",
+    "79.90",
+    "paysera",
+    "a861fe",
+    [
+     "Krepšelio priminimas 2 (cart_abandoned_2) po atšaukimo — dispatch: {\"o",
+     "Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\"",
+     "Email \"Atšauktas užsakymas\" sent."
+    ]
+   ],
+   [
+    "1408",
+    "10-13 06:50",
+    "on-hold",
+    "24.10",
+    "bacs",
+    "d98a36",
+    [
+     "Email \"Naujas užsakymas\" sent.",
+     "Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Su",
+     "Likutis sumažintas: Exclusion Hypoallergenic sausas pašaras vidutinių "
+    ]
+   ]
+  ]
+ },
+ "v": "dep-063509",
+ "kurimas": 200,
+ "sid": 7218,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
