@@ -1,0 +1,100 @@
+{
+ "1": {
+  "v": "S1784b",
+  "failai": [
+   "Oct-2026.tar.gz",
+   "Oct-2026.tar.gz.1",
+   "Oct-2026.tar.gz.2"
+  ],
+  "statusai": {
+   "200": [
+    27520,
+    14025
+   ],
+   "302": [
+    343,
+    213
+   ],
+   "403": [
+    138,
+    68
+   ],
+   "404": [
+    1834,
+    772
+   ],
+   "500": [
+    20,
+    5
+   ]
+  },
+  "eil": 36799,
+  "po_1110": 18506,
+  "blk_iki_1110": 0,
+  "blk_po_1110": 0,
+  "blk_po_kas": [],
+  "geri_robotai": {
+   "Googlebot": 1372,
+   "Bing": 884,
+   "AdsBot": 606,
+   "FB perziuros": 530,
+   "ChatGPT": 409,
+   "GoogleOther": 362,
+   "Perplexity": 292,
+   "Claude": 120,
+   "Apple": 40,
+   "DuckDuckGo": 9
+  },
+  "fatal_nuo_1009": 3,
+  "fatal_pvz": [
+   "[13-Oct-2026 03:10:39 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_product() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php:682",
+   "[13-Oct-2026 11:11:03 UTC] PHP Fatal error:  ob_end_flush(): Cannot use output buffering in output buffering display handlers in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php",
+   "[13-Oct-2026 21:13:32 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_product() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php:682"
+  ],
+  "laiskai": [
+   {
+    "d": "2026-10-14",
+    "n": "46"
+   },
+   {
+    "d": "2026-10-15",
+    "n": "1"
+   }
+  ],
+  "laiskai_problem": 0,
+  "laiskai_dubl": 0,
+  "kanalai": [
+   {
+    "d": "2026-10-14",
+    "k": "mokamas",
+    "n": "5",
+    "eur": "208"
+   },
+   {
+    "d": "2026-10-14",
+    "k": "direct",
+    "n": "2",
+    "eur": "127"
+   },
+   {
+    "d": "2026-10-14",
+    "k": "organika",
+    "n": "1",
+    "eur": "38"
+   },
+   {
+    "d": "2026-10-15",
+    "k": "mokamas",
+    "n": "1",
+    "eur": "160"
+   }
+  ]
+ },
+ "v": "dep-052909",
+ "kurimas": 200,
+ "sid": 7221,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
