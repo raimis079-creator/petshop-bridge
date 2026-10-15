@@ -1,0 +1,402 @@
+{
+ "1": {
+  "v": "S1784d",
+  "kainos": {
+   "14630": [
+    "FARMINA VET LIFE - DOG Dry DIABETIC 12 k",
+    "111.79",
+    "94.71",
+    "94.71",
+    "instock"
+   ],
+   "14634": [
+    "FARMINA VET LIFE - DOG Dry GASTROINTESTI",
+    "111.79",
+    "94.71",
+    "94.71",
+    "instock"
+   ],
+   "14638": [
+    "FARMINA VET LIFE - DOG Dry HEPATIC 12 kg",
+    "111.79",
+    "94.71",
+    "94.71",
+    "instock"
+   ],
+   "14642": [
+    "FARMINA VET LIFE - DOG Dry HYPOALLERGENI",
+    "113.99",
+    "96.39",
+    "96.39",
+    "instock"
+   ],
+   "14671": [
+    "FARMINA VET LIFE - CAT Dry ULTRAHYPO 10 ",
+    "135.49",
+    "114.48",
+    "114.48",
+    "outofstock"
+   ],
+   "14675": [
+    "FARMINA VET LIFE - CAT Dry RENAL 10 kg",
+    "128.99",
+    "108.98",
+    "108.98",
+    "instock"
+   ],
+   "20537": [
+    "Exclusion Mono Protein Mediterraneo begr",
+    "55.14",
+    "",
+    "55.14",
+    "instock"
+   ],
+   "21115": [
+    "Exclusion Mono Protein Mediterraneo saus",
+    "51.02",
+    "",
+    "51.02",
+    "instock"
+   ],
+   "21119": [
+    "Exclusion Mono Protein Mediterraneo saus",
+    "52.98",
+    "",
+    "52.98",
+    "instock"
+   ],
+   "21133": [
+    "Exclusion Mono Protein Mediterraneo saus",
+    "51.02",
+    "",
+    "51.02",
+    "instock"
+   ],
+   "21143": [
+    "Exclusion Mono Protein Mediterraneo saus",
+    "51.88",
+    "",
+    "51.88",
+    "instock"
+   ],
+   "21147": [
+    "Exclusion Mono Protein Mediterraneo saus",
+    "51.44",
+    "",
+    "51.44",
+    "instock"
+   ],
+   "36477": [
+    "2 vnt. FARMINA VET LIFE - CAT Dry ULTRAH",
+    "262.89",
+    "",
+    "262.89",
+    "instock"
+   ],
+   "36479": [
+    "2 vnt. FARMINA VET LIFE - CAT Dry RENAL ",
+    "250.19",
+    "",
+    "250.19",
+    "instock"
+   ]
+  },
+  "vetlife_uzs": [],
+  "mediterraneo_uzs": [],
+  "krepselis": [
+   {
+    "id": "1579",
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "sr": "similar_optout",
+    "created_at": "2026-10-13 21:12:25",
+    "sent_at": null,
+    "el": "38d20d"
+   },
+   {
+    "id": "1580",
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "sr": "krepselis_jau_siustas_24h",
+    "created_at": "2026-10-14 06:15:24",
+    "sent_at": null,
+    "el": "a861fe"
+   },
+   {
+    "id": "1656",
+    "flow": "cart_abandoned_2",
+    "status": "sent",
+    "sr": "",
+    "created_at": "2026-10-14 18:20:12",
+    "sent_at": "2026-10-14 18:23:43",
+    "el": "d332a6"
+   }
+  ],
+  "laiskai_po_1013": [
+   {
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "sr": "consent_missing",
+    "n": "4"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "sent",
+    "sr": "",
+    "n": "1"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "sr": "krepselis_jau_siustas_24h",
+    "n": "1"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "sr": "similar_optout",
+    "n": "1"
+   },
+   {
+    "flow": "consent_changed",
+    "status": "sent",
+    "sr": "",
+    "n": "1"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "sr": "",
+    "n": "24"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "sr": "",
+    "n": "2"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sr": "grandine_maistas",
+    "n": "9"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sr": "similar_optout",
+    "n": "2"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "sr": "",
+    "n": "24"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "sr": "",
+    "n": "24"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "sr": "",
+    "n": "15"
+   },
+   {
+    "flow": "refill_due",
+    "status": "deferred",
+    "sr": "preke_nera_sandelyje",
+    "n": "2"
+   },
+   {
+    "flow": "refill_due",
+    "status": "deferred",
+    "sr": "product_inactive",
+    "n": "1"
+   },
+   {
+    "flow": "refill_due",
+    "status": "sent",
+    "sr": "",
+    "n": "4"
+   },
+   {
+    "flow": "refill_due",
+    "status": "skipped",
+    "sr": "pakartoti_jau_siustas",
+    "n": "12"
+   },
+   {
+    "flow": "refill_due",
+    "status": "skipped",
+    "sr": "similar_optout",
+    "n": "3"
+   }
+  ],
+  "utm_laiskai_uzs": [
+   {
+    "id": "36807",
+    "status": "wc-completed",
+    "total_amount": "32.75000000",
+    "camp": null,
+    "date_created_gmt": "2026-10-11 18:19:20"
+   }
+  ],
+  "rez_priedas": [
+   "68b2003a08cdc8b9234728c8b548c351",
+   true,
+   false
+  ],
+  "kasos_uzs": {
+   "su_hold": 21,
+   "be_hold": [
+    {
+     "nr": "1423",
+     "t": "2026-10-13 19:18:32",
+     "st": "wc-processing",
+     "valdomu": 0,
+     "pastabu": 23,
+     "prekes": [
+      "1× #35850 8 VNT. - Kraikas katėms TOFU Bel [nevaldoma]",
+      "2× #35854 8 VNT. - Kraikas katėms TOFU Bel [nevaldoma]"
+     ]
+    }
+   ]
+  },
+  "tiekejas_neturi_av": [],
+  "paveiktu_prekiu_uzs": [],
+  "paveiktos_dabar": [
+   {
+    "ID": "19024",
+    "t": "Churu su tunu ir šukutėmis - kreminis sk",
+    "st": "0.000000",
+    "own": "11"
+   },
+   {
+    "ID": "19015",
+    "t": "Churu su vištiena ir šukutėmis - kremini",
+    "st": "0.000000",
+    "own": "14"
+   },
+   {
+    "ID": "19027",
+    "t": "Churu su tunu ir lašiša - kreminis skanė",
+    "st": "0.000000",
+    "own": "10"
+   },
+   {
+    "ID": "19030",
+    "t": "Churu su tunu ir jautiena - kreminis ska",
+    "st": "0.000000",
+    "own": "17"
+   },
+   {
+    "ID": "18581",
+    "t": "Exclusion Hypoallergenic mini mažų veisl",
+    "st": "0.000000",
+    "own": "3"
+   },
+   {
+    "ID": "18557",
+    "t": "Exclusion Hypoallergenic sausas šunų mai",
+    "st": "0.000000",
+    "own": "1"
+   },
+   {
+    "ID": "18578",
+    "t": "Exclusion Hypoallergenic mini mažų veisl",
+    "st": "0.000000",
+    "own": "2"
+   },
+   {
+    "ID": "17962",
+    "t": "Josidog Active 15 kg - sausas maistas ak",
+    "st": "0.000000",
+    "own": "3"
+   },
+   {
+    "ID": "18029",
+    "t": "Josera Mini Duck+Potato sausas pašaras m",
+    "st": "0.000000",
+    "own": "2"
+   },
+   {
+    "ID": "18026",
+    "t": "Josera Mini Duck+Potato sausas pašaras m",
+    "st": "0.000000",
+    "own": "2"
+   },
+   {
+    "ID": "17677",
+    "t": "Kraikas katėms TOFU BeloCat, persikų kva",
+    "st": "0",
+    "own": "18"
+   },
+   {
+    "ID": "17363",
+    "t": "Natūralus bentonitinis sušokantis kraika",
+    "st": "0",
+    "own": "19"
+   },
+   {
+    "ID": "15838",
+    "t": "Vienkartinės palutės / paklotai, 60*90 c",
+    "st": "0",
+    "own": "6"
+   },
+   {
+    "ID": "15841",
+    "t": "Vienkartinės palutės / paklotai, 45*60 c",
+    "st": "0",
+    "own": "14"
+   },
+   {
+    "ID": "17336",
+    "t": "Natūralus bentonitinis sušokantis kraika",
+    "st": "0",
+    "own": "1"
+   },
+   {
+    "ID": "17339",
+    "t": "Natūralus bentonitinis sušokantis kraika",
+    "st": "0",
+    "own": "23"
+   },
+   {
+    "ID": "17354",
+    "t": "Natūralus bentonitinis sušokantis kraika",
+    "st": "0",
+    "own": "18"
+   },
+   {
+    "ID": "17710",
+    "t": "Kraikas katėms Purrfect žalios arbatos k",
+    "st": "0",
+    "own": "9"
+   },
+   {
+    "ID": "17719",
+    "t": "Kraikas katėms Purrfect Bamboo  aktyvint",
+    "st": "0",
+    "own": "2"
+   },
+   {
+    "ID": "17348",
+    "t": "Natūralus bentonitinis sušokantis kraika",
+    "st": "0",
+    "own": "14"
+   }
+  ],
+  "rezervuota_dabar": []
+ },
+ "v": "dep-053036",
+ "kurimas": 200,
+ "sid": 7222,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
