@@ -1,0 +1,67 @@
+{
+ "1": {
+  "v": "S1785g",
+  "memory_limit": [
+   "256M",
+   "40M",
+   "256M"
+  ],
+  "fatal_grupes": {
+   "11 | Allowed memory size of N bytes exhausted (tried to allocate N bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/w": 1,
+   "11 | Allowed memory size of N bytes exhausted (tried to allocate N bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp": 1,
+   "13 | Uncaught Error: Call to undefined function is_product() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php:682": 2,
+   "13 | ob_end_flush(): Cannot use output buffering in output buffering display handlers in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/function": 1,
+   "15 | Allowed memory size of N bytes exhausted (tried to allocate N bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/w": 2,
+   "15 | Allowed memory size of N bytes exhausted (tried to allocate N bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp": 2,
+   "15 | Allowed memory size of N bytes exhausted (tried to allocate N bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins": 1
+  },
+  "atmintis_kada": [
+   "11-Oct 04:15 abstract-wc-data.php",
+   "11-Oct 04:15 class-wp-fatal-error-handler.php",
+   "15-Oct 02:15 abstract-wc-data.php",
+   "15-Oct 02:15 class-wp-fatal-error-handler.php",
+   "15-Oct 03:15 abstract-wc-data.php",
+   "15-Oct 03:15 class-wp-fatal-error-handler.php",
+   "15-Oct 03:31 wp_loaded_99.php"
+  ],
+  "import_hist": [
+   {
+    "i": "5",
+    "date": "2026-10-14 03:31:02",
+    "time_run": "88",
+    "s": "import finished & cron un-triggered<br>1 Produktas created 264 updated 2138 skipped"
+   },
+   {
+    "i": "5",
+    "date": "2026-10-15 03:30:02",
+    "time_run": null,
+    "s": "triggered by cron"
+   },
+   {
+    "i": "5",
+    "date": "2026-10-15 03:31:02",
+    "time_run": "398",
+    "s": "import finished & cron un-triggered<br>0 Produktai created 27 updated 2376 skipped"
+   },
+   {
+    "i": "5",
+    "date": "2026-10-16 03:30:02",
+    "time_run": null,
+    "s": "triggered by cron"
+   },
+   {
+    "i": "5",
+    "date": "2026-10-16 03:31:02",
+    "time_run": "75",
+    "s": "import finished & cron un-triggered<br>0 Produktai created 240 updated 2163 skipped"
+   }
+  ]
+ },
+ "v": "dep-052007",
+ "kurimas": 200,
+ "sid": 7230,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
