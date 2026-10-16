@@ -1,0 +1,100 @@
+{
+ "1": {
+  "v": "S1785b",
+  "failai": [
+   "Oct-2026.tar.gz",
+   "Oct-2026.tar.gz.1",
+   "Oct-2026.tar.gz.2"
+  ],
+  "statusai": {
+   "200": [
+    25747,
+    14395
+   ],
+   "302": [
+    274,
+    171
+   ],
+   "403": [
+    134,
+    78
+   ],
+   "404": [
+    1099,
+    663
+   ],
+   "500": [
+    10,
+    5
+   ]
+  },
+  "eil": 34254,
+  "po_1110": 18874,
+  "blk_iki_1110": 0,
+  "blk_po_1110": 0,
+  "blk_po_kas": [],
+  "geri_robotai": {
+   "Googlebot": 1169,
+   "Bing": 733,
+   "AdsBot": 676,
+   "FB perziuros": 528,
+   "Apple": 507,
+   "GoogleOther": 503,
+   "ChatGPT": 383,
+   "Perplexity": 297,
+   "Claude": 138,
+   "DuckDuckGo": 2
+  },
+  "fatal_nuo_1009": 5,
+  "fatal_pvz": [
+   "[15-Oct-2026 03:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocom",
+   "[15-Oct-2026 03:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-fata",
+   "[15-Oct-2026 03:31:55 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 1900544 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-a"
+  ],
+  "laiskai": [
+   {
+    "d": "2026-10-15",
+    "n": "24"
+   },
+   {
+    "d": "2026-10-16",
+    "n": "1"
+   }
+  ],
+  "laiskai_problem": 0,
+  "laiskai_dubl": 0,
+  "kanalai": [
+   {
+    "d": "2026-10-15",
+    "k": "mokamas",
+    "n": "7",
+    "eur": "320"
+   },
+   {
+    "d": "2026-10-15",
+    "k": "direct",
+    "n": "1",
+    "eur": "59"
+   },
+   {
+    "d": "2026-10-15",
+    "k": "organika",
+    "n": "1",
+    "eur": "14"
+   },
+   {
+    "d": "2026-10-16",
+    "k": "mokamas",
+    "n": "1",
+    "eur": "20"
+   }
+  ]
+ },
+ "v": "dep-051504",
+ "kurimas": 200,
+ "sid": 7227,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
