@@ -1,0 +1,93 @@
+{
+ "1": {
+  "v": "S1786j",
+  "f": {
+   "petshop-ataskaita-atsargos.php": {
+    "md5": "21bc085aafa5207f5d64c35bca00779c",
+    "kb": 29,
+    "h": [
+     "54: \"SELECT x.preke_id, x.likutis_av, x.rezervuota, x.pardavimai_vnt_30d p30, x.pardavimai_vnt_7d p7, x.dienu_atsargu, x.savikaina_vnt_ct sav, x.artimiausia_galiojimas,",
+     "58: ORDER BY x.pardavimai_vnt_30d * x.savikaina_vnt_ct DESC LIMIT 300\", $snap, $lead ), ARRAY_A );"
+    ]
+   },
+   "petshop-fakt-grazinimai.php": {
+    "md5": "58d3ca7d5e23db9c371c6448f5d6c870",
+    "kb": 17,
+    "h": [
+     "25: * (`savikaina_vnt_ct` * grazintas kiekis). NEPERSKAICIUOJAM is prekes meta —",
+     "27: * NEZINOMA -> **NULL, ne 0** (v1.2): fakto eilutes nera; `savikaina_vnt_ct`",
+     "132: private static function fakto_eilute( $uzsakymas_id, $wc_item_id ) {",
+     "138: \"SELECT id, preke_id, sandelis, savikaina_vnt_ct, kiekis FROM $e",
+     "147: * 🔴 v1.2 (Raimio pastaba 2026-08-26): `savikaina_vnt_ct` yra",
+     "151: * `(int) $fe['savikaina_vnt_ct'] * $kiekis`, o PHP `(int) NULL` = 0 —",
+     "160: *   2) `savikaina_vnt_ct` yra NULL (nezinoma);",
+     "174: if ( ! array_key_exists( 'savikaina_vnt_ct', $fe ) ) { return null; }",
+     "175: $v = $fe['savikaina_vnt_ct'];"
+    ]
+   },
+   "petshop-ataskaita-prekes.php": {
+    "md5": "687d7daa01e9d0cef2d69f9c96fb7a82",
+    "kb": 19,
+    "h": [
+     "82: \"SELECT x.preke_id, x.likutis_av, x.likutis_tiekejo, x.verte_ct, x.savikaina_vnt_ct,"
+    ]
+   },
+   "petshop-fakt-atsargos.php": {
+    "md5": "c393b8ec2fea783996ef0cd1f0b5775d",
+    "kb": 16,
+    "h": [
+     "37: * (§7 taisykle 15). `savikainos_saltinis` visada irasomas — po metu bus",
+     "87: savikaina_vnt_ct INT NULL DEFAULT NULL,",
+     "88: savikainos_saltinis VARCHAR(24) NULL DEFAULT NULL,",
+     "331: 'savikaina_vnt_ct' => $sav, 'savikainos_saltinis' => $sav_salt,",
+     "366: \"SELECT COALESCE(savikainos_saltinis,'(NULL)') s, COUNT(*) n FROM $t WHERE data=%s GROUP BY s ORDER BY n DESC\", $diena ), ARRAY_A ),"
+    ]
+   },
+   "petshop-faktai.php": {
+    "md5": "7d607ba08e29c2f36ccaca30450c0c7e",
+    "kb": 37,
+    "h": [
+     "99: public static function t_eilutes()   { global $wpdb; return $wpdb->prefix . 'ps_fakt_eilutes'; }",
+     "197: savikaina_vnt_ct BIGINT NULL DEFAULT NULL,",
+     "199: savikainos_saltinis VARCHAR(32) NOT NULL DEFAULT '',",
+     "204: rinkinio_tipas VARCHAR(8) NOT NULL DEFAULT '',",
+     "557: * EKRANAS is `rinkinys_id` / `rinkinio_tipas`.",
+     "560: * `_mnm_container`), NE per eilutes ID — patikrinta uzsakyme #34952",
+     "563: private static function surinkti_eilutes( $order ) {",
+     "609: $tevo_raktas = (string) $it->get_meta( '_mnm_container', true );",
+     "649: 'savikaina_vnt_ct'        => $sav_vnt_ct,",
+     "651: 'savikainos_saltinis'     => mb_substr( (string) $it->get_meta( '_ps_savikaina_saltinis', true ), 0, 32 ),",
+     "656: 'rinkinio_tipas'          => $rink_tipas,"
+    ]
+   },
+   "petshop-ataskaita-pardavimai.php": {
+    "md5": "bb0da8505dd520401e87f35c61352329",
+    "kb": 59,
+    "h": [
+     "82: 'rinkinys'   => array( 'Rinkinys / pavienė', 'e.rinkinio_tipas',  'eil', 'Ar prekė parduota rinkinyje, ar atskirai.' ),",
+     "198: $sav   = ( (int) $x['savikaina_vnt_ct'] * (int) $x['kiekis'] ) / 100;",
+     "207: round( (int) $x['savikaina_vnt_ct'] / 100, 2 ), (string) $x['savikainos_saltinis'],",
+     "209: ( '' !== (string) $x['rinkinio_tipas'] ) ? (string) $x['rinkinio_tipas'] : 'pavienė',",
+     "284: public static function visos_eilutes( $nuo, $iki, $riba = 20000 ) {",
+     "291: e.kiekis, e.kaina_ct, e.nuolaida_ct, e.savikaina_vnt_ct,",
+     "292: e.savikainos_saltinis, e.rinkinio_tipas, e.svoris_g,",
+     "567: return \"CASE WHEN COALESCE(NULLIF(e.rinkinio_tipas,''),'') <> '' THEN e.rinkinio_tipas ELSE 'pavienė' END\";",
+     "581: elseif ( 'rinkinys' === $raktas ) { $reik[] = 'rinkinio_tipas'; }",
+     "608: COALESCE(SUM(e.savikaina_vnt_ct * e.kiekis),0) savikaina_ct,",
+     "641: public static function eilutes( $raktas, $reiksme, $nuo, $iki, $riba = 500 ) {",
+     "655: e.kiekis, e.kaina_ct, e.nuolaida_ct, e.savikaina_vnt_ct,",
+     "656: e.savikainos_saltinis, e.rinkinio_tipas, e.svoris_g,",
+     "1022: $sav   = (int) $x['savikaina_vnt_ct'] * (int) $x['kiekis'];",
+     "1039: esc_html( ( '' !== (string) $x['rinkinio_tipas'] ) ? $x['rinkinio_tipas'] : 'pavienė' ),"
+    ]
+   }
+  }
+ },
+ "v": "dep-191038",
+ "kurimas": 200,
+ "sid": 7241,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
