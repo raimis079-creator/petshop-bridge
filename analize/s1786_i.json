@@ -1,0 +1,158 @@
+{
+ "1": {
+  "v": "S1786i",
+  "cols": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ],
+  "pid_col": "preke_id",
+  "tipai": [
+   {
+    "t": "",
+    "eil": "951",
+    "dezes": "0"
+   },
+   {
+    "t": "dp",
+    "eil": "26",
+    "dezes": "26"
+   },
+   {
+    "t": "mnm",
+    "eil": "53",
+    "dezes": "9"
+   }
+  ],
+  "e": "",
+  "n_eil": 9,
+  "n_uzs": 7,
+  "dez_sav_eur": 45.73,
+  "komp_sav_eur": 121.78,
+  "lygu": 3,
+  "nelygu": [
+   {
+    "uzsakymas_id": "35948",
+    "d": "2026-09-14",
+    "st": "completed",
+    "dez_sav": null,
+    "komp_sav": "791",
+    "kontr": "825",
+    "k": "direct"
+   },
+   {
+    "uzsakymas_id": "35948",
+    "d": "2026-09-14",
+    "st": "completed",
+    "dez_sav": null,
+    "komp_sav": "801",
+    "kontr": "825",
+    "k": "direct"
+   },
+   {
+    "uzsakymas_id": "35951",
+    "d": "2026-09-15",
+    "st": "completed",
+    "dez_sav": null,
+    "komp_sav": "626",
+    "kontr": "1071",
+    "k": "mokamas"
+   },
+   {
+    "uzsakymas_id": "36742",
+    "d": "2026-10-08",
+    "st": "completed",
+    "dez_sav": "1206",
+    "komp_sav": "1101",
+    "kontr": "-1124",
+    "k": "mokamas"
+   },
+   {
+    "uzsakymas_id": "36742",
+    "d": "2026-10-08",
+    "st": "completed",
+    "dez_sav": "1099",
+    "komp_sav": "1091",
+    "kontr": "-1124",
+    "k": "mokamas"
+   },
+   {
+    "uzsakymas_id": "36848",
+    "d": "2026-10-13",
+    "st": "completed",
+    "dez_sav": null,
+    "komp_sav": "5500",
+    "kontr": "3259",
+    "k": "mokamas"
+   }
+  ],
+  "rodomi_nuostolingi_bet_ne": 3,
+  "is_ads_uzs": 7,
+  "is_ads_eur": 45.73,
+  "per_sav": [
+   {
+    "w": "202638",
+    "n": "2",
+    "eur": null
+   },
+   {
+    "w": "202639",
+    "n": "1",
+    "eur": "7.53"
+   },
+   {
+    "w": "202641",
+    "n": "2",
+    "eur": "32.46"
+   },
+   {
+    "w": "202642",
+    "n": "2",
+    "eur": "5.74"
+   }
+  ],
+  "visa_kontr_eur": 3912.92
+ },
+ "v": "dep-184528",
+ "kurimas": 200,
+ "sid": 7240,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
