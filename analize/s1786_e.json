@@ -1,0 +1,122 @@
+{
+ "1": {
+  "v": "S1786e",
+  "rekl_cols": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ],
+  "kamp": [
+   {
+    "id": "",
+    "k": ""
+   },
+   {
+    "id": "21472017542",
+    "k": "P-max | LT | petshop.lt"
+   },
+   {
+    "id": "21565450990",
+    "k": "P-max| All LT | Kačių maistas"
+   },
+   {
+    "id": "23346712074",
+    "k": "petshop"
+   },
+   {
+    "id": "24297462605",
+    "k": "Search | LT | Prekių ženklai"
+   }
+  ],
+  "ga4": {
+   "2026-10-13": [
+    21,
+    701.850001
+   ],
+   "2026-10-15": [
+    9,
+    392.88
+   ],
+   "2026-10-16": [
+    9,
+    313.98
+   ],
+   "2026-10-14": [
+    8,
+    373.120002
+   ]
+  },
+  "woo": [],
+  "mp": [
+   {
+    "d": "2026-10-13",
+    "n": "16"
+   },
+   {
+    "d": "2026-10-14",
+    "n": "8"
+   },
+   {
+    "d": "2026-10-15",
+    "n": "9"
+   },
+   {
+    "d": "2026-10-16",
+    "n": "9"
+   },
+   {
+    "d": "2026-10-17",
+    "n": "8"
+   }
+  ],
+  "neapm": [],
+  "wpai_siandien": [
+   {
+    "i": "5",
+    "t": "03:31",
+    "time_run": "89"
+   },
+   {
+    "i": "3",
+    "t": "17:01",
+    "time_run": "279"
+   },
+   {
+    "i": "7",
+    "t": "17:16",
+    "time_run": "282"
+   },
+   {
+    "i": "3",
+    "t": "18:01",
+    "time_run": "310"
+   },
+   {
+    "i": "7",
+    "t": "18:16",
+    "time_run": "295"
+   }
+  ],
+  "wpai_imports": []
+ },
+ "v": "dep-182315",
+ "kurimas": 200,
+ "sid": 7233,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
