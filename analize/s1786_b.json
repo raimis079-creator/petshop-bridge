@@ -1,0 +1,95 @@
+{
+ "1": {
+  "v": "S1786b",
+  "failai": [
+   "Oct-2026.tar.gz",
+   "Oct-2026.tar.gz.1",
+   "Oct-2026.tar.gz.2"
+  ],
+  "statusai": {
+   "200": [
+    0,
+    0
+   ],
+   "302": [
+    0,
+    0
+   ],
+   "403": [
+    0,
+    0
+   ],
+   "404": [
+    0,
+    0
+   ],
+   "500": [
+    0,
+    0
+   ]
+  },
+  "eil": 0,
+  "po_1110": 0,
+  "blk_iki_1110": 0,
+  "blk_po_1110": 0,
+  "blk_po_kas": [],
+  "geri_robotai": [],
+  "fatal_nuo_1009": 5,
+  "fatal_pvz": [
+   "[15-Oct-2026 03:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocom",
+   "[15-Oct-2026 03:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-fata",
+   "[15-Oct-2026 03:31:55 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 1900544 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-a"
+  ],
+  "laiskai": [
+   {
+    "d": "2026-10-16",
+    "n": "43"
+   },
+   {
+    "d": "2026-10-17",
+    "n": "16"
+   }
+  ],
+  "laiskai_problem": 0,
+  "laiskai_dubl": 0,
+  "kanalai": [
+   {
+    "d": "2026-10-16",
+    "k": "mokamas",
+    "n": "7",
+    "eur": "237"
+   },
+   {
+    "d": "2026-10-16",
+    "k": "organika",
+    "n": "2",
+    "eur": "77"
+   },
+   {
+    "d": "2026-10-17",
+    "k": "mokamas",
+    "n": "5",
+    "eur": "239"
+   },
+   {
+    "d": "2026-10-17",
+    "k": "organika",
+    "n": "2",
+    "eur": "41"
+   },
+   {
+    "d": "2026-10-17",
+    "k": "direct",
+    "n": "1",
+    "eur": "61"
+   }
+  ]
+ },
+ "v": "dep-182603",
+ "kurimas": 200,
+ "sid": 7235,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
