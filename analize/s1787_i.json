@@ -1,0 +1,114 @@
+{
+ "1": {
+  "v": "S1787i",
+  "petshop-darbalaukis.php": {
+   "n": 4635,
+   "mnm": [
+    "361: * v1.1: PATAISA — konteinerio `data-atidaryti` atributas gaudė VISUS paspaudimus (closest() rado #dl → preventDefault):",
+    "362: *   eilutė neatsidarė, mygtukai nevedė. Konteineris → `data-atid`. `auto_rusiuoti()` — tuščias planas `[]` nebeblokuoja.",
+    "748: if ( $it->get_meta( '_mnm_config' ) || $it->get_meta( '_mnm_container_size' ) ) { $reduced = true; } // S1683: rinkinio (Mix-and-Match) konteineris — likutis komponent",
+    "1621: if ( $it->get_meta( '_mnm_config' ) || $it->get_meta( '_mnm_container_size' ) || $it->get_meta( '_mnm_container' ) ) { $baigti( 'dl_klaida', 'rinkinio eilutės keisti n",
+    "1629: if ( ! $np || $np->is_type( array( 'variable', 'mix-and-match' ) ) ) { $baigti( 'dl_klaida', 'prekės #' . $npid . ' pasirinkti negalima' ); }"
+   ]
+  },
+  "petshop-desk.php": {
+   "n": 3844,
+   "mnm": [
+    "1289: if ( $it->get_meta( '_mnm_config' ) || $it->get_meta( '_mnm_container_size' ) ) { continue; } // S1683: rinkinio konteineris — likutis komponentuose",
+    "1320: if ( $it->get_meta( '_mnm_config' ) || $it->get_meta( '_mnm_container_size' ) ) { continue; } // S1683: rinkinio konteineris"
+   ]
+  },
+  "petshop-kelio-fiksavimas.php": {
+   "n": 107,
+   "mnm": []
+  },
+  "petshop-dropship-sargas.php": {
+   "n": 136,
+   "mnm": []
+  },
+  "petshop-av-sheets.php": {
+   "n": 236,
+   "mnm": []
+  },
+  "petshop-av-reduce.php": {
+   "n": 148,
+   "mnm": []
+  },
+  "petshop-av-order.php": {
+   "n": 132,
+   "mnm": []
+  },
+  "kelio": [
+   "45: \tprivate static function galima() {",
+   "46: \t\tif ( get_option( 'ps_kelio_fiksavimas_isjungta' ) ) { return false; }",
+   "47: \t\treturn class_exists( 'Petshop_AV_Order' ) && method_exists( 'Petshop_AV_Order', 'fiksuoti' );",
+   "48: \t}",
+   "49: ",
+   "50: \t/** Ar bent viena prekių eilutė be `_ps_source`. */",
+   "51: \tprivate static function eilutes_be_kelio( $order ) {",
+   "52: \t\tforeach ( $order->get_items() as $it ) {",
+   "53: \t\t\tif ( '' === (string) $it->get_meta( '_ps_source' ) ) { return true; }",
+   "54: \t\t}",
+   "55: \t\treturn false;",
+   "56: \t}",
+   "57: ",
+   "58: \t/** @param int|WC_Order $order_id */",
+   "59: \tpublic static function kasoje( $order_id ) {",
+   "60: \t\tif ( ! self::galima() ) { return; }",
+   "61: \t\t$order = is_a( $order_id, 'WC_Order' ) ? $order_id : wc_get_order( $order_id );",
+   "62: \t\tif ( ! $order ) { return; }",
+   "63: \t\tself::uztikrinti( $order, 'kasoje' );",
+   "64: \t}",
+   "65: ",
+   "66: \t/** @param int $order_id */",
+   "67: \tpublic static function apmokejus( $order_id ) {",
+   "68: \t\tif ( ! self::galima() ) { return; }",
+   "69: \t\t$order = wc_get_order( $order_id );",
+   "70: \t\tif ( ! $order || ! $order->get_items() ) { return; }",
+   "71: \t\tif ( ! Petshop_AV_Order::nuspresta( $order ) ) { return; } // pirmą kartą — variklio prio 5 kablys padarys pats",
+   "72: \t\tif ( ! self::eilutes_be_kelio( $order ) ) { return; }",
+   "73: \t\tself::uztikrinti( $order, 'apmokėjus' );",
+   "74: \t}",
+   "75: ",
+   "76: \tprivate static function uztikrinti( $order, $kontekstas ) {",
+   "77: \t\t$nuspresta = Petshop_AV_Order::nuspresta( $order );",
+   "78: \t\t$be_kelio  = self::eilutes_be_kelio( $order );",
+   "79: \t\tif ( $nuspresta && ! $be_kelio ) { return; }",
+   "80: \t\t$priverstinai = $nuspresta && $be_kelio; // v1.1: eilutės perkurtos",
+   "81: \t\ttry {",
+   "82: \t\t\tPetshop_AV_Order::fiksuoti( $order, $priverstinai );",
+   "83: \t\t\tif ( $priverstinai ) {",
+   "84: \t\t\t\t$order = wc_get_order( $order->get_id() );",
+   "85: \t\t\t\t$grazinta = array();",
+   "86: \t\t\t\tif ( $order->get_data_store()->get_stock_reduced( $order->get_id() ) ) {",
+   "87: \t\t\t\t\tforeach ( $order->get_items() as $it ) {",
+   "88: \t\t\t\t\t\t$s = (string) $it->get_meta( '_ps_source' );",
+   "89: \t\t\t\t\t\t$p = $it->get_product();",
+   "90: \t\t\t\t\t\tif ( '' === $s || 'av' === $s || ! $p || ! $p->managing_stock() ) { continue; }",
+   "91: \t\t\t\t\t\tif ( '' !== (string) $it->get_meta( '_reduced_stock' ) ) { continue; }",
+   "92: \t\t\t\t\t\t$it->update_meta_data( '_reduced_stock', (int) $it->get_quantity() );",
+   "93: \t\t\t\t\t\t$it->save();",
+   "94: \t\t\t\t\t\t$grazinta[] = $it->get_name();",
+   "95: \t\t\t\t\t}",
+   "96: \t\t\t\t}",
+   "97: \t\t\t\t$order->add_order_note( 'Kelio fiksavimas v1.1 (' . $kontekstas . '): eilutės buvo perkurtos (pakartotinis kasos pateikimas) — kelias užfiksuotas iš naujo.' . ( $grazinta ? ' WC _reduced_stock grąžinta: ' . implode( '; ', $grazinta ) . '.' : '' ), false, true );",
+   "98: \t\t\t}",
+   "99: \t\t\t$order = wc_get_order( $order->get_id() );",
+   "100: \t\t\t$order->update_meta_data( '_ps_kelias_kasoje', current_time( 'mysql' ) . ( $priverstinai ? ' | perkurta (' . $kontekstas . ')' : '' ) );",
+   "101: \t\t\t$order->save();",
+   "102: \t\t} catch ( Throwable $e ) {",
+   "103: \t\t\terror_log( 'petshop-kelio-fiksavimas: ' . $e->getMessage() );",
+   "104: \t\t}",
+   "105: \t}",
+   "106: }",
+   "107: Petshop_Kelio_Fiksavimas::init();"
+  ]
+ },
+ "v": "dep-192050",
+ "kurimas": 200,
+ "sid": 7257,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
