@@ -1,0 +1,192 @@
+{
+ "1": {
+  "v": "S1787e",
+  "rekl_cols": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ],
+  "kamp": [
+   {
+    "id": "",
+    "k": ""
+   },
+   {
+    "id": "21472017542",
+    "k": "P-max | LT | petshop.lt"
+   },
+   {
+    "id": "21565450990",
+    "k": "P-max| All LT | Kačių maistas"
+   },
+   {
+    "id": "23346712074",
+    "k": "petshop"
+   },
+   {
+    "id": "24297462605",
+    "k": "Search | LT | Prekių ženklai"
+   }
+  ],
+  "ga4": {
+   "2026-10-17": [
+    10,
+    410.410001
+   ],
+   "2026-10-15": [
+    9,
+    392.88
+   ],
+   "2026-10-16": [
+    9,
+    313.98
+   ],
+   "2026-10-14": [
+    8,
+    373.120002
+   ]
+  },
+  "woo": [],
+  "mp": [
+   {
+    "d": "2026-10-14",
+    "n": "8"
+   },
+   {
+    "d": "2026-10-15",
+    "n": "9"
+   },
+   {
+    "d": "2026-10-16",
+    "n": "9"
+   },
+   {
+    "d": "2026-10-17",
+    "n": "10"
+   },
+   {
+    "d": "2026-10-18",
+    "n": "5"
+   }
+  ],
+  "neapm": [],
+  "mnm_po_fix": [
+   {
+    "oid": "36909",
+    "preke_id": "35404",
+    "rinkinys_id": "35404",
+    "savikaina_ct": "0",
+    "savikainos_saltinis": "mnm_konteineris"
+   },
+   {
+    "oid": "36909",
+    "preke_id": "22302",
+    "rinkinys_id": "35404",
+    "savikaina_ct": "214",
+    "savikainos_saltinis": "pardavimai"
+   },
+   {
+    "oid": "36909",
+    "preke_id": "22299",
+    "rinkinys_id": "35404",
+    "savikaina_ct": "243",
+    "savikainos_saltinis": "pardavimai"
+   },
+   {
+    "oid": "36909",
+    "preke_id": "22313",
+    "rinkinys_id": "35404",
+    "savikaina_ct": "254",
+    "savikainos_saltinis": "pardavimai"
+   },
+   {
+    "oid": "36909",
+    "preke_id": "26461",
+    "rinkinys_id": "35404",
+    "savikaina_ct": "215",
+    "savikainos_saltinis": "pardavimai"
+   },
+   {
+    "oid": "36909",
+    "preke_id": "22421",
+    "rinkinys_id": "35404",
+    "savikaina_ct": "214",
+    "savikainos_saltinis": "pardavimai"
+   },
+   {
+    "oid": "36909",
+    "preke_id": "22311",
+    "rinkinys_id": "35404",
+    "savikaina_ct": "207",
+    "savikainos_saltinis": "pardavimai"
+   },
+   {
+    "oid": "36909",
+    "preke_id": "24629",
+    "rinkinys_id": "35404",
+    "savikaina_ct": "254",
+    "savikainos_saltinis": "pardavimai"
+   },
+   {
+    "oid": "36909",
+    "preke_id": "24407",
+    "rinkinys_id": "35404",
+    "savikaina_ct": "530",
+    "savikainos_saltinis": "pardavimai"
+   }
+  ],
+  "wpai_siandien": [
+   {
+    "i": "5",
+    "t": "03:31",
+    "time_run": "38"
+   },
+   {
+    "i": "2",
+    "t": "15:01",
+    "time_run": "63"
+   },
+   {
+    "i": "3",
+    "t": "17:01",
+    "time_run": "293"
+   },
+   {
+    "i": "7",
+    "t": "17:16",
+    "time_run": "278"
+   },
+   {
+    "i": "3",
+    "t": "18:01",
+    "time_run": "346"
+   },
+   {
+    "i": "7",
+    "t": "18:16",
+    "time_run": "274"
+   }
+  ],
+  "wpai_imports": []
+ },
+ "v": "dep-184518",
+ "kurimas": 200,
+ "sid": 7252,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
