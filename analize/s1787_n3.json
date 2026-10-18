@@ -1,0 +1,77 @@
+{
+ "3": {
+  "v": "S1787n",
+  "f": "3",
+  "md5": {
+   "petshop-av-source.php": "7a051e2a8c5240b71223ddf5d54bb437",
+   "petshop-av-order.php": "7de1cbfadc03b8ae873ed7ad20f7a908",
+   "petshop-darbalaukis.php": "02028587d750fa2674fa74f39269179a"
+  },
+  "cnt": {
+   "petshop-av-source.php": {
+    "0": 0,
+    "1": 1,
+    "jau": 2
+   },
+   "petshop-av-order.php": {
+    "0": 1,
+    "1": 0,
+    "jau": 3
+   },
+   "petshop-darbalaukis.php": {
+    "0": 0,
+    "1": 0,
+    "jau": 2
+   }
+  },
+  "sim": {
+   "misrus": false,
+   "eil": [
+    "Vytintų skanėstų rinkinys šuni → dėžutė (praleista)",
+    "Wanpy skanėstas šunims, vytint → vf | dropship pirma: tiekėjas vf turi 201; AV šios prekės neturi",
+    "Wanpy skanėstas šunims, vytint → vf | dropship pirma: tiekėjas vf turi 195; AV šios prekės neturi",
+    "Wanpy skanėstas šunims, vytint → vf | dropship pirma: tiekėjas vf turi 142; AV šios prekės neturi",
+    "Wanpy skanėstai šunims, liofil → vf | dropship pirma: tiekėjas vf turi 71; AV šios prekės neturi",
+    "8in1 Meaty Treats šaltyje džio → vf | dropship pirma: tiekėjas vf turi 97; AV turi 0, reikia 1 — n",
+    "Wanpy skanėstas šunims, vytint → vf | dropship pirma: tiekėjas vf turi 358; AV šios prekės neturi",
+    "Wanpy skanėstas šunims, vytint → vf | dropship pirma: tiekėjas vf turi 71; AV šios prekės neturi",
+    "Antos WILD šaltyje džiovinti s → vf | dropship pirma: tiekėjas vf turi 23; AV šios prekės neturi"
+   ],
+   "grupes": {
+    "vf": 8
+   },
+   "tipas": "DS"
+  },
+  "ar_dezute": true,
+  "misrus_1465": false,
+  "dl_1465": {
+   "eiles": [
+    "laiskai"
+   ],
+   "dalys": [
+    "vf"
+   ],
+   "tiesiai": [
+    "vf"
+   ],
+   "av_side": false,
+   "takelis": [
+    "surūšiuota [done]",
+    "lipdukas VF [todo]",
+    "užsakyta iš VF [now]",
+    "VF išsiuntė [todo]"
+   ]
+  },
+  "http": {
+   "/": 200,
+   "/kasa/": 200
+  }
+ },
+ "v": "dep-193621",
+ "kurimas": 200,
+ "sid": 7264,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
