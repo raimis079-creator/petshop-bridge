@@ -1,0 +1,72 @@
+{
+ "1": {
+  "v": "S1787g",
+  "f": {
+   "petshop-kelio-fiksavimas.php": {
+    "md5": "7aee1c4148255673fba2bdb4d9c10061",
+    "kb": 6,
+    "ver": "1.1",
+    "h": [
+     "10: * AV variklis nurašė antrą kartą. 124 prekės, 613 vnt. (grynai AV prekės, daugiausia Animonda).",
+     "36: public static function init() {",
+     "45: private static function galima() {",
+     "51: private static function eilutes_be_kelio( $order ) {",
+     "59: public static function kasoje( $order_id ) {",
+     "67: public static function apmokejus( $order_id ) {",
+     "76: private static function uztikrinti( $order, $kontekstas ) {"
+    ]
+   },
+   "petshop-rezervacija-av.php": {
+    "md5": "68b2003a08cdc8b9234728c8b548c351",
+    "kb": 3,
+    "ver": "",
+    "h": [
+     "13: public static function init() {",
+     "19: public static function av_qty( $product_id ) {",
+     "22: if ( null === $av ) { return 0; } // grynai AV prekė — likutis gyvena `_stock`, nieko nekeičiam",
+     "26: public static function kasoje() {",
+     "36: public static function uzklausa( $query, $product_id, $exclude_order_id ) {"
+    ]
+   },
+   "petshop-av-source.php": {
+    "md5": "7d8e67eba194efbdc4ac7bed887303f9",
+    "kb": 10,
+    "ver": "1.3",
+    "h": [
+     "6: *   arba užsakymas mišrus (yra ir grynai AV prekių) — tada AV.“ resolve() lieka kaip buvo (AV pirma — jį naudoja",
+     "58: public static function resolve( $product_id, $qty = 1 ) {",
+     "88: 'reason'       => 'grynai AV prekė (be tiekėjo)',",
+     "125: public static function tiekejo_likutis( $product_id, $tiekejas ) {",
+     "138: * v1.3: UŽSAKYMO eilutės šaltinis pagal Raimio taisyklę. $misrus — ar užsakyme yra grynai AV prekių.",
+     "141: public static function parinkti( $product_id, $qty = 1, $misrus = false ) {",
+     "169: public static function ar_misrus( $order ) {",
+     "181: public static function dp( $product_id ) {",
+     "187: public static function is_av( $product_id, $qty = 1 ) {",
+     "198: public static function group( array $eilutes ) {",
+     "221: public static function order_type( array $grupes ) {",
+     "229: public static function group_order( $order ) {"
+    ]
+   },
+   "petshop-av-order.php": {
+    "md5": "fd7ed33561ce279e6f88618447e1a6eb",
+    "kb": 5,
+    "ver": "1.2",
+    "h": [
+     "6: *   mišrus (yra grynai AV prekių). Sprendimas per Petshop_AV_Source::parinkti($pid,$qty,$misrus) (v1.3);",
+     "40: public static function init() {",
+     "50: public static function nuspresta( $order ) {",
+     "60: public static function fiksuoti( $order_id, $priverstinai = false ) {",
+     "100: . ' (' . count( $grupes ) . ' siunta(-os))' . ( $misrus ? ' · mišrus → AV pirmenybė' : ' · dropship pirma' ) );",
+     "106: public static function skaityti( $order ) {"
+    ]
+   }
+  }
+ },
+ "v": "dep-191746",
+ "kurimas": 200,
+ "sid": 7255,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
