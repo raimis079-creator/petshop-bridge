@@ -1,0 +1,465 @@
+{
+ "1": {
+  "v": "S1787f",
+  "id": 36909,
+  "status": "processing",
+  "ship": "VENIPAK paštomatai/atsiėmimo punktai",
+  "om": {
+   "_ps_order_type": "MIXED",
+   "_ps_groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"vf\":{\"carrier\":\"venipak\",\"eilutes\":8,\"vienetai\":8}}",
+   "_ps_misrus_sprendimas": "{\"vf\":\"tiesiai\"}",
+   "_ps_shipments": "2",
+   "_ps_dropship_to": ""
+  },
+  "eil": [
+   {
+    "iid": 3978,
+    "pid": 35404,
+    "n": "Vytintų skanėstų rinkinys šuniui — 8 rūšys (antiena, elniena",
+    "q": 1,
+    "meta": {
+     "_mnm_container_size": "8",
+     "_mnm_config": "[arr]",
+     "_mnm_cart_key": "a700f94a32ba6c34d7e2eca36f43c420",
+     "_ps_savikaina_vnt": "0.0000",
+     "_ps_savikaina_saltinis": "mnm_konteineris",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-18 20:23:05",
+     "_ps_source_reason": "grynai AV prekė (be tiekėjo)",
+     "_ps_kelias": "av"
+    },
+    "sandelis": "",
+    "_stock": "",
+    "_own": "",
+    "_vf_qty": "",
+    "_vf_sku": "",
+    "src": [],
+    "src_raw": []
+   },
+   {
+    "iid": 3979,
+    "pid": 22302,
+    "n": "Wanpy skanėstas šunims, vytinta antiena, 100 g",
+    "q": 1,
+    "meta": {
+     "_mnm_container": "a700f94a32ba6c34d7e2eca36f43c420",
+     "_mnm_item_needs_shipping": "no",
+     "_ps_savikaina_vnt": "2.1400",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "3.5900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-18 21:32:47",
+     "_ps_source_reason": "darbalaukis: Inga pakeitė VF veža į AV → VF siunčia klientui",
+     "_reduced_stock": "1",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "tiesiai"
+    },
+    "sandelis": "vf",
+    "_stock": "201.000000",
+    "_own": "",
+    "_vf_qty": "201",
+    "_vf_sku": "",
+    "src": [
+     {
+      "source": "vf",
+      "cost_net": "2.1400",
+      "synced_at": "2026-08-07 13:00:28",
+      "priority": "2"
+     }
+    ],
+    "src_raw": [
+     "id",
+     "product_id",
+     "source",
+     "supplier_sku",
+     "ean",
+     "stock_qty",
+     "cost_net",
+     "synced_at",
+     "is_active",
+     "is_sellable",
+     "priority",
+     "created_at",
+     "updated_at"
+    ]
+   },
+   {
+    "iid": 3980,
+    "pid": 22299,
+    "n": "Wanpy skanėstas šunims, vytinta elniena, 100g",
+    "q": 1,
+    "meta": {
+     "_mnm_container": "a700f94a32ba6c34d7e2eca36f43c420",
+     "_mnm_item_needs_shipping": "no",
+     "_ps_savikaina_vnt": "2.4300",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "3.9900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-18 21:32:53",
+     "_ps_source_reason": "darbalaukis: Inga pakeitė VF veža į AV → VF siunčia klientui",
+     "_reduced_stock": "1",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "tiesiai"
+    },
+    "sandelis": "vf",
+    "_stock": "195.000000",
+    "_own": "",
+    "_vf_qty": "195",
+    "_vf_sku": "",
+    "src": [
+     {
+      "source": "vf",
+      "cost_net": "2.4300",
+      "synced_at": "2026-08-07 13:00:28",
+      "priority": "2"
+     }
+    ],
+    "src_raw": [
+     "id",
+     "product_id",
+     "source",
+     "supplier_sku",
+     "ean",
+     "stock_qty",
+     "cost_net",
+     "synced_at",
+     "is_active",
+     "is_sellable",
+     "priority",
+     "created_at",
+     "updated_at"
+    ]
+   },
+   {
+    "iid": 3981,
+    "pid": 22313,
+    "n": "Wanpy skanėstas šunims, vytintos ėrienos juostelės, minkštos",
+    "q": 1,
+    "meta": {
+     "_mnm_container": "a700f94a32ba6c34d7e2eca36f43c420",
+     "_mnm_item_needs_shipping": "no",
+     "_ps_savikaina_vnt": "2.5400",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "4.1900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-18 21:32:59",
+     "_ps_source_reason": "darbalaukis: Inga pakeitė VF veža į AV → VF siunčia klientui",
+     "_reduced_stock": "1",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "tiesiai"
+    },
+    "sandelis": "vf",
+    "_stock": "142.000000",
+    "_own": "",
+    "_vf_qty": "142",
+    "_vf_sku": "",
+    "src": [
+     {
+      "source": "vf",
+      "cost_net": "2.5400",
+      "synced_at": "2026-08-07 13:00:28",
+      "priority": "2"
+     }
+    ],
+    "src_raw": [
+     "id",
+     "product_id",
+     "source",
+     "supplier_sku",
+     "ean",
+     "stock_qty",
+     "cost_net",
+     "synced_at",
+     "is_active",
+     "is_sellable",
+     "priority",
+     "created_at",
+     "updated_at"
+    ]
+   },
+   {
+    "iid": 3982,
+    "pid": 26461,
+    "n": "Wanpy skanėstai šunims, liofilizuotos jautienos kepenėlės,40",
+    "q": 1,
+    "meta": {
+     "_mnm_container": "a700f94a32ba6c34d7e2eca36f43c420",
+     "_mnm_item_needs_shipping": "no",
+     "_ps_savikaina_vnt": "2.1500",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "3.5900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-18 21:33:07",
+     "_ps_source_reason": "darbalaukis: Inga pakeitė VF veža į AV → VF siunčia klientui",
+     "_reduced_stock": "1",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "tiesiai"
+    },
+    "sandelis": "vf",
+    "_stock": "71.000000",
+    "_own": "",
+    "_vf_qty": "71",
+    "_vf_sku": "",
+    "src": [
+     {
+      "source": "vf",
+      "cost_net": "2.1500",
+      "synced_at": "2026-08-07 13:00:59",
+      "priority": "2"
+     }
+    ],
+    "src_raw": [
+     "id",
+     "product_id",
+     "source",
+     "supplier_sku",
+     "ean",
+     "stock_qty",
+     "cost_net",
+     "synced_at",
+     "is_active",
+     "is_sellable",
+     "priority",
+     "created_at",
+     "updated_at"
+    ]
+   },
+   {
+    "iid": 3983,
+    "pid": 22421,
+    "n": "8in1 Meaty Treats šaltyje džiovintos antienos skanėstai šuni",
+    "q": 1,
+    "meta": {
+     "_mnm_container": "a700f94a32ba6c34d7e2eca36f43c420",
+     "_mnm_item_needs_shipping": "no",
+     "_ps_savikaina_vnt": "2.1400",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "3.5900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-18 21:33:13",
+     "_ps_source_reason": "darbalaukis: Inga pakeitė VF veža į AV → VF siunčia klientui",
+     "_reduced_stock": "1",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "tiesiai"
+    },
+    "sandelis": "vf",
+    "_stock": "97.000000",
+    "_own": "0",
+    "_vf_qty": "97",
+    "_vf_sku": "",
+    "src": [
+     {
+      "source": "av",
+      "cost_net": null,
+      "synced_at": null,
+      "priority": "1"
+     },
+     {
+      "source": "vf",
+      "cost_net": "2.1400",
+      "synced_at": "2026-08-07 13:00:29",
+      "priority": "2"
+     }
+    ],
+    "src_raw": [
+     "id",
+     "product_id",
+     "source",
+     "supplier_sku",
+     "ean",
+     "stock_qty",
+     "cost_net",
+     "synced_at",
+     "is_active",
+     "is_sellable",
+     "priority",
+     "created_at",
+     "updated_at"
+    ]
+   },
+   {
+    "iid": 3984,
+    "pid": 22311,
+    "n": "Wanpy skanėstas šunims, vytintos ėrienos dešrelės,100g",
+    "q": 1,
+    "meta": {
+     "_mnm_container": "a700f94a32ba6c34d7e2eca36f43c420",
+     "_mnm_item_needs_shipping": "no",
+     "_ps_savikaina_vnt": "2.0700",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "3.3900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-18 21:33:21",
+     "_ps_source_reason": "darbalaukis: Inga pakeitė VF veža į AV → VF siunčia klientui",
+     "_reduced_stock": "1",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "tiesiai"
+    },
+    "sandelis": "vf",
+    "_stock": "358.000000",
+    "_own": "",
+    "_vf_qty": "358",
+    "_vf_sku": "",
+    "src": [
+     {
+      "source": "vf",
+      "cost_net": "2.0700",
+      "synced_at": "2026-08-07 13:00:28",
+      "priority": "2"
+     }
+    ],
+    "src_raw": [
+     "id",
+     "product_id",
+     "source",
+     "supplier_sku",
+     "ean",
+     "stock_qty",
+     "cost_net",
+     "synced_at",
+     "is_active",
+     "is_sellable",
+     "priority",
+     "created_at",
+     "updated_at"
+    ]
+   },
+   {
+    "iid": 3985,
+    "pid": 24629,
+    "n": "Wanpy skanėstas šunims, vytintos jautienos juostelės, 100 g",
+    "q": 1,
+    "meta": {
+     "_mnm_container": "a700f94a32ba6c34d7e2eca36f43c420",
+     "_mnm_item_needs_shipping": "no",
+     "_ps_savikaina_vnt": "2.5400",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "4.1900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-18 21:33:28",
+     "_ps_source_reason": "darbalaukis: Inga pakeitė VF veža į AV → VF siunčia klientui",
+     "_reduced_stock": "1",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "tiesiai"
+    },
+    "sandelis": "vf",
+    "_stock": "71.000000",
+    "_own": "",
+    "_vf_qty": "71",
+    "_vf_sku": "",
+    "src": [
+     {
+      "source": "vf",
+      "cost_net": "2.5400",
+      "synced_at": "2026-08-07 13:00:46",
+      "priority": "2"
+     }
+    ],
+    "src_raw": [
+     "id",
+     "product_id",
+     "source",
+     "supplier_sku",
+     "ean",
+     "stock_qty",
+     "cost_net",
+     "synced_at",
+     "is_active",
+     "is_sellable",
+     "priority",
+     "created_at",
+     "updated_at"
+    ]
+   },
+   {
+    "iid": 3986,
+    "pid": 24407,
+    "n": "Antos WILD šaltyje džiovinti skanėstai šunims, antiena, 85g",
+    "q": 1,
+    "meta": {
+     "_mnm_container": "a700f94a32ba6c34d7e2eca36f43c420",
+     "_mnm_item_needs_shipping": "no",
+     "_ps_savikaina_vnt": "5.3000",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "8.6900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-18 21:33:37",
+     "_ps_source_reason": "darbalaukis: Inga pakeitė VF veža į AV → VF siunčia klientui",
+     "_reduced_stock": "1",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "tiesiai"
+    },
+    "sandelis": "vf",
+    "_stock": "23.000000",
+    "_own": "",
+    "_vf_qty": "23",
+    "_vf_sku": "",
+    "src": [
+     {
+      "source": "vf",
+      "cost_net": "5.3000",
+      "synced_at": "2026-08-07 13:00:45",
+      "priority": "2"
+     }
+    ],
+    "src_raw": [
+     "id",
+     "product_id",
+     "source",
+     "supplier_sku",
+     "ean",
+     "stock_qty",
+     "cost_net",
+     "synced_at",
+     "is_active",
+     "is_sellable",
+     "priority",
+     "created_at",
+     "updated_at"
+    ]
+   }
+  ],
+  "notes": [
+   "10-18 20:21 Stock hold of 90 minutes applied to: - Wanpy skanėstas šunims, vytinta antiena, 100 g (WP82004/WP) &times; 1- Wanpy skanėstas šunims, vytinta elniena, 100g (WP81277/P) &times; 1- Wanpy skanėstas šunim",
+   "10-18 20:21 Vykdymas: MIXED — AV 1 vnt · VF 8 vnt (2 siunta(-os)) · mišrus → AV pirmenybė",
+   "10-18 20:21 Paysera: Neapmokėto užsakymo būsena",
+   "10-18 20:21 Likutis sumažintas: Wanpy skanėstas šunims, vytinta antiena, 100 g (201&rarr;200), Wanpy skanėstas šunims, vytinta elniena, 100g (195&rarr;194), Wanpy skanėstas šunims, vytintos ėrienos juostelės, min",
+   "10-18 20:23 Stock hold of 90 minutes applied to: - Wanpy skanėstas šunims, vytinta antiena, 100 g (WP82004/WP) &times; 1- Wanpy skanėstas šunims, vytinta elniena, 100g (WP81277/P) &times; 1- Wanpy skanėstas šunim",
+   "10-18 20:23 Vykdymas: MIXED — AV 1 vnt · VF 8 vnt (2 siunta(-os)) · mišrus → AV pirmenybė",
+   "10-18 20:23 Kelio fiksavimas v1.1 (kasoje): eilutės buvo perkurtos (pakartotinis kasos pateikimas) — kelias užfiksuotas iš naujo. WC _reduced_stock grąžinta: Wanpy skanėstas šunims, vytinta antiena, 100 g; Wanpy ",
+   "10-18 20:23 Paysera: Neapmokėto užsakymo būsena",
+   "10-18 20:23 Paysera: Užsakymo būsena po apmokėjimo",
+   "10-18 20:23 Faktai irasyti: 9 eilutes · pajamos 28,20 EUR (be PVM, po nuolaidu) · PVM 5,92 EUR · marza 6,89 EUR · kontribucija (be pristatymo) 6,04 EUR",
+   "10-18 20:23 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+   "10-18 20:23 Email \"Naujas užsakymas\" sent.",
+   "10-18 20:23 Email \"Užsakymas vykdomas\" sent.",
+   "10-18 20:23 Paysera: Naujo užsakymo kūrimo būsena",
+   "10-18 21:32 Darbalaukis: „Wanpy skanėstas šunims, vytinta antiena, 100 g“ kelias VF veža į AV → VF siunčia klientui (Inga)."
+  ]
+ },
+ "v": "dep-190730",
+ "kurimas": 200,
+ "sid": 7254,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
