@@ -1,0 +1,60 @@
+{
+ "1": {
+  "v": "S1787j",
+  "eiles": [
+   "surinkti",
+   "laiskai"
+  ],
+  "dalys": {
+   "av": {
+    "siunta": false,
+    "nr": [],
+    "lapas": false,
+    "vietoje": true,
+    "issiusta": false
+   },
+   "vf": {
+    "perduota": false,
+    "kada": "",
+    "nr": [],
+    "issiusta": false
+   }
+  },
+  "tiesiai": [
+   "vf"
+  ],
+  "kl": "",
+  "takelis": [
+   "surūšiuota [done]",
+   "surinkti [now]",
+   "lipdukas [todo]",
+   "kurjeris paėmė [todo]",
+   "lipdukas VF [todo]",
+   "užsakyta iš VF [now]",
+   "VF išsiuntė [todo]"
+  ],
+  "eil": [
+   "Vytintų skanėstų rinkinys šuniui | av → av | ",
+   "Wanpy skanėstas šunims, vytinta  | vf → tiesiai | ",
+   "Wanpy skanėstas šunims, vytinta  | vf → tiesiai | ",
+   "Wanpy skanėstas šunims, vytintos | vf → tiesiai | ",
+   "Wanpy skanėstai šunims, liofiliz | vf → tiesiai | ",
+   "8in1 Meaty Treats šaltyje džiovi | vf → tiesiai | ",
+   "Wanpy skanėstas šunims, vytintos | vf → tiesiai | ",
+   "Wanpy skanėstas šunims, vytintos | vf → tiesiai | ",
+   "Antos WILD šaltyje džiovinti ska | vf → tiesiai | "
+  ],
+  "ord_meta": {
+   "type": "MIXED",
+   "groups": "{\"av\":{\"carrier\":\"any\",\"eilutes\":1,\"vienetai\":1},\"vf\":{\"carrier\":\"venipak\",\"eilutes\":8,\"vienetai\":8}}",
+   "misrus_spr": "{\"vf\":\"tiesiai\"}"
+  }
+ },
+ "v": "dep-192232",
+ "kurimas": 200,
+ "sid": 7258,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
