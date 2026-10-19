@@ -1,0 +1,87 @@
+{
+ "1": {
+  "v": "S1789a",
+  "failai": [
+   "wp-content/plugins/petshop-pragma DIR",
+   "wp-content/plugins/petshop-pragma/petshop-pragma.php 22662B 2026-05-26"
+  ],
+  "aktyvus_pluginai_pragma": [
+   "petshop-pragma/petshop-pragma.php"
+  ],
+  "opcijos": [
+   {
+    "option_name": "petshop_pragma_known_emails",
+    "v": "a:1:{i:0;s:20:\"raimundas@gyvunai.lt\";}"
+   },
+   {
+    "option_name": "petshop_pragma_log",
+    "v": "a:13:{i:0;a:2:{s:4:\"time\";s:19:\"2026-05-26 18:52:08\";s:7:\"message\";s:59:\"2026-05: eksportas sekmingai. Uzsakymu: 2, Nauju klientu: 2\";}i:1;a:2:{s:4:\"time\";s:19:\"2026-05-26 19:05:42\";s:7:\"message\";s:59:\"2026-05: eksportas sekmingai. Uzsakymu: 2, Nauju klientu: 0\";}i:2;a:2:{s:4:\"time\";s:19:\"2026-05-26 19:07:12\";s:7:\"message\";s:59:\"2026-05: eksportas sekmingai. Uzsakymu: 2, Nauju klientu: 2\";}i:3;a:2:{s:4:\"time\";s:19:\"2026-05-26 19:23:53\";s:7:\"message\";s:27:\"2026-05: nera AVPN saskaitu\";}i:4;a:2:{s:4:\"time\";s:19:\"2026-05-26 19:25:56\";s:7:\"message\";s:27:\"2026-05: nera AVPN saskaitu\";}i:5;a:2:{s:4:"
+   }
+  ],
+  "cron": [
+   "petshop_pragma_monthly_export @ 2026-11-05 10:00 sched=once"
+  ],
+  "kodas": [
+   "petshop-pragma.php:5 * Version: 1.0.0",
+   "petshop-pragma.php:13 add_action( 'init', function() {",
+   "petshop-pragma.php:17 wp_schedule_single_event( $next_run, 'petshop_pragma_monthly_export' );",
+   "petshop-pragma.php:36 add_action( 'petshop_pragma_monthly_export', function() {",
+   "petshop-pragma.php:37 // SAUGIKLIS: siusti tik kai production mode ijungtas",
+   "petshop-pragma.php:38 if ( ! get_option( 'petshop_pragma_production_mode', false ) ) {",
+   "petshop-pragma.php:39 petshop_pragma_log( 'Automatinis eksportas PRALEISTAS — production mode isjungtas' );",
+   "petshop-pragma.php:40 wp_schedule_single_event( petshop_pragma_next_run_time(), 'petshop_pragma_monthly_export' );",
+   "petshop-pragma.php:51 wp_schedule_single_event( petshop_pragma_next_run_time(), 'petshop_pragma_monthly_export' );",
+   "petshop-pragma.php:289 $production = get_option( 'petshop_pragma_production_mode', false );",
+   "petshop-pragma.php:291 // Gavėjas — production: info@audac.lt, test: terra@petshop.lt",
+   "petshop-pragma.php:292 $default_to = $production ? 'info@audac.lt' : 'terra@petshop.lt';",
+   "petshop-pragma.php:295 $subject = ( $production ? '' : '[TEST] ' ) . 'Petshop.lt pardavimai ' . $period_label;",
+   "petshop-pragma.php:315 $result = wp_mail( $to, $subject, $body, $headers, $attachments );",
+   "petshop-pragma.php:318 wp_mail(",
+   "petshop-pragma.php:321 $body . \"\\n\\n[Siuntimas i info@audac.lt: \" . ( $result ? 'sekmingai' : 'nepavyko' ) . \"]\",",
+   "petshop-pragma.php:379 add_action( 'admin_menu', function() {",
+   "petshop-pragma.php:391 // Production mode toggle",
+   "petshop-pragma.php:392 if ( isset( $_POST['pragma_production_toggle'] ) && check_admin_referer( 'pragma_production_action' ) ) {",
+   "petshop-pragma.php:393 $current = get_option( 'petshop_pragma_production_mode', false );",
+   "petshop-pragma.php:394 update_option( 'petshop_pragma_production_mode', ! $current );",
+   "petshop-pragma.php:395 echo '<div class=\"notice notice-success\"><p>' . ( ! $current ? '✅ Production mode ĮJUNGTAS' : '⛔ Production mode IŠJUNGTAS' ) . '</p></div>';",
+   "petshop-pragma.php:422 $production  = get_option( 'petshop_pragma_production_mode', false );",
+   "petshop-pragma.php:428 <!-- PRODUCTION MODE -->",
+   "petshop-pragma.php:429 <div style=\"background:<?php echo $production ? '#d4edda' : '#fff3cd'; ?>;padding:20px;margin:20px 0;border:1px solid <?php echo $production ? '#28a745' : '#ffc107'; ?>;\">",
+   "petshop-pragma.php:431 <?php echo $production ? '✅ Production mode — ĮJUNGTAS' : '⛔ Production mode — IŠJUNGTAS (test)'; ?>",
+   "petshop-pragma.php:434 <?php if ( $production ) : ?>",
+   "petshop-pragma.php:435 Automatinis eksportas siunčiamas į <strong>info@audac.lt</strong>.",
+   "petshop-pragma.php:442 <?php wp_nonce_field( 'pragma_production_action' ); ?>",
+   "petshop-pragma.php:443 <input type=\"submit\" name=\"pragma_production_toggle\" class=\"button <?php echo $production ? 'button-secondary' : 'button-primary'; ?>\"",
+   "petshop-pragma.php:444 value=\"<?php echo $production ? '⛔ Išjungti production mode' : '✅ Įjungti production mode (prieš launch!)'; ?>\"",
+   "petshop-pragma.php:445 onclick=\"return confirm('<?php echo $production ? 'Išjungti? Automatinis siuntimas sustabdomas.' : 'Įjungti? Eksportas pradės siųsti į info@audac.lt!'; ?>')\">",
+   "petshop-pragma.php:463 <?php if ( ! $production ) : ?>"
+  ],
+  "lenteles": [],
+  "wpmailsmtp_lenteles": [
+   "gaj6_wpmailsmtp_debug_events",
+   "gaj6_wpmailsmtp_tasks_meta"
+  ],
+  "ml_cols_gaj6_wpmailsmtp_debug_events": [
+   "id",
+   "content",
+   "initiator",
+   "event_type",
+   "created_at"
+  ],
+  "ml_cols_gaj6_wpmailsmtp_tasks_meta": [
+   "id",
+   "action",
+   "data",
+   "date"
+  ],
+  "email_jobs": [],
+  "php_log": []
+ },
+ "v": "dep-091104",
+ "kurimas": 200,
+ "sid": 7284,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
