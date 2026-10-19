@@ -1,0 +1,190 @@
+{
+ "1": {
+  "v": "S1789b",
+  "production_mode": "(opcijos nera)",
+  "zurnalas": [
+   {
+    "time": "2026-05-26 18:52:08",
+    "message": "2026-05: eksportas sekmingai. Uzsakymu: 2, Nauju klientu: 2"
+   },
+   {
+    "time": "2026-05-26 19:05:42",
+    "message": "2026-05: eksportas sekmingai. Uzsakymu: 2, Nauju klientu: 0"
+   },
+   {
+    "time": "2026-05-26 19:07:12",
+    "message": "2026-05: eksportas sekmingai. Uzsakymu: 2, Nauju klientu: 2"
+   },
+   {
+    "time": "2026-05-26 19:23:53",
+    "message": "2026-05: nera AVPN saskaitu"
+   },
+   {
+    "time": "2026-05-26 19:25:56",
+    "message": "2026-05: nera AVPN saskaitu"
+   },
+   {
+    "time": "2026-05-26 19:28:24",
+    "message": "2026-05: nera AVPN saskaitu"
+   },
+   {
+    "time": "2026-05-26 19:30:22",
+    "message": "2026-05: nera AVPN saskaitu"
+   },
+   {
+    "time": "2026-05-26 19:31:32",
+    "message": "2026-05: eksportas sekmingai. Uzsakymu: 1, Nauju klientu: 0"
+   },
+   {
+    "time": "2026-06-05 11:00:02",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-07-05 11:00:38",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-08-05 11:01:02",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-09-05 11:03:15",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-10-05 11:00:03",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   }
+  ],
+  "kodas": [
+   "10: // ================================================================",
+   "11: // 1. SCHEDULED TASK - 5ta einamojo menesio diena",
+   "12: // ================================================================",
+   "13: add_action( 'init', function() {",
+   "14:     if ( ! wp_next_scheduled( 'petshop_pragma_monthly_export' ) ) {",
+   "15:         // Suplanuojame kitą 5-ą dienos paleidimą",
+   "16:         $next_run = petshop_pragma_next_run_time();",
+   "17:         wp_schedule_single_event( $next_run, 'petshop_pragma_monthly_export' );",
+   "18:     }",
+   "19: });",
+   "20: ",
+   "21: function petshop_pragma_next_run_time() {",
+   "22:     $now   = current_time( 'timestamp' );",
+   "23:     $year  = (int) date( 'Y', $now );",
+   "24:     $month = (int) date( 'n', $now );",
+   "25:     $day   = (int) date( 'j', $now );",
+   "26: ",
+   "27:     if ( $day >= 5 ) {",
+   "28:         // Jau praleidome šio mėnesio 5-ą — einame į kitą mėnesį",
+   "29:         $month++;",
+   "30:         if ( $month > 12 ) { $month = 1; $year++; }",
+   "31:     }",
+   "32: ",
+   "33:     return mktime( 8, 0, 0, $month, 5, $year ); // 08:00 LT",
+   "34: }",
+   "35: ",
+   "36: add_action( 'petshop_pragma_monthly_export', function() {",
+   "37:     // SAUGIKLIS: siusti tik kai production mode ijungtas",
+   "38:     if ( ! get_option( 'petshop_pragma_production_mode', false ) ) {",
+   "39:         petshop_pragma_log( 'Automatinis eksportas PRALEISTAS — production mode isjungtas' );",
+   "40:         wp_schedule_single_event( petshop_pragma_next_run_time(), 'petshop_pragma_monthly_export' );",
+   "41:         return;",
+   "42:     }",
+   "43: ",
+   "44:     $now        = current_time( 'timestamp' );",
+   "45:     $prev_month = (int) date( 'n', strtotime( '-1 month', $now ) );",
+   "46:     $prev_year  = (int) date( 'Y', strtotime( '-1 month', $now ) );",
+   "47: ",
+   "48:     petshop_pragma_run_export( $prev_year, $prev_month );",
+   "49: ",
+   "50:     // Suplanuojame kitą paleidimą",
+   "51:     wp_schedule_single_event( petshop_pragma_next_run_time(), 'petshop_pragma_monthly_export' );",
+   "52: });",
+   "53: ",
+   "54: // ================================================================",
+   "55: // 2. PAGRINDINE EKSPORTO FUNKCIJA",
+   "56: // ================================================================",
+   "57: function petshop_pragma_run_export( $year, $month ) {",
+   "58: ",
+   "59:     $period_label = $year . '-' . str_pad( $month, 2, '0', STR_PAD_LEFT );",
+   "60: ",
+   "280:     }",
+   "281: ",
+   "282:     return implode( \"\\n\", $lines );",
+   "283: }",
+   "284: ",
+   "285: // ================================================================",
+   "286: // 6. EL. LAIŠKO SIUNTIMAS",
+   "287: // ================================================================",
+   "288: function petshop_pragma_send_email( $period_label, $txt_files, $new_pdfs, $new_order_nrs ) {",
+   "289:     $production = get_option( 'petshop_pragma_production_mode', false );",
+   "290: ",
+   "291:     // Gavėjas — production: info@audac.lt, test: terra@petshop.lt",
+   "292:     $default_to = $production ? 'info@audac.lt' : 'terra@petshop.lt';",
+   "293:     $to = apply_filters( 'petshop_pragma_recipient', $default_to );",
+   "294: ",
+   "295:     $subject = ( $production ? '' : '[TEST] ' ) . 'Petshop.lt pardavimai ' . $period_label;",
+   "296: ",
+   "297:     $body = \"Laba diena,\\n\\n\";",
+   "298:     $body .= \"Prisegti \" . $period_label . \" menesio pardavimų failai Pragma importui.\\n\\n\";",
+   "299: ",
+   "300:     if ( ! empty( $new_order_nrs ) ) {",
+   "301:         $body .= \"NAUJI KLIENTAI (\" . count( $new_order_nrs ) . \" saskaitos) - prisegtos PDF:\\n\";",
+   "302:         foreach ( $new_order_nrs as $nr ) {",
+   "303:             $body .= \"  - \" . $nr . \"\\n\";",
+   "304:         }",
+   "305:         $body .= \"\\nSios saskaitos gali reiketi atskiro importo.\\n\\n\";",
+   "306:     } else {",
+   "307:         $body .= \"Nauju klientu nera - visi klientai jau registruoti sistemoje.\\n\\n\";",
+   "308:     }",
+   "309: ",
+   "310:     $body .= \"Petshop.lt sistema\";",
+   "311: ",
+   "312:     $headers     = array( 'Content-Type: text/plain; charset=UTF-8' );",
+   "313:     $attachments = array_merge( $txt_files, $new_pdfs );",
+   "314: ",
+   "315:     $result = wp_mail( $to, $subject, $body, $headers, $attachments );",
+   "316: ",
+   "317:     // Taip pat siunciame kopiją savininkui",
+   "318:     wp_mail(",
+   "319:         'terra@petshop.lt',",
+   "320:         '[PRAGMA] ' . $subject . ' - ' . ( $result ? 'OK' : 'KLAIDA' ),",
+   "321:         $body . \"\\n\\n[Siuntimas i info@audac.lt: \" . ( $result ? 'sekmingai' : 'nepavyko' ) . \"]\",",
+   "322:         $headers,",
+   "323:         $attachments",
+   "324:     );",
+   "325: ",
+   "326:     return $result;",
+   "327: }",
+   "328: ",
+   "329: // ================================================================",
+   "330: // 7. HELPER FUNKCIJOS"
+  ],
+  "rugsejis": {
+   "n": "202",
+   "suma": "8360.04000000"
+  },
+  "rugsejis_avpn": 202,
+  "avpn_meta_raktai": [
+   {
+    "meta_key": "_petshop_avpn_number",
+    "n": "379",
+    "mn": "AVPN011000",
+    "mx": "AVPN011379"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number",
+    "n": "411",
+    "mn": "AVPN1000",
+    "mx": "AVPN35873"
+   }
+  ]
+ },
+ "v": "dep-091253",
+ "kurimas": 200,
+ "sid": 7285,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
