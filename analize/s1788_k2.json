@@ -1,0 +1,86 @@
+{
+ "2": {
+  "v": "S1788k",
+  "faze": "2",
+  "md5": "e258061a90e23416478f5689fb68dbfa",
+  "dydis": 4821,
+  "jau_yra": false,
+  "pos_uztvara": 1497,
+  "pos_wp": 3869,
+  "pos_supercache": 2134,
+  "naujas_blokas": "# BEGIN PS Botu uztvara (S1723, 2026-09-26): filtru/add-to-cart GET be ps_js slapuko -> 403 be PHP (botu sargo taisykle Apache lygyje)\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteCond %{REQUEST_METHOD} ^GET$\nRewriteCond %{QUERY_STRING} (^|&)(yith_wcan|filter_[A-Za-z0-9_-]+|query_type_[A-Za-z0-9_-]+|add-to-cart)= [NC]\nRewriteCond %{QUERY_STRING} !(^|&)ps_[A-Za-z0-9_]+= [NC]\nRewriteCond %{REQUEST_URI} !^/(kasa|krepselis|paskyra|wp-json|wp-admin|wp-login\\.php|feed) [NC]\nRewriteCond %{HTTP_COOKIE} !(^|;\\s*)ps_js=1 [NC]\nRewriteCond %{HTTP_COOKIE} !wordpress_logged_in_ [NC]\nRewriteRule ^ - [F,L]\n# S1788 (2026-10-19): Tencent Cloud botu ferma AS132203 43.172.0.0/15 -> 403\nRewriteCond %{REMOTE_ADDR} ^43\\.17[23]\\.\nRewriteRule ^ - [F,L]\n# S1788: krepselio remove_item be WC sesijos slapuko -> 403 (tikras pirkejas slapuka turi)\nRewriteCond %{QUERY_STRING} (^|&)remove_item= [NC]\nRewriteCond %{HTTP_COOKIE} !wp_woocommerce_session_ [NC]\nRewriteRule ^ - [F,L]\n</IfModule>\n# END PS Botu uztvara",
+  "naujas_dydis": 5182,
+  "bak": "/home/gyvunai2/domains/petshop.lt/ps-archyvas/.htaccess.bak_s1788",
+  "bak_md5": "e258061a90e23416478f5689fb68dbfa",
+  "po_md5": "053781d0bf18a83921e89b0d59a29913"
+ },
+ "3": {
+  "v": "S1788k",
+  "faze": "3",
+  "md5": "053781d0bf18a83921e89b0d59a29913",
+  "dydis": 5182,
+  "jau_yra": true,
+  "pos_uztvara": 1497,
+  "pos_wp": 4230,
+  "pos_supercache": 2495,
+  "t": [
+   [
+    "/",
+    200,
+    0.06
+   ],
+   [
+    "/product/gigi-for-large-joints-and-bones-papildas-dideliu-sunu-kaulu-ir-sanariu-funkcijai-n100/",
+    200,
+    1.72
+   ],
+   [
+    "/kategorija/katems/",
+    200,
+    1.73
+   ],
+   [
+    "/krepselis/",
+    200,
+    1.16
+   ],
+   [
+    "/kasa/",
+    302,
+    2.02
+   ],
+   [
+    "/krepselis/?_wpnonce=abc&remove_item=xyz",
+    403,
+    0.03
+   ],
+   [
+    "/krepselis?_wpnonce=abc&remove_item=xyz",
+    403,
+    0.16
+   ],
+   [
+    "/krepselis/?_wpnonce=abc&remove_item=xyz +slapukas",
+    200,
+    1.23
+   ],
+   [
+    "/kategorija/katems/?filter_x=1",
+    403,
+    0.1
+   ],
+   [
+    "/wp-json/wc/store/v1/products?per_page=1",
+    200,
+    0.97
+   ]
+  ]
+ },
+ "v": "dep-081639",
+ "kurimas": 200,
+ "sid": 7276,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
