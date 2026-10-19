@@ -1,0 +1,19 @@
+{
+ "1": {
+  "v": "S1788t",
+  "faze": "1",
+  "md5": "0a3bcefea32a27801de66fc7aa4d3972",
+  "dydis": 2471,
+  "yra": false,
+  "pradzia": "<?php\n/**\n * Plugin Name: Petshop Kasa: užsakymas esamai paskyrai v1.0 (S1690)\n * Description: Neprisijungęs pirkėjas su el. paštu, kuris jau turi paskyrą, gali užbaigti užsakymą be klaidos\n *   „Paskyra su tokiu el. pašto adresu jau yra sukurta\". Užsakymas priskiriamas esamai paskyrai; paskyros\n *   išsaugotas adresas NEPERRAŠOMAS; pirkėjas neprijungiamas. Užsakymo meta `_ps_paskyra_priskirta`=1 + pastaba.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nfinal class Petshop_Kasa_Paskyra {\n\t/** @var int|null esamo vartotojo ID šiai kasos užklausai */\n\tprivate static $uid = null;\n\n\tpublic static function init() {\n\t\tadd_filter( 'woocommerce_checkout_posted_data', array( __CLASS__, 'posted' ), 5 );\n\t\tadd_filter( 'woocommerce_checkout_customer_id', array( __CLASS__, 'customer_id' ), 20 );\n\t\tadd_filter( 'woocommerce_checkout_update_customer_data', array( __CLASS__, 'nekeisti_paskyros' ), 20 );\n\t\tadd_action( 'woocommerce_checkout_create_order', array( __CLASS__, 'zyme' ), 20, 2 );\n\t\tadd_action( 'woocommerce_checkout_order_created', array( __CLASS__, 'pastaba' ), 20 );\n\t}\n\n\t/** Prieš validaciją: jei svečias, o el. paštas jau turi paskyrą — paskyros nekurti, o priskirti. */\n\tpublic static function posted( $data ) {\n\t\tself::$uid = null;\n\t\tif ( is_user_logged_in() || empty( $data['billing_email'] ) || ! is_email( $data['billing_email'] ) ) { return $data; }\n\t\t$id = email_exists( sanitize_email( $data['billing_email'] ) );\n\t\tif ( ! $id ) { return $data; }\n\t\t$u = get_userdata( $id );\n\t\tif ( ",
+  "pabaiga": "* Esamos paskyros billing/shipping laukų iš svečio įvesties neperrašyti. */\n\tpublic static function nekeisti_paskyros( $update ) {\n\t\treturn self::$uid ? false : $update;\n\t}\n\n\tpublic static function zyme( $order, $data ) {\n\t\tif ( ! self::$uid ) { return; }\n\t\t$order->update_meta_data( '_ps_paskyra_priskirta', 1 );\n\t}\n\n\tpublic static function pastaba( $order ) {\n\t\tif ( ! self::$uid || ! $order->get_meta( '_ps_paskyra_priskirta' ) ) { return; }\n\t\t$order->add_order_note( 'Svečio užsakymas priskirtas esamai paskyrai #' . self::$uid . ' pagal el. paštą (S1690).' );\n\t}\n}\nPetshop_Kasa_Paskyra::init();\n",
+  "exec": false
+ },
+ "v": "dep-094726",
+ "kurimas": 200,
+ "sid": 7291,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
