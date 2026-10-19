@@ -1,0 +1,479 @@
+{
+ "1": {
+  "v": "S1788r",
+  "wc": [
+   "11.0.1",
+   "2026-08-12 02:35"
+  ],
+  "lp_mtime": "2026-05-28 06:55",
+  "laukai": {
+   "billing": {
+    "billing_first_name": [
+     true,
+     "text",
+     "",
+     10
+    ],
+    "billing_last_name": [
+     true,
+     "text",
+     "",
+     20
+    ],
+    "billing_is_company": [
+     false,
+     "hidden",
+     "",
+     34
+    ],
+    "billing_company": [
+     false,
+     "text",
+     "",
+     35
+    ],
+    "billing_vat_code": [
+     false,
+     "text",
+     "",
+     36
+    ],
+    "billing_company_code": [
+     false,
+     "text",
+     "",
+     37
+    ],
+    "billing_company_address": [
+     false,
+     "text",
+     "",
+     38
+    ],
+    "billing_country": [
+     true,
+     "country",
+     "",
+     40
+    ],
+    "billing_address_1": [
+     true,
+     "text",
+     "",
+     50
+    ],
+    "billing_address_2": [
+     false,
+     "text",
+     "",
+     60
+    ],
+    "billing_city": [
+     true,
+     "text",
+     "",
+     70
+    ],
+    "billing_state": [
+     false,
+     "state",
+     "",
+     80
+    ],
+    "billing_postcode": [
+     true,
+     "text",
+     "",
+     90
+    ],
+    "billing_phone": [
+     true,
+     "tel",
+     "",
+     100
+    ],
+    "billing_email": [
+     true,
+     "email",
+     "",
+     110
+    ]
+   },
+   "shipping": {
+    "shipping_first_name": [
+     true,
+     "text",
+     "",
+     10
+    ],
+    "shipping_last_name": [
+     true,
+     "text",
+     "",
+     20
+    ],
+    "shipping_country": [
+     true,
+     "country",
+     "",
+     40
+    ],
+    "shipping_address_1": [
+     true,
+     "text",
+     "",
+     50
+    ],
+    "shipping_address_2": [
+     false,
+     "text",
+     "",
+     60
+    ],
+    "shipping_city": [
+     true,
+     "text",
+     "",
+     70
+    ],
+    "shipping_state": [
+     false,
+     "state",
+     "",
+     80
+    ],
+    "shipping_postcode": [
+     true,
+     "text",
+     "",
+     90
+    ],
+    "shipping_phone": [
+     true,
+     "tel",
+     "",
+     100
+    ]
+   }
+  },
+  "ship_to_diff": "billing",
+  "calc_shipping": "yes",
+  "lp_uzs": [
+   {
+    "d": "2026-09-09",
+    "lp": "2",
+    "visi": "3"
+   },
+   {
+    "d": "2026-09-10",
+    "lp": "8",
+    "visi": "10"
+   },
+   {
+    "d": "2026-09-11",
+    "lp": "6",
+    "visi": "6"
+   },
+   {
+    "d": "2026-09-12",
+    "lp": "6",
+    "visi": "7"
+   },
+   {
+    "d": "2026-09-13",
+    "lp": "8",
+    "visi": "9"
+   },
+   {
+    "d": "2026-09-14",
+    "lp": "10",
+    "visi": "11"
+   },
+   {
+    "d": "2026-09-15",
+    "lp": "16",
+    "visi": "17"
+   },
+   {
+    "d": "2026-09-16",
+    "lp": "8",
+    "visi": "11"
+   },
+   {
+    "d": "2026-09-17",
+    "lp": "5",
+    "visi": "7"
+   },
+   {
+    "d": "2026-09-18",
+    "lp": "5",
+    "visi": "7"
+   },
+   {
+    "d": "2026-09-19",
+    "lp": "9",
+    "visi": "10"
+   },
+   {
+    "d": "2026-09-20",
+    "lp": "5",
+    "visi": "8"
+   },
+   {
+    "d": "2026-09-21",
+    "lp": "9",
+    "visi": "10"
+   },
+   {
+    "d": "2026-09-22",
+    "lp": "7",
+    "visi": "7"
+   },
+   {
+    "d": "2026-09-23",
+    "lp": "9",
+    "visi": "11"
+   },
+   {
+    "d": "2026-09-24",
+    "lp": "6",
+    "visi": "8"
+   },
+   {
+    "d": "2026-09-25",
+    "lp": "9",
+    "visi": "10"
+   },
+   {
+    "d": "2026-09-26",
+    "lp": "5",
+    "visi": "5"
+   },
+   {
+    "d": "2026-09-27",
+    "lp": "7",
+    "visi": "7"
+   },
+   {
+    "d": "2026-09-28",
+    "lp": "14",
+    "visi": "14"
+   },
+   {
+    "d": "2026-09-29",
+    "lp": "11",
+    "visi": "11"
+   },
+   {
+    "d": "2026-09-30",
+    "lp": "10",
+    "visi": "12"
+   },
+   {
+    "d": "2026-10-01",
+    "lp": "7",
+    "visi": "7"
+   },
+   {
+    "d": "2026-10-02",
+    "lp": "4",
+    "visi": "5"
+   },
+   {
+    "d": "2026-10-03",
+    "lp": "6",
+    "visi": "6"
+   },
+   {
+    "d": "2026-10-04",
+    "lp": "12",
+    "visi": "13"
+   },
+   {
+    "d": "2026-10-05",
+    "lp": "18",
+    "visi": "20"
+   },
+   {
+    "d": "2026-10-06",
+    "lp": "14",
+    "visi": "14"
+   },
+   {
+    "d": "2026-10-07",
+    "lp": "10",
+    "visi": "11"
+   },
+   {
+    "d": "2026-10-08",
+    "lp": "9",
+    "visi": "11"
+   },
+   {
+    "d": "2026-10-09",
+    "lp": "5",
+    "visi": "7"
+   },
+   {
+    "d": "2026-10-10",
+    "lp": "7",
+    "visi": "7"
+   },
+   {
+    "d": "2026-10-11",
+    "lp": "12",
+    "visi": "16"
+   },
+   {
+    "d": "2026-10-12",
+    "lp": "15",
+    "visi": "18"
+   },
+   {
+    "d": "2026-10-13",
+    "lp": "10",
+    "visi": "14"
+   },
+   {
+    "d": "2026-10-14",
+    "lp": "8",
+    "visi": "8"
+   },
+   {
+    "d": "2026-10-15",
+    "lp": "7",
+    "visi": "9"
+   },
+   {
+    "d": "2026-10-16",
+    "lp": "8",
+    "visi": "9"
+   },
+   {
+    "d": "2026-10-17",
+    "lp": "10",
+    "visi": "10"
+   },
+   {
+    "d": "2026-10-18",
+    "lp": "4",
+    "visi": "6"
+   },
+   {
+    "d": "2026-10-19",
+    "lp": "3",
+    "visi": "3"
+   }
+  ],
+  "lp_pav": [
+   "VENIPAK paštomatai/atsiėmimo punktai",
+   "LP Express",
+   "VENIPAK Kurjeris"
+  ],
+  "lp_pk": [
+   {
+    "id": "36908",
+    "d": "2026-10-18",
+    "pk": null,
+    "city": null
+   },
+   {
+    "id": "36850",
+    "d": "2026-10-13",
+    "pk": null,
+    "city": null
+   },
+   {
+    "id": "36836",
+    "d": "2026-10-12",
+    "pk": null,
+    "city": null
+   },
+   {
+    "id": "36743",
+    "d": "2026-10-08",
+    "pk": null,
+    "city": null
+   },
+   {
+    "id": "36682",
+    "d": "2026-10-05",
+    "pk": null,
+    "city": null
+   },
+   {
+    "id": "36666",
+    "d": "2026-10-04",
+    "pk": null,
+    "city": null
+   },
+   {
+    "id": "36647",
+    "d": "2026-10-03",
+    "pk": null,
+    "city": null
+   },
+   {
+    "id": "36601",
+    "d": "2026-10-01",
+    "pk": null,
+    "city": null
+   },
+   {
+    "id": "36598",
+    "d": "2026-09-30",
+    "pk": null,
+    "city": null
+   },
+   {
+    "id": "36585",
+    "d": "2026-09-30",
+    "pk": null,
+    "city": null
+   },
+   {
+    "id": "36575",
+    "d": "2026-09-29",
+    "pk": null,
+    "city": null
+   },
+   {
+    "id": "36331",
+    "d": "2026-09-27",
+    "pk": "36211",
+    "city": "Panevežys"
+   },
+   {
+    "id": "36258",
+    "d": "2026-09-23",
+    "pk": null,
+    "city": null
+   },
+   {
+    "id": "36251",
+    "d": "2026-09-23",
+    "pk": "LT10308",
+    "city": "Vilnius"
+   },
+   {
+    "id": "36249",
+    "d": "2026-09-23",
+    "pk": "20315",
+    "city": "Ukmergės r."
+   }
+  ],
+  "lp_klaida_d": {
+   "12-Oct-2026": 2,
+   "18-Oct-2026": 1,
+   "19-Oct-2026": 10
+  },
+  "php_log_pradzia": "[18-Sep-2026 18:58:06 UTC] Užsakymas patvirtintas: užsakymas 36026, suma: 37.22EUR\n"
+ },
+ "v": "dep-090000",
+ "kurimas": 200,
+ "sid": 7283,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
