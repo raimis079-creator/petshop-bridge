@@ -1,0 +1,21 @@
+{
+ "1": {
+  "v": "S1788k",
+  "faze": "1",
+  "md5": "e258061a90e23416478f5689fb68dbfa",
+  "dydis": 4821,
+  "jau_yra": false,
+  "pos_uztvara": 1497,
+  "pos_wp": 3869,
+  "pos_supercache": 2134,
+  "naujas_blokas": "# BEGIN PS Botu uztvara (S1723, 2026-09-26): filtru/add-to-cart GET be ps_js slapuko -> 403 be PHP (botu sargo taisykle Apache lygyje)\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteCond %{REQUEST_METHOD} ^GET$\nRewriteCond %{QUERY_STRING} (^|&)(yith_wcan|filter_[A-Za-z0-9_-]+|query_type_[A-Za-z0-9_-]+|add-to-cart)= [NC]\nRewriteCond %{QUERY_STRING} !(^|&)ps_[A-Za-z0-9_]+= [NC]\nRewriteCond %{REQUEST_URI} !^/(kasa|krepselis|paskyra|wp-json|wp-admin|wp-login\\.php|feed) [NC]\nRewriteCond %{HTTP_COOKIE} !(^|;\\s*)ps_js=1 [NC]\nRewriteCond %{HTTP_COOKIE} !wordpress_logged_in_ [NC]\nRewriteRule ^ - [F,L]\n# S1788 (2026-10-19): Tencent Cloud botu ferma AS132203 43.172.0.0/15 -> 403\nRewriteCond %{REMOTE_ADDR} ^43\\.17[23]\\.\nRewriteRule ^ - [F,L]\n# S1788: krepselio remove_item be WC sesijos slapuko -> 403 (tikras pirkejas slapuka turi)\nRewriteCond %{QUERY_STRING} (^|&)remove_item= [NC]\nRewriteCond %{HTTP_COOKIE} !wp_woocommerce_session_ [NC]\nRewriteRule ^ - [F,L]\n</IfModule>\n# END PS Botu uztvara",
+  "naujas_dydis": 5182
+ },
+ "v": "dep-081509",
+ "kurimas": 200,
+ "sid": 7275,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
