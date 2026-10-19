@@ -1,0 +1,110 @@
+{
+ "1": {
+  "v": "S1788i",
+  "t43": {
+   "Oct-2026.tar.gz.3": {
+    "viso_eil": 53097,
+    "t43": 18812,
+    "pirmas": "17 05:40",
+    "remove_item_visi": 15054,
+    "val": {
+     "17 05": 3,
+     "17 06": 8,
+     "17 09": 989,
+     "17 10": 1066,
+     "17 11": 1089,
+     "17 12": 2357,
+     "17 13": 1357,
+     "17 14": 1246,
+     "17 15": 1140,
+     "17 16": 1170,
+     "17 17": 1083,
+     "17 18": 1111,
+     "17 19": 1195,
+     "17 20": 1128,
+     "17 21": 1110,
+     "17 22": 1236,
+     "17 23": 1267,
+     "18 00": 257
+    }
+   },
+   "Oct-2026.tar.gz.5": {
+    "viso_eil": 31272,
+    "t43": 175,
+    "pirmas": "16 05:12",
+    "remove_item_visi": 87,
+    "val": {
+     "16 05": 5,
+     "16 06": 10,
+     "16 07": 16,
+     "16 09": 12,
+     "16 10": 7,
+     "16 11": 9,
+     "16 12": 5,
+     "16 13": 20,
+     "16 14": 15,
+     "16 15": 3,
+     "16 16": 9,
+     "16 17": 8,
+     "16 18": 10,
+     "16 19": 14,
+     "16 20": 5,
+     "16 21": 9,
+     "16 22": 5,
+     "16 23": 13
+    }
+   },
+   "Oct-2026.tar.gz.7": {
+    "viso_eil": 26695,
+    "t43": 190,
+    "pirmas": "15 07:06",
+    "remove_item_visi": 127,
+    "val": {
+     "15 07": 25,
+     "15 09": 12,
+     "15 10": 9,
+     "15 11": 5,
+     "15 12": 5,
+     "15 13": 13,
+     "15 14": 5,
+     "15 15": 21,
+     "15 16": 13,
+     "15 17": 15,
+     "15 18": 5,
+     "15 19": 20,
+     "15 20": 8,
+     "15 21": 10,
+     "15 22": 12,
+     "15 23": 6,
+     "16 00": 6
+    }
+   }
+  },
+  "uzs_43": [],
+  "uzs_43_n": "0",
+  "php": {
+   "18-Oct-2026 08:01": {
+    " Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron": 1
+   },
+   "19-Oct-2026 00:10": {
+    " Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron": 1,
+    " WordPress database error Duplicate entry 'N-N-N-puslapis-/gamintojas/ambrosia/?utm_source=google&u...' for key 'vienas' for query INSERT INTO `g": 8,
+    " WordPress database error Duplicate entry 'N-N-N-puslapis-/gamintojas/animonda/?utm_source=google&u...' for key 'vienas' for query INSERT INTO `g": 2,
+    " WordPress database error Duplicate entry 'N-N-N-puslapis-/gamintojas/farmina/?utm_source=google&ut...' for key 'vienas' for query INSERT INTO `g": 6,
+    " WordPress database error Duplicate entry 'N-N-N-puslapis-/kategorija/katems/tualetai-kraikai-semtu...' for key 'vienas' for query INSERT INTO `g": 30,
+    " WordPress database error Duplicate entry 'N-N-N-puslapis-/product/ambrosia-begrudis-su-eriena-ir-s...' for key 'vienas' for query INSERT INTO `g": 2,
+    " WordPress database error Duplicate entry 'N-N-N-puslapis-/product/automatine-vandens-gertuve-fonta...' for key 'vienas' for query INSERT INTO `g": 2
+   },
+   "19-Oct-2026 03:11": {
+    " Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron": 1
+   }
+  }
+ },
+ "v": "dep-065938",
+ "kurimas": 200,
+ "sid": 7272,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
