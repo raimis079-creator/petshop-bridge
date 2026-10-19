@@ -1,0 +1,331 @@
+{
+ "1": {
+  "v": "S1789i",
+  "calc": [
+   "1: <?php",
+   "2: /**",
+   "3:  * Petshop_Product_Calc — šėrimo skaičiuoklė PREKĖS puslapyje.",
+   "4:  *",
+   "5:  * KAM: naujas klientas skuba ir anketos nekurs. Stiprybė nėra anketa —",
+   "6:  * stiprybė yra ATSAKYMAS: „kiek užteks ir kiek kainuos diena\".",
+   "7:  * MASTER §3.1: nauda rodoma PRIEŠ prašant el. pašto; profilis atsiranda kaip",
+   "8:  * naudingo veiksmo REZULTATAS, ne kaip išankstinė prievolė.",
+   "9:  *",
+   "10:  * PRINCIPAS (užrakinta): skaičiuoklė NEVERTINA, ar maistas tinka. Ji rodo",
+   "11:  * gamintojo pateiktą normą, lentelės ribas arba skaičiuoja pagal vartotojo",
+   "12:  * faktinę porciją. Pirkti galima, šerti galima — mes tik neapsimetam žinantys",
+   "13:  * porcijos, kurios gamintojas nepateikė.",
+   "14:  *",
+   "15:  * VIETA (hibridas): MAŽAS kabliukas pirkimo bloke prie kainos, PILNAS",
+   "16:  * skaičiuotuvas PO „Į krepšelį\". Ne virš CTA (mobiliajame lėtintų pirkimą),",
+   "17:  * ne į tabus (ten funkcija mirtų).",
+   "18:  */",
+   "19: ",
+   "20: if ( ! defined( 'ABSPATH' ) ) {",
+   "21: \texit;",
+   "22: }",
+   "23: ",
+   "24: class Petshop_Product_Calc {",
+   "25: ",
+   "26: \tpublic static function init() {",
+   "27: \t\t// Kabliukas pirkimo bloke — po kaina, PRIEŠ „Į krepšelį\" formą.",
+   "28: \t\t/* S293: KABLIUKAS NUIMTAS. Jis buvo reikalingas, kai skaičiuoklė buvo",
+   "29: \t\t * PASLĖPTA — atidarydavo ją. Dabar ji matoma iš karto, tad kabliukas",
+   "30: \t\t * tik kartojo tą patį klausimą 300 px aukščiau. Vienas įėjimas. */",
+   "31: \t\t// Pilnas skaičiuotuvas — PO pirkimo formos.",
+   "32: \t\tadd_action( 'woocommerce_single_product_summary', array( __CLASS__, 'widget' ), 31 );",
+   "33: \t\tadd_action( 'wp_enqueue_scripts', array( __CLASS__, 'enqueue' ) );",
+   "34: \t}",
+   "35: ",
+   "36: \tpublic static function enqueue() {",
+   "37: \t\tif ( ! function_exists( 'is_product' ) || ! is_product() ) { return; }",
+   "38: \t\t$f = PETSHOP_CORE_DIR . 'assets/product-calc.js';",
+   "39: \t\tif ( ! file_exists( $f ) ) { return; }",
+   "40: \t\t/* S282 KLAIDA IŠTAISYTA: buvo plugins_url(..., dirname(__FILE__).'/x'),",
+   "41: \t\t * kuris duoda .../petshop-core/INCLUDES/assets/... — neegzistuojantį kelią.",
+   "42: \t\t * Skriptas patekdavo į HTML, bet 404, tad NIEKAD nepasikraudavo, ir joks",
+   "43: \t\t * skaičiavimas neveikė. Naudojam PETSHOP_CORE_URL — jis apibrėžtas",
+   "44: \t\t * pagrindiniame plugino faile ir nepalieka vietos klaidai. */",
+   "45: \t\twp_enqueue_script( 'ps-product-calc',",
+   "46: \t\t\tPETSHOP_CORE_URL . 'assets/product-calc.js',",
+   "47: \t\t\tarray(), (string) filemtime( $f ), true );",
+   "48: \t\t// REST bazė — kad JS nespėliotų kelio.",
+   "49: \t\twp_localize_script( 'ps-product-calc', 'PSPetConfig', array(",
+   "50: \t\t\t'restUrl' => esc_url_raw( get_rest_url( null, 'petshop/v1' ) ),",
+   "51: \t\t) );",
+   "52: \t}",
+   "53: ",
+   "54: \t/** Ar produktui apskritai verta rodyti skaičiuoklę. */",
+   "55: \tprivate static function context( $product ) {",
+   "56: \t\tif ( ! $product || ! $product->is_type( array( 'simple', 'variable' ) ) ) { return null; }",
+   "57: \t\t$pid = (int) $product->get_id();",
+   "58: ",
+   "59: \t\t// Pakuotės dydis BŪTINAS — be jo nei trukmės, nei €/dienai neapskaičiuosim.",
+   "60: \t\t$pkg = class_exists( 'Petshop_Feeding_Package_Provider' )",
+   "61: \t\t\t? Petshop_Feeding_Package_Provider::for_product( $pid ) : null;",
+   "62: \t\tif ( ! is_array( $pkg ) || empty( $pkg['sellable_unit_food_g'] ) ) { return null; }",
+   "63: ",
+   "64: \t\t/*",
+   "65: \t\t * S294 (savininko sprendimas 2026-08-25): skanestams ir kramtalams",
+   "66: \t\t * skaiciuokle netinka — tai ne racionas, o priedas prie maisto, todel",
+   "67: \t\t * „kiek uzteks\" klausimas klaidina. Rodoma tik maisto kategorijoms.",
+   "68: \t\t */",
+   "69: \t\t$slugs = wp_get_object_terms( $pid, 'product_cat', array( 'fields' => 'slugs' ) );",
+   "70: \t\tif ( ! is_wp_error( $slugs ) ) {",
+   "71: \t\t\tforeach ( (array) $slugs as $sl ) {",
+   "72: \t\t\t\tif ( 0 === strpos( $sl, 'skanestai' ) || 0 === strpos( $sl, 'kramtal' ) ) { return null; }",
+   "73: \t\t\t}",
+   "74: \t\t}",
+   "75: ",
+   "76: \t\t/*",
+   "77: \t\t * S1670 (Raimis 2026-09-11): ŽUVIMS skaičiuoklė netinka — prekės puslapyje",
+   "78: \t\t * rodė „Kiek šio maisto užteks jūsų šuniui?\". Tikrinama kategorija ir jos tėvai.",
+   "79: \t\t */",
+   "80: \t\t$kat_ids = wp_get_object_terms( $pid, 'product_cat', array( 'fields' => 'ids' ) );"
+  ],
+  "raso_pakuote": [
+   "petshop-dydziai-automatas.php:106 if ( $lab !== '' ) { $r = wp_set_object_terms( $pid, $lab, 'pa_pakuotes_dydis', true ); $info .= is_wp_error( $r ) ? '; terminas NEPAVYKO' : '; terminas „' . $lab . '“ pridėtas'; }"
+  ],
+  "snippet_raso": [
+   {
+    "id": "7294",
+    "name": "TEMP PS dep-111018"
+   }
+  ],
+  "36918_meta": [
+   {
+    "meta_key": "_sku",
+    "v": "TC10018"
+   },
+   {
+    "meta_key": "total_sales",
+    "v": "0"
+   },
+   {
+    "meta_key": "_tax_status",
+    "v": "taxable"
+   },
+   {
+    "meta_key": "_tax_class",
+    "v": ""
+   },
+   {
+    "meta_key": "_manage_stock",
+    "v": "yes"
+   },
+   {
+    "meta_key": "_backorders",
+    "v": "no"
+   },
+   {
+    "meta_key": "_sold_individually",
+    "v": "no"
+   },
+   {
+    "meta_key": "_weight",
+    "v": "0.055"
+   },
+   {
+    "meta_key": "_virtual",
+    "v": "no"
+   },
+   {
+    "meta_key": "_downloadable",
+    "v": "no"
+   },
+   {
+    "meta_key": "_product_image_gallery",
+    "v": ""
+   },
+   {
+    "meta_key": "_download_limit",
+    "v": "-1"
+   },
+   {
+    "meta_key": "_download_expiry",
+    "v": "-1"
+   },
+   {
+    "meta_key": "_stock",
+    "v": "2"
+   },
+   {
+    "meta_key": "_stock_status",
+    "v": "instock"
+   },
+   {
+    "meta_key": "_wc_average_rating",
+    "v": "0"
+   },
+   {
+    "meta_key": "_wc_review_count",
+    "v": "0"
+   },
+   {
+    "meta_key": "_product_version",
+    "v": "11.0.1"
+   },
+   {
+    "meta_key": "_ps_sandelis",
+    "v": "av"
+   },
+   {
+    "meta_key": "_ean",
+    "v": "5903111644581"
+   },
+   {
+    "meta_key": "_global_unique_id",
+    "v": "5903111644581"
+   },
+   {
+    "meta_key": "_product_attributes",
+    "v": "a:3:{s:15:\"pa_gyvuno_rusis\";a:6:{s:4:\"name\";s:15:\"pa_gyvuno_rusis\";s:5:\"value\";s:0:\"\";s:8:\"position\";i:2;s:10:\"is_visible\";i:1;s:12:\"is_variation\";i:0"
+   },
+   {
+    "meta_key": "_ps_i_juodrasti",
+    "v": "nėra kainos, nėra nuotraukos · 2026-10-19 13:29:24"
+   },
+   {
+    "meta_key": "_ps_pilnumas",
+    "v": "100"
+   },
+   {
+    "meta_key": "_ps_pilnumas_truksta",
+    "v": ""
+   },
+   {
+    "meta_key": "_ps_pilnumas_kodai",
+    "v": ""
+   },
+   {
+    "meta_key": "_ps_pilnumas_updated",
+    "v": "2026-10-19 13:31:51"
+   },
+   {
+    "meta_key": "_thumbnail_id",
+    "v": "36919"
+   },
+   {
+    "meta_key": "_cost_price",
+    "v": "1.75"
+   },
+   {
+    "meta_key": "_regular_price",
+    "v": "4.37"
+   },
+   {
+    "meta_key": "_price",
+    "v": "4.37"
+   },
+   {
+    "meta_key": "_manual_price_override",
+    "v": "yes"
+   },
+   {
+    "meta_key": "_ps_publikuota",
+    "v": "2026-10-19 13:34:13"
+   }
+  ],
+  "36918_attr": {
+   "pa_gyvuno_rusis": {
+    "name": "pa_gyvuno_rusis",
+    "value": "",
+    "position": 2,
+    "is_visible": 1,
+    "is_variation": 0,
+    "is_taxonomy": 1
+   },
+   "pa_zaislo_tipas": {
+    "name": "pa_zaislo_tipas",
+    "value": "",
+    "position": 1,
+    "is_visible": 1,
+    "is_variation": 0,
+    "is_taxonomy": 1
+   },
+   "pa_pakuotes_dydis": {
+    "name": "pa_pakuotes_dydis",
+    "value": "",
+    "position": 2,
+    "is_visible": 1,
+    "is_variation": 0,
+    "is_taxonomy": 1
+   }
+  },
+  "gavimas_log": [
+   {
+    "id": "1722",
+    "operacija": "KN26101910315183",
+    "product_id": "36918",
+    "laukas": "_manual_price_override",
+    "buvo": null,
+    "tapo": "yes",
+    "pokytis": null,
+    "priezastis": "kaina",
+    "user_id": "5788",
+    "sukurta": "2026-10-19 13:31:51",
+    "atsaukta": "0"
+   },
+   {
+    "id": "1721",
+    "operacija": "KN26101910315183",
+    "product_id": "36918",
+    "laukas": "_regular_price",
+    "buvo": null,
+    "tapo": "4.37",
+    "pokytis": null,
+    "priezastis": "kaina",
+    "user_id": "5788",
+    "sukurta": "2026-10-19 13:31:51",
+    "atsaukta": "0"
+   },
+   {
+    "id": "1720",
+    "operacija": "LK26101910315198",
+    "product_id": "36918",
+    "laukas": "_cost_price",
+    "buvo": null,
+    "tapo": "1.75",
+    "pokytis": null,
+    "priezastis": "kortelė",
+    "user_id": "5788",
+    "sukurta": "2026-10-19 13:31:51",
+    "atsaukta": "0"
+   },
+   {
+    "id": "1719",
+    "operacija": "AV26101910314354",
+    "product_id": "36918",
+    "laukas": "_stock",
+    "buvo": "0",
+    "tapo": "2",
+    "pokytis": "2",
+    "priezastis": "gavimas",
+    "user_id": "5788",
+    "sukurta": "2026-10-19 13:31:43",
+    "atsaukta": "0"
+   },
+   {
+    "id": "255",
+    "operacija": "LK26081413381695",
+    "product_id": "15178",
+    "laukas": "_ean",
+    "buvo": null,
+    "tapo": "5903111644543",
+    "pokytis": null,
+    "priezastis": "kortelė",
+    "user_id": "75",
+    "sukurta": "2026-08-14 16:38:17",
+    "atsaukta": "0"
+   }
+  ],
+  "nuotr": []
+ },
+ "v": "dep-111018",
+ "kurimas": 200,
+ "sid": 7294,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
