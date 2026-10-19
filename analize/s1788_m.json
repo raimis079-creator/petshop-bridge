@@ -1,0 +1,591 @@
+{
+ "1": {
+  "v": "S1788m",
+  "statusai": [
+   {
+    "d": "2026-10-01",
+    "s": "wc-cancelled",
+    "n": "3"
+   },
+   {
+    "d": "2026-10-01",
+    "s": "wc-completed",
+    "n": "7"
+   },
+   {
+    "d": "2026-10-02",
+    "s": "wc-cancelled",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-02",
+    "s": "wc-completed",
+    "n": "5"
+   },
+   {
+    "d": "2026-10-03",
+    "s": "wc-completed",
+    "n": "6"
+   },
+   {
+    "d": "2026-10-04",
+    "s": "wc-cancelled",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-04",
+    "s": "wc-completed",
+    "n": "13"
+   },
+   {
+    "d": "2026-10-05",
+    "s": "wc-cancelled",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-05",
+    "s": "wc-completed",
+    "n": "20"
+   },
+   {
+    "d": "2026-10-06",
+    "s": "wc-cancelled",
+    "n": "6"
+   },
+   {
+    "d": "2026-10-06",
+    "s": "wc-completed",
+    "n": "14"
+   },
+   {
+    "d": "2026-10-07",
+    "s": "wc-completed",
+    "n": "11"
+   },
+   {
+    "d": "2026-10-08",
+    "s": "wc-completed",
+    "n": "11"
+   },
+   {
+    "d": "2026-10-09",
+    "s": "wc-cancelled",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-09",
+    "s": "wc-completed",
+    "n": "7"
+   },
+   {
+    "d": "2026-10-10",
+    "s": "wc-cancelled",
+    "n": "4"
+   },
+   {
+    "d": "2026-10-10",
+    "s": "wc-completed",
+    "n": "7"
+   },
+   {
+    "d": "2026-10-11",
+    "s": "wc-completed",
+    "n": "16"
+   },
+   {
+    "d": "2026-10-12",
+    "s": "wc-cancelled",
+    "n": "8"
+   },
+   {
+    "d": "2026-10-12",
+    "s": "wc-completed",
+    "n": "18"
+   },
+   {
+    "d": "2026-10-13",
+    "s": "wc-cancelled",
+    "n": "4"
+   },
+   {
+    "d": "2026-10-13",
+    "s": "wc-completed",
+    "n": "14"
+   },
+   {
+    "d": "2026-10-14",
+    "s": "wc-completed",
+    "n": "7"
+   },
+   {
+    "d": "2026-10-14",
+    "s": "wc-processing",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-15",
+    "s": "wc-completed",
+    "n": "6"
+   },
+   {
+    "d": "2026-10-15",
+    "s": "wc-processing",
+    "n": "3"
+   },
+   {
+    "d": "2026-10-16",
+    "s": "wc-completed",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-16",
+    "s": "wc-processing",
+    "n": "7"
+   },
+   {
+    "d": "2026-10-17",
+    "s": "wc-completed",
+    "n": "4"
+   },
+   {
+    "d": "2026-10-17",
+    "s": "wc-processing",
+    "n": "6"
+   },
+   {
+    "d": "2026-10-18",
+    "s": "wc-completed",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-18",
+    "s": "wc-processing",
+    "n": "4"
+   },
+   {
+    "d": "2026-10-19",
+    "s": "wc-completed",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-19",
+    "s": "wc-processing",
+    "n": "2"
+   }
+  ],
+  "cart_cols": [
+   "id",
+   "cart_id",
+   "session_key",
+   "user_id",
+   "email",
+   "email_source",
+   "last_cart_activity_at",
+   "cart_hash",
+   "snapshot_json",
+   "snapshot_version",
+   "status",
+   "status_changed_at",
+   "converted_order_id",
+   "created_at",
+   "updated_at"
+  ],
+  "carts": [
+   {
+    "d": "2026-09-28",
+    "n": "32"
+   },
+   {
+    "d": "2026-09-29",
+    "n": "36"
+   },
+   {
+    "d": "2026-09-30",
+    "n": "25"
+   },
+   {
+    "d": "2026-10-01",
+    "n": "19"
+   },
+   {
+    "d": "2026-10-02",
+    "n": "18"
+   },
+   {
+    "d": "2026-10-03",
+    "n": "18"
+   },
+   {
+    "d": "2026-10-04",
+    "n": "38"
+   },
+   {
+    "d": "2026-10-05",
+    "n": "35"
+   },
+   {
+    "d": "2026-10-06",
+    "n": "33"
+   },
+   {
+    "d": "2026-10-07",
+    "n": "26"
+   },
+   {
+    "d": "2026-10-08",
+    "n": "29"
+   },
+   {
+    "d": "2026-10-09",
+    "n": "22"
+   },
+   {
+    "d": "2026-10-10",
+    "n": "26"
+   },
+   {
+    "d": "2026-10-11",
+    "n": "26"
+   },
+   {
+    "d": "2026-10-12",
+    "n": "31"
+   },
+   {
+    "d": "2026-10-13",
+    "n": "29"
+   },
+   {
+    "d": "2026-10-14",
+    "n": "28"
+   },
+   {
+    "d": "2026-10-15",
+    "n": "22"
+   },
+   {
+    "d": "2026-10-16",
+    "n": "24"
+   },
+   {
+    "d": "2026-10-17",
+    "n": "25"
+   },
+   {
+    "d": "2026-10-18",
+    "n": "23"
+   },
+   {
+    "d": "2026-10-19",
+    "n": "4"
+   }
+  ],
+  "prek": {
+   "A": [],
+   "B": []
+  },
+  "src": {
+   "A": [
+    {
+     "s": "mokamas|google|21565450990",
+     "n": "26",
+     "eur": "1177",
+     "nauji": "21",
+     "vid": "45.3"
+    },
+    {
+     "s": "direct||",
+     "n": "25",
+     "eur": "1222",
+     "nauji": "11",
+     "vid": "48.9"
+    },
+    {
+     "s": "mokamas|google|23346712074",
+     "n": "14",
+     "eur": "763",
+     "nauji": "2",
+     "vid": "54.5"
+    },
+    {
+     "s": "mokamas|google|21472017542",
+     "n": "13",
+     "eur": "589",
+     "nauji": "10",
+     "vid": "45.3"
+    },
+    {
+     "s": "organika||",
+     "n": "10",
+     "eur": "249",
+     "nauji": "4",
+     "vid": "24.9"
+    },
+    {
+     "s": "mokamas|google|24297462605",
+     "n": "9",
+     "eur": "442",
+     "nauji": "5",
+     "vid": "49.1"
+    },
+    {
+     "s": "mokamas|kaina24|",
+     "n": "7",
+     "eur": "221",
+     "nauji": "5",
+     "vid": "31.5"
+    },
+    {
+     "s": "mokamas|kainos|",
+     "n": "5",
+     "eur": "204",
+     "nauji": "2",
+     "vid": "40.9"
+    },
+    {
+     "s": "ai|chatgpt.com|",
+     "n": "4",
+     "eur": "96",
+     "nauji": "3",
+     "vid": "24.1"
+    },
+    {
+     "s": "email|newsletter|",
+     "n": "3",
+     "eur": "86",
+     "nauji": "0",
+     "vid": "28.7"
+    },
+    {
+     "s": "mokamas||",
+     "n": "2",
+     "eur": "126",
+     "nauji": "1",
+     "vid": "63.0"
+    },
+    {
+     "s": "referral||",
+     "n": "1",
+     "eur": "104",
+     "nauji": "0",
+     "vid": "104.0"
+    }
+   ],
+   "B": [
+    {
+     "s": "mokamas|google|21472017542",
+     "n": "10",
+     "eur": "270",
+     "nauji": "7",
+     "vid": "27.0"
+    },
+    {
+     "s": "mokamas|google|21565450990",
+     "n": "9",
+     "eur": "398",
+     "nauji": "7",
+     "vid": "44.2"
+    },
+    {
+     "s": "organika||",
+     "n": "6",
+     "eur": "169",
+     "nauji": "5",
+     "vid": "28.2"
+    },
+    {
+     "s": "mokamas|google|23346712074",
+     "n": "6",
+     "eur": "214",
+     "nauji": "1",
+     "vid": "35.7"
+    },
+    {
+     "s": "direct||",
+     "n": "5",
+     "eur": "291",
+     "nauji": "2",
+     "vid": "58.3"
+    },
+    {
+     "s": "mokamas|kaina24|",
+     "n": "3",
+     "eur": "179",
+     "nauji": "3",
+     "vid": "59.7"
+    },
+    {
+     "s": "mokamas|google|24297462605",
+     "n": "1",
+     "eur": "59",
+     "nauji": "0",
+     "vid": "59.0"
+    },
+    {
+     "s": "mokamas|kainos|",
+     "n": "1",
+     "eur": "15",
+     "nauji": "1",
+     "vid": "14.8"
+    },
+    {
+     "s": "ai|chatgpt.com|",
+     "n": "1",
+     "eur": "34",
+     "nauji": "1",
+     "vid": "34.1"
+    }
+   ]
+  },
+  "irenginys": {
+   "A": [
+    {
+     "irenginys": "desktop",
+     "n": "40"
+    },
+    {
+     "irenginys": "mobile",
+     "n": "79"
+    }
+   ],
+   "B": [
+    {
+     "irenginys": "desktop",
+     "n": "11"
+    },
+    {
+     "irenginys": "mobile",
+     "n": "31"
+    }
+   ]
+  },
+  "web_irenginys": {
+   "A": [
+    {
+     "irenginys": "desktop",
+     "tipas": "add_to_cart",
+     "ses": "49"
+    },
+    {
+     "irenginys": "desktop",
+     "tipas": "begin_checkout",
+     "ses": "44"
+    },
+    {
+     "irenginys": "desktop",
+     "tipas": "view_cart",
+     "ses": "40"
+    },
+    {
+     "irenginys": "mobile",
+     "tipas": "add_to_cart",
+     "ses": "169"
+    },
+    {
+     "irenginys": "mobile",
+     "tipas": "begin_checkout",
+     "ses": "117"
+    },
+    {
+     "irenginys": "mobile",
+     "tipas": "view_cart",
+     "ses": "69"
+    },
+    {
+     "irenginys": "tablet",
+     "tipas": "add_to_cart",
+     "ses": "1"
+    }
+   ],
+   "B": [
+    {
+     "irenginys": "desktop",
+     "tipas": "add_to_cart",
+     "ses": "26"
+    },
+    {
+     "irenginys": "desktop",
+     "tipas": "begin_checkout",
+     "ses": "17"
+    },
+    {
+     "irenginys": "desktop",
+     "tipas": "view_cart",
+     "ses": "15"
+    },
+    {
+     "irenginys": "mobile",
+     "tipas": "add_to_cart",
+     "ses": "69"
+    },
+    {
+     "irenginys": "mobile",
+     "tipas": "begin_checkout",
+     "ses": "38"
+    },
+    {
+     "irenginys": "mobile",
+     "tipas": "view_cart",
+     "ses": "29"
+    },
+    {
+     "irenginys": "tablet",
+     "tipas": "add_to_cart",
+     "ses": "2"
+    },
+    {
+     "irenginys": "tablet",
+     "tipas": "view_cart",
+     "ses": "1"
+    }
+   ]
+  },
+  "ec": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ]
+ },
+ "v": "dep-083737",
+ "kurimas": 200,
+ "sid": 7278,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
