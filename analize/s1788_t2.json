@@ -1,0 +1,40 @@
+{
+ "2": {
+  "v": "S1788t",
+  "faze": "2",
+  "md5": "0a3bcefea32a27801de66fc7aa4d3972",
+  "dydis": 2471,
+  "yra": false,
+  "bak_md5": "0a3bcefea32a27801de66fc7aa4d3972",
+  "lint": null,
+  "po_md5": "e073660bc05776c1717c70a2ab0f328b"
+ },
+ "3": {
+  "v": "S1788t",
+  "faze": "3",
+  "md5": "e073660bc05776c1717c70a2ab0f328b",
+  "dydis": 3788,
+  "yra": true,
+  "fn": true,
+  "test": {
+   "1234": "1234",
+   "12345": "12345",
+   "LT-12345": "12345",
+   "LT12345": "12345",
+   " 12 345 ": "12345",
+   "LT-123456": "LT-123456"
+  },
+  "kabliai": {
+   "1": 1,
+   "5": 1,
+   "10": 5
+  }
+ },
+ "v": "dep-094848",
+ "kurimas": 200,
+ "sid": 7292,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
