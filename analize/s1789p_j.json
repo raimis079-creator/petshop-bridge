@@ -1,0 +1,166 @@
+{
+ "1": {
+  "v": "S1789j",
+  "calc_80": [
+   "80: \t\t$kat_ids = wp_get_object_terms( $pid, 'product_cat', array( 'fields' => 'ids' ) );",
+   "81: \t\tif ( ! is_wp_error( $kat_ids ) && $kat_ids ) {",
+   "82: \t\t\t$zuv = get_term_by( 'slug', 'zuvims', 'product_cat' );",
+   "83: \t\t\tif ( $zuv ) {",
+   "84: \t\t\t\tforeach ( (array) $kat_ids as $tid ) {",
+   "85: \t\t\t\t\t$tid = (int) $tid;",
+   "86: \t\t\t\t\tif ( $tid === (int) $zuv->term_id || in_array( (int) $zuv->term_id, array_map( 'intval', get_ancestors( $tid, 'product_cat' ) ), true ) ) { return null; }",
+   "87: \t\t\t\t}",
+   "88: \t\t\t}",
+   "89: \t\t}",
+   "90: ",
+   "91: \t\tglobal $wpdb;",
+   "92: \t\t$map = $wpdb->prefix . 'ps_feeding_map';",
+   "93: \t\t$has_table = (bool) $wpdb->get_var( $wpdb->prepare(",
+   "94: \t\t\t\"SELECT 1 FROM $map WHERE product_id = %d AND is_active = 1 LIMIT 1\", $pid ) );",
+   "95: ",
+   "96: \t\t// Rūšis — kad tekstas būtų „šuniui\" ar „katei\", ne beasmenis.",
+   "97: \t\t$sp = wp_get_object_terms( $pid, 'pa_gyvuno_rusis', array( 'fields' => 'slugs' ) );",
+   "98: \t\t$species = 'dog';",
+   "99: \t\tif ( ! is_wp_error( $sp ) && $sp ) {",
+   "100: \t\t\t$species = in_array( 'katems', $sp, true ) ? 'cat' : 'dog';"
+  ],
+  "provider_failas": "wp-content/plugins/petshop-core/includes/class-feeding-package-provider.php",
+  "provider": [
+   "9: \tpublic static function for_product( $product_id ) {",
+   "10: \t\t$terms = wp_get_object_terms( (int) $product_id, 'pa_pakuotes_dydis', array( 'fields' => 'names' ) );",
+   "11: \t\t$raw = ( ! is_wp_error( $terms ) && ! empty( $terms ) ) ? $terms[0] : null;",
+   "12: \t\treturn Petshop_Feeding_Package_Resolver::resolve( $raw );",
+   "13: \t}"
+  ],
+  "for_36918": {
+   "status": "resolved",
+   "sellable_unit_food_g": 50,
+   "source_value": "50 g",
+   "method": "canonical_term"
+  },
+  "for_15178": {
+   "status": "unresolved",
+   "sellable_unit_food_g": null,
+   "source_value": null,
+   "method": null
+  },
+  "gavimas_grep": [
+   "6: *     „Suaugusios kates svoris, kg  2 3 4 5 6 7 8",
+   "12: *   „dienos norma\", „paros norma\", „svoris, kg\" ar „kuno svoris\", pradeda",
+   "35: *   Dvitaskis butinas: be jo „serimo instrukcija nurodyta ant pakuotes\" butu",
+   "90: *   Analitines, Priedai, Serimo instrukcija), trumpas aprasymas, svoris,",
+   "106: *   pakuotes dydis, svoris ir sekciju karkasas su „Aprasymu\".",
+   "132: *   pavadinimas, SKU, EAN, kaina, kategorija, brendas, gyvuno rusis, pakuotes",
+   "133: *   dydis, svoris, aprasymas, nuotrauka. Uzpildyta preke keliauja i prekyba is",
+   "347: * gyvuno rusis, pakuotes dydis, svoris, aprasymas, nuotrauka. Ne",
+   "392: $svoris = isset( $d['svoris'] ) ? self::skaicius( $d['svoris'] ) : 0;",
+   "423: if ( $svoris > 0 ) { $prod->set_weight( (string) $svoris ); }",
+   "448: 'pakuotes_dydis'=> 'pa_pakuotes_dydis',",
+   "580: Rusis ir pakuotes dydis turi savo laukus, todel cia praleidziami. */",
+   "582: $atskirai  = array( 'pa_gyvuno_rusis', 'pa_pakuotes_dydis', 'pa_brendas' );",
+   "632: 'pakuotes_dydis' => $vienas( 'pa_pakuotes_dydis' ),",
+   "634: 'svoris'         => (string) $p->get_weight(),",
+   "709: pakuotes dydi ir amziaus zymas, kuriu tekste dazniausiai nera",
+   "780: pakuotes\" butu palaikyta antraste ir suskaldytu sakini. */",
+   "844: instrukcija\" — jis tiesiog pateikia lentele „svoris / norma\".",
+   "847: && preg_match( '/(dienos|paros)\\s+norma|svoris\\s*,?\\s*kg|k[uū]no\\s+svoris|norma\\s*,\\s*g'",
+   "928: 'pa_pakuotes_dydis'   => 'Pakuotės dydis',",
+   "1011: 'pakuotes_dydis' => $sar( 'pa_pakuotes_dydis' ),",
+   "1124: . '<input type=\"checkbox\" id=\"g-imp\"> Importas — pakuotės į GPAIS</label></div>';",
+   "1158: <input type=\"text\" id=\"n-pav\" placeholder=\"pilnas pavadinimas su pakuote\"></label>",
+   "1177: <label>Pakuotės dydis<select id=\"n-pak\"><option value=\"\">—</option></select></label>",
+   "1178: <label>Svoris su pakuote, kg<input type=\"text\" id=\"n-svoris\" placeholder=\"0,00\"></label>",
+   "1519: $(\"n-kaina\").value=\"\"; $(\"n-svoris\").value=\"\"; $(\"n-tekstas\").value=\"\";",
+   "1548: pild(\"n-rusis\",SALT.gyvuno_rusis); pild(\"n-pak\",SALT.pakuotes_dydis);",
+   "1586: if(k.pakuotes_dydis){ $(\"n-pak\").value=k.pakuotes_dydis; }",
+   "1587: $(\"n-svoris\").value = k.svoris ? String(k.svoris).replace(\".\",\",\") : \"\";",
+   "1607: if(k.pakuotes_dydis) im.push(\"pakuotės dydis\");",
+   "1608: if(k.svoris) im.push(\"svoris\");",
+   "1621: $(\"n-pak\").value=\"\"; $(\"n-svoris\").value=\"\"; $(\"n-tekstas\").value=\"\";",
+   "1792: gyvuno_rusis:$(\"n-rusis\").value, pakuotes_dydis:$(\"n-pak\").value,",
+   "1793: svoris:$(\"n-svoris\").value, sekcijos:SEK, foto:FOTO, atributai:{}};"
+  ],
+  "dydziai_auto_log": [
+   [
+    "2026-09-27 18:49",
+    "dp",
+    36539,
+    "farmina-n-d-pumpkin-wild-boar-apple-mini",
+    "kaip #33243"
+   ],
+   [
+    "2026-09-27 18:49",
+    "dp",
+    36540,
+    "farmina-n-d-tropical-selection-lamb-puppy",
+    "kaip #33251"
+   ],
+   [
+    "2026-09-27 18:49",
+    "dp",
+    36541,
+    "farmina-n-d-ocean-cod-shrimp-pumpkin-cantaloupe",
+    "kaip #33259"
+   ],
+   [
+    "2026-09-27 18:49",
+    "dp",
+    36542,
+    "farmina-n-d-prime-wild-boar-apple",
+    "kaip #33275"
+   ],
+   [
+    "2026-09-27 18:49",
+    "dp",
+    36543,
+    "farmina-vet-life-diabetic",
+    "kaip #33370"
+   ],
+   [
+    "2026-10-02 06:32",
+    "tiksli",
+    36624,
+    "josera-josicat-crunchy-chicken-vistiena",
+    "kaip #21844; terminas „15+3 kg“ pridėtas"
+   ]
+  ],
+  "terminas": {
+   "term_id": "450",
+   "name": "50 g",
+   "count": "9"
+  },
+  "su_pakuote_publikuotu": 1445,
+  "skaiciuokle_ne_maistui": [
+   "35840 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, alavij | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35841 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, arbūzų | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35842 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, citrin | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35843 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, kavos  | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35844 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, kokoso | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35845 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, ledų k | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35846 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, levand | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35847 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, melion | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35848 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, obuoli | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35849 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, obuoli | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35850 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, persik | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35851 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, pienel | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35852 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, pušies | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35853 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, su akt | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35854 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, vanilė | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35855 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, vyšnių | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "35856 | 8 VNT. &#8211; Kraikas katėms TOFU BeloCat, žalios | daugiau-pigiau,kraikai-kaciu-tualetams",
+   "18642 | Džiovinti galvijų plaučiai, 500 g | sunims",
+   "18458 | GimCat maisto papildas katėms &#8211; Malt-Soft Ex | vitaminai-ir-papildai-katems",
+   "16979 | PESS biologinis antkaklis su pelargonijų ir kedrų  | antiparazitines-priemones-sunims",
+   "18446 | GimCat maisto papildas katėms &#8211; Malt-Soft Ex | vitaminai-ir-papildai-katems",
+   "36918 | Žaislas šuniui &#8211; Kamuoliukas Šinšila, 8,5 cm | zaislai-sunims",
+   "18452 | GimCat maisto papildas katėms &#8211; Malt-Soft Ex | vitaminai-ir-papildai-katems"
+  ]
+ },
+ "v": "dep-111201",
+ "kurimas": 200,
+ "sid": 7295,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
