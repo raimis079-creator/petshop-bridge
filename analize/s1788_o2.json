@@ -1,0 +1,980 @@
+{
+ "1": {
+  "v": "S1788o2",
+  "n": 159,
+  "id_tarpai": [
+   [
+    "36712",
+    "36719"
+   ],
+   [
+    "36719",
+    "36725"
+   ],
+   [
+    "36734",
+    "36737"
+   ],
+   [
+    "36745",
+    "36766"
+   ],
+   [
+    "36772",
+    "36775"
+   ],
+   [
+    "36787",
+    "36792"
+   ],
+   [
+    "36815",
+    "36819"
+   ],
+   [
+    "36819",
+    "36821"
+   ],
+   [
+    "36824",
+    "36828"
+   ],
+   [
+    "36846",
+    "36848"
+   ],
+   [
+    "36850",
+    "36853"
+   ],
+   [
+    "36857",
+    "36860"
+   ],
+   [
+    "36864",
+    "36870"
+   ],
+   [
+    "36911",
+    "36913"
+   ],
+   [
+    "36914",
+    "36916"
+   ]
+  ],
+  "pask": [
+   "36845//wc-completed/shop_order/10-13 09:05",
+   "36846//wc-completed/shop_order/10-13 09:42",
+   "36848//wc-completed/shop_order/10-13 11:46",
+   "36849//wc-completed/shop_order/10-13 15:32",
+   "36850//wc-completed/shop_order/10-13 15:53",
+   "36853//wc-completed/shop_order/10-13 17:56",
+   "36854//wc-cancelled/shop_order/10-13 18:03",
+   "36855//wc-completed/shop_order/10-13 18:45",
+   "36856//wc-cancelled/shop_order/10-13 19:48",
+   "36857//wc-completed/shop_order/10-13 20:15",
+   "36860//wc-completed/shop_order/10-13 21:31",
+   "36861//wc-completed/shop_order/10-13 21:35",
+   "36862//wc-completed/shop_order/10-13 22:18",
+   "36863//wc-completed/shop_order/10-13 22:39",
+   "36864//wc-completed/shop_order/10-13 22:41",
+   "36870//wc-completed/shop_order/10-14 07:16",
+   "36871//wc-completed/shop_order/10-14 11:15",
+   "36872//wc-completed/shop_order/10-14 12:31",
+   "36873//wc-completed/shop_order/10-14 14:07",
+   "36874//wc-processing/shop_order/10-14 14:26",
+   "36875//wc-completed/shop_order/10-14 17:08",
+   "36876//wc-completed/shop_order/10-14 21:10",
+   "36877//wc-completed/shop_order/10-14 23:43",
+   "36878//wc-processing/shop_order/10-15 07:02",
+   "36879//wc-completed/shop_order/10-15 09:07",
+   "36880//wc-completed/shop_order/10-15 12:12",
+   "36881//wc-completed/shop_order/10-15 13:04",
+   "36882//wc-processing/shop_order/10-15 13:58",
+   "36883//wc-completed/shop_order/10-15 15:39",
+   "36884//wc-completed/shop_order/10-15 16:21",
+   "36885//wc-processing/shop_order/10-15 19:34",
+   "36886//wc-completed/shop_order/10-15 20:10",
+   "36887//wc-completed/shop_order/10-16 05:48",
+   "36888//wc-processing/shop_order/10-16 09:58",
+   "36889//wc-processing/shop_order/10-16 11:00",
+   "36890//wc-processing/shop_order/10-16 11:30",
+   "36891//wc-processing/shop_order/10-16 13:09",
+   "36892//wc-processing/shop_order/10-16 13:45",
+   "36893//wc-processing/shop_order/10-16 17:15",
+   "36894//wc-processing/shop_order/10-16 18:23",
+   "36895//wc-completed/shop_order/10-16 22:02",
+   "36896//wc-processing/shop_order/10-17 06:33",
+   "36897//wc-processing/shop_order/10-17 09:48",
+   "36898//wc-completed/shop_order/10-17 11:24",
+   "36899//wc-processing/shop_order/10-17 14:51",
+   "36900//wc-completed/shop_order/10-17 14:55",
+   "36901//wc-completed/shop_order/10-17 15:08",
+   "36902//wc-completed/shop_order/10-17 17:43",
+   "36903//wc-processing/shop_order/10-17 20:46",
+   "36904//wc-processing/shop_order/10-17 21:37",
+   "36905//wc-processing/shop_order/10-17 23:45",
+   "36906//wc-processing/shop_order/10-18 08:27",
+   "36907//wc-completed/shop_order/10-18 12:41",
+   "36908//wc-processing/shop_order/10-18 15:13",
+   "36909//wc-processing/shop_order/10-18 20:21",
+   "36910//wc-completed/shop_order/10-18 20:57",
+   "36911//wc-processing/shop_order/10-18 22:30",
+   "36913//wc-completed/shop_order/10-19 07:47",
+   "36914//wc-processing/shop_order/10-19 10:30",
+   "36916//wc-processing/shop_order/10-19 10:39"
+  ],
+  "posts_gap": [
+   {
+    "ID": "36800",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-11 15:40:48"
+   },
+   {
+    "ID": "36801",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-11 16:03:11"
+   },
+   {
+    "ID": "36802",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-11 16:09:39"
+   },
+   {
+    "ID": "36803",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-11 16:12:28"
+   },
+   {
+    "ID": "36804",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-11 18:13:33"
+   },
+   {
+    "ID": "36805",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-11 19:56:24"
+   },
+   {
+    "ID": "36806",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-11 20:49:54"
+   },
+   {
+    "ID": "36807",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-11 21:19:20"
+   },
+   {
+    "ID": "36808",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-11 22:31:03"
+   },
+   {
+    "ID": "36809",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 07:11:35"
+   },
+   {
+    "ID": "36810",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 09:45:22"
+   },
+   {
+    "ID": "36811",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 11:15:10"
+   },
+   {
+    "ID": "36812",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 11:22:21"
+   },
+   {
+    "ID": "36813",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 11:26:16"
+   },
+   {
+    "ID": "36814",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 12:10:12"
+   },
+   {
+    "ID": "36815",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 12:36:31"
+   },
+   {
+    "ID": "36816",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-10-12 12:46:01"
+   },
+   {
+    "ID": "36817",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-10-12 12:46:24"
+   },
+   {
+    "ID": "36818",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-10-12 12:46:51"
+   },
+   {
+    "ID": "36819",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 13:22:06"
+   },
+   {
+    "ID": "36820",
+    "post_type": "product",
+    "post_status": "publish",
+    "post_date": "2026-10-12 13:22:25"
+   },
+   {
+    "ID": "36821",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 13:57:59"
+   },
+   {
+    "ID": "36822",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 15:41:03"
+   },
+   {
+    "ID": "36823",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 15:51:42"
+   },
+   {
+    "ID": "36824",
+    "post_type": "shop_order",
+    "post_status": "wc-cancelled",
+    "post_date": "2026-10-12 17:36:34"
+   },
+   {
+    "ID": "36825",
+    "post_type": "product",
+    "post_status": "publish",
+    "post_date": "2026-10-12 18:13:12"
+   },
+   {
+    "ID": "36826",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-10-12 18:15:21"
+   },
+   {
+    "ID": "36827",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-10-12 18:18:54"
+   },
+   {
+    "ID": "36828",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 18:34:59"
+   },
+   {
+    "ID": "36829",
+    "post_type": "shop_order",
+    "post_status": "wc-cancelled",
+    "post_date": "2026-10-12 18:45:24"
+   },
+   {
+    "ID": "36830",
+    "post_type": "shop_order",
+    "post_status": "wc-cancelled",
+    "post_date": "2026-10-12 18:47:00"
+   },
+   {
+    "ID": "36831",
+    "post_type": "shop_order",
+    "post_status": "wc-cancelled",
+    "post_date": "2026-10-12 18:54:22"
+   },
+   {
+    "ID": "36832",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 19:09:03"
+   },
+   {
+    "ID": "36833",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 19:13:43"
+   },
+   {
+    "ID": "36834",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 19:29:25"
+   },
+   {
+    "ID": "36835",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 19:39:42"
+   },
+   {
+    "ID": "36836",
+    "post_type": "shop_order",
+    "post_status": "wc-cancelled",
+    "post_date": "2026-10-12 20:05:44"
+   },
+   {
+    "ID": "36837",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 20:07:58"
+   },
+   {
+    "ID": "36838",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-12 20:51:24"
+   },
+   {
+    "ID": "36839",
+    "post_type": "shop_order",
+    "post_status": "wc-cancelled",
+    "post_date": "2026-10-12 21:17:49"
+   },
+   {
+    "ID": "36840",
+    "post_type": "shop_order",
+    "post_status": "wc-cancelled",
+    "post_date": "2026-10-12 21:22:04"
+   },
+   {
+    "ID": "36841",
+    "post_type": "shop_order",
+    "post_status": "wc-cancelled",
+    "post_date": "2026-10-12 21:24:36"
+   },
+   {
+    "ID": "36842",
+    "post_type": "shop_order",
+    "post_status": "wc-cancelled",
+    "post_date": "2026-10-13 06:50:18"
+   },
+   {
+    "ID": "36843",
+    "post_type": "shop_order",
+    "post_status": "wc-cancelled",
+    "post_date": "2026-10-13 07:28:23"
+   },
+   {
+    "ID": "36844",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-13 09:03:15"
+   },
+   {
+    "ID": "36845",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-13 09:05:50"
+   },
+   {
+    "ID": "36846",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-13 09:42:34"
+   },
+   {
+    "ID": "36847",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-10-13 10:42:35"
+   },
+   {
+    "ID": "36848",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-13 11:46:06"
+   },
+   {
+    "ID": "36849",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-13 15:32:50"
+   },
+   {
+    "ID": "36850",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-13 15:53:13"
+   },
+   {
+    "ID": "36851",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-10-13 17:29:03"
+   },
+   {
+    "ID": "36852",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-10-13 17:40:01"
+   },
+   {
+    "ID": "36853",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-13 17:56:37"
+   },
+   {
+    "ID": "36854",
+    "post_type": "shop_order",
+    "post_status": "wc-cancelled",
+    "post_date": "2026-10-13 18:03:51"
+   },
+   {
+    "ID": "36855",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-13 18:45:30"
+   },
+   {
+    "ID": "36856",
+    "post_type": "shop_order",
+    "post_status": "wc-cancelled",
+    "post_date": "2026-10-13 19:48:06"
+   },
+   {
+    "ID": "36857",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-13 20:15:18"
+   },
+   {
+    "ID": "36858",
+    "post_type": "revision",
+    "post_status": "inherit",
+    "post_date": "2026-10-13 20:16:19"
+   },
+   {
+    "ID": "36859",
+    "post_type": "revision",
+    "post_status": "inherit",
+    "post_date": "2026-10-13 20:22:08"
+   },
+   {
+    "ID": "36860",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-13 21:31:55"
+   },
+   {
+    "ID": "36861",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-13 21:35:25"
+   },
+   {
+    "ID": "36862",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-13 22:18:32"
+   },
+   {
+    "ID": "36863",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-13 22:39:36"
+   },
+   {
+    "ID": "36864",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-13 22:41:04"
+   },
+   {
+    "ID": "36865",
+    "post_type": "product",
+    "post_status": "publish",
+    "post_date": "2026-10-14 06:31:03"
+   },
+   {
+    "ID": "36866",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-10-14 06:32:28"
+   },
+   {
+    "ID": "36867",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-10-14 06:32:28"
+   },
+   {
+    "ID": "36868",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-10-14 06:32:29"
+   },
+   {
+    "ID": "36869",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-10-14 06:32:29"
+   },
+   {
+    "ID": "36870",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-14 07:16:26"
+   },
+   {
+    "ID": "36871",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-14 11:15:42"
+   },
+   {
+    "ID": "36872",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-14 12:31:32"
+   },
+   {
+    "ID": "36873",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-14 14:07:51"
+   },
+   {
+    "ID": "36874",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-14 14:26:32"
+   },
+   {
+    "ID": "36875",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-14 17:08:18"
+   },
+   {
+    "ID": "36876",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-14 21:10:33"
+   },
+   {
+    "ID": "36877",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-14 23:43:37"
+   },
+   {
+    "ID": "36878",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-15 07:02:43"
+   },
+   {
+    "ID": "36879",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-15 09:07:48"
+   },
+   {
+    "ID": "36880",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-15 12:12:26"
+   },
+   {
+    "ID": "36881",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-15 13:04:52"
+   },
+   {
+    "ID": "36882",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-15 13:58:51"
+   },
+   {
+    "ID": "36883",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-15 15:39:27"
+   },
+   {
+    "ID": "36884",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-15 16:21:08"
+   },
+   {
+    "ID": "36885",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-15 19:34:12"
+   },
+   {
+    "ID": "36886",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-15 20:10:03"
+   },
+   {
+    "ID": "36887",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-16 05:48:00"
+   },
+   {
+    "ID": "36888",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-16 09:58:30"
+   },
+   {
+    "ID": "36889",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-16 11:00:02"
+   },
+   {
+    "ID": "36890",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-16 11:30:30"
+   },
+   {
+    "ID": "36891",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-16 13:09:10"
+   },
+   {
+    "ID": "36892",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-16 13:45:07"
+   },
+   {
+    "ID": "36893",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-16 17:15:50"
+   },
+   {
+    "ID": "36894",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-16 18:23:00"
+   },
+   {
+    "ID": "36895",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-16 22:02:07"
+   },
+   {
+    "ID": "36896",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-17 06:33:46"
+   },
+   {
+    "ID": "36897",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-17 09:48:41"
+   },
+   {
+    "ID": "36898",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-17 11:24:38"
+   },
+   {
+    "ID": "36899",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-17 14:51:46"
+   },
+   {
+    "ID": "36900",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-17 14:55:56"
+   },
+   {
+    "ID": "36901",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-17 15:08:19"
+   },
+   {
+    "ID": "36902",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-17 17:43:37"
+   },
+   {
+    "ID": "36903",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-17 20:46:46"
+   },
+   {
+    "ID": "36904",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-17 21:37:52"
+   },
+   {
+    "ID": "36905",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-17 23:45:36"
+   },
+   {
+    "ID": "36906",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-18 08:27:27"
+   },
+   {
+    "ID": "36907",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-18 12:41:55"
+   },
+   {
+    "ID": "36908",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-18 15:13:11"
+   },
+   {
+    "ID": "36909",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-18 20:21:54"
+   },
+   {
+    "ID": "36910",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-18 20:57:55"
+   },
+   {
+    "ID": "36911",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-18 22:30:18"
+   },
+   {
+    "ID": "36912",
+    "post_type": "post",
+    "post_status": "auto-draft",
+    "post_date": "2026-10-18 22:46:43"
+   },
+   {
+    "ID": "36913",
+    "post_type": "shop_order",
+    "post_status": "wc-completed",
+    "post_date": "2026-10-19 07:47:05"
+   },
+   {
+    "ID": "36914",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-19 10:30:23"
+   },
+   {
+    "ID": "36915",
+    "post_type": "attachment",
+    "post_status": "inherit",
+    "post_date": "2026-10-19 10:30:27"
+   },
+   {
+    "ID": "36916",
+    "post_type": "shop_order",
+    "post_status": "wc-processing",
+    "post_date": "2026-10-19 10:39:23"
+   }
+  ],
+  "wclogs": [
+   "fatal-errors-2026-10-19-8d2bbdd5696d6c100dbd44f0ad4c3ba9.log 1k",
+   "place-order-debug-11c8dfd7-2026-10-18-8e6d2efbb6a7dcdc33c53deb13baa62e.log 2k",
+   "place-order-debug-297f8f85-2026-10-17-8c109b1cd380f77e30b81a74b925ce20.log 1k",
+   "place-order-debug-2b6ff049-2026-10-18-b40d64a89f51fcc7c7705d7de7f9fe1b.log 2k",
+   "place-order-debug-338e9a7c-2026-10-19-507d82dd52f6fcf3e8462a4432accb49.log 3k",
+   "place-order-debug-39ef7d3d-2026-10-18-5f715403511636ee1fd581ae9012534e.log 1k",
+   "place-order-debug-426f5379-2026-10-19-1252df579b085e63ad0f58e1848f95c4.log 3k",
+   "place-order-debug-48024628-2026-10-19-b5ed34d4643f89346ad10c969e0d7595.log 3k",
+   "place-order-debug-538bbe9f-2026-10-19-d98f2f66ef0a52947ab3a92bac745e35.log 2k",
+   "place-order-debug-57c23728-2026-10-16-0e70ae4abbbe6366068763ffaa19d9fd.log 1k",
+   "place-order-debug-61a74011-2026-10-18-dd5b1945aae5d821e6b60ffd3265af97.log 1k",
+   "place-order-debug-8b6fe30a-2026-10-16-f7651a3418304419ac5cc7a850736abc.log 1k",
+   "place-order-debug-a15f2944-2026-10-16-d631c263b116bfad04b70ad83b8a63e7.log 1k",
+   "place-order-debug-a20479f7-2026-10-19-3ac6b4ee6a512fb24e6de97fc13b80a0.log 2k",
+   "place-order-debug-a9f3cf3c-2026-10-19-41471e9fc48a0522d04437db64fd492d.log 3k",
+   "place-order-debug-bbadc418-2026-10-19-efd66b8eee3388d7e7103a6932cfcf4a.log 3k",
+   "place-order-debug-bcf9adf7-2026-10-19-812d30bd4db5ae0f96e5445ede95996b.log 3k",
+   "place-order-debug-c59c74b7-2026-10-18-7ead06c4adf45dbd966b85d2f9a5cbd6.log 2k",
+   "place-order-debug-e48ba1be-2026-10-19-6f4d3b483cc6dc63c6fc0f208b30cbf0.log 3k",
+   "place-order-debug-ea35dd02-2026-10-18-87247984286efd7482afa607d70666dd.log 2k",
+   "place-order-debug-f5f04c52-2026-10-19-5b5427ccce803f11e042fb3217bb0255.log 3k",
+   "transactional-emails-2026-10-13-7411133829f034c6248e0c5b8cbbf2b4.log 13k",
+   "transactional-emails-2026-10-14-e1a978ec4ffcfafbd633959401f7215e.log 13k",
+   "transactional-emails-2026-10-15-3d1f6d8eca9aabeb84f8ba6ddece9b03.log 10k",
+   "transactional-emails-2026-10-16-89b0c44b0e856e974a411a9fc108e7e8.log 8k",
+   "transactional-emails-2026-10-17-3026ced45ce71e2d83887f8f50d216a0.log 6k",
+   "transactional-emails-2026-10-18-eb0e0dbfd0ad3516eef9bd09a6e24b82.log 4k",
+   "transactional-emails-2026-10-19-796e7e494a4b75d3e6d3f1cd332380f0.log 4k",
+   "wc-analytics-order-import-2026-10-13-1431577534a3f9a8b3d1bb222edfdc06.log 0k",
+   "wc-analytics-order-import-2026-10-14-a9e2f74b929abb945e7c4d7ed96ce8db.log 0k",
+   "wc-analytics-order-import-2026-10-15-13c5778c7732cad919d6619491169e01.log 0k",
+   "wc-analytics-order-import-2026-10-16-16c003dde0e84093d4a199d0df4fdecc.log 0k",
+   "wc-analytics-order-import-2026-10-17-56aaca02135cd9a19c555521a3670ba6.log 0k",
+   "wc-analytics-order-import-2026-10-18-0128342ee626c51622e9999de7d339b9.log 0k",
+   "wc_logger-2026-10-13-4655eb97df52e9bddb1c6bb59cabb436.log 72k",
+   "wc_logger-2026-10-14-cd66f7f2cd08aaeefe19b4198fa403cc.log 34k",
+   "wc_logger-2026-10-15-806f22ae0f2a17a64a2d0d1e0aa97a2f.log 36k",
+   "wc_logger-2026-10-16-46902f7be0d71ec12c15ac8b5af66430.log 36k",
+   "wc_logger-2026-10-17-3c4bd759c8536d10054347b8e375c421.log 45k",
+   "wc_logger-2026-10-18-aae3b0bb00f5a5203656c53bebdad673.log 30k",
+   "wc_logger-2026-10-19-a68d53c0d43bcc92d051c4b87d04fed3.log 11k"
+  ],
+  "wclog_tail": {
+   "fatal-errors-2026-10-19-8d2bbdd5696d6c100dbd44f0ad4c3ba9.log": [
+    "2026-10-19T08:36:12+00:00 CRITICAL Allowed memory size of 268435456 bytes exhausted (tried to allocate 69632 bytes) CONTEXT: {\"error\":{\"type\":1,\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo"
+   ],
+   "place-order-debug-11c8dfd7-2026-10-18-8e6d2efbb6a7dcdc33c53deb13baa62e.log": [
+    "2026-10-18T12:12:05+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"11c8dfd7-6ef0-468f-80e3-2d6c828caf11\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-18T12:12:05+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"11c8dfd7-6ef0-468f-80e3-2d6c828caf11\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2"
+   ],
+   "place-order-debug-297f8f85-2026-10-17-8c109b1cd380f77e30b81a74b925ce20.log": [
+    "2026-10-17T20:45:23+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"297f8f85-d184-4282-9c4b-20c36d43fc6b\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-17T20:45:23+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"297f8f85-d184-4282-9c4b-20c36d43fc6b\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\""
+   ],
+   "place-order-debug-2b6ff049-2026-10-18-b40d64a89f51fcc7c7705d7de7f9fe1b.log": [
+    "2026-10-18T17:21:42+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"2b6ff049-1dca-4e13-bced-494aa033d3d2\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-18T17:21:42+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"2b6ff049-1dca-4e13-bced-494aa033d3d2\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"",
+    "2026-10-18T17:21:42+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"paysera\",\"order_uid\":\"2b6ff049-1dca-4e13-bced-494aa033d3d2\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":"
+   ],
+   "place-order-debug-338e9a7c-2026-10-19-507d82dd52f6fcf3e8462a4432accb49.log": [
+    "2026-10-19T04:21:19+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"338e9a7c-f398-495d-9b0a-b85d80d617c1\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-19T04:21:19+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"338e9a7c-f398-495d-9b0a-b85d80d617c1\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2",
+    "2026-10-19T04:21:19+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"paysera\",\"order_uid\":\"338e9a7c-f398-495d-9b0a-b85d80d617c1\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":"
+   ],
+   "place-order-debug-39ef7d3d-2026-10-18-5f715403511636ee1fd581ae9012534e.log": [
+    "2026-10-18T17:20:53+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"39ef7d3d-fd4b-47a0-af61-94f30d4b9e78\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-18T17:20:54+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"39ef7d3d-fd4b-47a0-af61-94f30d4b9e78\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\""
+   ],
+   "place-order-debug-426f5379-2026-10-19-1252df579b085e63ad0f58e1848f95c4.log": [
+    "2026-10-19T04:24:33+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"426f5379-82aa-472a-ac78-74832af81847\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-19T04:24:33+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"426f5379-82aa-472a-ac78-74832af81847\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2",
+    "2026-10-19T04:24:33+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"paysera\",\"order_uid\":\"426f5379-82aa-472a-ac78-74832af81847\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":"
+   ],
+   "place-order-debug-48024628-2026-10-19-b5ed34d4643f89346ad10c969e0d7595.log": [
+    "2026-10-19T04:22:15+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"48024628-8086-4570-bc6c-01e23139716a\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-19T04:22:15+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"48024628-8086-4570-bc6c-01e23139716a\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2",
+    "2026-10-19T04:22:15+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"paysera\",\"order_uid\":\"48024628-8086-4570-bc6c-01e23139716a\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":"
+   ],
+   "place-order-debug-538bbe9f-2026-10-19-d98f2f66ef0a52947ab3a92bac745e35.log": [
+    "2026-10-19T04:44:55+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"538bbe9f-8e73-4b58-ab7a-2a48b69ca80e\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-19T04:44:55+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"538bbe9f-8e73-4b58-ab7a-2a48b69ca80e\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2"
+   ],
+   "place-order-debug-57c23728-2026-10-16-0e70ae4abbbe6366068763ffaa19d9fd.log": [
+    "2026-10-16T10:44:51+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"57c23728-c63a-41ed-91ac-479b08402274\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-16T10:44:51+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"57c23728-c63a-41ed-91ac-479b08402274\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\""
+   ],
+   "place-order-debug-61a74011-2026-10-18-dd5b1945aae5d821e6b60ffd3265af97.log": [
+    "2026-10-18T09:41:08+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"61a74011-d3de-4baa-810e-b8ad7c742a24\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-18T09:41:08+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"61a74011-d3de-4baa-810e-b8ad7c742a24\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\""
+   ],
+   "place-order-debug-8b6fe30a-2026-10-16-f7651a3418304419ac5cc7a850736abc.log": [
+    "2026-10-16T14:15:28+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"8b6fe30a-7cf6-4df9-84ac-56eb1b2f7adf\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-16T14:15:28+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"8b6fe30a-7cf6-4df9-84ac-56eb1b2f7adf\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\""
+   ],
+   "place-order-debug-a15f2944-2026-10-16-d631c263b116bfad04b70ad83b8a63e7.log": [
+    "2026-10-16T06:58:10+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"a15f2944-d290-4d6f-959e-4aa1bc5580d5\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-16T06:58:10+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"a15f2944-d290-4d6f-959e-4aa1bc5580d5\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\""
+   ],
+   "place-order-debug-a20479f7-2026-10-19-3ac6b4ee6a512fb24e6de97fc13b80a0.log": [
+    "2026-10-19T04:26:27+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"a20479f7-93f3-4ada-8082-55667515a505\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-19T04:26:27+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"a20479f7-93f3-4ada-8082-55667515a505\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2"
+   ],
+   "place-order-debug-a9f3cf3c-2026-10-19-41471e9fc48a0522d04437db64fd492d.log": [
+    "2026-10-19T04:19:31+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"a9f3cf3c-f1b4-40bb-bf3c-4b28d142ce67\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-19T04:19:31+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"a9f3cf3c-f1b4-40bb-bf3c-4b28d142ce67\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2",
+    "2026-10-19T04:19:31+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"bacs\",\"order_uid\":\"a9f3cf3c-f1b4-40bb-bf3c-4b28d142ce67\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2,\""
+   ],
+   "place-order-debug-bbadc418-2026-10-19-efd66b8eee3388d7e7103a6932cfcf4a.log": [
+    "2026-10-19T04:19:58+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"bbadc418-e53b-44e3-aa37-c41ee856d612\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-19T04:19:58+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"bbadc418-e53b-44e3-aa37-c41ee856d612\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2",
+    "2026-10-19T04:19:58+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"bacs\",\"order_uid\":\"bbadc418-e53b-44e3-aa37-c41ee856d612\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2,\""
+   ],
+   "place-order-debug-bcf9adf7-2026-10-19-812d30bd4db5ae0f96e5445ede95996b.log": [
+    "2026-10-19T04:23:39+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"bcf9adf7-b310-4543-93d5-723dd7c70625\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-19T04:23:39+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"bcf9adf7-b310-4543-93d5-723dd7c70625\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2",
+    "2026-10-19T04:23:39+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"paysera\",\"order_uid\":\"bcf9adf7-b310-4543-93d5-723dd7c70625\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":"
+   ],
+   "place-order-debug-c59c74b7-2026-10-18-7ead06c4adf45dbd966b85d2f9a5cbd6.log": [
+    "2026-10-18T09:41:19+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"c59c74b7-b895-4fb3-bd22-46d71a5c64da\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-18T09:41:19+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"c59c74b7-b895-4fb3-bd22-46d71a5c64da\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"",
+    "2026-10-18T09:41:19+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"paysera\",\"order_uid\":\"c59c74b7-b895-4fb3-bd22-46d71a5c64da\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":"
+   ],
+   "place-order-debug-e48ba1be-2026-10-19-6f4d3b483cc6dc63c6fc0f208b30cbf0.log": [
+    "2026-10-19T04:20:32+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"e48ba1be-e665-47ae-911c-853b6a4e7671\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-19T04:20:32+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"e48ba1be-e665-47ae-911c-853b6a4e7671\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2",
+    "2026-10-19T04:20:32+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"paysera\",\"order_uid\":\"e48ba1be-e665-47ae-911c-853b6a4e7671\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":"
+   ],
+   "place-order-debug-ea35dd02-2026-10-18-87247984286efd7482afa607d70666dd.log": [
+    "2026-10-18T17:21:47+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"ea35dd02-e65e-4121-8395-a0bd0261ae12\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-18T17:21:47+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"ea35dd02-e65e-4121-8395-a0bd0261ae12\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"",
+    "2026-10-18T17:21:48+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"paysera\",\"order_uid\":\"ea35dd02-e65e-4121-8395-a0bd0261ae12\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":"
+   ],
+   "place-order-debug-f5f04c52-2026-10-19-5b5427ccce803f11e042fb3217bb0255.log": [
+    "2026-10-19T04:22:46+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"f5f04c52-47a9-4f98-9072-43e269ebc523\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop",
+    "2026-10-19T04:22:46+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"f5f04c52-47a9-4f98-9072-43e269ebc523\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2",
+    "2026-10-19T04:22:46+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"paysera\",\"order_uid\":\"f5f04c52-47a9-4f98-9072-43e269ebc523\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":"
+   ]
+  }
+ },
+ "v": "dep-084125",
+ "kurimas": 200,
+ "sid": 7280,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
