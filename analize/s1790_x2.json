@@ -1,0 +1,634 @@
+{
+ "1": {
+  "v": "S1790x2",
+  "pakart": [
+   {
+    "k": "mokamas",
+    "s": "google",
+    "n": "21",
+    "eur": "1010",
+    "kontr": "268",
+    "vid_d": "14"
+   },
+   {
+    "k": "direct",
+    "s": "",
+    "n": "9",
+    "eur": "588",
+    "kontr": "165",
+    "vid_d": "15"
+   },
+   {
+    "k": "organika",
+    "s": "",
+    "n": "4",
+    "eur": "92",
+    "kontr": "30",
+    "vid_d": "19"
+   },
+   {
+    "k": "email",
+    "s": "newsletter",
+    "n": "4",
+    "eur": "131",
+    "kontr": "26",
+    "vid_d": "12"
+   },
+   {
+    "k": "referral",
+    "s": "",
+    "n": "2",
+    "eur": "71",
+    "kontr": "17",
+    "vid_d": "2"
+   },
+   {
+    "k": "mokamas",
+    "s": "kaina24",
+    "n": "1",
+    "eur": "67",
+    "kontr": "15",
+    "vid_d": "38"
+   },
+   {
+    "k": "email",
+    "s": "petshop_laiskai",
+    "n": "1",
+    "eur": "12",
+    "kontr": "3",
+    "vid_d": "21"
+   }
+  ],
+  "pakart_prekes": [
+   {
+    "b": "animonda",
+    "n": "77"
+   },
+   {
+    "b": "miamor",
+    "n": "22"
+   },
+   {
+    "b": "josera",
+    "n": "17"
+   },
+   {
+    "b": "romar",
+    "n": "13"
+   },
+   {
+    "b": "gnatek",
+    "n": "12"
+   },
+   {
+    "b": "exclusion",
+    "n": "10"
+   },
+   {
+    "b": "ontario",
+    "n": "5"
+   },
+   {
+    "b": "monge",
+    "n": "4"
+   },
+   {
+    "b": "churu",
+    "n": "3"
+   },
+   {
+    "b": "ambrosia",
+    "n": "2"
+   }
+  ],
+  "seni_kanalai": [
+   {
+    "k": "mokamas",
+    "s": "google",
+    "n": "67"
+   },
+   {
+    "k": "direct",
+    "s": "",
+    "n": "47"
+   },
+   {
+    "k": "mokamas",
+    "s": "",
+    "n": "35"
+   },
+   {
+    "k": "organika",
+    "s": "",
+    "n": "18"
+   },
+   {
+    "k": "mokamas",
+    "s": "kaina24",
+    "n": "8"
+   },
+   {
+    "k": "referral",
+    "s": "",
+    "n": "5"
+   },
+   {
+    "k": "email",
+    "s": "newsletter",
+    "n": "5"
+   },
+   {
+    "k": "mokamas",
+    "s": "kainos",
+    "n": "3"
+   },
+   {
+    "k": "ai",
+    "s": "chatgpt.com",
+    "n": "2"
+   },
+   {
+    "k": "soc_organika",
+    "s": "",
+    "n": "2"
+   },
+   {
+    "k": "email",
+    "s": "petshop_laiskai",
+    "n": "1"
+   }
+  ],
+  "krepselis_consent_d": [
+   {
+    "d": "2026-10-01",
+    "flow": "browse_abandoned",
+    "sent": "0",
+    "be_sutikimo": "2",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-01",
+    "flow": "cart_abandoned",
+    "sent": "0",
+    "be_sutikimo": "0",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-01",
+    "flow": "cart_abandoned_2",
+    "sent": "0",
+    "be_sutikimo": "1",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-02",
+    "flow": "cart_abandoned",
+    "sent": "0",
+    "be_sutikimo": "2",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-02",
+    "flow": "cart_abandoned_2",
+    "sent": "0",
+    "be_sutikimo": "0",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-03",
+    "flow": "browse_abandoned",
+    "sent": "0",
+    "be_sutikimo": "2",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-04",
+    "flow": "cart_abandoned",
+    "sent": "0",
+    "be_sutikimo": "3",
+    "n": "3"
+   },
+   {
+    "d": "2026-10-05",
+    "flow": "browse_abandoned",
+    "sent": "0",
+    "be_sutikimo": "1",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-05",
+    "flow": "cart_abandoned",
+    "sent": "1",
+    "be_sutikimo": null,
+    "n": "1"
+   },
+   {
+    "d": "2026-10-06",
+    "flow": "browse_abandoned",
+    "sent": "0",
+    "be_sutikimo": "1",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-06",
+    "flow": "cart_abandoned",
+    "sent": "0",
+    "be_sutikimo": "2",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-06",
+    "flow": "cart_abandoned_2",
+    "sent": "1",
+    "be_sutikimo": null,
+    "n": "1"
+   },
+   {
+    "d": "2026-10-07",
+    "flow": "browse_abandoned",
+    "sent": "0",
+    "be_sutikimo": "1",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-07",
+    "flow": "cart_abandoned",
+    "sent": "1",
+    "be_sutikimo": null,
+    "n": "1"
+   },
+   {
+    "d": "2026-10-07",
+    "flow": "cart_abandoned_2",
+    "sent": "0",
+    "be_sutikimo": "2",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-08",
+    "flow": "browse_abandoned",
+    "sent": "1",
+    "be_sutikimo": "2",
+    "n": "3"
+   },
+   {
+    "d": "2026-10-08",
+    "flow": "cart_abandoned",
+    "sent": "0",
+    "be_sutikimo": "3",
+    "n": "3"
+   },
+   {
+    "d": "2026-10-08",
+    "flow": "cart_abandoned_2",
+    "sent": "1",
+    "be_sutikimo": null,
+    "n": "1"
+   },
+   {
+    "d": "2026-10-09",
+    "flow": "browse_abandoned",
+    "sent": "0",
+    "be_sutikimo": "1",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-09",
+    "flow": "cart_abandoned",
+    "sent": "0",
+    "be_sutikimo": "1",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-10",
+    "flow": "cart_abandoned",
+    "sent": "0",
+    "be_sutikimo": "7",
+    "n": "7"
+   },
+   {
+    "d": "2026-10-10",
+    "flow": "cart_abandoned_2",
+    "sent": "0",
+    "be_sutikimo": "1",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-11",
+    "flow": "browse_abandoned",
+    "sent": "1",
+    "be_sutikimo": "1",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-11",
+    "flow": "cart_abandoned",
+    "sent": "1",
+    "be_sutikimo": null,
+    "n": "1"
+   },
+   {
+    "d": "2026-10-11",
+    "flow": "cart_abandoned_2",
+    "sent": "2",
+    "be_sutikimo": "0",
+    "n": "4"
+   },
+   {
+    "d": "2026-10-12",
+    "flow": "browse_abandoned",
+    "sent": "1",
+    "be_sutikimo": null,
+    "n": "1"
+   },
+   {
+    "d": "2026-10-12",
+    "flow": "cart_abandoned",
+    "sent": "1",
+    "be_sutikimo": "0",
+    "n": "5"
+   },
+   {
+    "d": "2026-10-13",
+    "flow": "browse_abandoned",
+    "sent": "1",
+    "be_sutikimo": "3",
+    "n": "4"
+   },
+   {
+    "d": "2026-10-13",
+    "flow": "cart_abandoned",
+    "sent": "1",
+    "be_sutikimo": "0",
+    "n": "3"
+   },
+   {
+    "d": "2026-10-13",
+    "flow": "cart_abandoned_2",
+    "sent": "1",
+    "be_sutikimo": "0",
+    "n": "6"
+   },
+   {
+    "d": "2026-10-14",
+    "flow": "browse_abandoned",
+    "sent": "0",
+    "be_sutikimo": "4",
+    "n": "4"
+   },
+   {
+    "d": "2026-10-14",
+    "flow": "cart_abandoned_2",
+    "sent": "1",
+    "be_sutikimo": "0",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-15",
+    "flow": "cart_abandoned",
+    "sent": "1",
+    "be_sutikimo": "0",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-16",
+    "flow": "browse_abandoned",
+    "sent": "0",
+    "be_sutikimo": "3",
+    "n": "3"
+   },
+   {
+    "d": "2026-10-16",
+    "flow": "cart_abandoned",
+    "sent": "1",
+    "be_sutikimo": null,
+    "n": "1"
+   },
+   {
+    "d": "2026-10-16",
+    "flow": "cart_abandoned_2",
+    "sent": "1",
+    "be_sutikimo": "0",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-17",
+    "flow": "browse_abandoned",
+    "sent": "1",
+    "be_sutikimo": "1",
+    "n": "2"
+   },
+   {
+    "d": "2026-10-17",
+    "flow": "cart_abandoned_2",
+    "sent": "1",
+    "be_sutikimo": null,
+    "n": "1"
+   },
+   {
+    "d": "2026-10-18",
+    "flow": "cart_abandoned",
+    "sent": "1",
+    "be_sutikimo": null,
+    "n": "1"
+   },
+   {
+    "d": "2026-10-19",
+    "flow": "cart_abandoned",
+    "sent": "1",
+    "be_sutikimo": null,
+    "n": "1"
+   },
+   {
+    "d": "2026-10-19",
+    "flow": "cart_abandoned_2",
+    "sent": "1",
+    "be_sutikimo": null,
+    "n": "1"
+   },
+   {
+    "d": "2026-10-20",
+    "flow": "browse_abandoned",
+    "sent": "0",
+    "be_sutikimo": "1",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-20",
+    "flow": "cart_abandoned",
+    "sent": "1",
+    "be_sutikimo": null,
+    "n": "1"
+   }
+  ],
+  "consent_ch": [
+   {
+    "sent_at": "2026-10-20 07:04:31",
+    "min_skirt": "-2"
+   },
+   {
+    "sent_at": "2026-10-20 06:18:55",
+    "min_skirt": "-1"
+   },
+   {
+    "sent_at": "2026-10-19 20:44:03",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-10-14 11:38:49",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-10-12 05:38:40",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-10-10 12:24:32",
+    "min_skirt": "-77"
+   },
+   {
+    "sent_at": "2026-10-10 10:28:45",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-10-10 09:48:49",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-10-10 06:53:46",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-10-10 04:59:29",
+    "min_skirt": "-1"
+   },
+   {
+    "sent_at": "2026-10-09 16:59:25",
+    "min_skirt": "-1"
+   },
+   {
+    "sent_at": "2026-10-08 06:24:32",
+    "min_skirt": "-22"
+   },
+   {
+    "sent_at": "2026-10-07 20:28:42",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-10-07 19:59:01",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-10-07 17:13:50",
+    "min_skirt": "-34"
+   },
+   {
+    "sent_at": "2026-10-07 10:13:50",
+    "min_skirt": "-9"
+   },
+   {
+    "sent_at": "2026-10-06 12:23:58",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-10-05 16:33:42",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-10-05 08:18:42",
+    "min_skirt": "-8"
+   },
+   {
+    "sent_at": "2026-10-05 07:33:42",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-10-04 18:04:38",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-10-01 04:48:47",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-09-29 05:33:44",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-09-23 19:38:42",
+    "min_skirt": "-13"
+   },
+   {
+    "sent_at": "2026-09-23 13:38:57",
+    "min_skirt": "0"
+   },
+   {
+    "sent_at": "2026-09-22 20:34:26",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-09-17 18:58:56",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-09-17 17:04:00",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-09-16 19:38:41",
+    "min_skirt": "-16"
+   },
+   {
+    "sent_at": "2026-09-16 18:08:42",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-09-16 10:24:06",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-09-15 18:43:50",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-09-14 17:03:48",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-09-14 02:43:47",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-09-13 16:18:41",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-09-13 11:53:41",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-09-12 15:33:48",
+    "min_skirt": null
+   },
+   {
+    "sent_at": "2026-09-10 09:53:46",
+    "min_skirt": "-19"
+   }
+  ],
+  "pp2_tikslu": {
+   "n": "365",
+   "pirko": "9"
+  },
+  "webhook_log": [],
+  "krep_cfg": {
+   "isjungta": false
+  }
+ },
+ "v": "dep-184610",
+ "kurimas": 200,
+ "sid": 7310,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
