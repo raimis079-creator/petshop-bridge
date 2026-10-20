@@ -1,0 +1,224 @@
+{
+ "1": {
+  "v": "S1791c",
+  "gen": [
+   "354:     $order = array(",
+   "355:         'id'            => $order_id,",
+   "356:         'orderNumber'   => $wc_order->get_order_number(),",
+   "357:         'documentDate'  => date_i18n( 'Y-m-d' ),",
+   "358:         'date'          => $wc_order->get_date_created()",
+   "359:                             ? $wc_order->get_date_created()->format( 'Y-m-d' )",
+   "360:                             : date( 'Y-m-d' ),",
+   "361:         'paymentMethod' => $wc_order->get_payment_method_title(),",
+   "362:         'billing'       => array(",
+   "363:             'name'    => trim( $wc_order->get_billing_first_name() . ' ' . $wc_order->get_billing_last_name() ),",
+   "364:             'address' => $billing_lines,",
+   "365:             'phone'   => $wc_order->get_billing_phone(),",
+   "366:             'email'   => $wc_order->get_billing_email(),",
+   "367:         ),",
+   "368:         'shipping'      => array( 'name' => '', 'address' => array() ),",
+   "369:     );",
+   "370: ",
+   "371:     $logo_url  = '';",
+   "372:     $logo_path = '';",
+   "373:     $flatsome_logo_id = get_theme_mod( 'site_logo' );",
+   "374:     if ( $flatsome_logo_id ) {",
+   "375:         $logo_url  = wp_get_attachment_image_url( $flatsome_logo_id, 'full' );",
+   "376:         $logo_path = get_attached_file( $flatsome_logo_id );",
+   "377:     }",
+   "378: ",
+   "379:     $shop     = array( 'logo' => $logo_url, 'logo_path' => $logo_path, 'name' => get_bloginfo( 'name' ) );",
+   "380:     $settings = array( 'displayPriceInProductDetailsTable' => true );",
+   "381:     $document = array();",
+   "382:     $template = 'invoice';",
+   "383:     $type     = 'pdf';",
+   "384:     $items    = array();",
+   "385:     $totals   = array();",
+   "386: ",
+   "387:     $template_file = get_stylesheet_directory() . '/woocommerce-delivery-notes/base.php';",
+   "388:     if ( ! file_exists( $template_file ) ) return false;",
+   "389: ",
+   "390:     ob_start();",
+   "391:     include $template_file;",
+   "392:     $body_html = ob_get_clean();",
+   "393: ",
+   "394:     $full_html = '<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><style>@page{size:A4;margin:12mm 14mm;}body{margin:0;padding:0;}</style></head><body>' . $body_html . '</body></html>';",
+   "395: ",
+   "396:     if ( ! class_exists( 'Dompdf\\Dompdf' ) ) return false;",
+   "397: ",
+   "398:     $upload_dir = wp_upload_dir();",
+   "399:     $pdf_dir    = trailingslashit( $upload_dir['basedir'] ) . 'wcdn/invoice/';",
+   "400:     wp_mkdir_p( $pdf_dir );",
+   "401:     // Svarus lietuviskas failo pavadinimas pagal dokumento numeri (base.php nustato $invoice_number ir $doc_title virsuje).",
+   "402:     $doc_num  = isset( $invoice_number ) ? preg_replace( '/[^A-Za-z0-9]/', '', $invoice_number ) : (string) $order_id;",
+   "403:     $name_pfx = ( isset( $doc_title ) && mb_stripos( $doc_title, 'ankstin' ) !== false ) ? 'Isankstine-saskaita' : 'PVM-saskaita';",
+   "404:     $pdf_file = $pdf_dir . $name_pfx . '-' . $doc_num . '.pdf';",
+   "405: ",
+   "406:     try {",
+   "407:         $options = new \\Dompdf\\Options();",
+   "408:         $options->set( 'isRemoteEnabled', true );",
+   "409:         $options->set( 'isHtml5ParserEnabled', true );",
+   "410:         $options->set( 'isFontSubsettingEnabled', true );",
+   "411:         $options->set( 'chroot', array( realpath( ABSPATH ), realpath( $upload_dir['basedir'] ) ) );",
+   "412:         $dompdf = new \\Dompdf\\Dompdf( $options );",
+   "413:         $dompdf->loadHtml( $full_html, 'UTF-8' );",
+   "414:         $dompdf->setPaper( array( 0, 0, 595.28, 841.89 ), 'portrait' );",
+   "415:         $dompdf->render();",
+   "416:         file_put_contents( $pdf_file, $dompdf->output() );",
+   "417:         return file_exists( $pdf_file ) ? $pdf_file : false;",
+   "418:     } catch ( \\Throwable $e ) {",
+   "419:         return false;",
+   "420:     }",
+   "421: }"
+  ],
+  "fn_grep": [
+   "249: //   update_option('petshop_avpn_counter', 101)",
+   "289: return petshop_ps_kitas_numeris( 'petshop_avpn_counter', 'AVPN', $order_id, '_petshop_avpn_number' );",
+   "399: $pdf_dir    = trailingslashit( $upload_dir['basedir'] ) . 'wcdn/invoice/';",
+   "553: $order->update_meta_data( '_petshop_completed_pdf', $pdf_file );",
+   "560: $pdf_file = $order->get_meta( '_petshop_completed_pdf' );",
+   "672: $is_inv   = ( stripos( $path, '/wcdn/invoice/' ) !== false || stripos( $basename, 'invoice' ) !== false );"
+  ],
+  "base_grep": [
+   "37: $original_avpn = $parent_order->get_meta( '_petshop_avpn_number' );",
+   "55: if ( function_exists( 'petshop_get_invoice_document_type' ) ) {",
+   "56: $doc_type = petshop_get_invoice_document_type( $wc_order );",
+   "60: if ( $wc_order->get_meta( '_petshop_invoice_document_type' ) === 'proforma' ) {"
+  ],
+  "trina": [],
+  "counter": "11401",
+  "pdf_meta": {
+   "yra": 87,
+   "nera": 313
+  },
+  "ivykiai_0800": [
+   {
+    "laikas": "2026-10-20 05:01:27",
+    "uzsakymas": "36882",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga",
+    "p": "grupė: 7 užs."
+   },
+   {
+    "laikas": "2026-10-20 05:01:27",
+    "uzsakymas": "36885",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga",
+    "p": "grupė: 7 užs."
+   },
+   {
+    "laikas": "2026-10-20 05:01:27",
+    "uzsakymas": "36888",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga",
+    "p": "grupė: 7 užs."
+   },
+   {
+    "laikas": "2026-10-20 05:01:27",
+    "uzsakymas": "36917",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga",
+    "p": "grupė: 7 užs."
+   },
+   {
+    "laikas": "2026-10-20 05:01:27",
+    "uzsakymas": "36920",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga",
+    "p": "grupė: 7 užs."
+   },
+   {
+    "laikas": "2026-10-20 05:01:27",
+    "uzsakymas": "36921",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga",
+    "p": "grupė: 7 užs."
+   },
+   {
+    "laikas": "2026-10-20 05:01:27",
+    "uzsakymas": "36923",
+    "sritis": "desk",
+    "veiksmas": "lapai",
+    "kas_vardas": "Inga",
+    "p": "grupė: 7 užs."
+   },
+   {
+    "laikas": "2026-10-20 05:02:57",
+    "uzsakymas": "36882",
+    "sritis": "desk",
+    "veiksmas": "vp_bulk",
+    "kas_vardas": "Inga",
+    "p": "grupė: 7 užs."
+   },
+   {
+    "laikas": "2026-10-20 05:02:57",
+    "uzsakymas": "36885",
+    "sritis": "desk",
+    "veiksmas": "vp_bulk",
+    "kas_vardas": "Inga",
+    "p": "grupė: 7 užs."
+   },
+   {
+    "laikas": "2026-10-20 05:02:57",
+    "uzsakymas": "36888",
+    "sritis": "desk",
+    "veiksmas": "vp_bulk",
+    "kas_vardas": "Inga",
+    "p": "grupė: 7 užs."
+   },
+   {
+    "laikas": "2026-10-20 05:02:57",
+    "uzsakymas": "36917",
+    "sritis": "desk",
+    "veiksmas": "vp_bulk",
+    "kas_vardas": "Inga",
+    "p": "grupė: 7 užs."
+   },
+   {
+    "laikas": "2026-10-20 05:02:57",
+    "uzsakymas": "36920",
+    "sritis": "desk",
+    "veiksmas": "vp_bulk",
+    "kas_vardas": "Inga",
+    "p": "grupė: 7 užs."
+   },
+   {
+    "laikas": "2026-10-20 05:02:57",
+    "uzsakymas": "36921",
+    "sritis": "desk",
+    "veiksmas": "vp_bulk",
+    "kas_vardas": "Inga",
+    "p": "grupė: 7 užs."
+   },
+   {
+    "laikas": "2026-10-20 05:02:57",
+    "uzsakymas": "36923",
+    "sritis": "desk",
+    "veiksmas": "vp_bulk",
+    "kas_vardas": "Inga",
+    "p": "grupė: 7 užs."
+   },
+   {
+    "laikas": "2026-10-20 05:14:03",
+    "uzsakymas": "36925",
+    "sritis": "wc",
+    "veiksmas": "busena",
+    "kas_vardas": "sistema",
+    "p": "mokėjimas / svetainė"
+   }
+  ]
+ },
+ "v": "dep-204830",
+ "kurimas": 200,
+ "sid": 7321,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
