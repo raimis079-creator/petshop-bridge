@@ -1,0 +1,46 @@
+{
+ "1": {
+  "v": "S1790y2",
+  "api": {
+   "class-email-suppression.php": [
+    "26: const CH_TRANSACTIONAL = 'transactional';",
+    "32: public static function table() {",
+    "35: public static function log_table() {",
+    "39: public static function install() {",
+    "67: transactional_status VARCHAR(32) NULL DEFAULT NULL,",
+    "80: public static function maybe_install() {",
+    "88: public static function valid_channel( $ch ) {",
+    "89: return in_array( $ch, array( self::CH_MARKETING, self::CH_TRANSACTIONAL ), true );",
+    "96: public static function suppress( $email, $channel, $reason = 'manual', $source = 'local', $note = '' ) {",
+    "118: public static function release( $email, $channel, $note = '' ) {",
+    "128: public static function is_suppressed( $email, $channel ) {",
+    "137: public static function reason_for( $email, $channel ) {",
+    "156: public static function interpret_status( $status ) {",
+    "159: 'transactional' => array( 'action' => 'none', 'reason' => '' ),",
+    "180: $out['transactional'] = array( 'action' => 'suppress', 'reason' => ( 'spam' === $tx || 'complained' === $tx ) ? 'spam' : 'bounce' );",
+    "182: $out['transactional'] = array( 'action' => 'release', 'reason' => '' );",
+    "191: public static function apply_status( $email, $status, $source = 'sender_webhook' ) {",
+    "194: foreach ( array( self::CH_MARKETING, self::CH_TRANSACTIONAL ) as $ch ) {",
+    "211: // S315: busenai pasikeitus PS_TRANSACTIONAL_ONLY gali tapti neteisingas",
+    "213: Petshop_Contact_Policy::sync_transactional_only( $email, 'suppression_change' );",
+    "225: public static function log_webhook( $topic, $email, $status, $payload, $result = '' ) {",
+    "240: 'transactional_status' => $tx ? substr( $tx, 0, 32 ) : null,",
+    "252: public static function reconcile( $dry_run = false ) {",
+    "257: 'transactional_suppressed'=> 0,",
+    "273: $resp = wp_remote_get( 'https://api.sender.net/v2/subscribers?limit=100&page=' . $page, array(",
+    "293: foreach ( array( self::CH_MARKETING, self::CH_TRANSACTIONAL ) as $ch ) {",
+    "301: $stats[ ( self::CH_MARKETING === $ch ? 'marketing' : 'transactional' ) . '_suppressed' ]++;",
+    "326: public static function stats() {",
+    "340: public static function init() {",
+    "347: public static function cron_reconcile() {"
+   ]
+  }
+ },
+ "v": "dep-190323",
+ "kurimas": 200,
+ "sid": 7312,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
