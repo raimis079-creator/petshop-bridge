@@ -1,0 +1,195 @@
+{
+ "1": {
+  "v": "S1790y",
+  "kodas": [
+   "/mu-plugins/petshop-analitika-langas.php:108: $rows = $wpdb->get_results( $wpdb->prepare( \"SELECT flow, SUM(status='sent') s, SUM(status='skipped') sk, SUM(status IN ('dead','failed')) d, SUM(opened_at IS NOT NULL)",
+   "/mu-plugins/petshop-klientai.php:414: $jobs = $wpdb->get_results( $wpdb->prepare( \"SELECT created_at,flow,flow_class,subject,status,skip_reason,delivered_at,opened_at,clicked_at FROM {$p}ps_email_jobs WHERE",
+   "/mu-plugins/petshop-klientai.php:415: foreach ( $jobs as $j ) { $b = $j['status']; if ( $j['skip_reason'] ) $b .= ' (' . $j['skip_reason'] . ')'; if ( $j['clicked_at'] ) $b .= ' · paspausta'; elseif ( $j['o",
+   "/mu-plugins/petshop-rezultatai.php:94: SUM(delivered_at IS NOT NULL) delivered,",
+   "/mu-plugins/petshop-rezultatai.php:95: SUM(opened_at IS NOT NULL) opened,",
+   "/mu-plugins/petshop-rezultatai.php:96: SUM(clicked_at IS NOT NULL) clicked,",
+   "/mu-plugins/petshop-rezultatai.php:109: SUM(delivered_at IS NOT NULL) delivered,",
+   "/mu-plugins/petshop-rezultatai.php:110: SUM(opened_at IS NOT NULL) opened,",
+   "/mu-plugins/petshop-rezultatai.php:111: SUM(clicked_at IS NOT NULL) clicked",
+   "/mu-plugins/petshop-rezultatai.php:145: $poros = $wpdb->get_results(\"SELECT o.id oid, o.total_amount suma, j.flow, j.clicked_at",
+   "/mu-plugins/petshop-rezultatai.php:148: AND j.clicked_at IS NOT NULL",
+   "/mu-plugins/petshop-rezultatai.php:149: AND j.clicked_at <= o.date_created_gmt",
+   "/mu-plugins/petshop-rezultatai.php:150: AND j.clicked_at >= DATE_SUB(o.date_created_gmt, INTERVAL 7 DAY)",
+   "/mu-plugins/petshop-rezultatai.php:153: ORDER BY o.id, j.clicked_at DESC\", ARRAY_A);",
+   "/mu-plugins/petshop-rytas.php:22: * eventai, 404, beacon, Ads webhook. Laiškas siunčiamas TIK jei bent viena raudona;",
+   "/mu-plugins/petshop-rytas.php:490: /* Google Ads webhook: jei kada gauta — turi ateiti kasdien */",
+   "/mu-plugins/petshop-rytas.php:689: echo '</p><p class=\"psru-mut\">Google Ads webhook: <code>' . esc_html( rest_url( 'ps-web/v1/ads' ) ) . '</code> · raktas <code>' . esc_html( (string) get_option( 'ps_ad",
+   "/mu-plugins/petshop-fakt-reklama.php:4: * Description: Reklamos išlaidų faktai (Google Ads per Ads Script webhook; Kaina24/Kainos.lt iš skaitiklio). Planas v2.0 E3c.",
+   "/mu-plugins/petshop-fakt-reklama.php:129: /* ---------- REST: Google Ads Script webhook ---------- */",
+   "/mu-plugins/petshop-prenumeratos-langas.php:617: \"SELECT job_key, status, created_at, sent_at, delivered_at, opened_at, clicked_at, block_reason",
+   "/mu-plugins/petshop-prenumeratos-langas.php:628: foreach (array('sent_at', 'delivered_at', 'opened_at', 'clicked_at') as $c) {",
+   "/mu-plugins/petshop-planas-langas.php:68: $kpi = array(); $sent = 0; $klik = (int) $wpdb->get_var( $wpdb->prepare( \"SELECT COUNT(*) FROM {$p}ps_email_jobs WHERE flow='refill_due' AND clicked_at IS NOT NULL AND",
+   "/plugins/petshop-core/includes/class-consent-sync.php:10: * B. Sender → Woo (webhook): kai klientas unsubscribe'ina per Sender laiska,",
+   "/plugins/petshop-core/includes/class-consent-sync.php:11: *    Sender webhook praneša, mes atnaujinam mūsų puse (user_meta + ps_consent_log).",
+   "/plugins/petshop-core/includes/class-consent-sync.php:12: *    (Webhook receiver — atskira klase; cia tik handleriai.)",
+   "/plugins/petshop-core/includes/class-consent-sync.php:164: * Iki siol supresija rasydavo tik Sender webhook/reconcile — lokalus",
+   "/plugins/petshop-core/includes/class-consent-sync.php:194: * Sender → Woo: apdoroti unsubscribe is Sender webhook.",
+   "/plugins/petshop-core/includes/class-consent-sync.php:218: // Irasyti i consent_log (source=webhook)",
+   "/plugins/petshop-core/includes/class-consent-sync.php:225: 'source'      => 'webhook',",
+   "/plugins/petshop-core/includes/class-consent-sync.php:232: // Emit consent_changed (webhook)",
+   "/plugins/petshop-core/includes/class-consent-sync.php:238: 'source'     => 'webhook',",
+   "/plugins/petshop-core/includes/class-consent-sync.php:267: 'source'      => 'webhook',",
+   "/plugins/petshop-core/includes/class-consent-log.php:18: *   source       VARCHAR(32)   'checkout'|'mano-paskyra'|'unsubscribe-link'|'webhook'|'import'|'admin'",
+   "/plugins/petshop-core/includes/class-consent-log.php:94: *   @type string $source      checkout|mano-paskyra|unsubscribe-link|webhook|import|admin",
+   "/plugins/petshop-core/includes/class-email-suppression.php:3: * Petshop Email Suppression — KANALINIS suppression + webhook zurnalas.",
+   "/plugins/petshop-core/includes/class-email-suppression.php:36: global $wpdb; return $wpdb->prefix . 'ps_webhook_log';",
+   "/plugins/petshop-core/includes/class-email-suppression.php:191: public static function apply_status( $email, $status, $source = 'sender_webhook' ) {",
+   "/plugins/petshop-core/includes/class-email-suppression.php:219: /* Webhook zurnalas                                                   */",
+   "/plugins/petshop-core/includes/class-email-suppression.php:225: public static function log_webhook( $topic, $email, $status, $payload, $result = '' ) {",
+   "/plugins/petshop-core/includes/class-email-suppression.php:332: 'webhook_log'  => $wpdb->get_results( \"SELECT topic, COUNT(*) c FROM \" . self::log_table() . \" GROUP BY topic\", ARRAY_A ),",
+   "/plugins/petshop-core/includes/interface-message-provider.php:90: * Patikrina webhook parasa.",
+   "/plugins/petshop-core/includes/interface-message-provider.php:96: public function verify_webhook( $raw_body, $signature );"
+  ],
+  "wh_cols": [
+   "id",
+   "dedup_key",
+   "topic",
+   "email",
+   "marketing_status",
+   "transactional_status",
+   "payload_json",
+   "processing_result",
+   "received_at"
+  ],
+  "wh_n": "1",
+  "wh_pask": [
+   {
+    "id": "1",
+    "dedup_key": "9f253bdb3ecd37d1ab131d8aca849306",
+    "topic": "subscribers/updated",
+    "email": "chan-test@example.com",
+    "marketing_status": "unsubscribed",
+    "transactional_status": "active",
+    "payload_json": "{\"type\":\"subscribers\\/updated\",\"email\":\"chan-test@example.com\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"}}",
+    "processing_result": "test",
+    "received_at": "2026-07-30 20:24:52"
+   }
+  ],
+  "ej_provider": [
+   {
+    "provider": "sender",
+    "n": "870",
+    "su_id": "870",
+    "pask": "2026-10-20 16:33:41"
+   }
+  ],
+  "ej_pvz": {
+   "id": "1891",
+   "flow": "cart_abandoned",
+   "provider": "sender",
+   "provider_message_id": "azv2GY-.eE9p2l-j8BE49W-JPpyMqRMOzBg-3pMxQJ",
+   "sent_at": "2026-10-20 16:04:19",
+   "delivered_at": null,
+   "opened_at": null
+  },
+  "rest": [
+   "/petshop/v1/sender-webhook",
+   "/wc/v1/webhooks",
+   "/wc/v1/webhooks/(?P<id>[\\d]+)",
+   "/wc/v1/webhooks/batch",
+   "/wc/v1/webhooks/(?P<webhook_id>[\\d]+)/deliveries",
+   "/wc/v1/webhooks/(?P<webhook_id>[\\d]+)/deliveries/(?P<id>[\\d]+)",
+   "/wc/v2/webhooks",
+   "/wc/v2/webhooks/(?P<id>[\\d]+)",
+   "/wc/v2/webhooks/batch",
+   "/wc/v2/webhooks/(?P<webhook_id>[\\d]+)/deliveries",
+   "/wc/v2/webhooks/(?P<webhook_id>[\\d]+)/deliveries/(?P<id>[\\d]+)",
+   "/wc/v3/webhooks",
+   "/wc/v3/webhooks/(?P<id>[\\d]+)",
+   "/wc/v3/webhooks/batch",
+   "/wc/v3/paypal-webhooks",
+   "/wp/v2/block-types/(?P<namespace>[a-zA-Z0-9_-]+)",
+   "/wp/v2/block-types/(?P<namespace>[a-zA-Z0-9_-]+)/(?P<name>[a-zA-Z0-9_-]+)"
+  ],
+  "opts": [
+   {
+    "option_name": "jetpack_sync_settings_sync_sender_enabled",
+    "v": "1"
+   },
+   {
+    "option_name": "jetpack_sync_settings_full_sync_sender_enabled",
+    "v": "1"
+   },
+   {
+    "option_name": "lpsettings_sender_name",
+    "v": "UAB Avesa"
+   },
+   {
+    "option_name": "lpsettings_sender_company_name",
+    "v": "UAB Avesa"
+   },
+   {
+    "option_name": "lpsettings_sender_phone",
+    "v": "+37068187787"
+   },
+   {
+    "option_name": "lpsettings_sender_email",
+    "v": "terra@petshop.lt"
+   },
+   {
+    "option_name": "lpsettings_sender_country",
+    "v": "LT"
+   },
+   {
+    "option_name": "lpsettings_sender_city",
+    "v": "Liucionys"
+   },
+   {
+    "option_name": "lpsettings_sender_street",
+    "v": "Liucionių g."
+   },
+   {
+    "option_name": "lpsettings_sender_building",
+    "v": "46"
+   },
+   {
+    "option_name": "lpsettings_sender_apartment",
+    "v": ""
+   },
+   {
+    "option_name": "lpsettings_sender_postcode",
+    "v": "15166"
+   },
+   {
+    "option_name": "ps_sender_webhook_log",
+    "v": "a:2:{i:0;a:4:{s:1:\"t\";s:19:\"2026-09-09 17:06:13\";s:9:\"topic_get\";s:11:\"bounces/new\";s:7:\"headers\";a:3:{s:18:\"x-sender-si"
+   },
+   {
+    "option_name": "petshop_esp_event_log_db_version",
+    "v": "0.1.0"
+   },
+   {
+    "option_name": "petshop_esp_sender_mk",
+    "v": "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKU1V6STFOaUo5LmV5SmhkV1FpT2lJeElpd2lhblJwSWpvaVkyUmpZV1F3WXpGaFlUQmpaVE0yTWpVM09HUXpN"
+   },
+   {
+    "option_name": "petshop_esp_sender_tk",
+    "v": "ZXlKMGVYQWlPaUpLVjFRaUxDSmhiR2NpT2lKU1V6STFOaUo5LmV5SmhkV1FpT2lJeElpd2lhblJwSWpvaU5EbGxOekptWkRReFptRXpPVGs0TVdFd1pXVmpP"
+   },
+   {
+    "option_name": "petshop_esp_sender_webhook_secret",
+    "v": "uD5RdRkIjPorxrlouQDahacEyHxxoEO0TcemLKnX"
+   },
+   {
+    "option_name": "ps_s1625_vp_sender_buvo",
+    "v": "Raimundas Bulakas"
+   },
+   {
+    "option_name": "cmplz_wsc_checks_webhook_secret",
+    "v": "CctdlxomQBuo9YMBtc2rPZrjLJKUfKly"
+   }
+  ]
+ },
+ "v": "dep-190051",
+ "kurimas": 200,
+ "sid": 7311,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
