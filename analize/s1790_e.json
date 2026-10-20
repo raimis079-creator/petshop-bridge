@@ -1,0 +1,152 @@
+{
+ "1": {
+  "v": "S1790e",
+  "rekl_cols": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ],
+  "kamp": [
+   {
+    "id": "",
+    "k": ""
+   },
+   {
+    "id": "21472017542",
+    "k": "P-max | LT | petshop.lt"
+   },
+   {
+    "id": "21565450990",
+    "k": "P-max| All LT | Kačių maistas"
+   },
+   {
+    "id": "23346712074",
+    "k": "petshop"
+   },
+   {
+    "id": "24297462605",
+    "k": "Search | LT | Prekių ženklai"
+   }
+  ],
+  "ga4": {
+   "2026-10-17": [
+    10,
+    410.410001
+   ],
+   "2026-10-16": [
+    9,
+    313.98
+   ],
+   "2026-10-19": [
+    8,
+    317.95
+   ],
+   "2026-10-18": [
+    6,
+    138.610001
+   ]
+  },
+  "woo": [],
+  "mp": [
+   {
+    "d": "2026-10-16",
+    "n": "9"
+   },
+   {
+    "d": "2026-10-17",
+    "n": "10"
+   },
+   {
+    "d": "2026-10-18",
+    "n": "6"
+   },
+   {
+    "d": "2026-10-19",
+    "n": "9"
+   },
+   {
+    "d": "2026-10-20",
+    "n": "13"
+   }
+  ],
+  "neapm": [],
+  "mnm_po_fix": [
+   {
+    "oid": "36931",
+    "preke_id": "35085",
+    "rinkinys_id": "35085",
+    "savikaina_ct": "0",
+    "savikainos_saltinis": "mnm_konteineris"
+   },
+   {
+    "oid": "36931",
+    "preke_id": "19098",
+    "rinkinys_id": "35085",
+    "savikaina_ct": "264",
+    "savikainos_saltinis": "pardavimai"
+   },
+   {
+    "oid": "36931",
+    "preke_id": "16311",
+    "rinkinys_id": "35085",
+    "savikaina_ct": "244",
+    "savikainos_saltinis": "pardavimai"
+   },
+   {
+    "oid": "36931",
+    "preke_id": "16305",
+    "rinkinys_id": "35085",
+    "savikaina_ct": "256",
+    "savikainos_saltinis": "pardavimai"
+   }
+  ],
+  "wpai_siandien": [
+   {
+    "i": "5",
+    "t": "03:31",
+    "time_run": "73"
+   },
+   {
+    "i": "7",
+    "t": "16:16",
+    "time_run": "291"
+   },
+   {
+    "i": "3",
+    "t": "17:01",
+    "time_run": "413"
+   },
+   {
+    "i": "7",
+    "t": "17:16",
+    "time_run": "284"
+   },
+   {
+    "i": "3",
+    "t": "18:01",
+    "time_run": "374"
+   }
+  ],
+  "wpai_imports": []
+ },
+ "v": "dep-180854",
+ "kurimas": 200,
+ "sid": 7302,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
