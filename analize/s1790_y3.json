@@ -1,0 +1,92 @@
+{
+ "1": {
+  "v": "S1790y3",
+  "f": {
+   "/mu-plugins/petshop-laisku-utm.php": [
+    "4: * Description: S1769 (Raimio „daryk\" 10-11 13:07): automatinių laiškų (Sender, ps_email_jobs) nuorodoms į petshop.lt prideda utm_source=petshop_laisk",
+    "15: public static function init() {",
+    "23: public static function atsiminti( $result, $flow, $flow_class = '', $email = '', $context = array() ) {",
+    "29: public static function http_args( $args, $url ) {",
+    "30: if ( '' === self::$flow || time() - self::$kada > 90 || false === strpos( (string) $url, 'api.sender.net/' ) || false === strpos( (string) $url, '/m",
+    "40: public static function html( $h, $flow ) {",
+    "41: return preg_replace_callback( '#(<a\\b[^>]*?\\bhref\\s*=\\s*)([\"\\'])([^\"\\']+)\\2#i', function ( $m ) use ( $flow ) {",
+    "46: public static function url( $u, $flow ) {",
+    "54: $q = 'utm_source=' . self::SOURCE . '&utm_medium=email&utm_campaign=' . rawurlencode( $flow );",
+    "60: public static function redirect( $location, $status ) {",
+    "67: foreach ( array( 'utm_source', 'utm_medium', 'utm_campaign' ) as $k ) {"
+   ],
+   "/mu-plugins/petshop-laisku-nuotraukos.php": [
+    "13: *  - + Sender transakciniai laiškai (Petshop_Email_Dispatch → ps_esp_adapter → POST api.sender.net/v2/message/send):",
+    "30: public static function init() {",
+    "35: private static function off() {",
+    "40: public static function wp_mail( $a ) {",
+    "51: /** Sender transakciniai laiškai: POST https://api.sender.net/v2/message/send, JSON laukas `html`. */",
+    "52: public static function http_args( $args, $url ) {",
+    "53: if ( ! is_string( $url ) || false === strpos( $url, 'api.sender.net/' ) || false === strpos( $url, '/message/send' ) ) {",
+    "76: public static function html( $h ) {",
+    "79: function ( $m ) {",
+    "88: public static function url( $u ) {",
+    "103: public static function webp_jpg( $path ) {"
+   ],
+   "/plugins/petshop-esp/includes/class-sender-adapter.php": [
+    "10: * - Base: https://api.sender.net/v2, Bearer auth",
+    "43: public function get_name() {",
+    "61: private function is_blocked_by_dev_allowlist( $email ) {",
+    "68: private function log_dev_blocked( $email, $method ) {",
+    "75: const API_BASE = 'https://api.sender.net/v2';",
+    "93: public function __construct( $marketing_token = '', $transactional_token = '' ) {",
+    "102: public static function get_stored_token( $type ) {",
+    "119: public static function store_token( $type, $token ) {",
+    "127: public function is_configured() {",
+    "147: private function request( $method, $path, $body = null, $token = null, $timeout = null ) {",
+    "197: public static function is_retriable_code( $code ) {",
+    "213: public function upsert_contact( $email, array $attributes ) {",
+    "284: public function emit_event( $email, $event_id, $event, array $payload, $timestamp = null ) {",
+    "331: public function send_transactional_email( $to_email, $subject, $html_body, array $meta = array() ) {",
+    "357: // Empiriskai patvirtinta 2026-07-30: struct -> HTTP 200 + emailId.",
+    "378: 'esp_message_id' => isset( $r['body']['emailId'] ) ? $r['body']['emailId'] : ( isset( $r['body']['id'] ) ? $r['body']['id'] : '' ),",
+    "390: public function send_transactional_sms( $phone_e164, $message, array $meta = array() ) {",
+    "412: * Webhook parasa (HMAC-SHA256 su signing secret).",
+    "413: * Signing secret — WP option petshop_esp_sender_webhook_secret.",
+    "415: public function verify_webhook( $raw_payload, $signature ) {",
+    "416: $secret = defined( 'PETSHOP_SENDER_WEBHOOK_SECRET' )",
+    "417: ? PETSHOP_SENDER_WEBHOOK_SECRET",
+    "418: : get_option( 'petshop_esp_sender_webhook_secret', '' );",
+    "429: public function get_health_status() {",
+    "463: public function is_operational() {",
+    "484: public function get_contact_field( $email, $field_title ) {",
+    "500: public function get_contact_status( $email ) {"
+   ],
+   "/plugins/petshop-core/includes/class-email-suppression.php": [
+    "3: * Petshop Email Suppression — KANALINIS suppression + webhook zurnalas.",
+    "32: public static function table() {",
+    "35: public static function log_table() {",
+    "36: global $wpdb; return $wpdb->prefix . 'ps_webhook_log';",
+    "39: public static function install() {",
+    "80: public static function maybe_install() {",
+    "88: public static function valid_channel( $ch ) {",
+    "96: public static function suppress( $email, $channel, $reason = 'manual', $source = 'local', $note = '' ) {",
+    "118: public static function release( $email, $channel, $note = '' ) {",
+    "128: public static function is_suppressed( $email, $channel ) {",
+    "137: public static function reason_for( $email, $channel ) {",
+    "156: public static function interpret_status( $status ) {",
+    "191: public static function apply_status( $email, $status, $source = 'sender_webhook' ) {",
+    "219: /* Webhook zurnalas                                                   */",
+    "225: public static function log_webhook( $topic, $email, $status, $payload, $result = '' ) {",
+    "252: public static function reconcile( $dry_run = false ) {",
+    "273: $resp = wp_remote_get( 'https://api.sender.net/v2/subscribers?limit=100&page=' . $page, array(",
+    "326: public static function stats() {",
+    "332: 'webhook_log'  => $wpdb->get_results( \"SELECT topic, COUNT(*) c FROM \" . self::log_table() . \" GROUP BY topic\", ARRAY_A ),",
+    "340: public static function init() {",
+    "347: public static function cron_reconcile() {"
+   ]
+  }
+ },
+ "v": "dep-190454",
+ "kurimas": 200,
+ "sid": 7313,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
