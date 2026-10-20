@@ -1,0 +1,35 @@
+{
+ "1": {
+  "v": "S1791e",
+  "base_datos": [
+   "6: *   data iš `_petshop_kravpn_date`, „Originali sąskaita“ = pradinio AVPN. 2.8 — logotipas PDF'e per data URI (dompdf negali per https/URL)",
+   "137: * PDF'ui logotipas idedamas kaip data URI is VIETINIO failo — nepriklauso",
+   "170: $logo_src = 'data:' . $ps_mime[ $ps_ext ] . ';base64,' . base64_encode( $ps_bin );",
+   "200: $doc_date_raw  = isset( $order['documentDate'] ) ? $order['documentDate'] : date( 'Y-m-d' );",
+   "215: /* v2.12 (S1619, Raimis 09-06 PPK): PINIGŲ PRIĖMIMO KVITAS — `$template='receipt'` (darbalaukis `kvitas_pdf`: `$order['receipt']` = nr/data/suma/žodžiais/paskirtis/priėmė/mokėtojas; atsarga — užsakymo meta `_petshop_ppk_*`).",
+   "220: $rc_data   = ! empty( $rc['data'] ) ? $rc['data'] : ( (string) $wc_order->get_meta( '_petshop_ppk_date' ) ? (string) $wc_order->get_meta( '_petshop_ppk_date' ) : $doc_date_raw );",
+   "260: <div class=\"ps-date\">Data: <strong><?php echo esc_html( $rc_data ); ?></strong></div>",
+   "382: <div class=\"ps-date\">Sąskaitos išrašymo data: <strong><?php echo esc_html( $doc_date_raw ); ?></strong></div>",
+   "530: <strong>Kreditinė data:</strong> <?php echo esc_html( ( $maybe_parent && $maybe_order && $maybe_order->get_meta( '_petshop_kravpn_date' ) ) ? $maybe_order->get_meta( '_petshop_kravpn_date' ) : date( 'Y-m-d' ) ); ?><br>",
+   "534: <strong>Užsakymo data:</strong> <?php",
+   "535: $raw_date = isset( $order['date'] ) ? $order['date'] : '';"
+  ],
+  "o36593": {
+   "completed": "2026-10-01 18:06",
+   "paid": "2026-09-30 17:34",
+   "wcdn": "2026-09-30 17:34"
+  },
+  "o36586": {
+   "completed": "2026-09-30 11:36",
+   "paid": "2026-09-30 08:55",
+   "wcdn": "2026-09-30 08:56"
+  }
+ },
+ "v": "dep-205154",
+ "kurimas": 200,
+ "sid": 7323,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
