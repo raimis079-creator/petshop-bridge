@@ -1,0 +1,55 @@
+{
+ "1": {
+  "v": "S1790y4",
+  "mid": "azv2GY-.eE9p2l-9gyrAQD-JPgJg3Ym6o9o-2jbPb3",
+  "get": {
+   "tx /transactional?limit=5": [
+    200,
+    "{\"data\":[],\"links\":{\"first\":\"https:\\/\\/api.sender.net\\/v2\\/transactional?page=1\",\"last\":\"https:\\/\\/api.sender.net\\/v2\\/transactional?page=1\",\"prev\":null,\"next\":null},\"meta\":{\"current_page\":1,\"from\":null,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"page\":null,\"active\":false},{\"url\":\"https:\\/\\/api.sender.net\\/v2\\/transactional?page=1\",\"label\":\"1\",\"page\":1,\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"page\":null,\"active\":false}],\"path\":\"https:\\/\\/api.sender.net\\/v2\\/transactional\",\"per_page\":5,\"to\":null,\"total\":0},\"has_more_resources\":false}"
+   ],
+   "tx /message/azv2GY-.eE9p2l-9gyrAQD-JPgJg3Ym6o9o-2jbPb3": [
+    404,
+    "{\"code\":\"ROUTE_NOT_FOUND\",\"message\":\"The route GET /message/azv2GY-.eE9p2l-9gyrAQD-JPgJg3Ym6o9o-2jbPb3 was not found.\"}"
+   ],
+   "tx /messages/azv2GY-.eE9p2l-9gyrAQD-JPgJg3Ym6o9o-2jbPb3": [
+    404,
+    "{\n    \"message\": \"The route v2/messages/azv2GY-.eE9p2l-9gyrAQD-JPgJg3Ym6o9o-2jbPb3 could not be found.\"\n}"
+   ],
+   "tx /transactional-campaigns?limit=5": [
+    404,
+    "{\n    \"message\": \"The route v2/transactional-campaigns could not be found.\"\n}"
+   ],
+   "tx /campaigns?limit=3": [
+    200,
+    "{\"data\":[{\"id\":\"qxQN6G\",\"subject\":\"Kiek kainuoja j\\u016bs\\u0173 augintinio maistas per dien\\u0105?\",\"reply_to\":\"terra@petshop.lt\",\"language\":\"lt\",\"recipient_count\":1,\"from\":\"Petshop.lt\",\"schedule_time\":null,\"last_action\":\"api\",\"sent_time\":\"2026-09-16 17:57:06\",\"status\":\"SENT\",\"created\":\"2026-09-16 17:56:37\",\"modified\":\"2026-09-16 17:57:06\",\"title\":\"TEST relaunch CALC v1.0 14:56\",\"domain_id\":\"eE9p2l\",\"preheader\":\"{{ps_hero_eur2}} per dien\\u0105 {{ps_hero_kg2}} {{ps_hero_gyv}}. Skai\\u010diavome pagal maist\\u0105, kur\\u012f anks\\u010diau pirkote pas mus.\",\"auto_followup_active\":0,\"auto_followup_subject\":\"Follow up of Kiek kainuoja j\\u016bs\\u0173 augintinio maistas per dien\\u0105?\",\"auto_followu"
+   ],
+   "mk /transactional?limit=5": [
+    200,
+    "{\"data\":[],\"links\":{\"first\":\"https:\\/\\/api.sender.net\\/v2\\/transactional?page=1\",\"last\":\"https:\\/\\/api.sender.net\\/v2\\/transactional?page=1\",\"prev\":null,\"next\":null},\"meta\":{\"current_page\":1,\"from\":null,\"last_page\":1,\"links\":[{\"url\":null,\"label\":\"&laquo; Previous\",\"page\":null,\"active\":false},{\"url\":\"https:\\/\\/api.sender.net\\/v2\\/transactional?page=1\",\"label\":\"1\",\"page\":1,\"active\":true},{\"url\":null,\"label\":\"Next &raquo;\",\"page\":null,\"active\":false}],\"path\":\"https:\\/\\/api.sender.net\\/v2\\/transactional\",\"per_page\":5,\"to\":null,\"total\":0},\"has_more_resources\":false}"
+   ],
+   "mk /message/azv2GY-.eE9p2l-9gyrAQD-JPgJg3Ym6o9o-2jbPb3": [
+    404,
+    "{\"code\":\"ROUTE_NOT_FOUND\",\"message\":\"The route GET /message/azv2GY-.eE9p2l-9gyrAQD-JPgJg3Ym6o9o-2jbPb3 was not found.\"}"
+   ],
+   "mk /messages/azv2GY-.eE9p2l-9gyrAQD-JPgJg3Ym6o9o-2jbPb3": [
+    404,
+    "{\n    \"message\": \"The route v2/messages/azv2GY-.eE9p2l-9gyrAQD-JPgJg3Ym6o9o-2jbPb3 could not be found.\"\n}"
+   ],
+   "mk /transactional-campaigns?limit=5": [
+    404,
+    "{\n    \"message\": \"The route v2/transactional-campaigns could not be found.\"\n}"
+   ],
+   "mk /campaigns?limit=3": [
+    200,
+    "{\"data\":[{\"id\":\"qxQN6G\",\"subject\":\"Kiek kainuoja j\\u016bs\\u0173 augintinio maistas per dien\\u0105?\",\"reply_to\":\"terra@petshop.lt\",\"language\":\"lt\",\"recipient_count\":1,\"from\":\"Petshop.lt\",\"schedule_time\":null,\"last_action\":\"api\",\"sent_time\":\"2026-09-16 17:57:06\",\"status\":\"SENT\",\"created\":\"2026-09-16 17:56:37\",\"modified\":\"2026-09-16 17:57:06\",\"title\":\"TEST relaunch CALC v1.0 14:56\",\"domain_id\":\"eE9p2l\",\"preheader\":\"{{ps_hero_eur2}} per dien\\u0105 {{ps_hero_kg2}} {{ps_hero_gyv}}. Skai\\u010diavome pagal maist\\u0105, kur\\u012f anks\\u010diau pirkote pas mus.\",\"auto_followup_active\":0,\"auto_followup_subject\":\"Follow up of Kiek kainuoja j\\u016bs\\u0173 augintinio maistas per dien\\u0105?\",\"auto_followu"
+   ]
+  }
+ },
+ "v": "dep-190646",
+ "kurimas": 200,
+ "sid": 7314,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
