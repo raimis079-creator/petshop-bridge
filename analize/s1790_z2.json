@@ -1,0 +1,71 @@
+{
+ "2": {
+  "v": "S1790z",
+  "faze": "2",
+  "md5": "5cb5f08455d87b449bd0127612af2f64",
+  "radau": [
+   1,
+   1,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "visi_vienas": true,
+  "nauj_md5": "aaf091907954ad72bf9fe623efa388ae",
+  "dydis": [
+   4050,
+   6527
+  ],
+  "bak_md5": "5cb5f08455d87b449bd0127612af2f64",
+  "po_md5": "aaf091907954ad72bf9fe623efa388ae"
+ },
+ "3": {
+  "v": "S1790z",
+  "faze": "3",
+  "md5": "aaf091907954ad72bf9fe623efa388ae",
+  "radau": [
+   0,
+   0,
+   1,
+   1,
+   1,
+   1,
+   1
+  ],
+  "visi_vienas": false,
+  "nauj_md5": "b34f08042b145987f43d9f4ff0696554",
+  "dydis": [
+   6527,
+   8938
+  ],
+  "yra": true,
+  "metodai": [
+   true,
+   true,
+   "1.1"
+  ],
+  "url_test": "https://petshop.lt/product/x/?utm_source=petshop_laiskai&#038;utm_medium=email&#038;utm_campaign=refill_due&#038;ps_ej=12345-1976a0ce",
+  "url_be_job": "https://petshop.lt/product/x/?utm_source=petshop_laiskai&#038;utm_medium=email&#038;utm_campaign=refill_due",
+  "unsub": "https://petshop.lt/?ps_unsub=1",
+  "test_id": 1891,
+  "http": 200,
+  "po": {
+   "clicked_at": "2026-10-20 19:15:49",
+   "opened_at": "2026-10-20 19:15:49"
+  },
+  "atstatyta": {
+   "clicked_at": null,
+   "opened_at": null
+  },
+  "bot_test": null
+ },
+ "v": "dep-191434",
+ "kurimas": 200,
+ "sid": 7318,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
