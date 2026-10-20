@@ -1,0 +1,501 @@
+{
+ "1": {
+  "v": "S1790x",
+  "bendra": {
+   "uzs": "416",
+   "klientu": "374",
+   "uzs_naujo": "223",
+   "nauju_kl": "223"
+  },
+  "pasiskirstymas": [
+   {
+    "uzs_kiekis": "1",
+    "klientu": "341"
+   },
+   {
+    "uzs_kiekis": "2",
+    "klientu": "25"
+   },
+   {
+    "uzs_kiekis": "3",
+    "klientu": "7"
+   },
+   {
+    "uzs_kiekis": "4",
+    "klientu": "1"
+   }
+  ],
+  "pagal_tipa": [
+   {
+    "tipas": "naujas (pirmas pirkimas)",
+    "klientu": "223",
+    "pakartojo": "12",
+    "proc": "5.4",
+    "uzs": "237",
+    "viso": "8394",
+    "kontr": "2065"
+   },
+   {
+    "tipas": "senas (pirko senoje parduotuvėje)",
+    "klientu": "151",
+    "pakartojo": "21",
+    "proc": "13.9",
+    "uzs": "179",
+    "viso": "9001",
+    "kontr": "2156"
+   }
+  ],
+  "dienos_tarp": [
+   {
+    "k": "0-1 d.",
+    "n": "4"
+   },
+   {
+    "k": "15-30 d.",
+    "n": "32"
+   },
+   {
+    "k": "2-7 d.",
+    "n": "7"
+   },
+   {
+    "k": "31-60 d.",
+    "n": "44"
+   },
+   {
+    "k": "60+ d.",
+    "n": "94"
+   },
+   {
+    "k": "8-14 d.",
+    "n": "12"
+   }
+  ],
+  "pakart_pagal_pirma_kanala": [
+   {
+    "kanalas": "mokamas",
+    "klientu": "251",
+    "pakartojo": "17",
+    "proc": "6.8"
+   },
+   {
+    "kanalas": "direct",
+    "klientu": "63",
+    "pakartojo": "12",
+    "proc": "19.0"
+   },
+   {
+    "kanalas": "organika",
+    "klientu": "39",
+    "pakartojo": "2",
+    "proc": "5.1"
+   },
+   {
+    "kanalas": "ai",
+    "klientu": "10",
+    "pakartojo": "1",
+    "proc": "10.0"
+   },
+   {
+    "kanalas": "referral",
+    "klientu": "5",
+    "pakartojo": "1",
+    "proc": "20.0"
+   },
+   {
+    "kanalas": "soc_organika",
+    "klientu": "4",
+    "pakartojo": "0",
+    "proc": "0.0"
+   },
+   {
+    "kanalas": "email",
+    "klientu": "1",
+    "pakartojo": "0",
+    "proc": "0.0"
+   },
+   {
+    "kanalas": "",
+    "klientu": "1",
+    "pakartojo": "0",
+    "proc": "0.0"
+   }
+  ],
+  "pakart_uzs_kanalai": [],
+  "is_ref": {
+   "refill": "0",
+   "pren": null
+  },
+  "brandus": {
+   "klientu": "183",
+   "pakartojo": "26",
+   "proc": "14.2"
+  },
+  "ej_flows": [
+   {
+    "flow": "post_purchase_2d",
+    "n": "365",
+    "sent": "365",
+    "deliv": "0",
+    "opened": "0",
+    "clicked": "0",
+    "gavejai": "336",
+    "nuo": "2026-09-10 23:43:41"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "n": "365",
+    "sent": "315",
+    "deliv": "0",
+    "opened": "0",
+    "clicked": "0",
+    "gavejai": "291",
+    "nuo": "2026-09-15 23:33:54"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "n": "365",
+    "sent": "72",
+    "deliv": "0",
+    "opened": "0",
+    "clicked": "0",
+    "gavejai": "69",
+    "nuo": "2026-09-29 08:08:46"
+   },
+   {
+    "flow": "consent_changed",
+    "n": "38",
+    "sent": "38",
+    "deliv": "0",
+    "opened": "0",
+    "clicked": "0",
+    "gavejai": "37",
+    "nuo": "2026-09-10 09:53:46"
+   },
+   {
+    "flow": "refill_due",
+    "n": "89",
+    "sent": "36",
+    "deliv": "0",
+    "opened": "0",
+    "clicked": "0",
+    "gavejai": "35",
+    "nuo": "2026-10-02 06:04:32"
+   },
+   {
+    "flow": "cart_abandoned",
+    "n": "95",
+    "sent": "17",
+    "deliv": "0",
+    "opened": "0",
+    "clicked": "0",
+    "gavejai": "16",
+    "nuo": "2026-09-10 11:58:44"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "n": "52",
+    "sent": "15",
+    "deliv": "0",
+    "opened": "0",
+    "clicked": "0",
+    "gavejai": "14",
+    "nuo": "2026-09-11 12:03:46"
+   },
+   {
+    "flow": "browse_abandoned",
+    "n": "41",
+    "sent": "7",
+    "deliv": "0",
+    "opened": "0",
+    "clicked": "0",
+    "gavejai": "7",
+    "nuo": "2026-09-22 18:38:40"
+   },
+   {
+    "flow": "ps_s1749_testas",
+    "n": "7",
+    "sent": "3",
+    "deliv": "0",
+    "opened": "0",
+    "clicked": "0",
+    "gavejai": "1",
+    "nuo": "2026-10-03 18:49:05"
+   },
+   {
+    "flow": "back_in_stock",
+    "n": "2",
+    "sent": "2",
+    "deliv": "0",
+    "opened": "0",
+    "clicked": "0",
+    "gavejai": "2",
+    "nuo": "2026-10-10 14:04:32"
+   }
+  ],
+  "po_laisko_7d": [
+   {
+    "flow": "post_purchase_2d",
+    "laisku": "365",
+    "uzs": "10",
+    "gavejai": "336",
+    "pirko_gavejai": "8",
+    "eur": "608"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "laisku": "315",
+    "uzs": "7",
+    "gavejai": "291",
+    "pirko_gavejai": "6",
+    "eur": "302"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "laisku": "72",
+    "uzs": "4",
+    "gavejai": "69",
+    "pirko_gavejai": "4",
+    "eur": "288"
+   },
+   {
+    "flow": "consent_changed",
+    "laisku": "38",
+    "uzs": "14",
+    "gavejai": "37",
+    "pirko_gavejai": "14",
+    "eur": "640"
+   },
+   {
+    "flow": "refill_due",
+    "laisku": "36",
+    "uzs": "1",
+    "gavejai": "35",
+    "pirko_gavejai": "1",
+    "eur": "31"
+   },
+   {
+    "flow": "cart_abandoned",
+    "laisku": "17",
+    "uzs": "3",
+    "gavejai": "16",
+    "pirko_gavejai": "3",
+    "eur": "66"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "laisku": "15",
+    "uzs": "1",
+    "gavejai": "14",
+    "pirko_gavejai": "1",
+    "eur": "45"
+   },
+   {
+    "flow": "browse_abandoned",
+    "laisku": "7",
+    "uzs": "1",
+    "gavejai": "7",
+    "pirko_gavejai": "1",
+    "eur": "19"
+   },
+   {
+    "flow": "ps_s1749_testas",
+    "laisku": "3",
+    "uzs": "0",
+    "gavejai": "1",
+    "pirko_gavejai": "0",
+    "eur": null
+   },
+   {
+    "flow": "back_in_stock",
+    "laisku": "2",
+    "uzs": "1",
+    "gavejai": "2",
+    "pirko_gavejai": "1",
+    "eur": "16"
+   }
+  ],
+  "po_paspaudimo_48h": [],
+  "email_last_click": [
+   {
+    "s": "newsletter",
+    "c": "",
+    "n": "5",
+    "eur": "147",
+    "kontr": "31"
+   },
+   {
+    "s": "petshop_laiskai",
+    "c": "cart_abandoned",
+    "n": "1",
+    "eur": "12",
+    "kontr": "3"
+   }
+  ],
+  "refill_14d": {
+   "gavejai": "6",
+   "pirko": "0"
+  },
+  "krepselis_isgelbeta": [
+   {
+    "flow": "browse_abandoned",
+    "laisku": "7",
+    "uzs": "0",
+    "eur": null
+   },
+   {
+    "flow": "cart_abandoned",
+    "laisku": "17",
+    "uzs": "3",
+    "eur": "66"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "laisku": "15",
+    "uzs": "1",
+    "eur": "45"
+   }
+  ],
+  "ej_skip": [
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "pr": null,
+    "n": "122"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "pr": "grandine_maistas",
+    "n": "102"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "n": "69"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "pr": null,
+    "n": "50"
+   },
+   {
+    "flow": "refill_due",
+    "status": "skipped",
+    "pr": "pakartoti_jau_siustas",
+    "n": "42"
+   },
+   {
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "n": "34"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "pr": "deferral_expired",
+    "n": "33"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "pr": "similar_optout",
+    "n": "30"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "pr": "consent_missing",
+    "n": "26"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "pr": "holdout_10",
+    "n": "5"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "pr": "krepselis_jau_siustas_24h",
+    "n": "5"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "pr": "krepselis_jau_siustas_24h",
+    "n": "4"
+   },
+   {
+    "flow": "refill_due",
+    "status": "skipped",
+    "pr": "similar_optout",
+    "n": "4"
+   },
+   {
+    "flow": "ps_s1749_testas",
+    "status": "skipped",
+    "pr": "s1749_testas_baigtas",
+    "n": "4"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "pr": "similar_optout",
+    "n": "4"
+   },
+   {
+    "flow": "refill_due",
+    "status": "deferred",
+    "pr": "sustabdyta_s1746_timeout",
+    "n": "3"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "pr": "similar_optout",
+    "n": "3"
+   },
+   {
+    "flow": "refill_due",
+    "status": "deferred",
+    "pr": "preke_nera_sandelyje",
+    "n": "3"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "pr": "suppressed_marketing_unsubscribe",
+    "n": "2"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "pr": "suppressed_marketing_unsubscribe",
+    "n": "2"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "pr": "jau_pirko_po",
+    "n": "1"
+   },
+   {
+    "flow": "refill_due",
+    "status": "deferred",
+    "pr": "product_inactive",
+    "n": "1"
+   }
+  ]
+ },
+ "v": "dep-184417",
+ "kurimas": 200,
+ "sid": 7309,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
