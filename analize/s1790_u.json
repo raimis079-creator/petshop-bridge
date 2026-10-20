@@ -1,0 +1,220 @@
+{
+ "1": {
+  "v": "S1790u",
+  "log": {
+   "Oct-2026.tar.gz.1": {
+    "viso": 43273,
+    "t43": {
+     "19 07": {
+      "200": 268,
+      "301": 141,
+      "500": 3
+     },
+     "19 08": {
+      "200": 8,
+      "301": 2,
+      "404": 1
+     },
+     "19 09": {
+      "200": 5,
+      "301": 1,
+      "404": 1
+     },
+     "19 10": {
+      "200": 7,
+      "301": 2,
+      "404": 2
+     },
+     "19 11": {
+      "200": 2,
+      "403": 13
+     },
+     "19 12": {
+      "403": 9
+     },
+     "19 13": {
+      "200": 3,
+      "403": 18
+     },
+     "19 14": {
+      "200": 2,
+      "403": 13
+     },
+     "19 15": {
+      "403": 24
+     },
+     "19 16": {
+      "200": 1,
+      "403": 4
+     },
+     "19 17": {
+      "200": 3,
+      "403": 17
+     },
+     "19 18": {
+      "403": 18
+     },
+     "19 19": {
+      "403": 20
+     },
+     "19 20": {
+      "200": 1,
+      "403": 16
+     },
+     "19 21": {
+      "200": 3,
+      "403": 20
+     },
+     "19 22": {
+      "200": 2,
+      "403": 7
+     },
+     "19 23": {
+      "403": 7
+     },
+     "20 00": {
+      "403": 2
+     }
+    },
+    "remove_item": {
+     "19 07": {
+      "200": 120,
+      "301": 121,
+      "500": 1
+     },
+     "19 08": {
+      "200": 1,
+      "301": 1
+     },
+     "19 09": {
+      "200": 2,
+      "301": 2
+     },
+     "19 10": {
+      "301": 2
+     },
+     "19 11": {
+      "200": 1,
+      "403": 2
+     },
+     "19 12": {
+      "403": 2
+     },
+     "19 14": {
+      "403": 1
+     },
+     "19 15": {
+      "302": 1,
+      "403": 1
+     },
+     "19 17": {
+      "403": 1
+     },
+     "19 19": {
+      "403": 1
+     },
+     "19 22": {
+      "403": 1
+     }
+    }
+   },
+   "Oct-2026.tar.gz": {
+    "viso": 5099,
+    "t43": {
+     "20 00": {
+      "403": 10
+     },
+     "20 01": {
+      "403": 21
+     },
+     "20 02": {
+      "200": 1,
+      "403": 11
+     },
+     "20 03": {
+      "403": 17
+     },
+     "20 04": {
+      "403": 22
+     },
+     "20 05": {
+      "200": 1
+     }
+    },
+    "remove_item": []
+   }
+  },
+  "bfiles": [
+   "backups"
+  ],
+  "bopt": [
+   [
+    "wcdn_legacy_backup",
+    "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:10:\"1779385649\";s:15:\"wcdn_db_version\";s:5:\"0.0.0\";s:24:\"wcdn_flush_rewrite_rules\";s:1:\"1\";s:19:\"wcdn_migration_lock\";s:10:\"1779385650\";s:12:\"wcdn_notices\";a:0:{}s:12:\"wcdn_version\";s:5:\"7.1.2\";}"
+   ],
+   [
+    "wcdn_legacy_backup_autoload",
+    "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:4:\"auto\";s:15:\"wcdn_db_version\";s:4:\"auto\";s:24:\"wcdn_flush_rewrite_rules\";s:4:\"auto\";s:19:\"wcdn_migration_lock\";s:3:\"off\";s:12:\"wcdn_notices\";s:4:\"auto\";s:12:\"wcdn_version\";s:4:\"auto\";}"
+   ],
+   [
+    "petshop_maisto_filters_backup",
+    "a:7:{i:1;a:30:{s:5:\"title\";s:24:\"Vienas baltymo šaltinis\";s:15:\"customize_terms\";s:3:\"yes\";s:5:\"terms\";a:1:{i:295;a:9:{s:5:\"label\";s:15:\"Tik monoprotein\";s:7:\"tooltip\";s:0:\"\";s:7:\"color_1\";s:7:\"#007694\";s:7:\"color_2\";s:0:\"\";s:5:\"image\";s:0:\"\";s:4:\"mode\";s:5:\"color\";s:7:\"term_id\";s:3:\"295\";s:2:\"id\";s"
+   ],
+   [
+    "ps_home_content_backup_34543",
+    "<!-- wp:html --><style>.ph-hero{position:relative;border-radius:12px;margin:0 0 40px;min-height:420px;display:flex;align-items:center;overflow:hidden;background:#2D5F3F;}.ph-hero-bg{position:absolute;inset:0;background-image:url(//petshop.lt/wp-content/uploads/2026/07/hero-augintiniai-pagrindinis.we"
+   ],
+   [
+    "ps_sidebars_widgets_backup",
+    "a:7:{s:19:\"wp_inactive_widgets\";a:71:{i:0;s:7:\"block-2\";i:1;s:7:\"block-3\";i:2;s:7:\"block-4\";i:3;s:7:\"block-5\";i:4;s:7:\"block-6\";i:5;s:7:\"pages-3\";i:6;s:7:\"pages-5\";i:7;s:7:\"pages-6\";i:8;s:7:\"pages-8\";i:9;s:10:\"calendar-3\";i:10;s:10:\"calendar-5\";i:11;s:10:\"archives-4\";i:12;s:10:\"archives-6\";i:13;s:8:"
+   ],
+   [
+    "ps_shop_sidebar_backup",
+    "a:5:{i:0;s:34:\"woocommerce_layered_nav_filters-10\";i:1;s:26:\"woocommerce_layered_nav-11\";i:2;s:42:\"yith-woocommerce-ajax-navigation-filters-2\";i:3;s:26:\"woocommerce_price_filter-9\";i:4;s:38:\"woocommerce_recently_viewed_products-8\";}"
+   ],
+   [
+    "ps_r5_backup_s364",
+    "a:5:{i:14824;a:5:{s:11:\"post_status\";s:7:\"publish\";s:6:\"_price\";s:0:\"\";s:14:\"_regular_price\";s:0:\"\";s:11:\"_sale_price\";s:0:\"\";s:22:\"_manual_price_override\";s:0:\"\";}i:33249;a:5:{s:11:\"post_status\";s:7:\"publish\";s:6:\"_price\";s:0:\"\";s:14:\"_regular_price\";s:0:\"\";s:11:\"_sale_price\";s:0:\"\";s:22:\"_manual_p"
+   ],
+   [
+    "ps_s893_backup",
+    "{\"12814\":{\"pa_monoprotein\":{\"name\":\"pa_monoprotein\",\"value\":\"\",\"position\":0,\"is_visible\":1,\"is_variation\":0,\"is_taxonomy\":1},\"pa_gyvuno_rusis\":{\"name\":\"pa_gyvuno_rusis\",\"value\":\"\",\"position\":1,\"is_visible\":1,\"is_variation\":0,\"is_taxonomy\":1},\"pa_speciali_mityba\":{\"name\":\"pa_speciali_mityba\",\"value\":"
+   ],
+   [
+    "ps_s894_backup",
+    "[[16254,287],[16259,287],[16478,287],[16481,287],[16585,287],[16727,287],[16824,287],[16865,287],[16868,287],[19530,287],[19534,287],[33822,287],[18551,287],[18548,287],[18545,287],[17900,287],[16845,287],[16842,287],[16821,287],[16257,287],[16262,287],[33984,287],[33680,287],[33670,287],[33426,287]"
+   ],
+   [
+    "ps_s895_backup",
+    "[[16254,287],[16259,287],[16478,287],[16481,287],[16585,287],[16727,287],[16824,287],[16865,287],[16868,287],[19530,287],[19534,287],[33822,287],[18551,287],[18548,287],[18545,287],[17900,287],[16845,287],[16842,287],[16821,287],[16257,287],[16262,287],[33984,287],[33680,287],[33670,287],[33426,287]"
+   ],
+   [
+    "ps_gtin_backup_failas",
+    "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/ps-backups/gtin_backup_20260817_204552.json"
+   ],
+   [
+    "ps_pmxi_vf_backup_20260902",
+    "a:2:{i:0;a:8:{s:2:\"id\";s:1:\"5\";s:4:\"type\";s:3:\"url\";s:4:\"path\";s:127:\"https://petshop.lt/wp-content/petshop-xml-vf-fetcher.php?key=dfjsfgtdfbfb54651bhfbd36dggbdgb87b65dfbdgdbfv2dfbfgn6f23dv5f4dvdsz\";s:4:\"name\";s:26:\"petshop-xml-vf-fetcher.php\";s:10:\"processing\";s:1:\"0\";s:9:\"executing\";s:1:\"0\";s:9:\"t"
+   ],
+   [
+    "ps_pmxi3_backup_20260902",
+    "s:25012:\"a:475:{s:4:\"type\";s:4:\"post\";s:21:\"is_override_post_type\";i:0;s:15:\"post_type_xpath\";s:0:\"\";s:8:\"deligate\";s:0:\"\";s:11:\"wizard_type\";s:8:\"matching\";s:8:\"ftp_host\";s:0:\"\";s:8:\"ftp_path\";s:0:\"\";s:8:\"ftp_root\";s:1:\"/\";s:8:\"ftp_port\";s:2:\"21\";s:12:\"ftp_username\";s:0:\"\";s:12:\"ftp_password\";s:0:\""
+   ],
+   [
+    "ps_s1669_home_backup",
+    "a:3:{s:2:\"id\";i:34543;s:3:\"md5\";s:32:\"dca0681773decc32fb49d1fafc74960b\";s:7:\"turinys\";s:16535:\"<!-- wp:html --><style>.ph-hero{position:relative;border-radius:12px;margin:0 0 40px;min-height:420px;display:flex;align-items:center;overflow:hidden;background:#2D5F3F;}.ph-hero-bg{position:absolute;inset"
+   ],
+   [
+    "ps_s1670_1006_backup",
+    "a:4:{s:4:\"item\";a:8:{i:0;a:2:{i:0;s:17:\"_ps_savikaina_vnt\";i:1;s:0:\"\";}i:1;a:2:{i:0;s:22:\"_ps_savikaina_saltinis\";i:1;s:8:\"nezinoma\";}i:2;a:2:{i:0;s:22:\"_ps_kaina_atskirai_vnt\";i:1;s:6:\"4.4500\";}i:3;a:2:{i:0;s:10:\"_ps_source\";i:1;s:11:\"belcor_tofu\";}i:4;a:2:{i:0;s:11:\"_ps_carrier\";i:1;s:7:\"venipak\";"
+   ]
+  ]
+ },
+ "v": "dep-180711",
+ "kurimas": 200,
+ "sid": 7301,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
