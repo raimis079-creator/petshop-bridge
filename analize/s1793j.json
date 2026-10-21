@@ -1,0 +1,39 @@
+{
+ "1": {
+  "v": "S1793j",
+  "f": "1",
+  "svetimas_kelias": [
+   {
+    "id": "36020",
+    "nr": "1102",
+    "avpn": "AVPN011105",
+    "kelias": "PVM-saskaita-AVPN011107.pdf",
+    "st": "completed",
+    "baigta": "2026-09-22 11:07",
+    "pastabos": [
+     "09-25 18:13 S1719: PVM sąskaitos numeris AVPN011105/AVPN011107 → AVPN011105 (numeravimo lenktynių pataisa; ankstesnis numeris dubliavosi)."
+    ]
+   }
+  ],
+  "pdf_use": [
+   "namespace Tyche\\WCDN\\Services;",
+   "use Dompdf\\Dompdf;",
+   "use Dompdf\\Options;",
+   "use Tyche\\WCDN\\Helpers\\Templates;",
+   "use Tyche\\WCDN\\Helpers\\Utils;",
+   "use Tyche\\WCDN\\Services\\Template_Renderer;",
+   "use Tyche\\WCDN\\Services\\Template_Engine;",
+   "use Tyche\\WCDN\\Helpers\\Settings;"
+  ],
+  "wcdn_get": {
+   "\\Tyche\\WCDN\\Helpers\\Settings": 3650
+  }
+ },
+ "v": "dep-181614",
+ "kurimas": 200,
+ "sid": 7341,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
