@@ -1,0 +1,161 @@
+{
+ "1": {
+  "v": "S1793b",
+  "dir_root": {
+   "ctime": "2026-05-21 18:56",
+   "mtime": "2026-05-21 18:56",
+   "n": 6,
+   "seniausias": "2026-06-02 12:00",
+   "paslepti": [
+    ".",
+    ".."
+   ]
+  },
+  "dir_invoice": {
+   "ctime": "2026-10-21 17:27",
+   "mtime": "2026-10-21 17:27",
+   "n": 207,
+   "seniausias": "2026-10-14 18:10",
+   "paslepti": [
+    ".",
+    "..",
+    ".htaccess"
+   ]
+  },
+  "dir_creditnote": {
+   "ctime": "2026-10-21 07:01",
+   "mtime": "2026-10-21 07:01",
+   "n": 2,
+   "seniausias": "2026-10-21 06:13",
+   "paslepti": [
+    ".",
+    "..",
+    ".htaccess"
+   ]
+  },
+  "dir_deliverynote": {
+   "ctime": "2026-06-02 12:00",
+   "mtime": "2026-06-02 12:00",
+   "n": 0,
+   "seniausias": null,
+   "paslepti": [
+    ".",
+    "..",
+    ".htaccess"
+   ]
+  },
+  "dir_packingslip": {
+   "ctime": "2026-06-02 12:00",
+   "mtime": "2026-06-02 12:00",
+   "n": 0,
+   "seniausias": null,
+   "paslepti": [
+    ".",
+    "..",
+    ".htaccess"
+   ]
+  },
+  "dir_receipt": {
+   "ctime": "2026-09-07 17:56",
+   "mtime": "2026-09-07 17:56",
+   "n": 0,
+   "seniausias": null,
+   "paslepti": [
+    ".",
+    "..",
+    ".htaccess"
+   ]
+  },
+  "dir_fonts": {
+   "ctime": "2026-08-22 15:48",
+   "mtime": "2026-08-22 15:48",
+   "n": 23,
+   "seniausias": "2026-05-21 18:56",
+   "paslepti": [
+    ".",
+    ".."
+   ]
+  },
+  "wcdn_opc": [
+   {
+    "option_name": "wcdn_allow_tracking",
+    "v": "dismissed"
+   },
+   {
+    "option_name": "wcdn_db_version",
+    "v": "7.3.0"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter",
+    "v": "827"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter_year",
+    "v": "a:1:{i:2026;i:1;}"
+   },
+   {
+    "option_name": "wcdn_legacy_backup",
+    "v": "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:10:\"1779385649\";s:15:\"wcdn_db_version\";s:5:\"0.0.0\";s:24:\"wcdn_flush_rewrite_rules\";s:1:\"1\";s:19:\"wcdn_migration_lock\";s:10:\"1779385650\";s:12:\"wcdn_notices\";a:0:{}s:12:\"wcdn_version\";s:5:\"7.1.2\";}"
+   },
+   {
+    "option_name": "wcdn_legacy_backup_autoload",
+    "v": "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:4:\"auto\";s:15:\"wcdn_db_version\";s:4:\"auto\";s:24:\"wcdn_flush_rewrite_rules\";s:4:\"auto\";s:19:\"wcdn_migration_lock\";s:3:\"off\";s:12:\"wcdn_notices\";s:4:\"auto\";s:12:\"wcdn_version\";s:4:\"auto\";}"
+   },
+   {
+    "option_name": "wcdn_migration_7_0_2_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_1_0_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_1_2_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_settings",
+    "v": "a:42:{s:9:\"storeName\";s:9:\"UAB Avesa\";s:9:\"storeLogo\";s:87:\"https://petshop.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg\";s:12:\"storeAddress\";s:87:\"Liucionių g. 46, Liucionių k.<br />Nemenčinės sen., Vilniaus r., 15166<br />Lietuva\";s:5:\"email\";s:16:\"terra@petshop.lt\";s:5:"
+   },
+   {
+    "option_name": "wcdn_template_settings",
+    "v": "a:4:{s:7:\"invoice\";a:152:{s:7:\"enabled\";b:1;s:10:\"dateFormat\";s:5:\"Y-m-d\";s:17:\"orderMetaPosition\";s:5:\"below\";s:11:\"pdfFilename\";s:27:\"Invoice -{order_number}.pdf\";s:19:\"attachCustomerEmail\";b:1;s:16:\"attachAdminEmail\";b:0;s:18:\"attachCustomEmails\";b:0;s:20:\"customEmailAddresses\";s:0:\"\";s:19:\"attac"
+   },
+   {
+    "option_name": "wcdn_version",
+    "v": "7.3.0"
+   }
+  ],
+  "wcdn_trynimas": [
+   "/includes/core/class-migration.php:121 self::cleanup_old_options( $options );",
+   "/includes/core/class-migration.php:134 * cleanup_old_options() had already deleted the legacy options, producing",
+   "/includes/core/class-migration.php:1733 * Cleanup old options.",
+   "/includes/core/class-migration.php:1739 protected static function cleanup_old_options( $options ) {",
+   "/includes/api/class-fonts.php:130 wp_delete_file( $stale );",
+   "/includes/api/class-fonts.php:187 wp_delete_file( $path );",
+   "/includes/services/class-pdf.php:44 add_action( 'wcdn_delete_pdf_files', array( $this, 'delete_pdf_files' ), 100 );",
+   "/includes/services/class-pdf.php:72 if ( ! as_has_scheduled_action( 'wcdn_delete_pdf_files' ) ) {",
+   "/includes/services/class-pdf.php:73 as_schedule_recurring_action( time(), DAY_IN_SECONDS, 'wcdn_delete_pdf_files' );",
+   "/includes/services/class-pdf.php:104 public function delete_pdf_files() {",
+   "/includes/services/class-pdf.php:113 $files  = glob( $folder . '/*' );",
+   "/includes/services/class-pdf.php:122 wp_delete_file( $file );",
+   "/includes/services/template/class-template-renderer.php:994 wp_delete_file( $font_file );",
+   "/includes/services/template/class-template-renderer.php:1053 wp_delete_file( $bold_file );",
+   "/includes/services/template/class-template-renderer.php:1126 wp_delete_file( $temp_zip );",
+   "/includes/services/template/class-template-renderer.php:1133 wp_delete_file( $temp_zip );",
+   "/includes/services/template/class-template-renderer.php:1163 wp_delete_file( $temp_zip );"
+  ],
+  "wcdn_versija": "7.3.0"
+ },
+ "v": "dep-173658",
+ "kurimas": 200,
+ "sid": 7332,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
