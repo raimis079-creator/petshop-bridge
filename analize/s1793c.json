@@ -1,0 +1,251 @@
+{
+ "1": {
+  "v": "S1793c",
+  "src_30_140": " *\r\n * @since 7.0\r\n */\r\nclass Pdf {\r\n\r\n\t/**\r\n\t * Constructor.\r\n\t *\r\n\t * Registers hooks.\r\n\t *\r\n\t * @since 7.0\r\n\t */\r\n\tpublic function __construct() {\r\n\t\tadd_action( 'init', array( $this, 'init' ), 100 );\r\n\t\tadd_action( 'wcdn_delete_pdf_files', array( $this, 'delete_pdf_files' ), 100 );\r\n\t\tadd_action( 'wcdn_prefetch_locale_fonts', array( $this, 'prefetch_locale_fonts' ), 10 );\r\n\t}\r\n\r\n\t/**\r\n\t * Initialize scheduled tasks and ensure PDF directories exist.\r\n\t *\r\n\t * @since 7.0\r\n\t */\r\n\tpublic function init() {\r\n\r\n\t\tif ( ! apply_filters( 'wcdn_enable_pdf', true ) ) {\r\n\t\t\t\treturn;\r\n\t\t}\r\n\t\t$filesystem = Utils::get_filesystem();\r\n\r\n\t\tif ( ! $filesystem ) {\r\n\t\t\treturn;\r\n\t\t}\r\n\r\n\t\tif ( $filesystem instanceof \\WP_Filesystem_FTPext ) {\r\n\t\t\t$reflection = new \\ReflectionProperty( $filesystem, 'link' );\r\n\t\t\t$reflection->setAccessible( true );\r\n\t\t\tif ( null === $reflection->getValue( $filesystem ) ) {\r\n\t\t\t\treturn; // FTP not connected, bail out safely.\r\n\t\t\t}\r\n\t\t}\r\n\r\n\t\tif ( ! as_has_scheduled_action( 'wcdn_delete_pdf_files' ) ) {\r\n\t\t\tas_schedule_recurring_action( time(), DAY_IN_SECONDS, 'wcdn_delete_pdf_files' );\r\n\t\t}\r\n\r\n\t\t$upload_path = wp_upload_dir()['basedir'];\r\n\r\n\t\tforeach ( Template_Engine::get_template_keys() as $template ) {\r\n\t\t\t$folder = trailingslashit( $upload_path ) . 'wcdn/' . $template;\r\n\r\n\t\t\tif ( ! $filesystem->exists( $folder ) ) {\r\n\t\t\t\twp_mkdir_p( $folder );\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n\r\n\t/**\r\n\t * Background Action Scheduler handler: pre-download the locale font.\r\n\t *\r\n\t * Scheduled on plugin activation so the font is cached before the first\r\n\t * PDF is generated. Falls back gracefully if the download fails.\r\n\t *\r\n\t * @since 7.0\r\n\t */\r\n\tpublic function prefetch_locale_fonts() {\r\n\t\tTemplate_Renderer::prefetch_locale_font();\r\n\t}\r\n\r\n\t/**\r\n\t * Delete generated PDF files after configured retention period.\r\n\t *\r\n\t * @since 7.0\r\n\t */\r\n\tpublic function delete_pdf_files() {\r\n\r\n\t\t$upload_path      = wp_upload_dir()['basedir'];\r\n\t\t$expire_x_days    = Settings::get( 'numberDaysPdfExpiration' );\r\n\t\t$expire_x_seconds = (int) $expire_x_days * DAY_IN_SECONDS;\r\n\r\n\t\tforeach ( Template_Engine::get_template_keys() as $template ) {\r\n\r\n\t\t\t$folder = trailingslashit( $upload_path ) . 'wcdn/' . $template;\r\n\t\t\t$files  = glob( $folder . '/*' );\r\n\r\n\t\t\tforeach ( $files as $file ) {\r\n\r\n\t\t\t\tif ( ! is_file( $file ) ) {\r\n\t\t\t\t\tcontinue;\r\n\t\t\t\t}\r\n\r\n\t\t\t\tif ( time() - filemtime( $file ) > $expire_x_seconds ) {\r\n\t\t\t\t\twp_delete_file( $file );\r\n\t\t\t\t}\r\n\t\t\t}\r\n\t\t}\r\n\t}\r\n\r\n\t/**\r\n\t * Generate PDF for order.\r\n\t *\r\n\t * @param int    $order_id Order ID.\r\n\t * @param string $template Template key.\r\n\t * @param array  $data     Template data.\r\n\t * @param bool   $force    Force regeneration.\r\n\t * @return string|false File path or false on failure.\r\n\t * @since 7.0\r\n\t */\r\n\tpublic function generate( $order_id, $template, $data = array(), $force = true ) {\r\n\r\n\t\t$is_sample   = 'sample' === $order_id;\r\n",
+  "as": [
+   {
+    "action_id": "258013",
+    "status": "pending",
+    "scheduled_date_gmt": "2026-10-22 15:28:26",
+    "last_attempt_gmt": "0000-00-00 00:00:00",
+    "args": "[]"
+   },
+   {
+    "action_id": "255266",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-10-21 15:27:35",
+    "last_attempt_gmt": "2026-10-21 15:28:26",
+    "args": "[]"
+   },
+   {
+    "action_id": "252726",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-10-20 15:27:32",
+    "last_attempt_gmt": "2026-10-20 15:27:35",
+    "args": "[]"
+   },
+   {
+    "action_id": "249611",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-10-19 15:27:31",
+    "last_attempt_gmt": "2026-10-19 15:27:32",
+    "args": "[]"
+   },
+   {
+    "action_id": "246615",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-10-18 15:26:52",
+    "last_attempt_gmt": "2026-10-18 15:27:31",
+    "args": "[]"
+   },
+   {
+    "action_id": "244000",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-10-17 15:26:26",
+    "last_attempt_gmt": "2026-10-17 15:26:52",
+    "args": "[]"
+   },
+   {
+    "action_id": "241137",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-10-16 15:26:20",
+    "last_attempt_gmt": "2026-10-16 15:26:26",
+    "args": "[]"
+   },
+   {
+    "action_id": "238385",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-10-15 15:26:18",
+    "last_attempt_gmt": "2026-10-15 15:26:20",
+    "args": "[]"
+   },
+   {
+    "action_id": "235579",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-10-14 15:26:15",
+    "last_attempt_gmt": "2026-10-14 15:26:18",
+    "args": "[]"
+   },
+   {
+    "action_id": "232868",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-10-13 15:26:12",
+    "last_attempt_gmt": "2026-10-13 15:26:15",
+    "args": "[]"
+   },
+   {
+    "action_id": "230158",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-10-12 15:26:09",
+    "last_attempt_gmt": "2026-10-12 15:26:12",
+    "args": "[]"
+   },
+   {
+    "action_id": "227562",
+    "status": "complete",
+    "scheduled_date_gmt": "2026-10-11 15:26:08",
+    "last_attempt_gmt": "2026-10-11 15:26:09",
+    "args": "[]"
+   }
+  ],
+  "log": [
+   {
+    "action_id": "258013",
+    "message": "veiksmas sukurtas",
+    "log_date_gmt": "2026-10-21 15:28:26"
+   },
+   {
+    "action_id": "255266",
+    "message": "action complete via WP Cron",
+    "log_date_gmt": "2026-10-21 15:28:26"
+   },
+   {
+    "action_id": "255266",
+    "message": "action started via WP Cron",
+    "log_date_gmt": "2026-10-21 15:28:26"
+   },
+   {
+    "action_id": "255266",
+    "message": "veiksmas sukurtas",
+    "log_date_gmt": "2026-10-20 15:27:35"
+   },
+   {
+    "action_id": "252726",
+    "message": "action complete via Async Request",
+    "log_date_gmt": "2026-10-20 15:27:35"
+   },
+   {
+    "action_id": "252726",
+    "message": "action started via Async Request",
+    "log_date_gmt": "2026-10-20 15:27:35"
+   },
+   {
+    "action_id": "252726",
+    "message": "veiksmas sukurtas",
+    "log_date_gmt": "2026-10-19 15:27:32"
+   },
+   {
+    "action_id": "249611",
+    "message": "action complete via Async Request",
+    "log_date_gmt": "2026-10-19 15:27:32"
+   },
+   {
+    "action_id": "249611",
+    "message": "action started via Async Request",
+    "log_date_gmt": "2026-10-19 15:27:32"
+   },
+   {
+    "action_id": "249611",
+    "message": "veiksmas sukurtas",
+    "log_date_gmt": "2026-10-18 15:27:31"
+   },
+   {
+    "action_id": "246615",
+    "message": "action complete via Async Request",
+    "log_date_gmt": "2026-10-18 15:27:31"
+   },
+   {
+    "action_id": "246615",
+    "message": "action started via Async Request",
+    "log_date_gmt": "2026-10-18 15:27:31"
+   },
+   {
+    "action_id": "246615",
+    "message": "veiksmas sukurtas",
+    "log_date_gmt": "2026-10-17 15:26:52"
+   },
+   {
+    "action_id": "244000",
+    "message": "action complete via Async Request",
+    "log_date_gmt": "2026-10-17 15:26:52"
+   },
+   {
+    "action_id": "244000",
+    "message": "action started via Async Request",
+    "log_date_gmt": "2026-10-17 15:26:52"
+   },
+   {
+    "action_id": "244000",
+    "message": "veiksmas sukurtas",
+    "log_date_gmt": "2026-10-16 15:26:26"
+   },
+   {
+    "action_id": "241137",
+    "message": "action complete via Async Request",
+    "log_date_gmt": "2026-10-16 15:26:26"
+   },
+   {
+    "action_id": "241137",
+    "message": "action started via Async Request",
+    "log_date_gmt": "2026-10-16 15:26:26"
+   },
+   {
+    "action_id": "241137",
+    "message": "veiksmas sukurtas",
+    "log_date_gmt": "2026-10-15 15:26:20"
+   },
+   {
+    "action_id": "238385",
+    "message": "action complete via WP Cron",
+    "log_date_gmt": "2026-10-15 15:26:20"
+   },
+   {
+    "action_id": "238385",
+    "message": "action started via WP Cron",
+    "log_date_gmt": "2026-10-15 15:26:20"
+   },
+   {
+    "action_id": "238385",
+    "message": "veiksmas sukurtas",
+    "log_date_gmt": "2026-10-14 15:26:18"
+   },
+   {
+    "action_id": "235579",
+    "message": "action complete via Async Request",
+    "log_date_gmt": "2026-10-14 15:26:18"
+   },
+   {
+    "action_id": "235579",
+    "message": "action started via Async Request",
+    "log_date_gmt": "2026-10-14 15:26:18"
+   },
+   {
+    "action_id": "235579",
+    "message": "veiksmas sukurtas",
+    "log_date_gmt": "2026-10-13 15:26:15"
+   },
+   {
+    "action_id": "232868",
+    "message": "action complete via Async Request",
+    "log_date_gmt": "2026-10-13 15:26:15"
+   },
+   {
+    "action_id": "232868",
+    "message": "action started via Async Request",
+    "log_date_gmt": "2026-10-13 15:26:15"
+   },
+   {
+    "action_id": "232868",
+    "message": "veiksmas sukurtas",
+    "log_date_gmt": "2026-10-12 15:26:12"
+   },
+   {
+    "action_id": "230158",
+    "message": "action complete via WP Cron",
+    "log_date_gmt": "2026-10-12 15:26:12"
+   },
+   {
+    "action_id": "230158",
+    "message": "action started via WP Cron",
+    "log_date_gmt": "2026-10-12 15:26:12"
+   }
+  ]
+ },
+ "v": "dep-173831",
+ "kurimas": 200,
+ "sid": 7333,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
