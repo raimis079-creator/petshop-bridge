@@ -1,0 +1,26 @@
+{
+ "1": {
+  "v": "S1793d",
+  "numberDaysPdfExpiration": 7,
+  "pdf_raktai": [
+   "enablePDF",
+   "pdfPaperSize",
+   "pdfUseCurrencyCode",
+   "enablePDFStorage",
+   "numberDaysPdfExpiration"
+  ],
+  "kodas": [
+   "class-backend.php:482 'numberDaysPdfExpiration'      => $settings['numberDaysPdfExpiration'] ?? 7,",
+   "class-settings.php:132 'numberDaysPdfExpiration'      => 'number',",
+   "class-settings.php:354 'numberDaysPdfExpiration'      => 7,",
+   "class-pdf.php:107 $expire_x_days    = Settings::get( 'numberDaysPdfExpiration' );"
+  ]
+ },
+ "v": "dep-174017",
+ "kurimas": 200,
+ "sid": 7334,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
