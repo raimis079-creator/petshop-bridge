@@ -1,0 +1,81 @@
+{
+ "1": {
+  "v": "S1793a",
+  "failu": 206,
+  "seniausi": {
+   "Isankstine-saskaita-IAPV000489.pdf": "2026-10-14 18:10",
+   "Invoice -1432-afda5c12a9b558770e602162.pdf": "2026-10-14 18:11",
+   "PVM-saskaita-AVPN011341.pdf": "2026-10-14 20:09",
+   "Isankstine-saskaita-IAPV000490.pdf": "2026-10-14 20:43",
+   "Invoice -1433-d9a7dab71a0609fc15e7299d.pdf": "2026-10-14 20:43"
+  },
+  "naujausi": {
+   "Invoice -1496-65781a4c1b00ff4230af69d5.pdf": "2026-10-21 13:49",
+   "Isankstine-saskaita-IAPV000554.pdf": "2026-10-21 17:26",
+   "Invoice -1497-953b46f4f0b107448b0a1f09.pdf": "2026-10-21 17:27"
+  },
+  "pagal_diena": {
+   "10-14": 7,
+   "10-15": 32,
+   "10-16": 26,
+   "10-17": 20,
+   "10-18": 12,
+   "10-19": 38,
+   "10-20": 46,
+   "10-21": 25
+  },
+  "kiti_wcdn": [
+   "creditnote",
+   "deliverynote",
+   "fonts",
+   "invoice",
+   "packingslip",
+   "receipt"
+  ],
+  "trynimai": [
+   "wp-content/plugins/woocommerce-delivery-notes/vendor/dompdf/dompdf/src/Adapter/PDFLib.php:249 @unlink($tmp_name);",
+   "wp-content/plugins/woocommerce-delivery-notes/vendor/dompdf/dompdf/src/Adapter/PDFLib.php:1331 print '[pdflib stream unlink ' . $this->_file . ']';",
+   "wp-content/plugins/woocommerce-delivery-notes/vendor/dompdf/dompdf/src/Adapter/PDFLib.php:1364 print '[pdflib output unlink ' . $this->_file . ']';",
+   "wp-content/plugins/woocommerce-delivery-notes/vendor/dompdf/dompdf/src/Adapter/CPDF.php:616 @unlink($tmp_name);",
+   "wp-content/plugins/woocommerce-delivery-notes/vendor/dompdf/dompdf/src/Renderer/AbstractRenderer.php:631 @unlink($tmpName);",
+   "wp-content/plugins/woocommerce-delivery-notes/vendor/dompdf/dompdf/lib/Cpdf.php:1230 unlink($tmp_name);",
+   "wp-content/plugins/woocommerce-delivery-notes/vendor/dompdf/dompdf/lib/Cpdf.php:2678 unlink($tmpInput);",
+   "wp-content/plugins/woocommerce-delivery-notes/vendor/dompdf/dompdf/lib/Cpdf.php:2679 unlink($tmpOutput);",
+   "wp-content/plugins/woocommerce-delivery-notes/vendor/phenx/php-svg-lib/src/Svg/Surface/CPdf.php:2620 unlink($tmpInput);",
+   "wp-content/plugins/woocommerce-delivery-notes/vendor/phenx/php-svg-lib/src/Svg/Surface/CPdf.php:2621 unlink($tmpOutput);",
+   "wp-content/mu-plugins/petshop-botu-sargas.php:94 foreach ( glob( self::LOG_DIR . '/*.log' ) ?: array() as $f ) { if ( filemtime( $f ) < time() - 14 * 86400 ) @unlink( $f ); }",
+   "wp-content/mu-plugins/petshop-webp.php:61 if ( ! $ok || ! file_exists( $tmp ) ) { @unlink( $tmp ); return self::klaida( $src, 'imagewebp' ); }",
+   "wp-content/mu-plugins/petshop-webp.php:63 if ( $b <= 0 || $b > $a * ( 1 - self::MIN_NAUDA ) ) { @unlink( $tmp ); @touch( $src . '.nowebp' ); return array( 'skip', 0 ); }",
+   "wp-content/mu-plugins/petshop-webp.php:64 if ( ! @rename( $tmp, $dst ) ) { @unlink( $tmp ); return self::klaida( $src, 'rename' ); }",
+   "wp-content/mu-plugins/petshop-laisku-nuotraukos.php:144 @unlink( $tmp );",
+   "wp-content/mu-plugins/petshop-vf-feed.php:132 @unlink( $tmp );"
+  ],
+  "cron": [
+   "wp_privacy_delete_old_export_files @ 10-21 20:43",
+   "jetpack_clean_nonces @ 10-21 21:21",
+   "ps_stat_valymas @ 10-22 00:41",
+   "rank_math/redirection/clean_trashed @ 10-22 03:00",
+   "ps_dl_atsauktu_valymas @ 10-22 03:20",
+   "ps_pet_drafts_cleanup_daily @ 10-22 05:40",
+   "ps_web_valymas @ 10-22 05:40",
+   "ps_lenteliu_valymas @ 10-22 06:50",
+   "ps_ivykiai_valymas @ 10-22 07:40",
+   "ps_botu_sargas_valymas @ 10-22 07:45",
+   "recovery_mode_clean_expired_keys @ 10-22 18:43",
+   "wp_scheduled_delete @ 10-22 18:43",
+   "delete_expired_transients @ 10-22 18:43",
+   "wp_scheduled_auto_draft_delete @ 10-22 18:47",
+   "yith_wcan_delete_expired_transients @ 10-22 19:28",
+   "wcdn_ts_tracker_send_event @ 10-23 10:46",
+   "wp_delete_temp_updater_backups @ 10-27 17:44"
+  ],
+  "wcdn_opc": []
+ },
+ "v": "dep-173328",
+ "kurimas": 200,
+ "sid": 7331,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
