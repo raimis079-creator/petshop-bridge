@@ -1,0 +1,198 @@
+{
+ "1": {
+  "v": "S1792a",
+  "u1477": {
+   "oid": 36925,
+   "status": "processing",
+   "suma": "35.97",
+   "mok": "paysera",
+   "avpn": "",
+   "doc": "invoice",
+   "spr": "{\"vf\":\"av\"}",
+   "rus": "2026-10-20 08:19:20 | Inga",
+   "laukia": "1",
+   "eil": [
+    "4038 | Pasta kačiukams su tunu - Ontario Kitten Tuna ×15 14.256198€ | src=av kelias=av kons= red=15 | null",
+    "4039 | Miamor Super premium konservai katėms su tunu ×4 5.917355€ | src=av kelias=av kons= red=4 | null",
+    "4040 | Exclusion Mediterraneo Mono Protein konservuo ×1 1.264463€ | src=vf kelias=i_av kons=1 red= | {\"id\":\"190\",\"partija_id\":\"57\",\"qty\":\"1\",\"qty_gauta\":null,\"busena\":\"kaupiama\",\"tiekejas\":\"vf\"}",
+    "4041 | Gėrimas katėms - Miamor Trinkfein Vitaldrink  ×4 4.793388€ | src=av kelias=av kons= red=4 | null",
+    "4042 | Gėrimas katėms - Miamor Trinkfein Vitaldrink  ×1 1.198347€ | src=av kelias=av kons= red=1 | null",
+    "4043 | Gėrimas kačiukams - Miamor Trinkfein Vitaldri ×1 1.099174€ | src=av kelias=av kons= red=1 | null",
+    "4044 | Gėrimas katėms - Miamor Trinkfein Vitaldrink  ×1 1.198347€ | src=av kelias=av kons= red=1 | null"
+   ],
+   "eiles": [
+    "laiskai"
+   ],
+   "kl": "",
+   "takelis": [
+    "surūšiuota [done]",
+    "užsakyti iš VF į AV [now] btn=kons",
+    "laukiam iš VF [todo]",
+    "surinkti [todo] btn=lapai",
+    "lipdukas [todo] btn=lipdukas",
+    "kurjeris paėmė [todo] btn=issiusta"
+   ],
+   "eil_f": [
+    "Pasta kačiukams su tunu - Onta | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Miamor Super premium konservai | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Exclusion Mediterraneo Mono Pr | i_av | lock:  | galimi {\"av\":false,\"tiesiai\":true,\"i_av\":true}",
+    "Gėrimas katėms - Miamor Trinkf | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Gėrimas katėms - Miamor Trinkf | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Gėrimas kačiukams - Miamor Tri | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Gėrimas katėms - Miamor Trinkf | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}"
+   ],
+   "pastabos": [
+    "10-20 08:10 [system] Vykdymas: MIXED — AV 26 vnt · VF 1 vnt (2 siunta(-os)) · mišrus → AV pirmenybė",
+    "10-20 08:19 [Inga] Surūšiuota (Inga): Pasta kačiukams su tunu - Ontario Kitten — Iš AV; Miamor Super premium konservai katėms su — Iš AV; Exclusion Mediterraneo Mono Protein kons — VF veža į AV; Gėrimas katėms - Miamor ",
+    "10-20 12:50 [Inga] Tiekimas: „Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g“ (1 vnt) įtraukta į Vetfarmas partiją #56 — parsivežam į AV.",
+    "10-20 12:51 [Inga] Tiekimas: prekės užsakytos iš Vetfarmas (partija #56, laiške kartu su užsakymais). Kelias į AV: Venipak kurjeris į AV. Laukiam.",
+    "10-21 08:52 [Inga] Tiekimas: partija #56 priimta, bet dalies prekių dar trūksta — užsakymas laukia toliau."
+   ]
+  },
+  "u1478": {
+   "oid": 36926,
+   "status": "processing",
+   "suma": "51.06",
+   "mok": "paysera",
+   "avpn": "",
+   "doc": "invoice",
+   "spr": "{\"vf\":\"av\"}",
+   "rus": "2026-10-20 09:28:57 | Inga",
+   "laukia": "1",
+   "eil": [
+    "4047 | Exclusion Mediterraneo Mono Protein konservuo ×2 2.528926€ | src=vf kelias=i_av kons=1 red= | {\"id\":\"191\",\"partija_id\":\"57\",\"qty\":\"2\",\"qty_gauta\":null,\"busena\":\"kaupiama\",\"tiekejas\":\"vf\"}",
+    "4048 | Gėrimas katėms - Miamor Trinkfein Vitaldrink  ×3 3.595041€ | src=av kelias=av kons= red=3 | null",
+    "4049 | Gėrimas kačiukams - Miamor Trinkfein Vitaldri ×3 3.297521€ | src=av kelias=av kons= red=3 | null",
+    "4050 | Gėrimas katėms - Miamor Trinkfein Vitaldrink  ×2 2.396694€ | src=av kelias=av kons= red=2 | null",
+    "4051 | JosiCat Finest Mousse with Tuna, paštetas kat ×2 1.487603€ | src=vf kelias=i_av kons=1 red= | {\"id\":\"184\",\"partija_id\":\"56\",\"qty\":\"2\",\"qty_gauta\":\"2\",\"busena\":\"gauta\",\"tiekejas\":\"vf\"}",
+    "4052 | Miamor Feine Filets konservai katėms, tunas s ×2 3.38843€ | src=av kelias=av kons= red=2 | null",
+    "4053 | Miamor Feine Filets konservai katėms, tunas s ×2 3.38843€ | src=av kelias=av kons= red=2 | null",
+    "4054 | Miamor Super premium konservai katėms su tunu ×2 2.958678€ | src=av kelias=av kons= red=2 | null",
+    "4055 | Miamor Super premium konservai katėms su tunu ×2 2.958678€ | src=av kelias=av kons= red=2 | null",
+    "4056 | Miamor Super Premium konservai katėms su tunu ×2 2.958678€ | src=av kelias=av kons= red=2 | null",
+    "4057 | Miamor Super Premium konservai katėms su tunu ×1 1.479339€ | src=av kelias=av kons= red=1 | null",
+    "4058 | Miamor Super Premium konservai katėms su tunu ×1 1.479339€ | src=av kelias=av kons= red=1 | null",
+    "4059 | Pasta kačiukams su tunu - Ontario Kitten Tuna ×1 0.950413€ | src=av kelias=av kons= red=1 | null",
+    "4060 | Pasta katėms su antiena - Ontario Duck Fresh  ×1 0.950413€ | src=av kelias=av kons= red=1 | null",
+    "4061 | Pasta katėms su lašiša - Ontario Salmon Fresh ×1 0.950413€ | src=av kelias=av kons= red=1 | null",
+    "4062 | Pasta katėms su vištiena - Ontario Chicken Fr ×2 1.900826€ | src=av kelias=av kons= red=2 | null",
+    "4063 | JosiCat Sterilised Classic sausas pašaras ste ×1 5.528926€ | src=vf kelias=i_av kons=1 red= | {\"id\":\"185\",\"partija_id\":\"56\",\"qty\":\"1\",\"qty_gauta\":\"1\",\"busena\":\"gauta\",\"tiekejas\":\"vf\"}"
+   ],
+   "eiles": [
+    "laiskai"
+   ],
+   "kl": "",
+   "takelis": [
+    "surūšiuota [done]",
+    "užsakyti iš VF į AV [now] btn=kons",
+    "laukiam iš VF [todo]",
+    "surinkti [todo] btn=lapai",
+    "lipdukas [todo] btn=lipdukas",
+    "kurjeris paėmė [todo] btn=issiusta"
+   ],
+   "eil_f": [
+    "Exclusion Mediterraneo Mono Pr | i_av | lock:  | galimi {\"av\":false,\"tiesiai\":true,\"i_av\":true}",
+    "Gėrimas katėms - Miamor Trinkf | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Gėrimas kačiukams - Miamor Tri | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Gėrimas katėms - Miamor Trinkf | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "JosiCat Finest Mousse with Tun | i_av | lock: jau užsakyta iš VF (užsakymas tiekėjui #56) | galimi {\"av\":true,\"tiesiai\":true,\"i_av\":true}",
+    "Miamor Feine Filets konservai  | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Miamor Feine Filets konservai  | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Miamor Super premium konservai | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Miamor Super premium konservai | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Miamor Super Premium konservai | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Miamor Super Premium konservai | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Miamor Super Premium konservai | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Pasta kačiukams su tunu - Onta | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Pasta katėms su antiena - Onta | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Pasta katėms su lašiša - Ontar | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "Pasta katėms su vištiena - Ont | av | lock:  | galimi {\"av\":true,\"tiesiai\":false,\"i_av\":false}",
+    "JosiCat Sterilised Classic sau | i_av | lock: jau užsakyta iš VF (užsakymas tiekėjui #56) | galimi {\"av\":true,\"tiesiai\":true,\"i_av\":true}"
+   ],
+   "pastabos": [
+    "10-20 09:20 [system] Vykdymas: MIXED — VF 5 vnt · AV 25 vnt (2 siunta(-os)) · mišrus → AV pirmenybė",
+    "10-20 09:28 [Inga] Surūšiuota (Inga): Exclusion Mediterraneo Mono Protein kons — VF veža į AV; Gėrimas katėms - Miamor Trinkfein Vitald — Iš AV; Gėrimas kačiukams - Miamor Trinkfein Vit — Iš AV; Gėrimas katėms - Miamor ",
+    "10-20 12:50 [Inga] Tiekimas: „Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g“ (2 vnt) įtraukta į Vetfarmas partiją #56 — parsivežam į AV.",
+    "10-20 12:50 [Inga] Tiekimas: „JosiCat Finest Mousse with Tuna, paštetas katėms su tunu, 85g“ (2 vnt) įtraukta į Vetfarmas partiją #56 — parsivežam į AV.",
+    "10-20 12:50 [Inga] Tiekimas: „JosiCat Sterilised Classic sausas pašaras sterilizuotoms katėms, 1,9 kg“ (1 vnt) įtraukta į Vetfarmas partiją #56 — parsivežam į AV.",
+    "10-20 12:51 [Inga] Tiekimas: prekės užsakytos iš Vetfarmas (partija #56, laiške kartu su užsakymais). Kelias į AV: Venipak kurjeris į AV. Laukiam.",
+    "10-20 12:51 [Inga] Tiekimas: prekės užsakytos iš Vetfarmas (partija #56, laiške kartu su užsakymais). Kelias į AV: Venipak kurjeris į AV. Laukiam.",
+    "10-20 12:51 [Inga] Tiekimas: prekės užsakytos iš Vetfarmas (partija #56, laiške kartu su užsakymais). Kelias į AV: Venipak kurjeris į AV. Laukiam.",
+    "10-21 08:52 [Inga] Tiekimas: partija #56 priimta, bet dalies prekių dar trūksta — užsakymas laukia toliau."
+   ]
+  },
+  "partija57": {
+   "id": "57",
+   "tiekejas": "vf",
+   "busena": "kaupiama",
+   "sukurta": "2026-10-21 08:52:58",
+   "uzsakyta": null,
+   "gauta": null,
+   "siuntos_kodas": null,
+   "pastaba": null,
+   "pristatymas": null,
+   "svoris": null,
+   "venipak_pack": null,
+   "venipak_manifest": null,
+   "dezes": "1"
+  },
+  "partija57_eil": [
+   {
+    "id": "190",
+    "product_id": "21165",
+    "order_id": "36925",
+    "qty": "1",
+    "qty_gauta": null,
+    "pastaba": "eilutė 4040"
+   },
+   {
+    "id": "191",
+    "product_id": "21165",
+    "order_id": "36926",
+    "qty": "2",
+    "qty_gauta": null,
+    "pastaba": "eilutė 4047"
+   }
+  ],
+  "dl_grep": [
+   "63: * Petshop Darbalaukis v3.36 (S1620, Raimis 09-06 „2 – ok, 3 – a ir b“): FILTRAI „Visi“ lange — Data „Nuo–iki“ (variklio `datos_riba('intervalas')`), Apmokėjimas (pavedimu / Paysera / grynais / neapmokėtas), Būsena (vykdomas / sustabdytas /",
+   "109: *   įrašą, laiškas klientui tik darbuotojo ranka). Klausimų kortelėje „Grąžink klientui pinigus“ kiekvienas `_ps_grazinti_rankomis` įrašas gauna mygtuką „Kreditinė“ →",
+   "136: *   = 3,99 su PVM (3,30 + PVM). „Atšaukti — prekės grįžo į AV“ / „Atšaukti tik grįžusią dalį“ dabar įrašo žymę `_ps_grazinti_rankomis` (suma X,",
+   "142: *   apmokėtas → `Kiekis [n] × · Išsaugoti · Išimti` (POST `admin_post_ps_dl_kiekis`, nonce `ps_dl_kiekis_{id}`, lock, dialogas prieš).",
+   "149: *   kaupiamos Tiekimo partijos eilutė perdedama (`isimti_eilute` + `ideti_eilute`); grupės/planas perskaičiuojami; `_ps_surinkta`",
+   "150: *   nuimama; (4) pastaba, įvykis `kiekis` (eilutė, prieš/po), žymė `_ps_grazinti_rankomis` → Klausimas „Grąžink klientui pinigus“",
+   "156: *   WC admin refund'ų nenaudojam; kreditinė (5 etapas „Sąskaita“) skaičiuos iš savų sumų (`_ps_grazinti_rankomis`, faktai).",
+   "406: add_action( 'admin_post_ps_dl_kiekis', array( __CLASS__, 'kiekis_vykdyti' ) ); // v3.19 (5 etapas #4)",
+   "963: $kk = null; foreach ( $eil as $x ) { if ( ! empty( $x['kk'] ) || ! empty( $x['kp'] ) ) { $kk = array( 'u' => admin_url( 'admin-post.php' ), 'n' => wp_create_nonce( 'ps_dl_kiekis_' . $id ), 'g' => $g ); break; } } // v3.19",
+   "1498: $o->update_meta_data( self::GRAZINTI_META, wp_json_encode( $gr ) );",
+   "1502: protected static function kiekio_gal( $f, $e ) {",
+   "1506: public static function grazinti( $o ) { $j = json_decode( (string) $o->get_meta( self::GRAZINTI_META ), true ); return is_array( $j ) ? $j : array(); }",
+   "1509: * „q×“ → kiekio mažinimas / prekės išėmimas (POST admin-post `ps_dl_kiekis`). Variklis neliestas.",
+   "1513: * 4) žymė `_ps_grazinti_rankomis` (Klausimas), pastaba, įvykis `kiekis`. Klientui laiško nėra.",
+   "1515: public static function kiekis_vykdyti() {",
+   "1517: $id = absint( $_POST['id'] ?? 0 ); check_admin_referer( 'ps_dl_kiekis_' . $id );",
+   "1529: if ( 'isimti' === $ka ) { $n = 0; } elseif ( 'kiekis' !== $ka || $n < 1 || $n >= $q ) { $baigti( 'dl_klaida', 'blogas kiekis — dabar ' . $q . ', galima 1…' . ( $q - 1 ) . ' arba „Išimti“' ); }",
+   "1569: if ( $part ) { Petshop_AV_Tiekimas::isimti_eilute( $o, $iid ); $o = wc_get_order( $id ); $it = $o->get_item( $iid ); }",
+   "1591: $o->update_meta_data( self::GRAZINTI_META, wp_json_encode( $g ) );",
+   "1601: * v3.45 (S1731, Raimis 09-28 „daryk“): „Pakeisti“ — prekės keitimas apmokėtame užsakyme (POST admin-post `ps_dl_pakeisti`, nonce `ps_dl_kiekis_{id}`).",
+   "1603: * Suma: naujos ≤ sumokėtos už keičiamą eilutę (Raimis: tokia pati arba mažesnė); skirtumas → `_ps_grazinti_rankomis` (Klausimas „Grąžink klientui pinigus“, refund 0).",
+   "1610: $id = absint( $_POST['id'] ?? 0 ); check_admin_referer( 'ps_dl_kiekis_' . $id );",
+   "1653: if ( class_exists( 'Petshop_AV_Tiekimas' ) && ! empty( $e['b'] ) && 'kaupiama' === $e['b']['busena'] ) { Petshop_AV_Tiekimas::isimti_eilute( $o, $iid ); $o = wc_get_order( $id ); }",
+   "1688: if ( $skirt > 0.004 ) { $g = self::grazinti( $o ); $g[] = array( 'laikas' => current_time( 'mysql' ), 'kas' => $u->display_name, 'suma' => $skirt, 'refund' => 0, 'ka' => 'keitimas: ' . mb_substr( $vardas, 0, 40 ) ); $o->update_meta_data(",
+   "1729: $o->delete_meta_data( self::GRAZINTI_META );",
+   "1742: public static function kiekio_html( $html, $item ) { return ( $item instanceof WC_Order_Item_Product && $item->get_meta( '_ps_kiekis_keistas' ) ) ? ' <strong class=\"product-quantity\">' . sprintf( '&times;&nbsp;%s', esc_html( $item->get_qua",
+   "1743: public static function kiekio_laiske( $qty, $item ) { return ( $item instanceof WC_Order_Item_Product && $item->get_meta( '_ps_kiekis_keistas' ) ) ? esc_html( $item->get_quantity() ) : $qty; }",
+   "1883: if ( 'i_av' === $buvo && class_exists( 'Petshop_AV_Tiekimas' ) ) { Petshop_AV_Tiekimas::isimti_eilute( $o, (int) $iid ); $it->delete_meta_data( '_ps_konsolidacija' ); }",
+   "1976: const GRAZINTI_META = '_ps_grazinti_rankomis'; // v3.19: [{laikas,kas,suma,refund,ka}] — Klausimas „Grąžink klientui pinigus“, kol nepažymėta „Grąžinta“",
+   "2609: $o->update_meta_data( self::GRAZINTI_META, wp_json_encode( $g ) );"
+  ],
+  "dl_ver": "3.49"
+ },
+ "v": "dep-055656",
+ "kurimas": 200,
+ "sid": 7327,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
