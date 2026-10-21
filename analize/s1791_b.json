@@ -1,0 +1,79 @@
+{
+ "1": {
+  "v": "S1791b",
+  "sql": [
+   "[20-Oct-2026 18:30:30 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(testinis=0 OR testinis IS NULL) AND statusas_galutinis NOT IN ('cancelled','...' at line 1 for query SELECT COUNT(DISTINCT f.klientas_email_hash) klientu, COUNT(*) pakart_uzs, ROUND(SUM(f.kontribucija_ct)/100,2) kontr FROM gaj6_ps_fakt_uzsakymai f JOIN (SELECT klientas_email_hash h, MIN(sukurta_at) t FROM gaj6_ps_fakt_uzsakymai WHERE (testinis=0 OR testinis IS NULL) AND statusas_galutinis NOT IN ('cancelled','failed','refunded','pending','trash','checkout-draft') GROUP BY klientas_email_hash) p ON p.h=f.k",
+   "[20-Oct-2026 18:45:19 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '(testinis=0 OR testinis IS NULL) AND statusas_galutinis IN ('completed','proc...' at line 1 for query SELECT f.kanalas_paskutinis k, IFNULL(f.utm_source,'') s, COUNT(*) n, ROUND(SUM(f.kontribucija_ct)/100,0) kontr FROM gaj6_ps_fakt_uzsakymai f JOIN (SELECT klientas_email_hash h, COUNT(*) n, MIN(sukurta_at) t1, MAX(sukurta_at) t2, MAX(klientas_naujas) buvo_naujas, ROUND(SUM(kontribucija_ct)/100,2) kontr, ROUND(SUM(viso_ct)/100,2) viso FROM gaj6_ps_fakt_uzsakymai WHERE (testinis=0 OR testinis IS NULL) AND st",
+   "[20-Oct-2026 19:07:57 UTC] WordPress database error You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '%s' at line 1 for query SELECT recipient_email FROM gaj6_ps_email_jobs WHERE provider_message_id=%s made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('wp-settings.php'), do_action('wp_loaded'), WP_Hook->do_action, WP_Hook->apply_filters, {closure}"
+  ],
+  "ej_po": [
+   {
+    "id": "1393",
+    "flow": "post_purchase_14d",
+    "sent_at": "2026-10-20 19:38:59",
+    "clicked_at": null
+   },
+   {
+    "id": "1691",
+    "flow": "post_purchase_7d",
+    "sent_at": "2026-10-20 20:39:05",
+    "clicked_at": null
+   },
+   {
+    "id": "1694",
+    "flow": "post_purchase_7d",
+    "sent_at": "2026-10-20 20:39:05",
+    "clicked_at": null
+   },
+   {
+    "id": "1697",
+    "flow": "post_purchase_7d",
+    "sent_at": "2026-10-20 20:39:05",
+    "clicked_at": null
+   }
+  ],
+  "clicks_viso": "0",
+  "mac": {
+   "n": 731,
+   "ip": 653,
+   "top_ip": {
+    "95.154.200.40": 10,
+    "35.186.189.174": 3,
+    "111.119.222.182": 3,
+    "31.105.116.134": 2,
+    "61.69.172.234": 2
+   },
+   "kelias": {
+    "/product/*/": 475,
+    "/": 19,
+    "/wp-content/uploads/complianz/css/banner-1-optin.css": 8,
+    "/osc/images/55022194.JPG": 6,
+    "/daugiau-pigiau/": 5,
+    "/kategorija/katems/kraikai-kaciu-tualetams/": 4,
+    "/kategorija/sunims/maistas-sunims/": 3,
+    "/kategorija/sunims/": 3
+   },
+   "st": {
+    "103": 15,
+    "200": 619,
+    "301": 62,
+    "302": 1,
+    "403": 2,
+    "404": 19,
+    "410": 13
+   },
+   "rdns": {
+    "95.154.200.40": "as033.pub.threatview.app",
+    "35.186.189.174": "174.189.186.35.bc.googleusercontent.com",
+    "111.119.222.182": "ecs-111-119-222-182.compute.hwclouds-dns.com"
+   }
+  }
+ },
+ "v": "dep-054722",
+ "kurimas": 200,
+ "sid": 7326,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
