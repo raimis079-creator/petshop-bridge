@@ -1,0 +1,107 @@
+{
+ "2": {
+  "v": "S1792c",
+  "f": "2",
+  "pries": {
+   "status": "processing",
+   "laukia": "",
+   "suma": "48.00",
+   "eil": [
+    "4051 | JosiCat Finest Mousse with Tuna, pašteta ×2 | src=vf kelias=i_av kons=1 av_red= | AV likutis 2 | {\"id\":\"184\",\"partija_id\":\"56\",\"qty\":\"2\",\"qty_gauta\":\"2\",\"busena\":\"gauta\",\"tiekejas\":\"vf\"}",
+    "4063 | JosiCat Sterilised Classic sausas pašara ×1 | src=vf kelias=i_av kons=1 av_red= | AV likutis 1 | {\"id\":\"185\",\"partija_id\":\"56\",\"qty\":\"1\",\"qty_gauta\":\"1\",\"busena\":\"gauta\",\"tiekejas\":\"vf\"}"
+   ],
+   "visos_eil": 16,
+   "tiek_eil": [
+    {
+     "id": "183",
+     "partija_id": "56",
+     "qty": "2",
+     "qty_gauta": "0",
+     "busena": "gauta"
+    },
+    {
+     "id": "184",
+     "partija_id": "56",
+     "qty": "2",
+     "qty_gauta": "2",
+     "busena": "gauta"
+    },
+    {
+     "id": "185",
+     "partija_id": "56",
+     "qty": "1",
+     "qty_gauta": "1",
+     "busena": "gauta"
+    }
+   ],
+   "eiles": [
+    "surinkti"
+   ],
+   "kl": "",
+   "takelis": [
+    "surūšiuota [done]",
+    "užsakyta iš VF į AV [done]",
+    "gauta į AV [done]",
+    "surinkti [now]",
+    "lipdukas [todo]",
+    "kurjeris paėmė [todo]"
+   ]
+  },
+  "perkelta": [
+   "JosiCat Finest Mousse with Tuna, paštetas katėms su tunu, 85g",
+   "JosiCat Sterilised Classic sausas pašaras sterilizuotoms katėms, 1,9 kg"
+  ],
+  "po": {
+   "status": "processing",
+   "laukia": "",
+   "suma": "48.00",
+   "eil": [
+    "4051 | JosiCat Finest Mousse with Tuna, pašteta ×2 | src=av kelias=i_av kons=1 av_red=2026-10-21 10:41:33 | AV likutis 0 | {\"id\":\"184\",\"partija_id\":\"56\",\"qty\":\"2\",\"qty_gauta\":\"2\",\"busena\":\"gauta\",\"tiekejas\":\"vf\"}",
+    "4063 | JosiCat Sterilised Classic sausas pašara ×1 | src=av kelias=i_av kons=1 av_red=2026-10-21 10:41:33 | AV likutis 0 | {\"id\":\"185\",\"partija_id\":\"56\",\"qty\":\"1\",\"qty_gauta\":\"1\",\"busena\":\"gauta\",\"tiekejas\":\"vf\"}"
+   ],
+   "visos_eil": 16,
+   "tiek_eil": [
+    {
+     "id": "183",
+     "partija_id": "56",
+     "qty": "2",
+     "qty_gauta": "0",
+     "busena": "gauta"
+    },
+    {
+     "id": "184",
+     "partija_id": "56",
+     "qty": "2",
+     "qty_gauta": "2",
+     "busena": "gauta"
+    },
+    {
+     "id": "185",
+     "partija_id": "56",
+     "qty": "1",
+     "qty_gauta": "1",
+     "busena": "gauta"
+    }
+   ],
+   "eiles": [
+    "surinkti"
+   ],
+   "kl": "",
+   "takelis": [
+    "surūšiuota [done]",
+    "užsakyta iš VF [done]",
+    "gauta į AV [done]",
+    "surinkti [now]",
+    "lipdukas [todo]",
+    "kurjeris paėmė [todo]"
+   ]
+  }
+ },
+ "v": "dep-074021",
+ "kurimas": 200,
+ "sid": 7330,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
