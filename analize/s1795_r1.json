@@ -1,0 +1,92 @@
+{
+ "1": {
+  "v": "S1795r",
+  "faze": "1",
+  "p_md5": "46c8948be9cf2c7fb01007ad3fe340e1",
+  "m_md5": "1097cdc2ec4e7581c0b9b32adb6c682c",
+  "m_dydis": 164781,
+  "json_ok": true,
+  "top_keys": [
+   "sunims/antiparazitines-priemones-sunims",
+   "katems/antiparazitines-priemones-katems",
+   "hipoalerginis-maistas-sunims",
+   "sunims",
+   "miamor-katems",
+   "sunims/maistas-sunims/sausas-maistas-sunims",
+   "sunims/skanestai-sunims",
+   "katems/antkakliai-ir-petnesos-katems"
+  ],
+  "plugin": "<?php\n/**\n * Petshop Legacy 301 v2.1 (S436, S1668) — senos platformos adresų nukreipimas.\n *\n * v2.1 (S1668): 301 PERKELIA užklausos eilutę (gclid, gad_source, utm_*, _gl).\n *   v2.0 ją numesdavo → PMax/Merchant paspaudimai praradavo gclid, Ads nematė konversijų.\n *\n * Vienas mechanizmas visiems seniems adresams. Žemėlapis laikomas ATSKIRAME\n * JSON faile ir kraunamas TIK tada, kai adresas realiai 404 — kad kiekviena\n * užklausa neparsintų 137 KB PHP masyvo.\n *\n * ŠEŠI SLUOKSNIAI (visi ĮŠALDYTI iš GSC 2 445 URL / 19 735 clicks / 16 mėn.):\n *   1. kategorijos be /kategorija/ priešdėlio          34 · 1 596\n *   2. seni URL su ID uodegomis                        42 ·   666\n *   3. pervadinti slug                                 10 ·    30\n *   4. produktai iš šaknies → /product/                805 · 2 968\n *   5. likusios kategorijos                            24 ·   102\n *   6. brendai → /gamintojas/                          22 ·   501\n *\n * KRITINIS 6 sluoksnis: be jo WordPress redirect_canonical /exclusion\n * (218 clicks) SPĖJIMU 301-ina į ATSITIKTINĮ SKU. TŽ v1.56 tai įspėjo, ir\n * 2026-08-04 tai vis dar vyko.\n *\n * VARTAI:\n *   - TIK tiksliam adresui iš žemėlapio, TIK kai jis DABAR 404\n *   - vienas 301 tiesiai į galutinį 200, jokių grandinių\n *   - JOKIO „panašiausio URL\" spėjimo\n *   - redirect_canonical išjungiamas TIK mūsų atpažintam adresui\n *   - X-Redirect-By: Petshop-Legacy-Category\n *\n * ĮŠALDYTA, NE DINAMINIS. Naujoms kategorijoms/prekėms taisyklės NEKURIAMOS.\n * Naujas įrašas — tik rankiniu būdu su GSC pagrindimu.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nconst PS_LEGACY_301_MAP = __DIR__ . '/petshop-legacy-301-map.json';\n\nfunction petshop_legacy_301_map() {\n\tstatic $m = null;\n\tif ( null !== $m ) { return $m; }\n\t$raw = @file_get_contents( PS_LEGACY_301_MAP );\n\t$m   = ( false === $raw ) ? array() : (array) json_decode( $raw, true );\n\treturn $m;\n}\n\nfunction petshop_legacy_301_path() {\n\t$p = (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_PATH );\n\treturn strtolower( trim( rawurldecode( $p ), '/' ) );\n}\n\nadd_action( 'template_redirect', function () {\n\tif ( is_admin() || wp_doing_ajax() || is_robots() || is_feed() ) { return; }\n\tif ( ! is_404() ) { return; }          // esami puslapiai NELIEČIAMI\n\n\t$kelias = petshop_legacy_301_path();\n\tif ( '' === $kelias ) { return; }\n\n\t$map = petshop_legacy_301_map();\n\tif ( ! isset( $map[ $kelias ] ) ) { return; }   // jokio spėjimo\n\n\t$t = $map[ $kelias ];\n\tif ( 0 === strpos( $t, '__TERM__' ) ) {\n\t\t$term = get_term( (int) substr( $t, 8 ), 'product_cat' );\n\t\tif ( ! $term || is_wp_error( $term ) ) { return; }\n\t\t$url = get_term_link( $term );\n\t\tif ( is_wp_error( $url ) || ! $url ) { return; }\n\t} else {\n\t\t$url = home_url( $t );\n\t}\n\n\t// Apsauga nuo kilpos\n\tif ( strtolower( trim( (string) parse_url( $url, PHP_URL_PATH ), '/' ) ) === $kelias ) { return; }\n\n\t// v2.1: užklausos eilutė keliauja kartu (gclid/utm/gad_source — Ads atribucijai)\n\t$qs = (string) parse_url( (string) ( $_SERVER['REQUEST_URI'] ?? '' ), PHP_URL_QUERY );\n\tif ( '' !== $qs ) { $url .= ( false === strpos( $url, '?' ) ? '?' : '&' ) . $qs; }\n\n\tremove_action( 'template_redirect', 'redirect_canonical' );\n\twp_redirect( $url, 301, 'Petshop-Legacy-Category' );\n\texit;\n}, 1 );\n",
+  "pradzia": "{\"sunims/antiparazitines-priemones-sunims\":\"__TERM__108\",\"katems/antiparazitines-priemones-katems\":\"__TERM__109\",\"hipoalerginis-maistas-sunims\":\"__TERM__85\",\"sunims\":\"__TERM__70\",\"miamor-katems\":\"__TERM__80\",\"sunims/maistas-sunims/sausas-maistas-sunims\":\"__TERM__72\",\"sunims/skanestai-sunims\":\"__TERM__95\",\"katems/antkakliai-ir-petnesos-katems\":\"__TERM__117\",\"super-premium-sunu-maistas\":\"__TERM__83\",\"katems/maistas-katems\":\"__TERM__78\",\"katems/kraikai-kaciu-tualetams\":\"__TERM__107\",\"katems\":\"__TERM__77\",\"katems/maistas-katems/sausas-maistas-katems\":\"__TERM__81\",\"sunims/maistas-sunims\":\"__TERM__71\",\"katems/zaislai-katems\":\"__TERM__114\",\"katems/maistas-katems/konservai-katems\":\"__TERM__79\",\"suni",
+  "hits": [
+   [
+    "",
+    "sunims/transportavimo-dezes-1552155967/transportavimo-deze-boksas-gyvunams-pratiko-1-metal",
+    "/product/transportavimo-deze-boksas-gyvunams-pratiko-1-metal/"
+   ],
+   [
+    "",
+    "transportavimo-deze-boksas-gyvunams-skudo-1-iata",
+    "/product/transportavimo-deze-boksas-gyvunams-skudo-1-iata/"
+   ],
+   [
+    "",
+    "transportavimo-deze-boksas-gyvunams-pratiko-1-plastic",
+    "/product/transportavimo-deze-boksas-gyvunams-pratiko-1-plastic/"
+   ],
+   [
+    "",
+    "transportavimo-deze-boksas-gyvunams-spark-georplast",
+    "/product/transportavimo-deze-boksas-gyvunams-spark-georplast/"
+   ],
+   [
+    "",
+    "transportavimo-deze-boksas-gyvunams-transportino-metal-georplast",
+    "/product/transportavimo-deze-boksas-gyvunams-transportino-metal-georplast/"
+   ],
+   [
+    "",
+    "transportavimo-deze-boksas-gyvunams-pratiko-1-metal",
+    "/product/transportavimo-deze-boksas-gyvunams-pratiko-1-metal/"
+   ],
+   [
+    "",
+    "transportavimo-deze-boksas-gyvunams-rocket-transparent-georplast",
+    "/product/transportavimo-deze-boksas-gyvunams-rocket-transparent-georplast/"
+   ],
+   [
+    "",
+    "katems-2/maistas-katems",
+    "/kategorija/katems/maistas-katems/"
+   ],
+   [
+    "",
+    "katems-2/zaislai-katems",
+    "/kategorija/katems/zaislai-katems/"
+   ],
+   [
+    "",
+    "katems/transportavimo-dezes",
+    "/kategorija/katems/transportavimo-dezes-katems/"
+   ],
+   [
+    "",
+    "pess-bio-apsauginis-purskiklis-nuo-erkiu-sunims-bei-katems-250-ml",
+    "/product/pess-biologinis-apsauginis-purskiklis-nuo-erkiu-katems-bei-sunims-250-ml/"
+   ],
+   [
+    "",
+    "sunims/transportavimo-dezes-1552155967",
+    "__TERM__122"
+   ]
+  ],
+  "hits_n": 12
+ },
+ "v": "dep-072424",
+ "kurimas": 200,
+ "sid": 7352,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
