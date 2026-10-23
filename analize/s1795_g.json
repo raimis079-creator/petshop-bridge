@@ -1,0 +1,28 @@
+{
+ "1": {
+  "v": "S1795g",
+  "failai": {
+   "petshop-ads-offline.php": 3644
+  },
+  "eil": {
+   "petshop-ads-offline.php": [
+    "9: * Užklausa: /?ps_ads_offline=<raktas>&dienos=3  → JSON {n, eil:[{gclid,laikas,verte,valiuta,uzs}]}",
+    "10: * Raktas: opcija ps_ads_offline_raktas (sukuria deploy įrankis).",
+    "16: if ( ! isset( $_GET['ps_ads_offline'] ) ) { return; }",
+    "17: $raktas = (string) get_option( 'ps_ads_offline_raktas', '' );",
+    "18: if ( '' === $raktas || ! hash_equals( $raktas, (string) $_GET['ps_ads_offline'] ) ) { status_header( 403 ); exit; }",
+    "28: $g = ps_ads_offline_gclid( $o, (string) $r['landing_url'] );",
+    "33: 'verte'   => round( (float) $o->get_total(), 2 ),",
+    "34: 'valiuta' => $o->get_currency(),",
+    "44: function ps_ads_offline_gclid( $o, string $landing = '' ): string {"
+   ]
+  }
+ },
+ "v": "dep-080254",
+ "kurimas": 200,
+ "sid": 7354,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
