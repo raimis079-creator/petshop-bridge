@@ -1,0 +1,78 @@
+{
+ "1": {
+  "v": "S1795h2",
+  "fn_md5": "ab70f8b7c7c38f4fbfa799d05f51871b",
+  "fn_len": 75245,
+  "fn": [
+   "296: function petshop_get_invoice_document_type( $order ) {",
+   "332: function petshop_generate_invoice_pdf( $order_id ) {",
+   "356: if ( $wc_order->get_meta( '_petshop_invoice_document_type' ) === 'invoice' && $wc_order->get_meta( '_petshop_avpn_number' ) && $wc_order->get_date_completed() ) {",
+   "357: $ps_doc_date = wp_date( 'Y-m-d', $wc_order->get_date_completed()->getTimestamp() );",
+   "363: 'documentDate'  => $ps_doc_date,",
+   "440: $order->update_meta_data( '_petshop_order_pdf', $pdf_file );",
+   "487: $petshop_pdf = $order->get_meta( '_petshop_order_pdf' );",
+   "559: $order->update_meta_data( '_petshop_completed_pdf', $pdf_file );",
+   "566: $pdf_file = $order->get_meta( '_petshop_completed_pdf' );"
+  ],
+  "gen_src": "function petshop_generate_invoice_pdf( $order_id ) {\n    $wc_order = wc_get_order( $order_id );\n    if ( ! $wc_order ) return false;\n\n    $countries      = WC()->countries ? WC()->countries->get_countries() : array();\n    $b_country      = $wc_order->get_billing_country();\n    $b_country_name = isset( $countries[ $b_country ] ) ? $countries[ $b_country ] : $b_country;\n\n    $skip_states = array( 'pasirinkite rajona', 'select a region', 'select an option' );\n    $b_state     = $wc_order->get_billing_state();\n    $b_state_val = ( $b_state && ! in_array( mb_strtolower( $b_state ), $skip_states ) ) ? $b_state : '';\n\n    $city_post = trim( $wc_order->get_billing_city() . ( $wc_order->get_billing_postcode() ? ', ' . $wc_order->get_billing_postcode() : '' ) );\n\n    $billing_lines = array_values( array_filter( array(\n        $wc_order->get_billing_address_1(),\n        $wc_order->get_billing_address_2(),\n        $city_post,\n        $b_state_val,\n        $b_country_name,\n    ) ) );\n\n    // S1793: PVM sąskaitos data = užsakymo įvykdymo data (ne generavimo diena), kad pergeneravus PDF data nepasikeistų.\n    $ps_doc_date = date_i18n( 'Y-m-d' );\n    if ( $wc_order->get_meta( '_petshop_invoice_document_type' ) === 'invoice' && $wc_order->get_meta( '_petshop_avpn_number' ) && $wc_order->get_date_completed() ) {\n        $ps_doc_date = wp_date( 'Y-m-d', $wc_order->get_date_completed()->getTimestamp() );\n    }\n\n    $order = array(\n        'id'            => $order_id,\n        'orderNumber'   => $wc_order->get_order_number(),\n        'documentDate'  => $ps_doc_date,\n        'date'          => $wc_order->get_date_created()\n                            ? $wc_order->get_date_created()->format( 'Y-m-d' )\n                            : date( 'Y-m-d' ),\n        'paymentMethod' => $wc_order->get_payment_method_title(),\n        'billing'       => array(\n            'name'    => trim( $wc_order->get_billing_first_name() . ' ' . $wc_order->get_billing_last_name() ),\n            'address' => $billing_lines,\n            'phone'   => $wc_order->get_billing_phone(),\n            'email'   => $wc_order->get_billing_email(),\n        ),\n        'shipping'      => array( 'name' => '', 'address' => array() ),\n    );\n\n    $logo_url  = '';\n    $logo_path = '';\n    $flatsome_logo_id = get_theme_mod( 'site_logo' );\n    if ( $flatsome_logo_id ) {\n        $logo_url  = wp_get_attachment_image_url( $flatsome_logo_id, 'full' );\n        $logo_path = get_attached_file( $flatsome_logo_id );\n    }\n\n    $shop     = array( 'logo' => $logo_url, 'logo_path' => $logo_path, 'name' => get_bloginfo( 'name' ) );\n    $settings = array( 'displayPriceInProductDetailsTable' => true );\n    $document = array();\n    $template = 'invoice';\n    $type     = 'pdf';\n    $items    = array();\n    $totals   = array();\n\n    $template_file = get_stylesheet_directory() . '/woocommerce-delivery-notes/base.php';\n    if ( ! file_exists( $template_file ) ) return false;\n\n    ob_start();\n    include $template_file;\n    $body_html = ob_get_clean();\n\n    $full_html = '<!DOCTYPE html><html><head><meta charset=\"UTF-8\"><style>@page{size:A4;margin:12mm 14mm;}body{margin:0;padding:0;}</style></head><body>' . $body_html . '</body></html>';\n",
+  "type_src": "function petshop_get_invoice_document_type( $order ) {\n    if ( ! $order instanceof WC_Order ) return 'invoice';\n    // S1662 (Raimio taisyklė 2026-09-09): PVM sąskaita (AVPN) — TIK apmokėtiems.\n    // Kol neapmokėta (bet kuris mokėjimo būdas) — išankstinė (IAPV).\n    // Anksčiau proforma buvo tik bacs pending/on-hold — Paysera pending degino AVPN numerius.\n    if ( $order->is_paid() ) {\n        return 'invoice';\n    }\n    if ( in_array( $order->get_status(), array( 'pending', 'on-hold', 'failed', 'checkout-draft' ), true ) ) {\n        return 'proforma';\n    }\n    // cancelled/refunded be apmokėjimo — sąskaitos nekuriam, bet jei kas pareikalaus, NEdeginam AVPN\n    if ( in_array( $order->get_status(), array( 'cancelled', 'refunded' ), true ) && ! $order->get_date_paid() ) {\n        return 'proforma';\n    }\n    return 'invoice';\n}\n\nfunction petshop_get_invoice_title( $order ) {\n    $type     = petshop_get_invoice_document_type( $order );\n    $order_id = $order->get_id();\n    if ( $type === 'proforma' ) {",
+  "sablonai": [
+   "/themes/flatsome-child/woocommerce-pip/invoice.php",
+   "/themes/flatsome-child/woocommerce-delivery-notes/base.php",
+   "/themes/flatsome-child/functions.php"
+  ],
+  "sab": {
+   "/themes/flatsome-child/woocommerce-pip/invoice.php": [
+    "3: * PVM Sąskaita Faktūra — petshop.lt / UAB Avesa",
+    "20: 'iban'    => 'LT127300010124940593',",
+    "36: $invoice_number = 'AVP' . $order_number;",
+    "105: PVM Sąskaita Faktūra",
+    "199: PVM sąskaita faktūra &ndash;",
+    "299: Apmokėta:"
+   ],
+   "/themes/flatsome-child/woocommerce-delivery-notes/base.php": [
+    "21: $doc_title      = 'PVM sąskaita faktūra';",
+    "26: $doc_title = 'Kreditinė PVM sąskaita faktūra';",
+    "43: $invoice_number = ( $maybe_parent && $maybe_order && $maybe_order->get_meta( '_petshop_kravpn_number' ) ) ? $maybe_order->get_meta( '_petshop_kravpn_number' ) :",
+    "45: $invoice_number = 'KR-AVPN' . ( isset( $order['orderNumber'] ) ? $order['orderNumber'] : '' );",
+    "58: $doc_type = 'proforma';",
+    "60: if ( $wc_order->get_meta( '_petshop_invoice_document_type' ) === 'proforma' ) {",
+    "61: $doc_type = 'proforma';",
+    "64: if ( $doc_type === 'proforma' ) {",
+    "65: $doc_title      = 'Išankstinė sąskaita';",
+    "66: $invoice_number = function_exists( 'petshop_get_iapv_number' ) && $order_id",
+    "70: $doc_title      = 'PVM sąskaita faktūra';",
+    "71: $invoice_number = function_exists( 'petshop_get_avpn_number' ) && $order_id",
+    "77: $is_proforma = ( $doc_title === 'Išankstinė sąskaita' );",
+    "83: $payment_method = 'Bankinis pavedimas';",
+    "200: $doc_date_raw  = isset( $order['documentDate'] ) ? $order['documentDate'] : date( 'Y-m-d' );",
+    "260: Data:",
+    "285: Apmokėjimo būdasGrynaisiais",
+    "381: &ndash;",
+    "403: Banko sąskaita: LT127300010124940593",
+    "531: Originali sąskaita:",
+    "539: Apmokėjimo būdas:",
+    "580: ",
+    "581: ",
+    "585: Apmokėjimo informacija",
+    "586: Apmokėti iki:",
+    "587: Mokėjimo paskirtis: Išankstinės sąskaitos Nr.",
+    "588: Gavėjas: UAB Avesa&nbsp;&nbsp;|&nbsp;&nbsp;Sąskaita: LT127300010124940593 (AB Swedbank)"
+   ]
+  },
+  "bacs": {
+   "enabled": "yes",
+   "title": "Bankinis pavedimas",
+   "description": "Apmokėkite padarydami pavedimą į mūsų banko sąskaitą. Prašome įrašyti Jūsų užsakymo numerį kaip mokėjimo paskirtį. Užsakymas nebus išsiųstas kol pavedimas nepasieks mūsų banko sąskaitos.",
+   "instructions": ""
+  },
+  "bacs_accounts": false
+ },
+ "v": "dep-083044",
+ "kurimas": 200,
+ "sid": 7356,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
