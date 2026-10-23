@@ -1,0 +1,150 @@
+{
+ "1": {
+  "v": "S1795rf",
+  "ej_cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "refill_lent": [
+   "gaj6_ps_refill_tracking"
+  ],
+  "lent": {
+   "gaj6_ps_refill_tracking": {
+    "cols": [
+     "id",
+     "user_id",
+     "product_id",
+     "pet_id",
+     "last_order_id",
+     "last_purchase_date",
+     "purchase_count",
+     "avg_interval_days",
+     "predicted_empty_date",
+     "confidence",
+     "status",
+     "created_at",
+     "updated_at",
+     "last_feedback",
+     "last_feedback_at",
+     "feedback_cycle"
+    ],
+    "n": "608"
+   }
+  },
+  "flows": [
+   {
+    "flow": "refill_due",
+    "status": "deferred",
+    "n": "5",
+    "nuo": "2026-10-01 08:00:04"
+   },
+   {
+    "flow": "refill_due",
+    "status": "sent",
+    "n": "46",
+    "nuo": "2026-09-18 08:01:02"
+   },
+   {
+    "flow": "refill_due",
+    "status": "skipped",
+    "n": "67",
+    "nuo": "2026-09-27 08:00:36"
+   }
+  ],
+  "siusta": 0,
+  "savaites": [],
+  "pirko": [],
+  "utm_uzs": [],
+  "tracking_sample": [
+   {
+    "id": "660",
+    "user_id": "3905",
+    "product_id": "18560",
+    "pet_id": null,
+    "last_order_id": "37036",
+    "last_purchase_date": "2026-10-23",
+    "purchase_count": "1",
+    "avg_interval_days": "62",
+    "predicted_empty_date": "2026-12-24",
+    "confidence": "0.40",
+    "status": "active",
+    "created_at": "2026-10-23 14:17:27",
+    "updated_at": "2026-10-23 14:17:27",
+    "last_feedback": null,
+    "last_feedback_at": null,
+    "feedback_cycle": null
+   },
+   {
+    "id": "659",
+    "user_id": "4387",
+    "product_id": "17969",
+    "pet_id": null,
+    "last_order_id": "37032",
+    "last_purchase_date": "2026-10-23",
+    "purchase_count": "1",
+    "avg_interval_days": "73",
+    "predicted_empty_date": "2027-01-04",
+    "confidence": "0.40",
+    "status": "active",
+    "created_at": "2026-10-23 07:16:36",
+    "updated_at": "2026-10-23 07:16:37",
+    "last_feedback": null,
+    "last_feedback_at": null,
+    "feedback_cycle": null
+   },
+   {
+    "id": "658",
+    "user_id": "4387",
+    "product_id": "19553",
+    "pet_id": null,
+    "last_order_id": "37032",
+    "last_purchase_date": "2026-10-23",
+    "purchase_count": "1",
+    "avg_interval_days": "41",
+    "predicted_empty_date": "2026-12-03",
+    "confidence": "0.40",
+    "status": "active",
+    "created_at": "2026-10-23 07:16:36",
+    "updated_at": "2026-10-23 07:16:37",
+    "last_feedback": null,
+    "last_feedback_at": null,
+    "feedback_cycle": null
+   }
+  ],
+  "opt": {
+   "holdout": false,
+   "nust": false
+  }
+ },
+ "v": "dep-163928",
+ "kurimas": 200,
+ "sid": 7362,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
