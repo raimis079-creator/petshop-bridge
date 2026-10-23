@@ -75,9 +75,257 @@
     "nuo": "2026-09-27 08:00:36"
    }
   ],
-  "siusta": 0,
-  "savaites": [],
-  "pirko": [],
+  "siusta": 113,
+  "skip": [
+   {
+    "status": "deferred",
+    "why": "preke_nera_sandelyje",
+    "n": "1"
+   },
+   {
+    "status": "deferred",
+    "why": "product_inactive",
+    "n": "1"
+   },
+   {
+    "status": "deferred",
+    "why": "sustabdyta_s1746_timeout",
+    "n": "3"
+   },
+   {
+    "status": "sent",
+    "why": null,
+    "n": "41"
+   },
+   {
+    "status": "sent",
+    "why": "already_repurchased",
+    "n": "3"
+   },
+   {
+    "status": "sent",
+    "why": "lifecycle_uzdaryta",
+    "n": "2"
+   },
+   {
+    "status": "skipped",
+    "why": "deferral_expired",
+    "n": "2"
+   },
+   {
+    "status": "skipped",
+    "why": "pakartoti_jau_siustas",
+    "n": "56"
+   },
+   {
+    "status": "skipped",
+    "why": "similar_optout",
+    "n": "9"
+   }
+  ],
+  "ctx": "{\"user_id\":5940,\"product_id\":20523,\"last_purchase_date\":\"2026-10-14\",\"refill_id\":512,\"cycle\":\"2026-10-28\",\"feedback_url\":\"https:\\/\\/petshop.lt\\/refill-feedback\\/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoicmVmaWxsX2ZlZWRiYWNrIiwic3ViamVjdF9pZCI6MCwicmVzb3VyY2VfaWQiOiI1MTIiLCJhY3Rpb24iOiJmZWVkYmFjayIsImV4cGlyZXNfYXQiOjE3OTM5NTIyNjQsIm5vbmNlIjoiYmI3MDUzNTQyZDExNTBjODhlMDNlYWM0MzdkYTk2OWYiLCJrZXlfaWQiOiJ2MiJ9.f8f0be1a9683eebd96df5c44e5e1ed3afb9171194702ef006f7ba52160848807\"}",
+  "savaites": {
+   "S 09-28": {
+    "siusta": 6
+   },
+   "S 10-05": {
+    "siusta": 7,
+    "pirko14": 1
+   },
+   "S 10-12": {
+    "siusta": 13,
+    "pirko14": 2,
+    "pirko7": 1
+   },
+   "S 10-19": {
+    "siusta": 20,
+    "pirko14": 2,
+    "pirko7": 2,
+    "click": 1
+   },
+   "X deferral_expired 10-19": {
+    "siusta": 2
+   },
+   "X pakartoti_jau_siustas 09-28": {
+    "siusta": 4
+   },
+   "X pakartoti_jau_siustas 10-05": {
+    "siusta": 9,
+    "pirko14": 4
+   },
+   "X pakartoti_jau_siustas 10-12": {
+    "siusta": 18,
+    "pirko14": 3,
+    "pirko7": 3
+   },
+   "X pakartoti_jau_siustas 10-19": {
+    "siusta": 25
+   },
+   "X similar_optout 10-12": {
+    "siusta": 3
+   },
+   "X similar_optout 10-19": {
+    "siusta": 6
+   }
+  },
+  "pirko": [
+   {
+    "job": "1265",
+    "nr": "1490",
+    "po_d": 13.4,
+    "eur": 11.72,
+    "kontr": 2.53,
+    "utm": "petshop_laiskai/cart_abandoned",
+    "kan": "email",
+    "click": 0,
+    "sent": "2026-10-07",
+    "st": "sent",
+    "why": null
+   },
+   {
+    "job": "1266",
+    "nr": "1490",
+    "po_d": 13.4,
+    "eur": 11.72,
+    "kontr": 2.53,
+    "utm": "petshop_laiskai/cart_abandoned",
+    "kan": "email",
+    "click": 0,
+    "sent": "2026-10-07",
+    "st": "skipped",
+    "why": "pakartoti_jau_siustas"
+   },
+   {
+    "job": "1267",
+    "nr": "1490",
+    "po_d": 13.4,
+    "eur": 11.72,
+    "kontr": 2.53,
+    "utm": "petshop_laiskai/cart_abandoned",
+    "kan": "email",
+    "click": 0,
+    "sent": "2026-10-07",
+    "st": "skipped",
+    "why": "pakartoti_jau_siustas"
+   },
+   {
+    "job": "1268",
+    "nr": "1490",
+    "po_d": 13.4,
+    "eur": 11.72,
+    "kontr": 2.53,
+    "utm": "petshop_laiskai/cart_abandoned",
+    "kan": "email",
+    "click": 0,
+    "sent": "2026-10-07",
+    "st": "skipped",
+    "why": "pakartoti_jau_siustas"
+   },
+   {
+    "job": "1269",
+    "nr": "1490",
+    "po_d": 13.4,
+    "eur": 11.72,
+    "kontr": 2.53,
+    "utm": "petshop_laiskai/cart_abandoned",
+    "kan": "email",
+    "click": 0,
+    "sent": "2026-10-07",
+    "st": "skipped",
+    "why": "pakartoti_jau_siustas"
+   },
+   {
+    "job": "1615",
+    "nr": "1503",
+    "po_d": 7.9,
+    "eur": 31.41,
+    "kontr": 10.55,
+    "utm": "petshop_laiskai/refill_due",
+    "kan": "email",
+    "click": 0,
+    "sent": "2026-10-14",
+    "st": "sent",
+    "why": null
+   },
+   {
+    "job": "1705",
+    "nr": "1453",
+    "po_d": 0.9,
+    "eur": 30.55,
+    "kontr": 8,
+    "utm": "google/23346712074",
+    "kan": "mokamas",
+    "click": 0,
+    "sent": "2026-10-16",
+    "st": "sent",
+    "why": null
+   },
+   {
+    "job": "1706",
+    "nr": "1453",
+    "po_d": 0.9,
+    "eur": 30.55,
+    "kontr": 8,
+    "utm": "google/23346712074",
+    "kan": "mokamas",
+    "click": 0,
+    "sent": "2026-10-16",
+    "st": "skipped",
+    "why": "pakartoti_jau_siustas"
+   },
+   {
+    "job": "1707",
+    "nr": "1453",
+    "po_d": 0.9,
+    "eur": 30.55,
+    "kontr": 8,
+    "utm": "google/23346712074",
+    "kan": "mokamas",
+    "click": 0,
+    "sent": "2026-10-16",
+    "st": "skipped",
+    "why": "pakartoti_jau_siustas"
+   },
+   {
+    "job": "1708",
+    "nr": "1453",
+    "po_d": 0.9,
+    "eur": 30.55,
+    "kontr": 8,
+    "utm": "google/23346712074",
+    "kan": "mokamas",
+    "click": 0,
+    "sent": "2026-10-16",
+    "st": "skipped",
+    "why": "pakartoti_jau_siustas"
+   },
+   {
+    "job": "1887",
+    "nr": "1517",
+    "po_d": 2.9,
+    "eur": 44.15,
+    "kontr": 15.24,
+    "utm": "petshop_laiskai/refill_due",
+    "kan": "email",
+    "click": 0,
+    "sent": "2026-10-20",
+    "st": "sent",
+    "why": null
+   },
+   {
+    "job": "1906",
+    "nr": "1503",
+    "po_d": 0.9,
+    "eur": 31.41,
+    "kontr": 10.55,
+    "utm": "petshop_laiskai/refill_due",
+    "kan": "email",
+    "click": 1,
+    "sent": "2026-10-21",
+    "st": "sent",
+    "why": null
+   }
+  ],
   "utm_uzs": [],
   "tracking_sample": [
    {
@@ -140,9 +388,9 @@
    "nust": false
   }
  },
- "v": "dep-163928",
+ "v": "dep-164155",
  "kurimas": 200,
- "sid": 7362,
+ "sid": 7363,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
