@@ -1,0 +1,90 @@
+{
+ "2": {
+  "v": "S1795r",
+  "faze": "2",
+  "p_md5": "46c8948be9cf2c7fb01007ad3fe340e1",
+  "m_md5": "1097cdc2ec4e7581c0b9b32adb6c682c",
+  "m_dydis": 164781,
+  "json_ok": true,
+  "top_keys": [
+   "sunims/antiparazitines-priemones-sunims",
+   "katems/antiparazitines-priemones-katems",
+   "hipoalerginis-maistas-sunims",
+   "sunims",
+   "miamor-katems",
+   "sunims/maistas-sunims/sausas-maistas-sunims",
+   "sunims/skanestai-sunims",
+   "katems/antkakliai-ir-petnesos-katems"
+  ],
+  "yra": false,
+  "n": 1222,
+  "term": [
+   "transportavimo-dezes-katems",
+   "Transportavimo dėžės katėms",
+   39,
+   "https://petshop.lt/kategorija/katems/transportavimo-dezes-katems/"
+  ],
+  "bak_md5": "1097cdc2ec4e7581c0b9b32adb6c682c",
+  "po_md5": "5ee88013e0f33e738f757618304ca09a",
+  "po_n": 1223
+ },
+ "3": {
+  "v": "S1795r",
+  "faze": "3",
+  "p_md5": "46c8948be9cf2c7fb01007ad3fe340e1",
+  "m_md5": "5ee88013e0f33e738f757618304ca09a",
+  "m_dydis": 164828,
+  "json_ok": true,
+  "top_keys": [
+   "katems-2/transportavimo-dezes",
+   "sunims/antiparazitines-priemones-sunims",
+   "katems/antiparazitines-priemones-katems",
+   "hipoalerginis-maistas-sunims",
+   "sunims",
+   "miamor-katems",
+   "sunims/maistas-sunims/sausas-maistas-sunims",
+   "sunims/skanestai-sunims"
+  ],
+  "yra": true,
+  "n": 1223,
+  "test": {
+   "https://petshop.lt/katems-2/transportavimo-dezes": [
+    301,
+    "https://petshop.lt/kategorija/katems/transportavimo-dezes-katems/",
+    "Petshop-Legacy-Category"
+   ],
+   "https://petshop.lt/katems-2/transportavimo-dezes/?gclid=TEST123": [
+    301,
+    "https://petshop.lt/kategorija/katems/transportavimo-dezes-katems/?gclid=TEST123",
+    "Petshop-Legacy-Category"
+   ],
+   "https://petshop.lt/katems/transportavimo-dezes": [
+    301,
+    "https://petshop.lt/kategorija/katems/transportavimo-dezes-katems/",
+    "Petshop-Legacy-Category"
+   ],
+   "https://petshop.lt/katems-2/maistas-katems": [
+    301,
+    "https://petshop.lt/kategorija/katems/maistas-katems/",
+    "Petshop-Legacy-Category"
+   ],
+   "https://petshop.lt/kategorija/katems/transportavimo-dezes-katems/": [
+    200,
+    "",
+    ""
+   ],
+   "https://petshop.lt/katems-2/neegzistuoja-xyz": [
+    404,
+    "",
+    ""
+   ]
+  }
+ },
+ "v": "dep-072612",
+ "kurimas": 200,
+ "sid": 7353,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
