@@ -1,0 +1,95 @@
+{
+ "1": {
+  "1503": [
+   {
+    "id": "1906",
+    "flow": "refill_due",
+    "status": "sent",
+    "sent_at": "2026-10-21 08:04:21",
+    "clicked_at": "2026-10-22 06:38:56"
+   },
+   {
+    "id": "1615",
+    "flow": "refill_due",
+    "status": "sent",
+    "sent_at": "2026-10-14 08:04:22",
+    "clicked_at": null
+   },
+   {
+    "id": "1077",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sent_at": null,
+    "clicked_at": null
+   },
+   {
+    "id": "1076",
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "sent_at": "2026-10-05 15:09:36",
+    "clicked_at": null
+   }
+  ],
+  "1504": [
+   {
+    "id": "1906",
+    "flow": "refill_due",
+    "status": "sent",
+    "sent_at": "2026-10-21 08:04:21",
+    "clicked_at": "2026-10-22 06:38:56"
+   },
+   {
+    "id": "1615",
+    "flow": "refill_due",
+    "status": "sent",
+    "sent_at": "2026-10-14 08:04:22",
+    "clicked_at": null
+   },
+   {
+    "id": "1077",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sent_at": null,
+    "clicked_at": null
+   },
+   {
+    "id": "1076",
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "sent_at": "2026-10-05 15:09:36",
+    "clicked_at": null
+   }
+  ],
+  "1517": [
+   {
+    "id": "1887",
+    "flow": "refill_due",
+    "status": "sent",
+    "sent_at": "2026-10-20 08:04:24",
+    "clicked_at": null
+   },
+   {
+    "id": "889",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sent_at": null,
+    "clicked_at": null
+   },
+   {
+    "id": "888",
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "sent_at": "2026-09-29 08:08:47",
+    "clicked_at": null
+   }
+  ],
+  "v": "S1795d2"
+ },
+ "v": "dep-064139",
+ "kurimas": 200,
+ "sid": 7350,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
