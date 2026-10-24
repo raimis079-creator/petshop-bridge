@@ -1,0 +1,251 @@
+{
+ "1": {
+  "v": "S1797a",
+  "oid": 37056,
+  "uzs": {
+   "st": "processing",
+   "sukurta": "2026-10-24 19:16:04",
+   "apmoketa": "2026-10-24 19:21:25"
+  },
+  "pastabos": [
+   "10-24 19:16:05 Stock hold of 90 minutes applied to: - Semtuvėlis kačių kraikui, Georplast Diapason - Pilka (10503-P) &times; 1- Minkšta guminė pirštinė gyvūno kailiui šukuoti ir masažuoti, Trixie (TX-23132) &times; 1- Žirklutės gyvūno nagams kirpti, GimDog Nailclipper, 7x14 ",
+   "10-24 19:16:05 Vykdymas: MIXED — BELCOR_TOFU 1 vnt · AV 3 vnt · VF 1 vnt (3 siunta(-os)) · mišrus → AV pirmenybė",
+   "10-24 19:16:06 Paysera: Neapmokėto užsakymo būsena",
+   "10-24 19:16:06 Likutis sumažintas: Semtuvėlis kačių kraikui, Georplast Diapason - Pilka (10&rarr;10), Minkšta guminė pirštinė gyvūno kailiui šukuoti ir masažuoti, Trixie (1&rarr;1), Žirklutės gyvūno nagams kirpti, GimDog Nailclipper, 7x14 cm (3&rarr;3), Nobleza atviras tuale",
+   "10-24 19:16:06 Daugiau=pigiau: pack \"8 VNT. - Kraikas katėms TOFU BeloCat, vyšnių žiedų kvapo, 6 l (2,5 kg), 2 mm granulės\" (x1) nurašė 8 vnt. iš bazinio produkto #17662 (Kraikas katėms TOFU BeloCat, vyšnių žiedų kvapo, 6 l (2,5 kg), 2 mm granulės).",
+   "10-24 19:21:25 Paysera: Naujo užsakymo kūrimo būsena",
+   "10-24 19:21:25 Paysera: Užsakymo būsena po apmokėjimo",
+   "10-24 19:21:27 AV nurašymas: #17437 grynai AV 1 -> 0 · #14948 grynai AV 3 -> 2",
+   "10-24 19:21:28 Partijos nurašytos: #34328 −0 vnt. (0 partijos) · #17437 −1 vnt. (1 partijos) · #14948 −1 vnt. (1 partijos)\nĮSPĖJIMAI: #34328: Partijose trūksta 1 vnt. — likutis ir partijos nesutampa",
+   "10-24 19:21:28 Faktai irasyti: 5 eilutes · pajamos 48,81 EUR (be PVM, po nuolaidu) · PVM 10,94 EUR · marza 34,37 EUR · kontribucija (be pristatymo) 36,42 EUR",
+   "10-24 19:21:28 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+   "10-24 19:21:30 Email \"Naujas užsakymas\" sent.",
+   "10-24 19:21:31 Email \"Užsakymas vykdomas\" sent."
+  ],
+  "eilutes": [
+   {
+    "iid": 4335,
+    "pid": 35855,
+    "vid": 0,
+    "pav": "8 VNT. - Kraikas katėms TOFU BeloCat, vyšnių žiedų kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "qty": 1,
+    "meta": {
+     "_ps_savikaina_vnt": "",
+     "_ps_savikaina_saltinis": "nezinoma",
+     "_ps_kaina_atskirai_vnt": "4.4500",
+     "_ps_source": "belcor_tofu",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-24 19:16:05",
+     "_ps_source_reason": "AV neužtenka → tiekėjas: DP pakas ×8 (bazinė #17662): AV turi 7, reikia 8 — neužtenka",
+     "_ps_partijos_qty": "0"
+    }
+   },
+   {
+    "iid": 4336,
+    "pid": 16185,
+    "vid": 34328,
+    "pav": "Semtuvėlis kačių kraikui, Georplast Diapason - Pilka",
+    "qty": 1,
+    "meta": {
+     "pa_spalva": "pilka",
+     "_ps_savikaina_vnt": "",
+     "_ps_savikaina_saltinis": "nezinoma",
+     "_ps_kaina_atskirai_vnt": "1.2400",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-24 19:16:05",
+     "_ps_source_reason": "grynai AV prekė (be tiekėjo)",
+     "_reduced_stock": "0",
+     "_ps_partijos_qty": "0"
+    }
+   },
+   {
+    "iid": 4337,
+    "pid": 17437,
+    "vid": 0,
+    "pav": "Minkšta guminė pirštinė gyvūno kailiui šukuoti ir masažuoti, Trixie",
+    "qty": 1,
+    "meta": {
+     "_ps_savikaina_vnt": "2.2500",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "4.2900",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-24 19:16:05",
+     "_ps_source_reason": "grynai AV prekė (be tiekėjo)",
+     "_reduced_stock": "0",
+     "_ps_av_reduced_qty": "1",
+     "_ps_partijos_qty": "1"
+    }
+   },
+   {
+    "iid": 4338,
+    "pid": 14948,
+    "vid": 0,
+    "pav": "Žirklutės gyvūno nagams kirpti, GimDog Nailclipper, 7x14 cm",
+    "qty": 1,
+    "meta": {
+     "_ps_savikaina_vnt": "1.8500",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "3.9500",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-24 19:16:05",
+     "_ps_source_reason": "grynai AV prekė (be tiekėjo)",
+     "_reduced_stock": "0",
+     "_ps_av_reduced_qty": "1",
+     "_ps_partijos_qty": "1"
+    }
+   },
+   {
+    "iid": 4339,
+    "pid": 27873,
+    "vid": 0,
+    "pav": "Nobleza atviras tualetas katėms, 56x40x24cm",
+    "qty": 1,
+    "meta": {
+     "_ps_savikaina_vnt": "10.3400",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "17.5900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-10-24 19:16:05",
+     "_ps_source_reason": "AV neužtenka → tiekėjas: AV šios prekės neturi",
+     "_reduced_stock": "1",
+     "_ps_partijos_qty": "0"
+    }
+   }
+  ],
+  "tevai": {
+   "16185": {
+    "pav": "Semtuvėlis kačių kraikui, Georplast Diapason",
+    "modified": "2026-10-24 19:16:06",
+    "default_attr": [],
+    "thumb": 16186,
+    "gallery": [
+     16187,
+     16188
+    ],
+    "attr": {
+     "pa_gyvuno_rusis": {
+      "variation": false,
+      "opts": [
+       "katems"
+      ]
+     },
+     "pa_spalva": {
+      "variation": true,
+      "opts": [
+       "kapucino",
+       "melsva",
+       "pilka",
+       "salotine",
+       "zalsva"
+      ]
+     },
+     "pa_tipas": {
+      "variation": false,
+      "opts": [
+       "semtuvelis"
+      ]
+     }
+    },
+    "variacijos": [
+     {
+      "ID": "34325",
+      "menu_order": "0",
+      "post_status": "publish",
+      "post_modified": "2026-09-07 22:08:33",
+      "post_title": "Semtuvėlis kačių kraikui, Georplast Diapason - Žalsva",
+      "_variation_description": "",
+      "_sku": "10503-Ž",
+      "_regular_price": "1.24",
+      "_manage_stock": "yes",
+      "_stock": "19",
+      "_stock_status": "instock",
+      "attribute_pa_spalva": "zalsva",
+      "_price": "1.24",
+      "_thumbnail_id": "0"
+     },
+     {
+      "ID": "34326",
+      "menu_order": "0",
+      "post_status": "publish",
+      "post_modified": "2026-09-07 22:08:33",
+      "post_title": "Semtuvėlis kačių kraikui, Georplast Diapason - Melsva",
+      "_variation_description": "",
+      "_sku": "10503-M",
+      "_regular_price": "1.24",
+      "_manage_stock": "yes",
+      "_stock": "8",
+      "_stock_status": "instock",
+      "attribute_pa_spalva": "melsva",
+      "_price": "1.24",
+      "_thumbnail_id": "0"
+     },
+     {
+      "ID": "34327",
+      "menu_order": "0",
+      "post_status": "publish",
+      "post_modified": "2026-09-07 22:08:33",
+      "post_title": "Semtuvėlis kačių kraikui, Georplast Diapason - Kapučino",
+      "_variation_description": "",
+      "_sku": "10503-K",
+      "_regular_price": "1.24",
+      "_manage_stock": "yes",
+      "_stock": "7",
+      "_stock_status": "instock",
+      "attribute_pa_spalva": "kapucino",
+      "_price": "1.24",
+      "_thumbnail_id": "0"
+     },
+     {
+      "ID": "34328",
+      "menu_order": "0",
+      "post_status": "publish",
+      "post_modified": "2026-10-24 19:16:06",
+      "post_title": "Semtuvėlis kačių kraikui, Georplast Diapason - Pilka",
+      "_variation_description": "",
+      "_sku": "10503-P",
+      "_regular_price": "1.24",
+      "_manage_stock": "yes",
+      "_stock": "10",
+      "_stock_status": "instock",
+      "attribute_pa_spalva": "pilka",
+      "_price": "1.24",
+      "_thumbnail_id": "0"
+     },
+     {
+      "ID": "34329",
+      "menu_order": "0",
+      "post_status": "publish",
+      "post_modified": "2026-09-07 22:08:33",
+      "post_title": "Semtuvėlis kačių kraikui, Georplast Diapason - Salotinė",
+      "_variation_description": "",
+      "_sku": "10503-S",
+      "_regular_price": "1.24",
+      "_manage_stock": "yes",
+      "_stock": "10",
+      "_stock_status": "instock",
+      "attribute_pa_spalva": "salotine",
+      "_price": "1.24",
+      "_thumbnail_id": "0"
+     }
+    ],
+    "nuotr_opt": "option"
+   }
+  }
+ },
+ "v": "dep-164612",
+ "kurimas": 200,
+ "sid": 7367,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
