@@ -1,0 +1,448 @@
+{
+ "v": "dep-120259",
+ "kurimas": 200,
+ "sid": 7390,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1800f",
+  "desc_counts": [],
+  "amb79": {
+   "id": "79",
+   "brand": "Ambrosia",
+   "line": null,
+   "scope": "line",
+   "species": "dog",
+   "weight_basis": "current",
+   "row_dimension": "weight",
+   "shape": "simple",
+   "status": "verified",
+   "source_url": "https://petshop.lt/product/ambrosia-begrudis-su-eriena-ir-sviezia-elniena-sausas-maistas-sunims-grain-free-lamb-fresh-venison-12-kg/",
+   "row_count": "7",
+   "lookup_method": "source_range",
+   "source_kind": null,
+   "is_active": "1",
+   "table_key": null,
+   "import_batch_id": "s212b_20260717_fb3eeae1",
+   "verified_by": "S212B_ambrosia_merge"
+  },
+  "amb79_rows": [
+   {
+    "row_order": "0",
+    "weight_from_kg": "8.00",
+    "weight_to_kg": "10.00",
+    "amount_from_g": "133.00",
+    "amount_to_g": "157.00",
+    "condition_dimensions": null,
+    "condition_raw": null,
+    "cell_type": "value"
+   },
+   {
+    "row_order": "1",
+    "weight_from_kg": "10.00",
+    "weight_to_kg": "15.00",
+    "amount_from_g": "157.00",
+    "amount_to_g": "213.00",
+    "condition_dimensions": null,
+    "condition_raw": null,
+    "cell_type": "value"
+   },
+   {
+    "row_order": "2",
+    "weight_from_kg": "15.00",
+    "weight_to_kg": "20.00",
+    "amount_from_g": "213.00",
+    "amount_to_g": "264.00",
+    "condition_dimensions": null,
+    "condition_raw": null,
+    "cell_type": "value"
+   },
+   {
+    "row_order": "3",
+    "weight_from_kg": "20.00",
+    "weight_to_kg": "25.00",
+    "amount_from_g": "264.00",
+    "amount_to_g": "312.00",
+    "condition_dimensions": null,
+    "condition_raw": null,
+    "cell_type": "value"
+   },
+   {
+    "row_order": "4",
+    "weight_from_kg": "25.00",
+    "weight_to_kg": "30.00",
+    "amount_from_g": "312.00",
+    "amount_to_g": "357.00",
+    "condition_dimensions": null,
+    "condition_raw": null,
+    "cell_type": "value"
+   },
+   {
+    "row_order": "5",
+    "weight_from_kg": "30.00",
+    "weight_to_kg": "40.00",
+    "amount_from_g": "357.00",
+    "amount_to_g": "443.00",
+    "condition_dimensions": null,
+    "condition_raw": null,
+    "cell_type": "value"
+   },
+   {
+    "row_order": "6",
+    "weight_from_kg": "40.00",
+    "weight_to_kg": "50.00",
+    "amount_from_g": "443.00",
+    "amount_to_g": "524.00",
+    "condition_dimensions": null,
+    "condition_raw": null,
+    "cell_type": "value"
+   }
+  ],
+  "amb_tables": [
+   {
+    "id": "77",
+    "line": "Chicken & Fresh Fish (Puppy)",
+    "scope": "product",
+    "species": "dog",
+    "status": "verified",
+    "row_count": "56",
+    "is_active": "1",
+    "prekiu": "1"
+   },
+   {
+    "id": "78",
+    "line": null,
+    "scope": "line",
+    "species": "dog",
+    "status": "verified",
+    "row_count": "7",
+    "is_active": "1",
+    "prekiu": "4"
+   },
+   {
+    "id": "79",
+    "line": null,
+    "scope": "line",
+    "species": "dog",
+    "status": "verified",
+    "row_count": "7",
+    "is_active": "1",
+    "prekiu": "2"
+   },
+   {
+    "id": "80",
+    "line": null,
+    "scope": "line",
+    "species": "dog",
+    "status": "verified",
+    "row_count": "7",
+    "is_active": "1",
+    "prekiu": "2"
+   },
+   {
+    "id": "81",
+    "line": null,
+    "scope": "line",
+    "species": "dog",
+    "status": "verified",
+    "row_count": "9",
+    "is_active": "1",
+    "prekiu": "2"
+   },
+   {
+    "id": "82",
+    "line": null,
+    "scope": "line",
+    "species": "dog",
+    "status": "verified",
+    "row_count": "9",
+    "is_active": "1",
+    "prekiu": "2"
+   },
+   {
+    "id": "223",
+    "line": "Fresh Chicken & Salmon (Puppy Large Breed)",
+    "scope": "product",
+    "species": "dog",
+    "status": "verified",
+    "row_count": "49",
+    "is_active": "1",
+    "prekiu": "2"
+   }
+  ],
+  "feed_files": [
+   ".bak-petshop-katalogas-20260813-104535.txt",
+   ".bak-petshop-katalogas.php-20260812-093318",
+   ".bak-petshop-katalogas.php-20260812-095538",
+   ".bak-petshop-katalogas.php-20260812-105400",
+   ".bak-petshop-katalogas.php-20260812-110832",
+   ".bak-petshop-katalogas.php-20260812-114308",
+   ".bak-petshop-katalogas.php-20260812-120435",
+   ".bak-petshop-katalogas.php-20260812-124118",
+   ".bak-petshop-katalogas.php-20260812-124932",
+   ".bak-petshop-katalogas.php-20260812-131743",
+   ".bak-petshop-katalogas.php-20260812-142538",
+   ".bak-petshop-katalogas.php-20260812-152107",
+   ".bak-petshop-katalogas.php-20260812-153553",
+   ".bak-petshop-katalogas.php-20260812-155237",
+   ".bak-petshop-katalogas.php-20260812-170615",
+   ".bak-petshop-katalogas.php-20260812-172817",
+   ".bak-petshop-katalogas.php-20260812-173758",
+   ".bak-petshop-katalogas.php-20260812-175107",
+   ".bak-petshop-katalogas.php-20260812-175712",
+   ".bak-petshop-katalogas.php-20260812-180246",
+   ".bak-petshop-katalogas.php-20260812-181429",
+   ".bak-petshop-katalogas.php-20260812-183717",
+   ".bak-petshop-katalogas.php-20260812-190413",
+   ".bak-petshop-katalogas.php-20260813-063435",
+   ".bak-petshop-katalogas.php-20260813-082755.txt",
+   ".bak-petshop-katalogas.php-20260813-083506.txt",
+   ".bak-petshop-katalogas.php-20260813-095228",
+   "petshop-ataskaita-prekes.php",
+   "petshop-dydziai-katalogas.php",
+   "petshop-feeding-calc-rest.php",
+   "petshop-feeding-calc-rest.php.bak_183644",
+   "petshop-feeding-calc-rest.php.bak_20260723_s218",
+   "petshop-feeding-calc-rest.php.bak_S348",
+   "petshop-feeding-calc-rest.php.bak_r3",
+   "petshop-feeding-calc-rest.php.bak_r4",
+   "petshop-katalogas.php",
+   "petshop-katalogas.php-v872-BACKUP-20260908",
+   "petshop-katalogas.php-v879-BACKUP-20260909-094739",
+   "petshop-katalogas.php-v880-BACKUP-20260909-095615",
+   "petshop-katalogas.php.bak-uxd1",
+   "petshop-prekes-tvarka.php",
+   "petshop-prenumerata-katalogas.php",
+   "petshop-schema-prekes.php",
+   "petshop-schema-prekes.php.bak_s1701",
+   "petshop-vf-feed.php"
+  ],
+  "terms": {
+   "pa_gyvuno_rusis": [
+    "255:Graužikams",
+    "253:Katėms",
+    "254:Paukščiams",
+    "257:Ropliams",
+    "252:Šunims",
+    "256:Žuvims"
+   ],
+   "pa_amzius": [
+    "736:Senyviems",
+    "263:Jauniems",
+    "264:Suaugusiems",
+    "265:Senjorams"
+   ],
+   "pa_speciali_mityba": [
+    "512:Atsistatymui",
+    "510:Kepenims",
+    "511:Širdžiai",
+    "294:Dantims",
+    "415:Diabetui",
+    "292:Hipoalerginis",
+    "414:Inkstams",
+    "287:Jautriam virškinimui",
+    "413:Nuo plaukų gumuliukų",
+    "291:Odai ir kailiui",
+    "293:Sąnariams",
+    "289:Šlapimo takams",
+    "288:Sterilizuotiems",
+    "290:Svorio kontrolei"
+   ],
+   "pa_baltymu_saltinis": [
+    "497:Buivoliena",
+    "500:Paukštiena",
+    "499:Putpeliena",
+    "495:Tunas",
+    "496:Veršiena",
+    "498:Žąsiena",
+    "277:Antiena",
+    "494:Arkliena",
+    "276:Ėriena",
+    "273:Jautiena",
+    "278:Kalakutiena",
+    "283:Kiauliena",
+    "275:Lašiša",
+    "279:Triušiena",
+    "282:Vabzdžiai",
+    "281:Vegetariškas",
+    "272:Vištiena",
+    "411:Žuvis (balta)",
+    "280:Žvėriena"
+   ],
+   "pa_pakuotes_dydis": [
+    "505:1,5 kg",
+    "734:10 × 85 g",
+    "759:10 l",
+    "726:10+1 kg",
+    "508:115 g",
+    "735:12,5+2,5 kg",
+    "504:1250 g",
+    "507:135 g",
+    "725:15+3 kg",
+    "733:16 × 100 g",
+    "729:2 × 12,5 kg",
+    "731:2 × 7 kg",
+    "730:24 × 100 g",
+    "501:240 g",
+    "760:25 l",
+    "502:285 g",
+    "762:3 l",
+    "509:320 g",
+    "727:4 × 10 kg",
+    "506:4,25 kg",
+    "724:4+1 kg",
+    "761:5 l",
+    "732:6 × 400 g",
+    "728:7 kg × 2",
+    "503:720 g",
+    "428:10 g",
+    "466:14 g",
+    "429:15 g",
+    "483:20 g",
+    "457:22 g",
+    "469:30 g",
+    "453:35 g",
+    "485:36 g",
+    "463:40 g",
+    "456:45 g",
+    "450:50 g",
+    "427:55 g",
+    "478:56 g",
+    "460:57 g",
+    "452:60 g",
+    "481:65 g",
+    "472:70 g",
+    "484:74 g",
+    "430:75 g",
+    "436:80 g",
+    "458:82 g",
+    "441:85 g",
+    "445:90 g",
+    "447:95 g",
+    "482:96 g",
+    "438:100 g",
+    "431:105 g",
+    "455:110 g",
+    "479:113 g",
+    "454:120 g",
+    "473:130 g",
+    "474:140 g",
+    "464:150 g",
+    "475:160 g",
+    "468:180 g",
+    "465:185 g",
+    "432:200 g",
+    "459:250 g",
+    "439:300 g",
+    "462:333 g",
+    "461:342 g",
+    "446:400 g",
+    "480:415 g",
+    "433:425 g",
+    "437:500 g",
+    "471:650 g",
+    "449:0,75 kg",
+    "434:800 g",
+    "467:900 g",
+    "435:1 kg",
+    "477:1,9 kg",
+    "425:2 kg",
+    "448:2,25 kg",
+    "417:2,5 kg",
+    "470:2,56 kg",
+    "476:2,7 kg",
+    "416:3 kg",
+    "444:3,5 kg",
+    "442:4 kg",
+    "420:5 kg",
+    "440:6,5 kg",
+    "426:7 kg",
+    "423:7,5 kg",
+    "443:8 kg",
+    "421:10 kg",
+    "262:12 kg",
+    "451:12,5 kg",
+    "422:15 kg",
+    "418:16,5 kg",
+    "419:18 kg",
+    "424:20 kg"
+   ],
+   "pa_be_grudu": [
+    "409:Be grūdų",
+    "410:Su grūdais",
+    "412:Su ryžiais"
+   ],
+   "pa_monoprotein": [
+    "296:Ne",
+    "295:Taip"
+   ],
+   "pa_veisles_dydis": [
+    "269:Didelėms veislėms",
+    "270:Labai didelėms veislėms",
+    "267:Mažoms veislėms",
+    "268:Vidutinėms veislėms",
+    "271:Visoms veislėms"
+   ]
+  },
+  "kat_dry_brands": [
+   {
+    "name": "Josera",
+    "n": "93"
+   },
+   {
+    "name": "Farmina",
+    "n": "75"
+   },
+   {
+    "name": "Monge",
+    "n": "40"
+   },
+   {
+    "name": "Royal Canin",
+    "n": "33"
+   },
+   {
+    "name": "Quattro",
+    "n": "22"
+   },
+   {
+    "name": "Ontario",
+    "n": "18"
+   },
+   {
+    "name": "Exclusion",
+    "n": "13"
+   },
+   {
+    "name": "Gemon",
+    "n": "9"
+   },
+   {
+    "name": "IAMS",
+    "n": "5"
+   },
+   {
+    "name": "Rasco",
+    "n": "4"
+   },
+   {
+    "name": "Family Cat",
+    "n": "4"
+   },
+   {
+    "name": "Prins",
+    "n": "2"
+   },
+   {
+    "name": "Deli Nature",
+    "n": "1"
+   },
+   {
+    "name": "Green Petfood",
+    "n": "1"
+   }
+  ]
+ }
+}
