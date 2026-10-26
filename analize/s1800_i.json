@@ -1,0 +1,121 @@
+{
+ "v": "dep-124104",
+ "kurimas": 200,
+ "sid": 7393,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1800i",
+  "files": {
+   "wp-content/mu-plugins/petshop-skaiciuokle.php": {
+    "size": 28468,
+    "hits": [
+     "78: \"SELECT DISTINCT m.product_id FROM {$p}ps_feeding_map m",
+     "79: JOIN {$p}ps_feeding_tables t ON t.id=m.feeding_table_id AND t.is_active=1 AND t.species=%s",
+     "82: WHERE m.is_active=1\", $sp ) );"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-m8-food.php": {
+    "size": 35513,
+    "hits": [
+     "27: //  - JOKIO ps_feeding_map reikalavimo (slapiam serimo lenteles nereikia —",
+     "312: $rows = $wpdb->get_col( \"SELECT DISTINCT m.product_id FROM {$wpdb->prefix}ps_feeding_map m",
+     "313: JOIN {$wpdb->prefix}ps_feeding_tables t ON t.id = m.feeding_table_id",
+     "314: WHERE m.product_id IN ($in) AND m.is_active = 1 AND t.is_active = 1\" );",
+     "774: FROM {$wpdb->prefix}ps_feeding_map m",
+     "775: JOIN {$wpdb->prefix}ps_feeding_rows r ON r.feeding_table_id = m.feeding_table_id",
+     "776: WHERE m.is_active = 1 AND m.product_id IN ($in)"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-sargas.php": {
+    "size": 19899,
+    "hits": [
+     "386: array( $p.'ps_feeding_map',    'product_id', $p.'posts',     'ID', 'serimo map be prekes' ),"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-feeding-calc-rest.php": {
+    "size": 19012,
+    "hits": [
+     "18: \"SELECT m.feeding_table_id FROM {$pf}ps_feeding_map m JOIN {$pf}ps_feeding_tables t ON t.id=m.feeding_table_id",
+     "19: WHERE m.product_id=%d AND m.is_active=1 AND t.is_active=1 AND t.status='verified' LIMIT 1\", $product_id ) );",
+     "22: \"SELECT condition_dimensions, condition_raw FROM {$pf}ps_feeding_rows"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-katalogas.php": {
+    "size": 513505,
+    "hits": [
+     "3237: . ( empty( $s['is_active'] ) ? ' <span class=\"z bad\">išjungtas</span>' : '' ) . '</td>';",
+     "3968: $fm = $wpdb->prefix . 'ps_feeding_map';",
+     "5609: \"SELECT product_id, source, supplier_sku, ean, is_active, is_sellable, priority",
+     "5632: 'is_active'    => (int) $r['is_active'],"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-pilnumas.php": {
+    "size": 19869,
+    "hits": [
+     "299: $map = $wpdb->prefix . 'ps_feeding_map';",
+     "302: \"SELECT COUNT(*) FROM {$map} WHERE product_id=%d AND is_active=1\", $pid ) );"
+    ]
+   },
+   "wp-content/mu-plugins/petshop-rec-variklis.php": {
+    "size": 12151,
+    "hits": [
+     "138: JOIN {$P}ps_feeding_map fm ON fm.product_id=p.ID AND fm.is_active=1",
+     "139: JOIN {$P}ps_feeding_tables ft ON ft.id=fm.feeding_table_id AND ft.status='verified' AND ft.is_active=1"
+    ]
+   },
+   "wp-content/plugins/petshop-core/includes/class-weight-filter.php": {
+    "size": 10184,
+    "hits": [
+     "183: $map  = $wpdb->prefix . 'ps_feeding_map';",
+     "184: $tabs = $wpdb->prefix . 'ps_feeding_tables';",
+     "185: $rows = $wpdb->prefix . 'ps_feeding_rows';",
+     "192: WHERE m.is_active = 1 AND t.is_active = 1 AND t.status = 'verified'",
+     "193: AND t.canonical_table_hash IS NOT NULL"
+    ]
+   },
+   "wp-content/plugins/petshop-core/includes/class-product-calc.php": {
+    "size": 15711,
+    "hits": [
+     "118: $map = $wpdb->prefix . 'ps_feeding_map';",
+     "120: \"SELECT 1 FROM $map WHERE product_id = %d AND is_active = 1 LIMIT 1\", $pid ) );"
+    ]
+   },
+   "wp-content/plugins/petshop-core/includes/class-pet-profile.php": {
+    "size": 45686,
+    "hits": [
+     "20: *   - primary_need (2026-07-26 canonical): digestion, skin_coat, weight_control,",
+     "45: // 2026-07-26 canonical. Senos 'mostly_dry'/'mixed' buvo per miglotos — du vienodai",
+     "363: // TIK produktai su serimo normomis (ps_feeding_map is_active=1). Maistas be",
+     "366: $fm_table = $wpdb->prefix . 'ps_feeding_map';",
+     "367: $fm_ids = $wpdb->get_col( \"SELECT DISTINCT product_id FROM {$fm_table} WHERE is_active = 1\" );",
+     "482: $fm   = $wpdb->prefix . 'ps_feeding_map';",
+     "483: $rows = $wpdb->prefix . 'ps_feeding_rows';",
+     "493: WHERE fm.is_active = 1"
+    ]
+   },
+   "wp-content/plugins/petshop-core/includes/class-feeding-repository.php": {
+    "size": 7552,
+    "hits": [
+     "9: *   status='verified' AND is_active=1 AND canonical_table_hash IS NOT NULL AND map.is_active=1",
+     "17: *   empty_by_design        — canonical_table_hash NULL (4 tuščios)",
+     "43: $T = $this->pf.'ps_feeding_tables';",
+     "44: $M = $this->pf.'ps_feeding_map';",
+     "50: WHERE m.product_id = %d AND m.is_active = 1",
+     "51: AND t.is_active = 1 AND t.status = 'verified'",
+     "52: AND t.canonical_table_hash IS NOT NULL\",",
+     "75: if ( ($t['canonical_hash_version'] ?? null) !== self::EXPECTED_HASH_VERSION ) {",
+     "77: 'got'=>$t['canonical_hash_version'] ?? null,'expected'=>self::EXPECTED_HASH_VERSION);",
+     "80: $R = $this->pf.'ps_feeding_rows';",
+     "137: 'canonical_hash_version' => $t['canonical_hash_version'],"
+    ]
+   }
+  },
+  "snip1357": {
+   "len": 1709,
+   "hits": []
+  }
+ }
+}
