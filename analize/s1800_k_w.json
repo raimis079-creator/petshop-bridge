@@ -1,0 +1,114 @@
+{
+ "v": "dep-125026",
+ "kurimas": 200,
+ "sid": 7396,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "W": {
+  "v": "S1800k",
+  "faze": "W",
+  "patikra": {
+   "AMCTC15": "OK",
+   "AMCTC05": "OK",
+   "AMCSC15": "OK",
+   "AMCSC05": "OK",
+   "AMCTH15": "OK",
+   "AMCTH05": "OK",
+   "AMCDT15": "OK",
+   "AMCDT05": "OK",
+   "AMCTR15": "OK",
+   "AMCTR05": "OK",
+   "AMCWTC150": "OK",
+   "AMCWSC150": "OK"
+  },
+  "res": {
+   "AMCTC15": {
+    "id": 37072,
+    "src": "ERR Duplicate entry '37072-ambrosia' for key 'prod_src'",
+    "img": 3,
+    "ftable": 352
+   },
+   "AMCTC05": {
+    "id": 37076,
+    "src": "ERR Duplicate entry '37076-ambrosia' for key 'prod_src'",
+    "img": 3,
+    "ftable": 352
+   },
+   "AMCSC15": {
+    "id": 37080,
+    "src": "ERR Duplicate entry '37080-ambrosia' for key 'prod_src'",
+    "img": 3,
+    "ftable": 353
+   },
+   "AMCSC05": {
+    "id": 37084,
+    "src": "ERR Duplicate entry '37084-ambrosia' for key 'prod_src'",
+    "img": 3,
+    "ftable": 353
+   },
+   "AMCTH15": {
+    "id": 37088,
+    "src": "ERR Duplicate entry '37088-ambrosia' for key 'prod_src'",
+    "img": 3,
+    "ftable": 354
+   },
+   "AMCTH05": {
+    "id": 37092,
+    "src": "ERR Duplicate entry '37092-ambrosia' for key 'prod_src'",
+    "img": 3,
+    "ftable": 354
+   },
+   "AMCDT15": {
+    "id": 37096,
+    "src": "ERR Duplicate entry '37096-ambrosia' for key 'prod_src'",
+    "img": 3,
+    "ERR": "lentelė: Duplicate entry 'c7a36259b05b2772f0cf5777b695c63462c9a08b7315ad53a37054b4c33f9d88' for key 'uq_checksum' @86"
+   },
+   "AMCDT05": {
+    "id": 37100,
+    "src": "ERR Duplicate entry '37100-ambrosia' for key 'prod_src'",
+    "img": 3,
+    "ERR": "lentelė: Duplicate entry 'c7a36259b05b2772f0cf5777b695c63462c9a08b7315ad53a37054b4c33f9d88' for key 'uq_checksum' @86"
+   },
+   "AMCTR15": {
+    "id": 37104,
+    "src": "ERR Duplicate entry '37104-ambrosia' for key 'prod_src'",
+    "img": 3,
+    "ERR": "lentelė: Duplicate entry 'c7a36259b05b2772f0cf5777b695c63462c9a08b7315ad53a37054b4c33f9d88' for key 'uq_checksum' @86"
+   },
+   "AMCTR05": {
+    "id": 37108,
+    "src": "ERR Duplicate entry '37108-ambrosia' for key 'prod_src'",
+    "img": 3,
+    "ERR": "lentelė: Duplicate entry 'c7a36259b05b2772f0cf5777b695c63462c9a08b7315ad53a37054b4c33f9d88' for key 'uq_checksum' @86"
+   },
+   "AMCWTC150": {
+    "id": 37112,
+    "src": "ERR Duplicate entry '37112-ambrosia' for key 'prod_src'",
+    "img": 3
+   },
+   "AMCWSC150": {
+    "id": 37116,
+    "src": "ERR Duplicate entry '37116-ambrosia' for key 'prod_src'",
+    "img": 3
+   }
+  },
+  "created": [
+   37072,
+   37076,
+   37080,
+   37084,
+   37088,
+   37092,
+   37112,
+   37116
+  ],
+  "tables": {
+   "TC": 352,
+   "SC": 353,
+   "TH": 354
+  }
+ }
+}
