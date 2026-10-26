@@ -1,0 +1,69 @@
+{
+ "1": {
+  "v": "S1799d",
+  "nr": "1534",
+  "jobs": [
+   {
+    "id": "1868",
+    "flow": "refill_due",
+    "status": "skipped",
+    "sent_at": null,
+    "clicked_at": null,
+    "provider": null
+   },
+   {
+    "id": "1867",
+    "flow": "refill_due",
+    "status": "skipped",
+    "sent_at": null,
+    "clicked_at": null,
+    "provider": null
+   },
+   {
+    "id": "1866",
+    "flow": "refill_due",
+    "status": "sent",
+    "sent_at": "2026-10-19 08:04:25",
+    "clicked_at": null,
+    "provider": "sender"
+   },
+   {
+    "id": "855",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "sent_at": null,
+    "clicked_at": null,
+    "provider": null
+   },
+   {
+    "id": "854",
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "sent_at": "2026-09-28 16:08:52",
+    "clicked_at": null,
+    "provider": "sender"
+   },
+   {
+    "id": "853",
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "sent_at": "2026-09-23 16:43:57",
+    "clicked_at": null,
+    "provider": "sender"
+   }
+  ],
+  "m": {
+   "_wc_order_attribution_session_entry": "https://petshop.lt/kasa/?utm_source=petshop_laiskai&utm_medium=email&utm_campaign=refill_due",
+   "_wc_order_attribution_referrer": "",
+   "_wc_order_attribution_utm_content": "",
+   "_wc_order_attribution_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/155.0.0.0 Safari/537.36"
+  }
+ },
+ "v": "dep-073558",
+ "kurimas": 200,
+ "sid": 7381,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
