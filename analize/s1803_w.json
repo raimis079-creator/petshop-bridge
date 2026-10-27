@@ -1,0 +1,193 @@
+{
+ "v": "dep-154018",
+ "kurimas": 200,
+ "sid": 7441,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1803w",
+  "petshop-katalogas.php": [
+   "1013: return self::tiekejo_sandelis( $pid ) === '' ? '_stock' : '_own_stock_qty';",
+   "2926: ? Petshop_Stock_Service::parduodama( $pid ) : array( 'qty' => 0, 'kodel' => '—', 'saltiniai' => array(), 'perspejimai' => array() );",
+   "2943: $bst = Petshop_Stock_Service::parduodama( $dp_baze );",
+   "3017: preke apskritai parduodama. */",
+   "3116: echo '<div class=\"kort-eil\"><span>Parduodama pirkėjui</span><b class=\"' . ( $stock['qty'] > 0 ? '' : 'nula' ) . '\">'",
+   "4387: . 'Tai reiškia, kad dalis prekės parduodama pagal vieną skaičių, dalis pagal kitą.</div>';",
+   "4921: $vardai = array( '_stock' => 'Likutis', '_own_stock_qty' => 'AV likutis',",
+   "5121: paties skaiciaus — kitaip „AV\" ir „parduodama\" vel issiskirtu. */",
+   "5134: $parduodama = 0;",
+   "5137: $parduodama = (int) $x['qty'];",
+   "5185: 'pard'  => $parduodama,",
+   "5227: 'nepard'=> self::neparduodama_dienu(",
+   "5353: '_ps_sandelis','_own_stock_qty','_stock','_cost_price',",
+   "5433: $own   = $v( '_own_stock_qty' );",
+   "5694: public static function neparduodama_dienu( $paskutinis, $publikuota ) {",
+   "5707: diena visas katalogas atrodytu „neparduodamas 120 dienu\". */",
+   "5931: 'pard'       => array( 'g' => 'Vieta',    'v' => 'Parduodama',         't' => 'sk' ),",
+   "5933: 'nepard'     => array( 'g' => 'Vieta',    'v' => 'Neparduodama d.',    't' => 'sk' ),",
+   "6422: $g( 'negyvos', 'Neparduodama ' . ( $ndr['iki'] !== null",
+   "6426: neparduodama) ir GALIOJIMAS (geriausia iki) yra du skirtingi",
+   "6619: echo '<span class=\"et\">Neparduodama</span>';",
+   "6641: paleidimo diena visas katalogas atrodytu neparduodamas menesius. */",
+   "6761: echo '<th class=\"num\">Parduodama</th>';",
+   "6768: vienas informacinis blokas: kiek parduodama ir kiek dar uzteks. */",
+   "6780: if ( $nd_stulpelis ) { self::th( 'nepard', 'Neparduodama', $sort, $kryp, 'num', 'dienų' ); }",
+   "6798: if ( $r['pard'] <= 0 ) { $bkl = 'bad'; $kodel[] = 'parduodama 0'; }"
+  ],
+  "own_kiek": "325",
+  "own_av": [
+   {
+    "post_id": "18593",
+    "meta_value": "67",
+    "sand": "av"
+   },
+   {
+    "post_id": "18614",
+    "meta_value": "40",
+    "sand": "av"
+   },
+   {
+    "post_id": "18611",
+    "meta_value": "58",
+    "sand": "av"
+   },
+   {
+    "post_id": "18608",
+    "meta_value": "76",
+    "sand": "av"
+   },
+   {
+    "post_id": "18602",
+    "meta_value": "46",
+    "sand": "av"
+   },
+   {
+    "post_id": "18599",
+    "meta_value": "15",
+    "sand": "av"
+   },
+   {
+    "post_id": "18596",
+    "meta_value": "77",
+    "sand": "av"
+   },
+   {
+    "post_id": "18605",
+    "meta_value": "104",
+    "sand": "av"
+   },
+   {
+    "post_id": "16959",
+    "meta_value": "7",
+    "sand": "av"
+   },
+   {
+    "post_id": "16956",
+    "meta_value": "2",
+    "sand": "av"
+   },
+   {
+    "post_id": "16953",
+    "meta_value": "2",
+    "sand": "av"
+   },
+   {
+    "post_id": "16950",
+    "meta_value": "8",
+    "sand": "av"
+   },
+   {
+    "post_id": "17394",
+    "meta_value": "22",
+    "sand": "av"
+   },
+   {
+    "post_id": "17400",
+    "meta_value": "10",
+    "sand": "av"
+   },
+   {
+    "post_id": "19107",
+    "meta_value": "1",
+    "sand": "av"
+   },
+   {
+    "post_id": "17412",
+    "meta_value": "7",
+    "sand": "av"
+   },
+   {
+    "post_id": "17415",
+    "meta_value": "16",
+    "sand": "av"
+   },
+   {
+    "post_id": "17418",
+    "meta_value": "20",
+    "sand": "av"
+   },
+   {
+    "post_id": "17421",
+    "meta_value": "13",
+    "sand": "av"
+   },
+   {
+    "post_id": "17403",
+    "meta_value": "8",
+    "sand": "av"
+   },
+   {
+    "post_id": "17406",
+    "meta_value": "4",
+    "sand": "av"
+   },
+   {
+    "post_id": "17409",
+    "meta_value": "5",
+    "sand": "av"
+   },
+   {
+    "post_id": "17397",
+    "meta_value": "22",
+    "sand": "av"
+   },
+   {
+    "post_id": "17710",
+    "meta_value": "9",
+    "sand": "av"
+   },
+   {
+    "post_id": "17719",
+    "meta_value": "2",
+    "sand": "av"
+   },
+   {
+    "post_id": "37273",
+    "meta_value": "0",
+    "sand": "av"
+   },
+   {
+    "post_id": "37275",
+    "meta_value": "0",
+    "sand": "av"
+   },
+   {
+    "post_id": "37277",
+    "meta_value": "0",
+    "sand": "av"
+   },
+   {
+    "post_id": "37279",
+    "meta_value": "0",
+    "sand": "av"
+   },
+   {
+    "post_id": "37281",
+    "meta_value": "0",
+    "sand": "av"
+   }
+  ]
+ }
+}
