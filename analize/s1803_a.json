@@ -1,0 +1,541 @@
+{
+ "v": "dep-092306",
+ "kurimas": 200,
+ "sid": 7416,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1803a",
+  "brand_katrinex": [
+   {
+    "term_id": "368",
+    "name": "Katrinex",
+    "slug": "katrinex",
+    "count": "4"
+   }
+  ],
+  "kat": [
+   {
+    "term_id": "93",
+    "name": "ŽUVIMS",
+    "slug": "zuvims",
+    "parent": "0",
+    "count": "0"
+   },
+   {
+    "term_id": "103",
+    "name": "Žuvims",
+    "slug": "dp-zuvims",
+    "parent": "91",
+    "count": "0"
+   },
+   {
+    "term_id": "94",
+    "name": "Akvariumo žuvyčių maistas",
+    "slug": "akvariumo-zuvyciu-maistas",
+    "parent": "93",
+    "count": "36"
+   },
+   {
+    "term_id": "371",
+    "name": "Akvariumų įranga",
+    "slug": "akvariumai-iranga",
+    "parent": "93",
+    "count": "3"
+   },
+   {
+    "term_id": "100",
+    "name": "Tvenkinių žuvų maistas",
+    "slug": "tvenkiniu-zuvu-maistas",
+    "parent": "93",
+    "count": "12"
+   }
+  ],
+  "katrinex_prekes": [
+   {
+    "ID": "13102",
+    "post_title": "Trixie Juosmens diržas su pavadėliu, paminkštintas neoprenu, diržas 70-130 cm-9 cm",
+    "post_status": "publish",
+    "sku": "0TR127_12767",
+    "ean": "4011905127675",
+    "kaina": "20.39",
+    "cost": null,
+    "sand": "zb"
+   },
+   {
+    "ID": "16540",
+    "post_title": "Quattro SB su lašiša ir kriliu sausas suaugusių mažų veislių šunų pašaras, 1,5kg",
+    "post_status": "publish",
+    "sku": "2.008117",
+    "ean": "4770107253772",
+    "kaina": "15.00",
+    "cost": "9.9174",
+    "sand": "quattro"
+   },
+   {
+    "ID": "16543",
+    "post_title": "Quattro SB su balta žuvimi ir kriliu sausas seniems/dietinis mažų veislių šunims pašaras 1,5kg",
+    "post_status": "publish",
+    "sku": "2.008122",
+    "ean": "4770107253895",
+    "kaina": "14.00",
+    "cost": "9.2562",
+    "sand": "quattro"
+   },
+   {
+    "ID": "16558",
+    "post_title": "Quattro SB 7kg su lašiša ir kriliu sausas suaugusių mažų veislių šunų pašaras",
+    "post_status": "publish",
+    "sku": "2.008043",
+    "ean": "4770107253796",
+    "kaina": "52.00",
+    "cost": "34.3802",
+    "sand": "quattro"
+   },
+   {
+    "ID": "16561",
+    "post_title": "Quattro SB 7kg su balta žuvimi ir kriliu sausas seniems/dietinis mažų veislių šunims pašaras",
+    "post_status": "publish",
+    "sku": "2.008051",
+    "ean": "4770107253918",
+    "kaina": "49.00",
+    "cost": "32.3967",
+    "sand": "quattro"
+   },
+   {
+    "ID": "16585",
+    "post_title": "QUATTRO visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu, 7 kg",
+    "post_status": "publish",
+    "sku": "2.011767",
+    "ean": "4770107258401",
+    "kaina": "68.00",
+    "cost": "44.9587",
+    "sand": "quattro"
+   },
+   {
+    "ID": "16588",
+    "post_title": "QUATTRO visavertis sausas dietinis/senstančių kačių pašaras su balta žuvimi ir kriliu, 7 kg",
+    "post_status": "publish",
+    "sku": "2.011766",
+    "ean": "4770107258418",
+    "kaina": "68.00",
+    "cost": "44.9587",
+    "sand": "quattro"
+   },
+   {
+    "ID": "16591",
+    "post_title": "QUATTRO begrūdis visų veislių suaugusių šunų pašaras WEIGHT LOSS su balta žuvimi ir kriliumi, 3kg",
+    "post_status": "publish",
+    "sku": "2.009363",
+    "ean": "4770107255981",
+    "kaina": "24.00",
+    "cost": "15.8678",
+    "sand": "quattro"
+   },
+   {
+    "ID": "16594",
+    "post_title": "QUATTRO begrūdis visų veislių suaugusių šunų pašaras WEIGHT LOSS su balta žuvimi ir kriliumi, 12kg",
+    "post_status": "publish",
+    "sku": "2.009364",
+    "ean": "4770107255998",
+    "kaina": "72.00",
+    "cost": "47.6033",
+    "sand": "quattro"
+   },
+   {
+    "ID": "16597",
+    "post_title": "QUATTRO begrūdis visų veislių senjorų/dietinis šunų pašaras su balta žuvimi ir kriliu, 3kg",
+    "post_status": "publish",
+    "sku": "2.009147",
+    "ean": "4770107255639",
+    "kaina": "24.00",
+    "cost": "15.8678",
+    "sand": "quattro"
+   },
+   {
+    "ID": "16615",
+    "post_title": "QUATTRO begrūdis  lašiša ir kriliu visų veislių suaugusių šunų pašaras 3kg",
+    "post_status": "publish",
+    "sku": "2.009145",
+    "ean": "4770107255578",
+    "kaina": "25.00",
+    "cost": "16.5289",
+    "sand": "quattro"
+   },
+   {
+    "ID": "16690",
+    "post_title": "QUATTRO 12kg begrūdis visų veislių senjorų/dietinis šunų pašaras su balta žuvimi ir kriliu",
+    "post_status": "publish",
+    "sku": "2.009148",
+    "ean": "4770107255653",
+    "kaina": "72.00",
+    "cost": "47.6033",
+    "sand": "quattro"
+   },
+   {
+    "ID": "16708",
+    "post_title": "QUATTRO 12kg begrūdis  lašiša ir kriliu visų veislių suaugusių šunų pašaras",
+    "post_status": "publish",
+    "sku": "2.009146",
+    "ean": "4770107255592",
+    "kaina": "73.00",
+    "cost": "48.2645",
+    "sand": "quattro"
+   },
+   {
+    "ID": "16712",
+    "post_title": "QUATTRO 1,5 kg Senior White Fish & Krill visavertis sausas dietinis/senstančių kačių pašaras su balta žuvimi ir kriliu,",
+    "post_status": "publish",
+    "sku": "2.01176",
+    "ean": "4770107258357",
+    "kaina": "18.50",
+    "cost": "12.2314",
+    "sand": "quattro"
+   },
+   {
+    "ID": "16727",
+    "post_title": "QUATTRO 1,5 kg Adult Salmon & Krill visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu,",
+    "post_status": "publish",
+    "sku": "2.011761",
+    "ean": "4770107258340",
+    "kaina": "18.50",
+    "cost": "12.2314",
+    "sand": "quattro"
+   },
+   {
+    "ID": "17903",
+    "post_title": "Katrinex maistas koi karpiams ir kitoms tvenkinių žuvims 3 litrai",
+    "post_status": "publish",
+    "sku": "187218",
+    "ean": null,
+    "kaina": "4.1",
+    "cost": "1.65",
+    "sand": "av"
+   },
+   {
+    "ID": "35140",
+    "post_title": "Katrinex maistas koi karpiams ir kitoms tvenkinių žuvims, 10 litrų",
+    "post_status": "publish",
+    "sku": "187218-10l",
+    "ean": null,
+    "kaina": "11.9",
+    "cost": "4.95",
+    "sand": "av"
+   },
+   {
+    "ID": "35142",
+    "post_title": "Katrinex maistas koi karpiams ir kitoms tvenkinių žuvims, 25 litrai",
+    "post_status": "publish",
+    "sku": "187218-25l",
+    "ean": null,
+    "kaina": "23.9",
+    "cost": "9.45",
+    "sand": "av"
+   },
+   {
+    "ID": "35144",
+    "post_title": "Katrinex maistas koi karpiams ir kitoms tvenkinių žuvims, 5 litrai",
+    "post_status": "publish",
+    "sku": "187218-5-litrai",
+    "ean": null,
+    "kaina": "6.95",
+    "cost": "2.15",
+    "sand": "av"
+   },
+   {
+    "ID": "36346",
+    "post_title": "2 vnt. Quattro SB 7kg su lašiša ir kriliu sausas suaugusių mažų veislių šunų pašaras",
+    "post_status": "publish",
+    "sku": "DP-2.008043-2",
+    "ean": null,
+    "kaina": "100.89",
+    "cost": "68.7604",
+    "sand": null
+   },
+   {
+    "ID": "36347",
+    "post_title": "2 vnt. Quattro SB 7kg su balta žuvimi ir kriliu sausas seniems/dietinis mažų veislių šunims pašaras",
+    "post_status": "publish",
+    "sku": "DP-2.008051-2",
+    "ean": null,
+    "kaina": "95.09",
+    "cost": "64.7934",
+    "sand": null
+   },
+   {
+    "ID": "36353",
+    "post_title": "2 vnt. QUATTRO visavertis sausas pašaras suaugusioms jautrioms katėms su lašiša ir kriliu, 7 kg",
+    "post_status": "publish",
+    "sku": "DP-2.011767-2",
+    "ean": null,
+    "kaina": "131.89",
+    "cost": "89.9174",
+    "sand": null
+   },
+   {
+    "ID": "36354",
+    "post_title": "2 vnt. QUATTRO begrūdis visų veislių suaugusių šunų pašaras WEIGHT LOSS su balta žuvimi ir kriliumi, 3kg",
+    "post_status": "publish",
+    "sku": "DP-2.009363-2",
+    "ean": null,
+    "kaina": "46.59",
+    "cost": "31.7356",
+    "sand": null
+   },
+   {
+    "ID": "36355",
+    "post_title": "2 vnt. QUATTRO begrūdis visų veislių senjorų/dietinis šunų pašaras su balta žuvimi ir kriliu, 3kg",
+    "post_status": "publish",
+    "sku": "DP-2.009147-2",
+    "ean": null,
+    "kaina": "46.59",
+    "cost": "31.7356",
+    "sand": null
+   },
+   {
+    "ID": "36361",
+    "post_title": "2 vnt. QUATTRO begrūdis lašiša ir kriliu visų veislių suaugusių šunų pašaras 3kg",
+    "post_status": "publish",
+    "sku": "DP-2.009145-2",
+    "ean": null,
+    "kaina": "48.49",
+    "cost": "33.0578",
+    "sand": null
+   }
+  ],
+  "pvz": {
+   "Akvariumo žuvyčių maistas": [
+    {
+     "id": 36109,
+     "t": "Hikari Lionhead Sinking Goldfish Mini Pellets 100 g – pašaras auksinėms žuvelėms",
+     "sku": "05220",
+     "kaina": "8.5",
+     "cost": "",
+     "sand": "av",
+     "brand": [
+      "Hikari"
+     ],
+     "attrs": [
+      "pa_gyvuno_rusis",
+      "pa_pakuotes_dydis",
+      "pa_pasaro_forma",
+      "pa_zuvies_rusis"
+     ],
+     "desc_len": 2256,
+     "short": "Aukščiausios kokybės skęstantis pašaras „Hikari Lionhead Mini“ (100 g) dekoratyvinėms auksinėms žuvytėms. Ryškina spalvas ir skatina galvos ataugų vystymąsi (Lionhead, Oranda, Ranchu, Azumanishiki)"
+    },
+    {
+     "id": 18341,
+     "t": "Hikari  Cichlid Bio - Gold Plus Medium, 250 g",
+     "sku": "hk-15328",
+     "kaina": "13.4",
+     "cost": "6.02",
+     "sand": "av",
+     "brand": [
+      "Hikari"
+     ],
+     "attrs": [
+      "pa_pakuotes_dydis",
+      "pa_gyvuno_rusis",
+      "pa_zuvies_rusis",
+      "pa_pasaro_forma"
+     ],
+     "desc_len": 1091,
+     "short": "Plūduriuojantis pašaras ciklidams su probiotikais &ndash; spalvai ir virškinimui. Pakuotė: 250 g."
+    },
+    {
+     "id": 18338,
+     "t": "Hikari  Cichlid Bio- Gold Plus Mini, 250 g",
+     "sku": "15228",
+     "kaina": "11.9",
+     "cost": "",
+     "sand": "av",
+     "brand": [
+      "Hikari"
+     ],
+     "attrs": [
+      "pa_pakuotes_dydis",
+      "pa_gyvuno_rusis",
+      "pa_zuvies_rusis",
+      "pa_pasaro_forma"
+     ],
+     "desc_len": 1292,
+     "short": "Plūduriuojantis pašaras ciklidams su probiotikais – spalvai ir virškinimui. Pakuotė: 250 g."
+    }
+   ],
+   "Akvariumų įranga": [
+    {
+     "id": 26479,
+     "t": "Vidinis filtras ORCA 600 120-250l",
+     "sku": "S-F072LE",
+     "kaina": "20.89",
+     "cost": "",
+     "sand": "vf",
+     "brand": [
+      "Happet"
+     ],
+     "attrs": [
+      "pa_gyvuno_rusis"
+     ],
+     "desc_len": 1653,
+     "short": ""
+    },
+    {
+     "id": 27114,
+     "t": "Happet akvariumo šildytuvas AquaT mini 25 w",
+     "sku": "GT25",
+     "kaina": "11.99",
+     "cost": "",
+     "sand": "vf",
+     "brand": [
+      "Happet"
+     ],
+     "attrs": [
+      "pa_gyvuno_rusis"
+     ],
+     "desc_len": 1738,
+     "short": ""
+    },
+    {
+     "id": 25361,
+     "t": "Happet dekoracija akvariumui, statinė, R015 9,5 cm",
+     "sku": "HAPR015",
+     "kaina": "10.69",
+     "cost": "",
+     "sand": "vf",
+     "brand": [
+      "Happet"
+     ],
+     "attrs": [
+      "pa_gyvuno_rusis"
+     ],
+     "desc_len": 1226,
+     "short": ""
+    }
+   ],
+   "Tvenkinių žuvų maistas": [
+    {
+     "id": 35140,
+     "t": "Katrinex maistas koi karpiams ir kitoms tvenkinių žuvims, 10 litrų",
+     "sku": "187218-10l",
+     "kaina": "11.9",
+     "cost": "4.95",
+     "sand": "av",
+     "brand": [
+      "Katrinex"
+     ],
+     "attrs": [
+      "pa_gyvuno_rusis",
+      "pa_pakuotes_dydis"
+     ],
+     "desc_len": 819,
+     "short": "Plūduriuojančios 5&ndash;6 mm granulės kasdieniam koi ir kitų tvenkinių žuvų šėrimui."
+    },
+    {
+     "id": 35142,
+     "t": "Katrinex maistas koi karpiams ir kitoms tvenkinių žuvims, 25 litrai",
+     "sku": "187218-25l",
+     "kaina": "23.9",
+     "cost": "9.45",
+     "sand": "av",
+     "brand": [
+      "Katrinex"
+     ],
+     "attrs": [
+      "pa_gyvuno_rusis",
+      "pa_pakuotes_dydis"
+     ],
+     "desc_len": 819,
+     "short": "Plūduriuojančios 5&ndash;6 mm granulės kasdieniam koi ir kitų tvenkinių žuvų šėrimui."
+    },
+    {
+     "id": 35144,
+     "t": "Katrinex maistas koi karpiams ir kitoms tvenkinių žuvims, 5 litrai",
+     "sku": "187218-5-litrai",
+     "kaina": "6.95",
+     "cost": "2.15",
+     "sand": "av",
+     "brand": [
+      "Katrinex"
+     ],
+     "attrs": [
+      "pa_gyvuno_rusis",
+      "pa_pakuotes_dydis"
+     ],
+     "desc_len": 819,
+     "short": "Plūduriuojančios 5&ndash;6 mm granulės kasdieniam koi ir kitų tvenkinių žuvų šėrimui."
+    }
+   ]
+  },
+  "sandeliai": [
+   {
+    "sand": "ambrosia",
+    "n": "28"
+   },
+   {
+    "sand": "av",
+    "n": "1377"
+   },
+   {
+    "sand": "belcor_tofu",
+    "n": "56"
+   },
+   {
+    "sand": "paslauga",
+    "n": "2"
+   },
+   {
+    "sand": "prins",
+    "n": "43"
+   },
+   {
+    "sand": "quattro",
+    "n": "64"
+   },
+   {
+    "sand": "vf",
+    "n": "1242"
+   },
+   {
+    "sand": "zb",
+    "n": "1142"
+   }
+  ],
+  "sources": [
+   {
+    "source": "ambrosia",
+    "n": "28"
+   },
+   {
+    "source": "av",
+    "n": "1781"
+   },
+   {
+    "source": "belcor_tofu",
+    "n": "80"
+   },
+   {
+    "source": "paslauga",
+    "n": "2"
+   },
+   {
+    "source": "prins",
+    "n": "43"
+   },
+   {
+    "source": "quattro",
+    "n": "65"
+   },
+   {
+    "source": "vf",
+    "n": "1261"
+   },
+   {
+    "source": "zb",
+    "n": "1158"
+   }
+  ]
+ }
+}
