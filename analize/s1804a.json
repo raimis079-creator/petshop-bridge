@@ -1,0 +1,295 @@
+{
+ "1": {
+  "v": "S1804a",
+  "dabar": "2026-10-27 21:43:07",
+  "importai": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "friendly_name": "",
+    "path": "/wpallimport/files/goods_clean.xml",
+    "registered_on": "2026-05-27 11:14:21",
+    "last_activity": "2026-05-27 11:14:21",
+    "triggered": "0",
+    "processing": "0",
+    "executing": "0",
+    "queue_chunk_number": "0",
+    "imported": "0",
+    "created": "0",
+    "updated": "0",
+    "skipped": "2045",
+    "count": "2045"
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "friendly_name": "",
+    "path": "https://zaliojibanga.lt/integrations/services/products.php?key=bAF0OY6Sz9H3AgAF",
+    "registered_on": "2026-10-27 16:02:03",
+    "last_activity": "2026-10-27 16:02:03",
+    "triggered": "1",
+    "processing": "0",
+    "executing": "0",
+    "queue_chunk_number": "2681",
+    "imported": "313",
+    "created": "11",
+    "updated": "302",
+    "skipped": "2367",
+    "count": "2755"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "friendly_name": "",
+    "path": "https://zaliojibanga.lt/integrations/services/stocks.php?key=bAF0OY6Sz9H3AgAF",
+    "registered_on": "2026-10-27 19:07:51",
+    "last_activity": "2026-10-27 19:07:51",
+    "triggered": "0",
+    "processing": "0",
+    "executing": "0",
+    "queue_chunk_number": "0",
+    "imported": "5",
+    "created": "0",
+    "updated": "5",
+    "skipped": "2764",
+    "count": "2769"
+   },
+   {
+    "id": "5",
+    "name": "vf-feed.xml",
+    "friendly_name": "",
+    "path": "/wpallimport/files/vf-feed.xml",
+    "registered_on": "2026-10-27 04:33:33",
+    "last_activity": "2026-10-27 04:33:33",
+    "triggered": "0",
+    "processing": "0",
+    "executing": "0",
+    "queue_chunk_number": "0",
+    "imported": "278",
+    "created": "21",
+    "updated": "257",
+    "skipped": "2223",
+    "count": "2501"
+   },
+   {
+    "id": "7",
+    "name": "vf-feed.xml",
+    "friendly_name": "",
+    "path": "/wpallimport/files/vf-feed.xml",
+    "registered_on": "2026-10-27 19:22:05",
+    "last_activity": "2026-10-27 19:22:05",
+    "triggered": "0",
+    "processing": "0",
+    "executing": "0",
+    "queue_chunk_number": "0",
+    "imported": "0",
+    "created": "0",
+    "updated": "0",
+    "skipped": "2519",
+    "count": "2519"
+   }
+  ],
+  "istorija": [
+   {
+    "id": "10026",
+    "import_id": "7",
+    "type": "processing",
+    "time_run": "362",
+    "date": "2026-10-27 19:16:03",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2519 skipped"
+   },
+   {
+    "id": "10025",
+    "import_id": "7",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-10-27 19:15:03",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "10024",
+    "import_id": "3",
+    "type": "processing",
+    "time_run": "390",
+    "date": "2026-10-27 19:01:21",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 5 updated 2764 skipped"
+   },
+   {
+    "id": "10023",
+    "import_id": "3",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-10-27 19:00:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "10022",
+    "import_id": "7",
+    "type": "processing",
+    "time_run": "379",
+    "date": "2026-10-27 18:16:02",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 4 updated 2515 skipped"
+   },
+   {
+    "id": "10021",
+    "import_id": "7",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-10-27 18:15:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "10020",
+    "import_id": "3",
+    "type": "processing",
+    "time_run": "382",
+    "date": "2026-10-27 18:01:28",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2769 skipped"
+   },
+   {
+    "id": "10019",
+    "import_id": "3",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-10-27 18:00:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "9966",
+    "import_id": "5",
+    "type": "processing",
+    "time_run": "151",
+    "date": "2026-10-27 04:31:02",
+    "summary": "import finished & cron un-triggered<br>21 Produktai created 257 updated 2223 skipped"
+   },
+   {
+    "id": "9965",
+    "import_id": "5",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-10-27 04:30:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "9870",
+    "import_id": "5",
+    "type": "processing",
+    "time_run": "37",
+    "date": "2026-10-26 04:31:02",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 2 updated 2453 skipped"
+   },
+   {
+    "id": "9869",
+    "import_id": "5",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-10-26 04:30:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "9776",
+    "import_id": "5",
+    "type": "processing",
+    "time_run": "33",
+    "date": "2026-10-25 04:31:02",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 2 updated 2453 skipped"
+   },
+   {
+    "id": "9622",
+    "import_id": "2",
+    "type": "processing",
+    "time_run": "349260",
+    "date": "2026-10-23 15:01:03",
+    "summary": "11 Produktai created 302 updated 2367 skipped"
+   },
+   {
+    "id": "9619",
+    "import_id": "2",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-10-23 15:00:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "9135",
+    "import_id": "2",
+    "type": "processing",
+    "time_run": "388821",
+    "date": "2026-10-18 15:01:03",
+    "summary": "import finished & cron un-triggered<br>17 Produktai created 219 updated 2490 skipped"
+   },
+   {
+    "id": "9134",
+    "import_id": "2",
+    "type": "trigger",
+    "time_run": null,
+    "date": "2026-10-18 15:00:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "2",
+    "import_id": "1",
+    "type": "manual",
+    "time_run": "124",
+    "date": "2026-05-27 11:12:17",
+    "summary": "0 Produktai created 0 updated 2045 skipped"
+   },
+   {
+    "id": "1",
+    "import_id": "1",
+    "type": "manual",
+    "time_run": "1259",
+    "date": "2026-05-27 10:35:36",
+    "summary": "2045 Produktai created 0 updated 0 skipped"
+   }
+  ],
+  "sources_zb": {
+   "n": "1158",
+   "max_sync": "2026-10-27 19:07:44",
+   "min_sync": "2026-06-14 23:02:45",
+   "per_para": "10",
+   "max_upd": "2026-10-27 19:07:44"
+  },
+  "sources_vf": {
+   "n": "1261",
+   "max_sync": "2026-08-07 14:59:35",
+   "max_upd": "2026-10-27 06:20:21"
+  },
+  "opcijos": {
+   "petshop_zb_image_index": "a:423:{s:11:\"01A1A030700\";s:99:\"https://katalogas.zaliojibanga.lt/images/thumbs/0006264_e01764-euk-puppy-large-breed-15-kg_310.webp\";s:10:\"01A1A04150\";s:107:\"https://katalogas.zaliojibanga.lt/images/thumbs/0006257_e01818-euk-puppy-sm-breeds-lamb-rice-12-kg_310.jpeg\";s:11:\"01A1A040521\";s:108:\"https:/",
+   "ps_import_tempas_host": "https://petshop.lt",
+   "ps_import_tempas_paskutinis": "a:6:{s:6:\"laikas\";s:19:\"2026-10-27 21:07:52\";s:9:\"import_id\";i:3;s:8:\"veiksmas\";s:10:\"processing\";s:6:\"hostas\";s:18:\"https://petshop.lt\";s:3:\"sek\";d:29.5;s:9:\"atsakymas\";s:45:\"{\"status\":200,\"message\":\"Import #3 complete\"}\";}",
+   "ps_s1716_zb_matmenys_bak": "a:923:{i:12469;a:3:{i:0;s:7:\"20.0000\";i:1;s:7:\"40.0000\";i:2;s:7:\"70.0000\";}i:12472;a:3:{i:0;s:7:\"20.0000\";i:1;s:7:\"40.0000\";i:2;s:7:\"70.0000\";}i:12936;a:3:{i:0;s:6:\"0.0000\";i:1;s:6:\"0.0000\";i:2;s:6:\"0.0000\";}i:13067;a:3:{i:0;s:6:\"0.2000\";i:1;s:6:\"0.1000\";i:2;s:6:\"0.4000\";}i:13100;a:3:{i:0;s:6:\"0.100",
+   "zb_data_diag_log": "a:15:{i:0;a:16:{s:4:\"name\";s:42:\"Eukanuba EVD Dog Dermatosis FP Formula 5kg\";s:9:\"otherName\";s:41:\"E29952 EVD Dog Dermatosis FP Formula 5 kg\";s:4:\"code\";s:10:\"01A4A04031\";s:3:\"ean\";s:13:\"8710255129952\";s:5:\"brand\";s:8:\"Eukanuba\";s:8:\"category\";s:70:\"Šunims / Šunų maistas ir skanėstai / Veterinarinis"
+  },
+  "cron": [
+   [
+    "petshop_import_tempas",
+    "2026-10-27 21:43"
+   ],
+   [
+    "petshop_vf_sync_stock_hourly",
+    "2026-10-27 21:59"
+   ],
+   [
+    "petshop_vf_feed_hourly",
+    "2026-10-27 22:05"
+   ],
+   [
+    "petshop_vf_sync_reprice_daily",
+    "2026-10-28 05:00"
+   ],
+   [
+    "petshop_vf_sync_publish_daily",
+    "2026-10-28 06:00"
+   ]
+  ]
+ },
+ "v": "dep-194204",
+ "kurimas": 200,
+ "sid": 7462,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
