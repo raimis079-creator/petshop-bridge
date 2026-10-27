@@ -1,0 +1,251 @@
+{
+ "v": "dep-164552",
+ "kurimas": 200,
+ "sid": 7448,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1803c",
+  "st_30": [
+   {
+    "status": "wc-completed",
+    "n": "308",
+    "suma": "12868"
+   },
+   {
+    "status": "wc-cancelled",
+    "n": "39",
+    "suma": "1746"
+   },
+   {
+    "status": "wc-processing",
+    "n": "12",
+    "suma": "668"
+   },
+   {
+    "status": "wc-on-hold",
+    "n": "1",
+    "suma": "22"
+   }
+  ],
+  "st_90": [
+   {
+    "status": "wc-completed",
+    "n": "472",
+    "suma": "19656"
+   },
+   {
+    "status": "wc-cancelled",
+    "n": "42",
+    "suma": "1796"
+   },
+   {
+    "status": "trash",
+    "n": "33",
+    "suma": "1092"
+   },
+   {
+    "status": "wc-processing",
+    "n": "12",
+    "suma": "668"
+   },
+   {
+    "status": "wc-on-hold",
+    "n": "1",
+    "suma": "22"
+   }
+  ],
+  "statusai": {
+   "wc-pending": "Neapmokėtas",
+   "wc-processing": "Vykdomas",
+   "wc-on-hold": "Sustabdytas",
+   "wc-completed": "Įvykdytas",
+   "wc-cancelled": "Atšauktas",
+   "wc-refunded": "Grąžintas",
+   "wc-failed": "Nepavykęs",
+   "wc-lp-courier-await": "Laukiama kurjerio iškvietimo",
+   "wc-lp-parcel-created": "Siunta vykdoma",
+   "wc-lp-parcel-failed": "Siuntos sukurti nepavyko",
+   "wc-lp-label-created": "Paruošta siuntimui",
+   "wc-lp-courier-called": "Kurjeris iškviestas",
+   "wc-lp-on-the-way": "Siunčiama",
+   "wc-lp-delivered": "Siunta pristatyta",
+   "wc-lp-cancelled": "Siunta atšaukta",
+   "wc-lp-parcel-await": "Sustabdytas",
+   "wc-checkout-draft": "Juodraštis"
+  },
+  "ses_30": "6766",
+  "ses_prek_30": "3159",
+  "aciu_url": [
+   {
+    "url_kelias": "/kasa/order-received/36599/?key=wc_order_RJdiCwMHmLo8B&data=b3JkZXJpZD0zNjU5OSZhbW91bnQ9MzE2OSZjdXJyZW5jeT1FVVImdmVyc2lvbj0zLjEuNiZsYW5nPWxpdCZwYXltZW50PW5vcmQmY291bnRyeT1MVCZwX2ZpcnN0bmFtZT1KdWxpamEmcF9sYXN0bmFtZT1TYWRvdm5pa292YSZwX2VtYWlsPWp1bGlqYS5zYWR",
+    "n": "9",
+    "s": "1"
+   },
+   {
+    "url_kelias": "/kasa/order-received/36988/?key=wc_order_bxghWlFiv6LJj&data=b3JkZXJpZD0zNjk4OCZhbW91bnQ9NzE5MSZjdXJyZW5jeT1FVVImdmVyc2lvbj0zLjEuNiZsYW5nPWxpdCZwYXltZW50PWhhbnphJmNvdW50cnk9TFQmcF9maXJzdG5hbWU9SlVTVEFTJnBfbGFzdG5hbWU9VklTTkFSQVVTS0FTJnBfZW1haWw9anVzdGFzdml",
+    "n": "5",
+    "s": "1"
+   },
+   {
+    "url_kelias": "/kasa/order-received/36960/?key=wc_order_NZrTUnpBwTNoJ&data=b3JkZXJpZD0zNjk2MCZhbW91bnQ9MjcxNCZjdXJyZW5jeT1FVVImdmVyc2lvbj0zLjEuNiZsYW5nPWxpdCZwYXltZW50PWFwcGxlX3BheSZjb3VudHJ5PUxUJnBfZmlyc3RuYW1lPUxpbmEmcF9sYXN0bmFtZT1WYWxhJUM1JUExaW5pZW4lQzQlOTcmcF9lbWF",
+    "n": "5",
+    "s": "1"
+   },
+   {
+    "url_kelias": "/kasa/order-received/36693/?key=wc_order_wQTuZLJNiFZpd",
+    "n": "5",
+    "s": "1"
+   },
+   {
+    "url_kelias": "/kasa/order-received/36776/?key=wc_order_EeSDklkyhwJyj&data=b3JkZXJpZD0zNjc3NiZhbW91bnQ9MzYzNiZjdXJyZW5jeT1FVVImdmVyc2lvbj0zLjEuNiZsYW5nPWxpdCZwYXltZW50PWdvb2dsZV9wYXkmY291bnRyeT1MVCZwX2ZpcnN0bmFtZT1WaXRhJnBfbGFzdG5hbWU9VmFuc2V2aSVDNCU4RGllbiVDNCU5NyZwX2V",
+    "n": "4",
+    "s": "2"
+   },
+   {
+    "url_kelias": "/kasa/order-received/36660/?key=wc_order_TVoOTP51IeR5U",
+    "n": "4",
+    "s": "1"
+   },
+   {
+    "url_kelias": "/kasa/order-received/36667/?key=wc_order_m1VvSPOMmBISx&data=b3JkZXJpZD0zNjY2NyZhbW91bnQ9MjQ3MiZjdXJyZW5jeT1FVVImdmVyc2lvbj0zLjEuNiZsYW5nPWxpdCZwYXltZW50PWFwcGxlX3BheSZjb3VudHJ5PUxUJnBfZmlyc3RuYW1lPVJpdGEmcF9sYXN0bmFtZT1LdXBjaW5za2FpdGUmcF9lbWFpbD1yaXRhLmt",
+    "n": "3",
+    "s": "1"
+   },
+   {
+    "url_kelias": "/kasa/order-received/36781/?key=wc_order_yOzMf0cQAv6oQ&data=b3JkZXJpZD0zNjc4MSZhbW91bnQ9MzE2OCZjdXJyZW5jeT1FVVImdmVyc2lvbj0zLjEuNiZsYW5nPWxpdCZwYXltZW50PXZiMiZjb3VudHJ5PUxUJnBfZmlyc3RuYW1lPUFyJUM1JUFCbmFzJnBfbGFzdG5hbWU9QWxtaW5hcyZwX2VtYWlsPWFsbWluYXMuYXJ",
+    "n": "3",
+    "s": "1"
+   }
+  ],
+  "purchase_ev": [],
+  "dienos": [
+   {
+    "d": "2026-09-27",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-28",
+    "n": "14"
+   },
+   {
+    "d": "2026-09-29",
+    "n": "11"
+   },
+   {
+    "d": "2026-09-30",
+    "n": "12"
+   },
+   {
+    "d": "2026-10-01",
+    "n": "7"
+   },
+   {
+    "d": "2026-10-02",
+    "n": "5"
+   },
+   {
+    "d": "2026-10-03",
+    "n": "7"
+   },
+   {
+    "d": "2026-10-04",
+    "n": "12"
+   },
+   {
+    "d": "2026-10-05",
+    "n": "20"
+   },
+   {
+    "d": "2026-10-06",
+    "n": "14"
+   },
+   {
+    "d": "2026-10-07",
+    "n": "11"
+   },
+   {
+    "d": "2026-10-08",
+    "n": "11"
+   },
+   {
+    "d": "2026-10-09",
+    "n": "7"
+   },
+   {
+    "d": "2026-10-10",
+    "n": "7"
+   },
+   {
+    "d": "2026-10-11",
+    "n": "16"
+   },
+   {
+    "d": "2026-10-12",
+    "n": "18"
+   },
+   {
+    "d": "2026-10-13",
+    "n": "14"
+   },
+   {
+    "d": "2026-10-14",
+    "n": "8"
+   },
+   {
+    "d": "2026-10-15",
+    "n": "9"
+   },
+   {
+    "d": "2026-10-16",
+    "n": "9"
+   },
+   {
+    "d": "2026-10-17",
+    "n": "10"
+   },
+   {
+    "d": "2026-10-18",
+    "n": "6"
+   },
+   {
+    "d": "2026-10-19",
+    "n": "9"
+   },
+   {
+    "d": "2026-10-20",
+    "n": "14"
+   },
+   {
+    "d": "2026-10-21",
+    "n": "10"
+   },
+   {
+    "d": "2026-10-22",
+    "n": "15"
+   },
+   {
+    "d": "2026-10-23",
+    "n": "9"
+   },
+   {
+    "d": "2026-10-24",
+    "n": "6"
+   },
+   {
+    "d": "2026-10-25",
+    "n": "9"
+   },
+   {
+    "d": "2026-10-26",
+    "n": "11"
+   },
+   {
+    "d": "2026-10-27",
+    "n": "9"
+   }
+  ]
+ }
+}
