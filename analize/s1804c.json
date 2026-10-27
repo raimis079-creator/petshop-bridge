@@ -1,0 +1,242 @@
+{
+ "1": {
+  "v": "S1804c",
+  "imp2": {
+   "id": "2",
+   "iteration": "68",
+   "last_activity": "2026-10-27 16:02:03",
+   "missing_opts": {
+    "create_draft": "yes",
+    "is_delete_source": 0,
+    "is_delete_missing": "0",
+    "delete_missing_logic": "import",
+    "delete_missing_action": "keep",
+    "set_missing_to_draft": 0,
+    "is_update_missing_cf": "0",
+    "update_missing_cf_name": "[\"\",\"\"]",
+    "update_missing_cf_value": "[\"\",\"\"]",
+    "is_delete_attachments": "0",
+    "is_delete_imgs": "0",
+    "missing_records_stock_status": "0"
+   },
+   "iter_pasiskirstymas": [
+    {
+     "iteration": "68",
+     "n": "1113"
+    },
+    {
+     "iteration": "67",
+     "n": "17"
+    },
+    {
+     "iteration": "63",
+     "n": "25"
+    },
+    {
+     "iteration": "59",
+     "n": "2"
+    },
+    {
+     "iteration": "56",
+     "n": "2"
+    },
+    {
+     "iteration": "52",
+     "n": "6"
+    },
+    {
+     "iteration": "51",
+     "n": "10"
+    },
+    {
+     "iteration": "45",
+     "n": "1"
+    }
+   ]
+  },
+  "imp3": {
+   "id": "3",
+   "iteration": "1740",
+   "last_activity": "2026-10-27 19:07:51",
+   "missing_opts": {
+    "create_draft": "no",
+    "is_delete_source": 0,
+    "is_delete_missing": "0",
+    "delete_missing_logic": "import",
+    "delete_missing_action": "keep",
+    "set_missing_to_draft": 0,
+    "is_update_missing_cf": "0",
+    "update_missing_cf_name": "[\"\",\"\"]",
+    "update_missing_cf_value": "[\"\",\"\"]",
+    "is_delete_attachments": "0",
+    "is_delete_imgs": "0",
+    "missing_records_stock_status": "0"
+   },
+   "iter_pasiskirstymas": [
+    {
+     "iteration": "1739",
+     "n": "1120"
+    },
+    {
+     "iteration": "1732",
+     "n": "1"
+    },
+    {
+     "iteration": "1731",
+     "n": "5"
+    },
+    {
+     "iteration": "1727",
+     "n": "1"
+    },
+    {
+     "iteration": "1570",
+     "n": "2"
+    },
+    {
+     "iteration": "1540",
+     "n": "2"
+    },
+    {
+     "iteration": "1155",
+     "n": "3"
+    },
+    {
+     "iteration": "1112",
+     "n": "17"
+    }
+   ]
+  },
+  "dingusiu_n": 96,
+  "dingusiu_suvestine": {
+   "publish_instock": 11,
+   "publish_out": 40,
+   "kita": 45
+  },
+  "instock_pavyzdziai": [
+   [
+    "12824",
+    "HM-8121-1",
+    "Hau&amp;Miau baltos žuvies juostelės 500g",
+    "1",
+    "av",
+    null,
+    "19"
+   ],
+   [
+    "12825",
+    "HM-8122-1",
+    "Hau&amp;Miau Vištienos file ant baltų pagaliukų 500g",
+    "3",
+    "av",
+    null,
+    "19"
+   ],
+   [
+    "12826",
+    "HM-8123-1",
+    "Hau&amp;Miau minkštos Vištienos juotelės 500g",
+    "6",
+    "av",
+    null,
+    "19"
+   ],
+   [
+    "12869",
+    "HM-8130-1",
+    "Hau&amp;Miau triušienos juostelės 500g",
+    "2",
+    "av",
+    null,
+    "19"
+   ],
+   [
+    "12871",
+    "HM-8135-1",
+    "Hau&amp;Miau balti pagaliukai apsukti antiena 500g",
+    "4",
+    "av",
+    null,
+    "19"
+   ],
+   [
+    "12958",
+    "HM-8142-1",
+    "Hau&amp;Miau batatai (saldžiosios bulvės) apsukti antie",
+    "3",
+    "av",
+    null,
+    "19"
+   ],
+   [
+    "12998",
+    "HM-8146-1",
+    "Hau&amp;Miau ėrienos lazdelės 500g",
+    "3",
+    "av",
+    null,
+    "19"
+   ],
+   [
+    "12999",
+    "HM-8149-1",
+    "Hau&amp;Miau Jautienos čipsai 500g",
+    "3",
+    "av",
+    null,
+    "19"
+   ],
+   [
+    "14193",
+    "HM-8178-1",
+    "Hau&amp;Miau Mini dešrelės su vištiena 500g",
+    "2",
+    "av",
+    null,
+    "19"
+   ],
+   [
+    "14332",
+    "0TR118_680372",
+    "Trixie žieminė striukė Lesmont",
+    "1.000000",
+    "zb",
+    "2026-09-25 21:22:10",
+    "1112"
+   ],
+   [
+    "14363",
+    "HM-8177-1",
+    "Hau&amp;Miau ėrienos žiedai apsukti žuvimi, 500g",
+    "2",
+    "av",
+    null,
+    "19"
+   ]
+  ],
+  "imp3_seniausia_ist": [
+   {
+    "id": "10019",
+    "date": "2026-10-27 18:00:02",
+    "summary": "triggered by cron"
+   },
+   {
+    "id": "10020",
+    "date": "2026-10-27 18:01:28",
+    "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2769 skipped"
+   },
+   {
+    "id": "10023",
+    "date": "2026-10-27 19:00:02",
+    "summary": "triggered by cron"
+   }
+  ]
+ },
+ "v": "dep-194846",
+ "kurimas": 200,
+ "sid": 7464,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
