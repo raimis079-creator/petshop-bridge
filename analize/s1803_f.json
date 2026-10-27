@@ -1,158 +1,1537 @@
 {
- "v": "dep-103117",
+ "v": "dep-173713",
  "kurimas": 200,
- "sid": 7422,
+ "sid": 7453,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "W": {
+ "GO": {
   "v": "S1803f",
-  "res": {
-   "37273": {
-    "desc": "v2",
-    "partija": {
-     "partijos_id": 4553,
-     "kiekis": 2,
-     "savikaina": 2.0706,
-     "likutis": 2,
-     "savikaina_prekes": 2.0706
-    },
-    "stock": "2 instock",
-    "cost": "2.07",
-    "part": {
-     "id": "4553",
-     "kiekis_liko": "2",
-     "savikaina_eur": "2.0706",
-     "savikaina_orig": "8.8000",
-     "valiuta": "PLN",
-     "kursas": "4.250000"
-    },
-    "src": {
-     "stock_qty": null,
-     "cost_net": "2.0700"
-    }
+  "md5": "0e984d2342cf3df12a6c29f3fb1a92cb",
+  "code": "<?php\n/**\n * Plugin Name: Petshop paieška v1.2 (S1699 → S1720 → S1740)\n * Description: Svetainės paieškos tolerancija. v1.0 (S1699, 2026-09-20): sinonimai/rašybos klaidos, kamienai, SKU/ID.\n *   v1.1 (S1720, 2026-09-25, planas 2.15): (4) EN→LT žodžių vertimas (pork→kiaulien, kitten→kačiuk, sterilised→sterilizuot, dog→šun…);\n *   (5) nežinomų žodžių atmetimas — jei žodis neatitinka nė vienos publikuotos prekės, o kiti atitinka, jis praleidžiamas\n *       („hill's kitten“ → kačiukų maistas; „oazy chicken adult sterilised“ → sterilizuotoms katėms su vištiena) ir virš rezultatų\n *       parodoma pastaba; (6) nulinių rezultatų puslapis vietoj „Produktų nerasta.“: brendo, kurio neturim, alternatyvos,\n *       kategorijų nuorodos, populiarios paieškos, kontaktas; (7) kategorijų/gamintojų juosta virš rezultatų.\n *   v1.2 (S1740, 2026-09-29): „josera“ randa ir JosiDog/JosiCat; rikiavimas „Panašumas“ — pavadinimo atitikimas (kiekio frazė „15 kg“ / „12,5 kg“ kaip visuma,\n *       kiekvienas žodis, Josera → ir JosiDog/JosiCat), turimos sandėlyje pirmiau, DP pakai („8 VNT.“) žemiau, tada perkamiausios.\n *       Išjungti tik rikiavimą: opcija ps_paieska_rikiavimas_isjungtas = 1.\n *   Veikia frontend produktų paieškai (WC /?s=&post_type=product ir Flatsome live search) per posts_search; admin neliečiamas.\n *   Išjungti visą: opcija ps_paieska_isjungta = 1. Paslėptų dropship prekių blokas nulinių puslapyje: opcija ps_paieska_pasleptos = 1 (numatyta 0, R sprendimas).\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nfinal class Petshop_Paieska {\n\tconst SINONIMAI = array(\n\t\t'jesera' => 'josera', 'jassera' => 'josera', 'jorsera' => 'josera', 'josena' => 'josera', 'joseta' => 'josera', 'jozera' => 'josera',\n\t\t'eucanuba' => 'eukanuba', 'eukanuva' => 'eukanuba', 'eukanupa' => 'eukanuba',\n\t\t'expulsion' => 'exclusion', 'exclusive' => 'exclusion', 'exlusion' => 'exclusion', 'exclusion hypoalergenic' => 'exclusion hypoallergenic', 'ekskliužion' => 'exclusion', 'ekskluzion' => 'exclusion',\n\t\t'royal canine' => 'royal canin', 'royalcanin' => 'royal canin', 'royal cani' => 'royal canin', 'rojal kanin' => 'royal canin',\n\t\t'anikonds' => 'animonda', 'animonda vom feinstein' => 'animonda vom feinsten', 'vom feinstein' => 'vom feinsten', 'animoda' => 'animonda',\n\t\t'ambrozia' => 'ambrosia', 'ambrosija' => 'ambrosia', 'ambrozija' => 'ambrosia',\n\t\t'monhe' => 'monge', 'mondže' => 'monge',\n\t\t'pet solution' => 'vetsolution', 'vet solution' => 'vetsolution', 'petsolution' => 'vetsolution',\n\t\t'vet life' => 'vet life', 'vetlife' => 'vet life',\n\t\t'sum palst' => 'sum-plast', 'sumplast' => 'sum-plast',\n\t\t'gastrointensial' => 'gastrointestinal', 'gastrointestinial' => 'gastrointestinal', 'gastro intestinal' => 'gastrointestinal',\n\t\t'hypoalergenic' => 'hypoallergenic', 'hipoalergenis' => 'hypoallergenic', 'hipoalerginis' => 'hypoallergenic', 'hipoalerginiai' => 'hypoallergenic', 'hipoalerginį' => 'hypoallergenic',\n\t\t'churru' => 'churu', 'ciuru' => 'churu', 'čiuru' => 'churu',\n\t\t'furminatorius' => 'furminator', 'flexy' => 'flexi', 'fleksi' => 'flexi',\n\t\t'katės pieno pakaitalas' => 'pieno pakaitalas', 'kačių pieno pakaitalas' => 'pieno pakaitalas',\n\t\t'ausu valiklis' => 'ausų valiklis', 'purskiamas' => 'purškiamas',\n\t\t'landfleish' => 'landfleisch', 'land fleisch' => 'landfleisch',\n\t\t'hepac' => 'hepatic', 'hepatik' => 'hepatic',\n\t\t'miamore' => 'miamor', 'mjamor' => 'miamor',\n\t\t'farmina n&d' => 'farmina n&d',\n\t);\n\t/** Praleidžiami žodžiai (jungtukai, bendriniai). */\n\tconst STOP = array( 'ir', 'su', 'be', 'iš', 'is', 'the', 'and', 'for', 'with', 'of', 'a', 'in', 'on', 'į', 'ant', 'sausas', 'sausasmaistas', 'maistas', 'pašaras', 'pasaras', 'food', 'dry', 'wet' );\n\t/** Rūšies/bendriniai žodžiai: vieni patys nelaikomi „žinomais“ atmetant kitus ir nenaudojami kategorijų juostai. */\n\tconst BENDRI = array( 'dog', 'dogs', 'cat', 'cats', 'šuo', 'katė', 'šun', 'kat', 'šunims', 'katėms', 'šuniui', 'katei', 'šunų', 'kačių', 'adult', 'suaug', 'suaugusiems', 'pet', 'gyvūnams' );\n\t/**\n\t * EN (ir kt.) žodis → LT kamienai, kurie ieškomi kartu su pačiu žodžiu (OR).\n\t * Kamienai jau nukirsti — kamienas() jiems netaikomas.\n\t */\n\tconst VERTIMAI = array(\n\t\t'pork' => array( 'kiaulien' ), 'peas' => array( 'žirn' ), 'pea' => array( 'žirn' ),\n\t\t'duck' => array( 'antien' ), 'lamb' => array( 'ėrien', 'avien' ), 'chicken' => array( 'vištien' ), 'pollo' => array( 'vištien' ), 'poultry' => array( 'paukšt' ),\n\t\t'salmon' => array( 'lašiš' ), 'rice' => array( 'ryž' ), 'potato' => array( 'bulv' ), 'potatoes' => array( 'bulv' ), 'sweet' => array( 'saldž' ),\n\t\t'kitten' => array( 'kačiuk' ), 'kittens' => array( 'kačiuk' ), 'puppy' => array( 'šuniuk', 'junior' ), 'puppies' => array( 'šuniuk' ), 'junior' => array( 'šuniuk', 'junior' ),\n\t\t'sterilised' => array( 'sterilizuot', 'steril' ), 'sterilized' => array( 'sterilizuot', 'steril' ), 'neutered' => array( 'sterilizuot', 'kastruot' ),\n\t\t'senior' => array( 'senjor', 'vyresn', 'mature' ), 'mature' => array( 'vyresn', 'senior' ), 'adult' => array( 'suaug', 'adult' ),\n\t\t'beef' => array( 'jautien' ), 'turkey' => array( 'kalakut' ), 'fish' => array( 'žuv' ), 'tuna' => array( 'tun' ), 'rabbit' => array( 'triuš' ),\n\t\t'venison' => array( 'elnien' ), 'deer' => array( 'elnien' ), 'horse' => array( 'arklien' ), 'boar' => array( 'šernien' ), 'quail' => array( 'putpel' ),\n\t\t'insect' => array( 'vabzdž' ), 'insects' => array( 'vabzdž' ), 'goose' => array( 'žąs' ), 'herring' => array( 'silk' ), 'trout' => array( 'upėtak' ), 'pumpkin' => array( 'moliūg' ),\n\t\t'grainfree' => array( 'begrūd' ), 'grain-free' => array( 'begrūd' ), 'begrudis' => array( 'begrūd' ), 'hypoallergenic' => array( 'hypoallerg', 'hipoalerg', 'hypoalerg' ),\n\t\t'dog' => array( 'šun' ), 'dogs' => array( 'šun' ), 'cat' => array( 'kat' ), 'cats' => array( 'kat' ), 'šuo' => array( 'šun' ), 'katė' => array( 'kat' ),\n\t\t'urinary' => array( 'urinar', 'šlapim' ), 'renal' => array( 'inkst', 'renal' ), 'dental' => array( 'dant', 'dental' ), 'hairball' => array( 'plaukų gumul', 'hairball' ),\n\t\t'indoor' => array( 'indoor', 'namuose' ), 'light' => array( 'light', 'leger', 'liekn' ), 'weight' => array( 'svor', 'light' ), 'diabetic' => array( 'diabet' ),\n\t\t'treats' => array( 'skanėst' ), 'treat' => array( 'skanėst' ), 'snack' => array( 'skanėst' ), 'litter' => array( 'kraik' ), 'shampoo' => array( 'šampūn' ),\n\t\t'small' => array( 'mažų', 'mini', 'small' ), 'mini' => array( 'mini', 'mažų' ), 'medium' => array( 'vidutin', 'medium' ), 'large' => array( 'didel', 'large', 'maxi' ), 'maxi' => array( 'didel', 'maxi' ),\n\t\t'breed' => array( 'veisl' ), 'canned' => array( 'konserv' ), 'can' => array( 'konserv' ), 'pouch' => array( 'pakel', 'pouch' ),\n\t\t'leash' => array( 'pavad' ), 'collar' => array( 'antkakl' ), 'harness' => array( 'petneš' ), 'bed' => array( 'guol' ), 'bowl' => array( 'duben' ), 'toy' => array( 'žaisl' ), 'toys' => array( 'žaisl' ),\n\t\t'hamster' => array( 'žiurkėn' ), 'rabbits' => array( 'triuš' ), 'bird' => array( 'paukšč' ), 'aquarium' => array( 'akvariu' ),\n\t);\n\t/**\n\t * Brendai / grupės, kurių neturim → alternatyvos nulinių rezultatų puslapyje ir pastaboje.\n\t * regex (be skiriklių) → [antraštė, tekstas, [ [pavadinimas, url], … ]]\n\t */\n\tconst ALTERNATYVOS = array(\n\t\t'hill|royal canin (vet|renal|gastro|urinary|satiety|hypoallergenic)|renal|gastro ?intestinal|virbac|trovet|prolivet|rolivet|specific|purina (pro plan )?vet|vet diet|veterinar' => array(\n\t\t\t'Veterinarinės dietos', 'Šio gamintojo veterinarinių dietų neturime. Panašaus poveikio dietinį maistą (virškinimas, inkstai, šlapimo takai, alergija) turime iš:',\n\t\t\tarray( array( 'Exclusion Diet', '/gamintojas/exclusion/' ), array( 'Monge VetSolution', '/?s=vetsolution&post_type=product' ), array( 'Farmina Vet Life', '/?s=vet+life&post_type=product' ) ),\n\t\t),\n\t\t'carnilove|orijen|acana|brit care|applaws|purizon|taste of the wild|wolf of wilderness|oasy|oazy|prima dog|rafi|kitty time|sam.?s field|nature.?s protection|the good stuff|zesty|whimzees|boxby|trainer|ideapet|aladin|marp' => array(\n\t\t\t'Šio gamintojo neturime', 'Šiuo metu šio gamintojo prekių neturime. Panašaus lygio (begrūdis, monoproteininis, super premium) maistą turime iš:',\n\t\t\tarray( array( 'Ambrosia', '/gamintojas/ambrosia/' ), array( 'Exclusion', '/gamintojas/exclusion/' ), array( 'Farmina N&amp;D', '/gamintojas/farmina/' ), array( 'Josera', '/gamintojas/josera/' ), array( 'Monge', '/gamintojas/monge/' ) ),\n\t\t),\n\t\t'bravecto|frontline|nexgard|simparica|advantix|advocate|drontal|milbemax|stronghold' => array(\n\t\t\t'Receptiniai vaistai', 'Receptinius antiparazitinius vaistus parduoda tik vaistinės ir veterinarijos gydytojai — mes jų neturime. Turime neceptinių priežiūros priemonių:',\n\t\t\tarray( array( 'Antiparazitinės priemonės', '/?s=antiparazit&post_type=product' ), array( 'Šampūnai šunims', '/?s=šampūnas+šunims&post_type=product' ) ),\n\t\t),\n\t\t'dovan[uų] kupon|gift card|kuponas' => array(\n\t\t\t'Dovanų kuponas', 'Dovanų kuponų internetu kol kas neparduodame. Jei norite padovanoti — parašykite mums, sutarsime.',\n\t\t\tarray(),\n\t\t),\n\t);\n\t/** Hub kategorijos nulinių puslapiui (S1717: 70 ŠUNIMS, 77, 87, 89, 93). */\n\tconst HUBAI = array( 70, 77, 87, 89, 93 );\n\tconst POPULIARIOS = array( 'exclusion', 'animonda', 'monge', 'josera', 'miamor', 'triušio', 'šuniukams', 'kraikas' );\n\n\t/** Paskutinės užklausos būsena (pastabai virš rezultatų). */\n\tprivate static $atmesti = array();\n\tprivate static $naudoti = array();\n\tprivate static $uzklausa = '';\n\n\tpublic static function init() {\n\t\tif ( is_admin() && ! wp_doing_ajax() ) { return; }\n\t\tif ( get_option( 'ps_paieska_isjungta' ) ) { return; }\n\t\tadd_filter( 'posts_search', array( __CLASS__, 'posts_search' ), 20, 2 );\n\t\tif ( ! get_option( 'ps_paieska_rikiavimas_isjungtas' ) ) { add_filter( 'posts_search_orderby', array( __CLASS__, 'rikiavimas' ), 20, 2 ); }\n\t\tif ( ! wp_doing_ajax() ) {\n\t\t\tadd_action( 'wp', array( __CLASS__, 'puslapio_kabliai' ) );\n\t\t} else {\n\t\t\tadd_filter( 'gettext', array( __CLASS__, 'ajax_nerasta' ), 20, 3 );\n\t\t}\n\t}\n\n\tpublic static function puslapio_kabliai() {\n\t\tif ( ! is_search() ) { return; }\n\t\tremove_action( 'woocommerce_no_products_found', 'wc_no_products_found', 10 );\n\t\tadd_action( 'woocommerce_no_products_found', array( __CLASS__, 'nulinis_puslapis' ), 10 );\n\t\tadd_action( 'woocommerce_before_shop_loop', array( __CLASS__, 'juosta' ), 5 );\n\t}\n\n\t/* ------------------------------------------------------------------ */\n\t/* Užklausos apdorojimas                                               */\n\t/* ------------------------------------------------------------------ */\n\n\t/** Ar tai produktų paieška (WC arba Flatsome ajax). */\n\tprivate static function produktu( WP_Query $q ) {\n\t\t$s = trim( (string) $q->get( 's' ) );\n\t\tif ( '' === $s ) { return false; }\n\t\t$pt = $q->get( 'post_type' );\n\t\tif ( is_array( $pt ) ) { return in_array( 'product', $pt, true ); }\n\t\treturn 'product' === $pt || ( '' === $pt && $q->is_main_query() && isset( $_GET['post_type'] ) && 'product' === $_GET['post_type'] );\n\t}\n\n\tpublic static function normalizuoti( $s ) {\n\t\t$s = html_entity_decode( $s, ENT_QUOTES, 'UTF-8' );\n\t\t$s = str_replace( array( '’', '`', '´' ), \"'\", $s );\n\t\t$s = mb_strtolower( trim( preg_replace( '/\\s+/u', ' ', $s ) ) );\n\t\tforeach ( self::SINONIMAI as $nuo => $i ) {\n\t\t\tif ( false !== mb_strpos( $s, $nuo ) ) { $s = str_replace( $nuo, $i, $s ); }\n\t\t}\n\t\treturn $s;\n\t}\n\n\t/** Žodžio kamienas LIKE'ui: ≥8 raidžių → 6, 6–7 → 5, kitaip visas. Skaičiai ir SKU lieka. */\n\tpublic static function kamienas( $w ) {\n\t\tif ( preg_match( '/\\d/', $w ) ) { return $w; }\n\t\t$n = mb_strlen( $w );\n\t\tif ( $n >= 8 ) { return mb_substr( $w, 0, 6 ); }\n\t\tif ( $n >= 6 ) { return mb_substr( $w, 0, 5 ); }\n\t\treturn $w;\n\t}\n\n\t/** Užklausa → žodžių sąrašas (be stop-žodžių). */\n\tpublic static function zodziai( $s ) {\n\t\t$s = self::normalizuoti( $s );\n\t\treturn array_values( array_filter( preg_split( '/[\\s,\\/]+/u', $s ), function ( $w ) { return '' !== $w && ! in_array( $w, self::STOP, true ); } ) );\n\t}\n\n\t/** Vieno žodžio LIKE variantai: kamienas + LT vertimai. */\n\tpublic static function variantai( $w ) {\n\t\t$v = array( self::kamienas( $w ) );\n\t\t$wl = rtrim( $w, \"'’\" );\n\t\tif ( isset( self::VERTIMAI[ $wl ] ) ) { $v = array_merge( $v, self::VERTIMAI[ $wl ] ); }\n\t\tif ( isset( self::SEIMOS[ $wl ] ) ) { $v = array_merge( $v, self::SEIMOS[ $wl ] ); }\n\t\treturn array_values( array_unique( $v ) );\n\t}\n\n\t/** SQL sąlyga žodžiui (title/excerpt/content, OR per variantus). */\n\tprivate static function salyga( $w ) {\n\t\tglobal $wpdb;\n\t\t$or = array();\n\t\tforeach ( self::variantai( $w ) as $k ) {\n\t\t\t$k = '%' . $wpdb->esc_like( $k ) . '%';\n\t\t\t$or[] = $wpdb->prepare( \"{$wpdb->posts}.post_title LIKE %s OR {$wpdb->posts}.post_excerpt LIKE %s OR {$wpdb->posts}.post_content LIKE %s\", $k, $k, $k );\n\t\t}\n\t\treturn '(' . implode( ' OR ', $or ) . ')';\n\t}\n\n\t/** Kiek publikuotų prekių atitinka žodį (nežinomų žodžių atmetimui). */\n\tprivate static function kiek( $w ) {\n\t\tglobal $wpdb;\n\t\tstatic $c = array();\n\t\tif ( isset( $c[ $w ] ) ) { return $c[ $w ]; }\n\t\t$c[ $w ] = (int) $wpdb->get_var( \"SELECT 1 FROM {$wpdb->posts} WHERE post_type='product' AND post_status='publish' AND \" . self::salyga( $w ) . ' LIMIT 1' );\n\t\treturn $c[ $w ];\n\t}\n\n\tpublic static function posts_search( $search, $q ) {\n\t\tif ( ! self::produktu( $q ) ) { return $search; }\n\t\tglobal $wpdb;\n\t\t$s = self::normalizuoti( (string) $q->get( 's' ) );\n\t\t$zodziai = self::zodziai( $s );\n\t\tif ( ! $zodziai ) { return $search; }\n\n\t\t// (5) nežinomų žodžių atmetimas — tik kai žodžių ≥ 2\n\t\t$naudoti = $zodziai; $atmesti = array();\n\t\tif ( count( $zodziai ) >= 2 ) {\n\t\t\t$zin = array(); $nez = array();\n\t\t\tforeach ( $zodziai as $w ) { if ( self::kiek( $w ) > 0 ) { $zin[] = $w; } else { $nez[] = $w; } }\n\t\t\t$tik_bendri = ! array_diff( $zin, self::BENDRI );\n\t\t\tif ( $zin && $nez && ! $tik_bendri ) { $naudoti = $zin; $atmesti = $nez; }\n\t\t}\n\t\tif ( $q->is_main_query() ) { self::$uzklausa = (string) $q->get( 's' ); self::$naudoti = $naudoti; self::$atmesti = $atmesti; }\n\n\t\t$and = array();\n\t\tforeach ( $naudoti as $w ) { $and[] = self::salyga( $w ); }\n\t\t$where = '(' . implode( ' AND ', $and ) . ')';\n\n\t\t// SKU / ID: visa užklausa be tarpų\n\t\t$sku = preg_replace( '/\\s+/u', '', $s );\n\t\tif ( '' !== $sku && mb_strlen( $sku ) <= 20 && preg_match( '/\\d/', $sku ) ) {\n\t\t\t$where .= $wpdb->prepare( \" OR {$wpdb->posts}.ID IN (SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key='_sku' AND meta_value LIKE %s)\", '%' . $wpdb->esc_like( $sku ) . '%' );\n\t\t\tif ( ctype_digit( $sku ) ) { $where .= $wpdb->prepare( \" OR {$wpdb->posts}.ID = %d\", (int) $sku ); }\n\t\t}\n\t\treturn \" AND ({$where}) \";\n\t}\n\n\n\t/** v1.2: gamintojų šeimos pavadinimo balui (Josera → JosiDog/JosiCat). */\n\tconst SEIMOS = array( 'josera' => array( 'josi' ) );\n\n\t/** Kiekio frazės užklausoje: „15 kg“, „12,5 kg“, „400g“ → pavadinimo LIKE variantai. */\n\tpublic static function kiekio_frazes( $s ) {\n\t\t$out = array();\n\t\tif ( preg_match_all( '/(\\d+(?:[.,]\\d+)?)\\s*(kg|g|l|ml|cm|mm|vnt)(?![\\p{L}])/u', $s, $m, PREG_SET_ORDER ) ) {\n\t\t\tforeach ( $m as $x ) {\n\t\t\t\t$sk = $x[1]; $u = $x[2]; $v = array();\n\t\t\t\tforeach ( array_unique( array( $sk, str_replace( ',', '.', $sk ), str_replace( '.', ',', $sk ) ) ) as $n ) { $v[] = $n . ' ' . $u; $v[] = $n . $u; }\n\t\t\t\t$out[] = array( 'sk' => $sk, 'vnt' => $u, 'variantai' => array_values( array_unique( $v ) ) );\n\t\t\t}\n\t\t}\n\t\treturn $out;\n\t}\n\n\t/** v1.2: „Panašumas“ rikiavimas produktų paieškai (tik kai rikiavimas nepasirinktas arba relevance). */\n\tpublic static function rikiavimas( $orderby, $q ) {\n\t\tif ( ! ( $q instanceof WP_Query ) || ! self::produktu( $q ) ) { return $orderby; }\n\t\t$ob = $q->get( 'orderby' );\n\t\tif ( ! ( '' === $ob || null === $ob || 'relevance' === $ob ) ) { return $orderby; }\n\t\tglobal $wpdb;\n\t\t$p = $wpdb->posts;\n\t\t$s = self::normalizuoti( (string) $q->get( 's' ) );\n\t\t$zodziai = self::zodziai( $s );\n\t\tif ( ! $zodziai ) { return $orderby; }\n\t\t$like = function ( $v ) use ( $wpdb, $p ) { return $wpdb->prepare( \"{$p}.post_title LIKE %s\", '%' . $wpdb->esc_like( $v ) . '%' ); };\n\t\t$balai = array();\n\t\t// kiekio frazės (+6), jų skaičiai ir vienetai nebeskaičiuojami kaip atskiri žodžiai\n\t\t$praleisti = array();\n\t\tforeach ( self::kiekio_frazes( $s ) as $f ) {\n\t\t\t$balai[] = '(CASE WHEN (' . implode( ' OR ', array_map( $like, $f['variantai'] ) ) . ') THEN 6 ELSE 0 END)';\n\t\t\tforeach ( preg_split( '/[.,]/', $f['sk'] ) as $d ) { $praleisti[] = $d; }\n\t\t\t$praleisti[] = $f['sk']; $praleisti[] = $f['vnt'];\n\t\t}\n\t\t// žodžiai pavadinime (+3)\n\t\tforeach ( $zodziai as $w ) {\n\t\t\tif ( in_array( $w, $praleisti, true ) ) { continue; }\n\t\t\t$v = self::variantai( $w );\n\t\t\t$v = array_values( array_unique( array_filter( $v, function ( $x ) { return mb_strlen( $x ) >= 2; } ) ) );\n\t\t\tif ( ! $v ) { continue; }\n\t\t\t$balai[] = '(CASE WHEN (' . implode( ' OR ', array_map( $like, $v ) ) . ') THEN 3 ELSE 0 END)';\n\t\t\t// tikslus žodis pavadinime (ne tik kamienas): +1\n\t\t\tif ( mb_strlen( $w ) >= 4 && ! preg_match( '/\\d/', $w ) ) {\n\t\t\t\t$balai[] = $wpdb->prepare( \"(CASE WHEN {$p}.post_title LIKE %s OR {$p}.post_title LIKE %s OR {$p}.post_title LIKE %s THEN 1 ELSE 0 END)\", '% ' . $wpdb->esc_like( $w ) . ' %', $wpdb->esc_like( $w ) . ' %', '% ' . $wpdb->esc_like( $w ) . ',%' );\n\t\t\t}\n\t\t}\n\t\tif ( ! $balai ) { return $orderby; }\n\t\t// sandėlyje +2; DP pakai („8 VNT. – …“) −2\n\t\t$balai[] = \"(CASE WHEN (SELECT pm.meta_value FROM {$wpdb->postmeta} pm WHERE pm.post_id={$p}.ID AND pm.meta_key='_stock_status' LIMIT 1)='instock' THEN 2 ELSE 0 END)\";\n\t\t$balai[] = \"(CASE WHEN {$p}.post_title REGEXP '^[0-9]+ *VNT' THEN -2 ELSE 0 END)\";\n\t\t$pard = \"(SELECT CAST(pm2.meta_value AS UNSIGNED) FROM {$wpdb->postmeta} pm2 WHERE pm2.post_id={$p}.ID AND pm2.meta_key='total_sales' LIMIT 1)\";\n\t\treturn '(' . implode( ' + ', $balai ) . ') DESC, ' . $pard . \" DESC, {$p}.post_title ASC\";\n\t}\n\n\t/* ------------------------------------------------------------------ */\n\t/* Alternatyvos                                                        */\n\t/* ------------------------------------------------------------------ */\n\n\t/** Ar užklausoje (ar atmestuose žodžiuose) yra brendas/grupė, kurios neturim. */\n\tpublic static function alternatyva( $tekstas ) {\n\t\t$t = self::normalizuoti( (string) $tekstas );\n\t\tforeach ( self::ALTERNATYVOS as $re => $a ) {\n\t\t\tif ( preg_match( '/(?:' . $re . ')/iu', $t ) ) { return $a; }\n\t\t}\n\t\treturn null;\n\t}\n\n\tprivate static function alternatyvos_html( $a, $klase = 'ps-paieska-alt' ) {\n\t\tif ( ! $a ) { return ''; }\n\t\t$h = '<div class=\"' . $klase . '\"><strong>' . esc_html( $a[0] ) . '.</strong> ' . esc_html( $a[1] );\n\t\tif ( ! empty( $a[2] ) ) {\n\t\t\t$h .= ' <span class=\"ps-paieska-chips\">';\n\t\t\tforeach ( $a[2] as $l ) { $h .= '<a class=\"ps-chip\" href=\"' . esc_url( home_url( $l[1] ) ) . '\">' . $l[0] . '</a> '; }\n\t\t\t$h .= '</span>';\n\t\t}\n\t\treturn $h . '</div>';\n\t}\n\n\t/* ------------------------------------------------------------------ */\n\t/* (7) Juosta virš rezultatų: pastaba apie atmestus žodžius + kategorijos/gamintojai */\n\t/* ------------------------------------------------------------------ */\n\n\tpublic static function juosta() {\n\t\tif ( ! is_search() ) { return; }\n\t\t$s = get_search_query();\n\t\tif ( '' === $s ) { return; }\n\t\t$h = '';\n\t\tif ( self::$atmesti ) {\n\t\t\t$alt = self::alternatyva( implode( ' ', self::$atmesti ) );\n\t\t\t$h .= '<div class=\"ps-paieska-pastaba\">Pagal „<b>' . esc_html( implode( ' ', self::$atmesti ) ) . '</b>“ prekių nerasta — rodome rezultatus pagal „<b>' . esc_html( implode( ' ', self::$naudoti ) ) . '</b>“.</div>';\n\t\t\tif ( $alt ) { $h .= self::alternatyvos_html( $alt ); }\n\t\t}\n\t\t$terminai = self::terminai( $s );\n\t\tif ( $terminai ) {\n\t\t\t$h .= '<div class=\"ps-paieska-terminai\"><span class=\"ps-paieska-label\">Kategorijos ir gamintojai:</span> ';\n\t\t\tforeach ( $terminai as $t ) { $h .= '<a class=\"ps-chip\" href=\"' . esc_url( get_term_link( $t ) ) . '\">' . esc_html( $t->name ) . ' <span class=\"ps-chip-n\">' . (int) $t->count . '</span></a> '; }\n\t\t\t$h .= '</div>';\n\t\t}\n\t\tif ( $h ) { echo '<div class=\"ps-paieska-juosta\">' . self::css() . $h . '</div>'; }\n\t}\n\n\t/** Kategorijos/gamintojai, kurių pavadinimas atitinka užklausos žodžius. */\n\tpublic static function terminai( $s, $max = 8 ) {\n\t\tglobal $wpdb;\n\t\t$zodziai = self::zodziai( $s );\n\t\tif ( ! $zodziai ) { return array(); }\n\t\t$or = array();\n\t\tforeach ( $zodziai as $w ) {\n\t\t\tif ( in_array( $w, self::BENDRI, true ) ) { continue; }\n\t\t\tforeach ( self::variantai( $w ) as $k ) { if ( mb_strlen( $k ) < 3 ) { continue; } $or[] = $wpdb->prepare( 't.name LIKE %s', '%' . $wpdb->esc_like( $k ) . '%' ); }\n\t\t}\n\t\tif ( ! $or ) { return array(); }\n\t\t$ids = $wpdb->get_col( \"SELECT t.term_id FROM {$wpdb->terms} t JOIN {$wpdb->term_taxonomy} tt ON tt.term_id=t.term_id\n\t\t\tWHERE tt.taxonomy IN ('product_cat','product_brand') AND tt.count>0 AND t.slug NOT IN ('rinkiniai','daugiau-pigiau','dovanos','uncategorized','sprendimai') AND (\" . implode( ' OR ', $or ) . \")\n\t\t\tORDER BY tt.count DESC LIMIT \" . (int) $max );\n\t\t$out = array();\n\t\tforeach ( $ids as $id ) { $t = get_term( (int) $id ); if ( $t && ! is_wp_error( $t ) ) { $out[] = $t; } }\n\t\treturn $out;\n\t}\n\n\t/* ------------------------------------------------------------------ */\n\t/* (6) Nulinių rezultatų puslapis                                      */\n\t/* ------------------------------------------------------------------ */\n\n\tpublic static function nulinis_puslapis() {\n\t\t$s = get_search_query();\n\t\t$alt = self::alternatyva( $s );\n\t\techo '<div class=\"ps-paieska-nulis\">' . self::css();\n\t\techo '<h2 class=\"ps-paieska-h\">Pagal „' . esc_html( $s ) . '“ prekių nerasta</h2>';\n\t\tif ( $alt ) { echo self::alternatyvos_html( $alt ); }\n\t\telse { echo '<p class=\"ps-paieska-p\">Patikrinkite rašybą arba pabandykite trumpesnį žodį — pvz. gamintoją („josera“) ar prekės tipą („konservai katėms“).</p>'; }\n\t\t$terminai = self::terminai( $s );\n\t\tif ( $terminai ) {\n\t\t\techo '<div class=\"ps-paieska-blokas\"><span class=\"ps-paieska-label\">Susijusios kategorijos ir gamintojai:</span> ';\n\t\t\tforeach ( $terminai as $t ) { echo '<a class=\"ps-chip\" href=\"' . esc_url( get_term_link( $t ) ) . '\">' . esc_html( $t->name ) . ' <span class=\"ps-chip-n\">' . (int) $t->count . '</span></a> '; }\n\t\t\techo '</div>';\n\t\t}\n\n\t\t// paslėptos dropship prekės (tik su R sprendimu — opcija)\n\t\tif ( get_option( 'ps_paieska_pasleptos' ) ) {\n\t\t\t$pasl = self::pasleptos( $s );\n\t\t\tif ( $pasl ) {\n\t\t\t\techo '<div class=\"ps-paieska-blokas\"><span class=\"ps-paieska-label\">Šiuo metu neturime, bet galite užsisakyti pranešimą, kai atsiras:</span><ul class=\"ps-paieska-sarasas\">';\n\t\t\t\tforeach ( $pasl as $p ) { echo '<li><a href=\"' . esc_url( get_permalink( $p ) ) . '\">' . esc_html( get_the_title( $p ) ) . '</a></li>'; }\n\t\t\t\techo '</ul></div>';\n\t\t\t}\n\t\t}\n\n\t\t// kategorijos\n\t\t$h = '';\n\t\tforeach ( self::HUBAI as $hid ) {\n\t\t\t$hub = get_term( $hid, 'product_cat' );\n\t\t\tif ( ! $hub || is_wp_error( $hub ) ) { continue; }\n\t\t\t$vaikai = get_terms( array( 'taxonomy' => 'product_cat', 'parent' => $hid, 'hide_empty' => true, 'orderby' => 'count', 'order' => 'DESC', 'number' => 4 ) );\n\t\t\t$h .= '<div class=\"ps-paieska-hub\"><a class=\"ps-paieska-hub-a\" href=\"' . esc_url( get_term_link( $hub ) ) . '\">' . esc_html( mb_convert_case( $hub->name, MB_CASE_TITLE, 'UTF-8' ) ) . '</a> ';\n\t\t\tif ( $vaikai && ! is_wp_error( $vaikai ) ) { foreach ( $vaikai as $v ) { $h .= '<a class=\"ps-chip\" href=\"' . esc_url( get_term_link( $v ) ) . '\">' . esc_html( $v->name ) . '</a> '; } }\n\t\t\t$h .= '</div>';\n\t\t}\n\t\tif ( $h ) { echo '<div class=\"ps-paieska-blokas\"><span class=\"ps-paieska-label\">Ieškokite pagal kategoriją:</span>' . $h . '</div>'; }\n\n\t\t// populiarios paieškos\n\t\techo '<div class=\"ps-paieska-blokas\"><span class=\"ps-paieska-label\">Dažniausiai ieškoma:</span> ';\n\t\tforeach ( self::POPULIARIOS as $p ) { echo '<a class=\"ps-chip\" href=\"' . esc_url( home_url( '/?s=' . rawurlencode( $p ) . '&post_type=product' ) ) . '\">' . esc_html( $p ) . '</a> '; }\n\t\techo '</div>';\n\n\t\t// kontaktas\n\t\t$k = self::kontaktas();\n\t\techo '<p class=\"ps-paieska-p ps-paieska-kontaktas\">Nerandate? Parašykite, ką ieškote — ' . $k . '. Jei prekė yra pas mūsų tiekėjus, užsakysime.</p>';\n\t\techo '</div>';\n\t}\n\n\t/** Paslėptos (exclude-from-search) publikuotos prekės, atitinkančios užklausą. */\n\tpublic static function pasleptos( $s, $max = 6 ) {\n\t\tglobal $wpdb;\n\t\t$zodziai = self::zodziai( $s );\n\t\tif ( ! $zodziai ) { return array(); }\n\t\t$and = array();\n\t\tforeach ( $zodziai as $w ) { if ( self::kiek( $w ) > 0 || count( $zodziai ) === 1 ) { $and[] = self::salyga( $w ); } }\n\t\tif ( ! $and ) { return array(); }\n\t\t$ids = wc_get_product_visibility_term_ids();\n\t\t$tt = (int) ( $ids['exclude-from-search'] ?? 0 );\n\t\tif ( ! $tt ) { return array(); }\n\t\treturn array_map( 'intval', $wpdb->get_col( \"SELECT {$wpdb->posts}.ID FROM {$wpdb->posts} JOIN {$wpdb->term_relationships} tr ON tr.object_id={$wpdb->posts}.ID AND tr.term_taxonomy_id={$tt}\n\t\t\tWHERE post_type='product' AND post_status='publish' AND \" . implode( ' AND ', $and ) . \" ORDER BY post_title LIMIT \" . (int) $max ) );\n\t}\n\n\tprivate static function kontaktas() {\n\t\t$out = array();\n\t\t$e = get_option( 'ps_paieska_kontaktas_email' ) ?: get_option( 'woocommerce_email_from_address' );\n\t\t$t = get_option( 'ps_paieska_kontaktas_tel' ) ?: get_option( 'woocommerce_store_phone' );\n\t\tif ( $e ) { $out[] = '<a href=\"mailto:' . esc_attr( $e ) . '\">' . esc_html( $e ) . '</a>'; }\n\t\tif ( $t ) { $out[] = '<a href=\"tel:' . esc_attr( preg_replace( '/[^\\d+]/', '', $t ) ) . '\">' . esc_html( $t ) . '</a>'; }\n\t\t$pg = get_page_by_path( 'kontaktai' );\n\t\tif ( $pg ) { $out[] = '<a href=\"' . esc_url( get_permalink( $pg ) ) . '\">kontaktų forma</a>'; }\n\t\treturn $out ? implode( ' arba ', $out ) : 'per kontaktų puslapį';\n\t}\n\n\t/** Flatsome live-search „Produktų nerasta.“ → nuoroda į pilną rezultatų puslapį. */\n\tpublic static function ajax_nerasta( $t, $orig, $domain ) {\n\t\tif ( false !== strpos( $orig, 'No products found' ) && isset( $_REQUEST['action'] ) && 'flatsome_ajax_search_products' === $_REQUEST['action'] ) {\n\t\t\treturn 'Nerasta — spauskite Enter, parodysime kategorijas ir alternatyvas';\n\t\t}\n\t\treturn $t;\n\t}\n\n\tprivate static function css() {\n\t\tstatic $d = false;\n\t\tif ( $d ) { return ''; }\n\t\t$d = true;\n\t\treturn '<style>.ps-paieska-juosta{margin:0 0 18px}.ps-paieska-nulis{max-width:820px;margin:10px auto 30px}.ps-paieska-h{font-size:1.3em;margin:0 0 12px}.ps-paieska-p{margin:0 0 14px;color:#444}.ps-paieska-pastaba{background:#fff8e1;border-left:3px solid #f0b429;padding:8px 12px;margin:0 0 10px;font-size:.95em}.ps-paieska-alt{background:#f3f8f4;border-left:3px solid #4caf50;padding:10px 12px;margin:0 0 14px;font-size:.95em}.ps-paieska-blokas{margin:0 0 16px}.ps-paieska-label{display:block;font-weight:600;margin:0 0 6px;color:#333}.ps-paieska-terminai{margin:0 0 6px}.ps-paieska-terminai .ps-paieska-label{display:inline;margin-right:6px}.ps-paieska-hub{margin:0 0 6px;line-height:2}.ps-paieska-hub-a{font-weight:600;margin-right:6px}.ps-chip{display:inline-block;background:#f2f2f2;border-radius:14px;padding:2px 11px;margin:2px 4px 2px 0;font-size:.9em;color:#222;text-decoration:none;line-height:1.7}.ps-chip:hover{background:#e6e6e6;color:#000}.ps-chip-n{color:#888;font-size:.85em}.ps-paieska-sarasas{margin:0 0 0 18px}.ps-paieska-kontaktas{border-top:1px solid #eee;padding-top:12px}</style>';\n\t}\n}\nadd_action( 'init', array( 'Petshop_Paieska', 'init' ), 5 );\n",
+  "zero": [
+   {
+    "laikas": "2026-10-02 08:46:57",
+    "raktas": "Skrydžio rinkimus",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_2070163dbeb9c9f6eb50e702a684da|1791101776|1791015376|722d1f866"
    },
-   "37275": {
-    "desc": "v2",
-    "partija": {
-     "partijos_id": 4554,
-     "kiekis": 2,
-     "savikaina": 3.1294,
-     "likutis": 2,
-     "savikaina_prekes": 3.1294
-    },
-    "stock": "2 instock",
-    "cost": "3.13",
-    "part": {
-     "id": "4554",
-     "kiekis_liko": "2",
-     "savikaina_eur": "3.1294",
-     "savikaina_orig": "13.3000",
-     "valiuta": "PLN",
-     "kursas": "4.250000"
-    },
-    "src": {
-     "stock_qty": null,
-     "cost_net": "3.1300"
-    }
+   {
+    "laikas": "2026-10-02 08:51:58",
+    "raktas": "Farmina N&amp;D Ancestral Grain Dog Adult Medium &amp; Maxi Lamb &amp; Blueberry",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_b697a91efb005b392221149b191ded|1791103785|1791017385|b1506c6e6"
    },
-   "37277": {
-    "desc": "v2",
-    "partija": {
-     "partijos_id": 4555,
-     "kiekis": 3,
-     "savikaina": 2.5412,
-     "likutis": 3,
-     "savikaina_prekes": 2.5412
-    },
-    "stock": "3 instock",
-    "cost": "2.54",
-    "part": {
-     "id": "4555",
-     "kiekis_liko": "3",
-     "savikaina_eur": "2.5412",
-     "savikaina_orig": "10.8000",
-     "valiuta": "PLN",
-     "kursas": "4.250000"
-    },
-    "src": {
-     "stock_qty": null,
-     "cost_net": "2.5400"
-    }
+   {
+    "laikas": "2026-10-02 12:00:22",
+    "raktas": "terariumai",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:b112ee6a668902294901b6402d0def933eac4f07"
    },
-   "37279": {
-    "desc": "v2",
-    "partija": {
-     "partijos_id": 4556,
-     "kiekis": 3,
-     "savikaina": 2,
-     "likutis": 3,
-     "savikaina_prekes": 2
-    },
-    "stock": "3 instock",
-    "cost": "2.00",
-    "part": {
-     "id": "4556",
-     "kiekis_liko": "3",
-     "savikaina_eur": "2.0000",
-     "savikaina_orig": "8.5000",
-     "valiuta": "PLN",
-     "kursas": "4.250000"
-    },
-    "src": {
-     "stock_qty": null,
-     "cost_net": "2.0000"
-    }
+   {
+    "laikas": "2026-10-02 13:44:58",
+    "raktas": "Suniuku seryklos",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_395eb6183fd1abb480f8a55c7b9e3b|1791121462|1791035062|8fc2df657"
    },
-   "37281": {
-    "desc": "v2",
-    "partija": {
-     "partijos_id": 4557,
-     "kiekis": 3,
-     "savikaina": 2.3059,
-     "likutis": 3,
-     "savikaina_prekes": 2.3059
-    },
-    "stock": "3 instock",
-    "cost": "2.31",
-    "part": {
-     "id": "4557",
-     "kiekis_liko": "3",
-     "savikaina_eur": "2.3059",
-     "savikaina_orig": "9.8000",
-     "valiuta": "PLN",
-     "kursas": "4.250000"
-    },
-    "src": {
-     "stock_qty": null,
-     "cost_net": "2.3100"
-    }
+   {
+    "laikas": "2026-10-02 14:04:30",
+    "raktas": "Oasy",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_59b2b828910dba0f87dca109d7b435|1791122642|1791036242|c81e714e6"
    },
-   "37283": {
-    "desc": "v2",
-    "partija": {
-     "partijos_id": 4558,
-     "kiekis": 2,
-     "savikaina": 3.0588,
-     "likutis": 2,
-     "savikaina_prekes": 3.0588
-    },
-    "stock": "2 instock",
-    "cost": "3.06",
-    "part": {
-     "id": "4558",
-     "kiekis_liko": "2",
-     "savikaina_eur": "3.0588",
-     "savikaina_orig": "13.0000",
-     "valiuta": "PLN",
-     "kursas": "4.250000"
-    },
-    "src": {
-     "stock_qty": null,
-     "cost_net": "3.0600"
-    }
+   {
+    "laikas": "2026-10-02 18:42:39",
+    "raktas": "Purfect",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_b85631a177e31713c1a593be90c6d5|1791132621|1791046221|57e3483fc"
+   },
+   {
+    "laikas": "2026-10-03 08:15:20",
+    "raktas": "Kenmels favouryte",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_1cdec4ab154962f6690bd6a6307d0c|1791188068|1791101668|b719ed678"
+   },
+   {
+    "laikas": "2026-10-03 16:15:58",
+    "raktas": "servetėlės",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_3ab1f7f28716ef6f3ebeab15a8cf5c|1791192674|1791106274|60b9a74d6"
+   },
+   {
+    "laikas": "2026-10-04 08:54:04",
+    "raktas": "whimzees",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_1ebd44dff583534e7ba46c7c2f322c|1791276827|1791190427|875de74c4"
+   },
+   {
+    "laikas": "2026-10-04 10:23:57",
+    "raktas": "Vetgastril",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_185f8a7f0a67c65b6496028a6641be|1791276920|1791190520|6f52fe363"
+   },
+   {
+    "laikas": "2026-10-04 11:02:42",
+    "raktas": "virbac",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:daa00fb03e32cb1488ecf58b45b6ea485f475d67"
+   },
+   {
+    "laikas": "2026-10-04 11:03:09",
+    "raktas": "toothpaste",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:daa00fb03e32cb1488ecf58b45b6ea485f475d67"
+   },
+   {
+    "laikas": "2026-10-04 11:06:24",
+    "raktas": "Vetgastril",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_185f8a7f0a67c65b6496028a6641be|1791276920|1791190520|6f52fe363"
+   },
+   {
+    "laikas": "2026-10-04 12:17:15",
+    "raktas": "Clorexyderm",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "d:4c53317ccef7200e7e4dcb11d64bee377b77fc0a"
+   },
+   {
+    "laikas": "2026-10-04 17:35:56",
+    "raktas": "Vetgastril",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_185f8a7f0a67c65b6496028a6641be|1791276920|1791190520|6f52fe363"
+   },
+   {
+    "laikas": "2026-10-04 18:20:40",
+    "raktas": "Excisive",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_e2506bd32f895123d7384d31a6aedd|1791271194|1791184794|54b85d5a9"
+   },
+   {
+    "laikas": "2026-10-04 19:45:00",
+    "raktas": "Acana",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_7d628c528275c9b276094a53b508d1|1791315831|1791229431|00ae183a9"
+   },
+   {
+    "laikas": "2026-10-05 06:32:26",
+    "raktas": "HIK14633",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_7a715ebf17cd3153277abc6ea0f07e|1791354708|1791268308|5a1201907"
+   },
+   {
+    "laikas": "2026-10-05 08:05:06",
+    "raktas": "virbac",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:69cdc6c3460f559b437a0ba7e90a005c441f1267"
+   },
+   {
+    "laikas": "2026-10-05 08:06:44",
+    "raktas": "Virbac VeggieDent Fresh",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:69cdc6c3460f559b437a0ba7e90a005c441f1267"
+   },
+   {
+    "laikas": "2026-10-05 08:53:06",
+    "raktas": "FARMINA TEAM BR DOG N&amp;D PUMPKIN Grain Free Codfish&amp;Orange ADULT",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_61d91e423c59398e33468aa974a2ca|1791363047|1791276647|ab1d21a4a"
+   },
+   {
+    "laikas": "2026-10-05 08:53:24",
+    "raktas": "FARMINA N&amp;D PUMPKIN Grain Free Codfish&amp;Orange ADULT",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_61d91e423c59398e33468aa974a2ca|1791363047|1791276647|ab1d21a4a"
+   },
+   {
+    "laikas": "2026-10-05 08:53:34",
+    "raktas": "FARMINA Codfish&amp;Orange ADULT",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_61d91e423c59398e33468aa974a2ca|1791363047|1791276647|ab1d21a4a"
+   },
+   {
+    "laikas": "2026-10-05 11:42:30",
+    "raktas": "kiten",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_10ea7cec4178743b30242f60433fbf|1791343470|1791257070|0330fe2fc"
+   },
+   {
+    "laikas": "2026-10-05 12:47:52",
+    "raktas": "Hikari vibra 280g",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_f756705a65a2b00ac0e350149cb1f0|1791377178|1791290778|a1904bca9"
+   },
+   {
+    "laikas": "2026-10-05 18:58:31",
+    "raktas": "LEADER",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_05d7c1bbbef66692ac3eedb831780f|1791399450|1791313050|08ac9936f"
+   },
+   {
+    "laikas": "2026-10-06 04:45:30",
+    "raktas": "Animomda kat",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_50c7000d568cc79c6c5d96bba976a5|1791434699|1791348299|34a6343c3"
+   },
+   {
+    "laikas": "2026-10-06 05:39:00",
+    "raktas": "korgiai",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_cfbdf8fba76f638929988a0a6103be|1791437339|1791350939|fcfcb9d18"
+   },
+   {
+    "laikas": "2026-10-06 08:05:01",
+    "raktas": "kačių kvapo naikintuvas",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_1a61e92435d626985b600ae214421d|1791446642|1791360242|528bd28c3"
+   },
+   {
+    "laikas": "2026-10-06 08:07:30",
+    "raktas": "kačių kvapo naikintuvas",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_1a61e92435d626985b600ae214421d|1791446642|1791360242|528bd28c3"
+   },
+   {
+    "laikas": "2026-10-06 08:08:09",
+    "raktas": "kačių kvapo naikintuvas",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_1a61e92435d626985b600ae214421d|1791446642|1791360242|528bd28c3"
+   },
+   {
+    "laikas": "2026-10-06 08:54:21",
+    "raktas": "Exclusion Intestinal Pork &amp; Rice Small Breed",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_4375549f2273876813d45d1b8971df|1791449534|1791363134|3ed9d7219"
+   },
+   {
+    "laikas": "2026-10-06 08:54:30",
+    "raktas": "Exclusion Intestinal",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_4375549f2273876813d45d1b8971df|1791449534|1791363134|3ed9d7219"
+   },
+   {
+    "laikas": "2026-10-06 12:47:34",
+    "raktas": "Ankakliai",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_8f3b14fae86e806ca827429bef381c|1791463630|1791377230|fda3a11a7"
+   },
+   {
+    "laikas": "2026-10-06 12:55:06",
+    "raktas": "Virbac",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_6a312d5495894733c0152c86e2f25d|1791464095|1791377695|207f08a3b"
+   },
+   {
+    "laikas": "2026-10-06 13:22:17",
+    "raktas": "hills",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_a0232be8a0436c18f57a8e4b9a964d|1791464764|1791378364|bf165b18e"
+   },
+   {
+    "laikas": "2026-10-06 13:27:10",
+    "raktas": "proplan",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_ab5e6e484292c9cd5e923db842dc63|1791465913|1791379513|41278b943"
+   },
+   {
+    "laikas": "2026-10-06 19:12:56",
+    "raktas": "Quatro",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_9f74d15a64572b0d665bcf1852f0a8|1791486744|1791400344|819ccc0bd"
+   },
+   {
+    "laikas": "2026-10-07 08:43:18",
+    "raktas": "Farmina N&amp;D Ocean Cod, Pumpkin &amp; Cantaloupe — Puppy Medium",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_76cc26d1b0a5abfca79ec7f71a0e2c|1791535347|1791448947|475acc7d7"
+   },
+   {
+    "laikas": "2026-10-07 09:58:13",
+    "raktas": "tunėlei katėms",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_037fb3d02dbf28a63e62aa5f015962|1791539501|1791453101|cc4e2eadb"
+   },
+   {
+    "laikas": "2026-10-07 10:10:00",
+    "raktas": "tunėlei katėms",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_037fb3d02dbf28a63e62aa5f015962|1791539501|1791453101|cc4e2eadb"
+   },
+   {
+    "laikas": "2026-10-08 04:08:15",
+    "raktas": "Vet Live",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_4d1918da0ecc06d4a39e2cd18648fe|1791605266|1791518866|3f6e4d9f4"
+   },
+   {
+    "laikas": "2026-10-08 06:13:10",
+    "raktas": "palos",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_c64b0907c024f9bdfc7d6506677fae|1791612765|1791526365|b22e0b881"
+   },
+   {
+    "laikas": "2026-10-08 06:13:20",
+    "raktas": "palut4s",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_c64b0907c024f9bdfc7d6506677fae|1791612765|1791526365|b22e0b881"
+   },
+   {
+    "laikas": "2026-10-08 10:56:48",
+    "raktas": "Acana",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "5265|1792058869|1791540469|d93eded3fa748be843dfca5fd680982f"
+   },
+   {
+    "laikas": "2026-10-09 04:14:21",
+    "raktas": "Exclusion Intestinal sausas maistas katėms su kiauliena ir ryžiais, 1,5 kg",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_5e9dfd7e45e55abd909a2f11727554|1791692049|1791605649|2a0df5c9c"
+   },
+   {
+    "laikas": "2026-10-09 10:41:36",
+    "raktas": "4036897311635",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_eed521229ca027e9b5d96008b255c4|1791715284|1791628884|9ad27ba86"
+   },
+   {
+    "laikas": "2026-10-09 16:40:03",
+    "raktas": "Anomonda",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_87ff4cf46621ae4d39fc690691b133|1791735801|1791649401|d6c70e7b9"
+   },
+   {
+    "laikas": "2026-10-09 16:54:54",
+    "raktas": "Katės namelis",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_ead3f812d0bc85296f446c3b7f563d|1791737678|1791651278|e5c2f2bce"
+   },
+   {
+    "laikas": "2026-10-09 16:55:36",
+    "raktas": "Katės namelis",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_ead3f812d0bc85296f446c3b7f563d|1791737678|1791651278|e5c2f2bce"
+   },
+   {
+    "laikas": "2026-10-10 06:12:45",
+    "raktas": "grauim",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:cc03dea7cfd02051b31293a210b6bbf3ffa54747"
+   },
+   {
+    "laikas": "2026-10-10 12:38:40",
+    "raktas": "virbac",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_f92b6d02b8bd4b23c54d0ec027c9d2|1791808705|1791722305|bd0be7c92"
+   },
+   {
+    "laikas": "2026-10-10 12:45:36",
+    "raktas": "Nerasta — spauskite Enter, parodysime kategorijas ir alternatyvas",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_3e9ff302a11387d3f801139c85ac34|1791809089|1791722689|f332166c4"
+   },
+   {
+    "laikas": "2026-10-10 15:50:00",
+    "raktas": "Vaistai nuo kirmėlių",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_c28ab7286b65450026f2fc0ef9ee80|1791820115|1791733715|00b12b7ae"
+   },
+   {
+    "laikas": "2026-10-10 15:57:45",
+    "raktas": "Hills kidney",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "d:567d94d89a26a90512194b7a2cc73b65845b8746"
+   },
+   {
+    "laikas": "2026-10-10 15:58:00",
+    "raktas": "kidney",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "d:567d94d89a26a90512194b7a2cc73b65845b8746"
+   },
+   {
+    "laikas": "2026-10-10 15:58:11",
+    "raktas": "Hills",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "d:567d94d89a26a90512194b7a2cc73b65845b8746"
+   },
+   {
+    "laikas": "2026-10-10 16:55:00",
+    "raktas": "Pedigree",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_4400b6d9520905fdabba946a7b2ac6|1791824084|1791737684|573ef7af3"
+   },
+   {
+    "laikas": "2026-10-10 18:23:42",
+    "raktas": "brit care sensetive",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:791bbb60d2f4f200a70d368a73f78f0e5283c630"
+   },
+   {
+    "laikas": "2026-10-10 18:24:02",
+    "raktas": "brit care senssitive",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:791bbb60d2f4f200a70d368a73f78f0e5283c630"
+   },
+   {
+    "laikas": "2026-10-10 18:24:09",
+    "raktas": "brit care",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:791bbb60d2f4f200a70d368a73f78f0e5283c630"
+   },
+   {
+    "laikas": "2026-10-10 18:30:30",
+    "raktas": "rojal",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:6317cab4058147cfcbe0c7ce832dd8437f282c06"
+   },
+   {
+    "laikas": "2026-10-10 18:31:14",
+    "raktas": "hils",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:6317cab4058147cfcbe0c7ce832dd8437f282c06"
+   },
+   {
+    "laikas": "2026-10-10 18:31:19",
+    "raktas": "hills",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:6317cab4058147cfcbe0c7ce832dd8437f282c06"
+   },
+   {
+    "laikas": "2026-10-10 18:31:23",
+    "raktas": "hills",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:6317cab4058147cfcbe0c7ce832dd8437f282c06"
+   },
+   {
+    "laikas": "2026-10-10 18:32:19",
+    "raktas": "hills",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:6317cab4058147cfcbe0c7ce832dd8437f282c06"
+   },
+   {
+    "laikas": "2026-10-10 19:10:06",
+    "raktas": "Josera 10kg mini deluxe",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:a0e8016eeeadd4778735b53b9fb2ed9cdbb7c308"
+   },
+   {
+    "laikas": "2026-10-10 19:26:40",
+    "raktas": "Hills",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_6b65cdb97e0d1a8bafe0c500948346|1791833077|1791746677|b89b58c0c"
+   },
+   {
+    "laikas": "2026-10-10 22:48:47",
+    "raktas": "Whimzees",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_1cc4c3d535eff99f0321a3c4fa1b1a|1791839306|1791752906|5eccbdb49"
+   },
+   {
+    "laikas": "2026-10-10 22:49:03",
+    "raktas": "Whimzees",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_1cc4c3d535eff99f0321a3c4fa1b1a|1791839306|1791752906|5eccbdb49"
+   },
+   {
+    "laikas": "2026-10-10 22:49:08",
+    "raktas": "Whimzees",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_1cc4c3d535eff99f0321a3c4fa1b1a|1791839306|1791752906|5eccbdb49"
+   },
+   {
+    "laikas": "2026-10-11 08:22:40",
+    "raktas": "skiepai",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_3dfdff409b850b47ea528753fb0c4a|1791879746|1791793346|ec5e11254"
+   },
+   {
+    "laikas": "2026-10-11 10:34:59",
+    "raktas": "Dog Copenhagen Comfort Walk Air petnešos, rudos",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_3d64793be841696ba8d336d47911b7|1791887682|1791801282|5e8c33ea3"
+   },
+   {
+    "laikas": "2026-10-11 10:51:45",
+    "raktas": "Vet expert",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_f1eec4483391ff98d27f505e1fe980|1791888668|1791802268|ee9a03571"
+   },
+   {
+    "laikas": "2026-10-11 11:57:05",
+    "raktas": "Antkaklis adaptil šunims",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_3cdeb0c342f3ae6b67067584f32d7c|1791892556|1791806156|22432edc9"
+   },
+   {
+    "laikas": "2026-10-11 14:37:58",
+    "raktas": "Oisy",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_cac4ad4cfd1c9afae38065b4bbea2f|1791902265|1791815865|87de7d636"
+   },
+   {
+    "laikas": "2026-10-11 16:59:20",
+    "raktas": "Carnilove True Fresh Beef Adult",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_eecb118ffbe2e4e76dfda8d08d6e93|1791910516|1791824116|583974cb0"
+   },
+   {
+    "laikas": "2026-10-11 17:00:50",
+    "raktas": "Carnilove",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_eecb118ffbe2e4e76dfda8d08d6e93|1791910516|1791824116|583974cb0"
+   },
+   {
+    "laikas": "2026-10-12 02:42:56",
+    "raktas": "Rusų mėlynoji",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_cf3779b313b95149636a758c8518dd|1791945645|1791859245|654b29254"
+   },
+   {
+    "laikas": "2026-10-12 05:32:44",
+    "raktas": "Vardin",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "d:9ca0857223a83feca8e1544d37d140ca8fca1554"
+   },
+   {
+    "laikas": "2026-10-12 06:07:46",
+    "raktas": "Vet expert",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_f1eec4483391ff98d27f505e1fe980|1791888668|1791802268|ee9a03571"
+   },
+   {
+    "laikas": "2026-10-12 06:48:32",
+    "raktas": "Struvite management",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_2a5ed37c8385c7a56e563afea6e268|1791960489|1791874089|cbcab1758"
+   },
+   {
+    "laikas": "2026-10-12 10:37:07",
+    "raktas": "brit care",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_bf853db5e3acbde9f6c0ff5f2b4121|1791974211|1791887811|31a6a9cef"
+   },
+   {
+    "laikas": "2026-10-12 15:17:41",
+    "raktas": "antialerginis gydomasis katėms",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_06a84808dbe7709fb38879d2f76b3e|1791990404|1791904004|d2ac09013"
+   },
+   {
+    "laikas": "2026-10-12 15:17:57",
+    "raktas": "antialerginis katėms",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_06a84808dbe7709fb38879d2f76b3e|1791990404|1791904004|d2ac09013"
+   },
+   {
+    "laikas": "2026-10-12 16:43:49",
+    "raktas": "Saman",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_4a508a097007dac571938a23515a67|1791996208|1791909808|5fd160695"
+   },
+   {
+    "laikas": "2026-10-12 16:43:58",
+    "raktas": "Moss",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_4a508a097007dac571938a23515a67|1791996208|1791909808|5fd160695"
+   },
+   {
+    "laikas": "2026-10-12 18:00:12",
+    "raktas": "Orijen",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_51e03ca3a63464687dc494f016ef51|1792000786|1791914386|401347eea"
+   },
+   {
+    "laikas": "2026-10-14 05:33:35",
+    "raktas": "pronefra",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_e0d0b55343da962f386bc603abad93|1792128781|1792042381|2d47d6d83"
+   },
+   {
+    "laikas": "2026-10-14 05:34:00",
+    "raktas": "pronefr",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_e0d0b55343da962f386bc603abad93|1792128781|1792042381|2d47d6d83"
+   },
+   {
+    "laikas": "2026-10-14 06:23:21",
+    "raktas": "Brit Care",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:b1d5b90a9675ea6991a6db1e03e5b13079aea131"
+   },
+   {
+    "laikas": "2026-10-14 08:32:50",
+    "raktas": "GOMDOG",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:2fcf3609225b624f4ffda8e9600b856cc55e5558"
+   },
+   {
+    "laikas": "2026-10-14 09:10:12",
+    "raktas": "trovet",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:c977b01aa2df727ba138a9ad92952e7244468aad"
+   },
+   {
+    "laikas": "2026-10-14 09:10:53",
+    "raktas": "trovet recovery liquid CCL",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:c977b01aa2df727ba138a9ad92952e7244468aad"
+   },
+   {
+    "laikas": "2026-10-14 09:10:57",
+    "raktas": "trovet recovery liquid CCL",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:c977b01aa2df727ba138a9ad92952e7244468aad"
+   },
+   {
+    "laikas": "2026-10-14 09:11:12",
+    "raktas": "advance sensitive",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_bb40c1e7bc1e003023e18e8526aa99|1792135111|1792048711|fc844d26f"
+   },
+   {
+    "laikas": "2026-10-14 14:55:51",
+    "raktas": "Carnilove",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_9d63dc775748af70121835a70d5389|1792162534|1792076134|b7257c612"
+   },
+   {
+    "laikas": "2026-10-14 18:17:28",
+    "raktas": "Charm",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_73317eb2d2c87a123431d72e55dae0|1792174634|1792088234|82a5e58a9"
+   },
+   {
+    "laikas": "2026-10-14 18:32:18",
+    "raktas": "Pronefra",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_9f6cd3915b560012b6b9989770e07e|1792175490|1792089090|259ddf8d0"
+   },
+   {
+    "laikas": "2026-10-14 18:32:32",
+    "raktas": "Pronefra",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_9f6cd3915b560012b6b9989770e07e|1792175490|1792089090|259ddf8d0"
+   },
+   {
+    "laikas": "2026-10-14 18:32:45",
+    "raktas": "Virbac",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_9f6cd3915b560012b6b9989770e07e|1792175490|1792089090|259ddf8d0"
+   },
+   {
+    "laikas": "2026-10-15 07:28:21",
+    "raktas": "Royal canin gastrointestinal",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_bf8d9a5103a24f7f171598e62ff7aa|1792222037|1792135637|479fcef00"
+   },
+   {
+    "laikas": "2026-10-15 09:22:25",
+    "raktas": "skarab4",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:eba9d1ad3e8928fca3411734a550decf519f8ffe"
+   },
+   {
+    "laikas": "2026-10-15 16:06:45",
+    "raktas": "Guminiai Pavadėliai",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_26760bd06717e9506984bce4282402|1792253133|1792166733|8612955af"
+   },
+   {
+    "laikas": "2026-10-15 17:20:40",
+    "raktas": "Impromune",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_d857a8772c12579e987cd17dc2f6b2|1792257607|1792171207|77fdf5cb1"
+   },
+   {
+    "laikas": "2026-10-16 06:22:59",
+    "raktas": "silikoninis sunu tualetas",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_ab8696372c1db941d145c4d3e32369|1792304441|1792218041|336cc532d"
+   },
+   {
+    "laikas": "2026-10-16 07:11:17",
+    "raktas": "dajana",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_b3116c19f605792008f52e19ed20d0|1792307016|1792220616|f2b0e3c10"
+   },
+   {
+    "laikas": "2026-10-16 07:25:40",
+    "raktas": "nitridac",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_b3116c19f605792008f52e19ed20d0|1792307016|1792220616|f2b0e3c10"
+   },
+   {
+    "laikas": "2026-10-16 07:44:45",
+    "raktas": "kong",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:954bacb2d8a7671de2f4ef121834abbb8907c863"
+   },
+   {
+    "laikas": "2026-10-16 08:19:06",
+    "raktas": "specific allergen management plus",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_e802050a6c5dfd0027ffe0af19497e|1792311499|1792225099|4689e0a5a"
+   },
+   {
+    "laikas": "2026-10-16 09:10:03",
+    "raktas": "Tetra PRO Energy Multi-Chips",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_6c21f65016245308630d692af4784b|1792314181|1792227781|de7ae77cc"
+   },
+   {
+    "laikas": "2026-10-16 09:13:51",
+    "raktas": "Tetra PRO Energy Multi-Chips žuvims",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_6c21f65016245308630d692af4784b|1792314181|1792227781|de7ae77cc"
+   },
+   {
+    "laikas": "2026-10-16 09:25:18",
+    "raktas": "Prekės žuvims Tetra PRO Energy Multi_",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_6c21f65016245308630d692af4784b|1792314181|1792227781|de7ae77cc"
+   },
+   {
+    "laikas": "2026-10-16 09:26:00",
+    "raktas": "Prekės žuvims Tetra PRO Energy Multi-Chips",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_6c21f65016245308630d692af4784b|1792314181|1792227781|de7ae77cc"
+   },
+   {
+    "laikas": "2026-10-16 13:22:58",
+    "raktas": "Felix",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "d:93faf6b9e35baa0910817f448fcb360d408f2094"
+   },
+   {
+    "laikas": "2026-10-16 13:24:08",
+    "raktas": "Kačių lova",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_665f01f0f34a3eb1d02430deb88136|1792329648|1792243248|4e2eb161c"
+   },
+   {
+    "laikas": "2026-10-16 19:06:49",
+    "raktas": "Ankaklis",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_324bd4b90aa194e5389aa756bb50b5|1792350337|1792263937|f66519904"
+   },
+   {
+    "laikas": "2026-10-16 19:07:12",
+    "raktas": "Ankaklis",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_324bd4b90aa194e5389aa756bb50b5|1792350337|1792263937|f66519904"
+   },
+   {
+    "laikas": "2026-10-17 03:19:31",
+    "raktas": "Pastu rinkiniai",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "d:df2e5dd94d73d0a704d67de8ff6d301209a4c6ad"
+   },
+   {
+    "laikas": "2026-10-17 03:20:41",
+    "raktas": "Mesos ir salyklo rinkinys",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "d:df2e5dd94d73d0a704d67de8ff6d301209a4c6ad"
+   },
+   {
+    "laikas": "2026-10-17 12:47:28",
+    "raktas": "Primacat",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_9f59baf2164888f5d67de78e97a008|1792414035|1792327635|564e6c6b1"
+   },
+   {
+    "laikas": "2026-10-17 14:30:22",
+    "raktas": "Skerdykla.",
+    "reiksme": "0",
+    "irenginys": "tablet",
+    "sesija": "t_ec1d16342d2bbcdb6aa8f02b290f5a|1792420097|1792333697|903bbb952"
+   },
+   {
+    "laikas": "2026-10-17 18:35:48",
+    "raktas": "acana",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_23b2a598cfc0789faa9e85b3b3c0aa|1792434899|1792348499|0e2e38d05"
+   },
+   {
+    "laikas": "2026-10-17 19:35:03",
+    "raktas": "skaniukai Cosma Chiken, Duck",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_09f8c5ca401096ebe381d9e4d21451|1792438487|1792352087|5f384129b"
+   },
+   {
+    "laikas": "2026-10-17 19:36:51",
+    "raktas": "oasy",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_a5442d5b0a27f34206aee25f85e4bf|1792438575|1792352175|a4d34b45a"
+   },
+   {
+    "laikas": "2026-10-18 17:50:10",
+    "raktas": "Sepi cat",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_d202e60eeeac155945def0c19c40c0|1792518584|1792432184|cc6431c0f"
+   },
+   {
+    "laikas": "2026-10-19 07:49:25",
+    "raktas": "Libra",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_0d8dd5badcfdf84a514afeb1f885bc|1792568912|1792482512|813f06e2f"
+   },
+   {
+    "laikas": "2026-10-19 09:34:56",
+    "raktas": "curli",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_ffa5fd92894f47a5d0bf7d19625b00|1792575284|1792488884|463a2ae27"
+   },
+   {
+    "laikas": "2026-10-19 12:49:45",
+    "raktas": "PETLIBRO",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_85124291ac05d917940c9f3db4d63a|1792586731|1792500331|06a46985d"
+   },
+   {
+    "laikas": "2026-10-19 13:05:18",
+    "raktas": "virbac",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_b49f941b048af761c3a5e813bacfbe|1792587764|1792501364|a5d2b0077"
+   },
+   {
+    "laikas": "2026-10-19 13:40:51",
+    "raktas": "Leonardo",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_f611db3d3694066175766a45d27f89|1792587406|1792501006|53beca97b"
+   },
+   {
+    "laikas": "2026-10-19 15:17:49",
+    "raktas": "ALPHA SPIRIT Wild Fish 9kg",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_3c20626bc1201d7e4501f0be5f787a|1792595846|1792509446|66bec1965"
+   },
+   {
+    "laikas": "2026-10-19 17:12:22",
+    "raktas": "Urolsyn",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_ee8f9afdc407a931868824fb53a5f5|1792602651|1792516251|21e4f292e"
+   },
+   {
+    "laikas": "2026-10-19 17:24:45",
+    "raktas": "Dresurai vokiečiu aviganiui 3 menesiai",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_e65d768426c3148482f18e677b89f4|1792603393|1792516993|32aeaa00d"
+   },
+   {
+    "laikas": "2026-10-19 17:34:46",
+    "raktas": "Royal canin hypoallergenic",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_276f41b92f15338b08ae2d71a313fa|1792604068|1792517668|64bc57b74"
+   },
+   {
+    "laikas": "2026-10-20 07:18:34",
+    "raktas": "kennels favourite",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_4d645f9466f6a3b382a72aaa0570f2|1792653344|1792566944|309813359"
+   },
+   {
+    "laikas": "2026-10-20 18:52:50",
+    "raktas": "evoque",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_6d0dfbb1ab9b9dd576454f1a11dce9|1792695101|1792608701|cde903c51"
+   },
+   {
+    "laikas": "2026-10-21 20:22:11",
+    "raktas": "Krokteil",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_86e9ec540a168c296556779dfb7413|1792786624|1792700224|d0b7b4d9c"
+   },
+   {
+    "laikas": "2026-10-21 20:22:41",
+    "raktas": "Krokteil kiten",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_86e9ec540a168c296556779dfb7413|1792786624|1792700224|d0b7b4d9c"
+   },
+   {
+    "laikas": "2026-10-22 08:26:23",
+    "raktas": "kong extreem",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_75c87d1d086fb445e8e232039e1f29|1792830360|1792743960|300b6f400"
+   },
+   {
+    "laikas": "2026-10-22 08:26:44",
+    "raktas": "kong",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_75c87d1d086fb445e8e232039e1f29|1792830360|1792743960|300b6f400"
+   },
+   {
+    "laikas": "2026-10-22 08:35:40",
+    "raktas": "kong",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_75c87d1d086fb445e8e232039e1f29|1792830360|1792743960|300b6f400"
+   },
+   {
+    "laikas": "2026-10-22 08:52:42",
+    "raktas": "su vabzdžių baltymu mažų veislių šunims",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_4da4ed6831b7436804799f4f6c78d3|1792831903|1792745503|cbcc97649"
+   },
+   {
+    "laikas": "2026-10-23 07:23:05",
+    "raktas": "Carnilove",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_0a208f6adff686423bd179747778a0|1792912897|1792826497|44972de82"
+   },
+   {
+    "laikas": "2026-10-23 08:07:04",
+    "raktas": "tunelis katėms",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_08bdb9716189cc6e5450a3a76b1b5b|1792915198|1792828798|445646f55"
+   },
+   {
+    "laikas": "2026-10-23 12:16:16",
+    "raktas": "Terariumas",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "d:04b104c89fedfe8d58f14a8236d9d92f1818bc3f"
+   },
+   {
+    "laikas": "2026-10-23 12:49:20",
+    "raktas": "Quatro",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_5810d2959dcadd53f9125c819c4d6c|1792932500|1792846100|dd18b5750"
+   },
+   {
+    "laikas": "2026-10-23 13:19:16",
+    "raktas": "Virbac cat",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_1cff70cb9e1f0f41af21a741803baa|1792934333|1792847933|917313afc"
+   },
+   {
+    "laikas": "2026-10-23 15:26:06",
+    "raktas": "Šukas Labrador",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_6d5b0f56674342d8c8b021bb3c7abd|1792941909|1792855509|5c7166786"
+   },
+   {
+    "laikas": "2026-10-23 20:18:33",
+    "raktas": "Platinum",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_ed24b5756e41bdb7366db2c702c7dd|1792918196|1792831796|ac20ee453"
+   },
+   {
+    "laikas": "2026-10-24 06:07:16",
+    "raktas": "Ammbrosia",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_31bdec4014c324f0b75b973cd9eb5b|1792994750|1792908350|2fc101a05"
+   },
+   {
+    "laikas": "2026-10-24 09:53:37",
+    "raktas": "Cuckoo",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_e3ed973073d8c84b8ed21012f4b12d|1793008182|1792921782|f66b1ae21"
+   },
+   {
+    "laikas": "2026-10-24 10:09:19",
+    "raktas": "kong",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_f083f592e7f0f925787ec2a87ee985|1793009313|1792922913|b87419cfa"
+   },
+   {
+    "laikas": "2026-10-24 10:09:39",
+    "raktas": "kong",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_f083f592e7f0f925787ec2a87ee985|1793009313|1792922913|b87419cfa"
+   },
+   {
+    "laikas": "2026-10-24 11:47:26",
+    "raktas": "Kaspineliai i plaukus",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_1111fb58de9a26f0606ec56c5ed9ba|1793014753|1792928353|46986e314"
+   },
+   {
+    "laikas": "2026-10-24 12:28:57",
+    "raktas": "Kuponas",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_78b60a43e2468bb70742dcadb08e32|1793017691|1792931291|2ed115b63"
+   },
+   {
+    "laikas": "2026-10-24 12:39:37",
+    "raktas": "Bliudeliai",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_c44a97058b905c1ab748c01c813266|1793018022|1792931622|907244ba6"
+   },
+   {
+    "laikas": "2026-10-24 12:43:39",
+    "raktas": "Narvelis šunims",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_c44a97058b905c1ab748c01c813266|1793018022|1792931622|907244ba6"
+   },
+   {
+    "laikas": "2026-10-24 16:32:09",
+    "raktas": "Cattit",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "d:a7ac4928fc646ae37b5c92d3dfeb8e1cd9411379"
+   },
+   {
+    "laikas": "2026-10-25 08:06:39",
+    "raktas": "Nature’s protection",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_bd049a77db6685679dfa80245cdaf5|1793088358|1793001958|7858e1e6a"
+   },
+   {
+    "laikas": "2026-10-25 08:55:24",
+    "raktas": "petnesos Julius-K9 l red",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_150ada38af5ccc80b446f26c919a04|1793091277|1793004877|d9e5072a4"
+   },
+   {
+    "laikas": "2026-10-25 14:11:04",
+    "raktas": "prima dog",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_5c9d1fa917d0dc49dd2b8517605eb4|1793110251|1793023851|a35a59795"
+   },
+   {
+    "laikas": "2026-10-25 15:48:20",
+    "raktas": "Ziwi peak",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_93c8df35d7643ec9bd6d77dee848d2|1793116081|1793029681|b4fd40202"
+   },
+   {
+    "laikas": "2026-10-25 16:15:56",
+    "raktas": "Menstruacines",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_ef43484b0d3c935c620932cd979ec8|1793117541|1793031141|b520d815a"
+   },
+   {
+    "laikas": "2026-10-25 16:30:28",
+    "raktas": "Ambrosia katėms",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_f1c31add5fbb8e7754fefea397c665|1793118496|1793032096|f64b943d0"
+   },
+   {
+    "laikas": "2026-10-25 17:13:09",
+    "raktas": "Gosbi",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_27b76e3dcb5ba48d3a5e5d9e3439b2|1793120510|1793034110|083e70982"
+   },
+   {
+    "laikas": "2026-10-26 03:08:53",
+    "raktas": "Gosbi",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_27b76e3dcb5ba48d3a5e5d9e3439b2|1793120510|1793034110|083e70982"
+   },
+   {
+    "laikas": "2026-10-26 04:21:34",
+    "raktas": "Virbac",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_f82ec8fcbe258adcd88b6e2f64a0d7|1793161225|1793074825|05b5667d9"
+   },
+   {
+    "laikas": "2026-10-26 05:52:21",
+    "raktas": "kattovit niere",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_707d1b0e7da237a8a58fc362e3a68e|1793166724|1793080324|3bbd10e2c"
+   },
+   {
+    "laikas": "2026-10-26 07:19:19",
+    "raktas": "Vetiq",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_c973fecc35227f21204861a7ef9f47|1793171801|1793085401|1945f108b"
+   },
+   {
+    "laikas": "2026-10-26 09:10:48",
+    "raktas": "Exclusion Intestinal maistas šunims su kiauliena ir ryžiais",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_2f901355317cc96f3a4c335b84419b|1793178600|1793092200|c5ed2b771"
+   },
+   {
+    "laikas": "2026-10-26 09:11:05",
+    "raktas": "Exclusion Intestinal maistas šunims",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_2f901355317cc96f3a4c335b84419b|1793178600|1793092200|c5ed2b771"
+   },
+   {
+    "laikas": "2026-10-26 09:11:16",
+    "raktas": "Exclusion Intestinal",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_2f901355317cc96f3a4c335b84419b|1793178600|1793092200|c5ed2b771"
+   },
+   {
+    "laikas": "2026-10-26 12:13:35",
+    "raktas": "Kong",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "d:a04bc39178be26e3d36e436baadd2a2fa3e5fa7b"
+   },
+   {
+    "laikas": "2026-10-26 12:28:44",
+    "raktas": "quatro 6unims",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_270306dc1049a43ef02f2cade186d2|1793190479|1793104079|9491cac49"
+   },
+   {
+    "laikas": "2026-10-26 14:46:49",
+    "raktas": "Jako",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_3dc469b62405365f6966143da58bfd|1793198610|1793112210|e576c5fe6"
+   },
+   {
+    "laikas": "2026-10-26 18:50:53",
+    "raktas": "Biocos",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "t_4e18af4a565bf823ef85d7e5ebf013|1793212765|1793126365|36af20808"
+   },
+   {
+    "laikas": "2026-10-27 06:46:18",
+    "raktas": "Raw Paleo kalakutienos guliašas sterilizuotoms katėms 12x100g",
+    "reiksme": "0",
+    "irenginys": "desktop",
+    "sesija": "t_a9ad97d683cee79ffc362cd2d83e31|1793256327|1793169927|59ea5999c"
+   },
+   {
+    "laikas": "2026-10-27 07:27:09",
+    "raktas": "Glycof",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "d:368ff3b741b724e707657cb7b9180b172b7c9b9b"
+   },
+   {
+    "laikas": "2026-10-27 07:27:51",
+    "raktas": "Glyco",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "d:368ff3b741b724e707657cb7b9180b172b7c9b9b"
+   },
+   {
+    "laikas": "2026-10-27 11:22:12",
+    "raktas": "Excludion",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "5219|1793704844|1793186444|84c8ab3d99f505d16d007a345cadb2d4"
+   },
+   {
+    "laikas": "2026-10-27 11:22:35",
+    "raktas": "Excludion",
+    "reiksme": "0",
+    "irenginys": "mobile",
+    "sesija": "5219|1793704844|1793186444|84c8ab3d99f505d16d007a345cadb2d4"
    }
-  }
+  ],
+  "tot": {
+   "n": "1123",
+   "z": "182",
+   "s": "483"
+  },
+  "po": [
+   {
+    "raktas": "Excludion",
+    "toliau": "pageview:Exclusion > search:Exclusion > pageview:18587 > view_item:18587 > pageview: > pageview: > pageview: > pageview: > pageview: > pageview: > pageview:"
+   },
+   {
+    "raktas": "Excludion",
+    "toliau": "pageview:35316 > view_item:35316 > pageview:Excludion > search:Excludion > pageview:Exclusion > search:Exclusion > pageview:18587 > view_item:18587 > pageview: > pageview: > pageview: > pageview: > pageview: > pageview: > pageview:"
+   },
+   {
+    "raktas": "Glyco",
+    "toliau": null
+   },
+   {
+    "raktas": "Glycof",
+    "toliau": "pageview:70 > pageview:101 > pageview:Glyco > search:Glyco"
+   },
+   {
+    "raktas": "Raw Paleo kalakutienos guliašas sterilizuotoms katėms 12x100g",
+    "toliau": "pageview:Raw Paleo > search:Raw Paleo > pageview:77 > pageview:78 > pageview:78 > pageview:78 > pageview:78 > pageview:78 > pageview:78 > pageview:78 > pageview:78 > pageview:78 > pageview:78 > pageview:78"
+   },
+   {
+    "raktas": "Biocos",
+    "toliau": "pageview:Bio > search:Bio > pageview:77 > pageview:96 > pageview:Kačiukams > search:Kačiukams > pageview:"
+   },
+   {
+    "raktas": "Jako",
+    "toliau": "pageview:Sūris > search:Sūris > pageview:25335 > view_item:25335 > add_to_cart:25335 > pageview: > view_cart:18128"
+   },
+   {
+    "raktas": "quatro 6unims",
+    "toliau": null
+   },
+   {
+    "raktas": "Kong",
+    "toliau": null
+   },
+   {
+    "raktas": "Exclusion Intestinal",
+    "toliau": "pageview:Exclusion > search:Exclusion > pageview:Exclusion > search:Exclusion"
+   },
+   {
+    "raktas": "Exclusion Intestinal maistas šunims",
+    "toliau": "pageview:Exclusion Intestinal > search:Exclusion Intestinal > pageview:Exclusion > search:Exclusion > pageview:Exclusion > search:Exclusion"
+   },
+   {
+    "raktas": "Exclusion Intestinal maistas šunims su kiauliena ir ryžiais",
+    "toliau": "pageview:Exclusion Intestinal maistas šunims > search:Exclusion Intestinal maistas šunims > pageview:Exclusion Intestinal > search:Exclusion Intestinal > pageview:Exclusion > search:Exclusion > pageview:Exclusion > search:Exclusion"
+   },
+   {
+    "raktas": "Vetiq",
+    "toliau": "pageview:78"
+   },
+   {
+    "raktas": "kattovit niere",
+    "toliau": "pageview:josera senior > search:josera senior"
+   },
+   {
+    "raktas": "Virbac",
+    "toliau": null
+   },
+   {
+    "raktas": "Gosbi",
+    "toliau": null
+   },
+   {
+    "raktas": "Gosbi",
+    "toliau": "pageview:Gosbi > search:Gosbi"
+   },
+   {
+    "raktas": "Ambrosia katėms",
+    "toliau": "pageview:81 > pageview:81 > pageview:81 > pageview:81 > pageview:81 > pageview:81 > pageview:81 > pageview:81 > pageview:19747 > view_item:19747"
+   },
+   {
+    "raktas": "Menstruacines",
+    "toliau": "pageview:305 > pageview:305 > pageview:82 > pageview:82"
+   },
+   {
+    "raktas": "Ziwi peak",
+    "toliau": null
+   },
+   {
+    "raktas": "prima dog",
+    "toliau": null
+   },
+   {
+    "raktas": "petnesos Julius-K9 l red",
+    "toliau": null
+   },
+   {
+    "raktas": "Nature’s protection",
+    "toliau": null
+   },
+   {
+    "raktas": "Cattit",
+    "toliau": null
+   },
+   {
+    "raktas": "Narvelis šunims",
+    "toliau": "pageview: > search: > pageview: > begin_checkout:26286"
+   },
+   {
+    "raktas": "Bliudeliai",
+    "toliau": "filter:mygtukas_atidaryta > pageview:Guoliai > search:Guoliai > pageview:Guoliai > search:Guoliai > pageview:Guoliai > search:Guoliai > add_to_cart:26681 > pageview: > begin_checkout:26286 > pageview:Narvelis > search:Narvelis > pageview:25993 > view_item:25993 > pageview:Narvelis šunims > search:Narvelis šunims > pageview: > search: > pageview: > begin_checkout:26286"
+   },
+   {
+    "raktas": "Kuponas",
+    "toliau": null
+   },
+   {
+    "raktas": "Kaspineliai i plaukus",
+    "toliau": "pageview:76 > pageview:95 > pageview:75"
+   },
+   {
+    "raktas": "kong",
+    "toliau": null
+   },
+   {
+    "raktas": "kong",
+    "toliau": "pageview:kong > search:kong"
+   },
+   {
+    "raktas": "Cuckoo",
+    "toliau": "filter:mygtukas_atidaryta > pageview:Coockoo > search:Coockoo > pageview:15376 > view_item:15376 > add_to_cart:15376 > pageview:15376 > view_item:15376 > add_to_cart:15376 > pageview:15376 > view_item:15376 > pageview:15376 > view_item:15376 > add_to_cart:15376 > pageview:15376 > view_item:15376 > add_to_cart:15376 > pageview:15376 > view_item:15376 > pageview:15373 > view_item:15373 > add_to_cart:15373 > pageview:15373 > view_item:15373"
+   },
+   {
+    "raktas": "Ammbrosia",
+    "toliau": null
+   },
+   {
+    "raktas": "Platinum",
+    "toliau": null
+   },
+   {
+    "raktas": "Šukas Labrador",
+    "toliau": "filter:mygtukas_atidaryta > pageview:75 > pageview:116 > pageview:116 > pageview:Šukas > search:Šukas > pageview:75 > pageview:75 > pageview:101 > pageview:101 > pageview:101"
+   },
+   {
+    "raktas": "Virbac cat",
+    "toliau": null
+   },
+   {
+    "raktas": "Quatro",
+    "toliau": "pageview:70 > pageview:"
+   },
+   {
+    "raktas": "Terariumas",
+    "toliau": "pageview:87 > pageview:304 > filter:mygtukas_atidaryta > pageview:304"
+   },
+   {
+    "raktas": "tunelis katėms",
+    "toliau": "pageview:tunelis > search:tunelis > pageview:21959 > view_item:21959 > pageview: > pageview:77 > pageview:26790 > view_item:26790 > pageview:569 > pageview: > view_cart:15568 > pageview: > view_cart:15568 > pageview: > begin_checkout:15568"
+   },
+   {
+    "raktas": "Carnilove",
+    "toliau": null
+   },
+   {
+    "raktas": "su vabzdžių baltymu mažų veislių šunims",
+    "toliau": "pageview:"
+   },
+   {
+    "raktas": "kong",
+    "toliau": "pageview:70 > pageview:70 > pageview:70 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115"
+   },
+   {
+    "raktas": "kong",
+    "toliau": "pageview: > pageview:kong > search:kong > pageview:70 > pageview:70 > pageview:70 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115"
+   },
+   {
+    "raktas": "kong extreem",
+    "toliau": "pageview:115 > pageview:kong > search:kong > pageview: > pageview:kong > search:kong > pageview:70 > pageview:70 > pageview:70 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115 > pageview:115"
+   },
+   {
+    "raktas": "Krokteil kiten",
+    "toliau": null
+   },
+   {
+    "raktas": "Krokteil",
+    "toliau": "pageview:Krokteil kiten > search:Krokteil kiten"
+   },
+   {
+    "raktas": "evoque",
+    "toliau": "pageview: > pageview:70 > pageview:95 > pageview:jaučio > search:jaučio > add_to_cart:18122 > add_to_cart:18125 > pageview: > pageview:656 > pageview:111 > pageview:111 > pageview:115 > pageview:115 > pageview:115 > pageview:123 > pageview:18587 > view_item:18587 > pageview:72 > filter:mygtukas_atidaryta > pageview:72 > filter:mygtukas_atidaryta > pageview: > pageview: > add_to_cart:18623 > pageview:18572 > view_item:18572 > pageview:36511 > view_item:36511 > add_to_cart:36511 > pageview:36511 > add_to_cart:36511 > view_item:36511 > pageview: > view_cart:18122 > pageview: > begin_checkout:18122"
+   },
+   {
+    "raktas": "kennels favourite",
+    "toliau": null
+   },
+   {
+    "raktas": "Royal canin hypoallergenic",
+    "toliau": null
+   },
+   {
+    "raktas": "Dresurai vokiečiu aviganiui 3 menesiai",
+    "toliau": "pageview:95 > pageview:95 > pageview:24421 > view_item:24421 > pageview:18655 > view_item:18655"
+   },
+   {
+    "raktas": "Urolsyn",
+    "toliau": null
+   },
+   {
+    "raktas": "ALPHA SPIRIT Wild Fish 9kg",
+    "toliau": null
+   },
+   {
+    "raktas": "Leonardo",
+    "toliau": "pageview:"
+   },
+   {
+    "raktas": "virbac",
+    "toliau": "pageview:101 > pageview:26050 > view_item:26050 > pageview:"
+   },
+   {
+    "raktas": "PETLIBRO",
+    "toliau": null
+   },
+   {
+    "raktas": "curli",
+    "toliau": null
+   },
+   {
+    "raktas": "Libra",
+    "toliau": "pageview:81 > filter:mygtukas_atidaryta > pageview:81 > pageview:"
+   },
+   {
+    "raktas": "Sepi cat",
+    "toliau": null
+   },
+   {
+    "raktas": "oasy",
+    "toliau": null
+   },
+   {
+    "raktas": "skaniukai Cosma Chiken, Duck",
+    "toliau": null
+   },
+   {
+    "raktas": "acana",
+    "toliau": null
+   }
+  ]
  }
 }
