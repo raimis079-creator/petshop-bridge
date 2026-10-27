@@ -1,0 +1,187 @@
+{
+ "v": "dep-153838",
+ "kurimas": 200,
+ "sid": 7440,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1803v",
+  "ivykiai": [
+   {
+    "laikas": "2026-10-27 12:32:18",
+    "laukas": "_stock",
+    "sena": "0",
+    "nauja": "2",
+    "saltinis": "sistema",
+    "kas": "",
+    "op_nr": "",
+    "pastaba": "Likutis"
+   },
+   {
+    "laikas": "2026-10-27 12:32:18",
+    "laukas": "_stock_status",
+    "sena": "outofstock",
+    "nauja": "instock",
+    "saltinis": "sistema",
+    "kas": "",
+    "op_nr": "",
+    "pastaba": "Likučio būsena"
+   },
+   {
+    "laikas": "2026-10-27 12:32:19",
+    "laukas": "_cost_price",
+    "sena": "2.0700",
+    "nauja": "2.07",
+    "saltinis": "sistema",
+    "kas": "",
+    "op_nr": "",
+    "pastaba": "Savikaina"
+   },
+   {
+    "laikas": "2026-10-27 12:32:19",
+    "laukas": "partija",
+    "sena": "0",
+    "nauja": "2",
+    "saltinis": "sistema",
+    "kas": "",
+    "op_nr": "PART4553",
+    "pastaba": "Gavimas: +2 vnt. po 2,07 €"
+   },
+   {
+    "laikas": "2026-10-27 12:32:19",
+    "laukas": "_stock",
+    "sena": "0",
+    "nauja": "3",
+    "saltinis": "sistema",
+    "kas": "",
+    "op_nr": "",
+    "pastaba": "Likutis"
+   },
+   {
+    "laikas": "2026-10-27 12:32:19",
+    "laukas": "_stock_status",
+    "sena": "outofstock",
+    "nauja": "instock",
+    "saltinis": "sistema",
+    "kas": "",
+    "op_nr": "",
+    "pastaba": "Likučio būsena"
+   },
+   {
+    "laikas": "2026-10-27 12:32:19",
+    "laukas": "_cost_price",
+    "sena": "2.5400",
+    "nauja": "2.54",
+    "saltinis": "sistema",
+    "kas": "",
+    "op_nr": "",
+    "pastaba": "Savikaina"
+   },
+   {
+    "laikas": "2026-10-27 12:32:19",
+    "laukas": "partija",
+    "sena": "0",
+    "nauja": "3",
+    "saltinis": "sistema",
+    "kas": "",
+    "op_nr": "PART4555",
+    "pastaba": "Gavimas: +3 vnt. po 2,54 €"
+   },
+   {
+    "laikas": "2026-10-27 16:19:19",
+    "laukas": "trumpas aprašymas",
+    "sena": "157 simb.",
+    "nauja": "189 simb.",
+    "saltinis": "zmogus",
+    "kas": "Inga",
+    "op_nr": "",
+    "pastaba": "Trumpas aprašymas pakeistas kortelėje"
+   },
+   {
+    "laikas": "2026-10-27 16:21:20",
+    "laukas": "aprašymas",
+    "sena": "979 simb.",
+    "nauja": "992 simb.",
+    "saltinis": "zmogus",
+    "kas": "Inga",
+    "op_nr": "",
+    "pastaba": "Aprašymas pakeistas kortelėje"
+   },
+   {
+    "laikas": "2026-10-27 16:21:32",
+    "laukas": "Geriausia iki",
+    "sena": "",
+    "nauja": "2027-01-03",
+    "saltinis": "zmogus",
+    "kas": "Inga",
+    "op_nr": "",
+    "pastaba": "Partija #4553 · kortelėje"
+   },
+   {
+    "laikas": "2026-10-27 16:21:49",
+    "laukas": "_stock",
+    "sena": "2",
+    "nauja": "4",
+    "saltinis": "zmogus",
+    "kas": "Inga",
+    "op_nr": "",
+    "pastaba": "Likutis"
+   },
+   {
+    "laikas": "2026-10-27 16:21:49",
+    "laukas": "partija",
+    "sena": "2",
+    "nauja": "4",
+    "saltinis": "zmogus",
+    "kas": "Inga",
+    "op_nr": "PART4559",
+    "pastaba": "Gavimas: +2 vnt. po 2,07 €"
+   },
+   {
+    "laikas": "2026-10-27 16:22:00",
+    "laukas": "_stock",
+    "sena": "4",
+    "nauja": "2",
+    "saltinis": "zmogus",
+    "kas": "Inga",
+    "op_nr": "",
+    "pastaba": "Likutis"
+   },
+   {
+    "laikas": "2026-10-27 16:22:51",
+    "laukas": "post_status",
+    "sena": "draft",
+    "nauja": "publish",
+    "saltinis": "zmogus",
+    "kas": "Inga",
+    "op_nr": "",
+    "pastaba": "Juodraštis → Prekyboje"
+   },
+   {
+    "laikas": "2026-10-27 16:29:22",
+    "laukas": "aprašymas",
+    "sena": "1017 simb.",
+    "nauja": "1014 simb.",
+    "saltinis": "zmogus",
+    "kas": "Inga",
+    "op_nr": "",
+    "pastaba": "Aprašymas pakeistas kortelėje"
+   }
+  ],
+  "registras": "\n\t\tstatic $daryta = array();\n\t\t$pid = (int) $pid; if ( $pid <= 0 || isset( $daryta[ $pid ] ) ) { return; }\n\t\t$daryta[ $pid ] = 1;\n\t\tif ( function_exists( 'ps_sources_sync_saugiai' ) ) { ps_sources_sync_saugiai( $pid ); }\n\t\telseif ( class_exists( 'Petshop_Sources' ) ) { Petshop_Sources::sinchronizuoti( $pid, false ); }\n\t}\n\n\tpublic static function gauta( $pid, $kiekis, $likutis ) {\n\t\tif ( (int) $pid <= 0 ) { return; }\n\t\tif ( ! self::$laukia ) { add_action( 'shutdown', array( __CLASS__, 'vykdyti' ), 5 ); }\n\t\tself::$laukia[ (int) $pid ] = 1;\n\t}\n\n\tpublic static function vykdyti() {\n\t\t$visi = array();\n\t\tforeach ( array_keys( self::$laukia ) as $pid ) { $visi[ $pid ] = self::perrusiuoti( $pid, false ); }\n\t\tself::$laukia = array();\n\t\tupdate_option( 'ps_gavimo_perrus_pask', array( 'laikas' => current_time( 'mysql' ), 'rez' => $visi ), false );\n\t}\n\n\t/** Prekės ID + jos DP pakai. */\n\tpublic static function prekes_ir_pakai( $pid ) {\n\t\tglobal $wpdb;\n\t\t$ids = array( (int) $pid );\n\t\t$pakai = $wpdb->get_col( $wpdb->prepare( \"SELECT post_id FROM {$wpdb->postmeta} WHERE meta_key='_dp_base_product_id' AND meta_value=%s\", (string) (int) $pid ) );\n\t\tforeach ( $pakai as $x ) { $ids[] = (int) $x; }\n\t\treturn array_unique( $ids );\n\t}\n\n\t/** Atviri apmokėti užsakymai su šios prekės (ar pako) eilutėmis, kurių šaltinis ne AV. */\n\tpublic static function kandidatai( $pid ) {\n\t\tglobal $wpdb; $p = $wpdb->prefix;\n\t\t$ids = self::prekes_ir_pakai( $pid );\n\t\t$in = implode( ',', array_map( 'intval', $ids ) );\n\t\t$rows = $wpdb->get_results( \"SELECT l.order_id, l.order_item_id, l.product_id FROM {$p}wc_orde",
+  "katalogas": [
+   " *   AV likutis       (`_own_stock_qty`)  kiek TU parsiveze i Avesos sandeli.",
+   " * vietoje (likutis, tiekejo likutis, parduodama, kaina, marza, savikaina,",
+   " * butu nugules i `_own_stock_qty`, kurio parduotuve neskaito. Skaicius butu",
+   " * irasytas, zurnale matytusi, o preke pirkejui liktu neparduodama. Tyli",
+   " * `_own_stock_qty` visoje bazeje yra vos 1 irasas.",
+   " * ISIMTIS: `_own_stock_qty` lieka tiems atvejams, kai TA PACIA preke turim ir",
+   " *   kad neparduodama 100 d.\" — teisinga ir svarbi.",
+   " *   visas katalogas atrodytu neparduodamas keturis menesius, ir eile taptu",
+   " *   neparduodama\" prie uzdarytos parduotuves prasmes neturi.",
+   " *   (kiek laiko neparduodama) ir PREKIU GALIOJIMAS (geriausia iki) turi"
+  ]
+ }
+}
