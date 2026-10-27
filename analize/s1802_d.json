@@ -1,0 +1,55 @@
+{
+ "1": {
+  "v": "S1802d",
+  "core_filter": [
+   "537: * Renderina sablona is repo (templates/emails/{slug}.php).",
+   "540: public static function render( $flow, $payload, $row = array() ) {",
+   "546: $file = PETSHOP_CORE_DIR . 'templates/emails/' . $slug . '.php';",
+   "548: $custom = apply_filters( 'petshop_email_template_path', $file, $flow, $slug );"
+  ],
+  "filter_kur": {
+   "class-email-dispatch.php": [
+    "548: $custom = apply_filters( 'petshop_email_template_path', $file, $flow, $slug );"
+   ]
+  },
+  "pakartoti_hook": [
+   "4: * Description: S1685 (Q4 planas, lifecycle etapas 1): refill_due laiškas „Pakartoti tą patį\" — v1.1.0 GRUPUOJA PAGAL PASKUTINĮ UŽSAKYMĄ (Raimio sprendimas 09-15): laiške visos to užsakymo sekamos maisto prekės su kiekiais ir dabartinėmis kainomis, vienas mygt",
+   "17: add_filter( 'petshop_email_template_path', array( __CLASS__, 'sablonas' ), 20, 3 );",
+   "25: $f = WPMU_PLUGIN_DIR . '/ps-sablonai/refill-pakartoti.php';"
+  ],
+  "venipak_plugin": [
+   "wc-venipak-shipping"
+  ],
+  "pazadas": [
+   "4: * Description: (1) Prekės puslapyje po „Turime“: „Išsiunčiame per 1–2 d. d.“ + pristatymo kaina (paštomatas 2,15 € / nemokamai nuo 30 € / kurjeris 3,99 €;",
+   "5: *   > 25 kg arba „Tik kurjeriu“ → tik kurjeris). (2) €/kg po kaina — tik sausam maistui ir kraikui, svoris iš pavadinimo, ≥ 1 kg.",
+   "10: * Version: 1.0.1 (30,00 € → 30 €)",
+   "27: add_filter( 'woocommerce_get_stock_html', array( __CLASS__, 'stock_html' ), 30, 2 );",
+   "29: add_action( 'woocommerce_single_product_summary', array( __CLASS__, 'kg' ), 10 ); // iškart po kainos (kaina prio 10, registruota anksčiau)",
+   "45: 'nemokamas'  => $c ? Petshop_Schema_Prekes::NEMOKAMAS_NUO_CT / 100 : 30.0,",
+   "73: $kaina = (float) wc_get_price_to_display( $product );",
+   "75: $eil2 = ( $kaina >= $k['nemokamas'] )",
+   "96: $kaina = (float) wc_get_price_to_display( $product );",
+   "97: if ( $kaina <= 0 ) { return; }",
+   "98: echo '<p class=\"ps-kg\">' . esc_html( self::eur( $kaina / $kg ) ) . '/kg</p>';"
+  ],
+  "layout_fn": [
+   "37: public static function logo_url() {",
+   "45: public static function open( $subject, $preheader = '' ) {",
+   "75: public static function p( $html, $size = 15 ) {",
+   "79: public static function muted( $html, $size = 12 ) {",
+   "86: public static function button( $url, $label ) {",
+   "96: public static function secondary( $links ) {",
+   "106: public static function divider() {",
+   "114: public static function close( $flow_class = 'service', $email = '', $reason = '' ) {",
+   "144: public static function wrap( $args ) {"
+  ]
+ },
+ "v": "dep-084638",
+ "kurimas": 200,
+ "sid": 7409,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
