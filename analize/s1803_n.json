@@ -1,0 +1,37 @@
+{
+ "v": "dep-151200",
+ "kurimas": 200,
+ "sid": 7430,
+ "sa_push": {
+  "status": 500,
+  "body": "<!DOCTYPE html><html lang=\"en\"><head><meta charset=\"UTF-8\"><title>Server errror</title><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\"><link href=\"/iv-error-pages/error.css\" rel="
+ },
+ "GO": {
+  "v": "S1803n",
+  "s512_len": 9895,
+  "s512": [
+   "    $html = preg_replace('#<style[^>]*>.*?</style>#is', ' ', $html);",
+   "    $html = preg_replace('#<script[^>]*>.*?</script>#is', ' ', $html);",
+   "    $html = preg_replace('#<!--.*?-->#s', ' ', $html);",
+   "    $html = preg_replace('/Trumpas\\s+prek\\x{0117}s\\s+apra\\x{0161}ymas/iu', ' ', $html);",
+   "    $html = preg_replace('/(?:Pakuot\\x{0117}s\\s+(?:dydis|matmenys)|I\\x{0161}matavimai|Matmenys)\\s*:?\\s*\\d+[.,]?\\d*\\s*[x\\x{00D7}]\\s*\\d+[.,]?\\d*(?:\\s*[x\\x{00D7}]\\s*\\d+[.,]?\\d*)?\\s*(?:cm|mm)\\.?/iu', ' ', $html);",
+   "    $html = preg_replace('/\\b\\d+[.,]?\\d*\\s*[x\\x{00D7}]\\s*\\d+[.,]?\\d*\\s*[x\\x{00D7}]\\s*\\d+[.,]?\\d*\\s*(?:cm|mm)\\b\\.?/iu', ' ', $html);",
+   "    $html = preg_replace('#<p>\\s*</p>#i', '', $html);",
+   "/* ---------- FALLBACK valymas (aksesuarams) ---------- */",
+   "    $html = preg_replace('#<li>\\s*</li>#i', ' ', $html);",
+   "    $html = preg_replace('/<(h[1-6]|strong|b|p)[^>]*>\\s*Pagrindinis\\s+apra\\x{0161}ymas\\s*<\\/\\1>/iu', ' ', $html);",
+   "    $html = preg_replace('#<ul>\\s*</ul>#i', '', $html);",
+   "        echo apply_filters('the_content', $fb);"
+  ],
+  "dp": {
+   "petshop-rinkiniai.php": [
+    "\t\t\t$tekstas = trim( wp_strip_all_tags( $preke->get_description() ) );",
+    "\t\t$html = trim( (string) $preke->get_description() );",
+    "\t\techo wp_kses_post( wpautop( do_shortcode( $post->post_content ) ) );",
+    "\t\t\t\t\t\t|| trim( wp_strip_all_tags( $p->get_description() ) ) !== '' ),",
+    "\t\t\t$prod->set_description( $turinys );",
+    "\t\t\t$prod->set_description( $baze->get_description() );"
+   ]
+  }
+ }
+}
