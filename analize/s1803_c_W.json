@@ -1,0 +1,152 @@
+{
+ "v": "dep-094723",
+ "kurimas": 200,
+ "sid": 7419,
+ "data": {
+  "ktx_dafnija.txt": {
+   "id": 37267,
+   "status": 201
+  },
+  "ktx_mysis.txt": {
+   "id": 37268,
+   "status": 201
+  },
+  "ktx_gammarus.txt": {
+   "id": 37269,
+   "status": 201
+  },
+  "ktx_stinta.txt": {
+   "id": 37270,
+   "status": 201
+  },
+  "ktx_krevete.txt": {
+   "id": 37271,
+   "status": 201
+  },
+  "ktx_krilis.txt": {
+   "id": 37272,
+   "status": 201
+  }
+ },
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "W": {
+  "v": "S1803c",
+  "faze": "W",
+  "patikra": {
+   "KTX-DAFNIJA-500": "OK",
+   "KTX-MYSIS-500": "OK",
+   "KTX-GAMMARUS-500": "OK",
+   "KTX-STINTA-500": "OK",
+   "KTX-KREVETE-500": "OK",
+   "KTX-KRILIS-500": "OK"
+  },
+  "pak_term": null,
+  "forma_term": null,
+  "d_params": {
+   "d_ktx_dafnija_txt": 37267,
+   "d_ktx_mysis_txt": 37268,
+   "d_ktx_gammarus_txt": 37269,
+   "d_ktx_stinta_txt": 37270,
+   "d_ktx_krevete_txt": 37271,
+   "d_ktx_krilis_txt": 37272
+  },
+  "terminai": {
+   "pak": 768,
+   "forma": 769
+  },
+  "sync": "ps_sources_sync_saugiai per _own_stock_qty",
+  "src": {
+   "37273": [
+    {
+     "source": "av",
+     "stock_qty": null,
+     "cost_net": null,
+     "is_active": "1",
+     "priority": "1"
+    }
+   ],
+   "37275": [
+    {
+     "source": "av",
+     "stock_qty": null,
+     "cost_net": null,
+     "is_active": "1",
+     "priority": "1"
+    }
+   ],
+   "37277": [
+    {
+     "source": "av",
+     "stock_qty": null,
+     "cost_net": null,
+     "is_active": "1",
+     "priority": "1"
+    }
+   ],
+   "37279": [
+    {
+     "source": "av",
+     "stock_qty": null,
+     "cost_net": null,
+     "is_active": "1",
+     "priority": "1"
+    }
+   ],
+   "37281": [
+    {
+     "source": "av",
+     "stock_qty": null,
+     "cost_net": null,
+     "is_active": "1",
+     "priority": "1"
+    }
+   ],
+   "37283": [
+    {
+     "source": "av",
+     "stock_qty": null,
+     "cost_net": null,
+     "is_active": "1",
+     "priority": "1"
+    }
+   ]
+  },
+  "res": {
+   "KTX-DAFNIJA-500": {
+    "id": 37273,
+    "img": 37274
+   },
+   "KTX-MYSIS-500": {
+    "id": 37275,
+    "img": 37276
+   },
+   "KTX-GAMMARUS-500": {
+    "id": 37277,
+    "img": 37278
+   },
+   "KTX-STINTA-500": {
+    "id": 37279,
+    "img": 37280
+   },
+   "KTX-KREVETE-500": {
+    "id": 37281,
+    "img": 37282
+   },
+   "KTX-KRILIS-500": {
+    "id": 37283,
+    "img": 37284
+   }
+  },
+  "created": [
+   37273,
+   37275,
+   37277,
+   37279,
+   37281,
+   37283
+  ]
+ }
+}
