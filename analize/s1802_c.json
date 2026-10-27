@@ -1,0 +1,607 @@
+{
+ "1": {
+  "v": "S1802c",
+  "paskyra_delivery_eilutes": [
+   "90: if ($_SERVER['REQUEST_METHOD'] !== 'POST') return;",
+   "194: if ($tip === 'kurjeris') {",
+   "200: Petshop_Prenumerata::keisti_pristatyma($sid, array('tipas' => 'kurjeris', 'adresas' => $adr));",
+   "201: self::pranesimas('Pristatymas: Venipak kurjeris — ' . $adr . '.');",
+   "202: } elseif ($tip === 'pastomatas') {",
+   "203: $tid = isset($_POST['pr_terminalas']) ? sanitize_text_field($_POST['pr_terminalas']) : '';",
+   "204: $ter = self::venipak_terminalas($tid);",
+   "206: Petshop_Prenumerata::keisti_pristatyma($sid, array('tipas' => 'pastomatas', 'pastomatas' => $ter, 'terminal_id' => $tid));",
+   "265: 'payment_method'  => 'manual',",
+   "266: 'delivery'        => array(",
+   "293: /* Venipak pastomatai — oficialus API, transient 12 val. */",
+   "294: protected static function venipak_sarasas() {",
+   "295: $c = get_transient('psn3_venipak_ter');",
+   "297: $r = wp_remote_get('https://go.venipak.lt/ws/get_pickup_points?country=LT', array('timeout' => 15));",
+   "307: if ($arr) set_transient('psn3_venipak_ter', $arr, 12 * HOUR_IN_SECONDS);",
+   "310: protected static function venipak_terminalas($id) {",
+   "311: foreach (self::venipak_sarasas() as $t) if ($t['id'] === (string) $id) return $t['p'];",
+   "366: $del = json_decode($s['delivery_json'] ? $s['delivery_json'] : '{}', true);",
+   "414: echo '<form method=\"post\" class=\"psn3-inline\">' . $hid . '<input type=\"hidden\" name=\"ps_pren_veiksmas\" value=\"item_kiekis\" /><input type=\"hidden\" name=\"item_id\" value=\"' . (int) $it['id'] . '\" /><input type=\"hidden",
+   "416: echo '<form method=\"post\" class=\"psn3-inline\">' . $hid . '<input type=\"hidden\" name=\"ps_pren_veiksmas\" value=\"item_kiekis\" /><input type=\"hidden\" name=\"item_id\" value=\"' . (int) $it['id'] . '\" /><input type=\"hidden",
+   "418: echo '<form method=\"post\" class=\"psn3-inline\" onsubmit=\"return confirm(\\'Pašalinti prekę iš prenumeratos?\\')\">' . $hid . '<input type=\"hidden\" name=\"ps_pren_veiksmas\" value=\"item_salinti\" /><input type=\"hidden\" n",
+   "431: echo '<div class=\"psn3-if\" id=\"psn3-daz-' . $sid . '\"><form method=\"post\">' . $hid . '<input type=\"hidden\" name=\"ps_pren_veiksmas\" value=\"daznis\" /><select name=\"intervalas\">';",
+   "436: $pr_tipas = (isset($del['tipas']) && $del['tipas'] === 'kurjeris') ? 'Venipak kurjeris' : 'Venipak paštomatas';",
+   "437: $pr_adr = isset($del['adresas']) ? $del['adresas'] : (isset($del['pastomatas']) ? $del['pastomatas'] : '—');",
+   "439: $ter = self::venipak_sarasas();",
+   "443: echo '<div class=\"psn3-if\" id=\"psn3-pr-' . $sid . '\"><form method=\"post\">' . $hid . '<input type=\"hidden\" name=\"ps_pren_veiksmas\" value=\"pristatymas\" />';",
+   "444: echo '<label><input type=\"radio\" name=\"pr_tipas\" value=\"pastomatas\" class=\"psn3-pr-r\" data-sid=\"' . $sid . '\"' . ($pr_tipas === 'Venipak paštomatas' ? ' checked' : '') . '> Venipak paštomatas</label>';",
+   "445: echo '<div class=\"psn3-pr-past\" id=\"psn3-past-' . $sid . '\"' . ($pr_tipas === 'Venipak paštomatas' ? '' : ' style=\"display:none\"') . '>';",
+   "448: echo '<input type=\"hidden\" name=\"pr_terminalas\" id=\"psn3-vh-' . $sid . '\" value=\"' . esc_attr(isset($del['terminal_id']) ? $del['terminal_id'] : '') . '\" />';",
+   "450: echo '<div class=\"psn3-vc\" id=\"psn3-vc-' . $sid . '\">' . ($pr_tipas === 'Venipak paštomatas' && $pr_adr !== '—' ? 'Pasirinkta: <b>' . esc_html($pr_adr) . '</b>' : '') . '</div>';",
+   "455: echo '<label><input type=\"radio\" name=\"pr_tipas\" value=\"kurjeris\" class=\"psn3-pr-r\" data-sid=\"' . $sid . '\"' . ($pr_tipas === 'Venipak kurjeris' ? ' checked' : '') . '> Venipak kurjeris į namus</label>';",
+   "456: echo '<div class=\"psn3-pr-kur psn3-pilk\" id=\"psn3-kur-' . $sid . '\"' . ($pr_tipas === 'Venipak kurjeris' ? '' : ' style=\"display:none\"') . '>';",
+   "465: echo '<form method=\"post\" class=\"psn3-sms\">' . $hid . '<input type=\"hidden\" name=\"ps_pren_veiksmas\" value=\"sms\" />';",
+   "475: echo '<div class=\"psn3-v-eile\"><form method=\"post\">' . $hid . '<input type=\"hidden\" name=\"ps_pren_veiksmas\" value=\"testi\" /><button class=\"psn3-cta\" type=\"submit\">Tęsti prenumeratą</button></form>';",
+   "480: echo '<form method=\"post\">' . $hid . '<input type=\"hidden\" name=\"ps_pren_veiksmas\" value=\"praleisti\" /><button class=\"psn3-nk\" type=\"submit\">Praleisti šį kartą</button></form></div>';",
+   "482: echo '<div class=\"psn3-v-eile\"><form method=\"post\">' . $hid . '<input type=\"hidden\" name=\"ps_pren_veiksmas\" value=\"patvirtinti\" /><button class=\"psn3-cta\" type=\"submit\">Patvirtinti siuntą</button></form>';",
+   "483: echo '<form method=\"post\">' . $hid . '<input type=\"hidden\" name=\"ps_pren_veiksmas\" value=\"praleisti\" /><button class=\"psn3-nk\" type=\"submit\">Praleisti</button></form>';",
+   "489: echo '<form method=\"post\" class=\"psn3-inline\">' . $hid . '<input type=\"hidden\" name=\"ps_pren_veiksmas\" value=\"praleisti\" /><button class=\"psn3-nk\" type=\"submit\">Praleisti</button></form></div>';",
+   "492: echo '<div class=\"psn3-pauze-e\"><form method=\"post\">' . $hid . '<input type=\"hidden\" name=\"ps_pren_veiksmas\" value=\"pauzuoti\" /><button class=\"psn3-nk psn3-nk-pilk\" type=\"submit\">Pristabdyti prenumeratą</button></f",
+   "496: echo '<form method=\"post\">' . $hid . '<input type=\"hidden\" name=\"ps_pren_veiksmas\" value=\"atsaukti\" /><input type=\"hidden\" name=\"patvirtinu\" value=\"1\" /><button class=\"psn3-mygt psn3-mygt-raud\" type=\"submit\">Nutraukt",
+   "537: echo '<form method=\"post\">';",
+   "542: echo '<form method=\"post\">';",
+   "552: $ter_js = array(); foreach (self::venipak_sarasas() as $t) $ter_js[] = $t;",
+   "562: if(past)past.style.display=(t.value===\"pastomatas\")?\"\":\"none\";",
+   "563: if(kur)kur.style.display=(t.value===\"kurjeris\")?\"\":\"none\";"
+  ],
+  "t5_kelias": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/templates/emails/subscription-t5.php",
+  "t5": "<?php\n/**\n * Sablonas: subscription_t5_notice — 5 d. iki prenumeratos siuntos (M10/F19).\n * TRANSACTIONAL, svarus paslauginis (TZ 4.4.5 — be komercinio turinio).\n *\n * ★ S1506: F19 gime kaip confirm_required (sprendimas 2026-08-29) — tekstas\n *   ir mygtukai APVERSTI, kaip numate S1473 komentaras. Dabar sablonas\n *   REZIMO PAGRINDU: confirm_required → „patvirtinkite\", notify_only →\n *   „nieko daryti nereikia\". Neteisingas tekstas confirm rezime reisktu,\n *   kad klientas nieko nedaro ir LIEKA BE SIUNTOS.\n *\n * Payload (variklio schema): subscription_id, product_name, delivery_date,\n * interval_days, mode, confirm_url, skip_url. Suderinamumas su senesne\n * schema: next_charge_date, next_charge_amount, cancel_url.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\n$data   = isset( $payload['delivery_date'] ) ? (string) $payload['delivery_date']\n        : ( isset( $payload['next_charge_date'] ) ? (string) $payload['next_charge_date'] : '' );\n$suma   = isset( $payload['next_charge_amount'] ) ? (float) $payload['next_charge_amount'] : 0;\n$preke  = isset( $payload['product_name'] ) ? (string) $payload['product_name'] : '';\n$qty    = isset( $payload['qty'] ) ? (int) $payload['qty'] : 0;\n$curl   = isset( $payload['confirm_url'] ) ? (string) $payload['confirm_url'] : '';\n$skip   = isset( $payload['skip_url'] ) ? (string) $payload['skip_url'] : '';\n$cancel = isset( $payload['cancel_url'] ) ? (string) $payload['cancel_url'] : '';\n$mode   = isset( $payload['mode'] ) ? (string) $payload['mode'] : 'confirm_required';\n$email  = isset( $recipient ) ? $recipient : '';\n$fc     = isset( $flow_class ) ? $flow_class : 'transactional';\n\n$reikia_patvirtinti = ( $mode !== 'notify_only' );\n$paskyra = home_url( '/paskyra/prenumeratos/' );\n\n$subject = $reikia_patvirtinti\n\t? 'Ar siunčiame? Jūsų reguliari siunta — po 5 dienų'\n\t: 'Jūsų reguliari siunta — po 5 dienų';\n\n/* 1. Kas ir kada */\n$eilute = ( $data ? esc_html( $data ) : 'Po 5 dienų' ) . ' paruošime jūsų reguliarų užsakymą';\nif ( $preke ) {\n\t$eilute .= ' — ' . esc_html( $preke );\n\tif ( $qty > 1 ) { $eilute .= ', ' . $qty . ' vnt'; }\n}\nif ( $suma > 0 ) { $eilute .= ' (' . number_format( $suma, 2, ',', ' ' ) . ' €)'; }\n$body = Petshop_Email_Layout::p( $eilute . '.' );\n\n/* 2. Ko is kliento tikimasi — priklauso NUO REZIMO */\nif ( $reikia_patvirtinti ) {\n\t$body .= Petshop_Email_Layout::p(\n\t\t'Prieš siųsdami visada pasiklausiame. Jei viskas tinka, paspauskite „Patvirtinti siuntą“ — '\n\t\t. 'be patvirtinimo siuntos neruošiame.'\n\t);\n\t$body .= Petshop_Email_Layout::button( $curl ? $curl : $paskyra, 'Patvirtinti siuntą' );\n\t$antriniai = array();\n\tif ( $skip ) { $antriniai['Šį kartą praleisti'] = $skip; }\n\t$antriniai['Keisti datą ar kiekį'] = $paskyra;\n\t$body .= Petshop_Email_Layout::secondary( $antriniai );\n\t$body .= Petshop_Email_Layout::p(\n\t\t'Jei nespėsite atsakyti, nieko blogo neatsitiks — siuntos neruošime ir priminsime po savaitės.'\n\t);\n} else {\n\t$body .= Petshop_Email_Layout::p(\n\t\t'Jei viskas tinka, nieko daryti nereikia — siuntą paruošime. '\n\t\t. 'Jei norite ką nors pakeisti ar šį kartą praleisti, tai galite padaryti čia.'\n\t);\n\t$body .= Petshop_Email_Layout::button( $paskyra, 'Valdyti siuntą' );\n\t$antriniai = array();\n\tif ( $skip ) { $antriniai['Šį kartą praleisti'] = $skip; }\n\tif ( $cancel ) { $antriniai['Atsisakyti prenumeratos'] = $cancel; }\n\t$body .= Petshop_Email_Layout::secondary( $antriniai );\n}\n\necho Petshop_Email_Layout::wrap( array(\n\t'subject'    => $subject,\n\t'preheader'  => $reikia_patvirtinti\n\t\t? 'Patvirtinkite, praleiskite arba pakeiskite — kaip jums patogiau.'\n\t\t: 'Jei reikia, galite ją pakeisti arba praleisti.',\n\t'body'       => $body,\n\t'flow_class' => $fc,\n\t'email'      => $email,\n\t'reason'     => 'Gavote šį laišką, nes turite aktyvią reguliarių siuntų prenumeratą petshop.lt.',\n) );\n",
+  "email_content_rows": [],
+  "SQL": "Unknown column 'blocks' in 'SELECT'",
+  "email_content_cols": [
+   "id",
+   "flow",
+   "version",
+   "status",
+   "subject",
+   "preheader",
+   "reason",
+   "blocks_json",
+   "notes",
+   "author_id",
+   "created_at",
+   "published_at"
+  ],
+  "zonos": [
+   {
+    "zona": "Neringos savivaldybe",
+    "metodai": [
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "inst": 9,
+      "title": "VENIPAK paštomatai/atsiėmimo punktai",
+      "enabled": "yes",
+      "cost": "",
+      "min": ""
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 10,
+      "title": "VENIPAK Kurjeris",
+      "enabled": "yes",
+      "cost": "",
+      "min": ""
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "inst": 13,
+      "title": "LP Express",
+      "enabled": "yes",
+      "cost": "flat",
+      "min": ""
+     }
+    ]
+   },
+   {
+    "zona": "Lietuva",
+    "metodai": [
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "inst": 3,
+      "title": "VENIPAK paštomatai/atsiėmimo punktai",
+      "enabled": "yes",
+      "cost": "",
+      "min": ""
+     },
+     {
+      "id": "free_shipping",
+      "inst": 1,
+      "title": "Nemokamas pristatymas",
+      "enabled": "no",
+      "cost": "",
+      "min": "0"
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 2,
+      "title": "VENIPAK Kurjeris",
+      "enabled": "yes",
+      "cost": "",
+      "min": ""
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 6,
+      "title": "VENIPAK Kurjeris",
+      "enabled": "yes",
+      "cost": "",
+      "min": ""
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 7,
+      "title": "VENIPAK Kurjeris",
+      "enabled": "yes",
+      "cost": "",
+      "min": ""
+     },
+     {
+      "id": "shopup_venipak_shipping_courier_method",
+      "inst": 8,
+      "title": "VENIPAK Kurjeris",
+      "enabled": "yes",
+      "cost": "",
+      "min": ""
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "inst": 12,
+      "title": "LP Express",
+      "enabled": "yes",
+      "cost": "flat",
+      "min": ""
+     },
+     {
+      "id": "woo_lithuaniapost_lpexpress_terminal",
+      "inst": 15,
+      "title": "LP Express kurjeris",
+      "enabled": "yes",
+      "cost": "weight",
+      "min": ""
+     },
+     {
+      "id": "local_pickup",
+      "inst": 16,
+      "title": "Atsiėmimas AV — Liucionių g. 46, Liucionys",
+      "enabled": "no",
+      "cost": "0",
+      "min": ""
+     }
+    ]
+   },
+   {
+    "zona": "Baltijos šalys, be LIetuvos",
+    "metodai": [
+     {
+      "id": "shopup_venipak_shipping_pickup_method",
+      "inst": 5,
+      "title": "VENIPAK paštomatai/atsiėmimo punktai",
+      "enabled": "yes",
+      "cost": "",
+      "min": ""
+     }
+    ]
+   }
+  ],
+  "tarifai": [
+   {
+    "id": "10",
+    "vezejas": "lp_express",
+    "tipas": "pastomatas",
+    "svoris_nuo_g": "0",
+    "svoris_iki_g": null,
+    "kaina_ct": "135",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 pastomatas XS",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "XS",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "11",
+    "vezejas": "lp_express",
+    "tipas": "pastomatas",
+    "svoris_nuo_g": "0",
+    "svoris_iki_g": null,
+    "kaina_ct": "140",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 pastomatas S",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "S",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "12",
+    "vezejas": "lp_express",
+    "tipas": "pastomatas",
+    "svoris_nuo_g": "0",
+    "svoris_iki_g": null,
+    "kaina_ct": "145",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 pastomatas M",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "M",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "13",
+    "vezejas": "lp_express",
+    "tipas": "pastomatas",
+    "svoris_nuo_g": "0",
+    "svoris_iki_g": null,
+    "kaina_ct": "175",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 pastomatas L",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "L",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "14",
+    "vezejas": "lp_express",
+    "tipas": "pastomatas",
+    "svoris_nuo_g": "0",
+    "svoris_iki_g": null,
+    "kaina_ct": "290",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 pastomatas XL",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "XL",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "15",
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "50",
+    "svoris_iki_g": "500",
+    "kaina_ct": "300",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 kurjeris",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "16",
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "501",
+    "svoris_iki_g": "1000",
+    "kaina_ct": "300",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 kurjeris",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "17",
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "1001",
+    "svoris_iki_g": "2000",
+    "kaina_ct": "300",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 kurjeris",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "18",
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "2001",
+    "svoris_iki_g": "3000",
+    "kaina_ct": "355",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 kurjeris",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "19",
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "3001",
+    "svoris_iki_g": "5000",
+    "kaina_ct": "355",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 kurjeris",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "20",
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "5001",
+    "svoris_iki_g": "10000",
+    "kaina_ct": "440",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 kurjeris",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "21",
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "10001",
+    "svoris_iki_g": "15000",
+    "kaina_ct": "510",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 kurjeris",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "22",
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "15001",
+    "svoris_iki_g": "20000",
+    "kaina_ct": "510",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 kurjeris",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "23",
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "20001",
+    "svoris_iki_g": "30000",
+    "kaina_ct": "510",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 kurjeris",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "24",
+    "vezejas": "lp_express",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "30001",
+    "svoris_iki_g": "1500000",
+    "kaina_ct": "807",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 kurjeris 30-1500kg + krovos darbai",
+    "sukurta_at": "2026-08-26 10:26:09",
+    "dydis": "",
+    "kaina_uz_kg_ct": "6.0476",
+    "uz_kg_nuo_g": "30000"
+   },
+   {
+    "id": "25",
+    "vezejas": "venipak",
+    "tipas": "pastomatas",
+    "svoris_nuo_g": "0",
+    "svoris_iki_g": null,
+    "kaina_ct": "110",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "Raimis: pastomatai 1,10 EUR",
+    "sukurta_at": "2026-08-26 10:52:01",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "26",
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "0",
+    "svoris_iki_g": "2000",
+    "kaina_ct": "210",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "Venipak svorio lentele",
+    "sukurta_at": "2026-08-26 10:52:01",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "27",
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "2001",
+    "svoris_iki_g": "5000",
+    "kaina_ct": "231",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "Venipak svorio lentele",
+    "sukurta_at": "2026-08-26 10:52:01",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "28",
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "5001",
+    "svoris_iki_g": "10000",
+    "kaina_ct": "280",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "Venipak svorio lentele",
+    "sukurta_at": "2026-08-26 10:52:01",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   },
+   {
+    "id": "29",
+    "vezejas": "venipak",
+    "tipas": "kurjeris",
+    "svoris_nuo_g": "10001",
+    "svoris_iki_g": "20000",
+    "kaina_ct": "385",
+    "kintamas_pct": "0.000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "Venipak svorio lentele",
+    "sukurta_at": "2026-08-26 10:52:01",
+    "dydis": "",
+    "kaina_uz_kg_ct": "0.0000",
+    "uz_kg_nuo_g": null
+   }
+  ],
+  "pazadas_opc": {
+   "ps_tik_kurjeriu": false
+  },
+  "pvz_uzs": [
+   {
+    "nr": "1557",
+    "ship": [
+     {
+      "method_id": "shopup_venipak_shipping_pickup_method",
+      "inst": "3",
+      "name": "VENIPAK paštomatai/atsiėmimo punktai",
+      "total": "1.78",
+      "meta": [
+       {
+        "id": 54053,
+        "key": "Prekės",
+        "value": "Antienos juostelės, 500 g, natūralūs skanėstai šunims, Hau&Miau &times; 1"
+       }
+      ]
+     }
+    ],
+    "pickup_meta": {
+     "_ps_pastomatas": "",
+     "venipak_pickup": "",
+     "_venipak": {
+      "40": "_ps_venipak_sekimas={\"V07267E1000580\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-10-27 10:24:24\",\"v\":\"\",\"n\":1,\"dalis\":\"av\",\"tikr\":\"2026-10-27 10:36:05\"}}",
+      "60": "venipak_pickup_point=2639",
+      "61": "venipak_pickup_point_data={\"id\":2639,\"code\":\"300906055\",\"name\":\"Venipak locker, IKI Lentvaris Venipak pa\\u0161tomatas\",\"display_name\":\"Lentvario IKI Lentvaris Venipak pa\\u0161tomatas\",\"country\":\"LT\",\"city\":\"Lentvaris\",\"address\":\"Gele\\u017einkelio g. 38-1\",\"zip\":\"25116\"}",
+      "62": "venipak_shipping_order_data={\"manifest\":\"07267261027001\",\"pack_numbers\":[\"V07267E1000580\"],\"weight\":0.5,\"products_count\":1,\"status\":\"sent\",\"error_message\":\"\"}"
+     }
+    }
+   },
+   {
+    "nr": "1556",
+    "ship": [
+     {
+      "method_id": "shopup_venipak_shipping_pickup_method",
+      "inst": "3",
+      "name": "VENIPAK paštomatai/atsiėmimo punktai",
+      "total": "1.78",
+      "meta": [
+       {
+        "id": 54007,
+        "key": "Prekės",
+        "value": "Josera Leger 2 kg - sausas maistas katėms, mažiau kalorijų &times; 1, Žaislas katei - Blizgantis paukščiukas &times; 1"
+       }
+      ]
+     }
+    ],
+    "pickup_meta": {
+     "_ps_pastomatas": "",
+     "venipak_pickup": "",
+     "_venipak": {
+      "41": "_ps_venipak_sekimas={\"V07267E1000579\":{\"k\":0,\"t\":\"At sender\",\"e\":\"Shipment created\",\"d\":\"2026-10-27 10:17:37\",\"v\":\"\",\"n\":1,\"dalis\":\"av\",\"tikr\":\"2026-10-27 10:36:06\"}}",
+      "61": "venipak_pickup_point=3671",
+      "62": "venipak_pickup_point_data={\"id\":3671,\"code\":\"300906055\",\"name\":\"Venipak locker, RIMI Venipak pa\\u0161tomatas\",\"display_name\":\"Vilniaus Galgi\\u0173 RIMI Venipak pa\\u0161tomatas\",\"country\":\"LT\",\"city\":\"Vilnius\",\"address\":\"\\u017dvaig\\u017ediki\\u0173 g. 2\",\"zip\":\"10238\"}",
+      "63": "venipak_shipping_order_data={\"manifest\":\"07267261027001\",\"pack_numbers\":[\"V07267E1000579\"],\"weight\":2,\"products_count\":2,\"status\":\"sent\",\"error_message\":\"\"}"
+     }
+    }
+   },
+   {
+    "nr": "1555",
+    "ship": [
+     {
+      "method_id": "shopup_venipak_shipping_pickup_method",
+      "inst": "3",
+      "name": "VENIPAK paštomatai/atsiėmimo punktai",
+      "total": "0",
+      "meta": [
+       {
+        "id": 53939,
+        "key": "Prekės",
+        "value": "Cat's Best Original kraikas katėms, medžio drožlių, 10l+2l,5,2kg &times; 1, Kraikas katėms kukurūzinis, CORN CAT ULTRA Certech, sušokantis, 7 l, 4,4 kg &times; 1, Žaislas katei - Laiminga katė, Happy Cat Georplast - Žalsva &times; 1, Žaislas katei - Lazeris, 5 in 1 &times; 1"
+       }
+      ]
+     }
+    ],
+    "pickup_meta": {
+     "_ps_pastomatas": "",
+     "venipak_pickup": "",
+     "_venipak": {
+      "52": "venipak_pickup_point=2272",
+      "53": "venipak_pickup_point_data={\"id\":2272,\"code\":\"300906055\",\"name\":\"Venipak locker, MAXIMA Venipak pa\\u0161tomatas\",\"display_name\":\"Vilniaus Tuskul\\u0117n\\u0173 MAXIMA Venipak pa\\u0161tomatas\",\"country\":\"LT\",\"city\":\"Vilnius\",\"address\":\"Tuskul\\u0117n\\u0173 g. 66\",\"zip\":\"09208\"}"
+     }
+    }
+   }
+  ]
+ },
+ "v": "dep-084435",
+ "kurimas": 200,
+ "sid": 7408,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
