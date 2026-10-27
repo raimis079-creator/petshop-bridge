@@ -1,0 +1,39 @@
+{
+ "1": {
+  "v": "S1802b",
+  "f": "1",
+  "token": {
+   "petshop-prenumerata-paysera.php": "ok",
+   "petshop-prenumerata.php": "ok",
+   "petshop-prenumerata-katalogas.php": "ok",
+   "petshop-pren-sutikimas.php": "ok"
+  },
+  "pren_ijungta": "ne",
+  "db_ver": "4",
+  "hb_pries": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/wp-json/": [
+    200,
+    0
+   ],
+   "/paskyra/": [
+    200,
+    0
+   ]
+  }
+ },
+ "v": "dep-081050",
+ "kurimas": 200,
+ "sid": 7405,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
