@@ -1,0 +1,24 @@
+{
+ "v": "dep-094605",
+ "kurimas": 200,
+ "sid": 7418,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1803c",
+  "faze": "R",
+  "patikra": {
+   "KTX-DAFNIJA-500": "OK",
+   "KTX-MYSIS-500": "OK",
+   "KTX-GAMMARUS-500": "OK",
+   "KTX-STINTA-500": "OK",
+   "KTX-KREVETE-500": "OK",
+   "KTX-KRILIS-500": "OK"
+  },
+  "pak_term": null,
+  "forma_term": null,
+  "d_params": []
+ }
+}
