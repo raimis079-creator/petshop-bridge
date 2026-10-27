@@ -1,0 +1,60 @@
+{
+ "2": {
+  "v": "S1802e",
+  "f": "2",
+  "token": {
+   "petshop-prenumerata.php": "ok",
+   "petshop-prenumerata-katalogas.php": "ok",
+   "ps-sablonai/subscription-t5.php": "ok"
+  },
+  "sablonai_dir": true,
+  "hb_pries": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/wp-json/": [
+    200,
+    0
+   ],
+   "/paskyra/": [
+    200,
+    0
+   ]
+  },
+  "md5_po": {
+   "petshop-prenumerata.php": "2de1d047fb87ec93cefa70cbba157725",
+   "petshop-prenumerata-katalogas.php": "09c32800ccd527f7a84052493849d552",
+   "ps-sablonai/subscription-t5.php": "b9eee80d04399db067631eb95f20e386"
+  },
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/wp-json/": [
+    200,
+    0
+   ],
+   "/paskyra/": [
+    200,
+    0
+   ]
+  }
+ },
+ "v": "dep-085303",
+ "kurimas": 200,
+ "sid": 7412,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
