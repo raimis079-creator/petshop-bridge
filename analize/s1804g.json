@@ -1,0 +1,52 @@
+{
+ "1": {
+  "v": "S1804g",
+  "f": "1",
+  "token": "ok"
+ },
+ "2": {
+  "v": "S1804g",
+  "f": "2",
+  "token": "ok",
+  "md5_po": "778636c30ac4530ab71439b545cf65aa",
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/wp-json/": [
+    200,
+    0
+   ]
+  }
+ },
+ "3": {
+  "v": "S1804g",
+  "f": "3",
+  "rez": {
+   "kada": "2026-10-27 22:11:08",
+   "kas": "S1804 rankinis (Raimio daryk 1)",
+   "sausai": true,
+   "matyta": 1120,
+   "dingusios": 4555,
+   "nulinta": [
+    "12455 01A1C04030 zb 1→0 stock 0→0",
+    "12930 01A1C03032 zb 1→0 stock 0→0",
+    "14332 0TR118_680372 zb 1→0 stock 1→0"
+   ],
+   "apsauga": ""
+  },
+  "kabliai": 5
+ },
+ "v": "dep-200932",
+ "kurimas": 200,
+ "sid": 7467,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
