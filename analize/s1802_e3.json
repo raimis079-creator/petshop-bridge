@@ -1,0 +1,67 @@
+{
+ "3": {
+  "v": "S1802e",
+  "f": "3",
+  "versijos": {
+   "variklis": "2.3",
+   "katalogas": "4.2"
+  },
+  "filtras_t5": 20,
+  "filtras_r2": 60,
+  "r2": [
+   false,
+   true,
+   false
+  ],
+  "tarifas_uzs": "1557",
+  "tarifas_pastomatas": {
+   "method_id": "shopup_venipak_shipping_pickup_method",
+   "instance_id": 3,
+   "name": "VENIPAK paštomatai/atsiėmimo punktai",
+   "cost": 1.78
+  },
+  "tarifas_kurjeris": {
+   "method_id": "shopup_venipak_shipping_courier_method",
+   "instance_id": 2,
+   "name": "VENIPAK Kurjeris",
+   "cost": 3.3
+  },
+  "render": {
+   "notify_only": {
+    "ilgis": 3300,
+    "tekstas": "Jūsų reguliari siunta — sekmadienį, lapkričio 1 d. Nieko daryti nereikia. Praleisti ar pakeisti — vienu paspaudimu. Jūsų reguliari siunta — sekmadienį, lapkričio 1 d. Sekmadienį, lapkričio 1 d. išsiųsime jūsų reguliarią siuntą:• Exclusion Hypoallergenic Small 7 kg · 56,99 €• Animonda Carny 400 g × 2 · 4,98 €Į paštomatą — Vilniaus Galgių RIMI Venipak paštomatas (nemokamai)Iš viso: 61,97 € — nurašysime nuo išsaugotos kortelės siuntimo dieną.Nieko daryti nereikia. Jei šį kartą maisto dar užtenka — praleiskite vienu paspaudimu; jei norite kitą datą ar paštomatą — pakeiskite paskyroje.Praleisti šį kartąKeisti datą ar paštomatą · Sustabdyti ar atsisakyti&nbsp;UAB Avesa, Liucionių g. 46, Liucionys, LT-15166Gavote šį laišką, nes turite aktyvią reguliarių siuntų prenumeratą petshop.lt.Šis laiškas susijęs su jūsų užsakymu ar paskyra.",
+    "v3": true
+   },
+   "confirm_required": {
+    "ilgis": 3419,
+    "tekstas": "Ar siunčiame? Jūsų reguliari siunta — sekmadienį, lapkričio 1 d. Patvirtinkite, praleiskite arba pakeiskite — kaip jums patogiau. Ar siunčiame? Jūsų reguliari siunta — sekmadienį, lapkričio 1 d. Sekmadienį, lapkričio 1 d. išsiųsime jūsų reguliarią siuntą:• Exclusion Hypoallergenic Small 7 kg · 56,99 €• Animonda Carny 400 g × 2 · 4,98 €Į paštomatą — Vilniaus Galgių RIMI Venipak paštomatas (nemokamai)Iš viso: 61,97 €.Prieš siųsdami visada pasiklausiame. Jei viskas tinka, paspauskite „Patvirtinti siuntą“ — be patvirtinimo siuntos neruošiame.Patvirtinti siuntąŠį kartą praleisti · Keisti datą ar kiekįJei nespėsite atsakyti, nieko blogo neatsitiks — siuntos neruošime ir priminsime po savaitės.&nbsp;UAB Avesa, Liucionių g. 46, Liucionys, LT-15166Gavote šį laišką, nes turite aktyvią reguliarių siuntų prenumeratą petshop.lt.Šis laiškas susijęs su jūsų užsakymu ar paskyra.",
+    "v3": true
+   }
+  },
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/wp-json/": [
+    200,
+    0
+   ],
+   "/paskyra/": [
+    200,
+    0
+   ]
+  }
+ },
+ "v": "dep-085434",
+ "kurimas": 200,
+ "sid": 7413,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
