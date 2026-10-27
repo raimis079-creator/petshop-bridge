@@ -1,0 +1,129 @@
+{
+ "v": "dep-154515",
+ "kurimas": 200,
+ "sid": 7444,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1803y",
+  "f": "R",
+  "sync_fn": true,
+  "sources_cls": true,
+  "pries": {
+   "37273": {
+    "stock": "2",
+    "own": "0",
+    "src": null
+   },
+   "37275": {
+    "stock": "2",
+    "own": "0",
+    "src": null
+   },
+   "37277": {
+    "stock": "3",
+    "own": "0",
+    "src": null
+   },
+   "37279": {
+    "stock": "3",
+    "own": "0",
+    "src": null
+   },
+   "37281": {
+    "stock": "3",
+    "own": "0",
+    "src": null
+   },
+   "37283": {
+    "stock": "2",
+    "own": "0",
+    "src": null
+   }
+  },
+  "daf": [
+   {
+    "id": "4553",
+    "kiekis_gautas": "2",
+    "kiekis_liko": "0",
+    "atsaukta": "0",
+    "valiuta": "PLN",
+    "geriausia_iki": "2027-01-03"
+   },
+   {
+    "id": "4559",
+    "kiekis_gautas": "2",
+    "kiekis_liko": "2",
+    "atsaukta": "0",
+    "valiuta": "EUR",
+    "geriausia_iki": null
+   }
+  ],
+  "po": {
+   "37273": {
+    "stock": "2",
+    "own": "0",
+    "src": null,
+    "pard": 0,
+    "kodel": "AV 0",
+    "cost": "2.07"
+   },
+   "37275": {
+    "stock": "2",
+    "own": "0",
+    "src": null,
+    "pard": 0,
+    "kodel": "AV 0",
+    "cost": "3.13"
+   },
+   "37277": {
+    "stock": "3",
+    "own": "0",
+    "src": null,
+    "pard": 0,
+    "kodel": "AV 0",
+    "cost": "2.54"
+   },
+   "37279": {
+    "stock": "3",
+    "own": "0",
+    "src": null,
+    "pard": 0,
+    "kodel": "AV 0",
+    "cost": "2.00"
+   },
+   "37281": {
+    "stock": "3",
+    "own": "0",
+    "src": null,
+    "pard": 0,
+    "kodel": "AV 0",
+    "cost": "2.31"
+   },
+   "37283": {
+    "stock": "2",
+    "own": "0",
+    "src": null,
+    "pard": 0,
+    "kodel": "AV 0",
+    "cost": "3.06"
+   }
+  },
+  "daf_po": [
+   {
+    "id": "4553",
+    "kiekis_liko": "0",
+    "atsaukta": "0",
+    "geriausia_iki": "2027-01-03"
+   },
+   {
+    "id": "4559",
+    "kiekis_liko": "2",
+    "atsaukta": "0",
+    "geriausia_iki": null
+   }
+  ]
+ }
+}
