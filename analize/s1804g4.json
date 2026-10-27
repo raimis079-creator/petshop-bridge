@@ -1,0 +1,32 @@
+{
+ "4": {
+  "v": "S1804g",
+  "f": "4",
+  "rez": {
+   "kada": "2026-10-27 22:12:50",
+   "kas": "S1804 rankinis (Raimio daryk 1)",
+   "sausai": false,
+   "matyta": 1120,
+   "dingusios": 4555,
+   "nulinta": [
+    "12455 01A1C04030 zb 1→0 stock 0→0",
+    "12930 01A1C03032 zb 1→0 stock 0→0",
+    "14332 0TR118_680372 zb 1→0 stock 1→0"
+   ],
+   "apsauga": ""
+  },
+  "lesmont": [
+   0,
+   "outofstock",
+   "0"
+  ],
+  "kabliai": 5
+ },
+ "v": "dep-201129",
+ "kurimas": 200,
+ "sid": 7468,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
