@@ -1,0 +1,927 @@
+{
+ "v": "dep-104231",
+ "kurimas": 200,
+ "sid": 7423,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1803g",
+  "tables": [
+   {
+    "id": "77",
+    "brand": "Ambrosia",
+    "line": "Chicken & Fresh Fish (Puppy)",
+    "species": "dog",
+    "status": "verified",
+    "row_dimension": "age",
+    "source_structure": "multi_axis_grid",
+    "lookup_method": "interpolated",
+    "weight_basis": "adult_expected",
+    "row_count": "56",
+    "is_active": "1",
+    "import_batch_id": "s212b_20260717_fb3eeae1",
+    "table_key": null,
+    "updated_at": "2026-07-17 18:30:14"
+   },
+   {
+    "id": "78",
+    "brand": "Ambrosia",
+    "line": null,
+    "species": "dog",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "range",
+    "lookup_method": "source_range",
+    "weight_basis": "current",
+    "row_count": "7",
+    "is_active": "1",
+    "import_batch_id": "s212b_20260717_fb3eeae1",
+    "table_key": null,
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "id": "79",
+    "brand": "Ambrosia",
+    "line": null,
+    "species": "dog",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "range",
+    "lookup_method": "source_range",
+    "weight_basis": "current",
+    "row_count": "7",
+    "is_active": "1",
+    "import_batch_id": "s212b_20260717_fb3eeae1",
+    "table_key": null,
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "id": "80",
+    "brand": "Ambrosia",
+    "line": null,
+    "species": "dog",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "range",
+    "lookup_method": "source_range",
+    "weight_basis": "current",
+    "row_count": "7",
+    "is_active": "1",
+    "import_batch_id": "s212b_20260717_fb3eeae1",
+    "table_key": null,
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "id": "81",
+    "brand": "Ambrosia",
+    "line": null,
+    "species": "dog",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "range",
+    "lookup_method": "source_range",
+    "weight_basis": "current",
+    "row_count": "9",
+    "is_active": "1",
+    "import_batch_id": "s212b_20260717_fb3eeae1",
+    "table_key": null,
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "id": "82",
+    "brand": "Ambrosia",
+    "line": null,
+    "species": "dog",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "range",
+    "lookup_method": "source_range",
+    "weight_basis": "current",
+    "row_count": "9",
+    "is_active": "1",
+    "import_batch_id": "s212b_20260717_fb3eeae1",
+    "table_key": null,
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "id": "223",
+    "brand": "Ambrosia",
+    "line": "Fresh Chicken & Salmon (Puppy Large Breed)",
+    "species": "dog",
+    "status": "verified",
+    "row_dimension": "age",
+    "source_structure": "multi_axis_grid",
+    "lookup_method": "interpolated",
+    "weight_basis": "adult_expected",
+    "row_count": "49",
+    "is_active": "1",
+    "import_batch_id": "s212b_20260717_fb3eeae1",
+    "table_key": null,
+    "updated_at": "2026-07-17 18:30:14"
+   },
+   {
+    "id": "344",
+    "brand": "Josera",
+    "line": "JosiDog Active sausas pašaras šunims, 900 g",
+    "species": "dog",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "discrete_points",
+    "lookup_method": "weight_discrete",
+    "weight_basis": "current",
+    "row_count": "7",
+    "is_active": "1",
+    "import_batch_id": "S296",
+    "table_key": "auto296_20393",
+    "updated_at": "2026-07-29 00:41:37"
+   },
+   {
+    "id": "345",
+    "brand": "Josera",
+    "line": "JosiDog Mini sausas pašaras mažų veislių šunims, 900 g",
+    "species": "dog",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "discrete_points",
+    "lookup_method": "weight_discrete",
+    "weight_basis": "current",
+    "row_count": "5",
+    "is_active": "1",
+    "import_batch_id": "S296",
+    "table_key": "auto296_20403",
+    "updated_at": "2026-07-29 00:41:37"
+   },
+   {
+    "id": "346",
+    "brand": "Josera",
+    "line": "JosiDog Adult Sensitive sausas pašaras šunims, 900 g",
+    "species": "dog",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "discrete_points",
+    "lookup_method": "weight_discrete",
+    "weight_basis": "current",
+    "row_count": "7",
+    "is_active": "1",
+    "import_batch_id": "S296",
+    "table_key": "auto296_21339",
+    "updated_at": "2026-07-29 00:41:37"
+   },
+   {
+    "id": "347",
+    "brand": "Josera",
+    "line": "JosiDog Regular sausas pašaras šunims, 2,7 kg",
+    "species": "dog",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "discrete_points",
+    "lookup_method": "weight_discrete",
+    "weight_basis": "current",
+    "row_count": "7",
+    "is_active": "1",
+    "import_batch_id": "S296",
+    "table_key": "auto296_21368",
+    "updated_at": "2026-07-29 00:41:37"
+   },
+   {
+    "id": "348",
+    "brand": "Josera",
+    "line": "JosiDog Economy sausas pašaras šunims, 2,7 kg",
+    "species": "dog",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "discrete_points",
+    "lookup_method": "weight_discrete",
+    "weight_basis": "current",
+    "row_count": "7",
+    "is_active": "1",
+    "import_batch_id": "S296",
+    "table_key": "auto296_26909",
+    "updated_at": "2026-07-29 00:41:37"
+   },
+   {
+    "id": "349",
+    "brand": "Josera",
+    "line": "JosiCat Tasty Beef sausas pašaras katėms su jautiena, 10 kg",
+    "species": "cat",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "discrete_points",
+    "lookup_method": "weight_discrete",
+    "weight_basis": "current",
+    "row_count": "4",
+    "is_active": "1",
+    "import_batch_id": "S296",
+    "table_key": "auto296_20391",
+    "updated_at": "2026-07-29 00:41:37"
+   },
+   {
+    "id": "350",
+    "brand": "Quattro",
+    "line": "QUATTRO 1,5 kg Senior White Fish & Krill v",
+    "species": "cat",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "discrete_points",
+    "lookup_method": "weight_discrete",
+    "weight_basis": "current",
+    "row_count": "6",
+    "is_active": "1",
+    "import_batch_id": "S301",
+    "table_key": "auto301_16712",
+    "updated_at": "2026-07-29 22:16:32"
+   },
+   {
+    "id": "352",
+    "brand": "Ambrosia",
+    "line": "Ambrosia Cat Cat & Kitten Fresh Turkey & Chicken",
+    "species": "cat",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "range",
+    "lookup_method": "source_range",
+    "weight_basis": "current",
+    "row_count": "9",
+    "is_active": "1",
+    "import_batch_id": "S1800",
+    "table_key": "s1800_amb_cat_TC",
+    "updated_at": "2026-10-26 14:51:31"
+   },
+   {
+    "id": "353",
+    "brand": "Ambrosia",
+    "line": "Ambrosia Cat Sterilized Fresh Salmon & Chicken",
+    "species": "cat",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "range",
+    "lookup_method": "source_range",
+    "weight_basis": "current",
+    "row_count": "9",
+    "is_active": "1",
+    "import_batch_id": "S1800",
+    "table_key": "s1800_amb_cat_SC",
+    "updated_at": "2026-10-26 14:51:31"
+   },
+   {
+    "id": "354",
+    "brand": "Ambrosia",
+    "line": "Ambrosia Cat Sterilized Adult (Turkey & Herring / Duck & Turkey / Trout & Rabbit — vienoda gamintojo lentelė)",
+    "species": "cat",
+    "status": "verified",
+    "row_dimension": "weight",
+    "source_structure": "range",
+    "lookup_method": "source_range",
+    "weight_basis": "current",
+    "row_count": "9",
+    "is_active": "1",
+    "import_batch_id": "S1800",
+    "table_key": "s1800_amb_cat_TH",
+    "updated_at": "2026-10-26 14:54:22"
+   }
+  ],
+  "rows": {
+   "352": [
+    {
+     "row_order": "0",
+     "weight_from_kg": "1.00",
+     "weight_to_kg": "2.00",
+     "amount_from_g": "22.00",
+     "amount_to_g": "34.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "1",
+     "weight_from_kg": "2.00",
+     "weight_to_kg": "3.00",
+     "amount_from_g": "34.00",
+     "amount_to_g": "45.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "2",
+     "weight_from_kg": "3.00",
+     "weight_to_kg": "4.00",
+     "amount_from_g": "45.00",
+     "amount_to_g": "55.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "3",
+     "weight_from_kg": "4.00",
+     "weight_to_kg": "5.00",
+     "amount_from_g": "55.00",
+     "amount_to_g": "65.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "4",
+     "weight_from_kg": "5.00",
+     "weight_to_kg": "6.00",
+     "amount_from_g": "65.00",
+     "amount_to_g": "75.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "5",
+     "weight_from_kg": "6.00",
+     "weight_to_kg": "7.00",
+     "amount_from_g": "75.00",
+     "amount_to_g": "85.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "6",
+     "weight_from_kg": "7.00",
+     "weight_to_kg": "8.00",
+     "amount_from_g": "85.00",
+     "amount_to_g": "95.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "7",
+     "weight_from_kg": "8.00",
+     "weight_to_kg": "9.00",
+     "amount_from_g": "95.00",
+     "amount_to_g": "105.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "8",
+     "weight_from_kg": "9.00",
+     "weight_to_kg": "10.00",
+     "amount_from_g": "105.00",
+     "amount_to_g": "115.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    }
+   ],
+   "353": [
+    {
+     "row_order": "0",
+     "weight_from_kg": "1.00",
+     "weight_to_kg": "2.00",
+     "amount_from_g": "19.00",
+     "amount_to_g": "30.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "1",
+     "weight_from_kg": "2.00",
+     "weight_to_kg": "3.00",
+     "amount_from_g": "30.00",
+     "amount_to_g": "39.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "2",
+     "weight_from_kg": "3.00",
+     "weight_to_kg": "4.00",
+     "amount_from_g": "39.00",
+     "amount_to_g": "47.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "3",
+     "weight_from_kg": "4.00",
+     "weight_to_kg": "5.00",
+     "amount_from_g": "47.00",
+     "amount_to_g": "55.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "4",
+     "weight_from_kg": "5.00",
+     "weight_to_kg": "6.00",
+     "amount_from_g": "55.00",
+     "amount_to_g": "62.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "5",
+     "weight_from_kg": "6.00",
+     "weight_to_kg": "7.00",
+     "amount_from_g": "62.00",
+     "amount_to_g": "69.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "6",
+     "weight_from_kg": "7.00",
+     "weight_to_kg": "8.00",
+     "amount_from_g": "69.00",
+     "amount_to_g": "75.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "7",
+     "weight_from_kg": "8.00",
+     "weight_to_kg": "9.00",
+     "amount_from_g": "75.00",
+     "amount_to_g": "82.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "8",
+     "weight_from_kg": "9.00",
+     "weight_to_kg": "10.00",
+     "amount_from_g": "82.00",
+     "amount_to_g": "88.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    }
+   ],
+   "354": [
+    {
+     "row_order": "0",
+     "weight_from_kg": "1.00",
+     "weight_to_kg": "2.00",
+     "amount_from_g": "22.00",
+     "amount_to_g": "35.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "1",
+     "weight_from_kg": "2.00",
+     "weight_to_kg": "3.00",
+     "amount_from_g": "35.00",
+     "amount_to_g": "46.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "2",
+     "weight_from_kg": "3.00",
+     "weight_to_kg": "4.00",
+     "amount_from_g": "46.00",
+     "amount_to_g": "56.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "3",
+     "weight_from_kg": "4.00",
+     "weight_to_kg": "5.00",
+     "amount_from_g": "56.00",
+     "amount_to_g": "65.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "4",
+     "weight_from_kg": "5.00",
+     "weight_to_kg": "6.00",
+     "amount_from_g": "65.00",
+     "amount_to_g": "74.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "5",
+     "weight_from_kg": "6.00",
+     "weight_to_kg": "7.00",
+     "amount_from_g": "74.00",
+     "amount_to_g": "82.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "6",
+     "weight_from_kg": "7.00",
+     "weight_to_kg": "8.00",
+     "amount_from_g": "82.00",
+     "amount_to_g": "89.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "7",
+     "weight_from_kg": "8.00",
+     "weight_to_kg": "9.00",
+     "amount_from_g": "89.00",
+     "amount_to_g": "97.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    },
+    {
+     "row_order": "8",
+     "weight_from_kg": "9.00",
+     "weight_to_kg": "10.00",
+     "amount_from_g": "97.00",
+     "amount_to_g": "104.00",
+     "cell_type": "value",
+     "source_label": "ambrosiapetfood.com"
+    }
+   ]
+  },
+  "map": {
+   "352": [
+    {
+     "product_id": "37072",
+     "is_active": "1",
+     "post_status": "draft",
+     "post_title": "AMBROSIA begrūdis su šviežia kalakutiena ir vištiena sausas maistas kačiukams ir suaugusioms katėms, grain-free Cat &amp; Kitten Fresh Turkey &amp; Chicken 1,5 kg"
+    },
+    {
+     "product_id": "37076",
+     "is_active": "1",
+     "post_status": "draft",
+     "post_title": "AMBROSIA begrūdis su šviežia kalakutiena ir vištiena sausas maistas kačiukams ir suaugusioms katėms, grain-free Cat &amp; Kitten Fresh Turkey &amp; Chicken 5 kg"
+    }
+   ],
+   "353": [
+    {
+     "product_id": "37080",
+     "is_active": "1",
+     "post_status": "draft",
+     "post_title": "AMBROSIA begrūdis su šviežia lašiša ir vištiena sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Salmon &amp; Chicken 1,5 kg"
+    },
+    {
+     "product_id": "37084",
+     "is_active": "1",
+     "post_status": "draft",
+     "post_title": "AMBROSIA begrūdis su šviežia lašiša ir vištiena sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Salmon &amp; Chicken 5 kg"
+    }
+   ],
+   "354": [
+    {
+     "product_id": "37088",
+     "is_active": "1",
+     "post_status": "draft",
+     "post_title": "AMBROSIA begrūdis su šviežia kalakutiena ir silke sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Turkey &amp; Herring 1,5 kg"
+    },
+    {
+     "product_id": "37092",
+     "is_active": "1",
+     "post_status": "draft",
+     "post_title": "AMBROSIA begrūdis su šviežia kalakutiena ir silke sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Turkey &amp; Herring 5 kg"
+    },
+    {
+     "product_id": "37096",
+     "is_active": "1",
+     "post_status": "draft",
+     "post_title": "AMBROSIA begrūdis su šviežia antiena ir kalakutiena sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Duck &amp; Turkey 1,5 kg"
+    },
+    {
+     "product_id": "37100",
+     "is_active": "1",
+     "post_status": "draft",
+     "post_title": "AMBROSIA begrūdis su šviežia antiena ir kalakutiena sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Duck &amp; Turkey 5 kg"
+    },
+    {
+     "product_id": "37104",
+     "is_active": "1",
+     "post_status": "draft",
+     "post_title": "AMBROSIA begrūdis su šviežiu upėtakiu ir triušiena sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Trout &amp; Rabbit 1,5 kg"
+    },
+    {
+     "product_id": "37108",
+     "is_active": "1",
+     "post_status": "draft",
+     "post_title": "AMBROSIA begrūdis su šviežiu upėtakiu ir triušiena sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Trout &amp; Rabbit 5 kg"
+    }
+   ]
+  },
+  "amb_publ": [
+   {
+    "ID": "19715",
+    "post_status": "publish",
+    "post_title": "Ambrosia begrūdis su šviežia kalakutiena ir antiena sausas maistas šunims, Fresh Turkey & Duck 2kg",
+    "feeding_table_id": "82",
+    "line": null,
+    "species": "dog",
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "ID": "19720",
+    "post_status": "publish",
+    "post_title": "Ambrosia begrūdis su šviežia kalakutiena ir antiena sausas maistas šunims, Fresh Turkey & Duck 12kg",
+    "feeding_table_id": "82",
+    "line": null,
+    "species": "dog",
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "ID": "19725",
+    "post_status": "publish",
+    "post_title": "Ambrosia begrūdis su triušiena ir šviežia  kalakutiena sausas maistas šunims, Rabbit & Fresh Turkey 2 kg",
+    "feeding_table_id": "81",
+    "line": null,
+    "species": "dog",
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "ID": "19730",
+    "post_status": "publish",
+    "post_title": "Ambrosia begrūdis su triušiena ir šviežia  kalakutiena sausas maistas šunims, Rabbit & Fresh Turkey 12 kg",
+    "feeding_table_id": "81",
+    "line": null,
+    "species": "dog",
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "ID": "19735",
+    "post_status": "publish",
+    "post_title": "Ambrosia Senior begrūdis su kalakutiena ir šviežia lašiša sausas maistas vyresnio amžiaus šunims, Turkey & Fresh Salmon Senior & Sterilised 2 kg",
+    "feeding_table_id": "80",
+    "line": null,
+    "species": "dog",
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "ID": "19740",
+    "post_status": "publish",
+    "post_title": "Ambrosia Senior begrūdis su kalakutiena ir šviežia lašiša sausas maistas vyresnio amžiaus šunims, Turkey & Fresh Salmon Senior & Sterilised 12 kg",
+    "feeding_table_id": "80",
+    "line": null,
+    "species": "dog",
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "ID": "19747",
+    "post_status": "publish",
+    "post_title": "AMBROSIA begrūdis su ėriena ir šviežia lašiša sausas maistas šunims, grain-free Lamb & Fresh Salmon 2 kg",
+    "feeding_table_id": "78",
+    "line": null,
+    "species": "dog",
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "ID": "19751",
+    "post_status": "publish",
+    "post_title": "AMBROSIA begrūdis su ėriena ir šviežia lašiša sausas maistas šunims, grain-free Lamb & Fresh Salmon 12 kg",
+    "feeding_table_id": "78",
+    "line": null,
+    "species": "dog",
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "ID": "19756",
+    "post_status": "publish",
+    "post_title": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg",
+    "feeding_table_id": "79",
+    "line": null,
+    "species": "dog",
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "ID": "19760",
+    "post_status": "publish",
+    "post_title": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 12 kg",
+    "feeding_table_id": "79",
+    "line": null,
+    "species": "dog",
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "ID": "19765",
+    "post_status": "publish",
+    "post_title": "AMBROSIA begrūdis su jautiena ir šviežia lašiša sausas maistas šunims, grain-free Beef & Fresh Salmon 2 kg",
+    "feeding_table_id": "78",
+    "line": null,
+    "species": "dog",
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "ID": "19770",
+    "post_status": "publish",
+    "post_title": "AMBROSIA begrūdis su jautiena ir šviežia lašiša sausas maistas šunims, grain-free Beef & Fresh Salmon 12 kg",
+    "feeding_table_id": "78",
+    "line": null,
+    "species": "dog",
+    "updated_at": "2026-07-17 18:04:02"
+   },
+   {
+    "ID": "19775",
+    "post_status": "publish",
+    "post_title": "AMBROSIA Puppy begrūdis su vištiena ir šviežia žuvimi sausas maistas jauniems šuniukams Chicken & Fresh Fish 2 kg",
+    "feeding_table_id": "77",
+    "line": "Chicken & Fresh Fish (Puppy)",
+    "species": "dog",
+    "updated_at": "2026-07-17 18:30:14"
+   },
+   {
+    "ID": "19780",
+    "post_status": "publish",
+    "post_title": "AMBROSIA Junior begrūdis su šviežia vištiena ir lašiša sausas maistas didelių veislių jauniems šuniukams, Fresh Chicken &amp; Salmon 2 kg",
+    "feeding_table_id": "223",
+    "line": "Fresh Chicken & Salmon (Puppy Large Breed)",
+    "species": "dog",
+    "updated_at": "2026-07-17 18:30:14"
+   },
+   {
+    "ID": "19785",
+    "post_status": "publish",
+    "post_title": "AMBROSIA  Junior begrūdis su šviežia vištiena ir lašiša sausas maistas didelių veislių jauniems šuniukams, Fresh Chicken &amp; Salmon 12 kg",
+    "feeding_table_id": "223",
+    "line": "Fresh Chicken & Salmon (Puppy Large Breed)",
+    "species": "dog",
+    "updated_at": "2026-07-17 18:30:14"
+   },
+   {
+    "ID": "36252",
+    "post_status": "publish",
+    "post_title": "AMBROSIA Senior Monoproteininis begrūdis sausas maistas vyresniems / sterilizuotiems šunims su kalakutiena, 5 kg Fresh Turkey Monoprotein Senior, Obese &amp; Sterilized",
+    "feeding_table_id": null,
+    "line": null,
+    "species": null,
+    "updated_at": null
+   },
+   {
+    "ID": "36382",
+    "post_status": "publish",
+    "post_title": "2 vnt. Ambrosia begrūdis su šviežia kalakutiena ir antiena sausas maistas šunims, Fresh Turkey &amp; Duck 2kg",
+    "feeding_table_id": null,
+    "line": null,
+    "species": null,
+    "updated_at": null
+   },
+   {
+    "ID": "36383",
+    "post_status": "publish",
+    "post_title": "2 vnt. Ambrosia begrūdis su triušiena ir šviežia kalakutiena sausas maistas šunims, Rabbit &amp; Fresh Turkey 2 kg",
+    "feeding_table_id": null,
+    "line": null,
+    "species": null,
+    "updated_at": null
+   },
+   {
+    "ID": "36384",
+    "post_status": "publish",
+    "post_title": "2 vnt. Ambrosia Senior begrūdis su kalakutiena ir šviežia lašiša sausas maistas vyresnio amžiaus šunims, Turkey &amp; Fresh Salmon Senior &amp; Sterilised 2 kg",
+    "feeding_table_id": null,
+    "line": null,
+    "species": null,
+    "updated_at": null
+   },
+   {
+    "ID": "36385",
+    "post_status": "publish",
+    "post_title": "2 vnt. AMBROSIA begrūdis su ėriena ir šviežia lašiša sausas maistas šunims, grain-free Lamb &amp; Fresh Salmon 2 kg",
+    "feeding_table_id": null,
+    "line": null,
+    "species": null,
+    "updated_at": null
+   },
+   {
+    "ID": "36386",
+    "post_status": "publish",
+    "post_title": "2 vnt. AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb &amp; Fresh Venison 2 kg",
+    "feeding_table_id": null,
+    "line": null,
+    "species": null,
+    "updated_at": null
+   },
+   {
+    "ID": "36387",
+    "post_status": "publish",
+    "post_title": "2 vnt. AMBROSIA begrūdis su jautiena ir šviežia lašiša sausas maistas šunims, grain-free Beef &amp; Fresh Salmon 2 kg",
+    "feeding_table_id": null,
+    "line": null,
+    "species": null,
+    "updated_at": null
+   },
+   {
+    "ID": "36388",
+    "post_status": "publish",
+    "post_title": "2 vnt. AMBROSIA Junior begrūdis su šviežia vištiena ir lašiša sausas maistas didelių veislių jauniems šuniukams, Fresh Chicken &amp; Salmon 2 kg",
+    "feeding_table_id": null,
+    "line": null,
+    "species": null,
+    "updated_at": null
+   },
+   {
+    "ID": "37072",
+    "post_status": "draft",
+    "post_title": "AMBROSIA begrūdis su šviežia kalakutiena ir vištiena sausas maistas kačiukams ir suaugusioms katėms, grain-free Cat &amp; Kitten Fresh Turkey &amp; Chicken 1,5 kg",
+    "feeding_table_id": "352",
+    "line": "Ambrosia Cat Cat & Kitten Fresh Turkey & Chicken",
+    "species": "cat",
+    "updated_at": "2026-10-26 14:51:31"
+   },
+   {
+    "ID": "37076",
+    "post_status": "draft",
+    "post_title": "AMBROSIA begrūdis su šviežia kalakutiena ir vištiena sausas maistas kačiukams ir suaugusioms katėms, grain-free Cat &amp; Kitten Fresh Turkey &amp; Chicken 5 kg",
+    "feeding_table_id": "352",
+    "line": "Ambrosia Cat Cat & Kitten Fresh Turkey & Chicken",
+    "species": "cat",
+    "updated_at": "2026-10-26 14:51:31"
+   },
+   {
+    "ID": "37080",
+    "post_status": "draft",
+    "post_title": "AMBROSIA begrūdis su šviežia lašiša ir vištiena sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Salmon &amp; Chicken 1,5 kg",
+    "feeding_table_id": "353",
+    "line": "Ambrosia Cat Sterilized Fresh Salmon & Chicken",
+    "species": "cat",
+    "updated_at": "2026-10-26 14:51:31"
+   },
+   {
+    "ID": "37084",
+    "post_status": "draft",
+    "post_title": "AMBROSIA begrūdis su šviežia lašiša ir vištiena sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Salmon &amp; Chicken 5 kg",
+    "feeding_table_id": "353",
+    "line": "Ambrosia Cat Sterilized Fresh Salmon & Chicken",
+    "species": "cat",
+    "updated_at": "2026-10-26 14:51:31"
+   },
+   {
+    "ID": "37088",
+    "post_status": "draft",
+    "post_title": "AMBROSIA begrūdis su šviežia kalakutiena ir silke sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Turkey &amp; Herring 1,5 kg",
+    "feeding_table_id": "354",
+    "line": "Ambrosia Cat Sterilized Adult (Turkey & Herring / Duck & Turkey / Trout & Rabbit — vienoda gamintojo lentelė)",
+    "species": "cat",
+    "updated_at": "2026-10-26 14:54:22"
+   },
+   {
+    "ID": "37092",
+    "post_status": "draft",
+    "post_title": "AMBROSIA begrūdis su šviežia kalakutiena ir silke sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Turkey &amp; Herring 5 kg",
+    "feeding_table_id": "354",
+    "line": "Ambrosia Cat Sterilized Adult (Turkey & Herring / Duck & Turkey / Trout & Rabbit — vienoda gamintojo lentelė)",
+    "species": "cat",
+    "updated_at": "2026-10-26 14:54:22"
+   },
+   {
+    "ID": "37096",
+    "post_status": "draft",
+    "post_title": "AMBROSIA begrūdis su šviežia antiena ir kalakutiena sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Duck &amp; Turkey 1,5 kg",
+    "feeding_table_id": "354",
+    "line": "Ambrosia Cat Sterilized Adult (Turkey & Herring / Duck & Turkey / Trout & Rabbit — vienoda gamintojo lentelė)",
+    "species": "cat",
+    "updated_at": "2026-10-26 14:54:22"
+   },
+   {
+    "ID": "37100",
+    "post_status": "draft",
+    "post_title": "AMBROSIA begrūdis su šviežia antiena ir kalakutiena sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Duck &amp; Turkey 5 kg",
+    "feeding_table_id": "354",
+    "line": "Ambrosia Cat Sterilized Adult (Turkey & Herring / Duck & Turkey / Trout & Rabbit — vienoda gamintojo lentelė)",
+    "species": "cat",
+    "updated_at": "2026-10-26 14:54:22"
+   },
+   {
+    "ID": "37104",
+    "post_status": "draft",
+    "post_title": "AMBROSIA begrūdis su šviežiu upėtakiu ir triušiena sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Trout &amp; Rabbit 1,5 kg",
+    "feeding_table_id": "354",
+    "line": "Ambrosia Cat Sterilized Adult (Turkey & Herring / Duck & Turkey / Trout & Rabbit — vienoda gamintojo lentelė)",
+    "species": "cat",
+    "updated_at": "2026-10-26 14:54:22"
+   },
+   {
+    "ID": "37108",
+    "post_status": "draft",
+    "post_title": "AMBROSIA begrūdis su šviežiu upėtakiu ir triušiena sausas maistas sterilizuotoms katėms, grain-free Sterilized Fresh Trout &amp; Rabbit 5 kg",
+    "feeding_table_id": "354",
+    "line": "Ambrosia Cat Sterilized Adult (Turkey & Herring / Duck & Turkey / Trout & Rabbit — vienoda gamintojo lentelė)",
+    "species": "cat",
+    "updated_at": "2026-10-26 14:54:22"
+   },
+   {
+    "ID": "37112",
+    "post_status": "draft",
+    "post_title": "AMBROSIA begrūdžiai konservai kačiukams ir suaugusioms katėms su kalakutiena ir vištiena, grain-free Cat &amp; Kitten Turkey &amp; Chicken 150 g",
+    "feeding_table_id": null,
+    "line": null,
+    "species": null,
+    "updated_at": null
+   },
+   {
+    "ID": "37116",
+    "post_status": "draft",
+    "post_title": "AMBROSIA begrūdžiai konservai sterilizuotoms katėms su lašiša ir vištiena, grain-free Sterilized Salmon &amp; Chicken 150 g",
+    "feeding_table_id": null,
+    "line": null,
+    "species": null,
+    "updated_at": null
+   }
+  ],
+  "calc": "Feeding_Service nėra",
+  "desc": {
+   "37072": "Rekomenduojamas kiekis per parą</h2>\n\n.b2b-black,.b2b-black *{color:#000 !important;} .b2b-black table{border-collapse:collapse;width:auto;max-width:100%;} .b2b-black td,.b2b-black th{border-bottom:2px solid #d3d3d3;padding:7px;text-align:left;}<div class=\"b2b-black\">\n<table>\n\t<thead>\n\t\t<tr>\n\t\t\t<th>Katės svoris</th>\n\t\t\t<th>Iki 2 mėn.</th>\n\t\t\t<th>5–7 mėn.</th>\n\t\t\t<th>7–9 mėn.</th>\n\t\t\t<th>9–12 mėn.</th>\n\t\t\t<th>Suaugusi katė</th>\n\t\t</tr>\n\t</thead>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>1–2 kg</td>\n\t\t\t<td>48–70 g</td>\n\t\t\t<td>30–70 g</td>\n\t\t\t<td>28–55 g</td>\n\t\t\t<td>22–38 g</td>\n\t\t\t<td>22–34 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>2–3 kg</td>\n\t\t\t<td>70–100 g</td>\n\t\t\t<td>75–80 g</td>\n\t\t\t<td>65–75 g</td>\n\t\t\t<td>38–50 g</td>\n\t\t\t<td>34–45 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>3–4 kg</td>\n\t\t\t<td>–</td>\n\t\t\t<td>80–110 g</td>\n\t\t\t<td>75–85 g</td>\n\t\t\t<td>50–65 g</td>\n\t\t\t<td>45–55 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>4–5 kg</td>\n\t\t\t<td>–</td>\n\t\t\t<td>110–150 g</td>\n\t\t\t<td>80–110 g</td>\n\t\t\t<td>65–80 g</td>\n\t\t\t<td>55–65 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>5–6 kg</td>\n\t\t\t<td>–</td>\n\t\t\t<td>–</td>\n\t\t\t<td>107–140 g</td>\n\t\t\t<td>80–100 g</td>\n\t\t\t<td>65–75 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>6–7 kg</td>\n\t\t\t<td>–</td>\n\t\t\t<td>–</td>\n\t\t\t<td>–</td>\n\t\t\t<td>100–140 g</td>\n\t\t\t<td>75–85 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>7–8 kg</td>\n\t\t\t<td>–</td>\n\t\t\t<td>–</td>\n\t\t\t<td>–</td>\n\t\t\t<td>–</td>\n\t\t\t<td>85–95 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>8–9 kg</td>\n\t\t\t<td>–</td>\n\t\t\t<td>–</td>\n\t\t\t<td>–</td>\n\t\t\t<td>–</td>\n\t\t\t<td>95–105 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>9–10 kg</td>\n\t\t\t<td>–</td>\n\t\t\t<td>–</td>\n\t\t\t<td>–</td>\n\t\t\t<td>–</td>\n\t\t\t<td>105–115 g</td>\n\t\t</tr>\n\t</tbody>\n</table>\n</div>\n\n<p>Kiekiai orientaciniai, vienai katei per parą. Kačiukams svoris – dabartinis; porciją dalinkite į 3–4 šėrimus, suaugusioms katėms – į 2. Pritaikykite pagal aktyvumą ir kūno būklę.</p>\n\n<p><strong>Svarbu:</strong> visuomet palikite šviežio geriamo vandens. Laikyti vėsioje, sausoje vietoje, atidarius pakuotę — sandariai uždaryti.</p>\n\n<p><strong>Gamintojas:</strong> Ambrosia Pet Food (Petouch International), Graikija.</p>",
+   "37088": "Rekomenduojamas kiekis per parą</h2>\n\n.b2b-black,.b2b-black *{color:#000 !important;} .b2b-black table{border-collapse:collapse;width:auto;max-width:100%;} .b2b-black td,.b2b-black th{border-bottom:2px solid #d3d3d3;padding:7px;text-align:left;}<div class=\"b2b-black\">\n<table>\n\t<thead>\n\t\t<tr>\n\t\t\t<th>Katės svoris</th>\n\t\t\t<th>Suaugusiai katei / 24 val.</th>\n\t\t\t<th>Mažinant svorį (Light) / 24 val.</th>\n\t\t</tr>\n\t</thead>\n\t<tbody>\n\t\t<tr>\n\t\t\t<td>1–2 kg</td>\n\t\t\t<td>22–35 g</td>\n\t\t\t<td>20–31 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>2–3 kg</td>\n\t\t\t<td>35–46 g</td>\n\t\t\t<td>31–41 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>3–4 kg</td>\n\t\t\t<td>46–56 g</td>\n\t\t\t<td>41–50 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>4–5 kg</td>\n\t\t\t<td>56–65 g</td>\n\t\t\t<td>50–58 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>5–6 kg</td>\n\t\t\t<td>65–74 g</td>\n\t\t\t<td>58–65 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>6–7 kg</td>\n\t\t\t<td>74–82 g</td>\n\t\t\t<td>65–72 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>7–8 kg</td>\n\t\t\t<td>82–89 g</td>\n\t\t\t<td>72–79 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>8–9 kg</td>\n\t\t\t<td>89–97 g</td>\n\t\t\t<td>79–85 g</td>\n\t\t</tr>\n\t\t<tr>\n\t\t\t<td>9–10 kg</td>\n\t\t\t<td>97–104 g</td>\n\t\t\t<td>85–92 g</td>\n\t\t</tr>\n\t</tbody>\n</table>\n</div>\n\n<p>Kiekiai orientaciniai, vienai suaugusiai katei per parą. „Light“ stulpelis – katėms, kurioms reikia mažinti svorį. Pritaikykite pagal aktyvumą ir kūno būklę.</p>\n\n<p><strong>Svarbu:</strong> visuomet palikite šviežio geriamo vandens. Laikyti vėsioje, sausoje vietoje, atidarius pakuotę — sandariai uždaryti.</p>\n\n<p><strong>Gamintojas:</strong> Ambrosia Pet Food (Petouch International), Graikija.</p>"
+  }
+ }
+}
