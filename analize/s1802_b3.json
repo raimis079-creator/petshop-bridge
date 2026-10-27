@@ -1,0 +1,85 @@
+{
+ "3": {
+  "v": "S1802b",
+  "f": "3",
+  "klases": {
+   "Petshop_Pren_Paysera": true,
+   "WC_Gateway_PS_Pren_Kortele": true,
+   "Petshop_Prenumerata": true
+  },
+  "versijos": {
+   "variklis": "2.2",
+   "katalogas": "4.1",
+   "sutikimas": "1.1",
+   "paysera": "1.0"
+  },
+  "db_ver": "5",
+  "stulpeliai": [
+   "id",
+   "user_id",
+   "email",
+   "pet_id",
+   "product_id",
+   "qty",
+   "interval_days",
+   "mode",
+   "status",
+   "next_cycle_date",
+   "cycle_confirmed",
+   "success_cycles",
+   "dunning_attempts",
+   "dunning_next",
+   "pending_order_id",
+   "price_locked",
+   "price_locked_until",
+   "payment_method",
+   "delivery_json",
+   "created_at",
+   "updated_at",
+   "paused_at",
+   "cancelled_at",
+   "discount_pct",
+   "payment_token"
+  ],
+  "SQL_ERR": "",
+  "gateway_registruotas": true,
+  "gateway_nustatymai": {
+   "enabled": "no",
+   "testas": false,
+   "host": "checkout-eu-a.paysera.com",
+   "sukonfiguruota": false
+  },
+  "rest": true,
+  "filtrai": {
+   "sukurti_duomenys": true,
+   "apmoketi": true,
+   "available_gateways": true
+  },
+  "sifravimas": true,
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/wp-json/": [
+    200,
+    0
+   ],
+   "/paskyra/": [
+    200,
+    0
+   ]
+  }
+ },
+ "v": "dep-081343",
+ "kurimas": 200,
+ "sid": 7407,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
