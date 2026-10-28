@@ -1,0 +1,97 @@
+{
+ "1": {
+  "v": "S1807a",
+  "kamp": {
+   "calc": {
+    "sent_count": 193,
+    "recipient_count": 193,
+    "opens": 69,
+    "clicks": 7,
+    "bounces_count": 0,
+    "reports": {
+     "spam_percentage": 0,
+     "hard_bounce_percentage": 0,
+     "unsubscribe_percentage": 0
+    }
+   },
+   "std": {
+    "sent_count": 107,
+    "recipient_count": 107,
+    "opens": 43,
+    "clicks": 2,
+    "bounces_count": 0,
+    "reports": {
+     "spam_percentage": 0,
+     "hard_bounce_percentage": 0,
+     "unsubscribe_percentage": 0
+    }
+   }
+  },
+  "gaveju": 300,
+  "busenos": {
+   "active": 300
+  },
+  "uzsakymai": [
+   {
+    "nr": "1263",
+    "d": "2026-10-03",
+    "eur": 16.15,
+    "kanalas": "organika",
+    "utm": "",
+    "kontr": 3.64
+   },
+   {
+    "nr": "1372",
+    "d": "2026-10-11",
+    "eur": 56.99,
+    "kanalas": "mokamas",
+    "utm": "",
+    "kontr": 9.16
+   },
+   {
+    "nr": "1441",
+    "d": "2026-10-15",
+    "eur": 60.69,
+    "kanalas": "mokamas",
+    "utm": "21472017542",
+    "kontr": 9.63
+   },
+   {
+    "nr": "1444",
+    "d": "2026-10-16",
+    "eur": 22.65,
+    "kanalas": "mokamas",
+    "utm": "21472017542",
+    "kontr": 5.37
+   },
+   {
+    "nr": "1538",
+    "d": "2026-10-25",
+    "eur": 58.99,
+    "kanalas": "mokamas",
+    "utm": "21472017542",
+    "kontr": 13.44
+   },
+   {
+    "nr": "1563",
+    "d": "2026-10-27",
+    "eur": 79.9,
+    "kanalas": "direct",
+    "utm": "",
+    "kontr": 11.77
+   }
+  ],
+  "uzs_n": 6,
+  "uzs_eur": 295.37,
+  "pirkeju": 6,
+  "relaunch_kontaktai_viso": 5666,
+  "nauji_pirkejai_po_0930_is_relaunch": 106
+ },
+ "v": "dep-075813",
+ "kurimas": 200,
+ "sid": 7476,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
