@@ -1,0 +1,141 @@
+{
+ "1": {
+  "v": "x5",
+  "metodai": [
+   "evaluate",
+   "calc_enabled",
+   "calc"
+  ],
+  "calc_pvz": {
+   "status": "system_error",
+   "availability": {
+    "norm": false,
+    "duration": false,
+    "cost": false
+   },
+   "reason_codes": [
+    "SYSTEM_ERROR"
+   ],
+   "message_lt": "Produktas nerastas.",
+   "weight_missing": false,
+   "weight_mode": null,
+   "norm_min_g": null,
+   "norm_max_g": null,
+   "days_min": null,
+   "days_max": null,
+   "cost_day_min": null,
+   "cost_day_max": null,
+   "cost_30d_min": null,
+   "cost_30d_max": null,
+   "basis": null,
+   "basis_label_lt": null,
+   "activity_mode": "none",
+   "activity_options": [],
+   "activity_selected": null,
+   "interval_options": [],
+   "interval_too_wide": false,
+   "weight_interval_selected": null,
+   "species_required": false,
+   "species_options": [],
+   "sellable_unit_food_g": null,
+   "currency": null,
+   "price_source": null,
+   "price_context": null,
+   "price_used": null,
+   "mixed_estimate": null
+  },
+  "funkcijos": [
+   [
+    "evaluate",
+    " array $in "
+   ],
+   [
+    "apply_axis_defaults",
+    " $rt, $in "
+   ],
+   [
+    "needs_input_age",
+    ""
+   ],
+   [
+    "calc_enabled",
+    ""
+   ],
+   [
+    "calc",
+    " $in "
+   ],
+   [
+    "table_weight_range",
+    " $rows "
+   ],
+   [
+    "kg",
+    " $v "
+   ],
+   [
+    "calc_one",
+    " $rows, $axis_flat, $wb, $w, $conds "
+   ],
+   [
+    "raw_at_weight",
+    " $rows, $axis_flat, $wb, $w, $cat_axis, $act_sel, $act_opts "
+   ],
+   [
+    "raw_over_interval",
+    " $rows, $axis_flat, $wb, $iv, $cat_axis, $act_sel, $act_opts "
+   ],
+   [
+    "activity_options",
+    " $rows, $axis "
+   ],
+   [
+    "act_label",
+    " $c "
+   ],
+   [
+    "interval_options",
+    " $rows "
+   ],
+   [
+    "iv",
+    " $lo, $hi "
+   ],
+   [
+    "price_ctx",
+    " $product "
+   ],
+   [
+    "money",
+    " $v "
+   ],
+   [
+    "lt",
+    " $v "
+   ],
+   [
+    "basis_label",
+    " $basis, $activity_mode, $too_wide "
+   ],
+   [
+    "msg",
+    " $status, $reason "
+   ],
+   [
+    "shell",
+    " $status, $avail, $reason, $message_lt "
+   ],
+   [
+    "unavailable",
+    " $reason, $message_lt "
+   ]
+  ]
+ },
+ "v": "dep-131321",
+ "kurimas": 200,
+ "sid": 7518,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
