@@ -1,0 +1,34 @@
+{
+ "6": {
+  "v": "S1807ss",
+  "f": "6",
+  "grp": {
+   "calc": 397,
+   "std": 98
+  },
+  "opt": {
+   "calc": "mZymGn",
+   "std": "n5O08P",
+   "at": "2026-10-28 18:01:41"
+  },
+  "sender": [
+   984,
+   975
+  ],
+  "calc": {
+   "status_pries": "DRAFT",
+   "send": "200 \"Campaign started to send\""
+  },
+  "std": {
+   "status_pries": "DRAFT",
+   "send": "200 \"Campaign started to send\""
+  }
+ },
+ "v": "dep-162300",
+ "kurimas": 200,
+ "sid": 7543,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
