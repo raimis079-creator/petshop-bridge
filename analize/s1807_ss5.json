@@ -1,0 +1,27 @@
+{
+ "5": {
+  "v": "S1807ss",
+  "f": "5",
+  "grp": {
+   "calc": 397,
+   "std": 98
+  },
+  "calc": {
+   "kurti": 200,
+   "id": "mZymGn",
+   "send": "403 [{\"title\":\"You have more subscribers than your plan allows\",\"details\":\"To send this campaign, you need to upgrade your plan\",\"route\":\"settings\\/billing\\/upgrade"
+  },
+  "std": {
+   "kurti": 200,
+   "id": "n5O08P",
+   "send": "403 [{\"title\":\"You have more subscribers than your plan allows\",\"details\":\"To send this campaign, you need to upgrade your plan\",\"route\":\"settings\\/billing\\/upgrade"
+  }
+ },
+ "v": "dep-155922",
+ "kurimas": 200,
+ "sid": 7540,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
