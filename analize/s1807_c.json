@@ -1,0 +1,145 @@
+{
+ "1": {
+  "v": "S1807c",
+  "cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "spalis_pagal_flow": [
+   {
+    "flow": "post_purchase_2d",
+    "status": "sent",
+    "n": "279"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "sent",
+    "n": "239"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "pending",
+    "n": "123"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "n": "113"
+   },
+   {
+    "flow": "refill_due",
+    "status": "skipped",
+    "n": "97"
+   },
+   {
+    "flow": "refill_due",
+    "status": "sent",
+    "n": "58"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "status": "sent",
+    "n": "43"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "status": "pending",
+    "n": "40"
+   },
+   {
+    "flow": "consent_changed",
+    "status": "sent",
+    "n": "30"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "skipped",
+    "n": "27"
+   },
+   {
+    "flow": "browse_abandoned",
+    "status": "skipped",
+    "n": "27"
+   },
+   {
+    "flow": "cart_abandoned",
+    "status": "sent",
+    "n": "22"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "sent",
+    "n": "18"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "n": "14"
+   },
+   {
+    "flow": "refill_due",
+    "status": "deferred",
+    "n": "8"
+   },
+   {
+    "flow": "browse_abandoned",
+    "status": "sent",
+    "n": "7"
+   },
+   {
+    "flow": "ps_s1749_testas",
+    "status": "skipped",
+    "n": "4"
+   },
+   {
+    "flow": "back_in_stock",
+    "status": "sent",
+    "n": "3"
+   },
+   {
+    "flow": "ps_s1749_testas",
+    "status": "sent",
+    "n": "3"
+   },
+   {
+    "flow": "win_back",
+    "status": "sent",
+    "n": "1"
+   }
+  ],
+  "spalis_issiusta": 778,
+  "rugsejis_issiusta": 331,
+  "SQL": ""
+ },
+ "v": "dep-081147",
+ "kurimas": 200,
+ "sid": 7478,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
