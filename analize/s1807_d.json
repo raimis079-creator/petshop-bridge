@@ -1,0 +1,270 @@
+{
+ "1": {
+  "v": "S1807d",
+  "opcijos": [
+   {
+    "n": "ps_laukas_testas",
+    "v": "34932"
+   },
+   {
+    "n": "ps_laukai_testai",
+    "v": "a:3:{s:4:\"hipo\";i:34933;s:7:\"jautrus\";i:34934;s:4:\"mono\";i:34935;}"
+   },
+   {
+    "n": "ps_laukai_nauji",
+    "v": "a:2:{s:5:\"kates\";i:34936;s:9:\"kramtalai\";i:34937;}"
+   },
+   {
+    "n": "ps_laukai_grupiu_foto",
+    "v": "a:5:{s:5:\"kates\";i:36545;s:9:\"kramtalai\";i:35006;s:5:\"sunys\";i:35004;s:11:\"kons_sunims\";i:35030;s:10:\"kons_kates\";i:35031;}"
+   }
+  ],
+  "laukai_dovanos": [
+   "47: /** Dovanu prekiu ID (JSON, iki 3). Konservu dezems. */",
+   "48: const META_DOVANOS = '_ps_laukas_dovanos';",
+   "49: /** Suma su PVM, nuo kurios dovana atrakinama. 0 = dovanu nera. */",
+   "50: const META_DOV_RIBA = '_ps_laukas_dovanos_riba';",
+   "103: add_action( 'wp_ajax_ps_laukai_dovanos',     array( __CLASS__, 'ajax_dovanos' ) );",
+   "108: /* Dovanu variklis (v1.16). Sinchronizacija — ties krepselio ivykiais,",
+   "110: add_filter( 'woocommerce_add_cart_item_data', array( __CLASS__, 'dovana_i_krepseli' ), 10, 2 );",
+   "111: add_action( 'woocommerce_add_to_cart',                    array( __CLASS__, 'sinchronizuoti_dovanas' ), 20 );",
+   "112: add_action( 'woocommerce_after_cart_item_quantity_update', array( __CLASS__, 'sinchronizuoti_dovanas' ), 20 );",
+   "113: add_action( 'woocommerce_cart_item_removed',              array( __CLASS__, 'sinchronizuoti_dovanas' ), 20 );",
+   "114: add_action( 'woocommerce_cart_loaded_from_session',       array( __CLASS__, 'sinchronizuoti_dovanas' ), 20 );",
+   "116: add_action( 'woocommerce_before_calculate_totals', array( __CLASS__, 'dovanos_kaina' ), 101 );",
+   "117: add_filter( 'woocommerce_cart_item_quantity', array( __CLASS__, 'dovanos_kiekis' ), 10, 3 );",
+   "118: add_filter( 'woocommerce_cart_item_price',    array( __CLASS__, 'dovanos_zyme' ), 10, 3 );",
+   "119: add_action( 'woocommerce_checkout_create_order_line_item', array( __CLASS__, 'dovanos_eilute' ), 11, 4 );",
+   "333: /* ==================== DOVANU MODELIS (v1.16) ====================",
+   "339: *   2) DOVANA pasiekus sumos riba — klientas renkasi is triju.",
+   "341: * Pakopos ir dovana yra NEPRIKLAUSOMI mechanizmai: skanestu deze turi",
+   "342: * pakopas ir neturi dovanos, konservu deze — atvirksciai. Techniskai",
+   "347: /** Dovanos riba EUR su PVM. 0 = dovanu sis laukas neturi. */",
+   "348: public static function dovanos_riba( $pid ) {",
+   "353: /** Dovanu prekiu ID (iki 3). Grazina tik tas, kurias realiai galima siusti. */",
+   "354: public static function dovanos( $pid, $tik_turimos = true ) {",
+   "355: $raw = get_post_meta( (int) $pid, self::META_DOVANOS, true );",
+   "362: /* Dovana, kurios nera sandelyje, nerodoma: pazadas, kurio negalim",
+   "363: ivykdyti, brangesnis nei pati dovana. */",
+   "374: /** Ar sis laukas dirba su dovana (o ne su pakopomis). */",
+   "375: public static function su_dovana( $pid ) {",
+   "376: return self::dovanos_riba( $pid ) > 0 && self::dovanos( $pid ) !== array();",
+   "379: /* ==================== DOVANU VARIKLIS ===================="
+  ],
+  "laukai_antraste": [
+   "<?php",
+   "/**",
+   " * Plugin Name: Petshop Laukai",
+   " * Description: Pasirenkami rinkiniai naujuoju modeliu — laukas (iki 8 prekiu is vieno sandelio),",
+   " *              laisvas kiekis nuo 3 vnt. ir pakopine nuolaida pagal krepselio verte.",
+   " * Version:     1.00",
+   " * Author:      Petshop",
+   " *",
+   " * KODEL ATSKIRAS FAILAS:",
+   " * `petshop-rinkiniai.php` tvarko paruostus rinkinius ir DP pakus — jie veikia ir ju",
+   " * liesti nereikia. Laukai yra kitas modelis (ne fiksuotas dydis, o laisvas kiekis),",
+   " * todel gyvena atskirai. Jei laukai kada nors bus atmesti, uztenka istrinti si faila.",
+   " *",
+   " * MODELIS:",
+   " * - Vienas laukas = vienas MnM konteineris: kainos atskirai, min 3, maks. neribota.",
+   " * - Krepsys = iki 9 vaikiniu prekiu, visos is TO PACIO sandelio (viena siunta).",
+   " * - Klientas gali imti kelis to paties vienetus — MnM kiekio laukelis.",
+   " * - Nuolaida pakopomis pagal krepselio SUMA, ne pagal kieki. Ji taikoma",
+   " *   VISOMS lauko prekems, ne paskutinei.",
+   " *",
+   " * KODEL NUOLAIDA KREPSELYJE, O NE MnM `_mnm_discount`:",
+   " * MnM moka tik viena fiksuota procenta. Pakopa priklauso nuo sumos, kuri",
+   " * paaiskeja tik surinkus krepseli, todel kaina koreguojama",
+   " * `woocommerce_before_calculate_totals` metu — kiekvienai vaikinei prekei",
+   " * atskirai. Taip kiekviena preke lieka atskira eilute su savo kaina ir"
+  ],
+  "laukai": [
+   {
+    "ID": "34934",
+    "post_title": "Kramtalų dėžė šuniui — jautriam virškinimui",
+    "post_status": "draft",
+    "post_name": "skanestu-deze-suniui-jautriam-virskinimui"
+   },
+   {
+    "ID": "34935",
+    "post_title": "Skanėstų dėžė šuniui — monoproteinas",
+    "post_status": "draft",
+    "post_name": "skanestu-deze-suniui-monoproteinas"
+   },
+   {
+    "ID": "34936",
+    "post_title": "Skanėstų dėžutė katei",
+    "post_status": "draft",
+    "post_name": "skanestu-dezute-katei"
+   },
+   {
+    "ID": "34938",
+    "post_title": "Skanėstų dėžutė katei",
+    "post_status": "publish",
+    "post_name": "skanestai-katems2"
+   },
+   {
+    "ID": "34942",
+    "post_title": "Konservų dėžė, 800 g. Be vištienos",
+    "post_status": "publish",
+    "post_name": "konservu-deze-800-be-vistienos"
+   },
+   {
+    "ID": "34944",
+    "post_title": "Konservų dėžė, 400 g. Be vištienos",
+    "post_status": "publish",
+    "post_name": "konservu-deze-400-be-vistienos"
+   },
+   {
+    "ID": "34945",
+    "post_title": "Konservų dėžė 300/400 g – Monoproteinas",
+    "post_status": "publish",
+    "post_name": "konservu-deze-400-monoproteinas"
+   },
+   {
+    "ID": "34947",
+    "post_title": "Konservų rinkinys katėms",
+    "post_status": "publish",
+    "post_name": "konservu-deze-katei-isrankioms"
+   },
+   {
+    "ID": "35309",
+    "post_title": "Konservų rinkinys katėms",
+    "post_status": "publish",
+    "post_name": "konservu-deze-katei"
+   },
+   {
+    "ID": "35390",
+    "post_title": "Konservų rinkinys katėms",
+    "post_status": "publish",
+    "post_name": "konservu-rinkinys-katems"
+   },
+   {
+    "ID": "35781",
+    "post_title": "Konservų dėžė, 400 g. Įvairovė",
+    "post_status": "publish",
+    "post_name": "konservu-deze-400-g-ivairove"
+   },
+   {
+    "ID": "35782",
+    "post_title": "Konservų dėžė, 800 g. Įvairovė",
+    "post_status": "publish",
+    "post_name": "konservu-deze-800-g-ivairove"
+   },
+   {
+    "ID": "36153",
+    "post_title": "Skanėstų dėžė šuniui - kieti kramtukai",
+    "post_status": "publish",
+    "post_name": "skanestu-deze-suniui-kieti-kramtukai"
+   },
+   {
+    "ID": "36154",
+    "post_title": "Kramtalų rinkinys šunims – TOP 12",
+    "post_status": "publish",
+    "post_name": "kramtalu-rinkinys-sunims-top-12"
+   },
+   {
+    "ID": "36155",
+    "post_title": "Kramtalų dėžė šuniui - tvirtų dantų savininkams",
+    "post_status": "publish",
+    "post_name": "kramtalu-deze-suniui-tvirtu-dantu-savininkams"
+   }
+  ],
+  "laukas_meta_keys": [
+   "_mnm_max_price",
+   "_mnm_max_regular_price",
+   "_mnm_base_regular_price",
+   "_mnm_base_sale_price",
+   "_mnm_layout_override",
+   "_mnm_layout_style",
+   "_mnm_add_to_cart_form_location",
+   "_mnm_min_container_size",
+   "_mnm_max_container_size",
+   "_mnm_per_product_pricing",
+   "_mnm_per_product_discount",
+   "_mnm_packing_mode",
+   "_mnm_weight_cumulative",
+   "_mnm_content_source",
+   "_mnm_child_category_ids",
+   "_mnm_base_price",
+   "_ps_laukas",
+   "_ps_laukas_zodis",
+   "_ps_laukas_sandelis",
+   "_ps_laukas_seima",
+   "_ps_laukas_pakopos",
+   "_ps_laukas_trumpas",
+   "_ps_laukas_grupe",
+   "_ps_laukas_dydis",
+   "_ps_laukas_dovanos_riba",
+   "_ps_laukas_dovanos",
+   "_ps_laukas_iejimas"
+  ],
+  "mnm_uzsakymai": [
+   {
+    "d": "2026-09-14",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-15",
+    "n": "1"
+   },
+   {
+    "d": "2026-09-25",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-08",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-11",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-13",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-17",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-18",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-19",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-20",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-22",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-23",
+    "n": "1"
+   }
+  ],
+  "mnm_viso": 12,
+  "uzs_viso": 491,
+  "dovanos_eilutes": [
+   {
+    "n": "Churu Xmas dovanų dėžutė su tunu, vištiena, vištiena ir sūriu 20 vnt",
+    "k": "3"
+   }
+  ],
+  "puslapiai": [],
+  "SQL": ""
+ },
+ "v": "dep-082700",
+ "kurimas": 200,
+ "sid": 7479,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
