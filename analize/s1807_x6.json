@@ -1,0 +1,193 @@
+{
+ "1": {
+  "v": "x6",
+  "c": [
+   [
+    "18566",
+    "Exclusion Hypoallergenic sausas šunų maistas su arkliena ir bulvėmis M/L 12 kg",
+    "needs_input",
+    [
+     "WEIGHT_MISSING"
+    ],
+    true,
+    [
+     {
+      "code": "W11_15",
+      "min_kg": 11,
+      "max_kg": 15,
+      "label_lt": "11–15 kg"
+     },
+     {
+      "code": "W15_20",
+      "min_kg": 15,
+      "max_kg": 20,
+      "label_lt": "15–20 kg"
+     },
+     {
+      "code": "W20_25",
+      "min_kg": 20,
+      "max_kg": 25,
+      "label_lt": "20–25 kg"
+     },
+     {
+      "code": "W25_30",
+      "min_kg": 25,
+      "max_kg": 30,
+      "label_lt": "25–30 kg"
+     },
+     {
+      "code": "W30_40",
+      "min_kg": 30,
+      "max_kg": 40,
+      "label_lt": "30–40 kg"
+     },
+     {
+      "code": "W40_50",
+      "min_kg": 40,
+      "max_kg": 50,
+      "label_lt": "40–50 kg"
+     },
+     {
+      "code": "W50_60",
+      "min_kg": 50,
+      "max_kg": 60,
+      "label_lt": "50–60 kg"
+     },
+     {
+      "code": "W60_70",
+      "min_kg": 60,
+      "max_kg": 70,
+      "label_lt": "60–70 kg"
+     }
+    ],
+    null,
+    null,
+    null,
+    null
+   ],
+   [
+    "19492",
+    "Animonda GranCarno Adult: konservai šunims su elniena, pagardinta obuoliais, 400 g",
+    "unavailable",
+    [
+     "NO_VERIFIED_TABLE"
+    ],
+    false,
+    [],
+    null,
+    null,
+    null,
+    null
+   ],
+   [
+    "18575",
+    "Exclusion Hypoallergenic mini sausas mažų veislių šunų maistas su žuvimi ir bulvėmis S 2 kg",
+    "needs_input",
+    [
+     "WEIGHT_MISSING"
+    ],
+    true,
+    [
+     {
+      "code": "W2_3",
+      "min_kg": 2,
+      "max_kg": 3,
+      "label_lt": "2–3 kg"
+     },
+     {
+      "code": "W3_4",
+      "min_kg": 3,
+      "max_kg": 4,
+      "label_lt": "3–4 kg"
+     },
+     {
+      "code": "W4_5",
+      "min_kg": 4,
+      "max_kg": 5,
+      "label_lt": "4–5 kg"
+     },
+     {
+      "code": "W5_6",
+      "min_kg": 5,
+      "max_kg": 6,
+      "label_lt": "5–6 kg"
+     },
+     {
+      "code": "W6_8",
+      "min_kg": 6,
+      "max_kg": 8,
+      "label_lt": "6–8 kg"
+     },
+     {
+      "code": "W8_10",
+      "min_kg": 8,
+      "max_kg": 10,
+      "label_lt": "8–10 kg"
+     }
+    ],
+    null,
+    null,
+    null,
+    null
+   ],
+   [
+    "18046",
+    "Josera Light &#038; Vital 12,5 kg &#8211; sausas maistas linkusiems tukti šunims",
+    "needs_input",
+    [
+     "WEIGHT_MISSING"
+    ],
+    true,
+    [
+     {
+      "code": "W5_10",
+      "min_kg": 5,
+      "max_kg": 10,
+      "label_lt": "5–10 kg"
+     },
+     {
+      "code": "W10_20",
+      "min_kg": 10,
+      "max_kg": 20,
+      "label_lt": "10–20 kg"
+     },
+     {
+      "code": "W20_30",
+      "min_kg": 20,
+      "max_kg": 30,
+      "label_lt": "20–30 kg"
+     },
+     {
+      "code": "W30_40",
+      "min_kg": 30,
+      "max_kg": 40,
+      "label_lt": "30–40 kg"
+     },
+     {
+      "code": "W40_60",
+      "min_kg": 40,
+      "max_kg": 60,
+      "label_lt": "40–60 kg"
+     },
+     {
+      "code": "W60_80",
+      "min_kg": 60,
+      "max_kg": 80,
+      "label_lt": "60–80 kg"
+     }
+    ],
+    null,
+    null,
+    null,
+    null
+   ]
+  ]
+ },
+ "v": "dep-131447",
+ "kurimas": 200,
+ "sid": 7519,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
