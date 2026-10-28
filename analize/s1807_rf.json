@@ -1,0 +1,230 @@
+{
+ "1": {
+  "v": "rf",
+  "vartai": false,
+  "job_cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "flow_col": "flow",
+  "jobs_14d": [
+   {
+    "f": "back_in_stock",
+    "status": "sent",
+    "n": "2",
+    "pask": "2026-10-22 10:02:14"
+   },
+   {
+    "f": "browse_abandoned",
+    "status": "sent",
+    "n": "3",
+    "pask": "2026-10-27 16:37:04"
+   },
+   {
+    "f": "browse_abandoned",
+    "status": "skipped",
+    "n": "12",
+    "pask": "2026-10-28 16:37:04"
+   },
+   {
+    "f": "cart_abandoned",
+    "status": "sent",
+    "n": "18",
+    "pask": "2026-10-28 08:44:42"
+   },
+   {
+    "f": "cart_abandoned",
+    "status": "skipped",
+    "n": "2",
+    "pask": "2026-10-24 15:24:54"
+   },
+   {
+    "f": "cart_abandoned_2",
+    "status": "sent",
+    "n": "14",
+    "pask": "2026-10-28 16:34:42"
+   },
+   {
+    "f": "cart_abandoned_2",
+    "status": "skipped",
+    "n": "1",
+    "pask": "2026-10-16 17:49:55"
+   },
+   {
+    "f": "consent_changed",
+    "status": "sent",
+    "n": "11",
+    "pask": "2026-10-27 16:22:59"
+   },
+   {
+    "f": "post_purchase_14d",
+    "status": "pending",
+    "n": "114",
+    "pask": "2026-10-28 16:39:35"
+   },
+   {
+    "f": "post_purchase_14d",
+    "status": "sent",
+    "n": "11",
+    "pask": "2026-10-16 08:40:04"
+   },
+   {
+    "f": "post_purchase_14d",
+    "status": "skipped",
+    "n": "24",
+    "pask": "2026-10-16 13:39:28"
+   },
+   {
+    "f": "post_purchase_2d",
+    "status": "sent",
+    "n": "149",
+    "pask": "2026-10-28 16:39:35"
+   },
+   {
+    "f": "post_purchase_7d",
+    "status": "pending",
+    "n": "43",
+    "pask": "2026-10-28 16:39:35"
+   },
+   {
+    "f": "post_purchase_7d",
+    "status": "sent",
+    "n": "106",
+    "pask": "2026-10-23 13:40:03"
+   },
+   {
+    "f": "refill_due",
+    "status": "deferred",
+    "n": "4",
+    "pask": "2026-10-28 08:00:04"
+   },
+   {
+    "f": "refill_due",
+    "status": "sent",
+    "n": "40",
+    "pask": "2026-10-28 08:00:04"
+   },
+   {
+    "f": "refill_due",
+    "status": "skipped",
+    "n": "68",
+    "pask": "2026-10-28 08:00:04"
+   },
+   {
+    "f": "win_back",
+    "status": "sent",
+    "n": "1",
+    "pask": "2026-10-23 05:30:06"
+   }
+  ],
+  "refill_relaunch": [
+   {
+    "status": "active",
+    "purchase_count": "0",
+    "n": "3",
+    "min_d": "2026-11-11",
+    "max_d": "2026-12-21"
+   },
+   {
+    "status": "active",
+    "purchase_count": "1",
+    "n": "1",
+    "min_d": "2026-12-23",
+    "max_d": "2026-12-23"
+   },
+   {
+    "status": "notified",
+    "purchase_count": "0",
+    "n": "1",
+    "min_d": "2026-10-15",
+    "max_d": "2026-10-15"
+   }
+  ],
+  "refill_relaunch_praeje": [],
+  "kodas": {
+   "petshop-anketos-ataskaita.php": [
+    "\t\t$due = self::sk( $r, 'refill_due' );"
+   ],
+   "petshop-krepselio-priminimai.php": [
+    "Peržiūrėta prekė\" (browse_abandoned) lieka rinkodara. v1.1: svečių atsisakymas taikomas ir pakartojimo laiškams (refill_due, post_purchase_14d, win_back). Šablonai — mu-plugins/ps-sablonai/krepselis-1.php, krepselis-2.php (Raimio tekstai S1676, kita poraštė). Variklis (petshop-",
+    "8b, Raimio „daryk\" 10-11 12:37): tas pats atsisakymo patikrinimas (paskyra + ps_consent_log) ir pakartojimo laiškams refill_due, post_purchase_14d, win_back — anksčiau svečių atsisakymas kasoje jiems nebuvo įskaitomas.",
+    "\tconst PAKART = array( 'refill_due', 'post_purchase_14d', 'win_back' );"
+   ],
+   "petshop-laiskai.php": [
+    "\t\t\t'refill_due'             => array( 'reorder_url', 'feedback_url' ),"
+   ],
+   "petshop-langai-admin.php": [
+    "\t\t\t'refill_due'             => array( 'Maisto gali pritrūkti', 'Pagal ankstesnį pirkimą apskaičiuotas laikas.' ),"
+   ],
+   "petshop-lifecycle-vartai.php": [
+    "klai pagal brendą × pakuotę iš 2,5 m. istorijos (CIKLAI_ir_R_due_baseline_s1684.md) vietoj grubių 14/30/60 d.; (2) refill_due / post_purchase_14d eligibility = ERĮ 81(2) soft opt-out (ps_soft_optin_eligible && !ps_similar_optout), kol lauko nėra — atidedama; (3) 90/10 holdout (per",
+    "\t\tif ( ! in_array( $flow, array( 'refill_due', 'post_purchase_14d', 'win_back' ), true ) ) return $result;"
+   ],
+   "petshop-pakartojimo-grandine.php": [
+    " *   (1) KLAIDOS TAISYMAS: refill_due „jau nupirko\" — core Petshop_Refill_Engine::has_repurchased() lygino su",
+    " *   (2) K1: refill_due / post_purchase_14d / win_back — VISIEMS. Be 10 % kontrolinės grupės, be „soft\" žymos",
+    "\t/** (1) refill_due: kaip core, tik teisinga „jau nupirko\" patikra. */",
+    "\t\tif ( 'refill_due' !== $flow ) { return $result; }"
+   ],
+   "petshop-pakartoti.php": [
+    " * Plugin Name: Petshop Pakartoti tą patį (refill_due laiškas)",
+    " * Description: S1685 (Q4 planas, lifecycle etapas 1): refill_due laiškas „Pakartoti tą patį\" — v1.1.0 GRUPUOJA PAGAL PASKUTINĮ UŽSAKYMĄ (Raimio sprendimas 09-15): laiške visos to užsakymo sekamos maisto prekės s",
+    " → endpoint'as /?ps_pakartoti=<order>&z=<hmac> sudeda viską į krepšelį ir veda į kasą; kiti to paties užsakymo refill_due laiškai per 45 d. praleidžiami (terminal `pakartoti_jau_siustas`). Šablonas: mu-plugins/ps-sablonai/refill-pakartoti.php (core refill.php neliečiamas). Pre",
+    "\tconst LANGAS_D = 45; // per tiek dienų to paties užsakymo antras refill_due nesiunčiamas"
+   ],
+   "petshop-planas-langas.php": [
+    "T status, COALESCE(NULLIF(skip_reason,''),NULLIF(block_reason,''),'') pr, COUNT(*) n FROM {$p}ps_email_jobs WHERE flow='refill_due' AND created_at>=%s GROUP BY 1,2\", $nuo ), ARRAY_A );",
+    "= array(); $sent = 0; $klik = (int) $wpdb->get_var( $wpdb->prepare( \"SELECT COUNT(*) FROM {$p}ps_email_jobs WHERE flow='refill_due' AND clicked_at IS NOT NULL AND created_at>=%s\", $nuo ) );"
+   ],
+   "petshop-refill-ivykiai.php": [
+    " * KODEL VEIDRODIS: refill_due gimsta Petshop_Refill_Engine::check_due(), kuris",
+    " *   refill_due            <- ps_event_log  (event_type=refill_due)",
+    " *   refill_reminder_sent  <- ps_email_jobs (flow=refill_due, status=sent)",
+    " *                            uzsakyme yra preke su refill_due per 45 d.;"
+   ],
+   "petshop-rezultatai.php": [
+    "      'subscription_t5_notice'=>'Reguliari siunta po 5 d.','refill_due'=>'Maisto gali pritrūkti',"
+   ],
+   "petshop-sugrazinimas.php": [
+    "lanas, retention etapas 2, Raimio sprendimai 09-16): vienas win_back laiškas „Pakartoti ankstesnį užsakymą?\" ties refill_due terminu +30 d. (formulė win_back_at = predicted_empty_date + 30), po jo ciklas sustoja iki naujo pirkimo. Teisinis pagrindas ERĮ 81(2) soft opt-out — nauja",
+    " flow klasė `similar_soft_optin` (refill_due perkeliamas į ją; ne service, ne marketing; opt_out viršesnis); vartai/holdout 90/10 per petshop-lifecycle-vartai. Prekės/kaina/mygtukas — Petshop_Pakart",
+    "\t/** win_back srautas + refill_due į tą pačią klasę (ERĮ 81(2)). Dispatch nežinomai klasei: transakcinis suppression kanalas, be newsletter consent, toliau eligibility filtrai. */",
+    "\t\tif ( isset( $flows['refill_due'] ) ) $flows['refill_due']['class'] = self::KLASE;"
+   ],
+   "petshop-sutikimai.php": [
+    "\t/** Atsisakymo nuoroda lifecycle laiškams (refill_due, pakartoti, win-back). */"
+   ]
+  }
+ },
+ "v": "dep-172146",
+ "kurimas": 200,
+ "sid": 7547,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
