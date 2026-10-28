@@ -1,0 +1,90 @@
+{
+ "3": {
+  "v": "S1807w",
+  "f": "3",
+  "versija_antraste": "1.2",
+  "cols": [
+   "atidare_at",
+   "atidare_n",
+   "pask_utm",
+   "banga"
+  ],
+  "metodai": {
+   "pikselis": true,
+   "vienas_paspaudimas": true,
+   "paspaudimas_bet_kur": true,
+   "primink_url": true,
+   "pikselio_url": true
+  },
+  "test_cid": "X5PuZTo6iTwR9o9sOteu",
+  "pikselio_url": "https://petshop.lt/?ps_atidare=X5PuZTo6iTwR9o9sOteu&z=835297e6505725182ffe",
+  "pikselis": [
+   200,
+   42,
+   "image/gif"
+  ],
+  "po_pikselio": {
+   "atidare_n": "2",
+   "atidare_at": "2026-10-28 10:39:18"
+  },
+  "primink_url": "https://petshop.lt/?ps_primink1=X5PuZTo6iTwR9o9sOteu&pid=18054&kg=6&z=8115166e4ab4ea4ce02f&utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=primink",
+  "primink_resp": [
+   302,
+   "https://petshop.lt/product/josera-leger-10-kg-sausas-maistas-katems-maziau-kaloriju/?ps_primink_ok=1&cid=X5PuZTo6iTwR9o9sOteu&svoris=6",
+   ""
+  ],
+  "po_primink": {
+   "klik_n": "9",
+   "pask_utm": "primink",
+   "primink_at": "2026-10-28 10:42:43",
+   "primink_kg": "6.0",
+   "user_id": "44"
+  },
+  "refill": {
+   "id": "711",
+   "product_id": "18054",
+   "predicted_empty_date": "2026-12-21",
+   "status": "active",
+   "feedback_cycle": "relaunch",
+   "confidence": "0.50"
+  },
+  "betkur": [
+   200
+  ],
+  "po_betkur": {
+   "klik_n": "10",
+   "pask_utm": "deze"
+  },
+  "ivykis": {
+   "tipas": "email_click",
+   "raktas2": "deze",
+   "kampanija": "relaunch_suo2",
+   "url_kelias": "/skaiciuokle/"
+  },
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/skaiciuokle/": [
+    200,
+    0
+   ],
+   "/paskyra/": [
+    200,
+    0
+   ]
+  }
+ },
+ "v": "dep-104137",
+ "kurimas": 200,
+ "sid": 7510,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
