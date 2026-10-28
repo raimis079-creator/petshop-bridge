@@ -1,0 +1,47 @@
+{
+ "1": {
+  "v": "rf2",
+  "row": {
+   "id": "114",
+   "user_id": "44",
+   "product_id": "12466",
+   "last_order_id": "0",
+   "predicted_empty_date": "2026-10-15",
+   "status": "notified"
+  },
+  "jobs": [
+   {
+    "id": "1460",
+    "job_key": "refill_due:44:12466:2026-10-15",
+    "status": "sent",
+    "skip_reason": null,
+    "block_reason": null,
+    "scheduled_at": "2026-10-10 08:00:03",
+    "sent_at": "2026-10-10 08:03:45",
+    "opened_at": null,
+    "clicked_at": null
+   }
+  ],
+  "skip_priezastys": [
+   {
+    "p": "pakartoti_jau_siustas",
+    "n": "43"
+   },
+   {
+    "p": "similar_optout",
+    "n": "25"
+   },
+   {
+    "p": "preke_nera_sandelyje",
+    "n": "4"
+   }
+  ]
+ },
+ "v": "dep-172346",
+ "kurimas": 200,
+ "sid": 7548,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
