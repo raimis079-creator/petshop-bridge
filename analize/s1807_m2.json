@@ -1,0 +1,70 @@
+{
+ "2": {
+  "v": "S1807m",
+  "f": "2",
+  "patikra": {
+   "maiseliai": {
+    "prekiu": 12,
+    "sandelis": [
+     "VF"
+    ],
+    "klaidos": []
+   },
+   "josera": {
+    "prekiu": 12,
+    "sandelis": [
+     "VF"
+    ],
+    "klaidos": []
+   }
+  },
+  "jau_sukurta": false,
+  "res_maiseliai": [
+   "id",
+   "sandelis",
+   "prekiu",
+   "pakopos",
+   "perspejimai",
+   "saugi"
+  ],
+  "res_josera": [
+   "id",
+   "sandelis",
+   "prekiu",
+   "pakopos",
+   "perspejimai",
+   "saugi"
+  ],
+  "sukurta": {
+   "maiseliai": 37367,
+   "josera": 37368
+  },
+  "po": {
+   "maiseliai": {
+    "status": "draft",
+    "kids": 12,
+    "dov": "[19027,21567,20437]",
+    "riba": "20",
+    "sand": "VF",
+    "min": "12",
+    "url": "https://petshop.lt/?post_type=product&p=37367"
+   },
+   "josera": {
+    "status": "draft",
+    "kids": 12,
+    "dov": "[20437,19027,21567]",
+    "riba": "30",
+    "sand": "VF",
+    "min": "6",
+    "url": "https://petshop.lt/?post_type=product&p=37368"
+   }
+  }
+ },
+ "v": "dep-094555",
+ "kurimas": 200,
+ "sid": 7493,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
