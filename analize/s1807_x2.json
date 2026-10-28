@@ -1,0 +1,92 @@
+{
+ "1": {
+  "34944": {
+   "thumb_id": "",
+   "gallery": "",
+   "wc_img_id": 35030,
+   "img_html": "<img width=\"280\" height=\"280\" src=\"https://petshop.lt/wp-content/uploads/2026/08/sunu-konservai-280x280.jpg\" class=\"attachment-thumbnail size-thumbnail\" alt=\"Konservų dėžė, 400 g. Be vištienos\" decoding=\"async\" loading=\"lazy\" srcset=\"https://petshop.lt/wp-content/uploads/2026/08/sunu-konservai-280x2",
+   "metas": []
+  },
+  "34947": {
+   "thumb_id": "",
+   "gallery": "",
+   "wc_img_id": 35031,
+   "img_html": "<img width=\"280\" height=\"280\" src=\"https://petshop.lt/wp-content/uploads/2026/08/konservai-katems-3-280x280.jpg\" class=\"attachment-thumbnail size-thumbnail\" alt=\"Konservų rinkinys katėms – Išrankioms, tunas\" decoding=\"async\" loading=\"lazy\" srcset=\"https://petshop.lt/wp-content/uploads/2026/08/konser",
+   "metas": []
+  },
+  "36153": {
+   "thumb_id": "",
+   "gallery": "",
+   "wc_img_id": 35004,
+   "img_html": "<img width=\"280\" height=\"280\" src=\"https://petshop.lt/wp-content/uploads/2026/08/skanestai-2-280x280.jpg\" class=\"attachment-thumbnail size-thumbnail\" alt=\"Skanėstų dėžė šuniui - kieti kramtukai\" decoding=\"async\" loading=\"lazy\" srcset=\"https://petshop.lt/wp-content/uploads/2026/08/skanestai-2-280x280",
+   "metas": []
+  },
+  "37367": {
+   "thumb_id": "",
+   "gallery": "",
+   "wc_img_id": 35031,
+   "img_html": "<img width=\"280\" height=\"280\" src=\"https://petshop.lt/wp-content/uploads/2026/08/konservai-katems-3-280x280.jpg\" class=\"attachment-thumbnail size-thumbnail\" alt=\"Konservų dėžė katei — maišeliai ir paštetai 85 g\" decoding=\"async\" loading=\"lazy\" srcset=\"https://petshop.lt/wp-content/uploads/2026/08/ko",
+   "metas": []
+  },
+  "v": "x2",
+  "laukai_src": [
+   "\t\tadd_filter( 'woocommerce_product_get_image_id', array( __CLASS__, 'foto_atsargine' ), 10, 2 );",
+   "\t\t\t\t'foto'   => wp_get_attachment_image_url( $cp->get_image_id(), 'woocommerce_thumbnail' ),",
+   "\t\t\t$foto = wp_get_attachment_image_url( $p->get_image_id(), 'woocommerce_thumbnail' );",
+   "\t\t\t\t'foto' => $foto ? $foto : wc_placeholder_img_src( 'woocommerce_thumbnail' ),",
+   "\t\t\t$u = wp_get_attachment_image_url( $fid, 'thumbnail' );",
+   "\t\t\t$u = wp_get_attachment_image_url( $p->get_image_id(), 'thumbnail' );",
+   "\t\t\t\t\t+'<input type=\"text\" id=\"pslka-q\" value=\"'+esc(f.q)+'\" placeholder=\"rinkinio pavadinimas…\"></span>';",
+   "\t\t\t. '<input type=\"text\" id=\"n-pav\" placeholder=\"Skanėstų dėžė šuniui — be vištienos\"></div>';",
+   "\t\t\t. '<input type=\"text\" id=\"n-trumpas\" placeholder=\"Be vištienos\"></div>';",
+   "=\"text\" id=\"n-dydis\" list=\"n-dydziai\" value=\"' . esc_attr( $is_url_dydis ) . '\" placeholder=\"pvz. 400 g\">'",
+   "ype=\"text\" id=\"s-dydis\" list=\"s-dydziai\" value=\"' . esc_attr( $dab_dydis ) . '\" placeholder=\"pvz. 800 g\">'",
+   "yle=\"width:90px\" value=\"' . ( $dov_riba > 0 ? esc_attr( $dov_riba ) : '' ) . '\" placeholder=\"—\"> €</span>'"
+  ],
+  "mu": [
+   ".bak-laukai-20260814-152441.txt",
+   ".bak-laukai-20260814-154417.txt",
+   ".bak-laukai-20260814-154501.txt",
+   ".bak-laukai-20260814-161435.txt",
+   ".bak-laukai-20260814-161523.txt",
+   ".bak-laukai-20260814-162842.txt",
+   ".bak-laukai-20260814-162923.txt",
+   ".bak-laukai-20260814-163426.txt",
+   ".bak-laukai-20260814-163509.txt",
+   ".bak-laukai-20260814-171146.txt",
+   ".bak-laukai-20260814-171231.txt",
+   ".bak-laukai-20260814-172028.txt",
+   ".bak-laukai-20260814-172111.txt",
+   ".bak-laukai-20260814-172204.txt",
+   ".bak-laukai-20260814-180859.txt",
+   ".bak-laukai-20260814-180942.txt",
+   ".bak-laukai-20260814-183605.txt",
+   ".bak-laukai-20260814-183653.txt",
+   ".bak-laukai-20260814-183749.txt",
+   ".bak-laukai-20260814-184229.txt",
+   ".bak-laukai-20260814-184315.txt",
+   ".bak-laukai-20260814-191904.txt",
+   ".bak-laukai-20260814-191957.txt",
+   ".bak-laukai-20260814-192728.txt",
+   ".bak-laukai-20260814-192811.txt",
+   ".bak-laukai-20260814-194323.txt",
+   ".bak-laukai-20260814-194409.txt",
+   ".bak-laukai-20260814-200602.txt",
+   ".bak-laukai-20260814-200649.txt",
+   ".bak-laukai-20260814-210213.txt",
+   ".bak-laukai-20260814-210255.txt",
+   ".bak-petshop-laukai.php-20260814-185558.txt",
+   ".bak-petshop-laukai.php-20260814-185639.txt",
+   "petshop-atsargu-laukimas.php",
+   "petshop-darbalaukis.php",
+   "petshop-laukai.php"
+  ]
+ },
+ "v": "dep-124405",
+ "kurimas": 200,
+ "sid": 7513,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
