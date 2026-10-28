@@ -1,0 +1,38 @@
+{
+ "2": {
+  "v": "S1807ar",
+  "f": "2",
+  "sender_viso": 1284,
+  "aktyvus": 1275,
+  "L1_salinti": 300,
+  "praleista": {
+   "kitos_grupes": 0,
+   "neaktyvus": 0,
+   "sutikimas": 0
+  },
+  "po_salinimo_aktyvus": 975,
+  "st": {
+   "archyvuota": 300,
+   "istrinta": 300,
+   "klaida": 0
+  },
+  "klaidos": [],
+  "archyve": 300,
+  "patikra": [
+   404,
+   404,
+   404
+  ],
+  "po": {
+   "viso": 1200,
+   "aktyvus": 1191
+  }
+ },
+ "v": "dep-162119",
+ "kurimas": 200,
+ "sid": 7542,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
