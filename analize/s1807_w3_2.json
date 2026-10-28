@@ -1,0 +1,109 @@
+{
+ "2": {
+  "v": "S1807w3",
+  "f": "2",
+  "token": "ok",
+  "hb_pries": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/skaiciuokle/": [
+    200,
+    0
+   ],
+   "/paskyra/": [
+    200,
+    0
+   ]
+  },
+  "md5_po": "d5163e261bffc063d3a3377ece260b38",
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/skaiciuokle/": [
+    200,
+    0
+   ],
+   "/paskyra/": [
+    200,
+    0
+   ]
+  }
+ },
+ "3": {
+  "v": "S1807w3",
+  "f": "3",
+  "versija": "1.3",
+  "data_lt": "lapkričio 4 d.",
+  "url": "https://petshop.lt/?ps_primink1=X5PuZTo6iTwR9o9sOteu&pid=17978&kg=0&z=82e80a2c32e0950d78d6&d=7&utm_source=sender&utm_medium=email&utm_campaign=relaunch&utm_content=primink",
+  "resp": [
+   302,
+   "https://petshop.lt/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/?ps_primink_ok=1&cid=X5PuZTo6iTwR9o9sOteu&data=2026-11-04",
+   ""
+  ],
+  "refill": {
+   "id": "717",
+   "predicted_empty_date": "2026-11-04",
+   "avg_interval_days": "7",
+   "status": "active",
+   "feedback_cycle": "relaunch"
+  },
+  "kontaktas": {
+   "klik_n": "16",
+   "pask_utm": "primink",
+   "primink_at": "2026-10-28 15:15:56",
+   "primink_kg": "20.0",
+   "primink_busena": "naujas"
+  },
+  "ivykis": {
+   "tipas": "reminder_optin",
+   "raktas2": "relaunch",
+   "saltinis": "sender"
+  },
+  "puslapis": [
+   200,
+   1,
+   "lapkri\\u010dio 4 d."
+  ],
+  "blogas_d": [
+   302,
+   "https://petshop.lt/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/?ps_primink_ok=1&cid=X5PuZTo6iTwR9o9sOteu&svoris=20"
+  ],
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/skaiciuokle/": [
+    200,
+    0
+   ],
+   "/paskyra/": [
+    200,
+    0
+   ]
+  }
+ },
+ "v": "dep-151420",
+ "kurimas": 200,
+ "sid": 7530,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
