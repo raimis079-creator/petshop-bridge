@@ -1,0 +1,46 @@
+{
+ "4": {
+  "v": "S1807sk",
+  "faze": "4",
+  "sender_viso": 986,
+  "st_atranka": {
+   "kandidatai": 615,
+   "l1_gavo": 0,
+   "sender_neaktyvus": 0,
+   "optout": 0,
+   "tinka": 550,
+   "siust": 500,
+   "holdout": 50
+  },
+  "pazymeta": [
+   {
+    "banga": "1",
+    "n": "300"
+   },
+   {
+    "banga": "2a",
+    "n": "500"
+   },
+   {
+    "banga": "H2a",
+    "n": "50"
+   },
+   {
+    "banga": "H2b",
+    "n": "50"
+   },
+   {
+    "banga": "P2b",
+    "n": "500"
+   }
+  ],
+  "s": 1.8
+ },
+ "v": "dep-080104",
+ "kurimas": 200,
+ "sid": 7562,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
