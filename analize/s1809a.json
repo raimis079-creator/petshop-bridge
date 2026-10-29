@@ -1,0 +1,523 @@
+{
+ "1": {
+  "v": "S1809a",
+  "cols": [
+   {
+    "Field": "id",
+    "Type": "bigint(20) unsigned",
+    "Null": "NO",
+    "Key": "PRI",
+    "Default": null,
+    "Extra": "auto_increment"
+   },
+   {
+    "Field": "laikas",
+    "Type": "datetime",
+    "Null": "NO",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "diena",
+    "Type": "date",
+    "Null": "NO",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "tipas",
+    "Type": "varchar(24)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "",
+    "Extra": ""
+   },
+   {
+    "Field": "pusl_tipas",
+    "Type": "varchar(24)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "url_kelias",
+    "Type": "varchar(255)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "raktas",
+    "Type": "varchar(190)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "raktas2",
+    "Type": "varchar(190)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "reiksme",
+    "Type": "bigint(20)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "sesija",
+    "Type": "varchar(64)",
+    "Null": "YES",
+    "Key": "MUL",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "lankytojas_d",
+    "Type": "char(64)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "",
+    "Extra": ""
+   },
+   {
+    "Field": "lankytojas_30",
+    "Type": "char(64)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "saltinis",
+    "Type": "varchar(96)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "medium",
+    "Type": "varchar(96)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "kampanija",
+    "Type": "varchar(96)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "referer_domenas",
+    "Type": "varchar(190)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "kanalas",
+    "Type": "varchar(24)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "landing",
+    "Type": "tinyint(1)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "irenginys",
+    "Type": "varchar(10)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "os_seima",
+    "Type": "varchar(24)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "nars_seima",
+    "Type": "varchar(24)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "salis",
+    "Type": "varchar(8)",
+    "Null": "YES",
+    "Key": "",
+    "Default": null,
+    "Extra": ""
+   },
+   {
+    "Field": "prisijunges",
+    "Type": "tinyint(1)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "sutikimas",
+    "Type": "tinyint(1)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "testinis",
+    "Type": "tinyint(1)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "0",
+    "Extra": ""
+   },
+   {
+    "Field": "saltinis_aplinka",
+    "Type": "varchar(10)",
+    "Null": "NO",
+    "Key": "",
+    "Default": "dev",
+    "Extra": ""
+   }
+  ],
+  "tipai": [
+   {
+    "n": "40624",
+    "t": "pageview"
+   },
+   {
+    "n": "13019",
+    "t": "view_item"
+   },
+   {
+    "n": "5719",
+    "t": "add_to_cart"
+   },
+   {
+    "n": "1931",
+    "t": "search"
+   },
+   {
+    "n": "1532",
+    "t": "filter"
+   },
+   {
+    "n": "986",
+    "t": "begin_checkout"
+   },
+   {
+    "n": "860",
+    "t": "view_cart"
+   },
+   {
+    "n": "258",
+    "t": "error404"
+   },
+   {
+    "n": "47",
+    "t": "skaiciuokle"
+   },
+   {
+    "n": "20",
+    "t": "reminder_optin"
+   },
+   {
+    "n": "15",
+    "t": "email_click"
+   },
+   {
+    "n": "11",
+    "t": "email_calc_click"
+   }
+  ],
+  "pavyzdys": [
+   {
+    "id": "66384",
+    "laikas": "2026-10-29 12:52:28",
+    "diena": "2026-10-29",
+    "tipas": "pageview",
+    "pusl_tipas": "kategorija",
+    "url_kelias": "/kategorija/katems/maistas-katems/sausas-maistas-katems/",
+    "raktas": "81",
+    "raktas2": null,
+    "reiksme": "0",
+    "sesija": "d:1b71b86d3b38c774e67753d47b9105b0c902c0e7",
+    "lankytojas_d": "1b71b86d3b38c774e67753d47b9105b0c902c0e783865f91a37dbadf3b0173eb",
+    "lankytojas_30": null,
+    "saltinis": null,
+    "medium": null,
+    "kampanija": null,
+    "referer_domenas": null,
+    "kanalas": "direct",
+    "landing": "0",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "LT",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "66383",
+    "laikas": "2026-10-29 12:42:29",
+    "diena": "2026-10-29",
+    "tipas": "view_item",
+    "pusl_tipas": null,
+    "url_kelias": "/product/uostymo-kilimelis-sunims-dingo-40-x-60-cm/",
+    "raktas": "15895",
+    "raktas2": "5904760183735",
+    "reiksme": null,
+    "sesija": "t_462c2abc4a81226fce303382ad5f32|1793450545|1793364145|e764f270b",
+    "lankytojas_d": "bbfa9fd2ce987865500b4da23da25448d1f68f652c3be1bb9697bbc1a7befc76",
+    "lankytojas_30": null,
+    "saltinis": "kaina24",
+    "medium": null,
+    "kampanija": null,
+    "referer_domenas": "www.kaina24.lt",
+    "kanalas": "mokamas",
+    "landing": "0",
+    "irenginys": "mobile",
+    "os_seima": "iOS",
+    "nars_seima": "Safari",
+    "salis": "LT",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "66382",
+    "laikas": "2026-10-29 12:42:29",
+    "diena": "2026-10-29",
+    "tipas": "pageview",
+    "pusl_tipas": "preke",
+    "url_kelias": "/product/uostymo-kilimelis-sunims-dingo-40-x-60-cm/?utm_source=kaina24",
+    "raktas": "15895",
+    "raktas2": null,
+    "reiksme": "0",
+    "sesija": "t_462c2abc4a81226fce303382ad5f32|1793450545|1793364145|e764f270b",
+    "lankytojas_d": "bbfa9fd2ce987865500b4da23da25448d1f68f652c3be1bb9697bbc1a7befc76",
+    "lankytojas_30": null,
+    "saltinis": "kaina24",
+    "medium": null,
+    "kampanija": null,
+    "referer_domenas": "www.kaina24.lt",
+    "kanalas": "mokamas",
+    "landing": "1",
+    "irenginys": "mobile",
+    "os_seima": "iOS",
+    "nars_seima": "Safari",
+    "salis": "LT",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "66381",
+    "laikas": "2026-10-29 12:40:51",
+    "diena": "2026-10-29",
+    "tipas": "pageview",
+    "pusl_tipas": "aciu",
+    "url_kelias": "/kasa/order-received/37292/?key=wc_order_3YimyT0Y8TNhP&data=b3JkZXJpZD0zNzI5MiZhbW91bnQ9Nzk5MCZjdXJyZW5jeT1FVVImdmVyc2lvbj0zLjEuNiZsYW5nPWxpdCZwYXltZW50PWhhbnphJmNvdW50cnk9TFQmcF9maXJzdG5hbWU9Um9rYXMmcF9sYXN0bmFtZT1NaXNpJUM1JUFCbmFzJnBfZW1haWw9cm9rYXNtaXN",
+    "raktas": null,
+    "raktas2": null,
+    "reiksme": "0",
+    "sesija": "t_dccf51c226113b5a64e41d9f1a153f|1793298073|1793211673|838c3dc5c",
+    "lankytojas_d": "89fa21b66d5f0fa2e9bda4f7dd06150d85c32f5e3aebbcbb4bab4e74be5ef3f0",
+    "lankytojas_30": "7eeb2a8a081a4f5b66a837908c5182635fa22ac941fd18fbc454a0fc59ca848c",
+    "saltinis": null,
+    "medium": null,
+    "kampanija": null,
+    "referer_domenas": "bank.paysera.com",
+    "kanalas": "referral",
+    "landing": "0",
+    "irenginys": "mobile",
+    "os_seima": "iOS",
+    "nars_seima": "Safari",
+    "salis": "LT",
+    "prisijunges": "0",
+    "sutikimas": "1",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "66380",
+    "laikas": "2026-10-29 12:37:46",
+    "diena": "2026-10-29",
+    "tipas": "view_item",
+    "pusl_tipas": null,
+    "url_kelias": "/product/vienkartines-palutes-paklotai-6090-cm-xl-universal-10-vnt/",
+    "raktas": "15838",
+    "raktas2": "711207",
+    "reiksme": null,
+    "sesija": "t_e4d6b8d50af757639524f71398ba55|1793450254|1793363854|1ac483bb4",
+    "lankytojas_d": "d3b5ec9634566d7abc7123162229a3a4bc18e870f69d0eccf5ed0ce1efbcf7fc",
+    "lankytojas_30": null,
+    "saltinis": "google",
+    "medium": "cpc",
+    "kampanija": "21565450990",
+    "referer_domenas": "www.google.com",
+    "kanalas": "mokamas",
+    "landing": "0",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "LT",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "66379",
+    "laikas": "2026-10-29 12:37:46",
+    "diena": "2026-10-29",
+    "tipas": "pageview",
+    "pusl_tipas": "preke",
+    "url_kelias": "/product/vienkartines-palutes-paklotai-6090-cm-xl-universal-10-vnt/?utm_source=google&utm_medium=cpc&utm_campaign=21565450990&gad_source=1&gad_campaignid=21565466377&gbraid=0AAAAApaj7XWn1GgZAEgD4wfyQdhbY7yIX&gclid=Cj0KCQjw3YvXBhCDARIsAKB-ox8v-4uLKwjqwbjoc",
+    "raktas": "15838",
+    "raktas2": null,
+    "reiksme": "0",
+    "sesija": "t_e4d6b8d50af757639524f71398ba55|1793450254|1793363854|1ac483bb4",
+    "lankytojas_d": "d3b5ec9634566d7abc7123162229a3a4bc18e870f69d0eccf5ed0ce1efbcf7fc",
+    "lankytojas_30": null,
+    "saltinis": "google",
+    "medium": "cpc",
+    "kampanija": "21565450990",
+    "referer_domenas": "www.google.com",
+    "kanalas": "mokamas",
+    "landing": "1",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "LT",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "66378",
+    "laikas": "2026-10-29 12:31:44",
+    "diena": "2026-10-29",
+    "tipas": "view_item",
+    "pusl_tipas": null,
+    "url_kelias": "/product/josera-indoor-sausas-pasaras-katems-101kg-akcija/",
+    "raktas": "36622",
+    "raktas2": "JOS1089",
+    "reiksme": null,
+    "sesija": "t_7674502561952f2e5e7f74e0eab869|1793449900|1793363500|d5f9a15fb",
+    "lankytojas_d": "7ff87df0e7dfc2f279594da0225f01831a8af50f0ae1eb42016a9a0afb99ea33",
+    "lankytojas_30": null,
+    "saltinis": null,
+    "medium": null,
+    "kampanija": null,
+    "referer_domenas": "www.google.com",
+    "kanalas": "organika",
+    "landing": "0",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "LT",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   },
+   {
+    "id": "66377",
+    "laikas": "2026-10-29 12:31:44",
+    "diena": "2026-10-29",
+    "tipas": "pageview",
+    "pusl_tipas": "preke",
+    "url_kelias": "/product/josera-indoor-sausas-pasaras-katems-101kg-akcija/",
+    "raktas": "36622",
+    "raktas2": null,
+    "reiksme": "0",
+    "sesija": "t_7674502561952f2e5e7f74e0eab869|1793449900|1793363500|d5f9a15fb",
+    "lankytojas_d": "7ff87df0e7dfc2f279594da0225f01831a8af50f0ae1eb42016a9a0afb99ea33",
+    "lankytojas_30": null,
+    "saltinis": null,
+    "medium": null,
+    "kampanija": null,
+    "referer_domenas": "www.google.com",
+    "kanalas": "organika",
+    "landing": "1",
+    "irenginys": "desktop",
+    "os_seima": "Windows",
+    "nars_seima": "Chrome",
+    "salis": "LT",
+    "prisijunges": "0",
+    "sutikimas": "0",
+    "testinis": "0",
+    "saltinis_aplinka": "prod"
+   }
+  ],
+  "lankomumas_src": [
+   "4 * Description: Lankomumo ekranas — lankytojai per dieną, valandą ir savaitės dieną, piltuvėlis, šaltiniai (Google Ads, Kainos.lt, Kaina24…), įrenginiai, įėjimo puslapiai, paieškos, 404.",
+   "29 const PUSLAPIS = 'ps-lankomumas';",
+   "34 $a[ self::PUSLAPIS ] = 'Kiek žmonių lankosi, kada, iš kur ir kur nukrenta: lankytojai per dieną ir valandą, piltuvėlis, šaltiniai (Ads, Kainos.lt, Kaina24), paieškos.';",
+   "40 add_submenu_page( self::TEVAS, 'Lankomumas', 'Lankomumas', 'manage_woocommerce', self::PUSLAPIS, array( __CLASS__, 'puslapis' ) );",
+   "83 COUNT(DISTINCT IF(tipas='begin_checkout', CONCAT(diena, lankytojas_d), NULL)) bc",
+   "92 /** Apmokėti, realūs užsakymai laikotarpyje (Vilniaus dienomis). */",
+   "102 WHERE apmoketa_at >= %s AND apmoketa_at < %s AND testinis = 0",
+   "108 public static function puslapis() {",
+   "117 $UI::juosta( self::PUSLAPIS, $lt );",
+   "139 array( 'antraste' => 'Užsakymai', 'reiksme' => self::n( $k['uzs'] ), 'delta' => $d( 'uzs' ), 'tooltip' => 'Apmokėti realūs užsakymai (serverio faktas).' ),",
+   "143 'Puslapių peržiūros'    => self::n( $k['perz'] ),",
+   "186 array( 'pav' => 'Pradėjo apmokėjimą', 'sk' => (int) $k['bc'] ),",
+   "187 array( 'pav' => 'Apmokėjo', 'sk' => (int) $k['uzs'] ),",
+   "189 echo '<p class=\"psru-pastaba\">Kiekviename žingsnyje — lankytojai (per dieną), bent kartą atlikę veiksmą. „Apmokėjo\" — serverio užsakymų faktas.</p>';",
+   "201 array( 'pav' => 'Į krepšelį' ), array( 'pav' => 'Apmokėjimas', 'tt' => 'Pradėjo apmokėjimą' ), array( 'pav' => 'Užsakymai', 'tt' => 'Pagal paskutinį kanalą prieš pirkimą' ),",
+   "219 /* ---------- Įėjimo puslapiai, paieškos, 404 ---------- */",
+   "233 echo '</div><div><h2>Įėjimo puslapiai</h2>';",
+   "235 $UI::lentele( 'ps-lank-lp', array( array( 'pav' => 'Puslapis', 'kaire' => true ), array( 'pav' => 'Lankytojai' ), array( 'pav' => 'Dalis' ) ), $eil, array( 'rikiuoti' => 1, 'failas' => 'lankomumas-i",
+   "236 echo '<h2>Nerasti puslapiai (404)</h2>';",
+   "251 'SELECT apmoketa_at FROM ' . self::t( 'ps_fakt_uzsakymai' ) . \"",
+   "252 WHERE apmoketa_at >= %s AND apmoketa_at < %s AND testinis = 0",
+   "259 /** Šaltinių suvestinė: lankytojai + krepšelis + apmokėjimas iš įvykių, užsakymai ir pajamos iš faktų. */",
+   "276 \"SELECT diena, lankytojas_d v, MAX(tipas='add_to_cart') atc, MAX(tipas='begin_checkout') bc FROM $i"
+  ]
+ },
+ "v": "dep-130530",
+ "kurimas": 200,
+ "sid": 7566,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
