@@ -1,0 +1,63 @@
+{
+ "1": {
+  "v": "at4",
+  "beacon": "function beacon() {\n\t\tif ( is_admin() || is_feed() || is_robots() ) { return; }\n\t\t$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ? (string) wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) : '';\n\t\tif ( self::botas( $ua ) ) { return; }\n\n\t\t/* `?rest_route=` — firewall pamoka (T-0 Q-WPJSON). */\n\t\t$url  = home_url( '/?rest_route=/' . self::NS . self::KELIAS );\n\t\t$pusl = self::puslapio_tipas();\n\n\t\t$raktas = '';\n\t\tif ( 'preke' === $pusl )      { $raktas = (string) get_queried_object_id(); }\n\t\tif ( 'kategorija' === $pusl ) { $raktas = (string) get_queried_object_id(); }\n\t\tif ( 'paieska' === $pusl )    { $raktas = (string) get_search_query(); }\n\n\t\t$rez = 0;\n\t\tif ( 'paieska' === $pusl ) {\n\t\t\tglobal $wp_query;\n\t\t\t$rez = (int) $wp_query->found_posts;\n\t\t}\n\n\t\t/* Landing = pirmas puslapis sesijoje: nera vidinio referer'io. */\n\t\t$ref     = isset( $_SERVER['HTTP_REFERER'] ) ? (string) wp_unslash( $_SERVER['HTTP_REFERER'] ) : '';\n\t\t$savas   = (string) wp_parse_url( home_url(), PHP_URL_HOST );\n\t\t$rh      = $ref ? (string) wp_parse_url( $ref, PHP_URL_HOST ) : '';\n\t\t$landing = ( '' === $rh || $rh !== $savas ) ? 1 : 0;\n\n\t\t$leist = wp_json_encode( array_values( self::IS_DATALAYER ) );\n\t\t?>\n<script id=\"ps-web-beacon\">\n(function(){\n\"use strict\";\nvar U=<?php echo wp_json_encode( $url ); ?>,\n    LEIST=<?php echo $leist; ?>,\n    Q=[],T=null,ATC=0;\n\nfunction siusti(){\n  if(!Q.length)return;\n  var d=JSON.stringify({e:Q});Q=[];\n  try{\n    if(navigator.sendBeacon){navigator.sendBeacon(U,new Blob([d],{type:'text/plain;charset=UTF-8'}));return;}\n  }catch(e){}\n  try{fetch(U,{method:'POST',body:d,headers:{'Content-Type':'application/json'},keepalive:true,credentials:'same-origin'});}catch(e){}\n}\nfunction push(o){\n  /* 🔴 purchase NIEKADA neiseina is narsykles — pirmas is triju sluoksniu. */\n  if(!o||!o.tipas||o.tipas==='purchase'||o.tipas==='refund')return;\n  Q.push(o);\n  if(T)clearTimeout(T);\n  T=setTimeout(siusti,900);\n}\nwindow.psWeb=push;\n\n/* 1) pageview — puslapio rusis atejo is serverio */\npush({tipas:'pageview',pusl:<?php echo wp_json_encode( $pusl ); ?>,\n      url:location.pathname+location.search,\n      raktas:<?php echo wp_json_encode( $raktas ); ?>,\n      reiksme:<?php echo (int) $rez; ?>,\n      landing:<?php echo (int) $landing; ?>,\n      rh:<?php echo wp_json_encode( $rh === $savas ? '' : $rh ); ?>,\n      pr:<?php echo is_user_logged_in() ? 1 : 0; ?>});\n\n<?php if ( 'paieska' === $pusl ) : ?>\n/* 2) paieska — atskirai, kad „0 rezultatu\" butu matomas pjuvis */\npush({tipas:'search',raktas:<?php echo wp_json_encode( $raktas ); ?>,reiksme:<?php echo (int) $rez; ?>});\n<?php endif; ?>\n<?php if ( '404' === $pusl ) : ?>\npush({tipas:'error404',url:location.pathname+location.search});\n<?php endif; ?>\n\n/* 3) dataLayer — klausomes esamo (snippet 614), nieko nedubliuojam */\ntry{\n  var dl=window.dataLayer=window.dataLayer||[];\n  function imk(a){\n    if(!a||!a.event)return;\n    if(LEIST.indexOf(a.event)<0)return;   /* purchase cia neipuola */\n    var iid='';\n    try{\n      var it=a.ecommerce&&a.ecommerce.items&&a.ecommerce.items[0];\n      if(it){iid=String(it.item_id||it.id||'');}\n    }catch(e){}\n    /* iid gali buti SKU — serveris ji isvers i prekes ID (v1.2). */\n    push({tipas:a.event,raktas:iid,url:location.pathname});\n  }\n  for(var i=0;i<dl.length;i++)imk(dl[i]);   /* kas jau buvo push'inta iki musu */\n  var orig=dl.push.bind(dl);\n  dl.push=function(){\n    try{for(var i=0;i<arguments.length;i++)imk(arguments[i]);}catch(e){}\n    return orig.apply(null,arguments);\n  };\n}catch(e){}\n\n/* 4) filtrai — YITH keicia URL be perkrovimo */\ntry{\n  window.addEventListener('popstate',function(){\n    var p=new URLSearchParams(location.search);\n    p.forEach(function(v,k){if(k.indexOf('filter_')===0)push({tipas:'filter',raktas:k.replace('filter_',''),raktas2:v});});\n  });\n}catch(e){}\n\n/* 5) issiuntimas paliekant puslapi */\nwindow.addEventListener('pagehide',siusti);\ndocument.addEventListener('visibilitychange',function(){if(document.visibilityState==='hidden')siusti();});\n})();\n</script>\n\t\t<?php\n\t}\n\n\t/* ================================================================== */\n\t/* AGREGAVIMAS                                                        */\n\t/* ================================================================== */\n\n\tpublic static function agreguoti_vakar() {\n\t\t$d = gmdate( 'Y-m-d', strtotime( wp_date( 'Y-m-d' ) . ' -1 day' ) );\n\t\treturn self::agreguoti_diena( $d );\n\t}\n\n\t/**\n\t * Idempotentiskas: dienos eilutes pirma TRINAMOS, tada rasomos is naujo\n\t * (tas pats principas kaip `petshop-ataskaitu-agregavimas.php`).\n\t */\n\tpublic static function agreguoti_diena( $diena ) {\n\t\tglobal $wpdb;\n\t\tself::uztikrinti_lenteles();\n\t\tif ( ! preg_match( '/^\\d{4}-\\d{2}-\\d{2}$/', (string) $diena ) ) { return array( 'klaida' => 'bloga data' ); }\n\t\t$i = self::t_ivykiai();\n\t\t$d = self::t_dienos();\n\t\t$a = self::aplinka();\n\n\t\t$wpdb->query( $wpdb->prepare( \"DELETE FROM $d WHERE data=%s AND aplinka=%s\", $diena, $a ) );\n\n\t\t$pjuviai = array(\n\t\t\t'saltinis'   => 'COALESCE(saltinis, \\'(none)\\')',\n\t\t\t'kampanija'  => 'COALESCE(kampanija, \\'(none)\\')',\n\t\t\t'kanalas'    => 'COALESCE(kanalas, \\'direct\\')',\n\t\t\t'puslapis'   => 'COALESCE(url_kelias, \\'\\')',\n\t\t\t'tipas'      => 'COALESCE",
+  "pask": [
+   {
+    "id": "66595",
+    "laikas": "2026-10-29 17:17:01",
+    "tipas": "pageview",
+    "irenginys": "mobile",
+    "testinis": "0",
+    "url_kelias": "/kasa/order-received/37378/?key=wc_order_nRy98sxd0zooL&data=b3JkZXJpZD0zNzM3OCZhbW91bnQ9MTI0NyZjdXJyZW5jeT1FVVImdmVyc2lvbj0zLjEuNiZsYW5nPWxpdCZwYXltZW50PWFwcGxlX3BheSZjb3VudHJ5PUxUJnBfZmlyc3RuYW1lPURpdCVDNCU5NyZwX2xhc3RuYW1lPU1pY2tldmklQzQlOERpJUM1JUFCdCV"
+   },
+   {
+    "id": "66594",
+    "laikas": "2026-10-29 17:15:59",
+    "tipas": "view_item",
+    "irenginys": "desktop",
+    "testinis": "1",
+    "url_kelias": "/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/"
+   },
+   {
+    "id": "66593",
+    "laikas": "2026-10-29 17:15:59",
+    "tipas": "add_to_cart",
+    "irenginys": "desktop",
+    "testinis": "1",
+    "url_kelias": "/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/"
+   },
+   {
+    "id": "66592",
+    "laikas": "2026-10-29 17:15:59",
+    "tipas": "pageview",
+    "irenginys": "desktop",
+    "testinis": "1",
+    "url_kelias": "/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/"
+   },
+   {
+    "id": "66591",
+    "laikas": "2026-10-29 17:15:56",
+    "tipas": "add_to_cart",
+    "irenginys": "desktop",
+    "testinis": "1",
+    "url_kelias": "/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/"
+   },
+   {
+    "id": "66590",
+    "laikas": "2026-10-29 17:15:49",
+    "tipas": "view_item",
+    "irenginys": "desktop",
+    "testinis": "1",
+    "url_kelias": "/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/"
+   }
+  ]
+ },
+ "v": "dep-171606",
+ "kurimas": 200,
+ "sid": 7584,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
