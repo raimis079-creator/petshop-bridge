@@ -1,0 +1,84 @@
+{
+ "1": {
+  "614": {
+   "name": "Petshop DataLayer v1.1 (GA4 ecommerce)",
+   "active": "1",
+   "modified": "2026-07-10 12:27:11"
+  },
+  "v": "at3",
+  "614_atc": [
+   "/**\n * Petshop DataLayer v1.1 (GA4 ecommerce)\n *\n * Siuncia GA4 e-commerce ivykius i dataLayer, kuriuos pagauna GTM-MF3GZGT.\n * Ivykiai: view_item, add_to_cart, view_cart, begin_checkout, purchase\n *\n * Scope: front-end only\n * Priklausomybes: WooCommerce (klasikinis checkout, shortcode)\n * Idempotencija: purchase siunciamas vienakart per uzsakyma (_petshop_dl_purchase_sent + static guard)\n *\n * v1.1 pataisymai:\n *   - add_to_cart: prekes puslapyje mygtukas NETURI ajax_add_to_cart -> forma submit'ina,\n *",
+   "currency' => petshop_gtm_currency(),\n\t\t\t\t'value'    => $item['price'],\n\t\t\t\t'items'    => array( $item ),\n\t\t\t),\n\t\t) );\n\t}\n}\nadd_action( 'wp_footer', 'petshop_gtm_view_item', 20 );\n\n/* ============================================================\n * 2. add_to_cart — duomenys i mygtukus (loop + single)\n * ============================================================ */\n\nif ( ! function_exists( 'petshop_gtm_loop_atc_args' ) ) {\n\t/**\n\t * Prisega data-gtm-item prie kategoriju/loop mygtuku.\n\t */\n\tfunction petshop_gtm_loop_atc_args( $args, $product ) {\n\t\t$item = petshop_gtm_item( $product, 1, 0 );\n\t\tif ",
+   " {\n\t\t\t$args['attributes']['data-gtm-item'] = wp_json_encode( $item, JSON_UNESCAPED_UNICODE );\n\t\t}\n\t\treturn $args;\n\t}\n}\nadd_filter( 'woocommerce_loop_add_to_cart_args', 'petshop_gtm_loop_atc_args', 10, 2 );\n\nif ( ! function_exists( 'petshop_gtm_single_item_data' ) ) {\n\t/**\n\t * Prekes puslapyje isveda window.petshopGtmItem — JS pasiima ji AJAX add-to-cart metu.\n\t */\n\tfunction petshop_gtm_single_item_data() {\n\t\tif ( ! function_exists( 'is_product' ) || ! is_product() ) { return; }\n\n\t\tglobal $product;\n\t\tif ",
+   "= \" . wp_json_encode( $item, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES ) . \";\\n\";\n\t\techo \"</script>\\n\";\n\t}\n}\nadd_action( 'wp_footer', 'petshop_gtm_single_item_data', 19 );\n\n/* ============================================================\n * 2b. add_to_cart — WC session queue (NE-AJAX atvejis)\n *\n * Prekes puslapyje mygtukas neturi ajax_add_to_cart klases:\n *   <button type=\"submit\" class=\"single_add_to_cart_button button alt\">\n * Forma submit'ina, puslapis persikrauna, JS push'as dingsta.\n * Todel PHP puseje irasom i sesija, o flush'inam kitame page load.\n *\n * AJAX atveju (kategoriju loo",
+   " $item ) { return; }\n\n\t\t$queue   = WC()->session->get( 'petshop_gtm_atc_queue', array() );\n\t\tif ( ! is_array( $queue ) ) { $queue = array(); }\n\t\t$queue[] = $item;\n\t\tWC()->session->set( 'petshop_gtm_atc_queue', $queue );\n\t}\n}\nadd_action( 'woocommerce_add_to_cart', 'petshop_gtm_queue_atc', 10, 6 );\n\nif ( ! function_exists( 'petshop_gtm_flush_atc' ) ) {\n\tfunction petshop_gtm_flush_atc() {\n\t\tif ( is_admin() ) { return; }\n\t\tif ( ! function_exists( 'WC' ) || ! WC()->session ) { return; }\n\n\t\t$queue = WC()->session->get( 'petshop_gtm_atc_queue', array() );\n\t\tif ( empty( $queue ) || ! is_array( $queue ",
+   "atc_queue', array() );\n\n\t\tforeach ( $queue as $item ) {\n\t\t\tif ( empty( $item['price'] ) && 0 !== $item['price'] ) { continue; }\n\t\t\t$value = round( (float) $item['price'] * (int) $item['quantity'], 2 );\n\t\t\tpetshop_gtm_push( array(\n\t\t\t\t'event'     => 'add_to_cart',\n\t\t\t\t'ecommerce' => array(\n\t\t\t\t\t'currency' => petshop_gtm_currency(),\n\t\t\t\t\t'value'    => $value,\n\t\t\t\t\t'items'    => array( $item ),\n\t\t\t\t),\n\t\t\t) );\n\t\t}\n\t}\n}\nadd_action( 'wp_footer', 'petshop_gtm_flush_atc', 18 );\n\n/* ============================================================\n * 3. add_to_cart — JS listener (TIK AJAX mygtukams)\n * ===="
+  ],
+  "vidinis": "function vidinis_zymeti() {\n\t\t$darb = is_user_logged_in() && current_user_can( 'edit_posts' );\n\t\t$nuor = isset( $_GET['ps_vidinis'] ) && '1' === (string) $_GET['ps_vidinis'];\n\t\tif ( isset( $_GET['ps_vidinis'] ) && '0' === (string) $_GET['ps_vidinis'] ) {\n\t\t\tif ( ! headers_sent() ) { setcookie( self::COOKIE_VID, '', time() - 3600, COOKIEPATH ? COOKIEPATH : '/', COOKIE_DOMAIN, is_ssl(), true ); }\n\t\t\tunset( $_COOKIE[ self::COOKIE_VID ] );\n\t\t\treturn;\n\t\t}\n\t\tif ( ! $darb && ! $nuor ) { return; }\n\t\tif ( empty( $_COOKIE[ self::COOKIE_VID ] ) && ! headers_sent() ) {\n\t\t\tsetcookie( self::COOKIE_VID, '1', array( 'expires' => time() + YEAR_IN_SECONDS, 'path' => COOKIEPATH ? COOKIEPATH : '/', 'domain' => COOKIE_DOMAIN, 'secure' => is_ssl(), 'httponly' => true, 'samesite' => 'Lax' ) );\n\t\t\t$_COOKIE[ self::COOKIE_VID ] = '1';\n\t\t}\n\t\t/* IP mokomes TIK is darbuotojo DESKTOP (biuras/namai). Mobiliojo\n\t\t   operatoriaus IP dalinasi tukstanciai klientu (CGNAT) — jo nemokom. */\n\t\t$ua = isset( $_SERVER['HTTP_USER_AGENT'] ) ? (string) wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) : '';\n\t\tif ( $darb && 'desktop' === self::irenginys( $ua ) ) {\n\t\t\t$ip = self::ip();\n\t\t\tif ( '' !== $ip ) {\n\t\t\t\t$l = get_option( self::OPT_VID_IP, array() );\n\t\t\t\tif ( ! is_array( $l ) ) { $l = array(); }\n\t\t\t\t$pries = $l;\n\t\t\t\t$l[ $ip ] = time();\n\t\t\t\tforeach ( $l as $k => $t ) { if ( (int) $t < time() - 60 * DAY_IN_SECONDS ) { unset(",
+  "irasyti": "function irasyti( $e, $bendra ) {\n\t\tglobal $wpdb;\n\t\tself::uztikrinti_lenteles();\n\n\t\t$tipas = isset( $e['tipas'] ) ? sanitize_key( (string) $e['tipas'] ) : '';\n\n\t\t/* 🔴 TRECIAS atmetimo sluoksnis (JS + gavimas + cia). Skaitiklis auga,\n\t\t   kad bandymas nedingtu tyloje. */\n\t\tif ( in_array( $tipas, self::DRAUDZIAMI, true ) ) {\n\t\t\tupdate_option( self::OPT_ATMESTA, (int) get_option( self::OPT_ATMESTA, 0 ) + 1, false );\n\t\t\treturn 'draudziamas';\n\t\t}\n\t\tif ( ! in_array( $tipas, self::SAVI, true ) && ! in_array( $tipas, self::IS_DATALAYER, true ) ) {\n\t\t\treturn 'nezinomas';\n\t\t}\n\n\t\t$laikas = self::dabar();\n\t\t$ua     = $bendra['ua'];\n\t\t$k      = self::kanalai();\n\n\t\t/* v1.3: referer host is beacon'o (tik pageview) */\n\t\t$rh = isset( $e['rh'] ) ? strtolower( mb_substr( sanitize_text_field( (string) $e['rh'] ), 0, 190 ) ) : '';\n\t\t$landing = ! empty( $e['landing'] ) ? 1 : 0;\n\t\tif ( $landing && '' !== $rh && self::mokejimo_domenas( $rh ) ) { $landing = 0; }\n\t\t$pt = isset( $e['pusl'] ) ? (string) $e['pusl'] : '';\n\t\tif ( in_array( $pt, array( 'aciu', 'checkout' ), true ) ) { $landing = 0; }\n\t\tif ( empty( $k['kanalas'] ) && ( 'pageview' === $tipas ) ) {\n\t\t\t$k['kanalas'] = self::kanalas_atsarginis( isset( $e['url'] ) ? $e['url'] : '', ( '' !== $rh && ! self::mokejimo_domenas( $rh ) ) ? $rh : '' );\n\t\t\tif ( empty( $k['referer_domenas'] ) && '' !== $rh ) { $k['referer_domenas'] = $rh; }\n\t\t}\n\t\t$ses = $bendra['sesija'];\n\t\tif ( empty( $ses ) ) { $ses = 'd:' . substr( (string) $bendra['lank_d'], 0, 40 ); }\n\n\t\t/* dataLayer ivykiams `raktas` ateina kaip SKU — verciam i prekes ID. */\n\t\t$raktas  = isset",
+  "kiti_atc": [
+   {
+    "id": "525",
+    "name": "Petshop UI: kortelės + mobile sticky ATC",
+    "active": "1"
+   },
+   {
+    "id": "547",
+    "name": "Petshop Susidėjimo Rinkinio Vitrina v19",
+    "active": "1"
+   },
+   {
+    "id": "558",
+    "name": "Petshop Choice Krepšelio Elgsena",
+    "active": "1"
+   },
+   {
+    "id": "562",
+    "name": "Petshop Sprendimai Shortcode Variklis v9",
+    "active": "1"
+   },
+   {
+    "id": "567",
+    "name": "Petshop Daugiau=Pigiau Stock Sync v1.3",
+    "active": "1"
+   },
+   {
+    "id": "614",
+    "name": "Petshop DataLayer v1.1 (GA4 ecommerce)",
+    "active": "1"
+   },
+   {
+    "id": "685",
+    "name": "Atrinktos Prekės Modulis v1 (rotacija)",
+    "active": "1"
+   },
+   {
+    "id": "707",
+    "name": "Petshop UI Lokalizacija v1",
+    "active": "1"
+   },
+   {
+    "id": "709",
+    "name": "Petshop Build-a-box UI Valymas v1",
+    "active": "1"
+   },
+   {
+    "id": "2051",
+    "name": "Petshop UI Lokalizacija v1 (LIVE)",
+    "active": "1"
+   },
+   {
+    "id": "7583",
+    "name": "TEMP PS dep-171414",
+    "active": "1"
+   }
+  ]
+ },
+ "v": "dep-171414",
+ "kurimas": 200,
+ "sid": 7583,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
