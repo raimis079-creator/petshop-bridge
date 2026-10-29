@@ -1,0 +1,269 @@
+{
+ "1": {
+  "v": "S1808s",
+  "camp_code": 200,
+  "camp": [
+   {
+    "id": "qxQN6G",
+    "title": "TEST relaunch CALC v1.0 14:56",
+    "subject": "Kiek kainuoja jūsų augintinio maistas per dieną?",
+    "status": "SENT",
+    "sent_time": "2026-09-16 17:57:06",
+    "created": "2026-09-16 17:56:37",
+    "recipient_count": 1,
+    "sent_count": 1,
+    "opens": 1,
+    "clicks": 1
+   },
+   {
+    "id": "Dk8DYY",
+    "title": "TEST L2 v3.2 suo-be_maisto 17:18",
+    "subject": "Dėžės šuniui, kurias surenkate patys",
+    "status": "SENT",
+    "sent_time": "2026-10-28 17:19:03",
+    "created": "2026-10-28 17:18:04",
+    "recipient_count": 1,
+    "sent_count": 1,
+    "opens": 1,
+    "clicks": 0
+   },
+   {
+    "id": "BB6A8n",
+    "title": "TEST L2 v3.2 suo-maistas 17:18",
+    "subject": "{{ps_hero_pav}} – priminti, kai baigsis?",
+    "status": "SENT",
+    "sent_time": "2026-10-28 17:19:03",
+    "created": "2026-10-28 17:18:04",
+    "recipient_count": 1,
+    "sent_count": 1,
+    "opens": 1,
+    "clicks": 0
+   },
+   {
+    "id": "o2yo2j",
+    "title": "TEST L2 v3.0 suo-maistas 15:48",
+    "subject": "{{ps_hero_pav}} – priminti, kai baigsis?",
+    "status": "SENT",
+    "sent_time": "2026-10-28 15:49:03",
+    "created": "2026-10-28 15:48:51",
+    "recipient_count": 1,
+    "sent_count": 1,
+    "opens": 1,
+    "clicks": 0
+   },
+   {
+    "id": "4xLjWg",
+    "title": "TEST L2 v3.4 suo-be_maisto 17:40",
+    "subject": "Dėžutės šuniui, kurias surenkate patys",
+    "status": "SENT",
+    "sent_time": "2026-10-28 17:41:03",
+    "created": "2026-10-28 17:40:19",
+    "recipient_count": 1,
+    "sent_count": 1,
+    "opens": 1,
+    "clicks": 1
+   },
+   {
+    "id": "qxZqx2",
+    "title": "TEST L2 v3.0 kate-maistas 15:48",
+    "subject": "{{ps_hero_pav}} – priminti, kai baigsis?",
+    "status": "SENT",
+    "sent_time": "2026-10-28 15:49:03",
+    "created": "2026-10-28 15:48:52",
+    "recipient_count": 1,
+    "sent_count": 1,
+    "opens": 1,
+    "clicks": 0
+   },
+   {
+    "id": "rk9rkE",
+    "title": "TEST L2 v3.0 kate-be_maisto 15:48",
+    "subject": "Dėžės katei, kurias surenkate patys",
+    "status": "SENT",
+    "sent_time": "2026-10-28 15:49:03",
+    "created": "2026-10-28 15:48:53",
+    "recipient_count": 1,
+    "sent_count": 1,
+    "opens": 1,
+    "clicks": 0
+   },
+   {
+    "id": "pY2pY2",
+    "title": "TEST L2 v3.0 suo-be_maisto 15:48",
+    "subject": "Dėžės šuniui, kurias surenkate patys",
+    "status": "SENT",
+    "sent_time": "2026-10-28 15:49:03",
+    "created": "2026-10-28 15:48:52",
+    "recipient_count": 1,
+    "sent_count": 1,
+    "opens": 1,
+    "clicks": 0
+   }
+  ],
+  "camp_keys": [
+   "id",
+   "subject",
+   "reply_to",
+   "language",
+   "recipient_count",
+   "from",
+   "schedule_time",
+   "last_action",
+   "sent_time",
+   "status",
+   "created",
+   "modified",
+   "title",
+   "domain_id",
+   "preheader",
+   "auto_followup_active",
+   "auto_followup_subject",
+   "auto_followup_delay",
+   "send_to_all",
+   "sent_count",
+   "campaign_groups",
+   "segments",
+   "ecommerce_tracking_enabled",
+   "experiment_id",
+   "disable_click_tracking",
+   "disable_open_tracking",
+   "opens",
+   "bounces_count",
+   "clicks",
+   "html",
+   "editor",
+   "reports"
+  ],
+  "subs_meta": {
+   "current_page": 1,
+   "from": 1,
+   "last_page": 99,
+   "per_page": 10,
+   "to": 10,
+   "total": 986
+  },
+  "groups": [
+   [
+    "PS_TEST",
+    1,
+    0
+   ],
+   [
+    "PS_SUPPRESSED_OR_ARCHIVE",
+    0,
+    0
+   ],
+   [
+    "PS_LEGACY_IMPORT",
+    0,
+    0
+   ],
+   [
+    "PS_ALL_ACTIVE",
+    0,
+    0
+   ],
+   [
+    "RELAUNCH_L1_SUO_STD",
+    0,
+    0
+   ],
+   [
+    "RELAUNCH_L1_SUO_CALC",
+    0,
+    0
+   ],
+   [
+    "RELAUNCH_L2_SUO_CALC",
+    402,
+    7
+   ],
+   [
+    "RELAUNCH_L2_SUO_STD",
+    98,
+    0
+   ]
+  ],
+  "webhook_pask": [
+   {
+    "t": "2026-10-29 09:08:18",
+    "topic_get": "",
+    "headers": {
+     "user-agent": "Sender-Hook-Dispatcher",
+     "content-type": "application/json"
+    },
+    "body": "{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"e59Mzx\",\"title\":\"PS_HERO_SEG\",\"type\":\"text\",\"value\":\"suo2_calc\"},{\"id\":\"b6RMA7\",\"title\":\"PS_HERO_PAV\",\"type\":\"text\",\"value\":\"Josera Sensiplus 12,5 kg\"},{\"id\":\"b86gDl\",\"title\":\"PS_HERO_IMG\",\"type\":\"text\",\"value\":\"https://petshop.lt/wp-content/uploads/laiskai/p-17979.jpg\"},{\"id\":\"bYvAwA\",\"title\":\"PS_PIKSELIS\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_atidare=BomgVS4lZjq7Y6bR8hFS\\u0026z=e601a31ab8993d3ed9e6\"},{\"id\":\"eZVBxQ\",\"title\":\"PS_PRIMINK_URL\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_primink1=BomgVS4lZjq7Y6bR8hFS\\u0026pid=17978\\u0026kg=0\\u0026z=13a77f083705f4665468\\u0026utm_source=sender\\u0026utm_medium=email\\u0026utm_campaign=relaunch_suo2\\u0026utm_content=primink\"},{\"id\":\"el509l\",\"title\":\"PS_HERO_KG2\",\"type\":\"text\",\"value\":\"20 kg\"},{\"id\":\"bmQk9p\",\"title\":\"PS_HERO_EUR2\",\"type\":\"text\",\"value\":\"0,48 €\"},{\"id\":\"bkZgWx\",\"title\":\"PS_HERO_D2\",\"type\":\"text\",\"value\":\"51–89\"},{\"id\":\"eXozvv\",\"title\":\"PS_CID\",\"type\":\"text\",\"value\":\"BomgVS4lZjq7Y6bR8hFS\"}],\"created\":\"2026-01-04 15:52:58\",\"created_utc\":\"2026-01-04 15:52:58\",\"email\":\"slukauskas@me.com\",\"firstname\":null,\"id\":\"qlkKyxR\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"},\"subscriber_tags\":[{\"id\":\"elmRnr\",\"title\":\"RELAUNCH_L2_SUO_CALC\"}],\"unsubscribed_at\":\"2026-10-29 07:08:08\",\"unsubscribed_at_utc\":\"2026-10-29 07:08:08\"}"
+   },
+   {
+    "t": "2026-10-29 09:08:20",
+    "topic_get": "",
+    "headers": {
+     "user-agent": "Sender-Hook-Dispatcher",
+     "content-type": "application/json"
+    },
+    "body": "{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"bmQk9p\",\"title\":\"PS_HERO_EUR2\",\"type\":\"text\",\"value\":\"0,48 €\"},{\"id\":\"bYvAwA\",\"title\":\"PS_PIKSELIS\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_atidare=BomgVS4lZjq7Y6bR8hFS\\u0026z=e601a31ab8993d3ed9e6\"},{\"id\":\"bkZgWx\",\"title\":\"PS_HERO_D2\",\"type\":\"text\",\"value\":\"51–89\"},{\"id\":\"eXozvv\",\"title\":\"PS_CID\",\"type\":\"text\",\"value\":\"BomgVS4lZjq7Y6bR8hFS\"},{\"id\":\"eZVBxQ\",\"title\":\"PS_PRIMINK_URL\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_primink1=BomgVS4lZjq7Y6bR8hFS\\u0026pid=17978\\u0026kg=0\\u0026z=13a77f083705f4665468\\u0026utm_source=sender\\u0026utm_medium=email\\u0026utm_campaign=relaunch_suo2\\u0026utm_content=primink\"},{\"id\":\"e59Mzx\",\"title\":\"PS_HERO_SEG\",\"type\":\"text\",\"value\":\"suo2_calc\"},{\"id\":\"b6RMA7\",\"title\":\"PS_HERO_PAV\",\"type\":\"text\",\"value\":\"Josera Sensiplus 12,5 kg\"},{\"id\":\"b86gDl\",\"title\":\"PS_HERO_IMG\",\"type\":\"text\",\"value\":\"https://petshop.lt/wp-content/uploads/laiskai/p-17979.jpg\"},{\"id\":\"el509l\",\"title\":\"PS_HERO_KG2\",\"type\":\"text\",\"value\":\"20 kg\"}],\"created\":\"2026-01-04 15:52:58\",\"created_utc\":\"2026-01-04 15:52:58\",\"email\":\"slukauskas@me.com\",\"firstname\":null,\"id\":\"qlkKyxR\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"},\"subscriber_tags\":[{\"id\":\"elmRnr\",\"title\":\"RELAUNCH_L2_SUO_CALC\"}],\"unsubscribed_at\":\"2026-10-29 07:08:11\",\"unsubscribed_at_utc\":\"2026-10-29 07:08:11\"}"
+   },
+   {
+    "t": "2026-10-29 09:08:30",
+    "topic_get": "",
+    "headers": {
+     "user-agent": "Sender-Hook-Dispatcher",
+     "content-type": "application/json"
+    },
+    "body": "{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"e59Mzx\",\"title\":\"PS_HERO_SEG\",\"type\":\"text\",\"value\":\"suo2_calc\"},{\"id\":\"b6RMA7\",\"title\":\"PS_HERO_PAV\",\"type\":\"text\",\"value\":\"Josera Sensiplus 12,5 kg\"},{\"id\":\"b86gDl\",\"title\":\"PS_HERO_IMG\",\"type\":\"text\",\"value\":\"https://petshop.lt/wp-content/uploads/laiskai/p-17979.jpg\"},{\"id\":\"bYvAwA\",\"title\":\"PS_PIKSELIS\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_atidare=BomgVS4lZjq7Y6bR8hFS\\u0026z=e601a31ab8993d3ed9e6\"},{\"id\":\"eZVBxQ\",\"title\":\"PS_PRIMINK_URL\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_primink1=BomgVS4lZjq7Y6bR8hFS\\u0026pid=17978\\u0026kg=0\\u0026z=13a77f083705f4665468\\u0026utm_source=sender\\u0026utm_medium=email\\u0026utm_campaign=relaunch_suo2\\u0026utm_content=primink\"},{\"id\":\"el509l\",\"title\":\"PS_HERO_KG2\",\"type\":\"text\",\"value\":\"20 kg\"},{\"id\":\"bmQk9p\",\"title\":\"PS_HERO_EUR2\",\"type\":\"text\",\"value\":\"0,48 €\"},{\"id\":\"bkZgWx\",\"title\":\"PS_HERO_D2\",\"type\":\"text\",\"value\":\"51–89\"},{\"id\":\"eXozvv\",\"title\":\"PS_CID\",\"type\":\"text\",\"value\":\"BomgVS4lZjq7Y6bR8hFS\"}],\"created\":\"2026-01-04 15:52:58\",\"created_utc\":\"2026-01-04 15:52:58\",\"email\":\"slukauskas@me.com\",\"firstname\":null,\"id\":\"qlkKyxR\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"},\"subscriber_tags\":[{\"id\":\"elmRnr\",\"title\":\"RELAUNCH_L2_SUO_CALC\"}],\"unsubscribed_at\":\"2026-10-29 07:08:08\",\"unsubscribed_at_utc\":\"2026-10-29 07:08:08\"}"
+   },
+   {
+    "t": "2026-10-29 09:08:31",
+    "topic_get": "",
+    "headers": {
+     "user-agent": "Sender-Hook-Dispatcher",
+     "content-type": "application/json"
+    },
+    "body": "{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"bmQk9p\",\"title\":\"PS_HERO_EUR2\",\"type\":\"text\",\"value\":\"0,48 €\"},{\"id\":\"bYvAwA\",\"title\":\"PS_PIKSELIS\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_atidare=BomgVS4lZjq7Y6bR8hFS\\u0026z=e601a31ab8993d3ed9e6\"},{\"id\":\"bkZgWx\",\"title\":\"PS_HERO_D2\",\"type\":\"text\",\"value\":\"51–89\"},{\"id\":\"eXozvv\",\"title\":\"PS_CID\",\"type\":\"text\",\"value\":\"BomgVS4lZjq7Y6bR8hFS\"},{\"id\":\"eZVBxQ\",\"title\":\"PS_PRIMINK_URL\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_primink1=BomgVS4lZjq7Y6bR8hFS\\u0026pid=17978\\u0026kg=0\\u0026z=13a77f083705f4665468\\u0026utm_source=sender\\u0026utm_medium=email\\u0026utm_campaign=relaunch_suo2\\u0026utm_content=primink\"},{\"id\":\"e59Mzx\",\"title\":\"PS_HERO_SEG\",\"type\":\"text\",\"value\":\"suo2_calc\"},{\"id\":\"b6RMA7\",\"title\":\"PS_HERO_PAV\",\"type\":\"text\",\"value\":\"Josera Sensiplus 12,5 kg\"},{\"id\":\"b86gDl\",\"title\":\"PS_HERO_IMG\",\"type\":\"text\",\"value\":\"https://petshop.lt/wp-content/uploads/laiskai/p-17979.jpg\"},{\"id\":\"el509l\",\"title\":\"PS_HERO_KG2\",\"type\":\"text\",\"value\":\"20 kg\"}],\"created\":\"2026-01-04 15:52:58\",\"created_utc\":\"2026-01-04 15:52:58\",\"email\":\"slukauskas@me.com\",\"firstname\":null,\"id\":\"qlkKyxR\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"},\"subscriber_tags\":[{\"id\":\"elmRnr\",\"title\":\"RELAUNCH_L2_SUO_CALC\"}],\"unsubscribed_at\":\"2026-10-29 07:08:11\",\"unsubscribed_at_utc\":\"2026-10-29 07:08:11\"}"
+   },
+   {
+    "t": "2026-10-29 09:08:51",
+    "topic_get": "",
+    "headers": {
+     "user-agent": "Sender-Hook-Dispatcher",
+     "content-type": "application/json"
+    },
+    "body": "{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"e59Mzx\",\"title\":\"PS_HERO_SEG\",\"type\":\"text\",\"value\":\"suo2_calc\"},{\"id\":\"b6RMA7\",\"title\":\"PS_HERO_PAV\",\"type\":\"text\",\"value\":\"Josera Sensiplus 12,5 kg\"},{\"id\":\"b86gDl\",\"title\":\"PS_HERO_IMG\",\"type\":\"text\",\"value\":\"https://petshop.lt/wp-content/uploads/laiskai/p-17979.jpg\"},{\"id\":\"bYvAwA\",\"title\":\"PS_PIKSELIS\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_atidare=BomgVS4lZjq7Y6bR8hFS\\u0026z=e601a31ab8993d3ed9e6\"},{\"id\":\"eZVBxQ\",\"title\":\"PS_PRIMINK_URL\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_primink1=BomgVS4lZjq7Y6bR8hFS\\u0026pid=17978\\u0026kg=0\\u0026z=13a77f083705f4665468\\u0026utm_source=sender\\u0026utm_medium=email\\u0026utm_campaign=relaunch_suo2\\u0026utm_content=primink\"},{\"id\":\"el509l\",\"title\":\"PS_HERO_KG2\",\"type\":\"text\",\"value\":\"20 kg\"},{\"id\":\"bmQk9p\",\"title\":\"PS_HERO_EUR2\",\"type\":\"text\",\"value\":\"0,48 €\"},{\"id\":\"bkZgWx\",\"title\":\"PS_HERO_D2\",\"type\":\"text\",\"value\":\"51–89\"},{\"id\":\"eXozvv\",\"title\":\"PS_CID\",\"type\":\"text\",\"value\":\"BomgVS4lZjq7Y6bR8hFS\"}],\"created\":\"2026-01-04 15:52:58\",\"created_utc\":\"2026-01-04 15:52:58\",\"email\":\"slukauskas@me.com\",\"firstname\":null,\"id\":\"qlkKyxR\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"},\"subscriber_tags\":[{\"id\":\"elmRnr\",\"title\":\"RELAUNCH_L2_SUO_CALC\"}],\"unsubscribed_at\":\"2026-10-29 07:08:08\",\"unsubscribed_at_utc\":\"2026-10-29 07:08:08\"}"
+   },
+   {
+    "t": "2026-10-29 09:08:52",
+    "topic_get": "",
+    "headers": {
+     "user-agent": "Sender-Hook-Dispatcher",
+     "content-type": "application/json"
+    },
+    "body": "{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"bmQk9p\",\"title\":\"PS_HERO_EUR2\",\"type\":\"text\",\"value\":\"0,48 €\"},{\"id\":\"bYvAwA\",\"title\":\"PS_PIKSELIS\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_atidare=BomgVS4lZjq7Y6bR8hFS\\u0026z=e601a31ab8993d3ed9e6\"},{\"id\":\"bkZgWx\",\"title\":\"PS_HERO_D2\",\"type\":\"text\",\"value\":\"51–89\"},{\"id\":\"eXozvv\",\"title\":\"PS_CID\",\"type\":\"text\",\"value\":\"BomgVS4lZjq7Y6bR8hFS\"},{\"id\":\"eZVBxQ\",\"title\":\"PS_PRIMINK_URL\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_primink1=BomgVS4lZjq7Y6bR8hFS\\u0026pid=17978\\u0026kg=0\\u0026z=13a77f083705f4665468\\u0026utm_source=sender\\u0026utm_medium=email\\u0026utm_campaign=relaunch_suo2\\u0026utm_content=primink\"},{\"id\":\"e59Mzx\",\"title\":\"PS_HERO_SEG\",\"type\":\"text\",\"value\":\"suo2_calc\"},{\"id\":\"b6RMA7\",\"title\":\"PS_HERO_PAV\",\"type\":\"text\",\"value\":\"Josera Sensiplus 12,5 kg\"},{\"id\":\"b86gDl\",\"title\":\"PS_HERO_IMG\",\"type\":\"text\",\"value\":\"https://petshop.lt/wp-content/uploads/laiskai/p-17979.jpg\"},{\"id\":\"el509l\",\"title\":\"PS_HERO_KG2\",\"type\":\"text\",\"value\":\"20 kg\"}],\"created\":\"2026-01-04 15:52:58\",\"created_utc\":\"2026-01-04 15:52:58\",\"email\":\"slukauskas@me.com\",\"firstname\":null,\"id\":\"qlkKyxR\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"},\"subscriber_tags\":[{\"id\":\"elmRnr\",\"title\":\"RELAUNCH_L2_SUO_CALC\"}],\"unsubscribed_at\":\"2026-10-29 07:08:11\",\"unsubscribed_at_utc\":\"2026-10-29 07:08:11\"}"
+   },
+   {
+    "t": "2026-10-29 09:09:32",
+    "topic_get": "",
+    "headers": {
+     "user-agent": "Sender-Hook-Dispatcher",
+     "content-type": "application/json"
+    },
+    "body": "{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"e59Mzx\",\"title\":\"PS_HERO_SEG\",\"type\":\"text\",\"value\":\"suo2_calc\"},{\"id\":\"b6RMA7\",\"title\":\"PS_HERO_PAV\",\"type\":\"text\",\"value\":\"Josera Sensiplus 12,5 kg\"},{\"id\":\"b86gDl\",\"title\":\"PS_HERO_IMG\",\"type\":\"text\",\"value\":\"https://petshop.lt/wp-content/uploads/laiskai/p-17979.jpg\"},{\"id\":\"bYvAwA\",\"title\":\"PS_PIKSELIS\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_atidare=BomgVS4lZjq7Y6bR8hFS\\u0026z=e601a31ab8993d3ed9e6\"},{\"id\":\"eZVBxQ\",\"title\":\"PS_PRIMINK_URL\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_primink1=BomgVS4lZjq7Y6bR8hFS\\u0026pid=17978\\u0026kg=0\\u0026z=13a77f083705f4665468\\u0026utm_source=sender\\u0026utm_medium=email\\u0026utm_campaign=relaunch_suo2\\u0026utm_content=primink\"},{\"id\":\"el509l\",\"title\":\"PS_HERO_KG2\",\"type\":\"text\",\"value\":\"20 kg\"},{\"id\":\"bmQk9p\",\"title\":\"PS_HERO_EUR2\",\"type\":\"text\",\"value\":\"0,48 €\"},{\"id\":\"bkZgWx\",\"title\":\"PS_HERO_D2\",\"type\":\"text\",\"value\":\"51–89\"},{\"id\":\"eXozvv\",\"title\":\"PS_CID\",\"type\":\"text\",\"value\":\"BomgVS4lZjq7Y6bR8hFS\"}],\"created\":\"2026-01-04 15:52:58\",\"created_utc\":\"2026-01-04 15:52:58\",\"email\":\"slukauskas@me.com\",\"firstname\":null,\"id\":\"qlkKyxR\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"},\"subscriber_tags\":[{\"id\":\"elmRnr\",\"title\":\"RELAUNCH_L2_SUO_CALC\"}],\"unsubscribed_at\":\"2026-10-29 07:08:08\",\"unsubscribed_at_utc\":\"2026-10-29 07:08:08\"}"
+   },
+   {
+    "t": "2026-10-29 09:09:33",
+    "topic_get": "",
+    "headers": {
+     "user-agent": "Sender-Hook-Dispatcher",
+     "content-type": "application/json"
+    },
+    "body": "{\"bounced_at\":null,\"bounced_at_utc\":null,\"columns\":[{\"id\":\"bmQk9p\",\"title\":\"PS_HERO_EUR2\",\"type\":\"text\",\"value\":\"0,48 €\"},{\"id\":\"bYvAwA\",\"title\":\"PS_PIKSELIS\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_atidare=BomgVS4lZjq7Y6bR8hFS\\u0026z=e601a31ab8993d3ed9e6\"},{\"id\":\"bkZgWx\",\"title\":\"PS_HERO_D2\",\"type\":\"text\",\"value\":\"51–89\"},{\"id\":\"eXozvv\",\"title\":\"PS_CID\",\"type\":\"text\",\"value\":\"BomgVS4lZjq7Y6bR8hFS\"},{\"id\":\"eZVBxQ\",\"title\":\"PS_PRIMINK_URL\",\"type\":\"text\",\"value\":\"https://petshop.lt/?ps_primink1=BomgVS4lZjq7Y6bR8hFS\\u0026pid=17978\\u0026kg=0\\u0026z=13a77f083705f4665468\\u0026utm_source=sender\\u0026utm_medium=email\\u0026utm_campaign=relaunch_suo2\\u0026utm_content=primink\"},{\"id\":\"e59Mzx\",\"title\":\"PS_HERO_SEG\",\"type\":\"text\",\"value\":\"suo2_calc\"},{\"id\":\"b6RMA7\",\"title\":\"PS_HERO_PAV\",\"type\":\"text\",\"value\":\"Josera Sensiplus 12,5 kg\"},{\"id\":\"b86gDl\",\"title\":\"PS_HERO_IMG\",\"type\":\"text\",\"value\":\"https://petshop.lt/wp-content/uploads/laiskai/p-17979.jpg\"},{\"id\":\"el509l\",\"title\":\"PS_HERO_KG2\",\"type\":\"text\",\"value\":\"20 kg\"}],\"created\":\"2026-01-04 15:52:58\",\"created_utc\":\"2026-01-04 15:52:58\",\"email\":\"slukauskas@me.com\",\"firstname\":null,\"id\":\"qlkKyxR\",\"ip_address\":\"\",\"lastname\":null,\"location\":\"\",\"phone\":\"\",\"phone_country\":null,\"source\":\"API\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"},\"subscriber_tags\":[{\"id\":\"elmRnr\",\"title\":\"RELAUNCH_L2_SUO_CALC\"}],\"unsubscribed_at\":\"2026-10-29 07:08:11\",\"unsubscribed_at_utc\":\"2026-10-29 07:08:11\"}"
+   }
+  ]
+ },
+ "v": "dep-070925",
+ "kurimas": 200,
+ "sid": 7555,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
