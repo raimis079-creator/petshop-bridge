@@ -1,0 +1,460 @@
+{
+ "1": {
+  "v": "dg",
+  "dabar": "2026-10-29 18:15:08",
+  "uzs_pagal_d": [
+   {
+    "d": "2026-10-26",
+    "status": "wc-completed",
+    "n": "3"
+   },
+   {
+    "d": "2026-10-27",
+    "status": "wc-completed",
+    "n": "11"
+   },
+   {
+    "d": "2026-10-27",
+    "status": "wc-processing",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-28",
+    "status": "wc-completed",
+    "n": "9"
+   },
+   {
+    "d": "2026-10-28",
+    "status": "wc-processing",
+    "n": "3"
+   },
+   {
+    "d": "2026-10-29",
+    "status": "wc-on-hold",
+    "n": "1"
+   },
+   {
+    "d": "2026-10-29",
+    "status": "wc-processing",
+    "n": "1"
+   }
+  ],
+  "siandien": [
+   {
+    "id": "37376",
+    "status": "wc-on-hold",
+    "payment_method": "bacs",
+    "total_amount": "45.09000000",
+    "date_created_gmt": "2026-10-29 09:29:01"
+   },
+   {
+    "id": "37377",
+    "status": "wc-processing",
+    "payment_method": "paysera",
+    "total_amount": "53.28000000",
+    "date_created_gmt": "2026-10-29 11:11:36"
+   }
+  ],
+  "ivykiai": [
+   {
+    "diena": "2026-10-27",
+    "tipas": "add_to_cart",
+    "n": "109"
+   },
+   {
+    "diena": "2026-10-27",
+    "tipas": "begin_checkout",
+    "n": "21"
+   },
+   {
+    "diena": "2026-10-27",
+    "tipas": "pageview",
+    "n": "853"
+   },
+   {
+    "diena": "2026-10-27",
+    "tipas": "view_item",
+    "n": "241"
+   },
+   {
+    "diena": "2026-10-28",
+    "tipas": "add_to_cart",
+    "n": "94"
+   },
+   {
+    "diena": "2026-10-28",
+    "tipas": "begin_checkout",
+    "n": "16"
+   },
+   {
+    "diena": "2026-10-28",
+    "tipas": "pageview",
+    "n": "897"
+   },
+   {
+    "diena": "2026-10-28",
+    "tipas": "view_item",
+    "n": "293"
+   },
+   {
+    "diena": "2026-10-29",
+    "tipas": "add_to_cart",
+    "n": "23"
+   },
+   {
+    "diena": "2026-10-29",
+    "tipas": "begin_checkout",
+    "n": "4"
+   },
+   {
+    "diena": "2026-10-29",
+    "tipas": "pageview",
+    "n": "391"
+   },
+   {
+    "diena": "2026-10-29",
+    "tipas": "view_item",
+    "n": "107"
+   }
+  ],
+  "ivykiai_tipai_siandien": [
+   {
+    "tipas": "pageview",
+    "n": "391"
+   },
+   {
+    "tipas": "view_item",
+    "n": "107"
+   },
+   {
+    "tipas": "filter",
+    "n": "30"
+   },
+   {
+    "tipas": "add_to_cart",
+    "n": "23"
+   },
+   {
+    "tipas": "reminder_optin",
+    "n": "7"
+   },
+   {
+    "tipas": "search",
+    "n": "7"
+   },
+   {
+    "tipas": "begin_checkout",
+    "n": "4"
+   },
+   {
+    "tipas": "view_cart",
+    "n": "3"
+   },
+   {
+    "tipas": "error404",
+    "n": "2"
+   },
+   {
+    "tipas": "email_click",
+    "n": "2"
+   }
+  ],
+  "valandos_siandien": [
+   {
+    "h": "0",
+    "n": "5",
+    "atc": "0"
+   },
+   {
+    "h": "3",
+    "n": "10",
+    "atc": "0"
+   },
+   {
+    "h": "4",
+    "n": "14",
+    "atc": "0"
+   },
+   {
+    "h": "5",
+    "n": "27",
+    "atc": "0"
+   },
+   {
+    "h": "6",
+    "n": "40",
+    "atc": "0"
+   },
+   {
+    "h": "7",
+    "n": "23",
+    "atc": "0"
+   },
+   {
+    "h": "8",
+    "n": "51",
+    "atc": "4"
+   },
+   {
+    "h": "9",
+    "n": "75",
+    "atc": "7"
+   },
+   {
+    "h": "10",
+    "n": "33",
+    "atc": "2"
+   },
+   {
+    "h": "11",
+    "n": "41",
+    "atc": "3"
+   },
+   {
+    "h": "12",
+    "n": "29",
+    "atc": "0"
+   },
+   {
+    "h": "13",
+    "n": "53",
+    "atc": "0"
+   },
+   {
+    "h": "14",
+    "n": "52",
+    "atc": "0"
+   },
+   {
+    "h": "15",
+    "n": "40",
+    "atc": "3"
+   },
+   {
+    "h": "16",
+    "n": "4",
+    "atc": "0"
+   },
+   {
+    "h": "22",
+    "n": "72",
+    "atc": "4"
+   },
+   {
+    "h": "23",
+    "n": "7",
+    "atc": "0"
+   }
+  ],
+  "valandos_vakar": [
+   {
+    "h": "0",
+    "n": "1",
+    "atc": "0"
+   },
+   {
+    "h": "2",
+    "n": "6",
+    "atc": "0"
+   },
+   {
+    "h": "3",
+    "n": "1",
+    "atc": "0"
+   },
+   {
+    "h": "4",
+    "n": "5",
+    "atc": "0"
+   },
+   {
+    "h": "5",
+    "n": "59",
+    "atc": "2"
+   },
+   {
+    "h": "6",
+    "n": "173",
+    "atc": "22"
+   },
+   {
+    "h": "7",
+    "n": "35",
+    "atc": "0"
+   },
+   {
+    "h": "8",
+    "n": "113",
+    "atc": "10"
+   },
+   {
+    "h": "9",
+    "n": "179",
+    "atc": "26"
+   },
+   {
+    "h": "10",
+    "n": "96",
+    "atc": "0"
+   },
+   {
+    "h": "11",
+    "n": "178",
+    "atc": "4"
+   },
+   {
+    "h": "12",
+    "n": "38",
+    "atc": "0"
+   },
+   {
+    "h": "13",
+    "n": "70",
+    "atc": "6"
+   },
+   {
+    "h": "14",
+    "n": "80",
+    "atc": "8"
+   },
+   {
+    "h": "15",
+    "n": "55",
+    "atc": "0"
+   },
+   {
+    "h": "16",
+    "n": "40",
+    "atc": "2"
+   },
+   {
+    "h": "17",
+    "n": "67",
+    "atc": "0"
+   },
+   {
+    "h": "18",
+    "n": "85",
+    "atc": "6"
+   },
+   {
+    "h": "19",
+    "n": "96",
+    "atc": "6"
+   },
+   {
+    "h": "20",
+    "n": "53",
+    "atc": "2"
+   },
+   {
+    "h": "21",
+    "n": "15",
+    "atc": "0"
+   },
+   {
+    "h": "22",
+    "n": "10",
+    "atc": "0"
+   },
+   {
+    "h": "23",
+    "n": "9",
+    "atc": "0"
+   }
+  ],
+  "carts_cols": [
+   "id",
+   "cart_id",
+   "session_key",
+   "user_id",
+   "email",
+   "email_source",
+   "last_cart_activity_at",
+   "cart_hash",
+   "snapshot_json",
+   "snapshot_version",
+   "status",
+   "status_changed_at",
+   "converted_order_id",
+   "created_at",
+   "updated_at"
+  ],
+  "carts": [
+   {
+    "d": "2026-10-26",
+    "n": "10"
+   },
+   {
+    "d": "2026-10-27",
+    "n": "25"
+   },
+   {
+    "d": "2026-10-28",
+    "n": "27"
+   },
+   {
+    "d": "2026-10-29",
+    "n": "15"
+   }
+  ],
+  "gateways": [
+   "paysera",
+   "bacs"
+  ],
+  "fatal_siandien_n": 1,
+  "fatal_pvz": [
+   "[29-Oct-2026 07:15:11 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-term-query.php on line 1176"
+  ],
+  "puslapiai": {
+   "/": [
+    200,
+    249214,
+    0
+   ],
+   "/krepselis/": [
+    200,
+    232673,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0,
+    0
+   ],
+   "/product/josera-sensiplus-125-kg-sausas-maistas-sunims-su-jautria-virskinimo-sistema/": [
+    200,
+    329131,
+    0
+   ],
+   "/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/": [
+    200,
+    373229,
+    0
+   ]
+  },
+  "mu_pakeisti_24h": {
+   "petshop-relaunch.php": "10-28 19:32"
+  },
+  "pluginai_pakeisti": [],
+  "snippets_aktyvus": [
+   {
+    "id": "512",
+    "name": "Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)",
+    "modified": "2026-10-27 17:16:30"
+   },
+   {
+    "id": "7569",
+    "name": "TEMP PS dep-161348",
+    "modified": "2026-10-29 16:14:56"
+   }
+  ]
+ },
+ "v": "dep-161348",
+ "kurimas": 200,
+ "sid": 7569,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
