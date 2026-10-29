@@ -1,0 +1,126 @@
+{
+ "1": {
+  "v": "uk",
+  "camp": {
+   "calc": {
+    "sent_time": "2026-10-29 10:08:03",
+    "sent_count": 228,
+    "disable_click_tracking": 0,
+    "disable_open_tracking": 0,
+    "opens": 81,
+    "bounces_count": 1,
+    "clicks": 5
+   },
+   "std": {
+    "sent_time": "2026-10-29 10:08:03",
+    "sent_count": 270,
+    "disable_click_tracking": 0,
+    "disable_open_tracking": 0,
+    "opens": 73,
+    "bounces_count": 1,
+    "clicks": 0
+   }
+  },
+  "neaktyvus_2b": [
+   [
+    "bounced",
+    "old_purchase",
+    "2024-11",
+    "0",
+    "0"
+   ],
+   [
+    "unsubscribed",
+    "old_purchase",
+    "2024-12",
+    "0",
+    "0"
+   ],
+   [
+    "unsubscribed",
+    "old_purchase",
+    "2025-02",
+    "0",
+    "0"
+   ],
+   [
+    "unsubscribed",
+    "old_purchase",
+    "2025-04",
+    "0",
+    "0"
+   ],
+   [
+    "unsubscribed",
+    "recent_exact",
+    "2025-09",
+    "0",
+    "3"
+   ],
+   [
+    "unsubscribed",
+    "old_purchase",
+    "2025-05",
+    "0",
+    "1"
+   ],
+   [
+    "unsubscribed",
+    "old_purchase",
+    "2025-07",
+    "0",
+    "1"
+   ]
+  ],
+  "uzs_2b": [
+   {
+    "id": "37377",
+    "total_amount": "53.28000000",
+    "date_created_gmt": "2026-10-29 11:11:36",
+    "banga": "2a"
+   }
+  ],
+  "primink_2b": [
+   {
+    "pask_utm": "primink_d14",
+    "n": "1"
+   },
+   {
+    "pask_utm": "primink_d30",
+    "n": "2"
+   },
+   {
+    "pask_utm": "primink_d7",
+    "n": "1"
+   }
+  ],
+  "dog_pool": "439",
+  "2b_pagal_hero": [
+   {
+    "hero_reason": "old_purchase",
+    "n": "396",
+    "atid": "61",
+    "klik": "3"
+   },
+   {
+    "hero_reason": "recent_exact",
+    "n": "93",
+    "atid": "21",
+    "klik": "2"
+   },
+   {
+    "hero_reason": "repeat_exact",
+    "n": "11",
+    "atid": "2",
+    "klik": "0"
+   }
+  ]
+ },
+ "v": "dep-154701",
+ "kurimas": 200,
+ "sid": 7568,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
