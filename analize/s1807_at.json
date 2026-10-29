@@ -1,0 +1,204 @@
+{
+ "1": {
+  "v": "at",
+  "f": {
+   "/mu-plugins/petshop-analitika.php": {
+    "md5": "4d8bb73ac3742eda55e6d669e78cc15a",
+    "mtime": "09-29 17:40",
+    "hits": [
+     "const IS_DATALAYER = array( 'view_item', 'add_to_cart', 'view_cart', 'begin_checkout' );",
+     "add_to_cart INT UNSIGNED NOT NULL DEFAULT 0,",
+     "SUM(CASE WHEN tipas='add_to_cart' THEN 1 ELSE 0 END) atc,",
+     "'add_to_cart'  => (int) $r['atc'],"
+    ]
+   },
+   "/mu-plugins/petshop-ataskaita-lankomumas.php": {
+    "md5": "2fe886fb38859e4358c4e5889ef8f749",
+    "mtime": "09-10 20:44",
+    "hits": [
+     "COUNT(DISTINCT IF(tipas='add_to_cart', CONCAT(diena, lankytojas_d), NULL)) atc,",
+     "COUNT(DISTINCT IF(tipas='add_to_cart', CONCAT(diena, lankytojas_d), NULL)) atc",
+     "\"SELECT diena, lankytojas_d v, MAX(tipas='add_to_cart') atc, MAX(tipas='begin_checkout') bc FROM $i"
+    ]
+   },
+   "/mu-plugins/petshop-dydziai-kortele.php": {
+    "md5": "82100fae008c85cae5221c48fc8aad0c",
+    "mtime": "09-26 15:27",
+    "hits": [
+     "card.querySelectorAll(\".add_to_cart_button, a.button[data-product_id]\").forEach(function(a){a.setAttribute(\"data-product_id\",String(id));a.setAttribute(\"data-product_sku\",m.sku||\"\");a.href=a.href.replace(/add-to-cart=\\d+/,\"add-to-cart=",
+     "\"+id);a.setAttribute(\"aria-label\",\"Įdėti į krepšelį: \"+m.pav);a.classList.remove(\"added\",\"loading\");var v=card.querySelector(\"a.added_to_cart\");if(v)v.remove()});"
+    ]
+   },
+   "/mu-plugins/petshop-planas-langas.php": {
+    "md5": "4cd2bec21a843a9256188d86ff8bb805",
+    "mtime": "09-29 19:48",
+    "hits": [
+     "$vid = $wpdb->prepare( \"SELECT lankytojas_d l, MAX(irenginys) ir, SUM(tipas='pageview') pv, SUM(tipas='add_to_cart') atc, MAX(pusl_tipas='preke') pr, MAX(tipas='begin_checkout' OR pusl_tipas='checkout') ch, MAX(pusl_tipas='aciu') ac FROM {$p}ps_web_ivykiai WHERE diena BETWEEN %s AND %s AND (testinis=0 OR testinis"
+    ]
+   }
+  },
+  "atc_pagal_d": [
+   {
+    "diena": "2026-10-19",
+    "irenginys": "desktop",
+    "produkto": "12",
+    "kitur": "1",
+    "n": "13"
+   },
+   {
+    "diena": "2026-10-19",
+    "irenginys": "mobile",
+    "produkto": "41",
+    "kitur": "8",
+    "n": "49"
+   },
+   {
+    "diena": "2026-10-20",
+    "irenginys": "desktop",
+    "produkto": "51",
+    "kitur": "14",
+    "n": "65"
+   },
+   {
+    "diena": "2026-10-20",
+    "irenginys": "mobile",
+    "produkto": "76",
+    "kitur": "38",
+    "n": "114"
+   },
+   {
+    "diena": "2026-10-21",
+    "irenginys": "desktop",
+    "produkto": "14",
+    "kitur": "0",
+    "n": "14"
+   },
+   {
+    "diena": "2026-10-21",
+    "irenginys": "mobile",
+    "produkto": "43",
+    "kitur": "15",
+    "n": "58"
+   },
+   {
+    "diena": "2026-10-22",
+    "irenginys": "desktop",
+    "produkto": "16",
+    "kitur": "19",
+    "n": "35"
+   },
+   {
+    "diena": "2026-10-22",
+    "irenginys": "mobile",
+    "produkto": "21",
+    "kitur": "22",
+    "n": "43"
+   },
+   {
+    "diena": "2026-10-23",
+    "irenginys": "desktop",
+    "produkto": "8",
+    "kitur": "1",
+    "n": "9"
+   },
+   {
+    "diena": "2026-10-23",
+    "irenginys": "mobile",
+    "produkto": "36",
+    "kitur": "15",
+    "n": "51"
+   },
+   {
+    "diena": "2026-10-24",
+    "irenginys": "desktop",
+    "produkto": "11",
+    "kitur": "5",
+    "n": "16"
+   },
+   {
+    "diena": "2026-10-24",
+    "irenginys": "mobile",
+    "produkto": "50",
+    "kitur": "15",
+    "n": "65"
+   },
+   {
+    "diena": "2026-10-24",
+    "irenginys": "tablet",
+    "produkto": "4",
+    "kitur": "0",
+    "n": "4"
+   },
+   {
+    "diena": "2026-10-25",
+    "irenginys": "desktop",
+    "produkto": "2",
+    "kitur": "3",
+    "n": "5"
+   },
+   {
+    "diena": "2026-10-25",
+    "irenginys": "mobile",
+    "produkto": "62",
+    "kitur": "33",
+    "n": "95"
+   },
+   {
+    "diena": "2026-10-26",
+    "irenginys": "desktop",
+    "produkto": "10",
+    "kitur": "5",
+    "n": "15"
+   },
+   {
+    "diena": "2026-10-26",
+    "irenginys": "mobile",
+    "produkto": "46",
+    "kitur": "38",
+    "n": "84"
+   },
+   {
+    "diena": "2026-10-27",
+    "irenginys": "desktop",
+    "produkto": "10",
+    "kitur": "6",
+    "n": "16"
+   },
+   {
+    "diena": "2026-10-27",
+    "irenginys": "mobile",
+    "produkto": "44",
+    "kitur": "49",
+    "n": "93"
+   },
+   {
+    "diena": "2026-10-28",
+    "irenginys": "desktop",
+    "produkto": "14",
+    "kitur": "14",
+    "n": "28"
+   },
+   {
+    "diena": "2026-10-28",
+    "irenginys": "mobile",
+    "produkto": "54",
+    "kitur": "12",
+    "n": "66"
+   },
+   {
+    "diena": "2026-10-29",
+    "irenginys": "mobile",
+    "produkto": "20",
+    "kitur": "3",
+    "n": "23"
+   }
+  ]
+ },
+ "v": "dep-171119",
+ "kurimas": 200,
+ "sid": 7581,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
