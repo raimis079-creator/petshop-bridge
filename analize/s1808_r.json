@@ -1,0 +1,200 @@
+{
+ "1": {
+  "v": "S1808r",
+  "bangos": [
+   {
+    "banga": null,
+    "grupe": null,
+    "n": "621",
+    "atidare": "1",
+    "klik": "1",
+    "primink": "1",
+    "pb": "1"
+   },
+   {
+    "banga": null,
+    "grupe": "G1_recent_nonfood",
+    "n": "475",
+    "atidare": "0",
+    "klik": "0",
+    "primink": "0",
+    "pb": "0"
+   },
+   {
+    "banga": null,
+    "grupe": "G1r_repeat_nonfood",
+    "n": "6",
+    "atidare": "0",
+    "klik": "0",
+    "primink": "0",
+    "pb": "0"
+   },
+   {
+    "banga": null,
+    "grupe": "G2_old_food",
+    "n": "968",
+    "atidare": "0",
+    "klik": "0",
+    "primink": "0",
+    "pb": "0"
+   },
+   {
+    "banga": null,
+    "grupe": "G2_old_nonfood",
+    "n": "566",
+    "atidare": "0",
+    "klik": "0",
+    "primink": "0",
+    "pb": "0"
+   },
+   {
+    "banga": null,
+    "grupe": "G3_very_old",
+    "n": "1967",
+    "atidare": "0",
+    "klik": "0",
+    "primink": "0",
+    "pb": "0"
+   },
+   {
+    "banga": null,
+    "grupe": "G4_dead_product",
+    "n": "213",
+    "atidare": "0",
+    "klik": "0",
+    "primink": "0",
+    "pb": "0"
+   },
+   {
+    "banga": "1",
+    "grupe": null,
+    "n": "271",
+    "atidare": "0",
+    "klik": "0",
+    "primink": "0",
+    "pb": "0"
+   },
+   {
+    "banga": "1",
+    "grupe": "G2_old_food",
+    "n": "29",
+    "atidare": "0",
+    "klik": "0",
+    "primink": "0",
+    "pb": "0"
+   },
+   {
+    "banga": "2a",
+    "grupe": null,
+    "n": "292",
+    "atidare": "50",
+    "klik": "4",
+    "primink": "3",
+    "pb": "3"
+   },
+   {
+    "banga": "2a",
+    "grupe": "G2_old_food",
+    "n": "208",
+    "atidare": "32",
+    "klik": "1",
+    "primink": "0",
+    "pb": "0"
+   },
+   {
+    "banga": "H2a",
+    "grupe": null,
+    "n": "29",
+    "atidare": "0",
+    "klik": "0",
+    "primink": "0",
+    "pb": "0"
+   },
+   {
+    "banga": "H2a",
+    "grupe": "G2_old_food",
+    "n": "21",
+    "atidare": "0",
+    "klik": "0",
+    "primink": "0",
+    "pb": "0"
+   }
+  ],
+  "primink": [
+   {
+    "b": "naujas",
+    "kg": "0.0",
+    "n": "3"
+   },
+   {
+    "b": "naujas",
+    "kg": "20.0",
+    "n": "1"
+   }
+  ],
+  "pask": [
+   {
+    "banga": "2a",
+    "segmentas": "calc",
+    "u": "primink",
+    "pask_klik_at": "2026-10-28 16:36:35",
+    "primink_at": "2026-10-28 16:36:35",
+    "atidare_n": "1"
+   },
+   {
+    "banga": "2a",
+    "segmentas": "calc",
+    "u": "primink",
+    "pask_klik_at": "2026-10-28 17:19:49",
+    "primink_at": "2026-10-28 17:19:49",
+    "atidare_n": "1"
+   },
+   {
+    "banga": "2a",
+    "segmentas": "calc",
+    "u": "primink_d30",
+    "pask_klik_at": "2026-10-28 17:33:08",
+    "primink_at": "2026-10-28 17:33:08",
+    "atidare_n": "1"
+   },
+   {
+    "banga": null,
+    "segmentas": "calc",
+    "u": "primink_d3",
+    "pask_klik_at": "2026-10-28 17:37:39",
+    "primink_at": "2026-10-28 17:37:39",
+    "atidare_n": "30"
+   },
+   {
+    "banga": "2a",
+    "segmentas": "generic",
+    "u": "deze_skanestai",
+    "pask_klik_at": "2026-10-28 18:13:56",
+    "primink_at": null,
+    "atidare_n": "5"
+   },
+   {
+    "banga": "2a",
+    "segmentas": "calc",
+    "u": "deze_skanestai",
+    "pask_klik_at": "2026-10-28 20:00:12",
+    "primink_at": null,
+    "atidare_n": "1"
+   }
+  ],
+  "uzs": [],
+  "bangos_v": [
+   null,
+   "1",
+   "2a",
+   "H2a"
+  ]
+ },
+ "v": "dep-071255",
+ "kurimas": 200,
+ "sid": 7557,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
