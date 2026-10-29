@@ -1,0 +1,363 @@
+{
+ "1": {
+  "v": "S1809b",
+  "pusl_tipai": [
+   {
+    "pusl_tipas": "kategorija",
+    "n": "4299",
+    "lank": "1290"
+   },
+   {
+    "pusl_tipas": "preke",
+    "n": "3245",
+    "lank": "1473"
+   },
+   {
+    "pusl_tipas": "kita",
+    "n": "1080",
+    "lank": "575"
+   },
+   {
+    "pusl_tipas": "home",
+    "n": "744",
+    "lank": "606"
+   },
+   {
+    "pusl_tipas": "info",
+    "n": "673",
+    "lank": "441"
+   },
+   {
+    "pusl_tipas": "paieska",
+    "n": "475",
+    "lank": "234"
+   },
+   {
+    "pusl_tipas": "krepselis",
+    "n": "275",
+    "lank": "191"
+   },
+   {
+    "pusl_tipas": "checkout",
+    "n": "234",
+    "lank": "174"
+   },
+   {
+    "pusl_tipas": "aciu",
+    "n": "158",
+    "lank": "140"
+   },
+   {
+    "pusl_tipas": "404",
+    "n": "73",
+    "lank": "72"
+   },
+   {
+    "pusl_tipas": "parduotuve",
+    "n": "50",
+    "lank": "37"
+   },
+   {
+    "pusl_tipas": "blog",
+    "n": "17",
+    "lank": "11"
+   }
+  ],
+  "kasa_url": [
+   {
+    "k": "kasa",
+    "pusl_tipas": "checkout",
+    "n": "229",
+    "lank": "174"
+   },
+   {
+    "k": "order-received",
+    "pusl_tipas": "aciu",
+    "n": "158",
+    "lank": "140"
+   },
+   {
+    "k": "order-pay",
+    "pusl_tipas": "checkout",
+    "n": "5",
+    "lank": "1"
+   }
+  ],
+  "suvestine": {
+   "lankytoju_dienu_su_kasa": 174,
+   "su_aciu": 123,
+   "be_aciu": 51,
+   "be_aciu_tik_1_perziura": 42,
+   "be_aciu_pay": 0
+  },
+  "be_aciu_analize": {
+   "ir": {
+    "mobile": 37,
+    "desktop": 13,
+    "tablet": 1
+   },
+   "kan": {
+    "mokamas": 26,
+    "ai": 2,
+    "email": 6,
+    "direct": 11,
+    "organika": 6
+   },
+   "add_to_cart": 50,
+   "be_add": 1,
+   "trukme": {
+    "<10s": 0,
+    "10-60s": 5,
+    "1-5min": 6,
+    ">5min/paskutinis": 40
+   },
+   "po_kasos": {
+    "krepselis": 5,
+    "(niekas)": 38,
+    "info": 1,
+    "kategorija": 3,
+    "preke": 4
+   }
+  },
+  "pavyzdziai": [
+   [
+    "2026-10-20",
+    "0641c241",
+    "mobile",
+    "mokamas",
+    "1",
+    7,
+    "krepselis /krepselis/ +221s"
+   ],
+   [
+    "2026-10-22",
+    "08976f0a",
+    "mobile",
+    "mokamas",
+    "1",
+    2,
+    "-"
+   ],
+   [
+    "2026-10-18",
+    "105810b6",
+    "mobile",
+    "mokamas",
+    "1",
+    6,
+    "krepselis /krepselis/ +69s"
+   ],
+   [
+    "2026-10-21",
+    "169d18cd",
+    "mobile",
+    "ai",
+    "1",
+    2,
+    "-"
+   ],
+   [
+    "2026-10-27",
+    "2743d48d",
+    "mobile",
+    "mokamas",
+    "1",
+    1,
+    "-"
+   ],
+   [
+    "2026-10-29",
+    "2785745a",
+    "mobile",
+    "email",
+    "1",
+    4,
+    "-"
+   ],
+   [
+    "2026-10-25",
+    "2d4aee62",
+    "mobile",
+    "direct",
+    "1",
+    2,
+    "-"
+   ],
+   [
+    "2026-10-19",
+    "309c2d7b",
+    "mobile",
+    "organika",
+    "1",
+    2,
+    "-"
+   ],
+   [
+    "2026-10-21",
+    "319c453a",
+    "desktop",
+    "organika",
+    "1",
+    2,
+    "info /sprendimai/naujas-suniukas/ +19s"
+   ],
+   [
+    "2026-10-24",
+    "381bdc32",
+    "mobile",
+    "email",
+    "1",
+    0,
+    "-"
+   ],
+   [
+    "2026-10-23",
+    "3b880a2a",
+    "desktop",
+    "direct",
+    "1",
+    2,
+    "-"
+   ],
+   [
+    "2026-10-18",
+    "40dbf3aa",
+    "desktop",
+    "mokamas",
+    "1",
+    2,
+    "-"
+   ],
+   [
+    "2026-10-20",
+    "43864031",
+    "mobile",
+    "mokamas",
+    "1",
+    14,
+    "-"
+   ],
+   [
+    "2026-10-19",
+    "4b494328",
+    "desktop",
+    "mokamas",
+    "1",
+    2,
+    "-"
+   ],
+   [
+    "2026-10-22",
+    "4d25dba9",
+    "mobile",
+    "mokamas",
+    "1",
+    1,
+    "-"
+   ]
+  ],
+  "uzsakymai": [
+   {
+    "status": "wc-completed",
+    "n": "125"
+   },
+   {
+    "status": "wc-processing",
+    "n": "10"
+   },
+   {
+    "status": "wc-cancelled",
+    "n": "3"
+   },
+   {
+    "status": "wc-on-hold",
+    "n": "1"
+   }
+  ],
+  "dienos": [
+   {
+    "diena": "2026-10-15",
+    "kasa": "3",
+    "aciu": "3"
+   },
+   {
+    "diena": "2026-10-16",
+    "kasa": "14",
+    "aciu": "11"
+   },
+   {
+    "diena": "2026-10-17",
+    "kasa": "11",
+    "aciu": "8"
+   },
+   {
+    "diena": "2026-10-18",
+    "kasa": "8",
+    "aciu": "7"
+   },
+   {
+    "diena": "2026-10-19",
+    "kasa": "13",
+    "aciu": "6"
+   },
+   {
+    "diena": "2026-10-20",
+    "kasa": "17",
+    "aciu": "11"
+   },
+   {
+    "diena": "2026-10-21",
+    "kasa": "13",
+    "aciu": "9"
+   },
+   {
+    "diena": "2026-10-22",
+    "kasa": "13",
+    "aciu": "13"
+   },
+   {
+    "diena": "2026-10-23",
+    "kasa": "14",
+    "aciu": "13"
+   },
+   {
+    "diena": "2026-10-24",
+    "kasa": "11",
+    "aciu": "7"
+   },
+   {
+    "diena": "2026-10-25",
+    "kasa": "10",
+    "aciu": "9"
+   },
+   {
+    "diena": "2026-10-26",
+    "kasa": "13",
+    "aciu": "12"
+   },
+   {
+    "diena": "2026-10-27",
+    "kasa": "16",
+    "aciu": "12"
+   },
+   {
+    "diena": "2026-10-28",
+    "kasa": "14",
+    "aciu": "16"
+   },
+   {
+    "diena": "2026-10-29",
+    "kasa": "4",
+    "aciu": "3"
+   }
+  ],
+  "vidiniai": "yra"
+ },
+ "v": "dep-130729",
+ "kurimas": 200,
+ "sid": 7567,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
