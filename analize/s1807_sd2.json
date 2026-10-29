@@ -1,0 +1,70 @@
+{
+ "2": {
+  "v": "S1807sd",
+  "faze": "2",
+  "st": {
+   "calc": 90,
+   "std": 51,
+   "klaida": 0,
+   "kodai": {
+    "200": 127,
+    "201": 14
+   }
+  },
+  "klaidos": [],
+  "liko_P2a": 0,
+  "s": 13.1
+ },
+ "4": {
+  "v": "S1807sd",
+  "faze": "4",
+  "sender_viso": 1491,
+  "st_atranka": {
+   "kandidatai": 386,
+   "l1_gavo": 0,
+   "sender_neaktyvus": 0,
+   "optout": 0,
+   "tinka": 386,
+   "siust": 351,
+   "holdout": 35
+  },
+  "pazymeta": [
+   {
+    "banga": "1",
+    "n": "300"
+   },
+   {
+    "banga": "2a",
+    "n": "500"
+   },
+   {
+    "banga": "2b",
+    "n": "500"
+   },
+   {
+    "banga": "H2a",
+    "n": "50"
+   },
+   {
+    "banga": "H2b",
+    "n": "50"
+   },
+   {
+    "banga": "H2c",
+    "n": "35"
+   },
+   {
+    "banga": "P2c",
+    "n": "351"
+   }
+  ],
+  "s": 2.2
+ },
+ "v": "dep-164700",
+ "kurimas": 200,
+ "sid": 7576,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
