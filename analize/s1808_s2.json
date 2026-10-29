@@ -1,0 +1,239 @@
+{
+ "1": {
+  "v": "S1808s2",
+  "camp_code": 200,
+  "test_n": 37,
+  "camp": [
+   {
+    "id": "mZymGn",
+    "title": "Relaunch L2 šunys CALC (397) 2026-10-28",
+    "subject": "{{ps_hero_pav}} – priminti, kai baigsis?",
+    "status": "SENT",
+    "sent_time": "2026-10-28 18:25:02",
+    "created": "2026-10-28 18:01:40",
+    "recipient_count": 397,
+    "sent_count": 397,
+    "opens": 71,
+    "clicks": 4
+   },
+   {
+    "id": "n5O08P",
+    "title": "Relaunch L2 šunys STD (98) 2026-10-28",
+    "subject": "Kad šuns maisto nepritrūktų",
+    "status": "SENT",
+    "sent_time": "2026-10-28 18:25:03",
+    "created": "2026-10-28 18:01:40",
+    "recipient_count": 98,
+    "sent_count": 98,
+    "opens": 17,
+    "clicks": 1
+   },
+   {
+    "id": "o2jm9Y",
+    "title": "Relaunch L1 šunys STD (107) 2026-09-30",
+    "subject": "Kiek per dieną kainuoja jūsų šuns maistas?",
+    "status": "SENT",
+    "sent_time": "2026-09-30 12:40:03",
+    "created": "2026-09-30 12:39:17",
+    "recipient_count": 107,
+    "sent_count": 107,
+    "opens": 43,
+    "clicks": 2
+   }
+  ],
+  "camp_keys": [
+   "id",
+   "subject",
+   "reply_to",
+   "language",
+   "recipient_count",
+   "from",
+   "schedule_time",
+   "last_action",
+   "sent_time",
+   "status",
+   "created",
+   "modified",
+   "title",
+   "domain_id",
+   "preheader",
+   "auto_followup_active",
+   "auto_followup_subject",
+   "auto_followup_delay",
+   "send_to_all",
+   "sent_count",
+   "campaign_groups",
+   "segments",
+   "ecommerce_tracking_enabled",
+   "experiment_id",
+   "disable_click_tracking",
+   "disable_open_tracking",
+   "opens",
+   "bounces_count",
+   "clicks",
+   "html",
+   "editor",
+   "reports"
+  ],
+  "subs_meta": {
+   "current_page": 1,
+   "from": 1,
+   "last_page": 99,
+   "per_page": 10,
+   "to": 10,
+   "total": 986
+  },
+  "groups": [
+   [
+    "PS_TEST",
+    1,
+    0
+   ],
+   [
+    "PS_SUPPRESSED_OR_ARCHIVE",
+    0,
+    0
+   ],
+   [
+    "PS_LEGACY_IMPORT",
+    0,
+    0
+   ],
+   [
+    "PS_ALL_ACTIVE",
+    0,
+    0
+   ],
+   [
+    "RELAUNCH_L1_SUO_STD",
+    0,
+    0
+   ],
+   [
+    "RELAUNCH_L1_SUO_CALC",
+    0,
+    0
+   ],
+   [
+    "RELAUNCH_L2_SUO_CALC",
+    402,
+    7
+   ],
+   [
+    "RELAUNCH_L2_SUO_STD",
+    98,
+    0
+   ]
+  ],
+  "wh_n": 20,
+  "wh_topics": {
+   "2026-10-28 ?": 5,
+   "2026-10-29 ?": 15
+  },
+  "wh_last_keys": [
+   "bounced_at",
+   "bounced_at_utc",
+   "columns",
+   "created",
+   "created_utc",
+   "email",
+   "firstname",
+   "id",
+   "ip_address",
+   "lastname",
+   "location",
+   "phone",
+   "phone_country",
+   "source",
+   "status",
+   "subscriber_tags",
+   "unsubscribed_at",
+   "unsubscribed_at_utc"
+  ],
+  "tbl": [],
+  "tbl2": [
+   "gaj6_ps_relaunch_kontaktai"
+  ],
+  "tinfo": {
+   "gaj6_ps_relaunch_kontaktai": {
+    "n": "5666",
+    "c": [
+     "id",
+     "cid",
+     "email",
+     "user_id",
+     "segmentas",
+     "product_id",
+     "rusis",
+     "svoriai",
+     "duomenys",
+     "sukurta_at",
+     "klik_n",
+     "pask_klik_at",
+     "pask_svoris",
+     "hero_reason",
+     "last_food_product_id",
+     "last_food_date",
+     "same_sku_orders",
+     "ist_n",
+     "ist_paskutinis",
+     "consent",
+     "last_kat",
+     "last_any_product_id",
+     "last_any_date",
+     "same_any_orders",
+     "grupe",
+     "top_kat",
+     "primink_at",
+     "primink_kg",
+     "primink_busena",
+     "atidare_at",
+     "atidare_n",
+     "pask_utm",
+     "banga"
+    ]
+   }
+  },
+  "opts": [
+   {
+    "option_name": "ps_relaunch_lentele_v",
+    "l": "1"
+   },
+   {
+    "option_name": "ps_relaunch_prekes",
+    "l": "216521"
+   },
+   {
+    "option_name": "ps_relaunch_lentele_v11",
+    "l": "1"
+   },
+   {
+    "option_name": "ps_relaunch_raktas",
+    "l": "40"
+   },
+   {
+    "option_name": "ps_relaunch_img",
+    "l": "162"
+   },
+   {
+    "option_name": "ps_relaunch_l1_suo",
+    "l": "91"
+   },
+   {
+    "option_name": "ps_relaunch_lentele_v12",
+    "l": "1"
+   },
+   {
+    "option_name": "ps_relaunch_l2_suo",
+    "l": "89"
+   }
+  ]
+ },
+ "v": "dep-071114",
+ "kurimas": 200,
+ "sid": 7556,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
