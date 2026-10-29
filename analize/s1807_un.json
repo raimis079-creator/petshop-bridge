@@ -1,0 +1,110 @@
+{
+ "1": {
+  "v": "un",
+  "camp": {
+   "calc": {
+    "sent_time": "2026-10-28 18:25:02",
+    "sent_count": 397,
+    "disable_click_tracking": 0,
+    "disable_open_tracking": 0,
+    "opens": 72,
+    "bounces_count": 1,
+    "clicks": 5
+   },
+   "std": {
+    "sent_time": "2026-10-28 18:25:03",
+    "sent_count": 98,
+    "disable_click_tracking": 0,
+    "disable_open_tracking": 0,
+    "opens": 17,
+    "bounces_count": 0,
+    "clicks": 1
+   }
+  },
+  "neaktyvus_2a": [
+   [
+    "unsubscribed",
+    "recent_exact",
+    "2026-04",
+    "0",
+    "2"
+   ],
+   [
+    "unsubscribed",
+    "recent_exact",
+    "2026-04",
+    "0",
+    "0"
+   ],
+   [
+    "unsubscribed",
+    "recent_exact",
+    "2026-01",
+    "0",
+    "0"
+   ],
+   [
+    "unsubscribed",
+    "recent_exact",
+    "2026-01",
+    "0",
+    "0"
+   ],
+   [
+    "bounced",
+    "old_purchase",
+    "2025-08",
+    "0",
+    "0"
+   ],
+   [
+    "unsubscribed",
+    "old_purchase",
+    "2025-08",
+    "0",
+    "3"
+   ],
+   [
+    "unsubscribed",
+    "recent_exact",
+    "2025-09",
+    "0",
+    "0"
+   ],
+   [
+    "unsubscribed",
+    "recent_exact",
+    "2025-09",
+    "0",
+    "1"
+   ]
+  ],
+  "2a_pagal_hero": [
+   {
+    "hero_reason": "old_purchase",
+    "n": "208",
+    "atid": "32",
+    "klik": "1"
+   },
+   {
+    "hero_reason": "recent_exact",
+    "n": "272",
+    "atid": "48",
+    "klik": "5"
+   },
+   {
+    "hero_reason": "repeat_exact",
+    "n": "20",
+    "atid": "3",
+    "klik": "0"
+   }
+  ]
+ },
+ "v": "dep-075541",
+ "kurimas": 200,
+ "sid": 7560,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
