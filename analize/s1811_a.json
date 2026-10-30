@@ -1,0 +1,242 @@
+{
+ "1": {
+  "v": "S1811a",
+  "php": {
+   "ver": "8.3.36",
+   "sapi": "cgi-fcgi",
+   "memory_limit": "256M",
+   "max_exec": "250",
+   "upload": "64M",
+   "post": "64M",
+   "max_input_vars": "10000",
+   "disabled": "link, symlink, exec, passthru, proc_close, proc_get_status, proc_open, shell_exec, system, popen, pclose",
+   "wp_mem": "40M",
+   "wp_max_mem": "256M",
+   "peak_mb": 136
+  },
+  "load": [
+   3.53,
+   2.81,
+   2.89
+  ],
+  "cpu_n": "n/a",
+  "opcache": {
+   "used_mb": 32,
+   "free_mb": 0,
+   "wasted_mb": 0,
+   "full": true,
+   "hit": 15.8,
+   "scripts": 498,
+   "max_keys": 7963,
+   "restarts_oom": 0
+  },
+  "db": {
+   "ver": "10.6.28",
+   "dydis_mb": "581.8",
+   "top": [
+    {
+     "t": "gaj6_postmeta",
+     "mb": "86.5",
+     "n": "301377"
+    },
+    {
+     "t": "gaj6_actionscheduler_actions",
+     "mb": "71.5",
+     "n": "76406"
+    },
+    {
+     "t": "gaj6_ps_web_ivykiai",
+     "mb": "47.8",
+     "n": "58867"
+    },
+    {
+     "t": "gaj6_actionscheduler_logs",
+     "mb": "35.1",
+     "n": "237703"
+    },
+    {
+     "t": "gaj6_posts",
+     "mb": "33.8",
+     "n": "15859"
+    },
+    {
+     "t": "gaj6_ps_fakt_atsargos_d",
+     "mb": "26.0",
+     "n": "131972"
+    },
+    {
+     "t": "gaj6_usermeta",
+     "mb": "23.5",
+     "n": "151871"
+    },
+    {
+     "t": "gaj6_options",
+     "mb": "19.5",
+     "n": "7511"
+    }
+   ],
+   "max_conn": "256",
+   "threads": "2"
+  },
+  "disk": {
+   "free_gb": 395.2,
+   "total_gb": 1968.5
+  },
+  "failai": {
+   "inode_public_html": 211386,
+   "gb": 9.33,
+   "top": {
+    "wp-content/uploads/2026": 3943,
+    "wp-content/uploads/ShortpixelBackups": 3931,
+    "wp-content/uploads/petshop-legacy": 818,
+    "wp-content/uploads/wpallimport": 265,
+    "wp-content/uploads/ps-backups": 94,
+    "wp-content/plugins/woocommerce": 55,
+    "wp-content/uploads/wcdn": 35,
+    "wp-content/plugins/wpforms-lite": 31,
+    "wp-content/cache/supercache": 23,
+    "wp-includes/js/dist": 22
+   },
+   "laikas_s": 3
+  },
+  "greitis": {
+   "/?nocache=1793353673": [
+    "1089ms/200",
+    "1189ms/200"
+   ],
+   "/kategorija/katems/?nc=1793353673": [
+    "1320ms/200",
+    "1156ms/200"
+   ],
+   "/product/josera-sensiplus-125-kg/?nc=1793353673": [
+    "2234ms/200",
+    "2316ms/200"
+   ],
+   "/krepselis/": [
+    "1321ms/200",
+    "1042ms/200"
+   ]
+  },
+  "logs": [
+   ".",
+   "..",
+   "Oct-2026.tar.gz",
+   "Oct-2026.tar.gz.1",
+   "Oct-2026.tar.gz.10",
+   "Oct-2026.tar.gz.11",
+   "Oct-2026.tar.gz.12",
+   "Oct-2026.tar.gz.2",
+   "Oct-2026.tar.gz.3",
+   "Oct-2026.tar.gz.4",
+   "Oct-2026.tar.gz.5",
+   "Oct-2026.tar.gz.6",
+   "Oct-2026.tar.gz.7",
+   "Oct-2026.tar.gz.8",
+   "Oct-2026.tar.gz.9",
+   "php_error.log"
+  ],
+  "5xx": {
+   "Oct-2026.tar.gz": {
+    "mtime": "10-30 02:27",
+    "eil": 4890,
+    "kodai": {
+     "500": 3
+    }
+   },
+   "Oct-2026.tar.gz.1": {
+    "mtime": "10-29 22:10",
+    "eil": 33965,
+    "kodai": {
+     "500": 14
+    }
+   },
+   "Oct-2026.tar.gz.10": {
+    "mtime": "10-25 03:43",
+    "eil": 7090,
+    "kodai": {
+     "500": 1
+    }
+   },
+   "Oct-2026.tar.gz.11": {
+    "mtime": "10-24 21:11",
+    "eil": 32421,
+    "kodai": {
+     "429": 135,
+     "500": 20
+    }
+   },
+   "Oct-2026.tar.gz.12": {
+    "mtime": "10-24 03:15",
+    "eil": 7030,
+    "kodai": {
+     "500": 3
+    }
+   },
+   "Oct-2026.tar.gz.2": {
+    "mtime": "10-29 02:29",
+    "eil": 5524,
+    "kodai": []
+   },
+   "Oct-2026.tar.gz.3": {
+    "mtime": "10-28 22:11",
+    "eil": 37977,
+    "kodai": {
+     "429": 15,
+     "500": 11
+    }
+   },
+   "Oct-2026.tar.gz.4": {
+    "mtime": "10-28 02:12",
+    "eil": 3895,
+    "kodai": {
+     "500": 3
+    }
+   },
+   "Oct-2026.tar.gz.5": {
+    "mtime": "10-27 22:11",
+    "eil": 36742,
+    "kodai": {
+     "500": 19
+    }
+   },
+   "Oct-2026.tar.gz.6": {
+    "mtime": "10-27 02:17",
+    "eil": 4330,
+    "kodai": {
+     "500": 6
+    }
+   },
+   "Oct-2026.tar.gz.7": {
+    "mtime": "10-26 22:10",
+    "eil": 33556,
+    "kodai": {
+     "429": 436,
+     "500": 10
+    }
+   },
+   "Oct-2026.tar.gz.8": {
+    "mtime": "10-26 03:40",
+    "eil": 4580,
+    "kodai": {
+     "429": 273,
+     "500": 1
+    }
+   },
+   "Oct-2026.tar.gz.9": {
+    "mtime": "10-25 22:10",
+    "eil": 26816,
+    "kodai": {
+     "500": 11
+    }
+   }
+  },
+  "trukme_s": 15
+ },
+ "v": "dep-094640",
+ "kurimas": 200,
+ "sid": 7592,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
