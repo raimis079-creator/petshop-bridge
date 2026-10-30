@@ -1,0 +1,36 @@
+{
+ "1": {
+  "v": "S1812a",
+  "laikas": "2026-10-30 21:27:10",
+  "load": [
+   24.96,
+   10.78,
+   4.01
+  ],
+  "mem": 125829120,
+  "error_log": "/home/gyvunai2/domains/petshop.lt/logs/php_error.log",
+  "errlog_tail": "ction is_product() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php:682\nStack trace:\n#0 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(341): Petshop_Laukai::vitrina_init()\n#1 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()\n#2 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/plugin.php(570): WP_Hook->do_action()\n#3 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp.php(838): do_action_ref_array()\n#4 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php(1343): WP->main()\n#5 /home/gyvunai2/domains/petshop.lt/public_html/wp-blog-header.php(16): wp()\n#6 /home/gyvunai2/domains/petshop.lt/public_html/wp-activate.php(14): require('...')\n#7 {main}\n  thrown in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php on line 682\n[30-Oct-2026 04:04:26 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}\n[30-Oct-2026 04:06:23 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}\n[30-Oct-2026 04:32:17 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 526\n[30-Oct-2026 04:32:36 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}\n[30-Oct-2026 04:48:17 UTC] Užsakymas patvirtintas: užsakymas 37381, suma: 56.99EUR\n[30-Oct-2026 04:51:13 UTC] Užsakymas patvirtintas: užsakymas 37382, suma: 36.54EUR\n[30-Oct-2026 06:04:25 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}\n[30-Oct-2026 06:24:15 UTC] PHP Warning:  is_file(): open_basedir restriction in effect. File(/proc/loadavg) is not within the allowed path(s): (/home/gyvunai2/:/tmp:/usr/share/pear) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 63\n[30-Oct-2026 06:26:13 UTC] PHP Warning:  is_file(): open_basedir restriction in effect. File(/proc/loadavg) is not within the allowed path(s): (/home/gyvunai2/:/tmp:/usr/share/pear) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 63\n[30-Oct-2026 07:03:27 UTC] Užsakymas patvirtintas: užsakymas 37383, suma: 25.34EUR\n[30-Oct-2026 07:46:22 UTC] Cron įvykio perplanavimo klaida kabliui: wcdn_ts_tracker_send_event, klaidos kodas: invalid_schedule, klaidos pranešimas: Įvykių tvarkaraštis neegzistuoja., duomenys: {\"schedule\":\"once_in_week\",\"args\":[],\"interval\":604800}\n[30-Oct-2026 11:34:13 UTC] Užsakymas patvirtintas: užsakymas 37384, suma: 68.20EUR\n[30-Oct-2026 14:01:16 UTC] Užsakymas patvirtintas: užsakymas 37385, suma: 26.05EUR\n[30-Oct-2026 14:25:18 UTC] Užsakymas patvirtintas: užsakymas 37386, suma: 48.49EUR\n[30-Oct-2026 15:29:44 UTC] Užsakymas patvirtintas: užsakymas 37387, suma: 30.58EUR\n[30-Oct-2026 16:15:12 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php on line 655\n[30-Oct-2026 16:15:12 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-mail-smtp/wp-mail-smtp.php on line 42\n",
+  "db": "2026-10-30 21:27:10",
+  "threads": [
+   {
+    "Variable_name": "Max_used_connections",
+    "Value": "90"
+   },
+   {
+    "Variable_name": "Threads_connected",
+    "Value": "9"
+   },
+   {
+    "Variable_name": "Threads_running",
+    "Value": "1"
+   }
+  ]
+ },
+ "v": "dep-192422",
+ "kurimas": 200,
+ "sid": 7595,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
