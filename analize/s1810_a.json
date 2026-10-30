@@ -4,6 +4,38 @@
   "faze": "1",
   "ads": [
    {
+    "d": "2026-10-27",
+    "k": "P-max | LT | petshop.lt",
+    "par": "334",
+    "pasp": "38",
+    "eur": "8.81",
+    "konv": "2.00"
+   },
+   {
+    "d": "2026-10-27",
+    "k": "P-max| All LT | Kačių maistas",
+    "par": "565",
+    "pasp": "58",
+    "eur": "19.48",
+    "konv": "2.00"
+   },
+   {
+    "d": "2026-10-27",
+    "k": "petshop",
+    "par": "307",
+    "pasp": "31",
+    "eur": "10.22",
+    "konv": "0.00"
+   },
+   {
+    "d": "2026-10-27",
+    "k": "Search | LT | Prekių ženklai",
+    "par": "211",
+    "pasp": "30",
+    "eur": "6.69",
+    "konv": "0.00"
+   },
+   {
     "d": "2026-10-28",
     "k": "P-max | LT | petshop.lt",
     "par": "536",
@@ -70,6 +102,21 @@
   ],
   "ads_pask_irasas": "2026-10-30 03:01:30",
   "wc_d": [
+   {
+    "d": "2026-10-23",
+    "n": "9",
+    "eur": "429",
+    "kontr": "98",
+    "siunta": "21",
+    "nauji": "4",
+    "g_n": "4",
+    "g_eur": "190",
+    "g_kontr": "46",
+    "g_nauji": "2",
+    "k_n": "1",
+    "dir_n": "2",
+    "org_n": "1"
+   },
    {
     "d": "2026-10-24",
     "n": "6",
@@ -178,6 +225,27 @@
   ],
   "wc_kamp": [
    {
+    "d": "2026-10-28",
+    "k": "21472017542",
+    "n": "2",
+    "eur": "141",
+    "nauji": "2"
+   },
+   {
+    "d": "2026-10-28",
+    "k": "23346712074",
+    "n": "2",
+    "eur": "89",
+    "nauji": "1"
+   },
+   {
+    "d": "2026-10-28",
+    "k": "24297462605",
+    "n": "1",
+    "eur": "134",
+    "nauji": "1"
+   },
+   {
     "d": "2026-10-29",
     "k": "21472017542",
     "n": "1",
@@ -215,21 +283,76 @@
   ],
   "ads_7d": [
    {
-    "eur": "249.02",
-    "pasp": "920",
-    "konv": "22.43"
+    "eur": "291.27",
+    "pasp": "1085",
+    "konv": "28.01"
    }
   ],
   "g_7d": [
    {
-    "n": "30",
-    "eur": "1491",
-    "kontr": "335.0",
-    "siunta": "55.8",
-    "nauji": "19"
+    "n": "32",
+    "eur": "1587",
+    "kontr": "361.4",
+    "siunta": "67.0",
+    "nauji": "21"
    }
   ],
   "uzs": [
+   [
+    "1577",
+    "10-29 11:29",
+    "on-hold",
+    45.09,
+    "bacs",
+    "shopup_venipak_shipping_pickup_method=0",
+    1,
+    "-|||gc|n|k",
+    ""
+   ],
+   [
+    "1578",
+    "10-29 13:11",
+    "processing",
+    53.28,
+    "paysera",
+    "shopup_venipak_shipping_courier_method=3.99",
+    1,
+    "direct|||gc0|n0|k9.7",
+    ""
+   ],
+   [
+    "1579",
+    "10-29 19:16",
+    "processing",
+    12.47,
+    "paysera",
+    "shopup_venipak_shipping_pickup_method=2.15",
+    2,
+    "mokamas|google|21565450990|gc1|n1|k3.4",
+    ""
+   ],
+   [
+    "1580",
+    "10-29 19:56",
+    "processing",
+    58.99,
+    "paysera",
+    "shopup_venipak_shipping_pickup_method=0",
+    1,
+    "mokamas|google|21472017542|gc1|n1|k13.4",
+    ""
+   ],
+   [
+    "1581",
+    "10-29 22:04",
+    "processing",
+    79.09,
+    "paysera",
+    "shopup_venipak_shipping_pickup_method=0",
+    8,
+    "mokamas|google|23346712074|gc1|n0|k14.7",
+    ""
+   ],
    [
     "1582",
     "10-30 06:46",
@@ -351,7 +474,7 @@
     ""
    ]
   ],
-  "laikas": "2026-10-30 08:24:07",
+  "laikas": "2026-10-30 08:26:05",
   "trukme_s": 0.1
  },
  "2": {
@@ -433,7 +556,7 @@
    [
     "php_error.log",
     "6.9MB",
-    "10-30 08:04"
+    "10-30 08:24"
    ]
   ],
   "access_src": "Oct-2026.tar.gz",
@@ -564,13 +687,13 @@
   },
   "error_log": {
    "failas": "php_error.log",
-   "kb": 7050,
+   "kb": 7051,
    "pask": "",
    "tipai": [],
    "fastcgi_val": []
   },
   "sargas_suvestine": [],
-  "sesijos": 2971,
+  "sesijos": 2975,
   "ps_carts_d": [
    {
     "d": "2026-10-27",
@@ -631,14 +754,14 @@
   "sargo_klaidos": [
    {
     "id": "18437",
-    "laikas": "2026-10-30 08:24:15",
+    "laikas": "2026-10-30 08:26:13",
     "lygis": "warning",
     "parasas": "fcf8d9bb494bbb490f23f4e39548f5db",
     "zinute": "is_file(): open_basedir restriction in effect. File(/proc/loadavg) is not within the allowed path(s): (/home/gyvunai2/:/tmp:/usr/share/pear)",
     "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
     "eilute": "63",
     "url": "/?ps_s1796a=2",
-    "kiek": "7"
+    "kiek": "8"
    },
    {
     "id": "4024",
@@ -1025,8 +1148,8 @@
    ]
   ],
   "supercache": {
-   "psl": 230,
-   "seniausias": "10-30 07:24"
+   "psl": 234,
+   "seniausias": "10-30 07:25"
   },
   "cache_cfg": {
    "cache_enabled": "1",
@@ -1355,53 +1478,57 @@
    "kb": 7051,
    "tipai": {
     "Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron ": [
-     5,
+     17,
      "10-30 08:04"
+    ],
+    "WordPress database error Duplicate entry 'N-N-N-pa_spalva' for key 'PRIMARY' for query INSERT INTO `gajN_wc_product_attributes_lookup` (": [
+     15,
+     "10-29 11:46"
+    ],
+    "WordPress database error Duplicate entry 'N-N-N-puslapis-/gamintojas/exclusion/?utm_source=google&...' for key 'vienas' for query INSERT INTO `gajN_ps": [
+     7,
+     "10-30 02:10"
+    ],
+    "Užsakymas patvirtintas: užsakymas N, suma: N.NEUR": [
+     6,
+     "10-30 06:51"
+    ],
+    "WordPress database error Duplicate entry 'N-N-N-puslapis-/kategorija/katems/tualetai-kraikai-semtu...' for key 'vienas' for query INSERT INTO `gajN_ps": [
+     5,
+     "10-29 02:10"
+    ],
+    "PHP Warning:  is_file(): open_basedir restriction in effect. File(/proc/loadavg) is not within the allowed path(s): (/home/gyvunaiN/:/tmp:/usr/share/p": [
+     3,
+     "10-30 08:26"
+    ],
+    "WordPress database error Duplicate entry 'N-N-N-puslapis-/gamintojas/farmina/?utm_source=google&ut...' for key 'vienas' for query INSERT INTO `gajN_ps": [
+     2,
+     "10-30 02:10"
+    ],
+    "WordPress database error Duplicate entry 'N-N-N-puslapis-/product/naturalus-skanestai-sunims-elnio...' for key 'vienas' for query INSERT INTO `gajN_ps": [
+     2,
+     "10-30 02:10"
+    ],
+    "PHP Warning:  Array to string conversion in /home/gyvunaiN/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line N": [
+     2,
+     "10-30 06:32"
     ],
     "WordPress database error Duplicate entry 'N-N-N-puslapis-/gamintojas/ambrosia/?utm_source=google&u...' for key 'vienas' for query INSERT INTO `gajN_ps": [
      2,
      "10-30 02:10"
     ],
-    "WordPress database error Duplicate entry 'N-N-N-puslapis-/gamintojas/exclusion/?utm_source=google&...' for key 'vienas' for query INSERT INTO `gajN_ps": [
-     2,
-     "10-30 02:10"
-    ],
-    "Užsakymas patvirtintas: užsakymas N, suma: N.NEUR": [
-     2,
-     "10-30 06:51"
-    ],
-    "WordPress database error Duplicate entry 'N-N-N-puslapis-/gamintojas/animonda/?utm_source=google&u...' for key 'vienas' for query INSERT INTO `gajN_ps": [
+    "WordPress database error Duplicate entry 'N-N-N-puslapis-/?route=productmanufacturerproduct&manufa...' for key 'vienas' for query INSERT INTO `gajN_ps": [
      1,
-     "10-30 02:10"
+     "10-29 02:10"
     ],
-    "WordPress database error Duplicate entry 'N-N-N-puslapis-/gamintojas/farmina/?utm_source=google&ut...' for key 'vienas' for query INSERT INTO `gajN_ps": [
+    "WordPress database error Duplicate entry 'N-N-N-puslapis-/gamintojas/josera/?page=N&utm_source=goo...' for key 'vienas' for query INSERT INTO `gajN_ps": [
      1,
-     "10-30 02:10"
-    ],
-    "WordPress database error Duplicate entry 'N-N-N-puslapis-/product/naturalus-skanestai-sunims-elnio...' for key 'vienas' for query INSERT INTO `gajN_ps": [
-     1,
-     "10-30 02:10"
-    ],
-    "WordPress database error Duplicate entry 'N-N-N-puslapis-/suo-nuolat-kasosi-N-priezastys-ir-N-minu...' for key 'vienas' for query INSERT INTO `gajN_ps": [
-     1,
-     "10-30 02:10"
-    ],
-    "PHP Fatal error:  Uncaught Error: Call to undefined function is_product() in /home/gyvunaiN/domains/petshop.lt/public_html/wp-content/mu-plugins/petsh": [
-     1,
-     "10-30 04:20"
-    ],
-    "PHP Warning:  Array to string conversion in /home/gyvunaiN/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line N": [
-     1,
-     "10-30 06:32"
-    ],
-    "PHP Warning:  is_file(): open_basedir restriction in effect. File(/proc/loadavg) is not within the allowed path(s): (/home/gyvunaiN/:/tmp:/usr/share/p": [
-     1,
-     "10-30 08:24"
+     "10-29 02:10"
     ]
    },
-   "d29": 18,
-   "d30": 0,
-   "fatal": 1
+   "d29": 57,
+   "d30": 19,
+   "fatal": 2
   },
   "mu_md5": {
    "petshop-botu-sargas.php": "3c39cbdb 09-27 14:07",
@@ -1418,8 +1545,8 @@
    "petshop-cf-ip.php": "08213560 09-27 13:00"
   },
   "heartbeat": 200,
-  "laikas": "2026-10-30 08:24:24",
-  "trukme_s": 2.3
+  "laikas": "2026-10-30 08:26:22",
+  "trukme_s": 2.1
  },
  "4": {
   "v": "S1810a",
@@ -1611,7 +1738,7 @@
     "date_created_gmt": "2026-10-30 04:50:04"
    }
   ],
-  "laikas": "2026-10-30 08:24:32",
+  "laikas": "2026-10-30 08:26:29",
   "trukme_s": 0
  },
  "5": {
@@ -1643,12 +1770,12 @@
    ]
   ],
   "fatal": [],
-  "laikas": "2026-10-30 08:24:38",
+  "laikas": "2026-10-30 08:26:36",
   "trukme_s": 0
  },
- "v": "dep-062301",
+ "v": "dep-062458",
  "kurimas": 200,
- "sid": 7585,
+ "sid": 7586,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
