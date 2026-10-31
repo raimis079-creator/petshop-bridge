@@ -1,0 +1,79 @@
+{
+ "1": {
+  "v": "S1813l2",
+  "u": [
+   {
+    "id": "1799",
+    "job_key": "post_purchase_14d:36872",
+    "flow": "post_purchase_14d",
+    "status": "uncertain",
+    "recipient_email": "romukv@gmail.com",
+    "recipient_user_id": "5985",
+    "provider": "sender",
+    "pmid": "",
+    "attempts": "1",
+    "last_error": "cURL error 28: Connection timed out after 10001 milliseconds [10006 ms]",
+    "error_message": "cURL error 28: Connection timed out after 10001 milliseconds [10006 ms]",
+    "block_reason": null,
+    "skip_reason": null,
+    "scheduled_at": "2026-10-29 14:06:40",
+    "sent_at": null,
+    "created_at": "2026-10-17 14:39:36",
+    "updated_at": "2026-10-29 14:08:54",
+    "decision_at": "2026-10-29 14:08:54",
+    "subj": "Ankstesnį užsakymą galite pakartoti",
+    "ctx": "{\"order_id\":36872}"
+   }
+  ],
+  "tas_pats": [
+   [
+    {
+     "id": "1799",
+     "flow": "post_purchase_14d",
+     "status": "uncertain",
+     "sent_at": null,
+     "created_at": "2026-10-17 14:39:36"
+    },
+    {
+     "id": "1798",
+     "flow": "post_purchase_7d",
+     "status": "sent",
+     "sent_at": "2026-10-22 14:08:53",
+     "created_at": "2026-10-17 14:39:36"
+    },
+    {
+     "id": "1797",
+     "flow": "post_purchase_2d",
+     "status": "sent",
+     "sent_at": "2026-10-17 14:43:40",
+     "created_at": "2026-10-17 14:39:36"
+    },
+    {
+     "id": "1457",
+     "flow": "consent_changed",
+     "status": "sent",
+     "sent_at": "2026-10-10 06:53:46",
+     "created_at": "2026-10-10 06:53:35"
+    }
+   ]
+  ],
+  "sender_sub": [
+   {
+    "code": 200,
+    "status": {
+     "email": "active",
+     "temail": "active"
+    },
+    "unsub": null,
+    "bounced": null
+   }
+  ]
+ },
+ "v": "dep-080054",
+ "kurimas": 200,
+ "sid": 7603,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
