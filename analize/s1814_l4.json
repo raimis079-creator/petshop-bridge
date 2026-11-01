@@ -1,0 +1,40 @@
+{
+ "1": {
+  "v": "S1814l4",
+  "p18071": "Josera Kitten Duck begrūdis konservuotas pašaras jaunoms katėms su antiena, 200 g",
+  "p_stock": "instock",
+  "ar_uzsakyme": "1",
+  "kiti_uzs_su_18071": [
+   {
+    "order_id": "37394"
+   }
+  ],
+  "dvigubi_7d": [
+   {
+    "user_id": "5317",
+    "cart_id": "c_2f2cdf14e07886085f1075714d614df0",
+    "status": "abandoned",
+    "converted_order_id": "36965"
+   },
+   {
+    "user_id": "5976",
+    "cart_id": "c_f118128e145bb751fccdc8bb8832c135",
+    "status": "abandoned",
+    "converted_order_id": "36977"
+   },
+   {
+    "user_id": "6054",
+    "cart_id": "c_845f84206b37b6fb1fdc818398822ad2",
+    "status": "abandoned",
+    "converted_order_id": "37394"
+   }
+  ]
+ },
+ "v": "dep-163143",
+ "kurimas": 200,
+ "sid": 7613,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
