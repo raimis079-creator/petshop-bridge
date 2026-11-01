@@ -1,0 +1,105 @@
+{
+ "1": {
+  "v": "S1814l",
+  "uncertain": [
+   {
+    "id": "2462",
+    "job_key": "cart_abandoned:c_845f84206b37b6fb1fdc818398822ad2:stage2",
+    "flow": "cart_abandoned_2",
+    "status": "uncertain",
+    "em": "birute@bazilius.lt",
+    "uid": "6054",
+    "ctx": "{\"cart_id\":\"c_845f84206b37b6fb1fdc818398822ad2\",\"recovery_url\":\"https:\\/\\/petshop.lt\\/atkurti-krepseli\\/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoiY2FydF9yZWNvdmVyeSIsInN1YmplY3RfaWQiOjAsInJlc291cmNlX2lkIjoiY",
+    "attempts": "1",
+    "last_error": "cURL error 52: Empty reply from server [15081 ms]",
+    "decision_at": "2026-11-01 15:14:10",
+    "updated_at": "2026-11-01 15:14:10",
+    "created_at": "2026-11-01 15:09:44",
+    "subj": "Jūsų krepšelis dar laukia",
+    "kiti": [
+     {
+      "id": "2462",
+      "flow": "cart_abandoned_2",
+      "status": "uncertain",
+      "sent_at": null,
+      "clicked_at": null
+     },
+     {
+      "id": "2432",
+      "flow": "cart_abandoned",
+      "status": "sent",
+      "sent_at": "2026-10-31 15:08:45",
+      "clicked_at": "2026-10-31 18:23:30"
+     }
+    ],
+    "uzs_po": [
+     {
+      "id": "37394",
+      "status": "wc-processing",
+      "total_amount": "137.55000000",
+      "date_created_gmt": "2026-10-31 13:47:24"
+     }
+    ]
+   },
+   {
+    "id": "1799",
+    "job_key": "post_purchase_14d:36872",
+    "flow": "post_purchase_14d",
+    "status": "uncertain",
+    "em": "romukv@gmail.com",
+    "uid": "5985",
+    "ctx": "{\"order_id\":36872}",
+    "attempts": "1",
+    "last_error": "cURL error 28: Connection timed out after 10001 milliseconds [10006 ms]",
+    "decision_at": "2026-10-29 14:08:54",
+    "updated_at": "2026-10-29 14:08:54",
+    "created_at": "2026-10-17 14:39:36",
+    "subj": "Ankstesnį užsakymą galite pakartoti",
+    "kiti": [
+     {
+      "id": "1799",
+      "flow": "post_purchase_14d",
+      "status": "uncertain",
+      "sent_at": null,
+      "clicked_at": null
+     },
+     {
+      "id": "1798",
+      "flow": "post_purchase_7d",
+      "status": "sent",
+      "sent_at": "2026-10-22 14:08:53",
+      "clicked_at": "2026-10-22 17:51:15"
+     },
+     {
+      "id": "1797",
+      "flow": "post_purchase_2d",
+      "status": "sent",
+      "sent_at": "2026-10-17 14:43:40",
+      "clicked_at": null
+     },
+     {
+      "id": "1457",
+      "flow": "consent_changed",
+      "status": "sent",
+      "sent_at": "2026-10-10 06:53:46",
+      "clicked_at": null
+     }
+    ],
+    "uzs_po": []
+   }
+  ],
+  "timeout_7d": [
+   {
+    "d": "2026-10-29",
+    "n": "1"
+   }
+  ]
+ },
+ "v": "dep-162542",
+ "kurimas": 200,
+ "sid": 7609,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
