@@ -1,0 +1,143 @@
+{
+ "1": {
+  "v": "S1814l3",
+  "cols": [
+   "id",
+   "cart_id",
+   "session_key",
+   "user_id",
+   "email",
+   "email_source",
+   "last_cart_activity_at",
+   "cart_hash",
+   "snapshot_json",
+   "snapshot_version",
+   "status",
+   "status_changed_at",
+   "converted_order_id",
+   "created_at",
+   "updated_at"
+  ],
+  "cart": [
+   {
+    "id": "32288",
+    "cart_id": "c_2647eae955bd92761e00e64a9776d463",
+    "session_key": "6054",
+    "user_id": "6054",
+    "email": "birute@bazilius.lt",
+    "email_source": "account",
+    "last_cart_activity_at": "2026-10-31 13:48:58",
+    "cart_hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4",
+    "snapshot_json": "[]",
+    "snapshot_version": "1",
+    "status": "converted",
+    "status_changed_at": "2026-10-31 13:47:25",
+    "converted_order_id": "37394",
+    "created_at": "2026-10-31 13:01:35",
+    "updated_at": "2026-10-31 13:49:48"
+   },
+   {
+    "id": "32287",
+    "cart_id": "c_845f84206b37b6fb1fdc818398822ad2",
+    "session_key": "6054",
+    "user_id": "6054",
+    "email": "birute@bazilius.lt",
+    "email_source": "account",
+    "last_cart_activity_at": "2026-10-31 13:01:13",
+    "cart_hash": "ff0ab80a7edce0aaba92b56edd329d999cf4aece",
+    "snapshot_json": "[{\"product_id\":18071,\"variation_id\":0,\"quantity\":1,\"variation\":[],\"item_data\":[]}]",
+    "snapshot_version": "1",
+    "status": "abandoned",
+    "status_changed_at": "2026-10-31 15:04:51",
+    "converted_order_id": null,
+    "created_at": "2026-10-31 13:01:13",
+    "updated_at": "2026-10-31 15:04:51"
+   }
+  ],
+  "uzs_items": [
+   {
+    "order_item_name": "Josera Kitten Duck begrūdis konservuotas pašaras jaunoms katėms su antiena, 200 g"
+   },
+   {
+    "order_item_name": "Josera Kitten Turkey begrūdis konservuotas pašaras jaunoms katėms su kalakutiena, 200 g"
+   },
+   {
+    "order_item_name": "Josera Kitten Salmon konservuotas pašaras kačiukams su lašiša, 85g"
+   },
+   {
+    "order_item_name": "Josera Kitten Duck konservuotas pašaras kačiukams su antiena, 85g"
+   },
+   {
+    "order_item_name": "2 vnt. Josera Kitten grainfree 2 kg - begrūdis sausas maistas kačiukams"
+   },
+   {
+    "order_item_name": "Josera Kitten 2 kg - sausas maistas kačiukams"
+   },
+   {
+    "order_item_name": "Josera konservuotas pašaras kačiukams, 85g"
+   },
+   {
+    "order_item_name": "Expertus Tofu kraikas katėms, žaliosios arbatos kvapo, 6l (2,6kg)"
+   },
+   {
+    "order_item_name": "Expertus Tofu kraikas katėms,  levandų kvapo, 6l (2,6kg)"
+   },
+   {
+    "order_item_name": "Kraikas katėms TOFU BeloCat, žaliosios arbatos kvapo, 6 l (2,5 kg), 2 mm granulės"
+   },
+   {
+    "order_item_name": "Churu kreminis skanėstas kačiukams su vištiena, 4vnt"
+   },
+   {
+    "order_item_name": "Churu Kitten su tunu - kreminis skanėstas kačiukams, 4 x 14 g"
+   },
+   {
+    "order_item_name": "GimCat skanėstai katėms - dantų priežiūrai - Nutri Pockets Dental Poultry, 60 g"
+   },
+   {
+    "order_item_name": "Josera Kitten Chicken begrūdis konservuotas pašaras jaunoms katėms su vištiena, 200 g"
+   },
+   {
+    "order_item_name": "Žaislas katei - Prisukama pelytė, 7 cm"
+   }
+  ],
+  "jobs": [
+   {
+    "id": "2432",
+    "flow": "cart_abandoned",
+    "status": "sent",
+    "created_at": "2026-10-31 15:04:51",
+    "scheduled_at": "2026-10-31 15:04:51",
+    "sent_at": "2026-10-31 15:08:45",
+    "clicked_at": "2026-10-31 18:23:30",
+    "updated_at": "2026-10-31 15:08:45"
+   },
+   {
+    "id": "2462",
+    "flow": "cart_abandoned_2",
+    "status": "uncertain",
+    "created_at": "2026-11-01 15:09:44",
+    "scheduled_at": "2026-11-01 15:09:44",
+    "sent_at": null,
+    "clicked_at": null,
+    "updated_at": "2026-11-01 15:14:10"
+   }
+  ],
+  "now_db": "2026-11-01 18:31:17",
+  "now_php": "2026-11-01 18:31:17",
+  "now_utc": "2026-11-01 16:31:17",
+  "order": {
+   "id": "37394",
+   "date_created_gmt": "2026-10-31 13:47:24",
+   "status": "wc-processing",
+   "customer_id": "6054"
+  }
+ },
+ "v": "dep-163012",
+ "kurimas": 200,
+ "sid": 7612,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
