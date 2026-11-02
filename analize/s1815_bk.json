@@ -1,21 +1,21 @@
 {
- "4": {
+ "5": {
   "v": "S1815bk",
-  "faze": "4",
+  "faze": "5",
   "md5": "c2eb333570d828fad6e061a3c39761e9",
   "dydis": 20925,
   "old_rasta": 0,
   "old2_rasta": 1,
   "new_jau": true,
-  "raktas_rastas": true,
-  "trukme_s": 42.4,
-  "http": 200,
-  "atsakymas": "08:29:00 aplinka OK · lentelių 229 (InnoDB 229, MyISAM 0)\n08:29:00 DB gyvunai2_nbpe1 @ localhost · koduotė utf8mb4 · laisva 408.5 GB\n08:29:11 InnoDB 229 lentelės (consistent snapshot)\n08:29:11 MyISAM/kitos 0 lentelės (be globalaus LOCK)\n08:29:11 DB eksportas: 229 lentelių, 1,598,352 eilučių, 40.27 MB suspausta\n08:29:12 kodas: 619 failų (mu-plugins, petshop-core, flatsome-child)\n08:29:12 tar: 72.45 MB\n08:29:14 gzip: 49.49 MB\n08:29:14 šifruota (AES-256-CBC + HMAC-SHA256): 49.49 MB\n08:29:42 įkelta: petshop-backups/2026/11/petshop-2026-11-02_082900.tar.gz.enc · 49.49 MB · SHA-1 ir dydis patvirtinti\n08:29:42 BAIGTA sėkmingai per 42.4 s\n",
-  "state": "{\n    \"last_result\": \"OK\",\n    \"last_run\": \"2026-11-02T08:29:42+00:00\",\n    \"file\": \"petshop-backups\\/2026\\/11\\/petshop-2026-11-02_082900.tar.gz.enc\",\n    \"bytes\": 51893078,\n    \"sha1\": \"b140ce0e780477c2286d187d9faacd7ac576a1f8\",\n    \"tables\": 229,\n    \"rows\": 1598352,\n    \"code_files\": 619,\n    \"duration_s\": 42.4\n}"
+  "istrinta": {
+   ".tmp-arch-2026-11-02_020002.tar.gz": true,
+   ".tmp-db-2026-11-02_020002.sql.gz": true
+  },
+  "liko_tmp": []
  },
- "v": "dep-082759",
+ "v": "dep-082959",
  "kurimas": 200,
- "sid": 7633,
+ "sid": 7634,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
