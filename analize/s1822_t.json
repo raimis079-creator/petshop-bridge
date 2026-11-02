@@ -1,0 +1,44 @@
+{
+ "1": {
+  "v": "S1822t",
+  "shots": [
+   {
+    "n": "s1822_d19_tel2",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{var c=document.querySelector('.ps-dk--d19').closest('.product-small');c.scrollIntoView();window.scrollBy(0,-80);return document.querySelector('.ps-dk--d19 .ps-dk__pv').innerText+' | '+Array.from(document.querySelectorAll('.ps-dk--d19 .ps-dk__ch')).map(b=>b.innerText).join(' / ')+' | '+c.querySelector('.product-title a, .name a').innerText})()"
+   },
+   {
+    "n": "s1822_d19_tel11b",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{document.querySelector('.ps-dk--d19 .ps-dk__ch[data-id=\"37472\"]').click();var c=document.querySelector('.ps-dk--d19').closest('.product-small');c.scrollIntoView();window.scrollBy(0,-80);return document.querySelector('.ps-dk--d19 .ps-dk__pv').innerText+' | '+c.querySelector('.product-title a, .name a').innerText})()"
+   }
+  ]
+ },
+ "v": "dep-213823",
+ "kurimas": 200,
+ "sid": 7776,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1822_d19_tel2": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+   "title": "Konservai šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": "nuo 1,15 € / vnt.\n30 vnt. – 34,49 € | 11 vnt. · 1,35 / 22 vnt. · 1,31 / 30 vnt. · 1,15 | Monge VetSolution Dog Wet Recovery 150g"
+  },
+  "s1822_d19_tel11b": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+   "title": "Konservai šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": "1,35 € / vnt.\n11 vnt. – 14,89 € | Monge VetSolution Dog Wet Recovery 150g"
+  }
+ }
+}
