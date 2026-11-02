@@ -2,11 +2,11 @@ process.env.NODE_TLS_REJECT_UNAUTHORIZED='0';
 const TOK=process.env.GH_TOKEN||''; const REPO=process.env.GH_REPO||'raimis079-creator/petshop-bridge';
 const WP=process.env.WP_URL||'https://dev.avesa.lt';
 const AUTH='Basic '+Buffer.from(process.env.WP_USER+':'+process.env.WP_APP_PASS).toString('base64');
-const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxODIydCBEMTkgdGVsZWZvbm8gc2hvdHMgKi8KYWRkX2FjdGlvbignd3BfbG9hZGVkJywgZnVuY3Rpb24oKXsKICBpZighaXNzZXQoJF9HRVRbJ3BzX3MxODIydCddKSkgcmV0dXJuOyAkdT1ob21lX3VybCgnL2thdGVnb3JpamEvc3VuaW1zL21haXN0YXMtc3VuaW1zL2tvbnNlcnZhaS1zdW5pbXMvJyk7CiAgJGV2PSIoKCk9Pnt2YXIgYz1kb2N1bWVudC5xdWVyeVNlbGVjdG9yKCcucHMtZGstLWQxOScpLmNsb3Nlc3QoJy5wcm9kdWN0LXNtYWxsJyk7Yy5zY3JvbGxJbnRvVmlldygpO3dpbmRvdy5zY3JvbGxCeSgwLC04MCk7cmV0dXJuIGRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJy5wcy1kay0tZDE5IC5wcy1ka19fcHYnKS5pbm5lclRleHQrJyB8ICcrQXJyYXkuZnJvbShkb2N1bWVudC5xdWVyeVNlbGVjdG9yQWxsKCcucHMtZGstLWQxOSAucHMtZGtfX2NoJykpLm1hcChiPT5iLmlubmVyVGV4dCkuam9pbignIC8gJykrJyB8ICcrYy5xdWVyeVNlbGVjdG9yKCcucHJvZHVjdC10aXRsZSBhLCAubmFtZSBhJykuaW5uZXJUZXh0fSkoKSI7CiAgJGV2Mj0iKCgpPT57ZG9jdW1lbnQucXVlcnlTZWxlY3RvcignLnBzLWRrLS1kMTkgLnBzLWRrX19jaFtkYXRhLWlkPVwiMzc0NzJcIl0nKS5jbGljaygpO3ZhciBjPWRvY3VtZW50LnF1ZXJ5U2VsZWN0b3IoJy5wcy1kay0tZDE5JykuY2xvc2VzdCgnLnByb2R1Y3Qtc21hbGwnKTtjLnNjcm9sbEludG9WaWV3KCk7d2luZG93LnNjcm9sbEJ5KDAsLTgwKTtyZXR1cm4gZG9jdW1lbnQucXVlcnlTZWxlY3RvcignLnBzLWRrLS1kMTkgLnBzLWRrX19wdicpLmlubmVyVGV4dCsnIHwgJytjLnF1ZXJ5U2VsZWN0b3IoJy5wcm9kdWN0LXRpdGxlIGEsIC5uYW1lIGEnKS5pbm5lclRleHR9KSgpIjsgJHI9Wyd2Jz0+J1MxODIydCcsJ3Nob3RzJz0+W1snbic9PidzMTgyMl9kMTlfdGVsMicsJ3UnPT4kdSwndyc9PjM5MCwnaCc9Pjg0NCwnZXZhbCc9PiRldl0sWyduJz0+J3MxODIyX2QxOV90ZWwxMWInLCd1Jz0+JHUsJ3cnPT4zOTAsJ2gnPT44NDQsJ2V2YWwnPT4kZXYyXV1dOwogIGhlYWRlcignQ29udGVudC1UeXBlOiBhcHBsaWNhdGlvbi9qc29uOyBjaGFyc2V0PXV0Zi04Jyk7IGVjaG8ganNvbl9lbmNvZGUoJHIsSlNPTl9VTkVTQ0FQRURfVU5JQ09ERSk7IGV4aXQ7Cn0sIDEpOwo=';
-const VER='dep-213823';
-const GKEY='ps_s1822t';
+const B64='PD9waHAKLyoqIFBsdWdpbiBOYW1lOiBURU1QIFBTIFMxODIydSBkeWR6aWFpIHJlY29uIChyZWFkLW9ubHkpICovCmFkZF9hY3Rpb24oJ3dwX2xvYWRlZCcsIGZ1bmN0aW9uKCl7CiAgaWYoIWlzc2V0KCRfR0VUWydwc19zMTgyMnUnXSkpIHJldHVybjsgJGY9V1BNVV9QTFVHSU5fRElSLicvcGV0c2hvcC1keWR6aWFpLnBocCc7CiAgaGVhZGVyKCdDb250ZW50LVR5cGU6IGFwcGxpY2F0aW9uL2pzb247IGNoYXJzZXQ9dXRmLTgnKTsgZWNobyBqc29uX2VuY29kZShbJ21kNSc9Pm1kNV9maWxlKCRmKSwnc3JjJz0+ZmlsZV9nZXRfY29udGVudHMoJGYpXSxKU09OX1VORVNDQVBFRF9VTklDT0RFKTsgZXhpdDsKfSwgMSk7Cg==';
+const VER='dep-215032';
+const GKEY='ps_s1822u';
 const PHASES=["1"];
-const OUT='analize/s1822_t.json';
+const OUT='analize/s1822_u.json';
 const DATA=[];
 const out={v:VER};
 const miegok=ms=>new Promise(r=>setTimeout(r,ms));
@@ -46,7 +46,7 @@ try{
       if(SH.cookies){ await ctx.addCookies(SH.cookies.map(c=>({name:c.name,value:c.value,domain:new URL(WP).hostname,path:'/',secure:true}))); }
       out.shots={};
       for(const s of SH.shots){ try{ const pg=await ctx.newPage(); const errs=[]; pg.on('pageerror',e=>errs.push('pageerror: '+String(e).slice(0,300))); pg.on('console',m=>{ if(m.type()==='error'||m.type()==='warning') errs.push(m.type()+': '+m.text().slice(0,300)); }); pg.on('response',r=>{ if(r.status()>=400) errs.push('http '+r.status()+' '+r.url().slice(0,120)); });
-          if(s.w) await pg.setViewportSize({width:s.w,height:s.h||900}); await pg.goto(s.u,{waitUntil:'load',timeout:90000}); await pg.waitForTimeout(800);
+          if(s.w) await pg.setViewportSize({width:s.w,height:s.h||900}); await pg.goto(s.u,{waitUntil:'networkidle',timeout:60000}); await pg.waitForTimeout(800);
           const res={}; if(s.click){ try{ await pg.click(s.click,{timeout:5000}); await pg.waitForTimeout(600); res.clicked=s.click; }catch(e){ res.click_err=String(e).slice(0,200); } }
           if(s.eval){ try{ res.eval=await pg.evaluate(s.eval); }catch(e){ res.eval_err=String(e).slice(0,200); } }
           const buf=await pg.screenshot({fullPage:!!s.full}); const st=await put('screenshots/'+s.n+'.png',buf,VER+' '+s.n); out.shots[s.n]=Object.assign({status:st,url:pg.url(),title:await pg.title(),errors:errs.slice(0,12)},res); await pg.close(); }catch(e){ out.shots[s.n]=String(e).slice(0,200); } }
