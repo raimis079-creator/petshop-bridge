@@ -1,0 +1,71 @@
+{
+ "1": {
+  "v": "S1815k2",
+  "naujausi": [
+   [
+    ".ps-watch-state.json",
+    "0MB",
+    "11-02 10:00"
+   ],
+   [
+    ".tmp-arch-2026-11-02_020002.tar.gz",
+    "49.4MB",
+    "11-02 04:00"
+   ],
+   [
+    ".tmp-db-2026-11-02_020002.sql.gz",
+    "40.2MB",
+    "11-02 04:00"
+   ],
+   [
+    ".ps-backup-state.json",
+    "0MB",
+    "11-01 04:00"
+   ],
+   [
+    "ps-backup.php",
+    "0MB",
+    "08-24 20:27"
+   ],
+   [
+    "ps-backup.php.bak_h256",
+    "0MB",
+    "08-24 20:27"
+   ],
+   [
+    "ps-backup-watch.php",
+    "0MB",
+    "08-04 11:08"
+   ],
+   [
+    ".b2creds.php",
+    "0MB",
+    "08-04 10:00"
+   ],
+   [
+    "ps-backup.php.bak_20260804-064640",
+    "0MB",
+    "08-04 09:46"
+   ]
+  ],
+  "viso": 9,
+  "fatal_7d": [
+   "[28-Oct-2026 13:43:30 UTC] PHP Fatal error:  Uncaught Error: Call to a member function get_name() on false in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:15",
+   "[29-Oct-2026 07:15:11 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-term-query.php on line 1176",
+   "[30-Oct-2026 02:20:09 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_product() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php:682",
+   "[30-Oct-2026 16:15:12 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php on line 655",
+   "[30-Oct-2026 16:15:12 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-mail-smtp/wp-mail-smtp.php on line 42",
+   "[31-Oct-2026 20:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php on line 655",
+   "[31-Oct-2026 20:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/sodium_compat/autoload-php7.php on line 27",
+   "[02-Nov-2026 08:01:38 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function shell_exec() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:8"
+  ],
+  "fatal_n": 13
+ },
+ "v": "dep-080332",
+ "kurimas": 200,
+ "sid": 7622,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
