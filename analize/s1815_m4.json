@@ -1,0 +1,49 @@
+{
+ "1": {
+  "v": "S1815m4",
+  "faze": "1",
+  "ext_cache": false,
+  "flush_runtime": true,
+  "wp_mem": "40M",
+  "wp_max": "256M",
+  "rez": {
+   "tikrinta": 1653,
+   "paslepta": 0,
+   "atidengta": 0
+  },
+  "sandeliai": [
+   "vf",
+   "zb"
+  ],
+  "pradzia_mb": 130,
+  "pikas_mb": 226,
+  "s": 5.4
+ },
+ "2": {
+  "v": "S1815m4",
+  "faze": "2",
+  "ext_cache": false,
+  "flush_runtime": true,
+  "wp_mem": "40M",
+  "wp_max": "256M",
+  "rez": {
+   "tikrinta": 1653,
+   "p": 0,
+   "a": 0
+  },
+  "sandeliai": [
+   "vf",
+   "zb"
+  ],
+  "pradzia_mb": 138,
+  "pikas_mb": 138,
+  "s": 3.1
+ },
+ "v": "dep-084617",
+ "kurimas": 200,
+ "sid": 7644,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
