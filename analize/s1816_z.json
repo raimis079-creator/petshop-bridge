@@ -13,11 +13,179 @@
     "n": "466"
    }
   ],
-  "kohorta": [],
-  "kohorta_kamp": [],
-  "pak_dienos": [],
-  "gyvunas": [],
-  "brendai_spalis": [],
+  "kohorta": [
+   {
+    "m": "2026-09",
+    "klientai": "46",
+    "pakartojo": "5",
+    "pak_uzs": "8",
+    "pak_kontr": "67",
+    "pak_per_google": "4",
+    "pak_nemokamai": "4"
+   },
+   {
+    "m": "2026-10",
+    "klientai": "99",
+    "pakartojo": "6",
+    "pak_uzs": "8",
+    "pak_kontr": "107",
+    "pak_per_google": "5",
+    "pak_nemokamai": "3"
+   }
+  ],
+  "kohorta_kamp": [
+   {
+    "c": "21472017542",
+    "klientai": "41",
+    "pakartojo": "4",
+    "pak_uzs": "6",
+    "pak_kontr": "61"
+   },
+   {
+    "c": "21472043669",
+    "klientai": "7",
+    "pakartojo": "1",
+    "pak_uzs": "3",
+    "pak_kontr": "24"
+   },
+   {
+    "c": "21565450990",
+    "klientai": "46",
+    "pakartojo": "1",
+    "pak_uzs": "1",
+    "pak_kontr": "6"
+   },
+   {
+    "c": "21565466377",
+    "klientai": "7",
+    "pakartojo": "1",
+    "pak_uzs": "2",
+    "pak_kontr": "16"
+   },
+   {
+    "c": "23346712074",
+    "klientai": "15",
+    "pakartojo": "2",
+    "pak_uzs": "2",
+    "pak_kontr": "36"
+   },
+   {
+    "c": "24297462605",
+    "klientai": "12",
+    "pakartojo": "1",
+    "pak_uzs": "1",
+    "pak_kontr": "14"
+   },
+   {
+    "c": "gclid_be_id",
+    "klientai": "17",
+    "pakartojo": "1",
+    "pak_uzs": "1",
+    "pak_kontr": "16"
+   }
+  ],
+  "pak_dienos": [
+   "11",
+   "13",
+   "27",
+   "27",
+   "21",
+   "5",
+   "8",
+   "11",
+   "6",
+   "8",
+   "14"
+  ],
+  "gyvunas": [
+   {
+    "m": "2026-09",
+    "gyvunas": "",
+    "uzs": "100",
+    "marza": "865"
+   },
+   {
+    "m": "2026-10",
+    "gyvunas": "",
+    "uzs": "169",
+    "marza": "1634"
+   }
+  ],
+  "brendai_spalis": [
+   {
+    "b": "exclusion",
+    "uzs": "38",
+    "eur": "1032",
+    "marza": "211"
+   },
+   {
+    "b": "animonda",
+    "uzs": "28",
+    "eur": "903",
+    "marza": "344"
+   },
+   {
+    "b": "josera",
+    "uzs": "25",
+    "eur": "661",
+    "marza": "114"
+   },
+   {
+    "b": "ambrosia",
+    "uzs": "11",
+    "eur": "535",
+    "marza": "157"
+   },
+   {
+    "b": "quattro",
+    "uzs": "12",
+    "eur": "433",
+    "marza": "87"
+   },
+   {
+    "b": "farmina",
+    "uzs": "6",
+    "eur": "290",
+    "marza": "66"
+   },
+   {
+    "b": "royal-canin",
+    "uzs": "3",
+    "eur": "226",
+    "marza": "29"
+   },
+   {
+    "b": "miamor",
+    "uzs": "11",
+    "eur": "210",
+    "marza": "79"
+   },
+   {
+    "b": "churu",
+    "uzs": "11",
+    "eur": "180",
+    "marza": "42"
+   },
+   {
+    "b": "romar",
+    "uzs": "12",
+    "eur": "136",
+    "marza": "40"
+   },
+   {
+    "b": "belocat",
+    "uzs": "5",
+    "eur": "120",
+    "marza": "7"
+   },
+   {
+    "b": "duvo",
+    "uzs": "12",
+    "eur": "110",
+    "marza": "43"
+   }
+  ],
+  "err": "",
   "pjuviai": [
    {
     "pjuvis": "irenginys",
@@ -359,9 +527,9 @@
    }
   ]
  },
- "v": "dep-091520",
+ "v": "dep-091652",
  "kurimas": 200,
- "sid": 7649,
+ "sid": 7650,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
