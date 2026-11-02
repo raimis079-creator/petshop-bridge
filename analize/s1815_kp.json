@@ -1,0 +1,89 @@
+{
+ "1": {
+  "v": "S1815kp",
+  "md5": "c8b9b0790578e194b85b074cf6ff035d",
+  "len": 6830,
+  "kodas": "<?php\n/**\n * Plugin Name: Petshop Krepšelio priminimai visiems\n * Description: S1768 (Raimio sprendimas 10-01, „daryk\" 10-11 12:06): krepšelio priminimai (cart_abandoned +2 val., cart_abandoned_2 +24 val.) siunčiami VISIEMS, ne tik turintiems rinkodaros sutikimą. Neišeina: paspaudę „Nebesiųsti priminimų\" / kasoje pažymėję „Nenoriu priminimų\" (ps_similar_optout, ps_consent_log), neveikiantys adresai (dispatch suppression), „tik transakciniai\". Apsauga: tam pačiam adresui to paties etapo — ne dažniau kaip 1 per 24 val. „Peržiūrėta prekė\" (browse_abandoned) lieka rinkodara. v1.1: svečių atsisakymas taikomas ir pakartojimo laiškams (refill_due, post_purchase_14d, win_back). Šablonai — mu-plugins/ps-sablonai/krepselis-1.php, krepselis-2.php (Raimio tekstai S1676, kita poraštė). Variklis (petshop-core) nekeistas. Išjungti: opcija ps_krepselio_priminimai_isjungta=1.\n * Version: 1.1\n * v1.1 (S1768b, Raimio „daryk\" 10-11 12:37): tas pats atsisakymo patikrinimas (paskyra + ps_consent_log) ir pakartojimo laiškams refill_due, post_purchase_14d, win_back — anksčiau svečių atsisakymas kasoje jiems nebuvo įskaitomas.\n */\nif ( ! defined( 'ABSPATH' ) ) { exit; }\n\nfinal class Petshop_Krepselio_Priminimai {\n\tconst V      = '1.1';\n\tconst FLOWS  = array( 'cart_abandoned', 'cart_abandoned_2' );\n\tconst PAKART = array( 'refill_due', 'post_purchase_14d', 'win_back' );\n\tconst TPL    = array( 'cart_abandoned' => 'krepselis-1.php', 'cart_abandoned_2' => 'krepselis-2.php' );\n\tconst PARAM  = 'ps_nebesiusti_priminimu';\n\n\tpublic static function init() {\n\t\tif ( get_option( 'ps_krepselio_priminimai_isjungta' ) ) { return; }\n\t\tadd_filter( 'petshop_email_flows', array( __CLASS__, 'flows' ), 30 );\n\t\tadd_filter( 'petshop_email_eligibility', array( __CLASS__, 'eligibility' ), 40, 5 );\n\t\tadd_filter( 'petshop_email_template_path', array( __CLASS__, 'kelias' ), 30, 3 );\n\t\tadd_action( 'init', array( __CLASS__, 'nuoroda' ), 4 );\n\t}\n\n\t/** cart_abandoned / cart_abandoned_2: marketing → service (sutikimo nebereikia). Taikoma naujiems įrašams. */\n\tpublic static function flows( $f ) {\n\t\tforeach ( self::FLOWS as $k ) {\n\t\t\tif ( isset( $f[ $k ] ) && is_array( $f[ $k ] ) ) { $f[ $k ]['class'] = 'service'; }\n\t\t}\n\t\treturn $f;\n\t}\n\n\t/** Atsisakymas + ne dažniau kaip 1 to paties etapo laiškas per 24 val. tam pačiam adresui. */\n\tpublic static function eligibility( $result, $flow, $flow_class, $email, $context = array() ) {\n\t\t$krep = in_array( $flow, self::FLOWS, true );\n\t\tif ( ! $krep && ! in_array( $flow, self::PAKART, true ) ) { return $result; }\n\t\tif ( is_array( $result ) && isset( $result['allowed'] ) && ! $result['allowed'] ) { return $result; }\n\t\t$uid = ( is_array( $context ) && ! empty( $context['user_id'] ) ) ? (int) $context['user_id'] : 0;\n\t\tif ( self::atsisake( $email, $uid ) ) {\n\t\t\treturn array( 'allowed' => false, 'reason' => 'similar_optout', 'terminal' => true );\n\t\t}\n\t\tif ( ! $krep ) { return $result; }\n\t\tif ( self::jau_siusta_24h( $flow, $email ) ) {\n\t\t\treturn array( 'allowed' => false, 'reason' => 'krepselis_jau_siustas_24h', 'terminal' => true );\n\t\t}\n\t\treturn $result;\n\t}\n\n\t/** Atsisakė priminimų: paskyros žymė arba paskutinis ps_consent_log įrašas (svečiams — tik jis). */\n\tpublic static function atsisake( $email, $uid = 0 ) {\n\t\tglobal $wpdb;\n\t\t$email = strtolower( trim( (string) $email ) );\n\t\tif ( '' === $email ) { return false; }\n\t\t$u = $uid ? get_user_by( 'id', $uid ) : get_user_by( 'email', $email );\n\t\tif ( $u && '1' === (string) get_user_meta( $u->ID, 'ps_similar_optout', true ) ) { return true; }\n\t\t$t = $wpdb->prefix . 'ps_consent_log';\n\t\t$v = $wpdb->get_var( $wpdb->prepare(\n\t\t\t\"SELECT to_value FROM $t WHERE email = %s AND field = 'similar_products_optout' ORDER BY changed_at DESC LIMIT 1\",\n\t\t\t$email ) );\n\t\treturn '1' === (string) $v;\n\t}\n\n\tpublic static function jau_siusta_24h( $flow, $email ) {\n\t\tglobal $wpdb;\n\t\t$t = $wpdb->prefix . 'ps_email_jobs';\n\t\t$n = (int) $wpdb->get_var( $wpdb->prepare(\n\t\t\t\"SELECT COUNT(*) FROM $t WHERE flow = %s AND LOWER(recipient_email) = %s AND status = 'sent' AND sent_at >= %s\",\n\t\t\t$flow, strtolower( trim( (string) $email ) ), gmdate( 'Y-m-d H:i:s', time() - DAY_IN_SECONDS ) ) );\n\t\treturn $n > 0;\n\t}\n\n\t/** Savas šablonas, jei Raimis laiškų redaktoriuje nepaskelbė savo turinio (tada paliekam jo). */\n\tpublic static function kelias( $file, $flow, $slug ) {\n\t\tif ( ! isset( self::TPL[ $flow ] ) ) { return $file; }\n\t\t$core = defined( 'PETSHOP_CORE_DIR' ) ? PETSHOP_CORE_DIR . 'templates/emails/' . $slug . '.php' : '';\n\t\tif ( $core && wp_normalize_path( $file ) !== wp_normalize_path( $core ) ) { return $file; }\n\t\t$mano = WPMU_PLUGIN_DIR . '/ps-sablonai/' . self::TPL[ $flow ];\n\t\treturn file_exists( $mano ) ? $mano : $file;\n\t}\n\n\tpublic static function optout_url( $email ) {\n\t\t$email = strtolower( trim( (string) $email ) );\n\t\tif ( '' === $email || ! class_exists( 'Petshop_Sutikimai' ) ) { return ''; }\n\t\treturn add_query_arg( array( self::PARAM => rawurlencode( $email ), 'z' => Petshop_Sutikimai::zenklas( $email ) ), home_url( '/' ) );\n\t}\n\n\t/** /?ps_nebesiusti_priminimu=<el. paštas>&z=<hmac> → ps_similar_optout=1 (tas pats mechanizmas kaip pakartojimo laiškuose). */\n\tpublic static function nuoroda() {\n\t\tif ( ! isset( $_GET[ self::PARAM ], $_GET['z'] ) || ! class_exists( 'Petshop_Sutikimai' ) ) { return; } // phpcs:ignore\n\t\t$email = strtolower( trim( rawurldecode( (string) wp_unslash( $_GET[ self::PARAM ] ) ) ) ); // phpcs:ignore\n\t\tif ( ! is_email( $email ) || ! hash_equals( Petshop_Sutikimai::zenklas( $email ), (string) $_GET['z'] ) ) { // phpcs:ignore\n\t\t\twp_die( 'Nuoroda negalioja.', '', array( 'response' => 403 ) );\n\t\t}\n\t\tnocache_headers();\n\t\tPetshop_Sutikimai::nustatyti( $email, 0, 1, 'email_link_krepselis' );\n\t\twp_die( '<p style=\"font:16px/1.5 sans-serif\">Priminimų daugiau nesiųsime.<br>Užsakymų laiškus (patvirtinimą, siuntos informaciją) gausite kaip įprasta.</p>', 'petshop.lt', array( 'response' => 200 ) );\n\t}\n\n\t/** Poraštė šablonams (vietoj Petshop_Email_Layout::close, kuri „service\" klasei nuorodos nerodo). */\n\tpublic static function poraste( $email ) {\n\t\t$m   = defined( 'Petshop_Email_Layout::C_MUTED' ) ? Petshop_Email_Layout::C_MUTED : '#7A867C';\n\t\t$out = Petshop_Email_Layout::divider();\n\t\t$out .= '<tr><td style=\"font-size:12px;line-height:1.6;color:' . $m . ';padding-top:16px;\">';\n\t\t$out .= 'UAB Avesa, Liucionių g. 46, Liucionys, LT-15166<br>';\n\t\t$out .= 'Gavote šį laišką, nes pradėjote užsakymą petshop.lt, bet jo neužbaigėte.<br>';\n\t\t$u = self::optout_url( $email );\n\t\tif ( $u ) {\n\t\t\t$out .= '<a href=\"' . esc_url( $u ) . '\" style=\"color:' . $m . ';\">Nebesiųsti priminimų</a>';\n\t\t}\n\t\t$out .= '</td></tr>';\n\t\t$out .= '</table></td></tr></table></body></html>';\n\t\treturn $out;\n\t}\n}\nPetshop_Krepselio_Priminimai::init();\n",
+  "hits": {
+   "/mu-plugins/petshop-analitika-langas.php": {
+    "converted": 5,
+    "cart_abandoned": 2
+   },
+   "/mu-plugins/petshop-anketos-ataskaita.php": {
+    "converted": 3
+   },
+   "/mu-plugins/petshop-av-expiry.php": {
+    "naujesn": 1
+   },
+   "/mu-plugins/petshop-bacs-priminimas.php": {
+    "naujesn": 10,
+    "cart_abandoned": 4
+   },
+   "/mu-plugins/petshop-dim-klientai.php": {
+    "naujesn": 1
+   },
+   "/mu-plugins/petshop-krepselio-priminimai.php": {
+    "cart_abandoned": 8
+   },
+   "/mu-plugins/petshop-laiskai.php": {
+    "cart_abandoned": 2
+   },
+   "/mu-plugins/petshop-laisku-nuotraukos.php": {
+    "naujesn": 1
+   },
+   "/mu-plugins/petshop-langai-admin.php": {
+    "cart_abandoned": 2
+   },
+   "/mu-plugins/petshop-laukai.php": {
+    "naujesn": 1
+   },
+   "/mu-plugins/petshop-lenteliu-valymas.php": {
+    "converted": 2
+   },
+   "/mu-plugins/petshop-perziuru-priminimas.php": {
+    "converted": 3
+   },
+   "/mu-plugins/petshop-rezultatai.php": {
+    "cart_abandoned": 2
+   },
+   "/plugins/petshop-core/includes/class-account-company.php": {
+    "naujesn": 1
+   },
+   "/plugins/petshop-core/includes/class-cart-abandonment.php": {
+    "converted": 16,
+    "cart_abandoned": 10
+   },
+   "/plugins/petshop-core/includes/class-cart-recovery.php": {
+    "cart_abandoned": 2
+   },
+   "/plugins/petshop-core/includes/class-cart-tracker.php": {
+    "converted": 3
+   },
+   "/plugins/petshop-core/includes/class-email-dispatch.php": {
+    "cart_abandoned": 3
+   },
+   "/plugins/petshop-core/includes/class-event-emitters.php": {
+    "cart_abandoned": 1
+   },
+   "/plugins/petshop-core/includes/class-event-registry.php": {
+    "cart_abandoned": 2
+   },
+   "/plugins/petshop-core/includes/class-plan-attribution.php": {
+    "converted": 2
+   },
+   "/plugins/petshop-core/templates/emails/cart-abandoned-1.php": {
+    "cart_abandoned": 1
+   },
+   "/plugins/petshop-core/templates/emails/cart-abandoned-2.php": {
+    "cart_abandoned": 2
+   }
+  }
+ },
+ "v": "dep-083137",
+ "kurimas": 200,
+ "sid": 7635,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
