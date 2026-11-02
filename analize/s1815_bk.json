@@ -1,33 +1,21 @@
 {
- "3": {
+ "4": {
   "v": "S1815bk",
-  "faze": "3",
-  "md5": "fc3df6f26be800054c43cf6242ff7fc4",
-  "dydis": 19237,
-  "old_rasta": 1,
-  "old2_rasta": 1,
-  "new_jau": false,
-  "po_md5": "f64c412dc8f880ede294d7bd4f2440cd",
-  "bak_md5": "fc3df6f26be800054c43cf6242ff7fc4",
-  "bak_arch": false
- },
- "6": {
-  "v": "S1815bk",
-  "faze": "6",
+  "faze": "4",
   "md5": "f64c412dc8f880ede294d7bd4f2440cd",
   "dydis": 20503,
   "old_rasta": 0,
   "old2_rasta": 1,
   "new_jau": true,
   "raktas_rastas": true,
-  "trukme_s": 0.2,
+  "trukme_s": 16.6,
   "http": 200,
-  "atsakymas": "08:23:55 aplinka OK · lentelių 229 (InnoDB 229, MyISAM 0)\n08:23:55 DB gyvunai2_nbpe1 @ localhost · koduotė utf8mb4 · laisva 408.5 GB\n08:23:55 SELFTEST baigtas — viskas paruošta.\n",
-  "state": "{\n    \"last_result\": \"OK\",\n    \"last_run\": \"2026-11-01T02:00:28+00:00\",\n    \"file\": \"petshop-backups\\/2026\\/11\\/petshop-2026-11-01_020001.tar.gz.enc\",\n    \"bytes\": 51653126,\n    \"sha1\": \"e5254113e3614e0f710aff863b48bc25f9ac4f27\",\n    \"tables\": 229,\n    \"rows\": 1597399,\n    \"code_files\": 619,\n    \"duration_s\": 26.6\n}"
+  "atsakymas": "08:25:19 aplinka OK · lentelių 229 (InnoDB 229, MyISAM 0)\n08:25:19 DB gyvunai2_nbpe1 @ localhost · koduotė utf8mb4 · laisva 408.5 GB\n08:25:31 InnoDB 229 lentelės (consistent snapshot)\n08:25:31 MyISAM/kitos 0 lentelės (be globalaus LOCK)\n08:25:31 DB eksportas: 229 lentelių, 1,598,217 eilučių, 40.27 MB suspausta\n08:25:32 kodas: 619 failų (mu-plugins, petshop-core, flatsome-child)\n08:25:32 tar: 72.44 MB\n08:25:34 gzip: 49.48 MB\n08:25:35 šifruota (AES-256-CBC + HMAC-SHA256): 49.48 MB\n08:25:36 KLAIDA: įkėlimas: HTTP 503 service_unavailable no tomes available\n",
+  "state": "{\n    \"last_result\": \"FAIL\",\n    \"last_run\": \"2026-11-02T08:25:36+00:00\",\n    \"error\": \"\\u012fk\\u0117limas: HTTP 503 service_unavailable no tomes available\"\n}"
  },
- "v": "dep-082229",
+ "v": "dep-082412",
  "kurimas": 200,
- "sid": 7630,
+ "sid": 7631,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
