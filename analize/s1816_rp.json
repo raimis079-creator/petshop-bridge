@@ -1,22 +1,78 @@
 {
- "v": "dep-124631",
- "kurimas": 200,
- "sid": 7670,
- "sa_push": {
-  "status": 404,
-  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
- },
- "L": {
+ "2": {
   "v": "S1816rp",
-  "faze": "L",
+  "faze": "2",
   "md5": "9e4320f80ad2b8aaa62d6d2078dd799e",
   "rasta": [
    1,
    1
   ],
   "jau": false,
-  "lint": "OK",
-  "klase": true,
-  "metodas": true
+  "po_md5": "91709a3f5adae5e14b998f07a62f69c8",
+  "bak": "9e4320f80ad2b8aaa62d6d2078dd799e"
+ },
+ "3": {
+  "v": "S1816rp",
+  "faze": "3",
+  "md5": "91709a3f5adae5e14b998f07a62f69c8",
+  "rasta": [
+   1,
+   0
+  ],
+  "jau": true,
+  "s": 1.6,
+  "n": 20,
+  "nauja": {
+   "kodas": "bestseleriai_likutis",
+   "lygis": "raudona",
+   "tekstas": "Bestseleriai (top 150, AV) be likučio: 12 — #19613 Animonda Carny Kitten – konservai  (9 užs.); #19609 Animonda Carny Kitten – konservai  (7 užs.); #19387 Animonda Vom Feinsten Adult with T (7 užs.); #19399 Animonda Vom Feinsten Adult with T (7 užs.); #17493 Miamor Super premium konservai kat (6 užs.); #19396 Animonda Vom Feinsten Adult with T (6 užs.); …"
+  },
+  "raudonos": [
+   {
+    "kodas": "bestseleriai_likutis",
+    "lygis": "raudona",
+    "tekstas": "Bestseleriai (top 150, AV) be likučio: 12 — #19613 Animonda Carny Kitten – konservai  (9 užs.); #19609 Animonda Carny Kitten – konservai  (7 užs.); #19387 Animonda Vom Feinsten Adult with T (7 užs.); #19399 Animonda Vom Feinsten Adult with T (7 užs.); #17493 Miamor Super premium konservai kat (6 užs.); #19396 Animonda Vom Feinsten Adult with T (6 užs.); …"
+   },
+   {
+    "kodas": "neissiusti",
+    "lygis": "raudona",
+    "tekstas": "Apmokėti > 2 d. be siuntos: 10"
+   },
+   {
+    "kodas": "dropship_sla",
+    "lygis": "raudona",
+    "tekstas": "Dropship tiekėjas vėluoja > 2 darbo d.: 1 užsak."
+   }
+  ],
+  "opt": {
+   "laikas": "2026-11-02 03:30:03",
+   "raudonos": [
+    {
+     "kodas": "neissiusti",
+     "lygis": "raudona",
+     "tekstas": "Apmokėti > 2 d. be siuntos: 9"
+    },
+    {
+     "kodas": "dropship_sla",
+     "lygis": "raudona",
+     "tekstas": "Dropship tiekėjas vėluoja > 2 darbo d.: 1 užsak."
+    },
+    {
+     "kodas": "laiskai",
+     "lygis": "raudona",
+     "tekstas": "Laiškai 24 val.: išsiųsta 18, nepavyko 0; NEAIŠKU ar išėjo: 2 (tikrinti Sender žurnale)"
+    }
+   ],
+   "geltonos": [],
+   "zalios": 16,
+   "viso": 19
+  }
+ },
+ "v": "dep-124757",
+ "kurimas": 200,
+ "sid": 7671,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  }
 }
