@@ -1,0 +1,46 @@
+{
+ "1": {
+  "v": "S1822r",
+  "shots": [
+   {
+    "n": "s1822_d19_tel",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{var c=document.querySelector('.ps-dk--d19').closest('.product-small');c.scrollIntoView();window.scrollBy(0,-80);return document.querySelector('.ps-dk--d19 .ps-dk__pv').innerText+' | '+Array.from(document.querySelectorAll('.ps-dk--d19 .ps-dk__ch')).map(b=>b.innerText).join(' / ')+' | '+c.querySelector('.product-title a, .name a').innerText})()"
+   },
+   {
+    "n": "s1822_d19_tel11",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+    "w": 390,
+    "h": 844,
+    "click": ".ps-dk--d19 .ps-dk__ch[data-id=\"37472\"]",
+    "eval": "(()=>{var c=document.querySelector('.ps-dk--d19').closest('.product-small');c.scrollIntoView();window.scrollBy(0,-80);return document.querySelector('.ps-dk--d19 .ps-dk__pv').innerText+' | '+Array.from(document.querySelectorAll('.ps-dk--d19 .ps-dk__ch')).map(b=>b.innerText).join(' / ')+' | '+c.querySelector('.product-title a, .name a').innerText})()"
+   }
+  ]
+ },
+ "v": "dep-213405",
+ "kurimas": 200,
+ "sid": 7774,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1822_d19_tel": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+   "title": "Konservai šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": "nuo 1,15 € / vnt.30 vnt. – 34,49 € | 11 vnt. · 1,35 / 22 vnt. · 1,31 / 30 vnt. · 1,15 | Monge VetSolution Dog Wet Recovery 150g"
+  },
+  "s1822_d19_tel11": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+   "title": "Konservai šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('.ps-dk--d19 .ps-dk__ch[data-id=\"37472\"]')\n    - locator resolved to <button type=\"button\" data-id=\"37472\" class=\"p",
+   "eval": "nuo 1,15 € / vnt.30 vnt. – 34,49 € | 11 vnt. · 1,35 / 22 vnt. · 1,31 / 30 vnt. · 1,15 | Monge VetSolution Dog Wet Recovery 150g"
+  }
+ }
+}
