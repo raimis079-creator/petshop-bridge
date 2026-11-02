@@ -1,0 +1,15 @@
+{
+ "v": "dep-185043",
+ "kurimas": 200,
+ "sid": 7733,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "P7": {
+  "v": "S1821b",
+  "faze": "P7",
+  "laikas": "2026-11-02 20:51:48",
+  "FATAL": "lentelė: Duplicate entry 'fe14ccac3e06b32c769cc7d04ce0f4484c0b7a35bc7f02edf3cd4d76cd57d835' for key 'uq_checksum' @21"
+ }
+}
