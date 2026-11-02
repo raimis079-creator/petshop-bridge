@@ -1,26 +1,7 @@
 {
- "1": {
+ "2": {
   "v": "S1816ao",
-  "faze": "1",
-  "md5": "4e5b35c43b0170b2ef34ce266c0c1a05",
-  "rasta": [
-   1,
-   1,
-   1,
-   1
-  ],
-  "jau": false
- },
- "v": "dep-132039",
- "kurimas": 200,
- "sid": 7677,
- "sa_push": {
-  "status": 404,
-  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
- },
- "L": {
-  "v": "S1816ao",
-  "faze": "L",
+  "faze": "2",
   "md5": "4e5b35c43b0170b2ef34ce266c0c1a05",
   "rasta": [
    1,
@@ -29,6 +10,105 @@
    1
   ],
   "jau": false,
-  "lint": "OK"
+  "po_md5": "1bc446dc32f5e8f96deb6ed24633d995",
+  "bak": "4e5b35c43b0170b2ef34ce266c0c1a05"
+ },
+ "3": {
+  "v": "S1816ao",
+  "faze": "3",
+  "md5": "1bc446dc32f5e8f96deb6ed24633d995",
+  "rasta": [
+   0,
+   1,
+   0,
+   0
+  ],
+  "jau": true,
+  "http": 200,
+  "ver": "1.3",
+  "n": 13,
+  "pvz": [
+   {
+    "uzs": 37387,
+    "verte": 30.58,
+    "marza": 4.54,
+    "laikas": "2026-10-30 17:29:44",
+    "gclid_len": 91
+   },
+   {
+    "uzs": 37395,
+    "verte": 49.79,
+    "marza": 6.42,
+    "laikas": "2026-10-31 20:15:45",
+    "gclid_len": 91
+   },
+   {
+    "uzs": 37398,
+    "verte": 116.35,
+    "marza": 22.18,
+    "laikas": "2026-11-01 07:48:16",
+    "gclid_len": 55
+   },
+   {
+    "uzs": 37399,
+    "verte": 58.99,
+    "marza": 13.44,
+    "laikas": "2026-11-01 10:04:39",
+    "gclid_len": 91
+   },
+   {
+    "uzs": 37402,
+    "verte": 64.29,
+    "marza": 11.83,
+    "laikas": "2026-11-01 13:28:33",
+    "gclid_len": 91
+   },
+   {
+    "uzs": 37403,
+    "verte": 56.99,
+    "marza": 9.16,
+    "laikas": "2026-11-01 14:01:19",
+    "gclid_len": 91
+   }
+  ],
+  "marza_tikr": [
+   {
+    "uzsakymas_id": "37387",
+    "v": "30.58",
+    "k": "4.54"
+   },
+   {
+    "uzsakymas_id": "37395",
+    "v": "49.79",
+    "k": "6.42"
+   },
+   {
+    "uzsakymas_id": "37398",
+    "v": "116.35",
+    "k": "22.18"
+   },
+   {
+    "uzsakymas_id": "37399",
+    "v": "58.99",
+    "k": "13.44"
+   },
+   {
+    "uzsakymas_id": "37402",
+    "v": "64.29",
+    "k": "11.83"
+   },
+   {
+    "uzsakymas_id": "37403",
+    "v": "56.99",
+    "k": "9.16"
+   }
+  ]
+ },
+ "v": "dep-132207",
+ "kurimas": 200,
+ "sid": 7678,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  }
 }
