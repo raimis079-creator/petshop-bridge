@@ -1,0 +1,163 @@
+{
+ "v": "dep-171458",
+ "kurimas": 200,
+ "sid": 7708,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1820p",
+  "faze": "R",
+  "laikas": "2026-11-02 19:16:28",
+  "esama_lentele": "359",
+  "map_esami": [
+   {
+    "feeding_table_id": "359",
+    "product_id": "33984",
+    "is_active": "1"
+   },
+   {
+    "feeding_table_id": "359",
+    "product_id": "37415",
+    "is_active": "1"
+   },
+   {
+    "feeding_table_id": "359",
+    "product_id": "37416",
+    "is_active": "1"
+   },
+   {
+    "feeding_table_id": "359",
+    "product_id": "37417",
+    "is_active": "1"
+   }
+  ],
+  "resave": {
+   "37415": "ok",
+   "37416": "ok",
+   "37417": "ok"
+  },
+  "lookup": {
+   "37415": "ok",
+   "37416": "ok",
+   "37417": "ok"
+  },
+  "patikra": {
+   "33984": {
+    "pav": "Monge VetSolution Dog Wet Gastrointestinal 400g",
+    "kaina": "3.09",
+    "dydis": [
+     "400 g"
+    ],
+    "turinys_escaped": false,
+    "turinys_len": 5924,
+    "trumpas": "Dietinis visavertis konservuotas pašaras šunims su virškinimo sutrikimais. Vienas gyvūninio baltymo šaltinis – tunas.Pri",
+    "calc10kg": {
+     "st": "ok",
+     "norm": [
+      741,
+      742
+     ],
+     "d": [
+      0,
+      0
+     ],
+     "g": 400,
+     "msg": null
+    }
+   },
+   "37415": {
+    "pav": "6 vnt. Monge VetSolution Dog Wet Gastrointestinal 400g",
+    "kaina": "17.89",
+    "dydis": [
+     "6 × 400 g"
+    ],
+    "turinys_escaped": false,
+    "turinys_len": 5924,
+    "trumpas": "Pakuotėje 6 skardinių po 400 g.Dietinis visavertis konservuotas pašaras šunims su virškinimo sutrikimais. Vienas gyvūnin",
+    "calc10kg": {
+     "st": "ok",
+     "norm": [
+      741,
+      742
+     ],
+     "d": [
+      3,
+      3
+     ],
+     "g": 2400,
+     "msg": null
+    }
+   },
+   "37416": {
+    "pav": "12 vnt. Monge VetSolution Dog Wet Gastrointestinal 400g",
+    "kaina": "34.79",
+    "dydis": [
+     "12 × 400 g"
+    ],
+    "turinys_escaped": false,
+    "turinys_len": 5924,
+    "trumpas": "Pakuotėje 12 skardinių po 400 g.Dietinis visavertis konservuotas pašaras šunims su virškinimo sutrikimais. Vienas gyvūni",
+    "calc10kg": {
+     "st": "ok",
+     "norm": [
+      741,
+      742
+     ],
+     "d": [
+      6,
+      6
+     ],
+     "g": 4800,
+     "msg": null
+    }
+   },
+   "37417": {
+    "pav": "24 vnt. Monge VetSolution Dog Wet Gastrointestinal 400g",
+    "kaina": "63.59",
+    "dydis": [
+     "24 × 400 g"
+    ],
+    "turinys_escaped": false,
+    "turinys_len": 5924,
+    "trumpas": "Pakuotėje 24 skardinių po 400 g.Dietinis visavertis konservuotas pašaras šunims su virškinimo sutrikimais. Vienas gyvūni",
+    "calc10kg": {
+     "st": "ok",
+     "norm": [
+      741,
+      742
+     ],
+     "d": [
+      12,
+      12
+     ],
+     "g": 9600,
+     "msg": null
+    }
+   }
+  },
+  "psl": {
+   "37415": {
+    "kodas": 520,
+    "lt_tagai": 0,
+    "lentele": false,
+    "calc": false
+   },
+   "37416": {
+    "kodas": 200,
+    "lt_tagai": 0,
+    "lentele": true,
+    "calc": true
+   },
+   "37417": {
+    "kodas": 200,
+    "lt_tagai": 0,
+    "lentele": true,
+    "calc": true
+   }
+  },
+  "pak_lentele": "Dydis Kaina €/vnt. Sutaupai Užtenka 6 × 400 g DP pakas 17,89 € 2,98 — Rinktis 12 × 400 g DP pakas 34,79 € 2,90 −3 % už vnt. Rinktis 24 × 400 g DP pakas geriausia kaina už vnt. 63,59 € 2,65 −11 % už vnt. pasirinkta",
+  "hb": 200
+ }
+}
