@@ -1,0 +1,79 @@
+{
+ "1": {
+  "v": "S1822l",
+  "F": "1",
+  "base_nauja": true,
+  "p": {
+   "37451": {
+    "ilgis": 2790,
+    "sena": true,
+    "nauja": false,
+    "pastaba": true
+   },
+   "37452": {
+    "ilgis": 2790,
+    "sena": true,
+    "nauja": false,
+    "pastaba": true
+   },
+   "37453": {
+    "ilgis": 2790,
+    "sena": true,
+    "nauja": false,
+    "pastaba": true
+   }
+  }
+ },
+ "2": {
+  "v": "S1822l",
+  "F": "2",
+  "base_nauja": true,
+  "p": {
+   "37451": {
+    "ilgis": 2790,
+    "sena": true,
+    "nauja": false,
+    "pastaba": true,
+    "po": [
+     true,
+     false,
+     false
+    ]
+   },
+   "37452": {
+    "ilgis": 2790,
+    "sena": true,
+    "nauja": false,
+    "pastaba": true,
+    "po": [
+     true,
+     false,
+     false
+    ]
+   },
+   "37453": {
+    "ilgis": 2790,
+    "sena": true,
+    "nauja": false,
+    "pastaba": true,
+    "po": [
+     true,
+     false,
+     false
+    ]
+   }
+  },
+  "psl": [
+   200,
+   true,
+   false
+  ]
+ },
+ "v": "dep-204303",
+ "kurimas": 200,
+ "sid": 7763,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
