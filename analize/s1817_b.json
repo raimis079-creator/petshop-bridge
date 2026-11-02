@@ -1,0 +1,115 @@
+{
+ "1": {
+  "v": "S1817b",
+  "krep": [
+   {
+    "k": "a<20",
+    "n": "61",
+    "mokejo": "61",
+    "paimta": "116.18",
+    "vez": "96.64",
+    "siuntu": "61",
+    "kontr": "279"
+   },
+   {
+    "k": "b20-30",
+    "n": "44",
+    "mokejo": "44",
+    "paimta": "87.44",
+    "vez": "75.24",
+    "siuntu": "42",
+    "kontr": "300"
+   },
+   {
+    "k": "c30-40",
+    "n": "59",
+    "mokejo": "7",
+    "paimta": "15.50",
+    "vez": "96.38",
+    "siuntu": "60",
+    "kontr": "514"
+   },
+   {
+    "k": "d40-50",
+    "n": "39",
+    "mokejo": "2",
+    "paimta": "6.60",
+    "vez": "58.46",
+    "siuntu": "36",
+    "kontr": "383"
+   },
+   {
+    "k": "e50+",
+    "n": "111",
+    "mokejo": "21",
+    "paimta": "72.60",
+    "vez": "297.56",
+    "siuntu": "119",
+    "kontr": "1876"
+   }
+  ],
+  "siuntu_sk": [
+   {
+    "s": "0",
+    "n": "14",
+    "vez": "0.00",
+    "paimta": "8.64"
+   },
+   {
+    "s": "1",
+    "n": "284",
+    "vez": "490.17",
+    "paimta": "251.60"
+   },
+   {
+    "s": "2",
+    "n": "14",
+    "vez": "95.73",
+    "paimta": "28.18"
+   },
+   {
+    "s": "3",
+    "n": "2",
+    "vez": "38.38",
+    "paimta": "9.90"
+   }
+  ],
+  "siuntos_tipai": [],
+  "s_cols": [
+   "id",
+   "uzsakymas_id",
+   "shipment_id",
+   "sandelis",
+   "vezejas",
+   "siuntos_nr",
+   "paketu_sk",
+   "pristatymo_tipas",
+   "sukurta_at",
+   "diena",
+   "tiekejui_issiusta_at",
+   "registruota_at",
+   "isvezta_at",
+   "pristatyta_at",
+   "atsiimta_at",
+   "svoris_deklaruotas_g",
+   "kaina_vezejo_ct",
+   "tarifo_id",
+   "statusas",
+   "problema_kodas",
+   "dienos_iki_pristatymo",
+   "saltinis",
+   "testinis",
+   "saltinis_aplinka",
+   "fakt_versija",
+   "sandelio_saltinis",
+   "dydis"
+  ]
+ },
+ "v": "dep-110655",
+ "kurimas": 200,
+ "sid": 7655,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
