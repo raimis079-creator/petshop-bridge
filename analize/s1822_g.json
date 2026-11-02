@@ -1,0 +1,75 @@
+{
+ "1": {
+  "v": "S1822g",
+  "shots": [
+   {
+    "n": "s1822_plotis",
+    "u": "https://petshop.lt/product/24-vnt-gemon-all-breeds-adult-konservuotas-pastetas-suaugusiems-sunims-su-jautiena-400g/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{const t=document.querySelector('table.ps-pak__t'); if(!t) return 'nera'; const out=[]; let e=t; for(let i=0;i<5&&e;i++){ const cs=getComputedStyle(e); out.push({tag:e.tagName,cls:(e.className||'').toString().slice(0,60),cw:e.clientWidth,sw:e.scrollWidth,ox:cs.overflowX,w:cs.width}); e=e.parentElement; } const ex=document.querySelector('.woocommerce-product-details__short-description'); return {chain:out,vw:innerWidth,short_html:ex?ex.innerHTML.slice(0,300):'nera'}; })()"
+   }
+  ]
+ },
+ "v": "dep-200011",
+ "kurimas": 200,
+ "sid": 7748,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1822_plotis": {
+   "status": 201,
+   "url": "https://petshop.lt/product/24-vnt-gemon-all-breeds-adult-konservuotas-pastetas-suaugusiems-sunims-su-jautiena-400g/",
+   "title": "24 vnt. Gemon all breeds adult konservuotas paštetas suaugusiems šunims su jautiena 400g - Petshop.lt",
+   "errors": [],
+   "eval": {
+    "chain": [
+     {
+      "tag": "TABLE",
+      "cls": "ps-pak__t",
+      "cw": 398,
+      "sw": 398,
+      "ox": "visible",
+      "w": "397.609px"
+     },
+     {
+      "tag": "DIV",
+      "cls": "ps-pak__wrap",
+      "cw": 358,
+      "sw": 398,
+      "ox": "auto",
+      "w": "358px"
+     },
+     {
+      "tag": "DIV",
+      "cls": "ps-pak",
+      "cw": 358,
+      "sw": 358,
+      "ox": "hidden",
+      "w": "360px"
+     },
+     {
+      "tag": "DIV",
+      "cls": "product-info summary col-fit col entry-summary product-summa",
+      "cw": 390,
+      "sw": 390,
+      "ox": "visible",
+      "w": "390px"
+     },
+     {
+      "tag": "DIV",
+      "cls": "row content-row mb-0",
+      "cw": 390,
+      "sw": 390,
+      "ox": "visible",
+      "w": "390px"
+     }
+    ],
+    "vw": 390,
+    "short_html": "nera"
+   }
+  }
+ }
+}
