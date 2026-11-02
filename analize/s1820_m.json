@@ -1,0 +1,1216 @@
+{
+ "1": {
+  "v": "S1820m",
+  "cols": {
+   "ps_feeding_tables": [
+    {
+     "Field": "id",
+     "Type": "bigint(20) unsigned",
+     "Null": "NO",
+     "Key": "PRI",
+     "Default": null,
+     "Extra": "auto_increment"
+    },
+    {
+     "Field": "checksum",
+     "Type": "char(64)",
+     "Null": "NO",
+     "Key": "UNI",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "checksum_algo",
+     "Type": "varchar(10)",
+     "Null": "NO",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "source_hash",
+     "Type": "char(64)",
+     "Null": "NO",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "source_hash_algo",
+     "Type": "varchar(10)",
+     "Null": "NO",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "brand",
+     "Type": "varchar(100)",
+     "Null": "YES",
+     "Key": "MUL",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "line",
+     "Type": "varchar(150)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "scope",
+     "Type": "varchar(20)",
+     "Null": "NO",
+     "Key": "",
+     "Default": "product",
+     "Extra": ""
+    },
+    {
+     "Field": "species",
+     "Type": "varchar(20)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "weight_basis",
+     "Type": "varchar(20)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "row_dimension",
+     "Type": "varchar(30)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "shape",
+     "Type": "varchar(20)",
+     "Null": "NO",
+     "Key": "MUL",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "status",
+     "Type": "varchar(20)",
+     "Null": "NO",
+     "Key": "MUL",
+     "Default": "draft",
+     "Extra": ""
+    },
+    {
+     "Field": "reason",
+     "Type": "varchar(60)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "source_url",
+     "Type": "text",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "source_version",
+     "Type": "varchar(60)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "source_checked_at",
+     "Type": "datetime",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "row_count",
+     "Type": "smallint(5) unsigned",
+     "Null": "NO",
+     "Key": "",
+     "Default": "0",
+     "Extra": ""
+    },
+    {
+     "Field": "parsed_at",
+     "Type": "datetime",
+     "Null": "NO",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "verified_at",
+     "Type": "datetime",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "verified_by",
+     "Type": "varchar(60)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "created_at",
+     "Type": "datetime",
+     "Null": "NO",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "updated_at",
+     "Type": "datetime",
+     "Null": "NO",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "rows_backup_json",
+     "Type": "longtext",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "lookup_method",
+     "Type": "varchar(20)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "weight_basis_source",
+     "Type": "varchar(40)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "verification_note",
+     "Type": "text",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "source_structure",
+     "Type": "varchar(20)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "resolution_policy",
+     "Type": "varchar(24)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "axis_resolution_policy",
+     "Type": "text",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "b_path_status",
+     "Type": "varchar(10)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "value_row_count",
+     "Type": "smallint(5) unsigned",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "redirect_row_count",
+     "Type": "smallint(5) unsigned",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "version_no",
+     "Type": "smallint(5) unsigned",
+     "Null": "NO",
+     "Key": "",
+     "Default": "1",
+     "Extra": ""
+    },
+    {
+     "Field": "supersedes_table_id",
+     "Type": "bigint(20) unsigned",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "is_active",
+     "Type": "tinyint(1)",
+     "Null": "NO",
+     "Key": "MUL",
+     "Default": "1",
+     "Extra": ""
+    },
+    {
+     "Field": "activated_at",
+     "Type": "datetime",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "retired_at",
+     "Type": "datetime",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "import_batch_id",
+     "Type": "varchar(40)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "table_key",
+     "Type": "varchar(60)",
+     "Null": "YES",
+     "Key": "MUL",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "canonical_table_hash",
+     "Type": "char(64)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "canonical_hash_version",
+     "Type": "varchar(20)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "classifier_version",
+     "Type": "varchar(30)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "source_kind",
+     "Type": "varchar(30)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "source_verification_status",
+     "Type": "varchar(20)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "source_verified_at",
+     "Type": "datetime",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "source_verified_by",
+     "Type": "varchar(60)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    }
+   ],
+   "ps_feeding_rows": [
+    {
+     "Field": "id",
+     "Type": "bigint(20) unsigned",
+     "Null": "NO",
+     "Key": "PRI",
+     "Default": null,
+     "Extra": "auto_increment"
+    },
+    {
+     "Field": "feeding_table_id",
+     "Type": "bigint(20) unsigned",
+     "Null": "NO",
+     "Key": "MUL",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "row_order",
+     "Type": "smallint(5) unsigned",
+     "Null": "NO",
+     "Key": "",
+     "Default": "0",
+     "Extra": ""
+    },
+    {
+     "Field": "weight_from_kg",
+     "Type": "decimal(6,2)",
+     "Null": "YES",
+     "Key": "MUL",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "weight_to_kg",
+     "Type": "decimal(6,2)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "amount_from_g",
+     "Type": "decimal(7,2)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "amount_to_g",
+     "Type": "decimal(7,2)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "condition_dimensions",
+     "Type": "text",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "condition_raw",
+     "Type": "text",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "cell_type",
+     "Type": "varchar(16)",
+     "Null": "NO",
+     "Key": "",
+     "Default": "value",
+     "Extra": ""
+    },
+    {
+     "Field": "redirect_reason",
+     "Type": "varchar(40)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "source_label",
+     "Type": "varchar(60)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    }
+   ],
+   "ps_feeding_map": [
+    {
+     "Field": "feeding_table_id",
+     "Type": "bigint(20) unsigned",
+     "Null": "NO",
+     "Key": "PRI",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "product_id",
+     "Type": "bigint(20) unsigned",
+     "Null": "NO",
+     "Key": "PRI",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "is_active",
+     "Type": "tinyint(1)",
+     "Null": "NO",
+     "Key": "",
+     "Default": "1",
+     "Extra": ""
+    }
+   ],
+   "ps_feeding_import_log": [
+    {
+     "Field": "id",
+     "Type": "bigint(20) unsigned",
+     "Null": "NO",
+     "Key": "PRI",
+     "Default": null,
+     "Extra": "auto_increment"
+    },
+    {
+     "Field": "import_batch_id",
+     "Type": "varchar(40)",
+     "Null": "NO",
+     "Key": "MUL",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "file_hash",
+     "Type": "char(64)",
+     "Null": "NO",
+     "Key": "MUL",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "schema_version",
+     "Type": "varchar(20)",
+     "Null": "NO",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "classifier_version",
+     "Type": "varchar(30)",
+     "Null": "NO",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "phase",
+     "Type": "varchar(10)",
+     "Null": "NO",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "started_at",
+     "Type": "datetime",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "finished_at",
+     "Type": "datetime",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "status",
+     "Type": "varchar(16)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "rows_in",
+     "Type": "int(11)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "tables_in",
+     "Type": "int(11)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "errors_json",
+     "Type": "longtext",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "result_json",
+     "Type": "longtext",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "action",
+     "Type": "varchar(40)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "old_provenance",
+     "Type": "text",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "new_provenance",
+     "Type": "text",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "batch_id",
+     "Type": "varchar(40)",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "product_id",
+     "Type": "bigint(20) unsigned",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "feeding_table_id",
+     "Type": "bigint(20) unsigned",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    },
+    {
+     "Field": "created_at",
+     "Type": "datetime",
+     "Null": "YES",
+     "Key": "",
+     "Default": null,
+     "Extra": ""
+    }
+   ]
+  },
+  "n": {
+   "ps_feeding_tables": "299",
+   "ps_feeding_rows": "5576",
+   "ps_feeding_map": "571",
+   "ps_feeding_import_log": "5"
+  },
+  "tables_sample": [
+   {
+    "id": "354",
+    "checksum": "c7a36259b05b2772f0cf5777b695c63462c9a08b7315ad53a37054b4c33f9d88",
+    "checksum_algo": "sha256",
+    "source_hash": "741c567084c8a43dee692d41de6c7978e4ec109795c7d97516bdb2a6ade9cd31",
+    "source_hash_algo": "sha256",
+    "brand": "Ambrosia",
+    "line": "Ambrosia Cat Sterilized Adult (Turkey & Herring / Duck & Turkey / Trout & Rabbit — vienoda gamintojo lentelė)",
+    "scope": "line",
+    "species": "cat",
+    "weight_basis": "current",
+    "row_dimension": "weight",
+    "shape": "simple",
+    "status": "verified",
+    "reason": null,
+    "source_url": "https://ambrosiapetfood.com/products/fresh-turkey-herring/",
+    "source_version": "ambrosiapetfood.com_2026-10-26",
+    "source_checked_at": "2026-10-26 14:51:31",
+    "row_count": "9",
+    "parsed_at": "2026-10-26 14:51:31",
+    "verified_at": "2026-10-26 14:51:31",
+    "verified_by": "S1800_rankinis_ambrosiapetfood",
+    "created_at": "2026-10-26 14:51:31",
+    "updated_at": "2026-10-26 14:54:22",
+    "rows_backup_json": "",
+    "lookup_method": "source_range",
+    "weight_basis_source": "stated_in_source",
+    "verification_note": "S1800 2026-10-26: suaugusios katės (palaikymo) stulpelis; Light – aprašyme; gamintojo lentelė identiška 3 linijoms (uq_checksum), todėl viena lentelė",
+    "source_structure": "range",
+    "resolution_policy": "interpolation_allowed",
+    "axis_resolution_policy": "{\"current_weight_kg\":{\"kind\":\"numeric\",\"policy\":\"interpolation_allowed\"}}",
+    "b_path_status": "full",
+    "value_row_count": "9",
+    "redirect_row_count": "0",
+    "version_no": "1",
+    "supersedes_table_id": null,
+    "is_active": "1",
+    "activated_at": "2026-10-26 14:51:31",
+    "retired_at": null,
+    "import_batch_id": "S1800",
+    "table_key": "s1800_amb_cat_TH",
+    "canonical_table_hash": "ac6637923eb5b0ca1bef24ee8f48ebc56e2a3cce8c3f4214bc688e35e63c3ccb",
+    "canonical_hash_version": "chash_v1",
+    "classifier_version": null,
+    "source_kind": "manufacturer_site",
+    "source_verification_status": "verified",
+    "source_verified_at": "2026-10-26 14:51:31",
+    "source_verified_by": "S1800"
+   },
+   {
+    "id": "353",
+    "checksum": "7f1ffbe049ed8743f1be2e72e85ceaf5094234a50bc630d0d215321551c12bb1",
+    "checksum_algo": "sha256",
+    "source_hash": "80399d02860d48419c70fc36c915807fd9ce208c3b116d81d0daa80f79d527e4",
+    "source_hash_algo": "sha256",
+    "brand": "Ambrosia",
+    "line": "Ambrosia Cat Sterilized Fresh Salmon & Chicken",
+    "scope": "line",
+    "species": "cat",
+    "weight_basis": "current",
+    "row_dimension": "weight",
+    "shape": "simple",
+    "status": "verified",
+    "reason": null,
+    "source_url": "https://ambrosiapetfood.com/products/fresh-turkey-chicken-3/",
+    "source_version": "ambrosiapetfood.com_2026-10-26",
+    "source_checked_at": "2026-10-26 14:51:31",
+    "row_count": "9",
+    "parsed_at": "2026-10-26 14:51:31",
+    "verified_at": "2026-10-26 14:51:31",
+    "verified_by": "S1800_rankinis_ambrosiapetfood",
+    "created_at": "2026-10-26 14:51:31",
+    "updated_at": "2026-10-26 14:51:31",
+    "rows_backup_json": "",
+    "lookup_method": "source_range",
+    "weight_basis_source": "stated_in_source",
+    "verification_note": "S1800 2026-10-26: suaugusios katės stulpelis; jaunų kačių lentelė pagal amžių – aprašyme",
+    "source_structure": "range",
+    "resolution_policy": "interpolation_allowed",
+    "axis_resolution_policy": "{\"current_weight_kg\":{\"kind\":\"numeric\",\"policy\":\"interpolation_allowed\"}}",
+    "b_path_status": "full",
+    "value_row_count": "9",
+    "redirect_row_count": "0",
+    "version_no": "1",
+    "supersedes_table_id": null,
+    "is_active": "1",
+    "activated_at": "2026-10-26 14:51:31",
+    "retired_at": null,
+    "import_batch_id": "S1800",
+    "table_key": "s1800_amb_cat_SC",
+    "canonical_table_hash": "7861f7375c27ccbb9296966064580a8c0eb49127a429313190654505bcbf915e",
+    "canonical_hash_version": "chash_v1",
+    "classifier_version": null,
+    "source_kind": "manufacturer_site",
+    "source_verification_status": "verified",
+    "source_verified_at": "2026-10-26 14:51:31",
+    "source_verified_by": "S1800"
+   },
+   {
+    "id": "352",
+    "checksum": "effca5f4f2073aade928c70bca9d1e61ce17fa89e4ef8e4b7bb5129ae8989382",
+    "checksum_algo": "sha256",
+    "source_hash": "390710357c6d12ca474821689361968ec4a72b23cf3f3690d2e15b55e35a637e",
+    "source_hash_algo": "sha256",
+    "brand": "Ambrosia",
+    "line": "Ambrosia Cat Cat & Kitten Fresh Turkey & Chicken",
+    "scope": "line",
+    "species": "cat",
+    "weight_basis": "current",
+    "row_dimension": "weight",
+    "shape": "simple",
+    "status": "verified",
+    "reason": null,
+    "source_url": "https://ambrosiapetfood.com/products/cat-fresh-turkey-chicken/",
+    "source_version": "ambrosiapetfood.com_2026-10-26",
+    "source_checked_at": "2026-10-26 14:51:31",
+    "row_count": "9",
+    "parsed_at": "2026-10-26 14:51:31",
+    "verified_at": "2026-10-26 14:51:31",
+    "verified_by": "S1800_rankinis_ambrosiapetfood",
+    "created_at": "2026-10-26 14:51:31",
+    "updated_at": "2026-10-26 14:51:31",
+    "rows_backup_json": "",
+    "lookup_method": "source_range",
+    "weight_basis_source": "stated_in_source",
+    "verification_note": "S1800 2026-10-26: suaugusios katės stulpelis; kačiukų lentelė pagal amžių – aprašyme",
+    "source_structure": "range",
+    "resolution_policy": "interpolation_allowed",
+    "axis_resolution_policy": "{\"current_weight_kg\":{\"kind\":\"numeric\",\"policy\":\"interpolation_allowed\"}}",
+    "b_path_status": "full",
+    "value_row_count": "9",
+    "redirect_row_count": "0",
+    "version_no": "1",
+    "supersedes_table_id": null,
+    "is_active": "1",
+    "activated_at": "2026-10-26 14:51:31",
+    "retired_at": null,
+    "import_batch_id": "S1800",
+    "table_key": "s1800_amb_cat_TC",
+    "canonical_table_hash": "33ef07bcc3bc637d35c37b31b26b6d0e9fd49d0e6fc7894c4b2f9a83c4734d8e",
+    "canonical_hash_version": "chash_v1",
+    "classifier_version": null,
+    "source_kind": "manufacturer_site",
+    "source_verification_status": "verified",
+    "source_verified_at": "2026-10-26 14:51:31",
+    "source_verified_by": "S1800"
+   }
+  ],
+  "kons_tables": 4,
+  "kons_tbl": [
+   {
+    "id": "192",
+    "checksum": "b6d678583ee9bcd5f850ceffa39db99a",
+    "checksum_algo": "md5",
+    "source_hash": "f1e43848732740d9ae5451a7abeb5a17",
+    "source_hash_algo": "md5",
+    "brand": "Ontario",
+    "line": "Ontario konservai šunims su žuvimis ir žolelėmis, 200 g, Adult Fish",
+    "scope": "line",
+    "species": "dog",
+    "weight_basis": "current",
+    "row_dimension": "weight",
+    "shape": "simple",
+    "status": "verified",
+    "reason": null,
+    "source_url": "post_content",
+    "source_version": "ontario_post_content_2026-07-16",
+    "source_checked_at": null,
+    "row_count": "3",
+    "parsed_at": "2026-07-16 19:19:43",
+    "verified_at": "2026-07-16 19:19:43",
+    "verified_by": "post_content_parser_v1",
+    "created_at": "2026-07-16 19:19:43",
+    "updated_at": "2026-07-16 19:19:43",
+    "rows_backup_json": null,
+    "lookup_method": "source_range",
+    "weight_basis_source": "stated_in_source",
+    "verification_note": null,
+    "source_structure": "range",
+    "resolution_policy": "range_match",
+    "axis_resolution_policy": "{\"current_weight_kg\":{\"kind\":\"numeric\",\"policy\":\"range_match\"}}",
+    "b_path_status": "full",
+    "value_row_count": "3",
+    "redirect_row_count": "0",
+    "version_no": "1",
+    "supersedes_table_id": null,
+    "is_active": "1",
+    "activated_at": "2026-07-16 19:19:43",
+    "retired_at": null,
+    "import_batch_id": "s212b_20260717_fb3eeae1",
+    "table_key": null,
+    "canonical_table_hash": "7bac2019a00baeb455599df554a936accfcc62cdc9d52a100954fe0f3509c396",
+    "canonical_hash_version": "chash_v1",
+    "classifier_version": null,
+    "source_kind": null,
+    "source_verification_status": null,
+    "source_verified_at": null,
+    "source_verified_by": null
+   },
+   {
+    "id": "196",
+    "checksum": "0d50f749a45f4d14c085c79a44fda3cd",
+    "checksum_algo": "md5",
+    "source_hash": "f9b4f304b4b9da021098a246e6ca0697",
+    "source_hash_algo": "md5",
+    "brand": "Ontario",
+    "line": "Ontario konservai šunims",
+    "scope": "line",
+    "species": "dog",
+    "weight_basis": "current",
+    "row_dimension": "weight",
+    "shape": "simple",
+    "status": "verified",
+    "reason": "Bendra lentele 3 SKU, vienodos normos",
+    "source_url": "post_content",
+    "source_version": "ontario_post_content_2026-07-16",
+    "source_checked_at": null,
+    "row_count": "4",
+    "parsed_at": "2026-07-16 19:30:03",
+    "verified_at": "2026-07-16 19:30:03",
+    "verified_by": "post_content_parser_v1",
+    "created_at": "2026-07-16 19:30:03",
+    "updated_at": "2026-07-16 19:30:03",
+    "rows_backup_json": null,
+    "lookup_method": "source_range",
+    "weight_basis_source": "stated_in_source",
+    "verification_note": null,
+    "source_structure": "range",
+    "resolution_policy": "range_match",
+    "axis_resolution_policy": "{\"current_weight_kg\":{\"kind\":\"numeric\",\"policy\":\"range_match\"}}",
+    "b_path_status": "full",
+    "value_row_count": "4",
+    "redirect_row_count": "0",
+    "version_no": "1",
+    "supersedes_table_id": null,
+    "is_active": "1",
+    "activated_at": "2026-07-16 19:30:03",
+    "retired_at": null,
+    "import_batch_id": "s212b_20260717_fb3eeae1",
+    "table_key": null,
+    "canonical_table_hash": "e2fcad736bf093eb7c98fb5e36bda01403f7779ea80519776f936ca5423d7109",
+    "canonical_hash_version": "chash_v1",
+    "classifier_version": null,
+    "source_kind": null,
+    "source_verification_status": null,
+    "source_verified_at": null,
+    "source_verified_by": null
+   },
+   {
+    "id": "197",
+    "checksum": "75c71a717e7762a4d66567ed3ff3820d",
+    "checksum_algo": "md5",
+    "source_hash": "3fa500fd38cecf0bd6b088d976c6fc49",
+    "source_hash_algo": "md5",
+    "brand": "Ontario",
+    "line": "Ontario konservai šunims",
+    "scope": "line",
+    "species": "dog",
+    "weight_basis": "current",
+    "row_dimension": "weight",
+    "shape": "simple",
+    "status": "verified",
+    "reason": "Bendra lentele 3 SKU, vienodos normos",
+    "source_url": "post_content",
+    "source_version": "ontario_post_content_2026-07-16",
+    "source_checked_at": null,
+    "row_count": "3",
+    "parsed_at": "2026-07-16 19:30:03",
+    "verified_at": "2026-07-16 19:30:03",
+    "verified_by": "post_content_parser_v1",
+    "created_at": "2026-07-16 19:30:03",
+    "updated_at": "2026-07-16 19:30:03",
+    "rows_backup_json": null,
+    "lookup_method": "source_range",
+    "weight_basis_source": "stated_in_source",
+    "verification_note": null,
+    "source_structure": "range",
+    "resolution_policy": "range_match",
+    "axis_resolution_policy": "{\"current_weight_kg\":{\"kind\":\"numeric\",\"policy\":\"range_match\"}}",
+    "b_path_status": "full",
+    "value_row_count": "3",
+    "redirect_row_count": "0",
+    "version_no": "1",
+    "supersedes_table_id": null,
+    "is_active": "1",
+    "activated_at": "2026-07-16 19:30:03",
+    "retired_at": null,
+    "import_batch_id": "s212b_20260717_fb3eeae1",
+    "table_key": null,
+    "canonical_table_hash": "843e0f1f71940b042978783f7801c7fa82bbaaf949033256161d2ceb9dd9440d",
+    "canonical_hash_version": "chash_v1",
+    "classifier_version": null,
+    "source_kind": null,
+    "source_verification_status": null,
+    "source_verified_at": null,
+    "source_verified_by": null
+   },
+   {
+    "id": "198",
+    "checksum": "b2327d8a8c9d06256a4c40c4bb65307d",
+    "checksum_algo": "md5",
+    "source_hash": "df275880c0ce8f788bbf322ce29ed0f7",
+    "source_hash_algo": "md5",
+    "brand": "Ontario",
+    "line": "Ontario konservai šunims",
+    "scope": "line",
+    "species": "dog",
+    "weight_basis": "current",
+    "row_dimension": "weight",
+    "shape": "simple",
+    "status": "verified",
+    "reason": "Bendra lentele 2 SKU, vienodos normos",
+    "source_url": "post_content",
+    "source_version": "ontario_post_content_2026-07-16",
+    "source_checked_at": null,
+    "row_count": "4",
+    "parsed_at": "2026-07-16 19:30:03",
+    "verified_at": "2026-07-16 19:30:03",
+    "verified_by": "post_content_parser_v1",
+    "created_at": "2026-07-16 19:30:03",
+    "updated_at": "2026-07-16 19:30:03",
+    "rows_backup_json": null,
+    "lookup_method": "source_range",
+    "weight_basis_source": "stated_in_source",
+    "verification_note": null,
+    "source_structure": "range",
+    "resolution_policy": "range_match",
+    "axis_resolution_policy": "{\"current_weight_kg\":{\"kind\":\"numeric\",\"policy\":\"range_match\"}}",
+    "b_path_status": "full",
+    "value_row_count": "4",
+    "redirect_row_count": "0",
+    "version_no": "1",
+    "supersedes_table_id": null,
+    "is_active": "1",
+    "activated_at": "2026-07-16 19:30:03",
+    "retired_at": null,
+    "import_batch_id": "s212b_20260717_fb3eeae1",
+    "table_key": null,
+    "canonical_table_hash": "e5dc51967961b7caa8d362476694221dfdedcfb54a67c9e017dfd3a32bfe57d0",
+    "canonical_hash_version": "chash_v1",
+    "classifier_version": null,
+    "source_kind": null,
+    "source_verification_status": null,
+    "source_verified_at": null,
+    "source_verified_by": null
+   }
+  ],
+  "kons_rows": [
+   {
+    "id": "13300",
+    "feeding_table_id": "197",
+    "row_order": "0",
+    "weight_from_kg": "2.50",
+    "weight_to_kg": "10.00",
+    "amount_from_g": "190.00",
+    "amount_to_g": "530.00",
+    "condition_dimensions": null,
+    "condition_raw": null,
+    "cell_type": "value",
+    "redirect_reason": null,
+    "source_label": null
+   },
+   {
+    "id": "13301",
+    "feeding_table_id": "197",
+    "row_order": "1",
+    "weight_from_kg": "10.00",
+    "weight_to_kg": "25.00",
+    "amount_from_g": "530.00",
+    "amount_to_g": "1050.00",
+    "condition_dimensions": null,
+    "condition_raw": null,
+    "cell_type": "value",
+    "redirect_reason": null,
+    "source_label": null
+   },
+   {
+    "id": "13302",
+    "feeding_table_id": "197",
+    "row_order": "2",
+    "weight_from_kg": "35.00",
+    "weight_to_kg": "35.00",
+    "amount_from_g": "1350.00",
+    "amount_to_g": "1350.00",
+    "condition_dimensions": null,
+    "condition_raw": null,
+    "cell_type": "value",
+    "redirect_reason": null,
+    "source_label": null
+   }
+  ],
+  "kons_map": [
+   {
+    "feeding_table_id": "197",
+    "product_id": "17150",
+    "is_active": "1"
+   },
+   {
+    "feeding_table_id": "197",
+    "product_id": "17170",
+    "is_active": "1"
+   },
+   {
+    "feeding_table_id": "197",
+    "product_id": "17182",
+    "is_active": "1"
+   }
+  ],
+  "axis_vals": [
+   {
+    "id": "9937",
+    "feeding_table_id": "1",
+    "row_order": "0",
+    "weight_from_kg": "5.00",
+    "weight_to_kg": "5.00",
+    "amount_from_g": "50.00",
+    "amount_to_g": "50.00",
+    "condition_dimensions": "{\"activity_level\":\"low\"}",
+    "condition_raw": "{\"activity_level\":\"Neaktyvus \\/ senyvas\"}",
+    "cell_type": "value",
+    "redirect_reason": null,
+    "source_label": null
+   },
+   {
+    "id": "9958",
+    "feeding_table_id": "2",
+    "row_order": "0",
+    "weight_from_kg": "2.00",
+    "weight_to_kg": "2.00",
+    "amount_from_g": "45.00",
+    "amount_to_g": "50.00",
+    "condition_dimensions": null,
+    "condition_raw": null,
+    "cell_type": "value",
+    "redirect_reason": null,
+    "source_label": null
+   },
+   {
+    "id": "9967",
+    "feeding_table_id": "3",
+    "row_order": "0",
+    "weight_from_kg": "2.00",
+    "weight_to_kg": "2.00",
+    "amount_from_g": "27.00",
+    "amount_to_g": "36.00",
+    "condition_dimensions": null,
+    "condition_raw": null,
+    "cell_type": "value",
+    "redirect_reason": null,
+    "source_label": null
+   }
+  ],
+  "import_log_last": [
+   {
+    "id": "35",
+    "action": null,
+    "product_id": null,
+    "feeding_table_id": null,
+    "old_provenance": null,
+    "new_provenance": null,
+    "created_at": null,
+    "status": "committed"
+   },
+   {
+    "id": "34",
+    "action": null,
+    "product_id": null,
+    "feeding_table_id": null,
+    "old_provenance": null,
+    "new_provenance": null,
+    "created_at": null,
+    "status": "committed"
+   },
+   {
+    "id": "33",
+    "action": null,
+    "product_id": null,
+    "feeding_table_id": null,
+    "old_provenance": null,
+    "new_provenance": null,
+    "created_at": null,
+    "status": "committed"
+   },
+   {
+    "id": "32",
+    "action": null,
+    "product_id": null,
+    "feeding_table_id": null,
+    "old_provenance": null,
+    "new_provenance": null,
+    "created_at": null,
+    "status": "committed"
+   },
+   {
+    "id": "18",
+    "action": null,
+    "product_id": null,
+    "feeding_table_id": null,
+    "old_provenance": null,
+    "new_provenance": null,
+    "created_at": null,
+    "status": "no_op"
+   }
+  ],
+  "repo_file": "class-feeding-repository.php",
+  "repo": "\tpublic function get_for_product( $product_id ) {\n\t\t$product_id = (int) $product_id;\n\t\t$T = $this->pf.'ps_feeding_tables';\n\t\t$M = $this->pf.'ps_feeding_map';\n\n\t\t// runtime invariantas — jokio LIMIT 1\n\t\t$rows = $this->db->get_results( $this->db->prepare(\n\t\t\t\"SELECT t.* FROM {$M} m\n\t\t\t JOIN {$T} t ON t.id = m.feeding_table_id\n\t\t\t WHERE m.product_id = %d AND m.is_active = 1\n\t\t\t   AND t.is_active = 1 AND t.status = 'verified'\n\t\t\t   AND t.canonical_table_hash IS NOT NULL\",\n\t\t\t$product_id ), ARRAY_A );\n\n\t\t$n = is_array($rows) ? count($rows) : 0;\n\t\tif ( $n === 0 ) {\n\t\t\treturn array('status'=>'NO_ACTIVE_FEEDING_TABLE','product_id'=>$product_id);\n\t\t}\n\t\tif ( $n > 1 ) {\n\t\t\t$ids = array_map(function($r){ return (int)$r['id']; }, $rows);\n\t\t\treturn array('status'=>'DATA_INTEGRITY_ERROR','product_id'=>$product_id,\n\t\t\t\t'table_ids'=>$ids,'note'=>'daugiau nei 1 aktyvus verified mappingas');\n\t\t}\n\n\t\t$t = $rows[0];\n\t\treturn $this->build_table_payload( $t, $product_id );\n\t}\n",
+  "repo_methods": [
+   "__construct",
+   "get_for_product",
+   "build_table_payload",
+   "classify_support",
+   "dec"
+  ],
+  "pcalc": [
+   "67: * „kiek uzteks\" klausimas klaidina. Rodoma tik maisto kategorijoms.",
+   "78: * rodė „Kiek šio maisto užteks jūsų šuniui?\". Tikrinama kategorija ir jos tėvai.",
+   "92: * S1789 (Raimis 2026-10-19): skaičiuoklė TIK maisto kategorijose — sausas maistas ir konservai",
+   "93: * (šunims, katėms) ir jų pokategorės. Anksčiau rodyta visur, kur yra pakuotės dydis gramais,",
+   "97: $maistas = array( 'sausas-maistas-sunims', 'sausas-maistas-katems', 'konservai-sunims', 'konservai-katems' );",
+   "108: $map = $wpdb->prefix . 'ps_feeding_map';",
+   "110: \"SELECT 1 FROM $map WHERE product_id = %d AND is_active = 1 LIMIT 1\", $pid ) );"
+  ],
+  "feeding_classes": [
+   "Petshop_Feeding_Calculator",
+   "Petshop_Feeding_Repository",
+   "Petshop_Feeding_Package_Resolver",
+   "Petshop_Feeding_Package_Provider",
+   "Petshop_Feeding_Service",
+   "Petshop_Mixed_Feeding_Estimator",
+   "Petshop_Feeding_UI"
+  ]
+ },
+ "v": "dep-170640",
+ "kurimas": 200,
+ "sid": 7704,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
