@@ -1,0 +1,181 @@
+{
+ "2": {
+  "v": "S1820b",
+  "faze": "2",
+  "laikas": "2026-11-02 16:43:30",
+  "baze": {
+   "id": 33984,
+   "t": "Monge VetSolution Dog Wet Gastrointestinal 400g",
+   "st": "draft",
+   "reg": 3.09,
+   "cost": 1.71,
+   "stock": 1005,
+   "svoris": "0.4000",
+   "sale": ""
+  },
+  "planas": {
+   "12": {
+    "proc": 7.63,
+    "kaina": 34.29,
+    "vnt": 2.858,
+    "lieka_po_pastomato": 5.67,
+    "svoris": 4.8
+   },
+   "24": {
+    "proc": 12.01,
+    "kaina": 65.29,
+    "vnt": 2.72,
+    "lieka_po_pastomato": 10.77,
+    "svoris": 9.6
+   },
+   "36": {
+    "proc": 16.53,
+    "kaina": 92.89,
+    "vnt": 2.58,
+    "lieka_po_pastomato": 13.06,
+    "svoris": 14.4
+   }
+  },
+  "jau_sukurta": [],
+  "sukurta": {
+   "12": 37415,
+   "24": 37416,
+   "36": 37417
+  },
+  "pakai": [
+   {
+    "id": 37415,
+    "pav": "12 vnt. Monge VetSolution Dog Wet Gastrointestinal 400g",
+    "sku": "DP-01MVKD102-12",
+    "st": "draft",
+    "reg": "34.29",
+    "price": "34.29",
+    "proc": "7.63",
+    "qty": "12",
+    "base": "33984",
+    "cost": "20.52",
+    "svoris": "4.8",
+    "klase": "iki-50kg",
+    "kat": [
+     "DAUGIAU=PIGIAU",
+     "Konservai šunims"
+    ],
+    "dydis": [
+     "400 g"
+    ],
+    "brand": [
+     "Monge"
+    ],
+    "img": 33985,
+    "ss": "instock",
+    "purch": true,
+    "src": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "av_qty": null,
+     "av_uztenka": false,
+     "tiekejas": "zb",
+     "reason": "DP pakas ×12 (bazinė #33984): AV šios prekės neturi",
+     "dp": {
+      "base": 33984,
+      "n": 12
+     }
+    },
+    "preview": "https://petshop.lt/?post_type=product&p=37415&preview=true",
+    "edit": "https://petshop.lt/wp-admin/admin.php?page=ps-rinkiniai&id=37415"
+   },
+   {
+    "id": 37416,
+    "pav": "24 vnt. Monge VetSolution Dog Wet Gastrointestinal 400g",
+    "sku": "DP-01MVKD102-24",
+    "st": "draft",
+    "reg": "65.29",
+    "price": "65.29",
+    "proc": "12.01",
+    "qty": "24",
+    "base": "33984",
+    "cost": "41.04",
+    "svoris": "9.6",
+    "klase": "iki-50kg",
+    "kat": [
+     "DAUGIAU=PIGIAU",
+     "Konservai šunims"
+    ],
+    "dydis": [
+     "400 g"
+    ],
+    "brand": [
+     "Monge"
+    ],
+    "img": 33985,
+    "ss": "instock",
+    "purch": true,
+    "src": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "av_qty": null,
+     "av_uztenka": false,
+     "tiekejas": "zb",
+     "reason": "DP pakas ×24 (bazinė #33984): AV šios prekės neturi",
+     "dp": {
+      "base": 33984,
+      "n": 24
+     }
+    },
+    "preview": "https://petshop.lt/?post_type=product&p=37416&preview=true",
+    "edit": "https://petshop.lt/wp-admin/admin.php?page=ps-rinkiniai&id=37416"
+   },
+   {
+    "id": 37417,
+    "pav": "36 vnt. Monge VetSolution Dog Wet Gastrointestinal 400g",
+    "sku": "DP-01MVKD102-36",
+    "st": "draft",
+    "reg": "92.89",
+    "price": "92.89",
+    "proc": "16.53",
+    "qty": "36",
+    "base": "33984",
+    "cost": "61.56",
+    "svoris": "14.4",
+    "klase": "iki-50kg",
+    "kat": [
+     "DAUGIAU=PIGIAU",
+     "Konservai šunims"
+    ],
+    "dydis": [
+     "400 g"
+    ],
+    "brand": [
+     "Monge"
+    ],
+    "img": 33985,
+    "ss": "instock",
+    "purch": true,
+    "src": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "av_qty": null,
+     "av_uztenka": false,
+     "tiekejas": "zb",
+     "reason": "DP pakas ×36 (bazinė #33984): AV šios prekės neturi",
+     "dp": {
+      "base": 33984,
+      "n": 36
+     }
+    },
+    "preview": "https://petshop.lt/?post_type=product&p=37417&preview=true",
+    "edit": "https://petshop.lt/wp-admin/admin.php?page=ps-rinkiniai&id=37417"
+   }
+  ]
+ },
+ "v": "dep-144221",
+ "kurimas": 200,
+ "sid": 7685,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
