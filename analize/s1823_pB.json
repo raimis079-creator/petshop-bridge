@@ -1,0 +1,2561 @@
+{
+ "v": "dep-232220",
+ "kurimas": 200,
+ "sid": 7799,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R18-35": {
+  "v": "S1823p",
+  "faze": "R18-35",
+  "laikas": "2026-11-03 01:23:31",
+  "f": [
+   {
+    "id": 33552,
+    "i": 18,
+    "parse": 1,
+    "reg": 3.39,
+    "seima": "dp400-monge-monoproteico-konservai-sunims-su-eriena-tik-vienos-rusies-mesa-400g",
+    "termas": {
+     "12": 770,
+     "24": 771
+    },
+    "pakai": {
+     "12": {
+      "id": 37534,
+      "kaina": 39.49,
+      "vnt": 3.291,
+      "proc": 2.78
+     },
+     "24": {
+      "id": 37535,
+      "kaina": 64.59,
+      "vnt": 2.691,
+      "proc": 20.54
+     }
+    }
+   },
+   {
+    "id": 33554,
+    "i": 19,
+    "parse": 1,
+    "reg": 3.39,
+    "seima": "dp400-monge-monoprotein-konservai-antiena-400g",
+    "termas": {
+     "12": 770,
+     "24": 771
+    },
+    "pakai": {
+     "12": {
+      "id": 37536,
+      "kaina": 39.49,
+      "vnt": 3.291,
+      "proc": 2.78
+     },
+     "24": {
+      "id": 37537,
+      "kaina": 66.69,
+      "vnt": 2.779,
+      "proc": 17.96
+     }
+    }
+   },
+   {
+    "id": 32483,
+    "i": 20,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp80-monge-monoprotein-cat-flakes-tik-vistiena-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37538,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 37539,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 37540,
+      "kaina": 49.69,
+      "vnt": 1.38,
+      "proc": 18.23
+     }
+    }
+   },
+   {
+    "id": 33598,
+    "i": 21,
+    "parse": 0,
+    "reg": 1.99,
+    "seima": "dp80-monge-natural-kons-pasaras-suaugusioms-katems-tunas-lasisa-zeleje-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37541,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37542,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37543,
+      "kaina": 59.39,
+      "vnt": 1.65,
+      "proc": 17.02
+     }
+    }
+   },
+   {
+    "id": 33608,
+    "i": 22,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-natural-kons-pasaras-suaugusioms-katems-tuno-ir-vistienos-kasneliai-su-krevetemis-zeleje-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37544,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37545,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37546,
+      "kaina": 59.39,
+      "vnt": 1.65,
+      "proc": 17.02
+     }
+    }
+   },
+   {
+    "id": 32475,
+    "i": 23,
+    "parse": 1,
+    "reg": 2.19,
+    "seima": "dp80-monge-supreme-paketelis-sterilizuotoms-katems-su-tunu-kefale-ir-sparaginemis-pupelemis-80-g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37547,
+      "kaina": 38.19,
+      "vnt": 2.122,
+      "proc": 2.97
+     },
+     "24": {
+      "id": 37548,
+      "kaina": 49.49,
+      "vnt": 2.062,
+      "proc": 5.73
+     },
+     "36": {
+      "id": 37549,
+      "kaina": 64.49,
+      "vnt": 1.791,
+      "proc": 18.13
+     }
+    }
+   },
+   {
+    "id": 32467,
+    "i": 24,
+    "parse": 1,
+    "reg": 2.19,
+    "seima": "dp80-monge-supreme-paketelis-suaugusioms-katems-su-tunu-midijomis-ir-alyvuogemis-80-g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37550,
+      "kaina": 38.19,
+      "vnt": 2.122,
+      "proc": 2.97
+     },
+     "24": {
+      "id": 37551,
+      "kaina": 49.49,
+      "vnt": 2.062,
+      "proc": 5.73
+     },
+     "36": {
+      "id": 37552,
+      "kaina": 64.49,
+      "vnt": 1.791,
+      "proc": 18.13
+     }
+    }
+   },
+   {
+    "id": 32465,
+    "i": 25,
+    "parse": 1,
+    "reg": 2.19,
+    "seima": "dp80-monge-supreme-paketelis-suaugusioms-katems-su-tunu-juru-eseriu-ir-bulvemis-80-g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37553,
+      "kaina": 38.19,
+      "vnt": 2.122,
+      "proc": 2.97
+     },
+     "24": {
+      "id": 37554,
+      "kaina": 49.49,
+      "vnt": 2.062,
+      "proc": 5.73
+     },
+     "36": {
+      "id": 37555,
+      "kaina": 64.49,
+      "vnt": 1.791,
+      "proc": 18.13
+     }
+    }
+   },
+   {
+    "id": 33928,
+    "i": 26,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp415-simba-konservai-katems-su-paukstiena-ir-antiena-415-g",
+    "termas": {
+     "24": 780,
+     "30": 786
+    },
+    "pakai": {
+     "24": {
+      "id": 37556,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "30": {
+      "id": 37557,
+      "kaina": 30.79,
+      "vnt": 1.026,
+      "proc": 5.66
+     }
+    }
+   },
+   {
+    "id": 33750,
+    "i": 27,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp415-simba-adult-lamb-visavertis-konservuotas-pasaras-suaugusiems-sunims-su-eriena-415g",
+    "termas": {
+     "24": 780,
+     "36": 781
+    },
+    "pakai": {
+     "24": {
+      "id": 37558,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "36": {
+      "id": 37559,
+      "kaina": 37.79,
+      "vnt": 1.05,
+      "proc": 3.55
+     }
+    }
+   },
+   {
+    "id": 33748,
+    "i": 28,
+    "parse": 1,
+    "reg": 0.69,
+    "seima": "dp100-simba-konservuotas-pasaras-katems-su-lasisa-ir-karsiu-100g",
+    "termas": {
+     "32": 775,
+     "40": 779
+    },
+    "pakai": {
+     "32": {
+      "id": 37560,
+      "kaina": 21.69,
+      "vnt": 0.678,
+      "proc": 1.5
+     },
+     "40": {
+      "id": 37561,
+      "kaina": 25.99,
+      "vnt": 0.65,
+      "proc": 5.62
+     }
+    }
+   },
+   {
+    "id": 33768,
+    "i": 29,
+    "parse": 1,
+    "reg": 0.99,
+    "seima": "dp85-monge-bwild-kons-pasaras-katems-su-anciuviais-ir-darzovemis-padaze-85g",
+    "termas": {
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "24": {
+      "id": 37562,
+      "kaina": 23.09,
+      "vnt": 0.962,
+      "proc": 2.57
+     },
+     "36": {
+      "id": 37563,
+      "kaina": 29.49,
+      "vnt": 0.819,
+      "proc": 17.09
+     }
+    }
+   },
+   {
+    "id": 33772,
+    "i": 30,
+    "parse": 1,
+    "reg": 0.99,
+    "seima": "dp85-monge-bwild-kons-pasaras-sterilizuotoms-katems-su-tunu-krevetemis-ir-darzovemis-padaze-85g",
+    "termas": {
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "24": {
+      "id": 37564,
+      "kaina": 23.09,
+      "vnt": 0.962,
+      "proc": 2.57
+     },
+     "36": {
+      "id": 37565,
+      "kaina": 28.99,
+      "vnt": 0.805,
+      "proc": 18.5
+     }
+    }
+   },
+   {
+    "id": 33708,
+    "i": 31,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp400-monge-bwild-mini-adult-konservuotas-pasaras-su-antiena-moliugais-ir-cukinijomis-400g",
+    "termas": {
+     "12": 770,
+     "24": 771
+    },
+    "pakai": {
+     "12": {
+      "id": 37566,
+      "kaina": 23.19,
+      "vnt": 1.933,
+      "proc": 2.64
+     },
+     "24": {
+      "id": 37567,
+      "kaina": 37.99,
+      "vnt": 1.583,
+      "proc": 20.34
+     }
+    }
+   },
+   {
+    "id": 33864,
+    "i": 32,
+    "parse": 1,
+    "reg": 1.89,
+    "seima": "dp400-monge-fresh-puppy-konservuotas-pasaras-jauniems-sunims-su-vistiena-400g",
+    "termas": {
+     "12": 770,
+     "24": 771
+    },
+    "pakai": {
+     "12": {
+      "id": 37568,
+      "kaina": 22.59,
+      "vnt": 1.883,
+      "proc": 0.14
+     },
+     "24": {
+      "id": 37569,
+      "kaina": 37.79,
+      "vnt": 1.575,
+      "proc": 16.56
+     }
+    }
+   },
+   {
+    "id": 33870,
+    "i": 33,
+    "parse": 1,
+    "reg": 1.89,
+    "seima": "dp400-monge-fresh-senior-konservuotas-pasaras-pagyvenusiems-sunims-su-kalakutiena-ir-darzovemis-400g",
+    "termas": {
+     "12": 770,
+     "24": 771
+    },
+    "pakai": {
+     "12": {
+      "id": 37570,
+      "kaina": 22.59,
+      "vnt": 1.883,
+      "proc": 0.14
+     },
+     "24": {
+      "id": 37571,
+      "kaina": 37.79,
+      "vnt": 1.575,
+      "proc": 16.56
+     }
+    }
+   },
+   {
+    "id": 33574,
+    "i": 34,
+    "parse": 1,
+    "reg": 1.89,
+    "seima": "dp400-monge-fresh-adult-konservuotas-pasaras-sunims-su-versienos-gabaliukais-400g",
+    "termas": {
+     "12": 770,
+     "24": 771
+    },
+    "pakai": {
+     "12": {
+      "id": 37572,
+      "kaina": 22.59,
+      "vnt": 1.883,
+      "proc": 0.14
+     },
+     "24": {
+      "id": 37573,
+      "kaina": 37.79,
+      "vnt": 1.575,
+      "proc": 16.56
+     }
+    }
+   },
+   {
+    "id": 33868,
+    "i": 35,
+    "parse": 1,
+    "reg": 1.89,
+    "seima": "dp400-monge-fresh-adult-konservuotas-pasaras-sunims-su-vistiena-400g",
+    "termas": {
+     "12": 770,
+     "24": 771
+    },
+    "pakai": {
+     "12": {
+      "id": 37574,
+      "kaina": 22.59,
+      "vnt": 1.883,
+      "proc": 0.14
+     },
+     "24": {
+      "id": 37575,
+      "kaina": 37.79,
+      "vnt": 1.575,
+      "proc": 16.56
+     }
+    }
+   }
+  ],
+  "hb": 200
+ },
+ "R36-53": {
+  "v": "S1823p",
+  "faze": "R36-53",
+  "laikas": "2026-11-03 01:24:51",
+  "f": [
+   {
+    "id": 33778,
+    "i": 36,
+    "parse": 1,
+    "reg": 1.29,
+    "seima": "dp85-monge-monoprotein-adult-begrudis-konservuotas-pasaras-katems-85g",
+    "termas": {
+     "18": 778,
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "18": {
+      "id": 37576,
+      "kaina": 22.49,
+      "vnt": 1.249,
+      "proc": 2.89
+     },
+     "24": {
+      "id": 37577,
+      "kaina": 29.09,
+      "vnt": 1.212,
+      "proc": 5.85
+     },
+     "36": {
+      "id": 37578,
+      "kaina": 37.79,
+      "vnt": 1.05,
+      "proc": 18.5
+     }
+    }
+   },
+   {
+    "id": 33780,
+    "i": 37,
+    "parse": 1,
+    "reg": 1.29,
+    "seima": "dp85-monge-monoprotein-kitten-begrudis-konservuotas-pasaras-jaunoms-katems-su-upetakiu-85g",
+    "termas": {
+     "18": 778,
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "18": {
+      "id": 37579,
+      "kaina": 22.49,
+      "vnt": 1.249,
+      "proc": 2.89
+     },
+     "24": {
+      "id": 37580,
+      "kaina": 29.09,
+      "vnt": 1.212,
+      "proc": 5.85
+     },
+     "36": {
+      "id": 37581,
+      "kaina": 38.19,
+      "vnt": 1.061,
+      "proc": 17.64
+     }
+    }
+   },
+   {
+    "id": 32481,
+    "i": 38,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp80-monge-monoprotein-cat-flakes-tik-kalakutiena-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37582,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 37583,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 37584,
+      "kaina": 46.49,
+      "vnt": 1.291,
+      "proc": 23.49
+     }
+    }
+   },
+   {
+    "id": 33738,
+    "i": 39,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp415-simba-konservuotas-pasaras-katems-su-triusiena-415g",
+    "termas": {
+     "24": 780,
+     "30": 786
+    },
+    "pakai": {
+     "24": {
+      "id": 37585,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "30": {
+      "id": 37586,
+      "kaina": 29.39,
+      "vnt": 0.98,
+      "proc": 9.94
+     }
+    }
+   },
+   {
+    "id": 33736,
+    "i": 40,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp415-simba-konservuotas-pasaras-katems-su-vistiena-415g",
+    "termas": {
+     "24": 780,
+     "30": 786
+    },
+    "pakai": {
+     "24": {
+      "id": 37587,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "30": {
+      "id": 37588,
+      "kaina": 29.39,
+      "vnt": 0.98,
+      "proc": 9.94
+     }
+    }
+   },
+   {
+    "id": 33816,
+    "i": 41,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp400-special-dog-exc-konservai-mini-sunims-gabaleliai-su-triusiena-400g",
+    "termas": {
+     "24": 771,
+     "36": 787
+    },
+    "pakai": {
+     "24": {
+      "id": 37589,
+      "kaina": 39.29,
+      "vnt": 1.637,
+      "proc": 2.99
+     },
+     "36": {
+      "id": 37590,
+      "kaina": 46.29,
+      "vnt": 1.286,
+      "proc": 23.82
+     }
+    }
+   },
+   {
+    "id": 32716,
+    "i": 42,
+    "parse": 1,
+    "reg": 1.39,
+    "seima": "dp85-lechat-exc-konservai-sterilizuotoms-katems-su-serniena-ir-darzovemis-85g",
+    "termas": {
+     "18": 778,
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "18": {
+      "id": 37591,
+      "kaina": 24.29,
+      "vnt": 1.349,
+      "proc": 2.68
+     },
+     "24": {
+      "id": 37592,
+      "kaina": 31.39,
+      "vnt": 1.308,
+      "proc": 5.73
+     },
+     "36": {
+      "id": 37593,
+      "kaina": 39.59,
+      "vnt": 1.1,
+      "proc": 20.77
+     }
+    }
+   },
+   {
+    "id": 33806,
+    "i": 43,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp100-lechat-exc-konservai-suaugusioms-katems-su-jautiena-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37594,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "32": {
+      "id": 37595,
+      "kaina": 29.39,
+      "vnt": 0.918,
+      "proc": 15.57
+     }
+    }
+   },
+   {
+    "id": 34054,
+    "i": 44,
+    "parse": 1,
+    "reg": 0.93,
+    "seima": "dp100-lechat-fresh-konservai-suaug-katems-su-vistiena-ir-darzovemis-100g",
+    "termas": {
+     "32": 775,
+     "40": 779
+    },
+    "pakai": {
+     "32": {
+      "id": 37596,
+      "kaina": 29.39,
+      "vnt": 0.918,
+      "proc": 1.05
+     },
+     "40": {
+      "id": 37597,
+      "kaina": 34.89,
+      "vnt": 0.872,
+      "proc": 6.05
+     }
+    }
+   },
+   {
+    "id": 33802,
+    "i": 45,
+    "parse": 1,
+    "reg": 0.93,
+    "seima": "dp100-lechat-fresh-suaug-katems-su-antiena100g",
+    "termas": {
+     "32": 775,
+     "40": 779
+    },
+    "pakai": {
+     "32": {
+      "id": 37598,
+      "kaina": 29.39,
+      "vnt": 0.918,
+      "proc": 1.05
+     },
+     "40": {
+      "id": 37599,
+      "kaina": 34.89,
+      "vnt": 0.872,
+      "proc": 6.05
+     }
+    }
+   },
+   {
+    "id": 33774,
+    "i": 46,
+    "parse": 1,
+    "reg": 0.99,
+    "seima": "dp85-monge-bwild-kons-pasaras-sterelizuotoms-katems-su-serniena-ir-darzovemis-padaze-85g",
+    "termas": {
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "24": {
+      "id": 37600,
+      "kaina": 23.09,
+      "vnt": 0.962,
+      "proc": 2.57
+     },
+     "36": {
+      "id": 37601,
+      "kaina": 28.99,
+      "vnt": 0.805,
+      "proc": 18.5
+     }
+    }
+   },
+   {
+    "id": 33790,
+    "i": 47,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp85-monge-grill-adult-konservuotas-pasaras-katems-su-eriena-85g",
+    "termas": {
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "24": {
+      "id": 37602,
+      "kaina": 21.29,
+      "vnt": 0.887,
+      "proc": 0.05
+     },
+     "36": {
+      "id": 37603,
+      "kaina": 28.19,
+      "vnt": 0.783,
+      "proc": 11.83
+     }
+    }
+   },
+   {
+    "id": 33786,
+    "i": 48,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp85-monge-grill-kitten-konservuotas-pasaras-kaciukams-su-lasisa-85g",
+    "termas": {
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "24": {
+      "id": 37604,
+      "kaina": 21.29,
+      "vnt": 0.887,
+      "proc": 0.05
+     },
+     "36": {
+      "id": 37605,
+      "kaina": 28.19,
+      "vnt": 0.783,
+      "proc": 11.83
+     }
+    }
+   },
+   {
+    "id": 33796,
+    "i": 49,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp85-monge-grill-sterilised-konservuotas-pasaras-sterilizuotoms-katems-su-upetakiu-85g",
+    "termas": {
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "24": {
+      "id": 37606,
+      "kaina": 21.29,
+      "vnt": 0.887,
+      "proc": 0.05
+     },
+     "36": {
+      "id": 37607,
+      "kaina": 28.19,
+      "vnt": 0.783,
+      "proc": 11.83
+     }
+    }
+   },
+   {
+    "id": 33794,
+    "i": 50,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp85-monge-grill-sterilised-konservuotas-pasaras-sterilizuotoms-katems-su-versiena-85g",
+    "termas": {
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "24": {
+      "id": 37608,
+      "kaina": 21.29,
+      "vnt": 0.887,
+      "proc": 0.05
+     },
+     "36": {
+      "id": 37609,
+      "kaina": 28.19,
+      "vnt": 0.783,
+      "proc": 11.83
+     }
+    }
+   },
+   {
+    "id": 33776,
+    "i": 51,
+    "parse": 1,
+    "reg": 1.29,
+    "seima": "dp85-monge-monoprotein-adult-begrudis-konservuotas-pasaras-katems-su-antiena-85g",
+    "termas": {
+     "18": 778,
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "18": {
+      "id": 37610,
+      "kaina": 22.49,
+      "vnt": 1.249,
+      "proc": 2.89
+     },
+     "24": {
+      "id": 37611,
+      "kaina": 29.09,
+      "vnt": 1.212,
+      "proc": 5.85
+     },
+     "36": {
+      "id": 37612,
+      "kaina": 37.19,
+      "vnt": 1.033,
+      "proc": 19.79
+     }
+    }
+   },
+   {
+    "id": 33538,
+    "i": 52,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp150-monge-monoprotein-konservai-sunims-su-elniena-150g",
+    "termas": {
+     "11": 772,
+     "22": 773,
+     "30": 774
+    },
+    "pakai": {
+     "11": {
+      "id": 37613,
+      "kaina": 21.69,
+      "vnt": 1.972,
+      "proc": 0.64
+     },
+     "22": {
+      "id": 37614,
+      "kaina": 41.19,
+      "vnt": 1.872,
+      "proc": 5.78
+     },
+     "30": {
+      "id": 37615,
+      "kaina": 46.29,
+      "vnt": 1.543,
+      "proc": 22.37
+     }
+    }
+   },
+   {
+    "id": 33532,
+    "i": 53,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp150-monge-monoprotein-konservai-sunims-su-kalakutiena-150g",
+    "termas": {
+     "11": 772,
+     "22": 773,
+     "30": 774
+    },
+    "pakai": {
+     "11": {
+      "id": 37616,
+      "kaina": 21.69,
+      "vnt": 1.972,
+      "proc": 0.64
+     },
+     "22": {
+      "id": 37617,
+      "kaina": 41.19,
+      "vnt": 1.872,
+      "proc": 5.78
+     },
+     "30": {
+      "id": 37618,
+      "kaina": 46.29,
+      "vnt": 1.543,
+      "proc": 22.37
+     }
+    }
+   }
+  ],
+  "hb": 200
+ },
+ "R54-71": {
+  "v": "S1823p",
+  "faze": "R54-71",
+  "laikas": "2026-11-03 01:26:08",
+  "f": [
+   {
+    "id": 33600,
+    "i": 54,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-natural-kons-pasaras-suaugusioms-katems-tuno-kasneliai-su-krevetemis-zeleje-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37619,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37620,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37621,
+      "kaina": 54.89,
+      "vnt": 1.525,
+      "proc": 23.3
+     }
+    }
+   },
+   {
+    "id": 33594,
+    "i": 55,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-natural-kons-pasaras-suaugusioms-katems-geltonpelekio-tuno-kasneliai-zeleje-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37622,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37623,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37624,
+      "kaina": 54.89,
+      "vnt": 1.525,
+      "proc": 23.3
+     }
+    }
+   },
+   {
+    "id": 33606,
+    "i": 56,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-natural-kons-pasaras-suaugusioms-katems-tunas-ir-jautiena-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37625,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37626,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37627,
+      "kaina": 54.89,
+      "vnt": 1.525,
+      "proc": 23.3
+     }
+    }
+   },
+   {
+    "id": 33604,
+    "i": 57,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-natural-konservuotas-pasaras-kaciukams-su-skaniais-tuno-kasneliais-ir-vistienos-kepenelemis-virtais-garuose-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37628,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37629,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37630,
+      "kaina": 54.89,
+      "vnt": 1.525,
+      "proc": 23.3
+     }
+    }
+   },
+   {
+    "id": 32469,
+    "i": 58,
+    "parse": 1,
+    "reg": 2.19,
+    "seima": "dp80-monge-supreme-paketelis-suaugusioms-katems-su-tunu-brokoliais-ir-kukuruzais-80-g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37631,
+      "kaina": 38.19,
+      "vnt": 2.122,
+      "proc": 2.97
+     },
+     "24": {
+      "id": 37632,
+      "kaina": 49.49,
+      "vnt": 2.062,
+      "proc": 5.73
+     },
+     "36": {
+      "id": 37633,
+      "kaina": 60.39,
+      "vnt": 1.678,
+      "proc": 23.33
+     }
+    }
+   },
+   {
+    "id": 32479,
+    "i": 59,
+    "parse": 1,
+    "reg": 2.19,
+    "seima": "dp80-monge-supreme-paketelis-sterilizuotoms-katems-su-tunu-bolivine-balanda-ir-moliugu-80-g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37634,
+      "kaina": 38.19,
+      "vnt": 2.122,
+      "proc": 2.97
+     },
+     "24": {
+      "id": 37635,
+      "kaina": 49.49,
+      "vnt": 2.062,
+      "proc": 5.73
+     },
+     "36": {
+      "id": 37636,
+      "kaina": 60.39,
+      "vnt": 1.678,
+      "proc": 23.33
+     }
+    }
+   },
+   {
+    "id": 32471,
+    "i": 60,
+    "parse": 1,
+    "reg": 2.19,
+    "seima": "dp80-monge-supreme-paketelis-suaugusioms-katems-su-tunu-bolivine-balanda-ir-juros-dumbliais-80-g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37637,
+      "kaina": 38.19,
+      "vnt": 2.122,
+      "proc": 2.97
+     },
+     "24": {
+      "id": 37638,
+      "kaina": 49.49,
+      "vnt": 2.062,
+      "proc": 5.73
+     },
+     "36": {
+      "id": 37639,
+      "kaina": 60.39,
+      "vnt": 1.678,
+      "proc": 23.33
+     }
+    }
+   },
+   {
+    "id": 32473,
+    "i": 61,
+    "parse": 1,
+    "reg": 2.19,
+    "seima": "dp80-monge-supreme-paketelis-sterilizuotoms-katems-su-tunu-juru-liezuviu-ir-zirneliais-80-g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37640,
+      "kaina": 38.19,
+      "vnt": 2.122,
+      "proc": 2.97
+     },
+     "24": {
+      "id": 37641,
+      "kaina": 49.49,
+      "vnt": 2.062,
+      "proc": 5.73
+     },
+     "36": {
+      "id": 37642,
+      "kaina": 60.39,
+      "vnt": 1.678,
+      "proc": 23.33
+     }
+    }
+   },
+   {
+    "id": 32463,
+    "i": 62,
+    "parse": 1,
+    "reg": 2.19,
+    "seima": "dp80-monge-supreme-paketelis-kaciukams-su-tunu-spinatais-ir-morkytemis-80-g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37643,
+      "kaina": 38.19,
+      "vnt": 2.122,
+      "proc": 2.97
+     },
+     "24": {
+      "id": 37644,
+      "kaina": 49.49,
+      "vnt": 2.062,
+      "proc": 5.73
+     },
+     "36": {
+      "id": 37645,
+      "kaina": 60.39,
+      "vnt": 1.678,
+      "proc": 23.33
+     }
+    }
+   },
+   {
+    "id": 33672,
+    "i": 63,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp100-monge-vetsolution-renal-ir-oxalate-konservai-katems-100-g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37646,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "32": {
+      "id": 37647,
+      "kaina": 30.09,
+      "vnt": 0.94,
+      "proc": 13.57
+     }
+    }
+   },
+   {
+    "id": 33674,
+    "i": 64,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp100-monge-vetsolution-urinary-struvite-konservai-katems-100-g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37648,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "32": {
+      "id": 37649,
+      "kaina": 30.09,
+      "vnt": 0.94,
+      "proc": 13.57
+     }
+    }
+   },
+   {
+    "id": 33612,
+    "i": 65,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-kons-pasaras-katems-su-tuno-ir-vistienos-gabaleliais-savo-sultyse-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37650,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37651,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37652,
+      "kaina": 54.89,
+      "vnt": 1.525,
+      "proc": 23.3
+     }
+    }
+   },
+   {
+    "id": 33614,
+    "i": 66,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-kons-pasaras-katems-su-atlanto-tuno-gabaleliais-savo-sultyse-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37653,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37654,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37655,
+      "kaina": 54.89,
+      "vnt": 1.525,
+      "proc": 23.3
+     }
+    }
+   },
+   {
+    "id": 33620,
+    "i": 67,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-kons-pasaras-katems-su-tuno-vistienos-ir-jautienos-gabaleliais-savo-sultyse-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37656,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37657,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37658,
+      "kaina": 54.89,
+      "vnt": 1.525,
+      "proc": 23.3
+     }
+    }
+   },
+   {
+    "id": 33618,
+    "i": 68,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-kons-pasaras-katems-su-tuno-vistienos-ir-kreveciu-gabaleliais-savo-sultyse-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37659,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37660,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37661,
+      "kaina": 54.89,
+      "vnt": 1.525,
+      "proc": 23.3
+     }
+    }
+   },
+   {
+    "id": 33814,
+    "i": 69,
+    "parse": 1,
+    "reg": 1.29,
+    "seima": "dp150-special-dog-fresh-konservai-sunims-su-tunu-150g",
+    "termas": {
+     "30": 774,
+     "38": 788
+    },
+    "pakai": {
+     "30": {
+      "id": 37662,
+      "kaina": 37.49,
+      "vnt": 1.25,
+      "proc": 2.98
+     },
+     "38": {
+      "id": 37663,
+      "kaina": 43.89,
+      "vnt": 1.155,
+      "proc": 10.35
+     }
+    }
+   },
+   {
+    "id": 33810,
+    "i": 70,
+    "parse": 1,
+    "reg": 1.29,
+    "seima": "dp150-special-dog-fresh-konservai-sunims-su-vistiena-150g",
+    "termas": {
+     "30": 774,
+     "38": 788
+    },
+    "pakai": {
+     "30": {
+      "id": 37664,
+      "kaina": 37.49,
+      "vnt": 1.25,
+      "proc": 2.98
+     },
+     "38": {
+      "id": 37665,
+      "kaina": 43.89,
+      "vnt": 1.155,
+      "proc": 10.35
+     }
+    }
+   },
+   {
+    "id": 33438,
+    "i": 71,
+    "parse": 1,
+    "reg": 2.39,
+    "seima": "dp85-farmina-vet-life-struvite-konservai-katems-85-g",
+    "termas": {
+     "18": 778,
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "18": {
+      "id": 37666,
+      "kaina": 41.69,
+      "vnt": 2.316,
+      "proc": 2.96
+     },
+     "24": {
+      "id": 37667,
+      "kaina": 53.99,
+      "vnt": 2.25,
+      "proc": 5.78
+     },
+     "36": {
+      "id": 37668,
+      "kaina": 79.19,
+      "vnt": 2.2,
+      "proc": 7.9
+     }
+    }
+   }
+  ],
+  "hb": 200
+ },
+ "R72-89": {
+  "v": "S1823p",
+  "faze": "R72-89",
+  "laikas": "2026-11-03 01:27:36",
+  "f": [
+   {
+    "id": 33432,
+    "i": 72,
+    "parse": 1,
+    "reg": 2.39,
+    "seima": "dp85-farmina-vet-life-obesity-konservai-katems-85-g",
+    "termas": {
+     "18": 778,
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "18": {
+      "id": 37669,
+      "kaina": 41.69,
+      "vnt": 2.316,
+      "proc": 2.96
+     },
+     "24": {
+      "id": 37670,
+      "kaina": 53.99,
+      "vnt": 2.25,
+      "proc": 5.78
+     },
+     "36": {
+      "id": 37671,
+      "kaina": 79.19,
+      "vnt": 2.2,
+      "proc": 7.9
+     }
+    }
+   },
+   {
+    "id": 33656,
+    "i": 73,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp100-gemon-adult-konservuotas-pasaras-suaugusioms-katems-su-jautiena-ir-darzovemis-100g",
+    "termas": {
+     "32": 775,
+     "40": 779
+    },
+    "pakai": {
+     "32": {
+      "id": 37672,
+      "kaina": 27.59,
+      "vnt": 0.862,
+      "proc": 2.92
+     },
+     "40": {
+      "id": 37673,
+      "kaina": 33.49,
+      "vnt": 0.837,
+      "proc": 5.76
+     }
+    }
+   },
+   {
+    "id": 33734,
+    "i": 74,
+    "parse": 1,
+    "reg": 1.49,
+    "seima": "dp415-gemon-adult-konservuotas-pasaras-suagusioms-katems-su-lasisa-ir-krevetemis-415g",
+    "termas": {
+     "18": 789,
+     "24": 780
+    },
+    "pakai": {
+     "18": {
+      "id": 37674,
+      "kaina": 25.99,
+      "vnt": 1.444,
+      "proc": 2.88
+     },
+     "24": {
+      "id": 37675,
+      "kaina": 33.69,
+      "vnt": 1.404,
+      "proc": 5.63
+     }
+    }
+   },
+   {
+    "id": 33650,
+    "i": 75,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp400-gemon-adult-konservuotas-pastetas-suaugusioms-katems-su-jautiena-400g",
+    "termas": {
+     "18": 782,
+     "24": 771
+    },
+    "pakai": {
+     "18": {
+      "id": 37676,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 37677,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     }
+    }
+   },
+   {
+    "id": 33634,
+    "i": 76,
+    "parse": 1,
+    "reg": 1.49,
+    "seima": "dp415-gemon-mini-adult-konservuotas-pasaras-su-vistiena-ir-ryziais-415g",
+    "termas": {
+     "24": 780,
+     "36": 781
+    },
+    "pakai": {
+     "24": {
+      "id": 37678,
+      "kaina": 34.69,
+      "vnt": 1.445,
+      "proc": 2.83
+     },
+     "36": {
+      "id": 37679,
+      "kaina": 50.49,
+      "vnt": 1.403,
+      "proc": 5.77
+     }
+    }
+   },
+   {
+    "id": 33804,
+    "i": 77,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp100-lechat-exc-konservai-sterilizuotoms-katems-su-triusiena-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37680,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "32": {
+      "id": 37681,
+      "kaina": 32.79,
+      "vnt": 1.025,
+      "proc": 5.82
+     }
+    }
+   },
+   {
+    "id": 34052,
+    "i": 78,
+    "parse": 1,
+    "reg": 0.93,
+    "seima": "dp100-lechat-excellence-pouch-konservai-suaug-katems-su-lasisa-100g",
+    "termas": {
+     "32": 775,
+     "40": 779
+    },
+    "pakai": {
+     "32": {
+      "id": 37682,
+      "kaina": 29.39,
+      "vnt": 0.918,
+      "proc": 1.05
+     },
+     "40": {
+      "id": 37683,
+      "kaina": 34.99,
+      "vnt": 0.875,
+      "proc": 5.78
+     }
+    }
+   },
+   {
+    "id": 33712,
+    "i": 79,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp100-monge-bwild-large-breed-keptas-pastetas-katems-su-buivoliena-ir-darzovemis-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37684,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "32": {
+      "id": 37685,
+      "kaina": 32.79,
+      "vnt": 1.025,
+      "proc": 5.82
+     }
+    }
+   },
+   {
+    "id": 33718,
+    "i": 80,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp100-monge-bwild-adult-pastetas-katems-su-lasisa-ir-darzovemis-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37686,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "32": {
+      "id": 37687,
+      "kaina": 32.79,
+      "vnt": 1.025,
+      "proc": 5.82
+     }
+    }
+   },
+   {
+    "id": 33722,
+    "i": 81,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp100-monge-bwild-adult-pastetas-sterilizuotoms-katems-su-serniena-ir-darzovemis-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37688,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "32": {
+      "id": 37689,
+      "kaina": 32.79,
+      "vnt": 1.025,
+      "proc": 5.82
+     }
+    }
+   },
+   {
+    "id": 33770,
+    "i": 82,
+    "parse": 1,
+    "reg": 0.99,
+    "seima": "dp85-monge-bwild-kons-pasaras-sterilizuotoms-katems-su-lasisa-krevetemis-ir-darzovemis-padaze-85g",
+    "termas": {
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "24": {
+      "id": 37690,
+      "kaina": 23.09,
+      "vnt": 0.962,
+      "proc": 2.57
+     },
+     "36": {
+      "id": 37691,
+      "kaina": 33.49,
+      "vnt": 0.93,
+      "proc": 5.87
+     }
+    }
+   },
+   {
+    "id": 33818,
+    "i": 83,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp400-monge-bwild-adult-konservuotas-pasaras-su-lasisa-moliugais-ir-cukinijomis-400g",
+    "termas": {
+     "12": 770,
+     "24": 771
+    },
+    "pakai": {
+     "12": {
+      "id": 37692,
+      "kaina": 23.19,
+      "vnt": 1.933,
+      "proc": 2.64
+     },
+     "24": {
+      "id": 37693,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     }
+    }
+   },
+   {
+    "id": 33704,
+    "i": 84,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp400-monge-bwild-adult-konservuotas-pasaras-su-eriena-moliugais-ir-cukinijomis-400g",
+    "termas": {
+     "12": 770,
+     "24": 771
+    },
+    "pakai": {
+     "12": {
+      "id": 37694,
+      "kaina": 23.19,
+      "vnt": 1.933,
+      "proc": 2.64
+     },
+     "24": {
+      "id": 37695,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     }
+    }
+   },
+   {
+    "id": 33622,
+    "i": 85,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-delicate-konservai-katems-su-vistiena-ir-sparagais-80-g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37696,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37697,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37698,
+      "kaina": 65.89,
+      "vnt": 1.83,
+      "proc": 7.95
+     }
+    }
+   },
+   {
+    "id": 33788,
+    "i": 86,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp85-monge-grill-adult-konservuotas-pasaras-katems-su-triusiena-85g",
+    "termas": {
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "24": {
+      "id": 37699,
+      "kaina": 21.29,
+      "vnt": 0.887,
+      "proc": 0.05
+     },
+     "36": {
+      "id": 37700,
+      "kaina": 30.09,
+      "vnt": 0.836,
+      "proc": 5.9
+     }
+    }
+   },
+   {
+    "id": 33792,
+    "i": 87,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp85-monge-grill-sterilised-konservuotas-pasaras-sterilizuotoms-katems-su-vistiena-85g",
+    "termas": {
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "24": {
+      "id": 37701,
+      "kaina": 21.29,
+      "vnt": 0.887,
+      "proc": 0.05
+     },
+     "36": {
+      "id": 37702,
+      "kaina": 30.09,
+      "vnt": 0.836,
+      "proc": 5.9
+     }
+    }
+   },
+   {
+    "id": 33588,
+    "i": 88,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-jelly-senior-kons-pasaras-senyvoms-katems-su-tunu-ir-anciuviais-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37703,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37704,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37705,
+      "kaina": 65.89,
+      "vnt": 1.83,
+      "proc": 7.95
+     }
+    }
+   },
+   {
+    "id": 33205,
+    "i": 89,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp80-monge-monoprotein-flakes-konservai-katems-tik-su-jautiena-80-g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37706,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 37707,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 37708,
+      "kaina": 55.99,
+      "vnt": 1.555,
+      "proc": 7.88
+     }
+    }
+   }
+  ],
+  "hb": 200
+ },
+ "R90-106": {
+  "v": "S1823p",
+  "faze": "R90-106",
+  "laikas": "2026-11-03 01:28:50",
+  "f": [
+   {
+    "id": 33546,
+    "i": 90,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp150-monge-monoprotein-solo-konservai-sunims-tik-su-jautiena-150-g",
+    "termas": {
+     "11": 772,
+     "22": 773,
+     "30": 774
+    },
+    "pakai": {
+     "11": {
+      "id": 37709,
+      "kaina": 21.69,
+      "vnt": 1.972,
+      "proc": 0.64
+     },
+     "22": {
+      "id": 37710,
+      "kaina": 41.19,
+      "vnt": 1.872,
+      "proc": 5.78
+     },
+     "30": {
+      "id": 37711,
+      "kaina": 54.89,
+      "vnt": 1.83,
+      "proc": 7.96
+     }
+    }
+   },
+   {
+    "id": 33782,
+    "i": 91,
+    "parse": 1,
+    "reg": 1.29,
+    "seima": "dp85-monge-monoprotein-adult-begrudis-konservuotas-pasaras-katems-su-kalakutiena-85g",
+    "termas": {
+     "18": 778,
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "18": {
+      "id": 37712,
+      "kaina": 22.49,
+      "vnt": 1.249,
+      "proc": 2.89
+     },
+     "24": {
+      "id": 37713,
+      "kaina": 29.09,
+      "vnt": 1.212,
+      "proc": 5.85
+     },
+     "36": {
+      "id": 37714,
+      "kaina": 42.69,
+      "vnt": 1.186,
+      "proc": 7.95
+     }
+    }
+   },
+   {
+    "id": 33540,
+    "i": 92,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp150-monge-monoprotein-konservai-sunims-su-antiena-150g",
+    "termas": {
+     "11": 772,
+     "22": 773,
+     "30": 774
+    },
+    "pakai": {
+     "11": {
+      "id": 37715,
+      "kaina": 21.69,
+      "vnt": 1.972,
+      "proc": 0.64
+     },
+     "22": {
+      "id": 37716,
+      "kaina": 41.19,
+      "vnt": 1.872,
+      "proc": 5.78
+     },
+     "30": {
+      "id": 37717,
+      "kaina": 54.89,
+      "vnt": 1.83,
+      "proc": 7.96
+     }
+    }
+   },
+   {
+    "id": 33530,
+    "i": 93,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp150-monge-monoprotein-konservai-sunims-su-vistiena-150g",
+    "termas": {
+     "11": 772,
+     "22": 773,
+     "30": 774
+    },
+    "pakai": {
+     "11": {
+      "id": 37718,
+      "kaina": 21.69,
+      "vnt": 1.972,
+      "proc": 0.64
+     },
+     "22": {
+      "id": 37719,
+      "kaina": 41.19,
+      "vnt": 1.872,
+      "proc": 5.78
+     },
+     "30": {
+      "id": 37720,
+      "kaina": 54.89,
+      "vnt": 1.83,
+      "proc": 7.96
+     }
+    }
+   },
+   {
+    "id": 33534,
+    "i": 94,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp150-monge-monoprotein-konservai-sunims-su-eriena-150g",
+    "termas": {
+     "11": 772,
+     "22": 773,
+     "30": 774
+    },
+    "pakai": {
+     "11": {
+      "id": 37721,
+      "kaina": 21.69,
+      "vnt": 1.972,
+      "proc": 0.64
+     },
+     "22": {
+      "id": 37722,
+      "kaina": 41.19,
+      "vnt": 1.872,
+      "proc": 5.78
+     },
+     "30": {
+      "id": 37723,
+      "kaina": 54.89,
+      "vnt": 1.83,
+      "proc": 7.96
+     }
+    }
+   },
+   {
+    "id": 33972,
+    "i": 95,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp80-monge-monoprotein-cat-flakes-su-kalakutiena-ir-morkomis-suaugusioms-katems-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37724,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 37725,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 37726,
+      "kaina": 55.99,
+      "vnt": 1.555,
+      "proc": 7.88
+     }
+    }
+   },
+   {
+    "id": 33602,
+    "i": 96,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-natural-kons-pasaras-suaugusioms-katems-tuno-kasneliai-su-antiena-zeleje-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37727,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37728,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37729,
+      "kaina": 65.89,
+      "vnt": 1.83,
+      "proc": 7.95
+     }
+    }
+   },
+   {
+    "id": 33596,
+    "i": 97,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-natural-kons-pasaras-suaugusioms-katems-tuno-kasneliai-su-anciuviais-zeleje-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37730,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37731,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37732,
+      "kaina": 65.89,
+      "vnt": 1.83,
+      "proc": 7.95
+     }
+    }
+   },
+   {
+    "id": 33670,
+    "i": 98,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp100-monge-vetsolution-gastrointestinal-konservai-katems-100-g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37733,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "32": {
+      "id": 37734,
+      "kaina": 32.79,
+      "vnt": 1.025,
+      "proc": 5.82
+     }
+    }
+   },
+   {
+    "id": 33676,
+    "i": 99,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp100-monge-vetsolution-recovery-konservai-katems-100-g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37735,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "32": {
+      "id": 37736,
+      "kaina": 32.79,
+      "vnt": 1.025,
+      "proc": 5.82
+     }
+    }
+   },
+   {
+    "id": 33680,
+    "i": 100,
+    "parse": 1,
+    "reg": 1.39,
+    "seima": "dp150-monge-vetsolution-gastrointestinal-konservai-sunims-150-g",
+    "termas": {
+     "22": 773,
+     "30": 774
+    },
+    "pakai": {
+     "22": {
+      "id": 37737,
+      "kaina": 29.69,
+      "vnt": 1.35,
+      "proc": 2.72
+     },
+     "30": {
+      "id": 37738,
+      "kaina": 39.29,
+      "vnt": 1.31,
+      "proc": 5.64
+     }
+    }
+   },
+   {
+    "id": 33616,
+    "i": 101,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-kons-pasaras-katems-su-gardziomis-juros-gerybemis-ir-vistiena-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37739,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37740,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37741,
+      "kaina": 65.89,
+      "vnt": 1.83,
+      "proc": 7.95
+     }
+    }
+   },
+   {
+    "id": 33610,
+    "i": 102,
+    "parse": 1,
+    "reg": 1.99,
+    "seima": "dp80-monge-kons-pasaras-katems-su-tuno-gabaleliais-vistiena-ir-lasisa-savo-sultyse-80g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 37742,
+      "kaina": 34.79,
+      "vnt": 1.933,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 37743,
+      "kaina": 44.89,
+      "vnt": 1.87,
+      "proc": 5.89
+     },
+     "36": {
+      "id": 37744,
+      "kaina": 65.89,
+      "vnt": 1.83,
+      "proc": 7.95
+     }
+    }
+   },
+   {
+    "id": 33930,
+    "i": 103,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp415-simba-konservai-katems-su-zveriena-415-g",
+    "termas": {
+     "24": 780,
+     "30": 786
+    },
+    "pakai": {
+     "24": {
+      "id": 37745,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "30": {
+      "id": 37746,
+      "kaina": 30.79,
+      "vnt": 1.026,
+      "proc": 5.66
+     }
+    }
+   },
+   {
+    "id": 33740,
+    "i": 104,
+    "parse": 1,
+    "reg": 1.09,
+    "seima": "dp415-simba-konservuotas-pasaras-katems-su-tunu-415g",
+    "termas": {
+     "24": 780,
+     "30": 786
+    },
+    "pakai": {
+     "24": {
+      "id": 37747,
+      "kaina": 25.39,
+      "vnt": 1.058,
+      "proc": 2.72
+     },
+     "30": {
+      "id": 37748,
+      "kaina": 30.79,
+      "vnt": 1.026,
+      "proc": 5.66
+     }
+    }
+   },
+   {
+    "id": 33812,
+    "i": 105,
+    "parse": 1,
+    "reg": 1.49,
+    "seima": "dp150-special-dog-exc-fresh-konservai-sunims-su-kalakutiena-150g",
+    "termas": {
+     "22": 773,
+     "30": 774
+    },
+    "pakai": {
+     "22": {
+      "id": 37749,
+      "kaina": 31.79,
+      "vnt": 1.445,
+      "proc": 2.84
+     },
+     "30": {
+      "id": 37750,
+      "kaina": 42.09,
+      "vnt": 1.403,
+      "proc": 5.71
+     }
+    }
+   },
+   {
+    "id": 33808,
+    "i": 106,
+    "parse": 1,
+    "reg": 1.49,
+    "seima": "dp150-special-dog-exc-fresh-konservai-sunims-su-eriena-150g",
+    "termas": {
+     "22": 773,
+     "30": 774
+    },
+    "pakai": {
+     "22": {
+      "id": 37751,
+      "kaina": 31.79,
+      "vnt": 1.445,
+      "proc": 2.84
+     },
+     "30": {
+      "id": 37752,
+      "kaina": 42.09,
+      "vnt": 1.403,
+      "proc": 5.71
+     }
+    }
+   }
+  ],
+  "hb": 200
+ }
+}
