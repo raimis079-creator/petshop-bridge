@@ -1,0 +1,160 @@
+{
+ "1": {
+  "v": "S1815m",
+  "cols": [
+   "id",
+   "laikas",
+   "lygis",
+   "parasas",
+   "zinute",
+   "failas",
+   "eilute",
+   "url",
+   "kiek"
+  ],
+  "fatal": [
+   {
+    "id": "20539",
+    "laikas": "2026-11-02 10:19:00",
+    "lygis": "fatal",
+    "parasas": "01571298c64a6f43c7e73455e0fcd3c9",
+    "zinute": "Uncaught ValueError: random_bytes(): Argument #1 ($length) must be greater than 0 in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:18\nStack trace:\n#0 /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code(18): random_bytes()\n#1 /home/gyvunai2/domains/petshop.lt",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "18",
+    "url": "/?ps_s1815bk=2",
+    "kiek": "1"
+   },
+   {
+    "id": "20534",
+    "laikas": "2026-11-02 10:01:38",
+    "lygis": "fatal",
+    "parasas": "22f0696e02a27a1c4aecd2abc1a36f92",
+    "zinute": "Uncaught Error: Call to undefined function shell_exec() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:8\nStack trace:\n#0 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(341): {closure}()\n#1 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "8",
+    "url": "/?ps_s1815k=1",
+    "kiek": "1"
+   },
+   {
+    "id": "20410",
+    "laikas": "2026-10-31 22:15:09",
+    "lygis": "fatal",
+    "parasas": "8b36828fcde93049620c646926779d52",
+    "zinute": "Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes)",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php",
+    "eilute": "655",
+    "url": "/wp-cron.php?doing_wp_cron=1793477703.5137169361114501953125",
+    "kiek": "1"
+   },
+   {
+    "id": "20305",
+    "laikas": "2026-10-30 18:15:12",
+    "lygis": "fatal",
+    "parasas": "8b36828fcde93049620c646926779d52",
+    "zinute": "Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes)",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php",
+    "eilute": "655",
+    "url": "/wp-cron.php?doing_wp_cron=1793376902.5730769634246826171875",
+    "kiek": "1"
+   },
+   {
+    "id": "20014",
+    "laikas": "2026-10-30 04:20:10",
+    "lygis": "fatal",
+    "parasas": "05774fb9d950371e6ed92ae27da0d44f",
+    "zinute": "Uncaught Error: Call to undefined function is_product() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php:682\nStack trace:\n#0 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(341): Petshop_Laukai::vitrina_init()\n#1 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()\n#2 /home/gy",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php",
+    "eilute": "682",
+    "url": "/wp-activate.php",
+    "kiek": "1"
+   },
+   {
+    "id": "19809",
+    "laikas": "2026-10-29 09:15:11",
+    "lygis": "fatal",
+    "parasas": "e8138b3afc88153fef3820a2c69a5ebe",
+    "zinute": "Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes)",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-term-query.php",
+    "eilute": "1176",
+    "url": "/wp-cron.php?doing_wp_cron=1793258103.1782989501953125000000",
+    "kiek": "1"
+   },
+   {
+    "id": "19708",
+    "laikas": "2026-10-28 15:43:30",
+    "lygis": "fatal",
+    "parasas": "cabb7118b1063448ce4b6e3c70f9edfc",
+    "zinute": "Uncaught Error: Call to a member function get_name() on false in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:15\nStack trace:\n#0 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(341): {closure}()\n#1 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(365): WP_Hook->apply_fi",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "15",
+    "url": "/?ps_s1807st=1",
+    "kiek": "2"
+   },
+   {
+    "id": "19440",
+    "laikas": "2026-10-28 02:50:52",
+    "lygis": "fatal",
+    "parasas": "05774fb9d950371e6ed92ae27da0d44f",
+    "zinute": "Uncaught Error: Call to undefined function is_product() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php:682\nStack trace:\n#0 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(341): Petshop_Laukai::vitrina_init()\n#1 /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php(365): WP_Hook->apply_filters()\n#2 /home/gy",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php",
+    "eilute": "682",
+    "url": "/wp-activate.php",
+    "kiek": "1"
+   },
+   {
+    "id": "19390",
+    "laikas": "2026-10-27 17:43:02",
+    "lygis": "fatal",
+    "parasas": "0646e03070d0624977dd3e7fd2496972",
+    "zinute": "Uncaught TypeError: array_slice(): Argument #1 ($array) must be of type array, false given in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:9\nStack trace:\n#0 /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code(9): array_slice()\n#1 /home/gyvunai2/domains/pets",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
+    "eilute": "9",
+    "url": "/?ps_s1803=GO",
+    "kiek": "1"
+   },
+   {
+    "id": "19234",
+    "laikas": "2026-10-27 13:30:37",
+    "lygis": "fatal",
+    "parasas": "a751d3f96c737f7d2544b341ed8b49c1",
+    "zinute": "Allowed memory size of 268435456 bytes exhausted (tried to allocate 4198400 bytes)",
+    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php",
+    "eilute": "630",
+    "url": "/wp-admin/admin.php?page=ps-katalogas&kruva=juodrasciai",
+    "kiek": "2"
+   }
+  ],
+  "wpai_hist_aplink": [],
+  "imp7": {
+   "id": "7",
+   "name": "vf-feed.xml",
+   "path": "/wpallimport/files/vf-feed.xml",
+   "o": "1",
+   "ol": "25109"
+  },
+  "imp7_opt": {
+   "records_per_request": "20",
+   "is_update_previous": 0,
+   "update_all_data": "no",
+   "is_delete_missing": "0",
+   "set_missing_to_draft": 0,
+   "unique_key": "- {id[1]} - {sku_id[1]}",
+   "is_selective_hashing": "1",
+   "custom_type": "product",
+   "duplicate_matching": "manual"
+  },
+  "imp3_opt": {
+   "records_per_request": "20"
+  },
+  "imp2_opt": {
+   "records_per_request": "10"
+  }
+ },
+ "v": "dep-084126",
+ "kurimas": 200,
+ "sid": 7641,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
