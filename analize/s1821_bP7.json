@@ -1,7 +1,7 @@
 {
- "v": "dep-185043",
+ "v": "dep-185214",
  "kurimas": 200,
- "sid": 7733,
+ "sid": 7734,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
@@ -9,7 +9,74 @@
  "P7": {
   "v": "S1821b",
   "faze": "P7",
-  "laikas": "2026-11-02 20:51:48",
-  "FATAL": "lentelė: Duplicate entry 'fe14ccac3e06b32c769cc7d04ce0f4484c0b7a35bc7f02edf3cd4d76cd57d835' for key 'uq_checksum' @21"
+  "laikas": "2026-11-02 20:53:15",
+  "lentele": 365,
+  "seima": "dp400-monge-monoproteico-solo-agnello-monoproteininiai-konservai-sunims-su-gryna-eriena-400-g",
+  "pakai": {
+   "6": {
+    "id": 37445,
+    "kaina": 17.39,
+    "vnt": 2.898,
+    "proc": 2.74,
+    "pav": "6 vnt. Monge Monoproteico Solo Agnello – Monoproteininiai konservai šunims su gryna ėriena, 400 g",
+    "dydis": [
+     "6 × 400 g"
+    ],
+    "w": "2.4",
+    "calc": [
+     "ok",
+     545,
+     3,
+     4
+    ]
+   },
+   "12": {
+    "id": 37446,
+    "kaina": 34.49,
+    "vnt": 2.874,
+    "proc": 3.71,
+    "pav": "12 vnt. Monge Monoproteico Solo Agnello – Monoproteininiai konservai šunims su gryna ėriena, 400 g",
+    "dydis": [
+     "12 × 400 g"
+    ],
+    "w": "4.8",
+    "calc": [
+     "ok",
+     545,
+     6,
+     8
+    ]
+   },
+   "24": {
+    "id": 37447,
+    "kaina": 68.19,
+    "vnt": 2.841,
+    "proc": 4.9,
+    "pav": "24 vnt. Monge Monoproteico Solo Agnello – Monoproteininiai konservai šunims su gryna ėriena, 400 g",
+    "dydis": [
+     "24 × 400 g"
+    ],
+    "w": "9.6",
+    "calc": [
+     "ok",
+     545,
+     12,
+     17
+    ]
+   }
+  },
+  "psl24": {
+   "kodas": 200,
+   "sekcijos": [
+    "Aprašymas",
+    "Sudėtis",
+    "Analitinės sudedamosios dalys",
+    "Priedai",
+    "Šėrimo instrukcija"
+   ],
+   "esc": 0
+  },
+  "lent": "Dydis Kaina €/vnt. Sutaupai Užtenka 400 g perkamiausias 2,99 € 2,99 — Rinktis 6 × 400 g DP pakas 17,39 € 2,90 −3 % už vnt. Rinktis 12 × 400 g DP pakas 34,49 € 2,87 −4 % už vnt. Rinktis 24 × 400 g DP pakas geriausia kaina už vnt. 68,19 € 2,84 −5 % už vnt. pasirinkta",
+  "hb": 200
  }
 }
