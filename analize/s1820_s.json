@@ -1,0 +1,49 @@
+{
+ "1": {
+  "v": "S1820s",
+  "p6": {
+   "kodas": 200,
+   "badges": 1,
+   "nums": {
+    "&times;6": 1
+   },
+   "galerija": "woocommerce-product-gallery__image, .woocommerce-product-gallery__wrapper .woocommerce-product-gallery__image { position: relative; } .psc-qty-badge { position: absolute; top: 8px; right: 8px; z-index: 5; width: 54px; height: 54px; border-radius: 50%; background: #2f5f46; color: #fff; border: 2px solid rgba(255,255,255,0.85); box-shadow: 0 2px 6px rgba(0,0,0,0.25); display: flex; flex-direction: column; align-items: center; justify-content: center; line-height: 1; text-align: center; font-weight: 700; pointer-events: none; } .psc-qty-badge .psc-qty-num { font-size: 18px; } .psc-qty-badge .psc-qty-vnt { font-size: 11px; letter-spacing: 0.3px; margin-top: 2px; } .psc-eco-band { position: absolute; left: 0; right: 0; bottom: 0; z-index: 4; background: #2f5f46; color: #fff; text-align: center; font-weight: 700; font-size: 11px; letter-spacing: 0.3px; padding: 5px 4px; text-transform: uppercase; line-height: 1.15; pointer-events: none; } </style> <style id=\"psc-ui-css\"> /* A) Produktų kortelės: kaina + mygtukas apačioje, sulygiuoti */ .products .product-small.box { display: flex; flex-direction: column; height: 100%; } .products .product-small .box-image { flex: 0 0 auto; } .products .product-small .box-text { display: flex; flex-direction: column; flex: 1 1 auto; } .products .product-small .box-text .price-wrapp"
+  },
+  "p24": {
+   "kodas": 200,
+   "badges": 1,
+   "nums": {
+    "&times;24": 1
+   }
+  },
+  "kons": {
+   "kodas": 200,
+   "badges": 5,
+   "nums": {
+    "&times;12": 1,
+    "&times;24": 1,
+    "&times;6": 3
+   },
+   "kortele_badge": "&times;12",
+   "kortele_data": null
+  },
+  "dp": {
+   "kodas": 200,
+   "badges": 24,
+   "nums": {
+    "&times;12": 1,
+    "&times;2": 23
+   },
+   "kortele_badge": "&times;12",
+   "kortele_data": null
+  },
+  "kortele_js": "<script>(function(){document.addEventListener(\"click\",function(e){var b=e.target.closest(\".ps-dk__ch\");if(!b)return;e.preventDefault();var dk=b.closest(\".ps-dk\"),card=b.closest(\".product-small.col\")||b.closest(\".product-small\");if(!dk||!card)return;if(!dk.getAttribute(\"data-orig\"))dk.setAttribute(\"data-orig\",dk.getAttribute(\"data-cur\"));var n;try{n=JSON.parse(dk.getAttribute(\"data-n\"))}catch(x){return}var id=parseInt(b.getAttribute(\"data-id\"),10),m=null;for(var i=0;i<n.length;i++){if(n[i].id===id)m=n[i]}if(!m)return;\ndk.querySelectorAll(\".ps-dk__ch\").forEach(function(c){c.classList.toggle(\"ps-dk__ch--sel\",c===b)});dk.setAttribute(\"data-cur\",String(id));\nvar kg=dk.querySelector(\".ps-dk__kg\");if(kg)kg.textContent=m.kg||\"\";\nvar img=card.querySelector(\".box-image img\");if(img&&m.img){img.src=m.img;if(m.ss)img.srcset=m.ss;else img.removeAttribute(\"srcset\");img.alt=m.pav}\ncard.querySelectorAll(\".box-image a[href], .product-title a, .name a\").forEach(function(a){a.href=m.url});\nvar t=card.querySelector(\".product-title a, .name a\");if(t)t.textContent=m.pav;\nvar pr=card.querySelector(\".price-wrapper .price, .price\");if(pr)pr.innerHTML=m.ph;\ncard.querySelectorAll(\".add_to_cart_button, a.button[data-product_id]\").forEach(function(a){a.setAttribute(\"data-product_id\",String(id));a.setAttribute(\"data-product_sku\",m.sku||\"\");a.href=a.href.replace(/add-to-cart=\\d+/,\"add-to-cart=\"+id);a.setAttribute(\"aria-label\",\"Įdėti į krepšelį: \"+m.pav);a.classList.remove(\"added\",\"loading\");var v=card.querySelector(\"a.added_to_cart\");if(v)v.remove()});\ncard.querySelectorAll(\"[data-prod]\").forEach(function(q){q.setAttribute(\"data-prod\",String(id))});\nvar cl=card.className.replace(/\\bpost-\\d+\\b/,\"post-\"+id);card.className=cl;card.classList.toggle(\"ps-dk-switched\",String(id)!==dk.getAttribute(\"data-orig\"));\n});})();</script>"
+ },
+ "v": "dep-173131",
+ "kurimas": 200,
+ "sid": 7713,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
