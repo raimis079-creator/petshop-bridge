@@ -1,0 +1,546 @@
+{
+ "v": "dep-134703",
+ "kurimas": 200,
+ "sid": 7679,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1819a",
+  "plugins": [
+   "woocommerce-mix-and-match-products/woocommerce-mix-and-match-products.php"
+  ],
+  "types": [
+   {
+    "type": "Mix and Match",
+    "st": "draft",
+    "n": "2"
+   },
+   {
+    "type": "Mix and Match",
+    "st": "publish",
+    "n": "33"
+   },
+   {
+    "type": "simple",
+    "st": "draft",
+    "n": "1279"
+   },
+   {
+    "type": "simple",
+    "st": "private",
+    "n": "2"
+   },
+   {
+    "type": "simple",
+    "st": "publish",
+    "n": "2854"
+   },
+   {
+    "type": "variable",
+    "st": "publish",
+    "n": "71"
+   }
+  ],
+  "mnm": [
+   {
+    "id": "34934",
+    "t": "Skanėstų dėžė šuniui — minkšti",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 12,
+    "sand": {
+     "vf": 12
+    },
+    "min": "3",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "34935",
+    "t": "Skanėstų dėžė šuniui — monoproteinas",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 12,
+    "sand": {
+     "vf": 12
+    },
+    "min": "3",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "34936",
+    "t": "Skanėstų dėžutė katei",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 12,
+    "sand": {
+     "vf": 12
+    },
+    "min": "3",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "34938",
+    "t": "Skanėstų dėžutė katei",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 11,
+    "sand": {
+     "av": 11
+    },
+    "min": "3",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "34942",
+    "t": "Konservų dėžė, 800 g. Be vištienos",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 11,
+    "sand": {
+     "av": 11
+    },
+    "min": "6",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "34944",
+    "t": "Konservų dėžė, 400 g. Be vištienos",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 12,
+    "sand": {
+     "av": 12
+    },
+    "min": "6",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "34945",
+    "t": "Konservų dėžė 300/400 g – Monoproteinas",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 12,
+    "sand": {
+     "av": 12
+    },
+    "min": "6",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "34947",
+    "t": "Konservų rinkinys katėms – Išrankioms, tunas",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 12,
+    "sand": {
+     "av": 12
+    },
+    "min": "6",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "35070",
+    "t": "Stirnos ir avies kojų rinkinys šunims · 12 vnt.",
+    "st": "publish",
+    "price": "17.09",
+    "n_comp": 4,
+    "sand": {
+     "av": 4
+    },
+    "min": "12",
+    "max": "12",
+    "pricing": "no"
+   },
+   {
+    "id": "35076",
+    "t": "Rinkinys Gurmanams - skanėstai šunims",
+    "st": "publish",
+    "price": "14.98",
+    "n_comp": 4,
+    "sand": {
+     "av": 4
+    },
+    "min": "13",
+    "max": "13",
+    "pricing": "no"
+   },
+   {
+    "id": "35079",
+    "t": "Animonda GranCarno Adult konservų rinkinys 6 x 800 g #1",
+    "st": "publish",
+    "price": "20.2",
+    "n_comp": 6,
+    "sand": {
+     "av": 6
+    },
+    "min": "6",
+    "max": "6",
+    "pricing": "no"
+   },
+   {
+    "id": "35081",
+    "t": "Animonda GranCarno Adult konservų rinkinys 6 x 800 g #2",
+    "st": "publish",
+    "price": "20.4",
+    "n_comp": 6,
+    "sand": {
+     "av": 6
+    },
+    "min": "6",
+    "max": "6",
+    "pricing": "no"
+   },
+   {
+    "id": "35085",
+    "t": "Galvijų ir kiaulės ausų rinkinys",
+    "st": "publish",
+    "price": "14.99",
+    "n_comp": 3,
+    "sand": {
+     "av": 3
+    },
+    "min": "12",
+    "max": "12",
+    "pricing": "no"
+   },
+   {
+    "id": "35094",
+    "t": "Rinkinys katėms mėsos ir salyklo (malt) pastos",
+    "st": "draft",
+    "price": "12.48",
+    "n_comp": 7,
+    "sand": {
+     "av": 7
+    },
+    "min": "7",
+    "max": "7",
+    "pricing": "no"
+   },
+   {
+    "id": "35291",
+    "t": "Skanėstų kačių dantims rinkinys",
+    "st": "publish",
+    "price": "6.35",
+    "n_comp": 3,
+    "sand": {
+     "av": 3
+    },
+    "min": "3",
+    "max": "3",
+    "pricing": "no"
+   },
+   {
+    "id": "35309",
+    "t": "Konservų rinkinys katėms - Animonda",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 11,
+    "sand": {
+     "av": 11
+    },
+    "min": "6",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "35390",
+    "t": "Konservų rinkinys katėms - kačiukams",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 10,
+    "sand": {
+     "vf": 10
+    },
+    "min": "6",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "35392",
+    "t": "Jautriam mažam šuniui — Exclusion Hypo Mini kiauliena: 2 kg sausas + 4 konservai",
+    "st": "publish",
+    "price": "32.45",
+    "n_comp": 2,
+    "sand": {
+     "vf": 1,
+     "av": 1
+    },
+    "min": "6",
+    "max": "6",
+    "pricing": "no"
+   },
+   {
+    "id": "35394",
+    "t": "Jautriam mažam šuniui — Exclusion Hypo Mini kiauliena 2 kg + 4 elnienos konservai",
+    "st": "draft",
+    "price": "36.7",
+    "n_comp": 2,
+    "sand": {
+     "vf": 1,
+     "av": 1
+    },
+    "min": "5",
+    "max": "5",
+    "pricing": "no"
+   },
+   {
+    "id": "35396",
+    "t": "Apsauga nuo parazitų šuniui — antkaklis, lašiukai, purškiklis + skanėstai",
+    "st": "publish",
+    "price": "12.09",
+    "n_comp": 4,
+    "sand": {
+     "av": 4
+    },
+    "min": "4",
+    "max": "4",
+    "pricing": "no"
+   },
+   {
+    "id": "35398",
+    "t": "Apsauga nuo parazitų katei — antkaklis, lašiukai, purškiklis + skanėstas",
+    "st": "publish",
+    "price": "14.5",
+    "n_comp": 4,
+    "sand": {
+     "av": 4
+    },
+    "min": "4",
+    "max": "4",
+    "pricing": "no"
+   },
+   {
+    "id": "35400",
+    "t": "Kačių tualeto starteris — tualetas aukštu rėmeliu, silikoninis kraikas ir semtuvėlis",
+    "st": "publish",
+    "price": "17.09",
+    "n_comp": 2,
+    "sand": {
+     "av": 2
+    },
+    "min": "3",
+    "max": "3",
+    "pricing": "no"
+   },
+   {
+    "id": "35402",
+    "t": "Katei, kuri mažai geria — vandens fontanas Catit + filtrų komplektas",
+    "st": "publish",
+    "price": "54.35",
+    "n_comp": 2,
+    "sand": {
+     "av": 2
+    },
+    "min": "2",
+    "max": "2",
+    "pricing": "no"
+   },
+   {
+    "id": "35404",
+    "t": "Vytintų skanėstų rinkinys šuniui — 8 rūšys (antiena, elniena, ėriena, jautiena)",
+    "st": "publish",
+    "price": "34.12",
+    "n_comp": 8,
+    "sand": {
+     "vf": 8
+    },
+    "min": "8",
+    "max": "8",
+    "pricing": "no"
+   },
+   {
+    "id": "35406",
+    "t": "Kramtymui ir dantims — rinkinys vidutinių veislių šuniui (7 skanėstai)",
+    "st": "publish",
+    "price": "31.15",
+    "n_comp": 7,
+    "sand": {
+     "vf": 7
+    },
+    "min": "7",
+    "max": "7",
+    "pricing": "no"
+   },
+   {
+    "id": "35408",
+    "t": "Mažų veislių šuniui — skanėstų rinkinys (9 vnt.)",
+    "st": "publish",
+    "price": "34.55",
+    "n_comp": 8,
+    "sand": {
+     "vf": 8
+    },
+    "min": "9",
+    "max": "9",
+    "pricing": "no"
+   },
+   {
+    "id": "35410",
+    "t": "Alergiškam šuniui — vieno baltymo skanėstų rinkinys (7 vnt.)",
+    "st": "publish",
+    "price": "31.23",
+    "n_comp": 7,
+    "sand": {
+     "vf": 7
+    },
+    "min": "7",
+    "max": "7",
+    "pricing": "no"
+   },
+   {
+    "id": "35412",
+    "t": "Dresūrai — minkštų kąsnelių rinkinys šuniui (6 vnt.)",
+    "st": "publish",
+    "price": "30.24",
+    "n_comp": 6,
+    "sand": {
+     "vf": 6
+    },
+    "min": "6",
+    "max": "6",
+    "pricing": "no"
+   },
+   {
+    "id": "35781",
+    "t": "Konservų dėžė, 400 g. Įvairovė",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 12,
+    "sand": {
+     "vf": 12
+    },
+    "min": "6",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "35782",
+    "t": "Konservų dėžė, 800 g. Įvairovė",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 9,
+    "sand": {
+     "vf": 9
+    },
+    "min": "6",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "36153",
+    "t": "Skanėstų dėžė šuniui - kieti kramtukai",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 12,
+    "sand": {
+     "vf": 12
+    },
+    "min": "3",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "36154",
+    "t": "Kramtalų rinkinys šunims – TOP 12",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 12,
+    "sand": {
+     "av": 12
+    },
+    "min": "3",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "36155",
+    "t": "Kramtalų dėžė šuniui - tvirtų dantų savininkams",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 12,
+    "sand": {
+     "av": 12
+    },
+    "min": "3",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "37367",
+    "t": "Konservų dėžė katei — maišeliai ir paštetai 85 g",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 12,
+    "sand": {
+     "vf": 12
+    },
+    "min": "12",
+    "max": "0",
+    "pricing": "yes"
+   },
+   {
+    "id": "37368",
+    "t": "Konservų dėžė katei — Josera",
+    "st": "publish",
+    "price": 0,
+    "n_comp": 12,
+    "sand": {
+     "vf": 12
+    },
+    "min": "6",
+    "max": "0",
+    "pricing": "yes"
+   }
+  ],
+  "zb_cheap": [
+   {
+    "cat": "Konservai šunims",
+    "n": "134",
+    "avg_price": "2.65",
+    "pub": "0"
+   },
+   {
+    "cat": "Konservai katėms",
+    "n": "130",
+    "avg_price": "1.54",
+    "pub": "0"
+   },
+   {
+    "cat": "Kita",
+    "n": "69",
+    "avg_price": "2.11",
+    "pub": "0"
+   },
+   {
+    "cat": "Dubenėliai šunims",
+    "n": "2",
+    "avg_price": "1.99",
+    "pub": "0"
+   }
+  ],
+  "zb_cheap_total": {
+   "n": "335",
+   "pub": "0",
+   "dr": "335"
+  },
+  "zb_cheap_sales": {
+   "uzs": "8",
+   "vnt": "31"
+  },
+  "zb_orders": {
+   "uzs": "27",
+   "vnt": "51"
+  },
+  "err": ""
+ }
+}
