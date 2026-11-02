@@ -1,0 +1,131 @@
+{
+ "1": {
+  "v": "S1820o",
+  "bc": [
+   {
+    "condition_dimensions": "{\"body_condition\":\"thin\"}",
+    "condition_raw": "{\"body_condition\":\"Liesa\"}",
+    "n": "124"
+   },
+   {
+    "condition_dimensions": "{\"body_condition\":\"ideal\"}",
+    "condition_raw": "{\"body_condition\":\"Normali\"}",
+    "n": "124"
+   },
+   {
+    "condition_dimensions": "{\"body_condition\":\"heavy\"}",
+    "condition_raw": "{\"body_condition\":\"Antsvoris\"}",
+    "n": "124"
+   },
+   {
+    "condition_dimensions": "{\"body_condition\":\"ideal\"}",
+    "condition_raw": null,
+    "n": "90"
+   },
+   {
+    "condition_dimensions": "{\"body_condition\":\"thin\"}",
+    "condition_raw": null,
+    "n": "74"
+   },
+   {
+    "condition_dimensions": "{\"body_condition\":\"heavy\"}",
+    "condition_raw": null,
+    "n": "74"
+   },
+   {
+    "condition_dimensions": "{\"body_condition\":\"lean\"}",
+    "condition_raw": "{\"body_condition\":\"Liesa\"}",
+    "n": "53"
+   },
+   {
+    "condition_dimensions": "{\"body_condition\":\"normal\"}",
+    "condition_raw": "{\"body_condition\":\"Normali\"}",
+    "n": "53"
+   },
+   {
+    "condition_dimensions": "{\"body_condition\":\"overweight\"}",
+    "condition_raw": "{\"body_condition\":\"Antsvoris\"}",
+    "n": "53"
+   },
+   {
+    "condition_dimensions": "{\"body_condition\":\"heavy\"}",
+    "condition_raw": "{\"body_condition\":\"overweight\"}",
+    "n": "16"
+   },
+   {
+    "condition_dimensions": "{\"body_condition\":\"thin\"}",
+    "condition_raw": "{\"activity_level\":\"Liesa\"}",
+    "n": "6"
+   },
+   {
+    "condition_dimensions": "{\"body_condition\":\"ideal\"}",
+    "condition_raw": "{\"activity_level\":\"Normali\"}",
+    "n": "6"
+   },
+   {
+    "condition_dimensions": "{\"body_condition\":\"heavy\"}",
+    "condition_raw": "{\"activity_level\":\"Antsvoris\"}",
+    "n": "4"
+   }
+  ],
+  "prov": "class Petshop_Feeding_Package_Provider {\n\tpublic static function for_product( $product_id ) {\n\t\t$terms = wp_get_object_terms( (int) $product_id, 'pa_pakuotes_dydis', array( 'fields' => 'names' ) );\n\t\t$raw = ( ! is_wp_error( $terms ) && ! empty( $terms ) ) ? $terms[0] : null;\n\t\treturn Petshop_Feeding_Package_Resolver::resolve( $raw );\n\t}\n}\n",
+  "apply_axis_defaults": "\tprotected static function apply_axis_defaults( $rt, $in ) {\n\t\tif ( ! is_array( $rt['axis_policy'] ?? null ) || empty( $rt['rows'] ) ) { return array( $rt, false ); }\n\t\tforeach ( array_keys( $rt['axis_policy'] ) as $ax ) {\n\t\t\t$spec = $rt['axis_policy'][ $ax ];\n\t\t\t$kind = is_array( $spec ) ? ( $spec['kind'] ?? null ) : null;\n\t\t\tif ( $kind !== 'categorical' ) { continue; }\n\t\t\tif ( $ax === 'activity_level' ) { continue; }\n\n\t\t\t$joined = strtolower( (string) $ax ) . ' ';\n\t\t\tforeach ( $rt['rows'] as $r ) {\n\t\t\t\t$joined .= strtolower( (string) ( $r['conditions'][ $ax ] ?? '' ) ) . ' ' . strtolower( (string) ( $r['condition_raw'][ $ax ] ?? '' ) ) . ' ';\n\t\t\t}\n\n\t\t\t$pick = null;\n\t\t\tif ( preg_match( '/svorio_valdym|weight_goal/i', $ax ) || ( preg_match( '/palaik|maintain/u', $joined ) && preg_match( '/ma\\x{017e}in|mazin|reduc|loss/u', $joined ) ) ) {\n\t\t\t\t$pick = '/palaik|maintain/u';\n\t\t\t} elseif ( preg_match( '/body_condition|kuno_bukle/i', $ax ) ) {\n\t\t\t\t$pick = '/(^|[^a-z])normal/u';\n\t\t\t} elseif ( preg_match( '/housing|laikym/i', $ax ) ) {\n\t\t\t\t$pick = '/(^|[^a-z])indoor/u';\n\t\t\t}\n\n\t\t\tif ( $pick ) {\n\t\t\t\t$keep = array();\n\t\t\t\tforeach ( $rt['rows'] as $r ) {\n\t\t\t\t\t$cv = strtolower( (string) ( $r['conditions'][ $ax ] ?? '' ) );\n\t\t\t\t\tif ( preg_match( $pick, $cv ) ) { unset( $r['conditions'][ $ax ] ); $keep[] = $r; }\n\t\t\t\t}\n\t\t\t\tif ( $keep ) { $rt['rows'] = $keep; unset( $rt['axis_policy'][ $ax ] ); }\n\t\t\t\tcontinue;\n\t\t\t}\n\n\t\t\tif ( preg_match( '/age_range|amziaus_tarpsnis/i', $ax ) ) {\n\t\t\t\t$am = ( isset( $in['age_months'] ) && $in['age_months'] !== null && $in['age_months'] !== '' ) ? (float) $in['age_months'] : null;\n\t\t\t\tif ( $am === null ) { return array( $rt, true ); }\n\t\t\t\t$keep = array(); $best = null; $bestd = null; $byraw = array();\n\t\t\t\tforeach ( $rt['rows'] as $r ) {\n\t\t\t\t\t// Repository normalizuotos eilutes gali netureti condition_raw — imam koda.\n\t\t\t\t\t$raw = (string) ( $r['condition_raw'][ $ax ] ?? $r['conditions'][ $ax ] ?? '' );\n\t\t\t\t\t$lo = null; $hi = null;\n\t\t\t\t\tif ( preg_match( '/(\\d+(?:[.,]\\d+)?)\\s*[-\\x{2013}\\x{2014}]\\s*(\\d+(?:[.,]\\d+)?)/u', $raw, $m ) ) {\n\t\t\t\t\t\t$lo = (float) str_replace( ',', '.', $m[1] ); $hi = (float) str_replace( ',', '.', $m[2] );\n\t\t\t\t\t} elseif ( preg_match( '/[>\\x{2265}]\\s*(\\d+(?:[.,]\\d+)?)/u', $raw, $m ) ) {\n\t\t\t\t\t\t$lo = (float) str_replace( ',', '.', $m[1] ); $hi = 240.0;\n\t\t\t\t\t} elseif ( preg_match( '/(\\d+(?:[.,]\\d+)?)/u', $raw, $m ) ) {\n\t\t\t\t\t\t$lo = (float) str_replace( ',', '.', $m[1] ); $hi = $lo;\n\t\t\t\t\t}\n\t\t\t\t\tif ( $lo === null ) { continue; }\n\t\t\t\t\tif ( preg_match( '/savait|week/u', mb_strtolower( $raw ) ) ) { $lo = $lo / 4.345; $hi = $hi / 4.345; }\n\t\t\t\t\t$rr = $r; unset( $rr['conditions'][ $ax ] );\n\t\t\t\t\tif ( $am >= $lo && $am <= $hi ) { $keep[] = $rr; }\n\t\t\t\t\t$byraw[ $raw ][] = $rr;\n\t\t\t\t\t$d = min( abs( $am - $lo ), abs( $am - $hi ) );\n\t\t\t\t\tif ( $bestd === null || $d < $bestd ) { $bestd = $d; $best = $raw; }\n\t\t\t\t}\n\t\t\t\t// Gamintojas praleidzia menesi -> artimiausias stulpelis (stulpelio pasirinkimas, ne spejimas).\n\t\t\t\tif ( ! $keep && $best !== null && isset( $byraw[ $best ] ) ) { $keep = $byraw[ $best ]; }\n\t\t\t\tif ( $keep ) {\n\t\t\t\t\t$rt['rows'] = $keep; unset( $rt['axis_policy'][ $ax ] );\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\n\t\t// S228b: NUMERIC amziaus asis (age_months su age_m_from/age_m_to salygomis —\n\t\t// jaunikliu matricos, pvz. Ambrosia Junior). Pasirenkam gamintojo stulpeli\n\t\t// pagal realu augintinio amziu; be amziaus -> reikalingas ivedimas.\n\t\tif ( isset( $rt['axis_policy']['age_months'] ) ) {\n\t\t\t$spec = $rt['axis_policy']['age_months'];\n\t\t\tif ( ( is_array( $spec ) ? ( $spec['kind'] ?? null ) : null ) === 'numeric' ) {\n\t\t\t\t$am = ( isset( $in['age_months'] ) && $in['age_months'] !== null && $in['age_months'] !== '' ) ? (float) $in['age_months'] : null;\n",
+  "calc_25kg_17400": {
+   "status": "unavailable",
+   "availability": {
+    "norm": false,
+    "duration": false,
+    "cost": false
+   },
+   "reason_codes": [
+    "NO_VERIFIED_TABLE"
+   ],
+   "message_lt": "Šiam produktui dar nėra patikimos maitinimo lentelės.",
+   "weight_missing": false,
+   "weight_mode": null,
+   "norm_min_g": null,
+   "norm_max_g": null,
+   "days_min": null,
+   "days_max": null,
+   "cost_day_min": null,
+   "cost_day_max": null,
+   "cost_30d_min": null,
+   "cost_30d_max": null,
+   "basis": null,
+   "basis_label_lt": null,
+   "activity_mode": "none",
+   "activity_options": [],
+   "activity_selected": null,
+   "interval_options": [],
+   "interval_too_wide": false,
+   "weight_interval_selected": null,
+   "species_required": false,
+   "species_options": [],
+   "sellable_unit_food_g": null,
+   "currency": null,
+   "price_source": null,
+   "price_context": null,
+   "price_used": null,
+   "mixed_estimate": null
+  },
+  "terms": [
+   {
+    "term_id": "446",
+    "name": "400 g",
+    "slug": "400-g"
+   },
+   {
+    "term_id": "732",
+    "name": "6 × 400 g",
+    "slug": "6-x-400-g"
+   }
+  ]
+ },
+ "v": "dep-171029",
+ "kurimas": 200,
+ "sid": 7706,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
