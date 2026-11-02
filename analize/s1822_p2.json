@@ -1,0 +1,69 @@
+{
+ "2": {
+  "v": "S1822p",
+  "F": "2",
+  "paieska": {
+   "kodas": 200,
+   "d19": 7,
+   "kitos_ps_dk": 4,
+   "pvb": null
+  },
+  "fatal": [],
+  "shots": [
+   {
+    "n": "s1822_d19_a",
+    "u": "https://petshop.lt/?s=recovery&post_type=product",
+    "w": 390,
+    "h": 900,
+    "full": false,
+    "eval": "(()=>{var c=document.querySelector('.ps-dk--d19');if(!c)return 'nera';c.closest('.product-small').scrollIntoView();window.scrollBy(0,-60);return 'ok'})()"
+   },
+   {
+    "n": "s1822_d19_b",
+    "u": "https://petshop.lt/?s=recovery&post_type=product",
+    "w": 390,
+    "h": 900,
+    "full": false,
+    "click": ".ps-dk--d19 .ps-dk__ch[data-id=\"37472\"]",
+    "eval": "(()=>{var c=document.querySelector('.ps-dk--d19');c.closest('.product-small').scrollIntoView();window.scrollBy(0,-60);return c.querySelector('.ps-dk__pv').innerText})()"
+   },
+   {
+    "n": "s1822_d19_kitos",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+    "w": 390,
+    "h": 900,
+    "full": false
+   }
+  ]
+ },
+ "v": "dep-212643",
+ "kurimas": 200,
+ "sid": 7772,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1822_d19_a": {
+   "status": 201,
+   "url": "https://petshop.lt/product/30-vnt-monge-vetsolution-dog-wet-recovery-150g/",
+   "title": "30 vnt. Monge VetSolution Dog Wet Recovery 150g - Petshop.lt",
+   "errors": [],
+   "eval": "nera"
+  },
+  "s1822_d19_b": {
+   "status": 201,
+   "url": "https://petshop.lt/product/30-vnt-monge-vetsolution-dog-wet-recovery-150g/",
+   "title": "30 vnt. Monge VetSolution Dog Wet Recovery 150g - Petshop.lt",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('.ps-dk--d19 .ps-dk__ch[data-id=\"37472\"]')\n",
+   "eval_err": "Error: page.evaluate: TypeError: Cannot read properties of null (reading 'closest')\n    at eval (eval at evaluate (:370:30), <anonymous>:1:53)\n    at eval (eval at evaluate (:370:30), <anonymous>:1:16"
+  },
+  "s1822_d19_kitos": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+   "title": "Konservai šunims – pirkti internetu | Petshop.lt",
+   "errors": []
+  }
+ }
+}
