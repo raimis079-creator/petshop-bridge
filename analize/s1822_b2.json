@@ -1,0 +1,28 @@
+{
+ "2": {
+  "v": "S1822b",
+  "F": "2",
+  "md5": "541ba9050ca562e5150ee64aad90ecdf",
+  "hb": {
+   "/": 200,
+   "/kasa/": 200,
+   "/parduotuve/": 200
+  },
+  "activate_code": 200,
+  "laukas_id": "34934",
+  "laukas_code": 200,
+  "laukas_html_kb": 335,
+  "laukas_vitrina": true,
+  "fatal_nauji": [
+   "[02-Nov-2026 19:06:25 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_product() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php:682",
+   "[02-Nov-2026 19:28:01 UTC] PHP Fatal error:  Uncaught Error: Call to undefined function is_product() in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-laukai.php:682"
+  ]
+ },
+ "v": "dep-193014",
+ "kurimas": 200,
+ "sid": 7741,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
