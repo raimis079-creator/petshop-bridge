@@ -1,0 +1,78 @@
+{
+ "1": {
+  "v": "S1822q",
+  "tikrinta": [
+   "/kategorija/daugiau-pigiau/",
+   "/kategorija/daugiau-pigiau/page/2/",
+   "/kategorija/daugiau-pigiau/page/3/",
+   "/kategorija/daugiau-pigiau/page/4/",
+   "/kategorija/daugiau-pigiau/page/5/",
+   "/kategorija/daugiau-pigiau/page/6/",
+   "/kategorija/daugiau-pigiau/page/7/",
+   "/kategorija/daugiau-pigiau/page/8/",
+   "/kategorija/sunims/maistas-sunims/konservai-sunims/"
+  ],
+  "pv": [
+   "ps-dk__pvb\">nuo 1,15 € <small>/ vnt.</small></span><span class=\"ps-dk__pvs\">30 vnt. – 34,49 €<",
+   "nuo 1,15 € <small>/ vnt.</small>",
+   "30 vnt. – 34,49 €"
+  ],
+  "chips": [
+   "6 × 400 g",
+   "12 × 400 g",
+   "24 × 400 g",
+   "6 × 400 g",
+   "12 × 400 g",
+   "24 × 400 g",
+   "6 × 400 g",
+   "12 × 400 g",
+   "24 × 400 g",
+   "6 × 400 g",
+   "12 × 400 g",
+   "24 × 400 g"
+  ],
+  "rado": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+  "shots": [
+   {
+    "n": "s1822_d19_a",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+    "w": 390,
+    "h": 900,
+    "eval": "(()=>{var c=document.querySelector('.ps-dk--d19').closest('.product-small');c.scrollIntoView();window.scrollBy(0,-80);return 'ok'})()"
+   },
+   {
+    "n": "s1822_d19_b",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+    "w": 390,
+    "h": 900,
+    "click": ".ps-dk--d19 .ps-dk__ch[data-id=\"37472\"]",
+    "eval": "(()=>{var c=document.querySelector('.ps-dk--d19').closest('.product-small');c.scrollIntoView();window.scrollBy(0,-80);return 'ok'})()"
+   },
+   {
+    "n": "s1822_d19_pc",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+    "w": 1366,
+    "h": 900,
+    "eval": "(()=>{var c=document.querySelector('.ps-dk--d19').closest('.product-small');c.scrollIntoView();window.scrollBy(0,-80);return 'ok'})()"
+   }
+  ]
+ },
+ "v": "dep-212924",
+ "kurimas": 200,
+ "sid": 7773,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1822_d19_a": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/\", waiting until \"networkidle\"\n",
+  "s1822_d19_b": "TimeoutError: page.goto: Timeout 60000ms exceeded.\nCall log:\n  - navigating to \"https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/\", waiting until \"networkidle\"\n",
+  "s1822_d19_pc": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+   "title": "Konservai šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": "ok"
+  }
+ }
+}
