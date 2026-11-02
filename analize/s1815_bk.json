@@ -1,21 +1,36 @@
 {
- "4": {
+ "6": {
   "v": "S1815bk",
-  "faze": "4",
+  "faze": "6",
+  "md5": "c2eb333570d828fad6e061a3c39761e9",
+  "dydis": 20925,
+  "old_rasta": 0,
+  "old2_rasta": 1,
+  "new_jau": true,
+  "raktas_rastas": true,
+  "trukme_s": 0.1,
+  "http": 200,
+  "atsakymas": "08:27:38 aplinka OK · lentelių 229 (InnoDB 229, MyISAM 0)\n08:27:38 DB gyvunai2_nbpe1 @ localhost · koduotė utf8mb4 · laisva 408.5 GB\n08:27:38 SELFTEST baigtas — viskas paruošta.\n",
+  "state": "{\n    \"last_result\": \"FAIL\",\n    \"last_run\": \"2026-11-02T08:25:36+00:00\",\n    \"error\": \"\\u012fk\\u0117limas: HTTP 503 service_unavailable no tomes available\"\n}"
+ },
+ "7": {
+  "v": "S1815bk",
+  "faze": "7",
   "md5": "f64c412dc8f880ede294d7bd4f2440cd",
   "dydis": 20503,
   "old_rasta": 0,
   "old2_rasta": 1,
   "new_jau": true,
-  "raktas_rastas": true,
-  "trukme_s": 16.6,
-  "http": 200,
-  "atsakymas": "08:25:19 aplinka OK · lentelių 229 (InnoDB 229, MyISAM 0)\n08:25:19 DB gyvunai2_nbpe1 @ localhost · koduotė utf8mb4 · laisva 408.5 GB\n08:25:31 InnoDB 229 lentelės (consistent snapshot)\n08:25:31 MyISAM/kitos 0 lentelės (be globalaus LOCK)\n08:25:31 DB eksportas: 229 lentelių, 1,598,217 eilučių, 40.27 MB suspausta\n08:25:32 kodas: 619 failų (mu-plugins, petshop-core, flatsome-child)\n08:25:32 tar: 72.44 MB\n08:25:34 gzip: 49.48 MB\n08:25:35 šifruota (AES-256-CBC + HMAC-SHA256): 49.48 MB\n08:25:36 KLAIDA: įkėlimas: HTTP 503 service_unavailable no tomes available\n",
-  "state": "{\n    \"last_result\": \"FAIL\",\n    \"last_run\": \"2026-11-02T08:25:36+00:00\",\n    \"error\": \"\\u012fk\\u0117limas: HTTP 503 service_unavailable no tomes available\"\n}"
+  "a": 18577,
+  "z": 19287,
+  "jau": false,
+  "po_md5": "c2eb333570d828fad6e061a3c39761e9",
+  "naujas_blokas": "// S1815b (2026-11-02): B2 laikinos klaidos (503 no tomes available ir pan.) — iki 5 bandymų su nauju upload URL, kaip rekomenduoja B2\n$bandymas = 0;\nwhile (true) {\n$bandymas++;\n$u = b2($api.'/b2api/v3/b2_get_upload_url',\n        array('Authorization: '.$tok, 'Content-Type: application/json'),\n        array('bucketId' => $CR['bucketId']));\nif ($u['http'] !== 200) ps_fail('b2_get_upload_url: HTTP '.$u['http'].' '.($u['json']['code'] ?? ''), $VISI);\n\n$vardas  = rtrim($CR['prefix'],'/').'/'.gmdate('Y/m').'/petshop-'.$stamp.'.tar.gz.enc';\n$turinys = file_get_contents($tmpEnc);\n$up = b2($u['json']['uploadUrl'],\n     array('Authorization: '.$u['json']['authorizationToken'],\n           'X-Bz-File-Name: '.rawurlencode($vardas),\n           'Content-Type: application/octet-stream',\n           'X-Bz-Content-Sha1: '.$sha1,\n           'Content-Length: '.$galutinis),\n     $turinys, true);\nunset($turinys);\nif ($up['http'] === 200) break;\nif ($bandymas >= 5 || !in_array((int)$up['http'], array(0, 408, 429, 500, 503), true))\n    ps_fail('įkėlimas: HTTP '.$up['http'].' '.($up['json']['code'] ?? '').' '.($up['json']['message'] ?? $up['err']), $VISI);\nlg('B2 laikina klaida: HTTP '.$up['http'].' '.($up['json']['code'] ?? $up['err']).' — bandymas '.$bandymas.', kartoju');\nsleep(5 * $bandymas);\n}",
+  "failLine": "    ps_fail('įkėlimas: HTTP '.$up['http'].' '.($up['json']['code'] ?? '').' '.($up['json']['message'] ?? $up['err']), $VISI);"
  },
- "v": "dep-082412",
+ "v": "dep-082614",
  "kurimas": 200,
- "sid": 7631,
+ "sid": 7632,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
