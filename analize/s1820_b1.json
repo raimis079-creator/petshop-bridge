@@ -1,0 +1,50 @@
+{
+ "1": {
+  "v": "S1820b",
+  "faze": "1",
+  "laikas": "2026-11-02 16:41:56",
+  "baze": {
+   "id": 33984,
+   "t": "Monge VetSolution Dog Wet Gastrointestinal 400g",
+   "st": "draft",
+   "reg": 3.09,
+   "cost": 1.71,
+   "stock": 1005,
+   "svoris": "0.4000",
+   "sale": ""
+  },
+  "planas": {
+   "12": {
+    "proc": 7.63,
+    "kaina": 34.29,
+    "vnt": 2.858,
+    "lieka_po_pastomato": 5.67,
+    "svoris": 4.8
+   },
+   "24": {
+    "proc": 12.01,
+    "kaina": 65.29,
+    "vnt": 2.72,
+    "lieka_po_pastomato": 10.77,
+    "svoris": 9.6
+   },
+   "36": {
+    "proc": 16.53,
+    "kaina": 92.89,
+    "vnt": 2.58,
+    "lieka_po_pastomato": 13.06,
+    "svoris": 14.4
+   }
+  },
+  "jau_sukurta": [],
+  "snip567": "/**\n * Petshop Daugiau=Pigiau Stock Sync v1.3\n * v1.3 (S1676): eilutes, kurių šaltinis AV (`_ps_source=av`), tvarko AV variklis (petshop-av-reduce v1.2)\n *   per bazinę prekę — čia PRALEIDŽIAMOS (be dvigubo nurašymo / atstatymo).\n * Custom mechanizmas: \"pack\" produktai (fiksuoto kiekio kartotiniai) neturi savo\n * tikro sandelio skaiciaus - jis skaiciuojamas dinamiskai is bazinio produkto,\n * o realus nurasymas/atstatymas vyksta TIK ant bazinio produkto.\n *\n * Meta laukai ant pack produkto:\n *   _dp_base_product_id = bazinio produkto ID\n *   _dp_pack_qty        = kiek bazinio produkto vienetu sudaro 1 pack'a\n *\n * Pack produktas turi buti sukurtas su manage_stock=false.\n */\n\n// 1. Dinamiskas \"yra/nera sandelyje\" statusas pack produktui\nadd_filter('woocommerce_product_is_in_stock', function($in_stock, $product){\n  $base_id = $product->get_meta('_dp_base_product_id');\n  if (!$base_id) return $in_stock;\n  $pack_qty = (int) $product->get_meta('_dp_pack_qty');\n  if ($pack_qty <= 0) return $in_stock;\n  $base = wc_get_product($base_id);\n  if (!$base) return false;\n  $base_stock = (int) $base->get_stock_quantity();\n  return $base_stock >= $pack_qty;\n}, 10, 2);\n\n// 2. Papildoma info - kiek \"dėžučių\" galima sudaryti (rodymui, ne privaloma)\nadd_filter('woocommerce_get_stock_html', function($html, $product){\n  $base_id = $product->get_meta('_dp_base_product_id');\n  if (!$base_id) return $html;\n  $pack_qty = (int) $product->get_meta('_dp_pack_qty');\n  if ($pack_qty <= 0) return $html;\n  $base = wc_get_product($base_id);\n  if (!$base) return $html;\n  $base_stock = (int) $base->get_stock_quantity();\n  if ($base_stock >= $pack_qty) {\n    return '<p class=\"stock in-stock\">Yra sandėlyje</p>';\n  }\n  return '<p class=\"stock out-of-stock\">Šiuo metu nėra sandėlyje</p>';\n}, 10, 2);\n\n// 3. Add-to-cart apsauga - papildomas patikrinimas pries idedant i krepseli\nadd_filter('woocommerce_add_to_cart_validation', function($passed, $product_id, $quantity){\n  $product = wc_get_product($product_id);\n  if (!$product) return $passed;\n  $base_id = $product->get_meta('_dp_base_product_id');\n  if (!$base_id) return $passed;\n  $pack_qty = (int) $product->get_meta('_dp_pack_qty');\n  if ($pack_qty <= 0) return $passed;\n  $base = wc_get_product($base_id);\n  if (!$base) { wc_add_notice('Prekė šiuo metu nepasiekiama.', 'error'); return false; }\n  $base_stock = (int) $base->get_stock_quantity();\n  $needed = $pack_qty * $quantity;\n  if ($base_stock < $needed) {\n    wc_add_notice('Atsiprašome, šiuo metu sandėlyje nepakanka prekių šiam pasiūlymui.', 'error');\n    return false;\n  }\n  return $passed;\n}, 10, 3);\n\n// 4. NURASYMAS - kai uzsakymas apmokamas/vykdomas, nurasom is BAZINIO produkto\nadd_action('woocommerce_reduce_order_stock', function($order){\n  // Idempotencija: kiekvienam order item nurasom TIK VIENA KARTA\n  if ($order->get_meta('_dp_stock_reduced') === 'yes') return;\n  $order->update_meta_data('_dp_stock_reduced', 'yes');\n  $order->save();\n  foreach ($order->get_items() as $item) {\n    $product = $item->get_product();\n    if (!$product) continue;\n    $base_id = $product->get_meta('_dp_base_product_id');\n    if (!$base_id) continue;\n    $pack_qty = (int) $product->get_meta('_dp_pack_qty');\n    if ($pack_qty <= 0) continue;\n    $base = wc_get_product($base_id);\n    if (!$base) continue;\n    if ($item->get_meta('_ps_source') === 'av') continue; // v1.3: AV variklis\n    $reduce_by = $pack_qty * $item->get_quantity();\n    wc_update_product_stock($base, $reduce_by, 'decrease');\n    // Log audit trail\n    $order->add_order_note(sprintf(\n      'Daugiau=pigiau: pack \"%s\" (x%d) nurašė %d vnt. iš bazinio produkto #%d (%s).',\n      $product->get_name(), $item->get_quantity(), $reduce_by, $base_id, $base->get_name()\n    ));\n  }\n}, 10, 1);\n\n// 5. ATSTATYMAS - kai uzsakymas atsaukiamas/grazinamas, atstatom i BAZINI produkta\nadd_action('woocommerce_restore_order_stock', function($order){\n  // Atstatom TIK jei buvo nurasyta ir dar neatstatyta\n  if ($order->get_meta('_dp_stock_reduced') !== 'yes') return;\n  $order->update_meta_data('_dp_stock_reduced', 'no');\n  $order->save();\n  foreach ($order->get_items() as $item) {\n    $product = $item->get_product();\n    if (!$product) continue;\n    $base_id = $product->get_meta('_dp_base_product_id');\n    if (!$base_id) continue;\n    $pack_qty = (int) $product->get_meta('_dp_pack_qty');\n    if ($pack_qty <= 0) continue;\n    $base = wc_get_product($base_id);\n    if (!$base) continue;\n    if ($item->get_meta('_ps_source') === 'av') continue; // v1.3: AV variklis\n    $restore_by = $pack_qty * $item->get_quantity();\n    wc_update_product_stock($base, $restore_by, 'increase');\n    $order->add_order_note(sprintf(\n      'Daugiau=pigiau: pack \"%s\" (x%d) atstatė %d vnt. į bazinį produktą #%d (%s).',\n      $product->get_name(), $item->get_quantity(), $restore_by, $base_id, $base->get_name()\n    ));\n  }\n}, 10, 1);",
+  "kaina_sig": "Method [ <user> static public method kaina ] {\n  @@ /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-dp-kainos.php 98 - 100\n\n  - Parameters [3] {\n    Parameter #0 [ <required> $bazine ]\n    Parameter #1 [ <required> $qty ]\n    Parameter #2 [ <required> $proc ]\n  }\n}\n"
+ },
+ "v": "dep-144051",
+ "kurimas": 200,
+ "sid": 7684,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
