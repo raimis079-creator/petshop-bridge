@@ -1,7 +1,7 @@
 {
- "1": {
+ "2": {
   "v": "S1815kp5",
-  "faze": "1",
+  "faze": "2",
   "md5": "c8b9b0790578e194b85b074cf6ff035d",
   "rasta": [
    1,
@@ -10,61 +10,46 @@
    1
   ],
   "jau": false,
-  "laisku_su_cart_id": 34,
-  "butu_sustabdyta": [
-   {
-    "job": "1959",
-    "flow": "cart_abandoned",
-    "em": "vik…",
-    "sent": "2026-10-21 19:33:40",
-    "krep_sukurtas": "2026-10-21 17:25:56",
-    "uzs": "36965"
-   },
-   {
-    "job": "1970",
-    "flow": "cart_abandoned",
-    "em": "ilo…",
-    "sent": "2026-10-22 07:13:45",
-    "krep_sukurtas": "2026-10-22 05:09:25",
-    "uzs": "36977"
-   },
-   {
-    "job": "2024",
-    "flow": "cart_abandoned_2",
-    "em": "vik…",
-    "sent": "2026-10-22 19:39:13",
-    "krep_sukurtas": "2026-10-21 17:25:56",
-    "uzs": "36965"
-   },
-   {
-    "job": "2032",
-    "flow": "cart_abandoned_2",
-    "em": "ilo…",
-    "sent": "2026-10-23 07:18:41",
-    "krep_sukurtas": "2026-10-22 05:09:25",
-    "uzs": "36977"
-   },
-   {
-    "job": "2432",
-    "flow": "cart_abandoned",
-    "em": "bir…",
-    "sent": "2026-10-31 15:08:45",
-    "krep_sukurtas": "2026-10-31 13:01:13",
-    "uzs": "37394"
-   },
-   {
-    "job": "2462",
-    "flow": "cart_abandoned_2",
-    "em": "bir…",
-    "sent": null,
-    "krep_sukurtas": "2026-10-31 13:01:13",
-    "uzs": "37394"
-   }
-  ]
+  "po_md5": "f0b00035e51c59c027851035f73810a7",
+  "bak": "c8b9b0790578e194b85b074cf6ff035d"
  },
- "v": "dep-083828",
+ "3": {
+  "v": "S1815kp5",
+  "faze": "3",
+  "md5": "f0b00035e51c59c027851035f73810a7",
+  "rasta": [
+   1,
+   1,
+   0,
+   0
+  ],
+  "jau": true,
+  "klase_v": "1.2",
+  "metodas": true,
+  "test_birute_2462": {
+   "allowed": false,
+   "reason": "jau_pirko_po_krepselio",
+   "terminal": true
+  },
+  "test_paskutinis_tikras": {
+   "em": "iri…",
+   "rez": {
+    "allowed": false,
+    "reason": "krepselis_jau_siustas_24h",
+    "terminal": true
+   },
+   "jau_pirko": false
+  },
+  "test_be_cart": false,
+  "testas_refill": {
+   "allowed": true,
+   "reason": "",
+   "terminal": true
+  }
+ },
+ "v": "dep-083947",
  "kurimas": 200,
- "sid": 7639,
+ "sid": 7640,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
