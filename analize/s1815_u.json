@@ -1,0 +1,44 @@
+{
+ "1": {
+  "v": "S1815u",
+  "pries": [
+   {
+    "id": "1799",
+    "flow": "post_purchase_14d",
+    "status": "uncertain",
+    "skip_reason": null
+   },
+   {
+    "id": "2462",
+    "flow": "cart_abandoned_2",
+    "status": "uncertain",
+    "skip_reason": null
+   }
+  ],
+  "atnaujinta": 2,
+  "po": [
+   {
+    "id": "1799",
+    "flow": "post_purchase_14d",
+    "status": "skipped",
+    "skip_reason": "neaisku_uzdaryta_s1815",
+    "last_error": "cURL error 28: Connection timed out after 10001 milliseconds [10006 ms]"
+   },
+   {
+    "id": "2462",
+    "flow": "cart_abandoned_2",
+    "status": "skipped",
+    "skip_reason": "neaisku_uzdaryta_s1815",
+    "last_error": "cURL error 52: Empty reply from server [15081 ms]"
+   }
+  ],
+  "uncertain_liko": 0
+ },
+ "v": "dep-085930",
+ "kurimas": 200,
+ "sid": 7646,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
