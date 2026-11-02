@@ -1,0 +1,7925 @@
+{
+ "v": "dep-114014",
+ "kurimas": 200,
+ "sid": 7659,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1818a",
+  "n": 159,
+  "prod": {
+   "16196": {
+    "t": "Sausas maistas trumpaplaukėms katėms, Ontario Cat Shorthair, 2 kg",
+    "st": "draft",
+    "type": "product",
+    "sku": "640214",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "14.49",
+    "ean": "8595091793020",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16198": {
+    "t": "Sausas maistas trumpaplaukėms katėms, 1 kg, Ontario Cat Shorthair",
+    "st": "draft",
+    "type": "product",
+    "sku": "640214268-1",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "4.82",
+    "price": "7.87",
+    "ean": "8595091793020",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": "4.8200",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16204": {
+    "t": "Sausas maistas sterilizuotoms vyresnėms katėms, Ontario Sterilized 7+, 2 kg",
+    "st": "draft",
+    "type": "product",
+    "sku": "640574",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "14.49",
+    "ean": "8595091792788",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16207": {
+    "t": "Sausas maistas sterilizuotoms katėms su ėriena, Ontario Sterilized Lamb, 6,5 kg",
+    "st": "draft",
+    "type": "product",
+    "sku": "640416769",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "44.9",
+    "ean": "8595091792740",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16210": {
+    "t": "Sausas maistas sterilizuotoms katėms su ėriena, 1 kg, Ontario Sterilized Lamb",
+    "st": "publish",
+    "type": "product",
+    "sku": "640416-1",
+    "sand": "av",
+    "stock": "8",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 8,
+    "src": "av",
+    "cost": "4.65",
+    "price": "7.59",
+    "ean": "8595091792740",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "8",
+      "cost_net": "4.6500",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16222": {
+    "t": "Sausas maistas sterilizuotoms katėms su lašiša, Ontario Sterilized Salmon, 2 kg",
+    "st": "draft",
+    "type": "product",
+    "sku": "640193",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "14.49",
+    "ean": "8595091792726",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16231": {
+    "t": "Sausas maistas kačių kailiui ir odai, Ontario Cat Hair & Skin, 2 kg",
+    "st": "draft",
+    "type": "product",
+    "sku": "640212",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "14.9",
+    "ean": "8595091792849",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16234": {
+    "t": "Sausas maistas kačių kailiui ir odai, 1 kg, Ontario Cat Hair & Skin",
+    "st": "publish",
+    "type": "product",
+    "sku": "640212842-1",
+    "sand": "av",
+    "stock": "7",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 7,
+    "src": "av",
+    "cost": "4.85",
+    "price": "7.93",
+    "ean": "8595091792849",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "7",
+      "cost_net": "4.8500",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16237": {
+    "t": "Sausas maistas kačiukams su lašiša, Ontario Kitten Salmon, 2 kg",
+    "st": "draft",
+    "type": "product",
+    "sku": "640187",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "15.9",
+    "ean": "8595091792962",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16239": {
+    "t": "Sausas maistas katėms nuo plaukų gumuliukų susidarymo, Ontario Hairball, 6,5 kg",
+    "st": "publish",
+    "type": "product",
+    "sku": "640220103",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "28.5",
+    "price": "44.9",
+    "ean": "8595091792801",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": "28.5000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16242": {
+    "t": "Sausas maistas katėms nuo plaukų gumuliukų susidarymo, Ontario Hairball, 2 kg",
+    "st": "draft",
+    "type": "product",
+    "sku": "640191",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "13.8",
+    "ean": "8595091792818",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16245": {
+    "t": "Sausas maistas katėms nuo plaukų gumuliukų susidarymo, Ontario Hairball, 1 kg",
+    "st": "publish",
+    "type": "product",
+    "sku": "640220-1",
+    "sand": "av",
+    "stock": "6",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 6,
+    "src": "av",
+    "cost": "4.65",
+    "price": "7.59",
+    "ean": "8595091792801",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "6",
+      "cost_net": "4.6500",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16254": {
+    "t": "Sausas maistas jautrioms katėms, Ontario Cat Sensitive/Derma, 6,5 kg",
+    "st": "publish",
+    "type": "product",
+    "sku": "640213774120",
+    "sand": "av",
+    "stock": "1",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 1,
+    "src": "av",
+    "cost": "30.7",
+    "price": "48.43",
+    "ean": "8595091792900",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "1",
+      "cost_net": "30.7000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16257": {
+    "t": "Sausas maistas jautrioms katėms, Ontario Cat Sensitive/Derma, 2 kg",
+    "st": "draft",
+    "type": "product",
+    "sku": "640213",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "16.9",
+    "ean": "8595091792900",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16259": {
+    "t": "Sausas maistas jautrioms katėms, 1 kg, Ontario Cat Sensitive/Derma",
+    "st": "publish",
+    "type": "product",
+    "sku": "640213774",
+    "sand": "av",
+    "stock": "4",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 4,
+    "src": "av",
+    "cost": "5.47",
+    "price": "8.94",
+    "ean": "8595091792900",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "4",
+      "cost_net": "5.4700",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16265": {
+    "t": "Sausas maistas išrankioms katėms su vištiena, Ontario Exigent, 6,5 kg",
+    "st": "publish",
+    "type": "product",
+    "sku": "40626",
+    "sand": "av",
+    "stock": "1",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 1,
+    "src": "av",
+    "cost": "24",
+    "price": "39.73",
+    "ean": "8595091792863",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "1",
+      "cost_net": "24.0000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16268": {
+    "t": "Sausas maistas išrankioms katėms su vištiena, Ontario Exigent, 2 kg",
+    "st": "draft",
+    "type": "product",
+    "sku": "640189",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "13.8",
+    "ean": "8595091792870",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16270": {
+    "t": "Sausas maistas išrankioms katėms su vištiena, Ontario Exigent, 1 kg",
+    "st": "publish",
+    "type": "product",
+    "sku": "640000",
+    "sand": "av",
+    "stock": "3",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 3,
+    "src": "av",
+    "cost": "4.65",
+    "price": "7.59",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "3",
+      "cost_net": "4.6500",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16933": {
+    "t": "Pasta kačiukams su tunu - Ontario Kitten Tuna Fresh Meat Paste, 90 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "42826",
+    "sand": "av",
+    "stock": "27",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 27,
+    "src": "av",
+    "cost": "0.50",
+    "price": "1.15",
+    "ean": "8595681803832",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "27",
+      "cost_net": "0.5000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16936": {
+    "t": "Pasta katėms su ėriena – Ontario Lamb Fresh Meat Paste, 90 g.",
+    "st": "publish",
+    "type": "product",
+    "sku": "42824",
+    "sand": "av",
+    "stock": "47",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 47,
+    "src": "av",
+    "cost": "0.50",
+    "price": "1.15",
+    "ean": "8595681801791",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "47",
+      "cost_net": "0.5000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16939": {
+    "t": "Pasta katėms su vištiena - Ontario Chicken Fresh Meat Paste, 90 g.",
+    "st": "publish",
+    "type": "product",
+    "sku": "42821",
+    "sand": "av",
+    "stock": "40",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 40,
+    "src": "av",
+    "cost": "0.50",
+    "price": "1.15",
+    "ean": "8595681801760",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "40",
+      "cost_net": "0.5000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16942": {
+    "t": "Pasta katėms su lašiša - Ontario Salmon Fresh Meat Paste, 90 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "42822",
+    "sand": "av",
+    "stock": "40",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 40,
+    "src": "av",
+    "cost": "0.50",
+    "price": "1.15",
+    "ean": "8595681801777",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "40",
+      "cost_net": "0.5000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "16945": {
+    "t": "Pasta katėms su antiena - Ontario Duck Fresh Meat Paste, 90 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "42823",
+    "sand": "av",
+    "stock": "46",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 46,
+    "src": "av",
+    "cost": "0.50",
+    "price": "1.15",
+    "ean": "8595681801784",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "46",
+      "cost_net": "0.5000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17019": {
+    "t": "Ontario troškinys šunims iš vištienos ir daržovių sultinyje, 300 g, Pouch Chicken with vegetables in broth",
+    "st": "draft",
+    "type": "product",
+    "sku": "45232",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.45",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17022": {
+    "t": "Ontario troškinys šunims iš lašišos ir daržovių sultinyje, 300 g, Pouch Salmon with vegetables in broth",
+    "st": "publish",
+    "type": "product",
+    "sku": "45234",
+    "sand": "av",
+    "stock": "18",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 18,
+    "src": "av",
+    "cost": "1.40",
+    "price": "2.45",
+    "ean": "8595681812285",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "18",
+      "cost_net": "1.4000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17026": {
+    "t": "Ontario troškinys šunims iš karpio ir daržovių sultinyje, 300 g, Pouch Carp with vegetables in broth",
+    "st": "publish",
+    "type": "product",
+    "sku": "45235",
+    "sand": "av",
+    "stock": "10",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 10,
+    "src": "av",
+    "cost": "1.60",
+    "price": "2.45",
+    "ean": "8595681812278",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "10",
+      "cost_net": "1.6000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17029": {
+    "t": "Ontario troškinys šunims iš kalakutienos, vištienos ir daržovių sultinyje, 300 g, Pouch Turkey and Chicken with vegetables in broth",
+    "st": "draft",
+    "type": "product",
+    "sku": "45236",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.45",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17032": {
+    "t": "Ontario troškinys šunims iš jautienos ir daržovių sultinyje, 300 g, Pouch Beef with vegetables in broth",
+    "st": "publish",
+    "type": "product",
+    "sku": "45233",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "1.55",
+    "price": "2.55",
+    "ean": "8595681812223",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": "1.5500",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17035": {
+    "t": "Ontario troškinys šunims iš elnienos ir daržovių sultinyje, 300 g, Pouch Venison with vegetables in broth",
+    "st": "publish",
+    "type": "product",
+    "sku": "45231",
+    "sand": "av",
+    "stock": "23",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 23,
+    "src": "av",
+    "cost": "1.50",
+    "price": "2.55",
+    "ean": "8595681812261",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "23",
+      "cost_net": "1.5000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17038": {
+    "t": "Ontario troškinys šunims iš antienos ir daržovių sultinyje, 300 g, Pouch Duck with vegetables in broth",
+    "st": "publish",
+    "type": "product",
+    "sku": "45237",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "1.40",
+    "price": "2.55",
+    "ean": "8595681812254",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": "1.4000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17041": {
+    "t": "Ontario super premium konservai kačiukams su vištiena, krevetėmis ir lašišų aliejumi, 400 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "640438",
+    "sand": "av",
+    "stock": "19",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 19,
+    "src": "av",
+    "cost": "1.40",
+    "price": "2.4",
+    "ean": "8595681812346",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "19",
+      "cost_net": "1.4000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17044": {
+    "t": "Ontario super premium konservai kačiukams Kitten su vištiena ir krevetėmis, 95 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "640318",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.75",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17048": {
+    "t": "Ontario super premium konservai katėms su vištiena, triušiena ir lašišų aliejumi, 400 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "640555",
+    "sand": "av",
+    "stock": "15",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 15,
+    "src": "av",
+    "cost": "1.40",
+    "price": "2.4",
+    "ean": "8595681812339",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "15",
+      "cost_net": "1.4000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17051": {
+    "t": "Ontario super premium konservai katėms su vištiena, kalakutiena ir lašišų aliejumi, 400 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "640720",
+    "sand": "av",
+    "stock": "14",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 14,
+    "src": "av",
+    "cost": "1.40",
+    "price": "2.4",
+    "ean": "8595681812322",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "14",
+      "cost_net": "1.4000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17054": {
+    "t": "Ontario super premium konservai katėms su vištiena ir moliuskais, 95 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "640320",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.75",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17057": {
+    "t": "Ontario super premium konservai katėms su vištiena ir lašiša, 95 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "640319",
+    "sand": "av",
+    "stock": "18",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 18,
+    "src": "av",
+    "cost": "0.77",
+    "price": "1.99",
+    "ean": "8595091761609",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "18",
+      "cost_net": "0.7700",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17060": {
+    "t": "Ontario super premium konservai katėms su jautiena, lašiša ir saulėgrąžų aliejumi, 400 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "640554",
+    "sand": "av",
+    "stock": "30",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 30,
+    "src": "av",
+    "cost": "1.40",
+    "price": "2.4",
+    "ean": "8595681812315",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "30",
+      "cost_net": "1.4000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17063": {
+    "t": "Ontario sriuba kačiukams su vištiena, morkomis ir ryžiais, 40 g, Ontario Soup Kitten Chicken, Carrot with Rice",
+    "st": "draft",
+    "type": "product",
+    "sku": "42841",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "0.95",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17065": {
+    "t": "Ontario sriuba katėms su vištiena, sūriu ir ryžiais, 40 g, Ontario Soup Adult Chicken and Cheese with Rice",
+    "st": "draft",
+    "type": "product",
+    "sku": "42843",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "0.95",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17067": {
+    "t": "Ontario sriuba katėms su vištiena ir daržovėmis, 40 g, Ontario Soup Adult Chicken with Vegetables",
+    "st": "draft",
+    "type": "product",
+    "sku": "42842",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "0.95",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17069": {
+    "t": "Ontario sriuba katėms su vandenyno žuvimis ir daržovėmis, 40 g, Ontario Soup Adult Ocean Fish with Vegetables",
+    "st": "draft",
+    "type": "product",
+    "sku": "42845",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "0.95",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17071": {
+    "t": "Ontario sriuba katėms su tunu ir daržovėmis, 40 g, Ontario Soup Adult Tuna with Vegetables",
+    "st": "draft",
+    "type": "product",
+    "sku": "42844",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "0.95",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17073": {
+    "t": "Ontario skanėstas šunims - ėrienos lazdelės, 15 g - Ontario Sticks for dogs, Lamb",
+    "st": "draft",
+    "type": "product",
+    "sku": "77002",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "0.89",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17077": {
+    "t": "Ontario skanėstas šunims - vištienos ir menkės sumuštiniai, 70 g (Ontario Chicken and Pollock Sandwich)",
+    "st": "draft",
+    "type": "product",
+    "sku": "2796",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.69",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17081": {
+    "t": "Ontario skanėstas šunims - elnienos lazdelės, 15 g - Ontario Sticks for dogs, Venison",
+    "st": "draft",
+    "type": "product",
+    "sku": "77001",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "0.89",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17084": {
+    "t": "Ontario skanėstai šunims – ėrienos juostelės, 70 g (Dry Lamb Fillet)",
+    "st": "draft",
+    "type": "product",
+    "sku": "650264",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.69",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17088": {
+    "t": "Ontario skanėstai šunims – vištienos juostelės, 70 g (Dry Chicken Jerky)",
+    "st": "draft",
+    "type": "product",
+    "sku": "650486",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.69",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17091": {
+    "t": "Ontario skanėstai šunims – triušienos juostelės, 70 g (Dry Rabbit Fillet)",
+    "st": "draft",
+    "type": "product",
+    "sku": "650037",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.69",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17095": {
+    "t": "Ontario skanėstai šunims - džiovintos antienos juostelės, 70 g (Soft Duck Jerky)",
+    "st": "draft",
+    "type": "product",
+    "sku": "650487",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.99",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17099": {
+    "t": "Ontario skanėstai šunims - Jautienos odos juostelės, 10 vnt. (Beef Fillets)",
+    "st": "draft",
+    "type": "product",
+    "sku": "75727",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.99",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17102": {
+    "t": "Ontario skanėstai kačių dantų priežiūrai, Denta Bits, 75 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "640148",
+    "sand": "av",
+    "stock": "18",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 18,
+    "src": "av",
+    "cost": "1.30",
+    "price": "2.45",
+    "ean": "8595091765676",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "18",
+      "cost_net": "1.3000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17105": {
+    "t": "Ontario skanėstai katėms su vištiena, 50 g, Chicken thin pieces",
+    "st": "draft",
+    "type": "product",
+    "sku": "640435",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.99",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17108": {
+    "t": "Ontario skanėstai katėms su vištiena ir sūriu, 50 g, Chicken and Cheese Bites",
+    "st": "draft",
+    "type": "product",
+    "sku": "2798",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.99",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17111": {
+    "t": "Ontario skanėstai katėms su vištiena ir menke, 50 g, Chicken and Pollock Double Sandwich",
+    "st": "draft",
+    "type": "product",
+    "sku": "640436",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.99",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17115": {
+    "t": "Ontario skanėstai katėms su vitaminais Malt Bits, 75 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "640149",
+    "sand": "av",
+    "stock": "38",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 38,
+    "src": "av",
+    "cost": "1.30",
+    "price": "2.45",
+    "ean": "8595091765645",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "38",
+      "cost_net": "1.3000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17118": {
+    "t": "Ontario skanėstai katėms su taurinu, Cheese Bits, 75 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "640147",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.45",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17121": {
+    "t": "Ontario skanėstai katėms su lašiša, 50 g, Salmon short sticks",
+    "st": "draft",
+    "type": "product",
+    "sku": "640437",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.99",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17123": {
+    "t": "Ontario skanėstai katėms su lašiša Salmon Bits, 75 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "640150",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.45",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17126": {
+    "t": "Ontario skanėstai katėms su antiena, 50 g, Duck thin pieces",
+    "st": "draft",
+    "type": "product",
+    "sku": "640434",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.99",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17129": {
+    "t": "Ontario skanėstai katėms - Vištienos juostelės, 50 g, Chicken mini slices",
+    "st": "draft",
+    "type": "product",
+    "sku": "2797",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.99",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17132": {
+    "t": "Ontario konservai šuniukams su vištiena ir kremzlėmis, 200 g, Chicken Pieces and Cartilage",
+    "st": "draft",
+    "type": "product",
+    "sku": "650375",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.45",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17135": {
+    "t": "Ontario konservai šunims – Ėriena, paskaninta šaltalankiu, 800 g, Lamb Pate with Sea Buckthorn",
+    "st": "draft",
+    "type": "product",
+    "sku": "2802",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "4.39",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17141": {
+    "t": "Ontario konservai šunims – Jautiena, paskaninta žolelėmis, 800 g, Beef Pate flavoured with Herbs",
+    "st": "draft",
+    "type": "product",
+    "sku": "2801",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "4.39",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17144": {
+    "t": "Ontario konservai šunims – Antiena, paskaninta spanguolėmis, 800 g, Duck Pate with Cranberries",
+    "st": "draft",
+    "type": "product",
+    "sku": "43966",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "5.31",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17147": {
+    "t": "Ontario konservai šunims Ėriena su ryžiais, 320 g, Alucup Lamb with Rice",
+    "st": "draft",
+    "type": "product",
+    "sku": "74516",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.49",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17150": {
+    "t": "Ontario konservai šunims su žąsiena, spanguolėmis ir linų sėmenų aliejumi, 200 g, Adult Goose with Cranberries",
+    "st": "publish",
+    "type": "product",
+    "sku": "650804",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "1.1",
+    "price": "1.74",
+    "ean": "8595091778423",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": "1.1000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17153": {
+    "t": "Ontario konservai šunims su žuvimis ir žolelėmis, 200 g, Adult Fish with Herbs",
+    "st": "publish",
+    "type": "product",
+    "sku": "74731",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.74",
+    "ean": "8595091778447",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17156": {
+    "t": "Ontario konservai šunims su ėriena, paskaninta šaltalankiu, 400 g, Lamb Pate with Sea Buckthorn",
+    "st": "draft",
+    "type": "product",
+    "sku": "2800",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.49",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17159": {
+    "t": "Ontario konservai šunims su ėriena ir šaltalankiu, 400 g, Lamb Pate with Sea Buckthorn",
+    "st": "publish",
+    "type": "product",
+    "sku": "48381",
+    "sand": "av",
+    "stock": "35",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 35,
+    "src": "av",
+    "cost": "1.39",
+    "price": "2.59",
+    "ean": "8595681859877",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "35",
+      "cost_net": "1.3900",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17162": {
+    "t": "Ontario konservai šunims su vištiena, 200 g, Chicken Pieces and Nuggets",
+    "st": "draft",
+    "type": "product",
+    "sku": "650374",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.45",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17165": {
+    "t": "Ontario konservai šunims su vištiena ir vištienos skrandukais, 200 g, Chicken Pieces and Gizzard",
+    "st": "draft",
+    "type": "product",
+    "sku": "650373",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.45",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17168": {
+    "t": "Ontario konservai šunims su veršiena, saldžiosiomis bulvėmis ir lašišų aliejumi, 400 g, Calf with Sweet Potatoes",
+    "st": "draft",
+    "type": "product",
+    "sku": "650649",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.49",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17170": {
+    "t": "Ontario konservai šunims su veršiena, saldžiosiomis bulvėmis ir lašišų aliejumi, 200 g, Adult Calf with Sweet Potatoes",
+    "st": "publish",
+    "type": "product",
+    "sku": "650803",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.74",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17173": {
+    "t": "Ontario konservai šunims su veršiena, paskaninta žolelėmis, 400 g, Veal Pate flavoured with Herbs",
+    "st": "draft",
+    "type": "product",
+    "sku": "2804",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.49",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17176": {
+    "t": "Ontario konservai šunims su veršiena ir ciberžole, 400 g, Veal Pate flavoured with Turmeric",
+    "st": "publish",
+    "type": "product",
+    "sku": "48393",
+    "sand": "av",
+    "stock": "28",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 28,
+    "src": "av",
+    "cost": "1.39",
+    "price": "2.59",
+    "ean": "8595681859891",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "28",
+      "cost_net": "1.3900",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17179": {
+    "t": "Ontario konservai šunims su jautiena, paskaninta žolelėmis, 400 g, Beef Pate flavoured with Herbs",
+    "st": "publish",
+    "type": "product",
+    "sku": "2799",
+    "sand": "av",
+    "stock": "2",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 2,
+    "src": "av",
+    "cost": "1.40",
+    "price": "2.49",
+    "ean": "8595681809902",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "2",
+      "cost_net": "1.4000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17182": {
+    "t": "Ontario konservai šunims su jautiena, cukinijomis ir linų sėmenų aliejumi, 200 g, Adult Beef with Zucchini",
+    "st": "publish",
+    "type": "product",
+    "sku": "650808",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.74",
+    "ean": "8595091778416",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17185": {
+    "t": "Ontario konservai šunims su jautiena ir spirulina, 400 g, Beef Pate flavoured with Spirulina",
+    "st": "draft",
+    "type": "product",
+    "sku": "48378",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.59",
+    "ean": "8595681859853",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17188": {
+    "t": "Ontario konservai šunims su antiena, paskaninta spanguolėmis, 400 g, Duck Pate with Cranberries",
+    "st": "publish",
+    "type": "product",
+    "sku": "43960",
+    "sand": "av",
+    "stock": "5",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 5,
+    "src": "av",
+    "cost": "1.65",
+    "price": "2.49",
+    "ean": "8595681809933",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "5",
+      "cost_net": "1.6500",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17191": {
+    "t": "Ontario konservai šunims su antiena ir spanguolėmis, 400 g, Duck Pate with Cranberries",
+    "st": "draft",
+    "type": "product",
+    "sku": "48384",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "1.3900",
+    "price": "2.59",
+    "ean": "8595681859884",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": "1.3900",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17194": {
+    "t": "Ontario konservai kačiukams Kitten – vištiena su kepenėlėmis padaže, 80 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "2841",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.49",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17197": {
+    "t": "Ontario konservai katėms – vištiena su skumbre padaže, 80 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "2843",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.49",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17199": {
+    "t": "Ontario konservai katėms – vištiena su kumpiu padaže, 80 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "2844",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.49",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17201": {
+    "t": "Ontario konservai katėms – vištiena su krevetėmis, ryžiais ir rozmarinu, 80 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "43971",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.49",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17203": {
+    "t": "Ontario konservai katėms – vištiena su krabais padaže, 80 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "42444",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.49",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17206": {
+    "t": "Ontario konservai katėms – vištiena su antiena padaže, 80 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "2842",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.49",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17208": {
+    "t": "Ontario konservai katėms - vištiena su menke sultinyje, 80 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "2840",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.49",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17210": {
+    "t": "Ontario Puppy/Junior Large Chicken and Potatoes, 12 kg, pašaras jauniems šunims su vištiena ir bulvėmis",
+    "st": "draft",
+    "type": "product",
+    "sku": "650561",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "59.99",
+    "ean": "8595091784189",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17213": {
+    "t": "Ontario Puppy Mini Lamb and Brown Rice, 2,25 kg, pašaras jauniems mažų veislių šunims su ėriena ir rudaisiais ryžiais",
+    "st": "publish",
+    "type": "product",
+    "sku": "651153",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "16.99",
+    "ean": "8595091780099",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17216": {
+    "t": "Ontario Puppy Mini Lamb and Brown Rice, 0,75 kg, pašaras jauniems mažų veislių šunims su ėriena ir rudaisiais ryžiais",
+    "st": "publish",
+    "type": "product",
+    "sku": "74746",
+    "sand": "av",
+    "stock": "4",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 4,
+    "src": "av",
+    "cost": "4.4",
+    "price": "5.59",
+    "ean": "8595681851208",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "4",
+      "cost_net": "4.4000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17219": {
+    "t": "Ontario Puppy Mini Chicken and Potatoes, 2,25 kg, pašaras jauniems šunims su vištiena ir bulvėmis",
+    "st": "draft",
+    "type": "product",
+    "sku": "75915",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "12.99",
+    "ean": "8595091784189",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17221": {
+    "t": "Ontario Puppy Medium Lamb and Rice, 6,5 kg, pašaras jauniems vidutinių veislių šunims su ėriena ir ryžiais",
+    "st": "draft",
+    "type": "product",
+    "sku": "651106",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "43.99",
+    "ean": "8595091780136",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17223": {
+    "t": "Ontario Monoproteino konservai šunims su ėriena ir rudaisiais ryžiais, 400 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "48370",
+    "sand": "av",
+    "stock": "2",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 2,
+    "src": "av",
+    "cost": "1.39",
+    "price": "2.95",
+    "ean": "8595681860033",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "2",
+      "cost_net": "1.3900",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17227": {
+    "t": "Ontario Monoproteino konservai šunims su ėriena ir rudaisiais ryžiais, 200 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "48371",
+    "sand": "av",
+    "stock": "38",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 38,
+    "src": "av",
+    "cost": "0.97",
+    "price": "1.79",
+    "ean": "8595681859983",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "38",
+      "cost_net": "0.9700",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17232": {
+    "t": "Ontario Monoproteino konservai šunims su kalakutiena ir saldžiosiomis bulvėmis, 400 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "48374",
+    "sand": "av",
+    "stock": "16",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 16,
+    "src": "av",
+    "cost": "1.39",
+    "price": "2.95",
+    "ean": "8595681860026",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "16",
+      "cost_net": "1.3900",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17236": {
+    "t": "Ontario Monoproteino konservai šunims su kalakutiena ir saldžiosiomis bulvėmis, 200 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "48375",
+    "sand": "av",
+    "stock": "34",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 34,
+    "src": "av",
+    "cost": "0.97",
+    "price": "1.79",
+    "ean": "8595681859976",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "34",
+      "cost_net": "0.9700",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17241": {
+    "t": "Ontario Monoproteino konservai šunims su jautiena ir morkomis, 400 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "48368",
+    "sand": "av",
+    "stock": "16",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 16,
+    "src": "av",
+    "cost": "1.51",
+    "price": "2.95",
+    "ean": "8595681860057",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "16",
+      "cost_net": "1.5100",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17245": {
+    "t": "Ontario Monoproteino konservai šunims su jautiena ir morkomis, 200 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "48369",
+    "sand": "av",
+    "stock": "32",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 32,
+    "src": "av",
+    "cost": "0.97",
+    "price": "1.79",
+    "ean": "8595681860057",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "32",
+      "cost_net": "0.9700",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17250": {
+    "t": "Ontario Monoproteino konservai šunims su antiena ir moliūgais, 400 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "48372",
+    "sand": "av",
+    "stock": "20",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 20,
+    "src": "av",
+    "cost": "1.39",
+    "price": "2.95",
+    "ean": "8595681860057",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "20",
+      "cost_net": "1.3900",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17254": {
+    "t": "Ontario Monoproteino konservai šunims su antiena ir moliūgais, 200 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "48373",
+    "sand": "av",
+    "stock": "33",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 33,
+    "src": "av",
+    "cost": "0.97",
+    "price": "1.79",
+    "ean": "8595681860002",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "33",
+      "cost_net": "0.9700",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17259": {
+    "t": "Ontario Adult Mini Weight Control Turkey and Potatoes, 2,25 kg, pašaras mažų veislių šunims, turintiems antsvorio",
+    "st": "draft",
+    "type": "product",
+    "sku": "75930",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "14.99",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17262": {
+    "t": "Ontario Adult Mini Lamb and Brown Rice, 6,5 kg, pašaras mažų veislių šunims su ėriena ir rudaisiais ryžiais",
+    "st": "publish",
+    "type": "product",
+    "sku": "2808",
+    "sand": "av",
+    "stock": "1",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 1,
+    "src": "av",
+    "cost": "21.65",
+    "price": "42.99",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "1",
+      "cost_net": "21.6500",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17265": {
+    "t": "Ontario Adult Mini Lamb and Brown Rice, 2,25 kg, pašaras mažų veislių šunims su ėriena ir rudaisiais ryžiais",
+    "st": "publish",
+    "type": "product",
+    "sku": "651049",
+    "sand": "av",
+    "stock": "2",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 2,
+    "src": "av",
+    "cost": "10.16",
+    "price": "12.79",
+    "ean": "8595091780181",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "2",
+      "cost_net": "10.1600",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17268": {
+    "t": "Ontario Adult Mini Lamb and Brown Rice, 0,75 kg, pašaras mažų veislių šunims su ėriena ir rudaisiais ryžiais",
+    "st": "publish",
+    "type": "product",
+    "sku": "74755",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "6.99",
+    "ean": "8595091780174",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17272": {
+    "t": "Ontario Adult Mini Fish & Rice 6,5 kg, pašaras mažų veislių šunims su žuvimis ir ryžiais",
+    "st": "draft",
+    "type": "product",
+    "sku": "214-10577",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "42.99",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17274": {
+    "t": "Ontario Adult Mini Fish & Rice 2,25kg, pašaras mažų veislių šunims su žuvimis ir ryžiais",
+    "st": "draft",
+    "type": "product",
+    "sku": "214-10575",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "16.99",
+    "ean": "8595091780150",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17276": {
+    "t": "Ontario Adult Mini Chicken and Potatoes, 6,5 kg, pašaras mažų veislių šunims su vištiena ir bulvėmis",
+    "st": "draft",
+    "type": "product",
+    "sku": "75921",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "34.99",
+    "ean": "8595091785568",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17278": {
+    "t": "Ontario Adult Mini Chicken and Potatoes, 2,25 kg, pašaras mažų veislių šunims su vištiena ir bulvėmis",
+    "st": "draft",
+    "type": "product",
+    "sku": "2810",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "13.99",
+    "ean": "8595091784219",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17280": {
+    "t": "Ontario Adult Medium Lamb and Brown Rice, 12 kg, pašaras vidutinių veislių šunims su ėriena ir rudaisiais ryžiais",
+    "st": "publish",
+    "type": "product",
+    "sku": "651087",
+    "sand": "av",
+    "stock": "1",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 1,
+    "src": "av",
+    "cost": "35.80",
+    "price": "65.99",
+    "ean": "8595091780259",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "1",
+      "cost_net": "35.8000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17283": {
+    "t": "Ontario Adult Medium Chicken and Sweet Potatoes, 12 kg, pašaras vidutinių veislių šunims su vištiena ir saldžiosiomis bulvėmis",
+    "st": "publish",
+    "type": "product",
+    "sku": "2809",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "54.99",
+    "ean": "8595091784257",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17286": {
+    "t": "Ontario Adult Large White Fish and Brown Rice, 12 kg, pašaras didelių veislių šunims su balta žuvimi ir rudaisiais ryžiais",
+    "st": "publish",
+    "type": "product",
+    "sku": "74767",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "31.10",
+    "price": "69.99",
+    "ean": "8595091780297",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": "31.1000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17289": {
+    "t": "Ontario Adult Large Weight Control Turkey and Potatoes, 2,25 kg, pašaras didelių veislių šunims, turintiems antsvorio",
+    "st": "draft",
+    "type": "product",
+    "sku": "75932",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "12.99",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17293": {
+    "t": "Ontario Adult Large Lamb and Brown Rice, 12 kg, pašaras didelių veislių šunims su ėriena ir rudaisiais ryžiais",
+    "st": "publish",
+    "type": "product",
+    "sku": "650501",
+    "sand": "av",
+    "stock": "3",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 3,
+    "src": "av",
+    "cost": "31.75",
+    "price": "63.99",
+    "ean": "8595091784318",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "3",
+      "cost_net": "31.7500",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17296": {
+    "t": "Ontario Adult Large Chicken and Sweet Potatoes, 12 kg, pašaras suaugusiems šunims su vištiena ir saldžiosiomis bulvėmis",
+    "st": "publish",
+    "type": "product",
+    "sku": "75925",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "35.8",
+    "price": "56.99",
+    "ean": "8595091784288",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": "35.8000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17299": {
+    "t": "Ontario Adult Large Beef and Brown Rice, 12 kg, pašaras didelių veislių šunims su jautiena ir rudaisiais ryžiais",
+    "st": "publish",
+    "type": "product",
+    "sku": "651135",
+    "sand": "av",
+    "stock": "3",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 3,
+    "src": "av",
+    "cost": "31.00",
+    "price": "58.99",
+    "ean": "8595091780273",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "3",
+      "cost_net": "31.0000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17469": {
+    "t": "Miamor skanėstai kačiukams - kreminė pasta su taurinu, 6*15 g, Miamor Junior Pate Cream",
+    "st": "publish",
+    "type": "product",
+    "sku": "74320",
+    "sand": "av",
+    "stock": "11",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 11,
+    "src": "av",
+    "cost": "2.03",
+    "price": "3.18",
+    "ean": "4000158743206",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "11",
+      "cost_net": "2.0300",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17472": {
+    "t": "Miamor skanėstai katėms - vištienos ir daržovių kremas, 5*15 g, Miamor Cat Cream",
+    "st": "publish",
+    "type": "product",
+    "sku": "74271",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "2.03",
+    "price": "3.55",
+    "ean": "4000158742711",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": "2.0300",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17475": {
+    "t": "Miamor skanėstai katėms - salyklo ekstrakto kremas, 6*15 g, Miamor Malt Cream",
+    "st": "publish",
+    "type": "product",
+    "sku": "86938",
+    "sand": "av",
+    "stock": "55",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 55,
+    "src": "av",
+    "cost": "1.50",
+    "price": "2.85",
+    "ean": "4000158743053",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "55",
+      "cost_net": "1.5000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17478": {
+    "t": "Miamor skanėstai katėms - salyklo ekstrakto kremas su sūriu, 6*15 g, Miamor Malt Cream with Cheese",
+    "st": "publish",
+    "type": "product",
+    "sku": "72847",
+    "sand": "av",
+    "stock": "51",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 51,
+    "src": "av",
+    "cost": "1.50",
+    "price": "2.85",
+    "ean": "4000158743077",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "51",
+      "cost_net": "1.5000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17481": {
+    "t": "Miamor skanėstai katėms - kremas su vitaminais, 6*15 g, Miamor Multi-Vitamin Cream",
+    "st": "publish",
+    "type": "product",
+    "sku": "71693",
+    "sand": "av",
+    "stock": "366",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 366,
+    "src": "av",
+    "cost": "1.50",
+    "price": "2.56",
+    "ean": "4000158743060",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "366",
+      "cost_net": "1.5000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17484": {
+    "t": "Miamor skanėstai katėms - kepenų pašteto kremas, 6*15 g, Miamor Liver Pate Cream",
+    "st": "publish",
+    "type": "product",
+    "sku": "41427",
+    "sand": "av",
+    "stock": "50",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 50,
+    "src": "av",
+    "cost": "1.50",
+    "price": "2.85",
+    "ean": "4000158743039",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "50",
+      "cost_net": "1.5000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17487": {
+    "t": "Miamor skanėstai katėms - jautienos ir daržovių kremas, 5*15 g, Miamor Cat Cream",
+    "st": "publish",
+    "type": "product",
+    "sku": "74270",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "3.55",
+    "ean": "4000158742704",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17490": {
+    "t": "Miamor Super premium konservai katėms su tunu ir krevetėmis, 185 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "2627",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.99",
+    "ean": "",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17493": {
+    "t": "Miamor Super premium konservai katėms su tunu ir krevetėmis, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "640367",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "0.90",
+    "price": "1.79",
+    "ean": "4000158740502",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": "0.9000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17496": {
+    "t": "Miamor Super premium konservai katėms su tunu ir kalmarais, 185 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "2832",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.99",
+    "ean": "",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17499": {
+    "t": "Miamor Super premium konservai katėms su tunu ir kalmarais, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "2632",
+    "sand": "av",
+    "stock": "45",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 45,
+    "src": "av",
+    "cost": "0.90",
+    "price": "1.79",
+    "ean": "4000158740496",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "45",
+      "cost_net": "0.9000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17502": {
+    "t": "Miamor Super premium konservai katėms su tunu ir daržovėmis, 185 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "2831",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.99",
+    "ean": "",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17504": {
+    "t": "Miamor Super premium konservai katėms su tunu ir daržovėmis, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "2633",
+    "sand": "av",
+    "stock": "16",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 16,
+    "src": "av",
+    "cost": "0.90",
+    "price": "1.79",
+    "ean": "4000158740472",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "16",
+      "cost_net": "0.9000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17507": {
+    "t": "Miamor Super Premium konservai katėms su vištiena ir ryžiais, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "640366",
+    "sand": "av",
+    "stock": "45",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 45,
+    "src": "av",
+    "cost": "1.13",
+    "price": "1.79",
+    "ean": "4000158740434",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "45",
+      "cost_net": "1.1300",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17510": {
+    "t": "Miamor Super Premium konservai katėms su tunu ir sūriu, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "2629",
+    "sand": "av",
+    "stock": "57",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 57,
+    "src": "av",
+    "cost": "0.90",
+    "price": "1.79",
+    "ean": "4000158740465",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "57",
+      "cost_net": "0.9000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17514": {
+    "t": "Miamor Super Premium konservai katėms su tunu ir ryžiais, 185 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "2833",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.99",
+    "ean": "",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17517": {
+    "t": "Miamor Super Premium konservai katėms su tunu ir ryžiais, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "2628",
+    "sand": "av",
+    "stock": "13",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 13,
+    "src": "av",
+    "cost": "0.90",
+    "price": "1.79",
+    "ean": "4000158740489",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "13",
+      "cost_net": "0.9000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17520": {
+    "t": "Miamor Super Premium konservai katėms su tunu ir putpelių kiaušiniais, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "2630",
+    "sand": "av",
+    "stock": "43",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 43,
+    "src": "av",
+    "cost": "0.90",
+    "price": "1.79",
+    "ean": "4000158740427",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "43",
+      "cost_net": "0.9000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17523": {
+    "t": "Miamor Fillet Naturelle konservai katėms su tunu ir krabais, 80 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "72850",
+    "sand": "av",
+    "stock": "27",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 27,
+    "src": "av",
+    "cost": "0.80",
+    "price": "1.79",
+    "ean": "42017356",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "27",
+      "cost_net": "0.8000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17526": {
+    "t": "Miamor Feine Filets konservai katėms, vištienos ir tuno gabalėliai padaže, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "74821",
+    "sand": "av",
+    "stock": "19",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 19,
+    "src": "av",
+    "cost": "0.90",
+    "price": "2.05",
+    "ean": "4000158748218",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "19",
+      "cost_net": "0.9000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17529": {
+    "t": "Miamor Feine Filets konservai katėms, vištienos ir tuno gabalėliai drebučiuose, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "74074",
+    "sand": "av",
+    "stock": "9",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 9,
+    "src": "av",
+    "cost": "0.90",
+    "price": "2.05",
+    "ean": "4000158740748",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "9",
+      "cost_net": "0.9000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17532": {
+    "t": "Miamor Feine Filets konservai katėms, vištiena pomidorų drebučiuose, 100 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "72846",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "2.05",
+    "ean": "",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17535": {
+    "t": "Miamor Feine Filets konservai katėms, vištiena paukštienos drebučiuose, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "2836",
+    "sand": "av",
+    "stock": "38",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 38,
+    "src": "av",
+    "cost": "0.90",
+    "price": "2.05",
+    "ean": "4000158740908",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "38",
+      "cost_net": "0.9000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17538": {
+    "t": "Miamor Feine Filets konservai katėms, tunas su krabais drebučiuose, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "2837",
+    "sand": "av",
+    "stock": "22",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 22,
+    "src": "av",
+    "cost": "0.90",
+    "price": "2.05",
+    "ean": "4000158740755",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "22",
+      "cost_net": "0.9000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17541": {
+    "t": "Miamor Feine Filets konservai katėms, tunas su kalmarais drebučiuose, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "2838",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "0.90",
+    "price": "2.05",
+    "ean": "4000158740762",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": "0.9000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17544": {
+    "t": "Miamor Feine Filets konservai katėms, tunas su daržovėmis drebučiuose, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "2839",
+    "sand": "av",
+    "stock": "11",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 11,
+    "src": "av",
+    "cost": "0.90",
+    "price": "2.05",
+    "ean": "4000158740779",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "11",
+      "cost_net": "0.9000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17547": {
+    "t": "Miamor Feine Filets konservai katėms, tunas lašišos drebučiuose, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "2835",
+    "sand": "av",
+    "stock": "24",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 24,
+    "src": "av",
+    "cost": "0.90",
+    "price": "2.05",
+    "ean": "",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "24",
+      "cost_net": "0.9000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17550": {
+    "t": "Miamor Feine Filets konservai katėms, tunas krabų drebučiuose, 100 g",
+    "st": "publish",
+    "type": "product",
+    "sku": "74080",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "0.9",
+    "price": "2.05",
+    "ean": "",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": "0.9000",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17799": {
+    "t": "Konservai katėms - Ontario Alucup su vištiena ir jautiena, 115 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "74512",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.29",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17802": {
+    "t": "Konservai katėms - Ontario Alucup su kepenimis, 115 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "74513",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.29",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "17900": {
+    "t": "Kattovit konservai jautrioms katėms su vištiena, 185 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "2847",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.99",
+    "ean": "",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "18348": {
+    "t": "Gėrimas kačiukams su vištiena - Ontario Drink Kitten Chicken, 135 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "42846",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.25",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "18351": {
+    "t": "Gėrimas kačiukams su tunu - Ontario Drink Kitten Tuna, 135 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "44175",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.25",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "18354": {
+    "t": "Gėrimas kačiukams - Miamor Trinkfein Vitaldrink Kitten su vištiena, 135 ml",
+    "st": "publish",
+    "type": "product",
+    "sku": "46304",
+    "sand": "av",
+    "stock": "35",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 35,
+    "src": "av",
+    "cost": "",
+    "price": "1.33",
+    "ean": "",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "35",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "18357": {
+    "t": "Gėrimas katėms su vištiena - Ontario Drink Adult Chicken, 135 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "42847",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.25",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "18360": {
+    "t": "Gėrimas katėms su lašiša - Ontario Drink Adult Salmon, 135 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "42848",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.25",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "18363": {
+    "t": "Gėrimas katėms su antiena - Ontario Drink Adult Duck, 135 g",
+    "st": "draft",
+    "type": "product",
+    "sku": "42849",
+    "sand": "av",
+    "stock": "0",
+    "own": "",
+    "mng": "yes",
+    "ss": "outofstock",
+    "av": 0,
+    "src": "av",
+    "cost": "",
+    "price": "1.25",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "0",
+      "cost_net": null,
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "18366": {
+    "t": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su vištiena, 135 ml",
+    "st": "publish",
+    "type": "product",
+    "sku": "40828",
+    "sand": "av",
+    "stock": "91",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 91,
+    "src": "av",
+    "cost": "0.82",
+    "price": "1.45",
+    "ean": "4000158743619",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "91",
+      "cost_net": "0.8200",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "18369": {
+    "t": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su tunu, 135 ml",
+    "st": "publish",
+    "type": "product",
+    "sku": "40829",
+    "sand": "av",
+    "stock": "47",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 47,
+    "src": "av",
+    "cost": "0.82",
+    "price": "1.45",
+    "ean": "4000158743626",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "47",
+      "cost_net": "0.8200",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "18372": {
+    "t": "Gėrimas katėms - Miamor Trinkfein Vitaldrink su antiena, 135 ml",
+    "st": "publish",
+    "type": "product",
+    "sku": "41148",
+    "sand": "av",
+    "stock": "109",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 109,
+    "src": "av",
+    "cost": "0.82",
+    "price": "1.45",
+    "ean": "4000158743633",
+    "br": "Miamor",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "109",
+      "cost_net": "0.8200",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "34969": {
+    "t": "Ontario konservai šunims su veršiena ir ciberžole, 800 g, Veal Pate flavoured with Turmeric",
+    "st": "publish",
+    "type": "product",
+    "sku": "48395",
+    "sand": "av",
+    "stock": "4",
+    "own": "",
+    "mng": "yes",
+    "ss": "instock",
+    "av": 4,
+    "src": "av",
+    "cost": "2.15",
+    "price": "3.99",
+    "ean": "8595681859952",
+    "br": "Ontario",
+    "srcs": [
+     {
+      "source": "av",
+      "stock_qty": "4",
+      "cost_net": "2.1500",
+      "is_active": "1",
+      "supplier_sku": ""
+     }
+    ]
+   },
+   "36301": {
+    "t": "6 vnt. Ontario konservų šunims su ėriena ir šaltalankiu, 400 g, Lamb Pate with Sea Buckthorn",
+    "st": "publish",
+    "type": "product",
+    "sku": "Ont-Lamb-Pate-400-6",
+    "sand": "",
+    "stock": "",
+    "own": "",
+    "mng": "no",
+    "ss": "instock",
+    "av": 5,
+    "src": "av",
+    "cost": "8.34",
+    "price": "14.99",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": []
+   },
+   "36302": {
+    "t": "6 vnt. Ontario konservų šunims su veršiena ir ciberžole, 400 g, Veal Pate flavoured with Turmeric",
+    "st": "publish",
+    "type": "product",
+    "sku": "Ont-Veal-Pate-400-6",
+    "sand": "",
+    "stock": "",
+    "own": "",
+    "mng": "no",
+    "ss": "instock",
+    "av": 4,
+    "src": "av",
+    "cost": "8.34",
+    "price": "14.99",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": []
+   },
+   "36381": {
+    "t": "2 vnt. Ontario Adult Mini Lamb and Brown Rice, 2,25 kg, pašaras mažų veislių šunims su ėriena ir rudaisiais ryžiais",
+    "st": "publish",
+    "type": "product",
+    "sku": "DP-651049-2",
+    "sand": "",
+    "stock": "",
+    "own": "",
+    "mng": "no",
+    "ss": "instock",
+    "av": 1,
+    "src": "av",
+    "cost": "20.32",
+    "price": "24.79",
+    "ean": "",
+    "br": "Ontario",
+    "srcs": []
+   }
+  },
+  "ist_cols": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ],
+  "ist_range": {
+   "a": "2023-11-20",
+   "b": "2026-09-08",
+   "n": "23391"
+  },
+  "ist": [
+   {
+    "preke_id": "16198",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "16198",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "16207",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "16210",
+    "men": "2025-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "16210",
+    "men": "2025-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "16210",
+    "men": "2025-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "16210",
+    "men": "2025-11",
+    "q": "1"
+   },
+   {
+    "preke_id": "16210",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "16210",
+    "men": "2026-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "16222",
+    "men": "2025-10",
+    "q": "1"
+   },
+   {
+    "preke_id": "16234",
+    "men": "2025-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "16234",
+    "men": "2025-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "16234",
+    "men": "2025-10",
+    "q": "1"
+   },
+   {
+    "preke_id": "16234",
+    "men": "2025-12",
+    "q": "1"
+   },
+   {
+    "preke_id": "16234",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "16234",
+    "men": "2026-03",
+    "q": "1"
+   },
+   {
+    "preke_id": "16234",
+    "men": "2026-09",
+    "q": "2"
+   },
+   {
+    "preke_id": "16239",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "16245",
+    "men": "2025-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "16245",
+    "men": "2025-10",
+    "q": "3"
+   },
+   {
+    "preke_id": "16245",
+    "men": "2025-11",
+    "q": "2"
+   },
+   {
+    "preke_id": "16245",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "16245",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "16245",
+    "men": "2026-06",
+    "q": "1"
+   },
+   {
+    "preke_id": "16245",
+    "men": "2026-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "16254",
+    "men": "2025-11",
+    "q": "1"
+   },
+   {
+    "preke_id": "16259",
+    "men": "2025-09",
+    "q": "2"
+   },
+   {
+    "preke_id": "16259",
+    "men": "2025-10",
+    "q": "1"
+   },
+   {
+    "preke_id": "16259",
+    "men": "2026-01",
+    "q": "2"
+   },
+   {
+    "preke_id": "16259",
+    "men": "2026-02",
+    "q": "1"
+   },
+   {
+    "preke_id": "16270",
+    "men": "2025-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "16270",
+    "men": "2026-04",
+    "q": "1"
+   },
+   {
+    "preke_id": "16270",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "16270",
+    "men": "2026-06",
+    "q": "1"
+   },
+   {
+    "preke_id": "16270",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2025-07",
+    "q": "7"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2025-08",
+    "q": "3"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2025-09",
+    "q": "32"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2025-10",
+    "q": "23"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2025-11",
+    "q": "27"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2025-12",
+    "q": "8"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2026-01",
+    "q": "40"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2026-02",
+    "q": "18"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2026-03",
+    "q": "10"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2026-04",
+    "q": "14"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2026-05",
+    "q": "2"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2026-06",
+    "q": "27"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2026-07",
+    "q": "17"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2026-08",
+    "q": "7"
+   },
+   {
+    "preke_id": "16933",
+    "men": "2026-09",
+    "q": "3"
+   },
+   {
+    "preke_id": "16936",
+    "men": "2025-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "16936",
+    "men": "2025-08",
+    "q": "3"
+   },
+   {
+    "preke_id": "16936",
+    "men": "2025-09",
+    "q": "27"
+   },
+   {
+    "preke_id": "16936",
+    "men": "2025-10",
+    "q": "17"
+   },
+   {
+    "preke_id": "16936",
+    "men": "2025-11",
+    "q": "48"
+   },
+   {
+    "preke_id": "16936",
+    "men": "2025-12",
+    "q": "2"
+   },
+   {
+    "preke_id": "16936",
+    "men": "2026-01",
+    "q": "29"
+   },
+   {
+    "preke_id": "16936",
+    "men": "2026-02",
+    "q": "8"
+   },
+   {
+    "preke_id": "16936",
+    "men": "2026-03",
+    "q": "21"
+   },
+   {
+    "preke_id": "16936",
+    "men": "2026-04",
+    "q": "4"
+   },
+   {
+    "preke_id": "16936",
+    "men": "2026-05",
+    "q": "2"
+   },
+   {
+    "preke_id": "16936",
+    "men": "2026-06",
+    "q": "12"
+   },
+   {
+    "preke_id": "16936",
+    "men": "2026-07",
+    "q": "7"
+   },
+   {
+    "preke_id": "16936",
+    "men": "2026-08",
+    "q": "5"
+   },
+   {
+    "preke_id": "16939",
+    "men": "2025-07",
+    "q": "10"
+   },
+   {
+    "preke_id": "16939",
+    "men": "2025-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "16939",
+    "men": "2025-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "16939",
+    "men": "2025-10",
+    "q": "13"
+   },
+   {
+    "preke_id": "16939",
+    "men": "2025-11",
+    "q": "29"
+   },
+   {
+    "preke_id": "16939",
+    "men": "2025-12",
+    "q": "8"
+   },
+   {
+    "preke_id": "16939",
+    "men": "2026-01",
+    "q": "22"
+   },
+   {
+    "preke_id": "16939",
+    "men": "2026-02",
+    "q": "2"
+   },
+   {
+    "preke_id": "16939",
+    "men": "2026-03",
+    "q": "3"
+   },
+   {
+    "preke_id": "16939",
+    "men": "2026-04",
+    "q": "7"
+   },
+   {
+    "preke_id": "16939",
+    "men": "2026-05",
+    "q": "15"
+   },
+   {
+    "preke_id": "16939",
+    "men": "2026-06",
+    "q": "11"
+   },
+   {
+    "preke_id": "16939",
+    "men": "2026-07",
+    "q": "10"
+   },
+   {
+    "preke_id": "16939",
+    "men": "2026-08",
+    "q": "8"
+   },
+   {
+    "preke_id": "16942",
+    "men": "2025-07",
+    "q": "13"
+   },
+   {
+    "preke_id": "16942",
+    "men": "2025-08",
+    "q": "11"
+   },
+   {
+    "preke_id": "16942",
+    "men": "2025-09",
+    "q": "47"
+   },
+   {
+    "preke_id": "16942",
+    "men": "2025-10",
+    "q": "2"
+   },
+   {
+    "preke_id": "16942",
+    "men": "2025-11",
+    "q": "62"
+   },
+   {
+    "preke_id": "16942",
+    "men": "2025-12",
+    "q": "21"
+   },
+   {
+    "preke_id": "16942",
+    "men": "2026-01",
+    "q": "43"
+   },
+   {
+    "preke_id": "16942",
+    "men": "2026-03",
+    "q": "20"
+   },
+   {
+    "preke_id": "16942",
+    "men": "2026-04",
+    "q": "11"
+   },
+   {
+    "preke_id": "16942",
+    "men": "2026-05",
+    "q": "27"
+   },
+   {
+    "preke_id": "16942",
+    "men": "2026-06",
+    "q": "34"
+   },
+   {
+    "preke_id": "16942",
+    "men": "2026-07",
+    "q": "28"
+   },
+   {
+    "preke_id": "16942",
+    "men": "2026-08",
+    "q": "18"
+   },
+   {
+    "preke_id": "16945",
+    "men": "2025-07",
+    "q": "8"
+   },
+   {
+    "preke_id": "16945",
+    "men": "2025-08",
+    "q": "7"
+   },
+   {
+    "preke_id": "16945",
+    "men": "2025-09",
+    "q": "15"
+   },
+   {
+    "preke_id": "16945",
+    "men": "2025-10",
+    "q": "13"
+   },
+   {
+    "preke_id": "16945",
+    "men": "2025-11",
+    "q": "15"
+   },
+   {
+    "preke_id": "16945",
+    "men": "2025-12",
+    "q": "8"
+   },
+   {
+    "preke_id": "16945",
+    "men": "2026-01",
+    "q": "29"
+   },
+   {
+    "preke_id": "16945",
+    "men": "2026-02",
+    "q": "1"
+   },
+   {
+    "preke_id": "16945",
+    "men": "2026-03",
+    "q": "12"
+   },
+   {
+    "preke_id": "16945",
+    "men": "2026-04",
+    "q": "11"
+   },
+   {
+    "preke_id": "16945",
+    "men": "2026-05",
+    "q": "15"
+   },
+   {
+    "preke_id": "16945",
+    "men": "2026-06",
+    "q": "28"
+   },
+   {
+    "preke_id": "16945",
+    "men": "2026-07",
+    "q": "5"
+   },
+   {
+    "preke_id": "16945",
+    "men": "2026-08",
+    "q": "18"
+   },
+   {
+    "preke_id": "17022",
+    "men": "2025-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "17022",
+    "men": "2025-11",
+    "q": "4"
+   },
+   {
+    "preke_id": "17022",
+    "men": "2025-12",
+    "q": "1"
+   },
+   {
+    "preke_id": "17022",
+    "men": "2026-02",
+    "q": "4"
+   },
+   {
+    "preke_id": "17022",
+    "men": "2026-04",
+    "q": "1"
+   },
+   {
+    "preke_id": "17022",
+    "men": "2026-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17022",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17026",
+    "men": "2025-09",
+    "q": "2"
+   },
+   {
+    "preke_id": "17026",
+    "men": "2025-11",
+    "q": "3"
+   },
+   {
+    "preke_id": "17026",
+    "men": "2025-12",
+    "q": "1"
+   },
+   {
+    "preke_id": "17026",
+    "men": "2026-01",
+    "q": "3"
+   },
+   {
+    "preke_id": "17026",
+    "men": "2026-02",
+    "q": "6"
+   },
+   {
+    "preke_id": "17026",
+    "men": "2026-04",
+    "q": "1"
+   },
+   {
+    "preke_id": "17026",
+    "men": "2026-05",
+    "q": "10"
+   },
+   {
+    "preke_id": "17026",
+    "men": "2026-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17029",
+    "men": "2025-08",
+    "q": "4"
+   },
+   {
+    "preke_id": "17032",
+    "men": "2025-07",
+    "q": "5"
+   },
+   {
+    "preke_id": "17032",
+    "men": "2025-09",
+    "q": "11"
+   },
+   {
+    "preke_id": "17032",
+    "men": "2025-10",
+    "q": "4"
+   },
+   {
+    "preke_id": "17032",
+    "men": "2025-11",
+    "q": "6"
+   },
+   {
+    "preke_id": "17032",
+    "men": "2025-12",
+    "q": "9"
+   },
+   {
+    "preke_id": "17032",
+    "men": "2026-01",
+    "q": "5"
+   },
+   {
+    "preke_id": "17032",
+    "men": "2026-02",
+    "q": "13"
+   },
+   {
+    "preke_id": "17032",
+    "men": "2026-03",
+    "q": "7"
+   },
+   {
+    "preke_id": "17032",
+    "men": "2026-04",
+    "q": "1"
+   },
+   {
+    "preke_id": "17032",
+    "men": "2026-05",
+    "q": "3"
+   },
+   {
+    "preke_id": "17032",
+    "men": "2026-07",
+    "q": "5"
+   },
+   {
+    "preke_id": "17032",
+    "men": "2026-08",
+    "q": "10"
+   },
+   {
+    "preke_id": "17032",
+    "men": "2026-09",
+    "q": "5"
+   },
+   {
+    "preke_id": "17035",
+    "men": "2025-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17035",
+    "men": "2025-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17035",
+    "men": "2025-09",
+    "q": "10"
+   },
+   {
+    "preke_id": "17035",
+    "men": "2025-10",
+    "q": "1"
+   },
+   {
+    "preke_id": "17035",
+    "men": "2025-11",
+    "q": "2"
+   },
+   {
+    "preke_id": "17035",
+    "men": "2025-12",
+    "q": "3"
+   },
+   {
+    "preke_id": "17035",
+    "men": "2026-02",
+    "q": "1"
+   },
+   {
+    "preke_id": "17035",
+    "men": "2026-04",
+    "q": "2"
+   },
+   {
+    "preke_id": "17035",
+    "men": "2026-07",
+    "q": "4"
+   },
+   {
+    "preke_id": "17038",
+    "men": "2025-09",
+    "q": "10"
+   },
+   {
+    "preke_id": "17038",
+    "men": "2025-10",
+    "q": "4"
+   },
+   {
+    "preke_id": "17038",
+    "men": "2025-11",
+    "q": "12"
+   },
+   {
+    "preke_id": "17038",
+    "men": "2025-12",
+    "q": "9"
+   },
+   {
+    "preke_id": "17038",
+    "men": "2026-01",
+    "q": "7"
+   },
+   {
+    "preke_id": "17038",
+    "men": "2026-02",
+    "q": "16"
+   },
+   {
+    "preke_id": "17038",
+    "men": "2026-03",
+    "q": "6"
+   },
+   {
+    "preke_id": "17038",
+    "men": "2026-04",
+    "q": "7"
+   },
+   {
+    "preke_id": "17038",
+    "men": "2026-07",
+    "q": "3"
+   },
+   {
+    "preke_id": "17038",
+    "men": "2026-08",
+    "q": "10"
+   },
+   {
+    "preke_id": "17038",
+    "men": "2026-09",
+    "q": "7"
+   },
+   {
+    "preke_id": "17041",
+    "men": "2025-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17041",
+    "men": "2025-08",
+    "q": "8"
+   },
+   {
+    "preke_id": "17041",
+    "men": "2025-09",
+    "q": "3"
+   },
+   {
+    "preke_id": "17041",
+    "men": "2025-11",
+    "q": "16"
+   },
+   {
+    "preke_id": "17041",
+    "men": "2025-12",
+    "q": "7"
+   },
+   {
+    "preke_id": "17041",
+    "men": "2026-01",
+    "q": "5"
+   },
+   {
+    "preke_id": "17041",
+    "men": "2026-02",
+    "q": "10"
+   },
+   {
+    "preke_id": "17048",
+    "men": "2025-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17048",
+    "men": "2025-08",
+    "q": "14"
+   },
+   {
+    "preke_id": "17048",
+    "men": "2025-09",
+    "q": "6"
+   },
+   {
+    "preke_id": "17048",
+    "men": "2025-10",
+    "q": "1"
+   },
+   {
+    "preke_id": "17048",
+    "men": "2025-11",
+    "q": "1"
+   },
+   {
+    "preke_id": "17048",
+    "men": "2025-12",
+    "q": "6"
+   },
+   {
+    "preke_id": "17048",
+    "men": "2026-01",
+    "q": "5"
+   },
+   {
+    "preke_id": "17048",
+    "men": "2026-03",
+    "q": "4"
+   },
+   {
+    "preke_id": "17048",
+    "men": "2026-06",
+    "q": "2"
+   },
+   {
+    "preke_id": "17048",
+    "men": "2026-07",
+    "q": "5"
+   },
+   {
+    "preke_id": "17048",
+    "men": "2026-08",
+    "q": "2"
+   },
+   {
+    "preke_id": "17051",
+    "men": "2025-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17051",
+    "men": "2025-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17051",
+    "men": "2025-09",
+    "q": "6"
+   },
+   {
+    "preke_id": "17051",
+    "men": "2025-10",
+    "q": "2"
+   },
+   {
+    "preke_id": "17051",
+    "men": "2025-12",
+    "q": "5"
+   },
+   {
+    "preke_id": "17051",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "17051",
+    "men": "2026-02",
+    "q": "6"
+   },
+   {
+    "preke_id": "17051",
+    "men": "2026-05",
+    "q": "6"
+   },
+   {
+    "preke_id": "17051",
+    "men": "2026-06",
+    "q": "1"
+   },
+   {
+    "preke_id": "17051",
+    "men": "2026-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17051",
+    "men": "2026-08",
+    "q": "2"
+   },
+   {
+    "preke_id": "17057",
+    "men": "2025-07",
+    "q": "13"
+   },
+   {
+    "preke_id": "17057",
+    "men": "2025-10",
+    "q": "4"
+   },
+   {
+    "preke_id": "17057",
+    "men": "2025-11",
+    "q": "4"
+   },
+   {
+    "preke_id": "17057",
+    "men": "2025-12",
+    "q": "1"
+   },
+   {
+    "preke_id": "17057",
+    "men": "2026-01",
+    "q": "6"
+   },
+   {
+    "preke_id": "17057",
+    "men": "2026-02",
+    "q": "17"
+   },
+   {
+    "preke_id": "17057",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17057",
+    "men": "2026-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17060",
+    "men": "2025-08",
+    "q": "2"
+   },
+   {
+    "preke_id": "17060",
+    "men": "2025-09",
+    "q": "11"
+   },
+   {
+    "preke_id": "17060",
+    "men": "2025-10",
+    "q": "6"
+   },
+   {
+    "preke_id": "17060",
+    "men": "2025-11",
+    "q": "2"
+   },
+   {
+    "preke_id": "17060",
+    "men": "2025-12",
+    "q": "8"
+   },
+   {
+    "preke_id": "17060",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "17060",
+    "men": "2026-02",
+    "q": "1"
+   },
+   {
+    "preke_id": "17060",
+    "men": "2026-03",
+    "q": "12"
+   },
+   {
+    "preke_id": "17060",
+    "men": "2026-04",
+    "q": "2"
+   },
+   {
+    "preke_id": "17060",
+    "men": "2026-05",
+    "q": "4"
+   },
+   {
+    "preke_id": "17060",
+    "men": "2026-06",
+    "q": "1"
+   },
+   {
+    "preke_id": "17060",
+    "men": "2026-07",
+    "q": "7"
+   },
+   {
+    "preke_id": "17060",
+    "men": "2026-08",
+    "q": "7"
+   },
+   {
+    "preke_id": "17102",
+    "men": "2025-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17102",
+    "men": "2025-08",
+    "q": "3"
+   },
+   {
+    "preke_id": "17102",
+    "men": "2025-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "17102",
+    "men": "2025-10",
+    "q": "2"
+   },
+   {
+    "preke_id": "17102",
+    "men": "2025-11",
+    "q": "1"
+   },
+   {
+    "preke_id": "17102",
+    "men": "2025-12",
+    "q": "2"
+   },
+   {
+    "preke_id": "17102",
+    "men": "2026-01",
+    "q": "3"
+   },
+   {
+    "preke_id": "17102",
+    "men": "2026-04",
+    "q": "1"
+   },
+   {
+    "preke_id": "17102",
+    "men": "2026-05",
+    "q": "3"
+   },
+   {
+    "preke_id": "17102",
+    "men": "2026-06",
+    "q": "1"
+   },
+   {
+    "preke_id": "17102",
+    "men": "2026-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17102",
+    "men": "2026-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "17115",
+    "men": "2025-07",
+    "q": "5"
+   },
+   {
+    "preke_id": "17115",
+    "men": "2025-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17115",
+    "men": "2025-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "17115",
+    "men": "2025-10",
+    "q": "5"
+   },
+   {
+    "preke_id": "17115",
+    "men": "2025-11",
+    "q": "2"
+   },
+   {
+    "preke_id": "17115",
+    "men": "2026-01",
+    "q": "3"
+   },
+   {
+    "preke_id": "17115",
+    "men": "2026-04",
+    "q": "3"
+   },
+   {
+    "preke_id": "17115",
+    "men": "2026-05",
+    "q": "2"
+   },
+   {
+    "preke_id": "17115",
+    "men": "2026-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17150",
+    "men": "2025-08",
+    "q": "9"
+   },
+   {
+    "preke_id": "17150",
+    "men": "2025-09",
+    "q": "5"
+   },
+   {
+    "preke_id": "17150",
+    "men": "2025-10",
+    "q": "2"
+   },
+   {
+    "preke_id": "17150",
+    "men": "2025-11",
+    "q": "10"
+   },
+   {
+    "preke_id": "17150",
+    "men": "2025-12",
+    "q": "5"
+   },
+   {
+    "preke_id": "17150",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "17150",
+    "men": "2026-02",
+    "q": "4"
+   },
+   {
+    "preke_id": "17150",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17150",
+    "men": "2026-07",
+    "q": "6"
+   },
+   {
+    "preke_id": "17150",
+    "men": "2026-08",
+    "q": "2"
+   },
+   {
+    "preke_id": "17150",
+    "men": "2026-09",
+    "q": "3"
+   },
+   {
+    "preke_id": "17153",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "17153",
+    "men": "2026-02",
+    "q": "5"
+   },
+   {
+    "preke_id": "17153",
+    "men": "2026-04",
+    "q": "1"
+   },
+   {
+    "preke_id": "17153",
+    "men": "2026-05",
+    "q": "3"
+   },
+   {
+    "preke_id": "17153",
+    "men": "2026-06",
+    "q": "1"
+   },
+   {
+    "preke_id": "17156",
+    "men": "2025-08",
+    "q": "7"
+   },
+   {
+    "preke_id": "17156",
+    "men": "2025-09",
+    "q": "7"
+   },
+   {
+    "preke_id": "17156",
+    "men": "2025-10",
+    "q": "38"
+   },
+   {
+    "preke_id": "17156",
+    "men": "2025-11",
+    "q": "4"
+   },
+   {
+    "preke_id": "17156",
+    "men": "2025-12",
+    "q": "11"
+   },
+   {
+    "preke_id": "17156",
+    "men": "2026-01",
+    "q": "2"
+   },
+   {
+    "preke_id": "17156",
+    "men": "2026-02",
+    "q": "2"
+   },
+   {
+    "preke_id": "17156",
+    "men": "2026-04",
+    "q": "2"
+   },
+   {
+    "preke_id": "17156",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17159",
+    "men": "2026-07",
+    "q": "9"
+   },
+   {
+    "preke_id": "17159",
+    "men": "2026-09",
+    "q": "2"
+   },
+   {
+    "preke_id": "17170",
+    "men": "2025-07",
+    "q": "10"
+   },
+   {
+    "preke_id": "17170",
+    "men": "2025-08",
+    "q": "10"
+   },
+   {
+    "preke_id": "17170",
+    "men": "2025-09",
+    "q": "4"
+   },
+   {
+    "preke_id": "17170",
+    "men": "2025-10",
+    "q": "3"
+   },
+   {
+    "preke_id": "17170",
+    "men": "2025-11",
+    "q": "29"
+   },
+   {
+    "preke_id": "17170",
+    "men": "2025-12",
+    "q": "7"
+   },
+   {
+    "preke_id": "17170",
+    "men": "2026-01",
+    "q": "3"
+   },
+   {
+    "preke_id": "17170",
+    "men": "2026-02",
+    "q": "4"
+   },
+   {
+    "preke_id": "17170",
+    "men": "2026-04",
+    "q": "2"
+   },
+   {
+    "preke_id": "17170",
+    "men": "2026-05",
+    "q": "4"
+   },
+   {
+    "preke_id": "17173",
+    "men": "2025-10",
+    "q": "2"
+   },
+   {
+    "preke_id": "17173",
+    "men": "2025-11",
+    "q": "4"
+   },
+   {
+    "preke_id": "17173",
+    "men": "2025-12",
+    "q": "10"
+   },
+   {
+    "preke_id": "17173",
+    "men": "2026-01",
+    "q": "2"
+   },
+   {
+    "preke_id": "17173",
+    "men": "2026-02",
+    "q": "3"
+   },
+   {
+    "preke_id": "17173",
+    "men": "2026-03",
+    "q": "1"
+   },
+   {
+    "preke_id": "17173",
+    "men": "2026-04",
+    "q": "2"
+   },
+   {
+    "preke_id": "17176",
+    "men": "2026-07",
+    "q": "6"
+   },
+   {
+    "preke_id": "17176",
+    "men": "2026-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "17179",
+    "men": "2025-07",
+    "q": "2"
+   },
+   {
+    "preke_id": "17179",
+    "men": "2025-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17179",
+    "men": "2025-10",
+    "q": "4"
+   },
+   {
+    "preke_id": "17179",
+    "men": "2025-11",
+    "q": "4"
+   },
+   {
+    "preke_id": "17179",
+    "men": "2025-12",
+    "q": "4"
+   },
+   {
+    "preke_id": "17179",
+    "men": "2026-02",
+    "q": "1"
+   },
+   {
+    "preke_id": "17179",
+    "men": "2026-05",
+    "q": "2"
+   },
+   {
+    "preke_id": "17179",
+    "men": "2026-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "17182",
+    "men": "2025-07",
+    "q": "12"
+   },
+   {
+    "preke_id": "17182",
+    "men": "2025-08",
+    "q": "11"
+   },
+   {
+    "preke_id": "17182",
+    "men": "2025-09",
+    "q": "5"
+   },
+   {
+    "preke_id": "17182",
+    "men": "2025-10",
+    "q": "1"
+   },
+   {
+    "preke_id": "17182",
+    "men": "2025-11",
+    "q": "18"
+   },
+   {
+    "preke_id": "17182",
+    "men": "2025-12",
+    "q": "7"
+   },
+   {
+    "preke_id": "17182",
+    "men": "2026-01",
+    "q": "4"
+   },
+   {
+    "preke_id": "17182",
+    "men": "2026-02",
+    "q": "4"
+   },
+   {
+    "preke_id": "17182",
+    "men": "2026-04",
+    "q": "2"
+   },
+   {
+    "preke_id": "17182",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17182",
+    "men": "2026-07",
+    "q": "6"
+   },
+   {
+    "preke_id": "17182",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17188",
+    "men": "2025-08",
+    "q": "2"
+   },
+   {
+    "preke_id": "17188",
+    "men": "2025-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "17188",
+    "men": "2025-10",
+    "q": "12"
+   },
+   {
+    "preke_id": "17188",
+    "men": "2025-11",
+    "q": "2"
+   },
+   {
+    "preke_id": "17188",
+    "men": "2026-02",
+    "q": "2"
+   },
+   {
+    "preke_id": "17188",
+    "men": "2026-04",
+    "q": "2"
+   },
+   {
+    "preke_id": "17188",
+    "men": "2026-05",
+    "q": "3"
+   },
+   {
+    "preke_id": "17188",
+    "men": "2026-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17188",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17188",
+    "men": "2026-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "17213",
+    "men": "2025-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "17213",
+    "men": "2025-10",
+    "q": "1"
+   },
+   {
+    "preke_id": "17213",
+    "men": "2025-12",
+    "q": "1"
+   },
+   {
+    "preke_id": "17213",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "17213",
+    "men": "2026-02",
+    "q": "2"
+   },
+   {
+    "preke_id": "17213",
+    "men": "2026-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17223",
+    "men": "2026-04",
+    "q": "3"
+   },
+   {
+    "preke_id": "17223",
+    "men": "2026-05",
+    "q": "12"
+   },
+   {
+    "preke_id": "17223",
+    "men": "2026-07",
+    "q": "24"
+   },
+   {
+    "preke_id": "17227",
+    "men": "2026-04",
+    "q": "2"
+   },
+   {
+    "preke_id": "17227",
+    "men": "2026-06",
+    "q": "1"
+   },
+   {
+    "preke_id": "17227",
+    "men": "2026-07",
+    "q": "2"
+   },
+   {
+    "preke_id": "17232",
+    "men": "2026-05",
+    "q": "3"
+   },
+   {
+    "preke_id": "17236",
+    "men": "2026-04",
+    "q": "2"
+   },
+   {
+    "preke_id": "17236",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17236",
+    "men": "2026-07",
+    "q": "4"
+   },
+   {
+    "preke_id": "17236",
+    "men": "2026-08",
+    "q": "2"
+   },
+   {
+    "preke_id": "17241",
+    "men": "2026-04",
+    "q": "2"
+   },
+   {
+    "preke_id": "17241",
+    "men": "2026-05",
+    "q": "3"
+   },
+   {
+    "preke_id": "17241",
+    "men": "2026-07",
+    "q": "2"
+   },
+   {
+    "preke_id": "17245",
+    "men": "2026-04",
+    "q": "2"
+   },
+   {
+    "preke_id": "17245",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17245",
+    "men": "2026-07",
+    "q": "4"
+   },
+   {
+    "preke_id": "17245",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17250",
+    "men": "2026-04",
+    "q": "1"
+   },
+   {
+    "preke_id": "17250",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17250",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17254",
+    "men": "2026-04",
+    "q": "1"
+   },
+   {
+    "preke_id": "17254",
+    "men": "2026-05",
+    "q": "3"
+   },
+   {
+    "preke_id": "17254",
+    "men": "2026-07",
+    "q": "4"
+   },
+   {
+    "preke_id": "17254",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17262",
+    "men": "2026-04",
+    "q": "1"
+   },
+   {
+    "preke_id": "17262",
+    "men": "2026-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17265",
+    "men": "2025-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17265",
+    "men": "2025-10",
+    "q": "2"
+   },
+   {
+    "preke_id": "17265",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17268",
+    "men": "2025-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17268",
+    "men": "2025-11",
+    "q": "1"
+   },
+   {
+    "preke_id": "17268",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "17268",
+    "men": "2026-04",
+    "q": "1"
+   },
+   {
+    "preke_id": "17268",
+    "men": "2026-05",
+    "q": "2"
+   },
+   {
+    "preke_id": "17268",
+    "men": "2026-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "17280",
+    "men": "2025-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17280",
+    "men": "2025-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "17280",
+    "men": "2025-12",
+    "q": "2"
+   },
+   {
+    "preke_id": "17280",
+    "men": "2026-02",
+    "q": "1"
+   },
+   {
+    "preke_id": "17280",
+    "men": "2026-03",
+    "q": "1"
+   },
+   {
+    "preke_id": "17280",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17283",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "17283",
+    "men": "2026-03",
+    "q": "1"
+   },
+   {
+    "preke_id": "17286",
+    "men": "2025-10",
+    "q": "1"
+   },
+   {
+    "preke_id": "17293",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17293",
+    "men": "2026-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17296",
+    "men": "2026-06",
+    "q": "1"
+   },
+   {
+    "preke_id": "17299",
+    "men": "2025-10",
+    "q": "1"
+   },
+   {
+    "preke_id": "17299",
+    "men": "2026-07",
+    "q": "1"
+   },
+   {
+    "preke_id": "17469",
+    "men": "2025-10",
+    "q": "3"
+   },
+   {
+    "preke_id": "17469",
+    "men": "2025-11",
+    "q": "2"
+   },
+   {
+    "preke_id": "17469",
+    "men": "2026-01",
+    "q": "5"
+   },
+   {
+    "preke_id": "17469",
+    "men": "2026-06",
+    "q": "2"
+   },
+   {
+    "preke_id": "17469",
+    "men": "2026-07",
+    "q": "3"
+   },
+   {
+    "preke_id": "17469",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17472",
+    "men": "2025-07",
+    "q": "2"
+   },
+   {
+    "preke_id": "17472",
+    "men": "2025-10",
+    "q": "4"
+   },
+   {
+    "preke_id": "17472",
+    "men": "2025-11",
+    "q": "1"
+   },
+   {
+    "preke_id": "17472",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "17472",
+    "men": "2026-03",
+    "q": "2"
+   },
+   {
+    "preke_id": "17472",
+    "men": "2026-04",
+    "q": "1"
+   },
+   {
+    "preke_id": "17472",
+    "men": "2026-05",
+    "q": "3"
+   },
+   {
+    "preke_id": "17472",
+    "men": "2026-07",
+    "q": "3"
+   },
+   {
+    "preke_id": "17472",
+    "men": "2026-08",
+    "q": "4"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2025-07",
+    "q": "11"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2025-08",
+    "q": "4"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2025-09",
+    "q": "13"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2025-10",
+    "q": "7"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2025-11",
+    "q": "4"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2025-12",
+    "q": "5"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2026-01",
+    "q": "19"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2026-02",
+    "q": "3"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2026-03",
+    "q": "4"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2026-04",
+    "q": "7"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2026-05",
+    "q": "3"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2026-06",
+    "q": "1"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2026-07",
+    "q": "7"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2026-08",
+    "q": "12"
+   },
+   {
+    "preke_id": "17475",
+    "men": "2026-09",
+    "q": "15"
+   },
+   {
+    "preke_id": "17478",
+    "men": "2025-07",
+    "q": "14"
+   },
+   {
+    "preke_id": "17478",
+    "men": "2025-08",
+    "q": "7"
+   },
+   {
+    "preke_id": "17478",
+    "men": "2025-10",
+    "q": "5"
+   },
+   {
+    "preke_id": "17478",
+    "men": "2025-11",
+    "q": "5"
+   },
+   {
+    "preke_id": "17478",
+    "men": "2026-01",
+    "q": "15"
+   },
+   {
+    "preke_id": "17478",
+    "men": "2026-02",
+    "q": "5"
+   },
+   {
+    "preke_id": "17478",
+    "men": "2026-03",
+    "q": "1"
+   },
+   {
+    "preke_id": "17478",
+    "men": "2026-04",
+    "q": "5"
+   },
+   {
+    "preke_id": "17478",
+    "men": "2026-05",
+    "q": "3"
+   },
+   {
+    "preke_id": "17478",
+    "men": "2026-06",
+    "q": "12"
+   },
+   {
+    "preke_id": "17478",
+    "men": "2026-07",
+    "q": "3"
+   },
+   {
+    "preke_id": "17478",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17478",
+    "men": "2026-09",
+    "q": "4"
+   },
+   {
+    "preke_id": "17481",
+    "men": "2025-07",
+    "q": "11"
+   },
+   {
+    "preke_id": "17481",
+    "men": "2025-08",
+    "q": "22"
+   },
+   {
+    "preke_id": "17481",
+    "men": "2025-09",
+    "q": "17"
+   },
+   {
+    "preke_id": "17481",
+    "men": "2025-10",
+    "q": "29"
+   },
+   {
+    "preke_id": "17481",
+    "men": "2025-11",
+    "q": "29"
+   },
+   {
+    "preke_id": "17481",
+    "men": "2025-12",
+    "q": "8"
+   },
+   {
+    "preke_id": "17481",
+    "men": "2026-01",
+    "q": "15"
+   },
+   {
+    "preke_id": "17481",
+    "men": "2026-02",
+    "q": "4"
+   },
+   {
+    "preke_id": "17481",
+    "men": "2026-03",
+    "q": "26"
+   },
+   {
+    "preke_id": "17481",
+    "men": "2026-05",
+    "q": "11"
+   },
+   {
+    "preke_id": "17481",
+    "men": "2026-07",
+    "q": "2"
+   },
+   {
+    "preke_id": "17484",
+    "men": "2025-07",
+    "q": "25"
+   },
+   {
+    "preke_id": "17484",
+    "men": "2025-08",
+    "q": "9"
+   },
+   {
+    "preke_id": "17484",
+    "men": "2025-09",
+    "q": "12"
+   },
+   {
+    "preke_id": "17484",
+    "men": "2025-10",
+    "q": "23"
+   },
+   {
+    "preke_id": "17484",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "17484",
+    "men": "2026-02",
+    "q": "18"
+   },
+   {
+    "preke_id": "17484",
+    "men": "2026-03",
+    "q": "6"
+   },
+   {
+    "preke_id": "17484",
+    "men": "2026-04",
+    "q": "5"
+   },
+   {
+    "preke_id": "17484",
+    "men": "2026-05",
+    "q": "4"
+   },
+   {
+    "preke_id": "17484",
+    "men": "2026-06",
+    "q": "24"
+   },
+   {
+    "preke_id": "17484",
+    "men": "2026-07",
+    "q": "2"
+   },
+   {
+    "preke_id": "17484",
+    "men": "2026-08",
+    "q": "19"
+   },
+   {
+    "preke_id": "17484",
+    "men": "2026-09",
+    "q": "8"
+   },
+   {
+    "preke_id": "17487",
+    "men": "2025-07",
+    "q": "2"
+   },
+   {
+    "preke_id": "17487",
+    "men": "2025-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17487",
+    "men": "2025-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "17487",
+    "men": "2025-10",
+    "q": "4"
+   },
+   {
+    "preke_id": "17487",
+    "men": "2025-11",
+    "q": "4"
+   },
+   {
+    "preke_id": "17487",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "17487",
+    "men": "2026-03",
+    "q": "1"
+   },
+   {
+    "preke_id": "17487",
+    "men": "2026-04",
+    "q": "1"
+   },
+   {
+    "preke_id": "17487",
+    "men": "2026-05",
+    "q": "3"
+   },
+   {
+    "preke_id": "17487",
+    "men": "2026-06",
+    "q": "1"
+   },
+   {
+    "preke_id": "17487",
+    "men": "2026-07",
+    "q": "2"
+   },
+   {
+    "preke_id": "17487",
+    "men": "2026-08",
+    "q": "6"
+   },
+   {
+    "preke_id": "17487",
+    "men": "2026-09",
+    "q": "12"
+   },
+   {
+    "preke_id": "17493",
+    "men": "2025-07",
+    "q": "3"
+   },
+   {
+    "preke_id": "17493",
+    "men": "2025-09",
+    "q": "9"
+   },
+   {
+    "preke_id": "17493",
+    "men": "2025-10",
+    "q": "12"
+   },
+   {
+    "preke_id": "17493",
+    "men": "2025-11",
+    "q": "18"
+   },
+   {
+    "preke_id": "17493",
+    "men": "2025-12",
+    "q": "8"
+   },
+   {
+    "preke_id": "17493",
+    "men": "2026-01",
+    "q": "7"
+   },
+   {
+    "preke_id": "17493",
+    "men": "2026-02",
+    "q": "23"
+   },
+   {
+    "preke_id": "17493",
+    "men": "2026-03",
+    "q": "21"
+   },
+   {
+    "preke_id": "17493",
+    "men": "2026-04",
+    "q": "5"
+   },
+   {
+    "preke_id": "17493",
+    "men": "2026-06",
+    "q": "17"
+   },
+   {
+    "preke_id": "17493",
+    "men": "2026-07",
+    "q": "12"
+   },
+   {
+    "preke_id": "17493",
+    "men": "2026-08",
+    "q": "2"
+   },
+   {
+    "preke_id": "17499",
+    "men": "2025-08",
+    "q": "2"
+   },
+   {
+    "preke_id": "17499",
+    "men": "2025-09",
+    "q": "4"
+   },
+   {
+    "preke_id": "17499",
+    "men": "2025-10",
+    "q": "6"
+   },
+   {
+    "preke_id": "17499",
+    "men": "2025-11",
+    "q": "14"
+   },
+   {
+    "preke_id": "17499",
+    "men": "2025-12",
+    "q": "9"
+   },
+   {
+    "preke_id": "17499",
+    "men": "2026-01",
+    "q": "4"
+   },
+   {
+    "preke_id": "17499",
+    "men": "2026-04",
+    "q": "5"
+   },
+   {
+    "preke_id": "17499",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17499",
+    "men": "2026-06",
+    "q": "4"
+   },
+   {
+    "preke_id": "17499",
+    "men": "2026-07",
+    "q": "2"
+   },
+   {
+    "preke_id": "17499",
+    "men": "2026-08",
+    "q": "2"
+   },
+   {
+    "preke_id": "17504",
+    "men": "2025-07",
+    "q": "3"
+   },
+   {
+    "preke_id": "17504",
+    "men": "2025-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17504",
+    "men": "2025-10",
+    "q": "16"
+   },
+   {
+    "preke_id": "17504",
+    "men": "2025-11",
+    "q": "6"
+   },
+   {
+    "preke_id": "17504",
+    "men": "2025-12",
+    "q": "4"
+   },
+   {
+    "preke_id": "17504",
+    "men": "2026-01",
+    "q": "3"
+   },
+   {
+    "preke_id": "17504",
+    "men": "2026-03",
+    "q": "1"
+   },
+   {
+    "preke_id": "17504",
+    "men": "2026-06",
+    "q": "5"
+   },
+   {
+    "preke_id": "17504",
+    "men": "2026-07",
+    "q": "9"
+   },
+   {
+    "preke_id": "17504",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17507",
+    "men": "2025-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17507",
+    "men": "2025-10",
+    "q": "1"
+   },
+   {
+    "preke_id": "17507",
+    "men": "2025-11",
+    "q": "5"
+   },
+   {
+    "preke_id": "17507",
+    "men": "2025-12",
+    "q": "5"
+   },
+   {
+    "preke_id": "17507",
+    "men": "2026-01",
+    "q": "1"
+   },
+   {
+    "preke_id": "17507",
+    "men": "2026-05",
+    "q": "2"
+   },
+   {
+    "preke_id": "17507",
+    "men": "2026-07",
+    "q": "16"
+   },
+   {
+    "preke_id": "17507",
+    "men": "2026-08",
+    "q": "3"
+   },
+   {
+    "preke_id": "17510",
+    "men": "2025-09",
+    "q": "1"
+   },
+   {
+    "preke_id": "17510",
+    "men": "2025-10",
+    "q": "4"
+   },
+   {
+    "preke_id": "17510",
+    "men": "2025-11",
+    "q": "5"
+   },
+   {
+    "preke_id": "17510",
+    "men": "2025-12",
+    "q": "7"
+   },
+   {
+    "preke_id": "17510",
+    "men": "2026-01",
+    "q": "5"
+   },
+   {
+    "preke_id": "17510",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17514",
+    "men": "2025-09",
+    "q": "5"
+   },
+   {
+    "preke_id": "17514",
+    "men": "2025-10",
+    "q": "1"
+   },
+   {
+    "preke_id": "17517",
+    "men": "2025-08",
+    "q": "7"
+   },
+   {
+    "preke_id": "17517",
+    "men": "2025-10",
+    "q": "5"
+   },
+   {
+    "preke_id": "17517",
+    "men": "2025-11",
+    "q": "5"
+   },
+   {
+    "preke_id": "17517",
+    "men": "2025-12",
+    "q": "13"
+   },
+   {
+    "preke_id": "17517",
+    "men": "2026-07",
+    "q": "4"
+   },
+   {
+    "preke_id": "17517",
+    "men": "2026-08",
+    "q": "3"
+   },
+   {
+    "preke_id": "17520",
+    "men": "2025-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17520",
+    "men": "2025-09",
+    "q": "6"
+   },
+   {
+    "preke_id": "17520",
+    "men": "2025-10",
+    "q": "5"
+   },
+   {
+    "preke_id": "17523",
+    "men": "2026-03",
+    "q": "1"
+   },
+   {
+    "preke_id": "17523",
+    "men": "2026-05",
+    "q": "3"
+   },
+   {
+    "preke_id": "17523",
+    "men": "2026-06",
+    "q": "5"
+   },
+   {
+    "preke_id": "17523",
+    "men": "2026-07",
+    "q": "24"
+   },
+   {
+    "preke_id": "17523",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17526",
+    "men": "2025-07",
+    "q": "10"
+   },
+   {
+    "preke_id": "17526",
+    "men": "2025-09",
+    "q": "32"
+   },
+   {
+    "preke_id": "17526",
+    "men": "2025-10",
+    "q": "1"
+   },
+   {
+    "preke_id": "17526",
+    "men": "2025-12",
+    "q": "1"
+   },
+   {
+    "preke_id": "17526",
+    "men": "2026-01",
+    "q": "3"
+   },
+   {
+    "preke_id": "17526",
+    "men": "2026-03",
+    "q": "8"
+   },
+   {
+    "preke_id": "17526",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17526",
+    "men": "2026-06",
+    "q": "3"
+   },
+   {
+    "preke_id": "17526",
+    "men": "2026-07",
+    "q": "11"
+   },
+   {
+    "preke_id": "17526",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17529",
+    "men": "2025-10",
+    "q": "2"
+   },
+   {
+    "preke_id": "17529",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17529",
+    "men": "2026-06",
+    "q": "2"
+   },
+   {
+    "preke_id": "17529",
+    "men": "2026-07",
+    "q": "14"
+   },
+   {
+    "preke_id": "17529",
+    "men": "2026-08",
+    "q": "20"
+   },
+   {
+    "preke_id": "17535",
+    "men": "2025-07",
+    "q": "10"
+   },
+   {
+    "preke_id": "17535",
+    "men": "2025-10",
+    "q": "3"
+   },
+   {
+    "preke_id": "17535",
+    "men": "2025-11",
+    "q": "3"
+   },
+   {
+    "preke_id": "17535",
+    "men": "2026-01",
+    "q": "4"
+   },
+   {
+    "preke_id": "17535",
+    "men": "2026-03",
+    "q": "2"
+   },
+   {
+    "preke_id": "17535",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17535",
+    "men": "2026-06",
+    "q": "2"
+   },
+   {
+    "preke_id": "17535",
+    "men": "2026-07",
+    "q": "11"
+   },
+   {
+    "preke_id": "17535",
+    "men": "2026-08",
+    "q": "1"
+   },
+   {
+    "preke_id": "17538",
+    "men": "2025-07",
+    "q": "6"
+   },
+   {
+    "preke_id": "17538",
+    "men": "2025-10",
+    "q": "3"
+   },
+   {
+    "preke_id": "17538",
+    "men": "2025-11",
+    "q": "2"
+   },
+   {
+    "preke_id": "17538",
+    "men": "2026-01",
+    "q": "9"
+   },
+   {
+    "preke_id": "17538",
+    "men": "2026-03",
+    "q": "12"
+   },
+   {
+    "preke_id": "17538",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17538",
+    "men": "2026-06",
+    "q": "1"
+   },
+   {
+    "preke_id": "17538",
+    "men": "2026-07",
+    "q": "4"
+   },
+   {
+    "preke_id": "17538",
+    "men": "2026-08",
+    "q": "13"
+   },
+   {
+    "preke_id": "17541",
+    "men": "2025-07",
+    "q": "5"
+   },
+   {
+    "preke_id": "17541",
+    "men": "2025-08",
+    "q": "16"
+   },
+   {
+    "preke_id": "17541",
+    "men": "2025-10",
+    "q": "3"
+   },
+   {
+    "preke_id": "17541",
+    "men": "2026-01",
+    "q": "5"
+   },
+   {
+    "preke_id": "17541",
+    "men": "2026-02",
+    "q": "1"
+   },
+   {
+    "preke_id": "17541",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17541",
+    "men": "2026-06",
+    "q": "2"
+   },
+   {
+    "preke_id": "17541",
+    "men": "2026-07",
+    "q": "5"
+   },
+   {
+    "preke_id": "17544",
+    "men": "2025-07",
+    "q": "5"
+   },
+   {
+    "preke_id": "17544",
+    "men": "2025-10",
+    "q": "8"
+   },
+   {
+    "preke_id": "17544",
+    "men": "2026-02",
+    "q": "1"
+   },
+   {
+    "preke_id": "17544",
+    "men": "2026-03",
+    "q": "3"
+   },
+   {
+    "preke_id": "17544",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17544",
+    "men": "2026-06",
+    "q": "2"
+   },
+   {
+    "preke_id": "17544",
+    "men": "2026-07",
+    "q": "6"
+   },
+   {
+    "preke_id": "17547",
+    "men": "2025-07",
+    "q": "13"
+   },
+   {
+    "preke_id": "17547",
+    "men": "2025-08",
+    "q": "4"
+   },
+   {
+    "preke_id": "17547",
+    "men": "2025-09",
+    "q": "5"
+   },
+   {
+    "preke_id": "17547",
+    "men": "2025-10",
+    "q": "8"
+   },
+   {
+    "preke_id": "17547",
+    "men": "2025-12",
+    "q": "11"
+   },
+   {
+    "preke_id": "17547",
+    "men": "2026-01",
+    "q": "5"
+   },
+   {
+    "preke_id": "17547",
+    "men": "2026-03",
+    "q": "4"
+   },
+   {
+    "preke_id": "17547",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17547",
+    "men": "2026-06",
+    "q": "2"
+   },
+   {
+    "preke_id": "17547",
+    "men": "2026-07",
+    "q": "16"
+   },
+   {
+    "preke_id": "17547",
+    "men": "2026-08",
+    "q": "5"
+   },
+   {
+    "preke_id": "17550",
+    "men": "2025-07",
+    "q": "4"
+   },
+   {
+    "preke_id": "17550",
+    "men": "2025-08",
+    "q": "18"
+   },
+   {
+    "preke_id": "17550",
+    "men": "2025-09",
+    "q": "15"
+   },
+   {
+    "preke_id": "17550",
+    "men": "2025-10",
+    "q": "12"
+   },
+   {
+    "preke_id": "17550",
+    "men": "2025-11",
+    "q": "6"
+   },
+   {
+    "preke_id": "17550",
+    "men": "2025-12",
+    "q": "16"
+   },
+   {
+    "preke_id": "17550",
+    "men": "2026-01",
+    "q": "5"
+   },
+   {
+    "preke_id": "17550",
+    "men": "2026-03",
+    "q": "7"
+   },
+   {
+    "preke_id": "17550",
+    "men": "2026-05",
+    "q": "1"
+   },
+   {
+    "preke_id": "17550",
+    "men": "2026-06",
+    "q": "6"
+   },
+   {
+    "preke_id": "17550",
+    "men": "2026-07",
+    "q": "17"
+   },
+   {
+    "preke_id": "17550",
+    "men": "2026-08",
+    "q": "10"
+   },
+   {
+    "preke_id": "18354",
+    "men": "2025-07",
+    "q": "6"
+   },
+   {
+    "preke_id": "18366",
+    "men": "2025-07",
+    "q": "71"
+   },
+   {
+    "preke_id": "18366",
+    "men": "2025-08",
+    "q": "25"
+   },
+   {
+    "preke_id": "18366",
+    "men": "2025-09",
+    "q": "34"
+   },
+   {
+    "preke_id": "18366",
+    "men": "2025-10",
+    "q": "113"
+   },
+   {
+    "preke_id": "18366",
+    "men": "2025-11",
+    "q": "115"
+   },
+   {
+    "preke_id": "18366",
+    "men": "2025-12",
+    "q": "9"
+   },
+   {
+    "preke_id": "18366",
+    "men": "2026-03",
+    "q": "130"
+   },
+   {
+    "preke_id": "18366",
+    "men": "2026-04",
+    "q": "6"
+   },
+   {
+    "preke_id": "18366",
+    "men": "2026-06",
+    "q": "12"
+   },
+   {
+    "preke_id": "18366",
+    "men": "2026-07",
+    "q": "36"
+   },
+   {
+    "preke_id": "18366",
+    "men": "2026-08",
+    "q": "10"
+   },
+   {
+    "preke_id": "18366",
+    "men": "2026-09",
+    "q": "10"
+   },
+   {
+    "preke_id": "18369",
+    "men": "2025-07",
+    "q": "113"
+   },
+   {
+    "preke_id": "18369",
+    "men": "2025-08",
+    "q": "47"
+   },
+   {
+    "preke_id": "18369",
+    "men": "2025-09",
+    "q": "74"
+   },
+   {
+    "preke_id": "18369",
+    "men": "2025-10",
+    "q": "34"
+   },
+   {
+    "preke_id": "18369",
+    "men": "2025-11",
+    "q": "92"
+   },
+   {
+    "preke_id": "18369",
+    "men": "2025-12",
+    "q": "27"
+   },
+   {
+    "preke_id": "18369",
+    "men": "2026-01",
+    "q": "53"
+   },
+   {
+    "preke_id": "18369",
+    "men": "2026-02",
+    "q": "61"
+   },
+   {
+    "preke_id": "18369",
+    "men": "2026-03",
+    "q": "81"
+   },
+   {
+    "preke_id": "18369",
+    "men": "2026-07",
+    "q": "54"
+   },
+   {
+    "preke_id": "18369",
+    "men": "2026-08",
+    "q": "10"
+   },
+   {
+    "preke_id": "18369",
+    "men": "2026-09",
+    "q": "10"
+   },
+   {
+    "preke_id": "18372",
+    "men": "2025-07",
+    "q": "102"
+   },
+   {
+    "preke_id": "18372",
+    "men": "2025-08",
+    "q": "31"
+   },
+   {
+    "preke_id": "18372",
+    "men": "2025-09",
+    "q": "24"
+   },
+   {
+    "preke_id": "18372",
+    "men": "2025-10",
+    "q": "5"
+   },
+   {
+    "preke_id": "18372",
+    "men": "2025-11",
+    "q": "37"
+   },
+   {
+    "preke_id": "18372",
+    "men": "2025-12",
+    "q": "16"
+   },
+   {
+    "preke_id": "18372",
+    "men": "2026-01",
+    "q": "49"
+   },
+   {
+    "preke_id": "18372",
+    "men": "2026-02",
+    "q": "59"
+   },
+   {
+    "preke_id": "18372",
+    "men": "2026-03",
+    "q": "51"
+   },
+   {
+    "preke_id": "18372",
+    "men": "2026-07",
+    "q": "14"
+   },
+   {
+    "preke_id": "18372",
+    "men": "2026-08",
+    "q": "10"
+   },
+   {
+    "preke_id": "18372",
+    "men": "2026-09",
+    "q": "10"
+   },
+   {
+    "preke_id": "34969",
+    "men": "2026-08",
+    "q": "8"
+   }
+  ],
+  "fakt_range": {
+   "a": "2026-09-08 23:30:57",
+   "b": "2026-11-02 11:13:11",
+   "n": "1460"
+  },
+  "fakt": [
+   {
+    "pid": "16270",
+    "preke_id": "16270",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "16933",
+    "preke_id": "16933",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "29"
+   },
+   {
+    "pid": "16936",
+    "preke_id": "16936",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "3"
+   },
+   {
+    "pid": "16936",
+    "preke_id": "16936",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "16939",
+    "preke_id": "16939",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "3"
+   },
+   {
+    "pid": "16942",
+    "preke_id": "16942",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "6"
+   },
+   {
+    "pid": "16942",
+    "preke_id": "16942",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "5"
+   },
+   {
+    "pid": "16945",
+    "preke_id": "16945",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "2"
+   },
+   {
+    "pid": "16945",
+    "preke_id": "16945",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "2"
+   },
+   {
+    "pid": "17022",
+    "preke_id": "17022",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17026",
+    "preke_id": "17026",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17032",
+    "preke_id": "17032",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "8"
+   },
+   {
+    "pid": "17032",
+    "preke_id": "17032",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17035",
+    "preke_id": "17035",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "3"
+   },
+   {
+    "pid": "17035",
+    "preke_id": "17035",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17038",
+    "preke_id": "17038",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "4"
+   },
+   {
+    "pid": "17041",
+    "preke_id": "17041",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "4"
+   },
+   {
+    "pid": "17057",
+    "preke_id": "17057",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "3"
+   },
+   {
+    "pid": "17102",
+    "preke_id": "17102",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17115",
+    "preke_id": "17115",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17150",
+    "preke_id": "17150",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "2"
+   },
+   {
+    "pid": "17159",
+    "preke_id": "17159",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "2"
+   },
+   {
+    "pid": "17159",
+    "preke_id": "17159",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17176",
+    "preke_id": "17176",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17179",
+    "preke_id": "17179",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17188",
+    "preke_id": "17188",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17223",
+    "preke_id": "17223",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "20"
+   },
+   {
+    "pid": "17227",
+    "preke_id": "17227",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17232",
+    "preke_id": "17232",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "2"
+   },
+   {
+    "pid": "17232",
+    "preke_id": "17232",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17236",
+    "preke_id": "17236",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17241",
+    "preke_id": "17241",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17241",
+    "preke_id": "17241",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17245",
+    "preke_id": "17245",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17245",
+    "preke_id": "17245",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "2"
+   },
+   {
+    "pid": "17250",
+    "preke_id": "17250",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17250",
+    "preke_id": "17250",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17254",
+    "preke_id": "17254",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17293",
+    "preke_id": "17293",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17469",
+    "preke_id": "17469",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17469",
+    "preke_id": "17469",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "3"
+   },
+   {
+    "pid": "17475",
+    "preke_id": "17475",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "19"
+   },
+   {
+    "pid": "17478",
+    "preke_id": "17478",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "11"
+   },
+   {
+    "pid": "17481",
+    "preke_id": "17481",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "6"
+   },
+   {
+    "pid": "17484",
+    "preke_id": "17484",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "6"
+   },
+   {
+    "pid": "17493",
+    "preke_id": "17493",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "16"
+   },
+   {
+    "pid": "17493",
+    "preke_id": "17493",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "40"
+   },
+   {
+    "pid": "17499",
+    "preke_id": "17499",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "7"
+   },
+   {
+    "pid": "17504",
+    "preke_id": "17504",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "7"
+   },
+   {
+    "pid": "17504",
+    "preke_id": "17504",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "6"
+   },
+   {
+    "pid": "17507",
+    "preke_id": "17507",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "10"
+   },
+   {
+    "pid": "17510",
+    "preke_id": "17510",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17517",
+    "preke_id": "17517",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "4"
+   },
+   {
+    "pid": "17517",
+    "preke_id": "17517",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "17520",
+    "preke_id": "17520",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "2"
+   },
+   {
+    "pid": "17523",
+    "preke_id": "17523",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "5"
+   },
+   {
+    "pid": "17523",
+    "preke_id": "17523",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "5"
+   },
+   {
+    "pid": "17529",
+    "preke_id": "17529",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "15"
+   },
+   {
+    "pid": "17535",
+    "preke_id": "17535",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "5"
+   },
+   {
+    "pid": "17538",
+    "preke_id": "17538",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "8"
+   },
+   {
+    "pid": "17538",
+    "preke_id": "17538",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "2"
+   },
+   {
+    "pid": "17541",
+    "preke_id": "17541",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "16"
+   },
+   {
+    "pid": "17541",
+    "preke_id": "17541",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "15"
+   },
+   {
+    "pid": "17544",
+    "preke_id": "17544",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "7"
+   },
+   {
+    "pid": "17544",
+    "preke_id": "17544",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "17"
+   },
+   {
+    "pid": "18354",
+    "preke_id": "18354",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "13"
+   },
+   {
+    "pid": "18366",
+    "preke_id": "18366",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "27"
+   },
+   {
+    "pid": "18366",
+    "preke_id": "18366",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "13"
+   },
+   {
+    "pid": "18369",
+    "preke_id": "18369",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "30"
+   },
+   {
+    "pid": "18369",
+    "preke_id": "18369",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "17"
+   },
+   {
+    "pid": "18372",
+    "preke_id": "18372",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "14"
+   },
+   {
+    "pid": "18372",
+    "preke_id": "18372",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "11"
+   },
+   {
+    "pid": "36301",
+    "preke_id": "36301",
+    "men": "2026-10",
+    "sandelis": "legacy",
+    "q": "1"
+   },
+   {
+    "pid": "36381",
+    "preke_id": "36381",
+    "men": "2026-09",
+    "sandelis": "legacy",
+    "q": "1"
+   }
+  ],
+  "err": "",
+  "fakt30": [
+   {
+    "pid": "16270",
+    "q": "1"
+   },
+   {
+    "pid": "16933",
+    "q": "29"
+   },
+   {
+    "pid": "16936",
+    "q": "1"
+   },
+   {
+    "pid": "16939",
+    "q": "3"
+   },
+   {
+    "pid": "16942",
+    "q": "5"
+   },
+   {
+    "pid": "16945",
+    "q": "2"
+   },
+   {
+    "pid": "17022",
+    "q": "1"
+   },
+   {
+    "pid": "17026",
+    "q": "1"
+   },
+   {
+    "pid": "17032",
+    "q": "1"
+   },
+   {
+    "pid": "17035",
+    "q": "1"
+   },
+   {
+    "pid": "17041",
+    "q": "4"
+   },
+   {
+    "pid": "17057",
+    "q": "3"
+   },
+   {
+    "pid": "17102",
+    "q": "1"
+   },
+   {
+    "pid": "17115",
+    "q": "1"
+   },
+   {
+    "pid": "17159",
+    "q": "1"
+   },
+   {
+    "pid": "17179",
+    "q": "1"
+   },
+   {
+    "pid": "17188",
+    "q": "1"
+   },
+   {
+    "pid": "17227",
+    "q": "1"
+   },
+   {
+    "pid": "17232",
+    "q": "1"
+   },
+   {
+    "pid": "17236",
+    "q": "1"
+   },
+   {
+    "pid": "17241",
+    "q": "1"
+   },
+   {
+    "pid": "17245",
+    "q": "2"
+   },
+   {
+    "pid": "17250",
+    "q": "1"
+   },
+   {
+    "pid": "17254",
+    "q": "1"
+   },
+   {
+    "pid": "17469",
+    "q": "3"
+   },
+   {
+    "pid": "17475",
+    "q": "19"
+   },
+   {
+    "pid": "17478",
+    "q": "11"
+   },
+   {
+    "pid": "17481",
+    "q": "6"
+   },
+   {
+    "pid": "17484",
+    "q": "6"
+   },
+   {
+    "pid": "17493",
+    "q": "14"
+   },
+   {
+    "pid": "17499",
+    "q": "7"
+   },
+   {
+    "pid": "17504",
+    "q": "6"
+   },
+   {
+    "pid": "17510",
+    "q": "1"
+   },
+   {
+    "pid": "17517",
+    "q": "1"
+   },
+   {
+    "pid": "17520",
+    "q": "2"
+   },
+   {
+    "pid": "17523",
+    "q": "5"
+   },
+   {
+    "pid": "17529",
+    "q": "15"
+   },
+   {
+    "pid": "17538",
+    "q": "2"
+   },
+   {
+    "pid": "17541",
+    "q": "15"
+   },
+   {
+    "pid": "17544",
+    "q": "17"
+   },
+   {
+    "pid": "18354",
+    "q": "13"
+   },
+   {
+    "pid": "18366",
+    "q": "13"
+   },
+   {
+    "pid": "18369",
+    "q": "17"
+   },
+   {
+    "pid": "18372",
+    "q": "11"
+   },
+   {
+    "pid": "36301",
+    "q": "1"
+   }
+  ]
+ }
+}
