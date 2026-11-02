@@ -1,38 +1,33 @@
 {
- "2": {
+ "3": {
   "v": "S1815bk",
-  "faze": "2",
+  "faze": "3",
   "md5": "fc3df6f26be800054c43cf6242ff7fc4",
   "dydis": 19237,
   "old_rasta": 1,
   "old2_rasta": 1,
   "new_jau": false,
-  "atsitiktiniai": {
-   "0": true,
-   "1": true,
-   "15": true,
-   "16": true,
-   "17": true,
-   "1048575": true,
-   "1048576": true,
-   "1048577": true,
-   "1048592": true,
-   "3145733": true
-  },
-  "tikras_failas": [
-   ".tmp-arch-2026-11-02_020002.tar.gz",
-   "49.4MB",
-   true
-  ],
-  "issifravimas": {
-   "mac_ok": true,
-   "turinys_ok": true
-  },
-  "atmintis_mb": 378
+  "po_md5": "f64c412dc8f880ede294d7bd4f2440cd",
+  "bak_md5": "fc3df6f26be800054c43cf6242ff7fc4",
+  "bak_arch": false
  },
- "v": "dep-082044",
+ "6": {
+  "v": "S1815bk",
+  "faze": "6",
+  "md5": "f64c412dc8f880ede294d7bd4f2440cd",
+  "dydis": 20503,
+  "old_rasta": 0,
+  "old2_rasta": 1,
+  "new_jau": true,
+  "raktas_rastas": true,
+  "trukme_s": 0.2,
+  "http": 200,
+  "atsakymas": "08:23:55 aplinka OK · lentelių 229 (InnoDB 229, MyISAM 0)\n08:23:55 DB gyvunai2_nbpe1 @ localhost · koduotė utf8mb4 · laisva 408.5 GB\n08:23:55 SELFTEST baigtas — viskas paruošta.\n",
+  "state": "{\n    \"last_result\": \"OK\",\n    \"last_run\": \"2026-11-01T02:00:28+00:00\",\n    \"file\": \"petshop-backups\\/2026\\/11\\/petshop-2026-11-01_020001.tar.gz.enc\",\n    \"bytes\": 51653126,\n    \"sha1\": \"e5254113e3614e0f710aff863b48bc25f9ac4f27\",\n    \"tables\": 229,\n    \"rows\": 1597399,\n    \"code_files\": 619,\n    \"duration_s\": 26.6\n}"
+ },
+ "v": "dep-082229",
  "kurimas": 200,
- "sid": 7629,
+ "sid": 7630,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
