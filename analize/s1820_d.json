@@ -1,0 +1,142 @@
+{
+ "1": {
+  "v": "S1820d",
+  "p": {
+   "17394": {
+    "_stock": "142.000000",
+    "_own": "22",
+    "_zb_qty": "142",
+    "_zb_cost": "1.836",
+    "_manage": "yes",
+    "gsq": 164,
+    "ss": "instock",
+    "w": "0.4",
+    "dydis": [
+     "400 g"
+    ],
+    "seima": "",
+    "zb_sku": "",
+    "parinkti12": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "av_qty": 22,
+     "av_uztenka": false,
+     "tiekejas": "zb",
+     "reason": "dropship pirma (AV turi 22, bet užsakymas ne mišrus): tiekėjas zb turi 142; AV turi 22, reikia 12",
+     "tiekejo_qty": 142,
+     "taisykle": "dropship pirma (AV turi 22, bet užsakymas ne mišrus)"
+    },
+    "parinkti36": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "av_qty": 22,
+     "av_uztenka": false,
+     "tiekejas": "zb",
+     "reason": "dropship pirma: tiekėjas zb turi 142; AV turi 22, reikia 36 — neužtenka",
+     "tiekejo_qty": 142,
+     "taisykle": "dropship pirma"
+    }
+   },
+   "17397": {
+    "_stock": "766.000000",
+    "_own": "22",
+    "_zb_qty": "766",
+    "_zb_cost": "1.836",
+    "_manage": "yes",
+    "gsq": 788,
+    "ss": "instock",
+    "w": "0.4",
+    "dydis": [
+     "400 g"
+    ],
+    "seima": "",
+    "zb_sku": "",
+    "parinkti12": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "av_qty": 22,
+     "av_uztenka": false,
+     "tiekejas": "zb",
+     "reason": "dropship pirma (AV turi 22, bet užsakymas ne mišrus): tiekėjas zb turi 766; AV turi 22, reikia 12",
+     "tiekejo_qty": 766,
+     "taisykle": "dropship pirma (AV turi 22, bet užsakymas ne mišrus)"
+    },
+    "parinkti36": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "av_qty": 22,
+     "av_uztenka": false,
+     "tiekejas": "zb",
+     "reason": "dropship pirma: tiekėjas zb turi 766; AV turi 22, reikia 36 — neužtenka",
+     "tiekejo_qty": 766,
+     "taisykle": "dropship pirma"
+    }
+   },
+   "17400": {
+    "_stock": "530.000000",
+    "_own": "10",
+    "_zb_qty": "530",
+    "_zb_cost": "1.836",
+    "_manage": "yes",
+    "gsq": 540,
+    "ss": "instock",
+    "w": "0.4",
+    "dydis": [
+     "400 g"
+    ],
+    "seima": "",
+    "zb_sku": "",
+    "parinkti12": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "av_qty": 10,
+     "av_uztenka": false,
+     "tiekejas": "zb",
+     "reason": "dropship pirma: tiekėjas zb turi 530; AV turi 10, reikia 12 — neužtenka",
+     "tiekejo_qty": 530,
+     "taisykle": "dropship pirma"
+    },
+    "parinkti36": {
+     "source": "zb",
+     "carrier": "venipak",
+     "courier_only": false,
+     "av_qty": 10,
+     "av_uztenka": false,
+     "tiekejas": "zb",
+     "reason": "dropship pirma: tiekėjas zb turi 530; AV turi 10, reikia 36 — neužtenka",
+     "tiekejo_qty": 530,
+     "taisykle": "dropship pirma"
+    }
+   }
+  },
+  "src": {
+   "parinkti": "\tpublic static function parinkti( $product_id, $qty = 1, $misrus = false ) {\n\t\t$qty = max( 1, (int) $qty );\n\t\t$r = self::resolve( $product_id, $qty );\n\t\t$tiek = isset( $r['tiekejas'] ) ? $r['tiekejas'] : 'av';\n\t\t$r['tiekejo_qty'] = null; $r['taisykle'] = 'grynai AV';\n\t\tif ( 'av' === $tiek || 'legacy' === $tiek ) { return $r; } // be tiekėjo — tik AV\n\t\t$dp = self::dp( $product_id ); $n = $dp ? $dp['n'] : 1;\n\t\t$tq = self::tiekejo_likutis( $product_id, $tiek ); $r['tiekejo_qty'] = $tq;\n\t\t$tiekejas_turi = ( null === $tq ) ? true : ( $tq >= $qty * $n ); // nežinomas likutis = laikom, kad turi (feed'o nėra → senas elgesys)\n\t\t$av_turi = ! empty( $r['av_uztenka'] ) && null !== $r['av_qty'];\n\t\tif ( $tiekejas_turi && ! $misrus ) {\n\t\t\t$r['source'] = $tiek; $r['carrier'] = 'venipak'; $r['av_uztenka'] = false;\n\t\t\t$r['taisykle'] = 'dropship pirma' . ( $av_turi ? ' (AV turi ' . $r['av_qty'] . ', bet užsakymas ne mišrus)' : '' );\n\t\t\t$r['reason']   = $r['taisykle'] . ': tiekėjas ' . $tiek . ( null === $tq ? '' : ' turi ' . $tq ) . '; ' . $r['reason'];\n\t\t\treturn $r;\n\t\t}\n\t\tif ( $av_turi ) {\n\t\t\t$r['source'] = 'av'; $r['carrier'] = 'any'; $r['av_uztenka'] = true;\n\t\t\t$r['taisykle'] = $misrus ? 'mišrus užsakymas → AV' : 'tiekėjas neturi → AV';\n\t\t\t$r['reason']   = $r['taisykle'] . ': ' . $r['reason'];\n\t\t\treturn $r;\n\t\t}\n\t\t$r['source'] = $tiek; $r['carrier'] = 'venipak'; $r['av_uztenka'] = false;\n\t\t$r['taisykle'] = 'AV neužtenka → tiekėjas'; $r['reason'] = $r['taisykle'] . ': ' . $r['reason'];\n\t\treturn $r;\n\t}\n",
+   "resolve": "\tpublic static function resolve( $product_id, $qty = 1 ) {\n\t\t$product_id = (int) $product_id;\n\t\t$qty        = max( 1, (int) $qty );\n\n\t\t// v1.2: DP pakas → bazinė prekė × pako kiekis; likutis grąžinamas pakais.\n\t\t$dp = self::dp( $product_id );\n\t\tif ( $dp ) {\n\t\t\t$r = self::resolve( $dp['base'], $qty * $dp['n'] );\n\t\t\t$r['av_qty'] = ( null === $r['av_qty'] ) ? null : intdiv( (int) $r['av_qty'], $dp['n'] );\n\t\t\t$r['dp']     = $dp;\n\t\t\t$r['reason'] = 'DP pakas ×' . $dp['n'] . ' (bazinė #' . $dp['base'] . '): ' . $r['reason'];\n\t\t\treturn $r;\n\t\t}\n\n\t\t$baze = class_exists( 'Petshop_Fulfillment_Source' )\n\t\t\t? Petshop_Fulfillment_Source::resolve( $product_id )\n\t\t\t: [ 'source' => 'legacy', 'carrier' => 'any', 'courier_only' => false, 'reason' => 'resolverio nėra' ];\n\n\t\t// `legacy` = AV sandėlis (resolverio komentaras: „tikras savas sandelis\").\n\t\t// 959 publish prekės iš _legacy_source=excel_v2_20260604 su REALIAIS likučiais\n\t\t// WooCommerce `_stock` lauke (niekas jų neperrašo — sinchronizacijos nėra).\n\t\t// Joms `_own_stock_qty` NEREIKIA — jos ir taip AV.\n\t\tif ( 'legacy' === $baze['source'] ) {\n\t\t\treturn [\n\t\t\t\t'source'       => 'av',\n\t\t\t\t'carrier'      => 'any',\n\t\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t\t'av_qty'       => (int) get_post_meta( $product_id, '_stock', true ),\n\t\t\t\t'av_uztenka'   => true,\n\t\t\t\t'tiekejas'     => 'av',\n\t\t\t\t'reason'       => 'grynai AV prekė (be tiekėjo)',\n\t\t\t];\n\t\t}\n\n\t\t$av        = class_exists( 'Petshop_AV_Stock' ) ? Petshop_AV_Stock::qty( $product_id ) : null;\n\t\t$uztenka   = ( null !== $av && $av >= $qty );\n\t\t$tiekejas  = $baze['source'];\n\n\t\tif ( $uztenka ) {\n\t\t\treturn [\n\t\t\t\t'source'       => 'av',\n\t\t\t\t'carrier'      => 'any',          // AV gali ir Venipak, ir LP\n\t\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t\t'av_qty'       => $av,\n\t\t\t\t'av_uztenka'   => true,\n\t\t\t\t'tiekejas'     => $tiekejas,\n\t\t\t\t'reason'       => \"AV turi $av, reikia $qty\",\n\t\t\t];\n\t\t}\n\n\t\t// SAUGIKLIS: LP Express galimas TIK iš AV (Raimis §18.1).\n\t\t// Bet kuris dropship šaltinis → venipak, nesvarbu ką grąžino bazinis resolveris.\n\t\treturn [\n\t\t\t'source'       => $tiekejas,\n\t\t\t'carrier'      => 'venipak',\n\t\t\t'courier_only' => ! empty( $baze['courier_only'] ),\n\t\t\t'av_qty'       => $av,\n\t\t\t'av_uztenka'   => false,\n\t\t\t'tiekejas'     => $tiekejas,\n\t\t\t'reason'       => ( null === $av )\n\t\t\t\t? 'AV šios prekės neturi'\n\t\t\t\t: \"AV turi $av, reikia $qty — neužtenka\",\n\t\t];\n\t}\n",
+   "dp": "\tpublic static function dp( $product_id ) {\n\t\t$base = (int) get_post_meta( (int) $product_id, '_dp_base_product_id', true );\n\t\t$n    = (int) get_post_meta( (int) $product_id, '_dp_pack_qty', true );\n\t\treturn ( $base > 0 && $n > 0 && $base !== (int) $product_id ) ? array( 'base' => $base, 'n' => $n ) : null;\n\t}\n"
+  },
+  "metodai": [
+   "resolve",
+   "tiekejo_likutis",
+   "parinkti",
+   "ar_dezute",
+   "ar_misrus",
+   "dp",
+   "is_av",
+   "group",
+   "order_type",
+   "group_order"
+  ]
+ },
+ "v": "dep-144903",
+ "kurimas": 200,
+ "sid": 7687,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
