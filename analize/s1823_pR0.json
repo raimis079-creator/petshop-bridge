@@ -1,0 +1,42 @@
+{
+ "v": "dep-231443",
+ "kurimas": 200,
+ "sid": 7796,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R2-2": {
+  "v": "S1823p",
+  "faze": "R2-2",
+  "laikas": "2026-11-03 01:15:57",
+  "f": [
+   {
+    "id": 33081,
+    "i": 2,
+    "parse": 1,
+    "reg": 0.99,
+    "seima": "dp85-gemon-mousse-konservai-suaugusioms-katems-su-vistiena-ir-kiauliena-85-g",
+    "termas": {
+     "24": 776,
+     "36": 777
+    },
+    "pakai": {
+     "24": {
+      "id": 37492,
+      "kaina": 23.09,
+      "vnt": 0.962,
+      "proc": 2.57
+     },
+     "36": {
+      "id": 37493,
+      "kaina": 32.09,
+      "vnt": 0.891,
+      "proc": 9.8
+     }
+    }
+   }
+  ],
+  "hb": 200
+ }
+}
