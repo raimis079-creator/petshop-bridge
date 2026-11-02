@@ -1,0 +1,59 @@
+{
+ "2": {
+  "v": "S1822v",
+  "F": "2",
+  "shots": [
+   {
+    "n": "s1822_d19_lent30",
+    "u": "https://petshop.lt/product/30-vnt-monge-vetsolution-dog-wet-recovery-150g/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{var p=document.getElementById('ps-pak');p.scrollIntoView();window.scrollBy(0,-70);return p.innerText.replace(/\\s+/g,' ').slice(0,300)})()"
+   },
+   {
+    "n": "s1822_d19_lent11",
+    "u": "https://petshop.lt/product/11-vnt-monge-vetsolution-dog-wet-recovery-150g/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{var p=document.getElementById('ps-pak');p.scrollIntoView();window.scrollBy(0,-70);return p.innerText.replace(/\\s+/g,' ').slice(0,300)})()"
+   },
+   {
+    "n": "s1822_d19_kort",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{var c=document.querySelector('.ps-dk--d19').closest('.product-small');c.scrollIntoView();window.scrollBy(0,-80);return Array.from(document.querySelectorAll('.ps-dk--d19 .ps-dk__ch')).map(b=>b.innerText).join(' / ')})()"
+   }
+  ]
+ },
+ "v": "dep-215455",
+ "kurimas": 200,
+ "sid": 7779,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1822_d19_lent30": {
+   "status": 201,
+   "url": "https://petshop.lt/product/30-vnt-monge-vetsolution-dog-wet-recovery-150g/",
+   "title": "30 vnt. Monge VetSolution Dog Wet Recovery 150g - Petshop.lt",
+   "errors": [],
+   "eval": "Pakuotė Kiek užteks jūsų šuniui? → įveskite svorį 11 vnt. × 150 g 1,35 € / vnt. 14,89 € › 22 vnt. × 150 g 1,31 € / vnt. 28,79 € · −3 % › 30 vnt. × 150 g geriausia kaina 1,15 € / vnt. 34,49 € · −15 % ✓"
+  },
+  "s1822_d19_lent11": {
+   "status": 201,
+   "url": "https://petshop.lt/product/11-vnt-monge-vetsolution-dog-wet-recovery-150g/",
+   "title": "11 vnt. Monge VetSolution Dog Wet Recovery 150g - Petshop.lt",
+   "errors": [],
+   "eval": "Pakuotė Kiek užteks jūsų šuniui? → įveskite svorį 11 vnt. × 150 g 1,35 € / vnt. 14,89 € ✓ 22 vnt. × 150 g 1,31 € / vnt. 28,79 € · −3 % › 30 vnt. × 150 g geriausia kaina 1,15 € / vnt. 34,49 € · −15 % ›"
+  },
+  "s1822_d19_kort": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/konservai-sunims/",
+   "title": "Konservai šunims – pirkti internetu | Petshop.lt",
+   "errors": [],
+   "eval": "11 vnt. · 1,35 € / 22 vnt. · 1,31 € / 30 vnt. · 1,15 €"
+  }
+ }
+}
