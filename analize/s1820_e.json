@@ -1,0 +1,240 @@
+{
+ "1": {
+  "v": "S1820e",
+  "md5": {
+   "petshop-dydziai.php": "c2de1362255a3ca989d94e545ab5f0c5",
+   "petshop-dydziai-automatas.php": "0121ca60a19c925475ef3754f63e6389"
+  },
+  "hits": {
+   "petshop-dydziai.php": [
+    "5: *   _ps_dydzio_seima raktas. v1.0 (S1720) rodė čipsus; v2.0 (S1721, 2026-09-26, Raimio maketas) — lentelė Dydis · Kaina · €/kg ·",
+    "17: const META = '_ps_dydzio_seima';",
+    "20: public static function start() {",
+    "26: public static function nariai( $seima, $dabartinis = 0 ) {",
+    "35: /** Dydžio užrašas: pa_dydis, po to pa_pakuotes_dydis; DP pakui pridedam „N ×\". */",
+    "36: public static function uzrasas( $pid ) {",
+    "38: foreach ( array( 'pa_dydis', 'pa_pakuotes_dydis' ) as $tx ) {",
+    "49: public static function kg( $u ) {",
+    "63: public static function rikiavimas( $u ) {",
+    "72: /** Pardavimai per narį: [365 d., 90 d., 30 d.] vnt. (istorija + WC), transient 12 val. */",
+    "73: public static function pardavimai( $seima, $ids ) {",
+    "89: public static function mires( $uzr, $yra, $pard ) {",
+    "96: public static function eilutes( $seima, $pid = 0 ) {",
+    "113: usort( $eil, function ( $a, $b ) { return $a['sort'] <=> $b['sort']; } );",
+    "125: public static function rusis( $pid ) {",
+    "131: public static function dienos_endpoint() {",
+    "150: private static function eur( $v ) { return number_format( (float) $v, 2, ',', ' ' ); }",
+    "152: public static function pieskime() {",
+    "162: echo '<div class=\"ps-pak__wrap\"><table class=\"ps-pak__t\"><thead><tr><th>Dydis</th><th class=\"n\">Kaina</th>' . ( $su_kg ? '<th class=\"n\">€/kg</th><th class=\"n\">Sutaupai</th>' : '' ) . '<th class=\"n ps-",
+    "177: private static function css_js() {",
+    "202: function get(){try{var v=parseFloat(localStorage.getItem(K));return v>0?v:null}catch(e){return null}}function set(v){try{localStorage.setItem(K,String(v))}catch(e){}}",
+    "203: function txt(a,b){if(b>=45){var f=function(d){return (d/30.4).toFixed(1).replace(\".\",\",\")};return \"~\"+f(a)+\"–\"+f(b)+\" mėn.\"}return \"~\"+a+\"–\"+b+\" d.\"}",
+    "204: function fill(w){if(lock===w)return;lock=w;fetch(\"/?ps_dydziai_dienos=\"+pid+\"&w=\"+encodeURIComponent(w),{credentials:\"same-origin\"}).then(function(r){return r.json()}).then(function(j){var d=j.d||{},a",
+    "208: function bind(){var inp=document.getElementById(\"ps-calc-w\"),calc=document.getElementById(\"ps-calc\");if(!inp||!calc)return;var mo=new MutationObserver(function(){var v=parseFloat(String(inp.value).rep"
+   ],
+   "petshop-dydziai-automatas.php": [
+    "4: * Description: S1721 (2026-09-26, Raimio sprendimas 17:04). Publikuojant prekę be _ps_dydzio_seima (sausas maistas / konservai / DP pakai):",
+    "6: *   (be pašaras/maistas/sausas/akcija ir pan.) → priskiriama pati (+ trūkstamas pa_pakuotes_dydis terminas iš pavadinimo); jei sutampa tik",
+    "16: const STOP = array( 'sausas', 'sausa', 'pašaras', 'pasaras', 'maistas', 'ėdalas', 'edalas', 'akcija', 'šunims', 'sunims', 'katėms', 'katems', 'šunų', 'sunu', 'kačių', 'kaciu', '&', '+', 'a', 's', 'su'",
+    "21: public static function init() {",
+    "26: public static function meta_pokytis( $mid, $pid, $key ) { if ( $key === '_ps_dydzio_seima' ) { delete_transient( 'ps_dydz_auto_bazes' ); } }",
+    "29: public static function publikuota( $new, $old, $post ) {",
+    "36: public static function vykdyti() {",
+    "45: public static function baze( $title ) {",
+    "47: $t = preg_replace( '/^\\s*\\d+\\s*(?:vnt\\.?|x|×)\\s*-?\\s*/u', ' ', $t );",
+    "51: $t = preg_replace( '/\\b\\d+\\s*vnt\\.?/u', ' ', $t );",
+    "57: public static function brendas( $pid ) { $b = wp_get_object_terms( $pid, 'product_brand', array( 'fields' => 'slugs' ) ); return ( ! is_wp_error( $b ) && $b ) ? (string) $b[0] : ''; }",
+    "59: public static function tinka_kat( $pid ) { $c = wp_get_object_terms( $pid, 'product_cat', array( 'fields' => 'slugs' ) ); return ! is_wp_error( $c ) && array_intersect( (array) $c, self::KAT ); }",
+    "62: public static function bazes() {",
+    "65: $rows = $wpdb->get_results( \"SELECT m.post_id id, m.meta_value seima, p.post_title t FROM {$wpdb->postmeta} m JOIN {$wpdb->posts} p ON p.ID = m.post_id AND p.post_type = 'product' AND p.post_status = ",
+    "72: public static function rasti( $pid, $dry = true, $ignoruoti_sava = false ) {",
+    "74: if ( ! $ignoruoti_sava && get_post_meta( $pid, '_ps_dydzio_seima', true ) ) { $res['tipas'] = 'jau'; return $res; }",
+    "78: if ( $base ) { $s = (string) get_post_meta( $base, '_ps_dydzio_seima', true ); if ( $s ) { $res = array( 'tipas' => 'dp', 'seima' => $s, 'narys' => $base, 'jac' => 1 ); if ( ! $dry ) { self::priskirti",
+    "99: private static function priskirti( $pid, $seima, $tipas, $narys ) {",
+    "100: update_post_meta( $pid, '_ps_dydzio_seima', $seima );",
+    "102: // pa_pakuotes_dydis terminas — jei trūksta, iš pavadinimo",
+    "103: $t = wp_get_object_terms( $pid, 'pa_pakuotes_dydis', array( 'fields' => 'names' ) );",
+    "104: if ( ! is_wp_error( $t ) && ! $t && taxonomy_exists( 'pa_pakuotes_dydis' ) ) {",
+    "106: if ( $lab !== '' ) { $r = wp_set_object_terms( $pid, $lab, 'pa_pakuotes_dydis', true ); $info .= is_wp_error( $r ) ? '; terminas NEPAVYKO' : '; terminas „' . $lab . '“ pridėtas'; }",
+    "107: else { $info .= '; TRŪKSTA pa_pakuotes_dydis'; }",
+    "109: foreach ( array( 'ps_dk_seimos', 'ps_dydz_auto_bazes', 'ps_dk_' . md5( $seima ) ) as $tk ) { delete_transient( $tk ); }",
+    "114: private static function kandidatas( $pid, $best ) {",
+    "122: public static function dydis_is_pavadinimo( $title ) {",
+    "130: public static function log( $tipas, $pid, $seima, $info ) {",
+    "138: public static function suvestine( $val = 26 ) {"
+   ]
+  },
+  "pvz": [
+   {
+    "seima": "ambrosia-begrudis-eriena-sviezia-elniena-grain",
+    "ID": "19760",
+    "post_title": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 12 kg",
+    "post_status": "publish",
+    "dydis": [
+     "12 kg"
+    ]
+   },
+   {
+    "seima": "ambrosia-begrudis-eriena-sviezia-elniena-grain",
+    "ID": "36386",
+    "post_title": "2 vnt. AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb &amp; Fresh Venison 2 kg",
+    "post_status": "publish",
+    "dydis": [
+     "2 kg"
+    ]
+   },
+   {
+    "seima": "ambrosia-begrudis-eriena-sviezia-elniena-grain",
+    "ID": "19756",
+    "post_title": "AMBROSIA begrūdis su ėriena ir šviežia elniena sausas maistas šunims, grain-free Lamb & Fresh Venison 2 kg",
+    "post_status": "publish",
+    "dydis": [
+     "2 kg"
+    ]
+   },
+   {
+    "seima": "ambrosia-begrudis-eriena-sviezia-lasisa-grain",
+    "ID": "19747",
+    "post_title": "AMBROSIA begrūdis su ėriena ir šviežia lašiša sausas maistas šunims, grain-free Lamb & Fresh Salmon 2 kg",
+    "post_status": "publish",
+    "dydis": [
+     "2 kg"
+    ]
+   },
+   {
+    "seima": "ambrosia-begrudis-eriena-sviezia-lasisa-grain",
+    "ID": "19751",
+    "post_title": "AMBROSIA begrūdis su ėriena ir šviežia lašiša sausas maistas šunims, grain-free Lamb & Fresh Salmon 12 kg",
+    "post_status": "publish",
+    "dydis": [
+     "12 kg"
+    ]
+   },
+   {
+    "seima": "ambrosia-begrudis-eriena-sviezia-lasisa-grain",
+    "ID": "36385",
+    "post_title": "2 vnt. AMBROSIA begrūdis su ėriena ir šviežia lašiša sausas maistas šunims, grain-free Lamb &amp; Fresh Salmon 2 kg",
+    "post_status": "publish",
+    "dydis": [
+     "2 kg"
+    ]
+   },
+   {
+    "seima": "ambrosia-begrudis-jautiena-sviezia-lasisa-grain",
+    "ID": "19765",
+    "post_title": "AMBROSIA begrūdis su jautiena ir šviežia lašiša sausas maistas šunims, grain-free Beef & Fresh Salmon 2 kg",
+    "post_status": "publish",
+    "dydis": [
+     "2 kg"
+    ]
+   },
+   {
+    "seima": "ambrosia-begrudis-jautiena-sviezia-lasisa-grain",
+    "ID": "19770",
+    "post_title": "AMBROSIA begrūdis su jautiena ir šviežia lašiša sausas maistas šunims, grain-free Beef & Fresh Salmon 12 kg",
+    "post_status": "publish",
+    "dydis": [
+     "12 kg"
+    ]
+   },
+   {
+    "seima": "ambrosia-begrudis-jautiena-sviezia-lasisa-grain",
+    "ID": "36387",
+    "post_title": "2 vnt. AMBROSIA begrūdis su jautiena ir šviežia lašiša sausas maistas šunims, grain-free Beef &amp; Fresh Salmon 2 kg",
+    "post_status": "publish",
+    "dydis": [
+     "2 kg"
+    ]
+   },
+   {
+    "seima": "ambrosia-begrudis-sviezia-kalakutiena-antiena-fr",
+    "ID": "19715",
+    "post_title": "Ambrosia begrūdis su šviežia kalakutiena ir antiena sausas maistas šunims, Fresh Turkey & Duck 2kg",
+    "post_status": "publish",
+    "dydis": [
+     "2 kg"
+    ]
+   },
+   {
+    "seima": "ambrosia-begrudis-sviezia-kalakutiena-antiena-fr",
+    "ID": "19720",
+    "post_title": "Ambrosia begrūdis su šviežia kalakutiena ir antiena sausas maistas šunims, Fresh Turkey & Duck 12kg",
+    "post_status": "publish",
+    "dydis": [
+     "12 kg"
+    ]
+   },
+   {
+    "seima": "ambrosia-begrudis-sviezia-kalakutiena-antiena-fr",
+    "ID": "36382",
+    "post_title": "2 vnt. Ambrosia begrūdis su šviežia kalakutiena ir antiena sausas maistas šunims, Fresh Turkey &amp; Duck 2kg",
+    "post_status": "publish",
+    "dydis": [
+     "2 kg"
+    ]
+   }
+  ],
+  "terminai_x": [
+   "4 × 10 kg",
+   "7 kg × 2",
+   "2 × 12,5 kg",
+   "24 × 100 g",
+   "2 × 7 kg",
+   "6 × 400 g",
+   "16 × 100 g",
+   "10 × 85 g"
+  ],
+  "seima_37415": "",
+  "auto_log": [
+   [
+    "2026-09-27 18:49",
+    "dp",
+    36486,
+    "josera-sensicat-jautria-virskinimo-sistema",
+    "kaip #17986"
+   ],
+   [
+    "2026-09-27 18:49",
+    "dp",
+    36487,
+    "josera-mini-lamb-begrudis-mazu-veisliu",
+    "kaip #18018"
+   ],
+   [
+    "2026-09-27 18:49",
+    "dp",
+    36488,
+    "josera-mini-duck-potato-mazu-veisliu-antiena",
+    "kaip #18026"
+   ],
+   [
+    "2026-09-27 18:49",
+    "dp",
+    36489,
+    "josera-mini-duck-potato-mazu-veisliu-antiena",
+    "kaip #18029"
+   ],
+   [
+    "2026-09-27 18:49",
+    "dp",
+    36490,
+    "josera-mini-chicken-rice-suaugusiems-mazu-veisli",
+    "kaip #18032"
+   ],
+   [
+    "2026-09-27 18:49",
+    "dp",
+    36491,
+    "josera-marinesse-lasisa",
+    "kaip #18040"
+   ]
+  ]
+ },
+ "v": "dep-153420",
+ "kurimas": 200,
+ "sid": 7690,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
