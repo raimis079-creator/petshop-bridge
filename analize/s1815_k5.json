@@ -1,0 +1,24 @@
+{
+ "1": {
+  "v": "S1815k5",
+  "domains": [
+   ".",
+   "..",
+   "avesa.lt",
+   "gyvunai.lt",
+   "petshop.lt",
+   "sushimo.lt"
+  ],
+  "br": {
+   "/home/gyvunai2/domains/petshop.lt/public_html/backup-run.php": "<?php\n/**\n * backup-run.php — paleidiklis DirectAdmin cron'ui (per URL).\n * Jokios logikos: tik perduoda vykdymą skriptui už public_html ribų.\n */\nrequire '/home/gyvunai2/backups/ps-backup.php';\n"
+  },
+  "abspath": "/home/gyvunai2/domains/petshop.lt/public_html/"
+ },
+ "v": "dep-081350",
+ "kurimas": 200,
+ "sid": 7625,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
