@@ -1,0 +1,465 @@
+{
+ "1": {
+  "v": "S1816y",
+  "rugs_dalys": [
+   {
+    "d": "iki_migr",
+    "k": "kita",
+    "n": "1",
+    "eur": "1",
+    "kontr": "0",
+    "nauji": "1"
+   },
+   {
+    "d": "po_migr",
+    "k": "google",
+    "n": "101",
+    "eur": "4007",
+    "kontr": "946",
+    "nauji": "46"
+   },
+   {
+    "d": "po_migr",
+    "k": "kita",
+    "n": "100",
+    "eur": "4352",
+    "kontr": "993",
+    "nauji": "55"
+   }
+  ],
+  "ads_rugs_dalys": [
+   {
+    "d": "iki_migr",
+    "eur": "364.01",
+    "pasp": "1178"
+   },
+   {
+    "d": "po_migr",
+    "eur": "813.68",
+    "pasp": "2920"
+   }
+  ],
+  "kohorta": [],
+  "pak_dienos": [],
+  "mokamas_kiti": [
+   {
+    "m": "2026-09",
+    "utm_source": "kaina24",
+    "n": "21",
+    "eur": "1115",
+    "kontr": "245"
+   },
+   {
+    "m": "2026-09",
+    "utm_source": "kainos",
+    "n": "10",
+    "eur": "354",
+    "kontr": "75"
+   },
+   {
+    "m": "2026-10",
+    "utm_source": "",
+    "n": "2",
+    "eur": "126",
+    "kontr": "24"
+   },
+   {
+    "m": "2026-10",
+    "utm_source": "kaina24",
+    "n": "25",
+    "eur": "1179",
+    "kontr": "239"
+   },
+   {
+    "m": "2026-10",
+    "utm_source": "kainos",
+    "n": "7",
+    "eur": "235",
+    "kontr": "49"
+   }
+  ],
+  "kaina24_islaidos": [
+   {
+    "m": "2026-09",
+    "kanalas": "kaina24",
+    "eur": "12.16",
+    "pasp": "152"
+   },
+   {
+    "m": "2026-09",
+    "kanalas": "kainos",
+    "eur": "6.56",
+    "pasp": "82"
+   },
+   {
+    "m": "2026-10",
+    "kanalas": "kaina24",
+    "eur": "16.88",
+    "pasp": "211"
+   },
+   {
+    "m": "2026-10",
+    "kanalas": "kainos",
+    "eur": "8.00",
+    "pasp": "100"
+   }
+  ],
+  "eil_cols": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ],
+  "assist": [
+   {
+    "m": "2026-09",
+    "kan": "mokamas",
+    "n": "30",
+    "kontr": "299"
+   },
+   {
+    "m": "2026-09",
+    "kan": "organika",
+    "n": "5",
+    "kontr": "35"
+   },
+   {
+    "m": "2026-09",
+    "kan": "referral",
+    "n": "1",
+    "kontr": "2"
+   },
+   {
+    "m": "2026-10",
+    "kan": "email",
+    "n": "1",
+    "kontr": "5"
+   },
+   {
+    "m": "2026-10",
+    "kan": "mokamas",
+    "n": "33",
+    "kontr": "300"
+   },
+   {
+    "m": "2026-10",
+    "kan": "organika",
+    "n": "12",
+    "kontr": "89"
+   },
+   {
+    "m": "2026-10",
+    "kan": "referral",
+    "n": "2",
+    "kontr": "90"
+   }
+  ],
+  "irenginys": [
+   {
+    "m": "2026-09",
+    "irenginys": "desktop",
+    "n": "23",
+    "vid": "39.7"
+   },
+   {
+    "m": "2026-09",
+    "irenginys": "mobile",
+    "n": "78",
+    "vid": "39.7"
+   },
+   {
+    "m": "2026-10",
+    "irenginys": "desktop",
+    "n": "43",
+    "vid": "42.1"
+   },
+   {
+    "m": "2026-10",
+    "irenginys": "mobile",
+    "n": "125",
+    "vid": "46.0"
+   }
+  ],
+  "dienos_viso": [
+   {
+    "d": "2026-10-01",
+    "eur": "28.02",
+    "pasp": "131",
+    "n": "4",
+    "kontr": "54"
+   },
+   {
+    "d": "2026-10-02",
+    "eur": "32.83",
+    "pasp": "128",
+    "n": "1",
+    "kontr": "6"
+   },
+   {
+    "d": "2026-10-03",
+    "eur": "24.20",
+    "pasp": "106",
+    "n": "6",
+    "kontr": "51"
+   },
+   {
+    "d": "2026-10-04",
+    "eur": "31.82",
+    "pasp": "164",
+    "n": "7",
+    "kontr": "64"
+   },
+   {
+    "d": "2026-10-05",
+    "eur": "40.90",
+    "pasp": "196",
+    "n": "10",
+    "kontr": "127"
+   },
+   {
+    "d": "2026-10-06",
+    "eur": "43.46",
+    "pasp": "175",
+    "n": "6",
+    "kontr": "68"
+   },
+   {
+    "d": "2026-10-07",
+    "eur": "43.59",
+    "pasp": "189",
+    "n": "7",
+    "kontr": "58"
+   },
+   {
+    "d": "2026-10-08",
+    "eur": "47.07",
+    "pasp": "178",
+    "n": "7",
+    "kontr": "106"
+   },
+   {
+    "d": "2026-10-09",
+    "eur": "42.21",
+    "pasp": "166",
+    "n": "3",
+    "kontr": "35"
+   },
+   {
+    "d": "2026-10-10",
+    "eur": "57.12",
+    "pasp": "230",
+    "n": "3",
+    "kontr": "25"
+   },
+   {
+    "d": "2026-10-11",
+    "eur": "63.97",
+    "pasp": "258",
+    "n": "9",
+    "kontr": "133"
+   },
+   {
+    "d": "2026-10-12",
+    "eur": "51.14",
+    "pasp": "180",
+    "n": "9",
+    "kontr": "152"
+   },
+   {
+    "d": "2026-10-13",
+    "eur": "55.81",
+    "pasp": "172",
+    "n": "7",
+    "kontr": "74"
+   },
+   {
+    "d": "2026-10-14",
+    "eur": "39.81",
+    "pasp": "155",
+    "n": "4",
+    "kontr": "34"
+   },
+   {
+    "d": "2026-10-15",
+    "eur": "45.78",
+    "pasp": "158",
+    "n": "7",
+    "kontr": "78"
+   },
+   {
+    "d": "2026-10-16",
+    "eur": "37.64",
+    "pasp": "142",
+    "n": "6",
+    "kontr": "44"
+   },
+   {
+    "d": "2026-10-17",
+    "eur": "41.17",
+    "pasp": "168",
+    "n": "6",
+    "kontr": "58"
+   },
+   {
+    "d": "2026-10-18",
+    "eur": "45.22",
+    "pasp": "160",
+    "n": "3",
+    "kontr": "15"
+   },
+   {
+    "d": "2026-10-19",
+    "eur": "43.78",
+    "pasp": "175",
+    "n": "5",
+    "kontr": "58"
+   },
+   {
+    "d": "2026-10-20",
+    "eur": "44.70",
+    "pasp": "141",
+    "n": "8",
+    "kontr": "79"
+   },
+   {
+    "d": "2026-10-21",
+    "eur": "45.01",
+    "pasp": "160",
+    "n": "5",
+    "kontr": "45"
+   },
+   {
+    "d": "2026-10-22",
+    "eur": "46.68",
+    "pasp": "188",
+    "n": "9",
+    "kontr": "75"
+   },
+   {
+    "d": "2026-10-23",
+    "eur": "42.25",
+    "pasp": "165",
+    "n": "4",
+    "kontr": "46"
+   },
+   {
+    "d": "2026-10-24",
+    "eur": "40.86",
+    "pasp": "164",
+    "n": "3",
+    "kontr": "54"
+   },
+   {
+    "d": "2026-10-25",
+    "eur": "38.05",
+    "pasp": "152",
+    "n": "6",
+    "kontr": "65"
+   },
+   {
+    "d": "2026-10-26",
+    "eur": "45.40",
+    "pasp": "159",
+    "n": "5",
+    "kontr": "40"
+   },
+   {
+    "d": "2026-10-27",
+    "eur": "45.20",
+    "pasp": "157",
+    "n": "6",
+    "kontr": "44"
+   },
+   {
+    "d": "2026-10-28",
+    "eur": "40.94",
+    "pasp": "162",
+    "n": "5",
+    "kontr": "80"
+   },
+   {
+    "d": "2026-10-29",
+    "eur": "38.57",
+    "pasp": "126",
+    "n": "3",
+    "kontr": "32"
+   },
+   {
+    "d": "2026-10-30",
+    "eur": "44.14",
+    "pasp": "130",
+    "n": "3",
+    "kontr": "24"
+   },
+   {
+    "d": "2026-10-31",
+    "eur": "34.48",
+    "pasp": "123",
+    "n": "1",
+    "kontr": "6"
+   }
+  ],
+  "web_cols": [
+   "id",
+   "data",
+   "pjuvis",
+   "raktas",
+   "raktas2",
+   "apsilankymai",
+   "lankytojai",
+   "perziuros",
+   "atmetimai",
+   "trukme_s_suma",
+   "view_item",
+   "add_to_cart",
+   "begin_checkout",
+   "uzsakymai",
+   "pajamos_ct",
+   "kontribucija_ct",
+   "sutikusiu_dalis",
+   "aplinka"
+  ],
+  "web": []
+ },
+ "v": "dep-091319",
+ "kurimas": 200,
+ "sid": 7648,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
