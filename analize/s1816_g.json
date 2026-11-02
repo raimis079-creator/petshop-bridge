@@ -29,21 +29,203 @@
    "opened_at",
    "clicked_at"
   ],
-  "err": "Unknown column 'j.recipient_email_hash' in 'WHERE'",
-  "n": 0,
+  "err": "",
+  "n": 109,
   "viso": {
-   "n": 0,
-   "pak": 0
+   "n": 109,
+   "pak": 10
   },
-  "pagal_kanala": [],
-  "pagal_maista": [],
-  "pagal_gyvuna": [],
-  "pagal_suma": [],
-  "pagal_paskyra": [],
-  "pagal_refill": [],
-  "pagal_laiskus": [],
-  "kategorijos_top": [],
-  "dienos_iki_pak": [],
+  "pagal_kanala": {
+   "mokamas": {
+    "n": 77,
+    "pak": 7,
+    "proc": 9
+   },
+   "organika": {
+    "n": 14,
+    "pak": 0,
+    "proc": 0
+   },
+   "direct": {
+    "n": 11,
+    "pak": 2,
+    "proc": 18
+   },
+   "ai": {
+    "n": 4,
+    "pak": 1,
+    "proc": 25
+   },
+   "soc_organika": {
+    "n": 2,
+    "pak": 0,
+    "proc": 0
+   },
+   "referral": {
+    "n": 1,
+    "pak": 0,
+    "proc": 0
+   }
+  },
+  "pagal_maista": {
+   "su_maistu": {
+    "n": 71,
+    "pak": 9,
+    "proc": 13
+   },
+   "be_maisto": {
+    "n": 38,
+    "pak": 1,
+    "proc": 3
+   }
+  },
+  "pagal_gyvuna": {
+   "?": {
+    "n": 109,
+    "pak": 10,
+    "proc": 9
+   }
+  },
+  "pagal_suma": {
+   "<30": {
+    "n": 51,
+    "pak": 4,
+    "proc": 8
+   },
+   "30-60": {
+    "n": 44,
+    "pak": 6,
+    "proc": 14
+   },
+   "60+": {
+    "n": 14,
+    "pak": 0,
+    "proc": 0
+   }
+  },
+  "pagal_paskyra": {
+   "paskyra": {
+    "n": 94,
+    "pak": 7,
+    "proc": 7
+   },
+   "svecias": {
+    "n": 15,
+    "pak": 3,
+    "proc": 20
+   }
+  },
+  "pagal_refill": {
+   "turi_refill": {
+    "n": 56,
+    "pak": 7,
+    "proc": 13
+   },
+   "be_refill": {
+    "n": 53,
+    "pak": 3,
+    "proc": 6
+   }
+  },
+  "pagal_laiskus": {
+   "gavo_nepaspaude": {
+    "n": 92,
+    "pak": 5,
+    "proc": 5
+   },
+   "0 laisku": {
+    "n": 15,
+    "pak": 3,
+    "proc": 20
+   },
+   "paspaude": {
+    "n": 2,
+    "pak": 2,
+    "proc": 100
+   }
+  },
+  "kategorijos_top": {
+   "[\"sunims\",\"maistas-sunims\",\"sausas-maistas-sunims\"": {
+    "n": 27,
+    "pak": 1,
+    "proc": 4
+   },
+   "[\"sunims\",\"skanestai-sunims\"]": {
+    "n": 9,
+    "pak": 1,
+    "proc": 11
+   },
+   "[\"sunims\",\"maistas-sunims\",\"konservai-sunims\"]": {
+    "n": 8,
+    "pak": 3,
+    "proc": 38
+   },
+   "[\"katems\",\"maistas-katems\",\"konservai-katems\"],[\"k": {
+    "n": 8,
+    "pak": 1,
+    "proc": 13
+   },
+   "[\"katems\",\"maistas-katems\",\"konservai-katems\"]": {
+    "n": 7,
+    "pak": 2,
+    "proc": 29
+   },
+   "[\"sunims\",\"vitaminai-ir-papildai-sunims\"]": {
+    "n": 7,
+    "pak": 0,
+    "proc": 0
+   },
+   "[\"katems\",\"tualetai-kraikai-semtuveliai\"]": {
+    "n": 5,
+    "pak": 0,
+    "proc": 0
+   },
+   "[\"zuvims\",\"akvariumo-zuvyciu-maistas\"]": {
+    "n": 5,
+    "pak": 0,
+    "proc": 0
+   },
+   "[\"katems\",\"maistas-katems\",\"sausas-maistas-katems\"": {
+    "n": 4,
+    "pak": 2,
+    "proc": 50
+   },
+   "[\"zuvims\",\"tvenkiniu-zuvu-maistas\"]": {
+    "n": 3,
+    "pak": 0,
+    "proc": 0
+   },
+   "[\"sunims\",\"maistas-sunims\",\"konservai-sunims\"],[\"s": {
+    "n": 3,
+    "pak": 0,
+    "proc": 0
+   },
+   "[\"katems\",\"antiparazitines-priemones-katems\"]": {
+    "n": 2,
+    "pak": 0,
+    "proc": 0
+   }
+  },
+  "dienos_iki_pak": [
+   4,
+   6,
+   11,
+   14,
+   15,
+   22,
+   22,
+   27,
+   28,
+   28
+  ],
+  "ist_baze": [
+   {
+    "n": "134",
+    "pak30": "6",
+    "pak60": "11"
+   }
+  ],
+  "ist_err": "",
   "ist_cols": [
    "id",
    "data",
@@ -63,9 +245,9 @@
    "eiluciu"
   ]
  },
- "v": "dep-124959",
+ "v": "dep-125126",
  "kurimas": 200,
- "sid": 7672,
+ "sid": 7673,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
