@@ -1,0 +1,461 @@
+{
+ "v": "dep-115446",
+ "kurimas": 200,
+ "sid": 7660,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1818b",
+  "tabs": {
+   "gaj6_ps_av_zurnalas": {
+    "n": 1829,
+    "cols": [
+     "id",
+     "operacija",
+     "product_id",
+     "laukas",
+     "buvo",
+     "tapo",
+     "pokytis",
+     "priezastis",
+     "user_id",
+     "sukurta",
+     "atsaukta"
+    ],
+    "sample": [
+     {
+      "id": "1831",
+      "operacija": "LK26103015190844",
+      "product_id": "19496",
+      "laukas": "_sale_price",
+      "buvo": null,
+      "tapo": "2.99",
+      "pokytis": null,
+      "priezastis": "kortelė",
+      "user_id": "5788",
+      "sukurta": "2026-10-30 17:19:08",
+      "atsaukta": "0"
+     },
+     {
+      "id": "1830",
+      "operacija": "LK26103015184036",
+      "product_id": "19479",
+      "laukas": "_sale_price",
+      "buvo": null,
+      "tapo": "2.99",
+      "pokytis": null,
+      "priezastis": "kortelė",
+      "user_id": "5788",
+      "sukurta": "2026-10-30 17:18:40",
+      "atsaukta": "0"
+     }
+    ]
+   },
+   "gaj6_ps_browse_log": {
+    "n": 205,
+    "cols": [
+     "id",
+     "email",
+     "user_id",
+     "product_id",
+     "views",
+     "status",
+     "viewed_at",
+     "created_at"
+    ],
+    "sample": [
+     {
+      "id": "724",
+      "email": "birute@bazilius.lt",
+      "user_id": "6054",
+      "product_id": "21599",
+      "views": "2",
+      "status": "converted",
+      "viewed_at": "2026-10-31 13:36:26",
+      "created_at": "2026-10-31 13:36:23"
+     },
+     {
+      "id": "722",
+      "email": "birute@bazilius.lt",
+      "user_id": "6054",
+      "product_id": "17102",
+      "views": "1",
+      "status": "converted",
+      "viewed_at": "2026-10-31 13:33:29",
+      "created_at": "2026-10-31 13:33:29"
+     }
+    ]
+   },
+   "gaj6_ps_consent_log": {
+    "n": 1195,
+    "cols": [
+     "id",
+     "customer_id",
+     "email",
+     "field",
+     "from_value",
+     "to_value",
+     "source",
+     "ip",
+     "user_agent",
+     "changed_at"
+    ],
+    "sample": [
+     {
+      "id": "1226",
+      "customer_id": "3711",
+      "email": "nendre@gmail.com",
+      "field": "similar_products_optout",
+      "from_value": "0",
+      "to_value": "0",
+      "source": "checkout",
+      "ip": "78.56.22.4",
+      "user_agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/18.6 Safari/605.1.15",
+      "changed_at": "2026-11-02 13:11:56"
+     },
+     {
+      "id": "1225",
+      "customer_id": "6062",
+      "email": "astalukauskaite0@gmail.com",
+      "field": "similar_products_optout",
+      "from_value": "",
+      "to_value": "1",
+      "source": "checkout",
+      "ip": "79.133.226.177",
+      "user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/156.0.0.0 Safari/537.36",
+      "changed_at": "2026-11-02 09:54:00"
+     }
+    ]
+   },
+   "gaj6_ps_event_log": {
+    "n": 1502,
+    "cols": [
+     "id",
+     "event_id",
+     "event_name",
+     "email",
+     "payload_json",
+     "emitted_at",
+     "status",
+     "adapter_name",
+     "attempts",
+     "next_retry_at",
+     "last_error",
+     "esp_response"
+    ],
+    "sample": [
+     {
+      "id": "3192",
+      "event_id": "order_paid_37413",
+      "event_name": "order_paid",
+      "email": "nendre@gmail.com",
+      "payload_json": "{\"order_id\":37413,\"order_number\":\"1609\",\"order_total\":53.79,\"order_currency\":\"EUR\",\"order_items\":[{\"product_id\":18581,\"sku\":\"HYHS02\",\"name\":\"Exclusion Hypoallergenic mini mažų veislių šunų maistas su arkliena ir bulvėmis S 2 kg\",\"quantity\":1,\"line_total\":18.140496,\"fulfillment_source\":\"vf\"},{\"product_id\":18608,\"sku\":\"HM37\",\"name\":\"Exclusion Hypoallergenic konservai šunims su arkliena ir bulvėmis 400 g\",\"quantity\":8,\"line_total\":26.31405,\"fulfillment_source\":\"vf\"}],\"payment_method\":\"paysera\",\"shipping_method\":\"VENIPAK paštomatai/atsiėmimo punktai\",\"customer_note\":null,\"is_first_order\":false,\"order_count_at_time\":3}",
+      "emitted_at": "2026-11-02 11:13:12",
+      "status": "sent",
+      "adapter_name": "sender",
+      "attempts": "0",
+      "next_retry_at": null,
+      "last_error": null,
+      "esp_response": "{\"message\":\"Event created\",\"success\":true}"
+     },
+     {
+      "id": "3191",
+      "event_id": "order_shipped_37402",
+      "event_name": "order_shipped",
+      "email": "saverinaitem@gmail.com",
+      "payload_json": "{\"order_id\":37402,\"order_number\":\"1599\",\"carrier\":\"venipak\",\"tracking_number\":\"V07267E1000620\",\"tracking_url\":\"https://venipak.lt/tracking/track/V07267E1000620\",\"delivery_type\":\"parcel_terminal\",\"estimated_delivery\":null}",
+      "emitted_at": "2026-11-02 10:56:28",
+      "status": "sent",
+      "adapter_name": "sender",
+      "attempts": "0",
+      "next_retry_at": null,
+      "last_error": null,
+      "esp_response": "{\"message\":\"Event created\",\"success\":true}"
+     }
+    ]
+   },
+   "gaj6_ps_feeding_import_log": {
+    "n": 5,
+    "cols": [
+     "id",
+     "import_batch_id",
+     "file_hash",
+     "schema_version",
+     "classifier_version",
+     "phase",
+     "started_at",
+     "finished_at",
+     "status",
+     "rows_in",
+     "tables_in",
+     "errors_json",
+     "result_json",
+     "action",
+     "old_provenance",
+     "new_provenance",
+     "batch_id",
+     "product_id",
+     "feeding_table_id",
+     "created_at"
+    ],
+    "sample": [
+     {
+      "id": "35",
+      "import_batch_id": "zzv2",
+      "file_hash": "069d3d4b9078438a5944e9daa0c899e96e5aed59e375927911036ab9ac6fc078",
+      "schema_version": "s212b_v3|TEST",
+      "classifier_version": "clf_v1_2026-07-17",
+      "phase": "APPLY",
+      "started_at": "2026-07-18 01:36:18",
+      "finished_at": "2026-07-18 01:36:18",
+      "status": "committed",
+      "rows_in": null,
+      "tables_in": null,
+      "errors_json": null,
+      "result_json": "{\"lenteles\":{\"zz_v\":\"draft_v2 id=236\"},\"provenance_audit\":[]}",
+      "action": null,
+      "old_provenance": null,
+      "new_provenance": null,
+      "batch_id": null,
+      "product_id": null,
+      "feeding_table_id": null,
+      "created_at": null
+     },
+     {
+      "id": "34",
+      "import_batch_id": "zzv1",
+      "file_hash": "6d1fee37cceebdb40e4268d564ee7c0ac1f1f4d07b5e24bde93c2d4822a9061d",
+      "schema_version": "s212b_v3|TEST",
+      "classifier_version": "clf_v1_2026-07-17",
+      "phase": "APPLY",
+      "started_at": "2026-07-18 01:36:18",
+      "finished_at": "2026-07-18 01:36:18",
+      "status": "committed",
+      "rows_in": null,
+      "tables_in": null,
+      "errors_json": null,
+      "result_json": "{\"lenteles\":{\"zz_v\":\"v1_created id=235\"},\"provenance_audit\":[]}",
+      "action": null,
+      "old_provenance": null,
+      "new_provenance": null,
+      "batch_id": null,
+      "product_id": null,
+      "feeding_table_id": null,
+      "created_at": null
+     }
+    ]
+   },
+   "gaj6_ps_partijos": {
+    "n": 1263,
+    "cols": [
+     "id",
+     "product_id",
+     "gauta",
+     "kiekis_gautas",
+     "kiekis_liko",
+     "savikaina_eur",
+     "savikaina_orig",
+     "valiuta",
+     "kursas",
+     "geriausia_iki",
+     "tiekejas",
+     "importuota",
+     "tiekimas_id",
+     "pastaba",
+     "sukurta",
+     "user_id",
+     "atsaukta"
+    ],
+    "sample": [
+     {
+      "id": "4596",
+      "product_id": "26975",
+      "gauta": "2026-10-30",
+      "kiekis_gautas": "1",
+      "kiekis_liko": "1",
+      "savikaina_eur": "7.2100",
+      "savikaina_orig": null,
+      "valiuta": "EUR",
+      "kursas": "1.000000",
+      "geriausia_iki": null,
+      "tiekejas": "vf",
+      "importuota": "0",
+      "tiekimas_id": "66",
+      "pastaba": "Tiekimas: VF partija #66",
+      "sukurta": "2026-10-30 11:08:54",
+      "user_id": "5788",
+      "atsaukta": "0"
+     },
+     {
+      "id": "4595",
+      "product_id": "18590",
+      "gauta": "2026-10-30",
+      "kiekis_gautas": "2",
+      "kiekis_liko": "2",
+      "savikaina_eur": "13.1800",
+      "savikaina_orig": null,
+      "valiuta": "EUR",
+      "kursas": "1.000000",
+      "geriausia_iki": "2027-12-31",
+      "tiekejas": "vf",
+      "importuota": "0",
+      "tiekimas_id": "66",
+      "pastaba": "Tiekimas: VF partija #66",
+      "sukurta": "2026-10-30 11:08:54",
+      "user_id": "5788",
+      "atsaukta": "0"
+     }
+    ]
+   },
+   "gaj6_ps_pet_field_log": {
+    "n": 664,
+    "cols": [
+     "id",
+     "pet_id",
+     "laukas",
+     "buvo",
+     "tapo",
+     "saltinis",
+     "questionnaire_version",
+     "user_id",
+     "laikas"
+    ],
+    "sample": [
+     {
+      "id": "713",
+      "pet_id": "278",
+      "laukas": "questionnaire_version",
+      "buvo": null,
+      "tapo": "v1",
+      "saltinis": "anketa",
+      "questionnaire_version": "v1",
+      "user_id": "6054",
+      "laikas": "2026-10-31 12:06:54"
+     },
+     {
+      "id": "712",
+      "pet_id": "278",
+      "laukas": "activity_hint",
+      "buvo": null,
+      "tapo": "moderate",
+      "saltinis": "anketa",
+      "questionnaire_version": "v1",
+      "user_id": "6054",
+      "laikas": "2026-10-31 12:06:54"
+     }
+    ]
+   },
+   "gaj6_ps_rec_log": {
+    "n": 62,
+    "cols": [
+     "id",
+     "recommendation_id",
+     "pet_id",
+     "user_id",
+     "laikas",
+     "engine_version",
+     "rezultatas",
+     "reason_code",
+     "kandidatu_sk",
+     "parodyti_ids",
+     "inputs_json",
+     "input_hash"
+    ],
+    "sample": [
+     {
+      "id": "72",
+      "recommendation_id": "6ae5eb67a15014125ddf",
+      "pet_id": "278",
+      "user_id": "6054",
+      "laikas": "2026-10-31 13:21:43",
+      "engine_version": "variklis_v1",
+      "rezultatas": "ok",
+      "reason_code": null,
+      "kandidatu_sk": "3",
+      "parodyti_ids": "[20399,18533,21740]",
+      "inputs_json": "{\"species\":\"cat\",\"life_stage\":\"junior\",\"weight_kg\":3.5,\"sensitivities\":\"none\",\"primary_need\":\"none\",\"is_sterilised\":\"yes\"}",
+      "input_hash": "091bd8b477ec3170c7ce869675abfe8f"
+     },
+     {
+      "id": "71",
+      "recommendation_id": "6ae3471155c80b14f09e",
+      "pet_id": "276",
+      "user_id": "5769",
+      "laikas": "2026-10-29 13:16:01",
+      "engine_version": "variklis_v1",
+      "rezultatas": "failed",
+      "reason_code": "missing_life_stage",
+      "kandidatu_sk": "0",
+      "parodyti_ids": "[]",
+      "inputs_json": "{\"species\":\"dog\",\"life_stage\":null,\"weight_kg\":12.8,\"sensitivities\":\"unknown\",\"primary_need\":null,\"is_sterilised\":null}",
+      "input_hash": "03c444c0e02df75ce5db976991e9f51a"
+     }
+    ]
+   },
+   "gaj6_ps_stock_watch": {
+    "n": 11,
+    "cols": [
+     "id",
+     "product_id",
+     "email",
+     "user_id",
+     "status",
+     "source",
+     "created_at",
+     "notified_at"
+    ],
+    "sample": [
+     {
+      "id": "12",
+      "product_id": "17345",
+      "email": "aledita007@gmail.com",
+      "user_id": null,
+      "status": "waiting",
+      "source": "product_page",
+      "created_at": "2026-10-19 13:54:16",
+      "notified_at": null
+     },
+     {
+      "id": "11",
+      "product_id": "18524",
+      "email": "ugneugon@gmail.com",
+      "user_id": null,
+      "status": "waiting",
+      "source": "product_page",
+      "created_at": "2026-10-15 16:42:19",
+      "notified_at": null
+     }
+    ]
+   },
+   "gaj6_ps_webhook_log": {
+    "n": 1,
+    "cols": [
+     "id",
+     "dedup_key",
+     "topic",
+     "email",
+     "marketing_status",
+     "transactional_status",
+     "payload_json",
+     "processing_result",
+     "received_at"
+    ],
+    "sample": [
+     {
+      "id": "1",
+      "dedup_key": "9f253bdb3ecd37d1ab131d8aca849306",
+      "topic": "subscribers/updated",
+      "email": "chan-test@example.com",
+      "marketing_status": "unsubscribed",
+      "transactional_status": "active",
+      "payload_json": "{\"type\":\"subscribers\\/updated\",\"email\":\"chan-test@example.com\",\"status\":{\"email\":\"unsubscribed\",\"temail\":\"active\"}}",
+      "processing_result": "test",
+      "received_at": "2026-07-30 20:24:52"
+     }
+    ]
+   }
+  }
+ }
+}
