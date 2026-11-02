@@ -1,0 +1,52 @@
+{
+ "5": {
+  "v": "S1820b",
+  "faze": "5",
+  "laikas": "2026-11-02 17:24:51",
+  "baze": {
+   "id": 33984,
+   "t": "Monge VetSolution Dog Wet Gastrointestinal 400g",
+   "st": "draft",
+   "reg": 3.09,
+   "cost": 1.71,
+   "stock": 1005,
+   "svoris": "0.4000",
+   "sale": ""
+  },
+  "planas": {
+   "12": {
+    "proc": 7.63,
+    "kaina": 34.29,
+    "vnt": 2.858,
+    "lieka_po_pastomato": 5.67,
+    "svoris": 4.8
+   },
+   "24": {
+    "proc": 12.01,
+    "kaina": 65.29,
+    "vnt": 2.72,
+    "lieka_po_pastomato": 10.77,
+    "svoris": 9.6
+   },
+   "36": {
+    "proc": 16.53,
+    "kaina": 92.89,
+    "vnt": 2.58,
+    "lieka_po_pastomato": 13.06,
+    "svoris": 14.4
+   }
+  },
+  "jau_sukurta": [
+   37415,
+   37416,
+   37417
+  ]
+ },
+ "v": "dep-152348",
+ "kurimas": 200,
+ "sid": 7688,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
