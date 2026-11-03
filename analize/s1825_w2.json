@@ -1,0 +1,108 @@
+{
+ "1": {
+  "v": "S1825w2",
+  "keys": [
+   {
+    "meta_key": "_legacy_weight_raw",
+    "n": "1480",
+    "mn": "0.00026",
+    "mx": "900"
+   },
+   {
+    "meta_key": "_mnm_weight_cumulative",
+    "n": "90",
+    "mn": "no",
+    "mx": "yes"
+   },
+   {
+    "meta_key": "_petshop_pkg_assignment_status",
+    "n": "29",
+    "mn": "fixed",
+    "mx": "stock_sync_checked"
+   },
+   {
+    "meta_key": "_petshop_pkg_fix_at",
+    "n": "29",
+    "mn": "2026-07-17 14:34:16",
+    "mx": "2026-07-17 14:34:16"
+   },
+   {
+    "meta_key": "_petshop_pkg_fix_by",
+    "n": "29",
+    "mn": "S212-A",
+    "mx": "S212-A"
+   },
+   {
+    "meta_key": "_petshop_pkg_fix_from",
+    "n": "29",
+    "mn": "15 kg",
+    "mx": "15 kg"
+   },
+   {
+    "meta_key": "_petshop_pkg_fix_source",
+    "n": "29",
+    "mn": "wc_weight=1.5",
+    "mx": "wc_weight=1.5"
+   },
+   {
+    "meta_key": "_petshop_pkg_fix_to",
+    "n": "29",
+    "mn": "1,5 kg",
+    "mx": "1,5 kg"
+   },
+   {
+    "meta_key": "_petshop_pkg_product_import_checked",
+    "n": "29",
+    "mn": "no",
+    "mx": "no"
+   },
+   {
+    "meta_key": "_petshop_pkg_stock_sync_at",
+    "n": "7",
+    "mn": "2026-07-17 21:00:06",
+    "mx": "2026-07-17 21:00:07"
+   },
+   {
+    "meta_key": "_weight",
+    "n": "3565",
+    "mn": "0.0000",
+    "mx": "9.96"
+   },
+   {
+    "meta_key": "_weight_normalized",
+    "n": "1497",
+    "mn": "auto",
+    "mx": "skipped"
+   },
+   {
+    "meta_key": "_weight_source",
+    "n": "1000",
+    "mn": "multipack_g: 12x100 g",
+    "mx": "single_ml: 800 ml"
+   },
+   {
+    "meta_key": "_zb_weight",
+    "n": "1021",
+    "mn": "0,0000",
+    "mx": "9.22"
+   }
+  ],
+  "tax": [
+   {
+    "taxonomy": "pa_kiekis_pakuoteje",
+    "n": "5"
+   },
+   {
+    "taxonomy": "pa_pakuotes_dydis",
+    "n": "149"
+   }
+  ]
+ },
+ "v": "dep-142638",
+ "kurimas": 200,
+ "sid": 7922,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
