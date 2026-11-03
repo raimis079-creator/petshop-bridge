@@ -1,0 +1,59 @@
+{
+ "2": {
+  "v": "S1824o3",
+  "F": "2",
+  "pries": {
+   "vd": {
+    "manifest": "07267261103001",
+    "pack_numbers": [
+     "V07267E1000621"
+    ],
+    "weight": 24.2,
+    "products_count": 12,
+    "status": "sent",
+    "error_message": ""
+   },
+   "ps": {
+    "av": {
+     "sandelis": "av",
+     "kodas": "001",
+     "manifest": "07267261103001",
+     "numeriai": [
+      "V07267E1000621"
+     ],
+     "data": "2026-11-03 07:57:23"
+    }
+   },
+   "sh": "606",
+   "fs": [
+    "591",
+    "1",
+    "158",
+    "4200"
+   ],
+   "sh2": null
+  },
+  "sh_new": 625,
+  "po": {
+   "vd": {
+    "manifest": "07267261103001",
+    "pack_numbers": [
+     "V07267E1000621",
+     "110405425"
+    ],
+    "weight": 24.2,
+    "products_count": 12,
+    "status": "sent",
+    "error_message": ""
+   },
+   "ps": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261103001\",\"numeriai\":[\"V07267E1000621\",\"110405425\"],\"data\":\"2026-11-03 07:57:23\"}}"
+  }
+ },
+ "v": "dep-084705",
+ "kurimas": 200,
+ "sid": 7847,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
