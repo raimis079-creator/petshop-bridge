@@ -1,0 +1,998 @@
+{
+ "3": {
+  "v": "S1824p",
+  "faze": "3",
+  "laikas": "2026-11-03 09:18:02",
+  "pakai": 83,
+  "blogi": []
+ },
+ "v": "dep-071350",
+ "kurimas": 200,
+ "sid": 7816,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R0-17": {
+  "v": "S1824p",
+  "faze": "R0-17",
+  "laikas": "2026-11-03 09:14:55",
+  "f": [
+   {
+    "id": 33420,
+    "i": 0,
+    "parse": 1,
+    "reg": 5.19,
+    "seima": "dp300-farmina-vet-life-struvite-konservai-sunims-300-g",
+    "termas": {
+     "12": 790,
+     "18": 791,
+     "24": 792
+    },
+    "pakai": {
+     "12": {
+      "id": 37759,
+      "kaina": 60.39,
+      "vnt": 5.033,
+      "proc": 2.94
+     },
+     "18": {
+      "id": 37760,
+      "kaina": 87.89,
+      "vnt": 4.883,
+      "proc": 5.86
+     },
+     "24": {
+      "id": 37761,
+      "kaina": 105.49,
+      "vnt": 4.395,
+      "proc": 15.27
+     }
+    }
+   },
+   {
+    "id": 33402,
+    "i": 1,
+    "parse": 1,
+    "reg": 4.79,
+    "seima": "dp300-farmina-vet-life-diabetic-konservai-sunims-300-g",
+    "termas": {
+     "12": 790,
+     "18": 791,
+     "24": 792
+    },
+    "pakai": {
+     "12": {
+      "id": 37762,
+      "kaina": 55.79,
+      "vnt": 4.649,
+      "proc": 2.84
+     },
+     "18": {
+      "id": 37763,
+      "kaina": 81.09,
+      "vnt": 4.505,
+      "proc": 5.89
+     },
+     "24": {
+      "id": 37764,
+      "kaina": 97.39,
+      "vnt": 4.058,
+      "proc": 15.24
+     }
+    }
+   },
+   {
+    "id": 33644,
+    "i": 2,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp100-gemon-all-breeds-adult-konservuotas-pasaras-suaugusiems-sunims-su-jautienos-ir-kumpio-gabaleliais-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37765,
+      "kaina": 20.99,
+      "vnt": 0.875,
+      "proc": 1.46
+     },
+     "32": {
+      "id": 37766,
+      "kaina": 27.19,
+      "vnt": 0.85,
+      "proc": 4.32
+     }
+    }
+   },
+   {
+    "id": 33642,
+    "i": 3,
+    "parse": 1,
+    "reg": 3.29,
+    "seima": "dp1250-gemon-maxi-adult-konservuotas-pasaras-suaugusiems-sunims-su-jautiena-ir-ryziais-1250g",
+    "termas": {
+     "9": 793,
+     "12": 794
+    },
+    "pakai": {
+     "9": {
+      "id": 37767,
+      "kaina": 28.69,
+      "vnt": 3.188,
+      "proc": 2.91
+     },
+     "12": {
+      "id": 37768,
+      "kaina": 34.49,
+      "vnt": 2.874,
+      "proc": 12.49
+     }
+    }
+   },
+   {
+    "id": 33638,
+    "i": 4,
+    "parse": 1,
+    "reg": 3.29,
+    "seima": "dp1250-gemon-medium-adult-konservuotas-pasaras-su-eriena-ir-ryziais-1250g",
+    "termas": {
+     "9": 793,
+     "12": 794
+    },
+    "pakai": {
+     "9": {
+      "id": 37769,
+      "kaina": 28.69,
+      "vnt": 3.188,
+      "proc": 2.91
+     },
+     "12": {
+      "id": 37770,
+      "kaina": 34.49,
+      "vnt": 2.874,
+      "proc": 12.49
+     }
+    }
+   },
+   {
+    "id": 34018,
+    "i": 5,
+    "parse": 1,
+    "reg": 2.79,
+    "seima": "dp240-real-dog-konservai-suaugusiems-sunims-su-jautiena-ir-ozkiena-240-g",
+    "termas": {
+     "12": 795,
+     "18": 796,
+     "24": 797
+    },
+    "pakai": {
+     "12": {
+      "id": 37771,
+      "kaina": 32.49,
+      "vnt": 2.708,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 37772,
+      "kaina": 47.29,
+      "vnt": 2.627,
+      "proc": 5.72
+     },
+     "24": {
+      "id": 37773,
+      "kaina": 56.69,
+      "vnt": 2.362,
+      "proc": 15.25
+     }
+    }
+   },
+   {
+    "id": 34006,
+    "i": 6,
+    "parse": 1,
+    "reg": 2.79,
+    "seima": "dp240-real-dog-konservai-suaugusiems-sunims-su-jautiena-ir-eriena-240-g",
+    "termas": {
+     "12": 795,
+     "18": 796,
+     "24": 797
+    },
+    "pakai": {
+     "12": {
+      "id": 37774,
+      "kaina": 32.49,
+      "vnt": 2.708,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 37775,
+      "kaina": 47.29,
+      "vnt": 2.627,
+      "proc": 5.72
+     },
+     "24": {
+      "id": 37776,
+      "kaina": 56.69,
+      "vnt": 2.362,
+      "proc": 15.25
+     }
+    }
+   },
+   {
+    "id": 34014,
+    "i": 7,
+    "parse": 1,
+    "reg": 2.79,
+    "seima": "dp240-real-dog-konservai-suaugusiems-sunims-su-jautiena-ir-triusiena-240-g",
+    "termas": {
+     "12": 795,
+     "18": 796,
+     "24": 797
+    },
+    "pakai": {
+     "12": {
+      "id": 37777,
+      "kaina": 32.49,
+      "vnt": 2.708,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 37778,
+      "kaina": 47.29,
+      "vnt": 2.627,
+      "proc": 5.72
+     },
+     "24": {
+      "id": 37779,
+      "kaina": 56.69,
+      "vnt": 2.362,
+      "proc": 15.25
+     }
+    }
+   },
+   {
+    "id": 33732,
+    "i": 8,
+    "parse": 1,
+    "reg": 2.19,
+    "seima": "dp720-special-dog-sunu-konservai-gabaleliai-su-jautiena-darzovemis-720g",
+    "termas": {
+     "12": 798,
+     "15": 799
+    },
+    "pakai": {
+     "12": {
+      "id": 37780,
+      "kaina": 25.49,
+      "vnt": 2.124,
+      "proc": 2.78
+     },
+     "15": {
+      "id": 37781,
+      "kaina": 28.89,
+      "vnt": 1.926,
+      "proc": 11.88
+     }
+    }
+   },
+   {
+    "id": 33730,
+    "i": 9,
+    "parse": 1,
+    "reg": 2.19,
+    "seima": "dp720-special-dog-sunu-konservai-gabaleliai-su-vistiena-720g",
+    "termas": {
+     "12": 798,
+     "15": 799
+    },
+    "pakai": {
+     "12": {
+      "id": 37782,
+      "kaina": 25.49,
+      "vnt": 2.124,
+      "proc": 2.78
+     },
+     "15": {
+      "id": 37783,
+      "kaina": 28.89,
+      "vnt": 1.926,
+      "proc": 11.88
+     }
+    }
+   },
+   {
+    "id": 33562,
+    "i": 10,
+    "parse": 1,
+    "reg": 0.99,
+    "seima": "dp100-monge-fresh-pastetas-sunims-su-antienos-gabaleliais100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37784,
+      "kaina": 23.09,
+      "vnt": 0.962,
+      "proc": 2.57
+     },
+     "32": {
+      "id": 37785,
+      "kaina": 27.69,
+      "vnt": 0.865,
+      "proc": 12.41
+     }
+    }
+   },
+   {
+    "id": 33566,
+    "i": 11,
+    "parse": 1,
+    "reg": 0.99,
+    "seima": "dp100-monge-fresh-pastetas-sunims-su-jautienos-gabaleliais-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37786,
+      "kaina": 23.09,
+      "vnt": 0.962,
+      "proc": 2.57
+     },
+     "32": {
+      "id": 37787,
+      "kaina": 27.69,
+      "vnt": 0.865,
+      "proc": 12.41
+     }
+    }
+   },
+   {
+    "id": 33558,
+    "i": 12,
+    "parse": 1,
+    "reg": 0.99,
+    "seima": "dp100-monge-fresh-pastetas-sunims-su-kalakutienos-gabaleliais-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37788,
+      "kaina": 23.09,
+      "vnt": 0.962,
+      "proc": 2.57
+     },
+     "32": {
+      "id": 37789,
+      "kaina": 27.69,
+      "vnt": 0.865,
+      "proc": 12.41
+     }
+    }
+   },
+   {
+    "id": 33570,
+    "i": 13,
+    "parse": 1,
+    "reg": 0.99,
+    "seima": "dp100-monge-fresh-pastetas-sunims-su-kiaulienos-gabaleliais-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37790,
+      "kaina": 23.09,
+      "vnt": 0.962,
+      "proc": 2.57
+     },
+     "32": {
+      "id": 37791,
+      "kaina": 27.69,
+      "vnt": 0.865,
+      "proc": 12.41
+     }
+    }
+   },
+   {
+    "id": 33568,
+    "i": 14,
+    "parse": 1,
+    "reg": 0.99,
+    "seima": "dp100-monge-fresh-pastetas-sunims-su-lasisos-gabaleliais-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37792,
+      "kaina": 23.09,
+      "vnt": 0.962,
+      "proc": 2.57
+     },
+     "32": {
+      "id": 37793,
+      "kaina": 27.69,
+      "vnt": 0.865,
+      "proc": 12.41
+     }
+    }
+   },
+   {
+    "id": 33556,
+    "i": 15,
+    "parse": 1,
+    "reg": 0.99,
+    "seima": "dp100-monge-fresh-pastetas-sunims-su-tuno-gabaleliais-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37794,
+      "kaina": 23.09,
+      "vnt": 0.962,
+      "proc": 2.57
+     },
+     "32": {
+      "id": 37795,
+      "kaina": 27.69,
+      "vnt": 0.865,
+      "proc": 12.41
+     }
+    }
+   },
+   {
+    "id": 33560,
+    "i": 16,
+    "parse": 1,
+    "reg": 0.99,
+    "seima": "dp100-monge-fresh-pastetas-sunims-su-vistienos-gabaleliais-ir-darzovemis100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37796,
+      "kaina": 23.09,
+      "vnt": 0.962,
+      "proc": 2.57
+     },
+     "32": {
+      "id": 37797,
+      "kaina": 27.69,
+      "vnt": 0.865,
+      "proc": 12.41
+     }
+    }
+   },
+   {
+    "id": 33724,
+    "i": 17,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp100-monge-grill-konservuotas-pasaras-sunims-senjorams-su-antiena-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37798,
+      "kaina": 20.79,
+      "vnt": 0.866,
+      "proc": 2.39
+     },
+     "32": {
+      "id": 37799,
+      "kaina": 25.19,
+      "vnt": 0.787,
+      "proc": 11.35
+     }
+    }
+   }
+  ],
+  "hb": 200
+ },
+ "R18-34": {
+  "v": "S1824p",
+  "faze": "R18-34",
+  "laikas": "2026-11-03 09:16:16",
+  "f": [
+   {
+    "id": 33582,
+    "i": 18,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp100-monge-grill-konservuotas-pasaras-sunims-su-jautiena-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37800,
+      "kaina": 20.79,
+      "vnt": 0.866,
+      "proc": 2.39
+     },
+     "32": {
+      "id": 37801,
+      "kaina": 25.19,
+      "vnt": 0.787,
+      "proc": 11.35
+     }
+    }
+   },
+   {
+    "id": 33578,
+    "i": 19,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp100-monge-grill-konservuotas-pasaras-sunims-su-menke-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37802,
+      "kaina": 20.79,
+      "vnt": 0.866,
+      "proc": 2.39
+     },
+     "32": {
+      "id": 37803,
+      "kaina": 25.19,
+      "vnt": 0.787,
+      "proc": 11.35
+     }
+    }
+   },
+   {
+    "id": 33576,
+    "i": 20,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp100-monge-grill-konservuotas-pasaras-sunims-su-vistiena-ir-kalakutiena-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37804,
+      "kaina": 20.79,
+      "vnt": 0.866,
+      "proc": 2.39
+     },
+     "32": {
+      "id": 37805,
+      "kaina": 25.19,
+      "vnt": 0.787,
+      "proc": 11.35
+     }
+    }
+   },
+   {
+    "id": 33584,
+    "i": 21,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp100-monge-grill-konservuotas-pasaras-sunims-su-eriena-ir-darzovemis-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37806,
+      "kaina": 20.79,
+      "vnt": 0.866,
+      "proc": 2.39
+     },
+     "32": {
+      "id": 37807,
+      "kaina": 25.19,
+      "vnt": 0.787,
+      "proc": 11.35
+     }
+    }
+   },
+   {
+    "id": 34020,
+    "i": 22,
+    "parse": 1,
+    "reg": 5.49,
+    "seima": "dp800-real-dog-konservai-suaugusiems-sunims-su-jautiena-ir-ozkiena-800-g",
+    "termas": {
+     "6": 800,
+     "9": 801,
+     "12": 802
+    },
+    "pakai": {
+     "6": {
+      "id": 37808,
+      "kaina": 31.99,
+      "vnt": 5.332,
+      "proc": 2.71
+     },
+     "9": {
+      "id": 37809,
+      "kaina": 46.49,
+      "vnt": 5.166,
+      "proc": 5.79
+     },
+     "12": {
+      "id": 37810,
+      "kaina": 55.79,
+      "vnt": 4.649,
+      "proc": 15.23
+     }
+    }
+   },
+   {
+    "id": 34012,
+    "i": 23,
+    "parse": 1,
+    "reg": 5.49,
+    "seima": "dp800-real-dog-konservai-suaugusiems-sunims-su-jautiena-ir-arkliena-800-g",
+    "termas": {
+     "6": 800,
+     "9": 801,
+     "12": 802
+    },
+    "pakai": {
+     "6": {
+      "id": 37811,
+      "kaina": 31.99,
+      "vnt": 5.332,
+      "proc": 2.71
+     },
+     "9": {
+      "id": 37812,
+      "kaina": 46.49,
+      "vnt": 5.166,
+      "proc": 5.79
+     },
+     "12": {
+      "id": 37813,
+      "kaina": 55.79,
+      "vnt": 4.649,
+      "proc": 15.23
+     }
+    }
+   },
+   {
+    "id": 34008,
+    "i": 24,
+    "parse": 1,
+    "reg": 5.49,
+    "seima": "dp800-real-dog-konservai-suaugusiems-sunims-su-jautiena-ir-eriena-800-g",
+    "termas": {
+     "6": 800,
+     "9": 801,
+     "12": 802
+    },
+    "pakai": {
+     "6": {
+      "id": 37814,
+      "kaina": 31.99,
+      "vnt": 5.332,
+      "proc": 2.71
+     },
+     "9": {
+      "id": 37815,
+      "kaina": 46.49,
+      "vnt": 5.166,
+      "proc": 5.79
+     },
+     "12": {
+      "id": 37816,
+      "kaina": 55.79,
+      "vnt": 4.649,
+      "proc": 15.23
+     }
+    }
+   },
+   {
+    "id": 34024,
+    "i": 25,
+    "parse": 1,
+    "reg": 5.49,
+    "seima": "dp800-real-dog-konservai-suaugusiems-sunims-su-jautiena-ir-versiena-800-g",
+    "termas": {
+     "6": 800,
+     "9": 801,
+     "12": 802
+    },
+    "pakai": {
+     "6": {
+      "id": 37817,
+      "kaina": 31.99,
+      "vnt": 5.332,
+      "proc": 2.71
+     },
+     "9": {
+      "id": 37818,
+      "kaina": 46.49,
+      "vnt": 5.166,
+      "proc": 5.79
+     },
+     "12": {
+      "id": 37819,
+      "kaina": 55.79,
+      "vnt": 4.649,
+      "proc": 15.23
+     }
+    }
+   },
+   {
+    "id": 34002,
+    "i": 26,
+    "parse": 1,
+    "reg": 3.89,
+    "seima": "dp285-farmina-nd-pumpkin-starter-konservai-suniukams-su-eriena-moliugu-ir-melynemis-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 37820,
+      "kaina": 45.29,
+      "vnt": 3.774,
+      "proc": 2.85
+     },
+     "18": {
+      "id": 37821,
+      "kaina": 65.89,
+      "vnt": 3.661,
+      "proc": 5.82
+     },
+     "24": {
+      "id": 37822,
+      "kaina": 85.89,
+      "vnt": 3.579,
+      "proc": 7.94
+     }
+    }
+   },
+   {
+    "id": 33646,
+    "i": 27,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp100-gemon-all-breeds-adult-konservuotas-pasaras-suaugusiems-sunims-su-zverienos-gabaleliais-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37823,
+      "kaina": 20.99,
+      "vnt": 0.875,
+      "proc": 1.46
+     },
+     "32": {
+      "id": 37824,
+      "kaina": 26.79,
+      "vnt": 0.837,
+      "proc": 5.73
+     }
+    }
+   },
+   {
+    "id": 33640,
+    "i": 28,
+    "parse": 1,
+    "reg": 3.29,
+    "seima": "dp1250-gemon-medium-adult-konservuotas-pasaras-su-vistienos-ir-kalakutienos-gabaliukais-1250g",
+    "termas": {
+     "9": 793,
+     "12": 794
+    },
+    "pakai": {
+     "9": {
+      "id": 37825,
+      "kaina": 28.69,
+      "vnt": 3.188,
+      "proc": 2.91
+     },
+     "12": {
+      "id": 37826,
+      "kaina": 37.19,
+      "vnt": 3.099,
+      "proc": 5.65
+     }
+    }
+   },
+   {
+    "id": 33572,
+    "i": 29,
+    "parse": 1,
+    "reg": 0.99,
+    "seima": "dp100-monge-fresh-pastetas-sunims-su-menkes-gabaleliais-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37827,
+      "kaina": 23.09,
+      "vnt": 0.962,
+      "proc": 2.57
+     },
+     "32": {
+      "id": 37828,
+      "kaina": 29.79,
+      "vnt": 0.931,
+      "proc": 5.78
+     }
+    }
+   },
+   {
+    "id": 33564,
+    "i": 30,
+    "parse": 1,
+    "reg": 0.99,
+    "seima": "dp100-monge-fresh-pastetas-sunims-su-erienos-gabaleliais100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37829,
+      "kaina": 23.09,
+      "vnt": 0.962,
+      "proc": 2.57
+     },
+     "32": {
+      "id": 37830,
+      "kaina": 29.79,
+      "vnt": 0.931,
+      "proc": 5.78
+     }
+    }
+   },
+   {
+    "id": 33860,
+    "i": 31,
+    "parse": 1,
+    "reg": 0.89,
+    "seima": "dp100-monge-grill-konservuotas-pasaras-jauniems-sunims-su-vistiena-ir-kalakutiena-100g",
+    "termas": {
+     "24": 730,
+     "32": 775
+    },
+    "pakai": {
+     "24": {
+      "id": 37831,
+      "kaina": 20.79,
+      "vnt": 0.866,
+      "proc": 2.39
+     },
+     "32": {
+      "id": 37832,
+      "kaina": 26.79,
+      "vnt": 0.837,
+      "proc": 5.73
+     }
+    }
+   },
+   {
+    "id": 34010,
+    "i": 32,
+    "parse": 1,
+    "reg": 2.79,
+    "seima": "dp240-real-dog-konservai-suaugusiems-sunims-su-jautiena-ir-arkliena-240-g",
+    "termas": {
+     "12": 795,
+     "18": 796,
+     "24": 797
+    },
+    "pakai": {
+     "12": {
+      "id": 37833,
+      "kaina": 32.49,
+      "vnt": 2.708,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 37834,
+      "kaina": 47.29,
+      "vnt": 2.627,
+      "proc": 5.72
+     },
+     "24": {
+      "id": 37835,
+      "kaina": 61.59,
+      "vnt": 2.566,
+      "proc": 7.94
+     }
+    }
+   },
+   {
+    "id": 34016,
+    "i": 33,
+    "parse": 1,
+    "reg": 5.49,
+    "seima": "dp800-real-dog-konservai-suaugusiems-sunims-su-jautiena-ir-triusiena-800-g",
+    "termas": {
+     "6": 800,
+     "9": 801,
+     "12": 802
+    },
+    "pakai": {
+     "6": {
+      "id": 37836,
+      "kaina": 31.99,
+      "vnt": 5.332,
+      "proc": 2.71
+     },
+     "9": {
+      "id": 37837,
+      "kaina": 46.49,
+      "vnt": 5.166,
+      "proc": 5.79
+     },
+     "12": {
+      "id": 37838,
+      "kaina": 60.59,
+      "vnt": 5.049,
+      "proc": 7.94
+     }
+    }
+   },
+   {
+    "id": 34022,
+    "i": 34,
+    "parse": 1,
+    "reg": 2.79,
+    "seima": "dp240-real-dog-konservai-suaugusiems-sunims-su-jautiena-ir-versiena-240-g",
+    "termas": {
+     "12": 795,
+     "18": 796,
+     "24": 797
+    },
+    "pakai": {
+     "12": {
+      "id": 37839,
+      "kaina": 32.49,
+      "vnt": 2.708,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 37840,
+      "kaina": 47.29,
+      "vnt": 2.627,
+      "proc": 5.72
+     },
+     "24": {
+      "id": 37841,
+      "kaina": 61.59,
+      "vnt": 2.566,
+      "proc": 7.94
+     }
+    }
+   }
+  ],
+  "hb": 200
+ }
+}
