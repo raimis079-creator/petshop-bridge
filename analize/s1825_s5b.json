@@ -1,0 +1,58 @@
+{
+ "1": {
+  "v": "S1825s5",
+  "shots": [
+   {
+    "n": "s1825k_18850",
+    "u": "https://petshop.lt/product/dolina-noteci-kitten-konservai-kaciukams-su-kalakutiena-185-g/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{document.querySelectorAll('a,button,h2,h3,summary,.accordion-title').forEach(e=>{if(/^\\s*Aprašymas\\s*$/i.test(e.textContent))e.click();});document.querySelectorAll('#tab-description,.woocommerce-Tabs-panel--description').forEach(e=>{e.style.display='block';});var s=[...document.querySelectorAll('strong')].find(e=>e.textContent.indexOf('gamintojo duomenys')>=0);var c=document.getElementById('cmplz-cookiebanner-container');if(c)c.remove();document.querySelectorAll('.cmplz-cookiebanner').forEach(e=>e.remove());if(s){s.scrollIntoView();window.scrollBy(0,-60);}return s?1:0})()"
+   },
+   {
+    "n": "s1825k_37508",
+    "u": "https://petshop.lt/product/32-vnt-gemon-kitten-konservuotas-pasaras-jauniems-kaciukams-su-vistiena-100g/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{document.querySelectorAll('a,button,h2,h3,summary,.accordion-title').forEach(e=>{if(/^\\s*Aprašymas\\s*$/i.test(e.textContent))e.click();});document.querySelectorAll('#tab-description,.woocommerce-Tabs-panel--description').forEach(e=>{e.style.display='block';});var s=[...document.querySelectorAll('strong')].find(e=>e.textContent.indexOf('gamintojo duomenys')>=0);var c=document.getElementById('cmplz-cookiebanner-container');if(c)c.remove();document.querySelectorAll('.cmplz-cookiebanner').forEach(e=>e.remove());if(s){s.scrollIntoView();window.scrollBy(0,-60);}return s?1:0})()"
+   },
+   {
+    "n": "s1825k_37983",
+    "u": "https://petshop.lt/product/12-vnt-farmina-nd-pumpkin-konservai-mazu-veisliu-suniukams-su-eriena-moliugu-ir-melynemis-140-g/",
+    "w": 390,
+    "h": 844,
+    "eval": "(()=>{document.querySelectorAll('a,button,h2,h3,summary,.accordion-title').forEach(e=>{if(/^\\s*Aprašymas\\s*$/i.test(e.textContent))e.click();});document.querySelectorAll('#tab-description,.woocommerce-Tabs-panel--description').forEach(e=>{e.style.display='block';});var s=[...document.querySelectorAll('strong')].find(e=>e.textContent.indexOf('gamintojo duomenys')>=0);var c=document.getElementById('cmplz-cookiebanner-container');if(c)c.remove();document.querySelectorAll('.cmplz-cookiebanner').forEach(e=>e.remove());if(s){s.scrollIntoView();window.scrollBy(0,-60);}return s?1:0})()"
+   }
+  ]
+ },
+ "v": "dep-141243",
+ "kurimas": 200,
+ "sid": 7918,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1825k_18850": {
+   "status": 200,
+   "url": "https://petshop.lt/product/dolina-noteci-kitten-konservai-kaciukams-su-kalakutiena-185-g/",
+   "title": "Dolina Noteci Kitten konservai kačiukams su kalakutiena, 185 g - Petshop.lt",
+   "errors": [],
+   "eval": 1
+  },
+  "s1825k_37508": {
+   "status": 200,
+   "url": "https://petshop.lt/product/32-vnt-gemon-kitten-konservuotas-pasaras-jauniems-kaciukams-su-vistiena-100g/",
+   "title": "32 vnt. Gemon Kitten konservuotas pašaras jauniems kačiukams su vištiena 100g - Petshop.lt",
+   "errors": [],
+   "eval": 1
+  },
+  "s1825k_37983": {
+   "status": 200,
+   "url": "https://petshop.lt/product/12-vnt-farmina-nd-pumpkin-konservai-mazu-veisliu-suniukams-su-eriena-moliugu-ir-melynemis-140-g/",
+   "title": "12 vnt. Farmina N&D Pumpkin konservai mažų veislių šuniukams su ėriena, moliūgu ir mėlynėmis 140 g - Petshop.lt",
+   "errors": [],
+   "eval": 1
+  }
+ }
+}
