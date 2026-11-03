@@ -1,0 +1,127 @@
+{
+ "1": {
+  "v": "S1824g3",
+  "f": {
+   "/mu-plugins/petshop-av-dropship.php": {
+    "161": "*   `pack_numbers` yra MASYVAS → daugiapakuotės aptarnaujamos tuo pačiu keliu.",
+    "519": "/** Kiek lipdukų šiam užsakymui (pack_numbers ilgis). */",
+    "522": "if ( is_array( $d ) && ! empty( $d['pack_numbers'] ) ) { return count( (array) $d['pack_numbers'] ); }",
+    "1258": "if ( empty( $d['pack_numbers'] ) ) { return null; }",
+    "1268": "'body'    => [ 'user' => $u, 'pass' => $p, 'pack_no' => array_values( (array) $d['pack_numbers'] ), 'format' => $f ], // H262: masyvu",
+    "1292": "if ( ! empty( $d['manifest'] ) && ! empty( $d['pack_numbers'] ) ) { $kodai[] = (string) $d['manifest']; }"
+   },
+   "/mu-plugins/petshop-darbalaukis.php": {
+    "1156": "if ( ! is_array( $d ) || 'error' !== ( $d['status'] ?? '' ) || empty( $d['error_message'] ) || ! empty( $d['pack_numbers'] ) ) { return null; }"
+   },
+   "/mu-plugins/petshop-desk.php": {
+    "5": "* `venipak_shipping_order_data.pack_numbers` (status=error tik pirmam grupės užsakymui) → registras, kliento paskyra ir laiškai",
+    "7": "* po nesėkmės kviečia `vp_nepavyko_isvalyti()`: numeriai perkeliami į `_ps_venipak_nepavyko` (žurnalas), `pack_numbers` = [];",
+    "571": "$vd['status'] = ''; $vd['pack_numbers'] = array();",
+    "584": "foreach ( (array) ( $vd['pack_numbers'] ?? array() ) as $pn ) { $visi[] = $pn; }",
+    "589": "$vd['pack_numbers'] = array_values( array_unique( $visi ) );",
+    "614": "if ( ! is_array( $vd ) || 'sent' === ( $vd['status'] ?? '' ) || empty( $vd['pack_numbers'] ) ) { return null; }",
+    "615": "$nr   = array_values( array_map( 'strval', (array) $vd['pack_numbers'] ) );",
+    "618": "$vd['pack_numbers'] = array();",
+    "780": "$vd['status'] = ''; $vd['pack_numbers'] = array();",
+    "1204": "if ( is_array( $d ) && ! empty( $d['pack_numbers'] ) ) {",
+    "1205": "$p = (array) $d['pack_numbers'];"
+   },
+   "/mu-plugins/petshop-fakt-siuntos.php": {
+    "38": "* Venipak `pack_numbers` rasomi visam uzsakymui, is ju sandelio isvesti",
+    "54": "* `paketu_sk` rodo, kiek numeriu buvo TOJE PACIOJE registracijoje (konteksto",
+    "225": "paketu_sk SMALLINT UNSIGNED NOT NULL DEFAULT 1,",
+    "235": "svoris_deklaruotas_g INT UNSIGNED NULL DEFAULT NULL,",
+    "580": "'paketu_sk'    => $paketu,",
+    "679": "'paketu_sk'            => isset( $a['paketu_sk'] ) ? max( 1, (int) $a['paketu_sk'] ) : 1,",
+    "685": "'svoris_deklaruotas_g' => $svoris,",
+    "777": "'paketu_sk'      => 1,",
+    "983": "<tr><th>… nuo svorio (g)</th><td><input type=\"number\" name=\"uz_kg_nuo_g\" value=\"\" min=\"0\" step=\"1\" placeholder=\"pvz. 30000\"> <span class=\"description\">nuo kada uz kg pradedama skaiciuoti</span></td></tr>"
+   },
+   "/mu-plugins/petshop-siuntu-laiskai.php": {
+    "64": "if ( empty( $d['pack_numbers'] ) || ! is_array( $d['pack_numbers'] ) ) { return false; }",
+    "71": "'numeriai'  => array_map( 'sanitize_text_field', $d['pack_numbers'] ),",
+    "76": "mb_strtoupper( $sandelis ), implode( ', ', $d['pack_numbers'] ) ), false, true );",
+    "81": "do_action( 'petshop_siunta_sukurta', (int) $order_id, sanitize_key( $sandelis ), 'venipak', (array) $d['pack_numbers'] );",
+    "107": "if ( ! empty( $d['pack_numbers'] ) ) {",
+    "112": "'numeriai' => (array) $d['pack_numbers'],"
+   },
+   "/plugins/petshop-core/includes/class-shipments.php": {
+    "5": "* PROBLEMA: Venipak plugin'as `venipak_shipping_order_data['pack_numbers']`",
+    "15": "* NETURIME (Venipak raso pack_numbers visam uzsakymui), o „inferred\" reiksmes",
+    "132": "$packs = ( is_array( $d ) && ! empty( $d['pack_numbers'] ) && is_array( $d['pack_numbers'] ) )",
+    "133": "? $d['pack_numbers'] : array();"
+   },
+   "/plugins/wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-dispatch.php": {
+    "224": "$venipak_shipping_order_data['pack_numbers'] = [];",
+    "248": "$pack_numbers = $result['data']['pack_numbers'];",
+    "249": "$pack_numbers_string = implode(', ', $pack_numbers);",
+    "250": "$content = '<div class=\"venipak-shipping-pack\" style=\"display: flex; gap: 5px;\"><a style=\"font-size: 20px; display: flex; align-items: center; gap: 5px;\" class=\"button button-primary\" title=\"' . $pack_numbers_string . '\" target=\"_blank\" href=\"' . admin_url('ad",
+    "309": "'pack_numbers' => array(),",
+    "348": "$this->settings->reserve_pack_numbers( $offset );",
+    "647": "$reserved_start = $this->settings->reserve_pack_numbers($needed_packs);",
+    "651": "$pack_numbers = [];",
+    "687": "$pack_numbers[] = $pack_nr;",
+    "708": "$pack_numbers[] = $pack_nr;",
+    "713": "$pack_count = $venipak_pickup_point ? 1 : ceil(sizeof($products_without_shipments) / $this->shopup_venipak_shipping_field_maxpackproducts);",
+    "714": "for ($i = 0; $i < $pack_count; $i++) {",
+    "741": "$pack_numbers[] = $pack_nr;",
+    "748": "$venipak_shipping_order_data['pack_numbers'] = $pack_numbers;"
+   },
+   "/plugins/wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-label.php": {
+    "102": "foreach ( $this->get_order_pack_numbers( $post_id ) as $pack_number ) {",
+    "137": "$pack_numbers = $this->get_order_pack_numbers( $order_id );",
+    "138": "if ( ! $pack_numbers ) {",
+    "147": "'pack_no' => $pack_numbers,",
+    "193": "private function get_order_pack_numbers( $order_id ) {",
+    "200": "if ( ! is_array( $venipak_shipping_order_data ) || empty( $venipak_shipping_order_data['pack_numbers'] ) || ! is_array( $venipak_shipping_order_data['pack_numbers'] ) ) {",
+    "204": "return $venipak_shipping_order_data['pack_numbers'];"
+   },
+   "/plugins/wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-order-edit.php": {
+    "116": "$pack_count = sizeof($pack_collection);",
+    "137": "<p><strong><?php echo __( 'Packages count', 'woocommerce-shopup-venipak-shipping' ); ?></strong><?php echo $pack_count . ' ' . __( 'vnt.', 'woocommerce-shopup-venipak-shipping' )?></p>",
+    "165": "<p><?php echo __( 'Packages count', 'woocommerce-shopup-venipak-shipping' ); ?>: <button onclick=\"addPackage();\" type=\"button\"><?php echo __( 'Add package', 'woocommerce-shopup-venipak-shipping' ); ?></button></p>",
+    "166": "<table id=\"packages-table\">",
+    "175": "<?php for ($i = 0; $i < $pack_count; $i++) { ?>",
+    "236": "jQuery('#packages-table tr:last').after('<tr class=\"venipak-pack\"><td><input class=\"venipak-pack-width\" style=\"width: 70px;\" type=\"text\" name=\"width[]\" /></td><td><input class=\"venipak-pack-height\" style=\"width: 70px;\" type=\"text\" name=\"height[]\" /></td><td><i",
+    "287": "return $order_data['pack_numbers'] ? implode('<br/>', $order_data['pack_numbers']) : '';",
+    "358": "if (is_array($order_meta) && isset($order_meta['pack_numbers']) && is_array($order_meta['pack_numbers'])) {",
+    "365": "if (is_array($order_meta) && isset($order_meta['pack_numbers']) && is_array($order_meta['pack_numbers'])) {",
+    "366": "$pack_numbers = $order_meta['pack_numbers'];",
+    "368": "if (!empty($pack_numbers[0]) && isset($a['pack_no']) && !empty($a['pack_no']) ) {",
+    "370": "$order_meta['pack_numbers'][0] = $a['pack_no'];",
+    "415": "if ($order_data && !empty($order_data['pack_numbers'][0])) {",
+    "416": "return $order_data['pack_numbers'][0];",
+    "476": "$pack_count = ceil(sizeof($products_without_shipments) / $this->shopup_venipak_shipping_field_maxpackproducts);",
+    "479": "for ($i = 0; $i < $pack_count; $i++) {"
+   },
+   "/plugins/wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-orders-list.php": {
+    "125": "$pack_numbers = $venipak_shipping_order_data['pack_numbers'];",
+    "135": "$tracking_data =  isset($pack_numbers) ? $this->get_order_tracking_data($pack_numbers, $order) : '';",
+    "137": "$pack_numbers_string = isset($pack_numbers) ? implode(', ', $pack_numbers) : '';",
+    "139": "if ($status === 'sent' && isset($pack_numbers)) {",
+    "140": "$content .= '<div>' . $pack_numbers_string . '</div>';",
+    "142": "<a class=\"button button-primary btn-sm\" style=\"font-size: 20px; display: flex; align-items: center; gap: 5px;\" title=\"' . esc_attr($pack_numbers_string) . '\" target=\"_blank\" href=\"' . esc_url(admin_url('admin-ajax.php') . '?action=woocommerce_shopup_venipak_sh",
+    "153": "$content .= '<div>' . $pack_numbers_string . '</div>';"
+   },
+   "/plugins/wc-venipak-shipping/admin/class-woocommerce-shopup-venipak-shipping-admin-settings.php": {
+    "108": "public function reserve_pack_numbers( $count ) {"
+   },
+   "/plugins/wc-venipak-shipping/public/class-woocommerce-shopup-venipak-shipping-public-email.php": {
+    "93": "if ($venipak_shipping_order_data && !empty($venipak_shipping_order_data['pack_numbers'][0])) {",
+    "94": "$pack_numbers = $venipak_shipping_order_data['pack_numbers'];",
+    "95": "echo '<p>' . __( 'Your tracking order code ', 'woocommerce-shopup-venipak-shipping' ) . ' <a href=\"https://venipak.' . $domain . '/tracking/track/' . $pack_numbers[0] . '/\">' . $pack_numbers[0] . '</p>';"
+   },
+   "/plugins/wc-venipak-shipping/public/class-woocommerce-shopup-venipak-shipping-public.php": {
+    "177": "if ( $venipak_shipping_order_data && isset( $venipak_shipping_order_data['pack_numbers'][0] ) ) {",
+    "178": "$pack_number = $venipak_shipping_order_data['pack_numbers'][0];"
+   }
+  }
+ },
+ "v": "dep-083620",
+ "kurimas": 200,
+ "sid": 7844,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
