@@ -1,0 +1,1538 @@
+{
+ "3": {
+  "v": "S1824q",
+  "faze": "3",
+  "laikas": "2026-11-03 09:51:56",
+  "pakai": 144,
+  "blogi": []
+ },
+ "v": "dep-074553",
+ "kurimas": 200,
+ "sid": 7829,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R1-26": {
+  "v": "S1824q",
+  "faze": "R1-26",
+  "laikas": "2026-11-03 09:46:57",
+  "f": [
+   {
+    "id": 33320,
+    "i": 1,
+    "parse": 1,
+    "reg": 2.59,
+    "seima": "dp140-farmina-nd-prime-konservai-suaugusiems-mazu-veisliu-sunims-su-serniena-ir-obuoliais-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 37980,
+      "kaina": 30.19,
+      "vnt": 2.516,
+      "proc": 2.68
+     },
+     "18": {
+      "id": 37981,
+      "kaina": 43.89,
+      "vnt": 2.438,
+      "proc": 5.73
+     },
+     "24": {
+      "id": 37982,
+      "kaina": 52.59,
+      "vnt": 2.191,
+      "proc": 15.3
+     }
+    }
+   },
+   {
+    "id": 33324,
+    "i": 2,
+    "parse": 1,
+    "reg": 2.79,
+    "seima": "dp140-farmina-nd-pumpkin-konservai-mazu-veisliu-suniukams-su-eriena-moliugu-ir-melynemis-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 37983,
+      "kaina": 32.49,
+      "vnt": 2.708,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 37984,
+      "kaina": 47.29,
+      "vnt": 2.627,
+      "proc": 5.72
+     },
+     "24": {
+      "id": 37985,
+      "kaina": 56.69,
+      "vnt": 2.362,
+      "proc": 15.25
+     }
+    }
+   },
+   {
+    "id": 33326,
+    "i": 3,
+    "parse": 1,
+    "reg": 2.59,
+    "seima": "dp140-farmina-nd-pumpkin-konservai-suaugusiems-mazu-veisliu-sunims-su-antiena-ir-moliugu-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 37986,
+      "kaina": 30.19,
+      "vnt": 2.516,
+      "proc": 2.68
+     },
+     "18": {
+      "id": 37987,
+      "kaina": 43.89,
+      "vnt": 2.438,
+      "proc": 5.73
+     },
+     "24": {
+      "id": 37988,
+      "kaina": 52.59,
+      "vnt": 2.191,
+      "proc": 15.3
+     }
+    }
+   },
+   {
+    "id": 33330,
+    "i": 4,
+    "parse": 1,
+    "reg": 2.59,
+    "seima": "dp140-farmina-nd-pumpkin-konservai-suaugusiems-mazu-veisliu-sunims-su-elniena-ir-moliugu-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 37989,
+      "kaina": 30.19,
+      "vnt": 2.516,
+      "proc": 2.68
+     },
+     "18": {
+      "id": 37990,
+      "kaina": 43.89,
+      "vnt": 2.438,
+      "proc": 5.73
+     },
+     "24": {
+      "id": 37991,
+      "kaina": 52.59,
+      "vnt": 2.191,
+      "proc": 15.3
+     }
+    }
+   },
+   {
+    "id": 33311,
+    "i": 5,
+    "parse": 1,
+    "reg": 3.69,
+    "seima": "dp285-farmina-nd-ocean-konservai-suaugusiems-sunims-su-menke-ir-kalmarais-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 37992,
+      "kaina": 42.99,
+      "vnt": 3.583,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 37993,
+      "kaina": 62.49,
+      "vnt": 3.472,
+      "proc": 5.83
+     },
+     "24": {
+      "id": 37994,
+      "kaina": 74.99,
+      "vnt": 3.125,
+      "proc": 15.26
+     }
+    }
+   },
+   {
+    "id": 33317,
+    "i": 6,
+    "parse": 1,
+    "reg": 3.69,
+    "seima": "dp285-farmina-nd-ocean-konservai-suaugusiems-sunims-su-upetakiu-ir-lasisa-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 37995,
+      "kaina": 42.99,
+      "vnt": 3.583,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 37996,
+      "kaina": 62.49,
+      "vnt": 3.472,
+      "proc": 5.83
+     },
+     "24": {
+      "id": 37997,
+      "kaina": 74.99,
+      "vnt": 3.125,
+      "proc": 15.26
+     }
+    }
+   },
+   {
+    "id": 33333,
+    "i": 7,
+    "parse": 1,
+    "reg": 3.69,
+    "seima": "dp285-farmina-nd-pumpkin-konservai-suaugusiems-sunims-su-serniena-moliugu-ir-obuoliais-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 37998,
+      "kaina": 42.99,
+      "vnt": 3.583,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 37999,
+      "kaina": 62.49,
+      "vnt": 3.472,
+      "proc": 5.83
+     },
+     "24": {
+      "id": 38000,
+      "kaina": 74.99,
+      "vnt": 3.125,
+      "proc": 15.26
+     }
+    }
+   },
+   {
+    "id": 33323,
+    "i": 8,
+    "parse": 1,
+    "reg": 3.69,
+    "seima": "dp285-farmina-nd-pumpkin-konservai-suaugusiems-sunims-su-vistiena-moliugu-ir-granatais-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 38001,
+      "kaina": 42.99,
+      "vnt": 3.583,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 38002,
+      "kaina": 62.49,
+      "vnt": 3.472,
+      "proc": 5.83
+     },
+     "24": {
+      "id": 38003,
+      "kaina": 74.99,
+      "vnt": 3.125,
+      "proc": 15.26
+     }
+    }
+   },
+   {
+    "id": 33327,
+    "i": 9,
+    "parse": 1,
+    "reg": 3.69,
+    "seima": "dp285-farmina-nd-pumpkin-konservai-suaugusiems-sunims-su-antiena-ir-moliugu-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 38004,
+      "kaina": 42.99,
+      "vnt": 3.583,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 38005,
+      "kaina": 62.49,
+      "vnt": 3.472,
+      "proc": 5.83
+     },
+     "24": {
+      "id": 38006,
+      "kaina": 74.99,
+      "vnt": 3.125,
+      "proc": 15.26
+     }
+    }
+   },
+   {
+    "id": 33329,
+    "i": 10,
+    "parse": 1,
+    "reg": 3.69,
+    "seima": "dp285-farmina-nd-pumpkin-konservai-suaugusiems-sunims-su-putpeliena-ir-moliugu-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 38007,
+      "kaina": 42.99,
+      "vnt": 3.583,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 38008,
+      "kaina": 62.49,
+      "vnt": 3.472,
+      "proc": 5.83
+     },
+     "24": {
+      "id": 38009,
+      "kaina": 74.99,
+      "vnt": 3.125,
+      "proc": 15.26
+     }
+    }
+   },
+   {
+    "id": 33335,
+    "i": 11,
+    "parse": 1,
+    "reg": 3.79,
+    "seima": "dp285-farmina-nd-quinoa-digestion-konservai-suaugusiems-sunims-su-eriena-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 38010,
+      "kaina": 44.09,
+      "vnt": 3.674,
+      "proc": 2.93
+     },
+     "18": {
+      "id": 38011,
+      "kaina": 64.19,
+      "vnt": 3.566,
+      "proc": 5.82
+     },
+     "24": {
+      "id": 38012,
+      "kaina": 76.99,
+      "vnt": 3.208,
+      "proc": 15.3
+     }
+    }
+   },
+   {
+    "id": 33343,
+    "i": 12,
+    "parse": 1,
+    "reg": 3.79,
+    "seima": "dp285-farmina-nd-quinoa-skin-coat-konservai-suaugusiems-sunims-su-elniena-ir-kokosu-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 38013,
+      "kaina": 44.09,
+      "vnt": 3.674,
+      "proc": 2.93
+     },
+     "18": {
+      "id": 38014,
+      "kaina": 64.19,
+      "vnt": 3.566,
+      "proc": 5.82
+     },
+     "24": {
+      "id": 38015,
+      "kaina": 76.99,
+      "vnt": 3.208,
+      "proc": 15.3
+     }
+    }
+   },
+   {
+    "id": 33408,
+    "i": 13,
+    "parse": 1,
+    "reg": 5.19,
+    "seima": "dp300-farmina-vet-life-hypoallergenic-konservai-sunims-su-antiena-ir-bulvemis-300-g",
+    "termas": {
+     "12": 790,
+     "18": 791,
+     "24": 792
+    },
+    "pakai": {
+     "12": {
+      "id": 38016,
+      "kaina": 60.39,
+      "vnt": 5.033,
+      "proc": 2.94
+     },
+     "18": {
+      "id": 38017,
+      "kaina": 87.89,
+      "vnt": 4.883,
+      "proc": 5.86
+     },
+     "24": {
+      "id": 38018,
+      "kaina": 105.49,
+      "vnt": 4.395,
+      "proc": 15.27
+     }
+    }
+   },
+   {
+    "id": 33307,
+    "i": 14,
+    "parse": 1,
+    "reg": 2.59,
+    "seima": "dp140-farmina-nd-ocean-konservai-mazu-veisliu-suniukams-su-menke-ir-moliugu-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 38019,
+      "kaina": 30.19,
+      "vnt": 2.516,
+      "proc": 2.68
+     },
+     "18": {
+      "id": 38020,
+      "kaina": 43.89,
+      "vnt": 2.438,
+      "proc": 5.73
+     },
+     "24": {
+      "id": 38021,
+      "kaina": 52.59,
+      "vnt": 2.191,
+      "proc": 15.3
+     }
+    }
+   },
+   {
+    "id": 33321,
+    "i": 15,
+    "parse": 1,
+    "reg": 3.69,
+    "seima": "dp285-farmina-nd-pumpkin-starter-konservai-suniukams-su-vistiena-moliugu-ir-granatais-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 38022,
+      "kaina": 42.99,
+      "vnt": 3.583,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 38023,
+      "kaina": 62.49,
+      "vnt": 3.472,
+      "proc": 5.83
+     },
+     "24": {
+      "id": 38024,
+      "kaina": 74.99,
+      "vnt": 3.125,
+      "proc": 15.26
+     }
+    }
+   },
+   {
+    "id": 33415,
+    "i": 16,
+    "parse": 1,
+    "reg": 4.79,
+    "seima": "dp300-farmina-vet-life-obesity-konservai-sunims-300-g",
+    "termas": {
+     "12": 790,
+     "18": 791,
+     "24": 792
+    },
+    "pakai": {
+     "12": {
+      "id": 38025,
+      "kaina": 55.79,
+      "vnt": 4.649,
+      "proc": 2.84
+     },
+     "18": {
+      "id": 38026,
+      "kaina": 81.09,
+      "vnt": 4.505,
+      "proc": 5.89
+     },
+     "24": {
+      "id": 38027,
+      "kaina": 97.39,
+      "vnt": 4.058,
+      "proc": 15.24
+     }
+    }
+   },
+   {
+    "id": 33339,
+    "i": 17,
+    "parse": 1,
+    "reg": 3.79,
+    "seima": "dp285-farmina-nd-quinoa-neutered-konservai-sterilizuotiems-suaugusiems-sunims-su-kiauliena-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 38028,
+      "kaina": 44.09,
+      "vnt": 3.674,
+      "proc": 2.93
+     },
+     "18": {
+      "id": 38029,
+      "kaina": 64.19,
+      "vnt": 3.566,
+      "proc": 5.82
+     },
+     "24": {
+      "id": 38030,
+      "kaina": 76.99,
+      "vnt": 3.208,
+      "proc": 15.3
+     }
+    }
+   },
+   {
+    "id": 33349,
+    "i": 18,
+    "parse": 1,
+    "reg": 2.59,
+    "seima": "dp140-farmina-nd-natural-konservai-katems-su-tunu-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 38031,
+      "kaina": 30.19,
+      "vnt": 2.516,
+      "proc": 2.68
+     },
+     "18": {
+      "id": 38032,
+      "kaina": 43.89,
+      "vnt": 2.438,
+      "proc": 5.73
+     },
+     "24": {
+      "id": 38033,
+      "kaina": 52.59,
+      "vnt": 2.191,
+      "proc": 15.3
+     }
+    }
+   },
+   {
+    "id": 33352,
+    "i": 19,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp70-farmina-nd-ocean-konservai-katems-su-tunu-kalmarais-ir-krevetemis-70-g",
+    "termas": {
+     "18": 819,
+     "24": 807,
+     "36": 806
+    },
+    "pakai": {
+     "18": {
+      "id": 38034,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 38035,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 38036,
+      "kaina": 51.49,
+      "vnt": 1.43,
+      "proc": 15.27
+     }
+    }
+   },
+   {
+    "id": 33362,
+    "i": 20,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp70-farmina-nd-pumpkin-konservai-katems-su-serniena-moliugu-ir-obuoliais-70-g",
+    "termas": {
+     "18": 819,
+     "24": 807,
+     "36": 806
+    },
+    "pakai": {
+     "18": {
+      "id": 38037,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 38038,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 38039,
+      "kaina": 51.49,
+      "vnt": 1.43,
+      "proc": 15.27
+     }
+    }
+   },
+   {
+    "id": 33358,
+    "i": 21,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp70-farmina-nd-pumpkin-konservai-katems-su-vistiena-moliugu-ir-granatais-70-g",
+    "termas": {
+     "18": 819,
+     "24": 807,
+     "36": 806
+    },
+    "pakai": {
+     "18": {
+      "id": 38040,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 38041,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 38042,
+      "kaina": 51.49,
+      "vnt": 1.43,
+      "proc": 15.27
+     }
+    }
+   },
+   {
+    "id": 33359,
+    "i": 22,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp70-farmina-nd-pumpkin-konservai-katems-su-antiena-ir-moliugu-70-g",
+    "termas": {
+     "18": 819,
+     "24": 807,
+     "36": 806
+    },
+    "pakai": {
+     "18": {
+      "id": 38043,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 38044,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 38045,
+      "kaina": 51.49,
+      "vnt": 1.43,
+      "proc": 15.27
+     }
+    }
+   }
+  ],
+  "nebaigta_nuo": 23,
+  "hb": 200
+ },
+ "R27-52": {
+  "v": "S1824q",
+  "faze": "R27-52",
+  "laikas": "2026-11-03 09:49:26",
+  "f": [
+   {
+    "id": 33353,
+    "i": 27,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp70-farmina-nd-ocean-konservai-katems-su-tunu-ir-krevetemis-70-g",
+    "termas": {
+     "18": 819,
+     "24": 807,
+     "36": 806
+    },
+    "pakai": {
+     "18": {
+      "id": 38046,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 38047,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 38048,
+      "kaina": 51.49,
+      "vnt": 1.43,
+      "proc": 15.27
+     }
+    }
+   },
+   {
+    "id": 33348,
+    "i": 28,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp70-farmina-nd-natural-konservai-katems-su-tunu-70-g",
+    "termas": {
+     "18": 819,
+     "24": 807,
+     "36": 806
+    },
+    "pakai": {
+     "18": {
+      "id": 38049,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 38050,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 38051,
+      "kaina": 51.49,
+      "vnt": 1.43,
+      "proc": 15.27
+     }
+    }
+   },
+   {
+    "id": 33344,
+    "i": 29,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp70-farmina-nd-natural-konservai-katems-su-vistiena-70-g",
+    "termas": {
+     "18": 819,
+     "24": 807,
+     "36": 806
+    },
+    "pakai": {
+     "18": {
+      "id": 38052,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 38053,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 38054,
+      "kaina": 51.49,
+      "vnt": 1.43,
+      "proc": 15.27
+     }
+    }
+   },
+   {
+    "id": 33346,
+    "i": 30,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp70-farmina-nd-natural-konservai-katems-su-tunu-ir-vistiena-70-g",
+    "termas": {
+     "18": 819,
+     "24": 807,
+     "36": 806
+    },
+    "pakai": {
+     "18": {
+      "id": 38055,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 38056,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 38057,
+      "kaina": 51.49,
+      "vnt": 1.43,
+      "proc": 15.27
+     }
+    }
+   },
+   {
+    "id": 33356,
+    "i": 31,
+    "parse": 1,
+    "reg": 1.79,
+    "seima": "dp70-farmina-nd-prime-konservai-katems-su-eriena-ir-melynemis-70-g",
+    "termas": {
+     "18": 819,
+     "24": 807,
+     "36": 806
+    },
+    "pakai": {
+     "18": {
+      "id": 38058,
+      "kaina": 31.29,
+      "vnt": 1.738,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 38059,
+      "kaina": 40.39,
+      "vnt": 1.683,
+      "proc": 5.85
+     },
+     "36": {
+      "id": 38060,
+      "kaina": 54.59,
+      "vnt": 1.516,
+      "proc": 15.2
+     }
+    }
+   },
+   {
+    "id": 33360,
+    "i": 32,
+    "parse": 1,
+    "reg": 1.79,
+    "seima": "dp70-farmina-nd-pumpkin-konservai-katems-su-eriena-moliugu-ir-melynemis-70-g",
+    "termas": {
+     "18": 819,
+     "24": 807,
+     "36": 806
+    },
+    "pakai": {
+     "18": {
+      "id": 38061,
+      "kaina": 31.29,
+      "vnt": 1.738,
+      "proc": 2.71
+     },
+     "24": {
+      "id": 38062,
+      "kaina": 40.39,
+      "vnt": 1.683,
+      "proc": 5.85
+     },
+     "36": {
+      "id": 38063,
+      "kaina": 54.59,
+      "vnt": 1.516,
+      "proc": 15.2
+     }
+    }
+   },
+   {
+    "id": 33350,
+    "i": 33,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp70-farmina-nd-ocean-konservai-katems-su-tunu-menke-krevetemis-ir-moliugu-70-g",
+    "termas": {
+     "18": 819,
+     "24": 807,
+     "36": 806
+    },
+    "pakai": {
+     "18": {
+      "id": 38064,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 38065,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 38066,
+      "kaina": 55.99,
+      "vnt": 1.555,
+      "proc": 7.88
+     }
+    }
+   },
+   {
+    "id": 33354,
+    "i": 34,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp70-farmina-nd-ocean-konservai-katems-su-tunu-ir-lasisa-70-g",
+    "termas": {
+     "18": 819,
+     "24": 807,
+     "36": 806
+    },
+    "pakai": {
+     "18": {
+      "id": 38067,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 38068,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 38069,
+      "kaina": 55.99,
+      "vnt": 1.555,
+      "proc": 7.88
+     }
+    }
+   },
+   {
+    "id": 33357,
+    "i": 35,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp70-farmina-nd-prime-konservai-katems-su-serniena-ir-obuoliais-70-g",
+    "termas": {
+     "18": 819,
+     "24": 807,
+     "36": 806
+    },
+    "pakai": {
+     "18": {
+      "id": 38070,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 38071,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 38072,
+      "kaina": 55.99,
+      "vnt": 1.555,
+      "proc": 7.88
+     }
+    }
+   },
+   {
+    "id": 33361,
+    "i": 36,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp70-farmina-nd-pumpkin-konservai-katems-su-putpeliena-ir-moliugu-70-g",
+    "termas": {
+     "18": 819,
+     "24": 807,
+     "36": 806
+    },
+    "pakai": {
+     "18": {
+      "id": 38073,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 38074,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 38075,
+      "kaina": 55.99,
+      "vnt": 1.555,
+      "proc": 7.88
+     }
+    }
+   },
+   {
+    "id": 33363,
+    "i": 37,
+    "parse": 1,
+    "reg": 1.69,
+    "seima": "dp80-farmina-nd-quinoa-digestion-konservai-katems-su-eriena-80-g",
+    "termas": {
+     "18": 783,
+     "24": 784,
+     "36": 785
+    },
+    "pakai": {
+     "18": {
+      "id": 38076,
+      "kaina": 29.49,
+      "vnt": 1.638,
+      "proc": 2.86
+     },
+     "24": {
+      "id": 38077,
+      "kaina": 38.19,
+      "vnt": 1.591,
+      "proc": 5.7
+     },
+     "36": {
+      "id": 38078,
+      "kaina": 55.99,
+      "vnt": 1.555,
+      "proc": 7.88
+     }
+    }
+   },
+   {
+    "id": 33308,
+    "i": 38,
+    "parse": 1,
+    "reg": 2.59,
+    "seima": "dp140-farmina-nd-ocean-konservai-suaugusiems-mazu-veisliu-sunims-su-menke-ir-moliugu-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 38079,
+      "kaina": 30.19,
+      "vnt": 2.516,
+      "proc": 2.68
+     },
+     "18": {
+      "id": 38080,
+      "kaina": 43.89,
+      "vnt": 2.438,
+      "proc": 5.73
+     },
+     "24": {
+      "id": 38081,
+      "kaina": 57.19,
+      "vnt": 2.383,
+      "proc": 7.9
+     }
+    }
+   },
+   {
+    "id": 33312,
+    "i": 39,
+    "parse": 1,
+    "reg": 2.59,
+    "seima": "dp140-farmina-nd-ocean-konservai-suaugusiems-mazu-veisliu-sunims-su-silke-ir-krevetemis-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 38082,
+      "kaina": 30.19,
+      "vnt": 2.516,
+      "proc": 2.68
+     },
+     "18": {
+      "id": 38083,
+      "kaina": 43.89,
+      "vnt": 2.438,
+      "proc": 5.73
+     },
+     "24": {
+      "id": 38084,
+      "kaina": 57.19,
+      "vnt": 2.383,
+      "proc": 7.9
+     }
+    }
+   },
+   {
+    "id": 33316,
+    "i": 40,
+    "parse": 1,
+    "reg": 2.59,
+    "seima": "dp140-farmina-nd-ocean-konservai-suaugusiems-mazu-veisliu-sunims-su-upetakiu-ir-lasisa-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 38085,
+      "kaina": 30.19,
+      "vnt": 2.516,
+      "proc": 2.68
+     },
+     "18": {
+      "id": 38086,
+      "kaina": 43.89,
+      "vnt": 2.438,
+      "proc": 5.73
+     },
+     "24": {
+      "id": 38087,
+      "kaina": 57.19,
+      "vnt": 2.383,
+      "proc": 7.9
+     }
+    }
+   },
+   {
+    "id": 33318,
+    "i": 41,
+    "parse": 1,
+    "reg": 2.59,
+    "seima": "dp140-farmina-nd-prime-konservai-suaugusiems-mazu-veisliu-sunims-su-vistiena-ir-granatais-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 38088,
+      "kaina": 30.19,
+      "vnt": 2.516,
+      "proc": 2.68
+     },
+     "18": {
+      "id": 38089,
+      "kaina": 43.89,
+      "vnt": 2.438,
+      "proc": 5.73
+     },
+     "24": {
+      "id": 38090,
+      "kaina": 57.19,
+      "vnt": 2.383,
+      "proc": 7.9
+     }
+    }
+   },
+   {
+    "id": 33319,
+    "i": 42,
+    "parse": 1,
+    "reg": 2.79,
+    "seima": "dp140-farmina-nd-prime-konservai-suaugusiems-mazu-veisliu-sunims-su-eriena-ir-melynemis-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 38091,
+      "kaina": 32.49,
+      "vnt": 2.708,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 38092,
+      "kaina": 47.29,
+      "vnt": 2.627,
+      "proc": 5.72
+     },
+     "24": {
+      "id": 38093,
+      "kaina": 61.59,
+      "vnt": 2.566,
+      "proc": 7.94
+     }
+    }
+   },
+   {
+    "id": 33322,
+    "i": 43,
+    "parse": 1,
+    "reg": 2.59,
+    "seima": "dp140-farmina-nd-pumpkin-konservai-suaugusiems-mazu-veisliu-sunims-su-vistiena-moliugu-ir-granatais-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 38094,
+      "kaina": 30.19,
+      "vnt": 2.516,
+      "proc": 2.68
+     },
+     "18": {
+      "id": 38095,
+      "kaina": 43.89,
+      "vnt": 2.438,
+      "proc": 5.73
+     },
+     "24": {
+      "id": 38096,
+      "kaina": 57.19,
+      "vnt": 2.383,
+      "proc": 7.9
+     }
+    }
+   },
+   {
+    "id": 33325,
+    "i": 44,
+    "parse": 1,
+    "reg": 2.79,
+    "seima": "dp140-farmina-nd-pumpkin-konservai-suaugusiems-mazu-veisliu-sunims-su-eriena-moliugu-ir-melynemis-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 38097,
+      "kaina": 32.49,
+      "vnt": 2.708,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 38098,
+      "kaina": 47.29,
+      "vnt": 2.627,
+      "proc": 5.72
+     },
+     "24": {
+      "id": 38099,
+      "kaina": 61.59,
+      "vnt": 2.566,
+      "proc": 7.94
+     }
+    }
+   },
+   {
+    "id": 33328,
+    "i": 45,
+    "parse": 1,
+    "reg": 2.59,
+    "seima": "dp140-farmina-nd-pumpkin-konservai-suaugusiems-mazu-veisliu-sunims-su-putpeliena-ir-moliugu-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 38100,
+      "kaina": 30.19,
+      "vnt": 2.516,
+      "proc": 2.68
+     },
+     "18": {
+      "id": 38101,
+      "kaina": 43.89,
+      "vnt": 2.438,
+      "proc": 5.73
+     },
+     "24": {
+      "id": 38102,
+      "kaina": 57.19,
+      "vnt": 2.383,
+      "proc": 7.9
+     }
+    }
+   },
+   {
+    "id": 33334,
+    "i": 46,
+    "parse": 1,
+    "reg": 2.59,
+    "seima": "dp140-farmina-nd-quinoa-digestion-konservai-suaugusiems-mazu-veisliu-sunims-su-eriena-140-g",
+    "termas": {
+     "12": 816,
+     "18": 817,
+     "24": 818
+    },
+    "pakai": {
+     "12": {
+      "id": 38103,
+      "kaina": 30.19,
+      "vnt": 2.516,
+      "proc": 2.68
+     },
+     "18": {
+      "id": 38104,
+      "kaina": 43.89,
+      "vnt": 2.438,
+      "proc": 5.73
+     },
+     "24": {
+      "id": 38105,
+      "kaina": 57.19,
+      "vnt": 2.383,
+      "proc": 7.9
+     }
+    }
+   },
+   {
+    "id": 33310,
+    "i": 47,
+    "parse": 1,
+    "reg": 3.69,
+    "seima": "dp285-farmina-nd-ocean-konservai-suaugusiems-sunims-su-menke-ir-moliugu-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 38106,
+      "kaina": 42.99,
+      "vnt": 3.583,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 38107,
+      "kaina": 62.49,
+      "vnt": 3.472,
+      "proc": 5.83
+     },
+     "24": {
+      "id": 38108,
+      "kaina": 81.49,
+      "vnt": 3.395,
+      "proc": 7.92
+     }
+    }
+   },
+   {
+    "id": 33313,
+    "i": 48,
+    "parse": 1,
+    "reg": 3.69,
+    "seima": "dp285-farmina-nd-ocean-konservai-suaugusiems-sunims-su-silke-ir-krevetemis-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 38109,
+      "kaina": 42.99,
+      "vnt": 3.583,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 38110,
+      "kaina": 62.49,
+      "vnt": 3.472,
+      "proc": 5.83
+     },
+     "24": {
+      "id": 38111,
+      "kaina": 81.49,
+      "vnt": 3.395,
+      "proc": 7.92
+     }
+    }
+   },
+   {
+    "id": 33315,
+    "i": 49,
+    "parse": 1,
+    "reg": 3.69,
+    "seima": "dp285-farmina-nd-ocean-konservai-suaugusiems-sunims-su-lasisa-ir-menke-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 38112,
+      "kaina": 42.99,
+      "vnt": 3.583,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 38113,
+      "kaina": 62.49,
+      "vnt": 3.472,
+      "proc": 5.83
+     },
+     "24": {
+      "id": 38114,
+      "kaina": 81.49,
+      "vnt": 3.395,
+      "proc": 7.92
+     }
+    }
+   },
+   {
+    "id": 33337,
+    "i": 50,
+    "parse": 1,
+    "reg": 3.79,
+    "seima": "dp285-farmina-nd-quinoa-skin-coat-konservai-suaugusiems-sunims-su-antiena-ir-kokosu-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 38115,
+      "kaina": 44.09,
+      "vnt": 3.674,
+      "proc": 2.93
+     },
+     "18": {
+      "id": 38116,
+      "kaina": 64.19,
+      "vnt": 3.566,
+      "proc": 5.82
+     },
+     "24": {
+      "id": 38117,
+      "kaina": 83.69,
+      "vnt": 3.487,
+      "proc": 7.93
+     }
+    }
+   },
+   {
+    "id": 33309,
+    "i": 51,
+    "parse": 1,
+    "reg": 3.69,
+    "seima": "dp285-farmina-nd-ocean-konservai-suniukams-su-menke-ir-moliugu-285-g",
+    "termas": {
+     "12": 803,
+     "18": 804,
+     "24": 805
+    },
+    "pakai": {
+     "12": {
+      "id": 38118,
+      "kaina": 42.99,
+      "vnt": 3.583,
+      "proc": 2.78
+     },
+     "18": {
+      "id": 38119,
+      "kaina": 62.49,
+      "vnt": 3.472,
+      "proc": 5.83
+     },
+     "24": {
+      "id": 38120,
+      "kaina": 81.49,
+      "vnt": 3.395,
+      "proc": 7.92
+     }
+    }
+   }
+  ],
+  "nebaigta_nuo": 52,
+  "hb": 200
+ }
+}
