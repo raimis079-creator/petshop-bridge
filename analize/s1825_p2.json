@@ -1,0 +1,31 @@
+{
+ "1": {
+  "v": "S1825p",
+  "plugins": [
+   "wp-super-cache/wp-cache.php"
+  ],
+  "hooks": {
+   "litespeed_purge_post": false,
+   "rocket": false
+  },
+  "wsc": [
+   17394,
+   37443,
+   37444,
+   17400,
+   37446,
+   37447,
+   17397,
+   37449,
+   37450
+  ],
+  "ok": 1
+ },
+ "v": "dep-113304",
+ "kurimas": 200,
+ "sid": 7880,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
