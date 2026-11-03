@@ -1,94 +1,64 @@
 {
  "1": {
-  "v": "S1825s",
+  "v": "S1825s5",
   "shots": [
    {
-    "n": "s1825e_top_26141",
-    "u": "https://petshop.lt/product/josicat-finest-mousse-with-salmon-pastetas-katems-su-vistiena-85g/",
-    "w": 390,
-    "h": 844
-   },
-   {
-    "n": "s1825e_pak_26141",
-    "u": "https://petshop.lt/product/josicat-finest-mousse-with-salmon-pastetas-katems-su-vistiena-85g/",
+    "n": "s1825k_18850",
+    "u": "https://petshop.lt/product/dolina-noteci-kitten-konservai-kaciukams-su-kalakutiena-185-g/",
     "w": 390,
     "h": 844,
-    "eval": "(()=>{var p=document.getElementById('ps-pak');if(p){p.scrollIntoView();window.scrollBy(0,-120);}return p?1:0})()"
+    "eval": "(()=>{var t=document.querySelector('a[href=\"#tab-description\"]');if(t)t.click();var s=[...document.querySelectorAll('strong')].find(e=>e.textContent.indexOf('gamintojo duomenys')>=0);if(s){s.scrollIntoView();window.scrollBy(0,-80);}return s?1:0})()"
    },
    {
-    "n": "s1825e_top_38174",
-    "u": "https://petshop.lt/product/36-vnt-josicat-finest-mousse-with-salmon-pastetas-katems-su-vistiena-85g/",
-    "w": 390,
-    "h": 844
-   },
-   {
-    "n": "s1825e_pak_38174",
-    "u": "https://petshop.lt/product/36-vnt-josicat-finest-mousse-with-salmon-pastetas-katems-su-vistiena-85g/",
+    "n": "s1825k_33654",
+    "u": "https://petshop.lt/?post_type=product&p=33654",
     "w": 390,
     "h": 844,
-    "eval": "(()=>{var p=document.getElementById('ps-pak');if(p){p.scrollIntoView();window.scrollBy(0,-120);}return p?1:0})()"
+    "eval": "(()=>{var t=document.querySelector('a[href=\"#tab-description\"]');if(t)t.click();var s=[...document.querySelectorAll('strong')].find(e=>e.textContent.indexOf('gamintojo duomenys')>=0);if(s){s.scrollIntoView();window.scrollBy(0,-80);}return s?1:0})()"
    },
    {
-    "n": "s1825e_top_22985",
-    "u": "https://petshop.lt/product/landfleisch-konservai-sunims-jauciu-sirdysryziai-400g/",
-    "w": 390,
-    "h": 844
-   },
-   {
-    "n": "s1825e_pak_22985",
-    "u": "https://petshop.lt/product/landfleisch-konservai-sunims-jauciu-sirdysryziai-400g/",
+    "n": "s1825k_33324",
+    "u": "https://petshop.lt/?post_type=product&p=33324",
     "w": 390,
     "h": 844,
-    "eval": "(()=>{var p=document.getElementById('ps-pak');if(p){p.scrollIntoView();window.scrollBy(0,-120);}return p?1:0})()"
+    "eval": "(()=>{var t=document.querySelector('a[href=\"#tab-description\"]');if(t)t.click();var s=[...document.querySelectorAll('strong')].find(e=>e.textContent.indexOf('gamintojo duomenys')>=0);if(s){s.scrollIntoView();window.scrollBy(0,-80);}return s?1:0})()"
    }
   ]
  },
- "v": "dep-120405",
+ "v": "dep-140603",
  "kurimas": 200,
- "sid": 7896,
+ "sid": 7915,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
  "shots": {
-  "s1825e_top_26141": {
+  "s1825k_18850": {
    "status": 201,
-   "url": "https://petshop.lt/product/josicat-finest-mousse-with-salmon-pastetas-katems-su-vistiena-85g/",
-   "title": "JosiCat Finest Mousse with Salmon, paštetas katėms su vištiena, 85g - Petshop.lt",
-   "errors": []
-  },
-  "s1825e_pak_26141": {
-   "status": 201,
-   "url": "https://petshop.lt/product/josicat-finest-mousse-with-salmon-pastetas-katems-su-vistiena-85g/",
-   "title": "JosiCat Finest Mousse with Salmon, paštetas katėms su vištiena, 85g - Petshop.lt",
+   "url": "https://petshop.lt/product/dolina-noteci-kitten-konservai-kaciukams-su-kalakutiena-185-g/",
+   "title": "Dolina Noteci Kitten konservai kačiukams su kalakutiena, 185 g - Petshop.lt",
    "errors": [],
    "eval": 1
   },
-  "s1825e_top_38174": {
+  "s1825k_33654": {
    "status": 201,
-   "url": "https://petshop.lt/product/36-vnt-josicat-finest-mousse-with-salmon-pastetas-katems-su-vistiena-85g/",
-   "title": "36 vnt. JosiCat Finest Mousse with Salmon, paštetas katėms su vištiena, 85g - Petshop.lt",
-   "errors": []
+   "url": "https://petshop.lt/?post_type=product&p=33654",
+   "title": "Page Not Found - Petshop.lt",
+   "errors": [
+    "http 404 https://petshop.lt/?post_type=product&p=33654",
+    "error: Failed to load resource: the server responded with a status of 404 ()"
+   ],
+   "eval": 0
   },
-  "s1825e_pak_38174": {
+  "s1825k_33324": {
    "status": 201,
-   "url": "https://petshop.lt/product/36-vnt-josicat-finest-mousse-with-salmon-pastetas-katems-su-vistiena-85g/",
-   "title": "36 vnt. JosiCat Finest Mousse with Salmon, paštetas katėms su vištiena, 85g - Petshop.lt",
-   "errors": [],
-   "eval": 1
-  },
-  "s1825e_top_22985": {
-   "status": 201,
-   "url": "https://petshop.lt/product/landfleisch-konservai-sunims-jauciu-sirdysryziai-400g/",
-   "title": "Landfleisch konservai šunims, jaučių širdys+ryžiai, 400g - Petshop.lt",
-   "errors": []
-  },
-  "s1825e_pak_22985": {
-   "status": 201,
-   "url": "https://petshop.lt/product/landfleisch-konservai-sunims-jauciu-sirdysryziai-400g/",
-   "title": "Landfleisch konservai šunims, jaučių širdys+ryžiai, 400g - Petshop.lt",
-   "errors": [],
-   "eval": 1
+   "url": "https://petshop.lt/?post_type=product&p=33324",
+   "title": "Page Not Found - Petshop.lt",
+   "errors": [
+    "http 404 https://petshop.lt/?post_type=product&p=33324",
+    "error: Failed to load resource: the server responded with a status of 404 ()"
+   ],
+   "eval": 0
   }
  }
 }
