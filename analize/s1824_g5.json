@@ -1,0 +1,92 @@
+{
+ "1": {
+  "1571": {
+   "dezes_meta": []
+  },
+  "v": "S1824g5",
+  "hit": {
+   "27": "* venipak_registruoti(): paštomato užsakymui su n dėžių registruojama n kartų",
+   "34": "* — dėžių skaičius nustatomas kortelėje PRIEŠ registraciją; jei siunta jau",
+   "37": "* dėžių skaičių ir registruoja iš naujo; senas siuntos nr. lieka pastaboje.",
+   "518": "protected static function venipak_registruoti( $ids, $manifesto_kodas ) {",
+   "544": "// Kelių dėžių siuntoms sudedam packs[] — po vieną įrašą kiekvienai dėžei.",
+   "547": "if ( $viena && self::reikia_pakuociu( $viena ) ) {",
+   "548": "$n = self::pakuociu( $viena );",
+   "722": "$daugiadezes = array(); $paprasti = array();",
+   "725": "if ( $oo && self::reikia_pakuociu( $oo ) && self::pakuociu( $oo ) > 1 ) { $daugiadezes[] = $oid; }",
+   "733": "foreach ( $daugiadezes as $oid ) {",
+   "766": "// H258: perregistravimas su kitu dėžių skaičiumi (tik aiškiems ids, iš perdavimo lango).",
+   "784": "$perreg_n ?: self::pakuociu( $oo ), $senas ?: '—' ), false, true );",
+   "805": "// Kelių dėžių užsakymus registruojam PO VIENĄ — tik taip pluginas",
+   "806": "// gauna jų packs[]; grupinė registracija dėžių skaičiaus nemoka.",
+   "807": "$daugiadezes = array(); $paprasti = array();",
+   "810": "if ( $oo && self::reikia_pakuociu( $oo ) && self::pakuociu( $oo ) > 1 ) { $daugiadezes[] = $oid; }",
+   "818": "foreach ( $daugiadezes as $oid ) {",
+   "1161": "* Kiek dėžių šiai siuntai. Reikšmė reikalinga TIK kurjeriui —",
+   "1165": "public static function pakuociu( $o ) {",
+   "1170": "protected static function reikia_pakuociu( $o ) {",
+   "2084": "$pk = sprintf( ' <span class=\"pd-pk\">dėžių <input type=\"number\" min=\"1\" max=\"20\" value=\"%d\" data-pk=\"%s\" style=\"width:46px\"></span>',",
+   "2085": "(int) self::pakuociu( wc_get_order( $oid_p ) ), esc_attr( $bazine ) );",
+   "2213": "$term ? '—' : (int) self::pakuociu( $o ),",
+   "3151": "'pak'     => self::reikia_pakuociu( $o ) ? array(",
+   "3152": "'kiek' => self::pakuociu( $o ),"
+  },
+  "src": {
+   "1165": [
+    "\tpublic static function pakuociu( $o ) {",
+    "\t\t$n = (int) $o->get_meta( self::META_PAK );",
+    "\t\treturn $n > 0 ? $n : 1;",
+    "\t}",
+    "",
+    "\tprotected static function reikia_pakuociu( $o ) {",
+    "\t\t$v = self::vezejas( $o );",
+    "\t\t// Venipak: ir kurjeriui, ir paštomatui — į paštomatą kiekviena dėžė",
+    "\t\t// keliauja kaip atskira siunta (§19.11), todėl klausiama abiem.",
+    "\t\treturn in_array( $v, array( 'venipak_kurjeris', 'venipak_pastomatas', 'lp' ), true )",
+    "\t\t\t&& ( 'lp' !== $v || ! $o->get_meta( '_woo_lithuaniapost_lpexpress_terminal_id' ) );",
+    "\t}",
+    "",
+    "\t/**",
+    "\t * LP dydį pluginas skaičiuoja PATS pagal bendrą svorį (s570: size-service).",
+    "\t * Mums rinktis nereikia — bet verta parodyti, iš ko jis skaičiuoja,",
+    "\t * ir įspėti, jei prekė be svorio, nes tada rezultatas melagingas.",
+    "\t */",
+    "\tpublic static function lp_svoris( $o ) {",
+    "\t\t$g = 0; $be = array();",
+    "\t\tforeach ( $o->get_items() as $it ) {",
+    "\t\t\t$p = $it->get_product();"
+   ],
+   "1170": [
+    "\tprotected static function reikia_pakuociu( $o ) {",
+    "\t\t$v = self::vezejas( $o );",
+    "\t\t// Venipak: ir kurjeriui, ir paštomatui — į paštomatą kiekviena dėžė",
+    "\t\t// keliauja kaip atskira siunta (§19.11), todėl klausiama abiem.",
+    "\t\treturn in_array( $v, array( 'venipak_kurjeris', 'venipak_pastomatas', 'lp' ), true )",
+    "\t\t\t&& ( 'lp' !== $v || ! $o->get_meta( '_woo_lithuaniapost_lpexpress_terminal_id' ) );",
+    "\t}",
+    "",
+    "\t/**",
+    "\t * LP dydį pluginas skaičiuoja PATS pagal bendrą svorį (s570: size-service).",
+    "\t * Mums rinktis nereikia — bet verta parodyti, iš ko jis skaičiuoja,",
+    "\t * ir įspėti, jei prekė be svorio, nes tada rezultatas melagingas.",
+    "\t */",
+    "\tpublic static function lp_svoris( $o ) {",
+    "\t\t$g = 0; $be = array();",
+    "\t\tforeach ( $o->get_items() as $it ) {",
+    "\t\t\t$p = $it->get_product();",
+    "\t\t\t$w = $p ? (float) $p->get_weight() : 0;",
+    "\t\t\tif ( $w <= 0 ) { $be[] = $it->get_name(); continue; }",
+    "\t\t\t$g += $w * (int) $it->get_quantity();",
+    "\t\t}",
+    "\t\t$vnt = get_option( 'woocommerce_weight_unit' );"
+   ]
+  }
+ },
+ "v": "dep-085835",
+ "kurimas": 200,
+ "sid": 7849,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
