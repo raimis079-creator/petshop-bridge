@@ -1,0 +1,177 @@
+{
+ "1": {
+  "v": "S1826o2",
+  "s648": "/**\n * Petshop Invoice Doc Type Fix v2 (LIVE, GLOBAL)\n * Perjungia doc_type PRIES generacija ant completed. GLOBAL - veikia ir admin/REST kontekste.\n */\nif ( ! defined( 'ABSPATH' ) ) { return; }\nadd_action( 'woocommerce_order_status_completed', function( $order_id ) {\n\tif ( ! function_exists( 'petshop_get_invoice_document_type' ) ) { return; }\n\t$order = wc_get_order( $order_id );\n\tif ( ! $order ) { return; }\n\t$dt = petshop_get_invoice_document_type( $order );\n\tif ( $order->get_meta( '_petshop_invoice_document_type' ) !== $dt ) {\n\t\t$order->update_meta_data( '_petshop_invoice_document_type', $dt );\n\t\t$order->delete_meta_data( '_wcdn_invoice_pdf' );\n\t\t$order->delete_meta_data( '_wcdn_invoice_pdf_token' );\n\t\t$order->save();\n\t}\n}, 1 );\n",
+  "s653": "/**\n * Petshop Invoice Completed Attach Fix v3 (LIVE, GLOBAL scope)\n * Kritinis: snippet turi buti GLOBAL, nes completed laiskas siunciamas admin/REST kontekste, ne front-end.\n * Regeneruoja svieziа PVM saskaita faktura completed laisko siuntimo metu + nukerpa senus/WCDN priedus.\n */\nif ( ! defined( 'ABSPATH' ) ) { return; }\nadd_filter( 'woocommerce_email_attachments', function ( $attachments, $email_id, $order, $email ) {\n\tif ( $email_id !== 'customer_completed_order' || ! ( $order instanceof WC_Order ) ) { return $attachments; }\n\tif ( ! function_exists( 'petshop_generate_invoice_pdf' ) ) { return $attachments; }\n\t$fresh_order = wc_get_order( $order->get_id() );\n\tif ( ! $fresh_order ) { return $attachments; }\n\tif ( function_exists( 'petshop_get_invoice_document_type' ) ) {\n\t\t$dt = petshop_get_invoice_document_type( $fresh_order );\n\t\tif ( $fresh_order->get_meta( '_petshop_invoice_document_type' ) !== $dt ) {\n\t\t\t$fresh_order->update_meta_data( '_petshop_invoice_document_type', $dt );\n\t\t\t$fresh_order->save();\n\t\t}\n\t}\n\t$fresh_pdf = petshop_generate_invoice_pdf( $order->get_id() );\n\t$clean = array();\n\tforeach ( (array) $attachments as $a ) {\n\t\t$b = basename( (string) $a );\n\t\tif ( stripos( $b, 'Isankstine-saskaita' ) !== false ) { continue; }\n\t\tif ( stripos( $b, 'PVM-saskaita' ) !== false ) { continue; }\n\t\tif ( stripos( $b, 'Invoice -' ) !== false ) { continue; }\n\t\tif ( preg_match( '/^invoice-\\d+-\\d+\\.pdf$/i', $b ) ) { continue; }\n\t\t$clean[] = $a;\n\t}\n\tif ( $fresh_pdf && file_exists( $fresh_pdf ) ) {\n\t\t$clean[] = $fresh_pdf;\n\t\t$fresh_order->update_meta_data( '_petshop_completed_pdf', $fresh_pdf );\n\t\t$fresh_order->save();\n\t}\n\t$clean = array_values( $clean );\n\tupdate_option( 'ps_last_completed_attach', array(\n\t\t'time'  => time(),\n\t\t'order' => $order->get_id(),\n\t\t'ctx'   => is_admin() ? 'admin' : ( ( defined('REST_REQUEST') && REST_REQUEST ) ? 'rest' : 'front' ),\n\t\t'atts'  => array_map( 'basename', $clean ),\n\t), false );\n\treturn $clean;\n}, 50, 4 );\n",
+  "opts": [
+   {
+    "option_name": "woocommerce_bacs_settings",
+    "v": "a:11:{s:7:\"enabled\";s:3:\"yes\";s:5:\"title\";s:18:\"Bankinis pavedimas\";s:11:\"description\";s:208:\"Apmokėkite padarydami pavedimą į mūsų banko sąskaitą. Prašome įrašyti Jūsų užsakymo numerį kaip mokėjimo paskirtį. Užsakymas nebus išsiųstas kol pavedimas nepasieks mūsų banko sąskaitos.\";s:12:\"instructions\";s:0:\"\";s:15:\"account_details\";s:0:\"\";s:12:\"account_name\";s:0:\"\";s:14:\"account_number\";s:0:\"\";s:9:\"sort_code\";s:0:\"\";s:9:\"bank_name\";s:0:\"\";s:4:\"iban\";s:0:\"\";s:3:\"bic\";s:0:\"\";}"
+   },
+   {
+    "option_name": "wcdn_version",
+    "v": "7.3.0"
+   },
+   {
+    "option_name": "wcdn_legacy_backup",
+    "v": "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:10:\"1779385649\";s:15:\"wcdn_db_version\";s:5:\"0.0.0\";s:24:\"wcdn_flush_rewrite_rules\";s:1:\"1\";s:19:\"wcdn_migration_lock\";s:10:\"1779385650\";s:12:\"wcdn_notices\";a:0:{}s:12:\"wcdn_version\";s:5:\"7.1.2\";}"
+   },
+   {
+    "option_name": "wcdn_legacy_backup_autoload",
+    "v": "a:6:{s:33:\"wcdn_admin_installation_timestamp\";s:4:\"auto\";s:15:\"wcdn_db_version\";s:4:\"auto\";s:24:\"wcdn_flush_rewrite_rules\";s:4:\"auto\";s:19:\"wcdn_migration_lock\";s:3:\"off\";s:12:\"wcdn_notices\";s:4:\"auto\";s:12:\"wcdn_version\";s:4:\"auto\";}"
+   },
+   {
+    "option_name": "wcdn_settings",
+    "v": "a:42:{s:9:\"storeName\";s:9:\"UAB Avesa\";s:9:\"storeLogo\";s:87:\"https://petshop.lt/wp-content/uploads/2026/05/Pilno-logotipo-spalvota-versija-100-2.jpg\";s:12:\"storeAddress\";s:87:\"Liucionių g. 46, Liucionių k.<br />Nemenčinės sen., Vilniaus r., 15166<br />Lietuva\";s:5:\"email\";s:16:\"terra@petshop.lt\";s:5:\"phone\";s:14:\"+370 681 87787\";s:10:\"footerText\";s:0:\"\";s:18:\"complimentaryClose\";s:0:\"\";s:8:\"policies\";s:0:\"\";s:13:\"printEndpoint\";s:11:\"print-order\";s:20:\"defaultDocumentLabel\";s:8:\"Document\";s:13:\"textDirection\";s:3:\"ltr\";s:9:\"enablePDF\";b:1;s:12:\"pdfPaperSize\";s:2:\"A4\";s:18:\"pdfUseCurrencyCode\";b"
+   },
+   {
+    "option_name": "wcdn_template_settings",
+    "v": "a:4:{s:7:\"invoice\";a:152:{s:7:\"enabled\";b:1;s:10:\"dateFormat\";s:5:\"Y-m-d\";s:17:\"orderMetaPosition\";s:5:\"below\";s:11:\"pdfFilename\";s:27:\"Invoice -{order_number}.pdf\";s:19:\"attachCustomerEmail\";b:1;s:16:\"attachAdminEmail\";b:0;s:18:\"attachCustomEmails\";b:0;s:20:\"customEmailAddresses\";s:0:\"\";s:19:\"attachToOrderStatus\";b:0;s:21:\"orderStatusToAttachTo\";a:0:{}s:25:\"attachToWoocommerceEmails\";b:0;s:27:\"woocommerceEmailsToAttachTo\";a:0:{}s:12:\"documentZoom\";i:100;s:16:\"documentZoomMode\";s:6:\"layout\";s:14:\"applyZoomToAll\";s:0:\"\";s:8:\"showLogo\";b:1;s:9:\"logoScale\";i:100;s:13:\"logoAlignment\";s:4:\"left\";s:"
+   },
+   {
+    "option_name": "wcdn_migration_7_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_0_2_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_1_0_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_migration_7_1_2_completed",
+    "v": "1"
+   },
+   {
+    "option_name": "wcdn_db_version",
+    "v": "7.3.0"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter",
+    "v": "967"
+   },
+   {
+    "option_name": "wcdn_invoice_number_counter_year",
+    "v": "a:1:{i:2026;i:1;}"
+   },
+   {
+    "option_name": "wcdn_allow_tracking",
+    "v": "dismissed"
+   }
+  ],
+  "gw": {
+   "paysera": [
+    "yes",
+    "Mokėjimas internetu"
+   ],
+   "ps_pren_kortele": [
+    "no",
+    "Mokėjimo kortelė"
+   ],
+   "bacs": [
+    "yes",
+    "Bankinis pavedimas"
+   ],
+   "cheque": [
+    "no",
+    "Apmokėjimas čekiu"
+   ],
+   "cod": [
+    "no",
+    "Apmokėjimas grynais atsiimant (COD)"
+   ]
+  },
+  "dl": [
+   "37: *   nebegalima, „Redaguoti“ lieka aktyvus su `tipas=tik_el` — keičiamas TIK el. paštas (kad išeitų „Išsiųsta“ / sąskaitos laiškai). Adreso taisyklė (v3.18) nepakeista.",
+   "39: * Petshop Darbalaukis v3.39.3 (S1639, Raimis 09-08): siuntos_laiskas() — pilname laiške (viena siunta arba paskutinė „visas išsiųstas\") prekių sąrašo NĖRA (jos sąskaitoje/paskyroje) ir segamas PVM sąs",
+   "40: *   (meta `_petshop_completed_pdf` arba temos `petshop_generate_invoice_pdf`); dalinių siuntų laiškai NEKEISTI — „Šioje siuntoje / Dar keliaus\" lieka (klientas žino, ką gauna), be sąskaitos. Sutaupoma",
+   "63: * Petshop Darbalaukis v3.36 (S1620, Raimis 09-06 „2 – ok, 3 – a ir b“): FILTRAI „Visi“ lange — Data „Nuo–iki“ (variklio `datos_riba('intervalas')`), Apmokėjimas (pavedimu / Paysera / grynais / neapmok",
+   "73: *    (5 etapas) · Sąskaita (5 etapas) · Parašyti klientui · Atšaukti;",
+   "103: *   kaip temos `functions.php` „gautas“ laiške / IAPV; paskirtis „Pakartotinis siuntimas, užsakymas Nr. N“); klientui pasirinkus pavedimą WC bacs → `on-hold` (WC bacs sąskaitų",
+   "108: * v3.25 (S1617 — KREDITINĖ pusiau automatinė; Raimis 09-05: K1 sava KR-AVPN eilė (temos base.php v2.9 — 5 eil.), K2 A — 3,99 € atskira paslaugos sąskaita, K3 per WC grąžinimo",
+   "111: *   + pristatymas (varnelė); dalis — eilutės su `_ps_atsaukta` be `_ps_kreditine`; kiekiai taisomi; varnelė „3,99 € — atskira sąskaita“ pagal `ka` „− 3,99“) → „Patvirtinti",
+   "114: *   meta `_petshop_kravpn_number/_date`, PDF per temos base.php (`$template='creditnote'`, `$order['id']`=refund; Dompdf kaip `petshop_generate_invoice_pdf`) → `uploads/wcdn/creditnote/`",
+   "118: *   3,99 € sąskaita AVPN…) · PDF (GET `kr_pdf`) · siųsti klientui (GET `kr_laiskas` — laiškas su PDF, `kreditine_laiskas`)“. „Grąžinta“ dialogas įspėja, jei kreditinė neišrašyta.",
+   "119: * v3.26 (S1617 — SĄSKAITOS, spec §12.5 „Sąskaita“): (1) skydelyje blokas „Sąskaitos“ (`dokumentai()`: IAPV, AVPN, kreditinės, susietų paslaugų užsakymų AVPN — nr, data, suma, PDF",
+   "120: *   per GET `dok_pdf&t=avpn|iapv|kr` (srautas prieš užrakto), AVPN be failo — „sugeneruoti“ (GET `dok_gen` → temos `petshop_generate_invoice_pdf`, tik apmokėtam)); pilkas „Sąskaita“",
+   "121: *   mygtukas nuimtas (bloką pakeitė — „mažiau, ne daugiau“; Claude prielaida); (2) langas `view=saskaitos` (`saskaitos()`): visi dokumentai iš meta per HPOS SQL UNION (AVPN `_petshop_avpn_number`",
+   "123: *   sukūrimo), filtrai — tipas / nuo–iki / paieška (nr., užsakymas, klientas, el. paštas), 200 psl., suma pagal filtrą (kreditinės minusu), PDF čia; nuoroda „Sąskaitos“ juostoje",
+   "125: *   sąskaita; pradiniame pastaba + įvykis `pakart_apmoketa` → kortelėje atsiranda „Siųsti iš naujo“ (`grizta_is_naujo` leidžia tik kai pakartotinis",
+   "156: *   WC admin refund'ų nenaudojam; kreditinė (5 etapas „Sąskaita“) skaičiuos iš savų sumų (`_ps_grazinti_rankomis`, faktai).",
+   "414: foreach ( array( 'new_order', 'customer_processing_order', 'customer_completed_order', 'customer_on_hold_order', 'customer_invoice', 'customer_pending_order' ) as $wc_l ) { add_filter( 'woocommerce_em",
+   "924: return array( 'Klientas atsiėmė', self::dl_url( 'atsieme', $id ), array( 'antraste' => $antraste, 'tekstas' => 'Klientas atsiėmė prekes? Užsakymas įvykdytas; PVM sąskaita klientui — el. paštu (kaip vi",
+   "977: if ( $f['ats'] && ! $f['uzdarytas'] ) { $pastaba = 'ATSIĖMIMAS AV (lipduko nėra): surinkti → „Paruošta atsiimti“ (laiškas klientui) → „Klientas atsiėmė“ (įvykdytas, PVM sąskaita). ' . ( ! $f['paid'] ?",
+   "1696: // 6) Išankstinė (IAPV) — tas pats numeris, PDF su naujomis prekėmis. PVM sąskaita (AVPN) išsirašys įvykdžius — jau su naujomis.",
+   "1698: if ( $o->get_meta( '_petshop_iapv_number' ) && ! $o->get_meta( '_petshop_avpn_number' ) && function_exists( 'petshop_generate_invoice_pdf' ) ) {",
+   "1699: $buvo_t = (string) $o->get_meta( '_petshop_invoice_document_type' );",
+   "1700: $o->update_meta_data( '_petshop_invoice_document_type', 'proforma' ); $o->save();",
+   "1701: try { $pdf = petshop_generate_invoice_pdf( $id ); if ( $pdf ) { $iapv = 'išankstinė ' . $o->get_meta( '_petshop_iapv_number' ) . ' perdaryta'; } }",
+   "1702: finally { $o = wc_get_order( $id ); if ( '' === $buvo_t ) { $o->delete_meta_data( '_petshop_invoice_document_type' ); } else { $o->update_meta_data( '_petshop_invoice_document_type', $buvo_t ); } if (",
+   "2362: *  meta `_ps_pakartotinis` = pradinio ID (darbalaukis jį praleidžia); klientui laiškas su WC apmokėjimo nuoroda. Pradinis užsakymas ir sąskaita neliečiami. */",
+   "2423: /** Laiškas po apmokėjimo (su PVM sąskaita) — [tema, html]. */",
+   "2428: $h .= '<p>' . esc_html( 'PVM sąskaita faktūra už pakartotinį siuntimą prisegta prie šio laiško.' ) . '</p>';",
+   "2434: *  (tema rašytų „išsiųstas“), temos kablys (prior. 5) išrašo AVPN, darbalaukio laiškas su PVM sąskaita; pradiniame pastaba + įvykis → „Siųsti iš naujo“. */",
+   "2440: self::d( 'laiskai_off' ); $n->update_status( 'completed', 'Darbalaukis: pakartotinis siuntimas apmokėtas — užsakymas įvykdytas automatiškai (tik pinigams; į Surinkti / lapus / Venipak neina). WC laišk",
+   "2442: if ( ( ! $pdf || ! file_exists( $pdf ) ) && function_exists( 'petshop_generate_invoice_pdf' ) ) { try { $pdf = (string) petshop_generate_invoice_pdf( $id ); if ( $pdf && file_exists( $pdf ) ) { $n->up",
+   "2443: if ( 'grazinimo_islaidos' === (string) $n->get_meta( '_ps_paslauga' ) ) { // v3.25: 3,99 € siuntos grąžinimo išlaidų sąskaita (įskaitymas) — be laiško, pradinio pastaba rašo `kreditine_vykdyti`",
+   "2444: $n->add_order_note( 'Darbalaukis: PVM sąskaita ' . ( $n->get_meta( '_petshop_avpn_number' ) ? $n->get_meta( '_petshop_avpn_number' ) : '(AVPN NEIŠRAŠYTA)' ) . ' už siuntos grąžinimo išlaidas išrašyta ",
+   "2450: $n->add_order_note( 'Darbalaukis: laiškas klientui „apmokėjimas gautas“ ' . ( $ok ? 'išsiųstas' : 'NEIŠSIŲSTAS' ) . ( $pdf && file_exists( $pdf ) ? ' su PVM sąskaita ' . $avpn : ' BE sąskaitos (PDF ne",
+   "2452: $o->add_order_note( sprintf( 'Pakartotinis užsakymas #%s apmokėtas %s(%s €, %s) — galima „Siųsti iš naujo“.', $n->get_order_number(), 'bacs' === $n->get_payment_method() ? 'pavedimu ' : '', self::eur(",
+   "2473: /** v3.23: klientui pasirinkus pavedimą („ačiū“ puslapis, WC bacs `thankyou_page` — WC bacs sąskaitų nustatymuose nėra) — rekvizitai ir paskirtis. */",
+   "2489: return array( $ok ? 'dl_info' : 'dl_klaida', $ok ? 'pakartotinis užsakymas #' . $n->get_order_number() . ' (' . self::eur( $n->get_total() ) . ' €) pažymėtas apmokėtu pavedimu' . ( $n->get_meta( '_pet",
+   "2499: *  darbalaukio „apmokėjimas gautas“ su PVM sąskaita (`pakartotinis_apmoketas`); administratoriui — pradinio užsakymo kortelė / pastaba (Claude prielaida). */",
+   "2505: /* ============================ v3.25: KREDITINĖ (spec §12.5; Raimis 09-05 K1 sava eilė, K2 A — 3,99 atskira sąskaita, K3 per WC grąžinimo įrašą, laiškas — darbuotojas) ============================ */",
+   "2541: $t .= ' · Kreditinė <b>' . esc_html( $kr['nr'] ) . '</b> (' . esc_html( self::eur( $kr['suma'] ) ) . ' €' . ( ! empty( $kr['mok_avpn'] ) ? '; 3,99 € sąskaita ' . esc_html( $kr['mok_avpn'] ) : '' ) . '"
+  ],
+  "kl": [
+   "4: *   front-end'e (užsakymo, „ačiū“, paskyros puslapiai, `print-order` endpoint'as) — VISIEMS tik `invoice`, nepriklausomai nuo teisių; admin'as ir `wp_ajax_print_order` — kaip buvo.",
+   "5: * Petshop Klientui v1.0 (S1628, Raimis 09-06: „klientui reikia tik sąskaitos, o kvitų ir važtaraščių tikrai nereikia“)",
+   "7: * KAS: WCDN (WooCommerce Print Invoice & Delivery Notes 7.3) kliento pusėje — paskyros užsakymų sąraše, užsakymo",
+   "8: * puslapyje ir „ačiū“ puslapyje — rodo po mygtuką kiekvienam įjungtam šablonui: „Spausdinti sąskaitą“, „Spausdinti kvitą“,",
+   "9: * „Spausdinti važtaraštį“ (delivery-note) ir dar kartą „Spausdinti važtaraštį“ (packing-slip). Klientui reikia tik PVM sąskaitos.",
+   "12: * ir `print-order` endpoint'ui) — ne administratoriui (front-end, be `edit_shop_orders`) paliekamas TIK `invoice`.",
+   "20: return in_array( 'invoice', (array) $types, true ) ? array( 'invoice' ) : array(); // v1.0.1: front-end — visiems tik sąskaita"
+  ],
+  "inv_meta": [
+   {
+    "meta_key": "_petshop_invoice_document_type",
+    "n": "640",
+    "mx": "proforma"
+   },
+   {
+    "meta_key": "_wcdn_invoice_date",
+    "n": "578",
+    "mx": "1793786028"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number",
+    "n": "578",
+    "mx": "AVPN35873"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number_counter",
+    "n": "578",
+    "mx": "967"
+   },
+   {
+    "meta_key": "_wcdn_invoice_pdf",
+    "n": "18",
+    "mx": "Invoice -35868-79c9b2dc99150c695d90b87c.pdf"
+   },
+   {
+    "meta_key": "_wcdn_invoice_pdf_token",
+    "n": "18",
+    "mx": "f5b1a1e8abf0c652fc2296e5"
+   }
+  ]
+ },
+ "v": "dep-102541",
+ "kurimas": 200,
+ "sid": 7945,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
