@@ -1,0 +1,105 @@
+{
+ "1": {
+  "v": "S1827b",
+  "gavimai": [
+   {
+    "m": "2026-09",
+    "b": "exclusion",
+    "t": "",
+    "imp": "0",
+    "eil": "7",
+    "vnt": "339",
+    "eur_be_pvm": "803.82"
+   },
+   {
+    "m": "2026-09",
+    "b": "exclusion",
+    "t": "VF",
+    "imp": "0",
+    "eil": "25",
+    "vnt": "257",
+    "eur_be_pvm": "1075.29"
+   },
+   {
+    "m": "2026-09",
+    "b": "josera",
+    "t": "",
+    "imp": "0",
+    "eil": "1",
+    "vnt": "2",
+    "eur_be_pvm": "5.20"
+   },
+   {
+    "m": "2026-09",
+    "b": "josera",
+    "t": "eShoprent",
+    "imp": "1",
+    "eil": "1",
+    "vnt": "3",
+    "eur_be_pvm": "8.91"
+   },
+   {
+    "m": "2026-09",
+    "b": "josera",
+    "t": "VF",
+    "imp": "0",
+    "eil": "41",
+    "vnt": "83",
+    "eur_be_pvm": "1204.05"
+   },
+   {
+    "m": "2026-10",
+    "b": "exclusion",
+    "t": "vf",
+    "imp": "0",
+    "eil": "20",
+    "vnt": "35",
+    "eur_be_pvm": "403.79"
+   },
+   {
+    "m": "2026-10",
+    "b": "josera",
+    "t": "vf",
+    "imp": "0",
+    "eil": "44",
+    "vnt": "83",
+    "eur_be_pvm": "265.02"
+   },
+   {
+    "m": "2026-11",
+    "b": "exclusion",
+    "t": "vf",
+    "imp": "0",
+    "eil": "2",
+    "vnt": "2",
+    "eur_be_pvm": "32.27"
+   },
+   {
+    "m": "2026-11",
+    "b": "josera",
+    "t": "vf",
+    "imp": "0",
+    "eil": "6",
+    "vnt": "16",
+    "eur_be_pvm": "19.63"
+   }
+  ],
+  "te_cols": [
+   "id",
+   "partija_id",
+   "product_id",
+   "order_id",
+   "qty",
+   "qty_gauta",
+   "galiojimas",
+   "pastaba"
+  ]
+ },
+ "v": "dep-202854",
+ "kurimas": 200,
+ "sid": 7954,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
