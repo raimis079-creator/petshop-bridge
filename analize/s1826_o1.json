@@ -1,0 +1,236 @@
+{
+ "1": {
+  "v": "S1826o1",
+  "by": "wc_orders_meta",
+  "ids": [
+   "38216"
+  ],
+  "o": {
+   "38216": {
+    "nr": "1638",
+    "status": "cancelled",
+    "date": "2026-11-04 09:56",
+    "total": "51.69",
+    "tax": "8.97",
+    "ship": [
+     "VENIPAK paštomatai/atsiėmimo punktai",
+     "0"
+    ],
+    "pay": [
+     "paysera",
+     "Mokėjimas internetu"
+    ],
+    "bill": [
+     "Ulijana",
+     "Petraitienė",
+     "Klaipėdos pedagoginė psichologinė tarnyba",
+     "",
+     "",
+     "",
+     "vilma.sakalaite@gmail.com",
+     "+37067690197"
+    ],
+    "items": [
+     [
+      21589,
+      "Churu Skin+Coat kreminis skanėstas katėms su tunu, 4vnt",
+      10,
+      "20.578512",
+      "4.32"
+     ],
+     [
+      21587,
+      "Churu kreminis skanėstas katėms su tunu, 50 vnt kibiriukas",
+      1,
+      "22.140496",
+      "4.65"
+     ]
+    ],
+    "meta": {
+     "_billing_address_index": "Ulijana Petraitienė Klaipėdos pedagoginė psichologinė tarnyba      LT vilma.sakalaite@gmail.com +37067690197",
+     "_billing_company_address": "Debreceno 41, Klaipėda",
+     "_billing_company_code": "195176088",
+     "_billing_is_company": "1",
+     "_ps_decided_at": "2026-11-04 09:56:30",
+     "_ps_ga_cid": "2117956043.1791379953",
+     "_ps_ga_sid": "1793778976",
+     "_ps_ga_sutikimas": "SM",
+     "_ps_groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":2,\"vienetai\":11}}",
+     "_ps_irenginys": "desktop",
+     "_ps_kanalai": "{\"pirmas\":{\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"rekvizitai.vz.lt\",\"landing_url\":\"https://petshop.lt/\",\"laikas\":\"2026-11-03 10:46:12\",\"kanalas\":\"ref",
+     "_ps_kelias_kasoje": "2026-11-04 09:56:30",
+     "_ps_krep_prim_planuota": "2026-11-04 10:18:32",
+     "_ps_matyta": "2026-11-04 10:21:27 | Inga",
+     "_ps_order_number": "1638",
+     "_ps_order_type": "DS",
+     "_ps_shipments": "1",
+     "_ps_similar_basis": "erl81_2_checkout",
+     "_ps_similar_optout": "0",
+     "_ps_vidine_pastaba": "Apmokės savivaldybė per 10 d.d.",
+     "_ps_vidine_pastaba_kas": "2026-11-04 10:22:47|Inga"
+    },
+    "notes": [
+     [
+      "11-04 12:18",
+      "Email \"Atšauktas užsakymas\" sent."
+     ],
+     [
+      "11-04 12:18",
+      "Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas."
+     ],
+     [
+      "11-04 12:18",
+      "Likutis padidintas: Churu Skin+Coat kreminis skanėstas katėms su tunu, 4vnt (851&rarr;861), Churu kreminis skanėstas katėms su tunu, 50 vnt kibiriukas (125&rarr;126)"
+     ],
+     [
+      "11-04 09:56",
+      "Likutis sumažintas: Churu Skin+Coat kreminis skanėstas katėms su tunu, 4vnt (863&rarr;853), Churu kreminis skanėstas katėms su tunu, 50 vnt kibiriukas (125&rarr;124)"
+     ],
+     [
+      "11-04 09:56",
+      "Paysera: Neapmokėto užsakymo būsena"
+     ],
+     [
+      "11-04 09:56",
+      "Vykdymas: DS — VF 11 vnt (1 siunta(-os)) · dropship pirma"
+     ],
+     [
+      "11-04 09:56",
+      "Stock hold of 90 minutes applied to: - Churu Skin+Coat kreminis skanėstas katėms su tunu, 4vnt (EU671) &times; 10- Churu kreminis skanėstas katėms su tunu, 50 vnt kibiriukas (EU151) &times; 1"
+     ]
+    ]
+   }
+  },
+  "plug": [
+   [
+    "woocommerce-pdf-invoices-packing-slips/woocommerce-pdf-invoices-packingslips.php",
+    "PDF Invoices & Packing Slips for WooCommerce",
+    false
+   ],
+   [
+    "woocommerce-delivery-notes/woocommerce-delivery-notes.php",
+    "Print Invoice & Delivery Notes for WooCommerce",
+    true
+   ]
+  ],
+  "mu": [
+   [
+    "petshop-ataskaita-menuo.php",
+    "Petshop Ataskaita Menuo",
+    "1.0",
+    0,
+    0
+   ],
+   [
+    "petshop-atsisakymas.php",
+    "",
+    "",
+    0,
+    0
+   ],
+   [
+    "petshop-av-tiekimas.php",
+    "",
+    "",
+    0,
+    0
+   ],
+   [
+    "petshop-bacs-priminimas.php",
+    "",
+    "",
+    0,
+    0
+   ],
+   [
+    "petshop-darbalaukis.php",
+    "",
+    "",
+    0,
+    18
+   ],
+   [
+    "petshop-desk.php",
+    "",
+    "",
+    0,
+    4
+   ],
+   [
+    "petshop-fakt-reklama.php",
+    "Petshop Fakt Reklama",
+    "1.1",
+    0,
+    0
+   ],
+   [
+    "petshop-fakt-siuntos.php",
+    "Petshop Faktai — Siuntos",
+    "1.7",
+    0,
+    0
+   ],
+   [
+    "petshop-gavimas.php",
+    "",
+    "",
+    0,
+    0
+   ],
+   [
+    "petshop-islaidos.php",
+    "Petshop Islaidos",
+    "1.0",
+    0,
+    0
+   ],
+   [
+    "petshop-juosta.php",
+    "",
+    "",
+    0,
+    0
+   ],
+   [
+    "petshop-katalogas.php",
+    "",
+    "",
+    0,
+    0
+   ],
+   [
+    "petshop-klientui.php",
+    "",
+    "",
+    0,
+    5
+   ],
+   [
+    "petshop-partijos.php",
+    "",
+    "",
+    0,
+    0
+   ]
+  ],
+  "snip": [
+   {
+    "id": "648",
+    "name": "Petshop Invoice Doc Type Fix v2 (LIVE)",
+    "active": "1"
+   },
+   {
+    "id": "653",
+    "name": "Petshop Invoice Completed Attach Fix v3 (LIVE)",
+    "active": "1"
+   }
+  ]
+ },
+ "v": "dep-102328",
+ "kurimas": 200,
+ "sid": 7944,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
