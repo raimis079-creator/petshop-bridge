@@ -1,0 +1,239 @@
+{
+ "1": {
+  "v": "S1827a",
+  "parduota": [
+   {
+    "m": "2026-09",
+    "b": "exclusion",
+    "t": "legacy",
+    "k": "maistas",
+    "uzs": "4",
+    "vnt": "4",
+    "be_pvm": "266.93",
+    "su_pvm": "322.98",
+    "sav": "212.65"
+   },
+   {
+    "m": "2026-09",
+    "b": "exclusion",
+    "t": "vf",
+    "k": "maistas",
+    "uzs": "47",
+    "vnt": "113",
+    "be_pvm": "1685.06",
+    "su_pvm": "2038.88",
+    "sav": "1337.86"
+   },
+   {
+    "m": "2026-09",
+    "b": "josera",
+    "t": "vf",
+    "k": "maistas",
+    "uzs": "35",
+    "vnt": "116",
+    "be_pvm": "1099.40",
+    "su_pvm": "1330.35",
+    "sav": "900.03"
+   },
+   {
+    "m": "2026-10",
+    "b": "exclusion",
+    "t": "legacy",
+    "k": "maistas",
+    "uzs": "5",
+    "vnt": "5",
+    "be_pvm": "178.05",
+    "su_pvm": "215.45",
+    "sav": "147.38"
+   },
+   {
+    "m": "2026-10",
+    "b": "exclusion",
+    "t": "vf",
+    "k": "maistas",
+    "uzs": "68",
+    "vnt": "124",
+    "be_pvm": "2291.85",
+    "su_pvm": "2773.14",
+    "sav": "1824.14"
+   },
+   {
+    "m": "2026-10",
+    "b": "josera",
+    "t": "legacy",
+    "k": "maistas",
+    "uzs": "5",
+    "vnt": "6",
+    "be_pvm": "94.44",
+    "su_pvm": "114.26",
+    "sav": "74.32"
+   },
+   {
+    "m": "2026-10",
+    "b": "josera",
+    "t": "vf",
+    "k": "maistas",
+    "uzs": "41",
+    "vnt": "161",
+    "be_pvm": "1075.21",
+    "su_pvm": "1301.07",
+    "sav": "890.51"
+   },
+   {
+    "m": "2026-11",
+    "b": "exclusion",
+    "t": "vf",
+    "k": "maistas",
+    "uzs": "16",
+    "vnt": "38",
+    "be_pvm": "567.11",
+    "su_pvm": "686.21",
+    "sav": "452.70"
+   },
+   {
+    "m": "2026-11",
+    "b": "josera",
+    "t": "legacy",
+    "k": "maistas",
+    "uzs": "2",
+    "vnt": "2",
+    "be_pvm": "98.33",
+    "su_pvm": "118.98",
+    "sav": "78.50"
+   },
+   {
+    "m": "2026-11",
+    "b": "josera",
+    "t": "vf",
+    "k": "maistas",
+    "uzs": "4",
+    "vnt": "7",
+    "be_pvm": "67.89",
+    "su_pvm": "82.13",
+    "sav": "56.40"
+   }
+  ],
+  "cols_ps_partijos": [
+   "id",
+   "product_id",
+   "gauta",
+   "kiekis_gautas",
+   "kiekis_liko",
+   "savikaina_eur",
+   "savikaina_orig",
+   "valiuta",
+   "kursas",
+   "geriausia_iki",
+   "tiekejas",
+   "importuota",
+   "tiekimas_id",
+   "pastaba",
+   "sukurta",
+   "user_id",
+   "atsaukta"
+  ],
+  "n_ps_partijos": "1298",
+  "smp_ps_partijos": [
+   {
+    "id": "4631",
+    "product_id": "21331",
+    "gauta": "2026-11-04",
+    "kiekis_gautas": "1",
+    "kiekis_liko": "1",
+    "savikaina_eur": "1.3300",
+    "savikaina_orig": null,
+    "valiuta": "EUR",
+    "kursas": "1.000000",
+    "geriausia_iki": null,
+    "tiekejas": "vf",
+    "importuota": "0",
+    "tiekimas_id": "69",
+    "pastaba": "Tiekimas: VF partija #69",
+    "sukurta": "2026-11-04 12:14:18",
+    "user_id": "5788",
+    "atsaukta": "0"
+   },
+   {
+    "id": "4630",
+    "product_id": "22966",
+    "gauta": "2026-11-04",
+    "kiekis_gautas": "1",
+    "kiekis_liko": "1",
+    "savikaina_eur": "2.9000",
+    "savikaina_orig": null,
+    "valiuta": "EUR",
+    "kursas": "1.000000",
+    "geriausia_iki": null,
+    "tiekejas": "vf",
+    "importuota": "0",
+    "tiekimas_id": "69",
+    "pastaba": "Tiekimas: VF partija #69",
+    "sukurta": "2026-11-04 12:14:18",
+    "user_id": "5788",
+    "atsaukta": "0"
+   }
+  ],
+  "cols_ps_tiekimas": [
+   "id",
+   "tiekejas",
+   "busena",
+   "sukurta",
+   "uzsakyta",
+   "gauta",
+   "siuntos_kodas",
+   "pastaba",
+   "pristatymas",
+   "svoris",
+   "venipak_pack",
+   "venipak_manifest",
+   "dezes"
+  ],
+  "n_ps_tiekimas": "49",
+  "smp_ps_tiekimas": [
+   {
+    "id": "71",
+    "tiekejas": "vf",
+    "busena": "uzsakyta",
+    "sukurta": "2026-11-04 12:16:45",
+    "uzsakyta": "2026-11-04 12:18:36",
+    "gauta": null,
+    "siuntos_kodas": null,
+    "pastaba": "",
+    "pristatymas": "kurjeris",
+    "svoris": null,
+    "venipak_pack": "V07267E1000669",
+    "venipak_manifest": "07267261104002",
+    "dezes": "1"
+   },
+   {
+    "id": "70",
+    "tiekejas": "zb",
+    "busena": "uzsakyta",
+    "sukurta": "2026-11-04 08:15:59",
+    "uzsakyta": "2026-11-04 08:15:59",
+    "gauta": null,
+    "siuntos_kodas": null,
+    "pastaba": null,
+    "pristatymas": null,
+    "svoris": null,
+    "venipak_pack": null,
+    "venipak_manifest": null,
+    "dezes": "1"
+   }
+  ],
+  "tables": [
+   "gaj6_ps_tiekimas",
+   "gaj6_ps_tiekimas_eil"
+  ],
+  "tables2": [
+   "gaj6_ps_partijos"
+  ]
+ },
+ "v": "dep-202714",
+ "kurimas": 200,
+ "sid": 7953,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
