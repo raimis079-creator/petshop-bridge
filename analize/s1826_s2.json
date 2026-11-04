@@ -1,0 +1,40 @@
+{
+ "1": {
+  "v": "S1826s",
+  "shots": [
+   {
+    "n": "s1826_ex_acc",
+    "u": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?v=1793784704",
+    "w": 390,
+    "h": 3400
+   },
+   {
+    "n": "s1826_ex_all",
+    "u": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?ps_desc_open=all",
+    "w": 390,
+    "h": 3800
+   }
+  ]
+ },
+ "v": "dep-093017",
+ "kurimas": 200,
+ "sid": 7942,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1826_ex_acc": {
+   "status": 201,
+   "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?v=1793784704",
+   "title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg - Petshop.lt",
+   "errors": []
+  },
+  "s1826_ex_all": {
+   "status": 201,
+   "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?ps_desc_open=all",
+   "title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg - Petshop.lt",
+   "errors": []
+  }
+ }
+}
