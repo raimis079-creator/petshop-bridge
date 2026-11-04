@@ -1,0 +1,7529 @@
+{
+ "1": {
+  "v": "S1827d",
+  "md5": "7d607ba08e29c2f36ccaca30450c0c7e",
+  "n": 809,
+  "kodas": {
+   "11": " *  - neskaiciuoja neto is bruto (Q-E0-4): WC eilute jau turi `line_total`",
+   "12": " *    (BE PVM) ir `line_tax` atskirai — abu KOPIJUOJAMI;",
+   "13": " *  - neperskaiciuoja savikainos: kopijuojama is `_ps_savikaina_vnt`, kuria",
+   "14": " *    `petshop-statistika.php` uzsaldo pardavimo momentu (savininko sprendimas",
+   "15": " *    2026-08-15);",
+   "20": " *   p15 petshop-av-reduce     — mazina AV likuti",
+   "21": " *   p20 core/class-event-emitters",
+   "22": " *   p25 petshop-partijos      — nurabo partijas (savikaina tampa galutine)",
+   "23": " *   p30 core/class-refill-engine",
+   "24": " *   p35 CIA — po visu, kad savikaina ir sandelis butu galutiniai.",
+   "25": " *",
+   "26": " * LAIKO ZONA (v1.1, planas v1.4 §3 taisykle 11): VISI `*_at` laukai saugomi",
+   "125": "\t\t\ttasku_sukaupta_ct BIGINT NOT NULL DEFAULT 0,",
+   "126": "\t\t\tpristatymas_paimta_ct BIGINT NOT NULL DEFAULT 0,",
+   "127": "\t\t\tpristatymas_savikaina_ct BIGINT NULL DEFAULT NULL,",
+   "128": "\t\t\tsmall_cart_fee_ct BIGINT NOT NULL DEFAULT 0,",
+   "129": "\t\t\tpvm_ct BIGINT NOT NULL DEFAULT 0,",
+   "131": "\t\t\tmokejimo_budas VARCHAR(48) NOT NULL DEFAULT '',",
+   "132": "\t\t\tmokejimo_mokestis_ct BIGINT NOT NULL DEFAULT 0,",
+   "133": "\t\t\tpakuotes_savikaina_ct BIGINT NOT NULL DEFAULT 0,",
+   "134": "\t\t\tsavikaina_ct BIGINT NOT NULL DEFAULT 0,",
+   "135": "\t\t\tdovanu_savikaina_ct BIGINT NOT NULL DEFAULT 0,",
+   "136": "\t\t\tmarza_ct BIGINT NOT NULL DEFAULT 0,",
+   "137": "\t\t\tkontribucija_ct BIGINT NOT NULL DEFAULT 0,",
+   "195": "\t\t\tkaina_vnt_ct BIGINT NOT NULL DEFAULT 0,",
+   "196": "\t\t\tkaina_reguliari_ct BIGINT NULL DEFAULT NULL,",
+   "197": "\t\t\tsavikaina_vnt_ct BIGINT NULL DEFAULT NULL,",
+   "198": "\t\t\tsavikaina_ct BIGINT NULL DEFAULT NULL,",
+   "199": "\t\t\tsavikainos_saltinis VARCHAR(32) NOT NULL DEFAULT '',",
+   "200": "\t\t\tnuolaida_ct BIGINT NOT NULL DEFAULT 0,",
+   "201": "\t\t\takcija_id BIGINT UNSIGNED NULL DEFAULT NULL,",
+   "391": "\t\t$eil = self::surinkti_eilutes( $order );",
+   "392": "",
+   "393": "\t\t$prekiu_suma = 0; $pvm_eiluciu = 0; $savikaina = 0; $dovanu_sav = 0;",
+   "394": "\t\t$nuolaidos   = 0; $sandeliai = array();",
+   "395": "\t\t/* prekiu_suma_ct = PRIES nuolaida (planas §4.1: marza = prekiu_suma",
+   "396": "\t\t   - nuolaidu - savikaina). Jei cia dedtume line_total (jau PO",
+   "397": "\t\t   nuolaidos), nuolaida butu atimta DU kartus. Faktuose laikom",
+   "398": "\t\t   daugiau informacijos: is bruto visada gali gauti neto, atvirksciai",
+   "402": "\t\t\t$pvm_eiluciu += $r['pvm_ct'];",
+   "403": "\t\t\t$nuolaidos   += $r['nuolaida_ct'];",
+   "404": "\t\t\tif ( $r['savikaina_ct'] !== null ) {",
+   "405": "\t\t\t\tif ( $r['dovana'] ) { $dovanu_sav += $r['savikaina_ct']; }",
+   "406": "\t\t\t\telse { $savikaina += $r['savikaina_ct']; }",
+   "407": "\t\t\t}",
+   "408": "\t\t\tif ( $r['sandelis'] !== '' ) { $sandeliai[ $r['sandelis'] ] = true; }",
+   "427": "",
+   "428": "\t\t/* ---------- kontribucija (planas §4.1) ---------- */",
+   "429": "\t\t$marza = $prekiu_suma - $nuolaidos - $savikaina;",
+   "430": "\t\t$kontr = $marza + $prist_ct - 0 /* pristatymo savikaina — E1b */",
+   "431": "\t\t\t- $mok_ct - $pak_ct - 0 /* tasku_sukaupta — sistemos nera */ - $dovanu_sav;",
+   "432": "",
+   "466": "\t\t\t'tasku_sukaupta_ct'        => 0,",
+   "467": "\t\t\t'pristatymas_paimta_ct'    => $prist_ct,",
+   "468": "\t\t\t'pristatymas_savikaina_ct' => null,",
+   "469": "\t\t\t'small_cart_fee_ct'        => $fee_ct,",
+   "470": "\t\t\t'pvm_ct'                   => $pvm_ct,",
+   "472": "\t\t\t'mokejimo_budas'           => mb_substr( $budas, 0, 48 ),",
+   "473": "\t\t\t'mokejimo_mokestis_ct'     => $mok_ct,",
+   "474": "\t\t\t'pakuotes_savikaina_ct'    => $pak_ct,",
+   "475": "\t\t\t'savikaina_ct'             => $savikaina,",
+   "476": "\t\t\t'dovanu_savikaina_ct'      => $dovanu_sav,",
+   "477": "\t\t\t'marza_ct'                 => $marza,",
+   "478": "\t\t\t'kontribucija_ct'          => $kontr,",
+   "584": "\t\t\t$sub_ct   = self::ct( $it->get_subtotal() );",
+   "585": "",
+   "586": "\t\t\t$sav_v = $it->get_meta( '_ps_savikaina_vnt', true );",
+   "587": "\t\t\t$turi  = ( $sav_v !== '' && $sav_v !== null );",
+   "588": "\t\t\t$sav_vnt_ct = $turi ? self::ct( (float) $sav_v ) : null;",
+   "613": "\t\t\t\t$rink_id = $kont[ $tevo_raktas ]; $rink_tipas = 'mnm'; $rink_raktas = $tevo_raktas;",
+   "614": "\t\t\t} else {",
+   "615": "\t\t\t\t$baze = (int) get_post_meta( $pid, '_dp_base_product_id', true );",
+   "616": "\t\t\t\t$pqty = (int) get_post_meta( $pid, '_dp_pack_qty', true );",
+   "617": "\t\t\t\tif ( $baze && $pqty > 0 ) { $rink_id = $pid; $rink_tipas = 'dp'; }",
+   "618": "\t\t\t}",
+   "647": "\t\t\t\t'kaina_vnt_ct'            => $kiek > 0 ? (int) round( $kaina_ct / $kiek ) : 0,",
+   "648": "\t\t\t\t'kaina_reguliari_ct'      => $reg_ct,   /* _regular_price, NULL jei nera */",
+   "649": "\t\t\t\t'savikaina_vnt_ct'        => $sav_vnt_ct,",
+   "650": "\t\t\t\t'savikaina_ct'            => $sav_ct,",
+   "651": "\t\t\t\t'savikainos_saltinis'     => mb_substr( (string) $it->get_meta( '_ps_savikaina_saltinis', true ), 0, 32 ),",
+   "652": "\t\t\t\t'nuolaida_ct'             => max( 0, $sub_ct - $kaina_ct ),",
+   "653": "\t\t\t\t'akcija_id'               => null,",
+   "793": "\t\t\t\t'eiluciu_neto_vs_woo'     => array( $sum_kaina, $woo_items, $sum_kaina === $woo_items ),",
+   "794": "\t\t\t\t'neto_faktas_vs_woo'      => array( (int) $u['prekiu_suma_ct'] - (int) $u['nuolaidu_ct'], $woo_items, ( (int) $u['prekiu_suma_ct'] - (int) $u['nuolaidu_ct'] ) === $woo_items ),",
+   "795": "\t\t\t\t'marza_perskaiciuota'     => array( (int) $u['marza_ct'], (int) $u['prekiu_suma_ct'] - (int) $u['nuolaidu_ct'] - (int) $u['savikaina_ct'], (int) $u['marza_ct'] === ( (int) $u['prekiu_suma_ct'] - (int) $u['nuolaidu_ct'] - (int) $u['savikaina_ct'] ) ),",
+   "796": "\t\t\t\t'pvm_faktas_vs_woo'       => array( (int) $u['pvm_ct'], $woo_tax, (int) $u['pvm_ct'] === $woo_tax ),",
+   "797": "\t\t\t\t'viso_faktas_vs_woo'      => array( (int) $u['viso_ct'], $woo_total, (int) $u['viso_ct'] === $woo_total ),"
+  },
+  "dp": [
+   {
+    "ID": "35096",
+    "t": "20 vnt. rudų kiaulės knyslių",
+    "base": "16302",
+    "qty": "20",
+    "pack_cost": "5.4",
+    "base_cost": "0.27"
+   },
+   {
+    "ID": "35098",
+    "t": "20 vnt. rudų jaučio ausų",
+    "base": "16311",
+    "qty": "20",
+    "pack_cost": "12.236",
+    "base_cost": "0.61"
+   },
+   {
+    "ID": "35099",
+    "t": "20 vnt. baltų jaučio ausų",
+    "base": "19098",
+    "qty": "20",
+    "pack_cost": "13.176",
+    "base_cost": "0.66"
+   },
+   {
+    "ID": "35306",
+    "t": "20 vnt. baltų kiaulės knyslių",
+    "base": "19095",
+    "qty": "20",
+    "pack_cost": "5.4",
+    "base_cost": "0.27"
+   },
+   {
+    "ID": "35856",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, žaliosios arbatos kvap",
+    "base": "17659",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "35855",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, vyšnių žiedų kvapo, 6 ",
+    "base": "17662",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "35854",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, vanilės kvapo, 6 l (2,",
+    "base": "17665",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "35853",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, su aktyvuota anglimi, ",
+    "base": "17668",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "35852",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, pušies kvapo, 6 l (2,5",
+    "base": "17671",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "35851",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, pienelio kvapo, 6 l (2",
+    "base": "17674",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "35850",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, persikų kvapo, 6 l (2,",
+    "base": "17677",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "35849",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, obuolių su cinamonu kv",
+    "base": "17680",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3"
+   },
+   {
+    "ID": "35848",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, obuolių kvapo, 6 l (2,",
+    "base": "17683",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "35847",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, melionų kvapo, 6 l (2,",
+    "base": "17686",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "35846",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, levandų kvapo, 6 l (2,",
+    "base": "17689",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "35845",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, ledų kvapo, 6 l (2,5 k",
+    "base": "17692",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "35844",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, kokoso kvapo, 6 l (2,5",
+    "base": "17695",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.30"
+   },
+   {
+    "ID": "35843",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, kavos kvapo, 6 l (2,5 ",
+    "base": "17698",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "35842",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, citrinų kvapo, 6 l (2,",
+    "base": "17701",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "35841",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, arbūzų kvapo, 6 l (2,5",
+    "base": "17704",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "35840",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, alavijo / aloe vera kv",
+    "base": "17707",
+    "qty": "8",
+    "pack_cost": null,
+    "base_cost": "2.3000"
+   },
+   {
+    "ID": "36002",
+    "t": "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su",
+    "base": "18590",
+    "qty": "2",
+    "pack_cost": "28.713",
+    "base_cost": null
+   },
+   {
+    "ID": "36003",
+    "t": "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su",
+    "base": "18587",
+    "qty": "2",
+    "pack_cost": "74.97",
+    "base_cost": null
+   },
+   {
+    "ID": "36301",
+    "t": "6 vnt. Ontario konservų šunims su ėriena ir šaltalankiu, 400",
+    "base": "17159",
+    "qty": "6",
+    "pack_cost": "8.34",
+    "base_cost": "1.39"
+   },
+   {
+    "ID": "36302",
+    "t": "6 vnt. Ontario konservų šunims su veršiena ir ciberžole, 400",
+    "base": "17176",
+    "qty": "6",
+    "pack_cost": "8.34",
+    "base_cost": "1.39"
+   },
+   {
+    "ID": "36334",
+    "t": "2 vnt. ROYAL CANIN URINARY CARE 2 KG - sausas maistas suaugu",
+    "base": "16460",
+    "qty": "2",
+    "pack_cost": "33.86",
+    "base_cost": "16.93"
+   },
+   {
+    "ID": "36335",
+    "t": "2 vnt. ROYAL CANIN STERILISED 37, 4 KG - sausas maistas suau",
+    "base": "16466",
+    "qty": "2",
+    "pack_cost": "48.3",
+    "base_cost": "24.15"
+   },
+   {
+    "ID": "36336",
+    "t": "2 vnt. ROYAL CANIN STERILISED 37, 2 KG - sausas maistas suau",
+    "base": "16469",
+    "qty": "2",
+    "pack_cost": "28.38",
+    "base_cost": "14.19"
+   },
+   {
+    "ID": "36337",
+    "t": "2 vnt. ROYAL CANIN STERILISED 37, 10 kg, sausas pašaras ster",
+    "base": "16472",
+    "qty": "2",
+    "pack_cost": "100.66",
+    "base_cost": "50.33"
+   },
+   {
+    "ID": "36338",
+    "t": "2 vnt. ROYAL CANIN SENSIBLE 33, 2 kg, sausas pašaras jautrio",
+    "base": "16478",
+    "qty": "2",
+    "pack_cost": "28.38",
+    "base_cost": "14.19"
+   },
+   {
+    "ID": "36339",
+    "t": "2 vnt. ROYAL CANIN SENSIBLE 33, 10 kg, sausas pašaras jautri",
+    "base": "16481",
+    "qty": "2",
+    "pack_cost": "96.7",
+    "base_cost": "48.35"
+   },
+   {
+    "ID": "36340",
+    "t": "2 vnt. ROYAL CANIN INDOOR 2 KG - sausas maistas kambarinėms ",
+    "base": "16510",
+    "qty": "2",
+    "pack_cost": "28.08",
+    "base_cost": "14.04"
+   },
+   {
+    "ID": "36341",
+    "t": "2 vnt. ROYAL CANIN INDOOR 10 KG - sausas maistas kambarinėms",
+    "base": "16513",
+    "qty": "2",
+    "pack_cost": "102.66",
+    "base_cost": "51.33"
+   },
+   {
+    "ID": "36342",
+    "t": "2 vnt. ROYAL CANIN HAIRBALL CARE 2 KG - sausas maistas suaug",
+    "base": "16516",
+    "qty": "2",
+    "pack_cost": "34.9",
+    "base_cost": "17.45"
+   },
+   {
+    "ID": "36343",
+    "t": "2 vnt. ROYAL CANIN HAIRBALL CARE 10 KG - sausas maistas suau",
+    "base": "16519",
+    "qty": "2",
+    "pack_cost": "120.02",
+    "base_cost": "60.01"
+   },
+   {
+    "ID": "36344",
+    "t": "2 vnt. ROYAL CANIN HAIR&amp;SKIN CARE 10 KG - sausas maistas",
+    "base": "16525",
+    "qty": "2",
+    "pack_cost": "123.8",
+    "base_cost": "61.90"
+   },
+   {
+    "ID": "36345",
+    "t": "2 vnt. Quattro SB 7kg su ėriena sausas suaugusių mažų veisli",
+    "base": "16555",
+    "qty": "2",
+    "pack_cost": "64.7934",
+    "base_cost": "32.3967"
+   },
+   {
+    "ID": "36346",
+    "t": "2 vnt. Quattro SB 7kg su lašiša ir kriliu sausas suaugusių m",
+    "base": "16558",
+    "qty": "2",
+    "pack_cost": "68.7604",
+    "base_cost": "34.3802"
+   },
+   {
+    "ID": "36347",
+    "t": "2 vnt. Quattro SB 7kg su balta žuvimi ir kriliu sausas senie",
+    "base": "16561",
+    "qty": "2",
+    "pack_cost": "64.7934",
+    "base_cost": "32.3967"
+   },
+   {
+    "ID": "36348",
+    "t": "2 vnt. Quattro SB 7kg su antiena sausas suaugusių mažų veisl",
+    "base": "16564",
+    "qty": "2",
+    "pack_cost": "66.1158",
+    "base_cost": "33.0579"
+   },
+   {
+    "ID": "36349",
+    "t": "2 vnt. Quattro SB 7kg su antiena sausas pašaras mažų veislių",
+    "base": "16567",
+    "qty": "2",
+    "pack_cost": "68.7604",
+    "base_cost": "34.3802"
+   },
+   {
+    "ID": "36350",
+    "t": "2 vnt. Quattro SB 7kg su antiena sausas jaunų mažų veislių š",
+    "base": "16570",
+    "qty": "2",
+    "pack_cost": "68.7604",
+    "base_cost": "34.3802"
+   },
+   {
+    "ID": "36351",
+    "t": "2 vnt. QUATTRO visavertis sausas pašaras suaugusioms sterili",
+    "base": "16576",
+    "qty": "2",
+    "pack_cost": "79.3388",
+    "base_cost": "39.6694"
+   },
+   {
+    "ID": "36352",
+    "t": "2 vnt. QUATTRO visavertis sausas pašaras suaugusioms sterili",
+    "base": "16579",
+    "qty": "2",
+    "pack_cost": "89.9174",
+    "base_cost": "44.9587"
+   },
+   {
+    "ID": "36353",
+    "t": "2 vnt. QUATTRO visavertis sausas pašaras suaugusioms jautrio",
+    "base": "16585",
+    "qty": "2",
+    "pack_cost": "89.9174",
+    "base_cost": "44.9587"
+   },
+   {
+    "ID": "36354",
+    "t": "2 vnt. QUATTRO begrūdis visų veislių suaugusių šunų pašaras ",
+    "base": "16591",
+    "qty": "2",
+    "pack_cost": "31.7356",
+    "base_cost": "15.8678"
+   },
+   {
+    "ID": "36355",
+    "t": "2 vnt. QUATTRO begrūdis visų veislių senjorų/dietinis šunų p",
+    "base": "16597",
+    "qty": "2",
+    "pack_cost": "31.7356",
+    "base_cost": "15.8678"
+   },
+   {
+    "ID": "36356",
+    "t": "2 vnt. QUATTRO begrūdis su ėriena visų veislių suaugusių šun",
+    "base": "16600",
+    "qty": "2",
+    "pack_cost": "33.0578",
+    "base_cost": "16.5289"
+   },
+   {
+    "ID": "36357",
+    "t": "2 vnt. QUATTRO begrūdis su antiena visų veislių suaugusių šu",
+    "base": "16603",
+    "qty": "2",
+    "pack_cost": "31.7356",
+    "base_cost": "15.8678"
+   },
+   {
+    "ID": "36358",
+    "t": "2 vnt. QUATTRO begrūdis su antiena visų veislių jaunų šunų p",
+    "base": "16606",
+    "qty": "2",
+    "pack_cost": "31.7356",
+    "base_cost": "15.8678"
+   },
+   {
+    "ID": "36359",
+    "t": "2 vnt. QUATTRO begrūdis su antiena didelių veislių suaugusių",
+    "base": "16609",
+    "qty": "2",
+    "pack_cost": "31.7356",
+    "base_cost": "15.8678"
+   },
+   {
+    "ID": "36360",
+    "t": "2 vnt. QUATTRO begrūdis su antiena didelių veislių jaunų šun",
+    "base": "16612",
+    "qty": "2",
+    "pack_cost": "31.7356",
+    "base_cost": "15.8678"
+   },
+   {
+    "ID": "36361",
+    "t": "2 vnt. QUATTRO begrūdis lašiša ir kriliu visų veislių suaugu",
+    "base": "16615",
+    "qty": "2",
+    "pack_cost": "33.0578",
+    "base_cost": "16.5289"
+   },
+   {
+    "ID": "36362",
+    "t": "2 vnt. QUATTRO Sterilised su paukštiena sausas sterilizuotų ",
+    "base": "16618",
+    "qty": "2",
+    "pack_cost": "52.8926",
+    "base_cost": "26.4463"
+   },
+   {
+    "ID": "36363",
+    "t": "2 vnt. QUATTRO Mini Salmon su lašiša sausas mažų veislių šun",
+    "base": "16630",
+    "qty": "2",
+    "pack_cost": "48.9256",
+    "base_cost": "24.4628"
+   },
+   {
+    "ID": "36364",
+    "t": "2 vnt. QUATTRO Mini Poultry su paukštiena sausas mažų veisli",
+    "base": "16636",
+    "qty": "2",
+    "pack_cost": "37.0248",
+    "base_cost": "18.5124"
+   },
+   {
+    "ID": "36365",
+    "t": "2 vnt. QUATTRO Mini Lamb su ėriena sausas mažų veislių šunų ",
+    "base": "16642",
+    "qty": "2",
+    "pack_cost": "47.6034",
+    "base_cost": "23.8017"
+   },
+   {
+    "ID": "36366",
+    "t": "2 vnt. QUATTRO Maxi Poultry su paukštiena sausas didelių vei",
+    "base": "16648",
+    "qty": "2",
+    "pack_cost": "17.19",
+    "base_cost": "8.5950"
+   },
+   {
+    "ID": "36367",
+    "t": "2 vnt. QUATTRO Junior su paukštiena sausas jaunų šunų pašara",
+    "base": "16660",
+    "qty": "2",
+    "pack_cost": "37.0248",
+    "base_cost": "18.5124"
+   },
+   {
+    "ID": "36368",
+    "t": "2 vnt. QUATTRO Extra Salmon su lašiša sausas šunų pašaras, 3",
+    "base": "16666",
+    "qty": "2",
+    "pack_cost": "23.8016",
+    "base_cost": "11.9008"
+   },
+   {
+    "ID": "36369",
+    "t": "2 vnt. QUATTRO Extra Poultry su paukštiena sausas šunų pašar",
+    "base": "16672",
+    "qty": "2",
+    "pack_cost": "17.19",
+    "base_cost": "8.5950"
+   },
+   {
+    "ID": "36370",
+    "t": "2 vnt. QUATTRO Extra Poultry su paukštiena sausas kačių paša",
+    "base": "16678",
+    "qty": "2",
+    "pack_cost": "50.248",
+    "base_cost": "25.1240"
+   },
+   {
+    "ID": "36371",
+    "t": "2 vnt. QUATTRO Extra Lamb su ėriena sausas šunų pašaras, 3kg",
+    "base": "16684",
+    "qty": "2",
+    "pack_cost": "22.48",
+    "base_cost": "11.2397"
+   },
+   {
+    "ID": "36372",
+    "t": "2 vnt. Prins ProCare Puppy &amp; Junior Perfect Start, presu",
+    "base": "16776",
+    "qty": "2",
+    "pack_cost": "26.68",
+    "base_cost": "13.34"
+   },
+   {
+    "ID": "36373",
+    "t": "2 vnt. Prins ProCare Protection Super Active sausas maistas ",
+    "base": "16779",
+    "qty": "2",
+    "pack_cost": "35.1",
+    "base_cost": "17.55"
+   },
+   {
+    "ID": "36374",
+    "t": "2 vnt. Prins ProCare Protection Puppy sausas maistas šuniuka",
+    "base": "16785",
+    "qty": "2",
+    "pack_cost": "66.14",
+    "base_cost": "33.07"
+   },
+   {
+    "ID": "36375",
+    "t": "2 vnt. Prins ProCare Protection Puppy sausas maistas šuniuka",
+    "base": "16788",
+    "qty": "2",
+    "pack_cost": "30.42",
+    "base_cost": "15.21"
+   },
+   {
+    "ID": "36376",
+    "t": "2 vnt. Prins ProCare Protection Lamb Hypoallergic sausas mai",
+    "base": "16791",
+    "qty": "2",
+    "pack_cost": "36.44",
+    "base_cost": "18.22"
+   },
+   {
+    "ID": "36377",
+    "t": "2 vnt. Prins ProCare Grainfree Skin &amp; Coat begrūdis saus",
+    "base": "16857",
+    "qty": "2",
+    "pack_cost": "40.14",
+    "base_cost": "20.07"
+   },
+   {
+    "ID": "36378",
+    "t": "2 vnt. Prins ProCare Grainfree Sensible Hypoallergic begrūdi",
+    "base": "16865",
+    "qty": "2",
+    "pack_cost": "40.04",
+    "base_cost": "20.02"
+   },
+   {
+    "ID": "36379",
+    "t": "2 vnt. Prins ProCare Grainfree Adult Pro Energy begrūdis sau",
+    "base": "16876",
+    "qty": "2",
+    "pack_cost": "37.74",
+    "base_cost": "18.87"
+   },
+   {
+    "ID": "36380",
+    "t": "2 vnt. Prins Diet Skin &amp; Intestinal Hypoallergic sausas ",
+    "base": "16886",
+    "qty": "2",
+    "pack_cost": "86.2",
+    "base_cost": "43.1"
+   },
+   {
+    "ID": "36381",
+    "t": "2 vnt. Ontario Adult Mini Lamb and Brown Rice, 2,25 kg, paša",
+    "base": "17265",
+    "qty": "2",
+    "pack_cost": "20.32",
+    "base_cost": "10.16"
+   },
+   {
+    "ID": "36382",
+    "t": "2 vnt. Ambrosia begrūdis su šviežia kalakutiena ir antiena s",
+    "base": "19715",
+    "qty": "2",
+    "pack_cost": "15.24",
+    "base_cost": "7.6200"
+   },
+   {
+    "ID": "36383",
+    "t": "2 vnt. Ambrosia begrūdis su triušiena ir šviežia kalakutiena",
+    "base": "19725",
+    "qty": "2",
+    "pack_cost": "15.24",
+    "base_cost": "7.6200"
+   },
+   {
+    "ID": "36384",
+    "t": "2 vnt. Ambrosia Senior begrūdis su kalakutiena ir šviežia la",
+    "base": "19735",
+    "qty": "2",
+    "pack_cost": "15.24",
+    "base_cost": "7.6200"
+   },
+   {
+    "ID": "36385",
+    "t": "2 vnt. AMBROSIA begrūdis su ėriena ir šviežia lašiša sausas ",
+    "base": "19747",
+    "qty": "2",
+    "pack_cost": "15.54",
+    "base_cost": "7.7700"
+   },
+   {
+    "ID": "36386",
+    "t": "2 vnt. AMBROSIA begrūdis su ėriena ir šviežia elniena sausas",
+    "base": "19756",
+    "qty": "2",
+    "pack_cost": "15.54",
+    "base_cost": "7.7700"
+   },
+   {
+    "ID": "36387",
+    "t": "2 vnt. AMBROSIA begrūdis su jautiena ir šviežia lašiša sausa",
+    "base": "19765",
+    "qty": "2",
+    "pack_cost": "15.24",
+    "base_cost": "7.6200"
+   },
+   {
+    "ID": "36388",
+    "t": "2 vnt. AMBROSIA Junior begrūdis su šviežia vištiena ir lašiš",
+    "base": "19780",
+    "qty": "2",
+    "pack_cost": "14.74",
+    "base_cost": "7.3700"
+   },
+   {
+    "ID": "36389",
+    "t": "2 vnt. Monge mini puppy sausas pašaras (ėriena ir ryžiai) 2,",
+    "base": "12538",
+    "qty": "2",
+    "pack_cost": "25.398",
+    "base_cost": null
+   },
+   {
+    "ID": "36390",
+    "t": "2 vnt. Monge spec. line monoprotein mini adult sausas pašara",
+    "base": "12540",
+    "qty": "2",
+    "pack_cost": "23.742",
+    "base_cost": null
+   },
+   {
+    "ID": "36391",
+    "t": "2 vnt. Monge spec. line monoprotein mini adult sausas pašara",
+    "base": "12541",
+    "qty": "2",
+    "pack_cost": "57.312",
+    "base_cost": null
+   },
+   {
+    "ID": "36392",
+    "t": "2 vnt. Monge puppy sausas pašaras (ėriena ir ryžiai) 2,5kg",
+    "base": "12546",
+    "qty": "2",
+    "pack_cost": "24.984",
+    "base_cost": null
+   },
+   {
+    "ID": "36393",
+    "t": "2 vnt. Monge adult sausas pašaras (ėriena, ryžiai, bulvės) 2",
+    "base": "12551",
+    "qty": "2",
+    "pack_cost": "23.526",
+    "base_cost": null
+   },
+   {
+    "ID": "36394",
+    "t": "2 vnt. Monge adult sausas pašaras (lašiša ir ryžiai) 2,5kg",
+    "base": "12553",
+    "qty": "2",
+    "pack_cost": "23.94",
+    "base_cost": null
+   },
+   {
+    "ID": "36395",
+    "t": "2 vnt. Monge spec. line adult sausas pašaras suaugusiems šun",
+    "base": "12557",
+    "qty": "2",
+    "pack_cost": "21.816",
+    "base_cost": null
+   },
+   {
+    "ID": "36396",
+    "t": "2 vnt. Monge adult sausas pašaras (antiena, ryžiai, bulvės) ",
+    "base": "12559",
+    "qty": "2",
+    "pack_cost": "22.626",
+    "base_cost": null
+   },
+   {
+    "ID": "36397",
+    "t": "2 vnt. Monge Daily Line Hairball super premium pašaras suaug",
+    "base": "12659",
+    "qty": "2",
+    "pack_cost": "74.268",
+    "base_cost": null
+   },
+   {
+    "ID": "36398",
+    "t": "2 vnt. Monge VetSolution Dog Dermatosis 2kg",
+    "base": "12694",
+    "qty": "2",
+    "pack_cost": "27.036",
+    "base_cost": null
+   },
+   {
+    "ID": "36399",
+    "t": "2 vnt. Monge VetSolution Dog Gastrointestinal Adult 2kg",
+    "base": "12696",
+    "qty": "2",
+    "pack_cost": "27.036",
+    "base_cost": null
+   },
+   {
+    "ID": "36400",
+    "t": "2 vnt. Monge VetSolution Dog Gastrointestinal Puppy 5kg",
+    "base": "12698",
+    "qty": "2",
+    "pack_cost": "56.628",
+    "base_cost": null
+   },
+   {
+    "ID": "36401",
+    "t": "2 vnt. Monge VetSolution Dog Renal 2kg",
+    "base": "12699",
+    "qty": "2",
+    "pack_cost": "28.386",
+    "base_cost": null
+   },
+   {
+    "ID": "36402",
+    "t": "2 vnt. Monge VetSolution Dog Hepatic 2kg",
+    "base": "12701",
+    "qty": "2",
+    "pack_cost": "27.036",
+    "base_cost": null
+   },
+   {
+    "ID": "36403",
+    "t": "2 vnt. Monge VetSolution Dog Diabetic 2kg",
+    "base": "12707",
+    "qty": "2",
+    "pack_cost": "27.036",
+    "base_cost": null
+   },
+   {
+    "ID": "36404",
+    "t": "2 vnt. Real Dog visavertis pašaras suaugusiems šunims su pau",
+    "base": "12721",
+    "qty": "2",
+    "pack_cost": "28.422",
+    "base_cost": null
+   },
+   {
+    "ID": "36405",
+    "t": "2 vnt. Monge BWild Large Breed (buivoliena, bulvės, lęšiai) ",
+    "base": "12829",
+    "qty": "2",
+    "pack_cost": "98.316",
+    "base_cost": null
+   },
+   {
+    "ID": "36406",
+    "t": "2 vnt. Monge spec. line monoprotein puppy sausas pašaras vis",
+    "base": "13049",
+    "qty": "2",
+    "pack_cost": "25.506",
+    "base_cost": null
+   },
+   {
+    "ID": "36407",
+    "t": "2 vnt. Monge spec.line monoprotein mini Puppy sausas pašaras",
+    "base": "13051",
+    "qty": "2",
+    "pack_cost": "25.506",
+    "base_cost": null
+   },
+   {
+    "ID": "36408",
+    "t": "2 vnt. Monge spec.line monoprotein mini Puppy sausas pašaras",
+    "base": "13052",
+    "qty": "2",
+    "pack_cost": "61.11",
+    "base_cost": null
+   },
+   {
+    "ID": "36409",
+    "t": "2 vnt. Monge spec. line monoprotein puppy sausas pašaras vis",
+    "base": "13053",
+    "qty": "2",
+    "pack_cost": "25.506",
+    "base_cost": null
+   },
+   {
+    "ID": "36410",
+    "t": "2 vnt. Monge spec. line monoprotein adult sausas pašaras vis",
+    "base": "13055",
+    "qty": "2",
+    "pack_cost": "24.264",
+    "base_cost": null
+   },
+   {
+    "ID": "36411",
+    "t": "2 vnt. Monge mini puppy sausas pašaras (ėriena ir ryžiai) 7,",
+    "base": "13869",
+    "qty": "2",
+    "pack_cost": "56.268",
+    "base_cost": null
+   },
+   {
+    "ID": "36412",
+    "t": "2 vnt. Monge Dry Cat Kitten su vištiena 10kg",
+    "base": "13990",
+    "qty": "2",
+    "pack_cost": "81.27",
+    "base_cost": null
+   },
+   {
+    "ID": "36413",
+    "t": "2 vnt. Monge Dry Cat Adult Sterilized 10kg",
+    "base": "13991",
+    "qty": "2",
+    "pack_cost": "79.218",
+    "base_cost": null
+   },
+   {
+    "ID": "36414",
+    "t": "2 vnt. Monge Dry Cat Adult Monoprotein sterilizuotoms katėms",
+    "base": "13992",
+    "qty": "2",
+    "pack_cost": "94.032",
+    "base_cost": null
+   },
+   {
+    "ID": "36415",
+    "t": "2 vnt. Family Dog visavertis pašaras suaugusiems šunims su j",
+    "base": "14173",
+    "qty": "2",
+    "pack_cost": "19.476",
+    "base_cost": null
+   },
+   {
+    "ID": "36416",
+    "t": "2 vnt. FARMINA N&amp;D BROWN - DOG Dry Lamb Spirulina&amp;Ca",
+    "base": "14498",
+    "qty": "2",
+    "pack_cost": "39.618",
+    "base_cost": null
+   },
+   {
+    "ID": "36417",
+    "t": "2 vnt. FARMINA N&amp;D BROWN - DOG Dry Lamb Spirulina&amp;Ca",
+    "base": "14501",
+    "qty": "2",
+    "pack_cost": "39.618",
+    "base_cost": null
+   },
+   {
+    "ID": "36418",
+    "t": "2 vnt. FARMINA N&amp;D BROWN - DOG Dry Lamb Spirulina&amp;Ca",
+    "base": "14502",
+    "qty": "2",
+    "pack_cost": "100.818",
+    "base_cost": null
+   },
+   {
+    "ID": "36419",
+    "t": "2 vnt. FARMINA N&amp;D OCEAN - DOG Dry Cod Pumpkin&amp;Canta",
+    "base": "14503",
+    "qty": "2",
+    "pack_cost": "88.812",
+    "base_cost": null
+   },
+   {
+    "ID": "36420",
+    "t": "2 vnt. FARMINA N&amp;D OCEAN - DOG Dry Cod Pumpkin&amp;Orang",
+    "base": "14506",
+    "qty": "2",
+    "pack_cost": "40.698",
+    "base_cost": null
+   },
+   {
+    "ID": "36421",
+    "t": "2 vnt. FARMINA N&amp;D OCEAN - DOG Dry Cod Pumpkin&amp;Orang",
+    "base": "14507",
+    "qty": "2",
+    "pack_cost": "81.702",
+    "base_cost": null
+   },
+   {
+    "ID": "36422",
+    "t": "2 vnt. FARMINA N&amp;D OCEAN - DOG Dry Herring&amp;Orange AD",
+    "base": "14511",
+    "qty": "2",
+    "pack_cost": "40.698",
+    "base_cost": null
+   },
+   {
+    "ID": "36423",
+    "t": "2 vnt. FARMINA N&amp;D OCEAN - DOG Dry Herring&amp;Orange AD",
+    "base": "14512",
+    "qty": "2",
+    "pack_cost": "81.702",
+    "base_cost": null
+   },
+   {
+    "ID": "36424",
+    "t": "2 vnt. FARMINA N&amp;D OCEAN - DOG Dry Herring&amp;Orange AD",
+    "base": "14513",
+    "qty": "2",
+    "pack_cost": "40.698",
+    "base_cost": null
+   },
+   {
+    "ID": "36425",
+    "t": "2 vnt. FARMINA N&amp;D PRIME - DOG Dry Lamb&amp;Blueberry AD",
+    "base": "14517",
+    "qty": "2",
+    "pack_cost": "38.124",
+    "base_cost": null
+   },
+   {
+    "ID": "36426",
+    "t": "2 vnt. FARMINA N&amp;D PRIME - DOG Dry Wild Boar&amp;Apple A",
+    "base": "14520",
+    "qty": "2",
+    "pack_cost": "38.124",
+    "base_cost": null
+   },
+   {
+    "ID": "36427",
+    "t": "2 vnt. FARMINA N&amp;D PRIME - DOG Dry Wild Boar&amp;Apple A",
+    "base": "14521",
+    "qty": "2",
+    "pack_cost": "78.696",
+    "base_cost": null
+   },
+   {
+    "ID": "36428",
+    "t": "2 vnt. FARMINA N&amp;D PRIME - DOG Dry Wild Boar&amp;Apple A",
+    "base": "14522",
+    "qty": "2",
+    "pack_cost": "38.124",
+    "base_cost": null
+   },
+   {
+    "ID": "36429",
+    "t": "2 vnt. F38890 FARMINA N&amp;D PUMPKIN - DOG Dry Chicken&amp;",
+    "base": "14525",
+    "qty": "2",
+    "pack_cost": "40.572",
+    "base_cost": null
+   },
+   {
+    "ID": "36430",
+    "t": "2 vnt. FARMINA N&amp;D PUMPKIN - DOG Dry Lamb&amp;Blueberry ",
+    "base": "14530",
+    "qty": "2",
+    "pack_cost": "75.996",
+    "base_cost": null
+   },
+   {
+    "ID": "36431",
+    "t": "2 vnt. FARMINA N&amp;D PUMPKIN - DOG Dry Lamb&amp;Blueberry ",
+    "base": "14532",
+    "qty": "2",
+    "pack_cost": "38.124",
+    "base_cost": null
+   },
+   {
+    "ID": "36432",
+    "t": "2 vnt. FARMINA N&amp;D PUMPKIN - DOG Dry Wild Boar&amp;Apple",
+    "base": "14537",
+    "qty": "2",
+    "pack_cost": "38.124",
+    "base_cost": null
+   },
+   {
+    "ID": "36433",
+    "t": "2 vnt. FARMINA N&amp;D PUMPKIN - DOG Dry Wild Boar&amp;Apple",
+    "base": "14539",
+    "qty": "2",
+    "pack_cost": "38.124",
+    "base_cost": null
+   },
+   {
+    "ID": "36434",
+    "t": "2 vnt. FARMINA N&amp;D QUINOA - DOG Dry DIGESTION Lamb&amp;F",
+    "base": "14546",
+    "qty": "2",
+    "pack_cost": "48.636",
+    "base_cost": null
+   },
+   {
+    "ID": "36435",
+    "t": "2 vnt. FARMINA N&amp;D QUINOA - DOG Dry NEUTERED Duck Brocco",
+    "base": "14549",
+    "qty": "2",
+    "pack_cost": "48.636",
+    "base_cost": null
+   },
+   {
+    "ID": "36436",
+    "t": "2 vnt. FARMINA N&amp;D QUINOA - DOG Dry NEUTERED Duck Brocco",
+    "base": "14550",
+    "qty": "2",
+    "pack_cost": "92.628",
+    "base_cost": null
+   },
+   {
+    "ID": "36437",
+    "t": "2 vnt. FARMINA N&amp;D QUINOA - DOG Dry NEUTERED Duck Brocco",
+    "base": "14551",
+    "qty": "2",
+    "pack_cost": "48.636",
+    "base_cost": null
+   },
+   {
+    "ID": "36438",
+    "t": "2 vnt. FARMINA N&amp;D QUINOA - DOG Dry SKIN&amp;COAT Quail&",
+    "base": "14554",
+    "qty": "2",
+    "pack_cost": "46.17",
+    "base_cost": null
+   },
+   {
+    "ID": "36439",
+    "t": "2 vnt. FARMINA N&amp;D QUINOA - DOG Dry WEIGHT MANAGEMENT La",
+    "base": "14559",
+    "qty": "2",
+    "pack_cost": "47.808",
+    "base_cost": null
+   },
+   {
+    "ID": "36440",
+    "t": "2 vnt. FARMINA N&amp;D QUINOA - DOG Dry WEIGHT MANAGEMENT La",
+    "base": "14560",
+    "qty": "2",
+    "pack_cost": "47.808",
+    "base_cost": null
+   },
+   {
+    "ID": "36441",
+    "t": "2 vnt. FARMINA N&amp;D QUINOA - DOG Dry WEIGHT MANAGEMENT La",
+    "base": "14561",
+    "qty": "2",
+    "pack_cost": "92.628",
+    "base_cost": null
+   },
+   {
+    "ID": "36442",
+    "t": "2 vnt. FARMINA N&amp;D TROPICAL SELECTION - DOG Dry Lamb ADU",
+    "base": "14565",
+    "qty": "2",
+    "pack_cost": "38.25",
+    "base_cost": null
+   },
+   {
+    "ID": "36443",
+    "t": "2 vnt. FARMINA N&amp;D TROPICAL SELECTION - DOG Dry Lamb ADU",
+    "base": "14566",
+    "qty": "2",
+    "pack_cost": "24.354",
+    "base_cost": null
+   },
+   {
+    "ID": "36444",
+    "t": "2 vnt. FARMINA N&amp;D TROPICAL SELECTION - DOG Dry Lamb ADU",
+    "base": "14567",
+    "qty": "2",
+    "pack_cost": "76.23",
+    "base_cost": null
+   },
+   {
+    "ID": "36445",
+    "t": "2 vnt. FARMINA N&amp;D TROPICAL SELECTION - DOG Dry Pork ADU",
+    "base": "14569",
+    "qty": "2",
+    "pack_cost": "38.25",
+    "base_cost": null
+   },
+   {
+    "ID": "36446",
+    "t": "2 vnt. FARMINA N&amp;D TROPICAL SELECTION - DOG Dry Pork ADU",
+    "base": "14570",
+    "qty": "2",
+    "pack_cost": "24.354",
+    "base_cost": null
+   },
+   {
+    "ID": "36447",
+    "t": "2 vnt. FARMINA N&amp;D TROPICAL SELECTION - DOG Dry Pork ADU",
+    "base": "14571",
+    "qty": "2",
+    "pack_cost": "76.23",
+    "base_cost": null
+   },
+   {
+    "ID": "36448",
+    "t": "2 vnt. FARMINA N&amp;D TROPICAL SELECTION - DOG Dry Salmon A",
+    "base": "14573",
+    "qty": "2",
+    "pack_cost": "38.25",
+    "base_cost": null
+   },
+   {
+    "ID": "36449",
+    "t": "2 vnt. FARMINA N&amp;D TROPICAL SELECTION - DOG Dry Salmon A",
+    "base": "14574",
+    "qty": "2",
+    "pack_cost": "24.354",
+    "base_cost": null
+   },
+   {
+    "ID": "36450",
+    "t": "2 vnt. FARMINA N&amp;D TROPICAL SELECTION - DOG Dry Salmon A",
+    "base": "14575",
+    "qty": "2",
+    "pack_cost": "76.23",
+    "base_cost": null
+   },
+   {
+    "ID": "36451",
+    "t": "2 vnt. FARMINA N&amp;D WHITE - DOG Dry Sea Bass Spirulina&am",
+    "base": "14577",
+    "qty": "2",
+    "pack_cost": "39.618",
+    "base_cost": null
+   },
+   {
+    "ID": "36452",
+    "t": "2 vnt. FARMINA N&amp;D WHITE - DOG Dry Sea Bass Spirulina&am",
+    "base": "14578",
+    "qty": "2",
+    "pack_cost": "78.966",
+    "base_cost": null
+   },
+   {
+    "ID": "36453",
+    "t": "2 vnt. FARMINA N&amp;D WHITE - DOG Dry Sea Bass Spirulina&am",
+    "base": "14580",
+    "qty": "2",
+    "pack_cost": "39.618",
+    "base_cost": null
+   },
+   {
+    "ID": "36454",
+    "t": "2 vnt. FARMINA N&amp;D WHITE - DOG Dry Sea Bass Spirulina&am",
+    "base": "14581",
+    "qty": "2",
+    "pack_cost": "100.278",
+    "base_cost": null
+   },
+   {
+    "ID": "36455",
+    "t": "2 vnt. FARMINA N&amp;D PUMPKIN - CAT Dry Quail&amp;Pomegr NE",
+    "base": "14605",
+    "qty": "2",
+    "pack_cost": "104.508",
+    "base_cost": null
+   },
+   {
+    "ID": "36456",
+    "t": "2 vnt. FARMINA N&amp;D PUMPKIN - CAT Dry Venison&amp;Apple A",
+    "base": "14608",
+    "qty": "2",
+    "pack_cost": "104.508",
+    "base_cost": null
+   },
+   {
+    "ID": "36457",
+    "t": "2 vnt. FARMINA N&amp;D QUINOA - CAT Dry NEUTERED Duck Brocco",
+    "base": "14614",
+    "qty": "2",
+    "pack_cost": "98.118",
+    "base_cost": null
+   },
+   {
+    "ID": "36458",
+    "t": "2 vnt. FARMINA N&amp;D QUINOA - CAT Dry SKIN&amp;COAT Quail&",
+    "base": "14617",
+    "qty": "2",
+    "pack_cost": "98.118",
+    "base_cost": null
+   },
+   {
+    "ID": "36459",
+    "t": "2 vnt. FARMINA N&amp;D QUINOA - CAT Dry URINARY Duck&amp;Cra",
+    "base": "14620",
+    "qty": "2",
+    "pack_cost": "98.118",
+    "base_cost": null
+   },
+   {
+    "ID": "36460",
+    "t": "2 vnt. FARMINA N&amp;D TROPICAL SELECTION - CAT Dry Lamb, Sp",
+    "base": "14624",
+    "qty": "2",
+    "pack_cost": "109.026",
+    "base_cost": null
+   },
+   {
+    "ID": "36461",
+    "t": "2 vnt. FARMINA N&amp;D TROPICAL SELECTION - CAT Dry Chicken,",
+    "base": "14628",
+    "qty": "2",
+    "pack_cost": "109.026",
+    "base_cost": null
+   },
+   {
+    "ID": "36462",
+    "t": "2 vnt. FARMINA VET LIFE - DOG Dry GASTROINTESTINAL 2 kg",
+    "base": "14631",
+    "qty": "2",
+    "pack_cost": "39.618",
+    "base_cost": null
+   },
+   {
+    "ID": "36463",
+    "t": "2 vnt. FARMINA VET LIFE - DOG Dry GASTROINTESTINAL PUPPY 2 k",
+    "base": "14633",
+    "qty": "2",
+    "pack_cost": "38.25",
+    "base_cost": null
+   },
+   {
+    "ID": "36464",
+    "t": "2 vnt. FARMINA VET LIFE - DOG Dry INTESTINAL ULTRACARE LOW F",
+    "base": "14636",
+    "qty": "2",
+    "pack_cost": "113.94",
+    "base_cost": null
+   },
+   {
+    "ID": "36465",
+    "t": "2 vnt. FARMINA VET LIFE - DOG Dry HEPATIC 2 kg",
+    "base": "14637",
+    "qty": "2",
+    "pack_cost": "39.618",
+    "base_cost": null
+   },
+   {
+    "ID": "36466",
+    "t": "2 vnt. FARMINA VET LIFE - DOG Dry HYPOALLERGENIC Fish&amp;Po",
+    "base": "14639",
+    "qty": "2",
+    "pack_cost": "39.618",
+    "base_cost": null
+   },
+   {
+    "ID": "36467",
+    "t": "2 vnt. FARMINA VET LIFE - DOG Dry HYPOALLERGENIC Pork&amp;Po",
+    "base": "14641",
+    "qty": "2",
+    "pack_cost": "43.722",
+    "base_cost": null
+   },
+   {
+    "ID": "36468",
+    "t": "2 vnt. FARMINA VET LIFE - DOG Dry ULTRAHYPO 2 kg",
+    "base": "14643",
+    "qty": "2",
+    "pack_cost": "43.722",
+    "base_cost": null
+   },
+   {
+    "ID": "36469",
+    "t": "2 vnt. FARMINA VET LIFE - DOG Dry RENAL 2 kg",
+    "base": "14648",
+    "qty": "2",
+    "pack_cost": "39.618",
+    "base_cost": null
+   },
+   {
+    "ID": "36470",
+    "t": "2 vnt. FARMINA VET LIFE - CAT Dry GASTRO INTESTINAL 2 kg",
+    "base": "14660",
+    "qty": "2",
+    "pack_cost": "42.354",
+    "base_cost": null
+   },
+   {
+    "ID": "36471",
+    "t": "2 vnt. FARMINA VET LIFE - CAT Dry GASTRO INTESTINAL 5 kg",
+    "base": "14661",
+    "qty": "2",
+    "pack_cost": "87.426",
+    "base_cost": null
+   },
+   {
+    "ID": "36472",
+    "t": "2 vnt. FARMINA VET LIFE - CAT Dry GASTRO-INTESTINAL 10 kg",
+    "base": "14662",
+    "qty": "2",
+    "pack_cost": "144.828",
+    "base_cost": null
+   },
+   {
+    "ID": "36473",
+    "t": "2 vnt. FARMINA VET LIFE - CAT Dry HEPATIC 2 kg",
+    "base": "14664",
+    "qty": "2",
+    "pack_cost": "42.354",
+    "base_cost": null
+   },
+   {
+    "ID": "36474",
+    "t": "2 vnt. FARMINA VET LIFE - CAT Dry HEPATIC 10 kg",
+    "base": "14665",
+    "qty": "2",
+    "pack_cost": "144.828",
+    "base_cost": null
+   },
+   {
+    "ID": "36475",
+    "t": "2 vnt. FARMINA VET LIFE - CAT Dry ULTRAHYPO 2 kg",
+    "base": "14669",
+    "qty": "2",
+    "pack_cost": "46.458",
+    "base_cost": null
+   },
+   {
+    "ID": "36476",
+    "t": "2 vnt. FARMINA VET LIFE - CAT Dry ULTRAHYPO 5 kg",
+    "base": "14670",
+    "qty": "2",
+    "pack_cost": "98.37",
+    "base_cost": null
+   },
+   {
+    "ID": "36477",
+    "t": "2 vnt. FARMINA VET LIFE - CAT Dry ULTRAHYPO 10 kg",
+    "base": "14671",
+    "qty": "2",
+    "pack_cost": "172.152",
+    "base_cost": null
+   },
+   {
+    "ID": "36478",
+    "t": "2 vnt. FARMINA VET LIFE - CAT Dry RENAL 2 kg",
+    "base": "14674",
+    "qty": "2",
+    "pack_cost": "42.354",
+    "base_cost": null
+   },
+   {
+    "ID": "36479",
+    "t": "2 vnt. FARMINA VET LIFE - CAT Dry RENAL 10 kg",
+    "base": "14675",
+    "qty": "2",
+    "pack_cost": "163.944",
+    "base_cost": null
+   },
+   {
+    "ID": "36480",
+    "t": "2 vnt. FARMINA VET LIFE - CAT Dry STRUVITE 2 kg",
+    "base": "14677",
+    "qty": "2",
+    "pack_cost": "42.354",
+    "base_cost": null
+   },
+   {
+    "ID": "36481",
+    "t": "2 vnt. FARMINA VET LIFE - CAT Dry STRUVITE 10 kg",
+    "base": "14678",
+    "qty": "2",
+    "pack_cost": "144.828",
+    "base_cost": null
+   },
+   {
+    "ID": "36482",
+    "t": "2 vnt. MONGE VetSolution Dog Struvite 2 kg",
+    "base": "14804",
+    "qty": "2",
+    "pack_cost": "27.036",
+    "base_cost": null
+   },
+   {
+    "ID": "36483",
+    "t": "2 vnt. Josicat Classic Sterilised 10 kg sausas maistas katėm",
+    "base": "17965",
+    "qty": "2",
+    "pack_cost": "40.896",
+    "base_cost": null
+   },
+   {
+    "ID": "36484",
+    "t": "2 vnt. JosiCat Crispy Duck sausas pašaras katėms su antiena,",
+    "base": "17972",
+    "qty": "2",
+    "pack_cost": "35.84",
+    "base_cost": null
+   },
+   {
+    "ID": "36485",
+    "t": "2 vnt. Josera Sensicat 2 kg - sausas maistas katėms su jautr",
+    "base": "17983",
+    "qty": "2",
+    "pack_cost": "16.032",
+    "base_cost": null
+   },
+   {
+    "ID": "36486",
+    "t": "2 vnt. Josera SensiCat 10 kg - sausas maistas katėms su jaut",
+    "base": "17986",
+    "qty": "2",
+    "pack_cost": "61.648",
+    "base_cost": null
+   },
+   {
+    "ID": "36487",
+    "t": "2 vnt. Josera Mini Lamb begrūdis (Mini Deluxe) 10 kg - sausa",
+    "base": "18018",
+    "qty": "2",
+    "pack_cost": "63.616",
+    "base_cost": null
+   },
+   {
+    "ID": "36488",
+    "t": "2 vnt. Josera Mini Duck+Potato sausas pašaras mažų veislių š",
+    "base": "18026",
+    "qty": "2",
+    "pack_cost": "22.864",
+    "base_cost": null
+   },
+   {
+    "ID": "36489",
+    "t": "2 vnt. Josera Mini Duck+Potato sausas pašaras mažų veislių š",
+    "base": "18029",
+    "qty": "2",
+    "pack_cost": "72.144",
+    "base_cost": null
+   },
+   {
+    "ID": "36490",
+    "t": "2 vnt. Josera Mini Chicken&amp;Rice 10 kg - sausas maistas s",
+    "base": "18032",
+    "qty": "2",
+    "pack_cost": "36.5888",
+    "base_cost": null
+   },
+   {
+    "ID": "36491",
+    "t": "2 vnt. Josera Marinesse 2 kg - sausas maistas katėms su laši",
+    "base": "18040",
+    "qty": "2",
+    "pack_cost": "17.392",
+    "base_cost": null
+   },
+   {
+    "ID": "36492",
+    "t": "2 vnt. Josera Marinesse 10 kg - sausas maistas katėms su laš",
+    "base": "18043",
+    "qty": "2",
+    "pack_cost": "68.736",
+    "base_cost": null
+   },
+   {
+    "ID": "36493",
+    "t": "2 vnt. Josera Leger 2 kg - sausas maistas katėms, mažiau kal",
+    "base": "18051",
+    "qty": "2",
+    "pack_cost": "16.048",
+    "base_cost": null
+   },
+   {
+    "ID": "36494",
+    "t": "2 vnt. Josera Leger 10 kg - sausas maistas katėms, mažiau ka",
+    "base": "18054",
+    "qty": "2",
+    "pack_cost": "45.048",
+    "base_cost": null
+   },
+   {
+    "ID": "36495",
+    "t": "2 vnt. Josera Kitten grainfree 2 kg - begrūdis sausas maista",
+    "base": "18062",
+    "qty": "2",
+    "pack_cost": "17.44",
+    "base_cost": null
+   },
+   {
+    "ID": "36496",
+    "t": "2 vnt. Josera Kitten grainfree 10 kg - begrūdis sausas maist",
+    "base": "18065",
+    "qty": "2",
+    "pack_cost": "68.672",
+    "base_cost": null
+   },
+   {
+    "ID": "36497",
+    "t": "2 vnt. Josera Kitten 2 kg - sausas maistas kačiukams",
+    "base": "18074",
+    "qty": "2",
+    "pack_cost": "16.08",
+    "base_cost": null
+   },
+   {
+    "ID": "36498",
+    "t": "2 vnt. Josera Kitten 10 kg - sausas maistas kačiukams",
+    "base": "18077",
+    "qty": "2",
+    "pack_cost": "63.344",
+    "base_cost": null
+   },
+   {
+    "ID": "36499",
+    "t": "2 vnt. Josera Indoor 2 kg - sausas maistas naminėms steriliz",
+    "base": "18080",
+    "qty": "2",
+    "pack_cost": "16.016",
+    "base_cost": null
+   },
+   {
+    "ID": "36500",
+    "t": "2 vnt. Josera Indoor 10 kg - sausas maistas naminėms sterili",
+    "base": "18084",
+    "qty": "2",
+    "pack_cost": "70.32",
+    "base_cost": null
+   },
+   {
+    "ID": "36501",
+    "t": "2 vnt. Josera DailyCat 2 kg - begrūdis sausas maistas katėms",
+    "base": "18092",
+    "qty": "2",
+    "pack_cost": "17.44",
+    "base_cost": null
+   },
+   {
+    "ID": "36502",
+    "t": "2 vnt. Josera DailyCat 10 kg - begrūdis sausas maistas katėm",
+    "base": "18095",
+    "qty": "2",
+    "pack_cost": "63.712",
+    "base_cost": null
+   },
+   {
+    "ID": "36503",
+    "t": "2 vnt. Josera Culinesse 2 kg - sausas maistas katėms su laši",
+    "base": "18098",
+    "qty": "2",
+    "pack_cost": "16.048",
+    "base_cost": null
+   },
+   {
+    "ID": "36504",
+    "t": "2 vnt. Josera Culinesse 10 kg - sausas maistas katėms su laš",
+    "base": "18101",
+    "qty": "2",
+    "pack_cost": "60.592",
+    "base_cost": null
+   },
+   {
+    "ID": "36505",
+    "t": "2 vnt. Josera Catelux 2 kg - sausas maistas katėms nuo plauk",
+    "base": "18106",
+    "qty": "2",
+    "pack_cost": "16.032",
+    "base_cost": null
+   },
+   {
+    "ID": "36506",
+    "t": "2 vnt. Josera Catelux 10 kg - sausas maistas katėms nuo plau",
+    "base": "18109",
+    "qty": "2",
+    "pack_cost": "63.36",
+    "base_cost": null
+   },
+   {
+    "ID": "36507",
+    "t": "2 vnt. Josera SensiPlus sausas pašaras jautriems šunims su a",
+    "base": "19920",
+    "qty": "2",
+    "pack_cost": "19.104",
+    "base_cost": null
+   },
+   {
+    "ID": "36508",
+    "t": "2 vnt. JosiCat Tasty Beef sausas pašaras katėms su jautiena,",
+    "base": "20391",
+    "qty": "2",
+    "pack_cost": "35.84",
+    "base_cost": null
+   },
+   {
+    "ID": "36509",
+    "t": "2 vnt. Exclusion Mono Protein Mediterraneo begrūdis sausas p",
+    "base": "20539",
+    "qty": "2",
+    "pack_cost": "22.831",
+    "base_cost": null
+   },
+   {
+    "ID": "36510",
+    "t": "2 vnt. Exclusion Mono Protein begrūdis sausas pašaras mažų v",
+    "base": "20541",
+    "qty": "2",
+    "pack_cost": "57.817",
+    "base_cost": null
+   },
+   {
+    "ID": "36511",
+    "t": "2 vnt. Exclusion Hypoallergenic sausas pašaras šuniukams su ",
+    "base": "20957",
+    "qty": "2",
+    "pack_cost": "32.538",
+    "base_cost": null
+   },
+   {
+    "ID": "36512",
+    "t": "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras vi",
+    "base": "21131",
+    "qty": "2",
+    "pack_cost": "24.531",
+    "base_cost": null
+   },
+   {
+    "ID": "36513",
+    "t": "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras ma",
+    "base": "21135",
+    "qty": "2",
+    "pack_cost": "20.264",
+    "base_cost": null
+   },
+   {
+    "ID": "36514",
+    "t": "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras vi",
+    "base": "21145",
+    "qty": "2",
+    "pack_cost": "24.531",
+    "base_cost": null
+   },
+   {
+    "ID": "36515",
+    "t": "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras ma",
+    "base": "21149",
+    "qty": "2",
+    "pack_cost": "20.264",
+    "base_cost": null
+   },
+   {
+    "ID": "36516",
+    "t": "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras ma",
+    "base": "21153",
+    "qty": "2",
+    "pack_cost": "52.462",
+    "base_cost": null
+   },
+   {
+    "ID": "36517",
+    "t": "2 vnt. JosiDog Active sausas pašaras šunims, 2,7 kg",
+    "base": "21360",
+    "qty": "2",
+    "pack_cost": "9.92",
+    "base_cost": null
+   },
+   {
+    "ID": "36518",
+    "t": "2 vnt. JosiDog Adult Sensitive sausas pašaras šunims, 2,7 kg",
+    "base": "21362",
+    "qty": "2",
+    "pack_cost": "9.936",
+    "base_cost": null
+   },
+   {
+    "ID": "36519",
+    "t": "2 vnt. JosiDog Regular sausas pašaras šunims, 2,7 kg",
+    "base": "21368",
+    "qty": "2",
+    "pack_cost": "9.744",
+    "base_cost": null
+   },
+   {
+    "ID": "36520",
+    "t": "2 vnt. JosiCat Kitten sausas pašaras jaunoms katėms, 10 kg",
+    "base": "21374",
+    "qty": "2",
+    "pack_cost": "42.864",
+    "base_cost": null
+   },
+   {
+    "ID": "36521",
+    "t": "2 vnt. Josera Senior pašaras pagyvenusioms katėms, 2kg",
+    "base": "21785",
+    "qty": "2",
+    "pack_cost": "16.096",
+    "base_cost": null
+   },
+   {
+    "ID": "36522",
+    "t": "2 vnt. Josera MiniJunior Duck + Salmon sausas pašaras mažų v",
+    "base": "25383",
+    "qty": "2",
+    "pack_cost": "19.392",
+    "base_cost": null
+   },
+   {
+    "ID": "36523",
+    "t": "2 vnt. Josera Mini Salmon+Chicken sausas pašaras mažų veisli",
+    "base": "25391",
+    "qty": "2",
+    "pack_cost": "57.376",
+    "base_cost": null
+   },
+   {
+    "ID": "36524",
+    "t": "2 vnt. Josera Mini Chicken and Rice sausas pašaras mažų veis",
+    "base": "25399",
+    "qty": "2",
+    "pack_cost": "19.392",
+    "base_cost": null
+   },
+   {
+    "ID": "36525",
+    "t": "2 vnt. Josera Mini Lamb begrūdis sausas pašaras mažų veislių",
+    "base": "25407",
+    "qty": "2",
+    "pack_cost": "19.392",
+    "base_cost": null
+   },
+   {
+    "ID": "36526",
+    "t": "2 vnt. Josera Lamb + Rice A/S sausas pašaras šunims su ėrien",
+    "base": "25419",
+    "qty": "2",
+    "pack_cost": "19.536",
+    "base_cost": null
+   },
+   {
+    "ID": "36527",
+    "t": "2 vnt. Josera Kids sausas pašaras jauniems šunims su paukšti",
+    "base": "25471",
+    "qty": "2",
+    "pack_cost": "17.424",
+    "base_cost": null
+   },
+   {
+    "ID": "36528",
+    "t": "2 vnt. Josera Hypoallergenic begrūdis sausas jautriems pašar",
+    "base": "26445",
+    "qty": "2",
+    "pack_cost": "22.32",
+    "base_cost": null
+   },
+   {
+    "ID": "36529",
+    "t": "2 vnt. Josera Festival sausas pašaras šunims su lašiša, 3 kg",
+    "base": "26449",
+    "qty": "2",
+    "pack_cost": "18.624",
+    "base_cost": null
+   },
+   {
+    "ID": "36530",
+    "t": "2 vnt. JosiDog Economy sausas pašaras šunims, 15+3kg AKCIJA",
+    "base": "26899",
+    "qty": "2",
+    "pack_cost": "31.728",
+    "base_cost": null
+   },
+   {
+    "ID": "36531",
+    "t": "2 vnt. JosiDog Economy sausas pašaras šunims, 2,7 kg",
+    "base": "26909",
+    "qty": "2",
+    "pack_cost": "7.344",
+    "base_cost": null
+   },
+   {
+    "ID": "36532",
+    "t": "2 vnt. Pašaras JosiCat Sterilised Classic, 15+3kg AKCIJA",
+    "base": "27126",
+    "qty": "2",
+    "pack_cost": "63.984",
+    "base_cost": null
+   },
+   {
+    "ID": "36533",
+    "t": "2 vnt. Josera A/S Lamb + Rice sausas pašaras šunims su ėrien",
+    "base": "27128",
+    "qty": "2",
+    "pack_cost": "62.48",
+    "base_cost": null
+   },
+   {
+    "ID": "36534",
+    "t": "2 vnt. Josera Kids sausas pašaras jauniems šunims su paukšti",
+    "base": "27130",
+    "qty": "2",
+    "pack_cost": "53.488",
+    "base_cost": null
+   },
+   {
+    "ID": "36535",
+    "t": "2 vnt. FARMINA N&amp;D BROWN - DOG Dry Lamb Spirulina&amp;Ca",
+    "base": "33229",
+    "qty": "2",
+    "pack_cost": "100.818",
+    "base_cost": null
+   },
+   {
+    "ID": "36536",
+    "t": "2 vnt. FARMINA N&amp;D PRIME - DOG Dry Lamb&amp;Blueberry AD",
+    "base": "33231",
+    "qty": "2",
+    "pack_cost": "78.696",
+    "base_cost": null
+   },
+   {
+    "ID": "36537",
+    "t": "2 vnt. FARMINA N&amp;D PUMPKIN - DOG Dry Lamb&amp;Blueberry ",
+    "base": "33235",
+    "qty": "2",
+    "pack_cost": "40.572",
+    "base_cost": null
+   },
+   {
+    "ID": "36538",
+    "t": "2 vnt. FARMINA N&amp;D PUMPKIN - DOG Dry Lamb&amp;Blueberry ",
+    "base": "33239",
+    "qty": "2",
+    "pack_cost": "73.53",
+    "base_cost": null
+   },
+   {
+    "ID": "36539",
+    "t": "2 vnt. FARMINA N&amp;D PUMPKIN - DOG Dry Wild Boar&amp;Apple",
+    "base": "33243",
+    "qty": "2",
+    "pack_cost": "73.53",
+    "base_cost": null
+   },
+   {
+    "ID": "36540",
+    "t": "2 vnt. FARMINA N&amp;D TROPICAL SELECTION - DOG Dry Lamb PUP",
+    "base": "33251",
+    "qty": "2",
+    "pack_cost": "39.348",
+    "base_cost": null
+   },
+   {
+    "ID": "36541",
+    "t": "2 vnt. FARMINA N&amp;D OCEAN - CAT Dry Cod Shrimp Pumpkin&am",
+    "base": "33259",
+    "qty": "2",
+    "pack_cost": "99.612",
+    "base_cost": null
+   },
+   {
+    "ID": "36542",
+    "t": "2 vnt. FARMINA N&amp;D PRIME - CAT Dry Wild Boar&amp;Apple A",
+    "base": "33275",
+    "qty": "2",
+    "pack_cost": "53.28",
+    "base_cost": null
+   },
+   {
+    "ID": "36543",
+    "t": "2 vnt. FARMINA VET LIFE - DOG Dry DIABETIC 2 kg",
+    "base": "33370",
+    "qty": "2",
+    "pack_cost": "39.618",
+    "base_cost": null
+   },
+   {
+    "ID": "37415",
+    "t": "6 vnt. Monge VetSolution Dog Wet Gastrointestinal 400g",
+    "base": "33984",
+    "qty": "6",
+    "pack_cost": "10.26",
+    "base_cost": null
+   },
+   {
+    "ID": "37416",
+    "t": "12 vnt. Monge VetSolution Dog Wet Gastrointestinal 400g",
+    "base": "33984",
+    "qty": "12",
+    "pack_cost": "20.52",
+    "base_cost": null
+   },
+   {
+    "ID": "37417",
+    "t": "24 vnt. Monge VetSolution Dog Wet Gastrointestinal 400g",
+    "base": "33984",
+    "qty": "24",
+    "pack_cost": "41.04",
+    "base_cost": null
+   },
+   {
+    "ID": "37424",
+    "t": "6 vnt. Monge VetSolution Dog Wet HYPO MONO Pork 400g",
+    "base": "27955",
+    "qty": "6",
+    "pack_cost": "10.26",
+    "base_cost": null
+   },
+   {
+    "ID": "37425",
+    "t": "12 vnt. Monge VetSolution Dog Wet HYPO MONO Pork 400g",
+    "base": "27955",
+    "qty": "12",
+    "pack_cost": "20.52",
+    "base_cost": null
+   },
+   {
+    "ID": "37426",
+    "t": "24 vnt. Monge VetSolution Dog Wet HYPO MONO Pork 400g",
+    "base": "27955",
+    "qty": "24",
+    "pack_cost": "41.04",
+    "base_cost": null
+   },
+   {
+    "ID": "37427",
+    "t": "6 vnt. Monge VetSolution Dog Wet HYPO MONO Tuna 400g",
+    "base": "27957",
+    "qty": "6",
+    "pack_cost": "10.26",
+    "base_cost": null
+   },
+   {
+    "ID": "37428",
+    "t": "12 vnt. Monge VetSolution Dog Wet HYPO MONO Tuna 400g",
+    "base": "27957",
+    "qty": "12",
+    "pack_cost": "20.52",
+    "base_cost": null
+   },
+   {
+    "ID": "37429",
+    "t": "24 vnt. Monge VetSolution Dog Wet HYPO MONO Tuna 400g",
+    "base": "27957",
+    "qty": "24",
+    "pack_cost": "41.04",
+    "base_cost": null
+   },
+   {
+    "ID": "37430",
+    "t": "6 vnt. Monge VetSolution Dog Wet HYPO MONO Duck 400g",
+    "base": "27959",
+    "qty": "6",
+    "pack_cost": "10.26",
+    "base_cost": null
+   },
+   {
+    "ID": "37431",
+    "t": "12 vnt. Monge VetSolution Dog Wet HYPO MONO Duck 400g",
+    "base": "27959",
+    "qty": "12",
+    "pack_cost": "20.52",
+    "base_cost": null
+   },
+   {
+    "ID": "37432",
+    "t": "24 vnt. Monge VetSolution Dog Wet HYPO MONO Duck 400g",
+    "base": "27959",
+    "qty": "24",
+    "pack_cost": "41.04",
+    "base_cost": null
+   },
+   {
+    "ID": "37433",
+    "t": "6 vnt. Monge VetSolution Dog Wet HYPO MONO Lamb 400g",
+    "base": "27961",
+    "qty": "6",
+    "pack_cost": "10.26",
+    "base_cost": null
+   },
+   {
+    "ID": "37434",
+    "t": "12 vnt. Monge VetSolution Dog Wet HYPO MONO Lamb 400g",
+    "base": "27961",
+    "qty": "12",
+    "pack_cost": "20.52",
+    "base_cost": null
+   },
+   {
+    "ID": "37435",
+    "t": "24 vnt. Monge VetSolution Dog Wet HYPO MONO Lamb 400g",
+    "base": "27961",
+    "qty": "24",
+    "pack_cost": "41.04",
+    "base_cost": null
+   },
+   {
+    "ID": "37436",
+    "t": "6 vnt. Monge VetSolution Dog Wet Diabetic/Obesity 400g",
+    "base": "33982",
+    "qty": "6",
+    "pack_cost": "10.26",
+    "base_cost": null
+   },
+   {
+    "ID": "37437",
+    "t": "12 vnt. Monge VetSolution Dog Wet Diabetic/Obesity 400g",
+    "base": "33982",
+    "qty": "12",
+    "pack_cost": "20.52",
+    "base_cost": null
+   },
+   {
+    "ID": "37438",
+    "t": "24 vnt. Monge VetSolution Dog Wet Diabetic/Obesity 400g",
+    "base": "33982",
+    "qty": "24",
+    "pack_cost": "41.04",
+    "base_cost": null
+   },
+   {
+    "ID": "37439",
+    "t": "6 vnt. Monge Monoprotein konservai (vištiena) 400g",
+    "base": "33548",
+    "qty": "6",
+    "pack_cost": "11.016",
+    "base_cost": null
+   },
+   {
+    "ID": "37440",
+    "t": "12 vnt. Monge Monoprotein konservai (vištiena) 400g",
+    "base": "33548",
+    "qty": "12",
+    "pack_cost": "22.032",
+    "base_cost": null
+   },
+   {
+    "ID": "37441",
+    "t": "24 vnt. Monge Monoprotein konservai (vištiena) 400g",
+    "base": "33548",
+    "qty": "24",
+    "pack_cost": "44.064",
+    "base_cost": null
+   },
+   {
+    "ID": "37442",
+    "t": "6 vnt. Monge Monoproteico Solo Tacchino – Monoproteininiai k",
+    "base": "17394",
+    "qty": "6",
+    "pack_cost": "11.04",
+    "base_cost": "1.84"
+   },
+   {
+    "ID": "37443",
+    "t": "12 vnt. Monge Monoproteico Solo Tacchino – Monoproteininiai ",
+    "base": "17394",
+    "qty": "12",
+    "pack_cost": "22.08",
+    "base_cost": "1.84"
+   },
+   {
+    "ID": "37444",
+    "t": "24 vnt. Monge Monoproteico Solo Tacchino – Monoproteininiai ",
+    "base": "17394",
+    "qty": "24",
+    "pack_cost": "44.16",
+    "base_cost": "1.84"
+   },
+   {
+    "ID": "37445",
+    "t": "6 vnt. Monge Monoproteico Solo Agnello – Monoproteininiai ko",
+    "base": "17400",
+    "qty": "6",
+    "pack_cost": "11.04",
+    "base_cost": "1.84"
+   },
+   {
+    "ID": "37446",
+    "t": "12 vnt. Monge Monoproteico Solo Agnello – Monoproteininiai k",
+    "base": "17400",
+    "qty": "12",
+    "pack_cost": "22.08",
+    "base_cost": "1.84"
+   },
+   {
+    "ID": "37447",
+    "t": "24 vnt. Monge Monoproteico Solo Agnello – Monoproteininiai k",
+    "base": "17400",
+    "qty": "24",
+    "pack_cost": "44.16",
+    "base_cost": "1.84"
+   },
+   {
+    "ID": "37448",
+    "t": "6 vnt. Monge Monoproteico Solo Anatra – Monoproteininiai kon",
+    "base": "17397",
+    "qty": "6",
+    "pack_cost": "9.78",
+    "base_cost": "1.63"
+   },
+   {
+    "ID": "37449",
+    "t": "12 vnt. Monge Monoproteico Solo Anatra – Monoproteininiai ko",
+    "base": "17397",
+    "qty": "12",
+    "pack_cost": "19.56",
+    "base_cost": "1.63"
+   },
+   {
+    "ID": "37450",
+    "t": "24 vnt. Monge Monoproteico Solo Anatra – Monoproteininiai ko",
+    "base": "17397",
+    "qty": "24",
+    "pack_cost": "39.12",
+    "base_cost": "1.63"
+   },
+   {
+    "ID": "37451",
+    "t": "6 vnt. Monge Monoproteico \"Solo\" - Wet Dog Pate 100% PORK 40",
+    "base": "32574",
+    "qty": "6",
+    "pack_cost": "11.016",
+    "base_cost": null
+   },
+   {
+    "ID": "37452",
+    "t": "12 vnt. Monge Monoproteico \"Solo\" - Wet Dog Pate 100% PORK 4",
+    "base": "32574",
+    "qty": "12",
+    "pack_cost": "22.032",
+    "base_cost": null
+   },
+   {
+    "ID": "37453",
+    "t": "24 vnt. Monge Monoproteico \"Solo\" - Wet Dog Pate 100% PORK 4",
+    "base": "32574",
+    "qty": "24",
+    "pack_cost": "44.064",
+    "base_cost": null
+   },
+   {
+    "ID": "37456",
+    "t": "6 vnt. Gemon all breeds adult konservuotas paštetas suaugusi",
+    "base": "33624",
+    "qty": "6",
+    "pack_cost": "5.832",
+    "base_cost": null
+   },
+   {
+    "ID": "37457",
+    "t": "12 vnt. Gemon all breeds adult konservuotas paštetas suaugus",
+    "base": "33624",
+    "qty": "12",
+    "pack_cost": "11.664",
+    "base_cost": null
+   },
+   {
+    "ID": "37458",
+    "t": "24 vnt. Gemon all breeds adult konservuotas paštetas suaugus",
+    "base": "33624",
+    "qty": "24",
+    "pack_cost": "23.328",
+    "base_cost": null
+   },
+   {
+    "ID": "37459",
+    "t": "6 vnt. Gemon all breeds adult konservuotas paštetas suaugusi",
+    "base": "33626",
+    "qty": "6",
+    "pack_cost": "5.832",
+    "base_cost": null
+   },
+   {
+    "ID": "37460",
+    "t": "12 vnt. Gemon all breeds adult konservuotas paštetas suaugus",
+    "base": "33626",
+    "qty": "12",
+    "pack_cost": "11.664",
+    "base_cost": null
+   },
+   {
+    "ID": "37461",
+    "t": "24 vnt. Gemon all breeds adult konservuotas paštetas suaugus",
+    "base": "33626",
+    "qty": "24",
+    "pack_cost": "23.328",
+    "base_cost": null
+   },
+   {
+    "ID": "37463",
+    "t": "11 vnt. Monge Monoproteico \"Solo\" - Wet Dog Pate 100% pork 1",
+    "base": "33542",
+    "qty": "11",
+    "pack_cost": "11.781",
+    "base_cost": null
+   },
+   {
+    "ID": "37464",
+    "t": "22 vnt. Monge Monoproteico \"Solo\" - Wet Dog Pate 100% pork 1",
+    "base": "33542",
+    "qty": "22",
+    "pack_cost": "23.562",
+    "base_cost": null
+   },
+   {
+    "ID": "37465",
+    "t": "30 vnt. Monge Monoproteico \"Solo\" - Wet Dog Pate 100% pork 1",
+    "base": "33542",
+    "qty": "30",
+    "pack_cost": "32.13",
+    "base_cost": null
+   },
+   {
+    "ID": "37466",
+    "t": "11 vnt. Monge Monoprotein konservai šunims su tunu 150g",
+    "base": "33536",
+    "qty": "11",
+    "pack_cost": "11.781",
+    "base_cost": null
+   },
+   {
+    "ID": "37467",
+    "t": "22 vnt. Monge Monoprotein konservai šunims su tunu 150g",
+    "base": "33536",
+    "qty": "22",
+    "pack_cost": "23.562",
+    "base_cost": null
+   },
+   {
+    "ID": "37468",
+    "t": "30 vnt. Monge Monoprotein konservai šunims su tunu 150g",
+    "base": "33536",
+    "qty": "30",
+    "pack_cost": "32.13",
+    "base_cost": null
+   },
+   {
+    "ID": "37469",
+    "t": "11 vnt. Monge VetSolution Dog Wet Dermatosis 150g",
+    "base": "33678",
+    "qty": "11",
+    "pack_cost": "8.118",
+    "base_cost": null
+   },
+   {
+    "ID": "37470",
+    "t": "22 vnt. Monge VetSolution Dog Wet Dermatosis 150g",
+    "base": "33678",
+    "qty": "22",
+    "pack_cost": "16.236",
+    "base_cost": null
+   },
+   {
+    "ID": "37471",
+    "t": "30 vnt. Monge VetSolution Dog Wet Dermatosis 150g",
+    "base": "33678",
+    "qty": "30",
+    "pack_cost": "22.14",
+    "base_cost": null
+   },
+   {
+    "ID": "37472",
+    "t": "11 vnt. Monge VetSolution Dog Wet Recovery 150g",
+    "base": "33684",
+    "qty": "11",
+    "pack_cost": "8.118",
+    "base_cost": null
+   },
+   {
+    "ID": "37473",
+    "t": "22 vnt. Monge VetSolution Dog Wet Recovery 150g",
+    "base": "33684",
+    "qty": "22",
+    "pack_cost": "16.236",
+    "base_cost": null
+   },
+   {
+    "ID": "37474",
+    "t": "30 vnt. Monge VetSolution Dog Wet Recovery 150g",
+    "base": "33684",
+    "qty": "30",
+    "pack_cost": "22.14",
+    "base_cost": null
+   },
+   {
+    "ID": "37475",
+    "t": "11 vnt. Monge VetSolution Dog Wet Renal/Oxalate 150g",
+    "base": "33682",
+    "qty": "11",
+    "pack_cost": "8.118",
+    "base_cost": null
+   },
+   {
+    "ID": "37476",
+    "t": "22 vnt. Monge VetSolution Dog Wet Renal/Oxalate 150g",
+    "base": "33682",
+    "qty": "22",
+    "pack_cost": "16.236",
+    "base_cost": null
+   },
+   {
+    "ID": "37477",
+    "t": "30 vnt. Monge VetSolution Dog Wet Renal/Oxalate 150g",
+    "base": "33682",
+    "qty": "30",
+    "pack_cost": "22.14",
+    "base_cost": null
+   },
+   {
+    "ID": "37478",
+    "t": "16 vnt. Monge VetSolution Cat Wet Dermatosis 100g",
+    "base": "33668",
+    "qty": "16",
+    "pack_cost": "9.36",
+    "base_cost": null
+   },
+   {
+    "ID": "37479",
+    "t": "24 vnt. Monge VetSolution Cat Wet Dermatosis 100g",
+    "base": "33668",
+    "qty": "24",
+    "pack_cost": "14.04",
+    "base_cost": null
+   },
+   {
+    "ID": "37480",
+    "t": "32 vnt. Monge VetSolution Cat Wet Dermatosis 100g",
+    "base": "33668",
+    "qty": "32",
+    "pack_cost": "18.72",
+    "base_cost": null
+   },
+   {
+    "ID": "37481",
+    "t": "16 vnt. Monge BWild Adult paštetas katėms su su menke ir dar",
+    "base": "33714",
+    "qty": "16",
+    "pack_cost": "9.648",
+    "base_cost": null
+   },
+   {
+    "ID": "37482",
+    "t": "24 vnt. Monge BWild Adult paštetas katėms su su menke ir dar",
+    "base": "33714",
+    "qty": "24",
+    "pack_cost": "14.472",
+    "base_cost": null
+   },
+   {
+    "ID": "37483",
+    "t": "32 vnt. Monge BWild Adult paštetas katėms su su menke ir dar",
+    "base": "33714",
+    "qty": "32",
+    "pack_cost": "19.296",
+    "base_cost": null
+   },
+   {
+    "ID": "37484",
+    "t": "16 vnt. Monge BWild adult paštetas katėms su ančiuviais ir d",
+    "base": "33716",
+    "qty": "16",
+    "pack_cost": "9.648",
+    "base_cost": null
+   },
+   {
+    "ID": "37485",
+    "t": "24 vnt. Monge BWild adult paštetas katėms su ančiuviais ir d",
+    "base": "33716",
+    "qty": "24",
+    "pack_cost": "14.472",
+    "base_cost": null
+   },
+   {
+    "ID": "37486",
+    "t": "32 vnt. Monge BWild adult paštetas katėms su ančiuviais ir d",
+    "base": "33716",
+    "qty": "32",
+    "pack_cost": "19.296",
+    "base_cost": null
+   },
+   {
+    "ID": "37487",
+    "t": "16 vnt. Monge BWild adult paštetas sterilizuotoms katėms su ",
+    "base": "33720",
+    "qty": "16",
+    "pack_cost": "9.648",
+    "base_cost": null
+   },
+   {
+    "ID": "37488",
+    "t": "24 vnt. Monge BWild adult paštetas sterilizuotoms katėms su ",
+    "base": "33720",
+    "qty": "24",
+    "pack_cost": "14.472",
+    "base_cost": null
+   },
+   {
+    "ID": "37489",
+    "t": "32 vnt. Monge BWild adult paštetas sterilizuotoms katėms su ",
+    "base": "33720",
+    "qty": "32",
+    "pack_cost": "19.296",
+    "base_cost": null
+   },
+   {
+    "ID": "37492",
+    "t": "24 vnt. Gemon Mousse konservai suaugusioms katėms su vištien",
+    "base": "33081",
+    "qty": "24",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37493",
+    "t": "36 vnt. Gemon Mousse konservai suaugusioms katėms su vištien",
+    "base": "33081",
+    "qty": "36",
+    "pack_cost": "18.792",
+    "base_cost": null
+   },
+   {
+    "ID": "37494",
+    "t": "18 vnt. Farmina Vet Life Diabetic konservai katėms 85 g",
+    "base": "33424",
+    "qty": "18",
+    "pack_cost": "22.842",
+    "base_cost": null
+   },
+   {
+    "ID": "37495",
+    "t": "24 vnt. Farmina Vet Life Diabetic konservai katėms 85 g",
+    "base": "33424",
+    "qty": "24",
+    "pack_cost": "30.456",
+    "base_cost": null
+   },
+   {
+    "ID": "37496",
+    "t": "36 vnt. Farmina Vet Life Diabetic konservai katėms 85 g",
+    "base": "33424",
+    "qty": "36",
+    "pack_cost": "45.684",
+    "base_cost": null
+   },
+   {
+    "ID": "37497",
+    "t": "18 vnt. Farmina Vet Life Hypoallergenic konservai katėms su ",
+    "base": "33430",
+    "qty": "18",
+    "pack_cost": "23.328",
+    "base_cost": null
+   },
+   {
+    "ID": "37498",
+    "t": "24 vnt. Farmina Vet Life Hypoallergenic konservai katėms su ",
+    "base": "33430",
+    "qty": "24",
+    "pack_cost": "31.104",
+    "base_cost": null
+   },
+   {
+    "ID": "37499",
+    "t": "36 vnt. Farmina Vet Life Hypoallergenic konservai katėms su ",
+    "base": "33430",
+    "qty": "36",
+    "pack_cost": "46.656",
+    "base_cost": null
+   },
+   {
+    "ID": "37500",
+    "t": "24 vnt. Gemon Mousse konservai suaugusioms katėms su lašiša ",
+    "base": "33079",
+    "qty": "24",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37501",
+    "t": "36 vnt. Gemon Mousse konservai suaugusioms katėms su lašiša ",
+    "base": "33079",
+    "qty": "36",
+    "pack_cost": "18.792",
+    "base_cost": null
+   },
+   {
+    "ID": "37502",
+    "t": "24 vnt. Gemon Mousse Sterilised konservai sterilizuotoms kat",
+    "base": "33083",
+    "qty": "24",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37503",
+    "t": "36 vnt. Gemon Mousse Sterilised konservai sterilizuotoms kat",
+    "base": "33083",
+    "qty": "36",
+    "pack_cost": "18.792",
+    "base_cost": null
+   },
+   {
+    "ID": "37504",
+    "t": "24 vnt. Gemon Mousse Sterilised konservai sterilizuotoms kat",
+    "base": "33085",
+    "qty": "24",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37505",
+    "t": "36 vnt. Gemon Mousse Sterilised konservai sterilizuotoms kat",
+    "base": "33085",
+    "qty": "36",
+    "pack_cost": "18.792",
+    "base_cost": null
+   },
+   {
+    "ID": "37506",
+    "t": "22 vnt. Gemon Paté ir gabalėliai konservai suaugusiems šunim",
+    "base": "32724",
+    "qty": "22",
+    "pack_cost": "14.454",
+    "base_cost": null
+   },
+   {
+    "ID": "37507",
+    "t": "30 vnt. Gemon Paté ir gabalėliai konservai suaugusiems šunim",
+    "base": "32724",
+    "qty": "30",
+    "pack_cost": "19.71",
+    "base_cost": null
+   },
+   {
+    "ID": "37508",
+    "t": "32 vnt. Gemon Kitten konservuotas pašaras jauniems kačiukams",
+    "base": "33654",
+    "qty": "32",
+    "pack_cost": "15.552",
+    "base_cost": null
+   },
+   {
+    "ID": "37509",
+    "t": "40 vnt. Gemon Kitten konservuotas pašaras jauniems kačiukams",
+    "base": "33654",
+    "qty": "40",
+    "pack_cost": "19.44",
+    "base_cost": null
+   },
+   {
+    "ID": "37510",
+    "t": "22 vnt. Gemon Light all breeds konservuotas paštetas suaugus",
+    "base": "33630",
+    "qty": "22",
+    "pack_cost": "14.454",
+    "base_cost": null
+   },
+   {
+    "ID": "37511",
+    "t": "30 vnt. Gemon Light all breeds konservuotas paštetas suaugus",
+    "base": "33630",
+    "qty": "30",
+    "pack_cost": "19.71",
+    "base_cost": null
+   },
+   {
+    "ID": "37512",
+    "t": "24 vnt. Gemon all breeds puppy konservuotas pašaras su višti",
+    "base": "33632",
+    "qty": "24",
+    "pack_cost": "19.008",
+    "base_cost": null
+   },
+   {
+    "ID": "37513",
+    "t": "36 vnt. Gemon all breeds puppy konservuotas pašaras su višti",
+    "base": "33632",
+    "qty": "36",
+    "pack_cost": "28.512",
+    "base_cost": null
+   },
+   {
+    "ID": "37514",
+    "t": "24 vnt. Gemon medium adult konservuotas pašaras su jautienos",
+    "base": "33636",
+    "qty": "24",
+    "pack_cost": "19.008",
+    "base_cost": null
+   },
+   {
+    "ID": "37515",
+    "t": "36 vnt. Gemon medium adult konservuotas pašaras su jautienos",
+    "base": "33636",
+    "qty": "36",
+    "pack_cost": "28.512",
+    "base_cost": null
+   },
+   {
+    "ID": "37516",
+    "t": "18 vnt. Gemon sterilized konservuotas paštetas suaugusioms k",
+    "base": "33652",
+    "qty": "18",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "37517",
+    "t": "24 vnt. Gemon sterilized konservuotas paštetas suaugusioms k",
+    "base": "33652",
+    "qty": "24",
+    "pack_cost": "22.464",
+    "base_cost": null
+   },
+   {
+    "ID": "37518",
+    "t": "12 vnt. Monge BWild puppy konservuotas pašaras su antiena, m",
+    "base": "33706",
+    "qty": "12",
+    "pack_cost": "12.636",
+    "base_cost": null
+   },
+   {
+    "ID": "37519",
+    "t": "24 vnt. Monge BWild puppy konservuotas pašaras su antiena, m",
+    "base": "33706",
+    "qty": "24",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "37520",
+    "t": "18 vnt. Monge Jelly konservai suaugusioms katėms su tunu 80 ",
+    "base": "33586",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37521",
+    "t": "24 vnt. Monge Jelly konservai suaugusioms katėms su tunu 80 ",
+    "base": "33586",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37522",
+    "t": "36 vnt. Monge Jelly konservai suaugusioms katėms su tunu 80 ",
+    "base": "33586",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37523",
+    "t": "18 vnt. Monge Kitten kons. pašaras kačiukams su tuno gabalėl",
+    "base": "33592",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37524",
+    "t": "24 vnt. Monge Kitten kons. pašaras kačiukams su tuno gabalėl",
+    "base": "33592",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37525",
+    "t": "36 vnt. Monge Kitten kons. pašaras kačiukams su tuno gabalėl",
+    "base": "33592",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37526",
+    "t": "18 vnt. Monge Monoprotein Flakes konservai katėms tik su bui",
+    "base": "34048",
+    "qty": "18",
+    "pack_cost": "16.038",
+    "base_cost": null
+   },
+   {
+    "ID": "37527",
+    "t": "24 vnt. Monge Monoprotein Flakes konservai katėms tik su bui",
+    "base": "34048",
+    "qty": "24",
+    "pack_cost": "21.384",
+    "base_cost": null
+   },
+   {
+    "ID": "37528",
+    "t": "36 vnt. Monge Monoprotein Flakes konservai katėms tik su bui",
+    "base": "34048",
+    "qty": "36",
+    "pack_cost": "32.076",
+    "base_cost": null
+   },
+   {
+    "ID": "37529",
+    "t": "18 vnt. Monge Monoprotein Flakes konservai katėms tik su kia",
+    "base": "33203",
+    "qty": "18",
+    "pack_cost": "16.038",
+    "base_cost": null
+   },
+   {
+    "ID": "37530",
+    "t": "24 vnt. Monge Monoprotein Flakes konservai katėms tik su kia",
+    "base": "33203",
+    "qty": "24",
+    "pack_cost": "21.384",
+    "base_cost": null
+   },
+   {
+    "ID": "37531",
+    "t": "36 vnt. Monge Monoprotein Flakes konservai katėms tik su kia",
+    "base": "33203",
+    "qty": "36",
+    "pack_cost": "32.076",
+    "base_cost": null
+   },
+   {
+    "ID": "37532",
+    "t": "12 vnt. Monge Monoprotein Solo konservai šunims tik su kalak",
+    "base": "33550",
+    "qty": "12",
+    "pack_cost": "22.032",
+    "base_cost": null
+   },
+   {
+    "ID": "37533",
+    "t": "24 vnt. Monge Monoprotein Solo konservai šunims tik su kalak",
+    "base": "33550",
+    "qty": "24",
+    "pack_cost": "44.064",
+    "base_cost": null
+   },
+   {
+    "ID": "37534",
+    "t": "12 vnt. Monge Monoproteico konservai šunims su ėriena, tik v",
+    "base": "33552",
+    "qty": "12",
+    "pack_cost": "22.032",
+    "base_cost": null
+   },
+   {
+    "ID": "37535",
+    "t": "24 vnt. Monge Monoproteico konservai šunims su ėriena, tik v",
+    "base": "33552",
+    "qty": "24",
+    "pack_cost": "44.064",
+    "base_cost": null
+   },
+   {
+    "ID": "37536",
+    "t": "12 vnt. Monge Monoprotein konservai (antiena) 400g",
+    "base": "33554",
+    "qty": "12",
+    "pack_cost": "22.032",
+    "base_cost": null
+   },
+   {
+    "ID": "37537",
+    "t": "24 vnt. Monge Monoprotein konservai (antiena) 400g",
+    "base": "33554",
+    "qty": "24",
+    "pack_cost": "44.064",
+    "base_cost": null
+   },
+   {
+    "ID": "37538",
+    "t": "18 vnt. Monge Monoprotein - Cat Flakes tik vištiena 80g",
+    "base": "32483",
+    "qty": "18",
+    "pack_cost": "16.038",
+    "base_cost": null
+   },
+   {
+    "ID": "37539",
+    "t": "24 vnt. Monge Monoprotein - Cat Flakes tik vištiena 80g",
+    "base": "32483",
+    "qty": "24",
+    "pack_cost": "21.384",
+    "base_cost": null
+   },
+   {
+    "ID": "37540",
+    "t": "36 vnt. Monge Monoprotein - Cat Flakes tik vištiena 80g",
+    "base": "32483",
+    "qty": "36",
+    "pack_cost": "32.076",
+    "base_cost": null
+   },
+   {
+    "ID": "37541",
+    "t": "18 vnt. Monge Natural kons. pašaras suaugusioms katėms tunas",
+    "base": "33598",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37542",
+    "t": "24 vnt. Monge Natural kons. pašaras suaugusioms katėms tunas",
+    "base": "33598",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37543",
+    "t": "36 vnt. Monge Natural kons. pašaras suaugusioms katėms tunas",
+    "base": "33598",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37544",
+    "t": "18 vnt. Monge Natural kons. pašaras suaugusioms katėms tuno ",
+    "base": "33608",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37545",
+    "t": "24 vnt. Monge Natural kons. pašaras suaugusioms katėms tuno ",
+    "base": "33608",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37546",
+    "t": "36 vnt. Monge Natural kons. pašaras suaugusioms katėms tuno ",
+    "base": "33608",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37547",
+    "t": "18 vnt. Monge Supreme paketėlis sterilizuotoms katėms su tun",
+    "base": "32475",
+    "qty": "18",
+    "pack_cost": "21.87",
+    "base_cost": null
+   },
+   {
+    "ID": "37548",
+    "t": "24 vnt. Monge Supreme paketėlis sterilizuotoms katėms su tun",
+    "base": "32475",
+    "qty": "24",
+    "pack_cost": "29.16",
+    "base_cost": null
+   },
+   {
+    "ID": "37549",
+    "t": "36 vnt. Monge Supreme paketėlis sterilizuotoms katėms su tun",
+    "base": "32475",
+    "qty": "36",
+    "pack_cost": "43.74",
+    "base_cost": null
+   },
+   {
+    "ID": "37550",
+    "t": "18 vnt. Monge Supreme paketėlis suaugusioms katėms su tunu, ",
+    "base": "32467",
+    "qty": "18",
+    "pack_cost": "21.87",
+    "base_cost": null
+   },
+   {
+    "ID": "37551",
+    "t": "24 vnt. Monge Supreme paketėlis suaugusioms katėms su tunu, ",
+    "base": "32467",
+    "qty": "24",
+    "pack_cost": "29.16",
+    "base_cost": null
+   },
+   {
+    "ID": "37552",
+    "t": "36 vnt. Monge Supreme paketėlis suaugusioms katėms su tunu, ",
+    "base": "32467",
+    "qty": "36",
+    "pack_cost": "43.74",
+    "base_cost": null
+   },
+   {
+    "ID": "37553",
+    "t": "18 vnt. Monge Supreme paketėlis suaugusioms katėms su tunu, ",
+    "base": "32465",
+    "qty": "18",
+    "pack_cost": "21.87",
+    "base_cost": null
+   },
+   {
+    "ID": "37554",
+    "t": "24 vnt. Monge Supreme paketėlis suaugusioms katėms su tunu, ",
+    "base": "32465",
+    "qty": "24",
+    "pack_cost": "29.16",
+    "base_cost": null
+   },
+   {
+    "ID": "37555",
+    "t": "36 vnt. Monge Supreme paketėlis suaugusioms katėms su tunu, ",
+    "base": "32465",
+    "qty": "36",
+    "pack_cost": "43.74",
+    "base_cost": null
+   },
+   {
+    "ID": "37556",
+    "t": "24 vnt. Simba konservai katėms su paukštiena ir antiena 415 ",
+    "base": "33928",
+    "qty": "24",
+    "pack_cost": "14.472",
+    "base_cost": null
+   },
+   {
+    "ID": "37557",
+    "t": "30 vnt. Simba konservai katėms su paukštiena ir antiena 415 ",
+    "base": "33928",
+    "qty": "30",
+    "pack_cost": "18.09",
+    "base_cost": null
+   },
+   {
+    "ID": "37558",
+    "t": "24 vnt. Simba Adult lamb visavertis konservuotas pašaras sua",
+    "base": "33750",
+    "qty": "24",
+    "pack_cost": "14.472",
+    "base_cost": null
+   },
+   {
+    "ID": "37559",
+    "t": "36 vnt. Simba Adult lamb visavertis konservuotas pašaras sua",
+    "base": "33750",
+    "qty": "36",
+    "pack_cost": "21.708",
+    "base_cost": null
+   },
+   {
+    "ID": "37560",
+    "t": "32 vnt. Simba konservuotas pašaras katėms su lašiša ir karši",
+    "base": "33748",
+    "qty": "32",
+    "pack_cost": "11.808",
+    "base_cost": null
+   },
+   {
+    "ID": "37561",
+    "t": "40 vnt. Simba konservuotas pašaras katėms su lašiša ir karši",
+    "base": "33748",
+    "qty": "40",
+    "pack_cost": "14.76",
+    "base_cost": null
+   },
+   {
+    "ID": "37562",
+    "t": "24 vnt. Monge BWild kons. pašaras katėms su ančiuviais ir da",
+    "base": "33768",
+    "qty": "24",
+    "pack_cost": "11.88",
+    "base_cost": null
+   },
+   {
+    "ID": "37563",
+    "t": "36 vnt. Monge BWild kons. pašaras katėms su ančiuviais ir da",
+    "base": "33768",
+    "qty": "36",
+    "pack_cost": "17.82",
+    "base_cost": null
+   },
+   {
+    "ID": "37564",
+    "t": "24 vnt. Monge BWild kons. pašaras sterilizuotoms katėms su t",
+    "base": "33772",
+    "qty": "24",
+    "pack_cost": "11.88",
+    "base_cost": null
+   },
+   {
+    "ID": "37565",
+    "t": "36 vnt. Monge BWild kons. pašaras sterilizuotoms katėms su t",
+    "base": "33772",
+    "qty": "36",
+    "pack_cost": "17.82",
+    "base_cost": null
+   },
+   {
+    "ID": "37566",
+    "t": "12 vnt. Monge Bwild mini adult konservuotas pašaras su antie",
+    "base": "33708",
+    "qty": "12",
+    "pack_cost": "12.636",
+    "base_cost": null
+   },
+   {
+    "ID": "37567",
+    "t": "24 vnt. Monge Bwild mini adult konservuotas pašaras su antie",
+    "base": "33708",
+    "qty": "24",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "37568",
+    "t": "12 vnt. Monge Fresh Puppy konservuotas pašaras jauniems šuni",
+    "base": "33864",
+    "qty": "12",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37569",
+    "t": "24 vnt. Monge Fresh Puppy konservuotas pašaras jauniems šuni",
+    "base": "33864",
+    "qty": "24",
+    "pack_cost": "25.056",
+    "base_cost": null
+   },
+   {
+    "ID": "37570",
+    "t": "12 vnt. Monge Fresh Senior konservuotas pašaras pagyvenusiem",
+    "base": "33870",
+    "qty": "12",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37571",
+    "t": "24 vnt. Monge Fresh Senior konservuotas pašaras pagyvenusiem",
+    "base": "33870",
+    "qty": "24",
+    "pack_cost": "25.056",
+    "base_cost": null
+   },
+   {
+    "ID": "37572",
+    "t": "12 vnt. Monge Fresh adult konservuotas pašaras šunims su ver",
+    "base": "33574",
+    "qty": "12",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37573",
+    "t": "24 vnt. Monge Fresh adult konservuotas pašaras šunims su ver",
+    "base": "33574",
+    "qty": "24",
+    "pack_cost": "25.056",
+    "base_cost": null
+   },
+   {
+    "ID": "37574",
+    "t": "12 vnt. Monge Fresh adult konservuotas pašaras šunims su viš",
+    "base": "33868",
+    "qty": "12",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37575",
+    "t": "24 vnt. Monge Fresh adult konservuotas pašaras šunims su viš",
+    "base": "33868",
+    "qty": "24",
+    "pack_cost": "25.056",
+    "base_cost": null
+   },
+   {
+    "ID": "37576",
+    "t": "18 vnt. Monge Monoprotein Adult begrūdis konservuotas pašara",
+    "base": "33778",
+    "qty": "18",
+    "pack_cost": "12.312",
+    "base_cost": null
+   },
+   {
+    "ID": "37577",
+    "t": "24 vnt. Monge Monoprotein Adult begrūdis konservuotas pašara",
+    "base": "33778",
+    "qty": "24",
+    "pack_cost": "16.416",
+    "base_cost": null
+   },
+   {
+    "ID": "37578",
+    "t": "36 vnt. Monge Monoprotein Adult begrūdis konservuotas pašara",
+    "base": "33778",
+    "qty": "36",
+    "pack_cost": "24.624",
+    "base_cost": null
+   },
+   {
+    "ID": "37579",
+    "t": "18 vnt. Monge Monoprotein Kitten begrūdis konservuotas pašar",
+    "base": "33780",
+    "qty": "18",
+    "pack_cost": "12.312",
+    "base_cost": null
+   },
+   {
+    "ID": "37580",
+    "t": "24 vnt. Monge Monoprotein Kitten begrūdis konservuotas pašar",
+    "base": "33780",
+    "qty": "24",
+    "pack_cost": "16.416",
+    "base_cost": null
+   },
+   {
+    "ID": "37581",
+    "t": "36 vnt. Monge Monoprotein Kitten begrūdis konservuotas pašar",
+    "base": "33780",
+    "qty": "36",
+    "pack_cost": "24.624",
+    "base_cost": null
+   },
+   {
+    "ID": "37582",
+    "t": "18 vnt. Monge Monoprotein - Cat Flakes tik kalakutiena 80g",
+    "base": "32481",
+    "qty": "18",
+    "pack_cost": "16.038",
+    "base_cost": null
+   },
+   {
+    "ID": "37583",
+    "t": "24 vnt. Monge Monoprotein - Cat Flakes tik kalakutiena 80g",
+    "base": "32481",
+    "qty": "24",
+    "pack_cost": "21.384",
+    "base_cost": null
+   },
+   {
+    "ID": "37584",
+    "t": "36 vnt. Monge Monoprotein - Cat Flakes tik kalakutiena 80g",
+    "base": "32481",
+    "qty": "36",
+    "pack_cost": "32.076",
+    "base_cost": null
+   },
+   {
+    "ID": "37585",
+    "t": "24 vnt. Simba konservuotas pašaras katėms su triušiena 415g",
+    "base": "33738",
+    "qty": "24",
+    "pack_cost": "14.472",
+    "base_cost": null
+   },
+   {
+    "ID": "37586",
+    "t": "30 vnt. Simba konservuotas pašaras katėms su triušiena 415g",
+    "base": "33738",
+    "qty": "30",
+    "pack_cost": "18.09",
+    "base_cost": null
+   },
+   {
+    "ID": "37587",
+    "t": "24 vnt. Simba konservuotas pašaras katėms su vištiena 415g",
+    "base": "33736",
+    "qty": "24",
+    "pack_cost": "14.472",
+    "base_cost": null
+   },
+   {
+    "ID": "37588",
+    "t": "30 vnt. Simba konservuotas pašaras katėms su vištiena 415g",
+    "base": "33736",
+    "qty": "30",
+    "pack_cost": "18.09",
+    "base_cost": null
+   },
+   {
+    "ID": "37589",
+    "t": "24 vnt. Special Dog Exc. konservai Mini šunims gabalėliai su",
+    "base": "33816",
+    "qty": "24",
+    "pack_cost": "21.384",
+    "base_cost": null
+   },
+   {
+    "ID": "37590",
+    "t": "36 vnt. Special Dog Exc. konservai Mini šunims gabalėliai su",
+    "base": "33816",
+    "qty": "36",
+    "pack_cost": "32.076",
+    "base_cost": null
+   },
+   {
+    "ID": "37591",
+    "t": "18 vnt. Lechat Exc. konservai sterilizuotoms katėms su šerni",
+    "base": "32716",
+    "qty": "18",
+    "pack_cost": "13.284",
+    "base_cost": null
+   },
+   {
+    "ID": "37592",
+    "t": "24 vnt. Lechat Exc. konservai sterilizuotoms katėms su šerni",
+    "base": "32716",
+    "qty": "24",
+    "pack_cost": "17.712",
+    "base_cost": null
+   },
+   {
+    "ID": "37593",
+    "t": "36 vnt. Lechat Exc. konservai sterilizuotoms katėms su šerni",
+    "base": "32716",
+    "qty": "36",
+    "pack_cost": "26.568",
+    "base_cost": null
+   },
+   {
+    "ID": "37594",
+    "t": "24 vnt. Lechat Exc. konservai suaugusioms katėms su jautiena",
+    "base": "33806",
+    "qty": "24",
+    "pack_cost": "13.608",
+    "base_cost": null
+   },
+   {
+    "ID": "37595",
+    "t": "32 vnt. Lechat Exc. konservai suaugusioms katėms su jautiena",
+    "base": "33806",
+    "qty": "32",
+    "pack_cost": "18.144",
+    "base_cost": null
+   },
+   {
+    "ID": "37596",
+    "t": "32 vnt. Lechat Fresh konservai suaug. katėms su vištiena ir ",
+    "base": "34054",
+    "qty": "32",
+    "pack_cost": "18.144",
+    "base_cost": null
+   },
+   {
+    "ID": "37597",
+    "t": "40 vnt. Lechat Fresh konservai suaug. katėms su vištiena ir ",
+    "base": "34054",
+    "qty": "40",
+    "pack_cost": "22.68",
+    "base_cost": null
+   },
+   {
+    "ID": "37598",
+    "t": "32 vnt. Lechat Fresh suaug. katėms su antiena100g",
+    "base": "33802",
+    "qty": "32",
+    "pack_cost": "18.144",
+    "base_cost": null
+   },
+   {
+    "ID": "37599",
+    "t": "40 vnt. Lechat Fresh suaug. katėms su antiena100g",
+    "base": "33802",
+    "qty": "40",
+    "pack_cost": "22.68",
+    "base_cost": null
+   },
+   {
+    "ID": "37600",
+    "t": "24 vnt. Monge BWild kons. pašaras sterelizuotoms katėms su š",
+    "base": "33774",
+    "qty": "24",
+    "pack_cost": "11.88",
+    "base_cost": null
+   },
+   {
+    "ID": "37601",
+    "t": "36 vnt. Monge BWild kons. pašaras sterelizuotoms katėms su š",
+    "base": "33774",
+    "qty": "36",
+    "pack_cost": "17.82",
+    "base_cost": null
+   },
+   {
+    "ID": "37602",
+    "t": "24 vnt. Monge GRILL Adult konservuotas pašaras katėms su ėri",
+    "base": "33790",
+    "qty": "24",
+    "pack_cost": "11.448",
+    "base_cost": null
+   },
+   {
+    "ID": "37603",
+    "t": "36 vnt. Monge GRILL Adult konservuotas pašaras katėms su ėri",
+    "base": "33790",
+    "qty": "36",
+    "pack_cost": "17.172",
+    "base_cost": null
+   },
+   {
+    "ID": "37604",
+    "t": "24 vnt. Monge GRILL Kitten konservuotas pašaras kačiukams su",
+    "base": "33786",
+    "qty": "24",
+    "pack_cost": "11.448",
+    "base_cost": null
+   },
+   {
+    "ID": "37605",
+    "t": "36 vnt. Monge GRILL Kitten konservuotas pašaras kačiukams su",
+    "base": "33786",
+    "qty": "36",
+    "pack_cost": "17.172",
+    "base_cost": null
+   },
+   {
+    "ID": "37606",
+    "t": "24 vnt. Monge Grill Sterilised konservuotas pašaras steriliz",
+    "base": "33796",
+    "qty": "24",
+    "pack_cost": "11.448",
+    "base_cost": null
+   },
+   {
+    "ID": "37607",
+    "t": "36 vnt. Monge Grill Sterilised konservuotas pašaras steriliz",
+    "base": "33796",
+    "qty": "36",
+    "pack_cost": "17.172",
+    "base_cost": null
+   },
+   {
+    "ID": "37608",
+    "t": "24 vnt. Monge Grill Sterilised konservuotas pašaras steriliz",
+    "base": "33794",
+    "qty": "24",
+    "pack_cost": "11.448",
+    "base_cost": null
+   },
+   {
+    "ID": "37609",
+    "t": "36 vnt. Monge Grill Sterilised konservuotas pašaras steriliz",
+    "base": "33794",
+    "qty": "36",
+    "pack_cost": "17.172",
+    "base_cost": null
+   },
+   {
+    "ID": "37610",
+    "t": "18 vnt. Monge Monoprotein Adult begrūdis konservuotas pašara",
+    "base": "33776",
+    "qty": "18",
+    "pack_cost": "12.312",
+    "base_cost": null
+   },
+   {
+    "ID": "37611",
+    "t": "24 vnt. Monge Monoprotein Adult begrūdis konservuotas pašara",
+    "base": "33776",
+    "qty": "24",
+    "pack_cost": "16.416",
+    "base_cost": null
+   },
+   {
+    "ID": "37612",
+    "t": "36 vnt. Monge Monoprotein Adult begrūdis konservuotas pašara",
+    "base": "33776",
+    "qty": "36",
+    "pack_cost": "24.624",
+    "base_cost": null
+   },
+   {
+    "ID": "37613",
+    "t": "11 vnt. Monge Monoprotein konservai šunims su elniena 150g",
+    "base": "33538",
+    "qty": "11",
+    "pack_cost": "11.781",
+    "base_cost": null
+   },
+   {
+    "ID": "37614",
+    "t": "22 vnt. Monge Monoprotein konservai šunims su elniena 150g",
+    "base": "33538",
+    "qty": "22",
+    "pack_cost": "23.562",
+    "base_cost": null
+   },
+   {
+    "ID": "37615",
+    "t": "30 vnt. Monge Monoprotein konservai šunims su elniena 150g",
+    "base": "33538",
+    "qty": "30",
+    "pack_cost": "32.13",
+    "base_cost": null
+   },
+   {
+    "ID": "37616",
+    "t": "11 vnt. Monge Monoprotein konservai šunims su kalakutiena 15",
+    "base": "33532",
+    "qty": "11",
+    "pack_cost": "11.781",
+    "base_cost": null
+   },
+   {
+    "ID": "37617",
+    "t": "22 vnt. Monge Monoprotein konservai šunims su kalakutiena 15",
+    "base": "33532",
+    "qty": "22",
+    "pack_cost": "23.562",
+    "base_cost": null
+   },
+   {
+    "ID": "37618",
+    "t": "30 vnt. Monge Monoprotein konservai šunims su kalakutiena 15",
+    "base": "33532",
+    "qty": "30",
+    "pack_cost": "32.13",
+    "base_cost": null
+   },
+   {
+    "ID": "37619",
+    "t": "18 vnt. Monge Natural kons. pašaras suaugusioms katėms tuno ",
+    "base": "33600",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37620",
+    "t": "24 vnt. Monge Natural kons. pašaras suaugusioms katėms tuno ",
+    "base": "33600",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37621",
+    "t": "36 vnt. Monge Natural kons. pašaras suaugusioms katėms tuno ",
+    "base": "33600",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37622",
+    "t": "18 vnt. Monge Natural kons. pašaras suaugusioms katėms, gelt",
+    "base": "33594",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37623",
+    "t": "24 vnt. Monge Natural kons. pašaras suaugusioms katėms, gelt",
+    "base": "33594",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37624",
+    "t": "36 vnt. Monge Natural kons. pašaras suaugusioms katėms, gelt",
+    "base": "33594",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37625",
+    "t": "18 vnt. Monge Natural kons. pašaras suaugusioms katėms, tuna",
+    "base": "33606",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37626",
+    "t": "24 vnt. Monge Natural kons. pašaras suaugusioms katėms, tuna",
+    "base": "33606",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37627",
+    "t": "36 vnt. Monge Natural kons. pašaras suaugusioms katėms, tuna",
+    "base": "33606",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37628",
+    "t": "18 vnt. Monge Natural konservuotas pašaras kačiukams su skan",
+    "base": "33604",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37629",
+    "t": "24 vnt. Monge Natural konservuotas pašaras kačiukams su skan",
+    "base": "33604",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37630",
+    "t": "36 vnt. Monge Natural konservuotas pašaras kačiukams su skan",
+    "base": "33604",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37631",
+    "t": "18 vnt. Monge Supreme paketėlis suaugusioms katėms su tunu, ",
+    "base": "32469",
+    "qty": "18",
+    "pack_cost": "21.87",
+    "base_cost": null
+   },
+   {
+    "ID": "37632",
+    "t": "24 vnt. Monge Supreme paketėlis suaugusioms katėms su tunu, ",
+    "base": "32469",
+    "qty": "24",
+    "pack_cost": "29.16",
+    "base_cost": null
+   },
+   {
+    "ID": "37633",
+    "t": "36 vnt. Monge Supreme paketėlis suaugusioms katėms su tunu, ",
+    "base": "32469",
+    "qty": "36",
+    "pack_cost": "43.74",
+    "base_cost": null
+   },
+   {
+    "ID": "37634",
+    "t": "18 vnt. Monge Supreme paketėlis sterilizuotoms katėms su tun",
+    "base": "32479",
+    "qty": "18",
+    "pack_cost": "21.87",
+    "base_cost": null
+   },
+   {
+    "ID": "37635",
+    "t": "24 vnt. Monge Supreme paketėlis sterilizuotoms katėms su tun",
+    "base": "32479",
+    "qty": "24",
+    "pack_cost": "29.16",
+    "base_cost": null
+   },
+   {
+    "ID": "37636",
+    "t": "36 vnt. Monge Supreme paketėlis sterilizuotoms katėms su tun",
+    "base": "32479",
+    "qty": "36",
+    "pack_cost": "43.74",
+    "base_cost": null
+   },
+   {
+    "ID": "37637",
+    "t": "18 vnt. Monge Supreme paketėlis suaugusioms katėms su tunu, ",
+    "base": "32471",
+    "qty": "18",
+    "pack_cost": "21.87",
+    "base_cost": null
+   },
+   {
+    "ID": "37638",
+    "t": "24 vnt. Monge Supreme paketėlis suaugusioms katėms su tunu, ",
+    "base": "32471",
+    "qty": "24",
+    "pack_cost": "29.16",
+    "base_cost": null
+   },
+   {
+    "ID": "37639",
+    "t": "36 vnt. Monge Supreme paketėlis suaugusioms katėms su tunu, ",
+    "base": "32471",
+    "qty": "36",
+    "pack_cost": "43.74",
+    "base_cost": null
+   },
+   {
+    "ID": "37640",
+    "t": "18 vnt. Monge Supreme paketėlis sterilizuotoms katėms su tun",
+    "base": "32473",
+    "qty": "18",
+    "pack_cost": "21.87",
+    "base_cost": null
+   },
+   {
+    "ID": "37641",
+    "t": "24 vnt. Monge Supreme paketėlis sterilizuotoms katėms su tun",
+    "base": "32473",
+    "qty": "24",
+    "pack_cost": "29.16",
+    "base_cost": null
+   },
+   {
+    "ID": "37642",
+    "t": "36 vnt. Monge Supreme paketėlis sterilizuotoms katėms su tun",
+    "base": "32473",
+    "qty": "36",
+    "pack_cost": "43.74",
+    "base_cost": null
+   },
+   {
+    "ID": "37643",
+    "t": "18 vnt. Monge Supreme paketėlis kačiukams su tunu, špinatais",
+    "base": "32463",
+    "qty": "18",
+    "pack_cost": "21.87",
+    "base_cost": null
+   },
+   {
+    "ID": "37644",
+    "t": "24 vnt. Monge Supreme paketėlis kačiukams su tunu, špinatais",
+    "base": "32463",
+    "qty": "24",
+    "pack_cost": "29.16",
+    "base_cost": null
+   },
+   {
+    "ID": "37645",
+    "t": "36 vnt. Monge Supreme paketėlis kačiukams su tunu, špinatais",
+    "base": "32463",
+    "qty": "36",
+    "pack_cost": "43.74",
+    "base_cost": null
+   },
+   {
+    "ID": "37646",
+    "t": "24 vnt. Monge VetSolution Renal ir Oxalate konservai katėms ",
+    "base": "33672",
+    "qty": "24",
+    "pack_cost": "14.04",
+    "base_cost": null
+   },
+   {
+    "ID": "37647",
+    "t": "32 vnt. Monge VetSolution Renal ir Oxalate konservai katėms ",
+    "base": "33672",
+    "qty": "32",
+    "pack_cost": "18.72",
+    "base_cost": null
+   },
+   {
+    "ID": "37648",
+    "t": "24 vnt. Monge VetSolution Urinary Struvite konservai katėms ",
+    "base": "33674",
+    "qty": "24",
+    "pack_cost": "14.04",
+    "base_cost": null
+   },
+   {
+    "ID": "37649",
+    "t": "32 vnt. Monge VetSolution Urinary Struvite konservai katėms ",
+    "base": "33674",
+    "qty": "32",
+    "pack_cost": "18.72",
+    "base_cost": null
+   },
+   {
+    "ID": "37650",
+    "t": "18 vnt. Monge kons. pašaras katėms su tuno ir vištienos gaba",
+    "base": "33612",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37651",
+    "t": "24 vnt. Monge kons. pašaras katėms su tuno ir vištienos gaba",
+    "base": "33612",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37652",
+    "t": "36 vnt. Monge kons. pašaras katėms su tuno ir vištienos gaba",
+    "base": "33612",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37653",
+    "t": "18 vnt. Monge kons.pašaras katėms su Atlanto tuno gabalėliai",
+    "base": "33614",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37654",
+    "t": "24 vnt. Monge kons.pašaras katėms su Atlanto tuno gabalėliai",
+    "base": "33614",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37655",
+    "t": "36 vnt. Monge kons.pašaras katėms su Atlanto tuno gabalėliai",
+    "base": "33614",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37656",
+    "t": "18 vnt. Monge kons.pašaras katėms su tuno, vištienos ir jaut",
+    "base": "33620",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37657",
+    "t": "24 vnt. Monge kons.pašaras katėms su tuno, vištienos ir jaut",
+    "base": "33620",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37658",
+    "t": "36 vnt. Monge kons.pašaras katėms su tuno, vištienos ir jaut",
+    "base": "33620",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37659",
+    "t": "18 vnt. Monge kons.pašaras katėms su tuno, vištienos ir krev",
+    "base": "33618",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37660",
+    "t": "24 vnt. Monge kons.pašaras katėms su tuno, vištienos ir krev",
+    "base": "33618",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37661",
+    "t": "36 vnt. Monge kons.pašaras katėms su tuno, vištienos ir krev",
+    "base": "33618",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37662",
+    "t": "30 vnt. Special Dog Fresh konservai šunims su tunu 150g",
+    "base": "33814",
+    "qty": "30",
+    "pack_cost": "23.76",
+    "base_cost": null
+   },
+   {
+    "ID": "37663",
+    "t": "38 vnt. Special Dog Fresh konservai šunims su tunu 150g",
+    "base": "33814",
+    "qty": "38",
+    "pack_cost": "30.096",
+    "base_cost": null
+   },
+   {
+    "ID": "37664",
+    "t": "30 vnt. Special Dog Fresh konservai šunims su vištiena 150g",
+    "base": "33810",
+    "qty": "30",
+    "pack_cost": "23.76",
+    "base_cost": null
+   },
+   {
+    "ID": "37665",
+    "t": "38 vnt. Special Dog Fresh konservai šunims su vištiena 150g",
+    "base": "33810",
+    "qty": "38",
+    "pack_cost": "30.096",
+    "base_cost": null
+   },
+   {
+    "ID": "37666",
+    "t": "18 vnt. Farmina Vet Life Struvite konservai katėms 85 g",
+    "base": "33438",
+    "qty": "18",
+    "pack_cost": "22.842",
+    "base_cost": null
+   },
+   {
+    "ID": "37667",
+    "t": "24 vnt. Farmina Vet Life Struvite konservai katėms 85 g",
+    "base": "33438",
+    "qty": "24",
+    "pack_cost": "30.456",
+    "base_cost": null
+   },
+   {
+    "ID": "37668",
+    "t": "36 vnt. Farmina Vet Life Struvite konservai katėms 85 g",
+    "base": "33438",
+    "qty": "36",
+    "pack_cost": "45.684",
+    "base_cost": null
+   },
+   {
+    "ID": "37669",
+    "t": "18 vnt. Farmina Vet Life Obesity konservai katėms 85 g",
+    "base": "33432",
+    "qty": "18",
+    "pack_cost": "22.842",
+    "base_cost": null
+   },
+   {
+    "ID": "37670",
+    "t": "24 vnt. Farmina Vet Life Obesity konservai katėms 85 g",
+    "base": "33432",
+    "qty": "24",
+    "pack_cost": "30.456",
+    "base_cost": null
+   },
+   {
+    "ID": "37671",
+    "t": "36 vnt. Farmina Vet Life Obesity konservai katėms 85 g",
+    "base": "33432",
+    "qty": "36",
+    "pack_cost": "45.684",
+    "base_cost": null
+   },
+   {
+    "ID": "37672",
+    "t": "32 vnt. Gemon Adult konservuotas pašaras suaugusioms katėms ",
+    "base": "33656",
+    "qty": "32",
+    "pack_cost": "15.552",
+    "base_cost": null
+   },
+   {
+    "ID": "37673",
+    "t": "40 vnt. Gemon Adult konservuotas pašaras suaugusioms katėms ",
+    "base": "33656",
+    "qty": "40",
+    "pack_cost": "19.44",
+    "base_cost": null
+   },
+   {
+    "ID": "37674",
+    "t": "18 vnt. Gemon adult konservuotas pašaras suagusioms katėms s",
+    "base": "33734",
+    "qty": "18",
+    "pack_cost": "14.256",
+    "base_cost": null
+   },
+   {
+    "ID": "37675",
+    "t": "24 vnt. Gemon adult konservuotas pašaras suagusioms katėms s",
+    "base": "33734",
+    "qty": "24",
+    "pack_cost": "19.008",
+    "base_cost": null
+   },
+   {
+    "ID": "37676",
+    "t": "18 vnt. Gemon adult konservuotas paštetas suaugusioms katėms",
+    "base": "33650",
+    "qty": "18",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "37677",
+    "t": "24 vnt. Gemon adult konservuotas paštetas suaugusioms katėms",
+    "base": "33650",
+    "qty": "24",
+    "pack_cost": "22.464",
+    "base_cost": null
+   },
+   {
+    "ID": "37678",
+    "t": "24 vnt. Gemon mini adult konservuotas pašaras su vištiena ir",
+    "base": "33634",
+    "qty": "24",
+    "pack_cost": "19.008",
+    "base_cost": null
+   },
+   {
+    "ID": "37679",
+    "t": "36 vnt. Gemon mini adult konservuotas pašaras su vištiena ir",
+    "base": "33634",
+    "qty": "36",
+    "pack_cost": "28.512",
+    "base_cost": null
+   },
+   {
+    "ID": "37680",
+    "t": "24 vnt. Lechat Exc. konservai sterilizuotoms katėms su triuš",
+    "base": "33804",
+    "qty": "24",
+    "pack_cost": "13.608",
+    "base_cost": null
+   },
+   {
+    "ID": "37681",
+    "t": "32 vnt. Lechat Exc. konservai sterilizuotoms katėms su triuš",
+    "base": "33804",
+    "qty": "32",
+    "pack_cost": "18.144",
+    "base_cost": null
+   },
+   {
+    "ID": "37682",
+    "t": "32 vnt. Lechat Excellence Pouch konservai suaug. katėms su l",
+    "base": "34052",
+    "qty": "32",
+    "pack_cost": "18.144",
+    "base_cost": null
+   },
+   {
+    "ID": "37683",
+    "t": "40 vnt. Lechat Excellence Pouch konservai suaug. katėms su l",
+    "base": "34052",
+    "qty": "40",
+    "pack_cost": "22.68",
+    "base_cost": null
+   },
+   {
+    "ID": "37684",
+    "t": "24 vnt. Monge BWild Large Breed keptas paštetas katėms su bu",
+    "base": "33712",
+    "qty": "24",
+    "pack_cost": "14.472",
+    "base_cost": null
+   },
+   {
+    "ID": "37685",
+    "t": "32 vnt. Monge BWild Large Breed keptas paštetas katėms su bu",
+    "base": "33712",
+    "qty": "32",
+    "pack_cost": "19.296",
+    "base_cost": null
+   },
+   {
+    "ID": "37686",
+    "t": "24 vnt. Monge BWild adult paštetas katėms su lašiša ir daržo",
+    "base": "33718",
+    "qty": "24",
+    "pack_cost": "14.472",
+    "base_cost": null
+   },
+   {
+    "ID": "37687",
+    "t": "32 vnt. Monge BWild adult paštetas katėms su lašiša ir daržo",
+    "base": "33718",
+    "qty": "32",
+    "pack_cost": "19.296",
+    "base_cost": null
+   },
+   {
+    "ID": "37688",
+    "t": "24 vnt. Monge BWild adult paštetas sterilizuotoms katėms su ",
+    "base": "33722",
+    "qty": "24",
+    "pack_cost": "14.472",
+    "base_cost": null
+   },
+   {
+    "ID": "37689",
+    "t": "32 vnt. Monge BWild adult paštetas sterilizuotoms katėms su ",
+    "base": "33722",
+    "qty": "32",
+    "pack_cost": "19.296",
+    "base_cost": null
+   },
+   {
+    "ID": "37690",
+    "t": "24 vnt. Monge BWild kons.pašaras sterilizuotoms katėms su la",
+    "base": "33770",
+    "qty": "24",
+    "pack_cost": "11.88",
+    "base_cost": null
+   },
+   {
+    "ID": "37691",
+    "t": "36 vnt. Monge BWild kons.pašaras sterilizuotoms katėms su la",
+    "base": "33770",
+    "qty": "36",
+    "pack_cost": "17.82",
+    "base_cost": null
+   },
+   {
+    "ID": "37692",
+    "t": "12 vnt. Monge Bwild adult konservuotas pašaras su lašiša, mo",
+    "base": "33818",
+    "qty": "12",
+    "pack_cost": "12.636",
+    "base_cost": null
+   },
+   {
+    "ID": "37693",
+    "t": "24 vnt. Monge Bwild adult konservuotas pašaras su lašiša, mo",
+    "base": "33818",
+    "qty": "24",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "37694",
+    "t": "12 vnt. Monge Bwild adult konservuotas pašaras su ėriena, mo",
+    "base": "33704",
+    "qty": "12",
+    "pack_cost": "12.636",
+    "base_cost": null
+   },
+   {
+    "ID": "37695",
+    "t": "24 vnt. Monge Bwild adult konservuotas pašaras su ėriena, mo",
+    "base": "33704",
+    "qty": "24",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "37696",
+    "t": "18 vnt. Monge Delicate konservai katėms su vištiena ir špara",
+    "base": "33622",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37697",
+    "t": "24 vnt. Monge Delicate konservai katėms su vištiena ir špara",
+    "base": "33622",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37698",
+    "t": "36 vnt. Monge Delicate konservai katėms su vištiena ir špara",
+    "base": "33622",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37699",
+    "t": "24 vnt. Monge GRILL Adult konservuotas pašaras katėms su tri",
+    "base": "33788",
+    "qty": "24",
+    "pack_cost": "11.448",
+    "base_cost": null
+   },
+   {
+    "ID": "37700",
+    "t": "36 vnt. Monge GRILL Adult konservuotas pašaras katėms su tri",
+    "base": "33788",
+    "qty": "36",
+    "pack_cost": "17.172",
+    "base_cost": null
+   },
+   {
+    "ID": "37701",
+    "t": "24 vnt. Monge Grill Sterilised konservuotas pašaras steriliz",
+    "base": "33792",
+    "qty": "24",
+    "pack_cost": "11.448",
+    "base_cost": null
+   },
+   {
+    "ID": "37702",
+    "t": "36 vnt. Monge Grill Sterilised konservuotas pašaras steriliz",
+    "base": "33792",
+    "qty": "36",
+    "pack_cost": "17.172",
+    "base_cost": null
+   },
+   {
+    "ID": "37703",
+    "t": "18 vnt. Monge Jelly Senior kons. pašaras senyvoms katėms su ",
+    "base": "33588",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37704",
+    "t": "24 vnt. Monge Jelly Senior kons. pašaras senyvoms katėms su ",
+    "base": "33588",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37705",
+    "t": "36 vnt. Monge Jelly Senior kons. pašaras senyvoms katėms su ",
+    "base": "33588",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37706",
+    "t": "18 vnt. Monge Monoprotein Flakes konservai katėms tik su jau",
+    "base": "33205",
+    "qty": "18",
+    "pack_cost": "16.038",
+    "base_cost": null
+   },
+   {
+    "ID": "37707",
+    "t": "24 vnt. Monge Monoprotein Flakes konservai katėms tik su jau",
+    "base": "33205",
+    "qty": "24",
+    "pack_cost": "21.384",
+    "base_cost": null
+   },
+   {
+    "ID": "37708",
+    "t": "36 vnt. Monge Monoprotein Flakes konservai katėms tik su jau",
+    "base": "33205",
+    "qty": "36",
+    "pack_cost": "32.076",
+    "base_cost": null
+   },
+   {
+    "ID": "37709",
+    "t": "11 vnt. Monge Monoprotein Solo konservai šunims tik su jauti",
+    "base": "33546",
+    "qty": "11",
+    "pack_cost": "11.781",
+    "base_cost": null
+   },
+   {
+    "ID": "37710",
+    "t": "22 vnt. Monge Monoprotein Solo konservai šunims tik su jauti",
+    "base": "33546",
+    "qty": "22",
+    "pack_cost": "23.562",
+    "base_cost": null
+   },
+   {
+    "ID": "37711",
+    "t": "30 vnt. Monge Monoprotein Solo konservai šunims tik su jauti",
+    "base": "33546",
+    "qty": "30",
+    "pack_cost": "32.13",
+    "base_cost": null
+   },
+   {
+    "ID": "37712",
+    "t": "18 vnt. Monge Monoprotein Adult begrūdis konservuotas pašara",
+    "base": "33782",
+    "qty": "18",
+    "pack_cost": "12.312",
+    "base_cost": null
+   },
+   {
+    "ID": "37713",
+    "t": "24 vnt. Monge Monoprotein Adult begrūdis konservuotas pašara",
+    "base": "33782",
+    "qty": "24",
+    "pack_cost": "16.416",
+    "base_cost": null
+   },
+   {
+    "ID": "37714",
+    "t": "36 vnt. Monge Monoprotein Adult begrūdis konservuotas pašara",
+    "base": "33782",
+    "qty": "36",
+    "pack_cost": "24.624",
+    "base_cost": null
+   },
+   {
+    "ID": "37715",
+    "t": "11 vnt. Monge Monoprotein konservai šunims su antiena 150g",
+    "base": "33540",
+    "qty": "11",
+    "pack_cost": "11.781",
+    "base_cost": null
+   },
+   {
+    "ID": "37716",
+    "t": "22 vnt. Monge Monoprotein konservai šunims su antiena 150g",
+    "base": "33540",
+    "qty": "22",
+    "pack_cost": "23.562",
+    "base_cost": null
+   },
+   {
+    "ID": "37717",
+    "t": "30 vnt. Monge Monoprotein konservai šunims su antiena 150g",
+    "base": "33540",
+    "qty": "30",
+    "pack_cost": "32.13",
+    "base_cost": null
+   },
+   {
+    "ID": "37718",
+    "t": "11 vnt. Monge Monoprotein konservai šunims su vištiena 150g",
+    "base": "33530",
+    "qty": "11",
+    "pack_cost": "11.781",
+    "base_cost": null
+   },
+   {
+    "ID": "37719",
+    "t": "22 vnt. Monge Monoprotein konservai šunims su vištiena 150g",
+    "base": "33530",
+    "qty": "22",
+    "pack_cost": "23.562",
+    "base_cost": null
+   },
+   {
+    "ID": "37720",
+    "t": "30 vnt. Monge Monoprotein konservai šunims su vištiena 150g",
+    "base": "33530",
+    "qty": "30",
+    "pack_cost": "32.13",
+    "base_cost": null
+   },
+   {
+    "ID": "37721",
+    "t": "11 vnt. Monge Monoprotein konservai šunims su ėriena 150g",
+    "base": "33534",
+    "qty": "11",
+    "pack_cost": "11.781",
+    "base_cost": null
+   },
+   {
+    "ID": "37722",
+    "t": "22 vnt. Monge Monoprotein konservai šunims su ėriena 150g",
+    "base": "33534",
+    "qty": "22",
+    "pack_cost": "23.562",
+    "base_cost": null
+   },
+   {
+    "ID": "37723",
+    "t": "30 vnt. Monge Monoprotein konservai šunims su ėriena 150g",
+    "base": "33534",
+    "qty": "30",
+    "pack_cost": "32.13",
+    "base_cost": null
+   },
+   {
+    "ID": "37724",
+    "t": "18 vnt. Monge Monoprotein - Cat Flakes su kalakutiena ir mor",
+    "base": "33972",
+    "qty": "18",
+    "pack_cost": "16.038",
+    "base_cost": null
+   },
+   {
+    "ID": "37725",
+    "t": "24 vnt. Monge Monoprotein - Cat Flakes su kalakutiena ir mor",
+    "base": "33972",
+    "qty": "24",
+    "pack_cost": "21.384",
+    "base_cost": null
+   },
+   {
+    "ID": "37726",
+    "t": "36 vnt. Monge Monoprotein - Cat Flakes su kalakutiena ir mor",
+    "base": "33972",
+    "qty": "36",
+    "pack_cost": "32.076",
+    "base_cost": null
+   },
+   {
+    "ID": "37727",
+    "t": "18 vnt. Monge Natural kons. pašaras suaugusioms katėms tuno ",
+    "base": "33602",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37728",
+    "t": "24 vnt. Monge Natural kons. pašaras suaugusioms katėms tuno ",
+    "base": "33602",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37729",
+    "t": "36 vnt. Monge Natural kons. pašaras suaugusioms katėms tuno ",
+    "base": "33602",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37730",
+    "t": "18 vnt. Monge Natural kons. pašaras suaugusioms katėms tuno ",
+    "base": "33596",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37731",
+    "t": "24 vnt. Monge Natural kons. pašaras suaugusioms katėms tuno ",
+    "base": "33596",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37732",
+    "t": "36 vnt. Monge Natural kons. pašaras suaugusioms katėms tuno ",
+    "base": "33596",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37733",
+    "t": "24 vnt. Monge VetSolution Gastrointestinal konservai katėms ",
+    "base": "33670",
+    "qty": "24",
+    "pack_cost": "14.04",
+    "base_cost": null
+   },
+   {
+    "ID": "37734",
+    "t": "32 vnt. Monge VetSolution Gastrointestinal konservai katėms ",
+    "base": "33670",
+    "qty": "32",
+    "pack_cost": "18.72",
+    "base_cost": null
+   },
+   {
+    "ID": "37735",
+    "t": "24 vnt. Monge VetSolution Recovery konservai katėms 100 g",
+    "base": "33676",
+    "qty": "24",
+    "pack_cost": "14.04",
+    "base_cost": null
+   },
+   {
+    "ID": "37736",
+    "t": "32 vnt. Monge VetSolution Recovery konservai katėms 100 g",
+    "base": "33676",
+    "qty": "32",
+    "pack_cost": "18.72",
+    "base_cost": null
+   },
+   {
+    "ID": "37737",
+    "t": "22 vnt. Monge VetSolution Gastrointestinal konservai šunims ",
+    "base": "33680",
+    "qty": "22",
+    "pack_cost": "16.236",
+    "base_cost": null
+   },
+   {
+    "ID": "37738",
+    "t": "30 vnt. Monge VetSolution Gastrointestinal konservai šunims ",
+    "base": "33680",
+    "qty": "30",
+    "pack_cost": "22.14",
+    "base_cost": null
+   },
+   {
+    "ID": "37739",
+    "t": "18 vnt. Monge kons. pašaras katėms su gardžiomis jūros gėryb",
+    "base": "33616",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37740",
+    "t": "24 vnt. Monge kons. pašaras katėms su gardžiomis jūros gėryb",
+    "base": "33616",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37741",
+    "t": "36 vnt. Monge kons. pašaras katėms su gardžiomis jūros gėryb",
+    "base": "33616",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37742",
+    "t": "18 vnt. Monge kons. pašaras katėms su tuno gabalėliais, višt",
+    "base": "33610",
+    "qty": "18",
+    "pack_cost": "19.602",
+    "base_cost": null
+   },
+   {
+    "ID": "37743",
+    "t": "24 vnt. Monge kons. pašaras katėms su tuno gabalėliais, višt",
+    "base": "33610",
+    "qty": "24",
+    "pack_cost": "26.136",
+    "base_cost": null
+   },
+   {
+    "ID": "37744",
+    "t": "36 vnt. Monge kons. pašaras katėms su tuno gabalėliais, višt",
+    "base": "33610",
+    "qty": "36",
+    "pack_cost": "39.204",
+    "base_cost": null
+   },
+   {
+    "ID": "37745",
+    "t": "24 vnt. Simba konservai katėms su žvėriena 415 g",
+    "base": "33930",
+    "qty": "24",
+    "pack_cost": "14.472",
+    "base_cost": null
+   },
+   {
+    "ID": "37746",
+    "t": "30 vnt. Simba konservai katėms su žvėriena 415 g",
+    "base": "33930",
+    "qty": "30",
+    "pack_cost": "18.09",
+    "base_cost": null
+   },
+   {
+    "ID": "37747",
+    "t": "24 vnt. Simba konservuotas pašaras katėms su tunu 415g",
+    "base": "33740",
+    "qty": "24",
+    "pack_cost": "14.472",
+    "base_cost": null
+   },
+   {
+    "ID": "37748",
+    "t": "30 vnt. Simba konservuotas pašaras katėms su tunu 415g",
+    "base": "33740",
+    "qty": "30",
+    "pack_cost": "18.09",
+    "base_cost": null
+   },
+   {
+    "ID": "37749",
+    "t": "22 vnt. Special Dog Exc. Fresh konservai šunims su kalakutie",
+    "base": "33812",
+    "qty": "22",
+    "pack_cost": "17.226",
+    "base_cost": null
+   },
+   {
+    "ID": "37750",
+    "t": "30 vnt. Special Dog Exc. Fresh konservai šunims su kalakutie",
+    "base": "33812",
+    "qty": "30",
+    "pack_cost": "23.49",
+    "base_cost": null
+   },
+   {
+    "ID": "37751",
+    "t": "22 vnt. Special Dog Exc. Fresh konservai šunims su ėriena 15",
+    "base": "33808",
+    "qty": "22",
+    "pack_cost": "17.226",
+    "base_cost": null
+   },
+   {
+    "ID": "37752",
+    "t": "30 vnt. Special Dog Exc. Fresh konservai šunims su ėriena 15",
+    "base": "33808",
+    "qty": "30",
+    "pack_cost": "23.49",
+    "base_cost": null
+   },
+   {
+    "ID": "37753",
+    "t": "36 vnt. Gemon all breeds adult konservuotas paštetas suaugus",
+    "base": "33624",
+    "qty": "36",
+    "pack_cost": "34.992",
+    "base_cost": null
+   },
+   {
+    "ID": "37754",
+    "t": "36 vnt. Gemon all breeds adult konservuotas paštetas suaugus",
+    "base": "33626",
+    "qty": "36",
+    "pack_cost": "34.992",
+    "base_cost": null
+   },
+   {
+    "ID": "37759",
+    "t": "12 vnt. Farmina Vet Life Struvite konservai šunims 300 g",
+    "base": "33420",
+    "qty": "12",
+    "pack_cost": "34.344",
+    "base_cost": null
+   },
+   {
+    "ID": "37760",
+    "t": "18 vnt. Farmina Vet Life Struvite konservai šunims 300 g",
+    "base": "33420",
+    "qty": "18",
+    "pack_cost": "51.516",
+    "base_cost": null
+   },
+   {
+    "ID": "37761",
+    "t": "24 vnt. Farmina Vet Life Struvite konservai šunims 300 g",
+    "base": "33420",
+    "qty": "24",
+    "pack_cost": "68.688",
+    "base_cost": null
+   },
+   {
+    "ID": "37762",
+    "t": "12 vnt. Farmina Vet Life Diabetic konservai šunims 300 g",
+    "base": "33402",
+    "qty": "12",
+    "pack_cost": "31.212",
+    "base_cost": null
+   },
+   {
+    "ID": "37763",
+    "t": "18 vnt. Farmina Vet Life Diabetic konservai šunims 300 g",
+    "base": "33402",
+    "qty": "18",
+    "pack_cost": "46.818",
+    "base_cost": null
+   },
+   {
+    "ID": "37764",
+    "t": "24 vnt. Farmina Vet Life Diabetic konservai šunims 300 g",
+    "base": "33402",
+    "qty": "24",
+    "pack_cost": "62.424",
+    "base_cost": null
+   },
+   {
+    "ID": "37765",
+    "t": "24 vnt. Gemon all breeds adult konservuotas pašaras suaugusi",
+    "base": "33644",
+    "qty": "24",
+    "pack_cost": "11.232",
+    "base_cost": null
+   },
+   {
+    "ID": "37766",
+    "t": "32 vnt. Gemon all breeds adult konservuotas pašaras suaugusi",
+    "base": "33644",
+    "qty": "32",
+    "pack_cost": "14.976",
+    "base_cost": null
+   },
+   {
+    "ID": "37767",
+    "t": "9 vnt. Gemon maxi adult konservuotas pašaras suaugusiems šun",
+    "base": "33642",
+    "qty": "9",
+    "pack_cost": "15.876",
+    "base_cost": null
+   },
+   {
+    "ID": "37768",
+    "t": "12 vnt. Gemon maxi adult konservuotas pašaras suaugusiems šu",
+    "base": "33642",
+    "qty": "12",
+    "pack_cost": "21.168",
+    "base_cost": null
+   },
+   {
+    "ID": "37769",
+    "t": "9 vnt. Gemon medium adult konservuotas pašaras su ėriena ir ",
+    "base": "33638",
+    "qty": "9",
+    "pack_cost": "15.876",
+    "base_cost": null
+   },
+   {
+    "ID": "37770",
+    "t": "12 vnt. Gemon medium adult konservuotas pašaras su ėriena ir",
+    "base": "33638",
+    "qty": "12",
+    "pack_cost": "21.168",
+    "base_cost": null
+   },
+   {
+    "ID": "37771",
+    "t": "12 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34018",
+    "qty": "12",
+    "pack_cost": "18.036",
+    "base_cost": null
+   },
+   {
+    "ID": "37772",
+    "t": "18 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34018",
+    "qty": "18",
+    "pack_cost": "27.054",
+    "base_cost": null
+   },
+   {
+    "ID": "37773",
+    "t": "24 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34018",
+    "qty": "24",
+    "pack_cost": "36.072",
+    "base_cost": null
+   },
+   {
+    "ID": "37774",
+    "t": "12 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34006",
+    "qty": "12",
+    "pack_cost": "18.036",
+    "base_cost": null
+   },
+   {
+    "ID": "37775",
+    "t": "18 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34006",
+    "qty": "18",
+    "pack_cost": "27.054",
+    "base_cost": null
+   },
+   {
+    "ID": "37776",
+    "t": "24 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34006",
+    "qty": "24",
+    "pack_cost": "36.072",
+    "base_cost": null
+   },
+   {
+    "ID": "37777",
+    "t": "12 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34014",
+    "qty": "12",
+    "pack_cost": "18.036",
+    "base_cost": null
+   },
+   {
+    "ID": "37778",
+    "t": "18 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34014",
+    "qty": "18",
+    "pack_cost": "27.054",
+    "base_cost": null
+   },
+   {
+    "ID": "37779",
+    "t": "24 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34014",
+    "qty": "24",
+    "pack_cost": "36.072",
+    "base_cost": null
+   },
+   {
+    "ID": "37780",
+    "t": "12 vnt. Special dog šunų konservai, gabalėliai su jautiena/d",
+    "base": "33732",
+    "qty": "12",
+    "pack_cost": "14.148",
+    "base_cost": null
+   },
+   {
+    "ID": "37781",
+    "t": "15 vnt. Special dog šunų konservai, gabalėliai su jautiena/d",
+    "base": "33732",
+    "qty": "15",
+    "pack_cost": "17.685",
+    "base_cost": null
+   },
+   {
+    "ID": "37782",
+    "t": "12 vnt. Special dog šunų konservai, gabalėliai su vištiena 7",
+    "base": "33730",
+    "qty": "12",
+    "pack_cost": "14.148",
+    "base_cost": null
+   },
+   {
+    "ID": "37783",
+    "t": "15 vnt. Special dog šunų konservai, gabalėliai su vištiena 7",
+    "base": "33730",
+    "qty": "15",
+    "pack_cost": "17.685",
+    "base_cost": null
+   },
+   {
+    "ID": "37784",
+    "t": "24 vnt. Monge Fresh paštetas šunims su antienos gabalėliais1",
+    "base": "33562",
+    "qty": "24",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37785",
+    "t": "32 vnt. Monge Fresh paštetas šunims su antienos gabalėliais1",
+    "base": "33562",
+    "qty": "32",
+    "pack_cost": "16.704",
+    "base_cost": null
+   },
+   {
+    "ID": "37786",
+    "t": "24 vnt. Monge Fresh paštetas šunims su jautienos gabalėliais",
+    "base": "33566",
+    "qty": "24",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37787",
+    "t": "32 vnt. Monge Fresh paštetas šunims su jautienos gabalėliais",
+    "base": "33566",
+    "qty": "32",
+    "pack_cost": "16.704",
+    "base_cost": null
+   },
+   {
+    "ID": "37788",
+    "t": "24 vnt. Monge Fresh paštetas šunims su kalakutienos gabalėli",
+    "base": "33558",
+    "qty": "24",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37789",
+    "t": "32 vnt. Monge Fresh paštetas šunims su kalakutienos gabalėli",
+    "base": "33558",
+    "qty": "32",
+    "pack_cost": "16.704",
+    "base_cost": null
+   },
+   {
+    "ID": "37790",
+    "t": "24 vnt. Monge Fresh paštetas šunims su kiaulienos gabalėliai",
+    "base": "33570",
+    "qty": "24",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37791",
+    "t": "32 vnt. Monge Fresh paštetas šunims su kiaulienos gabalėliai",
+    "base": "33570",
+    "qty": "32",
+    "pack_cost": "16.704",
+    "base_cost": null
+   },
+   {
+    "ID": "37792",
+    "t": "24 vnt. Monge Fresh paštetas šunims su lašišos gabalėliais 1",
+    "base": "33568",
+    "qty": "24",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37793",
+    "t": "32 vnt. Monge Fresh paštetas šunims su lašišos gabalėliais 1",
+    "base": "33568",
+    "qty": "32",
+    "pack_cost": "16.704",
+    "base_cost": null
+   },
+   {
+    "ID": "37794",
+    "t": "24 vnt. Monge Fresh paštetas šunims su tuno gabalėliais 100g",
+    "base": "33556",
+    "qty": "24",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37795",
+    "t": "32 vnt. Monge Fresh paštetas šunims su tuno gabalėliais 100g",
+    "base": "33556",
+    "qty": "32",
+    "pack_cost": "16.704",
+    "base_cost": null
+   },
+   {
+    "ID": "37796",
+    "t": "24 vnt. Monge Fresh paštetas šunims su vištienos gabalėliais",
+    "base": "33560",
+    "qty": "24",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37797",
+    "t": "32 vnt. Monge Fresh paštetas šunims su vištienos gabalėliais",
+    "base": "33560",
+    "qty": "32",
+    "pack_cost": "16.704",
+    "base_cost": null
+   },
+   {
+    "ID": "37798",
+    "t": "24 vnt. Monge Grill konservuotas pašaras šunims senjorams su",
+    "base": "33724",
+    "qty": "24",
+    "pack_cost": "11.016",
+    "base_cost": null
+   },
+   {
+    "ID": "37799",
+    "t": "32 vnt. Monge Grill konservuotas pašaras šunims senjorams su",
+    "base": "33724",
+    "qty": "32",
+    "pack_cost": "14.688",
+    "base_cost": null
+   },
+   {
+    "ID": "37800",
+    "t": "24 vnt. Monge Grill konservuotas pašaras šunims su jautiena ",
+    "base": "33582",
+    "qty": "24",
+    "pack_cost": "11.016",
+    "base_cost": null
+   },
+   {
+    "ID": "37801",
+    "t": "32 vnt. Monge Grill konservuotas pašaras šunims su jautiena ",
+    "base": "33582",
+    "qty": "32",
+    "pack_cost": "14.688",
+    "base_cost": null
+   },
+   {
+    "ID": "37802",
+    "t": "24 vnt. Monge Grill konservuotas pašaras šunims su menke 100",
+    "base": "33578",
+    "qty": "24",
+    "pack_cost": "11.016",
+    "base_cost": null
+   },
+   {
+    "ID": "37803",
+    "t": "32 vnt. Monge Grill konservuotas pašaras šunims su menke 100",
+    "base": "33578",
+    "qty": "32",
+    "pack_cost": "14.688",
+    "base_cost": null
+   },
+   {
+    "ID": "37804",
+    "t": "24 vnt. Monge Grill konservuotas pašaras šunims su vištiena ",
+    "base": "33576",
+    "qty": "24",
+    "pack_cost": "11.016",
+    "base_cost": null
+   },
+   {
+    "ID": "37805",
+    "t": "32 vnt. Monge Grill konservuotas pašaras šunims su vištiena ",
+    "base": "33576",
+    "qty": "32",
+    "pack_cost": "14.688",
+    "base_cost": null
+   },
+   {
+    "ID": "37806",
+    "t": "24 vnt. Monge Grill konservuotas pašaras šunims su ėriena ir",
+    "base": "33584",
+    "qty": "24",
+    "pack_cost": "11.016",
+    "base_cost": null
+   },
+   {
+    "ID": "37807",
+    "t": "32 vnt. Monge Grill konservuotas pašaras šunims su ėriena ir",
+    "base": "33584",
+    "qty": "32",
+    "pack_cost": "14.688",
+    "base_cost": null
+   },
+   {
+    "ID": "37808",
+    "t": "6 vnt. Real Dog konservai suaugusiems šunims su jautiena ir ",
+    "base": "34020",
+    "qty": "6",
+    "pack_cost": "18.144",
+    "base_cost": null
+   },
+   {
+    "ID": "37809",
+    "t": "9 vnt. Real Dog konservai suaugusiems šunims su jautiena ir ",
+    "base": "34020",
+    "qty": "9",
+    "pack_cost": "27.216",
+    "base_cost": null
+   },
+   {
+    "ID": "37810",
+    "t": "12 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34020",
+    "qty": "12",
+    "pack_cost": "36.288",
+    "base_cost": null
+   },
+   {
+    "ID": "37811",
+    "t": "6 vnt. Real Dog konservai suaugusiems šunims su jautiena ir ",
+    "base": "34012",
+    "qty": "6",
+    "pack_cost": "18.144",
+    "base_cost": null
+   },
+   {
+    "ID": "37812",
+    "t": "9 vnt. Real Dog konservai suaugusiems šunims su jautiena ir ",
+    "base": "34012",
+    "qty": "9",
+    "pack_cost": "27.216",
+    "base_cost": null
+   },
+   {
+    "ID": "37813",
+    "t": "12 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34012",
+    "qty": "12",
+    "pack_cost": "36.288",
+    "base_cost": null
+   },
+   {
+    "ID": "37814",
+    "t": "6 vnt. Real Dog konservai suaugusiems šunims su jautiena ir ",
+    "base": "34008",
+    "qty": "6",
+    "pack_cost": "18.144",
+    "base_cost": null
+   },
+   {
+    "ID": "37815",
+    "t": "9 vnt. Real Dog konservai suaugusiems šunims su jautiena ir ",
+    "base": "34008",
+    "qty": "9",
+    "pack_cost": "27.216",
+    "base_cost": null
+   },
+   {
+    "ID": "37816",
+    "t": "12 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34008",
+    "qty": "12",
+    "pack_cost": "36.288",
+    "base_cost": null
+   },
+   {
+    "ID": "37817",
+    "t": "6 vnt. Real Dog konservai suaugusiems šunims su jautiena ir ",
+    "base": "34024",
+    "qty": "6",
+    "pack_cost": "18.144",
+    "base_cost": null
+   },
+   {
+    "ID": "37818",
+    "t": "9 vnt. Real Dog konservai suaugusiems šunims su jautiena ir ",
+    "base": "34024",
+    "qty": "9",
+    "pack_cost": "27.216",
+    "base_cost": null
+   },
+   {
+    "ID": "37819",
+    "t": "12 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34024",
+    "qty": "12",
+    "pack_cost": "36.288",
+    "base_cost": null
+   },
+   {
+    "ID": "37820",
+    "t": "12 vnt. Farmina N&D Pumpkin Starter konservai šuniukams su ė",
+    "base": "34002",
+    "qty": "12",
+    "pack_cost": "25.488",
+    "base_cost": null
+   },
+   {
+    "ID": "37821",
+    "t": "18 vnt. Farmina N&D Pumpkin Starter konservai šuniukams su ė",
+    "base": "34002",
+    "qty": "18",
+    "pack_cost": "38.232",
+    "base_cost": null
+   },
+   {
+    "ID": "37822",
+    "t": "24 vnt. Farmina N&D Pumpkin Starter konservai šuniukams su ė",
+    "base": "34002",
+    "qty": "24",
+    "pack_cost": "50.976",
+    "base_cost": null
+   },
+   {
+    "ID": "37823",
+    "t": "24 vnt. Gemon all breeds adult konservuotas pašaras suaugusi",
+    "base": "33646",
+    "qty": "24",
+    "pack_cost": "11.232",
+    "base_cost": null
+   },
+   {
+    "ID": "37824",
+    "t": "32 vnt. Gemon all breeds adult konservuotas pašaras suaugusi",
+    "base": "33646",
+    "qty": "32",
+    "pack_cost": "14.976",
+    "base_cost": null
+   },
+   {
+    "ID": "37825",
+    "t": "9 vnt. Gemon medium adult konservuotas pašaras su vištienos ",
+    "base": "33640",
+    "qty": "9",
+    "pack_cost": "15.876",
+    "base_cost": null
+   },
+   {
+    "ID": "37826",
+    "t": "12 vnt. Gemon medium adult konservuotas pašaras su vištienos",
+    "base": "33640",
+    "qty": "12",
+    "pack_cost": "21.168",
+    "base_cost": null
+   },
+   {
+    "ID": "37827",
+    "t": "24 vnt. Monge Fresh paštetas šunims su menkės gabalėliais 10",
+    "base": "33572",
+    "qty": "24",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37828",
+    "t": "32 vnt. Monge Fresh paštetas šunims su menkės gabalėliais 10",
+    "base": "33572",
+    "qty": "32",
+    "pack_cost": "16.704",
+    "base_cost": null
+   },
+   {
+    "ID": "37829",
+    "t": "24 vnt. Monge Fresh paštetas šunims su ėrienos gabalėliais10",
+    "base": "33564",
+    "qty": "24",
+    "pack_cost": "12.528",
+    "base_cost": null
+   },
+   {
+    "ID": "37830",
+    "t": "32 vnt. Monge Fresh paštetas šunims su ėrienos gabalėliais10",
+    "base": "33564",
+    "qty": "32",
+    "pack_cost": "16.704",
+    "base_cost": null
+   },
+   {
+    "ID": "37831",
+    "t": "24 vnt. Monge Grill konservuotas pašaras jauniems šunims su ",
+    "base": "33860",
+    "qty": "24",
+    "pack_cost": "11.016",
+    "base_cost": null
+   },
+   {
+    "ID": "37832",
+    "t": "32 vnt. Monge Grill konservuotas pašaras jauniems šunims su ",
+    "base": "33860",
+    "qty": "32",
+    "pack_cost": "14.688",
+    "base_cost": null
+   },
+   {
+    "ID": "37833",
+    "t": "12 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34010",
+    "qty": "12",
+    "pack_cost": "18.036",
+    "base_cost": null
+   },
+   {
+    "ID": "37834",
+    "t": "18 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34010",
+    "qty": "18",
+    "pack_cost": "27.054",
+    "base_cost": null
+   },
+   {
+    "ID": "37835",
+    "t": "24 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34010",
+    "qty": "24",
+    "pack_cost": "36.072",
+    "base_cost": null
+   },
+   {
+    "ID": "37836",
+    "t": "6 vnt. Real Dog konservai suaugusiems šunims su jautiena ir ",
+    "base": "34016",
+    "qty": "6",
+    "pack_cost": "18.144",
+    "base_cost": null
+   },
+   {
+    "ID": "37837",
+    "t": "9 vnt. Real Dog konservai suaugusiems šunims su jautiena ir ",
+    "base": "34016",
+    "qty": "9",
+    "pack_cost": "27.216",
+    "base_cost": null
+   },
+   {
+    "ID": "37838",
+    "t": "12 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34016",
+    "qty": "12",
+    "pack_cost": "36.288",
+    "base_cost": null
+   },
+   {
+    "ID": "37839",
+    "t": "12 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34022",
+    "qty": "12",
+    "pack_cost": "18.036",
+    "base_cost": null
+   },
+   {
+    "ID": "37840",
+    "t": "18 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34022",
+    "qty": "18",
+    "pack_cost": "27.054",
+    "base_cost": null
+   },
+   {
+    "ID": "37841",
+    "t": "24 vnt. Real Dog konservai suaugusiems šunims su jautiena ir",
+    "base": "34022",
+    "qty": "24",
+    "pack_cost": "36.072",
+    "base_cost": null
+   },
+   {
+    "ID": "37842",
+    "t": "24 vnt. Landfleish konservai katėms su lašiša ir paukštiena ",
+    "base": "23464",
+    "qty": "24",
+    "pack_cost": "34.8",
+    "base_cost": null
+   },
+   {
+    "ID": "37843",
+    "t": "24 vnt. Exclusion diet hypo konservai šuniukams, su kiaulien",
+    "base": "35316",
+    "qty": "24",
+    "pack_cost": "62.424",
+    "base_cost": null
+   },
+   {
+    "ID": "37844",
+    "t": "24 vnt. Exclusion Hypo konservuotas pašaras šunims su triuši",
+    "base": "35312",
+    "qty": "24",
+    "pack_cost": "62.424",
+    "base_cost": null
+   },
+   {
+    "ID": "37845",
+    "t": "36 vnt. JosiCat rich in Salmon in Sauce konservuotas pašaras",
+    "base": "34224",
+    "qty": "36",
+    "pack_cost": "19.872",
+    "base_cost": null
+   },
+   {
+    "ID": "37846",
+    "t": "36 vnt. JosiCat rich in Turkey in Sauce konservuotas pašaras",
+    "base": "26127",
+    "qty": "36",
+    "pack_cost": "19.872",
+    "base_cost": null
+   },
+   {
+    "ID": "37847",
+    "t": "36 vnt. JosiCat Finest Mousse with Chicken, paštetas katėms ",
+    "base": "26137",
+    "qty": "36",
+    "pack_cost": "19.872",
+    "base_cost": null
+   },
+   {
+    "ID": "37848",
+    "t": "24 vnt. Landfleish konservai katėms su paukšt,iena ir krabai",
+    "base": "23468",
+    "qty": "24",
+    "pack_cost": "34.8",
+    "base_cost": null
+   },
+   {
+    "ID": "37849",
+    "t": "24 vnt. Landfleish konservai katėms su antiena ir vištiena, ",
+    "base": "23470",
+    "qty": "24",
+    "pack_cost": "28.32",
+    "base_cost": null
+   },
+   {
+    "ID": "37850",
+    "t": "24 vnt. Josera konservuotas pašaras katėms su jautiena, 85g",
+    "base": "21828",
+    "qty": "24",
+    "pack_cost": "28.416",
+    "base_cost": null
+   },
+   {
+    "ID": "37851",
+    "t": "24 vnt. Josera konservuotas pašaras kačiukams, 85g",
+    "base": "21834",
+    "qty": "24",
+    "pack_cost": "28.416",
+    "base_cost": null
+   },
+   {
+    "ID": "37852",
+    "t": "36 vnt. Josera konservuotas pašaras kačiukams, 85g",
+    "base": "21834",
+    "qty": "36",
+    "pack_cost": "42.624",
+    "base_cost": null
+   },
+   {
+    "ID": "37853",
+    "t": "24 vnt. Josera konservuotas pašaras pagyvenusioms katėms, 85",
+    "base": "21836",
+    "qty": "24",
+    "pack_cost": "28.416",
+    "base_cost": null
+   },
+   {
+    "ID": "37854",
+    "t": "36 vnt. Josera konservuotas pašaras pagyvenusioms katėms, 85",
+    "base": "21836",
+    "qty": "36",
+    "pack_cost": "42.624",
+    "base_cost": null
+   },
+   {
+    "ID": "37855",
+    "t": "24 vnt. Josera konservuotas pašaras katėms su kalakutiena, 8",
+    "base": "21838",
+    "qty": "24",
+    "pack_cost": "28.416",
+    "base_cost": null
+   },
+   {
+    "ID": "37856",
+    "t": "36 vnt. Josera konservuotas pašaras katėms su kalakutiena, 8",
+    "base": "21838",
+    "qty": "36",
+    "pack_cost": "42.624",
+    "base_cost": null
+   },
+   {
+    "ID": "37857",
+    "t": "24 vnt. Josera Kitten Duck konservuotas pašaras kačiukams su",
+    "base": "21856",
+    "qty": "24",
+    "pack_cost": "28.416",
+    "base_cost": null
+   },
+   {
+    "ID": "37858",
+    "t": "36 vnt. Josera Kitten Duck konservuotas pašaras kačiukams su",
+    "base": "21856",
+    "qty": "36",
+    "pack_cost": "42.624",
+    "base_cost": null
+   },
+   {
+    "ID": "37859",
+    "t": "24 vnt. Green Petfood Fair Cat Care konservuotas pašaras kat",
+    "base": "21357",
+    "qty": "24",
+    "pack_cost": "29.784",
+    "base_cost": null
+   },
+   {
+    "ID": "37860",
+    "t": "36 vnt. Green Petfood Fair Cat Care konservuotas pašaras kat",
+    "base": "21357",
+    "qty": "36",
+    "pack_cost": "44.676",
+    "base_cost": null
+   },
+   {
+    "ID": "37861",
+    "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš",
+    "base": "21125",
+    "qty": "12",
+    "pack_cost": "20.196",
+    "base_cost": null
+   },
+   {
+    "ID": "37862",
+    "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš",
+    "base": "21125",
+    "qty": "24",
+    "pack_cost": "40.392",
+    "base_cost": null
+   },
+   {
+    "ID": "37863",
+    "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš",
+    "base": "21139",
+    "qty": "12",
+    "pack_cost": "20.196",
+    "base_cost": null
+   },
+   {
+    "ID": "37864",
+    "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš",
+    "base": "21139",
+    "qty": "24",
+    "pack_cost": "40.392",
+    "base_cost": null
+   },
+   {
+    "ID": "37865",
+    "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš",
+    "base": "21141",
+    "qty": "12",
+    "pack_cost": "20.196",
+    "base_cost": null
+   },
+   {
+    "ID": "37866",
+    "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš",
+    "base": "21141",
+    "qty": "24",
+    "pack_cost": "40.392",
+    "base_cost": null
+   },
+   {
+    "ID": "37867",
+    "t": "36 vnt. Exclusion Mediterraneo Mono Protein konservuotas paš",
+    "base": "21165",
+    "qty": "36",
+    "pack_cost": "33.66",
+    "base_cost": null
+   },
+   {
+    "ID": "37868",
+    "t": "36 vnt. Josera Soup Chicken & Carrots konservuotas vištienos",
+    "base": "20437",
+    "qty": "36",
+    "pack_cost": "21.888",
+    "base_cost": null
+   },
+   {
+    "ID": "37869",
+    "t": "36 vnt. Exclusion Mediterraneo Mono Protein konservuotas paš",
+    "base": "20523",
+    "qty": "36",
+    "pack_cost": "33.66",
+    "base_cost": null
+   },
+   {
+    "ID": "37870",
+    "t": "36 vnt. Exclusion Mediterraneo Mono Protein konservuotas paš",
+    "base": "20525",
+    "qty": "36",
+    "pack_cost": "33.66",
+    "base_cost": null
+   },
+   {
+    "ID": "37871",
+    "t": "24 vnt. Josera kons.Cat 658 Pure Chicken filet konservai kat",
+    "base": "20410",
+    "qty": "24",
+    "pack_cost": "25.536",
+    "base_cost": null
+   },
+   {
+    "ID": "37872",
+    "t": "24 vnt. Josera Cat 660 Chicken&Beef filet konservai katėms, ",
+    "base": "20413",
+    "qty": "24",
+    "pack_cost": "25.536",
+    "base_cost": null
+   },
+   {
+    "ID": "37873",
+    "t": "24 vnt. Josera Filet Chicken with Duck begrūdis konservuotas",
+    "base": "20416",
+    "qty": "24",
+    "pack_cost": "25.536",
+    "base_cost": null
+   },
+   {
+    "ID": "37874",
+    "t": "24 vnt. Josera Cat 662 Chicken+Salmon filet konservai katėms",
+    "base": "20418",
+    "qty": "24",
+    "pack_cost": "25.536",
+    "base_cost": null
+   },
+   {
+    "ID": "37875",
+    "t": "24 vnt. Josera Cat 663 Chicken+Veal filet konservai katėms, ",
+    "base": "20421",
+    "qty": "24",
+    "pack_cost": "25.536",
+    "base_cost": null
+   },
+   {
+    "ID": "37876",
+    "t": "36 vnt. Josera Cat 653 Turkey+Zucchini pate, konservai katėm",
+    "base": "20432",
+    "qty": "36",
+    "pack_cost": "34.272",
+    "base_cost": null
+   },
+   {
+    "ID": "37877",
+    "t": "24 vnt. Animonda Vom Feinsten Adult with Beef and Turkey Hea",
+    "base": "19446",
+    "qty": "24",
+    "pack_cost": "16.32",
+    "base_cost": "0.68"
+   },
+   {
+    "ID": "37878",
+    "t": "36 vnt. Animonda Vom Feinsten Adult with Beef and Turkey Hea",
+    "base": "19446",
+    "qty": "36",
+    "pack_cost": "24.48",
+    "base_cost": "0.68"
+   },
+   {
+    "ID": "37879",
+    "t": "36 vnt. Animonda Vom Feinsten Adult with Poultry and Veal – ",
+    "base": "19417",
+    "qty": "36",
+    "pack_cost": "18.72",
+    "base_cost": "0.52"
+   },
+   {
+    "ID": "37880",
+    "t": "24 vnt. Animonda Vom Feinsten Adult with Poultry and Veal – ",
+    "base": "19414",
+    "qty": "24",
+    "pack_cost": "16.32",
+    "base_cost": "0.68"
+   },
+   {
+    "ID": "37881",
+    "t": "36 vnt. Animonda Vom Feinsten Adult with Poultry and Veal – ",
+    "base": "19414",
+    "qty": "36",
+    "pack_cost": "24.48",
+    "base_cost": "0.68"
+   },
+   {
+    "ID": "37882",
+    "t": "12 vnt. Exclusion Hypoallergenic konservai šunims su arklien",
+    "base": "18608",
+    "qty": "12",
+    "pack_cost": "31.2",
+    "base_cost": "2.60"
+   },
+   {
+    "ID": "37883",
+    "t": "24 vnt. Exclusion Hypoallergenic konservai šunims su arklien",
+    "base": "18608",
+    "qty": "24",
+    "pack_cost": "62.4",
+    "base_cost": "2.60"
+   },
+   {
+    "ID": "37884",
+    "t": "12 vnt. Exclusion Hypoallergenic konservai šunims su elniena",
+    "base": "18605",
+    "qty": "12",
+    "pack_cost": "30.84",
+    "base_cost": "2.57"
+   },
+   {
+    "ID": "37885",
+    "t": "24 vnt. Exclusion Hypoallergenic konservai šunims su elniena",
+    "base": "18605",
+    "qty": "24",
+    "pack_cost": "61.68",
+    "base_cost": "2.57"
+   },
+   {
+    "ID": "37886",
+    "t": "24 vnt. Exclusion Hypoallergenic konservai šunims su putpelė",
+    "base": "18596",
+    "qty": "24",
+    "pack_cost": "57.12",
+    "base_cost": "2.38"
+   },
+   {
+    "ID": "37887",
+    "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš",
+    "base": "18521",
+    "qty": "12",
+    "pack_cost": "20.196",
+    "base_cost": null
+   },
+   {
+    "ID": "37888",
+    "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš",
+    "base": "18521",
+    "qty": "24",
+    "pack_cost": "40.392",
+    "base_cost": null
+   },
+   {
+    "ID": "37889",
+    "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš",
+    "base": "18518",
+    "qty": "12",
+    "pack_cost": "20.196",
+    "base_cost": null
+   },
+   {
+    "ID": "37890",
+    "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš",
+    "base": "18518",
+    "qty": "24",
+    "pack_cost": "40.392",
+    "base_cost": null
+   },
+   {
+    "ID": "37891",
+    "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš",
+    "base": "18515",
+    "qty": "12",
+    "pack_cost": "20.196",
+    "base_cost": null
+   },
+   {
+    "ID": "37892",
+    "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš",
+    "base": "18515",
+    "qty": "24",
+    "pack_cost": "40.392",
+    "base_cost": null
+   },
+   {
+    "ID": "37893",
+    "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš",
+    "base": "18512",
+    "qty": "12",
+    "pack_cost": "20.196",
+    "base_cost": null
+   },
+   {
+    "ID": "37894",
+    "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš",
+    "base": "18512",
+    "qty": "24",
+    "pack_cost": "40.392",
+    "base_cost": null
+   },
+   {
+    "ID": "37895",
+    "t": "12 vnt. Miamor Feine Filets konservai katėms, tunas su kraba",
+    "base": "17538",
+    "qty": "12",
+    "pack_cost": "10.8",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37896",
+    "t": "12 vnt. Miamor Feine Filets konservai katėms, vištiena paukš",
+    "base": "17535",
+    "qty": "12",
+    "pack_cost": "10.8",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37897",
+    "t": "24 vnt. Miamor Feine Filets konservai katėms, vištiena paukš",
+    "base": "17535",
+    "qty": "24",
+    "pack_cost": "21.6",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37898",
+    "t": "36 vnt. Miamor Feine Filets konservai katėms, vištiena paukš",
+    "base": "17535",
+    "qty": "36",
+    "pack_cost": "32.4",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37899",
+    "t": "12 vnt. Miamor Fillet Naturelle konservai katėms su tunu ir ",
+    "base": "17523",
+    "qty": "12",
+    "pack_cost": "9.6",
+    "base_cost": "0.80"
+   },
+   {
+    "ID": "37900",
+    "t": "24 vnt. Miamor Fillet Naturelle konservai katėms su tunu ir ",
+    "base": "17523",
+    "qty": "24",
+    "pack_cost": "19.2",
+    "base_cost": "0.80"
+   },
+   {
+    "ID": "37901",
+    "t": "12 vnt. Miamor Super Premium konservai katėms su tunu ir put",
+    "base": "17520",
+    "qty": "12",
+    "pack_cost": "10.8",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37902",
+    "t": "24 vnt. Miamor Super Premium konservai katėms su tunu ir put",
+    "base": "17520",
+    "qty": "24",
+    "pack_cost": "21.6",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37903",
+    "t": "36 vnt. Miamor Super Premium konservai katėms su tunu ir put",
+    "base": "17520",
+    "qty": "36",
+    "pack_cost": "32.4",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37904",
+    "t": "12 vnt. Miamor Super Premium konservai katėms su tunu ir ryž",
+    "base": "17517",
+    "qty": "12",
+    "pack_cost": "10.8",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37905",
+    "t": "12 vnt. Miamor Super Premium konservai katėms su tunu ir sūr",
+    "base": "17510",
+    "qty": "12",
+    "pack_cost": "10.8",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37906",
+    "t": "24 vnt. Miamor Super Premium konservai katėms su tunu ir sūr",
+    "base": "17510",
+    "qty": "24",
+    "pack_cost": "21.6",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37907",
+    "t": "36 vnt. Miamor Super Premium konservai katėms su tunu ir sūr",
+    "base": "17510",
+    "qty": "36",
+    "pack_cost": "32.4",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37908",
+    "t": "24 vnt. Miamor Super Premium konservai katėms su vištiena ir",
+    "base": "17507",
+    "qty": "24",
+    "pack_cost": "27.12",
+    "base_cost": "1.13"
+   },
+   {
+    "ID": "37909",
+    "t": "36 vnt. Miamor Super Premium konservai katėms su vištiena ir",
+    "base": "17507",
+    "qty": "36",
+    "pack_cost": "40.68",
+    "base_cost": "1.13"
+   },
+   {
+    "ID": "37910",
+    "t": "12 vnt. Miamor Super premium konservai katėms su tunu ir dar",
+    "base": "17504",
+    "qty": "12",
+    "pack_cost": "10.8",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37911",
+    "t": "12 vnt. Miamor Super premium konservai katėms su tunu ir kal",
+    "base": "17499",
+    "qty": "12",
+    "pack_cost": "10.8",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37912",
+    "t": "24 vnt. Miamor Super premium konservai katėms su tunu ir kal",
+    "base": "17499",
+    "qty": "24",
+    "pack_cost": "21.6",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37913",
+    "t": "36 vnt. Miamor Super premium konservai katėms su tunu ir kal",
+    "base": "17499",
+    "qty": "36",
+    "pack_cost": "32.4",
+    "base_cost": "0.90"
+   },
+   {
+    "ID": "37914",
+    "t": "12 vnt. Ontario super premium konservai katėms su vištiena i",
+    "base": "17057",
+    "qty": "12",
+    "pack_cost": "9.24",
+    "base_cost": "0.77"
+   },
+   {
+    "ID": "37915",
+    "t": "24 vnt. Pasta katėms su antiena - Ontario Duck Fresh Meat Pa",
+    "base": "16945",
+    "qty": "24",
+    "pack_cost": "12",
+    "base_cost": "0.50"
+   },
+   {
+    "ID": "37916",
+    "t": "36 vnt. Pasta katėms su antiena - Ontario Duck Fresh Meat Pa",
+    "base": "16945",
+    "qty": "36",
+    "pack_cost": "18",
+    "base_cost": "0.50"
+   },
+   {
+    "ID": "37917",
+    "t": "24 vnt. Pasta katėms su lašiša - Ontario Salmon Fresh Meat P",
+    "base": "16942",
+    "qty": "24",
+    "pack_cost": "12",
+    "base_cost": "0.50"
+   },
+   {
+    "ID": "37918",
+    "t": "36 vnt. Pasta katėms su lašiša - Ontario Salmon Fresh Meat P",
+    "base": "16942",
+    "qty": "36",
+    "pack_cost": "18",
+    "base_cost": "0.50"
+   },
+   {
+    "ID": "37919",
+    "t": "24 vnt. Pasta katėms su vištiena - Ontario Chicken Fresh Mea",
+    "base": "16939",
+    "qty": "24",
+    "pack_cost": "12",
+    "base_cost": "0.50"
+   },
+   {
+    "ID": "37920",
+    "t": "36 vnt. Pasta katėms su vištiena - Ontario Chicken Fresh Mea",
+    "base": "16939",
+    "qty": "36",
+    "pack_cost": "18",
+    "base_cost": "0.50"
+   },
+   {
+    "ID": "37921",
+    "t": "24 vnt. Pasta katėms su ėriena – Ontario Lamb Fresh Meat Pas",
+    "base": "16936",
+    "qty": "24",
+    "pack_cost": "12",
+    "base_cost": "0.50"
+   },
+   {
+    "ID": "37922",
+    "t": "36 vnt. Pasta katėms su ėriena – Ontario Lamb Fresh Meat Pas",
+    "base": "16936",
+    "qty": "36",
+    "pack_cost": "18",
+    "base_cost": "0.50"
+   },
+   {
+    "ID": "37923",
+    "t": "24 vnt. Pasta kačiukams su tunu - Ontario Kitten Tuna Fresh ",
+    "base": "16933",
+    "qty": "24",
+    "pack_cost": "12",
+    "base_cost": "0.50"
+   },
+   {
+    "ID": "37977",
+    "t": "12 vnt. Farmina N&amp;D Ocean konservai suaugusiems mažų vei",
+    "base": "33314",
+    "qty": "12",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "37978",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai suaugusiems mažų vei",
+    "base": "33314",
+    "qty": "18",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "37979",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai suaugusiems mažų vei",
+    "base": "33314",
+    "qty": "24",
+    "pack_cost": "33.696",
+    "base_cost": null
+   },
+   {
+    "ID": "37980",
+    "t": "12 vnt. Farmina N&amp;D Prime konservai suaugusiems mažų vei",
+    "base": "33320",
+    "qty": "12",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "37981",
+    "t": "18 vnt. Farmina N&amp;D Prime konservai suaugusiems mažų vei",
+    "base": "33320",
+    "qty": "18",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "37982",
+    "t": "24 vnt. Farmina N&amp;D Prime konservai suaugusiems mažų vei",
+    "base": "33320",
+    "qty": "24",
+    "pack_cost": "33.696",
+    "base_cost": null
+   },
+   {
+    "ID": "37983",
+    "t": "12 vnt. Farmina N&amp;D Pumpkin konservai mažų veislių šuniu",
+    "base": "33324",
+    "qty": "12",
+    "pack_cost": "18.036",
+    "base_cost": null
+   },
+   {
+    "ID": "37984",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai mažų veislių šuniu",
+    "base": "33324",
+    "qty": "18",
+    "pack_cost": "27.054",
+    "base_cost": null
+   },
+   {
+    "ID": "37985",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai mažų veislių šuniu",
+    "base": "33324",
+    "qty": "24",
+    "pack_cost": "36.072",
+    "base_cost": null
+   },
+   {
+    "ID": "37986",
+    "t": "12 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33326",
+    "qty": "12",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "37987",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33326",
+    "qty": "18",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "37988",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33326",
+    "qty": "24",
+    "pack_cost": "33.696",
+    "base_cost": null
+   },
+   {
+    "ID": "37989",
+    "t": "12 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33330",
+    "qty": "12",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "37990",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33330",
+    "qty": "18",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "37991",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33330",
+    "qty": "24",
+    "pack_cost": "33.696",
+    "base_cost": null
+   },
+   {
+    "ID": "37992",
+    "t": "12 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33311",
+    "qty": "12",
+    "pack_cost": "24.084",
+    "base_cost": null
+   },
+   {
+    "ID": "37993",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33311",
+    "qty": "18",
+    "pack_cost": "36.126",
+    "base_cost": null
+   },
+   {
+    "ID": "37994",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33311",
+    "qty": "24",
+    "pack_cost": "48.168",
+    "base_cost": null
+   },
+   {
+    "ID": "37995",
+    "t": "12 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33317",
+    "qty": "12",
+    "pack_cost": "24.084",
+    "base_cost": null
+   },
+   {
+    "ID": "37996",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33317",
+    "qty": "18",
+    "pack_cost": "36.126",
+    "base_cost": null
+   },
+   {
+    "ID": "37997",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33317",
+    "qty": "24",
+    "pack_cost": "48.168",
+    "base_cost": null
+   },
+   {
+    "ID": "37998",
+    "t": "12 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems šunims",
+    "base": "33333",
+    "qty": "12",
+    "pack_cost": "24.084",
+    "base_cost": null
+   },
+   {
+    "ID": "37999",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems šunims",
+    "base": "33333",
+    "qty": "18",
+    "pack_cost": "36.126",
+    "base_cost": null
+   },
+   {
+    "ID": "38000",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems šunims",
+    "base": "33333",
+    "qty": "24",
+    "pack_cost": "48.168",
+    "base_cost": null
+   },
+   {
+    "ID": "38001",
+    "t": "12 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems šunims",
+    "base": "33323",
+    "qty": "12",
+    "pack_cost": "24.084",
+    "base_cost": null
+   },
+   {
+    "ID": "38002",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems šunims",
+    "base": "33323",
+    "qty": "18",
+    "pack_cost": "36.126",
+    "base_cost": null
+   },
+   {
+    "ID": "38003",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems šunims",
+    "base": "33323",
+    "qty": "24",
+    "pack_cost": "48.168",
+    "base_cost": null
+   },
+   {
+    "ID": "38004",
+    "t": "12 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems šunims",
+    "base": "33327",
+    "qty": "12",
+    "pack_cost": "24.084",
+    "base_cost": null
+   },
+   {
+    "ID": "38005",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems šunims",
+    "base": "33327",
+    "qty": "18",
+    "pack_cost": "36.126",
+    "base_cost": null
+   },
+   {
+    "ID": "38006",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems šunims",
+    "base": "33327",
+    "qty": "24",
+    "pack_cost": "48.168",
+    "base_cost": null
+   },
+   {
+    "ID": "38007",
+    "t": "12 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems šunims",
+    "base": "33329",
+    "qty": "12",
+    "pack_cost": "24.084",
+    "base_cost": null
+   },
+   {
+    "ID": "38008",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems šunims",
+    "base": "33329",
+    "qty": "18",
+    "pack_cost": "36.126",
+    "base_cost": null
+   },
+   {
+    "ID": "38009",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems šunims",
+    "base": "33329",
+    "qty": "24",
+    "pack_cost": "48.168",
+    "base_cost": null
+   },
+   {
+    "ID": "38010",
+    "t": "12 vnt. Farmina N&amp;D Quinoa Digestion konservai suaugusie",
+    "base": "33335",
+    "qty": "12",
+    "pack_cost": "24.516",
+    "base_cost": null
+   },
+   {
+    "ID": "38011",
+    "t": "18 vnt. Farmina N&amp;D Quinoa Digestion konservai suaugusie",
+    "base": "33335",
+    "qty": "18",
+    "pack_cost": "36.774",
+    "base_cost": null
+   },
+   {
+    "ID": "38012",
+    "t": "24 vnt. Farmina N&amp;D Quinoa Digestion konservai suaugusie",
+    "base": "33335",
+    "qty": "24",
+    "pack_cost": "49.032",
+    "base_cost": null
+   },
+   {
+    "ID": "38013",
+    "t": "12 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai sua",
+    "base": "33343",
+    "qty": "12",
+    "pack_cost": "24.516",
+    "base_cost": null
+   },
+   {
+    "ID": "38014",
+    "t": "18 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai sua",
+    "base": "33343",
+    "qty": "18",
+    "pack_cost": "36.774",
+    "base_cost": null
+   },
+   {
+    "ID": "38015",
+    "t": "24 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai sua",
+    "base": "33343",
+    "qty": "24",
+    "pack_cost": "49.032",
+    "base_cost": null
+   },
+   {
+    "ID": "38016",
+    "t": "12 vnt. Farmina Vet Life Hypoallergenic konservai šunims su ",
+    "base": "33408",
+    "qty": "12",
+    "pack_cost": "34.344",
+    "base_cost": null
+   },
+   {
+    "ID": "38017",
+    "t": "18 vnt. Farmina Vet Life Hypoallergenic konservai šunims su ",
+    "base": "33408",
+    "qty": "18",
+    "pack_cost": "51.516",
+    "base_cost": null
+   },
+   {
+    "ID": "38018",
+    "t": "24 vnt. Farmina Vet Life Hypoallergenic konservai šunims su ",
+    "base": "33408",
+    "qty": "24",
+    "pack_cost": "68.688",
+    "base_cost": null
+   },
+   {
+    "ID": "38019",
+    "t": "12 vnt. Farmina N&amp;D Ocean konservai mažų veislių šuniuka",
+    "base": "33307",
+    "qty": "12",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "38020",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai mažų veislių šuniuka",
+    "base": "33307",
+    "qty": "18",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "38021",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai mažų veislių šuniuka",
+    "base": "33307",
+    "qty": "24",
+    "pack_cost": "33.696",
+    "base_cost": null
+   },
+   {
+    "ID": "38022",
+    "t": "12 vnt. Farmina N&amp;D Pumpkin Starter konservai šuniukams ",
+    "base": "33321",
+    "qty": "12",
+    "pack_cost": "24.084",
+    "base_cost": null
+   },
+   {
+    "ID": "38023",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin Starter konservai šuniukams ",
+    "base": "33321",
+    "qty": "18",
+    "pack_cost": "36.126",
+    "base_cost": null
+   },
+   {
+    "ID": "38024",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin Starter konservai šuniukams ",
+    "base": "33321",
+    "qty": "24",
+    "pack_cost": "48.168",
+    "base_cost": null
+   },
+   {
+    "ID": "38025",
+    "t": "12 vnt. Farmina Vet Life Obesity konservai šunims 300 g",
+    "base": "33415",
+    "qty": "12",
+    "pack_cost": "31.212",
+    "base_cost": null
+   },
+   {
+    "ID": "38026",
+    "t": "18 vnt. Farmina Vet Life Obesity konservai šunims 300 g",
+    "base": "33415",
+    "qty": "18",
+    "pack_cost": "46.818",
+    "base_cost": null
+   },
+   {
+    "ID": "38027",
+    "t": "24 vnt. Farmina Vet Life Obesity konservai šunims 300 g",
+    "base": "33415",
+    "qty": "24",
+    "pack_cost": "62.424",
+    "base_cost": null
+   },
+   {
+    "ID": "38028",
+    "t": "12 vnt. Farmina N&amp;D Quinoa Neutered konservai sterilizuo",
+    "base": "33339",
+    "qty": "12",
+    "pack_cost": "24.516",
+    "base_cost": null
+   },
+   {
+    "ID": "38029",
+    "t": "18 vnt. Farmina N&amp;D Quinoa Neutered konservai sterilizuo",
+    "base": "33339",
+    "qty": "18",
+    "pack_cost": "36.774",
+    "base_cost": null
+   },
+   {
+    "ID": "38030",
+    "t": "24 vnt. Farmina N&amp;D Quinoa Neutered konservai sterilizuo",
+    "base": "33339",
+    "qty": "24",
+    "pack_cost": "49.032",
+    "base_cost": null
+   },
+   {
+    "ID": "38031",
+    "t": "12 vnt. Farmina N&amp;D Natural konservai katėms su tunu 140",
+    "base": "33349",
+    "qty": "12",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "38032",
+    "t": "18 vnt. Farmina N&amp;D Natural konservai katėms su tunu 140",
+    "base": "33349",
+    "qty": "18",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "38033",
+    "t": "24 vnt. Farmina N&amp;D Natural konservai katėms su tunu 140",
+    "base": "33349",
+    "qty": "24",
+    "pack_cost": "33.696",
+    "base_cost": null
+   },
+   {
+    "ID": "38034",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai katėms su tunu, kalm",
+    "base": "33352",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38035",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai katėms su tunu, kalm",
+    "base": "33352",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38036",
+    "t": "36 vnt. Farmina N&amp;D Ocean konservai katėms su tunu, kalm",
+    "base": "33352",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38037",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai katėms su šerniena",
+    "base": "33362",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38038",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai katėms su šerniena",
+    "base": "33362",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38039",
+    "t": "36 vnt. Farmina N&amp;D Pumpkin konservai katėms su šerniena",
+    "base": "33362",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38040",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai katėms su vištiena",
+    "base": "33358",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38041",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai katėms su vištiena",
+    "base": "33358",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38042",
+    "t": "36 vnt. Farmina N&amp;D Pumpkin konservai katėms su vištiena",
+    "base": "33358",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38043",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai katėms su antiena ",
+    "base": "33359",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38044",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai katėms su antiena ",
+    "base": "33359",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38045",
+    "t": "36 vnt. Farmina N&amp;D Pumpkin konservai katėms su antiena ",
+    "base": "33359",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38046",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai katėms su tunu ir kr",
+    "base": "33353",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38047",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai katėms su tunu ir kr",
+    "base": "33353",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38048",
+    "t": "36 vnt. Farmina N&amp;D Ocean konservai katėms su tunu ir kr",
+    "base": "33353",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38049",
+    "t": "18 vnt. Farmina N&amp;D Natural konservai katėms su tunu 70 ",
+    "base": "33348",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38050",
+    "t": "24 vnt. Farmina N&amp;D Natural konservai katėms su tunu 70 ",
+    "base": "33348",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38051",
+    "t": "36 vnt. Farmina N&amp;D Natural konservai katėms su tunu 70 ",
+    "base": "33348",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38052",
+    "t": "18 vnt. Farmina N&amp;D Natural konservai katėms su vištiena",
+    "base": "33344",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38053",
+    "t": "24 vnt. Farmina N&amp;D Natural konservai katėms su vištiena",
+    "base": "33344",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38054",
+    "t": "36 vnt. Farmina N&amp;D Natural konservai katėms su vištiena",
+    "base": "33344",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38055",
+    "t": "18 vnt. Farmina N&amp;D Natural konservai katėms su tunu ir ",
+    "base": "33346",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38056",
+    "t": "24 vnt. Farmina N&amp;D Natural konservai katėms su tunu ir ",
+    "base": "33346",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38057",
+    "t": "36 vnt. Farmina N&amp;D Natural konservai katėms su tunu ir ",
+    "base": "33346",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38058",
+    "t": "18 vnt. Farmina N&amp;D Prime konservai katėms su ėriena ir ",
+    "base": "33356",
+    "qty": "18",
+    "pack_cost": "17.172",
+    "base_cost": null
+   },
+   {
+    "ID": "38059",
+    "t": "24 vnt. Farmina N&amp;D Prime konservai katėms su ėriena ir ",
+    "base": "33356",
+    "qty": "24",
+    "pack_cost": "22.896",
+    "base_cost": null
+   },
+   {
+    "ID": "38060",
+    "t": "36 vnt. Farmina N&amp;D Prime konservai katėms su ėriena ir ",
+    "base": "33356",
+    "qty": "36",
+    "pack_cost": "34.344",
+    "base_cost": null
+   },
+   {
+    "ID": "38061",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai katėms su ėriena, ",
+    "base": "33360",
+    "qty": "18",
+    "pack_cost": "17.334",
+    "base_cost": null
+   },
+   {
+    "ID": "38062",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai katėms su ėriena, ",
+    "base": "33360",
+    "qty": "24",
+    "pack_cost": "23.112",
+    "base_cost": null
+   },
+   {
+    "ID": "38063",
+    "t": "36 vnt. Farmina N&amp;D Pumpkin konservai katėms su ėriena, ",
+    "base": "33360",
+    "qty": "36",
+    "pack_cost": "34.668",
+    "base_cost": null
+   },
+   {
+    "ID": "38064",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai katėms su tunu, menk",
+    "base": "33350",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38065",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai katėms su tunu, menk",
+    "base": "33350",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38066",
+    "t": "36 vnt. Farmina N&amp;D Ocean konservai katėms su tunu, menk",
+    "base": "33350",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38067",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai katėms su tunu ir la",
+    "base": "33354",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38068",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai katėms su tunu ir la",
+    "base": "33354",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38069",
+    "t": "36 vnt. Farmina N&amp;D Ocean konservai katėms su tunu ir la",
+    "base": "33354",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38070",
+    "t": "18 vnt. Farmina N&amp;D Prime konservai katėms su šerniena i",
+    "base": "33357",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38071",
+    "t": "24 vnt. Farmina N&amp;D Prime konservai katėms su šerniena i",
+    "base": "33357",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38072",
+    "t": "36 vnt. Farmina N&amp;D Prime konservai katėms su šerniena i",
+    "base": "33357",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38073",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai katėms su putpelie",
+    "base": "33361",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38074",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai katėms su putpelie",
+    "base": "33361",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38075",
+    "t": "36 vnt. Farmina N&amp;D Pumpkin konservai katėms su putpelie",
+    "base": "33361",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38076",
+    "t": "18 vnt. Farmina N&amp;D Quinoa Digestion konservai katėms su",
+    "base": "33363",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38077",
+    "t": "24 vnt. Farmina N&amp;D Quinoa Digestion konservai katėms su",
+    "base": "33363",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38078",
+    "t": "36 vnt. Farmina N&amp;D Quinoa Digestion konservai katėms su",
+    "base": "33363",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38079",
+    "t": "12 vnt. Farmina N&amp;D Ocean konservai suaugusiems mažų vei",
+    "base": "33308",
+    "qty": "12",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "38080",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai suaugusiems mažų vei",
+    "base": "33308",
+    "qty": "18",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "38081",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai suaugusiems mažų vei",
+    "base": "33308",
+    "qty": "24",
+    "pack_cost": "33.696",
+    "base_cost": null
+   },
+   {
+    "ID": "38082",
+    "t": "12 vnt. Farmina N&amp;D Ocean konservai suaugusiems mažų vei",
+    "base": "33312",
+    "qty": "12",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "38083",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai suaugusiems mažų vei",
+    "base": "33312",
+    "qty": "18",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "38084",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai suaugusiems mažų vei",
+    "base": "33312",
+    "qty": "24",
+    "pack_cost": "33.696",
+    "base_cost": null
+   },
+   {
+    "ID": "38085",
+    "t": "12 vnt. Farmina N&amp;D Ocean konservai suaugusiems mažų vei",
+    "base": "33316",
+    "qty": "12",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "38086",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai suaugusiems mažų vei",
+    "base": "33316",
+    "qty": "18",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "38087",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai suaugusiems mažų vei",
+    "base": "33316",
+    "qty": "24",
+    "pack_cost": "33.696",
+    "base_cost": null
+   },
+   {
+    "ID": "38088",
+    "t": "12 vnt. Farmina N&amp;D Prime konservai suaugusiems mažų vei",
+    "base": "33318",
+    "qty": "12",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "38089",
+    "t": "18 vnt. Farmina N&amp;D Prime konservai suaugusiems mažų vei",
+    "base": "33318",
+    "qty": "18",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "38090",
+    "t": "24 vnt. Farmina N&amp;D Prime konservai suaugusiems mažų vei",
+    "base": "33318",
+    "qty": "24",
+    "pack_cost": "33.696",
+    "base_cost": null
+   },
+   {
+    "ID": "38091",
+    "t": "12 vnt. Farmina N&amp;D Prime konservai suaugusiems mažų vei",
+    "base": "33319",
+    "qty": "12",
+    "pack_cost": "18.036",
+    "base_cost": null
+   },
+   {
+    "ID": "38092",
+    "t": "18 vnt. Farmina N&amp;D Prime konservai suaugusiems mažų vei",
+    "base": "33319",
+    "qty": "18",
+    "pack_cost": "27.054",
+    "base_cost": null
+   },
+   {
+    "ID": "38093",
+    "t": "24 vnt. Farmina N&amp;D Prime konservai suaugusiems mažų vei",
+    "base": "33319",
+    "qty": "24",
+    "pack_cost": "36.072",
+    "base_cost": null
+   },
+   {
+    "ID": "38094",
+    "t": "12 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33322",
+    "qty": "12",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "38095",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33322",
+    "qty": "18",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "38096",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33322",
+    "qty": "24",
+    "pack_cost": "33.696",
+    "base_cost": null
+   },
+   {
+    "ID": "38097",
+    "t": "12 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33325",
+    "qty": "12",
+    "pack_cost": "18.036",
+    "base_cost": null
+   },
+   {
+    "ID": "38098",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33325",
+    "qty": "18",
+    "pack_cost": "27.054",
+    "base_cost": null
+   },
+   {
+    "ID": "38099",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33325",
+    "qty": "24",
+    "pack_cost": "36.072",
+    "base_cost": null
+   },
+   {
+    "ID": "38100",
+    "t": "12 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33328",
+    "qty": "12",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "38101",
+    "t": "18 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33328",
+    "qty": "18",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "38102",
+    "t": "24 vnt. Farmina N&amp;D Pumpkin konservai suaugusiems mažų v",
+    "base": "33328",
+    "qty": "24",
+    "pack_cost": "33.696",
+    "base_cost": null
+   },
+   {
+    "ID": "38103",
+    "t": "12 vnt. Farmina N&amp;D Quinoa Digestion konservai suaugusie",
+    "base": "33334",
+    "qty": "12",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "38104",
+    "t": "18 vnt. Farmina N&amp;D Quinoa Digestion konservai suaugusie",
+    "base": "33334",
+    "qty": "18",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "38105",
+    "t": "24 vnt. Farmina N&amp;D Quinoa Digestion konservai suaugusie",
+    "base": "33334",
+    "qty": "24",
+    "pack_cost": "33.696",
+    "base_cost": null
+   },
+   {
+    "ID": "38106",
+    "t": "12 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33310",
+    "qty": "12",
+    "pack_cost": "24.084",
+    "base_cost": null
+   },
+   {
+    "ID": "38107",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33310",
+    "qty": "18",
+    "pack_cost": "36.126",
+    "base_cost": null
+   },
+   {
+    "ID": "38108",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33310",
+    "qty": "24",
+    "pack_cost": "48.168",
+    "base_cost": null
+   },
+   {
+    "ID": "38109",
+    "t": "12 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33313",
+    "qty": "12",
+    "pack_cost": "24.084",
+    "base_cost": null
+   },
+   {
+    "ID": "38110",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33313",
+    "qty": "18",
+    "pack_cost": "36.126",
+    "base_cost": null
+   },
+   {
+    "ID": "38111",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33313",
+    "qty": "24",
+    "pack_cost": "48.168",
+    "base_cost": null
+   },
+   {
+    "ID": "38112",
+    "t": "12 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33315",
+    "qty": "12",
+    "pack_cost": "24.084",
+    "base_cost": null
+   },
+   {
+    "ID": "38113",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33315",
+    "qty": "18",
+    "pack_cost": "36.126",
+    "base_cost": null
+   },
+   {
+    "ID": "38114",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai suaugusiems šunims s",
+    "base": "33315",
+    "qty": "24",
+    "pack_cost": "48.168",
+    "base_cost": null
+   },
+   {
+    "ID": "38115",
+    "t": "12 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai sua",
+    "base": "33337",
+    "qty": "12",
+    "pack_cost": "24.516",
+    "base_cost": null
+   },
+   {
+    "ID": "38116",
+    "t": "18 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai sua",
+    "base": "33337",
+    "qty": "18",
+    "pack_cost": "36.774",
+    "base_cost": null
+   },
+   {
+    "ID": "38117",
+    "t": "24 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai sua",
+    "base": "33337",
+    "qty": "24",
+    "pack_cost": "49.032",
+    "base_cost": null
+   },
+   {
+    "ID": "38118",
+    "t": "12 vnt. Farmina N&amp;D Ocean konservai šuniukams su menke i",
+    "base": "33309",
+    "qty": "12",
+    "pack_cost": "24.084",
+    "base_cost": null
+   },
+   {
+    "ID": "38119",
+    "t": "18 vnt. Farmina N&amp;D Ocean konservai šuniukams su menke i",
+    "base": "33309",
+    "qty": "18",
+    "pack_cost": "36.126",
+    "base_cost": null
+   },
+   {
+    "ID": "38120",
+    "t": "24 vnt. Farmina N&amp;D Ocean konservai šuniukams su menke i",
+    "base": "33309",
+    "qty": "24",
+    "pack_cost": "48.168",
+    "base_cost": null
+   },
+   {
+    "ID": "38121",
+    "t": "18 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai kat",
+    "base": "33364",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38122",
+    "t": "24 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai kat",
+    "base": "33364",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38123",
+    "t": "36 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai kat",
+    "base": "33364",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38124",
+    "t": "18 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai kat",
+    "base": "33365",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38125",
+    "t": "24 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai kat",
+    "base": "33365",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38126",
+    "t": "36 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai kat",
+    "base": "33365",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38127",
+    "t": "18 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai kat",
+    "base": "33368",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38128",
+    "t": "24 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai kat",
+    "base": "33368",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38129",
+    "t": "36 vnt. Farmina N&amp;D Quinoa Skin &amp; Coat konservai kat",
+    "base": "33368",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38130",
+    "t": "18 vnt. Farmina N&amp;D Quinoa Weight Management konservai k",
+    "base": "33369",
+    "qty": "18",
+    "pack_cost": "16.686",
+    "base_cost": null
+   },
+   {
+    "ID": "38131",
+    "t": "24 vnt. Farmina N&amp;D Quinoa Weight Management konservai k",
+    "base": "33369",
+    "qty": "24",
+    "pack_cost": "22.248",
+    "base_cost": null
+   },
+   {
+    "ID": "38132",
+    "t": "36 vnt. Farmina N&amp;D Quinoa Weight Management konservai k",
+    "base": "33369",
+    "qty": "36",
+    "pack_cost": "33.372",
+    "base_cost": null
+   },
+   {
+    "ID": "38133",
+    "t": "12 vnt. Farmina N&amp;D Natural konservai katėms su tunu ir ",
+    "base": "33347",
+    "qty": "12",
+    "pack_cost": "16.848",
+    "base_cost": null
+   },
+   {
+    "ID": "38134",
+    "t": "18 vnt. Farmina N&amp;D Natural konservai katėms su tunu ir ",
+    "base": "33347",
+    "qty": "18",
+    "pack_cost": "25.272",
+    "base_cost": null
+   },
+   {
+    "ID": "38135",
+    "t": "24 vnt. Farmina N&amp;D Natural konservai katėms su tunu ir ",
+    "base": "33347",
+    "qty": "24",
+    "pack_cost": "33.696",
+    "base_cost": null
+   },
+   {
+    "ID": "38167",
+    "t": "36 vnt. Exclusion Hypoalergenic dietinis konservuotas pašara",
+    "base": "35342",
+    "qty": "36",
+    "pack_cost": "37.332",
+    "base_cost": null
+   },
+   {
+    "ID": "38168",
+    "t": "36 vnt. JosiCat rich in Beef in Sauce konservuotas pašaras k",
+    "base": "34226",
+    "qty": "36",
+    "pack_cost": "19.872",
+    "base_cost": null
+   },
+   {
+    "ID": "38169",
+    "t": "36 vnt. JosiCat rich in Chicken in Sauce konservuotas pašara",
+    "base": "26123",
+    "qty": "36",
+    "pack_cost": "19.872",
+    "base_cost": null
+   },
+   {
+    "ID": "38170",
+    "t": "36 vnt. JosiCat rich in Dusck in Sauce konservuotas pašaras ",
+    "base": "26125",
+    "qty": "36",
+    "pack_cost": "19.872",
+    "base_cost": null
+   },
+   {
+    "ID": "38171",
+    "t": "36 vnt. JosiCat rich in Codfish in Sauce konservuotas pašara",
+    "base": "26129",
+    "qty": "36",
+    "pack_cost": "19.872",
+    "base_cost": null
+   },
+   {
+    "ID": "38172",
+    "t": "36 vnt. JosiCat Finest Mousse with Beef, paštetas katėms su ",
+    "base": "26135",
+    "qty": "36",
+    "pack_cost": "19.872",
+    "base_cost": null
+   },
+   {
+    "ID": "38173",
+    "t": "36 vnt. JosiCat Finest Mousse with Liver, paštetas katėms su",
+    "base": "26139",
+    "qty": "36",
+    "pack_cost": "19.872",
+    "base_cost": null
+   },
+   {
+    "ID": "38174",
+    "t": "36 vnt. JosiCat Finest Mousse with Salmon, paštetas katėms s",
+    "base": "26141",
+    "qty": "36",
+    "pack_cost": "19.872",
+    "base_cost": null
+   },
+   {
+    "ID": "38175",
+    "t": "36 vnt. JosiCat Finest Mousse with Tuna, paštetas katėms su ",
+    "base": "26143",
+    "qty": "36",
+    "pack_cost": "19.872",
+    "base_cost": null
+   },
+   {
+    "ID": "38176",
+    "t": "36 vnt. JosiCat Finest Mousse with Tutkey, paštetas katėms s",
+    "base": "26145",
+    "qty": "36",
+    "pack_cost": "19.872",
+    "base_cost": null
+   },
+   {
+    "ID": "38177",
+    "t": "24 vnt. Landfleisch konservai šunims, jaučių širdys+makarona",
+    "base": "23472",
+    "qty": "24",
+    "pack_cost": "33.84",
+    "base_cost": null
+   },
+   {
+    "ID": "38178",
+    "t": "24 vnt. Landfleisch konservai šunims, jaučių širdys+ryžiai, ",
+    "base": "22985",
+    "qty": "24",
+    "pack_cost": "33.84",
+    "base_cost": null
+   },
+   {
+    "ID": "38179",
+    "t": "36 vnt. Josera Cat Chicken+Spinach pate konservai katėms, 85",
+    "base": "20424",
+    "qty": "36",
+    "pack_cost": "34.272",
+    "base_cost": null
+   },
+   {
+    "ID": "38180",
+    "t": "36 vnt. Josera Cat 654 Kitten pate konservai kačiukams, 85g",
+    "base": "20435",
+    "qty": "36",
+    "pack_cost": "34.272",
+    "base_cost": null
+   },
+   {
+    "ID": "38181",
+    "t": "36 vnt. JosiDog Chicken in Sauce konservai šunims, vištiena ",
+    "base": "24395",
+    "qty": "36",
+    "pack_cost": "26.784",
+    "base_cost": null
+   },
+   {
+    "ID": "38182",
+    "t": "36 vnt. JosiCat Fish in Sauce konservai katėms, žuvis padaže",
+    "base": "24393",
+    "qty": "36",
+    "pack_cost": "26.784",
+    "base_cost": null
+   },
+   {
+    "ID": "38183",
+    "t": "36 vnt. JosiDog Beef in Sauce konservai šunims, jautiena pad",
+    "base": "22763",
+    "qty": "36",
+    "pack_cost": "26.784",
+    "base_cost": null
+   },
+   {
+    "ID": "38184",
+    "t": "36 vnt. JosiDog Game in Sauce konservai šunims, žvėriena pad",
+    "base": "22765",
+    "qty": "36",
+    "pack_cost": "26.784",
+    "base_cost": null
+   },
+   {
+    "ID": "38185",
+    "t": "36 vnt. JosiCat Chicken in Sauce konservai katėms, vištiena ",
+    "base": "22769",
+    "qty": "36",
+    "pack_cost": "26.784",
+    "base_cost": null
+   },
+   {
+    "ID": "38186",
+    "t": "36 vnt. JosiCat Beef in Sauce konservai katėms, jautiena pad",
+    "base": "22771",
+    "qty": "36",
+    "pack_cost": "26.784",
+    "base_cost": null
+   },
+   {
+    "ID": "38187",
+    "t": "48 vnt. JosiCat Paté with Beef paštetas katėms su jautiena, ",
+    "base": "21679",
+    "qty": "48",
+    "pack_cost": "21.888",
+    "base_cost": null
+   },
+   {
+    "ID": "38188",
+    "t": "48 vnt. JosiCat Paté with Chicken paštetas katėms su vištien",
+    "base": "21681",
+    "qty": "48",
+    "pack_cost": "21.888",
+    "base_cost": null
+   }
+  ],
+  "dp_null": [
+   {
+    "preke_id": "35840",
+    "n": "1",
+    "be_pvm": "26.44"
+   },
+   {
+    "preke_id": "35848",
+    "n": "1",
+    "be_pvm": "26.44"
+   },
+   {
+    "preke_id": "35850",
+    "n": "2",
+    "be_pvm": "52.88"
+   },
+   {
+    "preke_id": "35852",
+    "n": "1",
+    "be_pvm": "26.44"
+   },
+   {
+    "preke_id": "35853",
+    "n": "2",
+    "be_pvm": "52.88"
+   },
+   {
+    "preke_id": "35854",
+    "n": "1",
+    "be_pvm": "52.88"
+   },
+   {
+    "preke_id": "35855",
+    "n": "1",
+    "be_pvm": "26.44"
+   },
+   {
+    "preke_id": "35856",
+    "n": "1",
+    "be_pvm": "26.48"
+   }
+  ],
+  "dp_ok": [
+   {
+    "preke_id": "35096",
+    "s": "pardavimai",
+    "n": "4"
+   },
+   {
+    "preke_id": "35098",
+    "s": "pardavimai",
+    "n": "6"
+   },
+   {
+    "preke_id": "35306",
+    "s": "pardavimai",
+    "n": "3"
+   },
+   {
+    "preke_id": "36002",
+    "s": "pardavimai",
+    "n": "5"
+   },
+   {
+    "preke_id": "36003",
+    "s": "pardavimai",
+    "n": "2"
+   },
+   {
+    "preke_id": "36301",
+    "s": "pardavimai",
+    "n": "1"
+   },
+   {
+    "preke_id": "36339",
+    "s": "pardavimai",
+    "n": "1"
+   },
+   {
+    "preke_id": "36340",
+    "s": "pardavimai",
+    "n": "1"
+   },
+   {
+    "preke_id": "36371",
+    "s": "pardavimai",
+    "n": "1"
+   },
+   {
+    "preke_id": "36381",
+    "s": "pardavimai",
+    "n": "1"
+   },
+   {
+    "preke_id": "36430",
+    "s": "pardavimai",
+    "n": "1"
+   },
+   {
+    "preke_id": "36435",
+    "s": "pardavimai",
+    "n": "1"
+   },
+   {
+    "preke_id": "36495",
+    "s": "pardavimai",
+    "n": "2"
+   },
+   {
+    "preke_id": "36497",
+    "s": "pardavimai",
+    "n": "1"
+   },
+   {
+    "preke_id": "36499",
+    "s": "pardavimai",
+    "n": "1"
+   },
+   {
+    "preke_id": "36511",
+    "s": "pardavimai",
+    "n": "1"
+   },
+   {
+    "preke_id": "36527",
+    "s": "pardavimai",
+    "n": "1"
+   },
+   {
+    "preke_id": "36533",
+    "s": "pardavimai",
+    "n": "1"
+   },
+   {
+    "preke_id": "37470",
+    "s": "pardavimai",
+    "n": "1"
+   },
+   {
+    "preke_id": "37532",
+    "s": "pardavimai",
+    "n": "1"
+   }
+  ]
+ },
+ "v": "dep-204749",
+ "kurimas": 200,
+ "sid": 7956,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
