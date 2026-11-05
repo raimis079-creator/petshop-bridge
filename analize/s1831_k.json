@@ -1,0 +1,123 @@
+{
+ "1": {
+  "v": "S1831k",
+  "dir": {
+   "petshop-backups/2026/11": [],
+   "petshop-backups/2026/10": []
+  },
+  "state_files": [
+   [
+    "application_backups",
+    "11-03 21:20"
+   ],
+   [
+    "backups",
+    "11-05 02:00"
+   ]
+  ],
+  "wpcron": [
+   [
+    "wp_delete_temp_updater_backups",
+    "11-10 15:44"
+   ]
+  ],
+  "statusai_30d": [
+   {
+    "status": "wc-cancelled",
+    "n": "22",
+    "pask": "2026-11-02 09:49:39"
+   },
+   {
+    "status": "wc-completed",
+    "n": "297",
+    "pask": "2026-11-05 10:36:06"
+   },
+   {
+    "status": "wc-on-hold",
+    "n": "1",
+    "pask": "2026-11-04 10:37:27"
+   },
+   {
+    "status": "wc-processing",
+    "n": "11",
+    "pask": "2026-11-05 10:50:05"
+   }
+  ],
+  "completed_pask": [
+   {
+    "id": "37412",
+    "date_created_gmt": "2026-11-02 07:54:00",
+    "date_updated_gmt": "2026-11-05 10:36:06"
+   },
+   {
+    "id": "37402",
+    "date_created_gmt": "2026-11-01 11:27:33",
+    "date_updated_gmt": "2026-11-05 10:06:35"
+   },
+   {
+    "id": "37388",
+    "date_created_gmt": "2026-10-30 21:09:18",
+    "date_updated_gmt": "2026-11-05 10:06:35"
+   },
+   {
+    "id": "37387",
+    "date_created_gmt": "2026-10-30 15:28:28",
+    "date_updated_gmt": "2026-11-05 10:06:35"
+   },
+   {
+    "id": "37378",
+    "date_created_gmt": "2026-10-29 17:16:35",
+    "date_updated_gmt": "2026-11-05 09:36:07"
+   }
+  ],
+  "note_pask": [
+   {
+    "oid": "38224",
+    "comment_date": "2026-11-05 12:50:05",
+    "c": "Siuntos numeriai išsaugoti (VF): V07267E1000684"
+   },
+   {
+    "oid": "38224",
+    "comment_date": "2026-11-05 12:50:05",
+    "c": "Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga"
+   },
+   {
+    "oid": "38223",
+    "comment_date": "2026-11-05 12:50:05",
+    "c": "Siuntos numeriai išsaugoti (VF): V07267E1000683"
+   },
+   {
+    "oid": "38223",
+    "comment_date": "2026-11-05 12:50:05",
+    "c": "Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga"
+   },
+   {
+    "oid": "38222",
+    "comment_date": "2026-11-05 12:50:05",
+    "c": "Siuntos numeriai išsaugoti (VF): V07267E1000682"
+   },
+   {
+    "oid": "38222",
+    "comment_date": "2026-11-05 12:50:05",
+    "c": "Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga"
+   },
+   {
+    "oid": "38221",
+    "comment_date": "2026-11-05 12:50:05",
+    "c": "Siuntos numeriai išsaugoti (VF): V07267E1000681"
+   },
+   {
+    "oid": "38221",
+    "comment_date": "2026-11-05 12:50:05",
+    "c": "Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga"
+   }
+  ]
+ },
+ "v": "dep-105041",
+ "kurimas": 200,
+ "sid": 7991,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
