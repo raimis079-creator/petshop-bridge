@@ -1,0 +1,34 @@
+{
+ "1": {
+  "v": "S1829pg",
+  "opcijos": [
+   {
+    "option_name": "petshop_pragma_known_emails",
+    "v": "a:194:{i:0;s:20:\"raimundas@gyvunai.lt\";i:1;s:16:\"terra@gyvunai.lt\";i:2;s:17:\"nastia96@inbox.lt\";i:3;s:20:\"daliukas57@gmail.com\";i:4;s:28:\"zina.pranauskiene@icloud.com\";i:5;s:18:\"aa.gaiva@gmail.com\";i:6;s:19:\"ptomas887@gmail.com\";i:7;s:21:\"jolanta.ada@gmail.com\";i:8;s:28:\"sandrazmijauskiene@gmail.com\";i:9;s:23:\"redbullgirl32@gmail.com\";i:10;s:22:\"1993justinas@gmail.com\";i:11;s:21:\"azacharevic@yahoo.com\";i:12;s:21:\"vip.alionuska@mail.ru\";i:13;s:19:\"lauroshke@gmail.com\";i:14;s:18:\"gkomskis@gmail.com\";i:15;s:28:\"sonatadainauskaite@gmail.com\";i:16;s:29:\"sonata.venckiene105@gmail.com\";i:17;s:29:\"san"
+   },
+   {
+    "option_name": "petshop_pragma_log",
+    "v": "a:16:{i:0;a:2:{s:4:\"time\";s:19:\"2026-05-26 18:52:08\";s:7:\"message\";s:59:\"2026-05: eksportas sekmingai. Uzsakymu: 2, Nauju klientu: 2\";}i:1;a:2:{s:4:\"time\";s:19:\"2026-05-26 19:05:42\";s:7:\"message\";s:59:\"2026-05: eksportas sekmingai. Uzsakymu: 2, Nauju klientu: 0\";}i:2;a:2:{s:4:\"time\";s:19:\"2026-05-26 19:07:12\";s:7:\"message\";s:59:\"2026-05: eksportas sekmingai. Uzsakymu: 2, Nauju klientu: 2\";}i:3;a:2:{s:4:\"time\";s:19:\"2026-05-26 19:23:53\";s:7:\"message\";s:27:\"2026-05: nera AVPN saskaitu\";}i:4;a:2:{s:4:\"time\";s:19:\"2026-05-26 19:25:56\";s:7:\"message\";s:27:\"2026-05: nera AVPN saskaitu\";}i:5;a:2:{s:4:"
+   },
+   {
+    "option_name": "petshop_pragma_production_mode",
+    "v": "1"
+   }
+  ],
+  "cron": [
+   [
+    "petshop_pragma_monthly_export",
+    "2026-12-05 10:00"
+   ]
+  ],
+  "lenteles": [],
+  "katalogai": []
+ },
+ "v": "dep-084939",
+ "kurimas": 200,
+ "sid": 7975,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
