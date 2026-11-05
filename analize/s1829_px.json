@@ -1,0 +1,65 @@
+{
+ "1": {
+  "v": "S1829px",
+  "f": "1",
+  "cbs": [
+   {
+    "f": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-pragma/petshop-pragma.php",
+    "s": 36,
+    "e": 52,
+    "n": "closure"
+   }
+  ],
+  "src": [
+   "add_action( 'petshop_pragma_monthly_export', function() {",
+   "    // SAUGIKLIS: siusti tik kai production mode ijungtas",
+   "    if ( ! get_option( 'petshop_pragma_production_mode', false ) ) {",
+   "        petshop_pragma_log( 'Automatinis eksportas PRALEISTAS — production mode isjungtas' );",
+   "        wp_schedule_single_event( petshop_pragma_next_run_time(), 'petshop_pragma_monthly_export' );",
+   "        return;",
+   "    }",
+   "",
+   "    $now        = current_time( 'timestamp' );",
+   "    $prev_month = (int) date( 'n', strtotime( '-1 month', $now ) );",
+   "    $prev_year  = (int) date( 'Y', strtotime( '-1 month', $now ) );",
+   "",
+   "    petshop_pragma_run_export( $prev_year, $prev_month );",
+   "",
+   "    // Suplanuojame kitą paleidimą",
+   "    wp_schedule_single_event( petshop_pragma_next_run_time(), 'petshop_pragma_monthly_export' );",
+   "});"
+  ],
+  "failas_eil": 528,
+  "fn": [
+   "21: function petshop_pragma_next_run_time() {",
+   "57: function petshop_pragma_run_export( $year, $month ) {",
+   "158: function petshop_pragma_generate_imones( $orders ) {",
+   "202: function petshop_pragma_generate_pardavimai( $orders ) {",
+   "257: function petshop_pragma_generate_pardavimai_sum( $orders ) {",
+   "285: function petshop_pragma_send_email( $period_label, $txt_files, $new_pdfs, $new_order_nrs ) {",
+   "288: // Gavėjas — production: info@audac.lt, test: terra@petshop.lt",
+   "289: $default_to = $production ? 'info@audac.lt' : 'terra@petshop.lt';",
+   "290: $to = apply_filters( 'petshop_pragma_recipient', $default_to );",
+   "310: $attachments = array_merge( $txt_files, $new_pdfs );",
+   "312: $result = wp_mail( $to, $subject, $body, $headers, $attachments );",
+   "315: wp_mail(",
+   "318: $body . \"\\n\\n[Siuntimas i info@audac.lt: \" . ( $result ? 'sekmingai' : 'nepavyko' ) . \"]\",",
+   "320: $attachments",
+   "329: function petshop_pragma_get_client_id( $order ) {",
+   "344: function petshop_pragma_get_client_name( $order ) {",
+   "355: function petshop_pragma_clean_value( $val ) {",
+   "360: function petshop_pragma_log( $message ) {",
+   "387: function petshop_pragma_admin_page() {",
+   "403: add_filter( 'petshop_pragma_recipient', function() { return 'terra@petshop.lt'; } );",
+   "432: Automatinis eksportas siunčiamas į <strong>info@audac.lt</strong>.",
+   "442: onclick=\"return confirm('<?php echo $production ? 'Išjungti? Automatinis siuntimas sustabdomas.' : 'Įjungti? Eksportas pradės siųsti į info@audac.lt!'; ?>')\">"
+  ]
+ },
+ "v": "dep-085554",
+ "kurimas": 200,
+ "sid": 7977,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
