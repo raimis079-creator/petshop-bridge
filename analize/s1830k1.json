@@ -1,0 +1,140 @@
+{
+ "1": {
+  "v": "S1830k",
+  "f": "1",
+  "rasta": 317,
+  "suma_buvo": 63936,
+  "suma_bus": 69563,
+  "priemokos_pries": [
+   {
+    "id": "1",
+    "vezejas": "venipak",
+    "tipas": "kuras",
+    "procentas": "25.7600",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "saskaita 07: (1,95-1,10)/1,10 x 1/3",
+    "sukurta_at": "2026-08-26 10:52:01"
+   },
+   {
+    "id": "2",
+    "vezejas": "venipak",
+    "tipas": "atlyginimas",
+    "procentas": "32.7300",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "saskaita 07: (1982-1000)/1000 x 1/3",
+    "sukurta_at": "2026-08-26 10:52:01"
+   },
+   {
+    "id": "3",
+    "vezejas": "venipak",
+    "tipas": "nuolaida",
+    "procentas": "15.0000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "apyvartos rezis 300-600 EUR",
+    "sukurta_at": "2026-08-26 10:52:01"
+   },
+   {
+    "id": "4",
+    "vezejas": "lp_express",
+    "tipas": "kuras",
+    "procentas": "5.4800",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 kuro priemoka",
+    "sukurta_at": "2026-08-26 10:52:01"
+   }
+  ],
+  "atnaujinta": 317,
+  "priemokos_po": [
+   {
+    "id": "1",
+    "vezejas": "venipak",
+    "tipas": "kuras",
+    "procentas": "25.7600",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": "2026-09-30",
+    "pastaba": "saskaita 07: (1,95-1,10)/1,10 x 1/3",
+    "sukurta_at": "2026-08-26 10:52:01"
+   },
+   {
+    "id": "2",
+    "vezejas": "venipak",
+    "tipas": "atlyginimas",
+    "procentas": "32.7300",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": "2026-09-30",
+    "pastaba": "saskaita 07: (1982-1000)/1000 x 1/3",
+    "sukurta_at": "2026-08-26 10:52:01"
+   },
+   {
+    "id": "3",
+    "vezejas": "venipak",
+    "tipas": "nuolaida",
+    "procentas": "15.0000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "apyvartos rezis 300-600 EUR",
+    "sukurta_at": "2026-08-26 10:52:01"
+   },
+   {
+    "id": "4",
+    "vezejas": "lp_express",
+    "tipas": "kuras",
+    "procentas": "5.4800",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 kuro priemoka",
+    "sukurta_at": "2026-08-26 10:52:01"
+   },
+   {
+    "id": "5",
+    "vezejas": "venipak",
+    "tipas": "kuras",
+    "procentas": "36.0600",
+    "galioja_nuo": "2026-10-01",
+    "galioja_iki": null,
+    "pastaba": "saskaita VLT0598235 (10): (2,29-1,10)/1,10 x 1/3",
+    "sukurta_at": null
+   },
+   {
+    "id": "6",
+    "vezejas": "venipak",
+    "tipas": "atlyginimas",
+    "procentas": "34.6300",
+    "galioja_nuo": "2026-10-01",
+    "galioja_iki": null,
+    "pastaba": "saskaita VLT0598235 (10): (2039-1000)/1000 x 1/3",
+    "sukurta_at": null
+   }
+  ],
+  "spalio_suma_po": "70496",
+  "naujos_kainos": {
+   "past": [
+    171,
+    25
+   ],
+   "kurj10": [
+    436,
+    28
+   ],
+   "kurj20": [
+    599,
+    29
+   ],
+   "rugs_past": [
+    158,
+    25
+   ]
+  }
+ },
+ "v": "dep-100007",
+ "kurimas": 200,
+ "sid": 7987,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
