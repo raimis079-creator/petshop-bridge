@@ -1,0 +1,1357 @@
+{
+ "1": {
+  "v": "S1831zl",
+  "eil": 16264,
+  "pvz": [
+   "[2026-11-05 12:07:28] [STRUCT] action=LEGACY-BLOCK-UPDATE | post_id=27567 | sku=HM-8429 | legacy=Hau&Miau | import_id=3 | note=ZB import update prevented for Legacy product (v1.5.11 guard)",
+   "[2026-11-05 12:07:28] [STRUCT] action=LEGACY-BLOCK-UPDATE | post_id=27568 | sku=HM-8431 | legacy=Hau&Miau | import_id=3 | note=ZB import update prevented for Legacy product (v1.5.11 guard)",
+   "[2026-11-05 12:07:28] [STRUCT] action=LEGACY-BLOCK-UPDATE | post_id=27569 | sku=HM-8432 | legacy=Hau&Miau | import_id=3 | note=ZB import update prevented for Legacy product (v1.5.11 guard)",
+   "[2026-11-05 12:07:28] [STRUCT] action=LEGACY-BLOCK-UPDATE | post_id=27570 | sku=HM-8433 | legacy=Hau&Miau | import_id=3 | note=ZB import update prevented for Legacy product (v1.5.11 guard)",
+   "[2026-11-05 12:07:38] STOCK SYNC post 34661 | zb_qty=136→130",
+   "[2026-11-05 12:07:38] STOCK SYNC post 34664 | zb_qty=744→716",
+   "[2026-11-05 12:07:39] STOCK SYNC post 34667 | zb_qty=1197→1187",
+   ""
+  ],
+  "reasons": {
+   "aksesuarai_below_": 3268,
+   "cost_below_minimum_accessory": 1287,
+   "skanestai_below_": 732,
+   "brand_blocked_now": 552,
+   "vf_sku_already_exists": 328,
+   "medication_blocked": 296,
+   "no_category_mapping": 280,
+   "konservas_below_minimum": 208,
+   "pauks_blocked": 164,
+   "qty_zero_new_no_history": 131,
+   "zirg_blocked": 60,
+   "kraikai_below_": 60,
+   "higiena_below_": 36,
+   "qty_zero_on_new": 17,
+   "excluded_brand": 13,
+   "brand_missing_no_description": 8
+  },
+  "low_n": 1495,
+  "low": [
+   "[2026-11-05 04:02:01] [STRUCT] action=ZB-BLOCK-CREATE | name=3.5_45804 TRIXIE Meškerė su pele ir plunksnomis, medis/džiut | category=Katėms/Žaislai katėms/Žaislai katėms ant meškerės | price=1.755 | qty=64 | reason=cost_",
+   "[2026-11-05 04:02:01] [STRUCT] action=ZB-BLOCK-CREATE | name=3.6_43161 TRIXIE Pakabinama draskyklė katės formos, katžolė, | category=Katėms/Namų ir kelionių prekės katėms/Draskyklės, draskymo s | price=4.005 | qty=55 | r",
+   "[2026-11-05 04:02:01] [STRUCT] action=ZB-BLOCK-CREATE | name=1.7_27650 TRIXIE Suktukai, višitenos įdaras, be pakuotės, 34 | category=Šunims/Šunų maistas ir skanėstai/Skanėstai šunims | price=0.567 | qty=20 | reason=cost_",
+   "[2026-11-05 04:02:01] [STRUCT] action=ZB-BLOCK-CREATE | name=1.2_32287 TRIXIE Maišelis skanėstams 2 in 1, ø 9 × 15 cm (pa | category=Šunims/Šunų maistas ir skanėstai/Skanėstai šunims | price=4.005 | qty=4 | reason=cost_b",
+   "[2026-11-05 04:02:01] [STRUCT] action=ZB-BLOCK-CREATE | name=3.6_48015 TRIXIE Žuvies formos kartono draskyklė, katžolė, 2 | category=Katėms/Namų ir kelionių prekės katėms/Draskyklės, draskymo s | price=5.805 | qty=23 | r"
+  ],
+  "blk_n": 186,
+  "blk": [
+   [
+    "1.7_315433 TRIXIE Mini Riestainis su vištiena, be pakuotės, ",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    0.171,
+    30,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_314733 TRIXIE skanėstas šuniui Denta Fun Chewing Curl su",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    0.405,
+    583,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_315435 TRIXIE PREMIO Saldainis ant pagaliuko su vištiena",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    0.495,
+    270,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "4.1_5108 TRIXIE Mineralinis akmuo su kriauklėmis, 30 g (pak.",
+    "Paukščiams/Narvai, nameliai, lizdai ir jų pri",
+    0.567,
+    76,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_27650 TRIXIE Suktukai, višitenos įdaras, be pakuotės, 34",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    0.567,
+    20,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "4.1_5410 TRIXIE Paukščių girdykla ,50 ml/11 cm (pak.4)",
+    "Paukščiams/Maitinimo ir girdymo priemonės pau",
+    0.621,
+    25,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_34603 TRIXIE Neoninis kamuolys, putų guma, 4.5 cm (pak.5",
+    "Šunims/Žaislai šunims/Lateksiniai, guminiai i",
+    0.738,
+    66,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.2_4045 Semtuvėlis pašarui/kraikui, S (pak.6)",
+    "Šunims/Šunų maistas ir skanėstai/Sausas maist",
+    0.738,
+    14,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "5.0_6001 TRIXIE Druska su laikikliu, 84 gr (pak.6)",
+    "Graužikams/Maistas, skanėstai ir papildai gra",
+    0.738,
+    115,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_4115 TRIXIE žaislas katei Pelė vieliniame kamuolyje, pli",
+    "Katėms/Žaislai katėms/Žaislai katėms kamuoliu",
+    0.855,
+    75,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "TRX_91985 TRIXIE Halloween Ranka, su vištiena, be pak. 15 cm",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    0.918,
+    71,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "SU4451 Visavertis pašaras suaugusiems šunims su jautiena ir ",
+    "Šunims/Šunų maistas ir skanėstai/Sausas maist",
+    1.017,
+    1645,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "4.1_50540 TRIXIE Kalcio akmenėlis su sepija, su laikikliu, 1",
+    "Paukščiams/Narvai, nameliai, lizdai ir jų pri",
+    1.035,
+    172,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "KA6691 Visavertis pašaras suaugusioms katėms su vištiena 1kg",
+    "Katėms/Kačių maistas ir skanėstai/Sausas mais",
+    1.215,
+    3370,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_33651 TRIXIE žaislas šuniui \"kamuolys su spygliais\", beg",
+    "Šunims/Žaislai šunims/TPR žaislai šunims",
+    1.305,
+    66,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "2.4_2386 TRIXIE Erkių pincetas, metalas/plastikas, 8 cm (pak",
+    "Katėms/Veterinarinės prekės katėms/Veterinari",
+    1.305,
+    59,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_42242 TRIXIE Katžolės kamuolys su laikikliu, 5 cm (pak.4",
+    "Katėms/Kačių maistas ir skanėstai/Skanėstai k",
+    1.305,
+    223,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_45749 TRIXIE Katžolės pelyčių komplektas, 5 cm, 2 vnt. (",
+    "Katėms/Žaislai katėms/Žaislai katėms kamuoliu",
+    1.305,
+    349,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.2_4046 TRIXIE Semtuvėlis pašarui/kraikui, L (pak.6)",
+    "Katėms/Kačių maistas ir skanėstai/Sausas mais",
+    1.305,
+    44,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "4.1_5493 TRIXIE Dubenėlis paukščiams, nerūd. plienas su laik",
+    "Paukščiams/Maitinimo ir girdymo priemonės pau",
+    1.305,
+    6,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "2.3_2558 TRIXIE Dantų šepetėlių kompl., 23 cm, 4 vnt. (pak.4",
+    "Šunims/Higienos ir priežiūros priemonės šunim",
+    1.305,
+    44,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_31547 TRIXIE PREMIO Fish Rabbit Stripes, 100 g (pak.6)",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    1.323,
+    25,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_31741 TRIXIE PREMIO Ėrienos juostelės, 100 g (pak.6)",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    1.323,
+    208,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "RD72152 Real Dog Snacks Kiaulių plaučiai 100g",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    1.35,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "1.7_31539 TRIXIE PREMIO Chicken Flags, 100 g (pak.6)",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    1.485,
+    152,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_42433 TRIXIE Matatabi žaislas, 4x5 cm (pak.4)",
+    "Mėnesio akcijos/TRIXIE Žaislai -20%",
+    1.521,
+    38,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_201434 TRIXIE Premium antkaklis, XS-S: 22-35 cm/10 mm, š",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    1.521,
+    5,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_201435 TRIXIE Premium antkaklis, XS-S: 22-35 cm/10 mm, š",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    1.521,
+    9,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_202134 TRIXIE Premium antkaklis, XXS-XS: 15-25 cm/10 mm,",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    1.521,
+    25,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_202135 TRIXIE Premium antkaklis, XXS-XS: 15-25 cm/10 mm,",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    1.521,
+    28,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_201429 TRIXIE Premium antkaklis, XS-S: 22-35 cm/10 mm, k",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    1.521,
+    40,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_202129 TRIXIE Premium antkaklis, XXS-XS: 15-25 cm/10 mm,",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    1.521,
+    58,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_202132 TRIXIE Premium antkaklis, XXS-XS: 15-25 cm/10 mm,",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    1.521,
+    102,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "7726000 JOLLY PAW Palutės, 40 × 60 cm, 7 vnt.",
+    "Šunims/Higienos ir priežiūros priemonės šunim",
+    1.521,
+    249,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_201432 TRIXIE Premium antkaklis XS-S 22-35 cm/10 mm, pet",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    1.521,
+    51,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_31613 TRIXIE Šokolado lašeliai, 200 g (pak.6)",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    1.593,
+    23,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "RD75032 Real Dog Snacks Vištų kakliukai 200g",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    1.683,
+    160,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.2_40385 TRIXIE Kilimėlis prie tualeto, pusiau apvalus, PVC",
+    "Katėms/Higienos ir priežiūros priemonės katėm",
+    1.755,
+    43,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_4509 TRIXIE Meškerė su povo plunksna, plastikas 47 cm (p",
+    "Katėms/Žaislai katėms/Žaislai katėms ant mešk",
+    1.755,
+    159,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_42430 TRIXIE Matatabi žaislas katei lazdelė su katžolės ",
+    "Katėms/Žaislai katėms/Kiti žaislai katėms",
+    1.755,
+    111,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_42241 TRIXIE Katžolės dozatorius, 30 g (pak.4)",
+    "Katėms/Žaislai katėms/Kiti žaislai katėms",
+    1.755,
+    37,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_35283 TRIXIE Kamuolys gyvūnas, lateksas/poliesteris, 6 c",
+    "Šunims/Žaislai šunims/Lateksiniai, guminiai i",
+    1.755,
+    160,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_202234 TRIXIE Premium antkaklis, S: 25-40 cm/15 mm, šala",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    1.755,
+    5,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_202229 TRIXIE Premium antkaklis, S: 25-40 cm/15 mm, kari",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    1.755,
+    38,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_202232 TRIXIE Premium antkaklis S 25-40 cm/15 mm, petrol",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    1.755,
+    23,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_45804 TRIXIE Meškerė su pele ir plunksnomis, medis/džiut",
+    "Katėms/Žaislai katėms/Žaislai katėms ant mešk",
+    1.755,
+    64,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "02.422008 GIMCAT STICKS POULTRY 10vnt.",
+    "Katėms/Kačių maistas ir skanėstai/Skanėstai k",
+    1.848,
+    2,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "02.422091 GIMCAT STICKS SALMON & TROUT 10vnt.",
+    "Katėms/Kačių maistas ir skanėstai/Skanėstai k",
+    1.848,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "GW31260 Good Wood kavamedžio šakos pusė Small šunims iki 10 ",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    1.854,
+    34,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_313351 TRIXIE Spurga, be pakuotės, 10 cm, 100 g (pak.50)",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    1.935,
+    16,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_42443 TRIXIE žaislas Matatabi grandinėlė, 38 cm (pak.4)",
+    "Katėms/Žaislai katėms/Kiti žaislai katėms",
+    1.971,
+    86,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_42441 TRIXIE Matatabi žaislas katei lazdelė su plunksnom",
+    "Katėms/Žaislai katėms/Kiti žaislai katėms",
+    1.971,
+    177,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_201531 TRIXIE Premium antkaklis, S-M: 30-45 cm/15 mm, sa",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    1.971,
+    5,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_201532 TRIXIE Premium antkaklis, S-M: 30-45 cm/15 mm, ta",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    1.971,
+    7,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "GW31284 Good Wood kavamedžio šaka-kaulas Small šunims iki 10",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    2.034,
+    36,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "RD71191 Real Dog Snacks Jaučio sausgyslės pjaustytos 200g",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    2.097,
+    161,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "RD71103 Real Dog Snacks Jaučio trachėjos 15 cm 3 vnt.",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    2.097,
+    109,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_2609 TRIXIE Kramtomieji ritinėliai, įv. spalvų, 12 cm/9-",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    2.133,
+    11,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_31260 TRIXIE Kietas sūrio skanėstas šunims, XS: 13.5 cm,",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    2.133,
+    67,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_34980 TRIXIE Lick'n'Snack Laižymo lėkštė su siurbtukais,",
+    "Šunims/Maitinimo ir girdymo priemonės šunims/",
+    2.205,
+    16,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_19800 TRIXIE Tracking pavadys, lengvas, XS-S 5 m/10 mm, ",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    2.205,
+    33,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "TRX_92659 TRIXIE Xmas Šunų išmatų maišeliai, 8x20maišelių (p",
+    "Šunims/Higienos ir priežiūros priemonės šunim",
+    2.205,
+    42,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "5.0_40396 TRIXIE Junior Nuno Tualetas mažoms katėms ir kačiu",
+    "Katėms/Higienos ir priežiūros priemonės katėm",
+    2.205,
+    24,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_36153 TRIXIE Kamuolys, pliušas, perdirbtas, 10 cm (pak.6",
+    "Šunims/Žaislai šunims/Minkšti, pliušiniai žai",
+    2.205,
+    51,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_201631 TRIXIE Premium antkaklis, M-L: 35-55 cm/20 mm, sa",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    2.205,
+    16,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_201633 TRIXIE Premium antkaklis, M-L: 35-55 cm/20 mm, al",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    2.205,
+    18,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.6_24413 TRIXIE „Food\" dubenėlis, keramika, 0.25 l/13 cm, b",
+    "Katėms/Maitinimo ir girdymo priemonės katėms/",
+    2.205,
+    6,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.6_24485 TRIXIE „Water\" dubenėlis, keramika, 0.25 l/13 cm, ",
+    "Katėms/Maitinimo ir girdymo priemonės katėms/",
+    2.205,
+    12,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.3_24474 TRIXIE Dubenėlis, keramika, 0.3 l/13 cm (pak.4)",
+    "Katėms/Maitinimo ir girdymo priemonės katėms/",
+    2.205,
+    33,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.3_24473 TRIXIE Dubenėlis katėms, seklus, keramika, 0.2 l/1",
+    "Katėms/Maitinimo ir girdymo priemonės katėms/",
+    2.205,
+    30,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.3_25270 TRIXIE Dubenėlis, žuvies kaulas, nerūd.plienas, 0.",
+    "Katėms/Maitinimo ir girdymo priemonės katėms/",
+    2.205,
+    3,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_45289 TRIXIE Meškerė su paukščiu, plastikas/pliušas, kat",
+    "Katėms/Žaislai katėms/Žaislai katėms ant mešk",
+    2.205,
+    40,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "RD74011 Real Dog Snacks Triušio ausys naturalios 100g",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    2.214,
+    224,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "RD71021 Real Dog Snacks Jaučio ausys baltos 2vnt.",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    2.241,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "GW31277 Good Wood kavamedžio šakos pusė Medium iki 20 kg (pa",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    2.322,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "RD71011 Real Dog Snacks Jaučio ausys natūralios 2vnt.",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    2.349,
+    85,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "2.2_23761 TRIXIE Šukos nuo blusų, metalinės, 7 cm (pak.3)",
+    "Šunims/Higienos ir priežiūros priemonės šunim",
+    2.421,
+    23,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_45596 TRIXIE žaislas katei šimtakojis, su šiugždančia fo",
+    "Katėms/Žaislai katėms/Žaislai katėms kamuoliu",
+    2.655,
+    126,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_33340 TRIXIE Junior vėsinantis kaulas, natūrali guma, 10",
+    "Šunims/Žaislai šunims/Lateksiniai, guminiai i",
+    2.655,
+    16,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "TRX_92603 TRIXIE žaislas Kalėdų Senelis, pliušas, 22 cm",
+    "Šunims/Žaislai šunims/Minkšti, pliušiniai žai",
+    2.655,
+    21,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "RD72022 Real Dog Snacks Kiaulės ausys vidutinės 3vnt.",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    2.727,
+    49,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "5.0_60784 TRIXIE Šieno rulonas su gėlių mišiniu, 10x18 cm, 2",
+    "Graužikams/Maistas, skanėstai ir papildai gra",
+    2.943,
+    40,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "5.0_60793 TRIXIE Šieno rulonas su moliūgais ir morkomis, 10x",
+    "Graužikams/Maistas, skanėstai ir papildai gra",
+    2.943,
+    40,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "RD72102 Real Dog Snacks Kiaulės knyslės 150g",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    3.024,
+    85,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_45787 TRIXIE Roly-poly žaislas Višta su plunksnomis, pli",
+    "Katėms/Žaislai katėms/Žaislai katėms kamuoliu",
+    3.105,
+    106,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "2.1_2350 TRIXIE Rankšluostis, mikropluoštas, 50x60 cm, pilka",
+    "Šunims/Higienos ir priežiūros priemonės šunim",
+    3.105,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "1.8_3618 TRIXIE Gyvūnas su virve, pliušas, 13 cm, įv. spalvų",
+    "Šunims/Žaislai šunims/Virviniai žaislai šunim",
+    3.105,
+    28,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.2_40386 TRIXIE Kilimėlis prie tualeto, pusiau apvalus, PVC",
+    "Katėms/Higienos ir priežiūros priemonės katėm",
+    3.105,
+    24,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_35987 TRIXIE žaislas šuniui, burundukas, pliušas-audinys",
+    "Šunims/Žaislai šunims/Minkšti, pliušiniai žai",
+    3.105,
+    22,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_201731 TRIXIE Premium antkaklis, L-XL: 40-65 cm/25 mm, s",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    3.105,
+    13,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_201732 TRIXIE Premium antkaklis, L-XL: 40-65 cm/25 mm, t",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    3.105,
+    17,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_201733 TRIXIE Premium antkaklis, L-XL: 40-65 cm/25 mm, a",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    3.105,
+    19,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.6_24414 TRIXIE „Food\" dubenėlis, keramika, 0.6 l/15 cm, ba",
+    "Katėms/Maitinimo ir girdymo priemonės katėms/",
+    3.105,
+    5,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.6_24486 TRIXIE „Water\"dubenėlis, keramika, 0.6 l/15 cm, ba",
+    "Katėms/Maitinimo ir girdymo priemonės katėms",
+    3.105,
+    10,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "801018 GIMDOG RED TITAN BRANCH žaislas šuniui",
+    "Šunims/Žaislai šunims/Lateksiniai, guminiai i",
+    3.176,
+    9,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_31315 TRIXIE Denta Fun Kramtomasis ritinys su vištiena i",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    3.231,
+    64,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_31261 TRIXIE Kietas sūrio skanėstas šunims, S: 13.5 cm, ",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    3.231,
+    128,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "80730 GIMDOG BIG BANG FOOTBALL M - 15,2 CM žaislas šuniui",
+    "Šunims/Žaislai šunims/TPR žaislai šunims",
+    3.304,
+    31,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "2.3_25704 TRIXIE Letenų valymo indas, silikonas/PP, S-M, mėl",
+    "Šunims/Higienos ir priežiūros priemonės šunim",
+    3.555,
+    20,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.6_24775 TRIXIE Jimmy Dubenėlis, keramika, 0.75 l/15 cm (pa",
+    "Katėms/Maitinimo ir girdymo priemonės katėms/",
+    3.555,
+    40,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.3_24470 TRIXIE Dubenėlis, pakeltas, keramika, 0.15 l/13 cm",
+    "Katėms/Maitinimo ir girdymo priemonės katėms/",
+    3.555,
+    46,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "TRX_99352581 TRIXIE Halloween Kaukolė, pliušas 19 cm (pak.6)",
+    "Šunims/Žaislai šunims/Minkšti, pliušiniai žai",
+    3.555,
+    15,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "TRX_99352582 TRIXIE Halloween Kaulas, pliušas, 34 cm (pak.6)",
+    "Šunims/Žaislai šunims/Minkšti, pliušiniai žai",
+    3.555,
+    47,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "TRX_9269 Advento kalendorius katėms, 30 × 34 × 3.5 cm",
+    "Katėms/Kačių maistas ir skanėstai/Skanėstai k",
+    3.591,
+    3,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "TRX_9268 TRIXIE Xmas Advento kalendorius šunims, 30 × 34 × 3",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    3.591,
+    142,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "5.0_6263 TRIXIE Petnešos su pavadėliu triušiams, 25–44 cm/10",
+    "Graužikams",
+    4.005,
+    9,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_4135 TRIXIE Žaidimas katei Crazy Circle su pliuš. pele, ",
+    "Katėms/Žaislai katėms/Žaislai katėms lavinami",
+    4.005,
+    20,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_34983 TRIXIE Lick'n'Snack užkandžių kilimėlis, silikonas",
+    "Šunims/Maitinimo ir girdymo priemonės šunims/",
+    4.005,
+    48,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_2011801 TRIXIE Premium dvigubas pavadys, XS-S: 40-70 cm/",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    4.005,
+    50,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_45788 TRIXIE Pelė su mikroschema, pliušas, katžolė, 15 c",
+    "Katėms/Žaislai katėms/Žaislai katėms kamuoliu",
+    4.005,
+    38,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_45763 TRIXIE Teleskopinė meškerė, su 2 žaislais, stiklo ",
+    "Katėms/Žaislai katėms/Žaislai katėms ant mešk",
+    4.005,
+    24,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.6_43161 TRIXIE Pakabinama draskyklė katės formos, katžolė,",
+    "Katėms/Namų ir kelionių prekės katėms/Draskyk",
+    4.005,
+    55,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.2_32287 TRIXIE Maišelis skanėstams 2 in 1, ø 9 × 15 cm (pa",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    4.005,
+    4,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_25833 TRIXIE Pieno pakaitalas šuniukams, milteliai, 250 ",
+    "Šunims/Vitaminai ir papildai šunims/Trixie šu",
+    4.311,
+    10,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_31262 TRIXIE Kietas sūrio skanėstas šunims, M: 13.5 cm, ",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    4.311,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "GW31246 Good Wood kavamedžio šaka Medium šunims iki 20 kg",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    4.347,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "RD72122 Real Dog Snacks Kiaulės žarnos 200g",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    4.401,
+    2,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_35912 TRIXIE Grifas Gustav, audinys/pliušas, 28 cm (pak.",
+    "Šunims/Žaislai šunims/Minkšti, pliušiniai žai",
+    4.455,
+    62,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_35910 TRIXIE Bebras su garsu, pliušas, 27 cm (pak.2)",
+    "Šunims/Žaislai šunims/Minkšti, pliušiniai žai",
+    4.455,
+    18,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_35919 TRIXIE žaislas šuniui \"Lapė su virve\", pliušas, 34",
+    "Šunims/Žaislai šunims/Virviniai žaislai šunim",
+    4.455,
+    36,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.2_40180 TRIXIE Classic Kačių tualetas su kraštais, 37x15x4",
+    "Katėms/Higienos ir priežiūros priemonės katėm",
+    4.455,
+    47,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "TRX_92578 TRIXIE Xmas Šiaurės elnias, pliušas/medvilnė, 49 c",
+    "Šunims/Žaislai šunims/Minkšti, pliušiniai žai",
+    4.455,
+    27,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_1971401 TRIXIE CityStyle antkaklis, PVC, S-M: 30-37 cm/2",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    4.455,
+    104,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_1971416 TRIXIE CityStyle antkaklis, PVC, S-M: 30-37 cm/2",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    4.455,
+    3,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_1971419 TRIXIE CityStyle antkaklis, PVC, S-M: 30-37 cm/2",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    4.455,
+    58,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "5.0_25752 TRIXIE Šlapimo dėmių valiklis, intens., 750 ml (pa",
+    "Šunims/Higienos ir priežiūros priemonės šunim",
+    4.455,
+    36,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.2_40212 TRIXIE Be Eco Carlo kačių tualetas su kraštais 38x",
+    "Katėms/Higienos ir priežiūros priemonės katėm",
+    4.455,
+    31,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_33444 TRIXIE Vandens žaislas, TRP, 25 cm (pak.3)",
+    "Šunims/Žaislai šunims/TPR žaislai šunims",
+    4.455,
+    27,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_45892 TRIXIE Cat Activity Flip Board strateginis žaidima",
+    "Katėms/Žaislai katėms/Žaislai katėms lavinami",
+    4.455,
+    8,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_4301 TRIXIE Žaidimų tunelis katėms, poliesteris, 25x50 c",
+    "Katėms/Žaislai katėms/Kiti žaislai katėms",
+    4.455,
+    10,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_1971501 TRIXIE CityStyle antkaklis, PVC, M: 35-42 cm/20 ",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    4.455,
+    47,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_1971519 TRIXIE CityStyle antkaklis, PVC, M: 35-42 cm/20 ",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    4.455,
+    39,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "TRX_92593 TRIXIE Xmas tinginys, pliušas/virvė, 30 cm",
+    "Šunims/Žaislai šunims/Minkšti, pliušiniai žai",
+    4.455,
+    45,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "TRX_92572 TRIXIE Xmas sniego senis, pliušas/medvilnė, 41 cm",
+    "Šunims/Žaislai šunims/Minkšti, pliušiniai žai",
+    4.455,
+    83,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "TRX_92575 TRIXIE Xmas meduolis, pliušas/medvilnė, 34 cm",
+    "Šunims/Žaislai šunims/Minkšti, pliušiniai žai",
+    4.455,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "801021 GIMDOG RED TITAN BOMB žaislas šuniui",
+    "Šunims/Žaislai šunims/Lateksiniai, guminiai i",
+    4.48,
+    11,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_41313 TRIXIE Lazerinis žaislas, pelė, USB, 8.5 cm (pak.4",
+    "Katėms/Žaislai katėms/Kiti žaislai katėms",
+    4.905,
+    13,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_200129 TRIXIE Premium pavadys XS-S 1.20 m/15 mm, kario",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    4.905,
+    41,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_200132 TRIXIE Premium pavadys XS-S 1.20 m/15 mm, petrol ",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    4.905,
+    38,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "RD71060 Real Dog Snacks Jaučio peniai pjaustyti 12 cm 4 vnt.",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    4.914,
+    64,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "SE59763 Special Dog Exc. Monoprotein sausas pašaras mažų vei",
+    "Šunims/Šunų maistas ir skanėstai/Sausas maist",
+    5.103,
+    171,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "GW31253 Good Wood kavamedžio šaka Large šunims virš 20 kg",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    5.229,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "SE59756 Special Dog Exc. Monoprotein sausas pašaras mažų vei",
+    "Šunims/Šunų maistas ir skanėstai/Sausas maist",
+    5.346,
+    204,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_35886 TRIXIE Triušis, pliušas, 38 cm (pak.2)",
+    "Šunims/Žaislai šunims/Minkšti, pliušiniai žai",
+    5.355,
+    16,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_36048 TRIXIE BE NORDIC ungurys Karl, pliušas/virvė, 75 c",
+    "Šunims/Žaislai šunims/Virviniai žaislai šunim",
+    5.355,
+    20,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_41345 TRIXIE Žaidimas katei Catch the Balls, plastikas, ",
+    "Katėms/Žaislai katėms/Žaislai katėms lavinami",
+    5.355,
+    14,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.6_24361 TRIXIE Dubenėlis, keramika/guma, 0.75 l/16 cm, pil",
+    "Katėms/Maitinimo ir girdymo priemonės katėms/",
+    5.355,
+    83,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_31263 TRIXIE Kietas sūrio skanėstas šunims, L: 13.5 cm, ",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    5.391,
+    15,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "A59026 Kalakuto kojos tamsios didelės 5vnt.",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    5.553,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "1.1_12684 TRIXIE LED antkaklis USB, platus, silikonas, M-L: ",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    5.805,
+    94,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.1_30514 TRIXIE Orléans striukė, S 40 cm, juoda",
+    "Šunims/Rūbeliai, batukai, aksesuarai šunims/Š",
+    5.805,
+    4,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.1_680030 TRIXIE Kenton megztinis, XS: 24 cm, raudonas",
+    "Šunims/Rūbeliai, batukai, aksesuarai šunims/Š",
+    5.805,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "3.5_4302 TRIXIE Žaidimų tunelis katėms su 4 įėjimais, pliuša",
+    "Katėms/Žaislai katėms/Kiti žaislai katėms",
+    5.805,
+    9,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_2011901 TRIXIE Premium dvigubas pavadys, M-L: 40-70 cm/2",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    5.805,
+    29,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.6_48015 TRIXIE Žuvies formos kartono draskyklė, katžolė, 2",
+    "Katėms/Namų ir kelionių prekės katėms/Draskyk",
+    5.805,
+    23,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_36046 TRIXIE BE NORDIC Jūrų žvaigždė Jane, pliušas/virvė",
+    "Šunims/Žaislai šunims/Virviniai žaislai šunim",
+    6.255,
+    39,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.6_24776 TRIXIE Jimmy Dubenėlis, keramika, 1.5 l/20 cm",
+    "Katėms/Maitinimo ir girdymo priemonės katėms/",
+    6.255,
+    31,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_34883 TRIXIE Be Eco Kiškutis Evan, pliušas 25 cm (pak.2)",
+    "Šunims/Žaislai šunims/Minkšti, pliušiniai žai",
+    6.255,
+    20,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_1971001 TRIXIE CityStyle pavadys, PVC, S-M: 1.20 m/13 mm",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    6.255,
+    54,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_1971016 TRIXIE CityStyle pavadys, PVC, S-M: 1.20 m/13 mm",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    6.255,
+    3,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_1971019 TRIXIE CityStyle pavadys, PVC, S-M: 1.20 m/13 mm",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    6.255,
+    67,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.8_36049 TRIXIE BE NORDIC ungurys Karl, pliušas/virvė, 94 c",
+    "Šunims/Žaislai šunims/Virviniai žaislai šunim",
+    6.255,
+    19,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_201934 TRIXIE Premium lead, extra long, XS-S: 1.80 m/15 ",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    6.255,
+    55,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.0_201936 TRIXIE Premium lead, extra long, XS-S: 1.80 m/15 ",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    6.255,
+    41,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_2707 TRIXIE Jaučio penis, džiovintas, 70–80 cm (pak.10) ",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    6.255,
+    180,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "G97189 GEMON - Dry Cat Urinary chicken & rice 2 kg",
+    "Katėms/Kačių maistas ir skanėstai/Sausas mais",
+    6.66,
+    8,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.1_12671 TRIXIE LED antkaklis USB, platus, silikonas, M-L: ",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    6.705,
+    110,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.1_30515 TRIXIE Orléans striukė, M 45 cm, juoda",
+    "Šunims/Rūbeliai, batukai, aksesuarai šunims/Š",
+    6.705,
+    6,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.4_2997 TRIXIE Menkių kepenėlių aliejus šunims/katėms, 250 ",
+    "Šunims/Vitaminai ir papildai šunims/Trixie šu",
+    6.705,
+    4,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.2_32295 TRIXIE Twin maišelis skanėstams, 15x18x2.5 cm, tam",
+    "Šunims/Namų ir kelionių prekės šunims",
+    6.705,
+    8,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.1_680092 TRIXIE Norwood megztinis, XS: 24 cm, kreminė",
+    "Šunims/Rūbeliai, batukai, aksesuarai šunims/Š",
+    6.705,
+    1,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "G97165 GEMON - Dry Cat Sterilized tuna/salmon 2 kg",
+    "Katėms/Kačių maistas ir skanėstai/Sausas mais",
+    6.795,
+    46,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "G97134 GEMON - Dry Cat Kitten chicken & rice 2 kg",
+    "Katėms/Kačių maistas ir skanėstai/Sausas mais",
+    6.894,
+    16,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.7_31175 TRIXIE Denta Fun MEGA Kramtymo kaulas su vištiena,",
+    "Šunims/Šunų maistas ir skanėstai/Skanėstai šu",
+    7.011,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "LE59794 Lechat Exc. Fussy sausas pašaras išrankioms katėms s",
+    "Katėms/Kačių maistas ir skanėstai/Sausas mais",
+    7.047,
+    220,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.3_39739 TRIXIE IATA rinkinys transportavimo dėžei Skudo",
+    "Šunims/Namų ir kelionių prekės šunims/Boksai,",
+    7.155,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "3.2_40397 TRIXIE Delio kačių tualetas su kraštais, 38x20x50 ",
+    "Katėms/Higienos ir priežiūros priemonės katėm",
+    7.155,
+    77,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.1_67492 TRIXIE BE NORDIC Flensburg bliuzonas, XS: 30 cm, p",
+    "Šunims/Rūbeliai, batukai, aksesuarai šunims/Š",
+    7.605,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "1.1_680150 TRIXIE CityStyle Berlin megztinis, XS: 24 cm, rūd",
+    "Šunims/Rūbeliai, batukai, aksesuarai šunims/Š",
+    7.605,
+    16,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.1_680160 TRIXIE CityStyle Berlin megztinis, XS: 24 cm, pil",
+    "Šunims/Rūbeliai, batukai, aksesuarai šunims/Š",
+    7.605,
+    13,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.1_680180 TRIXIE CityStyle Berlin megztinis, XS: 24 cm, šal",
+    "Šunims/Rūbeliai, batukai, aksesuarai šunims/Š",
+    7.605,
+    7,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "1.1_12672 TRIXIE LED antkaklis USB, platus, silikonas, L-XL:",
+    "Šunims/Pavadėliai, antkakliai, petnešos, ants",
+    7.605,
+    97,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "LE60165 Lechat Exc. Hairball sausas pašaras katėms su vištie",
+    "Katėms/Kačių maistas ir skanėstai/Sausas mais",
+    7.758,
+    181,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "LE59831 Lechat Exc. sausas pašaras sterilizuotoms katėms su ",
+    "Katėms/Kačių maistas ir skanėstai/Sausas mais",
+    7.758,
+    179,
+    "cost_below_minimum_accessory"
+   ],
+   [
+    "3.5_32037 TRIXIE Dog Activity uostymo kilimėlis, strateginis",
+    "Šunims/Maitinimo ir girdymo priemonės šunims/",
+    13.455,
+    0,
+    "qty_zero_new_no_history"
+   ],
+   [
+    "1.1_681033 TRIXIE Rouen stiukė, S: 36 cm, (mopsams, buldogam",
+    "Šunims/Rūbeliai, batukai, aksesuarai šunims/Š",
+    19.755,
+    0,
+    "qty_zero_new_no_history"
+   ]
+  ],
+  "mu_zb": [
+   "petshop-zb-matmenys.php"
+  ]
+ },
+ "v": "dep-120818",
+ "kurimas": 200,
+ "sid": 8002,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
