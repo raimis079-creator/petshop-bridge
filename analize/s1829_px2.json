@@ -1,0 +1,33 @@
+{
+ "2": {
+  "v": "S1829px",
+  "f": "2",
+  "cbs": [
+   {
+    "f": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-pragma/petshop-pragma.php",
+    "s": 36,
+    "e": 52,
+    "n": "closure"
+   }
+  ],
+  "mail_fail": [
+   "SMTP Error: data not accepted.",
+   "SMTP Error: data not accepted."
+  ],
+  "log_nauji": [
+   {
+    "time": "2026-11-05 10:58:44",
+    "message": "2026-10: eksportas sekmingai. Uzsakymu: 314, Nauju klientu: 275"
+   }
+  ],
+  "mem_peak_mb": 276,
+  "next": "2026-12-05 10:00"
+ },
+ "v": "dep-085727",
+ "kurimas": 200,
+ "sid": 7978,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
