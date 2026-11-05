@@ -1,7 +1,7 @@
 {
- "1": {
+ "2": {
   "v": "S1829sf",
-  "f": "1",
+  "f": "2",
   "oid": 36909,
   "o": {
    "nr": "1465",
@@ -239,12 +239,39 @@
    "382: <div class=\"ps-date\">Sąskaitos išrašymo data: <strong><?php echo esc_html( $doc_date_raw ); ?></strong></div>",
    "587: <strong>Apmokėti iki:</strong> <?php echo esc_html( $ps_neapmoketa_sf ? date( 'Y-m-d', strtotime( $doc_date_raw . ' +14 days' ) ) : $doc_date_raw ); ?><br>"
   ],
+  "gen_file": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/themes/flatsome-child/functions.php:337",
+  "gen": [
+   "249: //   update_option('petshop_avpn_counter', 101)",
+   "255: * ir 5 sąskaitos gavo AVPN011105. Dabar: DB užraktas + UPDATE … LAST_INSERT_ID + meta patikra tiesiai iš DB.",
+   "288: function petshop_get_avpn_number( $order_id ) {",
+   "289: return petshop_ps_kitas_numeris( 'petshop_avpn_counter', 'AVPN', $order_id, '_petshop_avpn_number' );",
+   "299: // Žyma _ps_pvm_sf_neapmoketa=1 dedama rankiniu būdu (bridge), data fiksuojama _petshop_sf_data.",
+   "303: // S1662 (Raimio taisyklė 2026-09-09): PVM sąskaita (AVPN) — TIK apmokėtiems.",
+   "305: // Anksčiau proforma buvo tik bacs pending/on-hold — Paysera pending degino AVPN numerius.",
+   "312: // cancelled/refunded be apmokėjimo — sąskaitos nekuriam, bet jei kas pareikalaus, NEdeginam AVPN",
+   "313: if ( in_array( $order->get_status(), array( 'cancelled', 'refunded' ), true ) && ! $order->get_date_paid() ) {",
+   "330: 'number' => petshop_get_avpn_number( $order_id ),",
+   "337: function petshop_generate_invoice_pdf( $order_id ) {",
+   "361: if ( $wc_order->get_meta( '_petshop_invoice_document_type' ) === 'invoice' && $wc_order->get_meta( '_petshop_avpn_number' ) && $wc_order->get_date_completed() ) {",
+   "362: $ps_doc_date = wp_date( 'Y-m-d', $wc_order->get_date_completed()->getTimestamp() );",
+   "364: // S1795: PVM s/f, išrašyta prieš apmokėjimą — data užfiksuota meta _petshop_sf_data; pergeneravus (ir užbaigus) nesikeičia.",
+   "365: if ( preg_match( '/^\\d{4}-\\d{2}-\\d{2}$/', (string) $wc_order->get_meta( '_petshop_sf_data' ) ) ) {",
+   "366: $ps_doc_date = (string) $wc_order->get_meta( '_petshop_sf_data' );",
+   "372: 'documentDate'  => $ps_doc_date,",
+   "563: add_action( 'woocommerce_order_status_completed', function( $order_id ) {",
+   "568: $order->update_meta_data( '_petshop_completed_pdf', $pdf_file );",
+   "574: if ( $email_id === 'customer_completed_order' && $order instanceof WC_Order ) {",
+   "575: $pdf_file = $order->get_meta( '_petshop_completed_pdf' );",
+   "584: if ( strpos( $template_name, 'customer-completed-order' ) !== false ) {",
+   "590: if ( strpos( $template_name, 'customer-completed-order' ) === false ) return;",
+   "802: add_filter( 'woocommerce_email_subject_customer_completed_order',  'petshop_fix_order_nr_in_subject', 10 );"
+  ],
   "gen_fn": true,
   "avpn_counter": "11560"
  },
- "v": "dep-084055",
+ "v": "dep-084234",
  "kurimas": 200,
- "sid": 7972,
+ "sid": 7973,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
