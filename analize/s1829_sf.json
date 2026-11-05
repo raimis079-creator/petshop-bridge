@@ -2,11 +2,249 @@
  "1": {
   "v": "S1829sf",
   "f": "1",
-  "ERR": "Call to undefined method Automattic\\WooCommerce\\Admin\\Overrides\\OrderRefund::get_order_number() @7"
+  "oid": 36909,
+  "o": {
+   "nr": "1465",
+   "st": "processing",
+   "pm": "Mokėjimas internetu",
+   "sukurta": "2026-10-18 20:21",
+   "apmoketa": "2026-10-18 20:23",
+   "suma": "34.12",
+   "imone": "",
+   "ship": "VENIPAK paštomatai/atsiėmimo punktai"
+  },
+  "meta": {
+   "_petshop_avpn_number": "",
+   "_petshop_iapv_number": "IAPV000522",
+   "_petshop_sf_data": "",
+   "_petshop_invoice_document_type": "invoice",
+   "_petshop_order_pdf": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/Isankstine-saskaita-IAPV000522.pdf",
+   "_order_stock_reduced": "1",
+   "_ps_av_reduced": "",
+   "_ps_dalys_issiusta": "{\"vf\":{\"laikas\":\"2026-10-20 00:36:09\",\"kas\":\"Venipak\",\"kanalas\":\"venipak\"}}",
+   "_ps_venipak_sekimas": "{\"V07267E1000487\":{\"k\":9,\"t\":\"Delivered\",\"e\":\"Delivered\",\"d\":\"2026-10-20 17:44:55\",\"v\":\"Klaip\\u0117dos \\u0160ilut\\u0117s pl. MAXIMA Venipak pa\\u0161tomatas\",\"n\":6,\"dalis\":\"vf\",\"tikr\":\"2026-10-20 18:07:37\"}}",
+   "_ps_venipak_tracking": "",
+   "_ps_dl_veiksmas": ""
+  },
+  "eil": [
+   [
+    "Vytintų skanėstų rinkinys šuniui — 8 rūšys (antiena, elniena, ėriena, jautiena)",
+    1,
+    35404,
+    "av",
+    "",
+    ""
+   ],
+   [
+    "Wanpy skanėstas šunims, vytinta antiena, 100 g",
+    1,
+    22302,
+    "vf",
+    "",
+    "vf"
+   ],
+   [
+    "Wanpy skanėstas šunims, vytinta elniena, 100g",
+    1,
+    22299,
+    "vf",
+    "",
+    "vf"
+   ],
+   [
+    "Wanpy skanėstas šunims, vytintos ėrienos juostelės, minkštos 100 g",
+    1,
+    22313,
+    "vf",
+    "",
+    "vf"
+   ],
+   [
+    "Wanpy skanėstai šunims, liofilizuotos jautienos kepenėlės,40g",
+    1,
+    26461,
+    "vf",
+    "",
+    "vf"
+   ],
+   [
+    "8in1 Meaty Treats šaltyje džiovintos antienos skanėstai šunims, 50 g",
+    1,
+    22421,
+    "vf",
+    "",
+    "vf"
+   ],
+   [
+    "Wanpy skanėstas šunims, vytintos ėrienos dešrelės,100g",
+    1,
+    22311,
+    "vf",
+    "",
+    "vf"
+   ],
+   [
+    "Wanpy skanėstas šunims, vytintos jautienos juostelės, 100 g",
+    1,
+    24629,
+    "vf",
+    "",
+    "vf"
+   ],
+   [
+    "Antos WILD šaltyje džiovinti skanėstai šunims, antiena, 85g",
+    1,
+    24407,
+    "vf",
+    "",
+    "vf"
+   ]
+  ],
+  "siuntos": [
+   {
+    "id": "465",
+    "uzsakymas_id": "36909",
+    "shipment_id": "shp_8fd6b82e2f4d3452",
+    "sandelis": "vf",
+    "vezejas": "venipak",
+    "siuntos_nr": "V07267E1000487",
+    "paketu_sk": "1",
+    "pristatymo_tipas": "pastomatas",
+    "sukurta_at": "2026-10-19 09:57:02",
+    "diena": "2026-10-19",
+    "tiekejui_issiusta_at": null,
+    "registruota_at": "2026-10-19 09:57:02",
+    "isvezta_at": "2026-10-19 21:36:09",
+    "pristatyta_at": "2026-10-20 05:23:10",
+    "atsiimta_at": null,
+    "svoris_deklaruotas_g": "675",
+    "kaina_vezejo_ct": "158",
+    "tarifo_id": "25",
+    "statusas": "pristatyta",
+    "problema_kodas": null,
+    "dienos_iki_pristatymo": "1",
+    "saltinis": "desk",
+    "testinis": "0",
+    "saltinis_aplinka": "prod",
+    "fakt_versija": "2",
+    "sandelio_saltinis": "desk",
+    "dydis": null
+   }
+  ],
+  "pastabos": [
+   [
+    "10-21 13:14",
+    "Dropship sargas: tiekėjui perduota 2026-10-19 12:58:06, terminas 10-21 12:58 (2 darbo d.) praėjo, užsakymas vis dar vykdomas. Įkelta į „Klausimus\" — patikrink pas tiekėją."
+   ],
+   [
+    "10-20 18:07",
+    "Venipak: siunta V07267E1000487 pristatyta (2026-10-20 17:44:55, Klaipėdos Šilutės pl. MAXIMA Venipak paštomatas)."
+   ],
+   [
+    "10-20 00:36",
+    "Užsakymo statusas pakeistas iš Vykdomas į Vykdomas."
+   ],
+   [
+    "10-20 00:36",
+    "Užbaigimas sustabdytas: registruotos 1 iš 2 siuntų. Užbaigti galima, kai visos siuntos registruotos (apėjimas ypatingam atvejui: meta _ps_uzbaigti_be_siuntu = 1)."
+   ],
+   [
+    "10-20 00:36",
+    "Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS."
+   ],
+   [
+    "10-19 12:58",
+    "Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarmas.lt, terra@petshop.lt"
+   ],
+   [
+    "10-19 12:57",
+    "Siuntos numeriai išsaugoti (VF): V07267E1000487"
+   ],
+   [
+    "10-19 12:57",
+    "Venipak registracija darbalaukyje (VF, manifestas 002): sėkminga"
+   ],
+   [
+    "10-18 21:43",
+    "Darbalaukis: pristatymo duomenys pakeisti (Inga): El. paštas: „mantasbumblauskis9@gmail.comn“ → „mantasbumblauskis9@gmail.com“. Klientui laiškas nesiųstas (Raimis 09-04: jei reikia — darbuotojas rašo pats)."
+   ],
+   [
+    "10-18 21:35",
+    "Surūšiuota (Inga): Vytintų skanėstų rinkinys šuniui — 8 rūš — Iš AV; Wanpy skanėstas šunims, vytinta antiena, — VF siunčia klientui; Wanpy skanėstas šunims, vytinta elniena, — VF siunčia klientui; Wanpy skanėstas šunims,"
+   ],
+   [
+    "10-18 21:33",
+    "Darbalaukis: „Antos WILD šaltyje džiovinti skanėstai šunims, antiena, 85g“ kelias VF veža į AV → VF siunčia klientui (Inga)."
+   ],
+   [
+    "10-18 21:33",
+    "Darbalaukis: „Wanpy skanėstas šunims, vytintos jautienos juostelės, 100 g“ kelias VF veža į AV → VF siunčia klientui (Inga)."
+   ],
+   [
+    "10-18 21:33",
+    "Darbalaukis: „Wanpy skanėstas šunims, vytintos ėrienos dešrelės,100g“ kelias VF veža į AV → VF siunčia klientui (Inga)."
+   ],
+   [
+    "10-18 21:33",
+    "Darbalaukis: „8in1 Meaty Treats šaltyje džiovintos antienos skanėstai šunims, 50 g“ kelias VF veža į AV → VF siunčia klientui (Inga)."
+   ],
+   [
+    "10-18 21:33",
+    "Darbalaukis: „Wanpy skanėstai šunims, liofilizuotos jautienos kepenėlės,40g“ kelias VF veža į AV → VF siunčia klientui (Inga)."
+   ],
+   [
+    "10-18 21:32",
+    "Darbalaukis: „Wanpy skanėstas šunims, vytintos ėrienos juostelės, minkštos 100 g“ kelias VF veža į AV → VF siunčia klientui (Inga)."
+   ],
+   [
+    "10-18 21:32",
+    "Darbalaukis: „Wanpy skanėstas šunims, vytinta elniena, 100g“ kelias VF veža į AV → VF siunčia klientui (Inga)."
+   ],
+   [
+    "10-18 21:32",
+    "Darbalaukis: „Wanpy skanėstas šunims, vytinta antiena, 100 g“ kelias VF veža į AV → VF siunčia klientui (Inga)."
+   ],
+   [
+    "10-18 20:23",
+    "Paysera: Naujo užsakymo kūrimo būsena"
+   ],
+   [
+    "10-18 20:23",
+    "Email \"Užsakymas vykdomas\" sent."
+   ],
+   [
+    "10-18 20:23",
+    "Email \"Naujas užsakymas\" sent."
+   ],
+   [
+    "10-18 20:23",
+    "Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas."
+   ],
+   [
+    "10-18 20:23",
+    "Faktai irasyti: 9 eilutes · pajamos 28,20 EUR (be PVM, po nuolaidu) · PVM 5,92 EUR · marza 6,89 EUR · kontribucija (be pristatymo) 6,04 EUR"
+   ],
+   [
+    "10-18 20:23",
+    "Paysera: Užsakymo būsena po apmokėjimo"
+   ],
+   [
+    "10-18 20:23",
+    "Paysera: Neapmokėto užsakymo būsena"
+   ]
+  ],
+  "base": [
+   "200: $doc_date_raw  = isset( $order['documentDate'] ) ? $order['documentDate'] : date( 'Y-m-d' );",
+   "220: $rc_data   = ! empty( $rc['data'] ) ? $rc['data'] : ( (string) $wc_order->get_meta( '_petshop_ppk_date' ) ? (string) $wc_order->get_meta( '_petshop_ppk_date' ) : $doc_date_raw );",
+   "382: <div class=\"ps-date\">Sąskaitos išrašymo data: <strong><?php echo esc_html( $doc_date_raw ); ?></strong></div>",
+   "587: <strong>Apmokėti iki:</strong> <?php echo esc_html( $ps_neapmoketa_sf ? date( 'Y-m-d', strtotime( $doc_date_raw . ' +14 days' ) ) : $doc_date_raw ); ?><br>"
+  ],
+  "gen_fn": true,
+  "avpn_counter": "11560"
  },
- "v": "dep-083937",
+ "v": "dep-084055",
  "kurimas": 200,
- "sid": 7971,
+ "sid": 7972,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
