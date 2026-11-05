@@ -1,0 +1,123 @@
+{
+ "1": {
+  "v": "S1828k",
+  "dir": {
+   "petshop-backups/2026/11": [],
+   "petshop-backups/2026/10": []
+  },
+  "state_files": [
+   [
+    "application_backups",
+    "11-03 21:20"
+   ],
+   [
+    "backups",
+    "11-05 02:00"
+   ]
+  ],
+  "wpcron": [
+   [
+    "wp_delete_temp_updater_backups",
+    "11-10 15:44"
+   ]
+  ],
+  "statusai_30d": [
+   {
+    "status": "wc-cancelled",
+    "n": "23",
+    "pask": "2026-11-02 09:49:39"
+   },
+   {
+    "status": "wc-completed",
+    "n": "298",
+    "pask": "2026-11-05 07:36:10"
+   },
+   {
+    "status": "wc-on-hold",
+    "n": "1",
+    "pask": "2026-11-04 10:37:27"
+   },
+   {
+    "status": "wc-processing",
+    "n": "10",
+    "pask": "2026-11-05 06:06:25"
+   }
+  ],
+  "completed_pask": [
+   {
+    "id": "37393",
+    "date_created_gmt": "2026-10-31 13:32:28",
+    "date_updated_gmt": "2026-11-05 07:36:10"
+   },
+   {
+    "id": "37391",
+    "date_created_gmt": "2026-10-31 06:35:39",
+    "date_updated_gmt": "2026-11-05 07:36:10"
+   },
+   {
+    "id": "37394",
+    "date_created_gmt": "2026-10-31 13:47:24",
+    "date_updated_gmt": "2026-11-05 07:36:09"
+   },
+   {
+    "id": "37491",
+    "date_created_gmt": "2026-11-02 22:05:09",
+    "date_updated_gmt": "2026-11-05 07:36:08"
+   },
+   {
+    "id": "37408",
+    "date_created_gmt": "2026-11-01 21:06:02",
+    "date_updated_gmt": "2026-11-05 07:36:08"
+   }
+  ],
+  "note_pask": [
+   {
+    "oid": "37393",
+    "comment_date": "2026-11-05 09:36:10",
+    "c": "Klientui išsiųsta „Užsakymas išsiųstas“ (jolita.grant@gmail.com): V07267E1000670"
+   },
+   {
+    "oid": "37393",
+    "comment_date": "2026-11-05 09:36:10",
+    "c": "Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas."
+   },
+   {
+    "oid": "37393",
+    "comment_date": "2026-11-05 09:36:10",
+    "c": "Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS."
+   },
+   {
+    "oid": "37394",
+    "comment_date": "2026-11-05 09:36:09",
+    "c": "Klientui išsiųsta „Užsakymas išsiųstas“ (birute@bazilius.lt): V07267E1000674, V07267E10006"
+   },
+   {
+    "oid": "37394",
+    "comment_date": "2026-11-05 09:36:09",
+    "c": "Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas."
+   },
+   {
+    "oid": "37394",
+    "comment_date": "2026-11-05 09:36:09",
+    "c": "Pažymėta išsiųsta darbalaukyje (Venipak, venipak). WC laiškas klientui: NESIŲSTAS."
+   },
+   {
+    "oid": "37408",
+    "comment_date": "2026-11-05 09:36:08",
+    "c": "Klientui išsiųsta „Užsakymas išsiųstas“ (gintasstudio@gmail.com): V07267E1000671"
+   },
+   {
+    "oid": "37408",
+    "comment_date": "2026-11-05 09:36:08",
+    "c": "Užsakymo statusas pakeistas iš Vykdomas į Įvykdytas."
+   }
+  ]
+ },
+ "v": "dep-080305",
+ "kurimas": 200,
+ "sid": 7968,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
