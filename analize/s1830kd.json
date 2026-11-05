@@ -1,0 +1,119 @@
+{
+ "v": "dep-095842",
+ "kurimas": 200,
+ "sid": 7986,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1830k",
+  "f": "D",
+  "rasta": 317,
+  "suma_buvo": 63936,
+  "suma_bus": 69563,
+  "priemokos_pries": [
+   {
+    "id": "1",
+    "vezejas": "venipak",
+    "tipas": "kuras",
+    "procentas": "25.7600",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "saskaita 07: (1,95-1,10)/1,10 x 1/3",
+    "sukurta_at": "2026-08-26 10:52:01"
+   },
+   {
+    "id": "2",
+    "vezejas": "venipak",
+    "tipas": "atlyginimas",
+    "procentas": "32.7300",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "saskaita 07: (1982-1000)/1000 x 1/3",
+    "sukurta_at": "2026-08-26 10:52:01"
+   },
+   {
+    "id": "3",
+    "vezejas": "venipak",
+    "tipas": "nuolaida",
+    "procentas": "15.0000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "apyvartos rezis 300-600 EUR",
+    "sukurta_at": "2026-08-26 10:52:01"
+   },
+   {
+    "id": "4",
+    "vezejas": "lp_express",
+    "tipas": "kuras",
+    "procentas": "5.4800",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 kuro priemoka",
+    "sukurta_at": "2026-08-26 10:52:01"
+   }
+  ],
+  "priemokos_po": [
+   {
+    "id": "1",
+    "vezejas": "venipak",
+    "tipas": "kuras",
+    "procentas": "25.7600",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "saskaita 07: (1,95-1,10)/1,10 x 1/3",
+    "sukurta_at": "2026-08-26 10:52:01"
+   },
+   {
+    "id": "2",
+    "vezejas": "venipak",
+    "tipas": "atlyginimas",
+    "procentas": "32.7300",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "saskaita 07: (1982-1000)/1000 x 1/3",
+    "sukurta_at": "2026-08-26 10:52:01"
+   },
+   {
+    "id": "3",
+    "vezejas": "venipak",
+    "tipas": "nuolaida",
+    "procentas": "15.0000",
+    "galioja_nuo": "2026-07-01",
+    "galioja_iki": null,
+    "pastaba": "apyvartos rezis 300-600 EUR",
+    "sukurta_at": "2026-08-26 10:52:01"
+   },
+   {
+    "id": "4",
+    "vezejas": "lp_express",
+    "tipas": "kuras",
+    "procentas": "5.4800",
+    "galioja_nuo": "2026-08-01",
+    "galioja_iki": null,
+    "pastaba": "S-2023/363 kuro priemoka",
+    "sukurta_at": "2026-08-26 10:52:01"
+   }
+  ],
+  "spalio_suma_po": "64869",
+  "naujos_kainos": {
+   "past": [
+    158,
+    25
+   ],
+   "kurj10": [
+    402,
+    28
+   ],
+   "kurj20": [
+    552,
+    29
+   ],
+   "rugs_past": [
+    158,
+    25
+   ]
+  }
+ }
+}
