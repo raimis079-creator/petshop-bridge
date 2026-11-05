@@ -15,6 +15,44 @@
     "v": "1"
    }
   ],
+  "log": [
+   {
+    "time": "2026-06-05 11:00:02",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-07-05 11:00:38",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-08-05 11:01:02",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-09-05 11:03:15",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-10-05 11:00:03",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-10-19 12:35:58",
+    "message": "Production mode ĮJUNGTAS (S1789, Raimio prašymu)"
+   },
+   {
+    "time": "2026-10-19 12:38:30",
+    "message": "2026-09: eksportas sekmingai. Uzsakymu: 202, Nauju klientu: 202"
+   },
+   {
+    "time": "2026-10-21 23:06:34",
+    "message": "2026-09: PATAISYTI pardavimai + pardavimai_sum issiusti (OK) S1793"
+   }
+  ],
+  "rec": false,
+  "kitos": {
+   "petshop_pragma_production_mode": "1"
+  },
   "cron": [
    [
     "petshop_pragma_monthly_export",
@@ -24,9 +62,9 @@
   "lenteles": [],
   "katalogai": []
  },
- "v": "dep-084939",
+ "v": "dep-085117",
  "kurimas": 200,
- "sid": 7975,
+ "sid": 7976,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
