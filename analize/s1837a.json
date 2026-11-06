@@ -1,0 +1,352 @@
+{
+ "1": {
+  "v": "S1837a",
+  "oid": 38258,
+  "uzs": {
+   "st": "processing",
+   "sukurta": "2026-11-06 21:19:48",
+   "suma": "62.70",
+   "pristatymas": "VENIPAK paštomatai/atsiėmimo punktai",
+   "via": "checkout"
+  },
+  "meta": {
+   "_ps_decided_at": "2026-11-06 21:19:49",
+   "_ps_faktas_irasytas": "2026-11-06 19:20:14",
+   "_ps_ga_cid": "506170890.1793829098",
+   "_ps_ga_sid": "1793990944",
+   "_ps_ga_sutikimas": "SM",
+   "_ps_ga4_mp_at": "2026-11-06 19:20:14",
+   "_ps_ga4_mp_cid": "506170890.1793829098",
+   "_ps_ga4_mp_kodas": "204",
+   "_ps_groups": "{\"vf\":{\"carrier\":\"venipak\",\"eilutes\":6,\"vienetai\":31}}",
+   "_ps_irenginys": "mobile",
+   "_ps_kanalai": "{\"sutikimas_statistika\":1,\"fiksuota_at\":\"2026-11-06 19:19:48\",\"modulis\":\"kanalai/1.3\",\"paskutinis\":{\"kanalas\":\"direct\",\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"\",\"laikas\":\"2026-11-06 19:19:48\"},\"pirmas\":{\"kanalas\":\"direct\",\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"\",\"laikas\":\"2026-11-06 19:19:48\"}}",
+   "_ps_kelias_kasoje": "2026-11-06 21:19:49",
+   "_ps_matyta": "2026-11-06 21:25:37 | Raimis",
+   "_ps_misrus_sprendimas": "{\"vf\":\"av\"}",
+   "_ps_misrus_sprestas": "2026-11-06 21:20:15 | auto",
+   "_ps_order_number": "1659",
+   "_ps_order_type": "DS",
+   "_ps_partijos_nurasyta": "2026-11-06 21:20:14",
+   "_ps_paskyra_priskirta": "1",
+   "_ps_refill_tracked": "yes",
+   "_ps_rusiuota": "auto",
+   "_ps_shipments": "1",
+   "_ps_similar_basis": "erl81_2_checkout",
+   "_ps_similar_optout": "0",
+   "_ps_stat_sesija": "cc970d3e8282d0caa7c69168d8481747"
+  },
+  "eilutes": [
+   {
+    "iid": 4966,
+    "pid": 35390,
+    "tipas": "mix-and-match",
+    "pav": "Konservų rinkinys katėms - kačiukams",
+    "qty": 1,
+    "total": "0",
+    "sandelis": "VF",
+    "sources": [
+     {
+      "source": "VF",
+      "stock_qty": null,
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2"
+     }
+    ],
+    "meta": {
+     "_mnm_container_size": "30",
+     "_mnm_config": "{\"18068\":{\"child_item_id\":1152,\"mnm_child_id\":18068,\"product_id\":18068,\"variation_id\":0,\"quantity\":6,\"variation\":[]},\"18071\":{\"child_item_id\":1153,\"mnm_child_id\":18071,\"product_id\":18071,\"variation_id\":0,\"quantity\":6,\"variation\":[]},\"21331\"",
+     "_mnm_cart_key": "8ae20dfd6c528de3fef0c5f45c8e9687",
+     "_per_product_pricing": "yes",
+     "_bundle_weight": "",
+     "_ps_savikaina_vnt": "0.0000",
+     "_ps_savikaina_saltinis": "mnm_konteineris",
+     "_ps_source": "av",
+     "_ps_carrier": "any",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-11-06 21:19:49",
+     "_ps_source_reason": "rinkinio dėžutė — kelią lemia komponentai (S1787)",
+     "_ps_kelias": "av"
+    },
+    "ar_dezute": true
+   },
+   {
+    "iid": 4967,
+    "pid": 18068,
+    "tipas": "simple",
+    "pav": "Josera Kitten Salmon begrūdis konservuotas pašaras jaunoms katėms su lašiša, 200 g",
+    "qty": 6,
+    "total": "10.363636",
+    "sandelis": "vf",
+    "sources": [
+     {
+      "source": "av",
+      "stock_qty": "11",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1"
+     },
+     {
+      "source": "vf",
+      "stock_qty": "52",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2"
+     }
+    ],
+    "meta": {
+     "_mnm_container": "8ae20dfd6c528de3fef0c5f45c8e9687",
+     "_mnm_item_needs_shipping": "no",
+     "_ps_savikaina_vnt": "1.4320",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.0900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "6",
+     "_ps_source_at": "2026-11-06 21:19:49",
+     "_ps_source_reason": "dropship pirma (AV turi 11, bet užsakymas ne mišrus): tiekėjas vf turi 52; AV turi 11, reikia 6",
+     "_reduced_stock": "6",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "i_av"
+    },
+    "ar_dezute": false
+   },
+   {
+    "iid": 4968,
+    "pid": 18071,
+    "tipas": "simple",
+    "pav": "Josera Kitten Duck begrūdis konservuotas pašaras jaunoms katėms su antiena, 200 g",
+    "qty": 6,
+    "total": "10.363636",
+    "sandelis": "vf",
+    "sources": [
+     {
+      "source": "av",
+      "stock_qty": "3",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1"
+     },
+     {
+      "source": "vf",
+      "stock_qty": "77",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2"
+     }
+    ],
+    "meta": {
+     "_mnm_container": "8ae20dfd6c528de3fef0c5f45c8e9687",
+     "_mnm_item_needs_shipping": "no",
+     "_ps_savikaina_vnt": "1.4320",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.0900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "6",
+     "_ps_source_at": "2026-11-06 21:19:49",
+     "_ps_source_reason": "dropship pirma: tiekėjas vf turi 71; AV turi 3, reikia 6 — neužtenka",
+     "_reduced_stock": "6",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "i_av"
+    },
+    "ar_dezute": false
+   },
+   {
+    "iid": 4969,
+    "pid": 21331,
+    "tipas": "simple",
+    "pav": "Josera Kitten Chicken begrūdis konservuotas pašaras jaunoms katėms su vištiena, 200 g",
+    "qty": 6,
+    "total": "10.363636",
+    "sandelis": "vf",
+    "sources": [
+     {
+      "source": "av",
+      "stock_qty": "6",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1"
+     },
+     {
+      "source": "vf",
+      "stock_qty": "177",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2"
+     }
+    ],
+    "meta": {
+     "_mnm_container": "8ae20dfd6c528de3fef0c5f45c8e9687",
+     "_mnm_item_needs_shipping": "no",
+     "_ps_savikaina_vnt": "1.4320",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.0900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "6",
+     "_ps_source_at": "2026-11-06 21:19:49",
+     "_ps_source_reason": "dropship pirma (AV turi 6, bet užsakymas ne mišrus): tiekėjas vf turi 171; AV turi 6, reikia 6",
+     "_reduced_stock": "6",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "i_av"
+    },
+    "ar_dezute": false
+   },
+   {
+    "iid": 4970,
+    "pid": 21671,
+    "tipas": "simple",
+    "pav": "Josera Kitten Beef begrūdis konservuotas pašaras jaunoms katėms su jautiena, 200 g",
+    "qty": 6,
+    "total": "10.363636",
+    "sandelis": "vf",
+    "sources": [
+     {
+      "source": "av",
+      "stock_qty": "5",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1"
+     },
+     {
+      "source": "vf",
+      "stock_qty": "37",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2"
+     }
+    ],
+    "meta": {
+     "_mnm_container": "8ae20dfd6c528de3fef0c5f45c8e9687",
+     "_mnm_item_needs_shipping": "no",
+     "_ps_savikaina_vnt": "1.4320",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.0900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "6",
+     "_ps_source_at": "2026-11-06 21:19:49",
+     "_ps_source_reason": "dropship pirma: tiekėjas vf turi 37; AV turi 5, reikia 6 — neužtenka",
+     "_reduced_stock": "6",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "i_av"
+    },
+    "ar_dezute": false
+   },
+   {
+    "iid": 4971,
+    "pid": 21677,
+    "tipas": "simple",
+    "pav": "Josera Kitten Turkey begrūdis konservuotas pašaras jaunoms katėms su kalakutiena, 200 g",
+    "qty": 6,
+    "total": "10.363636",
+    "sandelis": "vf",
+    "sources": [
+     {
+      "source": "av",
+      "stock_qty": "4",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "1"
+     },
+     {
+      "source": "vf",
+      "stock_qty": "47",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2"
+     }
+    ],
+    "meta": {
+     "_mnm_container": "8ae20dfd6c528de3fef0c5f45c8e9687",
+     "_mnm_item_needs_shipping": "no",
+     "_ps_savikaina_vnt": "1.4320",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "2.0900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "6",
+     "_ps_source_at": "2026-11-06 21:19:49",
+     "_ps_source_reason": "dropship pirma: tiekėjas vf turi 41; AV turi 4, reikia 6 — neužtenka",
+     "_reduced_stock": "6",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "i_av"
+    },
+    "ar_dezute": false
+   },
+   {
+    "iid": 4972,
+    "pid": 21856,
+    "tipas": "simple",
+    "pav": "Josera Kitten Duck konservuotas pašaras kačiukams su antiena, 85g",
+    "qty": 1,
+    "total": "0",
+    "sandelis": "vf",
+    "sources": [
+     {
+      "source": "av",
+      "stock_qty": null,
+      "is_active": "0",
+      "is_sellable": "1",
+      "priority": "1"
+     },
+     {
+      "source": "vf",
+      "stock_qty": "41",
+      "is_active": "1",
+      "is_sellable": "1",
+      "priority": "2"
+     }
+    ],
+    "meta": {
+     "_ps_dovana": "1",
+     "Dovana": "taip",
+     "_ps_savikaina_vnt": "1.1840",
+     "_ps_savikaina_saltinis": "pardavimai",
+     "_ps_kaina_atskirai_vnt": "1.7900",
+     "_ps_source": "vf",
+     "_ps_carrier": "venipak",
+     "_ps_source_qty": "1",
+     "_ps_source_at": "2026-11-06 21:19:49",
+     "_ps_source_reason": "dropship pirma: tiekėjas vf turi 41; AV turi 0, reikia 1 — neužtenka",
+     "_reduced_stock": "1",
+     "_ps_partijos_qty": "0",
+     "_ps_kelias": "i_av"
+    },
+    "ar_dezute": false
+   }
+  ],
+  "ar_misrus": false,
+  "pastabos": [
+   "11-06 21:19:49 [system] Stock hold of 90 minutes applied to: - Josera Kitten Salmon begrūdis konservuotas pašaras jaunoms katėms su lašiša, 200 g (JOS0765) &times; 6- Josera Kitten Duck begrūdis konservuotas pašaras jaunoms katėms su antiena, 200 g (JOS0763) &times; 6- Josera Kitten Chicken begrūdis konservuotas pašaras ja",
+   "11-06 21:19:49 [system] Svečio užsakymas priskirtas esamai paskyrai #5890 pagal el. paštą (S1690).",
+   "11-06 21:19:49 [system] Vykdymas: DS — VF 31 vnt (1 siunta(-os)) · dropship pirma",
+   "11-06 21:19:49 [system] Paysera: Neapmokėto užsakymo būsena",
+   "11-06 21:19:50 [system] Likutis sumažintas: Josera Kitten Salmon begrūdis konservuotas pašaras jaunoms katėms su lašiša, 200 g (63&rarr;57), Josera Kitten Duck begrūdis konservuotas pašaras jaunoms katėms su antiena, 200 g (74&rarr;68), Josera Kitten Chicken begrūdis konservuotas pašaras jaunoms katėms su vištiena, 200 g (",
+   "11-06 21:20:14 [system] Paysera: Užsakymo būsena po apmokėjimo",
+   "11-06 21:20:14 [system] Faktai irasyti: 7 eilutes · pajamos 51,80 EUR (be PVM, po nuolaidu) · PVM 10,90 EUR · marza 8,90 EUR · kontribucija (be pristatymo) 7,27 EUR",
+   "11-06 21:20:15 [system] Surūšiuota pati: Konservų rinkinys katėms - kačiukams — Iš AV; Josera Kitten Salmon begrūdis konservuot — VF veža į AV; Josera Kitten Duck begrūdis konservuotas — VF veža į AV; Josera Kitten Chicken begrūdis konservuo — VF veža į AV; Josera Kitten Beef begrūdis konservuotas — VF veža į AV; Josera Ki",
+   "11-06 21:20:15 [system] Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+   "11-06 21:20:16 [system] Email \"Naujas užsakymas\" sent.",
+   "11-06 21:20:16 [system] Email \"Užsakymas vykdomas\" sent.",
+   "11-06 21:20:17 [system] Paysera: Naujo užsakymo kūrimo būsena"
+  ],
+  "md5": {
+   "petshop-av-source.php": "7a051e2a8c5240b71223ddf5d54bb437",
+   "petshop-av-order.php": "7de1cbfadc03b8ae873ed7ad20f7a908",
+   "petshop-darbalaukis.php": "02028587d750fa2674fa74f39269179a"
+  },
+  "src_av_source": "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",
+  "src_av_order": "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",
+  "tiekimas": []
+ },
+ "v": "dep-203548",
+ "kurimas": 200,
+ "sid": 8012,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
