@@ -1,0 +1,34 @@
+{
+ "2": {
+  "v": "S1837g",
+  "f": "2",
+  "token": "ok",
+  "md5_naujas": "4e354eb8cfc3ae6727bcaaeb2d889ed1",
+  "md5_po": "4e354eb8cfc3ae6727bcaaeb2d889ed1",
+  "hb": {
+   "/": [
+    200,
+    0
+   ],
+   "/kasa/": [
+    302,
+    0
+   ],
+   "/wp-json/": [
+    200,
+    0
+   ],
+   "/wp-admin/admin.php?page=petshop-darbalaukis": [
+    302,
+    0
+   ]
+  }
+ },
+ "v": "dep-204630",
+ "kurimas": 200,
+ "sid": 8017,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
