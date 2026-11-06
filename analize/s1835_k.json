@@ -1,0 +1,123 @@
+{
+ "1": {
+  "v": "S1835k",
+  "dir": {
+   "petshop-backups/2026/11": [],
+   "petshop-backups/2026/10": []
+  },
+  "state_files": [
+   [
+    "application_backups",
+    "11-05 15:20"
+   ],
+   [
+    "backups",
+    "11-06 02:00"
+   ]
+  ],
+  "wpcron": [
+   [
+    "wp_delete_temp_updater_backups",
+    "11-10 15:44"
+   ]
+  ],
+  "statusai_30d": [
+   {
+    "status": "wc-cancelled",
+    "n": "21",
+    "pask": "2026-11-02 09:49:39"
+   },
+   {
+    "status": "wc-completed",
+    "n": "292",
+    "pask": "2026-11-06 07:06:20"
+   },
+   {
+    "status": "wc-on-hold",
+    "n": "1",
+    "pask": "2026-11-04 10:37:27"
+   },
+   {
+    "status": "wc-processing",
+    "n": "7",
+    "pask": "2026-11-06 05:37:07"
+   }
+  ],
+  "completed_pask": [
+   {
+    "id": "37491",
+    "date_created_gmt": "2026-11-02 22:05:09",
+    "date_updated_gmt": "2026-11-06 07:06:20"
+   },
+   {
+    "id": "37408",
+    "date_created_gmt": "2026-11-01 21:06:02",
+    "date_updated_gmt": "2026-11-06 06:06:20"
+   },
+   {
+    "id": "37394",
+    "date_created_gmt": "2026-10-31 13:47:24",
+    "date_updated_gmt": "2026-11-06 06:06:20"
+   },
+   {
+    "id": "38222",
+    "date_created_gmt": "2026-11-04 20:02:57",
+    "date_updated_gmt": "2026-11-06 06:06:19"
+   },
+   {
+    "id": "38219",
+    "date_created_gmt": "2026-11-04 13:33:58",
+    "date_updated_gmt": "2026-11-06 06:06:19"
+   }
+  ],
+  "note_pask": [
+   {
+    "oid": "38233",
+    "comment_date": "2026-11-06 07:23:08",
+    "c": "Siuntos numeriai išsaugoti (AV): V07267E1000688"
+   },
+   {
+    "oid": "38233",
+    "comment_date": "2026-11-06 07:23:08",
+    "c": "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga"
+   },
+   {
+    "oid": "38190",
+    "comment_date": "2026-11-06 07:23:08",
+    "c": "Siuntos numeriai išsaugoti (AV): V07267E1000687"
+   },
+   {
+    "oid": "38190",
+    "comment_date": "2026-11-06 07:23:08",
+    "c": "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga"
+   },
+   {
+    "oid": "38165",
+    "comment_date": "2026-11-06 07:23:08",
+    "c": "Siuntos numeriai išsaugoti (AV): V07267E1000686"
+   },
+   {
+    "oid": "38165",
+    "comment_date": "2026-11-06 07:23:08",
+    "c": "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga"
+   },
+   {
+    "oid": "38233",
+    "comment_date": "2026-11-06 07:22:35",
+    "c": "Darbalaukis: „QUATTRO begrūdis su antiena visų veislių suaugusių šunų pašaras 3kg“ kelias "
+   },
+   {
+    "oid": "38226",
+    "comment_date": "2026-11-06 07:21:28",
+    "c": "Darbalaukis: LP Express siunta CC129249914LT (dydis XS) užregistruota, perdavimas: Nuvešiu"
+   }
+  ]
+ },
+ "v": "dep-073541",
+ "kurimas": 200,
+ "sid": 8008,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
