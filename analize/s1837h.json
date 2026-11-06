@@ -1,0 +1,43 @@
+{
+ "1": {
+  "v": "S1837h",
+  "petshop-desk.php": [
+   "374: $sal = self::saltiniai( $o );",
+   "433: if ( in_array( 'av', self::saltiniai( $o ), true ) ) {",
+   "707: $sal = self::saltiniai( $oo );",
+   "986: foreach ( self::saltiniai( $o ) as $src ) {",
+   "1136: protected static function saltiniai( $order ) {",
+   "1152: protected static function vykdymas( $order ) {",
+   "1153: $s = self::saltiniai( $order );",
+   "1249: if ( 'processing' === $st && count( self::saltiniai( $order ) ) > 1 ) {",
+   "1498: $s   = self::saltiniai( $o );",
+   "1725: $sal = self::saltiniai( $o );",
+   "1743: 'vyk' => self::vykdymas( $o )[0],",
+   "2113: foreach ( self::saltiniai( $o ) as $x ) { $z .= self::zyme( $x ); }",
+   "2611: protected static function misrus_grupes( $o ) {",
+   "2666: $g   = self::misrus_grupes( $o );",
+   "2737: $g      = self::misrus_grupes( $o );",
+   "2872: list( $vyk, $siuntu ) = self::vykdymas( $o );",
+   "2874: $sal = self::saltiniai( $o );",
+   "3152: 'vykdymas'=> self::vykdymas( $o )[0],"
+  ],
+  "petshop-darbalaukis.php": [
+   "81: *    `neperduotos()` gerbtų planą — A7, A10); `_ps_groups/_ps_shipments/_ps_order_type` perskaičiuojami kaip",
+   "1776: $o->update_meta_data( '_ps_order_type', $tipas ); $o->update_meta_data( '_ps_groups', wp_json_encode( $grupes ) ); $o->update_meta_data( '_ps_shipments', count( $grupes ) );"
+  ],
+  "petshop-av-source.php": [
+   "230: public static function order_type( array $grupes ) {"
+  ],
+  "petshop-siuntu-laiskai.php": [
+   "349: if ( 'MIXED' !== $order->get_meta( '_ps_order_type' ) ) { return; }"
+  ],
+  "order_type": "\tpublic static function order_type( array $grupes ) {\n\t\t$n = count( $grupes );\n\t\tif ( 0 === $n ) { return 'REVIEW'; }\n\t\tif ( 1 === $n ) { return isset( $grupes['av'] ) ? 'MAIN' : 'DS'; }\n\t\treturn 'MIXED';\n\t}\n\n\t/** Patogumui: sugrupuoja WooCommerce užsakymą. */\n\tpublic static function group_order( $order ) {\n\t\t$order = is_numeric( $order ) ? wc_get_order( $order ) : $order;\n\t\tif ( ! $order ) { return []; }\n\t\t$eil = [];\n\t\tforeach ( $order->get_items() as $item_id => $item ) {\n\t\t\t$pid = $item->get_variation_id() ? $item->get_product_id() : $item->get_product_id();\n\t\t\t$eil[] = [ 'product_id' => $pid, 'qty' => $item->get_quantity(), 'raktas' => $item_id ];\n"
+ },
+ "v": "dep-205147",
+ "kurimas": 200,
+ "sid": 8020,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
