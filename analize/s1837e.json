@@ -1,0 +1,140 @@
+{
+ "1": {
+  "v": "S1837e",
+  "f": {
+   "petshop-av-admin.php": {
+    "md5": "2dfffb3f",
+    "n": 2,
+    "eil": [
+     "94: foreach ( $order->get_items() as $item ) {",
+     "95: $src = $item->get_meta( '_ps_source' );"
+    ]
+   },
+   "petshop-av-dropship.php": {
+    "md5": "4a6b0b56",
+    "n": 7,
+    "eil": [
+     "248: foreach ( $o->get_items() as $iid => $item ) {",
+     "249: $src = $item->get_meta( '_ps_source' );",
+     "300: foreach ( $order->get_items() as $item ) {",
+     "301: $s = $item->get_meta( '_ps_source' );",
+     "317: foreach ( $order->get_items() as $iid => $item ) {",
+     "318: $s = $item->get_meta( '_ps_source' );",
+     "357: $src = $item->get_meta( '_ps_source' );"
+    ]
+   },
+   "petshop-av-order.php": {
+    "md5": "7de1cbfa",
+    "n": 1,
+    "eil": [
+     "121: 'source'  => $item->get_meta( '_ps_source' ) ?: '?',"
+    ]
+   },
+   "petshop-av-reduce.php": {
+    "md5": "76d24aa4",
+    "n": 3,
+    "eil": [
+     "54: $src = $item->get_meta( '_ps_source' );",
+     "68: foreach ( $order->get_items() as $item_id => $item ) {",
+     "69: if ( 'av' !== $item->get_meta( '_ps_source' ) ) { continue; }"
+    ]
+   },
+   "petshop-av-sheets.php": {
+    "md5": "184f6eb2",
+    "n": 2,
+    "eil": [
+     "86: foreach ( $o->get_items() as $item ) {",
+     "87: if ( 'av' !== $item->get_meta( '_ps_source' ) ) { continue; }   // TIK AV"
+    ]
+   },
+   "petshop-av-tiekimas.php": {
+    "md5": "59cbf8f9",
+    "n": 7,
+    "eil": [
+     "305: $src = $item->get_meta( '_ps_source' );",
+     "1351: foreach ( $oo->get_items() as $iid => $it ) {",
+     "1352: $src = (string) $it->get_meta( '_ps_source' );",
+     "1370: foreach ( $oo->get_items() as $it ) {",
+     "1371: $s = (string) $it->get_meta( '_ps_source' ); if ( ! $s ) { continue; }",
+     "1431: foreach ( $o->get_items() as $iid => $it ) {",
+     "1432: $src = $it->get_meta( '_ps_source' );"
+    ]
+   },
+   "petshop-darbalaukis.php": {
+    "md5": "4e354eb8",
+    "n": 8,
+    "eil": [
+     "698: $src = self::d( 'eilutes_saltinis', $it );",
+     "699: $k   = (string) $it->get_meta( '_ps_kelias' );",
+     "1769: foreach ( $o->get_items() as $it ) {",
+     "1770: $s = (string) $it->get_meta( '_ps_source' ); if ( ! $s ) { continue; }",
+     "1783: foreach ( $o->get_items() as $it ) {",
+     "1784: $s = (string) $it->get_meta( '_ps_source' ); $k = (string) $it->get_meta( '_ps_kelias' );",
+     "3676: foreach ( $o->get_items() as $iid => $it ) {",
+     "3679: if ( ! $it->get_meta( '_ps_kelias' ) ) { $it->update_meta_data( '_ps_kelias', $e['k'] ); $it->save(); }"
+    ]
+   },
+   "petshop-desk.php": {
+    "md5": "411e6385",
+    "n": 16,
+    "eil": [
+     "1012: foreach ( $o->get_items() as $iid => $it ) {",
+     "1013: $src = self::eilutes_saltinis( $it );",
+     "1127: protected static function eilutes_saltinis( $item ) {",
+     "1128: $s = $item->get_meta( '_ps_source' );",
+     "1138: foreach ( $order->get_items() as $it ) {",
+     "1139: $s = self::eilutes_saltinis( $it );",
+     "1280: foreach ( $order->get_items() as $it ) {",
+     "1281: $ls = self::eilutes_saltinis( $it );",
+     "2613: foreach ( $o->get_items() as $iid => $it ) {",
+     "2614: $src = self::eilutes_saltinis( $it );",
+     "2637: foreach ( $o->get_items() as $iid => $it ) {",
+     "2638: $src = self::eilutes_saltinis( $it );",
+     "2913: foreach ( $o->get_items() as $it ) {",
+     "2916: $ls  = self::eilutes_saltinis( $it );",
+     "3058: foreach ( $o->get_items() as $iid => $it ) {",
+     "3060: $s   = self::eilutes_saltinis( $it );"
+    ]
+   },
+   "petshop-gavimo-perrusiavimas.php": {
+    "md5": "d7f60f74",
+    "n": 1,
+    "eil": [
+     "74: $src = (string) $it->get_meta( '_ps_source' );"
+    ]
+   },
+   "petshop-kelio-fiksavimas.php": {
+    "md5": "7aee1c41",
+    "n": 4,
+    "eil": [
+     "52: foreach ( $order->get_items() as $it ) {",
+     "53: if ( '' === (string) $it->get_meta( '_ps_source' ) ) { return true; }",
+     "87: foreach ( $order->get_items() as $it ) {",
+     "88: $s = (string) $it->get_meta( '_ps_source' );"
+    ]
+   },
+   "petshop-partijos.php": {
+    "md5": "fd88b6be",
+    "n": 2,
+    "eil": [
+     "622: if ( '' !== (string) $item->get_meta( '_ps_source' ) ) { $item->update_meta_data( '_ps_partijos_qty', 0 ); $item->save(); }",
+     "678: $src = (string) $item->get_meta( '_ps_source' );"
+    ]
+   },
+   "petshop-uzsakymu-ivykiai.php": {
+    "md5": "1bd24c70",
+    "n": 1,
+    "eil": [
+     "351: 'src'   => (string) $it->get_meta( '_ps_source' ),"
+    ]
+   }
+  }
+ },
+ "v": "dep-204814",
+ "kurimas": 200,
+ "sid": 8018,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
