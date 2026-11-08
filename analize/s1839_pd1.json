@@ -1,0 +1,36 @@
+{
+ "1": {
+  "v": "S1839pd",
+  "f": "1",
+  "md5": [
+   true,
+   true,
+   "8206e4794e6acff187164d3e32276b98",
+   "ec98ddcd67ec99783e43db439467cbad"
+  ],
+  "old_cnt": 1,
+  "ark": true,
+  "bak_yra": [
+   false,
+   false
+  ],
+  "base_date": [
+   "170: $logo_src = 'data:' . $ps_mime[ $ps_ext ] . ';base64,' . base64_encode( $ps_bin );",
+   "200: $doc_date_raw  = isset( $order['documentDate'] ) ? $order['documentDate'] : date( 'Y-m-d' );",
+   "260: <div class=\"ps-date\">Data: <strong><?php echo esc_html( $rc_data ); ?></strong></div>",
+   "382: <div class=\"ps-date\">Sąskaitos išrašymo data: <strong><?php echo esc_html( $doc_date_raw ); ?></strong></div>",
+   "530: <strong>Kreditinė data:</strong> <?php echo esc_html( ( $maybe_parent && $maybe_order && $maybe_order->get_meta( '_petshop_kravpn_date' ) ) ? $maybe_order->get_meta( '_petshop_kravpn_date' ) : date( '",
+   "534: <strong>Užsakymo data:</strong> <?php"
+  ],
+  "avpn_viso": 571,
+  "newp_len": 34815,
+  "newp_md5": "fbd34cb6653e6d505a9f0dd733346dbc"
+ },
+ "v": "dep-180849",
+ "kurimas": 200,
+ "sid": 8043,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
