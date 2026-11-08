@@ -1,0 +1,118 @@
+{
+ "1": {
+  "v": "S1839k",
+  "dir": {
+   "petshop-backups/2026/11": [],
+   "petshop-backups/2026/10": []
+  },
+  "state_files": [
+   [
+    "application_backups",
+    "11-08 03:20"
+   ],
+   [
+    "backups",
+    "11-08 02:00"
+   ]
+  ],
+  "wpcron": [
+   [
+    "wp_delete_temp_updater_backups",
+    "11-10 15:44"
+   ]
+  ],
+  "statusai_30d": [
+   {
+    "status": "wc-cancelled",
+    "n": "22",
+    "pask": "2026-11-07 08:49:48"
+   },
+   {
+    "status": "wc-completed",
+    "n": "275",
+    "pask": "2026-11-08 03:36:06"
+   },
+   {
+    "status": "wc-processing",
+    "n": "20",
+    "pask": "2026-11-08 08:03:07"
+   }
+  ],
+  "completed_pask": [
+   {
+    "id": "38223",
+    "date_created_gmt": "2026-11-05 04:17:36",
+    "date_updated_gmt": "2026-11-08 03:36:06"
+   },
+   {
+    "id": "38189",
+    "date_created_gmt": "2026-11-03 14:18:25",
+    "date_updated_gmt": "2026-11-07 19:36:07"
+   },
+   {
+    "id": "38256",
+    "date_created_gmt": "2026-11-06 17:57:23",
+    "date_updated_gmt": "2026-11-07 19:06:41"
+   },
+   {
+    "id": "38226",
+    "date_created_gmt": "2026-11-05 16:16:19",
+    "date_updated_gmt": "2026-11-07 19:06:41"
+   },
+   {
+    "id": "37370",
+    "date_created_gmt": "2026-10-28 09:53:48",
+    "date_updated_gmt": "2026-11-07 18:36:05"
+   }
+  ],
+  "note_pask": [
+   {
+    "oid": "38336",
+    "comment_date": "2026-11-08 10:03:07",
+    "c": "Paysera: Naujo užsakymo kūrimo būsena"
+   },
+   {
+    "oid": "38336",
+    "comment_date": "2026-11-08 10:03:05",
+    "c": "Email \"Užsakymas vykdomas\" sent."
+   },
+   {
+    "oid": "38336",
+    "comment_date": "2026-11-08 10:03:05",
+    "c": "Email \"Naujas užsakymas\" sent."
+   },
+   {
+    "oid": "38336",
+    "comment_date": "2026-11-08 10:03:04",
+    "c": "Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėta"
+   },
+   {
+    "oid": "38336",
+    "comment_date": "2026-11-08 10:03:04",
+    "c": "Surūšiuota pati: 2 vnt. QUATTRO Sterilised su paukštiena  — Quattro siunčia klientui"
+   },
+   {
+    "oid": "38336",
+    "comment_date": "2026-11-08 10:03:04",
+    "c": "Faktai irasyti: 1 eilutes · pajamos 64,12 EUR (be PVM, po nuolaidu) · PVM 13,47 EUR · marz"
+   },
+   {
+    "oid": "38336",
+    "comment_date": "2026-11-08 10:03:04",
+    "c": "Paysera: Užsakymo būsena po apmokėjimo"
+   },
+   {
+    "oid": "38336",
+    "comment_date": "2026-11-08 10:00:15",
+    "c": "Daugiau=pigiau: pack \"2 vnt. QUATTRO Sterilised su paukštiena sausas sterilizuotų kačių pa"
+   }
+  ]
+ },
+ "v": "dep-094513",
+ "kurimas": 200,
+ "sid": 8036,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
