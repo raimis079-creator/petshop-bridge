@@ -1,0 +1,58 @@
+{
+ "6": {
+  "v": "S1839pd",
+  "f": "6",
+  "v2": true,
+  "md5": [
+   "fbd34cb6653e6d505a9f0dd733346dbc",
+   "e16bbb58349d7df01364653540b15f29"
+  ],
+  "cron": {
+   "export": "2026-12-05 10:00",
+   "check": "2026-12-04 10:00"
+  },
+  "report": "Pragma 2026-11\ns/f 53, su PVM 2 175,76 €, PVM 377,62 €, be PVM 1 798,14 €; pavėluotų 0, anuliuotų 2, įspėjimų 0\nAVPN nuo AVPN011504 iki AVPN011571\n\nKLAIDOS (0):\n- nėra\n\nĮSPĖJIMAI (0):\n- nėra\n\nAnuliuotos (išrašyta, bet užsakymas atšauktas – į failus neįtraukta):\n- AVPN011430 2026-10-23 #1522 33,16 €\n- AVPN011550 2026-11-04 #1638 51,69 €\n",
+  "sum": {
+   "n": 53,
+   "su_pvm": 2175.76,
+   "pvm": 377.62,
+   "be_pvm": 1798.14
+  },
+  "senos": [
+   {
+    "0": "1657",
+    "pdf": "2026-11-07",
+    "uzbaigta": "2026-11-07",
+    "apmok": "2026-11-06"
+   },
+   {
+    "0": "1649",
+    "pdf": "2026-11-06",
+    "uzbaigta": "2026-11-06",
+    "apmok": "2026-11-05"
+   },
+   {
+    "0": "1648",
+    "pdf": "2026-11-07",
+    "uzbaigta": "2026-11-07",
+    "apmok": "2026-11-05"
+   },
+   {
+    "0": "1646",
+    "pdf": "2026-11-05",
+    "uzbaigta": "2026-11-05",
+    "apmok": "2026-11-05"
+   }
+  ],
+  "fatal": [
+   "[08-Nov-2026 10:12:40 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wpdb.php on line 2329"
+  ]
+ },
+ "v": "dep-181640",
+ "kurimas": 200,
+ "sid": 8047,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
