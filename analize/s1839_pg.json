@@ -1,0 +1,316 @@
+{
+ "1": {
+  "v": "S1839pg",
+  "f": "1",
+  "failas": [
+   true,
+   "8206e4794e6acff187164d3e32276b98",
+   "2026-10-21 21:08",
+   22860
+  ],
+  "log": [
+   {
+    "time": "2026-05-26 19:30:22",
+    "message": "2026-05: nera AVPN saskaitu"
+   },
+   {
+    "time": "2026-05-26 19:31:32",
+    "message": "2026-05: eksportas sekmingai. Uzsakymu: 1, Nauju klientu: 0"
+   },
+   {
+    "time": "2026-06-05 11:00:02",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-07-05 11:00:38",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-08-05 11:01:02",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-09-05 11:03:15",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-10-05 11:00:03",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-10-19 12:35:58",
+    "message": "Production mode ĮJUNGTAS (S1789, Raimio prašymu)"
+   },
+   {
+    "time": "2026-10-19 12:38:30",
+    "message": "2026-09: eksportas sekmingai. Uzsakymu: 202, Nauju klientu: 202"
+   },
+   {
+    "time": "2026-10-21 23:06:34",
+    "message": "2026-09: PATAISYTI pardavimai + pardavimai_sum issiusti (OK) S1793"
+   },
+   {
+    "time": "2026-11-05 10:58:44",
+    "message": "2026-10: eksportas sekmingai. Uzsakymu: 314, Nauju klientu: 275"
+   },
+   {
+    "time": "2026-11-05 11:05:08",
+    "message": "2026-10: eksportas ISSIUSTAS dalimis 3/3 laiskai (S1829 rankinis po 11-05 cron gedimo). Uzsakymu: 314, Nauju klientu: 275"
+   }
+  ],
+  "known_n": 452,
+  "next": "2026-12-05 10:00",
+  "mem": [
+   "768M",
+   "40M",
+   "256M"
+  ],
+  "tz": [
+   "UTC",
+   "Europe/Vilnius"
+  ],
+  "kodas": [
+   "/plugins/petshop-pragma/petshop-pragma.php:483: $avpn = petshop_get_avpn_number( $o->get_id() );",
+   "/plugins/petshop-pragma/petshop-pragma.php:485: $o->update_meta_data( '_petshop_invoice_document_type', 'invoice' );",
+   "/mu-plugins/petshop-darbalaukis.php:394: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'auto_rusiuoti' ), 100, 1 );",
+   "/mu-plugins/petshop-darbalaukis.php:395: add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'auto_rusiuoti' ), 100, 1 );",
+   "/mu-plugins/petshop-darbalaukis.php:410: add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'pakartotinis_apmoketas' ), 110, 1 );",
+   "/mu-plugins/petshop-darbalaukis.php:411: add_action( 'woocommerce_payment_complete', array( __CLASS__, 'pakartotinis_apmoketas' ), 110, 1 );",
+   "/mu-plugins/petshop-darbalaukis.php:1700: $o->update_meta_data( '_petshop_invoice_document_type', 'proforma' ); $o->save();",
+   "/mu-plugins/petshop-darbalaukis.php:1702: finally { $o = wc_get_order( $id ); if ( '' === $buvo_t ) { $o->delete_meta_data( '_petshop_invoice_document_type' ); } else { $o->update_meta_data( '_petshop_invoice_document_type', $buvo_t ); } if ( ! empty( $pdf ) ) {",
+   "/themes/flatsome-child/woocommerce-delivery-notes/base.php:40: ? petshop_get_avpn_number( $parent_id )",
+   "/themes/flatsome-child/woocommerce-delivery-notes/base.php:52: // Anksčiau petshop_get_avpn_number() buvo kviečiama besąlygiškai ir degino AVPN neapmokėtiems (IAPV) — pvz. #35902.",
+   "/themes/flatsome-child/woocommerce-delivery-notes/base.php:72: ? petshop_get_avpn_number( $order_id )",
+   "/themes/flatsome-child/functions.php:288: function petshop_get_avpn_number( $order_id ) {",
+   "/themes/flatsome-child/functions.php:299: // Žyma _ps_pvm_sf_neapmoketa=1 dedama rankiniu būdu (bridge), data fiksuojama _petshop_sf_data.",
+   "/themes/flatsome-child/functions.php:330: 'number' => petshop_get_avpn_number( $order_id ),",
+   "/themes/flatsome-child/functions.php:364: // S1795: PVM s/f, išrašyta prieš apmokėjimą — data užfiksuota meta _petshop_sf_data; pergeneravus (ir užbaigus) nesikeičia.",
+   "/themes/flatsome-child/functions.php:365: if ( preg_match( '/^\\d{4}-\\d{2}-\\d{2}$/', (string) $wc_order->get_meta( '_petshop_sf_data' ) ) ) {",
+   "/themes/flatsome-child/functions.php:366: $ps_doc_date = (string) $wc_order->get_meta( '_petshop_sf_data' );",
+   "/themes/flatsome-child/functions.php:443: $order->update_meta_data( '_petshop_invoice_document_type', $doc_type );",
+   "/themes/flatsome-child/functions.php:534: add_action( 'woocommerce_order_status_changed', function( $order_id, $old_status, $new_status, $order ) {",
+   "/themes/flatsome-child/functions.php:540: $order->update_meta_data( '_petshop_invoice_document_type', $doc_type );",
+   "/themes/flatsome-child/functions.php:563: add_action( 'woocommerce_order_status_completed', function( $order_id ) {"
+  ]
+ },
+ "2": {
+  "v": "S1839pg",
+  "f": "2",
+  "2026-09": {
+   "visi": 204,
+   "su_avpn": 202,
+   "statusai": {
+    "completed": 202,
+    "cancelled": 2
+   },
+   "eksporte": 202,
+   "praleisti": [],
+   "avpn_ne_completed": [],
+   "suma_klaida_n": 84,
+   "suma_klaida_eur": 190.23,
+   "nuolaida_n": 0,
+   "fee_n": 10,
+   "pvm_ne21": [
+    [
+     "35868",
+     0.83,
+     0.17
+    ]
+   ],
+   "sf_kita_men": [],
+   "pvz": [
+    {
+     "0": "1242",
+     "failas_be_pvm": 7.81,
+     "tikra_be_pvm": 9.59,
+     "siunta_be_pvm": 1.78,
+     "nuolaida": 0,
+     "fee": 0
+    },
+    {
+     "0": "1241",
+     "failas_be_pvm": 11.23,
+     "tikra_be_pvm": 14.53,
+     "siunta_be_pvm": 3.3,
+     "nuolaida": 0,
+     "fee": 0
+    },
+    {
+     "0": "1240",
+     "failas_be_pvm": 15.74,
+     "tikra_be_pvm": 17.52,
+     "siunta_be_pvm": 1.78,
+     "nuolaida": 0,
+     "fee": 0
+    },
+    {
+     "0": "1239",
+     "failas_be_pvm": 42.22,
+     "tikra_be_pvm": 45.52,
+     "siunta_be_pvm": 3.3,
+     "nuolaida": 0,
+     "fee": 0
+    },
+    {
+     "0": "1233",
+     "failas_be_pvm": 16.64,
+     "tikra_be_pvm": 18.42,
+     "siunta_be_pvm": 1.78,
+     "nuolaida": 0,
+     "fee": 0
+    }
+   ]
+  },
+  "2026-10": {
+   "visi": 335,
+   "su_avpn": 315,
+   "statusai": {
+    "completed": 314,
+    "cancelled": 21
+   },
+   "eksporte": 314,
+   "praleisti": [],
+   "avpn_ne_completed": [
+    [
+     "1522",
+     "cancelled",
+     "10-23 11:17",
+     null,
+     null,
+     "AVPN011430",
+     "invoice",
+     "2026-10-23",
+     33.16
+    ]
+   ],
+   "suma_klaida_n": 137,
+   "suma_klaida_eur": 288.74,
+   "nuolaida_n": 2,
+   "fee_n": 11,
+   "pvm_ne21": [],
+   "sf_kita_men": [],
+   "pvz": [
+    {
+     "0": "1593",
+     "failas_be_pvm": 110.39,
+     "tikra_be_pvm": 113.69,
+     "siunta_be_pvm": 3.3,
+     "nuolaida": 0,
+     "fee": 0
+    },
+    {
+     "0": "1591",
+     "failas_be_pvm": 21.89,
+     "tikra_be_pvm": 23.67,
+     "siunta_be_pvm": 1.78,
+     "nuolaida": 0,
+     "fee": 0
+    },
+    {
+     "0": "1586",
+     "failas_be_pvm": 19.75,
+     "tikra_be_pvm": 21.53,
+     "siunta_be_pvm": 1.78,
+     "nuolaida": 0,
+     "fee": 0
+    },
+    {
+     "0": "1584",
+     "failas_be_pvm": 19.17,
+     "tikra_be_pvm": 20.95,
+     "siunta_be_pvm": 1.78,
+     "nuolaida": 0,
+     "fee": 0
+    },
+    {
+     "0": "1579",
+     "failas_be_pvm": 8.53,
+     "tikra_be_pvm": 10.31,
+     "siunta_be_pvm": 1.78,
+     "nuolaida": 0,
+     "fee": 0
+    }
+   ]
+  },
+  "2026-11": {
+   "visi": 74,
+   "su_avpn": 54,
+   "statusai": {
+    "processing": 20,
+    "completed": 53,
+    "cancelled": 1
+   },
+   "eksporte": 53,
+   "praleisti": [],
+   "avpn_ne_completed": [
+    [
+     "1638",
+     "cancelled",
+     "11-04 09:56",
+     null,
+     null,
+     "AVPN011550",
+     "invoice",
+     "2026-11-04",
+     51.69
+    ]
+   ],
+   "suma_klaida_n": 21,
+   "suma_klaida_eur": 38.45,
+   "nuolaida_n": 1,
+   "fee_n": 0,
+   "pvm_ne21": [],
+   "sf_kita_men": [],
+   "pvz": [
+    {
+     "0": "1657",
+     "failas_be_pvm": 16.44,
+     "tikra_be_pvm": 18.22,
+     "siunta_be_pvm": 1.78,
+     "nuolaida": 0,
+     "fee": 0
+    },
+    {
+     "0": "1649",
+     "failas_be_pvm": 19.83,
+     "tikra_be_pvm": 21.61,
+     "siunta_be_pvm": 1.78,
+     "nuolaida": 0,
+     "fee": 0
+    },
+    {
+     "0": "1648",
+     "failas_be_pvm": 15.69,
+     "tikra_be_pvm": 17.47,
+     "siunta_be_pvm": 1.78,
+     "nuolaida": 0,
+     "fee": 0
+    },
+    {
+     "0": "1646",
+     "failas_be_pvm": 18.14,
+     "tikra_be_pvm": 19.92,
+     "siunta_be_pvm": 1.78,
+     "nuolaida": 0,
+     "fee": 0
+    },
+    {
+     "0": "1636",
+     "failas_be_pvm": 17.44,
+     "tikra_be_pvm": 19.22,
+     "siunta_be_pvm": 1.78,
+     "nuolaida": 0,
+     "fee": 0
+    }
+   ]
+  },
+  "spalio_completed_po_eksporto": []
+ },
+ "v": "dep-100500",
+ "kurimas": 200,
+ "sid": 8038,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
