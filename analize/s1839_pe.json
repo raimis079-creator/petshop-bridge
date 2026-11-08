@@ -1,0 +1,22 @@
+{
+ "1": {
+  "v": "S1839pe",
+  "f": "1",
+  "md5": "d67bba3b1dee2e20d8099db2e92cf71f",
+  "http": {
+   "/": 200,
+   "/parduotuve/": 200
+  },
+  "cron": [
+   "2026-12-04 10:00",
+   "2026-12-05 10:00"
+  ]
+ },
+ "v": "dep-182338",
+ "kurimas": 200,
+ "sid": 8048,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
