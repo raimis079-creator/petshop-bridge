@@ -1,0 +1,25 @@
+{
+ "4": {
+  "v": "S1839pd",
+  "f": "4",
+  "bak": [
+   "8206e4794e6acff187164d3e32276b98",
+   "ec98ddcd67ec99783e43db439467cbad"
+  ],
+  "plugin_md5": "fbd34cb6653e6d505a9f0dd733346dbc",
+  "fn_md5": "e16bbb58349d7df01364653540b15f29",
+  "http": {
+   "/": 200,
+   "/kasa/": 302,
+   "/parduotuve/": 200,
+   "/wp-admin/admin-ajax.php": 400
+  }
+ },
+ "v": "dep-181434",
+ "kurimas": 200,
+ "sid": 8046,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
