@@ -1,0 +1,211 @@
+{
+ "1": {
+  "v": "S1840f",
+  "cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "laiko_stulp": "scheduled_at",
+  "pask_sent": [
+   {
+    "flow": "back_in_stock",
+    "pask": "2026-10-22 10:04:19",
+    "d7": "0"
+   },
+   {
+    "flow": "browse_abandoned",
+    "pask": "2026-10-30 13:38:49",
+    "d7": "0"
+   },
+   {
+    "flow": "cart_abandoned",
+    "pask": "2026-11-07 11:23:47",
+    "d7": "6"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "pask": "2026-11-08 11:28:45",
+    "d7": "6"
+   },
+   {
+    "flow": "consent_changed",
+    "pask": "2026-11-07 19:13:42",
+    "d7": "3"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "pask": "2026-11-06 19:38:44",
+    "d7": "15"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "pask": "2026-11-08 08:43:40",
+    "d7": "66"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "pask": "2026-11-06 16:09:09",
+    "d7": "50"
+   },
+   {
+    "flow": "ps_s1749_testas",
+    "pask": "2026-10-03 20:07:16",
+    "d7": "0"
+   },
+   {
+    "flow": "refill_due",
+    "pask": "2026-11-08 08:04:37",
+    "d7": "29"
+   },
+   {
+    "flow": "win_back",
+    "pask": "2026-11-08 05:33:39",
+    "d7": "3"
+   }
+  ],
+  "pending": [
+   {
+    "flow": "post_purchase_14d",
+    "n": "123",
+    "mn": "2026-11-09 09:06:28",
+    "mx": "2026-11-20 08:06:21",
+    "jau_laikas": "7"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "n": "66",
+    "mn": "2026-11-10 10:06:34",
+    "mx": "2026-11-13 08:06:21",
+    "jau_laikas": "0"
+   }
+  ],
+  "pp_sent_d": [
+   {
+    "d": "2026-11-01",
+    "flow": "post_purchase_2d",
+    "n": "3"
+   },
+   {
+    "d": "2026-11-02",
+    "flow": "post_purchase_14d",
+    "n": "7"
+   },
+   {
+    "d": "2026-11-02",
+    "flow": "post_purchase_7d",
+    "n": "15"
+   },
+   {
+    "d": "2026-11-03",
+    "flow": "post_purchase_14d",
+    "n": "6"
+   },
+   {
+    "d": "2026-11-03",
+    "flow": "post_purchase_7d",
+    "n": "13"
+   },
+   {
+    "d": "2026-11-04",
+    "flow": "post_purchase_14d",
+    "n": "2"
+   },
+   {
+    "d": "2026-11-04",
+    "flow": "post_purchase_7d",
+    "n": "14"
+   },
+   {
+    "d": "2026-11-05",
+    "flow": "post_purchase_14d",
+    "n": "4"
+   },
+   {
+    "d": "2026-11-05",
+    "flow": "post_purchase_2d",
+    "n": "35"
+   },
+   {
+    "d": "2026-11-05",
+    "flow": "post_purchase_7d",
+    "n": "8"
+   },
+   {
+    "d": "2026-11-06",
+    "flow": "post_purchase_14d",
+    "n": "2"
+   },
+   {
+    "d": "2026-11-06",
+    "flow": "post_purchase_2d",
+    "n": "15"
+   },
+   {
+    "d": "2026-11-06",
+    "flow": "post_purchase_7d",
+    "n": "7"
+   },
+   {
+    "d": "2026-11-07",
+    "flow": "post_purchase_2d",
+    "n": "13"
+   },
+   {
+    "d": "2026-11-08",
+    "flow": "post_purchase_2d",
+    "n": "3"
+   }
+  ],
+  "now": "2026-11-09 09:58:43",
+  "db_now": "2026-11-09 09:58:43",
+  "cron": [
+   [
+    "ps_email_dispatch_cron",
+    "11-09 10:03"
+   ],
+   [
+    "ps_post_purchase_check",
+    "11-09 10:39"
+   ],
+   [
+    "ps_velavimo_laiskai",
+    "11-09 14:00"
+   ],
+   [
+    "wpforms_email_summaries_cron",
+    "11-16 00:00"
+   ]
+  ]
+ },
+ "v": "dep-075709",
+ "kurimas": 200,
+ "sid": 8059,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
