@@ -1,0 +1,321 @@
+{
+ "1": {
+  "v": "S1840g",
+  "wpai_nust": {
+   "highlight_limit": 10000,
+   "max_input_time": -1,
+   "max_execution_time": 0,
+   "cron_job_key": "v",
+   "chunk_size": 32,
+   "pmxi_file_download_timeout": 5,
+   "session_mode": "default",
+   "large_feed_limit": 1000,
+   "cron_processing_time_limit": 59,
+   "cron_sleep": ""
+  },
+  "imp": {
+   "2": {
+    "records_per_request": "10",
+    "is_selective_hashing": "1",
+    "chuncking": "1",
+    "is_fast_mode": "0",
+    "create_new_records": "1",
+    "is_update_title": "0",
+    "is_update_content": "0",
+    "is_update_images": "0",
+    "update_all_data": "no",
+    "is_update_custom_fields": "1",
+    "is_update_categories": "0",
+    "is_update_attributes": "0",
+    "is_keep_former_posts": "no",
+    "duplicate_matching": "manual",
+    "is_delete_missing": "0",
+    "is_update_missing_cf": "0"
+   },
+   "3": {
+    "records_per_request": "20",
+    "is_selective_hashing": "1",
+    "chuncking": "1",
+    "is_fast_mode": "0",
+    "create_new_records": "0",
+    "is_update_title": "0",
+    "is_update_content": "0",
+    "is_update_images": "0",
+    "update_all_data": "no",
+    "is_update_custom_fields": "1",
+    "is_update_categories": "0",
+    "is_update_attributes": "0",
+    "is_keep_former_posts": "no",
+    "duplicate_matching": "manual",
+    "is_delete_missing": "0",
+    "is_update_missing_cf": "0"
+   },
+   "5": {
+    "records_per_request": "1",
+    "is_selective_hashing": "1",
+    "chuncking": "1",
+    "is_fast_mode": "0",
+    "create_new_records": "1",
+    "is_update_title": "0",
+    "is_update_content": "0",
+    "is_update_images": "0",
+    "update_all_data": "no",
+    "is_update_custom_fields": "1",
+    "is_update_categories": "0",
+    "is_update_attributes": "0",
+    "is_keep_former_posts": "no",
+    "duplicate_matching": "auto",
+    "is_delete_missing": "0",
+    "is_update_missing_cf": "0"
+   },
+   "7": {
+    "records_per_request": "20",
+    "is_selective_hashing": "1",
+    "chuncking": "1",
+    "is_fast_mode": "0",
+    "create_new_records": "0",
+    "is_update_title": "0",
+    "is_update_content": "0",
+    "is_update_images": "0",
+    "update_all_data": "no",
+    "is_update_custom_fields": "1",
+    "is_update_categories": "0",
+    "is_update_attributes": "0",
+    "is_keep_former_posts": "no",
+    "duplicate_matching": "manual",
+    "is_delete_missing": "0",
+    "is_update_missing_cf": "0"
+   }
+  },
+  "hist": {
+   "2": [
+    {
+     "id": "11077",
+     "time_run": "129660",
+     "s": "0 Produktai created 149 updated 981 skipped",
+     "date": "2026-11-07 16:01:02"
+    },
+    {
+     "id": "11076",
+     "time_run": null,
+     "s": "triggered by cron",
+     "date": "2026-11-07 16:00:03"
+    },
+    {
+     "id": "10593",
+     "time_run": "388819",
+     "s": "import finished & cron un-triggered<br>3 Produktai created 192 updated 2549 skipped",
+     "date": "2026-11-02 16:01:02"
+    },
+    {
+     "id": "10592",
+     "time_run": null,
+     "s": "triggered by cron",
+     "date": "2026-11-02 16:00:02"
+    }
+   ],
+   "3": [
+    {
+     "id": "11240",
+     "time_run": "397",
+     "s": "import finished & cron un-triggered<br>0 Produktai created 49 updated 2716 skipped",
+     "date": "2026-11-09 08:01:17"
+    },
+    {
+     "id": "11239",
+     "time_run": null,
+     "s": "triggered by cron",
+     "date": "2026-11-09 08:00:03"
+    },
+    {
+     "id": "11236",
+     "time_run": "494",
+     "s": "import finished & cron un-triggered<br>0 Produktai created 88 updated 2677 skipped",
+     "date": "2026-11-09 07:01:19"
+    },
+    {
+     "id": "11235",
+     "time_run": null,
+     "s": "triggered by cron",
+     "date": "2026-11-09 07:00:03"
+    }
+   ],
+   "5": [
+    {
+     "id": "11226",
+     "time_run": "52",
+     "s": "import finished & cron un-triggered<br>0 Produktai created 69 updated 2550 skipped",
+     "date": "2026-11-09 04:31:03"
+    },
+    {
+     "id": "11225",
+     "time_run": null,
+     "s": "triggered by cron",
+     "date": "2026-11-09 04:30:02"
+    },
+    {
+     "id": "11130",
+     "time_run": "37",
+     "s": "import finished & cron un-triggered<br>0 Produktai created 12 updated 2607 skipped",
+     "date": "2026-11-08 04:31:02"
+    },
+    {
+     "id": "11129",
+     "time_run": null,
+     "s": "triggered by cron",
+     "date": "2026-11-08 04:30:02"
+    },
+    {
+     "id": "11032",
+     "time_run": "422",
+     "s": "import finished & cron un-triggered<br>14 Produktai created 1 updated 2604 skipped",
+     "date": "2026-11-07 04:31:02"
+    }
+   ],
+   "7": [
+    {
+     "id": "11238",
+     "time_run": "410",
+     "s": "import finished & cron un-triggered<br>0 Produktai created 98 updated 2521 skipped",
+     "date": "2026-11-09 07:16:02"
+    },
+    {
+     "id": "11237",
+     "time_run": null,
+     "s": "triggered by cron",
+     "date": "2026-11-09 07:15:02"
+    },
+    {
+     "id": "11234",
+     "time_run": "413",
+     "s": "import finished & cron un-triggered<br>0 Produktai created 6 updated 2613 skipped",
+     "date": "2026-11-09 06:16:02"
+    },
+    {
+     "id": "11233",
+     "time_run": null,
+     "s": "triggered by cron",
+     "date": "2026-11-09 06:15:02"
+    }
+   ]
+  },
+  "logdir": true,
+  "log": {
+   "10593": "nera",
+   "11077": "nera"
+  },
+  "mem_fatal_n": 35,
+  "mem_fatal": [
+   "[11-Oct-2026 04:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/abstracts/abstract-wc-data.php on line 744",
+   "[11-Oct-2026 04:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-fatal-error-handler.php on line 76",
+   "[15-Oct-2026 02:15:06 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/abstracts/abstract-wc-data.php on line 744",
+   "[15-Oct-2026 02:15:06 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-fatal-error-handler.php on line 76",
+   "[15-Oct-2026 03:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/abstracts/abstract-wc-data.php on line 744",
+   "[15-Oct-2026 03:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-fatal-error-handler.php on line 76",
+   "[15-Oct-2026 03:31:55 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 1900544 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-all-import-pro/actions/wp_loaded_99.php on line 52",
+   "[19-Oct-2026 08:36:12 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 69632 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce-delivery-notes/vendor/phenx/php-font-lib/src/FontLib/T",
+   "[19-Oct-2026 18:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wpdb.php on line 2328",
+   "[19-Oct-2026 18:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 65536 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php on line 341",
+   "[21-Oct-2026 08:15:53 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 20480 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/data-stores/class-wc-product-data-store-cpt.p",
+   "[21-Oct-2026 08:15:53 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 65536 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-hook.php on line 341",
+   "[22-Oct-2026 18:15:34 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php on line 655",
+   "[22-Oct-2026 18:15:34 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/query.php on line 770",
+   "[27-Oct-2026 10:44:01 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 4198400 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php on line 630",
+   "[27-Oct-2026 11:30:37 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 4198400 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php on line 630",
+   "[29-Oct-2026 07:15:11 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-term-query.php on line 1176",
+   "[30-Oct-2026 16:15:12 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php on line 655",
+   "[30-Oct-2026 16:15:12 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-mail-smtp/wp-mail-smtp.php on line 42",
+   "[31-Oct-2026 20:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php on line 655",
+   "[31-Oct-2026 20:15:09 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/sodium_compat/autoload-php7.php on line 27",
+   "[03-Nov-2026 13:57:56 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 4096 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php on line 630",
+   "[05-Nov-2026 08:00:05 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/PHPMailer/SMTP.php on line 793",
+   "[07-Nov-2026 04:32:45 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wp-image-editor-gd.php on line 118",
+   "[08-Nov-2026 10:12:40 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wpdb.php on line 2329"
+  ],
+  "logs": [
+   [
+    "Nov-2026.tar.gz",
+    0.3,
+    "11-09 05:12"
+   ],
+   [
+    "Nov-2026.tar.gz.1",
+    1.1,
+    "11-08 22:11"
+   ],
+   [
+    "Nov-2026.tar.gz.10",
+    0.4,
+    "11-04 05:47"
+   ],
+   [
+    "Nov-2026.tar.gz.11",
+    1.2,
+    "11-03 22:10"
+   ],
+   [
+    "Nov-2026.tar.gz.12",
+    0.5,
+    "11-03 05:48"
+   ],
+   [
+    "Nov-2026.tar.gz.2",
+    0.5,
+    "11-08 05:57"
+   ],
+   [
+    "Nov-2026.tar.gz.3",
+    0.9,
+    "11-07 22:10"
+   ],
+   [
+    "Nov-2026.tar.gz.4",
+    0.6,
+    "11-07 05:04"
+   ],
+   [
+    "Nov-2026.tar.gz.5",
+    1.4,
+    "11-06 22:11"
+   ],
+   [
+    "Nov-2026.tar.gz.6",
+    0.4,
+    "11-06 02:58"
+   ],
+   [
+    "Nov-2026.tar.gz.7",
+    1.4,
+    "11-05 22:10"
+   ],
+   [
+    "Nov-2026.tar.gz.8",
+    0.2,
+    "11-05 02:05"
+   ],
+   [
+    "Nov-2026.tar.gz.9",
+    1,
+    "11-04 22:10"
+   ],
+   [
+    "php_error.log",
+    7.2,
+    "11-09 07:41"
+   ]
+  ],
+  "php": {
+   "mem": "512M",
+   "met": "200",
+   "wp_mem": "40M",
+   "wp_max": "256M"
+  }
+ },
+ "v": "dep-080939",
+ "kurimas": 200,
+ "sid": 8060,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
