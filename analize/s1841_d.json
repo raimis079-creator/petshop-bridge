@@ -1,0 +1,63 @@
+{
+ "v": "dep-131639",
+ "kurimas": 200,
+ "sid": 8075,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1841d",
+  "f": {
+   "petshop-seo.php": {
+    "sig": [
+     "class Petshop_SEO",
+     "public static function init()",
+     "public static function rest()",
+     "public static function cron_reg()",
+     "private static function rytoj( $h )",
+     "public static function t( $k )",
+     "public static function lenteles()",
+     "public static function sa()",
+     "public static function token()",
+     "public static function api( $path, $body = null )",
+     "public static function query( $nuo, $iki, $dims, $limit = 25000, $start = 0, $extra = array()",
+     "public static function kelias_is_url( $url )",
+     "public static function yra_turinys( $url )",
+     "public static function traukti_dienas( $nuo, $iki )",
+     "public static function traukti_url_d( $nuo, $iki )",
+     "private static function irasyti_url( $vals )",
+     "public static function atgal_turinys( $nuo, $iki )",
+     "public static function traukti_svoris()",
+     "public static function gsc_sitemaps()",
+     "public static function cron_gsc()",
+     "public static function log_404()",
+     "public static function qa_irasas( $tipas, $tikrinta, $ok, $klaidos, $santrauka )",
+     "public static function qa_redirect( $limit = 15, $offset = null, $top_n = 40, $cap_s = 60 )",
+     "public static function qa_sitemap()",
+     "public static function qa_cwv( $urls )",
+     "public static function cwv_urls()",
+     "public static function cron_qa()",
+     "public static function cron_cwv()",
+     "public static function paskutinis( $tipas )",
+     "public static function sumos( $nuo, $iki )",
+     "private static function pct( $a, $b )",
+     "public static function sviesoforas()",
+     "public static function top_url( $n = 50 )",
+     "public static function top_404( $dienos = 7, $n = 40 )",
+     "public static function meniu()",
+     "private static function lempa( $s )",
+     "private static function d( $v )",
+     "private static function n( $v )",
+     "public static function puslapis()"
+    ],
+    "ctx": [
+     " * GSC API: SA JSON option `ps_gsc_sa` (autoload no), scope webmasters.readonly, property sc-domain:petshop.lt.",
+     "\t\t$c   = $b64( json_encode( array( 'iss' => $sa['client_email'], 'scope' => 'https://www.googleapis.com/auth/webmasters.readonly',",
+     "\t\t$url = 'https://searchconsole.googleapis.com/webmasters/v3/sites/' . rawurlencode( self::PROPERTY ) . $path;",
+     "\t\treturn self::api( '/searchAnalytics/query', array_merge( array( 'startDate' => $nuo, 'endDate' => $iki,"
+    ]
+   }
+  }
+ }
+}
