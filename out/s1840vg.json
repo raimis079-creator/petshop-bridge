@@ -1,0 +1,54 @@
+{
+ "1": {
+  "v": "S1840vg",
+  "pagal_busena": [
+   {
+    "st": "draft",
+    "stock": "instock",
+    "n": "6"
+   },
+   {
+    "st": "draft",
+    "stock": "outofstock",
+    "n": "11"
+   },
+   {
+    "st": "publish",
+    "stock": "instock",
+    "n": "108"
+   },
+   {
+    "st": "publish",
+    "stock": "outofstock",
+    "n": "10"
+   }
+  ],
+  "variacijos_publ": [],
+  "sandelis_publ": [
+   {
+    "sandelis": "-",
+    "n": "35"
+   },
+   {
+    "sandelis": "av",
+    "n": "10"
+   },
+   {
+    "sandelis": "vf",
+    "n": "73"
+   }
+  ],
+  "pardavimai_90d": {
+   "uzs": "161",
+   "vnt": "319",
+   "net": "6078.41"
+  }
+ },
+ "v": "dep-111640",
+ "kurimas": 200,
+ "sid": 8067,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
