@@ -1,0 +1,232 @@
+{
+ "1": {
+  "v": "S1841c",
+  "glob": [
+   "petshop-feeding-calc-rest.php",
+   "petshop-vf-feed.php"
+  ],
+  "file": "petshop-feeding-calc-rest.php",
+  "n": 320,
+  "kodas": {
+   "27": "\t\tif ( ! isset( $cd['activity_level'] ) ) continue;",
+   "28": "\t\t$code = (string) $cd['activity_level']; if ( $code==='' || isset($seen[$code]) ) continue;",
+   "143": "\t$price = ( $p && function_exists('wc_get_price_to_display') ) ? (float) wc_get_price_to_display( $p ) : 0.0;"
+  },
+  "feed_n": 2221,
+  "truksta_n": 902,
+  "truksta_tipai": {
+   "simple|dp|kaina": 872,
+   "mix-and-match|-|kaina": 28,
+   "simple|-|kaina": 2
+  },
+  "truksta_pvz": [
+   {
+    "ID": "34942",
+    "t": "Konservų dėžė, 800 g. Be vištienos",
+    "typ": "mix-and-match",
+    "pr": "20.34",
+    "dp": null,
+    "sd": "AV"
+   },
+   {
+    "ID": "34944",
+    "t": "Konservų dėžė, 400 g. Be vištienos",
+    "typ": "mix-and-match",
+    "pr": "13.2",
+    "dp": null,
+    "sd": "AV"
+   },
+   {
+    "ID": "34945",
+    "t": "Konservų dėžė 300/400 g – Monoproteinas",
+    "typ": "mix-and-match",
+    "pr": "14.7",
+    "dp": null,
+    "sd": "AV"
+   },
+   {
+    "ID": "34947",
+    "t": "Konservų rinkinys katėms – Išrankioms, tunas",
+    "typ": "mix-and-match",
+    "pr": "10.74",
+    "dp": null,
+    "sd": "AV"
+   },
+   {
+    "ID": "35840",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, alavijo / aloe vera kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "31.99",
+    "dp": "17707",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35841",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, arbūzų kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "35.29",
+    "dp": "17704",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35842",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, citrinų kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "31.99",
+    "dp": "17701",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35843",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, kavos kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "31.99",
+    "dp": "17698",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35844",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, kokoso kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "35.29",
+    "dp": "17695",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35845",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, ledų kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "31.99",
+    "dp": "17692",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35846",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, levandų kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "33.79",
+    "dp": "17689",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35847",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, melionų kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "31.99",
+    "dp": "17686",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35848",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, obuolių kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "31.99",
+    "dp": "17683",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35849",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, obuolių su cinamonu kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "35.29",
+    "dp": "17680",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35850",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, persikų kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "31.99",
+    "dp": "17677",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35851",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, pienelio kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "31.99",
+    "dp": "17674",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35852",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, pušies kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "31.99",
+    "dp": "17671",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35853",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, su aktyvuota anglimi, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "31.99",
+    "dp": "17668",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35854",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, vanilės kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "31.99",
+    "dp": "17665",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35855",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, vyšnių žiedų kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "31.99",
+    "dp": "17662",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "35856",
+    "t": "8 VNT. - Kraikas katėms TOFU BeloCat, žaliosios arbatos kvapo, 6 l (2,5 kg), 2 mm granulės",
+    "typ": "simple",
+    "pr": "31.99",
+    "dp": "17659",
+    "sd": "belcor_tofu"
+   },
+   {
+    "ID": "16270",
+    "t": "Sausas maistas išrankioms katėms su vištiena, Ontario Exigent, 1 kg",
+    "typ": "simple",
+    "pr": "7.59",
+    "dp": null,
+    "sd": "av"
+   },
+   {
+    "ID": "18036",
+    "t": "Josera Mini Chicken&Rice 1 kg - sausas maistas suaugusiems mažų veislių šunims su paukštiena",
+    "typ": "simple",
+    "pr": "4.09",
+    "dp": null,
+    "sd": "av"
+   },
+   {
+    "ID": "34938",
+    "t": "Skanėstų dėžutė katei",
+    "typ": "mix-and-match",
+    "pr": "4.17",
+    "dp": null,
+    "sd": "AV"
+   },
+   {
+    "ID": "35392",
+    "t": "Jautriam mažam šuniui — Exclusion Hypo Mini kiauliena: 2 kg sausas + 4 konservai",
+    "typ": "mix-and-match",
+    "pr": "32.45",
+    "dp": null,
+    "sd": null
+   }
+  ]
+ },
+ "v": "dep-113416",
+ "kurimas": 200,
+ "sid": 8070,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
