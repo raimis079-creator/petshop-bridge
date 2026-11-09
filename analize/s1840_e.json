@@ -1,0 +1,66 @@
+{
+ "1": {
+  "v": "S1840e",
+  "imp2_hist": [
+   {
+    "id": "11077",
+    "time_run": "129660",
+    "s": "0 Produktai created 149 updated 981 skipped",
+    "date": "2026-11-07 16:01:02"
+   },
+   {
+    "id": "11076",
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-11-07 16:00:03"
+   },
+   {
+    "id": "10593",
+    "time_run": "388819",
+    "s": "import finished & cron un-triggered<br>3 Produktai created 192 updated 2549 skipped",
+    "date": "2026-11-02 16:01:02"
+   },
+   {
+    "id": "10592",
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-11-02 16:00:02"
+   }
+  ],
+  "acc": {
+   "Nov-2026.tar.gz": {
+    "09 06 trigger 200": 1,
+    "09 06 processing 200": 1
+   },
+   "Nov-2026.tar.gz.1": {
+    "08 18 trigger 200": 1,
+    "08 18 processing 200": 1
+   },
+   "Nov-2026.tar.gz.2": {
+    "08 06 trigger 200": 1,
+    "08 06 processing 200": 1
+   },
+   "Nov-2026.tar.gz.3": {
+    "07 18 trigger 200": 1,
+    "07 18 processing 200": 1
+   },
+   "Nov-2026.tar.gz.4": {
+    "07 06 trigger 200": 1,
+    "07 06 processing 200": 1
+   },
+   "Nov-2026.tar.gz.5": {
+    "06 06 trigger 200": 1,
+    "06 06 processing 200": 1,
+    "06 18 trigger 200": 1,
+    "06 18 processing 200": 1
+   }
+  }
+ },
+ "v": "dep-075416",
+ "kurimas": 200,
+ "sid": 8058,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
