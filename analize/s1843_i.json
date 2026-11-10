@@ -1,0 +1,286 @@
+{
+ "1": {
+  "v": "S1843i",
+  "pagal_buda": [
+   {
+    "b": "LP Express",
+    "n": "29",
+    "be_pk": "22",
+    "be_adr": "22",
+    "pk5": "6"
+   },
+   {
+    "b": "VENIPAK Kurjeris",
+    "n": "70",
+    "be_pk": "0",
+    "be_adr": "0",
+    "pk5": "68"
+   },
+   {
+    "b": "VENIPAK paštomatai/atsiėmimo punktai",
+    "n": "510",
+    "be_pk": "407",
+    "be_adr": "399",
+    "pk5": "90"
+   }
+  ],
+  "lp_uzs": [
+   {
+    "id": "36601",
+    "d": "2026-10-01 03:45:08",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "36647",
+    "d": "2026-10-03 22:14:16",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "36666",
+    "d": "2026-10-04 17:26:29",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "36682",
+    "d": "2026-10-05 15:19:08",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "36743",
+    "d": "2026-10-08 12:12:05",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "36836",
+    "d": "2026-10-12 17:05:44",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "36850",
+    "d": "2026-10-13 12:53:13",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "36908",
+    "d": "2026-10-18 12:13:11",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "37057",
+    "d": "2026-10-25 03:56:47",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "37060",
+    "d": "2026-10-25 09:45:18",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "37062",
+    "d": "2026-10-25 11:33:51",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "37385",
+    "d": "2026-10-30 13:59:14",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "37388",
+    "d": "2026-10-30 21:09:18",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "37404",
+    "d": "2026-11-01 13:52:30",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "37405",
+    "d": "2026-11-01 15:54:12",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "37411",
+    "d": "2026-11-02 05:56:05",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "38208",
+    "d": "2026-11-03 20:20:32",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "38226",
+    "d": "2026-11-05 16:16:19",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   },
+   {
+    "id": "38256",
+    "d": "2026-11-06 17:57:23",
+    "pk": "0",
+    "adr": "0",
+    "s_pk": "0"
+   }
+  ],
+  "laukai": {
+   "billing_postcode": {
+    "required": true,
+    "class": "form-row-wide address-field",
+    "label": "Pašto kodas"
+   },
+   "billing_address_1": {
+    "required": true,
+    "class": "address-field form-row-first",
+    "label": "Gatvė, namo numeris"
+   },
+   "billing_city": {
+    "required": true,
+    "class": "form-row-wide address-field",
+    "label": "Miestas"
+   }
+  },
+  "mu_hits": [
+   "petshop-darbalaukis.php:2632: $cp = trim( $o->get_billing_city() . ( $o->get_billing_postcode() ? ', ' . $o->get_billing_postcode() : '' ) );",
+   "petshop-darbalaukis.php:2913: $rates = WC_Tax::find_shipping_rates( array( 'country' => 'LT', 'state' => '', 'postcode' => '', 'city' => '', 'tax_class' => '' ) ); $rate = 0.0; foreach ( (array) $ra",
+   "petshop-darbalaukis.php:2988: $out[] = array( 'vardas' => $c->get_billing_first_name() ? $c->get_billing_first_name() : $c->get_first_name(), 'pavarde' => $c->get_billing_last_name() ? $c->get_bil",
+   "petshop-darbalaukis.php:3063: $adr = array( 'first_name' => $kl['vardas'], 'last_name' => $kl['pavarde'] ?? '', 'company' => $kl['imone'] ?? '', 'address_1' => $kl['adresas'] ?? '', 'address_2' =>",
+   "petshop-darbalaukis.php:3347: $cp = trim( $o->get_billing_city() . ( $o->get_billing_postcode() ? ', ' . $o->get_billing_postcode() : '' ) );",
+   "petshop-faktai.php:496: 'pasto_kodas'              => mb_substr( (string) ( $order->get_shipping_postcode() ?: $order->get_billing_postcode() ), 0, 3 ),",
+   "petshop-prenumerata-katalogas.php:324: 'postcode'   => $order->get_shipping_postcode() ?: $order->get_billing_postcode(),",
+   "petshop-prenumerata-paskyra.php:197: . ($c->get_shipping_postcode() ?: $c->get_billing_postcode()) . ' '",
+   "petshop-prenumerata-paskyra.php:271: 'postcode'   => $cust->get_shipping_postcode() ?: $cust->get_billing_postcode(),",
+   "petshop-prenumerata.php:535: 'destination' => array('country' => $o->get_shipping_country() ?: 'LT', 'state' => $o->get_shipping_state(), 'postcode' => $o->get_shipping_postcode(),",
+   "petshop-prenumerata.php:636: 'postcode' => $lauk('postcode', 'get_billing_postcode'), 'country' => 'LT', 'phone' => $lauk('phone', 'get_billing_phone'),",
+   "petshop-prenumeratos-langas.php:568: foreach (array('first_name' => 'Vardas', 'last_name' => 'Pavardė', 'address_1' => 'Adresas', 'city' => 'Miestas', 'postcode' => 'Pašto kodas', 'phone' => 'Telefonas"
+  ],
+  "snippets": [
+   {
+    "id": "582",
+    "name": "Petshop LP Terminalu Svorio Riba v1 (29.90kg)",
+    "active": "1"
+   },
+   {
+    "id": "7196",
+    "name": "TEMP PS dep-170157",
+    "active": "0"
+   },
+   {
+    "id": "7282",
+    "name": "TEMP PS dep-084436",
+    "active": "0"
+   },
+   {
+    "id": "7283",
+    "name": "TEMP PS dep-090000",
+    "active": "0"
+   },
+   {
+    "id": "7290",
+    "name": "TEMP PS dep-094534",
+    "active": "0"
+   },
+   {
+    "id": "7324",
+    "name": "TEMP PS dep-205418",
+    "active": "0"
+   },
+   {
+    "id": "7944",
+    "name": "TEMP PS dep-102328",
+    "active": "0"
+   },
+   {
+    "id": "8087",
+    "name": "TEMP PS dep-074641",
+    "active": "0"
+   },
+   {
+    "id": "8088",
+    "name": "TEMP PS dep-074921",
+    "active": "0"
+   },
+   {
+    "id": "8089",
+    "name": "TEMP PS dep-075057",
+    "active": "0"
+   },
+   {
+    "id": "8090",
+    "name": "TEMP PS dep-080327",
+    "active": "0"
+   },
+   {
+    "id": "8091",
+    "name": "TEMP PS dep-080619",
+    "active": "0"
+   },
+   {
+    "id": "8092",
+    "name": "TEMP PS dep-080807",
+    "active": "1"
+   }
+  ],
+  "lp_settings": [
+   {
+    "option_name": "lpsettings_validate_shipping_before_checkout",
+    "v": "yes"
+   },
+   {
+    "option_name": "woocommerce_woo_lithuaniapost_lpexpress_terminal_12_settings",
+    "v": "a:20:{s:5:\"title\";s:10:\"LP Express\";s:4:\"plan\";s:8:\"TERMINAL\";s:11:\"parcel_type\";s:3:\"H2T\";s:13:\"delivery_time\";s:0:\"\";s"
+   },
+   {
+    "option_name": "woocommerce_woo_lithuaniapost_lpexpress_terminal_13_settings",
+    "v": "a:20:{s:5:\"title\";s:10:\"LP Express\";s:4:\"plan\";s:8:\"TERMINAL\";s:11:\"parcel_type\";s:3:\"H2T\";s:13:\"delivery_time\";s:0:\"\";s"
+   },
+   {
+    "option_name": "woocommerce_woo_lithuaniapost_lpexpress_terminal_15_settings",
+    "v": "a:28:{s:5:\"title\";s:19:\"LP Express kurjeris\";s:4:\"plan\";s:5:\"HANDS\";s:11:\"parcel_type\";s:3:\"H2H\";s:13:\"delivery_time\";s:"
+   }
+  ]
+ },
+ "v": "dep-080807",
+ "kurimas": 200,
+ "sid": 8092,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
