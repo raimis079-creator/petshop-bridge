@@ -1,0 +1,85 @@
+{
+ "1": {
+  "v": "S1843h",
+  "exp": "2026-11-11 08:07",
+  "keys": [
+   "ps_kanalai",
+   "ps_gclid",
+   "ps_cart_id",
+   "petshop_gtm_atc_queue",
+   "chosen_payment_method",
+   "customer",
+   "removed_cart_contents"
+  ],
+  "cust": {
+   "shipping_first_name": {
+    "len": 5,
+    "forma": "Aaaaa"
+   },
+   "shipping_last_name": {
+    "len": 10,
+    "forma": "Aaaaaaaaaa"
+   },
+   "shipping_address_1": {
+    "len": 0,
+    "forma": ""
+   },
+   "shipping_city": {
+    "len": 0,
+    "forma": ""
+   },
+   "shipping_postcode": {
+    "len": 0,
+    "forma": ""
+   },
+   "shipping_country": "LT",
+   "first_name": {
+    "len": 5,
+    "forma": "Aaaaa"
+   },
+   "last_name": {
+    "len": 10,
+    "forma": "Aaaaaaaaaa"
+   },
+   "address_1": {
+    "len": 0,
+    "forma": ""
+   },
+   "city": {
+    "len": 0,
+    "forma": ""
+   },
+   "postcode": {
+    "len": 0,
+    "forma": ""
+   },
+   "country": "LT",
+   "phone": {
+    "len": 12,
+    "forma": "+99999999999"
+   }
+  },
+  "chosen": null,
+  "terminal": null,
+  "cart": null,
+  "notices": null,
+  "uzs_su_email": [],
+  "paskyra": 0,
+  "laiskai": [],
+  "preke": {
+   "n": "PESS biologiniai lašiukai nuo parazitų katėms ir šunims, sveriantiems iki 10 kg",
+   "kaina": "4.46",
+   "svoris": "0.05",
+   "stock": 31,
+   "src": ""
+  },
+  "lp_opt_validate": "n/a"
+ },
+ "v": "dep-080619",
+ "kurimas": 200,
+ "sid": 8091,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
