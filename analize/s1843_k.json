@@ -1,0 +1,118 @@
+{
+ "1": {
+  "v": "S1843k",
+  "dir": {
+   "petshop-backups/2026/11": [],
+   "petshop-backups/2026/10": []
+  },
+  "state_files": [
+   [
+    "application_backups",
+    "11-10 03:20"
+   ],
+   [
+    "backups",
+    "11-10 02:00"
+   ]
+  ],
+  "wpcron": [
+   [
+    "wp_delete_temp_updater_backups",
+    "11-10 15:44"
+   ]
+  ],
+  "statusai_30d": [
+   {
+    "status": "wc-cancelled",
+    "n": "18",
+    "pask": "2026-11-09 12:54:30"
+   },
+   {
+    "status": "wc-completed",
+    "n": "280",
+    "pask": "2026-11-10 07:36:16"
+   },
+   {
+    "status": "wc-processing",
+    "n": "21",
+    "pask": "2026-11-10 07:36:16"
+   }
+  ],
+  "completed_pask": [
+   {
+    "id": "38339",
+    "date_created_gmt": "2026-11-08 17:44:42",
+    "date_updated_gmt": "2026-11-10 07:36:16"
+   },
+   {
+    "id": "38336",
+    "date_created_gmt": "2026-11-08 08:00:14",
+    "date_updated_gmt": "2026-11-10 07:36:16"
+   },
+   {
+    "id": "37370",
+    "date_created_gmt": "2026-10-28 09:53:48",
+    "date_updated_gmt": "2026-11-10 07:06:18"
+   },
+   {
+    "id": "38254",
+    "date_created_gmt": "2026-11-06 17:06:29",
+    "date_updated_gmt": "2026-11-10 06:36:06"
+   },
+   {
+    "id": "38337",
+    "date_created_gmt": "2026-11-08 10:54:02",
+    "date_updated_gmt": "2026-11-10 06:36:05"
+   }
+  ],
+  "note_pask": [
+   {
+    "oid": "38362",
+    "comment_date": "2026-11-10 09:34:12",
+    "c": "Paysera: Naujo užsakymo kūrimo būsena"
+   },
+   {
+    "oid": "38362",
+    "comment_date": "2026-11-10 09:34:11",
+    "c": "PVM s/f AVPN011605 suteikta apmokėjus, data 2026-11-10 (S1839)."
+   },
+   {
+    "oid": "38362",
+    "comment_date": "2026-11-10 09:34:11",
+    "c": "Email \"Užsakymas vykdomas\" sent."
+   },
+   {
+    "oid": "38362",
+    "comment_date": "2026-11-10 09:34:11",
+    "c": "Email \"Naujas užsakymas\" sent."
+   },
+   {
+    "oid": "38362",
+    "comment_date": "2026-11-10 09:34:10",
+    "c": "Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėta"
+   },
+   {
+    "oid": "38362",
+    "comment_date": "2026-11-10 09:34:10",
+    "c": "Surūšiuota pati: Hikari  Tropical Micro Wafers, 45 g, paš — Iš AV"
+   },
+   {
+    "oid": "38362",
+    "comment_date": "2026-11-10 09:34:10",
+    "c": "Faktai irasyti: 1 eilutes · pajamos 24,74 EUR (be PVM, po nuolaidu) · PVM 5,57 EUR · marza"
+   },
+   {
+    "oid": "38362",
+    "comment_date": "2026-11-10 09:34:10",
+    "c": "Partijos nurašytos: #18323 −6 vnt. (1 partijos)"
+   }
+  ]
+ },
+ "v": "dep-074059",
+ "kurimas": 200,
+ "sid": 8084,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
