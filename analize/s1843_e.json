@@ -1,0 +1,138 @@
+{
+ "1": {
+  "v": "S1843e",
+  "log": {
+   "Attempt to read property \"errors\"": {
+    "n": 19,
+    "pask": [
+     [
+      "[09-Nov-2026 07:41:33 UTC] PHP Warning:  is_file(): open_basedir restriction in effect. File(/proc/loadavg) is not within the allowed path(s): (/home/gyvunai2/:/tmp:/usr/share/pear) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 63",
+      "[09-Nov-2026 08:11:41 UTC] PHP Warning:  Attempt to read property \"errors\" on array in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php on line 414",
+      "[09-Nov-2026 08:12:39 UTC] PHP Warning:  Attempt to read property \"errors\" on array in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php on line 414",
+      "[09-Nov-2026 08:13:35 UTC] PHP Warning:  Attempt to read property \"errors\" on array in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php on line 414",
+      "[09-Nov-2026 08:14:52 UTC] PHP Warning:  Attempt to read property \"errors\" on array in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php on line 414",
+      "[09-Nov-2026 08:41:40 UTC] PHP Warning:  Undefined array key \"post_author\" in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 19"
+     ],
+     [
+      "[09-Nov-2026 08:11:41 UTC] PHP Warning:  Attempt to read property \"errors\" on array in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php on line 414",
+      "[09-Nov-2026 08:12:39 UTC] PHP Warning:  Attempt to read property \"errors\" on array in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php on line 414",
+      "[09-Nov-2026 08:13:35 UTC] PHP Warning:  Attempt to read property \"errors\" on array in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php on line 414",
+      "[09-Nov-2026 08:14:52 UTC] PHP Warning:  Attempt to read property \"errors\" on array in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php on line 414",
+      "[09-Nov-2026 08:41:40 UTC] PHP Warning:  Undefined array key \"post_author\" in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 19",
+      "[09-Nov-2026 08:41:47 UTC] WordPress database error Unknown column 'e.product_id' in 'WHERE' for query SELECT e.*, u.* FROM gaj6_ps_ist_eilutes e LEFT JOIN gaj6_ps_ist_uzsakymai u ON u.id=e.uzsakymas_id WHERE (e.product_id IN(12936,20648,23593,23595,26050) OR e.pavadinimas LIKE '%drakonape%' OR e.pavadinimas LIKE '%CBD%' OR e.pa"
+     ],
+     [
+      "[09-Nov-2026 08:12:39 UTC] PHP Warning:  Attempt to read property \"errors\" on array in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php on line 414",
+      "[09-Nov-2026 08:13:35 UTC] PHP Warning:  Attempt to read property \"errors\" on array in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php on line 414",
+      "[09-Nov-2026 08:14:52 UTC] PHP Warning:  Attempt to read property \"errors\" on array in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuaniapost-public.php on line 414",
+      "[09-Nov-2026 08:41:40 UTC] PHP Warning:  Undefined array key \"post_author\" in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code on line 19",
+      "[09-Nov-2026 08:41:47 UTC] WordPress database error Unknown column 'e.product_id' in 'WHERE' for query SELECT e.*, u.* FROM gaj6_ps_ist_eilutes e LEFT JOIN gaj6_ps_ist_uzsakymai u ON u.id=e.uzsakymas_id WHERE (e.product_id IN(12936,20648,23593,23595,26050) OR e.pavadinimas LIKE '%drakonape%' OR e.pavadinimas LIKE '%CBD%' OR e.pa",
+      "[09-Nov-2026 08:41:47 UTC] WordPress database error Unknown column 'product_id' in 'WHERE' for query SELECT * FROM gaj6_ps_ist_fakt_eilutes WHERE product_id IN(12936,20648,23593,23595,26050) ORDER BY 1 DESC LIMIT 200 made by require('wp-blog-header.php'), require_once('wp-load.php'), require_once('wp-config.php'), require_once('"
+     ]
+    ]
+   },
+   "action_scheduler_run_queue": {
+    "n": 20,
+    "pask": [
+     [
+      "[09-Nov-2026 05:01:03 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}",
+      "[09-Nov-2026 05:04:21 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}",
+      "[09-Nov-2026 05:47:08 UTC] Cron įvykio perplanavimo klaida kabliui: action_scheduler_run_queue, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":\"every_minute\",\"args\":[\"WP Cron\"],\"interval\":60}",
+      "[09-Nov-2026 06:02:16 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}",
+      "[09-Nov-2026 06:04:18 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}",
+      "[09-Nov-2026 06:08:17 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}"
+     ],
+     [
+      "[09-Nov-2026 06:44:42 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}",
+      "[09-Nov-2026 06:45:46 UTC] Užsakymas patvirtintas: užsakymas 38341, suma: 58.45EUR",
+      "[09-Nov-2026 06:53:46 UTC] Cron įvykio perplanavimo klaida kabliui: action_scheduler_run_queue, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":\"every_minute\",\"args\":[\"WP Cron\"],\"interval\":60}",
+      "[09-Nov-2026 07:02:18 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}",
+      "[09-Nov-2026 07:04:17 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}",
+      "[09-Nov-2026 07:17:03 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}"
+     ],
+     [
+      "[09-Nov-2026 17:29:57 UTC] Užsakymas patvirtintas: užsakymas 38352, suma: 33.32EUR",
+      "[09-Nov-2026 17:41:17 UTC] WordPress database error Deadlock found when trying to get lock; try restarting transaction for query INSERT INTO `gaj6_options` (`option_name`, `option_value`, `autoload`) VALUES ('wcdn_migration_lock', '1794246077', 'off') ON DUPLICATE KEY UPDATE `option_name` = VALUES(`option_name`), `option_value` ",
+      "[09-Nov-2026 17:50:14 UTC] Cron įvykio perplanavimo klaida kabliui: action_scheduler_run_queue, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":\"every_minute\",\"args\":[\"WP Cron\"],\"interval\":60}",
+      "[09-Nov-2026 17:55:45 UTC] Užsakymas patvirtintas: užsakymas 38353, suma: 38.19EUR",
+      "[10-Nov-2026 00:10:01 UTC] WordPress database error Duplicate entry '2026-11-09-puslapis-/gamintojas/animonda/?utm_source=google&u...' for key 'vienas' for query INSERT INTO `gaj6_ps_web_dienos` (`data`, `pjuvis`, `raktas`, `raktas2`, `apsilankymai`, `lankytojai`, `perziuros`, `view_item`, `add_to_cart`, `begin_checkout`, `sutik",
+      "[10-Nov-2026 00:10:01 UTC] WordPress database error Duplicate entry '2026-11-09-puslapis-/gamintojas/eukanuba/?utm_source=google&u...' for key 'vienas' for query INSERT INTO `gaj6_ps_web_dienos` (`data`, `pjuvis`, `raktas`, `raktas2`, `apsilankymai`, `lankytojai`, `perziuros`, `view_item`, `add_to_cart`, `begin_checkout`, `sutik"
+     ]
+    ]
+   },
+   "class-shipments.php": {
+    "n": 18,
+    "pask": [
+     [
+      "[08-Nov-2026 18:01:37 UTC] WordPress database error Unknown column 'o.date_paid_gmt' in 'SELECT' for query SELECT o.id, o.status, o.date_paid_gmt FROM gaj6_wc_orders o LEFT JOIN gaj6_wc_orders_meta m ON m.order_id=o.id AND m.meta_key='_petshop_avpn_number' WHERE o.type='shop_order' AND o.status IN('wc-processing','wc-completed')",
+      "[08-Nov-2026 18:11:45 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-shipments.php on line 131",
+      "[08-Nov-2026 18:12:26 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-shipments.php on line 131",
+      "[08-Nov-2026 19:36:02 UTC] Užsakymas patvirtintas: užsakymas 38340, suma: 79.90EUR",
+      "[09-Nov-2026 00:10:11 UTC] WordPress database error Duplicate entry '2026-11-08-puslapis-/gamintojas/exclusion/?utm_source=google&...' for key 'vienas' for query INSERT INTO `gaj6_ps_web_dienos` (`data`, `pjuvis`, `raktas`, `raktas2`, `apsilankymai`, `lankytojai`, `perziuros`, `view_item`, `add_to_cart`, `begin_checkout`, `sutik",
+      "[09-Nov-2026 00:10:11 UTC] WordPress database error Duplicate entry '2026-11-08-puslapis-/gamintojas/quattro/?utm_source=google&ut...' for key 'vienas' for query INSERT INTO `gaj6_ps_web_dienos` (`data`, `pjuvis`, `raktas`, `raktas2`, `apsilankymai`, `lankytojai`, `perziuros`, `view_item`, `add_to_cart`, `begin_checkout`, `sutik"
+     ],
+     [
+      "[09-Nov-2026 12:20:02 UTC] Užsakymas patvirtintas: užsakymas 38345, suma: 31.35EUR",
+      "[09-Nov-2026 12:27:11 UTC] Užsakymas patvirtintas: užsakymas 38346, suma: 56.99EUR",
+      "[09-Nov-2026 13:06:22 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-shipments.php on line 131",
+      "[09-Nov-2026 13:54:30 UTC] Užsakymas patvirtintas: užsakymas 38347, suma: 130.77EUR",
+      "[09-Nov-2026 13:58:27 UTC] Užsakymas patvirtintas: užsakymas 38348, suma: 13.54EUR",
+      "[09-Nov-2026 15:40:39 UTC] Užsakymas patvirtintas: užsakymas 38350, suma: 14.05EUR"
+     ],
+     [
+      "[10-Nov-2026 06:57:03 UTC] Užsakymas patvirtintas: užsakymas 38360, suma: 31.72EUR",
+      "[10-Nov-2026 07:03:35 UTC] Užsakymas patvirtintas: užsakymas 38361, suma: 23.25EUR",
+      "[10-Nov-2026 07:06:18 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-core/includes/class-shipments.php on line 131",
+      "[10-Nov-2026 07:15:33 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}",
+      "[10-Nov-2026 07:17:12 UTC] Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron įvykių sąrašo., duomenys: {\"schedule\":false,\"args\":[]}",
+      "[10-Nov-2026 07:34:09 UTC] Užsakymas patvirtintas: užsakymas 38362, suma: 32.09EUR"
+     ]
+    ]
+   }
+  },
+  "src_ship": [
+   "122: \t * liktu nematoma.",
+   "123: \t */",
+   "124: \tpublic static function sync_from_meta( $order ) {",
+   "125: \t\tif ( ! is_object( $order ) || ! method_exists( $order, 'get_id' ) ) { return array(); }",
+   "126: \t\t$out = array();",
+   "127: ",
+   "128: \t\t// --- Venipak ---",
+   "129: \t\t$raw = $order->get_meta( 'venipak_shipping_order_data', true );",
+   "130: \t\tif ( $raw ) {",
+   "131: \t\t\t$d = json_decode( (string) $raw, true );",
+   "132: \t\t\t$packs = ( is_array( $d ) && ! empty( $d['pack_numbers'] ) && is_array( $d['pack_numbers'] ) )",
+   "133: \t\t\t\t? $d['pack_numbers'] : array();",
+   "134: \t\t\tforeach ( array_unique( array_map( 'strval', $packs ) ) as $pn ) {",
+   "135: \t\t\t\tif ( '' === trim( $pn ) ) { continue; }",
+   "136: \t\t\t\t$out[] = array( 'carrier' => 'venipak', 'number' => $pn,"
+  ],
+  "lp_files": [
+   "class-woo-lithuaniapost-public.php",
+   "index.php"
+  ],
+  "lp_opts": [],
+  "as_fail": [
+   {
+    "hook": "wpforms_admin_addons_cache_update",
+    "status": "failed",
+    "n": "5",
+    "pask": "2026-10-23 15:35:13"
+   },
+   {
+    "hook": "wpforms_admin_builder_templates_cache_update",
+    "status": "failed",
+    "n": "5",
+    "pask": "2026-10-23 15:35:13"
+   }
+  ],
+  "as_fail_24h": []
+ },
+ "v": "dep-074641",
+ "kurimas": 200,
+ "sid": 8087,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
