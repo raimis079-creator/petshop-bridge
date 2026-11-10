@@ -1,0 +1,35 @@
+{
+ "1": {
+  "v": "S1843j",
+  "email_forma": {
+   "vietine_len": 15,
+   "domenas": "gmail.com",
+   "is_email": true
+  },
+  "lp_log_hits": [
+   "/includes/class-woo-lithuaniapost.php:443: $this->loader->add_action ( 'woo_lithuaniapost_api_is_parcel_valid', $plugin_api_hooks, 'handle_parcel_validation', 10, 2 );",
+   "/public/class-woo-lithuaniapost-public.php:347: apply_filters('woo_lithuaniapost_api_is_parcel_valid', $validate_parcel_request, $error_callback);",
+   "/public/class-woo-lithuaniapost-public.php:675: return apply_filters('woo_lithuaniapost_api_is_parcel_valid', $validate_parcel_request, $error_callback);"
+  ],
+  "wc_logs_visi": [
+   "place-order-debug-1b1bb5e5-2026-11-09-c67bcba9ebadf83604196d5927a955ae.log",
+   "place-order-debug-3d425711-2026-11-09-dcf29aaee3314f7285577e33ebb13942.log",
+   "place-order-debug-476360e8-2026-11-09-3d76cbffe9548b75ce1cb99ddac05b03.log",
+   "place-order-debug-5eb19f68-2026-11-09-fe93bc399ae66857ed8dfd0119b7079d.log",
+   "place-order-debug-72c6c692-2026-11-09-5b61974e0ec762ad3349914c187dcc54.log",
+   "place-order-debug-9ff3e4dd-2026-11-09-0184c80981a3245e19bc9b7d74954dab.log",
+   "place-order-debug-e151ac71-2026-11-09-cbc8562ec0eb79c66dacc68426cec9f6.log",
+   "place-order-debug-e4a8e757-2026-11-09-a08760eb2aa953cec6786ba9fa6816c5.log",
+   "transactional-emails-2026-11-09-7d0531fbdaa3366ad753bd40b44b24ef.log",
+   "wc-analytics-order-import-2026-11-09-8c3d38015345e092c3c24565d6bbc2e0.log",
+   "wc_logger-2026-11-09-653f7851145029b84e6a48f986de3843.log"
+  ]
+ },
+ "v": "dep-081002",
+ "kurimas": 200,
+ "sid": 8093,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
