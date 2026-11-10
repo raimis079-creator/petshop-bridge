@@ -1,0 +1,785 @@
+{
+ "1": {
+  "v": "t1",
+  "f": {
+   "petshop-darbalaukis.php": [
+    "6307d1a2d5861d58d4bf3500eab5ccc6",
+    "3.49",
+    597812
+   ],
+   "petshop-av-tiekimas.php": [
+    "146e3456b97ace9ccdeba4b8e29f3fdf",
+    "1.11.1",
+    79506
+   ],
+   "petshop-av-source.php": [
+    "7a051e2a8c5240b71223ddf5d54bb437",
+    "1.3",
+    11098
+   ],
+   "petshop-av-limit.php": [
+    "80a5bc1cad6e985772335686a61dd244",
+    "1.1",
+    5068
+   ],
+   "petshop-prenumeratu-prognoze.php": [
+    "f3963ad59564b6c02d078c7bc151b447",
+    "1.0",
+    6914
+   ],
+   "petshop-partijos.php": [
+    "fd88b6be01e1d0ef1065d9583aae917b",
+    "1.5",
+    31771
+   ],
+   "petshop-av-order.php": [
+    "7de1cbfadc03b8ae873ed7ad20f7a908",
+    "1.2",
+    5890
+   ],
+   "petshop-prenumerata.php": [
+    "2de1d047fb87ec93cefa70cbba157725",
+    "2.3",
+    35992
+   ],
+   "petshop-prenumerata-katalogas.php": [
+    "09c32800ccd527f7a84052493849d552",
+    "4.2",
+    18987
+   ]
+  },
+  "rezerv_failai": {
+   "petshop-ataskaita-atsargos.php": 6,
+   "petshop-av-limit.php": 1,
+   "petshop-av-tiekimas.php": 9,
+   "petshop-darbalaukis.php": 5,
+   "petshop-desk.php": 1,
+   "petshop-fakt-atsargos.php": 5,
+   "petshop-langai-admin.php": 1,
+   "petshop-rezervacija-av.php": 12
+  },
+  "cron": {
+   "prognoze": 1794368400,
+   "pren": 1794377400
+  },
+  "opt": {
+   "ijungta": "ne",
+   "tik_admin": false,
+   "sku": [
+    "RINK-RUDOS-JAUČIO-AUSYS-20",
+    "RINK-BALTOS-JAUČIO-AUSYS-20",
+    "RINK-RUDOS-KNYSLES-20"
+   ],
+   "guest": "yes",
+   "signup": "yes",
+   "vf_pastas_yra": true
+  },
+  "sub_n": [],
+  "vf_part": [
+   {
+    "id": "77",
+    "busena": "uzsakyta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-11-10 12:40:05",
+    "uzsakyta": "2026-11-10 12:41:03",
+    "gauta": null,
+    "uz_d": "Tuesday",
+    "g_d": null,
+    "eil": "2",
+    "be_uzs": "1"
+   },
+   {
+    "id": "76",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-11-09 12:40:01",
+    "uzsakyta": "2026-11-09 12:43:50",
+    "gauta": "2026-11-10 11:35:25",
+    "uz_d": "Monday",
+    "g_d": "Tuesday",
+    "eil": "3",
+    "be_uzs": "1"
+   },
+   {
+    "id": "74",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-11-06 12:52:10",
+    "uzsakyta": "2026-11-06 12:52:14",
+    "gauta": "2026-11-09 11:22:45",
+    "uz_d": "Friday",
+    "g_d": "Monday",
+    "eil": "2",
+    "be_uzs": "0"
+   },
+   {
+    "id": "73",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-11-05 12:51:03",
+    "uzsakyta": "2026-11-05 12:51:55",
+    "gauta": "2026-11-06 10:58:31",
+    "uz_d": "Thursday",
+    "g_d": "Friday",
+    "eil": "2",
+    "be_uzs": "1"
+   },
+   {
+    "id": "71",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-11-04 12:16:45",
+    "uzsakyta": "2026-11-04 12:18:36",
+    "gauta": "2026-11-05 10:11:49",
+    "uz_d": "Wednesday",
+    "g_d": "Thursday",
+    "eil": "4",
+    "be_uzs": "3"
+   },
+   {
+    "id": "69",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-11-03 11:24:19",
+    "uzsakyta": "2026-11-03 11:25:45",
+    "gauta": "2026-11-04 12:14:18",
+    "uz_d": "Tuesday",
+    "g_d": "Wednesday",
+    "eil": "12",
+    "be_uzs": "1"
+   },
+   {
+    "id": "67",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-30 12:02:38",
+    "uzsakyta": "2026-10-30 12:02:43",
+    "gauta": "2026-11-03 12:00:36",
+    "uz_d": "Friday",
+    "g_d": "Tuesday",
+    "eil": "8",
+    "be_uzs": "0"
+   },
+   {
+    "id": "66",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-29 12:47:24",
+    "uzsakyta": "2026-10-29 12:48:09",
+    "gauta": "2026-10-30 11:08:54",
+    "uz_d": "Thursday",
+    "g_d": "Friday",
+    "eil": "2",
+    "be_uzs": "1"
+   },
+   {
+    "id": "64",
+    "busena": "gauta",
+    "pristatymas": "tiekejas",
+    "sukurta": "2026-10-28 11:00:07",
+    "uzsakyta": "2026-10-28 11:03:24",
+    "gauta": "2026-10-29 11:33:57",
+    "uz_d": "Wednesday",
+    "g_d": "Thursday",
+    "eil": "25",
+    "be_uzs": "4"
+   },
+   {
+    "id": "63",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-27 12:39:20",
+    "uzsakyta": "2026-10-27 12:39:24",
+    "gauta": "2026-10-28 11:47:41",
+    "uz_d": "Tuesday",
+    "g_d": "Wednesday",
+    "eil": "2",
+    "be_uzs": "0"
+   },
+   {
+    "id": "62",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-26 11:57:56",
+    "uzsakyta": "2026-10-26 11:58:01",
+    "gauta": "2026-10-27 16:45:09",
+    "uz_d": "Monday",
+    "g_d": "Tuesday",
+    "eil": "8",
+    "be_uzs": "0"
+   },
+   {
+    "id": "59",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-23 12:47:48",
+    "uzsakyta": "2026-10-23 12:47:52",
+    "gauta": "2026-10-26 11:00:07",
+    "uz_d": "Friday",
+    "g_d": "Monday",
+    "eil": "3",
+    "be_uzs": "0"
+   },
+   {
+    "id": "58",
+    "busena": "gauta",
+    "pristatymas": "tiekejas",
+    "sukurta": "2026-10-22 11:26:46",
+    "uzsakyta": "2026-10-22 12:49:44",
+    "gauta": "2026-10-23 14:54:20",
+    "uz_d": "Thursday",
+    "g_d": "Friday",
+    "eil": "1",
+    "be_uzs": "0"
+   },
+   {
+    "id": "57",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-21 08:52:58",
+    "uzsakyta": "2026-10-21 12:52:21",
+    "gauta": "2026-10-22 11:26:46",
+    "uz_d": "Wednesday",
+    "g_d": "Thursday",
+    "eil": "5",
+    "be_uzs": "0"
+   },
+   {
+    "id": "56",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-20 12:50:58",
+    "uzsakyta": "2026-10-20 12:51:03",
+    "gauta": "2026-10-21 08:52:58",
+    "uz_d": "Tuesday",
+    "g_d": "Wednesday",
+    "eil": "8",
+    "be_uzs": "0"
+   },
+   {
+    "id": "54",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-19 11:47:29",
+    "uzsakyta": "2026-10-19 12:58:05",
+    "gauta": "2026-10-20 18:21:24",
+    "uz_d": "Monday",
+    "g_d": "Tuesday",
+    "eil": "6",
+    "be_uzs": "0"
+   },
+   {
+    "id": "51",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-16 12:45:48",
+    "uzsakyta": "2026-10-16 12:48:49",
+    "gauta": "2026-10-19 11:47:29",
+    "uz_d": "Friday",
+    "g_d": "Monday",
+    "eil": "7",
+    "be_uzs": "5"
+   },
+   {
+    "id": "48",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-15 12:54:32",
+    "uzsakyta": "2026-10-15 12:54:36",
+    "gauta": "2026-10-16 11:02:35",
+    "uz_d": "Thursday",
+    "g_d": "Friday",
+    "eil": "6",
+    "be_uzs": "0"
+   },
+   {
+    "id": "47",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-14 12:47:04",
+    "uzsakyta": "2026-10-14 12:48:18",
+    "gauta": "2026-10-15 18:58:53",
+    "uz_d": "Wednesday",
+    "g_d": "Thursday",
+    "eil": "4",
+    "be_uzs": "0"
+   },
+   {
+    "id": "45",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-13 12:33:47",
+    "uzsakyta": "2026-10-13 12:33:52",
+    "gauta": "2026-10-14 11:45:05",
+    "uz_d": "Tuesday",
+    "g_d": "Wednesday",
+    "eil": "9",
+    "be_uzs": "0"
+   },
+   {
+    "id": "43",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-12 12:14:56",
+    "uzsakyta": "2026-10-12 12:15:02",
+    "gauta": "2026-10-13 11:30:29",
+    "uz_d": "Monday",
+    "g_d": "Tuesday",
+    "eil": "13",
+    "be_uzs": "0"
+   },
+   {
+    "id": "42",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-09 12:31:21",
+    "uzsakyta": "2026-10-09 12:36:19",
+    "gauta": "2026-10-12 10:35:57",
+    "uz_d": "Friday",
+    "g_d": "Monday",
+    "eil": "5",
+    "be_uzs": "4"
+   },
+   {
+    "id": "41",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-08 12:41:07",
+    "uzsakyta": "2026-10-08 12:41:11",
+    "gauta": "2026-10-09 11:30:01",
+    "uz_d": "Thursday",
+    "g_d": "Friday",
+    "eil": "2",
+    "be_uzs": "0"
+   },
+   {
+    "id": "40",
+    "busena": "gauta",
+    "pristatymas": "tiekejas",
+    "sukurta": "2026-10-07 11:02:25",
+    "uzsakyta": "2026-10-07 11:05:12",
+    "gauta": "2026-10-08 11:04:52",
+    "uz_d": "Wednesday",
+    "g_d": "Thursday",
+    "eil": "9",
+    "be_uzs": "2"
+   },
+   {
+    "id": "39",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-06 12:41:46",
+    "uzsakyta": "2026-10-06 12:41:51",
+    "gauta": "2026-10-07 12:43:05",
+    "uz_d": "Tuesday",
+    "g_d": "Wednesday",
+    "eil": "10",
+    "be_uzs": "0"
+   },
+   {
+    "id": "37",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-05 12:35:53",
+    "uzsakyta": "2026-10-05 12:35:58",
+    "gauta": "2026-10-06 12:35:46",
+    "uz_d": "Monday",
+    "g_d": "Tuesday",
+    "eil": "6",
+    "be_uzs": "0"
+   },
+   {
+    "id": "36",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-10-02 12:47:31",
+    "uzsakyta": "2026-10-02 12:47:35",
+    "gauta": "2026-10-05 12:39:58",
+    "uz_d": "Friday",
+    "g_d": "Monday",
+    "eil": "2",
+    "be_uzs": "0"
+   },
+   {
+    "id": "35",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-09-30 12:38:06",
+    "uzsakyta": "2026-09-30 12:39:23",
+    "gauta": "2026-10-01 14:24:53",
+    "uz_d": "Wednesday",
+    "g_d": "Thursday",
+    "eil": "3",
+    "be_uzs": "1"
+   },
+   {
+    "id": "34",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-09-29 12:36:42",
+    "uzsakyta": "2026-09-29 12:36:47",
+    "gauta": "2026-09-30 11:43:56",
+    "uz_d": "Tuesday",
+    "g_d": "Wednesday",
+    "eil": "17",
+    "be_uzs": "0"
+   },
+   {
+    "id": "33",
+    "busena": "gauta",
+    "pristatymas": "kurjeris",
+    "sukurta": "2026-09-28 11:57:05",
+    "uzsakyta": "2026-09-28 11:58:52",
+    "gauta": "2026-09-29 15:50:48",
+    "uz_d": "Monday",
+    "g_d": "Tuesday",
+    "eil": "6",
+    "be_uzs": "1"
+   }
+  ],
+  "partijos_cols": [
+   "id",
+   "product_id",
+   "gauta",
+   "kiekis_gautas",
+   "kiekis_liko",
+   "savikaina_eur",
+   "savikaina_orig",
+   "valiuta",
+   "kursas",
+   "geriausia_iki",
+   "tiekejas",
+   "importuota",
+   "tiekimas_id",
+   "pastaba",
+   "sukurta",
+   "user_id",
+   "atsaukta"
+  ],
+  "sources_cols": [
+   "id",
+   "product_id",
+   "source",
+   "supplier_sku",
+   "ean",
+   "stock_qty",
+   "cost_net",
+   "synced_at",
+   "is_active",
+   "is_sellable",
+   "priority",
+   "created_at",
+   "updated_at"
+  ],
+  "pren_prekes": [
+   [
+    "RINK-RUDOS-JAUČIO-AUSYS-20",
+    35098,
+    "20 vnt. rudų jaučio ausų",
+    "",
+    "",
+    "",
+    "instock"
+   ],
+   [
+    "RINK-BALTOS-JAUČIO-AUSYS-20",
+    35099,
+    "20 vnt. baltų jaučio ausų",
+    "",
+    "",
+    "",
+    "instock"
+   ],
+   [
+    "RINK-RUDOS-KNYSLES-20",
+    35096,
+    "20 vnt. rudų kiaulės knyslių",
+    "",
+    "",
+    "",
+    "instock"
+   ]
+  ],
+  "ex_n": 92,
+  "ex_st": {
+   "publish": 80,
+   "draft": 12,
+   "av_turi": 17,
+   "vf0": 11,
+   "vf1_3": 1,
+   "vf4p": 68,
+   "parduota60": 45
+  },
+  "ex_top": [
+   {
+    "ID": "18587",
+    "post_title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": "3",
+    "vf": "221.000000",
+    "cost": "37.485",
+    "price": "56.99",
+    "q60": "36",
+    "k60": "36"
+   },
+   {
+    "ID": "18590",
+    "post_title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": "3",
+    "vf": "370.000000",
+    "cost": "14.3565",
+    "price": "21.1",
+    "q60": "25",
+    "k60": "19"
+   },
+   {
+    "ID": "18602",
+    "post_title": "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 200 g",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": "43",
+    "vf": "54.000000",
+    "cost": "1.649",
+    "price": "2.95",
+    "q60": "25",
+    "k60": "3"
+   },
+   {
+    "ID": "18599",
+    "post_title": "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 400 g",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": "13",
+    "vf": "1432",
+    "cost": "2.601",
+    "price": "3.98",
+    "q60": "25",
+    "k60": "5"
+   },
+   {
+    "ID": "35316",
+    "post_title": "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": null,
+    "vf": "239.000000",
+    "cost": "2.601",
+    "price": "4.09",
+    "q60": "18",
+    "k60": "3"
+   },
+   {
+    "ID": "35330",
+    "post_title": "Exclusion Hypo konservuotas pašaras šunims su arkliena ir bulvėmis, 200 g",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": null,
+    "vf": "45.000000",
+    "cost": "2.023",
+    "price": "2.99",
+    "q60": "16",
+    "k60": "3"
+   },
+   {
+    "ID": "18608",
+    "post_title": "Exclusion Hypoallergenic konservai šunims su arkliena ir bulvėmis 400 g",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": "4",
+    "vf": "23.000000",
+    "cost": "2.601",
+    "price": "3.98",
+    "q60": "14",
+    "k60": "2"
+   },
+   {
+    "ID": "35338",
+    "post_title": "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 200 g",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": null,
+    "vf": "117.000000",
+    "cost": "1.649",
+    "price": "2.95",
+    "q60": "14",
+    "k60": "2"
+   },
+   {
+    "ID": "18560",
+    "post_title": "Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": "1",
+    "vf": "211.000000",
+    "cost": "53.805",
+    "price": "79.9",
+    "q60": "12",
+    "k60": "9"
+   },
+   {
+    "ID": "18512",
+    "post_title": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su ėriena, 400 g",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": "9",
+    "vf": "1182.000000",
+    "cost": "1.683",
+    "price": "2.89",
+    "q60": "11",
+    "k60": "2"
+   },
+   {
+    "ID": "35312",
+    "post_title": "Exclusion Hypo konservuotas pašaras šunims su triušiena ir bulvėmis, 400 g",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": "0",
+    "vf": "271.000000",
+    "cost": "2.601",
+    "price": "4.09",
+    "q60": "6",
+    "k60": "3"
+   },
+   {
+    "ID": "20525",
+    "post_title": "Exclusion Mediterraneo Mono Protein konservuotas pašaras sterilizuotoms katėms su vištiena, 85 g",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": "0",
+    "vf": "355.000000",
+    "cost": "0.935",
+    "price": "1.59",
+    "q60": "5",
+    "k60": "2"
+   },
+   {
+    "ID": "21123",
+    "post_title": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su jautiena, S, 500g",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": null,
+    "vf": "5.000000",
+    "cost": "3.0685",
+    "price": "4.99",
+    "q60": "5",
+    "k60": "2"
+   },
+   {
+    "ID": "18530",
+    "post_title": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su jautiena, 1,5 kg",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": "0",
+    "vf": "122.000000",
+    "cost": "11.169",
+    "price": "17.05",
+    "q60": "4",
+    "k60": "3"
+   },
+   {
+    "ID": "18575",
+    "post_title": "Exclusion Hypoallergenic mini sausas mažų veislių šunų maistas su žuvimi ir bulvėmis S 2 kg",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": "2",
+    "vf": "9.000000",
+    "cost": "14.3565",
+    "price": "21.95",
+    "q60": "4",
+    "k60": "2"
+   },
+   {
+    "ID": "20957",
+    "post_title": "Exclusion Hypoallergenic sausas pašaras šuniukams su kiauliena ir žirneliais, 2kg",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": "0",
+    "vf": "64.000000",
+    "cost": "16.269",
+    "price": "24.99",
+    "q60": "4",
+    "k60": "3"
+   },
+   {
+    "ID": "18515",
+    "post_title": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su veršiena, 400 g",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": "35",
+    "vf": "582.000000",
+    "cost": "1.683",
+    "price": "2.89",
+    "q60": "4",
+    "k60": "3"
+   },
+   {
+    "ID": "18617",
+    "post_title": "Exclusion Hypoallergenic dietinis sausas pašaras katėms su kiauliena ir bulvėmis, 1,5 kg",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": null,
+    "vf": "28.000000",
+    "cost": "14.2545",
+    "price": "20.79",
+    "q60": "4",
+    "k60": "3"
+   },
+   {
+    "ID": "35326",
+    "post_title": "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir bulvėmis, 200 g",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": null,
+    "vf": "46.000000",
+    "cost": "1.5725",
+    "price": "2.95",
+    "q60": "4",
+    "k60": "2"
+   },
+   {
+    "ID": "18581",
+    "post_title": "Exclusion Hypoallergenic mini mažų veislių šunų maistas su arkliena ir bulvėmis S 2 kg",
+    "post_status": "publish",
+    "brand": "Exclusion",
+    "av": "0",
+    "vf": "0",
+    "cost": "14.3565",
+    "price": "21.95",
+    "q60": "3",
+    "k60": "3"
+   }
+  ],
+  "pages": [
+   {
+    "ID": "35281",
+    "post_name": "prenumeratos-taisykles",
+    "post_status": "draft",
+    "post_title": "Prenumeratos taisyklės"
+   }
+  ],
+  "sc": [
+   "psc_sprendimas_bundle",
+   "psc_sprendimas_kategorija",
+   "psc_sprendimas_nuoroda",
+   "psc_sprendimas_sunerimti",
+   "psc_sprendimas_produktai",
+   "psc_sprendimas_krypties_kortele"
+  ],
+  "cls": {
+   "AV_Stock": true,
+   "Partijos": true,
+   "Limit": true,
+   "Prognoze": true
+  }
+ },
+ "v": "dep-180825",
+ "kurimas": 200,
+ "sid": 8099,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
