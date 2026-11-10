@@ -1,0 +1,58 @@
+{
+ "1": {
+  "v": "S1843f",
+  "lp_src": [
+   "395:             ],",
+   "396:         ];",
+   "397:     }",
+   "398: ",
+   "399:     private function is_terminal_required($plan_code) {",
+   "400:         return $plan_code == 'TERMINAL';",
+   "401:     }",
+   "402: ",
+   "403:     private function handle_validation_error_response($response_body)",
+   "404:     {",
+   "405:         $error_messages = $this->collect_validation_error_response_messages($response_body);",
+   "406:         foreach ($error_messages as $error_message) {",
+   "407:             wc_add_notice(__('Please fill correct shipping data: ' . $error_message, 'woo-lithuaniapost'), 'error');",
+   "408:         }",
+   "409:     }",
+   "410: ",
+   "411:     private function collect_validation_error_response_messages($response_body)",
+   "412:     {",
+   "413:         $errors = [];",
+   "414:         if ($response_body && $response_body->errors && is_array($response_body->errors)) {",
+   "415:             foreach ($response_body->errors as $error_response) {",
+   "416:                 $error_message = $this->to_error_message($error_response);",
+   "417:                 if ($error_message) {",
+   "418:                     $errors[] = $error_message;",
+   "419:                 }",
+   "420:             }"
+  ],
+  "canc": [
+   {
+    "id": "38342",
+    "status": "wc-cancelled",
+    "date_created_gmt": "2026-11-09 08:05:14",
+    "total_amount": "52.88000000",
+    "payment_method": "paysera",
+    "ship": "VENIPAK paštomatai/atsiėmimo punktai",
+    "notes": [
+     "11-09 14:54 Krepšelio priminimas 1 (cart_abandoned) po atšaukimo — dispatch: {\"ok\":true} (S1676).",
+     "11-09 12:54 Email \"Atšauktas užsakymas\" sent.",
+     "11-09 12:54 Neapmokėtas užsakymas atšauktas, baigėsi laukimo laikas. Užsakymo statusas pakeistas iš Neapmokėtas į Atšauktas.",
+     "11-09 12:54 Likutis padidintas: TRIXIE CityStyle Berlin megztinis, S: 33 cm, rūdžių (7&rarr;9)",
+     "11-09 10:05 Likutis sumažintas: Jaučio penis pjaustytas, 15,0 cm, 1 vnt. (10&rarr;10), TRIXIE CityStyle Berlin megztinis, S: 33 cm, ",
+     "11-09 10:05 Paysera: Neapmokėto užsakymo būsena"
+    ]
+   }
+  ]
+ },
+ "v": "dep-074921",
+ "kurimas": 200,
+ "sid": 8088,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
