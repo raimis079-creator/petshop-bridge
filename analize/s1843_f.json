@@ -1,6 +1,93 @@
 {
  "1": {
   "v": "S1843f",
+  "pod": {
+   "place-order-debug-1b1bb5e5-2026-11-09-c67bcba9ebadf83604196d5927a955ae.log": {
+    "eil": 3,
+    "kb": 2.6,
+    "paskutines": [
+     "2026-11-09T08:11:41+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"1b1bb5e5-4522-440b-a339-b8afb5c49d7a\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp",
+     "2026-11-09T08:11:41+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"1b1bb5e5-4522-440b-a339-b8afb5c49d7a\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2,\"message\":\"Attempt to read property \\\"errors\\\" on array\",\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuania",
+     "2026-11-09T08:11:41+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"paysera\",\"order_uid\":\"1b1bb5e5-4522-440b-a339-b8afb5c49d7a\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2,\"message\":\"Attempt to read property \\\"errors\\\" on array\",\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuani"
+    ]
+   },
+   "place-order-debug-3d425711-2026-11-09-dcf29aaee3314f7285577e33ebb13942.log": {
+    "eil": 3,
+    "kb": 2.6,
+    "paskutines": [
+     "2026-11-09T08:13:34+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"3d425711-76f1-49a0-9142-15ce823f1020\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp",
+     "2026-11-09T08:13:35+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"3d425711-76f1-49a0-9142-15ce823f1020\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2,\"message\":\"Attempt to read property \\\"errors\\\" on array\",\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuania",
+     "2026-11-09T08:13:35+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"paysera\",\"order_uid\":\"3d425711-76f1-49a0-9142-15ce823f1020\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2,\"message\":\"Attempt to read property \\\"errors\\\" on array\",\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuani"
+    ]
+   },
+   "place-order-debug-476360e8-2026-11-09-3d76cbffe9548b75ce1cb99ddac05b03.log": {
+    "eil": 3,
+    "kb": 2.6,
+    "paskutines": [
+     "2026-11-09T08:14:52+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"476360e8-2bba-4d3c-bbbc-4abd22861734\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp",
+     "2026-11-09T08:14:52+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"476360e8-2bba-4d3c-bbbc-4abd22861734\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2,\"message\":\"Attempt to read property \\\"errors\\\" on array\",\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuania",
+     "2026-11-09T08:14:52+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"paysera\",\"order_uid\":\"476360e8-2bba-4d3c-bbbc-4abd22861734\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2,\"message\":\"Attempt to read property \\\"errors\\\" on array\",\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuani"
+    ]
+   },
+   "place-order-debug-5eb19f68-2026-11-09-fe93bc399ae66857ed8dfd0119b7079d.log": {
+    "eil": 3,
+    "kb": 2.1,
+    "paskutines": [
+     "2026-11-09T13:57:59+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"5eb19f68-ada0-47a4-9b86-302f4504385e\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp",
+     "2026-11-09T13:57:59+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"5eb19f68-ada0-47a4-9b86-302f4504385e\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1393,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/dom",
+     "2026-11-09T13:57:59+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"paysera\",\"order_uid\":\"5eb19f68-ada0-47a4-9b86-302f4504385e\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1399,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/do"
+    ]
+   },
+   "place-order-debug-72c6c692-2026-11-09-5b61974e0ec762ad3349914c187dcc54.log": {
+    "eil": 2,
+    "kb": 1.4,
+    "paskutines": [
+     "2026-11-09T08:03:19+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"72c6c692-2b7c-4b8e-b804-e385ce756c42\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp",
+     "2026-11-09T08:03:20+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"72c6c692-2b7c-4b8e-b804-e385ce756c42\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1393,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/dom"
+    ]
+   },
+   "place-order-debug-9ce47b95-2026-11-08-af064d64a49b726c782914f4f80c7f72.log": {
+    "eil": 2,
+    "kb": 1.4,
+    "paskutines": [
+     "2026-11-08T05:06:04+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"9ce47b95-c959-4870-8768-7a52235470f7\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp",
+     "2026-11-08T05:06:04+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"9ce47b95-c959-4870-8768-7a52235470f7\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1393,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/dom"
+    ]
+   },
+   "place-order-debug-9ff3e4dd-2026-11-09-0184c80981a3245e19bc9b7d74954dab.log": {
+    "eil": 3,
+    "kb": 2.6,
+    "paskutines": [
+     "2026-11-09T08:12:39+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"9ff3e4dd-a069-4407-9f0f-0655f3c2f19a\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp",
+     "2026-11-09T08:12:39+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"9ff3e4dd-a069-4407-9f0f-0655f3c2f19a\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2,\"message\":\"Attempt to read property \\\"errors\\\" on array\",\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuania",
+     "2026-11-09T08:12:39+00:00 DEBUG [Shortcode #3] Checkout posted data validated CONTEXT: {\"payment_method\":\"paysera\",\"order_uid\":\"9ff3e4dd-a069-4407-9f0f-0655f3c2f19a\",\"store_url\":\"https://petshop.lt\",\"last_error\":{\"type\":2,\"message\":\"Attempt to read property \\\"errors\\\" on array\",\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-lithuaniapost-main/public/class-woo-lithuani"
+    ]
+   },
+   "place-order-debug-d82d87c0-2026-11-10-8f550dee8e584b8de6099a4fd1b72b96.log": {
+    "eil": 2,
+    "kb": 1.4,
+    "paskutines": [
+     "2026-11-10T07:01:04+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"d82d87c0-3fb9-4fc1-a88f-b1663a5e75e7\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp",
+     "2026-11-10T07:01:04+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"d82d87c0-3fb9-4fc1-a88f-b1663a5e75e7\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1393,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/dom"
+    ]
+   },
+   "place-order-debug-e151ac71-2026-11-09-cbc8562ec0eb79c66dacc68426cec9f6.log": {
+    "eil": 2,
+    "kb": 1.4,
+    "paskutines": [
+     "2026-11-09T16:58:43+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"e151ac71-3b42-4f0f-8e9d-47e7a65c47ea\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp",
+     "2026-11-09T16:58:43+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"e151ac71-3b42-4f0f-8e9d-47e7a65c47ea\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1393,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/dom"
+    ]
+   },
+   "place-order-debug-e4a8e757-2026-11-09-a08760eb2aa953cec6786ba9fa6816c5.log": {
+    "eil": 2,
+    "kb": 1.4,
+    "paskutines": [
+     "2026-11-09T12:18:32+00:00 DEBUG [Shortcode #1] Place Order flow initiated CONTEXT: {\"order_uid\":\"e4a8e757-b65e-4217-8164-797b3daa36fe\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1376,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp",
+     "2026-11-09T12:18:32+00:00 DEBUG [Shortcode #2] Session updated with checkout data and totals calculated CONTEXT: {\"order_uid\":\"e4a8e757-b65e-4217-8164-797b3daa36fe\",\"store_url\":\"https://petshop.lt\",\"backtrace\":[{\"file\":\"/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woocommerce/includes/class-wc-checkout.php\",\"line\":1393,\"function\":\"wc_log_order_step\"},{\"file\":\"/home/gyvunai2/dom"
+    ]
+   }
+  },
   "lp_src": [
    "395:             ],",
    "396:         ];",
@@ -48,9 +135,9 @@
    }
   ]
  },
- "v": "dep-074921",
+ "v": "dep-075057",
  "kurimas": 200,
- "sid": 8088,
+ "sid": 8089,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
