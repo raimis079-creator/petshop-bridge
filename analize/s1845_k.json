@@ -1,0 +1,118 @@
+{
+ "1": {
+  "v": "S1845k",
+  "dir": {
+   "petshop-backups/2026/11": [],
+   "petshop-backups/2026/10": []
+  },
+  "state_files": [
+   [
+    "application_backups",
+    "11-11 03:20"
+   ],
+   [
+    "backups",
+    "11-11 02:00"
+   ]
+  ],
+  "wpcron": [
+   [
+    "wp_delete_temp_updater_backups",
+    "11-17 15:44"
+   ]
+  ],
+  "statusai_30d": [
+   {
+    "status": "wc-cancelled",
+    "n": "18",
+    "pask": "2026-11-10 10:54:48"
+   },
+   {
+    "status": "wc-completed",
+    "n": "280",
+    "pask": "2026-11-11 07:36:45"
+   },
+   {
+    "status": "wc-processing",
+    "n": "22",
+    "pask": "2026-11-11 07:13:53"
+   }
+  ],
+  "completed_pask": [
+   {
+    "id": "38352",
+    "date_created_gmt": "2026-11-09 17:29:33",
+    "date_updated_gmt": "2026-11-11 07:36:45"
+   },
+   {
+    "id": "38346",
+    "date_created_gmt": "2026-11-09 12:24:58",
+    "date_updated_gmt": "2026-11-11 07:07:01"
+   },
+   {
+    "id": "38344",
+    "date_created_gmt": "2026-11-09 11:17:22",
+    "date_updated_gmt": "2026-11-11 07:07:01"
+   },
+   {
+    "id": "38361",
+    "date_created_gmt": "2026-11-10 07:01:42",
+    "date_updated_gmt": "2026-11-11 07:07:00"
+   },
+   {
+    "id": "38364",
+    "date_created_gmt": "2026-11-10 09:48:50",
+    "date_updated_gmt": "2026-11-11 06:36:05"
+   }
+  ],
+  "note_pask": [
+   {
+    "oid": "38251",
+    "comment_date": "2026-11-11 09:13:53",
+    "c": "Dropship sargas: tiekėjui perduota 2026-11-09 08:24:46, terminas 11-11 08:24 (2 darbo d.) "
+   },
+   {
+    "oid": "38394",
+    "comment_date": "2026-11-11 08:46:51",
+    "c": "Paysera: Naujo užsakymo kūrimo būsena"
+   },
+   {
+    "oid": "38394",
+    "comment_date": "2026-11-11 08:46:50",
+    "c": "PVM s/f AVPN011626 suteikta apmokėjus, data 2026-11-11 (S1839)."
+   },
+   {
+    "oid": "38394",
+    "comment_date": "2026-11-11 08:46:50",
+    "c": "Email \"Užsakymas vykdomas\" sent."
+   },
+   {
+    "oid": "38394",
+    "comment_date": "2026-11-11 08:46:49",
+    "c": "Email \"Naujas užsakymas\" sent."
+   },
+   {
+    "oid": "38394",
+    "comment_date": "2026-11-11 08:46:49",
+    "c": "Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėta"
+   },
+   {
+    "oid": "38394",
+    "comment_date": "2026-11-11 08:46:49",
+    "c": "Surūšiuota pati: 24 vnt. Pasta katėms su lašiša - Ontario — Iš AV; Miamor skanėstai katėms"
+   },
+   {
+    "oid": "38394",
+    "comment_date": "2026-11-11 08:46:48",
+    "c": "Faktai irasyti: 2 eilutes · pajamos 25,71 EUR (be PVM, po nuolaidu) · PVM 5,40 EUR · marza"
+   }
+  ]
+ },
+ "v": "dep-074357",
+ "kurimas": 200,
+ "sid": 8104,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
