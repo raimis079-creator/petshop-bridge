@@ -1,0 +1,152 @@
+{
+ "1": {
+  "v": "S1845h",
+  "logs": [
+   [
+    "Nov-2026.tar.gz",
+    0.3,
+    "11-11 04:15"
+   ],
+   [
+    "Nov-2026.tar.gz.1",
+    1.3,
+    "11-10 22:11"
+   ],
+   [
+    "Nov-2026.tar.gz.10",
+    0.4,
+    "11-06 02:58"
+   ],
+   [
+    "Nov-2026.tar.gz.11",
+    1.4,
+    "11-05 22:10"
+   ],
+   [
+    "Nov-2026.tar.gz.12",
+    0.2,
+    "11-05 02:05"
+   ],
+   [
+    "Nov-2026.tar.gz.2",
+    0.2,
+    "11-10 03:05"
+   ],
+   [
+    "Nov-2026.tar.gz.3",
+    1.1,
+    "11-09 22:11"
+   ],
+   [
+    "Nov-2026.tar.gz.4",
+    0.3,
+    "11-09 05:12"
+   ],
+   [
+    "Nov-2026.tar.gz.5",
+    1.1,
+    "11-08 22:11"
+   ],
+   [
+    "Nov-2026.tar.gz.6",
+    0.5,
+    "11-08 05:57"
+   ],
+   [
+    "Nov-2026.tar.gz.7",
+    0.9,
+    "11-07 22:10"
+   ],
+   [
+    "Nov-2026.tar.gz.8",
+    0.6,
+    "11-07 05:04"
+   ],
+   [
+    "Nov-2026.tar.gz.9",
+    1.4,
+    "11-06 22:11"
+   ]
+  ],
+  "hits": {
+   "Nov-2026.tar.gz": [
+    "107.178.194.36 - - [11/Nov/2026:05:21:24 +0200] \"GET /?ps_ads_offline=***&dienos=7 HTTP/2.0\" 200 2592 \"-\" \"Mozilla/5.0 (compatible; Google-Apps-Script; beanserver; +https://script.google.com; id: UAEmdDd-DiJZFh2KrUXnpJLsHKLtBEtXFa14)\""
+   ]
+  },
+  "raktas_yra": true,
+  "endpoint": {
+   "kodas": 200,
+   "eil": 4,
+   "pradzia": "{\"v\":\"1.3\",\"dienos\":3,\"n\":16,\"eil\":[{\"gclid\":\"***\",\"laikas\":\"2026-11-08 12:55:39\",\"verte\":30.78,\"marza\":7.68,\"valiuta\":\"EUR\",\"uzs\":38337},{\"gclid\":\"***\",\"laikas\":\"2026-11-08 19:40:45\",\"verte\":32.29,\"marza\":5.72,\"valiuta\":\"EUR\",\"uzs\":38338},{\"gclid\":\"***\",\"laikas\":\"2026-11-08 19:45:07\",\"verte\":35.88,\"marza\":7.96,\"valiuta\":\"EUR\",\"uzs\":38339},{\"gclid\":\"***\",\"laikas\":\"2026-11-09 13:12:29\",\"verte\":30.6"
+  },
+  "konv_vs_wc": [
+   {
+    "diena": "2026-10-30",
+    "konv": "3.0",
+    "wc_gclid": "3"
+   },
+   {
+    "diena": "2026-10-31",
+    "konv": "1.0",
+    "wc_gclid": "1"
+   },
+   {
+    "diena": "2026-11-01",
+    "konv": "6.8",
+    "wc_gclid": "7"
+   },
+   {
+    "diena": "2026-11-02",
+    "konv": "7.0",
+    "wc_gclid": "7"
+   },
+   {
+    "diena": "2026-11-03",
+    "konv": "11.1",
+    "wc_gclid": "11"
+   },
+   {
+    "diena": "2026-11-04",
+    "konv": "4.8",
+    "wc_gclid": "5"
+   },
+   {
+    "diena": "2026-11-05",
+    "konv": "5.0",
+    "wc_gclid": "5"
+   },
+   {
+    "diena": "2026-11-06",
+    "konv": "3.0",
+    "wc_gclid": "3"
+   },
+   {
+    "diena": "2026-11-07",
+    "konv": "4.0",
+    "wc_gclid": "4"
+   },
+   {
+    "diena": "2026-11-08",
+    "konv": "5.0",
+    "wc_gclid": "5"
+   },
+   {
+    "diena": "2026-11-09",
+    "konv": "6.0",
+    "wc_gclid": "6"
+   },
+   {
+    "diena": "2026-11-10",
+    "konv": "0.0",
+    "wc_gclid": "7"
+   }
+  ]
+ },
+ "v": "dep-090500",
+ "kurimas": 200,
+ "sid": 8110,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
