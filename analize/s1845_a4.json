@@ -1,0 +1,236 @@
+{
+ "4": {
+  "v": "S1845a",
+  "faze": "4",
+  "home": "/home/gyvunai2/domains/petshop.lt",
+  "backup_naujausi": [],
+  "wpai_hist_nakt": [
+   {
+    "i": "3",
+    "time_run": "304",
+    "s": "0 Produktai created 68 updated 2132 skipped",
+    "date": "2026-11-11 09:01:18"
+   },
+   {
+    "i": "3",
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-11-11 09:00:02"
+   },
+   {
+    "i": "7",
+    "time_run": "397",
+    "s": "import finished & cron un-triggered<br>0 Produktai created 47 updated 2576 skipped",
+    "date": "2026-11-11 08:16:03"
+   },
+   {
+    "i": "7",
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-11-11 08:15:02"
+   },
+   {
+    "i": "3",
+    "time_run": null,
+    "s": "cron processing",
+    "date": "2026-11-11 08:01:22"
+   },
+   {
+    "i": "3",
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-11-11 08:00:03"
+   },
+   {
+    "i": "7",
+    "time_run": "484",
+    "s": "import finished & cron un-triggered<br>0 Produktai created 135 updated 2488 skipped",
+    "date": "2026-11-11 07:16:02"
+   },
+   {
+    "i": "7",
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-11-11 07:15:03"
+   },
+   {
+    "i": "5",
+    "time_run": "72",
+    "s": "import finished & cron un-triggered<br>4 Produktai created 178 updated 2441 skipped",
+    "date": "2026-11-11 04:31:03"
+   },
+   {
+    "i": "5",
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-11-11 04:30:02"
+   }
+  ],
+  "wpai_imports": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "0",
+    "last_activity": "2026-05-27 11:14:21",
+    "imported": "0",
+    "skipped": "2045",
+    "updated": "0",
+    "count": "2045"
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "1",
+    "last_activity": "2026-11-11 04:02:02",
+    "imported": "334",
+    "skipped": "1886",
+    "updated": "331",
+    "count": "2743"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "processing": "1",
+    "executing": "0",
+    "triggered": "1",
+    "last_activity": "2026-11-11 09:08:11",
+    "imported": "79",
+    "skipped": "2681",
+    "updated": "79",
+    "count": "2767"
+   },
+   {
+    "id": "5",
+    "name": "vf-feed.xml",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "0",
+    "last_activity": "2026-11-11 04:32:15",
+    "imported": "182",
+    "skipped": "2441",
+    "updated": "178",
+    "count": "2623"
+   },
+   {
+    "id": "7",
+    "name": "vf-feed.xml",
+    "processing": "0",
+    "executing": "0",
+    "triggered": "0",
+    "last_activity": "2026-11-11 08:22:40",
+    "imported": "47",
+    "skipped": "2576",
+    "updated": "47",
+    "count": "2623"
+   }
+  ],
+  "ads_offline_opc": [],
+  "ads_offline_fetch": [
+   "11/Nov/2026:05:21:24 +0200 200",
+   "10/Nov/2026:05:21:24 +0200 200"
+  ],
+  "konv_vs_wc": [
+   {
+    "diena": "2026-11-04",
+    "konv": "4.8",
+    "wc_gclid": "5"
+   },
+   {
+    "diena": "2026-11-05",
+    "konv": "5.0",
+    "wc_gclid": "5"
+   },
+   {
+    "diena": "2026-11-06",
+    "konv": "3.0",
+    "wc_gclid": "3"
+   },
+   {
+    "diena": "2026-11-07",
+    "konv": "4.0",
+    "wc_gclid": "4"
+   },
+   {
+    "diena": "2026-11-08",
+    "konv": "5.0",
+    "wc_gclid": "5"
+   },
+   {
+    "diena": "2026-11-09",
+    "konv": "6.0",
+    "wc_gclid": "6"
+   },
+   {
+    "diena": "2026-11-10",
+    "konv": "0.0",
+    "wc_gclid": "7"
+   }
+  ],
+  "reklama_pask": [
+   {
+    "diena": "2026-11-08",
+    "n": "4",
+    "eur": "53.04",
+    "konv": "5.00",
+    "irasyta": "2026-11-10 03:01:30"
+   },
+   {
+    "diena": "2026-11-09",
+    "n": "4",
+    "eur": "51.34",
+    "konv": "6.00",
+    "irasyta": "2026-11-11 03:01:30"
+   },
+   {
+    "diena": "2026-11-10",
+    "n": "4",
+    "eur": "52.29",
+    "konv": "0.00",
+    "irasyta": "2026-11-11 03:01:30"
+   }
+  ],
+  "uzs_nakt": [
+   {
+    "id": "38380",
+    "status": "wc-processing",
+    "suma": "22.43",
+    "pm": "paysera",
+    "date_created_gmt": "2026-11-10 19:22:12"
+   },
+   {
+    "id": "38381",
+    "status": "wc-processing",
+    "suma": "84.90",
+    "pm": "paysera",
+    "date_created_gmt": "2026-11-11 04:18:19"
+   },
+   {
+    "id": "38393",
+    "status": "wc-processing",
+    "suma": "31.89",
+    "pm": "paysera",
+    "date_created_gmt": "2026-11-11 05:05:41"
+   },
+   {
+    "id": "38394",
+    "status": "wc-processing",
+    "suma": "31.11",
+    "pm": "paysera",
+    "date_created_gmt": "2026-11-11 06:42:56"
+   }
+  ],
+  "laikas": "2026-11-11 11:08:12",
+  "trukme_s": 0
+ },
+ "v": "dep-090706",
+ "kurimas": 200,
+ "sid": 8111,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
