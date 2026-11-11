@@ -1,0 +1,45 @@
+{
+ "1": {
+  "v": "S1845g",
+  "pragma_log": [
+   {
+    "time": "2026-10-05 11:00:03",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-10-19 12:35:58",
+    "message": "Production mode ĮJUNGTAS (S1789, Raimio prašymu)"
+   },
+   {
+    "time": "2026-10-19 12:38:30",
+    "message": "2026-09: eksportas sekmingai. Uzsakymu: 202, Nauju klientu: 202"
+   },
+   {
+    "time": "2026-10-21 23:06:34",
+    "message": "2026-09: PATAISYTI pardavimai + pardavimai_sum issiusti (OK) S1793"
+   },
+   {
+    "time": "2026-11-05 10:58:44",
+    "message": "2026-10: eksportas sekmingai. Uzsakymu: 314, Nauju klientu: 275"
+   },
+   {
+    "time": "2026-11-05 11:05:08",
+    "message": "2026-10: eksportas ISSIUSTAS dalimis 3/3 laiskai (S1829 rankinis po 11-05 cron gedimo). Uzsakymu: 314, Nauju klientu: 275"
+   }
+  ],
+  "pragma_pask": false,
+  "pragma_issiusta": false,
+  "pragma_cron": {
+   "petshop_pragma_dry_check": "2026-12-04 10:00",
+   "petshop_pragma_monthly_export": "2026-12-05 10:00",
+   "petshop_pragma_retry": null
+  }
+ },
+ "v": "dep-075610",
+ "kurimas": 200,
+ "sid": 8109,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
