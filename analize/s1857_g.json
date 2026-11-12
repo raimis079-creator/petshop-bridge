@@ -1,0 +1,560 @@
+{
+ "1": {
+  "v": "S1857g",
+  "s535": {
+   "id": "535",
+   "name": "Petshop MnM Sutaupymo žymeklis v8 (nauda < 3 % nerodoma)",
+   "active": "1",
+   "code": "\n// Petshop MnM Sutaupymo žymeklis v8 (nauda < 3 % nerodoma)\n// A) Produkto puslapyje: \"Sutaupote X,XX € (Y%)\" po kaina\n// B) Perbraukta senoji kaina (komponentų suma) kortelėse ir produkto puslapyje\n// C) JOKIO badge ant nuotraukos — klientas jau žino, kad rinkinys\n\nfunction petshop_mnm_calc_savings($product) {\n    if (!$product || $product->get_type() !== 'mix-and-match') return false;\n    $allowed_cats = array('konservu-rinkiniai', 'skanestu-rinkiniai', 'kramtalu-rinkiniai');\n    $matched = false;\n    foreach ($allowed_cats as $slug) {\n        if (has_term($slug, 'product_cat', $product->get_id())) { $matched = true; break; }\n    }\n    if (!$matched) return false;\n    $container_id = $product->get_id();\n    $fixed_raw = get_post_meta($container_id, '_petshop_component_quantities', true);\n    $fixed_map = array();\n    if (!empty($fixed_raw)) {\n        $decoded = json_decode($fixed_raw, true);\n        if (is_array($decoded)) $fixed_map = $decoded;\n    }\n    $total_separate = 0.0;\n    if (method_exists($product, 'get_child_items')) {\n        foreach ($product->get_child_items() as $child) {\n            $cp = $child->get_product();\n            if (!$cp) continue;\n            $cid = $cp->get_id();\n            $qty = isset($fixed_map[$cid]) ? (int)$fixed_map[$cid] : 1;\n            if ($qty < 1) $qty = 1;\n            $fresh = wc_get_product($cid);\n            if (!$fresh) continue;\n            $raw_price = (float) $fresh->get_price();\n            if ($raw_price <= 0) $raw_price = (float) $fresh->get_regular_price();\n            $display_price = (float) wc_get_price_to_display($fresh, array('price' => $raw_price));\n            $total_separate += $display_price * $qty;\n        }\n    }\n    if ($total_separate <= 0) return false;\n    $bundle_price = (float) wc_get_price_to_display($product);\n    $savings = $total_separate - $bundle_price;\n    if ($savings < 0.01) return false;\n    /* v8 (savininko sprendimas 2026-08-25): po 3 % nauda nerodoma nei kortelėse,\n       nei prekės puslapyje — „Sutaupote 0,28 € (1%)\" atrodo juokingai. Riba ta\n       pati kaip petshop-rinkiniai.php NAUDA_MIN_PROC. */\n    $percent = round(($savings / $total_separate) * 100);\n    if ($percent < 3) return false;\n    return array(\n        'amount'  => $savings,\n        'percent' => $percent,\n        'total'   => $total_separate,\n    );\n}\n\n// === A) Produkto puslapyje: tekstas po kaina ===\nadd_action('woocommerce_single_product_summary', function() {\n    global $product;\n    $sav = petshop_mnm_calc_savings($product);\n    if (!$sav) return;\n    $savings_str = number_format($sav['amount'], 2, ',', ' ');\n    echo '<p class=\"petshop-savings\" style=\"margin: -0.5rem 0 1.2rem; font-size: 15px; font-weight: 600; color: #4a8a3f;\">'\n        . 'Sutaupote ' . esc_html($savings_str) . ' &euro; (' . esc_html($sav['percent']) . '%)'\n        . '</p>';\n}, 11);\n\n// === B) is_on_sale = true (kad WC rodytų perbrauktą kainą) ===\nadd_filter('woocommerce_product_is_on_sale', function($on_sale, $product) {\n    if (!$product || $product->get_type() !== 'mix-and-match') return $on_sale;\n    static $cache = array();\n    $pid = $product->get_id();\n    if (!isset($cache[$pid])) {\n        $cache[$pid] = (bool) petshop_mnm_calc_savings($product);\n    }\n    return $cache[$pid] ? true : $on_sale;\n}, 20, 2);\n\n// === C) regular_price = komponentų suma (kad ~~23,41~~ 21,99) ===\nadd_filter('woocommerce_product_get_regular_price', function($price, $product) {\n    if (!$product || $product->get_type() !== 'mix-and-match') return $price;\n    static $cache = array();\n    $pid = $product->get_id();\n    if (!isset($cache[$pid])) {\n        $sav = petshop_mnm_calc_savings($product);\n        $cache[$pid] = $sav ? $sav['total'] : false;\n    }\n    return $cache[$pid] !== false ? $cache[$pid] : $price;\n}, 20, 2);\n\n// === D) PASLĖPTI sale badge ant nuotraukos (grąžinam tuščią) ===\nadd_filter('woocommerce_sale_flash', function($html, $post, $product) {\n    if (!$product || $product->get_type() !== 'mix-and-match') return $html;\n    $sav = petshop_mnm_calc_savings($product);\n    if (!$sav) return $html;\n    return ''; // jokio badge\n}, 20, 3);\n"
+  },
+  "s570": {
+   "id": "570",
+   "name": "Petshop Daugiau=Pigiau Puslapis Shortcode v1.0",
+   "active": "1",
+   "c": "/**\n * Petshop Daugiau=Pigiau puslapio shortcode v1.1\n * v1.1 (S1736, 2026-09-29): rodė tik 48 pirmus pakus (array_slice, be puslapių), nors „Visos (235)\" —\n *   dabar visi, po 48 puslapyje su puslapiavimu (WC [products paginate], ?product-page=N).\n * [psc_daugiau_pigiau] - rodo visus \"Daugiau=pigia"
+  },
+  "sutap_snip": [
+   {
+    "id": "535",
+    "name": "Petshop MnM Sutaupymo žymeklis v8 (nauda < 3 % nerodoma)",
+    "active": "1"
+   },
+   {
+    "id": "568",
+    "name": "Petshop Daugiau=Pigiau Display v1.2",
+    "active": "1"
+   },
+   {
+    "id": "572",
+    "name": "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v11",
+    "active": "0"
+   },
+   {
+    "id": "7714",
+    "name": "TEMP PS dep-173420",
+    "active": "0"
+   },
+   {
+    "id": "8214",
+    "name": "TEMP PS dep-175614",
+    "active": "0"
+   },
+   {
+    "id": "8215",
+    "name": "TEMP PS dep-175802",
+    "active": "0"
+   },
+   {
+    "id": "8219",
+    "name": "TEMP PS dep-180445",
+    "active": "0"
+   },
+   {
+    "id": "8221",
+    "name": "TEMP PS dep-180849",
+    "active": "1"
+   }
+  ],
+  "menu": [
+   {
+    "ID": "2972",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "119",
+    "parent": "34128"
+   },
+   {
+    "ID": "3186",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "90",
+    "parent": "3185"
+   },
+   {
+    "ID": "3187",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "98",
+    "parent": "3185"
+   },
+   {
+    "ID": "3189",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "88",
+    "parent": "3188"
+   },
+   {
+    "ID": "3190",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "97",
+    "parent": "3188"
+   },
+   {
+    "ID": "3192",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "94",
+    "parent": "3191"
+   },
+   {
+    "ID": "3193",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "100",
+    "parent": "3191"
+   },
+   {
+    "ID": "34106",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "305",
+    "parent": "3163"
+   },
+   {
+    "ID": "34109",
+    "post_title": "Šukos, šepečiai, žirklės",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "639",
+    "parent": "3179"
+   },
+   {
+    "ID": "2973",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "87",
+    "parent": "0"
+   },
+   {
+    "ID": "3112",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "77",
+    "parent": "0"
+   },
+   {
+    "ID": "3113",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "89",
+    "parent": "0"
+   },
+   {
+    "ID": "3114",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "70",
+    "parent": "0"
+   },
+   {
+    "ID": "3115",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "93",
+    "parent": "0"
+   },
+   {
+    "ID": "3153",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "72",
+    "parent": "3152"
+   },
+   {
+    "ID": "3154",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "73",
+    "parent": "3152"
+   },
+   {
+    "ID": "3156",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "95",
+    "parent": "3155"
+   },
+   {
+    "ID": "3157",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "101",
+    "parent": "3155"
+   },
+   {
+    "ID": "3159",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "108",
+    "parent": "3158"
+   },
+   {
+    "ID": "3160",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "82",
+    "parent": "3158"
+   },
+   {
+    "ID": "3161",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "76",
+    "parent": "3158"
+   },
+   {
+    "ID": "3162",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "75",
+    "parent": "3158"
+   },
+   {
+    "ID": "3164",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "111",
+    "parent": "3163"
+   },
+   {
+    "ID": "3165",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "116",
+    "parent": "3163"
+   },
+   {
+    "ID": "3166",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "115",
+    "parent": "3163"
+   },
+   {
+    "ID": "3168",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "123",
+    "parent": "3163"
+   },
+   {
+    "ID": "3169",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "125",
+    "parent": "3163"
+   },
+   {
+    "ID": "3171",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "81",
+    "parent": "3170"
+   },
+   {
+    "ID": "3172",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "79",
+    "parent": "3170"
+   },
+   {
+    "ID": "3174",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "96",
+    "parent": "3173"
+   },
+   {
+    "ID": "3175",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "102",
+    "parent": "3173"
+   },
+   {
+    "ID": "3177",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "107",
+    "parent": "3176"
+   },
+   {
+    "ID": "3178",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "106",
+    "parent": "3176"
+   },
+   {
+    "ID": "3180",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "109",
+    "parent": "3179"
+   },
+   {
+    "ID": "3181",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "112",
+    "parent": "3179"
+   },
+   {
+    "ID": "3182",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "117",
+    "parent": "3179"
+   },
+   {
+    "ID": "3183",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "114",
+    "parent": "3179"
+   },
+   {
+    "ID": "3184",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "124",
+    "parent": "3179"
+   },
+   {
+    "ID": "6642",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "233",
+    "parent": "3163"
+   },
+   {
+    "ID": "34084",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "304",
+    "parent": "3188"
+   },
+   {
+    "ID": "34086",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "121",
+    "parent": "3179"
+   },
+   {
+    "ID": "34087",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "569",
+    "parent": "3179"
+   },
+   {
+    "ID": "34089",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "122",
+    "parent": "3163"
+   },
+   {
+    "ID": "34110",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "654",
+    "parent": "3163"
+   },
+   {
+    "ID": "34111",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "655",
+    "parent": "3163"
+   },
+   {
+    "ID": "34112",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "656",
+    "parent": "3158"
+   },
+   {
+    "ID": "34113",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "657",
+    "parent": "3188"
+   },
+   {
+    "ID": "34116",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "666",
+    "parent": "3185"
+   },
+   {
+    "ID": "34126",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "679",
+    "parent": "0"
+   },
+   {
+    "ID": "34127",
+    "post_title": "SPRENDIMAI",
+    "tipas": "post_type",
+    "obj": "page",
+    "url": "",
+    "objid": "34253",
+    "parent": "0"
+   },
+   {
+    "ID": "34129",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "682",
+    "parent": "34246"
+   },
+   {
+    "ID": "34130",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "683",
+    "parent": "34246"
+   },
+   {
+    "ID": "34131",
+    "post_title": "",
+    "tipas": "taxonomy",
+    "obj": "product_cat",
+    "url": "",
+    "objid": "684",
+    "parent": "34246"
+   }
+  ],
+  "cat": {
+   "id": 680,
+   "count": 0,
+   "children": [
+    685,
+    686,
+    687,
+    688
+   ]
+  },
+  "page_sprendimai": [
+   34253,
+   "publish",
+   "Sprendimai"
+  ]
+ },
+ "v": "dep-180849",
+ "kurimas": 200,
+ "sid": 8221,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
