@@ -1,0 +1,84 @@
+{
+ "2": {
+  "v": "S1850r4",
+  "f": "2",
+  "planas": {
+   "suma": 89.19,
+   "tot": 73.710744,
+   "tax": {
+    "1": 15.479256
+   },
+   "wr": 1,
+   "rq": 0,
+   "liks_uzsakymas": 32.89,
+   "misrus_spr": true,
+   "surinkta": "2026-11-09 07:05:06 | Inga"
+  },
+  "po": {
+   "total": "32.89",
+   "tax": "5.71",
+   "ship": "3.3",
+   "refunded": 89.19,
+   "status": "processing",
+   "items": [
+    [
+     "Bosch sausainiai šuniukams, kauliuko formos, Mono Bones, 900 g",
+     1,
+     5.58
+    ],
+    [
+     "Natūralios triušio ausys su kailiuku, 100 g",
+     1,
+     3.9
+    ],
+    [
+     "Dubenėlis gyvūnui, sulankstomas, 16,5 x 14,5 x 7,5 cm, Squeeze Big - Rausvai ruda",
+     1,
+     3.69
+    ],
+    [
+     "Tempimo žaislas šuniui su rankena ir kamuoliuku, Bungee Tuger, su amortizatoriumi, 85 cm",
+     1,
+     15.73
+    ]
+   ],
+   "grazinti": "[{\"laikas\":\"2026-11-12 10:55:23\",\"kas\":\"Raimis\",\"suma\":89.19,\"refund\":38426,\"ka\":\"i\\u0161imta Trixie Metalinis narvas, L 109x79x71 cm\"}]",
+   "shipments": "1",
+   "jud": [
+    "WC veidrodis +1 → 4"
+   ],
+   "refund_id": 38426
+  },
+  "fakt_graz": [
+   {
+    "id": "15",
+    "uzsakymas_id": "38251",
+    "refund_id": "38426",
+    "eilute_id": "1732",
+    "wc_eilutes_id": "4923",
+    "eilute_raktas": "4923",
+    "preke_id": "13162",
+    "grazinta_at": "2026-11-12 08:55:23",
+    "diena": "2026-11-12",
+    "kiekis": "1",
+    "suma_ct": "7371",
+    "pvm_ct": "1548",
+    "savikaina_ct": "5265",
+    "priezastis_kodas": null,
+    "priezastis_tekstas": "Darbalaukis: prekė išimta „Trixie Metalinis narvas, L 109x79x71 cm“ (klientė atsisakė, ZB neišsiuntė; Claude S1850 Raimio prašymu)",
+    "atsargos_grizo": "1",
+    "sandelis": "zb",
+    "testinis": "0",
+    "saltinis_aplinka": "prod",
+    "fakt_versija": "1"
+   }
+  ]
+ },
+ "v": "dep-085419",
+ "kurimas": 200,
+ "sid": 8144,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
