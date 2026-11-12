@@ -1,56 +1,163 @@
 {
- "v": "dep-145834",
+ "v": "dep-150018",
  "kurimas": 200,
- "sid": 8197,
+ "sid": 8198,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "C": {
-  "38471": [
-   "0.4200",
-   "0.4200"
-  ],
-  "38473": [
-   "0.4200",
-   "0.4200"
-  ],
-  "v": "S1854d-C"
+ "F": {
+  "v": "S1854d-F",
+  "pak": {
+   "38471": {
+    "16": [
+     "38475",
+     "13.90",
+     "6.72"
+    ],
+    "32": [
+     "38476",
+     "24.90",
+     "13.44"
+    ]
+   },
+   "38473": {
+    "16": [
+     "38477",
+     "13.90",
+     "6.72"
+    ],
+    "32": [
+     "38478",
+     "24.90",
+     "13.44"
+    ]
+   }
+  },
+  "d19_n": 306
  },
- "P1": {
-  "success": true,
-  "data": {
-   "id": 38475,
-   "tipas": "dp",
-   "busena": "draft",
-   "nuoroda": "https://petshop.lt/?post_type=product&p=38475&preview=true"
-  }
- },
- "P2": {
-  "success": true,
-  "data": {
-   "id": 38476,
-   "tipas": "dp",
-   "busena": "draft",
-   "nuoroda": "https://petshop.lt/?post_type=product&p=38476&preview=true"
-  }
- },
- "P3": {
-  "success": true,
-  "data": {
-   "id": 38477,
-   "tipas": "dp",
-   "busena": "draft",
-   "nuoroda": "https://petshop.lt/?post_type=product&p=38477&preview=true"
-  }
- },
- "P4": {
-  "success": true,
-  "data": {
-   "id": 38478,
-   "tipas": "dp",
-   "busena": "draft",
-   "nuoroda": "https://petshop.lt/?post_type=product&p=38478&preview=true"
+ "U": {
+  "v": "S1854d-U",
+  "st": {
+   "38430": [
+    "draft",
+    "publish",
+    "instock",
+    "1.04",
+    "Animonda Vom Feinsten Adult with Beef and Pot"
+   ],
+   "38432": [
+    "draft",
+    "publish",
+    "instock",
+    "0.89",
+    "Animonda Vom Feinsten Adult Pâté with Chicken"
+   ],
+   "38434": [
+    "draft",
+    "publish",
+    "instock",
+    "0.89",
+    "Animonda Vom Feinsten Adult in Jelly with Chi"
+   ],
+   "38438": [
+    "draft",
+    "publish",
+    "instock",
+    "0.89",
+    "Animonda Vom Feinsten Adult in Sauce with Chi"
+   ],
+   "38440": [
+    "draft",
+    "publish",
+    "instock",
+    "1.19",
+    "Animonda Vom Feinsten Adult with Chicken, Sal"
+   ],
+   "38442": [
+    "draft",
+    "publish",
+    "instock",
+    "13.90",
+    "16 vnt. Animonda Vom Feinsten Adult Pâté with"
+   ],
+   "38443": [
+    "draft",
+    "publish",
+    "instock",
+    "24.90",
+    "32 vnt. Animonda Vom Feinsten Adult Pâté with"
+   ],
+   "38444": [
+    "draft",
+    "publish",
+    "instock",
+    "13.90",
+    "16 vnt. Animonda Vom Feinsten Adult in Jelly "
+   ],
+   "38445": [
+    "draft",
+    "publish",
+    "instock",
+    "24.90",
+    "32 vnt. Animonda Vom Feinsten Adult in Jelly "
+   ],
+   "38448": [
+    "draft",
+    "publish",
+    "instock",
+    "13.90",
+    "16 vnt. Animonda Vom Feinsten Adult in Sauce "
+   ],
+   "38449": [
+    "draft",
+    "publish",
+    "instock",
+    "24.90",
+    "32 vnt. Animonda Vom Feinsten Adult in Sauce "
+   ],
+   "38471": [
+    "draft",
+    "publish",
+    "outofstock",
+    "0.89",
+    "Animonda Vom Feinsten Adult in Jelly with Chi"
+   ],
+   "38473": [
+    "draft",
+    "publish",
+    "outofstock",
+    "0.89",
+    "Animonda Vom Feinsten Adult Pâté with Chicken"
+   ],
+   "38475": [
+    "draft",
+    "publish",
+    "instock",
+    "13.90",
+    "16 vnt. Animonda Vom Feinsten Adult in Jelly "
+   ],
+   "38476": [
+    "draft",
+    "publish",
+    "instock",
+    "24.90",
+    "32 vnt. Animonda Vom Feinsten Adult in Jelly "
+   ],
+   "38477": [
+    "draft",
+    "publish",
+    "instock",
+    "13.90",
+    "16 vnt. Animonda Vom Feinsten Adult Pâté with"
+   ],
+   "38478": [
+    "draft",
+    "publish",
+    "instock",
+    "24.90",
+    "32 vnt. Animonda Vom Feinsten Adult Pâté with"
+   ]
   }
  }
 }
