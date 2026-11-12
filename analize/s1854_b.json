@@ -1,0 +1,206 @@
+{
+ "v": "dep-145533",
+ "kurimas": 200,
+ "sid": 8195,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "S1854b-S",
+  "b": {
+   "38430": [
+    "draft",
+    88,
+    "instock",
+    null,
+    "AV 88",
+    "Animonda Vom Feinsten Adult with Beef and Potatoes"
+   ],
+   "38432": [
+    "draft",
+    128,
+    "instock",
+    null,
+    "AV 128",
+    "Animonda Vom Feinsten Adult Pâté with Chicken and "
+   ],
+   "38434": [
+    "draft",
+    128,
+    "instock",
+    null,
+    "AV 128",
+    "Animonda Vom Feinsten Adult in Jelly with Chicken "
+   ],
+   "38436": [
+    "publish",
+    128,
+    "instock",
+    null,
+    "AV 128",
+    "Animonda Vom Feinsten Adult in Sauce with Chicken "
+   ],
+   "38438": [
+    "draft",
+    128,
+    "instock",
+    null,
+    "AV 128",
+    "Animonda Vom Feinsten Adult in Sauce with Chicken "
+   ],
+   "38440": [
+    "draft",
+    96,
+    "instock",
+    null,
+    "AV 96",
+    "Animonda Vom Feinsten Adult with Chicken, Salmon F"
+   ],
+   "38471": [
+    "draft",
+    0,
+    "outofstock",
+    null,
+    "AV 0",
+    "Animonda Vom Feinsten Adult in Jelly with Chicken "
+   ],
+   "38473": [
+    "draft",
+    0,
+    "outofstock",
+    null,
+    "AV 0",
+    "Animonda Vom Feinsten Adult Pâté with Chicken and "
+   ]
+  },
+  "p": {
+   "38442": [
+    "draft",
+    "instock",
+    false,
+    true
+   ],
+   "38443": [
+    "draft",
+    "instock",
+    false,
+    true
+   ],
+   "38444": [
+    "draft",
+    "instock",
+    false,
+    true
+   ],
+   "38445": [
+    "draft",
+    "instock",
+    false,
+    true
+   ],
+   "38446": [
+    "publish",
+    "instock",
+    true,
+    true
+   ],
+   "38447": [
+    "publish",
+    "instock",
+    true,
+    true
+   ],
+   "38448": [
+    "draft",
+    "instock",
+    false,
+    true
+   ],
+   "38449": [
+    "draft",
+    "instock",
+    false,
+    true
+   ]
+  },
+  "kodas": {
+   "petshop-fbt.php": [
+    "123: add_filter( 'woocommerce_get_cart_item_from_session', [ $this, 'restore_cart_item' ], 10, 2 );",
+    "251: if ( $q === null || $q === '' ) { $p = wc_get_product( $id ); $q = $p ? (int) $p->get_stock_quantity() : 0; }",
+    "1654: public function restore_cart_item( $item, $values ) {"
+   ],
+   "petshop-feeds.php": [
+    "377: $likutis = $pr->get_stock_quantity();"
+   ],
+   "petshop-av-limit.php": [
+    "32: add_filter( 'woocommerce_product_get_stock_quantity', [ __CLASS__, 'stock_qty' ], 20, 2 );",
+    "33: add_filter( 'woocommerce_product_variation_get_stock_quantity', [ __CLASS__, 'stock_qty' ], 20, 2 );"
+   ],
+   "petshop-darbalaukis.php": [
+    "13: *   `_ps_av_reduced_qty` vienetais (baziniais, kaip `petshop-av-reduce`). Anksčiau nurašinėjo nuo pako → klaida „AV tik 0“ (#1268).",
+    "63: * Petshop Darbalaukis v3.36 (S1620, Raimis 09-06 „2 – ok, 3 – a ir b“): FILTRAI „Visi“ lange — Data „Nuo–iki“ (variklio `datos_riba('intervalas')`), Apmokėjimas (pavedimu / Paysera / grynais / neapmok",
+    "78: *    +q (grynai AV `_stock`, kitaip `Petshop_AV_Stock::increase`), tiekėjas→Avesa −q (jei Avesoje < q —",
+    "79: *    neleidžia „Avesoje tik N“), →Avesa sandėlį +q dabar (Gauta daro +q ir −q — K2). Žymė `_ps_av_reduced_qty`",
+    "129: *   „Atšaukti — prekės grįžo į AV“ / „Be mokesčio“ atšaukia neapmokėtą pakartotinį užsakymą (be laiškų). Variklis neliestas (AV_Order / AV_Reduce / Partijos /",
+    "143: *   Eiga (`kiekis_vykdyti`): (1) likutis grįžta — AV per `likutis()` pagal `_ps_av_reduced_qty` (perrašomas), WC veidrodis per",
+    "144: *   `wc_update_product_stock` pagal `_reduced_stock` (perrašomas), `_restock_refunded_items` += n (faktui „atsargos grįžo“);",
+    "179: *   (kaip v3.11.1), AV eilutės — variklio `Petshop_AV_Reduce::grazinti` veidrodis eilutės lygiu (`likutis()` +q, `_ps_av_reduced_qty` → 0, senas kiekis",
+    "241: *   (`_ps_source=av`, `_ps_av_reduced_qty=q`, planas + grupės perskaičiuojami); likutis dropship eilutėms +q (grįžo) −q (išeina) = 0 per",
+    "247: *   „Atšaukti — prekės grįžo į AV“ (`grizta_atsaukti`): dropship eilutėms +q į `_own_stock_qty` (`Petshop_AV_Stock::increase` — sukuria lauką, prekė tampa",
+    "347: *   V2 — grynai AV likutis per `wc_update_product_stock` (atominis) + užraktas veiksmui; V3 — be `wp_cache_flush`.",
+    "422: add_filter( 'woocommerce_payment_complete_reduce_order_stock', array( __CLASS__, 'telefonu_likutis' ), 10, 2 ); // v3.34 (B 6): telefoninio pavedimu — likutis tik apmokėjus"
+   ],
+   "petshop-faktai.php": [
+    "20: *   p15 petshop-av-reduce     — mazina AV likuti"
+   ],
+   "petshop-katalogas.php": [
+    "808: * `wc_product_meta_lookup` (min_price, stock_quantity). Prekės puslapyje kaina",
+    "1147: $prod->set_stock_quantity( $p['tapo'] );",
+    "1664: $v->set_stock_quantity( $l );",
+    "2235: $prod->set_stock_quantity( $tapo );",
+    "2890: $prod->set_stock_quantity( (int) $r['buvo'] );"
+   ],
+   "petshop-pardavimai.php": [
+    "150: $likutis = $prod->get_stock_quantity();"
+   ],
+   "petshop-partijos.php": [
+    "4: *   (`_ps_source`, rašo petshop-av-order prio 5) ir AV nurašymo (`_ps_av_reduced_pid/_qty`, rašo petshop-av-reduce prio 15):",
+    "48: * sis modulis neliecia — ji mazina `Petshop_AV_Reduce`. Zr. `kabinti_uzsakymus()`.",
+    "58: *   hook'u kaip `Petshop_AV_Reduce` (payment_complete · status_processing),",
+    "296: $prod->set_stock_quantity( $kiekis );",
+    "585: * AV likuti jau mazina `Petshop_AV_Reduce::mazinti` (prioritetas 15 prie",
+    "688: $bp = (int) $item->get_meta( '_ps_av_reduced_pid' );",
+    "689: $bq = (int) $item->get_meta( '_ps_av_reduced_qty' );"
+   ],
+   "petshop-rinkiniai.php": [
+    "914: * set_stock_quantity(), kuris atnaujina ir wc_product_meta_lookup",
+    "920: if ( $product->get_manage_stock() || $product->get_stock_quantity() !== null ) {",
+    "922: $product->set_stock_quantity( null );",
+    "1237: $lik   = $baze ? $baze->get_stock_quantity() : null;",
+    "1311: $lik = $vp->get_stock_quantity();",
+    "1651: 'lik'   => $p->get_stock_quantity(),",
+    "3144: $lik = $p->get_stock_quantity();"
+   ]
+  },
+  "pvz": {
+   "order": "38450",
+   "pak": "38021",
+   "data": "2026-11-12 14:07",
+   "busena": "processing",
+   "pastabos": [
+    "Paysera: Naujo užsakymo kūrimo būsena",
+    "PVM s/f AVPN011644 suteikta apmokėjus, data 2026-11-12 (S1839).",
+    "Email \"Užsakymas vykdomas\" sent.",
+    "Email \"Naujas užsakymas\" sent.",
+    "Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+    "Surūšiuota pati: 24 vnt. Farmina N&amp;D Ocean konservai  — ZB siunčia klientui",
+    "Faktai irasyti: 1 eilutes · pajamos 43,46 EUR (be PVM, po nuolaidu) · PVM 9,13 EUR · marza 9,76 EUR · kontribucija (be pristatymo) 9,31 EUR",
+    "Paysera: Užsakymo būsena po apmokėjimo",
+    "Daugiau=pigiau: pack \"24 vnt. Farmina N&amp;D Ocean konservai mažų veislių šuniukams su menke ir moliūgu 140 g\" (x1) nurašė 24 vnt. iš bazinio produkto #33307 (Farmina N&amp;D Ocean konservai mažų veislių šuniukams su me",
+    "Paysera: Neapmokėto užsakymo būsena",
+    "Vykdymas: DS — ZB 1 vnt (1 siunta(-os)) · dropship pirma"
+   ]
+  }
+ }
+}
