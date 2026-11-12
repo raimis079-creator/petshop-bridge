@@ -1,0 +1,464 @@
+{
+ "v": "dep-124837",
+ "kurimas": 200,
+ "sid": 8171,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "G": {
+  "v": "S1852n-G",
+  "plugins": {
+   "konservas_below_minimum": {
+    "/plugins/petshop-xml/petshop-xml.php": [
+     "655: $protected_reasons = [ 'cost_below_minimum', 'excluded_brand', 'qty_zero_on_new', 'duplicate_ean', 'konservas_below_minimum' ];",
+     "974: petshop_xml_zb_to_draft( $post_id, 'konservas_below_minimum', true );"
+    ]
+   }
+  },
+  "snippets": [
+   {
+    "id": "568",
+    "name": "Petshop Daugiau=Pigiau Display v1.2",
+    "active": "1"
+   },
+   {
+    "id": "7687",
+    "name": "TEMP PS dep-144903",
+    "active": "0"
+   },
+   {
+    "id": "7690",
+    "name": "TEMP PS dep-153420",
+    "active": "0"
+   },
+   {
+    "id": "7691",
+    "name": "TEMP PS dep-153611",
+    "active": "0"
+   },
+   {
+    "id": "7694",
+    "name": "TEMP PS dep-154926",
+    "active": "0"
+   },
+   {
+    "id": "7695",
+    "name": "TEMP PS dep-155102",
+    "active": "0"
+   },
+   {
+    "id": "7700",
+    "name": "TEMP PS dep-165004",
+    "active": "0"
+   },
+   {
+    "id": "7701",
+    "name": "TEMP PS dep-165257",
+    "active": "0"
+   },
+   {
+    "id": "7702",
+    "name": "TEMP PS dep-165446",
+    "active": "0"
+   },
+   {
+    "id": "7720",
+    "name": "TEMP PS dep-182800",
+    "active": "0"
+   },
+   {
+    "id": "7721",
+    "name": "TEMP PS dep-183258",
+    "active": "0"
+   },
+   {
+    "id": "7722",
+    "name": "TEMP PS dep-183424",
+    "active": "0"
+   },
+   {
+    "id": "7723",
+    "name": "TEMP PS dep-183621",
+    "active": "0"
+   },
+   {
+    "id": "7724",
+    "name": "TEMP PS dep-183801",
+    "active": "0"
+   },
+   {
+    "id": "7725",
+    "name": "TEMP PS dep-183929",
+    "active": "0"
+   },
+   {
+    "id": "7726",
+    "name": "TEMP PS dep-184114",
+    "active": "0"
+   },
+   {
+    "id": "7727",
+    "name": "TEMP PS dep-184248",
+    "active": "0"
+   },
+   {
+    "id": "7729",
+    "name": "TEMP PS dep-184449",
+    "active": "0"
+   },
+   {
+    "id": "7731",
+    "name": "TEMP PS dep-184650",
+    "active": "0"
+   },
+   {
+    "id": "7732",
+    "name": "TEMP PS dep-184843",
+    "active": "0"
+   },
+   {
+    "id": "7733",
+    "name": "TEMP PS dep-185043",
+    "active": "0"
+   },
+   {
+    "id": "7734",
+    "name": "TEMP PS dep-185214",
+    "active": "0"
+   },
+   {
+    "id": "7735",
+    "name": "TEMP PS dep-185352",
+    "active": "0"
+   },
+   {
+    "id": "7737",
+    "name": "TEMP PS dep-190349",
+    "active": "0"
+   },
+   {
+    "id": "7743",
+    "name": "TEMP PS dep-194805",
+    "active": "0"
+   },
+   {
+    "id": "7744",
+    "name": "TEMP PS dep-195110",
+    "active": "0"
+   },
+   {
+    "id": "7745",
+    "name": "TEMP PS dep-195304",
+    "active": "0"
+   },
+   {
+    "id": "7746",
+    "name": "TEMP PS dep-195451",
+    "active": "0"
+   },
+   {
+    "id": "7747",
+    "name": "TEMP PS dep-195732",
+    "active": "0"
+   },
+   {
+    "id": "7749",
+    "name": "TEMP PS dep-201739",
+    "active": "0"
+   },
+   {
+    "id": "7750",
+    "name": "TEMP PS dep-202010",
+    "active": "0"
+   },
+   {
+    "id": "7751",
+    "name": "TEMP PS dep-202218",
+    "active": "0"
+   },
+   {
+    "id": "7753",
+    "name": "TEMP PS dep-202543",
+    "active": "0"
+   },
+   {
+    "id": "7754",
+    "name": "TEMP PS dep-202716",
+    "active": "0"
+   },
+   {
+    "id": "7755",
+    "name": "TEMP PS dep-202918",
+    "active": "0"
+   },
+   {
+    "id": "7756",
+    "name": "TEMP PS dep-203042",
+    "active": "0"
+   },
+   {
+    "id": "7757",
+    "name": "TEMP PS dep-203221",
+    "active": "0"
+   },
+   {
+    "id": "7758",
+    "name": "TEMP PS dep-203407",
+    "active": "0"
+   },
+   {
+    "id": "7759",
+    "name": "TEMP PS dep-203538",
+    "active": "0"
+   },
+   {
+    "id": "7760",
+    "name": "TEMP PS dep-203713",
+    "active": "0"
+   },
+   {
+    "id": "7761",
+    "name": "TEMP PS dep-203838",
+    "active": "0"
+   },
+   {
+    "id": "7764",
+    "name": "TEMP PS dep-204727",
+    "active": "0"
+   },
+   {
+    "id": "7765",
+    "name": "TEMP PS dep-204924",
+    "active": "0"
+   },
+   {
+    "id": "7766",
+    "name": "TEMP PS dep-205107",
+    "active": "0"
+   },
+   {
+    "id": "7767",
+    "name": "TEMP PS dep-205230",
+    "active": "0"
+   },
+   {
+    "id": "7768",
+    "name": "TEMP PS dep-205403",
+    "active": "0"
+   },
+   {
+    "id": "7786",
+    "name": "TEMP PS dep-224808",
+    "active": "0"
+   },
+   {
+    "id": "7787",
+    "name": "TEMP PS dep-224947",
+    "active": "0"
+   },
+   {
+    "id": "7788",
+    "name": "TEMP PS dep-225125",
+    "active": "0"
+   },
+   {
+    "id": "7793",
+    "name": "TEMP PS dep-230556",
+    "active": "0"
+   },
+   {
+    "id": "7795",
+    "name": "TEMP PS dep-231302",
+    "active": "0"
+   },
+   {
+    "id": "7796",
+    "name": "TEMP PS dep-231443",
+    "active": "0"
+   },
+   {
+    "id": "7798",
+    "name": "TEMP PS dep-231922",
+    "active": "0"
+   },
+   {
+    "id": "7799",
+    "name": "TEMP PS dep-232220",
+    "active": "0"
+   },
+   {
+    "id": "7800",
+    "name": "TEMP PS dep-233032",
+    "active": "0"
+   },
+   {
+    "id": "7804",
+    "name": "TEMP PS dep-234014",
+    "active": "0"
+   },
+   {
+    "id": "7805",
+    "name": "TEMP PS dep-234230",
+    "active": "0"
+   },
+   {
+    "id": "7806",
+    "name": "TEMP PS dep-234409",
+    "active": "0"
+   },
+   {
+    "id": "7813",
+    "name": "TEMP PS dep-070812",
+    "active": "0"
+   },
+   {
+    "id": "7815",
+    "name": "TEMP PS dep-071221",
+    "active": "0"
+   },
+   {
+    "id": "7816",
+    "name": "TEMP PS dep-071350",
+    "active": "0"
+   },
+   {
+    "id": "7817",
+    "name": "TEMP PS dep-071912",
+    "active": "0"
+   },
+   {
+    "id": "7819",
+    "name": "TEMP PS dep-072340",
+    "active": "0"
+   },
+   {
+    "id": "7821",
+    "name": "TEMP PS dep-072907",
+    "active": "0"
+   },
+   {
+    "id": "7822",
+    "name": "TEMP PS dep-073035",
+    "active": "0"
+   },
+   {
+    "id": "7825",
+    "name": "TEMP PS dep-073412",
+    "active": "0"
+   },
+   {
+    "id": "7828",
+    "name": "TEMP PS dep-074354",
+    "active": "0"
+   },
+   {
+    "id": "7829",
+    "name": "TEMP PS dep-074553",
+    "active": "0"
+   },
+   {
+    "id": "7830",
+    "name": "TEMP PS dep-075220",
+    "active": "0"
+   },
+   {
+    "id": "7869",
+    "name": "TEMP PS dep-110115",
+    "active": "0"
+   },
+   {
+    "id": "7870",
+    "name": "TEMP PS dep-111050",
+    "active": "0"
+   },
+   {
+    "id": "7875",
+    "name": "TEMP PS dep-112341",
+    "active": "0"
+   },
+   {
+    "id": "7876",
+    "name": "TEMP PS dep-112515",
+    "active": "0"
+   },
+   {
+    "id": "7877",
+    "name": "TEMP PS dep-112645",
+    "active": "0"
+   },
+   {
+    "id": "7886",
+    "name": "TEMP PS dep-114358",
+    "active": "0"
+   },
+   {
+    "id": "7891",
+    "name": "TEMP PS dep-115542",
+    "active": "0"
+   },
+   {
+    "id": "7892",
+    "name": "TEMP PS dep-115803",
+    "active": "0"
+   },
+   {
+    "id": "7893",
+    "name": "TEMP PS dep-115928",
+    "active": "0"
+   },
+   {
+    "id": "7894",
+    "name": "TEMP PS dep-120057",
+    "active": "0"
+   },
+   {
+    "id": "7895",
+    "name": "TEMP PS dep-120251",
+    "active": "0"
+   },
+   {
+    "id": "7897",
+    "name": "TEMP PS dep-121647",
+    "active": "0"
+   },
+   {
+    "id": "7898",
+    "name": "TEMP PS dep-124216",
+    "active": "0"
+   },
+   {
+    "id": "7899",
+    "name": "TEMP PS dep-124339",
+    "active": "0"
+   },
+   {
+    "id": "7900",
+    "name": "TEMP PS dep-124514",
+    "active": "0"
+   },
+   {
+    "id": "7908",
+    "name": "TEMP PS dep-135303",
+    "active": "0"
+   },
+   {
+    "id": "8171",
+    "name": "TEMP PS dep-124837",
+    "active": "1"
+   }
+  ],
+  "seimu_sk": "530",
+  "seima_pvz": [
+   {
+    "post_id": "37556",
+    "meta_value": "dp415-simba-konservai-katems-su-paukstiena-ir-antiena-415-g"
+   },
+   {
+    "post_id": "37557",
+    "meta_value": "dp415-simba-konservai-katems-su-paukstiena-ir-antiena-415-g"
+   }
+  ],
+  "opt": []
+ }
+}
