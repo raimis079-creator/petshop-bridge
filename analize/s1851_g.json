@@ -1,0 +1,408 @@
+{
+ "1": {
+  "v": "S1851g",
+  "viso": {
+   "uzs": "648",
+   "nuo": "2026-09-08",
+   "iki": "2026-11-12",
+   "viso": "27895",
+   "marza": "6080",
+   "kontr": "6351",
+   "prist_nuost": null,
+   "minusiniu": "2",
+   "minus_eur": "-48"
+  },
+  "statusai": [
+   {
+    "s": "cancelled",
+    "n": "6",
+    "kontr": "-15"
+   },
+   {
+    "s": "completed",
+    "n": "627",
+    "kontr": "6146"
+   },
+   {
+    "s": "processing",
+    "n": "15",
+    "kontr": "220"
+   }
+  ],
+  "kanalas_naujas": [
+   {
+    "k": "mokamas",
+    "nj": "1",
+    "uzs": "247",
+    "viso": "9477",
+    "marza": "2096",
+    "kontr": "2255",
+    "kontr_uzs": "9.13"
+   },
+   {
+    "k": "mokamas",
+    "nj": "0",
+    "uzs": "170",
+    "viso": "8532",
+    "marza": "1856",
+    "kontr": "1887",
+    "kontr_uzs": "11.10"
+   },
+   {
+    "k": "direct",
+    "nj": "0",
+    "uzs": "82",
+    "viso": "4414",
+    "marza": "997",
+    "kontr": "998",
+    "kontr_uzs": "12.17"
+   },
+   {
+    "k": "direct",
+    "nj": "1",
+    "uzs": "37",
+    "viso": "1525",
+    "marza": "311",
+    "kontr": "338",
+    "kontr_uzs": "9.12"
+   },
+   {
+    "k": "organika",
+    "nj": "1",
+    "uzs": "32",
+    "viso": "795",
+    "marza": "174",
+    "kontr": "201",
+    "kontr_uzs": "6.28"
+   },
+   {
+    "k": "organika",
+    "nj": "0",
+    "uzs": "25",
+    "viso": "937",
+    "marza": "232",
+    "kontr": "236",
+    "kontr_uzs": "9.44"
+   },
+   {
+    "k": "email",
+    "nj": "0",
+    "uzs": "15",
+    "viso": "489",
+    "marza": "111",
+    "kontr": "111",
+    "kontr_uzs": "7.41"
+   },
+   {
+    "k": "ai",
+    "nj": "1",
+    "uzs": "13",
+    "viso": "519",
+    "marza": "105",
+    "kontr": "107",
+    "kontr_uzs": "8.25"
+   },
+   {
+    "k": "referral",
+    "nj": "0",
+    "uzs": "9",
+    "viso": "529",
+    "marza": "128",
+    "kontr": "131",
+    "kontr_uzs": "14.57"
+   },
+   {
+    "k": "ai",
+    "nj": "0",
+    "uzs": "4",
+    "viso": "151",
+    "marza": "24",
+    "kontr": "29",
+    "kontr_uzs": "7.22"
+   },
+   {
+    "k": "referral",
+    "nj": "1",
+    "uzs": "4",
+    "viso": "150",
+    "marza": "33",
+    "kontr": "36",
+    "kontr_uzs": "9.04"
+   },
+   {
+    "k": "",
+    "nj": "0",
+    "uzs": "3",
+    "viso": "135",
+    "marza": "-28",
+    "kontr": "-19",
+    "kontr_uzs": "-6.39"
+   },
+   {
+    "k": "soc_organika",
+    "nj": "1",
+    "uzs": "3",
+    "viso": "160",
+    "marza": "26",
+    "kontr": "24",
+    "kontr_uzs": "8.08"
+   },
+   {
+    "k": "",
+    "nj": "1",
+    "uzs": "2",
+    "viso": "5",
+    "marza": "1",
+    "kontr": "1",
+    "kontr_uzs": "0.29"
+   },
+   {
+    "k": "soc_organika",
+    "nj": "0",
+    "uzs": "2",
+    "viso": "78",
+    "marza": "14",
+    "kontr": "16",
+    "kontr_uzs": "8.16"
+   }
+  ],
+  "krepselio_dydis": [
+   {
+    "b": "a <20",
+    "uzs": "128",
+    "kontr": "618",
+    "kontr_uzs": "4.83"
+   },
+   {
+    "b": "b 20-35",
+    "uzs": "195",
+    "kontr": "1386",
+    "kontr_uzs": "7.11"
+   },
+   {
+    "b": "c 35-50",
+    "uzs": "114",
+    "kontr": "1056",
+    "kontr_uzs": "9.27"
+   },
+   {
+    "b": "d 50-80",
+    "uzs": "157",
+    "kontr": "1973",
+    "kontr_uzs": "12.56"
+   },
+   {
+    "b": "e 80+",
+    "uzs": "54",
+    "kontr": "1318",
+    "kontr_uzs": "24.40"
+   }
+  ],
+  "sandeliai": [
+   {
+    "s": "legacy",
+    "uzs": "242",
+    "kontr": "2414",
+    "kontr_uzs": "9.98"
+   },
+   {
+    "s": "vf",
+    "uzs": "208",
+    "kontr": "1582",
+    "kontr_uzs": "7.61"
+   },
+   {
+    "s": "legacy,vf",
+    "uzs": "64",
+    "kontr": "724",
+    "kontr_uzs": "11.32"
+   },
+   {
+    "s": "vf,legacy",
+    "uzs": "40",
+    "kontr": "405",
+    "kontr_uzs": "10.12"
+   },
+   {
+    "s": "quattro",
+    "uzs": "18",
+    "kontr": "138",
+    "kontr_uzs": "7.64"
+   },
+   {
+    "s": "ambrosia",
+    "uzs": "16",
+    "kontr": "204",
+    "kontr_uzs": "12.76"
+   },
+   {
+    "s": "zb",
+    "uzs": "11",
+    "kontr": "115",
+    "kontr_uzs": "10.46"
+   },
+   {
+    "s": "belcor_tofu",
+    "uzs": "6",
+    "kontr": "67",
+    "kontr_uzs": "11.10"
+   }
+  ],
+  "kategorijos": [
+   {
+    "g": "",
+    "kat": "[\"katems\",\"maistas-katems\",\"konservai-katems\"]",
+    "rk": "",
+    "uzs": "85",
+    "be_pvm": "1663",
+    "marza": "274",
+    "proc": "16"
+   },
+   {
+    "g": "",
+    "kat": "[\"sunims\",\"skanestai-sunims\"]",
+    "rk": "",
+    "uzs": "102",
+    "be_pvm": "1500",
+    "marza": "270",
+    "proc": "18"
+   },
+   {
+    "g": "",
+    "kat": "[\"sunims\",\"maistas-sunims\",\"konservai-sunims\"]",
+    "rk": "",
+    "uzs": "95",
+    "be_pvm": "1751",
+    "marza": "267",
+    "proc": "15"
+   },
+   {
+    "g": "",
+    "kat": "[\"zuvims\",\"akvariumo-zuvyciu-maistas\"]",
+    "rk": "",
+    "uzs": "22",
+    "be_pvm": "441",
+    "marza": "125",
+    "proc": "28"
+   },
+   {
+    "g": "",
+    "kat": "[\"sunims\",\"zaislai-sunims\"]",
+    "rk": "",
+    "uzs": "27",
+    "be_pvm": "389",
+    "marza": "58",
+    "proc": "15"
+   },
+   {
+    "g": "",
+    "kat": "[\"sunims\",\"maistas-sunims\",\"konservai-sunims\"]",
+    "rk": "rink",
+    "uzs": "13",
+    "be_pvm": "340",
+    "marza": "46",
+    "proc": "14"
+   },
+   {
+    "g": "",
+    "kat": "[\"katems\",\"skanestai-katems\"]",
+    "rk": "",
+    "uzs": "36",
+    "be_pvm": "382",
+    "marza": "30",
+    "proc": "8"
+   },
+   {
+    "g": "",
+    "kat": "[\"katems\",\"tualetai-kraikai-semtuveliai\"]",
+    "rk": "",
+    "uzs": "22",
+    "be_pvm": "218",
+    "marza": "30",
+    "proc": "14"
+   },
+   {
+    "g": "",
+    "kat": "[\"katems\",\"kraikai-kaciu-tualetams\"]",
+    "rk": "rink",
+    "uzs": "10",
+    "be_pvm": "230",
+    "marza": "26",
+    "proc": "11"
+   },
+   {
+    "g": "",
+    "kat": "[\"sunims\",\"maistas-sunims\",\"sausas-maistas-sunims\"]",
+    "rk": "",
+    "uzs": "207",
+    "be_pvm": "6512",
+    "marza": "21",
+    "proc": "0"
+   },
+   {
+    "g": "",
+    "kat": "[\"sunims\",\"skanestai-sunims\"]",
+    "rk": "rink",
+    "uzs": "15",
+    "be_pvm": "201",
+    "marza": "20",
+    "proc": "10"
+   },
+   {
+    "g": "",
+    "kat": "[\"sunims\",\"vitaminai-ir-papildai-sunims\"]",
+    "rk": "",
+    "uzs": "17",
+    "be_pvm": "269",
+    "marza": "18",
+    "proc": "7"
+   },
+   {
+    "g": "",
+    "kat": "[\"katems\",\"kraikai-kaciu-tualetams\"]",
+    "rk": "",
+    "uzs": "14",
+    "be_pvm": "152",
+    "marza": "12",
+    "proc": "8"
+   },
+   {
+    "g": "",
+    "kat": "[\"katems\",\"maistas-katems\",\"sausas-maistas-katems\"]",
+    "rk": "rink",
+    "uzs": "8",
+    "be_pvm": "267",
+    "marza": "-12",
+    "proc": "-4"
+   },
+   {
+    "g": "",
+    "kat": "[\"sunims\",\"maistas-sunims\",\"sausas-maistas-sunims\"]",
+    "rk": "rink",
+    "uzs": "14",
+    "be_pvm": "554",
+    "marza": "-19",
+    "proc": "-3"
+   },
+   {
+    "g": "",
+    "kat": "[\"katems\",\"maistas-katems\",\"sausas-maistas-katems\"]",
+    "rk": "",
+    "uzs": "57",
+    "be_pvm": "1517",
+    "marza": "-54",
+    "proc": "-4"
+   }
+  ],
+  "kat_pvz": "[\"zuvims\",\"akvariumo-zuvyciu-maistas\"]",
+  "reklama_cols": "id,diena,kanalas,kampanija_id,kampanija,parodymai,paspaudimai,islaidos_ct,valiuta,konversijos,konv_verte_ct,saltinis,saltinis_aplinka,versija,irasyta_at,senoji_svetaine",
+  "islaidos_cols": "id,menuo,kategorija,suma_ct,kanalas,pastaba,sukurta_at"
+ },
+ "v": "dep-110802",
+ "kurimas": 200,
+ "sid": 8153,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
