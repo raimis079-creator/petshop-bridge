@@ -1,0 +1,270 @@
+{
+ "1": {
+  "v": "S1850g",
+  "file": "wp-content/plugins/petshop-core/includes/class-feeding-service.php",
+  "hits": [
+   "/class-feeding-service.php:11 *    'price_context'=>null | [ 'amount_inc_vat'=>float, 'scope'=>'unit'|'line_total' ] ]",
+   "/class-feeding-service.php:84 // Kaina: price_context=null → gyva 1 vnt kaina su PVM",
+   "/class-feeding-service.php:88 $price_is_total = ( ( $in['price_context']['scope'] ?? 'unit' ) === 'line_total' );",
+   "/class-feeding-service.php:538 if ( isset( $r['cell_type'] ) && $r['cell_type'] !== 'value' ) { continue; }",
+   "/class-cart-recovery.php:291 . ' — <strong>' . esc_html( rtrim( rtrim( number_format( (float) $i['qty'], 2, ',', '' ), '0' ), ',' ) ) . ' vnt.</strong>'",
+   "/class-email-dispatch.php:409 // S322: srautas gali paruosti papildoma konteksta (pvz. recovery tokena)",
+   "/class-feeding-calculator.php:19 *   ['cell_type'=>'value',    'weight_from_kg'=>10.0,'weight_to_kg'=>10.0,",
+   "/class-feeding-calculator.php:21 *   ['cell_type'=>'redirect', 'weight_from_kg'=>20.0,'weight_to_kg'=>20.0,",
+   "/class-feeding-calculator.php:102 if ( ($r['cell_type'] ?? '') !== 'redirect' ) continue;",
+   "/class-feeding-calculator.php:120 if ( ($r['cell_type'] ?? '') !== 'value' ) continue;",
+   "/class-feeding-calculator.php:242 if ( ($r['cell_type'] ?? 'value') !== 'value' ) continue;",
+   "/class-pet-ui.php:152 // S204: papildomas saugiklis — endpoint query var (jei is_account_page() del temos/konteksto nesuveiktu).",
+   "/class-action-tokens.php:40 *   action        VARCHAR(48)   NULL; papildoma detale",
+   "/class-action-tokens.php:171 *   @type string $action         papildoma detale",
+   "/class-product-calc.php:177 (name+sku+package) būtų užpildytas be papildomos užklausos. */ ?>",
+   "/class-pet-profile.php:495 AND r.cell_type = 'value'",
+   "/class-event-emitters.php:15 * S310 (2026-07-30): po registry emit'o papildomai kviecamas",
+   "/class-feeding-repository.php:12 *   calculator_supported   — Calculator moka be papildomos ašies (svorio taškai/intervalai/interpol.)",
+   "/class-feeding-repository.php:77 condition_dimensions, cell_type, redirect_reason, source_label",
+   "/class-feeding-repository.php:94 'cell_type'       => $r['cell_type'],",
+   "/class-feeding-repository.php:126 'row_dimension'          => $t['row_dimension'],",
+   "/class-feeding-repository.php:141 * Sprendžiama iš row_dimension + source_structure + resolution_policy.",
+   "/class-feeding-repository.php:146 $rd = $t['row_dimension'] ?? null;",
+   "/class-feeding-repository.php:158 // grynas svoris (weight ašis, discrete/range) — Calculator moka be papildomos ašies",
+   "/class-feeding-repository.php:172 // row_dimension NULL su turiniu — neaišku, partial (saugiau nei supported)",
+   "/class-mixed-feeding-estimator.php:111 $out['zero_note_lt'] = 'Pagal orientacinį perskaičiavimą papildomo sauso maisto kiekis būtų 0 g. '",
+   "/class-shipments.php:19 * saskaitu seriju rizika pries launch) ir papildomu automatiniu laisku.",
+   "/class-shipments.php:172 // 1) papildom is meta (idempotentiska)",
+   "/class-pet-products.php:114 // S221: papildomas maistas — tik VIENAS vienu metu. Nauja priskyrima senas",
+   "/class-pet-products.php:115 // secondary_food tampa 'other' (istorija lieka lentynoje, bet ne kaip papildomas)."
+  ],
+  "cell_types": [
+   {
+    "cell_type": "redirect",
+    "n": "28"
+   },
+   {
+    "cell_type": "value",
+    "n": "7135"
+   }
+  ],
+  "row_dims": [
+   {
+    "row_dimension": null,
+    "shape": "transposed",
+    "scope": "product",
+    "n": "1"
+   },
+   {
+    "row_dimension": "activity_level",
+    "shape": "transposed",
+    "scope": "line",
+    "n": "9"
+   },
+   {
+    "row_dimension": "activity_level",
+    "shape": "transposed",
+    "scope": "product",
+    "n": "9"
+   },
+   {
+    "row_dimension": "age",
+    "shape": "age_weight",
+    "scope": "line",
+    "n": "1"
+   },
+   {
+    "row_dimension": "age",
+    "shape": "age_weight",
+    "scope": "product",
+    "n": "3"
+   },
+   {
+    "row_dimension": "age",
+    "shape": "by_age",
+    "scope": "line",
+    "n": "1"
+   },
+   {
+    "row_dimension": "age",
+    "shape": "by_age",
+    "scope": "product",
+    "n": "1"
+   },
+   {
+    "row_dimension": "age",
+    "shape": "matrix",
+    "scope": "line",
+    "n": "2"
+   },
+   {
+    "row_dimension": "age",
+    "shape": "transposed",
+    "scope": "line",
+    "n": "11"
+   },
+   {
+    "row_dimension": "age",
+    "shape": "transposed",
+    "scope": "product",
+    "n": "8"
+   },
+   {
+    "row_dimension": "body_condition",
+    "shape": "transposed",
+    "scope": "line",
+    "n": "20"
+   },
+   {
+    "row_dimension": "body_condition",
+    "shape": "transposed",
+    "scope": "product",
+    "n": "10"
+   },
+   {
+    "row_dimension": "lifestyle",
+    "shape": "transposed",
+    "scope": "line",
+    "n": "5"
+   },
+   {
+    "row_dimension": "svorio_valdymas",
+    "shape": "transposed",
+    "scope": "line",
+    "n": "1"
+   },
+   {
+    "row_dimension": "weight",
+    "shape": "discrete",
+    "scope": "adult",
+    "n": "23"
+   },
+   {
+    "row_dimension": "weight",
+    "shape": "discrete",
+    "scope": "puppy",
+    "n": "4"
+   },
+   {
+    "row_dimension": "weight",
+    "shape": "discrete",
+    "scope": "senior",
+    "n": "1"
+   },
+   {
+    "row_dimension": "weight",
+    "shape": "matrix",
+    "scope": "adult",
+    "n": "56"
+   },
+   {
+    "row_dimension": "weight",
+    "shape": "matrix",
+    "scope": "line",
+    "n": "16"
+   },
+   {
+    "row_dimension": "weight",
+    "shape": "matrix",
+    "scope": "product",
+    "n": "18"
+   },
+   {
+    "row_dimension": "weight",
+    "shape": "matrix",
+    "scope": "puppy",
+    "n": "11"
+   },
+   {
+    "row_dimension": "weight",
+    "shape": "matrix",
+    "scope": "senior",
+    "n": "3"
+   },
+   {
+    "row_dimension": "weight",
+    "shape": "simple",
+    "scope": "adult",
+    "n": "171"
+   },
+   {
+    "row_dimension": "weight",
+    "shape": "simple",
+    "scope": "line",
+    "n": "74"
+   },
+   {
+    "row_dimension": "weight",
+    "shape": "simple",
+    "scope": "product",
+    "n": "26"
+   }
+  ],
+  "cols": [
+   "id",
+   "checksum",
+   "checksum_algo",
+   "source_hash",
+   "source_hash_algo",
+   "brand",
+   "line",
+   "scope",
+   "species",
+   "weight_basis",
+   "row_dimension",
+   "shape",
+   "status",
+   "reason",
+   "source_url",
+   "source_version",
+   "source_checked_at",
+   "row_count",
+   "parsed_at",
+   "verified_at",
+   "verified_by",
+   "created_at",
+   "updated_at",
+   "rows_backup_json",
+   "lookup_method",
+   "weight_basis_source",
+   "verification_note",
+   "source_structure",
+   "resolution_policy",
+   "axis_resolution_policy",
+   "b_path_status",
+   "value_row_count",
+   "redirect_row_count",
+   "version_no",
+   "supersedes_table_id",
+   "is_active",
+   "activated_at",
+   "retired_at",
+   "import_batch_id",
+   "table_key",
+   "canonical_table_hash",
+   "canonical_hash_version",
+   "classifier_version",
+   "source_kind",
+   "source_verification_status",
+   "source_verified_at",
+   "source_verified_by"
+  ],
+  "rcols": [
+   "id",
+   "feeding_table_id",
+   "row_order",
+   "weight_from_kg",
+   "weight_to_kg",
+   "amount_from_g",
+   "amount_to_g",
+   "condition_dimensions",
+   "condition_raw",
+   "cell_type",
+   "redirect_reason",
+   "source_label"
+  ]
+ },
+ "v": "dep-081906",
+ "kurimas": 200,
+ "sid": 8137,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
