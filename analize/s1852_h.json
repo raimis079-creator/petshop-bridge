@@ -1,0 +1,373 @@
+{
+ "v": "dep-122102",
+ "kurimas": 200,
+ "sid": 8164,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1852h",
+  "f": {
+   "petshop-akcijos.php": [
+    "42: *   nes Kaina24/kainos.lt feed'ai, `wc_product_meta_lookup`, `is_on_sale()` ir",
+    "258: 'post_status'    => 'publish',",
+    "281: AND po.post_type='product' AND po.post_status='publish'",
+    "307: return get_post_type( $pid ) === 'product' && get_post_status( $pid ) === 'publish';",
+    "459: $reg  = get_post_meta( $pid, '_regular_price', true );",
+    "603: /* Praleistos — irasomos su priezastimi, kad butu matoma KODEL. */",
+    "612: 'busena'     => 'praleista',",
+    "823: $s = array( 'viso' => count( $eil ), 'taikoma' => 0, 'praleista' => 0, 'zemiau' => 0,",
+    "827: if ( $r['ok'] ) { $s['taikoma']++; } else { $s['praleista']++; }",
+    "857: $reg = (float) get_post_meta( $pid, '_regular_price', true );",
+    "941: WHERE p.post_type='product' AND p.post_status='publish'",
+    "948: 'kaina' => (string) get_post_meta( $x['ID'], '_regular_price', true ) );",
+    "1011: MAX(CASE WHEN m.meta_key='_regular_price' THEN m.meta_value END) reg,",
+    "1017: WHERE p.post_type='product' AND p.post_status='publish'",
+    "1552: .pt tr.praleista td{background:#faf9f7;color:#8d9691}",
+    "1842: if(!tr.classList.contains(\"praleista\")) taikoma++;",
+    "1931: \"<div class=\\\\\"p\\\\\"><span class=\\\\\"l\\\\\">Praleista</span><span class=\\\\\"v\"+(s.praleista?\" warn\":\"\")+\"\\\\\">\"+s.praleista+\"</span></div>\"+",
+    "1945: var kl=[]; if(!r.ok) kl.push(\"praleista\"); if(r.ok&&r.zemiau) kl.push(\"zemiau\");"
+   ],
+   "petshop-ataskaita-lankomumas.php": [
+    "4: * Description: Lankomumo ekranas — lankytojai per dieną, valandą ir savaitės dieną, piltuvėlis, šaltiniai (Google Ads, Kainos.lt, Kaina24…), įrenginiai, įėjimo puslapiai, paieškos, 404.",
+    "34: $a[ self::PUSLAPIS ] = 'Kiek žmonių lankosi, kada, iš kur ir kur nukrenta: lankytojai per dieną ir valandą, piltuvėlis, šaltiniai (Ads, Kainos.lt, Kaina24), paieškos.';",
+    "52: if ( false !== strpos( $s, 'kaina24' ) ) { return 'Kaina24'; }"
+   ],
+   "petshop-ataskaita-menuo.php": [
+    "63: $i = self::t( 'ps_islaidos' ); $rekl = class_exists( 'Petshop_Islaidos' ) ? Petshop_Islaidos::REKLAMOS : array( 'reklama_google', 'reklama_meta', 'kaina24', 'kainos' );"
+   ],
+   "petshop-ataskaita-pardavimai.php": [
+    "71: * irenginys · rinkinys vs paviene. Visi cia yra; papildomai — preke,",
+    "82: 'rinkinys'   => array( 'Rinkinys / pavienė', 'e.rinkinio_tipas',  'eil', 'Ar prekė parduota rinkinyje, ar atskirai.' ),",
+    "96: * (preke, rinkinys, regionas, klientas) — gilinamasi i eilutes, ne i filtra.",
+    "192: 'Savikainos šaltinis', 'Antkainis €', 'Antkainis %', 'Rinkinys', 'Svoris g',",
+    "209: ( '' !== (string) $x['rinkinio_tipas'] ) ? (string) $x['rinkinio_tipas'] : 'pavienė',",
+    "292: e.savikainos_saltinis, e.rinkinio_tipas, e.svoris_g,",
+    "419: * gali rodyti i lauka, kurio dar nera — geriau praleisti nei sugriuti.",
+    "566: if ( 'rinkinys' === $raktas ) {",
+    "567: return \"CASE WHEN COALESCE(NULLIF(e.rinkinio_tipas,''),'') <> '' THEN e.rinkinio_tipas ELSE 'pavienė' END\";",
+    "581: elseif ( 'rinkinys' === $raktas ) { $reik[] = 'rinkinio_tipas'; }",
+    "656: e.savikainos_saltinis, e.rinkinio_tipas, e.svoris_g,",
+    "711: foreach ( array( 'kaina24' => 'Kaina24', 'kainos' => 'Kainos.lt' ) as $kk => $pv ) {",
+    null,
+    "923: . '</code> faktų lentelėje dar neegzistuoja — pjūvis praleistas.' );",
+    "1039: esc_html( ( '' !== (string) $x['rinkinio_tipas'] ) ? $x['rinkinio_tipas'] : 'pavienė' ),",
+    "1054: array( 'pav' => 'Rinkinys' ),"
+   ],
+   "petshop-fakt-reklama.php": [
+    "4: * Description: Reklamos išlaidų faktai (Google Ads per Ads Script webhook; Kaina24/Kainos.lt iš skaitiklio). Planas v2.0 E3c.",
+    "21: * KAINA24 / KAINOS.LT: `petshop-islaidos.php` skaičiuoja unikalius",
+    "22: * paspaudimus × CPC; čia jie rašomi kasdien per cron'ą (kanalas kaina24|kainos,",
+    "84: * praleistu, o norint — parodytu atskirai.",
+    "157: /* ---------- Kaina24 / Kainos.lt: iš islaidos skaitiklio ---------- */",
+    "163: foreach ( array( 'kaina24', 'kainos' ) as $p ) {"
+   ],
+   "petshop-islaidos.php": [
+    "22: * KAINA24 / KAINOS.LT — APSKAICIUOJAMA, PASKUI SUTIKRINAMA (Q2)",
+    "26: * kuriu `saltinis` yra kaina24|kainos. Menesio gale Raimis iraso TIKRA saskaitos",
+    "34: * Kaina24 0,0968 EUR YRA su PVM (taip Raimis ji zino), todel i `ps_islaidos`",
+    "59: 'kaina24'        => 'Kaina24',",
+    "68: const REKLAMOS = array( 'reklama_google', 'reklama_meta', 'kaina24', 'kainos' );",
+    "74: 'kaina24'        => 'mokamas',",
+    "150: * Kaina24 / Kainos.lt APSKAICIUOTA suma: unikalus lankytojas per diena",
+    "215: $k24  = self::portalo_spend( 'kaina24', $menuo );",
+    "278: Kaina24 ir Kainos.lt ima <strong>0,08 € + PVM už unikalų paspaudimą per dieną</strong>.",
+    "286: foreach ( array( 'kaina24' => $k24, 'kainos' => $kai ) as $kat => $d ) :",
+    "424: 'kaina24'    => self::portalo_spend( 'kaina24', $menuo ),"
+   ],
+   "petshop-kanalai.php": [
+    "143: * be deploy'o. Kodas turi tik atsargini rinkini.",
+    "154: /* Q2: Kaina24 ir Kainos.lt = CPC 0,08 EUR + PVM -> MOKAMI. */",
+    "157: 'utm_source' => array( 'kaina24', 'kainos', 'kainos.lt', 'google_ads', 'facebook_ads' ),",
+    "158: 'referer'    => array( 'kaina24.lt', 'www.kaina24.lt', 'kainos.lt', 'www.kainos.lt' ),"
+   ],
+   "petshop-rysiai.php": [
+    "6: * is prekybos nematant \"ji yra trijuose rinkiniuose ir vienoje akcijoje\" —",
+    "7: * tai avarija, laukianti savo dienos. Asortimente rinkiniai yra strategijos",
+    "11: *   dalyvauja()  rinkiniai (Mix&Match) · \"Perkama kartu\" (FBT) · DP skelbimai ·",
+    "16: *   matomumas()  kur preke siuo metu matoma: parduotuve · Kaina24 · Kainos.lt ·",
+    "21: * (`_mnm_data`, `_mnm_child_ids`, atskira lentele). Todel tikrinami VISI zinomi",
+    "26: * v1.2: MNM stulpeliai — container_id yra TEVAS, product_id VAIKAS (v1.1",
+    "32: *   MNM vaikai imami is `wc_mnm_child_items` lenteles (meta raktu nera nė",
+    "53: 'rinkiniai' => self::rinkiniuose( $pid ),",
+    "54: 'fbt'       => self::fbt_rinkiniuose( $pid ),",
+    "60: /** Rinkiniai (Mix&Match), kuriuose si preke yra komponentas. */",
+    "61: public static function rinkiniuose( $pid ) {",
+    "68: WHERE meta_key IN ('_mnm_data','_mnm_child_ids','_mnm_contents','_children')",
+    "82: ir naudojama — `_mnm_*` meta raktu nera nė vieno, o lenteleje 362",
+    "85: $lent = $wpdb->prefix . 'wc_mnm_child_items';",
+    "88: /* Reali schema (patikrinta): container_id = TEVAS (rinkinys),",
+    "92: $tevo  = self::pirmas_esantis( $stulp, array( 'container_id', 'parent_id', 'mnm_id' ) );",
+    "113: * Be sios patikros preke #12 \"atsirastu\" kiekviename rinkinyje, kuriame",
+    "131: public static function fbt_rinkiniuose( $pid ) {",
+    "150: WHERE meta_key='_dp_base_product_id' AND meta_value=%s\", (string) $pid ) );",
+    "187: 'busena'  => get_post_status( $id ),",
+    "247: 'post_status'    => array( 'publish', 'draft' ),",
+    "286: 'busena'  => get_post_status( $k ),",
+    "300: 'busena' => get_post_status( $pid ),",
+    "363: $busena = get_post_status( $pid );",
+    "385: /* Feed'ai: prekė patenka, jei paskelbta ir turi kainą. */",
+    "386: 'feeduose'     => ( $busena === 'publish' && get_post_meta( $pid, '_price', true ) !== '' ),",
+    "392: *  DIAGNOSTIKA — kuris MNM kelias veikia sioje instaliacijoje",
+    "398: foreach ( array( '_mnm_data', '_mnm_child_ids', '_mnm_contents', '_children', '_petshop_fbt_ids', '_dp_base_product_id' ) as $k ) {",
+    "402: $lent = $wpdb->prefix . 'wc_mnm_child_items';",
+    "403: $out['mnm_lentele'] = ( $wpdb->get_var( \"SHOW TABLES LIKE '{$lent}'\" ) === $lent )",
+    "406: $out['mnm_stulpeliai'] = $wpdb->get_col( \"SHOW COLUMNS FROM {$lent}\" );",
+    "407: $out['mnm_pvz'] = $wpdb->get_row( \"SELECT * FROM {$lent} LIMIT 1\", ARRAY_A );"
+   ],
+   "petshop-rytas.php": [
+    "7: * v1.10 (S1740, 2026-09-29): `prekes_foto` — be tiesioginės nuotraukos tikrinamas ir WC `get_image_id()` (rinkinių „laukas\" paveikslai per filtrą), kaip `rinkiniai_foto`.",
+    "22: * feed'ai, faktų vientisumas, agregatai, siuntos, dropship SLA, laiškai,",
+    "24: * tas pats raudonųjų rinkinys — vieną kartą per parą. Žalia/geltona — tyla.",
+    "397: /* feed'ai */",
+    "398: $f = get_option( 'ps_feeds_paskutinis', array() );",
+    "401: $add( 'feeds', ( $h > $val ) ? 'raudona' : 'zalia', 'Feed\\'ai Kaina24/Kainos: generuoti prieš ' . number_format( $h, 0, ',', ' ' ) . ' val.' );",
+    "402: } else { $add( 'feeds', 'pilka', 'Feed\\'ai: `ps_feeds_paskutinis` tuščias' ); }",
+    "447: /* rinkiniai be nuotraukos (S1724): publikuoti MnM rinkiniai, kurių thumbnail nėra arba failo diske nėra */",
+    "449: $rk_ = $wpdb->get_results( \"SELECT p.ID, p.post_title, (SELECT meta_value FROM {$wpdb->postmeta} WHERE post_id = p.ID AND meta_key = '_thumbnail_id' LIMIT 1) thumb FROM {$wpdb->posts} p JOIN {$wpdb",
+    "452: $add( 'rinkiniai_foto', $be_ ? ( count( $be_ ) >= 3 ? 'raudona' : 'geltona' ) : 'zalia', 'Rinkiniai be nuotraukos: ' . count( $be_ ) . ' iš ' . count( (array) $rk_ ) . ( $be_ ? ' — ' . implode(",
+    "453: } catch ( \\Throwable $e_ ) { $add( 'rinkiniai_foto', 'pilka', 'Rinkiniai be nuotraukos: ' . $e_->getMessage() ); }",
+    "456: $pf_ = $wpdb->get_results( \"SELECT p.ID, m.meta_value tid, af.meta_value f FROM {$wpdb->posts} p LEFT JOIN {$wpdb->postmeta} m ON m.post_id = p.ID AND m.meta_key = '_thumbnail_id' LEFT JOIN {$wpdb-",
+    "473: if ( 'instock' !== $pr_->get_stock_status() || 'publish' !== get_post_status( (int) $x_['pid'] ) || 'hidden' === $pr_->get_catalog_visibility() ) {",
+    "538: /* tas pats raudonųjų rinkinys — kartą per parą */",
+    "547: $t .= \"\\nRytas: \" . admin_url( 'admin.php?page=' . self::TEVAS ) . \"\\nTas pats raudonųjų rinkinys šią parą daugiau nesiunčiamas.\\n\";",
+    "664: 'petshop-reports-rinkiniai' => 'Surenkamų rinkinių pardavimai, marža ir vitrinos elgsena.',",
+    "665: 'petshop-reports-paruosti'  => 'Paruoštų rinkinių ataskaita.',",
+    "695: 'importai' => 'Importų ID (pmxi), kableliais', 'import_val' => 'Importas/feed pasenęs po, val.', 'laiskai' => 'Sargo laiškai (1/0)', 'poas_gelt' => 'Reklama: POAS geltona žemiau',"
+   ]
+  },
+  "snip": [
+   {
+    "id": "7215",
+    "name": "TEMP PS dep-062947",
+    "active": "0"
+   },
+   {
+    "id": "7216",
+    "name": "TEMP PS dep-063118",
+    "active": "0"
+   },
+   {
+    "id": "7219",
+    "name": "TEMP PS dep-052551",
+    "active": "0"
+   },
+   {
+    "id": "7220",
+    "name": "TEMP PS dep-052723",
+    "active": "0"
+   },
+   {
+    "id": "7225",
+    "name": "TEMP PS dep-051156",
+    "active": "0"
+   },
+   {
+    "id": "7226",
+    "name": "TEMP PS dep-051317",
+    "active": "0"
+   },
+   {
+    "id": "7231",
+    "name": "TEMP PS dep-181952",
+    "active": "0"
+   },
+   {
+    "id": "7232",
+    "name": "TEMP PS dep-182118",
+    "active": "0"
+   },
+   {
+    "id": "7250",
+    "name": "TEMP PS dep-184135",
+    "active": "0"
+   },
+   {
+    "id": "7251",
+    "name": "TEMP PS dep-184305",
+    "active": "0"
+   },
+   {
+    "id": "7266",
+    "name": "TEMP PS dep-064005",
+    "active": "0"
+   },
+   {
+    "id": "7300",
+    "name": "TEMP PS dep-180441",
+    "active": "0"
+   },
+   {
+    "id": "7325",
+    "name": "TEMP PS dep-054510",
+    "active": "0"
+   },
+   {
+    "id": "7345",
+    "name": "TEMP PS dep-180022",
+    "active": "0"
+   },
+   {
+    "id": "7347",
+    "name": "TEMP PS dep-063627",
+    "active": "0"
+   },
+   {
+    "id": "7365",
+    "name": "TEMP PS dep-152408",
+    "active": "0"
+   },
+   {
+    "id": "7375",
+    "name": "TEMP PS dep-080051",
+    "active": "0"
+   },
+   {
+    "id": "7378",
+    "name": "TEMP PS dep-073107",
+    "active": "0"
+   },
+   {
+    "id": "7398",
+    "name": "TEMP PS dep-073052",
+    "active": "0"
+   },
+   {
+    "id": "7472",
+    "name": "TEMP PS dep-072805",
+    "active": "0"
+   },
+   {
+    "id": "7553",
+    "name": "TEMP PS dep-070622",
+    "active": "0"
+   },
+   {
+    "id": "7571",
+    "name": "TEMP PS dep-161744",
+    "active": "0"
+   },
+   {
+    "id": "7572",
+    "name": "TEMP PS dep-161940",
+    "active": "0"
+   },
+   {
+    "id": "7585",
+    "name": "TEMP PS dep-062301",
+    "active": "0"
+   },
+   {
+    "id": "7586",
+    "name": "TEMP PS dep-062458",
+    "active": "0"
+   },
+   {
+    "id": "7597",
+    "name": "TEMP PS dep-073843",
+    "active": "0"
+   },
+   {
+    "id": "7604",
+    "name": "TEMP PS dep-161745",
+    "active": "0"
+   },
+   {
+    "id": "7614",
+    "name": "TEMP PS dep-075054",
+    "active": "0"
+   },
+   {
+    "id": "7648",
+    "name": "TEMP PS dep-091319",
+    "active": "0"
+   },
+   {
+    "id": "7808",
+    "name": "TEMP PS dep-065853",
+    "active": "0"
+   },
+   {
+    "id": "7966",
+    "name": "TEMP PS dep-075942",
+    "active": "0"
+   },
+   {
+    "id": "7988",
+    "name": "TEMP PS dep-104621",
+    "active": "0"
+   },
+   {
+    "id": "8005",
+    "name": "TEMP PS dep-073055",
+    "active": "0"
+   },
+   {
+    "id": "8027",
+    "name": "TEMP PS dep-200155",
+    "active": "0"
+   },
+   {
+    "id": "8033",
+    "name": "TEMP PS dep-093903",
+    "active": "0"
+   },
+   {
+    "id": "8052",
+    "name": "TEMP PS dep-073907",
+    "active": "0"
+   },
+   {
+    "id": "8063",
+    "name": "TEMP PS dep-090413",
+    "active": "0"
+   },
+   {
+    "id": "8064",
+    "name": "TEMP PS dep-090620",
+    "active": "0"
+   },
+   {
+    "id": "8065",
+    "name": "TEMP PS dep-104107",
+    "active": "0"
+   },
+   {
+    "id": "8069",
+    "name": "TEMP PS dep-113227",
+    "active": "0"
+   },
+   {
+    "id": "8070",
+    "name": "TEMP PS dep-113416",
+    "active": "0"
+   },
+   {
+    "id": "8081",
+    "name": "TEMP PS dep-073611",
+    "active": "0"
+   },
+   {
+    "id": "8101",
+    "name": "TEMP PS dep-073922",
+    "active": "0"
+   },
+   {
+    "id": "8111",
+    "name": "TEMP PS dep-090706",
+    "active": "0"
+   },
+   {
+    "id": "8126",
+    "name": "TEMP PS dep-073855",
+    "active": "0"
+   },
+   {
+    "id": "8164",
+    "name": "TEMP PS dep-122102",
+    "active": "1"
+   }
+  ]
+ }
+}
