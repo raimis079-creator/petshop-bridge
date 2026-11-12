@@ -1,0 +1,64 @@
+{
+ "1": {
+  "v": "S1860b",
+  "kodas": "341: \n342: function petshop_xml_block_zb_create( $continue_import, $data, $import_id ) {\n343: \n344:     // Saugiklis: tik ZB importas #2\n345:     if ( ! in_array( (int) $import_id, PETSHOP_XML_ZB_IMPORT_IDS, true ) ) {\n346:         return $continue_import;\n347:     }\n348:     // Saugiklis: $data turi buti masyvas\n349:     if ( ! is_array( $data ) ) {\n350:         return $continue_import;\n351:     }\n352: \n353:     $name     = petshop_xml_tekstas( $data['name'] ?? '' );\n354:     $category = petshop_xml_tekstas( $data['category'] ?? '' ); // S1691: masyvas → tekstas\n355:     $brand    = petshop_xml_tekstas( $data['brand'] ?? '' );\n356:     $price    = isset( $data['price'] ) ? (float) str_replace( ',', '.', (string) $data['price'] ) : 0.0;\n357:     $qty      = isset( $data['qty'] )   ? (int) $data['qty'] : 0;\n358: \n359:     // Fail-safe: jei tuscia esmine info -> leisti (neblokuojam aklai)\n360:     if ( $name === '' && $category === '' ) {\n361:         return $continue_import;\n362:     }\n363: \n364:     // v1.5.17: EXCLUDED BRAND -> NEKURTI (prie vartu).\n365:     //\n366:     //   Tokie brandai (Hau&Miau, Bioveterinary ir kt.) pas mus JAU egzistuoja\n367:     //   kaip Legacy prekes (su istorija, kaina, SEO). ZB juos irgi siuncia, bet\n368:     //   jie NETURI patekti is ZB — turi but blokuojami \"prie vartu\", o ne\n369:     //   sukuriami ir tik po to metami i draft (excluded_brand). Anksciau\n370:     //   is_excluded_brand() veike tik PO sukurimo (initial_import) -> preke buvo\n371:     //   sukuriama, parsisiusta nuotrauka, tik po to draft -> siuksles + kreditai.\n372:     //   Dabar blokuojam PRIES sukurima (kaip konservas/qty/aksesuaras patikros).\n373:     //\n374:     //   Brandas tikrinamas is $data['brand']; jei tuscias -> is name (fallback),\n375:     //   nes is_excluded_brand() moka atpazinti pagal pavadinima.\n376:     if ( class_exists( 'Petshop_Import_Rules' ) ) {\n377:         $rules_gate   = new Petshop_Import_Rules();\n378:         $brand_check  = $brand !== '' ? $brand : $name;\n379:         $brand_check  = trim( html_entity_decode( $brand_check, ENT_QUOTES | ENT_HTML5, 'UTF-8' ) );\n380:         if ( $brand_check !== '' && $rules_gate->is_excluded_brand( $brand_check ) ) {\n381:             petshop_xml_log_structured( [\n382:                 'action'    => 'ZB-BLOCK-CREATE',\n383:                 'name'      => mb_substr( $name, 0, 60 ),\n384:                 'brand'     => mb_substr( $brand_check, 0, 40 ),\n385:                 'reason'    => 'excluded_brand',\n386:                 'import_id' => $import_id,\n387:                 'note'      => 'ZB create prevented (excluded brand, exists as Legacy) at the gate (v1.5.17)',\n388:             ] );\n389:             return false; // BLOKUOTI kurima\n390:         }\n391:     }\n392: \n393:     // Konservas -> LEISTI (taps draft per initial_import, box rinkiniams)\n394:     if ( petshop_xml_text_is_konservas( $category, $name ) ) {\n395:         return $continue_import;\n396:     }\n397: \n398:     // v1.5.15: NAUJA preke qty <= 0 -> NEKURTI.\n399:     //\n400:     //   Priezastis (savininko sprendimas 2026-06-14): nauja preke be likucio\n401:     //   neturi SEO istorijos ir nera paklausos (niekas jos nemate). Jos kurti\n402:     //   neverta — tik kauptu siuksles. Jei ZB veliau atsius ja SU likuciu\n403:     //   (qty>0), ji bus sukurta tada (publish). Tai automatinis \"blokavimas\":\n404:     //   nauja qty=0 nekuriama, bet grizus su likuciu — kuriama.\n405:     //\n406:     //   ESAMOS prekes qty=0 tvarkomos initial_import() (buvusi publish ->\n407:     //   lieka matoma SEO+paklausai; gimusi draft -> 30 d. cleanup).\n408:     if ( $qty <= 0 ) {\n409:         petshop_xml_log_structured( [\n410:             'action'    => 'ZB-BLOCK-CREATE',\n411:             'name'      => mb_substr( $name, 0, 60 ),\n412:             'category'  => mb_substr( $category, 0, 60 ),\n413:             'price'     => $price,\n414:             'qty'       => $qty,\n415:             'reason'    => 'qty_zero_new_no_history',\n416:             'import_id' => $import_id,\n417:             'note'      => 'ZB create prevented (new qty=0, no SEO/demand) before image download (v1.5.15)',\n418:         ] );\n419:         return false; // BLOKUOTI kurima\n420:     }\n421: \n422:     // Aksesuaras: pigus (< kartele) IR NE konservas IR turi likuti -> NEKURTI\n423:     if ( $price > 0 && $price < PETSHOP_XML_ZB_MIN_COST ) {\n424:         petshop_xml_log_structured( [\n425:             'action'    => 'ZB-BLOCK-CREATE',\n426:             'name'      => mb_substr( $name, 0, 60 ),\n427:             'category'  => mb_substr( $category, 0, 60 ),\n428:             'price'     => $price,\n429:             'qty'       => $qty,\n430:             'reason'    => 'cost_below_minimum_accessory',\n431:             'import_id' => $import_id,\n432:             'note'      => 'ZB create prevented (accessory below min cost) before image download (v1.5.13)',\n433:         ] );\n434:         return false; // BLOKUOTI kurima\n435:     }\n436: \n437:     // Praeina -> leisti kurti normaliai\n438:     return $continue_import;\n439: }\n440: \n441: /**\n442:  * v1.5.14: ZB ESAMU PIGIU PREKIU UPDATE BLOKAVIMAS (tik ZB Import #2,#3).\n443:  *\n444:  * Hook: wp_all_import_is_post_to_update.\n445:  *\n446:  * ESAMA preke, kuri < PETSHOP_XML_ZB_MIN_COST IR NE konservas -> BLOKUOTI update.\n447:  * Priezastis: tokia preke neturi buti kataloge (kartele), bet jei ja LEIDZIAM\n448:  * update'inti, importas perkrauna nuotrauka (ShortPixel kreditai) ir gali mesti\n449:  * i trash -> cron ciklas. Blokuojant update preke NELIECIAMA -> nuotrauka\n450:  * neperkraunama. Vienkartinis valymas (snippet) ja istrina VISAM; po to cron\n451:  * bando kurti -> block_zb_create blokuoja PRIES nuotrauka.\n452:  *\n453:  * Fail-safe = LEISTI: jei _zb_cost tuscias/0 (nezinom savikainos) arba preke\n454:  * konservas -> NEBLOKUOJAM (status quo). Tik gryni atvejai blokuojami.\n455:  *\n456:  * Pastaba: sis filtras eina PO block_legacy_update (prioritetas 9 vs 10),\n457:  * tad Legacy prekes jau atfiltruotos anksciau (ju neliecia).\n458:  */\n459: add_filter( 'wp_all_import_is_post_to_update', 'petshop_xml_block_zb_cheap_update', 11, 4 );\n460: \n461: function petshop_xml_block_zb_cheap_update( $continue_import, $post_id, $data, $import_id ) {\n462: \n463:     if ( get_post_type( $post_id ) !== 'product' ) {\n464:         return $continue_import;\n465:     }\n466: \n467:     // Tik ZB importai (#2 initial, #3 stock)\n468:     if ( ! in_array( (int) $import_id, PETSHOP_XML_ZB_ALL_IMPORT_IDS, true ) ) {\n469:         return $continue_import;\n470:     }\n471: \n472:     // Legacy prekes — jau blokuotos block_legacy_update (prioritetas 9). Saugiklis.\n473:     if ( petshop_xml_is_legacy_product( $post_id ) ) {\n474:         return $continue_import;\n475:     }\n476: \n477:     // Manual override — neliesti\n478:     if ( get_post_meta( $post_id, '_manual_price_override', true ) === 'yes' ) {\n479:         return $continue_import;\n480:     }\n481: \n482:     $zb_cost = (float) get_post_meta( $post_id, '_zb_cost', true );\n483: \n484:     // Fail-safe: jei savikainos nezinom -> leisti (neblokuojam aklai)\n485:     if ( $zb_cost <= 0 ) {\n486:         return $continue_import;\n487:     }\n488: \n489:     // Konservas -> NEBLOKUOJAM (konservai leidziami net pigus, box rinkiniai)\n490:     if ( petshop_xml_is_konservas( $post_id ) ) {\n491:         return $continue_import;\n492:     }\n493: \n494:     // Pigi (< kartele) IR ne konservas IR esama -> BLOKUOTI update\n495:     if ( $zb_cost < PETSHOP_XML_ZB_MIN_COST ) {\n496:         petshop_xml_log_structured( [\n497:             'action'    => 'ZB-BLOCK-CHEAP-UPDATE',\n498:             'post_id'   => $post_id,\n499:             'sku'       => (string) get_post_meta( $post_id, '_sku', true ),\n500:             'zb_cost'   => $zb_cost,\n501:             'import_id' => $import_id,\n502:             'note'      => 'ZB update prevented for existing cheap non-konservas (no image reload, v1.5.14)',\n503:         ] );\n504:         return false;\n505:     }\n506: \n507:     return $continue_import;\n508: }\n509: add_filter( 'wp_all_import_is_post_to_create', 'petshop_xml_block_vf_create', 10, 3 );\n510: \n511: function petshop_xml_block_vf_create( $continue_import, $data, $import_id ) {\n512: \n513:     if ( ! in_array( (int) $import_id, PETSHOP_XML_VF_IMPORT_IDS, true ) ) {\n514:         return $continue_import;\n515:     }\n516:     if ( ! is_array( $data ) ) {\n517:         return $continue_import;\n518:     }\n519:     if ( ! class_exists( 'Petshop_Import_Rules_VF' ) ) {\n520:         return $continue_import;\n521:     }\n",
+  "mtime": "2026-09-19T20:09:16+00:00",
+  "md5": "f3394639ea9dae6235cd5316f2057049",
+  "pmxi": [
+   {
+    "id": "1",
+    "name": "goods_clean.xml",
+    "path": "/wpallimport/files/goods_clean.xml",
+    "last_activity": "2026-05-27 11:14:21",
+    "processing": "0",
+    "executing": "0"
+   },
+   {
+    "id": "2",
+    "name": "products.php",
+    "path": "https://zaliojibanga.lt/integrations/services/products.php?key=bAF0OY6Sz9H3AgAF",
+    "last_activity": "2026-11-12 16:01:15",
+    "processing": "0",
+    "executing": "0"
+   },
+   {
+    "id": "3",
+    "name": "stocks.php",
+    "path": "https://zaliojibanga.lt/integrations/services/stocks.php?key=bAF0OY6Sz9H3AgAF",
+    "last_activity": "2026-11-12 19:07:23",
+    "processing": "0",
+    "executing": "0"
+   },
+   {
+    "id": "5",
+    "name": "vf-feed.xml",
+    "path": "/wpallimport/files/vf-feed.xml",
+    "last_activity": "2026-11-12 04:32:22",
+    "processing": "0",
+    "executing": "0"
+   },
+   {
+    "id": "7",
+    "name": "vf-feed.xml",
+    "path": "/wpallimport/files/vf-feed.xml",
+    "last_activity": "2026-11-12 19:19:02",
+    "processing": "0",
+    "executing": "0"
+   }
+  ],
+  "pmxi_err": "",
+  "cron_zb": [
+   [
+    "2026-11-12T19:21:15+00:00",
+    "petshop_import_tempas"
+   ]
+  ]
+ },
+ "v": "dep-191851",
+ "kurimas": 200,
+ "sid": 8227,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
