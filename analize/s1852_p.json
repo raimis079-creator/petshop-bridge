@@ -1,0 +1,128 @@
+{
+ "v": "dep-125210",
+ "kurimas": 200,
+ "sid": 8173,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1852p-R",
+  "d19_n": 291,
+  "seimos_su_vienetu_n": 316,
+  "pvz": {
+   "ebi-kaulas-rozines": {
+    "d19": false,
+    "nariai": [
+     "15306:publish:VNT",
+     "35102:publish:VNT",
+     "35104:publish:VNT"
+    ]
+   },
+   "ebi-kaulas-melsvos": {
+    "d19": false,
+    "nariai": [
+     "15309:publish:VNT",
+     "35108:publish:VNT",
+     "35110:publish:VNT"
+    ]
+   },
+   "ebi-kaulas-baltos": {
+    "d19": false,
+    "nariai": [
+     "15312:publish:VNT",
+     "35146:publish:VNT"
+    ]
+   },
+   "zolux-sepetys-sunims-plieniniais": {
+    "d19": false,
+    "nariai": [
+     "15737:publish:VNT",
+     "35116:publish:VNT"
+    ]
+   },
+   "zolux-sepetys-sunims-minkstas": {
+    "d19": false,
+    "nariai": [
+     "15740:publish:VNT",
+     "35118:publish:VNT"
+    ]
+   },
+   "zolux-zirklutes": {
+    "d19": false,
+    "nariai": [
+     "15734:publish:VNT",
+     "35120:publish:VNT",
+     "35122:publish:VNT"
+    ]
+   },
+   "mon-amor-sirdele": {
+    "d19": false,
+    "nariai": [
+     "18743:publish:VNT",
+     "35147:draft:VNT"
+    ]
+   },
+   "elnio-ragas-kietas": {
+    "d19": false,
+    "nariai": [
+     "35126:publish:VNT",
+     "35128:publish:VNT",
+     "35130:publish:VNT",
+     "35132:publish:VNT",
+     "17312:publish:VNT"
+    ]
+   }
+  },
+  "simba_seima": [
+   {
+    "id": "37556",
+    "s": "dp415-simba-konservai-katems-su-paukstiena-ir-antiena-415-g",
+    "st": "publish",
+    "base": "33928"
+   },
+   {
+    "id": "37557",
+    "s": "dp415-simba-konservai-katems-su-paukstiena-ir-antiena-415-g",
+    "st": "publish",
+    "base": "33928"
+   }
+  ],
+  "term": {
+   "33928": [
+    "415 g"
+   ],
+   "37556": [
+    "24 × 415 g"
+   ],
+   "37557": [
+    "30 × 415 g"
+   ],
+   "38446": [
+    "85 g"
+   ],
+   "38447": [
+    "85 g"
+   ]
+  },
+  "t85": [
+   "85 g",
+   "185 g",
+   "285 g",
+   "10 × 85 g",
+   "24 × 85 g",
+   "36 × 85 g",
+   "18 × 85 g",
+   "12 × 285 g",
+   "18 × 285 g",
+   "24 × 285 g"
+  ],
+  "seima_85_pvz": [
+   "dp85-gemon-mousse-konservai-suaugusioms-katems-su-vistiena-ir-kiauliena-85-g",
+   "dp85-farmina-vet-life-diabetic-konservai-katems-85-g",
+   "dp85-farmina-vet-life-hypoallergenic-konservai-katems-su-kiauliena-ir-bulvemis-85-g",
+   "dp85-gemon-mousse-konservai-suaugusioms-katems-su-lasisa-ir-vistiena-85-g",
+   "dp85-gemon-mousse-sterilised-konservai-sterilizuotoms-katems-su-vistiena-ir-kepenelemis-85-g"
+  ]
+ }
+}
