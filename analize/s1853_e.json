@@ -1,0 +1,46 @@
+{
+ "v": "dep-143849",
+ "kurimas": 200,
+ "sid": 8188,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1853e",
+  "ln": [
+   "11: * 1.3.3 (S1824 #17, 2026-11-03): D19 kortelė leidžia vienetą šeimoje (1 vnt. + pakai).",
+   "12: * 1.3 (S1822 D19, 2026-11-02, Raimis „padaryk pavyzdį“): šeimoms iš opcijos ps_dk_d19_seimos (vien pakai) – kortelėje didelė €/vnt. kaina,",
+   "23: public static function init() {",
+   "29: public static function nariai( $seima, $pid ) {",
+   "43: return $c;",
+   "46: public static function juosta() {",
+   "48: if ( ! $product instanceof WC_Product || get_option( 'ps_dydziai_kortele_isjungta' ) || ! class_exists( 'Petshop_Dydziai' ) ) { return; }",
+   "50: if ( ! $seima ) { return; }",
+   "51: $n = self::nariai( $seima, $pid ); if ( count( $n ) < 2 ) { return; }",
+   "53: $d19 = in_array( $seima, (array) get_option( 'ps_dk_d19_seimos', array() ), true ); if ( $d19 ) { foreach ( $n as $x ) { if ( $x['pv'] === '' ) { $d19 = false; } /* v1.3.3 S1824 #17: leidžiamas ir vienetas (q<2 → 1 vnt.) */ } }",
+   "54: echo '<div class=\"ps-dk' . ( $d19 ? ' ps-dk--d19' : '' ) . '\" data-cur=\"' . (int) $pid . '\" data-n=\"' . esc_attr( wp_json_encode( $n ) ) . '\">';",
+   "55: if ( $d19 && $cur ) { echo '<div class=\"ps-dk__pv\"><span class=\"ps-dk__pvb\">' . ( $cur['best'] ? 'nuo ' : '' ) . esc_html( $cur['pv'] ) . ' € <small>/ vnt.</small></span><span class=\"ps-dk__pvs\">' . max( 1, (int) $cur['q'] ) . ' v",
+   "60: echo '<button type=\"button\" class=\"' . esc_attr( $cls ) . '\" data-id=\"' . (int) $x['id'] . '\" title=\"' . esc_attr( $x['kg'] ? $x['kg'] : $x['u'] ) . '\">' . esc_html( $d19 ? max( 1, (int) $x['q'] ) . ' vnt. · ' . $x['pv'] . ' €' : ",
+   "66: public static function js() {",
+   "67: if ( ! self::$js ) { return; }",
+   "82: .ps-dk--d19 .ps-dk__ch--sel,.ps-dk--d19 .ps-dk__ch--sel:hover{background:#c6e3d0;color:#173d2a;border:1.5px solid #2f6b4f;font-weight:600}",
+   "83: .ps-dk--d19 .ps-dk__ch{transition:none}",
+   "84: .ps-dk--d19 .ps-dk__ch--sel::before{content:\"\\\\2713  \"}",
+   "85: .product-small:has(.ps-dk--d19) .price-wrapper .price,.product-small:has(.ps-dk--d19) .psc-eco-band{display:none}",
+   "87: <script>(function(){document.querySelectorAll(\".ps-dk--d19\").forEach(function(dk){var c=dk.closest(\".product-small\");var t=c&&c.querySelector(\".product-title a, .name a\");if(t)t.textContent=t.textContent.replace(/^\\d+\\s*vnt\\.\\s*/,",
+   "88: dk.querySelectorAll(\".ps-dk__ch\").forEach(function(c){c.classList.toggle(\"ps-dk__ch--sel\",c===b)});dk.setAttribute(\"data-cur\",String(id));",
+   "89: var kg=dk.querySelector(\".ps-dk__kg\");if(kg)kg.textContent=m.kg||\"\";var d19=dk.classList.contains(\"ps-dk--d19\"),pv=dk.querySelector(\".ps-dk__pv\");if(pv&&m.pv){pv.querySelector(\".ps-dk__pvb\").innerHTML=(m.best?\"nuo \":\"\")+m.pv+\" € <",
+   "92: card.querySelectorAll(\".box-image a[href], .product-title a, .name a\").forEach(function(a){a.href=m.url});",
+   "93: var t=card.querySelector(\".product-title a, .name a\");if(t)t.textContent=d19?m.pav.replace(/^\\d+\\s*vnt\\.\\s*/,\"\"):m.pav;",
+   "95: card.querySelectorAll(\".add_to_cart_button, a.button[data-product_id]\").forEach(function(a){a.setAttribute(\"data-product_id\",String(id));a.setAttribute(\"data-product_sku\",m.sku||\"\");a.href=a.href.replace(/add-to-cart=\\d+/,\"add-to-",
+   "96: card.querySelectorAll(\"[data-prod]\").forEach(function(q){q.setAttribute(\"data-prod\",String(id))});"
+  ],
+  "s19440": "av-animonda-vom-feinsten-adult-with-chicken-liver-konservai-katems-su-vistienos-kepenelemis-100-g",
+  "sale_to": "",
+  "sale_from": "",
+  "s19408": [
+   ""
+  ]
+ }
+}
