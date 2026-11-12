@@ -1,7 +1,7 @@
 {
- "v": "dep-143849",
+ "v": "dep-144015",
  "kurimas": 200,
- "sid": 8188,
+ "sid": 8189,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
@@ -9,6 +9,24 @@
  "R": {
   "v": "S1853e",
   "ln": [
+   "29: \tpublic static function nariai( $seima, $pid ) {",
+   "30: \t\t$key = 'ps_dk_' . md5( $seima ); $c = get_transient( $key );",
+   "31: \t\tif ( ! is_array( $c ) ) {",
+   "32: \t\t\t$c = array();",
+   "33: \t\t\tforeach ( Petshop_Dydziai::eilutes( $seima ) as $x ) {",
+   "34: \t\t\t\t$img = wp_get_attachment_image_src( get_post_thumbnail_id( $x['id'] ), 'woocommerce_thumbnail' );",
+   "35: \t\t\t\t$srcset = get_post_thumbnail_id( $x['id'] ) ? wp_get_attachment_image_srcset( get_post_thumbnail_id( $x['id'] ), 'woocommerce_thumbnail' ) : '';",
+   "36: \t\t\t\t$c[] = array( 'id' => $x['id'], 'u' => $x['uzr'], 'url' => $x['url'], 'yra' => $x['yra'] ? 1 : 0, 'ph' => $x['kaina_html'],",
+   "37: \t\t\t\t\t'kg' => ! empty( $x['mat_vnt'] ) ? number_format( $x['pervnt'], 2, ',', ' ' ) . ' €/vnt.' : ( $x['perkg'] > 0 ? number_format( $x['perkg'], 2, ',', ' ' ) . ' €/kg' : '' ), 'best' /* v1.1 S1820: konservų pakams €/vnt. */ => $x['geriausia'] ? 1 : 0,",
+   "38: \t\t\t\t\t'img' => $img ? $img[0] : '', 'ss' => $srcset ?: '', 'pav' => $x['pav'], 'sku' => (string) get_post_meta( $x['id'], '_sku', true ), 'q' => (int) get_post_meta( $x['id'], '_dp_pack_qty', true ),",
+   "39: \t\t\t\t\t'pv' => ! empty( $x['mat_vnt'] ) ? number_format( $x['pervnt'], 2, ',', ' ' ) : '', 'k' => ( $wp = wc_get_product( $x['id'] ) ) ? number_format( (float) wc_get_price_to_display( $wp ), 2, ',', ' ' ) : '' );",
+   "40: \t\t\t}",
+   "41: \t\t\tset_transient( $key, $c, 20 * MINUTE_IN_SECONDS );",
+   "42: \t\t}",
+   "43: \t\treturn $c;",
+   "44: \t}",
+   "45: ",
+   "---",
    "11: * 1.3.3 (S1824 #17, 2026-11-03): D19 kortelė leidžia vienetą šeimoje (1 vnt. + pakai).",
    "12: * 1.3 (S1822 D19, 2026-11-02, Raimis „padaryk pavyzdį“): šeimoms iš opcijos ps_dk_d19_seimos (vien pakai) – kortelėje didelė €/vnt. kaina,",
    "23: public static function init() {",
