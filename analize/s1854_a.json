@@ -1,21 +1,82 @@
 {
- "v": "dep-144930",
+ "v": "dep-145100",
  "kurimas": 200,
- "sid": 8191,
+ "sid": 8192,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "R": {
+ "W": {
   "v": "S1854a",
-  "f": "R",
+  "f": "W",
   "patikra": {
    "83672": "OK",
    "83675": "OK"
   },
-  "img": {
-   "83672": "200 582877",
-   "83675": "200 586353"
+  "res": {
+   "83672": {
+    "id": 38471,
+    "img": 38472,
+    "ftab_reuse": "558",
+    "ftab": 558
+   },
+   "83675": {
+    "id": 38473,
+    "img": 38474,
+    "ftab_reuse": "557",
+    "ftab": 557
+   }
+  },
+  "chk": {
+   "38471": {
+    "st": "draft",
+    "kaina": "0.89",
+    "ean": "4017721836722",
+    "img": "38472",
+    "own": "",
+    "src": [
+     {
+      "source": "av",
+      "stock_qty": null
+     }
+    ],
+    "pard": "AV 0",
+    "style": 0,
+    "len": 4412,
+    "feed": "OK calculator_supported",
+    "attrs": [
+     "85 g",
+     "Be grūdų",
+     "Katėms",
+     "Suaugusiems",
+     "Vištiena"
+    ]
+   },
+   "38473": {
+    "st": "draft",
+    "kaina": "0.89",
+    "ean": "4017721836753",
+    "img": "38474",
+    "own": "",
+    "src": [
+     {
+      "source": "av",
+      "stock_qty": null
+     }
+    ],
+    "pard": "AV 0",
+    "style": 0,
+    "len": 4407,
+    "feed": "OK calculator_supported",
+    "attrs": [
+     "85 g",
+     "Be grūdų",
+     "Kalakutiena",
+     "Katėms",
+     "Suaugusiems",
+     "Vištiena"
+    ]
+   }
   }
  }
 }
