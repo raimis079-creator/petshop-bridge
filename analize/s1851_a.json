@@ -1,0 +1,1182 @@
+{
+ "1": {
+  "v": "S1851a",
+  "cols": [
+   "id:bigint(20) unsigned",
+   "laikas:datetime",
+   "diena:date",
+   "tipas:varchar(24)",
+   "pusl_tipas:varchar(24)",
+   "url_kelias:varchar(255)",
+   "raktas:varchar(190)",
+   "raktas2:varchar(190)",
+   "reiksme:bigint(20)",
+   "sesija:varchar(64)",
+   "lankytojas_d:char(64)",
+   "lankytojas_30:char(64)",
+   "saltinis:varchar(96)",
+   "medium:varchar(96)",
+   "kampanija:varchar(96)",
+   "referer_domenas:varchar(190)",
+   "kanalas:varchar(24)",
+   "landing:tinyint(1)",
+   "irenginys:varchar(10)",
+   "os_seima:varchar(24)",
+   "nars_seima:varchar(24)",
+   "salis:varchar(8)",
+   "prisijunges:tinyint(1)",
+   "sutikimas:tinyint(1)",
+   "testinis:tinyint(1)",
+   "saltinis_aplinka:varchar(10)"
+  ],
+  "men": [
+   {
+    "m": "2026-09",
+    "visos": "1744",
+    "ai": "30",
+    "org": "343"
+   },
+   {
+    "m": "2026-10",
+    "visos": "6299",
+    "ai": "114",
+    "org": "892"
+   },
+   {
+    "m": "2026-11",
+    "visos": "2502",
+    "ai": "55",
+    "org": "332"
+   }
+  ],
+  "sav": [
+   {
+    "w": "202637",
+    "nuo": "2026-09-09",
+    "ai": "1"
+   },
+   {
+    "w": "202638",
+    "nuo": "2026-09-14",
+    "ai": "10"
+   },
+   {
+    "w": "202639",
+    "nuo": "2026-09-21",
+    "ai": "8"
+   },
+   {
+    "w": "202640",
+    "nuo": "2026-09-28",
+    "ai": "21"
+   },
+   {
+    "w": "202641",
+    "nuo": "2026-10-05",
+    "ai": "26"
+   },
+   {
+    "w": "202642",
+    "nuo": "2026-10-12",
+    "ai": "21"
+   },
+   {
+    "w": "202643",
+    "nuo": "2026-10-19",
+    "ai": "31"
+   },
+   {
+    "w": "202644",
+    "nuo": "2026-10-26",
+    "ai": "27"
+   },
+   {
+    "w": "202645",
+    "nuo": "2026-11-02",
+    "ai": "31"
+   },
+   {
+    "w": "202646",
+    "nuo": "2026-11-09",
+    "ai": "24"
+   }
+  ],
+  "tipai_ai": [
+   {
+    "tipas": "pageview",
+    "n": "763",
+    "s": "199"
+   },
+   {
+    "tipas": "view_item",
+    "n": "344",
+    "s": "154"
+   },
+   {
+    "tipas": "add_to_cart",
+    "n": "154",
+    "s": "34"
+   },
+   {
+    "tipas": "begin_checkout",
+    "n": "31",
+    "s": "22"
+   },
+   {
+    "tipas": "search",
+    "n": "37",
+    "s": "20"
+   },
+   {
+    "tipas": "view_cart",
+    "n": "28",
+    "s": "17"
+   },
+   {
+    "tipas": "filter",
+    "n": "62",
+    "s": "10"
+   },
+   {
+    "tipas": "error404",
+    "n": "6",
+    "s": "2"
+   }
+  ],
+  "tipai_org": [
+   {
+    "tipas": "pageview",
+    "s": "1567"
+   },
+   {
+    "tipas": "view_item",
+    "s": "847"
+   },
+   {
+    "tipas": "add_to_cart",
+    "s": "97"
+   },
+   {
+    "tipas": "begin_checkout",
+    "s": "65"
+   },
+   {
+    "tipas": "search",
+    "s": "61"
+   },
+   {
+    "tipas": "view_cart",
+    "s": "46"
+   },
+   {
+    "tipas": "filter",
+    "s": "25"
+   },
+   {
+    "tipas": "error404",
+    "s": "21"
+   },
+   {
+    "tipas": "skaiciuokle",
+    "s": "21"
+   }
+  ],
+  "tipai_mok": [
+   {
+    "tipas": "pageview",
+    "s": "7648"
+   },
+   {
+    "tipas": "view_item",
+    "s": "3472"
+   },
+   {
+    "tipas": "add_to_cart",
+    "s": "673"
+   },
+   {
+    "tipas": "search",
+    "s": "527"
+   },
+   {
+    "tipas": "begin_checkout",
+    "s": "461"
+   },
+   {
+    "tipas": "filter",
+    "s": "453"
+   },
+   {
+    "tipas": "view_cart",
+    "s": "300"
+   },
+   {
+    "tipas": "skaiciuokle",
+    "s": "13"
+   },
+   {
+    "tipas": "error404",
+    "s": "8"
+   }
+  ],
+  "top_pusl_tipas": [
+   {
+    "v": null,
+    "s": "168"
+   },
+   {
+    "v": "preke",
+    "s": "154"
+   },
+   {
+    "v": "kategorija",
+    "s": "51"
+   },
+   {
+    "v": "kita",
+    "s": "31"
+   },
+   {
+    "v": "info",
+    "s": "22"
+   },
+   {
+    "v": "checkout",
+    "s": "22"
+   },
+   {
+    "v": "paieska",
+    "s": "20"
+   },
+   {
+    "v": "home",
+    "s": "18"
+   },
+   {
+    "v": "krepselis",
+    "s": "17"
+   },
+   {
+    "v": "parduotuve",
+    "s": "2"
+   },
+   {
+    "v": "404",
+    "s": "2"
+   }
+  ],
+  "top_url_kelias": [
+   {
+    "v": "/kasa/",
+    "s": "22"
+   },
+   {
+    "v": null,
+    "s": "20"
+   },
+   {
+    "v": "/krepselis/",
+    "s": "17"
+   },
+   {
+    "v": "/?utm_source=chatgpt.com",
+    "s": "14"
+   },
+   {
+    "v": "/kategorija/katems/maistas-katems/sausas-maistas-katems/",
+    "s": "9"
+   },
+   {
+    "v": "/",
+    "s": "9"
+   },
+   {
+    "v": "/augintinio-profilis/",
+    "s": "7"
+   },
+   {
+    "v": "/gamintojas/farmina/?utm_source=chatgpt.com",
+    "s": "7"
+   },
+   {
+    "v": "/product/animonda-carny-kitten-konservai-kaciukams-su-paukstiena-ir-jautiena-400-g/",
+    "s": "7"
+   },
+   {
+    "v": "/kontaktai/",
+    "s": "7"
+   },
+   {
+    "v": "/product/animonda-carny-kitten-konservai-kaciukams-su-paukstiena-ir-jautiena-400-g/?utm_source=chatgpt.com",
+    "s": "6"
+   },
+   {
+    "v": "/product/animonda-carny-kitten-konservai-kaciukams-su-jautiena-vistiena-ir-triusiena-200-g/",
+    "s": "5"
+   },
+   {
+    "v": "/kategorija/sunims/",
+    "s": "5"
+   },
+   {
+    "v": "/gamintojas/animonda/?utm_source=chatgpt.com",
+    "s": "5"
+   },
+   {
+    "v": "/kategorija/sunims/zaislai-sunims/",
+    "s": "5"
+   },
+   {
+    "v": "/kategorija/grauzikams/pasaras-grauzikams/",
+    "s": "4"
+   },
+   {
+    "v": "/kategorija/katems/",
+    "s": "4"
+   },
+   {
+    "v": "/product/trixie-timon-kuprine-34x44x30-cm-juoda-pilka/",
+    "s": "4"
+   },
+   {
+    "v": "/kategorija/katems/transportavimo-dezes-katems/?utm_source=chatgpt.com",
+    "s": "4"
+   },
+   {
+    "v": "/product/animonda-carny-kitten-konservai-kaciukams-su-jautiena-vistiena-ir-triusiena-200-g/?utm_source=chatgpt.com",
+    "s": "4"
+   },
+   {
+    "v": "/gamintojas/josera/?utm_source=chatgpt.com",
+    "s": "4"
+   },
+   {
+    "v": "/product/naturalus-bentonitinis-susokantis-kraikas-katems-wonder-white-natural-118-l-10-kg/?utm_source=chatgpt.com",
+    "s": "3"
+   },
+   {
+    "v": "/product/nobby-petnesos-sunims-cayo-melynos-s-m-38-44cm/?utm_source=chatgpt.com",
+    "s": "3"
+   },
+   {
+    "v": "/kategorija/grauzikams/?utm_source=chatgpt.com",
+    "s": "3"
+   },
+   {
+    "v": "/kategorija/katems/maistas-katems/",
+    "s": "3"
+   },
+   {
+    "v": "/product/trixie-timon-kuprine-34x44x30-cm-juoda-pilka/?utm_source=chatgpt.com",
+    "s": "3"
+   },
+   {
+    "v": "/kategorija/katems/maistas-katems/sausas-maistas-katems/?utm_source=chatgpt.com",
+    "s": "3"
+   },
+   {
+    "v": "/product/exclusion-hypoallergenic-dietinis-sausas-pasaras-katems-su-kiauliena-ir-bulvemis-15-kg/",
+    "s": "3"
+   },
+   {
+    "v": "/product/farmina-nd-prime-cat-dry-chickenpomegr-neutered-adult-15-kg-2/",
+    "s": "3"
+   },
+   {
+    "v": "/kategorija/katems/maistas-katems/konservai-katems/",
+    "s": "3"
+   },
+   {
+    "v": "/product/ambrosia-begrudis-su-eriena-ir-sviezia-elniena-sausas-maistas-sunims-grain-free-lamb-fresh-venison-12-kg/",
+    "s": "3"
+   },
+   {
+    "v": "/product/josera-kitten-10-kg-sausas-maistas-kaciukams/",
+    "s": "3"
+   },
+   {
+    "v": "/akcijos/?gyvunas=sunims&utm_source=chatgpt.com",
+    "s": "3"
+   },
+   {
+    "v": "/product/exclusion-hydrolyzed-hypoallergenic-sausas-pasaras-vidutiniu-ir-dideliu-veisliu-sunims-su-zuvimi-m-l-2-kg/",
+    "s": "3"
+   },
+   {
+    "v": "/kategorija/sunims/skanestai-sunims/",
+    "s": "3"
+   },
+   {
+    "v": "/gamintojas/josera/",
+    "s": "3"
+   },
+   {
+    "v": "/product/farmina-nd-prime-cat-dry-chickenpomegr-neutered-adult-15-kg-2/?utm_source=chatgpt.com",
+    "s": "3"
+   },
+   {
+    "v": "/product/ambrosia-begrudis-su-eriena-ir-sviezia-elniena-sausas-maistas-sunims-grain-free-lamb-fresh-venison-12-kg/?utm_source=chatgpt.com",
+    "s": "3"
+   },
+   {
+    "v": "/product/josera-kitten-10-kg-sausas-maistas-kaciukams/?utm_source=chatgpt.com",
+    "s": "3"
+   },
+   {
+    "v": "/kategorija/sunims/antkakliai-pavadeliai-sunims/",
+    "s": "3"
+   }
+  ],
+  "top_raktas": [
+   {
+    "v": null,
+    "s": "77"
+   },
+   {
+    "v": "mygtukas_atidaryta",
+    "s": "10"
+   },
+   {
+    "v": "81",
+    "s": "10"
+   },
+   {
+    "v": "115",
+    "s": "7"
+   },
+   {
+    "v": "19609",
+    "s": "7"
+   },
+   {
+    "v": "70",
+    "s": "6"
+   },
+   {
+    "v": "19613",
+    "s": "6"
+   },
+   {
+    "v": "79",
+    "s": "6"
+   },
+   {
+    "v": "121",
+    "s": "5"
+   },
+   {
+    "v": "87",
+    "s": "5"
+   },
+   {
+    "v": "77",
+    "s": "4"
+   },
+   {
+    "v": "95",
+    "s": "4"
+   },
+   {
+    "v": "78",
+    "s": "4"
+   },
+   {
+    "v": "13107",
+    "s": "4"
+   },
+   {
+    "v": "88",
+    "s": "4"
+   },
+   {
+    "v": "18617",
+    "s": "3"
+   },
+   {
+    "v": "116",
+    "s": "3"
+   },
+   {
+    "v": "73",
+    "s": "3"
+   },
+   {
+    "v": "19760",
+    "s": "3"
+   },
+   {
+    "v": "17345",
+    "s": "3"
+   },
+   {
+    "v": "35027",
+    "s": "3"
+   },
+   {
+    "v": "27564",
+    "s": "3"
+   },
+   {
+    "v": "18077",
+    "s": "3"
+   },
+   {
+    "v": "24206",
+    "s": "3"
+   },
+   {
+    "v": "18458",
+    "s": "2"
+   },
+   {
+    "v": "18527",
+    "s": "2"
+   },
+   {
+    "v": "657",
+    "s": "2"
+   },
+   {
+    "v": "21671",
+    "s": "2"
+   },
+   {
+    "v": "16337",
+    "s": "2"
+   },
+   {
+    "v": "26334",
+    "s": "2"
+   },
+   {
+    "v": "17668",
+    "s": "2"
+   },
+   {
+    "v": "18560",
+    "s": "2"
+   },
+   {
+    "v": "101",
+    "s": "2"
+   },
+   {
+    "v": "19361",
+    "s": "2"
+   },
+   {
+    "v": "13104",
+    "s": "2"
+   },
+   {
+    "v": "19620",
+    "s": "2"
+   },
+   {
+    "v": "15986",
+    "s": "2"
+   },
+   {
+    "v": "22636",
+    "s": "2"
+   },
+   {
+    "v": "23886",
+    "s": "2"
+   },
+   {
+    "v": "24159",
+    "s": "2"
+   }
+  ],
+  "top_raktas2": [
+   {
+    "v": null,
+    "s": "199"
+   },
+   {
+    "v": "83969",
+    "s": "7"
+   },
+   {
+    "v": "83967",
+    "s": "6"
+   },
+   {
+    "v": "0TR132_28944",
+    "s": "4"
+   },
+   {
+    "v": "F012PR0322",
+    "s": "3"
+   },
+   {
+    "v": "HHFM02",
+    "s": "3"
+   },
+   {
+    "v": "WWN4366",
+    "s": "3"
+   },
+   {
+    "v": "CHYP01",
+    "s": "3"
+   },
+   {
+    "v": "JOS0810",
+    "s": "3"
+   },
+   {
+    "v": "NOB88736-07",
+    "s": "3"
+   },
+   {
+    "v": "AMLE12",
+    "s": "3"
+   },
+   {
+    "v": "RINK-VYTINTI-8",
+    "s": "2"
+   },
+   {
+    "v": "TOFUANG5003",
+    "s": "2"
+   },
+   {
+    "v": "83448",
+    "s": "2"
+   },
+   {
+    "v": "83722",
+    "s": "2"
+   },
+   {
+    "v": "026122",
+    "s": "2"
+   },
+   {
+    "v": "0TR132_28851",
+    "s": "2"
+   },
+   {
+    "v": "JOS0761",
+    "s": "2"
+   },
+   {
+    "v": "NOB88733-15",
+    "s": "2"
+   },
+   {
+    "v": "85098000",
+    "s": "2"
+   },
+   {
+    "v": "ZOOV149",
+    "s": "2"
+   },
+   {
+    "v": "FLEXI044",
+    "s": "2"
+   },
+   {
+    "v": "2849",
+    "s": "2"
+   },
+   {
+    "v": "HYPM11",
+    "s": "2"
+   },
+   {
+    "v": "404842214161",
+    "s": "2"
+   },
+   {
+    "v": "404842215126",
+    "s": "2"
+   },
+   {
+    "v": "NGCST01",
+    "s": "2"
+   },
+   {
+    "v": "640023-n",
+    "s": "2"
+   },
+   {
+    "v": "V004979",
+    "s": "2"
+   },
+   {
+    "v": "83966",
+    "s": "2"
+   },
+   {
+    "v": "0TR132_36253",
+    "s": "2"
+   },
+   {
+    "v": "FLEXI004",
+    "s": "2"
+   },
+   {
+    "v": "HYRS02",
+    "s": "2"
+   },
+   {
+    "v": "JOS0811",
+    "s": "2"
+   },
+   {
+    "v": "404842215129",
+    "s": "2"
+   },
+   {
+    "v": "JOS0967",
+    "s": "2"
+   },
+   {
+    "v": "5904760183735",
+    "s": "2"
+   },
+   {
+    "v": "640104",
+    "s": "2"
+   },
+   {
+    "v": "ZOOV061",
+    "s": "2"
+   },
+   {
+    "v": "DM37",
+    "s": "2"
+   }
+  ],
+  "top_lankytojas_d": [
+   {
+    "v": "69e8ecc4a2467d477466fe0a880ed78efddbb0bc982e40a5b0cadb0435660722",
+    "s": "2"
+   },
+   {
+    "v": "08e14349e9f12a568237eaae79f5249163bb4ba935a12841aa9c61e83c4d71cd",
+    "s": "2"
+   },
+   {
+    "v": "1d0f9a2876a600ddfd8f2a78d50a5a8df32378e656bdae6dd1a6158bcdbf2a8e",
+    "s": "2"
+   },
+   {
+    "v": "c43d81bec488ec61bfc5766809be2136fde9bc51b144a24fb20f83d64016ff3e",
+    "s": "2"
+   },
+   {
+    "v": "09f4a9442a26fe92179b897e18ecdada3a6048cc29035cedc9d0a28c31391e9f",
+    "s": "2"
+   },
+   {
+    "v": "c18a44aeaf74c921ad949d7c8be02a3b8f63b04495ef2df9ae9016342945dc68",
+    "s": "2"
+   },
+   {
+    "v": "c2637a76a933e7ca34a884d27952e49af3d1d83cb7225d5d9501f83f329b9099",
+    "s": "1"
+   },
+   {
+    "v": "d5073c8587c9f1d90b7881915971029c2eb3c12435605d2904c523ecc9494bab",
+    "s": "1"
+   },
+   {
+    "v": "e196dc640e029987e34e54983746f732093586a7da82f610c40db8b1c9e815e3",
+    "s": "1"
+   },
+   {
+    "v": "ef7b5c08ffdccfc57c4ab365d08b56d3da14fba71f2f4149074537b491a59a22",
+    "s": "1"
+   },
+   {
+    "v": "00934fda68e4a99691fc8ec5e942b1468a16d5782b267b1321e6ffcc78ac1378",
+    "s": "1"
+   },
+   {
+    "v": "0fd02179d2ace75b6f0f72ce24f2d01be396d00a0b5d74c758df41ba04f1541e",
+    "s": "1"
+   },
+   {
+    "v": "2c05f2d768d0c6e4668dd326fcdafd28099bb131a1b8e4edbf1bce32c8efe9b9",
+    "s": "1"
+   },
+   {
+    "v": "3eb975ad465ec362402010bbfc00df897b69491a46fa4954b09eb8667efc9e58",
+    "s": "1"
+   },
+   {
+    "v": "649d7b25370e67b598be8dee047630808b1a9b4ecbd4a97c118a187d58d262e2",
+    "s": "1"
+   },
+   {
+    "v": "7f71c126a58f3db03300cdd539b25e60d343fc85734ac58121a4f6162dcd6b79",
+    "s": "1"
+   },
+   {
+    "v": "9187bac9074d54171166e0f12fb14d9bde837e13ff61744e9e1b60c65531c26e",
+    "s": "1"
+   },
+   {
+    "v": "9dc494e3eb6f223df6604054b3bb0666a222ee38a572698d517deff749d55149",
+    "s": "1"
+   },
+   {
+    "v": "ae5664d12713c7c38f9d3bf10180b1796777ed96aa5d504edc0a30e8a457a649",
+    "s": "1"
+   },
+   {
+    "v": "c2a91127c2f36a7c3dae7412e9ff77b8da5b5a5a610650498db9729ef1c38c1f",
+    "s": "1"
+   },
+   {
+    "v": "d56fff7072e533035dc6fe8ef16a2f70d4ce1714d714c17593ea6dbed3ab9565",
+    "s": "1"
+   },
+   {
+    "v": "e2141c6c2c20b3de2ca8eb9dfe6fe1f73f1562d1a70e5187b81c7a4e5b0bb9db",
+    "s": "1"
+   },
+   {
+    "v": "f015612673e532741a4a4aeef6d4138f0d0e3c9e7ab65c7d3c4767bb004bf905",
+    "s": "1"
+   },
+   {
+    "v": "044caa31ea876add6fc51607a78c90776554d651051f23d2a4276342d872189c",
+    "s": "1"
+   },
+   {
+    "v": "12e1d940e1ff530e8f021ea816ddd3fa64dda2934388ceff832ecda98f2273d8",
+    "s": "1"
+   },
+   {
+    "v": "2c7f2d2b384970592fe083cca1a8295e5bae93ebea5e5c45ea66ce50ad151b04",
+    "s": "1"
+   },
+   {
+    "v": "3ed69d5c8b6f6a1dc8d8d93915eac8947cbb9124ab90e970c3a1dc5c65412937",
+    "s": "1"
+   },
+   {
+    "v": "66e65360a900b12f6434334f27998477953f818f81a44259f31b4980c2cb5333",
+    "s": "1"
+   },
+   {
+    "v": "802d48bdda79e5673e529f7ad4ee452739762cb4fe4254ba94d22095691d9b84",
+    "s": "1"
+   },
+   {
+    "v": "92d7f333501fcae65692d65ea54634d8c65d489c41cbba2f8f739f2a4c74e36b",
+    "s": "1"
+   },
+   {
+    "v": "9f175d324e2ba420163b9cf9aa781ae98bd62b51ddc97c94b8739830919a61a4",
+    "s": "1"
+   },
+   {
+    "v": "af77f7f9e224bd1a46507f60a76e2c34599e1befe927a61541a4dc23af4ab9a2",
+    "s": "1"
+   },
+   {
+    "v": "c2beef324bd65316720f1f61b1b38032180b765a799c36775c676b29788226ff",
+    "s": "1"
+   },
+   {
+    "v": "d5bd4b82dced8e3ad3d8e84caded7c42d21612a98b65e0c4ac51fd0764326b63",
+    "s": "1"
+   },
+   {
+    "v": "e26ba5c5fa9d5dffc27624c5013154ae8cc63b37e752c95a7ae80b93a1cf80a6",
+    "s": "1"
+   },
+   {
+    "v": "f047d8cd797852cf3b09805b0afe648503f906c6adf0c6c8d52d810ef7f35981",
+    "s": "1"
+   },
+   {
+    "v": "04d10383b765b503069ccc4d7d063e0d2daeba45083d8c2c2209b8223a71bfde",
+    "s": "1"
+   },
+   {
+    "v": "134ab60cfcd709a66649506c2fefc93c40f10c8be2f2ed292cd5477b46c4ab75",
+    "s": "1"
+   },
+   {
+    "v": "2e71d9aa0ca74117ee59c3c4ff550af4263a9b734b925824efa14fe92bb47c4c",
+    "s": "1"
+   },
+   {
+    "v": "42aaa56c1f66027852c55ef2078594f66810d2ccba5aaf614da7380bb7067996",
+    "s": "1"
+   }
+  ],
+  "top_lankytojas_30": [
+   {
+    "v": null,
+    "s": "195"
+   },
+   {
+    "v": "479cd46a6bae1bc62a64bd3d8589628fe330df5114a6806fd2d193f3b8101dfb",
+    "s": "1"
+   },
+   {
+    "v": "ac51f5eaa82d3c9156c76148e573d08cdced281d637c8149c8b8799398ff5785",
+    "s": "1"
+   },
+   {
+    "v": "f5578afae940db71a905925c3000d4b3b276f447968c5348f17140b3b8eefb3f",
+    "s": "1"
+   },
+   {
+    "v": "0192a7d900b0eb00256164fbb46c9912d3c990fd3d40790db89f42d78aeadc6c",
+    "s": "1"
+   },
+   {
+    "v": "59d9ac53bc0f059b7dff5cf70279f4b084fd9058cf604c9e7e7d8506e910273b",
+    "s": "1"
+   },
+   {
+    "v": "b9fadb38676be399d1fe0221415f60ef016150364182d69692d5f4ddef3c940f",
+    "s": "1"
+   },
+   {
+    "v": "f5f1e6593acb8a82b5bdcab5b83da740bc4e3efb8b64ede88c15a12d75385be5",
+    "s": "1"
+   },
+   {
+    "v": "05ead9c1e8cb35b4f368ace40de76b5c9a5fd760429a36c435a275b040fd0a5d",
+    "s": "1"
+   },
+   {
+    "v": "5bfd7a8b60f9f0843502041cea9c68fa1520e2d319f8af5338bd3f5e21038772",
+    "s": "1"
+   },
+   {
+    "v": "c0dd3cb6ff66f66a90de3459bebaf543b6be8214c0a8b13ee86d2070968493ec",
+    "s": "1"
+   },
+   {
+    "v": "f6be408c0f6f0654a5b1a2eac573bc8464a71f9a64c72ec5f006e8863feca285",
+    "s": "1"
+   },
+   {
+    "v": "074276a9019381b7ae24b21e2ee6572b3065c52c2bd453c52407992b02d82f99",
+    "s": "1"
+   },
+   {
+    "v": "5e11a6aae9d61c63fe7918a4f6f0e7c9517d9a0afc4165dc4bb73e4fe3d1edaa",
+    "s": "1"
+   },
+   {
+    "v": "c47d4b1eccbadc610172bfdc1def477320600938236ccdfb04ae958b0667651e",
+    "s": "1"
+   },
+   {
+    "v": "fb87e1211f4f4d961fa50279bf52a32111fbbc46889de3d8b92e63a29e8bd31d",
+    "s": "1"
+   },
+   {
+    "v": "0a330ae633f61ff95627684110cda5f1be0fccab35342a4cfa8a9c21f0b03f2a",
+    "s": "1"
+   },
+   {
+    "v": "646c860c0d9655d698ac14359e78a80cec4042909ea26ab7fd2cabba2db0702b",
+    "s": "1"
+   },
+   {
+    "v": "c4a5a2917eeec7ae7ce013554f7abf6206318b0f45c209dc40d5a88755d73881",
+    "s": "1"
+   },
+   {
+    "v": "fc02d76dc3320c258aeab504aeeb7e3ca247b063867ff5a721406922a75d72df",
+    "s": "1"
+   },
+   {
+    "v": "0c725693b5588a8458bcd66f1afefd734cb05d32fab78a625186e438789978fd",
+    "s": "1"
+   },
+   {
+    "v": "6854b98ee9a04c7d12d758b2a2520d02421122adbe261faaf82859499096f6a8",
+    "s": "1"
+   },
+   {
+    "v": "c87f4b27a62f08e1f241a5271f05cce40a8fe1f06c94b00c0997401e19e8f586",
+    "s": "1"
+   },
+   {
+    "v": "ffc1f4fc7ff3d959b3fc9cca607d7274b29e105adc14a9e339efe0f715b2499a",
+    "s": "1"
+   },
+   {
+    "v": "0d22577b08fdd5fcda061a738692b98ea5165d49523b26699d586b2a5c9f4604",
+    "s": "1"
+   },
+   {
+    "v": "687b81f1d2a8005b4b31d2c628003a84816bfcf129593a546c82a7c54d732b3f",
+    "s": "1"
+   },
+   {
+    "v": "cbba7aac980747c8ff2f11fc8457af23a0be2f446049a7004ae38bbed64e1f68",
+    "s": "1"
+   },
+   {
+    "v": "11203d45167a774107a466f0285742e872fabffd5790929220722c9961e7f3c5",
+    "s": "1"
+   },
+   {
+    "v": "695b37469bd4d0f50fa93b58ca2e39203544be6fc4cb858233a08b21d2b885de",
+    "s": "1"
+   },
+   {
+    "v": "cdf7086fd160080c690db2c48a8f04089f1beabf32c3205b88481730566ae659",
+    "s": "1"
+   },
+   {
+    "v": "2e02cb128b6113b7328c08d23a51d4176919c72ecb370dcb4e65764f2a67e2f0",
+    "s": "1"
+   },
+   {
+    "v": "6b22c5c74682c66fc9d9d55d7a50c40d45181663630c292f64f5d7137ede8eec",
+    "s": "1"
+   },
+   {
+    "v": "cee3ee435230dafa2fc175ce2f03a98e9e4ba43272082d04194bfb54394a952c",
+    "s": "1"
+   },
+   {
+    "v": "2f93db284f688e8d65dee15a5975328b225c21f08047f69820fe6788f1dfcb46",
+    "s": "1"
+   },
+   {
+    "v": "6ca5ff188662e743e9cdaa6ff2713319c623bf43b3db14c8cc06ac46187907c7",
+    "s": "1"
+   },
+   {
+    "v": "d02519b7e6c7615f1a6a7752c812d38074a6c4154d23b8fa922043b385fc8628",
+    "s": "1"
+   },
+   {
+    "v": "36255c7e42390337bfb3cecd1ebf4fafcd81657b47ccd43f28ce4fc51ad51de5",
+    "s": "1"
+   },
+   {
+    "v": "8019c265609c19c51cb7684cb443492b59e3ae643c38b196327d7c3992e89284",
+    "s": "1"
+   },
+   {
+    "v": "d3efdad56b954723d62a26dc8e80fa6132d16a44f84268fd2c28b082c0d918ce",
+    "s": "1"
+   },
+   {
+    "v": "38e15041221edd240cf4f0283d24f79d6bb0719297c78e72dfd243a26fc6ff7e",
+    "s": "1"
+   }
+  ],
+  "top_saltinis": [
+   {
+    "v": "chatgpt.com",
+    "s": "198"
+   },
+   {
+    "v": null,
+    "s": "1"
+   }
+  ],
+  "top_medium": [
+   {
+    "v": null,
+    "s": "199"
+   }
+  ],
+  "top_kampanija": [
+   {
+    "v": null,
+    "s": "199"
+   }
+  ],
+  "top_referer_domenas": [
+   {
+    "v": "",
+    "s": "185"
+   },
+   {
+    "v": "chatgpt.com",
+    "s": "8"
+   },
+   {
+    "v": "m.facebook.com",
+    "s": "5"
+   },
+   {
+    "v": "copilot.microsoft.com",
+    "s": "1"
+   }
+  ],
+  "top_irenginys": [
+   {
+    "v": "mobile",
+    "s": "165"
+   },
+   {
+    "v": "desktop",
+    "s": "34"
+   }
+  ],
+  "top_os_seima": [
+   {
+    "v": "iOS",
+    "s": "91"
+   },
+   {
+    "v": "Android",
+    "s": "74"
+   },
+   {
+    "v": "Windows",
+    "s": "28"
+   },
+   {
+    "v": "macOS",
+    "s": "6"
+   }
+  ],
+  "top_nars_seima": [
+   {
+    "v": "Safari",
+    "s": "93"
+   },
+   {
+    "v": "Chrome",
+    "s": "93"
+   },
+   {
+    "v": "Edge",
+    "s": "7"
+   },
+   {
+    "v": "Firefox",
+    "s": "4"
+   },
+   {
+    "v": "Opera",
+    "s": "2"
+   }
+  ],
+  "top_saltinis_aplinka": [
+   {
+    "v": "prod",
+    "s": "199"
+   }
+  ]
+ },
+ "v": "dep-101949",
+ "kurimas": 200,
+ "sid": 8147,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
