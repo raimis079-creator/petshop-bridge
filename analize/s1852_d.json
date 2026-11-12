@@ -1,0 +1,258 @@
+{
+ "v": "dep-115217",
+ "kurimas": 200,
+ "sid": 8159,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1852d",
+  "fn": [
+   "kiekiai( $pid )",
+   "init()",
+   "meniu()",
+   "body_klase( $k )",
+   "navigacija()",
+   "svarus_aprasas( $preke )",
+   "pilnas_aprasas( $preke, $jau_rodoma = '' )",
+   "tabai( $tabs )",
+   "aprasymo_turinys()",
+   "paveldeti_kurjeri( $prod, array $komponentu_ids )",
+   "pastomato_sargas( $rates, $package )",
+   "rinkinio_puslapis()",
+   "vertimai( $vertimas, $tekstas, $domenas )",
+   "vertimai_kontekste( $vertimas, $tekstas, $kontekstas, $domenas )",
+   "vertimai_daugiskaita( $vertimas, $vienas, $daug, $skaicius, $domenas )",
+   "komponento_bukle( $tekstas, $preke )",
+   "sutaupote()",
+   "front_klase( $klases )",
+   "be_keso()",
+   "nauda_verta( $pid )",
+   "galerijos_klases( $klases )",
+   "front_stilius()",
+   "n()",
+   "th()",
+   "nuorodos()",
+   "f()",
+   "lbOpen(src,alt)",
+   "close()",
+   "esc(e)",
+   "lb()",
+   "savikaina( $pid )",
+   "ar_rinkinys( $pid )",
+   "likucio_uzraktas_meta( $check, $object_id, $meta_key, $meta_value, $extra = null )",
+   "likucio_uzraktas_crud( $product )",
+   "svorio_sprendimas( $prod, $auto_kg, $ivestis )",
+   "klases_id( $slug )",
+   "sandelis( $pid )",
+   "medis()",
+   "rusys()",
+   "rusis( $komponentu_ids, $rinkinio_kat = array()",
+   "kategorijos( $komponentu_ids, $rankiniu = array()",
+   "auto_vieta( $komponentu_ids )",
+   "svoris( $kiekiai )",
+   "siuntimo_klase( $kg )",
+   "svoriai()",
+   "rinkiniai()",
+   "rinkiniai_dp()",
+   "rinkiniai_mnm()",
+   "puslapis()",
+   "skirtukai( $akt )",
+   "seimos()",
+   "seimos_eilute( $tid, $dydziai )",
+   "juosta( $lo, $hi )",
+   "seimu_lentele( $eil )",
+   "seima( $tid )",
+   "seimos_grupe( $tid, $gk, $gd )",
+   "apsaugos( $eilutes, $krepsys, $k_visos, $truksta )",
+   "seimos_js( $tid, $gk, $gram )",
+   "saky(t,bloga)",
+   "siusti(veiksmas,duom,ok)",
+   "ieskoti(browse)",
+   "eur( $n )",
+   "ajax_seimos_kaina()",
+   "krepsio_pigiausia( $hid )",
+   "ajax_seimos_krepsys()",
+   "sarasas()",
+   "bedos( $r )",
+   "busena_pav( $b )",
+   "sarasas_js( $duomenys, $rusys, $kategorijos )",
+   "eur(n)",
+   "esc(s)",
+   "bedos(x)",
+   "filtruoti()",
+   "grupe(laukas,reiksmes)",
+   "komponentai(x)",
+   "zenklai(x)",
+   "lentele(sar)",
+   "korteles(sar)",
+   "eksportas(ids)",
+   "veiksmai(x)",
+   "pieszti()",
+   "siukslinesMygtukai()",
+   "forma( $id )",
+   "forma_js( $id, $d, $medis, $kopija )",
+   "eur(n)",
+   "siuntKlase(kg)",
+   "skaicius(v)",
+   "kainaTekstu(n)",
+   "esc(s)",
+   "skaiciuoti()",
+   "autoVieta()",
+   "tipas()",
+   "dpNumatytas()",
+   "dpKaina()",
+   "dpTaikyti()",
+   "perziuraDP(s,pav)",
+   "atnaujinti()",
+   "tikrinti()",
+   "ieskoti()",
+   "prideti(p, tyliai)",
+   "prekes_eilute( $p, $kiekis = 1 )",
+   "svoris_tekstas( $pid )",
+   "ajax_paieska()",
+   "ajax_issaugoti()",
+   "issaugoti_dp( $id, $pav, $sku, $kaina, $apr, $publ, $kat, $kiekiai, $svoris_iv = null, $kat_off = array()",
+   "ajax_trinti()",
+   "isvalyti_pedsakus( $id )",
+   "po_trynimo( $id, $ivykis )",
+   "ajax_siuksline()",
+   "siuksliadezeje()",
+   "uzsakymuose( $pid )",
+   "kompozicija( $pid, $komponentai, $priverstinai = false )",
+   "kompozicija_vidine( $pid, $komponentai )",
+   "piesti( $drobe, $kelias, $x, $y, $plotis, $aukstis )",
+   "stilius()"
+  ],
+  "pakai": [
+   {
+    "ID": "37877",
+    "post_title": "24 vnt. Animonda Vom Feinsten Adult with Beef and Turkey Hearts – konservai suaugusiems šunims su jautiena ir kalakutų širdimis, 150 g",
+    "post_status": "publish",
+    "q": "24",
+    "pr": "28.89"
+   },
+   {
+    "ID": "37878",
+    "post_title": "36 vnt. Animonda Vom Feinsten Adult with Beef and Turkey Hearts – konservai suaugusiems šunims su jautiena ir kalakutų širdimis, 150 g",
+    "post_status": "publish",
+    "q": "36",
+    "pr": "42.39"
+   }
+  ],
+  "pak_meta": {
+   "_ps_publikuota": [
+    "2026-11-03 09:36:31"
+   ],
+   "_sku": [
+    "DP-82966-24"
+   ],
+   "_regular_price": [
+    "28.89"
+   ],
+   "total_sales": [
+    "0"
+   ],
+   "_tax_status": [
+    "taxable"
+   ],
+   "_tax_class": [
+    ""
+   ],
+   "_manage_stock": [
+    "no"
+   ],
+   "_backorders": [
+    "no"
+   ],
+   "_sold_individually": [
+    "no"
+   ],
+   "_weight": [
+    "3.6"
+   ],
+   "_virtual": [
+    "no"
+   ],
+   "_downloadable": [
+    "no"
+   ],
+   "_download_limit": [
+    "-1"
+   ],
+   "_download_expiry": [
+    "-1"
+   ],
+   "_stock": [
+    null
+   ],
+   "_stock_status": [
+    "instock"
+   ],
+   "_wc_average_rating": [
+    "0"
+   ],
+   "_wc_review_count": [
+    "0"
+   ],
+   "_product_attributes": [
+    "a:6:{s:15:\"pa_gyvuno_rusis\";a:6:{s:4:\"name\";s:15:\"pa_gyvuno_rusis\";s:5:\"value\";s:0:\"\";s:8:\"position\";i:0;s:10:\"is_visible\";i:1;s:12:\"is_variation\";i:0;s:11:\"is_taxonomy\";i:1;}s:9:\"pa_amzius\";a:6:{s:4:\"name\";s:9:\"pa_amzius\";s:5:\"value\";s:0:\"\";s:8:\"position\";i:0;s:10:\"is_visible\";i:1;s:12:\"is_variation\";i:0;s:11:\"is_taxonomy\";i:1;}s:19:\"pa_baltymu_saltinis\";a:6:{s:4:\"name\";s:19:\"pa_baltymu_saltinis\";s:5:\"value\";s:0:\"\";s:8:\"position\";i:0;s:10:\"is_visible\";i:1;s:12:\"is_variation\";i:0;s:11:\"is_taxonomy\";i:1;}s:17:\"pa_pakuotes_dydis\";a:6:{s:4:\"name\";s:17:\"pa_pakuotes_dydis\";s:5:\"value\";s:0:\"\";s:8:\"position\";i:0;s:10:\"is_visible\";i:1;s:12:\"is_variation\";i:0;s:11:\"is_taxonomy\";i:1;}s:11:\"pa_be_grudu\";a:6:{s:4:\"name\";s:11:\"pa_be_grudu\";s:5:\"value\";s:0:\"\";s:8:\"position\";i:4;s:10:\"is_visible\";i:1;s:12:\"is_variation\";i:0;s:11:\"is_taxonomy\";i:1;}s:14:\"pa_monoprotein\";a:6:{s:4:\"name\";s:14:\"pa_monoprotein\";s:5:\"value\";s:0:\"\";s:8:\"position\";i:5;s:10:\"is_visible\";i:1;s:12:\"is_variation\";i:0;s:11:\"is_taxonomy\";i:1;}}"
+   ],
+   "_product_version": [
+    "11.0.1"
+   ],
+   "_price": [
+    "28.89"
+   ],
+   "_dp_nuolaida_proc": [
+    "5.77"
+   ],
+   "_dp_base_product_id": [
+    "19446"
+   ],
+   "_dp_pack_qty": [
+    "24"
+   ],
+   "_cost_price": [
+    "16.32"
+   ],
+   "_ps_be_saltinio": [
+    "1"
+   ],
+   "_thumbnail_id": [
+    "19447"
+   ],
+   "_ps_dydzio_seima": [
+    "av-animonda-vom-feinsten-adult-with-beef-and-turkey-hearts-konservai-suaugusiems-sunims-su-jautiena-ir-kalakutu-sirdimis-150-g"
+   ],
+   "_ps_s1824av_pakas": [
+    "19446"
+   ],
+   "_ps_sales_30d": [
+    "0"
+   ],
+   "_ps_sales_90d": [
+    "0"
+   ],
+   "_ps_sales_365d": [
+    "0"
+   ],
+   "_ps_revenue_365d": [
+    "0"
+   ],
+   "_ps_orders_365d": [
+    "0"
+   ],
+   "_ps_last_sale": [
+    ""
+   ],
+   "_ps_margin_365d": [
+    "0"
+   ],
+   "_ps_sales_updated": [
+    "2026-11-12 06:50:52"
+   ]
+  }
+ }
+}
