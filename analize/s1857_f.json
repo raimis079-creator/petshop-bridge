@@ -1,0 +1,34 @@
+{
+ "1": {
+  "v": "S1857f",
+  "rink_a": "50:  * Animonda #35079 buvo be `_petshop_component_quantities` meta (sukurtas ne\n51:  * siuo langu), todel body klase nebuvo dedama: klientas mate neapdorota MnM\n52:  * lentele su „PRODUCT / QUANTITY\". Dabar sudetis imama per kiekiai(): meta,\n53:  * o jos nesant — is `wc_mnm_child_items` (po 1 vnt.). Rinkiniu pozymis dabar\n54:  * yra PREKES TIPAS (mix-and-match), ne meta buvimas.\n55:  *\n56:  * Petshop Rinkiniai v1.37 (H293) — „PRODUCT/QUANTITY\" verciami ir JS'u.\n57:  *\n58:  * Iki siol antrastes buvo tik PASLEPTOS CSS'u (::after su lietuvisku tekstu).\n59:  * Jei stilius nespeja arba puslapis paimtas is narsykles kesо, klientas mato\n60:  * anglisku zodziu lentele. Dabar tekstas KEICIAMAS pacioje lenteleje — net ir\n61:  * be musu CSS eilute lieka lietuviska.\n62:  *\n63:  * Petshop Rinkiniai v1.36 (H290) — DU SAVININKO NURODYMAI (2026-08-25).\n64:  *\n65:  * (1) Nauda po 3 % nerodoma: „Sutaupote 0,28 € (1%)\" atrodo juokingai ir\n66:  *     mazina pasitikejima. Slepiama IR lentele, IR perbraukta senoji kaina.\n67:  * (2) Automatines vietos zymos dabar nuimamos (✕) — anksciau ju nebuvo\n68:  *     imanoma panaikinti. Nuimtos irasomos i _ps_rink_kat_off ir islieka\n69:  *     tarp seansu; grazinti galima ta pacia „pridėti vietą ranka\" eilute.\n70:  *\n71:  * Petshop Rinkiniai v1.35 (H284) — komponento pavadinimas be nuorodos i preke (savininko nurodymas).\n72:  *\n73:  * Petshop Rinkiniai v1.34 (H283) — savas lightbox (Magnific siame puslapyje nepasiekiamas).\n74:  *\n75:  * Petshop Rinkiniai v1.33 (H282) — komponento nuotrauka atidaroma lightbox'e (Magnific), ne nuvedama i faila/preke.\n76:  *\n77:  * Petshop Rinkiniai v1.32 (H281) — figure.woocommerce-product-gallery__image pseudo-elementai (temos) pridedavo 34 px eilutei → isjungti.\n78:  *\n79:  * Petshop Rinkiniai v1.31 (H280) — sudeties eiluciu aukstis (paslepti vidiniai elementai su padding/margin).\n80:  *\n81:  * Petshop Rinkiniai v1.30 (H279) — v1.29 patikslinimai: kaina tamsi (ne temos akcijine auksine), „Turime\" eilutese paslepta, eilutes kompaktiskesnes.\n82:  *\n83:  * Petshop Rinkiniai v1.29 (H278) — PREKES PUSLAPIO VITRINA PAGAL TEMOS STILIU.\n84:  *\n85:  * Savininkas: rinkinio puslapis „ne petshop spalvu, istemptas\". Priezastis —\n86:  * senas snippetas #524 (auksine #b29051, dideles korteles 3 stulpeliais, 28 px\n87:  * kaina) uzdedamas ant mu-plugino stiliaus. DABAR vitrina PILNAI priklauso\n88:  * siam failui (front_stilius, wp_head prioritetas 100), #524 isjungiamas:\n89:  * temos spalvos (#365a51 / #a2bd9d), kompaktiskas sudeties sarasas (56 px\n90:  * nuotrauka · pavadinimas · ×N), mygtukas — temos numatytas (zalias), dvigubas\n91:  * „Sutaupote\" (#535 eilute) paslepiamas. #535 lieka del perbrauktos kainos\n92:  * kortelese; #532 lieka — fiksuoja kiekius.\n93:  *\n94:  * Petshop Rinkiniai v1.28 (H276) — SANDELIO FILTRAS PAVELDI RINKINIO SANDELI.\n95:  *\n96:  * Redaguojant filtras visada rodydavo „Visi\" — savininkas: turi rodyti tai, kas\n97:  * pasirinkta kuriant. Rinkinys sandelio atskirai nesaugo (jis kyla is prekiu:\n98:  * viena grupe = vienas sandelis = viena siunta), todel filtras nustatomas pagal\n99:  * KOMPONENTUS: visi vienam sandelyje -> tas sandelis pazymimas ir paieska is\n100:  * karto rodo tik tinkamas prekes; misrus -> „Visi\" ir ispejimas.\n",
+  "rink_b": "560: \t * Liecia TIK komponentus — pacio rinkinio bukle lieka kaip buvo.\n561: \t */\n562: \tpublic static function komponento_bukle( $tekstas, $preke ) {\n563: \t\tif ( is_admin() || ! self::rinkinio_puslapis() ) { return $tekstas; }\n564: \t\tglobal $post;\n565: \t\tif ( $post && $preke && (int) $preke->get_id() === (int) $post->ID ) { return $tekstas; }\n566: \t\tif ( ! $preke ) { return $tekstas; }\n567: \t\treturn $preke->is_in_stock() ? 'Turime' : 'Neturime';\n568: \t}\n569: \n570: \t/**\n571: \t * „Sutaupote X €\" po kaina.\n572: \t *\n573: \t * Stipriausias pardavimo argumentas ir vienintelis skaicius, kurio klientas\n574: \t * pats neapskaiciuos. DP pakai ji jau turi (snippet 570) — rinkiniams\n575: \t * pridedam cia, kad butu vienodai.\n576: \t */\n577: \tpublic static function sutaupote() {\n578: \t\tglobal $product;\n579: \t\tif ( ! $product || ! is_a( $product, 'WC_Product' ) ) { return; }\n580: \t\t$pid = $product->get_id();\n",
+  "paieska": "500: \t\tif ( ! $and ) { return array(); }\n501: \t\t$ids = wc_get_product_visibility_term_ids();\n502: \t\t$tt = (int) ( $ids['exclude-from-search'] ?? 0 );\n503: \t\tif ( ! $tt ) { return array(); }\n504: \t\treturn array_map( 'intval', $wpdb->get_col( \"SELECT {$wpdb->posts}.ID FROM {$wpdb->posts} JOIN {$wpdb->term_relationships} tr ON tr.object_id={$wpdb->posts}.ID AND tr.term_taxonomy_id={$tt}\n505: \t\t\tWHERE post_type='product' AND post_status='publish' AND \" . implode( ' AND ', $and ) . \" ORDER BY post_title LIMIT \" . (int) $max ) );\n506: \t}\n507: \n508: \tprivate static function kontaktas() {\n509: \t\t$out = array();\n510: \t\t$e = get_option( 'ps_paieska_kontaktas_email' ) ?: get_option( 'woocommerce_email_from_address' );\n511: \t\t$t = get_option( 'ps_paieska_kontaktas_tel' ) ?: get_option( 'woocommerce_store_phone' );\n512: \t\tif ( $e ) { $out[] = '<a href=\"mailto:' . esc_attr( $e ) . '\">' . esc_html( $e ) . '</a>'; }\n513: \t\tif ( $t ) { $out[] = '<a href=\"tel:' . esc_attr( preg_replace( '/[^\\d+]/', '', $t ) ) . '\">' . esc_html( $t ) . '</a>'; }\n514: \t\t$pg = get_page_by_path( 'kontaktai' );\n515: \t\tif ( $pg ) { $out[] = '<a href=\"' . esc_url( get_permalink( $pg ) ) . '\">kontaktų forma</a>'; }\n516: \t\treturn $out ? implode( ' arba ', $out ) : 'per kontaktų puslapį';\n517: \t}\n518: \n519: \t/** Flatsome live-search „Produktų nerasta.“ → nuoroda į pilną rezultatų puslapį. */\n520: \tpublic static function ajax_nerasta( $t, $orig, $domain ) {\n521: \t\tif ( false !== strpos( $orig, 'No products found' ) && isset( $_REQUEST['action'] ) && 'flatsome_ajax_search_products' === $_REQUEST['action'] ) {\n522: \t\t\treturn 'Nerasta — spauskite Enter, parodysime kategorijas ir alternatyvas';\n523: \t\t}\n524: \t\treturn $t;\n525: \t}\n526: \n527: \tprivate static function css() {\n528: \t\tstatic $d = false;\n529: \t\tif ( $d ) { return ''; }\n530: \t\t$d = true;\n",
+  "theme": "flatsome-child",
+  "psc_hit": [],
+  "snip": [
+   {
+    "id": "562",
+    "name": "Petshop Sprendimai Shortcode Variklis v9",
+    "active": "1"
+   },
+   {
+    "id": "8219",
+    "name": "TEMP PS dep-180445",
+    "active": "0"
+   },
+   {
+    "id": "8220",
+    "name": "TEMP PS dep-180628",
+    "active": "1"
+   }
+  ]
+ },
+ "v": "dep-180628",
+ "kurimas": 200,
+ "sid": 8220,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
