@@ -1,50 +1,148 @@
 {
- "1": {
-  "v": "S1852r-1",
-  "plan": {
-   "38432": {
-    "seima": "av-animonda-vom-feinsten-adult-pate-with-chicken-and-heart-konservai-katems-su-vistiena-ir-sirdimis-85-g",
-    "pakai": [
-     "38442",
-     "38443"
-    ]
-   },
-   "38434": {
-    "seima": "av-animonda-vom-feinsten-adult-in-jelly-with-chicken-and-salmon-konservai-katems-su-vistiena-ir-lasisa-drebuciuose-85-g",
-    "pakai": [
-     "38444",
-     "38445"
-    ]
-   },
-   "38436": {
-    "seima": "av-animonda-vom-feinsten-adult-in-sauce-with-chicken-and-liver-konservai-katems-su-vistiena-ir-kepenelemis-padaze-85-g",
-    "pakai": [
-     "38446",
-     "38447"
-    ]
-   },
-   "38438": {
-    "seima": "av-animonda-vom-feinsten-adult-in-sauce-with-chicken-and-turkey-konservai-katems-su-vistiena-ir-kalakutiena-padaze-85-g",
-    "pakai": [
-     "38448",
-     "38449"
-    ]
-   }
+ "2": {
+  "v": "S1852r-2",
+  "set": {
+   "38442": [
+    16,
+    "16 × 85 g",
+    822
+   ],
+   "38443": [
+    32,
+    "32 × 85 g",
+    823
+   ],
+   "38444": [
+    16,
+    "16 × 85 g",
+    822
+   ],
+   "38445": [
+    32,
+    "32 × 85 g",
+    823
+   ],
+   "38446": [
+    16,
+    "16 × 85 g",
+    822
+   ],
+   "38447": [
+    32,
+    "32 × 85 g",
+    823
+   ],
+   "38448": [
+    16,
+    "16 × 85 g",
+    822
+   ],
+   "38449": [
+    32,
+    "32 × 85 g",
+    823
+   ]
   },
-  "q": {
-   "38442": "16",
-   "38443": "32",
-   "38444": "16",
-   "38445": "32",
-   "38446": "16",
-   "38447": "32",
-   "38448": "16",
-   "38449": "32"
+  "d19_n": 295
+ },
+ "3": {
+  "v": "S1852r-3",
+  "chk": {
+   "38432": [
+    true,
+    [
+     "85 g"
+    ],
+    "draft"
+   ],
+   "38434": [
+    true,
+    [
+     "85 g"
+    ],
+    "draft"
+   ],
+   "38436": [
+    true,
+    [
+     "85 g"
+    ],
+    "publish"
+   ],
+   "38438": [
+    true,
+    [
+     "85 g"
+    ],
+    "draft"
+   ],
+   "38442": [
+    true,
+    [
+     "16 × 85 g"
+    ],
+    "draft"
+   ],
+   "38443": [
+    true,
+    [
+     "32 × 85 g"
+    ],
+    "draft"
+   ],
+   "38444": [
+    true,
+    [
+     "16 × 85 g"
+    ],
+    "draft"
+   ],
+   "38445": [
+    true,
+    [
+     "32 × 85 g"
+    ],
+    "draft"
+   ],
+   "38446": [
+    true,
+    [
+     "16 × 85 g"
+    ],
+    "publish"
+   ],
+   "38447": [
+    true,
+    [
+     "32 × 85 g"
+    ],
+    "publish"
+   ],
+   "38448": [
+    true,
+    [
+     "16 × 85 g"
+    ],
+    "draft"
+   ],
+   "38449": [
+    true,
+    [
+     "32 × 85 g"
+    ],
+    "draft"
+   ]
+  },
+  "d19": {
+   "38432": true,
+   "38434": true,
+   "38436": true,
+   "38438": true
   }
  },
- "v": "dep-125821",
+ "v": "dep-125938",
  "kurimas": 200,
- "sid": 8177,
+ "sid": 8178,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
