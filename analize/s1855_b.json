@@ -1,5 +1,334 @@
 {
- "v": "dep-152811",
- "list_praleistas": "Error: fx:list",
- "klaida": "Error: fx:create"
+ "v": "dep-153112",
+ "kurimas": 200,
+ "sid": 8201,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "L": {
+  "v": "S1855b-L",
+  "b": {
+   "17493": {
+    "stock": "48",
+    "seima": "",
+    "term": "100 g",
+    "pakai": []
+   },
+   "17499": {
+    "stock": "45",
+    "seima": "av-miamor-super-premium-konservai-katems-su-tunu-ir-kalmarais-100-g",
+    "term": "100 g",
+    "pakai": [
+     [
+      "37911",
+      "publish",
+      "12",
+      "20.79",
+      "2.94",
+      "=",
+      "12 × 100 g"
+     ],
+     [
+      "37912",
+      "publish",
+      "24",
+      "40.39",
+      "5.85",
+      "=",
+      "24 × 100 g"
+     ],
+     [
+      "37913",
+      "publish",
+      "36",
+      "59.29",
+      "7.9",
+      "=",
+      "36 × 100 g"
+     ]
+    ]
+   },
+   "17504": {
+    "stock": "64",
+    "seima": "av-miamor-super-premium-konservai-katems-su-tunu-ir-darzovemis-100-g",
+    "term": "100 g",
+    "pakai": [
+     [
+      "37910",
+      "publish",
+      "12",
+      "20.79",
+      "2.94",
+      "=",
+      "12 × 100 g"
+     ]
+    ]
+   },
+   "17507": {
+    "stock": "45",
+    "seima": "av-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g",
+    "term": "100 g",
+    "pakai": [
+     [
+      "37908",
+      "publish",
+      "24",
+      "40.39",
+      "5.85",
+      "=",
+      "24 × 100 g"
+     ],
+     [
+      "37909",
+      "publish",
+      "36",
+      "59.29",
+      "7.9",
+      "=",
+      "36 × 100 g"
+     ]
+    ]
+   },
+   "17510": {
+    "stock": "57",
+    "seima": "av-miamor-super-premium-konservai-katems-su-tunu-ir-suriu-100-g",
+    "term": "100 g",
+    "pakai": [
+     [
+      "37905",
+      "publish",
+      "12",
+      "20.79",
+      "2.94",
+      "=",
+      "12 × 100 g"
+     ],
+     [
+      "37906",
+      "publish",
+      "24",
+      "40.39",
+      "5.85",
+      "=",
+      "24 × 100 g"
+     ],
+     [
+      "37907",
+      "publish",
+      "36",
+      "59.29",
+      "7.9",
+      "=",
+      "36 × 100 g"
+     ]
+    ]
+   },
+   "17517": {
+    "stock": "37",
+    "seima": "av-miamor-super-premium-konservai-katems-su-tunu-ir-ryziais-100-g",
+    "term": "100 g",
+    "pakai": [
+     [
+      "37904",
+      "publish",
+      "12",
+      "20.79",
+      "2.94",
+      "=",
+      "12 × 100 g"
+     ]
+    ]
+   },
+   "17520": {
+    "stock": "43",
+    "seima": "av-miamor-super-premium-konservai-katems-su-tunu-ir-putpeliu-kiausiniais-100-g",
+    "term": "100 g",
+    "pakai": [
+     [
+      "37901",
+      "publish",
+      "12",
+      "20.79",
+      "2.94",
+      "=",
+      "12 × 100 g"
+     ],
+     [
+      "37902",
+      "publish",
+      "24",
+      "40.39",
+      "5.85",
+      "=",
+      "24 × 100 g"
+     ],
+     [
+      "37903",
+      "publish",
+      "36",
+      "59.29",
+      "7.9",
+      "=",
+      "36 × 100 g"
+     ]
+    ]
+   },
+   "17523": {
+    "stock": "27",
+    "seima": "av-miamor-fillet-naturelle-konservai-katems-su-tunu-ir-krabais-80-g",
+    "term": "80 g",
+    "pakai": [
+     [
+      "37899",
+      "publish",
+      "12",
+      "20.79",
+      "2.94",
+      "=",
+      "12 × 80 g"
+     ],
+     [
+      "37900",
+      "publish",
+      "24",
+      "40.39",
+      "5.85",
+      "=",
+      "24 × 80 g"
+     ]
+    ]
+   },
+   "17526": {
+    "stock": "14",
+    "seima": "",
+    "term": "100 g",
+    "pakai": []
+   },
+   "17529": {
+    "stock": "33",
+    "seima": "",
+    "term": "100 g",
+    "pakai": []
+   },
+   "17535": {
+    "stock": "38",
+    "seima": "av-miamor-feine-filets-konservai-katems-vistiena-paukstienos-drebuciuose-100-g",
+    "term": "100 g",
+    "pakai": [
+     [
+      "37896",
+      "publish",
+      "12",
+      "23.89",
+      "2.65",
+      "=",
+      "12 × 100 g"
+     ],
+     [
+      "37897",
+      "publish",
+      "24",
+      "46.29",
+      "5.8",
+      "=",
+      "24 × 100 g"
+     ],
+     [
+      "37898",
+      "publish",
+      "36",
+      "67.89",
+      "7.93",
+      "=",
+      "36 × 100 g"
+     ]
+    ]
+   },
+   "17538": {
+    "stock": "22",
+    "seima": "av-miamor-feine-filets-konservai-katems-tunas-su-krabais-drebuciuose-100-g",
+    "term": "100 g",
+    "pakai": [
+     [
+      "37895",
+      "publish",
+      "12",
+      "23.89",
+      "2.65",
+      "=",
+      "12 × 100 g"
+     ]
+    ]
+   },
+   "17541": {
+    "stock": "24",
+    "seima": "",
+    "term": "100 g",
+    "pakai": []
+   },
+   "17544": {
+    "stock": "35",
+    "seima": "",
+    "term": "100 g",
+    "pakai": []
+   },
+   "17547": {
+    "stock": "24",
+    "seima": "",
+    "term": "100 g",
+    "pakai": []
+   },
+   "17550": {
+    "stock": "24",
+    "seima": "",
+    "term": "100 g",
+    "pakai": []
+   }
+  },
+  "kiti": [],
+  "terms": [
+   {
+    "term_id": "438",
+    "name": "100 g"
+   },
+   {
+    "term_id": "811",
+    "name": "12 × 100 g"
+   },
+   {
+    "term_id": "812",
+    "name": "12 × 80 g"
+   },
+   {
+    "term_id": "730",
+    "name": "24 × 100 g"
+   },
+   {
+    "term_id": "784",
+    "name": "24 × 80 g"
+   },
+   {
+    "term_id": "810",
+    "name": "36 × 100 g"
+   },
+   {
+    "term_id": "436",
+    "name": "80 g"
+   }
+  ],
+  "nuolaida_naudoja": {
+   "petshop-dp-kainos.php": [
+    "5: *   = kiekis × bazinės kaina × (1 − `_dp_nuolaida_proc` / 100), apvalinta iki „…9\" centų (42,583 → 42,59). Jei bazinė akcijoje —",
+    "8: *   `_dp_nuolaida_proc`, ir naktiniu cron 05:10 (`ps_dp_kainos_naktinis`, saugiklis). Pakai BE `_dp_nuolaida_proc`",
+    "20: const META      = '_dp_nuolaida_proc';"
+   ],
+   "petshop-rinkiniai.php": [
+    "1253: 'dp_proc' => (string) get_post_meta( $pid, '_dp_nuolaida_proc', true ),",
+    "2507: $d['dp_proc'] = (string) get_post_meta( $saltinis, '_dp_nuolaida_proc', true );   /* v1.45 */",
+    "3492: if ( $dp_proc === '' ) { $prod->delete_meta_data( '_dp_nuolaida_proc' ); }",
+    "3493: else { $prod->update_meta_data( '_dp_nuolaida_proc', (string) (float) $dp_proc ); }"
+   ]
+  }
+ }
 }
