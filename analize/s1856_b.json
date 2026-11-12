@@ -1,63 +1,133 @@
 {
- "v": "dep-161835",
+ "0": {
+  "v": "S1856b-0",
+  "truksta": []
+ },
+ "v": "dep-162029",
  "kurimas": 200,
- "sid": 8209,
+ "sid": 8210,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "P5": {
-  "success": true,
-  "data": {
-   "id": 38521,
-   "tipas": "dp",
-   "busena": "publish",
-   "nuoroda": "https://petshop.lt/product/11-vnt-animonda-vom-feinsten-adult-with-deer-konservai-suaugusiems-sunims-su-elniena-150-g/"
-  }
- },
- "P6": {
-  "success": true,
-  "data": {
-   "id": 38522,
-   "tipas": "dp",
-   "busena": "publish",
-   "nuoroda": "https://petshop.lt/product/22-vnt-animonda-vom-feinsten-adult-with-deer-konservai-suaugusiems-sunims-su-elniena-150-g/"
-  }
- },
- "P7": {
-  "success": true,
-  "data": {
-   "id": 38523,
-   "tipas": "dp",
-   "busena": "publish",
-   "nuoroda": "https://petshop.lt/product/11-vnt-animonda-vom-feinsten-adult-with-poultry-and-veal-konservai-suaugusiems-sunims-su-paukstiena-ir-versiena-150-g/"
-  }
- },
- "P8": {
-  "success": true,
-  "data": {
-   "id": 38524,
-   "tipas": "dp",
-   "busena": "publish",
-   "nuoroda": "https://petshop.lt/product/22-vnt-animonda-vom-feinsten-adult-with-poultry-and-veal-konservai-suaugusiems-sunims-su-paukstiena-ir-versiena-150-g/"
-  }
- },
- "P9": {
-  "success": true,
-  "data": {
-   "id": 38525,
-   "tipas": "dp",
-   "busena": "publish",
-   "nuoroda": "https://petshop.lt/product/11-vnt-animonda-vom-feinsten-adult-with-turkey-and-ham-konservai-suaugusiems-sunims-su-kalakutiena-ir-kumpiu-150-g/"
-  }
- },
- "P10": {
-  "success": true,
-  "data": {
-   "id": 38526,
-   "tipas": "dp",
-   "busena": "publish",
-   "nuoroda": "https://petshop.lt/product/22-vnt-animonda-vom-feinsten-adult-with-turkey-and-ham-konservai-suaugusiems-sunims-su-kalakutiena-ir-kumpiu-150-g/"
-  }
+ "U": {
+  "v": "S1856b-U",
+  "juodrastis": [
+   "37877 (24)",
+   "37878 (36)",
+   "37880 (24)",
+   "37881 (36)"
+  ],
+  "b": {
+   "19396": {
+    "11": [
+     "38525",
+     "publish",
+     "14.41",
+     1.31,
+     "7.48"
+    ],
+    "22": [
+     "38526",
+     "publish",
+     "27.80",
+     1.264,
+     "14.96"
+    ]
+   },
+   "19411": {
+    "11": [
+     "38519",
+     "publish",
+     "13.86",
+     1.26,
+     "7.48"
+    ],
+    "22": [
+     "38520",
+     "publish",
+     "26.75",
+     1.216,
+     "14.96"
+    ]
+   },
+   "19414": {
+    "11": [
+     "38523",
+     "publish",
+     "14.41",
+     1.31,
+     "7.48"
+    ],
+    "22": [
+     "38524",
+     "publish",
+     "27.80",
+     1.264,
+     "14.96"
+    ],
+    "24": [
+     "37880",
+     "draft",
+     "29.99",
+     1.25,
+     "16.32"
+    ],
+    "36": [
+     "37881",
+     "draft",
+     "44.09",
+     1.225,
+     "24.48"
+    ]
+   },
+   "19425": {
+    "11": [
+     "38521",
+     "publish",
+     "14.41",
+     1.31,
+     "7.48"
+    ],
+    "22": [
+     "38522",
+     "publish",
+     "27.80",
+     1.264,
+     "14.96"
+    ]
+   },
+   "19446": {
+    "11": [
+     "38517",
+     "publish",
+     "13.86",
+     1.26,
+     "7.48"
+    ],
+    "22": [
+     "38518",
+     "publish",
+     "26.75",
+     1.216,
+     "14.96"
+    ],
+    "24": [
+     "37877",
+     "draft",
+     "28.89",
+     1.204,
+     "16.32"
+    ],
+    "36": [
+     "37878",
+     "draft",
+     "42.39",
+     1.178,
+     "24.48"
+    ]
+   }
+  },
+  "d19_n": 316
  }
 }
