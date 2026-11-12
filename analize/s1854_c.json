@@ -1,0 +1,81 @@
+{
+ "v": "dep-145701",
+ "kurimas": 200,
+ "sid": 8196,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "S1854c",
+  "ord": [
+   {
+    "order": "38394",
+    "data": "2026-11-11",
+    "busena": "completed",
+    "pak": "37917",
+    "qty_pak": "24",
+    "base": "16942",
+    "item_qty": 1,
+    "av_pid": "16942",
+    "av_qty": "24",
+    "reduced_stock": "",
+    "src": "av",
+    "pastabos": [
+     "Siuntos numeriai išsaugoti (AV): V07267E1000750",
+     "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+     "PVM s/f AVPN011626 suteikta apmokėjus, data 2026-11-11 (S1839).",
+     "Surūšiuota pati: 24 vnt. Pasta katėms su lašiša - Ontario — Iš AV; Miamor skanėstai katėms - kremas su vita — Iš AV",
+     "AV nurašymas: #16942 grynai AV 40 -> 16 · #17481 grynai AV 366 -> 364",
+     "Vykdymas: MAIN — AV 3 vnt (1 siunta(-os)) · dropship pirma"
+    ]
+   },
+   {
+    "order": "38374",
+    "data": "2026-11-10",
+    "busena": "processing",
+    "pak": "37447",
+    "qty_pak": "24",
+    "base": "17400",
+    "item_qty": 1,
+    "av_pid": "",
+    "av_qty": "",
+    "reduced_stock": "",
+    "src": "zb",
+    "pastabos": [
+     "Tiekimas: visos prekės gautos (partija #78). Užsakymas paruoštas surinkimui iš AV. Į AV perkeltos eilutės: Josera Meat Lovers Pure Lamb konservuotas pašaras šunims su ėriena, 400 g.",
+     "Darbalaukis: ZB išsiųsta (Venipak, venipak). Dar laukiam: AV. klientui išėjo „Išsiųsta 1 iš 2 siuntų“",
+     "Tiekimas: prekės užsakytos iš Vetfarmas (partija #78, laiške kartu su užsakymais). Kelias į AV: Tiekėjas atveža pats. Laukiam.",
+     "Tiekimas: „Josera Meat Lovers Pure Lamb konservuotas pašaras šunims su ėriena, 400 g“ (5 vnt) įtraukta į Vetfarmas partiją #78 — parsivežam į AV.",
+     "Surūšiuota (Inga): Ontario Adult Large Lamb and Brown Rice, — Iš AV; Ontario Monoproteino konservai šunims su — Iš AV; Josera Meat Lovers Pure Lamb konservuota — VF veža į AV; 24 vnt. Monge Monoprotei",
+     "Darbalaukis: „24 vnt. Monge Monoproteico Solo Agnello – Monoproteininiai konservai šunims su gryna ėriena, 400 g“ kelias ZB veža į AV → ZB siunčia klientui (Inga).",
+     "PVM s/f AVPN011617 suteikta apmokėjus, data 2026-11-10 (S1839).",
+     "Partijos nurašytos: #17293 −1 vnt. (1 partijos) · #17223 −0 vnt. (0 partijos)\nĮSPĖJIMAI: #17223: Partijose trūksta 2 vnt. — likutis ir partijos nesutampa",
+     "AV nurašymas: #17293 grynai AV 3 -> 2 · #17223 grynai AV 2 -> 0",
+     "Daugiau=pigiau: pack \"24 vnt. Monge Monoproteico Solo Agnello – Monoproteininiai konservai šunims su gryna ėriena, 400 g\" (x1) nurašė 24 vnt. iš bazinio produkto #17400 (Monge Monoproteico Solo Agnell",
+     "Vykdymas: MIXED — AV 3 vnt · VF 5 vnt · ZB 1 vnt (3 siunta(-os)) · mišrus → AV pirmenybė"
+    ]
+   },
+   {
+    "order": "38334",
+    "data": "2026-11-08",
+    "busena": "completed",
+    "pak": "35098",
+    "qty_pak": "20",
+    "base": "16311",
+    "item_qty": 1,
+    "av_pid": "16311",
+    "av_qty": "20",
+    "reduced_stock": "",
+    "src": "av",
+    "pastabos": [
+     "Siuntos numeriai išsaugoti (AV): V07267E1000697",
+     "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga",
+     "Surūšiuota pati: 20 vnt. rudų kiaulės knyslių — Iš AV; 20 vnt. rudų jaučio ausų — Iš AV; Sausainiai šuniukams, kauliuko formos, B — Iš AV",
+     "AV nurašymas: #16302 grynai AV 64 -> 44 · #16311 grynai AV 382 -> 362 · #16273 grynai AV 13 -> 12",
+     "Vykdymas: MAIN — AV 3 vnt (1 siunta(-os)) · dropship pirma"
+    ]
+   }
+  ]
+ }
+}
