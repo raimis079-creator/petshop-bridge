@@ -1,0 +1,118 @@
+{
+ "1": {
+  "v": "S1850k",
+  "dir": {
+   "petshop-backups/2026/11": [],
+   "petshop-backups/2026/10": []
+  },
+  "state_files": [
+   [
+    "application_backups",
+    "11-11 03:20"
+   ],
+   [
+    "backups",
+    "11-12 02:00"
+   ]
+  ],
+  "wpcron": [
+   [
+    "wp_delete_temp_updater_backups",
+    "11-17 15:44"
+   ]
+  ],
+  "statusai_30d": [
+   {
+    "status": "wc-cancelled",
+    "n": "8",
+    "pask": "2026-11-10 10:54:48"
+   },
+   {
+    "status": "wc-completed",
+    "n": "275",
+    "pask": "2026-11-12 07:06:18"
+   },
+   {
+    "status": "wc-processing",
+    "n": "23",
+    "pask": "2026-11-12 07:44:03"
+   }
+  ],
+  "completed_pask": [
+   {
+    "id": "38346",
+    "date_created_gmt": "2026-11-09 12:24:58",
+    "date_updated_gmt": "2026-11-12 07:06:18"
+   },
+   {
+    "id": "38369",
+    "date_created_gmt": "2026-11-10 14:48:18",
+    "date_updated_gmt": "2026-11-12 06:36:14"
+   },
+   {
+    "id": "38367",
+    "date_created_gmt": "2026-11-10 13:01:32",
+    "date_updated_gmt": "2026-11-12 06:36:14"
+   },
+   {
+    "id": "38332",
+    "date_created_gmt": "2026-11-07 17:40:23",
+    "date_updated_gmt": "2026-11-12 06:06:33"
+   },
+   {
+    "id": "38375",
+    "date_created_gmt": "2026-11-10 17:35:24",
+    "date_updated_gmt": "2026-11-12 06:06:32"
+   }
+  ],
+  "note_pask": [
+   {
+    "oid": "38425",
+    "comment_date": "2026-11-12 09:44:02",
+    "c": "Paysera: Naujo užsakymo kūrimo būsena"
+   },
+   {
+    "oid": "38425",
+    "comment_date": "2026-11-12 09:44:02",
+    "c": "PVM s/f AVPN011639 suteikta apmokėjus, data 2026-11-12 (S1839)."
+   },
+   {
+    "oid": "38425",
+    "comment_date": "2026-11-12 09:44:01",
+    "c": "Email \"Užsakymas vykdomas\" sent."
+   },
+   {
+    "oid": "38425",
+    "comment_date": "2026-11-12 09:44:01",
+    "c": "Email \"Naujas užsakymas\" sent."
+   },
+   {
+    "oid": "38425",
+    "comment_date": "2026-11-12 09:44:00",
+    "c": "Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėta"
+   },
+   {
+    "oid": "38425",
+    "comment_date": "2026-11-12 09:44:00",
+    "c": "Faktai irasyti: 7 eilutes · pajamos 62,79 EUR (be PVM, po nuolaidu) · PVM 13,19 EUR · marz"
+   },
+   {
+    "oid": "38425",
+    "comment_date": "2026-11-12 09:44:00",
+    "c": "Partijos nurašytos: #18818 −1 vnt. (1 partijos) · #15892 −1 vnt. (1 partijos) · #35207 −0 "
+   },
+   {
+    "oid": "38425",
+    "comment_date": "2026-11-12 09:43:59",
+    "c": "AV nurašymas: #18818 grynai AV 41 -> 40 · #15892 grynai AV 1 -> 0 · #35207 grynai AV 4 -> "
+   }
+  ]
+ },
+ "v": "dep-074338",
+ "kurimas": 200,
+ "sid": 8129,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
