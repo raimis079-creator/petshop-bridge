@@ -1,100 +1,63 @@
 {
- "0": {
-  "v": "S1856b-0",
-  "truksta": [
-   [
-    19446,
-    11,
-    "13.86"
-   ],
-   [
-    19446,
-    22,
-    "26.75"
-   ],
-   [
-    19411,
-    11,
-    "13.86"
-   ],
-   [
-    19411,
-    22,
-    "26.75"
-   ],
-   [
-    19425,
-    11,
-    "14.41"
-   ],
-   [
-    19425,
-    22,
-    "27.80"
-   ],
-   [
-    19414,
-    11,
-    "14.41"
-   ],
-   [
-    19414,
-    22,
-    "27.80"
-   ],
-   [
-    19396,
-    11,
-    "14.41"
-   ],
-   [
-    19396,
-    22,
-    "27.80"
-   ]
-  ]
- },
- "v": "dep-161642",
+ "v": "dep-161835",
  "kurimas": 200,
- "sid": 8208,
+ "sid": 8209,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "P1": {
+ "P5": {
   "success": true,
   "data": {
-   "id": 38517,
+   "id": 38521,
    "tipas": "dp",
    "busena": "publish",
-   "nuoroda": "https://petshop.lt/product/11-vnt-animonda-vom-feinsten-adult-with-beef-and-turkey-hearts-konservai-suaugusiems-sunims-su-jautiena-ir-kalakutu-sirdimis-150-g/"
+   "nuoroda": "https://petshop.lt/product/11-vnt-animonda-vom-feinsten-adult-with-deer-konservai-suaugusiems-sunims-su-elniena-150-g/"
   }
  },
- "P2": {
+ "P6": {
   "success": true,
   "data": {
-   "id": 38518,
+   "id": 38522,
    "tipas": "dp",
    "busena": "publish",
-   "nuoroda": "https://petshop.lt/product/22-vnt-animonda-vom-feinsten-adult-with-beef-and-turkey-hearts-konservai-suaugusiems-sunims-su-jautiena-ir-kalakutu-sirdimis-150-g/"
+   "nuoroda": "https://petshop.lt/product/22-vnt-animonda-vom-feinsten-adult-with-deer-konservai-suaugusiems-sunims-su-elniena-150-g/"
   }
  },
- "P3": {
+ "P7": {
   "success": true,
   "data": {
-   "id": 38519,
+   "id": 38523,
    "tipas": "dp",
    "busena": "publish",
-   "nuoroda": "https://petshop.lt/product/11-vnt-animonda-vom-feinsten-adult-with-rabbit-konservai-suaugusiems-sunims-su-triusiena-150-g/"
+   "nuoroda": "https://petshop.lt/product/11-vnt-animonda-vom-feinsten-adult-with-poultry-and-veal-konservai-suaugusiems-sunims-su-paukstiena-ir-versiena-150-g/"
   }
  },
- "P4": {
+ "P8": {
   "success": true,
   "data": {
-   "id": 38520,
+   "id": 38524,
    "tipas": "dp",
    "busena": "publish",
-   "nuoroda": "https://petshop.lt/product/22-vnt-animonda-vom-feinsten-adult-with-rabbit-konservai-suaugusiems-sunims-su-triusiena-150-g/"
+   "nuoroda": "https://petshop.lt/product/22-vnt-animonda-vom-feinsten-adult-with-poultry-and-veal-konservai-suaugusiems-sunims-su-paukstiena-ir-versiena-150-g/"
+  }
+ },
+ "P9": {
+  "success": true,
+  "data": {
+   "id": 38525,
+   "tipas": "dp",
+   "busena": "publish",
+   "nuoroda": "https://petshop.lt/product/11-vnt-animonda-vom-feinsten-adult-with-turkey-and-ham-konservai-suaugusiems-sunims-su-kalakutiena-ir-kumpiu-150-g/"
+  }
+ },
+ "P10": {
+  "success": true,
+  "data": {
+   "id": 38526,
+   "tipas": "dp",
+   "busena": "publish",
+   "nuoroda": "https://petshop.lt/product/22-vnt-animonda-vom-feinsten-adult-with-turkey-and-ham-konservai-suaugusiems-sunims-su-kalakutiena-ir-kumpiu-150-g/"
   }
  }
 }
