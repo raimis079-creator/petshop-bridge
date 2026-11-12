@@ -1,0 +1,64 @@
+{
+ "0": {
+  "v": "S1856d-0",
+  "truksta": [
+   [
+    19393,
+    11,
+    "14.41"
+   ],
+   [
+    19393,
+    22,
+    "27.80"
+   ]
+  ]
+ },
+ "v": "dep-172853",
+ "kurimas": 200,
+ "sid": 8212,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "P1": {
+  "success": true,
+  "data": {
+   "id": 38528,
+   "tipas": "dp",
+   "busena": "publish",
+   "nuoroda": "https://petshop.lt/product/11-vnt-animonda-vom-feinsten-adult-with-turkey-and-lamb-konservai-suaugusiems-sunims-su-kalakutiena-ir-eriena-150-g/"
+  }
+ },
+ "P2": {
+  "success": true,
+  "data": {
+   "id": 38529,
+   "tipas": "dp",
+   "busena": "publish",
+   "nuoroda": "https://petshop.lt/product/22-vnt-animonda-vom-feinsten-adult-with-turkey-and-lamb-konservai-suaugusiems-sunims-su-kalakutiena-ir-eriena-150-g/"
+  }
+ },
+ "U": {
+  "v": "S1856d-U",
+  "b": {
+   "19393": {
+    "11": [
+     "38528",
+     "publish",
+     "14.41",
+     1.31,
+     "7.15"
+    ],
+    "22": [
+     "38529",
+     "publish",
+     "27.80",
+     1.264,
+     "14.3"
+    ]
+   }
+  },
+  "d19_n": 317
+ }
+}
