@@ -1,0 +1,34 @@
+{
+ "v": "dep-190901",
+ "kurimas": 200,
+ "sid": 8275,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1866a-D",
+  "n": 0,
+  "liko": [],
+  "pvz": [],
+  "importai": {
+   "petshop-xml/petshop-xml.php": [
+    "1288: $clean = $rules->strip_inline_styles( $post->post_content );",
+    "1289: if ( $clean !== $post->post_content ) {",
+    "1290: wp_update_post( [ 'ID' => $post_id, 'post_content' => $clean ] );"
+   ],
+   "petshop-vf/petshop-vf.php": "nėra"
+  },
+  "vf_kodas": {
+   "/plugins/petshop-xml/includes/class-vf-import.php": [
+    "67: *   2. APRASYMAS: dekoduojam _vf_description_base64 -> post_content. Anksciau aprasymas",
+    "156: $vf_desc_base64 = (string) get_post_meta( $post_id, '_vf_description_base64', true );",
+    "420: // 2c. APRASYMAS — v1.5.4: dekoduojam _vf_description_base64 -> post_content.",
+    "422: // VF tiekia aprasyma kaip base64 (custom field _vf_description_base64).",
+    "428: $vf_desc_base64 = (string) get_post_meta( $post_id, '_vf_description_base64', true );",
+    "433: wp_update_post( [ 'ID' => $post_id, 'post_content' => $decoded ] );"
+   ]
+  },
+  "vf_pluginai": []
+ }
+}
