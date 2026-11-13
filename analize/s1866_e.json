@@ -1,0 +1,21 @@
+{
+ "v": "dep-190602",
+ "kurimas": 200,
+ "sid": 8273,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "S1866e",
+  "yra": true,
+  "testas": "<p><b>Sudėtis:</b> mielės, sudėtyje yra alyvuogių aliejaus, minkštimas 0,1 %, granatai 0,01 %, mielės.</p>",
+  "http": {
+   "/": 200,
+   "/kategorija/konservai-katems/": 200,
+   "/kasa/": 200
+  },
+  "md5": "4dfc4058b83bc6c45999213aedde4437",
+  "bak": true
+ }
+}
