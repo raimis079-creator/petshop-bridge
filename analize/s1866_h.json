@@ -1,0 +1,34 @@
+{
+ "v": "dep-192757",
+ "kurimas": 200,
+ "sid": 8280,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1866h",
+  "a": [
+   "183: update_post_meta( $post_id, '_vf_skip_reason', $decision['reason'] );",
+   "187: update_post_meta( $post_id, '_vf_skip_reason', $decision['reason'] );",
+   "190: return;",
+   "196: // Nera mapping'o -> skip (i trash jei nauja)",
+   "205: update_post_meta( $post_id, '_vf_skip_reason', 'no_category_mapping' );",
+   "208: update_post_meta( $post_id, '_vf_skip_reason', 'no_category_mapping' );",
+   "211: return;",
+   "242: return;",
+   "266: *      - NEKEICIAM: SEO meta, RankMath, kategoriju"
+  ],
+  "r": [
+   "47: private array $excluded_skus = [ 'VET1400' ];",
+   "91: * 132 įrašai. NEMAPINTI VF cat'ai (medication, terariumai, chemija) → skip importo.",
+   "248: // SKIP (intentionally unmapped):",
+   "266: * NULL jei nėra mapping (prekė bus skip'inama).",
+   "277: public function vf_should_import( string $brand, string $sku, string $category, string $description, string $name, float $personal_price ): array {",
+   "296: // 3. Excluded SKU",
+   "297: if ( in_array( $sku, $this->excluded_skus, true ) ) {",
+   "298: return [ 'import' => false, 'reason' => 'excluded_sku' ];"
+  ],
+  "opt": []
+ }
+}
