@@ -1,0 +1,27 @@
+{
+ "1": {
+  "/plugins/petshop-xml/includes/class-vf-import.php": [
+   "43: *     1. Lock: _manual_price_override / _petshop_lock_pricing -> kaina neliesta.",
+   "67: *   2. APRASYMAS: dekoduojam _vf_description_base64 -> post_content. Anksciau aprasymas",
+   "156: $vf_desc_base64 = (string) get_post_meta( $post_id, '_vf_description_base64', true );",
+   "343: *   3. Dekoduoti aprasyma is base64 -> post_content",
+   "420: // 2c. APRASYMAS — v1.5.4: dekoduojam _vf_description_base64 -> post_content.",
+   "422: // VF tiekia aprasyma kaip base64 (custom field _vf_description_base64).",
+   "423: // Be sito dekodavimo: (a) aprasymas nesimato svetaineje, (b) post_content",
+   "426: // Idempotentas: jei post_content jau uzpildytas (pvz. template dekodavo),",
+   "428: $vf_desc_base64 = (string) get_post_meta( $post_id, '_vf_description_base64', true );",
+   "432: wp_update_post( [ 'ID' => $post_id, 'post_content' => $decoded ] );",
+   "452: //   - Lock (_manual_price_override / _petshop_lock_pricing) -> nelieciama.",
+   "540: //   - missing_description (post_content tuscias)",
+   "559: $content  = $post_obj ? trim( wp_strip_all_tags( $post_obj->post_content ) ) : '';",
+   "762: $manual = get_post_meta( $post_id, '_manual_price_override', true );"
+  ]
+ },
+ "v": "dep-183536",
+ "kurimas": 200,
+ "sid": 8256,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
