@@ -1,7 +1,7 @@
 {
- "v": "dep-192342",
+ "v": "dep-192502",
  "kurimas": 200,
- "sid": 8277,
+ "sid": 8278,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
@@ -40,6 +40,48 @@
     "1316: if ( $status === 'publish' ) {",
     "1422: $current_status = get_post_status( $post_id );"
    ]
-  }
+  },
+  "ctx": [
+   "\t\t$auto_publish_blockers[] = 'missing_image';",
+   "\t}",
+   "",
+   "\t$post_obj = get_post( $post_id );",
+   "\t$content  = $post_obj ? trim( wp_strip_all_tags( $post_obj->post_content ) ) : '';",
+   "\tif ( empty( $content ) ) {",
+   "\t\t$auto_publish_blockers[] = 'missing_description';",
+   "\t}",
+   "",
+   "\t// Kainos patikra — TIESIOGIAI is meta (ne is $price_result, kuris gali buti nedefinuotas",
+   "\t// jei kainodaros blokas del kokios nors priezasties nesuveike arba preke buvo locked)",
+   "\t$current_price = (float) get_post_meta( $post_id, '_price', true );",
+   "\tif ( $current_price <= 0 ) {",
+   "\t\t$auto_publish_blockers[] = 'missing_price';",
+   "\t}",
+   "",
+   "\tif ( empty( $vf_barcode ) ) {",
+   "\t\t$auto_publish_blockers[] = 'missing_ean';",
+   "\t}",
+   "",
+   "\tif ( $vf_qty <= 0 ) {",
+   "\t\t$auto_publish_blockers[] = 'qty_zero';",
+   "\t}",
+   "",
+   "\tif ( empty( $auto_publish_blockers ) ) {",
+   "\t\t// Visi kriterijai OK -> AUTO PUBLISH",
+   "\t\twp_update_post( [ 'ID' => $post_id, 'post_status' => 'publish' ] );",
+   "\t\tpetshop_xml_log_structured( [",
+   "\t\t\t'action'  => 'VF-AUTO-PUBLISH',",
+   "\t\t\t'post_id' => $post_id,",
+   "\t\t\t'sku'     => $vf_sku,",
+   "\t\t\t'brand'   => $brand_normalized,",
+   "\t\t\t'price'   => $current_price,",
+   "\t\t] );",
+   "\t} else {",
+   "\t\t// Truksta turinio -> DRAFT",
+   "\t\twp_update_post( [ 'ID' => $post_id, 'post_status' => 'draft' ] );",
+   "",
+   "\t\t$existing_reason = (string) get_post_meta( $post_id, '_petshop_review_reason', true );",
+   "\t\t$all_reasons = $existing_reason"
+  ]
  }
 }
