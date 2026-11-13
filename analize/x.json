@@ -1,0 +1,51 @@
+{
+ "v": "dep-185900",
+ "kurimas": 200,
+ "sid": 8268,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "2": {
+   "is_keep_former_posts": "no",
+   "update_all_data": "no",
+   "is_update_content": "0",
+   "is_update_custom_fields": "1",
+   "update_custom_fields_logic": "only",
+   "custom_fields_list": "_zb_cost _zb_rrp _zb_qty _zb_ean _zb_brand _zb_supplier_sku _zb_enabled _zb_weight _zb_length _zb_width _zb_height _zb_category",
+   "create_new_records": "1",
+   "wizard_type": "matching",
+   "duplicate_matching": "manual",
+   "unique_key": "{code[1]}",
+   "last": "2026-11-13 16:02:08"
+  },
+  "5": {
+   "is_keep_former_posts": "no",
+   "update_all_data": "no",
+   "is_update_content": "0",
+   "is_update_custom_fields": "1",
+   "update_custom_fields_logic": "only",
+   "custom_fields_list": "_vf_supplier_sku _vf_barcode _vf_brand_raw _vf_category_raw _vf_cost_xml _vf_personal_xml _vf_qty _vf_description_base64",
+   "create_new_records": "1",
+   "wizard_type": "new",
+   "duplicate_matching": "auto",
+   "unique_key": "{sku_id[1]}",
+   "last": "2026-11-13 04:32:07"
+  },
+  "7": {
+   "is_keep_former_posts": "no",
+   "update_all_data": "no",
+   "is_update_content": "0",
+   "is_update_custom_fields": "1",
+   "update_custom_fields_logic": "only",
+   "custom_fields_list": "_vf_qty",
+   "create_new_records": "0",
+   "wizard_type": "matching",
+   "duplicate_matching": "manual",
+   "unique_key": "- {id[1]} - {sku_id[1]}",
+   "last": "2026-11-13 18:21:01"
+  },
+  "v": "S1866c"
+ }
+}
