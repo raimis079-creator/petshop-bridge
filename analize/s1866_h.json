@@ -1,7 +1,7 @@
 {
- "v": "dep-192757",
+ "v": "dep-192917",
  "kurimas": 200,
- "sid": 8280,
+ "sid": 8281,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
@@ -9,16 +9,37 @@
  "R": {
   "v": "S1866h",
   "a": [
-   "183: update_post_meta( $post_id, '_vf_skip_reason', $decision['reason'] );",
-   "187: update_post_meta( $post_id, '_vf_skip_reason', $decision['reason'] );",
-   "190: return;",
-   "196: // Nera mapping'o -> skip (i trash jei nauja)",
-   "205: update_post_meta( $post_id, '_vf_skip_reason', 'no_category_mapping' );",
-   "208: update_post_meta( $post_id, '_vf_skip_reason', 'no_category_mapping' );",
-   "211: return;",
-   "242: return;",
-   "266: *      - NEKEICIAM: SEO meta, RankMath, kategoriju"
+   "\t\t// Preke neturetu buti importuojama — i trash (tik jei nauja)",
+   "\t\tif ( ! $is_update ) {",
+   "\t\t\tpetshop_xml_log_structured( [",
+   "\t\t\t\t'action'    => 'VF-REJECTED-NEW',",
+   "\t\t\t\t'post_id'   => $post_id,",
+   "\t\t\t\t'sku'       => $vf_sku,",
+   "\t\t\t\t'brand'     => $vf_brand_raw,",
+   "\t\t\t\t'reason'    => $decision['reason'],",
+   "\t\t\t] );",
+   "\t\t\tupdate_post_meta( $post_id, '_petshop_review_reason', 'vf_' . $decision['reason'] );",
+   "\t\t\tupdate_post_meta( $post_id, '_vf_skip_reason', $decision['reason'] );",
+   "\t\t\twp_trash_post( $post_id );",
+   "\t\t} else {",
+   "\t\t\t// Esama preke — paliekam, bet pazymim",
+   "\t\t\tupdate_post_meta( $post_id, '_vf_skip_reason', $decision['reason'] );",
+   "\t\t\tpetshop_xml_log( \"VF REJECT (existing) post {$post_id} | reason={$decision['reason']}\" );",
+   "\t\t}",
+   "\t\treturn;",
+   "\t}",
+   ""
   ],
+  "sku": {
+   "23788": [
+    "PAE6359",
+    "PAE6359"
+   ],
+   "25175": [
+    "PAE5479",
+    "PAE5479"
+   ]
+  },
   "r": [
    "47: private array $excluded_skus = [ 'VET1400' ];",
    "91: * 132 įrašai. NEMAPINTI VF cat'ai (medication, terariumai, chemija) → skip importo.",
