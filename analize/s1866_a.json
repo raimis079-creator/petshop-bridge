@@ -1,63 +1,10 @@
 {
- "v": "dep-185307",
+ "v": "dep-185431",
  "kurimas": 200,
- "sid": 8264,
+ "sid": 8265,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
  },
- "D": {
-  "v": "S1866a-D",
-  "n": 67,
-  "liko": [],
-  "pvz": {
-   "X20537": [
-    {
-     "buvo": "\">\r\nPapildytas Viduržemio jūros regiono supermaisto ingredientais: sudėtyje yra kanapių, alyvuogių aliejaus, pomidorų, granatų, brokolių ir cikorijų.",
-     "bus": "s Viduržemio jūros regiono supermaisto ingredientais: alyvuogių aliejaus, pomidorų, granatų, brokolių ir cikorijų."
-    }
-   ],
-   "X21125": [
-    {
-     "buvo": ";\">\r\nPapildyti Viduržemio jūros regiono supermaisto ingredientais: sudėtyje yra kanapių, alyvuogių aliejaus, pomidorų, granatų, brokolių ir cikorijų.",
-     "bus": "pildyti Viduržemio jūros regiono supermaisto ingredientais: alyvuogių aliejaus, pomidorų, granatų, brokolių ir cikorijų."
-    },
-    {
-     "buvo": "amelina) aliejus,  alyvuogių aliejus 0,1 %, džiovintas cikorijos minkštimas 0,1 %, kanapės, dehidratuoti granatai 0,01 %, dehidratuoti pomidorai 0,01 %, dehidratuoti brokoliai 0,01 %, beta gliukanai iš dumblių",
-     "bus": "amelina) aliejus,  alyvuogių aliejus 0,1 %, džiovintas cikorijos minkštimas 0,1 %, dehidratuoti granatai 0,01 %, dehidratuoti pomidorai 0,01 %, dehidratuoti brokol"
-    }
-   ],
-   "X23788": [
-    {
-     "buvo": "katėms.Sudėtis: kanapių aliejus (granuliuotas) 14 %, kiaulienos šalutiniai produktai, sacharozė, mielės (alaus mielės), augalin",
-     "bus": "katėms.Sudėtis:kiaulienos šalutiniai produktai, sacharozė, mielės (alaus mielė"
-    }
-   ],
-   "X25175": [
-    {
-     "buvo": "), palmių aliejus, augalų perdirbimo produktai (melionas), augalų perdirbimo produktai (kanapė).Šėrimo instrukcija: prieš naudojimą buteliuką reikia gerai supurtyti, kad sudedamosios daly",
-     "bus": "galų perdirbimo produktai (melionas).Šėrimo instrukcija: prieš naudojimą buteliuką reikia gerai supurtyti, kad sudedamosios dalys susimaišy"
-    }
-   ]
-  },
-  "importai": {
-   "petshop-xml/petshop-xml.php": [
-    "1288: $clean = $rules->strip_inline_styles( $post->post_content );",
-    "1289: if ( $clean !== $post->post_content ) {",
-    "1290: wp_update_post( [ 'ID' => $post_id, 'post_content' => $clean ] );"
-   ],
-   "petshop-vf/petshop-vf.php": "nėra"
-  },
-  "vf_kodas": {
-   "/plugins/petshop-xml/includes/class-vf-import.php": [
-    "67: *   2. APRASYMAS: dekoduojam _vf_description_base64 -> post_content. Anksciau aprasymas",
-    "156: $vf_desc_base64 = (string) get_post_meta( $post_id, '_vf_description_base64', true );",
-    "420: // 2c. APRASYMAS — v1.5.4: dekoduojam _vf_description_base64 -> post_content.",
-    "422: // VF tiekia aprasyma kaip base64 (custom field _vf_description_base64).",
-    "428: $vf_desc_base64 = (string) get_post_meta( $post_id, '_vf_description_base64', true );",
-    "432: wp_update_post( [ 'ID' => $post_id, 'post_content' => $decoded ] );"
-   ]
-  },
-  "vf_pluginai": []
- }
+ "zalias_D": ""
 }
