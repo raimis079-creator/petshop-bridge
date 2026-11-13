@@ -1,0 +1,118 @@
+{
+ "1": {
+  "v": "S1864k",
+  "dir": {
+   "petshop-backups/2026/11": [],
+   "petshop-backups/2026/10": []
+  },
+  "state_files": [
+   [
+    "application_backups",
+    "11-12 21:20"
+   ],
+   [
+    "backups",
+    "11-13 02:00"
+   ]
+  ],
+  "wpcron": [
+   [
+    "wp_delete_temp_updater_backups",
+    "11-17 15:44"
+   ]
+  ],
+  "statusai_30d": [
+   {
+    "status": "wc-cancelled",
+    "n": "6",
+    "pask": "2026-11-10 10:54:48"
+   },
+   {
+    "status": "wc-completed",
+    "n": "281",
+    "pask": "2026-11-13 07:36:23"
+   },
+   {
+    "status": "wc-processing",
+    "n": "14",
+    "pask": "2026-11-13 05:36:06"
+   }
+  ],
+  "completed_pask": [
+   {
+    "id": "38427",
+    "date_created_gmt": "2026-11-12 09:43:01",
+    "date_updated_gmt": "2026-11-13 07:36:23"
+   },
+   {
+    "id": "38401",
+    "date_created_gmt": "2026-11-11 19:40:39",
+    "date_updated_gmt": "2026-11-13 06:36:07"
+   },
+   {
+    "id": "38398",
+    "date_created_gmt": "2026-11-11 16:36:49",
+    "date_updated_gmt": "2026-11-13 06:36:07"
+   },
+   {
+    "id": "38423",
+    "date_created_gmt": "2026-11-12 05:51:34",
+    "date_updated_gmt": "2026-11-13 06:36:06"
+   },
+   {
+    "id": "38328",
+    "date_created_gmt": "2026-11-07 05:03:23",
+    "date_updated_gmt": "2026-11-13 06:06:30"
+   }
+  ],
+  "note_pask": [
+   {
+    "oid": "38450",
+    "comment_date": "2026-11-13 07:10:33",
+    "c": "Siuntos numeriai išsaugoti (ZB): V07267E1000770"
+   },
+   {
+    "oid": "38450",
+    "comment_date": "2026-11-13 07:10:33",
+    "c": "Venipak registracija darbalaukyje (ZB, manifestas 003): sėkminga"
+   },
+   {
+    "oid": "38450",
+    "comment_date": "2026-11-13 07:10:30",
+    "c": "Darbalaukis: dėžių skaičius — 1."
+   },
+   {
+    "oid": "38374",
+    "comment_date": "2026-11-13 07:08:35",
+    "c": "Siuntos numeriai išsaugoti (AV): V07267E1000769"
+   },
+   {
+    "oid": "38374",
+    "comment_date": "2026-11-13 07:08:35",
+    "c": "Venipak registracija darbalaukyje (AV, manifestas 001): sėkminga"
+   },
+   {
+    "oid": "38374",
+    "comment_date": "2026-11-13 07:08:34",
+    "c": "Darbalaukis: siunta perregistruojama su 1 dėž. (sena siunta V07267E1000738 — nebenaudojama"
+   },
+   {
+    "oid": "38374",
+    "comment_date": "2026-11-13 07:08:33",
+    "c": "Darbalaukis: dėžių skaičius — 1."
+   },
+   {
+    "oid": "38538",
+    "comment_date": "2026-11-13 07:07:05",
+    "c": "Siuntos numeriai išsaugoti (AV): V07267E1000768"
+   }
+  ]
+ },
+ "v": "dep-074934",
+ "kurimas": 200,
+ "sid": 8241,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
