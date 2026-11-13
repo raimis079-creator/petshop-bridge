@@ -1,27 +1,45 @@
 {
- "1": {
-  "/plugins/petshop-xml/includes/class-vf-import.php": [
-   "43: *     1. Lock: _manual_price_override / _petshop_lock_pricing -> kaina neliesta.",
-   "67: *   2. APRASYMAS: dekoduojam _vf_description_base64 -> post_content. Anksciau aprasymas",
-   "156: $vf_desc_base64 = (string) get_post_meta( $post_id, '_vf_description_base64', true );",
-   "343: *   3. Dekoduoti aprasyma is base64 -> post_content",
-   "420: // 2c. APRASYMAS — v1.5.4: dekoduojam _vf_description_base64 -> post_content.",
-   "422: // VF tiekia aprasyma kaip base64 (custom field _vf_description_base64).",
-   "423: // Be sito dekodavimo: (a) aprasymas nesimato svetaineje, (b) post_content",
-   "426: // Idempotentas: jei post_content jau uzpildytas (pvz. template dekodavo),",
-   "428: $vf_desc_base64 = (string) get_post_meta( $post_id, '_vf_description_base64', true );",
-   "432: wp_update_post( [ 'ID' => $post_id, 'post_content' => $decoded ] );",
-   "452: //   - Lock (_manual_price_override / _petshop_lock_pricing) -> nelieciama.",
-   "540: //   - missing_description (post_content tuscias)",
-   "559: $content  = $post_obj ? trim( wp_strip_all_tags( $post_obj->post_content ) ) : '';",
-   "762: $manual = get_post_meta( $post_id, '_manual_price_override', true );"
-  ]
- },
- "v": "dep-183536",
+ "v": "dep-192342",
  "kurimas": 200,
- "sid": 8256,
+ "sid": 8277,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "R": {
+  "v": "S1866g",
+  "meta": {
+   "23788": null,
+   "25175": null
+  },
+  "kodas": {
+   "petshop-xml/includes/class-vf-import.php": [
+    "582: wp_update_post( [ 'ID' => $post_id, 'post_status' => 'publish' ] );",
+    "592: wp_update_post( [ 'ID' => $post_id, 'post_status' => 'draft' ] );"
+   ],
+   "petshop-xml/petshop-xml.php": [
+    "533: if ( get_post_status( $post_id ) !== 'draft' ) {",
+    "534: wp_update_post( [ 'ID' => $post_id, 'post_status' => 'draft' ] );",
+    "631: AND p.post_type = 'product' AND p.post_status != 'trash'",
+    "730: $current_status = get_post_status( $post_id );",
+    "737: $protected_reasons = [ 'cost_below_minimum', 'excluded_brand', 'qty_zero_on_new', 'duplicate_ean', 'konservas_below_minimum' ];",
+    "739: if ( in_array( $reason, $protected_reasons, true ) ) {",
+    "866: wp_update_post( [ 'ID' => $post_id, 'post_status' => 'draft' ] );",
+    "1014: wp_update_post( [ 'ID' => $post_id, 'post_status' => 'draft' ] );",
+    "1026: wp_update_post( [ 'ID' => $post_id, 'post_status' => 'draft' ] );",
+    "1033: wp_update_post( [ 'ID' => $post_id, 'post_status' => 'draft' ] );",
+    "1070: wp_update_post( [ 'ID' => $post_id, 'post_status' => 'draft' ] );",
+    "1083: wp_update_post( [ 'ID' => $post_id, 'post_status' => 'draft' ] );",
+    "1113: $cur_status    = get_post_status( $post_id );",
+    "1115: if ( $was_published || $cur_status === 'publish' ) {",
+    "1125: if ( $cur_status !== 'publish' ) {",
+    "1126: wp_update_post( [ 'ID' => $post_id, 'post_status' => 'publish' ] );",
+    "1163: wp_update_post( [ 'ID' => $post_id, 'post_status' => 'draft' ] );",
+    "1169: wp_update_post( [ 'ID' => $post_id, 'post_status' => 'draft' ] );",
+    "1310: wp_update_post( [ 'ID' => $post_id, 'post_status' => $status ] );",
+    "1316: if ( $status === 'publish' ) {",
+    "1422: $current_status = get_post_status( $post_id );"
+   ]
+  }
  }
 }
