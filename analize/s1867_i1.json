@@ -1,0 +1,40 @@
+{
+ "1": {
+  "v": "S1867i",
+  "faze": "1",
+  "kodas": [
+   "\t\t} catch ( \\Throwable $e_ ) { $add( 'prekes_foto', 'pilka', 'Prekės be nuotraukos: ' . $e_->getMessage() ); }",
+   "\t\t/* bestseleriai be likučio (S1816, 2026-11-02, Raimio „darom“): top 150 prekių pagal užsakymus per 60 d. (mūsų faktai), kurios dabar NE „yra sandėlyje“ arba nepublikuotos/paslėptos. Tik AV (savo sandėlis) — dropship likučius tvarko importas. Raudona ≥ 5, geltona ≥ 1. */",
+   "\t\ttry {",
+   "\t\t\t$e_ = self::e(); $u_ = self::u();",
+   "\t\t\t$top_ = $wpdb->get_results( $wpdb->prepare(",
+   "\t\t\t\t\"SELECT e.preke_id pid, e.variacija_id vid, COUNT(DISTINCT e.uzsakymas_id) uzs, SUM(e.kiekis) k",
+   "\t\t\t\t FROM $e_ e JOIN $u_ u ON u.uzsakymas_id = e.uzsakymas_id AND u.statusas_galutinis NOT IN ('cancelled','failed','refunded','pending') \" . str_replace( 'u.', 'u.', self::ts() ) . \"",
+   "\t\t\t\t WHERE e.diena >= %s GROUP BY 1, 2 ORDER BY uzs DESC LIMIT 150\", self::pries_d( 60 ) ), ARRAY_A );",
+   "\t\t\t$be_ = array(); $n_ = 0;",
+   "\t\t\tforeach ( (array) $top_ as $x_ ) {",
+   "\t\t\t\t$id_ = (int) ( $x_['vid'] ? $x_['vid'] : $x_['pid'] ); $pr_ = wc_get_product( $id_ ); if ( ! $pr_ ) { continue; } $n_++;",
+   "\t\t\t\tif ( 'av' !== (string) get_post_meta( (int) $x_['pid'], '_ps_sandelis', true ) ) { continue; }",
+   "\t\t\t\tif ( 'instock' !== $pr_->get_stock_status() || 'publish' !== get_post_status( (int) $x_['pid'] ) || 'hidden' === $pr_->get_catalog_visibility() ) {",
+   "\t\t\t\t\t$be_[] = '#' . (int) $x_['pid'] . ' ' . mb_substr( $pr_->get_name(), 0, 34 ) . ' (' . (int) $x_['uzs'] . ' užs.)';",
+   "\t\t\t\t}",
+   "\t\t\t}",
+   "\t\t\t$add( 'bestseleriai_likutis', count( $be_ ) >= 5 ? 'raudona' : ( $be_ ? 'geltona' : 'zalia' ), 'Bestseleriai (top ' . $n_ . ', AV) be likučio: ' . count( $be_ ) . ( $be_ ? ' — ' . implode( '; ', array_slice( $be_, 0, 6 ) ) . ( count( $be_ ) > 6 ? '; …' : '' ) : '' ) );",
+   "\t\t} catch ( \\Throwable $e_ ) { $add( 'bestseleriai_likutis', 'pilka', 'Bestseleriai be likučio: ' . $e_->getMessage() ); }"
+  ],
+  "pries": {
+   "st": "processing",
+   "avpn": "AVPN011651",
+   "sf_data": "",
+   "paid": "2026-11-06",
+   "be_siuntu": ""
+  }
+ },
+ "v": "dep-090933",
+ "kurimas": 200,
+ "sid": 8294,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
