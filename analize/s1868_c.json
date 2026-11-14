@@ -1,0 +1,93 @@
+{
+ "1": {
+  "v": "S1868c",
+  "petshop_pragma_log": [
+   {
+    "time": "2026-05-26 18:52:08",
+    "message": "2026-05: eksportas sekmingai. Uzsakymu: 2, Nauju klientu: 2"
+   },
+   {
+    "time": "2026-05-26 19:05:42",
+    "message": "2026-05: eksportas sekmingai. Uzsakymu: 2, Nauju klientu: 0"
+   },
+   {
+    "time": "2026-05-26 19:07:12",
+    "message": "2026-05: eksportas sekmingai. Uzsakymu: 2, Nauju klientu: 2"
+   },
+   {
+    "time": "2026-05-26 19:23:53",
+    "message": "2026-05: nera AVPN saskaitu"
+   },
+   {
+    "time": "2026-05-26 19:25:56",
+    "message": "2026-05: nera AVPN saskaitu"
+   },
+   {
+    "time": "2026-05-26 19:28:24",
+    "message": "2026-05: nera AVPN saskaitu"
+   },
+   {
+    "time": "2026-05-26 19:30:22",
+    "message": "2026-05: nera AVPN saskaitu"
+   },
+   {
+    "time": "2026-05-26 19:31:32",
+    "message": "2026-05: eksportas sekmingai. Uzsakymu: 1, Nauju klientu: 0"
+   },
+   {
+    "time": "2026-06-05 11:00:02",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-07-05 11:00:38",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-08-05 11:01:02",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-09-05 11:03:15",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-10-05 11:00:03",
+    "message": "Automatinis eksportas PRALEISTAS — production mode isjungtas"
+   },
+   {
+    "time": "2026-10-19 12:35:58",
+    "message": "Production mode ĮJUNGTAS (S1789, Raimio prašymu)"
+   },
+   {
+    "time": "2026-10-19 12:38:30",
+    "message": "2026-09: eksportas sekmingai. Uzsakymu: 202, Nauju klientu: 202"
+   },
+   {
+    "time": "2026-10-21 23:06:34",
+    "message": "2026-09: PATAISYTI pardavimai + pardavimai_sum issiusti (OK) S1793"
+   },
+   {
+    "time": "2026-11-05 10:58:44",
+    "message": "2026-10: eksportas sekmingai. Uzsakymu: 314, Nauju klientu: 275"
+   },
+   {
+    "time": "2026-11-05 11:05:08",
+    "message": "2026-10: eksportas ISSIUSTAS dalimis 3/3 laiskai (S1829 rankinis po 11-05 cron gedimo). Uzsakymu: 314, Nauju klientu: 275"
+   }
+  ],
+  "petshop_pragma_issiusta": false,
+  "bak": [
+   "/home/gyvunai2/domains/petshop.lt/ps-archyvas/petshop-pragma.php.bak_s1793",
+   "/home/gyvunai2/domains/petshop.lt/ps-archyvas/petshop-pragma.php.bak_s1839",
+   "/home/gyvunai2/domains/petshop.lt/ps-archyvas/petshop-pragma.php.bak_s1839b"
+  ],
+  "v1_imones": "function petshop_pragma_generate_imones( $orders ) {\n    $lines = array();\n\n    foreach ( $orders as $order ) {\n        $client_id = petshop_pragma_get_client_id( $order );\n        $name      = petshop_pragma_get_client_name( $order );\n        $address   = petshop_pragma_clean_value( $order->get_billing_address_1() );\n        $country   = $order->get_billing_country() ?: 'LT';\n        $phone     = petshop_pragma_clean_value( $order->get_billing_phone() );\n        $email     = petshop_pragma_clean_value( $order->get_billing_email() );\n        $company   = petshop_pragma_clean_value( $order->get_billing_company() );\n        $vat_code  = $order->get_meta( '_billing_vat_code' ) ?: '';\n\n        // PVM kodas stulpelis (6): tik jei imone\n        $vat_field = $vat_code ? $vat_code : '';\n\n        // Paskutinis stulpelis: 1=fizinis, 0=juridinis\n        $type = ( $company || $vat_code ) ? '0' : '1';\n\n        $line = implode( \"\\t\", array(\n            $client_id,     // 1: ID\n            $name,          // 2: Vardas/pavadinimas\n            $client_id,     // 3: ID (kartojas)\n            $name,          // 4: Vardas (kartojas)\n            $address,       // 5: Adresas\n            $vat_field,     // 6: PVM kodas\n            '',             // 7: tuscias\n            '',             // 8: tuscias\n            $country,       // 9: Salis\n            $phone,         // 10: Telefonas\n            $name,          // 11: Vardas (kartojas)\n            $email,         // 12: El. pastas\n            $type,          // 13: Tipas\n        ) );\n\n        $lines[] = $line;\n    }\n\n    return implode( \"\\n\", $lines );\n}\n"
+ },
+ "v": "dep-161411",
+ "kurimas": 200,
+ "sid": 8305,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
