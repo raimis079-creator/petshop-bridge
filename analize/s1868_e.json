@@ -1,0 +1,35 @@
+{
+ "1": {
+  "v": "S1868e",
+  "md5": "d67bba3b1dee2e20d8099db2e92cf71f",
+  "petshop_generate_invoice_pdf": [
+   "order_id"
+  ],
+  "petshop_generate_invoice_pdf_file": "functions.php",
+  "petshop_pragma_ar_juridinis": "nera",
+  "nov_n": 149,
+  "nov_err": [],
+  "jur": [
+   [
+    "AVPN011430",
+    "Klaipėdos pedagoginė psichologinė tarnyba",
+    "195176088",
+    true,
+    true,
+    "completed"
+   ]
+  ],
+  "pdf_stat": {
+   "yra": 130,
+   "nera": 19
+  },
+  "cnt_anchor": 1
+ },
+ "v": "dep-162458",
+ "kurimas": 200,
+ "sid": 8307,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
