@@ -1,0 +1,123 @@
+{
+ "1": {
+  "v": "S1867k",
+  "dir": {
+   "petshop-backups/2026/11": [],
+   "petshop-backups/2026/10": []
+  },
+  "state_files": [
+   [
+    "application_backups",
+    "11-13 21:20"
+   ],
+   [
+    "backups",
+    "11-14 02:00"
+   ]
+  ],
+  "wpcron": [
+   [
+    "wp_delete_temp_updater_backups",
+    "11-17 15:44"
+   ]
+  ],
+  "statusai_30d": [
+   {
+    "status": "wc-cancelled",
+    "n": "5",
+    "pask": "2026-11-10 10:54:48"
+   },
+   {
+    "status": "wc-completed",
+    "n": "282",
+    "pask": "2026-11-14 08:06:21"
+   },
+   {
+    "status": "wc-on-hold",
+    "n": "1",
+    "pask": "2026-11-13 19:39:14"
+   },
+   {
+    "status": "wc-processing",
+    "n": "20",
+    "pask": "2026-11-14 08:38:38"
+   }
+  ],
+  "completed_pask": [
+   {
+    "id": "38450",
+    "date_created_gmt": "2026-11-12 12:07:14",
+    "date_updated_gmt": "2026-11-14 08:06:21"
+   },
+   {
+    "id": "38381",
+    "date_created_gmt": "2026-11-11 04:18:19",
+    "date_updated_gmt": "2026-11-14 06:36:07"
+   },
+   {
+    "id": "38393",
+    "date_created_gmt": "2026-11-11 05:05:41",
+    "date_updated_gmt": "2026-11-13 23:06:35"
+   },
+   {
+    "id": "38538",
+    "date_created_gmt": "2026-11-13 03:20:05",
+    "date_updated_gmt": "2026-11-13 22:36:05"
+   },
+   {
+    "id": "38429",
+    "date_created_gmt": "2026-11-12 11:20:30",
+    "date_updated_gmt": "2026-11-13 22:06:20"
+   }
+  ],
+  "note_pask": [
+   {
+    "oid": "38676",
+    "comment_date": "2026-11-14 10:38:38",
+    "c": "Paysera: Naujo užsakymo kūrimo būsena"
+   },
+   {
+    "oid": "38676",
+    "comment_date": "2026-11-14 10:38:36",
+    "c": "PVM s/f AVPN011666 suteikta apmokėjus, data 2026-11-14 (S1839)."
+   },
+   {
+    "oid": "38676",
+    "comment_date": "2026-11-14 10:38:36",
+    "c": "Email \"Užsakymas vykdomas\" sent."
+   },
+   {
+    "oid": "38676",
+    "comment_date": "2026-11-14 10:38:35",
+    "c": "Email \"Naujas užsakymas\" sent."
+   },
+   {
+    "oid": "38676",
+    "comment_date": "2026-11-14 10:38:35",
+    "c": "Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėta"
+   },
+   {
+    "oid": "38676",
+    "comment_date": "2026-11-14 10:38:35",
+    "c": "Surūšiuota pati: Exclusion diet hypo konservai šuniukams, — VF siunčia klientui"
+   },
+   {
+    "oid": "38676",
+    "comment_date": "2026-11-14 10:38:35",
+    "c": "Faktai irasyti: 1 eilutes · pajamos 13,52 EUR (be PVM, po nuolaidu) · PVM 3,21 EUR · marza"
+   },
+   {
+    "oid": "38676",
+    "comment_date": "2026-11-14 10:38:34",
+    "c": "Paysera: Užsakymo būsena po apmokėjimo"
+   }
+  ]
+ },
+ "v": "dep-084420",
+ "kurimas": 200,
+ "sid": 8287,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
