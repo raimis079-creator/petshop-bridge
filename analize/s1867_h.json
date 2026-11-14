@@ -1,0 +1,102 @@
+{
+ "1": {
+  "v": "S1867h",
+  "o1652": {
+   "st": "processing",
+   "mod": "11-13 10:28",
+   "total": "32.89",
+   "refunded": 89.19
+  },
+  "n1652": [
+   "11-13 10:28 Darbalaukis: pinigai klientui grąžinti rankomis — 89,19 € (Raimis). Kreditinės: KR-AVPN000103.",
+   "11-13 10:28 Darbalaukis: PVM sąskaitos AVPN011651 PDF sugeneruotas iš naujo (Raimis).",
+   "11-13 10:27 Darbalaukis: kreditinė KR-AVPN000103 išrašyta — 89,19 € (Raimis); WC grąžinimo įrašas #38426, PDF Kreditine-saskaita-KR-AVPN000103.pdf.  Klientui grąžinti 89,19 € rankomis (Klausimas primins). Laiškas",
+   "11-12 10:55 Darbalaukis: „Trixie Metalinis narvas, L 109x79x71 cm“ išimta iš užsakymo (1 vnt.) — klientė atsisakė (netiko), ZB neišsiuntė, suderinta su kliente. WC grąžinimo įrašas #38426: 89,19 € — pinigai NEGRĄ",
+   "11-12 10:55 Grazinimo faktai irasyti: 1 eilutes · grazinta bruto 89,19 € · refund #38426"
+  ],
+  "m1652": [
+   {
+    "k": "_petshop_avpn_number",
+    "v": "AVPN011651"
+   },
+   {
+    "k": "_ps_venipak_sena",
+    "v": "{\"manifest\":\"07267261109001\",\"pack_numbers\":[\"V07267E1000700\"],\"weight\":1.5,\"products_count\":5,\"status\":\"sent\",\"error_message\":\"\"}"
+   },
+   {
+    "k": "_ps_venipak_sekimas",
+    "v": "{\"V07267E1000700\":{\"k\":9,\"t\":\"Delivered\",\"e\":\"Delivered\",\"d\":\"2026-11-10 15:07:28\",\"v\":\"\",\"n\":6,\"dalis\":\"av\",\"tikr\":\"2026-11-10 15:36:49\"},\"V07267E100"
+   },
+   {
+    "k": "_ps_siuntos",
+    "v": "{\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261109001\",\"numeriai\":[\"V07267E1000700\"],\"data\":\"2026-11-09 07:06:06\"},\"zb\":{\"sandelis\":\"zb\",\"ko"
+   },
+   {
+    "k": "venipak_shipping_order_data",
+    "v": "{\"manifest\":\"07267261109003\",\"pack_numbers\":[\"V07267E1000701\"],\"weight\":1.5,\"products_count\":5,\"status\":\"sent\",\"error_message\":\"\"}"
+   }
+  ],
+  "bs_item": {
+   "kodas": "bestseleriai_likutis",
+   "lygis": "raudona",
+   "tekstas": "Bestseleriai (top 150, AV) be likučio: 13 — #19620 Animonda Carny Kitten – konservai  (14 užs.); #19708 Animonda Carny Adult Beef + Chicke (12 užs.); #19613 Animonda Carny Kitten – konservai  (9 užs.); #19672 Animonda Carny Adult Beef + Turkey (8 užs.); #19609 Animonda Carny Kitten – konservai  (7 užs.); #19396 Animonda Vom Feinsten Adult with T (5 užs.); …"
+  },
+  "bs_ids_txt": [
+   "19620",
+   "19708",
+   "19613",
+   "19672",
+   "19609",
+   "19396"
+  ],
+  "src": [
+   "petshop-rytas.php:6 * v1.11 (S1816, 2026-11-02): patikra `bestseleriai_likutis` — top 150 prekių (60 d.) iš AV sandėlio be likučio; raudona ≥ 5.",
+   "petshop-rytas.php:462 /* bestseleriai be likučio (S1816, 2026-11-02, Raimio „darom“): top 150 prekių pagal užsakymus per 60 d. (mūsų faktai), kurios dabar NE „yra sandėlyje“ arba nepublikuotos/paslėptos. Tik AV (savo sandėlis) — dropship likučius tvarko importas. Raudona ",
+   "petshop-rytas.php:477 $add( 'bestseleriai_likutis', count( $be_ ) >= 5 ? 'raudona' : ( $be_ ? 'geltona' : 'zalia' ), 'Bestseleriai (top ' . $n_ . ', AV) be likučio: ' . count( $be_ ) . ( $be_ ? ' — ' . implode( '; ', array_slice( $be_, 0, 6 ) ) . ( count( $be_ ) > 6 ? '; ",
+   "petshop-rytas.php:478 } catch ( \\Throwable $e_ ) { $add( 'bestseleriai_likutis', 'pilka', 'Bestseleriai be likučio: ' . $e_->getMessage() ); }"
+  ],
+  "src_ctx": [
+   "<?php",
+   "/**",
+   " * Plugin Name: Petshop Rytas",
+   " * Description: Savininko ekranas (planas v2.0 §4.1) — 8 skaičiai, 5 lemputės, 3 veiksmai, HUB. + Verslo sargas (§5.1): naktinės patikros, laiškas TIK kai raudona.",
+   " * Version: 1.11",
+   " * v1.11 (S1816, 2026-11-02): patikra `bestseleriai_likutis` — top 150 prekių (60 d.) iš AV sandėlio be likučio; raudona ≥ 5.",
+   " * v1.10 (S1740, 2026-09-29): `prekes_foto` — be tiesioginės nuotraukos tikrinamas ir WC `get_image_id()` (rinkinių „laukas\" paveikslai per filtrą), kaip `rinkiniai_foto`.",
+   " * v1.9 (S1739, 2026-09-29): patikra `prekes_foto` — prekės be nuotraukos + nuėmimai iš `petshop-nuotrauku-zurnalas` per parą (raudona).",
+   " *",
+   " * KAM. Vienas ekranas kelioms minutėms: kiek uždirbau, ar auga, kas dega, ką",
+   " * daryti. Į gylį — Pardavimų / Klientų / Atsargų analizė. Rytas PATS NIEKO",
+   " * NESKAIČIUOJA IŠ NAUJO: 8 skaičiai eina per `Petshop_Ataskaita_Pardavimai::",
+   " * suvestine()`, todėl visada sutampa su analizės ekranu iki cento.",
+   " *",
+   " * HUB. `class-admin-reports.php` (petshop-core) NELIEČIAMAS: jo `render`",
+   " * nukabinamas nuo `toplevel_page_petshop-reports` (`admin_menu` p99) ir",
+   " * vietoj jo kabinamas šis. Kortelės į kitas ataskaitas — apačioje, iš to",
+   " * paties `$submenu` + filtro `petshop_ataskaitu_aprasai`, kaip ir buvo.",
+   " *",
+   " * SARGAS (S4). Esamas `petshop-sargas.php` v1.2 stebi PHP klaidas ir cron'us",
+   " * — jo nedubliuojam. Šis modulis tikrina VERSLO/DUOMENŲ dalykus: importai,",
+   " * feed'ai, faktų vientisumas, agregatai, siuntos, dropship SLA, laiškai,",
+   " * eventai, 404, beacon, Ads webhook. Laiškas siunčiamas TIK jei bent viena raudona;",
+   " * tas pats raudonųjų rinkinys — vieną kartą per parą. Žalia/geltona — tyla.",
+   " * Rytas viršuje rodo vieną eilutę „Sistema: ✓ / N raudonos\".",
+   " *",
+   " * NEŽINOMA = pilka, ne žalia: kai bazinei linijai trūksta 4 sav. arba",
+   " * šaltinio nėra, lemputė pilka su paaiškinimu. Nulis čia nėra teiginys.",
+   " *",
+   " * @package Petshop",
+   " */",
+   "",
+   "if ( ! defined( 'ABSPATH' ) ) { exit; }",
+   ""
+  ]
+ },
+ "v": "dep-090703",
+ "kurimas": 200,
+ "sid": 8293,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
