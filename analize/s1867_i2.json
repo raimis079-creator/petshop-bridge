@@ -1,0 +1,42 @@
+{
+ "2": {
+  "v": "S1867i",
+  "faze": "2",
+  "stock_pries": {
+   "16005": 0,
+   "17386": 25,
+   "19054": 0,
+   "35210": 1
+  },
+  "stock_po": {
+   "16005": 0,
+   "17386": 25,
+   "19054": 0,
+   "35210": 1
+  },
+  "po": {
+   "st": "completed",
+   "avpn_pries": "AVPN011651",
+   "avpn": "AVPN011651",
+   "completed": "2026-11-14 11:12",
+   "skaitiklis": [
+    "11667",
+    "11667"
+   ]
+  },
+  "pastabos": [
+   "11:12 S1867 (Raimio prašymu 11-14 „viskas sutvarkyta, užgesink problemą“): AV siunta V07267E1000700 pristatyta 2026-11-10; Trixie narvas išimtas (grąžinimas #38426 89,19 €, kreditinė KR-AVPN000103, pinigai ",
+   "10:28 Darbalaukis: pinigai klientui grąžinti rankomis — 89,19 € (Raimis). Kreditinės: KR-AVPN000103.",
+   "10:28 Darbalaukis: PVM sąskaitos AVPN011651 PDF sugeneruotas iš naujo (Raimis).",
+   "10:27 Darbalaukis: kreditinė KR-AVPN000103 išrašyta — 89,19 € (Raimis); WC grąžinimo įrašas #38426, PDF Kreditine-saskaita-KR-AVPN000103.pdf.  Klientui grąžinti 89,19 € rankomis (Klausimas primins). Laiškas",
+   "10:55 Darbalaukis: „Trixie Metalinis narvas, L 109x79x71 cm“ išimta iš užsakymo (1 vnt.) — klientė atsisakė (netiko), ZB neišsiuntė, suderinta su kliente. WC grąžinimo įrašas #38426: 89,19 € — pinigai NEGRĄ"
+  ]
+ },
+ "v": "dep-091127",
+ "kurimas": 200,
+ "sid": 8295,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
