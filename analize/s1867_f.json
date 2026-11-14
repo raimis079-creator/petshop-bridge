@@ -1,0 +1,170 @@
+{
+ "1": {
+  "v": "S1867f",
+  "ap": [
+   {
+    "id": "23593",
+    "ap": "2026-11-14 06:00:02",
+    "st": "draft",
+    "mod_": "2026-11-14 06:00:02",
+    "t": "Bioveta papildas Vitaplastin forte, 1 kg",
+    "ranka": "taip",
+    "vmvt": "2026-11-09 VMVT aktas INS-26-0",
+    "skip": null
+   },
+   {
+    "id": "23595",
+    "ap": "2026-11-14 06:00:02",
+    "st": "draft",
+    "mod_": "2026-11-14 06:00:02",
+    "t": "Bioveta papildas Vitaplastin forte, 5 kg",
+    "ranka": "taip",
+    "vmvt": "2026-11-09 VMVT aktas INS-26-0",
+    "skip": null
+   },
+   {
+    "id": "26050",
+    "ap": "2026-11-14 06:00:02",
+    "st": "draft",
+    "mod_": "2026-11-14 06:00:02",
+    "t": "Drakonape plataus spectro CBD aliejus 1200mg, 30 m",
+    "ranka": "taip",
+    "vmvt": "2026-11-09 VMVT aktas INS-26-0",
+    "skip": null
+   },
+   {
+    "id": "38270",
+    "ap": "2026-11-14 06:00:02",
+    "st": "draft",
+    "mod_": "2026-11-14 06:32:41",
+    "t": "Little one Kalėdinis skanėstų rinkinys jūrų kiauly",
+    "ranka": "taip",
+    "vmvt": "2026-11-09 VMVT aktas INS-26-0",
+    "skip": null
+   },
+   {
+    "id": "25319",
+    "ap": "2026-11-14 06:00:02",
+    "st": "draft",
+    "mod_": "2026-11-14 06:00:02",
+    "t": "Akvariumas burbulas 4l",
+    "ranka": "taip",
+    "vmvt": null,
+    "skip": null
+   },
+   {
+    "id": "26471",
+    "ap": "2026-11-14 06:00:02",
+    "st": "draft",
+    "mod_": "2026-11-14 06:00:02",
+    "t": "Akvariumas burbulas 5.5l",
+    "ranka": "taip",
+    "vmvt": null,
+    "skip": null
+   },
+   {
+    "id": "26473",
+    "ap": "2026-11-14 06:00:02",
+    "st": "draft",
+    "mod_": "2026-11-14 06:00:02",
+    "t": "Akvariumas burbulas  7.5l",
+    "ranka": "taip",
+    "vmvt": null,
+    "skip": null
+   },
+   {
+    "id": "34909",
+    "ap": "2026-11-14 06:00:02",
+    "st": "draft",
+    "mod_": "2026-11-14 06:00:02",
+    "t": "FLEXI pavadėlis šuniui Comfort Plus XS juostinis 3",
+    "ranka": "taip",
+    "vmvt": null,
+    "skip": null
+   },
+   {
+    "id": "34967",
+    "ap": "2026-11-14 06:00:02",
+    "st": "draft",
+    "mod_": "2026-11-14 06:32:35",
+    "t": "LAB V Lašišų aliejus šunims ir katėms 250ml      ",
+    "ranka": "taip",
+    "vmvt": null,
+    "skip": null
+   },
+   {
+    "id": "23788",
+    "ap": "2026-11-14 06:00:02",
+    "st": "draft",
+    "mod_": "2026-11-14 06:00:02",
+    "t": "Candioli Evexia Plus tabletės šunims ir katėms, N1",
+    "ranka": "taip",
+    "vmvt": "2026-11-13 VMVT (kanapių aliej",
+    "skip": null
+   },
+   {
+    "id": "25175",
+    "ap": "2026-11-14 06:00:02",
+    "st": "draft",
+    "mod_": "2026-11-14 06:32:11",
+    "t": "Candioli Evexia plus skausmo malšinimo lašai šunim",
+    "ranka": "taip",
+    "vmvt": "2026-11-13 VMVT (kanapių aliej",
+    "skip": null
+   }
+  ],
+  "vmvt_pub": [],
+  "vmvt_n": "10",
+  "ranka_pub": [],
+  "hit": {
+   "_ps_ranka_isimta": [
+    "petshop-katalogas.php:58 * ISIMTA RANKA (`_ps_ranka_isimta`) rodoma ta pacia juosta, tik su spyna —",
+    "petshop-katalogas.php:325 *   `Petshop_Rankos` yra uzdejes `_ps_ranka_isimta`. Be sios zymes zmogus",
+    "petshop-rankos.php:24 *      WooCommerce lange, greitajame redagavime), uzdedama `_ps_ranka_isimta`.",
+    "petshop-rankos.php:50 const ZYME    = '_ps_ranka_isimta';",
+    "petshop-rankos.php:51 const KADA    = '_ps_ranka_isimta_kada';",
+    "petshop-rankos.php:52 const KAS     = '_ps_ranka_isimta_kas';",
+    "petshop-rinkiniai.php:930 * kaip `_ps_ranka_isimta`. Ivestis, lygi automatinei, rankiniu nelaikoma."
+   ]
+  },
+  "snip": [
+   {
+    "id": "565",
+    "name": "Petshop VF Sync v1.2 (reprice+stock+publish; S1724 stock be pokyčio nerašo)",
+    "active": "1"
+   },
+   {
+    "id": "8291",
+    "name": "TEMP PS dep-085315",
+    "active": "1"
+   }
+  ],
+  "acc": [
+   "14/Nov/2026:01:52:45 +0200 GET /product/candioli-evexia-plus-tabletes-sunims-ir-katems-n10/feed/ 200",
+   "14/Nov/2026:05:43:20 +0200 GET /product/candioli-evexia-plus-tabletes-sunims-ir-katems-n10/ 301",
+   "13/Nov/2026:08:11:13 +0200 GET /product/candioli-evexia-plus-tabletes-sunims-ir-katems-n10/?utm_source=zoogidas.lt&utm_me 200",
+   "13/Nov/2026:08:42:32 +0200 GET /product/candioli-evexia-plus-skausmo-malsinimo-lasai-sunims-ir-katems-40-ml/ 200",
+   "13/Nov/2026:10:39:38 +0200 GET /product/candioli-evexia-plus-skausmo-malsinimo-lasai-sunims-ir-katems-40-ml/ 200",
+   "13/Nov/2026:11:54:14 +0200 GET /product/little-one-kaledinis-skanestu-rinkinys-ziurkenams-ziurkems-pelems-ir-smiltpelems- 200",
+   "13/Nov/2026:12:23:19 +0200 GET /product/candioli-evexia-plus-skausmo-malsinimo-lasai-sunims-ir-katems-40-ml/ 200",
+   "13/Nov/2026:12:26:24 +0200 GET /product/candioli-evexia-plus-tabletes-sunims-ir-katems-n10/ 200",
+   "13/Nov/2026:19:43:28 +0200 GET /product/candioli-evexia-plus-tabletes-sunims-ir-katems-n10/ 301",
+   "13/Nov/2026:19:43:30 +0200 GET /product/candioli-evexia-plus-skausmo-malsinimo-lasai-sunims-ir-katems-40-ml/ 301",
+   "13/Nov/2026:19:43:37 +0200 GET /?s=evexia&post_type=product 200",
+   "13/Nov/2026:20:41:56 +0200 GET /product/candioli-evexia-plus-skausmo-malsinimo-lasai-sunims-ir-katems-40-ml/ 301",
+   "13/Nov/2026:20:41:57 +0200 GET /kategorija/sunims/vitaminai-ir-papildai-sunims/ 200"
+  ],
+  "cron0600": [
+   "06:00 petshop_vf_sync_publish_daily",
+   "06:00 ps_sargas_kasdien",
+   "06:00 ps_seo_cwv_diena"
+  ]
+ },
+ "v": "dep-085315",
+ "kurimas": 200,
+ "sid": 8291,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
