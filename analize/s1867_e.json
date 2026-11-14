@@ -1,0 +1,424 @@
+{
+ "1": {
+  "v": "S1867e",
+  "hit": {
+   "function ps_feeds_ids": [
+    "petshop-feeds.php:124 function ps_feeds_ids(): array {"
+   ]
+  },
+  "feeds_src": [
+   "function ps_feeds_ids(): array {",
+   "\tglobal $wpdb;",
+   "\t$p = $wpdb->prefix;",
+   "",
+   "\t$sql = \"SELECT p.ID FROM {$p}posts p",
+   "\t\tWHERE p.post_type = 'product' AND p.post_status = 'publish'",
+   "\t\tAND EXISTS (",
+   "\t\t\tSELECT 1 FROM {$p}postmeta s",
+   "\t\t\tWHERE s.post_id = p.ID AND s.meta_key = '_stock_status' AND s.meta_value = 'instock'",
+   "\t\t)",
+   "\t\tAND NOT EXISTS (",
+   "\t\t\tSELECT 1 FROM {$p}postmeta d",
+   "\t\t\tWHERE d.post_id = p.ID AND d.meta_key = '_do_not_export' AND d.meta_value = 'yes'",
+   "\t\t)",
+   "\t\tAND NOT EXISTS (",
+   "\t\t\tSELECT 1 FROM {$p}postmeta l",
+   "\t\t\tWHERE l.post_id = p.ID AND l.meta_key = '_ps_laukas' AND l.meta_value = 'yes'",
+   "\t\t)",
+   "\t\tAND NOT EXISTS (",
+   "\t\t\tSELECT 1 FROM {$p}postmeta dp",
+   "\t\t\tWHERE dp.post_id = p.ID AND dp.meta_key = '_dp_base_product_id' AND dp.meta_value <> ''",
+   "\t\t)",
+   "\t\tAND NOT EXISTS (",
+   "\t\t\tSELECT 1 FROM {$p}term_relationships tr",
+   "\t\t\tJOIN {$p}term_taxonomy tt ON tt.term_taxonomy_id = tr.term_taxonomy_id",
+   "\t\t\tJOIN {$p}terms t ON t.term_id = tt.term_id",
+   "\t\t\tWHERE tr.object_id = p.ID AND tt.taxonomy = 'product_visibility'",
+   "\t\t\t  AND t.slug = 'exclude-from-catalog'",
+   "\t\t)",
+   "\t\tAND NOT EXISTS ("
+  ],
+  "snip": [
+   {
+    "id": "2515",
+    "name": "Petshop Sources v2.3 (registras + palaikymas + sandelio pildymas + dvieju sandeliu eilutes)",
+    "active": "1"
+   },
+   {
+    "id": "8290",
+    "name": "TEMP PS dep-085122",
+    "active": "1"
+   }
+  ],
+  "opc": {
+   "ps_sources_naktinis_rez": "{\"laikas\":\"2026-11-12 06:20:14\",\"prekiu\":4970,\"prideta\":4,\"atnaujinta\":4175,\"isjungta\":2,\"be_saltinio\":912}"
+  },
+  "m": {
+   "22906": [
+    {
+     "k": "_vf_qty",
+     "v": "56"
+    },
+    {
+     "k": "_ps_pilnumas_kodai",
+     "v": ""
+    },
+    {
+     "k": "_ps_pilnumas_updated",
+     "v": "2026-11-14 07:00:22"
+    },
+    {
+     "k": "_ps_pilnumas_truksta",
+     "v": ""
+    },
+    {
+     "k": "_ps_pilnumas",
+     "v": "100"
+    },
+    {
+     "k": "_ps_sales_updated",
+     "v": "2026-11-14 06:50:32"
+    },
+    {
+     "k": "_ps_margin_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_last_sale",
+     "v": ""
+    },
+    {
+     "k": "_ps_orders_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_revenue_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_90d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_30d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sandelis",
+     "v": "vf"
+    }
+   ],
+   "23882": [
+    {
+     "k": "_vf_qty",
+     "v": "189"
+    },
+    {
+     "k": "_ps_aprasymas_uzrakintas",
+     "v": "yes"
+    },
+    {
+     "k": "_ps_aprasymo_bak",
+     "v": "a:1:{i:0;a:3:{s:7:\"tekstas\";s:2805:\"<div style=\"color:black !important;\"><div st"
+    },
+    {
+     "k": "_ps_pilnumas_kodai",
+     "v": ""
+    },
+    {
+     "k": "_ps_pilnumas_updated",
+     "v": "2026-11-14 07:00:23"
+    },
+    {
+     "k": "_ps_pilnumas_truksta",
+     "v": ""
+    },
+    {
+     "k": "_ps_pilnumas",
+     "v": "100"
+    },
+    {
+     "k": "_ps_sales_updated",
+     "v": "2026-11-14 06:50:34"
+    },
+    {
+     "k": "_ps_margin_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_last_sale",
+     "v": ""
+    },
+    {
+     "k": "_ps_orders_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_revenue_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_90d",
+     "v": "0"
+    }
+   ],
+   "26475": [
+    {
+     "k": "_vf_qty",
+     "v": "0"
+    },
+    {
+     "k": "_ps_pilnumas_kodai",
+     "v": ""
+    },
+    {
+     "k": "_ps_pilnumas_updated",
+     "v": "2026-11-14 07:00:25"
+    },
+    {
+     "k": "_ps_pilnumas_truksta",
+     "v": ""
+    },
+    {
+     "k": "_ps_pilnumas",
+     "v": "100"
+    },
+    {
+     "k": "_ps_sales_updated",
+     "v": "2026-11-14 06:50:37"
+    },
+    {
+     "k": "_ps_margin_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_last_sale",
+     "v": ""
+    },
+    {
+     "k": "_ps_orders_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_revenue_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_90d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_30d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sandelis",
+     "v": "vf"
+    }
+   ],
+   "34706": [
+    {
+     "k": "_vf_qty",
+     "v": "19"
+    },
+    {
+     "k": "_vf_reprice_by_snippet_at",
+     "v": "2026-10-02 06:00:16"
+    },
+    {
+     "k": "_ps_pilnumas_kodai",
+     "v": "|serimo_lentele|serimo_instr|pakuotes_dydis|nuotrauka|"
+    },
+    {
+     "k": "_ps_pilnumas_updated",
+     "v": "2026-11-14 07:00:30"
+    },
+    {
+     "k": "_ps_pilnumas_truksta",
+     "v": "šėrimo lentelė, šėrimo instrukcija, pakuotės dydis, nuotrauka"
+    },
+    {
+     "k": "_ps_pilnumas",
+     "v": "65"
+    },
+    {
+     "k": "_ps_sales_updated",
+     "v": "2026-11-14 06:50:44"
+    },
+    {
+     "k": "_ps_margin_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_last_sale",
+     "v": ""
+    },
+    {
+     "k": "_ps_orders_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_revenue_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_90d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_30d",
+     "v": "0"
+    }
+   ],
+   "38270": [
+    {
+     "k": "_vf_qty",
+     "v": "91"
+    },
+    {
+     "k": "_vf_auto_published_at",
+     "v": "2026-11-14 06:00:02"
+    },
+    {
+     "k": "_ps_vmvt_isimta",
+     "v": "2026-11-09 VMVT aktas INS-26-00078 (KPT) – iki registracijos, Raimio nurodymas 1"
+    },
+    {
+     "k": "_ps_ranka_isimta",
+     "v": "taip"
+    },
+    {
+     "k": "_ps_sandelis",
+     "v": "vf"
+    },
+    {
+     "k": "_ps_sales_updated",
+     "v": "2026-11-14 06:50:57"
+    },
+    {
+     "k": "_ps_margin_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_last_sale",
+     "v": ""
+    },
+    {
+     "k": "_ps_orders_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_revenue_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_90d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_30d",
+     "v": "0"
+    },
+    {
+     "k": "_vf_price_rule_used",
+     "v": "CAT:skanestai-grauzikams"
+    }
+   ],
+   "38324": [
+    {
+     "k": "_ps_dropship_paslepta_nuo",
+     "v": "2026-11-13 18:22:18"
+    },
+    {
+     "k": "_ps_dropship_paslepta",
+     "v": "1"
+    },
+    {
+     "k": "_vf_qty",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sandelis",
+     "v": "vf"
+    },
+    {
+     "k": "_ps_sales_updated",
+     "v": "2026-11-14 06:50:58"
+    },
+    {
+     "k": "_ps_margin_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_last_sale",
+     "v": ""
+    },
+    {
+     "k": "_ps_orders_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_revenue_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_365d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_90d",
+     "v": "0"
+    },
+    {
+     "k": "_ps_sales_30d",
+     "v": "0"
+    },
+    {
+     "k": "_vf_price_rule_used",
+     "v": "CAT:akvariumai-iranga"
+    },
+    {
+     "k": "_vf_price_initialized_at",
+     "v": "2026-11-07 06:38:04"
+    }
+   ]
+  },
+  "st": {
+   "22906": "draft",
+   "23882": "draft",
+   "26475": "draft",
+   "34706": "draft",
+   "38270": "draft",
+   "38324": "publish"
+  },
+  "draft_vf_n": "262",
+  "pub_n": "3174"
+ },
+ "v": "dep-085122",
+ "kurimas": 200,
+ "sid": 8290,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
