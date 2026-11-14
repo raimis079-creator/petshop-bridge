@@ -1,0 +1,478 @@
+{
+ "1": {
+  "v": "S1868a",
+  "md5": "d67bba3b1dee2e20d8099db2e92cf71f",
+  "n": 583,
+  "kodas": {
+   "29": "function petshop_ps_sf_data( $o ) {",
+   "40": "function petshop_pragma_doc_date( $o ) {",
+   "72": "function petshop_pragma_ts( $year, $month, $day ) {",
+   "77": "function petshop_pragma_next_run_time( $day = 5 ) {",
+   "94": "function petshop_pragma_prev_period() {",
+   "130": "function petshop_pragma_prepare( $year, $month ) {",
+   "168": "    $seen = array(); $tot = 0; $vat = 0; $ex = 0;",
+   "181": "        if ( ! preg_match( '/^\\d{7,10}$/', petshop_pragma_get_client_id( $o ) ) ) $res['errors'][] = \"$nr $av: blogas kliento ID\";",
+   "183": "        $tot += $t; $vat += $v; $ex += $b;",
+   "185": "    $res['sum'] = array( 'n' => count( $res['orders'] ), 'su_pvm' => round( $tot, 2 ), 'pvm' => round( $vat, 2 ), 'be_pvm' => round( $ex, 2 ) );",
+   "198": "        'imones_' . $per . '.txt'         => petshop_pragma_generate_imones( $res['orders'] ),",
+   "211": "    $f_tot = 0; $f_vat = 0; $f_vat2 = 0;",
+   "221": "        $f_tot += $t; $f_vat += $v;",
+   "226": "        $f_vat2 += (float) $c[5];",
+   "232": "    if ( abs( $f_vat - $vat ) > 0.02 || abs( $f_vat2 - $vat ) > 0.02 ) $res['errors'][] = 'Failų PVM ' . round( $f_vat, 2 ) . '/' . round( $f_vat2, 2 ) . ' ≠ DB ' . round( $vat, 2 );",
+   "238": "function petshop_pragma_summary_line( $p ) {",
+   "243": "function petshop_pragma_report_text( $p ) {",
+   "254": "function petshop_pragma_alert( $subject, $text ) {",
+   "265": "function petshop_pragma_run_export( $year, $month, $opt = array() ) {",
+   "345": "// 3. IMONES.TXT GENERAVIMAS",
+   "347": "function petshop_pragma_generate_imones( $orders ) {",
+   "351": "        $client_id = petshop_pragma_get_client_id( $order );",
+   "357": "        $company   = petshop_pragma_clean_value( $order->get_billing_company() );",
+   "358": "        $vat_code  = $order->get_meta( '_billing_vat_code' ) ?: '';",
+   "361": "        $vat_field = $vat_code ? $vat_code : '';",
+   "364": "        $type = ( $company || $vat_code ) ? '0' : '1';",
+   "367": "            $client_id,     // 1: ID",
+   "369": "            $client_id,     // 3: ID (kartojas)",
+   "372": "            $vat_field,     // 6: PVM kodas",
+   "391": "function petshop_pragma_generate_pardavimai( $orders ) {",
+   "397": "        $client_id = petshop_pragma_get_client_id( $order );",
+   "400": "        $total_with_vat = number_format( (float) $order->get_total(), 2, '.', '' );",
+   "401": "        $vat_amount     = number_format( (float) $order->get_total_tax(), 2, '.', '' );",
+   "418": "            '2',              // 2: Dok tipas (2=PVM saskaita)",
+   "423": "            $client_id,       // 7: Kliento ID",
+   "425": "            $total_with_vat,  // 14: Suma su PVM",
+   "427": "            $vat_amount,      // 16: PVM suma",
+   "444": "function petshop_pragma_generate_pardavimai_sum( $orders ) {",
+   "451": "        $total_ex_vat = number_format( round( (float) $order->get_total() - (float) $order->get_total_tax(), 2 ), 2, '.', '' );",
+   "452": "        $vat_amount   = number_format( (float) $order->get_total_tax(), 2, '.', '' );",
+   "458": "            $total_ex_vat, // 4: Be PVM",
+   "460": "            $vat_amount,   // 6: PVM suma",
+   "472": "function petshop_pragma_get_client_id( $order ) {",
+   "473": "    $company  = $order->get_billing_company();",
+   "474": "    $vat_code = $order->get_meta( '_billing_vat_code' );",
+   "476": "    // Imone su imones kodu",
+   "477": "    if ( $vat_code && preg_match( '/\\d{7,9}/', $vat_code, $m ) ) {",
+   "478": "        return '3' . $m[0];",
+   "484": "    return '2' . str_pad( $order_nr, 5, '0', STR_PAD_LEFT ) . '5';",
+   "487": "function petshop_pragma_get_client_name( $order ) {",
+   "488": "    $company = trim( $order->get_billing_company() );",
+   "489": "    if ( $company ) return petshop_pragma_clean_value( $company );",
+   "498": "function petshop_pragma_clean_value( $val ) {",
+   "503": "function petshop_pragma_log( $message ) {",
+   "523": "function petshop_pragma_admin_page() {"
+  },
+  "known_n": 452,
+  "known_type": "array",
+  "eil": {
+   "AVPN011539": {
+    "oid": "37386",
+    "nr": "1587",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011539.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267261103002\",\"numeriai\":[\"V07267E1000637\"],\"data\":\"2026-11-03 11:23:38\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 2,
+    "eksp": "2026-10"
+   },
+   "AVPN011498": {
+    "oid": "37382",
+    "nr": "1583",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011498.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261030001\",\"numeriai\":[\"V07267E1000614\"],\"data\":\"2026-10-30 08:00:15\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 4,
+    "eksp": "2026-10"
+   },
+   "AVPN011493": {
+    "oid": "37375",
+    "nr": "1576",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011493.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267261029002\",\"numeriai\":[\"V07267E1000610\"],\"data\":\"2026-10-29 12:45:56\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 1,
+    "eksp": "2026-10"
+   },
+   "AVPN011495": {
+    "oid": "37373",
+    "nr": "1574",
+    "imone": "Behrens ūkis",
+    "meta_kodai": [
+     "_billing_company_address=saulės mūšio g.3 Jauniūnų km.Joniškio raj",
+     "_billing_company_code=5787738",
+     "_billing_is_company=1",
+     "_billing_vat_code=LT100000625118",
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011495.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267261029002\",\"numeriai\":[\"V07267E1000608\"],\"data\":\"2026-10-29 12:45:56\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 0,
+    "eksp": "2026-10"
+   },
+   "AVPN011461": {
+    "oid": "37285",
+    "nr": "1558",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011461.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261027001\",\"numeriai\":[\"V07267E1000581\"],\"data\":\"2026-10-27 12:23:18\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 2,
+    "eksp": "2026-10"
+   },
+   "AVPN011464": {
+    "oid": "37262",
+    "nr": "1553",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011464.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_kanalai={\"pirmas\":{\"utm_source\":\"google\",\"utm_medium\":\"cpc\",\"utm_campaign\":\"21472017542\",\"gclid\":1,\"fbclid\":0,\"referer_domenas\":\"www.google.com\",\"landing_url\":\"https://petshop.lt/kategorija/animonda-konservai-sunims/?utm_source=google&utm_medium=cpc&utm_campaign=21472017542&gad_source=1&gad_campaignid=21472043669&gclid=CjwKCAjw9PvWBhAxEiwAddzYybuQTGL6lMxQyLntcgbZveQRgyl6mRIwWKbKbR6JvmrNO8zl7_4HzRoCxlcQAvD_BwE\",\"laikas\":\"2026-10-27 06:48:58\",\"kanalas\":\"mokamas\"},\"paskutinis\":{\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"www.google.com\",\"landing_url\":\"https://petshop.lt/product/animonda-grancarno-adult-beef-lamb-konservai-sunims-su-sviezia-jautiena-ir-eriena-400-g/\",\"laikas\":\"2026-10-27 07:04:00\",\"kanalas\":\"organika\"},\"sutikimas_statistika\":1,\"fiksuota_at\":\"2026-10-27 07:06:47\",\"modulis\":\"kanalai/1.3\"}",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261027001\",\"numeriai\":[\"V07267E1000578\"],\"data\":\"2026-10-27 09:29:14\"}}",
+     "_wc_order_attribution_session_entry=https://petshop.lt/product/animonda-grancarno-adult-beef-lamb-konservai-sunims-su-sviezia-jautiena-ir-eriena-400-g/",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 1,
+    "eksp": "2026-10"
+   },
+   "AVPN011467": {
+    "oid": "37120",
+    "nr": "1547",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011467.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261027001\",\"numeriai\":[\"V07267E1000573\"],\"data\":\"2026-10-27 08:01:09\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 1,
+    "eksp": "2026-10"
+   },
+   "AVPN011447": {
+    "oid": "37066",
+    "nr": "1541",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011447.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261026001\",\"numeriai\":[\"V07267E1000559\"],\"data\":\"2026-10-26 07:46:53\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 1,
+    "eksp": "2026-10"
+   },
+   "AVPN011441": {
+    "oid": "37035",
+    "nr": "1523",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011441.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267261023002\",\"numeriai\":[\"V07267E1000552\"],\"data\":\"2026-10-23 12:47:17\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 2,
+    "eksp": "2026-10"
+   },
+   "AVPN011423": {
+    "oid": "36980",
+    "nr": "1504",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011423.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"zb\":{\"sandelis\":\"zb\",\"kodas\":\"003\",\"manifest\":\"07267261022003\",\"numeriai\":[\"V07267E1000530\"],\"data\":\"2026-10-22 09:46:57\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 3,
+    "eksp": "2026-10"
+   },
+   "AVPN011416": {
+    "oid": "36977",
+    "nr": "1501",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011416.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261022001\",\"numeriai\":[\"V07267E1000527\",\"V07267E1000528\"],\"data\":\"2026-10-22 09:28:09\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 1,
+    "eksp": "2026-10"
+   },
+   "AVPN011452": {
+    "oid": "36954",
+    "nr": "1492",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011452.pdf",
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011452.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261026001\",\"numeriai\":[\"V07267E1000554\"],\"data\":\"2026-10-26 07:46:53\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 3,
+    "eksp": "2026-10"
+   },
+   "AVPN011405": {
+    "oid": "36953",
+    "nr": "1491",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011405.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261021001\",\"numeriai\":[\"V07267E1000518\"],\"data\":\"2026-10-21 09:49:16\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 3,
+    "eksp": "2026-10"
+   },
+   "AVPN011404": {
+    "oid": "36926",
+    "nr": "1478",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011404.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261022001\",\"numeriai\":[\"V07267E1000522\"],\"data\":\"2026-10-22 07:01:24\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 2,
+    "eksp": "2026-10"
+   },
+   "AVPN011401": {
+    "oid": "36924",
+    "nr": "1476",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011401.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267261020002\",\"numeriai\":[\"V07267E1000505\"],\"data\":\"2026-10-20 12:50:33\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 1,
+    "eksp": "2026-10"
+   },
+   "AVPN011399": {
+    "oid": "36914",
+    "nr": "1469",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011399.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"ambrosia\":{\"sandelis\":\"ambrosia\",\"kodas\":\"006\",\"manifest\":\"07267261020006\",\"numeriai\":[\"V07267E1000499\"],\"data\":\"2026-10-20 10:10:44\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 3,
+    "eksp": "2026-10"
+   },
+   "AVPN011366": {
+    "oid": "36913",
+    "nr": "1468",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011366.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261019001\",\"numeriai\":[\"V07267E1000479\"],\"data\":\"2026-10-19 08:16:57\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 2,
+    "eksp": "2026-10"
+   },
+   "AVPN011368": {
+    "oid": "36907",
+    "nr": "1463",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011368.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261019001\",\"numeriai\":[\"V07267E1000477\"],\"data\":\"2026-10-19 08:16:57\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 1,
+    "eksp": "2026-10"
+   },
+   "AVPN011411": {
+    "oid": "36897",
+    "nr": "1453",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011411.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261021001\",\"numeriai\":[\"V07267E1000510\"],\"data\":\"2026-10-21 07:08:13\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 2,
+    "eksp": "2026-10"
+   },
+   "AVPN011377": {
+    "oid": "36889",
+    "nr": "1445",
+    "imone": "UAB JURDANA",
+    "meta_kodai": [
+     "_billing_company_address=Algirdo g. 61, Mažeikiai",
+     "_billing_company_code=300117832",
+     "_billing_is_company=1",
+     "_billing_vat_code=LT100007826914",
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011377.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261019001\",\"numeriai\":[\"V07267E1000471\"],\"data\":\"2026-10-19 08:16:56\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 0,
+    "eksp": "2026-10"
+   },
+   "AVPN011359": {
+    "oid": "36870",
+    "nr": "1426",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011359.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261016001\",\"numeriai\":[\"V07267E1000458\"],\"data\":\"2026-10-16 07:10:57\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 1,
+    "eksp": "2026-10"
+   },
+   "AVPN011351": {
+    "oid": "36823",
+    "nr": "1392",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011351.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261015001\",\"numeriai\":[\"V07267E1000442\"],\"data\":\"2026-10-15 08:19:56\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 1,
+    "eksp": "2026-10"
+   },
+   "AVPN011299": {
+    "oid": "36771",
+    "nr": "1350",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011299.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261012001\",\"numeriai\":[\"V07267E1000376\"],\"data\":\"2026-10-12 08:01:44\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 1,
+    "eksp": "2026-10"
+   },
+   "AVPN011278": {
+    "oid": "36767",
+    "nr": "1346",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011278.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_kanalai={\"pirmas\":{\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"www.google.com\",\"landing_url\":\"https://petshop.lt/product/animonda-vom-feinsten-adult-with-turkey-and-rabbit-konservai-katems-su-kalakutiena-ir-triusiena-100-g/\",\"laikas\":\"2026-10-05 05:45:24\",\"kanalas\":\"organika\"},\"paskutinis\":{\"utm_source\":\"google\",\"utm_medium\":\"cpc\",\"utm_campaign\":\"23346712074\",\"gclid\":1,\"fbclid\":0,\"referer_domenas\":\"www.google.com\",\"landing_url\":\"https://petshop.lt/?utm_source=google&utm_medium=cpc&utm_campaign=23346712074&gad_source=1&gad_campaignid=23346712074&gbraid=0AAAAApaj7XXSLOokVvJHWTsPUK8ZCkGAD&gclid=CjwKCAjw_pzWBhAkEiwAwDCi1TXoqtZ3lJlJmg-Snl6ZaYRW-dAxfavETRT9hXOrzSQuUUqC2S3lAxoCSpwQAvD_B\",\"laikas\":\"2026-10-08 20:39:30\",\"kanalas\":\"mokamas\"},\"sutikimas_statistika\":0,\"fiksuota_at\":\"2026-10-08 20:43:47\",\"modulis\":\"kanalai/1.3\"}",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261009001\",\"numeriai\":[\"V07267E1000367\"],\"data\":\"2026-10-09 08:26:50\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 2,
+    "eksp": "2026-10"
+   },
+   "AVPN011282": {
+    "oid": "36741",
+    "nr": "1340",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011282.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_kanalai={\"pirmas\":{\"gclid\":0,\"fbclid\":0,\"referer_domenas\":\"www.google.com\",\"landing_url\":\"https://petshop.lt/product/animonda-vom-feinsten-adult-with-turkey-and-rabbit-konservai-katems-su-kalakutiena-ir-triusiena-100-g/\",\"laikas\":\"2026-10-05 05:45:24\",\"kanalas\":\"organika\"},\"paskutinis\":{\"utm_source\":\"google\",\"utm_medium\":\"cpc\",\"utm_campaign\":\"23346712074\",\"gclid\":1,\"fbclid\":0,\"referer_domenas\":\"www.google.com\",\"landing_url\":\"https://petshop.lt/?utm_source=google&utm_medium=cpc&utm_campaign=23346712074&gad_source=1&gad_campaignid=23346712074&gbraid=0AAAAApaj7XXSLOokVvJHWTsPUK8ZCkGAD&gclid=CjwKCAjw_pzWBhAkEiwAwDCi1TAo_TnZz6Jvjr7nyrqKMgKt-Jw02IxgPu1YlNxObfN_rXGpmJCGKBoCHDUQAvD_B\",\"laikas\":\"2026-10-08 10:29:07\",\"kanalas\":\"mokamas\"},\"sutikimas_statistika\":0,\"fiksuota_at\":\"2026-10-08 10:35:47\",\"modulis\":\"kanalai/1.3\"}",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"av\":{\"sandelis\":\"av\",\"kodas\":\"001\",\"manifest\":\"07267261009001\",\"numeriai\":[\"V07267E1000364\"],\"data\":\"2026-10-09 08:26:50\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 1,
+    "eksp": "2026-10"
+   },
+   "AVPN011274": {
+    "oid": "36732",
+    "nr": "1333",
+    "imone": "",
+    "meta_kodai": [
+     "_petshop_completed_pdf=/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/PVM-saskaita-AVPN011274.pdf",
+     "_ps_ga4_mp_kodas=204",
+     "_ps_pragma_eksportuota=2026-10",
+     "_ps_siuntos={\"vf\":{\"sandelis\":\"vf\",\"kodas\":\"002\",\"manifest\":\"07267261008002\",\"numeriai\":[\"V07267E1000355\"],\"data\":\"2026-10-08 12:40:41\"}}",
+     "is_vat_exempt=no"
+    ],
+    "known": true,
+    "ankstesni": 1,
+    "eksp": "2026-10"
+   }
+  }
+ },
+ "v": "dep-161114",
+ "kurimas": 200,
+ "sid": 8303,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
