@@ -1,0 +1,120 @@
+{
+ "1": {
+  "v": "S1867m",
+  "dp_su_sand": [
+   {
+    "x": "be",
+    "n": "909"
+   },
+   {
+    "x": "su",
+    "n": "17"
+   }
+  ],
+  "nauji_be_sand_dp": "64",
+  "nauji_registre": [
+   {
+    "st": "draft",
+    "reg": "yra",
+    "n": "67"
+   },
+   {
+    "st": "publish",
+    "reg": "nera",
+    "n": "64"
+   },
+   {
+    "st": "publish",
+    "reg": "yra",
+    "n": "8"
+   }
+  ],
+  "reg_updated": [
+   {
+    "d": "2026-11-10",
+    "n": "2"
+   },
+   {
+    "d": "2026-11-11",
+    "n": "2"
+   },
+   {
+    "d": "2026-11-12",
+    "n": "28"
+   },
+   {
+    "d": "2026-11-13",
+    "n": "9"
+   },
+   {
+    "d": "2026-11-14",
+    "n": "4229"
+   }
+  ],
+  "reg_n": "4645",
+  "be_saltinio": "975",
+  "naudotojai": {
+   "petshop-akcijos.php": {
+    "Petshop_Sources::saltiniai": 1
+   },
+   "petshop-ataskaita-atsargos.php": {
+    "ps_sources`": 1,
+    "ps_sources'": 1,
+    "ps_sources ": 1
+   },
+   "petshop-av-dropship.php": {
+    "ps_sources.": 2,
+    "ps_sources ": 4,
+    "ps_sources'": 2
+   },
+   "petshop-av-source.php": {
+    "Petshop_Sources::gyvi": 2
+   },
+   "petshop-av-tiekimas.php": {
+    "ps_sources)": 1
+   },
+   "petshop-fakt-atsargos.php": {
+    "ps_sources`": 3
+   },
+   "petshop-gavimo-perrusiavimas.php": {
+    "ps_sources ": 1,
+    "Petshop_Sources::sinchronizuoti": 1
+   },
+   "petshop-katalogas.php": {
+    "ps_sources`": 3,
+    "ps_sources ": 2,
+    "ps_sources'": 2,
+    "Petshop_Sources::saltiniai": 2,
+    "Petshop_Sources::gyvi": 1,
+    "ps_sources)": 1
+   },
+   "petshop-seseliai.php": {
+    "ps_sources`": 1,
+    "ps_sources'": 1
+   },
+   "petshop-zb-matmenys.php": {
+    "ps_sources'": 1
+   },
+   "petshop-fbt.php": {
+    "ps_sources ": 1
+   }
+  },
+  "snip_naud": [
+   {
+    "id": "2403",
+    "name": "Petshop Stock Service v1.3 (per registra)"
+   },
+   {
+    "id": "8298",
+    "name": "TEMP PS dep-092840"
+   }
+  ]
+ },
+ "v": "dep-092840",
+ "kurimas": 200,
+ "sid": 8298,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
