@@ -1,0 +1,404 @@
+{
+ "1": {
+  "v": "S1869i",
+  "snip5330": "/**\n * Petshop Uzsakymu Numeracija v1.0 (woocommerce_order_number filtras)\n *\n * S1663 (Raimio sprendimas 2026-09-09): klientui rodomi nuoseklus uzsakymu\n * numeriai nuo 1000 (vidinis ID lieka 35xxx — Paysera/siuntos/DB nesikeicia).\n * Counter `petshop_order_counter` = KITAS numeris (kaip AVPN/KR/IAPV/PPK).\n * Priskiriama kuriant uzsakyma; checkout-draft praleidziamas (numeriu\n * nedeginam juodrasciams) — priskiriama isejus is draft.\n * Seni uzsakymai be metos rodo savo ID (35868–35876 palikti — Raimio sprendimas).\n */\nfunction petshop_priskirti_uzsakymo_nr( $order ) {\n\tif ( ! $order instanceof WC_Order || 'shop_order' !== $order->get_type() ) return;\n\tif ( $order->get_meta( '_ps_order_number' ) ) return;\n\tif ( in_array( $order->get_status(), array( 'checkout-draft', 'auto-draft' ), true ) ) return;\n\tglobal $wpdb;\n\t$wpdb->query( \"UPDATE {$wpdb->options} SET option_value = LAST_INSERT_ID(option_value + 1) WHERE option_name = 'petshop_order_counter'\" );\n\t$naujas = (int) $wpdb->get_var( 'SELECT LAST_INSERT_ID()' );\n\tif ( $naujas < 2 ) return; // opcijos nera — geriau ID nei 0/1\n\t$order->update_meta_data( '_ps_order_number', $naujas - 1 );\n\t$order->save();\n}\nadd_action( 'woocommerce_new_order', function( $order_id, $order = null ) {\n\tpetshop_priskirti_uzsakymo_nr( $order ? $order : wc_get_order( $order_id ) );\n}, 20, 2 );\nadd_action( 'woocommerce_order_status_changed', function( $order_id, $sen, $nauj, $order ) {\n\tif ( 'checkout-draft' === $sen ) petshop_priskirti_uzsakymo_nr( $order );\n}, 20, 4 );\nadd_filter( 'woocommerce_order_number', function( $nr, $order ) {\n\t$m = $order instanceof WC_Order ? $order->get_meta( '_ps_order_number' ) : '';\n\treturn $m ? (string) $m : $nr;\n}, 10, 2 );",
+  "paysera": [
+   "/woo-payment-gateway-paysera/src/Admin/PayseraDeliveryAdmin.php:549 public function wcCheckoutOrderProcessed(int $orderId, array $postedData, WC_Order $order): void",
+   "/woo-payment-gateway-paysera/src/Admin/PayseraDeliveryAdmin.php:551 $this->logger->info(sprintf('Processing checkout order for order id %d.', $order->get_id()));",
+   "/woo-payment-gateway-paysera/src/Admin/PayseraDeliveryAdmin.php:558 $this->logger->info(sprintf('Processing store API checkout order for order id %d.', $order->get_id()));",
+   "/woo-payment-gateway-paysera/src/Entity/Delivery/Callback.php:14 private int $orderId;",
+   "/woo-payment-gateway-paysera/src/Entity/Delivery/Callback.php:16 public function __construct(int $orderId)",
+   "/woo-payment-gateway-paysera/src/Entity/Delivery/Callback.php:18 $this->orderId = $orderId;",
+   "/woo-payment-gateway-paysera/src/Entity/Delivery/Callback.php:28 $this->orderId",
+   "/woo-payment-gateway-paysera/src/Entity/Delivery/Order.php:36 $this->id = $order->get_id();",
+   "/woo-payment-gateway-paysera/src/Entity/Delivery/Order.php:66 public function getDeliveryOrderId(): ?string",
+   "/woo-payment-gateway-paysera/src/Entity/Delivery/Order.php:73 return $this->order->get_meta(PayseraDeliverySettings::DELIVERY_ORDER_NUMBER_META_KEY);",
+   "/woo-payment-gateway-paysera/src/Entity/Delivery/Order.php:76 public function setDeliveryOrderId(string $id): MerchantOrderInterface",
+   "/woo-payment-gateway-paysera/src/Entity/Delivery/Order.php:85 $this->order->update_meta_data(PayseraDeliverySettings::DELIVERY_ORDER_NUMBER_META_KEY, $number);",
+   "/woo-payment-gateway-paysera/src/Entity/PayseraDeliverySettings.php:91 public const DELIVERY_ORDER_NUMBER_META_KEY = '_paysera_delivery_order_id';",
+   "/woo-payment-gateway-paysera/src/Entity/class-paysera-payment-gateway.php:130 $order = wc_get_order($callbackResponse->getOrder()->getOrderId());",
+   "/woo-payment-gateway-paysera/src/Entity/class-paysera-payment-gateway.php:132 throw new PayseraPaymentException('Order not found: ' . $callbackResponse->getOrder()->getOrderId());",
+   "/woo-payment-gateway-paysera/src/Entity/class-paysera-payment-gateway.php:274 public function processOrderAfterPayment($orderId): void",
+   "/woo-payment-gateway-paysera/src/Entity/class-paysera-payment-gateway.php:276 $order = wc_get_order($orderId);",
+   "/woo-payment-gateway-paysera/src/Entity/class-paysera-payment-gateway.php:324 $order->get_id(),",
+   "/woo-payment-gateway-paysera/src/EventHandler/DeliveryOrderUpdatedHandler.php:48 $merchantOrder = $this->merchantOrderRepository->findOrderById((int)($payload['orderId'] ?? 0));",
+   "/woo-payment-gateway-paysera/src/EventHandler/DeliveryOrderUpdatedHandler.php:50 if ($merchantOrder === null || $merchantOrder->getDeliveryOrderId() === null) {",
+   "/woo-payment-gateway-paysera/src/EventHandler/WCOrderCreatedHandler.php:86 $orderId = $order->get_id();",
+   "/woo-payment-gateway-paysera/src/EventHandler/WCOrderCreatedHandler.php:89 $this->logger->info(sprintf('WooCommerce session is not available for order id %d.', $orderId));",
+   "/woo-payment-gateway-paysera/src/EventHandler/WCOrderCreatedHandler.php:95 $this->logger->info(sprintf('Test mode is enabled for order id %d.', $orderId));",
+   "/woo-payment-gateway-paysera/src/EventHandler/WCOrderCreatedHandler.php:109 $this->logger->info(sprintf('Paysera delivery gateway code not found for order id %d.', $orderId));",
+   "/woo-payment-gateway-paysera/src/EventHandler/WCOrderCreatedHandler.php:117 $orderId,",
+   "/woo-payment-gateway-paysera/src/EventHandler/WCOrderCreatedHandler.php:136 $this->logger->error(sprintf('Delivery merchant client not found for order id %d.', $orderId));",
+   "/woo-payment-gateway-paysera/src/EventHandler/WCOrderCreatedHandler.php:138 $this->logger->error(sprintf('Delivery order request failed for order %d.', $orderId), $e);",
+   "/woo-payment-gateway-paysera/src/EventHandler/WCOrderCreatedHandler.php:219 $order->get_id(),",
+   "/woo-payment-gateway-paysera/src/EventHandler/WCOrderPaymentCompletedHandler.php:63 if ($merchantOrder === null || $merchantOrder->getDeliveryOrderId() === null) {",
+   "/woo-payment-gateway-paysera/src/EventHandler/WCOrderPaymentCompletedHandler.php:73 if (empty($merchantOrder->getDeliveryOrderId()) === false) {",
+   "/woo-payment-gateway-paysera/src/Front/PayseraDeliveryFrontHtml.php:420 $packageRateId = $packageRate->get_id();",
+   "/woo-payment-gateway-paysera/src/Front/PayseraDeliveryFrontHtml.php:539 $shippingRate->get_id(),",
+   "/woo-payment-gateway-paysera/src/Front/PayseraDeliveryFrontHtml.php:575 return strpos($shippingRate->get_id(), 'paysera_delivery_') === false;",
+   "/woo-payment-gateway-paysera/src/Generator/PayseraPaymentRequestGenerator.php:44 $this->limitIntLength($wcOrder->get_id(), 40),",
+   "/woo-payment-gateway-paysera/src/Generator/PayseraPaymentRequestGenerator.php:85 $this->logger->info(sprintf('Payment request for order id %d: %s', $wcOrder->get_id(), $paymentRedirectResponse->getData()));",
+   "/woo-payment-gateway-paysera/src/PayseraInit.php:369 if (isset($hints[$shippingRate->get_id()])) {",
+   "/woo-payment-gateway-paysera/src/PayseraInit.php:370 $label .= '<p class=\"paysera-delivery-error\">' . $hints[$shippingRate->get_id()] . '</p>';",
+   "/woo-payment-gateway-paysera/src/PayseraInit.php:423 $hints[$shippingRate->get_id()] = current($result['messages']);",
+   "/woo-payment-gateway-paysera/src/Repository/MerchantOrderRepository.php:22 * @param int $orderId",
+   "/woo-payment-gateway-paysera/src/Repository/MerchantOrderRepository.php:25 public function findOrderById(int $orderId): ?Order",
+   "/woo-payment-gateway-paysera/src/Repository/MerchantOrderRepository.php:28 $order = wc_get_order($orderId);",
+   "/woo-payment-gateway-paysera/src/Repository/RefundRepository.php:29 'order_id' => $order->get_id(),",
+   "/woo-payment-gateway-paysera/src/Rest/PayseraDeliveryController.php:334 ['orderId' => $params['id']]",
+   "/woo-payment-gateway-paysera/src/Service/RefundAmountCalculator.php:40 $order->get_id()",
+   "/woo-payment-gateway-paysera/src/Service/RefundAmountCalculator.php:58 $order->get_id()",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-checkout-sdk-facade/src/Entity/Order.php:15 private int $orderId;",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-checkout-sdk-facade/src/Entity/Order.php:68 public function __construct(int $orderId, int $amount, string $currency)",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-checkout-sdk-facade/src/Entity/Order.php:70 $this->orderId = $orderId;",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-checkout-sdk-facade/src/Entity/Order.php:82 public function getOrderId() : int",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-checkout-sdk-facade/src/Entity/Order.php:84 return $this->orderId;",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-checkout-sdk-facade/src/Provider/WebToPay/Adapter/PaymentRedirectRequestNormalizer.php:12 $paymentData = ['orderid' => $request->getOrder()->getOrderId(), 'amount' => $request->getOrder()->getAmount(), 'currency' => $request->getOrder()->getCurrency(), 'accepturl' => $request->getAcceptUrl(), 'cancelurl' => $",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-checkout-sdk-facade/src/Provider/WebToPay/Adapter/PaymentValidationResponseNormalizer.php:21 return $paymentValidationResponse->setPayment($this->getProviderProperty('payment', $providerResponse))->setPaymentText($this->getProviderProperty('paytext', $providerResponse))->setOriginalPaymentText($this->getProvider",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-checkout-sdk-facade/src/Provider/WebToPay/Adapter/PaymentValidationResponseNormalizer.php:32 $order = new Order($this->getProviderProperty('orderid', $providerResponse, TypeConverter::INT), $this->getProviderProperty('amount', $providerResponse, TypeConverter::INT), $this->getProviderProperty('currency', $provid",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-checkout-sdk-facade/src/Provider/WebToPay/Adapter/PaymentValidationResponseNormalizer.php:33 return $order->setPayerFirstName($this->getProviderProperty('p_firstname', $providerResponse))->setPayerLastName($this->getProviderProperty('p_lastname', $providerResponse))->setPayerEmail($this->getProviderProperty('p_e",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/Order.php:222 public function getEshopOrderId()",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/Order.php:227 * @param string $eshopOrderId",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/Order.php:230 public function setEshopOrderId($eshopOrderId)",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/Order.php:232 $this->set('eshop_order_id', $eshopOrderId);",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderCreate.php:177 public function getEshopOrderId()",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderCreate.php:182 * @param string $eshopOrderId",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderCreate.php:185 public function setEshopOrderId($eshopOrderId)",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderCreate.php:187 $this->set('eshop_order_id', $eshopOrderId);",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderFilter.php:219 public function getEshopOrderId()",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderFilter.php:224 * @param string $eshopOrderId",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderFilter.php:227 public function setEshopOrderId($eshopOrderId)",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderFilter.php:229 $this->set('eshop_order_id', $eshopOrderId);",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderIdsList.php:6 class OrderIdsList extends Entity",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderIdsList.php:15 public function getOrderIds()",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderIdsList.php:20 * @param string[] $orderIds",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderIdsList.php:23 public function setOrderIds(array $orderIds)",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderIdsList.php:25 $this->set('order_ids', $orderIds);",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderUpdate.php:179 public function getEshopOrderId()",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderUpdate.php:184 * @param string $eshopOrderId",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderUpdate.php:187 public function setEshopOrderId($eshopOrderId)",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/Entity/OrderUpdate.php:189 $this->set('eshop_order_id', $eshopOrderId);",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/MerchantClient.php:376 * @param Entities\\OrderIdsList $orderIdsList",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/MerchantClient.php:379 public function createOrdersConfirm(Entities\\OrderIdsList $orderIdsList)",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/MerchantClient.php:381 $request = $this->apiClient->createRequest(RequestMethodInterface::METHOD_POST, 'orders-confirm', $orderIdsList);",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/MerchantClient.php:390 * @param Entities\\OrderIdsList $orderIdsList",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/MerchantClient.php:392 public function createOrdersPrepaid(Entities\\OrderIdsList $orderIdsList)",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-api-merchant-client/src/MerchantClient.php:394 $request = $this->apiClient->createRequest(RequestMethodInterface::METHOD_POST, 'orders-prepaid', $orderIdsList);",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Adapter/OrderCreateRequestAdapter.php:31 $order = (new OrderCreate())->setShipmentGatewayCode($this->gatewayUtils->resolveDeliveryGatewayCode($deliveryGateway->getCode()))->setShipmentMethodCode($this->gatewayUtils->getShipmentMethodCode($deliveryGateway->getSe",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Adapter/OrderUpdateRequestAdapter.php:31 $order = (new OrderUpdate())->setShipmentGatewayCode($this->gatewayUtils->resolveDeliveryGatewayCode($deliveryGateway->getCode()))->setShipmentMethodCode($this->gatewayUtils->getShipmentMethodCode($deliveryGateway->getSe",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Client/DeliveryOrderApiClient.php:7 use Paysera\\DeliveryApi\\MerchantClient\\Entity\\OrderIdsList;",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Client/DeliveryOrderApiClient.php:41 $deliveryOrderId = $deliveryOrderRequest->getOrder()->getDeliveryOrderId();",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Client/DeliveryOrderApiClient.php:42 if ($deliveryOrderId === null) {",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Client/DeliveryOrderApiClient.php:45 return $this->merchantClientProvider->getMerchantClient($deliveryOrderRequest->getDeliverySettings())->updateOrder($deliveryOrderId, $this->orderRequestAdapter->convertUpdate($deliveryOrderRequest));",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Client/DeliveryOrderApiClient.php:53 $deliveryOrderId = $deliveryOrderRequest->getOrder()->getDeliveryOrderId();",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Client/DeliveryOrderApiClient.php:54 if ($deliveryOrderId === null) {",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Client/DeliveryOrderApiClient.php:57 $orderIdsList = new OrderIdsList(['order_ids' => [$deliveryOrderId]]);",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Client/DeliveryOrderApiClient.php:58 $this->merchantClientProvider->getMerchantClient($deliveryOrderRequest->getDeliverySettings())->createOrdersPrepaid($orderIdsList);",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Client/DeliveryOrderApiClient.php:63 $deliveryOrderId = $deliveryOrderRequest->getOrder()->getDeliveryOrderId();",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Client/DeliveryOrderApiClient.php:64 if ($deliveryOrderId === null) {",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Client/DeliveryOrderApiClient.php:67 return $this->merchantClientProvider->getMerchantClient($deliveryOrderRequest->getDeliverySettings())->getOrder((string) $deliveryOrderRequest->getOrder()->getDeliveryOrderId());",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Entity/MerchantOrderInterface.php:11 public function getDeliveryOrderId() : ?string;",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Entity/MerchantOrderInterface.php:13 public function setDeliveryOrderId(string $id) : self;",
+   "/woo-payment-gateway-paysera/vendor-scoped/paysera/lib-delivery-sdk/src/Service/DeliveryOrderService.php:98 $order->setDeliveryOrderId($deliveryOrder->getId());",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/WebToPay.php:144 if (!isset($data['sign_password']) || !isset($data['projectid']) || !isset($data['orderid'])) {",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/WebToPay.php:145 throw new WebToPayException('sign_password, projectid or orderid is not provided');",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/WebToPay.php:149 $orderId = $data['orderid'];",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/WebToPay.php:152 return $requestBuilder->buildRepeatRequest($orderId);",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/WebToPay.php:363 private const REQUEST_SPECS = [['orderid', 40, \\true, ''], ['accepturl', 255, \\true, ''], ['cancelurl', 255, \\true, ''], ['callbackurl', 255, \\true, ''], ['lang', 3, \\false, '/^[a-z]{3}$/i'], ['amount', 11, \\false, '/^\\\\",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/WebToPay.php:416 * @param int $orderId order id of repeated request",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/WebToPay.php:422 public function buildRepeatRequest(int $orderId) : array",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/WebToPay.php:424 $data['orderid'] = $orderId;",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/WebToPay.php:435 public function buildRepeatRequestUrlFromOrderId(int $orderId) : string",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/WebToPay.php:437 $request = $this->buildRepeatRequest($orderId);",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/src/WebToPay/RequestBuilder.php:11 private const REQUEST_SPECS = [['orderid', 40, \\true, ''], ['accepturl', 255, \\true, ''], ['cancelurl', 255, \\true, ''], ['callbackurl', 255, \\true, ''], ['lang', 3, \\false, '/^[a-z]{3}$/i'], ['amount', 11, \\false, '/^\\\\",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/src/WebToPay/RequestBuilder.php:64 * @param int $orderId order id of repeated request",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/src/WebToPay/RequestBuilder.php:70 public function buildRepeatRequest(int $orderId) : array",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/src/WebToPay/RequestBuilder.php:72 $data['orderid'] = $orderId;",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/src/WebToPay/RequestBuilder.php:83 public function buildRepeatRequestUrlFromOrderId(int $orderId) : string",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/src/WebToPay/RequestBuilder.php:85 $request = $this->buildRepeatRequest($orderId);",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/src/WebToPay.php:141 if (!isset($data['sign_password']) || !isset($data['projectid']) || !isset($data['orderid'])) {",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/src/WebToPay.php:142 throw new WebToPayException('sign_password, projectid or orderid is not provided');",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/src/WebToPay.php:146 $orderId = $data['orderid'];",
+   "/woo-payment-gateway-paysera/vendor-scoped/webtopay/libwebtopay/src/WebToPay.php:149 return $requestBuilder->buildRepeatRequest($orderId);"
+  ],
+  "desk": [
+   "586 esc_url( self::url( array( 'eile' => $eile, 'view' => null, 'q' => null, 'b' => null, 'atidaryti' => $r['id'] ) ) ), esc_html( $o->get_order_number() ), esc_html( wp_date( 'H:i', $o->get_date_created()->getTimestamp() ) ), esc_html( trim( $o->get_billing_first_name() . ' ' . $o->get_billing_last_nam",
+   "764 $f['eil'][ (int) $iid ] = array( 'iid' => (int) $iid, 'q' => $q, 'n' => $it->get_name(), 'sku' => $p ? $p->get_sku() : '', 'pid' => $pid, 'src' => $src, 'k' => $k, 'tiek' => $tiek, 'img' => $img ?: '',",
+   "909 return array( 'Užsakyti iš ' . ( count( $v ) > 1 ? implode( ' ir ', $v ) : $v[0] ) . ' į AV', self::url( array( 'eile' => 'laiskai', 'view' => null, 'q' => null, 'b' => null ) ), null, 'p', 0 ); // v3.37: kortelė Dropshipping eilėje",
+   "910 case 'tiekimas': return array( 'Laukiam iš ' . self::vardas( $s ), self::url( array( 'eile' => 'laukiam', 'view' => null, 'q' => null, 'b' => null ) ), null, 'ts', 1 );",
+   "919 case 'laiskas':  return array( 'zb' === $s ? 'Suvesti į ZB' : 'Užsakyti iš ' . self::vardas( $s ), self::url( array( 'eile' => 'laiskai', 'view' => null, 'q' => null, 'b' => null ) ), null, 'p', 0 );",
+   "960 $tiek_url = ( 'i_av' === $e['k'] && $e['b'] && 'gauta' !== $e['b']['busena'] ) ? self::url( array( 'eile' => 'uzsakyta' === $e['b']['busena'] ? 'laukiam' : 'laiskai', 'view' => null, 'q' => null, 'b' => null, 'atidaryti' => null ) ) : ''; // v3.37: kaupiama → Dropshipping kortelė",
+   "961 $eil[] = array( 'iid' => $e['iid'], 'q' => $e['q'], 'n' => $e['n'], 'sku' => $e['sku'], 'img' => $e['img'], 'k' => $e['k'], 'keliai' => $keliai, 'kodel' => self::kodel( $e ), 'zing' => $e['zing'], 'lock' => $e['lock'], 'tiek_url' => $tiek_url, 'bukle' => $e['bukle'], 'kk' => self::kiekio_gal( $f, $e",
+   "1594 if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $id, 'eilute' => $iid, 'sritis' => 'desk', 'veiksmas' => 'kiekis', 'rezultatas' => 'ok', 'kanalas' => 'web', 'kas' => $u->ID, 'kas_vardas' => $u->display_name, 'pries' => array( 'q' => $q, 't",
+   "1633 $naujos[] = array( 'p' => $np, 'q' => $nq, 'k' => $nk, 'g' => round( $nk * $nq, 2 ), 'v' => $v ); $suma_n += round( $nk * $nq, 2 );",
+   "1708 if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $id, 'eilute' => $iid, 'sritis' => 'desk', 'veiksmas' => 'keitimas', 'rezultatas' => 'ok', 'kanalas' => 'web', 'kas' => $u->ID, 'kas_vardas' => $u->display_name, 'pries' => array( 'pid' => $p",
+   "2517 foreach ( $r->get_items( array( 'line_item' ) ) as $it ) { $q = abs( (int) $it->get_quantity() ); $s = abs( (float) $it->get_total() + (float) $it->get_total_tax() ); $eil[] = array( 'iid' => (int) $it->get_meta( '_refunded_item_id' ), 'n' => $it->get_name(), 'q' => $q, 'q_max' => $q, 'vnt' => $q ? ",
+   "2524 $eil[] = array( 'iid' => (int) $iid, 'n' => $it->get_name(), 'q' => $q, 'q_max' => $q, 'vnt' => $s / $q, 'suma' => $s, 'fiks' => 0 );",
+   "2558 $formos .= '<form method=\"post\" action=\"' . esc_url( admin_url( 'admin-post.php' ) ) . '\" class=\"dl-kr-f\" data-e=\"' . (int) $idx . '\" data-dlg=\"' . esc_attr( $dlg ) . '\" style=\"display:none\">' . wp_nonce_field( 'ps_dl_kr_' . $id, '_wpnonce', true, false ) . '<input type=\"hidden\" name=\"action\" value=",
+   "2742 $q = isset( $_GET['q'] ) ? trim( sanitize_text_field( wp_unslash( $_GET['q'] ) ) ) : '';",
+   "2758 $base = array( 'page' => self::SLUG, 'view' => 'saskaitos' ); $url = function ( $x ) use ( $base, $t, $q, $nuo, $iki ) { return admin_url( 'admin.php?' . http_build_query( array_filter( array_merge( $base, array( 't' => $t, 'q' => $q, 'nuo' => $nuo, 'iki' => $iki ), $x ), function ( $v ) { return ''",
+   "2772 esc_html( get_date_from_gmt( $r['d'], 'Y-m-d' ) ), esc_html( $r['nr'] ), esc_html( $tip[ $r['t'] ] ?? $r['t'] ), esc_url( self::url( array( 'atidaryti' => $oid, 'view' => null, 'q' => null, 'nuo' => null, 'iki' => null, 'psl' => null, 'eile' => 'visi' ) ) ), $oid, esc_html( $stat[ $r['st'] ] ?? $r['",
+   "2841 $li[ (int) $x['iid'] ] = array( 'qty' => $q, 'refund_total' => $tot, 'refund_tax' => $rt ); $viso += $tot + array_sum( $rt ); $imta[ (int) $x['iid'] ] = array( 'q' => $q, 'q_max' => (int) $x['q_max'], 'pid' => (int) $it->get_product_id() ); $ka[] = $q . '× ' . mb_substr( $x['n'], 0, 40 );",
+   "2980 global $wpdb; $q = trim( (string) wp_unslash( $_GET['q'] ?? '' ) ); if ( mb_strlen( $q ) < 2 ) { wp_send_json_success( array() ); }",
+   "2997 global $wpdb; $src = sanitize_key( wp_unslash( $_GET['src'] ?? '' ) ); $z = absint( $_GET['zenklas'] ?? 0 ); $isp = ! empty( $_GET['isparduota'] ); $q = trim( (string) wp_unslash( $_GET['q'] ?? '' ) );",
+   "3027 global $wpdb; $q = trim( (string) wp_unslash( $_GET['q'] ?? '' ) ); if ( mb_strlen( $q ) < 2 ) { wp_send_json_success( array() ); }",
+   "3052 foreach ( (array) ( $_POST['pr'] ?? array() ) as $r ) { $pid = absint( $r['id'] ?? 0 ); $q = absint( $r['q'] ?? 0 ); $kaina = round( max( 0, (float) ( $r['kaina'] ?? 0 ) ), 2 ); if ( ! $pid || $q < 1 ) { continue; } $p = wc_get_product( $pid ); if ( ! $p || $p->is_type( 'variable' ) ) { $klaida( 'pr",
+   "3578 $prekes = array(); foreach ( $f['eil'] as $e ) { $prekes[] = array( 'q' => (int) $e['q'], 'n' => (string) $e['n'] ); }",
+   "3584 foreach ( $f['eil'] as $e ) { if ( ! empty( $e['atsaukta'] ) || ! empty( $e['issiusta_l'] ) ) { continue; } $ed = ( 'tiesiai' === $e['k'] && $e['src'] ) ? $e['src'] : 'av'; if ( $ed === $k ) { $prekes[] = array( 'q' => (int) $e['q'], 'n' => (string) $e['n'] ); } }",
+   "3593 foreach ( $f['dalys_baigtos'] as $k => $sar ) { foreach ( (array) $sar as $b_ ) { $nrs = array_values( array_filter( array_map( 'strval', (array) ( $b_['nr'] ?? array() ) ) ) ); $vez = ( 'av' === $k && 'lp' === $f['vez'] ) ? 'lp' : 'venipak'; $prist = $nrs ? self::pristatyta_kada( $f['sek'], $nrs ) ",
+   "3714 return array( 'q' => $g( 'q', 't' ), 'data' => $data, 'nuo' => $nuo, 'iki' => $iki, 'vykdymas' => $g( 'vykdymas' ), 'vezejas' => $g( 'vezejas' ),",
+   "3861 if ( '' !== $f['q'] ) { echo '<h1 class=\"dl-h1\">Paieška: „' . esc_html( $f['q'] ) . '“ <small><a href=\"' . esc_url( self::url( array( 'q' => null ) ) ) . '\">✕ išvalyti</a></small></h1>'; }",
+   "3896 printf( '<a class=\"dl-e%s\" href=\"%s\"%s>%s <span class=\"sk%s\">%s</span></a>', $k === $eile ? ' on' : '', esc_url( self::url( array( 'eile' => $k, 'q' => null, 'b' => null ) ) ), $e[1] ? ' title=\"' . esc_attr( $e[1] ) . '\"' : '', esc_html( $e[0] ), $n && $e[2] ? ' ' . $e[2] : '', 'visi' === $k ? numbe",
+   "4036 echo '<div class=\"dl-ats-tiek\"><span class=\"pilkas maz\">Užsakyti į atsargas iš:</span>'; foreach ( $visi_tiek as $t_ ) { echo ' <a class=\"v t' . ( $t_ === $tiek_pasirinktas ? ' p' : '' ) . '\" href=\"' . esc_url( self::url( array( 'eile' => 'laiskai', 'tiek' => $t_, 'view' => null, 'q' => null, 'b' =>",
+   "4257 $antr = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), $sk['suma'] ); $gr_forma = $sk['apmok'] && 0 === strpos( $sk['apmok'], 'apmokėta' ) ? self::grazinimo_forma( $o, $id, self::url( array( 'eile' => 'klausimai', 'view' => null, 'q' => null, 'b' => null, 'atidaryti' => null ) ) ) : '';",
+   "4294 $pk_forma = '<form method=\"post\" action=\"' . esc_url( admin_url( 'admin-post.php' ) ) . '\" class=\"dl-pk-f\" style=\"display:none\">' . wp_nonce_field( 'ps_dl_pakart_' . $id, '_wpnonce', true, false ) . '<input type=\"hidden\" name=\"action\" value=\"ps_dl_pakartotinis\"><input type=\"hidden\" name=\"id\" value=\""
+  ],
+  "ps_meta": [
+   {
+    "meta_key": "_billing_address_index",
+    "v": "Daiva Mileškaitė  Ramygalos g. 50-16 Panevėžys Panevėžys 36229 LT mediatore.daiv"
+   },
+   {
+    "meta_key": "_dp_stock_reduced",
+    "v": "yes"
+   },
+   {
+    "meta_key": "_paysera_delivery_customer_back_to_page",
+    "v": "1"
+   },
+   {
+    "meta_key": "_paysera_payment_confirmed",
+    "v": "1"
+   },
+   {
+    "meta_key": "_paysera_payment_paid_amount",
+    "v": "21086"
+   },
+   {
+    "meta_key": "_paysera_payment_paid_currency",
+    "v": "EUR"
+   },
+   {
+    "meta_key": "_petshop_avpn_number",
+    "v": "AVPN011670"
+   },
+   {
+    "meta_key": "_petshop_dl_purchase_sent",
+    "v": "yes"
+   },
+   {
+    "meta_key": "_petshop_iapv_number",
+    "v": "IAPV000806"
+   },
+   {
+    "meta_key": "_petshop_invoice_document_type",
+    "v": "invoice"
+   },
+   {
+    "meta_key": "_petshop_order_pdf",
+    "v": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/uploads/wcdn/invoice/Is"
+   },
+   {
+    "meta_key": "_ps_decided_at",
+    "v": "2026-11-14 20:59:46"
+   },
+   {
+    "meta_key": "_ps_faktas_irasytas",
+    "v": "2026-11-14 19:01:09"
+   },
+   {
+    "meta_key": "_ps_ga_cid",
+    "v": "1510407660.1794679295"
+   },
+   {
+    "meta_key": "_ps_ga_sid",
+    "v": "1794679295"
+   },
+   {
+    "meta_key": "_ps_ga_sutikimas",
+    "v": "SM"
+   },
+   {
+    "meta_key": "_ps_ga4_mp_at",
+    "v": "2026-11-14 19:01:09"
+   },
+   {
+    "meta_key": "_ps_ga4_mp_cid",
+    "v": "1510407660.1794679295"
+   },
+   {
+    "meta_key": "_ps_ga4_mp_kodas",
+    "v": "204"
+   },
+   {
+    "meta_key": "_ps_gclid",
+    "v": "CjwKCAiAquDXBhApEiwAoyNqBP4OSH8yCQCISV3FWYDbUl0v2NXAQtupjWJRdxfc4f0Pgq7VmeIc_hoC"
+   },
+   {
+    "meta_key": "_ps_groups",
+    "v": "{\"zb\":{\"carrier\":\"venipak\",\"eilutes\":3,\"vienetai\":3}}"
+   },
+   {
+    "meta_key": "_ps_irenginys",
+    "v": "desktop"
+   },
+   {
+    "meta_key": "_ps_kanalai",
+    "v": "{\"pirmas\":{\"utm_source\":\"google\",\"utm_medium\":\"cpc\",\"utm_campaign\":\"21472017542\""
+   },
+   {
+    "meta_key": "_ps_kelias_kasoje",
+    "v": "2026-11-14 20:59:46"
+   },
+   {
+    "meta_key": "_ps_matyta",
+    "v": "2026-11-14 22:45:22 | Inga"
+   },
+   {
+    "meta_key": "_ps_misrus_sprendimas",
+    "v": "{\"zb\":\"tiesiai\"}"
+   },
+   {
+    "meta_key": "_ps_misrus_sprestas",
+    "v": "2026-11-14 21:01:09 | auto"
+   },
+   {
+    "meta_key": "_ps_order_number",
+    "v": "1749"
+   },
+   {
+    "meta_key": "_ps_order_shipped_emitted",
+    "v": "yes"
+   },
+   {
+    "meta_key": "_ps_order_type",
+    "v": "DS"
+   },
+   {
+    "meta_key": "_ps_pakuociu",
+    "v": "2"
+   },
+   {
+    "meta_key": "_ps_partijos_nurasyta",
+    "v": "2026-11-14 21:01:09"
+   },
+   {
+    "meta_key": "_ps_rusiuota",
+    "v": "auto"
+   },
+   {
+    "meta_key": "_ps_shipments",
+    "v": "1"
+   },
+   {
+    "meta_key": "_ps_similar_basis",
+    "v": "erl81_2_checkout"
+   },
+   {
+    "meta_key": "_ps_similar_optout",
+    "v": "0"
+   },
+   {
+    "meta_key": "_ps_siuntos",
+    "v": "{\"zb\":{\"sandelis\":\"zb\",\"kodas\":\"003\",\"manifest\":\"07267261115003\",\"numeriai\":[\"V0"
+   },
+   {
+    "meta_key": "_shipping_address_index",
+    "v": "Daiva Mileškaitė  Ramygalos g. 50-16 Panevėžys Panevėžys 36229 LT +37068770357"
+   },
+   {
+    "meta_key": "_wc_order_attribution_device_type",
+    "v": "Desktop"
+   },
+   {
+    "meta_key": "_wc_order_attribution_referrer",
+    "v": "https://www.google.com/"
+   },
+   {
+    "meta_key": "_wc_order_attribution_session_count",
+    "v": "1"
+   },
+   {
+    "meta_key": "_wc_order_attribution_session_entry",
+    "v": "https://petshop.lt/?route=product/manufacturer/product&manufacturer_id=136&utm_s"
+   },
+   {
+    "meta_key": "_wc_order_attribution_session_pages",
+    "v": "48"
+   },
+   {
+    "meta_key": "_wc_order_attribution_session_start_time",
+    "v": "2026-11-14 18:57:38"
+   },
+   {
+    "meta_key": "_wc_order_attribution_source_type",
+    "v": "utm"
+   },
+   {
+    "meta_key": "_wc_order_attribution_user_agent",
+    "v": "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/15"
+   },
+   {
+    "meta_key": "_wc_order_attribution_utm_campaign",
+    "v": "21472017542"
+   },
+   {
+    "meta_key": "_wc_order_attribution_utm_medium",
+    "v": "cpc"
+   },
+   {
+    "meta_key": "_wc_order_attribution_utm_source",
+    "v": "google"
+   },
+   {
+    "meta_key": "_wc_push_notification_claimed",
+    "v": "1794682871"
+   },
+   {
+    "meta_key": "_wc_push_notification_sent",
+    "v": "1794682872"
+   },
+   {
+    "meta_key": "_wcdn_invoice_date",
+    "v": "1794682869"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number",
+    "v": "AVPN1749"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number_counter",
+    "v": "1076"
+   },
+   {
+    "meta_key": "_wcdn_invoice_pdf",
+    "v": "Invoice -1749-81e420a5f86332c185afdc40.pdf"
+   },
+   {
+    "meta_key": "_wcdn_invoice_pdf_token",
+    "v": "81e420a5f86332c185afdc40"
+   },
+   {
+    "meta_key": "is_vat_exempt",
+    "v": "no"
+   },
+   {
+    "meta_key": "venipak_shipping_order_data",
+    "v": "{\"manifest\":\"07267261115003\",\"pack_numbers\":[\"V07267E1000778\",\"V07267E1000779\"],"
+   }
+  ],
+  "ps_notes": [
+   "Paysera: Neapmokėto užsakymo būsena",
+   "Paysera: Užsakymo būsena po apmokėjimo",
+   "Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+   "Paysera: Naujo užsakymo kūrimo būsena"
+  ]
+ },
+ "v": "dep-085938",
+ "kurimas": 200,
+ "sid": 8322,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
