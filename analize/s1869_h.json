@@ -1,0 +1,199 @@
+{
+ "1": {
+  "v": "S1869h",
+  "hooks": {
+   "woocommerce_order_number": [
+    "10 00000000000010420000000000000000 wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code:28"
+   ],
+   "woocommerce_shop_order_search_fields": [],
+   "woocommerce_order_table_search_query_meta_keys": [],
+   "woocommerce_shop_order_search_results": []
+  },
+  "o1719": {
+   "id": 38425,
+   "nr": "1719",
+   "pm": "paysera",
+   "title": "Mokėjimas internetu"
+  },
+  "meta_nr": [
+   {
+    "meta_key": "_paysera_delivery_customer_back_to_page",
+    "meta_value": "1"
+   },
+   {
+    "meta_key": "_paysera_payment_confirmed",
+    "meta_value": "1"
+   },
+   {
+    "meta_key": "_paysera_payment_paid_amount",
+    "meta_value": "7598"
+   },
+   {
+    "meta_key": "_paysera_payment_paid_currency",
+    "meta_value": "EUR"
+   },
+   {
+    "meta_key": "_petshop_avpn_number",
+    "meta_value": "AVPN011639"
+   },
+   {
+    "meta_key": "_petshop_iapv_number",
+    "meta_value": "IAPV000776"
+   },
+   {
+    "meta_key": "_ps_order_number",
+    "meta_value": "1719"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number",
+    "meta_value": "AVPN1719"
+   },
+   {
+    "meta_key": "_wcdn_invoice_number_counter",
+    "meta_value": "1046"
+   }
+  ],
+  "hpos": "yes",
+  "wc_s_1719": [],
+  "wc_s_38425": [
+   38425
+  ],
+  "paysera_dir": [
+   "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/woo-payment-gateway-paysera"
+  ],
+  "plugins_dirs": [
+   "code-snippets",
+   "complianz-gdpr",
+   "loco-translate",
+   "petshop-attributes",
+   "petshop-core",
+   "petshop-esp",
+   "petshop-fbt",
+   "petshop-feeds",
+   "petshop-fonts",
+   "petshop-pragma",
+   "petshop-promotions",
+   "petshop-xml",
+   "postit",
+   "redirection",
+   "seo-by-rank-math",
+   "shortpixel-image-optimiser",
+   "wc-venipak-shipping",
+   "woo-lithuaniapost-main",
+   "woo-payment-gateway-paysera",
+   "woo-update-manager",
+   "woocommerce",
+   "woocommerce-delivery-notes",
+   "woocommerce-mix-and-match-products",
+   "woocommerce-pdf-invoices-packing-slips",
+   "woocommerce-xml-csv-product-import",
+   "wordpress-importer",
+   "wp-all-import-pro",
+   "wp-mail-smtp",
+   "wp-super-cache",
+   "wpforms-lite",
+   "yith-woocommerce-ajax-navigation"
+  ],
+  "hits": [
+   "wp-content/mu-plugins/petshop-atsisakymas.php:114 . esc_html( $o->get_order_number() ) . ', ' . esc_html( current_time( 'Y-m-d H:i' ) ) . ').</p>'",
+   "wp-content/mu-plugins/petshop-atsisakymas.php:117 'Gavome Jūsų sutarties atsisakymą — užsakymas Nr. ' . $o->get_order_number(),",
+   "wp-content/mu-plugins/petshop-atsisakymas.php:127 'ES atsisakymas: užsakymas #' . $o->get_order_number(),",
+   "wp-content/mu-plugins/petshop-atsisakymas.php:128 \"Klientas pranešė apie sutarties atsisakymą.\\nUžsakymas: #\" . $o->get_order_number()",
+   "wp-content/mu-plugins/petshop-av-dropship.php:261 'nr'       => $o->get_order_number(),",
+   "wp-content/mu-plugins/petshop-av-dropship.php:633 $nr  = $order->get_order_number();",
+   "wp-content/mu-plugins/petshop-av-reduce.php:98 $rez = Petshop_AV_Stock::decrease( $pid, $qty, 'užsakymas #' . $order->get_order_number() );",
+   "wp-content/mu-plugins/petshop-av-reduce.php:173 $rez = Petshop_AV_Stock::increase( $pid, $qty, 'grąžinta #' . $order->get_order_number() );",
+   "wp-content/mu-plugins/petshop-av-sheets.php:108 'nr'        => $o->get_order_number(),",
+   "wp-content/mu-plugins/petshop-av-tiekimas.php:537 esc_html( $oo ? $oo->get_order_number() : $e->order_id ) );",
+   "wp-content/mu-plugins/petshop-av-tiekimas.php:758 esc_html( $oo ? $oo->get_order_number() : $e->order_id ) );",
+   "wp-content/mu-plugins/petshop-av-tiekimas.php:1361 Petshop_AV_Stock::decrease( (int) $it->get_product_id(), $qty, sprintf( 'Tiekimas: rezervuota užsakymui #%s (partija #%d)', $oo->get_order_number(), (int) $pid ) );",
+   "wp-content/mu-plugins/petshop-av-tiekimas.php:1464 'nr'      => $o->get_order_number(),",
+   "wp-content/mu-plugins/petshop-bacs-priminimas.php:79 $nr = $o->get_order_number(); $row = array( 'id' => $id, 'nr' => $nr );",
+   "wp-content/mu-plugins/petshop-bacs-priminimas.php:114 $nr  = $order->get_order_number();",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:586 esc_url( self::url( array( 'eile' => $eile, 'view' => null, 'q' => null, 'b' => null, 'atidaryti' => $r['id'] ) ) ), esc_html( $o->get_order_number() ), esc_html( wp_date( 'H:i', $o->get_date_created(",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:900 $antraste = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ) );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:970 $lp_pdf = ''; if ( 'lp' === $f['vez'] ) { $pf = (string) $o->get_meta( '_ps_lp_lipdukas_pdf' ); $lp_pdf = ( $pf && file_exists( $pf ) ) ? self::dl_url( 'lp_pdf', $id ) : ''; if ( $lp_pdf && ! $f['uzda",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:981 $antraste = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), html_entity_decode( wp_strip_all_tags( $o->get_formatted_order_total() ), ENT_QUOTES | ENT_HTML5, 'UTF-8' ) );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:989 'id' => $id, 'nr' => $o->get_order_number(), 'st' => wc_get_order_statuses()[ 'wc-' . $f['st'] ] ?? $f['st'], 'uzdarytas' => $f['uzdarytas'], 'kur' => self::kur_dabar( $f ),",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:1033 $nr = $o->get_order_number(); $vardas = trim( (string) $o->get_billing_first_name() );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:1107 $file = $dir . 'LP-' . $o->get_order_number() . '-' . ( preg_replace( '/[^A-Za-z0-9]/', '', $bc ) ?: date( 'YmdHis' ) ) . '.pdf'; file_put_contents( $file, $pdf );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:1221 $baigti = function ( $k, $t ) use ( $o, $atgal, $lock ) { delete_transient( $lock ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => $k, 'pd_nr' => rawurlencode( $o->get_order_number() . '|' . $t )",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:1293 if ( $id && get_transient( $lock ) ) { wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_info', 'pd_nr' => rawurlencode( $o->get_order_number() . '|veiksmas jau vykdomas — palauk sekundę' ) ), $a",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:1321 if ( $ids ) { $ok = array(); $ne = array(); foreach ( $ids as $oid ) { $oo = wc_get_order( $oid ); if ( ! $oo ) { continue; } $r = self::issiusta( $oo, $u, ! empty( $_GET['sekimo'] ), $dalis ); if ( i",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:1338 wp_safe_redirect( add_query_arg( array( 'pd_ok' => $rez[0], 'pd_nr' => rawurlencode( ( $o ? $o->get_order_number() : '' ) . '|' . $rez[1] ) ), $atgal ) );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:1521 $baigti = function ( $k, $t ) use ( $o, $atgal, $lock ) { delete_transient( $lock ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => $k, 'pd_nr' => rawurlencode( $o->get_order_number() . '|' . $t )",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:1532 $pid = (int) $it->get_product_id(); $vardas = $it->get_name(); $nr = $o->get_order_number();",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:1614 $baigti = function ( $k, $t ) use ( $o, $atgal, $lock ) { delete_transient( $lock ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => $k, 'pd_nr' => rawurlencode( $o->get_order_number() . '|' . $t )",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:1639 $pid_s = (int) $it->get_product_id(); $q_s = (int) $it->get_quantity(); $vardas = $it->get_name(); $nr = $o->get_order_number();",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:1851 $x = self::likutis( $spid, $r, 'kelias → ' . self::kelio_vardas( $k, $tiek ) . ', užsakymas #' . $o->get_order_number() );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:1866 $x = self::likutis( $spid, -$bq, 'kelias → Avesa sandėlis, užsakymas #' . $o->get_order_number() . ( $spid !== $pid ? ' (DP pakas #' . $pid . ' ×' . $dpn . ')' : '' ) );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2262 $nr = $o->get_order_number(); $vardas = trim( (string) $o->get_billing_first_name() );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2307 $suma = self::eur( $n->get_total() ); $nr = $n->get_order_number();",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2328 self::d( 'laiskai_off' ); $n->update_status( 'cancelled', 'Darbalaukis: ' . $kodel . ' (pradinis užsakymas #' . $o->get_order_number() . '). Laiškas klientui nesiunčiamas.' ); self::d( 'laiskai_on' );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2339 $baigti = function ( $k, $t ) use ( $o, $atgal, $lock ) { delete_transient( $lock ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => $k, 'pd_nr' => rawurlencode( $o->get_order_number() . '|' . $t )",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2377 $it = new WC_Order_Item_Product(); $it->set_product( $p ); $it->set_quantity( 1 ); $it->set_name( 'Pakartotinis siuntimas už užsakymą #' . $o->get_order_number() );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2384 if ( abs( $viso - $suma ) > 0.011 ) { $n->update_status( 'cancelled', 'Darbalaukis: sumos klaida (' . self::eur( $viso ) . ' ≠ ' . self::eur( $suma ) . ') — užsakymas atšauktas.' ); return array( 'dl_",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2389 $n->add_order_note( sprintf( 'Darbalaukis: pakartotinis siuntimas už užsakymą #%s — %s € (%s). Apmokėjimo nuoroda klientui (%s) %s. Apmokėjus — įvykdomas pats (į Surinkti / Venipak neina).', $o->get_o",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2391 $o->add_order_note( sprintf( 'Darbalaukis: sukurtas pakartotinis užsakymas #%s — %s € (%s). Klientui apmokėjimo nuoroda %s. „Siųsti iš naujo“ — tik apmokėjus.', $n->get_order_number(), self::eur( $vis",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2392 if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_id(), 'sritis' => 'desk', 'veiksmas' => 'pakartotinis', 'rezultatas' => $ok ? 'ok' ",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2394 return array( $ok ? 'dl_info' : 'dl_klaida', 'pakartotinis užsakymas #' . $n->get_order_number() . ' (' . self::eur( $viso ) . ' €) sukurtas — ' . ( $ok ? 'apmokėjimo nuoroda klientui išsiųsta (' . $e",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2410 $nr = $o->get_order_number(); $vardas = trim( (string) $o->get_billing_first_name() ); $suma = self::eur( $n->get_total() ); $url = $n->get_checkout_payment_url();",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2425 $nr = $o ? $o->get_order_number() : (string) $n->get_meta( self::PAKART_META ); $vardas = trim( (string) $n->get_billing_first_name() ); $suma = self::eur( $n->get_total() );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2452 $o->add_order_note( sprintf( 'Pakartotinis užsakymas #%s apmokėtas %s(%s €, %s) — galima „Siųsti iš naujo“.', $n->get_order_number(), 'bacs' === $n->get_payment_method() ? 'pavedimu ' : '', self::eur(",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2453 if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $oid, 'sritis' => 'desk', 'veiksmas' => 'pakart_apmoketa', 'rezultatas' => 'ok', 'kanalas' ",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2476 $o = wc_get_order( (int) $n->get_meta( self::PAKART_META ) ); $nr = $o ? $o->get_order_number() : (string) $n->get_meta( self::PAKART_META );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2488 if ( class_exists( 'Petshop_Uzsakymu_Ivykiai' ) ) { Petshop_Uzsakymu_Ivykiai::irasyti( array( 'uzsakymas' => $o->get_id(), 'sritis' => 'desk', 'veiksmas' => 'pakart_pavedimas', 'rezultatas' => $ok ? '",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2489 return array( $ok ? 'dl_info' : 'dl_klaida', $ok ? 'pakartotinis užsakymas #' . $n->get_order_number() . ' (' . self::eur( $n->get_total() ) . ' €) pažymėtas apmokėtu pavedimu' . ( $n->get_meta( '_pet",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2576 $baigti = function ( $k, $t ) use ( $o, $atgal, $lock ) { self::$kr_kuriama = false; delete_transient( $lock ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => $k, 'pd_nr' => rawurlencode( $o->get_",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2633 $order = array( 'id' => $refund->get_id(), 'orderNumber' => $o->get_order_number(), 'documentDate' => date_i18n( 'Y-m-d' ), 'date' => $o->get_date_created() ? $o->get_date_created()->format( 'Y-m-d' )",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2666 $it = new WC_Order_Item_Product(); $it->set_product( $p ); $it->set_quantity( 1 ); $it->set_name( 'Siuntos grąžinimo išlaidos už užsakymą #' . $o->get_order_number() );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2671 $n = wc_get_order( $n->get_id() ); $n->add_order_note( sprintf( 'Darbalaukis: siuntos grąžinimo išlaidos %s € už užsakymą #%s (kreditinė %s) — apmokėta įskaitymu iš grąžinamos sumos (%s). Į Surinkti /",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2674 return array( 'id' => $n->get_id(), 'nr' => $n->get_order_number(), 'avpn' => (string) $n->get_meta( '_petshop_avpn_number' ), 'pdf' => (string) $n->get_meta( '_petshop_completed_pdf' ), 'st' => $n->g",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2709 foreach ( $pasl as $pid ) { $n = wc_get_order( (int) $pid ); if ( ! $n || ! $n->get_meta( '_petshop_avpn_number' ) ) { continue; } $p = (string) $n->get_meta( '_petshop_completed_pdf' ); $z = 'grazini",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2713 else { $cu = wp_get_current_user(); $d[] = array( 't' => 'ppk', 'z' => 'Pinigų priėmimo kvitas', 'nr' => '', 'd' => '', 's' => self::eur( $o->get_total() ), 'u' => '', 'gen' => '', 'btn' => self::dl_u",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2829 $baigti = function ( $k, $t ) use ( $o, $atgal, $lock ) { self::$kr_kuriama = false; delete_transient( $lock ); wp_safe_redirect( add_query_arg( array( 'pd_ok' => $k, 'pd_nr' => rawurlencode( $o->get_",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:2833 $tinkama = ! empty( $_POST['tinkama'] ); $nr_u = $o->get_order_number();",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3085 $t = 'užsakymas sukurtas — ' . self::eur( $n->get_total() ) . ' €, ' . $pm[ $pk ]['t'] . ( 'grynais' === $mok ? ', apmokėta grynais — eina į darbą; kvitą (PPK) suformuok skydelio „Sąskaitos“ bloke, ka",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3086 wp_safe_redirect( add_query_arg( array( 'pd_ok' => 'dl_info', 'pd_nr' => rawurlencode( $n->get_order_number() . '|' . $t ) ), admin_url( 'admin.php?page=' . self::SLUG . '&eile=' . ( 'grynais' === $mo",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3203 $nr = $o->get_order_number(); $ok = self::i_siuksline( $o, $u->display_name, 'darbuotojas' ); do_action( 'ps_juosta_isvalyti' );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3256 $z = array( '{vardas}' => $vardas ? $vardas : 'kliente', '{nr}' => (string) $o->get_order_number(), '{avpn}' => $avpn, '{suma}' => self::eur( $o->get_total() ), '{adresas}' => $s['adresas'], '{valando",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3267 $z = array( '{vardas}' => $vardas ? $vardas : 'kliente', '{nr}' => (string) $o->get_order_number(), '{adresas}' => $s['adresas'], '{valandos}' => $s['valandos'], '{suma}' => self::eur( $o->get_total()",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3350 $receipt = array( 'nr' => $nr, 'data' => (string) $o->get_meta( '_petshop_ppk_date' ), 'suma' => $suma, 'zodziais' => self::suma_zodziais( $suma ), 'paskirtis' => 'Už prekes pagal užsakymą Nr. ' . $o-",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3351 $order = array( 'id' => $o->get_id(), 'orderNumber' => $o->get_order_number(), 'documentDate' => $receipt['data'] ? $receipt['data'] : date_i18n( 'Y-m-d' ), 'date' => $o->get_date_created() ? $o->get_",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3396 $z = array( '{vardas}' => $vardas ? $vardas : 'kliente', '{kr_nr}' => (string) $kr['nr'], '{kr_suma}' => self::eur( $kr['suma'] ), '{uzsakymas}' => (string) $o->get_order_number(), '{grazinama}' => se",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3462 $a = Petshop_AV_Stock::increase( $pid, $q, 'siunta ' . $x['nr'] . ' grįžo į AV, užsakymas #' . $o->get_order_number() );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3463 $b = is_wp_error( $a ) ? $a : Petshop_AV_Stock::decrease( $pid, $q, 'siunčiama iš AV iš naujo, užsakymas #' . $o->get_order_number() );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3516 $a = Petshop_AV_Stock::increase( $pid, $q, 'siunta ' . $x['nr'] . ' grįžo į AV, užsakymas #' . $o->get_order_number() . ' atšauktas' );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3541 if ( $rq > 0 && ! $o->get_meta( '_ps_av_restored' ) ) { $r = self::likutis( $pid, $rq, 'siunta ' . $x['nr'] . ' grįžo į AV, dalis atšaukta, užsakymas #' . $o->get_order_number() ); $l = is_wp_error( $",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3544 $a = Petshop_AV_Stock::increase( $pid, $q, 'siunta ' . $x['nr'] . ' grįžo į AV, ' . self::vardas( $dalis ) . ' dalis atšaukta, užsakymas #' . $o->get_order_number() );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3615 $nr_uzs = $o->get_order_number(); $bazine = get_option( 'woocommerce_email_base_color', '#2d6a35' );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:3975 echo '<td><span class=\"nr\">#' . esc_html( $o->get_order_number() ) . '</span>' . ( ! empty( $r['naujas'] ) ? ' <b class=\"dl-nz\" title=\"dar neatidarytas\">N</b>' : '' ) . ( '' !== $vid_ ? ' <span class=",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:4086 echo '<tr class=\"eil\" data-id=\"' . (int) $oid . '\"' . ( $fx ? ' data-sk=\"1\"' : '' ) . '><td><label class=\"dl-cb\"><input type=\"checkbox\" class=\"dl-av-cb\" data-form=\"dlf_' . esc_attr( $src ) . '\" data-n",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:4162 $eil_td = function ( $oid, $fx ) { $o = $fx ? $fx['o'] : wc_get_order( $oid ); return '<td><span class=\"nr\">#' . esc_html( $o ? $o->get_order_number() : $oid ) . '</span>' . ( $fx && ! empty( $fx['nau",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:4203 echo '<tr class=\"eil\" data-id=\"' . (int) $r['id'] . '\" data-sk=\"1\"><td><span class=\"nr\">#' . esc_html( $o->get_order_number() ) . '</span>' . ( ! empty( $r['naujas'] ) ? ' <b class=\"dl-nz\" title=\"dar ",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:4212 echo '<tr class=\"eil\" data-id=\"' . (int) $r['id'] . '\" data-sk=\"1\"><td><span class=\"nr\">#' . esc_html( $o->get_order_number() ) . '</span><br><span class=\"pilkas maz\">' . esc_html( trim( $o->get_billi",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:4224 $rasyti = $sk['mail'] ? '<a class=\"v t\" href=\"mailto:' . esc_attr( $sk['mail'] ) . '?subject=' . rawurlencode( 'Užsakymas #' . $o->get_order_number() . ' — petshop.lt' ) . '\">Parašyti klientui</a>' : ",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:4249 $antr = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), $sk['suma'] );",
+   "wp-content/mu-plugins/petshop-darbalaukis.php:4257 $antr = sprintf( 'Užsakymas #%s · %s', $o->get_order_number(), $sk['suma'] ); $gr_forma = $sk['apmok'] && 0 === strpos( $sk['apmok'], 'apmokėta' ) ? self::grazinimo_forma( $o, $id, self::url( array( '"
+  ],
+  "snip": [
+   {
+    "id": "5330",
+    "name": "Petshop Uzsakymu Numeracija v1.0 (woocommerce_order_number filtras)",
+    "active": "1"
+   },
+   {
+    "id": "8321",
+    "name": "TEMP PS dep-085750",
+    "active": "1"
+   }
+  ]
+ },
+ "v": "dep-085750",
+ "kurimas": 200,
+ "sid": 8321,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
