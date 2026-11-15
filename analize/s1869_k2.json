@@ -1,0 +1,59 @@
+{
+ "1": {
+  "v": "S1869k2",
+  "opt": {
+   "paysera_payment_extra_settings": {
+    "title": "Mokėjimas internetu",
+    "description": "Pasirinkite mokėjimo būdą Paysera svetainėje",
+    "list_of_payments": "yes",
+    "grid_view": "no",
+    "buyer_consent": "yes",
+    "log_level": "error"
+   },
+   "paysera_payment_main_settings": {
+    "project_id": "29276",
+    "test_mode": "no"
+   }
+  },
+  "d_fn": [
+   "\tprotected static function d( $m ) {",
+   "\t\tstatic $r = array();",
+   "\t\t$args = func_get_args(); array_shift( $args );",
+   "\t\tif ( ! isset( $r[ $m ] ) ) { $r[ $m ] = new ReflectionMethod( 'Petshop_Desk', $m ); $r[ $m ]->setAccessible( true ); }",
+   "\t\treturn $r[ $m ]->invokeArgs( null, $args );",
+   "\t}",
+   "",
+   "\t/** Sandėlio riba: [k, tekstas, liko_s] (praėjo → +1 para rikiavimui). */",
+   "\tprotected static function riba( $s ) {",
+   "\t\tif ( array_key_exists( $s, self::$riba_kesas ) ) { return self::$riba_kesas[ $s ]; }",
+   "\t\t$out = null;",
+   "\t\tif ( ! empty( Petshop_Desk::RIBOS[ $s ] ) ) {"
+  ],
+  "eng": [
+   "petshop-darbalaukis.php:792 $f['nepakuok'] = array(); if ( ! empty( $f['dalys']['av'] ) && empty( $f['dalys']['av']['issiusta'] ) ) { foreach ( $f['eil'] as $e ) { if ( ! empty( $e['issiusta_l'] ) ) { $f['nepakuok'][] = $e['q'] . '× ' . $e['n']; } } }",
+   "petshop-darbalaukis.php:1503 return ! empty( $f['paid'] ) && empty( $f['uzdarytas'] ) && '' === (string) ( $e['lock'] ?? '' ) && empty( $e['atsaukta'] ) && empty( $e['issiusta_l'] ) && (int) $e['q'] >= 1;",
+   "petshop-darbalaukis.php:1717 return ! empty( $f['paid'] ) && empty( $f['uzdarytas'] ) && ( '' === $l || 'jau surinkta' === $l ) && empty( $e['atsaukta'] ) && empty( $e['issiusta_l'] ) && (int) $e['q'] >= 1;",
+   "petshop-darbalaukis.php:2551 $rows .= '<tr data-vnt=\"' . esc_attr( number_format( $r['vnt'], 6, '.', '' ) ) . '\" data-q=\"' . (int) $r['q'] . '\"><td>' . esc_html( mb_substr( $r['n'], 0, 70 ) ) . '</td><td class=\"c\">' . ( $r['fiks'] ? '−' . (int) $r['q'] : '<input type=\"number\" name=\"q[' . (int) $r['iid'] . ']\" min=\"0\" max=\"' . (int) $r['q_max'] . '\" step=\"1\" value=\"' . (int) $r['q'] . '\"> <span class=\"pilkas maz\">iš ' . (int) ",
+   "petshop-darbalaukis.php:2584 $qs = (array) ( $_POST['q'] ?? array() ); $prist = ( $j['pristatymas_gal'] && ! empty( $_POST['pristatymas'] ) ) ? (float) $j['pristatymas'] : 0.0; $li = array(); $viso = 0.0;",
+   "petshop-darbalaukis.php:2876 foreach ( $imta as $iid => $x ) { $it = $o->get_item( $iid ); if ( ! $it ) { continue; } $gq = (int) $it->get_meta( self::GRAZINTA_Q_META ) + $x['q']; $it->update_meta_data( self::GRAZINTA_Q_META, $gq ); if ( $x['q'] >= $x['q_max'] ) { $it->update_meta_data( '_ps_kreditine', $nr ); } $it->save(); }",
+   "petshop-darbalaukis.php:2997 global $wpdb; $src = sanitize_key( wp_unslash( $_GET['src'] ?? '' ) ); $z = absint( $_GET['zenklas'] ?? 0 ); $isp = ! empty( $_GET['isparduota'] ); $q = trim( (string) wp_unslash( $_GET['q'] ?? '' ) );",
+   "petshop-darbalaukis.php:3867 elseif ( 'laukiam' === $eile && '' === $f['q'] ) { $ds = array(); foreach ( $atviri as $r ) { if ( in_array( 'laiskai', $r['eiles'], true ) ) { foreach ( $r['tiesiai'] as $s ) { if ( empty( $r['dalys'][ $s ]['perduota'] ) ) { $ds[ $s ] = ( $ds[ $s ] ?? 0 ) + 1; } } } } self::laukiam_korteles( $rows, $ds ); }",
+   "petshop-desk.php:2362 <input type=\"search\" name=\"q\" id=\"pdQ\" value=\"<?php echo esc_attr( $f['q'] ); ?>\"",
+   "petshop-desk.php:2525 $aktyvus = array_filter( array( $f['vykdymas'], $f['vezejas'], $f['data'], $f['busena'], $f['q'], $f['mokejimas'], $f['amzius'], $f['nr'], $f['klientas'], $f['tel'], $f['adresas'] ) );",
+   "petshop-gavimo-perrusiavimas.php:90 if ( $dry ) { $mi = method_exists( 'Petshop_AV_Source', 'ar_misrus' ) ? Petshop_AV_Source::ar_misrus( $k['order'] ) : false; $rr = method_exists( 'Petshop_AV_Source', 'parinkti' ) ? Petshop_AV_Source::parinkti( $k['pid'], $k['q'], $mi ) : null; $e['dry'] = $rr ? ( $rr['source'] . ' — ' . $rr['reason'] ) : 'kandidatas'; $rez['eil'][] = $e; continue; }",
+   "petshop-juosta.php:201 <input type=\"search\" name=\"q\" id=\"psjQ\" placeholder=\"Užsakymas, klientas, el. paštas, telefonas, adresas, prekė, SKU\" autocomplete=\"off\" value=\"<?php echo 'ps-desk' === $pg && isset( $_GET['q'] ) ? esc_attr( sanitize_text_field( wp_unslash( $_GET['q'] ) ) ) : ''; ?>\">",
+   "petshop-katalogas.php:6381 <input type=\"search\" name=\"q\" value=\"' . esc_attr( $f['q'] ) . '\" autocomplete=\"off\" placeholder=\"Ieškoti: pavadinimas, SKU, EAN, tiekėjo kodas, prekės nr.…\">'",
+   "petshop-klientai.php:246 if ( $f['q'] ) { $l = '%' . $wpdb->esc_like( $f['q'] ) . '%'; $w[] = $wpdb->prepare( '(email LIKE %s OR vardas LIKE %s OR top_preke LIKE %s)', $l, $l, $l ); }",
+   "petshop-klientai.php:317 echo '<input type=\"search\" name=\"q\" value=\"' . esc_attr( $f['q'] ) . '\" placeholder=\"el. paštas, vardas, prekė\"> <button class=\"button\">Filtruoti</button> <a class=\"button\" href=\"' . esc_url( admin_url( 'admin.php?page=' . self::PSL ) ) . '\">Išvalyti</a></form>';",
+   "petshop-kliento-siuntos.php:128 foreach ( $s['prekes'] as $p ) { $h .= '<li>' . esc_html( (int) $p['q'] . ' × ' . $p['n'] ) . '</li>'; }",
+   "petshop-rinkiniai.php:283 . '<input type=\"search\" name=\"q\" value=\"' . esc_attr( isset( $_GET['q'] ) ? sanitize_text_field( wp_unslash( $_GET['q'] ) ) : '' ) . '\" placeholder=\"Ieškoti rinkinio: pavadinimas arba SKU…\">'"
+  ]
+ },
+ "v": "dep-090308",
+ "kurimas": 200,
+ "sid": 8324,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
