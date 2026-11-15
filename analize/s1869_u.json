@@ -1,0 +1,44 @@
+{
+ "1": {
+  "v": "S1869u",
+  "faze": "1",
+  "md5": "22c9d08a16a7defbcb2cb70d8930e0d6"
+ },
+ "2": {
+  "v": "S1869u",
+  "faze": "2",
+  "md5": "22c9d08a16a7defbcb2cb70d8930e0d6",
+  "bak": true,
+  "rasyta": 36732,
+  "md5_po": "94d3c65b2beecfb9a2a2e49c559d2434"
+ },
+ "3": {
+  "v": "S1869u",
+  "faze": "3",
+  "md5": "94d3c65b2beecfb9a2a2e49c559d2434",
+  "test": {
+   "2026-10-01...2026-10-31": {
+    "n": 315,
+    "suma": 13911.71,
+    "be_tipo_n": 317
+   },
+   "2026-11-01...2026-11-15": {
+    "n": 158,
+    "suma": 6923.47,
+    "be_tipo_n": 159
+   }
+  },
+  "U": "Petshop_Ataskaitu_UI",
+  "render_len": 2396,
+  "render_pr": "Klientai su profiliu63Užsakymų laikotarpiu158Pirkimai iš Mitybos planoĮdėta į krepšelį38eilučių iš planoPateko į užsakymą1026,3 % konversijaUžsakymų su plano prekėmis9Vertė užsakymuosei467,31 €įdėta už 1 696,34 €Spausk stulpelio antraštę rikiavimui⬇ CSV eksportasIš kurĮdėtaUžsakytaPrekės skaičiuoklė",
+  "fatal_15": [],
+  "hb": 200
+ },
+ "v": "dep-140858",
+ "kurimas": 200,
+ "sid": 8334,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
