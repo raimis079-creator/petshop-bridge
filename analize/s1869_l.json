@@ -1,0 +1,40 @@
+{
+ "1": {
+  "v": "S1869l",
+  "desk": [
+   "1433 if ( ! empty( $f['q'] ) ) {",
+   "1434 $ids = self::paieska_ids( $f['q'] );",
+   "1626 'q'        => isset( $_GET['q'] ) ? sanitize_text_field( wp_unslash( $_GET['q'] ) ) : '',",
+   "2362 <input type=\"search\" name=\"q\" id=\"pdQ\" value=\"<?php echo esc_attr( $f['q'] ); ?>\"",
+   "2525 $aktyvus = array_filter( array( $f['vykdymas'], $f['vezejas'], $f['data'], $f['busena'], $f['q'], $f['mokejimas'], $f['amzius'], $f['nr'], $f['klientas'], $f['tel'], $f['adresas'] ) );"
+  ],
+  "fn": [
+   "1424 protected static function gauti( $eile, $f ) {"
+  ],
+  "dl3700": [
+   "\t\tforeach ( $o->get_items() as $it ) { if ( $it->get_meta( '_mnm_config' ) || $it->get_meta( '_mnm_container_size' ) || $it->get_meta( '_mnm_cart_key' ) ) { continue; } /* S1787: dėžutė — ne sandėlis */ $s = (string) $it->get_meta( '_ps_source' ); if ( ! $s ) { return false; } $src[ $s ] = 1; }",
+   "\t\t// Raimis 09-03: pati išrūšiuoja TIK vieno sandėlio užsakymus. 2+ sandėliai → Neišrūšiuoti (siųsti atskirai ar sudėti į AV — žmogaus sprendimas, „Auto“ eilutėje).",
+   "\t\tif ( count( $src ) > 1 ) { return false; }",
+   "\t\t$r = self::rusiuoti( $o, wp_get_current_user(), true );",
+   "\t\treturn 'dl_rusiuota' === $r[0];",
+   "\t}",
+   "",
+   "\t/* ============================ UŽKLAUSA ============================ */",
+   "",
+   "\tprotected static function filtrai() {",
+   "\t\t$g = function ( $k, $t = 'key' ) { if ( ! isset( $_GET[ $k ] ) ) { return ''; } return 'key' === $t ? sanitize_key( $_GET[ $k ] ) : sanitize_text_field( wp_unslash( $_GET[ $k ] ) ); };",
+   "\t\t$data = $g( 'data' ); $nuo = preg_match( '/^\\d{4}-\\d{2}-\\d{2}$/', $g( 'nuo', 't' ) ) ? $g( 'nuo', 't' ) : ''; $iki = preg_match( '/^\\d{4}-\\d{2}-\\d{2}$/', $g( 'iki', 't' ) ) ? $g( 'iki', 't' ) : ''; if ( $nuo || $iki ) { $data = 'intervalas'; } elseif ( 'intervalas' === $data ) { $data = ''; } // v3.36: nuo–iki",
+   "\t\t$sn = $g( 'suma_nuo', 't' ); $si = $g( 'suma_iki', 't' ); $sn = is_numeric( str_replace( ',', '.', $sn ) ) ? (string) (float) str_replace( ',', '.', $sn ) : ''; $si = is_numeric( str_replace( ',', '.', $si ) ) ? (string) (float) str_replace( ',', '.', $si ) : '';",
+   "\t\treturn array( 'q' => $g( 'q', 't' ), 'data' => $data, 'nuo' => $nuo, 'iki' => $iki, 'vykdymas' => $g( 'vykdymas' ), 'vezejas' => $g( 'vezejas' ),",
+   "\t\t\t'busena' => '', 'mokejimas' => '', 'amzius' => '', 'nr' => '', 'klientas' => '', 'tel' => '', 'adresas' => '', 'zvilgsnis' => '', 'b' => $g( 'b' ), 'r' => $g( 'r' ), 'psl' => max( 1, (int) ( $_GET['psl'] ?? 1 ) ),",
+   "\t\t\t'mok' => $g( 'mok' ), 'st' => $g( 'st' ), 'suma_nuo' => $sn, 'suma_iki' => $si ); // v3.36"
+  ]
+ },
+ "v": "dep-090446",
+ "kurimas": 200,
+ "sid": 8325,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
