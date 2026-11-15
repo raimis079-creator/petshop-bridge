@@ -1,0 +1,143 @@
+{
+ "1": {
+  "v": "S1869s",
+  "faze": "1",
+  "cls_md5": "cde30054aabcdc257df253e1c416a51d",
+  "s_md5": "f2d76a11266ff653d993a2e655a6df02",
+  "busenos": {
+   "23593": "draft",
+   "23595": "draft",
+   "23788": "draft",
+   "25175": "draft",
+   "25319": "draft",
+   "26050": "draft",
+   "26471": "draft",
+   "26473": "draft",
+   "34909": "draft",
+   "34967": "draft",
+   "38270": "draft"
+  }
+ },
+ "2": {
+  "v": "S1869s",
+  "faze": "2",
+  "cls_md5": "cde30054aabcdc257df253e1c416a51d",
+  "s_md5": "f2d76a11266ff653d993a2e655a6df02",
+  "busenos": {
+   "23593": "draft",
+   "23595": "draft",
+   "23788": "draft",
+   "25175": "draft",
+   "25319": "draft",
+   "26050": "draft",
+   "26471": "draft",
+   "26473": "draft",
+   "34909": "draft",
+   "34967": "draft",
+   "38270": "draft"
+  },
+  "bak_cls": true,
+  "rasyta": 18763,
+  "s_upd": 1,
+  "cls_md5_po": "14bc0cd8ea54238354a457078575d168",
+  "s_md5_po": "2e97c4779573ef7c49ecd0f5f4c16c86"
+ },
+ "3": {
+  "v": "S1869s",
+  "faze": "3",
+  "cls_md5": "14bc0cd8ea54238354a457078575d168",
+  "s_md5": "2e97c4779573ef7c49ecd0f5f4c16c86",
+  "busenos": {
+   "23593": "draft",
+   "23595": "draft",
+   "23788": "draft",
+   "25175": "draft",
+   "25319": "draft",
+   "26050": "draft",
+   "26471": "draft",
+   "26473": "draft",
+   "34909": "draft",
+   "34967": "draft",
+   "38270": "draft"
+  },
+  "trash": {
+   "23593": "ok",
+   "23595": "ok",
+   "23788": "ok",
+   "25175": "ok",
+   "26050": "ok",
+   "38270": "ok"
+  },
+  "busenos_po": {
+   "23593": "trash",
+   "23595": "trash",
+   "23788": "trash",
+   "25175": "trash",
+   "25319": "draft",
+   "26050": "trash",
+   "26471": "draft",
+   "26473": "draft",
+   "34909": "draft",
+   "34967": "draft",
+   "38270": "trash"
+  }
+ },
+ "4": {
+  "v": "S1869s",
+  "faze": "4",
+  "cls_md5": "14bc0cd8ea54238354a457078575d168",
+  "s_md5": "2e97c4779573ef7c49ecd0f5f4c16c86",
+  "busenos": {
+   "23593": "trash",
+   "23595": "trash",
+   "23788": "trash",
+   "25175": "trash",
+   "25319": "draft",
+   "26050": "trash",
+   "26471": "draft",
+   "26473": "draft",
+   "34909": "draft",
+   "34967": "draft",
+   "38270": "trash"
+  },
+  "cls_turi": {
+   "32520": true,
+   "VET1200": true,
+   "BIOV1329": true,
+   "BIOV1330": true
+  },
+  "sync_dry": {
+   "path": "publish",
+   "mode": "dry",
+   "now": "2026-11-15 12:46:34",
+   "cache_mtime": "2026-11-15 10:05:54",
+   "cache_age_h": 0.68,
+   "feed_items": 2612,
+   "draft_scanned": 202,
+   "fail_not_in_feed": 30,
+   "fail_qty_zero": 62,
+   "fail_no_price": 0,
+   "fail_no_image": 28,
+   "fail_no_content": 3,
+   "fail_review_flag": 65,
+   "fail_no_category": 0,
+   "skip_ranka": 14,
+   "would_publish": 0,
+   "applied": 0
+  },
+  "sync_pvz": [],
+  "sync_pvz_tarp_isimtu": [],
+  "hb": {
+   "/": 200,
+   "/kasa/": 200
+  },
+  "fatal_15": []
+ },
+ "v": "dep-104511",
+ "kurimas": 200,
+ "sid": 8332,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
