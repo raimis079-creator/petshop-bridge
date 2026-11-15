@@ -1,2142 +1,3066 @@
 {
  "1": {
   "v": "S1869a",
-  "faze": "1",
-  "ads": [
+  "n": 135,
+  "rows": [
    {
-    "d": "2026-11-11",
-    "k": "P-max | LT | petshop.lt",
-    "par": "406",
-    "pasp": "55",
-    "eur": "13.09",
-    "konv": "2.50"
-   },
-   {
-    "d": "2026-11-11",
-    "k": "P-max| All LT | Kačių maistas",
-    "par": "362",
-    "pasp": "38",
-    "eur": "9.80",
-    "konv": "1.50"
-   },
-   {
-    "d": "2026-11-11",
-    "k": "petshop",
-    "par": "282",
-    "pasp": "33",
-    "eur": "9.11",
-    "konv": "0.00"
-   },
-   {
-    "d": "2026-11-11",
-    "k": "Search | LT | Prekių ženklai",
-    "par": "210",
-    "pasp": "18",
-    "eur": "4.02",
-    "konv": "0.00"
-   },
-   {
-    "d": "2026-11-12",
-    "k": "P-max | LT | petshop.lt",
-    "par": "543",
-    "pasp": "50",
-    "eur": "13.28",
-    "konv": "1.00"
-   },
-   {
-    "d": "2026-11-12",
-    "k": "P-max| All LT | Kačių maistas",
-    "par": "357",
-    "pasp": "34",
-    "eur": "10.34",
-    "konv": "1.00"
-   },
-   {
-    "d": "2026-11-12",
-    "k": "petshop",
-    "par": "386",
-    "pasp": "39",
-    "eur": "10.51",
-    "konv": "0.00"
-   },
-   {
-    "d": "2026-11-12",
-    "k": "Search | LT | Prekių ženklai",
-    "par": "156",
-    "pasp": "17",
-    "eur": "3.52",
-    "konv": "1.00"
-   },
-   {
-    "d": "2026-11-13",
-    "k": "P-max | LT | petshop.lt",
-    "par": "645",
-    "pasp": "66",
-    "eur": "15.55",
-    "konv": "2.00"
-   },
-   {
-    "d": "2026-11-13",
-    "k": "P-max| All LT | Kačių maistas",
-    "par": "329",
-    "pasp": "27",
-    "eur": "10.89",
-    "konv": "1.00"
-   },
-   {
-    "d": "2026-11-13",
-    "k": "petshop",
-    "par": "274",
-    "pasp": "34",
-    "eur": "9.16",
-    "konv": "1.00"
-   },
-   {
-    "d": "2026-11-13",
-    "k": "Search | LT | Prekių ženklai",
-    "par": "146",
-    "pasp": "18",
-    "eur": "3.98",
-    "konv": "0.00"
-   },
-   {
-    "d": "2026-11-14",
-    "k": "P-max | LT | petshop.lt",
-    "par": "395",
-    "pasp": "63",
-    "eur": "15.21",
-    "konv": "0.00"
-   },
-   {
-    "d": "2026-11-14",
-    "k": "P-max| All LT | Kačių maistas",
-    "par": "390",
-    "pasp": "41",
-    "eur": "11.30",
-    "konv": "0.00"
-   },
-   {
-    "d": "2026-11-14",
-    "k": "petshop",
-    "par": "184",
-    "pasp": "30",
-    "eur": "8.66",
-    "konv": "0.00"
-   },
-   {
-    "d": "2026-11-14",
-    "k": "Search | LT | Prekių ženklai",
-    "par": "139",
-    "pasp": "14",
-    "eur": "2.99",
-    "konv": "0.00"
-   }
-  ],
-  "ads_pask_irasas": "2026-11-15 03:01:29",
-  "wc_d": [
-   {
-    "d": "2026-11-07",
-    "n": "6",
-    "eur": "157",
-    "kontr": "40",
-    "siunta": "10",
-    "nauji": "4",
-    "g_n": "4",
-    "g_eur": "95",
-    "g_kontr": "25",
-    "g_nauji": "4",
-    "k_n": "1",
-    "dir_n": "1",
-    "org_n": "0"
-   },
-   {
-    "d": "2026-11-08",
-    "n": "7",
-    "eur": "327",
-    "kontr": "67",
-    "siunta": "12",
-    "nauji": "4",
-    "g_n": "5",
-    "g_eur": "170",
-    "g_kontr": "44",
-    "g_nauji": "3",
-    "k_n": "0",
-    "dir_n": "2",
-    "org_n": "0"
-   },
-   {
-    "d": "2026-11-09",
-    "n": "12",
-    "eur": "585",
-    "kontr": "116",
-    "siunta": "40",
-    "nauji": "7",
-    "g_n": "6",
-    "g_eur": "329",
-    "g_kontr": "65",
-    "g_nauji": "5",
-    "k_n": "0",
-    "dir_n": "4",
-    "org_n": "1"
-   },
-   {
-    "d": "2026-11-10",
-    "n": "20",
-    "eur": "894",
-    "kontr": "214",
-    "siunta": "64",
-    "nauji": "15",
-    "g_n": "7",
-    "g_eur": "304",
-    "g_kontr": "71",
-    "g_nauji": "6",
-    "k_n": "3",
-    "dir_n": "2",
-    "org_n": "2"
-   },
-   {
-    "d": "2026-11-11",
-    "n": "10",
-    "eur": "383",
-    "kontr": "85",
-    "siunta": "17",
-    "nauji": "5",
-    "g_n": "2",
-    "g_eur": "72",
-    "g_kontr": "20",
-    "g_nauji": "2",
-    "k_n": "5",
-    "dir_n": "2",
-    "org_n": "0"
-   },
-   {
-    "d": "2026-11-12",
-    "n": "13",
-    "eur": "594",
-    "kontr": "151",
-    "siunta": "21",
-    "nauji": "9",
-    "g_n": "4",
-    "g_eur": "118",
-    "g_kontr": "31",
-    "g_nauji": "3",
-    "k_n": "2",
-    "dir_n": "1",
-    "org_n": "2"
-   },
-   {
-    "d": "2026-11-13",
-    "n": "14",
-    "eur": "577",
-    "kontr": "121",
-    "siunta": "5",
-    "nauji": "7",
-    "g_n": "5",
-    "g_eur": "148",
-    "g_kontr": "31",
-    "g_nauji": "3",
-    "k_n": "1",
-    "dir_n": "6",
-    "org_n": "1"
-   },
-   {
-    "d": "2026-11-14",
-    "n": "7",
-    "eur": "473",
-    "kontr": "120",
-    "siunta": "0",
-    "nauji": "4",
-    "g_n": "5",
-    "g_eur": "423",
-    "g_kontr": "108",
-    "g_nauji": "3",
-    "k_n": "0",
-    "dir_n": "1",
-    "org_n": "1"
-   }
-  ],
-  "wc_kamp": [
-   {
-    "d": "2026-11-12",
-    "k": "21472017542",
-    "n": "2",
-    "eur": "32",
-    "nauji": "1"
-   },
-   {
-    "d": "2026-11-12",
-    "k": "21565450990",
-    "n": "1",
-    "eur": "34",
-    "nauji": "1"
-   },
-   {
-    "d": "2026-11-12",
-    "k": "24297462605",
-    "n": "1",
-    "eur": "53",
-    "nauji": "1"
-   },
-   {
-    "d": "2026-11-13",
-    "k": "21472017542",
-    "n": "3",
-    "eur": "73",
-    "nauji": "2"
-   },
-   {
-    "d": "2026-11-13",
-    "k": "21565450990",
-    "n": "2",
-    "eur": "75",
-    "nauji": "1"
-   },
-   {
-    "d": "2026-11-14",
-    "k": "21472017542",
-    "n": "2",
-    "eur": "233",
-    "nauji": "2"
-   },
-   {
-    "d": "2026-11-14",
-    "k": "21565450990",
-    "n": "2",
-    "eur": "158",
-    "nauji": "1"
-   },
-   {
-    "d": "2026-11-14",
-    "k": "23346712074",
-    "n": "1",
-    "eur": "32",
-    "nauji": "0"
-   }
-  ],
-  "ads_7d": [
-   {
-    "eur": "361.55",
-    "pasp": "1284",
-    "konv": "33.00"
-   }
-  ],
-  "g_7d": [
-   {
-    "n": "33",
-    "eur": "1236",
-    "kontr": "287.8",
-    "siunta": "92.3",
-    "nauji": "26"
-   }
-  ],
-  "uzs": [
-   [
-    "1729",
-    "11-13 05:20",
-    "completed",
-    23.25,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=2.15",
-    1,
-    "direct|||gc0|n0|k4.4",
-    ""
-   ],
-   [
-    "1730",
-    "11-13 10:28",
-    "processing",
-    55.89,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=0",
-    27,
-    "direct|||gc0|n0|k14.2",
-    ""
-   ],
-   [
-    "1731",
-    "11-13 10:59",
-    "processing",
-    28.24,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=2.15",
-    1,
-    "ai|chatgpt.com||gc0|n1|k5.0",
-    ""
-   ],
-   [
-    "1732",
-    "11-13 11:03",
-    "processing",
-    40.89,
-    "paysera",
-    "woo_lithuaniapost_lpexpress_terminal=0",
-    1,
-    "mokamas|google|21565450990|gc1|n0|k4.6",
-    ""
-   ],
-   [
-    "1733",
-    "11-13 12:29",
-    "processing",
-    11.82,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=2.15",
-    1,
-    "mokamas|google|21472017542|gc1|n0|k4.1",
-    ""
-   ],
-   [
-    "1734",
-    "11-13 13:10",
-    "processing",
-    97.85,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=0",
-    14,
-    "direct|||gc0|n0|k22.9",
-    ""
-   ],
-   [
-    "1735",
-    "11-13 13:54",
-    "processing",
-    12.91,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=2.15",
-    4,
-    "mokamas|google|21472017542|gc1|n1|k3.4",
-    ""
-   ],
-   [
-    "1736",
-    "11-13 14:01",
-    "processing",
-    34.53,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=0",
-    20,
-    "mokamas|google|21565450990|gc1|n1|k5.8",
-    ""
-   ],
-   [
-    "1737",
-    "11-13 14:45",
-    "processing",
-    52.59,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=0",
-    1,
-    "direct|||gc0|n1|k9.3",
-    ""
-   ],
-   [
-    "1738",
-    "11-13 17:39",
-    "processing",
-    76.89,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=0",
-    6,
-    "direct|||gc0|n0|k13.3",
-    ""
-   ],
-   [
-    "1739",
-    "11-13 20:34",
-    "processing",
-    19.53,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=2.15",
-    2,
-    "organika|||gc0|n1|k5.2",
-    ""
-   ],
-   [
-    "1740",
-    "11-13 20:44",
-    "cancelled",
-    56.99,
-    "bacs",
-    "shopup_venipak_shipping_pickup_method=0",
-    1,
-    "-|||gc|n|k",
-    ""
-   ],
-   [
-    "1741",
-    "11-13 20:47",
-    "processing",
-    56.99,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=0",
-    1,
-    "direct|||gc0|n0|k9.2",
-    ""
-   ],
-   [
-    "1742",
-    "11-13 22:35",
-    "processing",
-    18.04,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=2.15",
-    1,
-    "mokamas|kaina24||gc0|n1|k7.0",
-    ""
-   ],
-   [
-    "1743",
-    "11-13 22:54",
-    "processing",
-    47.99,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=0",
-    30,
-    "mokamas|google|21472017542|gc1|n1|k13.0",
-    ""
-   ],
-   [
-    "1744",
-    "11-14 08:50",
-    "processing",
-    58.99,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=0",
-    1,
-    "mokamas|google|21565450990|gc1|n1|k13.4",
-    ""
-   ],
-   [
-    "1745",
-    "11-14 10:37",
-    "processing",
-    18.51,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=2.15",
-    4,
-    "direct|||gc0|n0|k4.5",
-    ""
-   ],
-   [
-    "1746",
-    "11-14 18:40",
-    "processing",
-    31.89,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=0",
-    1,
-    "mokamas|google|23346712074|gc1|n0|k9.3",
-    ""
-   ],
-   [
-    "1747",
-    "11-14 19:07",
-    "processing",
-    22.51,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=2.15",
-    4,
-    "mokamas|google|21472017542|gc1|n1|k6.7",
-    ""
-   ],
-   [
-    "1748",
-    "11-14 19:32",
-    "processing",
-    98.59,
-    "paysera",
-    "shopup_venipak_shipping_courier_method=3.99",
-    16,
-    "mokamas|google|21565450990|gc1|n0|k24.4",
-    ""
-   ],
-   [
-    "1749",
-    "11-14 20:59",
-    "processing",
-    210.86,
-    "paysera",
-    "shopup_venipak_shipping_courier_method=3.99",
-    3,
-    "mokamas|google|21472017542|gc1|n1|k54.2",
-    ""
-   ],
-   [
-    "1750",
-    "11-14 21:24",
-    "processing",
-    31.99,
-    "paysera",
-    "shopup_venipak_shipping_pickup_method=0",
-    1,
-    "organika|||gc0|n1|k7.6",
-    ""
-   ]
-  ],
-  "atviri": [
-   [
-    "1719",
-    "11-12 09:42",
-    "processing",
-    "paysera",
-    75.98,
-    ""
-   ],
-   [
-    "1724",
-    "11-12 18:59",
-    "processing",
-    "paysera",
-    28.24,
-    ""
-   ],
-   [
-    "1725",
-    "11-12 20:59",
-    "processing",
-    "paysera",
-    94.79,
-    ""
-   ],
-   [
-    "1726",
-    "11-12 21:10",
-    "processing",
-    "paysera",
-    13.84,
-    ""
-   ],
-   [
-    "1730",
-    "11-13 10:28",
-    "processing",
-    "paysera",
-    55.89,
-    ""
-   ],
-   [
-    "1731",
-    "11-13 10:59",
-    "processing",
-    "paysera",
-    28.24,
-    ""
-   ],
-   [
-    "1732",
-    "11-13 11:03",
-    "processing",
-    "paysera",
-    40.89,
-    ""
-   ],
-   [
-    "1733",
-    "11-13 12:29",
-    "processing",
-    "paysera",
-    11.82,
-    ""
-   ],
-   [
-    "1734",
-    "11-13 13:10",
-    "processing",
-    "paysera",
-    97.85,
-    ""
-   ],
-   [
-    "1735",
-    "11-13 13:54",
-    "processing",
-    "paysera",
-    12.91,
-    ""
-   ],
-   [
-    "1736",
-    "11-13 14:01",
-    "processing",
-    "paysera",
-    34.53,
-    ""
-   ],
-   [
-    "1737",
-    "11-13 14:45",
-    "processing",
-    "paysera",
-    52.59,
-    ""
-   ],
-   [
-    "1738",
-    "11-13 17:39",
-    "processing",
-    "paysera",
-    76.89,
-    ""
-   ],
-   [
-    "1739",
-    "11-13 20:34",
-    "processing",
-    "paysera",
-    19.53,
-    ""
-   ],
-   [
-    "1741",
-    "11-13 20:47",
-    "processing",
-    "paysera",
-    56.99,
-    ""
-   ],
-   [
-    "1742",
-    "11-13 22:35",
-    "processing",
-    "paysera",
-    18.04,
-    ""
-   ],
-   [
-    "1743",
-    "11-13 22:54",
-    "processing",
-    "paysera",
-    47.99,
-    ""
-   ],
-   [
-    "1744",
-    "11-14 08:50",
-    "processing",
-    "paysera",
-    58.99,
-    ""
-   ],
-   [
-    "1745",
-    "11-14 10:37",
-    "processing",
-    "paysera",
-    18.51,
-    ""
-   ],
-   [
-    "1746",
-    "11-14 18:40",
-    "processing",
-    "paysera",
-    31.89,
-    ""
-   ],
-   [
-    "1747",
-    "11-14 19:07",
-    "processing",
-    "paysera",
-    22.51,
-    ""
-   ],
-   [
-    "1748",
-    "11-14 19:32",
-    "processing",
-    "paysera",
-    98.59,
-    ""
-   ],
-   [
-    "1749",
-    "11-14 20:59",
-    "processing",
-    "paysera",
-    210.86,
-    ""
-   ],
-   [
-    "1750",
-    "11-14 21:24",
-    "processing",
-    "paysera",
-    31.99,
-    ""
-   ]
-  ],
-  "laikas": "2026-11-15 09:58:53",
-  "trukme_s": 0.2
- },
- "2": {
-  "v": "S1869a",
-  "faze": "2",
-  "htaccess": {
-   "dydis": 5182,
-   "uztvara": true,
-   "mtime": "10-19 11:17",
-   "bak": true,
-   "blokas": "# BEGIN PS Botu uztvara (S1723, 2026-09-26): filtru/add-to-cart GET be ps_js slapuko -> 403 be PHP (botu sargo taisykle Apache lygyje)\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteCond %{REQUEST_METHOD} ^GET$\nRewriteCond %{QUERY_STRING} (^|&)(yith_wcan|filter_[A-Za-z0-9_-]+|query_type_[A-Za-z0-9_-]+|add-to-cart)= [NC]\nRewriteCond %{QUERY_STRING} !(^|&)ps_[A-Za-z0-9_]+= [NC]\nRewriteCond %{REQUEST_URI} !^/(kasa|krepselis|paskyra|wp-json|wp-admin|wp-login\\.php|feed) [NC]\nRewriteCond %{HTTP_COOKIE} !(^|;\\s*)ps_js=1 [NC]\nRewriteCond %{HTTP_COOKIE} !wordpress_logged_in_ [NC]\nRewriteRule ^ - [F,L]\n# S1788 (2026-10-19): Tencent Cloud botu ferma AS132203 43.172.0.0/15 -> 403\nRewriteCond %{REMOTE_ADDR} ^43\\.17[23]\\.\nRewriteRule ^ - [F,L]\n# S1788: krepselio remove_item be WC sesijos slapuko -> 403 (tikras pirkejas slapuka turi)\nRewriteCond %{QUERY_STRING} (^|&)remove_item= [NC]\nRewriteCond %{HTTP_COOKIE} !wp_woocommerce_session_ [NC]\nRewriteRule ^ - [F,L]\n</IfModule>\n# END PS Botu uztvara"
-  },
-  "logs_dir": [
-   [
-    "Nov-2026.tar.gz",
-    "0.3MB",
-    "11-15 07:17"
-   ],
-   [
-    "Nov-2026.tar.gz.1",
-    "1.2MB",
-    "11-15 00:11"
-   ],
-   [
-    "Nov-2026.tar.gz.10",
-    "0.2MB",
-    "11-10 05:05"
-   ],
-   [
-    "Nov-2026.tar.gz.11",
-    "1.1MB",
-    "11-10 00:11"
-   ],
-   [
-    "Nov-2026.tar.gz.12",
-    "0.3MB",
-    "11-09 07:12"
-   ],
-   [
-    "Nov-2026.tar.gz.2",
-    "0.3MB",
-    "11-14 06:23"
-   ],
-   [
-    "Nov-2026.tar.gz.3",
-    "1.1MB",
-    "11-14 00:10"
-   ],
-   [
-    "Nov-2026.tar.gz.4",
-    "0.3MB",
-    "11-13 07:52"
-   ],
-   [
-    "Nov-2026.tar.gz.5",
-    "1.4MB",
-    "11-13 00:10"
-   ],
-   [
-    "Nov-2026.tar.gz.6",
-    "0.2MB",
-    "11-12 06:02"
-   ],
-   [
-    "Nov-2026.tar.gz.7",
-    "1.3MB",
-    "11-12 00:10"
-   ],
-   [
-    "Nov-2026.tar.gz.8",
-    "0.3MB",
-    "11-11 06:15"
-   ],
-   [
-    "Nov-2026.tar.gz.9",
-    "1.3MB",
-    "11-11 00:11"
-   ],
-   [
-    "php_error.log",
-    "7.4MB",
-    "11-15 08:53"
-   ]
-  ],
-  "access_src": "Nov-2026.tar.gz",
-  "access_src_mtime": "11-15 07:17",
-  "access": {
-   "eil": 8894,
-   "nuo": "15 00:10",
-   "iki": "15 07:16",
-   "val": {
-    "15 00": {
-     "200": 633,
-     "301": 99,
-     "302": 1,
-     "403": 23,
-     "404": 43,
-     "500": 0,
-     "n": 926,
-     "kt": 127,
-     "filtr": 0,
-     "ip": 363
-    },
-    "15 01": {
-     "200": 574,
-     "301": 68,
-     "302": 1,
-     "403": 20,
-     "404": 96,
-     "500": 0,
-     "n": 798,
-     "kt": 39,
-     "filtr": 1,
-     "ip": 377
-    },
-    "15 02": {
-     "200": 720,
-     "301": 62,
-     "302": 2,
-     "403": 21,
-     "404": 63,
-     "500": 0,
-     "n": 1128,
-     "kt": 260,
-     "filtr": 0,
-     "ip": 417
-    },
-    "15 03": {
-     "200": 1035,
-     "301": 82,
-     "302": 0,
-     "403": 13,
-     "404": 334,
-     "500": 0,
-     "n": 1666,
-     "kt": 202,
-     "filtr": 0,
-     "ip": 351
-    },
-    "15 04": {
-     "200": 783,
-     "301": 151,
-     "302": 1,
-     "403": 25,
-     "404": 198,
-     "500": 1,
-     "n": 1488,
-     "kt": 329,
-     "filtr": 1,
-     "ip": 370
-    },
-    "15 05": {
-     "200": 795,
-     "301": 70,
-     "302": 0,
-     "403": 19,
-     "404": 57,
-     "500": 0,
-     "n": 1323,
-     "kt": 382,
-     "filtr": 0,
-     "ip": 496
-    },
-    "15 06": {
-     "200": 765,
-     "301": 71,
-     "302": 0,
-     "403": 20,
-     "404": 28,
-     "500": 1,
-     "n": 973,
-     "kt": 88,
-     "filtr": 0,
-     "ip": 349
-    },
-    "15 07": {
-     "200": 506,
-     "301": 45,
-     "302": 0,
-     "403": 0,
-     "404": 5,
-     "500": 1,
-     "n": 592,
-     "kt": 35,
-     "filtr": 0,
-     "ip": 130
+    "id": 18512,
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su ėriena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGALA40",
+     "_regular_price": "2.89",
+     "_price": "2.89",
+     "_stock": "1044.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259003522",
+     "_ean": "801125900352",
+     "_vf_cost": "1.683",
+     "_vf_personal_cost": "1.683",
+     "_vf_cost_xml": "1.98",
+     "_vf_barcode": "801125900352",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "11",
+     "_ps_sales_365d": "11",
+     "_ps_revenue_365d": "25.37",
+     "_ps_orders_365d": "2"
     }
    },
-   "tipai": {
-    "filtrai": 2,
-    "atc": 1,
-    "s": 1,
-    "orderby": 0,
-    "page": 400,
-    "preke": 0,
-    "kat": 138,
-    "gam": 55,
-    "wcajax": 238,
-    "adminajax": 143,
-    "wpjson": 153,
-    "cron": 2576,
-    "kita": 5187
-   },
-   "k403_top": {
-    "/parduotuve/page…?hashtag=kukur%C5%ABzinis+": 10,
-    "/parduotuve/page…?hashtag=%C5%BEaislai+%C5%": 8,
-    "/parduotuve/page…?hashtag=nat%C5%ABralus+kr": 8,
-    "/parduotuve/page…?hashtag=uostymo+kilim%C4%": 7,
-    "/parduotuve/page…?hashtag=subproduktai+%C5%": 6,
-    "/parduotuve/page…?hashtag=nutri+pockets+ska": 4,
-    "/parduotuve/page…?hashtag=tofu+kat%C4%97ms": 4,
-    "/parduotuve/page…?hashtag=skan%C4%97stai+%C": 4,
-    "/parduotuve/page…?hashtag=GranCarno+elniena": 4,
-    "/parduotuve/page…?hashtag=virv%C4%97s+%C5%B": 4,
-    "/parduotuve/page…?hashtag=Super+Beno+Light+": 4,
-    "/parduotuve/page…?page=3": 4
-   },
-   "k500_top": {
-    "/wp-cron.php?doing_wp_cron=1794708321.4112479686737060546875": 1,
-    "/product/flexi-pavadelis-suniui-new-comfort-l-juostinis-5m-juodas/": 1,
-    "/wp-load.php?import_key=v&import_id=7&action=processing": 1
-   },
-   "macbot_ip_unik": 630,
-   "macbot_ua_top": {
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chr": 779,
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) V": 177,
-    "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) obs": 1
-   },
-   "macbot_praeina_top": {
-    "/?wc-ajax=get_refreshed_fragments": 46,
-    "/": 11,
-    "/parduotuve/page…?order=DESC&page=40&sort=p.date": 6,
-    "/wp-content/plugins…?ver=11.0.1": 6,
-    "/robots.txt": 6,
-    "/wp-includes/js…?ver=1.13.3": 4,
-    "/paskyra/": 4,
-    "/product/32-vnt-monge-vetsolution-cat-wet-dermatosis-100g/": 4,
-    "/parduotuve/page…?page=6": 4,
-    "/product/12-vnt-gemon-maxi-adult-konservuotas-pasaras-suaugusiems-sunims-su-jautiena-ir-ryziais-1250g/": 3,
-    "/wp-content/uploads…?ver=1794697430": 3,
-    "/kategorija/sunims…?page=5": 3,
-    "/product/trixie-girdykla-grauzikams-plastikine-250-ml/": 3,
-    "/product/nobleza-gultas-suniui-tamsiai-pilkas-80x50x10cm/": 3,
-    "/product/30-vnt-simba-konservuotas-pasaras-katems-su-vistiena-415g/": 3
-   }
-  },
-  "error_log": {
-   "failas": "php_error.log",
-   "kb": 7529,
-   "pask": "",
-   "tipai": [],
-   "fastcgi_val": []
-  },
-  "sargas_suvestine": [],
-  "sesijos": 2026,
-  "ps_carts_d": [
    {
-    "d": "2026-11-12",
-    "n": "20",
-    "konv": "12"
-   },
-   {
-    "d": "2026-11-13",
-    "n": "28",
-    "konv": "14"
-   },
-   {
-    "d": "2026-11-14",
-    "n": "14",
-    "konv": "7"
-   }
-  ],
-  "load": null,
-  "trukme_s": 0.2
- },
- "3": {
-  "v": "S1869a",
-  "faze": "3",
-  "rytas_pask": {
-   "laikas": "2026-11-15 03:30:05",
-   "raudonos": [
-    {
-     "kodas": "bestseleriai_likutis",
-     "lygis": "raudona",
-     "tekstas": "Bestseleriai (top 150, AV) be likučio: 14 — #19620 Animonda Carny Kitten – konservai  (14 užs.); #19708 Animonda Carny Adult Beef + Chicke (11 užs.); #19613 Animonda Carny Kitten – konservai  (9 užs.); #19672 Animonda Carny Adult Beef + Turkey (8 užs.); #19609 Animonda Carny Kitten – konservai  (6 užs.); #19396 Animonda Vom Feinsten Adult with T (5 užs.); …"
+    "id": 18515,
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su veršiena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGAVA40",
+     "_regular_price": "2.89",
+     "_price": "2.89",
+     "_stock": "444.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259003515",
+     "_ean": "801125900351",
+     "_vf_cost": "1.683",
+     "_vf_personal_cost": "1.683",
+     "_vf_cost_xml": "1.98",
+     "_vf_barcode": "801125900351",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "4",
+     "_ps_sales_365d": "4",
+     "_ps_revenue_365d": "9.31",
+     "_ps_orders_365d": "3"
     }
-   ],
-   "geltonos": [
-    {
-     "kodas": "neissiusti",
-     "lygis": "geltona",
-     "tekstas": "Apmokėti > 2 d. be siuntos: 1"
+   },
+   {
+    "id": 18518,
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su kalakutiena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGAUA40",
+     "_regular_price": "2.89",
+     "_price": "2.89",
+     "_stock": "559.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259003553",
+     "_ean": "801125900355",
+     "_vf_cost": "1.683",
+     "_vf_personal_cost": "1.683",
+     "_vf_cost_xml": "1.98",
+     "_vf_barcode": "801125900355",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "3",
+     "_ps_sales_365d": "3",
+     "_ps_revenue_365d": "7.01",
+     "_ps_orders_365d": "3"
     }
-   ],
-   "zalios": 18,
-   "viso": 20
-  },
-  "sargo_klaidos": [
-   {
-    "id": "22689",
-    "laikas": "2026-11-15 09:58:59",
-    "lygis": "warning",
-    "parasas": "fcf8d9bb494bbb490f23f4e39548f5db",
-    "zinute": "is_file(): open_basedir restriction in effect. File(/proc/loadavg) is not within the allowed path(s): (/home/gyvunai2/:/tmp:/usr/share/pear)",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/code-snippets/php/snippet-ops.php(663) : eval()'d code",
-    "eilute": "63",
-    "url": "/?ps_s1838a=2",
-    "kiek": "9"
    },
    {
-    "id": "4024",
-    "laikas": "2026-11-15 09:57:57",
-    "lygis": "deprecated",
-    "parasas": "b8134211401a082b2ab03cd682e13e5b",
-    "zinute": "str_replace(): Passing null to parameter #3 ($subject) of type array|string is deprecated",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php",
-    "eilute": "2196",
-    "url": "/wp-admin/admin.php?page=ps-desk&eile=klausimai",
-    "kiek": "51830"
+    "id": 18521,
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su jautiena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGABA40",
+     "_regular_price": "2.89",
+     "_price": "2.89",
+     "_stock": "285.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259003508",
+     "_ean": "801125900350",
+     "_vf_cost": "1.683",
+     "_vf_personal_cost": "1.683",
+     "_vf_cost_xml": "1.98",
+     "_vf_barcode": "801125900350",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "2",
+     "_ps_sales_365d": "2",
+     "_ps_revenue_365d": "4.62",
+     "_ps_orders_365d": "2"
+    }
    },
    {
-    "id": "4023",
-    "laikas": "2026-11-15 09:57:57",
-    "lygis": "deprecated",
-    "parasas": "1a73efb667af0a27ef119e7873f3ea58",
-    "zinute": "strpos(): Passing null to parameter #1 ($haystack) of type string is deprecated",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php",
-    "eilute": "7374",
-    "url": "/wp-admin/admin.php?page=ps-desk&eile=klausimai",
-    "kiek": "51830"
+    "id": 18524,
+    "t": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su tunu, 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGCST12",
+     "_regular_price": "65.99",
+     "_price": "65.99",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_global_unique_id": "8011259004208",
+     "_ean": "801125900420",
+     "_vf_cost": "42.4915",
+     "_vf_personal_cost": "42.4915",
+     "_vf_cost_xml": "49.99",
+     "_vf_barcode": "801125900420",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
    },
    {
-    "id": "25038",
-    "laikas": "2026-11-15 06:31:43",
-    "lygis": "warning",
-    "parasas": "153c2a087ba9b5c7a334fb2e9454d91e",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/josera-a-s-lamb-rice-sausas-pasaras-sunims-su-eriena-ir-ryzia…",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=5&action=processing",
-    "kiek": "2"
+    "id": 18527,
+    "t": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su tunu, 1,5 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGCST01",
+     "_regular_price": "17.05",
+     "_price": "17.05",
+     "_stock": "24.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259003805",
+     "_ean": "801125900380",
+     "_vf_cost": "11.169",
+     "_vf_personal_cost": "11.169",
+     "_vf_cost_xml": "13.14",
+     "_vf_barcode": "801125900380",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
    },
    {
-    "id": "24991",
-    "laikas": "2026-11-15 06:31:43",
-    "lygis": "warning",
-    "parasas": "1ac0909deddc76e6fc78a1fea24277c8",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/nobleza-gultas-suniui-su-sirdelemis-pilkas-100x75cm/): No suc…",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "kiek": "4"
+    "id": 18530,
+    "t": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms katėms su jautiena, 1,5 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGCSB01",
+     "_regular_price": "17.05",
+     "_price": "17.05",
+     "_stock": "119.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259003782",
+     "_ean": "801125900378",
+     "_vf_cost": "11.169",
+     "_vf_personal_cost": "11.169",
+     "_vf_cost_xml": "13.14",
+     "_vf_barcode": "801125900378",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "4",
+     "_ps_sales_365d": "4",
+     "_ps_revenue_365d": "56.36",
+     "_ps_orders_365d": "3"
+    }
    },
    {
-    "id": "24990",
-    "laikas": "2026-11-15 06:31:43",
-    "lygis": "warning",
-    "parasas": "1d800a59d7d36839a448c1aa5cee3ae6",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/nobleza-paltas-suniui-ivairiu-spalvu-xxl-45cm/): No such file…",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "kiek": "4"
+    "id": 18533,
+    "t": "Exclusion Mediterraneo Monoprotein sausas pašaras sterilizuotoms didelėms katėms su vištiena, 1,5 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGCGC01",
+     "_regular_price": "17.05",
+     "_price": "17.05",
+     "_stock": "101.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259003829",
+     "_ean": "801125900382",
+     "_vf_cost": "11.169",
+     "_vf_personal_cost": "11.169",
+     "_vf_cost_xml": "13.14",
+     "_vf_barcode": "801125900382",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
    },
    {
-    "id": "24989",
-    "laikas": "2026-11-15 06:31:43",
-    "lygis": "warning",
-    "parasas": "3fd2d6226db980fd0bc68d94288cfcd3",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/cazo-himalayan-suris-su-linu-semenimis-l-13-16cm/): No such f…",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "kiek": "3"
+    "id": 18536,
+    "t": "Exclusion Mediterraneo Monoprotein sausas pašaras kačiukams su vištiena, 1,5 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGCKC01",
+     "_regular_price": "18.35",
+     "_price": "18.35",
+     "_stock": "89.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259003669",
+     "_ean": "801125900366",
+     "_vf_cost": "11.951",
+     "_vf_personal_cost": "11.951",
+     "_vf_cost_xml": "14.06",
+     "_vf_barcode": "801125900366",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
    },
    {
-    "id": "24988",
-    "laikas": "2026-11-15 06:31:43",
-    "lygis": "warning",
-    "parasas": "24c9bd133dda46aa55963d90a18963c9",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/gigi-uro-ursi-tabletes-slapimo-takams-n28/): No such file or …",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "kiek": "2"
+    "id": 18539,
+    "t": "Exclusion Mediterraneo Monoprotein sausas pašaras katėms su vištiena, 1,5 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGCAC01",
+     "_regular_price": "17.05",
+     "_price": "17.05",
+     "_stock": "21.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259003683",
+     "_ean": "801125900368",
+     "_vf_cost": "11.169",
+     "_vf_personal_cost": "11.169",
+     "_vf_cost_xml": "13.14",
+     "_vf_barcode": "801125900368",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
    },
    {
-    "id": "24987",
-    "laikas": "2026-11-15 06:31:43",
-    "lygis": "warning",
-    "parasas": "372f4441ae95129b47a62cf4080dee4a",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/gigi-uro-ursi-90-tab/): No such file or directory",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "kiek": "3"
+    "id": 18542,
+    "t": "Exclusion Mediterraneo Monoprotein sausas pašaras katėms su jautiena, 1,5 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGCAB01",
+     "_regular_price": "17.05",
+     "_price": "17.05",
+     "_stock": "80.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259003713",
+     "_ean": "801125900371",
+     "_vf_cost": "11.169",
+     "_vf_personal_cost": "11.169",
+     "_vf_cost_xml": "13.14",
+     "_vf_barcode": "801125900371",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "3",
+     "_ps_sales_365d": "3",
+     "_ps_revenue_365d": "42.27",
+     "_ps_orders_365d": "2"
+    }
    },
    {
-    "id": "24986",
-    "laikas": "2026-11-15 06:31:43",
-    "lygis": "warning",
-    "parasas": "d1f78acfb5a14bc99d3653574d86f309",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/expertus-silikoninis-kraikas-katems-10l/): No such file or di…",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "kiek": "3"
+    "id": 18545,
+    "t": "Exclusion Intestinal Monoprotein sausas šunų maistas su kiauliena ir ryžiais M/L12 kg",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "INPM11",
+     "_regular_price": "75.8",
+     "_price": "75.8",
+     "_stock": "0",
+     "_stock_status": "outofstock",
+     "_cost_price": "45.05",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
    },
    {
-    "id": "24824",
-    "laikas": "2026-11-15 06:31:43",
-    "lygis": "warning",
-    "parasas": "40ac4e79dd40f8007d04a6b97e851b1f",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/happet-skanestas-sunims-l-himalaju-suris-96-105g/): No such f…",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "kiek": "6"
+    "id": 18548,
+    "t": "Exclusion Intestinal Monoprotein sausas šuniukų maistas su kiauliena ir ryžiais 12 kg",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "INPA11",
+     "_regular_price": "80.9",
+     "_price": "80.9",
+     "_stock": "0",
+     "_stock_status": "outofstock",
+     "_cost_price": "50.15",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
    },
    {
-    "id": "24823",
-    "laikas": "2026-11-15 06:31:43",
-    "lygis": "warning",
-    "parasas": "2d0d74bf6b5a576207cb8db4f7e9261a",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/cazo-himalayan-suris-su-braskemis-l-13-16cm/): No such file o…",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "kiek": "6"
+    "id": 18551,
+    "t": "Exclusion Intestinal Monoprotein mažų veislių šunų maistas su kiauliena ir ryžiais 7 kg",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "INPS06",
+     "_regular_price": "61.59",
+     "_price": "61.59",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_cost_price": "34.00",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "1",
+     "_ps_sales_365d": "1",
+     "_ps_revenue_365d": "48.67",
+     "_ps_orders_365d": "1",
+     "_sale_price": "",
+     "_vf_cost": "37.655",
+     "_vf_cost_xml": "44.30",
+     "_vf_personal_cost": "37.655",
+     "_vf_barcode": "801125900285",
+     "_ean": "801125900285",
+     "_global_unique_id": "801125900285"
+    }
    },
    {
-    "id": "24657",
-    "laikas": "2026-11-15 06:31:43",
-    "lygis": "warning",
-    "parasas": "7b9ccba4492c8e1c4208bdc9121f2ab9",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/happet-skanestas-sunims-s-himalaju-suris-38-45g/): No such fi…",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "kiek": "8"
+    "id": 18554,
+    "t": "Exclusion Hypoallergenic sausas šunų maistas su vabzdžiais ir žirneliais M/L 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYIM11",
+     "_regular_price": "106.6",
+     "_price": "106.6",
+     "_stock": "25.000000",
+     "_stock_status": "instock",
+     "_vf_cost": "65.8835",
+     "_vf_personal_cost": "65.8835",
+     "_vf_cost_xml": "77.51",
+     "_vf_barcode": "801125900255",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "1",
+     "_ps_sales_365d": "1",
+     "_ps_revenue_365d": "88.1",
+     "_ps_orders_365d": "1",
+     "_global_unique_id": "8011259002556"
+    }
    },
    {
-    "id": "24462",
-    "laikas": "2026-11-15 06:31:43",
-    "lygis": "warning",
-    "parasas": "f32781d18fd5621535972ca9fc3c7762",
-    "zinute": "Array to string conversion",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php",
-    "eilute": "608",
-    "url": "/wp-load.php?import_key=v&import_id=5&action=processing",
-    "kiek": "6"
+    "id": 18557,
+    "t": "Exclusion Hypoallergenic sausas šunų maistas su triušiena ir bulvėmis M/L 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYRM11",
+     "_regular_price": "79.9",
+     "_price": "79.9",
+     "_stock": "0",
+     "_stock_status": "instock",
+     "_vf_cost": "53.805",
+     "_vf_personal_cost": "53.805",
+     "_vf_cost_xml": "63.3",
+     "_vf_barcode": "801125900263",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "1",
+     "_ps_sales_365d": "1",
+     "_ps_revenue_365d": "66.03",
+     "_ps_orders_365d": "1",
+     "_global_unique_id": "8011259002631"
+    }
    },
    {
-    "id": "24192",
-    "laikas": "2026-11-15 06:31:43",
-    "lygis": "warning",
-    "parasas": "f82840ecaf908a7eb055d901c310d38b",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/churu-bites-skanestas-sunims-su-vistiena-ir-tunu-suktinukai-8…",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "kiek": "9"
+    "id": 18560,
+    "t": "Exclusion Hypoallergenic sausas šunų maistas su kiauliena ir žirneliais M/L 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYPM11",
+     "_regular_price": "79.9",
+     "_price": "79.9",
+     "_stock": "0.000000",
+     "_stock_status": "instock",
+     "_vf_cost": "53.805",
+     "_vf_personal_cost": "53.805",
+     "_vf_cost_xml": "63.3",
+     "_vf_barcode": "801125900259",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "12",
+     "_ps_sales_365d": "12",
+     "_ps_revenue_365d": "792.37",
+     "_ps_orders_365d": "11",
+     "_global_unique_id": "8011259002594"
+    }
    },
    {
-    "id": "25037",
-    "laikas": "2026-11-15 06:31:18",
-    "lygis": "warning",
-    "parasas": "ef4aff7e43cc882dc6217a2cd56b4f86",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/natures-miracle-demiu-ir-kvapu-valymo-priemone-set-in-oxy-so-…",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=5&action=processing",
-    "kiek": "1"
+    "id": 18563,
+    "t": "Exclusion Hypoallergenic sausas šunų maistas su elniena ir bulvėmis M/L 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYVM11",
+     "_regular_price": "74.4",
+     "_price": "74.4",
+     "_stock": "0",
+     "_stock_status": "outofstock",
+     "_cost_price": "49.3000",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_ps_sandelis": "av",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
    },
    {
-    "id": "25036",
-    "laikas": "2026-11-15 06:02:03",
-    "lygis": "warning",
-    "parasas": "469a88d6d318d4c905c3c1b994bc1c3b",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/trixie-berto-top-kaciu-tualetas-namelis-su-atskyrimo-sistema-…",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=2&action=processing",
-    "kiek": "2"
+    "id": 18566,
+    "t": "Exclusion Hypoallergenic sausas šunų maistas su arkliena ir bulvėmis M/L 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYHM11",
+     "_regular_price": "78.19",
+     "_price": "78.19",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_vf_cost": "53.805",
+     "_vf_personal_cost": "53.805",
+     "_vf_cost_xml": "63.3",
+     "_vf_barcode": "801125900257",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "2",
+     "_ps_sales_365d": "2",
+     "_ps_revenue_365d": "129.24",
+     "_ps_orders_365d": "2",
+     "_global_unique_id": "8011259002570"
+    }
    },
    {
-    "id": "25035",
-    "laikas": "2026-11-15 06:02:03",
-    "lygis": "warning",
-    "parasas": "543b2b8f3aeb5cb8241e7c83305dea0d",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/trixie-minou-guolis-urvas-35x26x41cm-smelio-rudas/): No such …",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=2&action=processing",
-    "kiek": "2"
+    "id": 18569,
+    "t": "Exclusion Hypoallergenic sausas šunų maistas su antiena ir bulvėmis M/L 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYDM11",
+     "_regular_price": "70.4",
+     "_price": "70.4",
+     "_stock": "0",
+     "_stock_status": "outofstock",
+     "_cost_price": "45.0500",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_ps_sandelis": "av",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
    },
    {
-    "id": "25034",
-    "laikas": "2026-11-15 06:02:03",
-    "lygis": "warning",
-    "parasas": "491060449520108c72940b43803ace04",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/trixie-harvey-guolis-urvas-35x26x41cm-pilkas-baltas-juodas/):…",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=2&action=processing",
-    "kiek": "2"
+    "id": 18572,
+    "t": "Exclusion Hypoallergenic sausas šuniukų maistas su kiauliena ir žirneliais 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYPA11",
+     "_regular_price": "84.89",
+     "_price": "84.89",
+     "_stock": "24.000000",
+     "_stock_status": "instock",
+     "_vf_cost": "55.2415",
+     "_vf_personal_cost": "55.2415",
+     "_vf_cost_xml": "64.99",
+     "_vf_barcode": "801125900253",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "3",
+     "_ps_sales_365d": "3",
+     "_ps_revenue_365d": "210.48",
+     "_ps_orders_365d": "3",
+     "_global_unique_id": "8011259002532"
+    }
    },
    {
-    "id": "25033",
-    "laikas": "2026-11-15 06:02:03",
-    "lygis": "warning",
-    "parasas": "50aee0573e8c1a66e110bd3053d01755",
-    "zinute": "rmdir(/home/gyvunai2/domains/petshop.lt/public_html/wp-content/cache/supercache/petshop.lt/product/trixie-davin-guolis-ovalus-60x45cm-pilkas-kreminis/): No such…",
-    "failas": "/home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/wp-super-cache/wp-cache-phase2.php",
-    "eilute": "3624",
-    "url": "/wp-load.php?import_key=v&import_id=2&action=processing",
-    "kiek": "2"
+    "id": 18575,
+    "t": "Exclusion Hypoallergenic mini sausas mažų veislių šunų maistas su žuvimi ir bulvėmis S 2 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYFS02",
+     "_regular_price": "21.95",
+     "_price": "21.95",
+     "_stock": "3.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259000262",
+     "_ean": "8011259000262",
+     "_vf_cost": "14.3565",
+     "_vf_personal_cost": "14.3565",
+     "_vf_cost_xml": "16.89",
+     "_vf_barcode": "801125900026",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "4",
+     "_ps_sales_365d": "4",
+     "_ps_revenue_365d": "72.56",
+     "_ps_orders_365d": "2"
+    }
+   },
+   {
+    "id": 18578,
+    "t": "Exclusion Hypoallergenic mini mažų veislių šunų maistas su triušiena ir bulvėmis S 2 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYRS02",
+     "_regular_price": "21.95",
+     "_price": "21.95",
+     "_stock": "0",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259000170",
+     "_ean": "8011259000170",
+     "_vf_cost": "14.3565",
+     "_vf_personal_cost": "14.3565",
+     "_vf_cost_xml": "16.89",
+     "_vf_barcode": "801125900017",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "2",
+     "_ps_sales_365d": "2",
+     "_ps_revenue_365d": "36.28",
+     "_ps_orders_365d": "1"
+    }
+   },
+   {
+    "id": 18581,
+    "t": "Exclusion Hypoallergenic mini mažų veislių šunų maistas su arkliena ir bulvėmis S 2 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYHS02",
+     "_regular_price": "21.95",
+     "_price": "21.95",
+     "_stock": "0",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259000040",
+     "_ean": "8011259000040",
+     "_vf_cost": "14.3565",
+     "_vf_personal_cost": "14.3565",
+     "_vf_cost_xml": "16.89",
+     "_vf_barcode": "801125900004",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "3",
+     "_ps_sales_365d": "3",
+     "_ps_revenue_365d": "54.42",
+     "_ps_orders_365d": "3"
+    }
+   },
+   {
+    "id": 18584,
+    "t": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 800 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYPS08",
+     "_regular_price": "10.59",
+     "_price": "10.59",
+     "_stock": "9.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259000071",
+     "_ean": "801125900007",
+     "_vf_cost": "6.7745",
+     "_vf_personal_cost": "6.7745",
+     "_vf_cost_xml": "7.97",
+     "_vf_barcode": "801125900007",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 18587,
+    "t": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYPS06",
+     "_regular_price": "56.99",
+     "_price": "56.99",
+     "_stock": "0",
+     "_stock_status": "instock",
+     "_vf_cost": "37.485",
+     "_vf_personal_cost": "37.485",
+     "_vf_cost_xml": "44.1",
+     "_vf_barcode": "801125900284",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "40",
+     "_ps_sales_365d": "40",
+     "_ps_revenue_365d": "1884",
+     "_ps_orders_365d": "40",
+     "_global_unique_id": "8011259002846"
+    }
+   },
+   {
+    "id": 18590,
+    "t": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYPS02",
+     "_regular_price": "21.1",
+     "_price": "21.1",
+     "_stock": "362.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259000088",
+     "_ean": "8011259000088",
+     "_vf_cost": "14.3565",
+     "_vf_personal_cost": "14.3565",
+     "_vf_cost_xml": "16.89",
+     "_vf_barcode": "801125900008",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "28",
+     "_ps_sales_365d": "28",
+     "_ps_revenue_365d": "499.52",
+     "_ps_orders_365d": "23"
+    }
+   },
+   {
+    "id": 18593,
+    "t": "Exclusion Hypoallergenic konservai šunims su triušiena ir bulvėmis 200 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "AM20",
+     "_regular_price": "2.95",
+     "_price": "2.95",
+     "_stock": "287.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259011374",
+     "_ean": "801125901137",
+     "_cost_price": "2.00",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_ps_sandelis": "av",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0",
+     "_vf_cost": "1.649",
+     "_vf_personal_cost": "1.649",
+     "_vf_cost_xml": "1.94",
+     "_vf_barcode": "801125901137"
+    }
+   },
+   {
+    "id": 18596,
+    "t": "Exclusion Hypoallergenic konservai šunims su putpelėmis ir žirniais 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "QM37",
+     "_regular_price": "4.09",
+     "_price": "4.09",
+     "_stock": "39.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259213754",
+     "_ean": "8011259213754",
+     "_cost_price": "2.38",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_ps_sandelis": "av",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601",
+     "_vf_cost_xml": "3.06",
+     "_vf_barcode": "801125921375"
+    }
+   },
+   {
+    "id": 18599,
+    "t": "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "PM37",
+     "_regular_price": "3.98",
+     "_price": "3.98",
+     "_stock": "655.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259193759",
+     "_ean": "8011259193759",
+     "_cost_price": "2.38",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_ps_sandelis": "av",
+     "_ps_sales_90d": "30",
+     "_ps_sales_365d": "30",
+     "_ps_revenue_365d": "98.69",
+     "_ps_orders_365d": "6",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601",
+     "_vf_cost_xml": "3.06",
+     "_vf_barcode": "801125919375"
+    }
+   },
+   {
+    "id": 18602,
+    "t": "Exclusion Hypoallergenic konservai šunims su kiauliena ir žirniais 200 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "PM20",
+     "_regular_price": "2.95",
+     "_price": "2.95",
+     "_stock": "49.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259011350",
+     "_ean": "801125901135",
+     "_cost_price": "1.80",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_ps_sandelis": "av",
+     "_ps_sales_90d": "25",
+     "_ps_sales_365d": "25",
+     "_ps_revenue_365d": "60.95",
+     "_ps_orders_365d": "4",
+     "_vf_cost": "1.649",
+     "_vf_personal_cost": "1.649",
+     "_vf_cost_xml": "1.94",
+     "_vf_barcode": "801125901135"
+    }
+   },
+   {
+    "id": 18605,
+    "t": "Exclusion Hypoallergenic konservai šunims su elniena ir bulvėmis 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "VM37",
+     "_regular_price": "3.98",
+     "_price": "3.98",
+     "_stock": "47.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259153753",
+     "_ean": "8011259153753",
+     "_cost_price": "2.57",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_ps_sandelis": "av",
+     "_ps_sales_90d": "1",
+     "_ps_sales_365d": "1",
+     "_ps_revenue_365d": "3.29",
+     "_ps_orders_365d": "1",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601",
+     "_vf_cost_xml": "3.06",
+     "_vf_barcode": "801125915375"
+    }
+   },
+   {
+    "id": 18608,
+    "t": "Exclusion Hypoallergenic konservai šunims su arkliena ir bulvėmis 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HM37",
+     "_regular_price": "3.98",
+     "_price": "3.98",
+     "_stock": "21.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259203755",
+     "_ean": "8011259203755",
+     "_cost_price": "2.60",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_ps_sandelis": "av",
+     "_ps_sales_90d": "14",
+     "_ps_sales_365d": "14",
+     "_ps_revenue_365d": "46.05",
+     "_ps_orders_365d": "2",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601",
+     "_vf_cost_xml": "3.06",
+     "_vf_barcode": "801125920375"
+    }
+   },
+   {
+    "id": 18611,
+    "t": "Exclusion Hypoallergenic konservai šunims su antiena ir bulvėmis 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DM37",
+     "_regular_price": "3.98",
+     "_price": "3.98",
+     "_stock": "225.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259173751",
+     "_ean": "8011259173751",
+     "_cost_price": "2.56",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_ps_sandelis": "av",
+     "_ps_sales_90d": "1",
+     "_ps_sales_365d": "1",
+     "_ps_revenue_365d": "3.29",
+     "_ps_orders_365d": "1",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601",
+     "_vf_cost_xml": "3.06",
+     "_vf_barcode": "801125917375"
+    }
+   },
+   {
+    "id": 18614,
+    "t": "Exclusion Hypoallergenic konservai šunims su antiena ir bulvėmis 200 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DM20",
+     "_regular_price": "2.95",
+     "_price": "2.95",
+     "_stock": "73.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259011381",
+     "_ean": "801125901138",
+     "_cost_price": "1.90",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_ps_sandelis": "av",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0",
+     "_vf_cost": "1.5725",
+     "_vf_personal_cost": "1.5725",
+     "_vf_cost_xml": "1.85",
+     "_vf_barcode": "801125901138"
+    }
+   },
+   {
+    "id": 18617,
+    "t": "Exclusion Hypoallergenic dietinis sausas pašaras katėms su kiauliena ir bulvėmis, 1,5 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "CHYP01",
+     "_regular_price": "20.79",
+     "_price": "20.79",
+     "_stock": "27.000000",
+     "_stock_status": "instock",
+     "_global_unique_id": "8011259004277",
+     "_ean": "801125900427",
+     "_vf_cost": "14.2545",
+     "_vf_personal_cost": "14.2545",
+     "_vf_cost_xml": "16.77",
+     "_vf_barcode": "801125900427",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "4",
+     "_ps_sales_365d": "4",
+     "_ps_revenue_365d": "68.72",
+     "_ps_orders_365d": "3"
+    }
+   },
+   {
+    "id": 18620,
+    "t": "Exclusion Hydrolyzed Hypoallergenic maistas šunims su hidrolizuota žuvimi ir kukurūzų krakmolu M/L 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HHFM11",
+     "_regular_price": "80.79",
+     "_price": "80.79",
+     "_stock": "12.000000",
+     "_stock_status": "instock",
+     "_vf_cost": "55.59",
+     "_vf_personal_cost": "55.59",
+     "_vf_cost_xml": "65.4",
+     "_vf_barcode": "801125900397",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "1",
+     "_ps_sales_365d": "1",
+     "_ps_revenue_365d": "66.77",
+     "_ps_orders_365d": "1",
+     "_global_unique_id": "8011259003973"
+    }
+   },
+   {
+    "id": 18623,
+    "t": "Exclusion Hepatic dietinis sausas šunų maistas su kiauliena, ryžiais ir žirneliais M/L 12kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HEPM11",
+     "_regular_price": "73.9",
+     "_price": "73.9",
+     "_stock": "2.000000",
+     "_stock_status": "instock",
+     "_cost_price": "49.65",
+     "_cost_price_source": "excel_import_20260610",
+     "_cost_price_imported_at": "2026-06-10 14:21:09",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 20517,
+    "t": "Exclusion Mediterraneo Mono Protein konservas kačiukams su vištiena, 85 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGCKCW85",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_vf_barcode": "801125900400",
+     "_vf_cost_xml": "1.1",
+     "_vf_cost": "0.935",
+     "_vf_personal_cost": "0.935",
+     "_ean": "801125900400",
+     "_global_unique_id": "8011259004000",
+     "_price": "1.53",
+     "_regular_price": "1.53",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "1",
+     "_ps_sales_365d": "1",
+     "_ps_revenue_365d": "1.26",
+     "_ps_orders_365d": "1"
+    }
+   },
+   {
+    "id": 20521,
+    "t": "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras steril. katėms, su jautiena, 300g  ",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "NGCSB03",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_vf_barcode": "801125900377",
+     "_vf_cost_xml": "4.27",
+     "_vf_cost": "3.6295",
+     "_vf_personal_cost": "3.6295",
+     "_ean": "801125900377",
+     "_global_unique_id": "801125900377",
+     "_price": "5.29",
+     "_regular_price": "5.29",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 20523,
+    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras sterilizuotoms katėms su jautiena, 85 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGCSBW85",
+     "_stock": "270.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900405",
+     "_vf_cost_xml": "1.1",
+     "_vf_cost": "0.935",
+     "_vf_personal_cost": "0.935",
+     "_ean": "801125900405",
+     "_global_unique_id": "8011259004055",
+     "_price": "1.59",
+     "_regular_price": "1.59",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "1",
+     "_ps_sales_365d": "1",
+     "_ps_revenue_365d": "1.26",
+     "_ps_orders_365d": "1"
+    }
+   },
+   {
+    "id": 20525,
+    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras sterilizuotoms katėms su vištiena, 85 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGCSCW85",
+     "_stock": "331.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900404",
+     "_vf_cost_xml": "1.1",
+     "_vf_cost": "0.935",
+     "_vf_personal_cost": "0.935",
+     "_ean": "801125900404",
+     "_global_unique_id": "8011259004048",
+     "_price": "1.59",
+     "_regular_price": "1.59",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "5",
+     "_ps_sales_365d": "5",
+     "_ps_revenue_365d": "6.32",
+     "_ps_orders_365d": "2"
+    }
+   },
+   {
+    "id": 20529,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras sterilizuotoms katėms, tunas, 300 g",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "NGCST03",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_vf_barcode": "801125900379",
+     "_vf_cost_xml": "4.27",
+     "_vf_cost": "3.6295",
+     "_vf_personal_cost": "3.6295",
+     "_ean": "801125900379",
+     "_global_unique_id": "801125900379",
+     "_price": "5.29",
+     "_regular_price": "5.29",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 20533,
+    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras sterilizuotoms katėms su tunu, 85 g",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "NGCSTW85",
+     "_stock": "375.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900406",
+     "_vf_cost_xml": "1.1",
+     "_vf_cost": "0.935",
+     "_vf_personal_cost": "0.935",
+     "_ean": "801125900406",
+     "_global_unique_id": "801125900406",
+     "_price": "1.39",
+     "_regular_price": "1.39",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 20535,
+    "t": "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras vidutinių veislių mažiems šuniukams su jautiena M, 3 kg",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "NGPBM03",
+     "_stock": "25.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900444",
+     "_vf_cost_xml": "15.67",
+     "_vf_cost": "13.3195",
+     "_vf_personal_cost": "13.3195",
+     "_ean": "801125900444",
+     "_global_unique_id": "801125900444",
+     "_price": "19.39",
+     "_regular_price": "19.39",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 20537,
+    "t": "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras vidutinių veislių mažiems šuniukams su jautiena M, 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGPBM12",
+     "_stock": "15.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900445",
+     "_vf_cost_xml": "45.66",
+     "_vf_cost": "38.811",
+     "_vf_personal_cost": "38.811",
+     "_ean": "801125900445",
+     "_global_unique_id": "8011259004451",
+     "_price": "55.14",
+     "_regular_price": "55.14",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 20539,
+    "t": "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras mažų veislių mažiems šuniukams su jautiena S, 2 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGPBS02",
+     "_stock": "33.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900443",
+     "_vf_cost_xml": "13.43",
+     "_vf_cost": "11.4155",
+     "_vf_personal_cost": "11.4155",
+     "_ean": "801125900443",
+     "_global_unique_id": "8011259004437",
+     "_price": "18.9",
+     "_regular_price": "18.9",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 20541,
+    "t": "Exclusion Mono Protein begrūdis sausas pašaras mažų veislių mažiems šuniukams su jautiena S, 7 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGPBS07",
+     "_stock": "14.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900448",
+     "_vf_cost_xml": "34.01",
+     "_vf_cost": "28.9085",
+     "_vf_personal_cost": "28.9085",
+     "_ean": "801125900448",
+     "_global_unique_id": "8011259004482",
+     "_price": "46.9",
+     "_regular_price": "46.9",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 20543,
+    "t": "Exclusion Mono Protein begrūdis sausas pašaras šuniukams, su tunu, M 3kg      ",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGPTM03",
+     "_stock": "2.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900306",
+     "_vf_cost_xml": "15.7",
+     "_vf_cost": "13.345",
+     "_vf_personal_cost": "13.345",
+     "_ean": "801125900306",
+     "_global_unique_id": "8011259003065",
+     "_price": "21.8",
+     "_regular_price": "21.8",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 20545,
+    "t": "Exclusion ME MONO NOBLE GRAIN  sausas pašaras šuniukams,su tunu, 500g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGPTS05",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_vf_barcode": "801125900288",
+     "_vf_cost_xml": "3.61",
+     "_vf_cost": "3.0685",
+     "_vf_personal_cost": "3.0685",
+     "_ean": "801125900288",
+     "_global_unique_id": "8011259002884",
+     "_price": "4.49",
+     "_regular_price": "4.49",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 20941,
+    "t": "Exclusion Hypoallergenic sausas pašaras mažų veislių šunims su žuvimi, S, 2 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HHFS02",
+     "_stock": "11.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900395",
+     "_vf_cost_xml": "21.07",
+     "_vf_cost": "17.9095",
+     "_vf_personal_cost": "17.9095",
+     "_ean": "801125900395",
+     "_global_unique_id": "8011259003959",
+     "_price": "27.99",
+     "_regular_price": "27.99",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "2",
+     "_ps_sales_365d": "2",
+     "_ps_revenue_365d": "46.26",
+     "_ps_orders_365d": "2"
+    }
+   },
+   {
+    "id": 20943,
+    "t": "Exclusion Hypoallergenic sausas pašaras Duck Potato Small breed 2 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYDS02",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_vf_barcode": "801125900022",
+     "_vf_cost_xml": "16.09",
+     "_vf_cost": "13.6765",
+     "_vf_personal_cost": "13.6765",
+     "_ean": "801125900022",
+     "_global_unique_id": "8011259000224",
+     "_price": "21.95",
+     "_regular_price": "21.95",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 20947,
+    "t": "Exclusion Hypoallergenic sausas pašaras vidutinių ir didelių veislių šunims su arkliena ir bulvėmis, M/L, 2kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYHM02",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_vf_barcode": "801125900256",
+     "_vf_cost_xml": "16.89",
+     "_vf_cost": "14.3565",
+     "_vf_personal_cost": "14.3565",
+     "_ean": "801125900256",
+     "_global_unique_id": "8011259002563",
+     "_price": "21.95",
+     "_regular_price": "21.95",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 20955,
+    "t": "Exclusion Hypoallergenic sausas pašaras mažų veislių šunims su vabzdžių baltymu, S, 2 kg",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "HYIS02",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_vf_barcode": "801125900181",
+     "_vf_cost_xml": "20.89",
+     "_vf_cost": "17.7565",
+     "_vf_personal_cost": "17.7565",
+     "_ean": "801125900181",
+     "_global_unique_id": "801125900181",
+     "_price": "25.79",
+     "_regular_price": "25.79",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 20957,
+    "t": "Exclusion Hypoallergenic sausas pašaras šuniukams su kiauliena ir žirneliais, 2kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYPA02",
+     "_stock": "46.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900252",
+     "_vf_cost_xml": "19.14",
+     "_vf_cost": "16.269",
+     "_vf_personal_cost": "16.269",
+     "_ean": "801125900252",
+     "_global_unique_id": "8011259002525",
+     "_price": "24.99",
+     "_regular_price": "24.99",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "5",
+     "_ps_sales_365d": "5",
+     "_ps_revenue_365d": "103.25",
+     "_ps_orders_365d": "5"
+    }
+   },
+   {
+    "id": 20961,
+    "t": "Exclusion Hypoallergenic sausas pašaras vidutinių ir didelių veislių šunims  su kiauliena ir žirneliai, M/L, 2kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYPM02",
+     "_stock": "9.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900258",
+     "_vf_cost_xml": "16.89",
+     "_vf_cost": "14.3565",
+     "_vf_personal_cost": "14.3565",
+     "_ean": "801125900258",
+     "_global_unique_id": "8011259002587",
+     "_price": "21.95",
+     "_regular_price": "21.95",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "3",
+     "_ps_sales_365d": "3",
+     "_ps_revenue_365d": "54.42",
+     "_ps_orders_365d": "3"
+    }
+   },
+   {
+    "id": 20971,
+    "t": "Exclusion Hypo sausas pašaras šunims su triušiena ir bulvėmis, M/L, 2kg",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "d0ef54405833",
+     "_stock": "0",
+     "_stock_status": "outofstock",
+     "_ps_sandelis": "av",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 20977,
+    "t": "Exclusion Hypoallergenic sausas pašaras mažų veislių šunims su elniena ir bulvėmis, S, 2kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HYVS02",
+     "_stock": "4.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900013",
+     "_vf_cost_xml": "16.89",
+     "_vf_cost": "14.3565",
+     "_vf_personal_cost": "14.3565",
+     "_ean": "801125900013",
+     "_global_unique_id": "8011259000132",
+     "_price": "21.95",
+     "_regular_price": "21.95",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "2",
+     "_ps_sales_365d": "2",
+     "_ps_revenue_365d": "36.28",
+     "_ps_orders_365d": "2"
+    }
+   },
+   {
+    "id": 21115,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras didelių veislių šunims su jautiena, L, 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGABL12",
+     "_stock": "31.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900323",
+     "_vf_cost_xml": "41.88",
+     "_vf_cost": "35.598",
+     "_vf_personal_cost": "35.598",
+     "_ean": "801125900323",
+     "_global_unique_id": "8011259003232",
+     "_price": "51.02",
+     "_regular_price": "51.02",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 21117,
+    "t": "Exclusion ME MONO NOBLE GRAIN sausas pašaras šunims M, su jautiena, 3kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGABM03",
+     "_stock": "51.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900310",
+     "_vf_cost_xml": "14.43",
+     "_vf_cost": "12.2655",
+     "_vf_personal_cost": "12.2655",
+     "_ean": "801125900310",
+     "_global_unique_id": "8011259003102",
+     "_price": "17.89",
+     "_regular_price": "17.89",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "2",
+     "_ps_sales_365d": "2",
+     "_ps_revenue_365d": "29.58",
+     "_ps_orders_365d": "2"
+    }
+   },
+   {
+    "id": 21119,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su jautiena, M, 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGABM12",
+     "_stock": "81.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900311",
+     "_vf_cost_xml": "41.88",
+     "_vf_cost": "35.598",
+     "_vf_personal_cost": "35.598",
+     "_ean": "801125900311",
+     "_global_unique_id": "8011259003119",
+     "_price": "52.98",
+     "_regular_price": "52.98",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "1",
+     "_ps_sales_365d": "1",
+     "_ps_revenue_365d": "43.79",
+     "_ps_orders_365d": "1"
+    }
+   },
+   {
+    "id": 21121,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su jautiena, S, 2 kg",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "NGABS02",
+     "_stock": "115.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900294",
+     "_vf_cost_xml": "11.92",
+     "_vf_cost": "10.132",
+     "_vf_personal_cost": "10.132",
+     "_ean": "801125900294",
+     "_global_unique_id": "801125900294",
+     "_price": "14.79",
+     "_regular_price": "14.79",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 21123,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su jautiena, S, 500g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGABS05",
+     "_stock": "4.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900293",
+     "_vf_cost_xml": "3.61",
+     "_vf_cost": "3.0685",
+     "_vf_personal_cost": "3.0685",
+     "_ean": "801125900293",
+     "_global_unique_id": "8011259002938",
+     "_price": "4.99",
+     "_regular_price": "4.99",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "5",
+     "_ps_sales_365d": "5",
+     "_ps_revenue_365d": "20.62",
+     "_ps_orders_365d": "2"
+    }
+   },
+   {
+    "id": 21125,
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su vištiena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGACA40",
+     "_stock": "75.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900349",
+     "_vf_cost_xml": "1.98",
+     "_vf_cost": "1.683",
+     "_vf_personal_cost": "1.683",
+     "_ean": "801125900349",
+     "_global_unique_id": "8011259003492",
+     "_price": "2.89",
+     "_regular_price": "2.89",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "2",
+     "_ps_sales_365d": "2",
+     "_ps_revenue_365d": "4.62",
+     "_ps_orders_365d": "2"
+    }
+   },
+   {
+    "id": 21129,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras didelių veislių šunims su ėriena, L, 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGALL12",
+     "_stock": "30.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900324",
+     "_vf_cost_xml": "41.88",
+     "_vf_cost": "35.598",
+     "_vf_personal_cost": "35.598",
+     "_ean": "801125900324",
+     "_global_unique_id": "8011259003249",
+     "_price": "59.9",
+     "_regular_price": "59.9",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 21131,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su ėriena, M, 3 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGALM03",
+     "_stock": "186.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900312",
+     "_vf_cost_xml": "14.43",
+     "_vf_cost": "12.2655",
+     "_vf_personal_cost": "12.2655",
+     "_ean": "801125900312",
+     "_global_unique_id": "8011259003126",
+     "_price": "19.9",
+     "_regular_price": "19.9",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 21133,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su ėriena, M, 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGALM12",
+     "_stock": "53.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900313",
+     "_vf_cost_xml": "41.88",
+     "_vf_cost": "35.598",
+     "_vf_personal_cost": "35.598",
+     "_ean": "801125900313",
+     "_global_unique_id": "8011259003133",
+     "_price": "51.02",
+     "_regular_price": "51.02",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 21135,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su ėriena, S, 2 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGALS02",
+     "_stock": "156.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900296",
+     "_vf_cost_xml": "11.92",
+     "_vf_cost": "10.132",
+     "_vf_personal_cost": "10.132",
+     "_ean": "801125900296",
+     "_global_unique_id": "8011259002969",
+     "_price": "16.9",
+     "_regular_price": "16.9",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "2",
+     "_ps_sales_365d": "2",
+     "_ps_revenue_365d": "27.94",
+     "_ps_orders_365d": "2"
+    }
+   },
+   {
+    "id": 21137,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su ėriena, S, 500g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGALS05",
+     "_stock": "41.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900295",
+     "_vf_cost_xml": "3.61",
+     "_vf_cost": "3.0685",
+     "_vf_personal_cost": "3.0685",
+     "_ean": "801125900295",
+     "_global_unique_id": "8011259002952",
+     "_price": "4.99",
+     "_regular_price": "4.99",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 21139,
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su lašiša, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGASA40",
+     "_stock": "65.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900354",
+     "_vf_cost_xml": "1.98",
+     "_vf_cost": "1.683",
+     "_vf_personal_cost": "1.683",
+     "_ean": "801125900354",
+     "_global_unique_id": "8011259003546",
+     "_price": "2.89",
+     "_regular_price": "2.89",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 21141,
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su tunu, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGATA40",
+     "_stock": "100.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900353",
+     "_vf_cost_xml": "1.98",
+     "_vf_cost": "1.683",
+     "_vf_personal_cost": "1.683",
+     "_ean": "801125900353",
+     "_global_unique_id": "8011259003539",
+     "_price": "2.89",
+     "_regular_price": "2.89",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "1",
+     "_ps_sales_365d": "1",
+     "_ps_revenue_365d": "2.39",
+     "_ps_orders_365d": "1"
+    }
+   },
+   {
+    "id": 21143,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras didelių veislių šunims su tunu, L, 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGATL12",
+     "_stock": "16.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900325",
+     "_vf_cost_xml": "41.88",
+     "_vf_cost": "35.598",
+     "_vf_personal_cost": "35.598",
+     "_ean": "801125900325",
+     "_global_unique_id": "8011259003256",
+     "_price": "51.88",
+     "_regular_price": "51.88",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 21145,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su tunu, M, 3 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGATM03",
+     "_stock": "8.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900314",
+     "_vf_cost_xml": "14.43",
+     "_vf_cost": "12.2655",
+     "_vf_personal_cost": "12.2655",
+     "_ean": "801125900314",
+     "_global_unique_id": "8011259003140",
+     "_price": "19.9",
+     "_regular_price": "19.9",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 21147,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su tunu, M, 12 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGATM12",
+     "_stock": "4.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900315",
+     "_vf_cost_xml": "41.88",
+     "_vf_cost": "35.598",
+     "_vf_personal_cost": "35.598",
+     "_ean": "801125900315",
+     "_global_unique_id": "8011259003157",
+     "_price": "51.44",
+     "_regular_price": "51.44",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "2",
+     "_ps_sales_365d": "2",
+     "_ps_revenue_365d": "85.02",
+     "_ps_orders_365d": "1"
+    }
+   },
+   {
+    "id": 21149,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su tunu, S, 2 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGATS02",
+     "_stock": "49.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900298",
+     "_vf_cost_xml": "11.92",
+     "_vf_cost": "10.132",
+     "_vf_personal_cost": "10.132",
+     "_ean": "801125900298",
+     "_global_unique_id": "8011259002983",
+     "_price": "16.9",
+     "_regular_price": "16.9",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 21151,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su tunu, S, 500 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGATS05",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_vf_barcode": "801125900297",
+     "_vf_cost_xml": "3.61",
+     "_vf_cost": "3.0685",
+     "_vf_personal_cost": "3.0685",
+     "_ean": "801125900297",
+     "_global_unique_id": "8011259002976",
+     "_price": "4.99",
+     "_regular_price": "4.99",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 21153,
+    "t": "Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su tunu, S, 7 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGATS07",
+     "_stock": "6.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900299",
+     "_vf_cost_xml": "30.86",
+     "_vf_cost": "26.231",
+     "_vf_personal_cost": "26.231",
+     "_ean": "801125900299",
+     "_global_unique_id": "8011259002990",
+     "_price": "43.8",
+     "_regular_price": "43.8",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 21161,
+    "t": "Exclusion Mono Protein Mediterraneo  begrūdis pašaras katėms su  jautiena 300g      ",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "NGCAB03",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_vf_barcode": "801125900370",
+     "_vf_cost_xml": "4.27",
+     "_vf_cost": "3.6295",
+     "_vf_personal_cost": "3.6295",
+     "_ean": "801125900370",
+     "_global_unique_id": "801125900370",
+     "_price": "5.29",
+     "_regular_price": "5.29",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 21165,
+    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGCATW85",
+     "_stock": "367.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900403",
+     "_vf_cost_xml": "1.1",
+     "_vf_cost": "0.935",
+     "_vf_personal_cost": "0.935",
+     "_ean": "801125900403",
+     "_global_unique_id": "8011259004031",
+     "_price": "1.59",
+     "_regular_price": "1.59",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "3",
+     "_ps_sales_365d": "3",
+     "_ps_revenue_365d": "3.79",
+     "_ps_orders_365d": "4"
+    }
+   },
+   {
+    "id": 21171,
+    "t": "Exclusion ME MONO NOBLE GRAIN sausas pašaras kačiukams, su vištiena, 300g",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "NGCKC03",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_vf_barcode": "801125900365",
+     "_vf_cost_xml": "4.31",
+     "_vf_cost": "3.6635",
+     "_vf_personal_cost": "3.6635",
+     "_ean": "801125900365",
+     "_global_unique_id": "801125900365",
+     "_price": "5.39",
+     "_regular_price": "5.39",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 21531,
+    "t": "Exclusion Hypoallergenic dietinis sausas pašaras katėms su kiauliena ir bulvėmis, 300 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "CHYP03",
+     "_stock": "9.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900441",
+     "_vf_cost_xml": "4.85",
+     "_vf_cost": "4.1225",
+     "_vf_personal_cost": "4.1225",
+     "_ean": "801125900441",
+     "_global_unique_id": "8011259004413",
+     "_price": "5.99",
+     "_regular_price": "5.99",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 25165,
+    "t": "Exclusion Mono Protein, begrūdis sausas pašaras mažų veislių mažiems šuniukams S, jautiena, 500g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGPBS05",
+     "_stock": "17.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900442",
+     "_vf_cost_xml": "3.61",
+     "_vf_cost": "3.0685",
+     "_vf_personal_cost": "3.0685",
+     "_ean": "801125900442",
+     "_global_unique_id": "8011259004420",
+     "_price": "4.99",
+     "_regular_price": "4.99",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 25227,
+    "t": "Exclusion Mediterraneo Mono Noble sausas pašaras šunims S, su ėriena, 7 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGALS07",
+     "_stock": "3.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900453",
+     "_vf_cost_xml": "30.86",
+     "_vf_cost": "26.231",
+     "_vf_personal_cost": "26.231",
+     "_ean": "801125900453",
+     "_global_unique_id": "8011259004536",
+     "_price": "40.99",
+     "_regular_price": "40.99",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "3",
+     "_ps_sales_365d": "3",
+     "_ps_revenue_365d": "101.64",
+     "_ps_orders_365d": "3"
+    }
+   },
+   {
+    "id": 25265,
+    "t": "Exclusion Mediterraneo Mono Noble sausas pašaras šuniukams L, su tunu, 12kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "NGPTL12",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_vf_barcode": "801125900321",
+     "_vf_cost_xml": "42.99",
+     "_vf_cost": "36.5415",
+     "_vf_personal_cost": "36.5415",
+     "_ean": "801125900321",
+     "_global_unique_id": "8011259003218",
+     "_price": "53.09",
+     "_regular_price": "53.09",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 35025,
+    "t": "Exclusion Hypoallergenic sausas pašaras vidutinių ir didelių veislių šunims su vabzdžių baltymu,M/L, 2kg",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "HYIM02",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_vf_barcode": "801125900254",
+     "_vf_cost_xml": "20.89",
+     "_vf_cost": "17.7565",
+     "_vf_personal_cost": "17.7565",
+     "_ean": "8011259002549",
+     "_global_unique_id": "8011259002549",
+     "_regular_price": "25.79",
+     "_price": "25.79",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0",
+     "_ps_sandelis": "vf"
+    }
+   },
+   {
+    "id": 35027,
+    "t": "Exclusion Hydrolyzed Hypoallergenic sausas pašaras vidutinių ir didelių veislių šunims su žuvimi, M/L, 2 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HHFM02",
+     "_stock": "5.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900396",
+     "_vf_cost_xml": "21.07",
+     "_vf_cost": "17.9095",
+     "_vf_personal_cost": "17.9095",
+     "_ean": "8011259003966",
+     "_global_unique_id": "8011259003966",
+     "_regular_price": "26.09",
+     "_price": "26.09",
+     "_ps_sales_90d": "3",
+     "_ps_sales_365d": "3",
+     "_ps_revenue_365d": "64.68",
+     "_ps_orders_365d": "3",
+     "_ps_sandelis": "vf"
+    }
+   },
+   {
+    "id": 35312,
+    "t": "Exclusion Hypo konservuotas pašaras šunims su triušiena ir bulvėmis, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "AM37",
+     "_stock": "187.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125916375",
+     "_vf_cost_xml": "3.06",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601",
+     "_ean": "8011259163752",
+     "_global_unique_id": "8011259163752",
+     "_regular_price": "4.09",
+     "_price": "4.09",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "6",
+     "_ps_sales_365d": "6",
+     "_ps_revenue_365d": "19.74",
+     "_ps_orders_365d": "3"
+    }
+   },
+   {
+    "id": 35314,
+    "t": "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 200g",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "PA20",
+     "_stock": "60.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900283",
+     "_vf_cost_xml": "1.94",
+     "_vf_cost": "1.649",
+     "_vf_personal_cost": "1.649",
+     "_ean": "8011259002839",
+     "_global_unique_id": "8011259002839",
+     "_regular_price": "2.39",
+     "_price": "2.39",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 35316,
+    "t": "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "PA37",
+     "_stock": "162.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900282",
+     "_vf_cost_xml": "3.06",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601",
+     "_ean": "8011259002822",
+     "_global_unique_id": "8011259002822",
+     "_regular_price": "4.09",
+     "_price": "4.09",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "27",
+     "_ps_sales_365d": "27",
+     "_ps_revenue_365d": "89.18",
+     "_ps_orders_365d": "5"
+    }
+   },
+   {
+    "id": 35322,
+    "t": "Exclusion Hypo konservai šunims su putpelėmis ir žirniais, 200g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "QM20",
+     "_stock": "116.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125901140",
+     "_vf_cost_xml": "1.94",
+     "_vf_cost": "1.649",
+     "_vf_personal_cost": "1.649",
+     "_ean": "8011259011404",
+     "_global_unique_id": "8011259011404",
+     "_regular_price": "2.85",
+     "_price": "2.85",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 35326,
+    "t": "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir bulvėmis, 200 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "FM20",
+     "_stock": "46.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125901139",
+     "_vf_cost_xml": "1.85",
+     "_vf_cost": "1.5725",
+     "_vf_personal_cost": "1.5725",
+     "_ean": "8011259011398",
+     "_global_unique_id": "8011259011398",
+     "_regular_price": "2.95",
+     "_price": "2.95",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "4",
+     "_ps_sales_365d": "4",
+     "_ps_revenue_365d": "9.75",
+     "_ps_orders_365d": "2"
+    }
+   },
+   {
+    "id": 35328,
+    "t": "Exclusion Hypo konservuotas pašaras šunims su žuvimi ir bulvėmis, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "FM37",
+     "_stock": "38.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125918375",
+     "_vf_cost_xml": "3.06",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601",
+     "_ean": "8011259183750",
+     "_global_unique_id": "8011259183750",
+     "_regular_price": "3.98",
+     "_price": "3.98",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 35330,
+    "t": "Exclusion Hypo konservuotas pašaras šunims su arkliena ir bulvėmis, 200 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "HM20",
+     "_stock": "45.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125901134",
+     "_vf_cost_xml": "2.38",
+     "_vf_cost": "2.023",
+     "_vf_personal_cost": "2.023",
+     "_ean": "8011259011343",
+     "_global_unique_id": "8011259011343",
+     "_regular_price": "2.99",
+     "_price": "2.99",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "16",
+     "_ps_sales_365d": "16",
+     "_ps_revenue_365d": "39.53",
+     "_ps_orders_365d": "3"
+    }
+   },
+   {
+    "id": 35334,
+    "t": "Exclusion Hypo konservuotas pašaras šunims su elniena ir bulvėmis, 200 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "VM20",
+     "_stock": "54.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125901136",
+     "_vf_cost_xml": "1.94",
+     "_vf_cost": "1.649",
+     "_vf_personal_cost": "1.649",
+     "_ean": "8011259011367",
+     "_global_unique_id": "8011259011367",
+     "_regular_price": "2.95",
+     "_price": "2.95",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 35338,
+    "t": "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 200 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "BM20",
+     "_stock": "113.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125901141",
+     "_vf_cost_xml": "1.94",
+     "_vf_cost": "1.649",
+     "_vf_personal_cost": "1.649",
+     "_ean": "8011259011411",
+     "_global_unique_id": "8011259011411",
+     "_regular_price": "2.95",
+     "_price": "2.95",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "14",
+     "_ps_sales_365d": "14",
+     "_ps_revenue_365d": "34.13",
+     "_ps_orders_365d": "2"
+    }
+   },
+   {
+    "id": 35340,
+    "t": "Exclusion Hypo konservuotas pašaras šunims su šerniena ir bulvėmis, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "BM37",
+     "_stock": "105.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125922375",
+     "_vf_cost_xml": "3.06",
+     "_vf_cost": "2.601",
+     "_vf_personal_cost": "2.601",
+     "_ean": "8011259223753",
+     "_global_unique_id": "8011259223753",
+     "_regular_price": "3.98",
+     "_price": "3.98",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 35342,
+    "t": "Exclusion Hypoalergenic dietinis konservuotas pašaras katėms su kiauliena ir bulvėm, 85 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "CHYP85",
+     "_stock": "328.000000",
+     "_stock_status": "instock",
+     "_vf_barcode": "801125900434",
+     "_vf_cost_xml": "1.22",
+     "_vf_cost": "1.037",
+     "_vf_personal_cost": "1.037",
+     "_ean": "8011259004345",
+     "_global_unique_id": "8011259004345",
+     "_regular_price": "1.51",
+     "_price": "1.51",
+     "_ps_sandelis": "vf",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 35392,
+    "t": "Jautriam mažam šuniui — Exclusion Hypo Mini kiauliena: 2 kg sausas + 5 konservai",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "RINK-EXCL-MINI-KIAUL",
+     "_regular_price": "32.45",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_cost_price": "24.3565",
+     "_price": "32.45",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0",
+     "_sale_price": ""
+    }
+   },
+   {
+    "id": 35394,
+    "t": "Jautriam mažam šuniui — Exclusion Hypo Mini kiauliena 2 kg + 4 elnienos konservai",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "RINK-EXCL-MINI-ELN",
+     "_regular_price": "36.7",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_cost_price": "23.8765",
+     "_price": "36.7",
+     "_sale_price": "",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 36002,
+    "t": "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 2 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "Excl-2kg-2vnt",
+     "_regular_price": "40.89",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "40.89",
+     "_dp_base_product_id": "18590",
+     "_cost_price": "28.713",
+     "_ps_sales_90d": "6",
+     "_ps_sales_365d": "6",
+     "_ps_revenue_365d": "206.89",
+     "_ps_orders_365d": "6"
+    }
+   },
+   {
+    "id": 36003,
+    "t": "2 vnt. Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "Excl-7kg-2vnt",
+     "_regular_price": "110.59",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "110.59",
+     "_dp_base_product_id": "18587",
+     "_cost_price": "74.97",
+     "_ps_sales_90d": "2",
+     "_ps_sales_365d": "2",
+     "_ps_revenue_365d": "183.14",
+     "_ps_orders_365d": "2"
+    }
+   },
+   {
+    "id": 36509,
+    "t": "2 vnt. Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras mažų veislių mažiems šuniukams su jautiena S, 2 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGPBS02-2",
+     "_regular_price": "36.69",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "36.69",
+     "_dp_base_product_id": "20539",
+     "_cost_price": "22.831",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 36510,
+    "t": "2 vnt. Exclusion Mono Protein begrūdis sausas pašaras mažų veislių mažiems šuniukams su jautiena S, 7 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGPBS07-2",
+     "_regular_price": "90.99",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "90.99",
+     "_dp_base_product_id": "20541",
+     "_cost_price": "57.817",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 36511,
+    "t": "2 vnt. Exclusion Hypoallergenic sausas pašaras šuniukams su kiauliena ir žirneliais, 2kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-HYPA02-2",
+     "_regular_price": "48.49",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "48.49",
+     "_dp_base_product_id": "20957",
+     "_cost_price": "32.538",
+     "_ps_sales_90d": "1",
+     "_ps_sales_365d": "1",
+     "_ps_revenue_365d": "40.07",
+     "_ps_orders_365d": "1"
+    }
+   },
+   {
+    "id": 36512,
+    "t": "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su ėriena, M, 3 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGALM03-2",
+     "_regular_price": "38.59",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "38.59",
+     "_dp_base_product_id": "21131",
+     "_cost_price": "24.531",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 36513,
+    "t": "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su ėriena, S, 2 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGALS02-2",
+     "_regular_price": "32.79",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "32.79",
+     "_dp_base_product_id": "21135",
+     "_cost_price": "20.264",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 36514,
+    "t": "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras vidutinių veislių šunims su tunu, M, 3 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGATM03-2",
+     "_regular_price": "38.59",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "38.59",
+     "_dp_base_product_id": "21145",
+     "_cost_price": "24.531",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 36515,
+    "t": "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su tunu, S, 2 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGATS02-2",
+     "_regular_price": "32.79",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "32.79",
+     "_dp_base_product_id": "21149",
+     "_cost_price": "20.264",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 36516,
+    "t": "2 vnt. Exclusion Mono Protein Mediterraneo sausas pašaras mažų veislių šunims su tunu, S, 7 kg",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGATS07-2",
+     "_regular_price": "84.99",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "84.99",
+     "_dp_base_product_id": "21153",
+     "_cost_price": "52.462",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37389,
+    "t": "Exclusion Mono Protein Mediterraneo begrūdis sausas pašaras didelių veislių mažiems šuniukams su jautiena L, 12 kg",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "NGPBL12",
+     "_stock": "0.000000",
+     "_stock_status": "outofstock",
+     "_vf_barcode": "801125900446",
+     "_vf_cost_xml": "45.66",
+     "_vf_cost": "38.811",
+     "_vf_personal_cost": "38.811",
+     "_ean": "8011259004468",
+     "_global_unique_id": "8011259004468",
+     "_regular_price": "56.39",
+     "_price": "56.39",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0",
+     "_ps_sandelis": "vf"
+    }
+   },
+   {
+    "id": 37843,
+    "t": "24 vnt. Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-PA37-24",
+     "_regular_price": "87.89",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "87.89",
+     "_dp_base_product_id": "35316",
+     "_cost_price": "62.424",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37844,
+    "t": "24 vnt. Exclusion Hypo konservuotas pašaras šunims su triušiena ir bulvėmis, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-AM37-24",
+     "_regular_price": "87.89",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "87.89",
+     "_dp_base_product_id": "35312",
+     "_cost_price": "62.424",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37861,
+    "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su vištiena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGACA40-12",
+     "_regular_price": "31.79",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "31.79",
+     "_dp_base_product_id": "21125",
+     "_cost_price": "20.196",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37862,
+    "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su vištiena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGACA40-24",
+     "_regular_price": "61.59",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "61.59",
+     "_dp_base_product_id": "21125",
+     "_cost_price": "40.392",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37863,
+    "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su lašiša, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGASA40-12",
+     "_regular_price": "31.89",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "31.89",
+     "_dp_base_product_id": "21139",
+     "_cost_price": "20.196",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37864,
+    "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su lašiša, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGASA40-24",
+     "_regular_price": "61.59",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "61.59",
+     "_dp_base_product_id": "21139",
+     "_cost_price": "40.392",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37865,
+    "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su tunu, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGATA40-12",
+     "_regular_price": "31.89",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "31.89",
+     "_dp_base_product_id": "21141",
+     "_cost_price": "20.196",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37866,
+    "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su tunu, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGATA40-24",
+     "_regular_price": "61.59",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "61.59",
+     "_dp_base_product_id": "21141",
+     "_cost_price": "40.392",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37867,
+    "t": "36 vnt. Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGCATW85-36",
+     "_regular_price": "50.69",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "50.69",
+     "_dp_base_product_id": "21165",
+     "_cost_price": "33.66",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37869,
+    "t": "36 vnt. Exclusion Mediterraneo Mono Protein konservuotas pašaras sterilizuotoms katėms su jautiena, 85 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGCSBW85-36",
+     "_regular_price": "50.69",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "50.69",
+     "_dp_base_product_id": "20523",
+     "_cost_price": "33.66",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37870,
+    "t": "36 vnt. Exclusion Mediterraneo Mono Protein konservuotas pašaras sterilizuotoms katėms su vištiena, 85 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGCSCW85-36",
+     "_regular_price": "50.69",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "50.69",
+     "_dp_base_product_id": "20525",
+     "_cost_price": "33.66",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37882,
+    "t": "12 vnt. Exclusion Hypoallergenic konservai šunims su arkliena ir bulvėmis 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-HM37-12",
+     "_regular_price": "44.89",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "44.89",
+     "_dp_base_product_id": "18608",
+     "_cost_price": "31.2",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37883,
+    "t": "24 vnt. Exclusion Hypoallergenic konservai šunims su arkliena ir bulvėmis 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-HM37-24",
+     "_regular_price": "87.89",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "87.89",
+     "_dp_base_product_id": "18608",
+     "_cost_price": "62.4",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37884,
+    "t": "12 vnt. Exclusion Hypoallergenic konservai šunims su elniena ir bulvėmis 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-VM37-12",
+     "_regular_price": "44.89",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "44.89",
+     "_dp_base_product_id": "18605",
+     "_cost_price": "30.84",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37885,
+    "t": "24 vnt. Exclusion Hypoallergenic konservai šunims su elniena ir bulvėmis 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-VM37-24",
+     "_regular_price": "87.89",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "87.89",
+     "_dp_base_product_id": "18605",
+     "_cost_price": "61.68",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37886,
+    "t": "24 vnt. Exclusion Hypoallergenic konservai šunims su putpelėmis ir žirniais 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-QM37-24",
+     "_regular_price": "87.89",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "87.89",
+     "_dp_base_product_id": "18596",
+     "_cost_price": "57.12",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37887,
+    "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su jautiena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGABA40-12",
+     "_regular_price": "31.79",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "31.79",
+     "_dp_base_product_id": "18521",
+     "_cost_price": "20.196",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37888,
+    "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su jautiena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGABA40-24",
+     "_regular_price": "61.59",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "61.59",
+     "_dp_base_product_id": "18521",
+     "_cost_price": "40.392",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37889,
+    "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su kalakutiena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGAUA40-12",
+     "_regular_price": "31.79",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "31.79",
+     "_dp_base_product_id": "18518",
+     "_cost_price": "20.196",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37890,
+    "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su kalakutiena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGAUA40-24",
+     "_regular_price": "61.59",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "61.59",
+     "_dp_base_product_id": "18518",
+     "_cost_price": "40.392",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37891,
+    "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su veršiena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGAVA40-12",
+     "_regular_price": "31.79",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "31.79",
+     "_dp_base_product_id": "18515",
+     "_cost_price": "20.196",
+     "_ps_sales_90d": "1",
+     "_ps_sales_365d": "1",
+     "_ps_revenue_365d": "26.27",
+     "_ps_orders_365d": "1"
+    }
+   },
+   {
+    "id": 37892,
+    "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su veršiena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGAVA40-24",
+     "_regular_price": "61.59",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "61.59",
+     "_dp_base_product_id": "18515",
+     "_cost_price": "40.392",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37893,
+    "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su ėriena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGALA40-12",
+     "_regular_price": "31.79",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "31.79",
+     "_dp_base_product_id": "18512",
+     "_cost_price": "20.196",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 37894,
+    "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su ėriena, 400 g",
+    "st": "publish",
+    "type": "product",
+    "m": {
+     "_sku": "DP-NGALA40-24",
+     "_regular_price": "61.59",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "61.59",
+     "_dp_base_product_id": "18512",
+     "_cost_price": "40.392",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
+   },
+   {
+    "id": 38167,
+    "t": "36 vnt. Exclusion Hypoalergenic dietinis konservuotas pašaras katėms su kiauliena ir bulvėm, 85 g",
+    "st": "draft",
+    "type": "product",
+    "m": {
+     "_sku": "DP-CHYP85-36",
+     "_regular_price": "52.59",
+     "_stock": null,
+     "_stock_status": "instock",
+     "_price": "52.59",
+     "_dp_base_product_id": "35342",
+     "_cost_price": "37.332",
+     "_ps_sales_90d": "0",
+     "_ps_sales_365d": "0",
+     "_ps_revenue_365d": "0",
+     "_ps_orders_365d": "0"
+    }
    }
-  ],
-  "botu_uztvara_suvestine": [
-   "zalia",
-   "Botų užtvara (log 11-14): 403 465 (filtrai/atc 12, IP 12), 500 7, 302 41, viso 33 715 užkl."
-  ],
-  "botu_suvestine": [],
-  "dropship_sla": [],
-  "avpn_dubl": [],
-  "disable_wp_cron": null,
-  "cron": {
-   "viso": 93,
-   "veluoja_15min": 0,
-   "pvz": []
-  },
-  "as_pending_velu": 0,
-  "feed_failai": {
-   "petshop-vf-cache.xml": [
-    "8702KB",
-    "11-15 09:05",
-    0
-   ]
-  },
-  "feed_ids_n": 2217,
-  "dp_pask": {
-   "kada": "2026-11-15 04:10:10",
-   "viso": 974,
-   "su_proc": 894,
-   "be_proc": 80,
-   "pakeista": [],
-   "klaidos": []
-  },
-  "dp_zurnalas": [
-   {
-    "laikas": "2026-10-02 06:00:21",
-    "pid": 36508,
-    "buvo": "50.89",
-    "tapo": "54.19",
-    "proc": 2.5,
-    "baze": 20391,
-    "kas": "pokytis"
-   },
-   {
-    "laikas": "2026-10-02 06:00:21",
-    "pid": 36507,
-    "buvo": "27.09",
-    "tapo": "28.99",
-    "proc": 2.5,
-    "baze": 19920,
-    "kas": "pokytis"
-   },
-   {
-    "laikas": "2026-10-02 06:00:21",
-    "pid": 36506,
-    "buvo": "89.89",
-    "tapo": "97.09",
-    "proc": 2.5,
-    "baze": 18109,
-    "kas": "pokytis"
-   },
-   {
-    "laikas": "2026-10-02 06:00:21",
-    "pid": 36505,
-    "buvo": "22.79",
-    "tapo": "23.39",
-    "proc": 2.5,
-    "baze": 18106,
-    "kas": "pokytis"
-   },
-   {
-    "laikas": "2026-10-02 06:00:21",
-    "pid": 36504,
-    "buvo": "85.79",
-    "tapo": "93.39",
-    "proc": 2.5,
-    "baze": 18101,
-    "kas": "pokytis"
-   },
-   {
-    "laikas": "2026-10-02 06:00:21",
-    "pid": 36503,
-    "buvo": "22.79",
-    "tapo": "24.19",
-    "proc": 2.5,
-    "baze": 18098,
-    "kas": "pokytis"
-   }
-  ],
-  "dp_nuolaidos": false,
-  "dp_pakai_n": 974,
-  "cache_valymai": [
-   [
-    "11-15 03:20:53",
-    "importas_be_pokyciu",
-    "import #7 skipped 2623",
-    "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "record.php:719 do_action < Import.php:78 execute < wp_loaded_99.php:176 process < wp-settings.php:764 do_action < wp-config.php:124 require_once"
-   ],
-   [
-    "11-15 04:07:26",
-    "importas_be_pokyciu",
-    "import #3 skipped 2784",
-    "/wp-load.php?import_key=v&import_id=3&action=processing",
-    "record.php:719 do_action < Import.php:78 execute < wp_loaded_99.php:176 process < wp-settings.php:764 do_action < wp-config.php:124 require_once"
-   ],
-   [
-    "11-15 04:21:00",
-    "importas_be_pokyciu",
-    "import #7 skipped 2623",
-    "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "record.php:719 do_action < Import.php:78 execute < wp_loaded_99.php:176 process < wp-settings.php:764 do_action < wp-config.php:124 require_once"
-   ],
-   [
-    "11-15 05:07:29",
-    "importas_be_pokyciu",
-    "import #3 skipped 2784",
-    "/wp-load.php?import_key=v&import_id=3&action=processing",
-    "record.php:719 do_action < Import.php:78 execute < wp_loaded_99.php:176 process < wp-settings.php:764 do_action < wp-config.php:124 require_once"
-   ],
-   [
-    "11-15 05:22:09",
-    "importas_be_pokyciu",
-    "import #7 skipped 2623",
-    "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "record.php:719 do_action < Import.php:78 execute < wp_loaded_99.php:176 process < wp-settings.php:764 do_action < wp-config.php:124 require_once"
-   ],
-   [
-    "11-15 06:22:56",
-    "importas_be_pokyciu",
-    "import #7 skipped 2623",
-    "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "record.php:719 do_action < Import.php:78 execute < wp_loaded_99.php:176 process < wp-settings.php:764 do_action < wp-config.php:124 require_once"
-   ],
-   [
-    "11-15 07:07:21",
-    "importas_be_pokyciu",
-    "import #3 skipped 2784",
-    "/wp-load.php?import_key=v&import_id=3&action=processing",
-    "record.php:719 do_action < Import.php:78 execute < wp_loaded_99.php:176 process < wp-settings.php:764 do_action < wp-config.php:124 require_once"
-   ],
-   [
-    "11-15 07:26:06",
-    "importas_be_pokyciu",
-    "import #7 skipped 2623",
-    "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "record.php:719 do_action < Import.php:78 execute < wp_loaded_99.php:176 process < wp-settings.php:764 do_action < wp-config.php:124 require_once"
-   ],
-   [
-    "11-15 08:07:44",
-    "importas_be_pokyciu",
-    "import #3 skipped 2784",
-    "/wp-load.php?import_key=v&import_id=3&action=processing",
-    "record.php:719 do_action < Import.php:78 execute < wp_loaded_99.php:176 process < wp-settings.php:764 do_action < wp-config.php:124 require_once"
-   ],
-   [
-    "11-15 08:20:59",
-    "importas_be_pokyciu",
-    "import #7 skipped 2623",
-    "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "record.php:719 do_action < Import.php:78 execute < wp_loaded_99.php:176 process < wp-settings.php:764 do_action < wp-config.php:124 require_once"
-   ],
-   [
-    "11-15 09:07:53",
-    "importas_be_pokyciu",
-    "import #3 skipped 2784",
-    "/wp-load.php?import_key=v&import_id=3&action=processing",
-    "record.php:719 do_action < Import.php:78 execute < wp_loaded_99.php:176 process < wp-settings.php:764 do_action < wp-config.php:124 require_once"
-   ],
-   [
-    "11-15 09:21:01",
-    "importas_be_pokyciu",
-    "import #7 skipped 2623",
-    "/wp-load.php?import_key=v&import_id=7&action=processing",
-    "record.php:719 do_action < Import.php:78 execute < wp_loaded_99.php:176 process < wp-settings.php:764 do_action < wp-config.php:124 require_once"
-   ]
-  ],
-  "supercache": {
-   "psl": 180,
-   "seniausias": "11-15 08:58"
-  },
-  "cache_cfg": {
-   "cache_enabled": "1",
-   "super_cache_enabled": "1",
-   "wp_cache_mod_rewrite": "1",
-   "wp_cache_not_logged_in": "2",
-   "cache_max_time": "3600",
-   "wp_cache_mobile_enabled": "0",
-   "wp_cache_mutex_disabled": "1",
-   "cache_rebuild_files": "1",
-   "wp_super_cache_late_init": "0",
-   "wp_cache_no_cache_for_get": "1",
-   "cache_compression": "0"
-  },
-  "wpai_imports": [
-   {
-    "id": "1",
-    "name": "goods_clean.xml",
-    "processing": "0",
-    "executing": "0",
-    "triggered": "0",
-    "last_activity": "2026-05-27 11:14:21",
-    "imported": "0",
-    "skipped": "2045",
-    "updated": "0",
-    "count": "2045"
-   },
-   {
-    "id": "2",
-    "name": "products.php",
-    "processing": "0",
-    "executing": "0",
-    "triggered": "1",
-    "last_activity": "2026-11-15 04:02:03",
-    "imported": "212",
-    "skipped": "1048",
-    "updated": "150",
-    "count": "2767"
-   },
-   {
-    "id": "3",
-    "name": "stocks.php",
-    "processing": "0",
-    "executing": "0",
-    "triggered": "0",
-    "last_activity": "2026-11-15 07:07:52",
-    "imported": "0",
-    "skipped": "2784",
-    "updated": "0",
-    "count": "2784"
-   },
-   {
-    "id": "5",
-    "name": "vf-feed.xml",
-    "processing": "0",
-    "executing": "0",
-    "triggered": "0",
-    "last_activity": "2026-11-15 04:31:43",
-    "imported": "14",
-    "skipped": "2609",
-    "updated": "14",
-    "count": "2623"
-   },
-   {
-    "id": "7",
-    "name": "vf-feed.xml",
-    "processing": "0",
-    "executing": "0",
-    "triggered": "0",
-    "last_activity": "2026-11-15 07:21:01",
-    "imported": "0",
-    "skipped": "2623",
-    "updated": "0",
-    "count": "2623"
-   }
-  ],
-  "wpai_hist": [
-   {
-    "i": "7",
-    "time_run": "299",
-    "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2623 skipped",
-    "date": "2026-11-15 07:16:02"
-   },
-   {
-    "i": "7",
-    "time_run": null,
-    "summary": "triggered by cron",
-    "date": "2026-11-15 07:15:02"
-   },
-   {
-    "i": "3",
-    "time_run": "379",
-    "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2784 skipped",
-    "date": "2026-11-15 07:01:33"
-   },
-   {
-    "i": "3",
-    "time_run": null,
-    "summary": "triggered by cron",
-    "date": "2026-11-15 07:00:02"
-   },
-   {
-    "i": "7",
-    "time_run": "297",
-    "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2623 skipped",
-    "date": "2026-11-15 06:16:02"
-   },
-   {
-    "i": "7",
-    "time_run": null,
-    "summary": "triggered by cron",
-    "date": "2026-11-15 06:15:02"
-   },
-   {
-    "i": "3",
-    "time_run": "369",
-    "summary": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2784 skipped",
-    "date": "2026-11-15 06:01:34"
-   },
-   {
-    "i": "3",
-    "time_run": null,
-    "summary": "triggered by cron",
-    "date": "2026-11-15 06:00:02"
-   },
-   {
-    "i": "5",
-    "time_run": "41",
-    "summary": "import finished & cron un-triggered<br>0 Produktai created 14 updated 2609 skipped",
-    "date": "2026-11-15 04:31:02"
-   },
-   {
-    "i": "5",
-    "time_run": null,
-    "summary": "triggered by cron",
-    "date": "2026-11-15 04:30:02"
-   },
-   {
-    "i": "5",
-    "time_run": "102",
-    "summary": "import finished & cron un-triggered<br>0 Produktai created 342 updated 2281 skipped",
-    "date": "2026-11-14 04:31:01"
-   },
-   {
-    "i": "5",
-    "time_run": null,
-    "summary": "triggered by cron",
-    "date": "2026-11-14 04:30:02"
-   }
-  ],
-  "refill_status": [
-   {
-    "status": "active",
-    "n": "462",
-    "mn": "2026-11-20",
-    "mx": "2027-02-22"
-   },
-   {
-    "status": "notified",
-    "n": "382",
-    "mn": "2026-09-23",
-    "mx": "2026-11-19"
-   }
-  ],
-  "refill_artimiausi": [],
-  "email_48h": [
-   {
-    "flow": "browse_abandoned",
-    "status": "sent",
-    "sr": "",
-    "n": "1"
-   },
-   {
-    "flow": "browse_abandoned",
-    "status": "skipped",
-    "sr": "consent_missing",
-    "n": "2"
-   },
-   {
-    "flow": "cart_abandoned",
-    "status": "skipped",
-    "sr": "jau_pirko_po_krepselio",
-    "n": "1"
-   },
-   {
-    "flow": "consent_changed",
-    "status": "sent",
-    "sr": "",
-    "n": "1"
-   },
-   {
-    "flow": "post_purchase_14d",
-    "status": "pending",
-    "sr": "",
-    "n": "134"
-   },
-   {
-    "flow": "post_purchase_14d",
-    "status": "skipped",
-    "sr": "grandine_maistas",
-    "n": "2"
-   },
-   {
-    "flow": "post_purchase_14d",
-    "status": "skipped",
-    "sr": "similar_optout",
-    "n": "1"
-   },
-   {
-    "flow": "post_purchase_2d",
-    "status": "sent",
-    "sr": "",
-    "n": "29"
-   },
-   {
-    "flow": "post_purchase_7d",
-    "status": "pending",
-    "sr": "",
-    "n": "66"
-   },
-   {
-    "flow": "post_purchase_7d",
-    "status": "sent",
-    "sr": "",
-    "n": "2"
-   },
-   {
-    "flow": "refill_due",
-    "status": "sent",
-    "sr": "",
-    "n": "2"
-   },
-   {
-    "flow": "refill_due",
-    "status": "skipped",
-    "sr": "pakartoti_jau_siustas",
-    "n": "5"
-   },
-   {
-    "flow": "refill_due",
-    "status": "skipped",
-    "sr": "similar_optout",
-    "n": "3"
-   },
-   {
-    "flow": "win_back",
-    "status": "sent",
-    "sr": "",
-    "n": "1"
-   }
-  ],
-  "refill_jobs": [
-   {
-    "flow": "refill_due",
-    "status": "deferred",
-    "sr": "preke_nera_sandelyje",
-    "n": "4",
-    "pask": "2026-11-09 08:00:04"
-   },
-   {
-    "flow": "refill_due",
-    "status": "deferred",
-    "sr": "sustabdyta_s1746_timeout",
-    "n": "3",
-    "pask": "2026-10-02 06:00:00"
-   },
-   {
-    "flow": "refill_due",
-    "status": "sent",
-    "sr": "",
-    "n": "135",
-    "pask": "2026-11-14 08:00:01"
-   },
-   {
-    "flow": "refill_due",
-    "status": "sent",
-    "sr": "lifecycle_uzdaryta",
-    "n": "2",
-    "pask": "2026-10-02 08:00:07"
-   },
-   {
-    "flow": "refill_due",
-    "status": "sent",
-    "sr": "preke_nera_sandelyje",
-    "n": "5",
-    "pask": "2026-11-09 08:00:04"
-   },
-   {
-    "flow": "refill_due",
-    "status": "skipped",
-    "sr": "deferral_expired",
-    "n": "8",
-    "pask": "2026-10-29 08:00:01"
-   },
-   {
-    "flow": "refill_due",
-    "status": "skipped",
-    "sr": "pakartoti_jau_siustas",
-    "n": "171",
-    "pask": "2026-11-14 08:00:01"
-   },
-   {
-    "flow": "refill_due",
-    "status": "skipped",
-    "sr": "similar_optout",
-    "n": "91",
-    "pask": "2026-11-14 08:00:01"
-   },
-   {
-    "flow": "win_back",
-    "status": "deferred",
-    "sr": "preke_nera_sandelyje",
-    "n": "1",
-    "pask": "2026-11-11 05:31:29"
-   },
-   {
-    "flow": "win_back",
-    "status": "sent",
-    "sr": "",
-    "n": "9",
-    "pask": "2026-11-14 05:30:04"
-   },
-   {
-    "flow": "win_back",
-    "status": "skipped",
-    "sr": "similar_optout",
-    "n": "1",
-    "pask": "2026-11-05 05:30:08"
-   }
-  ],
-  "opcijos": {
-   "ps_lenteliu_valymas_pask": "{\"laikas\":\"2026-11-15 05:50:03\",\"dry\":false,\"ps_carts\":{\"kandidatai\":0,\"istrinta\":0,\"klaida\":null},\"ps_web_ivykiai\":{\"kandidatai\":0,\"istrinta\":0,\"klaida\":null},\"ps_sargas_klaidos\":{\"kandidatai\":199,\"istrinta\":199,\"klaida\":null},\"woocommerce_sessions\":{\"kandidatai\":470,\"istrinta\":470,\"klaida\":null}}",
-   "ps_sugrazinimas_pask": "{\"laikas\":\"2026-11-15 07:30:07\",\"kand\":14,\"ikelta\":0,\"pirko\":3,\"dubl\":11}",
-   "ps_gavimo_perrus_pask": "{\"laikas\":\"2026-11-13 10:57:26\",\"rez\":{\"14039\":{\"pid\":14039,\"eil\":[]}}}",
-   "ps_botu_sargas_isjungtas": false,
-   "ps_dydziai_katalogas_isjungta": false,
-   "ps_dp_kainos_isjungta": false
-  },
-  "php_log": {
-   "kelias": "/home/gyvunai2/domains/petshop.lt/logs/php_error.log",
-   "kb": 7529,
-   "tipai": {
-    "WordPress database error Duplicate entry 'N-N-N-puslapis-/gamintojas/quattro/?utm_source=google&ut...' for key 'vienas' for query INSERT INTO `gajN_ps": [
-     13,
-     "11-15 02:10"
-    ],
-    "Cron įvykio atšaukimo klaida kabliui: woo_lithuaniapost_sync_tracking_data, klaidos kodas: could_not_set, klaidos pranešimas: Nepavyko išsaugoti cron ": [
-     10,
-     "11-15 08:53"
-    ],
-    "Užsakymas patvirtintas: užsakymas N, suma: N.NEUR": [
-     7,
-     "11-14 21:25"
-    ],
-    "WordPress database error Duplicate entry 'N-N-N-puslapis-/kategorija/sunims/?product_brand=exclusi...' for key 'vienas' for query INSERT INTO `gajN_ps": [
-     6,
-     "11-15 02:10"
-    ],
-    "PHP Warning:  Array to string conversion in /home/gyvunaiN/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line N": [
-     4,
-     "11-15 06:31"
-    ],
-    "WordPress database error Duplicate entry 'N-N-N-puslapis-/gamintojas/ambrosia/?utm_source=google&u...' for key 'vienas' for query INSERT INTO `gajN_ps": [
-     2,
-     "11-14 02:10"
-    ],
-    "WordPress database error Duplicate entry 'N-N-N-puslapis-/gamintojas/real-dog/?utm_source=google&u...' for key 'vienas' for query INSERT INTO `gajN_ps": [
-     2,
-     "11-14 02:10"
-    ],
-    "WordPress database error Duplicate entry 'N-N-N-puslapis-/kategorija/sunims/?product_brand=farmina...' for key 'vienas' for query INSERT INTO `gajN_ps": [
-     2,
-     "11-15 02:10"
-    ],
-    "WordPress database error Duplicate entry 'N-N-N-puslapis-/kategorija/sunims/antiparazitines-priemo...' for key 'vienas' for query INSERT INTO `gajN_ps": [
-     2,
-     "11-15 02:10"
-    ],
-    "WordPress database error Duplicate entry 'N-N-N-puslapis-/product/sampunas-jorksyro-terjeru-suniuk...' for key 'vienas' for query INSERT INTO `gajN_ps": [
-     2,
-     "11-14 02:10"
-    ],
-    "PHP Warning:  is_file(): open_basedir restriction in effect. File(/proc/loadavg) is not within the allowed path(s): (/home/gyvunaiN/:/tmp:/usr/share/p": [
-     2,
-     "11-15 09:58"
-    ],
-    "WordPress database error Duplicate entry 'N-N-N-puslapis-/kategorija/katems/tualetai-kraikai-semtu...' for key 'vienas' for query INSERT INTO `gajN_ps": [
-     2,
-     "11-15 02:10"
-    ]
-   },
-   "d29": 42,
-   "d30": 28,
-   "fatal": 2
-  },
-  "mu_md5": {
-   "petshop-botu-sargas.php": "3c39cbdb 09-27 14:07",
-   "petshop-dp-kainos.php": "f1b3aace 11-03 09:59",
-   "petshop-dydziai-katalogas.php": "262c50ab 11-03 00:58",
-   "petshop-feeds.php": "NERA",
-   "petshop-rytas.php": "91709a3f 11-02 14:49",
-   "petshop-cache.php": "3b300e4e 09-30 10:30",
-   "petshop-mobilus.php": "6f23c1b0 09-30 00:37",
-   "petshop-paieska.php": "a5126afd 10-27 19:56",
-   "petshop-gidu-nuorodos.php": "c9bc9ff2 09-29 21:23",
-   "petshop-av-limit.php": "80a5bc1c 09-28 19:10",
-   "petshop-dropship-sargas.php": "4854a421 09-27 11:29",
-   "petshop-cf-ip.php": "08213560 09-27 13:00"
-  },
-  "heartbeat": 200,
-  "laikas": "2026-11-15 09:59:08",
-  "trukme_s": 1.5
+  ]
  },
- "4": {
-  "v": "S1869a",
-  "faze": "4",
-  "home": "/home/gyvunai2/domains/petshop.lt",
-  "backup_naujausi": [],
-  "wpai_hist_nakt": [
-   {
-    "i": "7",
-    "time_run": "299",
-    "s": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2623 skipped",
-    "date": "2026-11-15 07:16:02"
-   },
-   {
-    "i": "7",
-    "time_run": null,
-    "s": "triggered by cron",
-    "date": "2026-11-15 07:15:02"
-   },
-   {
-    "i": "3",
-    "time_run": "379",
-    "s": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2784 skipped",
-    "date": "2026-11-15 07:01:33"
-   },
-   {
-    "i": "3",
-    "time_run": null,
-    "s": "triggered by cron",
-    "date": "2026-11-15 07:00:02"
-   },
-   {
-    "i": "7",
-    "time_run": "297",
-    "s": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2623 skipped",
-    "date": "2026-11-15 06:16:02"
-   },
-   {
-    "i": "7",
-    "time_run": null,
-    "s": "triggered by cron",
-    "date": "2026-11-15 06:15:02"
-   },
-   {
-    "i": "3",
-    "time_run": "369",
-    "s": "import finished & cron un-triggered<br>0 Produktai created 0 updated 2784 skipped",
-    "date": "2026-11-15 06:01:34"
-   },
-   {
-    "i": "3",
-    "time_run": null,
-    "s": "triggered by cron",
-    "date": "2026-11-15 06:00:02"
-   },
-   {
-    "i": "5",
-    "time_run": "41",
-    "s": "import finished & cron un-triggered<br>0 Produktai created 14 updated 2609 skipped",
-    "date": "2026-11-15 04:31:02"
-   },
-   {
-    "i": "5",
-    "time_run": null,
-    "s": "triggered by cron",
-    "date": "2026-11-15 04:30:02"
-   }
-  ],
-  "wpai_imports": [
-   {
-    "id": "1",
-    "name": "goods_clean.xml",
-    "processing": "0",
-    "executing": "0",
-    "triggered": "0",
-    "last_activity": "2026-05-27 11:14:21",
-    "imported": "0",
-    "skipped": "2045",
-    "updated": "0",
-    "count": "2045"
-   },
-   {
-    "id": "2",
-    "name": "products.php",
-    "processing": "0",
-    "executing": "0",
-    "triggered": "1",
-    "last_activity": "2026-11-15 04:02:03",
-    "imported": "212",
-    "skipped": "1048",
-    "updated": "150",
-    "count": "2767"
-   },
-   {
-    "id": "3",
-    "name": "stocks.php",
-    "processing": "0",
-    "executing": "0",
-    "triggered": "0",
-    "last_activity": "2026-11-15 07:07:52",
-    "imported": "0",
-    "skipped": "2784",
-    "updated": "0",
-    "count": "2784"
-   },
-   {
-    "id": "5",
-    "name": "vf-feed.xml",
-    "processing": "0",
-    "executing": "0",
-    "triggered": "0",
-    "last_activity": "2026-11-15 04:31:43",
-    "imported": "14",
-    "skipped": "2609",
-    "updated": "14",
-    "count": "2623"
-   },
-   {
-    "id": "7",
-    "name": "vf-feed.xml",
-    "processing": "0",
-    "executing": "0",
-    "triggered": "0",
-    "last_activity": "2026-11-15 07:21:01",
-    "imported": "0",
-    "skipped": "2623",
-    "updated": "0",
-    "count": "2623"
-   }
-  ],
-  "ads_offline_opc": [],
-  "ads_offline_fetch": [
-   "15/Nov/2026:05:21:24 +0200 200"
-  ],
-  "konv_vs_wc": [
-   {
-    "diena": "2026-11-08",
-    "konv": "5.0",
-    "wc_gclid": "5"
-   },
-   {
-    "diena": "2026-11-09",
-    "konv": "6.0",
-    "wc_gclid": "6"
-   },
-   {
-    "diena": "2026-11-10",
-    "konv": "7.0",
-    "wc_gclid": "7"
-   },
-   {
-    "diena": "2026-11-11",
-    "konv": "4.0",
-    "wc_gclid": "2"
-   },
-   {
-    "diena": "2026-11-12",
-    "konv": "3.0",
-    "wc_gclid": "4"
-   },
-   {
-    "diena": "2026-11-13",
-    "konv": "4.0",
-    "wc_gclid": "5"
-   },
-   {
-    "diena": "2026-11-14",
-    "konv": "0.0",
-    "wc_gclid": "5"
-   }
-  ],
-  "reklama_pask": [
-   {
-    "diena": "2026-11-12",
-    "n": "4",
-    "eur": "37.65",
-    "konv": "3.00",
-    "irasyta": "2026-11-14 03:01:30"
-   },
-   {
-    "diena": "2026-11-13",
-    "n": "4",
-    "eur": "39.58",
-    "konv": "4.00",
-    "irasyta": "2026-11-15 03:01:29"
-   },
-   {
-    "diena": "2026-11-14",
-    "n": "4",
-    "eur": "38.16",
-    "konv": "0.00",
-    "irasyta": "2026-11-15 03:01:29"
-   }
-  ],
-  "uzs_nakt": [
-   {
-    "id": "38680",
-    "status": "wc-processing",
-    "suma": "210.86",
-    "pm": "paysera",
-    "date_created_gmt": "2026-11-14 18:59:46"
-   },
-   {
-    "id": "38681",
-    "status": "wc-processing",
-    "suma": "31.99",
-    "pm": "paysera",
-    "date_created_gmt": "2026-11-14 19:24:00"
-   }
-  ],
-  "laikas": "2026-11-15 09:59:15",
-  "trukme_s": 0
- },
- "5": {
-  "v": "S1869a",
-  "faze": "5",
-  "h0": "/home/gyvunai2",
-  "backup_state": "{\n    \"last_result\": \"OK\",\n    \"last_run\": \"2026-11-15T02:00:25+00:00\",\n    \"file\": \"petshop-backups\\/2026\\/11\\/petshop-2026-11-15_020002.tar.gz.enc\",\n    \"bytes\": 60707990,\n    \"sha1\": \"60fedc4956378fa2a3d71d3d2596badd362fc042\",\n    \"tables\": 229,\n    \"rows\": 1811704,\n    \"code_files\": 619,\n    \"duration_s\": 23.1\n}",
-  "backup_state_mtime": "11-15 04:00",
-  "backup_naujausi": [
-   [
-    "ps-backup.php",
-    "0MB",
-    "11-02 10:27"
-   ],
-   [
-    "ps-backup.php.bak_s1815b",
-    "0MB",
-    "11-02 10:27"
-   ],
-   [
-    "ps-backup.php.bak_s1815",
-    "0MB",
-    "11-02 10:23"
-   ],
-   [
-    "ps-backup.php.bak_h256",
-    "0MB",
-    "08-24 20:27"
-   ],
-   [
-    "ps-backup-watch.php",
-    "0MB",
-    "08-04 11:08"
-   ],
-   [
-    "ps-backup.php.bak_20260804-064640",
-    "0MB",
-    "08-04 09:46"
-   ]
-  ],
-  "fatal": [
-   "[14-Nov-2026 04:20:16 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wpdb.php on line 2328",
-   "[14-Nov-2026 08:42:43 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 15052800 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/functions.php on line 5481"
-  ],
-  "laikas": "2026-11-15 09:59:22",
-  "trukme_s": 0
- },
- "v": "dep-075740",
+ "v": "dep-080738",
  "kurimas": 200,
- "sid": 8309,
+ "sid": 8315,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
