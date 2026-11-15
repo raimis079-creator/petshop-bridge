@@ -1,0 +1,61 @@
+{
+ "1": {
+  "v": "S1869m",
+  "desk": {
+   "1719": [
+    "35923",
+    "36101",
+    "38425"
+   ],
+   "38425": [
+    "38425"
+   ],
+   "#1719": [],
+   "AVPN011639": [
+    "38425"
+   ],
+   "IAPV000776": [
+    "38425"
+   ]
+  },
+  "kodas": [
+   "\tprotected static function paieska_ids( $q ) {",
+   "\t\tglobal $wpdb; $pf = $wpdb->prefix;",
+   "\t\t$like = '%' . $wpdb->esc_like( $q ) . '%';",
+   "\t\t$ids  = $wpdb->get_col( $wpdb->prepare(",
+   "\t\t\t\"SELECT DISTINCT o.id FROM {$pf}wc_orders o",
+   "\t\t\t LEFT JOIN {$pf}wc_order_addresses a ON a.order_id = o.id",
+   "\t\t\t WHERE o.type = 'shop_order' AND o.status <> 'wc-checkout-draft' AND (",
+   "\t\t\t   o.id LIKE %s OR o.billing_email LIKE %s OR a.first_name LIKE %s",
+   "\t\t\t   OR a.last_name LIKE %s OR a.phone LIKE %s",
+   "\t\t\t   OR CONCAT(a.first_name,' ',a.last_name) LIKE %s",
+   "\t\t\t   OR a.address_1 LIKE %s OR a.city LIKE %s OR a.postcode LIKE %s",
+   "\t\t\t   OR a.company LIKE %s )",
+   "\t\t\t ORDER BY o.id DESC LIMIT 120\",",
+   "\t\t\t$like, $like, $like, $like, $like, $like, $like, $like, $like, $like ) );",
+   "",
+   "\t\t$pagal_preke = $wpdb->get_col( $wpdb->prepare(",
+   "\t\t\t\"SELECT DISTINCT order_id FROM {$pf}woocommerce_order_items",
+   "\t\t\t WHERE order_item_name LIKE %s ORDER BY order_id DESC LIMIT 60\", $like ) );",
+   "",
+   "\t\t$pagal_siunta = $wpdb->get_col( $wpdb->prepare(",
+   "\t\t\t\"SELECT DISTINCT order_id FROM {$pf}wc_orders_meta",
+   "\t\t\t WHERE meta_value LIKE %s LIMIT 40\", $like ) );",
+   "",
+   "\t\treturn array_slice( array_unique( array_merge( $ids, $pagal_preke, $pagal_siunta ) ), 0, 150 );",
+   "\t}",
+   "",
+   "\t/** Tikslinė paieška atskirais laukais (Raimio filtrai). AND semantika. */",
+   "\tprotected static function lauku_paieska( $f ) {",
+   "\t\tif ( '' === $f['nr'] && '' === $f['klientas'] && '' === $f['tel'] && '' === $f['adresas'] ) { return null; }",
+   "\t\tglobal $wpdb; $pf = $wpdb->prefix;"
+  ]
+ },
+ "v": "dep-090624",
+ "kurimas": 200,
+ "sid": 8326,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
