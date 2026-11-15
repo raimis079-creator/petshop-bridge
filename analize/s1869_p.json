@@ -1,0 +1,78 @@
+{
+ "1": {
+  "v": "S1869p",
+  "faze": "1",
+  "desk_md5": "b6229e9c7c189fa42c2fc0347a36bb10",
+  "snip_md5": "ff63d36bf09d291317b6420da0b71d6e",
+  "desk_test": {
+   "1719": [
+    "35923",
+    "36101",
+    "38425"
+   ],
+   "38425": [
+    "38425"
+   ],
+   "#1719": []
+  },
+  "wc_test": {
+   "1719": [],
+   "38425": [
+    38425
+   ]
+  }
+ },
+ "2": {
+  "v": "S1869p",
+  "faze": "2",
+  "desk_md5": "b6229e9c7c189fa42c2fc0347a36bb10",
+  "snip_md5": "ff63d36bf09d291317b6420da0b71d6e",
+  "bak_desk": true,
+  "rasyta": 190780,
+  "snip_upd": 1,
+  "desk_md5_po": "7d32da0cd3170731b3720f109fd36fb8",
+  "snip_md5_po": "987b7fab6042022a3f7d2f639b8b5777"
+ },
+ "3": {
+  "v": "S1869p",
+  "faze": "3",
+  "desk_md5": "7d32da0cd3170731b3720f109fd36fb8",
+  "snip_md5": "987b7fab6042022a3f7d2f639b8b5777",
+  "desk_test": {
+   "1719": [
+    "38425",
+    "35923",
+    "36101"
+   ],
+   "38425": [
+    "38425"
+   ],
+   "#1719": [
+    "38425",
+    "35923",
+    "36101"
+   ]
+  },
+  "wc_test": {
+   "1719": [
+    38425
+   ],
+   "38425": [
+    38425
+   ]
+  },
+  "nr_1719": "1719",
+  "hb": {
+   "/": 200,
+   "/wp-admin/admin.php?page=ps-desk": 302
+  },
+  "fatal_15": []
+ },
+ "v": "dep-091632",
+ "kurimas": 200,
+ "sid": 8329,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
