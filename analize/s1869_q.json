@@ -1,0 +1,179 @@
+{
+ "1": {
+  "v": "S1869q",
+  "p": {
+   "23593": {
+    "t": "Bioveta papildas Vitaplastin forte, 1 kg",
+    "st": "draft",
+    "sku": "BIOV1329",
+    "vf_kodas": "",
+    "ranka": "taip",
+    "vmvt": "2026-11-09 VMVT aktas INS-26-00078 (KPT) – iki registracijos, Raimio nurodymas 12:40",
+    "pard": 2
+   },
+   "23595": {
+    "t": "Bioveta papildas Vitaplastin forte, 5 kg",
+    "st": "draft",
+    "sku": "BIOV1330",
+    "vf_kodas": "",
+    "ranka": "taip",
+    "vmvt": "2026-11-09 VMVT aktas INS-26-00078 (KPT) – iki registracijos, Raimio nurodymas 12:40",
+    "pard": 1
+   },
+   "23788": {
+    "t": "Candioli Evexia Plus tabletės šunims ir katėms, N1",
+    "st": "draft",
+    "sku": "PAE6359",
+    "vf_kodas": "",
+    "ranka": "taip",
+    "vmvt": "2026-11-13 VMVT (kanapių aliejus + gydomieji teiginiai), Raimio nurodymas 19:41",
+    "pard": 0
+   },
+   "25175": {
+    "t": "Candioli Evexia plus skausmo malšinimo lašai šunim",
+    "st": "draft",
+    "sku": "PAE5479",
+    "vf_kodas": "",
+    "ranka": "taip",
+    "vmvt": "2026-11-13 VMVT (kanapių aliejus + gydomieji teiginiai), Raimio nurodymas 19:41",
+    "pard": 0
+   },
+   "25319": {
+    "t": "Akvariumas burbulas 4l",
+    "st": "draft",
+    "sku": "S-H203JA",
+    "vf_kodas": "",
+    "ranka": "taip",
+    "vmvt": "",
+    "pard": 0
+   },
+   "26050": {
+    "t": "Drakonape plataus spectro CBD aliejus 1200mg, 30 m",
+    "st": "draft",
+    "sku": "VET1200",
+    "vf_kodas": "",
+    "ranka": "taip",
+    "vmvt": "2026-11-09 VMVT aktas INS-26-00078, Raimio nurodymas 11:03",
+    "pard": 0
+   },
+   "26471": {
+    "t": "Akvariumas burbulas 5.5l",
+    "st": "draft",
+    "sku": "S-H204JA",
+    "vf_kodas": "",
+    "ranka": "taip",
+    "vmvt": "",
+    "pard": 0
+   },
+   "26473": {
+    "t": "Akvariumas burbulas  7.5l",
+    "st": "draft",
+    "sku": "S-H205JA",
+    "vf_kodas": "",
+    "ranka": "taip",
+    "vmvt": "",
+    "pard": 0
+   },
+   "34909": {
+    "t": "FLEXI pavadėlis šuniui Comfort Plus XS juostinis 3",
+    "st": "draft",
+    "sku": "FLEXI076",
+    "vf_kodas": "",
+    "ranka": "taip",
+    "vmvt": "",
+    "pard": 0
+   },
+   "34967": {
+    "t": "LAB V Lašišų aliejus šunims ir katėms 250ml      ",
+    "st": "draft",
+    "sku": "66610",
+    "vf_kodas": "",
+    "ranka": "taip",
+    "vmvt": "",
+    "pard": 0
+   },
+   "38270": {
+    "t": "Little one Kalėdinis skanėstų rinkinys jūrų kiauly",
+    "st": "draft",
+    "sku": "32520",
+    "vf_kodas": "",
+    "ranka": "taip",
+    "vmvt": "2026-11-09 VMVT aktas INS-26-00078 (KPT) – iki registracijos, Raimio nurodymas 12:40",
+    "pard": 0
+   }
+  },
+  "xml": [
+   "class-import-rules-vf.php:47 private array $excluded_skus = [ 'VET1400', 'PAE6359', 'PAE5479' ]; // S1866 (Raimis 2026-11-13): Candioli Evexia — neprekiaujam",
+   "class-import-rules-vf.php:297 if ( in_array( $sku, $this->excluded_skus, true ) ) {"
+  ],
+  "opt_like": [
+   {
+    "option_name": "cmplz_excluded_posts_array",
+    "v": "a:0:{}"
+   },
+   {
+    "option_name": "ps_zb_kartele_isimtys_pav",
+    "v": "a:7:{i:0;s:19:\"advento kalendorius\";i:1;s:4:\"xmas\";i:2;s:6:\"kalėd\";i:3;s:9:\"christmas\";i:4;s:6:\"gimcat\";i:5;s:6:\"gimdog\";i:6;s:6:\"gimpet\";}"
+   },
+   {
+    "option_name": "ps_zb_kartele_isimtys_brand",
+    "v": "a:2:{i:0;s:6:\"gimcat\";i:1;s:6:\"gimdog\";}"
+   }
+  ],
+  "s565": {
+   "name": "Petshop VF Sync v1.2 (reprice+stock+publish; S1724 stock be pokyčio nerašo)",
+   "active": "1",
+   "len": 22885
+  },
+  "s565_l": [
+   "68 function petshop_vf_sync_load_feed() {",
+   "96 function petshop_vf_sync_reprice( $mode, $limit, $offset, $only_sku ) {",
+   "131 'skip_no_feed'  => 0,   // prekės nėra VF feed'e",
+   "132 'skip_locked'   => 0,   // _manual_price_override / _petshop_lock_pricing",
+   "133 'skip_promo'    => 0,   // _petshop_sale_batch aktyvus",
+   "134 'skip_no_change'=> 0,   // XML kainos ir final kainos nesikeičia",
+   "149 $stats['skip_no_feed']++;",
+   "157 $stats['skip_locked']++;",
+   "164 $stats['skip_promo']++;",
+   "191 $stats['skip_no_change']++;",
+   "263 function petshop_vf_sync_stock( $mode, $limit, $offset, $only_sku ) {",
+   "295 'skip_no_feed'     => 0,  // -> zero out'inam qty",
+   "311 $stats['skip_no_feed']++;",
+   "341 $stats['skipped_same'] = ( $stats['skipped_same'] ?? 0 ) + 1;",
+   "365 //      _vf_skip_reason, _vf_duplicate_of, _petshop_review_reason",
+   "370 function petshop_vf_sync_publish( $mode, $limit, $offset, $only_sku ) {",
+   "388 WHERE p.post_type='product' AND p.post_status='draft'",
+   "456 $skip_reason  = (string) get_post_meta( $pid, '_vf_skip_reason', true );",
+   "459 if ( $needs_review === 'yes' || ! empty( $sku_conflict ) || $skip_reason !== ''",
+   "489 // Naudojam wp_update_post, bet TIK su post_status — nieko kito neliečia",
+   "490 $r = wp_update_post( array( 'ID' => $pid, 'post_status' => 'publish' ), true );",
+   "492 update_post_meta( $pid, '_vf_auto_published_at', current_time( 'mysql' ) );",
+   "502 function petshop_vf_sync_cron_manage( $action ) {"
+  ],
+  "imp": {
+   "5": {
+    "create_new_records": "1",
+    "is_update_status": "0",
+    "is_delete_missing": "0",
+    "duplicate_matching": "auto",
+    "unique_key": "{sku_id[1]}",
+    "custom_duplicate_name": "_sku"
+   },
+   "7": {
+    "create_new_records": "0",
+    "is_update_status": "0",
+    "is_delete_missing": "0",
+    "duplicate_matching": "manual",
+    "unique_key": "- {id[1]} - {sku_id[1]}",
+    "custom_duplicate_name": "_vf_supplier_sku"
+   }
+  }
+ },
+ "v": "dep-103637",
+ "kurimas": 200,
+ "sid": 8330,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
