@@ -1,7 +1,7 @@
 {
- "v": "dep-213608",
+ "v": "dep-213806",
  "kurimas": 200,
- "sid": 8376,
+ "sid": 8377,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
@@ -11,14 +11,14 @@
   "shots": [
    {
     "n": "s1874_dbg2",
-    "u": "https://petshop.lt/?ps_s1874w=1&nc=1794865047",
+    "u": "https://petshop.lt/?ps_s1874w=1&nc=1794865176",
     "w": 390,
     "h": 400,
     "eval": "document.body.innerText"
    },
    {
     "n": "s1874_dbg",
-    "u": "https://petshop.lt/paskyra/prenumeratos/?nc=1794865047",
+    "u": "https://petshop.lt/paskyra/prenumeratos/?nc=1794865176",
     "w": 390,
     "h": 900,
     "eval": "document.body.className.indexOf('logged-in')+' | '+document.cookie.length"
@@ -27,11 +27,13 @@
   "cookies": [
    {
     "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
-    "value": "terra%7C1794875845%7C86RyA2ei6BVB8gEnzLKtJrjPESZyI4Bd8IckfI6JMey%7C56759cafe44306d110a712ab9c8b6e9173a0e73d464e8bb529becde202508043"
+    "value": "terra|1794875974|0QIAHiv05e3WEsGpRU9T62fEWYAqWhYykWY4fYuudm7|a156447fe500ee7564c2cb462858baaf0b1a154264f24121011d43b4e21bf5d8",
+    "domain": "petshop.lt"
    },
    {
     "name": "ps_js",
-    "value": "1"
+    "value": "1",
+    "domain": "petshop.lt"
    }
   ],
   "cname": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
@@ -48,18 +50,18 @@
  },
  "shots": {
   "s1874_dbg2": {
-   "status": 201,
-   "url": "https://petshop.lt/?ps_s1874w=1&nc=1794865047",
+   "status": 200,
+   "url": "https://petshop.lt/?ps_s1874w=1&nc=1794865176",
    "title": "",
    "errors": [],
-   "eval": "{\"uid\":0,\"keys\":[],\"v\":false,\"len\":0,\"pradzia\":\"\"}"
+   "eval": "{\"uid\":44,\"keys\":[\"wordpress_logged_in_d446672427955a6d243d454e07bb1b71\",\"ps_js\"],\"v\":44,\"len\":125,\"pradzia\":\"terra|1794875974|0QIAHiv05e3WE\"}"
   },
   "s1874_dbg": {
    "status": 200,
-   "url": "https://petshop.lt/paskyra/prenumeratos/?nc=1794865047",
+   "url": "https://petshop.lt/paskyra/prenumeratos/?nc=1794865176",
    "title": "Mano paskyra - Petshop.lt",
    "errors": [],
-   "eval": "-1 | 1175"
+   "eval": "50 | 1440"
   }
  }
 }
