@@ -1,7 +1,7 @@
 {
- "v": "dep-213200",
+ "v": "dep-213406",
  "kurimas": 200,
- "sid": 8374,
+ "sid": 8375,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
@@ -11,7 +11,7 @@
   "shots": [
    {
     "n": "s1874_dbg",
-    "u": "https://petshop.lt/paskyra/prenumeratos/?nc=1794864815",
+    "u": "https://petshop.lt/paskyra/prenumeratos/?nc=1794864924",
     "w": 390,
     "h": 900,
     "eval": "document.body.className.indexOf('logged-in')+' | '+document.cookie.length"
@@ -20,7 +20,7 @@
   "cookies": [
    {
     "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
-    "value": "terra|1794875613|VpE8zrkdohXBH1JoF4Ptr3sjgXCD7zewCDzuGddgwG5|ec9d86b3378c5dfb003bbbabc34784ac9ad3e0354c6baf6c895412cb6fbf003e"
+    "value": "terra%7C1794875723%7CG3lLvCJu9LC3QuvMHQuLpy9Oa5xI9IkUUZgISLteTs1%7C04bb7b2c47adcb0308ef24c1dd82d5c40bfca9258d05fe224e46ff10606959f5"
    },
    {
     "name": "ps_js",
@@ -41,8 +41,8 @@
  },
  "shots": {
   "s1874_dbg": {
-   "status": 201,
-   "url": "https://petshop.lt/paskyra/prenumeratos/?nc=1794864815",
+   "status": 200,
+   "url": "https://petshop.lt/paskyra/prenumeratos/?nc=1794864924",
    "title": "Mano paskyra - Petshop.lt",
    "errors": [],
    "eval": "-1 | 1175"
