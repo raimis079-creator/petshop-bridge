@@ -1,0 +1,132 @@
+{
+ "1": {
+  "v": "S1870g",
+  "langas": [
+   "11-15 09:51",
+   "11-16 09:51"
+  ],
+  "failai": [
+   [
+    "Nov-2026.tar.gz",
+    "0.4MB",
+    "11-16 08:00"
+   ],
+   [
+    "Nov-2026.tar.gz.1",
+    "1.1MB",
+    "11-16 00:11"
+   ],
+   [
+    "Nov-2026.tar.gz.10",
+    "0.3MB",
+    "11-11 06:15"
+   ],
+   [
+    "Nov-2026.tar.gz.11",
+    "1.3MB",
+    "11-11 00:11"
+   ],
+   [
+    "Nov-2026.tar.gz.12",
+    "0.2MB",
+    "11-10 05:05"
+   ],
+   [
+    "Nov-2026.tar.gz.2",
+    "0.3MB",
+    "11-15 07:17"
+   ],
+   [
+    "Nov-2026.tar.gz.3",
+    "1.2MB",
+    "11-15 00:11"
+   ],
+   [
+    "Nov-2026.tar.gz.4",
+    "0.3MB",
+    "11-14 06:23"
+   ],
+   [
+    "Nov-2026.tar.gz.5",
+    "1.1MB",
+    "11-14 00:10"
+   ],
+   [
+    "Nov-2026.tar.gz.6",
+    "0.3MB",
+    "11-13 07:52"
+   ],
+   [
+    "Nov-2026.tar.gz.7",
+    "1.4MB",
+    "11-13 00:10"
+   ],
+   [
+    "Nov-2026.tar.gz.8",
+    "0.2MB",
+    "11-12 06:02"
+   ],
+   [
+    "Nov-2026.tar.gz.9",
+    "1.3MB",
+    "11-12 00:10"
+   ],
+   [
+    "php_error.log",
+    "7.4MB",
+    "11-16 09:42"
+   ]
+  ],
+  "skaityta": [
+   [
+    "Nov-2026.tar.gz",
+    11474
+   ],
+   [
+    "Nov-2026.tar.gz.1",
+    31942
+   ]
+  ],
+  "viso": 29,
+  "statusai": {
+   "200": 29
+  },
+  "view_statusai": {
+   "-|200": 27,
+   "visos_kruvoje|200": 2
+  },
+  "kruva_uzkl": [
+   {
+    "t": "11-15 10:43:18",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "hyps06",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-15 19:36:25",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "hyps06",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   }
+  ],
+  "e500": [],
+  "php_log": "php_error.log",
+  "fatal_para_n": 0,
+  "fatal_para": [],
+  "e500_fatal": [],
+  "trukme_s": 0.1
+ },
+ "v": "dep-075004",
+ "kurimas": 200,
+ "sid": 8343,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
