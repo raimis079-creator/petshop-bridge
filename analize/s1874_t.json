@@ -1,7 +1,7 @@
 {
- "v": "dep-212657",
+ "v": "dep-215259",
  "kurimas": 200,
- "sid": 8373,
+ "sid": 8378,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
@@ -11,13 +11,13 @@
   "shots": [
    {
     "n": "s1874_1_preke",
-    "u": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?t=1794864519",
+    "u": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?t=1794866076",
     "w": 390,
     "h": 1800
    },
    {
     "n": "s1874_2_katalogas",
-    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?t=1794864519",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?t=1794866076",
     "w": 390,
     "h": 1600
    },
@@ -62,7 +62,7 @@
     "click": "a[aria-label=\"Rečiau\"]"
    },
    {
-    "n": "s1874_8_krepselis_35",
+    "n": "s1874_8_krepselis_25",
     "u": "https://petshop.lt/krepselis/",
     "w": 390,
     "h": 2200,
@@ -96,7 +96,13 @@
   "cookies": [
    {
     "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
-    "value": "terra|1794875319|S6osGJ78I1qxdVyczqgrzlLyvyHg5lJYusuDCDfTqwj|e7f8e1e6e98daa0b8fc8457fdb07f1a153cd839583f2a22649df230675015dd3"
+    "value": "terra|1794876876|Ue1otbjh9rIMVddhdYhUaB3Euaj57sSkNeeJqTxYZIN|7404b4da11e26e01fc0b27a1110ab1a0360deec61b52a8f93984027a3fb7ab34",
+    "domain": "petshop.lt"
+   },
+   {
+    "name": "ps_js",
+    "value": "1",
+    "domain": "petshop.lt"
    }
   ],
   "prekes": [
@@ -106,75 +112,73 @@
  },
  "shots": {
   "s1874_1_preke": {
-   "status": 201,
-   "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?t=1794864519",
+   "status": 200,
+   "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?t=1794866076",
    "title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg - Petshop.lt",
    "errors": []
   },
   "s1874_2_katalogas": {
-   "status": 201,
-   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?t=1794864519",
+   "status": 200,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?t=1794866076",
    "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
    "errors": []
   },
   "s1874_3a_ideti": {
-   "status": 201,
+   "status": 200,
    "url": "https://petshop.lt/?add-to-cart=18587&quantity=1",
    "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
    "errors": []
   },
   "s1874_3b_ideti": {
-   "status": 201,
+   "status": 200,
    "url": "https://petshop.lt/?add-to-cart=19496&quantity=2",
    "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
    "errors": []
   },
   "s1874_4_krepselis_isj": {
-   "status": 201,
+   "status": 200,
    "url": "https://petshop.lt/krepselis/",
    "title": "Krepšelis - Petshop.lt",
    "errors": [],
-   "eval": "NERA BLOKO"
+   "eval": "Prenumeruoti\nGaukite šį maistą reguliariai – likus 7 dienoms parašysime, ką ir už kiek išsiųsime."
   },
   "s1874_5_jungiklis": {
-   "status": 201,
-   "url": "https://petshop.lt/krepselis/",
+   "status": 200,
+   "url": "https://petshop.lt/krepselis/#ps-pren",
    "title": "Krepšelis - Petshop.lt",
    "errors": [],
-   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('#ps-pren > a')\n"
+   "clicked": "#ps-pren > a"
   },
   "s1874_6_krepselis_ij": {
-   "status": 201,
+   "status": 200,
    "url": "https://petshop.lt/krepselis/",
    "title": "Krepšelis - Petshop.lt",
    "errors": [],
-   "eval": "NERA BLOKO"
+   "eval": "Prenumeruoti\nPrenumeruojama – kas 30 dienų\n−\n30 dienų\n+\nPasirinkome pagal tai, kaip dažniausiai perkama ši prekė. Galite keisti nuo 15 iki 90 dienų.\nExclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg\nPirkti tik šį kartą\n56,99 €\nTruly skanėstas šunims, vištiena ir sūris, 90 g\nPirkti tik šį kartą\n3,49 €\nAnimonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 800 g × 2\nPirkti tik šį kartą\n5,98 €\nŠiandien mokate\n66,46 €\nToliau kas 30 dienų\n66,46 €\nsu pristatymu (nemokamas) · kita siunta apie gruodžio 16 d.\nKitų siuntų suma gali keistis, jei pasikeis prekių kainos – apie tai visada parašysime likus 7 dienoms."
   },
   "s1874_7_plius": {
-   "status": 201,
-   "url": "https://petshop.lt/krepselis/",
+   "status": 200,
+   "url": "https://petshop.lt/krepselis/#ps-pren",
    "title": "Krepšelis - Petshop.lt",
    "errors": [],
-   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('a[aria-label=\"Rečiau\"]')\n"
+   "clicked": "a[aria-label=\"Rečiau\"]"
   },
-  "s1874_8_krepselis_35": {
+  "s1874_8_krepselis_25": {
    "status": 201,
    "url": "https://petshop.lt/krepselis/",
    "title": "Krepšelis - Petshop.lt",
    "errors": [],
-   "eval": "NERA BLOKO"
+   "eval": "Prenumeruoti\nPrenumeruojama – kas 25 dienų\n−\n25 dienų\n+\nPasirinkome pagal tai, kaip dažniausiai perkama ši prekė. Galite keisti nuo 15 iki 90 dienų.\nExclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg\nPirkti tik šį kartą\n56,99 €\nTruly skanėstas šunims, vištiena ir sūris, 90 g\nPirkti tik šį kartą\n3,49 €\nAnimonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 800 g × 2\nPirkti tik šį kartą\n5,98 €\nŠiandien mokate\n66,46 €\nToliau kas 25 dienų\n66,46 €\nsu pristatymu (nemokamas) · kita siunta apie gruodžio 11 d.\nKitų siuntų suma gali keistis, jei pasikeis prekių kainos – apie tai visada parašysime likus 7 dienoms."
   },
   "s1874_9_kasa": {
-   "status": 201,
+   "status": 200,
    "url": "https://petshop.lt/kasa/",
    "title": "Apmokėjimas - Petshop.lt",
-   "errors": [
-    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
-   ],
-   "eval": "NERA SALYGU || NERA VARNELES ||  Mokėjimas internetu \nALBANIJA\nAUSTRIJA\nBELGIJA\nBULGARIJA\nKANADA\nČEKIJA\nVOKIETIJA\nDANIJA\nESTIJA\nISPANIJA\nSUOMIJA\nPRANCūZIJA\nJUNGTINė KARALYSTė\nGRUZIJA\nGRAIKIJA\nKROATIJA\nVENGRIJA\nAIRIJA\nITALIJA\nLIETUVA\nLIUKSEMBURGAS\nLATVIJA\nMALTA\nNYDERLANDAI\nNORVEGIJA\nKITOS šALYS\nLENKIJA\nPORTUGALIJA\nRUMUNIJA\nŠVEDIJA\nSLOVėNIJA\nSLOVAKIJA\nTURKIJA\nJUNGTINėS VALSTIJOS\nKOSOVAS\n\n\nElektroninė bankininkystė\nPaysera sąskaita\nAB „Swedbank“\nAB „SEB bankas“\nVisa, MasterCard, Maestro\nGoogle Pay\nApple Pay\nLuminor\nAS Citadele bankas\nRevolut (LT)\nArtea\nUAB Urbo bankas\nLietuvos centrinė kredito unija\nKitos mokėjimo sistemos\nPaprastu pervedimu arba grynaisiais banke\n\nInformuojame, kad sąskaitos informacijos ir mokėjimo inicijavimo paslaugas Jums suteiks Paysera vadovaudamasi šių paslaugų teikimo taisyklėmis. Tęsdami apmokėjimą patvirtinate, kad sutinkate su šių paslaugų suteikimu ir jų teikimo sąlygomis.\n Bankinis pavedimas\n\n Perskaičiau ir sutinku su pirkimo sąlygomis ir taisyklėmis bei privatumo politika *\n\nAPMOKĖTI"
+   "errors": [],
+   "eval": "NERA SALYGU || NERA VARNELES || "
   },
   "s1874_10_paskyra": {
-   "status": 201,
+   "status": 200,
    "url": "https://petshop.lt/paskyra/prenumeratos/",
    "title": "Mano paskyra - Petshop.lt",
    "errors": []
