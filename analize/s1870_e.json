@@ -1,0 +1,296 @@
+{
+ "1": {
+  "v": "S1870e",
+  "ej_7d_due": [
+   {
+    "id": "2856",
+    "scheduled_at": "2026-11-16 09:06:21",
+    "attempts": "0",
+    "status": "pending",
+    "br": "",
+    "le": "",
+    "next_attempt_at": null
+   },
+   {
+    "id": "2859",
+    "scheduled_at": "2026-11-16 09:06:22",
+    "attempts": "0",
+    "status": "pending",
+    "br": "",
+    "le": "",
+    "next_attempt_at": null
+   },
+   {
+    "id": "2862",
+    "scheduled_at": "2026-11-16 09:06:23",
+    "attempts": "0",
+    "status": "pending",
+    "br": "",
+    "le": "",
+    "next_attempt_at": null
+   },
+   {
+    "id": "2865",
+    "scheduled_at": "2026-11-16 09:06:24",
+    "attempts": "0",
+    "status": "pending",
+    "br": "",
+    "le": "",
+    "next_attempt_at": null
+   },
+   {
+    "id": "2868",
+    "scheduled_at": "2026-11-16 09:06:25",
+    "attempts": "0",
+    "status": "pending",
+    "br": "",
+    "le": "",
+    "next_attempt_at": null
+   },
+   {
+    "id": "2871",
+    "scheduled_at": "2026-11-16 09:06:26",
+    "attempts": "0",
+    "status": "pending",
+    "br": "",
+    "le": "",
+    "next_attempt_at": null
+   },
+   {
+    "id": "2874",
+    "scheduled_at": "2026-11-16 09:06:27",
+    "attempts": "0",
+    "status": "pending",
+    "br": "",
+    "le": "",
+    "next_attempt_at": null
+   },
+   {
+    "id": "2877",
+    "scheduled_at": "2026-11-16 09:06:28",
+    "attempts": "0",
+    "status": "pending",
+    "br": "",
+    "le": "",
+    "next_attempt_at": null
+   },
+   {
+    "id": "2880",
+    "scheduled_at": "2026-11-16 09:06:29",
+    "attempts": "0",
+    "status": "pending",
+    "br": "",
+    "le": "",
+    "next_attempt_at": null
+   },
+   {
+    "id": "2883",
+    "scheduled_at": "2026-11-16 09:06:30",
+    "attempts": "0",
+    "status": "pending",
+    "br": "",
+    "le": "",
+    "next_attempt_at": null
+   },
+   {
+    "id": "2886",
+    "scheduled_at": "2026-11-16 09:06:31",
+    "attempts": "0",
+    "status": "pending",
+    "br": "",
+    "le": "",
+    "next_attempt_at": null
+   }
+  ],
+  "ej_sent_pask": [
+   {
+    "flow": "back_in_stock",
+    "pask": "2026-10-22 10:04:19"
+   },
+   {
+    "flow": "browse_abandoned",
+    "pask": "2026-11-14 09:38:41"
+   },
+   {
+    "flow": "cart_abandoned",
+    "pask": "2026-11-15 10:33:41"
+   },
+   {
+    "flow": "cart_abandoned_2",
+    "pask": "2026-11-11 09:53:42"
+   },
+   {
+    "flow": "consent_changed",
+    "pask": "2026-11-15 08:24:03"
+   },
+   {
+    "flow": "post_purchase_14d",
+    "pask": "2026-11-13 09:08:44"
+   },
+   {
+    "flow": "post_purchase_2d",
+    "pask": "2026-11-15 12:44:03"
+   },
+   {
+    "flow": "post_purchase_7d",
+    "pask": "2026-11-14 14:04:19"
+   },
+   {
+    "flow": "ps_s1749_testas",
+    "pask": "2026-10-03 20:07:16"
+   },
+   {
+    "flow": "refill_due",
+    "pask": "2026-11-15 08:04:23"
+   },
+   {
+    "flow": "win_back",
+    "pask": "2026-11-16 05:33:45"
+   }
+  ],
+  "ej_sent_6h": [
+   {
+    "flow": "win_back",
+    "sent_at": "2026-11-16 05:33:45"
+   },
+   {
+    "flow": "win_back",
+    "sent_at": "2026-11-16 05:33:45"
+   }
+  ],
+  "now_db": "2026-11-16 09:54:26",
+  "cron_email": [
+   [
+    "ps_email_dispatch_cron",
+    "11-16 09:58:39",
+    "ps_esp_5min"
+   ],
+   [
+    "ps_refill_daily_check",
+    "11-16 10:00:00",
+    "daily"
+   ],
+   [
+    "ps_refill_iv_veidrodis",
+    "11-16 10:06:50",
+    "hourly"
+   ],
+   [
+    "ps_velavimo_laiskai",
+    "11-16 14:00:00",
+    false
+   ],
+   [
+    "wpforms_email_summaries_cron",
+    "11-23 00:00:00",
+    false
+   ]
+  ],
+  "as_email": [
+   {
+    "hook": "ps_esp_process_event",
+    "status": "complete",
+    "n": "47",
+    "mx": "2026-11-16 07:32:53"
+   },
+   {
+    "hook": "wp_mail_smtp_summary_report_email",
+    "status": "pending",
+    "n": "1",
+    "mx": "2026-11-16 11:24:14"
+   },
+   {
+    "hook": "wpforms_email_summaries_fetch_info_blocks",
+    "status": "pending",
+    "n": "1",
+    "mx": "2026-11-19 09:29:35"
+   }
+  ],
+  "o": {
+   "1736": "id?",
+   "1738": "id?",
+   "1739": "id?",
+   "1741": "id?",
+   "1743": "id?"
+  },
+  "kamp": [
+   {
+    "kampanija_id": "21472017542",
+    "k": "P-max | LT | petshop.lt",
+    "nuo": "2026-11-01",
+    "iki": "2026-11-15",
+    "eur": "201.70"
+   },
+   {
+    "kampanija_id": "21565450990",
+    "k": "P-max| All LT | Kačių maistas",
+    "nuo": "2026-11-01",
+    "iki": "2026-11-15",
+    "eur": "260.27"
+   },
+   {
+    "kampanija_id": "23346712074",
+    "k": "petshop",
+    "nuo": "2026-11-01",
+    "iki": "2026-11-15",
+    "eur": "179.67"
+   },
+   {
+    "kampanija_id": "24297462605",
+    "k": "Search | LT | Prekių ženklai",
+    "nuo": "2026-11-01",
+    "iki": "2026-11-15",
+    "eur": "72.69"
+   }
+  ],
+  "vf_perduota_pask": [
+   {
+    "oid": "38681",
+    "comment_date": "2026-11-16 08:12:52",
+    "c": "Perduota tiekėjui Belacor — laiškas: terra@petshop.lt"
+   },
+   {
+    "oid": "38582",
+    "comment_date": "2026-11-13 12:25:55",
+    "c": "Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarma"
+   },
+   {
+    "oid": "38533",
+    "comment_date": "2026-11-13 12:25:55",
+    "c": "Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarma"
+   },
+   {
+    "oid": "38532",
+    "comment_date": "2026-11-13 12:25:55",
+    "c": "Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarma"
+   },
+   {
+    "oid": "38527",
+    "comment_date": "2026-11-13 12:25:55",
+    "c": "Perduota tiekėjui Vetfarmas — laiškas: ieva.lastovskyte@vetfarmas.lt, karolina.kazlauskaite@vetfarma"
+   },
+   {
+    "oid": "38427",
+    "comment_date": "2026-11-12 12:41:55",
+    "c": "Perduota tiekėjui Vetfarmas — laiškas: terra@petshop.lt"
+   },
+   {
+    "oid": "38423",
+    "comment_date": "2026-11-12 12:41:55",
+    "c": "Perduota tiekėjui Vetfarmas — laiškas: terra@petshop.lt"
+   },
+   {
+    "oid": "38422",
+    "comment_date": "2026-11-12 12:41:55",
+    "c": "Perduota tiekėjui Vetfarmas — laiškas: terra@petshop.lt"
+   }
+  ]
+ },
+ "v": "dep-075313",
+ "kurimas": 200,
+ "sid": 8344,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
