@@ -1,0 +1,3568 @@
+{
+ "1": {
+  "v": "S1872x",
+  "faze": "1",
+  "cols": [
+   "id",
+   "uzsakymas_id",
+   "eilutes_id",
+   "apmoketa_at",
+   "preke_id",
+   "variacija_id",
+   "sku",
+   "gtin",
+   "pavadinimas_tuo_metu",
+   "kategorija_id_giliausia",
+   "kategoriju_kelias",
+   "brendas_slug",
+   "gyvunas",
+   "pa_uzsaldymas",
+   "sandelis",
+   "tiekejas",
+   "partija_kodas",
+   "kiekis",
+   "kaina_ct",
+   "pvm_ct",
+   "kaina_vnt_ct",
+   "kaina_reguliari_ct",
+   "savikaina_vnt_ct",
+   "savikaina_ct",
+   "savikainos_saltinis",
+   "nuolaida_ct",
+   "akcija_id",
+   "kuponas",
+   "rinkinys_id",
+   "rinkinio_tipas",
+   "rinkinio_raktas",
+   "dovana",
+   "svoris_g",
+   "pakuotes_dydis",
+   "klientas_naujas",
+   "testinis",
+   "saltinis_aplinka",
+   "diena"
+  ],
+  "n_bazes": 74,
+  "n_zymeti": 104,
+  "sales": {
+   "16933": {
+    "id": "16933",
+    "s30": "28",
+    "s60": "32"
+   },
+   "16936": {
+    "id": "16936",
+    "s30": "1",
+    "s60": "4"
+   },
+   "16939": {
+    "id": "16939",
+    "s30": "4",
+    "s60": "4"
+   },
+   "16942": {
+    "id": "16942",
+    "s30": "8",
+    "s60": "14"
+   },
+   "16945": {
+    "id": "16945",
+    "s30": "3",
+    "s60": "5"
+   },
+   "17057": {
+    "id": "17057",
+    "s30": "2",
+    "s60": "3"
+   },
+   "17499": {
+    "id": "17499",
+    "s30": "8",
+    "s60": "13"
+   },
+   "17504": {
+    "id": "17504",
+    "s30": "8",
+    "s60": "19"
+   },
+   "17510": {
+    "id": "17510",
+    "s30": "1",
+    "s60": "1"
+   },
+   "17517": {
+    "id": "17517",
+    "s30": "1",
+    "s60": "1"
+   },
+   "17520": {
+    "id": "17520",
+    "s30": "2",
+    "s60": "2"
+   },
+   "17523": {
+    "id": "17523",
+    "s30": "0",
+    "s60": "5"
+   },
+   "17538": {
+    "id": "17538",
+    "s30": "2",
+    "s60": "4"
+   },
+   "18512": {
+    "id": "18512",
+    "s30": "0",
+    "s60": "1"
+   },
+   "18515": {
+    "id": "18515",
+    "s30": "4",
+    "s60": "4"
+   },
+   "18518": {
+    "id": "18518",
+    "s30": "2",
+    "s60": "3"
+   },
+   "18521": {
+    "id": "18521",
+    "s30": "1",
+    "s60": "2"
+   },
+   "18605": {
+    "id": "18605",
+    "s30": "1",
+    "s60": "1"
+   },
+   "18608": {
+    "id": "18608",
+    "s30": "14",
+    "s60": "14"
+   },
+   "19414": {
+    "id": "19414",
+    "s30": "35",
+    "s60": "49"
+   },
+   "19417": {
+    "id": "19417",
+    "s30": "33",
+    "s60": "80"
+   },
+   "19446": {
+    "id": "19446",
+    "s30": "35",
+    "s60": "86"
+   },
+   "20410": {
+    "id": "20410",
+    "s30": "6",
+    "s60": "7"
+   },
+   "20416": {
+    "id": "20416",
+    "s30": "1",
+    "s60": "2"
+   },
+   "20421": {
+    "id": "20421",
+    "s30": "7",
+    "s60": "7"
+   },
+   "20424": {
+    "id": "20424",
+    "s30": "1",
+    "s60": "1"
+   },
+   "20435": {
+    "id": "20435",
+    "s30": "5",
+    "s60": "15"
+   },
+   "20437": {
+    "id": "20437",
+    "s30": "25",
+    "s60": "25"
+   },
+   "20523": {
+    "id": "20523",
+    "s30": "0",
+    "s60": "1"
+   },
+   "20525": {
+    "id": "20525",
+    "s30": "1",
+    "s60": "5"
+   },
+   "21125": {
+    "id": "21125",
+    "s30": "0",
+    "s60": "2"
+   },
+   "21141": {
+    "id": "21141",
+    "s30": "1",
+    "s60": "1"
+   },
+   "21165": {
+    "id": "21165",
+    "s30": "4",
+    "s60": "9"
+   },
+   "21679": {
+    "id": "21679",
+    "s30": "5",
+    "s60": "5"
+   },
+   "21681": {
+    "id": "21681",
+    "s30": "5",
+    "s60": "5"
+   },
+   "21834": {
+    "id": "21834",
+    "s30": "3",
+    "s60": "3"
+   },
+   "21836": {
+    "id": "21836",
+    "s30": "1",
+    "s60": "1"
+   },
+   "21856": {
+    "id": "21856",
+    "s30": "4",
+    "s60": "5"
+   },
+   "22765": {
+    "id": "22765",
+    "s30": "0",
+    "s60": "1"
+   },
+   "22769": {
+    "id": "22769",
+    "s30": "13",
+    "s60": "13"
+   },
+   "24393": {
+    "id": "24393",
+    "s30": "1",
+    "s60": "2"
+   },
+   "26123": {
+    "id": "26123",
+    "s30": "1",
+    "s60": "1"
+   },
+   "26125": {
+    "id": "26125",
+    "s30": "1",
+    "s60": "1"
+   },
+   "26129": {
+    "id": "26129",
+    "s30": "1",
+    "s60": "1"
+   },
+   "26135": {
+    "id": "26135",
+    "s30": "1",
+    "s60": "1"
+   },
+   "26139": {
+    "id": "26139",
+    "s30": "1",
+    "s60": "1"
+   },
+   "26141": {
+    "id": "26141",
+    "s30": "1",
+    "s60": "6"
+   },
+   "26143": {
+    "id": "26143",
+    "s30": "3",
+    "s60": "3"
+   },
+   "26145": {
+    "id": "26145",
+    "s30": "1",
+    "s60": "1"
+   },
+   "34226": {
+    "id": "34226",
+    "s30": "1",
+    "s60": "1"
+   },
+   "35312": {
+    "id": "35312",
+    "s30": "1",
+    "s60": "6"
+   },
+   "35316": {
+    "id": "35316",
+    "s30": "5",
+    "s60": "23"
+   },
+   "37891": {
+    "id": "37891",
+    "s30": "1",
+    "s60": "1"
+   },
+   "37917": {
+    "id": "37917",
+    "s30": "1",
+    "s60": "1"
+   },
+   "38461": {
+    "id": "38461",
+    "s30": "1",
+    "s60": "1"
+   },
+   "38518": {
+    "id": "38518",
+    "s30": "1",
+    "s60": "1"
+   }
+  },
+  "sav": {
+   "16933": {
+    "id": "16933",
+    "sv": "50",
+    "svr": "150",
+    "k": "3",
+    "d": "2026-11-11"
+   },
+   "16936": {
+    "id": "16936",
+    "sv": "50",
+    "svr": "50",
+    "k": "1",
+    "d": "2026-10-17"
+   },
+   "16939": {
+    "id": "16939",
+    "sv": "50",
+    "svr": "50",
+    "k": "1",
+    "d": "2026-11-11"
+   },
+   "16942": {
+    "id": "16942",
+    "sv": "50",
+    "svr": "150",
+    "k": "3",
+    "d": "2026-11-11"
+   },
+   "16945": {
+    "id": "16945",
+    "sv": "50",
+    "svr": "50",
+    "k": "1",
+    "d": "2026-11-11"
+   },
+   "17057": {
+    "id": "17057",
+    "sv": "77",
+    "svr": "154",
+    "k": "2",
+    "d": "2026-10-26"
+   },
+   "17499": {
+    "id": "17499",
+    "sv": "90",
+    "svr": "540",
+    "k": "6",
+    "d": "2026-11-13"
+   },
+   "17504": {
+    "id": "17504",
+    "sv": "90",
+    "svr": "540",
+    "k": "6",
+    "d": "2026-11-13"
+   },
+   "17507": {
+    "id": "17507",
+    "sv": "113",
+    "svr": "1130",
+    "k": "10",
+    "d": "2026-09-10"
+   },
+   "17510": {
+    "id": "17510",
+    "sv": "90",
+    "svr": "90",
+    "k": "1",
+    "d": "2026-10-20"
+   },
+   "17517": {
+    "id": "17517",
+    "sv": "90",
+    "svr": "90",
+    "k": "1",
+    "d": "2026-10-20"
+   },
+   "17520": {
+    "id": "17520",
+    "sv": "90",
+    "svr": "180",
+    "k": "2",
+    "d": "2026-10-20"
+   },
+   "17523": {
+    "id": "17523",
+    "sv": "80",
+    "svr": "400",
+    "k": "5",
+    "d": "2026-10-14"
+   },
+   "17535": {
+    "id": "17535",
+    "sv": "90",
+    "svr": "450",
+    "k": "5",
+    "d": "2026-09-10"
+   },
+   "17538": {
+    "id": "17538",
+    "sv": "90",
+    "svr": "180",
+    "k": "2",
+    "d": "2026-10-20"
+   },
+   "18512": {
+    "id": "18512",
+    "sv": "168",
+    "svr": "168",
+    "k": "1",
+    "d": "2026-09-29"
+   },
+   "18515": {
+    "id": "18515",
+    "sv": "168",
+    "svr": "168",
+    "k": "1",
+    "d": "2026-11-08"
+   },
+   "18518": {
+    "id": "18518",
+    "sv": "168",
+    "svr": "168",
+    "k": "1",
+    "d": "2026-11-08"
+   },
+   "18521": {
+    "id": "18521",
+    "sv": "168",
+    "svr": "168",
+    "k": "1",
+    "d": "2026-10-30"
+   },
+   "18605": {
+    "id": "18605",
+    "sv": "238",
+    "svr": "238",
+    "k": "1",
+    "d": "2026-10-24"
+   },
+   "18608": {
+    "id": "18608",
+    "sv": "260",
+    "svr": "1560",
+    "k": "6",
+    "d": "2026-11-06"
+   },
+   "19414": {
+    "id": "19414",
+    "sv": "68",
+    "svr": "952",
+    "k": "14",
+    "d": "2026-11-09"
+   },
+   "19417": {
+    "id": "19417",
+    "sv": "52",
+    "svr": "312",
+    "k": "6",
+    "d": "2026-11-11"
+   },
+   "19446": {
+    "id": "19446",
+    "sv": "68",
+    "svr": "952",
+    "k": "14",
+    "d": "2026-11-09"
+   },
+   "20410": {
+    "id": "20410",
+    "sv": "106",
+    "svr": "636",
+    "k": "6",
+    "d": "2026-10-20"
+   },
+   "20416": {
+    "id": "20416",
+    "sv": "106",
+    "svr": "106",
+    "k": "1",
+    "d": "2026-10-27"
+   },
+   "20421": {
+    "id": "20421",
+    "sv": "106",
+    "svr": "106",
+    "k": "1",
+    "d": "2026-10-27"
+   },
+   "20424": {
+    "id": "20424",
+    "sv": "95",
+    "svr": "95",
+    "k": "1",
+    "d": "2026-10-27"
+   },
+   "20435": {
+    "id": "20435",
+    "sv": "95",
+    "svr": "475",
+    "k": "5",
+    "d": "2026-10-20"
+   },
+   "20437": {
+    "id": "20437",
+    "sv": "61",
+    "svr": "1281",
+    "k": "21",
+    "d": "2026-10-23"
+   },
+   "20523": {
+    "id": "20523",
+    "sv": "94",
+    "svr": "94",
+    "k": "1",
+    "d": "2026-10-14"
+   },
+   "20525": {
+    "id": "20525",
+    "sv": "94",
+    "svr": "94",
+    "k": "1",
+    "d": "2026-10-27"
+   },
+   "21125": {
+    "id": "21125",
+    "sv": "168",
+    "svr": "168",
+    "k": "1",
+    "d": "2026-10-10"
+   },
+   "21141": {
+    "id": "21141",
+    "sv": "168",
+    "svr": "168",
+    "k": "1",
+    "d": "2026-11-08"
+   },
+   "21165": {
+    "id": "21165",
+    "sv": "94",
+    "svr": "188",
+    "k": "2",
+    "d": "2026-10-20"
+   },
+   "21679": {
+    "id": "21679",
+    "sv": "46",
+    "svr": "184",
+    "k": "4",
+    "d": "2026-11-13"
+   },
+   "21681": {
+    "id": "21681",
+    "sv": "46",
+    "svr": "184",
+    "k": "4",
+    "d": "2026-11-13"
+   },
+   "21834": {
+    "id": "21834",
+    "sv": "118",
+    "svr": "354",
+    "k": "3",
+    "d": "2026-10-31"
+   },
+   "21836": {
+    "id": "21836",
+    "sv": "118",
+    "svr": "118",
+    "k": "1",
+    "d": "2026-10-27"
+   },
+   "21856": {
+    "id": "21856",
+    "sv": "118",
+    "svr": "118",
+    "k": "1",
+    "d": "2026-11-06"
+   },
+   "22763": {
+    "id": "22763",
+    "sv": "69",
+    "svr": "69",
+    "k": "1",
+    "d": "2026-09-09"
+   },
+   "22765": {
+    "id": "22765",
+    "sv": "74",
+    "svr": "74",
+    "k": "1",
+    "d": "2026-10-07"
+   },
+   "22769": {
+    "id": "22769",
+    "sv": "74",
+    "svr": "962",
+    "k": "13",
+    "d": "2026-10-18"
+   },
+   "24393": {
+    "id": "24393",
+    "sv": "74",
+    "svr": "74",
+    "k": "1",
+    "d": "2026-10-27"
+   },
+   "26123": {
+    "id": "26123",
+    "sv": "55",
+    "svr": "55",
+    "k": "1",
+    "d": "2026-10-27"
+   },
+   "26125": {
+    "id": "26125",
+    "sv": "55",
+    "svr": "55",
+    "k": "1",
+    "d": "2026-10-27"
+   },
+   "26129": {
+    "id": "26129",
+    "sv": "55",
+    "svr": "55",
+    "k": "1",
+    "d": "2026-10-19"
+   },
+   "26135": {
+    "id": "26135",
+    "sv": "55",
+    "svr": "55",
+    "k": "1",
+    "d": "2026-10-27"
+   },
+   "26139": {
+    "id": "26139",
+    "sv": "55",
+    "svr": "55",
+    "k": "1",
+    "d": "2026-10-27"
+   },
+   "26141": {
+    "id": "26141",
+    "sv": "55",
+    "svr": "55",
+    "k": "1",
+    "d": "2026-10-27"
+   },
+   "26143": {
+    "id": "26143",
+    "sv": "55",
+    "svr": "55",
+    "k": "1",
+    "d": "2026-10-27"
+   },
+   "26145": {
+    "id": "26145",
+    "sv": "55",
+    "svr": "55",
+    "k": "1",
+    "d": "2026-10-27"
+   },
+   "34226": {
+    "id": "34226",
+    "sv": "55",
+    "svr": "55",
+    "k": "1",
+    "d": "2026-10-27"
+   },
+   "35312": {
+    "id": "35312",
+    "sv": "260",
+    "svr": "260",
+    "k": "1",
+    "d": "2026-10-24"
+   },
+   "35316": {
+    "id": "35316",
+    "sv": "260",
+    "svr": "260",
+    "k": "1",
+    "d": "2026-11-15"
+   },
+   "37891": {
+    "id": "37891",
+    "sv": "2020",
+    "svr": "2020",
+    "k": "1",
+    "d": "2026-11-12"
+   },
+   "37917": {
+    "id": "37917",
+    "sv": "1200",
+    "svr": "1200",
+    "k": "1",
+    "d": "2026-11-11"
+   },
+   "38461": {
+    "id": "38461",
+    "sv": "832",
+    "svr": "832",
+    "k": "1",
+    "d": "2026-11-13"
+   },
+   "38518": {
+    "id": "38518",
+    "sv": "1430",
+    "svr": "1430",
+    "k": "1",
+    "d": "2026-11-15"
+   }
+  },
+  "rows": [
+   {
+    "id": 23464,
+    "t": "Landfleish konservai katėms su lašiša ir paukštiena 400 g",
+    "st": "publish",
+    "sku": "400224",
+    "ean": "4003537404545",
+    "kaina": "2.19",
+    "reg": "2.19",
+    "sale": "",
+    "cost_meta": "1.45",
+    "sand": "vf",
+    "stock": 158,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-landfleish-konservai-katems-su-lasisa-ir-paukstiena-400-g",
+    "pakai": [
+     {
+      "id": 37842,
+      "st": "publish",
+      "q": 24,
+      "kaina": "47.49",
+      "reg": "47.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "9.67",
+      "man": "",
+      "t": "24 vnt. Landfleish konservai katėms su lašiša ir paukštiena "
+     }
+    ]
+   },
+   {
+    "id": 35316,
+    "t": "Exclusion diet hypo konservai šuniukams, su kiauliena ir žirniais, 400g",
+    "st": "publish",
+    "sku": "PA37",
+    "ean": "8011259002822",
+    "kaina": "4.09",
+    "reg": "4.09",
+    "sale": "",
+    "cost_meta": "2.601",
+    "sand": "vf",
+    "stock": 162,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-diet-hypo-konservai-suniukams-su-kiauliena-ir-zirniais-400g",
+    "pakai": [
+     {
+      "id": 37843,
+      "st": "publish",
+      "q": 24,
+      "kaina": "87.89",
+      "reg": "87.89",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "10.41",
+      "man": "",
+      "t": "24 vnt. Exclusion diet hypo konservai šuniukams, su kiaulien"
+     }
+    ]
+   },
+   {
+    "id": 35312,
+    "t": "Exclusion Hypo konservuotas pašaras šunims su triušiena ir bulvėmis, 400 g",
+    "st": "publish",
+    "sku": "AM37",
+    "ean": "8011259163752",
+    "kaina": "4.09",
+    "reg": "4.09",
+    "sale": "",
+    "cost_meta": "2.601",
+    "sand": "vf",
+    "stock": 187,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-hypo-konservuotas-pasaras-sunims-su-triusiena-ir-bulvemis-400-g",
+    "pakai": [
+     {
+      "id": 37844,
+      "st": "publish",
+      "q": 24,
+      "kaina": "87.89",
+      "reg": "87.89",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "10.41",
+      "man": "",
+      "t": "24 vnt. Exclusion Hypo konservuotas pašaras šunims su triuši"
+     }
+    ]
+   },
+   {
+    "id": 34224,
+    "t": "JosiCat rich in Salmon in Sauce konservuotas pašaras katėms su lašiša padaže, 85g",
+    "st": "publish",
+    "sku": "JOS1012",
+    "ean": "4032254791287",
+    "kaina": "0.94",
+    "reg": "0.94",
+    "sale": "",
+    "cost_meta": "0.552",
+    "sand": "vf",
+    "stock": 440,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-josicat-rich-in-salmon-in-sauce-konservuotas-pasaras-katems-su-lasisa-padaze-85g",
+    "pakai": [
+     {
+      "id": 37845,
+      "st": "publish",
+      "q": 36,
+      "kaina": "31.49",
+      "reg": "31.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "6.77",
+      "man": "",
+      "t": "36 vnt. JosiCat rich in Salmon in Sauce konservuotas pašaras"
+     }
+    ]
+   },
+   {
+    "id": 26127,
+    "t": "JosiCat rich in Turkey in Sauce konservuotas pašaras katėms su kalakutiena padaže, 85g",
+    "st": "publish",
+    "sku": "JOS1010",
+    "ean": "4032254791249",
+    "kaina": "0.94",
+    "reg": "0.94",
+    "sale": "",
+    "cost_meta": "0.552",
+    "sand": "vf",
+    "stock": 694,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-josicat-rich-in-turkey-in-sauce-konservuotas-pasaras-katems-su-kalakutiena-padaze-85g",
+    "pakai": [
+     {
+      "id": 37846,
+      "st": "publish",
+      "q": 36,
+      "kaina": "31.49",
+      "reg": "31.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "6.77",
+      "man": "",
+      "t": "36 vnt. JosiCat rich in Turkey in Sauce konservuotas pašaras"
+     }
+    ]
+   },
+   {
+    "id": 26137,
+    "t": "JosiCat Finest Mousse with Chicken, paštetas katėms su vištiena, 85g",
+    "st": "publish",
+    "sku": "JOS1016",
+    "ean": "4032254793816",
+    "kaina": "0.94",
+    "reg": "0.94",
+    "sale": "",
+    "cost_meta": "0.552",
+    "sand": "vf",
+    "stock": 505,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-josicat-finest-mousse-with-chicken-pastetas-katems-su-vistiena-85g",
+    "pakai": [
+     {
+      "id": 37847,
+      "st": "publish",
+      "q": 36,
+      "kaina": "31.49",
+      "reg": "31.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "6.77",
+      "man": "",
+      "t": "36 vnt. JosiCat Finest Mousse with Chicken, paštetas katėms "
+     }
+    ]
+   },
+   {
+    "id": 23468,
+    "t": "Landfleish konservai katėms su  paukšt,iena ir krabais, 400g",
+    "st": "publish",
+    "sku": "400226",
+    "ean": "4003537404569",
+    "kaina": "2.19",
+    "reg": "2.19",
+    "sale": "",
+    "cost_meta": "1.45",
+    "sand": "vf",
+    "stock": 172,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-landfleish-konservai-katems-su-paukstiena-ir-krabais-400g",
+    "pakai": [
+     {
+      "id": 37848,
+      "st": "publish",
+      "q": 24,
+      "kaina": "47.49",
+      "reg": "47.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "9.67",
+      "man": "",
+      "t": "24 vnt. Landfleish konservai katėms su paukšt,iena ir krabai"
+     }
+    ]
+   },
+   {
+    "id": 23470,
+    "t": "Landfleish konservai katėms su antiena ir vištiena, 400 g",
+    "st": "publish",
+    "sku": "400227",
+    "ean": "4003537002277",
+    "kaina": "1.79",
+    "reg": "1.79",
+    "sale": "",
+    "cost_meta": "1.18",
+    "sand": "vf",
+    "stock": 948,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-landfleish-konservai-katems-su-antiena-ir-vistiena-400-g",
+    "pakai": [
+     {
+      "id": 37849,
+      "st": "publish",
+      "q": 24,
+      "kaina": "39.99",
+      "reg": "39.99",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "6.98",
+      "man": "",
+      "t": "24 vnt. Landfleish konservai katėms su antiena ir vištiena, "
+     }
+    ]
+   },
+   {
+    "id": 21828,
+    "t": "Josera konservuotas pašaras katėms su jautiena, 85g",
+    "st": "publish",
+    "sku": "JOS0837",
+    "ean": "4032254771173",
+    "kaina": "1.79",
+    "reg": "1.79",
+    "sale": "",
+    "cost_meta": "1.184",
+    "sand": "vf",
+    "stock": 32,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-josera-konservuotas-pasaras-katems-su-jautiena-85g",
+    "pakai": [
+     {
+      "id": 37850,
+      "st": "publish",
+      "q": 24,
+      "kaina": "40.09",
+      "reg": "40.09",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "6.76",
+      "man": "",
+      "t": "24 vnt. Josera konservuotas pašaras katėms su jautiena, 85g"
+     }
+    ]
+   },
+   {
+    "id": 21834,
+    "t": "Josera konservuotas pašaras kačiukams, 85g",
+    "st": "publish",
+    "sku": "JOS0840",
+    "ean": "4032254771135",
+    "kaina": "1.79",
+    "reg": "1.79",
+    "sale": "",
+    "cost_meta": "1.184",
+    "sand": "vf",
+    "stock": 81,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-josera-konservuotas-pasaras-kaciukams-85g",
+    "pakai": [
+     {
+      "id": 37851,
+      "st": "publish",
+      "q": 24,
+      "kaina": "39.99",
+      "reg": "39.99",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "6.98",
+      "man": "",
+      "t": "24 vnt. Josera konservuotas pašaras kačiukams, 85g"
+     },
+     {
+      "id": 37852,
+      "st": "publish",
+      "q": 36,
+      "kaina": "56.79",
+      "reg": "56.79",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "11.84",
+      "man": "",
+      "t": "36 vnt. Josera konservuotas pašaras kačiukams, 85g"
+     }
+    ]
+   },
+   {
+    "id": 21836,
+    "t": "Josera konservuotas pašaras pagyvenusioms katėms, 85g",
+    "st": "publish",
+    "sku": "JOS0841",
+    "ean": "4032254771111",
+    "kaina": "1.79",
+    "reg": "1.79",
+    "sale": "",
+    "cost_meta": "1.184",
+    "sand": "vf",
+    "stock": 53,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-josera-konservuotas-pasaras-pagyvenusioms-katems-85g",
+    "pakai": [
+     {
+      "id": 37853,
+      "st": "publish",
+      "q": 24,
+      "kaina": "39.99",
+      "reg": "39.99",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "6.98",
+      "man": "",
+      "t": "24 vnt. Josera konservuotas pašaras pagyvenusioms katėms, 85"
+     },
+     {
+      "id": 37854,
+      "st": "publish",
+      "q": 36,
+      "kaina": "56.79",
+      "reg": "56.79",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "11.84",
+      "man": "",
+      "t": "36 vnt. Josera konservuotas pašaras pagyvenusioms katėms, 85"
+     }
+    ]
+   },
+   {
+    "id": 21838,
+    "t": "Josera konservuotas pašaras katėms su kalakutiena, 85g",
+    "st": "publish",
+    "sku": "JOS0842",
+    "ean": "4032254771210",
+    "kaina": "1.79",
+    "reg": "1.79",
+    "sale": "",
+    "cost_meta": "1.184",
+    "sand": "vf",
+    "stock": 85,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-josera-konservuotas-pasaras-katems-su-kalakutiena-85g",
+    "pakai": [
+     {
+      "id": 37855,
+      "st": "publish",
+      "q": 24,
+      "kaina": "40.09",
+      "reg": "40.09",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "6.76",
+      "man": "",
+      "t": "24 vnt. Josera konservuotas pašaras katėms su kalakutiena, 8"
+     },
+     {
+      "id": 37856,
+      "st": "publish",
+      "q": 36,
+      "kaina": "56.79",
+      "reg": "56.79",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "11.84",
+      "man": "",
+      "t": "36 vnt. Josera konservuotas pašaras katėms su kalakutiena, 8"
+     }
+    ]
+   },
+   {
+    "id": 21856,
+    "t": "Josera Kitten Duck konservuotas pašaras kačiukams su antiena, 85g",
+    "st": "publish",
+    "sku": "JOS0853",
+    "ean": "4032254778547",
+    "kaina": "1.79",
+    "reg": "1.79",
+    "sale": "",
+    "cost_meta": "1.184",
+    "sand": "vf",
+    "stock": 28,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-josera-kitten-duck-konservuotas-pasaras-kaciukams-su-antiena-85g",
+    "pakai": [
+     {
+      "id": 37857,
+      "st": "publish",
+      "q": 24,
+      "kaina": "39.99",
+      "reg": "39.99",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "6.98",
+      "man": "",
+      "t": "24 vnt. Josera Kitten Duck konservuotas pašaras kačiukams su"
+     },
+     {
+      "id": 37858,
+      "st": "publish",
+      "q": 36,
+      "kaina": "56.79",
+      "reg": "56.79",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "11.84",
+      "man": "",
+      "t": "36 vnt. Josera Kitten Duck konservuotas pašaras kačiukams su"
+     }
+    ]
+   },
+   {
+    "id": 21357,
+    "t": "Green Petfood Fair Cat Care konservuotas pašaras katėms, 85 g",
+    "st": "publish",
+    "sku": "JOS0679",
+    "ean": "4032254750529",
+    "kaina": "1.89",
+    "reg": "1.89",
+    "sale": "",
+    "cost_meta": "1.241",
+    "sand": "vf",
+    "stock": 104,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-green-petfood-fair-cat-care-konservuotas-pasaras-katems-85-g",
+    "pakai": [
+     {
+      "id": 37859,
+      "st": "publish",
+      "q": 24,
+      "kaina": "41.59",
+      "reg": "41.59",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "8.36",
+      "man": "",
+      "t": "24 vnt. Green Petfood Fair Cat Care konservuotas pašaras kat"
+     },
+     {
+      "id": 37860,
+      "st": "publish",
+      "q": 36,
+      "kaina": "59.79",
+      "reg": "59.79",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "12.11",
+      "man": "",
+      "t": "36 vnt. Green Petfood Fair Cat Care konservuotas pašaras kat"
+     }
+    ]
+   },
+   {
+    "id": 21125,
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su vištiena, 400 g",
+    "st": "publish",
+    "sku": "NGACA40",
+    "ean": "8011259003492",
+    "kaina": "2.89",
+    "reg": "2.89",
+    "sale": "",
+    "cost_meta": "1.683",
+    "sand": "vf",
+    "stock": 75,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-mono-protein-mediterraneo-konservuotas-pasaras-sunims-su-vistiena-400-g",
+    "pakai": [
+     {
+      "id": 37861,
+      "st": "publish",
+      "q": 12,
+      "kaina": "31.79",
+      "reg": "31.79",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "8.17",
+      "man": "",
+      "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš"
+     },
+     {
+      "id": 37862,
+      "st": "publish",
+      "q": 24,
+      "kaina": "61.59",
+      "reg": "61.59",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "11.12",
+      "man": "",
+      "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš"
+     }
+    ]
+   },
+   {
+    "id": 21139,
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su lašiša, 400 g",
+    "st": "publish",
+    "sku": "NGASA40",
+    "ean": "8011259003546",
+    "kaina": "2.89",
+    "reg": "2.89",
+    "sale": "",
+    "cost_meta": "1.683",
+    "sand": "vf",
+    "stock": 60,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-mono-protein-mediterraneo-konservuotas-pasaras-sunims-su-lasisa-400-g",
+    "pakai": [
+     {
+      "id": 37863,
+      "st": "publish",
+      "q": 12,
+      "kaina": "31.89",
+      "reg": "31.89",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.88",
+      "man": "",
+      "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš"
+     },
+     {
+      "id": 37864,
+      "st": "publish",
+      "q": 24,
+      "kaina": "61.59",
+      "reg": "61.59",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "11.12",
+      "man": "",
+      "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš"
+     }
+    ]
+   },
+   {
+    "id": 21141,
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su tunu, 400 g",
+    "st": "publish",
+    "sku": "NGATA40",
+    "ean": "8011259003539",
+    "kaina": "2.89",
+    "reg": "2.89",
+    "sale": "",
+    "cost_meta": "1.683",
+    "sand": "vf",
+    "stock": 100,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-mono-protein-mediterraneo-konservuotas-pasaras-sunims-su-tunu-400-g",
+    "pakai": [
+     {
+      "id": 37865,
+      "st": "publish",
+      "q": 12,
+      "kaina": "31.89",
+      "reg": "31.89",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.88",
+      "man": "",
+      "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš"
+     },
+     {
+      "id": 37866,
+      "st": "publish",
+      "q": 24,
+      "kaina": "61.59",
+      "reg": "61.59",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "11.12",
+      "man": "",
+      "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš"
+     }
+    ]
+   },
+   {
+    "id": 21165,
+    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras katėms su tunu, 85 g",
+    "st": "publish",
+    "sku": "NGCATW85",
+    "ean": "8011259004031",
+    "kaina": "1.59",
+    "reg": "1.59",
+    "sale": "",
+    "cost_meta": "0.935",
+    "sand": "vf",
+    "stock": 367,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-mediterraneo-mono-protein-konservuotas-pasaras-katems-su-tunu-85-g",
+    "pakai": [
+     {
+      "id": 37867,
+      "st": "publish",
+      "q": 36,
+      "kaina": "50.69",
+      "reg": "50.69",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "11.34",
+      "man": "",
+      "t": "36 vnt. Exclusion Mediterraneo Mono Protein konservuotas paš"
+     }
+    ]
+   },
+   {
+    "id": 20437,
+    "t": "Josera Soup Chicken & Carrots konservuotas vištienos sultinys katėms su vištiena ir morkomis 70g",
+    "st": "publish",
+    "sku": "JOS0444",
+    "ean": "4032254750291",
+    "kaina": "1.03",
+    "reg": "1.03",
+    "sale": "",
+    "cost_meta": "0.608",
+    "sand": "vf",
+    "stock": 195,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-josera-soup-chicken-carrots-konservuotas-vistienos-sultinys-katems-su-vistiena-ir-morkomis-70g",
+    "pakai": [
+     {
+      "id": 37868,
+      "st": "publish",
+      "q": 36,
+      "kaina": "33.99",
+      "reg": "33.99",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "8.18",
+      "man": "",
+      "t": "36 vnt. Josera Soup Chicken & Carrots konservuotas vištienos"
+     }
+    ]
+   },
+   {
+    "id": 20523,
+    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras sterilizuotoms katėms su jautiena, 85 g",
+    "st": "publish",
+    "sku": "NGCSBW85",
+    "ean": "8011259004055",
+    "kaina": "1.59",
+    "reg": "1.59",
+    "sale": "",
+    "cost_meta": "0.935",
+    "sand": "vf",
+    "stock": 258,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-mediterraneo-mono-protein-konservuotas-pasaras-sterilizuotoms-katems-su-jautiena-85-g",
+    "pakai": [
+     {
+      "id": 37869,
+      "st": "publish",
+      "q": 36,
+      "kaina": "50.69",
+      "reg": "50.69",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "11.34",
+      "man": "",
+      "t": "36 vnt. Exclusion Mediterraneo Mono Protein konservuotas paš"
+     }
+    ]
+   },
+   {
+    "id": 20525,
+    "t": "Exclusion Mediterraneo Mono Protein konservuotas pašaras sterilizuotoms katėms su vištiena, 85 g",
+    "st": "publish",
+    "sku": "NGCSCW85",
+    "ean": "8011259004048",
+    "kaina": "1.59",
+    "reg": "1.59",
+    "sale": "",
+    "cost_meta": "0.935",
+    "sand": "vf",
+    "stock": 331,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-mediterraneo-mono-protein-konservuotas-pasaras-sterilizuotoms-katems-su-vistiena-85-g",
+    "pakai": [
+     {
+      "id": 37870,
+      "st": "publish",
+      "q": 36,
+      "kaina": "50.69",
+      "reg": "50.69",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "11.34",
+      "man": "",
+      "t": "36 vnt. Exclusion Mediterraneo Mono Protein konservuotas paš"
+     }
+    ]
+   },
+   {
+    "id": 20410,
+    "t": "Josera kons.Cat 658 Pure Chicken filet konservai katėms, 70g",
+    "st": "publish",
+    "sku": "JOS0433",
+    "ean": "4032254750192",
+    "kaina": "1.59",
+    "reg": "1.59",
+    "sale": "",
+    "cost_meta": "1.064",
+    "sand": "vf",
+    "stock": 248,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-josera-kons-cat-658-pure-chicken-filet-konservai-katems-70g",
+    "pakai": [
+     {
+      "id": 37871,
+      "st": "publish",
+      "q": 24,
+      "kaina": "36.59",
+      "reg": "36.59",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "4",
+      "man": "",
+      "t": "24 vnt. Josera kons.Cat 658 Pure Chicken filet konservai kat"
+     }
+    ]
+   },
+   {
+    "id": 20413,
+    "t": "Josera Cat 660 Chicken&Beef filet  konservai katėms, 70g",
+    "st": "publish",
+    "sku": "JOS0434",
+    "ean": "4032254750215",
+    "kaina": "1.59",
+    "reg": "1.59",
+    "sale": "",
+    "cost_meta": "1.064",
+    "sand": "vf",
+    "stock": 40,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-josera-cat-660-chickenbeef-filet-konservai-katems-70g",
+    "pakai": [
+     {
+      "id": 37872,
+      "st": "publish",
+      "q": 24,
+      "kaina": "36.79",
+      "reg": "36.79",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "3.49",
+      "man": "",
+      "t": "24 vnt. Josera Cat 660 Chicken&Beef filet konservai katėms, "
+     }
+    ]
+   },
+   {
+    "id": 20416,
+    "t": "Josera Filet Chicken with Duck begrūdis konservuotas pašaras katėms vištienos filė su antiena, 70g",
+    "st": "publish",
+    "sku": "JOS0435",
+    "ean": "4032254750239",
+    "kaina": "1.59",
+    "reg": "1.59",
+    "sale": "",
+    "cost_meta": "1.064",
+    "sand": "vf",
+    "stock": 179,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-josera-filet-chicken-with-duck-begrudis-konservuotas-pasaras-katems-vistienos-file-su-antiena-70g",
+    "pakai": [
+     {
+      "id": 37873,
+      "st": "publish",
+      "q": 24,
+      "kaina": "36.59",
+      "reg": "36.59",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "4",
+      "man": "",
+      "t": "24 vnt. Josera Filet Chicken with Duck begrūdis konservuotas"
+     }
+    ]
+   },
+   {
+    "id": 20418,
+    "t": "Josera Cat 662 Chicken+Salmon filet  konservai katėms, 70g",
+    "st": "publish",
+    "sku": "JOS0436",
+    "ean": "4032254750253",
+    "kaina": "1.59",
+    "reg": "1.59",
+    "sale": "",
+    "cost_meta": "1.064",
+    "sand": "vf",
+    "stock": 406,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-josera-cat-662-chickensalmon-filet-konservai-katems-70g",
+    "pakai": [
+     {
+      "id": 37874,
+      "st": "publish",
+      "q": 24,
+      "kaina": "36.79",
+      "reg": "36.79",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "3.49",
+      "man": "",
+      "t": "24 vnt. Josera Cat 662 Chicken+Salmon filet konservai katėms"
+     }
+    ]
+   },
+   {
+    "id": 20421,
+    "t": "Josera Cat 663 Chicken+Veal filet  konservai katėms, 70g",
+    "st": "publish",
+    "sku": "JOS0437",
+    "ean": "4032254750277",
+    "kaina": "1.59",
+    "reg": "1.59",
+    "sale": "",
+    "cost_meta": "1.064",
+    "sand": "vf",
+    "stock": 224,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-josera-cat-663-chickenveal-filet-konservai-katems-70g",
+    "pakai": [
+     {
+      "id": 37875,
+      "st": "publish",
+      "q": 24,
+      "kaina": "36.59",
+      "reg": "36.59",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "4",
+      "man": "",
+      "t": "24 vnt. Josera Cat 663 Chicken+Veal filet konservai katėms, "
+     }
+    ]
+   },
+   {
+    "id": 20432,
+    "t": "Josera Cat 653 Turkey+Zucchini pate, konservai katėms, 85g",
+    "st": "publish",
+    "sku": "JOS0441",
+    "ean": "4032254750116",
+    "kaina": "1.39",
+    "reg": "1.39",
+    "sale": "",
+    "cost_meta": "0.952",
+    "sand": "vf",
+    "stock": 223,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-josera-cat-653-turkeyzucchini-pate-konservai-katems-85g",
+    "pakai": [
+     {
+      "id": 37876,
+      "st": "publish",
+      "q": 36,
+      "kaina": "46.89",
+      "reg": "46.89",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "6.23",
+      "man": "",
+      "t": "36 vnt. Josera Cat 653 Turkey+Zucchini pate, konservai katėm"
+     }
+    ]
+   },
+   {
+    "id": 19446,
+    "t": "Animonda Vom Feinsten Adult with Beef and Turkey Hearts – konservai suaugusiems šunims su jautiena ir kalakutų širdimis, 150 g",
+    "st": "publish",
+    "sku": "82966",
+    "ean": "4017721829663",
+    "kaina": "1.28",
+    "reg": "1.28",
+    "sale": "",
+    "cost_meta": "0.68",
+    "sand": "av",
+    "stock": 81,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-animonda-vom-feinsten-adult-with-beef-and-turkey-hearts-konservai-suaugusiems-sunims-su-jautiena-ir-kalakutu-sirdimis-150-g",
+    "pakai": [
+     {
+      "id": 37877,
+      "st": "draft",
+      "q": 24,
+      "kaina": "28.89",
+      "reg": "28.89",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "5.77",
+      "man": "",
+      "t": "24 vnt. Animonda Vom Feinsten Adult with Beef and Turkey Hea"
+     },
+     {
+      "id": 37878,
+      "st": "draft",
+      "q": 36,
+      "kaina": "42.39",
+      "reg": "42.39",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.88",
+      "man": "",
+      "t": "36 vnt. Animonda Vom Feinsten Adult with Beef and Turkey Hea"
+     },
+     {
+      "id": 38517,
+      "st": "publish",
+      "q": 11,
+      "kaina": "13.86",
+      "reg": "13.86",
+      "sale": "",
+      "ss": "instock",
+      "zym": "",
+      "nuol": "",
+      "man": "",
+      "t": "11 vnt. Animonda Vom Feinsten Adult with Beef and Turkey Hea"
+     },
+     {
+      "id": 38518,
+      "st": "publish",
+      "q": 22,
+      "kaina": "26.75",
+      "reg": "26.75",
+      "sale": "",
+      "ss": "instock",
+      "zym": "",
+      "nuol": "",
+      "man": "",
+      "t": "22 vnt. Animonda Vom Feinsten Adult with Beef and Turkey Hea"
+     }
+    ]
+   },
+   {
+    "id": 19417,
+    "t": "Animonda Vom Feinsten Adult with Poultry and Veal – konservai katėms su paukštiena ir veršiena, 100 g",
+    "st": "publish",
+    "sku": "83437",
+    "ean": "4017721834377",
+    "kaina": "0.99",
+    "reg": "0.99",
+    "sale": "",
+    "cost_meta": "0.52",
+    "sand": "av",
+    "stock": 182,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-animonda-vom-feinsten-adult-with-poultry-and-veal-konservai-katems-su-paukstiena-ir-versiena-100-g",
+    "pakai": [
+     {
+      "id": 37879,
+      "st": "draft",
+      "q": 36,
+      "kaina": "31.79",
+      "reg": "31.79",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "10.64",
+      "man": "",
+      "t": "36 vnt. Animonda Vom Feinsten Adult with Poultry and Veal – "
+     },
+     {
+      "id": 38461,
+      "st": "publish",
+      "q": 16,
+      "kaina": "15.52",
+      "reg": "15.52",
+      "sale": "",
+      "ss": "instock",
+      "zym": "",
+      "nuol": "",
+      "man": "",
+      "t": "16 vnt. Animonda Vom Feinsten Adult with Poultry and Veal – "
+     },
+     {
+      "id": 38462,
+      "st": "publish",
+      "q": 32,
+      "kaina": "29.99",
+      "reg": "29.99",
+      "sale": "",
+      "ss": "instock",
+      "zym": "",
+      "nuol": "",
+      "man": "",
+      "t": "32 vnt. Animonda Vom Feinsten Adult with Poultry and Veal – "
+     }
+    ]
+   },
+   {
+    "id": 19414,
+    "t": "Animonda Vom Feinsten Adult with Poultry and Veal – konservai suaugusiems šunims su paukštiena ir veršiena, 150 g",
+    "st": "publish",
+    "sku": "82964",
+    "ean": "4017721829649",
+    "kaina": "1.33",
+    "reg": "1.33",
+    "sale": "",
+    "cost_meta": "0.6500",
+    "sand": "av",
+    "stock": 114,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-animonda-vom-feinsten-adult-with-poultry-and-veal-konservai-suaugusiems-sunims-su-paukstiena-ir-versiena-150-g",
+    "pakai": [
+     {
+      "id": 37880,
+      "st": "draft",
+      "q": 24,
+      "kaina": "29.99",
+      "reg": "29.99",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "5.86",
+      "man": "",
+      "t": "24 vnt. Animonda Vom Feinsten Adult with Poultry and Veal – "
+     },
+     {
+      "id": 37881,
+      "st": "draft",
+      "q": 36,
+      "kaina": "44.09",
+      "reg": "44.09",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.8",
+      "man": "",
+      "t": "36 vnt. Animonda Vom Feinsten Adult with Poultry and Veal – "
+     },
+     {
+      "id": 38523,
+      "st": "publish",
+      "q": 11,
+      "kaina": "14.41",
+      "reg": "14.41",
+      "sale": "",
+      "ss": "instock",
+      "zym": "",
+      "nuol": "",
+      "man": "",
+      "t": "11 vnt. Animonda Vom Feinsten Adult with Poultry and Veal – "
+     },
+     {
+      "id": 38524,
+      "st": "publish",
+      "q": 22,
+      "kaina": "27.80",
+      "reg": "27.80",
+      "sale": "",
+      "ss": "instock",
+      "zym": "",
+      "nuol": "",
+      "man": "",
+      "t": "22 vnt. Animonda Vom Feinsten Adult with Poultry and Veal – "
+     }
+    ]
+   },
+   {
+    "id": 18608,
+    "t": "Exclusion Hypoallergenic konservai šunims su arkliena ir bulvėmis 400 g",
+    "st": "publish",
+    "sku": "HM37",
+    "ean": "8011259203755",
+    "kaina": "3.98",
+    "reg": "3.98",
+    "sale": "",
+    "cost_meta": "2.60",
+    "sand": "av",
+    "stock": 25,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-hypoallergenic-konservai-sunims-su-arkliena-ir-bulvemis-400-g",
+    "pakai": [
+     {
+      "id": 37882,
+      "st": "publish",
+      "q": 12,
+      "kaina": "44.89",
+      "reg": "44.89",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "5.89",
+      "man": "",
+      "t": "12 vnt. Exclusion Hypoallergenic konservai šunims su arklien"
+     },
+     {
+      "id": 37883,
+      "st": "publish",
+      "q": 24,
+      "kaina": "87.89",
+      "reg": "87.89",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.93",
+      "man": "",
+      "t": "24 vnt. Exclusion Hypoallergenic konservai šunims su arklien"
+     }
+    ]
+   },
+   {
+    "id": 18605,
+    "t": "Exclusion Hypoallergenic konservai šunims su elniena ir bulvėmis 400 g",
+    "st": "publish",
+    "sku": "VM37",
+    "ean": "8011259153753",
+    "kaina": "3.98",
+    "reg": "3.98",
+    "sale": "",
+    "cost_meta": "2.57",
+    "sand": "av",
+    "stock": 151,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-hypoallergenic-konservai-sunims-su-elniena-ir-bulvemis-400-g",
+    "pakai": [
+     {
+      "id": 37884,
+      "st": "publish",
+      "q": 12,
+      "kaina": "44.89",
+      "reg": "44.89",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "5.89",
+      "man": "",
+      "t": "12 vnt. Exclusion Hypoallergenic konservai šunims su elniena"
+     },
+     {
+      "id": 37885,
+      "st": "publish",
+      "q": 24,
+      "kaina": "87.89",
+      "reg": "87.89",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.93",
+      "man": "",
+      "t": "24 vnt. Exclusion Hypoallergenic konservai šunims su elniena"
+     }
+    ]
+   },
+   {
+    "id": 18596,
+    "t": "Exclusion Hypoallergenic konservai šunims su putpelėmis ir žirniais 400 g",
+    "st": "publish",
+    "sku": "QM37",
+    "ean": "8011259213754",
+    "kaina": "4.09",
+    "reg": "4.09",
+    "sale": "",
+    "cost_meta": "2.38",
+    "sand": "av",
+    "stock": 116,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-hypoallergenic-konservai-sunims-su-putpelemis-ir-zirniais-400-g",
+    "pakai": [
+     {
+      "id": 37886,
+      "st": "publish",
+      "q": 24,
+      "kaina": "87.89",
+      "reg": "87.89",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "10.41",
+      "man": "",
+      "t": "24 vnt. Exclusion Hypoallergenic konservai šunims su putpelė"
+     }
+    ]
+   },
+   {
+    "id": 18521,
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su jautiena, 400 g",
+    "st": "publish",
+    "sku": "NGABA40",
+    "ean": "8011259003508",
+    "kaina": "2.89",
+    "reg": "2.89",
+    "sale": "",
+    "cost_meta": "1.683",
+    "sand": "vf",
+    "stock": 296,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-mono-protein-mediterraneo-konservuotas-pasaras-sunims-su-jautiena-400-g",
+    "pakai": [
+     {
+      "id": 37887,
+      "st": "publish",
+      "q": 12,
+      "kaina": "31.79",
+      "reg": "31.79",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "8.17",
+      "man": "",
+      "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš"
+     },
+     {
+      "id": 37888,
+      "st": "publish",
+      "q": 24,
+      "kaina": "61.59",
+      "reg": "61.59",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "11.12",
+      "man": "",
+      "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš"
+     }
+    ]
+   },
+   {
+    "id": 18518,
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su kalakutiena, 400 g",
+    "st": "publish",
+    "sku": "NGAUA40",
+    "ean": "8011259003553",
+    "kaina": "2.89",
+    "reg": "2.89",
+    "sale": "",
+    "cost_meta": "1.683",
+    "sand": "vf",
+    "stock": 565,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-mono-protein-mediterraneo-konservuotas-pasaras-sunims-su-kalakutiena-400-g",
+    "pakai": [
+     {
+      "id": 37889,
+      "st": "publish",
+      "q": 12,
+      "kaina": "31.79",
+      "reg": "31.79",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "8.17",
+      "man": "",
+      "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš"
+     },
+     {
+      "id": 37890,
+      "st": "publish",
+      "q": 24,
+      "kaina": "61.59",
+      "reg": "61.59",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "11.12",
+      "man": "",
+      "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš"
+     }
+    ]
+   },
+   {
+    "id": 18515,
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su veršiena, 400 g",
+    "st": "publish",
+    "sku": "NGAVA40",
+    "ean": "8011259003515",
+    "kaina": "2.89",
+    "reg": "2.89",
+    "sale": "",
+    "cost_meta": "1.683",
+    "sand": "vf",
+    "stock": 465,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-mono-protein-mediterraneo-konservuotas-pasaras-sunims-su-versiena-400-g",
+    "pakai": [
+     {
+      "id": 37891,
+      "st": "publish",
+      "q": 12,
+      "kaina": "31.79",
+      "reg": "31.79",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "8.17",
+      "man": "",
+      "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš"
+     },
+     {
+      "id": 37892,
+      "st": "publish",
+      "q": 24,
+      "kaina": "61.59",
+      "reg": "61.59",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "11.12",
+      "man": "",
+      "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš"
+     }
+    ]
+   },
+   {
+    "id": 18512,
+    "t": "Exclusion Mono Protein Mediterraneo konservuotas pašaras šunims su ėriena, 400 g",
+    "st": "publish",
+    "sku": "NGALA40",
+    "ean": "8011259003522",
+    "kaina": "2.89",
+    "reg": "2.89",
+    "sale": "",
+    "cost_meta": "1.683",
+    "sand": "vf",
+    "stock": 1037,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "av-exclusion-mono-protein-mediterraneo-konservuotas-pasaras-sunims-su-eriena-400-g",
+    "pakai": [
+     {
+      "id": 37893,
+      "st": "publish",
+      "q": 12,
+      "kaina": "31.79",
+      "reg": "31.79",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "8.17",
+      "man": "",
+      "t": "12 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš"
+     },
+     {
+      "id": 37894,
+      "st": "publish",
+      "q": 24,
+      "kaina": "61.59",
+      "reg": "61.59",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "11.12",
+      "man": "",
+      "t": "24 vnt. Exclusion Mono Protein Mediterraneo konservuotas paš"
+     }
+    ]
+   },
+   {
+    "id": 17538,
+    "t": "Miamor Feine Filets konservai katėms, tunas su krabais drebučiuose, 100 g",
+    "st": "publish",
+    "sku": "2837",
+    "ean": "4000158740755",
+    "kaina": "2.05",
+    "reg": "2.05",
+    "sale": "",
+    "cost_meta": "0.90",
+    "sand": "av",
+    "stock": 22,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-miamor-feine-filets-konservai-katems-tunas-su-krabais-drebuciuose-100-g",
+    "pakai": [
+     {
+      "id": 37895,
+      "st": "publish",
+      "q": 12,
+      "kaina": "24.36",
+      "reg": "24.36",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "",
+      "man": "",
+      "t": "12 vnt. Miamor Feine Filets konservai katėms, tunas su kraba"
+     },
+     {
+      "id": 38488,
+      "st": "publish",
+      "q": 24,
+      "kaina": "40.56",
+      "reg": "40.56",
+      "sale": "",
+      "ss": "instock",
+      "zym": "",
+      "nuol": "",
+      "man": "",
+      "t": "24 vnt. Miamor Feine Filets konservai katėms, tunas su kraba"
+     }
+    ]
+   },
+   {
+    "id": 17535,
+    "t": "Miamor Feine Filets konservai katėms, vištiena paukštienos drebučiuose, 100 g",
+    "st": "publish",
+    "sku": "2836",
+    "ean": "4000158740908",
+    "kaina": "2.05",
+    "reg": "2.05",
+    "sale": "",
+    "cost_meta": "0.90",
+    "sand": "av",
+    "stock": 38,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-miamor-feine-filets-konservai-katems-vistiena-paukstienos-drebuciuose-100-g",
+    "pakai": [
+     {
+      "id": 37896,
+      "st": "publish",
+      "q": 12,
+      "kaina": "24.36",
+      "reg": "24.36",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "",
+      "man": "",
+      "t": "12 vnt. Miamor Feine Filets konservai katėms, vištiena paukš"
+     },
+     {
+      "id": 37897,
+      "st": "publish",
+      "q": 24,
+      "kaina": "40.56",
+      "reg": "40.56",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "",
+      "man": "",
+      "t": "24 vnt. Miamor Feine Filets konservai katėms, vištiena paukš"
+     },
+     {
+      "id": 37898,
+      "st": "draft",
+      "q": 36,
+      "kaina": "67.89",
+      "reg": "67.89",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.93",
+      "man": "",
+      "t": "36 vnt. Miamor Feine Filets konservai katėms, vištiena paukš"
+     }
+    ]
+   },
+   {
+    "id": 17523,
+    "t": "Miamor Fillet Naturelle konservai katėms su tunu ir krabais, 80 g",
+    "st": "publish",
+    "sku": "72850",
+    "ean": "42017356",
+    "kaina": "1.79",
+    "reg": "1.79",
+    "sale": "",
+    "cost_meta": "0.80",
+    "sand": "av",
+    "stock": 27,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-miamor-fillet-naturelle-konservai-katems-su-tunu-ir-krabais-80-g",
+    "pakai": [
+     {
+      "id": 37899,
+      "st": "publish",
+      "q": 12,
+      "kaina": "21.24",
+      "reg": "21.24",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "",
+      "man": "",
+      "t": "12 vnt. Miamor Fillet Naturelle konservai katėms su tunu ir "
+     },
+     {
+      "id": 37900,
+      "st": "publish",
+      "q": 24,
+      "kaina": "40.56",
+      "reg": "40.56",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "",
+      "man": "",
+      "t": "24 vnt. Miamor Fillet Naturelle konservai katėms su tunu ir "
+     }
+    ]
+   },
+   {
+    "id": 17520,
+    "t": "Miamor Super Premium konservai katėms su tunu ir putpelių kiaušiniais, 100 g",
+    "st": "publish",
+    "sku": "2630",
+    "ean": "4000158740427",
+    "kaina": "1.79",
+    "reg": "1.79",
+    "sale": "",
+    "cost_meta": "0.90",
+    "sand": "av",
+    "stock": 43,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-miamor-super-premium-konservai-katems-su-tunu-ir-putpeliu-kiausiniais-100-g",
+    "pakai": [
+     {
+      "id": 37901,
+      "st": "publish",
+      "q": 12,
+      "kaina": "21.24",
+      "reg": "21.24",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "",
+      "man": "",
+      "t": "12 vnt. Miamor Super Premium konservai katėms su tunu ir put"
+     },
+     {
+      "id": 37902,
+      "st": "publish",
+      "q": 24,
+      "kaina": "40.56",
+      "reg": "40.56",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "",
+      "man": "",
+      "t": "24 vnt. Miamor Super Premium konservai katėms su tunu ir put"
+     },
+     {
+      "id": 37903,
+      "st": "draft",
+      "q": 36,
+      "kaina": "59.29",
+      "reg": "59.29",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.9",
+      "man": "",
+      "t": "36 vnt. Miamor Super Premium konservai katėms su tunu ir put"
+     }
+    ]
+   },
+   {
+    "id": 17517,
+    "t": "Miamor Super Premium konservai katėms su tunu ir ryžiais, 100 g",
+    "st": "publish",
+    "sku": "2628",
+    "ean": "4000158740489",
+    "kaina": "1.79",
+    "reg": "1.79",
+    "sale": "",
+    "cost_meta": "0.90",
+    "sand": "av",
+    "stock": 37,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-miamor-super-premium-konservai-katems-su-tunu-ir-ryziais-100-g",
+    "pakai": [
+     {
+      "id": 37904,
+      "st": "publish",
+      "q": 12,
+      "kaina": "21.24",
+      "reg": "21.24",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "",
+      "man": "",
+      "t": "12 vnt. Miamor Super Premium konservai katėms su tunu ir ryž"
+     },
+     {
+      "id": 38483,
+      "st": "publish",
+      "q": 24,
+      "kaina": "40.56",
+      "reg": "40.56",
+      "sale": "",
+      "ss": "instock",
+      "zym": "",
+      "nuol": "",
+      "man": "",
+      "t": "24 vnt. Miamor Super Premium konservai katėms su tunu ir ryž"
+     }
+    ]
+   },
+   {
+    "id": 17510,
+    "t": "Miamor Super Premium konservai katėms su tunu ir sūriu, 100 g",
+    "st": "publish",
+    "sku": "2629",
+    "ean": "4000158740465",
+    "kaina": "1.79",
+    "reg": "1.79",
+    "sale": "",
+    "cost_meta": "0.90",
+    "sand": "av",
+    "stock": 57,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-miamor-super-premium-konservai-katems-su-tunu-ir-suriu-100-g",
+    "pakai": [
+     {
+      "id": 37905,
+      "st": "publish",
+      "q": 12,
+      "kaina": "21.24",
+      "reg": "21.24",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "",
+      "man": "",
+      "t": "12 vnt. Miamor Super Premium konservai katėms su tunu ir sūr"
+     },
+     {
+      "id": 37906,
+      "st": "publish",
+      "q": 24,
+      "kaina": "40.56",
+      "reg": "40.56",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "",
+      "man": "",
+      "t": "24 vnt. Miamor Super Premium konservai katėms su tunu ir sūr"
+     },
+     {
+      "id": 37907,
+      "st": "draft",
+      "q": 36,
+      "kaina": "59.29",
+      "reg": "59.29",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.9",
+      "man": "",
+      "t": "36 vnt. Miamor Super Premium konservai katėms su tunu ir sūr"
+     }
+    ]
+   },
+   {
+    "id": 17507,
+    "t": "Miamor Super Premium konservai katėms su vištiena ir ryžiais, 100 g",
+    "st": "publish",
+    "sku": "640366",
+    "ean": "4000158740434",
+    "kaina": "1.79",
+    "reg": "1.79",
+    "sale": "",
+    "cost_meta": "1.13",
+    "sand": "av",
+    "stock": 45,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-miamor-super-premium-konservai-katems-su-vistiena-ir-ryziais-100-g",
+    "pakai": [
+     {
+      "id": 37908,
+      "st": "publish",
+      "q": 24,
+      "kaina": "40.56",
+      "reg": "40.56",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "",
+      "man": "",
+      "t": "24 vnt. Miamor Super Premium konservai katėms su vištiena ir"
+     },
+     {
+      "id": 37909,
+      "st": "draft",
+      "q": 36,
+      "kaina": "59.29",
+      "reg": "59.29",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.9",
+      "man": "",
+      "t": "36 vnt. Miamor Super Premium konservai katėms su vištiena ir"
+     },
+     {
+      "id": 38482,
+      "st": "publish",
+      "q": 12,
+      "kaina": "21.24",
+      "reg": "21.24",
+      "sale": "",
+      "ss": "instock",
+      "zym": "",
+      "nuol": "",
+      "man": "",
+      "t": "12 vnt. Miamor Super Premium konservai katėms su vištiena ir"
+     }
+    ]
+   },
+   {
+    "id": 17504,
+    "t": "Miamor Super premium konservai katėms su tunu ir daržovėmis, 100 g",
+    "st": "publish",
+    "sku": "2633",
+    "ean": "4000158740472",
+    "kaina": "1.79",
+    "reg": "1.79",
+    "sale": "",
+    "cost_meta": "0.90",
+    "sand": "av",
+    "stock": 58,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-miamor-super-premium-konservai-katems-su-tunu-ir-darzovemis-100-g",
+    "pakai": [
+     {
+      "id": 37910,
+      "st": "publish",
+      "q": 12,
+      "kaina": "21.24",
+      "reg": "21.24",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "",
+      "man": "",
+      "t": "12 vnt. Miamor Super premium konservai katėms su tunu ir dar"
+     },
+     {
+      "id": 38481,
+      "st": "publish",
+      "q": 24,
+      "kaina": "40.56",
+      "reg": "40.56",
+      "sale": "",
+      "ss": "instock",
+      "zym": "",
+      "nuol": "",
+      "man": "",
+      "t": "24 vnt. Miamor Super premium konservai katėms su tunu ir dar"
+     }
+    ]
+   },
+   {
+    "id": 17499,
+    "t": "Miamor Super premium konservai katėms su tunu ir kalmarais, 100 g",
+    "st": "publish",
+    "sku": "2632",
+    "ean": "4000158740496",
+    "kaina": "1.79",
+    "reg": "1.79",
+    "sale": "",
+    "cost_meta": "0.90",
+    "sand": "av",
+    "stock": 39,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-miamor-super-premium-konservai-katems-su-tunu-ir-kalmarais-100-g",
+    "pakai": [
+     {
+      "id": 37911,
+      "st": "publish",
+      "q": 12,
+      "kaina": "21.24",
+      "reg": "21.24",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "",
+      "man": "",
+      "t": "12 vnt. Miamor Super premium konservai katėms su tunu ir kal"
+     },
+     {
+      "id": 37912,
+      "st": "publish",
+      "q": 24,
+      "kaina": "40.56",
+      "reg": "40.56",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "",
+      "man": "",
+      "t": "24 vnt. Miamor Super premium konservai katėms su tunu ir kal"
+     },
+     {
+      "id": 37913,
+      "st": "draft",
+      "q": 36,
+      "kaina": "59.29",
+      "reg": "59.29",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.9",
+      "man": "",
+      "t": "36 vnt. Miamor Super premium konservai katėms su tunu ir kal"
+     }
+    ]
+   },
+   {
+    "id": 17057,
+    "t": "Ontario super premium konservai katėms su vištiena ir lašiša, 95 g",
+    "st": "publish",
+    "sku": "640319",
+    "ean": "8595091761609",
+    "kaina": "1.99",
+    "reg": "1.99",
+    "sale": "",
+    "cost_meta": "0.77",
+    "sand": "av",
+    "stock": 18,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-ontario-super-premium-konservai-katems-su-vistiena-ir-lasisa-95-g",
+    "pakai": [
+     {
+      "id": 37914,
+      "st": "publish",
+      "q": 12,
+      "kaina": "23.19",
+      "reg": "23.19",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "2.64",
+      "man": "",
+      "t": "12 vnt. Ontario super premium konservai katėms su vištiena i"
+     }
+    ]
+   },
+   {
+    "id": 16945,
+    "t": "Pasta katėms su antiena - Ontario Duck Fresh Meat Paste, 90 g",
+    "st": "publish",
+    "sku": "42823",
+    "ean": "8595681801784",
+    "kaina": "1.15",
+    "reg": "1.15",
+    "sale": "",
+    "cost_meta": "0.50",
+    "sand": "av",
+    "stock": 45,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-pasta-katems-su-antiena-ontario-duck-fresh-meat-paste-90-g",
+    "pakai": [
+     {
+      "id": 37915,
+      "st": "publish",
+      "q": 24,
+      "kaina": "25.99",
+      "reg": "25.99",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "5.62",
+      "man": "",
+      "t": "24 vnt. Pasta katėms su antiena - Ontario Duck Fresh Meat Pa"
+     },
+     {
+      "id": 37916,
+      "st": "publish",
+      "q": 36,
+      "kaina": "38.09",
+      "reg": "38.09",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.86",
+      "man": "",
+      "t": "36 vnt. Pasta katėms su antiena - Ontario Duck Fresh Meat Pa"
+     }
+    ]
+   },
+   {
+    "id": 16942,
+    "t": "Pasta katėms su lašiša - Ontario Salmon Fresh Meat Paste, 90 g",
+    "st": "publish",
+    "sku": "42822",
+    "ean": "8595681801777",
+    "kaina": "1.15",
+    "reg": "1.15",
+    "sale": "",
+    "cost_meta": "0.50",
+    "sand": "av",
+    "stock": 13,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-pasta-katems-su-lasisa-ontario-salmon-fresh-meat-paste-90-g",
+    "pakai": [
+     {
+      "id": 37917,
+      "st": "publish",
+      "q": 24,
+      "kaina": "25.99",
+      "reg": "25.99",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "5.62",
+      "man": "",
+      "t": "24 vnt. Pasta katėms su lašiša - Ontario Salmon Fresh Meat P"
+     },
+     {
+      "id": 37918,
+      "st": "publish",
+      "q": 36,
+      "kaina": "38.09",
+      "reg": "38.09",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.86",
+      "man": "",
+      "t": "36 vnt. Pasta katėms su lašiša - Ontario Salmon Fresh Meat P"
+     }
+    ]
+   },
+   {
+    "id": 16939,
+    "t": "Pasta katėms su vištiena - Ontario Chicken Fresh Meat Paste, 90 g.",
+    "st": "publish",
+    "sku": "42821",
+    "ean": "8595681801760",
+    "kaina": "1.15",
+    "reg": "1.15",
+    "sale": "",
+    "cost_meta": "0.50",
+    "sand": "av",
+    "stock": 39,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-pasta-katems-su-vistiena-ontario-chicken-fresh-meat-paste-90-g",
+    "pakai": [
+     {
+      "id": 37919,
+      "st": "publish",
+      "q": 24,
+      "kaina": "25.99",
+      "reg": "25.99",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "5.62",
+      "man": "",
+      "t": "24 vnt. Pasta katėms su vištiena - Ontario Chicken Fresh Mea"
+     },
+     {
+      "id": 37920,
+      "st": "publish",
+      "q": 36,
+      "kaina": "38.09",
+      "reg": "38.09",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.86",
+      "man": "",
+      "t": "36 vnt. Pasta katėms su vištiena - Ontario Chicken Fresh Mea"
+     }
+    ]
+   },
+   {
+    "id": 16936,
+    "t": "Pasta katėms su ėriena – Ontario Lamb Fresh Meat Paste, 90 g.",
+    "st": "publish",
+    "sku": "42824",
+    "ean": "8595681801791",
+    "kaina": "1.15",
+    "reg": "1.15",
+    "sale": "",
+    "cost_meta": "0.50",
+    "sand": "av",
+    "stock": 47,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-pasta-katems-su-eriena-ontario-lamb-fresh-meat-paste-90-g",
+    "pakai": [
+     {
+      "id": 37921,
+      "st": "publish",
+      "q": 24,
+      "kaina": "25.99",
+      "reg": "25.99",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "5.62",
+      "man": "",
+      "t": "24 vnt. Pasta katėms su ėriena – Ontario Lamb Fresh Meat Pas"
+     },
+     {
+      "id": 37922,
+      "st": "publish",
+      "q": 36,
+      "kaina": "38.09",
+      "reg": "38.09",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "7.86",
+      "man": "",
+      "t": "36 vnt. Pasta katėms su ėriena – Ontario Lamb Fresh Meat Pas"
+     }
+    ]
+   },
+   {
+    "id": 16933,
+    "t": "Pasta kačiukams su tunu - Ontario Kitten Tuna Fresh Meat Paste, 90 g",
+    "st": "publish",
+    "sku": "42826",
+    "ean": "8595681803832",
+    "kaina": "1.15",
+    "reg": "1.15",
+    "sale": "",
+    "cost_meta": "0.50",
+    "sand": "av",
+    "stock": 16,
+    "ss": "instock",
+    "man": "",
+    "seima": "av-pasta-kaciukams-su-tunu-ontario-kitten-tuna-fresh-meat-paste-90-g",
+    "pakai": [
+     {
+      "id": 37923,
+      "st": "publish",
+      "q": 24,
+      "kaina": "25.99",
+      "reg": "25.99",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1824av_pakas",
+      "nuol": "5.62",
+      "man": "",
+      "t": "24 vnt. Pasta kačiukams su tunu - Ontario Kitten Tuna Fresh "
+     }
+    ]
+   },
+   {
+    "id": 35342,
+    "t": "Exclusion Hypoalergenic dietinis konservuotas pašaras katėms su kiauliena ir bulvėm, 85 g",
+    "st": "publish",
+    "sku": "CHYP85",
+    "ean": "8011259004345",
+    "kaina": "1.51",
+    "reg": "1.51",
+    "sale": "",
+    "cost_meta": "1.037",
+    "sand": "vf",
+    "stock": 328,
+    "ss": "instock",
+    "man": "",
+    "seima": "vf-exclusion-hypoalergenic-dietinis-konservuotas-pasaras-katems-su-kiauliena-ir-bulvem-85-g",
+    "pakai": [
+     {
+      "id": 38167,
+      "st": "draft",
+      "q": 36,
+      "kaina": "52.59",
+      "reg": "52.59",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vf_pakas",
+      "nuol": "3.15",
+      "man": "",
+      "t": "36 vnt. Exclusion Hypoalergenic dietinis konservuotas pašara"
+     }
+    ]
+   },
+   {
+    "id": 34226,
+    "t": "JosiCat rich in Beef in Sauce konservuotas pašaras katėms su jautiena padaže, 85g",
+    "st": "publish",
+    "sku": "JOS1007",
+    "ean": "4032254791188",
+    "kaina": "0.9",
+    "reg": "0.9",
+    "sale": "",
+    "cost_meta": "0.552",
+    "sand": "vf",
+    "stock": 467,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "vf-josicat-rich-in-beef-in-sauce-konservuotas-pasaras-katems-su-jautiena-padaze-85g",
+    "pakai": [
+     {
+      "id": 38168,
+      "st": "draft",
+      "q": 36,
+      "kaina": "31.49",
+      "reg": "31.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vf_pakas",
+      "nuol": "2.63",
+      "man": "",
+      "t": "36 vnt. JosiCat rich in Beef in Sauce konservuotas pašaras k"
+     }
+    ]
+   },
+   {
+    "id": 26123,
+    "t": "JosiCat rich in Chicken in Sauce konservuotas pašaras katėms su vištiena padaže, 85g",
+    "st": "publish",
+    "sku": "JOS1008",
+    "ean": "4032254791201",
+    "kaina": "0.9",
+    "reg": "0.9",
+    "sale": "",
+    "cost_meta": "0.552",
+    "sand": "vf",
+    "stock": 386,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "vf-josicat-rich-in-chicken-in-sauce-konservuotas-pasaras-katems-su-vistiena-padaze-85g",
+    "pakai": [
+     {
+      "id": 38169,
+      "st": "draft",
+      "q": 36,
+      "kaina": "31.49",
+      "reg": "31.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vf_pakas",
+      "nuol": "2.63",
+      "man": "",
+      "t": "36 vnt. JosiCat rich in Chicken in Sauce konservuotas pašara"
+     }
+    ]
+   },
+   {
+    "id": 26125,
+    "t": "JosiCat rich in Dusck in Sauce konservuotas pašaras katėms su antiena  padaže, 85g",
+    "st": "publish",
+    "sku": "JOS1009",
+    "ean": "4032254791225",
+    "kaina": "0.9",
+    "reg": "0.9",
+    "sale": "",
+    "cost_meta": "0.552",
+    "sand": "vf",
+    "stock": 747,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "vf-josicat-rich-in-dusck-in-sauce-konservuotas-pasaras-katems-su-antiena-padaze-85g",
+    "pakai": [
+     {
+      "id": 38170,
+      "st": "draft",
+      "q": 36,
+      "kaina": "31.49",
+      "reg": "31.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vf_pakas",
+      "nuol": "2.63",
+      "man": "",
+      "t": "36 vnt. JosiCat rich in Dusck in Sauce konservuotas pašaras "
+     }
+    ]
+   },
+   {
+    "id": 26129,
+    "t": "JosiCat rich in Codfish in Sauce konservuotas pašaras katėms su menke padaže, 85g",
+    "st": "publish",
+    "sku": "JOS1011",
+    "ean": "4032254791263",
+    "kaina": "0.9",
+    "reg": "0.9",
+    "sale": "",
+    "cost_meta": "0.552",
+    "sand": "vf",
+    "stock": 334,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "vf-josicat-rich-in-codfish-in-sauce-konservuotas-pasaras-katems-su-menke-padaze-85g",
+    "pakai": [
+     {
+      "id": 38171,
+      "st": "draft",
+      "q": 36,
+      "kaina": "31.49",
+      "reg": "31.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vf_pakas",
+      "nuol": "2.63",
+      "man": "",
+      "t": "36 vnt. JosiCat rich in Codfish in Sauce konservuotas pašara"
+     }
+    ]
+   },
+   {
+    "id": 26135,
+    "t": "JosiCat Finest Mousse with Beef, paštetas katėms su jautiena, 85g",
+    "st": "publish",
+    "sku": "JOS1015",
+    "ean": "4032254793793",
+    "kaina": "0.9",
+    "reg": "0.9",
+    "sale": "",
+    "cost_meta": "0.552",
+    "sand": "vf",
+    "stock": 33,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "vf-josicat-finest-mousse-with-beef-pastetas-katems-su-jautiena-85g",
+    "pakai": [
+     {
+      "id": 38172,
+      "st": "draft",
+      "q": 36,
+      "kaina": "31.49",
+      "reg": "31.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vf_pakas",
+      "nuol": "2.63",
+      "man": "",
+      "t": "36 vnt. JosiCat Finest Mousse with Beef, paštetas katėms su "
+     }
+    ]
+   },
+   {
+    "id": 26139,
+    "t": "JosiCat Finest Mousse with Liver, paštetas katėms su kepenėlėm, 85g",
+    "st": "publish",
+    "sku": "JOS1017",
+    "ean": "4032254793854",
+    "kaina": "0.9",
+    "reg": "0.9",
+    "sale": "",
+    "cost_meta": "0.552",
+    "sand": "vf",
+    "stock": 330,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "vf-josicat-finest-mousse-with-liver-pastetas-katems-su-kepenelem-85g",
+    "pakai": [
+     {
+      "id": 38173,
+      "st": "draft",
+      "q": 36,
+      "kaina": "31.49",
+      "reg": "31.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vf_pakas",
+      "nuol": "2.63",
+      "man": "",
+      "t": "36 vnt. JosiCat Finest Mousse with Liver, paštetas katėms su"
+     }
+    ]
+   },
+   {
+    "id": 26141,
+    "t": "JosiCat Finest Mousse with Salmon, paštetas katėms su vištiena, 85g",
+    "st": "publish",
+    "sku": "JOS1018",
+    "ean": "4032254793830",
+    "kaina": "0.9",
+    "reg": "0.9",
+    "sale": "",
+    "cost_meta": "0.552",
+    "sand": "vf",
+    "stock": 626,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "vf-josicat-finest-mousse-with-salmon-pastetas-katems-su-vistiena-85g",
+    "pakai": [
+     {
+      "id": 38174,
+      "st": "draft",
+      "q": 36,
+      "kaina": "31.49",
+      "reg": "31.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vf_pakas",
+      "nuol": "2.63",
+      "man": "",
+      "t": "36 vnt. JosiCat Finest Mousse with Salmon, paštetas katėms s"
+     }
+    ]
+   },
+   {
+    "id": 26143,
+    "t": "JosiCat Finest Mousse with Tuna, paštetas katėms su tunu, 85g",
+    "st": "publish",
+    "sku": "JOS1019",
+    "ean": "4032254793878",
+    "kaina": "0.9",
+    "reg": "0.9",
+    "sale": "",
+    "cost_meta": "0.552",
+    "sand": "vf",
+    "stock": 488,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "vf-josicat-finest-mousse-with-tuna-pastetas-katems-su-tunu-85g",
+    "pakai": [
+     {
+      "id": 38175,
+      "st": "draft",
+      "q": 36,
+      "kaina": "31.49",
+      "reg": "31.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vf_pakas",
+      "nuol": "2.63",
+      "man": "",
+      "t": "36 vnt. JosiCat Finest Mousse with Tuna, paštetas katėms su "
+     }
+    ]
+   },
+   {
+    "id": 26145,
+    "t": "JosiCat Finest Mousse with Tutkey, paštetas katėms su kalakutiena, 85g",
+    "st": "publish",
+    "sku": "JOS1020",
+    "ean": "4032254793892",
+    "kaina": "0.9",
+    "reg": "0.9",
+    "sale": "",
+    "cost_meta": "0.552",
+    "sand": "vf",
+    "stock": 110,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "vf-josicat-finest-mousse-with-tutkey-pastetas-katems-su-kalakutiena-85g",
+    "pakai": [
+     {
+      "id": 38176,
+      "st": "draft",
+      "q": 36,
+      "kaina": "31.49",
+      "reg": "31.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vf_pakas",
+      "nuol": "2.63",
+      "man": "",
+      "t": "36 vnt. JosiCat Finest Mousse with Tutkey, paštetas katėms s"
+     }
+    ]
+   },
+   {
+    "id": 23472,
+    "t": "Landfleisch konservai šunims, jaučių širdys+makaronai, 400g",
+    "st": "publish",
+    "sku": "440611",
+    "ean": "4003537006114",
+    "kaina": "2.19",
+    "reg": "2.19",
+    "sale": "",
+    "cost_meta": "1.41",
+    "sand": "vf",
+    "stock": 657,
+    "ss": "instock",
+    "man": "",
+    "seima": "vf-landfleisch-konservai-sunims-jauciu-sirdysmakaronai-400g",
+    "pakai": [
+     {
+      "id": 38177,
+      "st": "publish",
+      "q": 24,
+      "kaina": "48.39",
+      "reg": "48.39",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vf_pakas",
+      "nuol": "7.82",
+      "man": "",
+      "t": "24 vnt. Landfleisch konservai šunims, jaučių širdys+makarona"
+     }
+    ]
+   },
+   {
+    "id": 22985,
+    "t": "Landfleisch konservai šunims, jaučių širdys+ryžiai, 400g",
+    "st": "publish",
+    "sku": "440610",
+    "ean": "4003537006107",
+    "kaina": "2.19",
+    "reg": "2.19",
+    "sale": "",
+    "cost_meta": "1.41",
+    "sand": "vf",
+    "stock": 1352,
+    "ss": "instock",
+    "man": "",
+    "seima": "vf-landfleisch-konservai-sunims-jauciu-sirdysryziai-400g",
+    "pakai": [
+     {
+      "id": 38178,
+      "st": "publish",
+      "q": 24,
+      "kaina": "48.39",
+      "reg": "48.39",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vf_pakas",
+      "nuol": "7.82",
+      "man": "",
+      "t": "24 vnt. Landfleisch konservai šunims, jaučių širdys+ryžiai, "
+     }
+    ]
+   },
+   {
+    "id": 20424,
+    "t": "Josera Cat Chicken+Spinach pate konservai katėms,  85g",
+    "st": "publish",
+    "sku": "JOS0438",
+    "ean": "4032254750055",
+    "kaina": "1.39",
+    "reg": "1.39",
+    "sale": "",
+    "cost_meta": "0.952",
+    "sand": "vf",
+    "stock": 116,
+    "ss": "instock",
+    "man": "",
+    "seima": "vf-josera-cat-chickenspinach-pate-konservai-katems-85g",
+    "pakai": [
+     {
+      "id": 38179,
+      "st": "publish",
+      "q": 36,
+      "kaina": "48.99",
+      "reg": "48.99",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vf_pakas",
+      "nuol": "1.98",
+      "man": "",
+      "t": "36 vnt. Josera Cat Chicken+Spinach pate konservai katėms, 85"
+     }
+    ]
+   },
+   {
+    "id": 20435,
+    "t": "Josera Cat 654 Kitten pate konservai kačiukams, 85g",
+    "st": "publish",
+    "sku": "JOS0442",
+    "ean": "4032254750130",
+    "kaina": "1.39",
+    "reg": "1.39",
+    "sale": "",
+    "cost_meta": "0.952",
+    "sand": "vf",
+    "stock": 694,
+    "ss": "instock",
+    "man": "",
+    "seima": "vf-josera-cat-654-kitten-pate-konservai-kaciukams-85g",
+    "pakai": [
+     {
+      "id": 38180,
+      "st": "publish",
+      "q": 36,
+      "kaina": "48.99",
+      "reg": "48.99",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vf_pakas",
+      "nuol": "1.98",
+      "man": "",
+      "t": "36 vnt. Josera Cat 654 Kitten pate konservai kačiukams, 85g"
+     }
+    ]
+   },
+   {
+    "id": 24395,
+    "t": "JosiDog Chicken in Sauce konservai šunims, vištiena padaže, 415g",
+    "st": "publish",
+    "sku": "JOS0892",
+    "ean": "4032254774051",
+    "kaina": "1.09",
+    "reg": "1.09",
+    "sale": "",
+    "cost_meta": "0.744",
+    "sand": "vf",
+    "stock": 1951,
+    "ss": "instock",
+    "man": "",
+    "seima": "vf-josidog-chicken-in-sauce-konservai-sunims-vistiena-padaze-415g",
+    "pakai": [
+     {
+      "id": 38181,
+      "st": "draft",
+      "q": 36,
+      "kaina": "36.39",
+      "reg": "36.39",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vg_pakas",
+      "nuol": "7.22",
+      "man": "",
+      "t": "36 vnt. JosiDog Chicken in Sauce konservai šunims, vištiena "
+     }
+    ]
+   },
+   {
+    "id": 24393,
+    "t": "JosiCat Fish in Sauce konservai katėms, žuvis padaže, 415g",
+    "st": "publish",
+    "sku": "JOS0891",
+    "ean": "4032254774136",
+    "kaina": "1.09",
+    "reg": "1.09",
+    "sale": "",
+    "cost_meta": "0.744",
+    "sand": "vf",
+    "stock": 1069,
+    "ss": "instock",
+    "man": "",
+    "seima": "vf-josicat-fish-in-sauce-konservai-katems-zuvis-padaze-415g",
+    "pakai": [
+     {
+      "id": 38182,
+      "st": "draft",
+      "q": 36,
+      "kaina": "36.39",
+      "reg": "36.39",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vg_pakas",
+      "nuol": "7.22",
+      "man": "",
+      "t": "36 vnt. JosiCat Fish in Sauce konservai katėms, žuvis padaže"
+     }
+    ]
+   },
+   {
+    "id": 22763,
+    "t": "JosiDog Beef in Sauce konservai šunims, jautiena padaže, 415g",
+    "st": "publish",
+    "sku": "JOS0888",
+    "ean": "4032254774075",
+    "kaina": "1.09",
+    "reg": "1.09",
+    "sale": "",
+    "cost_meta": "0.744",
+    "sand": "vf",
+    "stock": 1071,
+    "ss": "instock",
+    "man": "",
+    "seima": "vf-josidog-beef-in-sauce-konservai-sunims-jautiena-padaze-415g",
+    "pakai": [
+     {
+      "id": 38183,
+      "st": "draft",
+      "q": 36,
+      "kaina": "36.39",
+      "reg": "36.39",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vg_pakas",
+      "nuol": "7.22",
+      "man": "",
+      "t": "36 vnt. JosiDog Beef in Sauce konservai šunims, jautiena pad"
+     }
+    ]
+   },
+   {
+    "id": 22765,
+    "t": "JosiDog Game in Sauce konservai šunims, žvėriena padaže, 415g",
+    "st": "publish",
+    "sku": "JOS0889",
+    "ean": "4032254774037",
+    "kaina": "1.09",
+    "reg": "1.09",
+    "sale": "",
+    "cost_meta": "0.744",
+    "sand": "vf",
+    "stock": 1699,
+    "ss": "instock",
+    "man": "",
+    "seima": "vf-josidog-game-in-sauce-konservai-sunims-zveriena-padaze-415g",
+    "pakai": [
+     {
+      "id": 38184,
+      "st": "draft",
+      "q": 36,
+      "kaina": "36.39",
+      "reg": "36.39",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vg_pakas",
+      "nuol": "7.22",
+      "man": "",
+      "t": "36 vnt. JosiDog Game in Sauce konservai šunims, žvėriena pad"
+     }
+    ]
+   },
+   {
+    "id": 22769,
+    "t": "JosiCat Chicken in Sauce konservai katėms, vištiena padaže, 415g",
+    "st": "publish",
+    "sku": "JOS0894",
+    "ean": "4032254774174",
+    "kaina": "1.09",
+    "reg": "1.09",
+    "sale": "",
+    "cost_meta": "0.744",
+    "sand": "vf",
+    "stock": 991,
+    "ss": "instock",
+    "man": "",
+    "seima": "vf-josicat-chicken-in-sauce-konservai-katems-vistiena-padaze-415g",
+    "pakai": [
+     {
+      "id": 38185,
+      "st": "draft",
+      "q": 36,
+      "kaina": "36.39",
+      "reg": "36.39",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vg_pakas",
+      "nuol": "7.22",
+      "man": "",
+      "t": "36 vnt. JosiCat Chicken in Sauce konservai katėms, vištiena "
+     }
+    ]
+   },
+   {
+    "id": 22771,
+    "t": "JosiCat Beef in Sauce konservai katėms, jautiena padaže, 415g",
+    "st": "publish",
+    "sku": "JOS0895",
+    "ean": "4032254774150",
+    "kaina": "1.09",
+    "reg": "1.09",
+    "sale": "",
+    "cost_meta": "0.744",
+    "sand": "vf",
+    "stock": 287,
+    "ss": "instock",
+    "man": "",
+    "seima": "vf-josicat-beef-in-sauce-konservai-katems-jautiena-padaze-415g",
+    "pakai": [
+     {
+      "id": 38186,
+      "st": "draft",
+      "q": 36,
+      "kaina": "36.39",
+      "reg": "36.39",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vg_pakas",
+      "nuol": "7.22",
+      "man": "",
+      "t": "36 vnt. JosiCat Beef in Sauce konservai katėms, jautiena pad"
+     }
+    ]
+   },
+   {
+    "id": 21679,
+    "t": "JosiCat Paté with Beef paštetas katėms su jautiena, 100 g",
+    "st": "publish",
+    "sku": "JOS0769",
+    "ean": "4032254780144",
+    "kaina": "0.8",
+    "reg": "0.8",
+    "sale": "",
+    "cost_meta": "0.456",
+    "sand": "vf",
+    "stock": 162,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "vf-josicat-pate-with-beef-pastetas-katems-su-jautiena-100-g",
+    "pakai": [
+     {
+      "id": 38187,
+      "st": "publish",
+      "q": 48,
+      "kaina": "35.49",
+      "reg": "35.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vg_pakas",
+      "nuol": "7.43",
+      "man": "",
+      "t": "48 vnt. JosiCat Paté with Beef paštetas katėms su jautiena, "
+     }
+    ]
+   },
+   {
+    "id": 21681,
+    "t": "JosiCat Paté with Chicken paštetas katėms su vištiena, 100 g",
+    "st": "publish",
+    "sku": "JOS0770",
+    "ean": "4032254780168",
+    "kaina": "0.8",
+    "reg": "0.8",
+    "sale": "",
+    "cost_meta": "0.456",
+    "sand": "vf",
+    "stock": 785,
+    "ss": "instock",
+    "man": "yes",
+    "seima": "vf-josicat-pate-with-chicken-pastetas-katems-su-vistiena-100-g",
+    "pakai": [
+     {
+      "id": 38188,
+      "st": "publish",
+      "q": 48,
+      "kaina": "35.49",
+      "reg": "35.49",
+      "sale": "",
+      "ss": "instock",
+      "zym": "_ps_s1825vg_pakas",
+      "nuol": "7.43",
+      "man": "",
+      "t": "48 vnt. JosiCat Paté with Chicken paštetas katėms su vištien"
+     }
+    ]
+   }
+  ]
+ },
+ "v": "dep-094418",
+ "kurimas": 200,
+ "sid": 8353,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
