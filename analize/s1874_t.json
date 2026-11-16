@@ -1,0 +1,183 @@
+{
+ "v": "dep-212657",
+ "kurimas": 200,
+ "sid": 8373,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "S1874t",
+  "shots": [
+   {
+    "n": "s1874_1_preke",
+    "u": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?t=1794864519",
+    "w": 390,
+    "h": 1800
+   },
+   {
+    "n": "s1874_2_katalogas",
+    "u": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?t=1794864519",
+    "w": 390,
+    "h": 1600
+   },
+   {
+    "n": "s1874_3a_ideti",
+    "u": "https://petshop.lt/?add-to-cart=18587&quantity=1",
+    "w": 390,
+    "h": 900
+   },
+   {
+    "n": "s1874_3b_ideti",
+    "u": "https://petshop.lt/?add-to-cart=19496&quantity=2",
+    "w": 390,
+    "h": 900
+   },
+   {
+    "n": "s1874_4_krepselis_isj",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 390,
+    "h": 1800,
+    "eval": "(document.getElementById('ps-pren')||{}).innerText||'NERA BLOKO'"
+   },
+   {
+    "n": "s1874_5_jungiklis",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 390,
+    "h": 900,
+    "click": "#ps-pren > a"
+   },
+   {
+    "n": "s1874_6_krepselis_ij",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 390,
+    "h": 2200,
+    "eval": "(document.getElementById('ps-pren')||{}).innerText||'NERA BLOKO'"
+   },
+   {
+    "n": "s1874_7_plius",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 390,
+    "h": 900,
+    "click": "a[aria-label=\"Rečiau\"]"
+   },
+   {
+    "n": "s1874_8_krepselis_35",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 390,
+    "h": 2200,
+    "eval": "(document.getElementById('ps-pren')||{}).innerText||'NERA BLOKO'"
+   },
+   {
+    "n": "s1874_9_kasa",
+    "u": "https://petshop.lt/kasa/",
+    "w": 390,
+    "h": 3600,
+    "full": 1,
+    "eval": "[ (document.querySelector('.ps-pren-salygos')||{}).innerText||'NERA SALYGU', (document.querySelector('.ps-pren-sutikimas')||{}).innerText||'NERA VARNELES', (document.querySelector('#payment')||{}).innerText||'' ].join(' || ')"
+   },
+   {
+    "n": "s1874_10_paskyra",
+    "u": "https://petshop.lt/paskyra/prenumeratos/",
+    "w": 390,
+    "h": 1800
+   }
+  ],
+  "jau_yra": [
+   44,
+   "terra",
+   [
+    "customer"
+   ]
+  ],
+  "testuotojai": [
+   44
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
+    "value": "terra|1794875319|S6osGJ78I1qxdVyczqgrzlLyvyHg5lJYusuDCDfTqwj|e7f8e1e6e98daa0b8fc8457fdb07f1a153cd839583f2a22649df230675015dd3"
+   }
+  ],
+  "prekes": [
+   18587,
+   19496
+  ]
+ },
+ "shots": {
+  "s1874_1_preke": {
+   "status": 201,
+   "url": "https://petshop.lt/product/exclusion-hypoallergenic-mazu-veisliu-sunu-maistas-su-kiauliena-ir-zirneliais-7-kg/?t=1794864519",
+   "title": "Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg - Petshop.lt",
+   "errors": []
+  },
+  "s1874_2_katalogas": {
+   "status": 201,
+   "url": "https://petshop.lt/kategorija/sunims/maistas-sunims/sausas-maistas-sunims/?t=1794864519",
+   "title": "Sausas maistas šunims – pirkti internetu | Petshop.lt",
+   "errors": []
+  },
+  "s1874_3a_ideti": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=18587&quantity=1",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1874_3b_ideti": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=19496&quantity=2",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1874_4_krepselis_isj": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "eval": "NERA BLOKO"
+  },
+  "s1874_5_jungiklis": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('#ps-pren > a')\n"
+  },
+  "s1874_6_krepselis_ij": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "eval": "NERA BLOKO"
+  },
+  "s1874_7_plius": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "click_err": "TimeoutError: page.click: Timeout 5000ms exceeded.\nCall log:\n  - waiting for locator('a[aria-label=\"Rečiau\"]')\n"
+  },
+  "s1874_8_krepselis_35": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "eval": "NERA BLOKO"
+  },
+  "s1874_9_kasa": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ],
+   "eval": "NERA SALYGU || NERA VARNELES ||  Mokėjimas internetu \nALBANIJA\nAUSTRIJA\nBELGIJA\nBULGARIJA\nKANADA\nČEKIJA\nVOKIETIJA\nDANIJA\nESTIJA\nISPANIJA\nSUOMIJA\nPRANCūZIJA\nJUNGTINė KARALYSTė\nGRUZIJA\nGRAIKIJA\nKROATIJA\nVENGRIJA\nAIRIJA\nITALIJA\nLIETUVA\nLIUKSEMBURGAS\nLATVIJA\nMALTA\nNYDERLANDAI\nNORVEGIJA\nKITOS šALYS\nLENKIJA\nPORTUGALIJA\nRUMUNIJA\nŠVEDIJA\nSLOVėNIJA\nSLOVAKIJA\nTURKIJA\nJUNGTINėS VALSTIJOS\nKOSOVAS\n\n\nElektroninė bankininkystė\nPaysera sąskaita\nAB „Swedbank“\nAB „SEB bankas“\nVisa, MasterCard, Maestro\nGoogle Pay\nApple Pay\nLuminor\nAS Citadele bankas\nRevolut (LT)\nArtea\nUAB Urbo bankas\nLietuvos centrinė kredito unija\nKitos mokėjimo sistemos\nPaprastu pervedimu arba grynaisiais banke\n\nInformuojame, kad sąskaitos informacijos ir mokėjimo inicijavimo paslaugas Jums suteiks Paysera vadovaudamasi šių paslaugų teikimo taisyklėmis. Tęsdami apmokėjimą patvirtinate, kad sutinkate su šių paslaugų suteikimu ir jų teikimo sąlygomis.\n Bankinis pavedimas\n\n Perskaičiau ir sutinku su pirkimo sąlygomis ir taisyklėmis bei privatumo politika *\n\nAPMOKĖTI"
+  },
+  "s1874_10_paskyra": {
+   "status": 201,
+   "url": "https://petshop.lt/paskyra/prenumeratos/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": []
+  }
+ }
+}
