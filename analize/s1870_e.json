@@ -1,6 +1,6 @@
 {
  "1": {
-  "v": "S1870e",
+  "v": "S1870e2",
   "ej_7d_due": [
    {
     "id": "2856",
@@ -158,7 +158,7 @@
     "sent_at": "2026-11-16 05:33:45"
    }
   ],
-  "now_db": "2026-11-16 09:54:26",
+  "now_db": "2026-11-16 09:56:05",
   "cron_email": [
    [
     "ps_email_dispatch_cron",
@@ -207,11 +207,162 @@
    }
   ],
   "o": {
-   "1736": "id?",
-   "1738": "id?",
-   "1739": "id?",
-   "1741": "id?",
-   "1743": "id?"
+   "1736": {
+    "id": 38587,
+    "st": "processing",
+    "items": [
+     "JosiCat Crunchy Chicken sausas pašaras katėms su v x3 st=95 kelias=i_av",
+     "JosiCat Paté with Beef paštetas katėms su jautiena x4 st=162 kelias=i_av",
+     "JosiCat Paté with Chicken paštetas katėms su višti x4 st=785 kelias=i_av",
+     "Animonda Vom Feinsten Adult with Rabbit in Cream S x3 st=65 kelias=av",
+     "Animonda skanėstai katėms su Omega-3 - Milkies Adu x2 st=14 kelias=av",
+     "Animonda skanėstai katėms gerai savijautai - Milki x2 st=13 kelias=av",
+     "Animonda Vom Feinsten Adult with Rabbit - konserva x2 st=64 kelias=av"
+    ],
+    "meta": {
+     "_ps_kelias_kasoje": "2026-11-13 14:01:29",
+     "venipak_pickup_point": "2776",
+     "venipak_pickup_point_data": "{\"id\":2776,\"code\":\"300906055\",\"name\":\"Venipak locker, MAXIMA Venipak pa\\u0161tom"
+    },
+    "notes_n": 14,
+    "notes": [
+     "11-13 14:28 Surūšiuota (Inga): JosiCat Crunchy Chicken sausas pašaras k — VF veža į AV; JosiCat Paté with Beef paštetas ka",
+     "11-13 14:02 Paysera: Naujo užsakymo kūrimo būsena",
+     "11-13 14:02 PVM s/f AVPN011658 suteikta apmokėjus, data 2026-11-13 (S1839).",
+     "11-13 14:02 Email \"Užsakymas vykdomas\" sent.",
+     "11-13 14:02 Email \"Naujas užsakymas\" sent.",
+     "11-13 14:02 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+     "11-13 14:02 Faktai irasyti: 7 eilutes · pajamos 28,54 EUR (be PVM, po nuolaidu) · PVM 5,99 EUR · marza 6,61 EUR · kontribu",
+     "11-13 14:02 Partijos nurašytos: #19408 −3 vnt. (1 partijos) · #19312 −2 vnt. (1 partijos) · #19318 −2 vnt. (1 partijos) · ",
+     "11-13 14:02 AV nurašymas: #19408 grynai AV 68 -> 65 · #19312 grynai AV 18 -> 16 · #19318 grynai AV 15 -> 13 · #19411 gryna",
+     "11-13 14:02 Paysera: Užsakymo būsena po apmokėjimo",
+     "11-13 14:01 Likutis sumažintas: JosiCat Crunchy Chicken sausas pašaras katėms su vištiena, 1,9 kg (95&rarr;92), JosiCat Pa",
+     "11-13 14:01 Paysera: Neapmokėto užsakymo būsena",
+     "11-13 14:01 Vykdymas: MIXED — VF 11 vnt · AV 9 vnt (2 siunta(-os)) · mišrus → AV pirmenybė",
+     "11-13 14:01 Stock hold of 90 minutes applied to: - JosiCat Crunchy Chicken sausas pašaras katėms su vištiena, 1,9 kg (JOS0"
+    ]
+   },
+   "1738": {
+    "id": 38589,
+    "st": "processing",
+    "items": [
+     "Exclusion Hypoallergenic mažų veislių šunų maistas x1 st=0 kelias=tiesiai",
+     "Exclusion Hypoallergenic konservai šunims su kiaul x5 st=668 kelias=tiesiai"
+    ],
+    "meta": {
+     "_ps_kelias_kasoje": "2026-11-13 17:39:22",
+     "venipak_pickup_point": "3683",
+     "venipak_pickup_point_data": "{\"id\":3683,\"code\":\"300906055\",\"name\":\"Venipak locker, NORFA Venipak pa\\u0161toma"
+    },
+    "notes_n": 15,
+    "notes": [
+     "11-13 21:39 Surūšiuota (Inga): Exclusion Hypoallergenic mažų veislių šu — VF siunčia klientui; Exclusion Hypoallergenic ko",
+     "11-13 21:38 Darbalaukis: „Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg“ kelias Iš AV",
+     "11-13 17:40 PVM s/f AVPN011660 suteikta apmokėjus, data 2026-11-13 (S1839).",
+     "11-13 17:40 Email \"Užsakymas vykdomas\" sent.",
+     "11-13 17:40 Email \"Naujas užsakymas\" sent.",
+     "11-13 17:40 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+     "11-13 17:40 Faktai irasyti: 2 eilutes · pajamos 63,55 EUR (be PVM, po nuolaidu) · PVM 13,34 EUR · marza 14,16 EUR · kontri",
+     "11-13 17:40 Partijos nurašytos: #18587 −1 vnt. (1 partijos)",
+     "11-13 17:40 AV nurašymas: #18587 AV 2 -> 1",
+     "11-13 17:40 Paysera: Užsakymo būsena po apmokėjimo",
+     "11-13 17:40 Paysera: Naujo užsakymo kūrimo būsena",
+     "11-13 17:39 Likutis sumažintas: Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg (2&rarr",
+     "11-13 17:39 Paysera: Neapmokėto užsakymo būsena",
+     "11-13 17:39 Vykdymas: MIXED — AV 1 vnt · VF 5 vnt (2 siunta(-os)) · dropship pirma"
+    ]
+   },
+   "1739": {
+    "id": 38600,
+    "st": "processing",
+    "items": [
+     "Vetoquinol Calo-Pet pasta šunims ir katėms, 120g x2 st=57 kelias=tiesiai"
+    ],
+    "meta": {
+     "_ps_kelias_kasoje": "2026-11-13 20:34:08",
+     "venipak_pickup_point": "3568",
+     "venipak_pickup_point_data": "{\"id\":3568,\"code\":\"300906055\",\"name\":\"Venipak locker, NORFA Venipak pa\\u0161toma"
+    },
+    "notes_n": 12,
+    "notes": [
+     "11-13 20:35 PVM s/f AVPN011661 suteikta apmokėjus, data 2026-11-13 (S1839).",
+     "11-13 20:35 Email \"Užsakymas vykdomas\" sent.",
+     "11-13 20:35 Email \"Naujas užsakymas\" sent.",
+     "11-13 20:35 Paysera: Naujo užsakymo kūrimo būsena",
+     "11-13 20:35 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+     "11-13 20:35 Surūšiuota pati: Vetoquinol Calo-Pet pasta šunims ir katė — VF siunčia klientui",
+     "11-13 20:35 Faktai irasyti: 1 eilutes · pajamos 14,36 EUR (be PVM, po nuolaidu) · PVM 3,39 EUR · marza 3,84 EUR · kontribu",
+     "11-13 20:35 Paysera: Užsakymo būsena po apmokėjimo",
+     "11-13 20:34 Likutis sumažintas: Vetoquinol Calo-Pet pasta šunims ir katėms, 120g (57&rarr;55)",
+     "11-13 20:34 Paysera: Neapmokėto užsakymo būsena",
+     "11-13 20:34 Vykdymas: DS — VF 2 vnt (1 siunta(-os)) · dropship pirma",
+     "11-13 20:34 Stock hold of 90 minutes applied to: - Vetoquinol Calo-Pet pasta šunims ir katėms, 120g (ZOOV026) &times; 2"
+    ]
+   },
+   "1741": {
+    "id": 38602,
+    "st": "processing",
+    "items": [
+     "Exclusion Hypoallergenic mažų veislių šunų maistas x1 st=0 kelias=tiesiai"
+    ],
+    "meta": {
+     "_ps_kelias_kasoje": "2026-11-13 20:47:49",
+     "venipak_pickup_point": "3487",
+     "venipak_pickup_point_data": "{\"id\":3487,\"code\":\"300906055\",\"name\":\"Venipak locker, RIMI Bendor\\u0117liai Veni"
+    },
+    "notes_n": 15,
+    "notes": [
+     "11-13 21:37 Darbalaukis: „Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg“ kelias Iš AV",
+     "11-13 20:49 Paysera: Naujo užsakymo kūrimo būsena",
+     "11-13 20:49 PVM s/f AVPN011662 suteikta apmokėjus, data 2026-11-13 (S1839).",
+     "11-13 20:49 Email \"Užsakymas vykdomas\" sent.",
+     "11-13 20:49 Email \"Naujas užsakymas\" sent.",
+     "11-13 20:49 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+     "11-13 20:49 Surūšiuota pati: Exclusion Hypoallergenic mažų veislių šu — Iš AV",
+     "11-13 20:49 Faktai irasyti: 1 eilutes · pajamos 47,10 EUR (be PVM, po nuolaidu) · PVM 9,89 EUR · marza 9,61 EUR · kontribu",
+     "11-13 20:49 Partijos nurašytos: #18587 −1 vnt. (1 partijos)",
+     "11-13 20:49 AV nurašymas: #18587 AV 1 -> 0",
+     "11-13 20:49 Paysera: Užsakymo būsena po apmokėjimo",
+     "11-13 20:47 Likutis sumažintas: Exclusion Hypoallergenic mažų veislių šunų maistas su kiauliena ir žirneliais 7 kg (1&rarr",
+     "11-13 20:47 Paysera: Neapmokėto užsakymo būsena",
+     "11-13 20:47 Vykdymas: MAIN — AV 1 vnt (1 siunta(-os)) · dropship pirma"
+    ]
+   },
+   "1743": {
+    "id": 38604,
+    "st": "processing",
+    "items": [
+     "16 vnt. Animonda Vom Feinsten Adult with Poultry a x1 st=NULL kelias=av",
+     "Animonda Vom Feinsten Adult with Chicken Liver – k x11 st=3 kelias=av",
+     "Animonda Vom Feinsten Adult with Turkey Hearts – k x8 st=152 kelias=av",
+     "Animonda skanėstai katėms su Omega-3 - Milkies Adu x2 st=14 kelias=av",
+     "Churu kreminis skanėstas 10+ katėms su vištiena 4v x1 st=160 kelias=i_av",
+     "Churu kreminis skanėstas katėms su vištiena ir kre x1 st=387 kelias=i_av",
+     "Animonda Vom Feinsten Adult with Turkey and Rabbit x6 st=122 kelias=av"
+    ],
+    "meta": {
+     "_ps_kelias_kasoje": "2026-11-13 22:54:02",
+     "venipak_pickup_point": "2781",
+     "venipak_pickup_point_data": "{\"id\":2781,\"code\":\"300906055\",\"name\":\"Venipak locker, PC PANORAMA Venipak pa\\u01"
+    },
+    "notes_n": 14,
+    "notes": [
+     "11-14 10:49 Surūšiuota (Inga): 16 vnt. Animonda Vom Feinsten Adult with — Iš AV; Animonda Vom Feinsten Adult with Chicken ",
+     "11-13 22:55 Paysera: Naujo užsakymo kūrimo būsena",
+     "11-13 22:55 PVM s/f AVPN011664 suteikta apmokėjus, data 2026-11-13 (S1839).",
+     "11-13 22:55 Email \"Užsakymas vykdomas\" sent.",
+     "11-13 22:55 Email \"Naujas užsakymas\" sent.",
+     "11-13 22:55 Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėtas į Vykdomas.",
+     "11-13 22:55 Faktai irasyti: 7 eilutes · pajamos 39,67 EUR (be PVM, po nuolaidu) · PVM 8,32 EUR · marza 13,89 EUR · kontrib",
+     "11-13 22:55 Partijos nurašytos: #19417 −16 vnt. (1 partijos) · #19440 −11 vnt. (1 partijos) · #19399 −8 vnt. (1 partijos) ",
+     "11-13 22:55 AV nurašymas: #19417 grynai AV 198 -> 182 · #19440 grynai AV 14 -> 3 · #19399 grynai AV 160 -> 152 · #19312 gr",
+     "11-13 22:55 Paysera: Užsakymo būsena po apmokėjimo",
+     "11-13 22:54 Likutis sumažintas: Animonda Vom Feinsten Adult with Chicken Liver – konservai katėms su vištienos kepenėlėmis",
+     "11-13 22:54 Paysera: Neapmokėto užsakymo būsena",
+     "11-13 22:54 Vykdymas: MIXED — AV 28 vnt · VF 2 vnt (2 siunta(-os)) · mišrus → AV pirmenybė",
+     "11-13 22:54 Stock hold of 90 minutes applied to: - Animonda Vom Feinsten Adult with Chicken Liver – konservai katėms su vi"
+    ]
+   }
   },
   "kamp": [
    {
@@ -286,9 +437,9 @@
    }
   ]
  },
- "v": "dep-075313",
+ "v": "dep-075457",
  "kurimas": 200,
- "sid": 8344,
+ "sid": 8345,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
