@@ -1,0 +1,40 @@
+{
+ "1": {
+  "v": "sms2",
+  "l": {
+   "/petshop-esp/includes/class-sender-adapter.php": [
+    "388: * SMS — placeholder v0.2.0. Realus impl. kai bus LT Sender ID + kreditas.",
+    "392: // Todel dev aplinkoje blokuojam VISUS SMS (saugiau nei bandyti derinti numeri prie email'o).",
+    "403: // TODO v0.2.x: POST /sms arba message/send su type=sms kai Sender ID patvirtintas + kreditas.",
+    "407: 'note'  => 'Laukia LT Sender ID patvirtinimo + SMS kredito (Etapo A blokas 8).',"
+   ],
+   "/petshop-core/includes/interface-message-provider.php": [
+    "3: * Petshop_Message_Provider — kontrakts message provider'iams (Sender, ateities SMS, etc.)",
+    "80: * Siunčia SMS. Provider gali nepalaikyti (grazina should_retry=false, error='not_supported')."
+   ],
+   "/petshop-core/petshop-core.php": [
+    "4: * Description: Petshop.lt provider-neutralus sistemos pamatas: event log + retry queue, event registry, consent log/sync, action tokens, message provider interface. Prielaida: bet koks message provider (Sender, SMS, kt.) priklauso nuo šio plugin'o, ne atvirkš",
+    "14: * - Provider'iai (petshop-esp, ateities petshop-sms) require'ina šį plugin'ą."
+   ],
+   "/petshop-core/includes/class-email-dispatch.php": [
+    "455: // Provider: pirma filtras (ateities SMS/kitas ESP), tada esama core konvencija."
+   ],
+   "paskyra": [
+    "185: case 'sms':",
+    "188: Petshop_Prenumerata::keisti_pristatyma($sid, array('sms' => $ij ? 1 : 0, 'sms_tel' => $tel));",
+    "189: self::pranesimas($ij ? 'SMS priminimas dieną prieš išsiuntimą įjungtas.' : 'SMS priminimas išjungtas.');",
+    "462: $sms_on = !empty($del['sms']);",
+    "465: echo '<form method=\"post\" class=\"psn3-sms\">' . $hid . '<input type=\"hidden\" name=\"ps_pren_veiksmas\" value=\"sms\" />';",
+    "467: echo '<span class=\"psn3-pilk\">SMS dieną prieš išsiunčiant</span> <input type=\"tel\" name=\"sms_tel\" value=\"' . esc_attr($sms_tel) . '\" placeholder=\"+370\" class=\"psn3-input psn3-tel\" /> <button class",
+    "642: .psn3-sms{display:flex;gap:10px;align-items:center;margin-top:8px;flex-wrap:wrap}"
+   ]
+  }
+ },
+ "v": "dep-121415",
+ "kurimas": 200,
+ "sid": 8356,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
