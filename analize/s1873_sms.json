@@ -1,0 +1,52 @@
+{
+ "1": {
+  "v": "sms1",
+  "mu": {
+   "/mu-plugins/petshop-prenumerata-paskyra.php": 9,
+   "/mu-plugins/petshop-darbalaukis.php": 2
+  },
+  "plugins_sms": [],
+  "petshop_plugins": {
+   "/petshop-esp/includes/class-sender-adapter.php": 5,
+   "/petshop-core/petshop-core.php": 2,
+   "/petshop-core/includes/interface-message-provider.php": 2,
+   "/petshop-esp/petshop-esp.php": 1,
+   "/petshop-core/includes/class-email-dispatch.php": 1,
+   "/petshop-core/includes/class-retry-queue.php": 1
+  },
+  "opts": [],
+  "sender": {
+   "/account": [
+    404,
+    "{\n    \"message\": \"The route v2/account could not be found.\"\n}"
+   ],
+   "/sms": [
+    404,
+    "{\n    \"message\": \"The route v2/sms could not be found.\"\n}"
+   ],
+   "/sms/campaigns": [
+    404,
+    "{\n    \"message\": \"The route v2/sms/campaigns could not be found.\"\n}"
+   ],
+   "/workspaces": [
+    404,
+    "{\n    \"message\": \"The route v2/workspaces could not be found.\"\n}"
+   ],
+   "/account/sms": [
+    404,
+    "{\n    \"message\": \"The route v2/account/sms could not be found.\"\n}"
+   ],
+   "/campaigns?limit=1&type=sms": [
+    200,
+    "{\"data\":[{\"id\":\"qxQN6G\",\"subject\":\"Kiek kainuoja j\\u016bs\\u0173 augintinio maistas per dien\\u0105?\",\"reply_to\":\"terra@petshop.lt\",\"language\":\"lt\",\"recipient_count\":1,\"from\":\"Petshop.lt\",\"schedule_time\":null,\"last_action\":\"api\",\"sent_time\":\"2026-09-16 17:57:06\",\"status\":\"SENT\",\"created\":\"2026-09-16 17:56:37\",\"modified\":\"2026-09-16 17:57:06\",\"title\":\"TEST relaunch CALC v1.0 14:56\",\"domain_id\":\"eE9p2l\",\"preheader\":\"{{ps_hero_eur2}} per dien\\u0105 {{ps_hero_kg2}} {{ps_hero_gyv}}. Skai\\u010diavome pagal maist\\u0105, kur\\u012f anks\\u010diau pirkote pas mus.\",\"auto_followup_active\":0,\"auto_followup_subject\":\"Follow up of Kiek kainuoja j\\u016bs\\u0173 augintinio maistas per dien\\u0105?\",\"auto_followu"
+   ]
+  }
+ },
+ "v": "dep-121242",
+ "kurimas": 200,
+ "sid": 8355,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
