@@ -1,73 +1,14 @@
 {
- "2": {
-  "v": "S1874p",
-  "F": "2",
-  "ok": {
-   "petshop-prenumerata.php": true,
-   "petshop-prenumerata-katalogas.php": true,
-   "petshop-pren-sutikimas.php": true,
-   "petshop-prenumerata-paysera.php": true,
-   "petshop-prenumerata-paskyra.php": true,
-   "petshop-prenumeratos-langas.php": true,
-   "petshop-prenumerata-veiksmas.php": true,
-   "ps-sablonai/subscription-t5.php": true,
-   "ps-sablonai/subscription-started.php": true
-  },
-  "ver": {
-   "eng": "2.4",
-   "kat": "5.0",
-   "sut": "1.2",
-   "pay": "1.1"
-  },
-  "int": [
-   15,
-   20,
-   25,
-   30,
-   35,
-   40,
-   45,
-   50,
-   55,
-   60,
-   65,
-   70,
-   75,
-   80,
-   85,
-   90
-  ],
-  "ter": {
-   "planine": "2026-12-26",
-   "siunta": "2026-12-23",
-   "pranesimas": "2026-12-16",
-   "prekes_iki": "2026-12-18",
-   "praleisti_iki": "2026-12-22"
-  },
-  "flows": true,
-  "flag": "ne",
-  "galima": {
-   "17397": true,
-   "18054": true,
-   "35079": true
-  },
-  "ciklas_log": {
-   "kada": "2026-11-16 06:10:13",
-   "diena": "2026-11-16",
-   "rez": {
-    "t5": 0,
-    "uzsakymai": 0,
-    "sulaikyta": 0,
-    "dunning": 0,
-    "klaidos": []
-   }
-  }
- },
- "v": "dep-211802",
+ "v": "dep-205853",
  "kurimas": 200,
- "sid": 8370,
+ "sid": 8372,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1874p",
+  "F": "D",
+  "klaida": "md5 petshop-prenumerata.php yra=d103b7af549d933309051b0bad75c5b6 laukta=2de1d047fb87ec93cefa70cbba157725"
  }
 }
