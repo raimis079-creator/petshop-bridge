@@ -1,0 +1,104 @@
+{
+ "v": "dep-220024",
+ "kurimas": 200,
+ "sid": 8381,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "t3",
+  "shots": [
+   {
+    "n": "s1874_c0",
+    "u": "https://petshop.lt/?t=1794866514",
+    "w": 390,
+    "h": 600
+   },
+   {
+    "n": "s1874_c1",
+    "u": "https://petshop.lt/?add-to-cart=16959&quantity=1",
+    "w": 390,
+    "h": 600
+   },
+   {
+    "n": "s1874_c2",
+    "u": "https://petshop.lt/?add-to-cart=16950&quantity=1",
+    "w": 390,
+    "h": 600
+   },
+   {
+    "n": "s1874_c3_krepselis",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 390,
+    "h": 1500,
+    "eval": "(document.getElementById('ps-pren')||{}).innerText||'NERA BLOKO'"
+   },
+   {
+    "n": "s1874_c4_kasa",
+    "u": "https://petshop.lt/kasa/",
+    "w": 390,
+    "h": 4200,
+    "full": 1,
+    "eval": "new Promise(r=>setTimeout(()=>r([(document.querySelector('.ps-pren-salygos')||{}).innerText||'NERA SALYGU',(document.querySelector('.ps-pren-sutikimas')||{}).innerText||'NERA VARNELES',(document.querySelector('.ps-pren-paskyra')||{}).innerText||'-',((document.querySelector('#payment')||{}).innerText||'').slice(0,400)].join(' || ')),4000))"
+   }
+  ],
+  "ses_del": 1,
+  "prekes": [
+   16959,
+   16950
+  ],
+  "pav": [
+   "Papildas gyvūnams Bioveterinary Extra Strong, 28 pok. 16.3 AV=7",
+   "Papildas gyvūnams Bioveterinary Sąnariai&kaulai, Joints&Bones, 28 pok. 13.35 AV=7"
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
+    "value": "terra|1794877314|dyl6XGeXs8MHpnexeDX2Gurjkg2KsbNcX7OakHkOvMo|864ac81e1a538c0f4f2823fc0b3f61d571779540b894d98a89a160f4df33e3ae",
+    "domain": "petshop.lt"
+   },
+   {
+    "name": "ps_js",
+    "value": "1",
+    "domain": "petshop.lt"
+   }
+  ]
+ },
+ "shots": {
+  "s1874_c0": {
+   "status": 201,
+   "url": "https://petshop.lt/?t=1794866514",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1874_c1": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=16959&quantity=1",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1874_c2": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=16950&quantity=1",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1874_c3_krepselis": {
+   "status": 201,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "eval": "Prenumeruoti\nGaukite šį maistą reguliariai – likus 7 dienoms parašysime, ką ir už kiek išsiųsime."
+  },
+  "s1874_c4_kasa": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ],
+   "eval": "NERA SALYGU || NERA VARNELES || - ||  Mokėjimas internetu \nALBANIJA\nAUSTRIJA\nBELGIJA\nBULGARIJA\nKANADA\nČEKIJA\nVOKIETIJA\nDANIJA\nESTIJA\nISPANIJA\nSUOMIJA\nPRANCūZIJA\nJUNGTINė KARALYSTė\nGRUZIJA\nGRAIKIJA\nKROATIJA\nVENGRIJA\nAIRIJA\nITALIJA\nLIETUVA\nLIUKSEMBURGAS\nLATVIJA\nMALTA\nNYDERLANDAI\nNORVEGIJA\nKITOS šALYS\nLENKIJA\nPORTUGALIJA\nRUMUNIJA\nŠVEDIJA\nSLOVėNIJA\nSLOVAKIJA\nTURKIJA\nJUNGTINėS VALSTIJOS\nKOSOVAS\n\n\nElektroninė bankininkystė\nPaysera sąskaita"
+  }
+ }
+}
