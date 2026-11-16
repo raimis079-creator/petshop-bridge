@@ -1,7 +1,7 @@
 {
- "v": "dep-213406",
+ "v": "dep-213608",
  "kurimas": 200,
- "sid": 8375,
+ "sid": 8376,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
@@ -10,8 +10,15 @@
   "v": "t2",
   "shots": [
    {
+    "n": "s1874_dbg2",
+    "u": "https://petshop.lt/?ps_s1874w=1&nc=1794865047",
+    "w": 390,
+    "h": 400,
+    "eval": "document.body.innerText"
+   },
+   {
     "n": "s1874_dbg",
-    "u": "https://petshop.lt/paskyra/prenumeratos/?nc=1794864924",
+    "u": "https://petshop.lt/paskyra/prenumeratos/?nc=1794865047",
     "w": 390,
     "h": 900,
     "eval": "document.body.className.indexOf('logged-in')+' | '+document.cookie.length"
@@ -20,7 +27,7 @@
   "cookies": [
    {
     "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
-    "value": "terra%7C1794875723%7CG3lLvCJu9LC3QuvMHQuLpy9Oa5xI9IkUUZgISLteTs1%7C04bb7b2c47adcb0308ef24c1dd82d5c40bfca9258d05fe224e46ff10606959f5"
+    "value": "terra%7C1794875845%7C86RyA2ei6BVB8gEnzLKtJrjPESZyI4Bd8IckfI6JMey%7C56759cafe44306d110a712ab9c8b6e9173a0e73d464e8bb529becde202508043"
    },
    {
     "name": "ps_js",
@@ -40,9 +47,16 @@
   }
  },
  "shots": {
+  "s1874_dbg2": {
+   "status": 201,
+   "url": "https://petshop.lt/?ps_s1874w=1&nc=1794865047",
+   "title": "",
+   "errors": [],
+   "eval": "{\"uid\":0,\"keys\":[],\"v\":false,\"len\":0,\"pradzia\":\"\"}"
+  },
   "s1874_dbg": {
    "status": 200,
-   "url": "https://petshop.lt/paskyra/prenumeratos/?nc=1794864924",
+   "url": "https://petshop.lt/paskyra/prenumeratos/?nc=1794865047",
    "title": "Mano paskyra - Petshop.lt",
    "errors": [],
    "eval": "-1 | 1175"
