@@ -1,0 +1,165 @@
+{
+ "v": "dep-201829",
+ "kurimas": 200,
+ "sid": 8367,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "k1",
+  "h": {
+   "woocommerce_after_shop_loop_item_title": {
+    "kur": [
+     "wp-content/themes/flatsome/woocommerce/content-product.php :1",
+     "snippet#8367 TEMP PS dep-201829"
+    ],
+    "cb": [
+     "5:woocommerce_template_loop_rating",
+     "10:woocommerce_template_loop_price",
+     "11:Petshop_Dydziu_Kortele::juosta",
+     "12:Petshop_Weight_Filter::card_badge"
+    ]
+   },
+   "woocommerce_before_add_to_cart_button": {
+    "kur": [
+     "snippet#8367 TEMP PS dep-201829"
+    ],
+    "cb": [
+     "20:Petshop_Prenumerata_Katalogas::pasirinkimas"
+    ]
+   },
+   "woocommerce_before_cart": {
+    "kur": [
+     "wp-content/themes/flatsome/woocommerce/cart/cart.php :1",
+     "snippet#614 Petshop DataLayer v1.1 (GA4 ecommerce)",
+     "snippet#8367 TEMP PS dep-201829"
+    ],
+    "cb": [
+     "10:woocommerce_output_all_notices",
+     "10:petshop_gtm_view_cart",
+     "10:closure"
+    ]
+   },
+   "woocommerce_single_product_summary": {
+    "kur": [
+     "wp-content/mu-plugins/petshop-laukai.php :6",
+     "wp-content/themes/flatsome/woocommerce/single-product/layouts/product-left-sidebar-full.php :1",
+     "wp-content/themes/flatsome/woocommerce/single-product/layouts/product-stacked-right.php :1",
+     "wp-content/themes/flatsome/woocommerce/single-product/layouts/product.php :1",
+     "wp-content/themes/flatsome/woocommerce/single-product/layouts/product-left-sidebar-small.php :1",
+     "wp-content/themes/flatsome/woocommerce/single-product/layouts/product-right-sidebar.php :1",
+     "wp-content/themes/flatsome/woocommerce/single-product/layouts/product-left-sidebar.php :1",
+     "wp-content/themes/flatsome/woocommerce/single-product/layouts/product-right-sidebar-full.php :1",
+     "wp-content/themes/flatsome/woocommerce/single-product/layouts/product-no-sidebar.php :1",
+     "snippet#535 Petshop MnM Sutaupymo žymeklis v8 (nauda < 3 % nerodoma)",
+     "snippet#547 Petshop Susidėjimo Rinkinio Vitrina v19",
+     "snippet#568 Petshop Daugiau=Pigiau Display v1.2",
+     "snippet#8367 TEMP PS dep-201829"
+    ],
+    "cb": [
+     "0:flatsome_woocommerce_product_breadcrumb",
+     "1:flatsome_product_brands",
+     "5:woocommerce_template_single_title",
+     "7:flatsome_product_mobile_next_prev_nav",
+     "10:woocommerce_template_single_rating",
+     "10:woocommerce_template_single_price",
+     "10:Petshop_Pristatymo_Pazadas::kg",
+     "11:Petshop_Rinkiniai::sutaupote",
+     "11:closure",
+     "11:closure",
+     "20:woocommerce_template_single_excerpt",
+     "20:flatsome_before_add_to_cart_html",
+     "25:Petshop_Dydziai::pieskime",
+     "25:closure",
+     "30:woocommerce_template_single_add_to_cart",
+     "30:flatsome_after_add_to_cart_html",
+     "31:Petshop_Atsargu_Laukimas::forma",
+     "31:Petshop_Product_Calc::widget",
+     "40:woocommerce_template_single_meta",
+     "50:woocommerce_template_single_sharing",
+     "60:WC_Structured_Data::generate_product_data"
+    ]
+   },
+   "woocommerce_after_add_to_cart_form": {
+    "kur": [
+     "snippet#8367 TEMP PS dep-201829"
+    ],
+    "cb": [
+     "20:Petshop_FBT::render_widget"
+    ]
+   },
+   "woocommerce_shop_loop_item_title": {
+    "kur": [
+     "wp-content/themes/flatsome/woocommerce/content-product.php :1",
+     "snippet#8367 TEMP PS dep-201829"
+    ],
+    "cb": [
+     "0:flatsome_woocommerce_shop_loop_category",
+     "0:flatsome_woocommerce_shop_loop_ratings",
+     "10:woocommerce_template_loop_product_title"
+    ]
+   },
+   "petshop_kortele_blokai": {
+    "kur": [
+     "wp-content/mu-plugins/petshop-katalogas.php :1",
+     "snippet#8367 TEMP PS dep-201829"
+    ],
+    "cb": [
+     "10:Petshop_Prenumerata_Katalogas::korteles_blokas"
+    ]
+   },
+   "woocommerce_before_shop_loop_item": {
+    "kur": [
+     "wp-content/themes/flatsome/woocommerce/content-product.php :1",
+     "snippet#573 Petshop DP Kortelės Ženkliukas v4",
+     "snippet#8367 TEMP PS dep-201829"
+    ],
+    "cb": [
+     "1:closure",
+     "10:woocommerce_show_product_loop_sale_flash"
+    ]
+   },
+   "woocommerce_after_shop_loop_item": {
+    "kur": [
+     "wp-content/themes/flatsome/woocommerce/content-product.php :1",
+     "snippet#573 Petshop DP Kortelės Ženkliukas v4",
+     "snippet#8367 TEMP PS dep-201829"
+    ],
+    "cb": [
+     "99:closure"
+    ]
+   },
+   "woocommerce_cart_contents": {
+    "kur": [
+     "wp-content/themes/flatsome/woocommerce/cart/cart.php :1",
+     "snippet#8367 TEMP PS dep-201829"
+    ],
+    "cb": []
+   },
+   "woocommerce_review_order_before_submit": {
+    "kur": [
+     "snippet#8367 TEMP PS dep-201829"
+    ],
+    "cb": [
+     "9:Petshop_Pren_Sutikimas::varnele"
+    ]
+   },
+   "woocommerce_after_checkout_billing_form": {
+    "kur": [
+     "snippet#8367 TEMP PS dep-201829"
+    ],
+    "cb": [
+     "10:Automattic\\WooCommerce\\Internal\\Orders\\OrderAttributionController::stamp_html_element",
+     "20:Petshop_Sutikimai::laukas"
+    ]
+   }
+  },
+  "tpl": {
+   "content-product.php": "wp-content/themes/flatsome/woocommerce/content-product.php",
+   "content-single-product.php": "wp-content/themes/flatsome/woocommerce/content-single-product.php",
+   "single-product/add-to-cart/simple.php": "wp-content/plugins/woocommerce/templates/single-product/add-to-cart/simple.php",
+   "cart/cart.php": "wp-content/themes/flatsome/woocommerce/cart/cart.php"
+  }
+ }
+}
