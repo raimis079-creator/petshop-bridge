@@ -1,0 +1,123 @@
+{
+ "1": {
+  "v": "S1870k",
+  "dir": {
+   "petshop-backups/2026/11": [],
+   "petshop-backups/2026/10": []
+  },
+  "state_files": [
+   [
+    "application_backups",
+    "11-16 03:20"
+   ],
+   [
+    "backups",
+    "11-16 02:00"
+   ]
+  ],
+  "wpcron": [
+   [
+    "wp_delete_temp_updater_backups",
+    "11-17 15:44"
+   ]
+  ],
+  "statusai_30d": [
+   {
+    "status": "wc-cancelled",
+    "n": "7",
+    "pask": "2026-11-15 19:38:00"
+   },
+   {
+    "status": "wc-completed",
+    "n": "266",
+    "pask": "2026-11-16 07:36:07"
+   },
+   {
+    "status": "wc-on-hold",
+    "n": "1",
+    "pask": "2026-11-15 17:37:37"
+   },
+   {
+    "status": "wc-processing",
+    "n": "38",
+    "pask": "2026-11-16 07:39:29"
+   }
+  ],
+  "completed_pask": [
+   {
+    "id": "38450",
+    "date_created_gmt": "2026-11-12 12:07:14",
+    "date_updated_gmt": "2026-11-16 07:36:07"
+   },
+   {
+    "id": "38429",
+    "date_created_gmt": "2026-11-12 11:20:30",
+    "date_updated_gmt": "2026-11-16 07:36:07"
+   },
+   {
+    "id": "38393",
+    "date_created_gmt": "2026-11-11 05:05:41",
+    "date_updated_gmt": "2026-11-16 07:36:07"
+   },
+   {
+    "id": "38374",
+    "date_created_gmt": "2026-11-10 17:28:05",
+    "date_updated_gmt": "2026-11-16 07:06:32"
+   },
+   {
+    "id": "38537",
+    "date_created_gmt": "2026-11-12 20:54:43",
+    "date_updated_gmt": "2026-11-16 07:06:31"
+   }
+  ],
+  "note_pask": [
+   {
+    "oid": "38724",
+    "comment_date": "2026-11-16 09:39:10",
+    "c": "Surūšiuota (Inga): Jaučio penis pjaustytas, 15,0 cm, 1 vnt. — Iš AV; Jaučio snukis, džiovi"
+   },
+   {
+    "oid": "38724",
+    "comment_date": "2026-11-16 09:32:56",
+    "c": "Paysera: Naujo užsakymo kūrimo būsena"
+   },
+   {
+    "oid": "38724",
+    "comment_date": "2026-11-16 09:32:54",
+    "c": "PVM s/f AVPN011685 suteikta apmokėjus, data 2026-11-16 (S1839)."
+   },
+   {
+    "oid": "38724",
+    "comment_date": "2026-11-16 09:32:54",
+    "c": "Email \"Užsakymas vykdomas\" sent."
+   },
+   {
+    "oid": "38724",
+    "comment_date": "2026-11-16 09:32:53",
+    "c": "Email \"Naujas užsakymas\" sent."
+   },
+   {
+    "oid": "38724",
+    "comment_date": "2026-11-16 09:32:53",
+    "c": "Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėta"
+   },
+   {
+    "oid": "38724",
+    "comment_date": "2026-11-16 09:32:53",
+    "c": "Faktai irasyti: 4 eilutes · pajamos 9,57 EUR (be PVM, po nuolaidu) · PVM 2,38 EUR · marza "
+   },
+   {
+    "oid": "38724",
+    "comment_date": "2026-11-16 09:32:53",
+    "c": "Partijos nurašytos: #18122 −2 vnt. (1 partijos) · #34902 −1 vnt. (1 partijos) · #17850 −1 "
+   }
+  ]
+ },
+ "v": "dep-074548",
+ "kurimas": 200,
+ "sid": 8340,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
