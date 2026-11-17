@@ -1,0 +1,75 @@
+{
+ "v": "dep-221021",
+ "kurimas": 200,
+ "sid": 8454,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "f1",
+  "br": [
+   [
+    317,
+    "Exclusion",
+    "exclusion",
+    112,
+    0
+   ],
+   [
+    765,
+    "Exclusion Diet",
+    "exclusion-diet",
+    0,
+    0
+   ],
+   [
+    314,
+    "Josera",
+    "josera",
+    237,
+    0
+   ]
+  ],
+  "tax": true,
+  "langas_md5": "d61e773213e63cdafa9dc097fe45bc16",
+  "langas_nuol": [
+   "77: /* ---------- S1524 nuolaidos (S1523-2) ---------- */",
+   "78: case 'nuolaida_sub':",
+   "79: $x = isset($_POST['nuolaida_pct']) ? trim(sanitize_text_field(wp_unslash($_POST['nuolaida_pct']))) : '';",
+   "80: $r = Petshop_Prenumerata::nustatyti_sub_nuolaida($sid, $x === '' ? null : $x);",
+   "82: elseif ($r === null) $pr = 'Prenumeratos nuolaida išvalyta — galioja kliento lygis.';",
+   "83: else $pr = 'Šios prenumeratos nuolaida: ' . self::pct($r) . '% (permuša kliento lygį).';",
+   "85: case 'nuolaida_klientas':",
+   "87: $x = isset($_POST['nuolaida_pct']) ? trim(sanitize_text_field(wp_unslash($_POST['nuolaida_pct']))) : '';",
+   "89: ? Petshop_Prenumerata::nustatyti_kliento_nuolaida((int) $s['user_id'], $x === '' ? null : $x)",
+   "92: elseif ($r <= 0) $pr = 'Kliento asmeninė nuolaida panaikinta.';",
+   "93: else $pr = 'Kliento asmeninė nuolaida: ' . self::pct($r) . '% — galioja VISOMS jo prenumeratoms.';",
+   "455: foreach (array('ID', 'Klientas', 'Prekė', 'Kiekis', 'Ciklas', 'Nuolaida', 'Režimas', 'Sėkm. ciklų', 'Kita siunta', 'Būsena', '') as $h) echo '<th>' . esc_html($h) . '</th>';",
+   "465: $ng = Petshop_Prenumerata::nuolaida($s);",
+   "466: $nsal = Petshop_Prenumerata::nuolaidos_saltinis($s);",
+   "480: echo '<p style=\"color:#666;font-size:12px;margin-top:10px\">● laukia kliento patvirtinimo · ✓ ciklas patvirtintas · nuolaidos <b>*</b> = nustatyta būtent tai prenumeratai (permuša kliento lygį) · rodoma iki 200 ",
+   "485: /* ---------- S1524 nuolaidų rodymas ---------- */",
+   "487: protected static function nuolaidos_santrauka($s) {",
+   "488: $g = Petshop_Prenumerata::nuolaida($s);",
+   "489: $sal = Petshop_Prenumerata::nuolaidos_saltinis($s);",
+   "495: $kur = $sal === 'prenumerata' ? 'šios prenumeratos laukas (permuša kliento lygį)' : 'kliento asmeninė nuolaida';",
+   "510: protected static function nuolaidu_blokas($s, $nonce_key) {",
+   "513: $kl  = $uid > 0 ? Petshop_Prenumerata::kliento_nuolaida($uid) : 0.0;",
+   "516: echo '<h3 style=\"font-size:15px;margin-top:26px\">Nuolaidos</h3>';",
+   "517: echo '<p style=\"color:#666;margin:0 0 12px;max-width:720px\">Nuolaidos taikomos automatiškai — klientui nereikia jokio kodo. '",
+   "519: . 'Jei užpildytas prenumeratos laukas, jis <b>permuša</b> kliento lygį (0 = išjungia nuolaidą būtent tam planui).</p>';",
+   "525: echo '<input type=\"hidden\" name=\"ps_pren_adm\" value=\"nuolaida_klientas\" /><input type=\"hidden\" name=\"sid\" value=\"' . $sid . '\" /><input type=\"hidden\" name=\"grizti_sid\" value=\"1\" />';",
+   "526: echo '<b>Kliento asmeninė nuolaida</b><p style=\"color:#666;margin:6px 0 10px;font-size:12px\">Taikosi <b>visoms</b> šio kliento prenumeratoms — ir dabartinėms, ir būsimoms.</p>';",
+   "528: echo '<input type=\"number\" name=\"nuolaida_pct\" step=\"0.5\" min=\"0\" max=\"' . (int) Petshop_Prenumerata::NUOLAIDA_MAX . '\" style=\"width:90px\" value=\"' . esc_attr($kl > 0 ? self::pct($kl) : '') . '\" placeholder=\"—\" /> %';",
+   "530: echo '<p style=\"color:#888;margin:8px 0 0;font-size:12px\">Tuščias laukas = nuolaidos nėra. Klientas: <a href=\"' . esc_url(admin_url('user-edit.php?user_id=' . $uid)) . '\">#' . $uid . '</a></p>';",
+   "539: echo '<input type=\"hidden\" name=\"ps_pren_adm\" value=\"nuolaida_sub\" /><input type=\"hidden\" name=\"sid\" value=\"' . $sid . '\" /><input type=\"hidden\" name=\"grizti_sid\" value=\"1\" />';",
+   "540: echo '<b>Šios prenumeratos nuolaida</b><p style=\"color:#666;margin:6px 0 10px;font-size:12px\">Galioja tik šiam planui ir permuša kliento lygį.</p>';",
+   "541: echo '<input type=\"number\" name=\"nuolaida_pct\" step=\"0.5\" min=\"0\" max=\"' . (int) Petshop_Prenumerata::NUOLAIDA_MAX . '\" style=\"width:90px\" value=\"' . esc_attr($sub) . '\" placeholder=\"paveldi\" /> %';",
+   "543: echo '<p style=\"color:#888;margin:8px 0 0;font-size:12px\">Tuščias = paveldi kliento lygį (' . ($kl > 0 ? '−' . self::pct($kl) . ' %' : 'nėra') . '). Įrašyta <b>0</b> = nuolaidos šiam planui nebus.</p>';",
+   "571: 'Nuolaida' => self::nuolaidos_santrauka($s),",
+   "611: self::nuolaidu_blokas($s, $n);"
+  ],
+  "eng_md5": "5709a8d8464b57b1f66927d9f6efcf50"
+ }
+}
