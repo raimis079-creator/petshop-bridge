@@ -1,0 +1,31 @@
+{
+ "v": "dep-112641",
+ "kurimas": 200,
+ "sid": 8414,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "r5",
+  "hit": [
+   "wp-content/mu-plugins/petshop-partijos.php:296 $prod->set_stock_quantity( $kiekis );",
+   "wp-content/mu-plugins/petshop-zb-matmenys.php:122 if ( $p && $p->managing_stock() ) { $p->set_stock_quantity( 0 ); $p->set_stock_status( 'outofstock' ); $p->save(); }",
+   "wp-content/mu-plugins/petshop-av-reduce.php:87 $p->set_stock_quantity( $naujas );",
+   "wp-content/mu-plugins/petshop-av-reduce.php:139 $tp->set_stock_quantity( $sum );",
+   "wp-content/mu-plugins/petshop-av-reduce.php:166 $p->set_stock_quantity( $dabar + $qty );",
+   "wp-content/mu-plugins/petshop-katalogas.php:1147 $prod->set_stock_quantity( $p['tapo'] );",
+   "wp-content/mu-plugins/petshop-katalogas.php:1151 update_post_meta( $p['pid'], '_stock', $p['tapo'] );",
+   "wp-content/mu-plugins/petshop-katalogas.php:1664 $v->set_stock_quantity( $l );",
+   "wp-content/mu-plugins/petshop-katalogas.php:1724 update_post_meta( $vid, '_stock', $tapo );",
+   "wp-content/mu-plugins/petshop-katalogas.php:2235 $prod->set_stock_quantity( $tapo );",
+   "wp-content/mu-plugins/petshop-katalogas.php:2890 $prod->set_stock_quantity( (int) $r['buvo'] );",
+   "wp-content/mu-plugins/petshop-gavimas.php:415 $prod->set_stock_quantity( 0 );",
+   "wp-content/mu-plugins/petshop-rinkiniai.php:914 * set_stock_quantity(), kuris atnaujina ir wc_product_meta_lookup",
+   "wp-content/mu-plugins/petshop-rinkiniai.php:922 $product->set_stock_quantity( null );",
+   "wp-content/mu-plugins/petshop-av-stock.php:150 update_post_meta( $product_id, '_stock', $stock_pries );"
+  ],
+  "18587_atsargos": [],
+  "18587_ivykiai": []
+ }
+}
