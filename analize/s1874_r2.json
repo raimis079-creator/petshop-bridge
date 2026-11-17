@@ -1,0 +1,137 @@
+{
+ "v": "dep-112127",
+ "kurimas": 200,
+ "sid": 8411,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "r2",
+  "sql_pastaba": "tik palyginimui",
+  "viso": 400,
+  "neatitikimai": 9,
+  "pvz": [
+   [
+    "36003",
+    "2 vnt. Exclusion Hypoallergenic mažų veislių šunų ",
+    "lookup=instock",
+    "meta=instock",
+    "is_in=0",
+    "dp=18587",
+    "tipas=simple",
+    "manage=0",
+    "stock=",
+    "vis=visible"
+   ],
+   [
+    "36423",
+    "2 vnt. FARMINA N&amp;D OCEAN - DOG Dry Herring&amp",
+    "lookup=instock",
+    "meta=instock",
+    "is_in=0",
+    "dp=14512",
+    "tipas=simple",
+    "manage=0",
+    "stock=",
+    "vis=visible"
+   ],
+   [
+    "36538",
+    "2 vnt. FARMINA N&amp;D PUMPKIN - DOG Dry Lamb&amp;",
+    "lookup=instock",
+    "meta=instock",
+    "is_in=0",
+    "dp=33239",
+    "tipas=simple",
+    "manage=0",
+    "stock=",
+    "vis=visible"
+   ],
+   [
+    "36537",
+    "2 vnt. FARMINA N&amp;D PUMPKIN - DOG Dry Lamb&amp;",
+    "lookup=instock",
+    "meta=instock",
+    "is_in=0",
+    "dp=33235",
+    "tipas=simple",
+    "manage=0",
+    "stock=",
+    "vis=visible"
+   ],
+   [
+    "36430",
+    "2 vnt. FARMINA N&amp;D PUMPKIN - DOG Dry Lamb&amp;",
+    "lookup=instock",
+    "meta=instock",
+    "is_in=0",
+    "dp=14530",
+    "tipas=simple",
+    "manage=0",
+    "stock=",
+    "vis=visible"
+   ],
+   [
+    "36437",
+    "2 vnt. FARMINA N&amp;D QUINOA - DOG Dry NEUTERED D",
+    "lookup=instock",
+    "meta=instock",
+    "is_in=0",
+    "dp=14551",
+    "tipas=simple",
+    "manage=0",
+    "stock=",
+    "vis=visible"
+   ],
+   [
+    "36441",
+    "2 vnt. FARMINA N&amp;D QUINOA - DOG Dry WEIGHT MAN",
+    "lookup=instock",
+    "meta=instock",
+    "is_in=0",
+    "dp=14561",
+    "tipas=simple",
+    "manage=0",
+    "stock=",
+    "vis=visible"
+   ],
+   [
+    "36439",
+    "2 vnt. FARMINA N&amp;D QUINOA - DOG Dry WEIGHT MAN",
+    "lookup=instock",
+    "meta=instock",
+    "is_in=0",
+    "dp=14559",
+    "tipas=simple",
+    "manage=0",
+    "stock=",
+    "vis=visible"
+   ],
+   [
+    "36444",
+    "2 vnt. FARMINA N&amp;D TROPICAL SELECTION - DOG Dr",
+    "lookup=instock",
+    "meta=instock",
+    "is_in=0",
+    "dp=14567",
+    "tipas=simple",
+    "manage=0",
+    "stock=",
+    "vis=visible"
+   ]
+  ],
+  "visur": [
+   {
+    "lookup": "instock",
+    "meta": "instock",
+    "n": "3170"
+   },
+   {
+    "lookup": "outofstock",
+    "meta": "outofstock",
+    "n": "508"
+   }
+  ]
+ }
+}
