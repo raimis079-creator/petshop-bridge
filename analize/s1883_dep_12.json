@@ -1,0 +1,86 @@
+{
+ "1": {
+  "v": "S1874p",
+  "F": "1",
+  "parse": "ok 3",
+  "md5": {
+   "petshop-prenumerata.php": "5709a8d8464b57b1f66927d9f6efcf50",
+   "petshop-prenumerata-katalogas.php": "01a9f0e15e762ffef96b0a8ec7c5042d",
+   "petshop-prenumerata-paskyra.php": "672318607a26dec5583949444906382f"
+  },
+  "hb": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/paskyra/": 200,
+   "/wp-admin/admin-ajax.php": 400
+  }
+ },
+ "2": {
+  "v": "S1874p",
+  "F": "2",
+  "ok": {
+   "petshop-prenumerata.php": true,
+   "petshop-prenumerata-katalogas.php": true,
+   "petshop-prenumerata-paskyra.php": true
+  },
+  "ver": {
+   "eng": "2.5",
+   "kat": "5.1",
+   "sut": "1.2",
+   "pay": "1.1"
+  },
+  "int": [
+   15,
+   20,
+   25,
+   30,
+   35,
+   40,
+   45,
+   50,
+   55,
+   60,
+   65,
+   70,
+   75,
+   80,
+   85,
+   90
+  ],
+  "ter": {
+   "planine": "2026-12-26",
+   "siunta": "2026-12-23",
+   "pranesimas": "2026-12-16",
+   "prekes_iki": "2026-12-18",
+   "praleisti_iki": "2026-12-22"
+  },
+  "flows": true,
+  "flag": "ne",
+  "min": 2500,
+  "r2_25": true,
+  "toliau_prist_2500": 0,
+  "galima": {
+   "17397": true,
+   "18054": true,
+   "35079": true
+  },
+  "ciklas_log": {
+   "kada": "2026-11-17 06:10:06",
+   "diena": "2026-11-17",
+   "rez": {
+    "t5": 0,
+    "uzsakymai": 0,
+    "sulaikyta": 0,
+    "dunning": 0,
+    "klaidos": []
+   }
+  }
+ },
+ "v": "dep-210616",
+ "kurimas": 200,
+ "sid": 8442,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
