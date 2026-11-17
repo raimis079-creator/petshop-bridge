@@ -1,0 +1,24 @@
+{
+ "1": {
+  "v": "c1",
+  "panaudota": "0",
+  "uzs": 38832,
+  "galima": true,
+  "html_ilgis": 1106,
+  "html_tekstas": "Atsisakyti sutarties (ES 14 d. teisė) [input] [input] [input] [input] Priežastis (neprivaloma) [textarea] [button] Pranešti apie atsisakymą Per 14 dienų nuo prekių gavimo turite teisę atsisakyti sutarties be priežasties. Gavę pranešimą, susisieksime dėl prekių ir pinigų grąžinimo tvarkos (žr. pirkimo taisykles).",
+  "mygtukai": [
+   "<button type=\"submit\" class=\"button\">Pranešti apie atsisakymą"
+  ],
+  "sablonas": "/plugins/woocommerce/templates/order/order-details.php",
+  "sablone_kablys": 2,
+  "apdoroti": "function apdoroti() {\n\t\tif ( empty( $_POST['ps_atsisakymas'] ) ) { return; }\n\t\t$id = absint( $_POST['ps_atsisakymas'] );\n\t\tif ( ! $id || ! check_admin_referer( 'ps_atsisakymas_' . $id ) ) { return; }\n\t\t$o = wc_get_order( $id );\n\t\tif ( ! $o ) { return; }\n\t\t$raktas = isset( $_POST['ps_raktas'] ) ? sanitize_text_field( wp_unslash( $_POST['ps_raktas'] ) ) : '';\n\t\tif ( ! hash_equals( $o->get_order_key(), $raktas ) ) { return; }\n\t\tif ( is_user_logged_in() && $o->get_customer_id()\n\t\t\t&& (int) $o->get_customer_id() !== get_current_user_id() ) { return; }\n\t\tif ( ! self::galima( $o ) ) { return; }\n\n\t\t$priezastis = isset( $_POST['ps_priezastis'] )\n\t\t\t? sanitize_textarea_field( wp_unslash( $_POST['ps_priezastis'] ) ) : '';\n\n\t\tself::pazymeti( $o, $priezastis, 'klientas (užsakymo puslapis)' );\n\n\t\twp_safe_redirect( add_query_arg( 'ps_atsisakyta', '1', $o->get_view_order_url() ) );\n\t\texit;\n\t}\n\n\t/** Žymė + pastaba + laiškai. Atskirai, kad būtų testuojama ir kviestina iš admin. */\n\tpublic static function pazymeti( $o, $priezastis = '', $kas = '' ) {\n\t\t$o->update_meta_data( self::META, current_time( 'mysql' ) );\n\t\tif ( $priezastis ) { $o->update_meta_data( self::REASON, $priezastis ); }\n\t\t$o->add_order_note( 'ES sutarties atsisakymas gautas' . ( $kas ? ' — ' . $kas : '' )\n\t\t\t. ( $priezastis ? '. Priežastis: „' . $priezastis . '\"' : '' )\n\t\t\t. '. Užsakymas darbalaukio „Klausimuose\". Pinigų grąžinimas rankinis; kreditinė — wcdn mygtuku.', false, true );\n\t\t$o->save();\n\n\t\t$mailer = WC()->mailer();\n\n\t\t/* Klientui — gavimo patvirtinimas (patvarioji laikmena). */\n\t\tif ( $o->get_billing_email() ) {\n\t\t\t$t = '<p>Sveiki' . ( $o->get_billing_first_name() ? ', ' . esc_html( $o->get_billing_first_name() ) : '' ) . ',</p>'\n\t\t\t\t. '<p>gavome Jūsų pranešimą apie sutarties atsisakymą (užsakymas Nr. '\n\t\t\t\t. esc_html( $o->get_order_number() ) . ', ' . esc_html( current_time( 'Y-m-d H:i' ) ) . ').</p>'\n\t\t\t\t. '<p>Artimiausiu metu susisieksime dėl prekių grąžinimo ir pinigų grąžinimo tvarkos.</p>';\n\t\t\t$mailer->send( $o->get_billing_email(),\n\t\t\t\t'Gavome Jūsų sutarties atsisakymą — užsakymas Nr. ' . $o->get_order_number(),\n\t\t\t\t$mailer->wrap_message( 'Sutarties atsisakymas gautas', $t ) );\n\t\t}\n\n\t\t/* Parduotuvei — pranešimas tuo pačiu adresu kaip nauji užsakyma",
+  "laisku_sablonu_su_atsisak": 2
+ },
+ "v": "dep-195917",
+ "kurimas": 200,
+ "sid": 8432,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
