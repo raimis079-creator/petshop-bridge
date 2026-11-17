@@ -1,0 +1,123 @@
+{
+ "1": {
+  "v": "S1875k",
+  "dir": {
+   "petshop-backups/2026/11": [],
+   "petshop-backups/2026/10": []
+  },
+  "state_files": [
+   [
+    "application_backups",
+    "11-16 21:20"
+   ],
+   [
+    "backups",
+    "11-17 02:00"
+   ]
+  ],
+  "wpcron": [
+   [
+    "wp_delete_temp_updater_backups",
+    "11-17 15:44"
+   ]
+  ],
+  "statusai_30d": [
+   {
+    "status": "wc-cancelled",
+    "n": "7",
+    "pask": "2026-11-16 17:37:57"
+   },
+   {
+    "status": "wc-completed",
+    "n": "289",
+    "pask": "2026-11-17 07:36:11"
+   },
+   {
+    "status": "wc-on-hold",
+    "n": "1",
+    "pask": "2026-11-15 17:37:37"
+   },
+   {
+    "status": "wc-processing",
+    "n": "16",
+    "pask": "2026-11-17 07:36:12"
+   }
+  ],
+  "completed_pask": [
+   {
+    "id": "38584",
+    "date_created_gmt": "2026-11-13 10:29:34",
+    "date_updated_gmt": "2026-11-17 07:36:11"
+   },
+   {
+    "id": "38425",
+    "date_created_gmt": "2026-11-12 07:42:55",
+    "date_updated_gmt": "2026-11-17 07:36:11"
+   },
+   {
+    "id": "38687",
+    "date_created_gmt": "2026-11-15 12:37:52",
+    "date_updated_gmt": "2026-11-17 07:36:10"
+   },
+   {
+    "id": "38684",
+    "date_created_gmt": "2026-11-15 08:28:41",
+    "date_updated_gmt": "2026-11-17 07:36:10"
+   },
+   {
+    "id": "38692",
+    "date_created_gmt": "2026-11-15 15:01:57",
+    "date_updated_gmt": "2026-11-17 07:06:19"
+   }
+  ],
+  "note_pask": [
+   {
+    "oid": "38783",
+    "comment_date": "2026-11-17 09:22:18",
+    "c": "Darbalaukis: LP Express siunta HC056002767LT (dydis M) užregistruota, perdavimas: Kurjeris"
+   },
+   {
+    "oid": "38783",
+    "comment_date": "2026-11-17 09:05:58",
+    "c": "Paysera: Naujo užsakymo kūrimo būsena"
+   },
+   {
+    "oid": "38783",
+    "comment_date": "2026-11-17 09:05:57",
+    "c": "PVM s/f AVPN011695 suteikta apmokėjus, data 2026-11-17 (S1839)."
+   },
+   {
+    "oid": "38783",
+    "comment_date": "2026-11-17 09:05:57",
+    "c": "Email \"Užsakymas vykdomas\" sent."
+   },
+   {
+    "oid": "38783",
+    "comment_date": "2026-11-17 09:05:56",
+    "c": "Email \"Naujas užsakymas\" sent."
+   },
+   {
+    "oid": "38783",
+    "comment_date": "2026-11-17 09:05:56",
+    "c": "Paysera: Apmokėjimo būsena pakeista į processing Užsakymo statusas pakeistas iš Neapmokėta"
+   },
+   {
+    "oid": "38783",
+    "comment_date": "2026-11-17 09:05:56",
+    "c": "Surūšiuota pati: 22 vnt. Animonda Vom Feinsten Adult with — Iš AV"
+   },
+   {
+    "oid": "38783",
+    "comment_date": "2026-11-17 09:05:56",
+    "c": "Faktai irasyti: 1 eilutes · pajamos 22,98 EUR (be PVM, po nuolaidu) · PVM 5,19 EUR · marza"
+   }
+  ]
+ },
+ "v": "dep-074348",
+ "kurimas": 200,
+ "sid": 8386,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
