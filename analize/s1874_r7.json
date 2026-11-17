@@ -1,0 +1,40 @@
+{
+ "v": "dep-112942",
+ "kurimas": 200,
+ "sid": 8416,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "r7",
+  "f": {
+   "Petshop_Fulfillment": "wp-content/plugins/petshop-xml/includes/class-fulfillment.php",
+   "Petshop_Fulfillment_Source": "wp-content/plugins/petshop-xml/includes/class-fulfillment-source.php"
+  },
+  "m": {
+   "update_vf_qty": "    public function update_vf_qty( int $post_id, int $qty ): void {\n        update_post_meta( $post_id, '_vf_qty', $qty );\n        $this->recalculate( $post_id );\n    }\n",
+   "recalculate": "    public function recalculate( int $post_id ): string {\n        $quantities = $this->get_all_quantities( $post_id );\n\n        foreach ( $this->suppliers as $source_key => $meta_key ) {\n            $qty = (int) ( $quantities[ $source_key ] ?? 0 );\n            if ( $qty > 0 ) {\n                $this->set_wc_stock( $post_id, $qty, $source_key );\n                return $source_key;\n            }\n        }\n\n        $this->set_wc_stock( $post_id, 0, 'out_of_stock' );\n        return 'out_of_stock';\n    }\n"
+  },
+  "cols": [
+   "id",
+   "data",
+   "preke_id",
+   "sandelis",
+   "likutis_av",
+   "likutis_tiekejo",
+   "rezervuota",
+   "savikaina_vnt_ct",
+   "savikainos_saltinis",
+   "verte_ct",
+   "pardavimai_vnt_7d",
+   "pardavimai_vnt_30d",
+   "dienu_atsargu",
+   "stockout",
+   "partiju_sk",
+   "artimiausia_galiojimas",
+   "testinis",
+   "saltinis_aplinka"
+  ]
+ }
+}
