@@ -1,0 +1,33 @@
+{
+ "1": {
+  "v": "b1",
+  "dydis": 7049,
+  "mtime": "2026-08-22 13:23",
+  "pradzia": "<?php\n/**\n * Petshop Atsisakymas v1.0 (H212) — ES 14 d. sutarties atsisakymas kliento paskyroje.\n *\n * GRANDINĖ: klientas užsakymo puslapyje (paskyra ARBA svečio nuoroda su order key)\n * spaudžia „Atsisakyti sutarties\" → `_ps_withdrawal` + priežastis + pastaba\n * istorijoje → darbalaukio „Klausimai\" kortelė (desk `klausimas()` žymę mato\n * nuo v3.9) → Raimis sprendžia. Klientui iškart išsiunčiamas GAVIMO\n * PATVIRTINIMAS (ES reikalavimas — patvirtinti patvariojoje laikmenoje),\n * parduotuvei — pranešimas.\n *\n * KO MODULIS NEDARO (užrakinti sprendimai): pinigų negrąžina (Paysera refund\n * rankinis), statuso nekeičia, kreditinės nekuria — ji spausdinama esamu wcdn\n * („Spausdinti kreditinę sąskaitą\") užsakymo lange.\n *\n * LANGAS: mygtukas rodomas apmokėtiems, neuždarytiems užsakymams iki 30 d.\n * nuo sukūrimo. Teisinį 14 d. nuo PRISTATYMO vertinimą daro žmogus kortelėje —\n * pristatymo datos sistema patikimai nežino, todėl kodas jos neprievartauja.\n */\n\ndefined( 'ABSPATH' ) || exit;\n\nclass Petshop_Atsisakymas {\n\n\tconst META    = '_ps_withdrawal';\n\tconst REASON  = '_ps_withdrawal_reason';\n\tconst LANGO_D = 30;\n\n\tpublic static function init() {\n\t\tadd_action( 'woocommerce_order_details_after_order_table', array( __CLASS__, 'mygtukas' ), 20 );\n\t\tadd_action( 'wp_loaded', array( __CLASS__, 'apdoroti' ), 20 );\n\t}\n\n\t/** Ar užsakymui rodyti atsisakymo formą. */\n\tpublic static function galima( $o ) {\n\t\tif ( ! $o instanceof WC_Order ) { return false; }\n\t\tif ( $o->get_meta( self::META ) ) { return false; }\n\t\tif ( ! $o->is_paid() ) { return false; }\n\t\tif ( in_array( $o->get_status(), array( 'cancelled', 'refunded', 'failed', 'lp-cancelled', 'checkout-draft' ), true ) ) { return false; }\n\t\t$sukurta = $o->get_date_created();\n\t\tif (",
+  "kabliai": [
+   "woocommerce_order_details_after_order_table",
+   "wp_loaded",
+   "woocommerce_before_account_orders",
+   "woocommerce_order_details_before_order_table"
+  ],
+  "eilutes": [
+   "* spaudžia „Atsisakyti sutarties\" → `_ps_withdrawal` + priežastis + pastaba",
+   "<summary style=\"cursor:pointer\">Atsisakyti sutarties (ES 14 d. teisė)</summary>",
+   "<p><small>Per 14 dienų nuo prekių gavimo turite teisę atsisakyti sutarties"
+  ],
+  "kita": [
+   "if ( ! $gavejas ) { $gavejas = get_option( 'admin_email' ); }",
+   "wp_mail( $gavejas,"
+  ],
+  "klientui": [
+   "* (darbuotojų spausdinimui lieka). Kliento paskyros „Atsisakyti sutarties (ES 14 d. teisė)“ — `petshop-atsisakymas.php`, neliesta."
+  ]
+ },
+ "v": "dep-195737",
+ "kurimas": 200,
+ "sid": 8431,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
