@@ -1,0 +1,248 @@
+{
+ "1": {
+  "v": "S1875t",
+  "cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ],
+  "d2_sukurta": [
+   {
+    "d": "2026-11-08",
+    "status": "sent",
+    "n": "3"
+   },
+   {
+    "d": "2026-11-09",
+    "status": "sent",
+    "n": "2"
+   },
+   {
+    "d": "2026-11-11",
+    "status": "sent",
+    "n": "19"
+   },
+   {
+    "d": "2026-11-12",
+    "status": "sent",
+    "n": "18"
+   },
+   {
+    "d": "2026-11-13",
+    "status": "sent",
+    "n": "10"
+   },
+   {
+    "d": "2026-11-14",
+    "status": "sent",
+    "n": "19"
+   },
+   {
+    "d": "2026-11-15",
+    "status": "sent",
+    "n": "10"
+   }
+  ],
+  "d2_sched": [
+   {
+    "d": "2026-11-08",
+    "status": "sent",
+    "n": "3"
+   },
+   {
+    "d": "2026-11-09",
+    "status": "sent",
+    "n": "2"
+   },
+   {
+    "d": "2026-11-11",
+    "status": "sent",
+    "n": "19"
+   },
+   {
+    "d": "2026-11-12",
+    "status": "sent",
+    "n": "18"
+   },
+   {
+    "d": "2026-11-13",
+    "status": "sent",
+    "n": "10"
+   },
+   {
+    "d": "2026-11-14",
+    "status": "sent",
+    "n": "19"
+   },
+   {
+    "d": "2026-11-15",
+    "status": "sent",
+    "n": "10"
+   }
+  ],
+  "d2_pask": [
+   {
+    "id": "3176",
+    "job_key": "post_purchase_2d:38450",
+    "flow": "post_purchase_2d",
+    "flow_class": "service",
+    "recipient_email": "[..]",
+    "recipient_user_id": "6116",
+    "subject": "Jei ko prireiktų – parašykite mums",
+    "payload": "[..]",
+    "status": "sent",
+    "block_reason": null,
+    "provider": "sender",
+    "provider_message_id": "azv2GY-.eE9p2l-k7NqQAJ-gxJQ0lq2R4nr-40BQfg",
+    "attempts": "1",
+    "last_error": null,
+    "scheduled_at": "2026-11-15 12:39:27",
+    "sent_at": "2026-11-15 12:44:03",
+    "created_at": "2026-11-15 12:39:27",
+    "updated_at": "2026-11-15 12:44:03",
+    "skip_reason": null,
+    "error_message": null,
+    "decision_at": "2026-11-15 12:44:03",
+    "next_attempt_at": null,
+    "context_json": "{\"order_id\":38450}",
+    "delivered_at": null,
+    "opened_at": null,
+    "clicked_at": null
+   },
+   {
+    "id": "3172",
+    "job_key": "post_purchase_2d:37034",
+    "flow": "post_purchase_2d",
+    "flow_class": "service",
+    "recipient_email": "[..]",
+    "recipient_user_id": "6026",
+    "subject": "Jei ko prireiktų – parašykite mums",
+    "payload": "[..]",
+    "status": "sent",
+    "block_reason": null,
+    "provider": "sender",
+    "provider_message_id": "azv2GY-.eE9p2l-5LrNJvx-RM6L7A79zKlE-3zLzaH",
+    "attempts": "1",
+    "last_error": null,
+    "scheduled_at": "2026-11-15 09:40:00",
+    "sent_at": "2026-11-15 09:43:43",
+    "created_at": "2026-11-15 09:40:00",
+    "updated_at": "2026-11-15 09:43:43",
+    "skip_reason": null,
+    "error_message": null,
+    "decision_at": "2026-11-15 09:43:43",
+    "next_attempt_at": null,
+    "context_json": "{\"order_id\":37034}",
+    "delivered_at": null,
+    "opened_at": null,
+    "clicked_at": null
+   },
+   {
+    "id": "3169",
+    "job_key": "post_purchase_2d:38374",
+    "flow": "post_purchase_2d",
+    "flow_class": "service",
+    "recipient_email": "[..]",
+    "recipient_user_id": "4018",
+    "subject": "Jei ko prireiktų – parašykite mums",
+    "payload": "[..]",
+    "status": "sent",
+    "block_reason": null,
+    "provider": "sender",
+    "provider_message_id": "azv2GY-.eE9p2l-PQJl0Ol-m2ZEPx60JVKp-2N8Y3z",
+    "attempts": "1",
+    "last_error": null,
+    "scheduled_at": "2026-11-15 09:40:00",
+    "sent_at": "2026-11-15 09:43:43",
+    "created_at": "2026-11-15 09:40:00",
+    "updated_at": "2026-11-15 09:43:43",
+    "skip_reason": null,
+    "error_message": null,
+    "decision_at": "2026-11-15 09:43:43",
+    "next_attempt_at": null,
+    "context_json": "{\"order_id\":38374}",
+    "delivered_at": null,
+    "opened_at": null,
+    "clicked_at": null
+   }
+  ],
+  "d7_sched": [
+   {
+    "d": "2026-11-12",
+    "status": "sent",
+    "n": "13"
+   },
+   {
+    "d": "2026-11-13",
+    "status": "sent",
+    "n": "3"
+   },
+   {
+    "d": "2026-11-14",
+    "status": "sent",
+    "n": "2"
+   },
+   {
+    "d": "2026-11-16",
+    "status": "sent",
+    "n": "19"
+   },
+   {
+    "d": "2026-11-17",
+    "status": "pending",
+    "n": "18"
+   },
+   {
+    "d": "2026-11-18",
+    "status": "pending",
+    "n": "10"
+   },
+   {
+    "d": "2026-11-19",
+    "status": "pending",
+    "n": "19"
+   },
+   {
+    "d": "2026-11-20",
+    "status": "pending",
+    "n": "10"
+   }
+  ],
+  "kodas": [
+   "petshop-laiskai.php:266: 'post_purchase_2d'       => array( 'order_number', 'order_url', 'items', 'pirma_preke' ),",
+   "petshop-langai-admin.php:30: 'post_purchase_2d'       => array( 'Po pirkimo · 2 diena', 'Ar viskas gerai su užsakymu.' ),",
+   "petshop-rezultatai.php:35: 'post_purchase_2d'=>'Po pirkimo 2 diena','post_purchase_7d'=>'Po pirkimo 7 diena',"
+  ],
+  "opc": []
+ },
+ "v": "dep-080140",
+ "kurimas": 200,
+ "sid": 8395,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
