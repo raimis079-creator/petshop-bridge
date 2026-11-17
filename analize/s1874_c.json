@@ -1,56 +1,20 @@
 {
- "2": {
+ "3": {
   "v": "S1874c",
-  "F": "2",
-  "klases": [
-   true,
-   true
-  ],
-  "cron": [
-   1794975600,
-   1794976200
-  ],
-  "dp": {
+  "F": "3",
+  "dp_pataisyta": 64,
+  "pask": {
+   "kada": "2026-11-17 14:49:43",
    "pakai": 926,
-   "i_neturime": 63,
-   "i_turime": 0,
-   "pvz_in": [],
-   "pvz_out": [
-    "35854 8 VNT. - Kraikas katėms TOFU BeloCat, va",
-    "35852 8 VNT. - Kraikas katėms TOFU BeloCat, pu",
-    "36003 2 vnt. Exclusion Hypoallergenic mažų vei",
-    "36335 2 vnt. ROYAL CANIN STERILISED 37, 4 KG -",
-    "36339 2 vnt. ROYAL CANIN SENSIBLE 33, 10 kg, s"
-   ]
+   "rinkiniai": 28,
+   "pataisyta": 64
   }
  },
- "v": "dep-124606",
+ "v": "dep-124821",
  "kurimas": 200,
- "sid": 8424,
+ "sid": 8425,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
- },
- "2b": {
-  "v": "S1874c",
-  "F": "2b",
-  "av": {
-   "valdomu": 2916,
-   "i_neturime": 7,
-   "i_turime": 2,
-   "pvz_in": [
-    "17348 Natūralus bentonitinis sušokantis kraika [_stock=0 AV=1 belcor_tofu]",
-    "17354 Natūralus bentonitinis sušokantis kraika [_stock=0 AV=1 belcor_tofu]"
-   ],
-   "pvz_out": [
-    "15838 Vienkartinės palutės / paklotai, 60*90 c [_stock=0 AV=0 belcor_tofu]",
-    "17363 Natūralus bentonitinis sušokantis kraika [_stock=0 AV=0 belcor_tofu]",
-    "17671 Kraikas katėms TOFU BeloCat, pušies kvap [_stock=0 AV=0 belcor_tofu]",
-    "18557 Exclusion Hypoallergenic sausas šunų mai [_stock=0 AV=0 vf]",
-    "18578 Exclusion Hypoallergenic mini mažų veisl [_stock=0 AV=0 vf]",
-    "18581 Exclusion Hypoallergenic mini mažų veisl [_stock=0 AV=0 vf]",
-    "18587 Exclusion Hypoallergenic mažų veislių šu [_stock=0 AV=0 vf]"
-   ]
-  }
  }
 }
