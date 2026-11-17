@@ -1,0 +1,84 @@
+{
+ "1": {
+  "v": "S1875y",
+  "dn_fatal": [
+   "19-Oct-2026 08:36:12",
+   "16-Nov-2026 09:06:36"
+  ],
+  "cz_fatal": [
+   "03-Oct-2026 08:13:12",
+   "16-Nov-2026 08:13:37"
+  ],
+  "mem_fatal": [
+   "12-Nov-2026 14:07:38 petshop-katalogas.php on line 5178\n",
+   "12-Nov-2026 14:33:28 functions.php on line 5481\n",
+   "12-Nov-2026 14:57:49 functions.php on line 5481\n",
+   "12-Nov-2026 15:01:09 functions.php on line 5481\n",
+   "13-Nov-2026 04:21:10 class-wpdb.php on line 2328\n",
+   "13-Nov-2026 05:05:26 petshop-katalogas.php on line 5178\n",
+   "13-Nov-2026 05:40:24 functions.php on line 630\n",
+   "13-Nov-2026 06:54:14 functions.php on line 630\n",
+   "13-Nov-2026 07:05:53 functions.php on line 630\n",
+   "14-Nov-2026 04:20:16 class-wpdb.php on line 2328\n",
+   "14-Nov-2026 08:42:43 functions.php on line 5481\n",
+   "16-Nov-2026 09:06:36 cmap.php on line 198\n"
+  ],
+  "admin_1050_1107": [
+   "16/Nov/2026:10:51:02 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:10:51:09 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:10:51:52 GET /wp-admin/admin.php?page=ps-desk&eile=siandien 200 99680",
+   "16/Nov/2026:10:52:09 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:10:52:11 POST /wp-admin/admin-ajax.php?action=as_async_request_queue_runner&nonce=20f90b471e 103 -",
+   "16/Nov/2026:10:52:55 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:10:54:11 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:10:54:34 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:10:54:36 GET /wp-admin/admin.php?page=ps-desk&eile=siandien 200 99676",
+   "16/Nov/2026:10:56:11 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:10:56:39 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:10:57:02 GET /wp-admin/admin.php?page=ps-desk&eile=siandien 200 99676",
+   "16/Nov/2026:10:58:05 POST /wp-admin/admin-ajax.php 200 72",
+   "16/Nov/2026:10:58:12 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:11:00:05 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:11:00:14 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:11:02:06 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:11:04:06 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:11:05:46 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:11:05:47 GET /wp-admin/admin.php?page=ps-desk 200 80147",
+   "16/Nov/2026:11:05:49 GET /wp-json/wp/v2/users/me?context=edit&_locale=user 200 898",
+   "16/Nov/2026:11:05:58 GET /wp-admin/admin.php?page=ps-desk&eile=laiskai 200 86517",
+   "16/Nov/2026:11:06:00 GET /wp-json/wp/v2/users/me?context=edit&_locale=user 200 898",
+   "16/Nov/2026:11:06:07 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:11:06:16 GET /wp-admin/admin-post.php?action=ps_desk_veiksmas&v=vp_reg&id=0&g=https%3A%2F%2Fpetshop.lt%2Fwp-admin%2Fadmin.php%3Fpage%3Dps-desk%26eile%3Dl 302 -",
+   "16/Nov/2026:11:06:22 GET /wp-admin/admin.php?page=ps-desk&eile=laiskai&pd_ok=vp_ok&pd_nr=11%20%C2%B7%20VF 200 85800",
+   "16/Nov/2026:11:06:25 GET /wp-json/wp/v2/users/me?context=edit&_locale=user 200 898",
+   "16/Nov/2026:11:07:13 POST /wp-admin/admin-post.php 302 -",
+   "16/Nov/2026:11:07:22 GET /wp-admin/admin.php?page=ps-desk&eile=laiskai&pd_ok=dl_laiskas&pd_nr=VF%7C11%20u%C5%BEs.%20%E2%86%92%20ieva.lastovskyte%40vetfarmas.lt%2C%20 200 82419",
+   "16/Nov/2026:11:07:24 GET /wp-json/wp/v2/users/me?context=edit&_locale=user 200 898",
+   "16/Nov/2026:11:07:21 POST /wp-admin/admin-ajax.php?action=as_async_request_queue_runner&nonce=20f90b471e 103 -",
+   "16/Nov/2026:11:07:33 POST /wp-admin/admin-post.php 302 -",
+   "16/Nov/2026:11:07:35 GET /wp-admin/admin.php?page=ps-desk&eile=laiskai&pd_ok=dl_zb&pd_nr=%C5%BDalioji%20Banga%7C3 200 80396",
+   "16/Nov/2026:11:07:37 GET /wp-json/wp/v2/users/me?context=edit&_locale=user 200 898",
+   "16/Nov/2026:11:08:08 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:11:08:17 POST /wp-admin/admin-ajax.php 200 52",
+   "16/Nov/2026:11:08:37 POST /wp-admin/admin-ajax.php 200 73",
+   "16/Nov/2026:11:09:36 GET /wp-admin/admin.php?page=ps-desk&eile=siandien 200 80128",
+   "16/Nov/2026:11:09:37 POST /wp-admin/admin-ajax.php 103 -",
+   "16/Nov/2026:11:09:38 GET /wp-json/wp/v2/users/me?context=edit&_locale=user 200 898"
+  ],
+  "dn_opts": {
+   "wcdn_email_print_link": false,
+   "wcdn_attach_invoice": false,
+   "wcdn_print_button_on_my_account_page": false,
+   "wcdn_template_type": false
+  },
+  "dn_ver": null,
+  "trukme_s": 0
+ },
+ "v": "dep-075216",
+ "kurimas": 200,
+ "sid": 8390,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
