@@ -1,0 +1,127 @@
+{
+ "1": {
+  "v": "a1",
+  "kuponai_viso": 2,
+  "kuponai": [
+   {
+    "ID": "35834",
+    "post_title": "petshop.10",
+    "tipas": "percent",
+    "suma": "10",
+    "el_apribojimu": 0,
+    "naudota": 4,
+    "galioja_iki": "",
+    "individual": "yes"
+   },
+   {
+    "ID": "35089",
+    "post_title": "e1a-testas",
+    "tipas": "percent",
+    "suma": "10",
+    "el_apribojimu": 0,
+    "naudota": 1,
+    "galioja_iki": "2026-09-01",
+    "individual": "yes"
+   }
+  ],
+  "usermeta_raktai": [
+   {
+    "meta_key": "_ps_pren_nuolaida",
+    "n": "1"
+   }
+  ],
+  "roles": {
+   "administrator": "Administrator",
+   "editor": "Editor",
+   "author": "Author",
+   "contributor": "Contributor",
+   "subscriber": "Subscriber",
+   "customer": "Customer",
+   "shop_manager": "Shop manager",
+   "translator": "Translator",
+   "ps_darbuotojas": "Petshop darbuotojas"
+  },
+  "users_by_role": {
+   "administrator": 1,
+   "customer": 6049,
+   "ps_darbuotojas": 1,
+   "none": 0
+  },
+  "kodas": {
+   "petshop-analitika.php": {
+    "nuolatin": 1
+   },
+   "petshop-darbalaukis.php": {
+    "_ps_nuolaida": 3
+   },
+   "petshop-katalogas.php": {
+    "pastovi": 2
+   }
+  },
+  "kainu_pluginai": [],
+  "pren_failai": {
+   "petshop-pren-nuorodos.php": [
+    6352,
+    "df69518452f12a609b1a7c274d672db0",
+    "08-30 19:45"
+   ],
+   "petshop-pren-sutikimas.php": [
+    7975,
+    "985f14aa25f1120c03e0b1cff550dc3e",
+    "11-16 21:17"
+   ],
+   "petshop-prenumerata-katalogas.php": [
+    33606,
+    "d44575a02634f96dff88cc6f7f4da7ec",
+    "11-16 21:59"
+   ],
+   "petshop-prenumerata-paskyra.php": [
+    49055,
+    "0b21912f2dcde34743ee672af48c8c95",
+    "11-16 21:59"
+   ],
+   "petshop-prenumerata-paysera.php": [
+    21617,
+    "a059a4e2492ee8d9d757f00f0ec8f9f2",
+    "11-16 21:17"
+   ],
+   "petshop-prenumerata-veiksmas.php": [
+    4721,
+    "d24ca9d7e9f8b7e543411740bd41ff03",
+    "11-16 21:17"
+   ],
+   "petshop-prenumerata.php": [
+    43806,
+    "d103b7af549d933309051b0bad75c5b6",
+    "11-16 21:17"
+   ],
+   "petshop-prenumeratos-langas.php": [
+    42162,
+    "d61e773213e63cdafa9dc097fe45bc16",
+    "11-16 21:17"
+   ],
+   "petshop-prenumeratu-prognoze.php": [
+    6914,
+    "f3963ad59564b6c02d078c7bc151b447",
+    "08-30 19:17"
+   ],
+   "ps-sablonai/subscription-started.php": [
+    4262,
+    "a515e6969ed7507edd19b960c9542a34",
+    "11-16 21:17"
+   ],
+   "ps-sablonai/subscription-t5.php": [
+    4804,
+    "b542406dd82d90caecc665e02641333d",
+    "11-16 21:17"
+   ]
+  }
+ },
+ "v": "dep-205943",
+ "kurimas": 200,
+ "sid": 8439,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
