@@ -1,0 +1,36 @@
+{
+ "1": {
+  "v": "b1",
+  "petshop-darbalaukis.php": [
+   "63: *   „Laukiam iš tiekėjų“ = TIK užsakyta → „Gauta“ (B blokas ir „Kartu su Dropshipping“ IŠIMTI). `faktai()`: „veža į AV“ neužsakyta/kaupiama → eilė Dropshipping (takelis „užsakyti iš [T] į AV“ → kortelė), užsakyta → Laukiam. *   Rytinė eiga: žingsniai 2 ir 3 sujungti. Tiekimo langas darbuotojo kelyje nebeliko (Raimiui — istorija). Variklis nekeistas. * Petshop Darbalaukis v3.36 (S1620, Raimis 09-06 „2 – ok, 3 – a ir b“): FILTRAI „Visi“ lange — Data „Nuo–iki“ (variklio `datos_riba('intervalas')`), Apmokėjimas (pavedi",
+   "3076: if ( $vp_t ) { if ( function_exists( 'venipak_store_order_pickup' ) ) { venipak_store_order_pickup( $n, (int) $vieta ); } else { $n->update_meta_data( 'venipak_pickup_point', (string) (int) $vieta ); } } if ( $lp_t ) { $n->update_meta_data( '_woo_lithuaniapost_lpexpress_terminal_id', $lp_t['terminal_id'] ); $n->update_meta_data( '_woo_lithuaniapost_lpexpress_terminal', sprintf( '%s - %s, %s', $lp_t['name'], $lp_t['address'], $lp_t['city'] ) ); $n->update_meta_data( '_woo_lithuaniapost_lpexpress_shipping_method_inst"
+  ],
+  "petshop-katalogas.php": [
+   "616: *   2. Sandėlio ženkliukai: spalvas turėjo tik AV/VF/ZB — Quattro, Prins, *      Ambrosia, Belacor ir legacy susiliedavo į pilką. Dabar visi 7 turi *      pastovias spalvas (ta pati paletė ir Gavimo lange). *   3. Marža kortelėje perskaičiuojama GYVAI berašant kainą ar savikainą — *      anksčiau naujas skaičius pasirodydavo tik po Enter. Eilutė rodoma ir",
+   "10100: .sand.s_zb{background:#efe9f7;color:#5c3d86} /* v4.2: spalvas turėjo tik AV/VF/ZB — kiti keturi šaltiniai susiliedavo į pilką. Kiekvienam šaltiniui pastovi spalva visoje sistemoje. */ .sand.s_quattro{background:#fdf0e3;color:#9a5b12} .sand.s_prins{background:#e2f2f2;color:#146b6b}"
+  ],
+  "pren_nuolaida_failai": [
+   "petshop-prenumerata.php x2"
+  ],
+  "pren_nuolaida_user": {
+   "user_id": 1,
+   "reiksme": "10"
+  },
+  "uzs_su_ps_nuolaida": 0,
+  "uzs_su_kuponu_nuo_0909": 7,
+  "kuponai_pagal_koda": [
+   {
+    "k": "petshop.10",
+    "n": "7"
+   }
+  ],
+  "fee_neigiami": []
+ },
+ "v": "dep-210120",
+ "kurimas": 200,
+ "sid": 8440,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
