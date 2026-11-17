@@ -1,0 +1,30 @@
+{
+ "1": {
+  "v": "S1884",
+  "F": "1",
+  "parse": "ok 3",
+  "md5": {
+   "petshop-pren-sutikimas.php": "b084c4851ab056e80b366d10c6d5f07f",
+   "ps-sablonai/subscription-started.php": "6e9687b9c00dc748c4a4d8e4c40d2801",
+   "ps-sablonai/subscription-t5.php": "b1caed91efb3b82e2757f4ad8f73cc3f"
+  },
+  "hb": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/paskyra/": 200,
+   "/wp-admin/admin-ajax.php": 400
+  }
+ },
+ "v": "dep-214035",
+ "kurimas": 200,
+ "sid": 8445,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1884",
+  "F": "D",
+  "parse": "ok 3"
+ }
+}
