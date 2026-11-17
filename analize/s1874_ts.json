@@ -1,0 +1,117 @@
+{
+ "v": "dep-131522",
+ "kurimas": 200,
+ "sid": 8429,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "ts",
+  "shots": [
+   {
+    "n": "s1874_p_paskyra",
+    "u": "https://petshop.lt/paskyra/prenumeratos/?nc=1794921412",
+    "w": 390,
+    "h": 2600,
+    "full": 1
+   },
+   {
+    "n": "s1874_p_t9",
+    "u": "https://petshop.lt/?ps_s1874e9=t9",
+    "w": 640,
+    "h": 1400,
+    "full": 1
+   },
+   {
+    "n": "s1874_p_t10",
+    "u": "https://petshop.lt/?ps_s1874e9=t10",
+    "w": 640,
+    "h": 1400,
+    "full": 1
+   },
+   {
+    "n": "s1874_p_t9_tel",
+    "u": "https://petshop.lt/?ps_s1874e9=t9",
+    "w": 390,
+    "h": 1600,
+    "full": 1
+   }
+  ],
+  "sukurta": 68,
+  "t9_eileje": 1,
+  "sid": 68,
+  "s": {
+   "id": "68",
+   "user_id": "44",
+   "email": "terra@gyvunai.lt",
+   "pet_id": null,
+   "product_id": "19496",
+   "qty": "7",
+   "interval_days": "30",
+   "mode": "confirm_required",
+   "status": "active",
+   "next_cycle_date": "2027-01-16",
+   "cycle_confirmed": "0",
+   "success_cycles": "0",
+   "dunning_attempts": "0",
+   "dunning_next": null,
+   "pending_order_id": null,
+   "price_locked": null,
+   "price_locked_until": null,
+   "payment_method": "manual",
+   "delivery_json": "{\"first_name\":\"Testas\",\"last_name\":\"Prenumerata\",\"tipas\":\"kurjeris\",\"adresas\":\"Testo g. 1\",\"address_1\":\"Testo g. 1\",\"city\":\"Vilnius\",\"postcode\":\"01100\",\"phone\":\"+37068187787\"}",
+   "created_at": "2026-11-17 13:16:52",
+   "updated_at": null,
+   "paused_at": null,
+   "cancelled_at": null,
+   "discount_pct": null,
+   "payment_token": null
+  },
+  "ter": {
+   "planine": "2027-01-16",
+   "siunta": "2027-01-15",
+   "pranesimas": "2027-01-08",
+   "prekes_iki": "2027-01-12",
+   "praleisti_iki": "2027-01-14"
+  },
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
+    "value": "terra|1794932212|kJHHkkIIWTmpSghvpn0KCzvu6aW4uaWIY0GVESiUVss|b4eefcda515bd4f39b051b9e7f5c1032e889dd8887d0ef8b4fbbe3e23044b6d0",
+    "domain": "petshop.lt"
+   },
+   {
+    "name": "ps_js",
+    "value": "1",
+    "domain": "petshop.lt"
+   }
+  ]
+ },
+ "shots": {
+  "s1874_p_paskyra": {
+   "status": 201,
+   "url": "https://petshop.lt/paskyra/prenumeratos/?nc=1794921412",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": []
+  },
+  "s1874_p_t9": {
+   "status": 201,
+   "url": "https://petshop.lt/?ps_s1874e9=t9",
+   "title": "Prenumerata įjungta – kita siunta apie sausio 15 d.",
+   "errors": []
+  },
+  "s1874_p_t10": {
+   "status": 201,
+   "url": "https://petshop.lt/?ps_s1874e9=t10",
+   "title": "Sausio 15 d. išsiųsime jūsų prenumeratą – 31,29 €",
+   "errors": []
+  },
+  "s1874_p_t9_tel": {
+   "status": 201,
+   "url": "https://petshop.lt/?ps_s1874e9=t9",
+   "title": "Prenumerata įjungta – kita siunta apie sausio 15 d.",
+   "errors": []
+  }
+ }
+}
