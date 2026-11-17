@@ -1,0 +1,391 @@
+{
+ "1": {
+  "v": "S1876g",
+  "rekl_cols": [
+   "id",
+   "diena",
+   "kanalas",
+   "kampanija_id",
+   "kampanija",
+   "parodymai",
+   "paspaudimai",
+   "islaidos_ct",
+   "valiuta",
+   "konversijos",
+   "konv_verte_ct",
+   "saltinis",
+   "saltinis_aplinka",
+   "versija",
+   "irasyta_at",
+   "senoji_svetaine"
+  ],
+  "rekl_kan": [
+   {
+    "kanalas": "google_ads",
+    "mn": "2026-08-24",
+    "mx": "2026-11-16",
+    "n": "311"
+   },
+   {
+    "kanalas": "kaina24",
+    "mn": "2026-08-27",
+    "mx": "2026-11-16",
+    "n": "82"
+   },
+   {
+    "kanalas": "kainos",
+    "mn": "2026-08-27",
+    "mx": "2026-11-16",
+    "n": "82"
+   }
+  ],
+  "ads_tbl": [],
+  "ads_pask": {
+   "kada": "2026-11-17 03:01:29",
+   "eiluciu": "56",
+   "st": "{\"new\":4,\"upd\":6,\"same\":46,\"bad\":0}"
+  },
+  "kamp_isl": [
+   {
+    "kampanija": "P-max | LT | petshop.lt",
+    "eur": "785.08",
+    "pasp": "2931",
+    "konv": "112.9"
+   },
+   {
+    "kampanija": "P-max | LT | Prekės (MC)",
+    "eur": "3.19",
+    "pasp": "23",
+    "konv": "0.0"
+   },
+   {
+    "kampanija": "P-max| All LT | Kačių maistas",
+    "eur": "1320.71",
+    "pasp": "4737",
+    "konv": "111.7"
+   },
+   {
+    "kampanija": "P-max| All LT | Šunų maistas",
+    "eur": "20.34",
+    "pasp": "45",
+    "konv": "0.0"
+   },
+   {
+    "kampanija": "petshop",
+    "eur": "499.45",
+    "pasp": "1721",
+    "konv": "81.1"
+   },
+   {
+    "kampanija": "Search | LT | Prekių ženklai",
+    "eur": "256.72",
+    "pasp": "1125",
+    "konv": "33.7"
+   }
+  ],
+  "jos_kamp": [
+   {
+    "k": "direct",
+    "uzs": "26",
+    "vnt": "118",
+    "pajamos_be_pvm": "752.93",
+    "marza": "128.44",
+    "be_sav": "0"
+   },
+   {
+    "k": "23346712074",
+    "uzs": "19",
+    "vnt": "104",
+    "pajamos_be_pvm": "707.10",
+    "marza": "125.34",
+    "be_sav": "0"
+   },
+   {
+    "k": "21565450990",
+    "uzs": "14",
+    "vnt": "70",
+    "pajamos_be_pvm": "379.44",
+    "marza": "65.93",
+    "be_sav": "0"
+   },
+   {
+    "k": "mokamas",
+    "uzs": "13",
+    "vnt": "74",
+    "pajamos_be_pvm": "395.40",
+    "marza": "76.44",
+    "be_sav": "0"
+   },
+   {
+    "k": "21472017542",
+    "uzs": "9",
+    "vnt": "12",
+    "pajamos_be_pvm": "148.16",
+    "marza": "30.04",
+    "be_sav": "0"
+   },
+   {
+    "k": "ai",
+    "uzs": "5",
+    "vnt": "29",
+    "pajamos_be_pvm": "190.18",
+    "marza": "33.47",
+    "be_sav": "0"
+   },
+   {
+    "k": "organika",
+    "uzs": "5",
+    "vnt": "31",
+    "pajamos_be_pvm": "134.22",
+    "marza": "25.62",
+    "be_sav": "0"
+   },
+   {
+    "k": "email",
+    "uzs": "5",
+    "vnt": "8",
+    "pajamos_be_pvm": "198.54",
+    "marza": "35.98",
+    "be_sav": "0"
+   },
+   {
+    "k": "gclid",
+    "uzs": "3",
+    "vnt": "3",
+    "pajamos_be_pvm": "65.19",
+    "marza": "10.92",
+    "be_sav": "0"
+   },
+   {
+    "k": "referral",
+    "uzs": "2",
+    "vnt": "7",
+    "pajamos_be_pvm": "14.91",
+    "marza": "2.78",
+    "be_sav": "0"
+   },
+   {
+    "k": "21565466377",
+    "uzs": "1",
+    "vnt": "1",
+    "pajamos_be_pvm": "33.05",
+    "marza": "5.54",
+    "be_sav": "0"
+   },
+   {
+    "k": "soc_organika",
+    "uzs": "1",
+    "vnt": "1",
+    "pajamos_be_pvm": "38.17",
+    "marza": "6.36",
+    "be_sav": "0"
+   },
+   {
+    "k": "21472043669",
+    "uzs": "1",
+    "vnt": "2",
+    "pajamos_be_pvm": "59.82",
+    "marza": "10.06",
+    "be_sav": "0"
+   }
+  ],
+  "jos_g_uzs": [
+   {
+    "k": "21472017542",
+    "uzs": "9",
+    "eur": "296",
+    "kontr": "61.94",
+    "vezejas": "21.25",
+    "nauji": "5"
+   },
+   {
+    "k": "21472043669",
+    "uzs": "1",
+    "eur": "72",
+    "kontr": "9.61",
+    "vezejas": "1.58",
+    "nauji": "0"
+   },
+   {
+    "k": "21565450990",
+    "uzs": "14",
+    "eur": "734",
+    "kontr": "135.59",
+    "vezejas": "26.38",
+    "nauji": "8"
+   },
+   {
+    "k": "21565466377",
+    "uzs": "1",
+    "eur": "40",
+    "kontr": "5.09",
+    "vezejas": "1.58",
+    "nauji": "0"
+   },
+   {
+    "k": "23346712074",
+    "uzs": "19",
+    "eur": "1045",
+    "kontr": "188.33",
+    "vezejas": "56.96",
+    "nauji": "6"
+   },
+   {
+    "k": "gclid",
+    "uzs": "3",
+    "eur": "93",
+    "kontr": "13.88",
+    "vezejas": "4.74",
+    "nauji": "3"
+   }
+  ],
+  "jos_g_men": [
+   {
+    "m": "2026-09",
+    "uzs": "13",
+    "vnt": "19",
+    "paj": "387",
+    "marza": "69"
+   },
+   {
+    "m": "2026-10",
+    "uzs": "25",
+    "vnt": "95",
+    "paj": "661",
+    "marza": "114"
+   },
+   {
+    "m": "2026-11",
+    "uzs": "9",
+    "vnt": "78",
+    "paj": "345",
+    "marza": "65"
+   }
+  ],
+  "jos_g_prek": [
+   {
+    "p": "Josera Soup Chicken & Carrots konservuotas vi",
+    "vnt": "36",
+    "marza": "7.85"
+   },
+   {
+    "p": "Josera Cat 663 Chicken+Veal filet  konservai ",
+    "vnt": "30",
+    "marza": "7.62"
+   },
+   {
+    "p": "Josera kons.Cat 658 Pure Chicken filet konser",
+    "vnt": "18",
+    "marza": "4.56"
+   },
+   {
+    "p": "Josera Cat 654 Kitten pate konservai kačiukam",
+    "vnt": "11",
+    "marza": "2.17"
+   },
+   {
+    "p": "Josera Cat 660 Chicken&Beef filet  konservai ",
+    "vnt": "10",
+    "marza": "2.54"
+   },
+   {
+    "p": "Josera Kitten Chicken begrūdis konservuotas p",
+    "vnt": "6",
+    "marza": "1.78"
+   },
+   {
+    "p": "JOSERA FESTIVAL pašaras šunims su lašiša, 12,",
+    "vnt": "5",
+    "marza": "32.48"
+   },
+   {
+    "p": "JosiCat Finest Mousse with Salmon, paštetas k",
+    "vnt": "5",
+    "marza": "0.97"
+   },
+   {
+    "p": "Josera Sensiplus 12,5 kg - sausas maistas šun",
+    "vnt": "4",
+    "marza": "22.96"
+   },
+   {
+    "p": "Josera Kitten Salmon konservuotas pašaras kač",
+    "vnt": "4",
+    "marza": "1.12"
+   },
+   {
+    "p": "JosiCat Paté with Chicken paštetas katėms su ",
+    "vnt": "4",
+    "marza": "0.80"
+   },
+   {
+    "p": "JosiCat Paté with Beef paštetas katėms su jau",
+    "vnt": "4",
+    "marza": "0.80"
+   },
+   {
+    "p": "Josera Catelux 10 kg - sausas maistas katėms ",
+    "vnt": "3",
+    "marza": "20.15"
+   },
+   {
+    "p": "Josera Meat Lovers Pure Lamb konservuotas paš",
+    "vnt": "3",
+    "marza": "1.24"
+   },
+   {
+    "p": "Josera Optiness 12,5 kg - begrūdis sausas mai",
+    "vnt": "3",
+    "marza": "18.69"
+   }
+  ],
+  "g_viso": [
+   {
+    "uzs": "354",
+    "paj": "12382",
+    "marza": "3445"
+   }
+  ],
+  "jos_kiti_pirko": [
+   {
+    "b": "animonda",
+    "n": "23"
+   },
+   {
+    "b": "miamor",
+    "n": "14"
+   },
+   {
+    "b": "exclusion",
+    "n": "7"
+   },
+   {
+    "b": "churu",
+    "n": "6"
+   },
+   {
+    "b": "romar",
+    "n": "5"
+   },
+   {
+    "b": "ontario",
+    "n": "5"
+   },
+   {
+    "b": "gimcat",
+    "n": "3"
+   },
+   {
+    "b": "hikari",
+    "n": "2"
+   }
+  ]
+ },
+ "v": "dep-095418",
+ "kurimas": 200,
+ "sid": 8405,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
