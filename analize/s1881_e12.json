@@ -1,0 +1,89 @@
+{
+ "1": {
+  "v": "e1",
+  "F": "1",
+  "cache_pluginai": [
+   "wp-super-cache/wp-cache.php"
+  ],
+  "dropins": [
+   "advanced-cache.php"
+  ],
+  "fn": {
+   "litespeed": false,
+   "rocket": false,
+   "w3tc": false,
+   "wpsc": true,
+   "wpfc": false,
+   "sg": false,
+   "autoptimize": false
+  },
+  "isvalyta": {
+   "34523": [
+    "wpsc"
+   ],
+   "34524": [
+    "wpsc"
+   ]
+  },
+  "http": {
+   "grazinimas": {
+    "code": 200,
+    "kiek": 2,
+    "cache_h": {
+     "cf-cache-status": "DYNAMIC"
+    }
+   },
+   "taisykles": {
+    "code": 200,
+    "kiek": 1,
+    "cache_h": {
+     "cf-cache-status": "DYNAMIC"
+    }
+   }
+  }
+ },
+ "2": {
+  "v": "e1",
+  "F": "2",
+  "cache_pluginai": [
+   "wp-super-cache/wp-cache.php"
+  ],
+  "dropins": [
+   "advanced-cache.php"
+  ],
+  "fn": {
+   "litespeed": false,
+   "rocket": false,
+   "w3tc": false,
+   "wpsc": true,
+   "wpfc": false,
+   "sg": false,
+   "autoptimize": false
+  },
+  "http": {
+   "grazinimas": {
+    "code": 200,
+    "kiek": 2,
+    "cache_h": {
+     "cache-control": "max-age=3, must-revalidate",
+     "cf-cache-status": "DYNAMIC"
+    }
+   },
+   "taisykles": {
+    "code": 200,
+    "kiek": 1,
+    "cache_h": {
+     "cache-control": "max-age=3, must-revalidate",
+     "cf-cache-status": "DYNAMIC"
+    }
+   }
+  }
+ },
+ "v": "dep-201015",
+ "kurimas": 200,
+ "sid": 8437,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
