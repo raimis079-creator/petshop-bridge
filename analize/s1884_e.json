@@ -1,0 +1,117 @@
+{
+ "v": "dep-220731",
+ "kurimas": 200,
+ "sid": 8453,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "e1",
+  "id": 35834,
+  "k": {
+   "type": "percent",
+   "amt": "10",
+   "excl_prod": 0,
+   "excl_cat": [
+    71,
+    72,
+    73,
+    83,
+    85,
+    86,
+    78,
+    79,
+    80,
+    81
+   ],
+   "prod": 0,
+   "cat": [],
+   "emails": [],
+   "sale": false,
+   "used": 4,
+   "limit": 0,
+   "per_user": 0,
+   "exp": ""
+  },
+  "excl_cat_names": [
+   "Maistas šunims",
+   "Sausas maistas šunims",
+   "Konservai šunims",
+   "Super Premium šunų maistas",
+   "Hipoalerginis maistas šunims",
+   "Animonda konservai šunims",
+   "Maistas katėms",
+   "Konservai katėms",
+   "Miamor katėms",
+   "Sausas maistas katėms"
+  ],
+  "excl_brands": [],
+  "meta": [
+   {
+    "meta_key": "discount_type",
+    "v": "percent"
+   },
+   {
+    "meta_key": "coupon_amount",
+    "v": "10"
+   },
+   {
+    "meta_key": "individual_use",
+    "v": "yes"
+   },
+   {
+    "meta_key": "usage_limit",
+    "v": "0"
+   },
+   {
+    "meta_key": "usage_limit_per_user",
+    "v": "0"
+   },
+   {
+    "meta_key": "limit_usage_to_x_items",
+    "v": null
+   },
+   {
+    "meta_key": "usage_count",
+    "v": "4"
+   },
+   {
+    "meta_key": "date_expires",
+    "v": null
+   },
+   {
+    "meta_key": "free_shipping",
+    "v": "no"
+   },
+   {
+    "meta_key": "exclude_product_categories",
+    "v": "a:10:{i:0;i:71;i:1;i:72;i:2;i:73;i:3;i:83;i:4;i:85;i:5;i:86;i:6;i:78;i:7;i:79;i:8;i:80;i:9;i:81;}"
+   },
+   {
+    "meta_key": "exclude_sale_items",
+    "v": "no"
+   },
+   {
+    "meta_key": "_used_by",
+    "v": "e2f.frontend@dev.avesa.lt"
+   },
+   {
+    "meta_key": "_used_by",
+    "v": "1516"
+   },
+   {
+    "meta_key": "_used_by",
+    "v": "1516"
+   },
+   {
+    "meta_key": "_used_by",
+    "v": "1540"
+   }
+  ],
+  "users_kodas": [
+   "emersia777@gmail.com",
+   "eri.mazeikaite@gmail.com"
+  ]
+ }
+}
