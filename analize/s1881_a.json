@@ -1,0 +1,104 @@
+{
+ "1": {
+  "v": "a1",
+  "failai": {
+   "withdraw": [
+    "/mu-plugins/petshop-desk.php x3",
+    "/mu-plugins/petshop-atsisakymas.php x3"
+   ],
+   "tsisakyti sutart": [
+    "/mu-plugins/petshop-atsisakymas.php x3",
+    "/mu-plugins/petshop-klientui.php x1"
+   ]
+  },
+  "snippetai": [
+   {
+    "id": "8430",
+    "name": "TEMP PS dep-195610",
+    "active": "1"
+   }
+  ],
+  "puslapiai": [
+   {
+    "ID": "35281",
+    "post_title": "Prenumeratos taisyklės",
+    "post_status": "draft",
+    "post_type": "page",
+    "post_name": "prenumeratos-taisykles"
+   },
+   {
+    "ID": "34523",
+    "post_title": "Grąžinimas",
+    "post_status": "publish",
+    "post_type": "page",
+    "post_name": "grazinimas"
+   },
+   {
+    "ID": "34595",
+    "post_title": "Dažniausiai užduodami klausimai",
+    "post_status": "publish",
+    "post_type": "page",
+    "post_name": "duk"
+   }
+  ],
+  "meniu": [],
+  "cancel_statusai": [
+   "pending",
+   "failed"
+  ],
+  "paskyros_veiksmai": {
+   "pending": "nera uzsakymo",
+   "on-hold": {
+    "id": 38691,
+    "veiksmai": {
+     "view": "Peržiūrėti"
+    }
+   },
+   "processing": {
+    "id": 38832,
+    "veiksmai": {
+     "view": "Peržiūrėti"
+    }
+   },
+   "completed": {
+    "id": 38784,
+    "veiksmai": {
+     "view": "Peržiūrėti"
+    }
+   }
+  },
+  "mygtukas_bendras": "Apmokėti",
+  "saltiniai_mokejimo": {
+   "paysera": {
+    "title": "Mokėjimas internetu",
+    "mygtukas": null
+   },
+   "bacs": {
+    "title": "Bankinis pavedimas",
+    "mygtukas": null
+   }
+  },
+  "taisykliu_psl": [
+   34524,
+   "Pirkimo sąlygos ir taisyklės",
+   "https://petshop.lt/taisykles/"
+  ],
+  "psl_grazinimas": {
+   "id": 34523,
+   "ilgis": 2586,
+   "istrauka": "atymo jums dienos, jei jos nenaudotos, nesugadintos ir originalioje pakuotėje. Apie grąžinimą praneškite el. paštu. Pinigus grąžiname ne vėliau kaip per 14 dienų nuo grąžinamos prekės gavimo.\n\n\nTeisė atsisakyti sutarties\nPirkėjas, nenurodydamas priežasties, per 14 (keturiolika) dienų nuo prekių pristatymo Pirkėjui dienos turi teisę atsisakyti prekių pirkimo–pardavimo sutarties, pranešdamas apie tai Pardavėjui.\n\nTeisė atsisakyti sutarties Pirkėjui negalioja Civilinio kodekso 6.228(10) straipsnio 2 dalyje numatytais atvejais, t. y.:\n\n\tsutartims dėl greitai gendančių prekių ar prekių, kurių galiojimo laikas yra trumpas;\n\tsutartims dėl supakuotų prekių, kurios buvo išpakuotos po pristatymo ir ku"
+  },
+  "psl_taisykles": {
+   "id": 34524,
+   "ilgis": 16212,
+   "istrauka": "rkėjo teisės ir įsipareigojimai\n\n3.1. Pirkėjas turi teisę pirkti prekes el. parduotuvėje šių Taisyklių ir kitose šios el. parduotuvės informacijos skiltyse nustatyta tvarka.\n\n3.2. Pirkėjas turi teisę atsisakyti prekių pirkimo – pardavimo sutarties su el. parduotuve, pranešdamas Pardavėjui apie tai raštu (el. paštu, nurodant pageidaujamą grąžinti prekę ir jos užsakymo numerį) ne vėliau kaip per 14 (keturiolika) dienų nuo prekės pristatymo Pirkėjui dienos, išskyrus atvejus, kai sutarties negalima atsisakyti pagal LR įstatymus (Lietuvos Respublikos civilinio kodekso 6.228 (10) straipsnio 2 dalies nuostatomis nekeičiamos ir negrąžinamos šios kokybiškos prekės:  pagal specialius vartotojo nurodym"
+  }
+ },
+ "v": "dep-195610",
+ "kurimas": 200,
+ "sid": 8430,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
