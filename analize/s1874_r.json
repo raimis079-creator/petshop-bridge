@@ -1,0 +1,118 @@
+{
+ "v": "dep-111956",
+ "kurimas": 200,
+ "sid": 8410,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "r1",
+  "sn461": {
+   "active": "1",
+   "mod": "2026-06-19 06:41:03",
+   "code": "\n/**\n * Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala)\n *\n * Floats out-of-stock products to the end of shop / product-category /\n * product-tag archive listings, AFTER the active sort order\n * (price, popularity, date, etc). Out-of-stock products stay visible\n * (demand asset + SEO, S98) - they are only pushed to the bottom.\n *\n * Uses wc_product_meta_lookup (indexed stock_status column),\n * not a postmeta JOIN. Front-end main product query only.\n *\n * [VISADA AKTYVUS]\n */\n\nif (!defined('ABSPATH')) {\n    return;\n}\n\nadd_filter('posts_clauses', 'petshop_oos_last_clauses', 20, 2);\nfunction petshop_oos_last_clauses($clauses, $query) {\n\n    // Front-end main query only.\n    if (is_admin() || !$query->is_main_query()) {\n        return $clauses;\n    }\n\n    // Canonical WooCommerce flag for the shop / taxonomy product loop.\n    if ($query->get('wc_query') !== 'product_query') {\n        return $clauses;\n    }\n\n    global $wpdb;\n\n    $lookup = $wpdb->prefix . 'wc_product_meta_lookup';\n\n    // Avoid a duplicate join if something already joined our alias.\n    if (strpos($clauses['join'], 'petshop_oos_lookup') === false) {\n        $clauses['join'] .= \" LEFT JOIN {$lookup} AS petshop_oos_lookup\"\n            . \" ON ({$wpdb->posts}.ID = petshop_oos_lookup.product_id) \";\n    }\n\n    // 1 = out of stock (sorts last), 0 = in stock / backorder (sorts first).\n    // Existing orderby is kept AFTER it, so the chosen sort still applies\n    // inside each group.\n    $oos_order = \"(petshop_oos_lookup.stock_status = 'outofstock') ASC\";\n\n    if (!empty($clauses['orderby'])) {\n        $clauses['orderby'] = $oos_order . \", \" . $clauses['orderby'];\n    } else {\n        $clauses['orderby'] = $oos_order;\n    }\n\n    return $clauses;\n}\n"
+  },
+  "kiti": [
+   {
+    "id": "461",
+    "name": "Petshop Katalogo Rikiavimas v1.0 (isparduotos prekes i gala) VISADA AKTYVUS",
+    "active": "1",
+    "modified": "2026-06-19 06:41:03"
+   },
+   {
+    "id": "513",
+    "name": "Petshop Katalogo Auditas v1 (read-only)",
+    "active": "1",
+    "modified": "2026-06-22 21:53:49"
+   },
+   {
+    "id": "539",
+    "name": "Petshop Rinkinių Kūrimo Forma v2",
+    "active": "1",
+    "modified": "2026-07-05 20:31:49"
+   },
+   {
+    "id": "561",
+    "name": "Petshop Rinkinių Gyvūno Filtras v1",
+    "active": "1",
+    "modified": "2026-07-02 12:46:55"
+   },
+   {
+    "id": "8410",
+    "name": "TEMP PS dep-111956",
+    "active": "1",
+    "modified": "2026-11-17 11:20:50"
+   }
+  ],
+  "mu": [],
+  "mu_naujausi": [
+   "petshop-404-atitikmuo.php 2026-11-17 08:22",
+   "petshop-prenumerata-katalogas.php 2026-11-16 21:59",
+   "petshop-prenumerata-paskyra.php 2026-11-16 21:59",
+   "petshop-pren-sutikimas.php 2026-11-16 21:17",
+   "petshop-prenumerata-paysera.php 2026-11-16 21:17",
+   "petshop-prenumerata-veiksmas.php 2026-11-16 21:17",
+   "petshop-prenumerata.php 2026-11-16 21:17",
+   "petshop-prenumeratos-langas.php 2026-11-16 21:17",
+   "petshop-anketos-ataskaita.php 2026-11-15 14:10",
+   "petshop-desk.php 2026-11-15 09:17",
+   "petshop-rytas.php 2026-11-15 08:50",
+   "petshop-kasa-paskyra.php 2026-11-10 08:50"
+  ],
+  "sn_naujausi": [
+   {
+    "id": "8224",
+    "name": "Petshop S1857 Sprendimų kategorijos → puslapiai (301)",
+    "active": "1",
+    "modified": "2026-11-12 20:14:04"
+   },
+   {
+    "id": "512",
+    "name": "Petshop Aprasymu Accordion v6 (LIVE, palaikymas senoms antrastems)",
+    "active": "1",
+    "modified": "2026-10-27 17:16:30"
+   },
+   {
+    "id": "7211",
+    "name": "Kasa Kupono klaidos LT v1.0 (S1782)",
+    "active": "1",
+    "modified": "2026-10-13 20:46:59"
+   },
+   {
+    "id": "7172",
+    "name": "Kasa Telefonu sumos v1.0 (šoninis blokas 390 px)",
+    "active": "1",
+    "modified": "2026-10-13 14:51:18"
+   },
+   {
+    "id": "570",
+    "name": "Petshop Daugiau=Pigiau Puslapis Shortcode v1.0",
+    "active": "1",
+    "modified": "2026-09-29 12:48:20"
+   },
+   {
+    "id": "565",
+    "name": "Petshop VF Sync v1.2 (reprice+stock+publish; S1724 stock be pokyčio nerašo)",
+    "active": "1",
+    "modified": "2026-09-27 13:42:33"
+   },
+   {
+    "id": "572",
+    "name": "Petshop Daugiau=Pigiau Šablono Kūrimo Forma v11",
+    "active": "0",
+    "modified": "2026-09-26 23:17:03"
+   },
+   {
+    "id": "566",
+    "name": "Petshop Akcijos Shortcode v1.4",
+    "active": "1",
+    "modified": "2026-09-22 13:07:22"
+   }
+  ],
+  "opt": {
+   "default_orderby": false,
+   "hide_oos": "no"
+  }
+ }
+}
