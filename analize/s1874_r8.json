@@ -1,10 +1,153 @@
 {
- "v": "dep-123153",
+ "0": {
+  "v": "r8",
+  "F": 0,
+  "grupes": [],
+  "pvz": [],
+  "viso_instock_lookup": 800,
+  "vis": "509"
+ },
+ "1": {
+  "v": "r8",
+  "F": 1,
+  "grupes": [],
+  "pvz": [],
+  "viso_instock_lookup": 800,
+  "vis": "509"
+ },
+ "2": {
+  "v": "r8",
+  "F": 2,
+  "ids": [
+   35291,
+   35852,
+   35854,
+   36003,
+   36335,
+   36339,
+   36423,
+   36430,
+   36437,
+   36439,
+   36441,
+   36444,
+   36457,
+   36461,
+   36477,
+   36479,
+   36537,
+   36538,
+   36541,
+   36542
+  ],
+  "grupes": {
+   "DP pakas (bazė zb)": 14,
+   "DP pakas (bazė belcor_tofu)": 2,
+   "DP pakas (bazė av)": 2,
+   "prekė (?, mix-and-match, manage=n)": 1,
+   "DP pakas (bazė vf)": 1
+  },
+  "pvz": {
+   "prekė (?, mix-and-match, manage=n)": [
+    "35291 Skanėstų kačių dantims rinkinys"
+   ],
+   "DP pakas (bazė belcor_tofu)": [
+    "35852 8 VNT. - Kraikas katėms TOFU BeloCat, pušies ",
+    "35854 8 VNT. - Kraikas katėms TOFU BeloCat, vanilės"
+   ],
+   "DP pakas (bazė vf)": [
+    "36003 2 vnt. Exclusion Hypoallergenic mažų veislių "
+   ],
+   "DP pakas (bazė av)": [
+    "36335 2 vnt. ROYAL CANIN STERILISED 37, 4 KG - saus",
+    "36339 2 vnt. ROYAL CANIN SENSIBLE 33, 10 kg, sausas"
+   ],
+   "DP pakas (bazė zb)": [
+    "36423 2 vnt. FARMINA N&D OCEAN - DOG Dry Herring&Or",
+    "36430 2 vnt. FARMINA N&D PUMPKIN - DOG Dry Lamb&Blu",
+    "36437 2 vnt. FARMINA N&D QUINOA - DOG Dry NEUTERED "
+   ]
+  },
+  "viso_instock_lookup": 800,
+  "vis": "509"
+ },
+ "3": {
+  "v": "r8",
+  "F": 3,
+  "ids": [
+   37503,
+   37541,
+   37542,
+   37543,
+   37556,
+   37557,
+   37623,
+   37624,
+   37653,
+   37654,
+   37655,
+   37693,
+   37696,
+   37697,
+   37698,
+   37703,
+   37704,
+   37705,
+   37742,
+   37743,
+   37744,
+   37802,
+   37803,
+   37816,
+   37836,
+   37837,
+   37838,
+   37858,
+   37883,
+   37917,
+   37918,
+   37920,
+   37923,
+   38094,
+   38095,
+   38096,
+   38465,
+   38466,
+   38469,
+   38470,
+   38485,
+   38488,
+   38525,
+   38526
+  ],
+  "grupes": {
+   "DP pakas (bazė zb)": 30,
+   "DP pakas (bazė av)": 13,
+   "DP pakas (bazė vf)": 1
+  },
+  "pvz": {
+   "DP pakas (bazė zb)": [
+    "37503 36 vnt. Gemon Mousse Sterilised konservai ste",
+    "37541 18 vnt. Monge Natural kons. pašaras suaugusio",
+    "37542 24 vnt. Monge Natural kons. pašaras suaugusio"
+   ],
+   "DP pakas (bazė vf)": [
+    "37858 36 vnt. Josera Kitten Duck konservuotas pašar"
+   ],
+   "DP pakas (bazė av)": [
+    "37883 24 vnt. Exclusion Hypoallergenic konservai šu",
+    "37917 24 vnt. Pasta katėms su lašiša - Ontario Salm",
+    "37918 36 vnt. Pasta katėms su lašiša - Ontario Salm"
+   ]
+  },
+  "viso_instock_lookup": 769,
+  "vis": "509"
+ },
+ "v": "dep-123508",
  "kurimas": 200,
- "sid": 8418,
+ "sid": 8420,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
- },
- "zalias_GO": "<!DOCTYPE html>\n<html lang=\"lt-LT\">\n<head>\n\t<meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" />\n\t<meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n\t\t<meta name='robots' content='max-image-preview:large, noindex, follow' />\n\t<title>WordPress &rsaquo; Klaida</title>\n\t<style type=\"text/css\">\n\t\thtml {\n\t\t\tbackground: #f1f1f1;\n\t\t}\n\t\tbody {\n\t\t\tbackground: #fff;\n\t\t\tborder: 1px solid #ccd0d4;\n\t\t\tcolor: #444;\n\t\t\tfont-family: -apple-system, BlinkMacSystemFont, \"Segoe UI\", Roboto, Oxygen-Sans, Ubuntu, Cantarell, \"Helvetica Neue\", sans-serif;\n\t\t\tmargin: 2em auto;\n\t\t\tpadding: 1em 2em;\n\t\t\tmax-width: 700px;\n\t\t\t-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, .04);\n\t\t\tbox-shadow: 0 1px 1px rgba(0, 0, 0, .04);\n\t\t}\n\t\th1 {\n\t\t\tborder-bottom: 1px solid #dadada;\n\t\t\tclear: both;\n\t\t\tcolor: #666;\n\t\t\tfont-size: 24px;\n\t\t\tmargin: 30px 0 0 0;\n\t\t\tpadding: 0;\n\t\t\tpadding-bottom: 7px;\n\t\t}\n\t\t#error-page {\n\t\t\tmargin-top: 50px;\n\t\t}\n\t\t#error-page p,\n\t\t#error-page .wp-die-message {\n\t\t\tfont-size: 14px;\n\t\t\tline-height: 1.5;\n\t\t\tmargin: 25px 0 20px;\n\t\t}\n\t\t#error-page code {\n\t\t\tfont-family: Consolas, Monaco, monospace;\n\t\t}\n\t\tul li {\n\t\t\tmargin-bottom: 10px;\n\t\t\tfont-size: 14px ;\n\t\t}\n\t\ta {\n\t\t\tcolor: #2271b1;\n\t\t}\n\t\ta:hover,\n\t\ta:active {\n\t\t\tcolor: #135e96;\n\t\t}\n\t\ta:focus {\n\t\t\tcolor: #043959;\n\t\t\tbox-shadow: 0 0 0 2px #2271b1;\n\t\t\toutline: 2px solid transparent;\n\t\t}\n\t\t.button {\n\t\t\tbackground: #f3f5f6;\n\t\t\tborder: 1px solid #016087;\n\t\t\tcolor: #016087;\n\t\t\tdisplay: inline-block;\n\t\t\ttext-decoration: none;\n\t\t\tfont-size: 13px;\n\t\t\tline-height: 2;\n\t\t\theight: 28px;\n\t\t\tmargin: 0;\n\t\t\tpadding: 0 10px 1px;\n\t\t\tcursor: pointer;\n\t\t\t-webkit-border-radius: 3px;\n\t\t\t-webkit-appearance: none;\n\t\t\tborder-radius: 3px;\n\t\t\twhite-space: nowrap;\n\t\t\t-webkit-box-sizing: border-box;\n\t\t\t-moz-box-sizing:    border-box;\n\t\t\tbox-sizing:         border-box;\n\n\t\t\tvertical-align: top;\n\t\t}\n\n\t\t.button.button-large {\n\t\t\tline-height: 2.30769231;\n\t\t\tmin-height: 32px;\n\t\t\tpadding: 0 12px;\n\t\t}\n\n\t\t.button:hover,\n\t\t.button:focus {\n\t\t\tbackground: #f1f1f1;\n\t\t}\n\n\t\t.button:focus {\n\t\t\tbackground: #f3f5f6;\n\t\t\tborder-color: #007cba;\n\t\t\t-webkit-box-shadow: 0 0 0 1px #007cba;\n\t\t\tbox-shadow: 0 0 0 1px #007cba;\n\t\t\tcolor: #016087;\n\t\t\toutline: 2px solid transparent;\n\t\t\toutline-offset: 0;\n\t\t}\n\n\t\t.button:active {\n\t\t\tbackground: #f3f5f6;\n\t\t\tborder-color: #7e8993;\n\t\t\t-webkit-box-shadow: none;\n\t\t\tbox-shadow: none;\n\t\t}\n\n\t\t\t</style>\n</head>\n<body id=\"error-page\">\n\t<div class=\"wp-die-message\"><p>Tinklalapyje įvyko kritinė klaida.</p><p><a href=\"https://wordpress.org/documentation/article/faq-troubleshooting/\">Sužinokite daugiau apie problemų paiešką WordPress.</a></p></div></body>\n</html>\n\t"
+ }
 }
