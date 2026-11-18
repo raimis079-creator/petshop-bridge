@@ -1,0 +1,156 @@
+{
+ "v": "dep-194227",
+ "kurimas": 200,
+ "sid": 8537,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "u1",
+  "shots": [
+   {
+    "n": "s1890u_0",
+    "u": "https://petshop.lt/?t=1795031036",
+    "w": 390,
+    "h": 500
+   },
+   {
+    "n": "s1890u_add3",
+    "u": "https://petshop.lt/?add-to-cart=16594&quantity=3&nc=3",
+    "w": 390,
+    "h": 500
+   },
+   {
+    "n": "s1890u_kasa_3vnt",
+    "u": "https://petshop.lt/kasa/?a=3",
+    "w": 390,
+    "h": 900,
+    "eval": "new Promise(r=>setTimeout(()=>r(Array.from(document.querySelectorAll('#shipping_method li, .woocommerce-shipping-methods li')).map(l=>l.innerText.replace(/\\s+/g,' ').trim().slice(0,60)).join(' || ')),4000))"
+   },
+   {
+    "n": "s1890u_add4",
+    "u": "https://petshop.lt/?add-to-cart=16594&quantity=1&nc=4",
+    "w": 390,
+    "h": 500
+   },
+   {
+    "n": "s1890u_kasa_4vnt",
+    "u": "https://petshop.lt/kasa/?a=4",
+    "w": 390,
+    "h": 900,
+    "eval": "new Promise(r=>setTimeout(()=>r(Array.from(document.querySelectorAll('#shipping_method li, .woocommerce-shipping-methods li')).map(l=>l.innerText.replace(/\\s+/g,' ').trim().slice(0,60)).join(' || ')),4000))"
+   },
+   {
+    "n": "s1890u_add5",
+    "u": "https://petshop.lt/?add-to-cart=16594&quantity=1&nc=5",
+    "w": 390,
+    "h": 500
+   },
+   {
+    "n": "s1890u_kasa_5vnt",
+    "u": "https://petshop.lt/kasa/?a=5",
+    "w": 390,
+    "h": 900,
+    "eval": "new Promise(r=>setTimeout(()=>r(Array.from(document.querySelectorAll('#shipping_method li, .woocommerce-shipping-methods li')).map(l=>l.innerText.replace(/\\s+/g,' ').trim().slice(0,60)).join(' || ')),4000))"
+   },
+   {
+    "n": "s1890u_add6",
+    "u": "https://petshop.lt/?add-to-cart=16594&quantity=1&nc=6",
+    "w": 390,
+    "h": 500
+   },
+   {
+    "n": "s1890u_kasa_6vnt",
+    "u": "https://petshop.lt/kasa/?a=6",
+    "w": 390,
+    "h": 900,
+    "eval": "new Promise(r=>setTimeout(()=>r(Array.from(document.querySelectorAll('#shipping_method li, .woocommerce-shipping-methods li')).map(l=>l.innerText.replace(/\\s+/g,' ').trim().slice(0,60)).join(' || ')),4000))"
+   }
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
+    "value": "terra|1795041836|XAU3OEYkB9SEOyS8KKPRiFIoT5IMdQ7G1pmE4mVayYB|3288123aded6b1100108b53c5cb9da2a9b55afd6dab6c9a3bc8fee6f918661c7",
+    "domain": "petshop.lt"
+   },
+   {
+    "name": "ps_js",
+    "value": "1",
+    "domain": "petshop.lt"
+   }
+  ],
+  "preke": [
+   16594,
+   "QUATTRO begrūdis visų veislių suaugusių šunų pašaras WEIGHT LOSS su balta žuvimi ir kriliumi, 12kg",
+   12,
+   0
+  ],
+  "fn": {
+   "3vnt_36kg": 399,
+   "4vnt_48kg": 399,
+   "5vnt_60kg": 799,
+   "6vnt_72kg": 1198
+  }
+ },
+ "shots": {
+  "s1890u_0": {
+   "status": 200,
+   "url": "https://petshop.lt/?t=1795031036",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1890u_add3": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=16594&quantity=3&nc=3",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1890u_kasa_3vnt": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/?a=3",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [],
+   "eval": "VENIPAK Kurjeris: 3,99 €"
+  },
+  "s1890u_add4": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=16594&quantity=1&nc=4",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1890u_kasa_4vnt": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/?a=4",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [],
+   "eval": "VENIPAK Kurjeris: 3,99 €"
+  },
+  "s1890u_add5": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=16594&quantity=1&nc=5",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1890u_kasa_5vnt": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/?a=5",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [],
+   "eval": "VENIPAK Kurjeris: 7,99 €"
+  },
+  "s1890u_add6": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=16594&quantity=1&nc=6",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1890u_kasa_6vnt": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/?a=6",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [],
+   "eval": "VENIPAK Kurjeris: 11,98 €"
+  }
+ }
+}
