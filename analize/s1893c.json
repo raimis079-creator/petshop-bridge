@@ -1,0 +1,207 @@
+{
+ "1": {
+  "v": "S1893c",
+  "xml_md5": "2647a2ad116425cf849b8364bca41da1",
+  "xml": {
+   "86": " *   SPRENDIMAS — qty=0 trys keliai:",
+   "87": " *",
+   "88": " *   A. NAUJA preke qty=0 (block_zb_create): -> NEKURTI.",
+   "89": " *      Nera SEO istorijos, nera paklausos (niekas nemate) -> kurti neverta.",
+   "90": " *      Jei ZB veliau atsius SU likuciu -> kuriama tada (publish). Tai",
+   "91": " *      automatinis \"blokavimas\" (nauja qty=0 nekuriama, grizus su likuciu —",
+   "92": " *      kuriama). Konservai qty=0 — isimtis, LEIDZIAMI (box rinkiniai).",
+   "93": " *",
+   "94": " *   B. ESAMA BUVUSI PUBLISH preke qty=0 (initial_import): -> LIEKA PUBLISH.",
+   "95": " *      _zb_was_published=yes -> preke matoma (SEO saugus + renka paklausa",
+   "96": " *      \"pranesk kai bus\"). NE draft. WC _stock_status=outofstock (zyma).",
+   "97": " *      _zb_qty_zero_since fiksuoja, nuo kada be likucio.",
+   "98": " *",
+   "99": " *   C. ESAMA GIMUSI DRAFT preke qty=0 (niekada nebuvo publish): -> lieka draft",
+   "100": " *      + _zb_qty_zero_since. 30 d. cleanup (atskiras snippet) -> trash.",
+   "387": "                'note'      => 'ZB create prevented (excluded brand, exists as Legacy) at the gate (v1.5.17)',",
+   "388": "            ] );",
+   "389": "            return false; // BLOKUOTI kurima",
+   "390": "        }",
+   "391": "    }",
+   "392": "",
+   "393": "    // v1.5.19 (S1860, savininko sprendimas 2026-11-12): sezoniniu prekiu isimtis",
+   "394": "    // (advento kalendoriai) — kuriamos nepaisant kartelės; po sukurimo -> draft perziurai.",
+   "395": "    // v1.5.20: tik su likuciu (qty>0) — nauja preke be likucio lieka blokuojama kaip iki siol",
+   "396": "    if ( $qty > 0 && petshop_xml_zb_isimtis( $name, $data ) ) {",
+   "397": "        return $continue_import;",
+   "398": "    }",
+   "399": "",
+   "400": "    // Konservas -> LEISTI (taps draft per initial_import, box rinkiniams)",
+   "401": "    if ( petshop_xml_text_is_konservas( $category, $name ) ) {",
+   "402": "        return $continue_import;",
+   "403": "    }",
+   "404": "",
+   "467": "",
+   "468": "/**",
+   "469": " * v1.5.19 (S1860): savininko isimtys ZB kartelei (PETSHOP_XML_ZB_MIN_COST).",
+   "470": " * Sarasai option'uose: ps_zb_kartele_isimtys_pav (pavadinimo fragmentai),",
+   "471": " * ps_zb_kartele_isimtys_sku (ZB kodai). Numatyta: „advento kalendorius“.",
+   "472": " */",
+   "473": "function petshop_xml_zb_isimtis( $name, $data = [] ) {",
+   "474": "    $sku_list = (array) get_option( 'ps_zb_kartele_isimtys_sku', [] );",
+   "475": "    $sku = '';",
+   "476": "    if ( is_array( $data ) ) {",
+   "477": "        foreach ( [ 'sku', 'code', 'kodas' ] as $k ) {",
+   "478": "            if ( ! empty( $data[ $k ] ) && is_scalar( $data[ $k ] ) ) { $sku = trim( (string) $data[ $k ] ); break; }",
+   "479": "        }",
+   "480": "    }",
+   "481": "    if ( $sku !== '' && in_array( $sku, $sku_list, true ) ) {",
+   "507": "function petshop_xml_zb_prekes_brandas( $post_id ) {",
+   "508": "    $t = wp_get_post_terms( $post_id, PETSHOP_XML_BRAND_TAXONOMY, [ 'fields' => 'names' ] );",
+   "509": "    return ( is_wp_error( $t ) || empty( $t ) ) ? '' : implode( ', ', $t );",
+   "510": "}",
+   "511": "",
+   "512": "/**",
+   "513": " * v1.5.19 (S1860): nauja ZB isimties preke -> draft, kad savininkas perziuretu aprasyma.",
+   "514": " * Tik kurimo metu (ne update), tik ZB importas #2. Veliau publikuojama rankiniu budu.",
+   "515": " */",
+   "516": "add_action( 'pmxi_saved_post', function( $post_id, $xml = null, $is_update = false ) {",
+   "517": "    if ( $is_update || get_post_type( $post_id ) !== 'product' ) {",
+   "518": "        return;",
+   "519": "    }",
+   "520": "    $iid = 0;",
+   "521": "    if ( isset( $_GET['import_id'] ) ) { $iid = (int) $_GET['import_id']; }",
+   "522": "    elseif ( isset( $_GET['id'] ) ) { $iid = (int) $_GET['id']; }",
+   "523": "    if ( $iid && ! in_array( $iid, PETSHOP_XML_ZB_IMPORT_IDS, true ) ) {",
+   "524": "        return;",
+   "525": "    }",
+   "526": "    if ( ! petshop_xml_zb_isimtis( get_the_title( $post_id ), [ 'sku' => (string) get_post_meta( $post_id, '_sku', true ), 'brand' => petshop_xml_zb_prekes_brandas( $post_id ) ] ) ) {",
+   "527": "        return;",
+   "528": "    }",
+   "529": "    if ( get_post_meta( $post_id, '_ps_isimtis_perziureta', true ) ) {",
+   "530": "        return;",
+   "531": "    }",
+   "532": "    update_post_meta( $post_id, '_ps_isimtis_laukia_perziuros', current_time( 'mysql' ) );",
+   "533": "    if ( get_post_status( $post_id ) !== 'draft' ) {",
+   "534": "        wp_update_post( [ 'ID' => $post_id, 'post_status' => 'draft' ] );",
+   "535": "    }",
+   "536": "}, 999, 3 );",
+   "537": "",
+   "538": "function petshop_xml_block_zb_cheap_update( $continue_import, $post_id, $data, $import_id ) {",
+   "539": "",
+   "540": "    if ( get_post_type( $post_id ) !== 'product' ) {",
+   "566": "    // Konservas -> NEBLOKUOJAM (konservai leidziami net pigus, box rinkiniai)",
+   "567": "    if ( petshop_xml_is_konservas( $post_id ) ) {",
+   "568": "        return $continue_import;",
+   "569": "    }",
+   "570": "",
+   "571": "    // v1.5.19 (S1860): savininko isimtys (advento kalendoriai) — atnaujinamos kaip iprastos",
+   "572": "    if ( petshop_xml_zb_isimtis( get_the_title( $post_id ), [ 'sku' => (string) get_post_meta( $post_id, '_sku', true ), 'brand' => petshop_xml_zb_prekes_brandas( $post_id ) ] ) ) {",
+   "573": "        return $continue_import;",
+   "574": "    }",
+   "575": "",
+   "576": "    // Pigi (< kartele) IR ne konservas IR esama -> BLOKUOTI update",
+   "577": "    if ( $zb_cost < PETSHOP_XML_ZB_MIN_COST ) {",
+   "578": "        petshop_xml_log_structured( [",
+   "579": "            'action'    => 'ZB-BLOCK-CHEAP-UPDATE',",
+   "580": "            'post_id'   => $post_id,"
+  },
+  "files": {
+   "/plugins/petshop-xml/petshop-xml.php": [
+    [
+     "526:     if ( ! petshop_xml_zb_isimtis( get_the_title( $post_id ), [ 'sku' => (string) get_post_meta( $post_id, '_sku', true ), 'brand' => petshop_xml_zb_prekes_brandas( $post_id ) ] ) ) {",
+     "527:         return;",
+     "528:     }",
+     "529:     if ( get_post_meta( $post_id, '_ps_isimtis_perziureta', true ) ) {",
+     "530:         return;",
+     "531:     }",
+     "532:     update_post_meta( $post_id, '_ps_isimtis_laukia_perziuros', current_time( 'mysql' ) );"
+    ]
+   ],
+   "/mu-plugins/petshop-rankos.php": [
+    [
+     "47: class Petshop_Rankos {",
+     "48: ",
+     "49: \tconst VERSIJA = '1.0';",
+     "50: \tconst ZYME    = '_ps_ranka_isimta';",
+     "51: \tconst KADA    = '_ps_ranka_isimta_kada';",
+     "52: \tconst KAS     = '_ps_ranka_isimta_kas';",
+     "53: "
+    ],
+    [
+     "49: \tconst VERSIJA = '1.0';",
+     "50: \tconst ZYME    = '_ps_ranka_isimta';",
+     "51: \tconst KADA    = '_ps_ranka_isimta_kada';",
+     "52: \tconst KAS     = '_ps_ranka_isimta_kas';",
+     "53: ",
+     "54: \tpublic static function init() {",
+     "55: \t\t/* Zyme uzdedama/nuimama, kai busena keiciama. */"
+    ]
+   ]
+  },
+  "snip": {
+   "565 Petshop VF Sync v1.2 (reprice+stock+publish; S1724 stock be pokyčio nerašo)": [
+    [
+     "406: \t\t'fail_no_content'  => 0,",
+     "407: \t\t'fail_review_flag' => 0,",
+     "408: \t\t'fail_no_category' => 0,",
+     "409: \t\t'skip_ranka'       => 0,  // S1869: _ps_ranka_isimta — rankiniu būdu išimtų nepublikuojam",
+     "410: \t\t'would_publish'    => 0,",
+     "411: \t\t'applied'          => 0,",
+     "412: \t);",
+     "413: \t$examples = array();"
+    ],
+    [
+     "417: \t\t$stats['draft_scanned']++;",
+     "418: \t\t$sku = (string) get_post_meta( $pid, '_vf_supplier_sku', true );",
+     "419: ",
+     "420: \t\t// S1869 (Raimis 2026-11-15 „A“): rankiniu būdu išimtos prekės (_ps_ranka_isimta) automatiškai NEpublikuojamos",
+     "421: \t\tif ( '' !== (string) get_post_meta( $pid, '_ps_ranka_isimta', true ) ) {",
+     "422: \t\t\t$stats['skip_ranka']++;",
+     "423: \t\t\tcontinue;",
+     "424: \t\t}"
+    ],
+    [
+     "418: \t\t$sku = (string) get_post_meta( $pid, '_vf_supplier_sku', true );",
+     "419: ",
+     "420: \t\t// S1869 (Raimis 2026-11-15 „A“): rankiniu būdu išimtos prekės (_ps_ranka_isimta) automatiškai NEpublikuojamos",
+     "421: \t\tif ( '' !== (string) get_post_meta( $pid, '_ps_ranka_isimta', true ) ) {",
+     "422: \t\t\t$stats['skip_ranka']++;",
+     "423: \t\t\tcontinue;",
+     "424: \t\t}",
+     "425: "
+    ]
+   ]
+  },
+  "wanpy": {
+   "22366": {
+    "perz": "2026-11-12 21:24:20",
+    "pub": "2026-11-12 21:24:20"
+   },
+   "22369": {
+    "perz": "2026-11-12 21:24:20",
+    "pub": "2026-11-12 21:24:20"
+   }
+  },
+  "opt": {
+   "pav": [
+    "advento kalendorius",
+    "xmas",
+    "kalėd",
+    "christmas",
+    "gimcat",
+    "gimdog",
+    "gimpet"
+   ],
+   "sku": false
+  },
+  "terms": {
+   "16": "Kita /uncategorized parent 0",
+   "95": "Skanėstai šunims /skanestai-sunims parent 70",
+   "96": "Skanėstai katėms /skanestai-katems parent 77",
+   "824": "Kalėdinės dovanos /kaledines-dovanos parent 119"
+  }
+ },
+ "v": "dep-210054",
+ "kurimas": 200,
+ "sid": 8553,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
