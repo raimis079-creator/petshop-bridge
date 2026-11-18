@@ -1,0 +1,95 @@
+{
+ "v": "dep-223402",
+ "kurimas": 200,
+ "sid": 8572,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "K": {
+  "68": {
+   "status": "active",
+   "next": "2027-01-16",
+   "delivery": "{\"first_name\":\"Testas\",\"last_name\":\"Prenumerata\",\"tipas\":\"pastomatas\",\"adresas\":\"Testo g. 1\",\"address_1\":\"Testo g. 1\",\"city\":\"Vilnius\",\"postcode\":\"01100\",\"phone\":\"+37068187787\",\"pastomatas\":\"Venipak locker, AIBĖ Venipak paštomatas, Švenčionių g. 72, Nemenčinė\",\"terminal_id\":\"3648\"}",
+   "notice": null,
+   "updated": "2026-11-18 22:30:23"
+  },
+  "prekes": [
+   "19496x6",
+   "16950x1"
+  ],
+  "ivykiai": [
+   {
+    "event": "interval_changed",
+    "p": "{\"naujas\":25}",
+    "created_at": "2026-11-18 22:30:23"
+   },
+   {
+    "event": "delivery_changed",
+    "p": "{\"laukai\":[\"tipas\",\"pastomatas\",\"terminal_id\"]}",
+    "created_at": "2026-11-18 22:27:30"
+   },
+   {
+    "event": "interval_changed",
+    "p": "{\"naujas\":20}",
+    "created_at": "2026-11-18 22:26:20"
+   },
+   {
+    "event": "interval_changed",
+    "p": "{\"naujas\":25}",
+    "created_at": "2026-11-18 22:26:11"
+   },
+   {
+    "event": "interval_changed",
+    "p": "{\"naujas\":25}",
+    "created_at": "2026-11-18 22:26:10"
+   },
+   {
+    "event": "interval_changed",
+    "p": "{\"naujas\":25}",
+    "created_at": "2026-11-18 22:26:09"
+   },
+   {
+    "event": "change_notice_sent",
+    "p": "{\"suma_ct\":3424}",
+    "created_at": "2026-11-18 21:57:55"
+   },
+   {
+    "event": "guarantee_set",
+    "p": "{\"suma_ct\":3424,\"planine\":\"2027-01-16\",\"saltinis\":\"kliento_pakeitimas\"}",
+    "created_at": "2026-11-18 21:57:55"
+   },
+   {
+    "event": "delivery_changed",
+    "p": "{\"laukai\":[\"tipas\",\"pastomatas\",\"terminal_id\"]}",
+    "created_at": "2026-11-18 21:57:55"
+   },
+   {
+    "event": "change_notice_sent",
+    "p": "{\"suma_ct\":3823}",
+    "created_at": "2026-11-18 21:57:53"
+   },
+   {
+    "event": "guarantee_set",
+    "p": "{\"suma_ct\":3823,\"planine\":\"2027-01-16\",\"saltinis\":\"kliento_pakeitimas\"}",
+    "created_at": "2026-11-18 21:57:53"
+   },
+   {
+    "event": "item_removed",
+    "p": "{\"product_id\":16950}",
+    "created_at": "2026-11-18 21:57:53"
+   },
+   {
+    "event": "change_notice_sent",
+    "p": "{\"suma_ct\":5158}",
+    "created_at": "2026-11-18 21:57:51"
+   },
+   {
+    "event": "guarantee_set",
+    "p": "{\"suma_ct\":5158,\"planine\":\"2027-01-16\",\"saltinis\":\"kliento_pakeitimas\"}",
+    "created_at": "2026-11-18 21:57:51"
+   }
+  ],
+  "dabar_gmt": "2026-11-18 22:35:02"
+ }
+}
