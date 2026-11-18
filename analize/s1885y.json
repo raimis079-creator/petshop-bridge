@@ -1,0 +1,261 @@
+{
+ "1": {
+  "v": "S1885y",
+  "imp2": {
+   "id": "2",
+   "parent_import_id": "0",
+   "name": "products.php",
+   "friendly_name": "",
+   "type": "url",
+   "feed_type": "xml",
+   "path": "https://zaliojibanga.lt/integrations/services/products.php?key=bAF0OY6Sz9H3AgAF",
+   "xpath": "/item",
+   "registered_on": "2026-11-18 04:01:57",
+   "root_element": "item",
+   "processing": "1",
+   "executing": "0",
+   "triggered": "1",
+   "queue_chunk_number": "2691",
+   "first_import": "2026-06-01 10:56:49",
+   "count": "2767",
+   "imported": "453",
+   "created": "132",
+   "updated": "321",
+   "skipped": "2237",
+   "deleted": "0",
+   "changed_missing": "0",
+   "canceled": "0",
+   "canceled_on": "2026-06-15 05:47:32",
+   "failed": "0",
+   "failed_on": "0000-00-00 00:00:00",
+   "settings_update_on": "2026-06-06 09:31:09",
+   "last_activity": "2026-11-18 04:01:57",
+   "iteration": "72",
+   "is_preview": "0"
+  },
+  "imp2_hist": [
+   {
+    "id": "11611",
+    "time_run": "388861",
+    "s": "119 Produktai created 301 updated 2010 skipped",
+    "date": "2026-11-13 04:01:02"
+   },
+   {
+    "id": "11610",
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-11-13 04:00:03"
+   },
+   {
+    "id": "11077",
+    "time_run": "432013",
+    "s": "import finished & cron un-triggered<br>22 Produktai created 377 updated 2344 skipped",
+    "date": "2026-11-07 16:01:02"
+   },
+   {
+    "id": "11076",
+    "time_run": null,
+    "s": "triggered by cron",
+    "date": "2026-11-07 16:00:03"
+   }
+  ],
+  "hist_max": [
+   {
+    "import_id": "1",
+    "mx": "2026-05-27 11:12:17",
+    "n": "2"
+   },
+   {
+    "import_id": "2",
+    "mx": "2026-11-13 04:01:02",
+    "n": "4"
+   },
+   {
+    "import_id": "3",
+    "mx": "2026-11-18 07:01:22",
+    "n": "4"
+   },
+   {
+    "import_id": "5",
+    "mx": "2026-11-18 04:31:02",
+    "n": "5"
+   },
+   {
+    "import_id": "7",
+    "mx": "2026-11-18 07:16:02",
+    "n": "4"
+   }
+  ],
+  "zb_nauji_18": [
+   {
+    "h": "11-16 18",
+    "st": "draft",
+    "n": "14"
+   },
+   {
+    "h": "11-17 06",
+    "st": "draft",
+    "n": "10"
+   },
+   {
+    "h": "11-17 18",
+    "st": "draft",
+    "n": "20"
+   },
+   {
+    "h": "11-18 06",
+    "st": "draft",
+    "n": "37"
+   },
+   {
+    "h": "11-18 06",
+    "st": "publish",
+    "n": "6"
+   },
+   {
+    "h": "11-18 06",
+    "st": "trash",
+    "n": "1"
+   }
+  ],
+  "zb_mod_18": [
+   {
+    "h": "11-17 17",
+    "n": "25"
+   },
+   {
+    "h": "11-17 18",
+    "n": "43"
+   },
+   {
+    "h": "11-17 19",
+    "n": "8"
+   },
+   {
+    "h": "11-17 20",
+    "n": "1"
+   },
+   {
+    "h": "11-17 21",
+    "n": "2"
+   },
+   {
+    "h": "11-17 23",
+    "n": "1"
+   },
+   {
+    "h": "11-18 01",
+    "n": "1"
+   },
+   {
+    "h": "11-18 02",
+    "n": "4"
+   },
+   {
+    "h": "11-18 06",
+    "n": "284"
+   },
+   {
+    "h": "11-18 07",
+    "n": "44"
+   },
+   {
+    "h": "11-18 08",
+    "n": "2"
+   },
+   {
+    "h": "11-18 09",
+    "n": "69"
+   }
+  ],
+  "cron_imp": [
+   [
+    "petshop_import_tempas",
+    "11-18 09:45"
+   ]
+  ],
+  "acc": {
+   "f1117": [
+    "[ip] - - [17/Nov/2026:14:32:28 +0200] \"POST /wp-admin/admin-ajax.php HTTP/2.0\" 200 73 \"https://petshop.lt/wp-admin/admin.php?page=ps-desk\" \"Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/157.0.0.0 Safari/537.36\"\n"
+   ]
+  },
+  "snip_1117": [
+   {
+    "id": "8418",
+    "name": "TEMP PS dep-123153",
+    "active": "0",
+    "modified": "2026-11-17 12:33:15"
+   },
+   {
+    "id": "8419",
+    "name": "TEMP PS dep-123334",
+    "active": "0",
+    "modified": "2026-11-17 12:34:49"
+   },
+   {
+    "id": "8420",
+    "name": "TEMP PS dep-123508",
+    "active": "0",
+    "modified": "2026-11-17 12:36:53"
+   }
+  ],
+  "snip_stat": {
+   "n": "1373",
+   "mb": "15.7",
+   "akt": "78",
+   "temp_n": "1295",
+   "temp_mb": "15.2"
+  },
+  "fatal_dienos": {
+   "26-Sep-2026 kita": 4207,
+   "27-Sep-2026 wpdb": 1,
+   "27-Sep-2026 kita": 1,
+   "29-Sep-2026 kita": 4,
+   "30-Sep-2026 kita": 2,
+   "03-Oct-2026 kita": 5,
+   "04-Oct-2026 kita": 7,
+   "04-Oct-2026 wpdb": 1,
+   "05-Oct-2026 kita": 4,
+   "06-Oct-2026 kita": 4,
+   "07-Oct-2026 kita": 1,
+   "08-Oct-2026 kita": 1,
+   "09-Oct-2026 kita": 1,
+   "11-Oct-2026 kita": 2,
+   "13-Oct-2026 kita": 3,
+   "15-Oct-2026 kita": 5,
+   "18-Oct-2026 kita": 2,
+   "19-Oct-2026 kita": 2,
+   "19-Oct-2026 wpdb": 1,
+   "21-Oct-2026 kita": 2,
+   "22-Oct-2026 kita": 2,
+   "27-Oct-2026 kita": 3,
+   "28-Oct-2026 kita": 3,
+   "29-Oct-2026 kita": 1,
+   "30-Oct-2026 kita": 3,
+   "31-Oct-2026 kita": 2,
+   "02-Nov-2026 kita": 5,
+   "03-Nov-2026 kita": 1,
+   "04-Nov-2026 kita": 1,
+   "05-Nov-2026 kita": 1,
+   "07-Nov-2026 kita": 1,
+   "08-Nov-2026 wpdb": 1,
+   "11-Nov-2026 kita": 13,
+   "12-Nov-2026 kita": 11,
+   "13-Nov-2026 wpdb": 1,
+   "13-Nov-2026 kita": 5,
+   "14-Nov-2026 wpdb": 1,
+   "14-Nov-2026 kita": 1,
+   "16-Nov-2026 kita": 2,
+   "17-Nov-2026 wpdb": 1,
+   "18-Nov-2026 rest": 4
+  },
+  "trukme_s": 0.2
+ },
+ "v": "dep-074321",
+ "kurimas": 200,
+ "sid": 8473,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
