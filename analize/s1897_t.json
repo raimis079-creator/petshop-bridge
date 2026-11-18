@@ -1,0 +1,42 @@
+{
+ "v": "dep-224423",
+ "kurimas": 200,
+ "sid": 8574,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "t1",
+  "shots": [
+   {
+    "n": "s1897_paskyra_390",
+    "u": "https://petshop.lt/paskyra/prenumeratos/",
+    "w": 390,
+    "h": 800,
+    "eval": "(function(){var o={};var k=document.querySelector('#psn3-daz-68');if(!k)return 'NERA';k.classList.add('psn3-rod');var b=k.querySelectorAll('button.psn3-step');o.pradzia=document.getElementById('psn3-dzt-68').textContent;o.saug0=document.getElementById('psn3-dzs-68').disabled;b[1].click();b[1].click();o.po2plius=document.getElementById('psn3-dzt-68').textContent;o.reiksme=document.getElementById('psn3-dzv-68').value;o.saug1=document.getElementById('psn3-dzs-68').disabled;o.atidaryta=k.classList.contains('psn3-rod');b[0].click();b[0].click();o.atgal=document.getElementById('psn3-dzt-68').textContent;o.saug2=document.getElementById('psn3-dzs-68').disabled;b[1].click();o.prist=[].map.call(document.querySelectorAll('.psn3-param .psn3-pilk'),function(e){return e.textContent}).slice(0,4);k.scrollIntoView();return JSON.stringify(o);})()"
+   }
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
+    "value": "terra|1795045736|ULacK0WWyCsbstwozoxHsaKH3Y9c1F6X5I1uRqNFt4c|58ee8ad1a2a2fe744b2ce2ecd8742c5b7c73602c988b602fbb991564ad28e426",
+    "domain": "petshop.lt"
+   },
+   {
+    "name": "ps_js",
+    "value": "1",
+    "domain": "petshop.lt"
+   }
+  ]
+ },
+ "shots": {
+  "s1897_paskyra_390": {
+   "status": 201,
+   "url": "https://petshop.lt/paskyra/prenumeratos/",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": [],
+   "eval": "{\"pradzia\":\"25 dienų\",\"saug0\":true,\"po2plius\":\"35 dienų\",\"reiksme\":\"35\",\"saug1\":false,\"atidaryta\":true,\"atgal\":\"25 dienų\",\"saug2\":true,\"prist\":[\"Nuo 15 iki 90 dienų.\",\"Venipak locker, AIBĖ Venipak paštomatas, Švenčionių g. 72, Nemenčinė\",\"Adreso nėra — įveskite jį skiltyje „Adresai“.\"]}"
+  }
+ }
+}
