@@ -1,0 +1,43 @@
+{
+ "1": {
+  "v": "S1884",
+  "F": "1",
+  "parse": "ok 5",
+  "md5": {
+   "petshop-prenumerata-paskyra.php": "9a38d012a073933d563cc46dfdf1c7bb",
+   "ps-sablonai/subscription-changed.php": "44562806a46b2e180efa58687b5b5b3d",
+   "petshop-prenumerata-katalogas.php": "4b09e7f3ad5d582d720be81e03732ad9",
+   "petshop-pren-sutikimas.php": "c668291ca095a444d654eade39497291",
+   "ps-sablonai/subscription-t5.php": "9c3be9be57f9f86f566d6cda50243e48"
+  },
+  "hb": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/paskyra/": 200,
+   "/wp-admin/admin-ajax.php": 400
+  }
+ },
+ "2": {
+  "v": "S1884",
+  "F": "2",
+  "ok": {
+   "petshop-prenumerata-paskyra.php": true,
+   "ps-sablonai/subscription-changed.php": true,
+   "petshop-prenumerata-katalogas.php": true,
+   "petshop-pren-sutikimas.php": true,
+   "ps-sablonai/subscription-t5.php": true
+  }
+ },
+ "v": "dep-215244",
+ "kurimas": 200,
+ "sid": 8565,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1884",
+  "F": "D",
+  "parse": "ok 5"
+ }
+}
