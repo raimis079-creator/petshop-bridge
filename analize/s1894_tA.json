@@ -1,0 +1,73 @@
+{
+ "v": "dep-213703",
+ "kurimas": 200,
+ "sid": 8561,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "t1",
+  "F": "A",
+  "garantija_pries": 3528,
+  "1_http": 302,
+  "1_qty_po": 6,
+  "1_laukia": {
+   "sid": 68,
+   "post": {
+    "ps_pren_veiksmas": "item_kiekis",
+    "item_id": "56",
+    "qty": "8"
+   },
+   "nauja_ct": 4126,
+   "buvo_ct": 3528,
+   "kas": "Kiekis atnaujintas."
+  },
+  "1_garantija_vis_dar": 3528,
+  "1_ivykiai_po": [
+   "guarantee_set",
+   "guarantee_set"
+  ],
+  "2_langelis": true,
+  "2_tekstas": "Nauja siuntos suma: 41,26 € (buvo 35,28 €)",
+  "2_laukia_po_rodymo": false,
+  "3_qty": 6,
+  "4_http": 302,
+  "4_qty_po": 8,
+  "4_garantija": [
+   4126,
+   "kliento_pakeitimas"
+  ],
+  "4_pranesimas": {
+   "t": "Pakeitimas išsaugotas. Nauja siuntos suma – 41,26 €. Patvirtinimą išsiuntėme el. paštu.",
+   "tipas": "gerai"
+  },
+  "4_laiskas": [
+   {
+    "id": "3312",
+    "status": "pending",
+    "flow": "subscription_changed",
+    "p": ""
+   }
+  ],
+  "4_laisko_tema": "Siuntos pakeitimas: nauja suma 41,26 €",
+  "5_http": 302,
+  "5_garantija": 4000,
+  "6_http": 302,
+  "6_qty": 6,
+  "6_pran": {
+   "t": "kiekis 1–10",
+   "tipas": "klaida"
+  },
+  "6_laukia": false,
+  "7_http": 302,
+  "7_qty": 7,
+  "7_laukia": false,
+  "pabaiga": [
+   "active",
+   "2027-01-16",
+   null,
+   6
+  ]
+ }
+}
