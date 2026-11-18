@@ -1,0 +1,44 @@
+{
+ "1": {
+  "v": "S1884",
+  "F": "1",
+  "parse": "ok 2",
+  "md5": {
+   "petshop-prenumerata.php": "42279ba7caffb0d6c856bc00d888bf73",
+   "petshop-prenumerata-veiksmas.php": "e866e861eb4f4bc7cc60305ff80c39be"
+  },
+  "hb": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/paskyra/": 200,
+   "/wp-admin/admin-ajax.php": 400
+  }
+ },
+ "2": {
+  "v": "S1884",
+  "F": "2",
+  "ok": {
+   "petshop-prenumerata.php": true,
+   "petshop-prenumerata-veiksmas.php": true
+  },
+  "buvo": "2027-01-16",
+  "A_po_siuntos_skip": "Nuoroda nebegalioja",
+  "A_po_siuntos_nukelti": "Nuoroda nebegalioja",
+  "A_data": "2027-02-15",
+  "B_nukelti": "Siunta nukelta",
+  "B_data": "2027-01-23",
+  "atstatyta": "2027-01-16"
+ },
+ "v": "dep-180833",
+ "kurimas": 200,
+ "sid": 8520,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1884",
+  "F": "D",
+  "parse": "ok 2"
+ }
+}
