@@ -1,0 +1,41 @@
+{
+ "1": {
+  "v": "S1884",
+  "F": "1",
+  "parse": "ok 3",
+  "md5": {
+   "petshop-prenumerata.php": "ad875ec92638652f12a114fed2b6c326",
+   "petshop-prenumerata-paskyra.php": "475b7309c969e3f1f944d6f9451fa875",
+   "ps-sablonai/subscription-changed.php": "464c0652657c51932630708517190509"
+  },
+  "hb": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/paskyra/": 200,
+   "/wp-admin/admin-ajax.php": 400
+  }
+ },
+ "2": {
+  "v": "S1884",
+  "F": "2",
+  "ok": {
+   "petshop-prenumerata.php": true,
+   "petshop-prenumerata-paskyra.php": true,
+   "ps-sablonai/subscription-changed.php": true
+  },
+  "ver": "2.9.4",
+  "flow": true
+ },
+ "v": "dep-213423",
+ "kurimas": 200,
+ "sid": 8560,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1884",
+  "F": "D",
+  "parse": "ok 3"
+ }
+}
