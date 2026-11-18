@@ -1,0 +1,142 @@
+{
+ "v": "dep-192850",
+ "kurimas": 200,
+ "sid": 8533,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "A": {
+  "v": "t1",
+  "F": "A",
+  "stock_pries": {
+   "16950": [
+    "76.000000",
+    "7"
+   ],
+   "19496": [
+    "86",
+    ""
+   ]
+  },
+  "T0_garantija_ct": 3528,
+  "T0_items": [
+   {
+    "pid": 19496,
+    "qty": 6,
+    "ct": 299
+   },
+   {
+    "pid": 16950,
+    "qty": 1,
+    "ct": 1335
+   }
+  ],
+  "T0_laiskas_ct": 3528,
+  "T0_antras_kartas_ct": 3528,
+  "T0_laiskas_po_pabrangimo_ct": 3528,
+  "T0_uzsakymas": {
+   "err": null,
+   "total_ct": 3528,
+   "ship": 3.9899999999999998,
+   "eil": [
+    17.94,
+    13.35
+   ],
+   "maziau": "",
+   "kastas_ct": 0,
+   "virsija": "",
+   "st": "pending",
+   "notes": [],
+   "istrinta": true
+  },
+  "T1_garantija_ct": 3428,
+  "T1": {
+   "err": null,
+   "total_ct": 3428,
+   "ship": 3.9899999999999998,
+   "eil": [
+    17.94,
+    12.35
+   ],
+   "maziau": "",
+   "kastas_ct": 100,
+   "virsija": "",
+   "st": "pending",
+   "notes": [
+    "Kainos garantija: klientui palikta laiške nurodyta kaina; kainų skirtumas 1,00 € – mūsų."
+   ],
+   "istrinta": true
+  },
+  "T2_garantija_ct": 3528,
+  "T2": {
+   "err": null,
+   "total_ct": 3328,
+   "ship": 3.9899999999999998,
+   "eil": [
+    17.94,
+    11.35
+   ],
+   "maziau": "Pritaikyta akcija: −2,00 €",
+   "kastas_ct": 0,
+   "virsija": "",
+   "st": "pending",
+   "notes": [
+    "Pritaikyta akcija: −2,00 € (pranešta 35,28 €)."
+   ],
+   "istrinta": true
+  },
+  "T3": {
+   "err": null,
+   "total_ct": 3328,
+   "ship": 3.9899999999999998,
+   "eil": [
+    17.94,
+    11.35
+   ],
+   "maziau": "Mokate mažiau: −2,00 €",
+   "kastas_ct": 0,
+   "virsija": "",
+   "st": "pending",
+   "notes": [
+    "Mokate mažiau: −2,00 € (pranešta 35,28 €)."
+   ],
+   "istrinta": true
+  },
+  "T3b_garantija_ct": 3528,
+  "T3b": {
+   "err": null,
+   "total_ct": 3528,
+   "ship": 3.9899999999999998,
+   "eil": [
+    17.94,
+    13.35
+   ],
+   "maziau": "",
+   "kastas_ct": 300,
+   "virsija": "",
+   "st": "pending",
+   "notes": [
+    "Kainos garantija: klientui palikta laiške nurodyta kaina; kainų skirtumas 3,00 € – mūsų."
+   ],
+   "istrinta": true
+  },
+  "stock_po": {
+   "16950": [
+    "76.000000",
+    "7"
+   ],
+   "19496": [
+    "86",
+    ""
+   ]
+  },
+  "pabaiga": [
+   "active",
+   "2027-01-16",
+   null,
+   true
+  ],
+  "likę_uzsakymai": 0
+ }
+}
