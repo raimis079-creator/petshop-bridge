@@ -1,0 +1,46 @@
+{
+ "v": "dep-174217",
+ "kurimas": 200,
+ "sid": 8514,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "j1",
+  "file": "wp-content/plugins/petshop-core/includes/class-action-tokens.php",
+  "lines": [
+   176,
+   234
+  ],
+  "src": "\tpublic static function generate( array $args ) {\n\t\tif ( empty( $args['purpose'] ) ) {\n\t\t\treturn false;\n\t\t}\n\t\tglobal $wpdb;\n\n\t\t$key_id = self::ensure_keys();\n\t\t$secret = self::get_key( $key_id );\n\t\tif ( ! $secret ) {\n\t\t\treturn false;\n\t\t}\n\n\t\t$nonce = bin2hex( random_bytes( 16 ) );  // 32 hex\n\t\t$ttl = isset( $args['ttl_seconds'] ) ? (int) $args['ttl_seconds'] : 1800;  // 30 min\n\t\t$now = time();\n\t\t$expires_ts = $now + $ttl;\n\n\t\t$payload = array(\n\t\t\t'version'     => self::TOKEN_VERSION,\n\t\t\t'purpose'     => $args['purpose'],\n\t\t\t'subject_id'  => isset( $args['subject_id'] ) ? (int) $args['subject_id'] : 0,\n\t\t\t'resource_id' => isset( $args['resource_id'] ) ? (string) $args['resource_id'] : '',\n\t\t\t'action'      => isset( $args['action'] ) ? (string) $args['action'] : '',\n\t\t\t'expires_at'  => $expires_ts,\n\t\t\t'nonce'       => $nonce,\n\t\t\t'key_id'      => $key_id,\n\t\t);\n\n\t\t$payload_json = wp_json_encode( $payload, JSON_UNESCAPED_SLASHES );\n\t\t$payload_b64 = self::b64url_encode( $payload_json );\n\t\t$signature = hash_hmac( 'sha256', $payload_b64, $secret );\n\t\t$raw_token = $payload_b64 . '.' . $signature;\n\n\t\t$token_hash = hash( 'sha256', $raw_token );\n\n\t\t$inserted = $wpdb->insert(\n\t\t\tself::table_name(),\n\t\t\tarray(\n\t\t\t\t'token_hash'    => $token_hash,\n\t\t\t\t'nonce'         => $nonce,\n\t\t\t\t'purpose'       => substr( $args['purpose'], 0, 48 ),\n\t\t\t\t'purpose_group' => isset( $args['purpose_group'] ) ? substr( $args['purpose_group'], 0, 48 ) : null,\n\t\t\t\t'subject_id'    => isset( $args['subject_id'] ) ? (int) $args['subject_id'] : 0,\n\t\t\t\t'subject_email' => isset( $args['subject_email'] ) ? sanitize_email( $args['subject_email'] ) : null,\n\t\t\t\t'resource_id'   => isset( $args['resource_id'] ) ? substr( (string) $args['resource_id'], 0, 64 ) : null,\n\t\t\t\t'action'        => isset( $args['action'] ) ? substr( (string) $args['action'], 0, 48 ) : null,\n\t\t\t\t'key_id'        => $key_id,\n\t\t\t\t'status'        => 'active',\n\t\t\t\t'created_at'    => gmdate( 'Y-m-d H:i:s', $now ),\n\t\t\t\t'expires_at'    => gmdate( 'Y-m-d H:i:s', $expires_ts ),\n\t\t\t),\n\t\t\tarray( '%s','%s','%s','%s','%d','%s','%s','%s','%s','%s','%s','%s' )\n\t\t);\n\n\t\tif ( ! $inserted ) {\n\t\t\treturn false;\n\t\t}\n\t\treturn $raw_token;\n\t}\n",
+  "now": 1795023809,
+  "f": {
+   "ps_peek_token": [
+    "wp-content/plugins/petshop-core/petshop-core.php",
+    347
+   ],
+   "ps_consume_token": [
+    "wp-content/plugins/petshop-core/petshop-core.php",
+    358
+   ]
+  },
+  "funcs": [
+   "table_name",
+   "install",
+   "maybe_install",
+   "ensure_keys",
+   "rotate_key",
+   "random_secret",
+   "get_key",
+   "generate",
+   "peek",
+   "consume",
+   "validate_internal",
+   "invalidate_group",
+   "purge_expired",
+   "b64url_encode",
+   "b64url_decode"
+  ]
+ }
+}
