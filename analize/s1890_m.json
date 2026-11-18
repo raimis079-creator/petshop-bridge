@@ -1,0 +1,82 @@
+{
+ "v": "dep-183140",
+ "kurimas": 200,
+ "sid": 8522,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "m1",
+  "opt": {
+   "incl": "yes",
+   "round_subtotal": "no",
+   "calc": "yes",
+   "ship_class": "inherit",
+   "dec": 2
+  },
+  "rates": [
+   {
+    "c": "LT",
+    "r": "21.0000",
+    "cl": "",
+    "s": "1"
+   },
+   {
+    "c": "LV",
+    "r": "21.0000",
+    "cl": "",
+    "s": "1"
+   },
+   {
+    "c": "EE",
+    "r": "21.0000",
+    "cl": "",
+    "s": "1"
+   }
+  ],
+  "klases": [
+   {
+    "k": "",
+    "n": "3684"
+   },
+   {
+    "k": "parent",
+    "n": "246"
+   }
+  ],
+  "status": [
+   {
+    "k": "taxable",
+    "n": "3684"
+   }
+  ],
+  "stulp": [
+   "id",
+   "user_id",
+   "email",
+   "pet_id",
+   "product_id",
+   "qty",
+   "interval_days",
+   "mode",
+   "status",
+   "next_cycle_date",
+   "cycle_confirmed",
+   "success_cycles",
+   "dunning_attempts",
+   "dunning_next",
+   "pending_order_id",
+   "price_locked",
+   "price_locked_until",
+   "payment_method",
+   "delivery_json",
+   "created_at",
+   "updated_at",
+   "paused_at",
+   "cancelled_at",
+   "discount_pct",
+   "payment_token"
+  ]
+ }
+}
