@@ -1,0 +1,78 @@
+{
+ "v": "dep-185245",
+ "kurimas": 200,
+ "sid": 8528,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "C": {
+  "v": "t1",
+  "F": "C",
+  "stock_pries": {
+   "16950": [
+    "76.000000",
+    "7"
+   ],
+   "19496": [
+    "86",
+    ""
+   ]
+  },
+  "T7_1": true,
+  "T7_1_data": "2027-01-22",
+  "T7_1_siunta": "2027-01-22",
+  "T7_1_garantija": [
+   3129,
+   "atkurimas",
+   true
+  ],
+  "T7_laiskas": {
+   "id": "3300",
+   "status": "pending",
+   "subject": null
+  },
+  "T7_laiskas_istrintas": 1,
+  "T7_2": false,
+  "T7_2_busena": "paused",
+  "T7_2_data": "2027-02-20",
+  "T7_sargas": [
+   {
+    "kada": "2026-11-18 18:53:50",
+    "sid": 68,
+    "kas": "Siuntimo dieną nebuvo kainos garantijos – nieko nenurašyta, siunta nukelta į 2027-01-22, laiškas išsiųstas."
+   },
+   {
+    "kada": "2026-11-18 18:53:50",
+    "sid": 68,
+    "kas": "Prenumerata sulaikyta: antrą kartą iš eilės siuntimo dieną nėra kainos garantijos."
+   }
+  ],
+  "T11_claim": [
+   "{\"ok\":1,\"n\":\"1\"}",
+   "{\"ok\":0,\"n\":\"2\"}"
+  ],
+  "T11_data_po": "2099-01-01",
+  "T11_lock": [
+   "{\"ok\":1,\"n\":\"1\"}",
+   "{\"ok\":0,\"n\":\"2\"}"
+  ],
+  "stock_po": {
+   "16950": [
+    "76.000000",
+    "7"
+   ],
+   "19496": [
+    "86",
+    ""
+   ]
+  },
+  "pabaiga": [
+   "active",
+   "2027-01-16",
+   null,
+   true
+  ],
+  "likę_uzsakymai": 0
+ }
+}
