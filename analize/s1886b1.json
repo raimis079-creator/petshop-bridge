@@ -1,0 +1,87 @@
+{
+ "1": {
+  "v": "S1886b",
+  "F": "1",
+  "md5": "dc7717f87c74afebd9a5668d35bac77f",
+  "parse": "ok",
+  "md5_naujas": "6b99c036a5c921d8229d45cb80e7b5be",
+  "hb": [
+   200,
+   400
+  ]
+ },
+ "2": {
+  "v": "S1886b",
+  "F": "2",
+  "md5": "6b99c036a5c921d8229d45cb80e7b5be",
+  "fn": true,
+  "tst": [
+   [
+    "Ąžuolė Šiaučiūnienė Čęįųū ĄČĘĖĮŠŲŪŽ",
+    "Ąžuolė Šiaučiūnienė Čęįųū ĄČĘĖĮŠŲŪŽ"
+   ],
+   [
+    "Ольга Корышева",
+    "Olga Korysheva"
+   ],
+   [
+    "Lapès",
+    "Lapes"
+   ],
+   [
+    "Müller Straße Ñ",
+    "Müller Straße N"
+   ],
+   [
+    "Ruta Endrijaityte",
+    "Ruta Endrijaityte"
+   ],
+   [
+    "a\tb\nc",
+    "a\tb\nc"
+   ]
+  ],
+  "nov": {
+   "n": 189,
+   "err": [],
+   "f": {
+    "imones_2026-11.txt": {
+     "utf8_b": 22379,
+     "w_b": 21840,
+     "sutampa_atgal": true,
+     "klaust": 0,
+     "eil": 189
+    },
+    "pardavimai_2026-11.txt": {
+     "utf8_b": 18003,
+     "w_b": 18003,
+     "sutampa_atgal": true,
+     "klaust": 0,
+     "eil": 189
+    },
+    "pardavimai_sum_2026-11.txt": {
+     "utf8_b": 5522,
+     "w_b": 5522,
+     "sutampa_atgal": true,
+     "klaust": 0,
+     "eil": 189
+    }
+   },
+   "skirtumai": [],
+   "lt_pvz": [
+    "2015225\tKlaipėdos pedagoginė psichologinė tarnyba\t2015225\tKlaipėdos pedagoginė p",
+    "2016235\tErika Mažeikaitė\t2016235\tErika Mažeikaitė\t\t\t\t\tLT\t+37064660855\tErika Maže",
+    "2016205\tTomas Vainilaitis\t2016205\tTomas Vainilaitis\tPaeglinės Sodų 7-oji g. 3\t\t\t",
+    "2016165\tPaulina Stonytė\t2016165\tPaulina Stonytė\t\t\t\t\tLT\t+37065833575\tPaulina Ston",
+    "2016145\tDanutē Venclovaitienė\t2016145\tDanutē Venclovaitienė\t\t\t\t\tLT\t+37065882816\t"
+   ]
+  }
+ },
+ "v": "dep-095430",
+ "kurimas": 200,
+ "sid": 8490,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
