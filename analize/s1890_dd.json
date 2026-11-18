@@ -1,0 +1,163 @@
+{
+ "1": {
+  "v": "S1884",
+  "F": "1",
+  "parse": "ok 1",
+  "md5": {
+   "petshop-prenumerata.php": "ea7e73e0a2eadc607b0f69191aaf566f"
+  },
+  "hb": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/paskyra/": 200,
+   "/wp-admin/admin-ajax.php": 400
+  }
+ },
+ "2": {
+  "v": "S1884",
+  "F": "2",
+  "ok": {
+   "petshop-prenumerata.php": true
+  },
+  "ver": "2.9.3",
+  "db": "6",
+  "stulp": true,
+  "aktyviu": [
+   {
+    "id": "68",
+    "status": "active",
+    "next_cycle_date": "2027-01-16",
+    "mode": "confirm_required",
+    "payment_method": "manual"
+   }
+  ],
+  "g68": null,
+  "suma68": 3129,
+  "prist": {
+   "kurj_31": 399,
+   "kurj_100": 399,
+   "past_25": 0,
+   "past_24": 215,
+   "past_60": 0
+  },
+  "klases": [
+   {
+    "term_id": "234",
+    "name": "Iki 50kg",
+    "count": "923"
+   },
+   {
+    "term_id": "235",
+    "name": "50-70kg",
+    "count": "0"
+   },
+   {
+    "term_id": "236",
+    "name": "70-100kg",
+    "count": "0"
+   },
+   {
+    "term_id": "237",
+    "name": "100-200kg",
+    "count": "0"
+   }
+  ],
+  "zonos": [
+   [
+    "Neringos savivaldybe",
+    10,
+    "yes",
+    "24.79",
+    "",
+    "100"
+   ],
+   [
+    "Lietuva",
+    2,
+    "yes",
+    "3.30",
+    "",
+    "50"
+   ],
+   [
+    "Lietuva",
+    6,
+    "yes",
+    "6.60",
+    "50",
+    "70"
+   ],
+   [
+    "Lietuva",
+    7,
+    "yes",
+    "9.90",
+    "70",
+    "100"
+   ],
+   [
+    "Lietuva",
+    8,
+    "yes",
+    "20.65",
+    "100",
+    "200"
+   ]
+  ],
+  "kurj2": {
+   "30kg": 399,
+   "60kg": 799,
+   "75kg": 1198,
+   "105kg": 2499,
+   "300kg": 2499,
+   "stock16402": "2"
+  },
+  "kurj": {
+   "lengva": 399,
+   "15kg": 399,
+   "45kg": 399,
+   "fn_su_prekem": 399,
+   "past_25": 0
+  },
+  "x": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ]
+ },
+ "v": "dep-194031",
+ "kurimas": 200,
+ "sid": 8536,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1884",
+  "F": "D",
+  "parse": "ok 1"
+ }
+}
