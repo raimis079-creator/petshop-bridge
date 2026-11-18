@@ -1,0 +1,36 @@
+{
+ "v": "dep-184951",
+ "kurimas": 200,
+ "sid": 8526,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "o1",
+  "t": {
+   "20": {
+    "shopup_venipak_shipping_pickup_method": 2.15,
+    "shopup_venipak_shipping_courier_method": 3.99
+   },
+   "31": {
+    "shopup_venipak_shipping_pickup_method": 2.15,
+    "shopup_venipak_shipping_courier_method": 3.99
+   },
+   "60": {
+    "shopup_venipak_shipping_pickup_method": 2.15,
+    "shopup_venipak_shipping_courier_method": 3.99
+   },
+   "120": {
+    "shopup_venipak_shipping_pickup_method": 2.15,
+    "shopup_venipak_shipping_courier_method": 3.99
+   }
+  },
+  "fn": [
+   0,
+   399,
+   0,
+   0
+  ]
+ }
+}
