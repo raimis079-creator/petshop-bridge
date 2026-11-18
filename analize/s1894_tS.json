@@ -1,0 +1,60 @@
+{
+ "v": "dep-213833",
+ "kurimas": 200,
+ "sid": 8562,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "S": {
+  "v": "t1",
+  "F": "S",
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
+    "value": "terra|1795048805|bTIprhjzgtlucjIDDZehUGh92rHNB2ZW0gavOIzJq6C|9f27782ae87e63da83a74cc6b9b17536f9927d63523a6d1799f14f64d54553e9",
+    "domain": "petshop.lt"
+   },
+   {
+    "name": "ps_js",
+    "value": "1",
+    "domain": "petshop.lt"
+   }
+  ],
+  "shots": [
+   {
+    "n": "s1894_paskyra_patvirtinti",
+    "u": "https://petshop.lt/paskyra/prenumeratos/?nc=1795038005",
+    "w": 390,
+    "h": 1500
+   },
+   {
+    "n": "s1894_laiskas_pakeitimas",
+    "u": "https://petshop.lt/?ps_s1894e=1&nc=1795038005",
+    "w": 390,
+    "h": 1400,
+    "full": 1
+   }
+  ],
+  "pabaiga": [
+   "active",
+   "2027-01-16",
+   "(garantija palikta nuotraukai)",
+   6
+  ]
+ },
+ "shots": {
+  "s1894_paskyra_patvirtinti": {
+   "status": 201,
+   "url": "https://petshop.lt/paskyra/prenumeratos/?nc=1795038005",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": []
+  },
+  "s1894_laiskas_pakeitimas": {
+   "status": 201,
+   "url": "https://petshop.lt/?ps_s1894e=1&nc=1795038005",
+   "title": "Siuntos pakeitimas: nauja suma 35,28 €",
+   "errors": []
+  }
+ }
+}
