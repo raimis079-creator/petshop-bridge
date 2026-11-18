@@ -1,0 +1,77 @@
+{
+ "2": {
+  "v": "S1893q",
+  "f": "2",
+  "p": {
+   "38707": {
+    "k": 1,
+    "st": "publish",
+    "pr": "Trixie Premio advento kalendorius šunims, pripildytas įvairių skanėstų – 8 rūšys su antiena, vištiena ir žuvimi. Papildomasis pašaras šunims.\nSudėtis:Antienos dešrelės: antiena 90 %, gliceri",
+    "ranka": ""
+   },
+   "38709": {
+    "k": 1,
+    "st": "publish",
+    "pr": "Trixie Premio advento kalendorius katėms, pripildytas įvairių skanėstų – 9 rūšys su vištiena, žuvimi, antiena, jautiena ir lašiša. Papildomasis pašaras katėms.\nSudėtis:Žuvies ir vištienos la",
+    "ranka": ""
+   }
+  }
+ },
+ "3": {
+  "v": "S1893q",
+  "f": "3",
+  "p": {
+   "38707": {
+    "k": 0,
+    "st": "publish",
+    "pr": "Trixie Premio advento kalendorius šunims, pripildytas įvairių skanėstų – 8 rūšys su antiena, vištiena ir žuvimi. Papildomasis pašaras šunims.\nSudėtis:Antienos dešrelės: antiena 90 %, gliceri",
+    "ranka": ""
+   },
+   "38709": {
+    "k": 0,
+    "st": "publish",
+    "pr": "Trixie Premio advento kalendorius katėms, pripildytas įvairių skanėstų – 9 rūšys su vištiena, žuvimi, antiena, jautiena ir lašiša. Papildomasis pašaras katėms.\nSudėtis:Žuvies ir vištienos la",
+    "ranka": ""
+   }
+  },
+  "shots": [
+   {
+    "n": "s1893_sun2",
+    "u": "https://petshop.lt/product/trixie-premio-advento-kalendorius-sunims/",
+    "w": 390,
+    "h": 2200,
+    "click": "text=Sudėtis"
+   },
+   {
+    "n": "s1893_kat2",
+    "u": "https://petshop.lt/product/trixie-premio-advento-kalendorius-katems/",
+    "w": 390,
+    "h": 2200,
+    "click": "text=Analitinės sudedamosios dalys"
+   }
+  ]
+ },
+ "v": "dep-211052",
+ "kurimas": 200,
+ "sid": 8557,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1893_sun2": {
+   "status": 201,
+   "url": "https://petshop.lt/product/trixie-premio-advento-kalendorius-sunims/",
+   "title": "Trixie Premio advento kalendorius šunims, 30x34x3,5 cm - Petshop.lt",
+   "errors": [],
+   "clicked": "text=Sudėtis"
+  },
+  "s1893_kat2": {
+   "status": 201,
+   "url": "https://petshop.lt/product/trixie-premio-advento-kalendorius-katems/",
+   "title": "Trixie Premio advento kalendorius katėms, 30x34x3,5 cm - Petshop.lt",
+   "errors": [],
+   "clicked": "text=Analitinės sudedamosios dalys"
+  }
+ }
+}
