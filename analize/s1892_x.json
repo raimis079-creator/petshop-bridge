@@ -1,0 +1,91 @@
+{
+ "v": "dep-203422",
+ "kurimas": 200,
+ "sid": 8545,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "x1",
+  "shots": [
+   {
+    "n": "s1892_0",
+    "u": "https://petshop.lt/?t=1795034162",
+    "w": 390,
+    "h": 400
+   },
+   {
+    "n": "s1892_1",
+    "u": "https://petshop.lt/?add-to-cart=16950&quantity=1",
+    "w": 390,
+    "h": 400
+   },
+   {
+    "n": "s1892_pries_tel",
+    "u": "https://petshop.lt/kasa/?a=1",
+    "w": 390,
+    "h": 2400,
+    "full": 1,
+    "eval": "new Promise(r=>setTimeout(()=>{ const out={}; const li=[...document.querySelectorAll('#shipping_method li')].find(l=>/atsi/i.test(l.innerText)); if(!li){r('NERA');return;}\n const els=[...li.querySelectorAll('*')].filter(e=>{const c=getComputedStyle(e); return /rgb\\((1[0-9]{2}|[5-9][0-9]), ?(\\d{1,2}|1[0-4]\\d), ?(2\\d{2}|1[5-9]\\d)\\)/.test(c.borderTopColor+c.outlineColor+c.color) && (parseFloat(c.borderTopWidth)>0||e.tagName==='SELECT');});\n out.els=els.slice(0,8).map(e=>({tag:e.tagName,id:e.id,cls:e.className&&e.className.toString().slice(0,120),border:getComputedStyle(e).border,outline:getComputedStyle(e).outline,shadow:getComputedStyle(e).boxShadow.slice(0,80)}));\n out.html=li.innerHTML.replace(/<option[\\s\\S]*?<\\/option>/g,'').replace(/\\s+/g,' ').slice(0,1800);\n const rules=[]; for(const s of document.styleSheets){ let rs; try{rs=s.cssRules}catch(e){continue} for(const ru of rs){ const t=ru.cssText||''; if(/venipak|select2/i.test(t) && /border|outline|shadow/i.test(t) && /#[0-9a-f]{3,6}|rgb/i.test(t)) rules.push((s.href||'inline').split('/').slice(-2).join('/').slice(0,60)+' :: '+t.slice(0,260)); } }\n out.rules=rules.slice(0,25); r(JSON.stringify(out)); },4500))"
+   },
+   {
+    "n": "s1892_pries_pc",
+    "u": "https://petshop.lt/kasa/?a=2",
+    "w": 1366,
+    "h": 1500,
+    "full": 1
+   }
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
+    "value": "terra|1795044962|buNPn0C3kZ2ew4eHd8gOcOPgTOOw8L4NMtSwi6rfEEt|f721618b81293a2b690458b5426d038bab335d1177527d5d2ef084be0ad09092",
+    "domain": "petshop.lt"
+   },
+   {
+    "name": "ps_js",
+    "value": "1",
+    "domain": "petshop.lt"
+   },
+   {
+    "name": "cmplz_banner-status",
+    "value": "dismissed",
+    "domain": "petshop.lt"
+   }
+  ],
+  "custom_css_len": 9321,
+  "flatsome_css_len": 0
+ },
+ "shots": {
+  "s1892_0": {
+   "status": 201,
+   "url": "https://petshop.lt/?t=1795034162",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1892_1": {
+   "status": 201,
+   "url": "https://petshop.lt/?add-to-cart=16950&quantity=1",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1892_pries_tel": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/?a=1",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ],
+   "eval": "{\"els\":[{\"tag\":\"SPAN\",\"id\":\"\",\"cls\":\"select2-selection select2-selection--single\",\"border\":\"1px solid rgb(147, 57, 242)\",\"outline\":\"3px none rgb(51, 51, 51)\",\"shadow\":\"rgba(0, 0, 0, 0.02) 0px -22.4px 16px 0px inset\"}],\"html\":\" <input type=\\\"radio\\\" name=\\\"shipping_method[0]\\\" data-index=\\\"0\\\" id=\\\"shipping_method_0_shopup_venipak_shipping_pickup_method3\\\" value=\\\"shopup_venipak_shipping_pickup_method:3\\\" class=\\\"shipping_method\\\" checked=\\\"checked\\\"><label class=\\\"shipping__list_label\\\" for=\\\"shipping_method_0_shopup_venipak_shipping_pickup_method3\\\"><img width=\\\"60\\\" class=\\\"wc-venipak-shipping-logo\\\" src=\\\"https://petshop.lt/wp-content/plugins/wc-venipak-shipping/public/images/venipak-logo.png\\\"> VENIPAK paštomatai/atsiėmimo punktai: <span class=\\\"woocommerce-Price-amount amount\\\"><bdi>2,15&nbsp;<span class=\\\"woocommerce-Price-currencySymbol\\\" translate=\\\"no\\\">€</span></bdi></span></label> <tr class=\\\"wc-venipak-shipping-terminals petshop-terminal-wrapper\\\"> <td colspan=\\\"2\\\"> <div class=\\\"venipak-pickup-wrapper\\\"> <div> <label for=\\\"venipak_pickup_point\\\" style=\\\"display: block; margin-bottom: 5px; font-weight: bold;\\\">Pasirinkite Venipak atsiėmimo tašką:</label> <select name=\\\"venipak_pickup_point\\\" id=\\\"venipak_pickup_point\\\" class=\\\"venipak_pickup_point select2-hidden-accessible\\\" data-placeholder=\\\"Pasirinkite paštomatą/atsiėmimo punktą\\\" data-select2-id=\\\"select2-data-venipak_pickup_point\\\" tabindex=\\\"-1\\\" aria-hidden=\\\"true\\\"></select><span class=\\\"select2 select2-container select2-container--default\\\" dir=\\\"ltr\\\" data-select2-id=\\\"select2-data-634-k3n7\\\" style=\\\"width: 100%;\\\"><span class=\\\"selection\\\"><span class=\\\"select2-selection select2-selection--single\\\" role=\\\"combobox\\\" aria-haspopup=\\\"true\\\" aria-expanded=\\\"false\\\" tabindex=\\\"0\\\" aria-disabled=\\\"false\\\" aria-labelledby=\\\"select2-venipak_pickup_point-container\\\" aria-controls=\\\"select2-venipak_pickup_point-container\\\"><span class=\\\"select2-selection__rendered\\\" id=\\\"select2-venipak_pickup_point-container\\\" role=\\\"textbox\\\" aria-readonly=\\\"true\\\" title=\\\"Pasirinkite paštomatą/atsiėmimo punktą\\\"><span class=\\\"sele\",\"rules\":[\"css/woocommerce-shopup-venipak-shipping-public.css?ver=1.26. :: .venipak_pickup_point.venipak-loading::after { content: \\\"\\\"; position: absolute; right: 10px; top: 50%; transform: translateY(-50%); width: 16px; height: 16px; border-width: 2px; border-style: solid; border-color: rgb(51, 51, 51) rgb(204, 204, 204) rgb(204, 204\",\"css/woocommerce-shopup-venipak-shipping-public.css?ver=1.26. :: .select2-container--default .select2-selection--single.venipak-loading::after { content: \\\"\\\"; position: absolute; right: 25px; top: 50%; transform: translateY(-50%); width: 14px; height: 14px; border-width: 2px; border-style: solid; border-color: rgb(51, 51, 51\",\"css/woocommerce-shopup-venipak-shipping-public.css?ver=1.26. :: .venipak-pickup-wrapper select.venipak_pickup_point, .venipak-pickup-wrapper .select2-container--default .select2-selection--single { background-color: rgb(255, 255, 255); border: 1px solid rgb(147, 57, 242); }\",\"css/select2.css?ver=11.0.1 :: .select2-dropdown { background-color: var(--wc-form-color-background,#fff); color: var(--wc-form-color-text,#000); border: 1px solid rgb(170, 170, 170); border-radius: 4px; box-sizing: border-box; display: block; position: absolute; left: -100000px; width: 100\",\"css/select2.css?ver=11.0.1 :: .select2-close-mask { border: 0px; margin: 0px; padding: 0px; display: block; position: fixed; left: 0px; top: 0px; min-height: 100%; min-width: 100%; height: auto; width: auto; opacity: 0; z-index: 99; background-color: rgb(255, 255, 255); }\",\"css/select2.css?ver=11.0.1 :: .select2-container--default .select2-selection--single { background-color: rgb(255, 255, 255); border: 1px solid rgb(170, 170, 170); border-radius: 4px; }\",\"css/select2.css?ver=11.0.1 :: .select2-container--default .select2-selection--single .select2-selection__arrow b { border-color: rgb(136, 136, 136) transparent transparent; border-style: solid; border-width: 5px 4px 0px; height: 0px; left: 50%; margin-left: -4px; margin-top: -2px; position\",\"css/select2.css?ver=11.0.1 :: .select2-container--default.select2-container--open .select2-selection--single .select2-selection__arrow b { border-color: transparent transparent rgb(136, 136, 136); border-width: 0px 4px 5px; }\",\"css/select2.css?ver=11.0.1 :: .select2-container--default .select2-selection--multiple { background-color: rgb(255, 255, 255); border: 1px solid rgb(170, 170, 170); border-radius: 4px; cursor: text; }\",\"css/select2.css?ver=11.0.1 :: .select2-container--default .select2-selection--multiple .select2-selection__choice { background-color: rgb(228, 228, 228); border: 1px solid rgb(170, 170, 170); border-radius: 4px; cursor: default; float: left; margin-right: 5px; margin-top: 5px; padding: 0px\",\"css/select2.css?ver=11.0.1 :: .select2-container--default.select2-container--focus .select2-selection--multiple { border: 1px solid rgb(0, 0, 0); outline: 0px; }\",\"css/select2.css?ver=11.0.1 :: .select2-container--default .select2-search--dropdown .select2-search__field { border: 1px solid rgb(170, 170, 170); }\",\"css/select2.css?ver=11.0.1 :: .select2-container--classic .select2-selection--single { background-color: rgb(247, 247, 247); border: 1px solid rgb(170, 170, 170); border-radius: 4px; outline: 0px; background-image: linear-gradient(rgb(255, 255, 255) 50%, rgb(238, 238, 238) 100%); backgroun\",\"css/select2.css?ver=11.0.1 :: .select2-container--classic .select2-selection--single:focus { border: 1px solid var(--wp-admin-theme-color,#0073aa); }\",\"css/select2.css?ver=11.0.1 :: .select2-container--classic .select2-selection--single .select2-selection__arrow { background-color: rgb(221, 221, 221); border-width: medium medium medium 1px; border-style: none none none solid; border-color: currentcolor currentcolor currentcolor rgb(170, 1\",\"css/select2.css?ver=11.0.1 :: .select2-container--classic .select2-selection--single .select2-selection__arrow b { border-color: rgb(136, 136, 136) transparent transparent; border-style: solid; border-width: 5px 4px 0px; height: 0px; left: 50%; margin-left: -4px; margin-top: -2px; position\",\"css/select2.css?ver=11.0.1 :: .select2-container--classic[dir=\\\"rtl\\\"] .select2-selection--single .select2-selection__arrow { border-width: medium 1px medium medium; border-style: none solid none none; border-color: currentcolor rgb(170, 170, 170) currentcolor currentcolor; border-image: non\",\"css/select2.css?ver=11.0.1 :: .select2-container--classic.select2-container--open .select2-selection--single { border: 1px solid var(--wp-admin-theme-color,#0073aa); }\",\"css/select2.css?ver=11.0.1 :: .select2-container--classic.select2-container--open .select2-selection--single .select2-selection__arrow b { border-color: transparent transparent rgb(136, 136, 136); border-width: 0px 4px 5px; }\",\"css/select2.css?ver=11.0.1 :: .select2-container--classic.select2-container--open.select2-container--above .select2-selection--single { border-top-width: medium; border-top-style: none; border-top-color: currentcolor; border-top-left-radius: 0px; border-top-right-radius: 0px; background-im\",\"css/select2.css?ver=11.0.1 :: .select2-container--classic.select2-container--open.select2-container--below .select2-selection--single { border-bottom-width: medium; border-bottom-style: none; border-bottom-color: currentcolor; border-bottom-left-radius: 0px; border-bottom-right-radius: 0px\",\"css/select2.css?ver=11.0.1 :: .select2-container--classic .select2-selection--multiple { background-color: rgb(255, 255, 255); border: 1px solid rgb(170, 170, 170); border-radius: 4px; cursor: text; outline: 0px; }\",\"css/select2.css?ver=11.0.1 :: .select2-container--classic .select2-selection--multiple:focus { border: 1px solid var(--wp-admin-theme-color,#0073aa); }\",\"css/select2.css?ver=11.0.1 :: .select2-container--classic .select2-selection--multiple .select2-selection__choice { background-color: rgb(228, 228, 228); border: 1px solid rgb(170, 170, 170); border-radius: 4px; cursor: default; float: left; margin-right: 5px; margin-top: 5px; padding: 0px\",\"css/select2.css?ver=11.0.1 :: .select2-container--classic.select2-container--open .select2-selection--multiple { border: 1px solid var(--wp-admin-theme-color,#0073aa); }\"]}"
+  },
+  "s1892_pries_pc": {
+   "status": 201,
+   "url": "https://petshop.lt/kasa/?a=2",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ]
+  }
+ }
+}
