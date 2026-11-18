@@ -1,0 +1,70 @@
+{
+ "v": "dep-175301",
+ "kurimas": 200,
+ "sid": 8518,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "k1",
+  "shots": [
+   {
+    "n": "s1889_paskyra",
+    "u": "https://petshop.lt/paskyra/prenumeratos/?nc=1795024466",
+    "w": 390,
+    "h": 2400,
+    "full": 1,
+    "eval": "Array.from(document.querySelectorAll('button')).map(b=>b.innerText).filter(t=>/Nukelti|Praleisti/.test(t)).join(' | ')"
+   },
+   {
+    "n": "s1889_laiskas_7d",
+    "u": "https://petshop.lt/?ps_s1889e=1&nc=1795024466",
+    "w": 390,
+    "h": 1600,
+    "full": 1
+   },
+   {
+    "n": "s1889_nukelti_psl",
+    "u": "https://petshop.lt/prenumerata/veiksmas/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoic3ViX3Bvc3Rwb25lMTQiLCJzdWJqZWN0X2lkIjo0NCwicmVzb3VyY2VfaWQiOiI2OCIsImFjdGlvbiI6IiIsImV4cGlyZXNfYXQiOjE4MDAzMTY4MDAsIm5vbmNlIjoiZGY4OTA2NTQwNjRhMzU4MDFiMzFlYzZjZTA1OWZhNTYiLCJrZXlfaWQiOiJ2MiJ9.20d48740a9ca8a1e8d1c6a12fc970781af998524d5c6216ba4210e0df604cd90",
+    "w": 390,
+    "h": 700,
+    "eval": "document.body.innerText"
+   }
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
+    "value": "terra|1795035266|8YVk391CYLMDjTbIgROI5pGQqInu5EKzIBf0DelCxiD|b680bd79c07a2cf5c37cf9f2c013af627991c6ef81a1ce884806437e2973debb",
+    "domain": "petshop.lt"
+   },
+   {
+    "name": "ps_js",
+    "value": "1",
+    "domain": "petshop.lt"
+   }
+  ]
+ },
+ "shots": {
+  "s1889_paskyra": {
+   "status": 200,
+   "url": "https://petshop.lt/paskyra/prenumeratos/?nc=1795024466",
+   "title": "Mano paskyra - Petshop.lt",
+   "errors": [],
+   "eval": "Praleisti | Nukelti 7 d. | Nukelti 14 d."
+  },
+  "s1889_laiskas_7d": {
+   "status": 200,
+   "url": "https://petshop.lt/?ps_s1889e=1&nc=1795024466",
+   "title": "Sausio 15 d. išsiųsime jūsų siuntą – 31,29 €",
+   "errors": []
+  },
+  "s1889_nukelti_psl": {
+   "status": 200,
+   "url": "https://petshop.lt/prenumerata/veiksmas/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoic3ViX3Bvc3Rwb25lMTQiLCJzdWJqZWN0X2lkIjo0NCwicmVzb3VyY2VfaWQiOiI2OCIsImFjdGlvbiI6IiIsImV4cGlyZXNfYXQiOjE4MDAzMTY4MDAsIm5vbmNlIjoiZGY4OTA2NTQwNjRhMzU4MDFiMzFlYzZjZTA1OWZhNTYiLCJrZXlfaWQiOiJ2MiJ9.20d48740a9ca8a1e8d1c6a12fc970781af998524d5c6216ba4210e0df604cd90",
+   "title": "Nukelti siuntą — petshop.lt",
+   "errors": [],
+   "eval": "petshop.lt\nNukelti siuntą\n\nAnimonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 800 g × 6, Papildas gyvūnams Bioveterinary Sąnariai&kaulai, Joints&Bones, 28 pok. × 1\n\nSiunta, numatyta sausio 15 d., bus nukelta 14 d. – į sausio 29 d.\n\nTaip, nukelti"
+  }
+ }
+}
