@@ -1,0 +1,41 @@
+{
+ "v": "dep-175539",
+ "kurimas": 200,
+ "sid": 8519,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "l1",
+  "buvo": "2027-01-16",
+  "kodas": 200,
+  "h1": "Siunta nukelta",
+  "po": "2027-01-23",
+  "antras_h1": "Nuoroda nebegalioja",
+  "po2": "2027-01-23",
+  "atstatyta": "2027-01-16",
+  "ivykiai": [
+   {
+    "event": "date_changed",
+    "p": "{\"data\":\"2027-01-16\"}",
+    "created_at": "2026-11-18 17:56:45"
+   },
+   {
+    "event": "postponed",
+    "p": "{\"dienos\":7,\"nauja_data\":\"2027-01-23\"}",
+    "created_at": "2026-11-18 17:56:44"
+   },
+   {
+    "event": "date_changed",
+    "p": "{\"data\":\"2027-01-16\"}",
+    "created_at": "2026-11-18 17:45:33"
+   },
+   {
+    "event": "postponed",
+    "p": "{\"dienos\":7,\"nauja_data\":\"2027-01-23\"}",
+    "created_at": "2026-11-18 17:45:33"
+   }
+  ]
+ }
+}
