@@ -1,0 +1,73 @@
+{
+ "3": {
+  "v": "S1885t",
+  "faze": "3",
+  "arch": "/home/gyvunai2/domains/petshop.lt/ps-archyvas",
+  "bf": "/home/gyvunai2/domains/petshop.lt/ps-archyvas/s1885/snippets_temp_iki_20261118.json.gz",
+  "rez": {
+   "st": "cancelled",
+   "likutis_pries": {
+    "16558": 33
+   },
+   "likutis_po": {
+    "16558": 34
+   }
+  }
+ },
+ "4": {
+  "v": "S1885t",
+  "faze": "4",
+  "arch": "/home/gyvunai2/domains/petshop.lt/ps-archyvas",
+  "bf": "/home/gyvunai2/domains/petshop.lt/ps-archyvas/s1885/snippets_temp_iki_20261118.json.gz",
+  "kandidatai": {
+   "n": "0",
+   "mn": null,
+   "mx": null,
+   "mb": null,
+   "pask": null
+  },
+  "viso": {
+   "n": "445",
+   "akt": "78",
+   "mb": "3.1"
+  },
+  "ne_temp_neakt": 1,
+  "backup": [
+   5190298,
+   936
+  ],
+  "o1758": {
+   "id": 38691,
+   "st": "cancelled",
+   "pm": "bacs",
+   "paid": "ne",
+   "suma": "52.00",
+   "stock_reduced": false,
+   "notes": [
+    "11-18 10:27 Email \"Atšauktas užsakymas\" failed to send.",
+    "11-18 10:27 Email \"Atšauktas užsakymas\" failed to send.",
+    "11-18 10:27 Anuliuota Raimio sprendimu 2026-11-18 (S1885): bankinis pavedimas neapmokėtas nuo 11-15, klientas turi naujesnį užsakymą. Laiškai nesiųsti. Užsakymo statusas pa",
+    "11-18 10:27 Likutis padidintas: Quattro SB 7kg su lašiša ir kriliu sausas suaugusių mažų veislių šunų pašaras (33&rarr;34)"
+   ],
+   "items": [
+    "16558 Quattro SB 7kg su lašiša ir kriliu sausas suaugusi x1 st=34"
+   ]
+  },
+  "naujesnis": {
+   "id": 38692,
+   "nr": "1759",
+   "st": "completed",
+   "paid": "11-15 19:14",
+   "suma": "45.59",
+   "sukurta": "11-15 17:01",
+   "tas_pats_klientas": true
+  }
+ },
+ "v": "dep-082646",
+ "kurimas": 200,
+ "sid": 8481,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
