@@ -1,0 +1,40 @@
+{
+ "v": "dep-174059",
+ "kurimas": 200,
+ "sid": 8513,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "j1",
+  "file": "wp-content/plugins/petshop-core/petshop-core.php",
+  "lines": [
+   337,
+   339
+  ],
+  "src": "\tfunction ps_generate_token( array $args ) {\n\t\treturn Petshop_Action_Tokens::generate( $args );\n\t}\n",
+  "now": 1795023725,
+  "f": {
+   "ps_peek_token": [
+    "wp-content/plugins/petshop-core/petshop-core.php",
+    347
+   ],
+   "ps_consume_token": [
+    "wp-content/plugins/petshop-core/petshop-core.php",
+    358
+   ]
+  },
+  "funcs": [
+   "ps_emit_event",
+   "ps_get_event",
+   "ps_get_pending_events",
+   "ps_set_marketing_consent",
+   "ps_get_marketing_consent",
+   "ps_generate_token",
+   "ps_peek_token",
+   "ps_consume_token",
+   "ps_invalidate_token_group"
+  ]
+ }
+}
