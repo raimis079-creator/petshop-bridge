@@ -1,0 +1,60 @@
+{
+ "2": {
+  "v": "S1884",
+  "F": "2",
+  "ok": {
+   "petshop-prenumerata.php": true,
+   "petshop-prenumerata-paskyra.php": true,
+   "petshop-prenumerata-veiksmas.php": true
+  },
+  "ver": "2.9",
+  "db": "6",
+  "stulp": true,
+  "aktyviu": [
+   {
+    "id": "68",
+    "status": "active",
+    "next_cycle_date": "2027-01-16",
+    "mode": "confirm_required",
+    "payment_method": "manual"
+   }
+  ],
+  "g68": null,
+  "suma68": 3129,
+  "jobs_cols": [
+   "id",
+   "job_key",
+   "flow",
+   "flow_class",
+   "recipient_email",
+   "recipient_user_id",
+   "subject",
+   "payload",
+   "status",
+   "block_reason",
+   "provider",
+   "provider_message_id",
+   "attempts",
+   "last_error",
+   "scheduled_at",
+   "sent_at",
+   "created_at",
+   "updated_at",
+   "skip_reason",
+   "error_message",
+   "decision_at",
+   "next_attempt_at",
+   "context_json",
+   "delivered_at",
+   "opened_at",
+   "clicked_at"
+  ]
+ },
+ "v": "dep-184553",
+ "kurimas": 200,
+ "sid": 8524,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
