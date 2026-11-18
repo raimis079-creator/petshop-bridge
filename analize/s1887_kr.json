@@ -1,0 +1,228 @@
+{
+ "1": {
+  "v": "S1887kr",
+  "n": 717,
+  "B": {
+   "a <15": {
+    "n": 116,
+    "pm": 87,
+    "vf": 28,
+    "sum": 1116,
+    "ship": 257.36
+   },
+   "b 15-20": {
+    "n": 56,
+    "pm": 43,
+    "vf": 18,
+    "sum": 990,
+    "ship": 136.96
+   },
+   "c 20-25": {
+    "n": 56,
+    "pm": 49,
+    "vf": 32,
+    "sum": 1241,
+    "ship": 129.6
+   },
+   "d 25-30": {
+    "n": 29,
+    "pm": 21,
+    "vf": 10,
+    "sum": 789,
+    "ship": 73.39
+   },
+   "e 30-32": {
+    "n": 51,
+    "pm": 49,
+    "vf": 7,
+    "sum": 1585,
+    "ship": 4.3
+   },
+   "f 32-35": {
+    "n": 52,
+    "pm": 49,
+    "vf": 11,
+    "sum": 1742,
+    "ship": 12.28
+   },
+   "g 35-40": {
+    "n": 40,
+    "pm": 36,
+    "vf": 12,
+    "sum": 1502,
+    "ship": 11.97
+   },
+   "h 40-50": {
+    "n": 88,
+    "pm": 76,
+    "vf": 42,
+    "sum": 3930,
+    "ship": 23.94
+   },
+   "i 50-70": {
+    "n": 132,
+    "pm": 115,
+    "vf": 54,
+    "sum": 7685,
+    "ship": 55.86
+   },
+   "j 70+": {
+    "n": 97,
+    "pm": 71,
+    "vf": 34,
+    "sum": 9411,
+    "ship": 103.35
+   }
+  },
+  "M": {
+   "2026-09": {
+    "n": 202,
+    "vf": 82,
+    "vfonly": 77,
+    "pm": 163,
+    "ship_paid": 84
+   },
+   "2026-10": {
+    "n": 317,
+    "vf": 95,
+    "vfonly": 93,
+    "pm": 268,
+    "ship_paid": 135
+   },
+   "2026-11": {
+    "n": 198,
+    "vf": 71,
+    "vfonly": 68,
+    "pm": 165,
+    "ship_paid": 88
+   }
+  },
+  "ship_cfg": [
+   [
+    "Neringos savivaldybe",
+    "shopup_venipak_shipping_pickup_method",
+    "VENIPAK paštomatai/atsiėmimo punktai",
+    "yes",
+    "",
+    "",
+    ""
+   ],
+   [
+    "Neringos savivaldybe",
+    "shopup_venipak_shipping_courier_method",
+    "VENIPAK Kurjeris",
+    "yes",
+    "",
+    "",
+    ""
+   ],
+   [
+    "Neringos savivaldybe",
+    "woo_lithuaniapost_lpexpress_terminal",
+    "LP Express",
+    "yes",
+    "flat",
+    "",
+    ""
+   ],
+   [
+    "Lietuva",
+    "shopup_venipak_shipping_pickup_method",
+    "VENIPAK paštomatai/atsiėmimo punktai",
+    "yes",
+    "",
+    "",
+    ""
+   ],
+   [
+    "Lietuva",
+    "free_shipping",
+    "Nemokamas pristatymas",
+    "no",
+    "",
+    "0",
+    ""
+   ],
+   [
+    "Lietuva",
+    "shopup_venipak_shipping_courier_method",
+    "VENIPAK Kurjeris",
+    "yes",
+    "",
+    "",
+    ""
+   ],
+   [
+    "Lietuva",
+    "shopup_venipak_shipping_courier_method",
+    "VENIPAK Kurjeris",
+    "yes",
+    "",
+    "",
+    ""
+   ],
+   [
+    "Lietuva",
+    "shopup_venipak_shipping_courier_method",
+    "VENIPAK Kurjeris",
+    "yes",
+    "",
+    "",
+    ""
+   ],
+   [
+    "Lietuva",
+    "shopup_venipak_shipping_courier_method",
+    "VENIPAK Kurjeris",
+    "yes",
+    "",
+    "",
+    ""
+   ],
+   [
+    "Lietuva",
+    "woo_lithuaniapost_lpexpress_terminal",
+    "LP Express",
+    "yes",
+    "flat",
+    "",
+    ""
+   ],
+   [
+    "Lietuva",
+    "woo_lithuaniapost_lpexpress_terminal",
+    "LP Express kurjeris",
+    "yes",
+    "weight",
+    "",
+    ""
+   ],
+   [
+    "Lietuva",
+    "local_pickup",
+    "Atsiėmimas AV — Liucionių g. 46, Liucionys",
+    "no",
+    "0",
+    "",
+    ""
+   ],
+   [
+    "Baltijos šalys, be LIetuvos",
+    "shopup_venipak_shipping_pickup_method",
+    "VENIPAK paštomatai/atsiėmimo punktai",
+    "yes",
+    "",
+    "",
+    ""
+   ]
+  ],
+  "opts": []
+ },
+ "v": "dep-161424",
+ "kurimas": 200,
+ "sid": 8501,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
