@@ -1,0 +1,98 @@
+{
+ "1": {
+  "v": "S1885z",
+  "imp2_acc": [
+   "Nov-2026.tar.gz 18/Nov/2026:06:00:02 /wp-load.php?k&import_id=2&action=trigger 200 97",
+   "Nov-2026.tar.gz 18/Nov/2026:06:01:01 /wp-load.php?k&import_id=2&action=processing 500 422",
+   "Nov-2026.tar.gz.1 17/Nov/2026:18:00:01 /wp-load.php?k&import_id=2&action=trigger 200 97",
+   "Nov-2026.tar.gz.1 17/Nov/2026:18:01:01 /wp-load.php?k&import_id=2&action=processing 200 98",
+   "Nov-2026.tar.gz.2 17/Nov/2026:06:00:01 /wp-load.php?k&import_id=2&action=trigger 200 97",
+   "Nov-2026.tar.gz.2 17/Nov/2026:06:01:01 /wp-load.php?k&import_id=2&action=processing 200 98",
+   "Nov-2026.tar.gz.3 16/Nov/2026:18:00:01 /wp-load.php?k&import_id=2&action=trigger 200 97",
+   "Nov-2026.tar.gz.3 16/Nov/2026:18:01:07 /wp-load.php?k&import_id=2&action=processing 200 97"
+  ],
+  "imp2_acc_n": 8,
+  "php_0400utc": [
+   "[18-Nov-2026 04:32:28 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 608",
+   "[18-Nov-2026 04:33:04 UTC] PHP Warning:  Array to string conversion in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/petshop-xml/petshop-xml.php on line 608"
+  ],
+  "pub_18": [
+   {
+    "ID": "38871",
+    "t": "02.427553 GIMCAT NUTRI BITES MALT 40G (pak8)",
+    "st": "trash",
+    "d": "2026-11-18 06:01:57",
+    "m": "2026-11-18 07:08:06",
+    "mt": "_sku=01GIC5161 | _stock=26.000000 | _stock_status=instock"
+   },
+   {
+    "ID": "38932",
+    "t": "JosiDog Beef and Chicken in Sauce konservuotas pašaras šunims su jauti",
+    "st": "publish",
+    "d": "2026-11-18 06:31:03",
+    "m": "2026-11-18 07:21:01",
+    "mt": "_sku=JOS1092 | _stock=48.000000 | _stock_status=instock | _price=0.92"
+   },
+   {
+    "ID": "38934",
+    "t": "JosiDog Beef and Lamb in Sauce konservuotas pašaras šunims su jautiena",
+    "st": "publish",
+    "d": "2026-11-18 06:31:03",
+    "m": "2026-11-18 07:21:02",
+    "mt": "_sku=JOS1093 | _stock=48.000000 | _stock_status=instock | _price=0.92"
+   },
+   {
+    "ID": "38936",
+    "t": "JosiDog Lamb and Chicken in Sauce konservuotas pašaras šunims su ėrien",
+    "st": "publish",
+    "d": "2026-11-18 06:31:03",
+    "m": "2026-11-18 07:21:02",
+    "mt": "_sku=JOS1094 | _stock=48.000000 | _stock_status=instock | _price=0.92"
+   },
+   {
+    "ID": "38938",
+    "t": "JosiDog Beef and Veggies in Sauce konservuotas pašaras šunims su jauti",
+    "st": "publish",
+    "d": "2026-11-18 06:31:03",
+    "m": "2026-11-18 07:21:02",
+    "mt": "_sku=JOS1095 | _stock=48.000000 | _stock_status=instock | _price=0.92"
+   },
+   {
+    "ID": "38940",
+    "t": "JosiDog Lamb and Veggies in Sauce konservuotas pašaras šunims su ėrien",
+    "st": "publish",
+    "d": "2026-11-18 06:31:03",
+    "m": "2026-11-18 07:21:03",
+    "mt": "_sku=JOS1096 | _stock=47.000000 | _stock_status=instock | _price=0.92"
+   },
+   {
+    "ID": "38942",
+    "t": "JosiDog Turkey and Carrot in Sauce konservuotas pašaras šunims su kala",
+    "st": "publish",
+    "d": "2026-11-18 06:31:03",
+    "m": "2026-11-18 07:21:03",
+    "mt": "_sku=JOS1097 | _stock=48.000000 | _stock_status=instock | _price=0.92"
+   }
+  ],
+  "pub_ivykiai": [],
+  "temp_akt": [
+   {
+    "id": "8474",
+    "n": "TEMP PS dep-074526",
+    "modified": "2026-11-18 07:46:21"
+   }
+  ],
+  "temp_seni": {
+   "n": "936",
+   "mb": "12.6"
+  },
+  "trukme_s": 0.1
+ },
+ "v": "dep-074526",
+ "kurimas": 200,
+ "sid": 8474,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
