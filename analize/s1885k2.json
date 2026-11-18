@@ -1,19 +1,36 @@
 {
  "1": {
   "v": "S1885k2",
-  "xml_items": 0,
-  "xml_be_musu_sku": 0,
-  "sutapdinta": 0,
-  "ok": 0,
-  "ranka": 0,
-  "be_nuotr": 0,
+  "xml_items": 2636,
+  "xml_be_musu_sku": 1450,
+  "sutapdinta": 1186,
+  "ok": 114,
+  "ranka": 1042,
+  "be_nuotr": 31,
   "neatitinka_n": 0,
   "neatitinka_publ_n": 0,
-  "neatitinka": []
+  "neatitinka": [],
+  "churu_xml": {
+   "EUD728": [
+    38569
+   ],
+   "EUD729": [
+    38570,
+    38571
+   ],
+   "EUD739": [
+    38572,
+    38573
+   ],
+   "EUD740": [
+    38574,
+    38575
+   ]
+  }
  },
- "v": "dep-103106",
+ "v": "dep-103227",
  "kurimas": 200,
- "sid": 8498,
+ "sid": 8499,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
