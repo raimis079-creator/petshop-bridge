@@ -1,0 +1,123 @@
+{
+ "1": {
+  "v": "S1885k",
+  "dir": {
+   "petshop-backups/2026/11": [],
+   "petshop-backups/2026/10": []
+  },
+  "state_files": [
+   [
+    "application_backups",
+    "11-17 21:20"
+   ],
+   [
+    "backups",
+    "11-18 02:00"
+   ]
+  ],
+  "wpcron": [
+   [
+    "wp_delete_temp_updater_backups",
+    "11-24 15:44"
+   ]
+  ],
+  "statusai_30d": [
+   {
+    "status": "wc-cancelled",
+    "n": "7",
+    "pask": "2026-11-16 17:37:57"
+   },
+   {
+    "status": "wc-completed",
+    "n": "292",
+    "pask": "2026-11-18 06:06:27"
+   },
+   {
+    "status": "wc-on-hold",
+    "n": "1",
+    "pask": "2026-11-17 14:49:41"
+   },
+   {
+    "status": "wc-processing",
+    "n": "16",
+    "pask": "2026-11-18 07:36:06"
+   }
+  ],
+  "completed_pask": [
+   {
+    "id": "38782",
+    "date_created_gmt": "2026-11-17 05:19:03",
+    "date_updated_gmt": "2026-11-18 06:06:27"
+   },
+   {
+    "id": "38727",
+    "date_created_gmt": "2026-11-16 09:30:06",
+    "date_updated_gmt": "2026-11-18 06:06:27"
+   },
+   {
+    "id": "38759",
+    "date_created_gmt": "2026-11-16 19:22:22",
+    "date_updated_gmt": "2026-11-18 05:36:06"
+   },
+   {
+    "id": "38730",
+    "date_created_gmt": "2026-11-16 13:33:04",
+    "date_updated_gmt": "2026-11-18 05:36:06"
+   },
+   {
+    "id": "38729",
+    "date_created_gmt": "2026-11-16 12:12:07",
+    "date_updated_gmt": "2026-11-18 05:36:06"
+   }
+  ],
+  "note_pask": [
+   {
+    "oid": "38827",
+    "comment_date": "2026-11-18 09:12:14",
+    "c": "Perduota tiekėjui Quattro / Kauno grūdai — laiškas: e.panaviene@kaunogrudai.lt, terra@pets"
+   },
+   {
+    "oid": "38785",
+    "comment_date": "2026-11-18 09:12:14",
+    "c": "Perduota tiekėjui Quattro / Kauno grūdai — laiškas: e.panaviene@kaunogrudai.lt, terra@pets"
+   },
+   {
+    "oid": "38827",
+    "comment_date": "2026-11-18 09:11:17",
+    "c": "Siuntos numeriai išsaugoti (QUATTRO): V07267E1000826"
+   },
+   {
+    "oid": "38827",
+    "comment_date": "2026-11-18 09:11:17",
+    "c": "Venipak registracija darbalaukyje (QUATTRO, manifestas 004): sėkminga"
+   },
+   {
+    "oid": "38785",
+    "comment_date": "2026-11-18 09:11:17",
+    "c": "Siuntos numeriai išsaugoti (QUATTRO): V07267E1000825"
+   },
+   {
+    "oid": "38785",
+    "comment_date": "2026-11-18 09:11:17",
+    "c": "Venipak registracija darbalaukyje (QUATTRO, manifestas 004): sėkminga"
+   },
+   {
+    "oid": "38786",
+    "comment_date": "2026-11-18 09:10:22",
+    "c": "Darbalaukis: LP Express siunta CC132758554LT (dydis M) užregistruota, perdavimas: Nuvešiu "
+   },
+   {
+    "oid": "38944",
+    "comment_date": "2026-11-18 07:24:11",
+    "c": "Siuntos numeriai išsaugoti (AV): V07267E1000824"
+   }
+  ]
+ },
+ "v": "dep-073555",
+ "kurimas": 200,
+ "sid": 8469,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
