@@ -1,0 +1,31 @@
+{
+ "1": {
+  "v": "S1884",
+  "F": "1",
+  "parse": "ok 4",
+  "md5": {
+   "petshop-prenumerata.php": "6f8c171e9b36ffc73a2271a5652ca1e9",
+   "petshop-prenumerata-paskyra.php": "503e0c0ea395bd85b0b1374088e8626a",
+   "petshop-prenumerata-veiksmas.php": "6c94b8a8fc2b0e96b5625da761010f29",
+   "ps-sablonai/subscription-t5.php": "cba094b1077f96a4c666951fceccee43"
+  },
+  "hb": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/paskyra/": 200,
+   "/wp-admin/admin-ajax.php": 400
+  }
+ },
+ "v": "dep-173740",
+ "kurimas": 200,
+ "sid": 8511,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1884",
+  "F": "D",
+  "parse": "ok 4"
+ }
+}
