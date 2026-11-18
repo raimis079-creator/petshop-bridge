@@ -1,0 +1,53 @@
+{
+ "1": {
+  "v": "S1884",
+  "F": "1",
+  "parse": "ok 1",
+  "md5": {
+   "petshop-prenumerata.php": "0c99f10508ad8da7012897f74ea8428c"
+  },
+  "hb": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/paskyra/": 200,
+   "/wp-admin/admin-ajax.php": 400
+  }
+ },
+ "2": {
+  "v": "S1884",
+  "F": "2",
+  "ok": {
+   "petshop-prenumerata.php": true
+  },
+  "ver": "2.8.1",
+  "buvo": "2027-01-16",
+  "po7": "2027-01-23",
+  "blogos": "blogos_dienos",
+  "atstatyta": "2027-01-16",
+  "urls": {
+   "p7": true,
+   "p14": true,
+   "skip": true
+  },
+  "peek7": {
+   "valid": true,
+   "purpose": "sub_postpone7",
+   "expires": "2027-01-19 00:00:00"
+  },
+  "p7_url": "https://petshop.lt/prenumerata/veiksmas/?t=eyJ2ZXJzaW9uIjoxLCJwdXJwb3NlIjoic3ViX3Bvc3Rwb25lNyIsInN1YmplY3RfaWQiOjQ0LCJyZXNvdXJjZV9pZCI6IjY4IiwiYWN0aW9uIjoiIiwiZXhwaXJlc19hdCI6MTgwMDMxNjgwMCwibm9uY2UiOiI1ODMyMWZkZTNkZjZlOTBiNzJjY2M4ZjFiYjhhOWY2NyIsImtleV9pZCI6InYyIn0.c8b717ca080e468ad567f02a0dc3f93768f76e756a252e17d1079db419b52ec5",
+  "t5_subject": "Sausio 15 d. išsiųsime jūsų siuntą – 31,29 €",
+  "t5_nukelti": 2
+ },
+ "v": "dep-174410",
+ "kurimas": 200,
+ "sid": 8515,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1884",
+  "F": "D",
+  "parse": "ok 1"
+ }
+}
