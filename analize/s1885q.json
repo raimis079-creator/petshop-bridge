@@ -1,0 +1,47 @@
+{
+ "1": {
+  "v": "S1885q",
+  "n": 10172,
+  "md5": "58e5d317",
+  "mtime": "09-09 19:22",
+  "eil": [
+   "5281: \t\t\telse { $mdata[ (int) $r['post_id'] ] = $r['meta_value']; }",
+   "5282: \t\t}",
+   "5283: \t\t$baze = wp_get_upload_dir();",
+   "5284: \t\t$baze = trailingslashit( $baze['baseurl'] );",
+   "5285: \t\t$out  = array();",
+   "5286: \t\tforeach ( $att as $aid => $prekiu_ids ) {",
+   "5287: \t\t\tif ( ! isset( $failai[ $aid ] ) ) { continue; }",
+   "5288: \t\t\t$kelias = $failai[ $aid ];",
+   "5289: \t\t\t$url    = $baze . $kelias;",
+   "5290: \t\t\tif ( isset( $mdata[ $aid ] ) ) {",
+   "5291: \t\t\t\t$md = @maybe_unserialize( $mdata[ $aid ] );",
+   "5292: \t\t\t\tif ( is_array( $md ) && ! empty( $md['sizes']['thumbnail']['file'] ) ) {",
+   "5293: \t\t\t\t\t$url = $baze . trailingslashit( dirname( $kelias ) ) . $md['sizes']['thumbnail']['file'];",
+   "5294: \t\t\t\t}",
+   "5295: \t\t\t}",
+   "5296: \t\t\tforeach ( (array) $prekiu_ids as $pid ) { $out[ (int) $pid ] = $url; }",
+   "5297: \t\t}",
+   "5298: \t\treturn $out;",
+   "5299: \t}",
+   "5300: ",
+   "5301: \t/**"
+  ],
+  "funkcija": [
+   "5263 miniatiuros",
+   "4977 surinkti"
+  ],
+  "log": [
+   "[18-Nov-2026 07:54:52 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 17006592 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on line 566",
+   "[18-Nov-2026 07:55:06 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-katalogas.php on line 5296"
+  ],
+  "sesijos": []
+ },
+ "v": "dep-083002",
+ "kurimas": 200,
+ "sid": 8483,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
