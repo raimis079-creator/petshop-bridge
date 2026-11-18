@@ -1,0 +1,165 @@
+{
+ "v": "dep-215637",
+ "kurimas": 200,
+ "sid": 8566,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "t1",
+  "0_pradzia": {
+   "prekes": "19496x6,16950x1",
+   "garantija": [
+    3528,
+    399,
+    "testas"
+   ],
+   "laukia": null,
+   "pran": null,
+   "tipas": "kurjeris"
+  },
+  "B1_mate_maziau": {
+   "prekes": "19496x6,16950x1",
+   "garantija": [
+    3528,
+    399,
+    "testas"
+   ],
+   "laukia": [
+    4126,
+    3528,
+    "Kol tvirtinote, pasikeitė kaina. Patikrinkite naują sumą."
+   ],
+   "pran": null,
+   "tipas": "kurjeris"
+  },
+  "B2_patvirtinta": {
+   "prekes": "19496x8,16950x1",
+   "garantija": [
+    4126,
+    399,
+    "kliento_pakeitimas"
+   ],
+   "laukia": null,
+   "pran": "Pakeitimas išsaugotas. Nauja siuntos suma – 41,26 €. Patvirtinimą išsiuntėme el. paštu.",
+   "tipas": "kurjeris"
+  },
+  "B3_mate_daugiau": {
+   "prekes": "19496x6,16950x1",
+   "garantija": [
+    3528,
+    399,
+    "kliento_pakeitimas"
+   ],
+   "laukia": null,
+   "pran": null,
+   "tipas": "kurjeris"
+  },
+  "B4a_prideti_sim": {
+   "prekes": "19496x6,16950x1",
+   "garantija": [
+    3528,
+    399,
+    "kliento_pakeitimas"
+   ],
+   "laukia": [
+    5158,
+    3528,
+    "Pridėta: Papildas gyvūnams Bioveterinary Extra Strong, 28 pok.."
+   ],
+   "pran": null,
+   "tipas": "kurjeris"
+  },
+  "B4b_prideti_patv": {
+   "prekes": "19496x6,16950x1,16959x1",
+   "garantija": [
+    5158,
+    399,
+    "kliento_pakeitimas"
+   ],
+   "laukia": null,
+   "pran": "Pakeitimas išsaugotas. Nauja siuntos suma – 51,58 €. Patvirtinimą išsiuntėme el. paštu.",
+   "tipas": "kurjeris"
+  },
+  "laiskas_issiustas": true,
+  "B5a_salinti_sim": {
+   "prekes": "19496x6,16950x1,16959x1",
+   "garantija": [
+    5158,
+    399,
+    "kliento_pakeitimas"
+   ],
+   "laukia": [
+    3823,
+    5158,
+    "Prekė pašalinta iš prenumeratos."
+   ],
+   "pran": null,
+   "tipas": "kurjeris"
+  },
+  "B5b_salinti_patv": {
+   "prekes": "19496x6,16959x1",
+   "garantija": [
+    3823,
+    399,
+    "kliento_pakeitimas"
+   ],
+   "laukia": null,
+   "pran": "Pakeitimas išsaugotas. Nauja siuntos suma – 38,23 €. Patvirtinimą išsiuntėme el. paštu.",
+   "tipas": "kurjeris"
+  },
+  "B6_terminalas": [
+   "2630",
+   [
+    "id",
+    "m",
+    "p"
+   ]
+  ],
+  "B6a_pristatymas_sim": {
+   "prekes": "19496x6,16959x1",
+   "garantija": [
+    3823,
+    399,
+    "kliento_pakeitimas"
+   ],
+   "laukia": [
+    3424,
+    3823,
+    "Paštomatas pakeistas: Venipak locker, Express Market Venipak paštomatas, Pilėnų g. 1, Akademija."
+   ],
+   "pran": null,
+   "tipas": "kurjeris"
+  },
+  "B6b_pristatymas_patv": {
+   "prekes": "19496x6,16959x1",
+   "garantija": [
+    3424,
+    0,
+    "kliento_pakeitimas"
+   ],
+   "laukia": null,
+   "pran": "Pakeitimas išsaugotas. Nauja siuntos suma – 34,24 €. Patvirtinimą išsiuntėme el. paštu.",
+   "tipas": "pastomatas"
+  },
+  "B7_garantija": 3424,
+  "B7_uzsakymas": [
+   3124,
+   "Pritaikyta akcija: −3,00 €",
+   0
+  ],
+  "pabaiga": [
+   "active",
+   "2027-01-16",
+   null,
+   true,
+   "19496x6,16950x1"
+  ],
+  "stock": [
+   "86",
+   "76.000000",
+   "130.000000"
+  ]
+ }
+}
