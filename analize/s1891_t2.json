@@ -1,0 +1,160 @@
+{
+ "v": "dep-202026",
+ "kurimas": 200,
+ "sid": 8543,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "GO": {
+  "v": "t3",
+  "shots": [
+   {
+    "n": "s1884_0",
+    "u": "https://petshop.lt/?t=1795033312",
+    "w": 390,
+    "h": 600
+   },
+   {
+    "n": "s1884_1",
+    "u": "https://petshop.lt/?add-to-cart=16959&quantity=1",
+    "w": 390,
+    "h": 600
+   },
+   {
+    "n": "s1884_2",
+    "u": "https://petshop.lt/?add-to-cart=16950&quantity=1",
+    "w": 390,
+    "h": 600
+   },
+   {
+    "n": "s1884_3_krepselis_isj",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 390,
+    "h": 1700,
+    "full": 1,
+    "eval": "(document.getElementById('ps-pren')||{}).innerText||'NERA BLOKO'"
+   },
+   {
+    "n": "s1884_3j",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 390,
+    "h": 600,
+    "click": "#ps-pren > a"
+   },
+   {
+    "n": "s1884_4_krepselis_ij",
+    "u": "https://petshop.lt/krepselis/",
+    "w": 390,
+    "h": 1700,
+    "full": 1,
+    "eval": "(document.getElementById('ps-pren')||{}).innerText||'NERA BLOKO'"
+   },
+   {
+    "n": "s1884_5_kasa",
+    "u": "https://petshop.lt/kasa/",
+    "w": 390,
+    "h": 4200,
+    "full": 1,
+    "eval": "new Promise(r=>setTimeout(()=>r([(document.querySelector('.ps-pren-salygos')||{}).innerText||'NERA SALYGU',(document.querySelector('.ps-pren-sutikimas')||{}).innerText||'NERA VARNELES',(document.querySelector('.ps-pren-paskyra')||{}).innerText||'-',((document.querySelector('#payment')||{}).innerText||'').slice(0,400)].join(' || ')),4000))"
+   },
+   {
+    "n": "s1884_6_laiskas_ijungta",
+    "u": "https://petshop.lt/?ps_s1884e=t9&nc=1795033312",
+    "w": 390,
+    "h": 1600,
+    "full": 1
+   },
+   {
+    "n": "s1884_7_laiskas_7d",
+    "u": "https://petshop.lt/?ps_s1884e=t10&nc=1795033312",
+    "w": 390,
+    "h": 1600,
+    "full": 1
+   }
+  ],
+  "ses_del": 1,
+  "prekes": [
+   16959,
+   16950
+  ],
+  "pav": [
+   "Papildas gyvūnams Bioveterinary Extra Strong, 28 pok. 16.3 AV=7",
+   "Papildas gyvūnams Bioveterinary Sąnariai&kaulai, Joints&Bones, 28 pok. 13.35 AV=7"
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
+    "value": "terra|1795044112|yPeVJzezQxRB5QQ4cseHLbwl0oLmzgvypMY3XrIiQKy|0a542423033f2889293cd3d67cd7369c1d0bff5dcdaac1ce501d60f8975cdb1e",
+    "domain": "petshop.lt"
+   },
+   {
+    "name": "ps_js",
+    "value": "1",
+    "domain": "petshop.lt"
+   }
+  ]
+ },
+ "shots": {
+  "s1884_0": {
+   "status": 200,
+   "url": "https://petshop.lt/?t=1795033312",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1884_1": {
+   "status": 200,
+   "url": "https://petshop.lt/?add-to-cart=16959&quantity=1",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1884_2": {
+   "status": 200,
+   "url": "https://petshop.lt/?add-to-cart=16950&quantity=1",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1884_3_krepselis_isj": {
+   "status": 200,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "eval": "Prenumeruoti – atsiųsime patys, taip dažnai, kaip reikia\nPrieš 7 d. parašome, ką ir už kiek – siuntą dar galėsite praleisti. Nutraukti galite bet kada.\nSu antra siunta – dovana augintiniui. Nemokamas pristatymas į paštomatus.\nKaina – kaip parduotuvėje, su akcijomis."
+  },
+  "s1884_3j": {
+   "status": 200,
+   "url": "https://petshop.lt/krepselis/#ps-pren",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "clicked": "#ps-pren > a"
+  },
+  "s1884_4_krepselis_ij": {
+   "status": 200,
+   "url": "https://petshop.lt/krepselis/",
+   "title": "Krepšelis - Petshop.lt",
+   "errors": [],
+   "eval": "Prenumeruoti\nPRISTATYMO DAŽNIS\n−\nKas 30 dienų\n+\nRinkitės nuo 15 iki 90 dienų. Prekes ir dažnį galėsite keisti prieš kiekvieną siuntą.\nŠiandien mokate\n29,65 €\nToliau kas 30 dienų*\n29,65 €\nKita siunta – gruodžio 18 d.\n✓ Nemokamas pristatymas į paštomatus\n✓ Su kita siunta – dovana augintiniui\nPrenumeruojama: 2 prekės\nRodyti ▾\n* Šiandienos kainomis, tik prenumeruojamos prekės. Tikslią sumą parašysime likus 7 dienoms – daugiau, nei parašysime, nenurašysime.\nPrenumeratai reikia Visa arba Mastercard kortelės. Jos duomenis saugo Paysera – mes jų nematome ir nesaugome."
+  },
+  "s1884_5_kasa": {
+   "status": 200,
+   "url": "https://petshop.lt/kasa/",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ],
+   "eval": "Prenumeratos sąlygos\nŠiandien mokate\n29,65 €\nToliau kas 30 dienų\nšiandienos kainomis\n29,65 €\nKita siunta – apie gruodžio 18 d.\n\nKaina – kaip parduotuvėje, su galiojančiomis akcijomis. Nurašome ne daugiau, nei parašėme laiške likus 7 dienoms.\n\nPraleisti ar nutraukti galite iki dienos prieš siuntą – laiške arba paskyroje. Tai nieko nekainuoja.\n\nMokėjimas: Visa arba Mastercard. Kortelės duomenis saugo Paysera – mes jų nematome ir nesaugome.\n\nPrenumeruojamos prekės: Papildas gyvūnams Bioveterinary Extra Strong, 28 pok., Papildas gyvūnams Bioveterinary Sąnariai&kaulai, Joints&Bones, 28 pok.\n\nPardavėjas: UAB Avesa, petshop.lt (nuo 2010 m.), +370 681 87787. Prekes grąžinti galite pagal bendras pirkimo taisykles. Visos sąlygos – Prenumeratos taisyklės. ||  Sutinku su prenumeratos taisyklėmis ir leidžiu kas 30 dienų nurašyti prenumeratos sumą nuo savo kortelės, kol prenumeratos nenutrauksiu. *\nNutraukti galite bet kada – po to nieko nebenurašysime. || - || Prenumeratos šiuo metu užsakyti negalime – laikinai neveikia mokėjimas kortele. Galite pirkti tik šį kartą arba pabandyti vėliau.\n\n Perskaičiau ir sutinku su pirkimo sąlygomis ir taisyklėmis bei privatumo politika *\n\nPrenumeratos sąlygos\nŠiandien mokate\n29,65 €\nToliau kas 30 dienų\nšiandienos kainomis\n29,65 €\nKita siunta – apie gruodžio 18 d.\n\nKaina – kaip parduotuvėje, su galiojančiomis akcijomis."
+  },
+  "s1884_6_laiskas_ijungta": {
+   "status": 200,
+   "url": "https://petshop.lt/?ps_s1884e=t9&nc=1795033312",
+   "title": "Prenumerata įjungta – kita siunta apie sausio 15 d.",
+   "errors": []
+  },
+  "s1884_7_laiskas_7d": {
+   "status": 200,
+   "url": "https://petshop.lt/?ps_s1884e=t10&nc=1795033312",
+   "title": "Sausio 15 d. išsiųsime jūsų siuntą – 35,28 €",
+   "errors": []
+  }
+ }
+}
