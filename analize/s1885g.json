@@ -1,0 +1,146 @@
+{
+ "1": {
+  "v": "S1885g",
+  "langas": [
+   "11-17 09:40",
+   "11-18 09:40"
+  ],
+  "failai": [
+   [
+    "Nov-2026.tar.gz",
+    "0.3MB",
+    "11-18 06:02"
+   ],
+   [
+    "Nov-2026.tar.gz.1",
+    "1.6MB",
+    "11-18 00:11"
+   ],
+   [
+    "Nov-2026.tar.gz.10",
+    "0.3MB",
+    "11-13 07:52"
+   ],
+   [
+    "Nov-2026.tar.gz.11",
+    "1.4MB",
+    "11-13 00:10"
+   ],
+   [
+    "Nov-2026.tar.gz.12",
+    "0.2MB",
+    "11-12 06:02"
+   ],
+   [
+    "Nov-2026.tar.gz.2",
+    "0.4MB",
+    "11-17 06:29"
+   ],
+   [
+    "Nov-2026.tar.gz.3",
+    "1.2MB",
+    "11-17 00:10"
+   ],
+   [
+    "Nov-2026.tar.gz.4",
+    "0.4MB",
+    "11-16 08:00"
+   ],
+   [
+    "Nov-2026.tar.gz.5",
+    "1.1MB",
+    "11-16 00:11"
+   ],
+   [
+    "Nov-2026.tar.gz.6",
+    "0.3MB",
+    "11-15 07:17"
+   ],
+   [
+    "Nov-2026.tar.gz.7",
+    "1.2MB",
+    "11-15 00:11"
+   ],
+   [
+    "Nov-2026.tar.gz.8",
+    "0.3MB",
+    "11-14 06:23"
+   ],
+   [
+    "Nov-2026.tar.gz.9",
+    "1.1MB",
+    "11-14 00:10"
+   ],
+   [
+    "php_error.log",
+    "7.5MB",
+    "11-18 09:36"
+   ]
+  ],
+  "skaityta": [
+   [
+    "Nov-2026.tar.gz",
+    8120
+   ],
+   [
+    "Nov-2026.tar.gz.1",
+    45137
+   ]
+  ],
+  "viso": 35,
+  "statusai": {
+   "200": 35
+  },
+  "view_statusai": {
+   "-|200": 32,
+   "visos_kruvoje|200": 3
+  },
+  "kruva_uzkl": [
+   {
+    "t": "11-17 09:45:24",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "JOS0763",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-17 09:46:46",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "pasta",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-17 20:41:47",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "kepenėlėmis",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   }
+  ],
+  "e500": [],
+  "php_log": "php_error.log",
+  "fatal_para_n": 4,
+  "fatal_para": [
+   "11-17 14:33:13  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/class-wpdb.php on line 2328",
+   "11-18 09:32:03  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 16949248 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on lin",
+   "11-18 09:34:01  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 16969728 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on lin",
+   "11-18 09:36:46  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 16973824 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on lin"
+  ],
+  "e500_fatal": [],
+  "trukme_s": 0.3
+ },
+ "v": "dep-073844",
+ "kurimas": 200,
+ "sid": 8471,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
