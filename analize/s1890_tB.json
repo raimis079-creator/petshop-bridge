@@ -1,0 +1,119 @@
+{
+ "v": "dep-185118",
+ "kurimas": 200,
+ "sid": 8527,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "B": {
+  "v": "t1",
+  "F": "B",
+  "stock_pries": {
+   "16950": [
+    "76.000000",
+    "7"
+   ],
+   "19496": [
+    "86",
+    ""
+   ]
+  },
+  "T4_lubos": 3128,
+  "T4": {
+   "err": null,
+   "total_ct": 3128,
+   "ship": 0,
+   "eil": [
+    17.93,
+    13.35
+   ],
+   "maziau": "",
+   "kastas_ct": 399,
+   "virsija": "",
+   "st": "pending",
+   "notes": [
+    "Kainos garantija: klientui palikta laiške nurodyta kaina; kainų skirtumas 3,99 € – mūsų.",
+    "Kainos garantija: dėl PVM apvalinimo eilutė sumažinta 0,01 €, kad suma neviršytų praneštos."
+   ],
+   "istrinta": true
+  },
+  "T4b_lubos": 3127,
+  "T4b": {
+   "err": null,
+   "total_ct": 3127,
+   "ship": 0,
+   "eil": [
+    17.92,
+    13.35
+   ],
+   "maziau": "",
+   "kastas_ct": 399,
+   "virsija": "",
+   "st": "pending",
+   "notes": [
+    "Kainos garantija: klientui palikta laiške nurodyta kaina; kainų skirtumas 3,99 € – mūsų.",
+    "Kainos garantija: dėl PVM apvalinimo eilutė sumažinta 0,02 €, kad suma neviršytų praneštos."
+   ],
+   "istrinta": true
+  },
+  "T5": {
+   "err": "virsija",
+   "total_ct": 3129,
+   "ship": 0,
+   "eil": [
+    17.94,
+    13.35
+   ],
+   "maziau": "",
+   "kastas_ct": 399,
+   "virsija": "1",
+   "st": "pending",
+   "notes": [
+    "NENURAŠYTI: suma 31,29 € viršija klientui praneštą 0,01 €."
+   ],
+   "istrinta": true
+  },
+  "T5b_be_garantijos": "nera_garantijos",
+  "T12_garantija_ct": 3215,
+  "T12": {
+   "err": null,
+   "total_ct": 3215,
+   "ship": 3.9899999999999998,
+   "eil": [
+    16.14,
+    12.02
+   ],
+   "maziau": "",
+   "kastas_ct": 313,
+   "virsija": "",
+   "st": "pending",
+   "notes": [
+    "Kainos garantija: klientui palikta laiške nurodyta kaina; kainų skirtumas 3,13 € – mūsų."
+   ],
+   "istrinta": true
+  },
+  "T12_nuolaida_po": 0,
+  "T8_pries": true,
+  "T8_po_nukelimo": false,
+  "T10_po_pristatymo_keitimo": false,
+  "T9_po_kiekio_keitimo": false,
+  "stock_po": {
+   "16950": [
+    "76.000000",
+    "7"
+   ],
+   "19496": [
+    "86",
+    ""
+   ]
+  },
+  "pabaiga": [
+   "active",
+   "2027-01-16",
+   null,
+   true
+  ],
+  "likę_uzsakymai": 0
+ }
+}
