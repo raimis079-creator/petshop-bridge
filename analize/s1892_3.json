@@ -1,0 +1,127 @@
+{
+ "2": {
+  "v": "y1",
+  "F": "2",
+  "yra": true,
+  "bak_len": 9321,
+  "shots": [
+   {
+    "n": "s1892_0",
+    "u": "https://petshop.lt/?t=1795034651",
+    "w": 390,
+    "h": 400
+   },
+   {
+    "n": "s1892_1",
+    "u": "https://petshop.lt/?add-to-cart=16950&quantity=1",
+    "w": 390,
+    "h": 400
+   },
+   {
+    "n": "s1892_po_tel",
+    "u": "https://petshop.lt/kasa/?a=1",
+    "w": 390,
+    "h": 2400,
+    "full": 1,
+    "eval": "new Promise(r=>setTimeout(()=>{const e=document.querySelector('.venipak-pickup-wrapper .select2-selection--single');const s=[...document.querySelectorAll('.select2-selection--single')].map(x=>getComputedStyle(x).borderTopColor);const inp=[...document.querySelectorAll('#billing_first_name,#billing_email,#billing_country_field .select2-selection')].map(x=>getComputedStyle(x).borderTopColor);r(JSON.stringify({venipak:e?getComputedStyle(e).border:'NERA',visi_select2:s,kiti_laukai:inp,logo:!!document.querySelector('.wc-venipak-shipping-logo')}))},4500))"
+   },
+   {
+    "n": "s1892_po_pc",
+    "u": "https://petshop.lt/kasa/?a=2",
+    "w": 1366,
+    "h": 1500,
+    "full": 1,
+    "eval": "new Promise(r=>setTimeout(()=>{const e=document.querySelector('.venipak-pickup-wrapper .select2-selection--single');const s=[...document.querySelectorAll('.select2-selection--single')].map(x=>getComputedStyle(x).borderTopColor);const inp=[...document.querySelectorAll('#billing_first_name,#billing_email,#billing_country_field .select2-selection')].map(x=>getComputedStyle(x).borderTopColor);r(JSON.stringify({venipak:e?getComputedStyle(e).border:'NERA',visi_select2:s,kiti_laukai:inp,logo:!!document.querySelector('.wc-venipak-shipping-logo')}))},4500))"
+   },
+   {
+    "n": "s1892_po_atidarytas",
+    "u": "https://petshop.lt/kasa/?a=3",
+    "w": 390,
+    "h": 2400,
+    "full": 1,
+    "click": ".venipak-pickup-wrapper .select2-selection--single",
+    "eval": "new Promise(r=>setTimeout(()=>{const e=document.querySelector('.venipak-pickup-wrapper .select2-selection--single');r(getComputedStyle(e).border+' | '+getComputedStyle(e).boxShadow.slice(0,60)+' | open='+!!document.querySelector('.select2-container--open'))},1500))"
+   },
+   {
+    "n": "s1892_po_kurjeris",
+    "u": "https://petshop.lt/kasa/?a=4",
+    "w": 390,
+    "h": 2400,
+    "full": 1,
+    "click": "input[value^=shopup_venipak_shipping_courier_method]",
+    "eval": "new Promise(r=>setTimeout(()=>{r([...document.querySelectorAll('#shipping_method li')].map(l=>(l.querySelector('input')||{}).checked+':'+l.innerText.replace(/\\\\s+/g,' ').slice(0,40)).join(' || ')+' | laukas matomas='+!!(document.querySelector('.venipak-pickup-wrapper')||{}).offsetParent)},5000))"
+   }
+  ],
+  "cookies": [
+   {
+    "name": "wordpress_logged_in_d446672427955a6d243d454e07bb1b71",
+    "value": "terra|1795045451|ij7BRyhNyQRtuhKYFs1ABhgONlPHahDSP6rczOxE0sa|09f3370d12512b4eb75c771b00fe5185a0bd66cc118021961ba779bc9c4b50f2",
+    "domain": "petshop.lt"
+   },
+   {
+    "name": "ps_js",
+    "value": "1",
+    "domain": "petshop.lt"
+   }
+  ]
+ },
+ "v": "dep-204249",
+ "kurimas": 200,
+ "sid": 8548,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "shots": {
+  "s1892_0": {
+   "status": 200,
+   "url": "https://petshop.lt/?t=1795034651",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1892_1": {
+   "status": 200,
+   "url": "https://petshop.lt/?add-to-cart=16950&quantity=1",
+   "title": "Gyvūnų prekės internetu – maistas, priežiūra, sprendimai | Petshop.lt",
+   "errors": []
+  },
+  "s1892_po_tel": {
+   "status": 200,
+   "url": "https://petshop.lt/kasa/?a=1",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ],
+   "eval": "{\"venipak\":\"1px solid rgb(54, 90, 81)\",\"visi_select2\":[\"rgb(221, 221, 221)\",\"rgb(54, 90, 81)\"],\"kiti_laukai\":[\"rgb(221, 221, 221)\",\"rgb(221, 221, 221)\",\"rgb(221, 221, 221)\"],\"logo\":true}"
+  },
+  "s1892_po_pc": {
+   "status": 200,
+   "url": "https://petshop.lt/kasa/?a=2",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ],
+   "eval": "{\"venipak\":\"1px solid rgb(54, 90, 81)\",\"visi_select2\":[\"rgb(221, 221, 221)\",\"rgb(54, 90, 81)\"],\"kiti_laukai\":[\"rgb(221, 221, 221)\",\"rgb(221, 221, 221)\",\"rgb(221, 221, 221)\"],\"logo\":true}"
+  },
+  "s1892_po_atidarytas": {
+   "status": 200,
+   "url": "https://petshop.lt/kasa/?a=3",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ],
+   "clicked": ".venipak-pickup-wrapper .select2-selection--single",
+   "eval": "1px solid rgb(54, 90, 81) | rgb(54, 90, 81) 0px 0px 0px 1px | open=true"
+  },
+  "s1892_po_kurjeris": {
+   "status": 200,
+   "url": "https://petshop.lt/kasa/?a=4",
+   "title": "Apmokėjimas - Petshop.lt",
+   "errors": [
+    "warning: As of February 21st, 2024, google.maps.Marker is deprecated. Please use google.maps.marker.AdvancedMarkerElement instead. At this time, google.maps.Marker is not scheduled to be discontinued, but google.maps.marker.AdvancedMarkerElement is recommended over google.maps.Marker. While google.maps.Marke"
+   ],
+   "clicked": "input[value^=shopup_venipak_shipping_courier_method]",
+   "eval": "false: VENIPAK paštomatai/atsiėmimo punktai: 2 || true: VENIPAK Kurjeris: 3,99 € | laukas matomas=false"
+  }
+ }
+}
