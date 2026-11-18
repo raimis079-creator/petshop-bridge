@@ -1,0 +1,54 @@
+{
+ "1": {
+  "v": "S1885t",
+  "faze": "1",
+  "arch": "/home/gyvunai2/domains/petshop.lt/ps-archyvas",
+  "bf": "/home/gyvunai2/domains/petshop.lt/ps-archyvas/s1885/snippets_temp_iki_20261118.json.gz",
+  "kandidatai": {
+   "n": "936",
+   "mn": "7177",
+   "mx": "8113",
+   "mb": "12.6",
+   "pask": "2026-11-11 09:17:54"
+  },
+  "viso": {
+   "n": "1379",
+   "akt": "78",
+   "mb": "15.7"
+  },
+  "ne_temp_neakt": 1,
+  "o1758": {
+   "id": 38691,
+   "st": "on-hold",
+   "pm": "bacs",
+   "paid": "ne",
+   "suma": "52.00",
+   "stock_reduced": true,
+   "notes": [
+    "11-17 16:49 Bacs priminimas nesiųstas — klientas turi naujesnį užsakymą #38692 (S1676).",
+    "11-15 16:45 Email \"Naujas užsakymas\" sent.",
+    "11-15 16:45 Awaiting BACS payment. Užsakymo statusas pakeistas iš Neapmokėtas į Sustabdytas.",
+    "11-15 16:45 Likutis sumažintas: Quattro SB 7kg su lašiša ir kriliu sausas suaugusių mažų veislių šunų pašaras (34&rarr;33)"
+   ],
+   "items": [
+    "16558 Quattro SB 7kg su lašiša ir kriliu sausas suaugusi x1 st=33"
+   ]
+  },
+  "naujesnis": {
+   "id": 38692,
+   "nr": "1759",
+   "st": "completed",
+   "paid": "11-15 19:14",
+   "suma": "45.59",
+   "sukurta": "11-15 17:01",
+   "tas_pats_klientas": true
+  }
+ },
+ "v": "dep-082335",
+ "kurimas": 200,
+ "sid": 8479,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
