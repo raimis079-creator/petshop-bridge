@@ -1,0 +1,28 @@
+{
+ "v": "dep-211933",
+ "kurimas": 200,
+ "sid": 8619,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1903d-1",
+  "F": "D",
+  "parse": "ok 2",
+  "apmoketi_klauso": [
+   "10:Petshop_Pren_Paysera::apmoketi_cikla"
+  ],
+  "db_ver": "6",
+  "lentele": null,
+  "av_stock_v14": true,
+  "paysera_failas": true,
+  "sub": [
+   {
+    "id": "68",
+    "status": "active",
+    "next_cycle_date": "2027-01-16"
+   }
+  ]
+ }
+}
