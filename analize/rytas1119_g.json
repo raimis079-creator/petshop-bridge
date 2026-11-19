@@ -2,8 +2,8 @@
  "1": {
   "v": "S1898g",
   "langas": [
-   "11-18 09:41",
-   "11-19 09:41"
+   "11-18 09:46",
+   "11-19 09:46"
   ],
   "failai": [
    [
@@ -277,10 +277,8 @@
    }
   ],
   "php_log": "php_error.log",
-  "fatal_para_n": 6,
+  "fatal_para_n": 4,
   "fatal_para": [
-   "11-18 09:44:08  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 16990208 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on lin",
-   "11-18 09:46:18  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 16998400 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on lin",
    "11-18 09:50:27  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 17002496 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on lin",
    "11-18 09:54:52  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 17006592 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on lin",
    "11-18 09:55:06  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-katalogas.php on line 5",
@@ -296,11 +294,11 @@
     ]
    ]
   ],
-  "trukme_s": 0.3
+  "trukme_s": 0
  },
- "v": "dep-074024",
+ "v": "dep-074548",
  "kurimas": 200,
- "sid": 8590,
+ "sid": 8596,
  "sa_push": {
   "status": 404,
   "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
