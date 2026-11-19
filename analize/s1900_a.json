@@ -1,0 +1,187 @@
+{
+ "1": {
+  "v": "S1900a-1",
+  "gyvas_md5": "ad875ec92638652f12a114fed2b6c326",
+  "gyva_versija": "2.9.4",
+  "aktyvios": [
+   {
+    "id": "68",
+    "status": "active",
+    "mode": "confirm_required",
+    "cycle_confirmed": "0",
+    "next_cycle_date": "2027-01-16",
+    "interval_days": "40",
+    "pending_order_id": null
+   }
+  ],
+  "visos_busenos": [
+   {
+    "status": "active",
+    "n": "1"
+   }
+  ],
+  "sub": {
+   "68": {
+    "terminai": {
+     "planine": "2027-01-16",
+     "siunta": "2027-01-15",
+     "pranesimas": "2027-01-08",
+     "prekes_iki": "2027-01-12",
+     "praleisti_iki": "2027-01-14"
+    },
+    "t2": "2027-01-13",
+    "garantija": 0,
+    "prekes": [
+     {
+      "pid": 19496,
+      "pav": "Animonda GranCarno Adult: konservai suaugusiems šunims su žvėriena, 800 g",
+      "q": 6,
+      "tipas": "simple",
+      "av": {
+       "raktas": 19496,
+       "n": 1,
+       "av": 86
+      },
+      "resolve": {
+       "source": "av",
+       "av_qty": 86,
+       "tiekejas": "av",
+       "reason": "grynai AV prekė (be tiekėjo)"
+      }
+     },
+     {
+      "pid": 16950,
+      "pav": "Papildas gyvūnams Bioveterinary Sąnariai&kaulai, Joints&Bones, 28 pok.",
+      "q": 1,
+      "tipas": "simple",
+      "av": {
+       "raktas": 16950,
+       "n": 1,
+       "av": 7
+      },
+      "resolve": {
+       "source": "av",
+       "av_qty": 7,
+       "tiekejas": "zb",
+       "reason": "AV turi 7, reikia 1"
+      }
+     }
+    ],
+    "A_tikras": {
+     "truksta": 0,
+     "eil": [
+      {
+       "pid": 19496,
+       "q": 6,
+       "yra": 6,
+       "truksta": 0,
+       "ct": 299
+      },
+      {
+       "pid": 16950,
+       "q": 1,
+       "yra": 1,
+       "truksta": 0,
+       "ct": 1335
+      }
+     ],
+     "visa_ct": 3129,
+     "yra_ct": 3129,
+     "siulymas": "",
+     "nezinoma": 0
+    },
+    "B_av_nulis": {
+     "truksta": 7,
+     "eil": [
+      {
+       "pid": 19496,
+       "q": 6,
+       "yra": 0,
+       "truksta": 6,
+       "ct": 299
+      },
+      {
+       "pid": 16950,
+       "q": 1,
+       "yra": 0,
+       "truksta": 1,
+       "ct": 1335
+      }
+     ],
+     "visa_ct": 3129,
+     "yra_ct": 0,
+     "siulymas": "laukti",
+     "nezinoma": 0
+    },
+    "C_truksta_1": {
+     "truksta": 1,
+     "eil": [
+      {
+       "pid": 19496,
+       "q": 6,
+       "yra": 5,
+       "truksta": 1,
+       "ct": 299
+      },
+      {
+       "pid": 16950,
+       "q": 1,
+       "yra": 1,
+       "truksta": 0,
+       "ct": 1335
+      }
+     ],
+     "visa_ct": 3129,
+     "yra_ct": 2830,
+     "siulymas": "siusti_kas_yra",
+     "nezinoma": 0
+    },
+    "D_pirmos_nera": {
+     "truksta": 6,
+     "eil": [
+      {
+       "pid": 19496,
+       "q": 6,
+       "yra": 0,
+       "truksta": 6,
+       "ct": 299
+      },
+      {
+       "pid": 16950,
+       "q": 1,
+       "yra": 1,
+       "truksta": 0,
+       "ct": 1335
+      }
+     ],
+     "visa_ct": 3129,
+     "yra_ct": 1335,
+     "siulymas": "laukti",
+     "nezinoma": 0
+    }
+   }
+  },
+  "ivykiu_pries": 87,
+  "ciklas_log": {
+   "kada": "2026-11-19 06:10:06",
+   "diena": "2026-11-19",
+   "rez": {
+    "t5": 0,
+    "uzsakymai": 0,
+    "sulaikyta": 0,
+    "dunning": 0,
+    "atkurta": 0,
+    "klaidos": []
+   }
+  },
+  "cron_kitas": "2026-11-20 06:10 UTC",
+  "sargas_klauso": false
+ },
+ "v": "dep-095658",
+ "kurimas": 200,
+ "sid": 8608,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
