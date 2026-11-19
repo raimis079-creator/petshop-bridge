@@ -1,0 +1,37 @@
+{
+ "1": {
+  "v": "S1884",
+  "F": "1",
+  "parse": "ok 2",
+  "md5": {
+   "petshop-prenumeratos-langas.php": "22adb71cdf55341ca2daa1f3ea01c6e0",
+   "petshop-darbalaukis.php": "0a61424a6ade9ce2c92ce7c748fe2f82"
+  },
+  "hb": {
+   "/": 200,
+   "/krepselis/": 200,
+   "/paskyra/": 200,
+   "/wp-admin/admin-ajax.php": 400
+  }
+ },
+ "2": {
+  "v": "S1884",
+  "F": "2",
+  "ok": {
+   "petshop-prenumeratos-langas.php": true,
+   "petshop-darbalaukis.php": true
+  }
+ },
+ "v": "dep-092901",
+ "kurimas": 200,
+ "sid": 8606,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "D": {
+  "v": "S1884",
+  "F": "D",
+  "parse": "ok 2"
+ }
+}
