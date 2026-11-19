@@ -1,0 +1,58 @@
+{
+ "1": {
+  "v": "S1902a-1",
+  "t": {
+   "A_pradzia": 5,
+   "dec2": 3,
+   "dec9": "nepakanka: AV turi 3, prašoma 9",
+   "po_dec9": 3,
+   "inc4": 7,
+   "meta_kabliai_suveike": 2,
+   "stock_A_nepaliestas": "50",
+   "zurnalas_irasu": 2,
+   "ideta": 6,
+   "kitas_laiko": {
+    "gavo": "1",
+    "rez": "uzimta",
+    "lauke_s": 10,
+    "A": 6
+   },
+   "atlaisvinus": 5,
+   "uzsakymas": {
+    "pries": {
+     "A": 5,
+     "B": 5
+    },
+    "mazinti_x2": {
+     "A": 3,
+     "B": 3
+    },
+    "grazinti_kai_uzimta": {
+     "A": 3,
+     "B": 3,
+     "lauke_s": 15
+    },
+    "grazinti_x2": {
+     "A": 5,
+     "B": 5
+    },
+    "pastabos": [
+     "AV grąžinimas: #39004 AV +2 -> 5 · #39005 grynai AV +2",
+     "AV nurašymas: #39004 AV 5 -> 3 · #39005 grynai AV 5 -> 3"
+    ]
+   }
+  },
+  "isvalyta": {
+   "A": 1,
+   "B": 1,
+   "uzs": 1
+  }
+ },
+ "v": "dep-180952",
+ "kurimas": 200,
+ "sid": 8612,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
