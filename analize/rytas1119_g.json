@@ -1,0 +1,308 @@
+{
+ "1": {
+  "v": "S1898g",
+  "langas": [
+   "11-18 09:41",
+   "11-19 09:41"
+  ],
+  "failai": [
+   [
+    "Nov-2026.tar.gz",
+    "0.3MB",
+    "11-19 05:59"
+   ],
+   [
+    "Nov-2026.tar.gz.1",
+    "1.2MB",
+    "11-19 00:10"
+   ],
+   [
+    "Nov-2026.tar.gz.10",
+    "0.3MB",
+    "11-14 06:23"
+   ],
+   [
+    "Nov-2026.tar.gz.11",
+    "1.1MB",
+    "11-14 00:10"
+   ],
+   [
+    "Nov-2026.tar.gz.12",
+    "0.3MB",
+    "11-13 07:52"
+   ],
+   [
+    "Nov-2026.tar.gz.2",
+    "0.3MB",
+    "11-18 06:02"
+   ],
+   [
+    "Nov-2026.tar.gz.3",
+    "1.6MB",
+    "11-18 00:11"
+   ],
+   [
+    "Nov-2026.tar.gz.4",
+    "0.4MB",
+    "11-17 06:29"
+   ],
+   [
+    "Nov-2026.tar.gz.5",
+    "1.2MB",
+    "11-17 00:10"
+   ],
+   [
+    "Nov-2026.tar.gz.6",
+    "0.4MB",
+    "11-16 08:00"
+   ],
+   [
+    "Nov-2026.tar.gz.7",
+    "1.1MB",
+    "11-16 00:11"
+   ],
+   [
+    "Nov-2026.tar.gz.8",
+    "0.3MB",
+    "11-15 07:17"
+   ],
+   [
+    "Nov-2026.tar.gz.9",
+    "1.2MB",
+    "11-15 00:11"
+   ],
+   [
+    "php_error.log",
+    "7.5MB",
+    "11-19 09:33"
+   ]
+  ],
+  "skaityta": [
+   [
+    "Nov-2026.tar.gz",
+    9238
+   ],
+   [
+    "Nov-2026.tar.gz.1",
+    31472
+   ]
+  ],
+  "viso": 291,
+  "statusai": {
+   "103": 1,
+   "200": 288,
+   "302": 1,
+   "500": 1
+  },
+  "view_statusai": {
+   "-|200": 273,
+   "visos_kruvoje|500": 1,
+   "-|302": 1,
+   "visos_kruvoje|200": 15,
+   "-|103": 1
+  },
+  "kruva_uzkl": [
+   {
+    "t": "11-18 09:55:04",
+    "st": "500",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "excl",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 09:55:15",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "excl",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 11:04:23",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "EUD728",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 11:05:07",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "EUD728",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 11:05:18",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "EUD728",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 11:05:29",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "EUD728",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 11:07:59",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "EUD729",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 11:10:20",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "EUD729",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 11:10:34",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "EUD729",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 11:10:58",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "EUD729",
+    "net": "2a0d:3344:794b::/48",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 18:25:00",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "kalendo",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 18:25:06",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "visos",
+    "q": "kalendo",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 20:08:09",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "kalen",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 20:08:11",
+    "st": "200",
+    "view": "",
+    "kruva": "juodrasciai",
+    "q": "",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 20:08:20",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "juodrasciai",
+    "q": "kalendo",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 23:16:46",
+    "st": "200",
+    "view": "",
+    "kruva": "juodrasciai",
+    "q": "",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 23:16:54",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "juodrasciai",
+    "q": "advento",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   },
+   {
+    "t": "11-18 23:20:41",
+    "st": "200",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "exclusi",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   }
+  ],
+  "e500": [
+   {
+    "t": "11-18 09:55:04",
+    "st": "500",
+    "view": "visos_kruvoje",
+    "kruva": "prekyboje",
+    "q": "excl",
+    "net": "216.128.1.0/24",
+    "m": "GET"
+   }
+  ],
+  "php_log": "php_error.log",
+  "fatal_para_n": 6,
+  "fatal_para": [
+   "11-18 09:44:08  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 16990208 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on lin",
+   "11-18 09:46:18  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 16998400 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on lin",
+   "11-18 09:50:27  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 17002496 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on lin",
+   "11-18 09:54:52  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 17006592 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-includes/rest-api/class-wp-rest-server.php on lin",
+   "11-18 09:55:06  Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-katalogas.php on line 5",
+   "11-18 11:25:15  Fatal error:  Uncaught ValueError: mb_convert_encoding(): Argument #3 ($from_encoding) contains invalid encoding \"Windows-1257\" in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/plugins/cod"
+  ],
+  "e500_fatal": [
+   [
+    "11-18 09:55:04",
+    "visos_kruvoje",
+    "excl",
+    [
+     "[18-Nov-2026 07:55:06 UTC] PHP Fatal error:  Allowed memory size of 268435456 bytes exhausted (tried to allocate 2097152 bytes) in /home/gyvunai2/domains/petshop.lt/public_html/wp-content/mu-plugins/petshop-katalogas.php on line 5296"
+    ]
+   ]
+  ],
+  "trukme_s": 0.3
+ },
+ "v": "dep-074024",
+ "kurimas": 200,
+ "sid": 8590,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
