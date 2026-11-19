@@ -1,0 +1,109 @@
+{
+ "2": {
+  "v": "S1902d-1",
+  "F": "2",
+  "ok": {
+   "petshop-av-stock.php": true,
+   "petshop-av-reduce.php": true
+  },
+  "metodas": true,
+  "metodas_r": true,
+  "kabliai": {
+   "pc": 15,
+   "proc": 15,
+   "canc": 15,
+   "ref": 15,
+   "wcq": 20
+  },
+  "log_pask": [
+   "[19-Nov-2026 18:11:10 UTC] [Petshop_AV_Stock] UŽRAKTAS: prekė 39004 užimta >10 s\n",
+   "[19-Nov-2026 18:11:25 UTC] [Petshop_AV_Reduce] UŽRAKTAS: užsakymas 39006 užimtas >15 s\n"
+  ]
+ },
+ "v": "dep-205657",
+ "kurimas": 200,
+ "sid": 8615,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "T": {
+  "v": "S1902d-1",
+  "F": "T",
+  "t": {
+   "dec2": 3,
+   "dec9": "nepakanka",
+   "gavimas_inc4": 7,
+   "stock_A": "50",
+   "uzimta": [
+    "uzimta",
+    10,
+    7
+   ],
+   "darb_A_-2": 5,
+   "darb_A_+2": 7,
+   "darb_B_-1": 4,
+   "darb_B_+1": 5,
+   "uzsakymas": {
+    "pries": [
+     7,
+     5
+    ],
+    "nurasyta_x2": [
+     5,
+     3
+    ],
+    "grazinta_x2": [
+     7,
+     5
+    ],
+    "pastabos": [
+     "AV grąžinimas: #39010 AV +2 -> 7 · #39011 grynai AV +2",
+     "AV nurašymas: #39010 AV 7 -> 5 · #39011 grynai AV 5 -> 3"
+    ]
+   },
+   "wc_kiekis_filtras": [
+    0,
+    0
+   ],
+   "isvalyta": {
+    "A": true,
+    "B": true,
+    "uzs": true,
+    "lenteles": {
+     "ps_sources": "buvo 2, ištrinta",
+     "ps_partijos": 0,
+     "ps_ivykiai": 42
+    },
+    "ids": [
+     39010,
+     39011,
+     39012
+    ]
+   }
+  }
+ },
+ "J": {
+  "v": "S1902d-1",
+  "F": "J",
+  "pries": {
+   "prekiu_su_partijomis": 1006,
+   "sutampa": 730,
+   "nesutampa": 276,
+   "trukumas": -606,
+   "perteklius": 532,
+   "av_lauku": 366
+  },
+  "po": {
+   "prekiu_su_partijomis": 1006,
+   "sutampa": 730,
+   "nesutampa": 276,
+   "trukumas": -606,
+   "perteklius": 532,
+   "av_lauku": 366
+  },
+  "pries_kada": "2026-11-19 22:54:55",
+  "pokyciai": [],
+  "nauji_uzsakymai": []
+ }
+}
