@@ -1,0 +1,29 @@
+{
+ "v": "dep-090334",
+ "kurimas": 200,
+ "sid": 8604,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ },
+ "P": {
+  "v": "S1899p-3",
+  "shots": [
+   {
+    "n": "s1899_eile_prenumerata_pavyzdys",
+    "u": "https://petshop.lt/?ps_s1899p=H&demo=1&nc=1795079354",
+    "w": 1360,
+    "h": 900,
+    "full": 1
+   }
+  ]
+ },
+ "shots": {
+  "s1899_eile_prenumerata_pavyzdys": {
+   "status": 201,
+   "url": "https://petshop.lt/?ps_s1899p=H&demo=1&nc=1795079354",
+   "title": "Prenumerata",
+   "errors": []
+  }
+ }
+}
