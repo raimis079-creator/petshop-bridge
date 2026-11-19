@@ -1,0 +1,161 @@
+{
+ "1": {
+  "v": "S1900c-1",
+  "fail": {
+   "wp-content/mu-plugins/petshop-partijos.php": [
+    "9: * Petshop Partijos v1.3 (S1668) — av_laukas(): tiekėjo prekėms be XML AV likutis → _own_stock_qty.",
+    "60: *   Likucio (`_stock`, `_own_stock_qty`) sis modulis NELIECIA — ten jau yra",
+    "265: * S590 taisykle: preke be tiekejo -> `_stock`; su tiekeju -> `_own_stock_qty`.",
+    "270: if ( get_post_meta( $pid, $k, true ) !== '' ) { return '_own_stock_qty'; }",
+    "273: yra `_own_stock_qty`, tiekėjo — `_stock` (katalogo v8.0 taisyklė). Iki šiol",
+    "277: if ( $sand !== '' && $sand !== 'av' && $sand !== 'paslauga' ) { return '_own_stock_qty'; }",
+    "588: * TIK i `ps_partijos.kiekis_liko`. Jokio `_stock`, jokio `_own_stock_qty` —"
+   ],
+   "wp-content/mu-plugins/petshop-ivykiai.php": [
+    "136: '_own_stock_qty'         => array( 'likutis',  'AV likutis' ),",
+    "452: 'laukas'   => isset( $e['laukas'] ) ? $e['laukas'] : '_own_stock_qty',"
+   ],
+   "wp-content/mu-plugins/petshop-uzsakymu-ivykiai.php": [
+    "354: 'av_q'  => $pid ? get_post_meta( $pid, '_own_stock_qty', true ) : null,"
+   ],
+   "wp-content/mu-plugins/petshop-av-reduce.php": [
+    "17: * Jei papildomai mažintume `_own_stock_qty`, AV prekei nusirašytų DU kartus.",
+    "20: *   _ps_source = av   → mažinam `_own_stock_qty`, WC mažinimą PRALEIDŽIAM",
+    "77: // GRYNAI AV prekės likutis gyvena `_stock`, ne `_own_stock_qty` —",
+    "80: $av = Petshop_AV_Stock::qty( $pid );",
+    "98: $rez = Petshop_AV_Stock::decrease( $pid, $qty, 'užsakymas #' . $order->get_order_number() );",
+    "162: if ( null === Petshop_AV_Stock::qty( $pid ) ) {",
+    "173: $rez = Petshop_AV_Stock::increase( $pid, $qty, 'grąžinta #' . $order->get_order_number() );"
+   ],
+   "wp-content/mu-plugins/petshop-gavimo-perrusiavimas.php": [
+    "12: * v1.1: REGISTRAS IŠ KARTO — po gavimo ir po kiekvieno `_own_stock_qty` pakeitimo (added/updated_post_meta) kviečiamas",
+    "29: /** v1.1: `_own_stock_qty` pasikeitė → registro AV eilutė iš karto. */",
+    "31: if ( '_own_stock_qty' === $key ) { self::registras( $pid ); }"
+   ],
+   "wp-content/mu-plugins/petshop-fakt-atsargos.php": [
+    "14: * Planas §4.5 sake: „TIK AV `_own_stock_qty` + dropship `_stock`\". Isvedus",
+    "17: *   av 904 prekes: turi `_own_stock_qty` 15 · turi `_stock` 894",
+    "20: *   „S590 taisykle: preke BE TIEKEJO -> `_stock`; SU TIEKEJU -> `_own_stock_qty`.\"",
+    "21: * Ir `petshop-av-reduce.php:9`: „Jei papildomai mazintume `_own_stock_qty`,",
+    "168: return ( '_own_stock_qty' === Petshop_Partijos::av_laukas( (int) $pid ) );",
+    "180: * likuti `_stock`; preke **SU TIEKEJU** — `_own_stock_qty`, o `_stock` tada",
+    "188: $own = get_post_meta( $pid, '_own_stock_qty', true );",
+    "195: (arba `_own_stock_qty`, jei kazkas ji nustate). */"
+   ],
+   "wp-content/mu-plugins/petshop-rezervacija-av.php": [
+    "4: * Description: S1780 (rasta 10-13): WooCommerce kasoje rezervuoja likutį pagal tiekėjo lauką `_stock` (SQL, be filtrų) ir nemato AV sandėlio `_own_stock_qty`.",
+    "21: $av = Petshop_AV_Stock::qty( (int) $product_id );"
+   ],
+   "wp-content/mu-plugins/petshop-katalogas.php": [
+    "114: *   AV likutis       (`_own_stock_qty`)  kiek TU parsiveze i Avesos sandeli.",
+    "264: * butu nugules i `_own_stock_qty`, kurio parduotuve neskaito. Skaicius butu",
+    "268: * `_own_stock_qty` visoje bazeje yra vos 1 irasas.",
+    "276: * ISIMTIS: `_own_stock_qty` lieka tiems atvejams, kai TA PACIA preke turim ir",
+    "776: * `_own_stock_qty`. Ta pati taisyklė, kurią skaitant naudoja gyvi_is_meta().",
+    "811: * Išimtis: `_own_stock_qty` — tai MŪSŲ laukas, CRUD jo nepažįsta.",
+    "956: * Prekė be tiekėjo laiko likutį `_stock`; prekė su tiekėju — `_own_stock_qty`,",
+    "1009: * Avesos lentynos kiekis gyvena `_own_stock_qty` (S590)."
+   ],
+   "wp-content/mu-plugins/petshop-desk.php": [
+    "1298: *   `_own_stock_qty` reikalingas TIK toms prekėms, kurios turi ir",
+    "2393: $n = (int) $wpdb->get_var( \"SELECT COUNT(*) FROM {$wpdb->prefix}postmeta WHERE meta_key='_own_stock_qty' AND meta_value>0\" );"
+   ],
+   "wp-content/mu-plugins/petshop-prenumeratu-prognoze.php": [
+    "74: $own = get_post_meta($pid, '_own_stock_qty', true);",
+    "149: echo '<p style=\"color:#888;margin-top:10px\">Likutis: _own_stock_qty → WC stock (jei sekamas). ZB/VF likuciai atsinaujina su XML importu. Deficito aliarmas —"
+   ],
+   "wp-content/mu-plugins/petshop-darbalaukis.php": [
+    "81: *    +q (grynai AV `_stock`, kitaip `Petshop_AV_Stock::increase`), tiekėjas→Avesa −q (jei Avesoje < q —",
+    "181: *   (laikas|kas|nr) — `faktai()` jas išima iš dalių (av_side/tiesiai), žingsnelių nėra, užraktas „atšaukta“; likutis: tiekėjo eilutės +q į `_own_stock_qty`",
+    "250: *   „Atšaukti — prekės grįžo į AV“ (`grizta_atsaukti`): dropship eilutėms +q į `_own_stock_qty` (`Petshop_AV_Stock::increase` — sukuria lauką, prekė tampa",
+    "1460: /** Eilutės AV likučio judesys: +q / −q pagal prekės rūšį (grynai AV → `_stock`, AV+tiekėjas → `_own_stock_qty`). */",
+    "1758: if ( class_exists( 'Petshop_AV_Stock' ) && null !== Petshop_AV_Stock::qty( $pid ) ) {",
+    "1759: return $delta > 0 ? Petshop_AV_Stock::increase( $pid, $delta, $pastaba ) : Petshop_AV_Stock::decrease( $pid, -$delta, $pastaba );",
+    "3012: $out[] = array( 'id' => (int) $id, 'n' => $p->get_name(), 'sku' => (string) $p->get_sku(), 'av' => class_exists( 'Petshop_AV_Stock' ) ? (int) Petshop_AV_Stoc",
+    "3035: $out[] = array( 'id' => (int) $id, 'n' => $p->get_name(), 'sku' => (string) $p->get_sku(), 'kaina' => round( (float) wc_get_price_including_tax( $p ), 2 ), '"
+   ],
+   "wp-content/mu-plugins/petshop-av-limit.php": [
+    "23: * SAUGIKLIS: veikia TIK toms prekėms, kurios turi `_own_stock_qty` IR tiekėjo",
+    "47: $av = Petshop_AV_Stock::qty( $product_id );",
+    "59: $av = (int) Petshop_AV_Stock::qty( $pid );",
+    "69: $av = (int) Petshop_AV_Stock::qty( $pid );"
+   ],
+   "wp-content/mu-plugins/petshop-dropship-matomumas.php": [
+    "16: * Dropship = `_ps_sandelis` IN (vf, zb) ir AV likutis (`_own_stock_qty`) <= 0.",
+    "52: if ( (int) get_post_meta( $pid, '_own_stock_qty', true ) > 0 ) { return false; }"
+   ],
+   "wp-content/mu-plugins/petshop-rinkiniai.php": [
+    "904: if ( $meta_key !== '_stock' && $meta_key !== '_own_stock_qty' && $meta_key !== '_manage_stock' ) { return $check; }"
+   ],
+   "wp-content/mu-plugins/petshop-av-tiekimas.php": [
+    "10: *   `Petshop_Partijos::priimti()` (gavimo partija su savikaina, `tiekimas_id`, AV likutis kyla ten pat) — nebelieka „Partijose trūksta n vnt.“ ir savikaina ska",
+    "1285: // be savikainos — kaip iki šiol, tik likutis (`Petshop_AV_Stock::increase`). Galiojimas YYYY-MM → partijai paskutinė mėnesio diena.",
+    "1294: Petshop_AV_Stock::increase( $e->product_id, $g,",
+    "1361: Petshop_AV_Stock::decrease( (int) $it->get_product_id(), $qty, sprintf( 'Tiekimas: rezervuota užsakymui #%s (partija #%d)', $oo->get_order_number(), (int)",
+    "1443: $turi = class_exists( 'Petshop_AV_Stock' ) ? (int) Petshop_AV_Stock::qty( $pid ) : 0;",
+    "1485: Petshop_AV_Stock::decrease( $p['pid'], $p['reikia'],"
+   ],
+   "wp-content/mu-plugins/petshop-av-source.php": [
+    "34: *      Resolveris grąžina `legacy`; mes verčiam į `av`. `_own_stock_qty` NEREIKIA.",
+    "36: *      Likutis `_own_stock_qty`; `_stock` perrašo sync.",
+    "79: // Joms `_own_stock_qty` NEREIKIA — jos ir taip AV.",
+    "92: $av        = class_exists( 'Petshop_AV_Stock' ) ? Petshop_AV_Stock::qty( $product_id ) : null;"
+   ],
+   "wp-content/mu-plugins/petshop-av-stock.php": [
+    "9: *   `_own_stock_qty` su sync nesikerta.",
+    "21: *   - API kitiems sluoksniams: Petshop_AV_Stock::qty() / has() / decrease()",
+    "36: const META = '_own_stock_qty';",
+    "133: * SAUGIKLIS (S477): `_own_stock_qty` rašymas NEGALI paliesti `_stock`.",
+    "182: 'id'          => 'ps_own_stock_qty',",
+    "205: if ( ! isset( $_POST['ps_own_stock_qty'] ) ) { return; }",
+    "206: $raw = trim( (string) wp_unslash( $_POST['ps_own_stock_qty'] ) );",
+    "251: <input type=\"number\" name=\"ps_own_stock_qty\" class=\"ps-av-qty\""
+   ]
+  },
+  "kiek": {
+   "wp-content/mu-plugins/petshop-partijos.php": 7,
+   "wp-content/mu-plugins/petshop-ivykiai.php": 2,
+   "wp-content/mu-plugins/petshop-uzsakymu-ivykiai.php": 1,
+   "wp-content/mu-plugins/petshop-av-reduce.php": 7,
+   "wp-content/mu-plugins/petshop-gavimo-perrusiavimas.php": 3,
+   "wp-content/mu-plugins/petshop-fakt-atsargos.php": 9,
+   "wp-content/mu-plugins/petshop-rezervacija-av.php": 2,
+   "wp-content/mu-plugins/petshop-katalogas.php": 13,
+   "wp-content/mu-plugins/petshop-desk.php": 2,
+   "wp-content/mu-plugins/petshop-prenumeratu-prognoze.php": 2,
+   "wp-content/mu-plugins/petshop-darbalaukis.php": 13,
+   "wp-content/mu-plugins/petshop-av-limit.php": 4,
+   "wp-content/mu-plugins/petshop-dropship-matomumas.php": 2,
+   "wp-content/mu-plugins/petshop-rinkiniai.php": 1,
+   "wp-content/mu-plugins/petshop-av-tiekimas.php": 6,
+   "wp-content/mu-plugins/petshop-av-source.php": 4,
+   "wp-content/mu-plugins/petshop-av-stock.php": 13
+  },
+  "snippetai": [
+   {
+    "id": "567",
+    "name": "Petshop Daugiau=Pigiau Stock Sync v1.3"
+   },
+   {
+    "id": "2515",
+    "name": "Petshop Sources v2.3 (registras + palaikymas + sandelio pildymas + dvieju sandeliu eilutes)"
+   },
+   {
+    "id": "8610",
+    "name": "TEMP PS dep-135447"
+   }
+  ],
+  "partijos_kabliai": [
+   "add_action( 'woocommerce_payment_complete', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 );",
+   "add_action( 'woocommerce_order_status_processing', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 );",
+   "add_action( 'woocommerce_order_status_completed', array( __CLASS__, 'uzsakymo_nurasymas' ), 25, 1 );"
+  ]
+ },
+ "v": "dep-135447",
+ "kurimas": 200,
+ "sid": 8610,
+ "sa_push": {
+  "status": 404,
+  "body": "{\"code\":\"rest_no_route\",\"message\":\"Nerastas mar\\u0161rutas atitinkantis adres\\u0105 ir u\\u017eklausos metod\\u0105.\",\"data\":{\"status\":404}}"
+ }
+}
